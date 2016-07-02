@@ -1,0 +1,9 @@
+# only add common ones which native speakers would actually use. See default file for syntax
+gt?$: gate
+...gt?$: gata
+vn?$: vei
+...vn?$: veien
+pl$: plass
+...pl$: plassen
+sv$: sving
+...sv$: svingen

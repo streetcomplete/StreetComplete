@@ -1,0 +1,11 @@
+# only add common ones which native speakers would actually use. See default file for syntax
+ал$: аллея
+бул$: бульвар
+наб$: набережная
+пер$: переулок
+пл$: площадь
+пр$: проезд
+просп$: проспект
+ш$: шоссе
+туп$: тупик
+ул$: улица

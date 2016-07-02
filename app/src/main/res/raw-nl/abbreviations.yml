@@ -1,0 +1,14 @@
+# only add common ones which native speakers would actually use. See default file for syntax
+^Burg: Burgemeester
+^Dr: Doctor
+^Kon: Koning
+^Mr: Meester
+^Pr: Prins
+^Prof: Professor
+^St: Sint
+...gr$: gracht
+...ln$: laan
+...pln$: plein
+...str$: straat
+...stwg$: steenweg
+...wg$: weg

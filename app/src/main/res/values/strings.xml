@@ -1,0 +1,74 @@
+<resources>
+    <string name="app_name">osmagent</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="getdata">Get Data</string>
+
+    <string name="oauth_communication_error">Unable to reach the authorization server</string>
+    <string name="loading">Loading</string>
+    <string name="retry">Retry</string>
+
+    <string name="oauth_cancelled">Authorization cancelled</string>
+    <string name="oauth_failed_permissions">Authorization failed: All listed permissions need to be granted</string>
+    <string name="oauth_failed_verify_permissions">Authorization failed: Unable to verify permissions</string>
+
+    <string name="title_activity_settings">Settings</string>
+
+    <string name="pref_category_communication">Communication</string>
+
+    <string name="pref_title_autosync">Auto-Sync</string>
+    <string name="pref_title_authorization">Authorize OSM access</string>
+    <string name="pref_title_authorized_summary">Successfully authorized to your account</string>
+    <string name="pref_title_not_authorized_summary">Not yet authorized</string>
+    <string name="pref_tilecache_size_summary">%d MB</string>
+    <string name="pref_tilecache_size_message">Space in megabytes reserved on external storage to cache map tiles</string>
+
+    <string-array name="pref_entries_autosync">
+        <item>On</item>
+        <item>Only on Wifi</item>
+        <item>Off</item>
+    </string-array>
+
+    <string-array name="pref_entryvalues_autosync" translatable="false" >
+        <item>ON</item>
+        <item>ONLY_WIFI</item>
+        <item>OFF</item>
+    </string-array>
+
+    <string name="map_btn_find_me">Find me</string>
+    <string name="map_attribution_mapzen">Powered by Mapzen</string>
+    <string name="map_attribution_osm">© OpenStreetMap contributors</string>
+
+    <string name="quest_generic_notapplicable">Can\'t say</string>
+
+    <string name="quest_leave_new_note_title">Leave a note instead?</string>
+    <string name="quest_leave_new_note_description">You can leave a public note at this location
+        which other mappers can comment on and hopefully resolve:</string>
+    <string name="quest_leave_new_note_yes">@android:string/ok</string>
+    <string name="quest_leave_new_note_no">No, just skip</string>
+
+    <string name="quest_generic_confirmation_title">Are you sure?</string>
+    <string name="quest_generic_confirmation_yes">Yes, I am sure</string>
+    <string name="quest_generic_confirmation_no">I will check</string>
+    <string name="quest_generic_error_field_empty">You left this field empty</string>
+
+    <string name="quest_streetName_title">What is this road\'s name?</string>
+    <string name="quest_streetName_description">as written on the street sign:</string>
+    <string name="quest_streetName_noName">It has no name</string>
+    <string name="quest_streetName_noName_confirmation_description">Sometimes the street sign is
+        only at one end of the street. Also, note that there may not be extra street signs for side
+        streets that belong to a bigger street.\nUsually, any street with houses has a name.
+    </string>
+
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_title">An abbreviation in the name?</string>
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">If the name can
+        be spelled without an abbreviation, then it should be expanded.\nMany common abbreviations
+        are expanded automatically while you type, but probably not all.
+        </string>
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">It is no abbreviation</string>
+
+
+    <string name="quest_openingHours_title">What are the opening hours of this shop?</string>
+
+
+</resources>

@@ -1,0 +1,111 @@
+cameras:
+    camera1:
+        type: perspective
+
+lights:
+    light1:
+        type: directional
+        direction: [1, 1, -.9]
+        diffuse: .5
+        ambient: .85
+
+scene:
+    background:
+        color: '#ddd'
+
+sources:
+    osm:
+        type: MVT
+        url:  https://vector.mapzen.com/osm/all/{z}/{x}/{y}.mvt
+        url_params:
+            api_key: vector-tiles-fKUcuAJ
+        max_zoom: 16
+
+textures:
+    quest:
+        url: quest.png
+        filtering: nearest
+
+styles:
+    quest-marker:
+        base: points
+        texture: quest
+        blend: overlay
+        interactive: true
+
+layers:
+    quests:
+        data: { source: osmagent_quests }
+        draw:
+            quest-marker:
+                size: 24px
+                color: '#ff0000'
+
+    earth:
+        data: { source: osm }
+        draw:
+            polygons:
+                order: function() { return feature.sort_key; }
+                color: '#ddeeee'
+
+    landuse:
+        data: { source: osm }
+        draw:
+            polygons:
+                order: function() { return feature.sort_key; }
+                color: '#aaffaa'
+
+    water:
+        data: { source: osm }
+        draw:
+            polygons:
+                order: function() { return feature.sort_key; }
+                color: '#88bbee'
+
+    roads:
+        data: { source: osm }
+        filter:
+            not: { kind: ["path", "rail"] }
+        draw:
+            lines:
+                order: function() { return feature.sort_key; }
+                color: gray
+                width: 8
+                cap: round
+        highway:
+            filter:
+                kind: highway
+            draw:
+                lines:
+                    order: function() { return feature.sort_key; }
+                    color: '#cc6666'
+                    width: 12
+                    outline:
+                        color: grey
+                        width: 1.5
+        minor_road:
+            filter:
+                kind: minor_road
+            draw:
+                lines:
+                    order: function() { return feature.sort_key; }
+                    color: lightgrey
+                    width: 5
+
+    buildings:
+        data: { source: osm }
+        draw:
+            polygons:
+                order: function() { return feature.sort_key; }
+                color: |
+                    function () {
+                        var h = feature.height || 20;
+                        h = Math.min((h + 50)/ 255, .8); // max brightness: .8
+                        h = Math.max(h, .4); // min brightness: .4
+                        return [h, h, h];
+                    }
+        3d-buildings:
+            filter: { $zoom: { min: 15 } }
+            draw:
+                polygons:
+                    extrude: function () { return feature.height > 20 || $zoom >= 16; }

@@ -1,0 +1,16 @@
+# only add common ones which native speakers would actually use. See default file for syntax
+^av(da?)?: avenida
+^cl?: calle
+^c\/: calle
+^ca: calle
+^cm?no: camino
+^ctra: carretera
+^gta: glorieta
+^pº: paseo
+^pl(za)?: plaza
+^pte: puente
+^pza: plaza
+s: san
+sta: santa
+^trva: travesía
+^vreda: vereda

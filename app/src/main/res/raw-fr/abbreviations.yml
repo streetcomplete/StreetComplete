@@ -1,0 +1,15 @@
+# only add common ones which native speakers would actually use. See default file for syntax
+^all: allée
+^ave?: avenue
+^boul: boulevard
+^bd: boulevard
+^che?: chemin
+^crs: cours
+^crois: croissant
+^imp: impasse
+^mgr: monseigneur
+^pass?: passage
+^pl$: place
+^st: saint
+^ste: sainte
+^r: rue

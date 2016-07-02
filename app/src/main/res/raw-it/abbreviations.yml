@@ -1,0 +1,8 @@
+# only add common ones which native speakers would actually use. See default file for syntax
+^c\.le: calle
+^p\.za: piazza
+^p\.ta: piazzetta
+^p\.le: piazzale
+^v: via
+^v\.lo: vicolo
+^v\.le: viale

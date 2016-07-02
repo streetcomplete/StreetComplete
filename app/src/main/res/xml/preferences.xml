@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+                  xmlns:custom="http://schemas.android.com/apk/res/de.westnordost.osmagent">
+
+    <PreferenceCategory
+        android:key="communication"
+        android:title="@string/pref_category_communication">
+
+        <ListPreference
+            android:key="autosync"
+            android:title="@string/pref_title_autosync"
+            android:summary="%s"
+            android:defaultValue="ONLY_WIFI"
+            android:entries="@array/pref_entries_autosync"
+            android:entryValues="@array/pref_entryvalues_autosync"
+            android:persistent="true"
+             />
+
+        <de.westnordost.osmagent.settings.NumberPickerPreference
+            android:key="map.tilecache"
+            android:title="Cache Size"
+            android:summary="@string/pref_tilecache_size_summary"
+            android:defaultValue="50"
+            android:persistent="true"
+            custom:minValue="1"
+            custom:maxValue="250"
+            android:dialogMessage="@string/pref_tilecache_size_message"
+            android:positiveButtonText="@android:string/ok"
+            android:negativeButtonText="@android:string/cancel"
+            />
+
+        <Preference
+            android:key="oauth"
+            android:title="@string/pref_title_authorization"
+            android:summary="@string/pref_title_not_authorized_summary"
+            android:persistent="true"
+            />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

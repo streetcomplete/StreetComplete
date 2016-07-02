@@ -1,0 +1,16 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="QuestTitleQuestion">
+        <item name="android:textAlignment">viewStart</item>
+        <item name="android:textAppearance">@android:style/TextAppearance.DeviceDefault.DialogWindowTitle</item>
+        <item name="android:shadowRadius">0</item>
+    </style>
+
+
+
+</resources>
