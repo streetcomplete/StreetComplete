@@ -1,9 +1,11 @@
-package de.westnordost.osmagent.quests;
+package de.westnordost.osmagent.quests.create;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import de.westnordost.osmagent.quests.ElementGeometry;
+import de.westnordost.osmagent.quests.Quest;
 import de.westnordost.osmagent.quests.types.QuestType;
 import de.westnordost.osmapi.common.Handler;
 import de.westnordost.osmapi.map.data.BoundingBox;
@@ -18,11 +20,11 @@ import de.westnordost.osmapi.map.handler.MapDataHandler;
 /** Handles incoming map data and creates quests out of it */
 public class CreateQuestMapDataHandler implements MapDataHandler
 {
-	private Handler<Quest> handler;
-	private QuestType questType;
+	private final Handler<Quest> handler;
+	private final QuestType questType;
 
-	private HashMap<Long, Node> nodes;
-	private HashMap<Long, Way> ways;
+	private final HashMap<Long, Node> nodes;
+	private final HashMap<Long, Way> ways;
 
 	public CreateQuestMapDataHandler(QuestType questType, Handler<Quest> handler)
 	{
@@ -32,14 +34,12 @@ public class CreateQuestMapDataHandler implements MapDataHandler
 		ways = new HashMap<>();
 	}
 
-	@Override
-	public void handle(BoundingBox bounds)
+	@Override public void handle(BoundingBox bounds)
 	{
 		// ignore
 	}
 
-	@Override
-	public void handle(Node node)
+	@Override public void handle(Node node)
 	{
 		nodes.put(node.getId(), node);
 
@@ -49,8 +49,7 @@ public class CreateQuestMapDataHandler implements MapDataHandler
 		}
 	}
 
-	@Override
-	public void handle(Way way)
+	@Override public void handle(Way way)
 	{
 		ways.put(way.getId(), way);
 
@@ -60,8 +59,7 @@ public class CreateQuestMapDataHandler implements MapDataHandler
 		}
 	}
 
-	@Override
-	public void handle(Relation relation)
+	@Override public void handle(Relation relation)
 	{
 		if(questType.appliesTo(relation))
 		{

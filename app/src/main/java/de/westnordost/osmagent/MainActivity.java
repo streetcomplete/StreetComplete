@@ -17,16 +17,9 @@ import android.view.MenuItem;
 import com.mapzen.tangram.MapController;
 import com.mapzen.tangram.MapView;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import de.westnordost.osmagent.quests.Quest;
-import de.westnordost.osmagent.quests.OverpassQuestDownloader;
 import de.westnordost.osmagent.quests.dialogs.QuestDialogListener;
 import de.westnordost.osmagent.settings.SettingsActivity;
 import de.westnordost.osmagent.tangram.MapFragment;
-import de.westnordost.osmapi.common.Handler;
-import de.westnordost.osmapi.map.data.OsmLatLon;
 
 
 public class MainActivity extends AppCompatActivity implements QuestDialogListener

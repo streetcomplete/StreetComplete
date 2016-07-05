@@ -1,4 +1,6 @@
-package de.westnordost.osmagent.quests;
+package de.westnordost.osmagent.quests.create;
+
+import android.support.annotation.NonNull;
 
 import org.reflections.Configuration;
 import org.reflections.Reflections;
@@ -7,6 +9,7 @@ import org.reflections.util.ClasspathHelper;
 import org.reflections.util.ConfigurationBuilder;
 import org.reflections.util.FilterBuilder;
 
+import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -16,11 +19,11 @@ import java.util.Set;
 import de.westnordost.osmagent.quests.types.QuestType;
 
 /** Creates a list of all quest types, sorted by importance */
-public class ReflectionQuestTypeListBuilder
+public class ReflectionQuestTypeListCreator
 {
 	private static final String questPackage = "de.westnordost.osmagent.quests.types";
 
-	public List<QuestType> build()
+	@NonNull public List<QuestType> create()
 	{
 		List<QuestType> questTypeList = new ArrayList<>();
 		Configuration reflectionsConf = new ConfigurationBuilder().
@@ -31,6 +34,11 @@ public class ReflectionQuestTypeListBuilder
 		Set<Class<? extends QuestType>> questClasses = reflections.getSubTypesOf(QuestType.class);
 		for(Class<? extends QuestType> questClass : questClasses)
 		{
+			if(Modifier.isAbstract(questClass.getModifiers()))
+			{
+				continue;
+			}
+
 			try
 			{
 				QuestType q = questClass.newInstance();
@@ -53,8 +61,7 @@ public class ReflectionQuestTypeListBuilder
 
 	private class QuestImportanceComparator implements Comparator<QuestType>
 	{
-		@Override
-		public int compare(QuestType lhs, QuestType rhs)
+		@Override public int compare(QuestType lhs, QuestType rhs)
 		{
 			return lhs.importance() - rhs.importance();
 		}

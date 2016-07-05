@@ -1,4 +1,4 @@
-package de.westnordost.osmagent.quests;
+package de.westnordost.osmagent.quests.create;
 
 import junit.framework.TestCase;
 
@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import de.westnordost.osmagent.quests.Quest;
 import de.westnordost.osmagent.quests.types.QuestType;
 import de.westnordost.osmapi.common.Handler;
 import de.westnordost.osmapi.common.SingleElementHandler;

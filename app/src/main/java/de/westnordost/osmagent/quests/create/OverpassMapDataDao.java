@@ -1,4 +1,4 @@
-package de.westnordost.osmapi.overpass;
+package de.westnordost.osmagent.quests.create;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -32,7 +32,7 @@ public class OverpassMapDataDao
 	 * @param oql Query string. Either Overpass QL or Overpass XML query string
 	 * @param handler map data handler that is fed the map data
 	 */
-	public void get(String oql, MapDataHandler handler)
+	public synchronized void get(String oql, MapDataHandler handler)
 	{
 		String request = "interpreter?data=" + urlEncode(oql);
 		osm.makeRequest(request, new MapDataParser(handler, factory));
