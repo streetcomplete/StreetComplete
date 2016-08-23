@@ -5,7 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 
 import de.westnordost.osmagent.quests.ElementGeometry;
-import de.westnordost.osmagent.quests.Quest;
+import de.westnordost.osmagent.quests.OsmQuest;
+import de.westnordost.osmagent.quests.types.OsmElementQuestType;
 import de.westnordost.osmagent.quests.types.QuestType;
 import de.westnordost.osmapi.common.Handler;
 import de.westnordost.osmapi.map.data.BoundingBox;
@@ -20,13 +21,13 @@ import de.westnordost.osmapi.map.handler.MapDataHandler;
 /** Handles incoming map data and creates quests out of it */
 public class CreateQuestMapDataHandler implements MapDataHandler
 {
-	private final Handler<Quest> handler;
-	private final QuestType questType;
+	private final Handler<OsmQuest> handler;
+	private final OsmElementQuestType questType;
 
 	private final HashMap<Long, Node> nodes;
 	private final HashMap<Long, Way> ways;
 
-	public CreateQuestMapDataHandler(QuestType questType, Handler<Quest> handler)
+	public CreateQuestMapDataHandler(OsmElementQuestType questType, Handler<OsmQuest> handler)
 	{
 		this.handler = handler;
 		this.questType = questType;
@@ -69,7 +70,7 @@ public class CreateQuestMapDataHandler implements MapDataHandler
 
 	private void createQuestAndHandle(Element element, ElementGeometry geometry)
 	{
-		Quest quest = new Quest(questType, element, geometry);
+		OsmQuest quest = new OsmQuest(questType, element, geometry);
 		handler.handle(quest);
 	}
 

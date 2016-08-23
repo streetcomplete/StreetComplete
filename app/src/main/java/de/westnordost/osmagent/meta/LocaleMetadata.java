@@ -19,12 +19,13 @@ public class LocaleMetadata
 {
 	private static LocaleMetadata singleton;
 
-	/** get the singleton instance of LocaleMetadata. You should pass in the ApplicationContext. */
-	public static LocaleMetadata getInstance(Context appContext)
+	/** get the singleton instance of LocaleMetadata (valid for whole application) */
+	public static LocaleMetadata getInstance(Context context)
 	{
+		Context applicationContext = context.getApplicationContext();
 		if(singleton == null || singleton.ctx.get() == null)
 		{
-			singleton = new LocaleMetadata(appContext);
+			singleton = new LocaleMetadata(applicationContext);
 		}
 		return singleton;
 	}

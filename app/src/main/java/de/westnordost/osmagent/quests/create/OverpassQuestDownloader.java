@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-import de.westnordost.osmagent.quests.Quest;
+import de.westnordost.osmagent.quests.OsmQuest;
 import de.westnordost.osmagent.quests.types.QuestType;
 import de.westnordost.osmapi.common.Handler;
 import de.westnordost.osmapi.map.data.BoundingBox;
@@ -19,7 +19,7 @@ class OverpassQuestDownloader implements Runnable
 	private final Queue<QuestType> downloadQueue;
 
 	private final BoundingBox bbox;
-	private final Handler<Quest> handler;
+	private final Handler<OsmQuest> handler;
 
 	private volatile boolean pause;
 
@@ -32,7 +32,7 @@ class OverpassQuestDownloader implements Runnable
 	}
 
 	public OverpassQuestDownloader(OverpassMapDataDao dao, List<QuestType> questTypes,
-								   BoundingBox bbox, Handler<Quest> handler)
+								   BoundingBox bbox, Handler<OsmQuest> handler)
 	{
 		this.dao = dao;
 		initialQueueSize = questTypes.size();

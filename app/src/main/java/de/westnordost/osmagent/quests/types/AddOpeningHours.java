@@ -7,7 +7,7 @@ import de.westnordost.osmagent.quests.QuestImportance;
 import de.westnordost.osmagent.quests.dialogs.OpeningHoursDialog;
 import de.westnordost.osmapi.map.data.Element;
 
-public class AddOpeningHours extends AbstractQuestType
+public class AddOpeningHours extends OverpassQuestType
 {
     @Override
 	protected String getTagFilters()

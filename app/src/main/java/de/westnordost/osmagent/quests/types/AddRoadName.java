@@ -7,7 +7,7 @@ import de.westnordost.osmagent.quests.QuestImportance;
 import de.westnordost.osmagent.quests.dialogs.StreetNameDialog;
 import de.westnordost.osmapi.map.data.Element;
 
-public class AddRoadName extends AbstractQuestType
+public class AddRoadName extends OverpassQuestType
 {
 	@Override
 	protected String getTagFilters()

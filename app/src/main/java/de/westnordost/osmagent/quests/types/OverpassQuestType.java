@@ -5,16 +5,16 @@ import de.westnordost.osmagent.tql.TagFilterExpression;
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
 
-public abstract class AbstractQuestType implements QuestType
+public abstract class OverpassQuestType implements OsmElementQuestType
 {
 	protected TagFilterExpression filter;
 
-	public AbstractQuestType()
+	public OverpassQuestType()
 	{
 		filter = new FiltersParser().parse(getTagFilters());
 	}
 
-	@Override
+	/** @return a query string that is accepted by Overpass and does not exceed the given bbox */
 	public String getOverpassQuery(BoundingBox bbox)
 	{
 		return filter.toOverpassQLString(bbox);

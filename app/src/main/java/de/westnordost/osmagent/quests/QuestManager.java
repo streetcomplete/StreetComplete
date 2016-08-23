@@ -7,15 +7,15 @@ import java.util.HashMap;
 public class QuestManager
 {
 	private int idCounter = 0;
-	private HashMap<Integer, Quest> quests;
+	private HashMap<Integer, OsmQuest> quests;
 
-	public synchronized void add(Quest quest)
+	public synchronized void add(OsmQuest quest)
 	{
 		quests.put(idCounter, quest);
 		idCounter++;
 	}
 
-	public synchronized Quest get(int questId)
+	public synchronized OsmQuest get(int questId)
 	{
 		return quests.get(questId);
 	}

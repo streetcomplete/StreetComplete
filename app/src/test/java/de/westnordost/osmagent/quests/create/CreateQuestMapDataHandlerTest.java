@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import de.westnordost.osmagent.quests.Quest;
+import de.westnordost.osmagent.quests.OsmQuest;
 import de.westnordost.osmagent.quests.types.QuestType;
 import de.westnordost.osmapi.common.Handler;
 import de.westnordost.osmapi.common.SingleElementHandler;
@@ -29,7 +29,7 @@ public class CreateQuestMapDataHandlerTest extends TestCase
 		QuestType questType = createQuestTypeFor(Node.class);
 
 		Node element = new OsmNode(0,0,0,0,null,null);
-		SingleElementHandler<Quest> questHandler = new SingleElementHandler<>();
+		SingleElementHandler<OsmQuest> questHandler = new SingleElementHandler<>();
 		new CreateQuestMapDataHandler(questType, questHandler).handle(element);
 
 		verifyQuestCreation(questType, element, questHandler.get());
@@ -39,7 +39,7 @@ public class CreateQuestMapDataHandlerTest extends TestCase
 	{
 		QuestType questType = createQuestTypeFor(Way.class);
 
-		SingleElementHandler<Quest> questHandler = new SingleElementHandler<>();
+		SingleElementHandler<OsmQuest> questHandler = new SingleElementHandler<>();
 
 		CreateQuestMapDataHandler handler = new CreateQuestMapDataHandler(questType, questHandler);
 		// the nodes that the way references must be added first
@@ -56,7 +56,7 @@ public class CreateQuestMapDataHandlerTest extends TestCase
 	{
 		QuestType questType = createQuestTypeFor(Relation.class);
 
-		SingleElementHandler<Quest> questHandler = new SingleElementHandler<>();
+		SingleElementHandler<OsmQuest> questHandler = new SingleElementHandler<>();
 		CreateQuestMapDataHandler handler = new CreateQuestMapDataHandler(questType, questHandler);
 
 		// the ways that the relation references must be added first
@@ -122,7 +122,7 @@ public class CreateQuestMapDataHandlerTest extends TestCase
 		catch(Exception e) { }
 	}
 
-	private class NullHandler implements Handler<Quest> { public void handle(Quest tea) { } }
+	private class NullHandler implements Handler<OsmQuest> { public void handle(OsmQuest tea) { } }
 
 	private QuestType createQuestTypeFor(Class<? extends Element> elementClass)
 	{
@@ -131,7 +131,7 @@ public class CreateQuestMapDataHandlerTest extends TestCase
 		return questType;
 	}
 
-	private void verifyQuestCreation(QuestType questTypeMock, Element element, Quest createdQuest)
+	private void verifyQuestCreation(QuestType questTypeMock, Element element, OsmQuest createdQuest)
 	{
 		assertNotNull(createdQuest);
 		verify(questTypeMock).appliesTo(element);

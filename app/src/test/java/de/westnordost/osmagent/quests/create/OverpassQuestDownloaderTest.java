@@ -7,7 +7,7 @@ import java.util.List;
 
 import static org.mockito.Mockito.*;
 
-import de.westnordost.osmagent.quests.Quest;
+import de.westnordost.osmagent.quests.OsmQuest;
 import de.westnordost.osmagent.quests.types.QuestType;
 import de.westnordost.osmapi.common.Handler;
 import de.westnordost.osmapi.map.data.BoundingBox;
@@ -98,7 +98,7 @@ public class OverpassQuestDownloaderTest extends TestCase
 		}
 	}
 
-	private void initDownloader(int amountOfQuestTypes, Handler<Quest> handler)
+	private void initDownloader(int amountOfQuestTypes, Handler<OsmQuest> handler)
 	{
 		List<QuestType> questTypes = createQuestTypeList(amountOfQuestTypes);
 		downloader = new OverpassQuestDownloader(
@@ -151,15 +151,15 @@ public class OverpassQuestDownloaderTest extends TestCase
 				return;
 			}
 
-			handler.handle(new OsmNode(0,0,0,0,null,null));
+			handler.handle(new OsmNode(0,0,0d,0d,null,null));
 		}
 	}
 
-	private class CountHandler implements Handler<Quest>
+	private class CountHandler implements Handler<OsmQuest>
 	{
 		int count;
 
-		@Override public void handle(Quest tea)
+		@Override public void handle(OsmQuest tea)
 		{
 			count++;
 		}
@@ -170,7 +170,7 @@ public class OverpassQuestDownloaderTest extends TestCase
 		boolean expectSilence = false;
 		boolean expectSilenceAfterNext = false;
 
-		@Override public void handle(Quest tea)
+		@Override public void handle(OsmQuest tea)
 		{
 			super.handle(tea);
 
@@ -183,8 +183,8 @@ public class OverpassQuestDownloaderTest extends TestCase
 		}
 	}
 
-	private class NullHandler implements Handler<Quest>
+	private class NullHandler implements Handler<OsmQuest>
 	{
-		@Override public void handle(Quest tea) { }
+		@Override public void handle(OsmQuest tea) { }
 	}
 }
