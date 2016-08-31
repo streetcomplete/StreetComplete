@@ -16,7 +16,7 @@ public class TagFilterValueTest extends TestCase
 
 		assertTrue(eq.matches(elementWithTag("highway", "residential")));
 		assertFalse(eq.matches(elementWithTag("highway", "residental")));
-		assertFalse(eq.matches(new OsmNode(0, 0, 0, 0, null, null)));
+		assertFalse(eq.matches(new OsmNode(0, 0, 0d, 0d, null, null)));
 	}
 
 	public void testMatchesNEqual()
@@ -25,7 +25,7 @@ public class TagFilterValueTest extends TestCase
 
 		assertFalse(neq.matches(elementWithTag("highway", "residential")));
 		assertTrue(neq.matches(elementWithTag("highway", "residental")));
-		assertTrue(neq.matches(new OsmNode(0, 0, 0, 0, null, null)));
+		assertTrue(neq.matches(new OsmNode(0, 0, 0d, 0d, null, null)));
 	}
 
 	public void testMatchesLikeDot()
@@ -35,7 +35,7 @@ public class TagFilterValueTest extends TestCase
 		assertTrue(like.matches(elementWithTag("highway", "residential")));
 		assertTrue(like.matches(elementWithTag("highway", "wesidential")));
 		assertFalse(like.matches(elementWithTag("highway", "rresidential")));
-		assertFalse(like.matches(new OsmNode(0, 0, 0, 0, null, null)));
+		assertFalse(like.matches(new OsmNode(0, 0, 0d, 0d, null, null)));
 	}
 
 	public void testMatchesLikeOr()
@@ -45,7 +45,7 @@ public class TagFilterValueTest extends TestCase
 		assertTrue(like.matches(elementWithTag("highway", "residential")));
 		assertTrue(like.matches(elementWithTag("highway", "unclassified")));
 		assertFalse(like.matches(elementWithTag("highway", "blub")));
-		assertFalse(like.matches(new OsmNode(0, 0, 0, 0, null, null)));
+		assertFalse(like.matches(new OsmNode(0, 0, 0d, 0d, null, null)));
 	}
 
 	public void testMatchesNotLikeDot()
@@ -53,7 +53,7 @@ public class TagFilterValueTest extends TestCase
 		TagFilterValue notlike = new TagFilterValue("highway", "!~", ".");
 
 		assertFalse(notlike.matches(elementWithTag("highway", "anything")));
-		assertTrue(notlike.matches(new OsmNode(0, 0, 0, 0, null, null)));
+		assertTrue(notlike.matches(new OsmNode(0, 0, 0d, 0d, null, null)));
 	}
 
 	public void testMatchesNotLikeSomething()
@@ -62,7 +62,7 @@ public class TagFilterValueTest extends TestCase
 
 		assertFalse(notlike.matches(elementWithTag("noname", "yes")));
 		assertTrue(notlike.matches(elementWithTag("noname", "no")));
-		assertTrue(notlike.matches(new OsmNode(0, 0, 0, 0, null, null)));
+		assertTrue(notlike.matches(new OsmNode(0, 0, 0d, 0d, null, null)));
 	}
 
 	public void testMatchesNoValue()
@@ -71,13 +71,13 @@ public class TagFilterValueTest extends TestCase
 
 		assertTrue(key.matches(elementWithTag("name", "yes")));
 		assertTrue(key.matches(elementWithTag("name", "no")));
-		assertFalse(key.matches(new OsmNode(0, 0, 0, 0, null, null)));
+		assertFalse(key.matches(new OsmNode(0, 0, 0d, 0d, null, null)));
 	}
 
 	private Element elementWithTag(String key, String value)
 	{
 		Map<String,String> tags = new HashMap<>();
 		tags.put(key, value);
-		return new OsmNode(0, 0, 0, 0, tags, null);
+		return new OsmNode(0, 0, 0d, 0d, tags, null);
 	}
 }

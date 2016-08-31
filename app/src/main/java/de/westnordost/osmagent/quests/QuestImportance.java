@@ -5,9 +5,9 @@ public class QuestImportance
 	/** Notes always have the highest importance, because they shall occlude "normal" quests
 	 *  (as a note at the exact same position inherently references a problem in the map) */
 	public static final int NOTE = 0;
-	/* Nowadays, oftentimes a note is created to merely denote that "housenumber is missing",
+	/* Nowadays, oftentimes a note is created to merely denote that i.e. "housenumber is missing",
 	*  "name is missing" etc. However, with this software hopefully gaining some popularity, this is
-	*  not necesary or meaningful anymore because those things are created automatically then */
+	*  not necessary or meaningful anymore because those things are created automatically then */
 
 	/** Solving this quest will fix data that is shown as invalid or erronous in QA tools */
 	public static final int ERROR = 1;

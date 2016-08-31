@@ -4,18 +4,22 @@ import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
 
+import javax.inject.Singleton;
 
+@Singleton
 public class KryoSerializer implements Serializer
 {
-	// Kryo docs say that classes that are registered are serialized more space efficiently
-	// (so it is not necessary that all classes that are serialized are registered here, but it is better)
+	/* Kryo docs say that classes that are registered are serialized more space efficiently
+	   (so it is not necessary that all classes that are serialized are registered here, but it is
+	   better) */
+
 	private static final Class[] registeredClasses =
 	{
-	//	StringMapEntryChange.class,
+		// THE ORDER IS IMPORTANT! ONLY ADD NEW CLASSES AT THE END OF THE LIST
 	//	StringMapChanges.class,
 	//	OsmLatLon.class,
 	//	ElementGeometry.class,
-			// TODO
+			// TODO add all those classes... (after having a look how the binary representation looks like
 	};
 
 	private static final ThreadLocal<Kryo> kryo = new ThreadLocal<Kryo>()

@@ -9,5 +9,6 @@ public class Prefs
 			OAUTH_ACCESS_TOKEN = "oauth.accessToken",
 			OAUTH_ACCESS_TOKEN_SECRET = "oauth.accessTokenSecret",
 			MAP_TILECACHE = "map.tilecache",
-			CURRENT_COUNTRY = "location.currentCountry";
+			CURRENT_COUNTRY = "location.currentCountry",
+			OSM_USER_ID = "osm.userid";
 }

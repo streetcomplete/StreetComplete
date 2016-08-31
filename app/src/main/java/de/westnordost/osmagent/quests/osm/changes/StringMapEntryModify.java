@@ -1,0 +1,32 @@
+package de.westnordost.osmagent.quests.osm.changes;
+
+import java.util.Map;
+
+public class StringMapEntryModify implements StringMapEntryChange
+{
+	public String key;
+	public String valueBefore;
+	public String value;
+
+	public StringMapEntryModify(String key, String valueBefore, String value)
+	{
+		this.key = key;
+		this.valueBefore = valueBefore;
+		this.value = value;
+	}
+
+	@Override public String toString()
+	{
+		return "MODIFY \"" + key + "\"=\"" + valueBefore + "\" -> \"" + key + "\"=\"" + value + "\"";
+	}
+
+	@Override public void applyTo(Map<String, String> map)
+	{
+		map.put(key, value);
+	}
+
+	@Override public boolean conflictsWith(Map<String, String> map)
+	{
+		return !map.containsKey(key) || !map.get(key).equals(valueBefore);
+	}
+}
