@@ -17,7 +17,6 @@ public class OverpassMapDataDao
 	private final OsmConnection osm;
 	private final MapDataFactory factory;
 
-	@Inject
 	public OverpassMapDataDao(OsmConnection osm, MapDataFactory factory)
 	{
 		this.osm = osm;

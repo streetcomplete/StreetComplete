@@ -8,18 +8,15 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.westnordost.osmagent.util.Serializer;
 import de.westnordost.osmapi.map.data.BoundingBox;
 
-public abstract class QuestDao<T extends Quest>
+public abstract class AQuestDao<T extends Quest>
 {
 	private SQLiteOpenHelper dbHelper;
-	protected Serializer serializer;
 
-	public QuestDao(SQLiteOpenHelper dbHelper, Serializer serializer)
+	public AQuestDao(SQLiteOpenHelper dbHelper)
 	{
 		this.dbHelper = dbHelper;
-		this.serializer = serializer;
 	}
 
 	public T get(long id)
@@ -28,19 +25,15 @@ public abstract class QuestDao<T extends Quest>
 		Cursor cursor = db.query(getMergedViewName(), null, getIdColumnName() + " = " + id,
 				null, null, null, null, "1");
 
-		if(!cursor.moveToFirst()) return null;
-
-		T result;
 		try
 		{
-			result = createObjectFrom(cursor);
+			if(!cursor.moveToFirst()) return null;
+			return createObjectFrom(cursor);
 		}
 		finally
 		{
 			cursor.close();
 		}
-
-		return result;
 	}
 
 	public List<Long> getIdsByStatus(QuestStatus status)
@@ -71,7 +64,7 @@ public abstract class QuestDao<T extends Quest>
 		return result;
 	}
 
-	public List<T> getByStatus(BoundingBox bbox, QuestStatus status)
+	public List<T> getAll(BoundingBox bbox, QuestStatus status)
 	{
 		SQLiteDatabase db = dbHelper.getReadableDatabase();
 
@@ -120,10 +113,10 @@ public abstract class QuestDao<T extends Quest>
 		}
 	}
 
-	public void delete(long id)
+	public int delete(long id)
 	{
 		SQLiteDatabase db = dbHelper.getWritableDatabase();
-		db.delete(getTableName(), getIdColumnName() + " = " + id, null);
+		return db.delete(getTableName(), getIdColumnName() + " = " + id, null);
 	}
 
 	public long add(T quest)

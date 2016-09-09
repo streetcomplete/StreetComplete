@@ -1,7 +1,5 @@
 package de.westnordost.osmagent.quests.osmnotes;
 
-import de.westnordost.osmagent.quests.osmnotes.NoteTable;
-
 public class OsmNoteQuestTable
 {
 	public static final String NAME = "osm_notequests";
@@ -11,6 +9,7 @@ public class OsmNoteQuestTable
 	public static class Columns
 	{
 		public static final String
+				QUEST_ID = "quest_id",
 				NOTE_ID = NoteTable.Columns.ID,
 				QUEST_STATUS = "quest_status",
 				CHANGES = "changes",

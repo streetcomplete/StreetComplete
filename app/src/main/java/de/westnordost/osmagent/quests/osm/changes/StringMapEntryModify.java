@@ -29,4 +29,11 @@ public class StringMapEntryModify implements StringMapEntryChange
 	{
 		return !map.containsKey(key) || !map.get(key).equals(valueBefore);
 	}
+
+	@Override public boolean equals(Object other)
+	{
+		if(other == null || !(other instanceof StringMapEntryModify)) return false;
+		StringMapEntryModify o = (StringMapEntryModify) other;
+		return key.equals(o.key) && valueBefore.equals(o.valueBefore) && value.equals(o.value);
+	}
 }

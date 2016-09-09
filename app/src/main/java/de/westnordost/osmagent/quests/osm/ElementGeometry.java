@@ -1,44 +1,54 @@
 package de.westnordost.osmagent.quests.osm;
 
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.map.data.OsmLatLon;
 
 /** Information on the geometry of a quest */
-public class ElementGeometry implements Serializable
+public class ElementGeometry
 {
 	public LatLon center;
+	public ArrayList<ArrayList<LatLon>> outer;
+	public ArrayList<ArrayList<LatLon>> inner;
 
-	public List<List<LatLon>> outer;
-	public List<List<LatLon>> inner;
+	public ElementGeometry()
+	{
+
+	}
 
 	public ElementGeometry(LatLon position)
 	{
-		this(Collections.singletonList(Collections.singletonList(position)), null, position);
+		this(createSingleElementList(createSingleElementList(position)), null, position);
 	}
 
-	public ElementGeometry(List<LatLon> positions)
+	public ElementGeometry(ArrayList<LatLon> positions)
 	{
-		this(Collections.singletonList(positions), null, findCenterPointOfPolyLine(positions));
+		this(createSingleElementList(positions), null, findCenterPointOfPolyLine(positions));
 	}
 
-	public ElementGeometry(List<List<LatLon>> outer, List<List<LatLon>> inner)
+	public ElementGeometry(ArrayList<ArrayList<LatLon>> outer, ArrayList<ArrayList<LatLon>> inner)
 	{
 		this(outer, inner, findCenterPointOfPolygon(outer, inner));
 	}
 
-	public ElementGeometry(List<List<LatLon>> outer, List<List<LatLon>> inner, LatLon center)
+	public ElementGeometry(ArrayList<ArrayList<LatLon>> outer, ArrayList<ArrayList<LatLon>> inner, LatLon center)
 	{
 		this.outer = outer;
 		this.inner = inner;
 		this.center = center;
 	}
 
-	private static LatLon findCenterPointOfPolyLine(List<LatLon> positions)
+	private static <T> ArrayList<T> createSingleElementList(T position)
+	{
+		// not using Collections.singletonList because Kryo seems to have a problem with that
+		ArrayList<T> list = new ArrayList<>(1);
+		list.add(position);
+		return list;
+	}
+
+	private static LatLon findCenterPointOfPolyLine(ArrayList<LatLon> positions)
 	{
 		if(positions.size() % 2 == 1)
 		{
@@ -54,7 +64,8 @@ public class ElementGeometry implements Serializable
 		}
 	}
 
-	private static LatLon findCenterPointOfPolygon(List<List<LatLon>> outer, List<List<LatLon>> inner)
+	private static LatLon findCenterPointOfPolygon(ArrayList<ArrayList<LatLon>> outer,
+												   ArrayList<ArrayList<LatLon>> inner)
 	{
 		// just find the "average" point... this can be outside of the polygon if it is i.e.
 		// banana- or donut shaped. This could be improved with a more elaborate algo later.
@@ -82,6 +93,15 @@ public class ElementGeometry implements Serializable
 		return new OsmLatLon(lat, lon);
 	}
 
+	@Override public boolean equals(Object other)
+	{
+		if(other == null || !(other instanceof ElementGeometry)) return false;
+		ElementGeometry o = (ElementGeometry) other;
+		return
+				o.center.equals(center) &&
+				(outer == null ? o.outer == null : outer.equals(o.outer)) &&
+				(inner == null ? o.inner == null : inner.equals(o.inner));
+	}
 
 	// TODO add tests in CreateQuestMapDataHandlerTest
 

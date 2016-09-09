@@ -7,13 +7,10 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import de.westnordost.osmagent.Prefs;
-import de.westnordost.osmagent.quests.osm.OsmQuest;
 import de.westnordost.osmagent.quests.osm.persist.OsmQuestDao;
 import de.westnordost.osmagent.quests.osmnotes.NotesQuestDownloadTask;
 import de.westnordost.osmagent.quests.osm.download.OverpassQuestDownloadTask;
-import de.westnordost.osmagent.quests.osm.download.ReflectionOverpassQuestTypeListCreator;
-import de.westnordost.osmagent.quests.osmnotes.OsmNoteQuest;
+import de.westnordost.osmagent.quests.osm.download.ReflectionQuestTypeListCreator;
 import de.westnordost.osmagent.quests.osm.types.OverpassQuestType;
 import de.westnordost.osmagent.quests.osmnotes.OsmNoteQuestChangesUploadTask;
 import de.westnordost.osmagent.quests.osm.upload.OsmQuestChangesUploadTask;
@@ -24,6 +21,8 @@ import de.westnordost.osmapi.map.data.BoundingBox;
 
 public class QuestController
 {
+	public static final String OSM_QUEST_PACKAGE = "de.westnordost.osmagent.quests.osm.types";
+
 	@Inject OsmNoteQuestDao osmNoteQuestDB;
 	@Inject OsmQuestDao osmQuestDB;
 	@Inject SharedPreferences prefs;
@@ -93,9 +92,8 @@ public class QuestController
 		noteTask.osmUserId = null; // TODO
 		tasks.add(noteTask);
 
-		ReflectionOverpassQuestTypeListCreator creator;
-		creator = new ReflectionOverpassQuestTypeListCreator();
-		List<OverpassQuestType> questTypes = creator.create();
+		List<OverpassQuestType> questTypes = ReflectionQuestTypeListCreator
+				.create(OverpassQuestType.class, OSM_QUEST_PACKAGE);
 		for(OverpassQuestType questType : questTypes)
 		{
 			OverpassQuestDownloadTask task = new OverpassQuestDownloadTask();

@@ -14,19 +14,30 @@ import de.westnordost.osmapi.notes.Note;
 public class OsmNoteQuest implements Quest
 {
 
-	public OsmNoteQuest(Note note)
+	/** A new note quest treated as answered to have a note created with the given text at the given
+	 * position */
+	public OsmNoteQuest(LatLon position, String text)
 	{
-		this(note, QuestStatus.NEW, null, new Date());
+		this(null, null, QuestStatus.ANSWERED, new NoteChange(position, text), new Date());
 	}
 
-	public OsmNoteQuest(Note note, QuestStatus status, NoteChange changes, Date lastUpdate)
+	/** A new note quest for having the user contribute to the note discussion */
+	public OsmNoteQuest(Note note)
 	{
+		this(null, note, QuestStatus.NEW, null, new Date());
+	}
+
+	/** Complete constructor */
+	public OsmNoteQuest(Long id, Note note, QuestStatus status, NoteChange changes, Date lastUpdate)
+	{
+		this.id = id;
 		this.note = note;
 		this.status = status;
 		this.changes = changes;
 		this.lastUpdate = lastUpdate;
 	}
 
+	private Long id;
 	private Date lastUpdate;
 	private QuestStatus status;
 	private Note note;
@@ -50,12 +61,13 @@ public class OsmNoteQuest implements Quest
 
 	@Override public Long getId()
 	{
-		return note.id;
+		return id;
 	}
 
 	@Override public LatLon getMarkerLocation()
 	{
-		return note.position;
+		return note != null ? note.position : changes.position;
+		// notes with neither note.position nor changes.position set should not exist
 	}
 
 	public Note getNote()
@@ -81,6 +93,11 @@ public class OsmNoteQuest implements Quest
 	public Date getLastUpdate()
 	{
 		return lastUpdate;
+	}
+
+	public void setId(long id)
+	{
+		this.id = id;
 	}
 
 	private static class NoteQuestType implements QuestType

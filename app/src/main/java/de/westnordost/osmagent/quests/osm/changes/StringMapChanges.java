@@ -2,7 +2,6 @@ package de.westnordost.osmagent.quests.osm.changes;
 
 import android.support.annotation.NonNull;
 
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
@@ -11,10 +10,8 @@ import java.util.NoSuchElementException;
 
 /** A diff that can be applied on a map of strings. Use StringMapChangesBuilder to conveniently build
  *  it. A StringMapChanges is immutable. */
-public class StringMapChanges implements Serializable
+public class StringMapChanges
 {
-	static final long serialVersionUID = 1L;
-
 	private final List<StringMapEntryChange> changes;
 
 	public List<StringMapEntryChange> getChanges()
@@ -58,8 +55,7 @@ public class StringMapChanges implements Serializable
 		}
 	}
 
-	@Override
-	public String toString()
+	@Override public String toString()
 	{
 		StringBuilder sb = new StringBuilder();
 		boolean first = true;
@@ -79,6 +75,13 @@ public class StringMapChanges implements Serializable
 		}
 
 		return sb.toString();
+	}
+
+	@Override public boolean equals(Object other)
+	{
+		if(other == null || !(other instanceof StringMapChanges)) return false;
+		StringMapChanges o = (StringMapChanges) other;
+		return changes.equals(o.changes);
 	}
 
 	private class ConflictIterator implements Iterator<StringMapEntryChange>

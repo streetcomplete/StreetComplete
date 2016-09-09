@@ -2,7 +2,6 @@ package de.westnordost.osmagent.quests.osm.download;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 import de.westnordost.osmagent.quests.osm.ElementGeometry;
 import de.westnordost.osmagent.quests.osm.OsmQuest;
@@ -82,9 +81,9 @@ public class CreateOsmQuestMapDataHandler implements MapDataHandler
 		handler.handle(quest);
 	}
 
-	private List<LatLon> getWayGeometry(Way way)
+	private ArrayList<LatLon> getWayGeometry(Way way)
 	{
-		List<LatLon> geometry = new ArrayList<>(way.getNodeIds().size());
+		ArrayList<LatLon> geometry = new ArrayList<>(way.getNodeIds().size());
 		for(long nodeId : way.getNodeIds())
 		{
 			if(!nodes.containsKey(nodeId))
@@ -102,8 +101,8 @@ public class CreateOsmQuestMapDataHandler implements MapDataHandler
 
 	private ElementGeometry createRelationGeometry(Relation relation)
 	{
-		List<List<LatLon>> outer = new ArrayList<>();
-		List<List<LatLon>> inner = new ArrayList<>();
+		ArrayList<ArrayList<LatLon>> outer = new ArrayList<>();
+		ArrayList<ArrayList<LatLon>> inner = new ArrayList<>();
 		for(RelationMember member : relation.getMembers())
 		{
 			if(member.getType() == Element.Type.WAY)

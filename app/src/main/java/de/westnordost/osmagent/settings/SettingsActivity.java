@@ -71,7 +71,7 @@ public class SettingsActivity extends AppCompatActivity implements OAuthWebViewD
 		@Override
 		protected Boolean doInBackground() throws Exception
 		{
-			OsmConnection osm = OsmModule.provideOsmConnection(consumer);
+			OsmConnection osm = OsmModule.osmConnection(consumer);
 			List<String> permissions = new PermissionsDao(osm).get();
 			return permissions.containsAll(expectedPermissions);
 		}

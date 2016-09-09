@@ -5,18 +5,17 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import de.westnordost.osmagent.util.Serializer;
+import java.util.HashMap;
+
 import de.westnordost.osmapi.map.data.Element;
 
 public abstract class AOsmElementDao<T extends Element>
 {
-	protected final SQLiteOpenHelper dbHelper;
-	protected final Serializer serializer;
+	private final SQLiteOpenHelper dbHelper;
 
-	public AOsmElementDao(SQLiteOpenHelper dbHelper, Serializer serializer)
+	public AOsmElementDao(SQLiteOpenHelper dbHelper)
 	{
 		this.dbHelper = dbHelper;
-		this.serializer = serializer;
 	}
 
 	/* Adds or updates the given object to the database */
@@ -37,15 +36,16 @@ public abstract class AOsmElementDao<T extends Element>
 	{
 		SQLiteDatabase db = dbHelper.getReadableDatabase();
 		Cursor cursor = db.query(getTableName(), null, getIdColumnName() + " = " + id,
-				null, null, null, null, "1");
-
-		if(!cursor.moveToFirst()) return null;
-
-		T obj = createObjectFrom(cursor);
-
-		cursor.close();
-
-		return obj;
+					null, null, null, null, "1");
+		try
+		{
+			if (!cursor.moveToFirst()) return null;
+			return createObjectFrom(cursor);
+		}
+		finally
+		{
+			cursor.close();
+		}
 	}
 
 	/** Cleans up element entries that are not referenced by any quest anymore. */

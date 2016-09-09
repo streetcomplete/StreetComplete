@@ -5,6 +5,8 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -17,9 +19,12 @@ import de.westnordost.osmapi.map.data.RelationMember;
 
 public class RelationDao extends AOsmElementDao<Relation>
 {
+	private final Serializer serializer;
+
 	@Inject public RelationDao(SQLiteOpenHelper dbHelper, Serializer serializer)
 	{
-		super(dbHelper, serializer);
+		super(dbHelper);
+		this.serializer = serializer;
 	}
 
 	@Override protected String getTableName()
@@ -42,11 +47,14 @@ public class RelationDao extends AOsmElementDao<Relation>
 		ContentValues values = new ContentValues();
 		values.put(RelationTable.Columns.ID, relation.getId());
 		values.put(RelationTable.Columns.VERSION, relation.getVersion());
-		values.put(RelationTable.Columns.MEMBERS, serializer.toBytes(relation.getMembers()));
+		values.put(RelationTable.Columns.MEMBERS,
+				serializer.toBytes(new ArrayList<>(relation.getMembers())));
 
 		if(relation.getTags() != null)
 		{
-			values.put(RelationTable.Columns.TAGS, serializer.toBytes(relation.getTags()));
+			HashMap<String,String> map = new HashMap<>();
+			map.putAll(relation.getTags());
+			values.put(RelationTable.Columns.TAGS, serializer.toBytes(map));
 		}
 		return values;
 	}
@@ -63,9 +71,9 @@ public class RelationDao extends AOsmElementDao<Relation>
 		Map<String,String> tags = null;
 		if(!cursor.isNull(colTags))
 		{
-			tags = serializer.toObject(cursor.getBlob(colTags), Map.class);
+			tags = serializer.toObject(cursor.getBlob(colTags), HashMap.class);
 		}
-		List<RelationMember> members = serializer.toObject(cursor.getBlob(colMembers), List.class);
+		List<RelationMember> members = serializer.toObject(cursor.getBlob(colMembers), ArrayList.class);
 
 		return new OsmRelation(id, version, members, tags, null);
 	}

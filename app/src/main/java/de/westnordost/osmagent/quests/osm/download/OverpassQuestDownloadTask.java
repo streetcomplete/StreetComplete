@@ -22,6 +22,8 @@ public class OverpassQuestDownloadTask implements Runnable
 	public OverpassQuestType questType;
 	public BoundingBox bbox;
 
+	@Inject public OverpassQuestDownloadTask() { }
+
 	@Override public void run()
 	{
 		if(questType == null) throw new IllegalStateException("QuestType must be set");
@@ -33,6 +35,7 @@ public class OverpassQuestDownloadTask implements Runnable
 				{
 					@Override public void handle(OsmQuest quest)
 					{
+						// geometry must be put into DB first because quest has a foreign key on it
 						geometryDB.put(quest.getElementType(), quest.getElementId(), quest.getGeometry());
 						questDB.add(quest);
 					}

@@ -17,6 +17,8 @@ import de.westnordost.osmagent.R;
 
 public class LocaleMetadata
 {
+	// TODO use dagger to singleton-ize this
+
 	private static LocaleMetadata singleton;
 
 	/** get the singleton instance of LocaleMetadata (valid for whole application) */

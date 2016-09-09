@@ -4,29 +4,59 @@ import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
 
+import org.objenesis.strategy.StdInstantiatorStrategy;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+
 import javax.inject.Singleton;
+
+import de.westnordost.osmagent.quests.osm.changes.StringMapChanges;
+import de.westnordost.osmagent.quests.osm.changes.StringMapEntryAdd;
+import de.westnordost.osmagent.quests.osm.changes.StringMapEntryDelete;
+import de.westnordost.osmagent.quests.osm.changes.StringMapEntryModify;
+import de.westnordost.osmagent.quests.osmnotes.NoteChange;
+import de.westnordost.osmapi.map.data.Element;
+import de.westnordost.osmapi.map.data.OsmLatLon;
+import de.westnordost.osmapi.map.data.OsmRelationMember;
+import de.westnordost.osmapi.notes.NoteComment;
+import de.westnordost.osmapi.user.User;
 
 @Singleton
 public class KryoSerializer implements Serializer
 {
-	/* Kryo docs say that classes that are registered are serialized more space efficiently
-	   (so it is not necessary that all classes that are serialized are registered here, but it is
-	   better) */
-
 	private static final Class[] registeredClasses =
 	{
-		// THE ORDER IS IMPORTANT! ONLY ADD NEW CLASSES AT THE END OF THE LIST
-	//	StringMapChanges.class,
-	//	OsmLatLon.class,
-	//	ElementGeometry.class,
-			// TODO add all those classes... (after having a look how the binary representation looks like
+			HashMap.class,
+			ArrayList.class,
+			OsmLatLon.class,
+			Element.Type.class,
+			OsmRelationMember.class,
+			StringMapChanges.class,
+			StringMapEntryAdd.class,
+			StringMapEntryDelete.class,
+			StringMapEntryModify.class,
+			NoteChange.class,
+			NoteChange.Action.class,
+			NoteComment.class,
+			NoteComment.Action.class,
+			Date.class,
+			User.class
 	};
+
 
 	private static final ThreadLocal<Kryo> kryo = new ThreadLocal<Kryo>()
 	{
 		@Override protected Kryo initialValue()
 		{
 			Kryo kryo = new Kryo();
+
+			/* Kryo docs say that classes that are registered are serialized more space efficiently
+	 		  (so it is not necessary that all classes that are serialized are registered here, but
+	 		   it is better) */
+			kryo.setRegistrationRequired(true);
+			kryo.setInstantiatorStrategy(new Kryo.DefaultInstantiatorStrategy(new StdInstantiatorStrategy()));
 			for(Class reg : registeredClasses)
 			{
 				kryo.register(reg);

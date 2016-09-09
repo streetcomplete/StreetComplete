@@ -18,17 +18,17 @@ import de.westnordost.osmagent.quests.statistics.QuestStatisticsTable;
 @Singleton
 public class OsmagentOpenHelper extends SQLiteOpenHelper
 {
-	private static final String DB_NAME = "osmagent";
-	private static final int DB_VERSION = 1;
+	public static final String DB_NAME = "osmagent.db";
+	public static final int DB_VERSION = 1;
 
 	private static final String OSM_QUESTS_TABLE_CREATE =
 			"CREATE TABLE " + OsmQuestTable.NAME +
 			" (" +
-				OsmQuestTable.Columns.QUEST_ID +		" int			PRIMARY KEY, " +
+				OsmQuestTable.Columns.QUEST_ID +		" INTEGER		PRIMARY KEY, " +
 				OsmQuestTable.Columns.QUEST_TYPE +		" varchar(255)	NOT NULL, " +
-				OsmQuestTable.Columns.QUEST_STATUS +	" varchar(255)	NOT NULL" +
+				OsmQuestTable.Columns.QUEST_STATUS +	" varchar(255)	NOT NULL, " +
 				OsmQuestTable.Columns.TAG_CHANGES +		" blob, " + // null if no changes
-				OsmQuestTable.Columns.LAST_UPDATE + 	" int			NOT NULL," +
+				OsmQuestTable.Columns.LAST_UPDATE + 	" int			NOT NULL, " +
 				OsmQuestTable.Columns.ELEMENT_ID +		" int			NOT NULL, " +
 				OsmQuestTable.Columns.ELEMENT_TYPE +	" varchar(255)	NOT NULL, " +
 				"CONSTRAINT same_quest UNIQUE (" +
@@ -38,6 +38,9 @@ public class OsmagentOpenHelper extends SQLiteOpenHelper
 				"), " +
 				"CONSTRAINT element_key FOREIGN KEY (" +
 					OsmQuestTable.Columns.ELEMENT_TYPE + ", " + OsmQuestTable.Columns.ELEMENT_ID +
+				") REFERENCES " + ElementGeometryTable.NAME + " (" +
+					ElementGeometryTable.Columns.ELEMENT_TYPE + ", " +
+					ElementGeometryTable.Columns.ELEMENT_ID +
 				")" +
 			");";
 
@@ -48,8 +51,8 @@ public class OsmagentOpenHelper extends SQLiteOpenHelper
 				ElementGeometryTable.Columns.ELEMENT_ID +		" int			NOT NULL, " +
 				ElementGeometryTable.Columns.GEOMETRY_INNER +	" blob, " +
 				ElementGeometryTable.Columns.GEOMETRY_OUTER +	" blob			NOT NULL, " +
-				ElementGeometryTable.Columns.LATITUDE +	" double		NOT NULL, " +
-				ElementGeometryTable.Columns.LONGITUDE +	" double		NOT NULL, " +
+				ElementGeometryTable.Columns.LATITUDE +			" double		NOT NULL, " +
+				ElementGeometryTable.Columns.LONGITUDE +		" double		NOT NULL, " +
 				"CONSTRAINT primary_key PRIMARY KEY (" +
 					ElementGeometryTable.Columns.ELEMENT_TYPE + ", " +
 					ElementGeometryTable.Columns.ELEMENT_ID +
@@ -67,36 +70,41 @@ public class OsmagentOpenHelper extends SQLiteOpenHelper
 	private static final String OSM_NOTES_QUESTS_TABLE_CREATE =
 			"CREATE TABLE " + OsmNoteQuestTable.NAME +
 					" (" +
-					OsmNoteQuestTable.Columns.NOTE_ID +			" int			PRIMARY KEY, " +
+					OsmNoteQuestTable.Columns.QUEST_ID + 		" INTEGER		PRIMARY KEY, " +
 					OsmNoteQuestTable.Columns.QUEST_STATUS +	" varchar(255)	NOT NULL, " +
-					OsmNoteQuestTable.Columns.CHANGES +			" blob," +
-					OsmNoteQuestTable.Columns.LAST_UPDATE + 	" int			NOT NULL" +
+					OsmNoteQuestTable.Columns.CHANGES +			" blob, " +
+					OsmNoteQuestTable.Columns.LAST_UPDATE + 	" int			NOT NULL, " +
+					OsmNoteQuestTable.Columns.NOTE_ID + " INTEGER, " +
+					"FOREIGN KEY (" + OsmNoteQuestTable.Columns.NOTE_ID +
+					") REFERENCES " + NoteTable.NAME + "(" + NoteTable.Columns.ID + ")" +
 					");";
 
 	private static final String NOTES_TABLE_CREATE =
 			"CREATE TABLE " + NoteTable.NAME +
 					" (" +
 					NoteTable.Columns.ID +			" int			PRIMARY KEY, " +
-					NoteTable.Columns.LATITUDE + 	" double		NOT NULL," +
-					NoteTable.Columns.LONGITUDE + 	" double		NOT NULL," +
+					NoteTable.Columns.LATITUDE + 	" double		NOT NULL, " +
+					NoteTable.Columns.LONGITUDE + 	" double		NOT NULL, " +
 					NoteTable.Columns.CREATED +		" int			NOT NULL, " +
 					NoteTable.Columns.CLOSED +		" int, " +
-					NoteTable.Columns.STATUS + 		" varchar(255)	NOT NULL," +
+					NoteTable.Columns.STATUS + 		" varchar(255)	NOT NULL, " +
 					NoteTable.Columns.COMMENTS +	" blob			NOT NULL" +
 					");";
 
 	private static final String OSM_NOTES_VIEW_CREATE =
 			"CREATE VIEW " + OsmNoteQuestTable.NAME_MERGED_VIEW + " AS " +
-					"SELECT * FROM " + OsmNoteQuestTable.NAME + " " +
-					"INNER JOIN " + NoteTable.NAME + " USING " + NoteTable.Columns.ID + ";";
+			"SELECT * FROM " + OsmNoteQuestTable.NAME + " " +
+				"LEFT OUTER JOIN " + NoteTable.NAME + " USING (" + NoteTable.Columns.ID + ");";
+	// outer join because note id of quest table is null for newly to be created notes; these rows
+	// should still turn up in the result set
 
 	private static final String NODES_TABLE_CREATE =
 			"CREATE TABLE " + NodeTable.NAME +
 			" (" +
 				NodeTable.Columns.ID +			" int		PRIMARY KEY, " +
 				NodeTable.Columns.VERSION +		" int		NOT NULL, " +
-				NodeTable.Columns.LATITUDE + 	" double	NOT NULL," +
-				NodeTable.Columns.LONGITUDE + 	" double	NOT NULL," +
+				NodeTable.Columns.LATITUDE + 	" double	NOT NULL, " +
+				NodeTable.Columns.LONGITUDE + 	" double	NOT NULL, " +
 				NodeTable.Columns.TAGS +		" blob" +
 			");";
 
@@ -126,11 +134,11 @@ public class OsmagentOpenHelper extends SQLiteOpenHelper
 			");";
 
 	private static final String OSM_QUESTS_TABLE_QUEST_STATUS_INDEX_CREATE =
-			"CREATE INDEX quest_status_idx ON " + OsmQuestTable.NAME + " (" +
+			"CREATE INDEX osm_quest_status_idx ON " + OsmQuestTable.NAME + " (" +
 					OsmQuestTable.Columns.QUEST_STATUS + ");";
 
 	private static final String OSM_NOTES_QUESTS_TABLE_QUESTSTATUS_INDEX_CREATE =
-			"CREATE INDEX quest_status_idx ON " + OsmNoteQuestTable.NAME + " (" +
+			"CREATE INDEX osm_note_quest_status_idx ON " + OsmNoteQuestTable.NAME + " (" +
 					OsmNoteQuestTable.Columns.QUEST_STATUS + ");";
 
 	public OsmagentOpenHelper(Context context)
@@ -141,8 +149,8 @@ public class OsmagentOpenHelper extends SQLiteOpenHelper
 	@Override
 	public void onCreate(SQLiteDatabase db)
 	{
-		db.execSQL(OSM_QUESTS_TABLE_CREATE);
 		db.execSQL(ELEMENTS_GEOMETRY_TABLE_CREATE);
+		db.execSQL(OSM_QUESTS_TABLE_CREATE);
 		db.execSQL(NODES_TABLE_CREATE);
 		db.execSQL(WAYS_TABLE_CREATE);
 		db.execSQL(RELATIONS_TABLE_CREATE);

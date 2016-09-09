@@ -27,4 +27,11 @@ public class StringMapEntryDelete implements StringMapEntryChange
 	{
 		return !map.containsKey(key) || !map.get(key).equals(valueBefore);
 	}
+
+	@Override public boolean equals(Object other)
+	{
+		if(other == null || !(other instanceof StringMapEntryDelete)) return false;
+		StringMapEntryDelete o = (StringMapEntryDelete) other;
+		return key.equals(o.key) && valueBefore.equals(o.valueBefore);
+	}
 }

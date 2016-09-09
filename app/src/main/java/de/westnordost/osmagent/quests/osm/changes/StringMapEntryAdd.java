@@ -27,4 +27,11 @@ public class StringMapEntryAdd implements StringMapEntryChange
 	{
 		return map.containsKey(key);
 	}
+
+	@Override public boolean equals(Object other)
+	{
+		if(other == null || !(other instanceof StringMapEntryAdd)) return false;
+		StringMapEntryAdd o = (StringMapEntryAdd) other;
+		return key.equals(o.key) && value.equals(o.value);
+	}
 }

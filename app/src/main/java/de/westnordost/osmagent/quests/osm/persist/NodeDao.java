@@ -5,6 +5,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -17,10 +18,12 @@ import de.westnordost.osmapi.map.data.OsmNode;
 
 public class NodeDao extends AOsmElementDao<Node>
 {
+	private final Serializer serializer;
 
 	@Inject public NodeDao(SQLiteOpenHelper dbHelper, Serializer serializer)
 	{
-		super(dbHelper, serializer);
+		super(dbHelper);
+		this.serializer = serializer;
 	}
 
 	@Override protected String getTableName()
@@ -48,7 +51,9 @@ public class NodeDao extends AOsmElementDao<Node>
 		values.put(NodeTable.Columns.VERSION, node.getVersion());
 		if(node.getTags() != null)
 		{
-			values.put(NodeTable.Columns.TAGS, serializer.toBytes(node.getTags()));
+			HashMap<String,String> map = new HashMap<>();
+			map.putAll(node.getTags());
+			values.put(NodeTable.Columns.TAGS, serializer.toBytes(map));
 		}
 		return values;
 	}
@@ -67,7 +72,7 @@ public class NodeDao extends AOsmElementDao<Node>
 		Map<String,String> tags = null;
 		if(!cursor.isNull(colTags))
 		{
-			tags = serializer.toObject(cursor.getBlob(colTags), Map.class);
+			tags = serializer.toObject(cursor.getBlob(colTags), HashMap.class);
 		}
 		return new OsmNode(id, version, latLon, tags, null);
 	}

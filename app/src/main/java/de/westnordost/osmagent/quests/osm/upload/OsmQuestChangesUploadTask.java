@@ -51,7 +51,7 @@ public class OsmQuestChangesUploadTask implements Runnable
 
 		if(success)
 		{
-			statisticsDB.increase(quest.getType());
+			statisticsDB.addOne(quest.getType());
 		}
 
 		questDB.delete(quest.getId());

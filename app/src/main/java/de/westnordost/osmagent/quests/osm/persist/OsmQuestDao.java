@@ -5,11 +5,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.Date;
-import java.util.List;
 
 import javax.inject.Inject;
 
-import de.westnordost.osmagent.quests.QuestDao;
+import de.westnordost.osmagent.quests.AQuestDao;
 import de.westnordost.osmagent.quests.osm.ElementGeometry;
 import de.westnordost.osmagent.quests.osm.OsmQuest;
 import de.westnordost.osmagent.quests.QuestStatus;
@@ -17,14 +16,18 @@ import de.westnordost.osmagent.quests.osm.changes.StringMapChanges;
 import de.westnordost.osmagent.quests.osm.types.OsmElementQuestType;
 import de.westnordost.osmagent.util.Serializer;
 import de.westnordost.osmapi.map.data.Element;
-import de.westnordost.osmapi.map.data.LatLon;
-import de.westnordost.osmapi.map.data.OsmLatLon;
 
-public class OsmQuestDao extends QuestDao<OsmQuest>
+public class OsmQuestDao extends AQuestDao<OsmQuest>
 {
-	@Inject public OsmQuestDao(SQLiteOpenHelper dbHelper, Serializer serializer)
+	private final Serializer serializer;
+	private final String questTypePackage;
+
+	@Inject public OsmQuestDao(SQLiteOpenHelper dbHelper, Serializer serializer,
+							   String questTypePackage)
 	{
-		super(dbHelper, serializer);
+		super(dbHelper);
+		this.serializer = serializer;
+		this.questTypePackage = questTypePackage;
 	}
 
 	@Override protected String getTableName()
@@ -83,16 +86,12 @@ public class OsmQuestDao extends QuestDao<OsmQuest>
 	@Override protected OsmQuest createObjectFrom(Cursor cursor)
 	{
 		int colQuestId = cursor.getColumnIndexOrThrow(OsmQuestTable.Columns.QUEST_ID),
-				colElementId = cursor.getColumnIndexOrThrow(OsmQuestTable.Columns.ELEMENT_ID),
-				colElementType = cursor.getColumnIndexOrThrow(OsmQuestTable.Columns.ELEMENT_TYPE),
-				colQuestStatus = cursor.getColumnIndexOrThrow(OsmQuestTable.Columns.QUEST_STATUS),
-				colQuestType = cursor.getColumnIndexOrThrow(OsmQuestTable.Columns.QUEST_TYPE),
-				colChanges = cursor.getColumnIndexOrThrow(OsmQuestTable.Columns.TAG_CHANGES),
-				colLastChange = cursor.getColumnIndexOrThrow(OsmQuestTable.Columns.LAST_UPDATE),
-				colOuterGeometry = cursor.getColumnIndexOrThrow(ElementGeometryTable.Columns.GEOMETRY_OUTER),
-				colInnerGeometry = cursor.getColumnIndexOrThrow(ElementGeometryTable.Columns.GEOMETRY_INNER),
-				colCenterLat = cursor.getColumnIndexOrThrow(ElementGeometryTable.Columns.LATITUDE),
-				colCenterLon = cursor.getColumnIndexOrThrow(ElementGeometryTable.Columns.LONGITUDE);
+			colElementId = cursor.getColumnIndexOrThrow(OsmQuestTable.Columns.ELEMENT_ID),
+			colElementType = cursor.getColumnIndexOrThrow(OsmQuestTable.Columns.ELEMENT_TYPE),
+			colQuestStatus = cursor.getColumnIndexOrThrow(OsmQuestTable.Columns.QUEST_STATUS),
+			colQuestType = cursor.getColumnIndexOrThrow(OsmQuestTable.Columns.QUEST_TYPE),
+			colChanges = cursor.getColumnIndexOrThrow(OsmQuestTable.Columns.TAG_CHANGES),
+			colLastChange = cursor.getColumnIndexOrThrow(OsmQuestTable.Columns.LAST_UPDATE);
 
 		long questId = cursor.getLong(colQuestId);
 		long elementId = cursor.getLong(colElementId);
@@ -107,14 +106,7 @@ public class OsmQuestDao extends QuestDao<OsmQuest>
 			changes = serializer.toObject(cursor.getBlob(colChanges), StringMapChanges.class);
 		}
 
-		List<List<LatLon>> outer, inner = null;
-		outer = serializer.toObject(cursor.getBlob(colOuterGeometry), List.class);
-		if(!cursor.isNull(colInnerGeometry))
-		{
-			inner = serializer.toObject(cursor.getBlob(colInnerGeometry), List.class);
-		}
-		LatLon center = new OsmLatLon(cursor.getDouble(colCenterLat), cursor.getDouble(colCenterLon));
-		ElementGeometry geometry = new ElementGeometry(outer, inner, center);
+		ElementGeometry geometry = ElementGeometryDao.createObjectFrom(serializer, cursor);
 
 		Date lastChange = new Date(cursor.getLong(colLastChange));
 
@@ -124,9 +116,10 @@ public class OsmQuestDao extends QuestDao<OsmQuest>
 
 	private OsmElementQuestType getQuestTypeByName(String name)
 	{
+		String pck = questTypePackage + "." + name;
 		try
 		{
-			return (OsmElementQuestType) Class.forName(name).newInstance();
+			return (OsmElementQuestType) Class.forName(pck).newInstance();
 		}
 		catch (Exception e)
 		{

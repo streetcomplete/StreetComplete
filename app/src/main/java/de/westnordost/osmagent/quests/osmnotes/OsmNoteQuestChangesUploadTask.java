@@ -3,7 +3,6 @@ package de.westnordost.osmagent.quests.osmnotes;
 import javax.inject.Inject;
 
 import de.westnordost.osmagent.quests.QuestStatus;
-import de.westnordost.osmagent.quests.statistics.QuestStatisticsDao;
 import de.westnordost.osmapi.common.errors.OsmConflictException;
 import de.westnordost.osmapi.notes.NotesDao;
 
@@ -11,7 +10,6 @@ public class OsmNoteQuestChangesUploadTask implements Runnable
 {
 	@Inject NotesDao osmDao;
 	@Inject OsmNoteQuestDao questDB;
-	@Inject QuestStatisticsDao statisticsDB;
 
 	public Long questId;
 	public Long osmUserId;
@@ -24,13 +22,6 @@ public class OsmNoteQuestChangesUploadTask implements Runnable
 		if(quest == null || quest.getStatus() != QuestStatus.ANSWERED)
 		{
 			return;
-		}
-
-		boolean success = uploadNoteChanges(quest);
-
-		if(success)
-		{
-			statisticsDB.increase(quest.getType());
 		}
 
 		questDB.delete(quest.getId());
