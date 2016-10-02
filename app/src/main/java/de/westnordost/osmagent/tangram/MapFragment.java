@@ -142,7 +142,7 @@ public class MapFragment extends Fragment implements
 				LngLat tappedPoint = new LngLat(9.94290,53.58057);
 				Map<String, String> props = new HashMap<>();
 				props.put("type", "point");
-				props.put("color", "#DFDF44");
+				props.put("kind", "car");
 				mapData.addPoint(tappedPoint, props);
 
 				updateMapTileCacheSize();

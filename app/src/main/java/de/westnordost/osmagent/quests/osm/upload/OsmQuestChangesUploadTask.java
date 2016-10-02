@@ -9,7 +9,7 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
-import de.westnordost.osmagent.quests.OsmModule;
+import de.westnordost.osmagent.OsmagentConstants;
 import de.westnordost.osmagent.quests.QuestStatus;
 import de.westnordost.osmagent.quests.osm.OsmQuest;
 import de.westnordost.osmagent.quests.osm.changes.StringMapChanges;
@@ -21,6 +21,7 @@ import de.westnordost.osmapi.common.errors.OsmConflictException;
 import de.westnordost.osmapi.map.MapDataDao;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.map.data.OsmElement;
+
 
 public class OsmQuestChangesUploadTask implements Runnable
 {
@@ -51,7 +52,7 @@ public class OsmQuestChangesUploadTask implements Runnable
 
 		if(success)
 		{
-			statisticsDB.addOne(quest.getType());
+			statisticsDB.addOne(quest.getType().getClass().getSimpleName());
 		}
 
 		questDB.delete(quest.getId());
@@ -141,8 +142,8 @@ public class OsmQuestChangesUploadTask implements Runnable
 		Map<String,String> changesetTags = new HashMap<>();
 		int resourceId = questType.getCommitMessageResourceId();
 		changesetTags.put("comment", resources.getString(resourceId));
-		changesetTags.put("created_by", OsmModule.USER_AGENT);
-		changesetTags.put("osmagent:quest_type", questType.getClass().getSimpleName());
+		changesetTags.put("created_by", OsmagentConstants.USER_AGENT);
+		changesetTags.put(OsmagentConstants.QUESTTYPE_TAG_KEY, questType.getClass().getSimpleName());
 		changesetTags.put("source", "survey");
 		return changesetTags;
 	}
