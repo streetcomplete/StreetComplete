@@ -91,7 +91,8 @@ public class ElementGeometryCreatorTest extends TestCase implements GeometryMapD
 		ElementGeometry geom = new ElementGeometryCreator(this).create(
 				new OsmWay(0L,0, Arrays.asList(0L,1L,1L,2L),null,null)
 		);
-		assertNull(geom);
+		assertNotNull(geom.polylines);
+		assertEquals(P1, geom.center);
 	}
 
 	public void testCreateForSimpleAreaWay()
