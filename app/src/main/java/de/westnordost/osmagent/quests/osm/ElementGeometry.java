@@ -10,76 +10,113 @@ import de.westnordost.osmapi.map.data.OsmLatLon;
 public class ElementGeometry
 {
 	public LatLon center;
-	public ArrayList<ArrayList<LatLon>> outer;
-	public ArrayList<ArrayList<LatLon>> inner;
+	public List<List<LatLon>> polygons = null;
+	public List<List<LatLon>> polylines = null;
 
-	public ElementGeometry()
+	public ElementGeometry(LatLon center)
 	{
-
-	}
-
-	public ElementGeometry(LatLon position)
-	{
-		this(createSingleElementList(createSingleElementList(position)), null, position);
-	}
-
-	public ElementGeometry(ArrayList<LatLon> positions)
-	{
-		this(createSingleElementList(positions), null, findCenterPointOfPolyLine(positions));
-	}
-
-	public ElementGeometry(ArrayList<ArrayList<LatLon>> outer, ArrayList<ArrayList<LatLon>> inner)
-	{
-		this(outer, inner, findCenterPointOfPolygon(outer, inner));
-	}
-
-	public ElementGeometry(ArrayList<ArrayList<LatLon>> outer, ArrayList<ArrayList<LatLon>> inner, LatLon center)
-	{
-		this.outer = outer;
-		this.inner = inner;
 		this.center = center;
 	}
 
-	private static <T> ArrayList<T> createSingleElementList(T position)
+	public ElementGeometry(List<List<LatLon>> polylines, List<List<LatLon>> polygons)
 	{
-		// not using Collections.singletonList because Kryo seems to have a problem with that
-		ArrayList<T> list = new ArrayList<>(1);
-		list.add(position);
-		return list;
+		this.polygons = polygons;
+		this.polylines = polylines;
+		if(polygons != null)
+		{
+			center = findCenterPointOfPolygon(polygons);
+		}
+		else if(polylines != null)
+		{
+			// if there are more than one polylines, these polylines are not connect to each other,
+			// so there is no way to find a reasonable "center point". In most cases however, there
+			// is only one polyline, so let's just take the first one...
+			center = findCenterPointOfPolyLine(polylines.get(0));
+		}
 	}
 
-	private static LatLon findCenterPointOfPolyLine(ArrayList<LatLon> positions)
+	public ElementGeometry(List<List<LatLon>> polylines, List<List<LatLon>> polygons, LatLon center)
 	{
-		if(positions.size() % 2 == 1)
+		this.polygons = polygons;
+		this.polylines = polylines;
+		this.center = center;
+	}
+
+	private static LatLon findCenterPointOfPolyLine(List<LatLon> positions)
+	{
+		int i = 0, j = positions.size() - 1;
+		double iLength = 0, jLength = 0;
+		double totalILength = 0, totalJLength = 0;
+
+		while(i != j)
 		{
-			return positions.get(positions.size()/2);
+			if(totalILength <= totalJLength)
+			{
+				LatLon a = positions.get(i);
+				LatLon b = positions.get(++i);
+				iLength = Math.sqrt(
+						Math.pow(b.getLongitude() - a.getLongitude(), 2) +
+						Math.pow(b.getLatitude() - a.getLatitude(), 2));
+				totalILength += iLength;
+			}
+			else
+			{
+				LatLon a = positions.get(j);
+				LatLon b = positions.get(--j);
+				jLength = Math.sqrt(
+						Math.pow(b.getLongitude() - a.getLongitude(), 2) +
+								Math.pow(b.getLatitude() - a.getLatitude(), 2));
+				totalJLength += jLength;
+			}
+		}
+
+		double centralLineLength;
+		if(totalILength == totalJLength)
+		{
+			return positions.get(i);
+		}
+		else if(totalILength > totalJLength)
+		{
+			centralLineLength = iLength;
+			totalILength -= iLength;
+			--i;
 		}
 		else
 		{
-			LatLon pos1 = positions.get(positions.size()/2-1);
-			LatLon pos2 = positions.get(positions.size()/2);
-			return new OsmLatLon(
-					(pos1.getLatitude() + pos2.getLatitude()) / 2d,
-					(pos1.getLongitude() + pos2.getLongitude()) / 2d);
+			centralLineLength = jLength;
+			totalJLength -= jLength;
+			++j;
 		}
+		// just to be sure that there won't be a div by 0 error ever
+		if(centralLineLength == 0)
+		{
+			return positions.get(i);
+		}
+
+		double totalLength = totalILength + totalJLength + centralLineLength;
+
+		double x = (totalLength/2 - totalILength) / centralLineLength;
+
+		LatLon a = positions.get(i);
+		LatLon b = positions.get(j);
+
+		double lat = a.getLatitude() + (b.getLatitude() - a.getLatitude()) * x;
+		double lon = a.getLongitude() + (b.getLongitude() - a.getLongitude()) * x;
+
+		return new OsmLatLon(lat,lon);
 	}
 
-	private static LatLon findCenterPointOfPolygon(ArrayList<ArrayList<LatLon>> outer,
-												   ArrayList<ArrayList<LatLon>> inner)
+	private static LatLon findCenterPointOfPolygon(List<List<LatLon>> polygons)
 	{
 		// just find the "average" point... this can be outside of the polygon if it is i.e.
 		// banana- or donut shaped. This could be improved with a more elaborate algo later.
 
 		double lat = 0, lon = 0;
 
-		ArrayList<LatLon> allPoints = new ArrayList<>();
-		for(List<LatLon> outerList : outer)
+		List<LatLon> allPoints = new ArrayList<>();
+		for(List<LatLon> polygon : polygons)
 		{
-			allPoints.addAll(outerList);
-		}
-		for(List<LatLon> innerList : inner)
-		{
-			allPoints.addAll(innerList);
+			allPoints.addAll(polygon);
 		}
 
 		double pointCount = allPoints.size();
@@ -98,12 +135,7 @@ public class ElementGeometry
 		if(other == null || !(other instanceof ElementGeometry)) return false;
 		ElementGeometry o = (ElementGeometry) other;
 		return
-				o.center.equals(center) &&
-				(outer == null ? o.outer == null : outer.equals(o.outer)) &&
-				(inner == null ? o.inner == null : inner.equals(o.inner));
+				(polylines == null ? o.polylines == null : polylines.equals(o.polylines)) &&
+				(polygons == null ? o.polygons == null : polygons.equals(o.polygons));
 	}
-
-	// TODO add tests in CreateQuestMapDataHandlerTest
-
-	// TODO add marker location, bbox(?) - at least it should be available in a OsmQuest and queryable in DB
 }

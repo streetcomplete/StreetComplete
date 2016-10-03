@@ -9,8 +9,8 @@ public class ElementGeometryTable
 		public static final String
 				ELEMENT_ID = OsmQuestTable.Columns.ELEMENT_ID,
 				ELEMENT_TYPE  = OsmQuestTable.Columns.ELEMENT_TYPE,
-				GEOMETRY_OUTER = "geometry_outer",
-				GEOMETRY_INNER = "geometry_inner",
+				GEOMETRY_POLYGONS = "geometry_polygons",
+				GEOMETRY_POLYLINES = "geometry_polylines",
 				LATITUDE = "latitude",
 				LONGITUDE = "longitude";
 	}

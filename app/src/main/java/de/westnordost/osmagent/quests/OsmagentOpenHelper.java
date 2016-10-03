@@ -47,12 +47,12 @@ public class OsmagentOpenHelper extends SQLiteOpenHelper
 	private static final String ELEMENTS_GEOMETRY_TABLE_CREATE =
 			"CREATE TABLE " + ElementGeometryTable.NAME +
 			" (" +
-				ElementGeometryTable.Columns.ELEMENT_TYPE +		" varchar(255)	NOT NULL, " +
-				ElementGeometryTable.Columns.ELEMENT_ID +		" int			NOT NULL, " +
-				ElementGeometryTable.Columns.GEOMETRY_INNER +	" blob, " +
-				ElementGeometryTable.Columns.GEOMETRY_OUTER +	" blob			NOT NULL, " +
-				ElementGeometryTable.Columns.LATITUDE +			" double		NOT NULL, " +
-				ElementGeometryTable.Columns.LONGITUDE +		" double		NOT NULL, " +
+				ElementGeometryTable.Columns.ELEMENT_TYPE +			" varchar(255)	NOT NULL, " +
+				ElementGeometryTable.Columns.ELEMENT_ID +			" int			NOT NULL, " +
+				ElementGeometryTable.Columns.GEOMETRY_POLYLINES +	" blob, " +
+				ElementGeometryTable.Columns.GEOMETRY_POLYGONS +	" blob, " +
+				ElementGeometryTable.Columns.LATITUDE +				" double		NOT NULL, " +
+				ElementGeometryTable.Columns.LONGITUDE +			" double		NOT NULL, " +
 				"CONSTRAINT primary_key PRIMARY KEY (" +
 					ElementGeometryTable.Columns.ELEMENT_TYPE + ", " +
 					ElementGeometryTable.Columns.ELEMENT_ID +

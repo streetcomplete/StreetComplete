@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -34,10 +35,13 @@ public class ElementGeometryDao
 		ContentValues values = new ContentValues();
 		values.put(ElementGeometryTable.Columns.ELEMENT_ID, id);
 		values.put(ElementGeometryTable.Columns.ELEMENT_TYPE, type.name());
-		values.put(ElementGeometryTable.Columns.GEOMETRY_OUTER, serializer.toBytes(geometry.outer));
-		if(geometry.inner != null)
+		if(geometry.polygons != null)
 		{
-			values.put(ElementGeometryTable.Columns.GEOMETRY_INNER, serializer.toBytes(geometry.inner));
+			values.put(ElementGeometryTable.Columns.GEOMETRY_POLYGONS, serializer.toBytes(geometry.polygons));
+		}
+		if(geometry.polylines != null)
+		{
+			values.put(ElementGeometryTable.Columns.GEOMETRY_POLYLINES, serializer.toBytes(geometry.polylines));
 		}
 		values.put(ElementGeometryTable.Columns.LATITUDE, geometry.center.getLatitude());
 		values.put(ElementGeometryTable.Columns.LONGITUDE, geometry.center.getLongitude());
@@ -69,19 +73,23 @@ public class ElementGeometryDao
 
 	static ElementGeometry createObjectFrom(Serializer serializer, Cursor cursor)
 	{
-		int colOuterGeometry = cursor.getColumnIndexOrThrow(ElementGeometryTable.Columns.GEOMETRY_OUTER),
-			colInnerGeometry = cursor.getColumnIndexOrThrow(ElementGeometryTable.Columns.GEOMETRY_INNER),
+		int colGeometryPolygons = cursor.getColumnIndexOrThrow(ElementGeometryTable.Columns.GEOMETRY_POLYGONS),
+			colGeometryPolylines = cursor.getColumnIndexOrThrow(ElementGeometryTable.Columns.GEOMETRY_POLYLINES),
 			colCenterLat = cursor.getColumnIndexOrThrow(ElementGeometryTable.Columns.LATITUDE),
 			colCenterLon = cursor.getColumnIndexOrThrow(ElementGeometryTable.Columns.LONGITUDE);
 
-		ArrayList<ArrayList<LatLon>> outer, inner = null;
-		outer = serializer.toObject(cursor.getBlob(colOuterGeometry), ArrayList.class);
-		if(!cursor.isNull(colInnerGeometry))
+		List<List<LatLon>> polygons = null, polylines = null;
+
+		if(!cursor.isNull(colGeometryPolygons))
 		{
-			inner = serializer.toObject(cursor.getBlob(colInnerGeometry), ArrayList.class);
+			polygons = serializer.toObject(cursor.getBlob(colGeometryPolygons), ArrayList.class);
+		}
+		if(!cursor.isNull(colGeometryPolylines))
+		{
+			polylines = serializer.toObject(cursor.getBlob(colGeometryPolylines), ArrayList.class);
 		}
 		LatLon center = new OsmLatLon(cursor.getDouble(colCenterLat), cursor.getDouble(colCenterLon));
-		return new ElementGeometry(outer, inner, center);
+		return new ElementGeometry(polylines, polygons, center);
 	}
 
 	/** Cleans up element geometry entries that belong to elements that are not referenced by any

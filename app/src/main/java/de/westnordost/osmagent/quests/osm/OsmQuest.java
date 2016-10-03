@@ -80,7 +80,7 @@ public class OsmQuest implements Quest
 		return type;
 	}
 
-	public ElementGeometry getGeometry()
+	@Override public ElementGeometry getGeometry()
 	{
 		return geometry;
 	}

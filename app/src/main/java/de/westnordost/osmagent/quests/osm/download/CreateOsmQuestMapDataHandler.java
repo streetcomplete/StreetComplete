@@ -1,24 +1,20 @@
 package de.westnordost.osmagent.quests.osm.download;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-
 import de.westnordost.osmagent.quests.osm.ElementGeometry;
 import de.westnordost.osmagent.quests.osm.OsmQuest;
 import de.westnordost.osmagent.quests.osm.types.OsmElementQuestType;
 import de.westnordost.osmapi.common.Handler;
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
-import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.map.data.Node;
 import de.westnordost.osmapi.map.data.Relation;
-import de.westnordost.osmapi.map.data.RelationMember;
 import de.westnordost.osmapi.map.data.Way;
 import de.westnordost.osmapi.map.handler.MapDataHandler;
 
 /** Handles incoming map data and creates quests and element geometry out of it. It passes on the
  *  map data to other handlers. */
-public class CreateOsmQuestMapDataHandler implements MapDataHandler
+public class CreateOsmQuestMapDataHandler implements MapDataHandler, GeometryMapDataProvider
 {
 	private final Handler<OsmQuest> handler;
 	private final Handler<Element> elementHandler;
@@ -28,12 +24,15 @@ public class CreateOsmQuestMapDataHandler implements MapDataHandler
 	private final HashMap<Long, Node> nodes;
 	private final HashMap<Long, Way> ways;
 
+	private final ElementGeometryCreator elementGeometryCreator;
+
 	public CreateOsmQuestMapDataHandler(OsmElementQuestType questType, Handler<OsmQuest> handler,
 										Handler<Element> elementHandler)
 	{
 		this.handler = handler;
 		this.elementHandler = elementHandler;
 		this.questType = questType;
+		this.elementGeometryCreator = new ElementGeometryCreator(this);
 		nodes = new HashMap<>();
 		ways = new HashMap<>();
 	}
@@ -49,8 +48,7 @@ public class CreateOsmQuestMapDataHandler implements MapDataHandler
 
 		if(questType.appliesTo(node))
 		{
-			ElementGeometry geometry = new ElementGeometry(node.getPosition());
-			createQuestAndHandle(node, geometry);
+			createQuestAndHandle(node, elementGeometryCreator.create(node));
 		}
 	}
 
@@ -60,8 +58,7 @@ public class CreateOsmQuestMapDataHandler implements MapDataHandler
 
 		if(questType.appliesTo(way))
 		{
-			ElementGeometry geometry = new ElementGeometry(getWayGeometry(way));
-			createQuestAndHandle(way, geometry);
+			createQuestAndHandle(way, elementGeometryCreator.create(way));
 		}
 	}
 
@@ -69,64 +66,43 @@ public class CreateOsmQuestMapDataHandler implements MapDataHandler
 	{
 		if(questType.appliesTo(relation))
 		{
-			ElementGeometry geometry = createRelationGeometry(relation);
-			createQuestAndHandle(relation, geometry);
+			createQuestAndHandle(relation, elementGeometryCreator.create(relation));
 		}
 	}
 
 	private void createQuestAndHandle(Element element, ElementGeometry geometry)
 	{
+		// invalid geometry -> can't show this quest, so skip it
+		if(geometry == null) return;
+
 		elementHandler.handle(element);
 		OsmQuest quest = new OsmQuest(questType, element.getType(), element.getId(), geometry);
 		handler.handle(quest);
 	}
 
-	private ArrayList<LatLon> getWayGeometry(Way way)
+	@Override public Node getNode(long id)
 	{
-		ArrayList<LatLon> geometry = new ArrayList<>(way.getNodeIds().size());
-		for(long nodeId : way.getNodeIds())
+		Node result = nodes.get(id);
+		if(result == null)
 		{
-			if(!nodes.containsKey(nodeId))
-			{
-				throw new RuntimeException("Could not find the node with the id "+nodeId+" in the" +
-						" response! Either it has not been requested in the API call, or the" +
-						" response is not in the expected format: First nodes, then ways, then" +
-						" relations.");
-			}
-
-			geometry.add(nodes.get(nodeId).getPosition());
+			throw new RuntimeException("Could not find the node with the id "+id+" in the" +
+					" response! Either it has not been requested in the API call, or the" +
+					" response is not in the expected format: First nodes, then ways, then" +
+					" relations.");
 		}
-		return geometry;
+		return result;
 	}
 
-	private ElementGeometry createRelationGeometry(Relation relation)
+	@Override public Way getWay(long id)
 	{
-		ArrayList<ArrayList<LatLon>> outer = new ArrayList<>();
-		ArrayList<ArrayList<LatLon>> inner = new ArrayList<>();
-		for(RelationMember member : relation.getMembers())
+		Way result = ways.get(id);
+		if(result == null)
 		{
-			if(member.getType() == Element.Type.WAY)
-			{
-				long wayId = member.getRef();
-				if(!ways.containsKey(wayId))
-				{
-					throw new RuntimeException("Could not find the way with the id "+wayId+" in the" +
-							" response! Either it has not been requested in the API call, or the" +
-							" response is not in the expected format: First nodes, then ways, then" +
-							" relations.");
-				}
-
-				if("outer".equals(member.getRole()))
-				{
-					outer.add(getWayGeometry(ways.get(wayId)));
-				}
-				else if("inner".equals(member.getRole()))
-				{
-					inner.add(getWayGeometry(ways.get(wayId)));
-				}
-			}
+			throw new RuntimeException("Could not find the way with the id "+id+" in the" +
+					" response! Either it has not been requested in the API call, or the" +
+					" response is not in the expected format: First nodes, then ways, then" +
+					" relations.");
 		}
-		return new ElementGeometry(outer, inner);
+		return result;
 	}
-
 }

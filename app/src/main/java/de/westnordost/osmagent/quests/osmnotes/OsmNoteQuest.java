@@ -8,6 +8,7 @@ import de.westnordost.osmagent.quests.Quest;
 import de.westnordost.osmagent.quests.QuestImportance;
 import de.westnordost.osmagent.quests.QuestStatus;
 import de.westnordost.osmagent.quests.QuestType;
+import de.westnordost.osmagent.quests.osm.ElementGeometry;
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.notes.Note;
 
@@ -68,6 +69,12 @@ public class OsmNoteQuest implements Quest
 	{
 		return note != null ? note.position : changes.position;
 		// notes with neither note.position nor changes.position set should not exist
+	}
+
+	@Override public ElementGeometry getGeometry()
+	{
+		// no geometry other than the marker location
+		return null;
 	}
 
 	public Note getNote()

@@ -7,4 +7,6 @@ public class OsmagentConstants
 		VERSION = "1.0",
 		USER_AGENT = NAME + " " + VERSION,
 		QUESTTYPE_TAG_KEY = NAME + ":quest_type";
+
+
 }
