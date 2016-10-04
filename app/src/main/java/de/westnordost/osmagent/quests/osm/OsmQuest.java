@@ -110,7 +110,7 @@ public class OsmQuest implements Quest
 		return lastUpdate;
 	}
 
-	public void setId(long id)
+	@Override public void setId(long id)
 	{
 		this.id = id;
 	}

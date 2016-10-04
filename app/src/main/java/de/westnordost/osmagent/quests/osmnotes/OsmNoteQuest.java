@@ -14,27 +14,17 @@ import de.westnordost.osmapi.notes.Note;
 
 public class OsmNoteQuest implements Quest
 {
-
-	/** A new note quest treated as answered to have a note created with the given text at the given
-	 * position */
-	public OsmNoteQuest(LatLon position, String text)
-	{
-		this(null, null, QuestStatus.ANSWERED, new NoteChange(position, text), new Date());
-	}
-
-	/** A new note quest for having the user contribute to the note discussion */
 	public OsmNoteQuest(Note note)
 	{
 		this(null, note, QuestStatus.NEW, null, new Date());
 	}
 
-	/** Complete constructor */
-	public OsmNoteQuest(Long id, Note note, QuestStatus status, NoteChange changes, Date lastUpdate)
+	public OsmNoteQuest(Long id, Note note, QuestStatus status, String comment, Date lastUpdate)
 	{
 		this.id = id;
 		this.note = note;
 		this.status = status;
-		this.changes = changes;
+		this.comment = comment;
 		this.lastUpdate = lastUpdate;
 	}
 
@@ -42,7 +32,9 @@ public class OsmNoteQuest implements Quest
 	private Date lastUpdate;
 	private QuestStatus status;
 	private Note note;
-	private NoteChange changes;
+
+	private String comment;
+
 	private static QuestType type = new NoteQuestType();
 
 	@Override public QuestType getType()
@@ -58,6 +50,12 @@ public class OsmNoteQuest implements Quest
 	@Override public void setStatus(QuestStatus status)
 	{
 		this.status = status;
+		/* if it is hidden, clear notes comments because we do not need them anymore and they take
+		 up (a lot of) space in the DB */
+		if(!status.isVisible())
+		{
+			if (note != null) note.comments.clear();
+		}
 	}
 
 	@Override public Long getId()
@@ -67,8 +65,7 @@ public class OsmNoteQuest implements Quest
 
 	@Override public LatLon getMarkerLocation()
 	{
-		return note != null ? note.position : changes.position;
-		// notes with neither note.position nor changes.position set should not exist
+		return note.position;
 	}
 
 	@Override public ElementGeometry getGeometry()
@@ -87,14 +84,14 @@ public class OsmNoteQuest implements Quest
 		this.note = note;
 	}
 
-	public NoteChange getChanges()
+	public String getComment()
 	{
-		return changes;
+		return comment;
 	}
 
-	public void setChange(NoteChange changes)
+	public void setComment(String changes)
 	{
-		this.changes = changes;
+		this.comment = comment;
 	}
 
 	public Date getLastUpdate()
@@ -102,7 +99,7 @@ public class OsmNoteQuest implements Quest
 		return lastUpdate;
 	}
 
-	public void setId(long id)
+	@Override public void setId(long id)
 	{
 		this.id = id;
 	}

@@ -1,12 +1,16 @@
 package de.westnordost.osmagent.quests.osm.download;
 
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.Map;
+
 import de.westnordost.osmagent.quests.osm.ElementGeometry;
 import de.westnordost.osmagent.quests.osm.OsmQuest;
 import de.westnordost.osmagent.quests.osm.types.OsmElementQuestType;
 import de.westnordost.osmapi.common.Handler;
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
+import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.map.data.Node;
 import de.westnordost.osmapi.map.data.Relation;
 import de.westnordost.osmapi.map.data.Way;
@@ -21,17 +25,22 @@ public class CreateOsmQuestMapDataHandler implements MapDataHandler, GeometryMap
 
 	private final OsmElementQuestType questType;
 
-	private final HashMap<Long, Node> nodes;
-	private final HashMap<Long, Way> ways;
+	private final Map<Long, Node> nodes;
+	private final Map<Long, Way> ways;
+
+	private final Collection<LatLon> blacklistedPositions;
 
 	private final ElementGeometryCreator elementGeometryCreator;
 
 	public CreateOsmQuestMapDataHandler(OsmElementQuestType questType, Handler<OsmQuest> handler,
-										Handler<Element> elementHandler)
+										Handler<Element> elementHandler,
+										Collection<LatLon> blacklistedPositions)
 	{
 		this.handler = handler;
 		this.elementHandler = elementHandler;
 		this.questType = questType;
+		this.blacklistedPositions = blacklistedPositions;
+		// TODO inject this?
 		this.elementGeometryCreator = new ElementGeometryCreator(this);
 		nodes = new HashMap<>();
 		ways = new HashMap<>();
@@ -74,6 +83,12 @@ public class CreateOsmQuestMapDataHandler implements MapDataHandler, GeometryMap
 	{
 		// invalid geometry -> can't show this quest, so skip it
 		if(geometry == null) return;
+
+		// do not create quests whose marker is at a blacklisted position
+		if(blacklistedPositions != null && blacklistedPositions.contains(geometry.center))
+		{
+			return;
+		}
 
 		elementHandler.handle(element);
 		OsmQuest quest = new OsmQuest(questType, element.getType(), element.getId(), geometry);

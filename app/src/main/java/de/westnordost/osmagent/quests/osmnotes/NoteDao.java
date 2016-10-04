@@ -65,6 +65,12 @@ public class NoteDao
 		}
 	}
 
+	public boolean delete(long id)
+	{
+		SQLiteDatabase db = dbHelper.getWritableDatabase();
+		return db.delete(NoteTable.NAME, NoteTable.Columns.ID + " = " + id, null) == 1;
+	}
+
 	static Note createObjectFrom(Serializer serializer, Cursor cursor)
 	{
 		int colNoteId = cursor.getColumnIndexOrThrow(NoteTable.Columns.ID),

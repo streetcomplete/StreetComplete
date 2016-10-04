@@ -5,3 +5,5 @@
 /build
 /captures
 osmagent.iml
+view_db.bat
+view_test_db.bat

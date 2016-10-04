@@ -1,10 +1,10 @@
 package de.westnordost.osmagent.quests.osmnotes;
 
 import java.util.Date;
+import java.util.List;
 
 import de.westnordost.osmagent.quests.OsmagentDbTestCase;
 import de.westnordost.osmagent.quests.QuestStatus;
-import de.westnordost.osmapi.map.data.OsmLatLon;
 import de.westnordost.osmapi.notes.Note;
 
 public class OsmNoteQuestDaoTest extends OsmagentDbTestCase
@@ -24,7 +24,7 @@ public class OsmNoteQuestDaoTest extends OsmagentDbTestCase
 		Note note = NoteDaoTest.createNote();
 		OsmNoteQuest quest = new OsmNoteQuest(note);
 		noteDao.put(note);
-		quest.setId(dao.add(quest));
+		dao.add(quest);
 		OsmNoteQuest dbQuest = dao.get(quest.getId());
 
 		checkEqual(quest, dbQuest);
@@ -33,22 +33,32 @@ public class OsmNoteQuestDaoTest extends OsmagentDbTestCase
 	public void testAddGetWithChanges()
 	{
 		Note note = NoteDaoTest.createNote();
-		NoteChange change = new NoteChange(NoteChange.Action.COMMENT, "hi da du");
-
-		OsmNoteQuest quest = new OsmNoteQuest(null, note, QuestStatus.ANSWERED, change, new Date(1234));
+		OsmNoteQuest quest = new OsmNoteQuest(null, note, QuestStatus.ANSWERED, "hi da du", new Date(1234));
 		noteDao.put(note);
-		quest.setId(dao.add(quest));
+		dao.add(quest);
 		OsmNoteQuest dbQuest = dao.get(quest.getId());
 
 		checkEqual(quest, dbQuest);
 	}
 
-	public void testNoNote()
+	public void testAddTwice()
 	{
-		OsmNoteQuest quest = new OsmNoteQuest(new OsmLatLon(3,3), "open this note here...");
-		quest.setId(dao.add(quest));
-		OsmNoteQuest dbQuest = dao.get(quest.getId());
-		checkEqual(quest, dbQuest);
+		// tests if the "unique" property is set correctly in the table
+
+		Note note = NoteDaoTest.createNote();
+		noteDao.put(note);
+
+		OsmNoteQuest quest = new OsmNoteQuest(note);
+		dao.add(quest);
+
+		OsmNoteQuest questForSameNote = new OsmNoteQuest(note);
+		questForSameNote.setStatus(QuestStatus.HIDDEN);
+		boolean result = dao.add(questForSameNote);
+
+		List<OsmNoteQuest> quests = dao.getAll(null, null);
+		assertEquals(1, quests.size());
+		assertEquals(QuestStatus.NEW, quests.get(0).getStatus());
+		assertFalse(result);
 	}
 
 	private void checkEqual(OsmNoteQuest quest, OsmNoteQuest dbQuest)
@@ -56,7 +66,7 @@ public class OsmNoteQuestDaoTest extends OsmagentDbTestCase
 		assertEquals(quest.getLastUpdate(), dbQuest.getLastUpdate());
 		assertEquals(quest.getStatus(), dbQuest.getStatus());
 		assertEquals(quest.getMarkerLocation(), dbQuest.getMarkerLocation());
-		assertEquals(quest.getChanges(), dbQuest.getChanges());
+		assertEquals(quest.getComment(), dbQuest.getComment());
 		assertEquals(quest.getId(), dbQuest.getId());
 		assertEquals(quest.getType(), dbQuest.getType());
 		// note saving already tested in NoteDaoTest

@@ -60,6 +60,15 @@ public class NoteDaoTest extends OsmagentDbTestCase
 		assertEquals(0,dao.deleteUnreferenced());
 	}
 
+	public void testDelete()
+	{
+		Note note = createNote();
+		assertFalse(dao.delete(note.id));
+		dao.put(note);
+		assertTrue(dao.delete(note.id));
+		assertNull(dao.get(note.id));
+	}
+
 	private void checkEqual(Note note, Note dbNote)
 	{
 		assertEquals(note.id, dbNote.id);

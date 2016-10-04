@@ -16,7 +16,6 @@ import de.westnordost.osmagent.quests.osm.changes.StringMapChanges;
 import de.westnordost.osmagent.quests.osm.changes.StringMapEntryAdd;
 import de.westnordost.osmagent.quests.osm.changes.StringMapEntryDelete;
 import de.westnordost.osmagent.quests.osm.changes.StringMapEntryModify;
-import de.westnordost.osmagent.quests.osmnotes.NoteChange;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.map.data.OsmLatLon;
 import de.westnordost.osmapi.map.data.OsmRelationMember;
@@ -37,8 +36,6 @@ public class KryoSerializer implements Serializer
 			StringMapEntryAdd.class,
 			StringMapEntryDelete.class,
 			StringMapEntryModify.class,
-			NoteChange.class,
-			NoteChange.Action.class,
 			NoteComment.class,
 			NoteComment.Action.class,
 			Date.class,

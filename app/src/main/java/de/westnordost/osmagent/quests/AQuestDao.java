@@ -12,7 +12,7 @@ import de.westnordost.osmapi.map.data.BoundingBox;
 
 public abstract class AQuestDao<T extends Quest>
 {
-	private SQLiteOpenHelper dbHelper;
+	private final SQLiteOpenHelper dbHelper;
 
 	public AQuestDao(SQLiteOpenHelper dbHelper)
 	{
@@ -36,15 +36,51 @@ public abstract class AQuestDao<T extends Quest>
 		}
 	}
 
-	public List<Long> getIdsByStatus(QuestStatus status)
+	public List<T> getAll(BoundingBox bbox, QuestStatus status)
 	{
-		List<Long> result = new ArrayList<>();
+		WhereSelectionBuilder qb = new WhereSelectionBuilder();
+		addBBox(bbox, qb);
+		addQuestStatus(status, qb);
 
+		return getAllThings(getMergedViewName(), null, qb, new CreateFromCursor<T>()
+		{
+			@Override public T create(Cursor cursor)
+			{
+				return createObjectFrom(cursor);
+			}
+		});
+	}
+
+	protected final void addBBox(BoundingBox bbox, WhereSelectionBuilder builder)
+	{
+		if(bbox != null)
+		{
+			builder.appendAnd("(" + getLatitudeColumnName() + " BETWEEN ? AND ?)",
+					String.valueOf(bbox.getMinLatitude()),
+					String.valueOf(bbox.getMaxLatitude()));
+			builder.appendAnd("(" + getLongitudeColumnName() + " BETWEEN ? AND ?)",
+					String.valueOf(bbox.getMinLongitude()),
+					String.valueOf(bbox.getMaxLongitude()));
+		}
+	}
+
+	protected final void addQuestStatus(QuestStatus status, WhereSelectionBuilder builder)
+	{
+		if(status != null)
+		{
+			builder.appendAnd(getQuestStatusColumnName() + " = ?", status.name());
+		}
+	}
+
+	protected final <E> List<E> getAllThings(String tablename, String[] cols,
+											 WhereSelectionBuilder query, CreateFromCursor<E> creator)
+	{
 		SQLiteDatabase db = dbHelper.getReadableDatabase();
-		String[] cols = {getIdColumnName()};
-		String[] args = {status.name()};
-		Cursor cursor = db.query(getTableName(), cols, getQuestStatusColumnName() + " = ?", args,
+
+		Cursor cursor = db.query(tablename, cols, query.getWhere(), query.getArgs(),
 				null, null, null, null);
+
+		List<E> result = new ArrayList<>();
 
 		try
 		{
@@ -52,7 +88,7 @@ public abstract class AQuestDao<T extends Quest>
 			{
 				while(!cursor.isAfterLast())
 				{
-					result.add(cursor.getLong(0));
+					result.add(creator.create(cursor));
 					cursor.moveToNext();
 				}
 			}
@@ -61,43 +97,13 @@ public abstract class AQuestDao<T extends Quest>
 		{
 			cursor.close();
 		}
+
 		return result;
 	}
 
-	public List<T> getAll(BoundingBox bbox, QuestStatus status)
+	protected interface CreateFromCursor<E>
 	{
-		SQLiteDatabase db = dbHelper.getReadableDatabase();
-
-		String query = getQuestStatusColumnName() + " = ? AND " +
-				"("+getLatitudeColumnName()+" BETWEEN ? AND ?) AND " +
-				"("+getLongitudeColumnName()+" BETWEEN ? AND ?)";
-
-		String[] args = {status.name(),
-				String.valueOf(bbox.getMinLatitude()), String.valueOf(bbox.getMaxLatitude()),
-				String.valueOf(bbox.getMinLongitude()), String.valueOf(bbox.getMaxLongitude())
-		};
-
-		Cursor cursor = db.query(getMergedViewName(), null, query, args, null, null, null, null);
-
-		List<T> result = new ArrayList<>();
-
-		try
-		{
-			if(cursor.moveToFirst())
-			{
-				while(!cursor.isAfterLast())
-				{
-					result.add(createObjectFrom(cursor));
-					cursor.moveToNext();
-				}
-			}
-		}
-		finally
-		{
-			cursor.close();
-		}
-
-		return result;
+		E create(Cursor cursor);
 	}
 
 	public void update(T quest)
@@ -113,18 +119,46 @@ public abstract class AQuestDao<T extends Quest>
 		}
 	}
 
-	public int delete(long id)
+	public boolean delete(long id)
 	{
 		SQLiteDatabase db = dbHelper.getWritableDatabase();
-		return db.delete(getTableName(), getIdColumnName() + " = " + id, null);
+		return db.delete(getTableName(), getIdColumnName() + " = " + id, null) == 1;
 	}
 
-	public long add(T quest)
+	/** Add given quest to DB and sets the quest's id after inserting it
+	 * @return true if successfully inserted, false if quest already exists in DB (= not inserted) */
+	public boolean add(T quest)
 	{
 		SQLiteDatabase db = dbHelper.getWritableDatabase();
 
-		return db.insertWithOnConflict(getTableName(), null, createContentValuesFrom(quest),
+		long rowId = db.insertWithOnConflict(getTableName(), null, createContentValuesFrom(quest),
 				SQLiteDatabase.CONFLICT_IGNORE);
+
+		boolean alreadyExists = rowId == -1;
+		if(!alreadyExists)
+		{
+			quest.setId(rowId);
+		}
+		return !alreadyExists;
+	}
+
+	/** Add given quest to DB and sets the quest's id after inserting it. If the quest already
+	 *  exists, replaces it with the given one. */
+	public void replace(T quest)
+	{
+		SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+		long rowId = db.insertWithOnConflict(getTableName(), null, createContentValuesFrom(quest),
+				SQLiteDatabase.CONFLICT_REPLACE);
+
+		quest.setId(rowId);
+	}
+
+	private ContentValues createContentValuesFrom(T object)
+	{
+		ContentValues result = createFinalContentValuesFrom(object);
+		result.putAll(createNonFinalContentValuesFrom(object));
+		return result;
 	}
 
 	protected abstract String getTableName();
@@ -136,6 +170,6 @@ public abstract class AQuestDao<T extends Quest>
 	protected abstract String getLongitudeColumnName();
 
 	protected abstract ContentValues createNonFinalContentValuesFrom(T object);
-	protected abstract ContentValues createContentValuesFrom(T object);
+	protected abstract ContentValues createFinalContentValuesFrom(T object);
 	protected abstract T createObjectFrom(Cursor cursor);
 }

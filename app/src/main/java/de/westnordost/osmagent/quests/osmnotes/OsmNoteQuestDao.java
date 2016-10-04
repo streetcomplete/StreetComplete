@@ -59,18 +59,17 @@ public class OsmNoteQuestDao extends AQuestDao<OsmNoteQuest>
 		values.put(OsmNoteQuestTable.Columns.QUEST_STATUS, quest.getStatus().name());
 		values.put(OsmNoteQuestTable.Columns.LAST_UPDATE, quest.getLastUpdate().getTime());
 
-		if(quest.getChanges() != null)
+		if(quest.getComment() != null)
 		{
-			values.put(OsmNoteQuestTable.Columns.CHANGES, serializer.toBytes(quest.getChanges()));
+			values.put(OsmNoteQuestTable.Columns.COMMENT, quest.getComment());
 		}
 
 		return values;
 	}
 
-	@Override protected ContentValues createContentValuesFrom(OsmNoteQuest quest)
+	@Override protected ContentValues createFinalContentValuesFrom(OsmNoteQuest quest)
 	{
-		ContentValues values = createNonFinalContentValuesFrom(quest);
-		values.put(OsmNoteQuestTable.Columns.QUEST_ID, quest.getId());
+		ContentValues values = new ContentValues();
 		if(quest.getNote() != null)
 		{
 			values.put(OsmNoteQuestTable.Columns.NOTE_ID, quest.getNote().id);
@@ -83,15 +82,15 @@ public class OsmNoteQuestDao extends AQuestDao<OsmNoteQuest>
 		int colQuestId = cursor.getColumnIndexOrThrow(OsmNoteQuestTable.Columns.QUEST_ID),
 			colNoteId = cursor.getColumnIndexOrThrow(OsmNoteQuestTable.Columns.NOTE_ID),
 			colQuestStatus = cursor.getColumnIndexOrThrow(OsmNoteQuestTable.Columns.QUEST_STATUS),
-			colChanges = cursor.getColumnIndexOrThrow(OsmNoteQuestTable.Columns.CHANGES),
+			colComment = cursor.getColumnIndexOrThrow(OsmNoteQuestTable.Columns.COMMENT),
 			colLastUpdate = cursor.getColumnIndexOrThrow(OsmNoteQuestTable.Columns.LAST_UPDATE);
 
 		long questId = cursor.getLong(colQuestId);
 
-		NoteChange changes = null;
-		if(!cursor.isNull(colChanges))
+		String comment = null;
+		if(!cursor.isNull(colComment))
 		{
-			changes = serializer.toObject(cursor.getBlob(colChanges), NoteChange.class);
+			comment = cursor.getString(colComment);
 		}
 		QuestStatus status = QuestStatus.valueOf(cursor.getString(colQuestStatus));
 
@@ -103,6 +102,6 @@ public class OsmNoteQuestDao extends AQuestDao<OsmNoteQuest>
 			note = NoteDao.createObjectFrom(serializer, cursor);
 		}
 
-		return new OsmNoteQuest(questId, note, status, changes, lastUpdate);
+		return new OsmNoteQuest(questId, note, status, comment, lastUpdate);
 	}
 }

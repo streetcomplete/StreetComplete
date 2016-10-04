@@ -45,14 +45,15 @@ public class AQuestDaoTest extends AndroidDbTestCase
 
 	@Override public void tearDown()
 	{
-		super.tearDown();
+		// first close, then call super (= delete database) to avoid warning
 		dbHelper.close();
+		super.tearDown();
 	}
 
 	public void testAddGet()
 	{
 		long id = 3;
-		Quest q = createQuest(id,0,0, QuestStatus.CANCELED);
+		Quest q = createQuest(id,0,0, QuestStatus.HIDDEN);
 		dao.add(q);
 		Quest q2 = dao.get(id);
 
@@ -63,17 +64,25 @@ public class AQuestDaoTest extends AndroidDbTestCase
 
 	public void testAddNoOverwrite()
 	{
-		dao.add(createQuest(3,0,0, QuestStatus.CANCELED));
+		dao.add(createQuest(3,0,0, QuestStatus.HIDDEN));
 		dao.add(createQuest(3,0,0, QuestStatus.NEW));
 
-		assertEquals(QuestStatus.CANCELED, dao.get(3).getStatus());
+		assertEquals(QuestStatus.HIDDEN, dao.get(3).getStatus());
+	}
+
+	public void testReplace()
+	{
+		dao.add(createQuest(3,0,0, QuestStatus.HIDDEN));
+		dao.replace(createQuest(3,0,0, QuestStatus.NEW));
+
+		assertEquals(QuestStatus.NEW, dao.get(3).getStatus());
 	}
 
 	public void testDelete()
 	{
-		assertEquals(0,dao.delete(0));
+		assertFalse(dao.delete(0));
 		dao.add(createQuest(1,0,0, QuestStatus.NEW));
-		assertEquals(1,dao.delete(1));
+		assertTrue(dao.delete(1));
 	}
 
 	public void testUpdateException()
@@ -91,20 +100,6 @@ public class AQuestDaoTest extends AndroidDbTestCase
 		dao.add(createQuest(1,0,0, QuestStatus.NEW));
 		dao.update(createQuest(1,0,0, QuestStatus.ANSWERED));
 		assertEquals(QuestStatus.ANSWERED, dao.get(1).getStatus());
-	}
-
-	public void testSeveralIdsGetByStatus()
-	{
-		dao.add(createQuest(1,0,0, QuestStatus.NEW));
-		dao.add(createQuest(2,0,0, QuestStatus.NEW));
-		dao.add(createQuest(2,0,0, QuestStatus.ANSWERED));
-		assertEquals(2,dao.getIdsByStatus(QuestStatus.NEW).size());
-	}
-
-	public void testNoIdsGetByStatus()
-	{
-		dao.add(createQuest(1,0,0, QuestStatus.NEW));
-		assertTrue(dao.getIdsByStatus(QuestStatus.ANSWERED).isEmpty());
 	}
 
 	public void testGetAllByBoundingBox()
@@ -177,9 +172,9 @@ public class AQuestDaoTest extends AndroidDbTestCase
 			return v;
 		}
 
-		@Override protected ContentValues createContentValuesFrom(Quest quest)
+		@Override protected ContentValues createFinalContentValuesFrom(Quest quest)
 		{
-			ContentValues v = createNonFinalContentValuesFrom(quest);
+			ContentValues v = new ContentValues();
 			v.put(ID_COL, quest.getId());
 			v.put(LAT_COL, quest.getMarkerLocation().getLatitude());
 			v.put(LON_COL, quest.getMarkerLocation().getLongitude());

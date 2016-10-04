@@ -51,7 +51,7 @@ dependencies {
 
     // talking with OSM Api
     compile 'oauth.signpost:signpost-core:1.2.1.2'
-    compile ('de.westnordost:osmapi:1.1') {
+    compile ('de.westnordost:osmapi:1.2') {
         // it's already included in Android
         exclude group: 'net.sf.kxml', module: 'kxml2'
     }

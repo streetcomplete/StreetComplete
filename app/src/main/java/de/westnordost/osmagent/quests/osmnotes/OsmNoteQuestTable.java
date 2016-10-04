@@ -12,7 +12,7 @@ public class OsmNoteQuestTable
 				QUEST_ID = "quest_id",
 				NOTE_ID = NoteTable.Columns.ID,
 				QUEST_STATUS = "quest_status",
-				CHANGES = "changes",
+				COMMENT = "changes",
 				LAST_UPDATE = "last_update";
 	}
 }

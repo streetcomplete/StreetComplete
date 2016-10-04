@@ -5,16 +5,20 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.inject.Inject;
 
 import de.westnordost.osmagent.quests.AQuestDao;
+import de.westnordost.osmagent.quests.QuestType;
+import de.westnordost.osmagent.quests.WhereSelectionBuilder;
 import de.westnordost.osmagent.quests.osm.ElementGeometry;
 import de.westnordost.osmagent.quests.osm.OsmQuest;
 import de.westnordost.osmagent.quests.QuestStatus;
 import de.westnordost.osmagent.quests.osm.changes.StringMapChanges;
 import de.westnordost.osmagent.quests.osm.types.OsmElementQuestType;
 import de.westnordost.osmagent.util.Serializer;
+import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
 
 public class OsmQuestDao extends AQuestDao<OsmQuest>
@@ -28,6 +32,31 @@ public class OsmQuestDao extends AQuestDao<OsmQuest>
 		super(dbHelper);
 		this.serializer = serializer;
 		this.questTypePackage = questTypePackage;
+	}
+
+	public List<OsmQuest> getAll(BoundingBox bbox, QuestStatus status, QuestType questType)
+	{
+		WhereSelectionBuilder qb = new WhereSelectionBuilder();
+		addBBox(bbox, qb);
+		addQuestStatus(status, qb);
+		addQuestType(questType, qb);
+
+		return getAllThings(getMergedViewName(), null, qb, new CreateFromCursor<OsmQuest>()
+		{
+			@Override public OsmQuest create(Cursor cursor)
+			{
+				return createObjectFrom(cursor);
+			}
+		});
+	}
+
+	private void addQuestType(QuestType questType, WhereSelectionBuilder builder)
+	{
+		if(questType != null)
+		{
+			String questTypeName = questType.getClass().getSimpleName();
+			builder.appendAnd(OsmQuestTable.Columns.QUEST_TYPE + " = ?", questTypeName);
+		}
 	}
 
 	@Override protected String getTableName()
@@ -60,9 +89,9 @@ public class OsmQuestDao extends AQuestDao<OsmQuest>
 		return OsmQuestTable.Columns.QUEST_STATUS;
 	}
 
-	@Override protected ContentValues createContentValuesFrom(OsmQuest quest)
+	@Override protected ContentValues createFinalContentValuesFrom(OsmQuest quest)
 	{
-		ContentValues values = createNonFinalContentValuesFrom(quest);
+		ContentValues values = new ContentValues();
 		values.put(OsmQuestTable.Columns.QUEST_TYPE, quest.getType().getClass().getSimpleName());
 		values.put(OsmQuestTable.Columns.ELEMENT_ID, quest.getElementId());
 		values.put(OsmQuestTable.Columns.ELEMENT_TYPE, quest.getElementType().name());

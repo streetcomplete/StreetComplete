@@ -35,8 +35,9 @@ public class AOsmElementDaoTest extends AndroidDbTestCase
 
 	@Override public void tearDown()
 	{
-		super.tearDown();
+		// first close, then call super (= delete database) to avoid warning
 		dbHelper.close();
+		super.tearDown();
 	}
 
 	public void testPutGet()

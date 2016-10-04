@@ -11,6 +11,6 @@ import dagger.Component;
 public interface ApplicationComponent
 {
 	Context appContext();
-	//QuestController makeQuestController();
+	//QuestChangesUploader makeQuestController();
 	// TODO
 }

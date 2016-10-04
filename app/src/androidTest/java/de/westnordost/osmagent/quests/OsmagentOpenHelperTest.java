@@ -17,8 +17,9 @@ public class OsmagentOpenHelperTest extends AndroidDbTestCase
 
 	@Override public void tearDown()
 	{
-		super.tearDown();
+		// first close, then call super (= delete database) to avoid warning
 		helper.close();
+		super.tearDown();
 	}
 
 	public void testSetUp()

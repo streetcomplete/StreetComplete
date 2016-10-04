@@ -20,8 +20,7 @@ public abstract class OverpassQuestType implements OsmElementQuestType
 		return filter.toOverpassQLString(bbox);
 	}
 
-	@Override
-	public boolean appliesTo(Element element)
+	@Override public boolean appliesTo(Element element)
 	{
 		return filter.matches(element);
 	}

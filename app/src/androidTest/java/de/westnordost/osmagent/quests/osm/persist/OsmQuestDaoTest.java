@@ -14,6 +14,7 @@ import de.westnordost.osmagent.quests.osm.changes.StringMapEntryChange;
 import de.westnordost.osmagent.quests.osm.changes.StringMapEntryDelete;
 import de.westnordost.osmagent.quests.osm.changes.StringMapEntryModify;
 import de.westnordost.osmagent.quests.osm.persist.test.TestQuestType;
+import de.westnordost.osmagent.quests.osm.persist.test.TestQuestType2;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.map.data.OsmLatLon;
 
@@ -38,7 +39,7 @@ public class OsmQuestDaoTest extends OsmagentDbTestCase
 
 		geometryDao.put(quest.getElementType(), quest.getElementId(), geometry);
 
-		quest.setId(dao.add(quest));
+		dao.add(quest);
 		assertEquals(1, (long) quest.getId());
 		OsmQuest dbQuest = dao.get(1);
 
@@ -58,11 +59,28 @@ public class OsmQuestDaoTest extends OsmagentDbTestCase
 
 		geometryDao.put(quest.getElementType(), quest.getElementId(), geometry);
 
-		quest.setId(dao.add(quest));
+		dao.add(quest);
 		assertEquals(1, (long) quest.getId());
 		OsmQuest dbQuest = dao.get(1);
 
 		checkEqual(quest, dbQuest);
+	}
+
+	public void testGetAllByBBoxAndType()
+	{
+		ElementGeometry geometry = new ElementGeometry(new OsmLatLon(5,5));
+		OsmQuest quest1 = new OsmQuest(null, new TestQuestType(), Element.Type.NODE, 11,
+				QuestStatus.ANSWERED, null, new Date(1000), geometry);
+		OsmQuest quest2 = new OsmQuest(null, new TestQuestType2(), Element.Type.NODE, 11,
+				QuestStatus.ANSWERED, null, new Date(1000), geometry);
+
+		geometryDao.put(quest1.getElementType(), quest1.getElementId(), geometry);
+		dao.add(quest1);
+		dao.add(quest2);
+
+		assertEquals(1,dao.getAll(null, null, new TestQuestType()).size());
+		assertEquals(2,dao.getAll(null, null, null).size());
+
 	}
 
 	private void checkEqual(OsmQuest quest, OsmQuest dbQuest)

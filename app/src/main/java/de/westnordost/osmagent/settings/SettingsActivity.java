@@ -1,5 +1,6 @@
 package de.westnordost.osmagent.settings;
 
+import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
+import de.westnordost.osmagent.Prefs;
 import de.westnordost.osmagent.oauth.OAuth;
 import de.westnordost.osmagent.R;
 import de.westnordost.osmagent.quests.OsmModule;
@@ -18,6 +20,7 @@ import de.westnordost.osmagent.oauth.OAuthWebViewDialogFragment;
 import de.westnordost.osmapi.OsmConnection;
 import de.westnordost.osmapi.user.Permission;
 import de.westnordost.osmapi.user.PermissionsDao;
+import de.westnordost.osmapi.user.UserDao;
 import oauth.signpost.OAuthConsumer;
 
 public class SettingsActivity extends AppCompatActivity implements OAuthWebViewDialogFragment.OAuthListener
@@ -34,6 +37,7 @@ public class SettingsActivity extends AppCompatActivity implements OAuthWebViewD
 	public void onOAuthAuthorized(OAuthConsumer consumer)
 	{
 		List<String> expectedPermissions = Arrays.asList(
+				Permission.READ_PREFERENCES_AND_USER_DETAILS,
 				Permission.MODIFY_MAP,
 				Permission.WRITE_NOTES,
 				Permission.WRITE_GPS_TRACES);
@@ -49,12 +53,26 @@ public class SettingsActivity extends AppCompatActivity implements OAuthWebViewD
 
 	private void onAuthorizationFailed()
 	{
-		OAuth.deleteConsumer(PreferenceManager.getDefaultSharedPreferences(this));
+		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+
+		OAuth.deleteConsumer(prefs);
+
+		SharedPreferences.Editor editor = prefs.edit();
+		editor.remove(Prefs.OSM_USER_ID);
+		editor.apply();
 	}
 
 	private void onAuthorizationSuccess(OAuthConsumer consumer)
 	{
-		OAuth.saveConsumer(PreferenceManager.getDefaultSharedPreferences(this), consumer);
+		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+
+		OAuth.saveConsumer(prefs, consumer);
+
+		OsmConnection osm = OsmModule.osmConnection(consumer);
+
+		SharedPreferences.Editor editor = prefs.edit();
+		editor.putLong(Prefs.OSM_USER_ID, new UserDao(osm).getMine().id);
+		editor.apply();
 	}
 
 	private class VerifyPermissionsTask extends InlineAsyncTask<Boolean>

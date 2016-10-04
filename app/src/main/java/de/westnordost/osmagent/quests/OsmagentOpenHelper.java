@@ -9,6 +9,7 @@ import javax.inject.Singleton;
 import de.westnordost.osmagent.quests.osm.persist.ElementGeometryTable;
 import de.westnordost.osmagent.quests.osm.persist.NodeTable;
 import de.westnordost.osmagent.quests.osm.persist.OsmQuestTable;
+import de.westnordost.osmagent.quests.osmnotes.CreateNoteTable;
 import de.westnordost.osmagent.quests.osmnotes.NoteTable;
 import de.westnordost.osmagent.quests.osm.persist.RelationTable;
 import de.westnordost.osmagent.quests.osm.persist.WayTable;
@@ -31,7 +32,7 @@ public class OsmagentOpenHelper extends SQLiteOpenHelper
 				OsmQuestTable.Columns.LAST_UPDATE + 	" int			NOT NULL, " +
 				OsmQuestTable.Columns.ELEMENT_ID +		" int			NOT NULL, " +
 				OsmQuestTable.Columns.ELEMENT_TYPE +	" varchar(255)	NOT NULL, " +
-				"CONSTRAINT same_quest UNIQUE (" +
+				"CONSTRAINT same_osm_quest UNIQUE (" +
 					OsmQuestTable.Columns.QUEST_TYPE + ", " +
 					OsmQuestTable.Columns.ELEMENT_ID + ", " +
 					OsmQuestTable.Columns.ELEMENT_TYPE +
@@ -69,15 +70,14 @@ public class OsmagentOpenHelper extends SQLiteOpenHelper
 
 	private static final String OSM_NOTES_QUESTS_TABLE_CREATE =
 			"CREATE TABLE " + OsmNoteQuestTable.NAME +
-					" (" +
-					OsmNoteQuestTable.Columns.QUEST_ID + 		" INTEGER		PRIMARY KEY, " +
-					OsmNoteQuestTable.Columns.QUEST_STATUS +	" varchar(255)	NOT NULL, " +
-					OsmNoteQuestTable.Columns.CHANGES +			" blob, " +
-					OsmNoteQuestTable.Columns.LAST_UPDATE + 	" int			NOT NULL, " +
-					OsmNoteQuestTable.Columns.NOTE_ID + " INTEGER, " +
-					"FOREIGN KEY (" + OsmNoteQuestTable.Columns.NOTE_ID +
-					") REFERENCES " + NoteTable.NAME + "(" + NoteTable.Columns.ID + ")" +
-					");";
+			" (" +
+				OsmNoteQuestTable.Columns.QUEST_ID + 		" INTEGER		PRIMARY KEY, " +
+				OsmNoteQuestTable.Columns.QUEST_STATUS +	" varchar(255)	NOT NULL, " +
+				OsmNoteQuestTable.Columns.COMMENT +			" text, " +
+				OsmNoteQuestTable.Columns.LAST_UPDATE + 	" int			NOT NULL, " +
+				OsmNoteQuestTable.Columns.NOTE_ID +			" INTEGER		UNIQUE NOT NULL " +
+					"REFERENCES " + NoteTable.NAME + "(" + NoteTable.Columns.ID + ")" +
+			");";
 
 	private static final String NOTES_TABLE_CREATE =
 			"CREATE TABLE " + NoteTable.NAME +
@@ -91,12 +91,19 @@ public class OsmagentOpenHelper extends SQLiteOpenHelper
 					NoteTable.Columns.COMMENTS +	" blob			NOT NULL" +
 					");";
 
+	private static final String CREATE_OSM_NOTES_TABLE_CREATE =
+			"CREATE TABLE " + CreateNoteTable.NAME +
+					" (" +
+					CreateNoteTable.Columns.ID + 		" INTEGER		PRIMARY KEY, " +
+					CreateNoteTable.Columns.LATITUDE + 	" double		NOT NULL, " +
+					CreateNoteTable.Columns.LONGITUDE + " double		NOT NULL, " +
+					CreateNoteTable.Columns.TEXT + 		" text			NOT NULL" +
+					");";
+
 	private static final String OSM_NOTES_VIEW_CREATE =
 			"CREATE VIEW " + OsmNoteQuestTable.NAME_MERGED_VIEW + " AS " +
 			"SELECT * FROM " + OsmNoteQuestTable.NAME + " " +
-				"LEFT OUTER JOIN " + NoteTable.NAME + " USING (" + NoteTable.Columns.ID + ");";
-	// outer join because note id of quest table is null for newly to be created notes; these rows
-	// should still turn up in the result set
+				"INNER JOIN " + NoteTable.NAME + " USING (" + NoteTable.Columns.ID + ");";
 
 	private static final String NODES_TABLE_CREATE =
 			"CREATE TABLE " + NodeTable.NAME +
@@ -133,14 +140,6 @@ public class OsmagentOpenHelper extends SQLiteOpenHelper
 				QuestStatisticsTable.Columns.SUCCEEDED +	" int			NOT NULL " +
 			");";
 
-	private static final String OSM_QUESTS_TABLE_QUEST_STATUS_INDEX_CREATE =
-			"CREATE INDEX osm_quest_status_idx ON " + OsmQuestTable.NAME + " (" +
-					OsmQuestTable.Columns.QUEST_STATUS + ");";
-
-	private static final String OSM_NOTES_QUESTS_TABLE_QUESTSTATUS_INDEX_CREATE =
-			"CREATE INDEX osm_note_quest_status_idx ON " + OsmNoteQuestTable.NAME + " (" +
-					OsmNoteQuestTable.Columns.QUEST_STATUS + ");";
-
 	public OsmagentOpenHelper(Context context)
 	{
 		super(context, DB_NAME, null, DB_VERSION);
@@ -151,18 +150,19 @@ public class OsmagentOpenHelper extends SQLiteOpenHelper
 	{
 		db.execSQL(ELEMENTS_GEOMETRY_TABLE_CREATE);
 		db.execSQL(OSM_QUESTS_TABLE_CREATE);
+
 		db.execSQL(NODES_TABLE_CREATE);
 		db.execSQL(WAYS_TABLE_CREATE);
 		db.execSQL(RELATIONS_TABLE_CREATE);
+
 		db.execSQL(NOTES_TABLE_CREATE);
 		db.execSQL(OSM_NOTES_QUESTS_TABLE_CREATE);
+		db.execSQL(CREATE_OSM_NOTES_TABLE_CREATE);
+
 		db.execSQL(QUEST_STATISTICS_CREATE);
 
 		db.execSQL(OSM_QUESTS_VIEW_CREATE);
 		db.execSQL(OSM_NOTES_VIEW_CREATE);
-
-		db.execSQL(OSM_QUESTS_TABLE_QUEST_STATUS_INDEX_CREATE);
-		db.execSQL(OSM_NOTES_QUESTS_TABLE_QUESTSTATUS_INDEX_CREATE);
 	}
 
 	@Override

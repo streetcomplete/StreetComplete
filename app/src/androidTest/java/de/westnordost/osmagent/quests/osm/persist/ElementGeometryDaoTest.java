@@ -3,6 +3,7 @@ package de.westnordost.osmagent.quests.osm.persist;
 import org.mockito.Mockito;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import de.westnordost.osmagent.quests.OsmagentDbTestCase;
 import de.westnordost.osmagent.quests.osm.ElementGeometry;
@@ -43,27 +44,27 @@ public class ElementGeometryDaoTest extends OsmagentDbTestCase
 		assertEquals(geometry, dbGeometry);
 	}
 
-	public void testWayGeometryPutGet()
+	public void testPolylineGeometryPutGet()
 	{
-		ElementGeometry geometry = new ElementGeometry(createSomeLatLons(0));
+		List<List<LatLon>> polylines = new ArrayList<>();
+		polylines.add(createSomeLatLons(0));
+
+		ElementGeometry geometry = new ElementGeometry(polylines, null);
 		dao.put(Element.Type.WAY, 0, geometry);
 		ElementGeometry dbGeometry = dao.get(Element.Type.WAY, 0);
 
 		assertEquals(geometry, dbGeometry);
 	}
 
-	public void testComplexGeometryPutGet()
+	public void testPolygonGeometryPutGet()
 	{
-		ArrayList<ArrayList<LatLon>> outer = new ArrayList<>();
-		outer.add(createSomeLatLons(0));
-		outer.add(createSomeLatLons(10));
+		List<List<LatLon>> polygons = new ArrayList<>();
+		polygons.add(createSomeLatLons(0));
+		polygons.add(createSomeLatLons(10));
 
-		ArrayList<ArrayList<LatLon>> inner = new ArrayList<>();
-		inner.add(createSomeLatLons(5));
-
-		ElementGeometry geometry = new ElementGeometry(outer, inner);
-		dao.put(Element.Type.WAY, 0, geometry);
-		ElementGeometry dbGeometry = dao.get(Element.Type.WAY, 0);
+		ElementGeometry geometry = new ElementGeometry(polygons, null);
+		dao.put(Element.Type.RELATION, 0, geometry);
+		ElementGeometry dbGeometry = dao.get(Element.Type.RELATION, 0);
 
 		assertEquals(geometry, dbGeometry);
 	}
@@ -88,9 +89,9 @@ public class ElementGeometryDaoTest extends OsmagentDbTestCase
 		return new ElementGeometry(new OsmLatLon(50,50));
 	}
 
-	private ArrayList<LatLon> createSomeLatLons(double start)
+	private List<LatLon> createSomeLatLons(double start)
 	{
-		ArrayList<LatLon> result = new ArrayList<>(5);
+		List<LatLon> result = new ArrayList<>(5);
 		for(int i = 0; i < 5; ++i)
 		{
 			result.add(new OsmLatLon(start+i, start+i));

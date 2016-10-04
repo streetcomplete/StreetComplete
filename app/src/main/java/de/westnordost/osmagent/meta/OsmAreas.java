@@ -30,6 +30,8 @@ public class OsmAreas
 
 	public static boolean isArea(Relation relation)
 	{
-		return relation.getTags() != null && relation.getTags().get("type").equals("multipolygon");
+		if(relation.getTags() == null) return false;
+		if(!relation.getTags().containsKey("type")) return false;
+		return relation.getTags().get("type").equals("multipolygon");
 	}
 }

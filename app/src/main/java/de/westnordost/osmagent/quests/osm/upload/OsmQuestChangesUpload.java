@@ -6,6 +6,7 @@ import android.content.res.Resources;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import javax.inject.Inject;
 
@@ -13,6 +14,7 @@ import de.westnordost.osmagent.OsmagentConstants;
 import de.westnordost.osmagent.quests.QuestStatus;
 import de.westnordost.osmagent.quests.osm.OsmQuest;
 import de.westnordost.osmagent.quests.osm.changes.StringMapChanges;
+import de.westnordost.osmagent.quests.osm.persist.ElementGeometryDao;
 import de.westnordost.osmagent.quests.osm.persist.MergedElementDao;
 import de.westnordost.osmagent.quests.osm.persist.OsmQuestDao;
 import de.westnordost.osmagent.quests.statistics.QuestStatisticsDao;
@@ -22,46 +24,56 @@ import de.westnordost.osmapi.map.MapDataDao;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.map.data.OsmElement;
 
-
-public class OsmQuestChangesUploadTask implements Runnable
+// TODO test case
+public class OsmQuestChangesUpload
 {
-	@Inject Resources resources;
+	private final Resources resources;
+	private final MapDataDao osmDao;
+	private final OsmQuestDao questDB;
+	private final MergedElementDao elementDB;
+	private final ElementGeometryDao elementGeometryDB;
+	private final QuestStatisticsDao statisticsDB;
 
-	@Inject MapDataDao osmDao;
-
-	@Inject OsmQuestDao questDB;
-	@Inject MergedElementDao elementDB;
-
-	@Inject QuestStatisticsDao statisticsDB;
-
-	public Long questId;
-
-	@Override public void run()
+	@Inject public OsmQuestChangesUpload(
+			MapDataDao osmDao, OsmQuestDao questDB, MergedElementDao elementDB,
+			ElementGeometryDao elementGeometryDB, Resources resources, QuestStatisticsDao statisticsDB)
 	{
-		if(questId == null) throw new IllegalStateException("Quest must be set");
-
-		OsmQuest quest = questDB.get(questId);
-		if(quest == null || quest.getStatus() != QuestStatus.ANSWERED)
-		{
-			return;
-		}
-
-		Element element = elementDB.get(quest.getElementType(), quest.getElementId());
-
-		boolean success = uploadQuestChanges(quest, element, false);
-
-		if(success)
-		{
-			statisticsDB.addOne(quest.getType().getClass().getSimpleName());
-		}
-
-		questDB.delete(quest.getId());
+		this.resources = resources;
+		this.osmDao = osmDao;
+		this.questDB = questDB;
+		this.elementDB = elementDB;
+		this.statisticsDB = statisticsDB;
+		this.elementGeometryDB = elementGeometryDB;
 	}
 
-	private boolean uploadQuestChanges( OsmQuest quest, Element element,
-										boolean alreadyHandlingConflict)
+	public void upload(AtomicBoolean cancelState)
 	{
-		// element is not there anymore (deleted)
+		for(OsmQuest quest : questDB.getAll(null, QuestStatus.ANSWERED))
+		{
+			if(cancelState.get()) break; // break so that the unreferenced stuff is deleted still
+
+			Element element = elementDB.get(quest.getElementType(), quest.getElementId());
+
+			Map<String,String> changesetTags = createChangesetTags(quest.getOsmElementQuestType());
+			boolean success = uploadQuestChanges(quest, element, changesetTags, false);
+
+			if (success)
+			{
+				statisticsDB.addOne(quest.getType().getClass().getSimpleName());
+			}
+
+			questDB.delete(quest.getId());
+		}
+
+		elementGeometryDB.deleteUnreferenced();
+		elementDB.deleteUnreferenced();
+	}
+
+	private boolean uploadQuestChanges(
+			OsmQuest quest, Element element, Map<String,String> changesetTags,
+			boolean alreadyHandlingConflict)
+	{
+		// The element can be null if it has been deleted in the meantime (outside this app usually)
 		if(element == null)
 		{
 			return false;
@@ -80,12 +92,9 @@ public class OsmQuestChangesUploadTask implements Runnable
 		}
 		changes.applyTo(element.getTags());
 
-		Map<String,String> changesetTags = createChangesetTags(quest.getOsmElementQuestType());
-
 		try
 		{
-			osmDao.updateMap(
-					changesetTags, Collections.singleton(element), null);
+			osmDao.updateMap( changesetTags, Collections.singleton(element), null);
 			/* A diff handler is not (yet) necessary: The local copy of an OSM element is updated
 			 * automatically on conflict. A diff handler would be necessary if elements could be
 			 * created or deleted through quests because IDs of elements would then change. */
@@ -103,7 +112,7 @@ public class OsmQuestChangesUploadTask implements Runnable
 						"local version is " + element.getVersion(), e);
 			}
 			element = updateElementFromServer(quest.getElementType(), quest.getId());
-			uploadQuestChanges(quest, element, true);
+			uploadQuestChanges(quest, element, changesetTags, true);
 		}
 		return true;
 	}

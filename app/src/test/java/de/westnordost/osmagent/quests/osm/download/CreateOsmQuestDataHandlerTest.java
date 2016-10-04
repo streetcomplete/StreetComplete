@@ -2,7 +2,11 @@ package de.westnordost.osmagent.quests.osm.download;
 
 import junit.framework.TestCase;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 import de.westnordost.osmagent.quests.osm.OsmQuest;
 import de.westnordost.osmagent.quests.osm.types.OsmElementQuestType;
@@ -81,7 +85,7 @@ public class CreateOsmQuestDataHandlerTest extends TestCase
 	{
 		try
 		{
-			new CreateOsmQuestMapDataHandler(null, null, null).getNode(0L);
+			new CreateOsmQuestMapDataHandler(null, null, null, null).getNode(0L);
 			fail();
 		}
 		catch(Exception e) { }
@@ -91,7 +95,7 @@ public class CreateOsmQuestDataHandlerTest extends TestCase
 	{
 		try
 		{
-			new CreateOsmQuestMapDataHandler(null, null, null).getWay(0L);
+			new CreateOsmQuestMapDataHandler(null, null, null, null).getWay(0L);
 			fail();
 		}
 		catch(Exception e) { }
@@ -111,6 +115,34 @@ public class CreateOsmQuestDataHandlerTest extends TestCase
 		ConvenienceTestHandler handler = new ConvenienceTestHandler(questType);
 		handler.handle(W1);
 		assertEquals(W1, handler.handler.getWay(W1.getId()));
+	}
+
+	public void testNoGeometry()
+	{
+		// not a closed polygon. So if it is interpreted as area, then the geometry is invalid
+		Map<String,String> tags = new HashMap<>();
+		tags.put("type","multipolygon");
+		Relation r = new OsmRelation(0L, 0, Arrays.asList(RM0, RM1), tags, null);
+
+		OsmElementQuestType questType = createQuestTypeFor(Relation.class);
+		ConvenienceTestHandler handler = new ConvenienceTestHandler(questType);
+		handler.handle(N0, N1, N2, W0, W1, r);
+
+		assertNull(handler.getElement());
+		assertNull(handler.getQuest());
+	}
+
+	public void testBlacklist()
+	{
+		OsmElementQuestType questType = createQuestTypeFor(Node.class);
+		Collection<LatLon> blacklistedPositions = new ArrayList<>();
+		blacklistedPositions.add(P1);
+
+		ConvenienceTestHandler handler = new ConvenienceTestHandler(questType, blacklistedPositions);
+		handler.handle(N1);
+
+		assertNull(handler.getElement());
+		assertNull(handler.getQuest());
 	}
 
 	private OsmElementQuestType createQuestTypeFor(Class<? extends Element> elementClass)
@@ -137,9 +169,14 @@ public class CreateOsmQuestDataHandlerTest extends TestCase
 		SingleElementHandler<OsmQuest> questHandler = new SingleElementHandler<>();
 		SingleElementHandler<Element> elementHandler = new SingleElementHandler<>();
 
+		public ConvenienceTestHandler(OsmElementQuestType questType, Collection<LatLon> blacklist )
+		{
+			handler = new CreateOsmQuestMapDataHandler(	questType, questHandler, elementHandler, blacklist);
+		}
+
 		public ConvenienceTestHandler(OsmElementQuestType questType )
 		{
-			handler = new CreateOsmQuestMapDataHandler(	questType, questHandler, elementHandler);
+			handler = new CreateOsmQuestMapDataHandler(	questType, questHandler, elementHandler, null);
 		}
 
 		public void handle(Element... elems)

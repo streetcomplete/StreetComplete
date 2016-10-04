@@ -7,6 +7,7 @@ import de.westnordost.osmapi.map.data.LatLon;
 public interface Quest
 {
 	Long getId();
+	void setId(long id);
 
 	LatLon getMarkerLocation();
 
