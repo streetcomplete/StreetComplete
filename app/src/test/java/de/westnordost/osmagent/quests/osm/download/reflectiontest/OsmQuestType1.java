@@ -16,4 +16,5 @@ public class OsmQuestType1 implements QuestType, OsmElementQuestType
 	@Override public int getCommitMessageResourceId() { return 0; }
 	@Override public int importance() { return 0; }
 	@Override public DialogFragment getDialog() { return null; }
+	@Override public String getIconName() {	return null; }
 }

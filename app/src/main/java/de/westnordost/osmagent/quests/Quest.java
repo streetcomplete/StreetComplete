@@ -10,12 +10,10 @@ public interface Quest
 	void setId(long id);
 
 	LatLon getMarkerLocation();
-
 	ElementGeometry getGeometry();
 
 	QuestType getType();
 
 	QuestStatus getStatus();
-
 	void setStatus(QuestStatus status);
 }

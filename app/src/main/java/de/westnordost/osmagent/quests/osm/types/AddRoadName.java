@@ -6,7 +6,6 @@ import android.os.Bundle;
 import de.westnordost.osmagent.quests.QuestImportance;
 import de.westnordost.osmagent.quests.dialogs.StreetNameDialog;
 import de.westnordost.osmagent.quests.osm.changes.StringMapChangesBuilder;
-import de.westnordost.osmapi.map.data.Element;
 
 import de.westnordost.osmagent.R;
 
@@ -49,4 +48,5 @@ public class AddRoadName extends OverpassQuestType
 		return R.string.quest_openingHours_commitMessage;
 	}
 
+	@Override public String getIconName() {	return "signpost"; }
 }

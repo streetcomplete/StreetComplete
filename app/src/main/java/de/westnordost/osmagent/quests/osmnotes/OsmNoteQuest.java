@@ -116,5 +116,7 @@ public class OsmNoteQuest implements Quest
 			// TODO create dialog for viewing a note and leaving a comment (+ closing it?)
 			return null;
 		}
+
+		@Override public String getIconName() {	return "note"; }
 	}
 }
