@@ -4,17 +4,10 @@ import java.util.HashMap;
 
 import de.westnordost.osmagent.OsmagentConstants;
 import de.westnordost.osmagent.quests.OsmagentDbTestCase;
-import de.westnordost.osmagent.quests.QuestType;
-import de.westnordost.osmagent.quests.osm.persist.test.TestQuestType;
-import de.westnordost.osmagent.quests.osm.persist.test.TestQuestType2;
-import de.westnordost.osmapi.OsmConnection;
 import de.westnordost.osmapi.changesets.ChangesetInfo;
-import de.westnordost.osmapi.changesets.ChangesetParser;
 import de.westnordost.osmapi.changesets.ChangesetsDao;
 import de.westnordost.osmapi.changesets.QueryChangesetsFilters;
 import de.westnordost.osmapi.common.Handler;
-import de.westnordost.osmapi.common.errors.OsmNotFoundException;
-import de.westnordost.osmapi.user.User;
 
 public class QuestStatisticsDaoTest extends OsmagentDbTestCase
 {

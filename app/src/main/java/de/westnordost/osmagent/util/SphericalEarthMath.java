@@ -22,10 +22,6 @@ public class SphericalEarthMath
 	 */
 	public static BoundingBox enclosingBoundingBox(LatLon center, double radius)
 	{
-		double φ = Math.toRadians(center.getLatitude());
-		double λ = Math.toRadians(center.getLongitude());
-		double Δσ = radius / EARTH_RADIUS;
-
 		double distance = sqrt(2) * radius;
 		LatLon min = translate(center, distance, 225);
 		LatLon max = translate(center, distance, 45);

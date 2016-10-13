@@ -23,12 +23,9 @@ import com.mapzen.android.lost.api.LostApiClient;
 import com.mapzen.tangram.HttpHandler;
 import com.mapzen.tangram.LngLat;
 import com.mapzen.tangram.MapController;
-import com.mapzen.tangram.MapData;
 import com.mapzen.tangram.MapView;
 
 import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
 
 import de.westnordost.osmagent.Prefs;
 import de.westnordost.osmagent.R;
@@ -45,7 +42,6 @@ public class MapFragment extends Fragment implements
 	private MapController controller;
 
 	private HttpHandler mapHttpHandler = new HttpHandler();
-
 
 	private LostApiClient lostApiClient;
 
@@ -136,14 +132,6 @@ public class MapFragment extends Fragment implements
 			@Override public void onMapReady(MapController map)
 			{
 				controller = map;
-
-				MapData mapData = controller.addDataLayer("osmagent_quests");
-
-				LngLat tappedPoint = new LngLat(9.94290,53.58057);
-				Map<String, String> props = new HashMap<>();
-				props.put("type", "point");
-				props.put("kind", "car");
-				mapData.addPoint(tappedPoint, props);
 
 				updateMapTileCacheSize();
 				controller.setHttpHandler(mapHttpHandler);

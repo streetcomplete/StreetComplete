@@ -11,7 +11,6 @@ import java.util.Map;
 import javax.inject.Inject;
 
 import de.westnordost.osmagent.OsmagentConstants;
-import de.westnordost.osmagent.quests.QuestType;
 import de.westnordost.osmapi.changesets.ChangesetInfo;
 import de.westnordost.osmapi.changesets.ChangesetsDao;
 import de.westnordost.osmapi.changesets.QueryChangesetsFilters;

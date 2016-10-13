@@ -43,7 +43,7 @@ public class LanguagesByCountry
 		}
 	}
 
-	private List<String> asList(Object input)
+	private static List<String> asList(Object input)
 	{
 		if(input instanceof String)
 		{

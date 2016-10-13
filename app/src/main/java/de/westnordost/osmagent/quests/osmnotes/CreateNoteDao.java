@@ -110,7 +110,6 @@ public class CreateNoteDao
 			colLon = cursor.getColumnIndexOrThrow(CreateNoteTable.Columns.LONGITUDE),
 			colText = cursor.getColumnIndexOrThrow(CreateNoteTable.Columns.TEXT);
 
-		long createNoteId = cursor.getLong(colNoteId);
 		CreateNote note = new CreateNote();
 		note.position = new OsmLatLon(cursor.getDouble(colLat), cursor.getDouble(colLon));
 		note.text = cursor.getString(colText);

@@ -1,10 +1,6 @@
 package de.westnordost.osmagent.quests;
 
 import android.app.DialogFragment;
-import android.os.Bundle;
-
-import de.westnordost.osmapi.map.data.BoundingBox;
-import de.westnordost.osmapi.map.data.Element;
 
 public interface QuestType
 {
@@ -13,4 +9,7 @@ public interface QuestType
 
 	/** @return the dialog in which the user can add the data */
 	DialogFragment getDialog();
+
+	/** @return the name of the icon used to display this quest type on the map */
+	String getIconName();
 }
