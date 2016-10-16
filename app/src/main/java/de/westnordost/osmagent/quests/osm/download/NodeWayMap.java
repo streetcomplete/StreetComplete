@@ -1,59 +1,59 @@
 package de.westnordost.osmagent.quests.osm.download;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 
-/** Knows which vertices connect which ways */
-public class NodeWayMap
+/** Knows which vertices connect which ways. T is the identifier of a vertex */
+public class NodeWayMap<T>
 {
-	private final Map<Long, List<List<Long>>> wayEndpoints = new TreeMap<>();
+	private final Map<T, List<List<T>>> wayEndpoints = new HashMap<>();
 
-	public NodeWayMap(List<List<Long>> ways)
+	public NodeWayMap(List<List<T>> ways)
 	{
-		for (List<Long> way : ways)
+		for (List<T> way : ways)
 		{
-			Long firstNodeId = way.get(0);
-			Long lastNodeId = way.get(way.size() - 1);
+			T firstNode = way.get(0);
+			T lastNode = way.get(way.size() - 1);
 
-			if (!wayEndpoints.containsKey(firstNodeId))
+			if (!wayEndpoints.containsKey(firstNode))
 			{
-				wayEndpoints.put(firstNodeId, new ArrayList<List<Long>>());
+				wayEndpoints.put(firstNode, new ArrayList<List<T>>());
 			}
-			if (!wayEndpoints.containsKey(lastNodeId))
+			if (!wayEndpoints.containsKey(lastNode))
 			{
-				wayEndpoints.put(lastNodeId, new ArrayList<List<Long>>());
+				wayEndpoints.put(lastNode, new ArrayList<List<T>>());
 			}
-			wayEndpoints.get(firstNodeId).add(way);
-			wayEndpoints.get(lastNodeId).add(way);
+			wayEndpoints.get(firstNode).add(way);
+			wayEndpoints.get(lastNode).add(way);
 		}
 	}
 
-	public boolean hasNextNodeId()
+	public boolean hasNextNode()
 	{
 		return !wayEndpoints.isEmpty();
 	}
 
-	public long getNextNodeId()
+	public T getNextNode()
 	{
 		return wayEndpoints.keySet().iterator().next();
 	}
 
-	public List<List<Long>> getWaysAtNode(Long nodeId)
+	public List<List<T>> getWaysAtNode(T node)
 	{
-		return wayEndpoints.get(nodeId);
+		return wayEndpoints.get(node);
 	}
 
-	public void removeWay(List<Long> way)
+	public void removeWay(List<T> way)
 	{
-		Iterator<List<List<Long>>> it = wayEndpoints.values().iterator();
+		Iterator<List<List<T>>> it = wayEndpoints.values().iterator();
 		while(it.hasNext())
 		{
-			List<List<Long>> waysPerNode = it.next();
+			List<List<T>> waysPerNode = it.next();
 
-			Iterator<List<Long>> waysIt = waysPerNode.iterator();
+			Iterator<List<T>> waysIt = waysPerNode.iterator();
 			while(waysIt.hasNext())
 			{
 				if(waysIt.next() == way)

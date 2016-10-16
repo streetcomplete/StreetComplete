@@ -6,8 +6,8 @@ import java.util.Stack;
 /** Builds a boolean expression. Basically a BooleanExpression with a cursor. */
 public class BooleanExpressionBuilder<T extends BooleanExpressionValue>
 {
-	BooleanExpression<T> node;
-	Stack<BooleanExpression<T>> bracket;
+	private BooleanExpression<T> node;
+	private Stack<BooleanExpression<T>> bracket;
 
 	public BooleanExpressionBuilder()
 	{

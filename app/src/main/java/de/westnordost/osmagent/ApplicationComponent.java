@@ -1,16 +1,21 @@
 package de.westnordost.osmagent;
 
-import android.content.Context;
-
 import javax.inject.Singleton;
 
 import dagger.Component;
+import de.westnordost.osmagent.quests.DbModule;
+import de.westnordost.osmagent.quests.OsmModule;
+import de.westnordost.osmagent.quests.QuestChangesUploader;
+import de.westnordost.osmagent.quests.QuestDownloader;
+import de.westnordost.osmagent.quests.dialogs.AutoCorrectAbbreviationsEditText;
 
 @Singleton
-@Component(modules = ApplicationModule.class)
+@Component(modules = {ApplicationModule.class, OsmModule.class, DbModule.class})
 public interface ApplicationComponent
 {
-	Context appContext();
-	//QuestChangesUploader makeQuestController();
-	// TODO
+	void inject(MainActivity mainActivity);
+	void inject(AutoCorrectAbbreviationsEditText autoCorrectAbbreviationsEditText);
+
+	QuestChangesUploader questChangesUploader();
+	QuestDownloader questDownloader();
 }

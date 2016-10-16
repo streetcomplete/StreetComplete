@@ -40,12 +40,20 @@ public class TagFilterExpression
 	public String toOverpassQLString(BoundingBox bbox)
 	{
 		StringBuilder oql = new StringBuilder();
+		if(bbox != null)
+		{
+			oql.append(
+					"[bbox:" +
+							bbox.getMinLatitude() + "," + bbox.getMinLongitude() + "," +
+							bbox.getMaxLatitude() + "," + bbox.getMaxLongitude() +
+					"];");
+		}
 
-		BooleanExpression<OQLExpressionValue> exprWithBBox = createExpandedExpressionWithBoundingBox(bbox);
+		BooleanExpression<OQLExpressionValue> exprWithBBox = createExpandedExpression();
 
 		List<String> elements = getTagFiltersOverpassList(exprWithBBox);
 
-		boolean useUnion = elementsTypeFilter == ElementsTypeFilter.ELEMENTS || elements.size() > 1;
+		final boolean useUnion = elementsTypeFilter == ElementsTypeFilter.ELEMENTS || elements.size() > 1;
 
 		if(useUnion) oql.append("(");
 		if(elementsTypeFilter == ElementsTypeFilter.ELEMENTS)
@@ -61,25 +69,15 @@ public class TagFilterExpression
 		}
 		if(useUnion) oql.append(");");
 
-		// make union of previous items and one recurse down (-> includes nodes and ways that are
-		// referenced by the result)
-		if(elementsTypeFilter != ElementsTypeFilter.NODES)
-		{
-			oql.append("(._;>;);");
-		}
-
-		oql.append("out body;");
+		/* "body" print mode (default) does not include version, but "meta" does. "geom" prints out
+		 * geometry for every way and relation */
+		oql.append("out meta geom;");
 		return oql.toString();
 	}
 
-	private BooleanExpression<OQLExpressionValue> createExpandedExpressionWithBoundingBox(BoundingBox bbox)
+	private BooleanExpression<OQLExpressionValue> createExpandedExpression()
 	{
 		BooleanExpression<OQLExpressionValue> result = tagExprRoot.copy();
-		if(bbox != null)
-		{
-			result.addAnd().addValue(new BoundingBoxFilterValue(bbox));
-			while (result.getParent() != null) result = result.getParent();
-		}
 		result.flatten();
 		result.expand();
 		return result;

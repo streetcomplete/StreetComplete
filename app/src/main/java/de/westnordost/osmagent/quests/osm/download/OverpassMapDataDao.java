@@ -4,40 +4,34 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
 import javax.inject.Inject;
+import javax.inject.Provider;
 
 import de.westnordost.osmapi.OsmConnection;
-import de.westnordost.osmapi.map.MapDataFactory;
-import de.westnordost.osmapi.map.MapDataParser;
-import de.westnordost.osmapi.map.OsmMapDataFactory;
-import de.westnordost.osmapi.map.handler.MapDataHandler;
 
 /** Get map data from overpass api */
 public class OverpassMapDataDao
 {
 	private final OsmConnection osm;
-	private final MapDataFactory factory;
+	private final Provider<OverpassMapDataParser> parserProvider;
 
-	public OverpassMapDataDao(OsmConnection osm, MapDataFactory factory)
+	@Inject public OverpassMapDataDao(OsmConnection osm, Provider<OverpassMapDataParser> parserProvider)
 	{
 		this.osm = osm;
-		this.factory = factory;
-	}
-
-	public OverpassMapDataDao(OsmConnection osm)
-	{
-		this(osm, new OsmMapDataFactory());
+		this.parserProvider = parserProvider;
 	}
 
 	/**
-	 * Feeds map data to the given MapDataHandler.
+	 * Feeds map data to the given MapDataWithGeometryHandler.
 	 *
 	 * @param oql Query string. Either Overpass QL or Overpass XML query string
-	 * @param handler map data handler that is fed the map data
+	 * @param handler map data handler that is fed the map data and geometry
 	 */
-	public synchronized void get(String oql, MapDataHandler handler)
+	public synchronized void get(String oql, MapDataWithGeometryHandler handler)
 	{
 		String request = "interpreter?data=" + urlEncode(oql);
-		osm.makeRequest(request, new MapDataParser(handler, factory));
+		OverpassMapDataParser parser = parserProvider.get();
+		parser.setHandler(handler);
+		osm.makeRequest(request, parser);
 	}
 
 	private String urlEncode(String text)

@@ -19,9 +19,9 @@ public class NodeWayMapTest extends TestCase
 		ways.add(way2);
 		ways.add(ring);
 
-		NodeWayMap map = new NodeWayMap(ways);
+		NodeWayMap<Long> map = new NodeWayMap<>(ways);
 
-		assertTrue(map.hasNextNodeId());
+		assertTrue(map.hasNextNode());
 		assertEquals(2, map.getWaysAtNode(1L).size());
 		assertEquals(2, map.getWaysAtNode(3L).size());
 		assertEquals(2, map.getWaysAtNode(5L).size());
@@ -35,11 +35,11 @@ public class NodeWayMapTest extends TestCase
 		assertNull(map.getWaysAtNode(1L));
 		assertNull(map.getWaysAtNode(3L));
 
-		assertTrue(map.hasNextNodeId());
-		assertEquals(5L, map.getNextNodeId());
+		assertTrue(map.hasNextNode());
+		assertEquals(5L, (long) map.getNextNode());
 
 		map.removeWay(ring);
 
-		assertFalse(map.hasNextNodeId());
+		assertFalse(map.hasNextNode());
 	}
 }

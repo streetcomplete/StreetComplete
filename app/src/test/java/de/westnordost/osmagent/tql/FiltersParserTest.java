@@ -11,45 +11,45 @@ public class FiltersParserTest extends TestCase
 {
 	public void testNode()
 	{
-		check("nodes", "node;out body;");
-		check("NODES", "node;out body;");
+		check("nodes", "node;out meta geom;");
+		check("NODES", "node;out meta geom;");
 	}
 
 	public void testWay()
 	{
-		check("ways", "way;(._;>;);out body;");
-		check("WAYS", "way;(._;>;);out body;");
+		check("ways", "way;out meta geom;");
+		check("WAYS", "way;out meta geom;");
 	}
 
 	public void testRelation()
 	{
-		check("relations", "rel;(._;>;);out body;");
-		check("RELATIONS", "rel;(._;>;);out body;");
+		check("relations", "rel;out meta geom;");
+		check("RELATIONS", "rel;out meta geom;");
 	}
 
 	public void testElement()
 	{
-		check("elements", "(node;way;rel;);(._;>;);out body;");
-		check("ELEMENTS", "(node;way;rel;);(._;>;);out body;");
+		check("elements", "(node;way;rel;);out meta geom;");
+		check("ELEMENTS", "(node;way;rel;);out meta geom;");
 	}
 
 	public void testAnyQuote()
 	{
-		check("nodes with 'shop'", "node['shop'];out body;");
-		check("nodes with \"shop\"", "node[\"shop\"];out body;");
-		check("nodes with \"shoppin'\"", "node[\"shoppin'\"];out body;");
-		check("nodes with '\"shop\"ping'", "node['\"shop\"ping'];out body;");
+		check("nodes with 'shop'", "node['shop'];out meta geom;");
+		check("nodes with \"shop\"", "node[\"shop\"];out meta geom;");
+		check("nodes with \"shoppin'\"", "node[\"shoppin'\"];out meta geom;");
+		check("nodes with '\"shop\"ping'", "node['\"shop\"ping'];out meta geom;");
 	}
 
 	public void testElementWithTag()
 	{
 		check("elements with shop",
-				"(node[\"shop\"];way[\"shop\"];rel[\"shop\"];);(._;>;);out body;");
+				"(node[\"shop\"];way[\"shop\"];rel[\"shop\"];);out meta geom;");
 	}
 
 	public void testWhitespaceInFrontOkay()
 	{
-		check("\t\n nodes", "node;out body;");
+		check("\t\n nodes", "node;out meta geom;");
 	}
 
 	public void testFailIfNoElementDeclarationInFront()
@@ -73,26 +73,26 @@ public class FiltersParserTest extends TestCase
 
 	public void testTagKeyLikeReservedWordWithQuotationMarks()
 	{
-		check("nodes with \"with\"", "node[\"with\"];out body;");
-		check("nodes with \"with\"=\"with\"", "node[\"with\"=\"with\"];out body;");
+		check("nodes with \"with\"", "node[\"with\"];out meta geom;");
+		check("nodes with \"with\"=\"with\"", "node[\"with\"=\"with\"];out meta geom;");
 	}
 
 	public void testTagKeyWithQuotationMarks()
 	{
 		check("nodes with \"highway = residential or bla\"",
-				"node[\"highway = residential or bla\"];out body;");
+				"node[\"highway = residential or bla\"];out meta geom;");
 	}
 
 	public void testTagValueWithQuotationMarks()
 	{
 		check("nodes with highway = \"residential or bla\"",
-				"node[\"highway\"=\"residential or bla\"];out body;");
+				"node[\"highway\"=\"residential or bla\"];out meta geom;");
 	}
 
 	public void testTagValueGarbage()
 	{
 		check("nodes with highway = §$%&%/??",
-				"node[\"highway\"=\"§$%&%/??\"];out body;");
+				"node[\"highway\"=\"§$%&%/??\"];out meta geom;");
 	}
 
 	public void testTagKeyQuotationMarksNotClosed()
@@ -107,7 +107,7 @@ public class FiltersParserTest extends TestCase
 
 	public void testTagKey()
 	{
-		String expect = "node[\"highway\"];out body;";
+		String expect = "node[\"highway\"];out meta geom;";
 
 		check("nodes with highway", expect);
 		check("nodes with(highway)", expect);
@@ -147,12 +147,12 @@ public class FiltersParserTest extends TestCase
 
 	public void testTagNegation()
 	{
-		check("nodes with !highway", "node[\"highway\"!~\".\"];out body;");
+		check("nodes with !highway", "node[\"highway\"!~\".\"];out meta geom;");
 	}
 
 	public void testTagOperatorWhitespaces()
 	{
-		String expect = "node[\"highway\"=\"residential\"];out body;";
+		String expect = "node[\"highway\"=\"residential\"];out meta geom;";
 
 		check("nodes with highway=residential", expect);
 		check("nodes with highway =residential", expect);
@@ -162,10 +162,10 @@ public class FiltersParserTest extends TestCase
 
 	public void testTagOperator()
 	{
-		check("nodes with highway=residential", "node[\"highway\"=\"residential\"];out body;");
-		check("nodes with highway!=residential", "node[\"highway\"!=\"residential\"];out body;");
-		check("nodes with highway~residential", "node[\"highway\"~\"residential\"];out body;");
-		check("nodes with highway!~residential", "node[\"highway\"!~\"residential\"];out body;");
+		check("nodes with highway=residential", "node[\"highway\"=\"residential\"];out meta geom;");
+		check("nodes with highway!=residential", "node[\"highway\"!=\"residential\"];out meta geom;");
+		check("nodes with highway~residential", "node[\"highway\"~\"residential\"];out meta geom;");
+		check("nodes with highway!~residential", "node[\"highway\"!~\"residential\"];out meta geom;");
 	}
 
 	public void testTagNegationNotCombinableWithOperator()
@@ -178,49 +178,48 @@ public class FiltersParserTest extends TestCase
 
 	public void testTwoTags()
 	{
-		check("nodes with highway and name", "node[\"highway\"][\"name\"];out body;");
-		check("nodes with highway or name", "(node[\"highway\"];node[\"name\"];);out body;");
+		check("nodes with highway and name", "node[\"highway\"][\"name\"];out meta geom;");
+		check("nodes with highway or name", "(node[\"highway\"];node[\"name\"];);out meta geom;");
 	}
 
 	public void testOrInAnd()
 	{
 		check("nodes with(highway or railway)and name",
-				"(node[\"highway\"][\"name\"];node[\"railway\"][\"name\"];);out body;");
+				"(node[\"highway\"][\"name\"];node[\"railway\"][\"name\"];);out meta geom;");
 	}
 
 	public void testBoundingBox()
 	{
 		BoundingBox bbox = new BoundingBox(0,0,5,10);
-		check("nodes", "node(0.0,0.0,5.0,10.0);out body;", bbox);
-		check("nodes with highway", "node[\"highway\"](0.0,0.0,5.0,10.0);out body;", bbox);
+		check("nodes", "[bbox:0.0,0.0,5.0,10.0];node;out meta geom;", bbox);
+		check("nodes with highway", "[bbox:0.0,0.0,5.0,10.0];node[\"highway\"];out meta geom;", bbox);
 		check("nodes with highway or railway",
-				"(node[\"highway\"](0.0,0.0,5.0,10.0);node[\"railway\"](0.0,0.0,5.0,10.0););out body;", bbox);
+				"[bbox:0.0,0.0,5.0,10.0];(node[\"highway\"];node[\"railway\"];);out meta geom;", bbox);
 	}
 
 	public void testBoundingBoxWithElement()
 	{
 		BoundingBox bbox = new BoundingBox(0,0,5,10);
-		String b = "(0.0,0.0,5.0,10.0)";
 
-		check("elements", "(node"+b+";way"+b+";rel"+b+";);(._;>;);out body;", bbox);
+		check("elements", "[bbox:0.0,0.0,5.0,10.0];(node;way;rel;);out meta geom;", bbox);
 		check("elements with highway",
-				"(" +
-				"node[\"highway\"]"+b+";" +
-				"way[\"highway\"]"+b+";" +
-				"rel[\"highway\"]"+b+";" +
+				"[bbox:0.0,0.0,5.0,10.0];(" +
+				"node[\"highway\"];" +
+				"way[\"highway\"];" +
+				"rel[\"highway\"];" +
 				");" +
-				"(._;>;);out body;", bbox);
+				"out meta geom;", bbox);
 
 		check("elements with highway or railway",
-				"(" +
-				"node[\"highway\"]"+b+";" +
-				"node[\"railway\"]"+b+";" +
-				"way[\"highway\"]"+b+";" +
-				"way[\"railway\"]"+b+";" +
-				"rel[\"highway\"]"+b+";" +
-				"rel[\"railway\"]"+b+";" +
+				"[bbox:0.0,0.0,5.0,10.0];(" +
+				"node[\"highway\"];" +
+				"node[\"railway\"];" +
+				"way[\"highway\"];" +
+				"way[\"railway\"];" +
+				"rel[\"highway\"];" +
+				"rel[\"railway\"];" +
 				");" +
-				"(._;>;);out body;", bbox);
+				"out meta geom;", bbox);
 	}
 
 	private void shouldFail(String input)

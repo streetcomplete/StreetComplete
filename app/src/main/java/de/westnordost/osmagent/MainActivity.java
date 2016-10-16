@@ -14,22 +14,42 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.mapzen.tangram.LngLat;
 import com.mapzen.tangram.MapController;
+import com.mapzen.tangram.MapData;
 import com.mapzen.tangram.MapView;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.inject.Inject;
+
+import de.westnordost.osmagent.quests.Quest;
+import de.westnordost.osmagent.quests.QuestDownloader;
+import de.westnordost.osmagent.quests.QuestListener;
+import de.westnordost.osmagent.quests.QuestStatus;
 import de.westnordost.osmagent.quests.dialogs.QuestDialogListener;
+import de.westnordost.osmagent.quests.osm.persist.OsmQuestDao;
 import de.westnordost.osmagent.settings.SettingsActivity;
 import de.westnordost.osmagent.tangram.MapFragment;
+import de.westnordost.osmagent.util.SphericalEarthMath;
+import de.westnordost.osmapi.map.data.BoundingBox;
+import de.westnordost.osmapi.map.data.OsmLatLon;
 
 
-public class MainActivity extends AppCompatActivity implements QuestDialogListener
+public class MainActivity extends AppCompatActivity implements QuestDialogListener, QuestListener
 {
-	MapController map;
+	private MapController map;
+	private MapData questsLayer;
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState)
+	@Inject QuestDownloader questDownloader;
+	@Inject OsmQuestDao osmQuestDB;
+
+	@Override protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
+
+		Injector.instance.getApplicationComponent().inject(this);
 
 		setContentView(R.layout.activity_main);
 		PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
@@ -37,44 +57,63 @@ public class MainActivity extends AppCompatActivity implements QuestDialogListen
 		MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map_fragment);
 		mapFragment.getMapAsync(new MapView.OnMapReadyCallback()
 		{
-			@Override
-			public void onMapReady(MapController mapController)
+			@Override public void onMapReady(MapController mapController)
 			{
 				map = mapController;
+				questsLayer = map.addDataLayer("osmagent_quests");
+
+				// TODO provisional, for testing
+				for(Quest q : osmQuestDB.getAll(null, QuestStatus.NEW))
+				{
+					addQuestToMap(q);
+				}
 			}
 		});
 
+		questDownloader.addQuestListener(this);
 	}
 
-	@Override
-	protected void onStart()
+
+	@Override protected void onDestroy()
+	{
+		super.onDestroy();
+		questDownloader.removeQuestListener(this);
+	}
+
+	@Override protected void onStart()
 	{
 		super.onStart();
 	}
 
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu)
+	@Override public boolean onCreateOptionsMenu(Menu menu)
 	{
 		getMenuInflater().inflate(R.menu.menu_main, menu);
 		return true;
 	}
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item)
+	@Override public boolean onOptionsItemSelected(MenuItem item)
 	{
 		int id = item.getItemId();
 
-		if (id == R.id.action_settings)
+		switch(id)
 		{
-			Intent intent = new Intent(this, SettingsActivity.class);
-			startActivity(intent);
-			return true;
-		}
-		if(id == R.id.action_test)
-		{
+			case R.id.action_settings:
+				Intent intent = new Intent(this, SettingsActivity.class);
+				startActivity(intent);
+				return true;
 
-			return true;
+			case R.id.action_download:
+				BoundingBox yangon = SphericalEarthMath.enclosingBoundingBox(new OsmLatLon(16.77428,96.16560),1000);
+				questDownloader.download(yangon, null);
+				return true;
+
+			case R.id.action_upload:
+
+				return true;
+
+			case R.id.action_test:
+				return true;
 		}
 
 		return super.onOptionsItemSelected(item);
@@ -91,8 +130,7 @@ public class MainActivity extends AppCompatActivity implements QuestDialogListen
 
 	private WifiReceiver x;
 
-	@Override
-	public void onResume()
+	@Override public void onResume()
 	{
 		super.onResume();
 
@@ -103,35 +141,65 @@ public class MainActivity extends AppCompatActivity implements QuestDialogListen
 
 	}
 
-	@Override
-	public void onPause()
+	@Override public void onPause()
 	{
 		super.onPause();
 		unregisterReceiver(x);
 	}
 
-	@Override
-	public void onAnsweredQuest(int questId, Bundle answer)
+	@Override public void onAnsweredQuest(int questId, Bundle answer)
 	{
 		// TODO
 	}
 
-	@Override
-	public void onLeaveNote(int questId, String note)
+	@Override public void onLeaveNote(int questId, String note)
 	{
 		// TODO
 	}
 
-	@Override
-	public void onSkippedQuest(int questId)
+	@Override public void onSkippedQuest(int questId)
 	{
 		// TODO
+	}
+
+	@Override public void onQuestCreated(Quest quest)
+	{
+		Log.v("OSMAGENT", "Created quest " + quest.getType().getClass().getSimpleName() + " at " +
+				quest.getMarkerLocation().getLatitude() + "," +
+				quest.getMarkerLocation().getLongitude());
+
+		if(map != null) // map controller might not be initialized yet
+		{
+			addQuestToMap(quest);
+		}
+	}
+
+	private void addQuestToMap(Quest quest)
+	{
+		LngLat pos = new LngLat(
+				quest.getMarkerLocation().getLongitude(),
+				quest.getMarkerLocation().getLatitude());
+		Map<String, String> props = new HashMap<>();
+		props.put("type", "point");
+		props.put("kind", quest.getType().getIconName());
+		questsLayer.addPoint(pos, props);
+	}
+
+	@Override public void onQuestRemoved(Quest quest)
+	{
+		Log.v("OSMAGENT", "Removed quest " + quest.getType().getClass().getSimpleName() + " at " +
+				quest.getMarkerLocation().getLatitude() + "," +
+				quest.getMarkerLocation().getLongitude());
+
+		if(map != null) // map controller might not be initialized yet
+		{
+			// TODO
+		}
 	}
 
 	private class WifiReceiver extends BroadcastReceiver
 	{
-		@Override
-		public void onReceive(Context context, Intent intent)
+		@Override public void onReceive(Context context, Intent intent)
 		{
 			String action = intent.getAction();
 			if (action.equals(WifiManager.NETWORK_STATE_CHANGED_ACTION))

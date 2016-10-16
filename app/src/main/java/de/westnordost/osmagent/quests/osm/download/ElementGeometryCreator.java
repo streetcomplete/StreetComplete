@@ -18,9 +18,9 @@ import de.westnordost.osmapi.map.data.Way;
 
 public class ElementGeometryCreator
 {
-	private GeometryMapDataProvider data;
+	protected WayGeometrySource data;
 
-	public ElementGeometryCreator(GeometryMapDataProvider data)
+	public void setWayGeometryProvider(WayGeometrySource data)
 	{
 		this.data = data;
 	}
@@ -32,7 +32,9 @@ public class ElementGeometryCreator
 
 	public ElementGeometry create(Way way)
 	{
-		List<LatLon> polyline = createWayGeometry(way.getNodeIds());
+		if(data == null) throw new NullPointerException();
+
+		List<LatLon> polyline = data.getNodePositions(way.getId());
 		// unable to create geometry
 		if(polyline.isEmpty()) return null;
 
@@ -51,6 +53,8 @@ public class ElementGeometryCreator
 
 	public ElementGeometry create(Relation relation)
 	{
+		if(data == null) throw new NullPointerException();
+
 		if(OsmAreas.isArea(relation))
 		{
 			return createMultipolygonGeometry(relation);
@@ -61,19 +65,9 @@ public class ElementGeometryCreator
 		}
 	}
 
-	private List<LatLon> createWayGeometry(List<Long> wayNodeIds)
+	private List<List<LatLon>> getWaysOfRelationWithRole(Relation relation, String role)
 	{
-		List<LatLon> geometry = new ArrayList<>(wayNodeIds.size());
-		for(long nodeId : wayNodeIds)
-		{
-			geometry.add(data.getNode(nodeId).getPosition());
-		}
-		return geometry;
-	}
-
-	private List<List<Long>> getWaysOfRelationWithRole(Relation relation, String role)
-	{
-		List<List<Long>> result = new ArrayList<>();
+		List<List<LatLon>> result = new ArrayList<>();
 		for(RelationMember member : relation.getMembers())
 		{
 			if(member.getType() != Element.Type.WAY) continue;
@@ -81,10 +75,10 @@ public class ElementGeometryCreator
 			long wayId = member.getRef();
 			if(role == null || role.equals(member.getRole()))
 			{
-				List<Long> nodeIds = data.getWay(wayId).getNodeIds();
-				if(nodeIds.size() > 1)
+				List<LatLon> nodePositions = data.getNodePositions(wayId);
+				if(nodePositions.size() > 1)
 				{
-					result.add(nodeIds);
+					result.add(nodePositions);
 				}
 			}
 		}
@@ -93,13 +87,11 @@ public class ElementGeometryCreator
 
 	private ElementGeometry createPolylinesGeometry(Relation relation)
 	{
-		List<List<Long>> waysNodeIds = getWaysOfRelationWithRole(relation, null);
-		ConnectedWays ways = joinWays(waysNodeIds);
+		List<List<LatLon>> waysNodePositions = getWaysOfRelationWithRole(relation, null);
+		ConnectedWays ways = joinWays(waysNodePositions);
 
-		List<List<Long>> joinedWaysNodeIds = ways.rest;
-		joinedWaysNodeIds.addAll(ways.rings);
-
-		List<List<LatLon>> polylines = createWaysGeometry(joinedWaysNodeIds);
+		List<List<LatLon>> polylines = ways.rest;
+		polylines.addAll(ways.rings);
 
 		// no valid geometry
 		if(polylines.isEmpty()) return null;
@@ -121,21 +113,10 @@ public class ElementGeometryCreator
 	private List<List<LatLon>> createNormalizedRingGeometry(Relation relation, String role,
 															boolean clockwise)
 	{
-		List<List<Long>> waysNodeIds = getWaysOfRelationWithRole(relation, role);
-		List<List<Long>> ringsNodeIds = joinWays(waysNodeIds).rings;
-		List<List<LatLon>> ringGeometry = createWaysGeometry(ringsNodeIds);
+		List<List<LatLon>> waysNodePositions = getWaysOfRelationWithRole(relation, role);
+		List<List<LatLon>> ringGeometry = joinWays(waysNodePositions).rings;
 		setOrientation(ringGeometry, clockwise);
 		return ringGeometry;
-	}
-
-	private List<List<LatLon>> createWaysGeometry(List<List<Long>> waysNodeIds)
-	{
-		List<List<LatLon>> result = new ArrayList<>(waysNodeIds.size());
-		for(List<Long> wayNodeIds : waysNodeIds)
-		{
-			result.add(createWayGeometry(wayNodeIds));
-		}
-		return result;
 	}
 
 	/** Ensures that all given rings are defined in clockwise/counter-clockwise direction */
@@ -152,31 +133,31 @@ public class ElementGeometryCreator
 
 	private static class ConnectedWays
 	{
-		List<List<Long>> rings = new ArrayList<>();
-		List<List<Long>> rest = new ArrayList<>();
+		List<List<LatLon>> rings = new ArrayList<>();
+		List<List<LatLon>> rest = new ArrayList<>();
 	}
 
-	private static ConnectedWays joinWays(List<List<Long>> waysNodeIds)
+	private static ConnectedWays joinWays(List<List<LatLon>> waysNodePositions)
 	{
-		NodeWayMap nodeWayMap = new NodeWayMap(waysNodeIds);
+		NodeWayMap<LatLon> nodeWayMap = new NodeWayMap<>(waysNodePositions);
 
 		ConnectedWays result = new ConnectedWays();
 
-		List<Long> currentWay = new ArrayList<>();
+		List<LatLon> currentWay = new ArrayList<>();
 
-		while(nodeWayMap.hasNextNodeId())
+		while(nodeWayMap.hasNextNode())
 		{
-			Long nodeId;
+			LatLon node;
 			if(currentWay.isEmpty())
 			{
-				nodeId = nodeWayMap.getNextNodeId();
+				node = nodeWayMap.getNextNode();
 			}
 			else
 			{
-				nodeId = currentWay.get(currentWay.size()-1);
+				node = currentWay.get(currentWay.size()-1);
 			}
 
-			List<List<Long>> waysAtNode = nodeWayMap.getWaysAtNode(nodeId);
+			List<List<LatLon>> waysAtNode = nodeWayMap.getWaysAtNode(node);
 			if(waysAtNode == null)
 			{
 				result.rest.add(currentWay);
@@ -184,7 +165,7 @@ public class ElementGeometryCreator
 			}
 			else
 			{
-				List<Long> way = waysAtNode.get(0);
+				List<LatLon> way = waysAtNode.get(0);
 
 				addTo(way, currentWay);
 				nodeWayMap.removeWay(way);
@@ -205,13 +186,13 @@ public class ElementGeometryCreator
 		return result;
 	}
 
-	private static boolean isRing(List<Long> way)
+	private static boolean isRing(List<?> way)
 	{
 		return way.get(0).equals(way.get(way.size() - 1));
 	}
 
 	/** add <tt>way</tt> to the end of <tt>polyWay</tt>, if necessary in reverse */
-	private static void addTo(List<Long> way, List<Long> polyWay)
+	private static void addTo(List<LatLon> way, List<LatLon> polyWay)
 	{
 		if(polyWay.isEmpty())
 		{
@@ -219,14 +200,14 @@ public class ElementGeometryCreator
 		}
 		else
 		{
-			long addLast = way.get(way.size() - 1);
-			long toLast = polyWay.get(polyWay.size() - 1);
+			LatLon addLast = way.get(way.size() - 1);
+			LatLon toLast = polyWay.get(polyWay.size() - 1);
 			if(addLast == toLast)
 			{
 				way = Lists.reverse(way);
 			}
 			// +1 to not add the first vertex because it has already been added
-			ListIterator<Long> it = way.listIterator(1);
+			ListIterator<LatLon> it = way.listIterator(1);
 			while(it.hasNext())
 			{
 				polyWay.add(it.next());

@@ -4,42 +4,29 @@ package de.westnordost.osmagent.meta;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.preference.PreferenceManager;
 import android.telephony.TelephonyManager;
 
 import java.io.InputStream;
-import java.lang.ref.WeakReference;
 import java.util.List;
 import java.util.Locale;
+
+import javax.inject.Inject;
 
 import de.westnordost.osmagent.Prefs;
 import de.westnordost.osmagent.R;
 
 public class LocaleMetadata
 {
-	// TODO use dagger to singleton-ize this
-
-	private static LocaleMetadata singleton;
-
-	/** get the singleton instance of LocaleMetadata (valid for whole application) */
-	public static LocaleMetadata getInstance(Context context)
-	{
-		Context applicationContext = context.getApplicationContext();
-		if(singleton == null || singleton.ctx.get() == null)
-		{
-			singleton = new LocaleMetadata(applicationContext);
-		}
-		return singleton;
-	}
-
-	private WeakReference<Context> ctx;
+	private final Context applicationContext;
 
 	private LanguagesByCountry languagesByCountry;
 	private Abbreviations abbreviations;
 
-	public LocaleMetadata(Context ctx)
+	@Inject public LocaleMetadata(Context applicationContext)
 	{
-		this.ctx = new WeakReference<>(ctx);
+		this.applicationContext = applicationContext;
 	}
 
 	private LanguagesByCountry getLanguagesByCountry()
@@ -56,7 +43,7 @@ public class LocaleMetadata
 		// double check in synchronized block
 		if(languagesByCountry != null) return languagesByCountry;
 
-		InputStream is = ctx.get().getResources().openRawResource(R.raw.country_codes);
+		InputStream is = applicationContext.getResources().openRawResource(R.raw.country_codes);
 		return new LanguagesByCountry(is);
 	}
 
@@ -80,15 +67,24 @@ public class LocaleMetadata
 
 		Configuration configuration = getLocaleConfiguration(locale);
 
-		InputStream is = ctx.get().createConfigurationContext(configuration).getResources().
+		InputStream is = applicationContext.createConfigurationContext(configuration).getResources().
 				openRawResource(R.raw.abbreviations);
 
 		return new Abbreviations(is, locale);
 	}
 
+	public Resources getCurrentCountryResources()
+	{
+		Locale locale = getCurrentCountryLocale();
+
+		Configuration configuration = getLocaleConfiguration(locale);
+
+		return applicationContext.createConfigurationContext(configuration).getResources();
+	}
+
 	private Configuration getLocaleConfiguration(Locale locale)
 	{
-		Configuration configuration = new Configuration(ctx.get().getResources().getConfiguration());
+		Configuration configuration = new Configuration(applicationContext.getResources().getConfiguration());
 		configuration.setLocale(locale);
 		return configuration;
 	}
@@ -121,7 +117,7 @@ public class LocaleMetadata
 	/** Find the country the user is in currently. Returns null if the country cannot be determined */
 	private String findCurrentCountry()
 	{
-		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(ctx.get());
+		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(applicationContext);
 		String lastCountry = prefs.getString(Prefs.CURRENT_COUNTRY, null);
 		String networkCountry = getTelephonyNetworkCountry();
 
@@ -180,6 +176,6 @@ public class LocaleMetadata
 
 	private TelephonyManager getTelephonyManager()
 	{
-		return (TelephonyManager) ctx.get().getSystemService(Context.TELEPHONY_SERVICE);
+		return (TelephonyManager) applicationContext.getSystemService(Context.TELEPHONY_SERVICE);
 	}
 }

@@ -11,6 +11,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import javax.inject.Inject;
+import javax.inject.Provider;
 
 import de.westnordost.osmagent.Prefs;
 import de.westnordost.osmagent.quests.osm.download.OsmQuestDownload;
@@ -23,15 +24,21 @@ public class QuestDownloader
 	private static final String TAG = "QuestDownload";
 
 	private final SharedPreferences prefs;
+	private final Provider<OsmNotesDownload> notesDownloadProvider;
+	private final Provider<OsmQuestDownload> questDownloadProvider;
 
 	private ExecutorService executorService;
 	private QuestDispatcher questDispatcher;
 
 	private AtomicBoolean cancelState;
 
-	@Inject public QuestDownloader(SharedPreferences prefs)
+	@Inject public QuestDownloader(SharedPreferences prefs,
+								   Provider<OsmNotesDownload> notesDownloadProvider,
+								   Provider<OsmQuestDownload> questDownloadProvider)
 	{
 		this.prefs = prefs;
+		this.notesDownloadProvider = notesDownloadProvider;
+		this.questDownloadProvider = questDownloadProvider;
 
 		executorService = Executors.newSingleThreadExecutor();
 		questDispatcher = new QuestDispatcher();
@@ -55,7 +62,7 @@ public class QuestDownloader
 		questDispatcher.removeListener(listener);
 	}
 
-	public void download(final BoundingBox bbox, final int maxVisibleQuests)
+	public void download(final BoundingBox bbox, final Integer maxVisibleQuests)
 	{
 		cancel();
 		cancelState = new AtomicBoolean(false);
@@ -68,7 +75,7 @@ public class QuestDownloader
 						if(cancelState.get()) return;
 
 						Set<LatLon> notesPositions = null;
-						OsmNotesDownload notesDownload = null; // TODO init with dagger
+						OsmNotesDownload notesDownload = notesDownloadProvider.get();
 						notesDownload.setQuestListener(questDispatcher);
 
 						Long userId = prefs.getLong(Prefs.OSM_USER_ID, -1);
@@ -76,17 +83,21 @@ public class QuestDownloader
 
 						try
 						{
-							notesPositions = notesDownload.download(bbox, userId, maxVisibleQuests);
+							int maxNotes = maxVisibleQuests != null ? maxVisibleQuests : 10000;
+							notesPositions = notesDownload.download(bbox, userId, maxNotes);
 						}
 						catch(Exception e)
 						{
 							Log.e(TAG, "Unable to download notes", e);
 						}
 
-						int maxOsmQuestsToRetrieve = maxVisibleQuests;
-						maxOsmQuestsToRetrieve -= notesDownload.getVisibleQuestsRetrieved();
+						Integer maxOsmQuestsToRetrieve = maxVisibleQuests;
+						if(maxOsmQuestsToRetrieve != null)
+						{
+							maxOsmQuestsToRetrieve -= notesDownload.getVisibleQuestsRetrieved();
+						}
 
-						OsmQuestDownload questDownload = null; // TODO init with dagger
+						OsmQuestDownload questDownload = questDownloadProvider.get();
 						questDownload.setQuestListener(questDispatcher);
 
 						try

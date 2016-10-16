@@ -4,6 +4,10 @@
 
     <item android:id="@+id/action_settings" android:title="@string/action_settings"
         android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/action_download" android:title="@string/action_download"
+          android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/action_upload" android:title="@string/action_upload"
+          android:orderInCategory="100" app:showAsAction="never" />
     <item android:id="@+id/action_test" android:title="TEST"
           android:orderInCategory="100" app:showAsAction="always" />
 </menu>

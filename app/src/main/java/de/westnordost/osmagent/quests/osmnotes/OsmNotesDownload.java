@@ -1,9 +1,8 @@
 package de.westnordost.osmagent.quests.osmnotes;
 
-import java.util.Collection;
-import java.util.HashMap;
+import android.util.LongSparseArray;
+
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 import javax.inject.Inject;
@@ -53,7 +52,7 @@ public class OsmNotesDownload
 		visibleAmount = 0;
 		final Set<LatLon> positions = new HashSet<>();
 
-		final Map<Long, OsmNoteQuest> oldQuestsByNoteId = new HashMap<>();
+		final LongSparseArray<OsmNoteQuest> oldQuestsByNoteId = new LongSparseArray<>();
 		for(OsmNoteQuest quest : noteQuestDB.getAll(bbox, null))
 		{
 			oldQuestsByNoteId.put(quest.getNote().id, quest);
@@ -94,7 +93,7 @@ public class OsmNotesDownload
 
 		/* delete note quests created in a previous run in the given bounding box that are not
 		   found again -> these notes have been closed/solved/removed */
-		removeObsoleteNoteQuests(oldQuestsByNoteId.values());
+		removeObsoleteNoteQuests(oldQuestsByNoteId);
 
 		for(CreateNote createNote : createNoteDB.getAll(bbox))
 		{
@@ -116,12 +115,14 @@ public class OsmNotesDownload
 		return false;
 	}
 
-	private void removeObsoleteNoteQuests(Collection<OsmNoteQuest> oldQuests)
+	private void removeObsoleteNoteQuests(LongSparseArray<OsmNoteQuest> oldQuests)
 	{
-		if(!oldQuests.isEmpty())
+		if(oldQuests.size() > 0)
 		{
-			for (OsmNoteQuest quest : oldQuests)
+
+			for (int i=0; i<oldQuests.size(); ++i)
 			{
+				OsmNoteQuest quest = oldQuests.valueAt(i);
 				if(noteQuestDB.delete(quest.getId()))
 				{
 					if(questListener != null)

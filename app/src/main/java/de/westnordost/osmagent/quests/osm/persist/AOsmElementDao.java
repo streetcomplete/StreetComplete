@@ -5,8 +5,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import java.util.HashMap;
-
 import de.westnordost.osmapi.map.data.Element;
 
 public abstract class AOsmElementDao<T extends Element>
@@ -56,7 +54,8 @@ public abstract class AOsmElementDao<T extends Element>
 		String where = NodeTable.Columns.ID + " NOT IN ( " +
 				"SELECT " + OsmQuestTable.Columns.ELEMENT_ID + " AS " + getIdColumnName() + " " +
 				"FROM " + OsmQuestTable.NAME + " " +
-				"WHERE " + OsmQuestTable.Columns.ELEMENT_TYPE + " = " + getElementTypeName();
+				"WHERE " + OsmQuestTable.Columns.ELEMENT_TYPE + " = \"" + getElementTypeName() +"\"" +
+				")";
 
 		db.delete(getTableName(), where, null);
 	}

@@ -55,7 +55,7 @@ layers:
                 size: 50px
                 sprite: function() { return feature.kind }
                 sprite_default: quest
-                anchor: top
+                anchor: bottom
 
     earth:
         data: { source: osm }

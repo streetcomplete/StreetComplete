@@ -71,6 +71,8 @@
 
     <string name="quest_openingHours_title">What are the opening hours of this shop?</string>
     <string name="quest_openingHours_commitMessage">Add opening hours</string>
+    <string name="action_download">Download Quests</string>
+    <string name="action_upload">Upload Changes</string>
 
 
 </resources>
