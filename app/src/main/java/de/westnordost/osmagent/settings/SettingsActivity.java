@@ -14,7 +14,7 @@ import java.util.List;
 import de.westnordost.osmagent.Prefs;
 import de.westnordost.osmagent.oauth.OAuth;
 import de.westnordost.osmagent.R;
-import de.westnordost.osmagent.quests.OsmModule;
+import de.westnordost.osmagent.data.OsmModule;
 import de.westnordost.osmagent.util.InlineAsyncTask;
 import de.westnordost.osmagent.oauth.OAuthWebViewDialogFragment;
 import de.westnordost.osmapi.OsmConnection;

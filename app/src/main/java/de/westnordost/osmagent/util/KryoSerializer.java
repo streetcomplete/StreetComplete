@@ -12,10 +12,10 @@ import java.util.HashMap;
 
 import javax.inject.Singleton;
 
-import de.westnordost.osmagent.quests.osm.changes.StringMapChanges;
-import de.westnordost.osmagent.quests.osm.changes.StringMapEntryAdd;
-import de.westnordost.osmagent.quests.osm.changes.StringMapEntryDelete;
-import de.westnordost.osmagent.quests.osm.changes.StringMapEntryModify;
+import de.westnordost.osmagent.data.osm.changes.StringMapChanges;
+import de.westnordost.osmagent.data.osm.changes.StringMapEntryAdd;
+import de.westnordost.osmagent.data.osm.changes.StringMapEntryDelete;
+import de.westnordost.osmagent.data.osm.changes.StringMapEntryModify;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.map.data.OsmLatLon;
 import de.westnordost.osmapi.map.data.OsmRelationMember;

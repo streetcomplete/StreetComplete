@@ -10,10 +10,9 @@ import java.util.List;
 
 import dagger.Module;
 import dagger.Provides;
-import de.westnordost.osmagent.meta.LocaleMetadata;
-import de.westnordost.osmagent.quests.osm.download.OverpassQuestTypeList;
-import de.westnordost.osmagent.quests.osm.download.ReflectionQuestTypeListCreator;
-import de.westnordost.osmagent.quests.osm.types.OverpassQuestType;
+import de.westnordost.osmagent.data.meta.LocaleMetadata;
+import de.westnordost.osmagent.data.osm.download.OverpassQuestTypeList;
+import de.westnordost.osmagent.quests.OverpassQuestType;
 
 @Module
 public class ApplicationModule

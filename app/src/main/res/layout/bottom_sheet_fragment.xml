@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<de.westnordost.osmagent.dialogs.SlidingLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingLeft="@dimen/bottom_sheet_horizontal_margin"
+    android:paddingRight="@dimen/bottom_sheet_horizontal_margin"
+    android:paddingTop="@dimen/bottom_sheet_vertical_margin"
+    android:paddingBottom="@dimen/bottom_sheet_vertical_margin"
+    android:elevation="@dimen/bottom_sheet_elevation"
+    android:orientation="vertical"
+    app:layout_behavior="android.support.design.widget.BottomSheetBehavior"
+    app:behavior_peekHeight="200dp"
+    android:background="@android:color/background_light"
+    >
+
+    <TextView
+        android:id="@+id/title"
+        style="@style/QuestTitleQuestion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
+    <LinearLayout
+        android:id="@+id/content"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/quest_form_vertical_margin"
+        android:paddingBottom="@dimen/quest_form_vertical_margin"
+        >
+
+    </LinearLayout>
+
+    <LinearLayout android:id="@+id/buttonPanel"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="horizontal"
+                  android:layoutDirection="locale"
+                  style="?android:attr/buttonBarStyle">
+        <Button
+            android:id="@+id/buttonOtherAnswers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="@string/quest_generic_otherAnswers"
+            style="?android:attr/buttonBarButtonStyle"/>
+        <Button
+            android:id="@+id/buttonOk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="end"
+            style="?android:attr/buttonBarButtonStyle"
+            android:text="@android:string/ok"
+             />
+    </LinearLayout>
+</de.westnordost.osmagent.dialogs.SlidingLinearLayout>

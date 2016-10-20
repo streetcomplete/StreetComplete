@@ -1,14 +1,24 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent"  tools:context=".MainActivity"
-    android:orientation="vertical">
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    >
 
-        <fragment
-            android:id="@+id/map_fragment"
-            android:name="de.westnordost.osmagent.tangram.MapFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+    <fragment
+        android:id="@+id/map_fragment"
+        android:name="de.westnordost.osmagent.tangram.MapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
-            />
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/map_bottom_sheet_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#00000000">
+    <!-- If I do not set any background color here, the layout will leave a few pixels free at the
+         bottom on my Android 6.0 emulator; so, setting to transparent-->
+    </android.support.design.widget.CoordinatorLayout>
 
-</LinearLayout>
+ </FrameLayout >

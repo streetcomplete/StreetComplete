@@ -9,5 +9,5 @@ public class OsmagentConstants
 		QUESTTYPE_TAG_KEY = NAME + ":quest_type";
 
 	public final static String
-		OSM_QUESTS_PACKAGE = "de.westnordost.osmagent.quests.osm.types";
+		OSM_QUESTS_PACKAGE = "de.westnordost.osmagent.quests";
 }

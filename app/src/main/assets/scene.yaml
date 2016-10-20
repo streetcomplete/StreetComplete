@@ -21,6 +21,11 @@ sources:
             api_key: vector-tiles-fKUcuAJ
         max_zoom: 16
 
+# START my stuff
+
+global:
+    geometry_color: [0.2, 0.2, 0.9, 0.7]
+
 textures:
     quests:
         url: quests@2x.png
@@ -52,10 +57,43 @@ layers:
         data: { source: osmagent_quests }
         draw:
             quest-icons:
+                interactive: true
                 size: 50px
                 sprite: function() { return feature.kind }
                 sprite_default: quest
-                anchor: bottom
+                offset: [0px, -35px]
+    osmagent_geometry:
+        data: { source: osmagent_geometry }
+        line:
+            filter: { type: line }
+            draw:
+                lines:
+                    color: global.geometry_color
+                    width: 16px
+                    collide: false
+                    order: 1000
+                    cap: round
+                    join: round
+        poly:
+            filter: { type: poly }
+            draw:
+                polygons:
+                    color: global.geometry_color
+                    width: 16px
+                    collide: false
+                    order: 1000
+                    cap: round
+                    join: round
+        point:
+            filter: { type: point }
+            draw:
+                points:
+                    color: global.geometry_color
+                    size: 32px
+                    collide: false
+                    order: 1000
+
+# END my stuff
 
     earth:
         data: { source: osm }

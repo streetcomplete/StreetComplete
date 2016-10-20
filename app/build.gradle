@@ -20,6 +20,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    lintOptions {
+        abortOnError false
+    }
 }
 
 repositories {
@@ -49,6 +53,7 @@ dependencies {
     // Android stuff
     compile 'com.android.support:appcompat-v7:24.2.1'
     compile 'com.android.support:support-v13:24.2.1'
+    compile 'com.android.support:design:24.2.1'
 
     // talking with OSM Api
     compile 'oauth.signpost:signpost-core:1.2.1.2'
@@ -68,4 +73,5 @@ dependencies {
     compile 'com.esotericsoftware.yamlbeans:yamlbeans:1.09'
 
     compile 'org.reflections:reflections:0.9.10'
+    compile 'com.android.support:support-v4:24.2.1'
 }
