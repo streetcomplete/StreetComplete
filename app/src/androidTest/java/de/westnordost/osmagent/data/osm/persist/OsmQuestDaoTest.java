@@ -91,6 +91,7 @@ public class OsmQuestDaoTest extends OsmagentDbTestCase
 				QuestStatus.ANSWERED, null, new Date(1000), geometry);
 
 		geometryDao.put(quest1.getElementType(), quest1.getElementId(), geometry);
+		geometryDao.put(quest2.getElementType(), quest2.getElementId(), geometry);
 		dao.add(quest1);
 		dao.add(quest2);
 
