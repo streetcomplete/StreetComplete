@@ -1,4 +1,4 @@
-package de.westnordost.osmagent.dialogs;
+package de.westnordost.osmagent.dialogs.road_name;
 
 import android.text.Editable;
 import android.text.TextWatcher;

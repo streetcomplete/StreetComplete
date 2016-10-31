@@ -1,4 +1,4 @@
-package de.westnordost.osmagent.quests;
+package de.westnordost.osmagent.data.osm;
 
 import de.westnordost.osmagent.data.osm.tql.FiltersParser;
 import de.westnordost.osmagent.data.osm.tql.TagFilterExpression;

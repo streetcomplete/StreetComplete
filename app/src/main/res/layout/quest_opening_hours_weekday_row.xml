@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:gravity="top"
+              android:orientation="horizontal">
+
+    <TextView
+        android:layout_width="135dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/weekday_from_to"
+        android:layout_weight="0"
+        style="@style/OpeningHoursField"/>
+
+    <de.westnordost.osmagent.dialogs.opening_hours.OpeningHoursPerDay
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:id="@+id/hours_select_container"
+        android:orientation="vertical"/>
+
+    <TextView
+        android:id="@+id/delete"
+        android:text="❌"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight = "0"
+        style="@style/OpeningHoursField"/>
+
+</LinearLayout>

@@ -16,7 +16,7 @@ import de.westnordost.osmagent.data.osm.ElementGeometry;
 import de.westnordost.osmagent.data.osm.OsmQuest;
 import de.westnordost.osmagent.data.QuestStatus;
 import de.westnordost.osmagent.data.osm.changes.StringMapChanges;
-import de.westnordost.osmagent.quests.OsmElementQuestType;
+import de.westnordost.osmagent.data.osm.OsmElementQuestType;
 import de.westnordost.osmagent.util.Serializer;
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;

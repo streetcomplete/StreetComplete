@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -142,6 +143,12 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 
 	protected final void applyAnswer(Bundle data)
 	{
+		// each form should check this on its own, but in case it doesn't, this is the last chance
+		if(!hasChanges())
+		{
+			Toast.makeText(getActivity(), R.string.no_changes, Toast.LENGTH_SHORT).show();
+			return;
+		}
 		questAnswerComponent.onAnswerQuest(data);
 	}
 
@@ -160,10 +167,7 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 		return getActivity().getLayoutInflater().inflate(resourceId, content);
 	}
 
-	public boolean hasChanges()
-	{
-		return false;
-	}
+	public abstract boolean hasChanges();
 
 	public final long getQuestId()
 	{

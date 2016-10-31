@@ -1,6 +1,5 @@
 package de.westnordost.osmagent.data.meta;
 
-
 import com.esotericsoftware.yamlbeans.YamlException;
 import com.esotericsoftware.yamlbeans.YamlReader;
 

@@ -4,10 +4,12 @@ import android.os.Bundle;
 
 import de.westnordost.osmagent.data.QuestImportance;
 import de.westnordost.osmagent.dialogs.AbstractQuestAnswerFragment;
-import de.westnordost.osmagent.dialogs.AddOpeningHoursForm;
 import de.westnordost.osmagent.data.osm.changes.StringMapChangesBuilder;
 
 import de.westnordost.osmagent.R;
+import de.westnordost.osmagent.data.osm.OverpassQuestType;
+import de.westnordost.osmagent.dialogs.opening_hours.AddOpeningHoursForm;
+
 
 public class AddOpeningHours extends OverpassQuestType
 {
@@ -39,7 +41,11 @@ public class AddOpeningHours extends OverpassQuestType
 
 	@Override public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
 	{
-		// TODO
+		String openingHours = answer.getString(AddOpeningHoursForm.OPENING_HOURS);
+		if(openingHours != null)
+		{
+			changes.add("opening_hours", openingHours);
+		}
 	}
 
 	@Override public int getCommitMessageResourceId()

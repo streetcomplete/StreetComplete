@@ -4,10 +4,11 @@ import android.os.Bundle;
 
 import de.westnordost.osmagent.data.QuestImportance;
 import de.westnordost.osmagent.dialogs.AbstractQuestAnswerFragment;
-import de.westnordost.osmagent.dialogs.AddRoadNameForm;
 import de.westnordost.osmagent.data.osm.changes.StringMapChangesBuilder;
 
 import de.westnordost.osmagent.R;
+import de.westnordost.osmagent.data.osm.OverpassQuestType;
+import de.westnordost.osmagent.dialogs.road_name.AddRoadNameForm;
 
 public class AddRoadName extends OverpassQuestType
 {
@@ -39,7 +40,7 @@ public class AddRoadName extends OverpassQuestType
 		else
 		{
 			String name = answer.getString(AddRoadNameForm.NAME);
-			changes.add("name", name);
+			if(name != null) changes.add("name", name);
 		}
 	}
 

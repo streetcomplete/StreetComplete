@@ -8,6 +8,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import de.westnordost.osmagent.data.osm.OsmQuest;
+import de.westnordost.osmagent.data.osm.changes.StringMapChanges;
 import de.westnordost.osmagent.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.osmagent.data.osm.persist.ElementGeometryDao;
 import de.westnordost.osmagent.data.osm.persist.MergedElementDao;
@@ -16,7 +17,7 @@ import de.westnordost.osmagent.data.osmnotes.CreateNote;
 import de.westnordost.osmagent.data.osmnotes.CreateNoteDao;
 import de.westnordost.osmagent.data.osmnotes.OsmNoteQuest;
 import de.westnordost.osmagent.data.osmnotes.OsmNoteQuestDao;
-import de.westnordost.osmagent.dialogs.NoteDiscussionForm;
+import de.westnordost.osmagent.dialogs.note_discussion.NoteDiscussionForm;
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
 
@@ -47,6 +48,8 @@ public class QuestController
 		questDownloader.setQuestListener(questDispatcher);
 	}
 
+	/** Create a note for the given OSM Quest instead of answering it. The quest will turn
+	 *  invisible. */
 	public void createNote(final long osmQuestId, final String text)
 	{
 		new Thread()
@@ -80,6 +83,7 @@ public class QuestController
 		}.start();
 	}
 
+	/** Apply the user's answer to the given quest. (The quest will turn invisible.) */
 	public void solveQuest(final long questId, final QuestGroup group, final Bundle answer)
 	{
 		new Thread()
@@ -92,23 +96,43 @@ public class QuestController
 					Element e = osmElementDB.get(q.getElementType(), q.getElementId());
 					StringMapChangesBuilder changesBuilder = new StringMapChangesBuilder(e.getTags());
 					q.getOsmElementQuestType().applyAnswerTo(answer, changesBuilder);
-					q.setChanges(changesBuilder.create());
-					q.setStatus(QuestStatus.ANSWERED);
-					osmQuestDB.update(q);
-					questDispatcher.onQuestRemoved(q, QuestGroup.OSM);
+					StringMapChanges changes = changesBuilder.create();
+					if(!changes.isEmpty())
+					{
+						q.setChanges(changes);
+						q.setStatus(QuestStatus.ANSWERED);
+						osmQuestDB.update(q);
+						questDispatcher.onQuestRemoved(q, QuestGroup.OSM);
+					}
+					else
+					{
+						throw new RuntimeException(
+								"OsmQuest " + questId + " (" + q.getType().getClass().getSimpleName() +
+								") has been answered by the user but the changeset is empty!");
+					}
 				}
 				else if (group == QuestGroup.OSM_NOTE)
 				{
 					OsmNoteQuest q = osmNoteQuestDB.get(questId);
-					q.setComment(answer.getString(NoteDiscussionForm.TEXT));
-					q.setStatus(QuestStatus.ANSWERED);
-					osmNoteQuestDB.update(q);
-					questDispatcher.onQuestRemoved(q, QuestGroup.OSM_NOTE);
+					String comment = answer.getString(NoteDiscussionForm.TEXT);
+					if(comment != null && comment.isEmpty())
+					{
+						q.setComment(comment);
+						q.setStatus(QuestStatus.ANSWERED);
+						osmNoteQuestDB.update(q);
+						questDispatcher.onQuestRemoved(q, QuestGroup.OSM_NOTE);
+					}
+					else
+					{
+						throw new RuntimeException(
+								"NoteQuest has been answered with an empty comment!");
+					}
 				}
 			}
 		}.start();
 	}
 
+	/** Make the given quest invisible asynchronously. */
 	public void hideQuest(final long questId, final QuestGroup group)
 	{
 		new Thread()
@@ -133,6 +157,7 @@ public class QuestController
 		}.start();
 	}
 
+	/** Retrieve the given quest from local database asynchronously. */
 	public void retrieve(final long questId, final QuestGroup group)
 	{
 		new Thread()
@@ -155,6 +180,8 @@ public class QuestController
 		}.start();
 	}
 
+	/** Retrieve all visible (=new) quests in the given bounding box from local database
+	 *  asynchronously. */
 	public void retrieve(final BoundingBox bbox)
 	{
 		new Thread()
@@ -173,6 +200,8 @@ public class QuestController
 		}.start();
 	}
 
+	/** Download quests in the given bounding box asynchronously. maxVisibleQuests = null for no
+	 *  limit. Multiple calls to this method will cancel the previous download job. */
 	public void download(BoundingBox bbox, Integer maxVisibleQuests)
 	{
 		questDownloader.download(bbox, maxVisibleQuests);
@@ -183,11 +212,13 @@ public class QuestController
 		questDownloader.shutdown();
 	}
 
+	/** Add object to be notified whenever quests become visible / invisible */
 	public void addQuestListener(VisibleQuestListener listener)
 	{
 		questDispatcher.addListener(listener);
 	}
 
+	/** Remove object to be notified whenever quests become visible / invisible */
 	public void removeQuestListener(VisibleQuestListener listener)
 	{
 		questDispatcher.removeListener(listener);

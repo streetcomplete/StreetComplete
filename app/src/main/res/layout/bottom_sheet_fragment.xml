@@ -4,11 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:paddingLeft="@dimen/bottom_sheet_horizontal_margin"
-    android:paddingRight="@dimen/bottom_sheet_horizontal_margin"
-    android:paddingTop="@dimen/bottom_sheet_vertical_margin"
-    android:paddingBottom="@dimen/bottom_sheet_vertical_margin"
-    android:elevation="@dimen/bottom_sheet_elevation"
+    android:elevation="16dp"
     android:orientation="vertical"
     app:layout_behavior="android.support.design.widget.BottomSheetBehavior"
     app:behavior_peekHeight="200dp"
@@ -18,42 +14,64 @@
     <TextView
         android:id="@+id/title"
         style="@style/QuestTitleQuestion"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:background="@drawable/bg_title"
         />
 
-    <LinearLayout
-        android:id="@+id/content"
-        android:layout_height="wrap_content"
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:paddingTop="@dimen/quest_form_vertical_margin"
-        android:paddingBottom="@dimen/quest_form_vertical_margin"
-        >
+        android:layout_height="wrap_content">
 
-    </LinearLayout>
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            >
 
-    <LinearLayout android:id="@+id/buttonPanel"
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:orientation="horizontal"
-                  android:layoutDirection="locale"
-                  style="?android:attr/buttonBarStyle">
-        <Button
-            android:id="@+id/buttonOtherAnswers"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:text="@string/quest_generic_otherAnswers"
-            style="?android:attr/buttonBarButtonStyle"/>
-        <Button
-            android:id="@+id/buttonOk"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_gravity="end"
-            style="?android:attr/buttonBarButtonStyle"
-            android:text="@android:string/ok"
-             />
-    </LinearLayout>
+            <LinearLayout
+                android:id="@+id/content"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                >
+
+            </LinearLayout>
+
+            <LinearLayout android:id="@+id/buttonPanel"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:orientation="horizontal"
+                          android:layoutDirection="locale"
+                          style="?android:attr/buttonBarStyle">
+                <Button
+                    android:id="@+id/buttonOtherAnswers"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="@string/quest_generic_otherAnswers"
+                    style="?android:attr/buttonBarButtonStyle"/>
+                <Button
+                    android:id="@+id/buttonOk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="end"
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:text="@android:string/ok"
+                     />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
 </de.westnordost.osmagent.dialogs.SlidingLinearLayout>

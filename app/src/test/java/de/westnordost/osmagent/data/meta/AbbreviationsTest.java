@@ -10,17 +10,17 @@ public class AbbreviationsTest extends TestCase
 {
 	public void testCapitalizeFirstLetter()
 	{
-		assertEquals("Straße", abbr("str: straße").getExpansion("str", true, true));
+		assertEquals("Straße", abbr("str: straße", Locale.GERMANY).getExpansion("str", true, true));
 	}
 
 	public void testWithAbbrDot()
 	{
-		assertEquals("Straße", abbr("str: straße").getExpansion("str.", true, true));
+		assertEquals("Straße", abbr("str: straße", Locale.GERMANY).getExpansion("str.", true, true));
 	}
 
 	public void testIgnoreCase()
 	{
-		assertEquals("Straße", abbr("sTr: Straße").getExpansion("StR", true, true));
+		assertEquals("Straße", abbr("sTr: Straße", Locale.GERMANY).getExpansion("StR", true, true));
 	}
 
 	public void testExpectOwnWordByDefault()
@@ -60,25 +60,30 @@ public class AbbreviationsTest extends TestCase
 
 	public void testUnicode()
 	{
-		assertEquals("Блок", abbr("бл: Блок").getExpansion("бл", true, true));
+		assertEquals("Блок", abbr("бл: Блок",new Locale("ru","RU")).getExpansion("бл", true, true));
 	}
 
 	public void testLocaleCase()
 	{
-		assertEquals("Блок", abbr("бл: блок").getExpansion("Бл", true, true));
+		assertEquals("Блок", abbr("бл: блок",new Locale("ru","RU")).getExpansion("Бл", true, true));
 	}
 
 	public void testFindAbbreviation()
 	{
-		assertFalse(abbr("str: Straße").containsAbbreviations("stri stra straße"));
-		assertTrue(abbr("str: Straße").containsAbbreviations("stri str straße"));
+		assertFalse(abbr("str: Straße", Locale.GERMANY).containsAbbreviations("stri stra straße"));
+		assertTrue(abbr("str: Straße", Locale.GERMANY).containsAbbreviations("stri str straße"));
 	}
 
 	private Abbreviations abbr(String input)
 	{
+		return abbr(input, Locale.US);
+	}
+
+	private Abbreviations abbr(String input, Locale locale)
+	{
 		try
 		{
-			return new Abbreviations(new ByteArrayInputStream(input.getBytes("utf-8")), Locale.US);
+			return new Abbreviations(new ByteArrayInputStream(input.getBytes("UTF-8")), locale);
 		}
 		catch (UnsupportedEncodingException e)
 		{

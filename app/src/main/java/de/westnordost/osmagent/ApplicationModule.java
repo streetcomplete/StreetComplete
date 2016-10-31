@@ -10,9 +10,9 @@ import java.util.List;
 
 import dagger.Module;
 import dagger.Provides;
-import de.westnordost.osmagent.data.meta.LocaleMetadata;
+import de.westnordost.osmagent.data.meta.CurrentCountry;
 import de.westnordost.osmagent.data.osm.download.OverpassQuestTypeList;
-import de.westnordost.osmagent.quests.OverpassQuestType;
+import de.westnordost.osmagent.data.osm.OverpassQuestType;
 
 @Module
 public class ApplicationModule
@@ -49,8 +49,8 @@ public class ApplicationModule
 		return OverpassQuestTypeList.quests;
 	}
 
-	@Provides public static LocaleMetadata localeMetadata(Context appContext)
+	@Provides public static CurrentCountry localeMetadata(Context appContext)
 	{
-		return new LocaleMetadata(appContext);
+		return new CurrentCountry(appContext);
 	}
 }

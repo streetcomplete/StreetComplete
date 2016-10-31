@@ -7,6 +7,7 @@ import de.westnordost.osmagent.data.osm.tql.TagFilterExpression;
 import de.westnordost.osmapi.map.data.Relation;
 import de.westnordost.osmapi.map.data.Way;
 
+/** Definitions which closed ways and which relations are areas */
 public class OsmAreas
 {
 	private static final TagFilterExpression IS_AREA_EXPR = new FiltersParser().parse(

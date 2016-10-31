@@ -18,7 +18,7 @@ import de.westnordost.osmagent.data.osm.persist.ElementGeometryDao;
 import de.westnordost.osmagent.data.osm.persist.MergedElementDao;
 import de.westnordost.osmagent.data.osm.persist.OsmQuestDao;
 import de.westnordost.osmagent.data.statistics.QuestStatisticsDao;
-import de.westnordost.osmagent.quests.OsmElementQuestType;
+import de.westnordost.osmagent.data.osm.OsmElementQuestType;
 import de.westnordost.osmapi.common.errors.OsmConflictException;
 import de.westnordost.osmapi.map.MapDataDao;
 import de.westnordost.osmapi.map.data.Element;

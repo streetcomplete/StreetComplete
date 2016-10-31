@@ -8,7 +8,7 @@
         android:text="@string/quest_streetName_description"
         android:labelFor="@+id/nameInput"/>
 
-    <de.westnordost.osmagent.dialogs.AutoCorrectAbbreviationsEditText
+    <de.westnordost.osmagent.dialogs.road_name.AutoCorrectAbbreviationsEditText
         android:id="@+id/nameInput"
         android:layout_width="match_parent"
         android:layout_height="0dp"

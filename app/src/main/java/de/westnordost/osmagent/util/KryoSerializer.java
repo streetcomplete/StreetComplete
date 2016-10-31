@@ -6,6 +6,7 @@ import com.esotericsoftware.kryo.io.Output;
 
 import org.objenesis.strategy.StdInstantiatorStrategy;
 
+import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -16,6 +17,9 @@ import de.westnordost.osmagent.data.osm.changes.StringMapChanges;
 import de.westnordost.osmagent.data.osm.changes.StringMapEntryAdd;
 import de.westnordost.osmagent.data.osm.changes.StringMapEntryDelete;
 import de.westnordost.osmagent.data.osm.changes.StringMapEntryModify;
+import de.westnordost.osmagent.dialogs.opening_hours.CircularSection;
+import de.westnordost.osmagent.dialogs.opening_hours.OpeningHoursPerMonth;
+import de.westnordost.osmagent.dialogs.opening_hours.OpeningHoursPerWeek;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.map.data.OsmLatLon;
 import de.westnordost.osmapi.map.data.OsmRelationMember;
@@ -39,7 +43,8 @@ public class KryoSerializer implements Serializer
 			NoteComment.class,
 			NoteComment.Action.class,
 			Date.class,
-			User.class
+			User.class,
+			CircularSection.class
 	};
 
 

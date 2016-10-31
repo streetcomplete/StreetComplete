@@ -7,7 +7,6 @@ import javax.annotation.Nullable;
 import de.westnordost.osmagent.data.Quest;
 import de.westnordost.osmagent.data.QuestStatus;
 import de.westnordost.osmagent.data.osm.changes.StringMapChanges;
-import de.westnordost.osmagent.quests.OsmElementQuestType;
 import de.westnordost.osmagent.data.QuestType;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.map.data.LatLon;

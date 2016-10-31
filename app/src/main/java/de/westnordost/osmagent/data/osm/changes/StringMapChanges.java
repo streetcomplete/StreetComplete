@@ -55,6 +55,11 @@ public class StringMapChanges
 		}
 	}
 
+	public boolean isEmpty()
+	{
+		return changes.isEmpty();
+	}
+
 	@Override public String toString()
 	{
 		StringBuilder sb = new StringBuilder();

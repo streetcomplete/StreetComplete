@@ -1,4 +1,4 @@
-package de.westnordost.osmagent.dialogs;
+package de.westnordost.osmagent.dialogs.road_name;
 
 import android.content.Context;
 import android.text.Editable;
@@ -13,15 +13,19 @@ import java.util.Locale;
 
 import javax.inject.Inject;
 
+import dagger.Lazy;
 import de.westnordost.osmagent.Injector;
 import de.westnordost.osmagent.data.meta.Abbreviations;
-import de.westnordost.osmagent.data.meta.LocaleMetadata;
+import de.westnordost.osmagent.data.meta.CurrentCountry;
 
 /** An edit text that expands abbreviations automatically when finishing a word (via space, "-" or
  *  ".") and capitalizes the first letter of each word that is longer than 3 letters. */
 public class AutoCorrectAbbreviationsEditText extends EditText
 {
-	@Inject LocaleMetadata localeMetadata;
+	// Creation of Abbreviations takes some time, let's defer it until after the injection (so that
+	// we can load it asynchronously
+	@Inject Lazy<Abbreviations> abbreviations;
+	@Inject CurrentCountry currentCountry;
 
 	public AutoCorrectAbbreviationsEditText(Context context)
 	{
@@ -51,7 +55,7 @@ public class AutoCorrectAbbreviationsEditText extends EditText
 		{
 			@Override public void run()
 			{
-				localeMetadata.getCurrentCountryAbbreviations();
+				abbreviations.get();
 			}
 		}.start();
 
@@ -84,9 +88,7 @@ public class AutoCorrectAbbreviationsEditText extends EditText
 		boolean isFirstWord = words.length == 1;
 		boolean isLastWord = cursor == s.length();
 
-		Abbreviations abbreviations = localeMetadata.getCurrentCountryAbbreviations();
-
-		String replacement = abbreviations.getExpansion(lastWordBeforeCursor, isFirstWord, isLastWord);
+		String replacement = abbreviations.get().getExpansion(lastWordBeforeCursor, isFirstWord, isLastWord);
 
 		int wordStart = textToCursor.indexOf(lastWordBeforeCursor);
 		if(replacement != null)
@@ -95,7 +97,7 @@ public class AutoCorrectAbbreviationsEditText extends EditText
 		}
 		else if (lastWordBeforeCursor.length() > 3)
 		{
-			Locale locale = localeMetadata.getCurrentCountryLocale();
+			Locale locale = currentCountry.getLocale();
 			String capital = lastWordBeforeCursor.substring(0, 1).toUpperCase(locale);
 			s.replace(wordStart, wordStart + 1, capital);
 		}
@@ -118,8 +120,7 @@ public class AutoCorrectAbbreviationsEditText extends EditText
 
 	public boolean containsAbbreviations()
 	{
-		Abbreviations abbreviations = localeMetadata.getCurrentCountryAbbreviations();
-		return abbreviations.containsAbbreviations(getText().toString());
+		return abbreviations.get().containsAbbreviations(getText().toString());
 	}
 
 	private class AbbreviationAutoCorrecter implements TextWatcher

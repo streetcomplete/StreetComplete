@@ -4,7 +4,7 @@ import android.os.Bundle;
 
 import de.westnordost.osmagent.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.osmagent.dialogs.AbstractQuestAnswerFragment;
-import de.westnordost.osmagent.quests.OsmElementQuestType;
+import de.westnordost.osmagent.data.osm.OsmElementQuestType;
 import de.westnordost.osmapi.map.data.Element;
 
 public class TestQuestType2 implements OsmElementQuestType

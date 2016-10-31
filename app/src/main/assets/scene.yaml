@@ -154,8 +154,8 @@ layers:
                 color: |
                     function () {
                         var h = feature.height || 20;
-                        h = Math.min((h + 50)/ 255, .8); // max brightness: .8
-                        h = Math.max(h, .4); // min brightness: .4
+                        h = Math.min((h + 50)/ 255, .8); // end brightness: .8
+                        h = Math.end(h, .4); // min brightness: .4
                         return [h, h, h];
                     }
         3d-buildings:

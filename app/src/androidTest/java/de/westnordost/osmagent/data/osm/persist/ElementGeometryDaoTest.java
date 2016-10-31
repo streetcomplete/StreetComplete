@@ -8,7 +8,7 @@ import java.util.List;
 import de.westnordost.osmagent.data.OsmagentDbTestCase;
 import de.westnordost.osmagent.data.osm.ElementGeometry;
 import de.westnordost.osmagent.data.osm.OsmQuest;
-import de.westnordost.osmagent.quests.OsmElementQuestType;
+import de.westnordost.osmagent.data.osm.OsmElementQuestType;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.map.data.OsmLatLon;

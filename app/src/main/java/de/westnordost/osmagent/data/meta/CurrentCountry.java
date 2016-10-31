@@ -17,14 +17,13 @@ import javax.inject.Inject;
 import de.westnordost.osmagent.Prefs;
 import de.westnordost.osmagent.R;
 
-public class LocaleMetadata
+public class CurrentCountry
 {
 	private final Context applicationContext;
 
 	private LanguagesByCountry languagesByCountry;
-	private Abbreviations abbreviations;
 
-	@Inject public LocaleMetadata(Context applicationContext)
+	@Inject public CurrentCountry(Context applicationContext)
 	{
 		this.applicationContext = applicationContext;
 	}
@@ -47,35 +46,9 @@ public class LocaleMetadata
 		return new LanguagesByCountry(is);
 	}
 
-	/** @return abbreviations for the country the user is in currently */
-	public Abbreviations getCurrentCountryAbbreviations()
+	public Resources getResources()
 	{
-		Locale currentLocale = getCurrentCountryLocale();
-		if(abbreviations == null || !abbreviations.getLocale().equals(currentLocale))
-		{
-			abbreviations = createCurrentCountryAbbreviations();
-		}
-		return abbreviations;
-	}
-
-	private synchronized Abbreviations createCurrentCountryAbbreviations()
-	{
-		Locale locale = getCurrentCountryLocale();
-
-		// double check in synchronized block
-		if(abbreviations != null && abbreviations.getLocale().equals(locale)) return abbreviations;
-
-		Configuration configuration = getLocaleConfiguration(locale);
-
-		InputStream is = applicationContext.createConfigurationContext(configuration).getResources().
-				openRawResource(R.raw.abbreviations);
-
-		return new Abbreviations(is, locale);
-	}
-
-	public Resources getCurrentCountryResources()
-	{
-		Locale locale = getCurrentCountryLocale();
+		Locale locale = getLocale();
 
 		Configuration configuration = getLocaleConfiguration(locale);
 
@@ -90,7 +63,7 @@ public class LocaleMetadata
 	}
 
 	/** Find the locale of the country the user is in currently. */
-	public Locale getCurrentCountryLocale()
+	public Locale getLocale()
 	{
 		// always fall back to default locale if the current country cannot be found
 		Locale locale = Locale.getDefault();

@@ -5,7 +5,7 @@ import java.util.List;
 
 import de.westnordost.osmagent.quests.AddOpeningHours;
 import de.westnordost.osmagent.quests.AddRoadName;
-import de.westnordost.osmagent.quests.OverpassQuestType;
+import de.westnordost.osmagent.data.osm.OverpassQuestType;
 
 /** Should do the same as ReflectionQuestTypeListCreator, only Reflection does not work on Android.
  *  So, this is (hopefully) an intermittent solution

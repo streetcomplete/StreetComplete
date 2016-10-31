@@ -1,18 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android">
 
-
-    <android.support.v4.widget.NestedScrollView
+    <TextView
+        android:id="@+id/noteText"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:textColor="#000"/>
 
-        <LinearLayout
-            android:id="@+id/noteDiscussion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"/>
+    <TextView
+        android:id="@+id/noteAuthor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="8dp"/>
 
-    </android.support.v4.widget.NestedScrollView>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#999"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/quest_noteDiscussion_comments_title"
+        android:textColor="#000"
+        android:textSize="16sp"/>
+
+    <LinearLayout
+        android:id="@+id/noteDiscussion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+    </LinearLayout>
 
     <EditText
         android:id="@+id/noteInput"

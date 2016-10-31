@@ -21,7 +21,7 @@ import de.westnordost.osmagent.data.osm.persist.ElementGeometryDao;
 import de.westnordost.osmagent.data.osm.persist.MergedElementDao;
 import de.westnordost.osmagent.data.osm.persist.OsmQuestDao;
 import de.westnordost.osmagent.data.osm.persist.OsmElementKey;
-import de.westnordost.osmagent.quests.OverpassQuestType;
+import de.westnordost.osmagent.data.osm.OverpassQuestType;
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.map.data.LatLon;

@@ -1,4 +1,4 @@
-package de.westnordost.osmagent.quests;
+package de.westnordost.osmagent.data.osm;
 
 import android.os.Bundle;
 

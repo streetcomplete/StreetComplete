@@ -4,6 +4,7 @@
 .DS_Store
 /build
 /captures
+/rejected
 osmagent.iml
 view_db.bat
 view_test_db.bat

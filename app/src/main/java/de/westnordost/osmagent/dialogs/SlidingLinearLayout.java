@@ -5,10 +5,6 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 
-/**
- * Created by Newton on 18.10.2016.
- */
-
 public class SlidingLinearLayout extends LinearLayout
 {
 	public SlidingLinearLayout(Context context)

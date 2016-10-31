@@ -5,6 +5,7 @@ import junit.framework.TestCase;
 import java.util.List;
 
 import de.westnordost.osmagent.OsmagentConstants;
+import de.westnordost.osmagent.data.osm.OverpassQuestType;
 import de.westnordost.osmagent.data.osm.download.ReflectionQuestTypeListCreator;
 
 public class QuestsValidityTest extends TestCase
