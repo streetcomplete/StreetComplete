@@ -1,9 +1,11 @@
 package de.westnordost.osmagent.dialogs.opening_hours;
 
 import android.support.annotation.NonNull;
-// TODO test
 
-// actually closed-open: [start,end+1). ie.e Jun-Jul = 6 to 7 = both June and July
+/* An integer range that defines a section in a circle. The range that is defined is actually
+   closed-open: [start,end+1). i.e Jun-Jul (= start:6 end:7) shall be both June and July. If start
+   is bigger than end, it means that the section crosses the upper boundary. Think degrees.
+  */
 public class CircularSection implements Comparable<CircularSection>
 {
 	private final int start, end;
@@ -50,5 +52,16 @@ public class CircularSection implements Comparable<CircularSection>
 		return end - other.end;
 	}
 
+	@Override public boolean equals(Object other)
+	{
+		if(this == other) return true;
+		if(other == null || !(other instanceof CircularSection)) return false;
+		CircularSection o = (CircularSection) other;
+		return start == o.start && end == o.end;
+	}
 
+	@Override public int hashCode()
+	{
+		return 31 * start + end;
+	}
 }

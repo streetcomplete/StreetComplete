@@ -112,7 +112,7 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 	public void onAttach(Context ctx)
 	{
 		super.onAttach(ctx);
-		questAnswerComponent.onAttach(ctx);
+		questAnswerComponent.onAttach((OsmQuestAnswerListener) ctx);
 	}
 
 	protected List<Integer> getOtherAnswerResourceIds()

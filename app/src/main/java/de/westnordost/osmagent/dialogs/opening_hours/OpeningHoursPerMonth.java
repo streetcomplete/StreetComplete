@@ -13,7 +13,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.text.DateFormatSymbols;
-import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -22,7 +21,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import de.westnordost.osmagent.R;
-import de.westnordost.osmagent.util.KryoSavedState;
+import de.westnordost.osmagent.util.SerializedSavedState;
 
 public class OpeningHoursPerMonth extends LinearLayout
 {
@@ -47,15 +46,15 @@ public class OpeningHoursPerMonth extends LinearLayout
 	@Override protected Parcelable onSaveInstanceState()
 	{
 		Parcelable superState = super.onSaveInstanceState();
-		return new KryoSavedState(superState, getAll());
+		return new SerializedSavedState(superState, getAll());
 	}
 
 	@Override protected void onRestoreInstanceState(Parcelable state)
 	{
-		KryoSavedState savedState = (KryoSavedState) state;
+		SerializedSavedState savedState = (SerializedSavedState) state;
 		super.onRestoreInstanceState(savedState.getSuperState());
 
-		addAll(savedState.get(HashMap.class));
+		addAll((HashMap) savedState.get(HashMap.class));
 	}
 
 	@Override protected void dispatchSaveInstanceState(SparseArray<Parcelable> container)
@@ -94,10 +93,17 @@ public class OpeningHoursPerMonth extends LinearLayout
 				{
 					@Override public void onRangeChange(int startIndex, int endIndex)
 					{
-						add(startIndex, endIndex);
+						add(startIndex, endIndex).addDefault();
 					}
 				}, range.getStart(), range.getEnd()
 		);
+	}
+
+	/** add default row (fills weekdays per months also with its default) */
+	public void addDefault()
+	{
+		CircularSection range = getRangeSuggestion();
+		add(range.getStart(), range.getEnd()).addDefault();
 	}
 
 	/** add a new row with the given range */
@@ -180,7 +186,6 @@ public class OpeningHoursPerMonth extends LinearLayout
 		List<CircularSection> months = getUnmentionedMonths();
 		if(months.isEmpty())
 		{
-			// how did we even get here, the add button should be invisible :-|
 			return new CircularSection(0,MAX_MONTH_INDEX);
 		}
 		return months.get(0);

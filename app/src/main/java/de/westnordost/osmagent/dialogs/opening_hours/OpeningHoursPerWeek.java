@@ -11,7 +11,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.text.DateFormatSymbols;
-import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
@@ -84,6 +83,13 @@ public class OpeningHoursPerWeek extends LinearLayout
 					}
 				}, range.getStart(), range.getEnd()
 		);
+	}
+
+	/** add default row */
+	public void addDefault()
+	{
+		CircularSection range = getRangeSuggestion();
+		add(range.getStart(), range.getEnd());
 	}
 
 	/** add a new row with the given range */
@@ -173,6 +179,19 @@ public class OpeningHoursPerWeek extends LinearLayout
 
 	private @NonNull CircularSection getRangeSuggestion()
 	{
+		// first entry: first six days of work week
+		if(ranges.isEmpty())
+		{
+			return new CircularSection(0,5);
+			/* according to https://en.wikipedia.org/wiki/Shopping_hours the norm for shopping days
+		   is rather MO-SA, pretty much only in Germany / Austria, shops often have shorter
+		   opening hours on SA. If you are reading this and disagree, feel free to extend the
+		   above article, it is not too complete IMO.
+		   This here is not about the https://en.wikipedia.org/wiki/Workweek_and_weekend though,
+		   shops seem to be regularly open on the weekend as well in many countries.
+		 */
+		}
+
 		List<CircularSection> weekdays = getUnmentionedWeekdays();
 		if(weekdays.isEmpty())
 		{

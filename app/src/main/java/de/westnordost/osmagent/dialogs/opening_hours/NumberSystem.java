@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
-// TODO test
+
 /** aka number range / Zahlenraum */
 public class NumberSystem
 {
@@ -29,7 +29,7 @@ public class NumberSystem
 				complementList.add(new CircularSection(start, range.getStart() - 1));
 			}
 			start = Math.max(start, range.getEnd() + 1);
-			if(start >= max) break;
+			if(start > max) break;
 		}
 		if(start <= max) complementList.add(new CircularSection(start, max));
 

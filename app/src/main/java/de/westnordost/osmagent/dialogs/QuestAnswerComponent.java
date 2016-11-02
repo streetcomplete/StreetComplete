@@ -1,12 +1,9 @@
 package de.westnordost.osmagent.dialogs;
 
-
-import android.content.Context;
 import android.os.Bundle;
 
 import de.westnordost.osmagent.data.QuestGroup;
 
-// TODO test case
 public class QuestAnswerComponent
 {
 	private static final String QUEST_ID = "questId";
@@ -43,16 +40,9 @@ public class QuestAnswerComponent
 		questGroup = QuestGroup.valueOf(arguments.getString(QUEST_GROUP));
 	}
 
-	public void onAttach(Context ctx)
+	public void onAttach(OsmQuestAnswerListener listener)
 	{
-		try
-		{
-			callbackListener = (OsmQuestAnswerListener) ctx;
-		}
-		catch (ClassCastException e)
-		{
-			throw new ClassCastException(ctx.toString() + " must implement OsmQuestAnswerListener");
-		}
+		callbackListener = listener;
 	}
 
 	public void onAnswerQuest(Bundle answer)

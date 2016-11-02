@@ -64,7 +64,7 @@ public class LeaveNoteDialog extends DialogFragment
 	public void onAttach(Context ctx)
 	{
 		super.onAttach(ctx);
-		questAnswerComponent.onAttach(ctx);
+		questAnswerComponent.onAttach((OsmQuestAnswerListener) ctx);
 	}
 
 	private void onClickOk()

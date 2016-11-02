@@ -7,9 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import de.westnordost.osmagent.R;
 import de.westnordost.osmagent.dialogs.AbstractQuestAnswerFragment;
 
@@ -30,15 +27,7 @@ public class AddOpeningHoursForm extends AbstractQuestAnswerFragment
 		openingHoursPerMonth = (OpeningHoursPerMonth) contentView.findViewById(R.id.month_select_container);
 		if(savedInstanceState == null)
 		{
-			// start with "whole year" and first 6 days of the work week
-			openingHoursPerMonth.add(0,11).add(0,5);
-			/* according to https://en.wikipedia.org/wiki/Shopping_hours the norm for shopping days
-		   is rather MO-SA, pretty much only in Germany / Austria, shops often have shorter
-		   opening hours on SA. If you are reading this and disagree, feel free to extend the
-		   above article, it is not too complete IMO.
-		   This here is not about the https://en.wikipedia.org/wiki/Workweek_and_weekend though,
-		   shops seem to be regularly open on the weekend as well in many countries.
-		 */
+			openingHoursPerMonth.addDefault();
 		}
 
 		return view;
