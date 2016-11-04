@@ -1,0 +1,71 @@
+global:
+    geometry_color: [0.2, 0.2, 0.9, 0.7]
+
+textures:
+    quests:
+        url: images/quests@2x.png
+        filtering: mipmap
+        sprites:
+            # define sprites: [x origin, y origin, width, height]
+            quest: [0,0,100,100]
+            signpost: [100,0,100,100]
+            car: [200,0,100,100]
+            public_transport: [300,0,100,100]
+            nature: [400,0,100,100]
+            address: [0,100,100,100]
+            bicycle: [100,100,100,100]
+            pedestrian: [200,100,100,100]
+            shop: [300,100,100,100]
+            agricultural: [400,100,100,100]
+            note: [0,200,100,100]
+            contact: [100,200,100,100]
+            opening_hours: [200,200,100,100]
+            lit: [300,200,100,100]
+            industrial: [400,200,100,100]
+
+styles:
+    quest-icons:
+        base: points
+        texture: quests
+        blend: overlay
+
+layers:
+    osmagent_quests:
+        data: { source: osmagent_quests }
+        draw:
+            quest-icons:
+                interactive: true
+                size: 50px
+                sprite: function() { return feature.kind }
+                sprite_default: quest
+                offset: [0px, -35px]
+    osmagent_geometry:
+        data: { source: osmagent_geometry }
+        line:
+            filter: { type: line }
+            draw:
+                lines:
+                    color: global.geometry_color
+                    width: 16px
+                    collide: false
+                    order: 1000
+                    cap: round
+                    join: round
+        poly:
+            filter: { type: poly }
+            draw:
+                polygons:
+                    color: global.geometry_color
+                    width: 16px
+                    collide: false
+                    order: 1000
+                    cap: round
+                    join: round
+        point:
+            filter: { type: point }
+            draw:
+                points:
+                    color: global.geometry_color
+                    size: 32px
+                    collide: false
+                    order: 1000
