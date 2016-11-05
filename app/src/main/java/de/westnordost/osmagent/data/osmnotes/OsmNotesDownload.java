@@ -72,21 +72,21 @@ public class OsmNotesDownload
 
 				positions.add(note.position);
 
+				boolean hideNote = false;
+
 				/* many notes are created to report problems on the map that cannot be resolved
 				 * through an on-site survey rather than questions from other (armchair) mappers
 				 * that want something cleared up on-site.
 				 * Likely, if something is posed as a question, the reporter expects someone to
 				 * answer/comment on it, so let's only show these */
-				if(preferences.getBoolean(Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS, false) ||
-						!probablyContainsQuestion(note))
-				{
-					return;
-				}
+				boolean showNonQuestionNotes = preferences.getBoolean(Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS, false);
+				hideNote |= probablyContainsQuestion(note) && !showNonQuestionNotes;
 
 				/* hide a note if he already contributed to it. This can also happen from outside
-				   this application, which is why we need to overwrite its quest status.
-					*/
-				if(containsCommentFromUser(userId, note))
+				   this application, which is why we need to overwrite its quest status. */
+				hideNote |= containsCommentFromUser(userId, note);
+
+				if(hideNote)
 				{
 					quest.setStatus(QuestStatus.HIDDEN);
 					noteDB.put(note);
@@ -143,7 +143,7 @@ public class OsmNotesDownload
 		   - armenian question mark
 		   - ethopian question mark
 		   - full width question mark (often used in modern Chinese / Japanese)
-		   (Source: https://de.wikipedia.org/wiki/Question_mark)
+		   (Source: https://en.wikipedia.org/wiki/Question_mark)
 
 			NOTE: some languages, like Thai, do not use any question mark, so this would be more
 			difficult to determine.
