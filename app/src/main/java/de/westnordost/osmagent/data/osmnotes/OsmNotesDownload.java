@@ -1,5 +1,6 @@
 package de.westnordost.osmagent.data.osmnotes;
 
+import android.content.SharedPreferences;
 import android.util.LongSparseArray;
 
 import java.util.HashSet;
@@ -10,6 +11,7 @@ import javax.inject.Inject;
 import de.westnordost.osmagent.data.QuestGroup;
 import de.westnordost.osmagent.data.VisibleQuestListener;
 import de.westnordost.osmagent.data.QuestStatus;
+import de.westnordost.osmagent.Prefs;
 import de.westnordost.osmapi.common.Handler;
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.LatLon;
@@ -17,12 +19,14 @@ import de.westnordost.osmapi.notes.Note;
 import de.westnordost.osmapi.notes.NoteComment;
 import de.westnordost.osmapi.notes.NotesDao;
 
+
 public class OsmNotesDownload
 {
 	private final NotesDao noteServer;
 	private final NoteDao noteDB;
 	private final OsmNoteQuestDao noteQuestDB;
 	private final CreateNoteDao createNoteDB;
+	private final SharedPreferences preferences;
 
 	private VisibleQuestListener questListener;
 
@@ -30,12 +34,13 @@ public class OsmNotesDownload
 
 	@Inject public OsmNotesDownload(
 			NotesDao noteServer, NoteDao noteDB, OsmNoteQuestDao noteQuestDB,
-			CreateNoteDao createNoteDB)
+			CreateNoteDao createNoteDB, SharedPreferences preferences)
 	{
 		this.noteServer = noteServer;
 		this.noteDB = noteDB;
 		this.noteQuestDB = noteQuestDB;
 		this.createNoteDB = createNoteDB;
+		this.preferences = preferences;
 	}
 
 	public void setQuestListener(VisibleQuestListener questListener)
@@ -67,9 +72,20 @@ public class OsmNotesDownload
 
 				positions.add(note.position);
 
-					/* hide a note if he already contributed to it. This can also happen from outside
-					   this application, which is why we need to overwrite its quest status.
-					    */
+				/* many notes are created to report problems on the map that cannot be resolved
+				 * through an on-site survey rather than questions from other (armchair) mappers
+				 * that want something cleared up on-site.
+				 * Likely, if something is posed as a question, the reporter expects someone to
+				 * answer/comment on it, so let's only show these */
+				if(preferences.getBoolean(Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS, false) ||
+						!probablyContainsQuestion(note))
+				{
+					return;
+				}
+
+				/* hide a note if he already contributed to it. This can also happen from outside
+				   this application, which is why we need to overwrite its quest status.
+					*/
 				if(containsCommentFromUser(userId, note))
 				{
 					quest.setStatus(QuestStatus.HIDDEN);
@@ -115,6 +131,27 @@ public class OsmNotesDownload
 				return true;
 		}
 		return false;
+	}
+
+	private boolean probablyContainsQuestion(Note note)
+	{
+		/* from left to right (if smartass IntelliJ wouldn't mess up left-to-right):
+		   - latin question mark
+		   - greek question mark (a different character than semikolon, though same appearance)
+		   - semikolon (often used instead of proper greek question mark)
+		   - mirrored question mark (used in script written from right to left, like Arabic)
+		   - armenian question mark
+		   - ethopian question mark
+		   - full width question mark (often used in modern Chinese / Japanese)
+		   (Source: https://de.wikipedia.org/wiki/Question_mark)
+
+			NOTE: some languages, like Thai, do not use any question mark, so this would be more
+			difficult to determine.
+	   */
+		String questionMarksAroundTheWorld = "[?;;؟՞፧？]";
+
+		String text = note.comments.get(0).text;
+		return text.matches(".*" + questionMarksAroundTheWorld + ".*");
 	}
 
 	private void removeObsoleteNoteQuests(LongSparseArray<OsmNoteQuest> oldQuests)

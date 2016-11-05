@@ -70,7 +70,10 @@ public class OsmNoteQuest implements Quest
 
 	@Override public ElementGeometry getGeometry()
 	{
-		// TODO: using the same method as in CreateNote, we could actually get the ElementGeometry here
+		// NOTE: using the same method as in CreateNote, we could actually get the ElementGeometry
+		// here. However, to make users answer notes that other users created, barely makes sense
+		// (otherwise they could probably answer it themselves), so any notes created by this app
+		// will/should likely not show up for other users of this app
 
 		// no geometry other than the marker location
 		return new ElementGeometry(getMarkerLocation());

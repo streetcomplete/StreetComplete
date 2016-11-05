@@ -15,6 +15,7 @@
     <string name="title_activity_settings">Settings</string>
 
     <string name="pref_category_communication">Communication</string>
+    <string name="pref_category_display">Display</string>
 
     <string name="pref_title_autosync">Auto-Sync</string>
     <string name="pref_title_authorization">Authorize OSM access</string>
@@ -22,6 +23,10 @@
     <string name="pref_title_not_authorized_summary">Not yet authorized</string>
     <string name="pref_tilecache_size_summary">%d MB</string>
     <string name="pref_tilecache_size_message">Space in megabytes reserved on external storage to cache map tiles</string>
+
+    <string name="pref_title_show_notes_not_phrased_as_questions">Show all notes</string>
+    <string name="pref_summaryOn_show_notes_not_phrased_as_questions">Also download notes not phrased as questions</string>
+    <string name="pref_summaryOff_show_notes_not_phrased_as_questions">Ignore notes not phrased as questions</string>
 
     <string-array name="pref_entries_autosync">
         <item>On</item>
