@@ -49,9 +49,9 @@ public class TagFilterExpression
 					"];");
 		}
 
-		BooleanExpression<OQLExpressionValue> exprWithBBox = createExpandedExpression();
+		BooleanExpression<OQLExpressionValue> expandedExpression = createExpandedExpression();
 
-		List<String> elements = getTagFiltersOverpassList(exprWithBBox);
+		List<String> elements = getTagFiltersOverpassList(expandedExpression);
 
 		final boolean useUnion = elementsTypeFilter == ElementsTypeFilter.ELEMENTS || elements.size() > 1;
 
@@ -94,9 +94,10 @@ public class TagFilterExpression
 		return oql.toString();
 	}
 
-	private static List<String> getTagFiltersOverpassList(BooleanExpression<OQLExpressionValue> exprWithBBox)
+	private static List<String> getTagFiltersOverpassList(
+			BooleanExpression<OQLExpressionValue> expandedExpression)
 	{
-		BooleanExpression<OQLExpressionValue> child = exprWithBBox.getFirstChild();
+		BooleanExpression<OQLExpressionValue> child = expandedExpression.getFirstChild();
 		if(child == null) return Collections.singletonList(";");
 
 		if(child.isOr())

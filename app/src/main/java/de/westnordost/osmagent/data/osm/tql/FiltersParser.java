@@ -161,11 +161,13 @@ public class FiltersParser
 		String operator = null;
 		String value = null;
 
-		// !key at the start is translated to "key"!~"."
+		// !key at the start is translated to "key"!~".*"
 		if(input.nextIsAndAdvance('!'))
 		{
+			// Overpass understands "." to mean "any string". For a Java regex matcher, that would
+			// be ".*"
 			operator = "!~";
-			value = "\".\"";
+			value = "\".*\"";
 		}
 
 		String key = parseKey();

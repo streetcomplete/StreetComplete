@@ -50,7 +50,7 @@ public class TagFilterValueTest extends TestCase
 
 	public void testMatchesNotLikeDot()
 	{
-		TagFilterValue notlike = new TagFilterValue("highway", "!~", ".");
+		TagFilterValue notlike = new TagFilterValue("highway", "!~", ".*");
 
 		assertFalse(notlike.matches(elementWithTag("highway", "anything")));
 		assertTrue(notlike.matches(new OsmNode(0, 0, 0d, 0d, null, null)));
@@ -72,6 +72,27 @@ public class TagFilterValueTest extends TestCase
 		assertTrue(key.matches(elementWithTag("name", "yes")));
 		assertTrue(key.matches(elementWithTag("name", "no")));
 		assertFalse(key.matches(new OsmNode(0, 0, 0d, 0d, null, null)));
+	}
+
+	public void testToString()
+	{
+		TagFilterValue key = new TagFilterValue("A", "=", "B");
+		assertEquals("\"A\"=\"B\"", key.toString());
+		assertEquals("[\"A\"=\"B\"]", key.toOverpassQLString());
+	}
+
+	public void testToRegexString()
+	{
+		TagFilterValue key = new TagFilterValue("A", "~", "B");
+		assertEquals("\"A\"~\"B\"", key.toString());
+		assertEquals("[\"A\"~\"^(B)$\"]", key.toOverpassQLString());
+	}
+
+	public void testToRegexDotToString()
+	{
+		TagFilterValue key = new TagFilterValue("A", "!~", ".*");
+		assertEquals("\"A\"!~\".*\"", key.toString());
+		assertEquals("[\"A\"!~\".\"]", key.toOverpassQLString());
 	}
 
 	private Element elementWithTag(String key, String value)

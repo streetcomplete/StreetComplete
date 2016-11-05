@@ -3,7 +3,12 @@ package de.westnordost.osmagent.data.osm.tql;
 import de.westnordost.osmapi.map.data.Element;
 
 /** A value within a BooleanExpression that filters by a tag (key-value) combination. I.e.
- *  highway=residential */
+ *  highway=residential
+ *  If value is a regex, the format of it is to be stored to work with String.matches(), meaning
+ *  that
+ *    - must match the whole string (in Overpass, it may match anywhere)
+ *    - "." means "any 1 character" (in Overpass, it means any string if alone)
+ *  */
 public class TagFilterValue implements OQLExpressionValue
 {
 	public TagFilterValue(String key, String op, String value)
@@ -30,14 +35,10 @@ public class TagFilterValue implements OQLExpressionValue
 		String tagValue = element.getTags() != null ? element.getTags().get(key) : null;
 
 		if(tagValue == null) return op.startsWith("!");
-		if(op.indexOf('~') != -1)
+		if(isValueRegex())
 		{
-			// Overpass understands "." to mean "any string". For a Java regex matcher, that would
-			// be ".*"
-			String regExValue = value;
-			if(regExValue.equals(".")) regExValue = ".*";
-			if(op.equals("!~")) return !tagValue.matches(regExValue);
-			if(op.equals("~")) return tagValue.matches(regExValue);
+			if(op.equals("!~")) return !tagValue.matches(value);
+			if(op.equals("~")) return tagValue.matches(value);
 		}
 		else
 		{
@@ -47,7 +48,17 @@ public class TagFilterValue implements OQLExpressionValue
 		return false;
 	}
 
+	private boolean isValueRegex()
+	{
+		return op != null && op.indexOf('~') != -1;
+	}
+
 	public String toString()
+	{
+		return toString(key, op, value);
+	}
+
+	private static String toString(String key, String op, String value)
 	{
 		StringBuilder builder = new StringBuilder();
 
@@ -57,7 +68,7 @@ public class TagFilterValue implements OQLExpressionValue
 		return builder.toString();
 	}
 
-	private String ensureQuotes(String x)
+	private static String ensureQuotes(String x)
 	{
 		String quot = x.charAt(0) != '"' && x.charAt(0) != '\'' ? "\"" : "";
 		return quot + x + quot;
@@ -66,7 +77,19 @@ public class TagFilterValue implements OQLExpressionValue
 	@Override
 	public String toOverpassQLString()
 	{
-		return '['+toString()+']';
+		String overpassValue = value;
+		if(isValueRegex())
+		{
+			if(value.equals(".*"))
+			{
+				overpassValue = ".";
+			}
+			else
+			{
+				overpassValue = "^(" + value + ")$";
+			}
+		}
+		return "["+toString(key, op, overpassValue)+"]";
 	}
 
 }
