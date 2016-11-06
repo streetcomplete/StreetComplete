@@ -2,8 +2,13 @@ package de.westnordost.osmagent.quests.opening_hours;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -11,14 +16,16 @@ import android.widget.TimePicker;
 import de.westnordost.osmagent.R;
 
 public class TimeRangePickerDialog extends AlertDialog
-		implements TabHost.OnTabChangeListener, TimePicker.OnTimeChangedListener, View.OnClickListener
+		implements TimePicker.OnTimeChangedListener, View.OnClickListener
 {
-	private static final String
-			START_TIME_TAB = "start",
-			END_TIME_TAB = "end";
+	private static final int
+			START_TIME_TAB = 0,
+			END_TIME_TAB = 1;
 
 	private final TimePicker startPicker, endPicker;
-	private final TabHost tabs;
+	private final ViewPager viewPager;
+	private final TabLayout tabLayout;
+
 	private final View error;
 
 	private final OnTimeRangeChangeListener listener;
@@ -48,10 +55,10 @@ public class TimeRangePickerDialog extends AlertDialog
 
 		TextView errorText = (TextView) view.findViewById(R.id.error_text);
 		errorText.setText(errorInvalidTime);
-
-		startPicker = (TimePicker) view.findViewById(R.id.start_time_picker);
+		AttributeSet a;
+		startPicker = (TimePicker) inflater.inflate(R.layout.time_range_picker_picker, null);
 		startPicker.setIs24HourView(true);
-		endPicker = (TimePicker) view.findViewById(R.id.end_time_picker);
+		endPicker = (TimePicker) inflater.inflate(R.layout.time_range_picker_picker, null);
 		endPicker.setIs24HourView(true);
 		if(startTime != null)
 		{
@@ -66,21 +73,81 @@ public class TimeRangePickerDialog extends AlertDialog
 		startPicker.setOnTimeChangedListener(this);
 		endPicker.setOnTimeChangedListener(this);
 
-		tabs = (TabHost) view.findViewById(R.id.tab_host);
-		tabs.setup();
+		viewPager = (ViewPager) view.findViewById(R.id.view_pager);
+		viewPager.setAdapter(new CustomAdapter(startTimeLabel, endTimeLabel));
+		viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener()
+		{
+			@Override
+			public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) { }
 
-		TabHost.TabSpec startTimePage = tabs.newTabSpec(START_TIME_TAB);
-		startTimePage.setContent(R.id.start_time_picker);
-		startTimePage.setIndicator(startTimeLabel);
-		tabs.addTab(startTimePage);
+			@Override public void onPageSelected(int position)
+			{
+				updateButtonEnablement();
+			}
 
-		TabHost.TabSpec endTimePage = tabs.newTabSpec(END_TIME_TAB);
-		endTimePage.setContent(R.id.end_time_picker);
-		endTimePage.setIndicator(endTimeLabel);
-		tabs.addTab(endTimePage);
+			@Override public void onPageScrollStateChanged(int state) { }
+		});
 
-		tabs.setOnTabChangedListener(this);
+		tabLayout = (TabLayout) view.findViewById(R.id.tab_layout);
+		tabLayout.setupWithViewPager(viewPager);
 
+		tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener()
+		{
+			@Override public void onTabSelected(TabLayout.Tab tab)
+			{
+				viewPager.setCurrentItem(tab.getPosition());
+			}
+
+			@Override public void onTabUnselected(TabLayout.Tab tab)
+			{
+				viewPager.setCurrentItem(tab.getPosition());
+			}
+
+			@Override public void onTabReselected(TabLayout.Tab tab)
+			{
+				viewPager.setCurrentItem(tab.getPosition());
+			}
+		});
+	}
+
+	private class CustomAdapter extends PagerAdapter
+	{
+		private final CharSequence[] labels;
+
+		public CustomAdapter(CharSequence startTimeLabel, CharSequence endTimeLabel)
+		{
+			labels = new CharSequence[] {startTimeLabel, endTimeLabel};
+		}
+
+		@Override public int getCount()
+		{
+			return labels.length;
+		}
+
+		@Override public boolean isViewFromObject(View view, Object object)
+		{
+			if(object.equals(START_TIME_TAB)) return view == startPicker;
+			if(object.equals(END_TIME_TAB)) return view == endPicker;
+			return false;
+		}
+
+		@Override public void destroyItem(ViewGroup container, int position, Object object)
+		{
+			if(position == START_TIME_TAB) container.removeView(startPicker);
+			if(position == END_TIME_TAB) container.removeView(endPicker);
+		}
+
+		@Override public Object instantiateItem(ViewGroup container, int position)
+		{
+			if(position == START_TIME_TAB) container.addView(startPicker);
+			if(position == END_TIME_TAB) container.addView(endPicker);
+			return position;
+		}
+
+		@Override public CharSequence getPageTitle(int position)
+		{
+			return labels[position];
+		}
 	}
 
 	@Override public void show()
@@ -96,23 +163,18 @@ public class TimeRangePickerDialog extends AlertDialog
 		updateButtonEnablement();
 	}
 
-	@Override public void onTabChanged(String tabId)
-	{
-		updateButtonEnablement();
-	}
-
 	private void updateButtonEnablement()
 	{
 		getButton(BUTTON_POSITIVE).setEnabled(
-				isValid() || !(tabs.getCurrentTabTag().equals(END_TIME_TAB)));
+				isValid() || tabLayout.getSelectedTabPosition() != END_TIME_TAB);
 	}
 
 	@Override public void onClick(View v)
 	{
-		switch(tabs.getCurrentTabTag())
+		switch(tabLayout.getSelectedTabPosition())
 		{
 			case START_TIME_TAB:
-				tabs.setCurrentTabByTag(END_TIME_TAB);
+				viewPager.setCurrentItem(END_TIME_TAB);
 				break;
 
 			case END_TIME_TAB:
