@@ -1,7 +1,9 @@
 package de.westnordost.osmagent.data;
 
-public interface VisibleQuestListener
+import de.westnordost.osmagent.data.osm.VisibleOsmQuestListener;
+import de.westnordost.osmagent.data.osmnotes.VisibleOsmNoteQuestListener;
+
+public interface VisibleQuestListener extends VisibleOsmNoteQuestListener, VisibleOsmQuestListener
 {
-	void onQuestCreated(Quest quest, QuestGroup group);
-	void onQuestRemoved(Quest quest, QuestGroup group);
+	// just those two together
 }

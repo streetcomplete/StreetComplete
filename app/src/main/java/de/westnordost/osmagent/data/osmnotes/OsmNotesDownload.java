@@ -8,8 +8,6 @@ import java.util.Set;
 
 import javax.inject.Inject;
 
-import de.westnordost.osmagent.data.QuestGroup;
-import de.westnordost.osmagent.data.VisibleQuestListener;
 import de.westnordost.osmagent.data.QuestStatus;
 import de.westnordost.osmagent.Prefs;
 import de.westnordost.osmapi.common.Handler;
@@ -28,7 +26,7 @@ public class OsmNotesDownload
 	private final CreateNoteDao createNoteDB;
 	private final SharedPreferences preferences;
 
-	private VisibleQuestListener questListener;
+	private VisibleOsmNoteQuestListener questListener;
 
 	private int visibleAmount;
 
@@ -43,7 +41,7 @@ public class OsmNotesDownload
 		this.preferences = preferences;
 	}
 
-	public void setQuestListener(VisibleQuestListener questListener)
+	public void setQuestListener(VisibleOsmNoteQuestListener questListener)
 	{
 		this.questListener = questListener;
 	}
@@ -99,7 +97,7 @@ public class OsmNotesDownload
 					{
 						if(questListener != null)
 						{
-							questListener.onQuestCreated(quest, QuestGroup.OSM_NOTE);
+							questListener.onQuestCreated(quest);
 						}
 					}
 					visibleAmount++;
@@ -166,7 +164,7 @@ public class OsmNotesDownload
 				{
 					if(questListener != null)
 					{
-						questListener.onQuestRemoved(quest, QuestGroup.OSM_NOTE);
+						questListener.onQuestRemoved(quest);
 					}
 				}
 

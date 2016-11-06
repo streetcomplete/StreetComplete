@@ -29,7 +29,7 @@ public class QuestDownloader
 
 	private AtomicBoolean cancelState;
 
-	private VisibleQuestListener questListener;
+	private VisibleQuestListener listener;
 
 	@Inject public QuestDownloader(SharedPreferences prefs,
 								   Provider<OsmNotesDownload> notesDownloadProvider,
@@ -50,9 +50,9 @@ public class QuestDownloader
 		}
 	}
 
-	public void setQuestListener(VisibleQuestListener questListener)
+	public void setQuestListener(VisibleQuestListener listener)
 	{
-		this.questListener = questListener;
+		this.listener = listener;
 	}
 
 	public void download(final BoundingBox bbox, final Integer maxVisibleQuests)
@@ -69,7 +69,7 @@ public class QuestDownloader
 
 						Set<LatLon> notesPositions = null;
 						OsmNotesDownload notesDownload = notesDownloadProvider.get();
-						notesDownload.setQuestListener(questListener);
+						notesDownload.setQuestListener(listener);
 
 						Long userId = prefs.getLong(Prefs.OSM_USER_ID, -1);
 						if(userId == -1) userId = null;
@@ -91,7 +91,7 @@ public class QuestDownloader
 						}
 
 						OsmQuestDownload questDownload = questDownloadProvider.get();
-						questDownload.setQuestListener(questListener);
+						questDownload.setQuestListener(listener);
 
 						try
 						{
@@ -111,4 +111,5 @@ public class QuestDownloader
 		cancel();
 		executorService.shutdown();
 	}
+
 }

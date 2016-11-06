@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 
 import de.westnordost.osmagent.R;
 import de.westnordost.osmagent.quests.AbstractQuestAnswerFragment;
+import de.westnordost.osmapi.map.data.OsmElement;
 
 public class AddOpeningHoursForm extends AbstractQuestAnswerFragment
 {
@@ -21,7 +22,8 @@ public class AddOpeningHoursForm extends AbstractQuestAnswerFragment
 	{
 		View view = super.onCreateView(inflater, container, savedInstanceState);
 
-		setTitle(R.string.quest_openingHours_title);
+		setTitle();
+
 		View contentView = setContentView(R.layout.quest_opening_hours);
 
 		openingHoursPerMonth = (OpeningHoursPerMonth) contentView.findViewById(R.id.month_select_container);
@@ -31,6 +33,24 @@ public class AddOpeningHoursForm extends AbstractQuestAnswerFragment
 		}
 
 		return view;
+	}
+
+	private void setTitle()
+	{
+		OsmElement element = (OsmElement) getArguments().getSerializable(AbstractQuestAnswerFragment.ELEMENT);
+		String name = null;
+		if(element != null && element.getTags() != null)
+		{
+			name = element.getTags().get("name");
+		}
+		if(name != null)
+		{
+			setTitle(getResources().getString(R.string.quest_openingHours_name_title, name));
+		}
+		else
+		{
+			setTitle(R.string.quest_openingHours_unknownName_title);
+		}
 	}
 
 	@Override protected void onClickOk()

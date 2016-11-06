@@ -12,13 +12,12 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import javax.inject.Inject;
 
-import de.westnordost.osmagent.data.QuestGroup;
 import de.westnordost.osmagent.data.QuestType;
 import de.westnordost.osmagent.data.QuestTypes;
-import de.westnordost.osmagent.data.VisibleQuestListener;
 import de.westnordost.osmagent.data.osm.ElementGeometry;
 import de.westnordost.osmagent.data.osm.OsmQuest;
 import de.westnordost.osmagent.data.osm.OverpassQuestType;
+import de.westnordost.osmagent.data.osm.VisibleOsmQuestListener;
 import de.westnordost.osmagent.data.osm.persist.ElementGeometryDao;
 import de.westnordost.osmagent.data.osm.persist.MergedElementDao;
 import de.westnordost.osmagent.data.osm.persist.OsmQuestDao;
@@ -38,7 +37,7 @@ public class OsmQuestDownload
 	private final OsmQuestDao osmQuestDB;
 	private final QuestTypes questTypeList;
 
-	private VisibleQuestListener questListener;
+	private VisibleOsmQuestListener questListener;
 	private int visibleAmount;
 
 	@Inject public OsmQuestDownload(
@@ -53,7 +52,7 @@ public class OsmQuestDownload
 		this.questTypeList = questTypeList;
 	}
 
-	public void setQuestListener(VisibleQuestListener questListener)
+	public void setQuestListener(VisibleOsmQuestListener questListener)
 	{
 		this.questListener = questListener;
 	}
@@ -123,7 +122,7 @@ public class OsmQuestDownload
 				{
 					if(questListener != null)
 					{
-						questListener.onQuestCreated(quest, QuestGroup.OSM);
+						questListener.onQuestCreated(quest, element);
 					}
 				}
 				++visibleAmount;
@@ -147,7 +146,7 @@ public class OsmQuestDownload
 				{
 					if(questListener != null)
 					{
-						questListener.onQuestRemoved(quest, QuestGroup.OSM);
+						questListener.onQuestRemoved(quest);
 					}
 				}
 			}

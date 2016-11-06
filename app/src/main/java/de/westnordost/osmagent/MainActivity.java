@@ -29,6 +29,7 @@ import com.mapzen.tangram.MapData;
 import com.mapzen.tangram.MapView;
 import com.mapzen.tangram.TouchInput;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -40,6 +41,8 @@ import de.westnordost.osmagent.data.QuestController;
 import de.westnordost.osmagent.data.QuestGroup;
 import de.westnordost.osmagent.data.VisibleQuestListener;
 import de.westnordost.osmagent.data.osm.ElementGeometry;
+import de.westnordost.osmagent.data.osm.OsmQuest;
+import de.westnordost.osmagent.data.osmnotes.OsmNoteQuest;
 import de.westnordost.osmagent.quests.AbstractQuestAnswerFragment;
 import de.westnordost.osmagent.quests.OsmQuestAnswerListener;
 import de.westnordost.osmagent.quests.QuestAnswerComponent;
@@ -48,6 +51,8 @@ import de.westnordost.osmagent.tangram.MapFragment;
 import de.westnordost.osmagent.tangram.TangramConst;
 import de.westnordost.osmagent.util.SphericalEarthMath;
 import de.westnordost.osmapi.map.data.BoundingBox;
+import de.westnordost.osmapi.map.data.Element;
+import de.westnordost.osmapi.map.data.OsmElement;
 import de.westnordost.osmapi.map.data.OsmLatLon;
 
 public class MainActivity extends AppCompatActivity implements OsmQuestAnswerListener, VisibleQuestListener
@@ -132,14 +137,14 @@ public class MainActivity extends AppCompatActivity implements OsmQuestAnswerLis
 			}
 		});
 
-		questController.addQuestListener(this);
+		questController.setQuestListener(this);
 	}
 
 
 	@Override protected void onDestroy()
 	{
 		super.onDestroy();
-		questController.removeQuestListener(this);
+		questController.setQuestListener(null);
 	}
 
 	@Override protected void onStart()
@@ -205,7 +210,8 @@ public class MainActivity extends AppCompatActivity implements OsmQuestAnswerLis
 				&& currentFragment.getQuestGroup() == group;
 	}
 
-	@UiThread private void showQuestDetails(final Quest quest, final QuestGroup group, boolean confirmed)
+	@UiThread private void showQuestDetails(final Quest quest, final QuestGroup group,
+											final Element element, boolean confirmed)
 	{
 		if(isQuestDetailsCurrentlyDisplayedFor(quest.getId(), group)) return;
 
@@ -218,7 +224,7 @@ public class MainActivity extends AppCompatActivity implements OsmQuestAnswerLis
 						{
 							@Override public void run()
 							{
-								showQuestDetails(quest, group, true);
+								showQuestDetails(quest, group, element, true);
 							}
 						}
 				);
@@ -230,8 +236,13 @@ public class MainActivity extends AppCompatActivity implements OsmQuestAnswerLis
 
 		addQuestGeometryToMap(quest);
 
-		Fragment f = quest.getType().getForm();
-		f.setArguments(QuestAnswerComponent.createArguments(quest.getId(), group));
+		AbstractQuestAnswerFragment f = quest.getType().getForm();
+		Bundle args = QuestAnswerComponent.createArguments(quest.getId(), group);
+		if(group == QuestGroup.OSM)
+		{
+			args.putSerializable(AbstractQuestAnswerFragment.ELEMENT, (OsmElement) element);
+		}
+		f.setArguments(args);
 
 		FragmentTransaction ft = getFragmentManager().beginTransaction();
 		ft.setCustomAnimations(
@@ -342,7 +353,19 @@ public class MainActivity extends AppCompatActivity implements OsmQuestAnswerLis
 		questController.hideQuest(questId, group);
 	}
 
-	@AnyThread @Override public synchronized void onQuestCreated(final Quest quest, final QuestGroup group)
+	@Override public void onQuestCreated(OsmQuest quest, Element element)
+	{
+		onQuestCreated(quest, QuestGroup.OSM, element);
+	}
+
+
+	@Override public void onQuestCreated(OsmNoteQuest quest)
+	{
+		onQuestCreated(quest, QuestGroup.OSM_NOTE, null);
+	}
+
+	@AnyThread private synchronized void onQuestCreated(final Quest quest, final QuestGroup group,
+														final Element element)
 	{
 		if(clickedQuestId != null && quest.getId().equals(clickedQuestId) && group == clickedQuestGroup)
 		{
@@ -350,7 +373,7 @@ public class MainActivity extends AppCompatActivity implements OsmQuestAnswerLis
 			{
 				@Override public void run()
 				{
-					showQuestDetails(quest, group, false);
+					showQuestDetails(quest, group, element, false);
 				}
 			});
 
@@ -364,7 +387,17 @@ public class MainActivity extends AppCompatActivity implements OsmQuestAnswerLis
 		addQuestToMap(quest, group);
 	}
 
-	@AnyThread @Override public synchronized void onQuestRemoved(Quest quest, QuestGroup group)
+	@Override public void onQuestRemoved(OsmQuest quest)
+	{
+		onQuestRemoved(quest, QuestGroup.OSM);
+	}
+
+	@Override public void onQuestRemoved(OsmNoteQuest quest)
+	{
+		onQuestRemoved(quest, QuestGroup.OSM_NOTE);
+	}
+
+	@AnyThread public synchronized void onQuestRemoved(Quest quest, QuestGroup group)
 	{
 		if(isQuestDetailsCurrentlyDisplayedFor(quest.getId(), group))
 		{

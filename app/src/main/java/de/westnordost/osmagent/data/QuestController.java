@@ -2,7 +2,6 @@ package de.westnordost.osmagent.data;
 
 import android.os.Bundle;
 
-import java.util.LinkedList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -23,8 +22,6 @@ import de.westnordost.osmapi.map.data.Element;
 
 public class QuestController
 {
-	private QuestDispatcher questDispatcher;
-
 	private final OsmQuestDao osmQuestDB;
 	private final MergedElementDao osmElementDB;
 	private final ElementGeometryDao geometryDB;
@@ -32,6 +29,8 @@ public class QuestController
 	private final CreateNoteDao createNoteDB;
 
 	private final QuestDownloader questDownloader;
+
+	private VisibleQuestListener listener;
 
 	@Inject public QuestController(OsmQuestDao osmQuestDB, MergedElementDao osmElementDB,
 								   ElementGeometryDao geometryDB, OsmNoteQuestDao osmNoteQuestDB,
@@ -43,9 +42,6 @@ public class QuestController
 		this.osmNoteQuestDB = osmNoteQuestDB;
 		this.createNoteDB = createNoteDB;
 		this.questDownloader = questDownloader;
-
-		questDispatcher = new QuestDispatcher();
-		questDownloader.setQuestListener(questDispatcher);
 	}
 
 	/** Create a note for the given OSM Quest instead of answering it. The quest will turn
@@ -75,7 +71,7 @@ public class QuestController
 				for(OsmQuest quest : quests)
 				{
 					osmQuestDB.delete(quest.getId());
-					questDispatcher.onQuestRemoved(quest, QuestGroup.OSM);
+					listener.onQuestRemoved(quest);
 				}
 				osmElementDB.deleteUnreferenced();
 				geometryDB.deleteUnreferenced();
@@ -102,7 +98,7 @@ public class QuestController
 						q.setChanges(changes);
 						q.setStatus(QuestStatus.ANSWERED);
 						osmQuestDB.update(q);
-						questDispatcher.onQuestRemoved(q, QuestGroup.OSM);
+						listener.onQuestRemoved(q);
 					}
 					else
 					{
@@ -120,7 +116,7 @@ public class QuestController
 						q.setComment(comment);
 						q.setStatus(QuestStatus.ANSWERED);
 						osmNoteQuestDB.update(q);
-						questDispatcher.onQuestRemoved(q, QuestGroup.OSM_NOTE);
+						listener.onQuestRemoved(q);
 					}
 					else
 					{
@@ -144,36 +140,36 @@ public class QuestController
 					OsmQuest q = osmQuestDB.get(questId);
 					q.setStatus(QuestStatus.HIDDEN);
 					osmQuestDB.update(q);
-					questDispatcher.onQuestRemoved(q, QuestGroup.OSM);
+					listener.onQuestRemoved(q);
 				}
 				else if(group == QuestGroup.OSM_NOTE)
 				{
 					OsmNoteQuest q = osmNoteQuestDB.get(questId);
 					q.setStatus(QuestStatus.HIDDEN);
 					osmNoteQuestDB.update(q);
-					questDispatcher.onQuestRemoved(q, QuestGroup.OSM_NOTE);
+					listener.onQuestRemoved(q);
 				}
 			}
 		}.start();
 	}
 
-	/** Retrieve the given quest from local database asynchronously. */
+	/** Retrieve the given quest from local database asynchronously, including the element / note. */
 	public void retrieve(final long questId, final QuestGroup group)
 	{
 		new Thread()
 		{
 			@Override public void run()
 			{
-				Quest q;
 				switch (group)
 				{
 					case OSM:
-						q = osmQuestDB.get(questId);
-						questDispatcher.onQuestCreated(q, QuestGroup.OSM);
+						OsmQuest osmQuest = osmQuestDB.get(questId);
+						Element element = osmElementDB.get(osmQuest.getElementType(), osmQuest.getElementId());
+						listener.onQuestCreated(osmQuest, element);
 						break;
 					case OSM_NOTE:
-						q = osmNoteQuestDB.get(questId);
-						questDispatcher.onQuestCreated(q, QuestGroup.OSM_NOTE);
+						OsmNoteQuest osmNoteQuest = osmNoteQuestDB.get(questId);
+						listener.onQuestCreated(osmNoteQuest);
 						break;
 				}
 			}
@@ -188,13 +184,13 @@ public class QuestController
 		{
 			@Override public void run()
 			{
-				for (Quest q : osmQuestDB.getAll(bbox, QuestStatus.NEW))
+				for (OsmQuest q : osmQuestDB.getAll(bbox, QuestStatus.NEW))
 				{
-					questDispatcher.onQuestCreated(q, QuestGroup.OSM);
+					listener.onQuestCreated(q, null);
 				}
-				for (Quest q : osmNoteQuestDB.getAll(bbox, QuestStatus.NEW))
+				for (OsmNoteQuest q : osmNoteQuestDB.getAll(bbox, QuestStatus.NEW))
 				{
-					questDispatcher.onQuestCreated(q, QuestGroup.OSM_NOTE);
+					listener.onQuestCreated(q);
 				}
 			}
 		}.start();
@@ -213,45 +209,9 @@ public class QuestController
 	}
 
 	/** Add object to be notified whenever quests become visible / invisible */
-	public void addQuestListener(VisibleQuestListener listener)
+	public void setQuestListener(VisibleQuestListener listener)
 	{
-		questDispatcher.addListener(listener);
-	}
-
-	/** Remove object to be notified whenever quests become visible / invisible */
-	public void removeQuestListener(VisibleQuestListener listener)
-	{
-		questDispatcher.removeListener(listener);
-	}
-
-	private class QuestDispatcher implements VisibleQuestListener
-	{
-		List<VisibleQuestListener> questListeners = new LinkedList<>();
-
-		public void addListener(VisibleQuestListener listener)
-		{
-			questListeners.add(listener);
-		}
-
-		public void removeListener(VisibleQuestListener listener)
-		{
-			questListeners.remove(listener);
-		}
-
-		@Override public void onQuestCreated(Quest quest, QuestGroup group)
-		{
-			for(VisibleQuestListener listener : questListeners)
-			{
-				listener.onQuestCreated(quest, group);
-			}
-		}
-
-		@Override public void onQuestRemoved(Quest quest, QuestGroup group)
-		{
-			for(VisibleQuestListener listener : questListeners)
-			{
-				listener.onQuestRemoved(quest, group);
-			}
-		}
+		this.listener = listener;
+		questDownloader.setQuestListener(this.listener);
 	}
 }

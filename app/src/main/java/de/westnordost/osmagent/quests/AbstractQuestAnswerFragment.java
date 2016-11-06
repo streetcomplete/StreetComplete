@@ -23,6 +23,8 @@ import de.westnordost.osmagent.data.QuestGroup;
 /** Abstract base class for any dialog with which the user answers a specific quest(ion) */
 public abstract class AbstractQuestAnswerFragment extends Fragment
 {
+	public static final String ELEMENT = "element";
+
 	private TextView title;
 	private ViewGroup content;
 
@@ -160,6 +162,11 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 	protected final void setTitle(int resourceId)
 	{
 		title.setText(resourceId);
+	}
+
+	protected final void setTitle(String string)
+	{
+		title.setText(string);
 	}
 
 	protected final View setContentView(int resourceId)

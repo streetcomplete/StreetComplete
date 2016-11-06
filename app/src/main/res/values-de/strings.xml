@@ -11,7 +11,7 @@
     <string name="quest_streetName_answer_noName_confirmation_description">Manchmal steht nur an einem Ende der Straße ein Straßenschild. Außerdem mag es für Seitenstraßen, die zu einer größeren Straße gehören, keine extra Straßenschilder geben. Normalerweise hat jede Straße, an der Häuser stehen, einen Namen.</string>
     <string name="quest_streetName_answer_noName">Hat keinen Namen</string>
     <string name="quest_openingHours_allYear">Das ganze Jahr über</string>
-    <string name="quest_openingHours_title">Was sind die Öffnungszeiten dieser Stätte?</string>
+    <string name="quest_openingHours_unknownName_title">Was sind die Öffnungszeiten dieser Stätte?</string>
     <string name="quest_generic_confirmation_no">Prüfe ich</string>
     <string name="quest_generic_confirmation_title">Sicher?</string>
     <string name="quest_generic_confirmation_yes">Ja, sicher</string>
@@ -22,7 +22,7 @@
     <string name="quest_leave_new_note_title">Stattdessen eine Notiz hinterlassen?</string>
     <string name="quest_leave_new_note_description">Du kannst hier eine öffentliche Notiz hinterlassen, welche von anderen kommentiert und hoffentlich gelöst werden kann:</string>
     <string name="quest_noteDiscussion_title">Kannst du etwas zu dieser Notiz beitragen?</string>
-    <string name="quest_noteDiscussion_no">Nein</string>
+    <string name="quest_noteDiscussion_no">Nein, verstecken</string>
     <string name="quest_openingHours_add_weekdays">➕ Wochentage</string>
     <string name="quest_openingHours_add_months">➕ Monate</string>
     <string name="quest_openingHours_add_hours">➕ Zeiten</string>
@@ -42,7 +42,7 @@
     <string name="quest_noteDiscussion_create">von %1$s (%2$s)</string>
     <string name="quest_noteDiscussion_reopen">%1$s hat die Notiz wieder geöffnet (%2$s)</string>
     <string name="retry">Erneut versuchen</string>
-    <string name="quest_leave_new_note_no">Nein, weg damit</string>
+    <string name="quest_leave_new_note_no">Nein, verstecken</string>
     <string name="quest_generic_otherAnswers">Weitere Antworten</string>
     <string name="quest_openingHours_invalid_hours_range">Die Stätte schließt jetzt bevor sie öffnet? Das muss ein Fehler sein!</string>
     <string name="pref_tilecache_size_summary">%d MB</string>
@@ -63,4 +63,5 @@
     <string name="pref_tilecache_size_message">Größe in MB des Caches für die Karte auf dem externen Speicher</string>
     <string name="action_settings">Einstellungen</string>
     <string name="title_activity_settings">Einstellungen</string>
+    <string name="quest_openingHours_name_title">Was sind die Öffnungszeiten von „%s“?</string>
 </resources>
