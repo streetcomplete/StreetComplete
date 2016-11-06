@@ -2,6 +2,7 @@ package de.westnordost.osmagent.util;
 
 import junit.framework.TestCase;
 
+import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.map.data.OsmLatLon;
 
@@ -50,6 +51,23 @@ public class SphericalEarthMathTest extends TestCase
 		LatLon one = new OsmLatLon(53.5712482, 9.9782365);
 		LatLon two = new OsmLatLon(53.5712528, 9.9782517);
 		assertEquals(1, (int) SphericalEarthMath.distance(one, two));
+	}
+
+	public void testEnclosingBoundingBox()
+	{
+		LatLon pos = new OsmLatLon(0, 0);
+		BoundingBox bbox = SphericalEarthMath.enclosingBoundingBox(pos, 5000);
+
+		int dist = (int) (Math.sqrt(2) * 5000);
+
+		// all four corners of the bbox should be 'radius' away
+		assertEquals(dist, Math.round(SphericalEarthMath.distance(pos, bbox.getMin())));
+		assertEquals(dist, Math.round(SphericalEarthMath.distance(pos, bbox.getMax())));
+		assertEquals(dist, Math.round(SphericalEarthMath.distance(pos, new OsmLatLon(bbox.getMinLatitude(), bbox.getMaxLongitude()))));
+		assertEquals(dist, Math.round(SphericalEarthMath.distance(pos, new OsmLatLon(bbox.getMaxLatitude(), bbox.getMinLongitude()))));
+
+		assertEquals(225, Math.round(SphericalEarthMath.bearing(pos, bbox.getMin())));
+		assertEquals(45, Math.round(SphericalEarthMath.bearing(pos, bbox.getMax())));
 	}
 
 	public void testTranslateLatitudeNorth()

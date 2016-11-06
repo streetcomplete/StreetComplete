@@ -43,6 +43,7 @@ public class CircularSectionTest extends TestCase
 		assertFalse(cs.intersects(loopsOutside));
 		assertTrue(cs.intersects(loopsIntersectsLowerSection));
 		assertTrue(cs.intersects(loopsIntersectsUpperSection));
+		assertTrue(loopsIntersectsLowerSection.intersects(loopsIntersectsUpperSection));
 	}
 
 	public void testCompare()

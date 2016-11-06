@@ -28,6 +28,17 @@ public class LanguagesByCountryTest extends TestCase
 		assertEquals(0, langs("AQ: ").get("AQ").size());
 	}
 
+	public void testThrowExceptionOnInvalidInput()
+	{
+		try
+		{
+			langs("d:\n  - a\n  b: c\n");
+			fail();
+		}
+		catch (RuntimeException e) { }
+	}
+
+
 	private LanguagesByCountry langs(String input)
 	{
 		try

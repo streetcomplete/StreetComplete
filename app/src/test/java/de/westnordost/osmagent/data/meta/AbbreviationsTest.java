@@ -74,6 +74,16 @@ public class AbbreviationsTest extends TestCase
 		assertTrue(abbr("str: Straße", Locale.GERMANY).containsAbbreviations("stri str straße"));
 	}
 
+	public void testThrowExceptionOnInvalidInput()
+	{
+		try
+		{
+			abbr("d:\n  - a\n  b: c\n");
+			fail();
+		}
+		catch (RuntimeException e) { }
+	}
+
 	private Abbreviations abbr(String input)
 	{
 		return abbr(input, Locale.US);

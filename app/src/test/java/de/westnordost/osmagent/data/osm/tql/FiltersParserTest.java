@@ -164,8 +164,8 @@ public class FiltersParserTest extends TestCase
 	{
 		check("nodes with highway=residential", "node[\"highway\"=\"residential\"];out meta geom;");
 		check("nodes with highway!=residential", "node[\"highway\"!=\"residential\"];out meta geom;");
-		check("nodes with highway~residential", "node[\"highway\"~\"residential\"];out meta geom;");
-		check("nodes with highway!~residential", "node[\"highway\"!~\"residential\"];out meta geom;");
+		check("nodes with highway~residential", "node[\"highway\"~\"^(residential)$\"];out meta geom;");
+		check("nodes with highway!~residential", "node[\"highway\"!~\"^(residential)$\"];out meta geom;");
 	}
 
 	public void testTagNegationNotCombinableWithOperator()
