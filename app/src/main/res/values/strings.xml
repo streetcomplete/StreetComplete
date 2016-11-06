@@ -55,7 +55,7 @@
     <string name="quest_leave_new_note_title">Leave a note instead?</string>
     <string name="quest_leave_new_note_description">You can leave a public note at this location
         which other mappers can comment on and hopefully resolve:</string>
-    <string name="quest_leave_new_note_yes">@android:string/ok</string>
+    <string name="quest_leave_new_note_yes" translatable="false">@android:string/ok</string>
     <string name="quest_leave_new_note_no">No, just hide</string>
 
     <string name="quest_streetName_title">What is this road\'s name?</string>

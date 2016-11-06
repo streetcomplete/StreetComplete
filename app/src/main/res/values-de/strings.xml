@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="quest_streetName_commitMessage">Straßennamen hinzugefügt</string>
-    <string name="quest_streetName_description">wie er auf dem Straßenschild steht, Abkürzungen werden ausgeschrieben:</string>
+    <string name="quest_streetName_description">wie es auf dem Straßenschild steht, Abkürzungen werden ausgeschrieben:</string>
     <string name="quest_streetName_title">Wie heißt diese Straße?</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">Abkürzungen in Straßennamen sollten immer ausgeschrieben werden. Für übliche Abkürzungen passiert das automatisch beim Schreiben, aber eventuell nicht für alle.</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">Keine Abkürzung</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title">Abkürzung im Namen?</string>
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_title">Name abgekürzt?</string>
     <string name="quest_streetName_noName_confirmation_positive">Ja, kein Name</string>
     <string name="quest_streetName_answer_noName_confirmation_title">Wirklich kein Name?</string>
     <string name="quest_streetName_answer_noName_confirmation_description">Manchmal steht nur an einem Ende der Straße ein Straßenschild. Außerdem mag es für Seitenstraßen, die zu einer größeren Straße gehören, keine extra Straßenschilder geben. Normalerweise hat jede Straße, an der Häuser stehen, einen Namen.</string>
@@ -20,12 +20,12 @@
     <string name="map_attribution_osm">© OpenStreetMap Mitwirkende</string>
     <string name="quest_noteDiscussion_anonymous">Anonymous</string>
     <string name="quest_leave_new_note_title">Stattdessen eine Notiz hinterlassen?</string>
-    <string name="quest_leave_new_note_description">Du kannst hier eine öffentliche Notiz hinterlassen, welche von anderen kommentiert und hoffentlich gelöst werde kann:</string>
+    <string name="quest_leave_new_note_description">Du kannst hier eine öffentliche Notiz hinterlassen, welche von anderen kommentiert und hoffentlich gelöst werden kann:</string>
     <string name="quest_noteDiscussion_title">Kannst du etwas zu dieser Notiz beitragen?</string>
     <string name="quest_noteDiscussion_no">Nein</string>
     <string name="quest_openingHours_add_weekdays">➕ Wochentage</string>
     <string name="quest_openingHours_add_months">➕ Monate</string>
-    <string name="quest_openingHours_add_hours">➕ Öffnungszeit</string>
+    <string name="quest_openingHours_add_hours">➕ Zeiten</string>
     <string name="quest_openingHours_24_7_confirmation">Mit anderen Worten, es hat einfach immer auf?</string>
     <string name="quest_openingHours_chooseMonthsTitle">Monate auswählen</string>
     <string name="quest_openingHours_chooseWeekdaysTitle">Wochentage auswählen</string>
@@ -42,10 +42,9 @@
     <string name="quest_noteDiscussion_create">von %1$s (%2$s)</string>
     <string name="quest_noteDiscussion_reopen">%1$s hat die Notiz wieder geöffnet (%2$s)</string>
     <string name="retry">Erneut versuchen</string>
-    <string name="quest_leave_new_note_no">Nee danke</string>
+    <string name="quest_leave_new_note_no">Nein, weg damit</string>
     <string name="quest_generic_otherAnswers">Weitere Antworten</string>
     <string name="quest_openingHours_invalid_hours_range">Die Stätte schließt jetzt bevor sie öffnet? Das muss ein Fehler sein!</string>
-    <string name="quest_leave_new_note_yes">\@android:string/ok</string>
     <string name="pref_tilecache_size_summary">%d MB</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">Auch nicht als Fragen formulierte Notizen anzeigen</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">Nicht als Fragen formulierte Notizen ignorieren</string>
