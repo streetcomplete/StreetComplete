@@ -15,6 +15,7 @@ import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.AnyThread;
+import android.support.annotation.UiThread;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -173,10 +174,6 @@ public class MainActivity extends AppCompatActivity implements OsmQuestAnswerLis
 
 				return true;
 
-			case R.id.action_test1:
-				return true;
-			case R.id.action_test2:
-				return true;
 		}
 
 		return super.onOptionsItemSelected(item);
@@ -186,7 +183,7 @@ public class MainActivity extends AppCompatActivity implements OsmQuestAnswerLis
 
 	private final String BOTTOM_SHEET = "bottom_sheet";
 
-	private void closeQuestDetails()
+	@UiThread private void closeQuestDetails()
 	{
 		getFragmentManager().popBackStack(BOTTOM_SHEET, FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
@@ -208,12 +205,26 @@ public class MainActivity extends AppCompatActivity implements OsmQuestAnswerLis
 				&& currentFragment.getQuestGroup() == group;
 	}
 
-	private void showQuestDetails(Quest quest, QuestGroup group)
+	@UiThread private void showQuestDetails(final Quest quest, final QuestGroup group, boolean confirmed)
 	{
 		if(isQuestDetailsCurrentlyDisplayedFor(quest.getId(), group)) return;
 
 		if(getQuestDetailsFragment() != null)
 		{
+			if(!confirmed)
+			{
+				confirmDiscardChangesIfAny(
+						new Runnable()
+						{
+							@Override public void run()
+							{
+								showQuestDetails(quest, group, true);
+							}
+						}
+				);
+				return;
+			}
+
 			closeQuestDetails();
 		}
 
@@ -290,7 +301,7 @@ public class MainActivity extends AppCompatActivity implements OsmQuestAnswerLis
 	}
 
 	/** @return true if an action has been taken (run r or show confirmation dialog) */
-	private boolean confirmDiscardChangesIfAny(final Runnable r)
+	@UiThread private boolean confirmDiscardChangesIfAny(final Runnable r)
 	{
 		AbstractQuestAnswerFragment f = getQuestDetailsFragment();
 		if(f == null || !f.hasChanges())
@@ -331,11 +342,18 @@ public class MainActivity extends AppCompatActivity implements OsmQuestAnswerLis
 		questController.hideQuest(questId, group);
 	}
 
-	@AnyThread @Override public synchronized void onQuestCreated(Quest quest, QuestGroup group)
+	@AnyThread @Override public synchronized void onQuestCreated(final Quest quest, final QuestGroup group)
 	{
 		if(clickedQuestId != null && quest.getId().equals(clickedQuestId) && group == clickedQuestGroup)
 		{
-			showQuestDetails(quest, group);
+			runOnUiThread(new Runnable()
+			{
+				@Override public void run()
+				{
+					showQuestDetails(quest, group, false);
+				}
+			});
+
 			clickedQuestId = null;
 			clickedQuestGroup = null;
 		}
@@ -350,7 +368,13 @@ public class MainActivity extends AppCompatActivity implements OsmQuestAnswerLis
 	{
 		if(isQuestDetailsCurrentlyDisplayedFor(quest.getId(), group))
 		{
-			closeQuestDetails();
+			runOnUiThread(new Runnable()
+			{
+				@Override public void run()
+				{
+					closeQuestDetails();
+				}
+			});
 		}
 		removeQuestFromMap(quest.getId(), group);
 	}
