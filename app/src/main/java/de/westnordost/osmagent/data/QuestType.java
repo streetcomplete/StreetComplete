@@ -1,6 +1,6 @@
 package de.westnordost.osmagent.data;
 
-import de.westnordost.osmagent.dialogs.AbstractQuestAnswerFragment;
+import de.westnordost.osmagent.quests.AbstractQuestAnswerFragment;
 
 public interface QuestType
 {

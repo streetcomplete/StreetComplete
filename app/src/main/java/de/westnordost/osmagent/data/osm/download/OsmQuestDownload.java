@@ -11,17 +11,18 @@ import java.util.Set;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import javax.inject.Inject;
-import javax.inject.Provider;
 
 import de.westnordost.osmagent.data.QuestGroup;
+import de.westnordost.osmagent.data.QuestType;
+import de.westnordost.osmagent.data.QuestTypes;
 import de.westnordost.osmagent.data.VisibleQuestListener;
 import de.westnordost.osmagent.data.osm.ElementGeometry;
 import de.westnordost.osmagent.data.osm.OsmQuest;
+import de.westnordost.osmagent.data.osm.OverpassQuestType;
 import de.westnordost.osmagent.data.osm.persist.ElementGeometryDao;
 import de.westnordost.osmagent.data.osm.persist.MergedElementDao;
 import de.westnordost.osmagent.data.osm.persist.OsmQuestDao;
 import de.westnordost.osmagent.data.osm.persist.OsmElementKey;
-import de.westnordost.osmagent.data.osm.OverpassQuestType;
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.map.data.LatLon;
@@ -35,7 +36,7 @@ public class OsmQuestDownload
 	private final ElementGeometryDao geometryDB;
 	private final MergedElementDao elementDB;
 	private final OsmQuestDao osmQuestDB;
-	private final Provider<List<OverpassQuestType>> questListProvider;
+	private final QuestTypes questTypeList;
 
 	private VisibleQuestListener questListener;
 	private int visibleAmount;
@@ -43,13 +44,13 @@ public class OsmQuestDownload
 	@Inject public OsmQuestDownload(
 			OverpassMapDataDao overpassServer, ElementGeometryDao geometryDB,
 			MergedElementDao elementDB, OsmQuestDao osmQuestDB,
-			Provider<List<OverpassQuestType>> questListProvider)
+			QuestTypes questTypeList)
 	{
 		this.overpassServer = overpassServer;
 		this.geometryDB = geometryDB;
 		this.elementDB = elementDB;
 		this.osmQuestDB = osmQuestDB;
-		this.questListProvider = questListProvider;
+		this.questTypeList = questTypeList;
 	}
 
 	public void setQuestListener(VisibleQuestListener questListener)
@@ -61,16 +62,17 @@ public class OsmQuestDownload
 						 Integer maxVisibleAmount, AtomicBoolean cancelState)
 	{
 
-		List<OverpassQuestType> questTypes = questListProvider.get();
+		List<QuestType> questTypes = questTypeList.getQuestTypesSortedByImportance();
 
-		for(final OverpassQuestType questType : questTypes)
+		for(QuestType questType : questTypes)
 		{
+			if(!(questType instanceof OverpassQuestType)) continue;
 			if(cancelState.get()) break;
 			if(maxVisibleAmount != null && visibleAmount >= maxVisibleAmount) break;
 
 			try
 			{
-				downloadQuestType(questType, bbox, blacklistedPositions);
+				downloadQuestType((OverpassQuestType) questType, bbox, blacklistedPositions);
 			}
 			catch(Exception e)
 			{

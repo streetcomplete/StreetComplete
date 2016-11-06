@@ -1,4 +1,4 @@
-package de.westnordost.osmagent.dialogs.opening_hours;
+package de.westnordost.osmagent.quests.opening_hours;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import de.westnordost.osmagent.R;
-import de.westnordost.osmagent.dialogs.AbstractQuestAnswerFragment;
+import de.westnordost.osmagent.quests.AbstractQuestAnswerFragment;
 
 public class AddOpeningHoursForm extends AbstractQuestAnswerFragment
 {

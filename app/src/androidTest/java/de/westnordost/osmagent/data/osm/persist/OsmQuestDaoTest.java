@@ -6,6 +6,7 @@ import java.util.List;
 
 import de.westnordost.osmagent.data.OsmagentDbTestCase;
 import de.westnordost.osmagent.data.QuestStatus;
+import de.westnordost.osmagent.data.QuestType;
 import de.westnordost.osmagent.data.osm.ElementGeometry;
 import de.westnordost.osmagent.data.osm.OsmQuest;
 import de.westnordost.osmagent.data.osm.changes.StringMapChanges;
@@ -13,6 +14,7 @@ import de.westnordost.osmagent.data.osm.changes.StringMapEntryAdd;
 import de.westnordost.osmagent.data.osm.changes.StringMapEntryChange;
 import de.westnordost.osmagent.data.osm.changes.StringMapEntryDelete;
 import de.westnordost.osmagent.data.osm.changes.StringMapEntryModify;
+import de.westnordost.osmagent.data.QuestTypes;
 import de.westnordost.osmagent.data.osm.persist.test.TestQuestType;
 import de.westnordost.osmagent.data.osm.persist.test.TestQuestType2;
 import de.westnordost.osmapi.map.data.Element;
@@ -27,8 +29,10 @@ public class OsmQuestDaoTest extends OsmagentDbTestCase
 	{
 		super.setUp();
 		geometryDao = new ElementGeometryDao(dbHelper, serializer);
-		dao = new OsmQuestDao(dbHelper, serializer,
-				"de.westnordost.osmagent.data.osm.persist.test");
+		dao = new OsmQuestDao(dbHelper, serializer, new QuestTypes(new QuestType[]
+		{
+			new TestQuestType(), new TestQuestType2()
+		}));
 	}
 
 	public void testAddGetNoChanges()

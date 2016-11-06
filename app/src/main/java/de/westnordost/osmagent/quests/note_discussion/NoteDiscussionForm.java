@@ -1,4 +1,4 @@
-package de.westnordost.osmagent.dialogs.note_discussion;
+package de.westnordost.osmagent.quests.note_discussion;
 
 import android.os.Bundle;
 import android.text.format.DateUtils;
@@ -18,7 +18,7 @@ import javax.inject.Inject;
 import de.westnordost.osmagent.Injector;
 import de.westnordost.osmagent.R;
 import de.westnordost.osmagent.data.osmnotes.OsmNoteQuestDao;
-import de.westnordost.osmagent.dialogs.AbstractQuestAnswerFragment;
+import de.westnordost.osmagent.quests.AbstractQuestAnswerFragment;
 import de.westnordost.osmagent.util.InlineAsyncTask;
 import de.westnordost.osmapi.notes.Note;
 import de.westnordost.osmapi.notes.NoteComment;

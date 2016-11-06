@@ -3,7 +3,7 @@ package de.westnordost.osmagent.data.osm.persist.test;
 import android.os.Bundle;
 
 import de.westnordost.osmagent.data.osm.changes.StringMapChangesBuilder;
-import de.westnordost.osmagent.dialogs.AbstractQuestAnswerFragment;
+import de.westnordost.osmagent.quests.AbstractQuestAnswerFragment;
 import de.westnordost.osmagent.data.osm.OsmElementQuestType;
 import de.westnordost.osmapi.map.data.Element;
 

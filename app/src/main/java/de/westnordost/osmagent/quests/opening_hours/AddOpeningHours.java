@@ -1,14 +1,13 @@
-package de.westnordost.osmagent.quests;
+package de.westnordost.osmagent.quests.opening_hours;
 
 import android.os.Bundle;
 
 import de.westnordost.osmagent.data.QuestImportance;
-import de.westnordost.osmagent.dialogs.AbstractQuestAnswerFragment;
+import de.westnordost.osmagent.data.osm.OverpassQuestType;
+import de.westnordost.osmagent.quests.AbstractQuestAnswerFragment;
 import de.westnordost.osmagent.data.osm.changes.StringMapChangesBuilder;
 
 import de.westnordost.osmagent.R;
-import de.westnordost.osmagent.data.osm.OverpassQuestType;
-import de.westnordost.osmagent.dialogs.opening_hours.AddOpeningHoursForm;
 
 
 public class AddOpeningHours extends OverpassQuestType

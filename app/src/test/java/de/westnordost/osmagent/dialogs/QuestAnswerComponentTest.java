@@ -5,6 +5,8 @@ import android.os.Bundle;
 import junit.framework.TestCase;
 
 import de.westnordost.osmagent.data.QuestGroup;
+import de.westnordost.osmagent.quests.OsmQuestAnswerListener;
+import de.westnordost.osmagent.quests.QuestAnswerComponent;
 
 public class QuestAnswerComponentTest extends TestCase
 {

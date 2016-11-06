@@ -7,7 +7,6 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import de.westnordost.osmagent.OsmagentConstants;
 import de.westnordost.osmagent.data.osm.persist.OsmQuestDao;
 import de.westnordost.osmagent.data.statistics.QuestStatisticsDao;
 import de.westnordost.osmagent.util.KryoSerializer;
@@ -34,9 +33,9 @@ public class DbModule
 	}
 
 	@Provides @Singleton public static OsmQuestDao osmQuestDao(
-			SQLiteOpenHelper dbHelper, Serializer serializer)
+			SQLiteOpenHelper dbHelper, Serializer serializer, QuestTypes questTypeList)
 	{
-		return new OsmQuestDao(dbHelper, serializer, OsmagentConstants.OSM_QUESTS_PACKAGE);
+		return new OsmQuestDao(dbHelper, serializer, questTypeList);
 	}
 
 }

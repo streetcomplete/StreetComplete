@@ -6,13 +6,9 @@ import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.preference.PreferenceManager;
 
-import java.util.List;
-
 import dagger.Module;
 import dagger.Provides;
 import de.westnordost.osmagent.data.meta.CurrentCountry;
-import de.westnordost.osmagent.data.osm.download.OverpassQuestTypeList;
-import de.westnordost.osmagent.data.osm.OverpassQuestType;
 
 @Module
 public class ApplicationModule
@@ -42,11 +38,6 @@ public class ApplicationModule
 	@Provides public Resources resources()
 	{
 		return application.getResources();
-	}
-
-	@Provides public static List<OverpassQuestType> questTypeListProvider()
-	{
-		return OverpassQuestTypeList.quests;
 	}
 
 	@Provides public static CurrentCountry localeMetadata(Context appContext)

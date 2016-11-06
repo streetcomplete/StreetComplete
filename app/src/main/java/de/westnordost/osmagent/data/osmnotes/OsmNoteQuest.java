@@ -7,8 +7,8 @@ import de.westnordost.osmagent.data.QuestImportance;
 import de.westnordost.osmagent.data.QuestStatus;
 import de.westnordost.osmagent.data.QuestType;
 import de.westnordost.osmagent.data.osm.ElementGeometry;
-import de.westnordost.osmagent.dialogs.AbstractQuestAnswerFragment;
-import de.westnordost.osmagent.dialogs.note_discussion.NoteDiscussionForm;
+import de.westnordost.osmagent.quests.AbstractQuestAnswerFragment;
+import de.westnordost.osmagent.quests.note_discussion.NoteDiscussionForm;
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.notes.Note;
 

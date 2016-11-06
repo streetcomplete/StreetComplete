@@ -1,4 +1,4 @@
-package de.westnordost.osmagent.dialogs;
+package de.westnordost.osmagent.quests;
 
 import android.app.DialogFragment;
 import android.app.Fragment;
@@ -82,7 +82,7 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 					for(int i = 0; i<otherAnswers.size(); ++i)
 					{
 						int otherAnswer = otherAnswers.get(i);
-						MenuItem item = popup.getMenu().add(Menu.NONE, otherAnswer, i, otherAnswer);
+						popup.getMenu().add(Menu.NONE, otherAnswer, i, otherAnswer);
 					}
 					popup.show();
 

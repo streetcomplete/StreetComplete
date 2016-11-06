@@ -17,7 +17,7 @@ import de.westnordost.osmagent.data.osmnotes.CreateNote;
 import de.westnordost.osmagent.data.osmnotes.CreateNoteDao;
 import de.westnordost.osmagent.data.osmnotes.OsmNoteQuest;
 import de.westnordost.osmagent.data.osmnotes.OsmNoteQuestDao;
-import de.westnordost.osmagent.dialogs.note_discussion.NoteDiscussionForm;
+import de.westnordost.osmagent.quests.note_discussion.NoteDiscussionForm;
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
 

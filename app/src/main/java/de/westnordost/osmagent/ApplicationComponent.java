@@ -8,9 +8,9 @@ import de.westnordost.osmagent.data.OsmModule;
 import de.westnordost.osmagent.data.QuestChangesUploader;
 import de.westnordost.osmagent.data.QuestDownloader;
 import de.westnordost.osmagent.data.meta.MetadataModule;
-import de.westnordost.osmagent.dialogs.opening_hours.OpeningHoursPerWeek;
-import de.westnordost.osmagent.dialogs.road_name.AutoCorrectAbbreviationsEditText;
-import de.westnordost.osmagent.dialogs.note_discussion.NoteDiscussionForm;
+import de.westnordost.osmagent.quests.opening_hours.OpeningHoursPerWeek;
+import de.westnordost.osmagent.quests.road_name.AutoCorrectAbbreviationsEditText;
+import de.westnordost.osmagent.quests.note_discussion.NoteDiscussionForm;
 import de.westnordost.osmagent.util.SerializedSavedState;
 
 @Singleton

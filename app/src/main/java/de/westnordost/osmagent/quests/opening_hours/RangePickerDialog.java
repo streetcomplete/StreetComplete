@@ -1,4 +1,4 @@
-package de.westnordost.osmagent.dialogs.opening_hours;
+package de.westnordost.osmagent.quests.opening_hours;
 
 import android.app.AlertDialog;
 import android.content.Context;

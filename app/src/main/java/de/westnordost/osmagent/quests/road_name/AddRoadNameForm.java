@@ -1,4 +1,4 @@
-package de.westnordost.osmagent.dialogs.road_name;
+package de.westnordost.osmagent.quests.road_name;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import de.westnordost.osmagent.R;
-import de.westnordost.osmagent.dialogs.AbstractQuestAnswerFragment;
+import de.westnordost.osmagent.quests.AbstractQuestAnswerFragment;
 
 public class AddRoadNameForm extends AbstractQuestAnswerFragment
 {

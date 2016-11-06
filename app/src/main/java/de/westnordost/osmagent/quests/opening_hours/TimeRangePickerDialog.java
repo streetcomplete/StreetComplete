@@ -1,4 +1,4 @@
-package de.westnordost.osmagent.dialogs.opening_hours;
+package de.westnordost.osmagent.quests.opening_hours;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -50,7 +50,9 @@ public class TimeRangePickerDialog extends AlertDialog
 		errorText.setText(errorInvalidTime);
 
 		startPicker = (TimePicker) view.findViewById(R.id.start_time_picker);
+		startPicker.setIs24HourView(true);
 		endPicker = (TimePicker) view.findViewById(R.id.end_time_picker);
+		endPicker.setIs24HourView(true);
 		if(startTime != null)
 		{
 			startPicker.setCurrentHour(startTime / 60);

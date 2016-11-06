@@ -12,7 +12,7 @@
         android:layout_weight="0"
         style="@style/OpeningHoursField"/>
 
-    <de.westnordost.osmagent.dialogs.opening_hours.OpeningHoursPerDay
+    <de.westnordost.osmagent.quests.opening_hours.OpeningHoursPerDay
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"

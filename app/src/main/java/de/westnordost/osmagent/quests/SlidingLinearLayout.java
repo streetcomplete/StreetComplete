@@ -1,4 +1,4 @@
-package de.westnordost.osmagent.dialogs;
+package de.westnordost.osmagent.quests;
 
 import android.content.Context;
 import android.util.AttributeSet;

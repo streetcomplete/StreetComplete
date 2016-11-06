@@ -17,6 +17,7 @@ import de.westnordost.osmagent.data.osm.OsmQuest;
 import de.westnordost.osmagent.data.QuestStatus;
 import de.westnordost.osmagent.data.osm.changes.StringMapChanges;
 import de.westnordost.osmagent.data.osm.OsmElementQuestType;
+import de.westnordost.osmagent.data.QuestTypes;
 import de.westnordost.osmagent.util.Serializer;
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
@@ -24,14 +25,14 @@ import de.westnordost.osmapi.map.data.Element;
 public class OsmQuestDao extends AQuestDao<OsmQuest>
 {
 	private final Serializer serializer;
-	private final String questTypePackage;
+	private final QuestTypes questTypeList;
 
 	@Inject public OsmQuestDao(SQLiteOpenHelper dbHelper, Serializer serializer,
-							   String questTypePackage)
+							   QuestTypes questTypeList)
 	{
 		super(dbHelper);
 		this.serializer = serializer;
-		this.questTypePackage = questTypePackage;
+		this.questTypeList = questTypeList;
 	}
 
 	public List<OsmQuest> getAll(BoundingBox bbox, QuestStatus status, QuestType questType,
@@ -148,7 +149,7 @@ public class OsmQuestDao extends AQuestDao<OsmQuest>
 
 		Element.Type elementType = Element.Type.valueOf(cursor.getString(colElementType));
 		QuestStatus questStatus = QuestStatus.valueOf(cursor.getString(colQuestStatus));
-		OsmElementQuestType questType = getQuestTypeByName(cursor.getString(colQuestType));
+		OsmElementQuestType questType = (OsmElementQuestType) questTypeList.forName(cursor.getString(colQuestType));
 
 		StringMapChanges changes = null;
 		if(!cursor.isNull(colChanges))
@@ -162,19 +163,5 @@ public class OsmQuestDao extends AQuestDao<OsmQuest>
 
 		return new OsmQuest(questId, questType, elementType, elementId, questStatus, changes,
 				lastChange, geometry);
-	}
-
-	private OsmElementQuestType getQuestTypeByName(String name)
-	{
-		String pck = questTypePackage + "." + name;
-		try
-		{
-			return (OsmElementQuestType) Class.forName(pck).newInstance();
-		}
-		catch (Exception e)
-		{
-			// if the class does not exist or is not instantiable, it is a programming error
-			throw new RuntimeException(e);
-		}
 	}
 }
