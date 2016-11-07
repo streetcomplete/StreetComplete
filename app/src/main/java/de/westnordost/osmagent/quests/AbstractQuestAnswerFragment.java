@@ -4,12 +4,16 @@ import android.app.DialogFragment;
 import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomSheetBehavior;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,10 +32,13 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 	private TextView title;
 	private ViewGroup content;
 
+	private View view;
+
 	private QuestAnswerComponent questAnswerComponent;
 
 	protected Button buttonOk;
 	protected Button buttonOtherAnswers;
+	private ImageButton buttonClose;
 
 	public AbstractQuestAnswerFragment()
 	{
@@ -39,13 +46,33 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 		questAnswerComponent = new QuestAnswerComponent();
 	}
 
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState)
 	{
-		View view = inflater.inflate(R.layout.bottom_sheet_fragment, container, false);
+		view = inflater.inflate(R.layout.bottom_sheet_fragment, container, false);
+
+		view.addOnLayoutChangeListener(new View.OnLayoutChangeListener()
+		{
+			@Override
+			public void onLayoutChange(View v, int left, int top, int right, int bottom,
+									   int oldLeft, int oldTop, int oldRight, int oldBottom)
+			{
+				// not immediately because this is called during layout change (view.getTop() == 0)
+				final Handler handler = new Handler();
+				handler.post(new Runnable()
+				{
+					@Override public void run()
+					{
+						updateCloseButtonVisibility();
+					}
+				});
+			}
+		});
 
 		title = (TextView) view.findViewById(R.id.title);
+
 		buttonOk = (Button) view.findViewById(R.id.buttonOk);
 		buttonOk.setOnClickListener(new View.OnClickListener()
 		{
@@ -56,6 +83,25 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 		});
 
 		buttonOtherAnswers = (Button) view.findViewById(R.id.buttonOtherAnswers);
+
+		buttonClose = (ImageButton) view.findViewById(R.id.close_btn);
+		buttonClose.setOnClickListener(new View.OnClickListener()
+		{
+			@Override public void onClick(View v)
+			{
+				getActivity().onBackPressed();
+			}
+		});
+
+		BottomSheetBehavior.from(view).setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback()
+		{
+			@Override public void onStateChanged(@NonNull View bottomSheet, int newState) { }
+
+			@Override public void onSlide(@NonNull View bottomSheet, float slideOffset)
+			{
+				updateCloseButtonVisibility();
+			}
+		});
 
 		final List<Integer> otherAnswers = getOtherAnswerResourceIds();
 		if(otherAnswers.isEmpty())
@@ -102,6 +148,13 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 		content = (ViewGroup) view.findViewById(R.id.content);
 
 		return view;
+	}
+
+	private void updateCloseButtonVisibility()
+	{
+		int toolbarHeight = getActivity().findViewById(R.id.toolbar).getHeight();
+		boolean coversToolbar = view.getTop() < toolbarHeight;
+		buttonClose.setVisibility(coversToolbar ? View.VISIBLE : View.GONE);
 	}
 
 	@Override public void onCreate(Bundle inState)

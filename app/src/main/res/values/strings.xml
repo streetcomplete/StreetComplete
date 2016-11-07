@@ -112,6 +112,7 @@
     <string name="error">Error</string>
     <string name="no_changes">You left the form empty</string>
     <string name="delete">delete</string>
+    <string name="close">close</string>
 
 
 </resources>

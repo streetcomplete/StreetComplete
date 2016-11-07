@@ -12,6 +12,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <!-- the toolbar somehow always wants to be in front in its layout, so let's ban it into
+             a sub frame layout -->
+        <include layout="@layout/toolbar"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"/>
+    </FrameLayout>
+
     <android.support.design.widget.CoordinatorLayout
         android:id="@+id/map_bottom_sheet_container"
         android:layout_width="match_parent"
