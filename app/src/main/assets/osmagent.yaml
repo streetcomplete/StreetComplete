@@ -28,6 +28,16 @@ styles:
         base: points
         texture: quests
         blend: overlay
+        blend_order: 1
+    geometry-lines:
+        base: lines
+        blend: overlay
+    geometry-polygons:
+        base: polygons
+        blend: overlay
+    geometry-points:
+        base: points
+        blend: overlay
 
 layers:
     osmagent_quests:
@@ -44,7 +54,7 @@ layers:
         line:
             filter: { type: line }
             draw:
-                lines:
+                geometry-lines:
                     color: global.geometry_color
                     width: 16px
                     collide: false
@@ -54,7 +64,7 @@ layers:
         poly:
             filter: { type: poly }
             draw:
-                polygons:
+                geometry-polygons:
                     color: global.geometry_color
                     width: 16px
                     collide: false
@@ -64,7 +74,7 @@ layers:
         point:
             filter: { type: point }
             draw:
-                points:
+                geometry-points:
                     color: global.geometry_color
                     size: 32px
                     collide: false
