@@ -159,7 +159,7 @@ public class MapFragment extends Fragment implements
 			return false;
 		if(isTracking) return true;
 
-		Location location = LocationServices.FusedLocationApi.getLastLocation();
+		Location location = LocationServices.FusedLocationApi.getLastLocation(lostApiClient);
 		if (location != null)
 		{
 			zoomTo(location);
@@ -170,7 +170,7 @@ public class MapFragment extends Fragment implements
 				.setSmallestDisplacement(5)
 				.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
 
-		LocationServices.FusedLocationApi.requestLocationUpdates(request, this);
+		LocationServices.FusedLocationApi.requestLocationUpdates(lostApiClient, request, this);
 		isTracking = true;
 
 		return true;
@@ -180,14 +180,26 @@ public class MapFragment extends Fragment implements
 	{
 		if(!isTracking) return;
 
-		LocationServices.FusedLocationApi.removeLocationUpdates(this);
+		LocationServices.FusedLocationApi.removeLocationUpdates(lostApiClient, this);
 
 		isTracking = false;
 	}
 
+	/* ------------------------------------ LOST ------------------------------------------- */
+
 	@Override public void onLocationChanged(Location location)
 	{
 		// TODO draw position on map
+	}
+
+	@Override public void onProviderEnabled(String provider)
+	{
+
+	}
+
+	@Override public void onProviderDisabled(String provider)
+	{
+
 	}
 
 	private void zoomTo(Location location)

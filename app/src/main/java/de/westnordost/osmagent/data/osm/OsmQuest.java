@@ -1,8 +1,8 @@
 package de.westnordost.osmagent.data.osm;
 
-import java.util.Date;
+import android.support.annotation.Nullable;
 
-import javax.annotation.Nullable;
+import java.util.Date;
 
 import de.westnordost.osmagent.data.Quest;
 import de.westnordost.osmagent.data.QuestStatus;

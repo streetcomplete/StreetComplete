@@ -53,7 +53,10 @@ dependencies {
     // Android stuff
     compile 'com.android.support:appcompat-v7:24.2.1'
     compile 'com.android.support:support-v13:24.2.1'
+    compile 'com.android.support:support-v4:24.2.1'
     compile 'com.android.support:design:24.2.1'
+
+
 
     // talking with OSM Api
     compile 'oauth.signpost:signpost-core:1.2.1.2'
@@ -66,12 +69,12 @@ dependencies {
     compile 'com.esotericsoftware:kryo:4.0.0'
 
     // map and location
-    compile 'com.mapzen.tangram:tangram:0.4.3'
-    compile 'com.mapzen.android:lost:1.0.1'
+    compile 'com.mapzen.tangram:tangram:0.4.5'
+    compile 'com.mapzen.android:lost:2.1.1'
 
     // config files
     compile 'com.esotericsoftware.yamlbeans:yamlbeans:1.09'
 
-    compile 'org.reflections:reflections:0.9.10'
-    compile 'com.android.support:support-v4:24.2.1'
+    compile 'com.google.guava:guava:20.0'
+
 }
