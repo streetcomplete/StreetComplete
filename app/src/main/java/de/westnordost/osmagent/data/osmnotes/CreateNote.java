@@ -10,4 +10,9 @@ public class CreateNote
 	public LatLon position;
 	public Element.Type elementType;
 	public Long elementId;
+
+	public boolean hasAssociatedElement()
+	{
+		return elementType != null && elementId != null;
+	}
 }

@@ -8,25 +8,32 @@ import javax.inject.Inject;
 import de.westnordost.osmagent.data.QuestStatus;
 import de.westnordost.osmapi.common.SingleElementHandler;
 import de.westnordost.osmapi.common.errors.OsmConflictException;
+import de.westnordost.osmapi.map.MapDataDao;
 import de.westnordost.osmapi.map.data.BoundingBox;
+import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.notes.Note;
 import de.westnordost.osmapi.notes.NotesDao;
 
 // TODO test case
 public class CreateNoteUpload
 {
+	private static final String TAG = "CreateNoteUpload";
+
 	private final NotesDao osmDao;
 	private final CreateNoteDao createNoteDB;
 	private final NoteDao noteDB;
 	private final OsmNoteQuestDao noteQuestDB;
+	private final MapDataDao mapDataDao;
 
 	@Inject public CreateNoteUpload(
-			CreateNoteDao createNoteDB, NotesDao osmDao, NoteDao noteDB, OsmNoteQuestDao noteQuestDB)
+			CreateNoteDao createNoteDB, NotesDao osmDao, NoteDao noteDB,
+			OsmNoteQuestDao noteQuestDB, MapDataDao mapDataDao)
 	{
 		this.createNoteDB = createNoteDB;
 		this.noteQuestDB = noteQuestDB;
 		this.noteDB = noteDB;
 		this.osmDao = osmDao;
+		this.mapDataDao = mapDataDao;
 	}
 
 	public void upload(AtomicBoolean cancelState)
@@ -39,11 +46,17 @@ public class CreateNoteUpload
 		}
 	}
 
-	private void uploadCreateNote(CreateNote n)
+	Note uploadCreateNote(CreateNote n)
 	{
+		createNoteDB.delete(n.id);
+
+		if(isAssociatedElementDeleted(n))
+		{
+			return null;
+		}
+
 		Note newNote = createOrCommentNote(n);
 
-		createNoteDB.delete(n.id);
 		if (newNote != null)
 		{
 			// add a hidden quest as a blocker so that at this location no quests are created.
@@ -53,6 +66,23 @@ public class CreateNoteUpload
 			noteDB.put(newNote);
 			noteQuestDB.add(noteQuest);
 		}
+		return newNote;
+	}
+
+	private boolean isAssociatedElementDeleted(CreateNote n)
+	{
+		return n.hasAssociatedElement() && retrieveElement(n) == null;
+	}
+
+	private Element retrieveElement(CreateNote n)
+	{
+		switch(n.elementType)
+		{
+			case NODE: return mapDataDao.getNode(n.elementId);
+			case WAY:  return mapDataDao.getWay(n.elementId);
+			case RELATION: return mapDataDao.getRelation(n.elementId);
+		}
+		return null;
 	}
 
 	/** Create a note at the given position, or, if there is already a note at the exact same
@@ -62,7 +92,7 @@ public class CreateNoteUpload
 	 *  the contribution is very likely obsolete (based on old data)*/
 	private Note createOrCommentNote(CreateNote n)
 	{
-		if(hasAssociatedElement(n))
+		if(n.hasAssociatedElement())
 		{
 			Note oldNote = findAlreadyExistingNoteWithSameAssociatedElement(n);
 
@@ -76,7 +106,6 @@ public class CreateNoteUpload
 					}
 					catch (OsmConflictException e)
 					{
-						// has been closed in the meantime
 						return null;
 					}
 				}
@@ -95,7 +124,7 @@ public class CreateNoteUpload
 		{
 			@Override public void handle(Note oldNote)
 			{
-				if(hasAssociatedElement(newNote))
+				if(newNote.hasAssociatedElement())
 				{
 					String firstCommentText = oldNote.comments.get(0).text;
 
@@ -111,11 +140,6 @@ public class CreateNoteUpload
 				newNote.position.getLatitude(), newNote.position.getLongitude()
 		), handler, 10, 0);
 		return handler.get();
-	}
-
-	private static boolean hasAssociatedElement(CreateNote n)
-	{
-		return n.elementType != null && n.elementId != null;
 	}
 
 	private static String getAssociatedElementRegex(CreateNote n)

@@ -27,6 +27,8 @@ import de.westnordost.osmapi.map.data.OsmElement;
 // TODO test case
 public class OsmQuestChangesUpload
 {
+	private static String TAG = "UPLOAD";
+
 	private final Resources resources;
 	private final MapDataDao osmDao;
 	private final OsmQuestDao questDB;
@@ -55,9 +57,9 @@ public class OsmQuestChangesUpload
 			Element element = elementDB.get(quest.getElementType(), quest.getElementId());
 
 			Map<String,String> changesetTags = createChangesetTags(quest.getOsmElementQuestType());
-			boolean success = uploadQuestChanges(quest, element, changesetTags, false);
+			UploadResult result = uploadQuestChanges(quest, element, changesetTags, false);
 
-			if (success)
+			if (result == UploadResult.SUCCESS)
 			{
 				statisticsDB.addOne(quest.getType().getClass().getSimpleName());
 			}
@@ -69,14 +71,18 @@ public class OsmQuestChangesUpload
 		elementDB.deleteUnreferenced();
 	}
 
-	private boolean uploadQuestChanges(
-			OsmQuest quest, Element element, Map<String,String> changesetTags,
-			boolean alreadyHandlingConflict)
+	enum UploadResult
+	{
+		SUCCESS, ELEMENT_DELETED, CONFLICT
+	}
+
+	UploadResult uploadQuestChanges(OsmQuest quest, Element element, Map<String,String> changesetTags,
+									boolean alreadyHandlingConflict)
 	{
 		// The element can be null if it has been deleted in the meantime (outside this app usually)
 		if(element == null)
 		{
-			return false;
+			return UploadResult.ELEMENT_DELETED;
 		}
 
 		StringMapChanges changes = quest.getChanges();
@@ -88,7 +94,7 @@ public class OsmQuestChangesUpload
 		}
 		if(changes.hasConflictsTo(elementTags))
 		{
-			return false;
+			return UploadResult.CONFLICT;
 		}
 		changes.applyTo(element.getTags());
 
@@ -114,7 +120,7 @@ public class OsmQuestChangesUpload
 			element = updateElementFromServer(quest.getElementType(), quest.getId());
 			uploadQuestChanges(quest, element, changesetTags, true);
 		}
-		return true;
+		return UploadResult.SUCCESS;
 	}
 
 	private Element updateElementFromServer(Element.Type elementType, long id)
