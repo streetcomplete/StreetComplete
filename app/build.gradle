@@ -10,7 +10,7 @@ android {
         minSdkVersion 17
         targetSdkVersion 24
         versionCode 1
-        versionName "1.0"
+        versionName "0.1"
         multiDexEnabled true
         testInstrumentationRunner "com.android.test.runner.MultiDexTestRunner"
     }
