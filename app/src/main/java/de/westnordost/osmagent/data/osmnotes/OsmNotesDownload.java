@@ -1,6 +1,7 @@
 package de.westnordost.osmagent.data.osmnotes;
 
 import android.content.SharedPreferences;
+import android.util.Log;
 import android.util.LongSparseArray;
 
 import java.util.HashSet;
@@ -20,6 +21,8 @@ import de.westnordost.osmapi.notes.NotesDao;
 
 public class OsmNotesDownload
 {
+	private static final String TAG = "NotesDownload";
+
 	private final NotesDao noteServer;
 	private final NoteDao noteDB;
 	private final OsmNoteQuestDao noteQuestDB;
@@ -29,6 +32,7 @@ public class OsmNotesDownload
 	private VisibleOsmNoteQuestListener questListener;
 
 	private int visibleAmount;
+	private int newAmount;
 
 	@Inject public OsmNotesDownload(
 			NotesDao noteServer, NoteDao noteDB, OsmNoteQuestDao noteQuestDB,
@@ -54,6 +58,7 @@ public class OsmNotesDownload
 	public Set<LatLon> download(final BoundingBox bbox, final Long userId, int max)
 	{
 		visibleAmount = 0;
+		newAmount = 0;
 		final Set<LatLon> positions = new HashSet<>();
 
 		final LongSparseArray<OsmNoteQuest> oldQuestsByNoteId = new LongSparseArray<>();
@@ -99,6 +104,7 @@ public class OsmNotesDownload
 						{
 							questListener.onQuestCreated(quest);
 						}
+						newAmount++;
 					}
 					visibleAmount++;
 				}
@@ -106,6 +112,8 @@ public class OsmNotesDownload
 				oldQuestsByNoteId.remove(quest.getNote().id);
 			}
 		}, max, 0);
+
+		int closedAmount = oldQuestsByNoteId.size();
 
 		/* delete note quests created in a previous run in the given bounding box that are not
 		   found again -> these notes have been closed/solved/removed */
@@ -115,6 +123,9 @@ public class OsmNotesDownload
 		{
 			positions.add(createNote.position);
 		}
+
+		Log.i(TAG, "Successfully added " + newAmount + " new notes and removed " + closedAmount +
+				" closed notes");
 
 		return positions;
 	}
@@ -156,7 +167,6 @@ public class OsmNotesDownload
 	{
 		if(oldQuests.size() > 0)
 		{
-
 			for (int i=0; i<oldQuests.size(); ++i)
 			{
 				OsmNoteQuest quest = oldQuests.valueAt(i);

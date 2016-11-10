@@ -2,6 +2,7 @@ package de.westnordost.osmagent.data.osm.upload;
 
 
 import android.content.res.Resources;
+import android.util.Log;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -27,7 +28,7 @@ import de.westnordost.osmapi.map.data.OsmElement;
 // TODO test case
 public class OsmQuestChangesUpload
 {
-	private static String TAG = "UPLOAD";
+	private static String TAG = "QuestUpload";
 
 	private final Resources resources;
 	private final MapDataDao osmDao;
@@ -50,6 +51,8 @@ public class OsmQuestChangesUpload
 
 	public void upload(AtomicBoolean cancelState)
 	{
+		int commits = 0, obsolete = 0;
+
 		for(OsmQuest quest : questDB.getAll(null, QuestStatus.ANSWERED))
 		{
 			if(cancelState.get()) break; // break so that the unreferenced stuff is deleted still
@@ -57,32 +60,37 @@ public class OsmQuestChangesUpload
 			Element element = elementDB.get(quest.getElementType(), quest.getElementId());
 
 			Map<String,String> changesetTags = createChangesetTags(quest.getOsmElementQuestType());
-			UploadResult result = uploadQuestChanges(quest, element, changesetTags, false);
-
-			if (result == UploadResult.SUCCESS)
+			if (uploadQuestChanges(quest, element, changesetTags, false))
 			{
-				statisticsDB.addOne(quest.getType().getClass().getSimpleName());
+				commits++;
 			}
-
-			questDB.delete(quest.getId());
+			else {
+				obsolete++;
+			}
 		}
 
 		elementGeometryDB.deleteUnreferenced();
 		elementDB.deleteUnreferenced();
+
+		String logMsg = "Successfully comitted " + commits + " changesets";
+		if(obsolete > 0)
+		{
+			logMsg += " but dropped " + obsolete + " changesets because there were conflicts";
+		}
+
+		Log.i(TAG, logMsg);
 	}
 
-	enum UploadResult
-	{
-		SUCCESS, ELEMENT_DELETED, CONFLICT
-	}
-
-	UploadResult uploadQuestChanges(OsmQuest quest, Element element, Map<String,String> changesetTags,
+	boolean uploadQuestChanges(OsmQuest quest, Element element, Map<String,String> changesetTags,
 									boolean alreadyHandlingConflict)
 	{
 		// The element can be null if it has been deleted in the meantime (outside this app usually)
 		if(element == null)
 		{
-			return UploadResult.ELEMENT_DELETED;
+			questDB.delete(quest.getId());
+			Log.v(TAG, "Dropped quest " + getQuestStringForLog(quest) +
+					" because the associated element has already been deleted");
+			return false;
 		}
 
 		StringMapChanges changes = quest.getChanges();
@@ -94,7 +102,10 @@ public class OsmQuestChangesUpload
 		}
 		if(changes.hasConflictsTo(elementTags))
 		{
-			return UploadResult.CONFLICT;
+			questDB.delete(quest.getId());
+			Log.v(TAG, "Dropped quest " + getQuestStringForLog(quest) +
+					" because there has been a conflict while applying the changes");
+			return false;
 		}
 		changes.applyTo(element.getTags());
 
@@ -113,14 +124,24 @@ public class OsmQuestChangesUpload
 			if(alreadyHandlingConflict)
 			{
 				throw new RuntimeException(
-						"OSM server continues to report a conflict on uploading the " +
-						element.getType().name().toLowerCase() + " " + element.getId() + ". The " +
-						"local version is " + element.getVersion(), e);
+						"OSM server continues to report a conflict on uploading the changes for " +
+						"the quest " + getQuestStringForLog(quest) + ". The local version is " +
+						element.getVersion(), e);
 			}
 			element = updateElementFromServer(quest.getElementType(), quest.getId());
 			uploadQuestChanges(quest, element, changesetTags, true);
 		}
-		return UploadResult.SUCCESS;
+
+		questDB.delete(quest.getId());
+		statisticsDB.addOne(quest.getType().getClass().getSimpleName());
+
+		return true;
+	}
+
+	private static String getQuestStringForLog(OsmQuest quest)
+	{
+		return quest.getType().getClass().getSimpleName() + " for " +
+				quest.getElementType().name().toLowerCase() + " #" + quest.getElementId();
 	}
 
 	private Element updateElementFromServer(Element.Type elementType, long id)

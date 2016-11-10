@@ -1,5 +1,7 @@
 package de.westnordost.osmagent.data.osmnotes;
 
+import android.util.Log;
+
 import java.util.Locale;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -38,12 +40,26 @@ public class CreateNoteUpload
 
 	public void upload(AtomicBoolean cancelState)
 	{
+		int created = 0, obsolete = 0;
 		for(CreateNote createNote : createNoteDB.getAll(null))
 		{
 			if(cancelState.get()) break;
 
-			uploadCreateNote(createNote);
+			if(uploadCreateNote(createNote) != null)
+			{
+				created++;
+			}
+			else
+			{
+				obsolete++;
+			}
 		}
+		String logMsg = "Successfully created " + created + " notes";
+		if(obsolete > 0)
+		{
+			logMsg += " but dropped " + obsolete + " because they were obsolete already";
+		}
+		Log.i(TAG, logMsg);
 	}
 
 	Note uploadCreateNote(CreateNote n)
@@ -52,6 +68,8 @@ public class CreateNoteUpload
 
 		if(isAssociatedElementDeleted(n))
 		{
+			Log.v(TAG, "Dropped to be created note " + getCreateNoteStringForLog(n) +
+					" because the associated element has already been deleted");
 			return null;
 		}
 
@@ -66,7 +84,18 @@ public class CreateNoteUpload
 			noteDB.put(newNote);
 			noteQuestDB.add(noteQuest);
 		}
+		else
+		{
+			Log.v(TAG, "Dropped a to be created note " + getCreateNoteStringForLog(n) +
+					" because note with the same associated element has already been closed");
+			// so the problem has likely been solved by another mapper
+		}
 		return newNote;
+	}
+
+	private static String getCreateNoteStringForLog(CreateNote n)
+	{
+		return "\"" + n.text + "\" at " + n.position.getLatitude() + ", " + n.position.getLongitude();
 	}
 
 	private boolean isAssociatedElementDeleted(CreateNote n)
@@ -135,10 +164,11 @@ public class CreateNoteUpload
 				}
 			}
 		};
+		final int hideClosedNoteAfter = 7;
 		osmDao.getAll(new BoundingBox(
 				newNote.position.getLatitude(), newNote.position.getLongitude(),
 				newNote.position.getLatitude(), newNote.position.getLongitude()
-		), handler, 10, 0);
+		), handler, 10, hideClosedNoteAfter);
 		return handler.get();
 	}
 

@@ -38,7 +38,9 @@ public class OsmQuestDownload
 	private final QuestTypes questTypeList;
 
 	private VisibleOsmQuestListener questListener;
+
 	private int visibleAmount;
+	private int newAmount;
 
 	@Inject public OsmQuestDownload(
 			OverpassMapDataDao overpassServer, ElementGeometryDao geometryDB,
@@ -60,6 +62,7 @@ public class OsmQuestDownload
 	public void download(BoundingBox bbox, final Set<LatLon> blacklistedPositions,
 						 Integer maxVisibleAmount, AtomicBoolean cancelState)
 	{
+		visibleAmount = 0;
 
 		List<QuestType> questTypes = questTypeList.getQuestTypesSortedByImportance();
 
@@ -75,8 +78,7 @@ public class OsmQuestDownload
 			}
 			catch(Exception e)
 			{
-				Log.e(TAG, "Error while downloading quest type" +
-						questType.getClass().getSimpleName(), e);
+				Log.e(TAG, "Error while downloading quest type" + getQuestTypeAsLogString(questType), e);
 			}
 		}
 
@@ -87,6 +89,8 @@ public class OsmQuestDownload
 	private void downloadQuestType(final OverpassQuestType questType, BoundingBox bbox,
 								   final Set<LatLon> blacklistedPositions)
 	{
+		newAmount = 0;
+
 		final Map<OsmElementKey, OsmQuest> oldQuestsByElementKey = new HashMap<>();
 		for(OsmQuest quest : osmQuestDB.getAll(bbox, null, questType, null, null))
 		{
@@ -104,11 +108,22 @@ public class OsmQuestDownload
 				if(!questType.appliesTo(element)) return;
 
 				// invalid geometry -> can't show this quest, so skip it
-				if(geometry == null) return;
+				if(geometry == null)
+				{
+					// classified as warning because it might very well be a bug on the geometry
+					// creation on our side
+					Log.w(TAG, getQuestTypeAsLogString(questType) + ": Not adding a quest " +
+							" because the element " + getElementAsLogString(element) +
+							" has no valid geometry");
+					return;
+				}
 
 				// do not create quests whose marker is at a blacklisted position
 				if(blacklistedPositions != null && blacklistedPositions.contains(geometry.center))
 				{
+					Log.v(TAG, getQuestTypeAsLogString(questType) + ": Not adding a quest at " +
+							getPosAsLogString(geometry.center) +
+							" because there is a note at that position");
 					return;
 				}
 
@@ -124,6 +139,7 @@ public class OsmQuestDownload
 					{
 						questListener.onQuestCreated(quest, element);
 					}
+					++newAmount;
 				}
 				++visibleAmount;
 
@@ -133,7 +149,27 @@ public class OsmQuestDownload
 			}
 		});
 
+		int obsoleteAmount = oldQuestsByElementKey.size();
+
 		removeObsoleteQuests(oldQuestsByElementKey.values());
+
+		Log.i(TAG, getQuestTypeAsLogString(questType) + ": Successfully added " + newAmount +
+				" new quests and removed " + obsoleteAmount + " already resolved quests");
+	}
+
+	private String getElementAsLogString(Element element)
+	{
+		return element.getType().name().toLowerCase() + " #" + element.getId();
+	}
+
+	private static String getQuestTypeAsLogString(QuestType q)
+	{
+		return q.getClass().getSimpleName();
+	}
+
+	private static String getPosAsLogString(LatLon pos)
+	{
+		return pos.getLatitude() + ", " + pos.getLongitude();
 	}
 
 	private void removeObsoleteQuests(Collection<OsmQuest> oldQuests)
