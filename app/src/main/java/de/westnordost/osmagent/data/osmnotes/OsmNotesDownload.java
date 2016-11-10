@@ -83,7 +83,7 @@ public class OsmNotesDownload
 				 * Likely, if something is posed as a question, the reporter expects someone to
 				 * answer/comment on it, so let's only show these */
 				boolean showNonQuestionNotes = preferences.getBoolean(Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS, false);
-				hideNote |= probablyContainsQuestion(note) && !showNonQuestionNotes;
+				hideNote |= !probablyContainsQuestion(note) && !showNonQuestionNotes;
 
 				/* hide a note if he already contributed to it. This can also happen from outside
 				   this application, which is why we need to overwrite its quest status. */
