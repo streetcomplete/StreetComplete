@@ -113,6 +113,7 @@
     <string name="no_changes">You left the form empty</string>
     <string name="delete">delete</string>
     <string name="close">close</string>
+    <string name="download_error">Error while downloading quests. Please check the log.</string>
 
 
 </resources>

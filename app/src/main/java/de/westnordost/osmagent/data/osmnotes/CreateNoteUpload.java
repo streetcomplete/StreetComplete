@@ -54,7 +54,7 @@ public class CreateNoteUpload
 				obsolete++;
 			}
 		}
-		String logMsg = "Successfully created " + created + " notes";
+		String logMsg = "Created " + created + " notes";
 		if(obsolete > 0)
 		{
 			logMsg += " but dropped " + obsolete + " because they were obsolete already";
@@ -64,12 +64,12 @@ public class CreateNoteUpload
 
 	Note uploadCreateNote(CreateNote n)
 	{
-		createNoteDB.delete(n.id);
 
 		if(isAssociatedElementDeleted(n))
 		{
 			Log.v(TAG, "Dropped to be created note " + getCreateNoteStringForLog(n) +
 					" because the associated element has already been deleted");
+			createNoteDB.delete(n.id);
 			return null;
 		}
 
@@ -87,9 +87,11 @@ public class CreateNoteUpload
 		else
 		{
 			Log.v(TAG, "Dropped a to be created note " + getCreateNoteStringForLog(n) +
-					" because note with the same associated element has already been closed");
+					" because a note with the same associated element has already been closed");
 			// so the problem has likely been solved by another mapper
 		}
+
+		createNoteDB.delete(n.id);
 		return newNote;
 	}
 

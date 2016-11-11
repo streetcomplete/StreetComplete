@@ -31,6 +31,13 @@ public class QuestDownloader
 
 	private VisibleQuestListener listener;
 
+	private OnErrorListener errorListener;
+	private boolean errorHappened;
+	public interface OnErrorListener
+	{
+		void onError();
+	}
+
 	@Inject public QuestDownloader(SharedPreferences prefs,
 								   Provider<OsmNotesDownload> notesDownloadProvider,
 								   Provider<OsmQuestDownload> questDownloadProvider)
@@ -55,6 +62,16 @@ public class QuestDownloader
 		this.listener = listener;
 	}
 
+	public void setOnErrorListener(OnErrorListener listener)
+	{
+		errorListener = listener;
+		if(errorListener != null && errorHappened)
+		{
+			errorListener.onError();
+			errorHappened = false;
+		}
+	}
+
 	public void download(final BoundingBox bbox, final Integer maxVisibleQuests)
 	{
 		cancel();
@@ -66,6 +83,10 @@ public class QuestDownloader
 					@Override public void run()
 					{
 						if(cancelState.get()) return;
+
+						errorHappened = false;
+
+						Log.i(TAG, "Starting quest download at " + bbox.getAsLeftBottomRightTopString());
 
 						Set<LatLon> notesPositions = null;
 						OsmNotesDownload notesDownload = notesDownloadProvider.get();
@@ -82,6 +103,7 @@ public class QuestDownloader
 						catch(Exception e)
 						{
 							Log.e(TAG, "Unable to download notes", e);
+							errorHappened = true;
 						}
 
 						Integer maxOsmQuestsToRetrieve = maxVisibleQuests;
@@ -99,7 +121,16 @@ public class QuestDownloader
 						}
 						catch(Exception e)
 						{
-							Log.e(TAG, "Unable to download osm quests", e);
+							Log.e(TAG, "Unable to download quests", e);
+							errorHappened = true;
+						}
+
+						Log.i(TAG, "Finished quest download at " + bbox.getAsLeftBottomRightTopString());
+
+						if(errorListener != null && errorHappened)
+						{
+							errorListener.onError();
+							errorHappened = false;
 						}
 					}
 				}

@@ -44,7 +44,7 @@ public class OsmNoteQuestChangesUpload
 				obsolete++;
 			}
 		}
-		String logMsg = "Successfully commented on " + created + " notes";
+		String logMsg = "Commented on " + created + " notes";
 		if(obsolete > 0)
 		{
 			logMsg += " but dropped " + obsolete + " comments because the notes have already been closed";

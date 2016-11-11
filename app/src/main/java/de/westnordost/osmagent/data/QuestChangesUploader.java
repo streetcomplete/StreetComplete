@@ -1,5 +1,7 @@
 package de.westnordost.osmagent.data;
 
+import android.util.Log;
+
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -19,12 +21,21 @@ import de.westnordost.osmagent.data.osmnotes.OsmNoteQuestChangesUpload;
  *  into race conditions. */
 public class QuestChangesUploader
 {
+	private static final String TAG = "QuestChangesUpload";
+
 	private final Provider<OsmNoteQuestChangesUpload> noteQuestUploadProvider;
 	private final Provider<OsmQuestChangesUpload> questUploadProvider;
 	private final Provider<CreateNoteUpload> createNoteUploadProvider;
 
 	private ExecutorService executorService;
 	private AtomicBoolean cancelState;
+
+	private QuestDownloader.OnErrorListener errorListener;
+	private boolean errorHappened;
+	public interface OnErrorListener
+	{
+		void onError();
+	}
 
 	@Inject public QuestChangesUploader(
 			Provider<OsmNoteQuestChangesUpload> noteQuestUploadProvider,
@@ -35,6 +46,16 @@ public class QuestChangesUploader
 		this.questUploadProvider = questUploadProvider;
 		this.createNoteUploadProvider = createNoteUploadProvider;
 		executorService = Executors.newSingleThreadExecutor();
+	}
+
+	public void setOnErrorListener(QuestDownloader.OnErrorListener listener)
+	{
+		errorListener = listener;
+		if(errorListener != null && errorHappened)
+		{
+			errorListener.onError();
+			errorHappened = false;
+		}
 	}
 
 	public void shutdown()
@@ -64,16 +85,51 @@ public class QuestChangesUploader
 					@Override public void run()
 					{
 						if(cancelState.get()) return;
+
+						Log.i(TAG, "Starting upload changes");
+
 						OsmNoteQuestChangesUpload noteQuestUpload = noteQuestUploadProvider.get();
-						noteQuestUpload.upload(cancelState);
+						try
+						{
+							noteQuestUpload.upload(cancelState);
+						}
+						catch (Exception e)
+						{
+							errorHappened = true;
+							Log.e(TAG, "Unable to upload note quest changes", e);
+						}
 
 						if(cancelState.get()) return;
 						OsmQuestChangesUpload osmQuestUpload = questUploadProvider.get();
-						osmQuestUpload.upload(cancelState);
+						try
+						{
+							osmQuestUpload.upload(cancelState);
+						}
+						catch (Exception e)
+						{
+							errorHappened = true;
+							Log.e(TAG, "Unable to upload osm quest changes", e);
+						}
 
 						if(cancelState.get()) return;
 						CreateNoteUpload createNoteUpload = createNoteUploadProvider.get();
-						createNoteUpload.upload(cancelState);
+						try
+						{
+							createNoteUpload.upload(cancelState);
+						}
+						catch (Exception e)
+						{
+							errorHappened = true;
+							Log.e(TAG, "Unable to upload new notes", e);
+						}
+
+						Log.i(TAG, "Finished upload changes");
+
+						if(errorListener != null && errorHappened)
+						{
+							errorListener.onError();
+							errorHappened = false;
+						}
 					}
 				}
 		);

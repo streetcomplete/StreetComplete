@@ -214,4 +214,9 @@ public class QuestController
 		this.listener = listener;
 		questDownloader.setQuestListener(this.listener);
 	}
+
+	public void setDownloadErrorListener(QuestDownloader.OnErrorListener listener)
+	{
+		questDownloader.setOnErrorListener(listener);
+	}
 }

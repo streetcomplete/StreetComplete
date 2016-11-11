@@ -33,6 +33,7 @@ public class OsmNotesDownload
 
 	private int visibleAmount;
 	private int newAmount;
+	private int hiddenAmount;
 
 	@Inject public OsmNotesDownload(
 			NotesDao noteServer, NoteDao noteDB, OsmNoteQuestDao noteQuestDB,
@@ -59,6 +60,7 @@ public class OsmNotesDownload
 	{
 		visibleAmount = 0;
 		newAmount = 0;
+		hiddenAmount = 0;
 		final Set<LatLon> positions = new HashSet<>();
 
 		final LongSparseArray<OsmNoteQuest> oldQuestsByNoteId = new LongSparseArray<>();
@@ -94,6 +96,7 @@ public class OsmNotesDownload
 					quest.setStatus(QuestStatus.HIDDEN);
 					noteDB.put(note);
 					noteQuestDB.replace(quest);
+					hiddenAmount++;
 				}
 				else
 				{
@@ -124,8 +127,9 @@ public class OsmNotesDownload
 			positions.add(createNote.position);
 		}
 
-		Log.i(TAG, "Successfully added " + newAmount + " new notes and removed " + closedAmount +
-				" closed notes");
+		Log.i(TAG, "Successfully added " + newAmount + " new and removed " + closedAmount +
+				" closed notes (" + hiddenAmount + " of " + (hiddenAmount + visibleAmount) +
+				" notes are hidden)");
 
 		return positions;
 	}

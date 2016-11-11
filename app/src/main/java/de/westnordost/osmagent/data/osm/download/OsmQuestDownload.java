@@ -40,7 +40,8 @@ public class OsmQuestDownload
 	private VisibleOsmQuestListener questListener;
 
 	private int visibleAmount;
-	private int newAmount;
+	private int newQuestTypeAmount;
+	private int visibleQuestTypeAmount;
 
 	@Inject public OsmQuestDownload(
 			OverpassMapDataDao overpassServer, ElementGeometryDao geometryDB,
@@ -66,30 +67,29 @@ public class OsmQuestDownload
 
 		List<QuestType> questTypes = questTypeList.getQuestTypesSortedByImportance();
 
-		for(QuestType questType : questTypes)
+		try
 		{
-			if(!(questType instanceof OverpassQuestType)) continue;
-			if(cancelState.get()) break;
-			if(maxVisibleAmount != null && visibleAmount >= maxVisibleAmount) break;
+			for(QuestType questType : questTypes)
+			{
+				if(!(questType instanceof OverpassQuestType)) continue;
+				if(cancelState.get()) break;
+				if(maxVisibleAmount != null && visibleAmount >= maxVisibleAmount) break;
 
-			try
-			{
-				downloadQuestType((OverpassQuestType) questType, bbox, blacklistedPositions);
-			}
-			catch(Exception e)
-			{
-				Log.e(TAG, "Error while downloading quest type" + getQuestTypeAsLogString(questType), e);
+				visibleAmount += downloadQuestType((OverpassQuestType) questType, bbox, blacklistedPositions);
 			}
 		}
-
-		geometryDB.deleteUnreferenced();
-		elementDB.deleteUnreferenced();
+		finally
+		{
+			geometryDB.deleteUnreferenced();
+			elementDB.deleteUnreferenced();
+		}
 	}
 
-	private void downloadQuestType(final OverpassQuestType questType, BoundingBox bbox,
+	private int downloadQuestType(final OverpassQuestType questType, BoundingBox bbox,
 								   final Set<LatLon> blacklistedPositions)
 	{
-		newAmount = 0;
+		newQuestTypeAmount = 0;
+		visibleQuestTypeAmount = 0;
 
 		final Map<OsmElementKey, OsmQuest> oldQuestsByElementKey = new HashMap<>();
 		for(OsmQuest quest : osmQuestDB.getAll(bbox, null, questType, null, null))
@@ -139,9 +139,9 @@ public class OsmQuestDownload
 					{
 						questListener.onQuestCreated(quest, element);
 					}
-					++newAmount;
+					++newQuestTypeAmount;
 				}
-				++visibleAmount;
+				++visibleQuestTypeAmount;
 
 				oldQuestsByElementKey.remove(
 						new OsmElementKey(quest.getElementType(), quest.getElementId()));
@@ -153,8 +153,11 @@ public class OsmQuestDownload
 
 		removeObsoleteQuests(oldQuestsByElementKey.values());
 
-		Log.i(TAG, getQuestTypeAsLogString(questType) + ": Successfully added " + newAmount +
-				" new quests and removed " + obsoleteAmount + " already resolved quests");
+		Log.i(TAG, getQuestTypeAsLogString(questType) + ": Added " + newQuestTypeAmount +
+				" new and removed " + obsoleteAmount + " already resolved quests." +
+				" (Total: " + visibleQuestTypeAmount + ")");
+
+		return visibleQuestTypeAmount;
 	}
 
 	private String getElementAsLogString(Element element)

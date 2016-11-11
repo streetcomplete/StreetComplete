@@ -37,6 +37,7 @@ import javax.inject.Inject;
 
 import de.westnordost.osmagent.data.Quest;
 import de.westnordost.osmagent.data.QuestController;
+import de.westnordost.osmagent.data.QuestDownloader;
 import de.westnordost.osmagent.data.QuestGroup;
 import de.westnordost.osmagent.data.VisibleQuestListener;
 import de.westnordost.osmagent.data.osm.ElementGeometry;
@@ -140,6 +141,23 @@ public class MainActivity extends AppCompatActivity implements OsmQuestAnswerLis
 		});
 
 		questController.setQuestListener(this);
+		questController.setDownloadErrorListener(new QuestDownloader.OnErrorListener()
+		{
+			@Override public void onError()
+			{
+				runOnUiThread(new Runnable()
+				{
+					@Override public void run()
+					{
+						new AlertDialog.Builder(MainActivity.this)
+								.setTitle(R.string.error)
+								.setMessage(R.string.download_error)
+								.setPositiveButton(android.R.string.ok, null)
+								.show();
+					}
+				});
+			}
+		});
 	}
 
 
@@ -147,6 +165,7 @@ public class MainActivity extends AppCompatActivity implements OsmQuestAnswerLis
 	{
 		super.onDestroy();
 		questController.setQuestListener(null);
+		questController.setDownloadErrorListener(null);
 	}
 
 	@Override protected void onStart()

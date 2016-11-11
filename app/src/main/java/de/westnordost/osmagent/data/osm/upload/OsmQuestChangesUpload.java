@@ -72,7 +72,7 @@ public class OsmQuestChangesUpload
 		elementGeometryDB.deleteUnreferenced();
 		elementDB.deleteUnreferenced();
 
-		String logMsg = "Successfully comitted " + commits + " changesets";
+		String logMsg = "Comitted " + commits + " changesets";
 		if(obsolete > 0)
 		{
 			logMsg += " but dropped " + obsolete + " changesets because there were conflicts";
