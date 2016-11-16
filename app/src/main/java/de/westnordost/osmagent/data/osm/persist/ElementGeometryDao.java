@@ -1,12 +1,13 @@
 package de.westnordost.osmagent.data.osm.persist;
 
 
-import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteStatement;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -19,44 +20,92 @@ import de.westnordost.osmapi.map.data.OsmLatLon;
 
 public class ElementGeometryDao
 {
-	private SQLiteOpenHelper dbHelper;
-	private Serializer serializer;
+	private final SQLiteOpenHelper dbHelper;
+	private final Serializer serializer;
 
-	@Inject
-	public ElementGeometryDao(SQLiteOpenHelper dbHelper, Serializer serializer)
+	private final SQLiteStatement insert;
+
+	public static class Row
+	{
+		public Row(Element.Type elementType, long elementId, ElementGeometry geometry)
+		{
+			this.elementType = elementType;
+			this.elementId = elementId;
+			this.geometry = geometry;
+		}
+
+		public Element.Type elementType;
+		public long elementId;
+		public ElementGeometry geometry;
+	}
+
+	@Inject public ElementGeometryDao(SQLiteOpenHelper dbHelper, Serializer serializer)
 	{
 		this.dbHelper = dbHelper;
 		this.serializer = serializer;
+
+		String sql = "INSERT OR REPLACE INTO " + ElementGeometryTable.NAME + " ("+
+				ElementGeometryTable.Columns.ELEMENT_TYPE+","+
+				ElementGeometryTable.Columns.ELEMENT_ID+","+
+				ElementGeometryTable.Columns.GEOMETRY_POLYGONS+","+
+				ElementGeometryTable.Columns.GEOMETRY_POLYLINES+","+
+				ElementGeometryTable.Columns.LATITUDE+","+
+				ElementGeometryTable.Columns.LONGITUDE+
+				") values (?,?,?,?,?,?);";
+		SQLiteDatabase db = dbHelper.getWritableDatabase();
+		insert = db.compileStatement(sql);
+	}
+
+	public void putAll(Collection<Row> rows)
+	{
+		SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+		db.beginTransaction();
+
+		for(Row row : rows)
+		{
+			executeInsert(row.elementType, row.elementId, row.geometry);
+		}
+
+		db.setTransactionSuccessful();
+		db.endTransaction();
 	}
 
 	/** adds or updates (overwrites) an element geometry*/
 	public void put(Element.Type type, long id, ElementGeometry geometry)
 	{
-		ContentValues values = new ContentValues();
-		values.put(ElementGeometryTable.Columns.ELEMENT_ID, id);
-		values.put(ElementGeometryTable.Columns.ELEMENT_TYPE, type.name());
-		if(geometry.polygons != null)
-		{
-			values.put(ElementGeometryTable.Columns.GEOMETRY_POLYGONS, serializer.toBytes(geometry.polygons));
-		}
-		if(geometry.polylines != null)
-		{
-			values.put(ElementGeometryTable.Columns.GEOMETRY_POLYLINES, serializer.toBytes(geometry.polylines));
-		}
-		values.put(ElementGeometryTable.Columns.LATITUDE, geometry.center.getLatitude());
-		values.put(ElementGeometryTable.Columns.LONGITUDE, geometry.center.getLongitude());
-
 		SQLiteDatabase db = dbHelper.getWritableDatabase();
+		db.beginTransaction();
+		executeInsert(type, id, geometry);
+		db.setTransactionSuccessful();
+		db.endTransaction();
+	}
 
-		db.insertWithOnConflict(ElementGeometryTable.NAME, null, values, SQLiteDatabase.CONFLICT_REPLACE);
+	private void executeInsert(Element.Type type, long id, ElementGeometry geometry)
+	{
+		insert.bindString(1, type.name());
+		insert.bindLong(2, id);
+		if (geometry.polygons != null)
+			insert.bindBlob(3, serializer.toBytes(geometry.polygons));
+		else
+			insert.bindNull(3);
+		if (geometry.polylines != null)
+			insert.bindBlob(4, serializer.toBytes(geometry.polylines));
+		else
+			insert.bindNull(4);
+		insert.bindDouble(5, geometry.center.getLatitude());
+		insert.bindDouble(6, geometry.center.getLongitude());
+
+		insert.executeInsert();
+		insert.clearBindings();
 	}
 
 	public ElementGeometry get(Element.Type type, long id)
 	{
 		SQLiteDatabase db = dbHelper.getReadableDatabase();
-		String where = ElementGeometryTable.Columns.ELEMENT_ID + " = ? AND " +
-				ElementGeometryTable.Columns.ELEMENT_TYPE + " = ?";
-		String[] args = {String.valueOf(id), type.name()};
+		String where = ElementGeometryTable.Columns.ELEMENT_TYPE + " = ? AND " +
+				ElementGeometryTable.Columns.ELEMENT_ID + " = ?";
+		String[] args = {type.name(), String.valueOf(id)};
 		Cursor cursor = db.query(ElementGeometryTable.NAME, null, where, args,
 				null, null, null, "1");
 

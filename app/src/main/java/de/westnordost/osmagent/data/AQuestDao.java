@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import de.westnordost.osmapi.map.data.BoundingBox;
@@ -125,33 +126,84 @@ public abstract class AQuestDao<T extends Quest>
 		return db.delete(getTableName(), getIdColumnName() + " = " + id, null) == 1;
 	}
 
+	public int deleteAll(Collection<Long> ids)
+	{
+		SQLiteDatabase db = dbHelper.getWritableDatabase();
+		StringBuilder idsString = new StringBuilder();
+		boolean first = true;
+		for (Long id : ids)
+		{
+			if(first) first = false;
+			else idsString.append(",");
+			idsString.append(id);
+		}
+		return db.delete(getTableName(), getIdColumnName() + " IN (" + idsString.toString() + ")", null);
+	}
+
+	public int addAll(Collection<T> quests)
+	{
+		return insertAll(quests, false);
+	}
+
+	public int replaceAll(Collection<T> quests)
+	{
+		return insertAll(quests, true);
+	}
+
+	private int insertAll(Collection<T> quests, boolean replace)
+	{
+		SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+		int addRows = 0;
+		db.beginTransaction();
+		for(T quest : quests)
+		{
+			long rowId = executeInsert(quest, replace);
+			boolean alreadyExists = rowId == -1;
+
+			if(!alreadyExists)
+			{
+				quest.setId(rowId);
+				addRows++;
+			}
+		}
+
+		db.setTransactionSuccessful();
+		db.endTransaction();
+		return addRows;
+	}
+
 	/** Add given quest to DB and sets the quest's id after inserting it
 	 * @return true if successfully inserted, false if quest already exists in DB (= not inserted) */
 	public boolean add(T quest)
 	{
-		SQLiteDatabase db = dbHelper.getWritableDatabase();
+		return insert(quest, false);
+	}
 
-		long rowId = db.insertWithOnConflict(getTableName(), null, createContentValuesFrom(quest),
-				SQLiteDatabase.CONFLICT_IGNORE);
+	/** Add given quest to DB and sets the quest's id after inserting it. If the quest already
+	 *  exists, replaces it with the given one. */
+	public boolean replace(T quest)
+	{
+		return insert(quest, true);
+	}
+
+	private boolean insert(T quest, boolean replace)
+	{
+		SQLiteDatabase db = dbHelper.getWritableDatabase();
+		db.beginTransaction();
+
+		long rowId = executeInsert(quest, replace);
 
 		boolean alreadyExists = rowId == -1;
+
+		db.setTransactionSuccessful();
+		db.endTransaction();
+
 		if(!alreadyExists)
 		{
 			quest.setId(rowId);
 		}
 		return !alreadyExists;
-	}
-
-	/** Add given quest to DB and sets the quest's id after inserting it. If the quest already
-	 *  exists, replaces it with the given one. */
-	public void replace(T quest)
-	{
-		SQLiteDatabase db = dbHelper.getWritableDatabase();
-
-		long rowId = db.insertWithOnConflict(getTableName(), null, createContentValuesFrom(quest),
-				SQLiteDatabase.CONFLICT_REPLACE);
-
-		quest.setId(rowId);
 	}
 
 	private ContentValues createContentValuesFrom(T object)
@@ -169,6 +221,7 @@ public abstract class AQuestDao<T extends Quest>
 	protected abstract String getLatitudeColumnName();
 	protected abstract String getLongitudeColumnName();
 
+	protected abstract long executeInsert(T object, boolean replace);
 	protected abstract ContentValues createNonFinalContentValuesFrom(T object);
 	protected abstract ContentValues createFinalContentValuesFrom(T object);
 	protected abstract T createObjectFrom(Cursor cursor);

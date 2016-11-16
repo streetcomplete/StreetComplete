@@ -5,7 +5,11 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteStatement;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -62,6 +66,26 @@ public class AQuestDaoTest extends AndroidDbTestCase
 		assertEquals(q.getStatus(), q2.getStatus());
 	}
 
+	public void testAddAll()
+	{
+		Collection<Quest> quests = new ArrayList<>();
+
+		quests.add(createQuest(3,0,0, QuestStatus.NEW));
+		quests.add(createQuest(4,0,0, QuestStatus.ANSWERED));
+
+		assertEquals(2,dao.addAll(quests));
+	}
+
+	public void testAddAllNoOverwrite()
+	{
+		Collection<Quest> quests = new ArrayList<>();
+
+		quests.add(createQuest(3,0,0, QuestStatus.NEW));
+		quests.add(createQuest(3,0,0, QuestStatus.ANSWERED));
+
+		assertEquals(1,dao.addAll(quests));
+	}
+
 	public void testAddNoOverwrite()
 	{
 		dao.add(createQuest(3,0,0, QuestStatus.HIDDEN));
@@ -83,6 +107,14 @@ public class AQuestDaoTest extends AndroidDbTestCase
 		assertFalse(dao.delete(0));
 		dao.add(createQuest(1,0,0, QuestStatus.NEW));
 		assertTrue(dao.delete(1));
+	}
+
+	public void testDeleteAll()
+	{
+		dao.add(createQuest(0,0,0, QuestStatus.NEW));
+		dao.add(createQuest(1,0,0, QuestStatus.NEW));
+		dao.add(createQuest(2,0,0, QuestStatus.NEW));
+		assertEquals(2, dao.deleteAll(Arrays.asList(1L, 2L)));
 	}
 
 	public void testUpdateException()
@@ -163,6 +195,21 @@ public class AQuestDaoTest extends AndroidDbTestCase
 		@Override protected String getLongitudeColumnName()
 		{
 			return LON_COL;
+		}
+
+		@Override protected long executeInsert(Quest quest)
+		{
+			SQLiteDatabase db = dbHelper.getWritableDatabase();
+			SQLiteStatement insert = db.compileStatement(
+					"INSERT OR IGNORE INTO " + TABLE_NAME +
+							"("+ID_COL+","+QS_COL+","+LAT_COL+","+LON_COL+") VALUES (?,?,?,?)");
+
+			insert.bindLong(1, quest.getId());
+			insert.bindString(2, quest.getStatus().name());
+			insert.bindDouble(3, quest.getMarkerLocation().getLatitude());
+			insert.bindDouble(4, quest.getMarkerLocation().getLongitude());
+
+			return insert.executeInsert();
 		}
 
 		@Override protected ContentValues createNonFinalContentValuesFrom(Quest quest)

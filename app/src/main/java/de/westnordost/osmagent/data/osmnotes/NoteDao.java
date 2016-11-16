@@ -1,51 +1,89 @@
 package de.westnordost.osmagent.data.osmnotes;
 
 
-import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteStatement;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 
 import javax.inject.Inject;
 
 import de.westnordost.osmagent.util.Serializer;
-import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.map.data.OsmLatLon;
 import de.westnordost.osmapi.notes.Note;
 
 public class NoteDao
 {
-	protected final SQLiteOpenHelper dbHelper;
-	protected final Serializer serializer;
+	private final SQLiteOpenHelper dbHelper;
+	private final Serializer serializer;
+
+	private final SQLiteStatement insert;
 
 	@Inject public NoteDao(SQLiteOpenHelper dbHelper, Serializer serializer)
 	{
 		this.dbHelper = dbHelper;
 		this.serializer = serializer;
+
+		String sql = "INSERT OR REPLACE INTO " + NoteTable.NAME + " ("+
+				NoteTable.Columns.ID+","+
+				NoteTable.Columns.LATITUDE+","+
+				NoteTable.Columns.LONGITUDE+","+
+				NoteTable.Columns.STATUS+","+
+				NoteTable.Columns.CREATED+","+
+				NoteTable.Columns.CLOSED+","+
+				NoteTable.Columns.COMMENTS+
+				") values (?,?,?,?,?,?,?);";
+		SQLiteDatabase db = dbHelper.getWritableDatabase();
+		insert = db.compileStatement(sql);
+	}
+
+	public void putAll(Collection<Note> notes)
+	{
+		SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+		db.beginTransaction();
+
+		for(Note note : notes)
+		{
+			executeInsert(note);
+		}
+
+		db.setTransactionSuccessful();
+		db.endTransaction();
 	}
 
 	public void put(Note note)
 	{
 		SQLiteDatabase db = dbHelper.getWritableDatabase();
+		db.beginTransaction();
+		executeInsert(note);
+		db.setTransactionSuccessful();
+		db.endTransaction();
+	}
 
-		ContentValues values = new ContentValues();
-
-		values.put(NoteTable.Columns.ID, note.id);
-		LatLon pos = note.position;
-		values.put(NoteTable.Columns.LATITUDE, pos.getLatitude());
-		values.put(NoteTable.Columns.LONGITUDE, pos.getLongitude());
-		values.put(NoteTable.Columns.STATUS, note.status.name());
-		values.put(NoteTable.Columns.CREATED, note.dateCreated.getTime());
+	private void executeInsert(Note note)
+	{
+		insert.bindLong(1, note.id);
+		insert.bindDouble(2, note.position.getLatitude());
+		insert.bindDouble(3, note.position.getLongitude());
+		insert.bindString(4, note.status.name());
+		insert.bindLong(5, note.dateCreated.getTime());
 		if(note.dateClosed != null)
 		{
-			values.put(NoteTable.Columns.CLOSED, note.dateClosed.getTime());
+			insert.bindLong(6, note.dateClosed.getTime());
 		}
-		values.put(NoteTable.Columns.COMMENTS, serializer.toBytes(note.comments));
+		else
+		{
+			insert.bindNull(6);
+		}
+		insert.bindBlob(7, serializer.toBytes(note.comments));
 
-		db.insertWithOnConflict(NoteTable.NAME, null, values, SQLiteDatabase.CONFLICT_REPLACE);
+		insert.executeInsert();
+		insert.clearBindings();
 	}
 
 	public Note get(long id)

@@ -1,6 +1,11 @@
 package de.westnordost.osmagent.data;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
+import android.support.v4.content.LocalBroadcastManager;
 
 import java.util.List;
 
@@ -27,22 +32,61 @@ public class QuestController
 	private final ElementGeometryDao geometryDB;
 	private final OsmNoteQuestDao osmNoteQuestDB;
 	private final CreateNoteDao createNoteDB;
-
-	private final QuestDownloader questDownloader;
+	private final Context context;
 
 	private VisibleQuestListener listener;
 
 	@Inject public QuestController(OsmQuestDao osmQuestDB, MergedElementDao osmElementDB,
 								   ElementGeometryDao geometryDB, OsmNoteQuestDao osmNoteQuestDB,
-								   CreateNoteDao createNoteDB, QuestDownloader questDownloader)
+								   CreateNoteDao createNoteDB, Context context)
 	{
 		this.osmQuestDB = osmQuestDB;
 		this.osmElementDB = osmElementDB;
 		this.geometryDB = geometryDB;
 		this.osmNoteQuestDB = osmNoteQuestDB;
 		this.createNoteDB = createNoteDB;
-		this.questDownloader = questDownloader;
+		this.context = context;
 	}
+
+	public void onResume(VisibleQuestListener questListener)
+	{
+		setQuestListener(questListener);
+
+		LocalBroadcastManager localBroadcaster = LocalBroadcastManager.getInstance(context);
+
+		IntentFilter downloadQuestFilter = new IntentFilter(QuestDownloadService.ACTION_JUST_IN);
+		localBroadcaster.registerReceiver(questTypeDownloadedReceiver, downloadQuestFilter);
+
+		IntentFilter downloadNotesFilter = new IntentFilter(QuestDownloadService.ACTION_JUST_IN_NOTES);
+		localBroadcaster.registerReceiver(notesDownloadedReceiver, downloadNotesFilter);
+	}
+
+	public void onPause()
+	{
+		setQuestListener(null);
+
+		LocalBroadcastManager localBroadcaster = LocalBroadcastManager.getInstance(context);
+
+		localBroadcaster.unregisterReceiver(questTypeDownloadedReceiver);
+		localBroadcaster.unregisterReceiver(notesDownloadedReceiver);
+	}
+
+	private BroadcastReceiver questTypeDownloadedReceiver =	new BroadcastReceiver()
+	{
+		@Override public void onReceive(Context context, Intent intent)
+		{
+			String questTypeName = intent.getStringExtra(QuestDownloadService.ARG_QUEST_TYPE);
+			retrieveOsmQuests(QuestDownloadService.getBBox(intent), questTypeName);
+		}
+	};
+
+	private BroadcastReceiver notesDownloadedReceiver =	new BroadcastReceiver()
+	{
+		@Override public void onReceive(Context context, Intent intent)
+		{
+			retrieveOsmNotes(QuestDownloadService.getBBox(intent));
+		}
+	};
 
 	/** Create a note for the given OSM Quest instead of answering it. The quest will turn
 	 *  invisible. */
@@ -196,27 +240,58 @@ public class QuestController
 		}.start();
 	}
 
+	private void retrieveOsmQuests(final BoundingBox bbox, final String questTypeName)
+	{
+		new Thread()
+		{
+			@Override public void run()
+			{
+				for (OsmQuest q : osmQuestDB.getAll(bbox, QuestStatus.NEW, questTypeName, null, null))
+				{
+					listener.onQuestCreated(q, null);
+				}
+			}
+		}.start();
+	}
+
+	private void retrieveOsmNotes(final BoundingBox bbox)
+	{
+		new Thread()
+		{
+			@Override public void run()
+			{
+				for (OsmNoteQuest q : osmNoteQuestDB.getAll(bbox, QuestStatus.NEW))
+				{
+					listener.onQuestCreated(q);
+				}
+			}
+		}.start();
+	}
+
 	/** Download quests in the given bounding box asynchronously. maxVisibleQuests = null for no
 	 *  limit. Multiple calls to this method will cancel the previous download job. */
 	public void download(BoundingBox bbox, Integer maxVisibleQuests)
 	{
-		questDownloader.download(bbox, maxVisibleQuests);
+		Intent intent = new Intent(context, QuestDownloadService.class);
+		QuestDownloadService.putBBox(bbox, intent);
+		if(maxVisibleQuests != null)
+		{
+			intent.putExtra(QuestDownloadService.ARG_MAX_VISIBLE_QUESTS, maxVisibleQuests);
+		}
+		context.startService(intent);
 	}
 
-	public void shutdown()
+
+
+	/** Collect and upload all changes made by the user */
+	public void upload()
 	{
-		questDownloader.shutdown();
+		context.startService(new Intent(context, QuestChangesUploadService.class));
 	}
 
 	/** Add object to be notified whenever quests become visible / invisible */
-	public void setQuestListener(VisibleQuestListener listener)
+	private void setQuestListener(VisibleQuestListener listener)
 	{
 		this.listener = listener;
-		questDownloader.setQuestListener(this.listener);
-	}
-
-	public void setDownloadErrorListener(QuestDownloader.OnErrorListener listener)
-	{
-		questDownloader.setOnErrorListener(listener);
 	}
 }

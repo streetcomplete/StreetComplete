@@ -2,11 +2,14 @@ package de.westnordost.osmagent.data.osm.persist;
 
 import junit.framework.TestCase;
 
+import java.util.ArrayList;
+
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.map.data.Node;
 import de.westnordost.osmapi.map.data.Relation;
 import de.westnordost.osmapi.map.data.Way;
 
+import static org.mockito.Matchers.anyCollectionOf;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -92,6 +95,46 @@ public class MergedElementDaoTest extends TestCase
 	{
 		dao.delete(Element.Type.RELATION, 1L);
 		verify(relationDao).delete(1L);
+	}
+
+	public void testPutAllRelations()
+	{
+		ArrayList<Element> elements = new ArrayList<>();
+		elements.add(mock(Relation.class));
+
+		dao.putAll(elements);
+		verify(relationDao).putAll(anyCollectionOf(Relation.class));
+	}
+
+	public void testPutAllWays()
+	{
+		ArrayList<Element> elements = new ArrayList<>();
+		elements.add(mock(Way.class));
+
+		dao.putAll(elements);
+		verify(wayDao).putAll(anyCollectionOf(Way.class));
+	}
+
+	public void testPutAllNodes()
+	{
+		ArrayList<Element> elements = new ArrayList<>();
+		elements.add(mock(Node.class));
+
+		dao.putAll(elements);
+		verify(nodeDao).putAll(anyCollectionOf(Node.class));
+	}
+
+	public void testPutAllElements()
+	{
+		ArrayList<Element> elements = new ArrayList<>();
+		elements.add(mock(Node.class));
+		elements.add(mock(Way.class));
+		elements.add(mock(Relation.class));
+
+		dao.putAll(elements);
+		verify(nodeDao).putAll(anyCollectionOf(Node.class));
+		verify(wayDao).putAll(anyCollectionOf(Way.class));
+		verify(relationDao).putAll(anyCollectionOf(Relation.class));
 	}
 
 	public void testDeleteUnreferenced()

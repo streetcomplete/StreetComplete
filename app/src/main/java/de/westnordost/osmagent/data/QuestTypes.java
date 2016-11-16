@@ -44,6 +44,11 @@ public class QuestTypes
 		}
 	}
 
+	public int getAmount()
+	{
+		return types.size();
+	}
+
 	private static class QuestImportanceComparator implements Comparator<QuestType>
 	{
 		@Override public int compare(QuestType lhs, QuestType rhs)

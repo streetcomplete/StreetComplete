@@ -5,6 +5,10 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteStatement;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 import de.westnordost.osmagent.data.AndroidDbTestCase;
 import de.westnordost.osmapi.map.data.Element;
@@ -45,6 +49,17 @@ public class AOsmElementDaoTest extends AndroidDbTestCase
 		dao.put(createElement(6,1));
 		assertEquals(6,dao.get(6).getId());
 		assertEquals(1,dao.get(6).getVersion());
+	}
+
+	public void testPutAll()
+	{
+		ArrayList<Element> elements = new ArrayList<>();
+		elements.add(createElement(1,2));
+		elements.add(createElement(2,2));
+		dao.putAll(elements);
+
+		assertNotNull(dao.get(1));
+		assertNotNull(dao.get(2));
 	}
 
 	public void testPutOverwrite()
@@ -118,12 +133,17 @@ public class AOsmElementDaoTest extends AndroidDbTestCase
 			return ID_COL;
 		}
 
-		@Override protected ContentValues createContentValuesFrom(Element object)
+		@Override protected void executeInsert(Element e)
 		{
-			ContentValues v = new ContentValues();
-			v.put(ID_COL, object.getId());
-			v.put(VERSION_COL, object.getVersion());
-			return v;
+			SQLiteDatabase db = dbHelper.getWritableDatabase();
+			SQLiteStatement insert = db.compileStatement(
+					"INSERT OR REPLACE INTO " + TABLE_NAME +
+							"("+ID_COL+","+VERSION_COL+") VALUES (?,?)");
+
+			insert.bindLong(1, e.getId());
+			insert.bindLong(2, e.getVersion());
+
+			insert.executeInsert();
 		}
 
 		@Override protected Element createObjectFrom(Cursor cursor)

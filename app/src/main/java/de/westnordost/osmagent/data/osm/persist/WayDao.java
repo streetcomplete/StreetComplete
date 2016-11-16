@@ -1,9 +1,9 @@
 package de.westnordost.osmagent.data.osm.persist;
 
-
-import android.content.ContentValues;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteStatement;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,11 +19,21 @@ import de.westnordost.osmapi.map.data.Way;
 public class WayDao extends AOsmElementDao<Way>
 {
 	private final Serializer serializer;
+	private final SQLiteStatement insert;
 
 	@Inject public WayDao(SQLiteOpenHelper dbHelper, Serializer serializer)
 	{
 		super(dbHelper);
 		this.serializer = serializer;
+
+		String sql = "INSERT OR REPLACE INTO " + WayTable.NAME + " ("+
+				WayTable.Columns.ID+","+
+				WayTable.Columns.VERSION+","+
+				WayTable.Columns.NODE_IDS+","+
+				WayTable.Columns.TAGS+
+				") values (?,?,?,?);";
+		SQLiteDatabase db = dbHelper.getWritableDatabase();
+		insert = db.compileStatement(sql);
 	}
 
 	@Override protected String getTableName()
@@ -41,22 +51,24 @@ public class WayDao extends AOsmElementDao<Way>
 		return Way.Type.WAY.name();
 	}
 
-	@Override protected ContentValues createContentValuesFrom(Way way)
+	@Override protected void executeInsert(Way way)
 	{
-		ContentValues values = new ContentValues();
-		values.put(WayTable.Columns.ID, way.getId());
-		values.put(WayTable.Columns.VERSION, way.getVersion());
-
-		values.put(WayTable.Columns.NODE_IDS, serializer.toBytes(new ArrayList<>(way.getNodeIds())));
-
+		insert.bindLong(1, way.getId());
+		insert.bindLong(2, way.getVersion());
+		insert.bindBlob(3, serializer.toBytes(new ArrayList<>(way.getNodeIds())));
 		if(way.getTags() != null)
 		{
 			HashMap<String,String> map = new HashMap<>();
 			map.putAll(way.getTags());
-			values.put(WayTable.Columns.TAGS, serializer.toBytes(map));
+			insert.bindBlob(4, serializer.toBytes(map));
+		}
+		else
+		{
+			insert.bindNull(4);
 		}
 
-		return values;
+		insert.executeInsert();
+		insert.clearBindings();
 	}
 
 	@Override protected Way createObjectFrom(Cursor cursor)

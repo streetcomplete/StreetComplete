@@ -2,7 +2,9 @@ package de.westnordost.osmagent.data.osm.persist;
 
 import android.content.ContentValues;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteStatement;
 
 import java.util.Date;
 import java.util.List;
@@ -10,7 +12,6 @@ import java.util.List;
 import javax.inject.Inject;
 
 import de.westnordost.osmagent.data.AQuestDao;
-import de.westnordost.osmagent.data.QuestType;
 import de.westnordost.osmagent.data.WhereSelectionBuilder;
 import de.westnordost.osmagent.data.osm.ElementGeometry;
 import de.westnordost.osmagent.data.osm.OsmQuest;
@@ -26,6 +27,7 @@ public class OsmQuestDao extends AQuestDao<OsmQuest>
 {
 	private final Serializer serializer;
 	private final QuestTypes questTypeList;
+	private final SQLiteStatement add, replace;
 
 	@Inject public OsmQuestDao(SQLiteOpenHelper dbHelper, Serializer serializer,
 							   QuestTypes questTypeList)
@@ -33,15 +35,27 @@ public class OsmQuestDao extends AQuestDao<OsmQuest>
 		super(dbHelper);
 		this.serializer = serializer;
 		this.questTypeList = questTypeList;
+		String sql = OsmQuestTable.NAME + " ("+
+				OsmQuestTable.Columns.QUEST_ID+","+
+				OsmQuestTable.Columns.QUEST_TYPE+","+
+				OsmQuestTable.Columns.QUEST_STATUS+","+
+				OsmQuestTable.Columns.TAG_CHANGES+","+
+				OsmQuestTable.Columns.LAST_UPDATE+","+
+				OsmQuestTable.Columns.ELEMENT_ID+","+
+				OsmQuestTable.Columns.ELEMENT_TYPE+
+				") values (?,?,?,?,?,?,?);";
+		SQLiteDatabase db = dbHelper.getWritableDatabase();
+		add = db.compileStatement("INSERT OR IGNORE INTO " + sql);
+		replace = db.compileStatement("INSERT OR REPLACE INTO " + sql);
 	}
 
-	public List<OsmQuest> getAll(BoundingBox bbox, QuestStatus status, QuestType questType,
+	public List<OsmQuest> getAll(BoundingBox bbox, QuestStatus status, String questTypeName,
 								 Element.Type elementType, Long elementId)
 	{
 		WhereSelectionBuilder qb = new WhereSelectionBuilder();
 		addBBox(bbox, qb);
 		addQuestStatus(status, qb);
-		addQuestType(questType, qb);
+		addQuestType(questTypeName, qb);
 		addElementType(elementType, qb);
 		addElementId(elementId, qb);
 
@@ -54,11 +68,10 @@ public class OsmQuestDao extends AQuestDao<OsmQuest>
 		});
 	}
 
-	private void addQuestType(QuestType questType, WhereSelectionBuilder builder)
+	private void addQuestType(String questTypeName, WhereSelectionBuilder builder)
 	{
-		if(questType != null)
+		if(questTypeName != null)
 		{
-			String questTypeName = questType.getClass().getSimpleName();
 			builder.appendAnd(OsmQuestTable.Columns.QUEST_TYPE + " = ?", questTypeName);
 		}
 	}
@@ -109,6 +122,39 @@ public class OsmQuestDao extends AQuestDao<OsmQuest>
 	@Override protected String getQuestStatusColumnName()
 	{
 		return OsmQuestTable.Columns.QUEST_STATUS;
+	}
+
+	@Override protected long executeInsert(OsmQuest quest, boolean replace)
+	{
+		SQLiteStatement stmt = replace ? this.replace : this.add;
+
+		if(quest.getId() != null)
+		{
+			stmt.bindLong(1, quest.getId());
+		}
+		else
+		{
+			stmt.bindNull(1);
+		}
+
+		stmt.bindString(2, quest.getType().getClass().getSimpleName());
+		stmt.bindString(3, quest.getStatus().name());
+		if(quest.getChanges() != null)
+		{
+			stmt.bindBlob(4, serializer.toBytes(quest.getChanges()));
+		}
+		else
+		{
+			stmt.bindNull(4);
+		}
+
+		stmt.bindLong(5, quest.getLastUpdate().getTime());
+		stmt.bindLong(6, quest.getElementId());
+		stmt.bindString(7, quest.getElementType().name());
+
+		long result = stmt.executeInsert();
+		stmt.clearBindings();
+		return result;
 	}
 
 	@Override protected ContentValues createFinalContentValuesFrom(OsmQuest quest)

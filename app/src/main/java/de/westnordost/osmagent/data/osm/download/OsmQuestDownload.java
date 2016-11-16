@@ -1,9 +1,8 @@
 package de.westnordost.osmagent.data.osm.download;
 
-
 import android.util.Log;
 
-import java.util.Collection;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,7 +16,6 @@ import de.westnordost.osmagent.data.QuestTypes;
 import de.westnordost.osmagent.data.osm.ElementGeometry;
 import de.westnordost.osmagent.data.osm.OsmQuest;
 import de.westnordost.osmagent.data.osm.OverpassQuestType;
-import de.westnordost.osmagent.data.osm.VisibleOsmQuestListener;
 import de.westnordost.osmagent.data.osm.persist.ElementGeometryDao;
 import de.westnordost.osmagent.data.osm.persist.MergedElementDao;
 import de.westnordost.osmagent.data.osm.persist.OsmQuestDao;
@@ -31,17 +29,30 @@ public class OsmQuestDownload
 {
 	private static final String TAG = "QuestDownload";
 
+	// injections
 	private final OverpassMapDataDao overpassServer;
 	private final ElementGeometryDao geometryDB;
 	private final MergedElementDao elementDB;
 	private final OsmQuestDao osmQuestDB;
 	private final QuestTypes questTypeList;
 
-	private VisibleOsmQuestListener questListener;
+	// listener
+	private ProgressListener progressListener;
+	public interface ProgressListener
+	{
+		void onProgress(float progress, QuestType questType);
+	}
 
-	private int visibleAmount;
-	private int newQuestTypeAmount;
-	private int visibleQuestTypeAmount;
+	// state
+	private boolean called = false;
+
+	private int visibleQuests;
+	private int downloadedQuestTypes;
+
+	// args
+	private BoundingBox bbox;
+	private Set<LatLon> blacklistedPositions;
+	private Integer maxVisibleQuests;
 
 	@Inject public OsmQuestDownload(
 			OverpassMapDataDao overpassServer, ElementGeometryDao geometryDB,
@@ -55,15 +66,20 @@ public class OsmQuestDownload
 		this.questTypeList = questTypeList;
 	}
 
-	public void setQuestListener(VisibleOsmQuestListener questListener)
+	public void setProgressListener(ProgressListener progressListener)
 	{
-		this.questListener = questListener;
+		this.progressListener = progressListener;
 	}
 
-	public void download(BoundingBox bbox, final Set<LatLon> blacklistedPositions,
-						 Integer maxVisibleAmount, AtomicBoolean cancelState)
+	public void download(BoundingBox bbox, Set<LatLon> blacklistedPositions,
+						 Integer maxVisibleQuests, AtomicBoolean cancelState)
 	{
-		visibleAmount = 0;
+		if(called) throw new IllegalStateException("May only be called once");
+		else called = true;
+
+		this.bbox = bbox;
+		this.blacklistedPositions = blacklistedPositions;
+		this.maxVisibleQuests = maxVisibleQuests;
 
 		List<QuestType> questTypes = questTypeList.getQuestTypesSortedByImportance();
 
@@ -73,9 +89,9 @@ public class OsmQuestDownload
 			{
 				if(!(questType instanceof OverpassQuestType)) continue;
 				if(cancelState.get()) break;
-				if(maxVisibleAmount != null && visibleAmount >= maxVisibleAmount) break;
+				if(maxVisibleQuests != null && visibleQuests >= maxVisibleQuests) break;
 
-				visibleAmount += downloadQuestType((OverpassQuestType) questType, bbox, blacklistedPositions);
+				downloadQuestType((OverpassQuestType) questType);
 			}
 		}
 		finally
@@ -85,82 +101,112 @@ public class OsmQuestDownload
 		}
 	}
 
-	private int downloadQuestType(final OverpassQuestType questType, BoundingBox bbox,
-								   final Set<LatLon> blacklistedPositions)
+	private Map<OsmElementKey, Long> getPreviousQuestsIdsByElementKey(OverpassQuestType questType)
 	{
-		newQuestTypeAmount = 0;
-		visibleQuestTypeAmount = 0;
-
-		final Map<OsmElementKey, OsmQuest> oldQuestsByElementKey = new HashMap<>();
-		for(OsmQuest quest : osmQuestDB.getAll(bbox, null, questType, null, null))
+		String questTypeName = questType.getClass().getSimpleName();
+		Map<OsmElementKey, Long> result = new HashMap<>();
+		for(OsmQuest quest : osmQuestDB.getAll(bbox, null, questTypeName, null, null))
 		{
-			oldQuestsByElementKey.put(
-					new OsmElementKey(quest.getElementType(), quest.getElementId()),
-					quest);
+			result.put(new OsmElementKey(quest.getElementType(), quest.getElementId()),	quest.getId());
 		}
+		return result;
+	}
+
+	private void downloadQuestType(final OverpassQuestType questType)
+	{
+		final ArrayList<ElementGeometryDao.Row> geometryRows = new ArrayList<>();
+		final ArrayList<Element> elements = new ArrayList<>();
+		final ArrayList<OsmQuest> quests = new ArrayList<>();
+		final Map<OsmElementKey, Long> previousQuests = getPreviousQuestsIdsByElementKey(questType);
 
 		String oql = questType.getOverpassQuery(bbox);
-
 		overpassServer.get(oql, new MapDataWithGeometryHandler()
 		{
 			@Override public void handle(Element element, ElementGeometry geometry)
 			{
-				if(!questType.appliesTo(element)) return;
+				if(!mayCreateQuestFrom(questType, element, geometry)) return;
 
-				// invalid geometry -> can't show this quest, so skip it
-				if(geometry == null)
-				{
-					// classified as warning because it might very well be a bug on the geometry
-					// creation on our side
-					Log.w(TAG, getQuestTypeAsLogString(questType) + ": Not adding a quest " +
-							" because the element " + getElementAsLogString(element) +
-							" has no valid geometry");
-					return;
-				}
+				Element.Type elementType = element.getType();
+				long elementId = element.getId();
 
-				// do not create quests whose marker is at a blacklisted position
-				if(blacklistedPositions != null && blacklistedPositions.contains(geometry.center))
-				{
-					Log.v(TAG, getQuestTypeAsLogString(questType) + ": Not adding a quest at " +
-							getPosAsLogString(geometry.center) +
-							" because there is a note at that position");
-					return;
-				}
+				geometryRows.add(new ElementGeometryDao.Row(elementType, elementId, geometry));
+				elements.add(element);
+				quests.add(new OsmQuest(questType, elementType, elementId, geometry));
 
-				elementDB.put(element);
-
-				OsmQuest quest = new OsmQuest(questType, element.getType(), element.getId(), geometry);
-
-				// geometry must be put into DB first because quest has a foreign key on it
-				geometryDB.put(quest.getElementType(), quest.getElementId(), quest.getGeometry());
-				if(osmQuestDB.add(quest))
-				{
-					if(questListener != null)
-					{
-						questListener.onQuestCreated(quest, element);
-					}
-					++newQuestTypeAmount;
-				}
-				++visibleQuestTypeAmount;
-
-				oldQuestsByElementKey.remove(
-						new OsmElementKey(quest.getElementType(), quest.getElementId()));
-
+				previousQuests.remove(new OsmElementKey(elementType, elementId));
 			}
 		});
 
-		int obsoleteAmount = oldQuestsByElementKey.size();
+		// geometry and elements must be put into DB first because quests have foreign keys on it
+		geometryDB.putAll(geometryRows);
+		elementDB.putAll(elements);
 
-		removeObsoleteQuests(oldQuestsByElementKey.values());
+		int newQuestsByQuestType = osmQuestDB.addAll(quests);
 
-		Log.i(TAG, getQuestTypeAsLogString(questType) + ": Added " + newQuestTypeAmount +
-				" new and removed " + obsoleteAmount + " already resolved quests." +
-				" (Total: " + visibleQuestTypeAmount + ")");
+		if(!previousQuests.isEmpty())
+		{
+			osmQuestDB.deleteAll(previousQuests.values());
+		}
 
-		return visibleQuestTypeAmount;
+		int visibleQuestsByQuestType = quests.size();
+		int obsoleteAmount = previousQuests.size();
+		Log.i(TAG, getQuestTypeAsLogString(questType) + ": " +
+				"Added " + newQuestsByQuestType + " new and " +
+				"removed " + obsoleteAmount + " already resolved quests." +
+				" (Total: " + visibleQuestsByQuestType + ")");
+
+		visibleQuests += visibleQuestsByQuestType;
+		dispatchProgress(questType);
+
+		++downloadedQuestTypes;
 	}
 
-	private String getElementAsLogString(Element element)
+	private boolean mayCreateQuestFrom(OverpassQuestType questType, Element element, ElementGeometry geometry)
+	{
+		if(!questType.appliesTo(element)) return false;
+
+		// invalid geometry -> can't show this quest, so skip it
+		if(geometry == null)
+		{
+			// classified as warning because it might very well be a bug on the geometry
+			// creation on our side
+			Log.w(TAG, getQuestTypeAsLogString(questType) + ": Not adding a quest " +
+					" because the element " + getElementAsLogString(element) +
+					" has no valid geometry");
+			return false;
+		}
+
+		// do not create quests whose marker is at a blacklisted position
+		if(blacklistedPositions != null && blacklistedPositions.contains(geometry.center))
+		{
+			Log.v(TAG, getQuestTypeAsLogString(questType) + ": Not adding a quest at " +
+					getPosAsLogString(geometry.center) +
+					" because there is a note at that position");
+			return false;
+		}
+		return true;
+	}
+
+	private void dispatchProgress(OverpassQuestType questType)
+	{
+		if(progressListener == null) return;
+
+		int questTypes = questTypeList.getAmount();
+
+		float progressByQuestTypes = (float) downloadedQuestTypes / questTypes;
+
+		float progressByMaxVisible = 0;
+		if(maxVisibleQuests != null)
+		{
+			progressByMaxVisible = (float) visibleQuests / maxVisibleQuests;
+		}
+
+		float progress = Math.min(1f, Math.max(progressByQuestTypes, progressByMaxVisible));
+		progressListener.onProgress(progress, questType);
+	}
+
+
+	private static String getElementAsLogString(Element element)
 	{
 		return element.getType().name().toLowerCase() + " #" + element.getId();
 	}
@@ -173,22 +219,5 @@ public class OsmQuestDownload
 	private static String getPosAsLogString(LatLon pos)
 	{
 		return pos.getLatitude() + ", " + pos.getLongitude();
-	}
-
-	private void removeObsoleteQuests(Collection<OsmQuest> oldQuests)
-	{
-		if(!oldQuests.isEmpty())
-		{
-			for (OsmQuest quest : oldQuests)
-			{
-				if(osmQuestDB.delete(quest.getId()))
-				{
-					if(questListener != null)
-					{
-						questListener.onQuestRemoved(quest);
-					}
-				}
-			}
-		}
 	}
 }

@@ -1,9 +1,10 @@
 package de.westnordost.osmagent.data.osm.persist;
 
 
-import android.content.ContentValues;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteStatement;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,10 +21,22 @@ public class NodeDao extends AOsmElementDao<Node>
 {
 	private final Serializer serializer;
 
+	private final SQLiteStatement insert;
+
 	@Inject public NodeDao(SQLiteOpenHelper dbHelper, Serializer serializer)
 	{
 		super(dbHelper);
 		this.serializer = serializer;
+
+		String sql = "INSERT OR REPLACE INTO " + NodeTable.NAME + " ("+
+				NodeTable.Columns.ID+","+
+				NodeTable.Columns.VERSION+","+
+				NodeTable.Columns.LATITUDE+","+
+				NodeTable.Columns.LONGITUDE+","+
+				NodeTable.Columns.TAGS+
+				") values (?,?,?,?,?);";
+		SQLiteDatabase db = dbHelper.getWritableDatabase();
+		insert = db.compileStatement(sql);
 	}
 
 	@Override protected String getTableName()
@@ -41,21 +54,26 @@ public class NodeDao extends AOsmElementDao<Node>
 		return Node.Type.NODE.name();
 	}
 
-	@Override protected ContentValues createContentValuesFrom(Node node)
+
+	@Override protected void executeInsert(Node node)
 	{
-		ContentValues values = new ContentValues();
-		values.put(NodeTable.Columns.ID, node.getId());
-		LatLon pos = node.getPosition();
-		values.put(NodeTable.Columns.LATITUDE, pos.getLatitude());
-		values.put(NodeTable.Columns.LONGITUDE, pos.getLongitude());
-		values.put(NodeTable.Columns.VERSION, node.getVersion());
+		insert.bindLong(1, node.getId());
+		insert.bindLong(2, node.getVersion());
+		insert.bindDouble(3, node.getPosition().getLatitude());
+		insert.bindDouble(4, node.getPosition().getLongitude());
 		if(node.getTags() != null)
 		{
 			HashMap<String,String> map = new HashMap<>();
 			map.putAll(node.getTags());
-			values.put(NodeTable.Columns.TAGS, serializer.toBytes(map));
+			insert.bindBlob(5, serializer.toBytes(map));
 		}
-		return values;
+		else
+		{
+			insert.bindNull(5);
+		}
+
+		insert.executeInsert();
+		insert.clearBindings();
 	}
 
 	@Override protected Node createObjectFrom(Cursor cursor)

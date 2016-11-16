@@ -35,6 +35,18 @@ public class ElementGeometryDaoTest extends OsmagentDbTestCase
 		assertNull(dao.get(Element.Type.NODE, 1));
 	}
 
+	public void testPutAll()
+	{
+		ElementGeometry geometry = createSimpleGeometry();
+		ArrayList<ElementGeometryDao.Row> rows = new ArrayList<>();
+		rows.add(new ElementGeometryDao.Row(Element.Type.NODE, 1, geometry));
+		rows.add(new ElementGeometryDao.Row(Element.Type.WAY, 2, geometry));
+		dao.putAll(rows);
+
+		assertNotNull(dao.get(Element.Type.WAY, 2));
+		assertNotNull(dao.get(Element.Type.NODE, 1));
+	}
+
 	public void testSimplePutGet()
 	{
 		ElementGeometry geometry = createSimpleGeometry();

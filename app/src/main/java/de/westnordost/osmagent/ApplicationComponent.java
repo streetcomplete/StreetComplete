@@ -5,8 +5,8 @@ import javax.inject.Singleton;
 import dagger.Component;
 import de.westnordost.osmagent.data.DbModule;
 import de.westnordost.osmagent.data.OsmModule;
-import de.westnordost.osmagent.data.QuestChangesUploader;
-import de.westnordost.osmagent.data.QuestDownloader;
+import de.westnordost.osmagent.data.QuestChangesUploadService;
+import de.westnordost.osmagent.data.QuestDownloadService;
 import de.westnordost.osmagent.data.meta.MetadataModule;
 import de.westnordost.osmagent.quests.opening_hours.OpeningHoursPerWeek;
 import de.westnordost.osmagent.quests.road_name.AutoCorrectAbbreviationsEditText;
@@ -23,6 +23,6 @@ public interface ApplicationComponent
 	void inject(OpeningHoursPerWeek openingHoursPerWeek);
 	void inject(SerializedSavedState tSerializedSavedState);
 
-	QuestChangesUploader questChangesUploader();
-	QuestDownloader questDownloader();
+	void inject(QuestChangesUploadService questChangesUploadService);
+	void inject(QuestDownloadService questChangesDownloadService);
 }

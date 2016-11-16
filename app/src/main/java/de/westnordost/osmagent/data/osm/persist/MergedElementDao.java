@@ -1,5 +1,8 @@
 package de.westnordost.osmagent.data.osm.persist;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import javax.inject.Inject;
 
 import de.westnordost.osmapi.map.data.Element;
@@ -19,6 +22,32 @@ public class MergedElementDao
 		this.nodeDao = nodeDao;
 		this.wayDao = wayDao;
 		this.relationDao = relationDao;
+	}
+
+	public void putAll(Collection<Element> elements)
+	{
+		Collection<Node> nodes = new ArrayList<>();
+		Collection<Way> ways = new ArrayList<>();;
+		Collection<Relation> relations = new ArrayList<>();;
+
+		for(Element element : elements)
+		{
+			switch(element.getType())
+			{
+				case NODE:
+					nodes.add((Node) element);
+					break;
+				case WAY:
+					ways.add((Way) element);
+					break;
+				case RELATION:
+					relations.add((Relation) element);
+					break;
+			}
+		}
+		if(!nodes.isEmpty()) nodeDao.putAll(nodes);
+		if(!ways.isEmpty()) wayDao.putAll(ways);
+		if(!relations.isEmpty()) relationDao.putAll(relations);
 	}
 
 	public void put(Element element)

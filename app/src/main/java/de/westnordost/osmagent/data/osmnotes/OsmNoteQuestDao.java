@@ -2,7 +2,9 @@ package de.westnordost.osmagent.data.osmnotes;
 
 import android.content.ContentValues;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteStatement;
 
 import java.util.Date;
 
@@ -16,11 +18,23 @@ import de.westnordost.osmapi.notes.Note;
 public class OsmNoteQuestDao extends AQuestDao<OsmNoteQuest>
 {
 	private final Serializer serializer;
+	private final SQLiteStatement add, replace;
 
 	@Inject public OsmNoteQuestDao(SQLiteOpenHelper dbHelper, Serializer serializer)
 	{
 		super(dbHelper);
 		this.serializer = serializer;
+
+		String sql = OsmNoteQuestTable.NAME + " ("+
+				OsmNoteQuestTable.Columns.QUEST_ID+","+
+				OsmNoteQuestTable.Columns.NOTE_ID+","+
+				OsmNoteQuestTable.Columns.QUEST_STATUS+","+
+				OsmNoteQuestTable.Columns.COMMENT+","+
+				OsmNoteQuestTable.Columns.LAST_UPDATE+
+				") values (?,?,?,?,?);";
+		SQLiteDatabase db = dbHelper.getWritableDatabase();
+		add = db.compileStatement("INSERT OR IGNORE INTO " + sql);
+		replace = db.compileStatement("INSERT OR REPLACE INTO " +sql);
 	}
 
 	@Override protected String getTableName()
@@ -51,6 +65,36 @@ public class OsmNoteQuestDao extends AQuestDao<OsmNoteQuest>
 	@Override protected String getQuestStatusColumnName()
 	{
 		return OsmNoteQuestTable.Columns.QUEST_STATUS;
+	}
+
+	@Override protected long executeInsert(OsmNoteQuest quest, boolean replace)
+	{
+		SQLiteStatement stmt = replace ? this.replace : this.add;
+
+		if(quest.getId() != null)
+		{
+			stmt.bindLong(1, quest.getId());
+		}
+		else
+		{
+			stmt.bindNull(1);
+		}
+		stmt.bindLong(2, quest.getNote().id);
+		stmt.bindString(3, quest.getStatus().name());
+		if(quest.getComment() != null)
+		{
+			stmt.bindString(4, quest.getComment());
+		}
+		else
+		{
+			stmt.bindNull(4);
+		}
+
+		stmt.bindLong(5, quest.getLastUpdate().getTime());
+
+		long result = stmt.executeInsert();
+		stmt.clearBindings();
+		return result;
 	}
 
 	@Override protected ContentValues createNonFinalContentValuesFrom(OsmNoteQuest quest)

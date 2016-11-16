@@ -1,9 +1,10 @@
 package de.westnordost.osmagent.data.osm.persist;
 
-import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import java.util.Collection;
 
 import de.westnordost.osmapi.map.data.Element;
 
@@ -16,12 +17,28 @@ public abstract class AOsmElementDao<T extends Element>
 		this.dbHelper = dbHelper;
 	}
 
+	public void putAll(Collection<T> objects)
+	{
+		SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+		db.beginTransaction();
+		for(T object : objects)
+		{
+			executeInsert(object);
+		}
+
+		db.setTransactionSuccessful();
+		db.endTransaction();
+	}
+
 	/* Adds or updates the given object to the database */
 	public void put(T object)
 	{
 		SQLiteDatabase db = dbHelper.getWritableDatabase();
-		db.insertWithOnConflict(getTableName(), null, createContentValuesFrom(object),
-				SQLiteDatabase.CONFLICT_REPLACE);
+		db.beginTransaction();
+		executeInsert(object);
+		db.setTransactionSuccessful();
+		db.endTransaction();
 	}
 
 	public void delete(long id)
@@ -65,6 +82,6 @@ public abstract class AOsmElementDao<T extends Element>
 	protected abstract String getTableName();
 	protected abstract String getIdColumnName();
 
-	protected abstract ContentValues createContentValuesFrom(T object);
+	protected abstract void executeInsert(T object);
 	protected abstract T createObjectFrom(Cursor cursor);
 }

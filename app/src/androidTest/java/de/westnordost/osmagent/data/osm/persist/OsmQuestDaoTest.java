@@ -82,7 +82,7 @@ public class OsmQuestDaoTest extends OsmagentDbTestCase
 		dao.add(quest1);
 		dao.add(quest2);
 
-		assertEquals(1,dao.getAll(null, null, new TestQuestType(), null, null).size());
+		assertEquals(1,dao.getAll(null, null, "TestQuestType", null, null).size());
 		assertEquals(2,dao.getAll(null, null, null, null, null).size());
 	}
 

@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.AnyThread;
 import android.support.annotation.UiThread;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -22,6 +23,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.mapzen.tangram.LngLat;
 import com.mapzen.tangram.MapController;
@@ -36,8 +39,9 @@ import java.util.Map;
 import javax.inject.Inject;
 
 import de.westnordost.osmagent.data.Quest;
+import de.westnordost.osmagent.data.QuestChangesUploadService;
 import de.westnordost.osmagent.data.QuestController;
-import de.westnordost.osmagent.data.QuestDownloader;
+import de.westnordost.osmagent.data.QuestDownloadService;
 import de.westnordost.osmagent.data.QuestGroup;
 import de.westnordost.osmagent.data.VisibleQuestListener;
 import de.westnordost.osmagent.data.osm.ElementGeometry;
@@ -63,6 +67,7 @@ public class MainActivity extends AppCompatActivity implements OsmQuestAnswerLis
 	private static final String MARKER_QUEST_ID = "quest_id";
 	private static final String MARKER_QUEST_GROUP = "quest_group";
 
+	private ProgressBar progressBar;
 	private MapController map;
 	private MapData questsLayer;
 	private MapData geometryLayer;
@@ -71,6 +76,44 @@ public class MainActivity extends AppCompatActivity implements OsmQuestAnswerLis
 	private QuestGroup clickedQuestGroup = null;
 
 	@Inject QuestController questController;
+
+	private final BroadcastReceiver downloadProgressReceiver = new BroadcastReceiver()
+	{
+		@Override public void onReceive(Context context, Intent intent)
+		{
+			switch(intent.getAction())
+			{
+				case QuestDownloadService.ACTION_STARTED:
+					progressBar.setVisibility(View.VISIBLE);
+					progressBar.setIndeterminate(true);
+					break;
+				case QuestDownloadService.ACTION_PROGRESS:
+					float progress = intent.getFloatExtra(QuestDownloadService.ARG_PROGRESS, 0f);
+					progressBar.setIndeterminate(false);
+					progressBar.setProgress((int) (1000 * progress));
+					break;
+				case QuestDownloadService.ACTION_FINISHED:
+					progressBar.setVisibility(View.INVISIBLE);
+					break;
+			}
+		}
+	};
+
+	private final BroadcastReceiver downloadErrorReceiver = new BroadcastReceiver()
+	{
+		@Override public void onReceive(Context context, Intent intent)
+		{
+			Toast.makeText(MainActivity.this, R.string.download_error, Toast.LENGTH_LONG).show();
+		}
+	};
+
+	private final BroadcastReceiver uploadChangesErrorReceiver = new BroadcastReceiver()
+	{
+		@Override public void onReceive(Context context, Intent intent)
+		{
+			Toast.makeText(MainActivity.this, R.string.upload_error, Toast.LENGTH_LONG).show();
+		}
+	};
 
 	@Override protected void onCreate(Bundle savedInstanceState)
 	{
@@ -83,6 +126,9 @@ public class MainActivity extends AppCompatActivity implements OsmQuestAnswerLis
 
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 		setSupportActionBar(toolbar);
+
+		progressBar = (ProgressBar) findViewById(R.id.download_progress);
+		progressBar.setMax(1000);
 
 		MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map_fragment);
 		mapFragment.getMapAsync(new MapView.OnMapReadyCallback()
@@ -139,33 +185,12 @@ public class MainActivity extends AppCompatActivity implements OsmQuestAnswerLis
 				});
 			}
 		});
-
-		questController.setQuestListener(this);
-		questController.setDownloadErrorListener(new QuestDownloader.OnErrorListener()
-		{
-			@Override public void onError()
-			{
-				runOnUiThread(new Runnable()
-				{
-					@Override public void run()
-					{
-						new AlertDialog.Builder(MainActivity.this)
-								.setTitle(R.string.error)
-								.setMessage(R.string.download_error)
-								.setPositiveButton(android.R.string.ok, null)
-								.show();
-					}
-				});
-			}
-		});
 	}
 
 
 	@Override protected void onDestroy()
 	{
 		super.onDestroy();
-		questController.setQuestListener(null);
-		questController.setDownloadErrorListener(null);
 	}
 
 	@Override protected void onStart()
@@ -193,7 +218,7 @@ public class MainActivity extends AppCompatActivity implements OsmQuestAnswerLis
 
 			case R.id.action_download:
 				BoundingBox yangon = SphericalEarthMath.enclosingBoundingBox(new OsmLatLon(16.77428,96.16560),1000);
-				questController.download(yangon, null);
+				questController.download(yangon, 200);
 				return true;
 
 			case R.id.action_upload:
@@ -472,16 +497,41 @@ public class MainActivity extends AppCompatActivity implements OsmQuestAnswerLis
 	{
 		super.onResume();
 
+		questController.onResume(this);
+
 		IntentFilter intentFilter = new IntentFilter();
 		intentFilter.addAction(WifiManager.NETWORK_STATE_CHANGED_ACTION);
 		x = new WifiReceiver();
 		registerReceiver(x, intentFilter);
+
+		LocalBroadcastManager localBroadcaster = LocalBroadcastManager.getInstance(this);
+
+		IntentFilter downloadErrFilter = new IntentFilter(QuestDownloadService.ACTION_ERROR);
+		localBroadcaster.registerReceiver(downloadErrorReceiver, downloadErrFilter);
+
+		IntentFilter uploadChangesErrFilter = new IntentFilter(QuestChangesUploadService.ACTION_ERROR);
+		localBroadcaster.registerReceiver(uploadChangesErrorReceiver, uploadChangesErrFilter);
+
+		IntentFilter downloadProgressFilter = new IntentFilter();
+		downloadProgressFilter.addAction(QuestDownloadService.ACTION_STARTED);
+		downloadProgressFilter.addAction(QuestDownloadService.ACTION_PROGRESS);
+		downloadProgressFilter.addAction(QuestDownloadService.ACTION_FINISHED);
+		localBroadcaster.registerReceiver(downloadProgressReceiver, downloadProgressFilter);
 	}
 
 	@Override public void onPause()
 	{
 		super.onPause();
+
+		questController.onPause();
+
 		unregisterReceiver(x);
+
+		LocalBroadcastManager localBroadcaster = LocalBroadcastManager.getInstance(this);
+
+		localBroadcaster.unregisterReceiver(downloadErrorReceiver);
+		localBroadcaster.unregisterReceiver(uploadChangesErrorReceiver);
+		localBroadcaster.unregisterReceiver(downloadProgressReceiver);
 	}
 
 	private class WifiReceiver extends BroadcastReceiver

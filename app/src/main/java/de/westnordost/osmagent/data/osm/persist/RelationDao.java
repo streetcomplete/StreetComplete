@@ -1,9 +1,9 @@
 package de.westnordost.osmagent.data.osm.persist;
 
-
-import android.content.ContentValues;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteStatement;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,11 +20,21 @@ import de.westnordost.osmapi.map.data.RelationMember;
 public class RelationDao extends AOsmElementDao<Relation>
 {
 	private final Serializer serializer;
+	private final SQLiteStatement insert;
 
 	@Inject public RelationDao(SQLiteOpenHelper dbHelper, Serializer serializer)
 	{
 		super(dbHelper);
 		this.serializer = serializer;
+
+		String sql = "INSERT OR REPLACE INTO " + RelationTable.NAME + " ("+
+				RelationTable.Columns.ID+","+
+				RelationTable.Columns.VERSION+","+
+				RelationTable.Columns.MEMBERS+","+
+				RelationTable.Columns.TAGS+
+				") values (?,?,?,?);";
+		SQLiteDatabase db = dbHelper.getWritableDatabase();
+		insert = db.compileStatement(sql);
 	}
 
 	@Override protected String getTableName()
@@ -42,21 +52,24 @@ public class RelationDao extends AOsmElementDao<Relation>
 		return Relation.Type.RELATION.name();
 	}
 
-	@Override protected ContentValues createContentValuesFrom(Relation relation)
+	@Override protected void executeInsert(Relation relation)
 	{
-		ContentValues values = new ContentValues();
-		values.put(RelationTable.Columns.ID, relation.getId());
-		values.put(RelationTable.Columns.VERSION, relation.getVersion());
-		values.put(RelationTable.Columns.MEMBERS,
-				serializer.toBytes(new ArrayList<>(relation.getMembers())));
-
+		insert.bindLong(1, relation.getId());
+		insert.bindLong(2, relation.getVersion());
+		insert.bindBlob(3, serializer.toBytes(new ArrayList<>(relation.getMembers())));
 		if(relation.getTags() != null)
 		{
 			HashMap<String,String> map = new HashMap<>();
 			map.putAll(relation.getTags());
-			values.put(RelationTable.Columns.TAGS, serializer.toBytes(map));
+			insert.bindBlob(4, serializer.toBytes(map));
 		}
-		return values;
+		else
+		{
+			insert.bindNull(4);
+		}
+
+		insert.executeInsert();
+		insert.clearBindings();
 	}
 
 	@Override protected Relation createObjectFrom(Cursor cursor)

@@ -2,9 +2,12 @@ package de.westnordost.osmagent.data.osmnotes;
 
 import android.content.SharedPreferences;
 import android.util.Log;
-import android.util.LongSparseArray;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 import javax.inject.Inject;
@@ -18,7 +21,6 @@ import de.westnordost.osmapi.notes.Note;
 import de.westnordost.osmapi.notes.NoteComment;
 import de.westnordost.osmapi.notes.NotesDao;
 
-
 public class OsmNotesDownload
 {
 	private static final String TAG = "NotesDownload";
@@ -28,12 +30,6 @@ public class OsmNotesDownload
 	private final OsmNoteQuestDao noteQuestDB;
 	private final CreateNoteDao createNoteDB;
 	private final SharedPreferences preferences;
-
-	private VisibleOsmNoteQuestListener questListener;
-
-	private int visibleAmount;
-	private int newAmount;
-	private int hiddenAmount;
 
 	@Inject public OsmNotesDownload(
 			NotesDao noteServer, NoteDao noteDB, OsmNoteQuestDao noteQuestDB,
@@ -46,92 +42,87 @@ public class OsmNotesDownload
 		this.preferences = preferences;
 	}
 
-	public void setQuestListener(VisibleOsmNoteQuestListener questListener)
-	{
-		this.questListener = questListener;
-	}
-
-	public int getVisibleQuestsRetrieved()
-	{
-		return visibleAmount;
-	}
-
 	public Set<LatLon> download(final BoundingBox bbox, final Long userId, int max)
 	{
-		visibleAmount = 0;
-		newAmount = 0;
-		hiddenAmount = 0;
 		final Set<LatLon> positions = new HashSet<>();
-
-		final LongSparseArray<OsmNoteQuest> oldQuestsByNoteId = new LongSparseArray<>();
-		for(OsmNoteQuest quest : noteQuestDB.getAll(bbox, null))
-		{
-			oldQuestsByNoteId.put(quest.getNote().id, quest);
-		}
+		final Map<Long,Long> previousQuestIdsByNoteId = getPreviousQuestIdsByNoteId(bbox);
+		final Collection<Note> notes = new ArrayList<>();
+		final Collection<OsmNoteQuest> quests = new ArrayList<>();
+		final Collection<OsmNoteQuest> hiddenQuests = new ArrayList<>();
 
 		noteServer.getAll(bbox, new Handler<Note>()
 		{
 			@Override public void handle(Note note)
 			{
+
 				OsmNoteQuest quest = new OsmNoteQuest(note);
-
-				positions.add(note.position);
-
-				boolean hideNote = false;
-
-				/* many notes are created to report problems on the map that cannot be resolved
-				 * through an on-site survey rather than questions from other (armchair) mappers
-				 * that want something cleared up on-site.
-				 * Likely, if something is posed as a question, the reporter expects someone to
-				 * answer/comment on it, so let's only show these */
-				boolean showNonQuestionNotes = preferences.getBoolean(Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS, false);
-				hideNote |= !probablyContainsQuestion(note) && !showNonQuestionNotes;
-
-				/* hide a note if he already contributed to it. This can also happen from outside
-				   this application, which is why we need to overwrite its quest status. */
-				hideNote |= containsCommentFromUser(userId, note);
-
-				if(hideNote)
+				if(isNoteHidden(userId, note))
 				{
 					quest.setStatus(QuestStatus.HIDDEN);
-					noteDB.put(note);
-					noteQuestDB.replace(quest);
-					hiddenAmount++;
+					hiddenQuests.add(quest);
 				}
 				else
 				{
-					noteDB.put(note);
-					if(noteQuestDB.add(quest))
-					{
-						if(questListener != null)
-						{
-							questListener.onQuestCreated(quest);
-						}
-						newAmount++;
-					}
-					visibleAmount++;
+					quests.add(quest);
 				}
 
-				oldQuestsByNoteId.remove(quest.getNote().id);
+				notes.add(note);
+				positions.add(note.position);
+				previousQuestIdsByNoteId.remove(note.id);
 			}
 		}, max, 0);
 
-		int closedAmount = oldQuestsByNoteId.size();
+		noteDB.putAll(notes);
+		int hiddenAmount = noteQuestDB.replaceAll(hiddenQuests);
+		int newAmount = noteQuestDB.addAll(quests);
+		int visibleAmount = quests.size();
 
 		/* delete note quests created in a previous run in the given bounding box that are not
 		   found again -> these notes have been closed/solved/removed */
-		removeObsoleteNoteQuests(oldQuestsByNoteId);
+		if(previousQuestIdsByNoteId.size() > 0)
+		{
+			noteQuestDB.deleteAll(previousQuestIdsByNoteId.values());
+			noteDB.deleteUnreferenced();
+		}
 
 		for(CreateNote createNote : createNoteDB.getAll(bbox))
 		{
 			positions.add(createNote.position);
 		}
 
+		int closedAmount = previousQuestIdsByNoteId.size();
 		Log.i(TAG, "Successfully added " + newAmount + " new and removed " + closedAmount +
 				" closed notes (" + hiddenAmount + " of " + (hiddenAmount + visibleAmount) +
 				" notes are hidden)");
 
 		return positions;
+	}
+
+	private Map<Long,Long> getPreviousQuestIdsByNoteId(BoundingBox bbox)
+	{
+		Map<Long, Long> result = new HashMap<>();
+		for(OsmNoteQuest quest : noteQuestDB.getAll(bbox, null))
+		{
+			result.put(quest.getNote().id, quest.getId());
+		}
+		return result;
+	}
+
+	private boolean isNoteHidden(Long userId, Note note)
+	{
+		boolean result = false;
+				/* many notes are created to report problems on the map that cannot be resolved
+				 * through an on-site survey rather than questions from other (armchair) mappers
+				 * that want something cleared up on-site.
+				 * Likely, if something is posed as a question, the reporter expects someone to
+				 * answer/comment on it, so let's only show these */
+		boolean showNonQuestionNotes = preferences.getBoolean(Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS, false);
+		result |= !probablyContainsQuestion(note) && !showNonQuestionNotes;
+
+				/* hide a note if he already contributed to it. This can also happen from outside
+				   this application, which is why we need to overwrite its quest status. */
+		result |= containsCommentFromUser(userId, note);
+		return result;
 	}
 
 	private boolean containsCommentFromUser(Long userId, Note note)
@@ -165,25 +156,5 @@ public class OsmNotesDownload
 
 		String text = note.comments.get(0).text;
 		return text.matches(".*" + questionMarksAroundTheWorld + ".*");
-	}
-
-	private void removeObsoleteNoteQuests(LongSparseArray<OsmNoteQuest> oldQuests)
-	{
-		if(oldQuests.size() > 0)
-		{
-			for (int i=0; i<oldQuests.size(); ++i)
-			{
-				OsmNoteQuest quest = oldQuests.valueAt(i);
-				if(noteQuestDB.delete(quest.getId()))
-				{
-					if(questListener != null)
-					{
-						questListener.onQuestRemoved(quest);
-					}
-				}
-
-			}
-			noteDB.deleteUnreferenced();
-		}
 	}
 }

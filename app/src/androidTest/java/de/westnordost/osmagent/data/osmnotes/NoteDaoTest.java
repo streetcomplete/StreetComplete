@@ -1,5 +1,7 @@
 package de.westnordost.osmagent.data.osmnotes;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.ListIterator;
 
@@ -26,6 +28,21 @@ public class NoteDaoTest extends OsmagentDbTestCase
 		dao.put(note);
 		Note dbNote = dao.get(note.id);
 		checkEqual(note, dbNote);
+	}
+
+	public void testPutAll()
+	{
+		Collection<Note> notes = new ArrayList<>();
+		Note n1 = createNote();
+		n1.id = 1;
+		notes.add(createNote());
+		Note n2 = createNote();
+		n2.id = 2;
+		notes.add(n2);
+
+		dao.putAll(notes);
+		assertNotNull(dao.get(1));
+		assertNotNull(dao.get(2));
 	}
 
 	public void testPutReplace()
