@@ -156,9 +156,8 @@ public class OsmQuestDownload
 				" (Total: " + visibleQuestsByQuestType + ")");
 
 		visibleQuests += visibleQuestsByQuestType;
-		dispatchProgress(questType);
-
 		++downloadedQuestTypes;
+		dispatchProgress(questType);
 	}
 
 	private boolean mayCreateQuestFrom(OverpassQuestType questType, Element element, ElementGeometry geometry)
