@@ -88,18 +88,19 @@ public class AQuestDaoTest extends AndroidDbTestCase
 
 	public void testAddNoOverwrite()
 	{
-		dao.add(createQuest(3,0,0, QuestStatus.HIDDEN));
-		dao.add(createQuest(3,0,0, QuestStatus.NEW));
+		assertTrue(dao.add(createQuest(3,0,0, QuestStatus.HIDDEN)));
+		assertFalse(dao.add(createQuest(3,0,0, QuestStatus.NEW)));
 
 		assertEquals(QuestStatus.HIDDEN, dao.get(3).getStatus());
 	}
 
 	public void testReplace()
 	{
-		dao.add(createQuest(3,0,0, QuestStatus.HIDDEN));
-		dao.replace(createQuest(3,0,0, QuestStatus.NEW));
+		assertTrue(dao.add(createQuest(3,0,0, QuestStatus.HIDDEN)));
+		assertTrue(dao.replace(createQuest(3,0,0, QuestStatus.NEW)));
 
 		assertEquals(QuestStatus.NEW, dao.get(3).getStatus());
+		assertEquals(1,dao.getAll(null,null).size());
 	}
 
 	public void testDelete()
@@ -197,11 +198,12 @@ public class AQuestDaoTest extends AndroidDbTestCase
 			return LON_COL;
 		}
 
-		@Override protected long executeInsert(Quest quest)
+		@Override protected long executeInsert(Quest quest, boolean replace)
 		{
+			String orWhat = replace ? "REPLACE" : "IGNORE";
 			SQLiteDatabase db = dbHelper.getWritableDatabase();
 			SQLiteStatement insert = db.compileStatement(
-					"INSERT OR IGNORE INTO " + TABLE_NAME +
+					"INSERT OR "+orWhat+" INTO " + TABLE_NAME +
 							"("+ID_COL+","+QS_COL+","+LAT_COL+","+LON_COL+") VALUES (?,?,?,?)");
 
 			insert.bindLong(1, quest.getId());

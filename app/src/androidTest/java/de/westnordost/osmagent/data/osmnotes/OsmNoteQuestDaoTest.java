@@ -59,6 +59,25 @@ public class OsmNoteQuestDaoTest extends OsmagentDbTestCase
 		assertEquals(1, quests.size());
 		assertEquals(QuestStatus.NEW, quests.get(0).getStatus());
 		assertFalse(result);
+		assertNull(questForSameNote.getId());
+	}
+
+	public void testAddReplace()
+	{
+		Note note = NoteDaoTest.createNote();
+		noteDao.put(note);
+
+		OsmNoteQuest quest = new OsmNoteQuest(note);
+		dao.add(quest);
+
+		OsmNoteQuest questForSameNote = new OsmNoteQuest(note);
+		questForSameNote.setStatus(QuestStatus.HIDDEN);
+		boolean result = dao.replace(questForSameNote);
+
+		List<OsmNoteQuest> quests = dao.getAll(null, null);
+		assertEquals(1, quests.size());
+		assertEquals(QuestStatus.HIDDEN, quests.get(0).getStatus());
+		assertTrue(result);
 	}
 
 	private void checkEqual(OsmNoteQuest quest, OsmNoteQuest dbQuest)

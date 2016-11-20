@@ -35,7 +35,7 @@ public class NoteDaoTest extends OsmagentDbTestCase
 		Collection<Note> notes = new ArrayList<>();
 		Note n1 = createNote();
 		n1.id = 1;
-		notes.add(createNote());
+		notes.add(n1);
 		Note n2 = createNote();
 		n2.id = 2;
 		notes.add(n2);
