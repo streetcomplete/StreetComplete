@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/map_fragment"
-        android:name="de.westnordost.osmagent.tangram.MapFragment"
+        android:name="de.westnordost.osmagent.tangram.OsmagentMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
@@ -19,29 +19,27 @@
         <!-- the toolbar somehow always wants to be in front in its layout, so let's ban it into
              a sub frame layout -->
         <include layout="@layout/toolbar"
-                 android:layout_width="match_parent"
-                 android:layout_height="wrap_content"/>
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"/>
 
-        <ProgressBar
-            android:id="@+id/download_progress"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="-5dp"
-            android:layout_marginBottom="-5dp"
-            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-            android:background="@color/colorPrimary"
-            android:visibility="gone"
-            android:indeterminate="true"/>
-
-    </LinearLayout>
-
-    <android.support.design.widget.CoordinatorLayout
-        android:id="@+id/map_bottom_sheet_container"
+    <ProgressBar
+        android:id="@+id/download_progress"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#00000000">
-    <!-- If I do not set any background color here, the layout will leave a few pixels free at the
-         bottom on my Android 6.0 emulator; so, setting to transparent-->
+        android:layout_height="wrap_content"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:visibility="visible"
+        android:indeterminate="false"
+        android:minHeight="4dp"/>
+
+</LinearLayout>
+
+<android.support.design.widget.CoordinatorLayout
+    android:id="@+id/map_bottom_sheet_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#00000000">
+<!-- If I do not set any background color here, the layout will leave a few pixels free at the
+     bottom on my Android 6.0 emulator; so, setting to transparent-->
     </android.support.design.widget.CoordinatorLayout>
 
  </FrameLayout >

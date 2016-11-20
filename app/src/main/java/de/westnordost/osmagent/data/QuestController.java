@@ -1,11 +1,11 @@
 package de.westnordost.osmagent.data;
 
-import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
+import android.content.ServiceConnection;
 import android.os.Bundle;
-import android.support.v4.content.LocalBroadcastManager;
+import android.os.IBinder;
 
 import java.util.List;
 
@@ -25,6 +25,8 @@ import de.westnordost.osmagent.quests.note_discussion.NoteDiscussionForm;
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
 
+import static android.content.Context.BIND_AUTO_CREATE;
+
 public class QuestController
 {
 	private final OsmQuestDao osmQuestDB;
@@ -34,7 +36,23 @@ public class QuestController
 	private final CreateNoteDao createNoteDB;
 	private final Context context;
 
-	private VisibleQuestListener listener;
+	private VisibleQuestRelay relay;
+
+	private boolean downloadServiceIsBound;
+	private QuestDownloadService.Interface downloadService;
+	private ServiceConnection downloadServiceConnection = new ServiceConnection()
+	{
+		public void onServiceConnected(ComponentName className, IBinder service)
+		{
+			downloadService = ((QuestDownloadService.Interface)service);
+			downloadService.setQuestListener(relay);
+		}
+
+		public void onServiceDisconnected(ComponentName className)
+		{
+			downloadService = null;
+		}
+	};
 
 	@Inject public QuestController(OsmQuestDao osmQuestDB, MergedElementDao osmElementDB,
 								   ElementGeometryDao geometryDB, OsmNoteQuestDao osmNoteQuestDB,
@@ -46,47 +64,23 @@ public class QuestController
 		this.osmNoteQuestDB = osmNoteQuestDB;
 		this.createNoteDB = createNoteDB;
 		this.context = context;
+		this.relay = new VisibleQuestRelay();
 	}
 
-	public void onResume(VisibleQuestListener questListener)
+	public void onStart(VisibleQuestListener questListener)
 	{
-		setQuestListener(questListener);
-
-		LocalBroadcastManager localBroadcaster = LocalBroadcastManager.getInstance(context);
-
-		IntentFilter downloadQuestFilter = new IntentFilter(QuestDownloadService.ACTION_JUST_IN);
-		localBroadcaster.registerReceiver(questTypeDownloadedReceiver, downloadQuestFilter);
-
-		IntentFilter downloadNotesFilter = new IntentFilter(QuestDownloadService.ACTION_JUST_IN_NOTES);
-		localBroadcaster.registerReceiver(notesDownloadedReceiver, downloadNotesFilter);
+		relay.setListener(questListener);
+		downloadServiceIsBound = context.bindService(
+				new Intent(context, QuestDownloadService.class),
+				downloadServiceConnection, BIND_AUTO_CREATE);
 	}
 
-	public void onPause()
+	public void onStop()
 	{
-		setQuestListener(null);
-
-		LocalBroadcastManager localBroadcaster = LocalBroadcastManager.getInstance(context);
-
-		localBroadcaster.unregisterReceiver(questTypeDownloadedReceiver);
-		localBroadcaster.unregisterReceiver(notesDownloadedReceiver);
+		relay.setListener(null);
+		if(downloadServiceIsBound) context.unbindService(downloadServiceConnection);
+		if(downloadService != null) downloadService.setQuestListener(null);
 	}
-
-	private BroadcastReceiver questTypeDownloadedReceiver =	new BroadcastReceiver()
-	{
-		@Override public void onReceive(Context context, Intent intent)
-		{
-			String questTypeName = intent.getStringExtra(QuestDownloadService.ARG_QUEST_TYPE);
-			retrieveOsmQuests(QuestDownloadService.getBBox(intent), questTypeName);
-		}
-	};
-
-	private BroadcastReceiver notesDownloadedReceiver =	new BroadcastReceiver()
-	{
-		@Override public void onReceive(Context context, Intent intent)
-		{
-			retrieveOsmNotes(QuestDownloadService.getBBox(intent));
-		}
-	};
 
 	/** Create a note for the given OSM Quest instead of answering it. The quest will turn
 	 *  invisible. */
@@ -115,7 +109,7 @@ public class QuestController
 				for(OsmQuest quest : quests)
 				{
 					osmQuestDB.delete(quest.getId());
-					listener.onQuestRemoved(quest);
+					relay.onOsmQuestRemoved(quest.getId());
 				}
 				osmElementDB.deleteUnreferenced();
 				geometryDB.deleteUnreferenced();
@@ -142,7 +136,7 @@ public class QuestController
 						q.setChanges(changes);
 						q.setStatus(QuestStatus.ANSWERED);
 						osmQuestDB.update(q);
-						listener.onQuestRemoved(q);
+						relay.onOsmQuestRemoved(q.getId());
 					}
 					else
 					{
@@ -160,7 +154,7 @@ public class QuestController
 						q.setComment(comment);
 						q.setStatus(QuestStatus.ANSWERED);
 						osmNoteQuestDB.update(q);
-						listener.onQuestRemoved(q);
+						relay.onNoteQuestRemoved(q.getId());
 					}
 					else
 					{
@@ -184,21 +178,21 @@ public class QuestController
 					OsmQuest q = osmQuestDB.get(questId);
 					q.setStatus(QuestStatus.HIDDEN);
 					osmQuestDB.update(q);
-					listener.onQuestRemoved(q);
+					relay.onOsmQuestRemoved(q.getId());
 				}
 				else if(group == QuestGroup.OSM_NOTE)
 				{
 					OsmNoteQuest q = osmNoteQuestDB.get(questId);
 					q.setStatus(QuestStatus.HIDDEN);
 					osmNoteQuestDB.update(q);
-					listener.onQuestRemoved(q);
+					relay.onNoteQuestRemoved(q.getId());
 				}
 			}
 		}.start();
 	}
 
 	/** Retrieve the given quest from local database asynchronously, including the element / note. */
-	public void retrieve(final long questId, final QuestGroup group)
+	public void retrieve(final QuestGroup group, final long questId)
 	{
 		new Thread()
 		{
@@ -209,11 +203,11 @@ public class QuestController
 					case OSM:
 						OsmQuest osmQuest = osmQuestDB.get(questId);
 						Element element = osmElementDB.get(osmQuest.getElementType(), osmQuest.getElementId());
-						listener.onQuestCreated(osmQuest, element);
+						relay.onQuestCreated(osmQuest, element);
 						break;
 					case OSM_NOTE:
 						OsmNoteQuest osmNoteQuest = osmNoteQuestDB.get(questId);
-						listener.onQuestCreated(osmNoteQuest);
+						relay.onQuestCreated(osmNoteQuest);
 						break;
 				}
 			}
@@ -230,39 +224,11 @@ public class QuestController
 			{
 				for (OsmQuest q : osmQuestDB.getAll(bbox, QuestStatus.NEW))
 				{
-					listener.onQuestCreated(q, null);
+					relay.onQuestCreated(q, null);
 				}
 				for (OsmNoteQuest q : osmNoteQuestDB.getAll(bbox, QuestStatus.NEW))
 				{
-					listener.onQuestCreated(q);
-				}
-			}
-		}.start();
-	}
-
-	private void retrieveOsmQuests(final BoundingBox bbox, final String questTypeName)
-	{
-		new Thread()
-		{
-			@Override public void run()
-			{
-				for (OsmQuest q : osmQuestDB.getAll(bbox, QuestStatus.NEW, questTypeName, null, null))
-				{
-					listener.onQuestCreated(q, null);
-				}
-			}
-		}.start();
-	}
-
-	private void retrieveOsmNotes(final BoundingBox bbox)
-	{
-		new Thread()
-		{
-			@Override public void run()
-			{
-				for (OsmNoteQuest q : osmNoteQuestDB.getAll(bbox, QuestStatus.NEW))
-				{
-					listener.onQuestCreated(q);
+					relay.onQuestCreated(q);
 				}
 			}
 		}.start();
@@ -270,7 +236,7 @@ public class QuestController
 
 	/** Download quests in the given bounding box asynchronously. maxVisibleQuests = null for no
 	 *  limit. Multiple calls to this method will cancel the previous download job. */
-	public void download(BoundingBox bbox, Integer maxVisibleQuests)
+	public void download(BoundingBox bbox, Integer maxVisibleQuests, boolean manualStart)
 	{
 		Intent intent = new Intent(context, QuestDownloadService.class);
 		QuestDownloadService.putBBox(bbox, intent);
@@ -278,20 +244,22 @@ public class QuestController
 		{
 			intent.putExtra(QuestDownloadService.ARG_MAX_VISIBLE_QUESTS, maxVisibleQuests);
 		}
+		if(manualStart)
+		{
+			intent.putExtra(QuestDownloadService.ARG_MANUAL, true);
+		}
 		context.startService(intent);
 	}
 
-
+	/** @return true if a quest download triggered by the user is running */
+	public boolean isManualDownloadRunning()
+	{
+		return downloadService != null && downloadService.isManualDownloadRunning();
+	}
 
 	/** Collect and upload all changes made by the user */
 	public void upload()
 	{
 		context.startService(new Intent(context, QuestChangesUploadService.class));
-	}
-
-	/** Add object to be notified whenever quests become visible / invisible */
-	private void setQuestListener(VisibleQuestListener listener)
-	{
-		this.listener = listener;
 	}
 }

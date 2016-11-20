@@ -2,7 +2,6 @@
     <string name="app_name" translatable="false">osmagent</string>
 
     <string name="action_settings">Settings</string>
-    <string name="getdata">Get Data</string>
 
     <string name="oauth_communication_error">Unable to reach the authorization server</string>
     <string name="loading">Loading</string>
@@ -106,15 +105,18 @@
     <string name="confirmation_discard_positive">Discard</string>
     <string name="confirmation_discard_negative">Cancel</string>
 
-    <string name="action_download">Download Quests</string>
-    <string name="action_upload">Upload Changes</string>
+    <string name="action_download">Scan for Quests here</string>
+    <string name="action_upload">Upload Answers</string>
 
-    <string name="error">Error</string>
     <string name="no_changes">You left the form empty</string>
-    <string name="delete">delete</string>
     <string name="close">close</string>
-    <string name="download_error">Error while downloading quests.\nPlease check the log.</string>
-    <string name="upload_error">Error while uploading changes.\nPlease check the log.</string>
+    <string name="download_error">Error while scanning for quests.\nPlease check the log</string>
+    <string name="upload_error">Error while uploading answers.\nPlease check the log</string>
+    <string name="cannot_find_bbox">Can\'t scan here. Try to zoom in further</string>
+    <string name="download_area_too_big">Please zoom in further</string>
+
+    <string name="confirmation_cancel_prev_download_title">Cancel the current search and scan here instead?</string>
+    <string name="notification_downloading">Scanning for Quests</string>
 
 
 </resources>

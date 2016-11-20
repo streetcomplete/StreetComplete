@@ -49,6 +49,16 @@ public class SphericalEarthMath
 		return createTranslated(Math.toDegrees(φ2), Math.toDegrees(λ2));
 	}
 
+	public static double enclosedArea(BoundingBox bbox)
+	{
+		LatLon min = bbox.getMin();
+		LatLon max = bbox.getMax();
+		LatLon minLatMaxLon = new OsmLatLon(min.getLatitude(), max.getLongitude());
+		LatLon maxLatMinLon = new OsmLatLon(max.getLatitude(), min.getLongitude());
+
+		return distance(min, minLatMaxLon) * distance(min, maxLatMinLon);
+	}
+
 	private static LatLon createTranslated(double lat, double lon)
 	{
 		if(lon > 180) lon -= 360;

@@ -4,10 +4,8 @@ import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 import javax.inject.Inject;
 
@@ -16,6 +14,7 @@ import de.westnordost.osmagent.data.QuestTypes;
 import de.westnordost.osmagent.data.osm.ElementGeometry;
 import de.westnordost.osmagent.data.osm.OsmQuest;
 import de.westnordost.osmagent.data.osm.OverpassQuestType;
+import de.westnordost.osmagent.data.osm.VisibleOsmQuestListener;
 import de.westnordost.osmagent.data.osm.persist.ElementGeometryDao;
 import de.westnordost.osmagent.data.osm.persist.MergedElementDao;
 import de.westnordost.osmagent.data.osm.persist.OsmQuestDao;
@@ -34,25 +33,9 @@ public class OsmQuestDownload
 	private final ElementGeometryDao geometryDB;
 	private final MergedElementDao elementDB;
 	private final OsmQuestDao osmQuestDB;
-	private final QuestTypes questTypeList;
 
 	// listener
-	private ProgressListener progressListener;
-	public interface ProgressListener
-	{
-		void onProgress(float progress, QuestType questType);
-	}
-
-	// state
-	private boolean called = false;
-
-	private int visibleQuests;
-	private int downloadedQuestTypes;
-
-	// args
-	private BoundingBox bbox;
-	private Set<LatLon> blacklistedPositions;
-	private Integer maxVisibleQuests;
+	private VisibleOsmQuestListener questListener;
 
 	@Inject public OsmQuestDownload(
 			OverpassMapDataDao overpassServer, ElementGeometryDao geometryDB,
@@ -63,45 +46,89 @@ public class OsmQuestDownload
 		this.geometryDB = geometryDB;
 		this.elementDB = elementDB;
 		this.osmQuestDB = osmQuestDB;
-		this.questTypeList = questTypeList;
 	}
 
-	public void setProgressListener(ProgressListener progressListener)
+	public void setQuestListener(VisibleOsmQuestListener listener)
 	{
-		this.progressListener = progressListener;
+		this.questListener = listener;
 	}
 
-	public void download(BoundingBox bbox, Set<LatLon> blacklistedPositions,
-						 Integer maxVisibleQuests, AtomicBoolean cancelState)
+	public int download(final OverpassQuestType questType, BoundingBox bbox,
+						  final Set<LatLon> blacklistedPositions)
 	{
-		if(called) throw new IllegalStateException("May only be called once");
-		else called = true;
+		final ArrayList<ElementGeometryDao.Row> geometryRows = new ArrayList<>();
+		final Map<OsmElementKey,Element> elements = new HashMap<>();
+		final ArrayList<OsmQuest> quests = new ArrayList<>();
+		final Map<OsmElementKey, Long> previousQuests = getPreviousQuestsIdsByElementKey(questType, bbox);
 
-		this.bbox = bbox;
-		this.blacklistedPositions = blacklistedPositions;
-		this.maxVisibleQuests = maxVisibleQuests;
-
-		List<QuestType> questTypes = questTypeList.getQuestTypesSortedByImportance();
-
-		try
+		String oql = questType.getOverpassQuery(bbox);
+		overpassServer.get(oql, new MapDataWithGeometryHandler()
 		{
-			for(QuestType questType : questTypes)
+			@Override public void handle(Element element, ElementGeometry geometry)
 			{
-				if(!(questType instanceof OverpassQuestType)) continue;
-				if(cancelState.get()) break;
-				if(maxVisibleQuests != null && visibleQuests >= maxVisibleQuests) break;
+				if(!mayCreateQuestFrom(questType, element, geometry, blacklistedPositions)) return;
 
-				downloadQuestType((OverpassQuestType) questType);
+				Element.Type elementType = element.getType();
+				long elementId = element.getId();
+
+				OsmElementKey elementKey = new OsmElementKey(elementType, elementId);
+
+				geometryRows.add(new ElementGeometryDao.Row(elementType, elementId, geometry));
+				elements.put(elementKey, element);
+				quests.add(new OsmQuest(questType, elementType, elementId, geometry));
+
+				previousQuests.remove(elementKey);
+			}
+		});
+
+		// geometry and elements must be put into DB first because quests have foreign keys on it
+		geometryDB.putAll(geometryRows);
+		elementDB.putAll(elements.values());
+
+		int newQuestsByQuestType = osmQuestDB.addAll(quests);
+
+		if(questListener != null)
+		{
+			for (OsmQuest quest : quests)
+			{
+				// it is null if this quest is already in the DB, so don't call onQuestCreated
+				if(quest.getId() == null) continue;
+
+				OsmElementKey k = new OsmElementKey(quest.getElementType(), quest.getElementId());
+				questListener.onQuestCreated(quest, elements.get(k));
 			}
 		}
-		finally
+
+		if(!previousQuests.isEmpty())
 		{
-			geometryDB.deleteUnreferenced();
-			elementDB.deleteUnreferenced();
+			if(questListener != null)
+			{
+				for (Long questId : previousQuests.values())
+				{
+					questListener.onOsmQuestRemoved(questId);
+				}
+			}
+
+			osmQuestDB.deleteAll(previousQuests.values());
 		}
+
+		// note: this could be done after ALL osm quest types have been downloaded if this
+		// turns out to be slow if done for every quest type
+		geometryDB.deleteUnreferenced();
+		elementDB.deleteUnreferenced();
+
+		int visibleQuestsByQuestType = quests.size();
+		int obsoleteAmount = previousQuests.size();
+		Log.i(TAG, getQuestTypeAsLogString(questType) + ": " +
+				"Added " + newQuestsByQuestType + " new and " +
+				"removed " + obsoleteAmount + " already resolved quests." +
+				" (Total: " + visibleQuestsByQuestType + ")");
+
+		return visibleQuestsByQuestType;
 	}
 
-	private Map<OsmElementKey, Long> getPreviousQuestsIdsByElementKey(OverpassQuestType questType)
+	private Map<OsmElementKey, Long> getPreviousQuestsIdsByElementKey(
+			OverpassQuestType questType, BoundingBox bbox)
 	{
 		String questTypeName = questType.getClass().getSimpleName();
 		Map<OsmElementKey, Long> result = new HashMap<>();
@@ -112,55 +139,8 @@ public class OsmQuestDownload
 		return result;
 	}
 
-	private void downloadQuestType(final OverpassQuestType questType)
-	{
-		final ArrayList<ElementGeometryDao.Row> geometryRows = new ArrayList<>();
-		final ArrayList<Element> elements = new ArrayList<>();
-		final ArrayList<OsmQuest> quests = new ArrayList<>();
-		final Map<OsmElementKey, Long> previousQuests = getPreviousQuestsIdsByElementKey(questType);
-
-		String oql = questType.getOverpassQuery(bbox);
-		overpassServer.get(oql, new MapDataWithGeometryHandler()
-		{
-			@Override public void handle(Element element, ElementGeometry geometry)
-			{
-				if(!mayCreateQuestFrom(questType, element, geometry)) return;
-
-				Element.Type elementType = element.getType();
-				long elementId = element.getId();
-
-				geometryRows.add(new ElementGeometryDao.Row(elementType, elementId, geometry));
-				elements.add(element);
-				quests.add(new OsmQuest(questType, elementType, elementId, geometry));
-
-				previousQuests.remove(new OsmElementKey(elementType, elementId));
-			}
-		});
-
-		// geometry and elements must be put into DB first because quests have foreign keys on it
-		geometryDB.putAll(geometryRows);
-		elementDB.putAll(elements);
-
-		int newQuestsByQuestType = osmQuestDB.addAll(quests);
-
-		if(!previousQuests.isEmpty())
-		{
-			osmQuestDB.deleteAll(previousQuests.values());
-		}
-
-		int visibleQuestsByQuestType = quests.size();
-		int obsoleteAmount = previousQuests.size();
-		Log.i(TAG, getQuestTypeAsLogString(questType) + ": " +
-				"Added " + newQuestsByQuestType + " new and " +
-				"removed " + obsoleteAmount + " already resolved quests." +
-				" (Total: " + visibleQuestsByQuestType + ")");
-
-		visibleQuests += visibleQuestsByQuestType;
-		++downloadedQuestTypes;
-		dispatchProgress(questType);
-	}
-
-	private boolean mayCreateQuestFrom(OverpassQuestType questType, Element element, ElementGeometry geometry)
+	private boolean mayCreateQuestFrom(OverpassQuestType questType, Element element,
+									   ElementGeometry geometry, Set<LatLon> blacklistedPositions)
 	{
 		if(!questType.appliesTo(element)) return false;
 
@@ -185,25 +165,6 @@ public class OsmQuestDownload
 		}
 		return true;
 	}
-
-	private void dispatchProgress(OverpassQuestType questType)
-	{
-		if(progressListener == null) return;
-
-		int questTypes = questTypeList.getAmount();
-
-		float progressByQuestTypes = (float) downloadedQuestTypes / questTypes;
-
-		float progressByMaxVisible = 0;
-		if(maxVisibleQuests != null)
-		{
-			progressByMaxVisible = (float) visibleQuests / maxVisibleQuests;
-		}
-
-		float progress = Math.min(1f, Math.max(progressByQuestTypes, progressByMaxVisible));
-		progressListener.onProgress(progress, questType);
-	}
-
 
 	private static String getElementAsLogString(Element element)
 	{

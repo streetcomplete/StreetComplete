@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 import javax.inject.Inject;
@@ -31,6 +30,8 @@ public class OsmNotesDownload
 	private final CreateNoteDao createNoteDB;
 	private final SharedPreferences preferences;
 
+	private VisibleOsmNoteQuestListener listener;
+
 	@Inject public OsmNotesDownload(
 			NotesDao noteServer, NoteDao noteDB, OsmNoteQuestDao noteQuestDB,
 			CreateNoteDao createNoteDB, SharedPreferences preferences)
@@ -42,10 +43,15 @@ public class OsmNotesDownload
 		this.preferences = preferences;
 	}
 
+	public void setQuestListener(VisibleOsmNoteQuestListener listener)
+	{
+		this.listener = listener;
+	}
+
 	public Set<LatLon> download(final BoundingBox bbox, final Long userId, int max)
 	{
 		final Set<LatLon> positions = new HashSet<>();
-		final Map<Long,Long> previousQuestIdsByNoteId = getPreviousQuestIdsByNoteId(bbox);
+		final HashMap<Long, Long> previousQuestsByNoteId = getPreviousQuestsByNoteId(bbox);
 		final Collection<Note> notes = new ArrayList<>();
 		final Collection<OsmNoteQuest> quests = new ArrayList<>();
 		final Collection<OsmNoteQuest> hiddenQuests = new ArrayList<>();
@@ -64,11 +70,11 @@ public class OsmNotesDownload
 				else
 				{
 					quests.add(quest);
+					previousQuestsByNoteId.remove(note.id);
 				}
 
 				notes.add(note);
 				positions.add(note.position);
-				previousQuestIdsByNoteId.remove(note.id);
 			}
 		}, max, 0);
 
@@ -77,11 +83,35 @@ public class OsmNotesDownload
 		int newAmount = noteQuestDB.addAll(quests);
 		int visibleAmount = quests.size();
 
+		if(listener != null)
+		{
+			for (OsmNoteQuest quest : quests)
+			{
+				// it is null if this quest is already in the DB, so don't call onQuestCreated
+				if(quest.getId() == null) continue;
+
+				listener.onQuestCreated(quest);
+			}
+			/* we do not call listener.onNoteQuestRemoved for hiddenQuests here, because on
+			*  replacing hiddenQuests into DB, they get new quest IDs. As far as the DB is concerned,
+			*  hidden note quests are always new quests which are hidden.
+			*  If a note quest was visible before, it'll be removed below when the previous quests
+			*  are cleared */
+		}
+
 		/* delete note quests created in a previous run in the given bounding box that are not
 		   found again -> these notes have been closed/solved/removed */
-		if(previousQuestIdsByNoteId.size() > 0)
+		if(previousQuestsByNoteId.size() > 0)
 		{
-			noteQuestDB.deleteAll(previousQuestIdsByNoteId.values());
+			if(listener != null)
+			{
+				for (Long questId : previousQuestsByNoteId.values())
+				{
+					listener.onNoteQuestRemoved(questId);
+				}
+			}
+
+			noteQuestDB.deleteAll(previousQuestsByNoteId.values());
 			noteDB.deleteUnreferenced();
 		}
 
@@ -90,7 +120,7 @@ public class OsmNotesDownload
 			positions.add(createNote.position);
 		}
 
-		int closedAmount = previousQuestIdsByNoteId.size();
+		int closedAmount = previousQuestsByNoteId.size();
 		Log.i(TAG, "Successfully added " + newAmount + " new and removed " + closedAmount +
 				" closed notes (" + hiddenAmount + " of " + (hiddenAmount + visibleAmount) +
 				" notes are hidden)");
@@ -98,9 +128,9 @@ public class OsmNotesDownload
 		return positions;
 	}
 
-	private Map<Long,Long> getPreviousQuestIdsByNoteId(BoundingBox bbox)
+	private HashMap<Long, Long> getPreviousQuestsByNoteId(BoundingBox bbox)
 	{
-		Map<Long, Long> result = new HashMap<>();
+		HashMap<Long, Long> result = new HashMap<>();
 		for(OsmNoteQuest quest : noteQuestDB.getAll(bbox, null))
 		{
 			result.put(quest.getNote().id, quest.getId());

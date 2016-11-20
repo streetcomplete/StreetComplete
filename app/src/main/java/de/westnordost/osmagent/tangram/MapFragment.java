@@ -39,7 +39,7 @@ public class MapFragment extends Fragment implements
 
 	/** controller to the asynchronously loaded map. Since it is loaded asynchronously, could be
 	 *  null still at any point! */
-	private MapController controller;
+	protected MapController controller;
 
 	private HttpHandler mapHttpHandler = new HttpHandler();
 
@@ -119,28 +119,30 @@ public class MapFragment extends Fragment implements
 
 	/* --------------------------------- Map and Location --------------------------------------- */
 
-	public void getMapAsync(@NonNull final MapView.OnMapReadyCallback callback)
+	public void getMapAsync()
 	{
-		getMapAsync(callback, "scene.yaml");
+		getMapAsync("scene.yaml");
 	}
 
-	public void getMapAsync(@NonNull final MapView.OnMapReadyCallback callback,
-							@NonNull final String sceneFilePath)
+	public void getMapAsync(@NonNull final String sceneFilePath)
 	{
 		mapView.getMapAsync(new MapView.OnMapReadyCallback()
 		{
-			@Override public void onMapReady(MapController map)
+			@Override public void onMapReady(MapController ctrl)
 			{
-				controller = map;
-
-				updateMapTileCacheSize();
-				controller.setHttpHandler(mapHttpHandler);
-				restoreCameraState();
-
-				callback.onMapReady(controller);
+				controller = ctrl;
+				initMap();
 			}
 		}, sceneFilePath);
 	}
+
+	protected void initMap()
+	{
+		updateMapTileCacheSize();
+		controller.setHttpHandler(mapHttpHandler);
+		restoreCameraState();
+	}
+
 
 	private void updateMapTileCacheSize()
 	{

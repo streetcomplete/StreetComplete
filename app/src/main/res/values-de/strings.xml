@@ -30,8 +30,8 @@
     <string name="quest_openingHours_chooseMonthsTitle">Monate auswählen</string>
     <string name="quest_openingHours_chooseWeekdaysTitle">Wochentage auswählen</string>
     <string name="quest_openingHours_commitMessage">Öffnungszeit auswählen</string>
-    <string name="quest_openingHours_end_time">schließt um…</string>
-    <string name="quest_openingHours_start_time">öffnet um…</string>
+    <string name="quest_openingHours_end_time">schließt um</string>
+    <string name="quest_openingHours_start_time">öffnet um</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">Alle Notizen anzeigen</string>
     <string name="quest_generic_answer_notApplicable">Nicht beantwortbar</string>
     <string name="pref_title_not_authorized_summary">Noch nicht autorisiert</string>
@@ -64,4 +64,14 @@
     <string name="action_settings">Einstellungen</string>
     <string name="title_activity_settings">Einstellungen</string>
     <string name="quest_openingHours_name_title">Was sind die Öffnungszeiten von „%s“?</string>
+    <string name="upload_error">Fehler beim Hochladen der Antworten. Details im Log</string>
+    <string name="map_attribution_mapzen">Powered by Mapzen</string>
+    <string name="action_download">Hier nach Aufgaben suchen</string>
+    <string name="action_upload">Antworten hochladen</string>
+    <string name="close">Schließen</string>
+    <string name="download_error">Fehler beim Suchen nach Aufgaben. Details im Log</string>
+    <string name="notification_downloading">Suche nach Aufgaben</string>
+    <string name="confirmation_cancel_prev_download_title">Aktuelle Suche abbrechen und stattdessen hier suchen?</string>
+    <string name="cannot_find_bbox">Kann hier nicht suchen. Versuche, weiter hineinzuzoomen</string>
+    <string name="download_area_too_big">Zoome weiter hinein</string>
 </resources>
