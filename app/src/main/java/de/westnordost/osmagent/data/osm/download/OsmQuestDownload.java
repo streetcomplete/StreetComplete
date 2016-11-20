@@ -62,24 +62,47 @@ public class OsmQuestDownload
 		final Map<OsmElementKey, Long> previousQuests = getPreviousQuestsIdsByElementKey(questType, bbox);
 
 		String oql = questType.getOverpassQuery(bbox);
-		overpassServer.get(oql, new MapDataWithGeometryHandler()
+		try
 		{
-			@Override public void handle(Element element, ElementGeometry geometry)
+			overpassServer.get(oql, new MapDataWithGeometryHandler()
 			{
-				if(!mayCreateQuestFrom(questType, element, geometry, blacklistedPositions)) return;
+				@Override public void handle(Element element, ElementGeometry geometry)
+				{
+					if(!mayCreateQuestFrom(questType, element, geometry, blacklistedPositions)) return;
 
-				Element.Type elementType = element.getType();
-				long elementId = element.getId();
+					Element.Type elementType = element.getType();
+					long elementId = element.getId();
 
-				OsmElementKey elementKey = new OsmElementKey(elementType, elementId);
+					OsmElementKey elementKey = new OsmElementKey(elementType, elementId);
 
-				geometryRows.add(new ElementGeometryDao.Row(elementType, elementId, geometry));
-				elements.put(elementKey, element);
-				quests.add(new OsmQuest(questType, elementType, elementId, geometry));
+					geometryRows.add(new ElementGeometryDao.Row(elementType, elementId, geometry));
+					elements.put(elementKey, element);
+					quests.add(new OsmQuest(questType, elementType, elementId, geometry));
 
-				previousQuests.remove(elementKey);
+					previousQuests.remove(elementKey);
+				}
+			});
+		}
+		catch(OsmTooManyRequestsException e)
+		{
+			OverpassStatus status = overpassServer.getStatus();
+			if(status.availableSlots == 0)
+			{
+				// rather wait 1s longer than required cause we only get the time in seconds
+				int wait = (1 + status.nextAvailableSlotIn) * 1000;
+				Log.i(TAG, "Hit Overpass quota. Waiting " + wait + "ms before continuing");
+				try
+				{
+					Thread.sleep(wait);
+				}
+				catch (InterruptedException ie)
+				{
+					Log.d(TAG, "Thread interrupted while waiting for Overpass quota to be replenished");
+					return 0;
+				}
+				return download(questType, bbox, blacklistedPositions);
 			}
-		});
+		}
 
 		// geometry and elements must be put into DB first because quests have foreign keys on it
 		geometryDB.putAll(geometryRows);

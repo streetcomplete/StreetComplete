@@ -280,13 +280,14 @@ public class MainActivity extends AppCompatActivity implements
 			});
 		}
 
-		@Override public void onError()
+		@Override public void onError(final Exception e)
 		{
 			runOnUiThread(new Runnable()
 			{
 				@Override public void run()
 				{
-					Toast.makeText(MainActivity.this, R.string.download_error, Toast.LENGTH_LONG).show();
+					int errorResourceId = R.string.download_error;
+					Toast.makeText(MainActivity.this, errorResourceId, Toast.LENGTH_LONG).show();
 				}
 			});
 		}

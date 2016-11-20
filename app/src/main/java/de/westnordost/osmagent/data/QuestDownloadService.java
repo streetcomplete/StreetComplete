@@ -203,7 +203,7 @@ public class QuestDownloadService extends Service
 			catch(Exception e)
 			{
 				Log.e(TAG, "Unable to download quests", e);
-				progressListenerRelay.onError();
+				progressListenerRelay.onError(e);
 			}
 
 			stopSelf(msg.arg1);

@@ -23,7 +23,7 @@ public class QuestDownloadProgressRelay implements QuestDownloadProgressListener
 	private QuestDownloadProgressListener listener;
 	private boolean showNotification;
 
-	private boolean errorOccured;
+	private Exception occuredError;
 	private boolean isDownloading;
 	private Float progress;
 
@@ -64,13 +64,13 @@ public class QuestDownloadProgressRelay implements QuestDownloadProgressListener
 		service.startForeground(id,n);
 	}
 
-	@Override synchronized public void onError()
+	@Override synchronized public void onError(Exception e)
 	{
-		this.errorOccured = true;
+		this.occuredError = e;
 		if(listener != null)
 		{
-			listener.onError();
-			errorOccured = false;
+			listener.onError(e);
+			occuredError = null;
 		}
 	}
 
@@ -121,10 +121,10 @@ public class QuestDownloadProgressRelay implements QuestDownloadProgressListener
 			}
 			else
 			{
-				if (errorOccured)
+				if (occuredError != null)
 				{
-					listener.onError();
-					errorOccured = false;
+					listener.onError(occuredError);
+					occuredError = null;
 				}
 				listener.onFinished();
 			}
