@@ -16,7 +16,7 @@ public class AddRoadName extends OverpassQuestType
 	{
 		return " ways with (" +
 		       " highway ~ living_street|bicycle_road|residential|pedestrian|primary|secondary|tertiary|unclassified|road or " +
-		       " highway = service and service = alley) and !name and noname != yes ";
+		       " highway = service and service = alley) and !name and noname != yes and !junction";
 	}
 
 	@Override
