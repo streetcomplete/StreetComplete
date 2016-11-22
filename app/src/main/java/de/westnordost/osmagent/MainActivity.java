@@ -503,8 +503,12 @@ public class MainActivity extends AppCompatActivity implements
 
 	@Override public void onMapReady()
 	{
-		// TODO: only for now null (=ALL quests), later only where the user is standing
-		questController.retrieve(null);
+
+	}
+
+	@Override public void onFirstInView(BoundingBox bbox)
+	{
+		questController.retrieve(bbox);
 	}
 
 	@Override public void onClickedQuest(QuestGroup questGroup, Long questId)

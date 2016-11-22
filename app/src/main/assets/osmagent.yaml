@@ -41,6 +41,7 @@ styles:
 
 layers:
     osmagent_quests:
+        filter: { $zoom: { min: 14 } }
         data: { source: osmagent_quests }
         draw:
             quest-icons:

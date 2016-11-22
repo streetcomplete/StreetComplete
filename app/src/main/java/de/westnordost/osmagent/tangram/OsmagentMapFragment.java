@@ -3,6 +3,7 @@ package de.westnordost.osmagent.tangram;
 import android.app.Activity;
 import android.graphics.Point;
 import android.graphics.PointF;
+import android.graphics.Rect;
 import android.support.annotation.Nullable;
 
 import com.mapzen.tangram.LngLat;
@@ -11,16 +12,21 @@ import com.mapzen.tangram.MapData;
 import com.mapzen.tangram.TouchInput;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import de.westnordost.osmagent.data.Quest;
 import de.westnordost.osmagent.data.QuestGroup;
 import de.westnordost.osmagent.data.osm.ElementGeometry;
+import de.westnordost.osmagent.util.SlippyMapMath;
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.LatLon;
 
-public class OsmagentMapFragment extends MapFragment
+public class OsmagentMapFragment extends MapFragment implements TouchInput.ScaleResponder,
+		TouchInput.ShoveResponder, TouchInput.RotateResponder, MapController.FeaturePickListener,
+		TouchInput.TapResponder, TouchInput.PanResponder
 {
 	private static final String MARKER_QUEST_ID = "quest_id";
 	private static final String MARKER_QUEST_GROUP = "quest_group";
@@ -31,6 +37,12 @@ public class OsmagentMapFragment extends MapFragment
 	private MapData questsLayer;
 	private MapData geometryLayer;
 
+	private LngLat lastPos;
+	private Rect lastDisplayedRect;
+	private Set<Point> retrievedTiles;
+	private static int RETRIEVED_TILES_ZOOM = 14;
+	private static int MIN_ZOOM_TO_DISPLAY_QUESTS = 14;
+
 	private Listener listener;
 
 	public interface Listener
@@ -38,6 +50,8 @@ public class OsmagentMapFragment extends MapFragment
 		void onMapReady();
 		void onClickedQuest(QuestGroup questGroup, Long questId);
 		void onClickedMapAt(@Nullable LatLon position);
+		/** Called once the given bbox comes into view first (listener should get quests there) */
+		void onFirstInView(BoundingBox bbox);
 	}
 
 	@Override public void onAttach(Activity activity)
@@ -51,38 +65,66 @@ public class OsmagentMapFragment extends MapFragment
 	{
 		super.initMap();
 
+		retrievedTiles = new HashSet<>();
+
 		geometryLayer = controller.addDataLayer(GEOMETRY_LAYER);
 		questsLayer = controller.addDataLayer(QUESTS_LAYER);
 
-		controller.setFeaturePickListener(new MapController.FeaturePickListener()
-		{
-			@Override
-			public void onFeaturePick(Map<String, String> props, float positionX, float positionY)
-			{
-				boolean clickedMarker = props != null && props.containsKey(MARKER_QUEST_ID);
+		controller.setFeaturePickListener(this);
+		controller.setTapResponder(this);
+		controller.setRotateResponder(this);
+		controller.setShoveResponder(this);
+		controller.setScaleResponder(this);
+		controller.setPanResponder(this);
 
-				if(clickedMarker)
-				{
-					listener.onClickedQuest(
-							QuestGroup.valueOf(props.get(MARKER_QUEST_GROUP)),
-							Long.valueOf(props.get(MARKER_QUEST_ID))
-					);
-				}
-			}
-		});
+		lastPos = controller.getPosition();
 
-		controller.setTapResponder(new TouchInput.TapResponder()
-		{
-			@Override public boolean onSingleTapUp(float x, float y)
-			{
-				return false;
-			}
+		listener.onMapReady();
+	}
 
-			@Override public boolean onSingleTapConfirmed(float x, float y)
-			{
-				controller.pickFeature(x,y);
+	@Override public boolean onScale(float x, float y, float scale, float velocity)
+	{
+		updateView();
+		// okay, scale
+		return false;
+	}
 
-				// TODO use later!:
+	@Override public boolean onPan(float startX, float startY, float endX, float endY)
+	{
+		updateView();
+		// okay, pan
+		return false;
+	}
+
+	@Override public boolean onFling(float posX, float posY, float velocityX, float velocityY)
+	{
+		updateView();
+		// okay, fling
+		return false;
+	}
+
+	@Override public boolean onShove(float distance)
+	{
+		// no tilting the map! (for now)
+		return true;
+	}
+
+	@Override public boolean onRotate(float x, float y, float rotation)
+	{
+		// no rotating the map! (for now)
+		return true;
+	}
+
+	@Override public boolean onSingleTapUp(float x, float y)
+	{
+		return false;
+	}
+
+	@Override public boolean onSingleTapConfirmed(float x, float y)
+	{
+		controller.pickFeature(x,y);
+
+		// TODO use later!:
 				/*LngLat lngLat = controller.screenPositionToLngLat(new PointF(x,y));
 				LatLon latLon = null;
 				if(lngLat != null)
@@ -91,29 +133,58 @@ public class OsmagentMapFragment extends MapFragment
 				}
 				listener.onClickedMapAt(latLon);*/
 
-				return true;
-			}
-		});
+		return true;
+	}
 
-		controller.setRotateResponder(new TouchInput.RotateResponder()
+	@Override
+	public void onFeaturePick(Map<String, String> props, float positionX, float positionY)
+	{
+		boolean clickedMarker = props != null && props.containsKey(MARKER_QUEST_ID);
+
+		if(clickedMarker)
 		{
-			@Override public boolean onRotate(float x, float y, float rotation)
-			{
-				// no rotating the map! (for now)
-				return true;
-			}
-		});
+			listener.onClickedQuest(
+					QuestGroup.valueOf(props.get(MARKER_QUEST_GROUP)),
+					Long.valueOf(props.get(MARKER_QUEST_ID))
+			);
+		}
+	}
 
-		controller.setShoveResponder(new TouchInput.ShoveResponder()
-		{
-			@Override public boolean onShove(float distance)
-			{
-				// no tilting the map! (for now)
-				return true;
-			}
-		});
+	private void updateView()
+	{
+		if(controller.getZoom() < MIN_ZOOM_TO_DISPLAY_QUESTS) return;
 
-		listener.onMapReady();
+		// check if anything changed (needs to be extended when I reenable tilt and rotation)
+		LngLat positionNow = controller.getPosition();
+		if(lastPos != null  && lastPos.equals(positionNow)) return;
+		lastPos = positionNow;
+
+		BoundingBox displayedArea = getDisplayedArea();
+		if(displayedArea == null) return;
+
+		Rect tilesRect = SlippyMapMath.enclosingTiles(displayedArea, RETRIEVED_TILES_ZOOM);
+		if(lastDisplayedRect != null && lastDisplayedRect.equals(tilesRect)) return;
+		lastDisplayedRect = tilesRect;
+
+		List<Point> tiles = SlippyMapMath.asTileList(tilesRect);
+		tiles.removeAll(retrievedTiles);
+
+		Rect minRect = SlippyMapMath.minRect(tiles);
+		if(minRect == null) return;
+		BoundingBox bbox = SlippyMapMath.asBoundingBox(minRect, RETRIEVED_TILES_ZOOM);
+
+		listener.onFirstInView(bbox);
+
+		// debugging
+		/*List<LatLon> corners = new ArrayList<LatLon>(4);
+		corners.add(bbox.getMin());
+		corners.add(new OsmLatLon(bbox.getMinLatitude(), bbox.getMaxLongitude()));
+		corners.add(bbox.getMax());
+		corners.add(new OsmLatLon(bbox.getMaxLatitude(), bbox.getMinLongitude()));
+		ElementGeometry e = new ElementGeometry(null, Collections.singletonList(corners));
+		addQuestGeometry(e);*/
+
+		retrievedTiles.addAll(tiles);
 	}
 
 	public void addQuestGeometry(ElementGeometry g)
@@ -191,20 +262,10 @@ public class OsmagentMapFragment extends MapFragment
 		if(controller.getTilt() > Math.PI / 4f) return null; // 45°
 
 		LatLon[] positions = new LatLon[4];
-		try
-		{
-			positions[0] = getLatLonAtPos(new PointF(0,0));
-			positions[1] = getLatLonAtPos(new PointF(size.x, 0));
-			positions[2] = getLatLonAtPos(new PointF(0,size.y));
-			positions[3] = getLatLonAtPos(new PointF(size));
-		}
-		// screenPositionToLngLat returns positions out of range (crossing 180th meridian?)
-		catch(IllegalArgumentException e)
-		{
-			// in any case, this special case is not really relevant for this app, we are not
-			// downloading huge areas here
-			return null;
-		}
+		positions[0] = getLatLonAtPos(new PointF(0,0));
+		positions[1] = getLatLonAtPos(new PointF(size.x, 0));
+		positions[2] = getLatLonAtPos(new PointF(0,size.y));
+		positions[3] = getLatLonAtPos(new PointF(size));
 
 		// dealing with rotation: find each the largest latlon and the smallest latlon, that'll
 		// be our bounding box
