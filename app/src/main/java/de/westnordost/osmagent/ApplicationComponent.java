@@ -6,7 +6,7 @@ import dagger.Component;
 import de.westnordost.osmagent.data.DbModule;
 import de.westnordost.osmagent.data.OsmModule;
 import de.westnordost.osmagent.data.QuestChangesUploadService;
-import de.westnordost.osmagent.data.QuestDownloadService;
+import de.westnordost.osmagent.data.download.QuestDownloadService;
 import de.westnordost.osmagent.data.meta.MetadataModule;
 import de.westnordost.osmagent.quests.opening_hours.OpeningHoursPerWeek;
 import de.westnordost.osmagent.quests.road_name.AutoCorrectAbbreviationsEditText;

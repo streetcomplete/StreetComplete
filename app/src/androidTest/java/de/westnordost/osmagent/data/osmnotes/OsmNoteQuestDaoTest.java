@@ -5,6 +5,9 @@ import java.util.List;
 
 import de.westnordost.osmagent.data.OsmagentDbTestCase;
 import de.westnordost.osmagent.data.QuestStatus;
+import de.westnordost.osmapi.map.data.BoundingBox;
+import de.westnordost.osmapi.map.data.LatLon;
+import de.westnordost.osmapi.map.data.OsmLatLon;
 import de.westnordost.osmapi.notes.Note;
 
 public class OsmNoteQuestDaoTest extends OsmagentDbTestCase
@@ -78,6 +81,18 @@ public class OsmNoteQuestDaoTest extends OsmagentDbTestCase
 		assertEquals(1, quests.size());
 		assertEquals(QuestStatus.HIDDEN, quests.get(0).getStatus());
 		assertTrue(result);
+	}
+
+	public void testGetPositions()
+	{
+		Note note = NoteDaoTest.createNote();
+		note.position = new OsmLatLon(34,35);
+		noteDao.put(note);
+		OsmNoteQuest quest = new OsmNoteQuest(note);
+		dao.add(quest);
+		List<LatLon> positions = dao.getAllPositions(new BoundingBox(0,0,50,50));
+		assertEquals(1,positions.size());
+		assertEquals(new OsmLatLon(34,35), positions.get(0));
 	}
 
 	private void checkEqual(OsmNoteQuest quest, OsmNoteQuest dbQuest)

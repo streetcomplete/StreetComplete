@@ -38,7 +38,7 @@
             </intent-filter>
 
         </activity>
-        <service android:name=".data.QuestDownloadService" />
+        <service android:name=".data.download.QuestDownloadService" />
         <service android:name=".data.QuestChangesUploadService" />
 
     </application>

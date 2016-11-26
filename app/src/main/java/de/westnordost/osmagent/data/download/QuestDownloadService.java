@@ -1,9 +1,9 @@
-package de.westnordost.osmagent.data;
+package de.westnordost.osmagent.data.download;
 
 import android.app.Service;
 import android.content.Intent;
+import android.graphics.Rect;
 import android.os.Binder;
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.IBinder;
@@ -18,7 +18,8 @@ import javax.inject.Inject;
 import javax.inject.Provider;
 
 import de.westnordost.osmagent.Injector;
-import de.westnordost.osmapi.map.data.BoundingBox;
+import de.westnordost.osmagent.data.VisibleQuestListener;
+import de.westnordost.osmagent.data.VisibleQuestRelay;
 
 /** Downloads all quests in a given area asynchronously. To use, start the service with the
  * appropriate parameters. (see #onStartCommand)
@@ -40,11 +41,8 @@ public class QuestDownloadService extends Service
 	private static final String TAG = "QuestDownload";
 
 	public static final	String
-			ARG_MINLON = "minLon",
-			ARG_MINLAT = "minLat",
-			ARG_MAXLON = "maxLon",
-			ARG_MAXLAT = "maxLat",
-			ARG_MAX_VISIBLE_QUESTS = "maxVisibleQuests",
+			ARG_TILES_RECT = "tilesRect",
+			ARG_MAX_QUEST_TYPES = "maxQuestTypes",
 			ARG_MANUAL = "manual";
 
 	/* Not using IntentService here even though we are doing practically the same because the
@@ -92,17 +90,19 @@ public class QuestDownloadService extends Service
 
 		if(intent != null)
 		{
-			Integer maxVisibleQuests = null;
-			if (intent.hasExtra(ARG_MAX_VISIBLE_QUESTS))
-				maxVisibleQuests = intent.getIntExtra(ARG_MAX_VISIBLE_QUESTS,0);
+			Rect tiles = intent.getParcelableExtra(ARG_TILES_RECT);
+
+			Integer maxQuestTypes = null;
+			if (intent.hasExtra(ARG_MAX_QUEST_TYPES))
+			{
+				maxQuestTypes = intent.getIntExtra(ARG_MAX_QUEST_TYPES, 0);
+			}
 
 			boolean isManualStart = intent.hasExtra(ARG_MANUAL);
 
-			BoundingBox bbox = getBBox(intent);
-
 			Message msg = serviceHandler.obtainMessage();
 			QuestDownload dl = questDownloadProvider.get();
-			dl.init(bbox, maxVisibleQuests, isManualStart, cancelState);
+			dl.init(tiles, maxQuestTypes, isManualStart, cancelState);
 			msg.obj = dl;
 			msg.arg1 = startId;
 			serviceHandler.sendMessage(msg);
@@ -165,23 +165,6 @@ public class QuestDownloadService extends Service
 		{
 			progressListenerRelay.stopForeground();
 		}
-	}
-
-	public static void putBBox(BoundingBox bbox, Intent intent)
-	{
-		intent.putExtra(ARG_MINLAT, bbox.getMinLatitude());
-		intent.putExtra(ARG_MINLON, bbox.getMinLongitude());
-		intent.putExtra(ARG_MAXLAT, bbox.getMaxLatitude());
-		intent.putExtra(ARG_MAXLON, bbox.getMaxLongitude());
-	}
-
-	public static BoundingBox getBBox(Intent intent)
-	{
-		Bundle args = intent.getExtras();
-		return new BoundingBox(
-				args.getDouble(ARG_MINLAT), args.getDouble(ARG_MINLON),
-				args.getDouble(ARG_MAXLAT), args.getDouble(ARG_MAXLON)
-		);
 	}
 
 	private class ServiceHandler extends Handler

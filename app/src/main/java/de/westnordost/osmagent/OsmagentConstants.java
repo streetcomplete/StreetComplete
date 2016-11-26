@@ -13,4 +13,6 @@ public class OsmagentConstants
 		MIN_DOWNLOADABLE_AREA_IN_SQKM = 4;
 
 	public final static double MIN_DOWNLOADABLE_RADIUS_IN_METERS = 1000;
+
+	public final static int QUEST_TILE_ZOOM = 14;
 }

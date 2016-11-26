@@ -15,6 +15,7 @@ import de.westnordost.osmagent.data.osm.persist.RelationTable;
 import de.westnordost.osmagent.data.osm.persist.WayTable;
 import de.westnordost.osmagent.data.osmnotes.OsmNoteQuestTable;
 import de.westnordost.osmagent.data.statistics.QuestStatisticsTable;
+import de.westnordost.osmagent.data.tiles.DownloadedTilesTable;
 
 @Singleton
 public class OsmagentOpenHelper extends SQLiteOpenHelper
@@ -135,11 +136,25 @@ public class OsmagentOpenHelper extends SQLiteOpenHelper
 				RelationTable.Columns.MEMBERS +	" blob NOT NULL" +
 			");";
 
-	private static final String QUEST_STATISTICS_CREATE =
+	private static final String QUEST_STATISTICS_TABLE_CREATE =
 			"CREATE TABLE " + QuestStatisticsTable.NAME +
 			" (" +
 				QuestStatisticsTable.Columns.QUEST_TYPE +	" varchar(255)	PRIMARY KEY, " +
 				QuestStatisticsTable.Columns.SUCCEEDED +	" int			NOT NULL " +
+			");";
+
+	private static final String DOWNLOADED_TILES_TABLE_CREATE =
+			"CREATE TABLE " + DownloadedTilesTable.NAME +
+			" (" +
+				DownloadedTilesTable.Columns.X +			" int	NOT NULL, " +
+				DownloadedTilesTable.Columns.Y +			" int	NOT NULL, " +
+				DownloadedTilesTable.Columns.QUEST_TYPE + 	" varchar(255) NOT NULL, " +
+				DownloadedTilesTable.Columns.DATE +			" int	NOT NULL, " +
+				"CONSTRAINT primary_key PRIMARY KEY (" +
+					DownloadedTilesTable.Columns.X + ", " +
+					DownloadedTilesTable.Columns.Y + ", " +
+					DownloadedTilesTable.Columns.QUEST_TYPE +
+				") " +
 			");";
 
 	public OsmagentOpenHelper(Context context)
@@ -161,7 +176,9 @@ public class OsmagentOpenHelper extends SQLiteOpenHelper
 		db.execSQL(OSM_NOTES_QUESTS_TABLE_CREATE);
 		db.execSQL(CREATE_OSM_NOTES_TABLE_CREATE);
 
-		db.execSQL(QUEST_STATISTICS_CREATE);
+		db.execSQL(QUEST_STATISTICS_TABLE_CREATE);
+
+		db.execSQL(DOWNLOADED_TILES_TABLE_CREATE);
 
 		db.execSQL(OSM_QUESTS_VIEW_CREATE);
 		db.execSQL(OSM_NOTES_VIEW_CREATE);

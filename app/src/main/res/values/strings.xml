@@ -16,27 +16,33 @@
     <string name="pref_category_communication">Communication</string>
     <string name="pref_category_display">Display</string>
 
-    <string name="pref_title_autosync">Auto-Sync</string>
     <string name="pref_title_authorization">Authorize OSM access</string>
     <string name="pref_title_authorized_summary">Successfully authorized to your account</string>
     <string name="pref_title_not_authorized_summary">Not yet authorized</string>
     <string name="pref_tilecache_size_summary">%d MB</string>
     <string name="pref_tilecache_size_message">Space in megabytes reserved on external storage to cache map tiles</string>
 
+    <string name="pref_title_quest_expiration_time">Cache Quests</string>
+    <string name="pref_summary_quest_expiration">for %s before downloading anew</string>
+
     <string name="pref_title_show_notes_not_phrased_as_questions">Show all notes</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">Also showing notes not phrased as questions</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">Ignoring notes not phrased as questions</string>
 
-    <string-array name="pref_entries_autosync">
-        <item>On</item>
-        <item>Only on Wifi</item>
-        <item>Off</item>
+    <string name="pref_title_map_cache">Map Cache Size</string>
+
+    <string-array name="pref_entries_quest_expiration_times">
+        <item>one day</item>
+        <item>a week</item>
+        <item>two weeks</item>
+        <item>one month</item>
     </string-array>
 
-    <string-array name="pref_entryvalues_autosync" translatable="false" >
-        <item>ON</item>
-        <item>ONLY_WIFI</item>
-        <item>OFF</item>
+    <string-array name="pref_entryvalues_quest_expiration_times" translatable="false" >
+        <item>1440</item>
+        <item>10080</item>
+        <item>20160</item>
+        <item>43200</item>
     </string-array>
 
     <string name="map_btn_find_me">Find me</string>
@@ -117,6 +123,9 @@
 
     <string name="confirmation_cancel_prev_download_title">Cancel the current search and scan here instead?</string>
     <string name="notification_downloading">Scanning for Quests</string>
+    <string name="now_downloading_toast">Scanning for more quests</string>
 
+    <string name="turn_on_location_request">Location is off. Go in Settings to turn it on now?</string>
+    <string name="no_location_permission_warning">Your location is needed to scan for quests in your vicinity.</string>
 
 </resources>

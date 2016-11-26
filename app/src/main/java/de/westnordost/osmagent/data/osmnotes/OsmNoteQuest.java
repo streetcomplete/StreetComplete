@@ -35,7 +35,7 @@ public class OsmNoteQuest implements Quest
 
 	private String comment;
 
-	private static QuestType type = new NoteQuestType();
+	public static final QuestType type = new NoteQuestType();
 
 	@Override public QuestType getType()
 	{

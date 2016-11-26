@@ -40,8 +40,7 @@ public class OsmagentMapFragment extends MapFragment implements TouchInput.Scale
 	private LngLat lastPos;
 	private Rect lastDisplayedRect;
 	private Set<Point> retrievedTiles;
-	private static int RETRIEVED_TILES_ZOOM = 14;
-	private static int MIN_ZOOM_TO_DISPLAY_QUESTS = 14;
+	private static final int TILES_ZOOM = 14;
 
 	private Listener listener;
 
@@ -59,6 +58,17 @@ public class OsmagentMapFragment extends MapFragment implements TouchInput.Scale
 		super.onAttach(activity);
 
 		listener = (Listener) activity;
+	}
+
+	@Override public void onStart()
+	{
+		super.onStart();
+		/* while the map fragment is stopped, there could still be a download which retrieves new
+		 * quests in progress. If the retrieved tiles memory would not be cleared, the map would not
+ 		 * retrieve these new quests from DB when the user scrolls over the map because the map
+		 * thinks it already retrieved the quests from DB.
+		 * (If a download is active while the user views the map, the quests are added on the fly) */
+		retrievedTiles = new HashSet<>();
 	}
 
 	protected void initMap()
@@ -152,7 +162,7 @@ public class OsmagentMapFragment extends MapFragment implements TouchInput.Scale
 
 	private void updateView()
 	{
-		if(controller.getZoom() < MIN_ZOOM_TO_DISPLAY_QUESTS) return;
+		if(controller.getZoom() < TILES_ZOOM) return;
 
 		// check if anything changed (needs to be extended when I reenable tilt and rotation)
 		LngLat positionNow = controller.getPosition();
@@ -162,7 +172,7 @@ public class OsmagentMapFragment extends MapFragment implements TouchInput.Scale
 		BoundingBox displayedArea = getDisplayedArea();
 		if(displayedArea == null) return;
 
-		Rect tilesRect = SlippyMapMath.enclosingTiles(displayedArea, RETRIEVED_TILES_ZOOM);
+		Rect tilesRect = SlippyMapMath.enclosingTiles(displayedArea, TILES_ZOOM);
 		if(lastDisplayedRect != null && lastDisplayedRect.equals(tilesRect)) return;
 		lastDisplayedRect = tilesRect;
 
@@ -171,7 +181,7 @@ public class OsmagentMapFragment extends MapFragment implements TouchInput.Scale
 
 		Rect minRect = SlippyMapMath.minRect(tiles);
 		if(minRect == null) return;
-		BoundingBox bbox = SlippyMapMath.asBoundingBox(minRect, RETRIEVED_TILES_ZOOM);
+		BoundingBox bbox = SlippyMapMath.asBoundingBox(minRect, TILES_ZOOM);
 
 		listener.onFirstInView(bbox);
 

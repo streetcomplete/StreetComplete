@@ -6,34 +6,35 @@
         android:key="communication"
         android:title="@string/pref_category_communication">
 
-        <ListPreference
-            android:key="autosync"
-            android:title="@string/pref_title_autosync"
-            android:summary="%s"
-            android:defaultValue="ONLY_WIFI"
-            android:entries="@array/pref_entries_autosync"
-            android:entryValues="@array/pref_entryvalues_autosync"
+        <Preference
+            android:key="oauth"
+            android:title="@string/pref_title_authorization"
+            android:summary="@string/pref_title_not_authorized_summary"
             android:persistent="true"
-             />
+            />
+
+        <ListPreference
+            android:key="download.expirationTime"
+            android:title="@string/pref_title_quest_expiration_time"
+            android:summary="@string/pref_summary_quest_expiration"
+            android:defaultValue="10080"
+            android:entries="@array/pref_entries_quest_expiration_times"
+            android:entryValues="@array/pref_entryvalues_quest_expiration_times"
+            android:persistent="true"
+            />
 
         <de.westnordost.osmagent.settings.NumberPickerPreference
             android:key="map.tilecache"
-            android:title="Cache Size"
+            android:title="@string/pref_title_map_cache"
             android:summary="@string/pref_tilecache_size_summary"
             android:defaultValue="50"
             android:persistent="true"
             custom:minValue="1"
             custom:maxValue="250"
             android:dialogMessage="@string/pref_tilecache_size_message"
+            android:dialogLayout="@layout/numberpicker_preference"
             android:positiveButtonText="@android:string/ok"
             android:negativeButtonText="@android:string/cancel"
-            />
-
-        <Preference
-            android:key="oauth"
-            android:title="@string/pref_title_authorization"
-            android:summary="@string/pref_title_not_authorized_summary"
-            android:persistent="true"
             />
 
     </PreferenceCategory>

@@ -1,5 +1,6 @@
 package de.westnordost.osmagent.data.osm.download;
 
+import android.graphics.Rect;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -9,8 +10,8 @@ import java.util.Set;
 
 import javax.inject.Inject;
 
+import de.westnordost.osmagent.OsmagentConstants;
 import de.westnordost.osmagent.data.QuestType;
-import de.westnordost.osmagent.data.QuestTypes;
 import de.westnordost.osmagent.data.osm.ElementGeometry;
 import de.westnordost.osmagent.data.osm.OsmQuest;
 import de.westnordost.osmagent.data.osm.OverpassQuestType;
@@ -19,6 +20,8 @@ import de.westnordost.osmagent.data.osm.persist.ElementGeometryDao;
 import de.westnordost.osmagent.data.osm.persist.MergedElementDao;
 import de.westnordost.osmagent.data.osm.persist.OsmQuestDao;
 import de.westnordost.osmagent.data.osm.persist.OsmElementKey;
+import de.westnordost.osmagent.data.tiles.DownloadedTilesDao;
+import de.westnordost.osmagent.util.SlippyMapMath;
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.map.data.LatLon;
@@ -33,6 +36,7 @@ public class OsmQuestDownload
 	private final ElementGeometryDao geometryDB;
 	private final MergedElementDao elementDB;
 	private final OsmQuestDao osmQuestDB;
+	private final DownloadedTilesDao downloadedTilesDao;
 
 	// listener
 	private VisibleOsmQuestListener questListener;
@@ -40,12 +44,13 @@ public class OsmQuestDownload
 	@Inject public OsmQuestDownload(
 			OverpassMapDataDao overpassServer, ElementGeometryDao geometryDB,
 			MergedElementDao elementDB, OsmQuestDao osmQuestDB,
-			QuestTypes questTypeList)
+			DownloadedTilesDao downloadedTilesDao)
 	{
 		this.overpassServer = overpassServer;
 		this.geometryDB = geometryDB;
 		this.elementDB = elementDB;
 		this.osmQuestDB = osmQuestDB;
+		this.downloadedTilesDao = downloadedTilesDao;
 	}
 
 	public void setQuestListener(VisibleOsmQuestListener listener)
@@ -53,9 +58,11 @@ public class OsmQuestDownload
 		this.questListener = listener;
 	}
 
-	public int download(final OverpassQuestType questType, BoundingBox bbox,
+	public int download(final OverpassQuestType questType, Rect tiles,
 						  final Set<LatLon> blacklistedPositions)
 	{
+		BoundingBox bbox = SlippyMapMath.asBoundingBox(tiles, OsmagentConstants.QUEST_TILE_ZOOM);
+
 		final ArrayList<ElementGeometryDao.Row> geometryRows = new ArrayList<>();
 		final Map<OsmElementKey,Element> elements = new HashMap<>();
 		final ArrayList<OsmQuest> quests = new ArrayList<>();
@@ -100,8 +107,8 @@ public class OsmQuestDownload
 					Log.d(TAG, "Thread interrupted while waiting for Overpass quota to be replenished");
 					return 0;
 				}
-				return download(questType, bbox, blacklistedPositions);
 			}
+			return download(questType, tiles, blacklistedPositions);
 		}
 
 		// geometry and elements must be put into DB first because quests have foreign keys on it
@@ -140,9 +147,11 @@ public class OsmQuestDownload
 		geometryDB.deleteUnreferenced();
 		elementDB.deleteUnreferenced();
 
+		downloadedTilesDao.putQuestType(tiles, getQuestTypeName(questType));
+
 		int visibleQuestsByQuestType = quests.size();
 		int obsoleteAmount = previousQuests.size();
-		Log.i(TAG, getQuestTypeAsLogString(questType) + ": " +
+		Log.i(TAG, getQuestTypeName(questType) + ": " +
 				"Added " + newQuestsByQuestType + " new and " +
 				"removed " + obsoleteAmount + " already resolved quests." +
 				" (Total: " + visibleQuestsByQuestType + ")");
@@ -172,7 +181,7 @@ public class OsmQuestDownload
 		{
 			// classified as warning because it might very well be a bug on the geometry
 			// creation on our side
-			Log.w(TAG, getQuestTypeAsLogString(questType) + ": Not adding a quest " +
+			Log.w(TAG, getQuestTypeName(questType) + ": Not adding a quest " +
 					" because the element " + getElementAsLogString(element) +
 					" has no valid geometry");
 			return false;
@@ -181,7 +190,7 @@ public class OsmQuestDownload
 		// do not create quests whose marker is at a blacklisted position
 		if(blacklistedPositions != null && blacklistedPositions.contains(geometry.center))
 		{
-			Log.v(TAG, getQuestTypeAsLogString(questType) + ": Not adding a quest at " +
+			Log.d(TAG, getQuestTypeName(questType) + ": Not adding a quest at " +
 					getPosAsLogString(geometry.center) +
 					" because there is a note at that position");
 			return false;
@@ -194,7 +203,7 @@ public class OsmQuestDownload
 		return element.getType().name().toLowerCase() + " #" + element.getId();
 	}
 
-	private static String getQuestTypeAsLogString(QuestType q)
+	private static String getQuestTypeName(QuestType q)
 	{
 		return q.getClass().getSimpleName();
 	}

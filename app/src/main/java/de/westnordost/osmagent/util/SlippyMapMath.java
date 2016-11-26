@@ -7,6 +7,7 @@ import android.graphics.Rect;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.westnordost.osmagent.OsmagentConstants;
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.map.data.OsmLatLon;
@@ -38,6 +39,11 @@ public class SlippyMapMath
 		ytile = Math.max(0, Math.min(ytile , tiles - 1));
 
 		return new Point(xtile, ytile);
+	}
+
+	public static BoundingBox asBoundingBoxOfEnclosingTiles(BoundingBox bbox, int zoom)
+	{
+		return asBoundingBox(enclosingTiles(bbox, zoom), zoom);
 	}
 
 	public static BoundingBox asBoundingBox(Point tile, int zoom)

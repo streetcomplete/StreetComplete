@@ -9,13 +9,16 @@ import android.preference.PreferenceManager;
 import dagger.Module;
 import dagger.Provides;
 import de.westnordost.osmagent.data.QuestController;
-import de.westnordost.osmagent.data.QuestDownloadService;
+import de.westnordost.osmagent.data.QuestTypes;
+import de.westnordost.osmagent.data.download.MobileDataAutoDownloadStrategy;
+import de.westnordost.osmagent.data.download.WifiAutoDownloadStrategy;
 import de.westnordost.osmagent.data.meta.CurrentCountry;
 import de.westnordost.osmagent.data.osm.persist.ElementGeometryDao;
 import de.westnordost.osmagent.data.osm.persist.MergedElementDao;
 import de.westnordost.osmagent.data.osm.persist.OsmQuestDao;
 import de.westnordost.osmagent.data.osmnotes.CreateNoteDao;
 import de.westnordost.osmagent.data.osmnotes.OsmNoteQuestDao;
+import de.westnordost.osmagent.data.tiles.DownloadedTilesDao;
 
 @Module
 public class ApplicationModule
@@ -58,5 +61,23 @@ public class ApplicationModule
 	{
 		return new QuestController(
 				osmQuestDB, osmElementDB, geometryDB, osmNoteQuestDB, createNoteDB, appContext());
+	}
+
+	@Provides public static MobileDataAutoDownloadStrategy mobileDataAutoDownloadStrategy(
+			OsmQuestDao osmQuestDB, DownloadedTilesDao downloadedTilesDao, QuestTypes questTypes,
+			SharedPreferences preferences
+	)
+	{
+		return new MobileDataAutoDownloadStrategy(osmQuestDB, downloadedTilesDao, questTypes,
+				preferences);
+	}
+
+	@Provides public static WifiAutoDownloadStrategy wifiAutoDownloadStrategy(
+			OsmQuestDao osmQuestDB, DownloadedTilesDao downloadedTilesDao, QuestTypes questTypes,
+			SharedPreferences preferences
+	)
+	{
+		return new WifiAutoDownloadStrategy(osmQuestDB, downloadedTilesDao, questTypes,
+				preferences);
 	}
 }

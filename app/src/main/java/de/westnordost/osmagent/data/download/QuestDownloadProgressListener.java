@@ -1,4 +1,4 @@
-package de.westnordost.osmagent.data;
+package de.westnordost.osmagent.data.download;
 
 public interface QuestDownloadProgressListener
 {

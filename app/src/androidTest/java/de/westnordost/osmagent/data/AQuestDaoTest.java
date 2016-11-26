@@ -159,6 +159,13 @@ public class AQuestDaoTest extends AndroidDbTestCase
 		assertEquals(2,quests.size());
 		assertEquals(1,(long) quests.get(0).getId());
 		assertEquals(4,(long) quests.get(1).getId());
+
+		assertEquals(2, dao.getCount(bbox, QuestStatus.NEW));
+	}
+
+	public void testGetCountWhenEmpty()
+	{
+		assertEquals(0, dao.getCount(new BoundingBox(50,1,51,2), QuestStatus.NEW));
 	}
 
 	private class TestQuestDao extends AQuestDao<Quest>

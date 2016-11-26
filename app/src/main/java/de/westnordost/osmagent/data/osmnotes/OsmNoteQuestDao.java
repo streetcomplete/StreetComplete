@@ -7,12 +7,17 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.inject.Inject;
 
 import de.westnordost.osmagent.data.AQuestDao;
 import de.westnordost.osmagent.data.QuestStatus;
+import de.westnordost.osmagent.data.WhereSelectionBuilder;
 import de.westnordost.osmagent.util.Serializer;
+import de.westnordost.osmapi.map.data.BoundingBox;
+import de.westnordost.osmapi.map.data.LatLon;
+import de.westnordost.osmapi.map.data.OsmLatLon;
 import de.westnordost.osmapi.notes.Note;
 
 public class OsmNoteQuestDao extends AQuestDao<OsmNoteQuest>
@@ -35,6 +40,20 @@ public class OsmNoteQuestDao extends AQuestDao<OsmNoteQuest>
 		SQLiteDatabase db = dbHelper.getWritableDatabase();
 		add = db.compileStatement("INSERT OR IGNORE INTO " + sql);
 		replace = db.compileStatement("INSERT OR REPLACE INTO " +sql);
+	}
+
+	public List<LatLon> getAllPositions(BoundingBox bbox)
+	{
+		String[] cols = { NoteTable.Columns.LATITUDE, NoteTable.Columns.LONGITUDE };
+		WhereSelectionBuilder qb = new WhereSelectionBuilder();
+		addBBox(bbox, qb);
+		return getAllThings(getMergedViewName(), cols, qb, new CreateFromCursor<LatLon>()
+		{
+			@Override public LatLon create(Cursor cursor)
+			{
+				return new OsmLatLon(cursor.getDouble(0), cursor.getDouble(1));
+			}
+		});
 	}
 
 	@Override protected String getTableName()

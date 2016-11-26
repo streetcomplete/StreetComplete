@@ -52,6 +52,28 @@ public abstract class AQuestDao<T extends Quest>
 		});
 	}
 
+	public int getCount(BoundingBox bbox, QuestStatus status)
+	{
+		SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+		WhereSelectionBuilder qb = new WhereSelectionBuilder();
+		addBBox(bbox, qb);
+		addQuestStatus(status, qb);
+
+		Cursor cursor = db.query(getMergedViewName(), new String[]{"COUNT(*)"},
+				qb.getWhere(), qb.getArgs(), null, null, null, null);
+
+		try
+		{
+			cursor.moveToFirst();
+			return cursor.getInt(0);
+		}
+		finally
+		{
+			cursor.close();
+		}
+	}
+
 	protected final void addBBox(BoundingBox bbox, WhereSelectionBuilder builder)
 	{
 		if(bbox != null)

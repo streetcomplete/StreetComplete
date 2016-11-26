@@ -1,4 +1,4 @@
-package de.westnordost.osmagent.data;
+package de.westnordost.osmagent.data.download;
 
 import android.app.Notification;
 import android.app.PendingIntent;
@@ -126,7 +126,6 @@ public class QuestDownloadProgressRelay implements QuestDownloadProgressListener
 					listener.onError(occuredError);
 					occuredError = null;
 				}
-				listener.onFinished();
 			}
 		}
 	}

@@ -49,6 +49,7 @@ public class SphericalEarthMath
 		return createTranslated(Math.toDegrees(φ2), Math.toDegrees(λ2));
 	}
 
+	/** area enclosed in the given bbox in m²*/
 	public static double enclosedArea(BoundingBox bbox)
 	{
 		LatLon min = bbox.getMin();
