@@ -37,7 +37,7 @@ public class QuestDownloadProgressRelay implements QuestDownloadProgressListener
 				service, 0, new Intent(service, MainActivity.class), 0);
 
 		notificationBuilder = new Notification.Builder(service)
-				.setSmallIcon(R.mipmap.ic_launcher)
+				.setSmallIcon(R.mipmap.ic_dl_notification)
 				.setContentTitle(ApplicationConstants.NAME)
 				.setContentText(service.getResources().getString(R.string.notification_downloading))
 				.setContentIntent(pendingIntent);
