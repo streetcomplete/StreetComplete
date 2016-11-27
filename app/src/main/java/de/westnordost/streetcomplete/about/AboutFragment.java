@@ -74,7 +74,7 @@ public class AboutFragment extends PreferenceFragment
 				Intent intent = new Intent(Intent.ACTION_SENDTO);
 				intent.setData(Uri.parse("mailto:"));
 				intent.putExtra(Intent.EXTRA_EMAIL, new String[] {"osm@westnordost.de"});
-				intent.putExtra(Intent.EXTRA_SUBJECT, "StreetComplete Feedback");
+				intent.putExtra(Intent.EXTRA_SUBJECT, ApplicationConstants.USER_AGENT + " Feedback");
 				if (intent.resolveActivity(getActivity().getPackageManager()) != null) {
 					startActivity(intent);
 					return true;

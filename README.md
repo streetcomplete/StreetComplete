@@ -1,4 +1,4 @@
-#StreetComplete
+#Street Complete
 
 ![Screenshot](screenshot.png)
 
