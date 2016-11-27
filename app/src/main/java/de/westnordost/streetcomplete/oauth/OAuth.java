@@ -12,8 +12,8 @@ public class OAuth
 {
 	public static final String TAG = "OAuth";
 
-	private static final String CONSUMER_KEY = "tiwYvl7EVGjhKGDEn5rwugZTNNRihVWtmsTDr1zK";
-	private static final String CONSUMER_SECRET = "Fs0bCVm3U68YNJkv8m58vu75e3XDUKQBhdnrUYOY";
+	private static final String CONSUMER_KEY = "L3JyJMjVk6g5atwACVySRWgmnrkBAH7u0U18ALO7";
+	private static final String CONSUMER_SECRET = "uNjPaXZw15CPHdCSeMzttRm20tyFGaBPO7jHt52c";
 
 	private static final String BASE_OAUTH_URL = "https://www.openstreetmap.org/oauth/";
 
