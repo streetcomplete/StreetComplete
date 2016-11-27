@@ -238,7 +238,8 @@ public class MainActivity extends AppCompatActivity implements
 				downloadDisplayedArea();
 				return true;
 			case R.id.action_upload:
-				// TODO...
+				uploadChanges();
+
 				return true;
 
 		}
@@ -246,10 +247,26 @@ public class MainActivity extends AppCompatActivity implements
 		return super.onOptionsItemSelected(item);
 	}
 
+	private void uploadChanges()
+	{
+		if(!isConnected())
+		{
+			Toast.makeText(this, R.string.offline, Toast.LENGTH_SHORT).show();
+		}
+		else
+		{
+			// TODO...
+		}
+	}
+
 	private void downloadDisplayedArea()
 	{
-		BoundingBox displayArea = mapFragment.getDisplayedArea();
-		if (displayArea == null)
+		BoundingBox displayArea;
+		if(!isConnected())
+		{
+			Toast.makeText(this, R.string.offline, Toast.LENGTH_SHORT).show();
+		}
+		else if ((displayArea = mapFragment.getDisplayedArea()) == null)
 		{
 			Toast.makeText(this, R.string.cannot_find_bbox, Toast.LENGTH_LONG).show();
 		}
@@ -745,6 +762,7 @@ public class MainActivity extends AppCompatActivity implements
 	private void triggerAutoDownloadFor(LatLon pos)
 	{
 		if(pos == null) return;
+		if(!isConnected()) return;
 
 		Log.i(TAG_AUTO_DOWNLOAD, "Checking whether to automatically download new quests at "
 				+ pos.getLatitude() + "," + pos.getLongitude());
@@ -754,7 +772,9 @@ public class MainActivity extends AppCompatActivity implements
 
 	// ---------------------------------------------------------------------------------------------
 
-	private boolean isInternetAvailable()
+	/** Does not necessarily mean that the user has internet. But if he is not connected, he will
+	 *  not have internet */
+	private boolean isConnected()
 	{
 		ConnectivityManager connectivityManager
 				= (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);

@@ -143,5 +143,6 @@
     </string>
     <string name="about_title_license">License</string>
     <string name="about_summary_license" translatable="false">GNU General Public License</string>
+    <string name="offline">You are offline</string>
 
 </resources>

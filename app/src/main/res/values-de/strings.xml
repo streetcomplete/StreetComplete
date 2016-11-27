@@ -99,4 +99,5 @@
    <p>© 2016 Tobias Zwick</p>
    <p>Die App nutzt das <a href="https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free">Beautiful Flat Icons</a> Set von Nick Roach, lizensiert unter der <a href="http://www.gnu.org/licenses/gpl-2.0.html">GPL</a>.</p>
       ]]></string>
+    <string name="offline">Du bist offline</string>
 </resources>
