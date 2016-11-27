@@ -28,7 +28,7 @@
         android:layout_margin="8sp"
         android:layout_gravity="end|bottom"/>
 
-    <de.westnordost.osmagent.tangram.ToggleImageButton
+    <de.westnordost.streetcomplete.tangram.ToggleImageButton
         android:id="@+id/btn_find_me"
         android:layout_width="44dp"
         android:layout_height="44dp"

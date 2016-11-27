@@ -1,4 +1,4 @@
-#osmagent
+#StreetComplete
 
 ![Screenshot](screenshot.png)
 

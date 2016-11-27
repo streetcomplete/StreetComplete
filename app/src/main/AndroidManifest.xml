@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="de.westnordost.osmagent"
+    package="de.westnordost.streetcomplete"
     >
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -8,14 +8,14 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
-        android:name=".OsmagentApplication"
+        android:name="de.westnordost.streetcomplete.StreetCompleteApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme.NoActionBar" >
         <activity
             android:windowSoftInputMode="adjustPan"
-            android:name=".MainActivity"
+            android:name="de.westnordost.streetcomplete.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,13 +24,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".settings.SettingsActivity"
+            android:name="de.westnordost.streetcomplete.settings.SettingsActivity"
             android:label="@string/title_activity_settings"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName="de.westnordost.streetcomplete.MainActivity">
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value="de.westnordost.streetcomplete.MainActivity" />
             <intent-filter>
                 <action android:name="android.intent.action.MANAGE_NETWORK_USAGE" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -38,8 +38,8 @@
             </intent-filter>
 
         </activity>
-        <service android:name=".data.download.QuestDownloadService" />
-        <service android:name=".data.QuestChangesUploadService" />
+        <service android:name="de.westnordost.streetcomplete.data.download.QuestDownloadService" />
+        <service android:name="de.westnordost.streetcomplete.data.QuestChangesUploadService" />
 
     </application>
 

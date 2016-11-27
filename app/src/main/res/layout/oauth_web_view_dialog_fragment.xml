@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/oauth_dialog"
-    tools:context="de.westnordost.osmagent.oauth.OAuthWebViewDialogFragment">
+    tools:context="de.westnordost.streetcomplete.oauth.OAuthWebViewDialogFragment">
 
     <WebView
         android:layout_width="match_parent"

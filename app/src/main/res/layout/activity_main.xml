@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/map_fragment"
-        android:name="de.westnordost.osmagent.tangram.OsmagentMapFragment"
+        android:name="de.westnordost.streetcomplete.tangram.QuestsMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

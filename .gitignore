@@ -5,7 +5,7 @@
 /build
 /captures
 /rejected
-osmagent.iml
+streetcomplete.iml
 view_db.bat
 view_test_db.bat
 *.ignore

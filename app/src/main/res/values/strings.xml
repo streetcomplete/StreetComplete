@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">osmagent</string>
+    <string name="app_name" translatable="false">StreetComplete</string>
 
     <string name="action_settings">Settings</string>
 

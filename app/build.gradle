@@ -6,7 +6,7 @@ android {
     buildToolsVersion "24.0.3"
 
     defaultConfig {
-        applicationId "de.westnordost.osmagent"
+        applicationId "de.westnordost.streetcomplete"
         minSdkVersion 17
         targetSdkVersion 24
         versionCode 1

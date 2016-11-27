@@ -1,5 +1,5 @@
 import:
-    - osmagent.yaml
+    - streetcomplete.yaml
     - cinnabar-style-4.0.0.yaml
 
 sources:
