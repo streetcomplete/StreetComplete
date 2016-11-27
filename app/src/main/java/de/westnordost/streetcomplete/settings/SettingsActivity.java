@@ -38,7 +38,6 @@ public class SettingsActivity extends AppCompatActivity implements OAuthWebViewD
 
 		getSupportActionBar().setDisplayShowHomeEnabled(true);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
 	}
 
 	@Override

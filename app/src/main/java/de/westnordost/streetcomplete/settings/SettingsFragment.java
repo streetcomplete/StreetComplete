@@ -5,8 +5,10 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
-import android.preference.PreferenceManager;
 
+import javax.inject.Inject;
+
+import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.oauth.OAuth;
 import de.westnordost.streetcomplete.R;
@@ -14,10 +16,15 @@ import de.westnordost.streetcomplete.oauth.OAuthWebViewDialogFragment;
 
 public class SettingsFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener
 {
+	@Inject SharedPreferences prefs;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
+
+		Injector.instance.getApplicationComponent().inject(this);
+
 		addPreferencesFromResource(R.xml.preferences);
 
 		Preference oauth = getPreferenceScreen().findPreference("oauth");
@@ -48,7 +55,7 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
 	private void updateOsmAuthSummary()
 	{
 		Preference oauth = getPreferenceScreen().findPreference("oauth");
-		if (OAuth.isAuthorized(getAppPrefs()))
+		if (OAuth.isAuthorized(prefs))
 		{
 			oauth.setSummary(R.string.pref_title_authorized_summary);
 		}
@@ -61,13 +68,13 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
 	@Override
 	public void onResume() {
 		super.onResume();
-		getAppPrefs().registerOnSharedPreferenceChangeListener(this);
+		prefs.registerOnSharedPreferenceChangeListener(this);
 	}
 
 	@Override
 	public void onPause() {
 		super.onPause();
-		getAppPrefs().unregisterOnSharedPreferenceChangeListener(this);
+		prefs.unregisterOnSharedPreferenceChangeListener(this);
 	}
 
 	@Override
@@ -77,10 +84,5 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
 		{
 			updateOsmAuthSummary();
 		}
-	}
-
-	private SharedPreferences getAppPrefs()
-	{
-		return PreferenceManager.getDefaultSharedPreferences(this.getActivity());
 	}
 }

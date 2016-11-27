@@ -42,6 +42,7 @@ import com.mapzen.android.lost.api.LostApiClient;
 
 import javax.inject.Inject;
 
+import de.westnordost.streetcomplete.about.AboutActivity;
 import de.westnordost.streetcomplete.data.Quest;
 import de.westnordost.streetcomplete.data.QuestChangesUploadService;
 import de.westnordost.streetcomplete.data.QuestController;
@@ -230,13 +231,14 @@ public class MainActivity extends AppCompatActivity implements
 				Intent intent = new Intent(this, SettingsActivity.class);
 				startActivity(intent);
 				return true;
-
+			case R.id.action_about:
+				startActivity(new Intent(this, AboutActivity.class));
+				return true;
 			case R.id.action_download:
 				downloadDisplayedArea();
 				return true;
-
 			case R.id.action_upload:
-
+				// TODO...
 				return true;
 
 		}

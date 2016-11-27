@@ -24,20 +24,22 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="de.westnordost.streetcomplete.settings.SettingsActivity"
-            android:label="@string/title_activity_settings"
-            android:parentActivityName="de.westnordost.streetcomplete.MainActivity">
-            <!-- Parent activity meta-data to support 4.0 and lower -->
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="de.westnordost.streetcomplete.MainActivity" />
+            android:name=".settings.SettingsActivity"
+            android:label="@string/action_settings"
+            android:parentActivityName=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MANAGE_NETWORK_USAGE" />
                 <category android:name="android.intent.category.DEFAULT" />
-
             </intent-filter>
-
         </activity>
+        <activity
+            android:name=".about.AboutActivity"
+            android:label="@string/action_about"
+            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".about.AboutAuthorsActivity"
+            android:label="@string/about_title_authors"
+            android:parentActivityName=".about.AboutActivity"/>
         <service android:name="de.westnordost.streetcomplete.data.download.QuestDownloadService" />
         <service android:name="de.westnordost.streetcomplete.data.QuestChangesUploadService" />
 
