@@ -94,7 +94,7 @@ public class OsmNoteQuest implements Quest
 		return comment;
 	}
 
-	public void setComment(String changes)
+	public void setComment(String comment)
 	{
 		this.comment = comment;
 	}

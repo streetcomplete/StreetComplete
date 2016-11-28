@@ -129,6 +129,9 @@ public class QuestController
 			}
 			osmElementDB.deleteUnreferenced();
 			geometryDB.deleteUnreferenced();
+
+			// try to upload directly
+			upload();
 		}}.start();
 	}
 
@@ -162,7 +165,7 @@ public class QuestController
 			{
 				OsmNoteQuest q = osmNoteQuestDB.get(questId);
 				String comment = answer.getString(NoteDiscussionForm.TEXT);
-				if(comment != null && comment.isEmpty())
+				if(comment != null && !comment.isEmpty())
 				{
 					q.setComment(comment);
 					q.setStatus(QuestStatus.ANSWERED);
@@ -175,6 +178,8 @@ public class QuestController
 							"NoteQuest has been answered with an empty comment!");
 				}
 			}
+			// try to upload directly
+			upload();
 		}}.start();
 	}
 

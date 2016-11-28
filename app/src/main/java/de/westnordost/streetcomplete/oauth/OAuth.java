@@ -2,6 +2,10 @@ package de.westnordost.streetcomplete.oauth;
 
 import android.content.SharedPreferences;
 
+import java.util.Arrays;
+import java.util.List;
+
+import de.westnordost.osmapi.user.Permission;
 import de.westnordost.streetcomplete.Prefs;
 import oauth.signpost.OAuthConsumer;
 import oauth.signpost.OAuthProvider;
@@ -16,6 +20,12 @@ public class OAuth
 	private static final String CONSUMER_SECRET = "uNjPaXZw15CPHdCSeMzttRm20tyFGaBPO7jHt52c";
 
 	private static final String BASE_OAUTH_URL = "https://www.openstreetmap.org/oauth/";
+
+	public static final List<String> EXPECTED_PERMISSONS = Arrays.asList(
+			Permission.READ_PREFERENCES_AND_USER_DETAILS,
+			Permission.MODIFY_MAP,
+			Permission.WRITE_NOTES,
+			Permission.WRITE_GPS_TRACES);
 
 	public static OAuthProvider createProvider()
 	{

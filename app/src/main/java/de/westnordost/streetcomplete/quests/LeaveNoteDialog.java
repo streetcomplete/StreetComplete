@@ -1,11 +1,13 @@
 package de.westnordost.streetcomplete.quests;
 
+import android.app.Activity;
 import android.app.DialogFragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -29,6 +31,8 @@ public class LeaveNoteDialog extends DialogFragment
 							 Bundle savedInstanceState)
 	{
 		View view = inflater.inflate(R.layout.leave_note, container, false);
+
+		getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
 
 		Button buttonCancel = (Button) view.findViewById(R.id.buttonCancel);
 		buttonCancel.setOnClickListener(new View.OnClickListener()
@@ -65,6 +69,13 @@ public class LeaveNoteDialog extends DialogFragment
 	{
 		super.onAttach(ctx);
 		questAnswerComponent.onAttach((OsmQuestAnswerListener) ctx);
+	}
+
+	@Override
+	public void onAttach(Activity activity)
+	{
+		super.onAttach(activity);
+		questAnswerComponent.onAttach((OsmQuestAnswerListener) activity);
 	}
 
 	private void onClickOk()

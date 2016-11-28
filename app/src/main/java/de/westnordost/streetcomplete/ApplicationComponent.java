@@ -11,6 +11,7 @@ import de.westnordost.streetcomplete.data.meta.MetadataModule;
 import de.westnordost.streetcomplete.quests.opening_hours.OpeningHoursPerWeek;
 import de.westnordost.streetcomplete.quests.road_name.AutoCorrectAbbreviationsEditText;
 import de.westnordost.streetcomplete.quests.note_discussion.NoteDiscussionForm;
+import de.westnordost.streetcomplete.settings.SettingsActivity;
 import de.westnordost.streetcomplete.settings.SettingsFragment;
 import de.westnordost.streetcomplete.util.SerializedSavedState;
 
@@ -28,4 +29,5 @@ public interface ApplicationComponent
 	void inject(QuestDownloadService questChangesDownloadService);
 
 	void inject(SettingsFragment settingsFragment);
+	void inject(SettingsActivity settingsActivity);
 }

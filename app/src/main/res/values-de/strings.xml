@@ -29,7 +29,7 @@
     <string name="quest_openingHours_24_7_confirmation">Mit anderen Worten, es hat einfach immer auf?</string>
     <string name="quest_openingHours_chooseMonthsTitle">Monate auswählen</string>
     <string name="quest_openingHours_chooseWeekdaysTitle">Wochentage auswählen</string>
-    <string name="quest_openingHours_commitMessage">Öffnungszeit auswählen</string>
+    <string name="quest_openingHours_commitMessage">Öffnungszeiten hinzugefügt</string>
     <string name="quest_openingHours_end_time">schließt um</string>
     <string name="quest_openingHours_start_time">öffnet um</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">Alle Notizen anzeigen</string>
@@ -100,4 +100,6 @@
    <p>Die App nutzt das <a href="https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free">Beautiful Flat Icons</a> Set von Nick Roach, lizensiert unter der <a href="http://www.gnu.org/licenses/gpl-2.0.html">GPL</a>.</p>
       ]]></string>
     <string name="offline">Du bist offline</string>
+    <string name="confirmation_authorize_now">Du musst dich mit deinem OSM Account autorisieren um deine Antworten übertragen und damit abschließen zu können. Jetzt autorisieren?</string>
+    <string name="not_authorized">Nicht autorisiert</string>
 </resources>

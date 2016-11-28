@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests;
 
+import android.app.Activity;
 import android.app.DialogFragment;
 import android.app.Fragment;
 import android.content.Context;
@@ -163,11 +164,16 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 		questAnswerComponent.onCreate(getArguments());
 	}
 
-	@Override
-	public void onAttach(Context ctx)
+	@Override public void onAttach(Context ctx)
 	{
 		super.onAttach(ctx);
 		questAnswerComponent.onAttach((OsmQuestAnswerListener) ctx);
+	}
+
+	@Override public void onAttach(Activity activity)
+	{
+		super.onAttach(activity);
+		questAnswerComponent.onAttach((OsmQuestAnswerListener) activity);
 	}
 
 	protected List<Integer> getOtherAnswerResourceIds()

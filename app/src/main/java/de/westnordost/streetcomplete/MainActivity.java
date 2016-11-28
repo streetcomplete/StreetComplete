@@ -11,6 +11,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.net.ConnectivityManager;
@@ -55,6 +56,9 @@ import de.westnordost.streetcomplete.data.VisibleQuestListener;
 import de.westnordost.streetcomplete.data.download.WifiAutoDownloadStrategy;
 import de.westnordost.streetcomplete.data.osm.OsmQuest;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuest;
+import de.westnordost.streetcomplete.oauth.OAuth;
+import de.westnordost.streetcomplete.oauth.OAuthComponent;
+import de.westnordost.streetcomplete.oauth.OAuthWebViewDialogFragment;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 import de.westnordost.streetcomplete.quests.OsmQuestAnswerListener;
 import de.westnordost.streetcomplete.quests.QuestAnswerComponent;
@@ -67,9 +71,11 @@ import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.map.data.OsmElement;
 import de.westnordost.osmapi.map.data.OsmLatLon;
+import oauth.signpost.OAuthConsumer;
 
 public class MainActivity extends AppCompatActivity implements
-		OsmQuestAnswerListener, VisibleQuestListener, QuestsMapFragment.Listener, LocationListener
+		OsmQuestAnswerListener, VisibleQuestListener, QuestsMapFragment.Listener, LocationListener,
+		OAuthWebViewDialogFragment.OAuthListener, OAuthComponent.Listener
 {
 	private static final String TAG_AUTO_DOWNLOAD = "AutoQuestDownload";
 
@@ -80,6 +86,8 @@ public class MainActivity extends AppCompatActivity implements
 	@Inject QuestController questController;
 	@Inject MobileDataAutoDownloadStrategy mobileDataDownloadStrategy;
 	@Inject WifiAutoDownloadStrategy wifiDownloadStrategy;
+	@Inject SharedPreferences prefs;
+	@Inject OAuthComponent oAuthComponent;
 
 	private QuestsMapFragment mapFragment;
 
@@ -112,7 +120,15 @@ public class MainActivity extends AppCompatActivity implements
 	{
 		@Override public void onReceive(Context context, Intent intent)
 		{
-			Toast.makeText(MainActivity.this, R.string.upload_error, Toast.LENGTH_LONG).show();
+			boolean isAuthFailed = intent.getBooleanExtra(QuestChangesUploadService.IS_AUTH_FAILED, false);
+			if(isAuthFailed)
+			{
+				requestOAuthorized();
+			}
+			else // any other error
+			{
+				Toast.makeText(MainActivity.this, R.string.upload_error, Toast.LENGTH_LONG).show();
+			}
 		}
 	};
 
@@ -127,6 +143,8 @@ public class MainActivity extends AppCompatActivity implements
 
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 		setSupportActionBar(toolbar);
+
+		oAuthComponent.setListener(this);
 
 		lostApiClient = new LostApiClient.Builder(this).addConnectionCallbacks(
 				new LostApiClient.ConnectionCallbacks()
@@ -235,11 +253,12 @@ public class MainActivity extends AppCompatActivity implements
 				startActivity(new Intent(this, AboutActivity.class));
 				return true;
 			case R.id.action_download:
-				downloadDisplayedArea();
+				if(isConnected()) downloadDisplayedArea();
+				else              Toast.makeText(this, R.string.offline, Toast.LENGTH_SHORT).show();
 				return true;
 			case R.id.action_upload:
-				uploadChanges();
-
+				if(isConnected()) uploadChanges();
+				else              Toast.makeText(this, R.string.offline, Toast.LENGTH_SHORT).show();
 				return true;
 
 		}
@@ -249,24 +268,55 @@ public class MainActivity extends AppCompatActivity implements
 
 	private void uploadChanges()
 	{
-		if(!isConnected())
+		// because the app should ask for permission even if there is nothing to upload right now
+		if(!OAuth.isAuthorized(prefs))
 		{
-			Toast.makeText(this, R.string.offline, Toast.LENGTH_SHORT).show();
+			requestOAuthorized();
 		}
 		else
 		{
-			// TODO...
+			questController.upload();
 		}
+	}
+
+	private void requestOAuthorized()
+	{
+		DialogInterface.OnClickListener onYes = new DialogInterface.OnClickListener()
+		{
+			@Override public void onClick(DialogInterface dialog, int which)
+			{
+				OAuthWebViewDialogFragment dlg = OAuthWebViewDialogFragment.create(
+						OAuth.createConsumer(), OAuth.createProvider());
+				dlg.show(getFragmentManager(), OAuthWebViewDialogFragment.TAG);
+			}
+		};
+
+		new AlertDialog.Builder(this)
+				.setMessage(R.string.confirmation_authorize_now)
+				.setPositiveButton(android.R.string.ok, onYes)
+				.setNegativeButton(android.R.string.cancel, null).show();
+	}
+
+	@Override public void onOAuthAuthorized(OAuthConsumer consumer)
+	{
+		oAuthComponent.onOAuthAuthorized(consumer, OAuth.EXPECTED_PERMISSONS);
+	}
+
+	@Override public void onOAuthCancelled()
+	{
+		oAuthComponent.onOAuthCancelled();
+	}
+
+	@Override public void onOAuthAuthorizationVerified()
+	{
+		// now finally we can upload our changes!
+		questController.upload();
 	}
 
 	private void downloadDisplayedArea()
 	{
 		BoundingBox displayArea;
-		if(!isConnected())
-		{
-			Toast.makeText(this, R.string.offline, Toast.LENGTH_SHORT).show();
-		}
-		else if ((displayArea = mapFragment.getDisplayedArea()) == null)
+		if ((displayArea = mapFragment.getDisplayedArea()) == null)
 		{
 			Toast.makeText(this, R.string.cannot_find_bbox, Toast.LENGTH_LONG).show();
 		}
@@ -804,6 +854,8 @@ public class MainActivity extends AppCompatActivity implements
 			Log.i(TAG_AUTO_DOWNLOAD, "Setting download strategy to " + (isWifi ? "Wifi" : "Mobile Data"));
 			questController.setDownloadStrategy(newStrategy);
 			triggerAutoDownloadFor(lastAutoDownloadPos);
+
+			questController.upload();
 		}
 	};
 }

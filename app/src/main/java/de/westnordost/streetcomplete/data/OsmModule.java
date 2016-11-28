@@ -7,6 +7,7 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import de.westnordost.osmapi.user.UserDao;
 import de.westnordost.streetcomplete.ApplicationConstants;
 import de.westnordost.streetcomplete.oauth.OAuth;
 import de.westnordost.streetcomplete.data.osm.download.ElementGeometryCreator;
@@ -58,6 +59,11 @@ public class OsmModule
 	@Provides public static ChangesetsDao changesetsDao(OsmConnection osm)
 	{
 		return new ChangesetsDao(osm);
+	}
+
+	@Provides public static UserDao userDao(OsmConnection osm)
+	{
+		return new UserDao(osm);
 	}
 
 	@Provides public static NotesDao notesDao(OsmConnection osm)
