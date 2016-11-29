@@ -183,7 +183,7 @@ public class QuestController
 		}}.start();
 	}
 
-	/** Make the given quest invisible asynchronously. */
+	/** Make the given quest invisible asynchronously (per user interaction). */
 	public void hideQuest(final long questId, final QuestGroup group)
 	{
 		new Thread() { @Override public void run()

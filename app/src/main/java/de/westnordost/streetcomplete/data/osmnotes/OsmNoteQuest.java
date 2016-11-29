@@ -52,7 +52,7 @@ public class OsmNoteQuest implements Quest
 		this.status = status;
 		/* if it is hidden, clear notes comments because we do not need them anymore and they take
 		 up (a lot of) space in the DB */
-		if(!status.isVisible())
+		if(status == QuestStatus.HIDDEN)
 		{
 			if (note != null) note.comments.clear();
 		}
@@ -122,5 +122,26 @@ public class OsmNoteQuest implements Quest
 		}
 
 		@Override public String getIconName() {	return "note"; }
+	}
+
+	public boolean probablyContainsQuestion()
+	{
+		/* from left to right (if smartass IntelliJ wouldn't mess up left-to-right):
+		   - latin question mark
+		   - greek question mark (a different character than semikolon, though same appearance)
+		   - semikolon (often used instead of proper greek question mark)
+		   - mirrored question mark (used in script written from right to left, like Arabic)
+		   - armenian question mark
+		   - ethopian question mark
+		   - full width question mark (often used in modern Chinese / Japanese)
+		   (Source: https://en.wikipedia.org/wiki/Question_mark)
+
+			NOTE: some languages, like Thai, do not use any question mark, so this would be more
+			difficult to determine.
+	   */
+		String questionMarksAroundTheWorld = "[?;;؟՞፧？]";
+
+		String text = note.comments.get(0).text;
+		return text.matches(".*" + questionMarksAroundTheWorld + ".*");
 	}
 }

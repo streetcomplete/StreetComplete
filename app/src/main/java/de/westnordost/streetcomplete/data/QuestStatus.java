@@ -7,10 +7,7 @@ public enum QuestStatus
 	/** user answered the question (waiting for changes to be uploaded) */
 	ANSWERED,
 	/** user chose to hide the quest */
-	HIDDEN;
-
-	public boolean isVisible()
-	{
-		return this == NEW;
-	}
+	HIDDEN,
+	/** the system (decided that it) doesn't show the quest. They may become visible again (-> NEW) */
+	INVISIBLE;
 }

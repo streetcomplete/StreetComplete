@@ -10,13 +10,18 @@ import javax.inject.Inject;
 
 import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.Prefs;
+import de.westnordost.streetcomplete.data.QuestStatus;
+import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuest;
+import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestDao;
 import de.westnordost.streetcomplete.oauth.OAuth;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.oauth.OAuthWebViewDialogFragment;
+import de.westnordost.streetcomplete.util.InlineAsyncTask;
 
 public class SettingsFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener
 {
 	@Inject SharedPreferences prefs;
+	@Inject OsmNoteQuestDao osmNoteQuestDao;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState)
@@ -83,6 +88,35 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
 		if(key.equals(Prefs.OAUTH_ACCESS_TOKEN_SECRET))
 		{
 			updateOsmAuthSummary();
+		}
+		else if(key.equals(Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS))
+		{
+			final Preference pref = getPreferenceScreen().findPreference(Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS);
+
+			pref.setEnabled(false);
+			new Thread() { @Override public void run()
+			{
+				for(OsmNoteQuest quest : osmNoteQuestDao.getAll(null,null))
+				{
+					if (quest.getStatus() == QuestStatus.NEW || quest.getStatus() == QuestStatus.INVISIBLE)
+					{
+						boolean showNonQuestionNotes = prefs.getBoolean(Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS, false);
+						boolean visible = quest.probablyContainsQuestion() || showNonQuestionNotes;
+						QuestStatus newQuestStatus = visible ? QuestStatus.NEW : QuestStatus.INVISIBLE;
+
+						if (quest.getStatus() != newQuestStatus)
+						{
+							quest.setStatus(newQuestStatus);
+							osmNoteQuestDao.update(quest);
+						}
+					}
+				}
+				getActivity().runOnUiThread(new Runnable() { @Override public void run()
+				{
+					pref.setEnabled(true);
+				}});
+
+			}}.start();
 		}
 	}
 }

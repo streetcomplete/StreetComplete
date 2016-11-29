@@ -70,9 +70,14 @@ public class OsmNotesDownload
 			{
 
 				OsmNoteQuest quest = new OsmNoteQuest(note);
-				if(isNoteHidden(userId, note))
+				if(makeNoteHidden(userId, note))
 				{
 					quest.setStatus(QuestStatus.HIDDEN);
+					hiddenQuests.add(quest);
+				}
+				else if(makeNoteInvisible(quest))
+				{
+					quest.setStatus(QuestStatus.INVISIBLE);
 					hiddenQuests.add(quest);
 				}
 				else
@@ -149,21 +154,24 @@ public class OsmNotesDownload
 		return result;
 	}
 
-	private boolean isNoteHidden(Long userId, Note note)
+	private boolean makeNoteHidden(Long userId, Note note)
 	{
-		boolean result = false;
-				/* many notes are created to report problems on the map that cannot be resolved
-				 * through an on-site survey rather than questions from other (armchair) mappers
-				 * that want something cleared up on-site.
-				 * Likely, if something is posed as a question, the reporter expects someone to
-				 * answer/comment on it, so let's only show these */
-		boolean showNonQuestionNotes = preferences.getBoolean(Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS, false);
-		result |= !probablyContainsQuestion(note) && !showNonQuestionNotes;
+		/* hide a note if he already contributed to it. This can also happen from outside
+		   this application, which is why we need to overwrite its quest status. */
+		return containsCommentFromUser(userId, note);
+	}
 
-				/* hide a note if he already contributed to it. This can also happen from outside
-				   this application, which is why we need to overwrite its quest status. */
-		result |= containsCommentFromUser(userId, note);
-		return result;
+	// the difference to hidden is that is that invisible quests may turn visible again, dependent
+	// on the user's settings while hidden quests are "dead"
+	private boolean makeNoteInvisible(OsmNoteQuest quest)
+	{
+		/* many notes are created to report problems on the map that cannot be resolved
+		 * through an on-site survey rather than questions from other (armchair) mappers
+		 * that want something cleared up on-site.
+		 * Likely, if something is posed as a question, the reporter expects someone to
+		 * answer/comment on it, so let's only show these */
+		boolean showNonQuestionNotes = preferences.getBoolean(Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS, false);
+		return !(quest.probablyContainsQuestion() || showNonQuestionNotes);
 	}
 
 	private boolean containsCommentFromUser(Long userId, Note note)
@@ -176,26 +184,5 @@ public class OsmNotesDownload
 				return true;
 		}
 		return false;
-	}
-
-	private boolean probablyContainsQuestion(Note note)
-	{
-		/* from left to right (if smartass IntelliJ wouldn't mess up left-to-right):
-		   - latin question mark
-		   - greek question mark (a different character than semikolon, though same appearance)
-		   - semikolon (often used instead of proper greek question mark)
-		   - mirrored question mark (used in script written from right to left, like Arabic)
-		   - armenian question mark
-		   - ethopian question mark
-		   - full width question mark (often used in modern Chinese / Japanese)
-		   (Source: https://en.wikipedia.org/wiki/Question_mark)
-
-			NOTE: some languages, like Thai, do not use any question mark, so this would be more
-			difficult to determine.
-	   */
-		String questionMarksAroundTheWorld = "[?;;؟՞፧？]";
-
-		String text = note.comments.get(0).text;
-		return text.matches(".*" + questionMarksAroundTheWorld + ".*");
 	}
 }
