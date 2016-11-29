@@ -62,12 +62,11 @@ public class CreateNoteUpload
 		Log.i(TAG, logMsg);
 	}
 
-	Note uploadCreateNote(CreateNote n)
+	private Note uploadCreateNote(CreateNote n)
 	{
-
 		if(isAssociatedElementDeleted(n))
 		{
-			Log.v(TAG, "Dropped to be created note " + getCreateNoteStringForLog(n) +
+			Log.i(TAG, "Dropped to be created note " + getCreateNoteStringForLog(n) +
 					" because the associated element has already been deleted");
 			createNoteDB.delete(n.id);
 			return null;
@@ -86,7 +85,7 @@ public class CreateNoteUpload
 		}
 		else
 		{
-			Log.v(TAG, "Dropped a to be created note " + getCreateNoteStringForLog(n) +
+			Log.i(TAG, "Dropped a to be created note " + getCreateNoteStringForLog(n) +
 					" because a note with the same associated element has already been closed");
 			// so the problem has likely been solved by another mapper
 		}

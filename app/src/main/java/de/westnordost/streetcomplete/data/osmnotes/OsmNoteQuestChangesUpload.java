@@ -52,7 +52,7 @@ public class OsmNoteQuestChangesUpload
 		Log.i(TAG, logMsg);
 	}
 
-	Note uploadNoteChanges(OsmNoteQuest quest)
+	private Note uploadNoteChanges(OsmNoteQuest quest)
 	{
 		String text = quest.getComment();
 
@@ -79,7 +79,7 @@ public class OsmNoteQuestChangesUpload
 			questDB.delete(quest.getId());
 			noteDB.delete(quest.getNote().id);
 
-			Log.v(TAG, "Dropped the comment " + getNoteQuestStringForLog(quest) +
+			Log.i(TAG, "Dropped the comment " + getNoteQuestStringForLog(quest) +
 					" because the note has already been closed");
 
 			return null;
