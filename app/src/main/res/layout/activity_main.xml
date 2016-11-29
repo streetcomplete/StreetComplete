@@ -12,6 +12,30 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="4dp"
+        android:layout_marginBottom="24sp"
+        android:padding="8dp"
+        android:clipToPadding="false"
+        tools:ignore="RtlHardcoded"
+        android:layout_gravity="right|bottom">
+
+        <de.westnordost.streetcomplete.tangram.ToggleImageButton
+            android:id="@+id/gps_tracking"
+            android:layout_width="54dp"
+            android:layout_height="54dp"
+            android:background="@drawable/round_button_selector"
+            android:elevation="4dp"
+            android:src="@drawable/ic_crosshairs_gps_24dp"
+            tools:ignore="RtlHardcoded"
+            android:scaleType="center"
+            android:contentDescription="@string/map_btn_gps_tracking"
+            android:clickable="true"/>
+
+    </FrameLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,25 +46,25 @@
              android:layout_width="match_parent"
              android:layout_height="wrap_content"/>
 
-    <ProgressBar
-        android:id="@+id/download_progress"
+        <ProgressBar
+            android:id="@+id/download_progress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:visibility="invisible"
+            android:background="@color/colorPrimaryDark"
+            android:indeterminate="false"
+            android:minHeight="4dp"/>
+
+    </LinearLayout>
+
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/map_bottom_sheet_container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-        android:visibility="invisible"
-        android:background="@color/colorPrimaryDark"
-        android:indeterminate="false"
-        android:minHeight="4dp"/>
-
-</LinearLayout>
-
-<android.support.design.widget.CoordinatorLayout
-    android:id="@+id/map_bottom_sheet_container"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#00000000">
-<!-- If I do not set any background color here, the layout will leave a few pixels free at the
-     bottom on my Android 6.0 emulator; so, setting to transparent-->
+        android:layout_height="match_parent"
+        android:background="#00000000">
+    <!-- If I do not set any background color here, the layout will leave a few pixels free at the
+         bottom on my Android 6.0 emulator; so, setting to transparent-->
     </android.support.design.widget.CoordinatorLayout>
 
  </FrameLayout >

@@ -64,6 +64,7 @@ import de.westnordost.streetcomplete.quests.OsmQuestAnswerListener;
 import de.westnordost.streetcomplete.quests.QuestAnswerComponent;
 import de.westnordost.streetcomplete.settings.SettingsActivity;
 import de.westnordost.streetcomplete.tangram.QuestsMapFragment;
+import de.westnordost.streetcomplete.tangram.ToggleImageButton;
 import de.westnordost.streetcomplete.util.SlippyMapMath;
 import de.westnordost.streetcomplete.util.SphericalEarthMath;
 import de.westnordost.osmapi.map.data.BoundingBox;
@@ -90,6 +91,7 @@ public class MainActivity extends AppCompatActivity implements
 	@Inject OAuthComponent oAuthComponent;
 
 	private QuestsMapFragment mapFragment;
+	private ToggleImageButton trackingButton;
 
 	private Long clickedQuestId = null;
 	private QuestGroup clickedQuestGroup = null;
@@ -97,6 +99,7 @@ public class MainActivity extends AppCompatActivity implements
 	private ProgressBar progressBar;
 
 	private LostApiClient lostApiClient;
+	private boolean alreadyCalledOnConnect; // TODO remove when https://github.com/mapzen/lost/issues/138 is fixed
 	private LatLon lastAutoDownloadPos;
 
 	private boolean downloadServiceIsBound;
@@ -149,14 +152,13 @@ public class MainActivity extends AppCompatActivity implements
 		lostApiClient = new LostApiClient.Builder(this).addConnectionCallbacks(
 				new LostApiClient.ConnectionCallbacks()
 				{
-					boolean alreadyCalled = false;
-
 					@Override
 					public void onConnected()
 					{
-						if(alreadyCalled) return; // TODO https://github.com/mapzen/lost/issues/138
-						initLocationTracking();
-						alreadyCalled = true;
+						if(alreadyCalledOnConnect) return; // TODO https://github.com/mapzen/lost/issues/138
+						trackingButton.setEnabled(true);
+						if(trackingButton.isChecked()) startLocationTracking();
+						alreadyCalledOnConnect = true;
 					}
 
 					@Override
@@ -168,12 +170,25 @@ public class MainActivity extends AppCompatActivity implements
 
 		mapFragment = (QuestsMapFragment) getFragmentManager().findFragmentById(R.id.map_fragment);
 		mapFragment.getMapAsync();
+
+		trackingButton = (ToggleImageButton) findViewById(R.id.gps_tracking);
+		trackingButton.setChecked(true); // tracking is on by default
+		trackingButton.setOnCheckedChangeListener(new ToggleImageButton.OnCheckedChangeListener()
+		{
+			@Override public void onCheckedChanged(ToggleImageButton buttonView, boolean isChecked)
+			{
+				if(isChecked) startLocationTracking();
+				else          stopLocationTracking();
+			}
+		});
 	}
 
 	@Override public void onStart()
 	{
 		super.onStart();
 
+		alreadyCalledOnConnect = false;
+		trackingButton.setEnabled(false); // will be enabled as soon as lostApiClient is connected
 		lostApiClient.connect();
 
 		registerReceiver(wifiReceiver, new IntentFilter(WifiManager.NETWORK_STATE_CHANGED_ACTION));
@@ -212,7 +227,7 @@ public class MainActivity extends AppCompatActivity implements
 
 		localBroadcaster.unregisterReceiver(uploadChangesErrorReceiver);
 
-		LocationServices.FusedLocationApi.removeLocationUpdates(lostApiClient, this);
+		stopLocationTracking();
 		lostApiClient.disconnect();
 
 		questController.onStop();
@@ -683,7 +698,7 @@ public class MainActivity extends AppCompatActivity implements
 	@Override public void onProviderEnabled(String provider) {}
 	@Override public void onProviderDisabled(String provider) {}
 
-	private void initLocationTracking()
+	private void startLocationTracking()
 	{
 		if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
 				!= PackageManager.PERMISSION_GRANTED)
@@ -706,6 +721,14 @@ public class MainActivity extends AppCompatActivity implements
 		}
 
 		LocationServices.FusedLocationApi.requestLocationUpdates(lostApiClient, request, this);
+
+		mapFragment.startPositionTracking();
+	}
+
+	private void stopLocationTracking()
+	{
+		LocationServices.FusedLocationApi.removeLocationUpdates(lostApiClient, this);
+		mapFragment.stopPositionTracking();
 	}
 
 	@Override public void onRequestPermissionsResult(int requestCode, @NonNull
@@ -715,7 +738,7 @@ public class MainActivity extends AppCompatActivity implements
 		{
 			if(grantResults[0] == PackageManager.PERMISSION_GRANTED)
 			{
-				initLocationTracking(); // retry then...
+				startLocationTracking(); // retry then...
 			}
 			else
 			{
@@ -724,13 +747,29 @@ public class MainActivity extends AppCompatActivity implements
 					@Override
 					public void onClick(DialogInterface dialog, int which)
 					{
-						initLocationTracking();
+						startLocationTracking();
 					}
 				};
+				DialogInterface.OnClickListener onNo = new DialogInterface.OnClickListener()
+				{
+					@Override public void onClick(DialogInterface dialog, int which)
+					{
+						trackingButton.setChecked(false);
+					}
+				};
+				DialogInterface.OnCancelListener onCancel = new DialogInterface.OnCancelListener()
+				{
+					@Override public void onCancel(DialogInterface dialog)
+					{
+						trackingButton.setChecked(false);
+					}
+				};
+
 				new AlertDialog.Builder(this)
 						.setMessage(R.string.no_location_permission_warning)
 						.setPositiveButton(R.string.retry, onRetry)
-						.setNegativeButton(android.R.string.cancel, null)
+						.setNegativeButton(android.R.string.cancel, onNo)
+						.setOnCancelListener(onCancel)
 						.show();
 			}
 		}
@@ -751,7 +790,7 @@ public class MainActivity extends AppCompatActivity implements
 				switch (status.getStatusCode())
 				{
 					case Status.SUCCESS:
-						initLocationTracking();
+						startLocationTracking();
 						break;
 					case Status.RESOLUTION_REQUIRED:
 
@@ -795,7 +834,7 @@ public class MainActivity extends AppCompatActivity implements
 			case REQUEST_CHECK_SETTINGS:
 				switch (resultCode) {
 					case Activity.RESULT_OK:
-						initLocationTracking();
+						startLocationTracking();
 						break;
 					case Activity.RESULT_CANCELED:
 						new AlertDialog.Builder(MainActivity.this)

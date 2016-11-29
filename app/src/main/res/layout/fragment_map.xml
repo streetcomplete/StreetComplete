@@ -28,20 +28,4 @@
         android:layout_margin="8sp"
         android:layout_gravity="end|bottom"/>
 
-    <de.westnordost.streetcomplete.tangram.ToggleImageButton
-        android:id="@+id/btn_find_me"
-        android:layout_width="44dp"
-        android:layout_height="44dp"
-        android:layout_marginRight="8sp"
-        android:layout_marginBottom="32sp"
-        android:background="@drawable/round_button_selector"
-        android:elevation="4dp"
-        android:src="@drawable/ic_find_me"
-        tools:ignore="RtlHardcoded"
-        android:scaleType="center"
-        android:contentDescription="@string/map_btn_find_me"
-        android:layout_gravity="right|bottom"
-        android:clickable="true"/>
-
-
 </FrameLayout>

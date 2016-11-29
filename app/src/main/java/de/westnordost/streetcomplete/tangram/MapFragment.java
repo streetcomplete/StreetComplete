@@ -1,17 +1,14 @@
 package de.westnordost.streetcomplete.tangram;
 
-import android.Manifest;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v13.app.FragmentCompat;
-import android.support.v4.app.ActivityCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,7 +32,6 @@ public class MapFragment extends Fragment implements
 		FragmentCompat.OnRequestPermissionsResultCallback, LocationListener
 {
 	private MapView mapView;
-	private ToggleImageButton findMe;
 
 	/** controller to the asynchronously loaded map. Since it is loaded asynchronously, could be
 	 *  null still at any point! */
@@ -45,76 +41,14 @@ public class MapFragment extends Fragment implements
 
 	private LostApiClient lostApiClient;
 
-	/** whether the user's location is currently tracked. This is not equal to findMe.isChecked()
-	 *  whenever tracking did not start yet (user did not agree to the permission yet / the
-	 *  fragment was just restarted)*/
-	private boolean isTracking;
-
-	private static final int LOCATION_PERMISSION_REQUEST = 1;
-
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
-							 Bundle savedInstanceState)
+									   Bundle savedInstanceState)
 	{
 		View view = inflater.inflate(R.layout.fragment_map, container, false);
 
 		mapView = (MapView) view.findViewById(R.id.map);
-		findMe = (ToggleImageButton) view.findViewById(R.id.btn_find_me);
-		findMe.setOnCheckedChangeListener(new ToggleImageButton.OnCheckedChangeListener()
-		{
-			@Override public void onCheckedChanged(ToggleImageButton buttonView, boolean isChecked)
-			{
-				if (isChecked)
-				{
-					if(!tryStartTrackPosition())
-					{
-						requestPermissionForPositionTracking();
-					}
-				}
-				else
-				{
-					stopTrackPosition();
-				}
-			}
-		});
-
 
 		return view;
-	}
-
-	/* ---------------------------------- Permission dance -------------------------------------- */
-
-	private void requestPermissionForPositionTracking()
-	{
-		FragmentCompat.requestPermissions(
-				this,
-				new String[]{ Manifest.permission.ACCESS_FINE_LOCATION },
-				LOCATION_PERMISSION_REQUEST);
-	}
-
-	@Override public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-										   @NonNull int[] grantResults)
-	{
-		if(requestCode == LOCATION_PERMISSION_REQUEST)
-		{
-			boolean allGranted = true;
-			for(int i = 0; i<permissions.length; ++i)
-			{
-				allGranted &= grantResults[i] == PackageManager.PERMISSION_GRANTED;
-			}
-
-			if(findMe.isChecked())
-			{
-				// user did not grant permission -> uncheck tracking again
-				if (!allGranted)
-				{
-					findMe.setChecked(false);
-				}
-				else
-				{
-					tryStartTrackPosition();
-				}
-			}
-		}
 	}
 
 	/* --------------------------------- Map and Location --------------------------------------- */
@@ -146,21 +80,17 @@ public class MapFragment extends Fragment implements
 
 	private void updateMapTileCacheSize()
 	{
-		int cacheSize = PreferenceManager.getDefaultSharedPreferences(getActivity()).getInt(Prefs.MAP_TILECACHE,50);
+		int cacheSize = PreferenceManager.getDefaultSharedPreferences(getActivity()).getInt(Prefs.MAP_TILECACHE, 50);
 
 		File cacheDir = getActivity().getExternalCacheDir();
-		if (cacheDir != null && cacheDir.exists()) {
+		if (cacheDir != null && cacheDir.exists())
+		{
 			mapHttpHandler.setCache(new File(cacheDir, "tile_cache"), cacheSize * 1024 * 1024);
 		}
 	}
 
-	private boolean tryStartTrackPosition()
+	public boolean startPositionTracking() throws SecurityException
 	{
-		if(ActivityCompat.checkSelfPermission(getActivity(),
-				Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED)
-			return false;
-		if(isTracking) return true;
-
 		Location location = LocationServices.FusedLocationApi.getLastLocation(lostApiClient);
 		if (location != null)
 		{
@@ -173,18 +103,13 @@ public class MapFragment extends Fragment implements
 				.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
 
 		LocationServices.FusedLocationApi.requestLocationUpdates(lostApiClient, request, this);
-		isTracking = true;
 
 		return true;
 	}
 
-	private void stopTrackPosition()
+	public void stopPositionTracking()
 	{
-		if(!isTracking) return;
-
 		LocationServices.FusedLocationApi.removeLocationUpdates(lostApiClient, this);
-
-		isTracking = false;
 	}
 
 	/* ------------------------------------ LOST ------------------------------------------- */
@@ -276,25 +201,19 @@ public class MapFragment extends Fragment implements
 	{
 		super.onResume();
 		if(mapView != null) mapView.onResume();
-		if(findMe.isChecked())
-		{
-			// user might have revoked permissions
-			if(!tryStartTrackPosition())
-				findMe.setChecked(false);
-		}
 	}
 
 	@Override public void onPause()
 	{
 		super.onPause();
 		if(mapView != null) mapView.onPause();
-		stopTrackPosition();
 		saveCameraState();
 	}
 
 	@Override public void onStop()
 	{
 		super.onStop();
+		stopPositionTracking();
 		lostApiClient.disconnect();
 	}
 

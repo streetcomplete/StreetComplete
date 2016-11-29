@@ -45,7 +45,7 @@
         <item>43200</item>
     </string-array>
 
-    <string name="map_btn_find_me">Find me</string>
+    <string name="map_btn_gps_tracking">Find me</string>
     <string name="map_attribution_mapzen">Powered by Mapzen</string>
     <string name="map_attribution_osm">© OpenStreetMap contributors</string>
 
