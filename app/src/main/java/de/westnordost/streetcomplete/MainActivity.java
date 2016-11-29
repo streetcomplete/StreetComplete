@@ -178,13 +178,23 @@ public class MainActivity extends AppCompatActivity implements
 		mapFragment.getMapAsync();
 
 		trackingButton = (ToggleImageButton) findViewById(R.id.gps_tracking);
-		trackingButton.setChecked(true); // tracking is on by default
 		trackingButton.setOnCheckedChangeListener(new ToggleImageButton.OnCheckedChangeListener()
 		{
 			@Override public void onCheckedChanged(ToggleImageButton buttonView, boolean isChecked)
 			{
-				if(isChecked) startLocationTracking();
-				else          stopLocationTracking();
+				if(!lostApiClient.isConnected()) return;
+
+				if(isChecked)
+				{
+					startLocationTracking();
+				}
+				else
+				{
+					stopLocationTracking();
+					Toast.makeText(MainActivity.this, R.string.no_gps_no_quests, Toast.LENGTH_SHORT).show();
+				}
+
+				prefs.edit().putBoolean(Prefs.TRACKING, isChecked).apply();
 			}
 		});
 	}
@@ -194,6 +204,7 @@ public class MainActivity extends AppCompatActivity implements
 		super.onStart();
 
 		alreadyCalledOnConnect = false;
+		trackingButton.setChecked(prefs.getBoolean(Prefs.TRACKING, true)); // tracking is on by default
 		trackingButton.setEnabled(false); // will be enabled as soon as lostApiClient is connected
 		lostApiClient.connect();
 

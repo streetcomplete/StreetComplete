@@ -12,5 +12,6 @@ public class Prefs
 			CURRENT_COUNTRY = "location.currentCountry",
 			OSM_USER_ID = "osm.userid",
 			SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS = "display.nonQuestionNotes",
-			QUESTS_EXPIRATION_TIME_IN_MIN = "download.expirationTime";
+			QUESTS_EXPIRATION_TIME_IN_MIN = "download.expirationTime",
+			TRACKING = "map.tracking";
 }

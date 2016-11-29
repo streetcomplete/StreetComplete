@@ -40,6 +40,7 @@ public class MapFragment extends Fragment implements
 	private HttpHandler mapHttpHandler = new HttpHandler();
 
 	private LostApiClient lostApiClient;
+	private boolean zoomedYet;
 
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
 									   Bundle savedInstanceState)
@@ -91,6 +92,7 @@ public class MapFragment extends Fragment implements
 
 	public boolean startPositionTracking() throws SecurityException
 	{
+		zoomedYet = false;
 		Location location = LocationServices.FusedLocationApi.getLastLocation(lostApiClient);
 		if (location != null)
 		{
@@ -117,6 +119,10 @@ public class MapFragment extends Fragment implements
 	@Override public void onLocationChanged(Location location)
 	{
 		// TODO draw position on map
+		if(!zoomedYet)
+		{
+			zoomTo(location);
+		}
 	}
 
 	@Override public void onProviderEnabled(String provider)
@@ -133,6 +139,7 @@ public class MapFragment extends Fragment implements
 	{
 		if(controller == null) return;
 
+		zoomedYet = true;
 		if(controller.getZoom() < 16) controller.setZoomEased(17, 1000);
 		controller.setPositionEased(new LngLat(location.getLongitude(), location.getLatitude()),1000);
 	}

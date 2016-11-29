@@ -147,5 +147,6 @@
     <string name="confirmation_authorize_now">You need to authorize with your OSM user account to apply any of your answers for good. Authorize now?</string>
     <string name="not_authorized">Not authorized</string>
     <string name="version_banned_message">This version of StreetComplete has been banned from uploading any answers!\n\nPlease update your version!</string>
+    <string name="no_gps_no_quests">To scan for quests around you, turn on location</string>
 
 </resources>
