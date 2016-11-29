@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete;
 public class ApplicationConstants
 {
 	public final static String
-		NAME = "Street Complete",
+		NAME = "Street\u00ADComplete",
 		VERSION = "0.1",
 		USER_AGENT = NAME + " " + VERSION,
 		QUESTTYPE_TAG_KEY = NAME + ":quest_type";

@@ -16,7 +16,6 @@ import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestDao;
 import de.westnordost.streetcomplete.oauth.OAuth;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.oauth.OAuthWebViewDialogFragment;
-import de.westnordost.streetcomplete.util.InlineAsyncTask;
 
 public class SettingsFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener
 {
