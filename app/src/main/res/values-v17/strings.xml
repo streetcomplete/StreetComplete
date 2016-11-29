@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- API 17 doesn't understand soft hyphens (and renders them as hyphens instead) -->
+    <string name="app_name" translatable="false">StreetComplete</string>
+</resources>

@@ -127,7 +127,7 @@
 
     <string name="turn_on_location_request">Location is off. Go in Settings to turn it on now?</string>
     <string name="no_location_permission_warning">Your location is needed to scan for quests in your vicinity.</string>
-    <string name="action_about">About Street­Complete</string>
+    <string name="action_about">About StreetComplete</string>
     <string name="about_title_version">Version</string>
     <string name="about_title_authors">Authors</string>
     <string name="about_summary_authors">© 2016 Tobias Zwick</string>
