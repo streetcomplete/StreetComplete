@@ -123,10 +123,16 @@ public class MainActivity extends AppCompatActivity implements
 	{
 		@Override public void onReceive(Context context, Intent intent)
 		{
-			boolean isAuthFailed = intent.getBooleanExtra(QuestChangesUploadService.IS_AUTH_FAILED, false);
-			if(isAuthFailed)
+			if(intent.getBooleanExtra(QuestChangesUploadService.IS_AUTH_FAILED, false))
 			{
 				requestOAuthorized();
+			}
+			else if(intent.getBooleanExtra(QuestChangesUploadService.IS_VERSION_BANNED, false))
+			{
+				new AlertDialog.Builder(MainActivity.this)
+						.setMessage(R.string.version_banned_message)
+						.setPositiveButton(android.R.string.ok, null)
+						.show();
 			}
 			else // any other error
 			{

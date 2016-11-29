@@ -6,12 +6,17 @@ import android.content.SharedPreferences;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import javax.inject.Inject;
 import javax.inject.Provider;
 
-import de.westnordost.osmapi.common.errors.OsmAuthorizationException;
+import de.westnordost.streetcomplete.ApplicationConstants;
 import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.data.osm.upload.OsmQuestChangesUpload;
 import de.westnordost.streetcomplete.data.osmnotes.CreateNoteUpload;
@@ -24,9 +29,13 @@ public class QuestChangesUploadService extends IntentService
 {
 	public static final String
 			ACTION_ERROR = "de.westnordost.QuestChangesUploadService.ERROR",
-			IS_AUTH_FAILED = "authFailed";
+			IS_AUTH_FAILED = "authFailed",
+			IS_VERSION_BANNED = "banned";
 
 	private static final String TAG = "QuestChangesUpload";
+
+	private static Boolean banned = null;
+	private static String banReason = null;
 
 	@Inject Provider<OsmNoteQuestChangesUpload> noteQuestUploadProvider;
 	@Inject Provider<OsmQuestChangesUpload> questUploadProvider;
@@ -56,6 +65,15 @@ public class QuestChangesUploadService extends IntentService
 	@Override protected void onHandleIntent(Intent intent)
 	{
 		if(cancelState.get()) return;
+
+		if(isBanned())
+		{
+			Log.i(TAG, "This version is banned from making any changes!");
+			Intent errorIntent = new Intent(ACTION_ERROR);
+			errorIntent.putExtra(IS_VERSION_BANNED, true);
+			sendError(errorIntent);
+			return;
+		}
 
 		// let's fail early in case of no authorization
 		if(!OAuth.isAuthorized(prefs))
@@ -91,6 +109,44 @@ public class QuestChangesUploadService extends IntentService
 		}
 
 		Log.i(TAG, "Finished upload changes");
+	}
+
+	private static boolean isBanned()
+	{
+		if(banned == null) checkBanned();
+		return banned;
+	}
+
+	private static void checkBanned()
+	{
+		Log.e(TAG, "CHECKING BANNED");
+		HttpURLConnection connection = null;
+		try
+		{
+			URL url = new URL("http://www.westnordost.de/streetcomplete/banned_versions.txt");
+			connection = (HttpURLConnection) url.openConnection();
+			BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+			String line;
+			while ((line = reader.readLine()) != null)
+			{
+				if(line.startsWith(ApplicationConstants.USER_AGENT))
+				{
+					banned = true;
+					return;
+				}
+			}
+		}
+		catch(IOException e)
+		{
+			// if there is an io exception, never mind then...! (The unreachability of the above
+			// internet address should not lead to this app being unusable!)
+		}
+		finally
+		{
+			if (connection != null) connection.disconnect();
+		}
+
+		banned = false;
 	}
 
 	private void sendError(Intent errorIntent)
