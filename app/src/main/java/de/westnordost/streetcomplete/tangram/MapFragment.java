@@ -20,9 +20,12 @@ import com.mapzen.android.lost.api.LostApiClient;
 import com.mapzen.tangram.HttpHandler;
 import com.mapzen.tangram.LngLat;
 import com.mapzen.tangram.MapController;
+import com.mapzen.tangram.MapData;
 import com.mapzen.tangram.MapView;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.R;
@@ -31,6 +34,10 @@ import de.westnordost.streetcomplete.R;
 public class MapFragment extends Fragment implements
 		FragmentCompat.OnRequestPermissionsResultCallback, LocationListener
 {
+	private static final String LOCATION_LAYER = "streetcomplete_location";
+
+	private MapData locationLayer;
+
 	private MapView mapView;
 
 	/** controller to the asynchronously loaded map. Since it is loaded asynchronously, could be
@@ -76,6 +83,7 @@ public class MapFragment extends Fragment implements
 		updateMapTileCacheSize();
 		controller.setHttpHandler(mapHttpHandler);
 		restoreCameraState();
+		locationLayer = controller.addDataLayer(LOCATION_LAYER);
 	}
 
 
@@ -96,6 +104,7 @@ public class MapFragment extends Fragment implements
 		Location location = LocationServices.FusedLocationApi.getLastLocation(lostApiClient);
 		if (location != null)
 		{
+			showLocation(location);
 			zoomTo(location);
 		}
 
@@ -111,6 +120,11 @@ public class MapFragment extends Fragment implements
 
 	public void stopPositionTracking()
 	{
+		if(locationLayer != null)
+		{
+			locationLayer.clear();
+		}
+
 		LocationServices.FusedLocationApi.removeLocationUpdates(lostApiClient, this);
 	}
 
@@ -118,10 +132,25 @@ public class MapFragment extends Fragment implements
 
 	@Override public void onLocationChanged(Location location)
 	{
-		// TODO draw position on map
+		showLocation(location);
 		if(!zoomedYet)
 		{
 			zoomTo(location);
+		}
+	}
+
+	private void showLocation(Location location)
+	{
+		if(locationLayer != null)
+		{
+			locationLayer.clear();
+			LngLat pos = new LngLat(location.getLongitude(), location.getLatitude());
+			int accuracy = (int)(Math.ceil(location.getAccuracy()));
+
+			Map<String, String> props = new HashMap<>();
+			props.put("type", "point");
+			locationLayer.addPoint(pos, props);
+			controller.requestRender();
 		}
 	}
 

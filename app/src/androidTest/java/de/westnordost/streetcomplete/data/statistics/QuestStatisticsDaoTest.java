@@ -22,7 +22,7 @@ public class QuestStatisticsDaoTest extends ApplicationDbTestCase
 		dao = new QuestStatisticsDao(dbHelper, null);
 	}
 
-	private ChangesetInfo createOsmagentChangeset()
+	private ChangesetInfo createChangeset()
 	{
 		ChangesetInfo result = new ChangesetInfo();
 		result.tags = new HashMap<>();
