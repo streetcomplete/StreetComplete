@@ -38,8 +38,7 @@ etc..
 From the point of view of targeting a first functional release on Google Play, not from what I plan
 for it later...
 
-* Many more "recipies" (aka "quests") for incomplete data and forms to complete this data
-* Data economic quest download and changes upload behavior
+* More "recipies" (aka "quests") for incomplete data and forms to complete this data
 
 ## Contributing
 
