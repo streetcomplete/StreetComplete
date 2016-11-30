@@ -124,7 +124,6 @@ public class QuestChangesUploadService extends IntentService
 
 	private static void checkBanned()
 	{
-		Log.e(TAG, "CHECKING BANNED");
 		HttpURLConnection connection = null;
 		try
 		{

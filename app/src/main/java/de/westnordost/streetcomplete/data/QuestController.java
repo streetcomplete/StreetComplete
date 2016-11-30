@@ -276,7 +276,7 @@ public class QuestController
 	public void autoDownload(final LatLon center)
 	{
 		// do not disrupt a download triggered by a user
-		if(isManualDownloadRunning()) return;
+		if(isCurrentDownloadRunningAndStartedByUser()) return;
 		// no auto download
 		if(downloadStrategy == null) return;
 
@@ -291,9 +291,11 @@ public class QuestController
 	}
 
 	/** @return true if a quest download triggered by the user is running */
-	public boolean isManualDownloadRunning()
+	public boolean isCurrentDownloadRunningAndStartedByUser()
 	{
-		return downloadService != null && downloadService.isManualDownloadRunning();
+		return downloadService != null &&
+		       downloadService.isDownloading() &&
+		       downloadService.isCurrentDownloadStartedByUser();
 	}
 
 	/** Collect and upload all changes made by the user */

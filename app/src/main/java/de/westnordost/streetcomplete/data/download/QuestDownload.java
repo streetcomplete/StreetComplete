@@ -96,6 +96,7 @@ public class QuestDownload
 		if(questTypes.isEmpty())
 		{
 			finished = true;
+			progressListener.onNotStarted();
 			return;
 		}
 

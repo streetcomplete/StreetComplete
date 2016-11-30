@@ -6,4 +6,5 @@ public interface QuestDownloadProgressListener
 	void onProgress(float progress);
 	void onError(Exception e);
 	void onFinished();
+	void onNotStarted();
 }

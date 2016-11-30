@@ -50,6 +50,11 @@ public class QuestDownloadProgressRelay implements QuestDownloadProgressListener
 		if(listener != null) listener.onStarted();
 	}
 
+	@Override synchronized public void onNotStarted()
+	{
+		if(listener != null) listener.onNotStarted();
+	}
+
 	@Override synchronized public void onProgress(float progress)
 	{
 		this.progress = progress;

@@ -383,7 +383,7 @@ public class MainActivity extends AppCompatActivity implements
 			}
 			else
 			{
-				if (questController.isManualDownloadRunning())
+				if (questController.isCurrentDownloadRunningAndStartedByUser())
 				{
 					DialogInterface.OnClickListener onYes = new DialogInterface.OnClickListener()
 					{
@@ -444,7 +444,7 @@ public class MainActivity extends AppCompatActivity implements
 
 					// a manual download does not need a notification, the user clicked it himself
 					// but for the auto download, it's nice
-					if(!downloadService.isManualDownloadRunning())
+					if(!downloadService.isCurrentDownloadStartedByUser())
 					{
 						Toast.makeText(
 								MainActivity.this,
@@ -491,6 +491,14 @@ public class MainActivity extends AppCompatActivity implements
 					triggerAutoDownloadFor(lastAutoDownloadPos);
 				}
 			});
+		}
+
+		@Override public void onNotStarted()
+		{
+			if(downloadService.isCurrentDownloadStartedByUser())
+			{
+				Toast.makeText(MainActivity.this, R.string.nothing_more_to_download, Toast.LENGTH_SHORT).show();
+			}
 		}
 	};
 

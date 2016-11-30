@@ -102,5 +102,6 @@
     <string name="confirmation_authorize_now">Du musst dich mit deinem OSM Account autorisieren um deine Antworten übertragen und damit abschließen zu können. Jetzt autorisieren?</string>
     <string name="not_authorized">Nicht autorisiert</string>
     <string name="version_banned_message">Diese Version von StreetComplete wurde gebannt, Antworten hochzuladen! Bitte update deine Version!</string>
-    <string name="no_gps_no_quests">Um nach Aufgaben in deiner Nähe zu suchen, schalte Standort an</string>
+    <string name="no_gps_no_quests">Um automatisch nach Aufgaben in deiner Nähe zu suchen, schalte Standort an</string>
+    <string name="nothing_more_to_download">Keine weiteren Aufgaben verfügbar</string>
 </resources>

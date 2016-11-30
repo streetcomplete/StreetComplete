@@ -148,11 +148,11 @@ public class QuestDownloadService extends Service
 			}
 		}
 
-		public boolean isManualDownloadRunning()
+		public boolean isCurrentDownloadStartedByUser()
 		{
 			synchronized (downloadLock)
 			{
-				return isDownloading() && currentDownload.isStartedByUser();
+				return currentDownload.isStartedByUser();
 			}
 		}
 
