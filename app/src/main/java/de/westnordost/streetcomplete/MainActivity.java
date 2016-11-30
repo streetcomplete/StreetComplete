@@ -41,6 +41,8 @@ import com.mapzen.android.lost.api.LocationRequest;
 import com.mapzen.android.lost.api.LocationServices;
 import com.mapzen.android.lost.api.LostApiClient;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import de.westnordost.streetcomplete.about.AboutActivity;
@@ -63,6 +65,7 @@ import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 import de.westnordost.streetcomplete.quests.OsmQuestAnswerListener;
 import de.westnordost.streetcomplete.quests.QuestAnswerComponent;
 import de.westnordost.streetcomplete.settings.SettingsActivity;
+import de.westnordost.streetcomplete.statistics.AnswersCounter;
 import de.westnordost.streetcomplete.tangram.QuestsMapFragment;
 import de.westnordost.streetcomplete.tangram.ToggleImageButton;
 import de.westnordost.streetcomplete.util.SlippyMapMath;
@@ -97,6 +100,7 @@ public class MainActivity extends AppCompatActivity implements
 	private QuestGroup clickedQuestGroup = null;
 
 	private ProgressBar progressBar;
+	private AnswersCounter answersCounter;
 
 	private LostApiClient lostApiClient;
 	private boolean alreadyCalledOnConnect; // TODO remove when https://github.com/mapzen/lost/issues/138 is fixed
@@ -140,6 +144,13 @@ public class MainActivity extends AppCompatActivity implements
 			}
 		}
 	};
+	private final BroadcastReceiver uploadChangesFinishedReceiver = new BroadcastReceiver()
+	{
+		@Override public void onReceive(Context context, Intent intent)
+		{
+			answersCounter.update();
+		}
+	};
 
 	@Override protected void onCreate(Bundle savedInstanceState)
 	{
@@ -152,6 +163,8 @@ public class MainActivity extends AppCompatActivity implements
 
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 		setSupportActionBar(toolbar);
+
+		answersCounter = (AnswersCounter) toolbar.findViewById(R.id.answersCounter);
 
 		oAuthComponent.setListener(this);
 
@@ -208,12 +221,17 @@ public class MainActivity extends AppCompatActivity implements
 		trackingButton.setEnabled(false); // will be enabled as soon as lostApiClient is connected
 		lostApiClient.connect();
 
+		answersCounter.update();
+
 		registerReceiver(wifiReceiver, new IntentFilter(WifiManager.NETWORK_STATE_CHANGED_ACTION));
 
 		LocalBroadcastManager localBroadcaster = LocalBroadcastManager.getInstance(this);
 
 		IntentFilter uploadChangesErrFilter = new IntentFilter(QuestChangesUploadService.ACTION_ERROR);
 		localBroadcaster.registerReceiver(uploadChangesErrorReceiver, uploadChangesErrFilter);
+
+		IntentFilter uploadChangesFinishedFilter = new IntentFilter(QuestChangesUploadService.ACTION_FINISHED);
+		localBroadcaster.registerReceiver(uploadChangesFinishedReceiver, uploadChangesFinishedFilter);
 
 		questController.onStart(this);
 		QuestAutoDownloadStrategy newStrategy = isConnectedToWifi() ? wifiDownloadStrategy : mobileDataDownloadStrategy;
@@ -243,6 +261,7 @@ public class MainActivity extends AppCompatActivity implements
 		LocalBroadcastManager localBroadcaster = LocalBroadcastManager.getInstance(this);
 
 		localBroadcaster.unregisterReceiver(uploadChangesErrorReceiver);
+		localBroadcaster.unregisterReceiver(uploadChangesFinishedReceiver);
 
 		stopLocationTracking();
 		lostApiClient.disconnect();
@@ -329,9 +348,9 @@ public class MainActivity extends AppCompatActivity implements
 				.setNegativeButton(android.R.string.cancel, null).show();
 	}
 
-	@Override public void onOAuthAuthorized(OAuthConsumer consumer)
+	@Override public void onOAuthAuthorized(OAuthConsumer consumer, List<String> permissions)
 	{
-		oAuthComponent.onOAuthAuthorized(consumer, OAuth.EXPECTED_PERMISSONS);
+		oAuthComponent.onOAuthAuthorized(consumer, permissions);
 	}
 
 	@Override public void onOAuthCancelled()
@@ -341,6 +360,7 @@ public class MainActivity extends AppCompatActivity implements
 
 	@Override public void onOAuthAuthorizationVerified()
 	{
+		answersCounter.update();
 		// now finally we can upload our changes!
 		questController.upload();
 	}
@@ -493,23 +513,18 @@ public class MainActivity extends AppCompatActivity implements
 
 	@Override public void onAnsweredQuest(long questId, QuestGroup group, Bundle answer)
 	{
+		answersCounter.answeredQuest();
 		questController.solveQuest(questId, group, answer);
-		// amount of quests is reduced -> check if redownloding now makes sense
-		triggerAutoDownloadFor(lastAutoDownloadPos);
 	}
 
 	@Override public void onLeaveNote(long questId, QuestGroup group, String note)
 	{
 		questController.createNote(questId, note);
-		// amount of quests is reduced -> check if redownloding now makes sense
-		triggerAutoDownloadFor(lastAutoDownloadPos);
 	}
 
 	@Override public void onSkippedQuest(long questId, QuestGroup group)
 	{
 		questController.hideQuest(questId, group);
-		// amount of quests is reduced -> check if redownloding now makes sense
-		triggerAutoDownloadFor(lastAutoDownloadPos);
 	}
 
 	/* ------------- VisibleQuestListener ------------- */
@@ -558,6 +573,9 @@ public class MainActivity extends AppCompatActivity implements
 
 	@AnyThread public synchronized void onQuestRemoved(QuestGroup group, long questId)
 	{
+		// amount of quests is reduced -> check if redownloding now makes sense
+		triggerAutoDownloadFor(lastAutoDownloadPos);
+
 		if (isQuestDetailsCurrentlyDisplayedFor(questId, group))
 		{
 			runOnUiThread(new Runnable()

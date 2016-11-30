@@ -6,10 +6,11 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import de.westnordost.streetcomplete.Injector;
-import de.westnordost.streetcomplete.oauth.OAuth;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.oauth.OAuthComponent;
 import de.westnordost.streetcomplete.oauth.OAuthWebViewDialogFragment;
@@ -37,9 +38,9 @@ public class SettingsActivity extends AppCompatActivity implements OAuthWebViewD
 	}
 
 	@Override
-	public void onOAuthAuthorized(OAuthConsumer consumer)
+	public void onOAuthAuthorized(OAuthConsumer consumer, List<String> permissions)
 	{
-		oAuthComponent.onOAuthAuthorized(consumer, OAuth.EXPECTED_PERMISSONS);
+		oAuthComponent.onOAuthAuthorized(consumer, permissions);
 	}
 
 	@Override

@@ -21,7 +21,7 @@ public class OAuth
 
 	private static final String BASE_OAUTH_URL = "https://www.openstreetmap.org/oauth/";
 
-	public static final List<String> EXPECTED_PERMISSONS = Arrays.asList(
+	public static final List<String> REQUIRED_PERMISSIONS = Arrays.asList(
 			Permission.READ_PREFERENCES_AND_USER_DETAILS,
 			Permission.MODIFY_MAP,
 			Permission.WRITE_NOTES,

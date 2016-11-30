@@ -9,7 +9,6 @@
 
     <string name="oauth_cancelled">Authorization cancelled</string>
     <string name="oauth_failed_permissions">Authorization failed: All listed permissions need to be granted</string>
-    <string name="oauth_failed_verify_permissions">Authorization failed: Unable to verify permissions</string>
 
     <string name="title_activity_settings">Settings</string>
 

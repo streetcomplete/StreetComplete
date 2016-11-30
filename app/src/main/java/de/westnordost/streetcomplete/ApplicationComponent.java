@@ -13,6 +13,7 @@ import de.westnordost.streetcomplete.quests.road_name.AutoCorrectAbbreviationsEd
 import de.westnordost.streetcomplete.quests.note_discussion.NoteDiscussionForm;
 import de.westnordost.streetcomplete.settings.SettingsActivity;
 import de.westnordost.streetcomplete.settings.SettingsFragment;
+import de.westnordost.streetcomplete.statistics.AnswersCounter;
 import de.westnordost.streetcomplete.util.SerializedSavedState;
 
 @Singleton
@@ -30,4 +31,6 @@ public interface ApplicationComponent
 
 	void inject(SettingsFragment settingsFragment);
 	void inject(SettingsActivity settingsActivity);
+
+	void inject(AnswersCounter answersCounter);
 }

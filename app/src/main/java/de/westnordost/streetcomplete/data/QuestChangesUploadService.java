@@ -32,6 +32,9 @@ public class QuestChangesUploadService extends IntentService
 			IS_AUTH_FAILED = "authFailed",
 			IS_VERSION_BANNED = "banned";
 
+	public static final String
+			ACTION_FINISHED = "de.westnordost.QuestChangesUploadService.FINISHED";
+
 	private static final String TAG = "QuestChangesUpload";
 
 	private static Boolean banned = null;
@@ -71,7 +74,7 @@ public class QuestChangesUploadService extends IntentService
 			Log.i(TAG, "This version is banned from making any changes!");
 			Intent errorIntent = new Intent(ACTION_ERROR);
 			errorIntent.putExtra(IS_VERSION_BANNED, true);
-			sendError(errorIntent);
+			send(errorIntent);
 			return;
 		}
 
@@ -81,7 +84,7 @@ public class QuestChangesUploadService extends IntentService
 			Log.i(TAG, "User is not authorized");
 			Intent errorIntent = new Intent(ACTION_ERROR);
 			errorIntent.putExtra(IS_AUTH_FAILED, true);
-			sendError(errorIntent);
+			send(errorIntent);
 			return;
 		}
 
@@ -105,8 +108,10 @@ public class QuestChangesUploadService extends IntentService
 		catch (Exception e)
 		{
 			Log.e(TAG, "Unable to upload changes", e);
-			sendError(new Intent(ACTION_ERROR));
+			send(new Intent(ACTION_ERROR));
 		}
+
+		send(new Intent(ACTION_FINISHED));
 
 		Log.i(TAG, "Finished upload changes");
 	}
@@ -149,8 +154,8 @@ public class QuestChangesUploadService extends IntentService
 		banned = false;
 	}
 
-	private void sendError(Intent errorIntent)
+	private void send(Intent intent)
 	{
-		LocalBroadcastManager.getInstance(this).sendBroadcast(errorIntent);
+		LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
 	}
 }

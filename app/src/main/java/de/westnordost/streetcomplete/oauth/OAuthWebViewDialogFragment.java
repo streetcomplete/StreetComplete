@@ -14,7 +14,12 @@ import android.view.Window;
 import android.webkit.WebView;
 import android.widget.Button;
 
+import java.util.List;
+
+import de.westnordost.osmapi.OsmConnection;
+import de.westnordost.osmapi.user.PermissionsDao;
 import de.westnordost.streetcomplete.R;
+import de.westnordost.streetcomplete.data.OsmModule;
 import de.westnordost.streetcomplete.util.AsyncTaskListener;
 import de.westnordost.streetcomplete.util.InlineAsyncTask;
 import oauth.signpost.OAuthConsumer;
@@ -28,10 +33,6 @@ import oauth.signpost.exception.OAuthException;
  *  which the class is notified when the process is complete. Check getToken() and getTokenSecret()
  *  of the parameter passed to onOAuthAuthorized to retrieve the access token and secret, the result
  *  of the whole authorization process.
- *
- *  As any other dialog, the dialog can be canceled (e.g. if the user presses the back button)
- *  in which case onOAuthAuthorized will never be called. Be sure to register an OnCancelListener to
- *  deal with that.
  */
 public class OAuthWebViewDialogFragment extends DialogFragment
 {
@@ -41,10 +42,11 @@ public class OAuthWebViewDialogFragment extends DialogFragment
 	private static final String CALLBACK_URL = "streetcomplete://oauth/";
 
 	// for loading and saving from bundle
-	private static final String CONSUMER = "consumer";
-	private static final String PROVIDER = "provider";
-	private static final String AUTHORIZE_URL = "authorizeURL";
-	private static final String VERIFICATION_CODE = "verificationCode";
+	private static final String
+			CONSUMER = "consumer",
+			PROVIDER = "provider",
+			AUTHORIZE_URL = "authorizeURL",
+			VERIFICATION_CODE = "verificationCode";
 
 	// OAuth stuff
 	private OAuthConsumer consumer;
@@ -63,9 +65,11 @@ public class OAuthWebViewDialogFragment extends DialogFragment
 	/** To be implemented by the user of this dialog fragment. Used to report back with the result */
 	public interface OAuthListener
 	{
-		/** Called when the authorization process has successfully finished. The consumer has the
-		 *  correct access token and secret set. */
-		void onOAuthAuthorized(OAuthConsumer consumer);
+		/** Called when the authorization process has successfully finished.
+		 *  @param consumer The consumer has the correct access token and secret set.
+		 *  @param permissions The permissions granted to the consumer. See constants in
+		 *                     de.westnordost.osmapi.user.Permission */
+		void onOAuthAuthorized(OAuthConsumer consumer, List<String> permissions);
 
 		/** Called when the authorization process failed because the user closed the dialog */
 		void onOAuthCancelled();
@@ -86,8 +90,7 @@ public class OAuthWebViewDialogFragment extends DialogFragment
 
 	/* --------- The below lifecycle methods are ordered in the order they are called ----------- */
 
-	@Override
-	public void onAttach(Activity activity)
+	@Override public void onAttach(Activity activity)
 	{
 		super.onAttach(activity);
 		try
@@ -100,8 +103,7 @@ public class OAuthWebViewDialogFragment extends DialogFragment
 		}
 	}
 
-	@Override
-	public void onCreate(Bundle inState)
+	@Override public void onCreate(Bundle inState)
 	{
 		super.onCreate(inState);
 
@@ -122,8 +124,7 @@ public class OAuthWebViewDialogFragment extends DialogFragment
 	}
 
 	@SuppressLint("SetJavaScriptEnabled")
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState)
 	{
 
@@ -153,22 +154,19 @@ public class OAuthWebViewDialogFragment extends DialogFragment
 		return view;
 	}
 
-	@Override
-	public void onStart()
+	@Override public void onStart()
 	{
 		super.onStart();
 		continueAuthentication();
 	}
 
-	@Override
-	public void onStop()
+	@Override public void onStop()
 	{
 		super.onStop();
 		webView.stopLoading();
 	}
 
-	@Override
-	public void onSaveInstanceState(@NonNull Bundle outState)
+	@Override public void onSaveInstanceState(@NonNull Bundle outState)
 	{
 		outState.putSerializable(CONSUMER, consumer);
 		outState.putSerializable(PROVIDER, provider);
@@ -177,16 +175,14 @@ public class OAuthWebViewDialogFragment extends DialogFragment
 		super.onSaveInstanceState(outState);
 	}
 
-	@Override
-	public void onDestroyView()
+	@Override public void onDestroyView()
 	{
 		super.onDestroyView();
 		webView.destroy();
 		webView = null;
 	}
 
-	@Override
-	public void onCancel(DialogInterface dialog)
+	@Override public void onCancel(DialogInterface dialog)
 	{
 		super.onCancel(dialog);
 		if(verificationCode == null)
@@ -222,14 +218,14 @@ public class OAuthWebViewDialogFragment extends DialogFragment
 		}
 		else
 		{
-			Log.i(TAG, "Step 3: Retrieving access token...");
+			Log.i(TAG, "Step 3: Retrieving access token and getting permissions...");
 			new RetrieveAccessTokenTask().execute();
 		}
 	}
 
-	private void finishAuthentication()
+	private void finishAuthentication(List<String> permissions)
 	{
-		callbackListener.onOAuthAuthorized(consumer);
+		callbackListener.onOAuthAuthorized(consumer, permissions);
 		dismiss();
 	}
 
@@ -248,21 +244,18 @@ public class OAuthWebViewDialogFragment extends DialogFragment
 	 *  to authorize this application. */
 	private class RetrieveRequestTokenTask extends InlineAsyncTask<String>
 	{
-		@Override
-		protected String doInBackground() throws OAuthException
+		@Override protected String doInBackground() throws OAuthException
 		{
 			return provider.retrieveRequestToken(consumer, CALLBACK_URL);
 		}
 
-		@Override
-		public void onSuccess(String result)
+		@Override public void onSuccess(String result)
 		{
 			authorizeURL = result;
 			continueAuthentication();
 		}
 
-		@Override
-		public void onError(Exception e)
+		@Override public void onError(Exception e)
 		{
 			onAuthorizationError(e);
 		}
@@ -270,38 +263,36 @@ public class OAuthWebViewDialogFragment extends DialogFragment
 
 	private class RetrieveVerificationCodeListener implements AsyncTaskListener<String>
 	{
-		@Override
-		public void onSuccess(String verifier)
+		@Override  public void onSuccess(String verifier)
 		{
 			verificationCode = verifier;
 			continueAuthentication();
 		}
 
-		@Override
-		public void onError(Exception e)
+		@Override public void onError(Exception e)
 		{
 			onAuthorizationError(e);
 		}
 	}
 
 	/** Retrieves the access token asynchronously */
-	private class RetrieveAccessTokenTask extends InlineAsyncTask<Void>
+	private class RetrieveAccessTokenTask extends InlineAsyncTask<List<String>>
 	{
-		@Override
-		protected Void doInBackground() throws OAuthException
+		@Override protected List<String> doInBackground() throws OAuthException
 		{
 			provider.retrieveAccessToken(consumer, verificationCode);
-			return null;
+			// must use an own connection here and not the normal singleton because since the
+			// authorization process is not finished, the new authorized consumer is not applied yet
+			OsmConnection osm = OsmModule.osmConnection(consumer);
+			return new PermissionsDao(osm).get();
 		}
 
-		@Override
-		public void onSuccess(Void result)
+		@Override public void onSuccess(List<String> result)
 		{
-			finishAuthentication();
+			finishAuthentication(result);
 		}
 
-		@Override
-		public void onError(Exception e)
+		@Override public void onError(Exception e)
 		{
 			onAuthorizationError(e);
 		}

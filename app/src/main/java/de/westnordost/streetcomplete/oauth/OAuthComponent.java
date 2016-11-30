@@ -2,21 +2,18 @@ package de.westnordost.streetcomplete.oauth;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
+import android.os.AsyncTask;
 import android.widget.Toast;
 
-import java.util.Collection;
 import java.util.List;
 
 import javax.inject.Inject;
 
 import de.westnordost.osmapi.OsmConnection;
-import de.westnordost.osmapi.user.PermissionsDao;
 import de.westnordost.osmapi.user.UserDao;
 import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.R;
-import de.westnordost.streetcomplete.data.OsmModule;
-import de.westnordost.streetcomplete.util.InlineAsyncTask;
+import de.westnordost.streetcomplete.data.statistics.QuestStatisticsDao;
 import oauth.signpost.OAuthConsumer;
 
 /** Manages callback from OAuthWebViewDialogFragment */
@@ -25,6 +22,7 @@ public class OAuthComponent
 	private final SharedPreferences prefs;
 	private final Context context;
 	private final UserDao userDao;
+	private final QuestStatisticsDao statisticsDao;
 	private final OsmConnection osmConnection;
 
 	private Listener listener;
@@ -34,11 +32,12 @@ public class OAuthComponent
 		void onOAuthAuthorizationVerified();
 	}
 
-	@Inject public OAuthComponent(SharedPreferences prefs, Context context, UserDao userDao, OsmConnection osmConnection)
+	@Inject public OAuthComponent(SharedPreferences prefs, Context context, UserDao userDao, QuestStatisticsDao statisticsDao, OsmConnection osmConnection)
 	{
 		this.prefs = prefs;
 		this.context = context;
 		this.userDao = userDao;
+		this.statisticsDao = statisticsDao;
 		this.osmConnection = osmConnection;
 	}
 
@@ -47,14 +46,22 @@ public class OAuthComponent
 		this.listener = listener;
 	}
 
-	public void onOAuthAuthorized(OAuthConsumer consumer, List<String> expectedPermissions)
+	public void onOAuthAuthorized(OAuthConsumer consumer, List<String> permissions)
 	{
-		new VerifyPermissionsTask(consumer, expectedPermissions).execute();
+		if(permissions.containsAll(OAuth.REQUIRED_PERMISSIONS))
+		{
+			onAuthorizationSuccess(consumer);
+		}
+		else
+		{
+			Toast.makeText(context, R.string.oauth_failed_permissions, Toast.LENGTH_LONG).show();
+			onAuthorizationFailed();
+		}
 	}
 
 	public void onOAuthCancelled()
 	{
-		showToast(R.string.oauth_cancelled, Toast.LENGTH_SHORT);
+		Toast.makeText(context,R.string.oauth_cancelled, Toast.LENGTH_SHORT).show();
 		onAuthorizationFailed();
 	}
 
@@ -77,62 +84,26 @@ public class OAuthComponent
 		// for all daos out there (using this connection)
 		osmConnection.setOAuth(OAuth.loadConsumer(prefs));
 
-		listener.onOAuthAuthorizationVerified();
+		new PostAuthorizationTask().execute();
+	}
 
-		new Thread() { @Override public void run()
+	private class PostAuthorizationTask extends AsyncTask <Void, Void, Void>
+	{
+		@Override protected Void doInBackground(Void... params)
 		{
+			long userId = userDao.getMine().id;
+
 			SharedPreferences.Editor editor = prefs.edit();
-			editor.putLong(Prefs.OSM_USER_ID, userDao.getMine().id);
+			editor.putLong(Prefs.OSM_USER_ID, userId);
 			editor.apply();
+
+			statisticsDao.syncFromOsmServer(userId);
+			return null;
 		}
-		}.start();
-	}
 
-	private class VerifyPermissionsTask extends InlineAsyncTask<Boolean>
-	{
-		private OAuthConsumer consumer;
-		private Collection<String> expectedPermissions;
-
-		public VerifyPermissionsTask(OAuthConsumer consumer, Collection<String> expectedPermissions)
+		@Override protected void onPostExecute(Void result)
 		{
-			this.consumer = consumer;
-			this.expectedPermissions = expectedPermissions;
+			if(listener != null) listener.onOAuthAuthorizationVerified();
 		}
-
-		@Override
-		protected Boolean doInBackground() throws Exception
-		{
-			OsmConnection osm = OsmModule.osmConnection(consumer);
-			List<String> permissions = new PermissionsDao(osm).get();
-			return permissions.containsAll(expectedPermissions);
-		}
-
-		@Override
-		public void onSuccess(Boolean hasPermissions)
-		{
-			if (hasPermissions)
-			{
-				onAuthorizationSuccess(consumer);
-			}
-			else
-			{
-				showToast(R.string.oauth_failed_permissions, Toast.LENGTH_LONG);
-				onAuthorizationFailed();
-			}
-		}
-
-		@Override
-		public void onError(Exception error)
-		{
-			int resId = R.string.oauth_failed_verify_permissions;
-			showToast(resId, Toast.LENGTH_LONG);
-			Log.e(OAuthWebViewDialogFragment.TAG, context.getResources().getString(resId), error);
-			onAuthorizationFailed();
-		}
-	}
-
-	private void showToast(int resId, int length)
-	{
-		Toast.makeText(context, resId, length).show();
 	}
 }

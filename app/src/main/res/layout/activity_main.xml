@@ -42,9 +42,31 @@
         android:orientation="vertical">
         <!-- the toolbar somehow always wants to be in front in its layout, so let's ban it into
              a sub frame layout -->
-        <include layout="@layout/toolbar"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"/>
+        <android.support.v7.widget.Toolbar
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            android:elevation="4dp">
+
+            <de.westnordost.streetcomplete.statistics.AnswersCounter
+                android:id="@+id/answersCounter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:minEms="7"
+                android:paddingEnd="8dp"
+                android:paddingStart="8dp"
+                android:gravity="center_vertical"
+                android:drawableStart="@drawable/ic_star_white_24dp"
+                android:drawablePadding="2dp"
+                />
+
+        </android.support.v7.widget.Toolbar>
 
         <ProgressBar
             android:id="@+id/download_progress"

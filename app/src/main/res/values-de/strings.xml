@@ -50,7 +50,6 @@
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">Nicht als Fragen formulierte Notizen ignorieren</string>
     <string name="pref_category_display">Anzeige</string>
     <string name="pref_category_communication">Verbindung</string>
-    <string name="oauth_failed_verify_permissions">Autorisierung fehlgeschlagen: Konnte Berechtigungen nicht überprüfen</string>
     <string name="oauth_failed_permissions">Autorisierung fehlgeschlagen: Alle aufgeführten Berechtigungen müssen gewährt werden</string>
     <string name="oauth_communication_error">Kann den Autorisierungsserver nicht erreichen</string>
     <string name="oauth_cancelled">Autorisierung abgebrochen</string>
