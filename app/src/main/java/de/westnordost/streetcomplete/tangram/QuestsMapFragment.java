@@ -255,6 +255,13 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.ScaleRe
 		if(questsLayer == null) return;
 		// TODO (currently not possible with tangram, but it has been announced that this will soon
 		// be added
+
+		// so for now...:
+		questsLayer.clear();
+		retrievedTiles.clear();
+		lastPos = null;
+		lastDisplayedRect = null;
+		updateView();
 	}
 
 	public BoundingBox getDisplayedArea()

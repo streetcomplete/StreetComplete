@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.os.IBinder;
 
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import javax.inject.Inject;
 
@@ -41,8 +43,8 @@ public class QuestController
 	private final OsmNoteQuestDao osmNoteQuestDB;
 	private final CreateNoteDao createNoteDB;
 	private final Context context;
-
-	private VisibleQuestRelay relay;
+	private final ExecutorService questRetriever;
+	private final VisibleQuestRelay relay;
 
 	private QuestAutoDownloadStrategy downloadStrategy;
 
@@ -73,6 +75,7 @@ public class QuestController
 		this.createNoteDB = createNoteDB;
 		this.context = context;
 		this.relay = new VisibleQuestRelay();
+		questRetriever = Executors.newSingleThreadExecutor();
 	}
 
 	public void onStart(VisibleQuestListener questListener)
@@ -208,7 +211,7 @@ public class QuestController
 	/** Retrieve the given quest from local database asynchronously, including the element / note. */
 	public void retrieve(final QuestGroup group, final long questId)
 	{
-		new Thread() { @Override public void run()
+		questRetriever.submit(new Runnable() { @Override public void run()
 		{
 			switch (group)
 			{
@@ -222,14 +225,14 @@ public class QuestController
 					relay.onQuestCreated(osmNoteQuest);
 					break;
 			}
-		}}.start();
+		}});
 	}
 
 	/** Retrieve all visible (=new) quests in the given bounding box from local database
 	 *  asynchronously. */
 	public void retrieve(final BoundingBox bbox)
 	{
-		new Thread() { @Override public void run()
+		questRetriever.submit(new Runnable() { @Override public void run()
 		{
 			for (OsmQuest q : osmQuestDB.getAll(bbox, QuestStatus.NEW))
 			{
@@ -239,7 +242,7 @@ public class QuestController
 			{
 				relay.onQuestCreated(q);
 			}
-		}}.start();
+		}});
 	}
 
 	/** Download quests in at least the given bounding box asynchronously. The next-bigger rectangle
