@@ -23,6 +23,7 @@ import de.westnordost.streetcomplete.data.osm.ElementGeometry;
 import de.westnordost.streetcomplete.util.SlippyMapMath;
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.LatLon;
+import de.westnordost.streetcomplete.util.SphericalEarthMath;
 
 public class QuestsMapFragment extends MapFragment implements TouchInput.ScaleResponder,
 		TouchInput.ShoveResponder, TouchInput.RotateResponder, MapController.FeaturePickListener,
@@ -153,6 +154,12 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.ScaleRe
 
 		if(clickedMarker)
 		{
+			// move center a little because we have the bottom sheet blocking part of the map
+			LatLon pos = getLatLonAtPos(new PointF(positionX, positionY));
+			LngLat zoomTo = TangramConst.toLngLat(SphericalEarthMath.translate(pos,20,180));
+			controller.setPositionEased(zoomTo, 500);
+			controller.setZoomEased(19, 500);
+
 			listener.onClickedQuest(
 					QuestGroup.valueOf(props.get(MARKER_QUEST_GROUP)),
 					Long.valueOf(props.get(MARKER_QUEST_ID))
