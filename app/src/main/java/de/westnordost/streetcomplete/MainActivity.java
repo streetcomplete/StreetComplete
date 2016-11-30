@@ -735,7 +735,14 @@ public class MainActivity extends AppCompatActivity implements
 
 	@Override public void onLocationChanged(Location location)
 	{
-		triggerAutoDownloadFor(new OsmLatLon(location.getLatitude(), location.getLongitude()));
+		LatLon pos = new OsmLatLon(location.getLatitude(), location.getLongitude());
+
+		// TODO remove when https://github.com/mapzen/lost/issues/142 is fixed
+		if(lastAutoDownloadPos != null)
+		{
+			if(SphericalEarthMath.distance(pos, lastAutoDownloadPos) < 400) return;
+		}
+		triggerAutoDownloadFor(pos);
 	}
 
 	@Override public void onProviderEnabled(String provider) {}
