@@ -128,7 +128,7 @@ public class OsmQuestChangesUpload
 						"the quest " + getQuestStringForLog(quest) + ". The local version is " +
 						element.getVersion(), e);
 			}
-			element = updateElementFromServer(quest.getElementType(), quest.getId());
+			element = updateElementFromServer(quest.getElementType(), quest.getElementId());
 			uploadQuestChanges(quest, element, changesetTags, true);
 		}
 
