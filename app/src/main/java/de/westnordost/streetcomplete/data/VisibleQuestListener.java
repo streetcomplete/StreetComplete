@@ -1,9 +1,13 @@
 package de.westnordost.streetcomplete.data;
 
-import de.westnordost.streetcomplete.data.osm.VisibleOsmQuestListener;
-import de.westnordost.streetcomplete.data.osmnotes.VisibleOsmNoteQuestListener;
+import java.util.Collection;
 
-public interface VisibleQuestListener extends VisibleOsmNoteQuestListener, VisibleOsmQuestListener
+import de.westnordost.osmapi.map.data.Element;
+
+public interface VisibleQuestListener
 {
-	// just those two together
+	void onQuestCreated(Quest quest, QuestGroup group, Element element);
+
+	void onQuestsRemoved(Collection<Long> questIds, QuestGroup group);
+	void onQuestsCreated(Collection<? extends Quest> quests, QuestGroup group);
 }

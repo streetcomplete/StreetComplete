@@ -5,17 +5,19 @@ import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
 import javax.inject.Inject;
 
 import de.westnordost.streetcomplete.ApplicationConstants;
+import de.westnordost.streetcomplete.data.QuestGroup;
 import de.westnordost.streetcomplete.data.QuestType;
+import de.westnordost.streetcomplete.data.VisibleQuestListener;
 import de.westnordost.streetcomplete.data.osm.ElementGeometry;
 import de.westnordost.streetcomplete.data.osm.OsmQuest;
 import de.westnordost.streetcomplete.data.osm.OverpassQuestType;
-import de.westnordost.streetcomplete.data.osm.VisibleOsmQuestListener;
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao;
 import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
@@ -39,7 +41,7 @@ public class OsmQuestDownload
 	private final DownloadedTilesDao downloadedTilesDao;
 
 	// listener
-	private VisibleOsmQuestListener questListener;
+	private VisibleQuestListener questListener;
 
 	@Inject public OsmQuestDownload(
 			OverpassMapDataDao overpassServer, ElementGeometryDao geometryDB,
@@ -53,7 +55,7 @@ public class OsmQuestDownload
 		this.downloadedTilesDao = downloadedTilesDao;
 	}
 
-	public void setQuestListener(VisibleOsmQuestListener listener)
+	public void setQuestListener(VisibleQuestListener listener)
 	{
 		this.questListener = listener;
 	}
@@ -119,24 +121,20 @@ public class OsmQuestDownload
 
 		if(questListener != null)
 		{
-			for (OsmQuest quest : quests)
+			Iterator<OsmQuest> it = quests.iterator();
+			while(it.hasNext())
 			{
 				// it is null if this quest is already in the DB, so don't call onQuestCreated
-				if(quest.getId() == null) continue;
-
-				OsmElementKey k = new OsmElementKey(quest.getElementType(), quest.getElementId());
-				questListener.onQuestCreated(quest, elements.get(k));
+				if(it.next().getId() == null) it.remove();
 			}
+			questListener.onQuestsCreated(quests, QuestGroup.OSM);
 		}
 
 		if(!previousQuests.isEmpty())
 		{
 			if(questListener != null)
 			{
-				for (Long questId : previousQuests.values())
-				{
-					questListener.onOsmQuestRemoved(questId);
-				}
+				questListener.onQuestsRemoved(previousQuests.values(), QuestGroup.OSM);
 			}
 
 			osmQuestDB.deleteAll(previousQuests.values());

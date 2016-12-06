@@ -11,6 +11,7 @@ import com.mapzen.tangram.MapController;
 import com.mapzen.tangram.MapData;
 import com.mapzen.tangram.TouchInput;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -88,9 +89,8 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.ScaleRe
 		controller.setScaleResponder(this);
 		controller.setPanResponder(this);
 
-		lastPos = controller.getPosition();
-
 		listener.onMapReady();
+		updateView();
 	}
 
 	@Override public boolean onScale(float x, float y, float scale, float velocity)
@@ -238,7 +238,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.ScaleRe
 
 		geometryLayer.clear();
 	}
-
+/*
 	public void addQuest(Quest quest, QuestGroup group)
 	{
 		// TODO: this method may also be called for quests that are already displayed on this map
@@ -254,8 +254,45 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.ScaleRe
 
 		controller.applySceneUpdates();
 	}
+*/
 
-	public void removeQuest(QuestGroup group, long questId)
+	public void addQuests(Iterable quests, QuestGroup group)
+	{
+		StringBuilder geoJson = new StringBuilder();
+		geoJson.append("{\"type\":\"FeatureCollection\",\"features\": [");
+
+		boolean first = true;
+		for(Object q : quests)
+		{
+			Quest quest = (Quest) q;
+			if(first) first = false;
+			else      geoJson.append(",");
+
+			LatLon pos = quest.getMarkerLocation();
+
+			geoJson.append("{\"type\":\"Feature\",");
+			geoJson.append("\"geometry\":{\"type\":\"Point\",\"coordinates\": [");
+			geoJson.append(pos.getLongitude());
+			geoJson.append(",");
+			geoJson.append(pos.getLatitude());
+			geoJson.append("]},\"properties\": {\"type\":\"point\", \"kind\":\"");
+			geoJson.append(quest.getType().getIconName());
+			geoJson.append("\",\"");
+			geoJson.append(MARKER_QUEST_GROUP);
+			geoJson.append("\":\"");
+			geoJson.append(group.name());
+			geoJson.append("\",\"");
+			geoJson.append(MARKER_QUEST_ID);
+			geoJson.append("\":\"");
+			geoJson.append(quest.getId());
+			geoJson.append("\"}}");
+		}
+		geoJson.append("]}");
+
+		questsLayer.addGeoJson(geoJson.toString());
+	}
+
+	public void removeQuests(Collection<Long> questIds, QuestGroup group)
 	{
 		// TODO: this method may also be called for quests that are not displayed on this map (anymore)
 

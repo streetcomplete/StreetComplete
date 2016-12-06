@@ -41,6 +41,7 @@ import com.mapzen.android.lost.api.LocationRequest;
 import com.mapzen.android.lost.api.LocationServices;
 import com.mapzen.android.lost.api.LostApiClient;
 
+import java.util.Collection;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -56,8 +57,6 @@ import de.westnordost.streetcomplete.data.download.QuestDownloadService;
 import de.westnordost.streetcomplete.data.QuestGroup;
 import de.westnordost.streetcomplete.data.VisibleQuestListener;
 import de.westnordost.streetcomplete.data.download.WifiAutoDownloadStrategy;
-import de.westnordost.streetcomplete.data.osm.OsmQuest;
-import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuest;
 import de.westnordost.streetcomplete.oauth.OAuth;
 import de.westnordost.streetcomplete.oauth.OAuthComponent;
 import de.westnordost.streetcomplete.oauth.OAuthWebViewDialogFragment;
@@ -537,17 +536,14 @@ public class MainActivity extends AppCompatActivity implements
 
 	/* ------------- VisibleQuestListener ------------- */
 
-	@Override public void onQuestCreated(OsmQuest quest, Element element)
+	@AnyThread
+	@Override public void onQuestsCreated(Collection<? extends Quest> quests, QuestGroup group)
 	{
-		onQuestCreated(quest, QuestGroup.OSM, element);
+		mapFragment.addQuests(quests, group);
 	}
 
-	@Override public void onQuestCreated(OsmNoteQuest quest)
-	{
-		onQuestCreated(quest, QuestGroup.OSM_NOTE, null);
-	}
-
-	@AnyThread private synchronized void onQuestCreated(final Quest quest, final QuestGroup group,
+	@AnyThread
+	@Override public synchronized void onQuestCreated(final Quest quest, final QuestGroup group,
 														final Element element)
 	{
 		if (clickedQuestId != null && quest.getId().equals(clickedQuestId) && group == clickedQuestGroup)
@@ -566,35 +562,23 @@ public class MainActivity extends AppCompatActivity implements
 		{
 			mapFragment.addQuestGeometry(quest.getGeometry());
 		}
-		mapFragment.addQuest(quest, group);
 	}
 
-	@Override public void onOsmQuestRemoved(long questId)
-	{
-		onQuestRemoved(QuestGroup.OSM, questId);
-	}
-
-	@Override public void onNoteQuestRemoved(long questId)
-	{
-		onQuestRemoved(QuestGroup.OSM_NOTE, questId);
-	}
-
-	@AnyThread public synchronized void onQuestRemoved(QuestGroup group, long questId)
+	@AnyThread
+	@Override public synchronized void onQuestsRemoved(Collection<Long> questIds, QuestGroup group)
 	{
 		// amount of quests is reduced -> check if redownloding now makes sense
 		triggerAutoDownloadFor(lastAutoDownloadPos);
 
-		if (isQuestDetailsCurrentlyDisplayedFor(questId, group))
+		for(long questId : questIds)
 		{
-			runOnUiThread(new Runnable()
-			{
-				@Override public void run()
-				{
-					closeQuestDetails();
-				}
-			});
+			if (!isQuestDetailsCurrentlyDisplayedFor(questId, group)) continue;
+
+			runOnUiThread(new Runnable() { @Override public void run() { closeQuestDetails(); }});
+			break;
 		}
-		mapFragment.removeQuest(group, questId);
+
+		mapFragment.removeQuests(questIds, group);
 	}
 
 	@UiThread private void closeQuestDetails()

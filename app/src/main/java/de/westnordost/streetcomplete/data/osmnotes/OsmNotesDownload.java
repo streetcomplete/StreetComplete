@@ -8,13 +8,16 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 import javax.inject.Inject;
 
 import de.westnordost.streetcomplete.ApplicationConstants;
+import de.westnordost.streetcomplete.data.QuestGroup;
 import de.westnordost.streetcomplete.data.QuestStatus;
 import de.westnordost.streetcomplete.Prefs;
+import de.westnordost.streetcomplete.data.VisibleQuestListener;
 import de.westnordost.streetcomplete.data.tiles.DownloadedTilesDao;
 import de.westnordost.streetcomplete.util.SlippyMapMath;
 import de.westnordost.osmapi.common.Handler;
@@ -35,7 +38,7 @@ public class OsmNotesDownload
 	private final DownloadedTilesDao downloadedTilesDao;
 	private final SharedPreferences preferences;
 
-	private VisibleOsmNoteQuestListener listener;
+	private VisibleQuestListener listener;
 
 	@Inject public OsmNotesDownload(
 			NotesDao noteServer, NoteDao noteDB, OsmNoteQuestDao noteQuestDB,
@@ -49,7 +52,7 @@ public class OsmNotesDownload
 		this.preferences = preferences;
 	}
 
-	public void setQuestListener(VisibleOsmNoteQuestListener listener)
+	public void setQuestListener(VisibleQuestListener listener)
 	{
 		this.listener = listener;
 	}
@@ -98,13 +101,14 @@ public class OsmNotesDownload
 
 		if(listener != null)
 		{
-			for (OsmNoteQuest quest : quests)
+			Iterator<OsmNoteQuest> it = quests.iterator();
+			while(it.hasNext())
 			{
 				// it is null if this quest is already in the DB, so don't call onQuestCreated
-				if(quest.getId() == null) continue;
-
-				listener.onQuestCreated(quest);
+				if(it.next().getId() == null) it.remove();
 			}
+
+			listener.onQuestsCreated(quests, QuestGroup.OSM_NOTE);
 			/* we do not call listener.onNoteQuestRemoved for hiddenQuests here, because on
 			*  replacing hiddenQuests into DB, they get new quest IDs. As far as the DB is concerned,
 			*  hidden note quests are always new quests which are hidden.
@@ -118,10 +122,7 @@ public class OsmNotesDownload
 		{
 			if(listener != null)
 			{
-				for (Long questId : previousQuestsByNoteId.values())
-				{
-					listener.onNoteQuestRemoved(questId);
-				}
+				listener.onQuestsRemoved(previousQuestsByNoteId.values(), QuestGroup.OSM_NOTE);
 			}
 
 			noteQuestDB.deleteAll(previousQuestsByNoteId.values());

@@ -1,8 +1,9 @@
 package de.westnordost.streetcomplete.data;
 
 
-import de.westnordost.streetcomplete.data.osm.OsmQuest;
-import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuest;
+import java.util.Collection;
+import java.util.Collections;
+
 import de.westnordost.osmapi.map.data.Element;
 
 /** Threadsafe relay for VisibleQuestListener
@@ -16,23 +17,23 @@ public class VisibleQuestRelay implements VisibleQuestListener
 		this.listener = listener;
 	}
 
-	@Override public synchronized void onQuestCreated(OsmQuest quest, Element element)
+	@Override public void onQuestCreated(Quest quest, QuestGroup group, Element element)
 	{
-		if (listener != null) listener.onQuestCreated(quest, element);
+		if (listener != null) listener.onQuestCreated(quest, group, element);
 	}
 
-	@Override public synchronized void onOsmQuestRemoved(long questId)
+	@Override public void onQuestsRemoved(Collection<Long> questIds, QuestGroup group)
 	{
-		if (listener != null) listener.onOsmQuestRemoved(questId);
+		if (listener != null) listener.onQuestsRemoved(questIds, group);
 	}
 
-	@Override public synchronized void onQuestCreated(OsmNoteQuest quest)
+	@Override public void onQuestsCreated(Collection<? extends Quest> quests, QuestGroup group)
 	{
-		if (listener != null) listener.onQuestCreated(quest);
+		if (listener != null) listener.onQuestsCreated(quests, group);
 	}
 
-	@Override public synchronized void onNoteQuestRemoved(long questId)
+	public void onQuestRemoved(long questId, QuestGroup group)
 	{
-		if (listener != null) listener.onNoteQuestRemoved(questId);
+		onQuestsRemoved(Collections.singletonList(questId), group);
 	}
 }

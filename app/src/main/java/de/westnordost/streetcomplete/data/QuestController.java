@@ -8,9 +8,8 @@ import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.IBinder;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 import javax.inject.Inject;
 
@@ -43,7 +42,6 @@ public class QuestController
 	private final OsmNoteQuestDao osmNoteQuestDB;
 	private final CreateNoteDao createNoteDB;
 	private final Context context;
-	private final ExecutorService questRetriever;
 	private final VisibleQuestRelay relay;
 
 	private QuestAutoDownloadStrategy downloadStrategy;
@@ -75,7 +73,6 @@ public class QuestController
 		this.createNoteDB = createNoteDB;
 		this.context = context;
 		this.relay = new VisibleQuestRelay();
-		questRetriever = Executors.newSingleThreadExecutor();
 	}
 
 	public void onStart(VisibleQuestListener questListener)
@@ -125,11 +122,15 @@ public class QuestController
 			 *  created next time they are downloaded */
 			List<OsmQuest> quests = osmQuestDB.getAll(null, QuestStatus.NEW, null,
 					q.getElementType(), q.getElementId());
+			List<Long> questIds = new ArrayList<>(quests.size());
 			for(OsmQuest quest : quests)
 			{
-				osmQuestDB.delete(quest.getId());
-				relay.onOsmQuestRemoved(quest.getId());
+				questIds.add(quest.getId());
 			}
+
+			osmQuestDB.deleteAll(questIds);
+			relay.onQuestsRemoved(questIds, QuestGroup.OSM);
+
 			osmElementDB.deleteUnreferenced();
 			geometryDB.deleteUnreferenced();
 
@@ -155,7 +156,7 @@ public class QuestController
 					q.setChanges(changes);
 					q.setStatus(QuestStatus.ANSWERED);
 					osmQuestDB.update(q);
-					relay.onOsmQuestRemoved(q.getId());
+					relay.onQuestRemoved(q.getId(), group);
 				}
 				else
 				{
@@ -173,7 +174,7 @@ public class QuestController
 					q.setComment(comment);
 					q.setStatus(QuestStatus.ANSWERED);
 					osmNoteQuestDB.update(q);
-					relay.onNoteQuestRemoved(q.getId());
+					relay.onQuestRemoved(q.getId(), group);
 				}
 				else
 				{
@@ -196,14 +197,14 @@ public class QuestController
 				OsmQuest q = osmQuestDB.get(questId);
 				q.setStatus(QuestStatus.HIDDEN);
 				osmQuestDB.update(q);
-				relay.onOsmQuestRemoved(q.getId());
+				relay.onQuestRemoved(q.getId(), group);
 			}
 			else if(group == QuestGroup.OSM_NOTE)
 			{
 				OsmNoteQuest q = osmNoteQuestDB.get(questId);
 				q.setStatus(QuestStatus.HIDDEN);
 				osmNoteQuestDB.update(q);
-				relay.onNoteQuestRemoved(q.getId());
+				relay.onQuestRemoved(q.getId(), group);
 			}
 		}}.start();
 	}
@@ -211,38 +212,32 @@ public class QuestController
 	/** Retrieve the given quest from local database asynchronously, including the element / note. */
 	public void retrieve(final QuestGroup group, final long questId)
 	{
-		questRetriever.submit(new Runnable() { @Override public void run()
+		new Thread() { @Override public void run()
 		{
 			switch (group)
 			{
 				case OSM:
 					OsmQuest osmQuest = osmQuestDB.get(questId);
 					Element element = osmElementDB.get(osmQuest.getElementType(), osmQuest.getElementId());
-					relay.onQuestCreated(osmQuest, element);
+					relay.onQuestCreated(osmQuest, group, element);
 					break;
 				case OSM_NOTE:
 					OsmNoteQuest osmNoteQuest = osmNoteQuestDB.get(questId);
-					relay.onQuestCreated(osmNoteQuest);
+					relay.onQuestCreated(osmNoteQuest, group, null);
 					break;
 			}
-		}});
+		}}.start();
 	}
 
 	/** Retrieve all visible (=new) quests in the given bounding box from local database
 	 *  asynchronously. */
 	public void retrieve(final BoundingBox bbox)
 	{
-		questRetriever.submit(new Runnable() { @Override public void run()
+		new Thread() { @Override public void run()
 		{
-			for (OsmQuest q : osmQuestDB.getAll(bbox, QuestStatus.NEW))
-			{
-				relay.onQuestCreated(q, null);
-			}
-			for (OsmNoteQuest q : osmNoteQuestDB.getAll(bbox, QuestStatus.NEW))
-			{
-				relay.onQuestCreated(q);
-			}
-		}});
+			relay.onQuestsCreated(osmQuestDB.getAll(bbox, QuestStatus.NEW), QuestGroup.OSM);
+			relay.onQuestsCreated(osmNoteQuestDB.getAll(bbox, QuestStatus.NEW), QuestGroup.OSM_NOTE);
+		}}.start();
 	}
 
 	/** Download quests in at least the given bounding box asynchronously. The next-bigger rectangle
