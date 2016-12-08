@@ -267,6 +267,8 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.ScaleRe
 
 	public void addQuests(Iterable quests, QuestGroup group)
 	{
+		if(questsLayer == null) return;
+
 		StringBuilder geoJson = new StringBuilder();
 		geoJson.append("{\"type\":\"FeatureCollection\",\"features\": [");
 
