@@ -20,6 +20,5 @@ pl$: place
 rd$: road
 sq$: square
 str?$: street
-^st: saint
 twp$: township
 wy$: way
