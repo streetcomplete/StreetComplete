@@ -131,7 +131,7 @@ public class CurrentCountry
 		if(tm.getPhoneType() == TelephonyManager.PHONE_TYPE_CDMA) return null;
 
 		String networkCountry = tm.getNetworkCountryIso();
-		if(networkCountry == null) return null;
+		if(networkCountry == null || networkCountry.isEmpty()) return null;
 
 		return networkCountry.toUpperCase(Locale.US);
 	}
@@ -142,7 +142,7 @@ public class CurrentCountry
 		if(tm == null) return null;
 
 		String userCountry = tm.getSimCountryIso();
-		if (userCountry == null) return null;
+		if (userCountry == null || userCountry.isEmpty()) return null;
 
 		return userCountry.toUpperCase(Locale.US);
 	}
