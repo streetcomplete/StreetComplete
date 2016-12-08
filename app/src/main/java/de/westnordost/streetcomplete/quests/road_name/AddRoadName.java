@@ -45,7 +45,7 @@ public class AddRoadName extends OverpassQuestType
 
 	@Override public int getCommitMessageResourceId()
 	{
-		return R.string.quest_openingHours_commitMessage;
+		return R.string.quest_streetName_commitMessage;
 	}
 
 	@Override public String getIconName() {	return "signpost"; }
