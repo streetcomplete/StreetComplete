@@ -28,7 +28,7 @@ import de.westnordost.streetcomplete.util.SphericalEarthMath;
 
 public class QuestsMapFragment extends MapFragment implements TouchInput.ScaleResponder,
 		TouchInput.ShoveResponder, TouchInput.RotateResponder, MapController.FeaturePickListener,
-		TouchInput.TapResponder, TouchInput.PanResponder
+		TouchInput.TapResponder, TouchInput.PanResponder, TouchInput.DoubleTapResponder
 {
 	private static final String MARKER_QUEST_ID = "quest_id";
 	private static final String MARKER_QUEST_GROUP = "quest_group";
@@ -88,9 +88,18 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.ScaleRe
 		controller.setShoveResponder(this);
 		controller.setScaleResponder(this);
 		controller.setPanResponder(this);
+		controller.setDoubleTapResponder(this);
 
 		listener.onMapReady();
 		updateView();
+	}
+
+	@Override public boolean onDoubleTap(float x, float y)
+	{
+		LngLat zoomTo = controller.screenPositionToLngLat(new PointF(x, y));
+		controller.setPositionEased(zoomTo, 500);
+		controller.setZoomEased(controller.getZoom() + 1.5f, 500);
+		return true;
 	}
 
 	@Override public boolean onScale(float x, float y, float scale, float velocity)
