@@ -202,6 +202,7 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 
 	protected abstract void onClickOk();
 
+	/** Apply an answer given in the form with the "OK" button */
 	protected final void applyAnswer(Bundle data)
 	{
 		// each form should check this on its own, but in case it doesn't, this is the last chance
@@ -210,6 +211,12 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 			Toast.makeText(getActivity(), R.string.no_changes, Toast.LENGTH_SHORT).show();
 			return;
 		}
+		questAnswerComponent.onAnswerQuest(data);
+	}
+
+	/** Apply an answer not given through the usual "OK" button */
+	protected final void applyOtherAnswer(Bundle data)
+	{
 		questAnswerComponent.onAnswerQuest(data);
 	}
 

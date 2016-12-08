@@ -120,7 +120,7 @@ public class AddRoadNameForm extends AbstractQuestAnswerFragment
 			{
 				Bundle data = new Bundle();
 				data.putBoolean(NO_NAME, true);
-				applyAnswer(data);
+				applyOtherAnswer(data);
 			}
 		};
 		DialogInterface.OnClickListener onNo = new DialogInterface.OnClickListener()
