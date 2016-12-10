@@ -148,5 +148,6 @@
     <string name="version_banned_message">This version of StreetComplete has been banned from uploading any answers!\n\nPlease update your version!</string>
     <string name="no_gps_no_quests">To scan for quests around you automatically, turn on location</string>
     <string name="nothing_more_to_download">No further quests available</string>
+    <string name="later">Later</string>
 
 </resources>

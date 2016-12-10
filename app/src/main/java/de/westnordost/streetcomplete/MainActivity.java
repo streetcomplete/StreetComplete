@@ -255,6 +255,7 @@ public class MainActivity extends AppCompatActivity implements
 	@Override public void onStop()
 	{
 		super.onStop();
+		Log.e("STOPP","here " + this.toString());
 
 		unregisterReceiver(wifiReceiver);
 
@@ -345,7 +346,7 @@ public class MainActivity extends AppCompatActivity implements
 		new AlertDialog.Builder(this)
 				.setMessage(R.string.confirmation_authorize_now)
 				.setPositiveButton(android.R.string.ok, onYes)
-				.setNegativeButton(android.R.string.cancel, null).show();
+				.setNegativeButton(R.string.later, null).show();
 	}
 
 	@Override public void onOAuthAuthorized(OAuthConsumer consumer, List<String> permissions)

@@ -104,4 +104,5 @@
     <string name="version_banned_message">Diese Version von StreetComplete wurde gebannt, Antworten hochzuladen! Bitte update deine Version!</string>
     <string name="no_gps_no_quests">Um automatisch nach Aufgaben in deiner Nähe zu suchen, schalte Standort an</string>
     <string name="nothing_more_to_download">Keine weiteren Aufgaben verfügbar</string>
+    <string name="later">Später</string>
 </resources>
