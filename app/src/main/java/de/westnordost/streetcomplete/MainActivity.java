@@ -236,6 +236,7 @@ public class MainActivity extends AppCompatActivity implements
 		QuestAutoDownloadStrategy newStrategy = isConnectedToWifi() ? wifiDownloadStrategy : mobileDataDownloadStrategy;
 		questController.setDownloadStrategy(newStrategy);
 
+		progressBar.setVisibility(View.INVISIBLE);
 		downloadServiceIsBound = bindService(
 				new Intent(this, QuestDownloadService.class),
 				downloadServiceConnection, BIND_AUTO_CREATE);
