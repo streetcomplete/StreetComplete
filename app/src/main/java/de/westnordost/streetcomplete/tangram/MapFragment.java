@@ -32,7 +32,7 @@ import de.westnordost.streetcomplete.R;
 
 /** The map view with the attribution texts and the "find me" button.  */
 public class MapFragment extends Fragment implements
-		FragmentCompat.OnRequestPermissionsResultCallback, LocationListener
+		FragmentCompat.OnRequestPermissionsResultCallback, LocationListener, LostApiClient.ConnectionCallbacks
 {
 	private static final String LOCATION_LAYER = "streetcomplete_location";
 
@@ -48,6 +48,7 @@ public class MapFragment extends Fragment implements
 
 	private LostApiClient lostApiClient;
 	private boolean zoomedYet;
+	private boolean startTrackingWhenConnected;
 
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
 									   Bundle savedInstanceState)
@@ -98,8 +99,15 @@ public class MapFragment extends Fragment implements
 		}
 	}
 
-	public boolean startPositionTracking() throws SecurityException
+	public void startPositionTracking() throws SecurityException
 	{
+		if(!lostApiClient.isConnected())
+		{
+			startTrackingWhenConnected = true;
+			return;
+		}
+		startTrackingWhenConnected = false;
+
 		zoomedYet = false;
 		Location location = LocationServices.FusedLocationApi.getLastLocation(lostApiClient);
 		if (location != null)
@@ -114,8 +122,6 @@ public class MapFragment extends Fragment implements
 				.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
 
 		LocationServices.FusedLocationApi.requestLocationUpdates(lostApiClient, request, this);
-
-		return true;
 	}
 
 	public void stopPositionTracking()
@@ -223,7 +229,7 @@ public class MapFragment extends Fragment implements
 	@Override public void onAttach(Activity activity)
 	{
 		super.onAttach(activity);
-		lostApiClient = new LostApiClient.Builder(activity).build();
+		lostApiClient = new LostApiClient.Builder(activity).addConnectionCallbacks(this).build();
 	}
 
 	@Override public void onStart()
@@ -251,6 +257,16 @@ public class MapFragment extends Fragment implements
 		super.onStop();
 		stopPositionTracking();
 		lostApiClient.disconnect();
+	}
+
+	@Override public void onConnected()
+	{
+		if(startTrackingWhenConnected) startPositionTracking();
+	}
+
+	@Override public void onConnectionSuspended()
+	{
+
 	}
 
 	@Override public void onDestroy()
