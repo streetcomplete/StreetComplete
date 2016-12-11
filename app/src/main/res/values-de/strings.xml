@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="quest_streetName_commitMessage">Straßennamen hinzugefügt</string>
     <string name="quest_streetName_description">wie es auf dem Straßenschild steht, Abkürzungen werden ausgeschrieben:</string>
     <string name="quest_streetName_title">Wie heißt diese Straße?</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">Abkürzungen in Straßennamen sollten immer ausgeschrieben werden. Für übliche Abkürzungen passiert das automatisch beim Schreiben, aber eventuell nicht für alle.</string>
@@ -29,7 +28,6 @@
     <string name="quest_openingHours_24_7_confirmation">Mit anderen Worten, es hat einfach immer auf?</string>
     <string name="quest_openingHours_chooseMonthsTitle">Monate auswählen</string>
     <string name="quest_openingHours_chooseWeekdaysTitle">Wochentage auswählen</string>
-    <string name="quest_openingHours_commitMessage">Öffnungszeiten hinzugefügt</string>
     <string name="quest_openingHours_end_time">schließt um</string>
     <string name="quest_openingHours_start_time">öffnet um</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">Alle Notizen anzeigen</string>
@@ -105,4 +103,10 @@
     <string name="no_gps_no_quests">Um automatisch nach Aufgaben in deiner Nähe zu suchen, schalte Standort an</string>
     <string name="nothing_more_to_download">Keine weiteren Aufgaben verfügbar</string>
     <string name="later">Später</string>
+    <string name="quest_streetName_answer_noProperStreet">Keine ordentliche Straße</string>
+    <string name="quest_streetName_answer_noProperStreet_leaveNote">Was anderes (Notiz hinterlassen)</string>
+    <string name="quest_streetName_answer_noProperStreet_link">Sie ist eine Anschlussstelle zwischen zwei Straßen</string>
+    <string name="quest_streetName_answer_noProperStreet_question">Was dann?</string>
+    <string name="quest_streetName_answer_noProperStreet_service">Es ist nur eine Zufahrt</string>
+    <string name="quest_streetName_answer_noProperStreet_track">Es ist nur ein Feldweg (Wirtschaftsweg)</string>
 </resources>

@@ -30,21 +30,34 @@ public class AddRoadName extends OverpassQuestType
 		return new AddRoadNameForm();
 	}
 
-	public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
+	public Integer applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
 	{
 		if(answer.getBoolean(AddRoadNameForm.NO_NAME))
 		{
 			changes.add("no_name", "yes");
+			return R.string.quest_streetName_commitMessage_noname;
 		}
-		else
-		{
-			String name = answer.getString(AddRoadNameForm.NAME);
-			if(name != null) changes.add("name", name);
-		}
-	}
 
-	@Override public int getCommitMessageResourceId()
-	{
+		int noProperRoad = answer.getInt(AddRoadNameForm.NO_PROPER_ROAD);
+		if(noProperRoad != 0)
+		{
+			if(noProperRoad == AddRoadNameForm.IS_SERVICE)
+				changes.modify("highway", "service");
+			else if(noProperRoad == AddRoadNameForm.IS_TRACK)
+				changes.modify("highway", "track");
+			else if(noProperRoad == AddRoadNameForm.IS_LINK)
+			{
+				String prevValue = changes.getPreviousValue("highway");
+				if(prevValue.matches("primary|secondary|tertiary"))
+				{
+					changes.modify("highway", prevValue + "_link");
+				}
+			}
+			return R.string.quest_streetName_commitMessage_noproperroad;
+		}
+
+		String name = answer.getString(AddRoadNameForm.NAME);
+		if(name != null) changes.add("name", name);
 		return R.string.quest_streetName_commitMessage;
 	}
 

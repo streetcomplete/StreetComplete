@@ -149,11 +149,16 @@ public class QuestController
 				OsmQuest q = osmQuestDB.get(questId);
 				Element e = osmElementDB.get(q.getElementType(), q.getElementId());
 				StringMapChangesBuilder changesBuilder = new StringMapChangesBuilder(e.getTags());
-				q.getOsmElementQuestType().applyAnswerTo(answer, changesBuilder);
+				Integer commitResourceId = q.getOsmElementQuestType().applyAnswerTo(answer, changesBuilder);
 				StringMapChanges changes = changesBuilder.create();
 				if(!changes.isEmpty())
 				{
-					q.setChanges(changes);
+					String commitMessage = null;
+					if(commitResourceId != null)
+					{
+						commitMessage = context.getResources().getString(commitResourceId);
+					}
+					q.setChanges(commitMessage, changes);
 					q.setStatus(QuestStatus.ANSWERED);
 					osmQuestDB.update(q);
 					relay.onQuestRemoved(q.getId(), group);

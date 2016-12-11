@@ -21,7 +21,7 @@ import de.westnordost.streetcomplete.data.tiles.DownloadedTilesTable;
 public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 {
 	public static final String DB_NAME = "streetcomplete.db";
-	public static final int DB_VERSION = 1;
+	public static final int DB_VERSION = 2;
 
 	private static final String OSM_QUESTS_TABLE_CREATE =
 			"CREATE TABLE " + OsmQuestTable.NAME +
@@ -30,6 +30,7 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 				OsmQuestTable.Columns.QUEST_TYPE +		" varchar(255)	NOT NULL, " +
 				OsmQuestTable.Columns.QUEST_STATUS +	" varchar(255)	NOT NULL, " +
 				OsmQuestTable.Columns.TAG_CHANGES +		" blob, " + // null if no changes
+				OsmQuestTable.Columns.COMMIT_MESSAGE +	" varchar(255), " + // null if no changes
 				OsmQuestTable.Columns.LAST_UPDATE + 	" int			NOT NULL, " +
 				OsmQuestTable.Columns.ELEMENT_ID +		" int			NOT NULL, " +
 				OsmQuestTable.Columns.ELEMENT_TYPE +	" varchar(255)	NOT NULL, " +
@@ -187,6 +188,12 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
 	{
+		if(oldVersion < 2)
+		{
+			db.execSQL("ALTER TABLE " + OsmQuestTable.NAME + " ADD COLUMN "
+					+ OsmQuestTable.Columns.COMMIT_MESSAGE + " varchar(255);");
+		}
+
 		// for later changes to the DB
 	}
 }

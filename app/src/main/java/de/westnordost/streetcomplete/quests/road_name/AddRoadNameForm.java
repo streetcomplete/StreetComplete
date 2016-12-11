@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import de.westnordost.streetcomplete.R;
@@ -16,6 +17,9 @@ public class AddRoadNameForm extends AbstractQuestAnswerFragment
 {
 	public static final String NO_NAME = "no_name";
 	public static final String NAME = "name";
+
+	public static final String NO_PROPER_ROAD = "no_proper_road";
+	public static final int IS_SERVICE = 1, IS_LINK = 2, IS_TRACK = 3;
 
 	private AutoCorrectAbbreviationsEditText nameInput;
 
@@ -44,6 +48,7 @@ public class AddRoadNameForm extends AbstractQuestAnswerFragment
 	{
 		List<Integer> answers = super.getOtherAnswerResourceIds();
 		answers.add(R.string.quest_streetName_answer_noName);
+		answers.add(R.string.quest_streetName_answer_noProperStreet);
 		return answers;
 	}
 
@@ -56,6 +61,11 @@ public class AddRoadNameForm extends AbstractQuestAnswerFragment
 			confirmNoStreetName();
 			return true;
 		}
+		else if (itemResourceId == R.string.quest_streetName_answer_noProperStreet)
+		{
+			selectNoProperStreetWhatThen();
+		}
+
 		return false;
 	}
 
@@ -138,6 +148,63 @@ public class AddRoadNameForm extends AbstractQuestAnswerFragment
 				.setPositiveButton(R.string.quest_streetName_noName_confirmation_positive, onYes)
 				.setNegativeButton(R.string.quest_generic_confirmation_no, onNo)
 				.show();
+	}
+
+	private void selectNoProperStreetWhatThen()
+	{
+		final String
+				linkRoad = getResources().getString(R.string.quest_streetName_answer_noProperStreet_link),
+				serviceRoad = getResources().getString(R.string.quest_streetName_answer_noProperStreet_service),
+				trackRoad = getResources().getString(R.string.quest_streetName_answer_noProperStreet_track),
+				leaveNote = getResources().getString(R.string.quest_streetName_answer_noProperStreet_leaveNote);
+
+		String highwayValue = getOsmElement().getTags().get("highway");
+		boolean mayBeLink = highwayValue.matches("primary|secondary|tertiary");
+
+		final List<String> answers = new ArrayList<>(3);
+		if(mayBeLink) answers.add(linkRoad);
+		answers.add(serviceRoad);
+		answers.add(trackRoad);
+		answers.add(leaveNote);
+
+		DialogInterface.OnClickListener onSelect = new DialogInterface.OnClickListener()
+		{
+			Integer selection;
+
+			@Override public void onClick(DialogInterface dialog, int which)
+			{
+				if (which >= 0) selection = which;
+				else if (which == DialogInterface.BUTTON_POSITIVE)
+				{
+					if(selection == null || selection < 0 || selection >= answers.size()) return;
+					onAnswer();
+				}
+			}
+
+			private void onAnswer()
+			{
+				String answer = answers.get(selection);
+				if(answer.equals(leaveNote))
+				{
+					onClickCantSay();
+				}
+				else
+				{
+					Bundle data = new Bundle();
+					int type = 0;
+					if(answer.equals(linkRoad))		type = IS_LINK;
+					if(answer.equals(serviceRoad))	type = IS_SERVICE;
+					if(answer.equals(trackRoad))    type = IS_TRACK;
+					data.putInt(NO_PROPER_ROAD, type);
+					applyOtherAnswer(data);
+				}
+			}
+		};
+
+		new AlertDialog.Builder(getActivity())
+				.setSingleChoiceItems(answers.toArray(new String[0]), -1, onSelect)
+				.setTitle(R.string.quest_streetName_answer_noProperStreet_question)
+				.setPositiveButton(android.R.string.ok, onSelect).show();
 	}
 
 	@Override public boolean hasChanges()

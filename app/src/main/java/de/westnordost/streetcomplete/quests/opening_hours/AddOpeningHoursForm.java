@@ -37,7 +37,7 @@ public class AddOpeningHoursForm extends AbstractQuestAnswerFragment
 
 	private void setTitle()
 	{
-		OsmElement element = (OsmElement) getArguments().getSerializable(AbstractQuestAnswerFragment.ELEMENT);
+		OsmElement element = getOsmElement();
 		String name = null;
 		if(element != null && element.getTags() != null)
 		{

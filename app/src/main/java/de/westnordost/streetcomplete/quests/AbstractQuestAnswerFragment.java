@@ -22,6 +22,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.westnordost.osmapi.map.data.OsmElement;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.QuestGroup;
 
@@ -250,5 +251,10 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 	public final QuestGroup getQuestGroup()
 	{
 		return questAnswerComponent.getQuestGroup();
+	}
+
+	protected final OsmElement getOsmElement()
+	{
+		return (OsmElement) getArguments().getSerializable(AbstractQuestAnswerFragment.ELEMENT);
 	}
 }

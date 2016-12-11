@@ -15,6 +15,7 @@ public class OsmQuestTable
 				ELEMENT_TYPE  = "element_type",
 				QUEST_STATUS = "quest_status",
 				TAG_CHANGES = "tag_changes",
+				COMMIT_MESSAGE = "commit_message",
 				LAST_UPDATE = "last_update";
 	}
 }

@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.upload;
 
 
-import android.content.res.Resources;
 import android.util.Log;
 
 import java.util.Collections;
@@ -19,7 +18,6 @@ import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao;
 import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
 import de.westnordost.streetcomplete.data.statistics.QuestStatisticsDao;
-import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 import de.westnordost.osmapi.common.errors.OsmConflictException;
 import de.westnordost.osmapi.map.MapDataDao;
 import de.westnordost.osmapi.map.data.Element;
@@ -30,7 +28,6 @@ public class OsmQuestChangesUpload
 {
 	private static String TAG = "QuestUpload";
 
-	private final Resources resources;
 	private final MapDataDao osmDao;
 	private final OsmQuestDao questDB;
 	private final MergedElementDao elementDB;
@@ -39,9 +36,8 @@ public class OsmQuestChangesUpload
 
 	@Inject public OsmQuestChangesUpload(
 			MapDataDao osmDao, OsmQuestDao questDB, MergedElementDao elementDB,
-			ElementGeometryDao elementGeometryDB, Resources resources, QuestStatisticsDao statisticsDB)
+			ElementGeometryDao elementGeometryDB, QuestStatisticsDao statisticsDB)
 	{
-		this.resources = resources;
 		this.osmDao = osmDao;
 		this.questDB = questDB;
 		this.elementDB = elementDB;
@@ -59,7 +55,7 @@ public class OsmQuestChangesUpload
 
 			Element element = elementDB.get(quest.getElementType(), quest.getElementId());
 
-			Map<String,String> changesetTags = createChangesetTags(quest.getOsmElementQuestType());
+			Map<String,String> changesetTags = createChangesetTags(quest);
 			if (uploadQuestChanges(quest, element, changesetTags, false))
 			{
 				commits++;
@@ -173,13 +169,17 @@ public class OsmQuestChangesUpload
 		return element;
 	}
 
-	private Map<String,String> createChangesetTags(OsmElementQuestType questType)
+	private Map<String,String> createChangesetTags(OsmQuest quest)
 	{
 		Map<String,String> changesetTags = new HashMap<>();
-		int resourceId = questType.getCommitMessageResourceId();
-		changesetTags.put("comment", resources.getString(resourceId));
+		String commitMessage = quest.getCommitMessage();
+		if(commitMessage != null)
+		{
+			changesetTags.put("comment", commitMessage);
+		}
 		changesetTags.put("created_by", ApplicationConstants.USER_AGENT);
-		changesetTags.put(ApplicationConstants.QUESTTYPE_TAG_KEY, questType.getClass().getSimpleName());
+		String questTypeName = quest.getType().getClass().getSimpleName();
+		changesetTags.put(ApplicationConstants.QUESTTYPE_TAG_KEY, questTypeName);
 		changesetTags.put("source", "survey");
 		return changesetTags;
 	}

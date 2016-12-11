@@ -50,6 +50,11 @@ public class StringMapChangesBuilder
 		changes.put(key, new StringMapEntryModify(key, valueBefore, value));
 	}
 
+	public String getPreviousValue(@NonNull String key)
+	{
+		return source.get(key);
+	}
+
 	private void checkDuplicate(String key)
 	{
 		if(changes.containsKey(key))
