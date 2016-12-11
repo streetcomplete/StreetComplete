@@ -6,6 +6,8 @@ textures:
     location:
         url: images/position.png
         filtering: mipmap
+        sprites:
+            default: [0,0,54,54]
     quests:
         url: images/quests@2x.png
         filtering: mipmap
@@ -55,6 +57,7 @@ layers:
             location-icon:
                 collide: false
                 size: 27px
+                sprite: default
     streetcomplete_quests:
         filter: { $zoom: { min: 14 } }
         data: { source: streetcomplete_quests }
