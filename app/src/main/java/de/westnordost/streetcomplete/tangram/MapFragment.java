@@ -9,6 +9,7 @@ import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v13.app.FragmentCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -255,8 +256,15 @@ public class MapFragment extends Fragment implements
 	@Override public void onStop()
 	{
 		super.onStop();
-		stopPositionTracking();
-		lostApiClient.disconnect();
+		try
+		{
+			stopPositionTracking();
+			lostApiClient.disconnect();
+		} catch (NullPointerException e)
+		{
+			// TODO: remove when https://github.com/mapzen/lost/issues/143 is solved
+			e.printStackTrace();
+		}
 	}
 
 	@Override public void onConnected()

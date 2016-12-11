@@ -255,7 +255,6 @@ public class MainActivity extends AppCompatActivity implements
 	@Override public void onStop()
 	{
 		super.onStop();
-		Log.e("STOPP","here " + this.toString());
 
 		unregisterReceiver(wifiReceiver);
 
@@ -264,8 +263,15 @@ public class MainActivity extends AppCompatActivity implements
 		localBroadcaster.unregisterReceiver(uploadChangesErrorReceiver);
 		localBroadcaster.unregisterReceiver(uploadChangesFinishedReceiver);
 
-		stopLocationTracking();
-		lostApiClient.disconnect();
+		try
+		{
+			stopLocationTracking();
+			lostApiClient.disconnect();
+		} catch (NullPointerException e)
+		{
+			// TODO: remove when https://github.com/mapzen/lost/issues/143 is solved
+			e.printStackTrace();
+		}
 
 		questController.onStop();
 
