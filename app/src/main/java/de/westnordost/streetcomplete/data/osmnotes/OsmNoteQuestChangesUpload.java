@@ -12,7 +12,6 @@ import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.notes.Note;
 import de.westnordost.osmapi.notes.NotesDao;
 
-// TODO test case
 public class OsmNoteQuestChangesUpload
 {
 	private static final String TAG = "NoteCommentUpload";
@@ -52,7 +51,7 @@ public class OsmNoteQuestChangesUpload
 		Log.i(TAG, logMsg);
 	}
 
-	private Note uploadNoteChanges(OsmNoteQuest quest)
+	Note uploadNoteChanges(OsmNoteQuest quest)
 	{
 		String text = quest.getComment();
 
@@ -68,8 +67,9 @@ public class OsmNoteQuestChangesUpload
 			  */
 			// so, not this: questDB.delete(quest.getId());
 			quest.setStatus(QuestStatus.HIDDEN);
+			quest.setNote(newNote);
 			questDB.update(quest);
-			noteDB.put(quest.getNote());
+			noteDB.put(newNote);
 
 			return newNote;
 		}
