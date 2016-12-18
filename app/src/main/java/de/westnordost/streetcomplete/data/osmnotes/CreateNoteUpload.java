@@ -62,7 +62,7 @@ public class CreateNoteUpload
 		Log.i(TAG, logMsg);
 	}
 
-	private Note uploadCreateNote(CreateNote n)
+	Note uploadCreateNote(CreateNote n)
 	{
 		if(isAssociatedElementDeleted(n))
 		{
@@ -179,8 +179,9 @@ public class CreateNoteUpload
 		return "(?i:.*"+elementType+"\\s*#"+n.elementId+".*)";
 	}
 
-	private static String getAssociatedElementString(CreateNote n)
+	static String getAssociatedElementString(CreateNote n)
 	{
+		if(!n.hasAssociatedElement()) return "";
 		return " (" + n.elementType.name().toLowerCase(Locale.UK) + " #" + n.elementId + " )";
 	}
 }
