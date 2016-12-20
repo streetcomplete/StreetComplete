@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import de.westnordost.osmapi.common.errors.OsmConflictException;
-import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.OsmLatLon;
 import de.westnordost.osmapi.notes.Note;
 import de.westnordost.osmapi.notes.NotesDao;
@@ -24,12 +23,12 @@ public class OsmNoteQuestChangesUploadTest extends TestCase
 	{
 		OsmNoteQuestDao questDb = mock(OsmNoteQuestDao.class);
 		when(questDb.getAll(null, QuestStatus.ANSWERED)).thenAnswer(
-				new Answer<List<OsmNoteQuestChangesUpload>>()
+				new Answer<List<OsmNoteQuest>>()
 				{
-					@Override public List<OsmNoteQuestChangesUpload> answer(InvocationOnMock invocation) throws Throwable
+					@Override public List<OsmNoteQuest> answer(InvocationOnMock invocation) throws Throwable
 					{
 						Thread.sleep(1000); // take your time...
-						ArrayList<OsmNoteQuestChangesUpload> result = new ArrayList<>();
+						ArrayList<OsmNoteQuest> result = new ArrayList<>();
 						result.add(null);
 						return result;
 					}

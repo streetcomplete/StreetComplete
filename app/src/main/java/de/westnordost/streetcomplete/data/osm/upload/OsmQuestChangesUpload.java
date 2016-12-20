@@ -23,7 +23,6 @@ import de.westnordost.osmapi.map.MapDataDao;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.map.data.OsmElement;
 
-// TODO test case
 public class OsmQuestChangesUpload
 {
 	private static String TAG = "QuestUpload";
@@ -55,8 +54,7 @@ public class OsmQuestChangesUpload
 
 			Element element = elementDB.get(quest.getElementType(), quest.getElementId());
 
-			Map<String,String> changesetTags = createChangesetTags(quest);
-			if (uploadQuestChanges(quest, element, changesetTags, false))
+			if (uploadQuestChanges(quest, element, false))
 			{
 				commits++;
 			}
@@ -77,8 +75,7 @@ public class OsmQuestChangesUpload
 		Log.i(TAG, logMsg);
 	}
 
-	boolean uploadQuestChanges(OsmQuest quest, Element element, Map<String,String> changesetTags,
-									boolean alreadyHandlingConflict)
+	boolean uploadQuestChanges(OsmQuest quest, Element element, boolean alreadyHandlingConflict)
 	{
 		// The element can be null if it has been deleted in the meantime (outside this app usually)
 		if(element == null)
@@ -107,6 +104,8 @@ public class OsmQuestChangesUpload
 
 		try
 		{
+			Map<String,String> changesetTags = createChangesetTags(quest);
+
 			osmDao.updateMap( changesetTags, Collections.singleton(element), null);
 			/* A diff handler is not (yet) necessary: The local copy of an OSM element is updated
 			 * automatically on conflict. A diff handler would be necessary if elements could be
@@ -125,7 +124,7 @@ public class OsmQuestChangesUpload
 						element.getVersion(), e);
 			}
 			element = updateElementFromServer(quest.getElementType(), quest.getElementId());
-			uploadQuestChanges(quest, element, changesetTags, true);
+			return uploadQuestChanges(quest, element, true);
 		}
 
 		questDB.delete(quest.getId());
