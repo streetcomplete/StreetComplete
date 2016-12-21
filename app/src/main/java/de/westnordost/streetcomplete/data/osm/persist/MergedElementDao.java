@@ -27,8 +27,8 @@ public class MergedElementDao
 	public void putAll(Collection<Element> elements)
 	{
 		Collection<Node> nodes = new ArrayList<>();
-		Collection<Way> ways = new ArrayList<>();;
-		Collection<Relation> relations = new ArrayList<>();;
+		Collection<Way> ways = new ArrayList<>();
+		Collection<Relation> relations = new ArrayList<>();
 
 		for(Element element : elements)
 		{
