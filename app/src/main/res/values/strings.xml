@@ -136,12 +136,6 @@
     <string name="about_summary_repository">on GitHub</string>
     <string name="about_title_report_error">Report error</string>
     <string name="about_title_feedback">Give Feedback</string>
-    <string name="about_authors_html"><![CDATA[
-    <p>© 2016 Tobias Zwick</p>
-    <p>The app uses the <a href="https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free">Beautiful Flat Icons</a> set by Nick Roach, licensed under the <a href="http://www.gnu.org/licenses/gpl-2.0.html">GPL</a>.
-    </p>
-    ]]>
-    </string>
     <string name="about_title_license">License</string>
     <string name="about_summary_license" translatable="false">GNU General Public License</string>
     <string name="offline">You are offline</string>
@@ -158,5 +152,8 @@
     <string name="quest_streetName_answer_noProperStreet_service">It is just a service road</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">Something else (leave note)</string>
     <string name="quest_streetName_answer_noProperStreet_track">It is just a track</string>
+    <string name="about_title_privacy_statement">Privacy Statement</string>
+    <string name="about_summary_privacy_statement">and Data Usage</string>
+
 
 </resources>

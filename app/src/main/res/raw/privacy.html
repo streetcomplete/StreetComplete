@@ -1,0 +1,26 @@
+<p>Ah, someone who cares about privacy, nice! I think I have only good news for you:</p>
+<p><b>Direct Contributions</b></p>
+<p>
+First off, understand that with this app, you make actual and direct contributions to the OpenStreetMap.<br/>
+Anything you contribute in this app is directly added to the map, there is no third party in-between the app and OSM infrastructure, like it is the case with <a href="https://wheelmap.org">wheelmap.org</a> or <a href="http://www.kort.ch">Kort</a>.
+</p>
+<p>
+Editing the OpenStreetMap anonymously is not possible, so any changes you make are made with your OSM user account, which also means that your changes to the map are visible publicly on the openstreetmap website.
+</p>
+
+<b>Location</b><br/>
+<p>
+Your location is only used to automatically scan for quests around you. No worries, the app keeps your location for itself.
+</p>
+
+<p><b>Data Usage</b></p>
+<p>
+As mentioned, the app directly communicates with OSM infrastructure. That is, with the <a href="http://wiki.openstreetmap.org/wiki/Overpass_API">Overpass API</a> for downloading quests  (which is anonymous) and with the <a href="http://wiki.openstreetmap.org/wiki/API_v0.6">OSM API</a> for uploading changes.<br/>
+However, before uploading your changes, the app checks with a <a href="http://www.westnordost.de/streetcomplete/banned_versions.txt">simple text file</a> on my server whether it has been banned from uploading any changes. This is a precautionary measure to be able to keep versions of the app that turn out to have critical bugs from possibly corrupting OSM data.<br/>
+</p>
+<p>
+To display the map, vector tiles are retrieved from the <a href="https://mapzen.com/projects/vector-tiles/">Mapzen vector tile service</a>, which is anonymous. The service logs tile requests to understand which areas are popular for pre-caching and performance improvements. Their platform also logs IP addresses and all their hosting is at Amazon so they are subject to what they might do.
+</p>
+<p>
+(<i>This is actually not implemented yet, just want to inform you what is to come!:</i>) The data shown in the leaderboard and profile is aggregated from publicly available information from the OpenStreetMap. The data does not come from this app but basically from the public commit history of OSM users.
+</p>

@@ -92,10 +92,6 @@
     <string name="about_title_repository">Source Repository</string>
     <string name="about_title_version">Version</string>
     <string name="action_about">Über StreetComplete</string>
-    <string name="about_authors_html"><![CDATA[
-   <p>© 2016 Tobias Zwick</p>
-   <p>Die App nutzt das <a href="https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free">Beautiful Flat Icons</a> Set von Nick Roach, lizensiert unter der <a href="http://www.gnu.org/licenses/gpl-2.0.html">GPL</a>.</p>
-      ]]></string>
     <string name="offline">Du bist offline</string>
     <string name="confirmation_authorize_now">Du musst dich mit deinem OSM Account autorisieren um deine Antworten übertragen und damit abschließen zu können. Jetzt autorisieren?</string>
     <string name="not_authorized">Nicht autorisiert</string>
@@ -109,4 +105,6 @@
     <string name="quest_streetName_answer_noProperStreet_question">Was dann?</string>
     <string name="quest_streetName_answer_noProperStreet_service">Es ist nur eine Zufahrt</string>
     <string name="quest_streetName_answer_noProperStreet_track">Es ist nur ein Feldweg (Wirtschaftsweg)</string>
+    <string name="about_summary_privacy_statement">und Datennutzung</string>
+    <string name="about_title_privacy_statement">Datenschutzerklärung</string>
 </resources>

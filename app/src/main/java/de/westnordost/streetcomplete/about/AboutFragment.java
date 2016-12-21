@@ -37,7 +37,18 @@ public class AboutFragment extends PreferenceFragment
 			@Override
 			public boolean onPreferenceClick(Preference preference)
 			{
-				startActivity(new Intent(getActivity(), AboutAuthorsActivity.class));
+				showHtmlRes(R.string.about_title_authors, R.raw.authors);
+				return true;
+			}
+		});
+
+		getPreferenceScreen().findPreference("privacy").setOnPreferenceClickListener(
+				new Preference.OnPreferenceClickListener()
+		{
+			@Override
+			public boolean onPreferenceClick(Preference preference)
+			{
+				showHtmlRes(R.string.about_title_privacy_statement, R.raw.privacy);
 				return true;
 			}
 		});
@@ -82,5 +93,13 @@ public class AboutFragment extends PreferenceFragment
 				return false;
 			}
 		});
+	}
+
+	private void showHtmlRes(int titleResourceId, int htmlResourceId)
+	{
+		Intent intent = new Intent(getActivity(), ShowHtmlActivity.class);
+		intent.putExtra(ShowHtmlActivity.TITLE_STRING_RESOURCE_ID, titleResourceId);
+		intent.putExtra(ShowHtmlActivity.HTML_RESOURCE_ID, htmlResourceId);
+		startActivity(intent);
 	}
 }

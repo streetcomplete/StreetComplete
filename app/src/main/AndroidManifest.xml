@@ -37,7 +37,7 @@
             android:label="@string/action_about"
             android:parentActivityName=".MainActivity"/>
         <activity
-            android:name=".about.AboutAuthorsActivity"
+            android:name=".about.ShowHtmlActivity"
             android:label="@string/about_title_authors"
             android:parentActivityName=".about.AboutActivity"/>
         <service android:name="de.westnordost.streetcomplete.data.download.QuestDownloadService" />
