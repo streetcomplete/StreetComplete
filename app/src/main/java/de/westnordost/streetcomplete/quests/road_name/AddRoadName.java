@@ -34,7 +34,7 @@ public class AddRoadName extends OverpassQuestType
 	{
 		if(answer.getBoolean(AddRoadNameForm.NO_NAME))
 		{
-			changes.add("no_name", "yes");
+			changes.add("noname", "yes");
 			return R.string.quest_streetName_commitMessage_noname;
 		}
 
