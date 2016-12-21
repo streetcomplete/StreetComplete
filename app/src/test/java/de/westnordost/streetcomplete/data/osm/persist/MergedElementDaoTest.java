@@ -3,10 +3,16 @@ package de.westnordost.streetcomplete.data.osm.persist;
 import junit.framework.TestCase;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.map.data.Node;
+import de.westnordost.osmapi.map.data.OsmNode;
+import de.westnordost.osmapi.map.data.OsmRelation;
+import de.westnordost.osmapi.map.data.OsmRelationMember;
+import de.westnordost.osmapi.map.data.OsmWay;
 import de.westnordost.osmapi.map.data.Relation;
+import de.westnordost.osmapi.map.data.RelationMember;
 import de.westnordost.osmapi.map.data.Way;
 
 import static org.mockito.Matchers.anyCollectionOf;
@@ -100,7 +106,7 @@ public class MergedElementDaoTest extends TestCase
 	public void testPutAllRelations()
 	{
 		ArrayList<Element> elements = new ArrayList<>();
-		elements.add(mock(Relation.class));
+		elements.add(createARelation());
 
 		dao.putAll(elements);
 		verify(relationDao).putAll(anyCollectionOf(Relation.class));
@@ -109,7 +115,7 @@ public class MergedElementDaoTest extends TestCase
 	public void testPutAllWays()
 	{
 		ArrayList<Element> elements = new ArrayList<>();
-		elements.add(mock(Way.class));
+		elements.add(createAWay());
 
 		dao.putAll(elements);
 		verify(wayDao).putAll(anyCollectionOf(Way.class));
@@ -118,7 +124,7 @@ public class MergedElementDaoTest extends TestCase
 	public void testPutAllNodes()
 	{
 		ArrayList<Element> elements = new ArrayList<>();
-		elements.add(mock(Node.class));
+		elements.add(createANode());
 
 		dao.putAll(elements);
 		verify(nodeDao).putAll(anyCollectionOf(Node.class));
@@ -127,14 +133,30 @@ public class MergedElementDaoTest extends TestCase
 	public void testPutAllElements()
 	{
 		ArrayList<Element> elements = new ArrayList<>();
-		elements.add(mock(Node.class));
-		elements.add(mock(Way.class));
-		elements.add(mock(Relation.class));
+		elements.add(createANode());
+		elements.add(createAWay());
+		elements.add(createARelation());
 
 		dao.putAll(elements);
 		verify(nodeDao).putAll(anyCollectionOf(Node.class));
 		verify(wayDao).putAll(anyCollectionOf(Way.class));
 		verify(relationDao).putAll(anyCollectionOf(Relation.class));
+	}
+
+	private Node createANode()
+	{
+		return new OsmNode(0,0, 0.0, 0.0, null, null);
+	}
+
+	private Way createAWay()
+	{
+		return new OsmWay(0,0, Collections.singletonList(0L), null, null);
+	}
+
+	private Relation createARelation()
+	{
+		RelationMember m = new OsmRelationMember(0, "", Element.Type.NODE);
+		return new OsmRelation(0,0, Collections.singletonList(m), null, null);
 	}
 
 	public void testDeleteUnreferenced()
