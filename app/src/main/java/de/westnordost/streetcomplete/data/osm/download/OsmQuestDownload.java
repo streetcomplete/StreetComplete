@@ -119,7 +119,7 @@ public class OsmQuestDownload
 
 		int newQuestsByQuestType = osmQuestDB.addAll(quests);
 
-		if(questListener != null)
+		if(questListener != null && !quests.isEmpty())
 		{
 			Iterator<OsmQuest> it = quests.iterator();
 			while(it.hasNext())

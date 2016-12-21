@@ -16,7 +16,6 @@ import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.notes.Note;
 import de.westnordost.osmapi.notes.NotesDao;
 
-// TODO test case
 public class CreateNoteUpload
 {
 	private static final String TAG = "CreateNoteUpload";
