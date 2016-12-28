@@ -40,7 +40,7 @@
     </PreferenceCategory>
 
     <PreferenceCategory
-        android:key="communication"
+        android:key="display"
         android:title="@string/pref_category_display">
 
         <SwitchPreference
