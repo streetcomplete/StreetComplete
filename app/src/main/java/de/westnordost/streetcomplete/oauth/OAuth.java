@@ -24,8 +24,7 @@ public class OAuth
 	public static final List<String> REQUIRED_PERMISSIONS = Arrays.asList(
 			Permission.READ_PREFERENCES_AND_USER_DETAILS,
 			Permission.MODIFY_MAP,
-			Permission.WRITE_NOTES,
-			Permission.WRITE_GPS_TRACES);
+			Permission.WRITE_NOTES);
 
 	public static OAuthProvider createProvider()
 	{
