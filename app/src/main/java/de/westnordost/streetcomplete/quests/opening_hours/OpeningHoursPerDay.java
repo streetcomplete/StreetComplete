@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.quests.opening_hours;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
@@ -22,12 +21,12 @@ public class OpeningHoursPerDay extends LinearLayout
 	// this could go into per-country localization when this page (or any other source)
 	// https://en.wikipedia.org/wiki/Shopping_hours contains more information about typical
 	// opening hours per country
-	private static final CircularSection
-			TYPICAL_OPENING_TIMES = new CircularSection(8 * 60, 18 * 60),
-			TYPICAL_AM_OPENING_TIMES = new CircularSection(8 * 60, 12 * 60),
-			TYPICAL_PM_OPENING_TIMES = new CircularSection(14 * 60, 18 * 60);
+	private static final TimeRange
+			TYPICAL_OPENING_TIMES = new TimeRange(8 * 60, 18 * 60, false),
+			TYPICAL_AM_OPENING_TIMES = new TimeRange(8 * 60, 12 * 60, false),
+			TYPICAL_PM_OPENING_TIMES = new TimeRange(14 * 60, 18 * 60, false);
 
-	private Map<TextView, CircularSection> ranges = new HashMap<>();
+	private Map<TextView, TimeRange> ranges = new HashMap<>();
 
 	private Button btnAdd;
 	private ViewGroup rows;
@@ -75,18 +74,18 @@ public class OpeningHoursPerDay extends LinearLayout
 
 	public void add()
 	{
-		CircularSection range = getOpeningHoursSuggestion();
+		TimeRange range = getOpeningHoursSuggestion();
 
 		openSetTimeRangeDialog(new TimeRangePickerDialog.OnTimeRangeChangeListener()
 		{
-			@Override public void onTimeRangeChange(int start, int end)
+			@Override public void onTimeRangeChange(TimeRange timeRange)
 			{
-				add(start, end);
+				add(timeRange);
 			}
-		}, range.getStart(), range.getEnd());
+		}, range);
 	}
 
-	public void add(int start, int end)
+	public void add(TimeRange timeRange)
 	{
 		final LayoutInflater inflater = LayoutInflater.from(getContext());
 		final ViewGroup row = (ViewGroup) inflater.inflate(R.layout.quest_opening_hours_times_row, rows, false);
@@ -104,19 +103,19 @@ public class OpeningHoursPerDay extends LinearLayout
 		{
 			@Override public void onClick(View v)
 			{
-				CircularSection range = ranges.get(fromTo);
+				TimeRange range = ranges.get(fromTo);
 
 				openSetTimeRangeDialog(	new TimeRangePickerDialog.OnTimeRangeChangeListener()
 				{
-					@Override public void onTimeRangeChange(int start, int end)
+					@Override public void onTimeRangeChange(TimeRange timeRange)
 					{
-						putTime(fromTo, start, end);
+						putTime(fromTo, timeRange);
 					}
-				}, range.getStart(), range.getEnd());
+				}, range);
 			}
 		});
 
-		putTime(fromTo, start, end);
+		putTime(fromTo, timeRange);
 		rows.addView(row);
 		if(listener != null)
 		{
@@ -124,16 +123,16 @@ public class OpeningHoursPerDay extends LinearLayout
 		}
 	}
 
-	public ArrayList<CircularSection> getAll()
+	public ArrayList<TimeRange> getAll()
 	{
 		return new ArrayList<>(ranges.values());
 	}
 
-	public void addAll(ArrayList<CircularSection> data)
+	public void addAll(ArrayList<TimeRange> data)
 	{
-		for (CircularSection range : data)
+		for (TimeRange range : data)
 		{
-			add(range.getStart(), range.getEnd());
+			add(range);
 		}
 	}
 
@@ -148,20 +147,14 @@ public class OpeningHoursPerDay extends LinearLayout
 		}
 	}
 
-	@SuppressLint("DefaultLocale") private static String timeOfDayToString(int minutes)
-	{
-		return String.format("%02d:%02d", minutes / 60, minutes % 60);
-	}
-
 	private void openSetTimeRangeDialog(TimeRangePickerDialog.OnTimeRangeChangeListener callback,
-										Integer startTime, Integer endTime)
+										TimeRange timeRange)
 	{
 		String startLabel = getResources().getString(R.string.quest_openingHours_start_time);
 		String endLabel = getResources().getString(R.string.quest_openingHours_end_time);
-		String errorText = getResources().getString(R.string.quest_openingHours_invalid_hours_range);
 
 		new TimeRangePickerDialog(
-				getContext(), callback, startLabel, endLabel, startTime, endTime, errorText).show();
+				getContext(), callback, startLabel, endLabel, timeRange).show();
 	}
 
 	public String getOpeningHoursString()
@@ -169,29 +162,23 @@ public class OpeningHoursPerDay extends LinearLayout
 		StringBuilder result = new StringBuilder();
 		boolean first = true;
 
-		for(CircularSection range : ranges.values())
+		for(TimeRange range : ranges.values())
 		{
-			if(!first)	result.append(", ");
+			if(!first)	result.append(",");
 			else		first = false;
-
-			result.append(timeOfDayToString(range.getStart()));
-			result.append("-");
-			int end = range.getEnd();
-			if(end == 0) end = 60*24;
-			result.append(timeOfDayToString(end));
+			result.append(range.toStringUsing("-"));
 		}
 
 		return result.toString();
 	}
 
-	private void putTime(TextView view, int start, int end)
+	private void putTime(TextView view, TimeRange timeRange)
 	{
-		if(end == 0) end = 60*24;
-		view.setText(timeOfDayToString(start) + " – " + timeOfDayToString(end));
-		ranges.put(view, new CircularSection(start, end));
+		view.setText(timeRange.toStringUsing("–"));
+		ranges.put(view, timeRange);
 	}
 
-	private @NonNull CircularSection getOpeningHoursSuggestion()
+	private @NonNull TimeRange getOpeningHoursSuggestion()
 	{
 		if(ranges.values().size() == 1)
 		{

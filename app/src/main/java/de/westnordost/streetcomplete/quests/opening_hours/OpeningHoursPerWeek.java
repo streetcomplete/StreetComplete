@@ -138,9 +138,9 @@ public class OpeningHoursPerWeek extends LinearLayout
 		return openingHoursPerDay;
 	}
 
-	public HashMap<Weekdays, ArrayList<CircularSection>> getAll()
+	public HashMap<Weekdays, ArrayList<TimeRange>> getAll()
 	{
-		HashMap<Weekdays, ArrayList<CircularSection>> result = new HashMap<>(2);
+		HashMap<Weekdays, ArrayList<TimeRange>> result = new HashMap<>(2);
 		for (Map.Entry<OpeningHoursPerDay, Weekdays> e : ranges.entrySet())
 		{
 			result.put(e.getValue(), e.getKey().getAll());
@@ -148,7 +148,7 @@ public class OpeningHoursPerWeek extends LinearLayout
 		return result;
 	}
 
-	public void addAll(HashMap<Weekdays, ArrayList<CircularSection>> data)
+	public void addAll(HashMap<Weekdays, ArrayList<TimeRange>> data)
 	{
 		ArrayList<Weekdays> sortedKeys = new ArrayList<>(data.keySet());
 		for(Weekdays weekdays : sortedKeys)

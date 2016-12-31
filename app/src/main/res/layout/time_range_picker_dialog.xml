@@ -17,31 +17,9 @@
 
     <android.support.v4.view.ViewPager
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:id="@+id/view_pager"
         />
-
-    <LinearLayout
-        android:id="@+id/error_group"
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/indicator_input_error"
-            android:padding= "6dp"/>
-
-        <TextView
-            android:id="@+id/error_text"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            />
-    </LinearLayout>
 
 </LinearLayout>

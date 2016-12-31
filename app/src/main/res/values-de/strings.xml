@@ -42,7 +42,6 @@
     <string name="retry">Erneut versuchen</string>
     <string name="quest_leave_new_note_no">Nein, verstecken</string>
     <string name="quest_generic_otherAnswers">Weitere Antworten</string>
-    <string name="quest_openingHours_invalid_hours_range">Die Stätte schließt jetzt bevor sie öffnet? Das muss ein Fehler sein!</string>
     <string name="pref_tilecache_size_summary">%d MB</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">Auch nicht als Fragen formulierte Notizen anzeigen</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">Nicht als Fragen formulierte Notizen ignorieren</string>
@@ -109,4 +108,5 @@
     <string name="about_title_privacy_statement">Datenschutzerklärung</string>
     <string name="quest_openingHours_public_holidays">Feiertage</string>
     <string name="quest_openingHours_public_holidays_short">Feiertage</string>
+    <string name="quest_openingHours_open_end">open end</string>
 </resources>

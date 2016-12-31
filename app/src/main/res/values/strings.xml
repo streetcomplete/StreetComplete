@@ -92,7 +92,6 @@
     <string name="quest_openingHours_add_months">Add months</string>
     <string name="quest_openingHours_add_hours">Add hours</string>
     <string name="quest_openingHours_add_weekdays">Add weekdays</string>
-    <string name="quest_openingHours_invalid_hours_range">You selected a closing time that is before the opening time</string>
     <string name="quest_openingHours_chooseMonthsTitle">Select months</string>
     <string name="quest_openingHours_chooseWeekdaysTitle">Select weekdays</string>
     <string name="quest_openingHours_24_7_confirmation">In other words, it is open any time, every day?</string>
@@ -156,6 +155,7 @@
     <string name="about_summary_privacy_statement">and Data Usage</string>
     <string name="quest_openingHours_public_holidays">Public Holidays</string>
     <string name="quest_openingHours_public_holidays_short">PH</string>
+    <string name="quest_openingHours_open_end">open end</string>
 
 
 </resources>
