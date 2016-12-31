@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.quests.opening_hours;
 
 import android.support.annotation.NonNull;
 
-/* An integer range that defines a section in a circle. The range that is defined is actually
+/** An integer range that defines a section in a circle. The range that is defined is actually
    closed-open: [start,end+1). i.e Jun-Jul (= start:6 end:7) shall be both June and July. If start
    is bigger than end, it means that the section crosses the upper boundary. Think degrees.
   */

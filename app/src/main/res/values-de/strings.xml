@@ -107,4 +107,6 @@
     <string name="quest_streetName_answer_noProperStreet_track">Es ist nur ein Feldweg (Wirtschaftsweg)</string>
     <string name="about_summary_privacy_statement">und Datennutzung</string>
     <string name="about_title_privacy_statement">Datenschutzerklärung</string>
+    <string name="quest_openingHours_public_holidays">Feiertage</string>
+    <string name="quest_openingHours_public_holidays_short">Feiertage</string>
 </resources>

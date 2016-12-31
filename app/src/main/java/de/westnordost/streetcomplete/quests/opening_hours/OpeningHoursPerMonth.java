@@ -158,9 +158,9 @@ public class OpeningHoursPerMonth extends LinearLayout
 		updateAddButtonVisibility();
 	}
 
-	public HashMap<CircularSection, HashMap<CircularSection, ArrayList<CircularSection>>> getAll()
+	public HashMap<CircularSection, HashMap<Weekdays, ArrayList<CircularSection>>> getAll()
 	{
-		HashMap<CircularSection, HashMap<CircularSection, ArrayList<CircularSection>>> result =
+		HashMap<CircularSection, HashMap<Weekdays, ArrayList<CircularSection>>> result =
 				new HashMap<>(2); // madness!!
 		for (Map.Entry<OpeningHoursPerWeek, CircularSection> e : ranges.entrySet())
 		{
@@ -170,7 +170,7 @@ public class OpeningHoursPerMonth extends LinearLayout
 	}
 
 	public void addAll(
-			HashMap<CircularSection, HashMap<CircularSection, ArrayList<CircularSection>>> data)
+			HashMap<CircularSection, HashMap<Weekdays, ArrayList<CircularSection>>> data)
 	{
 		ArrayList<CircularSection> sortedKeys = new ArrayList<>(data.keySet());
 		Collections.sort(sortedKeys);
@@ -199,7 +199,7 @@ public class OpeningHoursPerMonth extends LinearLayout
 
 	private List<CircularSection> getUnmentionedMonths()
 	{
-		return new NumberSystem(0,MAX_MONTH_INDEX).complement(ranges.values());
+		return new NumberSystem(0,MAX_MONTH_INDEX).complemented(ranges.values());
 	}
 
 	public String getOpeningHoursString()

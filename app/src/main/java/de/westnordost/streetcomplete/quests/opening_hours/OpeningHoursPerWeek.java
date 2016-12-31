@@ -1,6 +1,8 @@
 package de.westnordost.streetcomplete.quests.opening_hours;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -10,12 +12,9 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import java.text.DateFormatSymbols;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -27,14 +26,9 @@ import de.westnordost.streetcomplete.data.meta.WorkWeek;
 
 public class OpeningHoursPerWeek extends LinearLayout
 {
-	// in the order of Calendar.MONDAY, TUESDAY etc...
-	private static final String[] OSM_ABBR_WEEKDAYS = {"", "Su","Mo","Tu","We","Th","Fr","Sa"};
-
-	private static final int MAX_WEEKDAY_INDEX = 6;
-
 	@Inject CurrentCountry currentCountry;
 
-	private Map<OpeningHoursPerDay, CircularSection> ranges = new HashMap<>();
+	private Map<OpeningHoursPerDay, Weekdays> ranges = new HashMap<>();
 
 	private Button btnAdd;
 	private ViewGroup rows;
@@ -73,27 +67,23 @@ public class OpeningHoursPerWeek extends LinearLayout
 	/** Open dialog to let the user specify the range and add this new row*/
 	public void add()
 	{
-		CircularSection range = getRangeSuggestion();
-		openSetRangeDialog(
-				new RangePickerDialog.OnRangeChangeListener()
-				{
-					@Override public void onRangeChange(int startIndex, int endIndex)
-					{
-						add(startIndex, endIndex);
-					}
-				}, range.getStart(), range.getEnd()
-		);
+		openSetWeekdaysDialog(getWeekdaysSuggestion(), new WeekdaysPickedListener()
+		{
+			@Override public void onWeekdaysPicked(Weekdays selected)
+			{
+				add(selected);
+			}
+		});
 	}
 
 	/** add default row */
 	public void addDefault()
 	{
-		CircularSection range = getRangeSuggestion();
-		add(range.getStart(), range.getEnd());
+		add(getWeekdaysSuggestion());
 	}
 
 	/** add a new row with the given range */
-	public OpeningHoursPerDay add(int startIndex, int endIndex)
+	public OpeningHoursPerDay add(Weekdays weekdays)
 	{
 		final LayoutInflater inflater = LayoutInflater.from(getContext());
 		final LinearLayout row = (LinearLayout) inflater.inflate(
@@ -132,41 +122,39 @@ public class OpeningHoursPerWeek extends LinearLayout
 		{
 			@Override public void onClick(View v)
 			{
-				CircularSection range = ranges.get(openingHoursPerDay);
-
-				openSetRangeDialog(new RangePickerDialog.OnRangeChangeListener()
+				Weekdays weekdays = ranges.get(openingHoursPerDay);
+				openSetWeekdaysDialog(weekdays, new WeekdaysPickedListener()
 				{
-					@Override public void onRangeChange(int startIndex, int endIndex)
+					@Override public void onWeekdaysPicked(Weekdays weekdays)
 					{
-						putData(fromTo, openingHoursPerDay, startIndex, endIndex);
+						putData(fromTo, openingHoursPerDay, weekdays);
 					}
-				}, range.getStart(), range.getEnd());
+				});
 			}
 		});
 
-		putData(fromTo, openingHoursPerDay, startIndex, endIndex);
+		putData(fromTo, openingHoursPerDay, weekdays);
 		rows.addView(row);
 		return openingHoursPerDay;
 	}
 
-	public HashMap<CircularSection, ArrayList<CircularSection>> getAll()
+	public HashMap<Weekdays, ArrayList<CircularSection>> getAll()
 	{
-		HashMap<CircularSection, ArrayList<CircularSection>> result = new HashMap<>(2);
-		for (Map.Entry<OpeningHoursPerDay, CircularSection> e : ranges.entrySet())
+		HashMap<Weekdays, ArrayList<CircularSection>> result = new HashMap<>(2);
+		for (Map.Entry<OpeningHoursPerDay, Weekdays> e : ranges.entrySet())
 		{
 			result.put(e.getValue(), e.getKey().getAll());
 		}
 		return result;
 	}
 
-	public void addAll(HashMap<CircularSection, ArrayList<CircularSection>> data)
+	public void addAll(HashMap<Weekdays, ArrayList<CircularSection>> data)
 	{
-		ArrayList<CircularSection> sortedKeys = new ArrayList<>(data.keySet());
-		Collections.sort(sortedKeys);
-		for(CircularSection range : sortedKeys)
+		ArrayList<Weekdays> sortedKeys = new ArrayList<>(data.keySet());
+		for(Weekdays weekdays : sortedKeys)
 		{
-			OpeningHoursPerDay dayView = add(range.getStart(), range.getEnd());
-			dayView.addAll(data.get(range));
+			OpeningHoursPerDay dayView = add(weekdays);
+			dayView.addAll(data.get(weekdays));
 		}
 	}
 
@@ -177,41 +165,57 @@ public class OpeningHoursPerWeek extends LinearLayout
 		rows.removeView(view);
 	}
 
-	private @NonNull CircularSection getRangeSuggestion()
+	private @NonNull Weekdays getWeekdaysSuggestion()
 	{
-		// first entry: first six days of work week
+		// first entry
 		if(ranges.isEmpty())
 		{
-			return new CircularSection(0,5);
-			/* according to https://en.wikipedia.org/wiki/Shopping_hours the norm for shopping days
-		   is rather MO-SA, pretty much only in Germany / Austria, shops often have shorter
-		   opening hours on SA. If you are reading this and disagree, feel free to extend the
-		   above article, it is not too complete IMO.
-		   This here is not about the https://en.wikipedia.org/wiki/Workweek_and_weekend though,
-		   shops seem to be regularly open on the weekend as well in many countries.
-		 */
+			Locale locale = currentCountry.getLocale();
+
+			int firstWorkDayIdx = modulus(WorkWeek.getFirstDay(locale) - 2,7);
+			boolean[] result = new boolean[7];
+			for(int i = 0; i < WorkWeek.getRegularShoppingDays(locale); ++i)
+			{
+				result[(i + firstWorkDayIdx) % 7] = true;
+			}
+			return new Weekdays(result);
 		}
 
-		List<CircularSection> weekdays = getUnmentionedWeekdays();
-		if(weekdays.isEmpty())
-		{
-			return new CircularSection(0,0);
-		}
-		return weekdays.get(0);
+		return new Weekdays();
 	}
 
-	private List<CircularSection> getUnmentionedWeekdays()
+	private static int modulus(int a, int b)
 	{
-		return new NumberSystem(0,MAX_WEEKDAY_INDEX).complement(ranges.values());
+		return (a % b + b) % b;
 	}
 
-	private void openSetRangeDialog(RangePickerDialog.OnRangeChangeListener callback,
-									Integer startIndex, Integer endIndex)
+	private void openSetWeekdaysDialog(final Weekdays weekdays, final WeekdaysPickedListener callback)
 	{
-		String[] weekdays = normalizeWeekdays(DateFormatSymbols.getInstance().getWeekdays());
-		String selectWeekdays = getResources().getString(R.string.quest_openingHours_chooseWeekdaysTitle);
+		final boolean[] selection = weekdays.getSelection();
 
-		new RangePickerDialog(getContext(), callback, weekdays, startIndex, endIndex, selectWeekdays).show();
+		new AlertDialog.Builder(getContext())
+				.setTitle(R.string.quest_openingHours_chooseWeekdaysTitle)
+				.setMultiChoiceItems(Weekdays.getNames(getResources()), selection, new DialogInterface.OnMultiChoiceClickListener()
+				{
+					@Override public void onClick(DialogInterface dialog, int which, boolean isChecked)
+					{
+						selection[which] = isChecked;
+					}
+				})
+				.setNegativeButton(android.R.string.cancel, null)
+				.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener()
+				{
+					@Override public void onClick(DialogInterface dialog, int which)
+					{
+						callback.onWeekdaysPicked(new Weekdays(selection));
+					}
+				})
+				.show();
+	}
+
+	private interface WeekdaysPickedListener
+	{
+		void onWeekdaysPicked(Weekdays selected);
 	}
 
 	public String getOpeningHoursString()
@@ -221,72 +225,35 @@ public class OpeningHoursPerWeek extends LinearLayout
 
 	public String getOpeningHoursString(String prepend)
 	{
-		String[] weekdays = normalizeWeekdays(OSM_ABBR_WEEKDAYS);
-
 		StringBuilder result = new StringBuilder();
 		boolean first = true;
 
-		for(Map.Entry<OpeningHoursPerDay, CircularSection> entry : ranges.entrySet())
+		for(Map.Entry<OpeningHoursPerDay, Weekdays> entry : ranges.entrySet())
 		{
 			String hourlyOpeningHours = entry.getKey().getOpeningHoursString();
 
-			// while it is legal to specify opening hours without actual opening hours (just the
+			// while it is legal syntax to specify opening hours without actual opening hours (just the
 			// days), this form deliberately does not accept it. If it is really open the whole day
 			// and night, the user must select the time 0-24
 			if(hourlyOpeningHours.isEmpty()) continue;
 
-			CircularSection range = entry.getValue();
+			Weekdays selection = entry.getValue();
 
 			if(!first)	result.append("; ");
 			else		first = false;
 
 			result.append(prepend);
-
-			boolean isAllWeek = range.getStart() == 0 && range.getEnd() == weekdays.length-1;
-			if(!isAllWeek)
-			{
-				result.append(weekdays[range.getStart()]);
-				if(range.getStart() != range.getEnd())
-				{
-					result.append("-").append(weekdays[range.getEnd()]);
-				}
-				result.append(" ");
-			}
-
+			result.append(selection.toString());
+			result.append(" ");
 			result.append(hourlyOpeningHours);
 		}
 
 		return result.toString();
 	}
 
-	private void putData(TextView view, OpeningHoursPerDay openingHoursPerDay, int startIndex, int endIndex)
+	private void putData(TextView view, OpeningHoursPerDay openingHoursPerDay, Weekdays selected)
 	{
-		String[] abbrWeekdays = normalizeWeekdays(DateFormatSymbols.getInstance().getShortWeekdays());
-		StringBuilder fromToText = new StringBuilder();
-		fromToText.append(abbrWeekdays[startIndex]);
-		if(startIndex != endIndex)
-		{
-			fromToText.append(" – ");
-			fromToText.append(abbrWeekdays[endIndex]);
-		}
-		view.setText(fromToText.toString());
-		ranges.put(openingHoursPerDay, new CircularSection(startIndex, endIndex));
-	}
-
-	/** order the days so that the first workday of the current country is at the front (which may
-	 *  be a different day than the firt day in the week on the calendar) */
-	private String[] normalizeWeekdays(String[] calendarWeekdays)
-	{
-		int j = WorkWeek.getFirstDay(currentCountry.getLocale());
-		String[] result = new String[7];
-		for(int i=0; i<result.length; ++i)
-		{
-			result[i] = calendarWeekdays[j++];
-			if(j >= calendarWeekdays.length)
-			{
-				j = Calendar.SUNDAY; // sunday is 1, 0=first elem in array is undefined
-			}
-		}
-		return result;
+		view.setText(selected.toLocalizedString(getResources()));
+		ranges.put(openingHoursPerDay, selected);
 	}
 }

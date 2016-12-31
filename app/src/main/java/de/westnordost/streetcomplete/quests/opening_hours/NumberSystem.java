@@ -17,7 +17,8 @@ public class NumberSystem
 		this.max = max;
 	}
 
-	public List<CircularSection> complement(Collection<CircularSection> ranges)
+	/** @return the complemented of the given ranges */
+	public List<CircularSection> complemented(Collection<CircularSection> ranges)
 	{
 		List<CircularSection> rangeList = canonicalize(ranges);
 		List<CircularSection> complementList = new ArrayList<>();
@@ -33,20 +34,33 @@ public class NumberSystem
 		}
 		if(start <= max) complementList.add(new CircularSection(start, max));
 
-		if(complementList.size() > 1)
-		{
-			int lastIndex = complementList.size() - 1;
-			CircularSection first = complementList.get(0);
-			CircularSection last = complementList.get(lastIndex);
-			if(first.getStart() == min && last.getEnd() == max)
-			{
-				complementList.remove(lastIndex);
-				complementList.remove(0);
-				complementList.add(mergeAlongBounds(first, last));
-			}
-		}
+		mergeFirstAndLastSection(complementList);
 
 		return complementList;
+	}
+
+	public List<CircularSection> merged(List<CircularSection> ranges)
+	{
+		List<CircularSection> result = new ArrayList<>(ranges);
+		Collections.sort(result);
+		mergeFirstAndLastSection(result);
+		return result;
+	}
+
+	private void mergeFirstAndLastSection(List<CircularSection> ranges)
+	{
+		if(ranges.size() > 1)
+		{
+			int lastIndex = ranges.size() - 1;
+			CircularSection first = ranges.get(0);
+			CircularSection last = ranges.get(lastIndex);
+			if(first.getStart() == min && last.getEnd() == max)
+			{
+				ranges.remove(lastIndex);
+				ranges.remove(0);
+				ranges.add(mergeAlongBounds(first, last));
+			}
+		}
 	}
 
 	private CircularSection mergeAlongBounds(CircularSection lowerSection, CircularSection upperSection)
