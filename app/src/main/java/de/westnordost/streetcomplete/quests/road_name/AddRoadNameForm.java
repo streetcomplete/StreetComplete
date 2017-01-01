@@ -169,11 +169,15 @@ public class AddRoadNameForm extends AbstractQuestAnswerFragment
 
 		DialogInterface.OnClickListener onSelect = new DialogInterface.OnClickListener()
 		{
-			Integer selection;
+			Integer selection = null;
 
 			@Override public void onClick(DialogInterface dialog, int which)
 			{
-				if (which >= 0) selection = which;
+				if (which >= 0)
+				{
+					selection = which;
+					((AlertDialog)dialog).getButton(DialogInterface.BUTTON_POSITIVE).setEnabled(true);
+				}
 				else if (which == DialogInterface.BUTTON_POSITIVE)
 				{
 					if(selection == null || selection < 0 || selection >= answers.size()) return;
@@ -201,10 +205,14 @@ public class AddRoadNameForm extends AbstractQuestAnswerFragment
 			}
 		};
 
-		new AlertDialog.Builder(getActivity())
+		AlertDialog dlg = new AlertDialog.Builder(getActivity())
 				.setSingleChoiceItems(answers.toArray(new String[0]), -1, onSelect)
 				.setTitle(R.string.quest_streetName_answer_noProperStreet_question)
-				.setPositiveButton(android.R.string.ok, onSelect).show();
+				.setPositiveButton(android.R.string.ok, onSelect)
+				.setNegativeButton(android.R.string.cancel, null)
+				.show();
+
+		dlg.getButton(DialogInterface.BUTTON_POSITIVE).setEnabled(false);
 	}
 
 	@Override public boolean hasChanges()
