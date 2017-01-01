@@ -88,7 +88,6 @@
     <string name="quest_openingHours_commitMessage" translatable="false">Add opening hours</string>
     <string name="quest_openingHours_start_time">opening time</string>
     <string name="quest_openingHours_end_time">closing time</string>
-    <string name="quest_openingHours_allYear">All year</string>
     <string name="quest_openingHours_add_months">Add months</string>
     <string name="quest_openingHours_add_hours">Add hours</string>
     <string name="quest_openingHours_add_weekdays">Add weekdays</string>
@@ -156,6 +155,8 @@
     <string name="quest_openingHours_public_holidays">Public Holidays</string>
     <string name="quest_openingHours_public_holidays_short">PH</string>
     <string name="quest_openingHours_open_end">open end</string>
+    <string name="quest_openingHours_answer_247">It\'s open 24/7</string>
+    <string name="quest_openingHours_answer_seasonal_opening_hours">It differs by month</string>
 
 
 </resources>

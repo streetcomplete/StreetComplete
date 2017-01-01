@@ -50,7 +50,7 @@ public class TimeRangePickerDialog extends AlertDialog implements View.OnClickLi
 		setButton(BUTTON_NEGATIVE, context.getString(android.R.string.cancel), (OnClickListener) null);
 
 		AttributeSet a;
-		startPicker = (TimePicker) inflater.inflate(R.layout.time_range_picker_picker, null);
+		startPicker = (TimePicker) inflater.inflate(R.layout.time_range_picker_start_picker, null);
 		startPicker.setIs24HourView(true);
 
 		endPickerContainer = (ViewGroup) inflater.inflate(R.layout.time_range_picker_end_picker, null);

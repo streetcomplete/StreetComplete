@@ -9,7 +9,7 @@ import java.util.List;
 
 import de.westnordost.streetcomplete.R;
 
-public class Weekdays
+public class Weekdays implements Comparable<Weekdays>
 {
 	private Resources resources;
 
@@ -133,5 +133,15 @@ public class Weekdays
 		}
 
 		return WEEKDAY_NUMBER_SYSTEM.merged(result);
+	}
+
+	@Override public int compareTo(Weekdays o)
+	{
+		for(int i=0; i<data.length; ++i)
+		{
+			if(data[i] && !o.data[i]) return -1;
+			if(!data[i] && o.data[i]) return 1;
+		}
+		return 0;
 	}
 }

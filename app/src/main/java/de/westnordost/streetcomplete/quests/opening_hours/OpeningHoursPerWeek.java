@@ -3,8 +3,10 @@ package de.westnordost.streetcomplete.quests.opening_hours;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
+import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -23,8 +26,9 @@ import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.meta.CurrentCountry;
 import de.westnordost.streetcomplete.data.meta.WorkWeek;
+import de.westnordost.streetcomplete.util.SerializedSavedState;
 
-public class OpeningHoursPerWeek extends LinearLayout
+public class OpeningHoursPerWeek extends LinearLayout implements OpeningHoursFormRoot
 {
 	@Inject CurrentCountry currentCountry;
 
@@ -71,15 +75,9 @@ public class OpeningHoursPerWeek extends LinearLayout
 		{
 			@Override public void onWeekdaysPicked(Weekdays selected)
 			{
-				add(selected);
+				add(selected).add();
 			}
 		});
-	}
-
-	/** add default row */
-	public void addDefault()
-	{
-		add(getWeekdaysSuggestion());
 	}
 
 	/** add a new row with the given range */
@@ -102,21 +100,14 @@ public class OpeningHoursPerWeek extends LinearLayout
 			}
 		});
 
-		if(rows.getChildCount() == 0)
-		{
-			btnDelete.setVisibility(GONE);
-		}
-		else
-		{
-			openingHoursPerDay.setOnOpeningTimesDefinedListener(
-					new OpeningHoursPerDay.OnOpeningTimesDefinedListener()
+		openingHoursPerDay.setOnOpeningTimesDefinedListener(
+				new OpeningHoursPerDay.OnOpeningTimesDefinedListener()
+				{
+					@Override public void onOpeningTimesDefined(boolean defined)
 					{
-						@Override public void onOpeningTimesDefined(boolean defined)
-						{
-							btnDelete.setVisibility(defined ? GONE : VISIBLE);
-						}
-					});
-		}
+						btnDelete.setVisibility(defined ? GONE : VISIBLE);
+					}
+				});
 
 		fromTo.setOnClickListener(new OnClickListener()
 		{
@@ -138,6 +129,30 @@ public class OpeningHoursPerWeek extends LinearLayout
 		return openingHoursPerDay;
 	}
 
+	@Override public Parcelable onSaveInstanceState()
+	{
+		Parcelable superState = super.onSaveInstanceState();
+		return new SerializedSavedState(superState, getAll());
+	}
+
+	@Override public void onRestoreInstanceState(Parcelable state)
+	{
+		SerializedSavedState savedState = (SerializedSavedState) state;
+		super.onRestoreInstanceState(savedState.getSuperState());
+
+		addAll((HashMap) savedState.get(HashMap.class));
+	}
+
+	@Override protected void dispatchSaveInstanceState(SparseArray<Parcelable> container)
+	{
+		super.dispatchFreezeSelfOnly(container);
+	}
+
+	@Override protected void dispatchRestoreInstanceState(SparseArray container)
+	{
+		super.dispatchThawSelfOnly(container);
+	}
+
 	public HashMap<Weekdays, ArrayList<TimeRange>> getAll()
 	{
 		HashMap<Weekdays, ArrayList<TimeRange>> result = new HashMap<>(2);
@@ -151,6 +166,7 @@ public class OpeningHoursPerWeek extends LinearLayout
 	public void addAll(HashMap<Weekdays, ArrayList<TimeRange>> data)
 	{
 		ArrayList<Weekdays> sortedKeys = new ArrayList<>(data.keySet());
+		Collections.sort(sortedKeys);
 		for(Weekdays weekdays : sortedKeys)
 		{
 			OpeningHoursPerDay dayView = add(weekdays);
@@ -193,13 +209,13 @@ public class OpeningHoursPerWeek extends LinearLayout
 	{
 		final boolean[] selection = weekdays.getSelection();
 
-		new AlertDialog.Builder(getContext())
+		AlertDialog dlg = new AlertDialog.Builder(getContext())
 				.setTitle(R.string.quest_openingHours_chooseWeekdaysTitle)
 				.setMultiChoiceItems(Weekdays.getNames(getResources()), selection, new DialogInterface.OnMultiChoiceClickListener()
 				{
 					@Override public void onClick(DialogInterface dialog, int which, boolean isChecked)
 					{
-						selection[which] = isChecked;
+						updateDialogOkButtonEnablement((AlertDialog) dialog, selection);
 					}
 				})
 				.setNegativeButton(android.R.string.cancel, null)
@@ -211,6 +227,15 @@ public class OpeningHoursPerWeek extends LinearLayout
 					}
 				})
 				.show();
+
+		updateDialogOkButtonEnablement(dlg, selection);
+	}
+
+	private void updateDialogOkButtonEnablement(AlertDialog dlg, boolean[] selection)
+	{
+		boolean isAnyChecked = false;
+		for(boolean b : selection) isAnyChecked |= b;
+		dlg.getButton(DialogInterface.BUTTON_POSITIVE).setEnabled(isAnyChecked);
 	}
 
 	private interface WeekdaysPickedListener
@@ -218,7 +243,7 @@ public class OpeningHoursPerWeek extends LinearLayout
 		void onWeekdaysPicked(Weekdays selected);
 	}
 
-	public String getOpeningHoursString()
+	@Override public String getOpeningHoursString()
 	{
 		return getOpeningHoursString("");
 	}
