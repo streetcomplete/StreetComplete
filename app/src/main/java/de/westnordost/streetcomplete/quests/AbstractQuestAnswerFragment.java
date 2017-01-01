@@ -132,7 +132,7 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 					for(int i = 0; i<otherAnswers.size(); ++i)
 					{
 						int otherAnswer = otherAnswers.get(i);
-						popup.getMenu().add(Menu.NONE, otherAnswer, i, otherAnswer);
+						popup.getMenu().add(Menu.NONE, otherAnswer, otherAnswers.size()-i, otherAnswer);
 					}
 					popup.show();
 
