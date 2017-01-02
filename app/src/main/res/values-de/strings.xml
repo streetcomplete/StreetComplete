@@ -108,6 +108,9 @@
     <string name="quest_openingHours_public_holidays">Feiertage</string>
     <string name="quest_openingHours_public_holidays_short">Feiertage</string>
     <string name="quest_openingHours_open_end">open end</string>
-    <string name="quest_openingHours_answer_247">ist durchgehend geöffnet</string>
-    <string name="quest_openingHours_answer_seasonal_opening_hours">ist je nach Monat unterschiedlich</string>
+    <string name="quest_openingHours_answer_247">durchgehend geöffnet</string>
+    <string name="quest_openingHours_answer_seasonal_opening_hours">je nach Monat verschieden</string>
+    <string name="quest_openingHours_answer_no_regular_opening_hours">Keine regelmäßgen Öffnungszeiten</string>
+    <string name="quest_openingHours_comment_description">Kurz und bündig, am besten direkt so wie es auf dem Schild steht. Zum Beispiel \"nach Vereinbarung\".</string>
+    <string name="quest_openingHours_comment_title">Öffnungszeiten beschreiben</string>
 </resources>

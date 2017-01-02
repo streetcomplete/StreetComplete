@@ -155,8 +155,11 @@
     <string name="quest_openingHours_public_holidays">Public Holidays</string>
     <string name="quest_openingHours_public_holidays_short">PH</string>
     <string name="quest_openingHours_open_end">open end</string>
-    <string name="quest_openingHours_answer_247">It\'s open 24/7</string>
-    <string name="quest_openingHours_answer_seasonal_opening_hours">It differs by month</string>
+    <string name="quest_openingHours_answer_247">Open 24/7</string>
+    <string name="quest_openingHours_answer_seasonal_opening_hours">Differs by month</string>
+    <string name="quest_openingHours_answer_no_regular_opening_hours">No regular opening hours</string>
+    <string name="quest_openingHours_comment_title">Describe opening hours</string>
+    <string name="quest_openingHours_comment_description">Be concise, ideally use the same wording as on the sign. I.e. \"by appointment\".</string>
 
 
 </resources>

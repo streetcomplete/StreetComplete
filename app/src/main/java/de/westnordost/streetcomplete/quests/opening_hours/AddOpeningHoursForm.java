@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import java.util.List;
 
@@ -79,6 +80,7 @@ public class AddOpeningHoursForm extends AbstractQuestAnswerFragment
 	@Override protected List<Integer> getOtherAnswerResourceIds()
 	{
 		List<Integer> answers = super.getOtherAnswerResourceIds();
+		answers.add(R.string.quest_openingHours_answer_no_regular_opening_hours);
 		answers.add(R.string.quest_openingHours_answer_247);
 		answers.add(R.string.quest_openingHours_answer_seasonal_opening_hours);
 		return answers;
@@ -90,7 +92,7 @@ public class AddOpeningHoursForm extends AbstractQuestAnswerFragment
 
 		if(itemResourceId == R.string.quest_openingHours_answer_247)
 		{
-			confirm24_7();
+			showConfirm24_7Dialog();
 			return true;
 		}
 		if(itemResourceId == R.string.quest_openingHours_answer_seasonal_opening_hours)
@@ -112,6 +114,11 @@ public class AddOpeningHoursForm extends AbstractQuestAnswerFragment
 
 			return true;
 		}
+		if(itemResourceId == R.string.quest_openingHours_answer_no_regular_opening_hours)
+		{
+			showInputCommentDialog();
+			return true;
+		}
 
 		return false;
 	}
@@ -127,7 +134,29 @@ public class AddOpeningHoursForm extends AbstractQuestAnswerFragment
 		applyOpeningHours(openingHours);
 	}
 
-	private void confirm24_7()
+	private void showInputCommentDialog()
+	{
+		View view = LayoutInflater.from(getActivity()).inflate(R.layout.quest_opening_hours_comment, null);
+		final EditText editText = (EditText)view.findViewById(R.id.commentInput);
+
+		AlertDialog commentDlg = new AlertDialog.Builder(getActivity())
+				.setTitle(R.string.quest_openingHours_comment_title)
+				.setView(view)
+				.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener()
+				{
+					@Override public void onClick(DialogInterface dialog, int which)
+					{
+						String txt = editText.getText().toString().replaceAll("\"","");
+						Bundle answer = new Bundle();
+						answer.putString(OPENING_HOURS, "\""+txt+"\"");
+						applyOtherAnswer(answer);
+					}
+				})
+				.setNegativeButton(android.R.string.cancel, null)
+				.show();
+	}
+
+	private void showConfirm24_7Dialog()
 	{
 		AlertDialog confirmation = new AlertDialog.Builder(getActivity())
 				.setMessage(R.string.quest_openingHours_24_7_confirmation)
