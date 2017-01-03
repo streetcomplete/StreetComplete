@@ -159,7 +159,7 @@
     <string name="quest_openingHours_answer_seasonal_opening_hours">Differs by month</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">No regular opening hours</string>
     <string name="quest_openingHours_comment_title">Describe opening hours</string>
-    <string name="quest_openingHours_comment_description">Be concise, ideally use the same wording as on the sign. I.e. \"by appointment\".</string>
+    <string name="quest_openingHours_comment_description">Be concise, ideally use the wording from the sign. I.e. \"by appointment\".\nThe absence of a sign does not necessarily mean there are no regular opening hours.</string>
 
 
 </resources>
