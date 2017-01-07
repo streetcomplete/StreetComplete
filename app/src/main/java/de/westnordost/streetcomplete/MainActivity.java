@@ -102,7 +102,6 @@ public class MainActivity extends AppCompatActivity implements
 	private AnswersCounter answersCounter;
 
 	private LostApiClient lostApiClient;
-	private boolean alreadyCalledOnConnect; // TODO remove when https://github.com/mapzen/lost/issues/138 is fixed
 	private LatLon lastAutoDownloadPos;
 
 	private boolean downloadServiceIsBound;
@@ -173,10 +172,8 @@ public class MainActivity extends AppCompatActivity implements
 					@Override
 					public void onConnected()
 					{
-						if(alreadyCalledOnConnect) return; // TODO https://github.com/mapzen/lost/issues/138
 						trackingButton.setEnabled(true);
 						if(trackingButton.isChecked()) startLocationTracking();
-						alreadyCalledOnConnect = true;
 					}
 
 					@Override
@@ -215,7 +212,6 @@ public class MainActivity extends AppCompatActivity implements
 	{
 		super.onStart();
 
-		alreadyCalledOnConnect = false;
 		trackingButton.setChecked(prefs.getBoolean(Prefs.TRACKING, true)); // tracking is on by default
 		trackingButton.setEnabled(false); // will be enabled as soon as lostApiClient is connected
 		lostApiClient.connect();
