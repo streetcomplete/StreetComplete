@@ -6,6 +6,7 @@ import android.graphics.PointF;
 import android.graphics.Rect;
 import android.support.annotation.Nullable;
 
+import com.mapzen.tangram.LabelPickResult;
 import com.mapzen.tangram.LngLat;
 import com.mapzen.tangram.MapController;
 import com.mapzen.tangram.MapData;
@@ -27,7 +28,7 @@ import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.streetcomplete.util.SphericalEarthMath;
 
 public class QuestsMapFragment extends MapFragment implements TouchInput.ScaleResponder,
-		TouchInput.ShoveResponder, TouchInput.RotateResponder, MapController.FeaturePickListener,
+		TouchInput.ShoveResponder, TouchInput.RotateResponder, MapController.LabelPickListener,
 		TouchInput.TapResponder, TouchInput.PanResponder, TouchInput.DoubleTapResponder
 {
 	private static final String MARKER_QUEST_ID = "quest_id";
@@ -82,7 +83,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.ScaleRe
 		geometryLayer = controller.addDataLayer(GEOMETRY_LAYER);
 		questsLayer = controller.addDataLayer(QUESTS_LAYER);
 
-		controller.setFeaturePickListener(this);
+		controller.setLabelPickListener(this);
 		controller.setTapResponder(this);
 		controller.setRotateResponder(this);
 		controller.setShoveResponder(this);
@@ -142,7 +143,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.ScaleRe
 
 	@Override public boolean onSingleTapConfirmed(float x, float y)
 	{
-		controller.pickFeature(x,y);
+		controller.pickLabel(x,y);
 
 		// TODO use later!:
 				/*LngLat lngLat = controller.screenPositionToLngLat(new PointF(x,y));
@@ -157,23 +158,24 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.ScaleRe
 	}
 
 	@Override
-	public void onFeaturePick(Map<String, String> props, float positionX, float positionY)
+	public void onLabelPick(LabelPickResult labelPickResult, float positionX, float positionY)
 	{
-		boolean clickedMarker = props != null && props.containsKey(MARKER_QUEST_ID);
+		if(labelPickResult == null) return;
+		if(labelPickResult.getType() != LabelPickResult.LabelType.ICON) return;
+		Map<String,String> props = labelPickResult.getProperties();
+		if(props == null) return;
+		if(!props.containsKey(MARKER_QUEST_ID)) return;
 
-		if(clickedMarker)
-		{
-			// move center a little because we have the bottom sheet blocking part of the map
-			LatLon pos = getLatLonAtPos(new PointF(positionX, positionY));
-			LngLat zoomTo = TangramConst.toLngLat(SphericalEarthMath.translate(pos,20,180));
-			controller.setPositionEased(zoomTo, 500);
-			controller.setZoomEased(19, 500);
+		// move center a little because we have the bottom sheet blocking part of the map (hopefully temporary solution)
+		LatLon pos = TangramConst.toLatLon(labelPickResult.getCoordinates());
+		LngLat zoomTo = TangramConst.toLngLat(SphericalEarthMath.translate(pos,20,180));
+		controller.setPositionEased(zoomTo, 500);
+		controller.setZoomEased(19, 500);
 
-			listener.onClickedQuest(
-					QuestGroup.valueOf(props.get(MARKER_QUEST_GROUP)),
-					Long.valueOf(props.get(MARKER_QUEST_ID))
-			);
-		}
+		listener.onClickedQuest(
+				QuestGroup.valueOf(props.get(MARKER_QUEST_GROUP)),
+				Long.valueOf(props.get(MARKER_QUEST_ID))
+		);
 	}
 
 	private void updateView()
