@@ -110,12 +110,6 @@ public class MapFragment extends Fragment implements
 		startTrackingWhenConnected = false;
 
 		zoomedYet = false;
-		Location location = LocationServices.FusedLocationApi.getLastLocation(lostApiClient);
-		if (location != null)
-		{
-			showLocation(location);
-			zoomTo(location);
-		}
 
 		LocationRequest request = LocationRequest.create()
 				.setInterval(2000)

@@ -752,12 +752,6 @@ public class MainActivity extends AppCompatActivity implements
 				.setSmallestDisplacement(500)
 				.setInterval(3*60*1000); // 3 minutes
 
-		Location location = LocationServices.FusedLocationApi.getLastLocation(lostApiClient);
-		if(location != null)
-		{
-			this.onLocationChanged(location);
-		}
-
 		LocationServices.FusedLocationApi.requestLocationUpdates(lostApiClient, request, this);
 
 		mapFragment.startPositionTracking();
