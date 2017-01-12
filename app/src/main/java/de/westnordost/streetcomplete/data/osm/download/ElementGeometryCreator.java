@@ -96,7 +96,10 @@ public class ElementGeometryCreator
 		// no valid geometry
 		if(polylines.isEmpty()) return null;
 
-		return new ElementGeometry(polylines, null);
+		ElementGeometry result = new ElementGeometry(polylines, null);
+		if(result.center == null) return null;
+
+		return result;
 	}
 
 	private ElementGeometry createMultipolygonGeometry(Relation relation)
@@ -107,7 +110,10 @@ public class ElementGeometryCreator
 		// no valid geometry
 		if(rings.isEmpty()) return null;
 
-		return new ElementGeometry(null, rings);
+		ElementGeometry result = new ElementGeometry(null, rings);
+		if(result.center == null) return null;
+
+		return result;
 	}
 
 	private List<List<LatLon>> createNormalizedRingGeometry(Relation relation, String role,
@@ -124,7 +130,7 @@ public class ElementGeometryCreator
 	{
 		for(List<LatLon> ring : rings)
 		{
-			if(isRingDefinedClockwise(ring) != clockwise)
+			if(ElementGeometry.isRingDefinedClockwise(ring) != clockwise)
 			{
 				Collections.reverse(ring);
 			}
@@ -215,15 +221,4 @@ public class ElementGeometryCreator
 		}
 	}
 
-	private static boolean isRingDefinedClockwise(List<LatLon> ring)
-	{
-		double sum = 0;
-		for(int i=0; i<ring.size(); ++i)
-		{
-			LatLon pos1 = ring.get(i);
-			LatLon pos2 = ring.get((i+1) % ring.size());
-			sum += (pos2.getLongitude() - pos1.getLongitude()) * (pos2.getLatitude() + pos1.getLatitude());
-		}
-		return sum > 0;
-	}
 }
