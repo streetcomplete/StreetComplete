@@ -116,7 +116,7 @@ public class OsmNoteQuest implements Quest
 			return QuestImportance.NOTE;
 		}
 
-		@Override public AbstractQuestAnswerFragment getForm()
+		@Override public AbstractQuestAnswerFragment createForm()
 		{
 			return new NoteDiscussionForm();
 		}

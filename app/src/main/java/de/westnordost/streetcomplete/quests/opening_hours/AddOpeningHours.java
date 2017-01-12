@@ -33,7 +33,7 @@ public class AddOpeningHours extends OverpassQuestType
         return QuestImportance.MINOR;
     }
 
-	@Override public AbstractQuestAnswerFragment getForm()
+	@Override public AbstractQuestAnswerFragment createForm()
 	{
 		return new AddOpeningHoursForm();
 	}

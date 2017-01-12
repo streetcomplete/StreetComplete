@@ -645,7 +645,7 @@ public class MainActivity extends AppCompatActivity implements
 
 		mapFragment.addQuestGeometry(quest.getGeometry());
 
-		AbstractQuestAnswerFragment f = quest.getType().getForm();
+		AbstractQuestAnswerFragment f = quest.getType().createForm();
 		Bundle args = QuestAnswerComponent.createArguments(quest.getId(), group);
 		if (group == QuestGroup.OSM)
 		{

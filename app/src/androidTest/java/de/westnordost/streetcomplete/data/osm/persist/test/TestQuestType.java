@@ -18,7 +18,7 @@ public class TestQuestType implements OsmElementQuestType
 	{
 		return 0;
 	}
-	@Override public AbstractQuestAnswerFragment getForm()
+	@Override public AbstractQuestAnswerFragment createForm()
 	{
 		return null;
 	}

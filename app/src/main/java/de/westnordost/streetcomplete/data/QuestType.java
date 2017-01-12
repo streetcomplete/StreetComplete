@@ -8,7 +8,7 @@ public interface QuestType
 	int importance();
 
 	/** @return the dialog in which the user can add the data */
-	AbstractQuestAnswerFragment getForm();
+	AbstractQuestAnswerFragment createForm();
 
 	/** @return the name of the icon used to display this quest type on the map */
 	String getIconName();

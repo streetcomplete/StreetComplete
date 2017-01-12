@@ -170,7 +170,7 @@ public class OsmQuestChangesUploadTest extends TestCase
 		@Override protected String getTagFilters() { return "nodes"; }
 		@Override public Integer applyAnswerTo(Bundle answer, StringMapChangesBuilder changes) { return null; }
 		@Override public int importance() { return 0; }
-		@Override public AbstractQuestAnswerFragment getForm() { return null; }
+		@Override public AbstractQuestAnswerFragment createForm() { return null; }
 		@Override public String getIconName() { return null; }
 	}
 

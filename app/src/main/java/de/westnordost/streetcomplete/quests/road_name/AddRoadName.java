@@ -25,7 +25,7 @@ public class AddRoadName extends OverpassQuestType
 		return QuestImportance.WARNING;
 	}
 
-	public AbstractQuestAnswerFragment getForm()
+	public AbstractQuestAnswerFragment createForm()
 	{
 		return new AddRoadNameForm();
 	}
