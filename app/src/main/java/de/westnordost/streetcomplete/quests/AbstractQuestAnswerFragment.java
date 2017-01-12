@@ -1,12 +1,15 @@
 package de.westnordost.streetcomplete.quests;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.DialogFragment;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
+import android.support.annotation.UiThread;
 import android.support.design.widget.BottomSheetBehavior;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -215,7 +218,33 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 		questAnswerComponent.onAnswerQuest(data);
 	}
 
-	/** Apply an answer not given through the usual "OK" button */
+	/** Request to close the form through user interaction (back button, clicked other quest,..),
+	 *  requires user confirmation if any changes have been made */
+	@UiThread public void onClickClose(final Runnable confirmed)
+	{
+		if (!hasChanges())
+		{
+			confirmed.run();
+		}
+		else
+		{
+			DialogInterface.OnClickListener onYes = new DialogInterface.OnClickListener()
+			{
+				@Override
+				public void onClick(DialogInterface dialog, int which)
+				{
+					confirmed.run();
+				}
+			};
+			new AlertDialog.Builder(getActivity())
+					.setMessage(R.string.confirmation_discard_title)
+					.setPositiveButton(R.string.confirmation_discard_positive, onYes)
+					.setNegativeButton(R.string.confirmation_discard_negative, null)
+					.show();
+		}
+	}
+
+	/** Apply an answer not given through the usual "OK" button (Does not check if the form is empty) */
 	protected final void applyOtherAnswer(Bundle data)
 	{
 		questAnswerComponent.onAnswerQuest(data);

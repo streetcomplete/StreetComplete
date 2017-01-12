@@ -511,13 +511,20 @@ public class MainActivity extends AppCompatActivity implements
 
 	@Override public void onBackPressed()
 	{
-		confirmDiscardChangesIfAny(new Runnable()
+		AbstractQuestAnswerFragment f = getQuestDetailsFragment();
+		if(f != null)
 		{
-			@Override public void run()
+			f.onClickClose(new Runnable()
 			{
-				backAndCleanGeometry();
-			}
-		});
+				@Override public void run()
+				{
+					mapFragment.removeQuestGeometry();
+					MainActivity.super.onBackPressed();
+				}
+			});
+		} else {
+			super.onBackPressed();
+		}
 	}
 
 	/* ------------- OsmQuestAnswerListener ------------- */
@@ -556,7 +563,7 @@ public class MainActivity extends AppCompatActivity implements
 			{
 				@Override public void run()
 				{
-					showQuestDetails(quest, group, element, false);
+					requestShowQuestDetails(quest, group, element);
 				}
 			});
 
@@ -608,27 +615,31 @@ public class MainActivity extends AppCompatActivity implements
 				&& currentFragment.getQuestGroup() == group;
 	}
 
-	@UiThread private void showQuestDetails(final Quest quest, final QuestGroup group,
-											final Element element, boolean confirmed)
+	@UiThread private void requestShowQuestDetails(final Quest quest, final QuestGroup group,
+											final Element element)
 	{
 		if (isQuestDetailsCurrentlyDisplayedFor(quest.getId(), group)) return;
 
-		if (getQuestDetailsFragment() != null)
+		AbstractQuestAnswerFragment f = getQuestDetailsFragment();
+		if (f != null)
 		{
-			if (!confirmed)
+			f.onClickClose(new Runnable()
 			{
-				confirmDiscardChangesIfAny(
-						new Runnable()
-						{
-							@Override public void run()
-							{
-								showQuestDetails(quest, group, element, true);
-							}
-						}
-				);
-				return;
-			}
+				@Override public void run()
+				{
+					showQuestDetails(quest, group, element);
+				}
+			});
+		} else {
+			showQuestDetails(quest, group, element);
+		}
+	}
 
+	@UiThread private void showQuestDetails(final Quest quest, final QuestGroup group,
+											final Element element)
+	{
+		if(getQuestDetailsFragment() != null)
+		{
 			closeQuestDetails();
 		}
 
@@ -656,38 +667,6 @@ public class MainActivity extends AppCompatActivity implements
 		return (AbstractQuestAnswerFragment) getFragmentManager().findFragmentByTag(BOTTOM_SHEET);
 	}
 
-	private void backAndCleanGeometry()
-	{
-		mapFragment.removeQuestGeometry();
-		super.onBackPressed();
-	}
-
-	/** @return true if an action has been taken (run r or show confirmation dialog) */
-	@UiThread private boolean confirmDiscardChangesIfAny(final Runnable r)
-	{
-		AbstractQuestAnswerFragment f = getQuestDetailsFragment();
-		if (f == null || !f.hasChanges())
-		{
-			r.run();
-		} else
-		{
-			DialogInterface.OnClickListener onYes = new DialogInterface.OnClickListener()
-			{
-				@Override
-				public void onClick(DialogInterface dialog, int which)
-				{
-					r.run();
-				}
-			};
-			new AlertDialog.Builder(this)
-					.setMessage(R.string.confirmation_discard_title)
-					.setPositiveButton(R.string.confirmation_discard_positive, onYes)
-					.setNegativeButton(R.string.confirmation_discard_negative, null)
-					.show();
-		}
-		return f != null;
-	}
-
 	/* ---------- QuestsMapFragment.Listener ---------- */
 
 	@Override public void onMapReady()
@@ -709,15 +688,18 @@ public class MainActivity extends AppCompatActivity implements
 
 	@Override public void onClickedMapAt(@Nullable LatLon position)
 	{
-		confirmDiscardChangesIfAny(new Runnable()
+		AbstractQuestAnswerFragment f = getQuestDetailsFragment();
+		if(f != null)
 		{
-			@Override public void run()
+			f.onClickClose(new Runnable()
 			{
-				closeQuestDetails();
-			}
-		});
+				@Override public void run()
+				{
+					closeQuestDetails();
+				}
+			});
+		}
 	}
-
 
 	/* ---------- Location listener ---------- */
 
