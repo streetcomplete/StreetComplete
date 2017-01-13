@@ -25,7 +25,7 @@ import de.westnordost.osmapi.map.data.Way;
 public class ElementCreatorTestGeometry extends TestCase implements WayGeometrySource
 {
 	private static final LatLon
-			P0 = new OsmLatLon(-1d,-1d),
+			P0 = new OsmLatLon(0d,2d),
 			P1 = new OsmLatLon(0d,0d),
 			P2 = new OsmLatLon(1d,1d),
 			P3 = new OsmLatLon(2d,2d);

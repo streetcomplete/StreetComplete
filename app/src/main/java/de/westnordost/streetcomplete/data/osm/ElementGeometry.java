@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.util.SphericalEarthMath;
 public class ElementGeometry
 {
 	public LatLon center;
+	//* polygons are considered holes if they are defined clockwise */
 	public List<List<LatLon>> polygons = null;
 	public List<List<LatLon>> polylines = null;
 
@@ -102,8 +103,7 @@ public class ElementGeometry
 		}
 
 		if(area == 0) {
-			if(getLengthInMeters(polygon) == 0) return polygon.get(0);
-			return new OsmLatLon(0,0);
+			return null;
 		}
 		return new OsmLatLon(lat / area, lon / area);
 	}

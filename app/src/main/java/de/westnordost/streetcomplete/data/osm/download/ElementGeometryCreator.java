@@ -43,6 +43,11 @@ public class ElementGeometryCreator
 
 		if(OsmAreas.isArea(way))
 		{
+			// ElementGeometry considers polygons that are defined clockwise holes, so ensure that
+			// it is defined CCW here.
+			if(ElementGeometry.isRingDefinedClockwise(polyline)) {
+				Collections.reverse(polyline);
+			}
 			return new ElementGeometry(null, polylines);
 		}
 		else

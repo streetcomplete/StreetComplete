@@ -17,8 +17,8 @@ public class ElementGeometryTest extends TestCase
 		List<LatLon> square = new ArrayList<>();
 		square.add(new OsmLatLon(-5,-5));
 		square.add(new OsmLatLon(+5,-5));
-		square.add(new OsmLatLon(-5,+5));
 		square.add(new OsmLatLon(+5,+5));
+		square.add(new OsmLatLon(-5,+5));
 		polygons.add(square);
 		ElementGeometry geom = new ElementGeometry(null, polygons);
 		assertEquals(new OsmLatLon(0,0), geom.center);
@@ -30,8 +30,8 @@ public class ElementGeometryTest extends TestCase
 		List<LatLon> square = new ArrayList<>();
 		square.add(new OsmLatLon(-5,-5));
 		square.add(new OsmLatLon(+5,-5));
-		square.add(new OsmLatLon(-5,+5));
 		square.add(new OsmLatLon(+5,+5));
+		square.add(new OsmLatLon(-5,+5));
 		List<LatLon> hole = new ArrayList<>();
 		hole.add(new OsmLatLon(1,1));
 		hole.add(new OsmLatLon(1,3));
@@ -51,7 +51,7 @@ public class ElementGeometryTest extends TestCase
 		square.add(new OsmLatLon(10,10));
 		polygons.add(square);
 		ElementGeometry geom = new ElementGeometry(null, polygons);
-		assertEquals(new OsmLatLon(10,10), geom.center);
+		assertEquals(null, geom.center);
 	}
 
 	public void testFindCenterOfPolyline()
