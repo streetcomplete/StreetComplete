@@ -27,7 +27,7 @@ public class ElementCreatorTestGeometry extends TestCase implements WayGeometryS
 	private static final LatLon
 			P0 = new OsmLatLon(0d,2d),
 			P1 = new OsmLatLon(0d,0d),
-			P2 = new OsmLatLon(1d,1d),
+			P2 = new OsmLatLon(2d,0d),
 			P3 = new OsmLatLon(2d,2d);
 
 	private static final Node
