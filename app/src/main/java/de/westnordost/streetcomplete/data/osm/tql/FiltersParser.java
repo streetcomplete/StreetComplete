@@ -1,6 +1,8 @@
 package de.westnordost.streetcomplete.data.osm.tql;
 
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Compiles a string in filter syntax into a TagFilterExpression. A string in filter syntax is
@@ -30,11 +32,10 @@ public class FiltersParser
 			// convert all white-spacey things to whitespaces so we do not have to deal with them later
 			this.input = new StringWithCursor(input.replaceAll("\\s", " "));
 
-			expectAnyNumberOfSpaces();
-			ElementsTypeFilter elementsTypeFilter = parseElementsDeclaration();
+			List<ElementsTypeFilter> elementsTypeFilters = parseElementsDeclaration();
 			BooleanExpression<OQLExpressionValue> tagExprRoot = parseTags();
 
-			return new TagFilterExpression(elementsTypeFilter, tagExprRoot);
+			return new TagFilterExpression(elementsTypeFilters, tagExprRoot);
 		}
 		catch(ParseException e)
 		{
@@ -56,31 +57,50 @@ public class FiltersParser
 		return expectAnyNumberOfSpaces() + 1;
 	}
 
-	private int expectOneOrMoreSpacesOrEndOfString() throws ParseException
+	private List<ElementsTypeFilter> parseElementsDeclaration() throws ParseException
 	{
-		if(input.isAtEnd()) return 0;
-		return expectOneOrMoreSpaces();
+		List<ElementsTypeFilter> result = new ArrayList<>();
+		result.add(parseElementDeclaration());
+		while(input.nextIsAndAdvance(','))
+		{
+			ElementsTypeFilter element = parseElementDeclaration();
+			if(result.contains(element))
+			{
+				throw new ParseException("Mentioned the same element type " + element + " twice",
+						input.getCursorPos());
+			}
+			result.add(element);
+		}
+		return result;
 	}
 
-	private ElementsTypeFilter parseElementsDeclaration() throws ParseException
+	private ElementsTypeFilter parseElementDeclaration() throws ParseException
 	{
+		expectAnyNumberOfSpaces();
 		for(ElementsTypeFilter t : ElementsTypeFilter.values())
 		{
 			if(input.nextIsAndAdvanceIgnoreCase(t.name))
 			{
+				expectAnyNumberOfSpaces();
 				return t;
 			}
 		}
-		throw new ParseException("Expected an element type." +
-				"One of: nodes, ways, relations or elements", input.getCursorPos());
+		throw new ParseException("Expected element types." +
+				"Any of: nodes, ways or relations, separated by ','", input.getCursorPos());
 	}
 
 	private BooleanExpression<OQLExpressionValue> parseTags() throws ParseException
 	{
-		expectOneOrMoreSpacesOrEndOfString();
-
 		// tags are optional...
-		if(!input.nextIsAndAdvanceIgnoreCase(WITH))	return new BooleanExpression<>();
+		if(!input.nextIsAndAdvanceIgnoreCase(WITH))
+		{
+			if(!input.isAtEnd())
+			{
+				throw new ParseException("Expected end of string or 'with' keyword",
+						input.getCursorPos());
+			}
+			return new BooleanExpression<>();
+		}
 
 		BooleanExpressionBuilder<OQLExpressionValue> builder = new BooleanExpressionBuilder<>();
 

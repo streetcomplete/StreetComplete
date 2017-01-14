@@ -27,10 +27,11 @@ public class FiltersParserTest extends TestCase
 		check("RELATIONS", "rel;out meta geom;");
 	}
 
-	public void testElement()
+	public void testMultipleElementTypes()
 	{
-		check("elements", "(node;way;rel;);out meta geom;");
-		check("ELEMENTS", "(node;way;rel;);out meta geom;");
+		check("nodes, ways, relations", "(node;way;rel;);out meta geom;");
+		check("nodes ,ways", "(node;way;);out meta geom;");
+		check("nodes , ways", "(node;way;);out meta geom;");
 	}
 
 	public void testAnyQuote()
@@ -41,9 +42,9 @@ public class FiltersParserTest extends TestCase
 		check("nodes with '\"shop\"ping'", "node['\"shop\"ping'];out meta geom;");
 	}
 
-	public void testElementWithTag()
+	public void testMultipleElementTypesWithTag()
 	{
-		check("elements with shop",
+		check("nodes, ways, relations with shop",
 				"(node[\"shop\"];way[\"shop\"];rel[\"shop\"];);out meta geom;");
 	}
 
@@ -55,6 +56,16 @@ public class FiltersParserTest extends TestCase
 	public void testFailIfNoElementDeclarationInFront()
 	{
 		shouldFail("butter");
+	}
+
+	public void testFailIfElementDeclarationInFrontDuplicate()
+	{
+		shouldFail("nodes, nodes");
+	}
+
+	public void testFailIfElementDeclarationInFrontAnyInvalid()
+	{
+		shouldFail("nodes, butter");
 	}
 
 	public void testTagNoSeparator()
@@ -197,12 +208,12 @@ public class FiltersParserTest extends TestCase
 				"[bbox:0.0,0.0,5.0,10.0];(node[\"highway\"];node[\"railway\"];);out meta geom;", bbox);
 	}
 
-	public void testBoundingBoxWithElement()
+	public void testBoundingBoxWithMultipleElementTypes()
 	{
 		BoundingBox bbox = new BoundingBox(0,0,5,10);
 
-		check("elements", "[bbox:0.0,0.0,5.0,10.0];(node;way;rel;);out meta geom;", bbox);
-		check("elements with highway",
+		check("nodes, ways, relations", "[bbox:0.0,0.0,5.0,10.0];(node;way;rel;);out meta geom;", bbox);
+		check("nodes, ways, relations with highway",
 				"[bbox:0.0,0.0,5.0,10.0];(" +
 				"node[\"highway\"];" +
 				"way[\"highway\"];" +
@@ -210,7 +221,7 @@ public class FiltersParserTest extends TestCase
 				");" +
 				"out meta geom;", bbox);
 
-		check("elements with highway or railway",
+		check("nodes, ways, relations with highway or railway",
 				"[bbox:0.0,0.0,5.0,10.0];(" +
 				"node[\"highway\"];" +
 				"node[\"railway\"];" +

@@ -5,17 +5,13 @@ public enum ElementsTypeFilter
 {
 	NODES("nodes", "node"),
 	WAYS("ways", "way"),
-	RELATIONS("relations", "rel"),
-	/** nodes, ways and relations */
-	ELEMENTS("elements", null);
+	RELATIONS("relations", "rel");
 
 	ElementsTypeFilter(String name, String oqlName)
 	{
 		this.name = name;
 		this.oqlName = oqlName;
 	}
-
-	public static ElementsTypeFilter[] OQL_VALUES = {NODES, WAYS, RELATIONS};
 
 	final String name;
 	final String oqlName;

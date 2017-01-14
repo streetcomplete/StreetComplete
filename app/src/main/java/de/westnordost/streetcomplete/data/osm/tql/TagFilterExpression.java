@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.data.osm.tql;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
@@ -11,13 +12,13 @@ import de.westnordost.osmapi.map.data.Element;
  *  <tt>"ways with (highway = residential or highway = tertiary) and !name"</tt> */
 public class TagFilterExpression
 {
-	private ElementsTypeFilter elementsTypeFilter;
+	private List<ElementsTypeFilter> elementsTypeFilters;
 	private BooleanExpression<OQLExpressionValue> tagExprRoot;
 
-	public TagFilterExpression(ElementsTypeFilter elementsTypeFilter,
+	public TagFilterExpression(List<ElementsTypeFilter> elementsTypeFilters,
 							   BooleanExpression<OQLExpressionValue> tagExprRoot)
 	{
-		this.elementsTypeFilter = elementsTypeFilter;
+		this.elementsTypeFilters = elementsTypeFilters;
 		this.tagExprRoot = tagExprRoot;
 	}
 
@@ -26,14 +27,22 @@ public class TagFilterExpression
 	{
 		Element.Type eleType = element.getType();
 
-		if(elementsTypeFilter == ElementsTypeFilter.NODES && eleType != Element.Type.NODE)
-			return false;
-		if(elementsTypeFilter == ElementsTypeFilter.WAYS && eleType != Element.Type.WAY)
-			return false;
-		if(elementsTypeFilter == ElementsTypeFilter.RELATIONS && eleType != Element.Type.RELATION)
-			return false;
+		boolean elementTypeMatches = false;
 
-		return tagExprRoot.matches(element);
+		switch(eleType)
+		{
+			case NODE:
+				elementTypeMatches = elementsTypeFilters.contains(ElementsTypeFilter.NODES);
+				break;
+			case WAY:
+				elementTypeMatches = elementsTypeFilters.contains(ElementsTypeFilter.WAYS);
+				break;
+			case RELATION:
+				elementTypeMatches = elementsTypeFilters.contains(ElementsTypeFilter.RELATIONS);
+				break;
+		}
+
+		return elementTypeMatches && tagExprRoot.matches(element);
 	}
 
 	/** @return this expression as a Overpass query string (in a short one-liner form) */
@@ -53,19 +62,12 @@ public class TagFilterExpression
 
 		List<String> elements = getTagFiltersOverpassList(expandedExpression);
 
-		final boolean useUnion = elementsTypeFilter == ElementsTypeFilter.ELEMENTS || elements.size() > 1;
+		final boolean useUnion = elementsTypeFilters.size() > 1 || elements.size() > 1;
 
 		if(useUnion) oql.append("(");
-		if(elementsTypeFilter == ElementsTypeFilter.ELEMENTS)
+		for(ElementsTypeFilter filter : elementsTypeFilters)
 		{
-			for(ElementsTypeFilter elem : ElementsTypeFilter.OQL_VALUES)
-			{
-				oql.append(getTagFiltersOverpassString(elem, elements));
-			}
-		}
-		else
-		{
-			oql.append(getTagFiltersOverpassString(elementsTypeFilter, elements));
+			oql.append(getTagFiltersOverpassString(filter, elements));
 		}
 		if(useUnion) oql.append(");");
 

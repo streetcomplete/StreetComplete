@@ -14,7 +14,7 @@ public class AddOpeningHours extends OverpassQuestType
 {
     @Override protected String getTagFilters()
 	{
-		return " elements with ( shop and shop !~ no|vacant or" +
+		return " nodes, ways, relations with ( shop and shop !~ no|vacant or" +
                " amenity ~ restaurant|cafe|ice_cream|fast_food|bar|pub|biergarten|cinema|nightclub|" +
                           "bank|atm|post_office|library|courthouse|embassy|" +
                           "car_wash|car_rental|marketplace|fuel|" +
