@@ -113,4 +113,8 @@
     <string name="quest_openingHours_answer_no_regular_opening_hours">Keine regelmäßgen Öffnungszeiten</string>
     <string name="quest_openingHours_comment_description">Kurz und bündig, am besten direkt so wie es auf dem Schild steht. Zum Beispiel \"nach Vereinbarung\".\nFehlt ein Schild, bedeutet das nicht zwangsweise, dass es keine regulären Öffnungszeiten gibt.</string>
     <string name="quest_openingHours_comment_title">Öffnungszeiten beschreiben</string>
+    <string name="quest_buildingLevels_title">Wie viele Stockwerke hat dieses Gebäude?</string>
+    <string name="quest_buildingLevels_roofLevelsLabel">davon Dachgeschosse (0 bei keinem)</string>
+    <string name="quest_buildingLevels_levelsLabel">Stockwerke insgesamt</string>
+    <string name="quest_buildingLevels_title_buildingPart">Wie viele Stockwerke hat dieses Gebäudeteil?</string>
 </resources>

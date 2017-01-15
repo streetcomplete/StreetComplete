@@ -50,6 +50,19 @@ public class StringMapChangesBuilder
 		changes.put(key, new StringMapEntryModify(key, valueBefore, value));
 	}
 
+	public void addOrModify(@NonNull String key, @NonNull String value)
+	{
+		String valueBefore = source.get(key);
+		if(valueBefore == null)
+		{
+			add(key, value);
+		}
+		else
+		{
+			modify(key, value);
+		}
+	}
+
 	public String getPreviousValue(@NonNull String key)
 	{
 		return source.get(key);
