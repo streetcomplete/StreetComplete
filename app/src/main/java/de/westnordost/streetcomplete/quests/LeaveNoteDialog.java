@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.quests;
 
 import android.app.Activity;
-import android.app.DialogFragment;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatDialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +13,7 @@ import android.widget.EditText;
 
 import de.westnordost.streetcomplete.R;
 
-public class LeaveNoteDialog extends DialogFragment
+public class LeaveNoteDialog extends AppCompatDialogFragment
 {
 	private EditText noteInput;
 	private Button buttonOk;

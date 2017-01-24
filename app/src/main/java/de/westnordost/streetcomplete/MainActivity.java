@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete;
 import android.Manifest;
 import android.app.AlertDialog;
 import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
@@ -25,6 +24,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.UiThread;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -183,7 +183,7 @@ public class MainActivity extends AppCompatActivity implements
 		progressBar = (ProgressBar) findViewById(R.id.download_progress);
 		progressBar.setMax(1000);
 
-		mapFragment = (QuestsMapFragment) getFragmentManager().findFragmentById(R.id.map_fragment);
+		mapFragment = (QuestsMapFragment) getSupportFragmentManager().findFragmentById(R.id.map_fragment);
 		mapFragment.getMapAsync();
 
 		trackingButton = (ToggleImageButton) findViewById(R.id.gps_tracking);
@@ -341,7 +341,7 @@ public class MainActivity extends AppCompatActivity implements
 			{
 				OAuthWebViewDialogFragment dlg = OAuthWebViewDialogFragment.create(
 						OAuth.createConsumer(), OAuth.createProvider());
-				dlg.show(getFragmentManager(), OAuthWebViewDialogFragment.TAG);
+				dlg.show(getSupportFragmentManager(), OAuthWebViewDialogFragment.TAG);
 			}
 		};
 
@@ -594,7 +594,7 @@ public class MainActivity extends AppCompatActivity implements
 
 	@UiThread private void closeQuestDetails()
 	{
-		getFragmentManager().popBackStack(BOTTOM_SHEET, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+		getSupportFragmentManager().popBackStack(BOTTOM_SHEET, FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
 		mapFragment.removeQuestGeometry();
 
@@ -653,10 +653,10 @@ public class MainActivity extends AppCompatActivity implements
 		}
 		f.setArguments(args);
 
-		FragmentTransaction ft = getFragmentManager().beginTransaction();
+		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 		ft.setCustomAnimations(
-				R.animator.enter_from_bottom, R.animator.exit_to_bottom,
-				R.animator.enter_from_bottom, R.animator.exit_to_bottom);
+				R.anim.enter_from_bottom, R.anim.exit_to_bottom,
+				R.anim.enter_from_bottom, R.anim.exit_to_bottom);
 		ft.add(R.id.map_bottom_sheet_container, f, BOTTOM_SHEET);
 		ft.addToBackStack(BOTTOM_SHEET);
 		ft.commit();
@@ -664,7 +664,7 @@ public class MainActivity extends AppCompatActivity implements
 
 	private AbstractQuestAnswerFragment getQuestDetailsFragment()
 	{
-		return (AbstractQuestAnswerFragment) getFragmentManager().findFragmentByTag(BOTTOM_SHEET);
+		return (AbstractQuestAnswerFragment) getSupportFragmentManager().findFragmentByTag(BOTTOM_SHEET);
 	}
 
 	/* ---------- QuestsMapFragment.Listener ---------- */
