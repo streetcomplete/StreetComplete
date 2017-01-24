@@ -88,24 +88,35 @@ public class ElementGeometry
 
 	private static LatLon findCenterPointOfPolygon(List<LatLon> polygon) {
 
+		if(polygon.isEmpty()) return null;
+
 		double lon = 0, lat = 0, area = 0;
+		LatLon origin = polygon.get(0);
 		int len = polygon.size();
 
 		for(int i = 0, j = len-1; i<len; j = i, ++i)
 		{
-			LatLon pos1 = polygon.get(i);
-			LatLon pos2 = polygon.get(j);
+			LatLon pos1 = polygon.get(j);
+			LatLon pos2 = polygon.get(i);
 
-			double f = pos1.getLongitude() * pos2.getLatitude() - pos2.getLongitude() * pos1.getLatitude();
-			lon += (pos1.getLongitude() + pos2.getLongitude()) * f;
-			lat += (pos1.getLatitude() + pos2.getLatitude()) * f;
-			area += f * 3;
-		}
+			// calculating with offsets to avoid rounding imprecision
+			double dx1 = pos1.getLongitude() - origin.getLongitude();
+			double dy1 = pos1.getLatitude() - origin.getLatitude();
+			double dx2 = pos2.getLongitude() - origin.getLongitude();
+			double dy2 = pos2.getLatitude() - origin.getLatitude();
 
-		if(area == 0) {
-			return null;
+			double f = dx1 * dy2 - dx2 * dy1;
+			lon += (dx1 + dx2) * f;
+			lat += (dy1 + dy2) * f;
+			area += f;
 		}
-		return new OsmLatLon(lat / area, lon / area);
+		area *= 3;
+
+		if(area == 0) return null;
+
+		return new OsmLatLon(
+				lat / area + origin.getLatitude(),
+				lon / area + origin.getLongitude());
 	}
 
 	@Override public boolean equals(Object other)
