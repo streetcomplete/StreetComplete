@@ -14,7 +14,7 @@ public class OsmAreas
 			" ways with area = yes or (" +
 			" aeroway or amenity or boundary or building or craft or emergency or historic or" +
 			" landuse or leisure or military or office or place or public_transport or shop or" +
-			" tourism or" +
+			" tourism or building:part or" +
 			" aerialway = station or railway = station or" +
 			" power ~ compensator|converter|generator|plant|substation or" +
 			" waterway ~ boatyard|dam|dock|riverbank|fuel" +
