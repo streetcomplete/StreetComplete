@@ -3,16 +3,16 @@ package de.westnordost.streetcomplete.about;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.preference.Preference;
-import android.support.v7.preference.PreferenceFragmentCompat;
+import android.preference.Preference;
+import android.preference.PreferenceFragment;
 
 import de.westnordost.streetcomplete.ApplicationConstants;
 import de.westnordost.streetcomplete.R;
 
-public class AboutFragment extends PreferenceFragmentCompat
+public class AboutFragment extends PreferenceFragment
 {
 	@Override
-	public void onCreatePreferences(Bundle savedInstanceState, String rootKey)
+	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 		addPreferencesFromResource(R.xml.about);

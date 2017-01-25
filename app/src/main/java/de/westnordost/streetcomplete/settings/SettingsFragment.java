@@ -1,10 +1,10 @@
 package de.westnordost.streetcomplete.settings;
 
+import android.app.FragmentManager;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
-import android.support.v7.preference.Preference;
-import android.support.v7.preference.PreferenceFragmentCompat;
+import android.preference.Preference;
+import android.preference.PreferenceFragment;
 
 import javax.inject.Inject;
 
@@ -17,14 +17,16 @@ import de.westnordost.streetcomplete.oauth.OAuth;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.oauth.OAuthWebViewDialogFragment;
 
-public class SettingsFragment extends PreferenceFragmentCompat implements SharedPreferences.OnSharedPreferenceChangeListener
+public class SettingsFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener
 {
 	@Inject SharedPreferences prefs;
 	@Inject OsmNoteQuestDao osmNoteQuestDao;
 
 	@Override
-	public void onCreatePreferences(Bundle savedInstanceState, String rootKey)
+	public void onCreate(Bundle savedInstanceState)
 	{
+		super.onCreate(savedInstanceState);
+
 		Injector.instance.getApplicationComponent().inject(this);
 
 		addPreferencesFromResource(R.xml.preferences);

@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.tangram;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.content.SharedPreferences;
 import android.location.Location;
 import android.os.Bundle;
@@ -8,7 +9,6 @@ import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v13.app.FragmentCompat;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -90,9 +90,9 @@ public class MapFragment extends Fragment implements
 
 	private void updateMapTileCacheSize()
 	{
-		int cacheSize = PreferenceManager.getDefaultSharedPreferences(getContext()).getInt(Prefs.MAP_TILECACHE, 50);
+		int cacheSize = PreferenceManager.getDefaultSharedPreferences(getActivity()).getInt(Prefs.MAP_TILECACHE, 50);
 
-		File cacheDir = getContext().getExternalCacheDir();
+		File cacheDir = getActivity().getExternalCacheDir();
 		if (cacheDir != null && cacheDir.exists())
 		{
 			mapHttpHandler.setCache(new File(cacheDir, "tile_cache"), cacheSize * 1024 * 1024);

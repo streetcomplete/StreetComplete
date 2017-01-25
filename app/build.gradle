@@ -16,7 +16,6 @@ android {
         versionName "0.2"
         multiDexEnabled true
         testInstrumentationRunner "com.android.test.runner.MultiDexTestRunner"
-        vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
         release {
@@ -55,7 +54,6 @@ dependencies {
     apt 'com.google.dagger:dagger-compiler:2.5'
 
     // Android stuff
-    compile 'com.android.support:preference-v7:24.2.1'
     compile 'com.android.support:appcompat-v7:24.2.1'
     compile 'com.android.support:support-v13:24.2.1'
     compile 'com.android.support:support-v4:24.2.1'

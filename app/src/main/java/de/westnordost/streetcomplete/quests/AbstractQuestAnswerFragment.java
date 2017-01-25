@@ -1,6 +1,9 @@
 package de.westnordost.streetcomplete.quests;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.DialogFragment;
+import android.app.Fragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -8,9 +11,6 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.UiThread;
 import android.support.design.widget.BottomSheetBehavior;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatDialogFragment;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -199,7 +199,7 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 
 	protected final void onClickCantSay()
 	{
-		AppCompatDialogFragment leaveNote = new LeaveNoteDialog();
+		DialogFragment leaveNote = new LeaveNoteDialog();
 		leaveNote.setArguments(questAnswerComponent.getArguments());
 		leaveNote.show(getFragmentManager(), null);
 	}
