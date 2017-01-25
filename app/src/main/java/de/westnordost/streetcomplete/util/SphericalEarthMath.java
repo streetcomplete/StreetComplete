@@ -4,6 +4,8 @@ import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.map.data.OsmLatLon;
 
+import static java.lang.Math.*;
+
 /** Calculate stuff assuming a spherical Earth. The Earth is not spherical, but it is a good
  *  approximation and totally sufficient for our use here. */
 public class SphericalEarthMath
@@ -159,12 +161,5 @@ public class SphericalEarthMath
 		return Math.atan2(sin(Δλ), -cos(φ2)*tan(φ1) + sin(φ1)*cos(Δλ));
 	}
 
-	// Just for better readability of the formulas. Hoping JVM does proper inline expansion
-	private static double cos(double x) { return Math.cos(x); }
-	private static double sin(double x) { return Math.sin(x); }
-	private static double tan(double x) { return Math.tan(x); }
 	private static double sqr(double x) { return Math.pow(x, 2); }
-	private static double sqrt(double x) { return Math.sqrt(x); }
-	private static double atan2(double y, double x) { return Math.atan2(y,x); }
-
 }
