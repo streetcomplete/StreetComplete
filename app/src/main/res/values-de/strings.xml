@@ -117,4 +117,8 @@
     <string name="quest_buildingLevels_roofLevelsLabel">davon Dachgeschosse (0 bei keinem)</string>
     <string name="quest_buildingLevels_levelsLabel">Stockwerke insgesamt</string>
     <string name="quest_buildingLevels_title_buildingPart">Wie viele Stockwerke hat dieses Gebäudeteil?</string>
+    <string name="quest_roofShape_title">Welche grundlegende Dachform hat dieses Gebäude?</string>
+    <string name="quest_roofShape_select_one">Wähle eine aus:</string>
+    <string name="quest_roofShape_show_more">Weitere anzeigen…</string>
+    <string name="quest_roofShape_answer_many">Es hat mehrere unterschiedliche</string>
 </resources>

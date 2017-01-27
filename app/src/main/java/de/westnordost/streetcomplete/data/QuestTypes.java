@@ -10,6 +10,7 @@ import java.util.Map;
 import de.westnordost.streetcomplete.quests.building_levels.AddBuildingLevels;
 import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHours;
 import de.westnordost.streetcomplete.quests.road_name.AddRoadName;
+import de.westnordost.streetcomplete.quests.roof_shape.AddRoofShape;
 
 /** Every osm quest needs to be registered here.
  *
@@ -23,6 +24,7 @@ public class QuestTypes
 		new AddRoadName(),
 		new AddOpeningHours(),
 		new AddBuildingLevels(),
+		new AddRoofShape()
 	};
 
 	private final List<QuestType> types;
