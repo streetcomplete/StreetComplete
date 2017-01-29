@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.settings;
 
 import android.app.FragmentManager;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
@@ -93,29 +94,34 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
 			final Preference pref = getPreferenceScreen().findPreference(Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS);
 
 			pref.setEnabled(false);
-			new Thread() { @Override public void run()
+			new AsyncTask<Void, Void, Void>()
 			{
-				for(OsmNoteQuest quest : osmNoteQuestDao.getAll(null,null))
+				@Override protected Void doInBackground(Void... params)
 				{
-					if (quest.getStatus() == QuestStatus.NEW || quest.getStatus() == QuestStatus.INVISIBLE)
+					for(OsmNoteQuest quest : osmNoteQuestDao.getAll(null,null))
 					{
-						boolean showNonQuestionNotes = prefs.getBoolean(Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS, false);
-						boolean visible = quest.probablyContainsQuestion() || showNonQuestionNotes;
-						QuestStatus newQuestStatus = visible ? QuestStatus.NEW : QuestStatus.INVISIBLE;
-
-						if (quest.getStatus() != newQuestStatus)
+						if (quest.getStatus() == QuestStatus.NEW || quest.getStatus() == QuestStatus.INVISIBLE)
 						{
-							quest.setStatus(newQuestStatus);
-							osmNoteQuestDao.update(quest);
+							boolean showNonQuestionNotes = prefs.getBoolean(Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS, false);
+							boolean visible = quest.probablyContainsQuestion() || showNonQuestionNotes;
+							QuestStatus newQuestStatus = visible ? QuestStatus.NEW : QuestStatus.INVISIBLE;
+
+							if (quest.getStatus() != newQuestStatus)
+							{
+								quest.setStatus(newQuestStatus);
+								osmNoteQuestDao.update(quest);
+							}
 						}
 					}
+					return null;
 				}
-				getActivity().runOnUiThread(new Runnable() { @Override public void run()
+
+				@Override protected void onPostExecute(Void result)
 				{
 					pref.setEnabled(true);
-				}});
+				}
 
-			}}.start();
+			}.execute();
 		}
 	}
 }
