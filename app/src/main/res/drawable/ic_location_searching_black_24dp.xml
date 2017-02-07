@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list android:id="@+id/selected"
+                android:oneshot="false"
+                xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/ic_location_nolocation_black_24dp" android:duration="750" />
+    <item android:drawable="@drawable/ic_location_black_24dp" android:duration="750" />
+</animation-list>

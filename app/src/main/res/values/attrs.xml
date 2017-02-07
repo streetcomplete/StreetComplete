@@ -6,5 +6,13 @@
     </declare-styleable>
     <declare-styleable name="ToggleImageButton">
         <attr name="checked" format="boolean"/>
+    <declare-styleable name="LocationStateButton">
+        <attr name="tint" format="reference|color" />
+        <!-- See LocationState. Assume that for each state that is set to true, any state that is
+        defined before that is true also -->
+        <attr name="state_allowed" format="boolean"/>
+        <attr name="state_enabled" format="boolean"/>
+        <attr name="state_searching" format="boolean"/>
+        <attr name="state_updating" format="boolean"/>
     </declare-styleable>
 </resources>
