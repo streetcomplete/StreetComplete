@@ -19,6 +19,7 @@ import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
 import de.westnordost.streetcomplete.data.osmnotes.CreateNoteDao;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestDao;
 import de.westnordost.streetcomplete.data.tiles.DownloadedTilesDao;
+import de.westnordost.streetcomplete.location.LocationRequestFragment;
 
 @Module
 public class ApplicationModule
@@ -79,5 +80,10 @@ public class ApplicationModule
 	{
 		return new WifiAutoDownloadStrategy(osmQuestDB, downloadedTilesDao, questTypes,
 				preferences);
+	}
+
+	@Provides public static LocationRequestFragment locationRequestComponent()
+	{
+		return new LocationRequestFragment();
 	}
 }
