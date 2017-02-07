@@ -47,7 +47,11 @@ public class MapFragment extends Fragment implements
 	private HttpHandler mapHttpHandler = new HttpHandler();
 
 	private LostApiClient lostApiClient;
+
+	private boolean isFollowingPosition;
+	private Location lastLocation;
 	private boolean zoomedYet;
+
 	private boolean startTrackingWhenConnected;
 
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -109,6 +113,7 @@ public class MapFragment extends Fragment implements
 		startTrackingWhenConnected = false;
 
 		zoomedYet = false;
+		lastLocation = null;
 
 		LocationRequest request = LocationRequest.create()
 				.setInterval(2000)
@@ -124,28 +129,54 @@ public class MapFragment extends Fragment implements
 		{
 			locationLayer.clear();
 		}
+		zoomedYet = false;
 
 		LocationServices.FusedLocationApi.removeLocationUpdates(lostApiClient, this);
+	}
+
+	public void setIsFollowingPosition(boolean value)
+	{
+		isFollowingPosition = value;
+		if(!isFollowingPosition) {
+			zoomedYet = false;
+		}
+		followPosition();
+	}
+
+	public boolean isFollowingPosition()
+	{
+		return isFollowingPosition;
+	}
+
+	private void followPosition()
+	{
+		if(isFollowingPosition && controller != null && lastLocation != null)
+		{
+			controller.setPositionEased(new LngLat(lastLocation.getLongitude(), lastLocation.getLatitude()),1000);
+			if(!zoomedYet)
+			{
+				zoomedYet = true;
+				controller.setZoomEased(17, 1000);
+			}
+		}
 	}
 
 	/* ------------------------------------ LOST ------------------------------------------- */
 
 	@Override public void onLocationChanged(Location location)
 	{
-		showLocation(location);
-		if(!zoomedYet)
-		{
-			zoomTo(location);
-		}
+		lastLocation = location;
+		showLocation();
+		followPosition();
 	}
 
-	private void showLocation(Location location)
+	private void showLocation()
 	{
 		if(locationLayer != null)
 		{
 			locationLayer.clear();
-			LngLat pos = new LngLat(location.getLongitude(), location.getLatitude());
-			int accuracy = (int)(Math.ceil(location.getAccuracy()));
+			LngLat pos = new LngLat(lastLocation.getLongitude(), lastLocation.getLatitude());
+			int accuracy = (int)(Math.ceil(lastLocation.getAccuracy()));
 
 			Map<String, String> props = new HashMap<>();
 			props.put("type", "point");
@@ -162,15 +193,6 @@ public class MapFragment extends Fragment implements
 	@Override public void onProviderDisabled(String provider)
 	{
 
-	}
-
-	private void zoomTo(Location location)
-	{
-		if(controller == null) return;
-
-		zoomedYet = true;
-		if(controller.getZoom() < 16) controller.setZoomEased(17, 1000);
-		controller.setPositionEased(new LngLat(location.getLongitude(), location.getLatitude()),1000);
 	}
 
 	private static final String PREF_ROTATION = "map_rotation";
@@ -281,5 +303,4 @@ public class MapFragment extends Fragment implements
 		super.onLowMemory();
 		if(mapView != null) mapView.onLowMemory();
 	}
-
 }

@@ -23,13 +23,14 @@
         tools:ignore="RtlHardcoded"
         android:layout_gravity="bottom|right">
 
-        <de.westnordost.streetcomplete.tangram.ToggleImageButton
+        <de.westnordost.streetcomplete.location.LocationStateButton
             android:id="@+id/gps_tracking"
             android:layout_width="54dp"
             android:layout_height="54dp"
             android:background="@drawable/round_button_selector"
             android:elevation="4dp"
-            android:src="@drawable/ic_crosshairs_gps_24dp"
+            android:src="@drawable/ic_location_24dp"
+            app:tint="@color/activated_tint"
             tools:ignore="RtlHardcoded"
             android:scaleType="center"
             android:contentDescription="@string/map_btn_gps_tracking"

@@ -97,6 +97,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.ScaleRe
 
 	@Override public boolean onDoubleTap(float x, float y)
 	{
+		if(isFollowingPosition()) return true;
 		LngLat zoomTo = controller.screenPositionToLngLat(new PointF(x, y));
 		controller.setPositionEased(zoomTo, 500);
 		controller.setZoomEased(controller.getZoom() + 1.5f, 500);
@@ -105,6 +106,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.ScaleRe
 
 	@Override public boolean onScale(float x, float y, float scale, float velocity)
 	{
+		if(isFollowingPosition()) return true;
 		updateView();
 		// okay, scale
 		return false;
@@ -112,6 +114,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.ScaleRe
 
 	@Override public boolean onPan(float startX, float startY, float endX, float endY)
 	{
+		if(isFollowingPosition()) return true;
 		updateView();
 		// okay, pan
 		return false;
@@ -119,6 +122,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.ScaleRe
 
 	@Override public boolean onFling(float posX, float posY, float velocityX, float velocityY)
 	{
+		if(isFollowingPosition()) return true;
 		updateView();
 		// okay, fling
 		return false;

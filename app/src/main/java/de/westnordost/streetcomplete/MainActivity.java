@@ -14,6 +14,7 @@ import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiManager;
@@ -21,10 +22,9 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
 import android.support.annotation.AnyThread;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.UiThread;
-import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -57,6 +57,7 @@ import de.westnordost.streetcomplete.data.download.QuestDownloadService;
 import de.westnordost.streetcomplete.data.QuestGroup;
 import de.westnordost.streetcomplete.data.VisibleQuestListener;
 import de.westnordost.streetcomplete.data.download.WifiAutoDownloadStrategy;
+import de.westnordost.streetcomplete.location.LocationRequestFragment;
 import de.westnordost.streetcomplete.oauth.OAuth;
 import de.westnordost.streetcomplete.oauth.OAuthComponent;
 import de.westnordost.streetcomplete.oauth.OAuthWebViewDialogFragment;
@@ -65,8 +66,9 @@ import de.westnordost.streetcomplete.quests.OsmQuestAnswerListener;
 import de.westnordost.streetcomplete.quests.QuestAnswerComponent;
 import de.westnordost.streetcomplete.settings.SettingsActivity;
 import de.westnordost.streetcomplete.statistics.AnswersCounter;
+import de.westnordost.streetcomplete.location.LocationState;
+import de.westnordost.streetcomplete.location.LocationStateButton;
 import de.westnordost.streetcomplete.tangram.QuestsMapFragment;
-import de.westnordost.streetcomplete.tangram.ToggleImageButton;
 import de.westnordost.streetcomplete.util.SlippyMapMath;
 import de.westnordost.streetcomplete.util.SphericalEarthMath;
 import de.westnordost.osmapi.map.data.BoundingBox;
@@ -76,24 +78,28 @@ import de.westnordost.osmapi.map.data.OsmElement;
 import de.westnordost.osmapi.map.data.OsmLatLon;
 import oauth.signpost.OAuthConsumer;
 
+import static android.location.LocationManager.PROVIDERS_CHANGED_ACTION;
+
 public class MainActivity extends AppCompatActivity implements
 		OsmQuestAnswerListener, VisibleQuestListener, QuestsMapFragment.Listener, LocationListener,
-		OAuthWebViewDialogFragment.OAuthListener, OAuthComponent.Listener
+		OAuthWebViewDialogFragment.OAuthListener, OAuthComponent.Listener,
+		LocationRequestFragment.LocationRequestListener
 {
 	private static final String TAG_AUTO_DOWNLOAD = "AutoQuestDownload";
 
-	private static final int
-			LOCATION_PERMISSION_REQUEST = 101,
-			REQUEST_CHECK_SETTINGS = 102;
+	private static final int REQUEST_CHECK_SETTINGS = 102;
 
+	@Inject LocationRequestFragment locationRequestFragment;
 	@Inject QuestController questController;
 	@Inject MobileDataAutoDownloadStrategy mobileDataDownloadStrategy;
 	@Inject WifiAutoDownloadStrategy wifiDownloadStrategy;
 	@Inject SharedPreferences prefs;
 	@Inject OAuthComponent oAuthComponent;
 
+	private LatLon lastAutoDownloadPos;
+
 	private QuestsMapFragment mapFragment;
-	private ToggleImageButton trackingButton;
+	private LocationStateButton trackingButton;
 
 	private Long clickedQuestId = null;
 	private QuestGroup clickedQuestGroup = null;
@@ -102,7 +108,7 @@ public class MainActivity extends AppCompatActivity implements
 	private AnswersCounter answersCounter;
 
 	private LostApiClient lostApiClient;
-	private LatLon lastAutoDownloadPos;
+	private boolean hasAskedForLocation = false;
 
 	private boolean downloadServiceIsBound;
 	private QuestDownloadService.Interface downloadService;
@@ -150,6 +156,8 @@ public class MainActivity extends AppCompatActivity implements
 		}
 	};
 
+	private BroadcastReceiver locationAvailabilityReceiver = null;
+
 	@Override protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
@@ -166,14 +174,29 @@ public class MainActivity extends AppCompatActivity implements
 
 		oAuthComponent.setListener(this);
 
+		getSupportFragmentManager().beginTransaction().add(locationRequestFragment,
+				LocationRequestFragment.class.getSimpleName()).commit();
+
 		lostApiClient = new LostApiClient.Builder(this).addConnectionCallbacks(
 				new LostApiClient.ConnectionCallbacks()
 				{
 					@Override
 					public void onConnected()
 					{
-						trackingButton.setEnabled(true);
-						if(trackingButton.isChecked()) startLocationTracking();
+						if(!hasAskedForLocation)
+						{
+							locationRequestFragment.start();
+						}
+						else
+						{
+							LocationManager mgr = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+							boolean hasPermission = ContextCompat.checkSelfPermission(MainActivity.this,
+									Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED;
+							if(hasPermission && mgr.isProviderEnabled(LocationManager.GPS_PROVIDER))
+							{
+								startLocationTracking();
+							}
+						}
 					}
 
 					@Override
@@ -186,24 +209,20 @@ public class MainActivity extends AppCompatActivity implements
 		mapFragment = (QuestsMapFragment) getFragmentManager().findFragmentById(R.id.map_fragment);
 		mapFragment.getMapAsync();
 
-		trackingButton = (ToggleImageButton) findViewById(R.id.gps_tracking);
-		trackingButton.setOnCheckedChangeListener(new ToggleImageButton.OnCheckedChangeListener()
+		trackingButton = (LocationStateButton) findViewById(R.id.gps_tracking);
+		trackingButton.setOnClickListener(new View.OnClickListener()
 		{
-			@Override public void onCheckedChanged(ToggleImageButton buttonView, boolean isChecked)
+			@Override public void onClick(View v)
 			{
-				if(!lostApiClient.isConnected()) return;
-
-				if(isChecked)
+				if(trackingButton.getState().isEnabled())
 				{
-					startLocationTracking();
+					boolean isFollowing = mapFragment.isFollowingPosition();
+					setIsFollowingPosition(!isFollowing);
 				}
 				else
 				{
-					stopLocationTracking();
-					Toast.makeText(MainActivity.this, R.string.no_gps_no_quests, Toast.LENGTH_SHORT).show();
+					locationRequestFragment.start();
 				}
-
-				prefs.edit().putBoolean(Prefs.TRACKING, isChecked).apply();
 			}
 		});
 	}
@@ -211,9 +230,6 @@ public class MainActivity extends AppCompatActivity implements
 	@Override public void onStart()
 	{
 		super.onStart();
-
-		trackingButton.setChecked(prefs.getBoolean(Prefs.TRACKING, true)); // tracking is on by default
-		trackingButton.setEnabled(false); // will be enabled as soon as lostApiClient is connected
 		lostApiClient.connect();
 
 		answersCounter.update();
@@ -258,6 +274,8 @@ public class MainActivity extends AppCompatActivity implements
 
 		localBroadcaster.unregisterReceiver(uploadChangesErrorReceiver);
 		localBroadcaster.unregisterReceiver(uploadChangesFinishedReceiver);
+
+		unregisterLocationAvailabilityChanges();
 
 		try
 		{
@@ -703,10 +721,73 @@ public class MainActivity extends AppCompatActivity implements
 
 	/* ---------- Location listener ---------- */
 
+	private void startLocationTracking() throws SecurityException
+	{
+		trackingButton.setState(LocationState.SEARCHING);
+		mapFragment.startPositionTracking();
+		setIsFollowingPosition(true);
+
+		if(lostApiClient.isConnected())
+		{
+			registerLocationAvailabilityChanges();
+
+			LocationRequest request = LocationRequest.create()
+					.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
+					.setSmallestDisplacement(500)
+					.setInterval(3 * 60 * 1000); // 3 minutes
+
+			LocationServices.FusedLocationApi.requestLocationUpdates(lostApiClient, request, this);
+		}
+	}
+
+	private void stopLocationTracking()
+	{
+		LocationServices.FusedLocationApi.removeLocationUpdates(lostApiClient, this);
+		mapFragment.stopPositionTracking();
+	}
+
+	private void registerLocationAvailabilityChanges()
+	{
+		locationAvailabilityReceiver = new BroadcastReceiver()
+		{
+			@Override public void onReceive(Context context, Intent intent)
+			{
+				LocationManager mgr = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+				boolean isLocationEnabled = mgr.isProviderEnabled(LocationManager.GPS_PROVIDER);
+				if(!isLocationEnabled)
+				{
+					trackingButton.setState(LocationState.ALLOWED);
+					setIsFollowingPosition(false);
+					stopLocationTracking();
+					unregisterLocationAvailabilityChanges();
+				}
+			}
+		};
+		registerReceiver(locationAvailabilityReceiver,
+				new IntentFilter(PROVIDERS_CHANGED_ACTION));
+	}
+
+	private void unregisterLocationAvailabilityChanges()
+	{
+		if(locationAvailabilityReceiver != null)
+		{
+			unregisterReceiver(locationAvailabilityReceiver);
+			locationAvailabilityReceiver = null;
+		}
+	}
+
+	private void setIsFollowingPosition(boolean follow)
+	{
+		trackingButton.setActivated(follow);
+		mapFragment.setIsFollowingPosition(follow);
+	}
+
 	@Override public void onLocationChanged(Location location)
 	{
-		LatLon pos = new OsmLatLon(location.getLatitude(), location.getLongitude());
+		trackingButton.setState(LocationState.UPDATING);
+		trackingButton.setActivated(mapFragment.isFollowingPosition());
 
+		LatLon pos = new OsmLatLon(location.getLatitude(), location.getLongitude());
 		// TODO remove when https://github.com/mapzen/lost/issues/142 is fixed
 		if(lastAutoDownloadPos != null)
 		{
@@ -718,150 +799,21 @@ public class MainActivity extends AppCompatActivity implements
 	@Override public void onProviderEnabled(String provider) {}
 	@Override public void onProviderDisabled(String provider) {}
 
-	private void startLocationTracking()
+	@Override public void onLocationRequestFinished(LocationState withLocationState)
 	{
-		if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
-				!= PackageManager.PERMISSION_GRANTED)
+		hasAskedForLocation = true;
+		trackingButton.setState(withLocationState);
+		boolean enabled = withLocationState.isEnabled();
+		if(enabled)
 		{
-			ActivityCompat.requestPermissions(
-					this, new String[]{ Manifest.permission.ACCESS_FINE_LOCATION },
-					LOCATION_PERMISSION_REQUEST);
-			return;
+			startLocationTracking();
 		}
-
-		LocationRequest request = LocationRequest.create()
-				.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
-				.setSmallestDisplacement(500)
-				.setInterval(3*60*1000); // 3 minutes
-
-		LocationServices.FusedLocationApi.requestLocationUpdates(lostApiClient, request, this);
-
-		mapFragment.startPositionTracking();
-	}
-
-	private void stopLocationTracking()
-	{
-		LocationServices.FusedLocationApi.removeLocationUpdates(lostApiClient, this);
-		mapFragment.stopPositionTracking();
-	}
-
-	@Override public void onRequestPermissionsResult(int requestCode, @NonNull
-			String[] permissions, @NonNull int[] grantResults)
-	{
-		if(requestCode == LOCATION_PERMISSION_REQUEST)
+		else
 		{
-			if(grantResults[0] == PackageManager.PERMISSION_GRANTED)
-			{
-				startLocationTracking(); // retry then...
-			}
-			else
-			{
-				DialogInterface.OnClickListener onRetry = new DialogInterface.OnClickListener()
-				{
-					@Override
-					public void onClick(DialogInterface dialog, int which)
-					{
-						startLocationTracking();
-					}
-				};
-				DialogInterface.OnClickListener onNo = new DialogInterface.OnClickListener()
-				{
-					@Override public void onClick(DialogInterface dialog, int which)
-					{
-						trackingButton.setChecked(false);
-					}
-				};
-				DialogInterface.OnCancelListener onCancel = new DialogInterface.OnCancelListener()
-				{
-					@Override public void onCancel(DialogInterface dialog)
-					{
-						trackingButton.setChecked(false);
-					}
-				};
-
-				new AlertDialog.Builder(this)
-						.setMessage(R.string.no_location_permission_warning)
-						.setPositiveButton(R.string.retry, onRetry)
-						.setNegativeButton(android.R.string.cancel, onNo)
-						.setOnCancelListener(onCancel)
-						.show();
-			}
+			Toast.makeText(MainActivity.this, R.string.no_gps_no_quests, Toast.LENGTH_LONG).show();
 		}
 	}
 
-//TODO https://github.com/mapzen/lost/issues/140
-/*
-	private void requestLocationSettingsToBeOn()
-	{
-		LocationRequest locationRequest = LocationRequest.create().setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-		PendingResult<LocationSettingsResult> result = LocationServices.SettingsApi.checkLocationSettings(
-				lostApiClient, new LocationSettingsRequest.Builder().addLocationRequest(locationRequest).build());
-		result.setResultCallback(new ResultCallback<LocationSettingsResult>()
-		{
-			@Override public void onResult(@NonNull LocationSettingsResult result)
-			{
-				final Status status = result.getStatus();
-				switch (status.getStatusCode())
-				{
-					case Status.SUCCESS:
-						startLocationTracking();
-						break;
-					case Status.RESOLUTION_REQUIRED:
-
-						DialogInterface.OnClickListener onYes = new DialogInterface.OnClickListener()
-						{
-							@Override
-							public void onClick(DialogInterface dialog, int which)
-							{
-								try
-								{
-									status.startResolutionForResult(MainActivity.this, REQUEST_CHECK_SETTINGS);
-								}
-								catch (IntentSender.SendIntentException e)
-								{
-									e.printStackTrace();
-								}
-							}
-						};
-						new AlertDialog.Builder(MainActivity.this)
-								.setMessage(R.string.turn_on_location_request)
-								.setPositiveButton(android.R.string.yes, onYes)
-								.setNegativeButton(android.R.string.no, null)
-								.show();
-
-						break;
-					case Status.SETTINGS_CHANGE_UNAVAILABLE:
-						new AlertDialog.Builder(MainActivity.this)
-								.setMessage(R.string.no_location_message)
-								.show();
-						break;
-				}
-			}
-		});
-	}
-
-	@Override protected void onActivityResult(int requestCode, int resultCode, Intent data)
-	{
-		super.onActivityResult(requestCode, resultCode, data);
-		switch (requestCode)
-		{
-			case REQUEST_CHECK_SETTINGS:
-				switch (resultCode) {
-					case Activity.RESULT_OK:
-						startLocationTracking();
-						break;
-					case Activity.RESULT_CANCELED:
-						new AlertDialog.Builder(MainActivity.this)
-								.setMessage(R.string.no_location_message)
-								.show();
-						break;
-					default:
-						break;
-				}
-				break;
-		}
-	}
-*/
 	private void triggerAutoDownloadFor(LatLon pos)
 	{
 		if(pos == null) return;
