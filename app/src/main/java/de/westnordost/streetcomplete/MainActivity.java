@@ -192,9 +192,15 @@ public class MainActivity extends AppCompatActivity implements
 							LocationManager mgr = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 							boolean hasPermission = ContextCompat.checkSelfPermission(MainActivity.this,
 									Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED;
-							if(hasPermission && mgr.isProviderEnabled(LocationManager.GPS_PROVIDER))
+							boolean isLocationEnabled = mgr.isProviderEnabled(LocationManager.GPS_PROVIDER);
+							if(hasPermission && isLocationEnabled)
 							{
 								startLocationTracking();
+							}
+							else
+							{
+								trackingButton.setState(hasPermission ? LocationState.ALLOWED : LocationState.DENIED);
+								setIsFollowingPosition(false);
 							}
 						}
 					}

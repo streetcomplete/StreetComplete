@@ -156,7 +156,7 @@ public class MapFragment extends Fragment implements
 			if(!zoomedYet)
 			{
 				zoomedYet = true;
-				controller.setZoomEased(17, 1000);
+				controller.setZoomEased(19, 1000);
 			}
 		}
 	}
