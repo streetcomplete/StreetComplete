@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete;
 
 import android.Manifest;
+import android.animation.ObjectAnimator;
 import android.app.AlertDialog;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -32,6 +33,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -254,7 +256,7 @@ public class MainActivity extends AppCompatActivity implements
 		QuestAutoDownloadStrategy newStrategy = isConnectedToWifi() ? wifiDownloadStrategy : mobileDataDownloadStrategy;
 		questController.setDownloadStrategy(newStrategy);
 
-		progressBar.setVisibility(View.INVISIBLE);
+		progressBar.setAlpha(0f);
 		downloadServiceIsBound = bindService(
 				new Intent(this, QuestDownloadService.class),
 				downloadServiceConnection, BIND_AUTO_CREATE);
@@ -302,7 +304,7 @@ public class MainActivity extends AppCompatActivity implements
 			downloadService.startForeground();
 			// since we unbound from the service, we won't get the onFinished call. But we will get
 			// the onStarted call when we return to this activity when the service is rebound
-			progressBar.setVisibility(View.INVISIBLE);
+			progressBar.setAlpha(0f);
 		}
 	}
 
@@ -466,7 +468,8 @@ public class MainActivity extends AppCompatActivity implements
 			{
 				@Override public void run()
 				{
-					progressBar.setVisibility(View.VISIBLE);
+					ObjectAnimator fadeInAnimator = ObjectAnimator.ofFloat(progressBar, View.ALPHA, 1f);
+					fadeInAnimator.start();
 					progressBar.setProgress(0);
 
 					// a manual download does not need a notification, the user clicked it himself
@@ -488,7 +491,11 @@ public class MainActivity extends AppCompatActivity implements
 			{
 				@Override public void run()
 				{
-					progressBar.setProgress((int) (1000 * progress));
+					int intProgress = (int) (1000 * progress);
+					ObjectAnimator progressAnimator = ObjectAnimator.ofInt(progressBar, "progress", intProgress);
+					progressAnimator.setDuration(1000);
+					progressAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
+					progressAnimator.start();
 				}
 			});
 		}
@@ -511,7 +518,9 @@ public class MainActivity extends AppCompatActivity implements
 			{
 				@Override public void run()
 				{
-					progressBar.setVisibility(View.INVISIBLE);
+					ObjectAnimator fadeOutAnimator = ObjectAnimator.ofFloat(progressBar, View.ALPHA, 0f);
+					fadeOutAnimator.setDuration(1000);
+					fadeOutAnimator.start();
 
 					// after downloading, regardless if triggered manually or automatically, the
 					// auto downloader should check whether there are enough quests in the vicinity now
