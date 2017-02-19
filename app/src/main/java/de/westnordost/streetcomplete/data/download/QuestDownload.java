@@ -43,7 +43,7 @@ public class QuestDownload
 	private Rect tiles;
 	private Integer maxQuestTypes;
 	private AtomicBoolean cancelState;
-	private boolean isStartedByUser;
+	private boolean isPriority;
 
 	// listeners
 	private VisibleQuestListener questListener;
@@ -79,12 +79,12 @@ public class QuestDownload
 		this.progressListener = progressListener;
 	}
 
-	public void init(Rect tiles, Integer maxQuestTypes, boolean isStartedByUser,
+	public void init(Rect tiles, Integer maxQuestTypes, boolean isPriority,
 					 AtomicBoolean cancel)
 	{
 		this.tiles = tiles;
 		this.maxQuestTypes = maxQuestTypes;
-		this.isStartedByUser = isStartedByUser;
+		this.isPriority = isPriority;
 		this.cancelState = cancel;
 	}
 
@@ -214,9 +214,9 @@ public class QuestDownload
 		return Math.min(1f, (float) downloadedQuestTypes / max);
 	}
 
-	public boolean isStartedByUser()
+	public boolean isPriority()
 	{
-		return isStartedByUser;
+		return isPriority;
 	}
 
 	public boolean isFinished()

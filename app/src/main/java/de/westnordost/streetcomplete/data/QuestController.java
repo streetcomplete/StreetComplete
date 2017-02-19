@@ -14,7 +14,6 @@ import java.util.List;
 import javax.inject.Inject;
 
 import de.westnordost.streetcomplete.ApplicationConstants;
-import de.westnordost.streetcomplete.data.download.QuestAutoDownloadStrategy;
 import de.westnordost.streetcomplete.data.download.QuestDownloadService;
 import de.westnordost.streetcomplete.data.osm.OsmQuest;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChanges;
@@ -30,7 +29,6 @@ import de.westnordost.streetcomplete.quests.note_discussion.NoteDiscussionForm;
 import de.westnordost.streetcomplete.util.SlippyMapMath;
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
-import de.westnordost.osmapi.map.data.LatLon;
 
 import static android.content.Context.BIND_AUTO_CREATE;
 
@@ -43,8 +41,6 @@ public class QuestController
 	private final CreateNoteDao createNoteDB;
 	private final Context context;
 	private final VisibleQuestRelay relay;
-
-	private QuestAutoDownloadStrategy downloadStrategy;
 
 	private boolean downloadServiceIsBound;
 	private QuestDownloadService.Interface downloadService;
@@ -88,16 +84,6 @@ public class QuestController
 		relay.setListener(null);
 		if(downloadServiceIsBound) context.unbindService(downloadServiceConnection);
 		if(downloadService != null) downloadService.setQuestListener(null);
-	}
-
-	public QuestAutoDownloadStrategy getDownloadStrategy()
-	{
-		return downloadStrategy;
-	}
-
-	public void setDownloadStrategy(QuestAutoDownloadStrategy downloadStrategy)
-	{
-		this.downloadStrategy = downloadStrategy;
 	}
 
 	/** Create a note for the given OSM Quest instead of answering it. The quest will turn
@@ -248,16 +234,13 @@ public class QuestController
 	/** Download quests in at least the given bounding box asynchronously. The next-bigger rectangle
 	 *  in a (z14) tiles grid that encloses the given bounding box will be downloaded.
 	 *
-	 *  Multiple calls to this method will cancel the previous download job.
-	 *
 	 *  @param bbox the minimum area to download
+	 *  @param maxQuestTypesToDownload download at most the given number of quest types. null for
+	 *                                 unlimited
+	 *  @param isPriority whether this shall be a priority download (cancels previous downloads and
+	 *                    puts itself in the front)
 	 */
-	public void manualDownload(final BoundingBox bbox)
-	{
-		download(bbox, null, true);
-	}
-
-	private void download(BoundingBox bbox, Integer maxQuestTypesToDownload, boolean manualStart)
+	public void download(BoundingBox bbox, Integer maxQuestTypesToDownload, boolean isPriority)
 	{
 		Rect tilesRect = SlippyMapMath.enclosingTiles(bbox, ApplicationConstants.QUEST_TILE_ZOOM);
 
@@ -268,37 +251,20 @@ public class QuestController
 		{
 			intent.putExtra(QuestDownloadService.ARG_MAX_QUEST_TYPES, maxQuestTypesToDownload);
 		}
-		if(manualStart)
+		if(isPriority)
 		{
-			intent.putExtra(QuestDownloadService.ARG_MANUAL, true);
+			intent.putExtra(QuestDownloadService.ARG_IS_PRIORITY, true);
 		}
 		context.startService(intent);
 
 	}
 
-	public void autoDownload(final LatLon center)
-	{
-		// do not disrupt a download triggered by a user
-		if(isCurrentDownloadRunningAndStartedByUser()) return;
-		// no auto download
-		if(downloadStrategy == null) return;
-
-		new Thread(){ @Override public void run() {
-
-			if(!downloadStrategy.mayDownloadHere(center)) return;
-
-			download(
-					downloadStrategy.getDownloadBoundingBox(center),
-					downloadStrategy.getQuestTypeDownloadCount(), false);
-		}}.start();
-	}
-
 	/** @return true if a quest download triggered by the user is running */
-	public boolean isCurrentDownloadRunningAndStartedByUser()
+	public boolean isPriorityDownloadRunning()
 	{
 		return downloadService != null &&
 		       downloadService.isDownloading() &&
-		       downloadService.isCurrentDownloadStartedByUser();
+		       downloadService.currentDownloadHasPriority();
 	}
 
 	/** Collect and upload all changes made by the user */

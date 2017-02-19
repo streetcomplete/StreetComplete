@@ -43,7 +43,7 @@ public class QuestDownloadService extends Service
 	public static final	String
 			ARG_TILES_RECT = "tilesRect",
 			ARG_MAX_QUEST_TYPES = "maxQuestTypes",
-			ARG_MANUAL = "manual";
+			ARG_IS_PRIORITY = "isPriority";
 
 	/* Not using IntentService here even though we are doing practically the same because the
 	   Runnables that are executed in the queue have to be set up with the cancel flag when
@@ -98,11 +98,11 @@ public class QuestDownloadService extends Service
 				maxQuestTypes = intent.getIntExtra(ARG_MAX_QUEST_TYPES, 0);
 			}
 
-			boolean isManualStart = intent.hasExtra(ARG_MANUAL);
+			boolean isPriority = intent.hasExtra(ARG_IS_PRIORITY);
 
 			Message msg = serviceHandler.obtainMessage();
 			QuestDownload dl = questDownloadProvider.get();
-			dl.init(tiles, maxQuestTypes, isManualStart, cancelState);
+			dl.init(tiles, maxQuestTypes, isPriority, cancelState);
 			msg.obj = dl;
 			msg.arg1 = startId;
 			serviceHandler.sendMessage(msg);
@@ -148,11 +148,11 @@ public class QuestDownloadService extends Service
 			}
 		}
 
-		public boolean isCurrentDownloadStartedByUser()
+		public boolean currentDownloadHasPriority()
 		{
 			synchronized (downloadLock)
 			{
-				return currentDownload.isStartedByUser();
+				return currentDownload.isPriority();
 			}
 		}
 

@@ -4,7 +4,6 @@ import android.Manifest;
 import android.animation.ObjectAnimator;
 import android.app.AlertDialog;
 import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
@@ -18,7 +17,6 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
@@ -29,7 +27,6 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -38,10 +35,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.mapzen.android.lost.api.LocationListener;
 import com.mapzen.android.lost.api.LocationRequest;
-import com.mapzen.android.lost.api.LocationServices;
-import com.mapzen.android.lost.api.LostApiClient;
 
 import java.util.Collection;
 import java.util.List;
@@ -50,16 +44,15 @@ import javax.inject.Inject;
 
 import de.westnordost.streetcomplete.about.AboutActivity;
 import de.westnordost.streetcomplete.data.Quest;
+import de.westnordost.streetcomplete.data.QuestAutoSyncer;
 import de.westnordost.streetcomplete.data.QuestChangesUploadService;
 import de.westnordost.streetcomplete.data.QuestController;
-import de.westnordost.streetcomplete.data.download.MobileDataAutoDownloadStrategy;
-import de.westnordost.streetcomplete.data.download.QuestAutoDownloadStrategy;
 import de.westnordost.streetcomplete.data.download.QuestDownloadProgressListener;
 import de.westnordost.streetcomplete.data.download.QuestDownloadService;
 import de.westnordost.streetcomplete.data.QuestGroup;
 import de.westnordost.streetcomplete.data.VisibleQuestListener;
-import de.westnordost.streetcomplete.data.download.WifiAutoDownloadStrategy;
 import de.westnordost.streetcomplete.location.LocationRequestFragment;
+import de.westnordost.streetcomplete.location.SingleLocationRequest;
 import de.westnordost.streetcomplete.oauth.OAuth;
 import de.westnordost.streetcomplete.oauth.OAuthComponent;
 import de.westnordost.streetcomplete.oauth.OAuthWebViewDialogFragment;
@@ -77,31 +70,26 @@ import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.map.data.OsmElement;
-import de.westnordost.osmapi.map.data.OsmLatLon;
 import oauth.signpost.OAuthConsumer;
 
 import static android.location.LocationManager.PROVIDERS_CHANGED_ACTION;
 
 public class MainActivity extends AppCompatActivity implements
-		OsmQuestAnswerListener, VisibleQuestListener, QuestsMapFragment.Listener, LocationListener,
+		OsmQuestAnswerListener, VisibleQuestListener, QuestsMapFragment.Listener,
 		OAuthWebViewDialogFragment.OAuthListener, OAuthComponent.Listener,
 		LocationRequestFragment.LocationRequestListener
 {
-	private static final String TAG_AUTO_DOWNLOAD = "AutoQuestDownload";
-
-	private static final int REQUEST_CHECK_SETTINGS = 102;
-
 	@Inject LocationRequestFragment locationRequestFragment;
+	@Inject QuestAutoSyncer questAutoSyncer;
+
 	@Inject QuestController questController;
-	@Inject MobileDataAutoDownloadStrategy mobileDataDownloadStrategy;
-	@Inject WifiAutoDownloadStrategy wifiDownloadStrategy;
+
 	@Inject SharedPreferences prefs;
 	@Inject OAuthComponent oAuthComponent;
 
-	private LatLon lastAutoDownloadPos;
-
 	private QuestsMapFragment mapFragment;
 	private LocationStateButton trackingButton;
+	private SingleLocationRequest singleLocationRequest;
 
 	private Long clickedQuestId = null;
 	private QuestGroup clickedQuestGroup = null;
@@ -109,7 +97,6 @@ public class MainActivity extends AppCompatActivity implements
 	private ProgressBar progressBar;
 	private AnswersCounter answersCounter;
 
-	private LostApiClient lostApiClient;
 	private boolean hasAskedForLocation = false;
 
 	private boolean downloadServiceIsBound;
@@ -158,7 +145,13 @@ public class MainActivity extends AppCompatActivity implements
 		}
 	};
 
-	private BroadcastReceiver locationAvailabilityReceiver = null;
+	private BroadcastReceiver locationAvailabilityReceiver = new BroadcastReceiver()
+	{
+		@Override public void onReceive(Context context, Intent intent)
+		{
+			updateLocationAvailability();
+		}
+	};
 
 	@Override protected void onCreate(Bundle savedInstanceState)
 	{
@@ -176,40 +169,11 @@ public class MainActivity extends AppCompatActivity implements
 
 		oAuthComponent.setListener(this);
 
-		getSupportFragmentManager().beginTransaction().add(locationRequestFragment,
-				LocationRequestFragment.class.getSimpleName()).commit();
+		getSupportFragmentManager().beginTransaction()
+				.add(locationRequestFragment, LocationRequestFragment.class.getSimpleName())
+				.commit();
 
-		lostApiClient = new LostApiClient.Builder(this).addConnectionCallbacks(
-				new LostApiClient.ConnectionCallbacks()
-				{
-					@Override
-					public void onConnected()
-					{
-						if(!hasAskedForLocation)
-						{
-							locationRequestFragment.start();
-						}
-						else
-						{
-							LocationManager mgr = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-							boolean hasPermission = ContextCompat.checkSelfPermission(MainActivity.this,
-									Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED;
-							boolean isLocationEnabled = mgr.isProviderEnabled(LocationManager.GPS_PROVIDER);
-							if(hasPermission && isLocationEnabled)
-							{
-								startLocationTracking();
-							}
-							else
-							{
-								trackingButton.setState(hasPermission ? LocationState.ALLOWED : LocationState.DENIED);
-								setIsFollowingPosition(false);
-							}
-						}
-					}
-
-					@Override
-					public void onConnectionSuspended() {}
-				}).build();
+		singleLocationRequest = new SingleLocationRequest(this);
 
 		progressBar = (ProgressBar) findViewById(R.id.download_progress);
 		progressBar.setMax(1000);
@@ -229,7 +193,7 @@ public class MainActivity extends AppCompatActivity implements
 				}
 				else
 				{
-					locationRequestFragment.start();
+					locationRequestFragment.startRequest();
 				}
 			}
 		});
@@ -238,11 +202,10 @@ public class MainActivity extends AppCompatActivity implements
 	@Override public void onStart()
 	{
 		super.onStart();
-		lostApiClient.connect();
 
 		answersCounter.update();
 
-		registerReceiver(wifiReceiver, new IntentFilter(WifiManager.NETWORK_STATE_CHANGED_ACTION));
+		registerReceiver(locationAvailabilityReceiver, new IntentFilter(PROVIDERS_CHANGED_ACTION));
 
 		LocalBroadcastManager localBroadcaster = LocalBroadcastManager.getInstance(this);
 
@@ -253,13 +216,22 @@ public class MainActivity extends AppCompatActivity implements
 		localBroadcaster.registerReceiver(uploadChangesFinishedReceiver, uploadChangesFinishedFilter);
 
 		questController.onStart(this);
-		QuestAutoDownloadStrategy newStrategy = isConnectedToWifi() ? wifiDownloadStrategy : mobileDataDownloadStrategy;
-		questController.setDownloadStrategy(newStrategy);
+		questAutoSyncer.onStart();
 
 		progressBar.setAlpha(0f);
 		downloadServiceIsBound = bindService(
 				new Intent(this, QuestDownloadService.class),
 				downloadServiceConnection, BIND_AUTO_CREATE);
+
+		if(!hasAskedForLocation)
+		{
+			locationRequestFragment.startRequest();
+		}
+		else if(ContextCompat.checkSelfPermission(this,
+				Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED)
+		{
+			updateLocationAvailability();
+		}
 	}
 
 	@Override public void onResume()
@@ -276,26 +248,14 @@ public class MainActivity extends AppCompatActivity implements
 	{
 		super.onStop();
 
-		unregisterReceiver(wifiReceiver);
-
 		LocalBroadcastManager localBroadcaster = LocalBroadcastManager.getInstance(this);
-
 		localBroadcaster.unregisterReceiver(uploadChangesErrorReceiver);
 		localBroadcaster.unregisterReceiver(uploadChangesFinishedReceiver);
 
-		unregisterLocationAvailabilityChanges();
-
-		try
-		{
-			stopLocationTracking();
-			lostApiClient.disconnect();
-		} catch (NullPointerException e)
-		{
-			// TODO: remove when https://github.com/mapzen/lost/issues/143 is solved
-			e.printStackTrace();
-		}
+		unregisterReceiver(locationAvailabilityReceiver);
 
 		questController.onStop();
+		questAutoSyncer.onStop();
 
 		if (downloadServiceIsBound) unbindService(downloadServiceConnection);
 		if (downloadService != null)
@@ -391,7 +351,7 @@ public class MainActivity extends AppCompatActivity implements
 	{
 		answersCounter.update();
 		// now finally we can upload our changes!
-		questController.upload();
+		questAutoSyncer.triggerAutoUpload();
 	}
 
 	private void downloadDisplayedArea()
@@ -412,7 +372,7 @@ public class MainActivity extends AppCompatActivity implements
 			}
 			else
 			{
-				if (questController.isCurrentDownloadRunningAndStartedByUser())
+				if (questController.isPriorityDownloadRunning())
 				{
 					DialogInterface.OnClickListener onYes = new DialogInterface.OnClickListener()
 					{
@@ -446,13 +406,13 @@ public class MainActivity extends AppCompatActivity implements
 			LatLon pos = mapFragment.getPosition();
 			if (pos != null)
 			{
-				questController.manualDownload(SphericalEarthMath.enclosingBoundingBox(pos,
-						ApplicationConstants.MIN_DOWNLOADABLE_RADIUS_IN_METERS));
+				questController.download(SphericalEarthMath.enclosingBoundingBox(pos,
+						ApplicationConstants.MIN_DOWNLOADABLE_RADIUS_IN_METERS), null, true);
 			}
 		}
 		else
 		{
-			questController.manualDownload(bbox);
+			questController.download(bbox, null, true);
 		}
 	}
 
@@ -472,15 +432,10 @@ public class MainActivity extends AppCompatActivity implements
 					fadeInAnimator.start();
 					progressBar.setProgress(0);
 
-					// a manual download does not need a notification, the user clicked it himself
-					// but for the auto download, it's nice
-					if(!downloadService.isCurrentDownloadStartedByUser())
-					{
-						Toast.makeText(
-								MainActivity.this,
-								R.string.now_downloading_toast,
-								Toast.LENGTH_SHORT).show();
-					}
+					Toast.makeText(
+							MainActivity.this,
+							R.string.now_downloading_toast,
+							Toast.LENGTH_SHORT).show();
 				}
 			});
 		}
@@ -524,14 +479,14 @@ public class MainActivity extends AppCompatActivity implements
 
 					// after downloading, regardless if triggered manually or automatically, the
 					// auto downloader should check whether there are enough quests in the vicinity now
-					triggerAutoDownloadFor(lastAutoDownloadPos);
+					questAutoSyncer.triggerAutoDownload();
 				}
 			});
 		}
 
 		@Override public void onNotStarted()
 		{
-			if(downloadService.isCurrentDownloadStartedByUser())
+			if(downloadService.currentDownloadHasPriority())
 			{
 				Toast.makeText(MainActivity.this, R.string.nothing_more_to_download, Toast.LENGTH_SHORT).show();
 			}
@@ -612,7 +567,7 @@ public class MainActivity extends AppCompatActivity implements
 	@Override public synchronized void onQuestsRemoved(Collection<Long> questIds, QuestGroup group)
 	{
 		// amount of quests is reduced -> check if redownloding now makes sense
-		triggerAutoDownloadFor(lastAutoDownloadPos);
+		questAutoSyncer.triggerAutoDownload();
 
 		for(long questId : questIds)
 		{
@@ -686,7 +641,7 @@ public class MainActivity extends AppCompatActivity implements
 		}
 		f.setArguments(args);
 
-		FragmentTransaction ft = getFragmentManager().beginTransaction();
+		android.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
 		ft.setCustomAnimations(
 				R.animator.enter_from_bottom, R.animator.exit_to_bottom,
 				R.animator.enter_from_bottom, R.animator.exit_to_bottom);
@@ -736,59 +691,43 @@ public class MainActivity extends AppCompatActivity implements
 
 	/* ---------- Location listener ---------- */
 
-	private void startLocationTracking() throws SecurityException
+	private void updateLocationAvailability()
+	{
+		LocationManager mgr = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+		boolean isLocationEnabled = mgr.isProviderEnabled(LocationManager.GPS_PROVIDER);
+		if(isLocationEnabled)
+		{
+			onLocationIsEnabled();
+		}
+		else
+		{
+			onLocationIsDisabled();
+		}
+	}
+
+	private void onLocationIsEnabled()
 	{
 		trackingButton.setState(LocationState.SEARCHING);
-		mapFragment.startPositionTracking();
 		setIsFollowingPosition(true);
-
-		if(lostApiClient.isConnected())
-		{
-			registerLocationAvailabilityChanges();
-
-			LocationRequest request = LocationRequest.create()
-					.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
-					.setSmallestDisplacement(500)
-					.setInterval(3 * 60 * 1000); // 3 minutes
-
-			LocationServices.FusedLocationApi.requestLocationUpdates(lostApiClient, request, this);
-		}
-	}
-
-	private void stopLocationTracking()
-	{
-		LocationServices.FusedLocationApi.removeLocationUpdates(lostApiClient, this);
-		mapFragment.stopPositionTracking();
-	}
-
-	private void registerLocationAvailabilityChanges()
-	{
-		locationAvailabilityReceiver = new BroadcastReceiver()
-		{
-			@Override public void onReceive(Context context, Intent intent)
-			{
-				LocationManager mgr = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-				boolean isLocationEnabled = mgr.isProviderEnabled(LocationManager.GPS_PROVIDER);
-				if(!isLocationEnabled)
+		mapFragment.startPositionTracking();
+		questAutoSyncer.startPositionTracking();
+		singleLocationRequest.startRequest(LocationRequest.PRIORITY_HIGH_ACCURACY,
+				new SingleLocationRequest.Callback()
 				{
-					trackingButton.setState(LocationState.ALLOWED);
-					setIsFollowingPosition(false);
-					stopLocationTracking();
-					unregisterLocationAvailabilityChanges();
-				}
-			}
-		};
-		registerReceiver(locationAvailabilityReceiver,
-				new IntentFilter(PROVIDERS_CHANGED_ACTION));
+					@Override public void onLocation(Location location)
+					{
+						trackingButton.setState(LocationState.UPDATING);
+					}
+				});
 	}
 
-	private void unregisterLocationAvailabilityChanges()
+	private void onLocationIsDisabled()
 	{
-		if(locationAvailabilityReceiver != null)
-		{
-			unregisterReceiver(locationAvailabilityReceiver);
-			locationAvailabilityReceiver = null;
-		}
+		trackingButton.setState(LocationState.ALLOWED);
+		setIsFollowingPosition(false);
+		mapFragment.stopPositionTracking();
+		questAutoSyncer.stopPositionTracking();
+		singleLocationRequest.stopRequest();
 	}
 
 	private void setIsFollowingPosition(boolean follow)
@@ -797,23 +736,6 @@ public class MainActivity extends AppCompatActivity implements
 		mapFragment.setIsFollowingPosition(follow);
 	}
 
-	@Override public void onLocationChanged(Location location)
-	{
-		trackingButton.setState(LocationState.UPDATING);
-		trackingButton.setActivated(mapFragment.isFollowingPosition());
-
-		LatLon pos = new OsmLatLon(location.getLatitude(), location.getLongitude());
-		// TODO remove when https://github.com/mapzen/lost/issues/142 is fixed
-		if(lastAutoDownloadPos != null)
-		{
-			if(SphericalEarthMath.distance(pos, lastAutoDownloadPos) < 400) return;
-		}
-		triggerAutoDownloadFor(pos);
-	}
-
-	@Override public void onProviderEnabled(String provider) {}
-	@Override public void onProviderDisabled(String provider) {}
-
 	@Override public void onLocationRequestFinished(LocationState withLocationState)
 	{
 		hasAskedForLocation = true;
@@ -821,23 +743,12 @@ public class MainActivity extends AppCompatActivity implements
 		boolean enabled = withLocationState.isEnabled();
 		if(enabled)
 		{
-			startLocationTracking();
+			onLocationIsEnabled();
 		}
 		else
 		{
 			Toast.makeText(MainActivity.this, R.string.no_gps_no_quests, Toast.LENGTH_LONG).show();
 		}
-	}
-
-	private void triggerAutoDownloadFor(LatLon pos)
-	{
-		if(pos == null) return;
-		if(!isConnected()) return;
-
-		Log.i(TAG_AUTO_DOWNLOAD, "Checking whether to automatically download new quests at "
-				+ pos.getLatitude() + "," + pos.getLongitude());
-		questController.autoDownload(pos);
-		lastAutoDownloadPos = pos;
 	}
 
 	// ---------------------------------------------------------------------------------------------
@@ -851,31 +762,4 @@ public class MainActivity extends AppCompatActivity implements
 		NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
 		return activeNetworkInfo != null && activeNetworkInfo.isConnected();
 	}
-
-	private boolean isConnectedToWifi()
-	{
-		ConnectivityManager connectivityManager
-				= (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-		NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-		return activeNetworkInfo != null && activeNetworkInfo.isConnected() &&
-				activeNetworkInfo.getType() == ConnectivityManager.TYPE_WIFI;
-	}
-
-	private final BroadcastReceiver wifiReceiver = new BroadcastReceiver()
-	{
-		@Override public void onReceive(Context context, Intent intent)
-		{
-			NetworkInfo info = intent.getParcelableExtra(WifiManager.EXTRA_NETWORK_INFO);
-			boolean isWifi = info.isConnected();
-
-			QuestAutoDownloadStrategy newStrategy = isWifi ? wifiDownloadStrategy : mobileDataDownloadStrategy;
-			if(newStrategy == questController.getDownloadStrategy()) return;
-
-			Log.i(TAG_AUTO_DOWNLOAD, "Setting download strategy to " + (isWifi ? "Wifi" : "Mobile Data"));
-			questController.setDownloadStrategy(newStrategy);
-			triggerAutoDownloadFor(lastAutoDownloadPos);
-
-			questController.upload();
-		}
-	};
 }

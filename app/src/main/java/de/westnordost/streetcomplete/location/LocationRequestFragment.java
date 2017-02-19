@@ -20,6 +20,14 @@ import de.westnordost.streetcomplete.R;
 
 import static android.location.LocationManager.PROVIDERS_CHANGED_ACTION;
 
+/** Manages the process to ensure that the app can access the user's location. Two steps:
+ *  <ol>
+ *      <li>ask for permission</li>
+ *      <li>ask for location to be turned on</li>
+ *  </ol>
+ *
+ *  This fragment reports back to the Activity it is attached to via LocationRequestListener.
+ *  The process is started via {@link #startRequest()} */
 public class LocationRequestFragment extends Fragment
 {
 	private static final int LOCATION_PERMISSION_REQUEST = 1;
@@ -41,7 +49,8 @@ public class LocationRequestFragment extends Fragment
 		state = null;
 	}
 
-	public void start()
+	/** Start location request process. When already started, will not be started again. */
+	public void startRequest()
 	{
 		if(!inProgress)
 		{
