@@ -6,12 +6,27 @@
         android:key="communication"
         android:title="@string/pref_category_communication">
 
+        <ListPreference
+            android:key="autosync"
+            android:title="@string/pref_title_sync"
+            android:summary="%s"
+            android:defaultValue="ON"
+            android:entries="@array/pref_entries_autosync"
+            android:entryValues="@array/pref_entryvalues_autosync"
+            android:persistent="true"
+            />
+
         <Preference
             android:key="oauth"
             android:title="@string/pref_title_authorization"
             android:summary="@string/pref_title_not_authorized_summary"
             android:persistent="true"
             />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/pref_category_cache">
 
         <ListPreference
             android:key="download.expirationTime"

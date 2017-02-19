@@ -81,6 +81,11 @@
         <item>zwei Wochen</item>
         <item>einen Monat</item>
     </string-array>
+    <string-array name="pref_entries_autosync">
+        <item>An</item>
+        <item>Nur im Wifi</item>
+        <item>Aus</item>
+    </string-array>
     <string name="about_summary_authors">© 2016 Tobias Zwick</string>
     <string name="about_summary_repository">auf GitHub</string>
     <string name="about_title_authors">Autoren</string>
@@ -121,4 +126,6 @@
     <string name="quest_roofShape_select_one">Wähle eine aus:</string>
     <string name="quest_roofShape_show_more">Weitere anzeigen…</string>
     <string name="quest_roofShape_answer_many">Es hat mehrere unterschiedliche</string>
+    <string name="pref_category_cache">Cache</string>
+    <string name="pref_title_sync">Auto-Sync</string>
 </resources>

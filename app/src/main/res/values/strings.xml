@@ -44,6 +44,18 @@
         <item>43200</item>
     </string-array>
 
+    <string-array name="pref_entries_autosync">
+        <item>On</item>
+        <item>Only on Wifi</item>
+        <item>Off</item>
+    </string-array>
+
+    <string-array name="pref_entryvalues_autosync" translatable="false" >
+        <item>ON</item>
+        <item>WIFI</item>
+        <item>OFF</item>
+    </string-array>
+
     <string name="map_btn_gps_tracking">Follow me</string>
     <string name="map_attribution_mapzen">Powered by Mapzen</string>
     <string name="map_attribution_osm">© OpenStreetMap contributors</string>
@@ -168,4 +180,6 @@
     <string name="quest_roofShape_select_one">Select one:</string>
     <string name="quest_roofShape_show_more">Show more…</string>
     <string name="quest_roofShape_answer_many">It has several different shapes</string>
+    <string name="pref_category_cache">Cache</string>
+    <string name="pref_title_sync">Auto-Sync</string>
 </resources>
