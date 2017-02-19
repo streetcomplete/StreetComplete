@@ -52,8 +52,6 @@ public class MapFragment extends Fragment implements
 	private Location lastLocation;
 	private boolean zoomedYet;
 
-	private boolean startTrackingWhenConnected;
-
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
 									   Bundle savedInstanceState)
 	{
@@ -89,6 +87,8 @@ public class MapFragment extends Fragment implements
 		controller.setHttpHandler(mapHttpHandler);
 		restoreCameraState();
 		locationLayer = controller.addDataLayer(LOCATION_LAYER);
+		showLocation();
+		followPosition();
 	}
 
 
@@ -103,24 +103,9 @@ public class MapFragment extends Fragment implements
 		}
 	}
 
-	public void startPositionTracking() throws SecurityException
+	public void startPositionTracking()
 	{
-		if(!lostApiClient.isConnected())
-		{
-			startTrackingWhenConnected = true;
-			return;
-		}
-		startTrackingWhenConnected = false;
-
-		zoomedYet = false;
-		lastLocation = null;
-
-		LocationRequest request = LocationRequest.create()
-				.setInterval(2000)
-				.setSmallestDisplacement(5)
-				.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-
-		LocationServices.FusedLocationApi.requestLocationUpdates(lostApiClient, request, this);
+		if(!lostApiClient.isConnected()) lostApiClient.connect();
 	}
 
 	public void stopPositionTracking()
@@ -131,7 +116,13 @@ public class MapFragment extends Fragment implements
 		}
 		zoomedYet = false;
 
-		LocationServices.FusedLocationApi.removeLocationUpdates(lostApiClient, this);
+		try // TODO remove when https://github.com/mapzen/lost/issues/143 is solved
+		{
+			LocationServices.FusedLocationApi.removeLocationUpdates(lostApiClient, this);
+			lostApiClient.disconnect();
+		} catch (NullPointerException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void setIsFollowingPosition(boolean value)
@@ -172,7 +163,7 @@ public class MapFragment extends Fragment implements
 
 	private void showLocation()
 	{
-		if(locationLayer != null)
+		if(locationLayer != null && lastLocation != null)
 		{
 			locationLayer.clear();
 			LngLat pos = new LngLat(lastLocation.getLongitude(), lastLocation.getLatitude());
@@ -251,7 +242,6 @@ public class MapFragment extends Fragment implements
 	@Override public void onStart()
 	{
 		super.onStart();
-		lostApiClient.connect();
 		updateMapTileCacheSize();
 	}
 
@@ -271,20 +261,20 @@ public class MapFragment extends Fragment implements
 	@Override public void onStop()
 	{
 		super.onStop();
-		try
-		{
-			stopPositionTracking();
-			lostApiClient.disconnect();
-		} catch (NullPointerException e)
-		{
-			// TODO: remove when https://github.com/mapzen/lost/issues/143 is solved
-			e.printStackTrace();
-		}
+		stopPositionTracking();
 	}
 
-	@Override public void onConnected()
+	@Override public void onConnected() throws SecurityException
 	{
-		if(startTrackingWhenConnected) startPositionTracking();
+		zoomedYet = false;
+		lastLocation = null;
+
+		LocationRequest request = LocationRequest.create()
+				.setInterval(2000)
+				.setSmallestDisplacement(5)
+				.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+
+		LocationServices.FusedLocationApi.requestLocationUpdates(lostApiClient, request, this);
 	}
 
 	@Override public void onConnectionSuspended()
