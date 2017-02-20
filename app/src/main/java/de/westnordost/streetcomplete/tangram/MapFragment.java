@@ -40,11 +40,11 @@ public class MapFragment extends Fragment implements
 
 	private MapView mapView;
 
+	private HttpHandler httpHandler;
+
 	/** controller to the asynchronously loaded map. Since it is loaded asynchronously, could be
 	 *  null still at any point! */
 	protected MapController controller;
-
-	private HttpHandler mapHttpHandler = new HttpHandler();
 
 	private LostApiClient lostApiClient;
 
@@ -84,23 +84,28 @@ public class MapFragment extends Fragment implements
 	protected void initMap()
 	{
 		updateMapTileCacheSize();
-		controller.setHttpHandler(mapHttpHandler);
+		controller.setHttpHandler(httpHandler);
 		restoreCameraState();
 		locationLayer = controller.addDataLayer(LOCATION_LAYER);
 		showLocation();
 		followPosition();
 	}
 
-
 	private void updateMapTileCacheSize()
+	{
+		httpHandler = createHttpHandler();
+	}
+
+	private HttpHandler createHttpHandler()
 	{
 		int cacheSize = PreferenceManager.getDefaultSharedPreferences(getActivity()).getInt(Prefs.MAP_TILECACHE, 50);
 
 		File cacheDir = getActivity().getExternalCacheDir();
 		if (cacheDir != null && cacheDir.exists())
 		{
-			mapHttpHandler.setCache(new File(cacheDir, "tile_cache"), cacheSize * 1024 * 1024);
+			return new HttpHandler(new File(cacheDir, "tile_cache"), cacheSize * 1024 * 1024);
 		}
+		return new HttpHandler();
 	}
 
 	public void startPositionTracking()
