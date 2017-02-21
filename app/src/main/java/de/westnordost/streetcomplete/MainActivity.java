@@ -667,6 +667,11 @@ public class MainActivity extends AppCompatActivity implements
 		questController.retrieve(bbox);
 	}
 
+	@Override public void onUnglueViewFromPosition()
+	{
+		trackingButton.setActivated(false);
+	}
+
 	@Override public void onClickedQuest(QuestGroup questGroup, Long questId)
 	{
 		clickedQuestId = questId;

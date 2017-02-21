@@ -54,6 +54,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.ScaleRe
 		void onClickedMapAt(@Nullable LatLon position);
 		/** Called once the given bbox comes into view first (listener should get quests there) */
 		void onFirstInView(BoundingBox bbox);
+		void onUnglueViewFromPosition();
 	}
 
 	@Override public void onAttach(Activity activity)
@@ -95,9 +96,18 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.ScaleRe
 		updateView();
 	}
 
+	private void unglueViewFromPosition()
+	{
+		if(isFollowingPosition())
+		{
+			setIsFollowingPosition(false);
+			listener.onUnglueViewFromPosition();
+		}
+	}
+
 	@Override public boolean onDoubleTap(float x, float y)
 	{
-		if(isFollowingPosition()) return true;
+		unglueViewFromPosition();
 		LngLat zoomTo = controller.screenPositionToLngLat(new PointF(x, y));
 		controller.setPositionEased(zoomTo, 500);
 		controller.setZoomEased(controller.getZoom() + 1.5f, 500);
@@ -106,7 +116,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.ScaleRe
 
 	@Override public boolean onScale(float x, float y, float scale, float velocity)
 	{
-		if(isFollowingPosition()) return true;
+		unglueViewFromPosition();
 		updateView();
 		// okay, scale
 		return false;
@@ -114,7 +124,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.ScaleRe
 
 	@Override public boolean onPan(float startX, float startY, float endX, float endY)
 	{
-		if(isFollowingPosition()) return true;
+		unglueViewFromPosition();
 		updateView();
 		// okay, pan
 		return false;
@@ -122,7 +132,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.ScaleRe
 
 	@Override public boolean onFling(float posX, float posY, float velocityX, float velocityY)
 	{
-		if(isFollowingPosition()) return true;
+		unglueViewFromPosition();
 		updateView();
 		// okay, fling
 		return false;
