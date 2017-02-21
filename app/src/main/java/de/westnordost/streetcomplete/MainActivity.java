@@ -14,7 +14,6 @@ import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Location;
-import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -52,6 +51,7 @@ import de.westnordost.streetcomplete.data.download.QuestDownloadService;
 import de.westnordost.streetcomplete.data.QuestGroup;
 import de.westnordost.streetcomplete.data.VisibleQuestListener;
 import de.westnordost.streetcomplete.location.LocationRequestFragment;
+import de.westnordost.streetcomplete.location.LocationUtil;
 import de.westnordost.streetcomplete.location.SingleLocationRequest;
 import de.westnordost.streetcomplete.oauth.OAuth;
 import de.westnordost.streetcomplete.oauth.OAuthComponent;
@@ -73,6 +73,7 @@ import de.westnordost.osmapi.map.data.OsmElement;
 import oauth.signpost.OAuthConsumer;
 
 import static android.location.LocationManager.PROVIDERS_CHANGED_ACTION;
+import static de.westnordost.streetcomplete.location.LocationUtil.MODE_CHANGED;
 
 public class MainActivity extends AppCompatActivity implements
 		OsmQuestAnswerListener, VisibleQuestListener, QuestsMapFragment.Listener,
@@ -205,7 +206,8 @@ public class MainActivity extends AppCompatActivity implements
 
 		answersCounter.update();
 
-		registerReceiver(locationAvailabilityReceiver, new IntentFilter(PROVIDERS_CHANGED_ACTION));
+		String name = LocationUtil.isNewLocationApi() ? MODE_CHANGED : PROVIDERS_CHANGED_ACTION;
+		registerReceiver(locationAvailabilityReceiver, new IntentFilter(name));
 
 		LocalBroadcastManager localBroadcaster = LocalBroadcastManager.getInstance(this);
 
@@ -698,9 +700,7 @@ public class MainActivity extends AppCompatActivity implements
 
 	private void updateLocationAvailability()
 	{
-		LocationManager mgr = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-		boolean isLocationEnabled = mgr.isProviderEnabled(LocationManager.GPS_PROVIDER);
-		if(isLocationEnabled)
+		if(LocationUtil.isLocationSettingsOn(this))
 		{
 			onLocationIsEnabled();
 		}

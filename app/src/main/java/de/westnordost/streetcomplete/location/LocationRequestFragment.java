@@ -8,18 +8,17 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
-import android.text.TextUtils;
 
 import de.westnordost.streetcomplete.R;
 
 import static android.location.LocationManager.PROVIDERS_CHANGED_ACTION;
+import static de.westnordost.streetcomplete.location.LocationUtil.MODE_CHANGED;
 
 /** Manages the process to ensure that the app can access the user's location. Two steps:
  *  <ol>
@@ -159,32 +158,9 @@ public class LocationRequestFragment extends Fragment
 		}
 	}
 
-	private boolean isLocationSettingsOn()
-	{
-		String locationProviders;
-		try
-		{
-			if (isNewLocationApi())
-			{
-				int locationMode = Settings.Secure.getInt(getContext().getContentResolver(), Settings.Secure.LOCATION_MODE);
-				return locationMode != Settings.Secure.LOCATION_MODE_OFF;
-			}
-			else
-			{
-				locationProviders = Settings.Secure.getString(getContext().getContentResolver(), Settings.Secure.LOCATION_PROVIDERS_ALLOWED);
-				return !TextUtils.isEmpty(locationProviders);
-			}
-		}
-		catch(Settings.SettingNotFoundException e)
-		{
-			e.printStackTrace();
-			return false;
-		}
-	}
-
 	private void requestLocationSettingsToBeOn()
 	{
-		if(isLocationSettingsOn())
+		if(LocationUtil.isLocationSettingsOn(getContext()))
 		{
 			state = LocationState.ENABLED;
 			nextStep();
@@ -247,13 +223,8 @@ public class LocationRequestFragment extends Fragment
 			}
 		};
 
-		String name = isNewLocationApi() ? "android.location.MODE_CHANGED" : PROVIDERS_CHANGED_ACTION;
+		String name = LocationUtil.isNewLocationApi() ? MODE_CHANGED : PROVIDERS_CHANGED_ACTION;
 		getActivity().registerReceiver(locationProviderChangedReceiver, new IntentFilter(name));
-	}
-
-	private static boolean isNewLocationApi()
-	{
-		return Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT;
 	}
 
 	private void unregisterForLocationProviderChanges()
