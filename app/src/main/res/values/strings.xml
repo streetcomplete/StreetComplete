@@ -182,4 +182,6 @@
     <string name="quest_roofShape_answer_many">It has several different shapes</string>
     <string name="pref_category_cache">Cache</string>
     <string name="pref_title_sync">Auto-Sync</string>
+    <string name="map_btn_zoom_out">Zoom out</string>
+    <string name="map_btn_zoom_in">Zoom in</string>
 </resources>

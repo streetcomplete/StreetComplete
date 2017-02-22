@@ -128,4 +128,6 @@
     <string name="quest_roofShape_answer_many">Es hat mehrere unterschiedliche</string>
     <string name="pref_category_cache">Cache</string>
     <string name="pref_title_sync">Auto-Sync</string>
+    <string name="map_btn_zoom_in">Vergrößern</string>
+    <string name="map_btn_zoom_out">Verkleinern</string>
 </resources>

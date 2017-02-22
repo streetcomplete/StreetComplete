@@ -31,6 +31,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -196,6 +198,23 @@ public class MainActivity extends AppCompatActivity implements
 				{
 					locationRequestFragment.startRequest();
 				}
+			}
+		});
+
+		ImageButton zoomInButton = (ImageButton) findViewById(R.id.zoom_in);
+		zoomInButton.setOnClickListener(new View.OnClickListener()
+		{
+			@Override public void onClick(View v)
+			{
+				mapFragment.zoomIn();
+			}
+		});
+		ImageButton zoomOutButton = (ImageButton) findViewById(R.id.zoom_out);
+		zoomOutButton.setOnClickListener(new View.OnClickListener()
+		{
+			@Override public void onClick(View v)
+			{
+				mapFragment.zoomOut();
 			}
 		});
 	}

@@ -298,4 +298,14 @@ public class MapFragment extends Fragment implements
 		super.onLowMemory();
 		if(mapView != null) mapView.onLowMemory();
 	}
+
+	public void zoomIn()
+	{
+		controller.setZoomEased(controller.getZoom() + 1, 500);
+	}
+
+	public void zoomOut()
+	{
+		controller.setZoomEased(controller.getZoom() - 1, 500);
+	}
 }

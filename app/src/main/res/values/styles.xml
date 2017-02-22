@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -43,6 +43,15 @@
         <item name="android:paddingEnd">8dp</item>
         <item name="android:paddingTop">6dp</item>
         <item name="android:paddingBottom">6dp</item>
+    </style>
+
+    <style name="RoundMapButton">
+        <item name="android:layout_width">54dp</item>
+        <item name="android:layout_height">54dp</item>
+        <item name="android:background">@drawable/round_button_selector</item>
+        <item name="android:elevation" tools:targetApi="21">4dp</item>
+        <item name="android:scaleType">center</item>
+        <item name="android:clickable">true</item>
     </style>
 
 </resources>
