@@ -1,9 +1,12 @@
 #StreetComplete
 
-## Get the App
-
-* [from Google Play (Beta)](https://play.google.com/store/apps/details?id=de.westnordost.streetcomplete)
-* or [from Izzisoft F-Droid Repository](https://apt.izzysoft.de/fdroid/index/apk/de.westnordost.streetcomplete)
+[<img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png"
+      alt="Get it on F-Droid"
+      height="80"> (Beta)](https://play.google.com/store/apps/details?id=de.westnordost.streetcomplete)
+	  
+[<img src="https://f-droid.org/badge/get-it-on.png"
+      alt="Get it on F-Droid"
+      height="80"> (Izzisoft F-Droid Repository)](https://apt.izzysoft.de/fdroid/index/apk/de.westnordost.streetcomplete)
 
 ![Screenshot](screenshot.png)
 
