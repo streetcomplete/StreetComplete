@@ -3,7 +3,7 @@
 Is currently in Beta. 
 
 [<img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" alt="Get it on Google Play" height="80">](https://play.google.com/store/apps/details?id=de.westnordost.streetcomplete)[<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid"
-      height="80"><br/>(Izzisoft F-Droid Repository)](https://apt.izzysoft.de/fdroid/index/apk/de.westnordost.streetcomplete)
+      height="80"><br/>](https://apt.izzysoft.de/fdroid/index/apk/de.westnordost.streetcomplete)
 
 ![Screenshot](screenshot.png)
 
@@ -26,9 +26,10 @@ Right now, there are very little different question types. I will add more and m
 
 ## Contributing
 
-Right now, if you are mildly interested in StreetComplete, the best way is to use, test it and give constructive feedback.
+Help to localize the app! You can do that here: 
+[<img src="https://poeditor.com/public/images/logo_small.png" alt="POEditor">](https://poeditor.com/join/project/IE4GC127Ki).
 
-Also, I need help with translations (other than German, English). You can add your language and contribute [here](https://poeditor.com/join/project/IE4GC127Ki).
+Otherwise, if you are mildly interested in StreetComplete, the best way to contribute is to use it, test it and give constructive feedback.
 
 ## License
 
