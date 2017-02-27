@@ -22,12 +22,13 @@ contribute to the OpenStreetMap by surveying their neighbourhood (or other place
 
 ## State of Development
 
-Right now, there are very little different question types. I will add more and more over time.
+Right now, there are very few different question types. I will add more and more over time.
 
 ## Contributing
 
-Help to localize the app! You can do that here: 
-[<img src="https://poeditor.com/public/images/logo_small.png" alt="POEditor">](https://poeditor.com/join/project/IE4GC127Ki).
+Help translating the app! You can do that here: 
+
+[<img src="https://poeditor.com/public/images/logo_small.png" alt="POEditor">](https://poeditor.com/join/project/IE4GC127Ki)
 
 Otherwise, if you are mildly interested in StreetComplete, the best way to contribute is to use it, test it and give constructive feedback.
 

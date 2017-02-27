@@ -1,19 +1,9 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
 
-def keystorePropertiesFile = rootProject.file("keystore.properties")
-def keystoreProperties = new Properties()
-keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
-
-
 android {
     signingConfigs {
-        config {
-            keyAlias keystoreProperties['keyAlias']
-            keyPassword keystoreProperties['keyPassword']
-            storeFile file(keystoreProperties['storeFile'])
-            storePassword keystoreProperties['storePassword']
-        }
+        release
     }
     compileSdkVersion 24
     buildToolsVersion "24.0.3"
@@ -34,13 +24,23 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.config
+            signingConfig signingConfigs.release
         }
     }
 
     lintOptions {
         abortOnError false
     }
+}
+
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+if (keystorePropertiesFile.exists()) {
+    def props = new Properties()
+    props.load(new FileInputStream(keystorePropertiesFile))
+    android.signingConfigs.release.storeFile = file(props['storeFile'])
+    android.signingConfigs.release.storePassword = props['storePassword']
+    android.signingConfigs.release.keyAlias = props['keyAlias']
+    android.signingConfigs.release.keyPassword = props['keyPassword']
 }
 
 repositories {
