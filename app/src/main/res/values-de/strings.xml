@@ -75,17 +75,6 @@
     <string name="pref_title_quest_expiration_time">Aufgabencache</string>
     <string name="pref_summary_quest_expiration">hält %s bis sie neu heruntergeladen werden</string>
     <string name="turn_on_location_request">Standort ist aus. Jetzt in die Einstellungen gehen, um ihn anzuschalten?</string>
-    <string-array name="pref_entries_quest_expiration_times">
-        <item>einen Tag</item>
-        <item>eine Woche</item>
-        <item>zwei Wochen</item>
-        <item>einen Monat</item>
-    </string-array>
-    <string-array name="pref_entries_autosync">
-        <item>An</item>
-        <item>Nur im Wifi</item>
-        <item>Aus</item>
-    </string-array>
     <string name="about_summary_authors">© 2016 Tobias Zwick</string>
     <string name="about_summary_repository">auf GitHub</string>
     <string name="about_title_authors">Autoren</string>
@@ -130,4 +119,13 @@
     <string name="pref_title_sync">Auto-Sync</string>
     <string name="map_btn_zoom_in">Vergrößern</string>
     <string name="map_btn_zoom_out">Verkleinern</string>
+    <string name="quest_leave_new_note_yes">OK</string>
+    <string name="about_summary_license">GNU General Public License</string>
+    <string name="quest_expiration_a_week">Eine Woche</string>
+    <string name="quest_expiration_one_day">Ein Tag</string>
+    <string name="quest_expiration_one_month">Ein Monat</string>
+    <string name="quest_expiration_two_weeks">Zwei Wochen</string>
+    <string name="autosync_off">Aus</string>
+    <string name="autosync_on">An</string>
+    <string name="autosync_only_on_wifi">Nur im Wifi</string>
 </resources>
