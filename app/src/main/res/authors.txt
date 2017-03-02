@@ -1,0 +1,21 @@
+File                            Source (follow link for license info)
+===============================================================================
+
+panorama_surface_paved.jpg      https://www.goodfreephotos.com/united-states/indiana/hoosier-hill/hooiser-hill-road-near-the-top-indiana.jpg.php
+panorama_surface_unpaved.jpg    https://www.flickr.com/photos/ian_munroe/3633361321
+panorama_surface_ground.jpg     https://commons.wikimedia.org/wiki/File:Dirt_Road,_Bulacan,_Philippines_-_panoramio.jpg
+
+surface_asphalt.jpg             https://commons.wikimedia.org/wiki/File:Ground_frost_damages.JPG
+surface_cobblestone.jpg         https://commons.wikimedia.org/wiki/File:Bad_Radkersburg_Murgasse_IMG_0583.jpg
+surface_compacted.jpg           https://www.flickr.com/photos/ian_munroe/3633361321
+
+surface_concrete.jpg            https://commons.wikimedia.org/wiki/File:2014-08-29_15_33_15_View_across_Stuyvesant_Avenue_in_Ewing,_New_Jersey,_with_concrete_pavement_likely_dating_to_the_1950s.JPG
+surface_dirt.jpg                https://commons.wikimedia.org/wiki/File:Dirt_road_towards_the_south_and_Ndara_Borehole_in_the_Tsavo_East_National_Park,_Kenya.jpg
+surface_grass_paver.jpg         https://commons.wikimedia.org/wiki/File:Rasenpflasterstein_1.jpg
+surface_pebblestones.jpg        https://wiki.openstreetmap.org/wiki/File:Dscf1829-800.jpg
+
+surface_sand.jpg                https://commons.wikimedia.org/wiki/File:2013-08-21_12_04_26_View_south_towards_Barnegat_Lighthouse_along_the_sand_road_to_Barnegat_Inlet_in_Island_Beach_State_Park.jpg
+surface_sett.jpg                https://commons.wikimedia.org/wiki/File:Brusteinshalden.JPG
+
+surface_wood.jpg                https://commons.wikimedia.org/wiki/File:Wooden_Bridge_In_Midst_of_Kaziranga_Wild_life_Sanctuary.jpg
+
