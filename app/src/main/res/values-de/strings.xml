@@ -177,4 +177,6 @@
     <string name="quest_oneway_title">Ist dies eine Einbahnstraße?</string>
     <string name="quest_cyclewaySurface_title">Welche Oberfläche hat dieser Radweg?</string>
     <string name="quest_cycleway_title">Gibt für diese Straße einen Radweg?</string>
+    <string name="quest_streetLanes_noLanes_estWidth">Bitte schätze, wie viele Autos auf dieser Straße nebeneinanderpassen würden.</string>
+    <string name="quest_address_title">Was ist die Hausnummer dieses Gebäudes?</string>
 </resources>
