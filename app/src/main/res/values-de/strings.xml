@@ -128,4 +128,23 @@
     <string name="autosync_off">Aus</string>
     <string name="autosync_on">An</string>
     <string name="autosync_only_on_wifi">Nur im Wifi</string>
+    <string name="quest_streetSurface_title">Welche Oberfläche hat diese Straße?</string>
+    <string name="quest_streetSurface_description">Wähle die passendste:</string>
+    <string name="quest_streetSurface_value_asphalt">Asphalt</string>
+    <string name="quest_streetSurface_value_grass_paver">Rasengitter</string>
+    <string name="quest_streetSurface_value_cobblestone">Natursteinpflaster</string>
+    <string name="quest_streetSurface_value_concrete">Beton</string>
+    <string name="quest_streetSurface_value_paving_stones">Pflastersteine</string>
+    <string name="quest_streetSurface_value_sett">Steinpflaster</string>
+    <string name="quest_streetSurface_value_grass">Gras</string>
+    <string name="quest_streetSurface_value_compacted">Verdichtet</string>
+    <string name="quest_streetSurface_value_dirt">Erdboden</string>
+    <string name="quest_streetSurface_value_unpaved">Unbefestigt (allgemein)</string>
+    <string name="quest_streetSurface_value_gravel">Schotter</string>
+    <string name="quest_streetSurface_value_wood">Holz</string>
+    <string name="quest_streetSurface_value_sand">Sand</string>
+    <string name="quest_streetSurface_value_paved">Befestigt (allgemein)</string>
+    <string name="quest_streetSurface_value_ground">Naturbelassen (allgemein)</string>
+    <string name="quest_streetSurface_value_pebblestone">Kiesel</string>
+    <string name="quest_streetSurface_value_fine_gravel">Kies</string>
 </resources>

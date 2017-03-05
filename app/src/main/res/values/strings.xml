@@ -157,4 +157,24 @@
     <string name="autosync_off">Off</string>
     <string name="map_btn_zoom_out">Zoom out</string>
     <string name="map_btn_zoom_in">Zoom in</string>
+
+    <string name="quest_streetSurface_title">What is the surface of this road?</string>
+    <string name="quest_streetSurface_description">Select the most specific one that fits:</string>
+    <string name="quest_streetSurface_value_paved">Paved (generic)</string>
+    <string name="quest_streetSurface_value_unpaved">Unpaved (generic)</string>
+    <string name="quest_streetSurface_value_ground">Ground (generic)</string>
+    <string name="quest_streetSurface_value_asphalt">Asphalt</string>
+    <string name="quest_streetSurface_value_cobblestone">Cobblestone</string>
+    <string name="quest_streetSurface_value_compacted">Compacted</string>
+    <string name="quest_streetSurface_value_concrete">Concrete</string>
+    <string name="quest_streetSurface_value_dirt">Dirt</string>
+    <string name="quest_streetSurface_value_fine_gravel">Fine gravel</string>
+    <string name="quest_streetSurface_value_grass">Grass</string>
+    <string name="quest_streetSurface_value_grass_paver">Grass paver</string>
+    <string name="quest_streetSurface_value_gravel">Gravel</string>
+    <string name="quest_streetSurface_value_paving_stones">Paving stones</string>
+    <string name="quest_streetSurface_value_pebblestone">Pebbles</string>
+    <string name="quest_streetSurface_value_sand">Sand</string>
+    <string name="quest_streetSurface_value_sett">Sett</string>
+    <string name="quest_streetSurface_value_wood">Wood</string>
 </resources>
