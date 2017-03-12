@@ -101,13 +101,7 @@ public class QuestAutoSyncer implements LocationListener, LostApiClient.Connecti
 
 	@Override public void onLocationChanged(Location location)
 	{
-		LatLon pos = new OsmLatLon(location.getLatitude(), location.getLongitude());
-		// TODO remove when https://github.com/mapzen/lost/issues/142 is fixed
-		if(this.pos != null)
-		{
-			if(SphericalEarthMath.distance(pos, this.pos) < 400) return;
-		}
-		this.pos = pos;
+		this.pos = new OsmLatLon(location.getLatitude(), location.getLongitude());
 		triggerAutoDownload();
 	}
 

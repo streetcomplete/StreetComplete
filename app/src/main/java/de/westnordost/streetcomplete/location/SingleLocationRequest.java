@@ -57,15 +57,7 @@ public class SingleLocationRequest implements LocationListener, LostApiClient.Co
 	@Override public void onLocationChanged(Location location)
 	{
 		listener.onLocation(location);
-		// TODO remove deferring when https://github.com/mapzen/lost/issues/162 is fixed
-		Handler h = new Handler(Looper.getMainLooper());
-		h.post(new Runnable()
-		{
-			@Override public void run()
-			{
-				stopRequest();
-			}
-		});
+		stopRequest();
 	}
 
 	@Override public void onProviderDisabled(String provider) {}
