@@ -3,6 +3,15 @@ package de.westnordost.streetcomplete.tangram;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.PointF;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.location.Location;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -20,23 +29,32 @@ import com.mapzen.android.lost.api.LostApiClient;
 import com.mapzen.tangram.HttpHandler;
 import com.mapzen.tangram.LngLat;
 import com.mapzen.tangram.MapController;
-import com.mapzen.tangram.MapData;
 import com.mapzen.tangram.MapView;
+import com.mapzen.tangram.Marker;
+import com.mapzen.tangram.TouchInput;
 
 import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
 
+import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.R;
+import de.westnordost.streetcomplete.util.SphericalEarthMath;
 
-/** The map view with the attribution texts and the "find me" button.  */
+import static android.content.Context.SENSOR_SERVICE;
+
 public class MapFragment extends Fragment implements
-		FragmentCompat.OnRequestPermissionsResultCallback, LocationListener, LostApiClient.ConnectionCallbacks
+		FragmentCompat.OnRequestPermissionsResultCallback, LocationListener,
+		LostApiClient.ConnectionCallbacks, TouchInput.ScaleResponder,
+		TouchInput.ShoveResponder, TouchInput.RotateResponder,
+		TouchInput.PanResponder, TouchInput.DoubleTapResponder, SensorEventListener
 {
-	private static final String LOCATION_LAYER = "streetcomplete_location";
 
-	private MapData locationLayer;
+	private SensorManager sensorManager;
+	private Sensor accelerometer, magnetometer;
+
+	private Marker locationMarker;
+	private Marker accuracyMarker;
+	private Marker directionMarker;
 
 	private MapView mapView;
 
@@ -51,6 +69,14 @@ public class MapFragment extends Fragment implements
 	private boolean isFollowingPosition;
 	private Location lastLocation;
 	private boolean zoomedYet;
+
+	private Listener listener;
+
+	public interface Listener
+	{
+		void onMapReady();
+		void onUnglueViewFromPosition();
+	}
 
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
 									   Bundle savedInstanceState)
@@ -86,9 +112,43 @@ public class MapFragment extends Fragment implements
 		updateMapTileCacheSize();
 		controller.setHttpHandler(httpHandler);
 		restoreCameraState();
-		locationLayer = controller.addDataLayer(LOCATION_LAYER);
+
+		controller.setRotateResponder(this);
+		controller.setShoveResponder(this);
+		controller.setScaleResponder(this);
+		controller.setPanResponder(this);
+		controller.setDoubleTapResponder(this);
+
+		locationMarker = controller.addMarker();
+		locationMarker.setStyling("{ style: 'points', color: 'white', size: [20px, 20px], order: 2000, collide: false }");
+		locationMarker.setDrawable(createBitmapDrawableFrom(R.drawable.location_dot));
+		locationMarker.setDrawOrder(3);
+
+		directionMarker = controller.addMarker();
+		directionMarker.setDrawable(createBitmapDrawableFrom(R.drawable.location_direction));
+		directionMarker.setDrawOrder(2);
+
+		accuracyMarker = controller.addMarker();
+		accuracyMarker.setDrawable(createBitmapDrawableFrom(R.drawable.accuracy_circle));
+		accuracyMarker.setDrawOrder(1);
+
 		showLocation();
 		followPosition();
+
+		updateView();
+
+		listener.onMapReady();
+	}
+
+	private BitmapDrawable createBitmapDrawableFrom(int resId)
+	{
+		Drawable drawable = getResources().getDrawable(resId);
+		Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(),
+				drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+		Canvas canvas = new Canvas(bitmap);
+		drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
+		drawable.draw(canvas);
+		return new BitmapDrawable(getResources(), bitmap);
 	}
 
 	private void updateMapTileCacheSize()
@@ -115,9 +175,11 @@ public class MapFragment extends Fragment implements
 
 	public void stopPositionTracking()
 	{
-		if(locationLayer != null)
+		if(locationMarker != null)
 		{
-			locationLayer.clear();
+			locationMarker.setVisible(false);
+			accuracyMarker.setVisible(false);
+			directionMarker.setVisible(false);
 		}
 		zoomedYet = false;
 
@@ -154,6 +216,66 @@ public class MapFragment extends Fragment implements
 				zoomedYet = true;
 				controller.setZoomEased(19, 1000);
 			}
+			updateView();
+		}
+	}
+
+	/* -------------------------------- Touch responders --------------------------------------- */
+
+	@Override public boolean onDoubleTap(float x, float y)
+	{
+		unglueViewFromPosition();
+		LngLat zoomTo = controller.screenPositionToLngLat(new PointF(x, y));
+		controller.setPositionEased(zoomTo, 500);
+		controller.setZoomEased(controller.getZoom() + 1.5f, 500);
+		updateView();
+		return true;
+	}
+
+	@Override public boolean onScale(float x, float y, float scale, float velocity)
+	{
+		unglueViewFromPosition();
+		updateView();
+		return false;
+	}
+
+	@Override public boolean onPan(float startX, float startY, float endX, float endY)
+	{
+		unglueViewFromPosition();
+		updateView();
+		return false;
+	}
+
+	@Override public boolean onFling(float posX, float posY, float velocityX, float velocityY)
+	{
+		unglueViewFromPosition();
+		updateView();
+		return false;
+	}
+
+	@Override public boolean onShove(float distance)
+	{
+		updateView();
+		return false;
+	}
+
+	@Override public boolean onRotate(float x, float y, float rotation)
+	{
+		updateView();
+		return false;
+	}
+
+	protected void updateView()
+	{
+		updateAccuracy();
+	}
+
+	private void unglueViewFromPosition()
+	{
+		if(isFollowingPosition())
+		{
+			setIsFollowingPosition(false);
+			listener.onUnglueViewFromPosition();
 		}
 	}
 
@@ -168,17 +290,45 @@ public class MapFragment extends Fragment implements
 
 	private void showLocation()
 	{
-		if(locationLayer != null && lastLocation != null)
+		if(accuracyMarker != null && locationMarker != null && directionMarker != null && lastLocation != null)
 		{
-			locationLayer.clear();
 			LngLat pos = new LngLat(lastLocation.getLongitude(), lastLocation.getLatitude());
-			int accuracy = (int)(Math.ceil(lastLocation.getAccuracy()));
+			locationMarker.setVisible(true);
+			accuracyMarker.setVisible(true);
+			directionMarker.setVisible(true);
+			locationMarker.setPointEased(pos, 1000, MapController.EaseType.CUBIC);
+			accuracyMarker.setPointEased(pos, 1000, MapController.EaseType.CUBIC);
+			directionMarker.setPointEased(pos, 1000, MapController.EaseType.CUBIC);
 
-			Map<String, String> props = new HashMap<>();
-			props.put("type", "point");
-			locationLayer.addPoint(pos, props);
-			controller.requestRender();
+			updateAccuracy();
 		}
+	}
+
+	private void updateAccuracy()
+	{
+		if(accuracyMarker != null && lastLocation != null)
+		{
+			LngLat pos = new LngLat(lastLocation.getLongitude(), lastLocation.getLatitude());
+			float size = meters2Pixels(pos, lastLocation.getAccuracy());
+			accuracyMarker.setStyling("{ style: 'points', color: 'white', size: ["+size+"px, "+size+"px], order: 2000, collide: false }");
+		}
+	}
+
+	private void updateDirection(float azimut)
+	{
+		if(directionMarker != null)
+		{
+			double r = azimut * 180 / Math.PI;
+			directionMarker.setStyling("{ style: 'points', color: '#cc536dfe', size: [96px, 96px], order: 2000, collide: false, angle: " + r + " }");
+		}
+	}
+
+	private float meters2Pixels(LngLat at, float meters) {
+		LatLon pos0 = TangramConst.toLatLon(at);
+		LatLon pos1 = SphericalEarthMath.translate(pos0, meters, 0);
+		PointF screenPos0 = controller.lngLatToScreenPosition(at);
+		PointF screenPos1 = controller.lngLatToScreenPosition(TangramConst.toLngLat(pos1));
+		return Math.abs(screenPos1.y - screenPos0.y);
 	}
 
 	@Override public void onProviderEnabled(String provider)
@@ -229,18 +379,51 @@ public class MapFragment extends Fragment implements
 		editor.apply();
 	}
 
+	/* ------------------------------------ Compass --------------------------------------------- */
+
+	float[] gravity;
+	float[] geomagnetic;
+
+	@Override public void onAccuracyChanged(Sensor sensor, int accuracy)
+	{
+
+	}
+
+	@Override public void onSensorChanged(SensorEvent event)
+	{
+		if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER)
+			gravity = event.values;
+		if (event.sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD)
+			geomagnetic = event.values;
+		if (gravity != null && geomagnetic != null)
+		{
+			float R[] = new float[9];
+			float I[] = new float[9];
+			boolean success = SensorManager.getRotationMatrix(R, I, gravity, geomagnetic);
+			if (success) {
+				float orientation[] = new float[3];
+				SensorManager.getOrientation(R, orientation);
+				float azimut = orientation[0]; // orientation contains: azimut, pitch and roll
+				updateDirection(azimut);
+			}
+		}
+	}
 
 	/* ------------------------------------ Lifecycle ------------------------------------------- */
 
 	@Override public void onCreate(@Nullable Bundle bundle)
 	{
 		super.onCreate(bundle);
+		sensorManager = (SensorManager) getActivity().getSystemService(SENSOR_SERVICE);
+		accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+		magnetometer = sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
 		if(mapView != null) mapView.onCreate(bundle);
 	}
 
 	@Override public void onAttach(Activity activity)
 	{
 		super.onAttach(activity);
+		listener = (Listener) activity;
 		lostApiClient = new LostApiClient.Builder(activity).addConnectionCallbacks(this).build();
 	}
 
@@ -253,12 +436,16 @@ public class MapFragment extends Fragment implements
 	@Override public void onResume()
 	{
 		super.onResume();
+
+		sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_UI);
+		sensorManager.registerListener(this, magnetometer, SensorManager.SENSOR_DELAY_UI);
 		if(mapView != null) mapView.onResume();
 	}
 
 	@Override public void onPause()
 	{
 		super.onPause();
+		sensorManager.unregisterListener(this);
 		if(mapView != null) mapView.onPause();
 		saveCameraState();
 	}
@@ -302,10 +489,12 @@ public class MapFragment extends Fragment implements
 	public void zoomIn()
 	{
 		controller.setZoomEased(controller.getZoom() + 1, 500);
+		updateView();
 	}
 
 	public void zoomOut()
 	{
 		controller.setZoomEased(controller.getZoom() - 1, 500);
+		updateView();
 	}
 }

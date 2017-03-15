@@ -4,4 +4,10 @@
     <color name="colorPrimaryDark">#3939a3</color>
     <color name="colorAccent">#ff6600</color>
     <color name="colorAccentTransparent">#66ff6600</color>
+
+    <color name="colorLocation">#536dfe</color>
+    <color name="colorLocationAccuracy">#22536dfe</color>
+    <color name="colorLocationAccuracyStroke">#88536dfe</color>
+
+
 </resources>

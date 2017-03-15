@@ -3,11 +3,6 @@ global:
     location_radius_color: '#44fd6c3e' # less accent color + alpha
 
 textures:
-    location:
-        url: images/position.png
-        filtering: mipmap
-        sprites:
-            default: [0,0,54,54]
     quests:
         url: images/quests@2x.png
         filtering: mipmap
@@ -31,11 +26,6 @@ textures:
             house: [0,300,100,100]
 
 styles:
-    location-icon:
-        base: points
-        texture: location
-        blend: overlay
-        blend_order: 1
     quest-icons:
         base: points
         texture: quests
@@ -52,13 +42,6 @@ styles:
         blend: overlay
 
 layers:
-    streetcomplete_location:
-        data: { source: streetcomplete_location }
-        draw:
-            location-icon:
-                collide: false
-                size: 27px
-                sprite: default
     streetcomplete_quests:
         filter: { $zoom: { min: 14 } }
         data: { source: streetcomplete_quests }

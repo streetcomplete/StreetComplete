@@ -1,9 +1,13 @@
 package de.westnordost.streetcomplete.tangram;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Point;
 import android.graphics.PointF;
 import android.graphics.Rect;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
 
 import com.mapzen.tangram.LabelPickResult;
@@ -27,9 +31,8 @@ import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.streetcomplete.util.SphericalEarthMath;
 
-public class QuestsMapFragment extends MapFragment implements TouchInput.ScaleResponder,
-		TouchInput.ShoveResponder, TouchInput.RotateResponder, MapController.LabelPickListener,
-		TouchInput.TapResponder, TouchInput.PanResponder, TouchInput.DoubleTapResponder
+public class QuestsMapFragment extends MapFragment implements TouchInput.TapResponder,
+		MapController.LabelPickListener
 {
 	private static final String MARKER_QUEST_ID = "quest_id";
 	private static final String MARKER_QUEST_GROUP = "quest_group";
@@ -49,12 +52,10 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.ScaleRe
 
 	public interface Listener
 	{
-		void onMapReady();
 		void onClickedQuest(QuestGroup questGroup, Long questId);
 		void onClickedMapAt(@Nullable LatLon position);
 		/** Called once the given bbox comes into view first (listener should get quests there) */
 		void onFirstInView(BoundingBox bbox);
-		void onUnglueViewFromPosition();
 	}
 
 	@Override public void onAttach(Activity activity)
@@ -84,58 +85,21 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.ScaleRe
 		geometryLayer = controller.addDataLayer(GEOMETRY_LAYER);
 		questsLayer = controller.addDataLayer(QUESTS_LAYER);
 
-		controller.setLabelPickListener(this);
 		controller.setTapResponder(this);
-		controller.setRotateResponder(this);
-		controller.setShoveResponder(this);
-		controller.setScaleResponder(this);
-		controller.setPanResponder(this);
-		controller.setDoubleTapResponder(this);
-
-		listener.onMapReady();
-		updateView();
+		controller.setLabelPickListener(this);
 	}
 
-	private void unglueViewFromPosition()
+	private BitmapDrawable createBitmapDrawableFrom(int resId)
 	{
-		if(isFollowingPosition())
-		{
-			setIsFollowingPosition(false);
-			listener.onUnglueViewFromPosition();
-		}
-	}
+		Drawable drawable = getResources().getDrawable(resId);
+		if(drawable instanceof BitmapDrawable) return (BitmapDrawable) drawable;
 
-	@Override public boolean onDoubleTap(float x, float y)
-	{
-		unglueViewFromPosition();
-		LngLat zoomTo = controller.screenPositionToLngLat(new PointF(x, y));
-		controller.setPositionEased(zoomTo, 500);
-		controller.setZoomEased(controller.getZoom() + 1.5f, 500);
-		return true;
-	}
-
-	@Override public boolean onScale(float x, float y, float scale, float velocity)
-	{
-		unglueViewFromPosition();
-		updateView();
-		// okay, scale
-		return false;
-	}
-
-	@Override public boolean onPan(float startX, float startY, float endX, float endY)
-	{
-		unglueViewFromPosition();
-		updateView();
-		// okay, pan
-		return false;
-	}
-
-	@Override public boolean onFling(float posX, float posY, float velocityX, float velocityY)
-	{
-		unglueViewFromPosition();
-		updateView();
-		// okay, fling
-		return false;
+		Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(),
+				drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+		Canvas canvas = new Canvas(bitmap);
+		drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
+		drawable.draw(canvas);
+		return new BitmapDrawable(getResources(), bitmap);
 	}
 
 	@Override public boolean onShove(float distance)
@@ -192,8 +156,10 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.ScaleRe
 		);
 	}
 
-	private void updateView()
+	protected void updateView()
 	{
+		super.updateView();
+
 		if(controller.getZoom() < TILES_ZOOM) return;
 
 		// check if anything changed (needs to be extended when I reenable tilt and rotation)

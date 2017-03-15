@@ -65,6 +65,7 @@ import de.westnordost.streetcomplete.settings.SettingsActivity;
 import de.westnordost.streetcomplete.statistics.AnswersCounter;
 import de.westnordost.streetcomplete.location.LocationState;
 import de.westnordost.streetcomplete.location.LocationStateButton;
+import de.westnordost.streetcomplete.tangram.MapFragment;
 import de.westnordost.streetcomplete.tangram.QuestsMapFragment;
 import de.westnordost.streetcomplete.util.SlippyMapMath;
 import de.westnordost.streetcomplete.util.SphericalEarthMath;
@@ -78,7 +79,7 @@ import static android.location.LocationManager.PROVIDERS_CHANGED_ACTION;
 import static de.westnordost.streetcomplete.location.LocationUtil.MODE_CHANGED;
 
 public class MainActivity extends AppCompatActivity implements
-		OsmQuestAnswerListener, VisibleQuestListener, QuestsMapFragment.Listener,
+		OsmQuestAnswerListener, VisibleQuestListener, QuestsMapFragment.Listener, MapFragment.Listener,
 		OAuthWebViewDialogFragment.OAuthListener, OAuthComponent.Listener,
 		LocationRequestFragment.LocationRequestListener
 {
