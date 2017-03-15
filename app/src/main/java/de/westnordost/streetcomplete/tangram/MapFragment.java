@@ -18,6 +18,7 @@ import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v13.app.FragmentCompat;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,6 +35,7 @@ import com.mapzen.tangram.Marker;
 import com.mapzen.tangram.TouchInput;
 
 import java.io.File;
+import java.util.Arrays;
 
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.streetcomplete.Prefs;
@@ -55,6 +57,7 @@ public class MapFragment extends Fragment implements
 	private Marker locationMarker;
 	private Marker accuracyMarker;
 	private Marker directionMarker;
+	private float[] directionMarkerSize;
 
 	private MapView mapView;
 
@@ -120,12 +123,15 @@ public class MapFragment extends Fragment implements
 		controller.setDoubleTapResponder(this);
 
 		locationMarker = controller.addMarker();
-		locationMarker.setStyling("{ style: 'points', color: 'white', size: [20px, 20px], order: 2000, collide: false }");
-		locationMarker.setDrawable(createBitmapDrawableFrom(R.drawable.location_dot));
+		BitmapDrawable dot = createBitmapDrawableFrom(R.drawable.location_dot);
+		locationMarker.setStyling("{ style: 'points', color: 'white', size: "+Arrays.toString(sizeInDp(dot))+", order: 2000, flat: true, collide: false }");
+		locationMarker.setDrawable(dot);
 		locationMarker.setDrawOrder(3);
 
 		directionMarker = controller.addMarker();
-		directionMarker.setDrawable(createBitmapDrawableFrom(R.drawable.location_direction));
+		BitmapDrawable directionImg = createBitmapDrawableFrom(R.drawable.location_direction);
+		directionMarkerSize = sizeInDp(directionImg);
+		directionMarker.setDrawable(directionImg);
 		directionMarker.setDrawOrder(2);
 
 		accuracyMarker = controller.addMarker();
@@ -138,6 +144,15 @@ public class MapFragment extends Fragment implements
 		updateView();
 
 		listener.onMapReady();
+	}
+
+	private float[] sizeInDp(Drawable drawable)
+	{
+		DisplayMetrics metrics = new DisplayMetrics();
+		getActivity().getWindowManager().getDefaultDisplay().getMetrics(metrics);
+		float d = metrics.density;
+		return new float[]{drawable.getIntrinsicWidth() / d , drawable.getIntrinsicHeight() / d};
+
 	}
 
 	private BitmapDrawable createBitmapDrawableFrom(int resId)
@@ -310,7 +325,7 @@ public class MapFragment extends Fragment implements
 		{
 			LngLat pos = new LngLat(lastLocation.getLongitude(), lastLocation.getLatitude());
 			float size = meters2Pixels(pos, lastLocation.getAccuracy());
-			accuracyMarker.setStyling("{ style: 'points', color: 'white', size: ["+size+"px, "+size+"px], order: 2000, collide: false }");
+			accuracyMarker.setStyling("{ style: 'points', color: 'white', size: ["+size+"px, "+size+"px], order: 2000, flat:true, collide: false }");
 		}
 	}
 
@@ -319,7 +334,11 @@ public class MapFragment extends Fragment implements
 		if(directionMarker != null)
 		{
 			double r = azimut * 180 / Math.PI;
-			directionMarker.setStyling("{ style: 'points', color: '#cc536dfe', size: [96px, 96px], order: 2000, collide: false, angle: " + r + " }");
+
+			directionMarker.setStyling(
+					"{ style: 'points', color: '#cc536dfe', size: " +
+							Arrays.toString(directionMarkerSize) +
+					", order: 2000, collide: false, flat:true, angle: " + r + " }");
 		}
 	}
 
