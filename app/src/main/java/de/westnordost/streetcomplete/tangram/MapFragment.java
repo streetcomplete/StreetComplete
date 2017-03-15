@@ -8,9 +8,6 @@ import android.graphics.Canvas;
 import android.graphics.PointF;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.location.Location;
 import android.os.Bundle;
@@ -48,11 +45,9 @@ public class MapFragment extends Fragment implements
 		FragmentCompat.OnRequestPermissionsResultCallback, LocationListener,
 		LostApiClient.ConnectionCallbacks, TouchInput.ScaleResponder,
 		TouchInput.ShoveResponder, TouchInput.RotateResponder,
-		TouchInput.PanResponder, TouchInput.DoubleTapResponder, SensorEventListener
+		TouchInput.PanResponder, TouchInput.DoubleTapResponder, CompassComponent.Listener
 {
-
-	private SensorManager sensorManager;
-	private Sensor accelerometer, magnetometer;
+	private CompassComponent compass = new CompassComponent(this);
 
 	private Marker locationMarker;
 	private Marker accuracyMarker;
@@ -329,16 +324,15 @@ public class MapFragment extends Fragment implements
 		}
 	}
 
-	private void updateDirection(float azimut)
+	@Override public void onRotationChanged(float rotation)
 	{
 		if(directionMarker != null)
 		{
-			double r = azimut * 180 / Math.PI;
-
+			double r = rotation * 180 / Math.PI;
 			directionMarker.setStyling(
 					"{ style: 'points', color: '#cc536dfe', size: " +
 							Arrays.toString(directionMarkerSize) +
-					", order: 2000, collide: false, flat:true, angle: " + r + " }");
+							", order: 2000, collide: false, flat:true, angle: " + r + " }");
 		}
 	}
 
@@ -398,44 +392,12 @@ public class MapFragment extends Fragment implements
 		editor.apply();
 	}
 
-	/* ------------------------------------ Compass --------------------------------------------- */
-
-	float[] gravity;
-	float[] geomagnetic;
-
-	@Override public void onAccuracyChanged(Sensor sensor, int accuracy)
-	{
-
-	}
-
-	@Override public void onSensorChanged(SensorEvent event)
-	{
-		if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER)
-			gravity = event.values;
-		if (event.sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD)
-			geomagnetic = event.values;
-		if (gravity != null && geomagnetic != null)
-		{
-			float R[] = new float[9];
-			float I[] = new float[9];
-			boolean success = SensorManager.getRotationMatrix(R, I, gravity, geomagnetic);
-			if (success) {
-				float orientation[] = new float[3];
-				SensorManager.getOrientation(R, orientation);
-				float azimut = orientation[0]; // orientation contains: azimut, pitch and roll
-				updateDirection(azimut);
-			}
-		}
-	}
-
 	/* ------------------------------------ Lifecycle ------------------------------------------- */
 
 	@Override public void onCreate(@Nullable Bundle bundle)
 	{
 		super.onCreate(bundle);
-		sensorManager = (SensorManager) getActivity().getSystemService(SENSOR_SERVICE);
-		accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-		magnetometer = sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
+		compass.onCreate((SensorManager) getActivity().getSystemService(SENSOR_SERVICE));
 		if(mapView != null) mapView.onCreate(bundle);
 	}
 
@@ -455,16 +417,14 @@ public class MapFragment extends Fragment implements
 	@Override public void onResume()
 	{
 		super.onResume();
-
-		sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_UI);
-		sensorManager.registerListener(this, magnetometer, SensorManager.SENSOR_DELAY_UI);
+		compass.onResume();
 		if(mapView != null) mapView.onResume();
 	}
 
 	@Override public void onPause()
 	{
 		super.onPause();
-		sensorManager.unregisterListener(this);
+		compass.onPause();
 		if(mapView != null) mapView.onPause();
 		saveCameraState();
 	}
