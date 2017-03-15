@@ -87,6 +87,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 
 		controller.setTapResponder(this);
 		controller.setLabelPickListener(this);
+		controller.setPickRadius(1);
 	}
 
 	private BitmapDrawable createBitmapDrawableFrom(int resId)
@@ -148,7 +149,11 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		LatLon pos = TangramConst.toLatLon(labelPickResult.getCoordinates());
 		LngLat zoomTo = TangramConst.toLngLat(SphericalEarthMath.translate(pos,20,180));
 		controller.setPositionEased(zoomTo, 500);
-		controller.setZoomEased(19, 500);
+		if(controller.getZoom() < 19)
+		{
+			controller.setZoomEased(19, 500);
+		}
+		updateView();
 
 		listener.onClickedQuest(
 				QuestGroup.valueOf(props.get(MARKER_QUEST_GROUP)),
