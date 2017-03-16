@@ -2,8 +2,6 @@ package de.westnordost.streetcomplete.location;
 
 import android.content.Context;
 import android.location.Location;
-import android.os.Handler;
-import android.os.Looper;
 
 import com.mapzen.android.lost.api.LocationListener;
 import com.mapzen.android.lost.api.LocationRequest;
@@ -41,8 +39,11 @@ public class SingleLocationRequest implements LocationListener, LostApiClient.Co
 	{
 		try // TODO remove when https://github.com/mapzen/lost/issues/143 is solved
 		{
-			LocationServices.FusedLocationApi.removeLocationUpdates(lostApiClient, this);
-			lostApiClient.disconnect();
+			if(lostApiClient.isConnected())
+			{
+				LocationServices.FusedLocationApi.removeLocationUpdates(lostApiClient, this);
+				lostApiClient.disconnect();
+			}
 		} catch(NullPointerException e) {
 			e.printStackTrace();
 		}

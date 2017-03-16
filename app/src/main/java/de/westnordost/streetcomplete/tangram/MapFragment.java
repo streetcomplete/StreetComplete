@@ -195,8 +195,11 @@ public class MapFragment extends Fragment implements
 
 		try // TODO remove when https://github.com/mapzen/lost/issues/143 is solved
 		{
-			LocationServices.FusedLocationApi.removeLocationUpdates(lostApiClient, this);
-			lostApiClient.disconnect();
+			if(lostApiClient.isConnected())
+			{
+				LocationServices.FusedLocationApi.removeLocationUpdates(lostApiClient, this);
+				lostApiClient.disconnect();
+			}
 		} catch (NullPointerException e) {
 			e.printStackTrace();
 		}
