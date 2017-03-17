@@ -161,8 +161,7 @@ Pour afficher la carte, les tuiles vectorielles sont extraites du &lt;a href=\"h
 &lt;/p&gt;
 &lt;p&gt;
 (&lt;I&gt; Ce n'est pas encore implémenté, mais simplement pour vous informer de ce qui est à venir!: &lt;/ I&gt;) Les données affichées dans le classement et le profil sont agrégées à partir des informations publiées de OpenStreetMap. Les données ne proviennent pas de cette application, mais essentiellement de l'historique public commit des utilisateurs OSM.
-&lt;/p&gt;
-Privacy_html"</string>
+&lt;/p&gt;"</string>
     <string name="authors_html">"&lt;p&gt; © 2016 Tobias Zwick &lt;/ p&gt;
 &lt;p&gt; L'application utilise le &lt;a href=\"https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free\"&gt; Beautiful Flat Icons &lt;/a&gt; Mis par Nick Roach, sous la licence &lt;a href=\"http://www.gnu.org/licenses/gpl-2.0.html\"&gt; GPL &lt;/a&gt;. &lt;/ p&gt;
 &lt;p&gt;&lt;b&gt;Traductions &lt;/b&gt;&lt;/p&gt;

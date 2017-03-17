@@ -10,10 +10,17 @@
              android:layout_width="match_parent"
              android:layout_height="wrap_content"/>
 
-    <TextView
-        android:id="@+id/text"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="16dp"/>
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"/>
+
+    </ScrollView>
+
 
 </LinearLayout>

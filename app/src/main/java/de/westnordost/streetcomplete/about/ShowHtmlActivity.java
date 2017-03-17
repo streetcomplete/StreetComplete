@@ -16,7 +16,7 @@ import de.westnordost.streetcomplete.R;
 public class ShowHtmlActivity extends AppCompatActivity
 {
 	public static final String
-			HTML_RESOURCE_ID = "html_raw_id",
+			TEXT_ID = "text_id",
 			TITLE_STRING_RESOURCE_ID = "title_string_id";
 
 	@Override protected void onCreate(Bundle savedInstanceState)
@@ -35,22 +35,8 @@ public class ShowHtmlActivity extends AppCompatActivity
 		final TextView textView = (TextView) findViewById(R.id.text);
 		textView.setMovementMethod(LinkMovementMethod.getInstance());
 
-		new Thread() { @Override public void run()
-		{
-			int resourceId = getIntent().getIntExtra(HTML_RESOURCE_ID, -1);
-			InputStream inputStream = getResources().openRawResource(resourceId);
-
-			final String html;
-			try { html = inputStreamIntoString(inputStream); } catch(IOException e)
-			{
-				throw new RuntimeException(e);
-			}
-
-			runOnUiThread(new Runnable() { @Override public void run()
-			{
-				textView.setText(Html.fromHtml(html));
-			}});
-		}}.start();
+		int resourceId = getIntent().getIntExtra(TEXT_ID, -1);
+		textView.setText(Html.fromHtml(getResources().getString(resourceId)));
 	}
 
 	private String inputStreamIntoString(InputStream inputStream) throws IOException
