@@ -230,6 +230,10 @@ Français - Jamie Nadeau&lt;br/&gt;"</string>
     <string name="quest_streetLanes_noLanes_estWidth">"Estimez combien d'auto pourrait rentrer côte à côte"</string>
     <string name="quest_oneway_title">"Est-ce une rue à sens unique?"</string>
     <string name="quest_address_title">"Quelle est le numéro de cette édifice?"</string>
-    <string name="store_listing_short_description"></string>
-    <string name="store_listing_full_description"></string>
+    <string name="store_listing_short_description">"Application d'arpentage OpenStreetMap"</string>
+    <string name="store_listing_full_description">"Aidez à améliorer OpenStreetMap avec StreetComplete!
+
+Cette application aide à trouver des données incomplètes et extensible dans vos environs et l'affiche sur la carte comme des marqueurs. Chacun de ces items se résout en répondant à des questions faciles pour compléter l'information sur le champs.
+
+L'information que vous entrez est directement ajouté à OpenStreetMap en votre nom, sans le besoin d'un autre éditeur. "</string>
 </resources>
