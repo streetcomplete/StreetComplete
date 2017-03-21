@@ -1,30 +1,48 @@
 global:
-    geometry_color: '#77ff3d00' # accent color + alpha
-    location_radius_color: '#44fd6c3e' # less accent color + alpha
+    geometry_color: '#88536dfe' # location color + alpha
 
 textures:
     quests:
-        url: images/quests@2x.png
+        url: images/quests@3x.png
         filtering: mipmap
         sprites:
             # define sprites: [x origin, y origin, width, height]
-            quest: [0,0,100,100]
-            signpost: [100,0,100,100]
-            car: [200,0,100,100]
-            public_transport: [300,0,100,100]
-            nature: [400,0,100,100]
-            address: [0,100,100,100]
-            bicycle: [100,100,100,100]
-            pedestrian: [200,100,100,100]
-            shop: [300,100,100,100]
-            agricultural: [400,100,100,100]
-            note: [0,200,100,100]
-            contact: [100,200,100,100]
-            opening_hours: [200,200,100,100]
-            lit: [300,200,100,100]
-            industrial: [400,200,100,100]
-            house: [0,300,100,100]
-
+            building_levels: [0,0,192,192]
+            roof_shape: [192,0,192,192]
+            building_height: [384,0,192,192]
+            bicycle: [576,0,192,192]
+            bicycle_parking: [768,0,192,192]
+            wheelchair: [960,0,192,192]
+            housenumber: [0,192,192,192]
+            house: [192,192,192,192]
+            pedestrian_crossing: [384,192,192,192]
+            pedestrian: [576,192,192,192]
+            bicycleway: [768,192,192,192]
+            lantern: [960,192,192,192]
+            parking: [0,384,192,192]
+            traffic_lights: [192,384,192,192]
+            tractor: [384,384,192,192]
+            oneway: [576,384,192,192]
+            signpost: [768,384,192,192]
+            #empty: [960,384,192,192]
+            street: [0,576,192,192]
+            max_width: [192,576,192,192]
+            max_height: [384,576,192,192]
+            max_speed: [576,576,192,192]
+            max_weight: [768,576,192,192]
+            #empty: [960,576,192,192]
+            street_lanes: [0,768,192,192]
+            street_turnlanes: [192,768,192,192]
+            street_surface: [384,768,192,192]
+            street_width: [576,768,192,192]
+            #empty: [768,768,192,192]
+            #empty: [960,768,192,192]
+            note: [0,960,192,192]
+            quest: [192,960,192,192]
+            opening_hours: [384,960,192,192]
+            label: [576,960,192,192]
+            phone: [768,960,192,192]
+            smoking: [960,960,192,192]
 styles:
     quest-icons:
         base: points
@@ -48,10 +66,10 @@ layers:
         draw:
             quest-icons:
                 interactive: true
-                size: 50px
+                size: 64px
                 sprite: function() { return feature.kind }
                 sprite_default: quest
-                offset: [0px, -25px]
+                offset: [-16px, -64px]
     streetcomplete_geometry:
         data: { source: streetcomplete_geometry }
         line:

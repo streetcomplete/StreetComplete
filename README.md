@@ -1,11 +1,14 @@
-# StreetComplete
-
-Is currently in Beta. 
+![StreetComplete](res/feature_graphic.png)
 
 [<img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" alt="Get it on Google Play" height="80">](https://play.google.com/store/apps/details?id=de.westnordost.streetcomplete)[<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid"
       height="80"><br/>](https://apt.izzysoft.de/fdroid/index/apk/de.westnordost.streetcomplete)
 
-![Screenshot](screenshot.png)
+Screenshots:
+<img src="res/screenshot1.png" width="194"/>
+<img src="res/screenshot2.png" width="194"/>
+<img src="res/screenshot3.png" width="194"/>
+<img src="res/screenshot4.png" width="194"/>
+<img src="res/screenshot4.png" width="194"/>
 
 An Android app which finds wrong, incomplete or extendable data in the user's vicinity and provides
 him the tools to complete these easily and directly on site without having to use another editor.

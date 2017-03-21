@@ -34,5 +34,5 @@ public class AddRoofShape extends OverpassQuestType
 		return R.string.quest_roofShape_commitMessage;
 	}
 
-	@Override public String getIconName() {	return "house"; }
+	@Override public String getIconName() {	return "roof_shape"; }
 }

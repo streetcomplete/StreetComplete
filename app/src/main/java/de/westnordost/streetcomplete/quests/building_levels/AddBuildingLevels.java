@@ -40,5 +40,5 @@ public class AddBuildingLevels extends OverpassQuestType
 		return R.string.quest_buildingLevels_commitMessage;
 	}
 
-	@Override public String getIconName() {	return "house"; }
+	@Override public String getIconName() {	return "building_levels"; }
 }
