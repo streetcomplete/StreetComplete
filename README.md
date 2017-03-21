@@ -14,11 +14,7 @@ The app is aimed at users who do not know anything about OSM tagging schemes but
 contribute to the OpenStreetMap by surveying their neighbourhood (or other places as well). Because of the target group, only those quests are shown which are answerable very clearly by asking one simple question and only those quests are created which contain very few false positives.
 
 ## Screenshots
-<img src="res/screenshot1.png" width="194"/>
-<img src="res/screenshot2.png" width="194"/>
-<img src="res/screenshot3.png" width="194"/>
-<img src="res/screenshot4.png" width="194"/>
-<img src="res/screenshot4.png" width="194"/>
+<img src="res/screenshot1.png" width="194"/><img src="res/screenshot2.png" width="194"/><img src="res/screenshot3.png" width="194"/><img src="res/screenshot4.png" width="194"/><img src="res/screenshot4.png" width="194"/>
 
 ## Download
 
