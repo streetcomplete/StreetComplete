@@ -1,15 +1,5 @@
 ![StreetComplete](res/feature_graphic.png)
 
-[<img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" alt="Get it on Google Play" height="80">](https://play.google.com/store/apps/details?id=de.westnordost.streetcomplete)[<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid"
-      height="80"><br/>](https://apt.izzysoft.de/fdroid/index/apk/de.westnordost.streetcomplete)
-
-Screenshots:
-<img src="res/screenshot1.png" width="194"/>
-<img src="res/screenshot2.png" width="194"/>
-<img src="res/screenshot3.png" width="194"/>
-<img src="res/screenshot4.png" width="194"/>
-<img src="res/screenshot4.png" width="194"/>
-
 An Android app which finds wrong, incomplete or extendable data in the user's vicinity and provides
 him the tools to complete these easily and directly on site without having to use another editor.
 
@@ -22,6 +12,18 @@ economic with data usage.
 
 The app is aimed at users who do not know anything about OSM tagging schemes but still want to
 contribute to the OpenStreetMap by surveying their neighbourhood (or other places as well). Because of the target group, only those quests are shown which are answerable very clearly by asking one simple question and only those quests are created which contain very few false positives.
+
+## Screenshots
+<img src="res/screenshot1.png" width="194"/>
+<img src="res/screenshot2.png" width="194"/>
+<img src="res/screenshot3.png" width="194"/>
+<img src="res/screenshot4.png" width="194"/>
+<img src="res/screenshot4.png" width="194"/>
+
+## Download
+
+[<img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" alt="Get it on Google Play" height="80">](https://play.google.com/store/apps/details?id=de.westnordost.streetcomplete)[<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid"
+      height="80"><br/>](https://apt.izzysoft.de/fdroid/index/apk/de.westnordost.streetcomplete)
 
 ## State of Development
 
