@@ -24,9 +24,8 @@ import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.data.download.MobileDataAutoDownloadStrategy;
 import de.westnordost.streetcomplete.data.download.QuestAutoDownloadStrategy;
 import de.westnordost.streetcomplete.data.download.WifiAutoDownloadStrategy;
-import de.westnordost.streetcomplete.util.SphericalEarthMath;
 
-/** Automatically downloads new quests around the user's location and uploads quests.
+/** Automatically downloads and uploads new quests around the user's location and uploads quests.
  *
  *  Respects the user preference to only sync on wifi or not sync automatically at all
  * */

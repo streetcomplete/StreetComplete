@@ -101,27 +101,30 @@ public class QuestController
 			createNote.elementId = q.getElementId();
 			createNoteDB.add(createNote);
 
-			/** The quests that reference the same element for which the user was not able to
-			 *  answer the question are removed because the to-be-created note blocks quest
-			 *  creation for other users, so those quests should be removed from the user's
-			 *  own display as well. As soon as the note is resolved, the quests will be re-
-			 *  created next time they are downloaded */
-			List<OsmQuest> quests = osmQuestDB.getAll(null, QuestStatus.NEW, null,
+			/* The quests that reference the same element for which the user was not able to
+			   answer the question are removed because the to-be-created note blocks quest
+			   creation for other users, so those quests should be removed from the user's
+			   own display as well. As soon as the note is resolved, the quests will be re-
+			   created next time they are downloaded */
+			List<OsmQuest> questsForThisOsmElement = osmQuestDB.getAll(null, QuestStatus.NEW, null,
 					q.getElementType(), q.getElementId());
-			List<Long> questIds = new ArrayList<>(quests.size());
-			for(OsmQuest quest : quests)
+			List<Long> otherQuestIdsForThisOsmElement = new ArrayList<>(questsForThisOsmElement.size());
+			for(OsmQuest quest : questsForThisOsmElement)
 			{
-				questIds.add(quest.getId());
+				if(quest.getId() != osmQuestId) otherQuestIdsForThisOsmElement.add(quest.getId());
 			}
 
-			osmQuestDB.deleteAll(questIds);
-			relay.onQuestsRemoved(questIds, QuestGroup.OSM);
+			/* creating a note instead of "really" solving the quest still counts as solving in
+			   regards of the listener because the user answered to the quest and thats something
+			 that needs to be uploaded */
+			osmQuestDB.delete(osmQuestId);
+			relay.onQuestSolved(osmQuestId, QuestGroup.OSM);
+
+			osmQuestDB.deleteAll(otherQuestIdsForThisOsmElement);
+			relay.onQuestsRemoved(otherQuestIdsForThisOsmElement, QuestGroup.OSM);
 
 			osmElementDB.deleteUnreferenced();
 			geometryDB.deleteUnreferenced();
-
-			// try to upload directly
-			upload();
 		}}.start();
 	}
 
@@ -147,7 +150,7 @@ public class QuestController
 					q.setChanges(commitMessage, changes);
 					q.setStatus(QuestStatus.ANSWERED);
 					osmQuestDB.update(q);
-					relay.onQuestRemoved(q.getId(), group);
+					relay.onQuestSolved(q.getId(), group);
 				}
 				else
 				{
@@ -165,7 +168,7 @@ public class QuestController
 					q.setComment(comment);
 					q.setStatus(QuestStatus.ANSWERED);
 					osmNoteQuestDB.update(q);
-					relay.onQuestRemoved(q.getId(), group);
+					relay.onQuestSolved(q.getId(), group);
 				}
 				else
 				{
@@ -173,8 +176,6 @@ public class QuestController
 							"NoteQuest has been answered with an empty comment!");
 				}
 			}
-			// try to upload directly
-			upload();
 		}}.start();
 	}
 

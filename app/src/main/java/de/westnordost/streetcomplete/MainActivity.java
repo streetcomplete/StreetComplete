@@ -38,6 +38,7 @@ import android.widget.Toast;
 import com.mapzen.android.lost.api.LocationRequest;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -586,6 +587,18 @@ public class MainActivity extends AppCompatActivity implements
 
 	@AnyThread
 	@Override public synchronized void onQuestsRemoved(Collection<Long> questIds, QuestGroup group)
+	{
+		removeQuests(questIds, group);
+	}
+
+	@AnyThread
+	@Override public synchronized void onQuestSolved(long questId, QuestGroup group)
+	{
+		questAutoSyncer.triggerAutoUpload();
+		removeQuests(Collections.singletonList(questId), group);
+	}
+
+	private void removeQuests(Collection<Long> questIds, QuestGroup group)
 	{
 		// amount of quests is reduced -> check if redownloding now makes sense
 		questAutoSyncer.triggerAutoDownload();

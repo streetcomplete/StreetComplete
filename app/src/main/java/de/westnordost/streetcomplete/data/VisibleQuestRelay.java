@@ -32,6 +32,11 @@ public class VisibleQuestRelay implements VisibleQuestListener
 		if (listener != null) listener.onQuestsCreated(quests, group);
 	}
 
+	@Override public void onQuestSolved(long questId, QuestGroup group)
+	{
+		if (listener != null) listener.onQuestSolved(questId, group);
+	}
+
 	public void onQuestRemoved(long questId, QuestGroup group)
 	{
 		onQuestsRemoved(Collections.singletonList(questId), group);
