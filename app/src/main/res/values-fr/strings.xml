@@ -35,10 +35,10 @@
     <string name="quest_leave_new_note_no">"Non, seulement cacher"</string>
     <string name="quest_streetName_title">"Quelle est le nom de cette rue?"</string>
     <string name="quest_streetName_description">"tel qu'écrit sur la pancarte, abréviations sont allongées:"</string>
-    <string name="quest_streetName_answer_noName">"Il n'a pas de nom"</string>
-    <string name="quest_streetName_answer_noName_confirmation_title">"Vraiment sans nom?"</string>
+    <string name="quest_name_answer_noName">"Il n'a pas de nom"</string>
+    <string name="quest_name_answer_noName_confirmation_title">"Vraiment sans nom?"</string>
     <string name="quest_streetName_answer_noName_confirmation_description">"Des fois la pancarte est seulement à une extrémité de la rue côte de la rue. Aussi, notez qu'il pourrais ne pas avoir de pancarte pour des rues de côté qui font partie d'une rue plus grande. Habituellement, n'importe quelle rue qui a une maison porte un nom."</string>
-    <string name="quest_streetName_noName_confirmation_positive">"Oui, sans nom"</string>
+    <string name="quest_name_noName_confirmation_positive">"Oui, sans nom"</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title">"Abréviation dans le nom?"</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Si le nom peut être épeler sans abréviation, il devrait être rallongé. Beaucoup d'abréviation. De nombreuses abréviations courantes sont développées automatiquement pendant que vous tapez, mais probablement pas toutes."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Pas d'abréviations"</string>

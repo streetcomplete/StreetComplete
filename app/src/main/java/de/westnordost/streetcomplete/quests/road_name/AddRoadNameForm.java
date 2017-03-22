@@ -47,7 +47,7 @@ public class AddRoadNameForm extends AbstractQuestAnswerFragment
 	@Override protected List<Integer> getOtherAnswerResourceIds()
 	{
 		List<Integer> answers = super.getOtherAnswerResourceIds();
-		answers.add(R.string.quest_streetName_answer_noName);
+		answers.add(R.string.quest_name_answer_noName);
 		answers.add(R.string.quest_streetName_answer_noProperStreet);
 		return answers;
 	}
@@ -56,7 +56,7 @@ public class AddRoadNameForm extends AbstractQuestAnswerFragment
 	{
 		if(super.onClickOtherAnswer(itemResourceId)) return true;
 
-		if(itemResourceId == R.string.quest_streetName_answer_noName)
+		if(itemResourceId == R.string.quest_name_answer_noName)
 		{
 			confirmNoStreetName();
 			return true;
@@ -143,9 +143,9 @@ public class AddRoadNameForm extends AbstractQuestAnswerFragment
 		};
 
 		new AlertDialog.Builder(getActivity())
-				.setTitle(R.string.quest_streetName_answer_noName_confirmation_title)
+				.setTitle(R.string.quest_name_answer_noName_confirmation_title)
 				.setMessage(R.string.quest_streetName_answer_noName_confirmation_description)
-				.setPositiveButton(R.string.quest_streetName_noName_confirmation_positive, onYes)
+				.setPositiveButton(R.string.quest_name_noName_confirmation_positive, onYes)
 				.setNegativeButton(R.string.quest_generic_confirmation_no, onNo)
 				.show();
 	}

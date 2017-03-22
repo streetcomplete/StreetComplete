@@ -8,5 +8,7 @@
     <string name="quest_buildingLevels_commitMessage" translatable="false">Add building levels</string>
     <string name="quest_roofShape_commitMessage" translatable="false">Add roof shape</string>
     <string name="quest_openingHours_commitMessage" translatable="false">Add opening hours</string>
+    <string name="quest_placeName_commitMessage" translatable="false">Add place name</string>
+    <string name="quest_placeName_commitMessage_noname" translatable="false">This place has no name</string>
 
 </resources>
