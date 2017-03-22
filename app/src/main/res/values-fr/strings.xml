@@ -23,31 +23,24 @@
     <string name="map_btn_gps_tracking">"Me suivre"</string>
     <string name="map_attribution_mapzen">"Propulsé par Mapzen"</string>
     <string name="map_attribution_osm">"© contribuants OpenStreetMap"</string>
-    <string name="quest_generic_otherAnswers">"Autres réponses..."</string>
+    <string name="quest_generic_otherAnswers">"Autres réponses…"</string>
     <string name="quest_generic_answer_notApplicable">"Ne peux pas dire"</string>
     <string name="quest_generic_confirmation_title">"Êtes-vous sûre?"</string>
     <string name="quest_generic_confirmation_yes">"Oui, je suis certain"</string>
     <string name="quest_generic_confirmation_no">"Je vais vérifier"</string>
     <string name="quest_generic_error_field_empty">"Vous avez laisser ce champ vide"</string>
     <string name="quest_leave_new_note_title">"Laisser une note à la place?"</string>
-    <string name="quest_leave_new_note_description">"Vous pouvez laisser une note à cet endroit
-        que d'autres personnes peuvent commenter et résoudre:"</string>
+    <string name="quest_leave_new_note_description">"Vous pouvez laisser une note à cet endroit que d'autres personnes peuvent commenter et résoudre:"</string>
     <string name="quest_leave_new_note_yes">"OK"</string>
     <string name="quest_leave_new_note_no">"Non, seulement cacher"</string>
     <string name="quest_streetName_title">"Quelle est le nom de cette rue?"</string>
     <string name="quest_streetName_description">"tel qu'écrit sur la pancarte, abréviations sont allongées:"</string>
     <string name="quest_streetName_answer_noName">"Il n'a pas de nom"</string>
     <string name="quest_streetName_answer_noName_confirmation_title">"Vraiment sans nom?"</string>
-    <string name="quest_streetName_answer_noName_confirmation_description">"Des fois la pancarte est
-        seulement à une extrémité de la rue côte de la rue. Aussi, notez qu'il pourrais ne pas avoir de pancarte pour des rues
-        de côté qui font partie d'une rue plus grande.
-Habituellement, n'importe quelle rue qui a une maison porte un nom."</string>
+    <string name="quest_streetName_answer_noName_confirmation_description">"Des fois la pancarte est seulement à une extrémité de la rue côte de la rue. Aussi, notez qu'il pourrais ne pas avoir de pancarte pour des rues de côté qui font partie d'une rue plus grande. Habituellement, n'importe quelle rue qui a une maison porte un nom."</string>
     <string name="quest_streetName_noName_confirmation_positive">"Oui, sans nom"</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title">"Abréviation dans le nom?"</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Si le nom peut
-        être épeler sans abréviation, il devrait être rallongé.
-Beaucoup d'abréviationMany common abbreviations
-        are expanded automatically while you type, but probably not all."</string>
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Si le nom peut être épeler sans abréviation, il devrait être rallongé. Beaucoup d'abréviation. De nombreuses abréviations courantes sont développées automatiquement pendant que vous tapez, mais probablement pas toutes."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Pas d'abréviations"</string>
     <string name="quest_openingHours_unknownName_title">"Quelles sont les heures d'ouverture de cette place?"</string>
     <string name="quest_openingHours_name_title">"Quelles sont les heures d'ouverture de %s?"</string>
@@ -74,10 +67,8 @@ Beaucoup d'abréviationMany common abbreviations
     <string name="action_upload">"Téléverser les réponses"</string>
     <string name="no_changes">"Vous avez laissé le formulaire vide"</string>
     <string name="close">"fermer"</string>
-    <string name="download_error">"Erreur pendant la recherche de quêtes.
-Vérifiez les logs"</string>
-    <string name="upload_error">"Erreur pendant les réponses téléversaient.
-Vérifiez les logs"</string>
+    <string name="download_error">"Erreur pendant la recherche de quêtes. Vérifiez les logs"</string>
+    <string name="upload_error">"Erreur pendant les réponses téléversaient. Vérifiez les logs"</string>
     <string name="cannot_find_bbox">"Ne peut pas rechercher ici. Essayez de faire le zoom avant"</string>
     <string name="download_area_too_big">"Veillez faire le zoom avant"</string>
     <string name="confirmation_cancel_prev_download_title">"Annuler la recherche en cours et rechercher ici à la place?"</string>
@@ -98,9 +89,7 @@ Vérifiez les logs"</string>
     <string name="offline">"Vous êtes hors ligne"</string>
     <string name="confirmation_authorize_now">"Vous devez autoriser avec votre compte OSM pour appliquer n'importe quel de vos réponses définitivement. Autoriser maintenant?"</string>
     <string name="not_authorized">"Non autorisé"</string>
-    <string name="version_banned_message">"Cette version de StreetComplete a été bannis de téléverser des réponses!
-
-Veuillez mettre à jour votre version!"</string>
+    <string name="version_banned_message">"Cette version de StreetComplete a été bannis de téléverser des réponses! Veuillez mettre à jour votre version!"</string>
     <string name="no_gps_no_quests">"Pour rechercher des quêtes autours de toi automatiquement, activer l'emplacement"</string>
     <string name="nothing_more_to_download">"Plus de quêtes disponible"</string>
     <string name="later">"Plus tards"</string>
@@ -119,8 +108,7 @@ Veuillez mettre à jour votre version!"</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">"Change mensuellement"</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">"Pas d'heures d'ouverture régulières"</string>
     <string name="quest_openingHours_comment_title">"Décrire les heures d'ouverture"</string>
-    <string name="quest_openingHours_comment_description">"Soyez précis, idéalement utiliser les mots sur la pancarte. Par exemple \"Sur rendez-vous seulement\".
-En absence de pancarte ne veut pas nécessairement dire qu'il n'y a pas d'heures d'ouverture régulier."</string>
+    <string name="quest_openingHours_comment_description">"Soyez précis, idéalement utiliser les mots sur la pancarte. Par exemple \"Sur rendez-vous seulement\". En absence de pancarte ne veut pas nécessairement dire qu'il n'y a pas d'heures d'ouverture régulier."</string>
     <string name="quest_buildingLevels_title">"Combien d'étages cette d'édifice a-t-elle?"</string>
     <string name="quest_buildingLevels_title_buildingPart">"Combien d'étages cette partie d'édifice a-t-elle?"</string>
     <string name="quest_buildingLevels_levelsLabel">"total des étages (incluant le toit)"</string>
@@ -192,8 +180,6 @@ Français - Jamie Nadeau&lt;br/&gt;"</string>
     <string name="quest_surface_value_paving_stones">"Pierre pavé"</string>
     <string name="quest_surface_value_pebblestone">"Cailloux"</string>
     <string name="quest_surface_value_sand">"Sable"</string>
-
-    <!-- What....? -->
     <string name="quest_surface_value_sett">"Pavé de pierre"</string>
     <string name="quest_surface_value_wood">"Bois"</string>
 

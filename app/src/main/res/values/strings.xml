@@ -30,26 +30,17 @@
     <string name="quest_generic_confirmation_no">"I will check"</string>
     <string name="quest_generic_error_field_empty">"You left this field empty"</string>
     <string name="quest_leave_new_note_title">"Leave a note instead?"</string>
-    <string name="quest_leave_new_note_description">"You can leave a public note at this location
-        which other mappers can comment on and hopefully resolve:"</string>
+    <string name="quest_leave_new_note_description">"You can leave a public note at this location which other mappers can comment on and hopefully resolve:"</string>
     <string name="quest_leave_new_note_yes">"OK"</string>
     <string name="quest_leave_new_note_no">"No, just hide"</string>
     <string name="quest_streetName_title">"What is the name of this road?"</string>
     <string name="quest_streetName_description">"as written on the street sign, abbreviations are expanded:"</string>
     <string name="quest_streetName_answer_noName">"It has no name"</string>
     <string name="quest_streetName_answer_noName_confirmation_title">"Really no name?"</string>
-    <string name="quest_streetName_answer_noName_confirmation_description">"Sometimes the street sign is
-        only at one end of the street. Also, note that there may not be extra street signs for side
-        streets that belong to a bigger street.
-Usually, any street with houses has a name.
-    "</string>
+    <string name="quest_streetName_answer_noName_confirmation_description">"Sometimes the street sign is only at one end of the street. Also, note that there may not be extra street signs for side streets that belong to a bigger street. Usually, any street with houses has a name."</string>
     <string name="quest_streetName_noName_confirmation_positive">"Yes, no name"</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title">"Abbreviation in the name?"</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"If the name can
-        be spelled without an abbreviation, then it should be expanded.
-Many common abbreviations
-        are expanded automatically while you type, but probably not all.
-        "</string>
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"If the name can be spelled without an abbreviation, then it should be expanded. Many common abbreviations are expanded automatically while you type, but probably not all."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"No abbreviation"</string>
     <string name="quest_openingHours_unknownName_title">"What are the opening hours of this location?"</string>
     <string name="quest_openingHours_name_title">"What are the opening hours of %s?"</string>
@@ -76,10 +67,8 @@ Many common abbreviations
     <string name="action_upload">"Upload Answers"</string>
     <string name="no_changes">"You left the form empty"</string>
     <string name="close">"close"</string>
-    <string name="download_error">"Error while scanning for quests.
-Please check the log"</string>
-    <string name="upload_error">"Error while uploading answers.
-Please check the log"</string>
+    <string name="download_error">"Error while scanning for quests. Please check the log"</string>
+    <string name="upload_error">"Error while uploading answers. Please check the log"</string>
     <string name="cannot_find_bbox">"Can't scan here. Try to zoom in further"</string>
     <string name="download_area_too_big">"Please zoom in further"</string>
     <string name="confirmation_cancel_prev_download_title">"Cancel the current search and scan here instead?"</string>
@@ -100,9 +89,7 @@ Please check the log"</string>
     <string name="offline">"You are offline"</string>
     <string name="confirmation_authorize_now">"You need to authorize with your OSM user account to apply any of your answers for good. Authorize now?"</string>
     <string name="not_authorized">"Not authorized"</string>
-    <string name="version_banned_message">"This version of StreetComplete has been banned from uploading any answers!
-
-Please update your version!"</string>
+    <string name="version_banned_message">"This version of StreetComplete has been banned from uploading any answers! Please update your version!"</string>
     <string name="no_gps_no_quests">"To scan for quests around you automatically, turn on location"</string>
     <string name="nothing_more_to_download">"No further quests available"</string>
     <string name="later">"Later"</string>
@@ -121,8 +108,7 @@ Please update your version!"</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">"Differs by month"</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">"No regular opening hours"</string>
     <string name="quest_openingHours_comment_title">"Describe opening hours"</string>
-    <string name="quest_openingHours_comment_description">"Be concise, ideally use the wording from the sign. I.e. \"by appointment\".
-The absence of a sign does not necessarily mean there are no regular opening hours."</string>
+    <string name="quest_openingHours_comment_description">"Be concise, ideally use the wording from the sign. I.e. \"by appointment\". The absence of a sign does not necessarily mean there are no regular opening hours."</string>
     <string name="quest_buildingLevels_title">"How many levels does this building have?"</string>
     <string name="quest_buildingLevels_title_buildingPart">"How many levels does this building part have?"</string>
     <string name="quest_buildingLevels_levelsLabel">"total levels (inclusive roof)"</string>
