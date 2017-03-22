@@ -41,6 +41,7 @@ public class ElementGeometryCreator
 		List<List<LatLon>> polylines = new ArrayList<>(1);
 		polylines.add(polyline);
 
+		ElementGeometry result;
 		if(OsmAreas.isArea(way))
 		{
 			// ElementGeometry considers polygons that are defined clockwise holes, so ensure that
@@ -48,12 +49,14 @@ public class ElementGeometryCreator
 			if(ElementGeometry.isRingDefinedClockwise(polyline)) {
 				Collections.reverse(polyline);
 			}
-			return new ElementGeometry(null, polylines);
+			result = new ElementGeometry(null, polylines);
 		}
 		else
 		{
-			return new ElementGeometry(polylines, null);
+			result = new ElementGeometry(polylines, null);
 		}
+		if(result.center == null) return null;
+		return result;
 	}
 
 	public ElementGeometry create(Relation relation)
