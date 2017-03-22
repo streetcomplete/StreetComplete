@@ -119,7 +119,7 @@ public class MapFragment extends Fragment implements
 
 		locationMarker = controller.addMarker();
 		BitmapDrawable dot = createBitmapDrawableFrom(R.drawable.location_dot);
-		locationMarker.setStyling("{ style: 'points', color: 'white', size: "+Arrays.toString(sizeInDp(dot))+", order: 2000, flat: true, collide: false }");
+		locationMarker.setStylingFromString("{ style: 'points', color: 'white', size: "+Arrays.toString(sizeInDp(dot))+", order: 2000, flat: true, collide: false }");
 		locationMarker.setDrawable(dot);
 		locationMarker.setDrawOrder(3);
 
@@ -323,7 +323,7 @@ public class MapFragment extends Fragment implements
 		{
 			LngLat pos = new LngLat(lastLocation.getLongitude(), lastLocation.getLatitude());
 			float size = meters2Pixels(pos, lastLocation.getAccuracy());
-			accuracyMarker.setStyling("{ style: 'points', color: 'white', size: ["+size+"px, "+size+"px], order: 2000, flat:true, collide: false }");
+			accuracyMarker.setStylingFromString("{ style: 'points', color: 'white', size: ["+size+"px, "+size+"px], order: 2000, flat:true, collide: false }");
 		}
 	}
 
@@ -332,7 +332,7 @@ public class MapFragment extends Fragment implements
 		if(directionMarker != null)
 		{
 			double r = rotation * 180 / Math.PI;
-			directionMarker.setStyling(
+			directionMarker.setStylingFromString(
 					"{ style: 'points', color: '#cc536dfe', size: " +
 							Arrays.toString(directionMarkerSize) +
 							", order: 2000, collide: false, flat:true, angle: " + r + " }");
