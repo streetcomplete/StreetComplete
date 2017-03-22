@@ -42,7 +42,6 @@
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title">"Name abgekürzt?"</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Abkürzungen in Straßennamen sollten immer ausgeschrieben werden. Für übliche Abkürzungen passiert das automatisch beim Schreiben, aber eventuell nicht für alle."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Keine Abkürzung"</string>
-    <string name="quest_openingHours_unknownName_title">"Was sind die Öffnungszeiten dieser Stätte?"</string>
     <string name="quest_openingHours_name_title">"Was sind die Öffnungszeiten von „%s“?"</string>
     <string name="quest_openingHours_start_time">"öffnet um"</string>
     <string name="quest_openingHours_end_time">"schließt um"</string>

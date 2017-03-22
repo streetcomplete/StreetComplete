@@ -25,7 +25,7 @@ public class AddOpeningHours extends OverpassQuestType
                " tourism ~ zoo|theme_park|gallery|museum or" +
                " tourism = information and information = office or" +
                " leisure ~ golf_course|water_park|miniature_golf )" +
-               " and !opening_hours";
+               " and !opening_hours and name";
 	}
 
     @Override public int importance()
