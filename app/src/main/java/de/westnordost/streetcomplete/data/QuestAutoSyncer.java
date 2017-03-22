@@ -8,7 +8,6 @@ import android.content.SharedPreferences;
 import android.location.Location;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.wifi.WifiManager;
 import android.util.Log;
 
 import com.mapzen.android.lost.api.LocationListener;
@@ -41,6 +40,8 @@ public class QuestAutoSyncer implements LocationListener, LostApiClient.Connecti
 
 	private LostApiClient lostApiClient;
 	private LatLon pos;
+
+	private boolean isConnected;
 	private boolean isWifi;
 
 	@Inject public QuestAutoSyncer(QuestController questController,
@@ -58,14 +59,14 @@ public class QuestAutoSyncer implements LocationListener, LostApiClient.Connecti
 
 	public void onStart()
 	{
-		isWifi = isConnected(ConnectivityManager.TYPE_WIFI);
-		context.registerReceiver(wifiReceiver, new IntentFilter(WifiManager.NETWORK_STATE_CHANGED_ACTION));
+		updateConnectionState();
+		context.registerReceiver(connectivityReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
 	}
 
 	public void onStop()
 	{
 		stopPositionTracking();
-		context.unregisterReceiver(wifiReceiver);
+		context.unregisterReceiver(connectivityReceiver);
 	}
 
 	public void startPositionTracking()
@@ -114,7 +115,7 @@ public class QuestAutoSyncer implements LocationListener, LostApiClient.Connecti
 	{
 		if(!isAllowedByPreference()) return;
 		if(pos == null) return;
-		if(!isConnected()) return;
+		if(!isConnected) return;
 		if(questController.isPriorityDownloadRunning()) return;
 
 		Log.i(TAG_AUTO_DOWNLOAD, "Checking whether to automatically download new quests at "
@@ -135,33 +136,33 @@ public class QuestAutoSyncer implements LocationListener, LostApiClient.Connecti
 	public void triggerAutoUpload()
 	{
 		if(!isAllowedByPreference()) return;
-		if(!isConnected()) return;
+		if(!isConnected) return;
 		questController.upload();
 	}
 
-	private boolean isConnected()
-	{
-		return isConnected(null);
-	}
-
-	private boolean isConnected(Integer networkType)
+	private boolean updateConnectionState()
 	{
 		ConnectivityManager connectivityManager
 				= (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-		NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-		return activeNetworkInfo != null && activeNetworkInfo.isConnected() &&
-				(networkType == null || activeNetworkInfo.getType() == networkType);
+		NetworkInfo info = connectivityManager.getActiveNetworkInfo();
+
+		boolean newIsConnected = info != null && info.isConnected();
+		boolean newIsWifi = newIsConnected && info.getType() == ConnectivityManager.TYPE_WIFI;
+
+		boolean result = newIsConnected != isConnected || newIsWifi != isWifi;
+		isConnected = newIsConnected;
+		isWifi = newIsWifi;
+		return result;
 	}
 
-	private final BroadcastReceiver wifiReceiver = new BroadcastReceiver()
+	private final BroadcastReceiver connectivityReceiver = new BroadcastReceiver()
 	{
 		@Override public void onReceive(Context context, Intent intent)
 		{
-			NetworkInfo info = intent.getParcelableExtra(WifiManager.EXTRA_NETWORK_INFO);
-			// only do something if the state really changes (broadcast is called more often)
-			if(info.isConnected() == isWifi) return;
-			isWifi = info.isConnected();
-			if(isWifi)
+			boolean connectionStateChanged = updateConnectionState();
+			// connecting to i.e. mobile data after being disconnected from wifi -> not interested in that
+			boolean isFailover = intent.getBooleanExtra(ConnectivityManager.EXTRA_IS_FAILOVER, false);
+			if(!isFailover && connectionStateChanged && isConnected)
 			{
 				triggerAutoDownload();
 				triggerAutoUpload();
