@@ -151,7 +151,8 @@ To display the map, vector tiles are retrieved from the &lt;a href=\"https://map
 &lt;p&gt;&lt;b&gt;Translations&lt;/b&gt;&lt;/p&gt;
 English - Tobias Zwick&lt;br/&gt;
 German - Tobias Zwick&lt;br/&gt;
-French - Jamie Nadeau&lt;br/&gt;"</string>
+French - Jamie Nadeau&lt;br/&gt;
+Italian - Maurizio Napolitano&lt;br/&gt;"</string>
     <string name="quest_expiration_one_day">"One day"</string>
     <string name="quest_expiration_a_week">"A week"</string>
     <string name="quest_expiration_two_weeks">"Two weeks"</string>
