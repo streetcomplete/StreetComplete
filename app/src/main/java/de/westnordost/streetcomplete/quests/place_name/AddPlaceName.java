@@ -8,7 +8,6 @@ import de.westnordost.streetcomplete.data.QuestImportance;
 import de.westnordost.streetcomplete.data.osm.OverpassQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
-import de.westnordost.streetcomplete.quests.AddPlaceNameForm;
 
 public class AddPlaceName extends OverpassQuestType
 {

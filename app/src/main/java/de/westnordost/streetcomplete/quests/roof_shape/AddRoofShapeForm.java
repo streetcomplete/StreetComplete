@@ -15,6 +15,7 @@ import java.util.List;
 
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
+import de.westnordost.streetcomplete.view.ImageSelectAdapter;
 
 public class AddRoofShapeForm extends AbstractQuestAnswerFragment
 {

@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.opening_hours;
+package de.westnordost.streetcomplete.view.dialogs;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -13,6 +13,7 @@ import java.util.Arrays;
 
 import de.westnordost.streetcomplete.R;
 
+/** A dialog in which you can select one value from a range of values */
 public class ValuePickerDialog extends AlertDialog implements DialogInterface.OnClickListener
 {
 	private final NumberPicker numberPicker;

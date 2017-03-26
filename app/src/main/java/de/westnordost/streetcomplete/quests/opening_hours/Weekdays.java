@@ -11,8 +11,6 @@ import de.westnordost.streetcomplete.R;
 
 public class Weekdays implements Comparable<Weekdays>
 {
-	private Resources resources;
-
 	// in ISO 8601 order
 	private static final String[] OSM_ABBR_WEEKDAYS = {"Mo","Tu","We","Th","Fr","Sa","Su","PH"};
 	private static final int PUBLIC_HOLIDAY = 7;

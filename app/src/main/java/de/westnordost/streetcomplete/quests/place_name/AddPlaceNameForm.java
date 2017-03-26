@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests;
+package de.westnordost.streetcomplete.quests.place_name;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -11,6 +11,7 @@ import android.widget.EditText;
 import java.util.List;
 
 import de.westnordost.streetcomplete.R;
+import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 
 public class AddPlaceNameForm extends AbstractQuestAnswerFragment
 {

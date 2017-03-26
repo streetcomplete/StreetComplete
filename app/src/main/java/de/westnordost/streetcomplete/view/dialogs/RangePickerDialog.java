@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.opening_hours;
+package de.westnordost.streetcomplete.view.dialogs;
 
 import android.app.AlertDialog;
 import android.content.Context;

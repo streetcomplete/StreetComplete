@@ -45,7 +45,8 @@ public class KryoSerializer implements Serializer
 			User.class,
 			CircularSection.class,
 			TimeRange.class,
-			Weekdays.class
+			Weekdays.class,
+			boolean[].class
 	};
 
 

@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.road_surface;
+package de.westnordost.streetcomplete.view;
 
 import android.content.Context;
 import android.support.v7.widget.GridLayoutManager;

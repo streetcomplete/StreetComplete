@@ -10,6 +10,7 @@ import java.util.Arrays;
 
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
+import de.westnordost.streetcomplete.view.GroupedImageSelectAdapter;
 
 public class AddRoadSurfaceForm extends AbstractQuestAnswerFragment
 {

@@ -22,6 +22,7 @@ import java.util.Map;
 
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.util.SerializedSavedState;
+import de.westnordost.streetcomplete.view.dialogs.RangePickerDialog;
 
 public class OpeningHoursPerMonth extends LinearLayout implements OpeningHoursFormRoot
 {

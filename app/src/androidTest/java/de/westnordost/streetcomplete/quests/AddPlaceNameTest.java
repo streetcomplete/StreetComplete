@@ -4,6 +4,7 @@ import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd;
 import de.westnordost.streetcomplete.quests.place_name.AddPlaceName;
+import de.westnordost.streetcomplete.quests.place_name.AddPlaceNameForm;
 
 public class AddPlaceNameTest extends AOsmElementQuestTypeTest
 {

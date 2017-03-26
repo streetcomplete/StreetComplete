@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.roof_shape;
+package de.westnordost.streetcomplete.view;
 
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;

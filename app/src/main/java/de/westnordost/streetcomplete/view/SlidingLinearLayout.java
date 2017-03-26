@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests;
+package de.westnordost.streetcomplete.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
