@@ -27,7 +27,7 @@ public class QuestTypes
 		new AddOpeningHours(),
 		new AddBuildingLevels(),
 		new AddRoofShape(),
-		new AddPlaceName(),
+		// new AddPlaceName(), doesn't make sense as long as the app cannot tell the generic name of elements
 		new AddRoadSurface(),
 	};
 
