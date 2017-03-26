@@ -46,14 +46,23 @@ public class AddBuildingLevelsForm extends AbstractQuestAnswerFragment
 	@Override protected void onClickOk()
 	{
 		Bundle answer = new Bundle();
-		// the form asks for "levels in total" because it is more intuitive to ask but OSM expects
-		// the building:levels to not include the roof
-		int totalBuildingLevels = Integer.parseInt(levelsInput.getText().toString());
-		int roofLevels = Integer.parseInt(roofLevelsInput.getText().toString());
-		int buildingLevels =  totalBuildingLevels - roofLevels; // without roof
+		String totalBuildingLevelsString = levelsInput.getText().toString();
+		String roofLevelsString  = roofLevelsInput.getText().toString();
 
-		answer.putInt(BUILDING_LEVELS, buildingLevels);
-		answer.putInt(ROOF_LEVELS, roofLevels);
+		if(!totalBuildingLevelsString.isEmpty())
+		{
+			// the form asks for "levels in total" because it is more intuitive to ask but OSM expects
+			// the building:levels to not include the roof
+			int totalBuildingLevels = Integer.parseInt(totalBuildingLevelsString);
+			int roofLevels = !roofLevelsString.isEmpty() ? Integer.parseInt(roofLevelsString) : 0;
+			int buildingLevels = totalBuildingLevels - roofLevels; // without roof
+
+			answer.putInt(BUILDING_LEVELS, buildingLevels);
+			if(!roofLevelsString.isEmpty())
+			{
+				answer.putInt(ROOF_LEVELS, roofLevels);
+			}
+		}
 		applyAnswer(answer);
 	}
 

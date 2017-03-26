@@ -35,7 +35,13 @@ public class AddBuildingLevels extends OverpassQuestType
 	public Integer applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
 	{
 		changes.add("building:levels", ""+answer.getInt(AddBuildingLevelsForm.BUILDING_LEVELS));
-		changes.addOrModify("roof:levels", ""+answer.getInt(AddBuildingLevelsForm.ROOF_LEVELS));
+
+		// only set the roof levels if the user supplied that in the form
+		int roofLevels = answer.getInt(AddBuildingLevelsForm.ROOF_LEVELS,-1);
+		if(roofLevels != -1)
+		{
+			changes.addOrModify("roof:levels", "" + roofLevels);
+		}
 
 		return R.string.quest_buildingLevels_commitMessage;
 	}
