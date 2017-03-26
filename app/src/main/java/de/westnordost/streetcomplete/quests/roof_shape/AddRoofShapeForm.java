@@ -85,9 +85,13 @@ public class AddRoofShapeForm extends AbstractQuestAnswerFragment
 
 	@Override protected void onClickOk()
 	{
-		String osmValue = roofShapes[imageSelector.getSelectedIndex()].osmValue;
 		Bundle answer = new Bundle();
-		answer.putString(ROOF_SHAPE, osmValue);
+		Integer selectedIndex = imageSelector.getSelectedIndex();
+		if(selectedIndex != null)
+		{
+			String osmValue = roofShapes[selectedIndex].osmValue;
+			answer.putString(ROOF_SHAPE, osmValue);
+		}
 		applyAnswer(answer);
 	}
 
