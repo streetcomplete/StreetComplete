@@ -111,7 +111,7 @@
 <string name="quest_buildingLevels_title">"Wie viele Stockwerke hat dieses Gebäude?"</string>
 <string name="quest_buildingLevels_title_buildingPart">"Wie viele Stockwerke hat dieses Gebäudeteil?"</string>
 <string name="quest_buildingLevels_levelsLabel">"Stockwerke insgesamt"</string>
-<string name="quest_buildingLevels_roofLevelsLabel">"davon Dachgeschosse (0 bei keinem)"</string>
+<string name="quest_buildingLevels_roofLevelsLabel">"davon Dachgeschosse"</string>
 <string name="quest_roofShape_title">"Welche grundlegende Dachform hat dieses Gebäude?"</string>
 <string name="quest_roofShape_select_one">"Wähle eine aus:"</string>
 <string name="quest_roofShape_show_more">"Weitere anzeigen…"</string>
@@ -219,4 +219,5 @@ Italienisch - Maurizio Napolitano&lt;br/&gt;"</string>
 Diese App findet unvollständige und erweiterbare Daten in Deiner Nähe und zeigt diese als Aufgaben auf einer Karte an. Jede dieser Aufgaben kann vor Ort durch Beantwortung einer einfachen Frage beantwortet werden.
 
 Die von Dir eingegebenen Informationen werden dann direkt in Deinem Namen zur OpenStreetMap hinzugefügt, also ohne einen weiteren Editor benutzen zu müssen."</string>
+    <string name="quest_buildingLevels_negativeBuildingLevels">\"Ups! Du hast mehr Dachgeschosse als Stockwerke insgesamt angegeben!\"</string>
 </resources>

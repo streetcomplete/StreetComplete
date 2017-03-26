@@ -44,7 +44,6 @@ così come scritto sul cartello stradale, le abbreviazioni vengono espanse:"</st
 <string name="quest_streetName_nameWithAbbreviations_confirmation_title">"Abbreviazione del nome?"</string>
 <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Se il nome può essere scritto senza un'abbreviazione, allora dovrebbe essere ampliato. Molte abbreviazioni comuni sono espanse automaticamente durante la digitazione, ma probabilmente non tutte."</string>
 <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Nessuna abbreviazione"</string>
-<string name="quest_openingHours_unknownName_title">"Quali sono gli orari di apertura di questo posto?"</string>
 <string name="quest_openingHours_name_title">"Quali sono gli orari di apertura di %s?"</string>
 <string name="quest_openingHours_start_time">"orario di apertura"</string>
 <string name="quest_openingHours_end_time">"orario di chiusura"</string>

@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
@@ -49,7 +50,11 @@ public class AddBuildingLevelsForm extends AbstractQuestAnswerFragment
 		String totalBuildingLevelsString = levelsInput.getText().toString();
 		String roofLevelsString  = roofLevelsInput.getText().toString();
 
-		if(!totalBuildingLevelsString.isEmpty())
+		if (totalBuildingLevelsString.isEmpty())
+		{
+			Toast.makeText(getActivity(), R.string.no_changes, Toast.LENGTH_SHORT).show();
+		}
+		else
 		{
 			// the form asks for "levels in total" because it is more intuitive to ask but OSM expects
 			// the building:levels to not include the roof
@@ -57,13 +62,19 @@ public class AddBuildingLevelsForm extends AbstractQuestAnswerFragment
 			int roofLevels = !roofLevelsString.isEmpty() ? Integer.parseInt(roofLevelsString) : 0;
 			int buildingLevels = totalBuildingLevels - roofLevels; // without roof
 
+			if(buildingLevels < 0)
+			{
+				Toast.makeText(getActivity(), R.string.quest_buildingLevels_negativeBuildingLevels, Toast.LENGTH_LONG).show();
+				return;
+			}
+
 			answer.putInt(BUILDING_LEVELS, buildingLevels);
 			if(!roofLevelsString.isEmpty())
 			{
 				answer.putInt(ROOF_LEVELS, roofLevels);
 			}
+			applyAnswer(answer);
 		}
-		applyAnswer(answer);
 	}
 
 	@Override public boolean hasChanges()

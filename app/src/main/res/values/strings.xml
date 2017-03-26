@@ -219,4 +219,5 @@ Italian - Maurizio Napolitano&lt;br/&gt;"</string>
 This app finds incomplete and extendable data in your vicinity and displays it on a map as markers. Each of those is solvable by answering a simple question to complete the info on site.
 
 The info you enter is then directly added to the OpenStreetMap in your name, without the need to use another editor."</string>
+<string name="quest_buildingLevels_negativeBuildingLevels">"Oops! You specified more roof levels than levels in total!"</string>
 </resources>
