@@ -23,6 +23,7 @@ import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.data.download.MobileDataAutoDownloadStrategy;
 import de.westnordost.streetcomplete.data.download.QuestAutoDownloadStrategy;
 import de.westnordost.streetcomplete.data.download.WifiAutoDownloadStrategy;
+import de.westnordost.streetcomplete.util.SphericalEarthMath;
 
 /** Automatically downloads and uploads new quests around the user's location and uploads quests.
  *
@@ -104,7 +105,13 @@ public class QuestAutoSyncer implements LocationListener, LostApiClient.Connecti
 
 	@Override public void onLocationChanged(Location location)
 	{
-		this.pos = new OsmLatLon(location.getLatitude(), location.getLongitude());
+		LatLon pos = new OsmLatLon(location.getLatitude(), location.getLongitude());
+		// TODO remove when https://github.com/mapzen/lost/issues/142 is fixed
+		if(this.pos != null)
+		{
+			if(SphericalEarthMath.distance(pos, this.pos) < 400) return;
+		}
+		this.pos = pos;
 		triggerAutoDownload();
 	}
 
