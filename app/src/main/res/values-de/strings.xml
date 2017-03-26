@@ -160,7 +160,7 @@ Italienisch - Maurizio Napolitano&lt;br/&gt;"</string>
 <string name="autosync_on">"An"</string>
 <string name="autosync_only_on_wifi">"Nur im Wifi"</string>
 <string name="autosync_off">"Aus"</string>
-<string name="quest_streetSurface_title">"Welche Oberfläche hat diese Straße?"</string>
+<string name="quest_streetSurface_title">"Welche Oberfläche hat dieses Stück Straße?"</string>
 <string name="quest_surface_description">"Wähle die passendste:"</string>
 <string name="quest_surface_value_paved">"Befestigt (allgemein)"</string>
 <string name="quest_surface_value_unpaved">"Unbefestigt (allgemein)"</string>

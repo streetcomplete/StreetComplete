@@ -163,7 +163,7 @@ Italien - Maurizio Napolitano&lt;br/&gt;"</string>
 <string name="autosync_on">"Activé"</string>
 <string name="autosync_only_on_wifi">"Seulement sur Wifi"</string>
 <string name="autosync_off">"Désactivé"</string>
-<string name="quest_streetSurface_title">"Quelle surface la rue a-t-elle?"</string>
+<string name="quest_streetSurface_title">"Quelle surface la rue à-t-elle?"</string>
 <string name="quest_surface_description">"Sélectionnez le modèle spécifique qui convient le plus:"</string>
 <string name="quest_surface_value_paved">"Pavé (générique)"</string>
 <string name="quest_surface_value_unpaved">"Non pavé (générique)"</string>

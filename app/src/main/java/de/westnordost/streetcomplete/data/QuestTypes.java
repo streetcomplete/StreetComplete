@@ -11,6 +11,7 @@ import de.westnordost.streetcomplete.quests.building_levels.AddBuildingLevels;
 import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHours;
 import de.westnordost.streetcomplete.quests.place_name.AddPlaceName;
 import de.westnordost.streetcomplete.quests.road_name.AddRoadName;
+import de.westnordost.streetcomplete.quests.road_surface.AddRoadSurface;
 import de.westnordost.streetcomplete.quests.roof_shape.AddRoofShape;
 
 /** Every osm quest needs to be registered here.
@@ -27,6 +28,7 @@ public class QuestTypes
 		new AddBuildingLevels(),
 		new AddRoofShape(),
 		new AddPlaceName(),
+		new AddRoadSurface(),
 	};
 
 	private final List<QuestType> types;

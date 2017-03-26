@@ -160,7 +160,7 @@ Italiano - Maurizio Napolitano&lt;br/&gt;"</string>
 <string name="autosync_on">"Attivo"</string>
 <string name="autosync_only_on_wifi">"Solo con WiFi"</string>
 <string name="autosync_off">"Spento"</string>
-<string name="quest_streetSurface_title">"Che tipo di pavimento ha questa strada? "</string>
+<string name="quest_streetSurface_title">"Che tipo di pavimento ha questa tratto di strada? "</string>
 <string name="quest_surface_description">"Seleziona quello che lo specifica meglio:"</string>
 <string name="quest_surface_value_paved">"Pavimentato (generico)"</string>
 <string name="quest_surface_value_unpaved">"Non pavimentato (generico)"</string>
