@@ -157,6 +157,10 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 
 	private void updateCloseButtonVisibility()
 	{
+		// this is called asynchronously. It may happen that the activity is already gone when this
+		// method is finally called
+		if(getActivity() == null) return;
+
 		int toolbarHeight = getActivity().findViewById(R.id.toolbar).getHeight();
 		boolean coversToolbar = view.getTop() < toolbarHeight;
 		buttonClose.setVisibility(coversToolbar ? View.VISIBLE : View.GONE);
