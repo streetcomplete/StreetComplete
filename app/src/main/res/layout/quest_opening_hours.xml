@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
 
-    <FrameLayout
-        android:id="@+id/opening_hours_container"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/opening_hours_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
+    </android.support.v7.widget.RecyclerView>
 
-    </FrameLayout>
-</merge>
+    <Button
+        android:id="@+id/btn_add"
+        android:text="@string/quest_openingHours_add_times"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

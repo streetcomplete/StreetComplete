@@ -22,6 +22,8 @@ import de.westnordost.osmapi.map.data.OsmLatLon;
 import de.westnordost.osmapi.map.data.OsmRelationMember;
 import de.westnordost.osmapi.notes.NoteComment;
 import de.westnordost.osmapi.user.User;
+import de.westnordost.streetcomplete.quests.opening_hours.OpeningMonths;
+import de.westnordost.streetcomplete.quests.opening_hours.OpeningWeekdays;
 import de.westnordost.streetcomplete.quests.opening_hours.TimeRange;
 import de.westnordost.streetcomplete.quests.opening_hours.Weekdays;
 
@@ -43,10 +45,13 @@ public class KryoSerializer implements Serializer
 			NoteComment.Action.class,
 			Date.class,
 			User.class,
+
 			CircularSection.class,
 			TimeRange.class,
 			Weekdays.class,
-			boolean[].class
+			boolean[].class,
+			OpeningMonths.class,
+			OpeningWeekdays.class
 	};
 
 

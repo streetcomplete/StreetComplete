@@ -3,60 +3,115 @@ package de.westnordost.streetcomplete.quests.opening_hours;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.PopupMenu;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
+import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.R;
+import de.westnordost.streetcomplete.data.meta.CurrentCountry;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 import de.westnordost.osmapi.map.data.OsmElement;
+import de.westnordost.streetcomplete.util.Serializer;
+
+import static android.view.Menu.NONE;
 
 public class AddOpeningHoursForm extends AbstractQuestAnswerFragment
 {
 	public static final String OPENING_HOURS = "opening_hours";
 
-	private static final String
-			FORM_ROOT_IS_MONTHS = "form_root",
-			FORM_DATA = "form_data";
+	private static final String	OPENING_HOURS_DATA = "oh_data",
+								IS_ADD_MONTHS_MODE = "oh_add_months";
 
-	private ViewGroup openingHoursContainer;
+	private boolean isAlsoAddingMonths;
+	private AddOpeningHoursAdapter openingHoursAdapter;
+
+	@Inject Serializer serializer;
+	@Inject CurrentCountry currentCountry;
 
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState)
 	{
 		View view = super.onCreateView(inflater, container, savedInstanceState);
 
+		Injector.instance.getApplicationComponent().inject(this);
+
 		setTitle();
 
 		View contentView = setContentView(R.layout.quest_opening_hours);
 
-		openingHoursContainer = (ViewGroup) contentView.findViewById(R.id.opening_hours_container);
-
-		OpeningHoursFormRoot root;
-		if(savedInstanceState != null && savedInstanceState.getBoolean(FORM_ROOT_IS_MONTHS))
+		ArrayList<OpeningMonths> data;
+		if(savedInstanceState != null)
 		{
-			openingHoursContainer.addView(new OpeningHoursPerMonth(getActivity()));
+			data = serializer.toObject(savedInstanceState.getByteArray(OPENING_HOURS_DATA),ArrayList.class);
+			isAlsoAddingMonths = savedInstanceState.getBoolean(IS_ADD_MONTHS_MODE);
 		}
 		else
 		{
-			openingHoursContainer.addView(new OpeningHoursPerWeek(getActivity()));
+			data = new ArrayList<>();
+			data.add(new OpeningMonths());
+			isAlsoAddingMonths = false;
 		}
 
-		if(savedInstanceState != null)
+		openingHoursAdapter = new AddOpeningHoursAdapter(data, getActivity(), currentCountry);
+		openingHoursAdapter.setDisplayMonths(isAlsoAddingMonths);
+		RecyclerView openingHoursList = (RecyclerView) contentView.findViewById(R.id.opening_hours_list);
+		openingHoursList.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+		openingHoursList.setAdapter(openingHoursAdapter);
+		openingHoursList.setNestedScrollingEnabled(false);
+
+		Button addTimes = (Button) contentView.findViewById(R.id.btn_add);
+		addTimes.setOnClickListener(new View.OnClickListener()
 		{
-			getFormRoot().onRestoreInstanceState(savedInstanceState.getParcelable(FORM_DATA));
-		}
+			@Override public void onClick(View v)
+			{
+				onClickAddButton(v);
+			}
+		});
 
 		return view;
 	}
 
-	@Override public void onSaveInstanceState(Bundle outState) {
+	private void onClickAddButton(View v)
+	{
+		if(!isAlsoAddingMonths)
+		{
+			openingHoursAdapter.addNewWeekdays();
+		}
+		else
+		{
+			PopupMenu m = new PopupMenu(getActivity(), v);
+			m.getMenu().add(NONE,0,NONE,R.string.quest_openingHours_add_weekdays);
+			m.getMenu().add(NONE,1,NONE,R.string.quest_openingHours_add_months);
+			m.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener()
+			{
+				@Override public boolean onMenuItemClick(MenuItem item)
+				{
+					if(0 == item.getItemId()) openingHoursAdapter.addNewWeekdays();
+					else if(1 == item.getItemId()) openingHoursAdapter.addNewMonths();
+					return true;
+				}
+			});
+			m.show();
+		}
+	}
+
+	@Override public void onSaveInstanceState(Bundle outState)
+	{
 		super.onSaveInstanceState(outState);
-		outState.putBoolean(FORM_ROOT_IS_MONTHS, getFormRoot() instanceof OpeningHoursPerMonth);
-		outState.putParcelable(FORM_DATA, getFormRoot().onSaveInstanceState());
+		outState.putByteArray(OPENING_HOURS_DATA, serializer.toBytes(openingHoursAdapter.getData()));
+		outState.putBoolean(IS_ADD_MONTHS_MODE, isAlsoAddingMonths);
 	}
 
 	private void setTitle()
@@ -90,21 +145,8 @@ public class AddOpeningHoursForm extends AbstractQuestAnswerFragment
 		}
 		if(itemResourceId == R.string.quest_openingHours_answer_seasonal_opening_hours)
 		{
-			OpeningHoursPerMonth formRoot;
-			// already replaced...
-			if (getFormRoot() instanceof OpeningHoursPerMonth)
-			{
-				formRoot = (OpeningHoursPerMonth) getFormRoot();
-			}
-			else
-			{
-				openingHoursContainer.removeAllViews();
-				formRoot = new OpeningHoursPerMonth(getActivity());
-				openingHoursContainer.addView(formRoot);
-			}
-
-			formRoot.add();
-
+			isAlsoAddingMonths = true;
+			openingHoursAdapter.changeToMonthsMode();
 			return true;
 		}
 		if(itemResourceId == R.string.quest_openingHours_answer_no_regular_opening_hours)
@@ -116,15 +158,9 @@ public class AddOpeningHoursForm extends AbstractQuestAnswerFragment
 		return false;
 	}
 
-	private OpeningHoursFormRoot getFormRoot()
-	{
-		return (OpeningHoursFormRoot) openingHoursContainer.getChildAt(0);
-	}
-
 	@Override protected void onClickOk()
 	{
-		String openingHours = getFormRoot().getOpeningHoursString();
-		applyOpeningHours(openingHours);
+		applyOpeningHours(openingHoursAdapter.toString());
 	}
 
 	private void showInputCommentDialog()
@@ -176,9 +212,7 @@ public class AddOpeningHoursForm extends AbstractQuestAnswerFragment
 
 	@Override public boolean hasChanges()
 	{
-		String openingHours = getFormRoot().getOpeningHoursString();
-
-		return !openingHours.isEmpty();
+		return !openingHoursAdapter.toString().isEmpty();
 	}
 
 }

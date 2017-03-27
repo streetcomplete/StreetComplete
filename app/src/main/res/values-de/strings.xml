@@ -220,4 +220,5 @@ Diese App findet unvollständige und erweiterbare Daten in Deiner Nähe und zeig
 
 Die von Dir eingegebenen Informationen werden dann direkt in Deinem Namen zur OpenStreetMap hinzugefügt, also ohne einen weiteren Editor benutzen zu müssen."</string>
     <string name="quest_buildingLevels_negativeBuildingLevels">\"Ups! Du hast mehr Dachgeschosse als Stockwerke insgesamt angegeben!\"</string>
+    <string name="quest_openingHours_add_times">➕ Öffnungszeiten</string>
 </resources>
