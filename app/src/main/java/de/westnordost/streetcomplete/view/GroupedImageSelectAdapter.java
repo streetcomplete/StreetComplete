@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.view;
 
-import android.content.Context;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -20,19 +19,17 @@ public class GroupedImageSelectAdapter extends RecyclerView.Adapter<GroupedImage
 	private final static int GROUP = 0;
 	private final static int CELL = 1;
 
-	private final Context context;
 	private final ArrayList<Item> data;
 	private Item selectedItem;
 
-	public GroupedImageSelectAdapter(Context context, List<Item> data)
+	public GroupedImageSelectAdapter(List<Item> data)
 	{
-		this.context = context;
 		this.data = new ArrayList<>(data);
 	}
 
 	@Override public void onAttachedToRecyclerView(RecyclerView recyclerView)
 	{
-		GridLayoutManager glm = new GridLayoutManager(context, 3);
+		GridLayoutManager glm = new GridLayoutManager(recyclerView.getContext(), 3);
 		glm.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
 			@Override
 			public int getSpanSize(int position) {
