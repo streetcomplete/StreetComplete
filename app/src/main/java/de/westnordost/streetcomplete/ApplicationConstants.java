@@ -4,7 +4,7 @@ public class ApplicationConstants
 {
 	public final static String
 		NAME = "StreetComplete",
-		VERSION = "0.4",
+		VERSION = "0.5",
 		USER_AGENT = NAME + " " + VERSION,
 		QUESTTYPE_TAG_KEY = NAME + ":quest_type";
 
