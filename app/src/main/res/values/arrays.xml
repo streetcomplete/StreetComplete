@@ -7,7 +7,7 @@
         <item>@string/quest_expiration_one_month</item>
     </string-array>
 
-    <string-array name="pref_entryvalues_quest_expiration_times" >
+    <string-array name="pref_entryvalues_quest_expiration_times" translatable="false">
         <item>1440</item>
         <item>10080</item>
         <item>20160</item>
@@ -20,7 +20,7 @@
         <item>@string/autosync_off</item>
     </string-array>
 
-    <string-array name="pref_entryvalues_autosync" >
+    <string-array name="pref_entryvalues_autosync" translatable="false">
         <item>ON</item>
         <item>WIFI</item>
         <item>OFF</item>
