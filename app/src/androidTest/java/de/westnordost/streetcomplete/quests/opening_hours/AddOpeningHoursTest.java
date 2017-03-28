@@ -1,8 +1,9 @@
-package de.westnordost.streetcomplete.quests;
+package de.westnordost.streetcomplete.quests.opening_hours;
 
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd;
+import de.westnordost.streetcomplete.quests.AOsmElementQuestTypeTest;
 import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHours;
 import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHoursForm;
 

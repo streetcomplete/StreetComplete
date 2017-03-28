@@ -27,7 +27,7 @@ public class OpeningMonths
 
 	public String getLocalizedMonthsString()
 	{
-		return getMonthsString(DateFormatSymbols.getInstance().getMonths(), "–", ": ");
+		return getMonthsString(DateFormatSymbols.getInstance().getMonths(), "–") + ": ";
 	}
 
 	public String toString()
@@ -36,11 +36,11 @@ public class OpeningMonths
 		String monthsString = "";
 		if(!isWholeYear())
 		{
-			monthsString = getMonthsString(DateFormatSymbols.getInstance(Locale.US).getShortMonths(), "-", ": ");
+			monthsString = getMonthsString(DateFormatSymbols.getInstance(Locale.US).getShortMonths(), "-") + ": ";
 		}
 
 		StringBuilder result = new StringBuilder();
-		boolean firstDays = true, firstTime = true;
+		boolean firstDays = true;
 
 		Weekdays lastWeekdays = null;
 		for (OpeningWeekdays ow : weekdaysList)
@@ -48,24 +48,17 @@ public class OpeningMonths
 			boolean isSameWeekdays = lastWeekdays != null && lastWeekdays.equals(ow.weekdays);
 			if(!isSameWeekdays)
 			{
-				firstTime = true;
 				if(!firstDays)	result.append("; ");
 				else		firstDays = false;
 
-				// months string is empty if whole year selected
-				if(!monthsString.isEmpty())
-				{
-					result.append(monthsString);
-					result.append(": ");
-				}
+				result.append(monthsString);
 				result.append(ow.weekdays.toString());
 				result.append(" ");
 				result.append(ow.timeRange.toStringUsing("-"));
 			}
 			else
 			{
-				if(!firstTime)	result.append(",");
-				else			firstTime = false;
+				result.append(",");
 				result.append(ow.timeRange.toStringUsing("-"));
 			}
 			lastWeekdays = ow.weekdays;
@@ -80,7 +73,7 @@ public class OpeningMonths
 		return aYear.complemented(Collections.singletonList(months)).isEmpty();
 	}
 
-	private String getMonthsString(String[] names, String range, String colon)
+	private String getMonthsString(String[] names, String range)
 	{
 		StringBuilder sb = new StringBuilder();
 		sb.append(names[months.getStart()]);
@@ -89,7 +82,6 @@ public class OpeningMonths
 			sb.append(range);
 			sb.append(names[months.getEnd()]);
 		}
-		sb.append(colon);
 		return sb.toString();
 	}
 }

@@ -9,7 +9,7 @@ import java.util.List;
 
 import de.westnordost.streetcomplete.R;
 
-public class Weekdays implements Comparable<Weekdays>
+public class Weekdays
 {
 	// in ISO 8601 order
 	private static final String[] OSM_ABBR_WEEKDAYS = {"Mo","Tu","We","Th","Fr","Sa","Su","PH"};
@@ -88,7 +88,15 @@ public class Weekdays implements Comparable<Weekdays>
 			sb.append(names[section.getStart()]);
 			if (section.getStart() != section.getEnd())
 			{
-				sb.append(range).append(names[section.getEnd()]);
+				if(WEEKDAY_NUMBER_SYSTEM.getSize(section) > 2)
+				{
+					sb.append(range);
+				}
+				else
+				{
+					sb.append(seperator);
+				}
+				sb.append(names[section.getEnd()]);
 			}
 		}
 
@@ -131,16 +139,6 @@ public class Weekdays implements Comparable<Weekdays>
 		}
 
 		return WEEKDAY_NUMBER_SYSTEM.merged(result);
-	}
-
-	@Override public int compareTo(Weekdays o)
-	{
-		for(int i=0; i<data.length; ++i)
-		{
-			if(data[i] && !o.data[i]) return -1;
-			if(!data[i] && o.data[i]) return 1;
-		}
-		return 0;
 	}
 
 	@Override public boolean equals(Object o)

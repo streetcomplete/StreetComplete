@@ -19,6 +19,16 @@ public class NumberSystemTest extends TestCase
 		catch(Exception e) {}
 	}
 
+	public void testGetSize()
+	{
+		NumberSystem s = new NumberSystem(5,10);
+		assertEquals(5,s.getSize(new CircularSection(2,9)));
+		assertEquals(1,s.getSize(new CircularSection(5,5)));
+		assertEquals(2,s.getSize(new CircularSection(5,6)));
+		assertEquals(6,s.getSize(new CircularSection(6,5)));
+		assertEquals(3,s.getSize(new CircularSection(9,5)));
+	}
+
 	public void testComplementNone()
 	{
 		NumberSystem s = new NumberSystem(0,10);

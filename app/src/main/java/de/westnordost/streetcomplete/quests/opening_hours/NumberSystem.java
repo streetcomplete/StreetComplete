@@ -17,6 +17,14 @@ public class NumberSystem
 		this.max = max;
 	}
 
+	public int getSize(CircularSection section)
+	{
+		int s = Math.max(min,section.getStart());
+		int e = Math.min(section.getEnd(), max);
+		if(s <= e) return e-s+1;
+		return max-s+1 + e-min+1;
+	}
+
 	/** @return the complemented of the given ranges */
 	public List<CircularSection> complemented(Collection<CircularSection> ranges)
 	{
