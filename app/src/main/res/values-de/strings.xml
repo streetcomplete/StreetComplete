@@ -35,10 +35,7 @@
 <string name="quest_leave_new_note_no">"Nein, verstecken"</string>
 <string name="quest_streetName_title">"Wie heißt diese Straße?"</string>
 <string name="quest_streetName_description">"wie es auf dem Straßenschild steht, Abkürzungen werden ausgeschrieben:"</string>
-<string name="quest_name_answer_noName">"Hat keinen Namen"</string>
-<string name="quest_name_answer_noName_confirmation_title">"Wirklich kein Name?"</string>
 <string name="quest_streetName_answer_noName_confirmation_description">"Manchmal steht nur an einem Ende der Straße ein Straßenschild. Außerdem mag es für Seitenstraßen, die zu einer größeren Straße gehören, keine extra Straßenschilder geben. Normalerweise hat jede Straße, an der Häuser stehen, einen Namen."</string>
-<string name="quest_name_noName_confirmation_positive">"Ja, kein Name"</string>
 <string name="quest_streetName_nameWithAbbreviations_confirmation_title">"Name abgekürzt?"</string>
 <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Abkürzungen in Straßennamen sollten immer ausgeschrieben werden. Für übliche Abkürzungen passiert das automatisch beim Schreiben, aber eventuell nicht für alle."</string>
 <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Keine Abkürzung"</string>
@@ -151,8 +148,9 @@ Um die Karte darzustellen, werden Kartendaten vom &lt;a href=\"https://mapzen.co
 &lt;p&gt;&lt;b&gt;Übersetzungen&lt;/b&gt;&lt;/p&gt;
 Englisch - Tobias Zwick&lt;br/&gt;
 Deutsch - Tobias Zwick&lt;br/&gt;
-Französisch - Jamie Nadeau&lt;br/&gt;
-Italienisch - Maurizio Napolitano&lt;br/&gt;"</string>
+Französisch - Jamie Nadeau, Anthony C.&lt;br/&gt;
+Italienisch - Maurizio Napolitano&lt;br/&gt;
+Katalanisch - Joan Montané&lt;br/&gt;"</string>
 <string name="quest_expiration_one_day">"Ein Tag"</string>
 <string name="quest_expiration_a_week">"Eine Woche"</string>
 <string name="quest_expiration_two_weeks">"Zwei Wochen"</string>
@@ -221,4 +219,7 @@ Diese App findet unvollständige und erweiterbare Daten in Deiner Nähe und zeig
 Die von Dir eingegebenen Informationen werden dann direkt in Deinem Namen zur OpenStreetMap hinzugefügt, also ohne einen weiteren Editor benutzen zu müssen."</string>
     <string name="quest_buildingLevels_negativeBuildingLevels">\"Ups! Du hast mehr Dachgeschosse als Stockwerke insgesamt angegeben!\"</string>
     <string name="quest_openingHours_add_times">➕ Öffnungszeiten</string>
+<string name="quest_name_answer_noName">"Hat keinen Namen"</string>
+<string name="quest_name_answer_noName_confirmation_title">"Wirklich kein Name?"</string>
+<string name="quest_name_noName_confirmation_positive">"Ja, kein Name"</string>
 </resources>

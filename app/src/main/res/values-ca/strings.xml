@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string name="action_settings">"Configuració"</string>
+<string name="oauth_communication_error">"No es pot accedir al servidor d'autoritzacions"</string>
+<string name="loading">"S'està carregant"</string>
+<string name="retry">"Reintenta"</string>
+<string name="oauth_cancelled">"S'ha cancel·lat l'autoritzacio"</string>
+<string name="oauth_failed_permissions">"L'autorització ha fallat: es llisten tots els permisos que cal autoritzar"</string>
+<string name="title_activity_settings">"Configuració"</string>
+<string name="pref_category_communication">"Comunicació"</string>
+<string name="pref_category_display">"Mostra"</string>
+<string name="pref_title_authorization">"Autoritza accés a OSM"</string>
+<string name="pref_title_authorized_summary">"S'ha autoritzat correctament el teu compte"</string>
+<string name="pref_title_not_authorized_summary">"Encara no estàs autoritzat"</string>
+<string name="pref_tilecache_size_summary">"%d MB"</string>
+<string name="pref_tilecache_size_message">"%d MB"</string>
+<string name="pref_title_quest_expiration_time">"Missions en memòria cau"</string>
+<string name="pref_summary_quest_expiration">"durant %s abans de baixer-ne de noves"</string>
+<string name="pref_title_show_notes_not_phrased_as_questions">"Mostra totes les notes"</string>
+<string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Mostra totes les notes"</string>
+<string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Ignora les notes que no són preguntes"</string>
+<string name="pref_title_map_cache">"Mida del mapa en memòria cau"</string>
+<string name="map_btn_gps_tracking">"Segueix-me"</string>
+<string name="map_attribution_mapzen">"Funciona amb Mapzen"</string>
+<string name="map_attribution_osm">"© Col·laboradors de l'OpenStreetMap"</string>
+<string name="quest_generic_otherAnswers">"Altres respostes..."</string>
+<string name="quest_generic_answer_notApplicable">"No ho sé"</string>
+<string name="quest_generic_confirmation_title">"N'estàs segur?"</string>
+<string name="quest_generic_confirmation_yes">"Sí, n'estic segur"</string>
+<string name="quest_generic_confirmation_no">"Ho comprovaré"</string>
+<string name="quest_generic_error_field_empty">"Has deixat aquest camp en blanc"</string>
+<string name="quest_leave_new_note_title">"Vols deixar una nota?"</string>
+<string name="quest_leave_new_note_description">"Pots deixar una nota pública en aquesta ubicació que altres mapadors podran comentar i eventualment resoldre:"</string>
+<string name="quest_leave_new_note_yes">"D'acord"</string>
+<string name="quest_leave_new_note_no">"No, només amaga-la"</string>
+<string name="quest_streetName_title">"Quin nom té aquesta via?"</string>
+<string name="quest_streetName_description">"com està escrita en el senyal del carrer, les abreviatures s'expandeixen:"</string>
+<string name="quest_streetName_answer_noName_confirmation_description">"De vegades, el senyal només es troba en un extrem del carrer. També, tingues present que potser no hi ha senyals addicionals per a costats de carrer que pertanyen a altres carrers més grans. Habitualment, qualsevol carrer amb cases té un nom."</string>
+<string name="quest_streetName_nameWithAbbreviations_confirmation_title">"Hi ha abreviatures en el nom?"</string>
+<string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Si el nom es pot escriure sense cap abreviatures, aleshores s'expandirà. Moltes abreviatures comuns s'expandeixen automàticament en escriure, però potser no totes."</string>
+<string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Sense abreviatures"</string>
+<string name="quest_openingHours_name_title">"Quin és l'horari d'obertura de: %s?"</string>
+<string name="quest_openingHours_start_time">"hora d'obertura"</string>
+<string name="quest_openingHours_end_time">"hora de tancament"</string>
+<string name="quest_openingHours_add_months">"Afegeix mesos"</string>
+<string name="quest_openingHours_add_hours">"Afegeix hores"</string>
+<string name="quest_openingHours_add_weekdays">"Afegeix dies"</string>
+<string name="quest_openingHours_chooseMonthsTitle">"Selecciona mesos"</string>
+<string name="quest_openingHours_chooseWeekdaysTitle">"Selecciona dies de la setmana"</string>
+<string name="quest_openingHours_24_7_confirmation">"En altres paraules, és obert en qualsevol hora, en qualsevol dia?"</string>
+<string name="quest_noteDiscussion_title">"Pots contribuir en aquesta nota?"</string>
+<string name="quest_noteDiscussion_no">"No, amaga-la"</string>
+<string name="quest_noteDiscussion_create">"creada per %1$s (%2$s)"</string>
+<string name="quest_noteDiscussion_comment">"%1$s (%2$s)"</string>
+<string name="quest_noteDiscussion_closed">"%1$s ha tancat la nota (%2$s) "</string>
+<string name="quest_noteDiscussion_reopen">"%1$s ha reobert la nota (%2$s) "</string>
+<string name="quest_noteDiscussion_anonymous">"Anònim"</string>
+<string name="quest_noteDiscussion_comments_title">"Respostes"</string>
+<string name="confirmation_discard_title">"Vols descartar l'entrada?"</string>
+<string name="confirmation_discard_positive">"Descarta"</string>
+<string name="confirmation_discard_negative">"Cancel·la"</string>
+<string name="action_download">"Cerca missions aquí"</string>
+<string name="action_upload">"Puja respostes"</string>
+<string name="no_changes">"Has deixat el formulari buit"</string>
+<string name="close">"tanca"</string>
+<string name="download_error">"S'ha produït un error en cercar missions. Revisa el registre"</string>
+<string name="upload_error">"S'ha produït un error en pujar les respostes. Revisa el registre"</string>
+<string name="cannot_find_bbox">"No es pot cercar aquí. Prova d'apropar-t'hi més"</string>
+<string name="download_area_too_big">"Apropa-t'hi més"</string>
+<string name="confirmation_cancel_prev_download_title">"Vols cancel·lar la cerca actual i fer-ho aquí?"</string>
+<string name="notification_downloading">"S'estan cercant missions"</string>
+<string name="now_downloading_toast">"S'estan cercant més missions"</string>
+<string name="turn_on_location_request">"La geolocalització està desactivada. Vols anar a la configuració per a activar-la ara?"</string>
+<string name="no_location_permission_warning">"Cal la teva ubicació per a cercar missions prop teu."</string>
+<string name="action_about">"Quant a l'StreetComplete"</string>
+<string name="about_title_version">"Versió"</string>
+<string name="about_title_authors">"Autors"</string>
+<string name="about_summary_authors">"© 2016 Tobias Zwick i col·laboradors"</string>
+<string name="about_title_repository">"Dipòsit font"</string>
+<string name="about_summary_repository">"a GitHub"</string>
+<string name="about_title_report_error">"Informa d'un error"</string>
+<string name="about_title_feedback">"Fes un comentari"</string>
+<string name="about_title_license">"Llicència"</string>
+<string name="about_summary_license">"Llicència pública general GNU"</string>
+<string name="offline">"Estàs fora de línia"</string>
+<string name="confirmation_authorize_now">"Has d'autoritzar el teu compte d'usuari OSM per a poder aplicar qualsevol de les respostes. Vols autoritzar-lo ara?"</string>
+<string name="not_authorized">"Sense autoritzar"</string>
+<string name="version_banned_message">"Aquesta versió de l'StreetComplet està bandejada per a pujar qualsevol resposta! Actualitza la versió!"</string>
+<string name="no_gps_no_quests">"Per a cercar automàticament missions prop teu, activa la geolocalització"</string>
+<string name="nothing_more_to_download">"No hi ha més missions
+disponibles"</string>
+<string name="later">"Després"</string>
+<string name="quest_streetName_answer_noProperStreet">"No és un carrer"</string>
+<string name="quest_streetName_answer_noProperStreet_question">"Què és, doncs?"</string>
+<string name="quest_streetName_answer_noProperStreet_link">"Només enllaça dues vies"</string>
+<string name="quest_streetName_answer_noProperStreet_service">"Només és una via de servei"</string>
+<string name="quest_streetName_answer_noProperStreet_leaveNote">"Una altra cosa (deixa una nota)"</string>
+<string name="quest_streetName_answer_noProperStreet_track">"Només és una pista"</string>
+<string name="about_title_privacy_statement">"Declaració de privadesa"</string>
+<string name="about_summary_privacy_statement">"i ús de dades"</string>
+<string name="quest_openingHours_public_holidays">"Festius públics"</string>
+<string name="quest_openingHours_public_holidays_short">"FP"</string>
+<string name="quest_openingHours_open_end">"final de l'obertura"</string>
+<string name="quest_openingHours_answer_247">"Obert 24/7"</string>
+<string name="quest_openingHours_answer_seasonal_opening_hours">"Depèn del mes"</string>
+<string name="quest_openingHours_answer_no_regular_opening_hours">"No té horari d'obertura habitual"</string>
+<string name="quest_openingHours_comment_title">"Descriu l'horari d'obertura"</string>
+<string name="quest_openingHours_comment_description">"Sigues concís, idealment usa el mateix redactat del cartell. P. e. «amb cita prèvia». L'absència de cartell no implica necessàriament que no hi hagi horari d'obertura habitual."</string>
+<string name="quest_buildingLevels_title">"Quantes plantes té aquest edifici?"</string>
+<string name="quest_buildingLevels_title_buildingPart">"Quantes plantes té aquesta part de l'edifici?"</string>
+<string name="quest_buildingLevels_levelsLabel">"plantes totals (incloent-hi la teulada)"</string>
+<string name="quest_buildingLevels_roofLevelsLabel">"d'aquestes plantes, en la teulada"</string>
+<string name="quest_roofShape_title">"Quina forma bàsica té la teulada d'aquest edifici?"</string>
+<string name="quest_roofShape_select_one">"Selecciona'n un:"</string>
+<string name="quest_roofShape_show_more">"Mostra'n més..."</string>
+<string name="quest_roofShape_answer_many">"Té diferents formes"</string>
+<string name="pref_category_cache">"Memòria cau"</string>
+<string name="pref_title_sync">"Sinc. automàtica"</string>
+<string name="map_btn_zoom_out">"Allunya't"</string>
+<string name="map_btn_zoom_in">"Apropa't"</string>
+<string name="privacy_html">"&lt;p&gt; Ah, algú que es preocupa per la privadesa, bé! Crec que només tinc bones notícies per a tu:&lt;/p&gt;
+&lt;p&gt;&lt;b&gt; Contribucions directes&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;
+En primer lloc, tingues present que amb aquesta aplicació es fan aportacions efectivess i directes a l'OpenStreetMap.&lt;br/&gt;
+Qualsevol cosa que contribueixis amb aquesta aplicació s'afegeix directament al mapa, no hi ha una tercera part entre l'aplicació i la infraestructura de l'OSM, com és el cas de &lt;a href=\"https://wheelmap.org\"&gt;wheelmap.org&lt;/a&gt; o &lt;a href=\"http://www.kort.ch\"&gt;Kort &lt;/a&gt;.
+&lt;/p&gt;
+&lt;p&gt;
+L'edició de l'OpenStreetMap forma anònima no és possible, de manera que qualsevol canvi que facis es fa amb el teu compte d'usuari d'OSM, això també significa que els canvis en el mapa són visibles públicament al lloc web de l'OpenStreetMap.
+&lt;/p&gt;
+
+&lt;b&gt;Geolocalització&lt;/b&gt;&lt;br/&gt;
+&lt;p&gt;
+La teva ubicació només s'utilitza per a cercar automàticament missions que t'envolten. No et preocupis, l'aplicació manté la teva ubicació per a si mateixa.
+&lt;/p&gt;
+
+&lt;p&gt;&lt;b&gt; Ús de dades &lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;
+Com s'ha esmentat, l'aplicació es comunica directament amb la infraestructura de l'OSM. És a dir, amb l'&lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt; &lt;/a&gt;API Overpass&lt;/a&gt; per a baixar les missions (de forma anònima) i amb la &lt;a href = \"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;API de l'OSM&lt;/a&gt; API per a pujar els canvis.&lt;br/&gt;
+No obstant això, abans de pujar els canvis, l'aplicació comprova amb un &lt;a href=\"http://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;fitxer de text pla&lt;/a&gt; en el meu servidor si t'he prohibit pujar qualsevol canvi. Aquesta és una mesura de precaució per a poder mantenir versions de l'aplicació que tinguin errors crítics i puguin malmetre les dades de l'OSM.&lt;br/&gt;
+&lt;/p&gt;
+&lt;p&gt;
+Per a visualitzar el mapa, es recuperen tessel·les vectorials del servei &lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt;Mapzen&lt;/a&gt;, que és anònim. El servei enregistra les sol·licituds de tessel·les per a entendre quines àrees són populars per a la pre-emmagatzematge en memòria cau i millores de rendiment. La seva plataforma també registra les adreces IP i tot l'allotjament és a Amazon pel que estan subjectes al que hi podrien fer.
+&lt;/p&gt;
+&lt;p&gt;
+(&lt;i&gt; Això és en realitat no s'ha implementat encara, només vull informar-te del que està per venir: &lt;/i&gt;) Les dades que es mostren a la taula de classificació i el perfil s'agreguen a la informació a disposició del públic des de l'OpenStreetMap. Les dades no provenen d'aquesta aplicació, sinó bàsicament de l'historial de canvis públic dels usuaris OSM.
+&lt;/p&gt;"</string>
+<string name="authors_html">"&lt;p&gt;© 2016 Tobias Zwick&lt;/p&gt;
+&lt;p&gt;L'aplicació usa el conjunt &lt;a href=\"https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free\"&gt;Beautiful Flat Icons&lt;/a&gt; d'en Nick Roach, llicenciat en els termes de la &lt;a href=\"http://www.gnu.org/licenses/gpl-2.0.html\"&gt;GPL&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Tranduccions&lt;/b&gt;&lt;/p&gt;
+Anglès - Tobias Zwick&lt;br/&gt;
+Alemany - Tobias Zwick&lt;br/&gt;
+Francès - Jamie Nadeau, Anthony C.&lt;br/&gt;
+Italià - Maurizio Napolitano&lt;br/&gt;
+Catalan - Joan Montané&lt;br/&gt;"</string>
+<string name="quest_expiration_one_day">"1 dia"</string>
+<string name="quest_expiration_a_week">"1 setmana"</string>
+<string name="quest_expiration_two_weeks">"2 setmanes"</string>
+<string name="quest_expiration_one_month">"1 mes"</string>
+<string name="autosync_on">"Activat"</string>
+<string name="autosync_only_on_wifi">"Només per Wifi"</string>
+<string name="autosync_off">"Desactivat"</string>
+<string name="quest_streetSurface_title">"Quina superfície té aquesta via?"</string>
+<string name="quest_surface_description">"Selecciona'n la més específica que hi encaixi:"</string>
+<string name="quest_surface_value_paved">"Pavimentat (genèric)"</string>
+<string name="quest_surface_value_unpaved">"Sense pavimentar (genèric)"</string>
+<string name="quest_surface_value_ground">"Natural (genèric)"</string>
+<string name="quest_surface_value_asphalt">"Asfalt"</string>
+<string name="quest_surface_value_cobblestone">"Empedrat"</string>
+<string name="quest_surface_value_compacted">"Compactat"</string>
+<string name="quest_surface_value_concrete">"Formigó"</string>
+<string name="quest_surface_value_dirt">"Fangós"</string>
+<string name="quest_surface_value_fine_gravel">"Grava fina"</string>
+<string name="quest_surface_value_grass">"Gespa o una altra vegetació baixa"</string>
+<string name="quest_surface_value_grass_paver">"Gespa pavimentada"</string>
+<string name="quest_surface_value_gravel">"Grava"</string>
+<string name="quest_surface_value_paving_stones">"Paviment intertravat"</string>
+<string name="quest_surface_value_pebblestone">"Llambordes"</string>
+<string name="quest_surface_value_sand">"Sorra"</string>
+<string name="quest_surface_value_sett">"Llambordes"</string>
+<string name="quest_surface_value_wood">"Fusta"</string>
+
+<!-- Not implemented yet... -->
+<string name="quest_placeName_title">"Quin nom té aquest lloc?"</string>
+<string name="quest_sidewalk_title">"Aquest carrer té vorera?"</string>
+<string name="map_orientation_info">"El mapa té el nord amunt."</string>
+<string name="quest_sidewalk_onlyNorth">"Només en el costat nort"</string>
+<string name="quest_sidewalk_onlySouth">"Només en el costat sud"</string>
+<string name="quest_sidewalk_onlyWest">"Només en el costat oest"</string>
+<string name="quest_sidewalk_onlyEast">"Només en el costat est"</string>
+<string name="quest_sidewalk_yes">"Sí"</string>
+<string name="quest_maxspeed_title">"Què diuen els senyals de velocitat màxima en aquest carrer?"</string>
+<string name="quest_maxspeed_answer_noSign">"No hi ha cap senyal"</string>
+<string name="quest_maxspeed_answer_noSign_info">"Bé, no hi ha cap senyal, s'apliquen els límits de velocitat generals."</string>
+<string name="quest_maxspeed_answer_noSign_info_motorway">"Això és %1$s en una autopista."</string>
+<string name="quest_maxspeed_answer_noSign_info_living_street">"Això és %1$s en una via residencial. "</string>
+<string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"On és aquest carrer?"</string>
+<string name="quest_maxspeed_answer_noSign_urban">"En poblat: s'aplica el límit de velocitat %1$s."</string>
+<string name="quest_maxspeed_answer_noSign_rural">"Fora de poblat: s'aplica el límit de velocitat %1$s."</string>
+<string name="quest_maxspeed_answer_noSign_implicitOk">"Prou lluny"</string>
+<string name="quest_maxspeed_answer_variable">"Els senyals electrònics mostren límits de velocitat variables"</string>
+<string name="quest_cyclewaySurface_title">"Quina superfície té el carril bici aquí?"</string>
+<string name="quest_cycleway_title">"Hi ha carril bici en aquest carrer?"</string>
+<string name="quest_buildingType_title">"Quin tipus d'edifici és?"</string>
+<string name="quest_serviceType_title">"Quin tipus de via de servei?"</string>
+<string name="quest_streetLanes_title">"Quants carrils té aquesta via?"</string>
+<string name="quest_streetLanes_description">"Si no hi ha marques, no té carrils."</string>
+<string name="quest_streetLanes_north">"cap al nord"</string>
+<string name="quest_streetLanes_west">"cap a l'oest"</string>
+<string name="quest_streetLanes_east">"cap a l'est"</string>
+<string name="quest_streetLanes_south">"cap al sud"</string>
+<string name="quest_streetLanes_answer_noLanes">"No té marques de carril"</string>
+<string name="quest_streetLanes_noLanes_estWidth">"Estima el nombre de cotxes que caben un al costat de l'altre en aquesta via."</string>
+<string name="quest_oneway_title">"És una via de sentit únic?"</string>
+<string name="quest_address_title">"Quin número de portal té aquest edifici?"</string>
+<string name="store_listing_short_description">"Aplicació de topografia per a l'OpenStreetMap"</string>
+<string name="store_listing_full_description">"Ajuda a millorar l'OpenStreetMap amb StreetComplete!
+
+Aquesta aplicació cerca dades incompletes i ampliables prop teu i les mostra en una mapa com a marcadors. Cadascun d'aquests marcador es pot resoldre responent una pregunta simple per a completar la informació del lloc.
+
+Aleshores, la informació que introdueixes s'afegeix directament a l'OpenStreetMap en nom teu, sense haver d'usar cap altre editor."</string>
+<string name="quest_name_answer_noName">"No té nom"</string>
+<string name="quest_name_answer_noName_confirmation_title">"De veritat no té nom?"</string>
+<string name="quest_name_noName_confirmation_positive">"Sí, no té nom"</string>
+</resources>

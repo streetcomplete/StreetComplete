@@ -35,10 +35,7 @@
 <string name="quest_leave_new_note_no">"No, just hide"</string>
 <string name="quest_streetName_title">"What is the name of this road?"</string>
 <string name="quest_streetName_description">"as written on the street sign, abbreviations are expanded:"</string>
-<string name="quest_name_answer_noName">"It has no name"</string>
-<string name="quest_name_answer_noName_confirmation_title">"Really no name?"</string>
 <string name="quest_streetName_answer_noName_confirmation_description">"Sometimes the street sign is only at one end of the street. Also, note that there may not be extra street signs for side streets that belong to a bigger street. Usually, any street with houses has a name."</string>
-<string name="quest_name_noName_confirmation_positive">"Yes, no name"</string>
 <string name="quest_streetName_nameWithAbbreviations_confirmation_title">"Abbreviation in the name?"</string>
 <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"If the name can be spelled without an abbreviation, then it should be expanded. Many common abbreviations are expanded automatically while you type, but probably not all."</string>
 <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"No abbreviation"</string>
@@ -151,8 +148,9 @@ To display the map, vector tiles are retrieved from the &lt;a href=\"https://map
 &lt;p&gt;&lt;b&gt;Translations&lt;/b&gt;&lt;/p&gt;
 English - Tobias Zwick&lt;br/&gt;
 German - Tobias Zwick&lt;br/&gt;
-French - Jamie Nadeau&lt;br/&gt;
-Italian - Maurizio Napolitano&lt;br/&gt;"</string>
+French - Jamie Nadeau, Anthony C.&lt;br/&gt;
+Italian - Maurizio Napolitano&lt;br/&gt;
+Catalan - Joan Montané&lt;br/&gt;"</string>
 <string name="quest_expiration_one_day">"One day"</string>
 <string name="quest_expiration_a_week">"A week"</string>
 <string name="quest_expiration_two_weeks">"Two weeks"</string>
@@ -221,4 +219,7 @@ This app finds incomplete and extendable data in your vicinity and displays it o
 The info you enter is then directly added to the OpenStreetMap in your name, without the need to use another editor."</string>
 <string name="quest_buildingLevels_negativeBuildingLevels">"Oops! You specified more roof levels than levels in total!"</string>
     <string name="quest_openingHours_add_times">Add opening times</string>
+<string name="quest_name_answer_noName">"It has no name"</string>
+<string name="quest_name_answer_noName_confirmation_title">"Really no name?"</string>
+<string name="quest_name_noName_confirmation_positive">"Yes, no name"</string>
 </resources>
