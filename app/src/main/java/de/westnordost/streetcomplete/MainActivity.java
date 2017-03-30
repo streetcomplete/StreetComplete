@@ -745,7 +745,7 @@ public class MainActivity extends AppCompatActivity implements
 	private void onLocationIsEnabled()
 	{
 		trackingButton.setState(LocationState.SEARCHING);
-		setIsFollowingPosition(true);
+		mapFragment.setIsFollowingPosition(trackingButton.isActivated());
 		mapFragment.startPositionTracking();
 		questAutoSyncer.startPositionTracking();
 		singleLocationRequest.startRequest(LocationRequest.PRIORITY_HIGH_ACCURACY,

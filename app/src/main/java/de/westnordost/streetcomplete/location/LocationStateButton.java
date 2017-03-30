@@ -127,6 +127,7 @@ public class LocationStateButton extends ImageButton
 		Parcelable superState = super.onSaveInstanceState();
 		SavedState ss = new SavedState(superState);
 		ss.state = getState();
+		ss.activated = isActivated();
 		return ss;
 	}
 
@@ -136,12 +137,14 @@ public class LocationStateButton extends ImageButton
 		SavedState ss = (SavedState) s;
 		super.onRestoreInstanceState(ss.getSuperState());
 		this.state = ss.state;
+		setActivated(ss.activated);
 		requestLayout();
 	}
 
 	static class SavedState extends BaseSavedState
 	{
 		LocationState state;
+		boolean activated;
 
 		SavedState(Parcelable superState) {
 			super(superState);
@@ -151,11 +154,13 @@ public class LocationStateButton extends ImageButton
 		{
 			super(in);
 			state = LocationState.valueOf(in.readString());
+			activated = in.readInt() == 1;
 		}
 
 		@Override public void writeToParcel(Parcel out, int flags) {
 			super.writeToParcel(out, flags);
 			out.writeString(state.name());
+			out.writeInt(activated ? 1 : 0);
 		}
 
 		public static final Parcelable.Creator<SavedState> CREATOR
