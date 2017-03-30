@@ -202,6 +202,8 @@ public class OAuthWebViewDialogFragment extends DialogFragment
 
 	private void continueAuthentication()
 	{
+		if(webView == null) return;
+
 		progressGroup.setVisibility(View.VISIBLE);
 		errorGroup.setVisibility(View.INVISIBLE);
 		webView.setVisibility(View.INVISIBLE);
@@ -233,7 +235,7 @@ public class OAuthWebViewDialogFragment extends DialogFragment
 	{
 		progressGroup.setVisibility(View.INVISIBLE);
 		errorGroup.setVisibility(View.VISIBLE);
-		webView.setVisibility(View.INVISIBLE);
+		if(webView != null) webView.setVisibility(View.INVISIBLE);
 
 		Log.e(TAG, "Error during authorization", e);
 	}
