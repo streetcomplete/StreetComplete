@@ -72,16 +72,20 @@ public class CurrentCountry
 		if(countryCode != null)
 		{
 			List<String> languages = getLanguagesByCountry().get(countryCode);
-			// for countries with several official languages, the chance is higher that the user is
-			// in an area in which the language he set in his preferences is spoken than not
-			if(languages.size() > 1 && languages.indexOf(locale.getLanguage()) != -1)
+			// #53: Android could also return an invalid or non-existing countryCode, we can't trust it here
+			if(languages != null)
 			{
-				locale = new Locale(locale.getLanguage(), countryCode);
-			}
-			// otherwise, use the most common one
-			else if(languages.size() > 0)
-			{
-				locale = new Locale(languages.get(0), countryCode);
+				// for countries with several official languages, the chance is higher that the user is
+				// in an area in which the language he set in his preferences is spoken than not
+				if (languages.size() > 1 && languages.indexOf(locale.getLanguage()) != -1)
+				{
+					locale = new Locale(locale.getLanguage(), countryCode);
+				}
+				// otherwise, use the most common one
+				else if (languages.size() > 0)
+				{
+					locale = new Locale(languages.get(0), countryCode);
+				}
 			}
 		}
 		return locale;
