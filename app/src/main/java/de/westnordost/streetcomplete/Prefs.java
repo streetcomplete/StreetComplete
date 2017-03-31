@@ -13,7 +13,8 @@ public class Prefs
 			OSM_USER_ID = "osm.userid",
 			SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS = "display.nonQuestionNotes",
 			QUESTS_EXPIRATION_TIME_IN_MIN = "download.expirationTime",
-			AUTOSYNC = "autosync";
+			AUTOSYNC = "autosync",
+			FOLLOW_POSITION = "followPosition";
 
 	public enum Autosync
 	{

@@ -201,6 +201,7 @@ public class MainActivity extends AppCompatActivity implements
 				}
 			}
 		});
+        trackingButton.setActivated(prefs.getBoolean(Prefs.FOLLOW_POSITION, true));
 
 		ImageButton zoomInButton = (ImageButton) findViewById(R.id.zoom_in);
 		zoomInButton.setOnClickListener(new View.OnClickListener()
@@ -278,6 +279,8 @@ public class MainActivity extends AppCompatActivity implements
 
 		questController.onStop();
 		questAutoSyncer.onStop();
+
+        prefs.edit().putBoolean(Prefs.FOLLOW_POSITION, trackingButton.isActivated()).apply();
 
 		if (downloadServiceIsBound) unbindService(downloadServiceConnection);
 		if (downloadService != null)
