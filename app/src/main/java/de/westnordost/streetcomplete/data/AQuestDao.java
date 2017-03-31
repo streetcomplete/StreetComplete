@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -13,6 +14,8 @@ import de.westnordost.osmapi.map.data.BoundingBox;
 
 public abstract class AQuestDao<T extends Quest>
 {
+    private static final String TAG = "QuestDao";
+
 	private final SQLiteOpenHelper dbHelper;
 
 	public AQuestDao(SQLiteOpenHelper dbHelper)
@@ -105,13 +108,23 @@ public abstract class AQuestDao<T extends Quest>
 
 		List<E> result = new ArrayList<>();
 
+        List<Long> invalidIds = new ArrayList<>();
+
 		try
 		{
 			if(cursor.moveToFirst())
 			{
 				while(!cursor.isAfterLast())
 				{
-					result.add(creator.create(cursor));
+                    try {
+                        result.add(creator.create(cursor));
+                    }
+                    catch (Exception e)
+                    {
+                        Log.e(TAG,"Getting quest from db caused an exception",e);
+                        int idCol = cursor.getColumnIndex(getIdColumnName());
+                        invalidIds.add(cursor.getLong(idCol));
+                    }
 					cursor.moveToNext();
 				}
 			}
@@ -120,6 +133,12 @@ public abstract class AQuestDao<T extends Quest>
 		{
 			cursor.close();
 		}
+
+		if(!invalidIds.isEmpty())
+        {
+            Log.i(TAG, "The previously encountered corrupt quests are now removed from database");
+            deleteAll(invalidIds);
+        }
 
 		return result;
 	}

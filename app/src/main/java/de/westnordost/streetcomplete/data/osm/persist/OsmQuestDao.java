@@ -209,7 +209,12 @@ public class OsmQuestDao extends AQuestDao<OsmQuest>
 
 		Element.Type elementType = Element.Type.valueOf(cursor.getString(colElementType));
 		QuestStatus questStatus = QuestStatus.valueOf(cursor.getString(colQuestStatus));
-		OsmElementQuestType questType = (OsmElementQuestType) questTypeList.forName(cursor.getString(colQuestType));
+
+        String questTypeName = cursor.getString(colQuestType);
+		OsmElementQuestType questType = (OsmElementQuestType) questTypeList.forName(questTypeName);
+        if(questType == null) {
+            throw new IllegalArgumentException("The quest type " + questTypeName + " does not exist!");
+        }
 
 		StringMapChanges changes = null;
 		if(!cursor.isNull(colChanges))
