@@ -323,7 +323,7 @@ public class MapFragment extends Fragment implements
 		{
 			LngLat pos = new LngLat(lastLocation.getLongitude(), lastLocation.getLatitude());
 			float size = meters2Pixels(pos, lastLocation.getAccuracy());
-			accuracyMarker.setStylingFromString("{ style: 'points', color: 'white', size: ["+size+"px, "+size+"px], order: 2000, flat:true, collide: false }");
+			accuracyMarker.setStylingFromString("{ style: 'points', color: 'white', size: ["+size+"px, "+size+"px], order: 2000, flat: true, collide: false }");
 		}
 	}
 
@@ -335,7 +335,7 @@ public class MapFragment extends Fragment implements
 			directionMarker.setStylingFromString(
 					"{ style: 'points', color: '#cc536dfe', size: " +
 							Arrays.toString(directionMarkerSize) +
-							", order: 2000, collide: false, flat:true, angle: " + r + " }");
+							", order: 2000, collide: false, flat: true, angle: " + r + " }");
 		}
 	}
 
