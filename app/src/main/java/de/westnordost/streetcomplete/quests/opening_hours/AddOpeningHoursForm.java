@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.quests.opening_hours;
 
-import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -24,6 +23,7 @@ import de.westnordost.streetcomplete.data.meta.CurrentCountry;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 import de.westnordost.osmapi.map.data.OsmElement;
 import de.westnordost.streetcomplete.util.Serializer;
+import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 
 import static android.view.Menu.NONE;
 
@@ -168,7 +168,7 @@ public class AddOpeningHoursForm extends AbstractQuestAnswerFragment
 		View view = LayoutInflater.from(getActivity()).inflate(R.layout.quest_opening_hours_comment, null);
 		final EditText editText = (EditText)view.findViewById(R.id.commentInput);
 
-		AlertDialog commentDlg = new AlertDialog.Builder(getActivity())
+		new AlertDialogBuilder(getActivity())
 				.setTitle(R.string.quest_openingHours_comment_title)
 				.setView(view)
 				.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener()
@@ -187,7 +187,7 @@ public class AddOpeningHoursForm extends AbstractQuestAnswerFragment
 
 	private void showConfirm24_7Dialog()
 	{
-		AlertDialog confirmation = new AlertDialog.Builder(getActivity())
+		new AlertDialogBuilder(getActivity())
 				.setMessage(R.string.quest_openingHours_24_7_confirmation)
 				.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener()
 				{
@@ -199,8 +199,7 @@ public class AddOpeningHoursForm extends AbstractQuestAnswerFragment
 					}
 				})
 				.setNegativeButton(android.R.string.no, null)
-				.create();
-		confirmation.show();
+				.show();
 	}
 
 	private void applyOpeningHours(String openingHours)

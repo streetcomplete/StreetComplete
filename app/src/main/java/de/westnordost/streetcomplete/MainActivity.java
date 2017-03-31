@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete;
 
 import android.Manifest;
 import android.animation.ObjectAnimator;
-import android.app.AlertDialog;
 import android.app.FragmentManager;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -73,6 +72,7 @@ import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.map.data.OsmElement;
+import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 import oauth.signpost.OAuthConsumer;
 
 import static android.location.LocationManager.PROVIDERS_CHANGED_ACTION;
@@ -130,7 +130,7 @@ public class MainActivity extends AppCompatActivity implements
 			}
 			else if(intent.getBooleanExtra(QuestChangesUploadService.IS_VERSION_BANNED, false))
 			{
-				new AlertDialog.Builder(MainActivity.this)
+				new AlertDialogBuilder(MainActivity.this)
 						.setMessage(R.string.version_banned_message)
 						.setPositiveButton(android.R.string.ok, null)
 						.show();
@@ -356,7 +356,7 @@ public class MainActivity extends AppCompatActivity implements
 			}
 		};
 
-		new AlertDialog.Builder(this)
+		new AlertDialogBuilder(this)
 				.setMessage(R.string.confirmation_authorize_now)
 				.setPositiveButton(android.R.string.ok, onYes)
 				.setNegativeButton(R.string.later, null).show();
@@ -408,7 +408,7 @@ public class MainActivity extends AppCompatActivity implements
 						}
 					};
 
-					new AlertDialog.Builder(this)
+					new AlertDialogBuilder(this)
 							.setMessage(R.string.confirmation_cancel_prev_download_title)
 							.setPositiveButton(android.R.string.ok, onYes)
 							.setNegativeButton(android.R.string.cancel, null)

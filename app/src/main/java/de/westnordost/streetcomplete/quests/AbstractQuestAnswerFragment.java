@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.quests;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.DialogFragment;
 import android.app.Fragment;
 import android.content.Context;
@@ -28,6 +27,7 @@ import java.util.List;
 import de.westnordost.osmapi.map.data.OsmElement;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.QuestGroup;
+import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 
 /** Abstract base class for any dialog with which the user answers a specific quest(ion) */
 public abstract class AbstractQuestAnswerFragment extends Fragment
@@ -240,7 +240,7 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 					confirmed.run();
 				}
 			};
-			new AlertDialog.Builder(getActivity())
+			new AlertDialogBuilder(getActivity())
 					.setMessage(R.string.confirmation_discard_title)
 					.setPositiveButton(R.string.confirmation_discard_positive, onYes)
 					.setNegativeButton(R.string.confirmation_discard_negative, null)

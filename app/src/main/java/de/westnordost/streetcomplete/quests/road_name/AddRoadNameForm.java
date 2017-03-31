@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.quests.road_name;
 
-import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +12,7 @@ import java.util.List;
 
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
+import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 
 public class AddRoadNameForm extends AbstractQuestAnswerFragment
 {
@@ -113,7 +114,7 @@ public class AddRoadNameForm extends AbstractQuestAnswerFragment
 			}
 		};
 
-		new AlertDialog.Builder(getActivity())
+		new AlertDialogBuilder(getActivity())
 				.setTitle(R.string.quest_streetName_nameWithAbbreviations_confirmation_title)
 				.setMessage(R.string.quest_streetName_nameWithAbbreviations_confirmation_description)
 				.setPositiveButton(R.string.quest_streetName_nameWithAbbreviations_confirmation_positive, onYes)
@@ -142,7 +143,7 @@ public class AddRoadNameForm extends AbstractQuestAnswerFragment
 			}
 		};
 
-		new AlertDialog.Builder(getActivity())
+		new AlertDialogBuilder(getActivity())
 				.setTitle(R.string.quest_name_answer_noName_confirmation_title)
 				.setMessage(R.string.quest_streetName_answer_noName_confirmation_description)
 				.setPositiveButton(R.string.quest_name_noName_confirmation_positive, onYes)
@@ -205,7 +206,7 @@ public class AddRoadNameForm extends AbstractQuestAnswerFragment
 			}
 		};
 
-		AlertDialog dlg = new AlertDialog.Builder(getActivity())
+		AlertDialog dlg = new AlertDialogBuilder(getActivity())
 				.setSingleChoiceItems(answers.toArray(new String[0]), -1, onSelect)
 				.setTitle(R.string.quest_streetName_answer_noProperStreet_question)
 				.setPositiveButton(android.R.string.ok, onSelect)

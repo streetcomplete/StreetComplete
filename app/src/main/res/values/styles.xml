@@ -20,6 +20,11 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <!-- Alert Dialog Styling-->
+    <style name="AppTheme.AlertDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
     <style name="QuestTitleQuestion">
         <item name="android:textAlignment">viewStart</item>
         <item name="android:textAppearance">@android:style/TextAppearance.DeviceDefault.Widget.ActionBar.Title.Inverse</item>

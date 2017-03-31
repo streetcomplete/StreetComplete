@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.quests.opening_hours;
 
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -20,6 +20,7 @@ import java.util.Locale;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.meta.CurrentCountry;
 import de.westnordost.streetcomplete.data.meta.WorkWeek;
+import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 import de.westnordost.streetcomplete.view.dialogs.RangePickerDialog;
 
 public class AddOpeningHoursAdapter extends RecyclerView.Adapter
@@ -383,7 +384,7 @@ public class AddOpeningHoursAdapter extends RecyclerView.Adapter
 	{
 		final boolean[] selection = weekdays.getSelection();
 
-		AlertDialog dlg = new AlertDialog.Builder(context)
+		AlertDialog dlg = new AlertDialogBuilder(context)
 				.setTitle(R.string.quest_openingHours_chooseWeekdaysTitle)
 				.setMultiChoiceItems(Weekdays.getNames(context.getResources()), selection, new DialogInterface.OnMultiChoiceClickListener()
 				{

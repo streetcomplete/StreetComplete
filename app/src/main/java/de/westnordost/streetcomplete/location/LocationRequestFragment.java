@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.location;
 
 import android.Manifest;
-import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -14,8 +13,10 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 
 import de.westnordost.streetcomplete.R;
+import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 
 import static android.location.LocationManager.PROVIDERS_CHANGED_ACTION;
 import static de.westnordost.streetcomplete.location.LocationUtil.MODE_CHANGED;
@@ -101,7 +102,7 @@ public class LocationRequestFragment extends Fragment
 		}
 		else
 		{
-			new AlertDialog.Builder(getContext())
+			new AlertDialogBuilder(getContext())
 					.setMessage(R.string.no_location_permission_warning)
 					.setPositiveButton(R.string.retry,
 							new DialogInterface.OnClickListener()
@@ -167,7 +168,7 @@ public class LocationRequestFragment extends Fragment
 		}
 		else
 		{
-			final AlertDialog dlg = new AlertDialog.Builder(getContext())
+			final AlertDialog dlg = new AlertDialogBuilder(getContext())
 					.setMessage(R.string.turn_on_location_request)
 					.setPositiveButton(android.R.string.yes,
 							new DialogInterface.OnClickListener()

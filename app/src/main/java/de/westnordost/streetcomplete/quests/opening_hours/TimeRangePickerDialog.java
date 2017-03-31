@@ -38,7 +38,7 @@ public class TimeRangePickerDialog extends AlertDialog implements View.OnClickLi
 								 CharSequence startTimeLabel, CharSequence endTimeLabel,
 								 TimeRange timeRange)
 	{
-		super(context);
+		super(context, R.style.AppTheme_AlertDialog);
 
 		this.listener = listener;
 
