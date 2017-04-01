@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.WindowManager;
 import android.webkit.WebView;
 import android.widget.Button;
 
@@ -131,6 +132,7 @@ public class OAuthWebViewDialogFragment extends DialogFragment
 		View view = inflater.inflate(R.layout.oauth_web_view_dialog_fragment, container, false);
 
 		getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+		getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
 		progressGroup = (ViewGroup) view.findViewById(R.id.progress);
 		errorGroup = (ViewGroup) view.findViewById(R.id.error);
