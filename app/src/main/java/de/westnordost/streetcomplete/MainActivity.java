@@ -89,6 +89,7 @@ public class MainActivity extends AppCompatActivity implements
 	@Inject QuestController questController;
 
 	@Inject SharedPreferences prefs;
+	@Inject PerApplicationStartPrefs perApplicationStartPrefs;
 	@Inject OAuthComponent oAuthComponent;
 
 	private QuestsMapFragment mapFragment;

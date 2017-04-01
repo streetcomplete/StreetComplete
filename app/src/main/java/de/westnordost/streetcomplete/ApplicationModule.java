@@ -46,6 +46,11 @@ public class ApplicationModule
 		return PreferenceManager.getDefaultSharedPreferences(application);
 	}
 
+	@Provides public PerApplicationStartPrefs perApplicationStartPrefs()
+	{
+		return ((StreetCompleteApplication)application).getPerApplicationStartPrefs();
+	}
+
 	@Provides public Resources resources()
 	{
 		return application.getResources();
