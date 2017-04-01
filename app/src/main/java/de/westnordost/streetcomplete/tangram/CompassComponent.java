@@ -5,6 +5,9 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 /** Component that gets the sensor data from accelerometer and magnetic field, smoothens it out and
  *  makes callbacks to report a simple rotation to its parent.
  */
@@ -12,11 +15,14 @@ public class CompassComponent implements SensorEventListener
 {
 	private SensorManager sensorManager;
 	private Sensor accelerometer, magnetometer;
+	private Timer compassTimer;
 	private CompassAnimator compassAnimator;
 	private float[] gravity, geomagnetic;
 	/** time the compass needle needs in order to rotate into a new direction (from sensor data).
 	 *  The sensor data is a bit erratic, so this smoothens it out. */
 	private static final int DURATION = 200;
+	// the compass doesn't move that fast, this is more than enough
+	private static final int RotationUpdateFPS = 30;
 
 	private Listener listener;
 	public interface Listener
@@ -40,13 +46,15 @@ public class CompassComponent implements SensorEventListener
 	{
 		sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_UI);
 		sensorManager.registerListener(this, magnetometer, SensorManager.SENSOR_DELAY_UI);
+
+		compassTimer = new Timer();
 		compassAnimator = new CompassAnimator();
-		compassAnimator.start();
+		compassTimer.scheduleAtFixedRate(compassAnimator, 0, 1000/RotationUpdateFPS);
 	}
 
 	public void onPause()
 	{
-		compassAnimator.interrupt();
+		compassTimer.cancel();
 		sensorManager.unregisterListener(this);
 	}
 
@@ -77,38 +85,34 @@ public class CompassComponent implements SensorEventListener
 
 	/** dampens the erratic-ness of the sensors by <b>animating towards</b> the calculated rotation
 	 *  and not directly setting it */
-	private class CompassAnimator extends Thread
+	private class CompassAnimator extends TimerTask
 	{
 		private float INITIAL = -9999;
 		private float currentRotation = INITIAL;
-		private long lastTime;
+		private long lastTime = System.currentTimeMillis();
 
 		volatile float targetRotation = INITIAL;
 
 		@Override public void run()
 		{
-			lastTime = System.currentTimeMillis();
-			while(!isInterrupted())
+			if(targetRotation == INITIAL) return;
+			if(currentRotation == INITIAL)
 			{
-				if(targetRotation == INITIAL) continue;
-				if(currentRotation == INITIAL)
-				{
-					currentRotation = targetRotation;
-				}
-				else if(currentRotation != targetRotation)
-				{
-					float deltaRotation = targetRotation - currentRotation;
-					while (deltaRotation > +Math.PI) deltaRotation -= 2*Math.PI;
-					while (deltaRotation < -Math.PI) deltaRotation += 2*Math.PI;
-					long currentTime = System.currentTimeMillis();
-					long deltaTime = currentTime - lastTime;
-
-					if(deltaTime > DURATION) currentRotation = targetRotation;
-					else currentRotation += deltaRotation * deltaTime / DURATION;
-					lastTime = currentTime;
-				}
-				listener.onRotationChanged(currentRotation);
+				currentRotation = targetRotation;
 			}
+			else if(currentRotation != targetRotation)
+			{
+				float deltaRotation = targetRotation - currentRotation;
+				while (deltaRotation > +Math.PI) deltaRotation -= 2*Math.PI;
+				while (deltaRotation < -Math.PI) deltaRotation += 2*Math.PI;
+				long currentTime = System.currentTimeMillis();
+				long deltaTime = currentTime - lastTime;
+
+				if(deltaTime > DURATION) currentRotation = targetRotation;
+				else currentRotation += deltaRotation * deltaTime / DURATION;
+			}
+			listener.onRotationChanged(currentRotation);
+			lastTime = System.currentTimeMillis();
 		}
 	}
 }
