@@ -24,8 +24,14 @@ public class SlidingLinearLayout extends LinearLayout
 
 	public void setYFraction(float fraction)
 	{
-		// don't display if layout has not been measured yet
-		setVisibility(getHeight() == 0 ? View.INVISIBLE : View.VISIBLE);
+		/* Here we have to tackle two problems:
+		   - the layout may not be measured yet. If it isn't hidden, this will result in an ugly
+		     flicker in the first frame of the animation
+		   - users can turn animations off (i.e. battery saver mode), which results in that all
+		     animations "start" in their final frame immediately. If the view is hidden in the first
+		     frame, it will never appear
+		 solution: hide it only if it was not measured yet AND it should be translated */
+		setVisibility(getHeight() == 0 && fraction != 0 ? View.INVISIBLE : View.VISIBLE);
 
 		float translationY = getHeight() * fraction;
 		setTranslationY(translationY);
