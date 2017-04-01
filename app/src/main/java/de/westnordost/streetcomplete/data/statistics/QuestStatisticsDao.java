@@ -40,6 +40,8 @@ public class QuestStatisticsDao
 				if(changeset.tags == null) return;
 
 				String userAgent = changeset.tags.get("created_by");
+				if(userAgent == null) return;
+
 				if(!userAgent.startsWith(ApplicationConstants.NAME)) return;
 
 				String questType = changeset.tags.get(ApplicationConstants.QUESTTYPE_TAG_KEY);
