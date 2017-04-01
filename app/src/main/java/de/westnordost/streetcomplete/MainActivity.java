@@ -102,8 +102,6 @@ public class MainActivity extends AppCompatActivity implements
 	private ProgressBar progressBar;
 	private AnswersCounter answersCounter;
 
-	private boolean hasAskedForLocation = false;
-
 	private boolean downloadServiceIsBound;
 	private QuestDownloadService.Interface downloadService;
 	private ServiceConnection downloadServiceConnection = new ServiceConnection()
@@ -247,7 +245,7 @@ public class MainActivity extends AppCompatActivity implements
 				new Intent(this, QuestDownloadService.class),
 				downloadServiceConnection, BIND_AUTO_CREATE);
 
-		if(!hasAskedForLocation)
+		if(!perApplicationStartPrefs.get().getBoolean(Prefs.HAS_ASKED_FOR_LOCATION, false))
 		{
 			locationRequestFragment.startRequest();
 		}
@@ -779,7 +777,7 @@ public class MainActivity extends AppCompatActivity implements
 
 	@Override public void onLocationRequestFinished(LocationState withLocationState)
 	{
-		hasAskedForLocation = true;
+		perApplicationStartPrefs.get().putBoolean(Prefs.HAS_ASKED_FOR_LOCATION, true);
 		trackingButton.setState(withLocationState);
 		boolean enabled = withLocationState.isEnabled();
 		if(enabled)

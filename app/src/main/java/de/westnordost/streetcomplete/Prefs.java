@@ -13,8 +13,12 @@ public class Prefs
 			OSM_USER_ID = "osm.userid",
 			SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS = "display.nonQuestionNotes",
 			QUESTS_EXPIRATION_TIME_IN_MIN = "download.expirationTime",
-			AUTOSYNC = "autosync",
-			FOLLOW_POSITION = "followPosition";
+			AUTOSYNC = "autosync";
+
+	// these are not persisted
+	public static final String
+			FOLLOW_POSITION = "followPosition",
+			HAS_ASKED_FOR_LOCATION = "hasAskedForLocation";
 
 	public enum Autosync
 	{
