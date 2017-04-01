@@ -319,7 +319,7 @@ public class MapFragment extends Fragment implements
 
 	private void updateAccuracy()
 	{
-		if(accuracyMarker != null && lastLocation != null)
+		if(accuracyMarker != null && lastLocation != null && accuracyMarker.isVisible())
 		{
 			LngLat pos = new LngLat(lastLocation.getLongitude(), lastLocation.getLatitude());
 			float size = meters2Pixels(pos, lastLocation.getAccuracy());
@@ -329,7 +329,7 @@ public class MapFragment extends Fragment implements
 
 	@Override public void onRotationChanged(float rotation)
 	{
-		if(directionMarker != null)
+		if(directionMarker != null && directionMarker.isVisible())
 		{
 			double r = rotation * 180 / Math.PI;
 			directionMarker.setStylingFromString(
