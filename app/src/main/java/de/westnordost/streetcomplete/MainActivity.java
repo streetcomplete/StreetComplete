@@ -725,6 +725,7 @@ public class MainActivity extends AppCompatActivity implements
 			{
 				@Override public void run()
 				{
+					mapFragment.removeQuestGeometry();
 					closeQuestDetails();
 				}
 			});

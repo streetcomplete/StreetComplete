@@ -123,27 +123,20 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 	@Override public boolean onSingleTapConfirmed(float x, float y)
 	{
 		controller.pickLabel(x,y);
-
-		// TODO use later!:
-				/*LngLat lngLat = controller.screenPositionToLngLat(new PointF(x,y));
-				LatLon latLon = null;
-				if(lngLat != null)
-				{
-					latLon = TangramConst.toLatLon(lngLat);
-				}
-				listener.onClickedMapAt(latLon);*/
-
 		return true;
 	}
 
 	@Override
 	public void onLabelPick(LabelPickResult labelPickResult, float positionX, float positionY)
 	{
-		if(labelPickResult == null) return;
-		if(labelPickResult.getType() != LabelPickResult.LabelType.ICON) return;
-		Map<String,String> props = labelPickResult.getProperties();
-		if(props == null) return;
-		if(!props.containsKey(MARKER_QUEST_ID)) return;
+		if(labelPickResult == null
+				|| labelPickResult.getType() != LabelPickResult.LabelType.ICON
+				|| labelPickResult.getProperties() == null
+				|| !labelPickResult.getProperties().containsKey(MARKER_QUEST_ID))
+		{
+			onClickedMap(positionX, positionY);
+			return;
+		}
 
 		// move center a little because we have the bottom sheet blocking part of the map (hopefully temporary solution)
 		LatLon pos = TangramConst.toLatLon(labelPickResult.getCoordinates());
@@ -155,10 +148,24 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		}
 		updateView();
 
+		Map<String,String> props = labelPickResult.getProperties();
 		listener.onClickedQuest(
 				QuestGroup.valueOf(props.get(MARKER_QUEST_GROUP)),
 				Long.valueOf(props.get(MARKER_QUEST_ID))
 		);
+	}
+
+	private void onClickedMap(float positionX, float positionY)
+	{
+		final LngLat pos = controller.screenPositionToLngLat(new PointF(positionX, positionY));
+		// necessary until/if not https://github.com/tangrams/tangram-es/issues/1365 is fixed
+		getActivity().runOnUiThread(new Runnable()
+		{
+			@Override public void run()
+			{
+				listener.onClickedMapAt(TangramConst.toLatLon(pos));
+			}
+		});
 	}
 
 	protected void updateView()
