@@ -13,12 +13,12 @@ public class AddBuildingLevels extends OverpassQuestType
 	@Override
 	protected String getTagFilters()
 	{
-		return " ways, relations with (" +
+		return " ways, relations with " +
 		       " building ~ house|residential|apartments|detached|terrace|farm|hotel|dormitory|houseboat|" +
 							"school|civic|college|university|public|hospital|kindergarten|transportation|train_station|"+
 							"retail|commercial|warehouse|industrial|manufacture" +
-		       " or building:part " +
-		       " ) and !building:levels and !height";
+		       " and !building:levels and !height and !building:height";
+		// building:height is undocumented, but used the same way as height and currently over 50k times
 	}
 
 	@Override
