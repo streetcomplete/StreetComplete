@@ -145,18 +145,18 @@ public class MergedElementDaoTest extends TestCase
 
 	private Node createANode()
 	{
-		return new OsmNode(0,0, 0.0, 0.0, null, null);
+		return new OsmNode(0,0, 0.0, 0.0, null);
 	}
 
 	private Way createAWay()
 	{
-		return new OsmWay(0,0, Collections.singletonList(0L), null, null);
+		return new OsmWay(0,0, Collections.singletonList(0L), null);
 	}
 
 	private Relation createARelation()
 	{
 		RelationMember m = new OsmRelationMember(0, "", Element.Type.NODE);
-		return new OsmRelation(0,0, Collections.singletonList(m), null, null);
+		return new OsmRelation(0,0, Collections.singletonList(m), null);
 	}
 
 	public void testDeleteUnreferenced()

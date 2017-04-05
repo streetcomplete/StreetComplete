@@ -15,12 +15,12 @@ public class OsmAreasTest extends TestCase
 {
 	public void testRelation()
 	{
-		assertFalse(OsmAreas.isArea(new OsmRelation(0,0, null, null, null)));
+		assertFalse(OsmAreas.isArea(new OsmRelation(0,0, null, null)));
 
 		Map<String, String> tags = new HashMap<>();
 		tags.put("type","multipolygon");
 
-		assertTrue(OsmAreas.isArea(new OsmRelation(0, 0, null, tags, null)));
+		assertTrue(OsmAreas.isArea(new OsmRelation(0, 0, null, tags)));
 	}
 
 	public void testWayNoTags()
@@ -65,6 +65,6 @@ public class OsmAreasTest extends TestCase
 	private Way createWay(boolean ring, Map<String,String> tags)
 	{
 		List<Long> nodes = ring ? Arrays.asList(0L,1L,0L) : Arrays.asList(0L,1L);
-		return new OsmWay(0, 0, nodes, tags, null );
+		return new OsmWay(0, 0, nodes, tags );
 	}
 }

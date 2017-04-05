@@ -31,10 +31,10 @@ public class ElementCreatorTestGeometry extends TestCase implements WayGeometryS
 			P3 = new OsmLatLon(2d,2d);
 
 	private static final Node
-			N0 =  new OsmNode(0L,0,P0,null,null),
-			N1 =  new OsmNode(1L,0,P1,null,null),
-			N2 =  new OsmNode(2L,0,P2,null,null),
-			N3 =  new OsmNode(3L,0,P3,null,null);
+			N0 =  new OsmNode(0L,0,P0,null),
+			N1 =  new OsmNode(1L,0,P1,null),
+			N2 =  new OsmNode(2L,0,P2,null),
+			N3 =  new OsmNode(3L,0,P3,null);
 
 	private static final Map<String,String>
 			wayArea = new HashMap<>(),
@@ -45,12 +45,12 @@ public class ElementCreatorTestGeometry extends TestCase implements WayGeometryS
 	}
 
 	private static final Way
-			W0 = new OsmWay(0L,0, Arrays.asList(0L,1L),null,null),
-			W1 = new OsmWay(1L,0,Arrays.asList(1L,2L,0L),null,null),
-			W2 = new OsmWay(2L,0,Arrays.asList(0L,1L,2L,0L),wayArea,null),
-			W3 = new OsmWay(3L,0,Arrays.asList(3L,2L), null, null),
-			W4 = new OsmWay(4L,0,Arrays.asList(0L,1L,1L,2L), null, null),
-			W5 = new OsmWay(5L,0, Collections.<Long>emptyList(),null,null);
+			W0 = new OsmWay(0L,0, Arrays.asList(0L,1L),null),
+			W1 = new OsmWay(1L,0,Arrays.asList(1L,2L,0L),null),
+			W2 = new OsmWay(2L,0,Arrays.asList(0L,1L,2L,0L),wayArea),
+			W3 = new OsmWay(3L,0,Arrays.asList(3L,2L), null),
+			W4 = new OsmWay(4L,0,Arrays.asList(0L,1L,1L,2L), null),
+			W5 = new OsmWay(5L,0, Collections.<Long>emptyList(),null);
 
 	private static final RelationMember
 			RM0 = new OsmRelationMember(0L, "outer", Element.Type.WAY),
@@ -59,8 +59,8 @@ public class ElementCreatorTestGeometry extends TestCase implements WayGeometryS
 			RM3 = new OsmRelationMember(3L, null, Element.Type.WAY);
 
 	private static final Relation
-			R0 = new OsmRelation(0L, 0, Arrays.asList(RM0, RM1, RM2, RM3), relationArea, null),
-			R1 = new OsmRelation(1L, 0, Arrays.asList(RM0, RM1, RM2, RM3), null, null);
+			R0 = new OsmRelation(0L, 0, Arrays.asList(RM0, RM1, RM2, RM3), relationArea),
+			R1 = new OsmRelation(1L, 0, Arrays.asList(RM0, RM1, RM2, RM3), null);
 
 	private static final List<Node> nodes = Arrays.asList(N0, N1, N2, N3);
 	private static final List<Way> ways = Arrays.asList(W0, W1, W2, W3, W4, W5);

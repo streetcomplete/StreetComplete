@@ -107,7 +107,7 @@ public class OsmQuestDownloadTest extends TestCase
 
 		OverpassMapDataDao overpassServer = new TestListBackedOverpassDao(Collections.singletonList(
 				new ElementWithGeometry(
-						new OsmNode(0,0,blacklistPos,null,null),
+						new OsmNode(0,0,blacklistPos,null),
 						new ElementGeometry(blacklistPos))));
 		setUpOsmQuestDaoMockWithNoPreviousElements();
 
@@ -133,7 +133,7 @@ public class OsmQuestDownloadTest extends TestCase
 		// overpass mock will only "find" the Node #4
 		List<ElementWithGeometry> elements = new ArrayList<>();
 		elements.add(new ElementWithGeometry(
-				new OsmNode(4,0,pos,null,null), new ElementGeometry(pos)));
+				new OsmNode(4,0,pos,null), new ElementGeometry(pos)));
 		OverpassMapDataDao overpassServer = new TestListBackedOverpassDao(elements);
 
 		// in the quest database mock, there are quests for node 4 and node 5
