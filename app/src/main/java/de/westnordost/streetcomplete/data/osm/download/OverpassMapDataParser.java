@@ -164,13 +164,13 @@ public class OverpassMapDataParser extends XmlParser implements ApiResponseReade
 				break;
 
 			case NODE:
-				Node node = factory.createNode(id, version, lat, lon, tags, null);
+				Node node = factory.createNode(id, version, lat, lon, tags, null, null);
 				geometry = elementGeometryCreator.create(node);
 				element = node;
 				break;
 
 			case WAY:
-				Way way = factory.createWay(id, version, nodes, tags, null);
+				Way way = factory.createWay(id, version, nodes, tags, null, null);
 				geometry = elementGeometryCreator.create(way);
 				element = way;
 				nodes = null;
@@ -179,7 +179,7 @@ public class OverpassMapDataParser extends XmlParser implements ApiResponseReade
 				break;
 
 			case RELATION:
-				Relation relation = factory.createRelation(id, version, members, tags, null);
+				Relation relation = factory.createRelation(id, version, members, tags, null, null);
 				geometry = elementGeometryCreator.create(relation);
 				element = relation;
 				members = null;

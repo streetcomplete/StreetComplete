@@ -88,6 +88,6 @@ public class RelationDao extends AOsmElementDao<Relation>
 		}
 		List<RelationMember> members = serializer.toObject(cursor.getBlob(colMembers), ArrayList.class);
 
-		return new OsmRelation(id, version, members, tags, null);
+		return new OsmRelation(id, version, members, tags);
 	}
 }

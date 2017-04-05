@@ -87,6 +87,6 @@ public class WayDao extends AOsmElementDao<Way>
 		}
 		List<Long> nodeIds = serializer.toObject(cursor.getBlob(colNodeIds), ArrayList.class);
 
-		return new OsmWay(id, version, nodeIds, tags, null);
+		return new OsmWay(id, version, nodeIds, tags);
 	}
 }

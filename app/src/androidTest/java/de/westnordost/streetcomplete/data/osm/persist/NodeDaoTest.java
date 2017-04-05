@@ -23,7 +23,7 @@ public class NodeDaoTest extends ApplicationDbTestCase
 	public void testPutGetNoTags()
 	{
 		LatLon pos = new OsmLatLon(2,2);
-		Node node = new OsmNode(5, 1, pos, null, null);
+		Node node = new OsmNode(5, 1, pos, null);
 		dao.put(node);
 		Node dbNode = dao.get(5);
 
@@ -35,7 +35,7 @@ public class NodeDaoTest extends ApplicationDbTestCase
 		Map<String,String> tags = new HashMap<>();
 		tags.put("a key", "a value");
 		LatLon pos = new OsmLatLon(2,2);
-		Node node = new OsmNode(5, 1, pos, tags, null);
+		Node node = new OsmNode(5, 1, pos, tags);
 		dao.put(node);
 		Node dbNode = dao.get(5);
 

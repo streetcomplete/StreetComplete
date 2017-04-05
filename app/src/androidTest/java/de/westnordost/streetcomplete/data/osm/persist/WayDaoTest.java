@@ -21,7 +21,7 @@ public class WayDaoTest extends ApplicationDbTestCase
 
 	public void testPutGetNoTags()
 	{
-		Way way = new OsmWay(5, 1, Arrays.asList(1L,2L,3L,4L), null, null);
+		Way way = new OsmWay(5, 1, Arrays.asList(1L,2L,3L,4L), null);
 		dao.put(way);
 		Way dbWay = dao.get(5);
 
@@ -32,7 +32,7 @@ public class WayDaoTest extends ApplicationDbTestCase
 	{
 		Map<String,String> tags = new HashMap<>();
 		tags.put("a key", "a value");
-		Way way = new OsmWay(5, 1, Arrays.asList(1L,2L,3L,4L), tags, null);
+		Way way = new OsmWay(5, 1, Arrays.asList(1L,2L,3L,4L), tags);
 		dao.put(way);
 		Way dbWay = dao.get(5);
 

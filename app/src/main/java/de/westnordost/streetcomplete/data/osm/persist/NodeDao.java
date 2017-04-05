@@ -92,6 +92,6 @@ public class NodeDao extends AOsmElementDao<Node>
 		{
 			tags = serializer.toObject(cursor.getBlob(colTags), HashMap.class);
 		}
-		return new OsmNode(id, version, latLon, tags, null);
+		return new OsmNode(id, version, latLon, tags);
 	}
 }

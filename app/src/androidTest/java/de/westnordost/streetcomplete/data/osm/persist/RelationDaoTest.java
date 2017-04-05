@@ -27,7 +27,7 @@ public class RelationDaoTest extends ApplicationDbTestCase
 		List<RelationMember> members = new ArrayList<>();
 		members.add(new OsmRelationMember(0, "outer", Element.Type.WAY));
 		members.add(new OsmRelationMember(1, "inner", Element.Type.WAY));
-		Relation relation = new OsmRelation(5, 1, members, null, null);
+		Relation relation = new OsmRelation(5, 1, members, null);
 		dao.put(relation);
 		Relation dbRelation = dao.get(5);
 
@@ -41,7 +41,7 @@ public class RelationDaoTest extends ApplicationDbTestCase
 		members.add(new OsmRelationMember(1, "inner", Element.Type.WAY));
 		Map<String,String> tags = new HashMap<>();
 		tags.put("a key", "a value");
-		Relation relation = new OsmRelation(5, 1, members, tags, null);
+		Relation relation = new OsmRelation(5, 1, members, tags);
 		dao.put(relation);
 		Relation dbRelation = dao.get(5);
 
