@@ -116,7 +116,8 @@ public abstract class AQuestDao<T extends Quest>
 			{
 				while(!cursor.isAfterLast())
 				{
-                    try {
+                    try
+					{
                         result.add(creator.create(cursor));
                     }
                     catch (Exception e)

@@ -7,6 +7,7 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import de.westnordost.streetcomplete.data.changesets.ManageChangesetsDao;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
 import de.westnordost.streetcomplete.data.statistics.QuestStatisticsDao;
 import de.westnordost.streetcomplete.util.KryoSerializer;
@@ -30,6 +31,12 @@ public class DbModule
 			SQLiteOpenHelper dbHelper, ChangesetsDao changesetsDao)
 	{
 		return new QuestStatisticsDao(dbHelper, changesetsDao);
+	}
+
+	@Provides @Singleton public static ManageChangesetsDao changesetsManagerDao(
+			SQLiteOpenHelper dbHelper)
+	{
+		return new ManageChangesetsDao(dbHelper);
 	}
 
 	@Provides @Singleton public static OsmQuestDao osmQuestDao(

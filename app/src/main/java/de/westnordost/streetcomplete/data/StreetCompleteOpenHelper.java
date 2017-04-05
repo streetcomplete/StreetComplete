@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import javax.inject.Singleton;
 
+import de.westnordost.streetcomplete.data.changesets.ManageChangesetsTable;
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryTable;
 import de.westnordost.streetcomplete.data.osm.persist.NodeTable;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestTable;
@@ -21,7 +22,7 @@ import de.westnordost.streetcomplete.data.tiles.DownloadedTilesTable;
 public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 {
 	public static final String DB_NAME = "streetcomplete.db";
-	public static final int DB_VERSION = 2;
+	public static final int DB_VERSION = 3;
 
 	private static final String OSM_QUESTS_TABLE_CREATE =
 			"CREATE TABLE " + OsmQuestTable.NAME +
@@ -158,6 +159,14 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 				") " +
 			");";
 
+	private static final String MANAGE_CHANGESETS_TABLE_CREATE =
+			"CREATE TABLE " + ManageChangesetsTable.NAME +
+			" (" +
+				ManageChangesetsTable.Columns.QUEST_TYPE +    " varchar(255)	PRIMARY KEY, " +
+				ManageChangesetsTable.Columns.CHANGESET_ID +  " int, " + // may be null
+				ManageChangesetsTable.Columns.LAST_CHANGE +   " int				DEFAULT 0" +
+			");";
+
 	public StreetCompleteOpenHelper(Context context)
 	{
 		super(context, DB_NAME, null, DB_VERSION);
@@ -183,6 +192,8 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 
 		db.execSQL(OSM_QUESTS_VIEW_CREATE);
 		db.execSQL(OSM_NOTES_VIEW_CREATE);
+
+		db.execSQL(MANAGE_CHANGESETS_TABLE_CREATE);
 	}
 
 	@Override
@@ -192,6 +203,10 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 		{
 			db.execSQL("ALTER TABLE " + OsmQuestTable.NAME + " ADD COLUMN "
 					+ OsmQuestTable.Columns.COMMIT_MESSAGE + " varchar(255);");
+
+		if(oldVersion < 3)
+		{
+			db.execSQL(MANAGE_CHANGESETS_TABLE_CREATE);
 		}
 
 		// for later changes to the DB
