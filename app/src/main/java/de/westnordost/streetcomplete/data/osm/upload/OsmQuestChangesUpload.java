@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.osm.upload;
 
-
 import android.content.SharedPreferences;
 import android.util.Log;
 
@@ -23,8 +22,8 @@ import de.westnordost.osmapi.map.data.Way;
 import de.westnordost.streetcomplete.ApplicationConstants;
 import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.data.QuestStatus;
-import de.westnordost.streetcomplete.data.changesets.ManageChangesetInfo;
-import de.westnordost.streetcomplete.data.changesets.ManageChangesetsDao;
+import de.westnordost.streetcomplete.data.changesets.OpenChangesetInfo;
+import de.westnordost.streetcomplete.data.changesets.OpenChangesetsDao;
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.OsmQuest;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChanges;
@@ -45,7 +44,7 @@ public class OsmQuestChangesUpload
 	private final MergedElementDao elementDB;
 	private final ElementGeometryDao elementGeometryDB;
 	private final QuestStatisticsDao statisticsDB;
-	private final ManageChangesetsDao manageChangesetsDB;
+	private final OpenChangesetsDao openChangesetsDB;
 	private final ChangesetsDao changesetsDao;
 	private final SharedPreferences prefs;
 
@@ -55,7 +54,7 @@ public class OsmQuestChangesUpload
 	@Inject public OsmQuestChangesUpload(
 			MapDataDao osmDao, OsmQuestDao questDB, MergedElementDao elementDB,
 			ElementGeometryDao elementGeometryDB, QuestStatisticsDao statisticsDB,
-			ManageChangesetsDao manageChangesetsDB, ChangesetsDao changesetsDao,
+			OpenChangesetsDao openChangesetsDB, ChangesetsDao changesetsDao,
 			SharedPreferences prefs)
 	{
 		this.osmDao = osmDao;
@@ -63,7 +62,7 @@ public class OsmQuestChangesUpload
 		this.elementDB = elementDB;
 		this.statisticsDB = statisticsDB;
 		this.elementGeometryDB = elementGeometryDB;
-		this.manageChangesetsDB = manageChangesetsDB;
+		this.openChangesetsDB = openChangesetsDB;
 		this.changesetsDao = changesetsDao;
 		this.prefs = prefs;
 	}
@@ -92,15 +91,41 @@ public class OsmQuestChangesUpload
 		elementGeometryDB.deleteUnreferenced();
 		elementDB.deleteUnreferenced();
 
-		String logMsg = "Comitted " + commits + " changesets";
+		String logMsg = "Committed " + commits + " changes";
 		if(obsolete > 0)
 		{
-			logMsg += " but dropped " + obsolete + " changesets because there were conflicts";
+			logMsg += " but dropped " + obsolete + " changes because there were conflicts";
 		}
 
 		Log.i(TAG, logMsg);
 
-		// TODO check if we can close any changesets now
+		closeOpenChangesets();
+	}
+
+	public void closeOpenChangesets()
+	{
+		for (OpenChangesetInfo info : openChangesetsDB.getAll())
+		{
+			long timePassed = System.currentTimeMillis() - openChangesetsDB.getLastQuestSolvedTime();
+
+			if(timePassed >= OpenChangesetsDao.CLOSE_CHANGESETS_AFTER_INACTIVITY_OF)
+			{
+				try
+				{
+					osmDao.closeChangeset(info.changesetId);
+					Log.d(TAG, "Closed changeset #" + info.changesetId + ".");
+				}
+				catch (OsmConflictException e)
+				{
+					Log.i(TAG, "Couldn't close changeset #" + info.changesetId + " because it has already been closed.");
+				}
+				finally
+				{
+					// done!
+					openChangesetsDB.delete(info.questType);
+				}
+			}
+		}
 	}
 
 	private long getChangesetIdOrCreate(OsmElementQuestType questType)
@@ -110,7 +135,7 @@ public class OsmQuestChangesUpload
 		Long cachedChangesetId = changesetIdsCache.get(questTypeName);
 		if(cachedChangesetId != null) return cachedChangesetId;
 
-		ManageChangesetInfo changesetInfo = manageChangesetsDB.get(questTypeName);
+		OpenChangesetInfo changesetInfo = openChangesetsDB.get(questTypeName);
 		long result;
 		if (changesetInfo != null && changesetInfo.changesetId != null)
 		{
@@ -129,7 +154,7 @@ public class OsmQuestChangesUpload
 	{
 		String questTypeName = questType.getClass().getSimpleName();
 		long changesetId = osmDao.openChangeset(createChangesetTags(questType));
-		manageChangesetsDB.assignChangesetId(questTypeName, changesetId);
+		openChangesetsDB.replace(questTypeName, changesetId);
 		return changesetId;
 	}
 

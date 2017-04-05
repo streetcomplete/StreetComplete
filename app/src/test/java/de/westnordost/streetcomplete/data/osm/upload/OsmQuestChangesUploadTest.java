@@ -26,7 +26,7 @@ import de.westnordost.osmapi.map.data.OsmNode;
 import de.westnordost.osmapi.user.User;
 import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.data.QuestStatus;
-import de.westnordost.streetcomplete.data.changesets.ManageChangesetsDao;
+import de.westnordost.streetcomplete.data.changesets.OpenChangesetsDao;
 import de.westnordost.streetcomplete.data.osm.OsmQuest;
 import de.westnordost.streetcomplete.data.osm.OverpassQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChanges;
@@ -180,7 +180,7 @@ public class OsmQuestChangesUploadTest extends TestCase
 		MergedElementDao elementDb = mock(MergedElementDao.class);
 		OsmQuestDao questDb = mock(OsmQuestDao.class);
 
-		ManageChangesetsDao manageChangesetsDb = mock(ManageChangesetsDao.class);
+		OpenChangesetsDao manageChangesetsDb = mock(OpenChangesetsDao.class);
 
 		MapDataDao mapDataDao = createMapDataDaoThatReportsConflictOnUploadAndNodeDeleted();
 		when(mapDataDao.openChangeset(any(Map.class))).thenReturn(secondChangesetId);
@@ -192,7 +192,7 @@ public class OsmQuestChangesUploadTest extends TestCase
 
 		assertFalse(u.uploadQuestChange(firstChangesetId, quest, element, false, false));
 
-		verify(manageChangesetsDb).assignChangesetId("TestQuestType", secondChangesetId);
+		verify(manageChangesetsDb).replace("TestQuestType", secondChangesetId);
 		verify(questDb).delete(quest.getId());
 		verify(elementDb).delete(Element.Type.NODE, A_NODE_ID);
 	}

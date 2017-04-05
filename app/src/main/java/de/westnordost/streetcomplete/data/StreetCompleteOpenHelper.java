@@ -7,7 +7,7 @@ import android.text.TextUtils;
 
 import javax.inject.Singleton;
 
-import de.westnordost.streetcomplete.data.changesets.ManageChangesetsTable;
+import de.westnordost.streetcomplete.data.changesets.OpenChangesetsTable;
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryTable;
 import de.westnordost.streetcomplete.data.osm.persist.NodeTable;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestTable;
@@ -160,11 +160,10 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 			");";
 
 	private static final String MANAGE_CHANGESETS_TABLE_CREATE =
-			"CREATE TABLE " + ManageChangesetsTable.NAME +
+			"CREATE TABLE " + OpenChangesetsTable.NAME +
 			" (" +
-				ManageChangesetsTable.Columns.QUEST_TYPE +    " varchar(255)	PRIMARY KEY, " +
-				ManageChangesetsTable.Columns.CHANGESET_ID +  " int, " + // may be null
-				ManageChangesetsTable.Columns.LAST_CHANGE +   " int				DEFAULT 0" +
+				OpenChangesetsTable.Columns.QUEST_TYPE +    " varchar(255)	PRIMARY KEY, " +
+				OpenChangesetsTable.Columns.CHANGESET_ID +  " int NOT NULL" +
 			");";
 
 	public StreetCompleteOpenHelper(Context context)

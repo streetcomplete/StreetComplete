@@ -14,6 +14,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import de.westnordost.streetcomplete.ApplicationConstants;
+import de.westnordost.streetcomplete.data.changesets.OpenChangesetsDao;
 import de.westnordost.streetcomplete.data.download.QuestDownloadService;
 import de.westnordost.streetcomplete.data.osm.OsmQuest;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChanges;
@@ -39,6 +40,7 @@ public class QuestController
 	private final ElementGeometryDao geometryDB;
 	private final OsmNoteQuestDao osmNoteQuestDB;
 	private final CreateNoteDao createNoteDB;
+	private final OpenChangesetsDao openChangesetsDao;
 	private final Context context;
 	private final VisibleQuestRelay relay;
 
@@ -60,13 +62,15 @@ public class QuestController
 
 	@Inject public QuestController(OsmQuestDao osmQuestDB, MergedElementDao osmElementDB,
 								   ElementGeometryDao geometryDB, OsmNoteQuestDao osmNoteQuestDB,
-								   CreateNoteDao createNoteDB, Context context)
+								   CreateNoteDao createNoteDB, OpenChangesetsDao openChangesetsDao,
+								   Context context)
 	{
 		this.osmQuestDB = osmQuestDB;
 		this.osmElementDB = osmElementDB;
 		this.geometryDB = geometryDB;
 		this.osmNoteQuestDB = osmNoteQuestDB;
 		this.createNoteDB = createNoteDB;
+		this.openChangesetsDao = openChangesetsDao;
 		this.context = context;
 		this.relay = new VisibleQuestRelay();
 	}
@@ -145,6 +149,7 @@ public class QuestController
 					q.setChanges(changes);
 					q.setStatus(QuestStatus.ANSWERED);
 					osmQuestDB.update(q);
+					openChangesetsDao.setLastQuestSolvedTimeToNow();
 					relay.onQuestSolved(q.getId(), group);
 				}
 				else

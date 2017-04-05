@@ -1,13 +1,14 @@
 package de.westnordost.streetcomplete.data;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import de.westnordost.streetcomplete.data.changesets.ManageChangesetsDao;
+import de.westnordost.streetcomplete.data.changesets.OpenChangesetsDao;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
 import de.westnordost.streetcomplete.data.statistics.QuestStatisticsDao;
 import de.westnordost.streetcomplete.util.KryoSerializer;
@@ -33,10 +34,10 @@ public class DbModule
 		return new QuestStatisticsDao(dbHelper, changesetsDao);
 	}
 
-	@Provides @Singleton public static ManageChangesetsDao changesetsManagerDao(
-			SQLiteOpenHelper dbHelper)
+	@Provides @Singleton public static OpenChangesetsDao changesetsManagerDao(
+			SQLiteOpenHelper dbHelper, SharedPreferences prefs)
 	{
-		return new ManageChangesetsDao(dbHelper);
+		return new OpenChangesetsDao(dbHelper,prefs);
 	}
 
 	@Provides @Singleton public static OsmQuestDao osmQuestDao(
