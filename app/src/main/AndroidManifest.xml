@@ -43,6 +43,7 @@
         <service android:name="de.westnordost.streetcomplete.data.download.QuestDownloadService" />
         <service android:name="de.westnordost.streetcomplete.data.QuestChangesUploadService" />
 
+        <receiver android:name="de.westnordost.streetcomplete.data.osm.upload.ChangesetAutoCloser" />
     </application>
 
 </manifest>
