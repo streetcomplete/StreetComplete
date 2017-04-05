@@ -10,6 +10,11 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
+import de.westnordost.osmapi.map.changes.MapDataChangesHandler;
+import de.westnordost.osmapi.map.data.BoundingBox;
+import de.westnordost.osmapi.map.data.Node;
+import de.westnordost.osmapi.map.data.Relation;
+import de.westnordost.osmapi.map.data.Way;
 import de.westnordost.streetcomplete.ApplicationConstants;
 import de.westnordost.osmapi.changesets.ChangesetInfo;
 import de.westnordost.osmapi.changesets.ChangesetsDao;
@@ -48,7 +53,11 @@ public class QuestStatisticsDao
 				if(questType == null) return;
 
 				int prev = data.get(questType) != null ? data.get(questType) : 0;
-				data.put(questType, prev+1);
+
+				MapDataChangesCounter counter = new MapDataChangesCounter();
+				changesetsDao.getData(changeset.id, counter);
+
+				data.put(questType, prev + counter.count );
 			}
 		}, filters);
 
@@ -63,6 +72,20 @@ public class QuestStatisticsDao
 			values.put(QuestStatisticsTable.Columns.SUCCEEDED, dataForQuestType.getValue());
 			db.insert(QuestStatisticsTable.NAME, null, values);
 		}
+	}
+
+	private static class MapDataChangesCounter implements MapDataChangesHandler
+	{
+		int count = 0;
+
+		@Override public void onStartCreations() {}
+		@Override public void onStartModifications() {}
+		@Override public void onStartDeletions() {}
+		@Override public void handle(BoundingBox bounds) {}
+
+		@Override public void handle(Node node) { count++; }
+		@Override public void handle(Way way) { count++; }
+		@Override public void handle(Relation relation) { count++; }
 	}
 
 	public void addOne(String questType)
