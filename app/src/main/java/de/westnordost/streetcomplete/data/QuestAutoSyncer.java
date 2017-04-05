@@ -26,7 +26,7 @@ import de.westnordost.streetcomplete.data.changesets.OpenChangesetsDao;
 import de.westnordost.streetcomplete.data.download.MobileDataAutoDownloadStrategy;
 import de.westnordost.streetcomplete.data.download.QuestAutoDownloadStrategy;
 import de.westnordost.streetcomplete.data.download.WifiAutoDownloadStrategy;
-import de.westnordost.streetcomplete.data.osm.upload.ChangesetAutoCloser;
+import de.westnordost.streetcomplete.data.osm.upload.ChangesetAutoCloserReceiver;
 import de.westnordost.streetcomplete.util.SphericalEarthMath;
 
 import static android.app.PendingIntent.FLAG_CANCEL_CURRENT;
@@ -158,9 +158,9 @@ public class QuestAutoSyncer implements LocationListener, LostApiClient.Connecti
 	{
 		AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 		long delayTime = System.currentTimeMillis() + OpenChangesetsDao.CLOSE_CHANGESETS_AFTER_INACTIVITY_OF;
-		Intent intent = new Intent(context, ChangesetAutoCloser.class);
+		Intent intent = new Intent(context, ChangesetAutoCloserReceiver.class);
 		PendingIntent pi = PendingIntent.getBroadcast(context, 0, intent, FLAG_CANCEL_CURRENT);
-		alarmManager.set(AlarmManager.RTC, delayTime, pi);
+		alarmManager.set(AlarmManager.RTC_WAKEUP, delayTime, pi);
 	}
 
 	private boolean updateConnectionState()

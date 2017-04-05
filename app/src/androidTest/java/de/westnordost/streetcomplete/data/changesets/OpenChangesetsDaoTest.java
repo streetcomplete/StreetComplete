@@ -12,7 +12,7 @@ public class OpenChangesetsDaoTest extends ApplicationDbTestCase
 	@Override public void setUp()
 	{
 		super.setUp();
-		dao = new OpenChangesetsDao(dbHelper);
+		dao = new OpenChangesetsDao(dbHelper, null);
 	}
 
 	public void testDeleteNonExistent()

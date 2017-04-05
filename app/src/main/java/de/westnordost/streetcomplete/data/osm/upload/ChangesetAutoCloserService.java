@@ -1,24 +1,26 @@
 package de.westnordost.streetcomplete.data.osm.upload;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
+
+import android.app.IntentService;
 import android.content.Intent;
 
 import javax.inject.Inject;
 
 import de.westnordost.streetcomplete.Injector;
 
-public class ChangesetAutoCloser extends BroadcastReceiver
+public class ChangesetAutoCloserService extends IntentService
 {
 	@Inject OsmQuestChangesUpload osmQuestChangesUpload;
 
-	public ChangesetAutoCloser()
+	public ChangesetAutoCloserService()
 	{
+		super("ChangesetAutoCloserService");
 		Injector.instance.getApplicationComponent().inject(this);
 	}
 
-	@Override public void onReceive(Context context, Intent intent)
+	@Override protected void onHandleIntent(Intent intent)
 	{
 		osmQuestChangesUpload.closeOpenChangesets();
+		ChangesetAutoCloserReceiver.completeWakefulIntent(intent);
 	}
 }

@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.data.OsmModule;
 import de.westnordost.streetcomplete.data.QuestChangesUploadService;
 import de.westnordost.streetcomplete.data.download.QuestDownloadService;
 import de.westnordost.streetcomplete.data.meta.MetadataModule;
-import de.westnordost.streetcomplete.data.osm.upload.ChangesetAutoCloser;
+import de.westnordost.streetcomplete.data.osm.upload.ChangesetAutoCloserService;
 import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHoursForm;
 import de.westnordost.streetcomplete.quests.road_name.AutoCorrectAbbreviationsEditText;
 import de.westnordost.streetcomplete.quests.note_discussion.NoteDiscussionForm;
@@ -28,7 +28,7 @@ public interface ApplicationComponent
 
 	void inject(QuestChangesUploadService questChangesUploadService);
 	void inject(QuestDownloadService questChangesDownloadService);
-	void inject(ChangesetAutoCloser changesetAutoCloser);
+	void inject(ChangesetAutoCloserService changesetAutoCloserService);
 
 	void inject(SettingsFragment settingsFragment);
 	void inject(SettingsActivity settingsActivity);
