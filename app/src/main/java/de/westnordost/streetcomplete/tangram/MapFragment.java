@@ -470,12 +470,14 @@ public class MapFragment extends Fragment implements
 
 	public void zoomIn()
 	{
+		if(controller == null) return;
 		controller.setZoomEased(controller.getZoom() + 1, 500);
 		updateView();
 	}
 
 	public void zoomOut()
 	{
+		if(controller == null) return;
 		controller.setZoomEased(controller.getZoom() - 1, 500);
 		updateView();
 	}
