@@ -148,9 +148,9 @@ public class OsmQuestDao extends AQuestDao<OsmQuest>
 			stmt.bindNull(4);
 		}
 
-		stmt.bindLong(6, quest.getLastUpdate().getTime());
-		stmt.bindLong(7, quest.getElementId());
-		stmt.bindString(8, quest.getElementType().name());
+		stmt.bindLong(5, quest.getLastUpdate().getTime());
+		stmt.bindLong(6, quest.getElementId());
+		stmt.bindString(7, quest.getElementType().name());
 
 		long result = stmt.executeInsert();
 		stmt.clearBindings();
