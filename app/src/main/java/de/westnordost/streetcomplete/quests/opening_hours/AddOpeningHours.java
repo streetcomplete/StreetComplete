@@ -39,15 +39,18 @@ public class AddOpeningHours extends OverpassQuestType
 		return new AddOpeningHoursForm();
 	}
 
-	@Override public Integer applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
+	@Override public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
 	{
 		String openingHours = answer.getString(AddOpeningHoursForm.OPENING_HOURS);
 		if(openingHours != null)
 		{
 			changes.add("opening_hours", openingHours);
-			return R.string.quest_openingHours_commitMessage;
 		}
-		return null;
+	}
+
+	@Override public String getCommitMessage()
+	{
+		return "Add opening hours";
 	}
 
 	@Override public String getIconName() {	return "opening_hours"; }

@@ -32,7 +32,7 @@ public class AddBuildingLevels extends OverpassQuestType
 		return new AddBuildingLevelsForm();
 	}
 
-	public Integer applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
+	public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
 	{
 		changes.add("building:levels", ""+answer.getInt(AddBuildingLevelsForm.BUILDING_LEVELS));
 
@@ -42,8 +42,11 @@ public class AddBuildingLevels extends OverpassQuestType
 		{
 			changes.addOrModify("roof:levels", "" + roofLevels);
 		}
+	}
 
-		return R.string.quest_buildingLevels_commitMessage;
+	@Override public String getCommitMessage()
+	{
+		return "Add building and roof levels";
 	}
 
 	@Override public String getIconName() {	return "building_levels"; }

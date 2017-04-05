@@ -86,7 +86,7 @@ public class OsmNoteQuestDao extends AQuestDao<OsmNoteQuest>
 		return OsmNoteQuestTable.Columns.QUEST_STATUS;
 	}
 
-	@Override protected long executeInsert(OsmNoteQuest quest, boolean replace)
+	@Override protected synchronized long executeInsert(OsmNoteQuest quest, boolean replace)
 	{
 		SQLiteStatement stmt = replace ? this.replace : this.add;
 

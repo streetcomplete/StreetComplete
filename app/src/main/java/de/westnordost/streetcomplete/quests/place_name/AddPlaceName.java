@@ -61,17 +61,21 @@ public class AddPlaceName extends OverpassQuestType
 		return new AddPlaceNameForm();
 	}
 
-	@Override public Integer applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
+	@Override public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
 	{
 		if(answer.getBoolean(AddPlaceNameForm.NO_NAME))
 		{
 			changes.add("noname", "yes");
-			return R.string.quest_placeName_commitMessage_noname;
+			return;
 		}
 
 		String name = answer.getString(AddPlaceNameForm.NAME);
 		if(name != null) changes.add("name", name);
-		return R.string.quest_placeName_commitMessage;
+	}
+
+	@Override public String getCommitMessage()
+	{
+		return "Determine place names";
 	}
 
 	@Override public String getIconName() {	return "label"; }

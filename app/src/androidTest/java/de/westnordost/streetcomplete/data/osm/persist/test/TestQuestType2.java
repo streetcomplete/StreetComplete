@@ -13,7 +13,8 @@ public class TestQuestType2 implements OsmElementQuestType
 	{
 		return false;
 	}
-	@Override public Integer applyAnswerTo(Bundle answer, StringMapChangesBuilder changes) { return 0; }
+	@Override public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes) { }
+	@Override public String getCommitMessage() { return null; }
 	@Override public int importance()
 	{
 		return 0;

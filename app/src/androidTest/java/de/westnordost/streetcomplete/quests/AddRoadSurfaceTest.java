@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.quests;
 
-import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd;
 import de.westnordost.streetcomplete.quests.road_surface.AddRoadSurface;
@@ -17,9 +16,7 @@ public class AddRoadSurfaceTest extends AOsmElementQuestTypeTest
 	public void testSurface()
 	{
 		bundle.putString(AddRoadSurfaceForm.SURFACE, "cobblestone");
-		verify(
-				R.string.quest_roadSurface_commitMessage,
-				new StringMapEntryAdd("surface","cobblestone"));
+		verify(new StringMapEntryAdd("surface","cobblestone"));
 	}
 
 	@Override protected OsmElementQuestType createQuestType()

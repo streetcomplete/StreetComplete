@@ -1,15 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name" translatable="false">Street­Complete</string>
-
-    <string name="quest_streetName_commitMessage" translatable="false">Add road name</string>
-    <string name="quest_streetName_commitMessage_noname" translatable="false">This road has no name</string>
-    <string name="quest_streetName_commitMessage_noproperroad" translatable="false">Change road classification</string>
-    <string name="quest_buildingLevels_commitMessage" translatable="false">Add building levels</string>
-    <string name="quest_roofShape_commitMessage" translatable="false">Add roof shape</string>
-    <string name="quest_openingHours_commitMessage" translatable="false">Add opening hours</string>
-    <string name="quest_placeName_commitMessage" translatable="false">Add place name</string>
-    <string name="quest_placeName_commitMessage_noname" translatable="false">This place has no name</string>
-    <string name="quest_roadSurface_commitMessage" translatable="false">Add road surface</string>
-
 </resources>

@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.data;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.text.TextUtils;
 
 import javax.inject.Singleton;
 
@@ -31,7 +32,6 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 				OsmQuestTable.Columns.QUEST_TYPE +		" varchar(255)	NOT NULL, " +
 				OsmQuestTable.Columns.QUEST_STATUS +	" varchar(255)	NOT NULL, " +
 				OsmQuestTable.Columns.TAG_CHANGES +		" blob, " + // null if no changes
-				OsmQuestTable.Columns.COMMIT_MESSAGE +	" varchar(255), " + // null if no changes
 				OsmQuestTable.Columns.LAST_UPDATE + 	" int			NOT NULL, " +
 				OsmQuestTable.Columns.ELEMENT_ID +		" int			NOT NULL, " +
 				OsmQuestTable.Columns.ELEMENT_TYPE +	" varchar(255)	NOT NULL, " +
@@ -199,10 +199,22 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
 	{
-		if(oldVersion < 2)
+		// in version 2, the commit_message field was added, in version 3, removed again.
+		// Unfortunately, dropping a column in SQLite is not possible using ALTER TABLE ... DROP ...
+		// so we copy the whole content of the table into a new table
+		if(oldVersion == 2)
 		{
-			db.execSQL("ALTER TABLE " + OsmQuestTable.NAME + " ADD COLUMN "
-					+ OsmQuestTable.Columns.COMMIT_MESSAGE + " varchar(255);");
+			String tableName = OsmQuestTable.NAME;
+			String oldTableName = tableName + "_old";
+			db.beginTransaction();
+			db.execSQL("ALTER TABLE " + tableName + " RENAME TO " + oldTableName );
+			db.execSQL(OSM_QUESTS_TABLE_CREATE);
+			String allColumns = TextUtils.join(",", OsmQuestTable.Columns.ALL);
+			db.execSQL("INSERT INTO " + tableName + "(" + allColumns + ") " +
+					   " SELECT " + allColumns + " FROM " + oldTableName);
+			db.execSQL("DROP TABLE " + oldTableName);
+			db.endTransaction();
+		}
 
 		if(oldVersion < 3)
 		{

@@ -30,12 +30,12 @@ public class AddRoadName extends OverpassQuestType
 		return new AddRoadNameForm();
 	}
 
-	public Integer applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
+	public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
 	{
 		if(answer.getBoolean(AddRoadNameForm.NO_NAME))
 		{
 			changes.add("noname", "yes");
-			return R.string.quest_streetName_commitMessage_noname;
+			return;
 		}
 
 		int noProperRoad = answer.getInt(AddRoadNameForm.NO_PROPER_ROAD);
@@ -53,12 +53,16 @@ public class AddRoadName extends OverpassQuestType
 					changes.modify("highway", prevValue + "_link");
 				}
 			}
-			return R.string.quest_streetName_commitMessage_noproperroad;
+			return;
 		}
 
 		String name = answer.getString(AddRoadNameForm.NAME);
 		if(name != null) changes.add("name", name);
-		return R.string.quest_streetName_commitMessage;
+	}
+
+	@Override public String getCommitMessage()
+	{
+		return "Determine road names";
 	}
 
 	@Override public String getIconName() {	return "signpost"; }

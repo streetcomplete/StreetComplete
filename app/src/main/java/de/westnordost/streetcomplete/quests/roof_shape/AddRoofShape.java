@@ -28,10 +28,14 @@ public class AddRoofShape extends OverpassQuestType
 		return new AddRoofShapeForm();
 	}
 
-	public Integer applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
+	public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
 	{
 		changes.add("roof:shape", answer.getString(AddRoofShapeForm.ROOF_SHAPE));
-		return R.string.quest_roofShape_commitMessage;
+	}
+
+	@Override public String getCommitMessage()
+	{
+		return "Add roof shapes";
 	}
 
 	@Override public String getIconName() {	return "roof_shape"; }

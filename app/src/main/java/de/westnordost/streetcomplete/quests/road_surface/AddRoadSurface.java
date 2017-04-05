@@ -40,10 +40,14 @@ public class AddRoadSurface extends OverpassQuestType
 		return new AddRoadSurfaceForm();
 	}
 
-	public Integer applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
+	public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
 	{
 		changes.add("surface", answer.getString(AddRoadSurfaceForm.SURFACE));
-		return R.string.quest_roadSurface_commitMessage;
+	}
+
+	@Override public String getCommitMessage()
+	{
+		return "Add road surfaces";
 	}
 
 	@Override public String getIconName() {	return "street_surface"; }
