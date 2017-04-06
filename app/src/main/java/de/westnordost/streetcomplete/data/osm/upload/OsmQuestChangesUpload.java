@@ -104,26 +104,24 @@ public class OsmQuestChangesUpload
 
 	public void closeOpenChangesets()
 	{
+		long timePassed = System.currentTimeMillis() - openChangesetsDB.getLastQuestSolvedTime();
+		if(timePassed < OpenChangesetsDao.CLOSE_CHANGESETS_AFTER_INACTIVITY_OF) return;
+
 		for (OpenChangesetInfo info : openChangesetsDB.getAll())
 		{
-			long timePassed = System.currentTimeMillis() - openChangesetsDB.getLastQuestSolvedTime();
-
-			if(timePassed >= OpenChangesetsDao.CLOSE_CHANGESETS_AFTER_INACTIVITY_OF)
+			try
 			{
-				try
-				{
-					osmDao.closeChangeset(info.changesetId);
-					Log.d(TAG, "Closed changeset #" + info.changesetId + ".");
-				}
-				catch (OsmConflictException e)
-				{
-					Log.i(TAG, "Couldn't close changeset #" + info.changesetId + " because it has already been closed.");
-				}
-				finally
-				{
-					// done!
-					openChangesetsDB.delete(info.questType);
-				}
+				osmDao.closeChangeset(info.changesetId);
+				Log.d(TAG, "Closed changeset #" + info.changesetId + ".");
+			}
+			catch (OsmConflictException e)
+			{
+				Log.i(TAG, "Couldn't close changeset #" + info.changesetId + " because it has already been closed.");
+			}
+			finally
+			{
+				// done!
+				openChangesetsDB.delete(info.questType);
 			}
 		}
 	}
