@@ -15,6 +15,7 @@ import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v13.app.FragmentCompat;
+import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -52,7 +53,7 @@ public class MapFragment extends Fragment implements
 	private Marker locationMarker;
 	private Marker accuracyMarker;
 	private Marker directionMarker;
-	private float[] directionMarkerSize;
+	private String[] directionMarkerSize;
 
 	private MapView mapView;
 
@@ -119,7 +120,7 @@ public class MapFragment extends Fragment implements
 
 		locationMarker = controller.addMarker();
 		BitmapDrawable dot = createBitmapDrawableFrom(R.drawable.location_dot);
-		locationMarker.setStylingFromString("{ style: 'points', color: 'white', size: "+Arrays.toString(sizeInDp(dot))+", order: 2000, flat: true, collide: false }");
+		locationMarker.setStylingFromString("{ style: 'points', color: 'white', size: ["+TextUtils.join(",",sizeInDp(dot))+"], order: 2000, flat: true, collide: false }");
 		locationMarker.setDrawable(dot);
 		locationMarker.setDrawOrder(3);
 
@@ -141,13 +142,14 @@ public class MapFragment extends Fragment implements
 		listener.onMapReady();
 	}
 
-	private float[] sizeInDp(Drawable drawable)
+	private String[] sizeInDp(Drawable drawable)
 	{
 		DisplayMetrics metrics = new DisplayMetrics();
 		getActivity().getWindowManager().getDefaultDisplay().getMetrics(metrics);
 		float d = metrics.density;
-		return new float[]{drawable.getIntrinsicWidth() / d , drawable.getIntrinsicHeight() / d};
-
+		return new String[]{
+				drawable.getIntrinsicWidth() / d + "px",
+				drawable.getIntrinsicHeight() / d + "px"};
 	}
 
 	private BitmapDrawable createBitmapDrawableFrom(int resId)
@@ -333,9 +335,9 @@ public class MapFragment extends Fragment implements
 		{
 			double r = rotation * 180 / Math.PI;
 			directionMarker.setStylingFromString(
-					"{ style: 'points', color: '#cc536dfe', size: " +
-							Arrays.toString(directionMarkerSize) +
-							", order: 2000, collide: false, flat: true, angle: " + r + " }");
+					"{ style: 'points', color: '#cc536dfe', size: [" +
+							TextUtils.join(",",directionMarkerSize) +
+							"], order: 2000, collide: false, flat: true, angle: " + r + " }");
 		}
 	}
 
