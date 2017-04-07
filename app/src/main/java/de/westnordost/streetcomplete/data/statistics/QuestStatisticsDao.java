@@ -18,27 +18,27 @@ import de.westnordost.osmapi.map.data.Way;
 import de.westnordost.streetcomplete.ApplicationConstants;
 import de.westnordost.osmapi.changesets.ChangesetInfo;
 import de.westnordost.osmapi.changesets.ChangesetsDao;
-import de.westnordost.osmapi.changesets.QueryChangesetsFilters;
 import de.westnordost.osmapi.common.Handler;
 
 public class QuestStatisticsDao
 {
 	private final SQLiteOpenHelper dbHelper;
 	private final ChangesetsDao changesetsDao;
+	private final UserChangesetsDao userChangesetsDao;
 
 	@Inject
 	public QuestStatisticsDao(SQLiteOpenHelper dbHelper, ChangesetsDao changesetsDao)
 	{
 		this.dbHelper = dbHelper;
 		this.changesetsDao = changesetsDao;
+		this.userChangesetsDao = new UserChangesetsDao(changesetsDao);
 	}
 
 	public void syncFromOsmServer(long userId)
 	{
-		QueryChangesetsFilters filters = new QueryChangesetsFilters().byUser(userId).onlyClosed();
 		final Map<String, Integer> data = new HashMap<>();
 
-		changesetsDao.find(new Handler<ChangesetInfo>()
+		userChangesetsDao.findAll(new Handler<ChangesetInfo>()
 		{
 			@Override public void handle(ChangesetInfo changeset)
 			{
@@ -59,7 +59,7 @@ public class QuestStatisticsDao
 
 				data.put(questType, prev + counter.count );
 			}
-		}, filters);
+		}, userId, ApplicationConstants.DATE_OF_BIRTH);
 
 		SQLiteDatabase db = dbHelper.getWritableDatabase();
 		// clear table
