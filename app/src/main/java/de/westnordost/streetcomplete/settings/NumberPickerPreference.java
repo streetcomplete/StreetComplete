@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.settings;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.preference.DialogPreference;
+import android.support.annotation.IntDef;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.NumberPicker;
@@ -23,6 +24,8 @@ public class NumberPickerPreference extends DialogPreference
 	private int value;
 	private int minValue;
 	private int maxValue;
+
+	private NumberPicker picker;
 
 	public NumberPickerPreference(Context context, AttributeSet attrs)
 	{
@@ -46,7 +49,7 @@ public class NumberPickerPreference extends DialogPreference
 	@Override
 	protected void onBindDialogView(View view) {
 		super.onBindDialogView(view);
-		NumberPicker picker = (NumberPicker) view.findViewById(R.id.number_picker);
+		picker = (NumberPicker) view.findViewById(R.id.number_picker);
 
 		picker.setMinValue(minValue);
 		picker.setMaxValue(maxValue);
@@ -77,6 +80,12 @@ public class NumberPickerPreference extends DialogPreference
 	@Override
 	protected void onDialogClosed(boolean positiveResult)
 	{
+		// hackfix: The Android number picker accepts input via soft keyboard (which makes sense
+		// from a UX viewpoint) but is not designed for that. By default, it does not apply the
+		// input there. See http://stackoverflow.com/questions/18944997/numberpicker-doesnt-work-with-keyboard
+		// A workaround is to clear the focus before saving.
+		picker.clearFocus();
+
 		if(positiveResult)
 		{
 			if(persistInt(value)) notifyChanged();
