@@ -14,9 +14,9 @@ public class AddRoadName extends OverpassQuestType
 	@Override
 	protected String getTagFilters()
 	{
-		return " ways with (" +
-		       " highway ~ living_street|bicycle_road|residential|pedestrian|primary|secondary|tertiary|unclassified|road or " +
-		       " highway = service and service = alley) and !name and noname != yes and !junction and !area";
+		return " ways with " +
+		       " highway ~ living_street|bicycle_road|residential|pedestrian|primary|secondary|tertiary|unclassified|road " +
+		       " and !name and noname != yes and !junction and !area";
 	}
 
 	@Override
