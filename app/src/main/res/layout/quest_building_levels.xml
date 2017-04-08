@@ -1,50 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android">
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="bottom">
 
-    <LinearLayout
-        android:orientation="horizontal"
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:layout_marginEnd="10dp"
-        >
+        android:layout_toLeftOf="@+id/building_illustration"
+        android:layout_alignBottom="@+id/building_illustration"
+        android:layout_alignParentLeft="true"
+        android:background="@drawable/building_levels_illustration_bg_left"
+        android:scaleType="fitEnd"
+        />
+
+    <ImageView
+        android:id="@+id/building_illustration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/building_levels_illustration"
+        android:scaleType="fitEnd"
+        android:layout_centerHorizontal="true"
+        />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/building_illustration"
+        android:layout_alignBottom="@+id/building_illustration"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/building_levels_illustration_bg_right"
+        android:scaleType="fitEnd"
+        />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/building_illustration"
+        android:layout_marginRight="-28dp">
 
         <TextView
+            android:id="@+id/levelsInputLabel"
             android:text="@string/quest_buildingLevels_levelsLabel"
+            android:gravity="right"
             android:labelFor="@+id/levelsInput"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:layout_marginRight="4dp"
+            />
 
         <EditText
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:ems="2"
             android:gravity="center_horizontal"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/levelsInputLabel"
             android:id="@+id/levelsInput"
             android:inputType="number"
             android:maxLines="1"
+            android:nextFocusForward="@+id/roofLevelsInput"
             />
 
-    </LinearLayout>
 
-    <LinearLayout
-        android:orientation="horizontal"
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_toRightOf="@+id/building_illustration"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:layout_marginEnd="10dp">
-
-        <TextView
-            android:text="@string/quest_buildingLevels_roofLevelsLabel"
-            android:labelFor="@+id/roofLevelsInput"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+        android:layout_marginLeft="-34dp"
+        android:gravity="center_vertical">
 
         <EditText
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
+            android:layout_alignParentLeft="true"
             android:ems="2"
             android:gravity="center_horizontal"
             android:id="@+id/roofLevelsInput"
@@ -52,6 +84,15 @@
             android:maxLines="1"
             />
 
-    </LinearLayout>
+        <TextView
+            android:text="@string/quest_buildingLevels_roofLevelsLabel"
+            android:labelFor="@+id/roofLevelsInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/roofLevelsInput"
+            android:gravity="left"
+            android:layout_marginLeft="4dp"/>
 
-</merge>
+    </RelativeLayout>
+
+</RelativeLayout>
