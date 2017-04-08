@@ -97,7 +97,9 @@ public class OAuthComponent
 			editor.putLong(Prefs.OSM_USER_ID, userId);
 			editor.apply();
 
-			statisticsDao.syncFromOsmServer(userId);
+			// DISABLED: this is too data intensive for the app to do for itself. Should be done by
+			// an external server once and be queried therafter from it
+			//statisticsDao.syncFromOsmServer(userId);
 			return null;
 		}
 
