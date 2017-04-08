@@ -15,8 +15,8 @@ android {
         applicationId "de.westnordost.streetcomplete"
         minSdkVersion 17
         targetSdkVersion 25
-        versionCode 2
-        versionName "0.5"
+        versionCode 3
+        versionName "0.6"
         multiDexEnabled true
         testInstrumentationRunner "com.android.test.runner.MultiDexTestRunner"
     }
