@@ -1,4 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name" translatable="false">Street­Complete</string>
+
+    <!-- became too tedious to maintain in all languages -->
+    <string name="translation_credits_html" translatable="false">
+"English - Tobias Zwick&lt;br/&gt;<br/>
+Deutsch - Tobias Zwick&lt;br/&gt;
+Français - Jamie Nadeau, Peuc, Anthony C.&lt;br/&gt;
+Italiano - Maurizio Napolitano&lt;br/&gt;
+Català - Joan Montané&lt;br/&gt;
+Español - sanchi, Tobias Zwick, Jose Luis Infante&lt;br/&gt;
+Magyar - Zachár Benjámin&lt;br/&gt;
+Português - Patrick Montenegro&lt;br/&gt;
+文言 - Kagami&lt;br/&gt;"
+    </string>
 </resources>
