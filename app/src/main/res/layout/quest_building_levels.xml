@@ -60,7 +60,7 @@
             android:id="@+id/levelsInput"
             android:inputType="number"
             android:maxLines="1"
-            android:nextFocusForward="@+id/roofLevelsInput"
+            android:nextFocusDown="@+id/roofLevelsInput"
             />
 
 
@@ -82,6 +82,7 @@
             android:id="@+id/roofLevelsInput"
             android:inputType="number"
             android:maxLines="1"
+            android:imeOptions="actionDone"
             />
 
         <TextView
