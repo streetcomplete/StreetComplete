@@ -30,6 +30,6 @@
         android:layout_alignBottom="@+id/imageView"
         android:layout_centerHorizontal="true"
         style="@style/ImageSelectLabel"
-        android:paddingBottom="16dp"/>
+        android:paddingBottom="8dp"/>
 
 </RelativeLayout>
