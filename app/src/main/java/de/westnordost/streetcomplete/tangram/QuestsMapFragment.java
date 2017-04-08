@@ -43,6 +43,8 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 	private MapData questsLayer;
 	private MapData geometryLayer;
 
+	private Float previousZoom = null;
+
 	private LngLat lastPos;
 	private Rect lastDisplayedRect;
 	private Set<Point> retrievedTiles;
@@ -138,13 +140,18 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 			return;
 		}
 
-		// move center a little because we have the bottom sheet blocking part of the map (hopefully temporary solution)
-		LatLon pos = TangramConst.toLatLon(labelPickResult.getCoordinates());
-		LngLat zoomTo = TangramConst.toLngLat(SphericalEarthMath.translate(pos,20,180));
-		controller.setPositionEased(zoomTo, 500);
+		previousZoom = Math.max(17.5f,controller.getZoom()); // never zoom back further than 17.5
 		if(controller.getZoom() < 19)
 		{
+			LatLon pos = TangramConst.toLatLon(labelPickResult.getCoordinates());
+			LngLat zoomTo = TangramConst.toLngLat(SphericalEarthMath.translate(pos,20,180));
+			// move center a little because we have the bottom sheet blocking part of the map (hopefully temporary solution)
+			controller.setPositionEased(zoomTo, 500);
 			controller.setZoomEased(19, 500);
+		}
+		else
+			{
+			controller.setPositionEased(labelPickResult.getCoordinates(), 500);
 		}
 		updateView();
 
@@ -237,9 +244,11 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 
 	public void removeQuestGeometry()
 	{
-		if(geometryLayer == null) return; // might still be null - async calls...
-
-		geometryLayer.clear();
+		if(geometryLayer != null) geometryLayer.clear();
+		if(controller != null)
+		{
+			if (previousZoom != null) controller.setZoomEased(previousZoom, 500);
+		}
 	}
 /*
 	public void addQuest(Quest quest, QuestGroup group)
