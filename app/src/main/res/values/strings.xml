@@ -75,7 +75,7 @@
 <string name="action_about">"About StreetComplete"</string>
 <string name="about_title_version">"Version"</string>
 <string name="about_title_authors">"Authors"</string>
-<string name="about_summary_authors">"© 2016 Tobias Zwick and contributors"</string>
+<string name="about_summary_authors">"© 2016-2017 Tobias Zwick and contributors"</string>
 <string name="about_title_repository">"Source Repository"</string>
 <string name="about_summary_repository">"on GitHub"</string>
 <string name="about_title_report_error">"Report error"</string>
@@ -107,7 +107,7 @@
 <string name="quest_openingHours_comment_description">"Be concise, ideally use the wording from the sign. I.e. \"by appointment\". The absence of a sign does not necessarily mean there are no regular opening hours."</string>
 <string name="quest_buildingLevels_title">"How many levels does this building have?"</string>
 <string name="quest_buildingLevels_title_buildingPart">"How many levels does this building part have?"</string>
-<string name="quest_buildingLevels_levelsLabel">"total levels (inclusive roof)"</string>
+<string name="quest_buildingLevels_levelsLabel">"total levels"</string>
 <string name="quest_buildingLevels_roofLevelsLabel">"of these, levels in the roof"</string>
 <string name="quest_roofShape_title">"What basic shape does this building's roof have?"</string>
 <string name="quest_roofShape_select_one">"Select one:"</string>
@@ -124,7 +124,7 @@ First off, understand that with this app, you make actual and direct contributio
 Anything you contribute in this app is directly added to the map, there is no third party in-between the app and OSM infrastructure, like it is the case with &lt;a href=\"https://wheelmap.org\"&gt;wheelmap.org&lt;/a&gt; or &lt;a href=\"http://www.kort.ch\"&gt;Kort&lt;/a&gt;.
 &lt;/p&gt;
 &lt;p&gt;
-Editing the OpenStreetMap anonymously is not possible, so any changes you make are made with your OSM user account, which also means that your changes to the map are visible publicly on the openstreetmap website.
+Editing the OpenStreetMap anonymously is not possible, so any changes you make are made with your OSM user account. This means, that the date, content and implicitly the location of your changes are visible publicly on the openstreetmap website and are attributable to your account.
 &lt;/p&gt;
 
 &lt;b&gt;Location&lt;/b&gt;&lt;br/&gt;
@@ -143,14 +143,10 @@ To display the map, vector tiles are retrieved from the &lt;a href=\"https://map
 &lt;p&gt;
 (&lt;i&gt;This is actually not implemented yet, just want to inform you what is to come!:&lt;/i&gt;) The data shown in the leaderboard and profile is aggregated from publicly available information from the OpenStreetMap. The data does not come from this app but basically from the public commit history of OSM users.
 &lt;/p&gt;"</string>
-<string name="authors_html">"&lt;p&gt;© 2016 Tobias Zwick&lt;/p&gt;
+<string name="authors_html">"&lt;p&gt;© 2017 Tobias Zwick&lt;/p&gt;
 &lt;p&gt;The app uses the &lt;a href=\"https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free\"&gt;Beautiful Flat Icons&lt;/a&gt; set by Nick Roach, licensed under the &lt;a href=\"http://www.gnu.org/licenses/gpl-2.0.html\"&gt;GPL&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Translations&lt;/b&gt;&lt;/p&gt;
-English - Tobias Zwick&lt;br/&gt;
-German - Tobias Zwick&lt;br/&gt;
-French - Jamie Nadeau, Anthony C.&lt;br/&gt;
-Italian - Maurizio Napolitano&lt;br/&gt;
-Catalan - Joan Montané&lt;br/&gt;"</string>
+%1$s"</string>
 <string name="quest_expiration_one_day">"One day"</string>
 <string name="quest_expiration_a_week">"A week"</string>
 <string name="quest_expiration_two_weeks">"Two weeks"</string>
@@ -177,8 +173,6 @@ Catalan - Joan Montané&lt;br/&gt;"</string>
 <string name="quest_surface_value_sand">"Sand"</string>
 <string name="quest_surface_value_sett">"Sett"</string>
 <string name="quest_surface_value_wood">"Wood"</string>
-
-<!-- Not implemented yet... -->
 <string name="quest_placeName_title">"What is the name of this place?"</string>
 <string name="quest_sidewalk_title">"Is there a sidewalk in this street?"</string>
 <string name="map_orientation_info">"The map is oriented north up."</string>
@@ -217,9 +211,9 @@ Catalan - Joan Montané&lt;br/&gt;"</string>
 This app finds incomplete and extendable data in your vicinity and displays it on a map as markers. Each of those is solvable by answering a simple question to complete the info on site.
 
 The info you enter is then directly added to the OpenStreetMap in your name, without the need to use another editor."</string>
-<string name="quest_buildingLevels_negativeBuildingLevels">"Oops! You specified more roof levels than levels in total!"</string>
-    <string name="quest_openingHours_add_times">Add opening times</string>
 <string name="quest_name_answer_noName">"It has no name"</string>
 <string name="quest_name_answer_noName_confirmation_title">"Really no name?"</string>
 <string name="quest_name_noName_confirmation_positive">"Yes, no name"</string>
+<string name="quest_buildingLevels_negativeBuildingLevels">"Oops! You specified more roof levels than levels in total!"</string>
+<string name="quest_openingHours_add_times">"Add opening times"</string>
 </resources>

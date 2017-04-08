@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<string name="action_settings">"impostazioni"</string>
+<string name="action_settings">"Impostazioni"</string>
 <string name="oauth_communication_error">"Impossibile raggiungere il servere di autorizzazione"</string>
 <string name="loading">"Caricamento
 "</string>
@@ -15,18 +15,18 @@
 <string name="pref_title_not_authorized_summary">"Non ancora autorizzato"</string>
 <string name="pref_tilecache_size_summary">"%d Mb"</string>
 <string name="pref_tilecache_size_message">"Spazio in megabyte riservato su supporto esterno per memorizzare le mappe nella cache"</string>
-<string name="pref_title_quest_expiration_time">"Missioni Cache"</string>
+<string name="pref_title_quest_expiration_time">"Cache Missioni"</string>
 <string name="pref_summary_quest_expiration">"per %s prima di un nuovo download"</string>
 <string name="pref_title_show_notes_not_phrased_as_questions">"Mostra tutte le note"</string>
 <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Mostra anche le note non sotto forma di domanda"</string>
 <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Ignorare le note non sotto forma di domanda"</string>
 <string name="pref_title_map_cache">"Dimensione Cache Mappa"</string>
 <string name="map_btn_gps_tracking">"Seguimi"</string>
-<string name="map_attribution_mapzen">"Potenzionato da Mapzen"</string>
+<string name="map_attribution_mapzen">"Powered by Mapzen"</string>
 <string name="map_attribution_osm">"© contributori OpenStreetMap"</string>
 <string name="quest_generic_otherAnswers">"Altre domande…"</string>
 <string name="quest_generic_answer_notApplicable">"Non posso dirlo"</string>
-<string name="quest_generic_confirmation_title">"Si è sicuri?"</string>
+<string name="quest_generic_confirmation_title">"Sei sicuro?"</string>
 <string name="quest_generic_confirmation_yes">"Certo! Lo sono"</string>
 <string name="quest_generic_confirmation_no">"Farò una verifica"</string>
 <string name="quest_generic_error_field_empty">"Hai lasciato questo campo vuoto"</string>
@@ -38,7 +38,7 @@
 <string name="quest_streetName_description">"
 così come scritto sul cartello stradale, le abbreviazioni vengono espanse:"</string>
 <string name="quest_streetName_answer_noName_confirmation_description">"Spesso il segnale stradale è solamente ad un'estremità della strada. Inoltre potrebbero esserci segnali stradali aggiuntivi per vie laterali che appartengono a una strada più grande. Di solito, qualsiasi strada con case ha un nome."</string>
-<string name="quest_streetName_nameWithAbbreviations_confirmation_title">"Abbreviazione del nome?"</string>
+<string name="quest_streetName_nameWithAbbreviations_confirmation_title">"Abbreviazione nel nome?"</string>
 <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Se il nome può essere scritto senza un'abbreviazione, allora dovrebbe essere ampliato. Molte abbreviazioni comuni sono espanse automaticamente durante la digitazione, ma probabilmente non tutte."</string>
 <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Nessuna abbreviazione"</string>
 <string name="quest_openingHours_name_title">"Quali sono gli orari di apertura di %s?"</string>
@@ -46,11 +46,11 @@ così come scritto sul cartello stradale, le abbreviazioni vengono espanse:"</st
 <string name="quest_openingHours_end_time">"orario di chiusura"</string>
 <string name="quest_openingHours_add_months">"Aggiungi mesi"</string>
 <string name="quest_openingHours_add_hours">"Aggiungi ore"</string>
-<string name="quest_openingHours_add_weekdays">"Aggiungi weekend"</string>
+<string name="quest_openingHours_add_weekdays">"Aggiungi giorni feriali"</string>
 <string name="quest_openingHours_chooseMonthsTitle">"Seleziona mesi"</string>
-<string name="quest_openingHours_chooseWeekdaysTitle">"Seleziona weekend"</string>
+<string name="quest_openingHours_chooseWeekdaysTitle">"Seleziona giorni feriali"</string>
 <string name="quest_openingHours_24_7_confirmation">"In altre parole, è aperto a tutti gli orari, tutti i giorni?"</string>
-<string name="quest_noteDiscussion_title">"Puoi contribuire con questa nota?"</string>
+<string name="quest_noteDiscussion_title">"Puoi contribuire a questa nota?"</string>
 <string name="quest_noteDiscussion_no">"No, nascondi"</string>
 <string name="quest_noteDiscussion_create">"creato da %1$s (%2$s)"</string>
 <string name="quest_noteDiscussion_comment">"%1$s (%2$s)"</string>
@@ -69,7 +69,7 @@ così come scritto sul cartello stradale, le abbreviazioni vengono espanse:"</st
 <string name="upload_error">"Errore durante il caricamento delle risposte. Si consiglia di verificare il log"</string>
 <string name="cannot_find_bbox">"Impossibile esplorare qui. Provare ad aumentare il livello di zoom"</string>
 <string name="download_area_too_big">"È necessario ingrandire ulteriolmente"</string>
-<string name="confirmation_cancel_prev_download_title">"Annullare la ricerca ed esplorare invece da qui?"</string>
+<string name="confirmation_cancel_prev_download_title">"Annullare la ricerca ed esplorare invece qui?"</string>
 <string name="notification_downloading">"Esplorazione di missioni"</string>
 <string name="now_downloading_toast">"Esplorazione di maggiori missioni"</string>
 <string name="turn_on_location_request">"Il sistema di localizzazione è spento. Vado nelle impostazione per accenderlo?"</string>
@@ -77,7 +77,7 @@ così come scritto sul cartello stradale, le abbreviazioni vengono espanse:"</st
 <string name="action_about">"Informazioni su StreetComplete"</string>
 <string name="about_title_version">"Versione"</string>
 <string name="about_title_authors">"Autore"</string>
-<string name="about_summary_authors">"© 2016 Tobias Zwick e contributori"</string>
+<string name="about_summary_authors">"© 2016-2017 Tobias Zwick e contributori"</string>
 <string name="about_title_repository">"Repository codice sorgente"</string>
 <string name="about_summary_repository">"su GitHub"</string>
 <string name="about_title_report_error">"Report di errore"</string>
@@ -106,10 +106,10 @@ così come scritto sul cartello stradale, le abbreviazioni vengono espanse:"</st
 <string name="quest_openingHours_answer_seasonal_opening_hours">"Differente per mese"</string>
 <string name="quest_openingHours_answer_no_regular_opening_hours">"Nessuna apertura regolare"</string>
 <string name="quest_openingHours_comment_title">"Descrivi gli orari di apertura"</string>
-<string name="quest_openingHours_comment_description">"A farla breve:  idealmente vanno usate le parole nel cartello. Es. \"su appuntamento\". L'assenza di un cartello non significa necessariamente che non ci siano orari di apertura regolari."</string>
+<string name="quest_openingHours_comment_description">"A farla breve: idealmente vanno usate le parole nel cartello. Es.: \"su appuntamento\". L'assenza di un cartello non significa necessariamente che non ci siano orari di apertura regolari."</string>
 <string name="quest_buildingLevels_title">"Quanti piani ha questo edificio?"</string>
 <string name="quest_buildingLevels_title_buildingPart">"Quanti piani ha questa parte di edificio?"</string>
-<string name="quest_buildingLevels_levelsLabel">"totale piani (incluso il tetto)"</string>
+<string name="quest_buildingLevels_levelsLabel">"totale piani"</string>
 <string name="quest_buildingLevels_roofLevelsLabel">"di questi, piani nel tetto"</string>
 <string name="quest_roofShape_title">"che tipo di forma ha il tetto di questo edificio?"</string>
 <string name="quest_roofShape_select_one">"Selezionane uno:"</string>
@@ -132,9 +132,9 @@ La modifica anonima in OpenStreetMap non è possibile, pertanto tutte le modific
 &lt;p&gt;
 La posizione viene utilizzata solo per la scansione automatica per le missioni che ti circondano. Nessun problema, l'applicazione mantiene la posizione di per se stessa.
 &lt;/p&gt;
-&lt;p&gt;&lt;b&gt; Utilizzo dei dati&lt;/ b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;b&gt; Utilizzo dei dati&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-Come accennato, l'applicazione comunica direttamente con l'infrastruttura OSM. Cioè, con &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt; Overpass API &lt;/a&gt; per il download di missioni (che è anonimo) e con  le&lt;a href=\"http: / /wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API &lt;/a&gt; per il caricamento di modifiche. &lt;br/&gt;
+Come accennato, l'applicazione comunica direttamente con l'infrastruttura OSM. Cioè, con &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass API&lt;/a&gt; per il download di missioni (che è anonimo) e con le &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API&lt;/a&gt; per il caricamento di modifiche. &lt;br/&gt;
 Tuttavia, prima di caricare le modifiche, l'app va una verifica con un &lt;a href=\"http://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;semplice file di testo&lt;/a&gt; sul server se è stato vietato il caricamento di eventuali modifiche. Si tratta di una misura precauzionale per essere in grado di mantenere le versioni del app che risultano avere bug critici che possono creare deterioramente sui dati OSM&lt;br/&gt;
 &lt;/p&gt;
 &lt;p&gt;
@@ -142,14 +142,10 @@ Per visualizzare la mappa, vengono utilizzati tile vettoriali dal &lt;a href=\"h
 &lt;p&gt;
 (&lt;i&gt;questa funzione è in realtà non ancora implementata, ma voglio informare su  ciò che è potrebbe accadere: &lt;/i&gt;) I dati riportati nella classifica deriva dal  profilo ed è creato dalla aggregazione di informazioni pubblicamente disponibili da OpenStreetMap. I dati non vengono da questa applicazione ma dallo storico dei dati inviati dagli utenti OSM
 &lt;/p&gt;"</string>
-<string name="authors_html">" &lt;p&gt;© 2016 Tobias Zwick&lt;/p&gt;
+<string name="authors_html">"&lt;p&gt;© 2017 Tobias Zwick&lt;/p&gt;
 &lt;p&gt;Questa app usa le &lt;a href=\"https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free\"&gt;Beautiful Flat Icons&lt;/a&gt;  create da Nick Roach, rilasciate con licenza &lt;a href=\"http://www.gnu.org/licenses/gpl-2.0.html\"&gt;GPL&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Traduttori&lt;/b&gt;&lt;/p&gt;
-Inglese - Tobias Zwick&lt;br/&gt;
-Tedesco - Tobias Zwick&lt;br/&gt;
-Francese - Jamie Nadeau, Anthony C.&lt;br/&gt;
-Italiano - Maurizio Napolitano&lt;br/&gt;
-Catalano - Joan Montané&lt;br/&gt;"</string>
+%1$s"</string>
 <string name="quest_expiration_one_day">"Un giorno"</string>
 <string name="quest_expiration_a_week">"Una settimana"</string>
 <string name="quest_expiration_two_weeks">"Due settimane"</string>
@@ -176,8 +172,6 @@ Catalano - Joan Montané&lt;br/&gt;"</string>
 <string name="quest_surface_value_sand">"Sabbia"</string>
 <string name="quest_surface_value_sett">"Bolognini"</string>
 <string name="quest_surface_value_wood">"Legno"</string>
-
-<!-- Not implemented yet... -->
 <string name="quest_placeName_title">"Quale è il nome di questo luogo?"</string>
 <string name="quest_sidewalk_title">"C'è un marciapiede in questa strada?"</string>
 <string name="map_orientation_info">"La mappa è orientata con in nord in alto"</string>
@@ -219,4 +213,6 @@ Le informazioni inserite vengono aggiunte direttamente su OpenStreetMap a tuo no
 <string name="quest_name_answer_noName">"non ha nome"</string>
 <string name="quest_name_answer_noName_confirmation_title">"Veramente non ha nome?"</string>
 <string name="quest_name_noName_confirmation_positive">"Confermo. Nessun nome"</string>
+<string name="quest_buildingLevels_negativeBuildingLevels">"Ops! Hai specificato più piani per il tetto del numero totale di piani. "</string>
+<string name="quest_openingHours_add_times">"Aggiungi orari di apertura"</string>
 </resources>

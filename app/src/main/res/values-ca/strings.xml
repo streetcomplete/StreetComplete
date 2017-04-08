@@ -4,7 +4,7 @@
 <string name="oauth_communication_error">"No es pot accedir al servidor d'autoritzacions"</string>
 <string name="loading">"S'està carregant"</string>
 <string name="retry">"Reintenta"</string>
-<string name="oauth_cancelled">"S'ha cancel·lat l'autoritzacio"</string>
+<string name="oauth_cancelled">"S'ha cancel·lat l'autorització"</string>
 <string name="oauth_failed_permissions">"L'autorització ha fallat: es llisten tots els permisos que cal autoritzar"</string>
 <string name="title_activity_settings">"Configuració"</string>
 <string name="pref_category_communication">"Comunicació"</string>
@@ -13,9 +13,9 @@
 <string name="pref_title_authorized_summary">"S'ha autoritzat correctament el teu compte"</string>
 <string name="pref_title_not_authorized_summary">"Encara no estàs autoritzat"</string>
 <string name="pref_tilecache_size_summary">"%d MB"</string>
-<string name="pref_tilecache_size_message">"%d MB"</string>
+<string name="pref_tilecache_size_message">"Espai en MB reservat en el magatzem extern com memòria cau per les tessel·les"</string>
 <string name="pref_title_quest_expiration_time">"Missions en memòria cau"</string>
-<string name="pref_summary_quest_expiration">"durant %s abans de baixer-ne de noves"</string>
+<string name="pref_summary_quest_expiration">"durant %s abans de baixar-ne de noves"</string>
 <string name="pref_title_show_notes_not_phrased_as_questions">"Mostra totes les notes"</string>
 <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Mostra totes les notes"</string>
 <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Ignora les notes que no són preguntes"</string>
@@ -75,7 +75,7 @@
 <string name="action_about">"Quant a l'StreetComplete"</string>
 <string name="about_title_version">"Versió"</string>
 <string name="about_title_authors">"Autors"</string>
-<string name="about_summary_authors">"© 2016 Tobias Zwick i col·laboradors"</string>
+<string name="about_summary_authors">"© 2016-2017 Tobias Zwick i col·laboradors"</string>
 <string name="about_title_repository">"Dipòsit font"</string>
 <string name="about_summary_repository">"a GitHub"</string>
 <string name="about_title_report_error">"Informa d'un error"</string>
@@ -87,8 +87,7 @@
 <string name="not_authorized">"Sense autoritzar"</string>
 <string name="version_banned_message">"Aquesta versió de l'StreetComplet està bandejada per a pujar qualsevol resposta! Actualitza la versió!"</string>
 <string name="no_gps_no_quests">"Per a cercar automàticament missions prop teu, activa la geolocalització"</string>
-<string name="nothing_more_to_download">"No hi ha més missions
-disponibles"</string>
+<string name="nothing_more_to_download">"No hi ha més missions disponibles"</string>
 <string name="later">"Després"</string>
 <string name="quest_streetName_answer_noProperStreet">"No és un carrer"</string>
 <string name="quest_streetName_answer_noProperStreet_question">"Què és, doncs?"</string>
@@ -108,7 +107,7 @@ disponibles"</string>
 <string name="quest_openingHours_comment_description">"Sigues concís, idealment usa el mateix redactat del cartell. P. e. «amb cita prèvia». L'absència de cartell no implica necessàriament que no hi hagi horari d'obertura habitual."</string>
 <string name="quest_buildingLevels_title">"Quantes plantes té aquest edifici?"</string>
 <string name="quest_buildingLevels_title_buildingPart">"Quantes plantes té aquesta part de l'edifici?"</string>
-<string name="quest_buildingLevels_levelsLabel">"plantes totals (incloent-hi la teulada)"</string>
+<string name="quest_buildingLevels_levelsLabel">"plantes totals"</string>
 <string name="quest_buildingLevels_roofLevelsLabel">"d'aquestes plantes, en la teulada"</string>
 <string name="quest_roofShape_title">"Quina forma bàsica té la teulada d'aquest edifici?"</string>
 <string name="quest_roofShape_select_one">"Selecciona'n un:"</string>
@@ -119,9 +118,9 @@ disponibles"</string>
 <string name="map_btn_zoom_out">"Allunya't"</string>
 <string name="map_btn_zoom_in">"Apropa't"</string>
 <string name="privacy_html">"&lt;p&gt; Ah, algú que es preocupa per la privadesa, bé! Crec que només tinc bones notícies per a tu:&lt;/p&gt;
-&lt;p&gt;&lt;b&gt; Contribucions directes&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Contribucions directes&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-En primer lloc, tingues present que amb aquesta aplicació es fan aportacions efectivess i directes a l'OpenStreetMap.&lt;br/&gt;
+En primer lloc, tingues present que amb aquesta aplicació es fan aportacions efectives i directes a l'OpenStreetMap.&lt;br/&gt;
 Qualsevol cosa que contribueixis amb aquesta aplicació s'afegeix directament al mapa, no hi ha una tercera part entre l'aplicació i la infraestructura de l'OSM, com és el cas de &lt;a href=\"https://wheelmap.org\"&gt;wheelmap.org&lt;/a&gt; o &lt;a href=\"http://www.kort.ch\"&gt;Kort &lt;/a&gt;.
 &lt;/p&gt;
 &lt;p&gt;
@@ -133,7 +132,7 @@ L'edició de l'OpenStreetMap forma anònima no és possible, de manera que quals
 La teva ubicació només s'utilitza per a cercar automàticament missions que t'envolten. No et preocupis, l'aplicació manté la teva ubicació per a si mateixa.
 &lt;/p&gt;
 
-&lt;p&gt;&lt;b&gt; Ús de dades &lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Ús de dades&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 Com s'ha esmentat, l'aplicació es comunica directament amb la infraestructura de l'OSM. És a dir, amb l'&lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt; &lt;/a&gt;API Overpass&lt;/a&gt; per a baixar les missions (de forma anònima) i amb la &lt;a href = \"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;API de l'OSM&lt;/a&gt; API per a pujar els canvis.&lt;br/&gt;
 No obstant això, abans de pujar els canvis, l'aplicació comprova amb un &lt;a href=\"http://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;fitxer de text pla&lt;/a&gt; en el meu servidor si t'he prohibit pujar qualsevol canvi. Aquesta és una mesura de precaució per a poder mantenir versions de l'aplicació que tinguin errors crítics i puguin malmetre les dades de l'OSM.&lt;br/&gt;
@@ -142,16 +141,12 @@ No obstant això, abans de pujar els canvis, l'aplicació comprova amb un &lt;a 
 Per a visualitzar el mapa, es recuperen tessel·les vectorials del servei &lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt;Mapzen&lt;/a&gt;, que és anònim. El servei enregistra les sol·licituds de tessel·les per a entendre quines àrees són populars per a la pre-emmagatzematge en memòria cau i millores de rendiment. La seva plataforma també registra les adreces IP i tot l'allotjament és a Amazon pel que estan subjectes al que hi podrien fer.
 &lt;/p&gt;
 &lt;p&gt;
-(&lt;i&gt; Això és en realitat no s'ha implementat encara, només vull informar-te del que està per venir: &lt;/i&gt;) Les dades que es mostren a la taula de classificació i el perfil s'agreguen a la informació a disposició del públic des de l'OpenStreetMap. Les dades no provenen d'aquesta aplicació, sinó bàsicament de l'historial de canvis públic dels usuaris OSM.
+(&lt;i&gt; Això és el que actualment no s'ha implementat encara, només vull informar-te del que està per venir: &lt;/i&gt;) Les dades que es mostren a la taula de classificació i el perfil s'agreguen a la informació a disposició del públic des de l'OpenStreetMap. Les dades no provenen d'aquesta aplicació, sinó bàsicament de l'historial de canvis públic dels usuaris OSM.
 &lt;/p&gt;"</string>
-<string name="authors_html">"&lt;p&gt;© 2016 Tobias Zwick&lt;/p&gt;
+<string name="authors_html">"&lt;p&gt;© 2017 Tobias Zwick&lt;/p&gt;
 &lt;p&gt;L'aplicació usa el conjunt &lt;a href=\"https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free\"&gt;Beautiful Flat Icons&lt;/a&gt; d'en Nick Roach, llicenciat en els termes de la &lt;a href=\"http://www.gnu.org/licenses/gpl-2.0.html\"&gt;GPL&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Tranduccions&lt;/b&gt;&lt;/p&gt;
-Anglès - Tobias Zwick&lt;br/&gt;
-Alemany - Tobias Zwick&lt;br/&gt;
-Francès - Jamie Nadeau, Anthony C.&lt;br/&gt;
-Italià - Maurizio Napolitano&lt;br/&gt;
-Catalan - Joan Montané&lt;br/&gt;"</string>
+%1$s"</string>
 <string name="quest_expiration_one_day">"1 dia"</string>
 <string name="quest_expiration_a_week">"1 setmana"</string>
 <string name="quest_expiration_two_weeks">"2 setmanes"</string>
@@ -178,8 +173,6 @@ Catalan - Joan Montané&lt;br/&gt;"</string>
 <string name="quest_surface_value_sand">"Sorra"</string>
 <string name="quest_surface_value_sett">"Llambordes"</string>
 <string name="quest_surface_value_wood">"Fusta"</string>
-
-<!-- Not implemented yet... -->
 <string name="quest_placeName_title">"Quin nom té aquest lloc?"</string>
 <string name="quest_sidewalk_title">"Aquest carrer té vorera?"</string>
 <string name="map_orientation_info">"El mapa té el nord amunt."</string>
@@ -221,4 +214,6 @@ Aleshores, la informació que introdueixes s'afegeix directament a l'OpenStreetM
 <string name="quest_name_answer_noName">"No té nom"</string>
 <string name="quest_name_answer_noName_confirmation_title">"De veritat no té nom?"</string>
 <string name="quest_name_noName_confirmation_positive">"Sí, no té nom"</string>
+<string name="quest_buildingLevels_negativeBuildingLevels">"Ep! Has especificat més nivells de teulada que nivells en total!"</string>
+<string name="quest_openingHours_add_times">"Afegir horaris d'apertura"</string>
 </resources>
