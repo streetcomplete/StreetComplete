@@ -48,7 +48,7 @@ public class MapFragment extends Fragment implements
 		TouchInput.ShoveResponder, TouchInput.RotateResponder,
 		TouchInput.PanResponder, TouchInput.DoubleTapResponder, CompassComponent.Listener
 {
-	private CompassComponent compass = new CompassComponent(this);
+	private CompassComponent compass = new CompassComponent();
 
 	private Marker locationMarker;
 	private Marker accuracyMarker;
@@ -133,6 +133,8 @@ public class MapFragment extends Fragment implements
 		accuracyMarker = controller.addMarker();
 		accuracyMarker.setDrawable(createBitmapDrawableFrom(R.drawable.accuracy_circle));
 		accuracyMarker.setDrawOrder(1);
+
+		compass.setListener(this);
 
 		showLocation();
 		followPosition();
@@ -461,6 +463,7 @@ public class MapFragment extends Fragment implements
 	@Override public void onDestroy()
 	{
 		super.onDestroy();
+		compass.setListener(null);
 		if(mapView != null) mapView.onDestroy();
 	}
 

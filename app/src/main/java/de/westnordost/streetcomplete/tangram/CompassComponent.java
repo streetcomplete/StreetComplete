@@ -30,7 +30,7 @@ public class CompassComponent implements SensorEventListener
 		void onRotationChanged(float rotation);
 	}
 
-	public CompassComponent(Listener listener)
+	public void setListener(Listener listener)
 	{
 		this.listener = listener;
 	}
@@ -111,7 +111,7 @@ public class CompassComponent implements SensorEventListener
 				if(deltaTime > DURATION) currentRotation = targetRotation;
 				else currentRotation += deltaRotation * deltaTime / DURATION;
 			}
-			listener.onRotationChanged(currentRotation);
+			if(listener != null) listener.onRotationChanged(currentRotation);
 			lastTime = System.currentTimeMillis();
 		}
 	}
