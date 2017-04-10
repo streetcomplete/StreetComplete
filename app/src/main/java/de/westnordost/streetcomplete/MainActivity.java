@@ -66,6 +66,7 @@ import de.westnordost.streetcomplete.location.LocationState;
 import de.westnordost.streetcomplete.location.LocationStateButton;
 import de.westnordost.streetcomplete.tangram.MapFragment;
 import de.westnordost.streetcomplete.tangram.QuestsMapFragment;
+import de.westnordost.streetcomplete.tools.CrashReportExceptionHandler;
 import de.westnordost.streetcomplete.util.SlippyMapMath;
 import de.westnordost.streetcomplete.util.SphericalEarthMath;
 import de.westnordost.osmapi.map.data.BoundingBox;
@@ -159,6 +160,8 @@ public class MainActivity extends AppCompatActivity implements
 	@Override protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
+
+		CrashReportExceptionHandler.install(this);
 
 		Injector.instance.getApplicationComponent().inject(this);
 

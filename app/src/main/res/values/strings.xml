@@ -216,4 +216,8 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
 <string name="quest_name_noName_confirmation_positive">"Yes, no name"</string>
 <string name="quest_buildingLevels_negativeBuildingLevels">"Oops! You specified more roof levels than levels in total!"</string>
 <string name="quest_openingHours_add_times">"Add opening times"</string>
+<string name="crash_message">Would you please send the error report to the developer?</string>
+<string name="crash_title">Oh no, an error has had occurred!</string>
+<string name="crash_compose_email">Compose Email</string>
+<string name="no_email_client">You have no email client installed.</string>
 </resources>
