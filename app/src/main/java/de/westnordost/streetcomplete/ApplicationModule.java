@@ -6,6 +6,8 @@ import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.preference.PreferenceManager;
 
+import javax.inject.Singleton;
+
 import dagger.Module;
 import dagger.Provides;
 import de.westnordost.streetcomplete.data.QuestController;
@@ -21,6 +23,9 @@ import de.westnordost.streetcomplete.data.osmnotes.CreateNoteDao;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestDao;
 import de.westnordost.streetcomplete.data.tiles.DownloadedTilesDao;
 import de.westnordost.streetcomplete.location.LocationRequestFragment;
+import de.westnordost.streetcomplete.tools.CrashReportExceptionHandler;
+import de.westnordost.streetcomplete.util.KryoSerializer;
+import de.westnordost.streetcomplete.util.Serializer;
 
 @Module
 public class ApplicationModule
@@ -93,5 +98,10 @@ public class ApplicationModule
 	@Provides public static LocationRequestFragment locationRequestComponent()
 	{
 		return new LocationRequestFragment();
+	}
+
+	@Provides @Singleton public static CrashReportExceptionHandler serializer(Context ctx)
+	{
+		return new CrashReportExceptionHandler(ctx);
 	}
 }

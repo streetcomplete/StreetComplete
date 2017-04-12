@@ -84,6 +84,8 @@ public class MainActivity extends AppCompatActivity implements
 		OAuthWebViewDialogFragment.OAuthListener, OAuthComponent.Listener,
 		LocationRequestFragment.LocationRequestListener
 {
+	@Inject CrashReportExceptionHandler crashReportExceptionHandler;
+
 	@Inject LocationRequestFragment locationRequestFragment;
 	@Inject QuestAutoSyncer questAutoSyncer;
 
@@ -160,8 +162,6 @@ public class MainActivity extends AppCompatActivity implements
 	@Override protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-
-		CrashReportExceptionHandler.install(this);
 
 		Injector.instance.getApplicationComponent().inject(this);
 
