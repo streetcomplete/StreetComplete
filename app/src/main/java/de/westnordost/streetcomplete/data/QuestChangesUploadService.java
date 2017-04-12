@@ -30,7 +30,8 @@ public class QuestChangesUploadService extends IntentService
 	public static final String
 			ACTION_ERROR = "de.westnordost.QuestChangesUploadService.ERROR",
 			IS_AUTH_FAILED = "authFailed",
-			IS_VERSION_BANNED = "banned";
+			IS_VERSION_BANNED = "banned",
+			EXCEPTION = "exception";
 
 	public static final String
 			ACTION_FINISHED = "de.westnordost.QuestChangesUploadService.FINISHED";
@@ -108,7 +109,9 @@ public class QuestChangesUploadService extends IntentService
 		catch (Exception e)
 		{
 			Log.e(TAG, "Unable to upload changes", e);
-			send(new Intent(ACTION_ERROR));
+			Intent errorIntent = new Intent(ACTION_ERROR);
+			errorIntent.putExtra(EXCEPTION, e);
+			send(errorIntent);
 		}
 
 		send(new Intent(ACTION_FINISHED));

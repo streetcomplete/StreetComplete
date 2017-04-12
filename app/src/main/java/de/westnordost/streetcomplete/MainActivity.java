@@ -139,7 +139,11 @@ public class MainActivity extends AppCompatActivity implements
 			}
 			else // any other error
 			{
-				Toast.makeText(MainActivity.this, R.string.upload_error, Toast.LENGTH_LONG).show();
+				Exception e = (Exception) intent.getSerializableExtra(QuestChangesUploadService.EXCEPTION);
+				if(e != null)
+				{
+					crashReportExceptionHandler.askUserToSendErrorReport(MainActivity.this, R.string.upload_error, e);
+				}
 			}
 		}
 	};
@@ -164,6 +168,8 @@ public class MainActivity extends AppCompatActivity implements
 		super.onCreate(savedInstanceState);
 
 		Injector.instance.getApplicationComponent().inject(this);
+
+		crashReportExceptionHandler.askUserToSendCrashReportIfExists(this);
 
 		setContentView(R.layout.activity_main);
 		PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
@@ -485,14 +491,7 @@ public class MainActivity extends AppCompatActivity implements
 
 		@Override public void onError(final Exception e)
 		{
-			runOnUiThread(new Runnable()
-			{
-				@Override public void run()
-				{
-					int errorResourceId = R.string.download_error;
-					Toast.makeText(MainActivity.this, errorResourceId, Toast.LENGTH_LONG).show();
-				}
-			});
+			crashReportExceptionHandler.askUserToSendErrorReport(MainActivity.this, R.string.download_error, e);
 		}
 
 		@Override public void onFinished()

@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.tools;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -26,24 +27,23 @@ import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 public class CrashReportExceptionHandler implements Thread.UncaughtExceptionHandler
 {
 	private Thread.UncaughtExceptionHandler defaultUncaughtExceptionHandler;
-	private final Context ctx;
+	private final Context appCtx;
 
 	private final static String CRASHREPORT = "crashreport.txt";
 	private final static String ENC = "UTF-8";
 	private final static String MAILTO = "osm@westnordost.de";
 	private final static String GOOGLEPLAY = "com.android.vending";
 
-	@Inject public CrashReportExceptionHandler(Context ctx)
+	@Inject public CrashReportExceptionHandler(Context appCtx)
 	{
-		this.ctx = ctx;
+		this.appCtx = appCtx;
 		install();
-		checkAndSendCrashReport();
 	}
 
 	private boolean install()
 	{
-		String installerPackageName = ctx.getPackageManager().getInstallerPackageName(ctx.getPackageName());
-		// developer. Don't need this functionality
+		String installerPackageName = appCtx.getPackageManager().getInstallerPackageName(appCtx.getPackageName());
+		// developer. Don't need this functionality (it might even interfere with unit tests)
 		if(installerPackageName == null) return false;
 		// don't need this for google play users: they have their own crash reports
 		if(GOOGLEPLAY.equals(installerPackageName)) return false;
@@ -59,35 +59,46 @@ public class CrashReportExceptionHandler implements Thread.UncaughtExceptionHand
 		return true;
 	}
 
-	private void checkAndSendCrashReport()
+	public void askUserToSendCrashReportIfExists(Activity activityCtx)
 	{
 		if(hasCrashReport())
 		{
 			String reportText = readCrashReportFromFile();
 			deleteCrashReport();
-			askUserToSendErrorReport(R.string.crash_title, reportText);
+			askUserToSendErrorReport(activityCtx, R.string.crash_title, reportText);
 		}
 	}
 
-	public void askUserToSendErrorReport(final int titleResourceId, final String report)
+	public void askUserToSendErrorReport(Activity activityCtx, int titleResourceId, Exception e)
 	{
+		StringWriter stackTrace = new StringWriter();
+		e.printStackTrace(new PrintWriter(stackTrace));
+		askUserToSendErrorReport(activityCtx, titleResourceId, stackTrace.toString());
+	}
+
+	private void askUserToSendErrorReport(final Activity activityCtx, final int titleResourceId, String error)
+	{
+		final String report =
+				"Describe how to reproduce it here:\n\n\n\n" +
+				getDeviceInformationString() + "\n" + error;
+
 		new Handler(Looper.getMainLooper()).post(new Runnable() { @Override public void run()
 		{
-			new AlertDialogBuilder(ctx)
+			new AlertDialogBuilder(activityCtx)
 					.setTitle(titleResourceId)
 					.setMessage(R.string.crash_message)
 					.setPositiveButton(R.string.crash_compose_email, new DialogInterface.OnClickListener()
 					{
 						@Override public void onClick(DialogInterface dialog, int which)
 						{
-							sendEmail(report);
+							sendEmail(activityCtx, report);
 						}
 					})
 					.setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener()
 					{
 						@Override public void onClick(DialogInterface dialog, int which)
 						{
-							Toast.makeText(ctx, "\uD83D\uDE22",Toast.LENGTH_SHORT).show();
+							Toast.makeText(activityCtx, "\uD83D\uDE22",Toast.LENGTH_SHORT).show();
 						}
 					})
 					.show();
@@ -99,8 +110,7 @@ public class CrashReportExceptionHandler implements Thread.UncaughtExceptionHand
 		StringWriter stackTrace = new StringWriter();
 		e.printStackTrace(new PrintWriter(stackTrace));
 		writeCrashReportToFile(
-				getDeviceInformationString() +
-				"\n" + getThreadString(t) +
+				getThreadString(t) +
 				"\nStack trace:\n" + stackTrace.toString());
 		defaultUncaughtExceptionHandler.uncaughtException(t, e);
 	}
@@ -119,7 +129,7 @@ public class CrashReportExceptionHandler implements Thread.UncaughtExceptionHand
 	{
 		try
 		{
-			FileOutputStream fos = ctx.openFileOutput(CRASHREPORT, Context.MODE_PRIVATE);
+			FileOutputStream fos = appCtx.openFileOutput(CRASHREPORT, Context.MODE_PRIVATE);
 			fos.write(text.getBytes(ENC));
 			fos.close();
 		}
@@ -128,14 +138,14 @@ public class CrashReportExceptionHandler implements Thread.UncaughtExceptionHand
 
 	private boolean hasCrashReport()
 	{
-		return Arrays.asList(ctx.fileList()).contains(CRASHREPORT);
+		return Arrays.asList(appCtx.fileList()).contains(CRASHREPORT);
 	}
 
 	private String readCrashReportFromFile()
 	{
 		try
 		{
-			FileInputStream fis = ctx.openFileInput(CRASHREPORT);
+			FileInputStream fis = appCtx.openFileInput(CRASHREPORT);
 			ByteArrayOutputStream result = new ByteArrayOutputStream();
 			byte[] buffer = new byte[1024];
 			int length;
@@ -151,22 +161,22 @@ public class CrashReportExceptionHandler implements Thread.UncaughtExceptionHand
 
 	private void deleteCrashReport()
 	{
-		ctx.deleteFile(CRASHREPORT);
+		appCtx.deleteFile(CRASHREPORT);
 	}
 
-	private void sendEmail(String text)
+	private void sendEmail(Activity activityCtx, String text)
 	{
 		Intent intent = new Intent(Intent.ACTION_SENDTO);
 		intent.setData(Uri.parse("mailto:"));
 		intent.putExtra(Intent.EXTRA_EMAIL, new String[] {MAILTO});
 		intent.putExtra(Intent.EXTRA_SUBJECT, ApplicationConstants.USER_AGENT + " Error Report");
-		intent.putExtra(Intent.EXTRA_TEXT, "Describe how to reproduce it here:\n\n\n\n\n" + text);
-		if (intent.resolveActivity(ctx.getPackageManager()) != null) {
-			ctx.startActivity(intent);
+		intent.putExtra(Intent.EXTRA_TEXT, text);
+		if (intent.resolveActivity(activityCtx.getPackageManager()) != null) {
+			activityCtx.startActivity(intent);
 		}
 		else
 		{
-			Toast.makeText(ctx, R.string.no_email_client, Toast.LENGTH_SHORT).show();
+			Toast.makeText(activityCtx, R.string.no_email_client, Toast.LENGTH_SHORT).show();
 		}
 	}
 }
