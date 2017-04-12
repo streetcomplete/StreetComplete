@@ -101,6 +101,7 @@ public class CrashReportExceptionHandler implements Thread.UncaughtExceptionHand
 							Toast.makeText(activityCtx, "\uD83D\uDE22",Toast.LENGTH_SHORT).show();
 						}
 					})
+					.setCancelable(false)
 					.show();
 		}});
 	}
