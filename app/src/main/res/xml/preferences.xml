@@ -59,6 +59,12 @@
         android:title="@string/pref_category_display">
 
         <SwitchPreference
+            android:key="display.keepScreenOn"
+            android:title="@string/pref_title_keep_screen_on"
+            android:persistent="true"
+            />
+
+        <SwitchPreference
             android:key="display.nonQuestionNotes"
             android:title="@string/pref_title_show_notes_not_phrased_as_questions"
             android:summaryOn="@string/pref_summaryOn_show_notes_not_phrased_as_questions"

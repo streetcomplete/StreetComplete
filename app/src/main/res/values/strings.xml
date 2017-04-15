@@ -220,4 +220,5 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
 <string name="crash_title">Oh no, StreetComplete crashed last time!</string>
 <string name="crash_compose_email">Compose Email</string>
 <string name="no_email_client">You have no email client installed.</string>
+    <string name="pref_title_keep_screen_on">Keep screen on</string>
 </resources>
