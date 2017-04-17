@@ -1,7 +1,6 @@
 ![StreetComplete](res/feature_graphic.png)
 
-An Android app which finds wrong, incomplete or extendable data in the user's vicinity and provides
-him the tools to complete these easily and directly on site without having to use another editor.
+An Android app which finds wrong, incomplete or extendable data in the user's vicinity and provides the tools to complete these easily and directly on site without having to use another editor.
 
 The found issues are presented to the user as markers on a map (like i.e. in Mapdust) that each are
 solvable by filling out a simple form to complete/correct the information on site. The user's
