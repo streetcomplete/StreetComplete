@@ -102,7 +102,7 @@ public class OsmQuestChangesUpload
 		closeOpenChangesets();
 	}
 
-	public void closeOpenChangesets()
+	public synchronized void closeOpenChangesets()
 	{
 		long timePassed = System.currentTimeMillis() - openChangesetsDB.getLastQuestSolvedTime();
 		if(timePassed < OpenChangesetsDao.CLOSE_CHANGESETS_AFTER_INACTIVITY_OF) return;
