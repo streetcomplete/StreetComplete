@@ -193,6 +193,17 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		if(lastDisplayedRect != null && lastDisplayedRect.equals(tilesRect)) return;
 		lastDisplayedRect = tilesRect;
 
+		// TODO remove when error has been found and fixed
+		// normally should be <= 4 on small screens, but crash happens at 10000k+, so be generous here (large tablet screens)
+		if(tilesRect.width() * tilesRect.height() > 32)
+		{
+			throw new RuntimeException("Tried to display quests in a rectangle of "
+					+ tilesRect.width() + "x" + tilesRect.height() + " tiles, current zoom is " +
+					controller.getZoom() + ". Currently displayed area by screen borders is minlat=" +
+					displayedArea.getMinLatitude() + ", minlon=" + displayedArea.getMinLongitude() +
+					", maxlat=" + displayedArea.getMaxLatitude() + ", maxlon=" + displayedArea.getMaxLongitude());
+		}
+
 		List<Point> tiles = SlippyMapMath.asTileList(tilesRect);
 		tiles.removeAll(retrievedTiles);
 
@@ -203,11 +214,12 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		listener.onFirstInView(bbox);
 
 		// debugging
-		/*List<LatLon> corners = new ArrayList<LatLon>(4);
+		/*List<LatLon> corners = new ArrayList<LatLon>(5);
 		corners.add(bbox.getMin());
 		corners.add(new OsmLatLon(bbox.getMinLatitude(), bbox.getMaxLongitude()));
 		corners.add(bbox.getMax());
 		corners.add(new OsmLatLon(bbox.getMaxLatitude(), bbox.getMinLongitude()));
+		corners.add(bbox.getMin());
 		ElementGeometry e = new ElementGeometry(null, Collections.singletonList(corners));
 		addQuestGeometry(e);*/
 
