@@ -43,6 +43,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import de.westnordost.osmapi.common.errors.OsmConnectionException;
 import de.westnordost.streetcomplete.about.AboutActivity;
 import de.westnordost.streetcomplete.data.Quest;
 import de.westnordost.streetcomplete.data.QuestAutoSyncer;
@@ -497,7 +498,16 @@ public class MainActivity extends AppCompatActivity implements
 
 		@Override public void onError(final Exception e)
 		{
-			crashReportExceptionHandler.askUserToSendErrorReport(MainActivity.this, R.string.download_error, e);
+			// a 5xx error is not the fault of this app. Nothing we can do about it, so it does not
+			// make sense to send an error report. Just notify the user
+			if(e instanceof OsmConnectionException)
+			{
+				Toast.makeText(MainActivity.this, R.string.download_error, Toast.LENGTH_LONG).show();
+			}
+			else
+			{
+				crashReportExceptionHandler.askUserToSendErrorReport(MainActivity.this, R.string.download_error, e);
+			}
 		}
 
 		@Override public void onFinished()
