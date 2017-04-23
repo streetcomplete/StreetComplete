@@ -33,7 +33,6 @@ import com.mapzen.tangram.Marker;
 import com.mapzen.tangram.TouchInput;
 
 import java.io.File;
-import java.util.Arrays;
 
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.streetcomplete.Prefs;

@@ -221,4 +221,6 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
 <string name="crash_compose_email">Compose Email</string>
 <string name="no_email_client">You have no email client installed.</string>
     <string name="pref_title_keep_screen_on">Keep screen on</string>
+    <string name="download_server_error">Connection error while scanning for quests. Try again later.</string>
+    <string name="upload_server_error">Connection error while uploading answers. Try again later.</string>
 </resources>

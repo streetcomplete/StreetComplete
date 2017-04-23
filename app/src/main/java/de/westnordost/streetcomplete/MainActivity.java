@@ -144,6 +144,13 @@ public class MainActivity extends AppCompatActivity implements
 				Exception e = (Exception) intent.getSerializableExtra(QuestChangesUploadService.EXCEPTION);
 				if(e != null)
 				{
+					// a 5xx error is not the fault of this app. Nothing we can do about it, so it does not
+					// make sense to send an error report. Just notify the user
+					if(e instanceof OsmConnectionException)
+					{
+						Toast.makeText(MainActivity.this, R.string.upload_server_error, Toast.LENGTH_LONG).show();
+					}
+
 					crashReportExceptionHandler.askUserToSendErrorReport(MainActivity.this, R.string.upload_error, e);
 				}
 			}
@@ -502,7 +509,7 @@ public class MainActivity extends AppCompatActivity implements
 			// make sense to send an error report. Just notify the user
 			if(e instanceof OsmConnectionException)
 			{
-				Toast.makeText(MainActivity.this, R.string.download_error, Toast.LENGTH_LONG).show();
+				Toast.makeText(MainActivity.this, R.string.download_server_error, Toast.LENGTH_LONG).show();
 			}
 			else
 			{

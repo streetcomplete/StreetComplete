@@ -150,7 +150,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 			controller.setZoomEased(19, 500);
 		}
 		else
-			{
+		{
 			controller.setPositionEased(labelPickResult.getCoordinates(), 500);
 		}
 		updateView();
