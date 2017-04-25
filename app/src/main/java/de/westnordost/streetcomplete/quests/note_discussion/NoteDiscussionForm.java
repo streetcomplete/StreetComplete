@@ -62,7 +62,10 @@ public class NoteDiscussionForm extends AbstractQuestAnswerFragment
 
 			@Override public void onSuccess(Note result)
 			{
-				inflateNoteDiscussion(result);
+				if(getActivity() != null)
+				{
+					inflateNoteDiscussion(result);
+				}
 			}
 
 			@Override public void onError(Exception e)
