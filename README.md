@@ -28,6 +28,7 @@ Right now, there are very few different question types. I will add more and more
 ## Contributing
 
 You can help translate this app over here: 
+
 [<img src="https://poeditor.com/public/images/logo_small.png" alt="POEditor">](https://poeditor.com/join/project/IE4GC127Ki)
 
 If you would like to help and are able to contribute code, you are most welcome.
