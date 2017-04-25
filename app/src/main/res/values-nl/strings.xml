@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_settings">"Instellingen"</string>
+    <string name="oauth_communication_error">"Niet mogelijk de autorisatieserver te bereiken"</string>
+    <string name="loading">"Laden"</string>
+    <string name="retry">"Probeer opnieuw"</string>
+    <string name="oauth_cancelled">"Autorisatie vervallen"</string>
+    <string name="oauth_failed_permissions">"Autorisatie mislukt: Alle genoemde rechten moeten worden toegekend"</string>
+    <string name="title_activity_settings">"instellingen"</string>
+    <string name="pref_category_communication">"Communicatie"</string>
+    <string name="pref_category_display">"Beeld"</string>
+    <string name="pref_title_authorization">"Autorisatie OSM toegang"</string>
+    <string name="pref_title_authorized_summary">"Toegang tot uw account is succesvol verleend"</string>
+    <string name="pref_title_not_authorized_summary">"U heeft nog geen autorisatie"</string>
+    <string name="pref_tilecache_size_summary">"%d MB"</string>
+    <string name="pref_tilecache_size_message">"Gereserveerde ruimte in externe opslag voor cache map tegels"</string>
+    <string name="pref_title_quest_expiration_time">"Vragen in cache"</string>
+    <string name="pref_summary_quest_expiration">"een % oud voordat nieuw geladen wordt"</string>
+    <string name="pref_title_show_notes_not_phrased_as_questions">"Toon alle notities"</string>
+    <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Toon ook notities die niet als vraag gekenmerkt zijn"</string>
+    <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Negeer notities die niet als vraag gekenmerkt zijn"</string>
+    <string name="pref_title_map_cache">"Maximaal cache geheugen"</string>
+    <string name="map_btn_gps_tracking">"Volg mij"</string>
+    <string name="map_attribution_mapzen">"Mogelijk gemaakt door Mapzen"</string>
+    <string name="map_attribution_osm">"© OpenStreetMap gebruikers"</string>
+    <string name="quest_generic_otherAnswers">"Andere antwoorden"</string>
+    <string name="quest_generic_answer_notApplicable">"Kan ik niet zeggen"</string>
+    <string name="quest_generic_confirmation_title">"Weet je het zeker?"</string>
+    <string name="quest_generic_confirmation_yes">"Ja, ik ben er zeker van"</string>
+    <string name="quest_generic_confirmation_no">"Zal ik checken"</string>
+    <string name="quest_generic_error_field_empty">"Je hebt dit veld leeg gelaten"</string>
+    <string name="quest_leave_new_note_title">"Maak in plaats hiervan een aantekening"</string>
+    <string name="quest_leave_new_note_description">"Je kan een openbare notitie maken op deze locatie waar andere mappers op kunnen reageren en hopelijk kunnen oplossen."</string>
+    <string name="quest_leave_new_note_yes">"ok"</string>
+    <string name="quest_leave_new_note_no">"nee, verberg alleen."</string>
+    <string name="quest_streetName_title">"Wat is de naam van deze weg?"</string>
+    <string name="quest_streetName_description">"zoals geschreven op het straatnaambordje, afkortingen zijn voluit geschreven"</string>
+    <string name="quest_streetName_answer_noName_confirmation_description">"Soms staan straatnaambordjes alleen aan één eind van de straat. Merk ook op dat er soms geen extra bordjes geplaatst zijn bij zijstraten die bij de hoofdstraat behoren. Gewoonlijk heeft iedere straat met huizen een naam."</string>
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_title">"Afkortingen in de naam?"</string>
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Zo mogelijk wordt een naam zonder afkortingen geschreven. Veel afkortingen worden automatisch voluit aangevuld terwijl je typt, maar waarschijnlijk niet alle."</string>
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Geen afkortingen"</string>
+    <string name="quest_openingHours_name_title">"Wat zijn de openingstijden van %?"</string>
+    <string name="quest_openingHours_start_time">"openingstijd"</string>
+    <string name="quest_openingHours_end_time">"sluitingstijd"</string>
+    <string name="quest_openingHours_add_months">"voeg maanden toe"</string>
+    <string name="quest_openingHours_add_hours">"Voeg uren toe"</string>
+    <string name="quest_openingHours_add_weekdays">"voeg weekdagen toe"</string>
+    <string name="quest_openingHours_chooseMonthsTitle">"Selecteer maanden"</string>
+    <string name="quest_openingHours_chooseWeekdaysTitle">"Selecteer weekdagen"</string>
+    <string name="quest_openingHours_24_7_confirmation">"Met andere woorden: het is iedere dag en ieder tijdstip geopend&gt;"</string>
+    <string name="quest_noteDiscussion_title">"Kan je bijdragen aan deze notitie?"</string>
+    <string name="quest_noteDiscussion_no">"Nee,verberg"</string>
+    <string name="quest_noteDiscussion_create">"gecreërd door %1$s (%2$s) "</string>
+    <string name="quest_noteDiscussion_comment">"%1$s (%2$s)"</string>
+    <string name="quest_noteDiscussion_closed">"%1$s heeft de notitie gesloten (%2$s)"</string>
+    <string name="quest_noteDiscussion_reopen">"%1$s heeft de notitie opnieuw geopend (%2$s)"</string>
+    <string name="quest_noteDiscussion_anonymous">"Anoniem"</string>
+    <string name="quest_noteDiscussion_comments_title">"Antwoorden"</string>
+    <string name="confirmation_discard_title">"invoer ongedaan maken?"</string>
+    <string name="confirmation_discard_positive">"Ongedaan gemaakt"</string>
+    <string name="confirmation_discard_negative">"Annuleer"</string>
+    <string name="action_download">"Scan voor vragen in deze omgeving"</string>
+    <string name="action_upload">"Antwoord uploaden"</string>
+    <string name="no_changes">"Je hebt het formulier leeg gelaten"</string>
+    <string name="close">"Sluit"</string>
+    <string name="download_error">"Error bij het scannen van vragen"</string>
+    <string name="upload_error">"Error bij het uploaden van vragen"</string>
+    <string name="cannot_find_bbox">"Ik kan hier niet scannen, probeer verder in te zoomen"</string>
+    <string name="download_area_too_big">"Zoom aub verder in"</string>
+    <string name="confirmation_cancel_prev_download_title">"Annuleer de huidige zoekopdracht en scan in plaats daarvan hier."</string>
+    <string name="notification_downloading">"Scannen van vragen"</string>
+    <string name="now_downloading_toast">"Scannen van meer vragen"</string>
+    <string name="turn_on_location_request">"Lokatie is uitgeschakeld, ga naar instellingen en zet hem aan. "</string>
+    <string name="no_location_permission_warning">"Je lokatie is nodig om in je omgeving te scannen voor vragen."</string>
+    <string name="action_about">"Over StreetComplete"</string>
+    <string name="about_title_version">"Versie"</string>
+    <string name="about_title_authors">"Auteurs"</string>
+    <string name="about_summary_authors">"© 2016–2017 Tobias Zwick en medewerkenden"</string>
+    <string name="about_title_repository">"Bron opslag"</string>
+    <string name="about_summary_repository">"op GitHub"</string>
+    <string name="about_title_report_error">"Error rapporteren"</string>
+    <string name="about_title_feedback">"geef feedback"</string>
+    <string name="about_title_license">"Licentie"</string>
+    <string name="about_summary_license">"GNU General Public License "</string>
+    <string name="offline">"Je bent offline"</string>
+    <string name="confirmation_authorize_now">"Je moet inloggen met je OSM gebruikers account om je antwoorden te kunnnen verwerken, nu inloggen?"</string>
+    <string name="not_authorized">"Niet ingelogd"</string>
+    <string name="version_banned_message">"Deze versie van StreetComplete is geblokkeerd voor het uploaden van antwoorden. Update alstublieft naar een nieuwere versie. "</string>
+    <string name="no_gps_no_quests">"Om automatisch te kunnnen scannen voor vragen moet je \"locatie\" aanstaan."</string>
+    <string name="nothing_more_to_download">"Verder geen vragen beschikbaar."</string>
+    <string name="later">"Later"</string>
+    <string name="quest_streetName_answer_noProperStreet">"Geen echte straat"</string>
+    <string name="quest_streetName_answer_noProperStreet_question">"Wat is het dan?"</string>
+    <string name="quest_streetName_answer_noProperStreet_link">"het koppelt alleen twee wegen"</string>
+    <string name="quest_streetName_answer_noProperStreet_service">"Het is alleen een dienstweg"</string>
+    <string name="quest_streetName_answer_noProperStreet_leaveNote">"Iets anders (maak een notitie)"</string>
+    <string name="quest_streetName_answer_noProperStreet_track">"Is alleen een pad"</string>
+    <string name="about_title_privacy_statement">"Privacy verklaring"</string>
+    <string name="about_summary_privacy_statement">"en data gebruik"</string>
+    <string name="quest_openingHours_public_holidays">"Feestdagen"</string>
+    <string name="quest_openingHours_public_holidays_short">"Feestdagen"</string>
+    <string name="quest_openingHours_open_end">"geopend tot"</string>
+    <string name="quest_openingHours_answer_247">"24/7 geopend"</string>
+    <string name="quest_openingHours_answer_seasonal_opening_hours">"verschilt per maand"</string>
+    <string name="quest_openingHours_answer_no_regular_opening_hours">"Geen vaste openingstijden"</string>
+    <string name="quest_openingHours_comment_title">"Omschrijf openingstijden"</string>
+    <string name="quest_openingHours_comment_description">"Wees beknopt. Gebruik zo mogelijk de woorden op het bordje. bijv. \"op afspraak\". Als er geen bordje is, wil dat niet zeggen dat er geen vaste openingstijden zijn."</string>
+    <string name="quest_buildingLevels_title">"Hoeveel etages heeft dit gebouw?"</string>
+    <string name="quest_buildingLevels_title_buildingPart">"Hoeveel etages heeft dit deel van het gebouw?"</string>
+    <string name="quest_buildingLevels_levelsLabel">"totaal aantal etages"</string>
+    <string name="quest_buildingLevels_roofLevelsLabel">"van deze etages, in het dak"</string>
+    <string name="quest_roofShape_title">"Welke basisvorm heeft het dak van dit gebouw?"</string>
+    <string name="quest_roofShape_select_one">"Selecteer er één:"</string>
+    <string name="quest_roofShape_show_more">"Laat meer zien…"</string>
+    <string name="quest_roofShape_answer_many">"Het heeft verschillende vormen"</string>
+    <string name="pref_category_cache">"Cache"</string>
+    <string name="pref_title_sync">"Automatisch synchroniseren"</string>
+    <string name="map_btn_zoom_out">"Unzoomen"</string>
+    <string name="map_btn_zoom_in">"Uitzoomen"</string>
+    <string name="privacy_html">"&lt;p&gt;Aha, iemand die om zijn privacy geeft, leuk! Ik heb enkel goed nieuws voor jou:&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Directe Bijdrages&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;
+Eerst en vooral, met deze app kun je echte en directe bijdrages leveren tot het OpenStreetMap project.&lt;br/&gt;
+Alles wat de in deze app bijdraagt, wordt meteen toegevoegd aan de kaart, er zit geen derde partij tussen de app en OSM, zoals het geval is met &lt;a href=\"https://wheelmap.org\"&gt;wheelmap.org&lt;/a&gt; or &lt;a href=\"http://www.kort.ch\"&gt;Kort&lt;/a&gt;.
+&lt;/p&gt;
+&lt;p&gt;
+OpenStreetMap anoniem bewerken is niet mogelijk, dus alle aanpassingen die je maakt worden met je OSM gebruikersaccount gemaakt. Dit betekent dat de datum, inhoud, en de locatie van je veranderingen publiek zichtbaar zijn op de openstreetmap website, en zijn toe te schrijven aan jouw account.
+&lt;/p&gt;
+
+&lt;b&gt;Locatie&lt;/b&gt;&lt;br/&gt;
+&lt;p&gt;
+Je locatie wordt enkel gebruikt om naar quests te scannen rondom jou. Geen zorgen, de app deelt jouw locatie niet.
+&lt;/p&gt;
+
+&lt;p&gt;&lt;b&gt;Data Gebruik&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;
+Zoals eerder aangehaald zal de app direct met OSM communiceren, meer bepaald de &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass API&lt;/a&gt; om quests te downloaden (anoniem) and met de &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API&lt;/a&gt; om wijzigingen te uploaden.&lt;br/&gt;
+Voor het uploaden van jouw wijzigingen zal de app een &lt;a href=\"http://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;simpel tekst bestand&lt;/a&gt; op mijn server controleren om te bepalen of hij verbannen is om wijzigingen te uploaden. Dit om te voorkomen dat bepaalde versies van de app met kritische bugs mogelijk de OSM data zouden verknoeien.&lt;br/&gt;
+&lt;/p&gt;
+&lt;p&gt;
+Om de kaart te tonen worden vector tegels van de &lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt;Mapzen vector tile service&lt;/a&gt; gedownload, welke anoniem is. Deze dienst zal de gemaakte verzoeken naar tegels loggen, om beter te begrijpen welke omgevingen pupulair zijn, voor pre-caching en performantie verbeteringen. Hun platform zal ook IP adressen loggen, en wordt volledig gehost op Amazon. Ze zijn dus afhankelijk van hun.
+&lt;/p&gt;
+&lt;p&gt;
+(&lt;i&gt;Dit is nog niet geïmplementeerd, ik wil je enkel laten weten waar ik mee bezig ben!:&lt;/i&gt;) De data getoond op het scorebord en profiel wordt geaggregeerd van publieke informatie van OpenStreetMap. De data komt niet van deze app, maar van de publieke bijdragingen van de OSM gebruikers.
+&lt;/p&gt;"</string>
+    <string name="authors_html">"&lt;p&gt;© 2017 Tobias Zwick&lt;/p&gt;
+&lt;p&gt;Deze app gebruikt de &lt;a href=\"https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free\"&gt;Beautiful Flat Icons&lt;/a&gt; set gemaakt door Nick Roach, gelicentieerd onder de &lt;a href=\"http://www.gnu.org/licenses/gpl-2.0.html\"&gt;GPL&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Vertalingen&lt;/b&gt;&lt;/p&gt;
+%1$s "</string>
+    <string name="quest_expiration_one_day">"Een dag"</string>
+    <string name="quest_expiration_a_week">"Een week"</string>
+    <string name="quest_expiration_two_weeks">"Twee weken"</string>
+    <string name="quest_expiration_one_month">"Een maand"</string>
+    <string name="autosync_on">"Aan"</string>
+    <string name="autosync_only_on_wifi">"Alleen met wifi"</string>
+    <string name="autosync_off">"Uit"</string>
+    <string name="quest_streetSurface_title">"Welke ondergrond heeft dit stuk weg?"</string>
+    <string name="quest_surface_description">"Selecteer het meest passende:"</string>
+    <string name="quest_surface_value_paved">"Geplaveid (algemeen)"</string>
+    <string name="quest_surface_value_unpaved">"Ongeplaveid (algemeen)"</string>
+    <string name="quest_surface_value_ground">"Grond (algemeen)"</string>
+    <string name="quest_surface_value_asphalt">"Asfalt"</string>
+    <string name="quest_surface_value_cobblestone">"Kasseien"</string>
+    <string name="quest_surface_value_compacted">"Verdichte grond"</string>
+    <string name="quest_surface_value_concrete">"Beton"</string>
+    <string name="quest_surface_value_dirt">"Aarde"</string>
+    <string name="quest_surface_value_fine_gravel">"Fijn grind"</string>
+    <string name="quest_surface_value_grass">"Gras"</string>
+    <string name="quest_surface_value_grass_paver">"Open plavei"</string>
+    <string name="quest_surface_value_gravel">"Grind"</string>
+    <string name="quest_surface_value_paving_stones">"Plaveistenen"</string>
+    <string name="quest_surface_value_pebblestone">"Kiezel"</string>
+    <string name="quest_surface_value_sand">"Zand"</string>
+    <string name="quest_surface_value_sett">"Kassei"</string>
+    <string name="quest_surface_value_wood">"Hout"</string>
+    <string name="quest_placeName_title">"Wat is de naam van deze plaats?"</string>
+    <string name="quest_sidewalk_title">"Is er een voetpad in deze straat?"</string>
+    <string name="map_orientation_info">"The kaart is naar het noorden geörienteerd."</string>
+    <string name="quest_sidewalk_onlyNorth">"Alleen aan de noordzijde"</string>
+    <string name="quest_sidewalk_onlySouth">"Alleen aan de zuidzijde"</string>
+    <string name="quest_sidewalk_onlyWest">"Alleen aan de westzijde"</string>
+    <string name="quest_sidewalk_onlyEast">"Alleen aan de oostzijde"</string>
+    <string name="quest_sidewalk_yes">"Ja"</string>
+    <string name="quest_maxspeed_title">"Wat zeggen de borden over de snelheidslimiet in deze straat?"</string>
+    <string name="quest_maxspeed_answer_noSign">"Er is geen bord"</string>
+    <string name="quest_maxspeed_answer_noSign_info">"Als er geen borden staan gelden de algemene snelheidslimieten,"</string>
+    <string name="quest_maxspeed_answer_noSign_info_motorway">"Dit is %1$s op een autosnelweg."</string>
+    <string name="quest_maxspeed_answer_noSign_info_living_street">"Dit is %1$s in een bewoonde straat."</string>
+    <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Waar is deze straat?"</string>
+    <string name="quest_maxspeed_answer_noSign_urban">"In dorp: %1$s snelheidslimiet van toepassing."</string>
+    <string name="quest_maxspeed_answer_noSign_rural">"Buiten het dorp: %1$s snelheidslimiet van toepassing."</string>
+    <string name="quest_maxspeed_answer_noSign_implicitOk">"Dat klopt"</string>
+    <string name="quest_maxspeed_answer_variable">"Elektrische borden tonen een variable snelheidslimiet"</string>
+    <string name="quest_cyclewaySurface_title">"Welk oppervlak heeft dit fietspad"</string>
+    <string name="quest_cycleway_title">"Is er voor deze straat een fietspad?"</string>
+    <string name="quest_buildingType_title">"Wat voor gebouw is dit?"</string>
+    <string name="quest_serviceType_title">"Wat voor dienstweg is dit?"</string>
+    <string name="quest_streetLanes_title">"Hoeveel banen heeft deze weg?"</string>
+    <string name="quest_streetLanes_description">"Als er geen wegmarkeringen zijn, dan heeft het geen banen."</string>
+    <string name="quest_streetLanes_north">"Richting het noorden"</string>
+    <string name="quest_streetLanes_west">"Richting het westen"</string>
+    <string name="quest_streetLanes_east">"Richting het oosten"</string>
+    <string name="quest_streetLanes_south">"Richting het zuiden"</string>
+    <string name="quest_streetLanes_answer_noLanes">"Het heeft geen gemarkeerde banen"</string>
+    <string name="quest_streetLanes_noLanes_estWidth">"Schat aub in hoeveel wagens er naast elkaar in deze straat passen."</string>
+    <string name="quest_oneway_title">"Is dit een éénrichtingsweg?"</string>
+    <string name="quest_address_title">"What is het huisnummer van dit gebouw?"</string>
+    <string name="store_listing_short_description">"OpenStreetMap surveyor app"</string>
+    <string name="store_listing_full_description">"Help OpenStreetMap te verbeteren met StreetComplete!
+
+Deze app vindt incomplete data in jouw omgeving, en toont het op de kaart als een marker. Elk van deze is op te lossen door een simpele vraag te beantwoorden, en zo de info op de kaart te vervoledigen.
+
+De informatie die je ingeeft wordt meteen toegevoegd aan OpenStreetMap in jouw naam, zonder een andere editor te hoeven gebruiken."</string>
+    <string name="quest_name_answer_noName">"Het heeft geen naam"</string>
+    <string name="quest_name_answer_noName_confirmation_title">"Werkelijk geen naam?"</string>
+    <string name="quest_name_noName_confirmation_positive">"Ja, geen naam"</string>
+    <string name="quest_buildingLevels_negativeBuildingLevels">"Oeps! Je hebt meer niveau's aangegeven dan er totaal zijn!"</string>
+    <string name="quest_openingHours_add_times">"Voeg openingstijden toe"</string>
+    <string name="crash_message">"Zou je het foutenrapport naar de ontwikkelaar willen verzenden?"</string>
+    <string name="crash_title">"Oeps, StreetComplete is de vorige keer gecrasht!"</string>
+    <string name="crash_compose_email">"Email opstellen"</string>
+    <string name="no_email_client">"Je hebt geen email client geïnstalleerd."</string>
+</resources>
