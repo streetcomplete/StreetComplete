@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:gravity="center">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="128dp"
+        android:layout_height="wrap_content"
+        android:padding="18dp"
+        android:background="@drawable/background_maxspeed_rectangular"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SPEED"
+            android:textStyle="bold"
+            android:textSize="28dp"
+            android:gravity="center"
+            android:textColor="#000000"/>
+
+        <EditText
+            android:id="@+id/maxSpeedInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="#00ffffff"
+            android:inputType="number"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="48sp"/>
+
+        <Spinner
+            android:id="@+id/unitSpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dropdown"
+            android:text="asdf"/>
+
+    </LinearLayout>
+</LinearLayout>
