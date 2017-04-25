@@ -29,6 +29,6 @@ public class AddPlaceNameTest extends AOsmElementQuestTypeTest
 
 	@Override protected OsmElementQuestType createQuestType()
 	{
-		return new AddPlaceName();
+		return new AddPlaceName(null);
 	}
 }

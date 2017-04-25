@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.download;
 
+import android.util.Log;
+
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
@@ -13,6 +15,8 @@ import de.westnordost.osmapi.common.errors.OsmBadUserInputException;
 /** Get map data from overpass api */
 public class OverpassMapDataDao
 {
+	private static final String TAG = "OverpassMapDataDao";
+
 	private final OsmConnection osm;
 	private final Provider<OverpassMapDataParser> parserProvider;
 
@@ -47,6 +51,44 @@ public class OverpassMapDataDao
 			else
 				throw e;
 		}
+	}
+
+	/** Same as get(String, MapDataWithGeometryHandler), only that it automatically waits until the
+	 *  app is allowed to do requests again by request quota if it hits the request quota.
+
+	 * @param query Query string. Either Overpass QL or Overpass XML query string
+	 * @param handler map data handler that is fed the map data and geometry
+	 * @return false if it was interrupted while waiting for the quota to be replenished
+	 *
+	 * @throws OsmBadUserInputException if there is an error if the query
+	 */
+	public synchronized boolean getAndHandleQuota(String query, MapDataWithGeometryHandler handler)
+	{
+		try
+		{
+			get(query, handler);
+		}
+		catch(OsmTooManyRequestsException e)
+		{
+			OverpassStatus status = getStatus();
+			if(status.availableSlots == 0)
+			{
+				// rather wait 1s longer than required cause we only get the time in seconds
+				int wait = (1 + status.nextAvailableSlotIn) * 1000;
+				Log.i(TAG, "Hit Overpass quota. Waiting " + wait + "ms before continuing");
+				try
+				{
+					Thread.sleep(wait);
+				}
+				catch (InterruptedException ie)
+				{
+					Log.d(TAG, "Thread interrupted while waiting for Overpass quota to be replenished");
+					return false;
+				}
+			}
+			return getAndHandleQuota(query, handler);
+		}
+		return true;
 	}
 
 	/** Kills all the queries sent from this IP. Useful if there is a runaway query that takes far

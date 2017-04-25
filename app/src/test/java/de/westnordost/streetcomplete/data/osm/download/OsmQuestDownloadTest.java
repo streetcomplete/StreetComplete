@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.download;
 
 import android.graphics.Rect;
+import android.os.Bundle;
 
 import junit.framework.TestCase;
 
@@ -8,6 +9,7 @@ import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
@@ -19,8 +21,9 @@ import de.westnordost.streetcomplete.data.QuestGroup;
 import de.westnordost.streetcomplete.data.QuestStatus;
 import de.westnordost.streetcomplete.data.VisibleQuestListener;
 import de.westnordost.streetcomplete.data.osm.ElementGeometry;
+import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.OsmQuest;
-import de.westnordost.streetcomplete.data.osm.OverpassQuestType;
+import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao;
 import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao;
 import de.westnordost.osmapi.map.data.BoundingBox;
@@ -28,12 +31,12 @@ import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
 import de.westnordost.streetcomplete.data.tiles.DownloadedTilesDao;
+import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyLong;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.doAnswer;
-import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -41,9 +44,6 @@ import static org.mockito.internal.verification.VerificationModeFactory.times;
 
 public class OsmQuestDownloadTest extends TestCase
 {
-	private OverpassQuestType questType1;
-
-	private OverpassMapDataDao overpassServer;
 	private ElementGeometryDao geometryDb;
 	private MergedElementDao elementDb;
 	private DownloadedTilesDao downloadedTilesDao;
@@ -55,94 +55,51 @@ public class OsmQuestDownloadTest extends TestCase
 		elementDb = mock(MergedElementDao.class);
 		downloadedTilesDao = mock(DownloadedTilesDao.class);
 		osmQuestDao = mock(OsmQuestDao.class);
-		overpassServer = mock(OverpassMapDataDao.class);
-		questType1 = mock(OverpassQuestType.class);
 	}
 
-	public void testHandleOverpassQuota() throws InterruptedException
-	{
-		doThrow(OsmTooManyRequestsException.class).
-				when(overpassServer).get(anyString(), any(MapDataWithGeometryHandler.class));
-
-		OverpassStatus status = new OverpassStatus();
-		status.availableSlots = 0;
-		status.nextAvailableSlotIn = 2;
-		when(overpassServer.getStatus()).thenReturn(status);
-
-		setUpOsmQuestDaoMockWithNoPreviousElements();
-
-		final OsmQuestDownload dl = new OsmQuestDownload(overpassServer, null, null, osmQuestDao, null);
-
-		// the downloader will call get() on the dao, get an exception in return, ask its status
-		// then and at least wait for the specified amount of time before calling again
-		Thread dlThread = new Thread()
-		{
-			@Override public void run()
-			{
-				assertEquals(0,dl.download(questType1, new Rect(0,0,10,10), null));
-			}
-		};
-		dlThread.start();
-
-		// sleep the wait time: Downloader should not try to call
-		// overpass again in this time
-		Thread.sleep(status.nextAvailableSlotIn * 1000);
-		verify(overpassServer, times(1)).get(anyString(), any(MapDataWithGeometryHandler.class));
-		verify(overpassServer, times(1)).getStatus();
-
-		// now we test if downloader will call overpass again after that time. It is not really
-		// defined when the downloader must call overpass again, lets assume 1.5 secs here and
-		// change it when it fails
-		Thread.sleep(1500);
-		verify(overpassServer, times(2)).get(anyString(), any(MapDataWithGeometryHandler.class));
-
-		// we are done here, interrupt thread (still part of the test though...)
-		dlThread.interrupt();
-		dlThread.join();
-	}
-
-	public void testIgnoreBlacklistedPositions()
+	public void testIgnoreBlacklistedPositionsAndInvalidGeometry()
 	{
 		LatLon blacklistPos = new OsmLatLon(3.0,4.0);
 
-		OverpassMapDataDao overpassServer = new TestListBackedOverpassDao(Collections.singletonList(
-				new ElementWithGeometry(
-						new OsmNode(0,0,blacklistPos,null),
-						new ElementGeometry(blacklistPos))));
+		ElementWithGeometry blacklistElement = new ElementWithGeometry();
+		blacklistElement.element = new OsmNode(0,0,blacklistPos,null);
+		blacklistElement.geometry = new ElementGeometry(blacklistPos);
+		ElementWithGeometry invalidGeometryElement = new ElementWithGeometry();
+		invalidGeometryElement.element = new OsmNode(0,0,new OsmLatLon(1.0,1.0),null);
+		invalidGeometryElement.geometry = null;
+
+		OsmElementQuestType questType = new ListBackedQuestType(
+				Arrays.asList(blacklistElement, invalidGeometryElement));
+
 		setUpOsmQuestDaoMockWithNoPreviousElements();
 
-		OsmQuestDownload dl = new OsmQuestDownload(overpassServer, geometryDb, elementDb, osmQuestDao, downloadedTilesDao);
+		OsmQuestDownload dl = new OsmQuestDownload(geometryDb, elementDb, osmQuestDao, downloadedTilesDao);
 
 		VisibleQuestListener listener = mock(VisibleQuestListener.class);
 		dl.setQuestListener(listener);
 
-		OverpassQuestType appliesToAnything = mock(OverpassQuestType.class);
-		when(appliesToAnything.appliesTo(any(Element.class))).thenReturn(true);
-		assertEquals(0,dl.download(appliesToAnything, new Rect(0,0,1,1), Collections.singleton(blacklistPos)));
+		assertEquals(0,dl.download(questType, new Rect(0,0,1,1), Collections.singleton(blacklistPos)));
 
 		verify(listener, times(0)).onQuestsCreated(any(Collection.class), any(QuestGroup.class));
 	}
 
 	public void testDeleteObsoleteQuests()
 	{
-		OverpassQuestType appliesToAnything = mock(OverpassQuestType.class);
-		when(appliesToAnything.appliesTo(any(Element.class))).thenReturn(true);
-
 		LatLon pos = new OsmLatLon(3.0,4.0);
 
-		// overpass mock will only "find" the Node #4
-		List<ElementWithGeometry> elements = new ArrayList<>();
-		elements.add(new ElementWithGeometry(
-				new OsmNode(4,0,pos,null), new ElementGeometry(pos)));
-		OverpassMapDataDao overpassServer = new TestListBackedOverpassDao(elements);
+		ElementWithGeometry node4 = new ElementWithGeometry();
+		node4.element = new OsmNode(4,0,pos,null);
+		node4.geometry =  new ElementGeometry(pos);
+		// questType mock will only "find" the Node #4
+		OsmElementQuestType questType = new ListBackedQuestType(Collections.singletonList(node4));
 
 		// in the quest database mock, there are quests for node 4 and node 5
 		List<OsmQuest> quests = new ArrayList<>();
 		quests.add(new OsmQuest(
-				12L, appliesToAnything, Element.Type.NODE, 4, QuestStatus.NEW, null,
+				12L, questType, Element.Type.NODE, 4, QuestStatus.NEW, null,
 				new Date(), new ElementGeometry(pos)));
 		quests.add(new OsmQuest(
-				13L, appliesToAnything, Element.Type.NODE, 5, QuestStatus.NEW, null,
+				13L, questType, Element.Type.NODE, 5, QuestStatus.NEW, null,
 				new Date(), new ElementGeometry(pos)));
 		when(osmQuestDao.getAll(
 				any(BoundingBox.class), any(QuestStatus.class), anyString(),
@@ -159,13 +116,13 @@ public class OsmQuestDownloadTest extends TestCase
 			}
 		}).when(osmQuestDao).deleteAll(any(Collection.class));
 
-		OsmQuestDownload dl = new OsmQuestDownload(overpassServer, geometryDb, elementDb, osmQuestDao, downloadedTilesDao);
+		OsmQuestDownload dl = new OsmQuestDownload(geometryDb, elementDb, osmQuestDao, downloadedTilesDao);
 
 		VisibleQuestListener listener = mock(VisibleQuestListener.class);
 		dl.setQuestListener(listener);
 
 		// -> we expect that quest with node #5 is removed
-		dl.download(appliesToAnything, new Rect(0,0,1,1), null);
+		dl.download(questType, new Rect(0,0,1,1), null);
 
 		verify(osmQuestDao).deleteAll(any(Collection.class));
 		verify(listener).onQuestsRemoved(any(Collection.class), any(QuestGroup.class));
@@ -180,32 +137,33 @@ public class OsmQuestDownloadTest extends TestCase
 				.thenReturn(Collections.<OsmQuest>emptyList());
 	}
 
-	private class TestListBackedOverpassDao extends OverpassMapDataDao
+	private class ElementWithGeometry
 	{
-		private List<ElementWithGeometry> elements;
+		Element element;
+		ElementGeometry geometry;
+	}
 
-		public TestListBackedOverpassDao(List<ElementWithGeometry> elements)
+	private class ListBackedQuestType implements OsmElementQuestType
+	{
+		private final List<ElementWithGeometry> list;
+
+		public ListBackedQuestType(List<ElementWithGeometry> list)
 		{
-			super(null, null);
-			this.elements = elements;
+			this.list = list;
 		}
 
-		@Override public void get(String oql, MapDataWithGeometryHandler handler)
+		@Override public int importance() { return 0; }
+		@Override public AbstractQuestAnswerFragment createForm() { return null; }
+		@Override public String getIconName() { return null; }
+		@Override public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes) {}
+		@Override public String getCommitMessage() { return null; }
+		@Override public boolean download(BoundingBox bbox, MapDataWithGeometryHandler handler)
 		{
-			for(ElementWithGeometry e : elements)
+			for (ElementWithGeometry e : list)
 			{
 				handler.handle(e.element, e.geometry);
 			}
+			return true;
 		}
-	}
-
-	private class ElementWithGeometry
-	{
-		ElementWithGeometry(Element element, ElementGeometry geometry) {
-			this.element = element;
-			this.geometry = geometry;
-		}
-		Element element;
-		ElementGeometry geometry;
 	}
 }

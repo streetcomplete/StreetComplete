@@ -29,10 +29,11 @@ public class OsmQuestDaoTest extends ApplicationDbTestCase
 	{
 		super.setUp();
 		geometryDao = new ElementGeometryDao(dbHelper, serializer);
-		dao = new OsmQuestDao(dbHelper, serializer, new QuestTypes(new QuestType[]
-		{
-			new TestQuestType(), new TestQuestType2()
-		}));
+		List<QuestType> list = new ArrayList<>();
+		list.add(new TestQuestType());
+		list.add(new TestQuestType2());
+
+		dao = new OsmQuestDao(dbHelper, serializer, new QuestTypes(list));
 	}
 
 	public void testAddGetNoChanges()

@@ -21,6 +21,6 @@ public class AddRoadSurfaceTest extends AOsmElementQuestTypeTest
 
 	@Override protected OsmElementQuestType createQuestType()
 	{
-		return new AddRoadSurface();
+		return new AddRoadSurface(null);
 	}
 }

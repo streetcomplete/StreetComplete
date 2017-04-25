@@ -19,7 +19,7 @@ import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.data.QuestType;
 import de.westnordost.streetcomplete.data.QuestTypes;
 import de.westnordost.streetcomplete.data.VisibleQuestListener;
-import de.westnordost.streetcomplete.data.osm.OverpassQuestType;
+import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.download.OsmQuestDownload;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuest;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestDao;
@@ -192,17 +192,19 @@ public class QuestDownload
 		int visibleQuests = 0;
 		for (QuestType questType : questTypes)
 		{
-			if (!(questType instanceof OverpassQuestType)) continue;
 			if (cancelState.get()) break;
 			if (maxQuestTypes != null && downloadedQuestTypes >= maxQuestTypes) break;
 
-			OsmQuestDownload questDownload = questDownloadProvider.get();
-			questDownload.setQuestListener(questListener);
+			if (questType instanceof OsmElementQuestType)
+			{
+				OsmQuestDownload questDownload = questDownloadProvider.get();
+				questDownload.setQuestListener(questListener);
 
-			visibleQuests += questDownload.download((OverpassQuestType) questType, tiles, notesPositions);
+				visibleQuests += questDownload.download((OsmElementQuestType) questType, tiles, notesPositions);
 
-			downloadedQuestTypes++;
-			dispatchProgress();
+				downloadedQuestTypes++;
+				dispatchProgress();
+			}
 		}
 		return visibleQuests;
 	}

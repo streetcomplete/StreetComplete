@@ -21,22 +21,12 @@ import de.westnordost.streetcomplete.quests.roof_shape.AddRoofShape;
 
 public class QuestTypes
 {
-	public static QuestType[] TYPES = new QuestType[]
-	{
-		new AddRoadName(),
-		new AddOpeningHours(),
-		new AddBuildingLevels(),
-		new AddRoofShape(),
-		// new AddPlaceName(), doesn't make sense as long as the app cannot tell the generic name of elements
-		new AddRoadSurface(),
-	};
-
 	private final List<QuestType> types;
 	private final Map<String, QuestType> typeMap;
 
-	public QuestTypes(QuestType[] questTypes)
+	public QuestTypes(List<QuestType> types)
 	{
-		types = Arrays.asList(questTypes);
+		this.types = types;
 		Collections.sort(types, new QuestImportanceComparator());
 
 		typeMap = new HashMap<>();
