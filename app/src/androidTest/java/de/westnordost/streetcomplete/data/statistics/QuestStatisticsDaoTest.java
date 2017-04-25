@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.statistics;
 
+import java.util.Date;
 import java.util.HashMap;
 
 import de.westnordost.osmapi.map.changes.MapDataChangesHandler;
@@ -30,45 +31,6 @@ public class QuestStatisticsDaoTest extends ApplicationDbTestCase
 		result.tags = new HashMap<>();
 		result.tags.put("created_by", ApplicationConstants.USER_AGENT);
 		return result;
-	}
-
-
-	public void testNothingToSync()
-	{
-		ChangesetInfo[] infos = {};
-		dao = new QuestStatisticsDao(dbHelper, new TestChangesetsDao(infos,0));
-		dao.syncFromOsmServer(0);
-		assertEquals(0,dao.getTotalAmount());
-	}
-
-	public void testSyncEmptyChangesetNoError()
-	{
-		ChangesetInfo[] infos = {new ChangesetInfo()};
-		dao = new QuestStatisticsDao(dbHelper, new TestChangesetsDao(infos,0));
-		dao.syncFromOsmServer(0);
-		assertEquals(0,dao.getTotalAmount());
-	}
-
-	public void testSync()
-	{
-		ChangesetInfo one = new ChangesetInfo();
-		one.tags = new HashMap<>();
-		one.tags.put("created_by", ApplicationConstants.USER_AGENT);
-		one.tags.put(ApplicationConstants.QUESTTYPE_TAG_KEY, ONE);
-
-		ChangesetInfo two = new ChangesetInfo();
-		two.tags = new HashMap<>();
-		two.tags.put("created_by", ApplicationConstants.USER_AGENT);
-		two.tags.put(ApplicationConstants.QUESTTYPE_TAG_KEY, TWO);
-
-		ChangesetInfo[] infos = {one, one, two};
-
-		dao = new QuestStatisticsDao(dbHelper, new TestChangesetsDao(infos,5));
-		dao.syncFromOsmServer(0);
-
-		assertEquals(15,dao.getTotalAmount());
-		assertEquals(10,dao.getAmount(ONE));
-		assertEquals(5,dao.getAmount(TWO));
 	}
 
 	public void testGetZero()

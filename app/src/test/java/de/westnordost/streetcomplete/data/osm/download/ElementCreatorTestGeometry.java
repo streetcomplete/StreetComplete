@@ -56,7 +56,7 @@ public class ElementCreatorTestGeometry extends TestCase implements WayGeometryS
 			RM0 = new OsmRelationMember(0L, "outer", Element.Type.WAY),
 			RM1 = new OsmRelationMember(1L, "outer", Element.Type.WAY),
 			RM2 = new OsmRelationMember(2L, "inner", Element.Type.WAY),
-			RM3 = new OsmRelationMember(3L, null, Element.Type.WAY);
+			RM3 = new OsmRelationMember(3L, "", Element.Type.WAY);
 
 	private static final Relation
 			R0 = new OsmRelation(0L, 0, Arrays.asList(RM0, RM1, RM2, RM3), relationArea),

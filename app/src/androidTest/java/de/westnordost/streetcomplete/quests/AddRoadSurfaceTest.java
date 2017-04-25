@@ -10,7 +10,7 @@ public class AddRoadSurfaceTest extends AOsmElementQuestTypeTest
 	@Override public void setUp()
 	{
 		super.setUp();
-		tags.put("surface","cobblestone");
+		tags.put("highway","residential");
 	}
 
 	public void testSurface()
