@@ -23,6 +23,5 @@ for infile in args.infiles:
         if (match == None):
             destfile = 'out/' + obj_id + '.svg'
             print(' '+obj_id+' to '+destfile)
-            # TODO add --export-text-to-path?
-            command = '"' + inkscape + '" --export-id "'+obj_id+'" --vacuum-defs --export-id-only --export-area-page --export-plain-svg "'+destfile+'" '+infile
+            command = '"' + inkscape + '" --export-id "'+obj_id+'" --vacuum-defs --export-id-only --export-text-to-path --export-area-page --export-plain-svg "'+destfile+'" '+infile
             subprocess.check_output(command, shell=True)
