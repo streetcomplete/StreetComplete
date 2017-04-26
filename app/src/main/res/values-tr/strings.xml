@@ -17,7 +17,7 @@ Hesabınıza başarıyla yetkilendirildi"</string>
  %d MB"</string>
     <string name="pref_tilecache_size_message">"Harici depolama biriminde önbellek harita fayanslarına ayrılmış megabaytlık alan"</string>
     <string name="pref_title_quest_expiration_time">"Önbellek Görevleri"</string>
-    <string name="pref_summary_quest_expiration">"Yeniden indirmeden önce% s için"</string>
+    <string name="pref_summary_quest_expiration">"Yeniden indirmeden önce %s için"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Tüm notları göste"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Sorularla ifade edilmeyen notları da gösteriliyor"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Sorularla ifade edilmeyen notları yoksayma"</string>
@@ -41,7 +41,7 @@ Hesabınıza başarıyla yetkilendirildi"</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title">"Kısaltma adına mı?"</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"İsim kısaltma olmaksızın hecele ediliyorsa, genişletilmelidir. Birçok yaygın kısaltma siz yazarken otomatik olarak genişletilir, ancak muhtemelen hepsi değil."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Kısaltma yok"</string>
-    <string name="quest_openingHours_name_title">"% S saatinin çalışma saatleri nedir?"</string>
+    <string name="quest_openingHours_name_title">"%s saatinin çalışma saatleri nedir?"</string>
     <string name="quest_openingHours_start_time">"Açılış zamanı"</string>
     <string name="quest_openingHours_end_time">"Kapanış saati"</string>
     <string name="quest_openingHours_add_months">"Ay ekle"</string>
@@ -52,10 +52,10 @@ Hesabınıza başarıyla yetkilendirildi"</string>
     <string name="quest_openingHours_24_7_confirmation">"Bir başka deyişle, her gün herzaman açık mı?"</string>
     <string name="quest_noteDiscussion_title">"Bu nota katkıda bulunabilir misiniz?"</string>
     <string name="quest_noteDiscussion_no">"Hayır, saklan"</string>
-    <string name="quest_noteDiscussion_create">"% 1 $ s (% 2 $ s) tarafından oluşturuldu"</string>
+    <string name="quest_noteDiscussion_create">"%1$s (%2$s) tarafından oluşturuldu"</string>
     <string name="quest_noteDiscussion_comment">"%1$s (%2$s)"</string>
-    <string name="quest_noteDiscussion_closed">"% 1 $ s kapalı not (% 2 $ s)"</string>
-    <string name="quest_noteDiscussion_reopen">"% 1 $ s yeniden açıldı nota (% 2 $ s)"</string>
+    <string name="quest_noteDiscussion_closed">"%1$s kapalı not (%2$s)"</string>
+    <string name="quest_noteDiscussion_reopen">"%1$s yeniden açıldı nota (%2$s)"</string>
     <string name="quest_noteDiscussion_anonymous">"Anonim"</string>
     <string name="quest_noteDiscussion_comments_title">"Cevaplar"</string>
     <string name="confirmation_discard_title">"Girdiyi silinsin mi?"</string>
@@ -148,7 +148,7 @@ Haritayı görüntülemek için vektör karoları, anonim olan &lt;a href=\"http
     <string name="authors_html">"&lt;P&gt; © 2017 Tobias Zwick &lt;/ p&gt;
 &lt;P&gt; Uygulama, &lt;a href=\"https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free\"&gt; Güzel Düz Simgeleri &lt;/a&gt; kullanıyor &lt;/a&gt; Nick Roach tarafından belirlenmiş, &lt;a href=\"http://www.gnu.org/licenses/gpl-2.0.html\"&gt; GPL lisansıyla lisanslanmıştır. &lt;/ P&gt;
 &lt;P&gt; &lt;b&gt; Çeviriler &lt;/ b&gt; &lt;/ p&gt;
-% 1 $ s"</string>
+%1$s"</string>
     <string name="quest_expiration_one_day">"
 Bir gün"</string>
     <string name="quest_expiration_a_week">"Bir hafta"</string>
@@ -187,11 +187,11 @@ Bir gün"</string>
     <string name="quest_maxspeed_title">"İşaretler, bu caddedeki hız sınırı hakkında ne diyor?"</string>
     <string name="quest_maxspeed_answer_noSign">"Hiçbir işaret yok"</string>
     <string name="quest_maxspeed_answer_noSign_info">"Hiçbir işaret yoksa, genel hız sınırlamaları geçerli."</string>
-    <string name="quest_maxspeed_answer_noSign_info_motorway">"Bir otobanda% 1 $ s var."</string>
-    <string name="quest_maxspeed_answer_noSign_info_living_street">"Bu, yaşayan bir sokakta% 1 $ s."</string>
+    <string name="quest_maxspeed_answer_noSign_info_motorway">"Bir otobanda %1$s var."</string>
+    <string name="quest_maxspeed_answer_noSign_info_living_street">"Bu, yaşayan bir sokakta %1$s."</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Bu cadde nerede"</string>
-    <string name="quest_maxspeed_answer_noSign_urban">"Şehirde:% 1 $ s hız sınırı geçerli."</string>
-    <string name="quest_maxspeed_answer_noSign_rural">"Şehir dışı:% 1 $ s hız sınırı geçerli."</string>
+    <string name="quest_maxspeed_answer_noSign_urban">"Şehirde:%1$s hız sınırı geçerli."</string>
+    <string name="quest_maxspeed_answer_noSign_rural">"Şehir dışı:%1$s hız sınırı geçerli."</string>
     <string name="quest_maxspeed_answer_noSign_implicitOk">"Yeterince adil"</string>
     <string name="quest_maxspeed_answer_variable">"Elektronik işaretler değişken hız sınırlarını gösterir"</string>
     <string name="quest_cyclewaySurface_title">"Burada bisiklet yolunun yüzeyi nedir?"</string>

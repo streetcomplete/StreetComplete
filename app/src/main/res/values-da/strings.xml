@@ -54,7 +54,7 @@
     <string name="quest_noteDiscussion_no">"Nej, skjul"</string>
     <string name="quest_noteDiscussion_create">"oprettet af %1$s (%2$s)"</string>
     <string name="quest_noteDiscussion_comment">"%1$s (%2$s) "</string>
-    <string name="quest_noteDiscussion_closed">"%1$s lukkede noten (%s$2s)"</string>
+    <string name="quest_noteDiscussion_closed">"%1$s lukkede noten (%2$s)"</string>
     <string name="quest_noteDiscussion_reopen">"%1$s genåbnede noten (%2$s)"</string>
     <string name="quest_noteDiscussion_anonymous">"Anonym"</string>
     <string name="quest_noteDiscussion_comments_title">"Svar"</string>

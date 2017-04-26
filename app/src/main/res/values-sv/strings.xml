@@ -192,7 +192,7 @@ För att visa på kartan, är vektor brickor hämtas från &lt;a href=\"https://
     <string name="quest_maxspeed_answer_noSign_info_living_street">"Detta är %1$s på en gårdsgata."</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Var är den här gatan?"</string>
     <string name="quest_maxspeed_answer_noSign_urban">"I stad: %1$s hastighetsgräns gäller."</string>
-    <string name="quest_maxspeed_answer_noSign_rural">"Ut ur staden:% 1 $ s hastighetsgräns gäller."</string>
+    <string name="quest_maxspeed_answer_noSign_rural">"Ut ur staden: %1$s hastighetsgräns gäller."</string>
     <string name="quest_maxspeed_answer_noSign_implicitOk">"Rimligt nog"</string>
     <string name="quest_maxspeed_answer_variable">"Elektroniska skyltar visar variabla hastighetsgränser"</string>
 
