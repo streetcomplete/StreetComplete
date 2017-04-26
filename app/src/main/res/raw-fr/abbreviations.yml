@@ -6,8 +6,7 @@
 ^all: allée
 ^ave?: avenue
 ^boul: boulevard
-^bl?vd$: boulevard
-^bd: boulevard
+^bl?v?d: boulevard
 ^che?: chemin
 ^crs: cours
 # ^crois: croissant
@@ -15,9 +14,9 @@
 ^imp: impasse
 ^mgr: monseigneur
 ^pass?: passage
-^pl$: place
+^pl: place
 ^st: saint
 ^ste: sainte
 ^rte: route
 ^r: rue
-^sq$: square
+^sq: square
