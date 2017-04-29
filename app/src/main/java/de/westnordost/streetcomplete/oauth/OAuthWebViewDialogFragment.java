@@ -293,12 +293,12 @@ public class OAuthWebViewDialogFragment extends DialogFragment
 
 		@Override public void onSuccess(List<String> result)
 		{
-			finishAuthentication(result);
+			if(getActivity() != null) finishAuthentication(result);
 		}
 
 		@Override public void onError(Exception e)
 		{
-			onAuthorizationError(e);
+			if(getActivity() != null) onAuthorizationError(e);
 		}
 	}
 }
