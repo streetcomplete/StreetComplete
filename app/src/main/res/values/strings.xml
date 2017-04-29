@@ -109,6 +109,11 @@
     <string name="quest_buildingLevels_title_buildingPart">"How many levels does this building part have?"</string>
     <string name="quest_buildingLevels_levelsLabel">"total levels"</string>
     <string name="quest_buildingLevels_roofLevelsLabel">"of these, levels in the roof"</string>
+    <string name="quest_busStopType_title">"What kind of bus stop do you see?"</string>
+    <string name="quest_busStopType_select_one">"Select one:"</string>
+    <string name="quest_busStopType_value_informal">"Informal"</string>
+    <string name="quest_busStopType_value_pole">"Pole"</string>
+    <string name="quest_busStopType_value_shelter">"Shelter"</string>
     <string name="quest_roofShape_title">"What basic shape does this building's roof have?"</string>
     <string name="quest_roofShape_select_one">"Select one:"</string>
     <string name="quest_roofShape_show_more">"Show more…"</string>

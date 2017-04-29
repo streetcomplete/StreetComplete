@@ -123,6 +123,11 @@
 
     <!-- La phrase en anglais porte aussi à confusion, cet UI devrait être refactored. -->
     <string name="quest_buildingLevels_roofLevelsLabel">"d'entre eux, combien sont dans le toit"</string>
+    <string name="quest_busStopType_title">"À quoi ressemble l'arrêt de bus ?"</string>
+    <string name="quest_busStopType_select_one">"Sélectionner un :"</string>
+    <string name="quest_busStopType_value_informal">"Informel"</string>
+    <string name="quest_busStopType_value_pole">"Panneau"</string>
+    <string name="quest_busStopType_value_shelter">"Abri"</string>
     <string name="quest_roofShape_title">"Quelle forme a le toit de l'édifice ?"</string>
     <string name="quest_roofShape_select_one">"Sélectionner un :"</string>
     <string name="quest_roofShape_show_more">"Montrer d'avantage…"</string>

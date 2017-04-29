@@ -109,22 +109,24 @@ public class GroupedImageSelectAdapter extends RecyclerView.Adapter<GroupedImage
 
 	private void expandGroup(int index)
 	{
-		Item item = data.get(index);
-		for (int i = 0; i < item.items.length; i++)
-		{
-			data.add(index + i + 1, item.items[i]);
-		}
-		notifyItemRangeInserted(index + 1, item.items.length);
+        if(index >= 0) {
+            Item item = data.get(index);
+            for (int i = 0; i < item.items.length; i++) {
+                data.add(index + i + 1, item.items[i]);
+            }
+            notifyItemRangeInserted(index + 1, item.items.length);
+        }
 	}
 
 	private void retractGroup(int index)
 	{
-		Item item = data.get(index);
-		for (int i = 0; i < item.items.length; i++)
-		{
-			data.remove(index + 1);
+		if(index >= 0) {
+			Item item = data.get(index);
+			for (int i = 0; i < item.items.length; i++) {
+				data.remove(index + 1);
+			}
+			notifyItemRangeRemoved(index + 1, item.items.length);
 		}
-		notifyItemRangeRemoved(index + 1, item.items.length);
 	}
 
 	@Override public int getItemCount()
