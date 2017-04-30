@@ -220,4 +220,6 @@ La información que introduces se añade directamente a OpenStreetMap con tu nom
     <string name="crash_title">"Oh no, StreetComplete cerró inesperadamente"</string>
     <string name="crash_compose_email">"Componer Email"</string>
     <string name="no_email_client">"No tienes email de cliente instalado"</string>
+    <string name="quest_generic_hasFeature_no">"No"</string>
+    <string name="quest_generic_hasFeature_yes">"Sí"</string>
 </resources>

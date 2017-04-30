@@ -225,4 +225,6 @@ Die von dir eingegebenen Informationen werden dann direkt in deinem Namen zu Ope
     <string name="pref_title_keep_screen_on">"Bildschirm immer an"</string>
     <string name="download_server_error">"Fehler beim Suchen nach Aufgaben. Versuche es später noch einmal."</string>
     <string name="upload_server_error">"Fehler beim Hochladen der Antworten. Versuche es später noch einmal."</string>
+    <string name="quest_generic_hasFeature_yes">"Ja"</string>
+    <string name="quest_generic_hasFeature_no">"Nein"</string>
 </resources>

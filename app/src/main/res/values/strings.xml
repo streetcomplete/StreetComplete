@@ -29,6 +29,8 @@
     <string name="quest_generic_confirmation_yes">"Yes, I am sure"</string>
     <string name="quest_generic_confirmation_no">"I will check"</string>
     <string name="quest_generic_error_field_empty">"You left this field empty"</string>
+    <string name="quest_generic_hasFeature_yes">"Yes"</string>
+    <string name="quest_generic_hasFeature_no">"No"</string>
     <string name="quest_leave_new_note_title">"Leave a note instead?"</string>
     <string name="quest_leave_new_note_description">"You can leave a public note at this location which other mappers can comment on and hopefully resolve:"</string>
     <string name="quest_leave_new_note_yes">"OK"</string>
@@ -109,11 +111,7 @@
     <string name="quest_buildingLevels_title_buildingPart">"How many levels does this building part have?"</string>
     <string name="quest_buildingLevels_levelsLabel">"total levels"</string>
     <string name="quest_buildingLevels_roofLevelsLabel">"of these, levels in the roof"</string>
-    <string name="quest_busStopType_title">"What kind of bus stop do you see?"</string>
-    <string name="quest_busStopType_select_one">"Select one:"</string>
-    <string name="quest_busStopType_value_informal">"Informal"</string>
-    <string name="quest_busStopType_value_pole">"Pole"</string>
-    <string name="quest_busStopType_value_shelter">"Shelter"</string>
+    <string name="quest_busStopShelter_title">"Does the bus stop have a shelter ?"</string>
     <string name="quest_roofShape_title">"What basic shape does this building's roof have?"</string>
     <string name="quest_roofShape_select_one">"Select one:"</string>
     <string name="quest_roofShape_show_more">"Show more…"</string>
