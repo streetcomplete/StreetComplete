@@ -1,23 +1,25 @@
 package de.westnordost.streetcomplete.view;
 
 import android.content.Context;
+import android.support.design.widget.CoordinatorLayout;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
-public class SlidingLinearLayout extends LinearLayout
+public class SlidingRelativeLayout extends RelativeLayout
 {
-	public SlidingLinearLayout(Context context)
+	public SlidingRelativeLayout(Context context)
 	{
 		super(context);
 	}
 
-	public SlidingLinearLayout(Context context, AttributeSet attrs)
+	public SlidingRelativeLayout(Context context, AttributeSet attrs)
 	{
 		super(context, attrs);
 	}
 
-	public SlidingLinearLayout(Context context, AttributeSet attrs, int defStyleAttr)
+	public SlidingRelativeLayout(Context context, AttributeSet attrs, int defStyleAttr)
 	{
 		super(context, attrs, defStyleAttr);
 	}

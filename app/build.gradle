@@ -15,8 +15,8 @@ android {
         applicationId "de.westnordost.streetcomplete"
         minSdkVersion 17
         targetSdkVersion 25
-        versionCode 4
-        versionName "0.7"
+        versionCode 5
+        versionName "0.8"
         multiDexEnabled true
         testInstrumentationRunner "com.android.test.runner.MultiDexTestRunner"
     }
@@ -86,7 +86,7 @@ dependencies {
     compile 'com.esotericsoftware:kryo:4.0.0'
 
     // map and location
-    compile 'com.mapzen.tangram:tangram:0.6.0'
+    compile 'com.mapzen.tangram:tangram:0.6.2'
     compile 'com.mapzen.android:lost:2.1.2'
 
     // config files

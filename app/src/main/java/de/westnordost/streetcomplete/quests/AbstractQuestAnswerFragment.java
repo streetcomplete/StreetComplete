@@ -17,9 +17,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,15 +34,19 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 {
 	public static final String ELEMENT = "element";
 
+	private String titleText;
+	private int titleTextResId = -1;
+
 	private TextView title;
 	private ViewGroup content;
 
-	private View view;
+	private LinearLayout bottomSheet;
 
 	private QuestAnswerComponent questAnswerComponent;
 
-	protected Button buttonOk;
+	private LinearLayout buttonPanel;
 	protected Button buttonOtherAnswers;
+
 	private ImageButton buttonClose;
 
 	public AbstractQuestAnswerFragment()
@@ -56,9 +60,10 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState)
 	{
-		view = inflater.inflate(R.layout.bottom_sheet_fragment, container, false);
+		View view = inflater.inflate(R.layout.quest_answer_fragment, container, false);
 
-		view.addOnLayoutChangeListener(new View.OnLayoutChangeListener()
+		bottomSheet = (LinearLayout) view.findViewById(R.id.bottomSheet);
+		bottomSheet.addOnLayoutChangeListener(new View.OnLayoutChangeListener()
 		{
 			@Override
 			public void onLayoutChange(View v, int left, int top, int right, int bottom,
@@ -77,17 +82,10 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 		});
 
 		title = (TextView) view.findViewById(R.id.title);
+		updateTitle();
 
-		buttonOk = (Button) view.findViewById(R.id.buttonOk);
-		buttonOk.setOnClickListener(new View.OnClickListener()
-		{
-			@Override public void onClick(View v)
-			{
-				onClickOk();
-			}
-		});
-
-		buttonOtherAnswers = (Button) view.findViewById(R.id.buttonOtherAnswers);
+		buttonPanel = (LinearLayout) view.findViewById(R.id.buttonPanel);
+		buttonOtherAnswers = (Button) buttonPanel.findViewById(R.id.buttonOtherAnswers);
 
 		buttonClose = (ImageButton) view.findViewById(R.id.close_btn);
 		buttonClose.setOnClickListener(new View.OnClickListener()
@@ -98,7 +96,7 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 			}
 		});
 
-		BottomSheetBehavior.from(view).setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback()
+		BottomSheetBehavior.from(bottomSheet).setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback()
 		{
 			@Override public void onStateChanged(@NonNull View bottomSheet, int newState) { }
 
@@ -162,7 +160,7 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 		if(getActivity() == null) return;
 
 		int toolbarHeight = getActivity().findViewById(R.id.toolbar).getHeight();
-		boolean coversToolbar = view.getTop() < toolbarHeight;
+		boolean coversToolbar = bottomSheet.getTop() < toolbarHeight;
 		buttonClose.setVisibility(coversToolbar ? View.VISIBLE : View.GONE);
 	}
 
@@ -208,20 +206,6 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 		leaveNote.show(getFragmentManager(), null);
 	}
 
-	protected abstract void onClickOk();
-
-	/** Apply an answer given in the form with the "OK" button */
-	protected final void applyAnswer(Bundle data)
-	{
-		// each form should check this on its own, but in case it doesn't, this is the last chance
-		if(!hasChanges())
-		{
-			Toast.makeText(getActivity(), R.string.no_changes, Toast.LENGTH_SHORT).show();
-			return;
-		}
-		questAnswerComponent.onAnswerQuest(data);
-	}
-
 	/** Request to close the form through user interaction (back button, clicked other quest,..),
 	 *  requires user confirmation if any changes have been made */
 	@UiThread public void onClickClose(final Runnable confirmed)
@@ -248,8 +232,7 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 		}
 	}
 
-	/** Apply an answer not given through the usual "OK" button (Does not check if the form is empty) */
-	protected final void applyOtherAnswer(Bundle data)
+	protected final void applyImmediateAnswer(Bundle data)
 	{
 		questAnswerComponent.onAnswerQuest(data);
 	}
@@ -259,19 +242,37 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 		questAnswerComponent.onSkippedQuest();
 	}
 
-	protected final void setTitle(int resourceId)
+	public final void setTitle(int resourceId)
 	{
-		title.setText(resourceId);
+		titleTextResId = resourceId;
+		titleText = null;
+		updateTitle();
 	}
 
-	protected final void setTitle(String string)
+	public final void setTitle(String string)
 	{
-		title.setText(string);
+		titleText = string;
+		titleTextResId = -1;
+		updateTitle();
+	}
+
+	private void updateTitle()
+	{
+		if(title != null)
+		{
+			if(titleText != null) title.setText(titleText);
+			else if(titleTextResId != -1) title.setText(titleTextResId);
+		}
 	}
 
 	protected final View setContentView(int resourceId)
 	{
 		return getActivity().getLayoutInflater().inflate(resourceId, content);
+	}
+
+	protected final View setButtonsView(int resourceId)
+	{
+		return getActivity().getLayoutInflater().inflate(resourceId, buttonPanel);
 	}
 
 	public abstract boolean hasChanges();

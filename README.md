@@ -27,11 +27,17 @@ Right now, there are very few different question types. I will add more and more
 
 ## Contributing
 
-Help translating the app! You can do that here: 
+You can help translate this app over here: 
 
 [<img src="https://poeditor.com/public/images/logo_small.png" alt="POEditor">](https://poeditor.com/join/project/IE4GC127Ki)
 
-Otherwise, if you are mildly interested in StreetComplete, the best way to contribute is to use it, test it and give constructive feedback.
+If you would like to help and are able to contribute code, you are most welcome.
+I have a few tasks in mind that would be very helpful for the project, some of which do not require knowledge about the current code base. So best get in touch with me.
+
+Otherwise, there are many reasonable feature requests and ideas for new question types in the issue tracker which you could also engage yourself with.
+If you have own ideas how to improve this app and want to make sure that I will merge your Pull Request, I suggest you open an issue first in which the feature can be discussed.
+
+Finally, using it, testing it and giving constructive feedback is also a valuable contribution.
 
 ## License
 

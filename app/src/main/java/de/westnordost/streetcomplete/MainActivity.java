@@ -589,6 +589,18 @@ public class MainActivity extends AppCompatActivity implements
 	@Override public void onQuestsCreated(Collection<? extends Quest> quests, QuestGroup group)
 	{
 		mapFragment.addQuests(quests, group);
+		// to recreate element geometry of selected quest (if any) after recreation of activity
+		if(getQuestDetailsFragment() != null)
+		{
+			for (Quest q : quests)
+			{
+				if (isQuestDetailsCurrentlyDisplayedFor(q.getId(), group))
+				{
+					questController.retrieve(group, q.getId());
+					return;
+				}
+			}
+		}
 	}
 
 	@AnyThread

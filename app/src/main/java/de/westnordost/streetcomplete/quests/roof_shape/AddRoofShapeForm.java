@@ -15,9 +15,10 @@ import java.util.List;
 
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
+import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
 import de.westnordost.streetcomplete.view.ImageSelectAdapter;
 
-public class AddRoofShapeForm extends AbstractQuestAnswerFragment
+public class AddRoofShapeForm extends AbstractQuestFormAnswerFragment
 {
 	public static final String ROOF_SHAPE = "roof_shape";
 
@@ -93,7 +94,7 @@ public class AddRoofShapeForm extends AbstractQuestAnswerFragment
 			String osmValue = roofShapes[selectedIndex].osmValue;
 			answer.putString(ROOF_SHAPE, osmValue);
 		}
-		applyAnswer(answer);
+		applyFormAnswer(answer);
 	}
 
 	@Override protected List<Integer> getOtherAnswerResourceIds()
@@ -111,7 +112,7 @@ public class AddRoofShapeForm extends AbstractQuestAnswerFragment
 		{
 			Bundle answer = new Bundle();
 			answer.putString(ROOF_SHAPE, "many");
-			applyOtherAnswer(answer);
+			applyImmediateAnswer(answer);
 			return true;
 		}
 
