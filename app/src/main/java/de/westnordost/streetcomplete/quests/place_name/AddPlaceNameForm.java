@@ -10,10 +10,10 @@ import android.widget.EditText;
 import java.util.List;
 
 import de.westnordost.streetcomplete.R;
-import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
+import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
 import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 
-public class AddPlaceNameForm extends AbstractQuestAnswerFragment
+public class AddPlaceNameForm extends AbstractQuestFormAnswerFragment
 {
 	public static final String NO_NAME = "no_name";
 	public static final String NAME = "name";
@@ -37,7 +37,7 @@ public class AddPlaceNameForm extends AbstractQuestAnswerFragment
 		Bundle data = new Bundle();
 		String name = nameInput.getText().toString().trim();
 		data.putString(NAME, name);
-		applyAnswer(data);
+		applyFormAnswer(data);
 	}
 
 	@Override protected List<Integer> getOtherAnswerResourceIds()
@@ -68,7 +68,7 @@ public class AddPlaceNameForm extends AbstractQuestAnswerFragment
 			{
 				Bundle data = new Bundle();
 				data.putBoolean(NO_NAME, true);
-				applyOtherAnswer(data);
+				applyImmediateAnswer(data);
 			}
 		};
 		DialogInterface.OnClickListener onNo = new DialogInterface.OnClickListener()

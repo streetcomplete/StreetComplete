@@ -22,12 +22,13 @@ import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.meta.CurrentCountry;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 import de.westnordost.osmapi.map.data.OsmElement;
+import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
 import de.westnordost.streetcomplete.util.Serializer;
 import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 
 import static android.view.Menu.NONE;
 
-public class AddOpeningHoursForm extends AbstractQuestAnswerFragment
+public class AddOpeningHoursForm extends AbstractQuestFormAnswerFragment
 {
 	public static final String OPENING_HOURS = "opening_hours";
 
@@ -178,7 +179,7 @@ public class AddOpeningHoursForm extends AbstractQuestAnswerFragment
 						String txt = editText.getText().toString().replaceAll("\"","");
 						Bundle answer = new Bundle();
 						answer.putString(OPENING_HOURS, "\""+txt+"\"");
-						applyOtherAnswer(answer);
+						applyImmediateAnswer(answer);
 					}
 				})
 				.setNegativeButton(android.R.string.cancel, null)
@@ -195,7 +196,7 @@ public class AddOpeningHoursForm extends AbstractQuestAnswerFragment
 					{
 						Bundle answer = new Bundle();
 						answer.putString(OPENING_HOURS, "24/7");
-						applyOtherAnswer(answer);
+						applyImmediateAnswer(answer);
 					}
 				})
 				.setNegativeButton(android.R.string.no, null)
@@ -206,7 +207,7 @@ public class AddOpeningHoursForm extends AbstractQuestAnswerFragment
 	{
 		Bundle answer = new Bundle();
 		answer.putString(OPENING_HOURS, openingHours);
-		applyAnswer(answer);
+		applyFormAnswer(answer);
 	}
 
 	@Override public boolean hasChanges()

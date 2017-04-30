@@ -18,14 +18,14 @@ import javax.inject.Inject;
 import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestDao;
-import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
+import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
 import de.westnordost.streetcomplete.util.InlineAsyncTask;
 import de.westnordost.osmapi.notes.Note;
 import de.westnordost.osmapi.notes.NoteComment;
 
 import static android.text.format.DateUtils.MINUTE_IN_MILLIS;
 
-public class NoteDiscussionForm extends AbstractQuestAnswerFragment
+public class NoteDiscussionForm extends AbstractQuestFormAnswerFragment
 {
 	private static final String TAG = "NoteDiscussionForm";
 	public static final String TEXT = "text";
@@ -144,7 +144,7 @@ public class NoteDiscussionForm extends AbstractQuestAnswerFragment
 
 		Bundle answer = new Bundle();
 		answer.putString(TEXT, noteText);
-		applyAnswer(answer);
+		applyFormAnswer(answer);
 	}
 
 	@Override protected List<Integer> getOtherAnswerResourceIds()

@@ -94,6 +94,7 @@
                   android:layoutDirection="locale"
                   android:background="@android:color/background_light"
                   style="?android:attr/buttonBarStyle">
+
         <Button
             android:id="@+id/buttonOtherAnswers"
             android:layout_width="wrap_content"
@@ -101,15 +102,8 @@
             android:layout_weight="2"
             android:text="@string/quest_generic_otherAnswers"
             style="?android:attr/buttonBarButtonStyle"/>
-        <Button
-            android:id="@+id/buttonOk"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_gravity="end"
-            style="?android:attr/buttonBarButtonStyle"
-            android:text="@android:string/ok"
-            />
+
+
     </LinearLayout>
 </de.westnordost.streetcomplete.view.SlidingRelativeLayout>
 
