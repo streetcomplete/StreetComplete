@@ -123,6 +123,7 @@
 
     <!-- La phrase en anglais porte aussi à confusion, cet UI devrait être refactored. -->
     <string name="quest_buildingLevels_roofLevelsLabel">"d'entre eux, combien sont dans le toit"</string>
+    <string name="quest_busStopShelter_title">Y a t-il un abri à cet arrêt de bus ?</string>
     <string name="quest_roofShape_title">"Quelle forme a le toit de l'édifice ?"</string>
     <string name="quest_roofShape_select_one">"Sélectionner un :"</string>
     <string name="quest_roofShape_show_more">"Montrer d'avantage…"</string>
@@ -252,4 +253,6 @@ L'information que vous entrez est directement ajoutée à OpenStreetMap sous vot
     <string name="pref_title_keep_screen_on">"Conserver l'écran allumé"</string>
     <string name="download_server_error">"Erreur de connexion lors de la recherche de quêtes. Essayez plus tard."</string>
     <string name="upload_server_error">"Erreur de connexion lors de l'envoi des réponses. Essayez plus tard."</string>
+    <string name="quest_generic_hasFeature_no">"Non"</string>
+    <string name="quest_generic_hasFeature_yes">"Oui"</string>
 </resources>

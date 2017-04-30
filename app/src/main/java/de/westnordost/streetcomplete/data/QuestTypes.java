@@ -8,8 +8,8 @@ import java.util.List;
 import java.util.Map;
 
 import de.westnordost.streetcomplete.quests.building_levels.AddBuildingLevels;
+import de.westnordost.streetcomplete.quests.bus_stop_shelter.AddBusStopShelter;
 import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHours;
-import de.westnordost.streetcomplete.quests.place_name.AddPlaceName;
 import de.westnordost.streetcomplete.quests.road_name.AddRoadName;
 import de.westnordost.streetcomplete.quests.road_surface.AddRoadSurface;
 import de.westnordost.streetcomplete.quests.roof_shape.AddRoofShape;
@@ -29,6 +29,7 @@ public class QuestTypes
 		new AddRoofShape(),
 		// new AddPlaceName(), doesn't make sense as long as the app cannot tell the generic name of elements
 		new AddRoadSurface(),
+        new AddBusStopShelter()
 	};
 
 	private final List<QuestType> types;
