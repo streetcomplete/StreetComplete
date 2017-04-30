@@ -4,13 +4,19 @@ import android.os.Bundle;
 
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.QuestImportance;
-import de.westnordost.streetcomplete.data.osm.OverpassQuestType;
+import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment;
 
-public class AddBusStopShelter extends OverpassQuestType
+public class AddBusStopShelter extends SimpleOverpassQuestType
 {
+	public AddBusStopShelter(OverpassMapDataDao overpassServer)
+	{
+		super(overpassServer);
+	}
+
 	@Override
 	protected String getTagFilters()
 	{
