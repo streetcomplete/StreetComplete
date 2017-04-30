@@ -34,6 +34,9 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 {
 	public static final String ELEMENT = "element";
 
+	private String titleText;
+	private int titleTextResId = -1;
+
 	private TextView title;
 	private ViewGroup content;
 
@@ -79,6 +82,7 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 		});
 
 		title = (TextView) view.findViewById(R.id.title);
+		updateTitle();
 
 		buttonPanel = (LinearLayout) view.findViewById(R.id.buttonPanel);
 		buttonOtherAnswers = (Button) buttonPanel.findViewById(R.id.buttonOtherAnswers);
@@ -238,14 +242,27 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 		questAnswerComponent.onSkippedQuest();
 	}
 
-	protected final void setTitle(int resourceId)
+	public final void setTitle(int resourceId)
 	{
-		title.setText(resourceId);
+		titleTextResId = resourceId;
+		titleText = null;
+		updateTitle();
 	}
 
-	protected final void setTitle(String string)
+	public final void setTitle(String string)
 	{
-		title.setText(string);
+		titleText = string;
+		titleTextResId = -1;
+		updateTitle();
+	}
+
+	private void updateTitle()
+	{
+		if(title != null)
+		{
+			if(titleText != null) title.setText(titleText);
+			else if(titleTextResId != -1) title.setText(titleTextResId);
+		}
 	}
 
 	protected final View setContentView(int resourceId)

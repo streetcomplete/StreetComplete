@@ -2,10 +2,12 @@ package de.westnordost.streetcomplete.quests.bus_stop_shelter;
 
 import android.os.Bundle;
 
+import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.QuestImportance;
 import de.westnordost.streetcomplete.data.osm.OverpassQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
+import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment;
 
 public class AddBusStopShelter extends OverpassQuestType
 {
@@ -23,12 +25,15 @@ public class AddBusStopShelter extends OverpassQuestType
 
 	public AbstractQuestAnswerFragment createForm()
 	{
-		return new AddBusStopShelterForm();
+		YesNoQuestAnswerFragment fragment = new YesNoQuestAnswerFragment();
+		fragment.setTitle(R.string.quest_busStopShelter_title);
+		return fragment;
 	}
 
 	public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
 	{
-		changes.add("shelter", answer.getString(AddBusStopShelterForm.BUS_STOP_SHELTER));
+		String yesno = answer.getBoolean(YesNoQuestAnswerFragment.ANSWER) ? "yes" : "no";
+		changes.add("shelter", yesno);
 	}
 
 	@Override public String getCommitMessage()

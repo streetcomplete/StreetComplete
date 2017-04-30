@@ -9,8 +9,10 @@ import android.widget.Button;
 import de.westnordost.streetcomplete.R;
 
 /** Abstract base class for dialogs in which the user answers a yes/no quest */
-public abstract class AbstractYesNoQuestAnswerFragment extends AbstractQuestAnswerFragment
+public class YesNoQuestAnswerFragment extends AbstractQuestAnswerFragment
 {
+	public static final String ANSWER = "answer";
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState)
@@ -42,5 +44,10 @@ public abstract class AbstractYesNoQuestAnswerFragment extends AbstractQuestAnsw
 		return false;
 	}
 
-	protected abstract void onClickYesNo(boolean yes);
+	protected void onClickYesNo(boolean answer)
+	{
+		Bundle bundle = new Bundle();
+		bundle.putBoolean(ANSWER, answer);
+		applyImmediateAnswer(bundle);
+	}
 }
