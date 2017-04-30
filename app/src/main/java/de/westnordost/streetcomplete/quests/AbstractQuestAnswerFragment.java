@@ -13,10 +13,12 @@ import android.support.design.widget.BottomSheetBehavior;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,6 +29,7 @@ import java.util.List;
 import de.westnordost.osmapi.map.data.OsmElement;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.QuestGroup;
+import de.westnordost.streetcomplete.view.SlidingRelativeLayout;
 import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 
 /** Abstract base class for any dialog with which the user answers a specific quest(ion) */
@@ -37,7 +40,7 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 	private TextView title;
 	private ViewGroup content;
 
-	private View view;
+	private LinearLayout bottomSheet;
 
 	private QuestAnswerComponent questAnswerComponent;
 
@@ -56,9 +59,10 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState)
 	{
-		view = inflater.inflate(R.layout.bottom_sheet_fragment, container, false);
+		View view = inflater.inflate(R.layout.quest_answer_fragment, container, false);
 
-		view.addOnLayoutChangeListener(new View.OnLayoutChangeListener()
+		bottomSheet = (LinearLayout) view.findViewById(R.id.bottomSheet);
+		bottomSheet.addOnLayoutChangeListener(new View.OnLayoutChangeListener()
 		{
 			@Override
 			public void onLayoutChange(View v, int left, int top, int right, int bottom,
@@ -98,7 +102,7 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 			}
 		});
 
-		BottomSheetBehavior.from(view).setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback()
+		BottomSheetBehavior.from(bottomSheet).setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback()
 		{
 			@Override public void onStateChanged(@NonNull View bottomSheet, int newState) { }
 
@@ -162,7 +166,7 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 		if(getActivity() == null) return;
 
 		int toolbarHeight = getActivity().findViewById(R.id.toolbar).getHeight();
-		boolean coversToolbar = view.getTop() < toolbarHeight;
+		boolean coversToolbar = bottomSheet.getTop() < toolbarHeight;
 		buttonClose.setVisibility(coversToolbar ? View.VISIBLE : View.GONE);
 	}
 

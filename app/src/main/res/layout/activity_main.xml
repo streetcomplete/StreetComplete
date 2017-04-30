@@ -91,13 +91,11 @@
 
     </LinearLayout>
 
-    <android.support.design.widget.CoordinatorLayout
+    <FrameLayout
         android:id="@+id/map_bottom_sheet_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#00000000">
-    <!-- If I do not set any background color here, the layout will leave a few pixels free at the
-         bottom on my Android 6.0 emulator; so, setting to transparent-->
-    </android.support.design.widget.CoordinatorLayout>
+        android:layout_height="match_parent">
+
+    </FrameLayout>
 
  </FrameLayout >
