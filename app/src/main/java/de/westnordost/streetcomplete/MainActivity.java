@@ -149,6 +149,7 @@ public class MainActivity extends AppCompatActivity implements
 					if(e instanceof OsmConnectionException)
 					{
 						Toast.makeText(MainActivity.this, R.string.upload_server_error, Toast.LENGTH_LONG).show();
+						return;
 					}
 
 					crashReportExceptionHandler.askUserToSendErrorReport(MainActivity.this, R.string.upload_error, e);
