@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.quests.building_levels;
 
 import android.os.Bundle;
 
-import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.QuestImportance;
 import de.westnordost.streetcomplete.data.osm.OverpassQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;

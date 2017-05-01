@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import de.westnordost.streetcomplete.quests.bike_parking_capacity.AddBikeParkingCapacity;
 import de.westnordost.streetcomplete.quests.building_levels.AddBuildingLevels;
 import de.westnordost.streetcomplete.quests.bus_stop_shelter.AddBusStopShelter;
 import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHours;
@@ -29,7 +30,8 @@ public class QuestTypes
 		new AddRoofShape(),
 		// new AddPlaceName(), doesn't make sense as long as the app cannot tell the generic name of elements
 		new AddRoadSurface(),
-        new AddBusStopShelter()
+        new AddBusStopShelter(),
+        new AddBikeParkingCapacity()
 	};
 
 	private final List<QuestType> types;

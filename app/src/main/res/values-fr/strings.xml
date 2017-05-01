@@ -255,4 +255,5 @@ L'information que vous entrez est directement ajoutée à OpenStreetMap sous vot
     <string name="upload_server_error">"Erreur de connexion lors de l'envoi des réponses. Essayez plus tard."</string>
     <string name="quest_generic_hasFeature_no">"Non"</string>
     <string name="quest_generic_hasFeature_yes">"Oui"</string>
+    <string name="quest_bikeParkingCapacity_title">"Combien de vélos peut-on garer ici ?"</string>
 </resources>
