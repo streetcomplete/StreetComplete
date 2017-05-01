@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
@@ -37,6 +38,7 @@ public class ElementGeometryCreator
 		List<LatLon> polyline = data.getNodePositions(way.getId());
 		// unable to create geometry
 		if(polyline.isEmpty()) return null;
+		eliminateDuplicates(polyline);
 
 		List<List<LatLon>> polylines = new ArrayList<>(1);
 		polylines.add(polyline);
@@ -57,6 +59,26 @@ public class ElementGeometryCreator
 		}
 		if(result.center == null) return null;
 		return result;
+	}
+
+	private void eliminateDuplicates(List<LatLon> polyline)
+	{
+		Iterator<LatLon> it = polyline.iterator();
+		LatLon previous = null;
+		while(it.hasNext())
+		{
+			LatLon line = it.next();
+			if(previous == null ||
+					line.getLatitude() != previous.getLatitude() ||
+					line.getLongitude() != previous.getLongitude())
+			{
+				previous = line;
+			}
+			else
+			{
+				it.remove();
+			}
+		}
 	}
 
 	public ElementGeometry create(Relation relation)
@@ -84,6 +106,7 @@ public class ElementGeometryCreator
 			if(role == null || role.equals(member.getRole()))
 			{
 				List<LatLon> nodePositions = data.getNodePositions(wayId);
+				eliminateDuplicates(nodePositions);
 				if(nodePositions.size() > 1)
 				{
 					result.add(nodePositions);

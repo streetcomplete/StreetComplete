@@ -1,14 +1,10 @@
 package de.westnordost.streetcomplete.data.osm;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
 import de.westnordost.streetcomplete.data.osm.tql.FiltersParser;
 import de.westnordost.streetcomplete.data.osm.tql.TagFilterExpression;
 import de.westnordost.osmapi.map.data.BoundingBox;
-import de.westnordost.osmapi.map.data.Element;
 
 /** Quest type that simply makes a certain overpass query using tag filters and creates quests for
  *  every element received */

@@ -99,7 +99,7 @@ public class ElementCreatorTestGeometry extends TestCase implements WayGeometryS
 	{
 		ElementGeometry geom = createCreator().create(W4);
 		assertNotNull(geom.polylines);
-		assertEquals(P1, geom.center);
+		assertNotNull(geom.center);
 	}
 
 	public void testCreateForSimpleAreaWay()
