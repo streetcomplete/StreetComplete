@@ -3,14 +3,15 @@ package de.westnordost.streetcomplete.quests.road_surface;
 import android.os.Bundle;
 import android.text.TextUtils;
 
-import de.westnordost.streetcomplete.R;
-import de.westnordost.streetcomplete.data.QuestImportance;
-import de.westnordost.streetcomplete.data.osm.OverpassQuestType;
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
-import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
-import de.westnordost.streetcomplete.quests.road_name.AddRoadNameForm;
+import javax.inject.Inject;
 
-public class AddRoadSurface extends OverpassQuestType
+import de.westnordost.streetcomplete.data.QuestImportance;
+import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType;
+import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
+import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
+
+public class AddRoadSurface extends SimpleOverpassQuestType
 {
 	// well, all roads have surfaces, what I mean is that not all ways with highway key are
 	// "something with a surface"
@@ -21,6 +22,11 @@ public class AddRoadSurface extends OverpassQuestType
 			"track", "road",
 			/*"service", */ // this is too much, and the information value is very low
 	};
+
+	@Inject public AddRoadSurface(OverpassMapDataDao overpassServer)
+	{
+		super(overpassServer);
+	}
 
 	@Override
 	protected String getTagFilters()

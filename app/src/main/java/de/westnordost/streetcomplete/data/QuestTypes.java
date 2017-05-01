@@ -1,18 +1,10 @@
 package de.westnordost.streetcomplete.data;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import de.westnordost.streetcomplete.quests.building_levels.AddBuildingLevels;
-import de.westnordost.streetcomplete.quests.bus_stop_shelter.AddBusStopShelter;
-import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHours;
-import de.westnordost.streetcomplete.quests.road_name.AddRoadName;
-import de.westnordost.streetcomplete.quests.road_surface.AddRoadSurface;
-import de.westnordost.streetcomplete.quests.roof_shape.AddRoofShape;
 
 /** Every osm quest needs to be registered here.
  *
@@ -21,23 +13,12 @@ import de.westnordost.streetcomplete.quests.roof_shape.AddRoofShape;
 
 public class QuestTypes
 {
-	public static QuestType[] TYPES = new QuestType[]
-	{
-		new AddRoadName(),
-		new AddOpeningHours(),
-		new AddBuildingLevels(),
-		new AddRoofShape(),
-		// new AddPlaceName(), doesn't make sense as long as the app cannot tell the generic name of elements
-		new AddRoadSurface(),
-        new AddBusStopShelter()
-	};
-
 	private final List<QuestType> types;
 	private final Map<String, QuestType> typeMap;
 
-	public QuestTypes(QuestType[] questTypes)
+	public QuestTypes(List<QuestType> types)
 	{
-		types = Arrays.asList(questTypes);
+		this.types = types;
 		Collections.sort(types, new QuestImportanceComparator());
 
 		typeMap = new HashMap<>();

@@ -2,16 +2,21 @@ package de.westnordost.streetcomplete.quests.opening_hours;
 
 import android.os.Bundle;
 
+import javax.inject.Inject;
+
 import de.westnordost.streetcomplete.data.QuestImportance;
-import de.westnordost.streetcomplete.data.osm.OverpassQuestType;
+import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType;
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 
-import de.westnordost.streetcomplete.R;
-
-
-public class AddOpeningHours extends OverpassQuestType
+public class AddOpeningHours extends SimpleOverpassQuestType
 {
+	@Inject public AddOpeningHours(OverpassMapDataDao overpassServer)
+	{
+		super(overpassServer);
+	}
+
     @Override protected String getTagFilters()
 	{
 		return " nodes, ways, relations with ( shop and shop !~ no|vacant or" +

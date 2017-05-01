@@ -40,6 +40,6 @@ public class AddBuildingLevelsTest extends AOsmElementQuestTypeTest
 
 	@Override protected OsmElementQuestType createQuestType()
 	{
-		return new AddBuildingLevels();
+		return new AddBuildingLevels(null);
 	}
 }
