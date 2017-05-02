@@ -464,6 +464,7 @@ public class MapFragment extends Fragment implements
 		super.onDestroy();
 		compass.setListener(null);
 		if(mapView != null) mapView.onDestroy();
+		controller = null;
 	}
 
 	@Override public void onLowMemory()
