@@ -570,18 +570,29 @@ public class MainActivity extends AppCompatActivity implements
 
 	@Override public void onAnsweredQuest(long questId, QuestGroup group, Bundle answer)
 	{
+		closeQuestDetailsFor(questId, group);
 		answersCounter.answeredQuest();
 		questController.solveQuest(questId, group, answer);
 	}
 
 	@Override public void onLeaveNote(long questId, QuestGroup group, String note)
 	{
+		closeQuestDetailsFor(questId, group);
 		questController.createNote(questId, note);
 	}
 
 	@Override public void onSkippedQuest(long questId, QuestGroup group)
 	{
+		closeQuestDetailsFor(questId, group);
 		questController.hideQuest(questId, group);
+	}
+
+	private void closeQuestDetailsFor(long questId, QuestGroup group)
+	{
+		if (isQuestDetailsCurrentlyDisplayedFor(questId, group))
+		{
+			closeQuestDetails();
+		}
 	}
 
 	/* ------------- VisibleQuestListener ------------- */
