@@ -82,9 +82,9 @@ public class QuestController
 
 	public void onCreate()
 	{
-		HandlerThread bgThread = new HandlerThread("QuestControllerThread");
-		bgThread.start();
-		workerHandler = new Handler(bgThread.getLooper());
+		worker = new HandlerThread("QuestControllerThread");
+		worker.start();
+		workerHandler = new Handler(worker.getLooper());
 	}
 
 	public void onStart(VisibleQuestListener questListener)
