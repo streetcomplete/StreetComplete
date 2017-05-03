@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="bottom">
 
-    <ImageView
-        android:layout_width="wrap_content"
+    <EditText
         android:layout_height="wrap_content"
-        android:layout_toStartOf="@+id/capacityMultiplier"
-        android:layout_centerInParent="true"
-        android:id="@+id/capacityBike"
-        android:background="@drawable/ic_bicycle"/>
+        android:layout_width="wrap_content"
+        android:textSize="48dp"
+        android:layout_centerVertical="true"
+        android:layout_toStartOf="@id/capacityMultiplier"
+        android:minEms="1"
+        android:id="@+id/capacityInput"
+        android:inputType="number"
+        android:maxLines="1"
+        />
 
     <TextView
         android:id="@+id/capacityMultiplier"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="38dp"
         android:layout_centerInParent="true"
-        android:textSize="30dp"
-        android:padding="10dp"
-        android:text=" x " />
+        android:padding="6dp"
+        android:text=" × " />
 
-    <EditText
-        android:layout_height="wrap_content"
+    <ImageView
         android:layout_width="wrap_content"
-        android:ems="2"
-        android:layout_toEndOf="@+id/capacityMultiplier"
-        android:layout_centerInParent="true"
-        android:id="@+id/capacityInput"
-        android:inputType="number"
-        android:maxLines="1"
-        />
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@id/capacityMultiplier"
+        android:id="@+id/capacityBike"
+        android:background="@drawable/ic_bicycle"/>
 
 </RelativeLayout>
