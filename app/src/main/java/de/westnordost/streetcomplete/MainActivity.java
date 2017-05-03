@@ -192,6 +192,8 @@ public class MainActivity extends AppCompatActivity implements
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 		setSupportActionBar(toolbar);
 
+		questController.onCreate();
+
 		answersCounter = (AnswersCounter) toolbar.findViewById(R.id.answersCounter);
 
 		oAuthComponent.setListener(this);
@@ -320,6 +322,7 @@ public class MainActivity extends AppCompatActivity implements
 	@Override public void onDestroy()
 	{
 		super.onDestroy();
+		questController.onDestroy();
 	}
 
 	@Override public boolean onCreateOptionsMenu(Menu menu)
