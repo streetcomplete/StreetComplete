@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.QuestChangesUploadService;
 import de.westnordost.streetcomplete.data.download.QuestDownloadService;
 import de.westnordost.streetcomplete.data.meta.MetadataModule;
 import de.westnordost.streetcomplete.data.osm.upload.ChangesetAutoCloserService;
+import de.westnordost.streetcomplete.quests.QuestModule;
 import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHoursForm;
 import de.westnordost.streetcomplete.quests.road_name.AutoCorrectAbbreviationsEditText;
 import de.westnordost.streetcomplete.quests.note_discussion.NoteDiscussionForm;
@@ -18,7 +19,8 @@ import de.westnordost.streetcomplete.statistics.AnswersCounter;
 import de.westnordost.streetcomplete.util.SerializedSavedState;
 
 @Singleton
-@Component(modules = {ApplicationModule.class, OsmModule.class, DbModule.class, MetadataModule.class})
+@Component(modules = {ApplicationModule.class, OsmModule.class, QuestModule.class,
+		DbModule.class, MetadataModule.class})
 public interface ApplicationComponent
 {
 	void inject(MainActivity mainActivity);

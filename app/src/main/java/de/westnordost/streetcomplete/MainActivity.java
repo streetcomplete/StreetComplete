@@ -149,6 +149,7 @@ public class MainActivity extends AppCompatActivity implements
 					if(e instanceof OsmConnectionException)
 					{
 						Toast.makeText(MainActivity.this, R.string.upload_server_error, Toast.LENGTH_LONG).show();
+						return;
 					}
 
 					crashReportExceptionHandler.askUserToSendErrorReport(MainActivity.this, R.string.upload_error, e);
@@ -190,6 +191,8 @@ public class MainActivity extends AppCompatActivity implements
 
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 		setSupportActionBar(toolbar);
+
+		questController.onCreate();
 
 		answersCounter = (AnswersCounter) toolbar.findViewById(R.id.answersCounter);
 
@@ -319,6 +322,7 @@ public class MainActivity extends AppCompatActivity implements
 	@Override public void onDestroy()
 	{
 		super.onDestroy();
+		questController.onDestroy();
 	}
 
 	@Override public boolean onCreateOptionsMenu(Menu menu)
@@ -569,18 +573,29 @@ public class MainActivity extends AppCompatActivity implements
 
 	@Override public void onAnsweredQuest(long questId, QuestGroup group, Bundle answer)
 	{
+		closeQuestDetailsFor(questId, group);
 		answersCounter.answeredQuest();
 		questController.solveQuest(questId, group, answer);
 	}
 
 	@Override public void onLeaveNote(long questId, QuestGroup group, String note)
 	{
+		closeQuestDetailsFor(questId, group);
 		questController.createNote(questId, note);
 	}
 
 	@Override public void onSkippedQuest(long questId, QuestGroup group)
 	{
+		closeQuestDetailsFor(questId, group);
 		questController.hideQuest(questId, group);
+	}
+
+	private void closeQuestDetailsFor(long questId, QuestGroup group)
+	{
+		if (isQuestDetailsCurrentlyDisplayedFor(questId, group))
+		{
+			closeQuestDetails();
+		}
 	}
 
 	/* ------------- VisibleQuestListener ------------- */

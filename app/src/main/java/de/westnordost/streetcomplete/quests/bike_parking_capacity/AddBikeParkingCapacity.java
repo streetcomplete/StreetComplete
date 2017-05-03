@@ -2,14 +2,22 @@ package de.westnordost.streetcomplete.quests.bike_parking_capacity;
 
 import android.os.Bundle;
 
-import de.westnordost.streetcomplete.R;
+import javax.inject.Inject;
+
 import de.westnordost.streetcomplete.data.QuestImportance;
-import de.westnordost.streetcomplete.data.osm.OverpassQuestType;
+import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 
-public class AddBikeParkingCapacity extends OverpassQuestType
+public class AddBikeParkingCapacity extends SimpleOverpassQuestType
 {
+	@Inject
+	public AddBikeParkingCapacity(OverpassMapDataDao overpassServer)
+	{
+		super(overpassServer);
+	}
+
 	@Override
 	protected String getTagFilters()
 	{

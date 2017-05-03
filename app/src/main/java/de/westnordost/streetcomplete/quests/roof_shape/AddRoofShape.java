@@ -2,13 +2,21 @@ package de.westnordost.streetcomplete.quests.roof_shape;
 
 import android.os.Bundle;
 
+import javax.inject.Inject;
+
 import de.westnordost.streetcomplete.data.QuestImportance;
-import de.westnordost.streetcomplete.data.osm.OverpassQuestType;
+import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 
-public class AddRoofShape extends OverpassQuestType
+public class AddRoofShape extends SimpleOverpassQuestType
 {
+	@Inject public AddRoofShape(OverpassMapDataDao overpassServer)
+	{
+		super(overpassServer);
+	}
+
 	@Override
 	protected String getTagFilters()
 	{

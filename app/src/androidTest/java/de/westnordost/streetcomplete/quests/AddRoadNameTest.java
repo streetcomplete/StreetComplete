@@ -54,6 +54,6 @@ public class AddRoadNameTest extends AOsmElementQuestTypeTest
 
 	@Override protected OsmElementQuestType createQuestType()
 	{
-		return new AddRoadName();
+		return new AddRoadName(null);
 	}
 }

@@ -16,8 +16,8 @@ import de.westnordost.streetcomplete.data.QuestGroup;
 import de.westnordost.streetcomplete.data.QuestType;
 import de.westnordost.streetcomplete.data.VisibleQuestListener;
 import de.westnordost.streetcomplete.data.osm.ElementGeometry;
+import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.OsmQuest;
-import de.westnordost.streetcomplete.data.osm.OverpassQuestType;
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao;
 import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
@@ -34,7 +34,6 @@ public class OsmQuestDownload
 	private static final String TAG = "QuestDownload";
 
 	// injections
-	private final OverpassMapDataDao overpassServer;
 	private final ElementGeometryDao geometryDB;
 	private final MergedElementDao elementDB;
 	private final OsmQuestDao osmQuestDB;
@@ -44,11 +43,10 @@ public class OsmQuestDownload
 	private VisibleQuestListener questListener;
 
 	@Inject public OsmQuestDownload(
-			OverpassMapDataDao overpassServer, ElementGeometryDao geometryDB,
+			ElementGeometryDao geometryDB,
 			MergedElementDao elementDB, OsmQuestDao osmQuestDB,
 			DownloadedTilesDao downloadedTilesDao)
 	{
-		this.overpassServer = overpassServer;
 		this.geometryDB = geometryDB;
 		this.elementDB = elementDB;
 		this.osmQuestDB = osmQuestDB;
@@ -60,7 +58,7 @@ public class OsmQuestDownload
 		this.questListener = listener;
 	}
 
-	public int download(final OverpassQuestType questType, Rect tiles,
+	public int download(final OsmElementQuestType questType, Rect tiles,
 						  final Set<LatLon> blacklistedPositions)
 	{
 		BoundingBox bbox = SlippyMapMath.asBoundingBox(tiles, ApplicationConstants.QUEST_TILE_ZOOM);
@@ -70,48 +68,27 @@ public class OsmQuestDownload
 		final ArrayList<OsmQuest> quests = new ArrayList<>();
 		final Map<OsmElementKey, Long> previousQuests = getPreviousQuestsIdsByElementKey(questType, bbox);
 
-		String oql = questType.getOverpassQuery(bbox);
-		try
+		boolean success = questType.download(bbox, new MapDataWithGeometryHandler()
 		{
-			overpassServer.get(oql, new MapDataWithGeometryHandler()
+			@Override public void handle(Element element, ElementGeometry geometry)
 			{
-				@Override public void handle(Element element, ElementGeometry geometry)
+				if(mayCreateQuestFrom(questType, element, geometry, blacklistedPositions))
 				{
-					if(!mayCreateQuestFrom(questType, element, geometry, blacklistedPositions)) return;
-
 					Element.Type elementType = element.getType();
 					long elementId = element.getId();
 
+					OsmQuest quest = new OsmQuest(questType, elementType, elementId, geometry);
+
+					geometryRows.add(new ElementGeometryDao.Row(
+							elementType, elementId, quest.getGeometry()));
+					quests.add(quest);
 					OsmElementKey elementKey = new OsmElementKey(elementType, elementId);
-
-					geometryRows.add(new ElementGeometryDao.Row(elementType, elementId, geometry));
 					elements.put(elementKey, element);
-					quests.add(new OsmQuest(questType, elementType, elementId, geometry));
-
 					previousQuests.remove(elementKey);
 				}
-			});
-		}
-		catch(OsmTooManyRequestsException e)
-		{
-			OverpassStatus status = overpassServer.getStatus();
-			if(status.availableSlots == 0)
-			{
-				// rather wait 1s longer than required cause we only get the time in seconds
-				int wait = (1 + status.nextAvailableSlotIn) * 1000;
-				Log.i(TAG, "Hit Overpass quota. Waiting " + wait + "ms before continuing");
-				try
-				{
-					Thread.sleep(wait);
-				}
-				catch (InterruptedException ie)
-				{
-					Log.d(TAG, "Thread interrupted while waiting for Overpass quota to be replenished");
-					return 0;
-				}
 			}
-			return download(questType, tiles, blacklistedPositions);
-		}
+		});
+		if(!success) return 0;
 
 		// geometry and elements must be put into DB first because quests have foreign keys on it
 		geometryDB.putAll(geometryRows);
@@ -158,7 +135,7 @@ public class OsmQuestDownload
 	}
 
 	private Map<OsmElementKey, Long> getPreviousQuestsIdsByElementKey(
-			OverpassQuestType questType, BoundingBox bbox)
+			OsmElementQuestType questType, BoundingBox bbox)
 	{
 		String questTypeName = questType.getClass().getSimpleName();
 		Map<OsmElementKey, Long> result = new HashMap<>();
@@ -169,11 +146,9 @@ public class OsmQuestDownload
 		return result;
 	}
 
-	private boolean mayCreateQuestFrom(OverpassQuestType questType, Element element,
+	private boolean mayCreateQuestFrom(OsmElementQuestType questType, Element element,
 									   ElementGeometry geometry, Set<LatLon> blacklistedPositions)
 	{
-		if(!questType.appliesTo(element)) return false;
-
 		// invalid geometry -> can't show this quest, so skip it
 		if(geometry == null)
 		{

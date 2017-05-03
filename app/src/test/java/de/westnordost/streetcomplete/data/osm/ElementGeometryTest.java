@@ -19,12 +19,13 @@ public class ElementGeometryTest extends TestCase
 		square.add(new OsmLatLon(+5,-5));
 		square.add(new OsmLatLon(+5,+5));
 		square.add(new OsmLatLon(-5,+5));
+		square.add(new OsmLatLon(-5,-5));
 		polygons.add(square);
 		ElementGeometry geom = new ElementGeometry(null, polygons);
 		assertEquals(new OsmLatLon(0,0), geom.center);
 	}
 
-	public void testFindCenterOfPolygonsIgnoresHoles()
+	public void testFindCenterOfPolygonsWithHole()
 	{
 		List<List<LatLon>> polygons = new ArrayList<>();
 		List<LatLon> square = new ArrayList<>();
@@ -32,22 +33,27 @@ public class ElementGeometryTest extends TestCase
 		square.add(new OsmLatLon(+5,-5));
 		square.add(new OsmLatLon(+5,+5));
 		square.add(new OsmLatLon(-5,+5));
+		square.add(new OsmLatLon(-5,-5));
 		List<LatLon> hole = new ArrayList<>();
-		hole.add(new OsmLatLon(1,1));
-		hole.add(new OsmLatLon(1,3));
-		hole.add(new OsmLatLon(3,2));
+		hole.add(new OsmLatLon(-3,-3));
+		hole.add(new OsmLatLon(-3,+3));
+		hole.add(new OsmLatLon(+3,+3));
+		hole.add(new OsmLatLon(+3,-3));
+		hole.add(new OsmLatLon(-3,-3));
 		polygons.add(square);
 		polygons.add(hole);
 		ElementGeometry geom = new ElementGeometry(null, polygons);
-		assertEquals(new OsmLatLon(0,0), geom.center);
+		double lat = geom.center.getLatitude();
+		double lon = geom.center.getLongitude();
+		assertTrue(
+				Math.abs(lat) >= 3 && Math.abs(lat) <= 5 ||
+				Math.abs(lon) >= 3 && Math.abs(lon) <= 5);
 	}
 
 	public void testFindCenterOfPolygonWithNoArea()
 	{
 		List<List<LatLon>> polygons = new ArrayList<>();
 		List<LatLon> square = new ArrayList<>();
-		square.add(new OsmLatLon(10,10));
-		square.add(new OsmLatLon(10,10));
 		square.add(new OsmLatLon(10,10));
 		polygons.add(square);
 		ElementGeometry geom = new ElementGeometry(null, polygons);
@@ -82,6 +88,6 @@ public class ElementGeometryTest extends TestCase
 		polyline.add(new OsmLatLon(20,20));
 		polylines.add(polyline);
 		ElementGeometry geom = new ElementGeometry(polylines, null);
-		assertEquals(new OsmLatLon(20,20), geom.center);
+		assertEquals(null, geom.center);
 	}
 }

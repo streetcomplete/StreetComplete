@@ -78,6 +78,12 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		retrievedTiles = new HashSet<>();
 	}
 
+	@Override public void onDestroy()
+	{
+		super.onDestroy();
+		questsLayer = geometryLayer = null;
+	}
+
 	protected void initMap()
 	{
 		super.initMap();

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+
+    <EditText
+        android:id="@+id/input"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:minWidth="96dp"
+        android:textSize="48sp"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:background="@drawable/background_housenumber"
+        android:padding="18dp"
+        android:inputType="textNoSuggestions"
+        android:imeOptions="actionDone"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:text=""
+        android:maxLines="1"
+        />
+
+    <Button
+        android:id="@+id/toggleKeyboard"
+        android:layout_width="64dp"
+        android:layout_height="56dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"/>
+
+</RelativeLayout>
