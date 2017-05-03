@@ -16,6 +16,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import javax.inject.Inject;
 import javax.inject.Provider;
 
+import de.westnordost.osmapi.common.errors.OsmAuthorizationException;
+import de.westnordost.osmapi.common.errors.OsmConnectionException;
 import de.westnordost.streetcomplete.ApplicationConstants;
 import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.data.osm.upload.OsmQuestChangesUpload;
@@ -31,6 +33,7 @@ public class QuestChangesUploadService extends IntentService
 			ACTION_ERROR = "de.westnordost.QuestChangesUploadService.ERROR",
 			IS_AUTH_FAILED = "authFailed",
 			IS_VERSION_BANNED = "banned",
+			IS_CONNECTION_ERROR = "connectionError",
 			EXCEPTION = "exception";
 
 	public static final String
@@ -105,6 +108,22 @@ public class QuestChangesUploadService extends IntentService
 
 			CreateNoteUpload createNoteUpload = createNoteUploadProvider.get();
 			createNoteUpload.upload(cancelState);
+		}
+		catch (OsmConnectionException e)
+		{
+			Log.i(TAG, "No connection");
+			Intent errorIntent = new Intent(ACTION_ERROR);
+			errorIntent.putExtra(IS_CONNECTION_ERROR, true);
+			errorIntent.putExtra(EXCEPTION, e);
+			send(errorIntent);
+		}
+		catch (OsmAuthorizationException e)
+		{
+			Log.i(TAG, "User is not authorized");
+			Intent errorIntent = new Intent(ACTION_ERROR);
+			errorIntent.putExtra(IS_AUTH_FAILED, true);
+			errorIntent.putExtra(EXCEPTION, e);
+			send(errorIntent);
 		}
 		catch (Exception e)
 		{

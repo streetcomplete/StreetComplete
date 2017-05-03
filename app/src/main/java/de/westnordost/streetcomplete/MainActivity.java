@@ -43,6 +43,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import de.westnordost.osmapi.common.errors.OsmAuthorizationException;
 import de.westnordost.osmapi.common.errors.OsmConnectionException;
 import de.westnordost.streetcomplete.about.AboutActivity;
 import de.westnordost.streetcomplete.data.Quest;
@@ -128,9 +129,19 @@ public class MainActivity extends AppCompatActivity implements
 	{
 		@Override public void onReceive(Context context, Intent intent)
 		{
+			Exception e = (Exception) intent.getSerializableExtra(QuestChangesUploadService.EXCEPTION);
+
 			if(intent.getBooleanExtra(QuestChangesUploadService.IS_AUTH_FAILED, false))
 			{
+				// delete secret in case it failed while already having a token -> token is invalid
+				OAuth.deleteConsumer(prefs);
 				requestOAuthorized();
+			}
+			else if(intent.getBooleanExtra(QuestChangesUploadService.IS_CONNECTION_ERROR, false))
+			{
+				// a 5xx error is not the fault of this app. Nothing we can do about it, so
+				// just notify the user
+				Toast.makeText(MainActivity.this, R.string.upload_server_error, Toast.LENGTH_LONG).show();
 			}
 			else if(intent.getBooleanExtra(QuestChangesUploadService.IS_VERSION_BANNED, false))
 			{
@@ -139,21 +150,10 @@ public class MainActivity extends AppCompatActivity implements
 						.setPositiveButton(android.R.string.ok, null)
 						.show();
 			}
-			else // any other error
+			else if(e != null)// any other error
 			{
-				Exception e = (Exception) intent.getSerializableExtra(QuestChangesUploadService.EXCEPTION);
-				if(e != null)
-				{
-					// a 5xx error is not the fault of this app. Nothing we can do about it, so it does not
-					// make sense to send an error report. Just notify the user
-					if(e instanceof OsmConnectionException)
-					{
-						Toast.makeText(MainActivity.this, R.string.upload_server_error, Toast.LENGTH_LONG).show();
-						return;
-					}
-
-					crashReportExceptionHandler.askUserToSendErrorReport(MainActivity.this, R.string.upload_error, e);
-				}
+				crashReportExceptionHandler.askUserToSendErrorReport(
+						MainActivity.this, R.string.upload_error, e);
 			}
 		}
 	};
