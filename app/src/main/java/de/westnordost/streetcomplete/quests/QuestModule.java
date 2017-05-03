@@ -9,6 +9,7 @@ import dagger.Provides;
 import de.westnordost.streetcomplete.data.QuestType;
 import de.westnordost.streetcomplete.data.QuestTypes;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
+import de.westnordost.streetcomplete.quests.bike_parking_capacity.AddBikeParkingCapacity;
 import de.westnordost.streetcomplete.quests.building_levels.AddBuildingLevels;
 import de.westnordost.streetcomplete.quests.bus_stop_shelter.AddBusStopShelter;
 import de.westnordost.streetcomplete.quests.housenumber.AddHousenumber;
@@ -31,7 +32,7 @@ public class QuestModule
 				new AddRoadSurface(o),
 				new AddBusStopShelter(o),
 				new AddHousenumber(o),
-
+				new AddBikeParkingCapacity(o)
 		};
 
 		return new QuestTypes(Arrays.asList(questTypes));

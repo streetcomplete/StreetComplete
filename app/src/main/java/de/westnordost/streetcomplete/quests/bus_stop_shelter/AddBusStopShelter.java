@@ -2,6 +2,8 @@ package de.westnordost.streetcomplete.quests.bus_stop_shelter;
 
 import android.os.Bundle;
 
+import javax.inject.Inject;
+
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.QuestImportance;
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType;
@@ -12,7 +14,7 @@ import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment;
 
 public class AddBusStopShelter extends SimpleOverpassQuestType
 {
-	public AddBusStopShelter(OverpassMapDataDao overpassServer)
+	@Inject public AddBusStopShelter(OverpassMapDataDao overpassServer)
 	{
 		super(overpassServer);
 	}
