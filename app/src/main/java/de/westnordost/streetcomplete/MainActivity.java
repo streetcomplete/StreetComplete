@@ -521,6 +521,13 @@ public class MainActivity extends AppCompatActivity implements
 			}
 		}
 
+		@Override public void onSuccess()
+		{
+			// after downloading, regardless if triggered manually or automatically, the
+			// auto downloader should check whether there are enough quests in the vicinity now
+			questAutoSyncer.triggerAutoDownload();
+		}
+
 		@Override public void onFinished()
 		{
 			runOnUiThread(new Runnable()
@@ -530,10 +537,6 @@ public class MainActivity extends AppCompatActivity implements
 					ObjectAnimator fadeOutAnimator = ObjectAnimator.ofFloat(progressBar, View.ALPHA, 0f);
 					fadeOutAnimator.setDuration(1000);
 					fadeOutAnimator.start();
-
-					// after downloading, regardless if triggered manually or automatically, the
-					// auto downloader should check whether there are enough quests in the vicinity now
-					questAutoSyncer.triggerAutoDownload();
 				}
 			});
 		}

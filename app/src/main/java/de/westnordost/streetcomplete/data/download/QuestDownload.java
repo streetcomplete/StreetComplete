@@ -120,6 +120,7 @@ public class QuestDownload
 			}
 
 			downloadQuestTypes(questTypes, notesPositions);
+			progressListener.onSuccess();
 		}
 		finally
 		{

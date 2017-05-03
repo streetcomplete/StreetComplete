@@ -79,6 +79,11 @@ public class QuestDownloadProgressRelay implements QuestDownloadProgressListener
 		}
 	}
 
+	@Override synchronized public void onSuccess()
+	{
+		if(listener != null) listener.onSuccess();
+	}
+
 	@Override synchronized public void onFinished()
 	{
 		this.isDownloading = false;
