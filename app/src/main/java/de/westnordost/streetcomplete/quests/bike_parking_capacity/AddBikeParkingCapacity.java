@@ -34,7 +34,7 @@ public class AddBikeParkingCapacity extends OverpassQuestType
 
 	@Override public String getCommitMessage()
 	{
-		return "Add bicycle parking capacity";
+		return "Add bicycle parking capacities";
 	}
 
 	@Override public String getIconName() {	return "bicycle_parking"; }

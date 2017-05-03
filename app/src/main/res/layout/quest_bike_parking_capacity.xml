@@ -9,7 +9,8 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toLeftOf="@+id/capacityMultiplier"
+        android:layout_toStartOf="@+id/capacityMultiplier"
+        android:layout_centerInParent="true"
         android:id="@+id/capacityBike"
         android:background="@drawable/ic_bicycle"/>
 
@@ -26,7 +27,8 @@
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:ems="2"
-        android:layout_toRightOf="@+id/capacityMultiplier"
+        android:layout_toEndOf="@+id/capacityMultiplier"
+        android:layout_centerInParent="true"
         android:id="@+id/capacityInput"
         android:inputType="number"
         android:maxLines="1"
