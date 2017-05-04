@@ -15,11 +15,14 @@ import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v13.app.FragmentCompat;
+import android.text.Html;
 import android.text.TextUtils;
+import android.text.method.LinkMovementMethod;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.mapzen.android.lost.api.LocationListener;
 import com.mapzen.android.lost.api.LocationRequest;
@@ -82,6 +85,13 @@ public class MapFragment extends Fragment implements
 		View view = inflater.inflate(R.layout.fragment_map, container, false);
 
 		mapView = (MapView) view.findViewById(R.id.map);
+		TextView mapzenLink = (TextView) view.findViewById(R.id.mapzenLink);
+
+		mapzenLink.setText(Html.fromHtml(
+				String.format(getResources().getString(R.string.map_attribution_mapzen),
+				"<a href=\"https://mapzen.com/\">Mapzen</a>"))
+		);
+		mapzenLink.setMovementMethod(LinkMovementMethod.getInstance());
 
 		return view;
 	}

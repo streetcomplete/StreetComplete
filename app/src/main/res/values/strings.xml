@@ -21,7 +21,7 @@
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Ignoring notes not phrased as questions"</string>
     <string name="pref_title_map_cache">"Map Cache Size"</string>
     <string name="map_btn_gps_tracking">"Follow me"</string>
-    <string name="map_attribution_mapzen">"Powered by Mapzen"</string>
+    <string name="map_attribution_mapzen">"Powered by %s"</string>
     <string name="map_attribution_osm">"© OpenStreetMap contributors"</string>
     <string name="quest_generic_otherAnswers">"Other answers…"</string>
     <string name="quest_generic_answer_notApplicable">"Can't say"</string>
