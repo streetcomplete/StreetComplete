@@ -475,6 +475,9 @@ public class MapFragment extends Fragment implements
 		compass.setListener(null);
 		if(mapView != null) mapView.onDestroy();
 		controller = null;
+		directionMarker = null;
+		accuracyMarker = null;
+		locationMarker = null;
 	}
 
 	@Override public void onLowMemory()
