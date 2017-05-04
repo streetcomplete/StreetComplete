@@ -2,12 +2,15 @@ package de.westnordost.streetcomplete.data.osm.download;
 
 import android.util.Log;
 
+import java.io.IOException;
+import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
 import javax.inject.Inject;
 import javax.inject.Provider;
 
+import de.westnordost.osmapi.ApiRequestWriter;
 import de.westnordost.osmapi.OsmConnection;
 import de.westnordost.osmapi.common.errors.OsmApiException;
 import de.westnordost.osmapi.common.errors.OsmBadUserInputException;
@@ -35,14 +38,26 @@ public class OverpassMapDataDao
 	 * @throws OsmTooManyRequestsException if the user is over his request quota. See getStatus, killMyQueries
 	 * @throws OsmBadUserInputException if there is an error if the query
 	 */
-	public synchronized void get(String query, MapDataWithGeometryHandler handler)
+	public synchronized void get(final String query, MapDataWithGeometryHandler handler)
 	{
-		String request = "interpreter?data=" + urlEncode(query);
 		OverpassMapDataParser parser = parserProvider.get();
 		parser.setHandler(handler);
 		try
 		{
-			osm.makeRequest(request, parser);
+			ApiRequestWriter writer = new ApiRequestWriter()
+			{
+				@Override public String getContentType()
+				{
+					return "application/x-www-form-urlencoded";
+				}
+
+				@Override public void write(OutputStream out) throws IOException
+				{
+					String request = "data=" + urlEncode(query);
+					out.write(request.getBytes());
+				}
+			};
+			osm.makeRequest("interpreter", "POST", false, writer, parser);
 		}
 		catch(OsmApiException e)
 		{
