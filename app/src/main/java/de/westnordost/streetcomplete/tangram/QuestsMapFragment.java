@@ -199,15 +199,10 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		if(lastDisplayedRect != null && lastDisplayedRect.equals(tilesRect)) return;
 		lastDisplayedRect = tilesRect;
 
-		// TODO remove when error has been found and fixed
-		// normally should be <= 4 on small screens, but crash happens at 10000k+, so be generous here (large tablet screens)
-		if(tilesRect.width() * tilesRect.height() > 32)
+		// TODO remove when https://github.com/tangrams/tangram-es/issues/1492 has been fixed
+		if(tilesRect.width() * tilesRect.height() > 4)
 		{
-			throw new RuntimeException("Tried to display quests in a rectangle of "
-					+ tilesRect.width() + "x" + tilesRect.height() + " tiles, current zoom is " +
-					controller.getZoom() + ". Currently displayed area by screen borders is minlat=" +
-					displayedArea.getMinLatitude() + ", minlon=" + displayedArea.getMinLongitude() +
-					", maxlat=" + displayedArea.getMaxLatitude() + ", maxlon=" + displayedArea.getMaxLongitude());
+			return;
 		}
 
 		List<Point> tiles = SlippyMapMath.asTileList(tilesRect);
