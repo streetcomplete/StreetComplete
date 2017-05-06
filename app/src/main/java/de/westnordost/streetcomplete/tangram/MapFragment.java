@@ -73,6 +73,8 @@ public class MapFragment extends Fragment implements
 
 	private Listener listener;
 
+	private String apiKey;
+
 	public interface Listener
 	{
 		void onMapReady();
@@ -98,13 +100,14 @@ public class MapFragment extends Fragment implements
 
 	/* --------------------------------- Map and Location --------------------------------------- */
 
-	public void getMapAsync()
+	public void getMapAsync(String apiKey)
 	{
-		getMapAsync("scene.yaml");
+		getMapAsync(apiKey, "scene.yaml");
 	}
 
-	public void getMapAsync(@NonNull final String sceneFilePath)
+	public void getMapAsync(String apiKey, @NonNull final String sceneFilePath)
 	{
+		this.apiKey = apiKey;
 		mapView.getMapAsync(new MapView.OnMapReadyCallback()
 		{
 			@Override public void onMapReady(MapController ctrl)
@@ -186,9 +189,9 @@ public class MapFragment extends Fragment implements
 		File cacheDir = getActivity().getExternalCacheDir();
 		if (cacheDir != null && cacheDir.exists())
 		{
-			return new HttpHandler(new File(cacheDir, "tile_cache"), cacheSize * 1024 * 1024);
+			return new TileHttpHandler(apiKey, new File(cacheDir, "tile_cache"), cacheSize * 1024 * 1024);
 		}
-		return new HttpHandler();
+		return new TileHttpHandler(apiKey);
 	}
 
 	public void startPositionTracking()

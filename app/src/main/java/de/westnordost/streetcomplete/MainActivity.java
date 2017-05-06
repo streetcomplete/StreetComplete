@@ -15,6 +15,7 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
@@ -208,7 +209,10 @@ public class MainActivity extends AppCompatActivity implements
 		progressBar.setMax(1000);
 
 		mapFragment = (QuestsMapFragment) getFragmentManager().findFragmentById(R.id.map_fragment);
-		mapFragment.getMapAsync();
+
+		mapFragment.getMapAsync(BuildConfig.MAPZEN_API_KEY != null ?
+				BuildConfig.MAPZEN_API_KEY :
+				new String(new char[]{118,101,99,116,111,114,45,116,105,108,101,115,45,102,75,85,99,117,65,74}));
 
 		trackingButton = (LocationStateButton) findViewById(R.id.gps_tracking);
 		trackingButton.setOnClickListener(new View.OnClickListener()

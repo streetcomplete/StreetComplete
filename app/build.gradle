@@ -1,6 +1,8 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
 
+def MAPZEN_API_KEY = hasProperty('mapzenApiKey') ? '"' + mapzenApiKey + '"' : "null";
+
 android {
     signingConfigs {
         release
@@ -19,6 +21,7 @@ android {
         versionName "0.8"
         multiDexEnabled true
         testInstrumentationRunner "com.android.test.runner.MultiDexTestRunner"
+        buildConfigField "String", "MAPZEN_API_KEY", MAPZEN_API_KEY
     }
     buildTypes {
         release {
