@@ -88,6 +88,6 @@ public class ElementGeometryTest extends TestCase
 		polyline.add(new OsmLatLon(20,20));
 		polylines.add(polyline);
 		ElementGeometry geom = new ElementGeometry(polylines, null);
-		assertEquals(null, geom.center);
+		assertEquals(new OsmLatLon(20,20), geom.center);
 	}
 }

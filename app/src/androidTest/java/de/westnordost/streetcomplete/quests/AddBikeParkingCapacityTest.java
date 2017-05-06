@@ -22,6 +22,6 @@ public class AddBikeParkingCapacityTest extends AOsmElementQuestTypeTest
 
 	@Override protected OsmElementQuestType createQuestType()
 	{
-		return new AddBikeParkingCapacity();
+		return new AddBikeParkingCapacity(null);
 	}
 }

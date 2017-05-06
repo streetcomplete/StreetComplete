@@ -54,6 +54,7 @@ public class OsmQuestChangesUploadTest extends TestCase
 		OsmQuestDao questDb = mock(OsmQuestDao.class);
 		ElementGeometryDao elementGeometryDao = mock(ElementGeometryDao.class);
 		MergedElementDao elementDB = mock(MergedElementDao.class);
+		OpenChangesetsDao openChangesetsDb = mock(OpenChangesetsDao.class);
 		when(questDb.getAll(null, QuestStatus.ANSWERED)).thenAnswer(
 				new Answer<List<OsmQuest>>()
 				{
@@ -67,7 +68,7 @@ public class OsmQuestChangesUploadTest extends TestCase
 				});
 
 		final OsmQuestChangesUpload u = new OsmQuestChangesUpload(null, questDb, elementDB,
-				elementGeometryDao, null, null, null, null);
+				elementGeometryDao, null, openChangesetsDb, null, null);
 		final AtomicBoolean cancel = new AtomicBoolean(false);
 
 		Thread t = new Thread(new Runnable()
