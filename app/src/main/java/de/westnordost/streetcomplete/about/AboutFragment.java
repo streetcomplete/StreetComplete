@@ -7,6 +7,7 @@ import android.preference.Preference;
 import android.preference.PreferenceFragment;
 
 import de.westnordost.streetcomplete.ApplicationConstants;
+import de.westnordost.streetcomplete.BuildConfig;
 import de.westnordost.streetcomplete.R;
 
 public class AboutFragment extends PreferenceFragment
@@ -17,7 +18,7 @@ public class AboutFragment extends PreferenceFragment
 		super.onCreate(savedInstanceState);
 		addPreferencesFromResource(R.xml.about);
 
-		getPreferenceScreen().findPreference("version").setSummary(ApplicationConstants.VERSION);
+		getPreferenceScreen().findPreference("version").setSummary(BuildConfig.VERSION_NAME);
 
 		getPreferenceScreen().findPreference("license").setOnPreferenceClickListener(
 				new Preference.OnPreferenceClickListener()

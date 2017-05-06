@@ -8,8 +8,7 @@ public class ApplicationConstants
 {
 	public final static String
 		NAME = "StreetComplete",
-		VERSION = "0.8",
-		USER_AGENT = NAME + " " + VERSION,
+		USER_AGENT = NAME + " " + BuildConfig.VERSION_NAME,
 		QUESTTYPE_TAG_KEY = NAME + ":quest_type";
 
 	// date of birth of StreetComplete ;-) (first Google Play version)
