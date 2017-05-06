@@ -62,15 +62,18 @@ public class AddOpeningHoursAdapter extends RecyclerView.Adapter
 	@Override public void onBindViewHolder(RecyclerView.ViewHolder holder, int position)
 	{
 		int[] p = getHierarchicPosition(position);
+		OpeningMonths om = data.get(p[0]);
+
 		if(holder instanceof MonthsViewHolder)
 		{
-			OpeningMonths om = data.get(p[0]);
 			((MonthsViewHolder) holder).update(om, p[0]);
 		}
 		else if(holder instanceof WeekdayViewHolder)
 		{
-			OpeningWeekdays ow = data.get(p[0]).weekdaysList.get(p[1]);
-			((WeekdayViewHolder) holder).update(ow, p[1]);
+			OpeningWeekdays ow = om.weekdaysList.get(p[1]);
+			OpeningWeekdays prevOw = null;
+			if(p[1] > 0) prevOw = om.weekdaysList.get(p[1] - 1);
+			((WeekdayViewHolder) holder).update(ow, prevOw, p[1]);
 		}
 	}
 
@@ -122,8 +125,12 @@ public class AddOpeningHoursAdapter extends RecyclerView.Adapter
 		}
 		else if(p.length == 2)
 		{
-			OpeningWeekdays ow = data.get(p[0]).weekdaysList.remove(p[1]);
+			ArrayList<OpeningWeekdays> weekdays = data.get(p[0]).weekdaysList;
+			OpeningWeekdays ow = weekdays.remove(p[1]);
 			notifyItemRemoved(position);
+			// if not last weekday removed -> element after this one may need to be updated
+			// because it may need to show the weekdays now
+			if(p[1] < weekdays.size()) notifyItemChanged(position);
 		}
 	}
 
@@ -322,10 +329,19 @@ public class AddOpeningHoursAdapter extends RecyclerView.Adapter
 			});
 		}
 
-		public void update(final OpeningWeekdays data, int index)
+		public void update(final OpeningWeekdays data, final OpeningWeekdays previousData, int index)
 		{
 			delete.setVisibility(index==0 ? View.GONE : View.VISIBLE);
-			weekdaysText.setText(data.weekdays.toLocalizedString(context.getResources()));
+
+			if(previousData != null && data.weekdays.equals(previousData.weekdays))
+			{
+				weekdaysText.setText("");
+			}
+			else
+			{
+				weekdaysText.setText(data.weekdays.toLocalizedString(context.getResources()));
+			}
+
 			weekdaysText.setOnClickListener(new View.OnClickListener()
 			{
 				@Override public void onClick(View v)
