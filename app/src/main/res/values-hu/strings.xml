@@ -21,7 +21,7 @@
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"A nem kérdésként megfolgalmazott jegyzetek figyelmen kívül hagyása"</string>
     <string name="pref_title_map_cache">"Térkép gyorsítótár méret"</string>
     <string name="map_btn_gps_tracking">"Kövess"</string>
-    <string name="map_attribution_mapzen">"Működteti a Mapzen"</string>
+    <string name="map_attribution_mapzen">"Működteti a %s"</string>
     <string name="map_attribution_osm">"© OpenStreetMap közreműködők"</string>
     <string name="quest_generic_otherAnswers">"További válaszok…"</string>
     <string name="quest_generic_answer_notApplicable">"Nem tudom megmondani"</string>
@@ -99,7 +99,7 @@
     <string name="about_summary_privacy_statement">"és Adathasználat"</string>
     <string name="quest_openingHours_public_holidays">"Nemzeti ünnepek"</string>
     <string name="quest_openingHours_public_holidays_short">"NÜ"</string>
-    <string name="quest_openingHours_open_end">"nyitvatartás vége"</string>
+    <string name="quest_openingHours_open_end">"rugalmas zárás"</string>
     <string name="quest_openingHours_answer_247">"Éjjel-nappal nyitva"</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">"Havonta változik"</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">"Nem rendszeres nyitvatartás"</string>
@@ -223,4 +223,9 @@ A megadott adatok közvetlenül az OpenStreetMapre kerülnek a nevedben, ehhez n
     <string name="pref_title_keep_screen_on">"Kijelző maradjon bekapcsolva"</string>
     <string name="download_server_error">"Kapcsolódási hiba a kérdések beolvasása során. Próbáld újra később."</string>
     <string name="upload_server_error">"Kapcsolódási hiba a válaszok feltöltése során. Próbáld újra később."</string>
+    <string name="quest_generic_hasFeature_yes">"Igen"</string>
+    <string name="quest_generic_hasFeature_no">"Nem"</string>
+    <string name="quest_busStopShelter_title">"Ez a buszmegálló fedett?"</string>
+    <string name="quest_bikeParkingCapacity_title">"Hány biciklit lehet ide lezárni?"</string>
+    <string name="quest_address_unusualHousenumber_confirmation_description">"Ez a házszám nagyon szokatlannak tűnik."</string>
 </resources>

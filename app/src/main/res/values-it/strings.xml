@@ -13,7 +13,7 @@
     <string name="pref_title_authorization">"Autorizza accesso OSM"</string>
     <string name="pref_title_authorized_summary">"Autorizzazione avvenuta"</string>
     <string name="pref_title_not_authorized_summary">"Non ancora autorizzato"</string>
-    <string name="pref_tilecache_size_summary">"%d Mb"</string>
+    <string name="pref_tilecache_size_summary">"%d MB"</string>
     <string name="pref_tilecache_size_message">"Spazio in megabyte riservato su supporto esterno per memorizzare le mappe nella cache"</string>
     <string name="pref_title_quest_expiration_time">"Cache Missioni"</string>
     <string name="pref_summary_quest_expiration">"per %s prima di un nuovo download"</string>
@@ -22,7 +22,7 @@
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Ignorare le note non sotto forma di domanda"</string>
     <string name="pref_title_map_cache">"Dimensione cache per la mappa"</string>
     <string name="map_btn_gps_tracking">"Seguimi"</string>
-    <string name="map_attribution_mapzen">"Powered by Mapzen"</string>
+    <string name="map_attribution_mapzen">"Powered by %s"</string>
     <string name="map_attribution_osm">"© contributori OpenStreetMap"</string>
     <string name="quest_generic_otherAnswers">"Altre risposte…"</string>
     <string name="quest_generic_answer_notApplicable">"Non posso dirlo"</string>
@@ -55,7 +55,7 @@ così come scritto sul cartello stradale, le abbreviazioni vengono espanse:"</st
     <string name="quest_noteDiscussion_create">"creato da %1$s (%2$s)"</string>
     <string name="quest_noteDiscussion_comment">"%1$s (%2$s)"</string>
     <string name="quest_noteDiscussion_closed">"%1$s closed note (%2$s)"</string>
-    <string name="quest_noteDiscussion_reopen">"%1$s ha riaperto una nota (%2$s) "</string>
+    <string name="quest_noteDiscussion_reopen">"%1$s ha riaperto una nota (%2$s)"</string>
     <string name="quest_noteDiscussion_anonymous">"Anonimo"</string>
     <string name="quest_noteDiscussion_comments_title">"Risposte"</string>
     <string name="confirmation_discard_title">"Eliminare l'input?"</string>
@@ -219,4 +219,10 @@ Le informazioni inserite vengono aggiunte direttamente su OpenStreetMap a tuo no
     <string name="crash_title">"Oh no, l'ultima volta StreetComplete è crashato!"</string>
     <string name="crash_compose_email">"Componi email"</string>
     <string name="no_email_client">"Nessun client email installato."</string>
+    <string name="pref_title_keep_screen_on">"Tieni lo schermo acceso"</string>
+    <string name="download_server_error">"Errore di connessione nella ricerca di missioni. Riprova più tardi"</string>
+    <string name="upload_server_error">"Errore di connessione nel caricamento delle risposte. Riprova più tardi"</string>
+    <string name="quest_generic_hasFeature_yes">"Si"</string>
+    <string name="quest_generic_hasFeature_no">"No"</string>
+    <string name="quest_busStopShelter_title">"Questa fermata ha una pensilina?"</string>
 </resources>

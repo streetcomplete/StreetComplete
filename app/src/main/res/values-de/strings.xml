@@ -21,7 +21,7 @@
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Nicht als Fragen formulierte Notizen ignorieren"</string>
     <string name="pref_title_map_cache">"Größe des Kartencaches"</string>
     <string name="map_btn_gps_tracking">"Mir folgen"</string>
-    <string name="map_attribution_mapzen">"Powered by Mapzen"</string>
+    <string name="map_attribution_mapzen">"Powered by %s"</string>
     <string name="map_attribution_osm">"© OpenStreetMap Mitwirkende"</string>
     <string name="quest_generic_otherAnswers">"Weitere Antworten"</string>
     <string name="quest_generic_answer_notApplicable">"Nicht beantwortbar"</string>
@@ -227,4 +227,7 @@ Die von dir eingegebenen Informationen werden dann direkt in deinem Namen zu Ope
     <string name="upload_server_error">"Fehler beim Hochladen der Antworten. Versuche es später noch einmal."</string>
     <string name="quest_generic_hasFeature_yes">"Ja"</string>
     <string name="quest_generic_hasFeature_no">"Nein"</string>
+    <string name="quest_busStopShelter_title">"Hat diese Bushaltestelle einen Unterstand?"</string>
+    <string name="quest_bikeParkingCapacity_title">"Wie viele Räder können hier abgestellt werden?"</string>
+    <string name="quest_address_unusualHousenumber_confirmation_description">"Das sieht für eine Hausnummer sehr ungewöhnlich aus."</string>
 </resources>

@@ -21,7 +21,7 @@
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Ignorar notas no formuladas como preguntas"</string>
     <string name="pref_title_map_cache">"Tamaño de la caché del mapa"</string>
     <string name="map_btn_gps_tracking">"Sígueme"</string>
-    <string name="map_attribution_mapzen">"Funciona con Mapzen"</string>
+    <string name="map_attribution_mapzen">"Funciona con %s"</string>
     <string name="map_attribution_osm">"© Contribuidores de OpenStreetMap"</string>
     <string name="quest_generic_otherAnswers">"Otras respuestas…"</string>
     <string name="quest_generic_answer_notApplicable">"No puedo decir"</string>
@@ -220,6 +220,10 @@ La información que introduces se añade directamente a OpenStreetMap con tu nom
     <string name="crash_title">"Oh no, StreetComplete cerró inesperadamente"</string>
     <string name="crash_compose_email">"Componer Email"</string>
     <string name="no_email_client">"No tienes email de cliente instalado"</string>
-    <string name="quest_generic_hasFeature_no">"No"</string>
+    <string name="pref_title_keep_screen_on">"Mantener la pantalla encendida"</string>
+    <string name="download_server_error">"Ocurrió un error de red al buscar tareas. Prueba más tarde."</string>
+    <string name="upload_server_error">"Ocurrió un error de red al subir las respuestas. Prueba más tarde."</string>
     <string name="quest_generic_hasFeature_yes">"Sí"</string>
+    <string name="quest_generic_hasFeature_no">"No"</string>
+    <string name="quest_busStopShelter_title">"¿Está cubierta esta parada de autobús?"</string>
 </resources>

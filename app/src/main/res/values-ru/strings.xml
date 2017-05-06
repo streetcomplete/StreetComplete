@@ -21,7 +21,7 @@
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Скрывать заметки без вопросов"</string>
     <string name="pref_title_map_cache">"Размер кэша карты"</string>
     <string name="map_btn_gps_tracking">"Следовать за мной"</string>
-    <string name="map_attribution_mapzen">"Работает на Mapzen"</string>
+    <string name="map_attribution_mapzen">"Работает на %s"</string>
     <string name="map_attribution_osm">"© Участники OpenStreetMap"</string>
     <string name="quest_generic_otherAnswers">"Другие варианты…"</string>
     <string name="quest_generic_answer_notApplicable">"Не знаю"</string>
@@ -103,8 +103,8 @@
     <string name="quest_openingHours_answer_247">"Открыто 24/7"</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">"Зависит от месяца"</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">"Нет постоянного времени работы"</string>
-    <string name="quest_openingHours_comment_title">"Описать время работы"</string>
-    <string name="quest_openingHours_comment_description">"Будьте кратки, по возможности используйте надписи с табличек (например, \"по записи\"). Отсутствие табличек не обязательно означает особый режим работы."</string>
+    <string name="quest_openingHours_comment_title">"Опишите режим работы"</string>
+    <string name="quest_openingHours_comment_description">"Будьте кратки, по возможности используйте надписи с табличек (например, «по записи»). Отсутствие табличек не обязательно означает особый режим работы."</string>
     <string name="quest_buildingLevels_title">"Сколько этажей у здания?"</string>
     <string name="quest_buildingLevels_title_buildingPart">"Сколько этажей у этой части здания?"</string>
     <string name="quest_buildingLevels_levelsLabel">"всего этажей"</string>
@@ -216,8 +216,14 @@
     <string name="quest_name_noName_confirmation_positive">"Да, нет названия"</string>
     <string name="quest_buildingLevels_negativeBuildingLevels">"Ой! Было указано больше этажей в составе крыши, чем есть всего!"</string>
     <string name="quest_openingHours_add_times">"Добавить время работы"</string>
-    <string name="crash_message">"Вы хотите отправить отчет об ошибке разработчику?"</string>
+    <string name="crash_message">"Хотите отправить отчёт об ошибке разработчику?"</string>
     <string name="crash_title">"О нет, в прошлый раз произошел сбой StreetComplete"</string>
     <string name="crash_compose_email">"Отправить письмо"</string>
     <string name="no_email_client">"У вас не установлен почтовый клиент."</string>
+    <string name="pref_title_keep_screen_on">"Не выключать экран"</string>
+    <string name="download_server_error">"Ошибка сети при поиске квестов. Повторите попытку позже."</string>
+    <string name="upload_server_error">"Ошибка сети при отправке ответов. Повторите попытку позже."</string>
+    <string name="quest_generic_hasFeature_yes">"Да"</string>
+    <string name="quest_generic_hasFeature_no">"Нет"</string>
+    <string name="quest_busStopShelter_title">"Защищена ли эта автобусная остановка от погодных условий?"</string>
 </resources>

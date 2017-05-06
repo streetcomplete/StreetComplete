@@ -21,7 +21,7 @@
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"質問として表現されていないメモを無視します"</string>
     <string name="pref_title_map_cache">"マップキャッシュサイズ"</string>
     <string name="map_btn_gps_tracking">"フォローしてださい"</string>
-    <string name="map_attribution_mapzen">"Powered by Mapzen "</string>
+    <string name="map_attribution_mapzen">"Powered by %s"</string>
     <string name="map_attribution_osm">"© OpenStreetMap 貢献者"</string>
     <string name="quest_generic_otherAnswers">"他の回答…"</string>
     <string name="quest_generic_answer_notApplicable">"言えない"</string>
@@ -223,4 +223,9 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="pref_title_keep_screen_on">"画面をオンのままにする"</string>
     <string name="download_server_error">"検索中に接続エラーが発生しました。後でもう一度やり直してください。"</string>
     <string name="upload_server_error">"回答のアップロード中にエラーが発生しました。後でもう一度やり直してください。"</string>
+    <string name="quest_generic_hasFeature_yes">"はい"</string>
+    <string name="quest_generic_hasFeature_no">"いいえ"</string>
+    <string name="quest_busStopShelter_title">"このバス停は避難所がありますか?"</string>
+    <string name="quest_bikeParkingCapacity_title">"ここに何台のバイクを駐車できますか?"</string>
+    <string name="quest_address_unusualHousenumber_confirmation_description">"この住宅番号は非常に珍しいようです。"</string>
 </resources>

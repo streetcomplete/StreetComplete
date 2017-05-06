@@ -13,8 +13,6 @@
     <string name="pref_title_authorized_summary">"Votre compte a été autorisé avec succès"</string>
     <string name="pref_title_not_authorized_summary">"Pas encore autorisé"</string>
     <string name="pref_tilecache_size_summary">"%d Mo"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_tilecache_size_message">"Espace en megaoctet réservé à la sauvegarde en cache sur stockage externe des tuiles de la carte"</string>
     <string name="pref_title_quest_expiration_time">"Quêtes en cache"</string>
     <string name="pref_summary_quest_expiration">"pour %s avant de télécharger à nouveau"</string>
@@ -25,7 +23,7 @@
     <!-- "de la cache" or "du cache" ? -->
     <string name="pref_title_map_cache">"Taille du cache de la carte"</string>
     <string name="map_btn_gps_tracking">"Me suivre"</string>
-    <string name="map_attribution_mapzen">"Propulsé par Mapzen"</string>
+    <string name="map_attribution_mapzen">"Propulsé par %s"</string>
     <string name="map_attribution_osm">"© Contributeurs OpenStreetMap"</string>
     <string name="quest_generic_otherAnswers">"Autres réponses…"</string>
     <string name="quest_generic_answer_notApplicable">"Ne sait pas"</string>
@@ -34,13 +32,14 @@
     <string name="quest_generic_confirmation_no">"Je vais vérifier"</string>
     <string name="quest_generic_error_field_empty">"Vous avez laissé ce champ vide"</string>
     <string name="quest_leave_new_note_title">"Laisser une note à la place ?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leave_new_note_description">"Vous pouvez laisser une note ici, afin que d'autres puissent commenter et peut-être résoudre :"</string>
     <string name="quest_leave_new_note_yes">"OK"</string>
     <string name="quest_leave_new_note_no">"Non, seulement cacher"</string>
     <string name="quest_streetName_title">"Quelle est le nom de cette rue ?"</string>
     <string name="quest_streetName_description">"tel qu'écrit sur le panneau (les abréviations sont automatiquement développées) :"</string>
+
+    <!-- "Also, note that there may not be extra street signs for side streets that belong to a bigger street."
+    That is not very clear to me. Any further explanations? -->
     <string name="quest_streetName_answer_noName_confirmation_description">"Parfois le panneau ne se trouve qu'à une seule extrémité de la rue. Les ruelles adjacentes aux grandes rues n'ont souvent pas de panneaux supplémentaires. Habituellement, une rue qui a une maison porte un nom."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title">"Abréviation dans le nom ?"</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Si vous pouvez écrire le nom sans abréviation, faites-le. Les abréviations communes sont développées automatiquement pendant que vous tapez, mais peut-être pas toutes."</string>
@@ -62,11 +61,7 @@
     <string name="quest_noteDiscussion_reopen">"%1$s a réouvert la note (%2$s)"</string>
     <string name="quest_noteDiscussion_anonymous">"Anonyme"</string>
     <string name="quest_noteDiscussion_comments_title">"Réponses"</string>
-
-    <!-- Fuzzy -->
     <string name="confirmation_discard_title">"Rejeter l'entrée ?"</string>
-
-    <!-- Fuzzy -->
     <string name="confirmation_discard_positive">"Rejeter"</string>
     <string name="confirmation_discard_negative">"Annuler"</string>
     <string name="action_download">"Rechercher des quêtes ici"</string>
@@ -123,7 +118,6 @@
 
     <!-- La phrase en anglais porte aussi à confusion, cet UI devrait être refactored. -->
     <string name="quest_buildingLevels_roofLevelsLabel">"d'entre eux, combien sont dans le toit"</string>
-    <string name="quest_busStopShelter_title">Y a t-il un abri à cet arrêt de bus ?</string>
     <string name="quest_roofShape_title">"Quelle forme a le toit de l'édifice ?"</string>
     <string name="quest_roofShape_select_one">"Sélectionner un :"</string>
     <string name="quest_roofShape_show_more">"Montrer d'avantage…"</string>
@@ -134,7 +128,6 @@
     <string name="map_btn_zoom_in">"Zoom avant"</string>
 
     <!-- Google translated. -->
-    <!-- Fuzzy -->
     <string name="privacy_html">"&lt;p&gt;Ah, quelqu'un qui se soucie de la vie privée, super&amp;nbsp;! Je pense que je n'ai que de bonnes nouvelles pour vous&amp;nbsp;:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Contributions directes&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
@@ -190,8 +183,6 @@ Pour afficher la carte, les tuiles vectorielles sont extraites du &lt;a href=\"h
 
     <!-- Maybe "gravier" for roads ? -->
     <string name="quest_surface_value_gravel">"Gravier"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_paving_stones">"Pavés (autres)"</string>
     <string name="quest_surface_value_pebblestone">"Cailloux"</string>
     <string name="quest_surface_value_sand">"Sable"</string>
@@ -253,7 +244,9 @@ L'information que vous entrez est directement ajoutée à OpenStreetMap sous vot
     <string name="pref_title_keep_screen_on">"Conserver l'écran allumé"</string>
     <string name="download_server_error">"Erreur de connexion lors de la recherche de quêtes. Essayez plus tard."</string>
     <string name="upload_server_error">"Erreur de connexion lors de l'envoi des réponses. Essayez plus tard."</string>
-    <string name="quest_generic_hasFeature_no">"Non"</string>
     <string name="quest_generic_hasFeature_yes">"Oui"</string>
+    <string name="quest_generic_hasFeature_no">"Non"</string>
+    <string name="quest_busStopShelter_title">"Y a t-il un abri à cet arrêt de bus ?"</string>
     <string name="quest_bikeParkingCapacity_title">"Combien de vélos peut-on garer ici ?"</string>
+    <string name="quest_address_unusualHousenumber_confirmation_description">"Ce numéro de rue semble inhabituel."</string>
 </resources>

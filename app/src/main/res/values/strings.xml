@@ -29,8 +29,6 @@
     <string name="quest_generic_confirmation_yes">"Yes, I am sure"</string>
     <string name="quest_generic_confirmation_no">"I will check"</string>
     <string name="quest_generic_error_field_empty">"You left this field empty"</string>
-    <string name="quest_generic_hasFeature_yes">"Yes"</string>
-    <string name="quest_generic_hasFeature_no">"No"</string>
     <string name="quest_leave_new_note_title">"Leave a note instead?"</string>
     <string name="quest_leave_new_note_description">"You can leave a public note at this location which other mappers can comment on and hopefully resolve:"</string>
     <string name="quest_leave_new_note_yes">"OK"</string>
@@ -111,12 +109,10 @@
     <string name="quest_buildingLevels_title_buildingPart">"How many levels does this building part have?"</string>
     <string name="quest_buildingLevels_levelsLabel">"total levels"</string>
     <string name="quest_buildingLevels_roofLevelsLabel">"of these, levels in the roof"</string>
-    <string name="quest_busStopShelter_title">"Does the bus stop have a shelter ?"</string>
     <string name="quest_roofShape_title">"What basic shape does this building's roof have?"</string>
     <string name="quest_roofShape_select_one">"Select one:"</string>
     <string name="quest_roofShape_show_more">"Show more…"</string>
     <string name="quest_roofShape_answer_many">"It has several different shapes"</string>
-    <string name="quest_bikeParkingCapacity_title">"How many bikes can be parked here?"</string>
     <string name="pref_category_cache">"Cache"</string>
     <string name="pref_title_sync">"Auto-Sync"</string>
     <string name="map_btn_zoom_out">"Zoom out"</string>
@@ -227,5 +223,9 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="pref_title_keep_screen_on">"Keep screen on"</string>
     <string name="download_server_error">"Connection error while scanning for quests. Try again later."</string>
     <string name="upload_server_error">"Connection error while uploading answers. Try again later."</string>
-    <string name="quest_address_unusualHousenumber_confirmation_description">This housenumber looks very unusual.</string>
+    <string name="quest_generic_hasFeature_yes">"Yes"</string>
+    <string name="quest_generic_hasFeature_no">"No"</string>
+    <string name="quest_busStopShelter_title">"Does this bus stop have a shelter?"</string>
+    <string name="quest_bikeParkingCapacity_title">"How many bikes can be parked here?"</string>
+    <string name="quest_address_unusualHousenumber_confirmation_description">"This housenumber looks very unusual."</string>
 </resources>

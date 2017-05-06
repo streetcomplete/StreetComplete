@@ -21,7 +21,7 @@
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Ignora les notes que no són preguntes"</string>
     <string name="pref_title_map_cache">"Mida del mapa en memòria cau"</string>
     <string name="map_btn_gps_tracking">"Segueix-me"</string>
-    <string name="map_attribution_mapzen">"Funciona amb Mapzen"</string>
+    <string name="map_attribution_mapzen">"Funciona amb %s"</string>
     <string name="map_attribution_osm">"© Col·laboradors de l'OpenStreetMap"</string>
     <string name="quest_generic_otherAnswers">"Altres respostes…"</string>
     <string name="quest_generic_answer_notApplicable">"No ho sé"</string>
@@ -52,8 +52,8 @@
     <string name="quest_noteDiscussion_no">"No, amaga-la"</string>
     <string name="quest_noteDiscussion_create">"creada per %1$s (%2$s)"</string>
     <string name="quest_noteDiscussion_comment">"%1$s (%2$s)"</string>
-    <string name="quest_noteDiscussion_closed">"%1$s ha tancat la nota (%2$s) "</string>
-    <string name="quest_noteDiscussion_reopen">"%1$s ha reobert la nota (%2$s) "</string>
+    <string name="quest_noteDiscussion_closed">"%1$s ha tancat la nota (%2$s)"</string>
+    <string name="quest_noteDiscussion_reopen">"%1$s ha reobert la nota (%2$s)"</string>
     <string name="quest_noteDiscussion_anonymous">"Anònim"</string>
     <string name="quest_noteDiscussion_comments_title">"Respostes"</string>
     <string name="confirmation_discard_title">"Voleu descartar l'entrada?"</string>
@@ -185,7 +185,7 @@ Per a visualitzar el mapa, es recuperen tessel·les vectorials del servei &lt;a 
     <string name="quest_maxspeed_answer_noSign">"No hi ha cap senyal"</string>
     <string name="quest_maxspeed_answer_noSign_info">"Bé, no hi ha cap senyal, s'apliquen els límits de velocitat generals."</string>
     <string name="quest_maxspeed_answer_noSign_info_motorway">"Això és %1$s en una autopista."</string>
-    <string name="quest_maxspeed_answer_noSign_info_living_street">"Això és %1$s en una via residencial. "</string>
+    <string name="quest_maxspeed_answer_noSign_info_living_street">"Això és %1$s en una via residencial."</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"On és aquest carrer?"</string>
     <string name="quest_maxspeed_answer_noSign_urban">"En poblat: s'aplica el límit de velocitat %1$s."</string>
     <string name="quest_maxspeed_answer_noSign_rural">"Fora de poblat: s'aplica el límit de velocitat %1$s."</string>

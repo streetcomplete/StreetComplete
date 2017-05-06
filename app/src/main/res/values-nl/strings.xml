@@ -21,7 +21,7 @@
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Negeer notities die niet als vraag gekenmerkt zijn"</string>
     <string name="pref_title_map_cache">"Maximaal cache geheugen"</string>
     <string name="map_btn_gps_tracking">"Volg mij"</string>
-    <string name="map_attribution_mapzen">"Mogelijk gemaakt door Mapzen"</string>
+    <string name="map_attribution_mapzen">"Mogelijk gemaakt door %s"</string>
     <string name="map_attribution_osm">"© OpenStreetMap gebruikers"</string>
     <string name="quest_generic_otherAnswers">"Andere antwoorden"</string>
     <string name="quest_generic_answer_notApplicable">"Kan ik niet zeggen"</string>
@@ -39,7 +39,7 @@
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title">"Afkortingen in de naam?"</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Zo mogelijk wordt een naam zonder afkortingen geschreven. Veel afkortingen worden automatisch voluit aangevuld terwijl je typt, maar waarschijnlijk niet alle."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Geen afkortingen"</string>
-    <string name="quest_openingHours_name_title">"Wat zijn de openingstijden van %?"</string>
+    <string name="quest_openingHours_name_title">"Wat zijn de openingstijden van %s?"</string>
     <string name="quest_openingHours_start_time">"openingstijd"</string>
     <string name="quest_openingHours_end_time">"sluitingstijd"</string>
     <string name="quest_openingHours_add_months">"voeg maanden toe"</string>

@@ -23,7 +23,7 @@ Hesabınıza başarıyla yetkilendirildi"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Sorularla ifade edilmeyen notları yoksayma"</string>
     <string name="pref_title_map_cache">"Harita Önbellek Boyutu"</string>
     <string name="map_btn_gps_tracking">"Beni takip et"</string>
-    <string name="map_attribution_mapzen">"Mapzen tarafından desteklenmektedir"</string>
+    <string name="map_attribution_mapzen">"%s tarafından desteklenmektedir"</string>
     <string name="map_attribution_osm">"© OpenStreetMap katkıda bulunan kullanıcılar"</string>
     <string name="quest_generic_otherAnswers">"Diğer cevaplar…"</string>
     <string name="quest_generic_answer_notApplicable">"Söyleyemem"</string>
@@ -224,4 +224,11 @@ Girdiğiniz bilgiler daha sonra başka bir editör kullanmak zorunda kalmadan ad
     <string name="crash_compose_email">"E-posta oluştur"</string>
     <string name="no_email_client">"
 Hiçbir e-posta istemcisi kurulu değil."</string>
+    <string name="pref_title_keep_screen_on">"Ekranı açık tut"</string>
+    <string name="download_server_error">"Görevler taranırken bağlantı hatası oluştu. Tekrar deneyin."</string>
+    <string name="quest_generic_hasFeature_yes">"Evet"</string>
+    <string name="quest_generic_hasFeature_no">"Hayır"</string>
+    <string name="quest_busStopShelter_title">"Bu otobüs durağının üstü kapalı mı?"</string>
+    <string name="quest_bikeParkingCapacity_title">"Burada kaç bisiklet park edilebilir?"</string>
+    <string name="quest_address_unusualHousenumber_confirmation_description">"Bu numara çok sıradışı gözüküyor."</string>
 </resources>
