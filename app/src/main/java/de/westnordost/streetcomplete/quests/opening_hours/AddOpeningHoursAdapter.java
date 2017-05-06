@@ -41,7 +41,7 @@ public class AddOpeningHoursAdapter extends RecyclerView.Adapter
 
 	public String toString()
 	{
-		return TextUtils.join("; ", data);
+		return TextUtils.join(", ", data);
 	}
 
 	@Override public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)

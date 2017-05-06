@@ -48,7 +48,7 @@ public class OpeningMonths
 			boolean isSameWeekdays = lastWeekdays != null && lastWeekdays.equals(ow.weekdays);
 			if(!isSameWeekdays)
 			{
-				if(!firstDays)	result.append("; ");
+				if(!firstDays)	result.append(", ");
 				else		firstDays = false;
 
 				result.append(monthsString);
