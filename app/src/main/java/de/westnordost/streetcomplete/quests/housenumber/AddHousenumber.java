@@ -24,6 +24,7 @@ import de.westnordost.streetcomplete.util.JTSConst;
 
 import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.geom.Point;
+import com.vividsolutions.jts.operation.valid.IsValidOp;
 
 public class AddHousenumber implements OsmElementQuestType
 {
@@ -71,6 +72,9 @@ public class AddHousenumber implements OsmElementQuestType
 				if(geometry == null) return;
 
 				Geometry g = JTSConst.toGeometry(geometry);
+				// invalid geometry out of other reasons? (Not sure when this can happen...)
+				if(!g.isValid()) return;
+
 				// exclude buildings with housenumber-nodes inside them
 				for(Point p : housenumberCoords)
 				{

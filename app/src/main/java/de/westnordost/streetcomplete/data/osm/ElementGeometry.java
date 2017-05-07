@@ -52,6 +52,8 @@ public class ElementGeometry
 		try
 		{
 			Geometry geom = JTSConst.toGeometry(this);
+			if(!geom.isValid()) return null;
+
 			if(geom instanceof Polygonal)
 			{
 				return JTSConst.toLatLon(geom.getInteriorPoint());

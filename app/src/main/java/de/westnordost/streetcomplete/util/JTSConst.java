@@ -7,6 +7,7 @@ import com.vividsolutions.jts.geom.LineString;
 import com.vividsolutions.jts.geom.LinearRing;
 import com.vividsolutions.jts.geom.Point;
 import com.vividsolutions.jts.geom.Polygon;
+import com.vividsolutions.jts.operation.valid.IsValidOp;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -73,7 +74,7 @@ public class JTSConst
 		else return factory.createMultiLineString(lineStrings);
 	}
 
-	public static Map<LinearRing, ArrayList<LinearRing>> toShellsWithHoles(
+	private static Map<LinearRing, ArrayList<LinearRing>> toShellsWithHoles(
 			List<List<LatLon>> outerPolygons, List<List<LatLon>> innerPolygons)
 	{
 		// outer -> List of inner
