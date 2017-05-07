@@ -149,7 +149,8 @@ public class GroupedImageSelectAdapter extends RecyclerView.Adapter<GroupedImage
 			{
 				@Override public void onClick(View v)
 				{
-					onSelect(getAdapterPosition());
+					int index = getAdapterPosition();
+					if(index != RecyclerView.NO_POSITION) onSelect(getAdapterPosition());
 				}
 			});
 		}

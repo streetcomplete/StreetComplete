@@ -232,7 +232,8 @@ public class AddOpeningHoursAdapter extends RecyclerView.Adapter
 			{
 				@Override public void onClick(View v)
 				{
-					remove(getAdapterPosition());
+					int index = getAdapterPosition();
+					if(index != RecyclerView.NO_POSITION) remove(getAdapterPosition());
 				}
 			});
 		}
@@ -324,7 +325,8 @@ public class AddOpeningHoursAdapter extends RecyclerView.Adapter
 			{
 				@Override public void onClick(View v)
 				{
-					remove(getAdapterPosition());
+					int index = getAdapterPosition();
+					if(index != RecyclerView.NO_POSITION) remove(getAdapterPosition());
 				}
 			});
 		}
