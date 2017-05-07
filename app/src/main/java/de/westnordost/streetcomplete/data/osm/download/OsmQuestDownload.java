@@ -1,6 +1,8 @@
 package de.westnordost.streetcomplete.data.osm.download;
 
 import android.graphics.Rect;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -70,7 +72,7 @@ public class OsmQuestDownload
 
 		boolean success = questType.download(bbox, new MapDataWithGeometryHandler()
 		{
-			@Override public void handle(Element element, ElementGeometry geometry)
+			@Override public void handle(@NonNull Element element, @Nullable ElementGeometry geometry)
 			{
 				if(mayCreateQuestFrom(questType, element, geometry, blacklistedPositions))
 				{

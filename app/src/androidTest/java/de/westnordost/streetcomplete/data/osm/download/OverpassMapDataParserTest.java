@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.download;
 
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.util.LongSparseArray;
 
 import junit.framework.TestCase;
@@ -191,7 +193,7 @@ public class OverpassMapDataParserTest extends TestCase
 	private class SingleElementHandler implements MapDataWithGeometryHandler
 	{
 		Element element;
-		@Override public void handle(Element element, ElementGeometry geometry)
+		@Override public void handle(@NonNull Element element, @Nullable ElementGeometry geometry)
 		{
 			this.element = element;
 		}

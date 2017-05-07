@@ -1,6 +1,8 @@
 package de.westnordost.streetcomplete.quests.housenumber;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,9 +52,12 @@ public class AddHousenumber implements OsmElementQuestType
 		String nodesWithHousenumbersQuery = NODES_WITH_HOUSENUMBERS.toOverpassQLString(bbox);
 		success = overpassServer.getAndHandleQuota(nodesWithHousenumbersQuery, new MapDataWithGeometryHandler()
 		{
-			@Override public void handle(Element element, ElementGeometry geometry)
+			@Override public void handle(@NonNull Element element, @Nullable ElementGeometry geometry)
 			{
-				housenumberCoords.add(JTSConst.toPoint(geometry.center));
+				if(geometry != null)
+				{
+					housenumberCoords.add(JTSConst.toPoint(geometry.center));
+				}
 			}
 		});
 		if(!success) return false;
@@ -60,8 +65,11 @@ public class AddHousenumber implements OsmElementQuestType
 		String buildingsWithoutHousenumbersQuery = HOUSES_WITHOUT_HOUSENUMBERS.toOverpassQLString(bbox);
 		success = overpassServer.getAndHandleQuota(buildingsWithoutHousenumbersQuery, new MapDataWithGeometryHandler()
 		{
-			@Override public void handle(Element element, ElementGeometry geometry)
+			@Override public void handle(@NonNull Element element, @Nullable ElementGeometry geometry)
 			{
+				// invalid geometry
+				if(geometry == null) return;
+
 				Geometry g = JTSConst.toGeometry(geometry);
 				// exclude buildings with housenumber-nodes inside them
 				for(Point p : housenumberCoords)
