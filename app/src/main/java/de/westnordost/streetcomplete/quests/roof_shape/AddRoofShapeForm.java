@@ -14,13 +14,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.westnordost.streetcomplete.R;
-import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
 import de.westnordost.streetcomplete.view.ImageSelectAdapter;
 
 public class AddRoofShapeForm extends AbstractQuestFormAnswerFragment
 {
 	public static final String ROOF_SHAPE = "roof_shape";
+
+	private static final String SELECTED_INDEX = "selected_item";
 
 	private static final int MORE_THAN_95_PERCENT_COVERED = 8;
 
@@ -69,6 +70,10 @@ public class AddRoofShapeForm extends AbstractQuestFormAnswerFragment
 		}
 
 		imageSelector = new ImageSelectAdapter(allImages.subList(0,MORE_THAN_95_PERCENT_COVERED));
+		if(savedInstanceState != null)
+		{
+			imageSelector.setSelectedIndex(savedInstanceState.getInt(SELECTED_INDEX, -1));
+		}
 		roofList.setAdapter(imageSelector);
 		roofList.setNestedScrollingEnabled(false);
 
@@ -85,11 +90,17 @@ public class AddRoofShapeForm extends AbstractQuestFormAnswerFragment
 		return view;
 	}
 
+	@Override public void onSaveInstanceState(Bundle outState)
+	{
+		super.onSaveInstanceState(outState);
+		outState.putInt(SELECTED_INDEX, imageSelector.getSelectedIndex());
+	}
+
 	@Override protected void onClickOk()
 	{
 		Bundle answer = new Bundle();
 		Integer selectedIndex = imageSelector.getSelectedIndex();
-		if(selectedIndex != null)
+		if(selectedIndex != -1)
 		{
 			String osmValue = roofShapes[selectedIndex].osmValue;
 			answer.putString(ROOF_SHAPE, osmValue);
@@ -121,7 +132,7 @@ public class AddRoofShapeForm extends AbstractQuestFormAnswerFragment
 
 	@Override public boolean hasChanges()
 	{
-		return imageSelector.getSelectedIndex() != null;
+		return imageSelector.getSelectedIndex() != -1;
 	}
 
 	private class RoofShape

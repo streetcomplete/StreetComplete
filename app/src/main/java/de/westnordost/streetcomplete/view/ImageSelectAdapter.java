@@ -15,7 +15,7 @@ import de.westnordost.streetcomplete.R;
 
 public class ImageSelectAdapter extends RecyclerView.Adapter<ImageSelectAdapter.ViewHolder>
 {
-	private Integer selectedIndex;
+	private int selectedIndex = -1;
 	private ArrayList<Drawable> items;
 
 	public ImageSelectAdapter(List<Drawable> items)
@@ -37,24 +37,24 @@ public class ImageSelectAdapter extends RecyclerView.Adapter<ImageSelectAdapter.
 		return new ImageSelectAdapter.ViewHolder(view);
 	}
 
-	private void onSelect(int index)
+	public void setSelectedIndex(int index)
 	{
 		Integer prevSelectedIndex = selectedIndex;
-		if(prevSelectedIndex == null || prevSelectedIndex != index)
+		if(prevSelectedIndex == -1 || prevSelectedIndex != index)
 		{
 			selectedIndex = index;
 		} else {
-			selectedIndex = null;
+			selectedIndex = -1;
 		}
 
-		if(prevSelectedIndex != null) notifyItemChanged(prevSelectedIndex);
-		if(selectedIndex != null) notifyItemChanged(selectedIndex);
+		if(prevSelectedIndex != -1) notifyItemChanged(prevSelectedIndex);
+		if(selectedIndex != -1) notifyItemChanged(selectedIndex);
 	}
 
 	@Override public void onBindViewHolder(ImageSelectAdapter.ViewHolder holder, int position)
 	{
 		holder.imageView.setImageDrawable(items.get(position));
-		holder.itemView.setSelected(selectedIndex != null && position == selectedIndex);
+		holder.itemView.setSelected(selectedIndex != -1 && position == selectedIndex);
 	}
 
 	@Override public int getItemCount()
@@ -62,8 +62,8 @@ public class ImageSelectAdapter extends RecyclerView.Adapter<ImageSelectAdapter.
 		return items.size();
 	}
 
-	/** @return null if nothing selected, otherwise the index */
-	public Integer getSelectedIndex()
+	/** @return -1 if nothing selected, otherwise the index */
+	public int getSelectedIndex()
 	{
 		return selectedIndex;
 	}
@@ -81,7 +81,7 @@ public class ImageSelectAdapter extends RecyclerView.Adapter<ImageSelectAdapter.
 
 		@Override public void onClick(View v)
 		{
-			onSelect(getAdapterPosition());
+			setSelectedIndex(getAdapterPosition());
 		}
 	}
 }
