@@ -199,7 +199,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		if(lastDisplayedRect != null && lastDisplayedRect.equals(tilesRect)) return;
 		lastDisplayedRect = tilesRect;
 
-		// TODO remove when https://github.com/tangrams/tangram-es/issues/1492 has been fixed
+		// area to big -> skip ( see https://github.com/tangrams/tangram-es/issues/1492 )
 		if(tilesRect.width() * tilesRect.height() > 4)
 		{
 			return;
