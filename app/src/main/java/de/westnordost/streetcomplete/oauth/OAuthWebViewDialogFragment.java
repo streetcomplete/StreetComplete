@@ -218,7 +218,15 @@ public class OAuthWebViewDialogFragment extends DialogFragment
 		else if(verificationCode == null)
 		{
 			Log.i(TAG, "Step 2: Authorize app on web page...");
-			webView.loadUrl(authorizeURL);
+			if(!authorizeURL.equals(webView.getOriginalUrl()))
+			{
+				webView.loadUrl(authorizeURL);
+			}
+			else
+			{
+				progressGroup.setVisibility(View.INVISIBLE);
+				webView.setVisibility(View.VISIBLE);
+			}
 		}
 		else
 		{
