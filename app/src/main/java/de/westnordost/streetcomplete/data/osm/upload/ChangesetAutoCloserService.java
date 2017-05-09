@@ -6,6 +6,7 @@ import android.content.Intent;
 
 import javax.inject.Inject;
 
+import de.westnordost.osmapi.common.errors.OsmConnectionException;
 import de.westnordost.streetcomplete.Injector;
 
 public class ChangesetAutoCloserService extends IntentService
@@ -20,7 +21,15 @@ public class ChangesetAutoCloserService extends IntentService
 
 	@Override protected void onHandleIntent(Intent intent)
 	{
-		osmQuestChangesUpload.closeOpenChangesets();
+		try
+		{
+			osmQuestChangesUpload.closeOpenChangesets();
+		}
+		catch(OsmConnectionException e)
+		{
+			// wasn't able to connect to the server (i.e. connection timeout). Oh well, then,
+			// never mind.
+		}
 		ChangesetAutoCloserReceiver.completeWakefulIntent(intent);
 	}
 }

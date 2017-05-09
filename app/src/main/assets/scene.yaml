@@ -1,11 +1,3 @@
 import:
     - streetcomplete.yaml
     - cinnabar-style-7.0.0.yaml
-
-sources:
-    mapzen:
-        type: MVT
-        url:  https://tile.mapzen.com/mapzen/vector/v1/all/{z}/{x}/{y}.mvt
-        url_params:
-            api_key: vector-tiles-fKUcuAJ
-        max_zoom: 16

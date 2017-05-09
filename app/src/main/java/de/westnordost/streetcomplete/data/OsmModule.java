@@ -75,9 +75,4 @@ public class OsmModule
 	{
 		return new MapDataDao(osm);
 	}
-
-	@Provides @Singleton public static QuestTypes questTypeList()
-	{
-		return new QuestTypes(QuestTypes.TYPES);
-	}
 }

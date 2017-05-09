@@ -15,11 +15,14 @@ import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v13.app.FragmentCompat;
+import android.text.Html;
 import android.text.TextUtils;
+import android.text.method.LinkMovementMethod;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.mapzen.android.lost.api.LocationListener;
 import com.mapzen.android.lost.api.LocationRequest;
@@ -70,6 +73,8 @@ public class MapFragment extends Fragment implements
 
 	private Listener listener;
 
+	private String apiKey;
+
 	public interface Listener
 	{
 		void onMapReady();
@@ -82,19 +87,27 @@ public class MapFragment extends Fragment implements
 		View view = inflater.inflate(R.layout.fragment_map, container, false);
 
 		mapView = (MapView) view.findViewById(R.id.map);
+		TextView mapzenLink = (TextView) view.findViewById(R.id.mapzenLink);
+
+		mapzenLink.setText(Html.fromHtml(
+				String.format(getResources().getString(R.string.map_attribution_mapzen),
+				"<a href=\"https://mapzen.com/\">Mapzen</a>"))
+		);
+		mapzenLink.setMovementMethod(LinkMovementMethod.getInstance());
 
 		return view;
 	}
 
 	/* --------------------------------- Map and Location --------------------------------------- */
 
-	public void getMapAsync()
+	public void getMapAsync(String apiKey)
 	{
-		getMapAsync("scene.yaml");
+		getMapAsync(apiKey, "scene.yaml");
 	}
 
-	public void getMapAsync(@NonNull final String sceneFilePath)
+	public void getMapAsync(String apiKey, @NonNull final String sceneFilePath)
 	{
+		this.apiKey = apiKey;
 		mapView.getMapAsync(new MapView.OnMapReadyCallback()
 		{
 			@Override public void onMapReady(MapController ctrl)
@@ -176,9 +189,9 @@ public class MapFragment extends Fragment implements
 		File cacheDir = getActivity().getExternalCacheDir();
 		if (cacheDir != null && cacheDir.exists())
 		{
-			return new HttpHandler(new File(cacheDir, "tile_cache"), cacheSize * 1024 * 1024);
+			return new TileHttpHandler(apiKey, new File(cacheDir, "tile_cache"), cacheSize * 1024 * 1024);
 		}
-		return new HttpHandler();
+		return new TileHttpHandler(apiKey);
 	}
 
 	public void startPositionTracking()
@@ -196,14 +209,14 @@ public class MapFragment extends Fragment implements
 		}
 		zoomedYet = false;
 
-		try // TODO remove when https://github.com/mapzen/lost/issues/143 is solved
+		try // TODO remove when https://github.com/mapzen/lost/issues/178 is solved
 		{
 			if(lostApiClient.isConnected())
 			{
 				LocationServices.FusedLocationApi.removeLocationUpdates(lostApiClient, this);
 				lostApiClient.disconnect();
 			}
-		} catch (NullPointerException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
@@ -464,6 +477,10 @@ public class MapFragment extends Fragment implements
 		super.onDestroy();
 		compass.setListener(null);
 		if(mapView != null) mapView.onDestroy();
+		controller = null;
+		directionMarker = null;
+		accuracyMarker = null;
+		locationMarker = null;
 	}
 
 	@Override public void onLowMemory()

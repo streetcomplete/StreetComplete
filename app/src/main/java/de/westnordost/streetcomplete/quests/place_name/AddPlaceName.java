@@ -3,14 +3,17 @@ package de.westnordost.streetcomplete.quests.place_name;
 import android.os.Bundle;
 import android.text.TextUtils;
 
-import de.westnordost.streetcomplete.R;
+import javax.inject.Inject;
+
 import de.westnordost.streetcomplete.data.QuestImportance;
-import de.westnordost.streetcomplete.data.osm.OverpassQuestType;
+import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 
-public class AddPlaceName extends OverpassQuestType
+public class AddPlaceName extends SimpleOverpassQuestType
 {
+
 	// not all amenities have names. Rather have an inclusive list here than an exclusive one. This
 	// list goes down to a few hundred (documented) elements in taginfo (Mar 2017)
 	private static final String[] AMENITIES_WITH_NAMES = {
@@ -40,6 +43,11 @@ public class AddPlaceName extends OverpassQuestType
 			"water_park","miniature_golf", "stadium","marina","bowling_alley", "amusement_arcade",
 			"adult_gaming_centre", "tanning_salon","horse_riding"
 	};
+
+	@Inject public AddPlaceName(OverpassMapDataDao overpassServer)
+	{
+		super(overpassServer);
+	}
 
 	@Override protected String getTagFilters()
 	{

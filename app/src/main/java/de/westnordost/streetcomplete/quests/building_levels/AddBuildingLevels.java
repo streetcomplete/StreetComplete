@@ -2,14 +2,21 @@ package de.westnordost.streetcomplete.quests.building_levels;
 
 import android.os.Bundle;
 
-import de.westnordost.streetcomplete.R;
+import javax.inject.Inject;
+
 import de.westnordost.streetcomplete.data.QuestImportance;
-import de.westnordost.streetcomplete.data.osm.OverpassQuestType;
+import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 
-public class AddBuildingLevels extends OverpassQuestType
+public class AddBuildingLevels extends SimpleOverpassQuestType
 {
+	@Inject public AddBuildingLevels(OverpassMapDataDao overpassServer)
+	{
+		super(overpassServer);
+	}
+
 	@Override
 	protected String getTagFilters()
 	{

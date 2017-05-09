@@ -9,10 +9,10 @@ import android.view.ViewGroup;
 import java.util.Arrays;
 
 import de.westnordost.streetcomplete.R;
-import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
+import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
 import de.westnordost.streetcomplete.view.GroupedImageSelectAdapter;
 
-public class AddRoadSurfaceForm extends AbstractQuestAnswerFragment
+public class AddRoadSurfaceForm extends AbstractQuestFormAnswerFragment
 {
 	public static final String SURFACE = "surface";
 
@@ -65,7 +65,7 @@ public class AddRoadSurfaceForm extends AbstractQuestAnswerFragment
 		{
 			answer.putString(SURFACE, getSelectedSurface().value);
 		}
-		applyAnswer(answer);
+		applyFormAnswer(answer);
 	}
 
 	@Override public boolean hasChanges()

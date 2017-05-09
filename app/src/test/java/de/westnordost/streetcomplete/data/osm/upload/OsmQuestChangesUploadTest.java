@@ -20,6 +20,7 @@ import de.westnordost.osmapi.changesets.ChangesetsDao;
 import de.westnordost.osmapi.common.Handler;
 import de.westnordost.osmapi.common.errors.OsmConflictException;
 import de.westnordost.osmapi.map.MapDataDao;
+import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.map.data.OsmLatLon;
 import de.westnordost.osmapi.map.data.OsmNode;
@@ -27,13 +28,14 @@ import de.westnordost.osmapi.user.User;
 import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.data.QuestStatus;
 import de.westnordost.streetcomplete.data.changesets.OpenChangesetsDao;
+import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.OsmQuest;
-import de.westnordost.streetcomplete.data.osm.OverpassQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChanges;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryChange;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryDelete;
+import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler;
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao;
 import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
@@ -52,6 +54,7 @@ public class OsmQuestChangesUploadTest extends TestCase
 		OsmQuestDao questDb = mock(OsmQuestDao.class);
 		ElementGeometryDao elementGeometryDao = mock(ElementGeometryDao.class);
 		MergedElementDao elementDB = mock(MergedElementDao.class);
+		OpenChangesetsDao openChangesetsDb = mock(OpenChangesetsDao.class);
 		when(questDb.getAll(null, QuestStatus.ANSWERED)).thenAnswer(
 				new Answer<List<OsmQuest>>()
 				{
@@ -65,7 +68,7 @@ public class OsmQuestChangesUploadTest extends TestCase
 				});
 
 		final OsmQuestChangesUpload u = new OsmQuestChangesUpload(null, questDb, elementDB,
-				elementGeometryDao, null, null, null, null);
+				elementGeometryDao, null, openChangesetsDb, null, null);
 		final AtomicBoolean cancel = new AtomicBoolean(false);
 
 		Thread t = new Thread(new Runnable()
@@ -252,11 +255,14 @@ public class OsmQuestChangesUploadTest extends TestCase
 		verify(statisticsDao).addOne("TestQuestType");
 	}
 
-	private static class TestQuestType extends OverpassQuestType
+	private static class TestQuestType implements OsmElementQuestType
 	{
-		@Override protected String getTagFilters() { return "nodes"; }
 		@Override public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes) { }
 		@Override public String getCommitMessage() { return null; }
+		@Override public boolean download(BoundingBox bbox, MapDataWithGeometryHandler handler)
+		{
+			return true;
+		}
 		@Override public int importance() { return 0; }
 		@Override public AbstractQuestAnswerFragment createForm() { return null; }
 		@Override public String getIconName() { return null; }

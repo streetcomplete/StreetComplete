@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.HandlerThread;
 import android.os.IBinder;
 
 import java.util.ArrayList;
@@ -60,6 +62,9 @@ public class QuestController
 		}
 	};
 
+	private Handler workerHandler;
+	private HandlerThread worker;
+
 	@Inject public QuestController(OsmQuestDao osmQuestDB, MergedElementDao osmElementDB,
 								   ElementGeometryDao geometryDB, OsmNoteQuestDao osmNoteQuestDB,
 								   CreateNoteDao createNoteDB, OpenChangesetsDao openChangesetsDao,
@@ -73,6 +78,13 @@ public class QuestController
 		this.openChangesetsDao = openChangesetsDao;
 		this.context = context;
 		this.relay = new VisibleQuestRelay();
+	}
+
+	public void onCreate()
+	{
+		worker = new HandlerThread("QuestControllerThread");
+		worker.start();
+		workerHandler = new Handler(worker.getLooper());
 	}
 
 	public void onStart(VisibleQuestListener questListener)
@@ -90,11 +102,16 @@ public class QuestController
 		if(downloadService != null) downloadService.setQuestListener(null);
 	}
 
+	public void onDestroy()
+	{
+		worker.quit();
+	}
+
 	/** Create a note for the given OSM Quest instead of answering it. The quest will turn
 	 *  invisible. */
 	public void createNote(final long osmQuestId, final String text)
 	{
-		new Thread() { @Override public void run()
+		workerHandler.post(new Runnable() { @Override public void run()
 		{
 			OsmQuest q = osmQuestDB.get(osmQuestId);
 
@@ -129,13 +146,13 @@ public class QuestController
 
 			osmElementDB.deleteUnreferenced();
 			geometryDB.deleteUnreferenced();
-		}}.start();
+		}});
 	}
 
 	/** Apply the user's answer to the given quest. (The quest will turn invisible.) */
 	public void solveQuest(final long questId, final QuestGroup group, final Bundle answer)
 	{
-		new Thread() { @Override public void run()
+		workerHandler.post(new Runnable() { @Override public void run()
 		{
 			if (group == QuestGroup.OSM)
 			{
@@ -176,13 +193,13 @@ public class QuestController
 							"NoteQuest has been answered with an empty comment!");
 				}
 			}
-		}}.start();
+		}});
 	}
 
 	/** Make the given quest invisible asynchronously (per user interaction). */
 	public void hideQuest(final long questId, final QuestGroup group)
 	{
-		new Thread() { @Override public void run()
+		workerHandler.post(new Runnable() { @Override public void run()
 		{
 			if(group == QuestGroup.OSM)
 			{
@@ -198,13 +215,13 @@ public class QuestController
 				osmNoteQuestDB.update(q);
 				relay.onQuestRemoved(q.getId(), group);
 			}
-		}}.start();
+		}});
 	}
 
 	/** Retrieve the given quest from local database asynchronously, including the element / note. */
 	public void retrieve(final QuestGroup group, final long questId)
 	{
-		new Thread() { @Override public void run()
+		workerHandler.post(new Runnable() { @Override public void run()
 		{
 			switch (group)
 			{
@@ -218,18 +235,18 @@ public class QuestController
 					relay.onQuestCreated(osmNoteQuest, group, null);
 					break;
 			}
-		}}.start();
+		}});
 	}
 
 	/** Retrieve all visible (=new) quests in the given bounding box from local database
 	 *  asynchronously. */
 	public void retrieve(final BoundingBox bbox)
 	{
-		new Thread() { @Override public void run()
+		workerHandler.post(new Runnable() { @Override public void run()
 		{
 			relay.onQuestsCreated(osmQuestDB.getAll(bbox, QuestStatus.NEW), QuestGroup.OSM);
 			relay.onQuestsCreated(osmNoteQuestDB.getAll(bbox, QuestStatus.NEW), QuestGroup.OSM_NOTE);
-		}}.start();
+		}});
 	}
 
 	/** Download quests in at least the given bounding box asynchronously. The next-bigger rectangle

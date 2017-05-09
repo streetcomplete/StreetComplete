@@ -4,14 +4,26 @@
 
     <!-- became too tedious to maintain in all languages -->
     <string name="translation_credits_html" translatable="false">
-"English - Tobias Zwick&lt;br/&gt;<br/>
-Deutsch - Tobias Zwick&lt;br/&gt;
-Français - Jamie Nadeau, Peuc, Anthony C.&lt;br/&gt;
-Italiano - Maurizio Napolitano&lt;br/&gt;
-Català - Joan Montané&lt;br/&gt;
-Español - sanchi, Tobias Zwick, Jose Luis Infante&lt;br/&gt;
-Magyar - Zachár Benjámin&lt;br/&gt;
-Português - Patrick Montenegro&lt;br/&gt;
-文言 - Kagami&lt;br/&gt;"
+"
+        Català      - Joan Montané&lt;br/&gt;
+        Dansk       - Leon&lt;br/&gt;
+        Deutsch     - Tobias Zwick, Claudius Henrichs&lt;br/&gt;
+        English     - Tobias Zwick&lt;br/&gt;
+        Español     - sanchi, Tobias Zwick, Jose Luis Infante&lt;br/&gt;
+        Français    - Jamie Nadeau, Peuc, Mathieu MD et bien d'autres&lt;br/&gt;
+        Italiano    - Maurizio Napolitano&lt;br/&gt;
+        Lietuvių    - Tomas Straupis&lt;br/&gt;
+        Magyar      - Zachár Benjámin, ursus&lt;br/&gt;
+        Nederlands  - Alert Bouterse, Maikel de Vries, Kenny)&lt;br/&gt;
+        Polski      - Anett Sichla, Tomasz Maciejewski&lt;br/&gt;
+        Português   - Patrick Montenegro&lt;br/&gt;
+        Русский     - Anton Shestakov, zetx16&lt;br/&gt;
+        Shqip       - Arianit Dobroshi&lt;br/&gt;
+        Svenska     - Erik, Henrik Gripenberg&lt;br/&gt;
+        Türkçe      - Nesim, Ege&lt;br/&gt;
+        繁体中文     - Kagami&lt;br/&gt;
+        简体中文     - Alice Chan, Susanne Schulz&lt;br/&gt;
+        日本語       - Naofumi Fukue &lt;br/&gt;
+"
     </string>
 </resources>

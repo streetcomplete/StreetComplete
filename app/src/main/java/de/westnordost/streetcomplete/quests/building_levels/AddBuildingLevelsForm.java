@@ -8,9 +8,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import de.westnordost.streetcomplete.R;
-import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
+import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
 
-public class AddBuildingLevelsForm extends AbstractQuestAnswerFragment
+public class AddBuildingLevelsForm extends AbstractQuestFormAnswerFragment
 {
 	public static final String BUILDING_LEVELS = "building_levels";
 	public static final String ROOF_LEVELS = "roof_levels";
@@ -73,7 +73,7 @@ public class AddBuildingLevelsForm extends AbstractQuestAnswerFragment
 			{
 				answer.putInt(ROOF_LEVELS, roofLevels);
 			}
-			applyAnswer(answer);
+			applyFormAnswer(answer);
 		}
 	}
 

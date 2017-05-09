@@ -39,7 +39,7 @@ public class SingleLocationRequest implements LocationListener, LostApiClient.Co
 
 	public void stopRequest()
 	{
-		try // TODO remove when https://github.com/mapzen/lost/issues/143 is solved
+		try // TODO remove when https://github.com/mapzen/lost/issues/178 is solved
 		{
 			Handler h = new Handler(Looper.getMainLooper());
 			h.post(new Runnable()
@@ -54,7 +54,7 @@ public class SingleLocationRequest implements LocationListener, LostApiClient.Co
 				}
 			});
 
-		} catch(NullPointerException e) {
+		} catch(Exception e) {
 			e.printStackTrace();
 		}
 	}

@@ -83,14 +83,14 @@ public class QuestAutoSyncer implements LocationListener, LostApiClient.Connecti
 
 	public void stopPositionTracking()
 	{
-		try // TODO remove when https://github.com/mapzen/lost/issues/143 is solved
+		try // TODO remove when https://github.com/mapzen/lost/issues/178 is solved
 		{
 			if(lostApiClient.isConnected())
 			{
 				LocationServices.FusedLocationApi.removeLocationUpdates(lostApiClient, this);
 				lostApiClient.disconnect();
 			}
-		} catch(NullPointerException e) {
+		} catch(Exception e) {
 			e.printStackTrace();
 		}
 	}

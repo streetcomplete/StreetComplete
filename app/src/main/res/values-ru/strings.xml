@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_settings">"Настройки"</string>
+    <string name="oauth_communication_error">"Не удалось соединиться с сервером авторизации"</string>
+    <string name="loading">"Загрузка"</string>
+    <string name="retry">"Повторить"</string>
+    <string name="oauth_cancelled">"Авторизация отменена"</string>
+    <string name="oauth_failed_permissions">"Авторизация не удалась: все указаннные разрешения должны быть предоставлены"</string>
+    <string name="title_activity_settings">"Настройки"</string>
+    <string name="pref_category_communication">"Связь"</string>
+    <string name="pref_category_display">"Вид"</string>
+    <string name="pref_title_authorization">"Авторизовать доступ к OSM"</string>
+    <string name="pref_title_authorized_summary">"Успешная авторизация через ваш аккаунт"</string>
+    <string name="pref_title_not_authorized_summary">"Пока не авторизовано"</string>
+    <string name="pref_tilecache_size_summary">"%d МБ"</string>
+    <string name="pref_tilecache_size_message">"Место в мегабайтах под кэш карты на внешнем накопителе"</string>
+    <string name="pref_title_quest_expiration_time">"Кэшировать квесты"</string>
+    <string name="pref_summary_quest_expiration">"%s, потом загружать заново"</string>
+    <string name="pref_title_show_notes_not_phrased_as_questions">"Показывать все заметки"</string>
+    <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Показывать все заметки, с вопросами и без"</string>
+    <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Скрывать заметки без вопросов"</string>
+    <string name="pref_title_map_cache">"Размер кэша карты"</string>
+    <string name="map_btn_gps_tracking">"Следовать за мной"</string>
+    <string name="map_attribution_mapzen">"Работает на %s"</string>
+    <string name="map_attribution_osm">"© Участники OpenStreetMap"</string>
+    <string name="quest_generic_otherAnswers">"Другие варианты…"</string>
+    <string name="quest_generic_answer_notApplicable">"Не знаю"</string>
+    <string name="quest_generic_confirmation_title">"Вы уверены?"</string>
+    <string name="quest_generic_confirmation_yes">"Да, уверен"</string>
+    <string name="quest_generic_confirmation_no">"Я проверю"</string>
+    <string name="quest_generic_error_field_empty">"Вы оставили это поле пустым"</string>
+    <string name="quest_leave_new_note_title">"Оставить заметку взамен?"</string>
+    <string name="quest_leave_new_note_description">"Можно оставить заметку на этом месте, о которой смогут позаботиться другие пользователи:"</string>
+    <string name="quest_leave_new_note_yes">"OK"</string>
+    <string name="quest_leave_new_note_no">"Нет, просто скрыть"</string>
+    <string name="quest_streetName_title">"Как называется эта дорога?"</string>
+    <string name="quest_streetName_description">"как написано на дорожных знаках, сокращения должны быть раскрыты:"</string>
+    <string name="quest_streetName_answer_noName_confirmation_description">"Иногда знаки и таблички могут быть только на одном конце улицы. Иногда их отсутствие означает, что это просто боковая улица, которая принадлежит основной. Обычно, если на улице есть какие-либо строения, то у неё есть и название."</string>
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_title">"Сокращение в названии?"</string>
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Если название может быть написано без сокращений, то так и следует сделать. Многие распространённые сокращения уже раскрываются в процессе ввода, но не все."</string>
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Нет сокращений"</string>
+    <string name="quest_openingHours_name_title">"Какое время работы имеет %s?"</string>
+    <string name="quest_openingHours_start_time">"Время отрытия"</string>
+    <string name="quest_openingHours_end_time">"Время закрытия"</string>
+    <string name="quest_openingHours_add_months">"Добавить месяцы"</string>
+    <string name="quest_openingHours_add_hours">"Добавить часы"</string>
+    <string name="quest_openingHours_add_weekdays">"Добавить дни"</string>
+    <string name="quest_openingHours_chooseMonthsTitle">"Выберите месяцы"</string>
+    <string name="quest_openingHours_chooseWeekdaysTitle">"Выберите дни работы"</string>
+    <string name="quest_openingHours_24_7_confirmation">"Другими словами, работает круглосуточно в любой день недели?"</string>
+    <string name="quest_noteDiscussion_title">"Есть, что сказать?"</string>
+    <string name="quest_noteDiscussion_no">"Нет, скрыть"</string>
+    <string name="quest_noteDiscussion_create">"создано %1$s (%2$s)"</string>
+    <string name="quest_noteDiscussion_comment">"%1$s (%2$s)"</string>
+    <string name="quest_noteDiscussion_closed">"заметка закрыта %1$s (%2$s)"</string>
+    <string name="quest_noteDiscussion_reopen">"заметка переоткрыта %1$s (%2$s)"</string>
+    <string name="quest_noteDiscussion_anonymous">"Аноним"</string>
+    <string name="quest_noteDiscussion_comments_title">"Ответы"</string>
+    <string name="confirmation_discard_title">"Отказаться от изменений?"</string>
+    <string name="confirmation_discard_positive">"Отказаться"</string>
+    <string name="confirmation_discard_negative">"Отмена"</string>
+    <string name="action_download">"Найти квесты здесь"</string>
+    <string name="action_upload">"Отправить ответы"</string>
+    <string name="no_changes">"Вы оставили поле пустым"</string>
+    <string name="close">"закрыть"</string>
+    <string name="download_error">"Не удалось найти квесты"</string>
+    <string name="upload_error">"Не удалось отправить ответы"</string>
+    <string name="cannot_find_bbox">"Не удалось найти квесты. Попробуйте приблизить ещё"</string>
+    <string name="download_area_too_big">"Приблизьте ещё"</string>
+    <string name="confirmation_cancel_prev_download_title">"Завершить текущее сканирование и сканировать здесь?"</string>
+    <string name="notification_downloading">"Поиск квестов"</string>
+    <string name="now_downloading_toast">"Поиск дополнительных квестов"</string>
+    <string name="turn_on_location_request">"Определение местоположения выключено. Перейти в настройки, чтобы включить?"</string>
+    <string name="no_location_permission_warning">"Местоположение нужно для поиска квестов поблизости."</string>
+    <string name="action_about">"О приложении"</string>
+    <string name="about_title_version">"Версия"</string>
+    <string name="about_title_authors">"Авторы"</string>
+    <string name="about_summary_authors">"© 2016–2017 Тобиас Цвик и другие"</string>
+    <string name="about_title_repository">"Исходный код"</string>
+    <string name="about_summary_repository">"на GitHub"</string>
+    <string name="about_title_report_error">"Сообщить об ошибке"</string>
+    <string name="about_title_feedback">"Отправить отзыв"</string>
+    <string name="about_title_license">"Лицензия"</string>
+    <string name="about_summary_license">"GNU General Public License"</string>
+    <string name="offline">"Нет подключения к сети"</string>
+    <string name="confirmation_authorize_now">"Вам нужно авторизоваться через ваш OSM аккаунт, чтобы применились ваши ответы. Авторизоваться сейчас?"</string>
+    <string name="not_authorized">"Не авторизовано"</string>
+    <string name="version_banned_message">"Этой версии StreetComplete было запрещено отправлять ответы! Обновите StreetComplete!"</string>
+    <string name="no_gps_no_quests">"Для автоматического сканирования заданий вокруг вас, включите определение местоположения"</string>
+    <string name="nothing_more_to_download">"Больше квестов нет"</string>
+    <string name="later">"Не сейчас"</string>
+    <string name="quest_streetName_answer_noProperStreet">"Это не настоящая улица"</string>
+    <string name="quest_streetName_answer_noProperStreet_question">"Что это тогда?"</string>
+    <string name="quest_streetName_answer_noProperStreet_link">"Это просто соединение двух дорог"</string>
+    <string name="quest_streetName_answer_noProperStreet_service">"Это просто служебный проезд"</string>
+    <string name="quest_streetName_answer_noProperStreet_leaveNote">"Что-то ещё (оставить заметку)"</string>
+    <string name="quest_streetName_answer_noProperStreet_track">"Это просто полевая дорога"</string>
+    <string name="about_title_privacy_statement">"Заявление о конфиденциальности"</string>
+    <string name="about_summary_privacy_statement">"и использование данных"</string>
+    <string name="quest_openingHours_public_holidays">"Праздничные дни"</string>
+    <string name="quest_openingHours_public_holidays_short">"ПД"</string>
+    <string name="quest_openingHours_open_end">"может закрыться и позже"</string>
+    <string name="quest_openingHours_answer_247">"Открыто 24/7"</string>
+    <string name="quest_openingHours_answer_seasonal_opening_hours">"Зависит от месяца"</string>
+    <string name="quest_openingHours_answer_no_regular_opening_hours">"Нет постоянного времени работы"</string>
+    <string name="quest_openingHours_comment_title">"Опишите режим работы"</string>
+    <string name="quest_openingHours_comment_description">"Будьте кратки, по возможности используйте надписи с табличек (например, «по записи»). Отсутствие табличек не обязательно означает особый режим работы."</string>
+    <string name="quest_buildingLevels_title">"Сколько этажей у здания?"</string>
+    <string name="quest_buildingLevels_title_buildingPart">"Сколько этажей у этой части здания?"</string>
+    <string name="quest_buildingLevels_levelsLabel">"всего этажей"</string>
+    <string name="quest_buildingLevels_roofLevelsLabel">"из них в составе крыши"</string>
+    <string name="quest_roofShape_title">"Какой формы крыша у этого здания?"</string>
+    <string name="quest_roofShape_select_one">"Выберите один вариант:"</string>
+    <string name="quest_roofShape_show_more">"Ещё…"</string>
+    <string name="quest_roofShape_answer_many">"Она имеет несколько разных форм"</string>
+    <string name="pref_category_cache">"Кэш"</string>
+    <string name="pref_title_sync">"Автосинхронизация"</string>
+    <string name="map_btn_zoom_out">"Отдалить"</string>
+    <string name="map_btn_zoom_in">"Приблизить"</string>
+    <string name="privacy_html">"&lt;p&gt;Ага, кто-то, кто заботится о конфиденциальности, отлично! Надеюсь, у меня для вас только хорошие новости:&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Direct Contributions&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;
+Прежде всего, с помощью этого приложения вы отправляете все улучшения и заметки в OpenStreetMap напрямую.&lt;br/&gt;
+Все данные добавляются прямо на карту, между этим приложением и инфраструктурой OSM нет посредников (как происходит в случае с &lt;a href=\"https://wheelmap.org\"&gt;wheelmap.org&lt;/a&gt; или &lt;a href=\"http://www.kort.ch\"&gt;Kort&lt;/a&gt;).
+&lt;/p&gt;
+&lt;p&gt;
+Анонимное редактирование OpenStreetMap невозможно, поэтому для отправки изменений из этого приложения необходим аккаунт в OSM. Это значит, что дата, содержание и местоположение ваших изменений видны всем на сайте openstreetmap.org и связаны с вашим аккаунтом.
+&lt;/p&gt;
+
+&lt;b&gt;Местоположение&lt;/b&gt;&lt;br/&gt;
+&lt;p&gt;
+Ваше местоположение используется только для автоматического поиска квестов поблизости. Приложение никуда его не передаёт.
+&lt;/p&gt;
+
+&lt;p&gt;&lt;b&gt;Использование данных&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;
+Как уже было сказано, приложение использует инфраструктуру OSM напрямую. А именно, &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass API&lt;/a&gt; для загрузки квестов (анонимно) и &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API&lt;/a&gt; для отправки изменений.&lt;br/&gt;
+Однако перед отправкой изменений приложение проверяет &lt;a href=\"http://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;простой текстовый файл&lt;/a&gt; на моём сервере, чтобы определить, не было ли запрещено этой версии приложения отправлять изменения. Это позволит избежать возможного повреждения данных OSM версиями приложения, которые могут содержать критические ошибки.&lt;br/&gt;
+&lt;/p&gt;
+&lt;p&gt;
+Векторные изображения для отображения карты анонимно загружаются с &lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt;сервиса векторных карт Mapzen&lt;/a&gt;. Данный сервис запоминает запросы, чтобы оценить популярность определённых районов для кэширования и повышения скорости работы. Платформа Mapzen также запоминает IP-адреса и полностью находится на Amazon, поэтому подчиняется условиям использования хостинга этой компании.
+&lt;/p&gt;
+&lt;p&gt;
+(&lt;i&gt;Это на самом деле ещё не реализовано, просто хочу вам сообщить, что грядёт!:&lt;/i&gt;) Данные, отображающееся в топе лидеров и профилях, агрегируются из публично доступной информации проекта OpenStreetMap. Данные поступают не из этого приложения, а из публичной истории изменений пользователей OSM.
+&lt;/p&gt;"</string>
+    <string name="authors_html">"&lt;p&gt;© 2017 Тобиас Цвик&lt;/p&gt;
+&lt;p&gt;Приложение использует набор значков &lt;a href=\"https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free\"&gt;Beautiful Flat Icons&lt;/a&gt; от Ника Роуча с лицензией &lt;a href=\"http://www.gnu.org/licenses/gpl-2.0.html\"&gt;GPL&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Перевод&lt;/b&gt;&lt;/p&gt;
+%1$s"</string>
+    <string name="quest_expiration_one_day">"Один день"</string>
+    <string name="quest_expiration_a_week">"Неделя"</string>
+    <string name="quest_expiration_two_weeks">"Две недели"</string>
+    <string name="quest_expiration_one_month">"Один месяц"</string>
+    <string name="autosync_on">"Включена"</string>
+    <string name="autosync_only_on_wifi">"Только по Wi-Fi"</string>
+    <string name="autosync_off">"Выключена"</string>
+    <string name="quest_streetSurface_title">"Какое покрытие у данного участка дороги?"</string>
+    <string name="quest_surface_description">"Выберите наиболее точно подходящее:"</string>
+    <string name="quest_surface_value_paved">"Твердое (generic)"</string>
+    <string name="quest_surface_value_unpaved">"Сыпучее (generic)"</string>
+    <string name="quest_surface_value_ground">"Нет покрытия (generic)"</string>
+    <string name="quest_surface_value_asphalt">"Асфальт"</string>
+    <string name="quest_surface_value_cobblestone">"Булыжник"</string>
+    <string name="quest_surface_value_compacted">"Грунт"</string>
+    <string name="quest_surface_value_concrete">"Бетон"</string>
+    <string name="quest_surface_value_dirt">"Грязь"</string>
+    <string name="quest_surface_value_fine_gravel">"Мелкий гравий"</string>
+    <string name="quest_surface_value_grass">"Трава"</string>
+    <string name="quest_surface_value_grass_paver">"Газонная решетка"</string>
+    <string name="quest_surface_value_gravel">"Гравий"</string>
+    <string name="quest_surface_value_paving_stones">"Тротуарная плитка"</string>
+    <string name="quest_surface_value_pebblestone">"Галька"</string>
+    <string name="quest_surface_value_sand">"Песок"</string>
+    <string name="quest_surface_value_sett">"Брусчатка"</string>
+    <string name="quest_surface_value_wood">"Дерево"</string>
+    <string name="quest_placeName_title">"Как называется этот населенный пункт?"</string>
+    <string name="quest_sidewalk_title">"На этой улице есть тротуар?"</string>
+    <string name="map_orientation_info">"Север находится вверху карты."</string>
+    <string name="quest_sidewalk_onlyNorth">"Только на северной стороне"</string>
+    <string name="quest_sidewalk_onlySouth">"Только на южной стороне"</string>
+    <string name="quest_sidewalk_onlyWest">"Только на западной стороне"</string>
+    <string name="quest_sidewalk_onlyEast">"Только на восточной стороне"</string>
+    <string name="quest_sidewalk_yes">"Да"</string>
+    <string name="quest_maxspeed_title">"Какой скоростной режим установлен знаками на этой улице?"</string>
+    <string name="quest_maxspeed_answer_noSign">"Знаков нет"</string>
+    <string name="quest_maxspeed_answer_noSign_info">"Если знаков нет, значит действует общий скоростной режим."</string>
+    <string name="quest_maxspeed_answer_noSign_info_motorway">"Это %1$s на автомагистрали."</string>
+    <string name="quest_maxspeed_answer_noSign_info_living_street">"Это %1$s на улице в населённом пункте."</string>
+    <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Где находится эта улица?"</string>
+    <string name="quest_maxspeed_answer_noSign_urban">"В городе: применится ограничение %1$s"</string>
+    <string name="quest_maxspeed_answer_noSign_rural">"За городом: применится ограничение %1$s"</string>
+    <string name="quest_maxspeed_answer_noSign_implicitOk">"Понятно"</string>
+    <string name="quest_maxspeed_answer_variable">"Электронное табло с переменным ограничением скорости"</string>
+    <string name="quest_cyclewaySurface_title">"Какое покрытие у этой велодорожки?"</string>
+    <string name="quest_cycleway_title">"На этой улице есть велодорожка?"</string>
+    <string name="quest_buildingType_title">"Какого типа здание?"</string>
+    <string name="quest_serviceType_title">"Какой тип служебного проезда?"</string>
+    <string name="quest_streetLanes_title">"Сколько полос у этой дороги?"</string>
+    <string name="quest_streetLanes_description">"Если разметки нет, значит полосы не размечены."</string>
+    <string name="quest_streetLanes_north">"на север"</string>
+    <string name="quest_streetLanes_west">"на запад"</string>
+    <string name="quest_streetLanes_east">"на восток"</string>
+    <string name="quest_streetLanes_south">"на юг"</string>
+    <string name="quest_streetLanes_answer_noLanes">"Полосы не размечены"</string>
+    <string name="quest_streetLanes_noLanes_estWidth">"Пожалуйста, оцените сколько машин поместится на данной дороге бок о бок."</string>
+    <string name="quest_oneway_title">"Это односторонняя улица?"</string>
+    <string name="quest_address_title">"Какой номер дома у этого здания?"</string>
+    <string name="store_listing_short_description">"Приложение-топограф для OpenStreetMap"</string>
+    <string name="store_listing_full_description">"Помогите улучшить OpenStreetMap вместе с StreetComplete!
+
+Данное приложение ищет неполные и расширяемые данные в округе и отображает их на карте в виде маркеров. Каждое из этих заданий можно решить, ответив на простой вопрос.
+
+Данные, которые вы вводите, добавляются в OpenStreetMap под вашим именем, без необходимости использовать другой редактор."</string>
+    <string name="quest_name_answer_noName">"Нет названия"</string>
+    <string name="quest_name_answer_noName_confirmation_title">"Действительно нет названия?"</string>
+    <string name="quest_name_noName_confirmation_positive">"Да, нет названия"</string>
+    <string name="quest_buildingLevels_negativeBuildingLevels">"Ой! Было указано больше этажей в составе крыши, чем есть всего!"</string>
+    <string name="quest_openingHours_add_times">"Добавить время работы"</string>
+    <string name="crash_message">"Хотите отправить отчёт об ошибке разработчику?"</string>
+    <string name="crash_title">"О нет, в прошлый раз произошел сбой StreetComplete"</string>
+    <string name="crash_compose_email">"Отправить письмо"</string>
+    <string name="no_email_client">"У вас не установлен почтовый клиент."</string>
+    <string name="pref_title_keep_screen_on">"Не выключать экран"</string>
+    <string name="download_server_error">"Ошибка сети при поиске квестов. Повторите попытку позже."</string>
+    <string name="upload_server_error">"Ошибка сети при отправке ответов. Повторите попытку позже."</string>
+    <string name="quest_generic_hasFeature_yes">"Да"</string>
+    <string name="quest_generic_hasFeature_no">"Нет"</string>
+    <string name="quest_busStopShelter_title">"Защищена ли эта автобусная остановка от погодных условий?"</string>
+</resources>

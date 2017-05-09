@@ -15,6 +15,7 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
@@ -43,6 +44,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import de.westnordost.osmapi.common.errors.OsmAuthorizationException;
 import de.westnordost.osmapi.common.errors.OsmConnectionException;
 import de.westnordost.streetcomplete.about.AboutActivity;
 import de.westnordost.streetcomplete.data.Quest;
@@ -128,9 +130,19 @@ public class MainActivity extends AppCompatActivity implements
 	{
 		@Override public void onReceive(Context context, Intent intent)
 		{
+			Exception e = (Exception) intent.getSerializableExtra(QuestChangesUploadService.EXCEPTION);
+
 			if(intent.getBooleanExtra(QuestChangesUploadService.IS_AUTH_FAILED, false))
 			{
+				// delete secret in case it failed while already having a token -> token is invalid
+				OAuth.deleteConsumer(prefs);
 				requestOAuthorized();
+			}
+			else if(intent.getBooleanExtra(QuestChangesUploadService.IS_CONNECTION_ERROR, false))
+			{
+				// a 5xx error is not the fault of this app. Nothing we can do about it, so
+				// just notify the user
+				Toast.makeText(MainActivity.this, R.string.upload_server_error, Toast.LENGTH_LONG).show();
 			}
 			else if(intent.getBooleanExtra(QuestChangesUploadService.IS_VERSION_BANNED, false))
 			{
@@ -139,20 +151,10 @@ public class MainActivity extends AppCompatActivity implements
 						.setPositiveButton(android.R.string.ok, null)
 						.show();
 			}
-			else // any other error
+			else if(e != null)// any other error
 			{
-				Exception e = (Exception) intent.getSerializableExtra(QuestChangesUploadService.EXCEPTION);
-				if(e != null)
-				{
-					// a 5xx error is not the fault of this app. Nothing we can do about it, so it does not
-					// make sense to send an error report. Just notify the user
-					if(e instanceof OsmConnectionException)
-					{
-						Toast.makeText(MainActivity.this, R.string.upload_server_error, Toast.LENGTH_LONG).show();
-					}
-
-					crashReportExceptionHandler.askUserToSendErrorReport(MainActivity.this, R.string.upload_error, e);
-				}
+				crashReportExceptionHandler.askUserToSendErrorReport(
+						MainActivity.this, R.string.upload_error, e);
 			}
 		}
 	};
@@ -191,6 +193,8 @@ public class MainActivity extends AppCompatActivity implements
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 		setSupportActionBar(toolbar);
 
+		questController.onCreate();
+
 		answersCounter = (AnswersCounter) toolbar.findViewById(R.id.answersCounter);
 
 		oAuthComponent.setListener(this);
@@ -205,7 +209,10 @@ public class MainActivity extends AppCompatActivity implements
 		progressBar.setMax(1000);
 
 		mapFragment = (QuestsMapFragment) getFragmentManager().findFragmentById(R.id.map_fragment);
-		mapFragment.getMapAsync();
+
+		mapFragment.getMapAsync(BuildConfig.MAPZEN_API_KEY != null ?
+				BuildConfig.MAPZEN_API_KEY :
+				new String(new char[]{118,101,99,116,111,114,45,116,105,108,101,115,45,102,75,85,99,117,65,74}));
 
 		trackingButton = (LocationStateButton) findViewById(R.id.gps_tracking);
 		trackingButton.setOnClickListener(new View.OnClickListener()
@@ -319,6 +326,7 @@ public class MainActivity extends AppCompatActivity implements
 	@Override public void onDestroy()
 	{
 		super.onDestroy();
+		questController.onDestroy();
 	}
 
 	@Override public boolean onCreateOptionsMenu(Menu menu)
@@ -517,6 +525,13 @@ public class MainActivity extends AppCompatActivity implements
 			}
 		}
 
+		@Override public void onSuccess()
+		{
+			// after downloading, regardless if triggered manually or automatically, the
+			// auto downloader should check whether there are enough quests in the vicinity now
+			questAutoSyncer.triggerAutoDownload();
+		}
+
 		@Override public void onFinished()
 		{
 			runOnUiThread(new Runnable()
@@ -526,10 +541,6 @@ public class MainActivity extends AppCompatActivity implements
 					ObjectAnimator fadeOutAnimator = ObjectAnimator.ofFloat(progressBar, View.ALPHA, 0f);
 					fadeOutAnimator.setDuration(1000);
 					fadeOutAnimator.start();
-
-					// after downloading, regardless if triggered manually or automatically, the
-					// auto downloader should check whether there are enough quests in the vicinity now
-					questAutoSyncer.triggerAutoDownload();
 				}
 			});
 		}
@@ -569,18 +580,29 @@ public class MainActivity extends AppCompatActivity implements
 
 	@Override public void onAnsweredQuest(long questId, QuestGroup group, Bundle answer)
 	{
+		closeQuestDetailsFor(questId, group);
 		answersCounter.answeredQuest();
 		questController.solveQuest(questId, group, answer);
 	}
 
 	@Override public void onLeaveNote(long questId, QuestGroup group, String note)
 	{
+		closeQuestDetailsFor(questId, group);
 		questController.createNote(questId, note);
 	}
 
 	@Override public void onSkippedQuest(long questId, QuestGroup group)
 	{
+		closeQuestDetailsFor(questId, group);
 		questController.hideQuest(questId, group);
+	}
+
+	private void closeQuestDetailsFor(long questId, QuestGroup group)
+	{
+		if (isQuestDetailsCurrentlyDisplayedFor(questId, group))
+		{
+			closeQuestDetails();
+		}
 	}
 
 	/* ------------- VisibleQuestListener ------------- */
@@ -589,6 +611,18 @@ public class MainActivity extends AppCompatActivity implements
 	@Override public void onQuestsCreated(Collection<? extends Quest> quests, QuestGroup group)
 	{
 		mapFragment.addQuests(quests, group);
+		// to recreate element geometry of selected quest (if any) after recreation of activity
+		if(getQuestDetailsFragment() != null)
+		{
+			for (Quest q : quests)
+			{
+				if (isQuestDetailsCurrentlyDisplayedFor(q.getId(), group))
+				{
+					questController.retrieve(group, q.getId());
+					return;
+				}
+			}
+		}
 	}
 
 	@AnyThread

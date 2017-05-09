@@ -8,7 +8,7 @@ public class AddOpeningHoursTest extends AOsmElementQuestTypeTest
 {
 	@Override protected OsmElementQuestType createQuestType()
 	{
-		return new AddOpeningHours();
+		return new AddOpeningHours(null);
 	}
 
 	public void testOpeningHours()

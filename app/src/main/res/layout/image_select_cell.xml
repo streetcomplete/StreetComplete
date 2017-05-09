@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<de.westnordost.streetcomplete.view.SquareImageView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:src="@drawable/ic_roof_gabled"
-    android:id="@+id/imageView"
-    android:background="@drawable/image_select_cell"
-    android:layout_margin="2dp"/>

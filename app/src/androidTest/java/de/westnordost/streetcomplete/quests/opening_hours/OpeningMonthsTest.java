@@ -72,7 +72,7 @@ ddhhhyysyhdhyo+ymNmNNmmNNNNMNNh//::hdysosyhyyhNm:---/oshdNMNNNMMNNNmdysso:..---.
 		om.weekdaysList.add(new OpeningWeekdays(monday, nineToFive));
 		om.weekdaysList.add(new OpeningWeekdays(wednesday, nineToFive));
 
-		assertEquals("Jun-Sep: Mo 09:00-17:00; Jun-Sep: We 09:00-17:00", om.toString());
+		assertEquals("Jun-Sep: Mo 09:00-17:00, Jun-Sep: We 09:00-17:00", om.toString());
 	}
 
 	public void testMergeTimes()

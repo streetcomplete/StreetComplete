@@ -110,8 +110,7 @@ public class GroupedImageSelectAdapter extends RecyclerView.Adapter<GroupedImage
 	private void expandGroup(int index)
 	{
 		Item item = data.get(index);
-		for (int i = 0; i < item.items.length; i++)
-		{
+		for (int i = 0; i < item.items.length; i++) {
 			data.add(index + i + 1, item.items[i]);
 		}
 		notifyItemRangeInserted(index + 1, item.items.length);
@@ -120,8 +119,7 @@ public class GroupedImageSelectAdapter extends RecyclerView.Adapter<GroupedImage
 	private void retractGroup(int index)
 	{
 		Item item = data.get(index);
-		for (int i = 0; i < item.items.length; i++)
-		{
+		for (int i = 0; i < item.items.length; i++) {
 			data.remove(index + 1);
 		}
 		notifyItemRangeRemoved(index + 1, item.items.length);
@@ -151,7 +149,8 @@ public class GroupedImageSelectAdapter extends RecyclerView.Adapter<GroupedImage
 			{
 				@Override public void onClick(View v)
 				{
-					onSelect(getAdapterPosition());
+					int index = getAdapterPosition();
+					if(index != RecyclerView.NO_POSITION) onSelect(getAdapterPosition());
 				}
 			});
 		}
