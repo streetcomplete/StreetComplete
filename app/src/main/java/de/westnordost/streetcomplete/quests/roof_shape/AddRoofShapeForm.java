@@ -1,8 +1,6 @@
 package de.westnordost.streetcomplete.quests.roof_shape;
 
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.v7.widget.AppCompatDrawableManager;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import de.westnordost.streetcomplete.R;
@@ -27,7 +25,7 @@ public class AddRoofShapeForm extends AbstractQuestFormAnswerFragment
 
 	private ImageSelectAdapter imageSelector;
 
-	private final RoofShape[] roofShapes = new RoofShape[]{
+	private static final RoofShape[] ROOF_SHAPES = new RoofShape[]{
 			new RoofShape("gabled",			R.drawable.ic_roof_gabled),
 			new RoofShape("hipped",			R.drawable.ic_roof_hipped),
 			new RoofShape("flat",			R.drawable.ic_roof_flat),
@@ -62,14 +60,10 @@ public class AddRoofShapeForm extends AbstractQuestFormAnswerFragment
 		GridLayoutManager lm = new GridLayoutManager(getActivity(), 4);
 		roofList.setLayoutManager(lm);
 
-		final ArrayList<Drawable> allImages = new ArrayList<>();
-		for(RoofShape shape : roofShapes)
-		{
-			Drawable img = AppCompatDrawableManager.get().getDrawable(getActivity(), shape.resourceId);
-			allImages.add(img);
-		}
+		final List<ImageSelectAdapter.Item> roofShapesList = Arrays.<ImageSelectAdapter.Item>asList(ROOF_SHAPES);
 
-		imageSelector = new ImageSelectAdapter(allImages.subList(0,MORE_THAN_95_PERCENT_COVERED));
+		imageSelector = new ImageSelectAdapter();
+		imageSelector.setItems(roofShapesList.subList(0,MORE_THAN_95_PERCENT_COVERED));
 		if(savedInstanceState != null)
 		{
 			imageSelector.setSelectedIndex(savedInstanceState.getInt(SELECTED_INDEX, -1));
@@ -82,7 +76,7 @@ public class AddRoofShapeForm extends AbstractQuestFormAnswerFragment
 		{
 			@Override public void onClick(View v)
 			{
-				imageSelector.add(allImages.subList(MORE_THAN_95_PERCENT_COVERED, allImages.size()));
+				imageSelector.add(roofShapesList.subList(MORE_THAN_95_PERCENT_COVERED, roofShapesList.size()));
 				showMoreButton.setVisibility(View.GONE);
 			}
 		});
@@ -102,7 +96,7 @@ public class AddRoofShapeForm extends AbstractQuestFormAnswerFragment
 		Integer selectedIndex = imageSelector.getSelectedIndex();
 		if(selectedIndex != -1)
 		{
-			String osmValue = roofShapes[selectedIndex].osmValue;
+			String osmValue = ROOF_SHAPES[selectedIndex].osmValue;
 			answer.putString(ROOF_SHAPE, osmValue);
 		}
 		applyFormAnswer(answer);
@@ -135,14 +129,13 @@ public class AddRoofShapeForm extends AbstractQuestFormAnswerFragment
 		return imageSelector.getSelectedIndex() != -1;
 	}
 
-	private class RoofShape
+	private static class RoofShape extends ImageSelectAdapter.Item
 	{
-		public final int resourceId;
 		public final String osmValue;
 
-		public RoofShape(String osmValue, int resourceId)
+		public RoofShape(String osmValue, int drawableId)
 		{
-			this.resourceId = resourceId;
+			super(drawableId, -1);
 			this.osmValue = osmValue;
 		}
 	}
