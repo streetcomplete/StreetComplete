@@ -23,7 +23,7 @@ public class AddBuildingLevels extends SimpleOverpassQuestType
 		return " ways, relations with " +
 		       " building ~ house|residential|apartments|detached|terrace|farm|hotel|dormitory|houseboat|" +
 							"school|civic|college|university|public|hospital|kindergarten|transportation|train_station|"+
-							"retail|commercial|warehouse|industrial|manufacture" +
+							"retail|office|commercial|warehouse|industrial|manufacture" +
 		       " and !building:levels and !height and !building:height";
 		// building:height is undocumented, but used the same way as height and currently over 50k times
 	}
