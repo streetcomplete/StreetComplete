@@ -1,0 +1,5 @@
+# kph or mph
+speed_unit: kph
+# sports that should be shown first before the normal order. The normal order starts with soccer,
+# tennis and basketball. So, only specify if other sports should be shown before these
+popular_sports:
