@@ -113,6 +113,8 @@
     <string name="quest_roofShape_select_one">"Select one:"</string>
     <string name="quest_roofShape_show_more">"Show more…"</string>
     <string name="quest_roofShape_answer_many">"It has several different shapes"</string>
+    <string name="quest_sport_title">"Which sport can be played here?"</string>
+    <string name="quest_sport_answer_multi">"Several sports can be played"</string>
     <string name="pref_category_cache">"Cache"</string>
     <string name="pref_title_sync">"Auto-Sync"</string>
     <string name="map_btn_zoom_out">"Zoom out"</string>

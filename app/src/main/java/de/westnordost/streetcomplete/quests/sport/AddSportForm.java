@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.roof_shape;
+package de.westnordost.streetcomplete.quests.sport;
 
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -15,9 +15,9 @@ import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
 import de.westnordost.streetcomplete.view.ImageSelectAdapter;
 
-public class AddRoofShapeForm extends AbstractQuestFormAnswerFragment
+public class AddSportForm extends AbstractQuestFormAnswerFragment
 {
-	public static final String ROOF_SHAPE = "roof_shape";
+	public static final String SPORT = "sport";
 
 	private static final String SELECTED_INDEX = "selected_item";
 
@@ -25,26 +25,24 @@ public class AddRoofShapeForm extends AbstractQuestFormAnswerFragment
 
 	private ImageSelectAdapter imageSelector;
 
-	private static final RoofShape[] ROOF_SHAPES = new RoofShape[]{
-			new RoofShape("gabled",			R.drawable.ic_roof_gabled),
-			new RoofShape("hipped",			R.drawable.ic_roof_hipped),
-			new RoofShape("flat",			R.drawable.ic_roof_flat),
-			new RoofShape("pyramidal",		R.drawable.ic_roof_pyramidal),
-
-			new RoofShape("half-hipped",	R.drawable.ic_roof_half_hipped),
-			new RoofShape("skillion",		R.drawable.ic_roof_skillion),
-			new RoofShape("gambrel",		R.drawable.ic_roof_gambrel),
-			new RoofShape("round",			R.drawable.ic_roof_round),
-
-			new RoofShape("double_saltbox",	R.drawable.ic_roof_double_saltbox),
-			new RoofShape("saltbox",		R.drawable.ic_roof_saltbox),
-			new RoofShape("mansard",		R.drawable.ic_roof_mansard),
-			new RoofShape("dome",			R.drawable.ic_roof_dome),
-
-			new RoofShape("quadruple_saltbox", R.drawable.ic_roof_quadruple_saltbox),
-			new RoofShape("round_gabled",	R.drawable.ic_roof_round_gabled),
-			new RoofShape("onion",			R.drawable.ic_roof_onion),
-			new RoofShape("cone",			R.drawable.ic_roof_cone),
+	private static final SportValue[] SPORTS_VALUES = new SportValue[]{
+            new SportValue("soccer",			R.drawable.ic_roof_gabled),
+            new SportValue("tennis",			R.drawable.ic_roof_gabled),
+            new SportValue("baseball",			R.drawable.ic_roof_gabled),
+            new SportValue("basketball",		R.drawable.ic_roof_gabled),
+            new SportValue("golf",			    R.drawable.ic_roof_gabled),
+            new SportValue("equestrian",		R.drawable.ic_roof_gabled),
+            new SportValue("athletics",			R.drawable.ic_roof_gabled),
+            new SportValue("volleyball",		R.drawable.ic_roof_gabled),
+            new SportValue("beachvolleyball",	R.drawable.ic_roof_gabled),
+            new SportValue("american_football",	R.drawable.ic_roof_gabled),
+            new SportValue("skateboard",		R.drawable.ic_roof_gabled),
+            new SportValue("bowls",			    R.drawable.ic_roof_gabled),
+            new SportValue("boules",			R.drawable.ic_roof_gabled),
+            new SportValue("shooting",			R.drawable.ic_roof_gabled),
+            new SportValue("cricket",			R.drawable.ic_roof_gabled),
+            new SportValue("table_tennis",		R.drawable.ic_roof_gabled),
+            new SportValue("gymnastics",		R.drawable.ic_roof_gabled)
 			};
 
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -52,31 +50,31 @@ public class AddRoofShapeForm extends AbstractQuestFormAnswerFragment
 	{
 		View view = super.onCreateView(inflater, container, savedInstanceState);
 
-		setTitle(R.string.quest_roofShape_title);
+		setTitle(R.string.quest_sport_title);
 
 		View contentView = setContentView(R.layout.quest_generic_list);
 
-		final RecyclerView roofList = (RecyclerView) contentView.findViewById(R.id.listSelect);
+		final RecyclerView sportList = (RecyclerView) contentView.findViewById(R.id.listSelect);
 		GridLayoutManager lm = new GridLayoutManager(getActivity(), 4);
-		roofList.setLayoutManager(lm);
+		sportList.setLayoutManager(lm);
 
-		final List<ImageSelectAdapter.Item> roofShapesList = Arrays.<ImageSelectAdapter.Item>asList(ROOF_SHAPES);
+		final List<ImageSelectAdapter.Item> sportValuesList = Arrays.<ImageSelectAdapter.Item>asList(SPORTS_VALUES);
 
 		imageSelector = new ImageSelectAdapter();
-		imageSelector.setItems(roofShapesList.subList(0,MORE_THAN_95_PERCENT_COVERED));
+		imageSelector.setItems(sportValuesList.subList(0,MORE_THAN_95_PERCENT_COVERED));
 		if(savedInstanceState != null)
 		{
 			imageSelector.setSelectedIndex(savedInstanceState.getInt(SELECTED_INDEX, -1));
 		}
-		roofList.setAdapter(imageSelector);
-		roofList.setNestedScrollingEnabled(false);
+		sportList.setAdapter(imageSelector);
+		sportList.setNestedScrollingEnabled(false);
 
 		final Button showMoreButton = (Button) contentView.findViewById(R.id.buttonShowMore);
 		showMoreButton.setOnClickListener(new View.OnClickListener()
 		{
 			@Override public void onClick(View v)
 			{
-				imageSelector.add(roofShapesList.subList(MORE_THAN_95_PERCENT_COVERED, roofShapesList.size()));
+				imageSelector.add(sportValuesList.subList(MORE_THAN_95_PERCENT_COVERED, sportValuesList.size()));
 				showMoreButton.setVisibility(View.GONE);
 			}
 		});
@@ -96,8 +94,8 @@ public class AddRoofShapeForm extends AbstractQuestFormAnswerFragment
 		Integer selectedIndex = imageSelector.getSelectedIndex();
 		if(selectedIndex != -1)
 		{
-			String osmValue = ROOF_SHAPES[selectedIndex].osmValue;
-			answer.putString(ROOF_SHAPE, osmValue);
+			String osmValue = SPORTS_VALUES[selectedIndex].osmValue;
+			answer.putString(SPORT, osmValue);
 		}
 		applyFormAnswer(answer);
 	}
@@ -105,7 +103,7 @@ public class AddRoofShapeForm extends AbstractQuestFormAnswerFragment
 	@Override protected List<Integer> getOtherAnswerResourceIds()
 	{
 		List<Integer> answers = super.getOtherAnswerResourceIds();
-		answers.add(R.string.quest_roofShape_answer_many);
+		answers.add(R.string.quest_sport_answer_multi);
 		return answers;
 	}
 
@@ -113,10 +111,10 @@ public class AddRoofShapeForm extends AbstractQuestFormAnswerFragment
 	{
 		if(super.onClickOtherAnswer(itemResourceId)) return true;
 
-		if(itemResourceId == R.string.quest_roofShape_answer_many)
+		if(itemResourceId == R.string.quest_sport_answer_multi)
 		{
 			Bundle answer = new Bundle();
-			answer.putString(ROOF_SHAPE, "many");
+			answer.putString(SPORT, "multi");
 			applyImmediateAnswer(answer);
 			return true;
 		}
@@ -129,11 +127,11 @@ public class AddRoofShapeForm extends AbstractQuestFormAnswerFragment
 		return imageSelector.getSelectedIndex() != -1;
 	}
 
-	private static class RoofShape extends ImageSelectAdapter.Item
+	private static class SportValue extends ImageSelectAdapter.Item
 	{
 		public final String osmValue;
 
-		public RoofShape(String osmValue, int drawableId)
+		public SportValue(String osmValue, int drawableId)
 		{
 			super(drawableId, -1);
 			this.osmValue = osmValue;
