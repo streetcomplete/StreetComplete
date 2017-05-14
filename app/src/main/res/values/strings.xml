@@ -113,7 +113,7 @@
     <string name="quest_roofShape_select_one">"Select one:"</string>
     <string name="quest_roofShape_show_more">"Show more…"</string>
     <string name="quest_roofShape_answer_many">"It has several different shapes"</string>
-    <string name="quest_sport_title">"Which sport is played here?"</string>
+    <string name="quest_sport_title">"For which sport is this pitch made?"</string>
     <string name="quest_sport_answer_multi">"Not any specific sport"</string>
     <string name="quest_sport_soccer">"Soccer"</string>
     <string name="quest_sport_tennis">"Tennis"</string>
@@ -257,4 +257,9 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="quest_busStopShelter_title">"Does this bus stop have a shelter?"</string>
     <string name="quest_bikeParkingCapacity_title">"How many bikes can be parked here?"</string>
     <string name="quest_address_unusualHousenumber_confirmation_description">"This housenumber looks very unusual."</string>
+    <string name="quest_select_hint">Select:</string>
+    <string name="quest_sport_manySports_confirmation_description">Is this pitch designed for exactly these sports specifically (markings and equipment are present) or as a general purpose pitch for all kinds of games?</string>
+    <string name="quest_manySports_confirmation_specific">Specifically these</string>
+    <string name="quest_manySports_confirmation_generic">General Purpose</string>
+    <string name="quest_sport_manySports_confirmation_title">You selected many sports</string>
 </resources>

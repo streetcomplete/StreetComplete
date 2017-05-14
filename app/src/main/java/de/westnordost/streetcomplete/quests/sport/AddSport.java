@@ -1,6 +1,9 @@
 package de.westnordost.streetcomplete.quests.sport;
 
 import android.os.Bundle;
+import android.text.TextUtils;
+
+import java.util.ArrayList;
 
 import javax.inject.Inject;
 
@@ -9,6 +12,7 @@ import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
+import de.westnordost.streetcomplete.quests.roof_shape.AddRoofShapeForm;
 
 public class AddSport extends SimpleOverpassQuestType
 {
@@ -36,7 +40,11 @@ public class AddSport extends SimpleOverpassQuestType
 
 	public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
 	{
-		changes.add("sport", answer.getString(AddSportForm.OSM_VALUE));
+		ArrayList<String> values = answer.getStringArrayList(AddRoofShapeForm.OSM_VALUES);
+		if(values != null && !values.isEmpty())
+		{
+			changes.add("sport", TextUtils.join(";", values));
+		}
 	}
 
 	@Override public String getCommitMessage()

@@ -7,12 +7,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import de.westnordost.streetcomplete.R;
-import de.westnordost.streetcomplete.view.AbstractImageSelectAdapter;
 import de.westnordost.streetcomplete.view.ImageSelectAdapter;
 
 /**
@@ -21,13 +22,13 @@ import de.westnordost.streetcomplete.view.ImageSelectAdapter;
 
 public abstract class ImageListQuestAnswerFragment extends AbstractQuestFormAnswerFragment {
 
-	public static final String OSM_VALUE = "osm_value";
+	public static final String OSM_VALUES = "osm_values";
 
     private static final String
-			SELECTED_INDEX = "selected_item",
+			SELECTED_INDICES = "selected_indices",
 			EXPANDED = "expanded";
 
-	private ImageSelectAdapter imageSelector;
+	protected ImageSelectAdapter imageSelector;
     private Button showMoreButton;
 
 	private int maxInitiallyShownItems;
@@ -49,21 +50,25 @@ public abstract class ImageListQuestAnswerFragment extends AbstractQuestFormAnsw
 		{
 			@Override public void onClick(View v)
 			{
-				List<AbstractImageSelectAdapter.Item> all = Arrays.<AbstractImageSelectAdapter.Item>asList(getItems());
+				List<ImageSelectAdapter.Item> all = Arrays.<ImageSelectAdapter.Item>asList(getItems());
 				imageSelector.addItems(all.subList(imageSelector.getItemCount(), all.size()));
 				showMoreButton.setVisibility(View.GONE);
 			}
 		});
 
-		imageSelector = new ImageSelectAdapter();
+		int selectableItems = getMaxSelectableItems();
+		TextView selectHint = (TextView) view.findViewById(R.id.selectHint);
+		selectHint.setText(selectableItems == 1 ? R.string.quest_roofShape_select_one : R.string.quest_select_hint);
+
+		imageSelector = new ImageSelectAdapter(selectableItems);
 		int initiallyShow = getMaxNumberOfInitiallyShownItems();
 		if(savedInstanceState != null)
 		{
 			if(savedInstanceState.getBoolean(EXPANDED)) initiallyShow = -1;
 			showInitialItems(initiallyShow);
 
-			int index = savedInstanceState.getInt(SELECTED_INDEX, -1);
-			if(index > -1) imageSelector.selectIndex(index);
+			List<Integer> selectedIndices = savedInstanceState.getIntegerArrayList(SELECTED_INDICES);
+			imageSelector.selectIndices(selectedIndices);
 		}
 		else
 		{
@@ -74,13 +79,16 @@ public abstract class ImageListQuestAnswerFragment extends AbstractQuestFormAnsw
         return view;
     }
 
-    /** return -1 for showing all items at once */
+
+    /** return -1 for any number*/
+    protected abstract int getMaxSelectableItems();
+	/** return -1 for showing all items at once */
 	protected abstract int getMaxNumberOfInitiallyShownItems();
-	protected abstract ListValue[] getItems();
+	protected abstract OsmItem[] getItems();
 
 	private void showInitialItems(int initiallyShow)
 	{
-		List<AbstractImageSelectAdapter.Item> all = Arrays.<AbstractImageSelectAdapter.Item>asList(getItems());
+		List<ImageSelectAdapter.Item> all = Arrays.<ImageSelectAdapter.Item>asList(getItems());
 		if(initiallyShow == -1 || initiallyShow >= all.size())
 		{
 			imageSelector.setItems(all);
@@ -94,12 +102,21 @@ public abstract class ImageListQuestAnswerFragment extends AbstractQuestFormAnsw
 
 	@Override protected void onClickOk()
 	{
+		applyAnswer();
+	}
+
+	protected void applyAnswer()
+	{
 		Bundle answer = new Bundle();
-		Integer selectedIndex = imageSelector.getSelectedIndex();
-		if(selectedIndex != -1)
+
+		ArrayList<String> osmValues = new ArrayList<>();
+		for(Integer selectedIndex : imageSelector.getSelectedIndices())
 		{
-			String osmValue = getItems()[selectedIndex].osmValue;
-			answer.putString(OSM_VALUE, osmValue);
+			osmValues.add(getItems()[selectedIndex].osmValue);
+		}
+		if(!osmValues.isEmpty())
+		{
+			answer.putStringArrayList(OSM_VALUES, osmValues);
 		}
 		applyFormAnswer(answer);
 	}
@@ -107,26 +124,26 @@ public abstract class ImageListQuestAnswerFragment extends AbstractQuestFormAnsw
     @Override public void onSaveInstanceState(Bundle outState)
     {
         super.onSaveInstanceState(outState);
-        outState.putInt(SELECTED_INDEX, imageSelector.getSelectedIndex());
+		outState.putIntegerArrayList(SELECTED_INDICES, imageSelector.getSelectedIndices());
 		outState.putBoolean(EXPANDED, showMoreButton.getVisibility() == View.GONE);
     }
 
     @Override public boolean hasChanges()
     {
-        return imageSelector.getSelectedIndex() != -1;
+        return !imageSelector.getSelectedIndices().isEmpty();
     }
 
-    protected static class ListValue extends AbstractImageSelectAdapter.Item
+    protected static class OsmItem extends ImageSelectAdapter.Item
     {
         public final String osmValue;
 
-        public ListValue(String osmValue, int drawableId, int titleId)
+        public OsmItem(String osmValue, int drawableId, int titleId)
         {
             super(drawableId, titleId);
             this.osmValue = osmValue;
         }
 
-        public ListValue(String osmValue, int drawableId) {
+        public OsmItem(String osmValue, int drawableId) {
             this(osmValue, drawableId, -1);
         }
     }

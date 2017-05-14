@@ -6,6 +6,7 @@
               android:weightSum="1">
 
     <TextView
+        android:id="@+id/selectHint"
         android:text="@string/quest_roofShape_select_one"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
