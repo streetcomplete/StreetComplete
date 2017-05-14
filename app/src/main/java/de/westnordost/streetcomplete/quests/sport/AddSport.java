@@ -20,7 +20,7 @@ public class AddSport extends SimpleOverpassQuestType
 	@Override
 	protected String getTagFilters()
 	{
-		return "nodes, ways with leisure=pitch and !sport";
+		return "nodes, ways with leisure=pitch and (!sport or sport=team_handball or sport=hockey)";
 	}
 
 	@Override

@@ -1,8 +1,6 @@
 package de.westnordost.streetcomplete.quests.roof_shape;
 
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,39 +10,33 @@ import java.util.Arrays;
 import java.util.List;
 
 import de.westnordost.streetcomplete.R;
-import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
+import de.westnordost.streetcomplete.quests.ImageListQuestAnswerFragment;
 import de.westnordost.streetcomplete.view.ImageSelectAdapter;
 
-public class AddRoofShapeForm extends AbstractQuestFormAnswerFragment
+public class AddRoofShapeForm extends ImageListQuestAnswerFragment
 {
 	public static final String ROOF_SHAPE = "roof_shape";
 
-	private static final String SELECTED_INDEX = "selected_item";
+	private static final ListValue[] ROOF_SHAPES = new ListValue[]{
+			new ListValue("gabled",			R.drawable.ic_roof_gabled),
+			new ListValue("hipped",			R.drawable.ic_roof_hipped),
+			new ListValue("flat",			R.drawable.ic_roof_flat),
+			new ListValue("pyramidal",		R.drawable.ic_roof_pyramidal),
 
-	private static final int MORE_THAN_95_PERCENT_COVERED = 8;
+			new ListValue("half-hipped",	R.drawable.ic_roof_half_hipped),
+			new ListValue("skillion",		R.drawable.ic_roof_skillion),
+			new ListValue("gambrel",		R.drawable.ic_roof_gambrel),
+			new ListValue("round",			R.drawable.ic_roof_round),
 
-	private ImageSelectAdapter imageSelector;
+			new ListValue("double_saltbox",	R.drawable.ic_roof_double_saltbox),
+			new ListValue("saltbox",		R.drawable.ic_roof_saltbox),
+			new ListValue("mansard",		R.drawable.ic_roof_mansard),
+			new ListValue("dome",			R.drawable.ic_roof_dome),
 
-	private static final RoofShape[] ROOF_SHAPES = new RoofShape[]{
-			new RoofShape("gabled",			R.drawable.ic_roof_gabled),
-			new RoofShape("hipped",			R.drawable.ic_roof_hipped),
-			new RoofShape("flat",			R.drawable.ic_roof_flat),
-			new RoofShape("pyramidal",		R.drawable.ic_roof_pyramidal),
-
-			new RoofShape("half-hipped",	R.drawable.ic_roof_half_hipped),
-			new RoofShape("skillion",		R.drawable.ic_roof_skillion),
-			new RoofShape("gambrel",		R.drawable.ic_roof_gambrel),
-			new RoofShape("round",			R.drawable.ic_roof_round),
-
-			new RoofShape("double_saltbox",	R.drawable.ic_roof_double_saltbox),
-			new RoofShape("saltbox",		R.drawable.ic_roof_saltbox),
-			new RoofShape("mansard",		R.drawable.ic_roof_mansard),
-			new RoofShape("dome",			R.drawable.ic_roof_dome),
-
-			new RoofShape("quadruple_saltbox", R.drawable.ic_roof_quadruple_saltbox),
-			new RoofShape("round_gabled",	R.drawable.ic_roof_round_gabled),
-			new RoofShape("onion",			R.drawable.ic_roof_onion),
-			new RoofShape("cone",			R.drawable.ic_roof_cone),
+			new ListValue("quadruple_saltbox", R.drawable.ic_roof_quadruple_saltbox),
+			new ListValue("round_gabled",	R.drawable.ic_roof_round_gabled),
+			new ListValue("onion",			R.drawable.ic_roof_onion),
+			new ListValue("cone",			R.drawable.ic_roof_cone),
 			};
 
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -54,24 +46,11 @@ public class AddRoofShapeForm extends AbstractQuestFormAnswerFragment
 
 		setTitle(R.string.quest_roofShape_title);
 
-		View contentView = setContentView(R.layout.quest_generic_list);
-
-		final RecyclerView roofList = (RecyclerView) contentView.findViewById(R.id.listSelect);
-		GridLayoutManager lm = new GridLayoutManager(getActivity(), 4);
-		roofList.setLayoutManager(lm);
-
 		final List<ImageSelectAdapter.Item> roofShapesList = Arrays.<ImageSelectAdapter.Item>asList(ROOF_SHAPES);
 
-		imageSelector = new ImageSelectAdapter();
 		imageSelector.setItems(roofShapesList.subList(0,MORE_THAN_95_PERCENT_COVERED));
-		if(savedInstanceState != null)
-		{
-			imageSelector.setSelectedIndex(savedInstanceState.getInt(SELECTED_INDEX, -1));
-		}
-		roofList.setAdapter(imageSelector);
-		roofList.setNestedScrollingEnabled(false);
 
-		final Button showMoreButton = (Button) contentView.findViewById(R.id.buttonShowMore);
+		final Button showMoreButton = (Button) view.findViewById(R.id.buttonShowMore);
 		showMoreButton.setOnClickListener(new View.OnClickListener()
 		{
 			@Override public void onClick(View v)
@@ -82,12 +61,6 @@ public class AddRoofShapeForm extends AbstractQuestFormAnswerFragment
 		});
 
 		return view;
-	}
-
-	@Override public void onSaveInstanceState(Bundle outState)
-	{
-		super.onSaveInstanceState(outState);
-		outState.putInt(SELECTED_INDEX, imageSelector.getSelectedIndex());
 	}
 
 	@Override protected void onClickOk()
@@ -122,21 +95,5 @@ public class AddRoofShapeForm extends AbstractQuestFormAnswerFragment
 		}
 
 		return false;
-	}
-
-	@Override public boolean hasChanges()
-	{
-		return imageSelector.getSelectedIndex() != -1;
-	}
-
-	private static class RoofShape extends ImageSelectAdapter.Item
-	{
-		public final String osmValue;
-
-		public RoofShape(String osmValue, int drawableId)
-		{
-			super(drawableId, -1);
-			this.osmValue = osmValue;
-		}
 	}
 }
