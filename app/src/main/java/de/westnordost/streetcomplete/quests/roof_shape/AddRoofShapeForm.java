@@ -11,6 +11,7 @@ import java.util.List;
 
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.ImageListQuestAnswerFragment;
+import de.westnordost.streetcomplete.view.ImageMultiSelectAdapter;
 import de.westnordost.streetcomplete.view.ImageSelectAdapter;
 
 public class AddRoofShapeForm extends ImageListQuestAnswerFragment
@@ -46,23 +47,34 @@ public class AddRoofShapeForm extends ImageListQuestAnswerFragment
 
 		setTitle(R.string.quest_roofShape_title);
 
-		final List<ImageSelectAdapter.Item> roofShapesList = Arrays.<ImageSelectAdapter.Item>asList(ROOF_SHAPES);
-
-		imageSelector.setItems(roofShapesList.subList(0,MORE_THAN_95_PERCENT_COVERED));
-
-		final Button showMoreButton = (Button) view.findViewById(R.id.buttonShowMore);
+		showMoreButton = (Button) contentView.findViewById(R.id.buttonShowMore);
 		showMoreButton.setOnClickListener(new View.OnClickListener()
 		{
 			@Override public void onClick(View v)
 			{
-				imageSelector.add(roofShapesList.subList(MORE_THAN_95_PERCENT_COVERED, roofShapesList.size()));
-				showMoreButton.setVisibility(View.GONE);
+				expand();
 			}
 		});
 
-		return view;
+		List<ImageSelectAdapter.Item> roofShapesList = Arrays.<ImageSelectAdapter.Item>asList(ROOF_SHAPES);
+
+		imageSelector.setItems(roofShapesList.subList(0,MORE_THAN_95_PERCENT_COVERED));
+				expand();
+			}
+			int index = savedInstanceState.getInt(SELECTED_INDEX, -1);
+			if(index > -1) imageSelector.selectIndex(index);
+
+		final Button showMoreButton = (Button) view.findViewById(R.id.buttonShowMore);
 	}
 
+	private void expand()
+	{
+		List<ImageSelectAdapter.Item> roofShapesList = Arrays.<ImageSelectAdapter.Item>asList(ROOF_SHAPES);
+		imageSelector.addItems(roofShapesList.subList(MORE_THAN_95_PERCENT_COVERED, roofShapesList.size()));
+		showMoreButton.setVisibility(View.GONE);
+	}
+
+		outState.putBoolean(EXPANDED, showMoreButton.getVisibility() == View.GONE);
 	@Override protected void onClickOk()
 	{
 		Bundle answer = new Bundle();
