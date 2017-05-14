@@ -4,19 +4,15 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
-import java.util.Arrays;
 import java.util.List;
 
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.ImageListQuestAnswerFragment;
-import de.westnordost.streetcomplete.view.ImageMultiSelectAdapter;
-import de.westnordost.streetcomplete.view.ImageSelectAdapter;
 
 public class AddRoofShapeForm extends ImageListQuestAnswerFragment
 {
-	public static final String ROOF_SHAPE = "roof_shape";
+	protected static final int MORE_THAN_95_PERCENT_COVERED = 8;
 
 	private static final ListValue[] ROOF_SHAPES = new ListValue[]{
 			new ListValue("gabled",			R.drawable.ic_roof_gabled),
@@ -44,47 +40,18 @@ public class AddRoofShapeForm extends ImageListQuestAnswerFragment
 									   Bundle savedInstanceState)
 	{
 		View view = super.onCreateView(inflater, container, savedInstanceState);
-
 		setTitle(R.string.quest_roofShape_title);
-
-		showMoreButton = (Button) contentView.findViewById(R.id.buttonShowMore);
-		showMoreButton.setOnClickListener(new View.OnClickListener()
-		{
-			@Override public void onClick(View v)
-			{
-				expand();
-			}
-		});
-
-		List<ImageSelectAdapter.Item> roofShapesList = Arrays.<ImageSelectAdapter.Item>asList(ROOF_SHAPES);
-
-		imageSelector.setItems(roofShapesList.subList(0,MORE_THAN_95_PERCENT_COVERED));
-				expand();
-			}
-			int index = savedInstanceState.getInt(SELECTED_INDEX, -1);
-			if(index > -1) imageSelector.selectIndex(index);
-
-		final Button showMoreButton = (Button) view.findViewById(R.id.buttonShowMore);
+		return view;
 	}
 
-	private void expand()
+	@Override protected int getMaxNumberOfInitiallyShownItems()
 	{
-		List<ImageSelectAdapter.Item> roofShapesList = Arrays.<ImageSelectAdapter.Item>asList(ROOF_SHAPES);
-		imageSelector.addItems(roofShapesList.subList(MORE_THAN_95_PERCENT_COVERED, roofShapesList.size()));
-		showMoreButton.setVisibility(View.GONE);
+		return MORE_THAN_95_PERCENT_COVERED;
 	}
 
-		outState.putBoolean(EXPANDED, showMoreButton.getVisibility() == View.GONE);
-	@Override protected void onClickOk()
+	@Override protected ListValue[] getItems()
 	{
-		Bundle answer = new Bundle();
-		Integer selectedIndex = imageSelector.getSelectedIndex();
-		if(selectedIndex != -1)
-		{
-			String osmValue = ROOF_SHAPES[selectedIndex].osmValue;
-			answer.putString(ROOF_SHAPE, osmValue);
-		}
-		applyFormAnswer(answer);
+		return ROOF_SHAPES;
 	}
 
 	@Override protected List<Integer> getOtherAnswerResourceIds()
@@ -101,7 +68,7 @@ public class AddRoofShapeForm extends ImageListQuestAnswerFragment
 		if(itemResourceId == R.string.quest_roofShape_answer_many)
 		{
 			Bundle answer = new Bundle();
-			answer.putString(ROOF_SHAPE, "many");
+			answer.putString(OSM_VALUE, "many");
 			applyImmediateAnswer(answer);
 			return true;
 		}

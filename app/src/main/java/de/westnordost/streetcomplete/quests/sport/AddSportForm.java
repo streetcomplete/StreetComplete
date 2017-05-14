@@ -4,19 +4,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
-import java.util.Arrays;
 import java.util.List;
 
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.ImageListQuestAnswerFragment;
-import de.westnordost.streetcomplete.view.ImageSelectAdapter;
 
 public class AddSportForm extends ImageListQuestAnswerFragment
 {
-	public static final String SPORT = "sport";
-
 	private static final ListValue[] SPORTS_VALUES = new ListValue[]{
             new ListValue("soccer", R.drawable.ic_sport_soccer, R.string.quest_sport_soccer),
             new ListValue("tennis", R.drawable.ic_sport_tennis, R.string.quest_sport_tennis),
@@ -51,36 +46,18 @@ public class AddSportForm extends ImageListQuestAnswerFragment
 									   Bundle savedInstanceState)
 	{
 		View view = super.onCreateView(inflater, container, savedInstanceState);
-
 		setTitle(R.string.quest_sport_title);
-
-		final List<ImageSelectAdapter.Item> sportValuesList = Arrays.<ImageSelectAdapter.Item>asList(SPORTS_VALUES);
-
-		imageSelector.setItems(sportValuesList.subList(0,MORE_THAN_95_PERCENT_COVERED));
-
-		final Button showMoreButton = (Button) view.findViewById(R.id.buttonShowMore);
-		showMoreButton.setOnClickListener(new View.OnClickListener()
-		{
-			@Override public void onClick(View v)
-			{
-				imageSelector.add(sportValuesList.subList(MORE_THAN_95_PERCENT_COVERED, sportValuesList.size()));
-				showMoreButton.setVisibility(View.GONE);
-			}
-		});
-
 		return view;
 	}
 
-	@Override protected void onClickOk()
+	@Override protected int getMaxNumberOfInitiallyShownItems()
 	{
-		Bundle answer = new Bundle();
-		Integer selectedIndex = imageSelector.getSelectedIndex();
-		if(selectedIndex != -1)
-		{
-			String osmValue = SPORTS_VALUES[selectedIndex].osmValue;
-			answer.putString(SPORT, osmValue);
-		}
-		applyFormAnswer(answer);
+		return 8;
+	}
+
+	@Override protected ListValue[] getItems()
+	{
+		return SPORTS_VALUES;
 	}
 
 	@Override protected List<Integer> getOtherAnswerResourceIds()
@@ -97,7 +74,7 @@ public class AddSportForm extends ImageListQuestAnswerFragment
 		if(itemResourceId == R.string.quest_sport_answer_multi)
 		{
 			Bundle answer = new Bundle();
-			answer.putString(SPORT, "multi");
+			answer.putString(OSM_VALUE, "multi");
 			applyImmediateAnswer(answer);
 			return true;
 		}

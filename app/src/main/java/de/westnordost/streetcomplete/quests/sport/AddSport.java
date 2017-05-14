@@ -36,7 +36,7 @@ public class AddSport extends SimpleOverpassQuestType
 
 	public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
 	{
-		changes.add("sport", answer.getString(AddSportForm.SPORT));
+		changes.add("sport", answer.getString(AddSportForm.OSM_VALUE));
 	}
 
 	@Override public String getCommitMessage()

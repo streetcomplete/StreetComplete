@@ -36,7 +36,7 @@ public class AddRoofShape extends SimpleOverpassQuestType
 
 	public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
 	{
-		changes.add("roof:shape", answer.getString(AddRoofShapeForm.ROOF_SHAPE));
+		changes.add("roof:shape", answer.getString(AddRoofShapeForm.OSM_VALUE));
 	}
 
 	@Override public String getCommitMessage()
