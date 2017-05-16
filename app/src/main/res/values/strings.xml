@@ -262,4 +262,5 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="quest_manySports_confirmation_specific">Specifically these</string>
     <string name="quest_manySports_confirmation_generic">General Purpose</string>
     <string name="quest_sport_manySports_confirmation_title">You selected many sports</string>
+    <string name="quest_busStopShelter_name_title">Does the bus stop %s have a shelter?</string>
 </resources>

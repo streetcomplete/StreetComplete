@@ -33,9 +33,7 @@ public class AddBusStopShelter extends SimpleOverpassQuestType
 
 	public AbstractQuestAnswerFragment createForm()
 	{
-		YesNoQuestAnswerFragment fragment = new YesNoQuestAnswerFragment();
-		fragment.setTitle(R.string.quest_busStopShelter_title);
-		return fragment;
+		return new BusStopShelterForm();
 	}
 
 	public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
