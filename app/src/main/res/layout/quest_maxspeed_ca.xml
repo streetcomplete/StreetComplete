@@ -30,8 +30,9 @@
             android:background="#00ffffff"
             android:inputType="number"
             android:gravity="center"
+            android:text="85"
             android:textStyle="bold"
-            android:textSize="48sp"/>
+            android:textSize="48dp"/>
 
         <Spinner
             android:id="@+id/unitSpinner"

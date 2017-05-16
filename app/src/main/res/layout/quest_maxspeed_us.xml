@@ -31,7 +31,8 @@
             android:inputType="number"
             android:gravity="center"
             android:textStyle="bold"
-            android:textSize="48sp"/>
+            android:text="85"
+            android:textSize="48dp"/>
 
         <Spinner
             android:id="@+id/unitSpinner"
