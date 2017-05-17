@@ -113,6 +113,35 @@
     <string name="quest_roofShape_select_one">"Select one:"</string>
     <string name="quest_roofShape_show_more">"Show more…"</string>
     <string name="quest_roofShape_answer_many">"It has several different shapes"</string>
+    <string name="quest_sport_title">"For which sport is this pitch made?"</string>
+    <string name="quest_sport_answer_multi">"Not any specific sport"</string>
+    <string name="quest_sport_soccer">"Soccer"</string>
+    <string name="quest_sport_tennis">"Tennis"</string>
+    <string name="quest_sport_baseball">"Baseball"</string>
+    <string name="quest_sport_basketball">"Basketball"</string>
+    <string name="quest_sport_golf">"Golf"</string>
+    <string name="quest_sport_equestrian">"Equestrian"</string>
+    <string name="quest_sport_athletics">"Athletics"</string>
+    <string name="quest_sport_volleyball">"Volleyball"</string>
+    <string name="quest_sport_beachvolleyball">"Beach volleyball"</string>
+    <string name="quest_sport_american_football">"American football"</string>
+    <string name="quest_sport_skateboard">"Skateboard"</string>
+    <string name="quest_sport_bowls">"Bowls"</string>
+    <string name="quest_sport_boules">"Boules"</string>
+    <string name="quest_sport_shooting">"Shooting"</string>
+    <string name="quest_sport_cricket">"Cricket"</string>
+    <string name="quest_sport_table_tennis">"Table tennis"</string>
+    <string name="quest_sport_gymnastics">"Gymnastics"</string>
+
+    <string name="quest_sport_archery">"Archery"</string>
+    <string name="quest_sport_australian_football">"Australian football"</string>
+    <string name="quest_sport_badminton">"Badminton"</string>
+    <string name="quest_sport_canadian_football">"Canadian football"</string>
+    <string name="quest_sport_field_hockey">"Field hockey"</string>
+    <string name="quest_sport_handball">"Handball"</string>
+    <string name="quest_sport_ice_hockey">"Ice hockey"</string>
+    <string name="quest_sport_netball">"Netball"</string>
+    <string name="quest_sport_rugby">"Rugby"</string>
     <string name="pref_category_cache">"Cache"</string>
     <string name="pref_title_sync">"Auto-Sync"</string>
     <string name="map_btn_zoom_out">"Zoom out"</string>
@@ -228,4 +257,11 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="quest_busStopShelter_title">"Does this bus stop have a shelter?"</string>
     <string name="quest_bikeParkingCapacity_title">"How many bikes can be parked here?"</string>
     <string name="quest_address_unusualHousenumber_confirmation_description">"This housenumber looks very unusual."</string>
+    <string name="quest_select_hint">Select:</string>
+    <string name="quest_sport_manySports_confirmation_description">Is this pitch designed for exactly these sports specifically (markings and equipment are present) or as a general purpose pitch for all kinds of games?</string>
+    <string name="quest_manySports_confirmation_specific">Specifically these</string>
+    <string name="quest_manySports_confirmation_generic">General Purpose</string>
+    <string name="quest_sport_manySports_confirmation_title">You selected many sports</string>
+    <string name="quest_busStopShelter_name_title">Does the bus stop %s have a shelter?</string>
+    <string name="quest_leave_new_note_in_response_to">In reply to \"%1$s\":\n%2$s</string>
 </resources>

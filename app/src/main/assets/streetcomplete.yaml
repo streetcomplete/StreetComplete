@@ -30,7 +30,7 @@ textures:
             max_height: [384,576,192,192]
             max_speed: [576,576,192,192]
             max_weight: [768,576,192,192]
-            #empty: [960,576,192,192]
+            sport: [960,576,192,192]
             street_lanes: [0,768,192,192]
             street_turnlanes: [192,768,192,192]
             street_surface: [384,768,192,192]

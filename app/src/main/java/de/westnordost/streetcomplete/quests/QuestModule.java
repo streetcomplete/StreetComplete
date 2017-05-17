@@ -17,6 +17,7 @@ import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHours;
 import de.westnordost.streetcomplete.quests.road_name.AddRoadName;
 import de.westnordost.streetcomplete.quests.road_surface.AddRoadSurface;
 import de.westnordost.streetcomplete.quests.roof_shape.AddRoofShape;
+import de.westnordost.streetcomplete.quests.sport.AddSport;
 
 @Module
 public class QuestModule
@@ -32,7 +33,8 @@ public class QuestModule
 				new AddRoadSurface(o),
 				new AddBusStopShelter(o),
 				new AddHousenumber(o),
-				new AddBikeParkingCapacity(o)
+				new AddBikeParkingCapacity(o),
+				new AddSport(o)
 		};
 
 		return new QuestTypes(Arrays.asList(questTypes));

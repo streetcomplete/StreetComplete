@@ -2,6 +2,8 @@ package de.westnordost.streetcomplete.quests.roof_shape;
 
 import android.os.Bundle;
 
+import java.util.ArrayList;
+
 import javax.inject.Inject;
 
 import de.westnordost.streetcomplete.data.QuestImportance;
@@ -36,7 +38,11 @@ public class AddRoofShape extends SimpleOverpassQuestType
 
 	public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
 	{
-		changes.add("roof:shape", answer.getString(AddRoofShapeForm.ROOF_SHAPE));
+		ArrayList<String> values = answer.getStringArrayList(AddRoofShapeForm.OSM_VALUES);
+		if(values != null  && values.size() == 1)
+		{
+			changes.add("roof:shape", values.get(0));
+		}
 	}
 
 	@Override public String getCommitMessage()

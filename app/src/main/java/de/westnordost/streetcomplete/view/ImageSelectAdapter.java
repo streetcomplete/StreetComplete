@@ -9,32 +9,69 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import de.westnordost.streetcomplete.R;
 
 public class ImageSelectAdapter extends RecyclerView.Adapter<ImageSelectAdapter.ViewHolder>
 {
-	private int selectedIndex = -1;
-	private ArrayList<Item> items;
+	private ArrayList<ImageSelectAdapter.Item> items;
+	private Set<Integer> selectedIndices;
+	private int maxSelectableIndices;
+	private int cellLayoutId = R.layout.labeled_image_select_cell;
 
-	public interface OnItemSelectedListener
+	public interface OnItemSelectionListener
 	{
-		void onItemSelected(int index);
+		void onIndexSelected(int index);
+		void onIndexDeselected(int index);
 	}
-	private OnItemSelectedListener onItemSelectedListener;
-	public void setOnItemSelectedListener(OnItemSelectedListener onItemSelectedListener)
+	private ImageSelectAdapter.OnItemSelectionListener onItemSelectionListener;
+
+	public ImageSelectAdapter()
 	{
-		this.onItemSelectedListener = onItemSelectedListener;
+		selectedIndices = new HashSet<>();
+		this.maxSelectableIndices = -1;
 	}
 
-	public void setItems(List<Item> items)
+	public ImageSelectAdapter(int maxSelectableIndices)
+	{
+		selectedIndices = new HashSet<>();
+		this.maxSelectableIndices = maxSelectableIndices;
+	}
+
+	public void setOnItemSelectionListener(
+			ImageSelectAdapter.OnItemSelectionListener onItemSelectionListener)
+	{
+		this.onItemSelectionListener = onItemSelectionListener;
+	}
+
+	public void setCellLayout(int cellLayoutId)
+	{
+		this.cellLayoutId = cellLayoutId;
+	}
+
+	public ArrayList<Integer> getSelectedIndices()
+	{
+		return new ArrayList<>(selectedIndices);
+	}
+
+	public void selectIndices(List<Integer> indices)
+	{
+		for(Integer index : indices)
+		{
+			selectIndex(index);
+		}
+	}
+
+	public void setItems(List<ImageSelectAdapter.Item> items)
 	{
 		this.items = new ArrayList<>(items);
 		notifyDataSetChanged();
 	}
 
-	public void add(Collection<Item> items)
+	public void addItems(Collection<ImageSelectAdapter.Item> items)
 	{
 		int len = this.items.size();
 		this.items.addAll(items);
@@ -44,33 +81,73 @@ public class ImageSelectAdapter extends RecyclerView.Adapter<ImageSelectAdapter.
 	@Override public ImageSelectAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
 	{
 		View view = LayoutInflater.from(parent.getContext()).
-				inflate(R.layout.labeled_image_select_cell, parent, false);
+				inflate(cellLayoutId, parent, false);
 		return new ImageSelectAdapter.ViewHolder(view);
 	}
 
-	public void setSelectedIndex(int index)
+	public boolean isIndexSelected(int index)
 	{
-		Integer prevSelectedIndex = selectedIndex;
-		if(prevSelectedIndex == -1 || prevSelectedIndex != index)
+		return selectedIndices.contains(index);
+	}
+
+	public void selectIndex(int index)
+	{
+		checkIndexRange(index);
+		// special case: toggle-behavior if only one index can be selected
+		if(maxSelectableIndices == 1 && selectedIndices.size() == 1)
 		{
-			selectedIndex = index;
-		} else {
-			selectedIndex = -1;
+			deselectIndex(selectedIndices.iterator().next());
+		}
+		else if(maxSelectableIndices > -1 && maxSelectableIndices <= selectedIndices.size())
+		{
+			return;
 		}
 
-		if(prevSelectedIndex != -1) notifyItemChanged(prevSelectedIndex);
-		if(selectedIndex != -1) notifyItemChanged(selectedIndex);
-		if(onItemSelectedListener != null)
+		selectedIndices.add(index);
+
+		notifyItemChanged(index);
+		if(onItemSelectionListener != null)
 		{
-			onItemSelectedListener.onItemSelected(selectedIndex);
+			onItemSelectionListener.onIndexSelected(index);
 		}
+	}
+
+	public void deselectIndex(int index)
+	{
+		checkIndexRange(index);
+		selectedIndices.remove(index);
+
+		notifyItemChanged(index);
+		if(onItemSelectionListener != null)
+		{
+			onItemSelectionListener.onIndexDeselected(index);
+		}
+	}
+
+	public void toggleIndex(int index)
+	{
+		checkIndexRange(index);
+		if(!isIndexSelected(index))
+		{
+			selectIndex(index);
+		}
+		else
+		{
+			deselectIndex(index);
+		}
+	}
+
+	private void checkIndexRange(int index)
+	{
+		if(index < 0 || index >= items.size())
+			throw new ArrayIndexOutOfBoundsException(index);
 	}
 
 	@Override public void onBindViewHolder(ImageSelectAdapter.ViewHolder holder, int position)
 	{
-		Item item = items.get(position);
+		ImageSelectAdapter.Item item = items.get(position);
 		holder.imageView.setImageResource(item.drawableId);
-		holder.itemView.setSelected(selectedIndex != -1 && position == selectedIndex);
+		holder.itemView.setSelected(isIndexSelected(position));
 		if(item.titleId > -1) holder.textView.setText(item.titleId);
 		else holder.textView.setText("");
 	}
@@ -79,12 +156,6 @@ public class ImageSelectAdapter extends RecyclerView.Adapter<ImageSelectAdapter.
 	{
 		if(items == null) return 0;
 		return items.size();
-	}
-
-	/** @return -1 if nothing selected, otherwise the index */
-	public int getSelectedIndex()
-	{
-		return selectedIndex;
 	}
 
 	class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
@@ -102,7 +173,7 @@ public class ImageSelectAdapter extends RecyclerView.Adapter<ImageSelectAdapter.
 
 		@Override public void onClick(View v)
 		{
-			setSelectedIndex(getAdapterPosition());
+			toggleIndex(getAdapterPosition());
 		}
 	}
 

@@ -175,12 +175,18 @@ public class CreateNoteUpload
 	private static String getAssociatedElementRegex(CreateNote n)
 	{
 		String elementType = n.elementType.name();
-		return "(?i:.*"+elementType+"\\s*#"+n.elementId+".*)";
+		// before 0.11 - i.e. "way #123"
+		String oldStyleRegex = elementType+"\\s*#"+n.elementId;
+		// i.e. www.openstreetmap.org/way/123
+		String newStyleRegex = "openstreetmap\\.org\\/"+elementType+"\\/"+n.elementId;
+		return ".*(("+oldStyleRegex+")|("+newStyleRegex+")).*";
 	}
 
 	static String getAssociatedElementString(CreateNote n)
 	{
 		if(!n.hasAssociatedElement()) return "";
-		return " (" + n.elementType.name().toLowerCase(Locale.UK) + " #" + n.elementId + " )";
+
+		String elementName = n.elementType.name().toLowerCase(Locale.UK);
+		return "\n\nhttps://www.openstreetmap.org/" + elementName + "/" + n.elementId;
 	}
 }

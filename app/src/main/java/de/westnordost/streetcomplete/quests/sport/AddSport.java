@@ -1,20 +1,22 @@
-package de.westnordost.streetcomplete.quests.bus_stop_shelter;
+package de.westnordost.streetcomplete.quests.sport;
 
 import android.os.Bundle;
+import android.text.TextUtils;
+
+import java.util.ArrayList;
 
 import javax.inject.Inject;
 
-import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.QuestImportance;
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
-import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment;
+import de.westnordost.streetcomplete.quests.roof_shape.AddRoofShapeForm;
 
-public class AddBusStopShelter extends SimpleOverpassQuestType
+public class AddSport extends SimpleOverpassQuestType
 {
-	@Inject public AddBusStopShelter(OverpassMapDataDao overpassServer)
+	@Inject public AddSport(OverpassMapDataDao overpassServer)
 	{
 		super(overpassServer);
 	}
@@ -22,30 +24,33 @@ public class AddBusStopShelter extends SimpleOverpassQuestType
 	@Override
 	protected String getTagFilters()
 	{
-		return "nodes with (public_transport=platform or (highway=bus_stop and public_transport!=stop_position)) and !shelter";
+		return "nodes, ways with leisure=pitch and (!sport or sport=team_handball or sport=hockey)";
 	}
 
 	@Override
 	public int importance()
 	{
-		return QuestImportance.MINOR;
+		return QuestImportance.MAJOR;
 	}
 
 	public AbstractQuestAnswerFragment createForm()
 	{
-		return new BusStopShelterForm();
+		return new AddSportForm();
 	}
 
 	public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
 	{
-		String yesno = answer.getBoolean(YesNoQuestAnswerFragment.ANSWER) ? "yes" : "no";
-		changes.add("shelter", yesno);
+		ArrayList<String> values = answer.getStringArrayList(AddRoofShapeForm.OSM_VALUES);
+		if(values != null && !values.isEmpty())
+		{
+			changes.add("sport", TextUtils.join(";", values));
+		}
 	}
 
 	@Override public String getCommitMessage()
 	{
-		return "Add bus stop shelter";
+		return "Add pitches sport";
 	}
 
-	@Override public String getIconName() {	return "bus_stop"; }
+	@Override public String getIconName() {	return "sport"; }
 }

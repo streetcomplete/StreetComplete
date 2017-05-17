@@ -6,8 +6,8 @@ import de.westnordost.streetcomplete.data.QuestGroup;
 
 public class QuestAnswerComponent
 {
-	private static final String QUEST_ID = "questId";
-	private static final String QUEST_GROUP = "questGroup";
+	private static final String ARG_QUEST_ID = "questId";
+	private static final String ARG_QUEST_GROUP = "questGroup";
 
 	private OsmQuestAnswerListener callbackListener;
 
@@ -17,8 +17,8 @@ public class QuestAnswerComponent
 	public static Bundle createArguments(long questId, QuestGroup group)
 	{
 		Bundle args = new Bundle();
-		args.putLong(QUEST_ID, questId);
-		args.putString(QUEST_GROUP, group.name());
+		args.putLong(ARG_QUEST_ID, questId);
+		args.putString(ARG_QUEST_GROUP, group.name());
 		return args;
 	}
 
@@ -29,15 +29,15 @@ public class QuestAnswerComponent
 
 	public void onCreate(Bundle arguments)
 	{
-		if(arguments == null || arguments.getLong(QUEST_ID, -1) == -1 ||
-				arguments.getString(QUEST_GROUP, null) == null)
+		if(arguments == null || arguments.getLong(ARG_QUEST_ID, -1) == -1 ||
+				arguments.getString(ARG_QUEST_GROUP, null) == null)
 		{
-			throw new IllegalStateException("Use QuestAnswerComponent.createArguments and pass the" +
+			throw new IllegalStateException("Use QuestAnswerComponent.createArguments and pass the " +
 					"created bundle as an argument.");
 		}
 
-		questId = arguments.getLong(QUEST_ID);
-		questGroup = QuestGroup.valueOf(arguments.getString(QUEST_GROUP));
+		questId = arguments.getLong(ARG_QUEST_ID);
+		questGroup = QuestGroup.valueOf(arguments.getString(ARG_QUEST_GROUP));
 	}
 
 	public void onAttach(OsmQuestAnswerListener listener)

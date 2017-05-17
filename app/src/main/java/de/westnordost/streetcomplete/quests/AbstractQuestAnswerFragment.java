@@ -35,7 +35,6 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 	public static final String ELEMENT = "element";
 
 	private String titleText;
-	private int titleTextResId = -1;
 
 	private TextView title;
 	private ViewGroup content;
@@ -202,7 +201,9 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 	protected final void onClickCantSay()
 	{
 		DialogFragment leaveNote = new LeaveNoteDialog();
-		leaveNote.setArguments(questAnswerComponent.getArguments());
+		Bundle leaveNoteArgs = questAnswerComponent.getArguments();
+		leaveNoteArgs.putString(LeaveNoteDialog.ARG_QUEST_TITLE, titleText);
+		leaveNote.setArguments(leaveNoteArgs);
 		leaveNote.show(getFragmentManager(), null);
 	}
 
@@ -244,24 +245,21 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 
 	public final void setTitle(int resourceId)
 	{
-		titleTextResId = resourceId;
-		titleText = null;
+		if(resourceId != -1) titleText = getResources().getString(resourceId);
 		updateTitle();
 	}
 
 	public final void setTitle(String string)
 	{
 		titleText = string;
-		titleTextResId = -1;
 		updateTitle();
 	}
 
 	private void updateTitle()
 	{
-		if(title != null)
+		if(title != null && titleText != null)
 		{
-			if(titleText != null) title.setText(titleText);
-			else if(titleTextResId != -1) title.setText(titleTextResId);
+			title.setText(titleText);
 		}
 	}
 
