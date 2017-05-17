@@ -94,7 +94,7 @@ dependencies {
     compile 'com.mapzen.android:lost:2.1.2'
 
     // config files
-    compile 'com.esotericsoftware.yamlbeans:yamlbeans:1.09'
+    compile 'com.esotericsoftware.yamlbeans:yamlbeans:1.11'
 
     compile 'com.google.guava:guava:20.0'
 
