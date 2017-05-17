@@ -1,1 +1,1 @@
-popular_sports: soccer, tennis, basketball, handball
+popularSports: [soccer, tennis, basketball, handball]

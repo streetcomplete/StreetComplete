@@ -1,2 +1,2 @@
-speed_unit: mph
-popular_sports: basketball, tennis, baseball
+speedUnit: mph
+popularSports: [basketball, tennis, baseball]

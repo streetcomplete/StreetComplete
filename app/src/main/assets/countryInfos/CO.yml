@@ -1,1 +1,1 @@
-popular_sports: soccer, tennis, basketball, baseball, volleyball
+popularSports: [soccer, tennis, basketball, baseball, volleyball]

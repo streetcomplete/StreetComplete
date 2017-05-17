@@ -1,2 +1,2 @@
-speed_unit: mph
-popular_sports: soccer, tennis, bowls, cricket, golf, basketball, rugby
+speedUnit: mph
+popularSports: [soccer, tennis, bowls, cricket, golf, basketball, rugby]

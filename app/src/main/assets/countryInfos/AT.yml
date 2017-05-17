@@ -1,1 +1,2 @@
-popular_sports: soccer, tennis, equestrian, beachvolleyball
+popularSports: [soccer, tennis, equestrian, beachvolleyball]
+regularShoppingDays: 5

@@ -1,1 +1,1 @@
-popular_sports: soccer, tennis, basketball, golf, paddle_tennis, pelota
+popularSports: [soccer, tennis, basketball, golf, paddle_tennis, pelota]

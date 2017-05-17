@@ -1,1 +1,1 @@
-popular_sports: cricket, soccer, tennis, field_hockey
+popularSports: [cricket, soccer, tennis, field_hockey]

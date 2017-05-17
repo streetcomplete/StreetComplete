@@ -1,5 +1,10 @@
-# kph or mph
-speed_unit: kph
-# sports that should be shown first before the normal order. The normal order starts with soccer,
-# tennis and basketball. So, only specify if other sports should be shown before these
-popular_sports:
+# km/h or mph
+speedUnit: km/h
+# sports that should be shown first before the order defined in the form
+popularSports: []
+# the first day in a workweek (not necessarily the first day of the week in a calendar)
+# Source: https://en.wikipedia.org/wiki/Workweek_and_weekend#Around_the_world (retrieved 27.10.2016)
+firstDayOfWorkweek: Mo
+# how many days shops usually have regular opening hours per week. Acording to
+# https://en.wikipedia.org/wiki/Shopping_hours the norm for shopping days is rather MO-SA (=6 days)
+regularShoppingDays: 6

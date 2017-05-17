@@ -1,1 +1,1 @@
-popular_sports: baseball, badminton, archery
+popularSports: [baseball, badminton, archery]

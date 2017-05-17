@@ -1,1 +1,1 @@
-popular_sports: soccer, tennis, basketball, boules, equestrian, rugby
+popularSports: [soccer, tennis, basketball, boules, equestrian, rugby]

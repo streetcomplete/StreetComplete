@@ -1,1 +1,1 @@
-popular_sports: soccer, tennis, equestrian, basketball, field_hockey
+popularSports: [soccer, tennis, equestrian, basketball, field_hockey]

@@ -1,1 +1,1 @@
-popular_sports: soccer, tennis, basketball, volleyball, badminton, sepak_takraw
+popularSports: [soccer, tennis, basketball, volleyball, badminton, sepak_takraw]

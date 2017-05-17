@@ -1,1 +1,2 @@
-popular_sports: tennis, golf
+popularSports: [tennis, golf]
+firstDayOfWorkweek: Su
