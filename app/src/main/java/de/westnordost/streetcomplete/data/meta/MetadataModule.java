@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.data.meta;
 
+import android.content.res.AssetManager;
+
 import java.io.InputStream;
 
 import javax.inject.Singleton;
@@ -15,5 +17,10 @@ public class MetadataModule
 	{
 		InputStream is = currentCountry.getResources().openRawResource(R.raw.abbreviations);
 		return new Abbreviations(is, currentCountry.getLocale());
+	}
+
+	@Provides @Singleton public static CountryInfos countryInfos(AssetManager assetManager)
+	{
+		return new CountryInfos(assetManager);
 	}
 }

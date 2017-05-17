@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete;
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.preference.PreferenceManager;
 
@@ -50,6 +51,11 @@ public class ApplicationModule
 	@Provides public SharedPreferences preferences()
 	{
 		return PreferenceManager.getDefaultSharedPreferences(application);
+	}
+
+	@Provides public AssetManager assetManager()
+	{
+		return application.getAssets();
 	}
 
 	@Provides public PerApplicationStartPrefs perApplicationStartPrefs()
