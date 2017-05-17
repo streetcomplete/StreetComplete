@@ -15,10 +15,14 @@ import de.westnordost.streetcomplete.R;
 
 public class LeaveNoteDialog extends DialogFragment
 {
+	public static final String ARG_QUEST_TITLE = "questTitle";
+
 	private EditText noteInput;
 	private Button buttonOk;
 
 	private QuestAnswerComponent questAnswerComponent;
+
+	private String questTitle;
 
 	public LeaveNoteDialog()
 	{
@@ -62,6 +66,7 @@ public class LeaveNoteDialog extends DialogFragment
 	{
 		super.onCreate(inState);
 		questAnswerComponent.onCreate(getArguments());
+		questTitle = getArguments().getString(ARG_QUEST_TITLE);
 	}
 
 	@Override
@@ -80,11 +85,23 @@ public class LeaveNoteDialog extends DialogFragment
 
 	private void onClickOk()
 	{
-		String noteText = noteInput.getText().toString().trim();
-		if(noteText.isEmpty())
+		String inputText = noteInput.getText().toString().trim();
+		if(inputText.isEmpty())
 		{
 			noteInput.setError(getResources().getString(R.string.quest_generic_error_field_empty));
 			return;
+		}
+
+		String noteText;
+		if(questTitle != null)
+		{
+			noteText = String.format(
+					getResources().getString(R.string.quest_leave_new_note_in_response_to),
+					questTitle, inputText);
+		}
+		else
+		{
+			noteText = inputText;
 		}
 
 		questAnswerComponent.onLeaveNote(noteText);
