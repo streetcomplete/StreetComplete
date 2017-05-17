@@ -36,6 +36,11 @@ public class Weekdays
 		return result;
 	}
 
+	public static int getWeekdayIndex(String name)
+	{
+		return Arrays.asList(OSM_ABBR_WEEKDAYS).indexOf(name);
+	}
+
 	private static String[] toIso8601Order(String[] javaCalendarOrder)
 	{
 		String[] result = new String[7];

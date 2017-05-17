@@ -67,7 +67,7 @@ public class CurrentCountry
 	{
 		// always fall back to default locale if the current country cannot be found
 		Locale locale = Locale.getDefault();
-		String countryCode = findCurrentCountry();
+		String countryCode = getCountry();
 
 		if(countryCode != null)
 		{
@@ -92,7 +92,7 @@ public class CurrentCountry
 	}
 
 	/** Find the country the user is in currently. Returns null if the country cannot be determined */
-	private String findCurrentCountry()
+	public String getCountry()
 	{
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(applicationContext);
 		String lastCountry = prefs.getString(Prefs.CURRENT_COUNTRY, null);

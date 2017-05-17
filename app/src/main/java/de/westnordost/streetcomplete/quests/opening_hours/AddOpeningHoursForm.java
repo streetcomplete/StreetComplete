@@ -19,6 +19,7 @@ import javax.inject.Inject;
 
 import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.R;
+import de.westnordost.streetcomplete.data.meta.CountryInfos;
 import de.westnordost.streetcomplete.data.meta.CurrentCountry;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 import de.westnordost.osmapi.map.data.OsmElement;
@@ -40,6 +41,7 @@ public class AddOpeningHoursForm extends AbstractQuestFormAnswerFragment
 
 	@Inject Serializer serializer;
 	@Inject CurrentCountry currentCountry;
+	@Inject CountryInfos countryInfos;
 
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState)
@@ -65,7 +67,7 @@ public class AddOpeningHoursForm extends AbstractQuestFormAnswerFragment
 			isAlsoAddingMonths = false;
 		}
 
-		openingHoursAdapter = new AddOpeningHoursAdapter(data, getActivity(), currentCountry);
+		openingHoursAdapter = new AddOpeningHoursAdapter(data, getActivity(), countryInfos.get(currentCountry.getCountry()));
 		openingHoursAdapter.setDisplayMonths(isAlsoAddingMonths);
 		RecyclerView openingHoursList = (RecyclerView) contentView.findViewById(R.id.opening_hours_list);
 		openingHoursList.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));

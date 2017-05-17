@@ -15,11 +15,9 @@ import android.widget.TextView;
 import java.text.DateFormatSymbols;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 import de.westnordost.streetcomplete.R;
-import de.westnordost.streetcomplete.data.meta.CurrentCountry;
-import de.westnordost.streetcomplete.data.meta.WorkWeek;
+import de.westnordost.streetcomplete.data.meta.CountryInfo;
 import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 import de.westnordost.streetcomplete.view.dialogs.RangePickerDialog;
 
@@ -29,14 +27,14 @@ public class AddOpeningHoursAdapter extends RecyclerView.Adapter
 
 	private ArrayList<OpeningMonths> data;
 	private final Context context;
-	private final CurrentCountry currentCountry;
+	private final CountryInfo countryInfo;
 	private boolean displayMonths = false;
 
-	public AddOpeningHoursAdapter(ArrayList<OpeningMonths> data, Context context, CurrentCountry currentCountry)
+	public AddOpeningHoursAdapter(ArrayList<OpeningMonths> data, Context context, CountryInfo countryInfo)
 	{
 		this.data = data;
 		this.context = context;
-		this.currentCountry = currentCountry;
+		this.countryInfo = countryInfo;
 	}
 
 	public String toString()
@@ -380,11 +378,9 @@ public class AddOpeningHoursAdapter extends RecyclerView.Adapter
 	{
 		if(isFirst)
 		{
-			Locale locale = currentCountry.getLocale();
-
-			int firstWorkDayIdx = modulus(WorkWeek.getFirstDay(locale) - 2,7);
+			int firstWorkDayIdx = Weekdays.getWeekdayIndex(countryInfo.getFirstDayOfWorkweek());
 			boolean[] result = new boolean[7];
-			for(int i = 0; i < WorkWeek.getRegularShoppingDays(locale); ++i)
+			for(int i = 0; i < countryInfo.getRegularShoppingDays(); ++i)
 			{
 				result[(i + firstWorkDayIdx) % 7] = true;
 			}
