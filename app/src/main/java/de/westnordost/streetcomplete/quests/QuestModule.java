@@ -13,6 +13,7 @@ import de.westnordost.streetcomplete.quests.bike_parking_capacity.AddBikeParking
 import de.westnordost.streetcomplete.quests.building_levels.AddBuildingLevels;
 import de.westnordost.streetcomplete.quests.bus_stop_shelter.AddBusStopShelter;
 import de.westnordost.streetcomplete.quests.housenumber.AddHousenumber;
+import de.westnordost.streetcomplete.quests.max_speed.AddMaxSpeed;
 import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHours;
 import de.westnordost.streetcomplete.quests.road_name.AddRoadName;
 import de.westnordost.streetcomplete.quests.road_surface.AddRoadSurface;
@@ -34,7 +35,8 @@ public class QuestModule
 				new AddBusStopShelter(o),
 				new AddHousenumber(o),
 				new AddBikeParkingCapacity(o),
-				new AddSport(o)
+				new AddSport(o),
+				new AddMaxSpeed(o),
 		};
 
 		return new QuestTypes(Arrays.asList(questTypes));

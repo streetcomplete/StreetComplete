@@ -22,7 +22,6 @@
             android:gravity="center"
             android:textStyle="bold"
             android:textSize="48dp"
-            android:text="140"
             android:background="#00ffffff"/>
 
         <Spinner

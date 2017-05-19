@@ -30,7 +30,6 @@
             android:background="#00ffffff"
             android:inputType="number"
             android:gravity="center"
-            android:text="85"
             android:textStyle="bold"
             android:textSize="48dp"/>
 
@@ -38,8 +37,7 @@
             android:id="@+id/unitSpinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:spinnerMode="dropdown"
-            android:text="asdf"/>
+            android:spinnerMode="dropdown"/>
 
     </LinearLayout>
 </LinearLayout>

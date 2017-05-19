@@ -31,15 +31,13 @@
             android:inputType="number"
             android:gravity="center"
             android:textStyle="bold"
-            android:text="85"
             android:textSize="48dp"/>
 
         <Spinner
             android:id="@+id/unitSpinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:spinnerMode="dropdown"
-            android:text="asdf"/>
+            android:spinnerMode="dropdown"/>
 
     </LinearLayout>
 </LinearLayout>
