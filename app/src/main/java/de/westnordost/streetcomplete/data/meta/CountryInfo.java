@@ -6,7 +6,7 @@ import java.util.List;
 
 public class CountryInfo implements Serializable
 {
-	private static final long serialVersionUID = 1L;
+	public static final long serialVersionUID = 1L;
 
 	String speedUnit;
 	List<String> popularSports;
