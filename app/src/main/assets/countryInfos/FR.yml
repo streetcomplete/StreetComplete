@@ -1,1 +1,2 @@
 popularSports: [soccer, tennis, basketball, boules, equestrian, rugby]
+additionalValidHousenumberRegex: \p{N}{1,4}\sbis

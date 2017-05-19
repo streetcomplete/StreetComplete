@@ -1,15 +1,19 @@
 package de.westnordost.streetcomplete.data.meta;
 
+import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
 
-public class CountryInfo
+public class CountryInfo implements Serializable
 {
+	private static final long serialVersionUID = 1L;
+
 	String speedUnit;
 	List<String> popularSports;
 	String firstDayOfWorkweek;
 	Integer regularShoppingDays;
 	String maxspeedLayout;
+	String additionalValidHousenumberRegex;
 
 	public String getSpeedUnit()
 	{
@@ -34,5 +38,10 @@ public class CountryInfo
 	public String getMaxspeedLayout()
 	{
 		return maxspeedLayout;
+	}
+
+	public String getAdditionalValidHousenumberRegex()
+	{
+		return additionalValidHousenumberRegex;
 	}
 }

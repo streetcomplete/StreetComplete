@@ -15,7 +15,6 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
@@ -44,7 +43,6 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import de.westnordost.osmapi.common.errors.OsmAuthorizationException;
 import de.westnordost.osmapi.common.errors.OsmConnectionException;
 import de.westnordost.streetcomplete.about.AboutActivity;
 import de.westnordost.streetcomplete.data.Quest;
@@ -55,6 +53,8 @@ import de.westnordost.streetcomplete.data.download.QuestDownloadProgressListener
 import de.westnordost.streetcomplete.data.download.QuestDownloadService;
 import de.westnordost.streetcomplete.data.QuestGroup;
 import de.westnordost.streetcomplete.data.VisibleQuestListener;
+import de.westnordost.streetcomplete.data.meta.CountryInfos;
+import de.westnordost.streetcomplete.data.meta.CurrentCountry;
 import de.westnordost.streetcomplete.location.LocationRequestFragment;
 import de.westnordost.streetcomplete.location.LocationUtil;
 import de.westnordost.streetcomplete.location.SingleLocationRequest;
@@ -98,6 +98,9 @@ public class MainActivity extends AppCompatActivity implements
 	@Inject SharedPreferences prefs;
 	@Inject PerApplicationStartPrefs perApplicationStartPrefs;
 	@Inject OAuthComponent oAuthComponent;
+
+	@Inject CountryInfos countryInfos;
+	@Inject CurrentCountry currentCountry;
 
 	private QuestsMapFragment mapFragment;
 	private LocationStateButton trackingButton;
@@ -733,8 +736,10 @@ public class MainActivity extends AppCompatActivity implements
 		Bundle args = QuestAnswerComponent.createArguments(quest.getId(), group);
 		if (group == QuestGroup.OSM)
 		{
-			args.putSerializable(AbstractQuestAnswerFragment.ELEMENT, (OsmElement) element);
+			args.putSerializable(AbstractQuestAnswerFragment.ARG_ELEMENT, (OsmElement) element);
 		}
+		args.putSerializable(AbstractQuestAnswerFragment.ARG_COUNTRY_INFO,
+				countryInfos.get(currentCountry.getCountry()));
 		f.setArguments(args);
 
 		android.app.FragmentTransaction ft = getFragmentManager().beginTransaction();

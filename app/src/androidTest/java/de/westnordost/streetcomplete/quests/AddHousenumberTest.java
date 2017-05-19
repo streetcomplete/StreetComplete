@@ -13,6 +13,26 @@ public class AddHousenumberTest extends AOsmElementQuestTypeTest
 		tags.put("building","house");
 	}
 
+	public void testRegex()
+	{
+		String r = AddHousenumberForm.VALID_HOUSENUMBER_REGEX;
+		assertTrue("1".matches(r));
+		assertTrue("1234".matches(r));
+
+		assertTrue("1234a".matches(r));
+		assertTrue("1234/a".matches(r));
+		assertTrue("1234 / a".matches(r));
+		assertTrue("1234 / A".matches(r));
+		assertTrue("1234A".matches(r));
+		assertTrue("1234/9".matches(r));
+		assertTrue("1234 / 9".matches(r));
+
+		assertFalse("12345".matches(r));
+		assertFalse("1234 5".matches(r));
+		assertFalse("1234/55".matches(r));
+		assertFalse("1234AB".matches(r));
+	}
+
 	public void testNoName()
 	{
 		bundle.putString(AddHousenumberForm.HOUSENUMBER, "99b");

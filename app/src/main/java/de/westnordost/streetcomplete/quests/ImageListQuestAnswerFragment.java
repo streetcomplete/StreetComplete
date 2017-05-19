@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -30,6 +31,7 @@ public abstract class ImageListQuestAnswerFragment extends AbstractQuestFormAnsw
 
 	protected ImageSelectAdapter imageSelector;
     private Button showMoreButton;
+	private RecyclerView valueList;
 
 	private int maxInitiallyShownItems;
 
@@ -40,7 +42,7 @@ public abstract class ImageListQuestAnswerFragment extends AbstractQuestFormAnsw
 
         View contentView = setContentView(R.layout.quest_generic_list);
 
-		RecyclerView valueList = (RecyclerView) contentView.findViewById(R.id.listSelect);
+		valueList = (RecyclerView) contentView.findViewById(R.id.listSelect);
         GridLayoutManager lm = new GridLayoutManager(getActivity(), 4);
         valueList.setLayoutManager(lm);
 		valueList.setNestedScrollingEnabled(false);
@@ -61,6 +63,15 @@ public abstract class ImageListQuestAnswerFragment extends AbstractQuestFormAnsw
 		selectHint.setText(selectableItems == 1 ? R.string.quest_roofShape_select_one : R.string.quest_select_hint);
 
 		imageSelector = new ImageSelectAdapter(selectableItems);
+
+        return view;
+    }
+
+
+	@Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState)
+	{
+		super.onViewCreated(view, savedInstanceState);
+
 		int initiallyShow = getMaxNumberOfInitiallyShownItems();
 		if(savedInstanceState != null)
 		{
@@ -75,12 +86,9 @@ public abstract class ImageListQuestAnswerFragment extends AbstractQuestFormAnsw
 			showInitialItems(initiallyShow);
 		}
 		valueList.setAdapter(imageSelector);
+	}
 
-        return view;
-    }
-
-
-    /** return -1 for any number*/
+	/** return -1 for any number*/
     protected abstract int getMaxSelectableItems();
 	/** return -1 for showing all items at once */
 	protected abstract int getMaxNumberOfInitiallyShownItems();

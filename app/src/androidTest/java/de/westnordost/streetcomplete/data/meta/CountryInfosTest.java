@@ -11,7 +11,6 @@ import de.westnordost.streetcomplete.quests.opening_hours.Weekdays;
 
 public class CountryInfosTest extends AndroidTestCase
 {
-
 	private void checkFirstDayOfWorkweekIsValid(CountryInfo info)
 	{
 		assertNotNull(info.getFirstDayOfWorkweek());
@@ -24,18 +23,27 @@ public class CountryInfosTest extends AndroidTestCase
 		assertTrue(info.getSpeedUnit().equals("mph") || info.getSpeedUnit().equals("km/h"));
 	}
 
-	private void checkAll(CountryInfo info)
+	private void checkAdditionalValidHousenumberRegexes(Map<String, CountryInfo> infos)
+	{
+		assertTrue("99 bis".matches(infos.get("FR").getAdditionalValidHousenumberRegex()));
+		assertTrue("ev.99".matches(infos.get("CZ").getAdditionalValidHousenumberRegex()));
+		assertTrue("s/n".matches(infos.get("ES").getAdditionalValidHousenumberRegex()));
+	}
+
+	private void checkForEach(CountryInfo info)
 	{
 		checkFirstDayOfWorkweekIsValid(info);
+		checkSpeedUnitIsEitherKmhOrMph(info);
 	}
 
 	public void testAll() throws IOException
 	{
-		for(Map.Entry<String,CountryInfo> elem : getAllCountryInfos().entrySet())
+		Map<String, CountryInfo> infos = getAllCountryInfos();
+		for(Map.Entry<String,CountryInfo> elem : infos.entrySet())
 		{
 			try
 			{
-				checkAll(elem.getValue());
+				checkForEach(elem.getValue());
 
 			}
 			catch (Throwable e)
@@ -43,6 +51,8 @@ public class CountryInfosTest extends AndroidTestCase
 				throw new RuntimeException("Error for "+ elem.getKey(), e);
 			}
 		}
+
+		checkAdditionalValidHousenumberRegexes(infos);
 	}
 
 	private interface EachCountryInfo

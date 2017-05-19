@@ -27,12 +27,13 @@ import java.util.List;
 import de.westnordost.osmapi.map.data.OsmElement;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.QuestGroup;
+import de.westnordost.streetcomplete.data.meta.CountryInfo;
 import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 
 /** Abstract base class for any dialog with which the user answers a specific quest(ion) */
 public abstract class AbstractQuestAnswerFragment extends Fragment
 {
-	public static final String ELEMENT = "element";
+	public static final String ARG_ELEMENT = "element", ARG_COUNTRY_INFO = "countryInfo";
 
 	private String titleText;
 
@@ -48,6 +49,9 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 
 	private ImageButton buttonClose;
 
+	private CountryInfo countryInfo;
+	private OsmElement osmElement;
+
 	public AbstractQuestAnswerFragment()
 	{
 		super();
@@ -59,6 +63,9 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState)
 	{
+		osmElement = (OsmElement) getArguments().getSerializable(ARG_ELEMENT);
+		countryInfo = (CountryInfo) getArguments().getSerializable(ARG_COUNTRY_INFO);
+
 		View view = inflater.inflate(R.layout.quest_answer_fragment, container, false);
 
 		bottomSheet = (LinearLayout) view.findViewById(R.id.bottomSheet);
@@ -287,6 +294,11 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 
 	protected final OsmElement getOsmElement()
 	{
-		return (OsmElement) getArguments().getSerializable(AbstractQuestAnswerFragment.ELEMENT);
+		return osmElement;
+	}
+
+	protected final CountryInfo getCountryInfo()
+	{
+		return countryInfo;
 	}
 }

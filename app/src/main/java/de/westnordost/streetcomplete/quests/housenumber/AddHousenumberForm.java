@@ -21,13 +21,16 @@ public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 {
 	public static final String HOUSENUMBER = "housenumber";
 
+	// i.e. 9999/a, 9/a, 99/9, 99a, 99 a, 9 / a
+	public static final String VALID_HOUSENUMBER_REGEX =
+			"\\p{N}{1,4}((\\s?/\\s?\\p{N})|(\\s?/?\\s?\\p{L}))?";
+
 	private EditText input;
 
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
 									   Bundle savedInstanceState)
 	{
 		View view = super.onCreateView(inflater, container, savedInstanceState);
-
 		setTitle(R.string.quest_address_title);
 
 		View contentView = setContentView(R.layout.quest_housenumber);
@@ -82,8 +85,12 @@ public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 			return;
 		}
 
-		// i.e. 9999/a, 9/a, 99/9, 99a
-		String regexNum = "\\p{N}{1,4}((/[\\p{N}\\p{L}])|(/?\\p{L}))?";
+		String regexNum = VALID_HOUSENUMBER_REGEX;
+		String additionalRegex = getCountryInfo().getAdditionalValidHousenumberRegex();
+		if(additionalRegex != null)
+		{
+			regexNum = "((" + regexNum + ")|("+additionalRegex+"))";
+		}
 		// i.e. 95-98 etc.
 		String completeRegex = "^" + regexNum + "(-" + regexNum + ")?";
 
