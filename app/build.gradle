@@ -71,17 +71,17 @@ dependencies {
     apt 'com.google.dagger:dagger-compiler:2.5'
 
     // Android stuff
-    compile 'com.android.support:appcompat-v7:25.2.0'
-    compile 'com.android.support:support-v13:25.2.0'
-    compile 'com.android.support:support-v4:25.2.0'
-    compile 'com.android.support:design:25.2.0'
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support:support-v13:25.3.1'
+    compile 'com.android.support:support-v4:25.3.1'
+    compile 'com.android.support:design:25.3.1'
 
     // geometry
     compile 'com.vividsolutions:jts:1.13'
 
     // talking with OSM Api
     compile 'oauth.signpost:signpost-core:1.2.1.2'
-    compile ('de.westnordost:osmapi:1.6') {
+    compile ('de.westnordost:osmapi:1.7') {
         // it's already included in Android
         exclude group: 'net.sf.kxml', module: 'kxml2'
     }
@@ -90,7 +90,7 @@ dependencies {
     compile 'com.esotericsoftware:kryo:4.0.0'
 
     // map and location
-    compile 'com.mapzen.tangram:tangram:0.6.2'
+    compile 'com.mapzen.tangram:tangram:0.6.3'
     compile 'com.mapzen.android:lost:2.1.2'
 
     // config files
