@@ -7,6 +7,7 @@ import android.util.LongSparseArray;
 import junit.framework.TestCase;
 
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -154,7 +155,7 @@ public class OverpassMapDataParserTest extends TestCase
 		assertEquals("d", element.getTags().get("c"));
 	}
 
-	public void testParseSeveral()
+	public void testParseSeveral() throws IOException
 	{
 		String xml =
 				"<node id='1' version='1' lat='1' lon='4'/>\n" +
@@ -186,7 +187,15 @@ public class OverpassMapDataParserTest extends TestCase
 		OverpassMapDataParser parser = new OverpassMapDataParser(
 				new TestElementGeometryCreator(expectedGeometry), new OsmMapDataFactory());
 		parser.setHandler(handler);
-		parser.parse(asInputStream(xml));
+		try
+		{
+			parser.parse(asInputStream(xml));
+		}
+		catch (IOException e)
+		{
+			throw new RuntimeException(e);
+		}
+
 		return handler.element;
 	}
 

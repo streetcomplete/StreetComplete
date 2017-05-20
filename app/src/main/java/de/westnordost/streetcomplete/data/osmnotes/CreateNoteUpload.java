@@ -156,8 +156,8 @@ public class CreateNoteUpload
 				if(newNote.hasAssociatedElement())
 				{
 					String firstCommentText = oldNote.comments.get(0).text;
-
-					if(firstCommentText.matches(getAssociatedElementRegex(newNote)))
+					String newNoteRegex = getAssociatedElementRegex(newNote);
+					if(firstCommentText.matches(newNoteRegex))
 					{
 						super.handle(oldNote);
 					}
@@ -179,7 +179,8 @@ public class CreateNoteUpload
 		String oldStyleRegex = elementType+"\\s*#"+n.elementId;
 		// i.e. www.openstreetmap.org/way/123
 		String newStyleRegex = "openstreetmap\\.org\\/"+elementType+"\\/"+n.elementId;
-		return ".*(("+oldStyleRegex+")|("+newStyleRegex+")).*";
+		// i: turns on case insensitive regex, s: newlines are also captured with "."
+		return "(?is).*(("+oldStyleRegex+")|("+newStyleRegex+")).*";
 	}
 
 	static String getAssociatedElementString(CreateNote n)
