@@ -64,7 +64,7 @@ public class ElementGeometry
 				return JTSConst.toLatLon(lil.extractPoint(geom.getLength() / 2.0));
 			}
 		}
-		catch (IllegalArgumentException e)
+		catch (Exception e)
 		{
 			// unable to create proper geometry...
 			return null;
