@@ -77,7 +77,7 @@ dependencies {
     compile 'com.android.support:design:25.2.0'
 
     // geometry
-    compile 'com.vividsolutions:jts:1.13'
+    compile 'com.vividsolutions:jts-core:1.14.0'
 
     // talking with OSM Api
     compile 'oauth.signpost:signpost-core:1.2.1.2'
