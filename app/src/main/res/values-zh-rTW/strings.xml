@@ -107,7 +107,7 @@
     <string name="quest_openingHours_comment_description">"理想中，在標示上的文字都是言簡意賅的，像是\"預約\"。不存在的標示並不需要代表這裡沒有規律的營業時間。"</string>
     <string name="quest_buildingLevels_title">"此棟建築物有多少層樓？"</string>
     <string name="quest_buildingLevels_title_buildingPart">"此建築物的一部份中有多少層樓？"</string>
-    <string name="quest_buildingLevels_levelsLabel">"總層數"</string>
+    <string name="quest_buildingLevels_levelsLabel">"總樓層數"</string>
     <string name="quest_buildingLevels_roofLevelsLabel">"之中，屋頂內的樓層"</string>
     <string name="quest_roofShape_title">"此棟建築物的屋頂形狀是？"</string>
     <string name="quest_roofShape_select_one">"選擇一個："</string>
@@ -216,4 +216,16 @@
     <string name="quest_name_noName_confirmation_positive">"是，沒有名稱"</string>
     <string name="quest_buildingLevels_negativeBuildingLevels">"呃！ 你描述了比總樓層還多的天花板！"</string>
     <string name="quest_openingHours_add_times">"新增營業時間"</string>
+    <string name="crash_message">"能否請你寄錯誤報告給開發者嗎？"</string>
+    <string name="crash_title">"天啊，上次 StreetComplete 出錯了！"</string>
+    <string name="crash_compose_email">"撰寫 Email"</string>
+    <string name="no_email_client">"你沒有安裝 email 軟體。"</string>
+    <string name="pref_title_keep_screen_on">"保持螢幕開啟狀態"</string>
+    <string name="download_server_error">"搜尋任務時出現連線問題，請稍後再試。"</string>
+    <string name="upload_server_error">"上傳回答時出現連線問題，請稍後再試。"</string>
+    <string name="quest_generic_hasFeature_yes">"有"</string>
+    <string name="quest_generic_hasFeature_no">"沒有"</string>
+    <string name="quest_busStopShelter_title">"這個站牌有遮蔭嗎？"</string>
+    <string name="quest_bikeParkingCapacity_title">"這裡可以停幾量單車？"</string>
+    <string name="quest_address_unusualHousenumber_confirmation_description">"門牌號碼看起來怪怪的。"</string>
 </resources>

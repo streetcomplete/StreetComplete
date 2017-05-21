@@ -231,4 +231,6 @@ Informationerne du skriver sendes direkte til OpenStreetMap i dit navn, uden du 
     <string name="crash_title">"Åh nej, StreetComplete crashede sidste gang!"</string>
     <string name="crash_compose_email">"Skriv email"</string>
     <string name="no_email_client">"Du har ingen email klient indstalleret."</string>
+    <string name="quest_generic_hasFeature_yes">"Ja"</string>
+    <string name="quest_generic_hasFeature_no">"Nej"</string>
 </resources>

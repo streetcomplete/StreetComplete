@@ -226,4 +226,6 @@ La información que introduces se añade directamente a OpenStreetMap con tu nom
     <string name="quest_generic_hasFeature_yes">"Sí"</string>
     <string name="quest_generic_hasFeature_no">"No"</string>
     <string name="quest_busStopShelter_title">"¿Está cubierta esta parada de autobús?"</string>
+    <string name="quest_bikeParkingCapacity_title">"¿Cuantas bicicletas pueden estacionarse aquí?"</string>
+    <string name="quest_address_unusualHousenumber_confirmation_description">"El número de ésta casa se ve muy inusual"</string>
 </resources>
