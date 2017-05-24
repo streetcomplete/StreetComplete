@@ -254,7 +254,7 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="upload_server_error">"Connection error while uploading answers. Try again later."</string>
     <string name="quest_generic_hasFeature_yes">"Yes"</string>
     <string name="quest_generic_hasFeature_no">"No"</string>
-    <string name="quest_busStopShelter_title">"Does this bus stop have a shelter?"</string>
+    <string name="quest_busStopShelter_title">"Does this bus stop has a shelter?"</string>
     <string name="quest_bikeParkingCapacity_title">"How many bikes can be parked here?"</string>
     <string name="quest_address_unusualHousenumber_confirmation_description">"This housenumber looks very unusual."</string>
     <string name="quest_select_hint">Select:</string>
@@ -262,6 +262,6 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="quest_manySports_confirmation_specific">Specifically these</string>
     <string name="quest_manySports_confirmation_generic">General Purpose</string>
     <string name="quest_sport_manySports_confirmation_title">You selected many sports</string>
-    <string name="quest_busStopShelter_name_title">Does the bus stop %s have a shelter?</string>
+    <string name="quest_busStopShelter_name_title">Does the bus stop %s has a shelter?</string>
     <string name="quest_leave_new_note_in_response_to">In reply to \"%1$s\":\n%2$s</string>
 </resources>
