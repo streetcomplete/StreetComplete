@@ -5092,17 +5092,18 @@ layers:
                 kind: [bus_stop]
             draw:
                 icons:
-                    size: 14px
+                    visible: true
+                    size: 20px
                     text:
                         font:
                             size: 11px
                             weight: normal
             later:
-                filter: { $zoom: { max: 19 } }
+                filter: { $zoom: { min: 19 } }
                 draw:
                     icons:
                         text:
-                            visible: false
+                            visible: true
 
         airport-gate:
             filter: { kind: aeroway_gate }
