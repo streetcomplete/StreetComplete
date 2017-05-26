@@ -3573,17 +3573,17 @@ layers:
                         fill: global.text_fill
                         family: global.text_font_family
                         style: italic
-                        size: 11px
-                        stroke: { color: global.text_stroke_address, width: 1 }
+                        size: 10px
+                        stroke: { color: global.building1, width: 4 }
             building_labels-z15-z16-z17:
                 filter: { $zoom: [15,16,17] }
                 draw: { text-blend-order: { font: { size: 12px, stroke: { width: 2 } } } }
             building_labels-z18:
                 filter: { $zoom: [18,19] }
-                draw: { text-blend-order: { font: { size: 10px, weight: 600, stroke: { width: 3 } } } }
+                draw: { text-blend-order: { font: { size: 10px, weight: 500, stroke: { width: 1 } } } }
             building_labels-z20-up:
                 filter: { $zoom: { min: 20 } }
-                draw: { text-blend-order: { font: { size: 14px, weight: 600, stroke: { width: 3 }  } } }
+                draw: { text-blend-order: { font: { size: 14px, weight: 500, stroke: { width: 1 }  } } }
             building-labels-z16:
                 filter: function() { if( $zoom == 16 && feature.name.length > 20 ) { return true; } else { return false; } }
                 draw:
