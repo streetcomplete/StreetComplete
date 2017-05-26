@@ -3607,7 +3607,7 @@ layers:
             filter:
                 all:
                     - function() { return global.text_visible_address; }
-                    - $zoom: { min: 20 }
+                    - $zoom: { min: 18 }
                 any:
                     - kind: address
                     - { label_position: true, addr_housenumber: true, name: false }
@@ -3617,7 +3617,7 @@ layers:
                     order: 7
                     text_source: addr_housenumber
                     font:
-                        fill: global.text_fill_address
+                        fill: global.text_fill
                         family: global.text_font_family
                         style: italic
                         size: 10px
