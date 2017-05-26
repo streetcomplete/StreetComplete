@@ -3563,9 +3563,9 @@ layers:
                     - { $zoom: [17], area: { min: 2000 }, kind_detail: [university, college, school, kindergarten] }
                     - { $zoom: [18], area: { min: 1000 } }
                     - { $zoom: [18], kind_detail: [university, college, school, kindergarten] }
-                    - { $zoom: [19], area: { min: 200 } }
-                    - { $zoom: { min: 19 }, kind_detail: [university, college, school, kindergarten] }
-                    - { $zoom: { min: 20 }, area: true }
+                    - { $zoom: [18], area: { min: 200 } }
+                    - { $zoom: { min: 18 }, kind_detail: [university, college, school, kindergarten] }
+                    - { $zoom: { min: 18 }, area: true }
             draw:
                 text-blend-order:
                     #interactive: global.sdk_interactive
@@ -3584,7 +3584,7 @@ layers:
                 draw: { text-blend-order: { font: { size: 12px, stroke: { width: 2 } } } }
             building_labels-z18:
                 filter: { $zoom: [18,19] }
-                draw: { text-blend-order: { font: { size: 12px, weight: 600, stroke: { width: 3 } } } }
+                draw: { text-blend-order: { font: { size: 10px, weight: 600, stroke: { width: 3 } } } }
             building_labels-z20-up:
                 filter: { $zoom: { min: 20 } }
                 draw: { text-blend-order: { font: { size: 14px, weight: 600, stroke: { width: 3 }  } } }
@@ -3598,8 +3598,8 @@ layers:
                 draw:
                     text-blend-order:
                         visible: false
-            building-labels-z20+:
-                filter: { $zoom: { min: 20 } }
+            building-labels-z18+:
+                filter: { $zoom: { min: 18 } }
                 draw:
                     text-blend-order:
                         text_source: global.ux_language_text_source_building_and_address
