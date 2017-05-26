@@ -130,11 +130,7 @@ global:
     ux_language_text_source_building_and_address: |
         function() {
             var name = (global.ux_language && feature['name:'+global.ux_language]) || (global.ux_language_fallback && feature['name:'+global.ux_language_fallback]) || feature['name'];
-            if (name && feature.addr_housenumber) {
-                return name + '\n' + feature.addr_housenumber;
-            } else {
-                return name;
-            }
+            return name;
         }
 
     # To facilitate data visualizations several recommended sort orders are provided
