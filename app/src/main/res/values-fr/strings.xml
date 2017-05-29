@@ -167,7 +167,7 @@ Pour afficher la carte, les tuiles vectorielles sont extraites du &lt;a href=\"h
     <!-- "sur wifi" or "en wifi" ? -->
     <string name="autosync_only_on_wifi">"Seulement en Wifi"</string>
     <string name="autosync_off">"Désactivé"</string>
-    <string name="quest_streetSurface_title">"Quel type de revêtement la rue a-t-elle ?"</string>
+    <string name="quest_streetSurface_title">"Quel est le revêtement de cette rue ?"</string>
     <string name="quest_surface_description">"Sélectionner celui qui correspond le plus :"</string>
     <string name="quest_surface_value_paved">"Pavé (générique)"</string>
     <string name="quest_surface_value_unpaved">"Non pavé (générique)"</string>
@@ -210,10 +210,10 @@ Pour afficher la carte, les tuiles vectorielles sont extraites du &lt;a href=\"h
     <string name="quest_maxspeed_answer_noSign_rural">"Hors de la ville : la limite à %1$s s'applique."</string>
     <string name="quest_maxspeed_answer_noSign_implicitOk">"C'est suffisant"</string>
     <string name="quest_maxspeed_answer_variable">"Un panneau électronique affiche des limites de vitesse variables"</string>
-    <string name="quest_cyclewaySurface_title">"Quel type de revêtement la piste cyclable a-t-elle ?"</string>
+    <string name="quest_cyclewaySurface_title">"Quel est le revêtement de cette piste cyclable ?"</string>
     <string name="quest_cycleway_title">"Est-ce qu'il y a une piste cyclable sur cette rue ?"</string>
-    <string name="quest_buildingType_title">"Quel type d'édifice est-ce ?"</string>
-    <string name="quest_serviceType_title">"Quel type de rue de service est-ce ?"</string>
+    <string name="quest_buildingType_title">"Quel est le type de cet édifice ?"</string>
+    <string name="quest_serviceType_title">"Quel est le type de cette rue de service ?"</string>
     <string name="quest_streetLanes_title">"Combien de voies cette rue a-t-elle ?"</string>
     <string name="quest_streetLanes_description">"S'il n'y a pas de marques routières, il n'y a pas de voie."</string>
     <string name="quest_streetLanes_north">"Direction nord"</string>
@@ -242,8 +242,8 @@ L'information que vous entrez est directement ajoutée à OpenStreetMap sous vot
     <string name="crash_compose_email">"Écrire un e-mail"</string>
     <string name="no_email_client">"Vous n'avez pas de client mail installé."</string>
     <string name="pref_title_keep_screen_on">"Conserver l'écran allumé"</string>
-    <string name="download_server_error">"Erreur de connexion lors de la recherche de quêtes. Essayez plus tard."</string>
-    <string name="upload_server_error">"Erreur de connexion lors de l'envoi des réponses. Essayez plus tard."</string>
+<string name="download_server_error">"Erreur de connexion lors de la recherche de quêtes. Réessayez plus tard."</string>
+<string name="upload_server_error">"Erreur de connexion lors de l'envoi des réponses. Réessayez plus tard."</string>
     <string name="quest_generic_hasFeature_yes">"Oui"</string>
     <string name="quest_generic_hasFeature_no">"Non"</string>
     <string name="quest_busStopShelter_title">"Y a t-il un abri à cet arrêt de bus ?"</string>
@@ -282,4 +282,6 @@ L'information que vous entrez est directement ajoutée à OpenStreetMap sous vot
     <string name="quest_manySports_confirmation_specific">"Ces jeux en particulier"</string>
     <string name="quest_manySports_confirmation_generic">"Tous types de sports"</string>
     <string name="quest_sport_manySports_confirmation_title">"Vous avez sélectionné plusieurs sports"</string>
+    <string name="quest_busStopShelter_name_title">"L'arrêt de bus %s est-il abrité ?"</string>
+    <string name="quest_leave_new_note_in_response_to">"En réponse à \"1$s\": %2$s"</string>
 </resources>
