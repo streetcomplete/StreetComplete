@@ -22,7 +22,7 @@ public class AddToiletsFee extends SimpleOverpassQuestType
 	@Override
 	protected String getTagFilters()
 	{
-		return "nodes with amenity=toilets and !fee";
+		return "nodes, ways, relations with amenity=toilets and !fee";
 	}
 
 	@Override
