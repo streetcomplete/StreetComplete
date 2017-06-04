@@ -114,6 +114,8 @@ public class QuestController
 		workerHandler.post(new Runnable() { @Override public void run()
 		{
 			OsmQuest q = osmQuestDB.get(osmQuestId);
+			// race condition: another thread may have removed the element already (#288)
+			if(q == null) return;
 
 			CreateNote createNote = new CreateNote();
 			createNote.position = q.getMarkerLocation();
@@ -209,6 +211,7 @@ public class QuestController
 			if(group == QuestGroup.OSM)
 			{
 				OsmQuest q = osmQuestDB.get(questId);
+				if(q == null) return;
 				q.setStatus(QuestStatus.HIDDEN);
 				osmQuestDB.update(q);
 				relay.onQuestRemoved(q.getId(), group);
@@ -216,6 +219,7 @@ public class QuestController
 			else if(group == QuestGroup.OSM_NOTE)
 			{
 				OsmNoteQuest q = osmNoteQuestDB.get(questId);
+				if(q == null) return;
 				q.setStatus(QuestStatus.HIDDEN);
 				osmNoteQuestDB.update(q);
 				relay.onQuestRemoved(q.getId(), group);
@@ -231,12 +235,16 @@ public class QuestController
 			switch (group)
 			{
 				case OSM:
+					// race condition: another thread may have removed the element already (#288)
 					OsmQuest osmQuest = osmQuestDB.get(questId);
+					if(osmQuest == null) return;
 					Element element = osmElementDB.get(osmQuest.getElementType(), osmQuest.getElementId());
+					if(element == null) return;
 					relay.onQuestCreated(osmQuest, group, element);
 					break;
 				case OSM_NOTE:
 					OsmNoteQuest osmNoteQuest = osmNoteQuestDB.get(questId);
+					if(osmNoteQuest == null) return;
 					relay.onQuestCreated(osmNoteQuest, group, null);
 					break;
 			}
