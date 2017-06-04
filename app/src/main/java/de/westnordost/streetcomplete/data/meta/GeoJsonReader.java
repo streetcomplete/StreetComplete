@@ -29,11 +29,13 @@ public class GeoJsonReader
 			TYPE = "type",
 			FEATURES = "features",
 			COORDINATES = "coordinates",
-			GEOMETRIES = "geometries";
+			GEOMETRIES = "geometries",
+			GEOMETRY = "geometry",
+			PROPERTIES = "properties";
 
-	private final GeometryFactory factory = new GeometryFactory(new PrecisionModel(), 4326);
+	private final GeometryFactory factory = new GeometryFactory(new PrecisionModel(), WGS84);
 
-	public Geometry read(String string)
+	public Geometry read(String string) throws GeoJsonException
 	{
 		try
 		{
@@ -41,24 +43,25 @@ public class GeoJsonReader
 			String type = json.getString(TYPE);
 			switch(type)
 			{
-				case "GeometryCollection":
-					return createGeometryCollection(json.getJSONArray(GEOMETRIES));
 				case "Feature":
 					return createFeature(json);
 				case "FeatureCollection":
-					return factory.createGeometryCollection(createFeatures(json.getJSONArray(FEATURES)));
+					Geometry[] features = createFeatures(json.getJSONArray(FEATURES));
+					return factory.createGeometryCollection(features);
 				default:
-					throw new JSONException("Unsupported type '"+type+"'");
+					return createGeometry(json);
 			}
 		}
-		catch (JSONException e)
+		catch(JSONException e)
 		{
-			throw new RuntimeException(e);
+			throw new GeoJsonException(e);
 		}
 	}
 
 	private Map<String, String> createProperties(JSONObject properties) throws JSONException
 	{
+		if(properties.length() == 0) return null;
+
 		Map<String,String> result = new HashMap<>(properties.length());
 		Iterator<String> keys = properties.keys();
 		while(keys.hasNext())
@@ -68,24 +71,6 @@ public class GeoJsonReader
 			result.put(key, value);
 		}
 		return result;
-	}
-
-	private Geometry createFeature(JSONObject feature) throws JSONException
-	{
-		Map<String, String> propertiesMap = createProperties(feature.getJSONObject("properties"));
-
-		Geometry geometry;
-		if(!feature.isNull("geometry"))
-		{
-			geometry = createGeometry(feature.getJSONObject("geometry"));
-		}
-		else
-		{
-			geometry = factory.createGeometryCollection(null);
-		}
-
-		geometry.setUserData(propertiesMap);
-		return geometry;
 	}
 
 	private Geometry[] createFeatures(JSONArray features) throws JSONException
@@ -99,6 +84,24 @@ public class GeoJsonReader
 		return geometries;
 	}
 
+	private Geometry createFeature(JSONObject feature) throws JSONException
+	{
+		Map<String, String> propertiesMap = createProperties(feature.getJSONObject(PROPERTIES));
+
+		Geometry geometry;
+		if(!feature.isNull(GEOMETRY))
+		{
+			geometry = createGeometry(feature.getJSONObject(GEOMETRY));
+		}
+		else
+		{
+			geometry = factory.createGeometryCollection(null);
+		}
+
+		geometry.setUserData(propertiesMap);
+		return geometry;
+	}
+
 	private Geometry createGeometry(JSONObject geo) throws JSONException
 	{
 		String type = geo.getString(TYPE);
@@ -107,13 +110,13 @@ public class GeoJsonReader
 		{
 			case "Point":				return createPoint(geo.getJSONArray(COORDINATES));
 			case "LineString":			return createLineString(geo.getJSONArray(COORDINATES));
-			case "Polygon":				return createPolygon(geo.getJSONArray(COORDINATES));
 			case "MultiPoint":			return createMultiPoint(geo.getJSONArray(COORDINATES));
 			case "MultiLineString":		return createMultiLineString(geo.getJSONArray(COORDINATES));
+			case "Polygon":				return createPolygon(geo.getJSONArray(COORDINATES));
 			case "MultiPolygon":		return createMultiPolygon(geo.getJSONArray(COORDINATES));
 			case "GeometryCollection":	return createGeometryCollection(geo.getJSONArray(GEOMETRIES));
 			default:
-				throw new JSONException("Unsupported type '"+type+"'");
+				throw new GeoJsonException("Unsupported type '"+type+"'");
 		}
 	}
 
@@ -169,25 +172,25 @@ public class GeoJsonReader
 		return factory.createMultiLineString(lineStrings);
 	}
 
-	private LinearRing createLinearRing(JSONArray coords) throws JSONException
+	private LinearRing createLinearRing(JSONArray coords) throws JSONException, GeoJsonException
 	{
-		if(coords.length() < 3)
+		if(coords.length() < 4)
 		{
-			throw new JSONException("There must be at least three coordinates for a LinearRing");
+			throw new GeoJsonException("There must be at least four coordinates for a LinearRing");
 		}
 		Coordinate[] coordinates = createCoordinates(coords);
 		if(!coordinates[0].equals(coordinates[coordinates.length-1]))
 		{
-			throw new JSONException("The first and last coordinate need to be the same in a LinearRing");
+			throw new GeoJsonException("The first and last coordinate need to be the same in a LinearRing");
 		}
 		return factory.createLinearRing(coordinates);
 	}
 
-	private LineString createLineString(JSONArray coords) throws JSONException
+	private LineString createLineString(JSONArray coords) throws JSONException, GeoJsonException
 	{
 		if(coords.length() < 2)
 		{
-			throw new JSONException("There must be at least two coordinates for a LineString");
+			throw new GeoJsonException("There must be at least two coordinates for a LineString");
 		}
 		return factory.createLineString(createCoordinates(coords));
 	}

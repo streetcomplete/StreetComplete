@@ -15,23 +15,51 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.inject.Inject;
+
 public class CountryInfos
 {
 	private static final String BASEPATH = "countryInfos";
 
-	private AssetManager assetManager;
+	private final AssetManager assetManager;
+	private final CountryBoundaries countryBoundaries;
 
 	private CountryInfo defaultCountryInfo;
 
 	private Map<String, CountryInfo> countryInfoMap;
 
-	public CountryInfos(AssetManager assetManager)
+	@Inject public CountryInfos(AssetManager assetManager, CountryBoundaries countryBoundaries)
 	{
 		this.assetManager = assetManager;
+		this.countryBoundaries = countryBoundaries;
 		countryInfoMap = new HashMap<>();
 	}
 
-	public CountryInfo get(String countryCodeIso3166)
+	/** Get the info by location */
+	public CountryInfo get(double longitude, double latitude)
+	{
+		List<String> countryCodesIso3166 = countryBoundaries.getIsoCodes(longitude, latitude);
+		return get(countryCodesIso3166);
+	}
+
+	/** Get the info by a list of country codes sorted by size. I.e. DE-NI,DE,EU gets the info
+	 *  for Niedersachsen in Germany and uses defaults from Germany and from the European Union */
+	public CountryInfo get(List<String> countryCodesIso3166)
+	{
+		CountryInfo result = new CountryInfo();
+		for(String isoCode : countryCodesIso3166)
+		{
+			CountryInfo countryInfo = get(isoCode);
+			if(countryInfo != null)
+			{
+				complement(result, countryInfo);
+			}
+		}
+		complement(result,getDefault());
+		return result;
+	}
+
+	private CountryInfo get(String countryCodeIso3166)
 	{
 		if(!countryInfoMap.containsKey(countryCodeIso3166))
 		{
@@ -47,20 +75,53 @@ public class CountryInfos
 		{
 			List<String> countryInfosFiles = Arrays.asList(assetManager.list(BASEPATH));
 
-			CountryInfo aDefault = getDefault();
-
-			String filename = countryCodeIso3166+".yml";
-			if(countryInfosFiles.contains(filename))
+			if(countryInfosFiles.contains(countryCodeIso3166+".yml"))
 			{
-				CountryInfo countryInfo = loadCountryInfo(filename);
-				complement(countryInfo, aDefault);
-				return countryInfo;
+				return loadCountryInfo(countryCodeIso3166);
 			}
-			return aDefault;
+			return null;
 		}
 		catch (IOException e)
 		{
 			throw new RuntimeException(e);
+		}
+	}
+
+	private CountryInfo getDefault()
+	{
+		try
+		{
+			if (defaultCountryInfo == null) defaultCountryInfo = loadCountryInfo("default");
+			return defaultCountryInfo;
+		}
+		catch (Exception e)
+		{
+			// this should be in any case a programming error
+			throw new RuntimeException(e);
+		}
+	}
+
+	private CountryInfo loadCountryInfo(String countryCodeIso3166) throws IOException
+	{
+		String filename = countryCodeIso3166+".yml";
+		InputStream is = null;
+		try
+		{
+			is = assetManager.open(BASEPATH + File.separator + filename);
+			Reader reader =  new InputStreamReader(is, "UTF-8");
+			YamlReader yamlReader = new YamlReader(reader);
+			yamlReader.getConfig().setPrivateFields(true);
+			CountryInfo result = yamlReader.read(CountryInfo.class);
+			result.countryCode = countryCodeIso3166;
+			return result;
+		}
+		finally
+		{
+			if(is != null) try
+			{
+				is.close();
+			}
+			catch (IOException e) { }
 		}
 	}
 
@@ -82,33 +143,6 @@ public class CountryInfos
 		{
 			// this should be in any case a programming error
 			throw new RuntimeException(e);
-		}
-	}
-
-	private CountryInfo getDefault() throws IOException
-	{
-		if(defaultCountryInfo == null) defaultCountryInfo = loadCountryInfo("default.yml");
-		return defaultCountryInfo;
-	}
-
-	private CountryInfo loadCountryInfo(String filename) throws IOException
-	{
-		InputStream is = null;
-		try
-		{
-			is = assetManager.open(BASEPATH + File.separator + filename);
-			Reader reader =  new InputStreamReader(is, "UTF-8");
-			YamlReader yamlReader = new YamlReader(reader);
-			yamlReader.getConfig().setPrivateFields(true);
-			return yamlReader.read(CountryInfo.class);
-		}
-		finally
-		{
-			if(is != null) try
-			{
-				is.close();
-			}
-			catch (IOException e) { }
 		}
 	}
 }

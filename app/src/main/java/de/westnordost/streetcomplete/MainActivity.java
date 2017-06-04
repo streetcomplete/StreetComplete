@@ -54,7 +54,6 @@ import de.westnordost.streetcomplete.data.download.QuestDownloadService;
 import de.westnordost.streetcomplete.data.QuestGroup;
 import de.westnordost.streetcomplete.data.VisibleQuestListener;
 import de.westnordost.streetcomplete.data.meta.CountryInfos;
-import de.westnordost.streetcomplete.data.meta.CurrentCountry;
 import de.westnordost.streetcomplete.location.LocationRequestFragment;
 import de.westnordost.streetcomplete.location.LocationUtil;
 import de.westnordost.streetcomplete.location.SingleLocationRequest;
@@ -100,7 +99,6 @@ public class MainActivity extends AppCompatActivity implements
 	@Inject OAuthComponent oAuthComponent;
 
 	@Inject CountryInfos countryInfos;
-	@Inject CurrentCountry currentCountry;
 
 	private QuestsMapFragment mapFragment;
 	private LocationStateButton trackingButton;
@@ -738,8 +736,9 @@ public class MainActivity extends AppCompatActivity implements
 		{
 			args.putSerializable(AbstractQuestAnswerFragment.ARG_ELEMENT, (OsmElement) element);
 		}
+		LatLon latLon = quest.getGeometry().center;
 		args.putSerializable(AbstractQuestAnswerFragment.ARG_COUNTRY_INFO,
-				countryInfos.get(currentCountry.getCountry()));
+				countryInfos.get(latLon.getLongitude(), latLon.getLatitude()));
 		f.setArguments(args);
 
 		android.app.FragmentTransaction ft = getFragmentManager().beginTransaction();

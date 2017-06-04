@@ -1,1 +1,4 @@
 popularSports: [soccer, tennis, basketball, volleyball, badminton]
+# only Indonesian (dialect of Malay, so including it) is offical but there are hundreds of
+# languages. Adding the most important ones spoken by more than 5 mio people
+officialLanguages: [id,ms,jv,su,mad,min]

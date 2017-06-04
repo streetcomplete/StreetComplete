@@ -2,25 +2,31 @@ package de.westnordost.streetcomplete.data.meta;
 
 import android.content.res.AssetManager;
 
-import java.io.InputStream;
+import java.io.IOException;
 
 import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import de.westnordost.streetcomplete.R;
 
 @Module
 public class MetadataModule
 {
-	@Provides @Singleton public static Abbreviations abbreviations(CurrentCountry currentCountry)
+	@Provides @Singleton public static CountryInfos countryInfos(
+			AssetManager assetManager, CountryBoundaries countryBoundaries)
 	{
-		InputStream is = currentCountry.getResources().openRawResource(R.raw.abbreviations);
-		return new Abbreviations(is, currentCountry.getLocale());
+		return new CountryInfos(assetManager, countryBoundaries);
 	}
 
-	@Provides @Singleton public static CountryInfos countryInfos(AssetManager assetManager)
+	@Provides @Singleton public static CountryBoundaries countryBoundaries(AssetManager assetManager)
 	{
-		return new CountryInfos(assetManager);
+		try
+		{
+			return new CountryBoundaries(assetManager.open("countryBoundaries.json"));
+		}
+		catch (IOException e)
+		{
+			throw new RuntimeException(e);
+		}
 	}
 }

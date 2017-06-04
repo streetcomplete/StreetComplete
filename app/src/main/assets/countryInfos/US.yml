@@ -1,3 +1,4 @@
 speedUnit: mph
 maxspeedLayout: quest_maxspeed_us
 popularSports: [baseball, tennis, basketball, soccer, golf, american_football]
+officialLanguages: [en]

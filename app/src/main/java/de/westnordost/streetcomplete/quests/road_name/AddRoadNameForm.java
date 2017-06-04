@@ -10,7 +10,13 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
+import de.westnordost.streetcomplete.ApplicationComponent;
+import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.R;
+import de.westnordost.streetcomplete.data.meta.Abbreviations;
+import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale;
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
 import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 
@@ -24,16 +30,28 @@ public class AddRoadNameForm extends AbstractQuestFormAnswerFragment
 
 	private AutoCorrectAbbreviationsEditText nameInput;
 
+	@Inject AbbreviationsByLocale abbreviationsByLocale;
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState)
 	{
 		View view = super.onCreateView(inflater, container, savedInstanceState);
 
+		Injector.instance.getApplicationComponent().inject(this);
+
 		setTitle(R.string.quest_streetName_title);
 		View contentView = setContentView(R.layout.quest_roadname);
 
 		nameInput = (AutoCorrectAbbreviationsEditText) contentView.findViewById(R.id.nameInput);
+		new Thread(new Runnable()
+		{
+			@Override public void run()
+			{
+				Abbreviations abbreviations = abbreviationsByLocale.get(getCountryInfo().getLocale());
+				nameInput.setAbbreviations(abbreviations);
+			}
+		});
 
 		return view;
 	}

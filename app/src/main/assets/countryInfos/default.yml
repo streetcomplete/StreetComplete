@@ -1,3 +1,6 @@
+# Attention: If you change something here, keep in mind that you are changing the default for all
+# countries that do not override the value!
+
 # km/h or mph
 speedUnit: km/h
 # sports that should be shown first before the order defined in the form
@@ -8,3 +11,6 @@ firstDayOfWorkweek: Mo
 # how many days shops usually have regular opening hours per week. Acording to
 # https://en.wikipedia.org/wiki/Shopping_hours the norm for shopping days is rather MO-SA (=6 days)
 regularShoppingDays: 6
+# list of statewide official (used by government) and spoken national majority languages. Ordered
+# official languages first, then by importance
+officialLanguages: [en]

@@ -1,2 +1,3 @@
 popularSports: [soccer, tennis, basketball, golf, paddle_tennis, pelota]
 additionalValidHousenumberRegex: s/n
+officialLanguages: [es]

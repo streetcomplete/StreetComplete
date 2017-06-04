@@ -11,6 +11,7 @@ import de.westnordost.streetcomplete.data.meta.MetadataModule;
 import de.westnordost.streetcomplete.data.osm.upload.ChangesetAutoCloserService;
 import de.westnordost.streetcomplete.quests.QuestModule;
 import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHoursForm;
+import de.westnordost.streetcomplete.quests.road_name.AddRoadNameForm;
 import de.westnordost.streetcomplete.quests.road_name.AutoCorrectAbbreviationsEditText;
 import de.westnordost.streetcomplete.quests.note_discussion.NoteDiscussionForm;
 import de.westnordost.streetcomplete.settings.SettingsActivity;
@@ -24,7 +25,6 @@ import de.westnordost.streetcomplete.util.SerializedSavedState;
 public interface ApplicationComponent
 {
 	void inject(MainActivity mainActivity);
-	void inject(AutoCorrectAbbreviationsEditText autoCorrectAbbreviationsEditText);
 	void inject(NoteDiscussionForm noteDiscussionForm);
 	void inject(SerializedSavedState tSerializedSavedState);
 
@@ -38,4 +38,5 @@ public interface ApplicationComponent
 	void inject(AnswersCounter answersCounter);
 
 	void inject(AddOpeningHoursForm addOpeningHoursForm);
+	void inject(AddRoadNameForm addRoadNameForm);
 }

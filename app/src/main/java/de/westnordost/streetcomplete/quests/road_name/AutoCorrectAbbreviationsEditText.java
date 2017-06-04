@@ -6,26 +6,17 @@ import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.view.inputmethod.EditorInfo;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.Locale;
 
-import javax.inject.Inject;
-
-import dagger.Lazy;
-import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.data.meta.Abbreviations;
-import de.westnordost.streetcomplete.data.meta.CurrentCountry;
 
 /** An edit text that expands abbreviations automatically when finishing a word (via space, "-" or
  *  ".") and capitalizes the first letter of each word that is longer than 3 letters. */
-public class AutoCorrectAbbreviationsEditText extends EditText
+public class AutoCorrectAbbreviationsEditText extends android.support.v7.widget.AppCompatEditText
 {
-	// Creation of Abbreviations takes some time, let's defer it until after the injection (so that
-	// we can load it asynchronously
-	@Inject Lazy<Abbreviations> abbreviations;
-	@Inject CurrentCountry currentCountry;
+	private Abbreviations abbreviations;
 
 	public AutoCorrectAbbreviationsEditText(Context context)
 	{
@@ -45,20 +36,13 @@ public class AutoCorrectAbbreviationsEditText extends EditText
 		init();
 	}
 
+	public void setAbbreviations(Abbreviations abbreviations)
+	{
+		this.abbreviations = abbreviations;
+	}
+
 	private void init()
 	{
-		Injector.instance.getApplicationComponent().inject(this);
-
-		// asynchronously load the abbreviations already because we will need it latest after the
-		// user wrote the first word (in debug mode, it takes whopping 3 seconds on my phone :-( )
-		new Thread()
-		{
-			@Override public void run()
-			{
-				abbreviations.get();
-			}
-		}.start();
-
 		setImeOptions(EditorInfo.IME_ACTION_DONE | getImeOptions());
 		addTextChangedListener(new AbbreviationAutoCorrecter());
 
@@ -88,7 +72,8 @@ public class AutoCorrectAbbreviationsEditText extends EditText
 		boolean isFirstWord = words.length == 1;
 		boolean isLastWord = cursor == s.length();
 
-		String replacement = abbreviations.get().getExpansion(lastWordBeforeCursor, isFirstWord, isLastWord);
+		if(abbreviations == null) return;
+		String replacement = abbreviations.getExpansion(lastWordBeforeCursor, isFirstWord, isLastWord);
 
 		int wordStart = textToCursor.indexOf(lastWordBeforeCursor);
 		if(replacement != null)
@@ -97,7 +82,7 @@ public class AutoCorrectAbbreviationsEditText extends EditText
 		}
 		else if (lastWordBeforeCursor.length() > 3)
 		{
-			Locale locale = currentCountry.getLocale();
+			Locale locale = abbreviations.getLocale();
 			String capital = lastWordBeforeCursor.substring(0, 1).toUpperCase(locale);
 			s.replace(wordStart, wordStart + 1, capital);
 		}
@@ -120,7 +105,8 @@ public class AutoCorrectAbbreviationsEditText extends EditText
 
 	public boolean containsAbbreviations()
 	{
-		return abbreviations.get().containsAbbreviations(getText().toString());
+		if(abbreviations == null) return false;
+		return abbreviations.containsAbbreviations(getText().toString());
 	}
 
 	private class AbbreviationAutoCorrecter implements TextWatcher

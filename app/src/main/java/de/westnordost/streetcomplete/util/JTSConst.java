@@ -7,6 +7,7 @@ import com.vividsolutions.jts.geom.LineString;
 import com.vividsolutions.jts.geom.LinearRing;
 import com.vividsolutions.jts.geom.Point;
 import com.vividsolutions.jts.geom.Polygon;
+import com.vividsolutions.jts.geom.PrecisionModel;
 import com.vividsolutions.jts.operation.valid.IsValidOp;
 
 import java.util.ArrayList;
@@ -21,7 +22,8 @@ import de.westnordost.streetcomplete.data.osm.ElementGeometry;
 
 public class JTSConst
 {
-	private static GeometryFactory factory = new GeometryFactory();
+	private static final int WGS84 = 4326;
+	private static GeometryFactory factory = new GeometryFactory(new PrecisionModel(), WGS84);
 
 	public static Geometry toGeometry(ElementGeometry e)
 	{

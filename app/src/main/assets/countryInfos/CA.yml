@@ -1,2 +1,3 @@
 maxspeedLayout: quest_maxspeed_ca
 popularSports: [baseball, soccer, tennis, basketball, canadian_football, american_football, ices_hockey, curling]
+officialLanguages: [en,fr]
