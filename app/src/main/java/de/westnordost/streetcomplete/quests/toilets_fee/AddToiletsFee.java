@@ -33,7 +33,9 @@ public class AddToiletsFee extends SimpleOverpassQuestType
 
 	public AbstractQuestAnswerFragment createForm()
 	{
-		return new ToiletsFeeForm();
+		AbstractQuestAnswerFragment form =  new YesNoQuestAnswerFragment();
+		form.setTitle(R.string.quest_toiletsFee_title);
+		return form;
 	}
 
 	public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
