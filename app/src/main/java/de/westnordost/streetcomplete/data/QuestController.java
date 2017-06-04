@@ -156,8 +156,13 @@ public class QuestController
 		{
 			if (group == QuestGroup.OSM)
 			{
+				// race condition: another thread (i.e. quest download thread) may have removed the
+				// element already (#282). So in this case, just ignore
 				OsmQuest q = osmQuestDB.get(questId);
+				if(q == null) return;
 				Element e = osmElementDB.get(q.getElementType(), q.getElementId());
+				if(e == null) return;
+
 				StringMapChangesBuilder changesBuilder = new StringMapChangesBuilder(e.getTags());
 				q.getOsmElementQuestType().applyAnswerTo(answer, changesBuilder);
 				StringMapChanges changes = changesBuilder.create();
