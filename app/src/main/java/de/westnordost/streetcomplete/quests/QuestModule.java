@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
 import de.westnordost.streetcomplete.quests.bike_parking_capacity.AddBikeParkingCapacity;
 import de.westnordost.streetcomplete.quests.building_levels.AddBuildingLevels;
 import de.westnordost.streetcomplete.quests.bus_stop_shelter.AddBusStopShelter;
+import de.westnordost.streetcomplete.quests.toilets_fee.AddToiletsFee;
 import de.westnordost.streetcomplete.quests.housenumber.AddHousenumber;
 import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHours;
 import de.westnordost.streetcomplete.quests.road_name.AddRoadName;
@@ -32,6 +33,7 @@ public class QuestModule
 				// new AddPlaceName(), doesn't make sense as long as the app cannot tell the generic name of elements
 				new AddRoadSurface(o),
 				new AddBusStopShelter(o),
+				new AddToiletsFee(o),
 				new AddHousenumber(o),
 				new AddBikeParkingCapacity(o),
 				new AddSport(o)

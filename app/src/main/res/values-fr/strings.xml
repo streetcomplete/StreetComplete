@@ -284,4 +284,5 @@ L'information que vous entrez est directement ajoutée à OpenStreetMap sous vot
     <string name="quest_sport_manySports_confirmation_title">"Vous avez sélectionné plusieurs sports"</string>
     <string name="quest_busStopShelter_name_title">"L'arrêt de bus %s est-il abrité ?"</string>
     <string name="quest_leave_new_note_in_response_to">"En réponse à \"1$s\": %2$s"</string>
+    <string name="quest_toiletsFee_title">"Ces toilettes sont-elles payantes ?"</string>
 </resources>
