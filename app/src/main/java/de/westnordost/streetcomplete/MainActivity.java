@@ -678,7 +678,13 @@ public class MainActivity extends AppCompatActivity implements
 
 	@UiThread private void closeQuestDetails()
 	{
-		getFragmentManager().popBackStack(BOTTOM_SHEET, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+		// #285: This method may be called after the user tapped the home button from removeQuests().
+		// At this point, it wouldn't be legal to pop the fragment back stack etc.
+		// I am not entirely sure if checking for these things will solve #285 though
+		// some more info here http://www.androiddesignpatterns.com/2013/08/fragment-transaction-commit-state-loss.html
+		if(isDestroyed() || isFinishing() || isChangingConfigurations()) return;
+
+		getFragmentManager().popBackStackImmediate(BOTTOM_SHEET, FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
 		mapFragment.removeQuestGeometry();
 
