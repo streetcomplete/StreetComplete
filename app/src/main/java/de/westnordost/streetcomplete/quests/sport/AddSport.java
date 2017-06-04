@@ -43,7 +43,20 @@ public class AddSport extends SimpleOverpassQuestType
 		ArrayList<String> values = answer.getStringArrayList(AddRoofShapeForm.OSM_VALUES);
 		if(values != null && !values.isEmpty())
 		{
-			changes.add("sport", TextUtils.join(";", values));
+			String valuesStr = TextUtils.join(";", values);
+
+			String prev = changes.getPreviousValue("sport");
+			// only modify the previous values in case of these ~deprecated ones, otherwise assume
+			// always that the tag has not been set yet (will drop the solution if it has been set
+			// in the meantime by other people) (#291)
+			if("hockey".equals(prev) || "team_handball".equals(prev))
+			{
+				changes.modify("sport",valuesStr);
+			}
+			else
+			{
+				changes.add("sport", valuesStr);
+			}
 		}
 	}
 
