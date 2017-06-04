@@ -156,51 +156,73 @@ public class QuestController
 	{
 		workerHandler.post(new Runnable() { @Override public void run()
 		{
+			boolean success = false;
 			if (group == QuestGroup.OSM)
 			{
-				// race condition: another thread (i.e. quest download thread) may have removed the
-				// element already (#282). So in this case, just ignore
-				OsmQuest q = osmQuestDB.get(questId);
-				if(q == null) return;
-				Element e = osmElementDB.get(q.getElementType(), q.getElementId());
-				if(e == null) return;
-
-				StringMapChangesBuilder changesBuilder = new StringMapChangesBuilder(e.getTags());
-				q.getOsmElementQuestType().applyAnswerTo(answer, changesBuilder);
-				StringMapChanges changes = changesBuilder.create();
-				if(!changes.isEmpty())
-				{
-					q.setChanges(changes);
-					q.setStatus(QuestStatus.ANSWERED);
-					osmQuestDB.update(q);
-					openChangesetsDao.setLastQuestSolvedTimeToNow();
-					relay.onQuestSolved(q.getId(), group);
-				}
-				else
-				{
-					throw new RuntimeException(
-							"OsmQuest " + questId + " (" + q.getType().getClass().getSimpleName() +
-							") has been answered by the user but the changeset is empty!");
-				}
+				success = solveOsmQuest(questId, answer);
 			}
 			else if (group == QuestGroup.OSM_NOTE)
 			{
-				OsmNoteQuest q = osmNoteQuestDB.get(questId);
-				String comment = answer.getString(NoteDiscussionForm.TEXT);
-				if(comment != null && !comment.isEmpty())
-				{
-					q.setComment(comment);
-					q.setStatus(QuestStatus.ANSWERED);
-					osmNoteQuestDB.update(q);
-					relay.onQuestSolved(q.getId(), group);
-				}
-				else
-				{
-					throw new RuntimeException(
-							"NoteQuest has been answered with an empty comment!");
-				}
+				success = solveOsmNoteQuest(questId, answer);
 			}
+			if(success) relay.onQuestSolved(questId, group);
 		}});
+	}
+
+	private boolean solveOsmNoteQuest(long questId, Bundle answer)
+	{
+		OsmNoteQuest q = osmNoteQuestDB.get(questId);
+		String comment = answer.getString(NoteDiscussionForm.TEXT);
+		if(comment != null && !comment.isEmpty())
+		{
+			q.setComment(comment);
+			q.setStatus(QuestStatus.ANSWERED);
+			osmNoteQuestDB.update(q);
+			return true;
+		}
+		else
+		{
+			throw new RuntimeException(
+					"NoteQuest has been answered with an empty comment!");
+		}
+	}
+
+	private boolean solveOsmQuest(long questId, Bundle answer)
+	{
+		// race condition: another thread (i.e. quest download thread) may have removed the
+		// element already (#282). So in this case, just ignore
+		OsmQuest q = osmQuestDB.get(questId);
+		if(q == null) return false;
+		Element ele = osmElementDB.get(q.getElementType(), q.getElementId());
+		if(ele == null) return false;
+
+		StringMapChangesBuilder changesBuilder = new StringMapChangesBuilder(ele.getTags());
+		try
+		{
+			q.getOsmElementQuestType().applyAnswerTo(answer, changesBuilder);
+		}
+		catch (IllegalArgumentException e)
+		{
+			// if applying the changes results in an error (=a conflict), the data the quest(ion)
+			// was based on is not valid anymore -> like with other conflicts, silently drop the
+			// user's change (#289)
+			return false;
+		}
+		StringMapChanges changes = changesBuilder.create();
+		if(!changes.isEmpty())
+		{
+			q.setChanges(changes);
+			q.setStatus(QuestStatus.ANSWERED);
+			osmQuestDB.update(q);
+			openChangesetsDao.setLastQuestSolvedTimeToNow();
+			return true;
+		}
+		else
+		{
+			throw new RuntimeException(
+					"OsmQuest " + questId + " (" + q.getType().getClass().getSimpleName() +
+							") has been answered by the user but the changeset is empty!");
+		}
 	}
 
 	/** Make the given quest invisible asynchronously (per user interaction). */
