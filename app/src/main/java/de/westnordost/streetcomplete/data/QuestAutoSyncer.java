@@ -83,15 +83,10 @@ public class QuestAutoSyncer implements LocationListener, LostApiClient.Connecti
 
 	public void stopPositionTracking()
 	{
-		try // TODO remove when https://github.com/mapzen/lost/issues/178 is solved
+		if(lostApiClient.isConnected())
 		{
-			if(lostApiClient.isConnected())
-			{
-				LocationServices.FusedLocationApi.removeLocationUpdates(lostApiClient, this);
-				lostApiClient.disconnect();
-			}
-		} catch(Exception e) {
-			e.printStackTrace();
+			LocationServices.FusedLocationApi.removeLocationUpdates(lostApiClient, this);
+			lostApiClient.disconnect();
 		}
 	}
 
@@ -111,18 +106,9 @@ public class QuestAutoSyncer implements LocationListener, LostApiClient.Connecti
 
 	@Override public void onLocationChanged(Location location)
 	{
-		LatLon pos = new OsmLatLon(location.getLatitude(), location.getLongitude());
-		// TODO remove when https://github.com/mapzen/lost/issues/142 is fixed
-		if(this.pos != null)
-		{
-			if(SphericalEarthMath.distance(pos, this.pos) < 400) return;
-		}
-		this.pos = pos;
+		this.pos = new OsmLatLon(location.getLatitude(), location.getLongitude());
 		triggerAutoDownload();
 	}
-
-	@Override public void onProviderEnabled(String provider) {}
-	@Override public void onProviderDisabled(String provider) {}
 
 	public void triggerAutoDownload()
 	{
