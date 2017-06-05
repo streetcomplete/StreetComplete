@@ -17,6 +17,8 @@ android {
         applicationId "de.westnordost.streetcomplete"
         minSdkVersion 17
         targetSdkVersion 25
+        // until #286 is fixed
+        maxSdkVersion 25
         versionCode 8
         versionName "0.11"
         multiDexEnabled true
