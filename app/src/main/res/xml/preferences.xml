@@ -45,7 +45,7 @@
             android:defaultValue="50"
             android:persistent="true"
             custom:minValue="1"
-            custom:maxValue="250"
+            custom:maxValue="2500"
             android:dialogMessage="@string/pref_tilecache_size_message"
             android:dialogLayout="@layout/numberpicker_preference"
             android:positiveButtonText="@android:string/ok"
