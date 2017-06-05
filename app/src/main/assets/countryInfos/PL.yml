@@ -1,1 +1,4 @@
 officialLanguages: [pl]
+# order based on http://taginfo.openstreetmap.pl/tags/leisure=pitch#combinations and http://taginfo.openstreetmap.pl/keys/sport#values
+popularSports: [soccer, basketball, tennis, volleyball, beachvolleyball, skateboard, table_tennis, handball, equestrian, gymnastics, shooting, baseball, athletics, rugby, golf, archery, netball, ice_hockey, field_hockey, american_football, cricket, badminton, bowls, boules, australian_football, canadian_football]
+regularShoppingDays: 5
