@@ -7,6 +7,7 @@ import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -38,16 +39,16 @@ public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 		toggleKeyboardButton.setVisibility(View.INVISIBLE);
 		toggleKeyboardButton.setText("abc");
 
-		input.setOnClickListener(new View.OnClickListener()
+		input.setOnFocusChangeListener(new View.OnFocusChangeListener()
 		{
-			@Override public void onClick(View v)
+			@Override public void onFocusChange(View v, boolean hasFocus)
 			{
-				if(toggleKeyboardButton.getVisibility() != View.VISIBLE)
+				if(hasFocus)
 				{
-					toggleKeyboardButton.startAnimation(
-							AnimationUtils.loadAnimation(getActivity(), R.anim.fade_in_from_bottom));
+					Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_in_from_bottom);
+					toggleKeyboardButton.startAnimation(animation);
 				}
-				toggleKeyboardButton.setVisibility(View.VISIBLE);
+				toggleKeyboardButton.setVisibility(hasFocus ? View.VISIBLE: View.INVISIBLE);
 			}
 		});
 
