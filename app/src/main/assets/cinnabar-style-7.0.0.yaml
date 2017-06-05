@@ -130,11 +130,7 @@ global:
     ux_language_text_source_building_and_address: |
         function() {
             var name = (global.ux_language && feature['name:'+global.ux_language]) || (global.ux_language_fallback && feature['name:'+global.ux_language_fallback]) || feature['name'];
-            if (name && feature.addr_housenumber) {
-                return name + '\n' + feature.addr_housenumber;
-            } else {
-                return name;
-            }
+            return name;
         }
 
     # To facilitate data visualizations several recommended sort orders are provided
@@ -219,8 +215,8 @@ global:
     icon_visible_populated_places:  true
     text_visible_neighbourhoods:    true
     text_visible_neighbourhoods_e:  true
-    text_visible_building:          false     # false for default
-    text_visible_address:           false     # false for default
+    text_visible_building:          true     # false for default
+    text_visible_address:           true     # false for default
     text_visible_water_labels:      true
     text_visible_island:            true
     label_visible_landuse_green:    true
@@ -3563,9 +3559,9 @@ layers:
                     - { $zoom: [17], area: { min: 2000 }, kind_detail: [university, college, school, kindergarten] }
                     - { $zoom: [18], area: { min: 1000 } }
                     - { $zoom: [18], kind_detail: [university, college, school, kindergarten] }
-                    - { $zoom: [19], area: { min: 200 } }
-                    - { $zoom: { min: 19 }, kind_detail: [university, college, school, kindergarten] }
-                    - { $zoom: { min: 20 }, area: true }
+                    - { $zoom: [18], area: { min: 200 } }
+                    - { $zoom: { min: 18 }, kind_detail: [university, college, school, kindergarten] }
+                    - { $zoom: { min: 18 }, area: true }
             draw:
                 text-blend-order:
                     #interactive: global.sdk_interactive
@@ -3577,17 +3573,17 @@ layers:
                         fill: global.text_fill
                         family: global.text_font_family
                         style: italic
-                        size: 11px
-                        stroke: { color: global.text_stroke_address, width: 1 }
+                        size: 10px
+                        stroke: { color: global.building1, width: 4 }
             building_labels-z15-z16-z17:
                 filter: { $zoom: [15,16,17] }
                 draw: { text-blend-order: { font: { size: 12px, stroke: { width: 2 } } } }
             building_labels-z18:
                 filter: { $zoom: [18,19] }
-                draw: { text-blend-order: { font: { size: 12px, weight: 600, stroke: { width: 3 } } } }
+                draw: { text-blend-order: { font: { size: 10px, weight: 500, stroke: { width: 1 } } } }
             building_labels-z20-up:
                 filter: { $zoom: { min: 20 } }
-                draw: { text-blend-order: { font: { size: 14px, weight: 600, stroke: { width: 3 }  } } }
+                draw: { text-blend-order: { font: { size: 14px, weight: 500, stroke: { width: 1 }  } } }
             building-labels-z16:
                 filter: function() { if( $zoom == 16 && feature.name.length > 20 ) { return true; } else { return false; } }
                 draw:
@@ -3598,8 +3594,8 @@ layers:
                 draw:
                     text-blend-order:
                         visible: false
-            building-labels-z20+:
-                filter: { $zoom: { min: 20 } }
+            building-labels-z18+:
+                filter: { $zoom: { min: 18 } }
                 draw:
                     text-blend-order:
                         text_source: global.ux_language_text_source_building_and_address
@@ -3607,7 +3603,7 @@ layers:
             filter:
                 all:
                     - function() { return global.text_visible_address; }
-                    - $zoom: { min: 20 }
+                    - $zoom: { min: 18 }
                 any:
                     - kind: address
                     - { label_position: true, addr_housenumber: true, name: false }
@@ -3617,7 +3613,7 @@ layers:
                     order: 7
                     text_source: addr_housenumber
                     font:
-                        fill: global.text_fill_address
+                        fill: global.text_fill
                         family: global.text_font_family
                         style: italic
                         size: 10px
@@ -5092,17 +5088,18 @@ layers:
                 kind: [bus_stop]
             draw:
                 icons:
-                    size: 14px
+                    visible: true
+                    size: 20px
                     text:
                         font:
                             size: 11px
                             weight: normal
             later:
-                filter: { $zoom: { max: 19 } }
+                filter: { $zoom: { min: 19 } }
                 draw:
                     icons:
                         text:
-                            visible: false
+                            visible: true
 
         airport-gate:
             filter: { kind: aeroway_gate }
