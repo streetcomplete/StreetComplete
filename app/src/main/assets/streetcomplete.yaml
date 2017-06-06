@@ -35,7 +35,7 @@ textures:
             street_turnlanes: [192,768,192,192]
             street_surface: [384,768,192,192]
             street_width: [576,768,192,192]
-            #empty: [768,768,192,192]
+            camera_type: [768,768,192,192]
             toilets: [960,768,192,192]
             note: [0,960,192,192]
             quest: [192,960,192,192]

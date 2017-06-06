@@ -266,4 +266,5 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="quest_leave_new_note_in_response_to">"In reply to \"%1$s\":
 %2$s"</string>
 	<string name="quest_toiletsFee_title">"Do these toilets require a fee?"</string>
+    <string name="quest_cameraType_title">"What is the camera type?"</string>
 </resources>
