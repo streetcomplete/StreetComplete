@@ -18,6 +18,7 @@ import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHours;
 import de.westnordost.streetcomplete.quests.road_name.AddRoadName;
 import de.westnordost.streetcomplete.quests.road_surface.AddRoadSurface;
 import de.westnordost.streetcomplete.quests.roof_shape.AddRoofShape;
+import de.westnordost.streetcomplete.quests.camera_type.AddCameraType;
 import de.westnordost.streetcomplete.quests.sport.AddSport;
 
 @Module
@@ -30,6 +31,7 @@ public class QuestModule
 				new AddOpeningHours(o),
 				new AddBuildingLevels(o),
 				new AddRoofShape(o),
+				new AddCameraType(o),
 				// new AddPlaceName(), doesn't make sense as long as the app cannot tell the generic name of elements
 				new AddRoadSurface(o),
 				new AddBusStopShelter(o),
