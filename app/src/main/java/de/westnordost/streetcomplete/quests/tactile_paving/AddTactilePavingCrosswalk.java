@@ -43,7 +43,7 @@ public class AddTactilePavingCrosswalk extends SimpleOverpassQuestType
 
 	@Override public String getCommitMessage()
 	{
-        return "Add tactile pavings";
+        return "Add tactile pavings on crosswalks";
 	}
 
 	@Override public String getIconName() {
