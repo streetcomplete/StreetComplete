@@ -40,7 +40,7 @@ public class OsmQuestDaoTest extends ApplicationDbTestCase
 	{
 		ElementGeometry geometry = new ElementGeometry(new OsmLatLon(5,5));
 		OsmQuest quest = new OsmQuest(null, new TestQuestType(), Element.Type.NODE, 11,
-				QuestStatus.ANSWERED, null, new Date(1000), geometry);
+				QuestStatus.ANSWERED, null, null, new Date(1000), geometry);
 
 		geometryDao.put(quest.getElementType(), quest.getElementId(), geometry);
 
@@ -60,7 +60,7 @@ public class OsmQuestDaoTest extends ApplicationDbTestCase
 		changes.add(new StringMapEntryModify("modify","this","to that"));
 		OsmQuest quest = new OsmQuest(
 				null, new TestQuestType(), Element.Type.NODE, 11, QuestStatus.ANSWERED,
-				new StringMapChanges(changes), new Date(1000), geometry);
+				new StringMapChanges(changes), "bla", new Date(1000), geometry);
 
 		geometryDao.put(quest.getElementType(), quest.getElementId(), geometry);
 
@@ -75,9 +75,9 @@ public class OsmQuestDaoTest extends ApplicationDbTestCase
 	{
 		ElementGeometry geometry = new ElementGeometry(new OsmLatLon(5,5));
 		OsmQuest quest1 = new OsmQuest(null, new TestQuestType(), Element.Type.NODE, 11,
-				QuestStatus.ANSWERED, null, new Date(1000), geometry);
+				QuestStatus.ANSWERED, null, null, new Date(1000), geometry);
 		OsmQuest quest2 = new OsmQuest(null, new TestQuestType2(), Element.Type.NODE, 11,
-				QuestStatus.ANSWERED, null, new Date(1000), geometry);
+				QuestStatus.ANSWERED, null, null, new Date(1000), geometry);
 
 		geometryDao.put(quest1.getElementType(), quest1.getElementId(), geometry);
 		dao.add(quest1);
@@ -91,9 +91,9 @@ public class OsmQuestDaoTest extends ApplicationDbTestCase
 	{
 		ElementGeometry geometry = new ElementGeometry(new OsmLatLon(5,5));
 		OsmQuest quest1 = new OsmQuest(null, new TestQuestType(), Element.Type.NODE, 11,
-				QuestStatus.ANSWERED, null, new Date(1000), geometry);
+				QuestStatus.ANSWERED, null, null, new Date(1000), geometry);
 		OsmQuest quest2 = new OsmQuest(null, new TestQuestType(), Element.Type.WAY, 12,
-				QuestStatus.ANSWERED, null, new Date(1000), geometry);
+				QuestStatus.ANSWERED, null, null, new Date(1000), geometry);
 
 		geometryDao.put(quest1.getElementType(), quest1.getElementId(), geometry);
 		geometryDao.put(quest2.getElementType(), quest2.getElementId(), geometry);
@@ -112,6 +112,7 @@ public class OsmQuestDaoTest extends ApplicationDbTestCase
 		assertEquals(quest.getElementType(), dbQuest.getElementType());
 		assertEquals(quest.getStatus(), dbQuest.getStatus());
 		assertEquals(quest.getChanges(), dbQuest.getChanges());
+		assertEquals(quest.getChangesSource(), dbQuest.getChangesSource());
 		assertEquals(quest.getGeometry(), dbQuest.getGeometry());
 		assertEquals(quest.getMarkerLocation(), dbQuest.getMarkerLocation());
 		assertEquals(quest.getLastUpdate(), dbQuest.getLastUpdate());

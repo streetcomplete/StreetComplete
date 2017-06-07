@@ -23,7 +23,7 @@ import de.westnordost.streetcomplete.data.tiles.DownloadedTilesTable;
 public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 {
 	public static final String DB_NAME = "streetcomplete.db";
-	public static final int DB_VERSION = 3;
+	public static final int DB_VERSION = 4;
 
 	private static final String OSM_QUESTS_TABLE_CREATE =
 			"CREATE TABLE " + OsmQuestTable.NAME +
@@ -32,6 +32,7 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 				OsmQuestTable.Columns.QUEST_TYPE +		" varchar(255)	NOT NULL, " +
 				OsmQuestTable.Columns.QUEST_STATUS +	" varchar(255)	NOT NULL, " +
 				OsmQuestTable.Columns.TAG_CHANGES +		" blob, " + // null if no changes
+				OsmQuestTable.Columns.CHANGES_SOURCE +	" varchar(255), " +
 				OsmQuestTable.Columns.LAST_UPDATE + 	" int			NOT NULL, " +
 				OsmQuestTable.Columns.ELEMENT_ID +		" int			NOT NULL, " +
 				OsmQuestTable.Columns.ELEMENT_TYPE +	" varchar(255)	NOT NULL, " +
@@ -159,11 +160,16 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 				") " +
 			");";
 
-	private static final String MANAGE_CHANGESETS_TABLE_CREATE =
+	private static final String OPEN_CHANGESETS_TABLE_CREATE =
 			"CREATE TABLE " + OpenChangesetsTable.NAME +
 			" (" +
-				OpenChangesetsTable.Columns.QUEST_TYPE +    " varchar(255)	PRIMARY KEY, " +
-				OpenChangesetsTable.Columns.CHANGESET_ID +  " int NOT NULL" +
+				OpenChangesetsTable.Columns.QUEST_TYPE +    " varchar(255), " +
+				OpenChangesetsTable.Columns.SOURCE +		" varchar(255), " +
+				OpenChangesetsTable.Columns.CHANGESET_ID +  " int	NOT NULL, " +
+				"CONSTRAINT primary_key PRIMARY KEY (" +
+					OpenChangesetsTable.Columns.QUEST_TYPE + ", " +
+					OpenChangesetsTable.Columns.SOURCE +
+				") " +
 			");";
 
 	public StreetCompleteOpenHelper(Context context)
@@ -192,7 +198,7 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 		db.execSQL(OSM_QUESTS_VIEW_CREATE);
 		db.execSQL(OSM_NOTES_VIEW_CREATE);
 
-		db.execSQL(MANAGE_CHANGESETS_TABLE_CREATE);
+		db.execSQL(OPEN_CHANGESETS_TABLE_CREATE);
 	}
 
 	@Override
@@ -215,7 +221,23 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 
 		if(oldVersion < 3)
 		{
-			db.execSQL(MANAGE_CHANGESETS_TABLE_CREATE);
+			db.execSQL(OPEN_CHANGESETS_TABLE_CREATE);
+		}
+
+		if(oldVersion < 4)
+		{
+			db.execSQL("ALTER TABLE " + OsmQuestTable.NAME + " ADD COLUMN " +
+					OsmQuestTable.Columns.CHANGES_SOURCE +	" varchar(255);");
+			db.execSQL("UPDATE " + OsmQuestTable.NAME + " SET " +
+					OsmQuestTable.Columns.CHANGES_SOURCE + " = 'survey' WHERE " +
+					OsmQuestTable.Columns.CHANGES_SOURCE + " ISNULL;");
+
+			// sqlite does not support dropping/altering constraints. Need to create new table.
+			// For simplicity sake, we just drop the old table and create it anew, this has the
+			// effect that all currently open changesets will not be used but instead new ones are
+			// created. That's okay because OSM server closes open changesets after 1h automatically.
+			db.execSQL("DROP TABLE " + OpenChangesetsTable.NAME + ";");
+			db.execSQL(OPEN_CHANGESETS_TABLE_CREATE);
 		}
 
 		// for later changes to the DB

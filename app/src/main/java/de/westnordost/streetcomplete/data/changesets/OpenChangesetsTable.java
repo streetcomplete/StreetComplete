@@ -8,6 +8,7 @@ public class OpenChangesetsTable
 	{
 		public static final String
 				QUEST_TYPE = "quest_type",
+				SOURCE = "source",
 				CHANGESET_ID = "changeset_id";
 	}
 }

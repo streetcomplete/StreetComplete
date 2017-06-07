@@ -15,7 +15,6 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
@@ -44,7 +43,6 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import de.westnordost.osmapi.common.errors.OsmAuthorizationException;
 import de.westnordost.osmapi.common.errors.OsmConnectionException;
 import de.westnordost.streetcomplete.about.AboutActivity;
 import de.westnordost.streetcomplete.data.Quest;
@@ -64,6 +62,7 @@ import de.westnordost.streetcomplete.oauth.OAuthWebViewDialogFragment;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 import de.westnordost.streetcomplete.quests.OsmQuestAnswerListener;
 import de.westnordost.streetcomplete.quests.QuestAnswerComponent;
+import de.westnordost.streetcomplete.quests.FindQuestSourceComponent;
 import de.westnordost.streetcomplete.settings.SettingsActivity;
 import de.westnordost.streetcomplete.statistics.AnswersCounter;
 import de.westnordost.streetcomplete.location.LocationState;
@@ -99,9 +98,12 @@ public class MainActivity extends AppCompatActivity implements
 	@Inject PerApplicationStartPrefs perApplicationStartPrefs;
 	@Inject OAuthComponent oAuthComponent;
 
+	@Inject FindQuestSourceComponent questSource;
+
 	private QuestsMapFragment mapFragment;
 	private LocationStateButton trackingButton;
 	private SingleLocationRequest singleLocationRequest;
+	private Location lastLocation;
 
 	private Long clickedQuestId = null;
 	private QuestGroup clickedQuestGroup = null;
@@ -198,6 +200,8 @@ public class MainActivity extends AppCompatActivity implements
 		answersCounter = (AnswersCounter) toolbar.findViewById(R.id.answersCounter);
 
 		oAuthComponent.setListener(this);
+
+		questSource.onCreate(this);
 
 		getSupportFragmentManager().beginTransaction()
 				.add(locationRequestFragment, LocationRequestFragment.class.getSimpleName())
@@ -578,11 +582,17 @@ public class MainActivity extends AppCompatActivity implements
 
 	/* ------------- OsmQuestAnswerListener ------------- */
 
-	@Override public void onAnsweredQuest(long questId, QuestGroup group, Bundle answer)
+	@Override public void onAnsweredQuest(final long questId, final QuestGroup group, final Bundle answer)
 	{
-		closeQuestDetailsFor(questId, group);
-		answersCounter.answeredQuest();
-		questController.solveQuest(questId, group, answer);
+		questSource.findSource(questId, group, lastLocation, new FindQuestSourceComponent.Listener()
+		{
+			@Override public void onFindQuestSourceResult(String source)
+			{
+				closeQuestDetailsFor(questId, group);
+				answersCounter.answeredQuest(source);
+				questController.solveQuest(questId, group, answer, source);
+			}
+		});
 	}
 
 	@Override public void onLeaveNote(long questId, QuestGroup group, String note)
@@ -733,6 +743,7 @@ public class MainActivity extends AppCompatActivity implements
 			closeQuestDetails();
 		}
 
+		lastLocation = mapFragment.getDisplayedLocation();
 		mapFragment.addQuestGeometry(quest.getGeometry());
 
 		AbstractQuestAnswerFragment f = quest.getType().createForm();

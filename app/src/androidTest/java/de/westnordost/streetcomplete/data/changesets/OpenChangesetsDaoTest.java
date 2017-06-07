@@ -6,8 +6,8 @@ public class OpenChangesetsDaoTest extends ApplicationDbTestCase
 {
 	private OpenChangesetsDao dao;
 
-	private static final String Q = "Hurzipurz";
-	private static final String P = "Brasliweks";
+	private static final OpenChangesetKey Q = new OpenChangesetKey("Hurzipurz","test");
+	private static final OpenChangesetKey P = new OpenChangesetKey("Brasliweks","test");
 
 	@Override public void setUp()
 	{
@@ -37,7 +37,8 @@ public class OpenChangesetsDaoTest extends ApplicationDbTestCase
 		dao.replace(Q, 12);
 		OpenChangesetInfo info = dao.get(Q);
 		assertEquals(12, (long) info.changesetId);
-		assertEquals(Q, info.questType);
+		assertEquals(Q.questType, info.key.questType);
+		assertEquals(Q.source, info.key.source);
 	}
 
 	public void testReplaceChangesetId()

@@ -27,6 +27,7 @@ import de.westnordost.osmapi.map.data.OsmNode;
 import de.westnordost.osmapi.user.User;
 import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.data.QuestStatus;
+import de.westnordost.streetcomplete.data.changesets.OpenChangesetKey;
 import de.westnordost.streetcomplete.data.changesets.OpenChangesetsDao;
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.OsmQuest;
@@ -195,7 +196,7 @@ public class OsmQuestChangesUploadTest extends TestCase
 
 		assertFalse(u.uploadQuestChange(firstChangesetId, quest, element, false, false));
 
-		verify(manageChangesetsDb).replace("TestQuestType", secondChangesetId);
+		verify(manageChangesetsDb).replace(new OpenChangesetKey("TestQuestType","test case"), secondChangesetId);
 		verify(questDb).delete(quest.getId());
 		verify(elementDb).delete(Element.Type.NODE, A_NODE_ID);
 	}
@@ -285,7 +286,7 @@ public class OsmQuestChangesUploadTest extends TestCase
 	private static OsmQuest createAnsweredQuest(StringMapChanges changes)
 	{
 		return new OsmQuest(3L, new TestQuestType(), Element.Type.NODE, A_NODE_ID,
-				QuestStatus.ANSWERED, changes, null, null);
+				QuestStatus.ANSWERED, changes, "test case", null, null);
 	}
 
 	private static Element createElement()

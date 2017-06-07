@@ -269,4 +269,8 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="quest_tactilePaving_title_bus">"Does this bus stop have tactile pavings?"</string>
     <string name="quest_tactilePaving_title_crosswalk">"Does this crosswalk have tactile pavings?"</string>
     <string name="quest_tactilePaving_title_name_bus">"Does the bus stop \"%s\" have tactile pavings?"</string>
+    <string name="quest_source_dialog_title">How did you get this info?</string>
+    <string name="quest_source_dialog_message">Note: You can only collect ★s for quests you solve on-site.</string>
+    <string name="quest_source_dialog_button_visited_before">I was there before</string>
+    <string name="quest_source_dialog_button_on_site">I am there now</string>
 </resources>

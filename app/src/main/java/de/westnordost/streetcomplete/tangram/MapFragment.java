@@ -207,6 +207,7 @@ public class MapFragment extends Fragment implements
 			accuracyMarker.setVisible(false);
 			directionMarker.setVisible(false);
 		}
+		lastLocation = null;
 		zoomedYet = false;
 
 		if(lostApiClient.isConnected())
@@ -486,5 +487,10 @@ public class MapFragment extends Fragment implements
 		if(controller == null) return;
 		controller.setZoomEased(controller.getZoom() - 1, 500);
 		updateView();
+	}
+
+	public Location getDisplayedLocation()
+	{
+		return lastLocation;
 	}
 }
