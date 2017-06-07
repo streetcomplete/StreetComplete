@@ -11,12 +11,11 @@ import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment;
 
 public class TactilePavingCrosswalkForm extends YesNoQuestAnswerFragment
 {
-	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
-							 Bundle savedInstanceState)
+	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
 		View view = super.onCreateView(inflater, container, savedInstanceState);
 		setContentView(R.layout.quest_tactile_paving);
-        setTitle(R.string.quest_tactilePaving_title_crosswalk);
+		setTitle(R.string.quest_tactilePaving_title_crosswalk);
 		return view;
 	}
 }

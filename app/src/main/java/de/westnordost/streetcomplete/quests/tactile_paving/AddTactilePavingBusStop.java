@@ -32,7 +32,7 @@ public class AddTactilePavingBusStop extends SimpleOverpassQuestType
 
 	public AbstractQuestAnswerFragment createForm()
 	{
-        return new TactilePavingBusStopForm();
+		return new TactilePavingBusStopForm();
 	}
 
 	public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
@@ -43,10 +43,10 @@ public class AddTactilePavingBusStop extends SimpleOverpassQuestType
 
 	@Override public String getCommitMessage()
 	{
-        return "Add tactile pavings on bus stops";
+		return "Add tactile pavings on bus stops";
 	}
 
 	@Override public String getIconName() {
-        return "bus_stop";
+		return "bus_stop";
 	}
 }

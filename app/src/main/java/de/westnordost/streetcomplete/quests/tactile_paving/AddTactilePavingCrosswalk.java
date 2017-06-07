@@ -21,7 +21,7 @@ public class AddTactilePavingCrosswalk extends SimpleOverpassQuestType
 	@Override
 	protected String getTagFilters()
 	{
-        return "nodes with highway=crossing and !tactile_paving";
+		return "nodes with highway=crossing and !tactile_paving";
 	}
 
 	@Override
@@ -32,7 +32,7 @@ public class AddTactilePavingCrosswalk extends SimpleOverpassQuestType
 
 	public AbstractQuestAnswerFragment createForm()
 	{
-        return new TactilePavingCrosswalkForm();
+		return new TactilePavingCrosswalkForm();
 	}
 
 	public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
@@ -43,10 +43,10 @@ public class AddTactilePavingCrosswalk extends SimpleOverpassQuestType
 
 	@Override public String getCommitMessage()
 	{
-        return "Add tactile pavings on crosswalks";
+		return "Add tactile pavings on crosswalks";
 	}
 
 	@Override public String getIconName() {
-        return "pedestrian_crossing";
+		return "pedestrian_crossing";
 	}
 }

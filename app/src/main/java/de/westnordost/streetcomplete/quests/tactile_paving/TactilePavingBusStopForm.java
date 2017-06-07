@@ -11,11 +11,10 @@ import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment;
 
 public class TactilePavingBusStopForm extends YesNoQuestAnswerFragment
 {
-	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
-							 Bundle savedInstanceState)
+	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
 		View view = super.onCreateView(inflater, container, savedInstanceState);
-        setContentView(R.layout.quest_tactile_paving);
+		setContentView(R.layout.quest_tactile_paving);
 		setTitle();
 		return view;
 	}
@@ -23,14 +22,14 @@ public class TactilePavingBusStopForm extends YesNoQuestAnswerFragment
 	private void setTitle()
 	{
 		OsmElement element = getOsmElement();
-        String name = element != null && element.getTags() != null ? element.getTags().get("name") : null;
-        if(name != null && !name.trim().isEmpty())
-        {
-            setTitle(getResources().getString(R.string.quest_tactilePaving_title_name_bus, name));
-        }
-        else
-        {
-            setTitle(R.string.quest_tactilePaving_title_bus);
-        }
+		String name = element != null && element.getTags() != null ? element.getTags().get("name") : null;
+		if(name != null && !name.trim().isEmpty())
+		{
+			setTitle(getResources().getString(R.string.quest_tactilePaving_title_name_bus, name));
+		}
+		else
+		{
+			setTitle(R.string.quest_tactilePaving_title_bus);
+		}
 	}
 }

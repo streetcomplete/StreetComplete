@@ -9,5 +9,5 @@ public enum QuestStatus
 	/** user chose to hide the quest */
 	HIDDEN,
 	/** the system (decided that it) doesn't show the quest. They may become visible again (-> NEW) */
-	INVISIBLE;
+	INVISIBLE
 }

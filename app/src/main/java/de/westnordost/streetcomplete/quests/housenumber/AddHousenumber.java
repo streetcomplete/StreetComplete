@@ -83,10 +83,9 @@ public class AddHousenumber implements OsmElementQuestType
 				handler.handle(element, geometry);
 			}
 		});
-		if(!success) return false;
 
-		return true;
-	}
+		return success;
+    }
 
 	@Override public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
 	{
