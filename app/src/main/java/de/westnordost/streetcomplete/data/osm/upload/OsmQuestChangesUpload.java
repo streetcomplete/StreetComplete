@@ -183,7 +183,7 @@ public class OsmQuestChangesUpload
 		}
 
 		questDB.delete(quest.getId());
-		statisticsDB.addOne(quest.getType().getClass().getSimpleName());
+		statisticsDB.addOne(quest.getType().getClass().getSimpleName(), quest.getChangesSource());
 
 		return true;
 	}
