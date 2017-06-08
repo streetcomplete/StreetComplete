@@ -23,7 +23,7 @@ import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
  *  at the GPS position or asking the user */
 public class FindQuestSourceComponent
 {
-	private static final float MAX_DISTANCE_TO_ELEMENT_FOR_SURVEY = 50; //m
+	private static final float MAX_DISTANCE_TO_ELEMENT_FOR_SURVEY = 100; //m
 
 	private static final String
 			SURVEY = "survey",
@@ -64,7 +64,7 @@ public class FindQuestSourceComponent
 			AlertDialogBuilder alertDialogBuilder = new AlertDialogBuilder(activity);
 			alertDialogBuilder
 					.setTitle(R.string.quest_source_dialog_title)
-					.setMessage(R.string.quest_source_dialog_message)
+					.setView(R.layout.quest_source_dialog_layout)
 					.setPositiveButton(R.string.quest_source_dialog_button_visited_before, new DialogInterface.OnClickListener()
 					{
 						@Override public void onClick(DialogInterface dialog, int which)
