@@ -22,7 +22,7 @@ public class AddRoadName extends SimpleOverpassQuestType
 	{
 		return " ways with " +
 		       " highway ~ living_street|bicycle_road|residential|pedestrian|primary|secondary|tertiary|unclassified|road " +
-		       " and !name and noname != yes and !junction and !area";
+		       " and !name and !ref and noname != yes and !junction and !area";
 	}
 
 	@Override
