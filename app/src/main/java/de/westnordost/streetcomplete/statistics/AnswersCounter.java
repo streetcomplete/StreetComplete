@@ -2,10 +2,7 @@ package de.westnordost.streetcomplete.statistics;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.os.Build;
-import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
-import android.widget.TextView;
 
 import javax.inject.Inject;
 
@@ -14,7 +11,7 @@ import de.westnordost.streetcomplete.data.QuestStatus;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
 import de.westnordost.streetcomplete.data.statistics.QuestStatisticsDao;
 
-public class AnswersCounter extends TextView
+public class AnswersCounter extends android.support.v7.widget.AppCompatTextView
 {
 	@Inject QuestStatisticsDao questStatisticsDB;
 	@Inject OsmQuestDao questDB;
@@ -40,13 +37,6 @@ public class AnswersCounter extends TextView
 		init();
 	}
 
-	@RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-	public AnswersCounter(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes)
-	{
-		super(context, attrs, defStyleAttr, defStyleRes);
-		init();
-	}
-
 	private void init()
 	{
 		Injector.instance.getApplicationComponent().inject(this);
@@ -54,8 +44,6 @@ public class AnswersCounter extends TextView
 
 	public void answeredQuest(String source)
 	{
-		if(!"survey".equals(source)) return;
-
 		answeredQuests++;
 		updateText();
 	}
