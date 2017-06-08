@@ -171,14 +171,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 	private void onClickedMap(float positionX, float positionY)
 	{
 		final LngLat pos = controller.screenPositionToLngLat(new PointF(positionX, positionY));
-		// necessary until/if not https://github.com/tangrams/tangram-es/issues/1365 is fixed
-		getActivity().runOnUiThread(new Runnable()
-		{
-			@Override public void run()
-			{
-				listener.onClickedMapAt(TangramConst.toLatLon(pos));
-			}
-		});
+		listener.onClickedMapAt(TangramConst.toLatLon(pos));
 	}
 
 	protected void updateView()
