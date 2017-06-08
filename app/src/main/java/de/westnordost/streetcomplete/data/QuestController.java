@@ -152,14 +152,15 @@ public class QuestController
 	}
 
 	/** Apply the user's answer to the given quest. (The quest will turn invisible.) */
-	public void solveQuest(final long questId, final QuestGroup group, final Bundle answer)
+	public void solveQuest(final long questId, final QuestGroup group, final Bundle answer,
+						   final String source)
 	{
 		workerHandler.post(new Runnable() { @Override public void run()
 		{
 			boolean success = false;
 			if (group == QuestGroup.OSM)
 			{
-				success = solveOsmQuest(questId, answer);
+				success = solveOsmQuest(questId, answer, source);
 			}
 			else if (group == QuestGroup.OSM_NOTE)
 			{
@@ -187,7 +188,7 @@ public class QuestController
 		}
 	}
 
-	private boolean solveOsmQuest(long questId, Bundle answer)
+	private boolean solveOsmQuest(long questId, Bundle answer, String source)
 	{
 		// race condition: another thread (i.e. quest download thread) may have removed the
 		// element already (#282). So in this case, just ignore
@@ -211,7 +212,7 @@ public class QuestController
 		StringMapChanges changes = changesBuilder.create();
 		if(!changes.isEmpty())
 		{
-			q.setChanges(changes);
+			q.setChanges(changes, source);
 			q.setStatus(QuestStatus.ANSWERED);
 			osmQuestDB.update(q);
 			openChangesetsDao.setLastQuestSolvedTimeToNow();

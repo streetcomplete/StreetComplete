@@ -52,8 +52,10 @@ public class AnswersCounter extends TextView
 		Injector.instance.getApplicationComponent().inject(this);
 	}
 
-	public void answeredQuest()
+	public void answeredQuest(String source)
 	{
+		if(!"survey".equals(source)) return;
+
 		answeredQuests++;
 		updateText();
 	}

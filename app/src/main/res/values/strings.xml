@@ -264,4 +264,8 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="quest_sport_manySports_confirmation_title">You selected many sports</string>
     <string name="quest_busStopShelter_name_title">Does the bus stop %s have a shelter?</string>
     <string name="quest_leave_new_note_in_response_to">In reply to \"%1$s\":\n%2$s</string>
+    <string name="quest_source_dialog_title">How did you get this info?</string>
+    <string name="quest_source_dialog_message">Note: You can only collect ★s for quests you solve on-site.</string>
+    <string name="quest_source_dialog_button_visited_before">I was there before</string>
+    <string name="quest_source_dialog_button_on_site">I am there now</string>
 </resources>

@@ -23,6 +23,7 @@ import de.westnordost.streetcomplete.ApplicationConstants;
 import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.data.QuestStatus;
 import de.westnordost.streetcomplete.data.changesets.OpenChangesetInfo;
+import de.westnordost.streetcomplete.data.changesets.OpenChangesetKey;
 import de.westnordost.streetcomplete.data.changesets.OpenChangesetsDao;
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.OsmQuest;
@@ -49,7 +50,7 @@ public class OsmQuestChangesUpload
 	private final SharedPreferences prefs;
 
 	// The cache is just here so that uploading 500 quests of same quest type does not result in 500 DB requests.
-	private Map<String, Long> changesetIdsCache = new HashMap<>();
+	private Map<OpenChangesetKey, Long> changesetIdsCache = new HashMap<>();
 
 	@Inject public OsmQuestChangesUpload(
 			MapDataDao osmDao, OsmQuestDao questDB, MergedElementDao elementDB,
@@ -78,7 +79,7 @@ public class OsmQuestChangesUpload
 
 			Element element = elementDB.get(quest.getElementType(), quest.getElementId());
 
-			long changesetId = getChangesetIdOrCreate(quest.getOsmElementQuestType());
+			long changesetId = getChangesetIdOrCreate(quest.getOsmElementQuestType(), quest.getChangesSource());
 			if (uploadQuestChange(changesetId, quest, element, false, false))
 			{
 				commits++;
@@ -121,19 +122,20 @@ public class OsmQuestChangesUpload
 			finally
 			{
 				// done!
-				openChangesetsDB.delete(info.questType);
+				openChangesetsDB.delete(info.key);
 			}
 		}
 	}
 
-	private long getChangesetIdOrCreate(OsmElementQuestType questType)
+	private long getChangesetIdOrCreate(OsmElementQuestType questType, String source)
 	{
 		String questTypeName = questType.getClass().getSimpleName();
 
-		Long cachedChangesetId = changesetIdsCache.get(questTypeName);
+		OpenChangesetKey key = new OpenChangesetKey(questTypeName, source);
+		Long cachedChangesetId = changesetIdsCache.get(key);
 		if(cachedChangesetId != null) return cachedChangesetId;
 
-		OpenChangesetInfo changesetInfo = openChangesetsDB.get(questTypeName);
+		OpenChangesetInfo changesetInfo = openChangesetsDB.get(key);
 		long result;
 		if (changesetInfo != null && changesetInfo.changesetId != null)
 		{
@@ -141,18 +143,18 @@ public class OsmQuestChangesUpload
 		}
 		else
 		{
-			result = createChangeset(questType);
+			result = createChangeset(questType, source);
 		}
 
-		changesetIdsCache.put(questTypeName, result);
+		changesetIdsCache.put(key, result);
 		return result;
 	}
 
-	private long createChangeset(OsmElementQuestType questType)
+	private long createChangeset(OsmElementQuestType questType, String source)
 	{
-		String questTypeName = questType.getClass().getSimpleName();
-		long changesetId = osmDao.openChangeset(createChangesetTags(questType));
-		openChangesetsDB.replace(questTypeName, changesetId);
+		OpenChangesetKey key = new OpenChangesetKey(questType.getClass().getSimpleName(), source);
+		long changesetId = osmDao.openChangeset(createChangesetTags(questType, source));
+		openChangesetsDB.replace(key, changesetId);
 		return changesetId;
 	}
 
@@ -252,9 +254,9 @@ public class OsmQuestChangesUpload
 	{
 		OsmElementQuestType questType = quest.getOsmElementQuestType();
 
-		long changesetId = createChangeset(questType);
-		String questTypeName = questType.getClass().getSimpleName();
-		changesetIdsCache.put(questTypeName, changesetId);
+		long changesetId = createChangeset(questType, quest.getChangesSource());
+		OpenChangesetKey key = new OpenChangesetKey(questType.getClass().getSimpleName(), quest.getChangesSource());
+		changesetIdsCache.put(key, changesetId);
 
 		return uploadQuestChange(changesetId, quest, element, alreadyHandlingElementConflict, true);
 	}
@@ -324,7 +326,7 @@ public class OsmQuestChangesUpload
 		return element;
 	}
 
-	private Map<String,String> createChangesetTags(OsmElementQuestType questType)
+	private Map<String,String> createChangesetTags(OsmElementQuestType questType, String source)
 	{
 		Map<String,String> changesetTags = new HashMap<>();
 		String commitMessage = questType.getCommitMessage();
@@ -335,7 +337,7 @@ public class OsmQuestChangesUpload
 		changesetTags.put("created_by", ApplicationConstants.USER_AGENT);
 		String questTypeName = questType.getClass().getSimpleName();
 		changesetTags.put(ApplicationConstants.QUESTTYPE_TAG_KEY, questTypeName);
-		changesetTags.put("source", "survey");
+		changesetTags.put("source", source);
 		return changesetTags;
 	}
 }
