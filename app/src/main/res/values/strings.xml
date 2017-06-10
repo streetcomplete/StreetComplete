@@ -265,8 +265,10 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="quest_busStopShelter_name_title">Does the bus stop %s have a shelter?</string>
     <string name="quest_leave_new_note_in_response_to">In reply to \"%1$s\":\n%2$s</string>
     <string name="quest_source_dialog_title">How do you know?</string>
-    <string name="quest_source_dialog_message">Note: You can only collect survey stars for quests you solve on-site.</string>
+    <string name="quest_source_dialog_note">Note: You can only collect stars for quests you solve on-site.</string>
     
     <string name="quest_source_dialog_button_visited_before">I was there before</string>
     <string name="quest_source_dialog_button_on_site">I am there now</string>
+    <string name="quest_source_dialog_unknown_location">Your position cannot be determined.</string>
+    <string name="quest_source_dialog_far_away_location">You appear to be more than %dm away.</string>
 </resources>

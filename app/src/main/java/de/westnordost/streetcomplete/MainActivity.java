@@ -584,7 +584,9 @@ public class MainActivity extends AppCompatActivity implements
 
 	@Override public void onAnsweredQuest(final long questId, final QuestGroup group, final Bundle answer)
 	{
-		questSource.findSource(questId, group, lastLocation, new FindQuestSourceComponent.Listener()
+		// line between location now and location when the form was opened
+		Location[] locations = new Location[]{ lastLocation, mapFragment.getDisplayedLocation() };
+		questSource.findSource(questId, group, locations, new FindQuestSourceComponent.Listener()
 		{
 			@Override public void onFindQuestSourceResult(String source)
 			{

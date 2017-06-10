@@ -3,10 +3,17 @@ package de.westnordost.streetcomplete.quests;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.location.Location;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.TextView;
 
 import com.vividsolutions.jts.geom.Coordinate;
 import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.geom.GeometryFactory;
+import com.vividsolutions.jts.operation.distance.DistanceOp;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -23,7 +30,22 @@ import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
  *  at the GPS position or asking the user */
 public class FindQuestSourceComponent
 {
-	private static final float MAX_DISTANCE_TO_ELEMENT_FOR_SURVEY = 100; //m
+	/* Considerations for choosing these values:
+	*  - users should be encouraged to *really* go right there and check even if they think they
+	*    see it from afar already
+	*
+	*  - just having walked by something should though still count as survey though. (It might be
+	*    inappropriate or awkward to stop and flip out the smartphone directly there)
+	*
+	*  - GPS position might not be updated right after they fetched it out of their pocket, but GPS
+	*    position should be reset to "unknown" (instead of "wrong") when switching back to the app
+	*
+	*  - the distance is the minimum distance between the quest geometry (i.e. a road) and the line
+	*    between the user's position when he opened the quest form and the position when he pressed
+	*    "ok", MINUS the current GPS accuracy, so it is a pretty forgiving calculation already
+	* */
+	private static final float MAX_DISTANCE_TO_ELEMENT_FOR_POSSIBLE_SURVEY = 250; //m
+	private static final float MAX_DISTANCE_TO_ELEMENT_FOR_SURVEY = 50; //m
 
 	private static final String
 			SURVEY = "survey",
@@ -51,20 +73,24 @@ public class FindQuestSourceComponent
 		this.activity = context;
 	}
 
-	public void findSource(final long questId, final QuestGroup group, final Location location,
+	public void findSource(final long questId, final QuestGroup group, final Location[] locations,
 						   final Listener listener)
 	{
-		Double distance = getDistanceToElement(questId, group, location);
+		Double distance = getDistanceToElementInMeters(questId, group, locations);
 		if(distance != null && distance < MAX_DISTANCE_TO_ELEMENT_FOR_SURVEY)
 		{
 			listener.onFindQuestSourceResult(SURVEY);
 		}
 		else
 		{
+			View inner = LayoutInflater.from(activity).inflate(
+					R.layout.quest_source_dialog_layout, null, false);
+			TextView distanceMessage = (TextView) inner.findViewById(R.id.distanceMessage);
+
 			AlertDialogBuilder alertDialogBuilder = new AlertDialogBuilder(activity);
 			alertDialogBuilder
 					.setTitle(R.string.quest_source_dialog_title)
-					.setView(R.layout.quest_source_dialog_layout)
+					.setView(inner)
 					.setPositiveButton(R.string.quest_source_dialog_button_visited_before, new DialogInterface.OnClickListener()
 					{
 						@Override public void onClick(DialogInterface dialog, int which)
@@ -75,6 +101,7 @@ public class FindQuestSourceComponent
 
 			if(distance == null)
 			{
+				distanceMessage.setText(R.string.quest_source_dialog_unknown_location);
 				alertDialogBuilder.setNeutralButton(R.string.quest_source_dialog_button_on_site, new DialogInterface.OnClickListener()
 				{
 					@Override public void onClick(DialogInterface dialog, int which)
@@ -85,29 +112,48 @@ public class FindQuestSourceComponent
 			}
 			else
 			{
-				alertDialogBuilder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener()
+				distanceMessage.setText(String.format(activity.getString(R.string.quest_source_dialog_far_away_location), roundToFifties(distance)));
+				if(distance < MAX_DISTANCE_TO_ELEMENT_FOR_POSSIBLE_SURVEY)
 				{
-					@Override public void onClick(DialogInterface dialog, int which)
+					alertDialogBuilder.setNeutralButton(R.string.quest_source_dialog_button_on_site, new DialogInterface.OnClickListener()
 					{
-						// nothing
-					}
-				});
+						@Override public void onClick(DialogInterface dialog, int which)
+						{
+							listener.onFindQuestSourceResult(SURVEY);
+						}
+					});
+				}
+				else
+				{
+					alertDialogBuilder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener()
+					{
+						@Override public void onClick(DialogInterface dialog, int which)
+						{
+							// nothing
+						}
+					});
+				}
 			}
 			alertDialogBuilder.show();
 		}
 	}
 
-	private Double getDistanceToElement(long questId, QuestGroup group, Location location)
+	private int roundToFifties(Double distance)
 	{
-		if(location == null) return null;
+		return (distance.intValue() / 50) * 50;
+	}
+
+	private Double getDistanceToElementInMeters(long questId, QuestGroup group, Location[] locations)
+	{
 		try
 		{
-			Geometry locationGeometry = geometryFactory.createPoint(new Coordinate(location.getLongitude(), location.getLatitude()));
-			Geometry questGeometry = JTSConst.toGeometry(getQuestGeometry(questId, group));
+			List<Location> locationsList = asListWithoutNullsAndDuplicates(locations);
+			Geometry locationGeometry = createLocationsGeometry(locationsList);
+			if(locationGeometry == null) return null;
+			double accuracy = getMeanAccuracy(locationsList);
 
-			double degreeDistance = questGeometry.distance(locationGeometry);
-			double distanceInMeters = SphericalEarthMath.EARTH_RADIUS * Math.PI * degreeDistance / 180;
-			return Math.max(0, distanceInMeters - location.getAccuracy());
+			Geometry questGeometry = JTSConst.toGeometry(getQuestGeometry(questId, group));
+			return Math.max(0, getDistanceInMeters(locationGeometry, questGeometry) - accuracy);
 		}
 		catch (RuntimeException e)
 		{
@@ -115,6 +161,67 @@ public class FindQuestSourceComponent
 			// that the distance can simply not determined (-> null)
 			return null;
 		}
+	}
+
+	private double getMeanAccuracy(List<Location> locations)
+	{
+		double accuracySum = 0;
+
+		for(Location location : locations)
+		{
+			accuracySum += location.getAccuracy();
+		}
+		return locations.isEmpty() ? 0 : accuracySum / locations.size();
+	}
+
+	private Geometry createLocationsGeometry(List<Location> locations)
+	{
+		if(locations == null || locations.isEmpty()) return null;
+		if(locations.size() == 1)
+		{
+			Location location = locations.get(0);
+			return geometryFactory.createPoint(createCoordinate(location));
+		}
+		Coordinate[] coordinates = new Coordinate[locations.size()];
+		for(int i=0; i<locations.size(); ++i)
+		{
+			Location location = locations.get(i);
+			coordinates[i] = createCoordinate(location);
+		}
+		return geometryFactory.createLineString(coordinates);
+	}
+
+	private static Coordinate createCoordinate(Location location)
+	{
+		return new Coordinate(location.getLongitude(), location.getLatitude());
+	}
+
+	private static List<Location> asListWithoutNullsAndDuplicates(Location[] locations)
+	{
+		List<Location> result = new ArrayList<>(locations.length);
+		Location previous = null;
+		for (int i = 0; i < locations.length; i++)
+		{
+			Location current = locations[i];
+			if(current == null) continue;
+			if(previous != null)
+			{
+				if(	previous.getLatitude() == current.getLatitude() &&
+					previous.getLongitude() == current.getLongitude()) continue;
+			}
+
+			result.add(current);
+
+			previous = current;
+		}
+		return result;
+	}
+
+	private static double getDistanceInMeters(Geometry one, Geometry two)
+	{
+		Coordinate[] nearest = DistanceOp.nearestPoints(one, two);
+		return SphericalEarthMath.distance(
+				JTSConst.toLatLon(nearest[0]), JTSConst.toLatLon(nearest[1]));
 	}
 
 	private ElementGeometry getQuestGeometry(long questId, QuestGroup group)
