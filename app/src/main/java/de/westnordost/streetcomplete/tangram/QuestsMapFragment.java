@@ -29,7 +29,6 @@ import de.westnordost.streetcomplete.data.osm.ElementGeometry;
 import de.westnordost.streetcomplete.util.SlippyMapMath;
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.LatLon;
-import de.westnordost.streetcomplete.util.SphericalEarthMath;
 
 public class QuestsMapFragment extends MapFragment implements TouchInput.TapResponder,
 		MapController.LabelPickListener
@@ -50,7 +49,11 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 	private Set<Point> retrievedTiles;
 	private static final int TILES_ZOOM = 14;
 
+	private static float MAX_QUEST_ZOOM = 19;
+
 	private Listener listener;
+
+	private int questTopOffset, questBottomOffset;
 
 	public interface Listener
 	{
@@ -146,26 +149,74 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 			return;
 		}
 
-		previousZoom = Math.max(17.5f,controller.getZoom()); // never zoom back further than 17.5
-		if(controller.getZoom() < 19)
-		{
-			LatLon pos = TangramConst.toLatLon(labelPickResult.getCoordinates());
-			LngLat zoomTo = TangramConst.toLngLat(SphericalEarthMath.translate(pos,20,180));
-			// move center a little because we have the bottom sheet blocking part of the map (hopefully temporary solution)
-			controller.setPositionEased(zoomTo, 500);
-			controller.setZoomEased(19, 500);
-		}
-		else
-		{
-			controller.setPositionEased(labelPickResult.getCoordinates(), 500);
-		}
-		updateView();
-
 		Map<String,String> props = labelPickResult.getProperties();
 		listener.onClickedQuest(
 				QuestGroup.valueOf(props.get(MARKER_QUEST_GROUP)),
 				Long.valueOf(props.get(MARKER_QUEST_ID))
 		);
+	}
+
+	private void zoomAndMoveToContain(ElementGeometry g)
+	{
+		// never zoom back further than 17.5
+		previousZoom = Math.max(17.5f,controller.getZoom());
+
+		float targetZoom = getMaxZoomThatContains(g);
+		if(Double.isNaN(targetZoom) || targetZoom > MAX_QUEST_ZOOM)
+		{
+			targetZoom = MAX_QUEST_ZOOM;
+		}
+		else
+		{
+			// zoom out a bit
+			targetZoom -= 0.35;
+		}
+
+		float currentZoom = controller.getZoom();
+
+		controller.setZoom(targetZoom);
+		LngLat pos = getCenterWithOffset(g);
+		controller.setZoom(currentZoom);
+
+		controller.setPositionEased(pos, 500);
+		controller.setZoomEased(targetZoom, 500);
+
+		updateView();
+	}
+
+	private LngLat getCenterWithOffset(ElementGeometry geometry)
+	{
+		LngLat top = controller.screenPositionToLngLat(new PointF(0, questTopOffset));
+		LngLat bottom = controller.screenPositionToLngLat(new PointF(0, questBottomOffset));
+		LngLat offset = new LngLat(0,0);
+		offset.latitude = (top.latitude - bottom.latitude) / 2;
+		offset.longitude = (top.longitude - bottom.longitude) / 2;
+		LngLat pos = TangramConst.toLngLat(geometry.center);
+		pos.latitude -= offset.latitude;
+		pos.longitude -= offset.longitude;
+		return pos;
+	}
+
+	private float getMaxZoomThatContains(ElementGeometry geometry)
+	{
+		BoundingBox objectBounds = geometry.getBounds();
+		BoundingBox screenArea;
+		float currentZoom;
+		synchronized(controller) {
+			screenArea = getDisplayedArea(questTopOffset, questBottomOffset);
+			currentZoom = controller.getZoom();
+		}
+
+		double screenWidth = screenArea.getMaxLongitude() - screenArea.getMinLongitude();
+		double screenHeight = screenArea.getMaxLatitude() - screenArea.getMinLatitude();
+
+		double objectWidth = objectBounds.getMaxLongitude() - objectBounds.getMinLongitude();
+		double objectHeight = objectBounds.getMaxLatitude() - objectBounds.getMinLatitude();
+
+		double zoomDeltaX = Math.log10(screenWidth / objectWidth) / Math.log10(2.);
+		double zoomDeltaY = Math.log10(screenHeight / objectHeight) / Math.log10(2.);
+
+		return (float) Math.max(1, currentZoom + Math.min(zoomDeltaX, zoomDeltaY));
 	}
 
 	private void onClickedMap(float positionX, float positionY)
@@ -185,7 +236,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		if(lastPos != null  && lastPos.equals(positionNow)) return;
 		lastPos = positionNow;
 
-		BoundingBox displayedArea = getDisplayedArea();
+		BoundingBox displayedArea = getDisplayedArea(0,0);
 		if(displayedArea == null) return;
 
 		Rect tilesRect = SlippyMapMath.enclosingTiles(displayedArea, TILES_ZOOM);
@@ -220,9 +271,18 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		retrievedTiles.addAll(tiles);
 	}
 
+	public void setQuestYOffsets(int questTopOffset, int questBottomOffset)
+	{
+		this.questTopOffset = questTopOffset;
+		this.questBottomOffset = questBottomOffset;
+	}
+
 	public void addQuestGeometry(ElementGeometry g)
 	{
 		if(geometryLayer == null) return; // might still be null - async calls...
+
+		zoomAndMoveToContain(g);
+		updateView();
 
 		Map<String,String> props = new HashMap<>();
 
@@ -328,12 +388,13 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		updateView();
 	}
 
-	public BoundingBox getDisplayedArea()
+	public BoundingBox getDisplayedArea(int topOffset, int bottomOffset)
 	{
 		if(controller == null) return null;
 		if(getView() == null) return null;
-
-		Point size = new Point(getView().getMeasuredWidth(), getView().getMeasuredHeight());
+		Point size = new Point(
+				getView().getMeasuredWidth(),
+				getView().getMeasuredHeight() - topOffset - bottomOffset);
 
 		// the special cases here are: map tilt and map rotation:
 		// * map tilt makes the screen area -> world map area into a trapezoid
@@ -343,9 +404,9 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		if(controller.getTilt() > Math.PI / 4f) return null; // 45°
 
 		LatLon[] positions = new LatLon[4];
-		positions[0] = getLatLonAtPos(new PointF(0,0));
+		positions[0] = getLatLonAtPos(new PointF(topOffset,0));
 		positions[1] = getLatLonAtPos(new PointF(size.x, 0));
-		positions[2] = getLatLonAtPos(new PointF(0,size.y));
+		positions[2] = getLatLonAtPos(new PointF(topOffset,size.y));
 		positions[3] = getLatLonAtPos(new PointF(size));
 
 		// dealing with rotation: find each the largest latlon and the smallest latlon, that'll

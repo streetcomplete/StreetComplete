@@ -8,5 +8,6 @@
 
     <!-- Form content -->
     <dimen name="quest_form_vertical_margin">8dp</dimen>
+    <dimen name="quest_bottom_sheet_peek_height">200dp</dimen>
 
 </resources>

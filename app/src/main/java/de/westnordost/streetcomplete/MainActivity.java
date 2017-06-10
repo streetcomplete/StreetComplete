@@ -25,6 +25,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.AttributeSet;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -213,6 +214,8 @@ public class MainActivity extends AppCompatActivity implements
 		progressBar.setMax(1000);
 
 		mapFragment = (QuestsMapFragment) getFragmentManager().findFragmentById(R.id.map_fragment);
+		mapFragment.setQuestYOffsets(50,
+				getResources().getDimensionPixelSize(R.dimen.quest_bottom_sheet_peek_height));
 
 		mapFragment.getMapAsync(BuildConfig.MAPZEN_API_KEY != null ?
 				BuildConfig.MAPZEN_API_KEY :
@@ -417,7 +420,7 @@ public class MainActivity extends AppCompatActivity implements
 	private void downloadDisplayedArea()
 	{
 		BoundingBox displayArea;
-		if ((displayArea = mapFragment.getDisplayedArea()) == null)
+		if ((displayArea = mapFragment.getDisplayedArea(0,0)) == null)
 		{
 			Toast.makeText(this, R.string.cannot_find_bbox, Toast.LENGTH_LONG).show();
 		}

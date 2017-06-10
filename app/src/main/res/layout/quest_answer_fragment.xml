@@ -21,7 +21,7 @@
             android:elevation="16dp"
             android:orientation="vertical"
             app:layout_behavior="android.support.design.widget.BottomSheetBehavior"
-            app:behavior_peekHeight="200dp"
+            app:behavior_peekHeight="@dimen/quest_bottom_sheet_peek_height"
             android:background="@android:color/background_light"
             >
 
