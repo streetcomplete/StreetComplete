@@ -4,20 +4,33 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/dialog_horizontal_margin">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_hollow_star_gray_64dp"/>
     <TextView
-        android:id="@id/textView"
-        android:layout_width="wrap_content"
+        android:id="@+id/distanceMessage"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/imageView"
-        android:layout_marginStart="8dp"
-        android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
-        android:textAppearance="@android:style/TextAppearance.Theme.Dialog"
-        android:text="@string/quest_source_dialog_message"/>
+        android:layout_alignParentTop="true"
+        android:textAppearance="@android:style/TextAppearance.Theme.Dialog"/>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/distanceMessage"
+        android:layout_marginTop="@dimen/dialog_vertical_margin">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_hollow_star_gray_32dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/imageView"
+            android:layout_marginStart="8dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:text="@string/quest_source_dialog_note"/>
+
+    </RelativeLayout>
 </RelativeLayout>
