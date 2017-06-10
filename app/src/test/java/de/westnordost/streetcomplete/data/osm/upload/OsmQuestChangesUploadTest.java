@@ -253,7 +253,7 @@ public class OsmQuestChangesUploadTest extends TestCase
 
 		assertTrue(u.uploadQuestChange(1, quest, element, false, false));
 		verify(questDb).delete(quest.getId());
-		verify(statisticsDao).addOne("TestQuestType");
+		verify(statisticsDao).addOne("TestQuestType", "test case");
 	}
 
 	private static class TestQuestType implements OsmElementQuestType
