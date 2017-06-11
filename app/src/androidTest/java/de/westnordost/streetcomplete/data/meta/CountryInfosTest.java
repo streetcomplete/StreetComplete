@@ -93,7 +93,7 @@ public class CountryInfosTest extends AndroidTestCase
 	private Map<String, CountryInfo> getAllCountryInfos() throws IOException
 	{
 		AssetManager am = getContext().getAssets();
-		String[] fileList = am.list("countryInfos");
+		String[] fileList = am.list("country_metadata");
 		CountryInfos cis = new CountryInfos(am, null);
 		Map<String,CountryInfo> all = new HashMap<>();
 		for(int i = 0; i < fileList.length; ++i)

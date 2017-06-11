@@ -1,0 +1,8 @@
+default: km/h
+BS: mph
+BZ: mph
+GB: mph
+MM: mph
+PR: mph
+US: mph
+WS: mph

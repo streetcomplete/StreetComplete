@@ -1,4 +1,0 @@
-popularSports: [tennis, basketball, soccer, cricket, field_hockey]
-# only Hindi and English are nationwide official languages, the rest only regional (but India is big
-# so I include the most important ones, spoken by more than 5 mio people)
-officialLanguages: [hi,en,bn,te,mr,ta,ur,gu,kn,ml,or,pa,as,mai,ks]

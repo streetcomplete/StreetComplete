@@ -19,7 +19,7 @@ import javax.inject.Inject;
 
 public class CountryInfos
 {
-	private static final String BASEPATH = "countryInfos";
+	private static final String BASEPATH = "country_metadata";
 
 	private final AssetManager assetManager;
 	private final CountryBoundaries countryBoundaries;

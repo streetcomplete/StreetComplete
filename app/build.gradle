@@ -99,3 +99,8 @@ dependencies {
     compile 'com.google.guava:guava:20.0'
 
 }
+
+task generateCountryMetadata(type: Exec) {
+    commandLine 'python', 'generateCountryMetadata.py', '../res/country_metadata/', 'src/main/assets/country_metadata/'
+}
+preBuild.dependsOn(generateCountryMetadata)

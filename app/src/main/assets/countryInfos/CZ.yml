@@ -1,3 +1,0 @@
-popularSports: [soccer, tennis, volleyball, beachvolleyball, ice_hockey, handball]
-additionalValidHousenumberRegex: ev\.\p{N}{1,4}
-officialLanguages: [cs]

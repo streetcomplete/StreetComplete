@@ -1,0 +1,28 @@
+# the first day in a workweek (not necessarily the first day of the week in a calendar)
+# Source: https://en.wikipedia.org/wiki/Workweek_and_weekend#Around_the_world (retrieved 27.10.2016)
+default: Mo
+AE: Su
+AF: Sa
+BD: Su
+BH: Su
+DJ: Sa
+DZ: Su
+EG: Su
+IL: Su
+IQ: Su
+IR: Sa
+JO: Su
+KW: Su
+LY: Su
+MA: Su
+MV: Su
+NP: Su
+OM: Su
+PS: Su
+QA: Su
+SA: Su
+SD: Su
+SO: Su
+SU: Su
+SY: Su
+YE: Su

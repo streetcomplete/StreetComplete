@@ -4,10 +4,8 @@
 .DS_Store
 /build
 /captures
-/rejected
 *.iml
-view_db.bat
-view_test_db.bat
 *.ignore
 projectFilesBackup/.idea/workspace.xml
 /keystore.properties
+/app/src/main/assets/country_metadata
