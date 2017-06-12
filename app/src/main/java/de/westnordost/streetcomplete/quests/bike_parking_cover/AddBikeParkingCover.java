@@ -22,7 +22,7 @@ public class AddBikeParkingCover extends SimpleOverpassQuestType
 	@Override
 	protected String getTagFilters()
 	{
-		return "nodes, ways with amenity=bicycle_parking and access!=private and !covered and bicycle_parking!=shed and bicycle_parking!=lockers and bicycle_parking!=building";
+		return "nodes, ways with amenity=bicycle_parking and access!=private and !covered and bicycle_parking !~ shed|lockers|building";
 	}
 
 	@Override
