@@ -9,7 +9,7 @@ public class QuestImportance
 	*  "name is missing" etc. However, with this software hopefully gaining some popularity, this is
 	*  not necessary or meaningful anymore because those things are created automatically then */
 
-	/** Solving this quest will fix data that is shown as invalid or erronous in QA tools */
+	/** Solving this quest will fix data that is shown as invalid or erroneous in QA tools */
 	public static final int ERROR = 1;
 
 	/** Solving this quest will fix data that is shown as warnings in QA tools */
