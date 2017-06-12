@@ -22,7 +22,7 @@ public class AddBikeParkingCover extends SimpleOverpassQuestType
 	@Override
 	protected String getTagFilters()
 	{
-		return "nodes, ways, relations with amenity=bicycle_parking and access!=private and !covered";
+		return "nodes, ways with amenity=bicycle_parking and access!=private and !covered and bicycle_parking!=shed and bicycle_parking!=lockers and bicycle_parking!=building";
 	}
 
 	@Override
@@ -41,12 +41,12 @@ public class AddBikeParkingCover extends SimpleOverpassQuestType
 	public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
 	{
 		String yesno = answer.getBoolean(YesNoQuestAnswerFragment.ANSWER) ? "yes" : "no";
-		changes.add("access", yesno);
+		changes.add("covered", yesno);
 	}
 
 	@Override public String getCommitMessage()
 	{
-		return "Add whatever bicycle parking is protected from rain";
+		return "Add bicycle parkings cover";
 	}
 
 	@Override public String getIconName() {	return "bicycle_parking"; }
