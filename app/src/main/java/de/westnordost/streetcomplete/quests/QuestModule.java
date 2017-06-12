@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.data.QuestType;
 import de.westnordost.streetcomplete.data.QuestTypes;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
 import de.westnordost.streetcomplete.quests.bike_parking_capacity.AddBikeParkingCapacity;
+import de.westnordost.streetcomplete.quests.bike_parking_cover.AddBikeParkingCover;
 import de.westnordost.streetcomplete.quests.building_levels.AddBuildingLevels;
 import de.westnordost.streetcomplete.quests.bus_stop_shelter.AddBusStopShelter;
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingBusStop;
@@ -38,6 +39,7 @@ public class QuestModule
 				new AddToiletsFee(o),
 				new AddHousenumber(o),
 				new AddBikeParkingCapacity(o),
+				new AddBikeParkingCover(o),
 				new AddSport(o),
 				new AddTactilePavingBusStop(o),
 				new AddTactilePavingCrosswalk(o)
