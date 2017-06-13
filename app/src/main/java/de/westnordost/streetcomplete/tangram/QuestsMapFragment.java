@@ -365,6 +365,10 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 			geoJson.append(MARKER_QUEST_ID);
 			geoJson.append("\":\"");
 			geoJson.append(quest.getId());
+			geoJson.append("\",\"");
+			geoJson.append("importance");
+			geoJson.append("\":\"");
+			geoJson.append(quest.getType().importance());
 			geoJson.append("\"}}");
 		}
 		geoJson.append("]}");
