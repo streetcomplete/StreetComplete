@@ -268,13 +268,9 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
 	<string name="quest_toiletsFee_title">"Do these toilets require a fee?"</string>
     <string name="quest_tactilePaving_title_bus">"Does this bus stop have tactile pavings?"</string>
     <string name="quest_tactilePaving_title_crosswalk">"Does this crosswalk have tactile pavings?"</string>
-    <string name="quest_source_dialog_title">How do you know?</string>
-    <string name="quest_source_dialog_note">Note: You can only collect stars for quests you solve on-site.</string>
+    <string name="quest_source_dialog_title">Are you sure you checked this on-site?</string>
+    <string name="quest_source_dialog_note">Only information that was found on a survey should be entered.</string>
     <string name="quest_tactilePaving_title_name_bus">"Does the bus stop \"%s\" have tactile pavings?"</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Is this bicycle parking covered (protected from rain)?"</string>
-    
-    <string name="quest_source_dialog_button_visited_before">I was there before</string>
-    <string name="quest_source_dialog_button_on_site">I am there now</string>
-    <string name="quest_source_dialog_unknown_location">Your position cannot be determined.</string>
-    <string name="quest_source_dialog_far_away_location">You appear to be more than %dm away.</string>
+    <string name="dialog_session_dont_show_again">Don\'t show again for this session</string>
 </resources>

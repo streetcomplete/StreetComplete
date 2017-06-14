@@ -5,32 +5,18 @@
                 android:padding="@dimen/dialog_horizontal_margin">
 
     <TextView
-        android:id="@+id/distanceMessage"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:textAppearance="@android:style/TextAppearance.Theme.Dialog"/>
+        android:text="@string/quest_source_dialog_note"
+        android:textAppearance="@android:style/TextAppearance.Theme.Dialog"
+        android:id="@+id/sourceNote"/>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
+    <CheckBox
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/distanceMessage"
-        android:layout_marginTop="@dimen/dialog_vertical_margin">
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:src="@drawable/ic_hollow_star_gray_32dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/imageView"
-            android:layout_marginStart="8dp"
-            android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true"
-            android:text="@string/quest_source_dialog_note"/>
-
-    </RelativeLayout>
+        android:layout_below="@+id/sourceNote"
+        android:layout_marginTop="@dimen/dialog_vertical_margin"
+        android:text="@string/dialog_session_dont_show_again"
+        android:id="@+id/checkBoxDontShowAgain"
+        />
 </RelativeLayout>
