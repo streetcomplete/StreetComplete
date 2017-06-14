@@ -26,12 +26,14 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.AttributeSet;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -103,6 +105,8 @@ public class MainActivity extends AppCompatActivity implements
 	// per application start settings
 	private static boolean isFollowingPosition = true;
 	private static boolean hasAskedForLocation = false;
+	private static boolean dontShowRequestAuthorizationAgain = false;
+
 	private QuestsMapFragment mapFragment;
 	private LocationStateButton trackingButton;
 	private SingleLocationRequest singleLocationRequest;
@@ -385,20 +389,30 @@ public class MainActivity extends AppCompatActivity implements
 
 	private void requestOAuthorized()
 	{
-		DialogInterface.OnClickListener onYes = new DialogInterface.OnClickListener()
-		{
-			@Override public void onClick(DialogInterface dialog, int which)
-			{
-				OAuthWebViewDialogFragment dlg = OAuthWebViewDialogFragment.create(
-						OAuth.createConsumer(), OAuth.createProvider());
-				dlg.show(getFragmentManager(), OAuthWebViewDialogFragment.TAG);
-			}
-		};
+		if(dontShowRequestAuthorizationAgain) return;
+
+		View inner = LayoutInflater.from(this).inflate(
+				R.layout.authorize_now_dialog_layout, null, false);
+		final CheckBox checkBox = (CheckBox) inner.findViewById(R.id.checkBoxDontShowAgain);
 
 		new AlertDialogBuilder(this)
-				.setMessage(R.string.confirmation_authorize_now)
-				.setPositiveButton(android.R.string.ok, onYes)
-				.setNegativeButton(R.string.later, null).show();
+				.setView(inner)
+				.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener()
+				{
+					@Override public void onClick(DialogInterface dialog, int which)
+					{
+						OAuthWebViewDialogFragment dlg = OAuthWebViewDialogFragment.create(
+								OAuth.createConsumer(), OAuth.createProvider());
+						dlg.show(getFragmentManager(), OAuthWebViewDialogFragment.TAG);
+					}
+				})
+				.setNegativeButton(R.string.later, new DialogInterface.OnClickListener()
+				{
+					@Override public void onClick(DialogInterface dialog, int which)
+					{
+						dontShowRequestAuthorizationAgain = checkBox.isChecked();
+					}
+				}).show();
 	}
 
 	@Override public void onOAuthAuthorized(OAuthConsumer consumer, List<String> permissions)
