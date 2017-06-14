@@ -33,8 +33,7 @@ class OAuthException extends Exception {
     }
 
     private static String formatErrorString(int code, String reason, String url) {
-        return String.format(Locale.US, "Code=%d, Reason=%s, Url=%s", code, reason, url);
+        return "Code=" + code + ", Reason=" + reason + ", Url=" + url;
     }
-
 
 }
