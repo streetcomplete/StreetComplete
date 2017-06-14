@@ -1,0 +1,4 @@
+# Do not edit. Source files are in /res/country_metadata
+officialLanguages: [en]
+popularSports: [soccer, tennis, bowls, cricket, golf, basketball, rugby]
+speedUnit: mph

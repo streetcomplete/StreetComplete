@@ -1,0 +1,5 @@
+# Do not edit. Source files are in /res/country_metadata
+maxspeedLayout: quest_maxspeed_us
+officialLanguages: [en]
+popularSports: [baseball, tennis, basketball, soccer, golf, american_football]
+speedUnit: mph

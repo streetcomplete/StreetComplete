@@ -8,4 +8,3 @@
 *.ignore
 projectFilesBackup/.idea/workspace.xml
 /keystore.properties
-/app/src/main/assets/country_metadata

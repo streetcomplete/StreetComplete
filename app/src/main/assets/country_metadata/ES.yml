@@ -1,0 +1,4 @@
+# Do not edit. Source files are in /res/country_metadata
+additionalValidHousenumberRegex: s/n
+officialLanguages: [es]
+popularSports: [soccer, tennis, basketball, golf, paddle_tennis, pelota]

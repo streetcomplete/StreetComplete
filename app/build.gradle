@@ -100,7 +100,10 @@ dependencies {
 
 }
 
-task generateCountryMetadata(type: Exec) {
-    commandLine 'python', 'generateCountryMetadata.py', '../res/country_metadata/', 'src/main/assets/country_metadata/'
+task generateMetadata(type: Exec) {
+    commandLine 'python','generateCountryMetadata.py', '../res/country_metadata/', 'src/main/assets/country_metadata/', 'Do not edit. Source files are in /res/country_metadata'
+    commandLine 'python', 'exportCountryGeometriesToGeoJson.py', '../res/countryBoundaries.osm', 'src/main/assets/countryBoundaries.json'
 }
-preBuild.dependsOn(generateCountryMetadata)
+// rather not, otherwise all contributors that want to build need to have installed python and the
+// dependencies I use for these scripts.
+//preBuild.dependsOn(generateMetadata)
