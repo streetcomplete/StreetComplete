@@ -721,11 +721,10 @@ sources:
         type: MVT #GeoJSON, MVT, TopoJSON
         #binary MVT format is used in StreetComplete as it is recommended for mobile
         #https://mapzen.com/documentation/vector-tiles/)
-        url:  https://tile.mapzen.com/mapzen/vector/v1/all/{z}/{x}/{y}.topojson
+        # https has been causing problems for certain Android devices - https://github.com/westnordost/StreetComplete/issues/175
+        url:  http://tile.mapzen.com/mapzen/vector/v1/all/{z}/{x}/{y}.mvt
         #url: '//tile.dev.mapzen.com/mapzen/vector/v1/all/{z}/{x}/{y}.topojson'
         #url:  //localhost:8080/vector/all/{z}/{x}/{y}.json
-        url_params:
-            api_key: global.sdk_mapzen_api_key
         max_zoom: 16
 
 #    # Only enable this for local debug, should not be enabled for prod (app inserts these at runtime)
