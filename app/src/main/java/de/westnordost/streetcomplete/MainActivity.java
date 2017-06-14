@@ -96,11 +96,13 @@ public class MainActivity extends AppCompatActivity implements
 	@Inject QuestController questController;
 
 	@Inject SharedPreferences prefs;
-	@Inject PerApplicationStartPrefs perApplicationStartPrefs;
 	@Inject OAuthComponent oAuthComponent;
 
 	@Inject FindQuestSourceComponent questSource;
 
+	// per application start settings
+	private static boolean isFollowingPosition = true;
+	private static boolean hasAskedForLocation = false;
 	private QuestsMapFragment mapFragment;
 	private LocationStateButton trackingButton;
 	private SingleLocationRequest singleLocationRequest;
@@ -237,8 +239,7 @@ public class MainActivity extends AppCompatActivity implements
 				}
 			}
 		});
-		boolean isFollowing = perApplicationStartPrefs.get().getBoolean(Prefs.FOLLOW_POSITION, true);
-        trackingButton.setActivated(isFollowing);
+        trackingButton.setActivated(isFollowingPosition);
 
 		ImageButton zoomInButton = (ImageButton) findViewById(R.id.zoom_in);
 		zoomInButton.setOnClickListener(new View.OnClickListener()
@@ -283,7 +284,7 @@ public class MainActivity extends AppCompatActivity implements
 				new Intent(this, QuestDownloadService.class),
 				downloadServiceConnection, BIND_AUTO_CREATE);
 
-		if(!perApplicationStartPrefs.get().getBoolean(Prefs.HAS_ASKED_FOR_LOCATION, false))
+		if(!hasAskedForLocation)
 		{
 			locationRequestFragment.startRequest();
 		}
@@ -317,7 +318,7 @@ public class MainActivity extends AppCompatActivity implements
 		questController.onStop();
 		questAutoSyncer.onStop();
 
-        perApplicationStartPrefs.get().putBoolean(Prefs.FOLLOW_POSITION, trackingButton.isActivated());
+		isFollowingPosition = trackingButton.isActivated();
 
 		if (downloadServiceIsBound) unbindService(downloadServiceConnection);
 		if (downloadService != null)
@@ -860,7 +861,7 @@ public class MainActivity extends AppCompatActivity implements
 
 	@Override public void onLocationRequestFinished(LocationState withLocationState)
 	{
-		perApplicationStartPrefs.get().putBoolean(Prefs.HAS_ASKED_FOR_LOCATION, true);
+		hasAskedForLocation = true;
 		trackingButton.setState(withLocationState);
 		boolean enabled = withLocationState.isEnabled();
 		if(enabled)

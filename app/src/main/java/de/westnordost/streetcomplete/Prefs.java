@@ -17,11 +17,6 @@ public class Prefs
 			LAST_SOLVED_QUEST_TIME = "changesets.lastQuestSolvedTime",
 			KEEP_SCREEN_ON = "display.keepScreenOn";
 
-	// these are not persisted
-	public static final String
-			FOLLOW_POSITION = "followPosition",
-			HAS_ASKED_FOR_LOCATION = "hasAskedForLocation";
-
 	public enum Autosync
 	{
 		ON, WIFI, OFF
