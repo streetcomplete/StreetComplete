@@ -111,6 +111,19 @@ public class GeoJsonReaderTest extends TestCase
 		assertEquals(1,p.getNumInteriorRing());
 	}
 
+	public void testPolygonWithMergableInnerHoles()
+	{
+		Geometry g = read("{\n" +
+				"  \"type\": \"Polygon\",\n" +
+				"  \"coordinates\": [[[0,0],[4,0],[0,4],[4,4],[0,0]],[[1,1],[1,3],[3,3],[1,1]],[[1,1],[3,1],[3,3],[1,1]]]\n" +
+				"}");
+
+		assertTrue(g instanceof Polygon);
+		Polygon p = (Polygon) g;
+		assertEquals(10,p.getNumPoints());
+		assertEquals(1,p.getNumInteriorRing());
+	}
+
 	public void testValidatePolygon()
 	{
 		try
@@ -145,6 +158,19 @@ public class GeoJsonReaderTest extends TestCase
 		MultiPolygon mp = (MultiPolygon) g;
 		assertEquals(2,mp.getNumGeometries());
 		assertEquals(8,mp.getNumPoints());
+	}
+
+	public void testMultiPolygonMergable()
+	{
+		Geometry g = read("{\n" +
+				"  \"type\": \"MultiPolygon\",\n" +
+				"  \"coordinates\": [[[[0,0],[4,0],[0,4],[0,0]]], [[[4,0],[4,4],[0,4],[4,0]]], [[[4,0],[4,4],[8,4],[4,0]]]]\n" +
+				"}");
+
+		assertTrue(g instanceof MultiPolygon);
+		MultiPolygon mp = (MultiPolygon) g;
+		assertEquals(1,mp.getNumGeometries());
+		assertEquals(6,mp.getNumPoints());
 	}
 
 	public void testEmptyGeometryCollection()

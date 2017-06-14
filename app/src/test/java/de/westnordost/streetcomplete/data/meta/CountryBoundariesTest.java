@@ -1,13 +1,13 @@
 package de.westnordost.streetcomplete.data.meta;
 
-import android.test.AndroidTestCase;
+import junit.framework.TestCase;
 
 import java.io.ByteArrayInputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 import java.util.Collections;
 
-public class CountryBoundariesTest extends AndroidTestCase
+public class CountryBoundariesTest extends TestCase
 {
 	private static final String testGeoJson = "" +
 			"{\"type\":\"FeatureCollection\",\"features\":[\n" +

@@ -1,7 +1,10 @@
 package de.westnordost.streetcomplete.data.meta;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import org.json.JSONArray;
@@ -13,6 +16,7 @@ import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.geom.GeometryCollection;
 import com.vividsolutions.jts.geom.GeometryFactory;
 import com.vividsolutions.jts.geom.LineString;
+import com.vividsolutions.jts.geom.Lineal;
 import com.vividsolutions.jts.geom.LinearRing;
 import com.vividsolutions.jts.geom.MultiLineString;
 import com.vividsolutions.jts.geom.MultiPoint;
@@ -140,7 +144,50 @@ public class GeoJsonReader
 		{
 			polygons[i] = createPolygon(coords.getJSONArray(i));
 		}
+
+		/* JTS MultiPolygon imposes a restriction on the contained Polygons that a GeoJson
+		 * MultiPolygon does not impose. From the JTS documentation:
+		 * "As per the OGC SFS specification, the Polygons in a MultiPolygon may not overlap, and
+		 *  may only touch at single points. This allows the topological point-set semantics to be
+		 *  well-defined."*/
+		polygons = mergeRecursive(polygons);
+
 		return factory.createMultiPolygon(polygons);
+	}
+	// TODO TEST THIS!
+	private Polygon[] mergeRecursive(Polygon[] polygons)
+	{
+		// merge again and again until nothing more can be merged
+		while (true)
+		{
+			Polygon[] result = merge(polygons);
+			if(polygons.length == result.length) return result;
+			polygons = result;
+		}
+	}
+
+	private Polygon[] merge(Polygon[] polys)
+	{
+		for(int i1 = 0; i1 < polys.length - 1; ++i1)
+		{
+			Polygon p1 = polys[i1];
+			for(int i2 = i1+1; i2 < polys.length; ++i2)
+			{
+				Polygon p2 = polys[i2];
+				Geometry intersection = p1.intersection(p2);
+				if(!intersection.isEmpty() && intersection instanceof Lineal)
+				{
+					Polygon union = (Polygon) p1.union(p2);
+					List<Polygon> polyList = new ArrayList<>(Arrays.asList(polys));
+					polyList.remove(p1);
+					polyList.remove(p2);
+					polyList.add(union);
+					return polyList.toArray(new Polygon[]{});
+				}
+			}
+		}
+		// nothing to merge
+		return polys;
 	}
 
 	private Polygon createPolygon(JSONArray coords) throws JSONException
@@ -157,9 +204,42 @@ public class GeoJsonReader
 		{
 			inner = new LinearRing[linearRings.length-1];
 			System.arraycopy(linearRings, 1, inner, 0, linearRings.length - 1);
+
+			/* JTS imposes a restriction on a polygon that GeoJSON does not: that the linear rings
+			   that define the holes may not touch each other in more than one point. So, we need to
+			   merge inner linear rings that touch each other in a line together */
+			inner = mergeRecursive(inner);
 		}
 
-		return factory.createPolygon(shell, inner);
+		Polygon polygon = factory.createPolygon(shell, inner);
+		/* in JTS, outer shells are clockwise but in GeoJSON it is specified to be the other way
+		   round. This reader is forgiving: It does not care about the direction, it will just
+		   reorder if necessary (part of normalize) */
+		polygon.normalize();
+		return polygon;
+	}
+
+	private LinearRing[] mergeRecursive(LinearRing[] rings)
+	{
+		// need to be converted to polygons and back because linearring is a lineal data structure,
+		// we want to merge by area
+		Polygon[] polygons = new Polygon[rings.length];
+		for (int i = 0; i < rings.length; i++)
+		{
+			polygons[i] = factory.createPolygon(rings[i]);
+		}
+		polygons = mergeRecursive(polygons);
+		if(polygons.length == rings.length)
+		{
+			return rings;
+		}
+
+		rings = new LinearRing[polygons.length];
+		for (int i = 0; i < polygons.length; ++i)
+		{
+			rings[i] = (LinearRing) polygons[i].getExteriorRing();
+		}
+		return rings;
 	}
 
 	private MultiLineString createMultiLineString(JSONArray coords) throws JSONException
