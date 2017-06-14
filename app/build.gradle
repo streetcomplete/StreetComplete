@@ -101,3 +101,10 @@ dependencies {
     compile 'com.google.guava:guava:20.0'
 
 }
+
+gradle.buildFinished { buildResult ->
+    if (!hasProperty('mapzenApiKey'))
+    {
+        println 'mapzenApiKey property is undefined. Map performance will be very poor.'
+    }
+}
