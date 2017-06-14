@@ -5,7 +5,7 @@ import android.content.DialogInterface;
 import android.location.Location;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.CheckBox;
 
 import com.vividsolutions.jts.geom.Coordinate;
 import com.vividsolutions.jts.geom.Geometry;
@@ -44,12 +44,13 @@ public class FindQuestSourceComponent
 	*    between the user's position when he opened the quest form and the position when he pressed
 	*    "ok", MINUS the current GPS accuracy, so it is a pretty forgiving calculation already
 	* */
-	private static final float MAX_DISTANCE_TO_ELEMENT_FOR_POSSIBLE_SURVEY = 250; //m
 	private static final float MAX_DISTANCE_TO_ELEMENT_FOR_SURVEY = 50; //m
 
 	private static final String
 			SURVEY = "survey",
 			LOCAL_KNOWLEGE = "local knowledge";
+	private static boolean dontShowAgain = false;
+	private static int timesShown = 0;
 
 	private Activity activity;
 	private final OsmQuestDao osmQuestDB;
@@ -77,7 +78,7 @@ public class FindQuestSourceComponent
 						   final Listener listener)
 	{
 		Double distance = getDistanceToElementInMeters(questId, group, locations);
-		if(distance != null && distance < MAX_DISTANCE_TO_ELEMENT_FOR_SURVEY)
+		if(dontShowAgain || distance != null && distance < MAX_DISTANCE_TO_ELEMENT_FOR_SURVEY)
 		{
 			listener.onFindQuestSourceResult(SURVEY);
 		}
@@ -85,62 +86,33 @@ public class FindQuestSourceComponent
 		{
 			View inner = LayoutInflater.from(activity).inflate(
 					R.layout.quest_source_dialog_layout, null, false);
-			TextView distanceMessage = (TextView) inner.findViewById(R.id.distanceMessage);
+			final CheckBox checkBox = (CheckBox) inner.findViewById(R.id.checkBoxDontShowAgain);
 
 			AlertDialogBuilder alertDialogBuilder = new AlertDialogBuilder(activity);
 			alertDialogBuilder
 					.setTitle(R.string.quest_source_dialog_title)
 					.setView(inner)
-					.setPositiveButton(R.string.quest_source_dialog_button_visited_before, new DialogInterface.OnClickListener()
+					.setPositiveButton(R.string.quest_generic_confirmation_yes, new DialogInterface.OnClickListener()
 					{
 						@Override public void onClick(DialogInterface dialog, int which)
 						{
-							listener.onFindQuestSourceResult(LOCAL_KNOWLEGE);
-						}
-					});
-
-			if(distance == null)
-			{
-				distanceMessage.setText(R.string.quest_source_dialog_unknown_location);
-				alertDialogBuilder.setNeutralButton(R.string.quest_source_dialog_button_on_site, new DialogInterface.OnClickListener()
-				{
-					@Override public void onClick(DialogInterface dialog, int which)
-					{
-						listener.onFindQuestSourceResult(SURVEY);
-					}
-				});
-			}
-			else
-			{
-				distanceMessage.setText(String.format(activity.getString(R.string.quest_source_dialog_far_away_location), roundToFifties(distance)));
-				if(distance < MAX_DISTANCE_TO_ELEMENT_FOR_POSSIBLE_SURVEY)
-				{
-					alertDialogBuilder.setNeutralButton(R.string.quest_source_dialog_button_on_site, new DialogInterface.OnClickListener()
-					{
-						@Override public void onClick(DialogInterface dialog, int which)
-						{
+							++timesShown;
+							dontShowAgain = checkBox.isChecked();
 							listener.onFindQuestSourceResult(SURVEY);
 						}
-					});
-				}
-				else
+					})
+					.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener()
+			{
+				@Override public void onClick(DialogInterface dialog, int which)
 				{
-					alertDialogBuilder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener()
-					{
-						@Override public void onClick(DialogInterface dialog, int which)
-						{
-							// nothing
-						}
-					});
+					// nothing
 				}
-			}
+			});
+
+			checkBox.setVisibility(timesShown < 2 ? View.GONE : View.VISIBLE);
+
 			alertDialogBuilder.show();
 		}
-	}
-
-	private int roundToFifties(Double distance)
-	{
-		return (distance.intValue() / 50) * 50;
 	}
 
 	private Double getDistanceToElementInMeters(long questId, QuestGroup group, Location[] locations)
