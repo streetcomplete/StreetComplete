@@ -88,11 +88,8 @@ public class QuestStatisticsDao
 		@Override public void handle(Relation relation) { count++; }
 	}
 
-	public void addOne(String questType, String source)
+	public void addOne(String questType)
 	{
-		// for now, record non-survey sources not at all
-		if(!"survey".equals(source)) return;
-
 		SQLiteDatabase db = dbHelper.getWritableDatabase();
 
 		// first ensure the row exists
