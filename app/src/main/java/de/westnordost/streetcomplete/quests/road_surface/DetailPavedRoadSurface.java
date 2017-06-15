@@ -27,7 +27,7 @@ public class DetailPavedRoadSurface extends SimpleOverpassQuestType {
 	@Override
 	public int importance()
 	{
-		return QuestImportance.MINOR;
+		return QuestImportance.EXTRA;
 	}
 
 	public AbstractQuestAnswerFragment createForm()
