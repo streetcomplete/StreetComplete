@@ -20,7 +20,7 @@ public class DetailPavedRoadSurface extends SimpleOverpassQuestType {
 	@Override
 	protected String getTagFilters()
 	{
-		return " ways with ( highway ~ " + TextUtils.join("|", RoadSurfaceConfig.ROADS_WITH_SURFACES) + " and" +
+		return " ways with ( highway ~ " + TextUtils.join("|", RoadSurfaceConfig.ALL_ROADS) + " and" +
 				" surface=paved)";
 	}
 
