@@ -6,6 +6,14 @@ import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 
+import com.esotericsoftware.yamlbeans.YamlException;
+import com.esotericsoftware.yamlbeans.YamlReader;
+
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.List;
+import java.util.Map;
+
 import de.westnordost.streetcomplete.ApplicationConstants;
 import de.westnordost.streetcomplete.BuildConfig;
 import de.westnordost.streetcomplete.R;
@@ -38,9 +46,16 @@ public class AboutFragment extends PreferenceFragment
 			@Override
 			public boolean onPreferenceClick(Preference preference)
 			{
+				String translationCredits;
+				try {
+					translationCredits = creditTranslationsAsHtmlString();
+				}
+				catch (YamlException e)
+				{
+					throw new RuntimeException(e);
+				}
 				showHtmlRes(R.string.about_title_authors,
-						String.format(getResources().getString(R.string.authors_html),
-								getResources().getString(R.string.translation_credits_html)));
+						String.format(getResources().getString(R.string.authors_html), translationCredits));
 				return true;
 			}
 		});
@@ -96,6 +111,21 @@ public class AboutFragment extends PreferenceFragment
 				return false;
 			}
 		});
+	}
+
+	private String creditTranslationsAsHtmlString() throws YamlException
+	{
+		InputStream is = getResources().openRawResource(R.raw.credits_translations);
+		YamlReader reader = new YamlReader(new InputStreamReader(is));
+		List list = (List) reader.read();
+		StringBuilder htmlString = new StringBuilder();
+		for (Object o : list)
+		{
+			Map m = (Map) o;
+			Map.Entry pair = (Map.Entry) m.entrySet().iterator().next();
+			htmlString.append(pair.getKey()+"<br/>		"+pair.getValue()+"<br/>");
+		}
+		return htmlString.toString();
 	}
 
 	private void showHtmlRes(int titleResourceId, String htmlText)

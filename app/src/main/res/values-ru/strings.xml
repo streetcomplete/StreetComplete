@@ -229,6 +229,7 @@
     <string name="quest_bikeParkingCapacity_title">"Сколько велосипедов можно здесь припарковать?"</string>
     <string name="quest_address_unusualHousenumber_confirmation_description">"Номер дома выглядит очень странно."</string>
     <string name="quest_sport_title">"Для какого вида спорта предназначено это поле?"</string>
+    <string name="quest_sport_answer_multi">"Не для конкретного вида спорта"</string>
     <string name="quest_sport_soccer">"Футбол"</string>
     <string name="quest_sport_tennis">"Теннис"</string>
     <string name="quest_sport_baseball">"Бейсбол"</string>
@@ -241,6 +242,8 @@
     <string name="quest_sport_american_football">"Американский футбол"</string>
     <string name="quest_sport_skateboard">"Скейтборд"</string>
     <string name="quest_sport_bowls">"Боулз"</string>
+    <string name="quest_sport_boules">"Петанк, бочче и т. п."</string>
+    <string name="quest_sport_shooting">"Пулевая стрельба"</string>
     <string name="quest_sport_cricket">"Крикет"</string>
     <string name="quest_sport_table_tennis">"Настольный теннис"</string>
     <string name="quest_sport_gymnastics">"Гимaстика"</string>
@@ -258,4 +261,14 @@
     <string name="quest_manySports_confirmation_specific">"Именно для этих"</string>
     <string name="quest_manySports_confirmation_generic">"Общего назначения"</string>
     <string name="quest_sport_manySports_confirmation_title">"Вы выбрали несколько видов спорта"</string>
+    <string name="quest_busStopShelter_name_title">"Защищена ли автобусная остановка %s от погодных условий?"</string>
+    <string name="quest_leave_new_note_in_response_to">"В ответ на «%1$s»:
+%2$s"</string>
+    <string name="quest_toiletsFee_title">"Это платные туалеты?"</string>
+    <string name="quest_tactilePaving_title_bus">"Есть ли на этой автобусной остановке тактильная разметка?"</string>
+    <string name="quest_tactilePaving_title_crosswalk">"Есть ли на этом пешеходном переходе тактильная разметка?"</string>
+    <string name="quest_source_dialog_title">"Вы точно проверили это на месте?"</string>
+    <string name="quest_tactilePaving_title_name_bus">"Есть ли на автобусной остановке %s тактильная разметка?"</string>
+    <string name="quest_source_dialog_note">"Нужно вводить только то, что вы видели своими глазами."</string>
+    <string name="quest_bicycleParkingCoveredStatus_title">"Эта велосипедная парковка крытая (защищена от дождя)?"</string>
 </resources>

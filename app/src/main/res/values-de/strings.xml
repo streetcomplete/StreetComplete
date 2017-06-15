@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="action_settings">"Einstellungen"</string>
-    <string name="oauth_communication_error">"Kann den Autorisierungsserver nicht erreichen"</string>
+    <string name="oauth_communication_error">"Autorisierungsserver kann nicht erreicht werden"</string>
     <string name="loading">"Lade"</string>
     <string name="retry">"Erneut versuchen"</string>
     <string name="oauth_cancelled">"Autorisierung abgebrochen"</string>
@@ -102,7 +102,7 @@
     <string name="quest_openingHours_open_end">"offenes Ende"</string>
     <string name="quest_openingHours_answer_247">"Durchgehend geöffnet"</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">"Je nach Monat verschieden"</string>
-    <string name="quest_openingHours_answer_no_regular_opening_hours">"Keine regelmäßgen Öffnungszeiten"</string>
+    <string name="quest_openingHours_answer_no_regular_opening_hours">"Keine regelmäßigen Öffnungszeiten"</string>
     <string name="quest_openingHours_comment_title">"Öffnungszeiten beschreiben"</string>
     <string name="quest_openingHours_comment_description">"Kurz und bündig, am besten direkt so, wie es auf dem Schild steht. Zum Beispiel „nach Vereinbarung“. Fehlt ein Schild, bedeutet dies nicht zwangsweise, dass es keine regulären Öffnungszeiten gibt."</string>
     <string name="quest_buildingLevels_title">"Wie viele Stockwerke hat dieses Gebäude?"</string>
@@ -263,6 +263,14 @@ Die von dir eingegebenen Informationen werden dann direkt in deinem Namen zu Ope
     <string name="quest_manySports_confirmation_specific">"Speziell für diese"</string>
     <string name="quest_manySports_confirmation_generic">"Allzweck"</string>
     <string name="quest_sport_manySports_confirmation_title">"Viele Sportarten ausgewählt"</string>
-    <string name="quest_busStopShelter_name_title">"Hat die Bushaltestelle %s einen Unterstand?"</string>
+    <string name="quest_busStopShelter_name_title">"Hat die Bushaltestelle „%s“ einen Unterstand?"</string>
     <string name="quest_leave_new_note_in_response_to">"Als Antwort auf \"%1$s\": %2$s"</string>
+    <string name="quest_toiletsFee_title">"Kostet die Benutzung dieser Toiletten etwas?"</string>
+    <string name="quest_tactilePaving_title_bus">"Hat diese Haltestelle ein Bodenleitsystem?"</string>
+    <string name="quest_tactilePaving_title_crosswalk">"Hat dieser Überweg ein Bodenleitsystem?"</string>
+    <string name="quest_source_dialog_title">"Wurde die Information vor Ort überprüft?"</string>
+    <string name="quest_tactilePaving_title_name_bus">"Hat die Haltestelle \"%s\" ein Bodenleitsystem?"</string>
+    <string name="quest_source_dialog_note">"Nur vor Ort erhobe Informationen sollen ergänzt werden."</string>
+    <string name="quest_bicycleParkingCoveredStatus_title">"Ist der Fahrradstellplatz überdacht (Schutz vor Regen)?"</string>
+    <string name="dialog_session_dont_show_again">"Ausblenden bis zur nächsten Bearbeitung"</string>
 </resources>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="action_settings">"Opções"</string>
-    <string name="oauth_communication_error">"Não foi possível conectar com o servidor"</string>
+    <string name="oauth_communication_error">"Não foi possível conectar com o servidor de autorização"</string>
     <string name="loading">"Carregando"</string>
     <string name="retry">"Repetir"</string>
     <string name="oauth_cancelled">"Autorização cancelada"</string>
@@ -15,7 +15,7 @@
     <string name="pref_tilecache_size_summary">"%d MB"</string>
     <string name="pref_tilecache_size_message">"Espeço em megabytes reservado no armazenamento externo para cachear blocos do mapa"</string>
     <string name="pref_title_quest_expiration_time">"Cachear Missões"</string>
-    <string name="pref_summary_quest_expiration">"Para %s antes de fazer o download novamente"</string>
+    <string name="pref_summary_quest_expiration">"para %s antes de fazer o download novamente"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Mostrar todas as notas"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Também mostrando notas não formuladas como perguntas"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Ignorando notas não formuladas como perguntas"</string>
@@ -98,8 +98,12 @@
     <string name="about_title_privacy_statement">"Declaração de Privacidade"</string>
     <string name="about_summary_privacy_statement">"e Uso de Dados"</string>
     <string name="quest_openingHours_public_holidays">"Feriados Públicos"</string>
-    <string name="quest_openingHours_public_holidays_short">"Feriados Públicos"</string>
-    <string name="quest_openingHours_open_end">"open end"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_openingHours_public_holidays_short">"Feriados"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_openingHours_open_end">"até o último cliente"</string>
     <string name="quest_openingHours_answer_247">"Sempre aberto"</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">"Varia pelo mês"</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">"Sem horários regulares"</string>
@@ -114,6 +118,8 @@
     <string name="quest_roofShape_show_more">"Mostre mais…"</string>
     <string name="quest_roofShape_answer_many">"Tem várias formas diferentes"</string>
     <string name="pref_category_cache">"Cache"</string>
+
+    <!-- Fuzzy -->
     <string name="pref_title_sync">"Auto-Sync"</string>
     <string name="map_btn_zoom_out">"Aumentar"</string>
     <string name="map_btn_zoom_in">"Reduzir"</string>
@@ -153,7 +159,9 @@ Para exibir o mapa, os blocos vetoriais são recuperadas do &lt;a href=\"https:/
     <string name="quest_expiration_two_weeks">"Duas semanas"</string>
     <string name="quest_expiration_one_month">"Um mês"</string>
     <string name="autosync_on">"Ligado"</string>
-    <string name="autosync_only_on_wifi">"Somente no Wifi"</string>
+
+    <!-- Fuzzy -->
+    <string name="autosync_only_on_wifi">"Somente no WiFi"</string>
     <string name="autosync_off">"Desligado"</string>
     <string name="quest_streetSurface_title">"Que superfície tem este pedaço de rua?"</string>
     <string name="quest_surface_description">"Selecione o mais específico que se encaixa:"</string>
@@ -190,6 +198,8 @@ Para exibir o mapa, os blocos vetoriais são recuperadas do &lt;a href=\"https:/
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Onde é esta rua?"</string>
     <string name="quest_maxspeed_answer_noSign_urban">"Na cidade: aplica-se o limite de velocidade de %1$s"</string>
     <string name="quest_maxspeed_answer_noSign_rural">"Fora da cidade: aplica-se o limite de velocidade de %1$s."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_implicitOk">"Justo"</string>
     <string name="quest_maxspeed_answer_variable">"Sinais eletrônicos mostram limites de velocidade variáveis"</string>
     <string name="quest_cyclewaySurface_title">"Que superfície tem a ciclovia aqui?"</string>
@@ -198,9 +208,17 @@ Para exibir o mapa, os blocos vetoriais são recuperadas do &lt;a href=\"https:/
     <string name="quest_serviceType_title">"Que tipo de rua de serviço é essa?"</string>
     <string name="quest_streetLanes_title">"Quantas pistas tem essa rua?"</string>
     <string name="quest_streetLanes_description">"Se não houver marcações rodoviárias, não há pistas."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetLanes_north">"indo para o norte"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetLanes_west">"indo para o oeste"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetLanes_east">"indo para o leste"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetLanes_south">"indo para o sul"</string>
     <string name="quest_streetLanes_answer_noLanes">"Não tem faixas marcadas"</string>
     <string name="quest_streetLanes_noLanes_estWidth">"Estime por favor quantos carros caberiam lado a lado nesta rua."</string>
@@ -229,4 +247,47 @@ As informações inseridas são adicionadas diretamente ao OpenStreetMap em seu 
     <string name="quest_busStopShelter_title">"Essa parada de ônibus tem abrigo?"</string>
     <string name="quest_bikeParkingCapacity_title">"Quantas bicicletas podem estacionar aqui?"</string>
     <string name="quest_address_unusualHousenumber_confirmation_description">"Esse número de casa parece muito estranho."</string>
+    <string name="quest_sport_title">"Para que esporte é esse campo?"</string>
+    <string name="quest_sport_answer_multi">"Nenhum esporte específico"</string>
+    <string name="quest_sport_soccer">"Futebol"</string>
+    <string name="quest_sport_tennis">"Tênis"</string>
+    <string name="quest_sport_baseball">"Beisebol"</string>
+    <string name="quest_sport_basketball">"Basquetebol"</string>
+    <string name="quest_sport_golf">"Golfe"</string>
+    <string name="quest_sport_equestrian">"Equestre"</string>
+    <string name="quest_sport_athletics">"Atletismo"</string>
+    <string name="quest_sport_volleyball">"Voleibol"</string>
+    <string name="quest_sport_beachvolleyball">"Vôlei de praia"</string>
+    <string name="quest_sport_american_football">"Futebol americano"</string>
+    <string name="quest_sport_skateboard">"Skate"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_sport_bowls">"Bocha"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_sport_boules">"Bocha"</string>
+    <string name="quest_sport_shooting">"Tiro"</string>
+    <string name="quest_sport_cricket">"Críquete"</string>
+    <string name="quest_sport_table_tennis">"Tênis de mesa"</string>
+    <string name="quest_sport_gymnastics">"Ginástica"</string>
+    <string name="quest_sport_archery">"Tiro com arco"</string>
+    <string name="quest_sport_australian_football">"Futebol australiano"</string>
+    <string name="quest_sport_badminton">"Badminton"</string>
+    <string name="quest_sport_canadian_football">"Futebol canadense"</string>
+    <string name="quest_sport_field_hockey">"Hóquei em campo"</string>
+    <string name="quest_sport_handball">"Handebol"</string>
+    <string name="quest_sport_ice_hockey">"Hóquei no gelo"</string>
+    <string name="quest_sport_netball">"Netbol"</string>
+    <string name="quest_sport_rugby">"Rúgbi"</string>
+    <string name="quest_select_hint">"Selecionar:"</string>
+    <string name="quest_sport_manySports_confirmation_description">"Esse campo é projetado para exatamente esses esportes especificamente (marcações e equipamentos estão presentes) ou como um campo de propósito geral para todos os tipos de jogos?"</string>
+    <string name="quest_manySports_confirmation_specific">"Especificamente"</string>
+    <string name="quest_manySports_confirmation_generic">"Multiúso"</string>
+    <string name="quest_sport_manySports_confirmation_title">"Você selecionou muitos esportes"</string>
+    <string name="quest_busStopShelter_name_title">"O ponto de ônibus %s tem um telhado?"</string>
+    <string name="quest_leave_new_note_in_response_to">"Em resposta ao \"%1$s\":
+%2$s"</string>
+    <string name="quest_source_dialog_title">"Tem a certeza que verificou isto no local?"</string>
+    <string name="quest_source_dialog_note">"Apenas informação que foi feita durante um levantamento deve ser adicionada."</string>
+    <string name="dialog_session_dont_show_again">"Não mostrar de novo nesta sessão"</string>
 </resources>

@@ -160,7 +160,7 @@ Niemniej przed każdym wysłaniem zmian aplikacja sprawdza &lt;a href=\"http://w
     <string name="quest_surface_value_unpaved">"nieutwardzona (ogólnie)"</string>
     <string name="quest_surface_value_ground">"gruntowa (ogólnie)"</string>
     <string name="quest_surface_value_asphalt">"asfaltowa"</string>
-    <string name="quest_surface_value_cobblestone">"brukowa"</string>
+    <string name="quest_surface_value_cobblestone">"kocie łby"</string>
     <string name="quest_surface_value_compacted">"tłuczniowa"</string>
     <string name="quest_surface_value_concrete">"betonowa"</string>
     <string name="quest_surface_value_dirt">"polna"</string>
@@ -168,10 +168,10 @@ Niemniej przed każdym wysłaniem zmian aplikacja sprawdza &lt;a href=\"http://w
     <string name="quest_surface_value_grass">"trawiasta"</string>
     <string name="quest_surface_value_grass_paver">"kratka trawnikowa"</string>
     <string name="quest_surface_value_gravel">"żwirowa"</string>
-    <string name="quest_surface_value_paving_stones">"kostka"</string>
+    <string name="quest_surface_value_paving_stones">"brukowa"</string>
     <string name="quest_surface_value_pebblestone">"kamienista"</string>
     <string name="quest_surface_value_sand">"piaskowa"</string>
-    <string name="quest_surface_value_sett">"kocie łby"</string>
+    <string name="quest_surface_value_sett">"kostka"</string>
     <string name="quest_surface_value_wood">"drewniana"</string>
     <string name="quest_placeName_title">"Jak się nazywa to miejsce?"</string>
     <string name="quest_sidewalk_title">"Czy ta ulica ma chodnik?"</string>
@@ -206,7 +206,7 @@ Niemniej przed każdym wysłaniem zmian aplikacja sprawdza &lt;a href=\"http://w
     <string name="quest_oneway_title">"Czy jest to ulica jednokierunkowa?"</string>
     <string name="quest_address_title">"Jaki numer ma ten budynek?"</string>
     <string name="store_listing_short_description">"OpenStreetMap geodeta"</string>
-    <string name="store_listing_full_description">"Ulepszaj OpenStreetMap z aplikacją StreetComplete!
+    <string name="store_listing_full_description">"Pomóż ulepszać OpenStreetMap z aplikacją StreetComplete!
 
 Ta aplikacja znajduje niekompletne lub brakujące dane w Twoim otoczeniu i wyświetla je na mapie w postaci zadań. Każde można rozwiązać, klikając w nie i odpowiadając na proste pytania.
 
@@ -261,4 +261,11 @@ Udzielone odpowiedzi zostają potem umieszczone na OpenStreetMap w Twoim imieniu
     <string name="quest_manySports_confirmation_specific">"Wyłącznie tych"</string>
     <string name="quest_manySports_confirmation_generic">"Ogólnego przeznaczenia"</string>
     <string name="quest_sport_manySports_confirmation_title">"Wybrałeś wiele sportów"</string>
+    <string name="quest_busStopShelter_name_title">"Czy przystanek %s posiada wiatę?"</string>
+    <string name="quest_leave_new_note_in_response_to">"W odpowiedzi na \"%1$s\":
+%2$s"</string>
+    <string name="quest_toiletsFee_title">"Czy te toalety są płatne?"</string>
+    <string name="quest_tactilePaving_title_bus">"Czy na tym przystanku są płyty prowadzące?"</string>
+    <string name="quest_tactilePaving_title_crosswalk">"Czy to przejście ma płyty prowadzące?"</string>
+    <string name="quest_tactilePaving_title_name_bus">"Czy przystanek \"%s\" ma płyty prowadzące?"</string>
 </resources>

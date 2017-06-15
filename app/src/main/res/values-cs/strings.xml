@@ -14,11 +14,11 @@
     <string name="pref_title_not_authorized_summary">"Zatím neautorizováno"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
     <string name="pref_tilecache_size_message">"Místo v megabytech vyčleněné na externím úložišti sloužící jako mezipaměť pro mapové dlaždice"</string>
-    <string name="pref_title_quest_expiration_time">"Uložení úkolů v mezipaměti"</string>
+    <string name="pref_title_quest_expiration_time">"Uložit úkoly v mezipaměti na"</string>
     <string name="pref_summary_quest_expiration">"na %s před stažením nových"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Zobrazit všechny poznámky"</string>
-    <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Zobrazuje i poznámky neformulované jako otázky"</string>
-    <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Ignoruje poznámky neformulované jako otázky"</string>
+    <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Zobrazit i poznámky neformulované jako otázky"</string>
+    <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Ignorovat poznámky neformulované jako otázky"</string>
     <string name="pref_title_map_cache">"Velikost mezipaměti pro mapu"</string>
     <string name="map_btn_gps_tracking">"Sledovat mě"</string>
     <string name="map_attribution_mapzen">"Powered by %s"</string>
@@ -35,11 +35,11 @@
 
     <!-- Is this mean somethimg ike "I don't want to write note, just hide quest"? -->
     <string name="quest_leave_new_note_no">"Ne, jen skrýt"</string>
-    <string name="quest_streetName_title">"Jaké je jméno této ulice?"</string>
+    <string name="quest_streetName_title">"Jaké jméno má tato ulice/cesta?"</string>
     <string name="quest_streetName_description">"tak jak je to napsáno na ceduli se jménem, zkratky jsou rozšířeny:"</string>
-    <string name="quest_streetName_answer_noName_confirmation_description">"Cedule s názvy ulic můžou někdy být jen na jedné straně ulice. Pamatujte, že boční ulice, které patří k větší ulici nemusí mít cedule s názvy ulic. Ulice s domy jsou obvykle pojmenované."</string>
+    <string name="quest_streetName_answer_noName_confirmation_description">"Cedule se jmény ulic můžou někdy být jen na jedné straně ulice. Pamatujte, že boční ulice, které patří k větší ulici nemusí mít cedule se jmény ulic. Ulice s domy jsou obvykle pojmenované."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title">"Je ve jménu zkratka?"</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Pokud může být jméno napsáno bez zkratky, tak by mělo být rozšířeno. Spousta obvyklých zkratek bude rozšířena během jejich psaní, ale ne všechny."</string>
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Pokud může být jméno napsáno bez zkratky, tak by mělo být rozšířeno. Spousta obvyklých zkratek bude během jejich psaní rozšířena, ale ne všechny."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Žádná zkratka"</string>
     <string name="quest_openingHours_name_title">"Jaké jsou otevírací hodiny „%s“?"</string>
     <string name="quest_openingHours_start_time">"čas otevření"</string>
@@ -72,7 +72,7 @@
     <string name="confirmation_cancel_prev_download_title">"Zrušit aktuální vyhledávání a hledat místo toho zde?"</string>
     <string name="notification_downloading">"Vyhledávání úkolů"</string>
     <string name="now_downloading_toast">"Vyhledávání dalších úkolů"</string>
-    <string name="turn_on_location_request">"Určování polohy je vypnuté. Přejít na nastavení, abyste ho mohli zapnout?"</string>
+    <string name="turn_on_location_request">"Určování polohy je vypnuté. Chcete přejít na nastavení, abyste ho mohli zapnout?"</string>
     <string name="no_location_permission_warning">"Vaše poloha se používá pro vyhledávání úkolů ve vašem okolí."</string>
     <string name="action_about">"O StreetComplete"</string>
     <string name="about_title_version">"Verze"</string>
@@ -153,10 +153,10 @@ Pro zobrazení mapy se stahují vektorové dlaždice z projektu &lt;a href=\"htt
 &lt;p&gt;V aplikaci se používají &lt;a href=\"https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free\"&gt;Beautiful Flat Ikony&lt;/a&gt;, které vytvořit Nick Roach, licencované podle &lt;a href=\"http://www.gnu.org/licenses/gpl-2.0.html\"&gt;GPL&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Překlady&lt;/b&gt;&lt;/p&gt;
 %1$s"</string>
-    <string name="quest_expiration_one_day">"Jeden den"</string>
-    <string name="quest_expiration_a_week">"Týden"</string>
-    <string name="quest_expiration_two_weeks">"Dva týdny"</string>
-    <string name="quest_expiration_one_month">"Jeden měsíc"</string>
+    <string name="quest_expiration_one_day">"jeden den"</string>
+    <string name="quest_expiration_a_week">"týden"</string>
+    <string name="quest_expiration_two_weeks">"dva týdny"</string>
+    <string name="quest_expiration_one_month">"jeden měsíc"</string>
     <string name="autosync_on">"Zapnuto"</string>
     <string name="autosync_only_on_wifi">"Jen přes WiFi"</string>
     <string name="autosync_off">"Vypnuto"</string>
@@ -198,7 +198,7 @@ Pro zobrazení mapy se stahují vektorové dlaždice z projektu &lt;a href=\"htt
     <string name="quest_maxspeed_answer_noSign_implicitOk">"To by mohlo být"</string>
     <string name="quest_maxspeed_answer_variable">"Elektronické značky ukazují různé omezení rychlosti"</string>
     <string name="quest_cyclewaySurface_title">"Jaký povrch má tato cyklostezka?"</string>
-    <string name="quest_cycleway_title">"Je na této ulici cyklostezka?"</string>
+    <string name="quest_cycleway_title">"Je na této cestě cyklostezka?"</string>
     <string name="quest_buildingType_title">"Jakého druhu je tato stavba?"</string>
     <string name="quest_serviceType_title">"Jakého druhu je tato účelová komunikace?"</string>
     <string name="quest_streetLanes_title">"Kolik jízdních pruhů má tato cesta?"</string>
@@ -272,4 +272,12 @@ Vámi vložené informace jsou potom vaším jménem přímo přidány do OpenSt
     <string name="quest_busStopShelter_name_title">"Má autobusová zastávka  „%s“ střechu?"</string>
     <string name="quest_leave_new_note_in_response_to">"Odpověď na „%1$s“:
 %2$s"</string>
+    <string name="quest_toiletsFee_title">"Musí se na těchto toaletách platit?"</string>
+    <string name="quest_tactilePaving_title_bus">"Má tato autobusová zastávka hmatovou dlažbu?"</string>
+    <string name="quest_tactilePaving_title_crosswalk">"Má tento přechod hmatovou dlažbu?"</string>
+    <string name="quest_source_dialog_title">"Opravdu jste to zkontroloval na místě?"</string>
+    <string name="quest_tactilePaving_title_name_bus">"Má autobusová zastávka  „%s“ hmatovou dlažbu?"</string>
+    <string name="quest_source_dialog_note">"Měly by být přidávány pouze informace zjištěné během průzkumu."</string>
+    <string name="quest_bicycleParkingCoveredStatus_title">"Je toto parkoviště pro kola zakryté (chráněno proti dešti)?"</string>
+    <string name="dialog_session_dont_show_again">"V této relaci znovu nezobrazovat"</string>
 </resources>

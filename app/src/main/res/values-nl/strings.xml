@@ -250,4 +250,5 @@ De informatie die je ingeeft wordt meteen toegevoegd aan OpenStreetMap in jouw n
     <string name="quest_sport_badminton">"Badminton"</string>
     <string name="quest_sport_handball">"Handbal"</string>
     <string name="quest_sport_rugby">"Rugby"</string>
+    <string name="quest_select_hint">"Selecteer:"</string>
 </resources>
