@@ -121,7 +121,7 @@
 &lt;p&gt;&lt;b&gt;Contribuciones Directas&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 En primer lugar, entiende que con esta aplicación estás realizando contribuciones directas y efectivas en OpenStreetMap.&lt;br/&gt;
-Cualquier contribución en esta aplicación es directamente añadida al mapa, no hay una tercera parte entre la aplicación y la infraestructura de OSM, como es el caso de&lt;a href=\"https://wheelmap.org\"&gt;wheelmap.org&lt;/a&gt; o &lt;a href=\"http://www.kort.ch\"&gt;Kort&lt;/a&gt;.
+Cualquier contribución en esta aplicación es directamente añadida al mapa, no hay una tercera parte entre la aplicación y la infraestructura de OSM, como es el caso de &lt;a href=\"https://wheelmap.org\"&gt;wheelmap.org&lt;/a&gt; o &lt;a href=\"http://www.kort.ch\"&gt;Kort&lt;/a&gt;.
 &lt;/p&gt;
 &lt;p&gt;
 Editar en OpenStreetMap anónimamente no es posible, por lo que cualquier cambio que hagas se hace con tu cuenta de usuario en OSM, lo que significa que tus cambios en el mapa son visibles públicamente en el sitio web de OpenStreetMap.
@@ -142,7 +142,7 @@ Para visualizar el map, se recuperan teselas del &lt;a href=\"https://mapzen.com
 &lt;/p&gt;
 &lt;p&gt;
 (&lt;i&gt;Esto es lo que actualmente no se ha implementado todavía, ¡solo quiero informarte de lo que viene!:&lt;/i&gt;) Los datos que se muestran en la tabla de clasificación y el perfil se agregan a la información disponible públicamente desde OpenStreetMap. Los datos no proceden de esta aplicación sino básicamente del historial de cambios público de los usuarios de OSM.
-&lt;/p&gt; "</string>
+&lt;/p&gt;"</string>
     <string name="authors_html">"&lt;p&gt;© 2017 Tobias Zwick&lt;/p&gt;
 &lt;p&gt;La aplicación utiliza &lt;a href=\"https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free\"&gt;Beautiful Flat Icons&lt;/a&gt; hecho por Nick Roach, bajo licencia &lt;a href=\"http://www.gnu.org/licenses/gpl-2.0.html\"&gt;GPL&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Traducciones&lt;/b&gt;&lt;/p&gt;

@@ -2,8 +2,7 @@
 <resources>
     <string name="action_settings">"Impostazioni"</string>
     <string name="oauth_communication_error">"Impossibile raggiungere il server per l'autorizzazione"</string>
-    <string name="loading">"Caricamento
-"</string>
+    <string name="loading">"Caricamento"</string>
     <string name="retry">"Riprova"</string>
     <string name="oauth_cancelled">"Autorizzazione annullata"</string>
     <string name="oauth_failed_permissions">"Autorizzazione negata: tutti i permessi elencati hanno bisogno di essere abilitati"</string>

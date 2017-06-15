@@ -261,4 +261,11 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_manySports_confirmation_specific">"具体的にこれらは"</string>
     <string name="quest_manySports_confirmation_generic">"一般用途"</string>
     <string name="quest_sport_manySports_confirmation_title">"多くのスポーツを選んています"</string>
+    <string name="quest_busStopShelter_name_title">"バス停 %s には屋根がありますか?"</string>
+    <string name="quest_leave_new_note_in_response_to">"\"%1$s\" への返信:
+%2$s"</string>
+    <string name="quest_toiletsFee_title">"これらのトイレは有料ですか?"</string>
+    <string name="quest_tactilePaving_title_bus">"このバス停には点字ブロックがありますか?"</string>
+    <string name="quest_tactilePaving_title_crosswalk">"この横断歩道には点字ブロックがありますか?"</string>
+    <string name="quest_tactilePaving_title_name_bus">"バス停 \"%s\" には点字ブロックがありますか?"</string>
 </resources>

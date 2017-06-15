@@ -261,4 +261,15 @@ A megadott adatok közvetlenül az OpenStreetMapre kerülnek a nevedben, ehhez n
     <string name="quest_manySports_confirmation_specific">"Kifejezetten ezeket"</string>
     <string name="quest_manySports_confirmation_generic">"Általános célú"</string>
     <string name="quest_sport_manySports_confirmation_title">"Sok sportágat választottál"</string>
+    <string name="quest_busStopShelter_name_title">"\"%s\" buszmegálló fedett?"</string>
+    <string name="quest_leave_new_note_in_response_to">"Válaszul \"%1$s\" kérdésre:
+%2$s"</string>
+    <string name="quest_toiletsFee_title">"Ez a WC fizetős?"</string>
+    <string name="quest_tactilePaving_title_bus">"Ez a buszmegálló rendelkezik vakok számára tapintható burkolattal?"</string>
+    <string name="quest_tactilePaving_title_crosswalk">"Ez a gyalogátkelő rendelkezik vakok számára tapintható burkolattal?"</string>
+    <string name="quest_source_dialog_title">"Biztos, hogy ezt a helyszínen ellenőrizted?"</string>
+    <string name="quest_tactilePaving_title_name_bus">"\"%s\" buszmegálló rendelkezik vakok számára tapintható burkolattal?"</string>
+    <string name="quest_source_dialog_note">"Elsősorban olyan információt kellene megadnod, amit felmérés során szereztél."</string>
+    <string name="quest_bicycleParkingCoveredStatus_title">"Ez a biciklitároló fedett (védett az esőtől)?"</string>
+    <string name="dialog_session_dont_show_again">"Ne mutasd többször ebben a munkamenetben"</string>
 </resources>

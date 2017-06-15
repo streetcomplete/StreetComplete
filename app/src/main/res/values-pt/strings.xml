@@ -10,8 +10,8 @@
     <string name="pref_category_communication">"Comunicação"</string>
     <string name="pref_category_display">"Mostrar"</string>
     <string name="pref_title_authorization">"Autorizar acesso ao OSM"</string>
-    <string name="pref_title_authorized_summary">"Autenticação realizada com sucesso"</string>
-    <string name="pref_title_not_authorized_summary">"Ainda não está autenticado"</string>
+    <string name="pref_title_authorized_summary">"Autorização realizada com sucesso"</string>
+    <string name="pref_title_not_authorized_summary">"Ainda não está autorizado"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
     <string name="pref_tilecache_size_message">"Espaço reservado em megabytes na unidade de armazenamento para a cache de mosaicos do mapa"</string>
     <string name="pref_title_quest_expiration_time">"Pedido de cache"</string>
@@ -23,7 +23,7 @@
     <string name="map_btn_gps_tracking">"Siga-me"</string>
     <string name="map_attribution_mapzen">"Powered by %s"</string>
     <string name="map_attribution_osm">"© Contribuidores OpenStreetMap"</string>
-    <string name="quest_generic_otherAnswers">"Outras questões..."</string>
+    <string name="quest_generic_otherAnswers">"Outras respostas..."</string>
     <string name="quest_generic_answer_notApplicable">"Não sei"</string>
     <string name="quest_generic_confirmation_title">"Tem a certeza?"</string>
     <string name="quest_generic_confirmation_yes">"Sim tenho a certeza"</string>
@@ -108,7 +108,7 @@
     <string name="quest_buildingLevels_title">"Quantos andares tem este edifício?"</string>
     <string name="quest_buildingLevels_title_buildingPart">"Quantos andares tem esta parte do edifício?"</string>
     <string name="quest_buildingLevels_levelsLabel">"Número total de pisos"</string>
-    <string name="quest_buildingLevels_roofLevelsLabel">"deste, quantos níveis é o telhado?"</string>
+    <string name="quest_buildingLevels_roofLevelsLabel">"destes, quantos níveis é o telhado?"</string>
     <string name="quest_roofShape_title">"Qual a forma básica do telhado deste edifício?"</string>
     <string name="quest_roofShape_select_one">"Selecione um"</string>
     <string name="quest_roofShape_show_more">"Mostrar mais..."</string>
@@ -120,15 +120,12 @@
     <string name="privacy_html">"&lt;p&gt;Ah, alguém que se preocupa com a privacidade, óptimo! Acho que tenho boas notícias para si:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Contribuições directas&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-Primeiro que tudo, entenda que com esta app, contribui directamente para o OpenStreetMap.&lt;br/&gt;
+Primeiro que tudo, compreenda que esta app, contribui directamente para o OpenStreetMap.&lt;br/&gt;
 Qualquer contribuição que faça nesta app, é directamente adicionada ao mapa e não há terceiros entre a app e a estrutura OSM, como é o caso de &lt;a href=\"https://wheelmap.org\"&gt;wheelmap.org&lt;/a&gt; ou &lt;a href=\"http://www.kort.ch\"&gt;Kort&lt;/a&gt;.
 &lt;/p&gt;
 &lt;p&gt;
 Editar de forma anónima no OpenStreetMap não é possível, pelo que qualquer alteração que faça, são feitas com a sua conta OSM. Isto significa que a data, conteúdo e localização das suas alterações são visiveis publicamente no site OpenStreetMap e estão atribuidas à sua conta.
-&lt;/p&gt;
-
-&lt;b&gt;Localização/b&gt;&lt;br/&gt;
-&lt;p&gt;
+&lt;/p&gt; &lt;b&gt;Localização&lt;/b&gt;&lt;br/&gt; &lt;p&gt;
 A sua localização é apenas utilizada para a sincronização automática dos desafios na área em redor da localização. Não se preocupe que a localização não é partilhada.
 &lt;/p&gt;
 
@@ -143,7 +140,7 @@ Para a representação do mapa, é utilizado os mapas vectoriais&lt;a href=\"htt
 &lt;p&gt;
 (&lt;i&gt;Actualmente isto ainda não está implementado, só vos quero informar do que aí vem!:&lt;/i&gt;)A informação da classificação e do perfil é agregada de forma publica através da informação do OpeStreetMap. A informação não advém desta app, mas basicamente do comité histórico de utilizadores do OSM&lt;/p&gt;"</string>
     <string name="authors_html">"&lt;p&gt;© 2017 Tobias Zwick&lt;/p&gt;
-&lt;p&gt;Esta app utiliza &lt;a href=\"https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free\"&gt;Beautiful Flat Icons&lt;/a&gt;criadas por Nick Roach, licenciadas sobre&lt;a href=\"http://www.gnu.org/licenses/gpl-2.0.html\"&gt;GPL&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Esta app utiliza &lt;a href=\"https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free\"&gt;Beautiful Flat Icons&lt;/a&gt; criadas por Nick Roach, licenciadas sobre&lt;a href=\"http://www.gnu.org/licenses/gpl-2.0.html\"&gt;GPL&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Traduções&lt;/b&gt;&lt;/p&gt;
 %1$s"</string>
     <string name="quest_expiration_one_day">"Um dia"</string>
@@ -195,7 +192,7 @@ Para a representação do mapa, é utilizado os mapas vectoriais&lt;a href=\"htt
     <string name="quest_buildingType_title">"Que tipo de edifício é este?"</string>
     <string name="quest_serviceType_title">"Que tipo de estrada de serviço é esta?"</string>
     <string name="quest_streetLanes_title">"Quantas faixas de rodagem tem esta rua?"</string>
-    <string name="quest_streetLanes_description">"Se não há marcas de rodagem, não há faixas de rodagem."</string>
+    <string name="quest_streetLanes_description">"Se não há marcas de faixa de rogadem, não há faixas de rodagem."</string>
     <string name="quest_streetLanes_north">"Em direcção ao Norte"</string>
     <string name="quest_streetLanes_west">"Em direcção a Oeste"</string>
     <string name="quest_streetLanes_east">"Em direcção a Este"</string>
@@ -209,7 +206,7 @@ Para a representação do mapa, é utilizado os mapas vectoriais&lt;a href=\"htt
 
 A app detecta informação incorrecta ou incompleta na sua cidade favorita e mostra-as no mapa como marcadores. Cada destes marcadores são desafios que podem ser resolvidos atráves de simples respostas que complementam a informação no site.
 
-A informação que submeter na app é automaticamente adicionada ao OpenStreetMap com o seu nome, sem ser necessário a utilização de outro editor."</string>
+A informação que submeter na app é adicionada directamente ao OpenStreetMap com o seu nome, sem ser necessário a utilização de outro editor."</string>
     <string name="quest_name_answer_noName">"Não tem nome"</string>
     <string name="quest_name_answer_noName_confirmation_title">"Tem a certeza que não tem nome?"</string>
     <string name="quest_name_noName_confirmation_positive">"Sim, não tem"</string>
@@ -236,7 +233,7 @@ A informação que submeter na app é automaticamente adicionada ao OpenStreetMa
     <string name="quest_sport_golf">"Golfe"</string>
     <string name="quest_sport_equestrian">"Equitismo"</string>
     <string name="quest_sport_athletics">"Atletismo"</string>
-    <string name="quest_sport_volleyball">"Volleyball"</string>
+    <string name="quest_sport_volleyball">"Voleibol"</string>
     <string name="quest_sport_beachvolleyball">"Volley de praia"</string>
     <string name="quest_sport_american_football">"Futebol americano"</string>
     <string name="quest_sport_skateboard">"Skate"</string>
@@ -260,4 +257,14 @@ A informação que submeter na app é automaticamente adicionada ao OpenStreetMa
     <string name="quest_manySports_confirmation_specific">"Especifique"</string>
     <string name="quest_manySports_confirmation_generic">"Utilização geral"</string>
     <string name="quest_sport_manySports_confirmation_title">"Escolheu demasiadas modalidades"</string>
+    <string name="quest_busStopShelter_name_title">"A paragem de autocarro %s tem abrigo? "</string>
+    <string name="quest_leave_new_note_in_response_to">"Em resposta a \"%1$s\": %2$s"</string>
+    <string name="quest_toiletsFee_title">"Esta casa de banho é de acesso pago?"</string>
+    <string name="quest_tactilePaving_title_bus">"Esta paragem de autocarro tem pavimento táctil?"</string>
+    <string name="quest_tactilePaving_title_crosswalk">"Esta passadeira tem pavimento táctil?"</string>
+    <string name="quest_source_dialog_title">"Tem a certeza que verificou isto no local?"</string>
+    <string name="quest_tactilePaving_title_name_bus">"A paragem de autocarro %s tem pavimento táctil?"</string>
+    <string name="quest_source_dialog_note">"Apenas informação que foi feita durante um levantamento deve ser adicionada."</string>
+    <string name="quest_bicycleParkingCoveredStatus_title">"Este estacionamento para bicicletas é coberto (protecção da chuva)?"</string>
+    <string name="dialog_session_dont_show_again">"Não mostrar de novo nesta sessão"</string>
 </resources>

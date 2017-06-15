@@ -238,4 +238,28 @@ Den information du anger sedan direkt till den OpenStreetMap i ditt namn, utan a
     <string name="crash_title">"Åh nej, StreetComplete kraschade förra gången!"</string>
     <string name="crash_compose_email">"komponera e-post"</string>
     <string name="no_email_client">"Du har ingen e-postklient installerad."</string>
+    <string name="pref_title_keep_screen_on">"Hur många cyklar kan parkeras här?"</string>
+    <string name="download_server_error">"Detta husnummer ser väldigt konstigt ut."</string>
+    <string name="upload_server_error">"För vilka sporter är denna planen för?"</string>
+    <string name="quest_generic_hasFeature_yes">"Ja"</string>
+    <string name="quest_generic_hasFeature_no">"Fotboll"</string>
+    <string name="quest_sport_tennis">"Tennis"</string>
+    <string name="quest_sport_baseball">"Baseball"</string>
+    <string name="quest_sport_basketball">"Basket"</string>
+    <string name="quest_sport_golf">"Golf"</string>
+    <string name="quest_sport_american_football">"Amerikansk fotboll"</string>
+    <string name="quest_sport_skateboard">"Skateboard"</string>
+    <string name="quest_sport_table_tennis">"Bord tennis"</string>
+    <string name="quest_sport_handball">"Handboll"</string>
+    <string name="quest_sport_ice_hockey">"Is hockey"</string>
+    <string name="quest_sport_netball">"Nätboll"</string>
+    <string name="quest_sport_rugby">"Rugby"</string>
+    <string name="quest_select_hint">"Välj:"</string>
+    <string name="quest_sport_manySports_confirmation_description">"Är denna planen gjord speciellt för dessa sporter (där utrustning och märken finns) eller är det en allmän plan för alla sorters spel?"</string>
+    <string name="quest_manySports_confirmation_specific">"Dessa specifikt"</string>
+    <string name="quest_manySports_confirmation_generic">"Allmän"</string>
+    <string name="quest_sport_manySports_confirmation_title">"Du valde många sporter"</string>
+    <string name="quest_busStopShelter_name_title">"Har bushållplatsen \"%s\" ett skydd?"</string>
+    <string name="quest_leave_new_note_in_response_to">"Som svar till \"%1$s\":
+%2$s"</string>
 </resources>
