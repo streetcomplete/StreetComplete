@@ -5,6 +5,8 @@ import android.app.DialogFragment;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -23,6 +25,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import de.westnordost.osmapi.map.data.OsmElement;
 import de.westnordost.streetcomplete.R;
@@ -34,8 +37,8 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 {
 	public static final String ELEMENT = "element";
 
-	private String titleText;
 	private int titleTextResId = -1;
+	private Object[] titleTextFormatArgs;
 
 	private TextView title;
 	private ViewGroup content;
@@ -203,10 +206,18 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 	{
 		DialogFragment leaveNote = new LeaveNoteDialog();
 		Bundle leaveNoteArgs = questAnswerComponent.getArguments();
-		String questTitle = titleText != null ? titleText : getResources().getString(titleTextResId);
+		String questTitle = getEnglishResources().getString(titleTextResId, titleTextFormatArgs);
 		leaveNoteArgs.putString(LeaveNoteDialog.ARG_QUEST_TITLE, questTitle);
 		leaveNote.setArguments(leaveNoteArgs);
 		leaveNote.show(getFragmentManager(), null);
+	}
+
+	private Resources getEnglishResources()
+	{
+		Configuration conf = new Configuration(getResources().getConfiguration());
+		conf.setLocale(Locale.ENGLISH);
+		Context localizedContext = getActivity().createConfigurationContext(conf);
+		return localizedContext.getResources();
 	}
 
 	/** Request to close the form through user interaction (back button, clicked other quest,..),
@@ -248,23 +259,28 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 	public final void setTitle(int resourceId)
 	{
 		titleTextResId = resourceId;
-		titleText = null;
 		updateTitle();
 	}
 
-	public final void setTitle(String string)
+	public final void setTitle(int resourceId, Object... formatArgs)
 	{
-		titleText = string;
-		titleTextResId = -1;
+		titleTextResId = resourceId;
+		titleTextFormatArgs = formatArgs;
 		updateTitle();
 	}
 
 	private void updateTitle()
 	{
-		if(title != null)
+		if(title != null && titleTextResId != -1)
 		{
-			if(titleText != null) title.setText(titleText);
-			else if(titleTextResId != -1) title.setText(titleTextResId);
+			if(titleTextFormatArgs != null)
+			{
+				title.setText(getResources().getString(titleTextResId, titleTextFormatArgs));
+			}
+			else
+			{
+				title.setText(titleTextResId);
+			}
 		}
 	}
 

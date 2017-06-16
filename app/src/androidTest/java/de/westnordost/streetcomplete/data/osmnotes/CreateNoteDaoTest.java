@@ -19,6 +19,7 @@ public class CreateNoteDaoTest extends ApplicationDbTestCase
 	{
 		CreateNote note = new CreateNote();
 		note.text = "text";
+		note.questTitle = "title";
 		note.position = new OsmLatLon(3,5);
 		note.elementId = 123L;
 		note.elementType = Element.Type.NODE;
@@ -27,6 +28,7 @@ public class CreateNoteDaoTest extends ApplicationDbTestCase
 		CreateNote dbNote = dao.get(note.id);
 
 		assertEquals(note.text, dbNote.text);
+		assertEquals(note.questTitle, dbNote.questTitle);
 		assertEquals(note.id, dbNote.id);
 		assertEquals(note.position, dbNote.position);
 		assertEquals(note.elementType, dbNote.elementType);
@@ -48,6 +50,7 @@ public class CreateNoteDaoTest extends ApplicationDbTestCase
 
 		assertNull(dbNote.elementType);
 		assertNull(dbNote.elementId);
+		assertNull(dbNote.questTitle);
 	}
 
 	public void testGetAll()

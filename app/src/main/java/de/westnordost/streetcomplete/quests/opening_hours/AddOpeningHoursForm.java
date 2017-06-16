@@ -123,7 +123,7 @@ public class AddOpeningHoursForm extends AbstractQuestFormAnswerFragment
 		{
 			name = element.getTags().get("name");
 		}
-		setTitle(getResources().getString(R.string.quest_openingHours_name_title, name));
+		setTitle(R.string.quest_openingHours_name_title, name);
 	}
 
 	@Override protected List<Integer> getOtherAnswerResourceIds()

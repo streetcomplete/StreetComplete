@@ -109,7 +109,7 @@ public class QuestController
 
 	/** Create a note for the given OSM Quest instead of answering it. The quest will turn
 	 *  invisible. */
-	public void createNote(final long osmQuestId, final String text)
+	public void createNote(final long osmQuestId, final String questTitle, final String text)
 	{
 		workerHandler.post(new Runnable() { @Override public void run()
 		{
@@ -120,6 +120,7 @@ public class QuestController
 			CreateNote createNote = new CreateNote();
 			createNote.position = q.getMarkerLocation();
 			createNote.text = text;
+			createNote.questTitle = questTitle;
 			createNote.elementType = q.getElementType();
 			createNote.elementId = q.getElementId();
 			createNoteDB.add(createNote);

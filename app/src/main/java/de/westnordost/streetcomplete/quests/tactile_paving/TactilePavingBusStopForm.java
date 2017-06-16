@@ -25,7 +25,7 @@ public class TactilePavingBusStopForm extends YesNoQuestAnswerFragment
 		String name = element != null && element.getTags() != null ? element.getTags().get("name") : null;
 		if(name != null && !name.trim().isEmpty())
 		{
-			setTitle(getResources().getString(R.string.quest_tactilePaving_title_name_bus, name));
+			setTitle(R.string.quest_tactilePaving_title_name_bus, name);
 		}
 		else
 		{

@@ -615,10 +615,10 @@ public class MainActivity extends AppCompatActivity implements
 		});
 	}
 
-	@Override public void onLeaveNote(long questId, QuestGroup group, String note)
+	@Override public void onLeaveNote(long questId, QuestGroup group, String questTitle, String note)
 	{
 		closeQuestDetailsFor(questId, group);
-		questController.createNote(questId, note);
+		questController.createNote(questId, questTitle, note);
 	}
 
 	@Override public void onSkippedQuest(long questId, QuestGroup group)
