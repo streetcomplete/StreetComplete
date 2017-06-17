@@ -273,4 +273,6 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="quest_tactilePaving_title_name_bus">"Does the bus stop \"%s\" have tactile pavings?"</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Is this bicycle parking covered (protected from rain)?"</string>
     <string name="dialog_session_dont_show_again">Don\'t show again for this session</string>
+    <string name="quest_wheelchairAccess_title">Does \“%s\” have wheelchair access?</string>
+    <string name="quest_wheelchairAccess_limited">Partial</string>
 </resources>
