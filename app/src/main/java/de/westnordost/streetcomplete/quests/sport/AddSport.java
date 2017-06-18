@@ -40,7 +40,7 @@ public class AddSport extends SimpleOverpassQuestType
 
 	public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
 	{
-		ArrayList<String> values = answer.getStringArrayList(AddRoofShapeForm.OSM_VALUES);
+		ArrayList<String> values = answer.getStringArrayList(AddSportForm.OSM_VALUES);
 		if(values != null && !values.isEmpty())
 		{
 			String valuesStr = TextUtils.join(";", values);
