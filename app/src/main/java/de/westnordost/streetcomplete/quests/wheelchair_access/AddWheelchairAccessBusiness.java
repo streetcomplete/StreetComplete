@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.opening_hours;
+package de.westnordost.streetcomplete.quests.wheelchair_access;
 
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -7,18 +7,18 @@ import javax.inject.Inject;
 
 import de.westnordost.streetcomplete.data.QuestImportance;
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType;
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
-import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
 
-public class AddOpeningHours extends SimpleOverpassQuestType
+
+public class AddWheelchairAccessBusiness extends SimpleOverpassQuestType
 {
-	@Inject public AddOpeningHours(OverpassMapDataDao overpassServer)
+	@Inject public AddWheelchairAccessBusiness(OverpassMapDataDao overpassServer)
 	{
 		super(overpassServer);
 	}
 
-    @Override protected String getTagFilters()
+	@Override protected String getTagFilters()
 	{
 		String[] leisures = {
 				"golf_course", "water_park", "miniature_golf", "dance",
@@ -36,7 +36,8 @@ public class AddOpeningHours extends SimpleOverpassQuestType
 
 		String[] tourism = {
 				"zoo", "aquarium", "theme_park", "gallery",
-				"museum"
+				"museum", "hotel", "guest_house", "hostel",
+				"motel"
 		};
 
 		return " nodes, ways, relations with ( shop and shop !~ no|vacant or" +
@@ -46,33 +47,33 @@ public class AddOpeningHours extends SimpleOverpassQuestType
 				" amenity = recycling and recycling_type = centre or" +
 				" tourism ~ " + TextUtils.join("|", tourism) + " or" +
 				" tourism = information and information = office or" +
-				" leisure ~ " + TextUtils.join("|",leisures) + ")" +
-				" and !opening_hours and name";
+				" leisure ~ " + TextUtils.join("|",leisures)  + ")" +
+				" and !wheelchair and name";
 	}
-	
-    @Override public int importance()
-    {
-        return QuestImportance.MINOR;
-    }
 
-	@Override public AbstractQuestAnswerFragment createForm()
+	@Override public int importance()
 	{
-		return new AddOpeningHoursForm();
+		return QuestImportance.MINOR;
+	}
+
+	@Override public WheelchairAccessAnswerFragment createForm()
+	{
+		return new AddWheelchairAccessBusinessForm();
 	}
 
 	@Override public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
 	{
-		String openingHours = answer.getString(AddOpeningHoursForm.OPENING_HOURS);
-		if(openingHours != null)
+		String wheelchair = answer.getString(AddWheelchairAccessBusinessForm.ANSWER);
+		if(wheelchair != null)
 		{
-			changes.add("opening_hours", openingHours);
+			changes.add("wheelchair", wheelchair);
 		}
 	}
 
 	@Override public String getCommitMessage()
 	{
-		return "Add opening hours";
+		return "Add wheelchair access to businesses";
 	}
 
-	@Override public String getIconName() {	return "opening_hours"; }
+	@Override public String getIconName() {	return "wheelchair_shop"; }
 }

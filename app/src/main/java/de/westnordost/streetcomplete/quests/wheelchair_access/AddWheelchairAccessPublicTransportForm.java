@@ -7,15 +7,14 @@ import android.view.ViewGroup;
 
 import de.westnordost.osmapi.map.data.OsmElement;
 import de.westnordost.streetcomplete.R;
-import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
-import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment;
 
 
-public class AddWheelchairAccessForm extends WheelchairAccessAnswerFragment
+public class AddWheelchairAccessPublicTransportForm extends WheelchairAccessAnswerFragment
 {
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
 		View view = super.onCreateView(inflater, container, savedInstanceState);
+		setContentView(R.layout.quest_wheelchair_public_transport_explanation);
 		setTitle();
 		return view;
 	}
@@ -23,8 +22,7 @@ public class AddWheelchairAccessForm extends WheelchairAccessAnswerFragment
 	private void setTitle()
 	{
 		OsmElement element = getOsmElement();
-		String name = element != null && element.getTags() != null ? element.getTags().get("name") : null;
-		setTitle(getResources().getString(R.string.quest_wheelchairAccess_title, name));
+		setTitle(R.string.quest_wheelchairAccess_public_transport_title);
 
 	}
 }
