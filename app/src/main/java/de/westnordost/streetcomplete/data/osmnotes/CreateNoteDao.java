@@ -39,6 +39,7 @@ public class CreateNoteDao
 			values.put(CreateNoteTable.Columns.ELEMENT_ID, note.elementId);
 		}
 		values.put(CreateNoteTable.Columns.TEXT, note.text);
+		values.put(CreateNoteTable.Columns.QUEST_TITLE, note.questTitle);
 
 		long rowId = db.insert(CreateNoteTable.NAME, null, values);
 
@@ -119,11 +120,16 @@ public class CreateNoteDao
 			colLon = cursor.getColumnIndexOrThrow(CreateNoteTable.Columns.LONGITUDE),
 			colText = cursor.getColumnIndexOrThrow(CreateNoteTable.Columns.TEXT),
 			colElementType = cursor.getColumnIndexOrThrow(CreateNoteTable.Columns.ELEMENT_TYPE),
-			colElementId = cursor.getColumnIndexOrThrow(CreateNoteTable.Columns.ELEMENT_ID);
+			colElementId = cursor.getColumnIndexOrThrow(CreateNoteTable.Columns.ELEMENT_ID),
+			colQuestTitle = cursor.getColumnIndexOrThrow(CreateNoteTable.Columns.QUEST_TITLE);
 
 		CreateNote note = new CreateNote();
 		note.position = new OsmLatLon(cursor.getDouble(colLat), cursor.getDouble(colLon));
 		note.text = cursor.getString(colText);
+		if(!cursor.isNull(colQuestTitle))
+		{
+			note.questTitle = cursor.getString(colQuestTitle);
+		}
 		if(!cursor.isNull(colElementType))
 		{
 			note.elementType = Element.Type.valueOf(cursor.getString(colElementType));

@@ -26,7 +26,7 @@ public class BusStopShelterForm extends YesNoQuestAnswerFragment
 		String name = element != null && element.getTags() != null ? element.getTags().get("name") : null;
 		if(name != null && !name.trim().isEmpty())
 		{
-			setTitle(getResources().getString(R.string.quest_busStopShelter_name_title, name));
+			setTitle(R.string.quest_busStopShelter_name_title, name);
 		}
 		else
 		{

@@ -30,6 +30,7 @@ public class QuestAnswerComponentTest extends TestCase
 		final int expectQuestId = 3;
 		final QuestGroup expectGroup = QuestGroup.OSM_NOTE;
 		final String expectNote = "test";
+		final String expectQuestTitle = "What?";
 		final Bundle expectBundle = new Bundle();
 		expectBundle.putString("A","B");
 
@@ -42,11 +43,13 @@ public class QuestAnswerComponentTest extends TestCase
 				assertEquals(expectBundle, answer);
 			}
 
-			@Override public void onLeaveNote(long questId, QuestGroup group, String note)
+			@Override public void onLeaveNote(long questId, QuestGroup group, String questTitle,
+											  String note)
 			{
 				assertEquals(expectQuestId, questId);
 				assertEquals(expectGroup, group);
 				assertEquals(expectNote, note);
+				assertEquals(expectQuestTitle, questTitle);
 			}
 
 			@Override public void onSkippedQuest(long questId, QuestGroup group)
@@ -57,7 +60,7 @@ public class QuestAnswerComponentTest extends TestCase
 		});
 
 		c1.onCreate(QuestAnswerComponent.createArguments(expectQuestId, expectGroup));
-		c1.onLeaveNote(expectNote);
+		c1.onLeaveNote(expectQuestTitle, expectNote);
 		c1.onAnswerQuest(expectBundle);
 		c1.onSkippedQuest();
 	}

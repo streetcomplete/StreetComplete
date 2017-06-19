@@ -263,8 +263,6 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="quest_manySports_confirmation_generic">"General Purpose"</string>
     <string name="quest_sport_manySports_confirmation_title">"You selected many sports"</string>
     <string name="quest_busStopShelter_name_title">"Does the bus stop \"%s\" have a shelter?"</string>
-    <string name="quest_leave_new_note_in_response_to">"In reply to \"%1$s\":
-%2$s"</string>
 	<string name="quest_toiletsFee_title">"Do these toilets require a fee?"</string>
     <string name="quest_tactilePaving_title_bus">"Does this bus stop have tactile pavings?"</string>
     <string name="quest_tactilePaving_title_crosswalk">"Does this crosswalk have tactile pavings?"</string>

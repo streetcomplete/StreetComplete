@@ -23,7 +23,7 @@ import de.westnordost.streetcomplete.data.tiles.DownloadedTilesTable;
 public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 {
 	public static final String DB_NAME = "streetcomplete.db";
-	public static final int DB_VERSION = 4;
+	public static final int DB_VERSION = 5;
 
 	private static final String OSM_QUESTS_TABLE_CREATE =
 			"CREATE TABLE " + OsmQuestTable.NAME +
@@ -103,7 +103,8 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 					CreateNoteTable.Columns.LONGITUDE + " double		NOT NULL, " +
 					CreateNoteTable.Columns.ELEMENT_TYPE +	" varchar(255), " +
 					CreateNoteTable.Columns.ELEMENT_ID +	" int, " +
-					CreateNoteTable.Columns.TEXT + 		" text			NOT NULL" +
+					CreateNoteTable.Columns.TEXT + 		" text			NOT NULL, " +
+					CreateNoteTable.Columns.QUEST_TITLE + " text" +
 					");";
 
 	private static final String OSM_NOTES_VIEW_CREATE =
@@ -238,6 +239,12 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 			// created. That's okay because OSM server closes open changesets after 1h automatically.
 			db.execSQL("DROP TABLE " + OpenChangesetsTable.NAME + ";");
 			db.execSQL(OPEN_CHANGESETS_TABLE_CREATE);
+		}
+
+		if(oldVersion < 5)
+		{
+			db.execSQL("ALTER TABLE " + CreateNoteTable.NAME + " ADD COLUMN " +
+				CreateNoteTable.Columns.QUEST_TITLE + " text;");
 		}
 
 		// for later changes to the DB

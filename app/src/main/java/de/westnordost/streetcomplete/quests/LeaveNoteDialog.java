@@ -91,19 +91,7 @@ public class LeaveNoteDialog extends DialogFragment
 			return;
 		}
 
-		String noteText;
-		if(questTitle != null)
-		{
-			noteText = String.format(
-					getResources().getString(R.string.quest_leave_new_note_in_response_to),
-					questTitle, inputText);
-		}
-		else
-		{
-			noteText = inputText;
-		}
-
-		questAnswerComponent.onLeaveNote(noteText);
+		questAnswerComponent.onLeaveNote(questTitle, inputText);
 		dismiss();
 	}
 

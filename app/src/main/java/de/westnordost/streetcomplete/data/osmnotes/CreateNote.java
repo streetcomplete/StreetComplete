@@ -7,6 +7,7 @@ public class CreateNote
 {
 	public long id;
 	public String text;
+	public String questTitle;
 	public LatLon position;
 	public Element.Type elementType;
 	public Long elementId;

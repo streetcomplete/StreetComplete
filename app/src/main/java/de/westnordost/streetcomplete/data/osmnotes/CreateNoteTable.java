@@ -12,6 +12,7 @@ public class CreateNoteTable
 				LONGITUDE = "longitude",
 				TEXT = "text",
 				ELEMENT_TYPE = "element_type",
-				ELEMENT_ID = "element_id";
+				ELEMENT_ID = "element_id",
+				QUEST_TITLE = "quest_title";
 	}
 }

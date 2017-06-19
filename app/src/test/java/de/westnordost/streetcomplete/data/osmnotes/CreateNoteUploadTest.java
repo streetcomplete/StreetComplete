@@ -156,11 +156,32 @@ public class CreateNoteUploadTest extends TestCase
 		verifyNoteInsertedIntoDb(createNote.id, note);
 	}
 
+
+	public void testCreateNoteWithNoQuestTitleButAssociatedElement()
+	{
+		CreateNote createNote = createACreateNote();
+		createNote.elementType = Element.Type.WAY;
+		createNote.elementId = 5L;
+		when(mapDataDao.getWay(createNote.elementId)).thenReturn(mock(Way.class));
+
+		Note note = createNote(null);
+
+		when(notesDao.create(any(LatLon.class), anyString())).thenReturn(note);
+
+		assertNotNull(makeCreateNoteUpload().uploadCreateNote(createNote));
+
+		verify(notesDao).create(createNote.position,
+				"for https://www.openstreetmap.org/way/5 :\n\njo ho");
+
+		verifyNoteInsertedIntoDb(createNote.id, note);
+	}
+
 	public void testCreateNoteWithAssociatedElementAndNoNoteYet()
 	{
 		CreateNote createNote = createACreateNote();
 		createNote.elementType = Element.Type.WAY;
 		createNote.elementId = 5L;
+		createNote.questTitle = "What?";
 		when(mapDataDao.getWay(createNote.elementId)).thenReturn(mock(Way.class));
 
 		Note note = createNote(createNote);
@@ -169,8 +190,8 @@ public class CreateNoteUploadTest extends TestCase
 
 		assertNotNull(makeCreateNoteUpload().uploadCreateNote(createNote));
 
-		verify(notesDao).create(createNote.position, createNote.text +
-				CreateNoteUpload.getAssociatedElementString(createNote));
+		verify(notesDao).create(createNote.position,
+				"Unable to answer \"What?\" for https://www.openstreetmap.org/way/5 via StreetComplete:\n\njo ho");
 
 		verifyNoteInsertedIntoDb(createNote.id, note);
 	}
