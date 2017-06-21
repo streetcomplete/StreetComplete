@@ -13,10 +13,22 @@ public class AddWheelchairBusinessTest extends AOsmElementQuestTypeTest
 		tags.put("shop","yes");
 	}
 
-	public void testBusiness()
+	public void testBusinessYes()
 	{
 		bundle.putString(AddWheelchairAccessBusinessForm.ANSWER, "yes");
 		verify(new StringMapEntryAdd("wheelchair","yes"));
+	}
+
+	public void testBusinessNo()
+	{
+		bundle.putString(AddWheelchairAccessBusinessForm.ANSWER, "no");
+		verify(new StringMapEntryAdd("wheelchair","no"));
+	}
+
+	public void testBusinessLimited()
+	{
+		bundle.putString(AddWheelchairAccessBusinessForm.ANSWER, "limited");
+		verify(new StringMapEntryAdd("wheelchair","limited"));
 	}
 
 	@Override protected OsmElementQuestType createQuestType()

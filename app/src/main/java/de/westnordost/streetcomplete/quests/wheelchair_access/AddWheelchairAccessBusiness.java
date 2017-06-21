@@ -33,7 +33,7 @@ public class AddWheelchairAccessBusiness extends SimpleOverpassQuestType
 				"courthouse", "embassy", "car_wash", "car_rental",
 				"marketplace", "fuel", "driving_school", "dentist",
 				"doctors", "clinic", "pharmacy", "veterinary",
-				"place_of_worship", "school", "townhall"};
+				"place_of_worship", "townhall"};
 
 		String[] tourism = {
 				"zoo", "aquarium", "theme_park", "gallery",
@@ -50,7 +50,7 @@ public class AddWheelchairAccessBusiness extends SimpleOverpassQuestType
 				" tourism ~ " + TextUtils.join("|", tourism) + " or" +
 				" tourism = information and information = office or" +
 				" leisure ~ " + TextUtils.join("|",leisures)  + " or"+
-				" historic = memorial or railway = station|subway_entrance)" +
+				" historic = memorial)" +
 				" and !wheelchair and name";
 	}
 

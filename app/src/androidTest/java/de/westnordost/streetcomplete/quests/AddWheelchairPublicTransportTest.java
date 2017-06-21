@@ -13,10 +13,22 @@ public class AddWheelchairPublicTransportTest extends AOsmElementQuestTypeTest
 		tags.put("highway","bus_stop");
 	}
 
-	public void testPublicTransport()
+	public void testPublicTransportYes()
 	{
 		bundle.putString(AddWheelchairAccessPublicTransportForm.ANSWER, "yes");
 		verify(new StringMapEntryAdd("wheelchair","yes"));
+	}
+
+	public void testPublicTransportNo()
+	{
+		bundle.putString(AddWheelchairAccessPublicTransportForm.ANSWER, "no");
+		verify(new StringMapEntryAdd("wheelchair","no"));
+	}
+
+	public void testPublicTransportLimited()
+	{
+		bundle.putString(AddWheelchairAccessPublicTransportForm.ANSWER, "limited");
+		verify(new StringMapEntryAdd("wheelchair","limited"));
 	}
 
 	@Override protected OsmElementQuestType createQuestType()
