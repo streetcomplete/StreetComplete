@@ -47,6 +47,6 @@ public class AddTactilePavingBusStop extends SimpleOverpassQuestType
 	}
 
 	@Override public String getIconName() {
-		return "bus_stop";
+		return "blind_bus_stop";
 	}
 }

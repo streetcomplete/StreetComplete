@@ -47,6 +47,6 @@ public class AddTactilePavingCrosswalk extends SimpleOverpassQuestType
 	}
 
 	@Override public String getIconName() {
-		return "pedestrian_crossing";
+		return "blind_pedestrian_crossing";
 	}
 }
