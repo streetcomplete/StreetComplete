@@ -210,16 +210,17 @@ To display the map, vector tiles are retrieved from the &lt;a href=\"https://map
     <string name="quest_sidewalk_onlyWest">"Only on western side"</string>
     <string name="quest_sidewalk_onlyEast">"Only on eastern side"</string>
     <string name="quest_sidewalk_yes">"Yes"</string>
-    <string name="quest_maxspeed_title">"What do the signs say about the speed limit in this street?"</string>
+    <string name="quest_maxspeed_title_short">"Is there a speed limit sign for this street?"</string>
+    <string name="quest_maxspeed_unusualInput_confirmation_description">"This speed limit looks implausible."</string>
+    <string name="quest_maxspeed_answer_variable">"Electronic signs show variable speed limits"</string>
     <string name="quest_maxspeed_answer_noSign">"There is no sign"</string>
     <string name="quest_maxspeed_answer_noSign_info">"Well, if there are no signs, general speed limits apply."</string>
-    <string name="quest_maxspeed_answer_noSign_info_motorway">"This is %1$s on a motorway."</string>
-    <string name="quest_maxspeed_answer_noSign_info_living_street">"This is %1$s in a living street."</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Where is this street?"</string>
-    <string name="quest_maxspeed_answer_noSign_urban">"In town: %1$s speed limit applies."</string>
-    <string name="quest_maxspeed_answer_noSign_rural">"Out of town: %1$s speed limit applies."</string>
-    <string name="quest_maxspeed_answer_noSign_implicitOk">"Fair enough"</string>
-    <string name="quest_maxspeed_answer_variable">"Electronic signs show variable speed limits"</string>
+    <string name="quest_maxspeed_answer_noSign_urbanOk">"In town"</string>
+    <string name="quest_maxspeed_answer_noSign_ruralOk">"Out of town"</string>
+    <string name="quest_maxspeed_answer_noSign_info_zone">"Oftentimes, roads within a residential area do not have explicit speed limit signs. Instead, there may be only one sign at the start of a whole zone.
+
+At the main street intersection, do you see a sign like this?:"</string>
     <string name="quest_cyclewaySurface_title">"What surface does the cycleway here have?"</string>
     <string name="quest_cycleway_title">"Is there a cycleway in this street?"</string>
     <string name="quest_buildingType_title">"What kind of building is this?"</string>
@@ -271,4 +272,5 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="quest_sport_gaelic_games">Gaelic Games</string>
     <string name="quest_sport_sepak_takraw">Sepak Takraw</string>
     <string name="quest_sport_skating">Skating</string>
+    <string name="quest_maxspeed_sign_zone">ZONE</string>
 </resources>

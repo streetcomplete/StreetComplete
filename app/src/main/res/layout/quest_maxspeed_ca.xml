@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:text="MAXIMUM"
             android:textStyle="bold"
-            android:textSize="18dp"
+            android:textSize="16dp"
             android:gravity="center"
             android:textColor="#000000"/>
 
@@ -31,13 +31,18 @@
             android:inputType="number"
             android:gravity="center"
             android:textStyle="bold"
-            android:textSize="48dp"/>
+            android:maxLength="3"
+            android:textSize="40dp"/>
 
-        <Spinner
-            android:id="@+id/unitSpinner"
+        <TextView
+            android:id="@+id/unitText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:spinnerMode="dropdown"/>
+            android:layout_marginTop="-4dp"
+            android:textStyle="bold"
+            android:textSize="16dp"
+            android:textColor="#000"
+            />
 
     </LinearLayout>
 </LinearLayout>

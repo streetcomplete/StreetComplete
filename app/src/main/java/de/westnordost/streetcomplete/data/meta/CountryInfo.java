@@ -55,6 +55,11 @@ public class CountryInfo implements Serializable, Cloneable
 		return Collections.unmodifiableList(officialLanguages);
 	}
 
+	public String getCountryCode()
+	{
+		return countryCode;
+	}
+
 	public Locale getLocale()
 	{
 		List<String> languages = getOfficialLanguages();

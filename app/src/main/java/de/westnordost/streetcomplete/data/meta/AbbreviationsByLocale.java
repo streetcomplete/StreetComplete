@@ -42,14 +42,8 @@ public class AbbreviationsByLocale
 
 	private Resources getResources(Locale locale)
 	{
-		Configuration configuration = getLocaleConfiguration(locale);
-		return applicationContext.createConfigurationContext(configuration).getResources();
-	}
-
-	private Configuration getLocaleConfiguration(Locale locale)
-	{
 		Configuration configuration = new Configuration(applicationContext.getResources().getConfiguration());
 		configuration.setLocale(locale);
-		return configuration;
+		return applicationContext.createConfigurationContext(configuration).getResources();
 	}
 }

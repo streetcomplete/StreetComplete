@@ -3,7 +3,11 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
+    <dimen name="dialog_horizontal_margin">24dp</dimen>
+    <dimen name="dialog_vertical_margin">16dp</dimen>
+
     <!-- Form content -->
     <dimen name="quest_form_vertical_margin">8dp</dimen>
+    <dimen name="quest_bottom_sheet_peek_height">200dp</dimen>
 
 </resources>

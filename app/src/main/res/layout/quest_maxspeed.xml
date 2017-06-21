@@ -7,8 +7,8 @@
 
     <LinearLayout
         android:orientation="vertical"
-        android:layout_width="140dp"
-        android:layout_height="140dp"
+        android:layout_width="118dp"
+        android:layout_height="118dp"
         android:padding="18dp"
         android:background="@drawable/background_maxspeed"
         android:gravity="center">
@@ -21,14 +21,19 @@
             android:inputType="number"
             android:gravity="center"
             android:textStyle="bold"
-            android:textSize="48dp"
+            android:textSize="40dp"
+            android:maxLength="3"
             android:background="#00ffffff"/>
 
-        <Spinner
-            android:id="@+id/unitSpinner"
+        <TextView
+            android:id="@+id/unitText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:spinnerMode="dropdown"/>
+            android:layout_marginTop="-4dp"
+            android:textStyle="bold"
+            android:textSize="16dp"
+            android:textColor="#000"
+            />
 
     </LinearLayout>
 </LinearLayout>

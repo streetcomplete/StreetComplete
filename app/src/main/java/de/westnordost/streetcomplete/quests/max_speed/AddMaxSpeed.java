@@ -18,7 +18,9 @@ public class AddMaxSpeed extends SimpleOverpassQuestType
 	{
 		return "ways with highway ~ " +
 		       "motorway|trunk|primary|secondary|tertiary|unclassified|residential and " +
-		       "!maxspeed and !source:maxspeed";
+		       "!maxspeed and !source:maxspeed" +
+		       // other tags that are used for basically the same thing as source:maxspeed
+		       " and !zone:maxspeed and !maxspeed:type";
 	}
 
 	@Override public int importance()
@@ -33,11 +35,18 @@ public class AddMaxSpeed extends SimpleOverpassQuestType
 
 	@Override public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
 	{
-		int maxspeed = answer.getInt(AddMaxSpeedForm.MAX_SPEED,-1);
-		if(maxspeed != -1) changes.add("maxspeed", "" + maxspeed);
-
-		String maxspeedSource = answer.getString(AddMaxSpeedForm.MAX_SPEED_SOURCE);
-		if(maxspeedSource != null) changes.add("source:maxspeed", maxspeedSource);
+		String maxspeed = answer.getString(AddMaxSpeedForm.MAX_SPEED);
+		String country = answer.getString(AddMaxSpeedForm.MAX_SPEED_IMPLICIT_COUNTRY);
+		String roadtype = answer.getString(AddMaxSpeedForm.MAX_SPEED_IMPLICIT_ROADTYPE);
+		if(maxspeed != null)
+		{
+			changes.add("maxspeed", maxspeed);
+			changes.add("source:maxspeed", "sign");
+		}
+		else if(roadtype != null)
+		{
+			changes.add("source:maxspeed", country + ":" + roadtype);
+		}
 	}
 
 	@Override public String getCommitMessage() { return "Add speed limits"; }
