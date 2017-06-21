@@ -21,8 +21,6 @@ public class AddWheelchairAccessPublicTransportForm extends WheelchairAccessAnsw
 
 	private void setTitle()
 	{
-		OsmElement element = getOsmElement();
 		setTitle(R.string.quest_wheelchairAccess_public_transport_title);
-
 	}
 }
