@@ -1,7 +1,5 @@
 package de.westnordost.streetcomplete.data.osm.download;
 
-import com.google.common.collect.Lists;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -241,13 +239,21 @@ public class ElementGeometryCreator
 			LatLon toLast = polyWay.get(polyWay.size() - 1);
 			if(addLast == toLast)
 			{
-				way = Lists.reverse(way);
+				// -1 to not add the last vertex because it has already been added
+				ListIterator<LatLon> it = way.listIterator(way.size()-1);
+				while(it.hasPrevious())
+				{
+					polyWay.add(it.previous());
+				}
 			}
-			// +1 to not add the first vertex because it has already been added
-			ListIterator<LatLon> it = way.listIterator(1);
-			while(it.hasNext())
+			else
 			{
-				polyWay.add(it.next());
+				// +1 to not add the first vertex because it has already been added
+				ListIterator<LatLon> it = way.listIterator(+1);
+				while(it.hasNext())
+				{
+					polyWay.add(it.next());
+				}
 			}
 		}
 	}
