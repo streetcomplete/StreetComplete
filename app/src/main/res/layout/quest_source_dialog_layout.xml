@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dialog_horizontal_margin">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/quest_source_dialog_note"
+        android:textAppearance="@android:style/TextAppearance.Theme.Dialog"
+        android:id="@+id/sourceNote"/>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sourceNote"
+        android:layout_marginTop="@dimen/dialog_vertical_margin"
+        android:text="@string/dialog_session_dont_show_again"
+        android:id="@+id/checkBoxDontShowAgain"
+        />
+</RelativeLayout>

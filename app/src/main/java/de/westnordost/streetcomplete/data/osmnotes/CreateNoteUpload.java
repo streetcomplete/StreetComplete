@@ -144,7 +144,25 @@ public class CreateNoteUpload
 				}
 			}
 		}
-		return osmDao.create(n.position, n.text + getAssociatedElementString(n));
+		return osmDao.create(n.position, getCreateNoteText(n));
+	}
+
+	static String getCreateNoteText(CreateNote note)
+	{
+		if(note.hasAssociatedElement())
+		{
+			if(note.questTitle != null)
+			{
+				return "Unable to answer \"" + note.questTitle + "\"" +
+						" for " + getAssociatedElementString(note) +
+						" via StreetComplete:\n\n" + note.text;
+			}
+			else
+			{
+				return "for " + getAssociatedElementString(note) + " :\n\n" + note.text;
+			}
+		}
+		return note.text;
 	}
 
 	private Note findAlreadyExistingNoteWithSameAssociatedElement(final CreateNote newNote)
@@ -156,8 +174,8 @@ public class CreateNoteUpload
 				if(newNote.hasAssociatedElement())
 				{
 					String firstCommentText = oldNote.comments.get(0).text;
-
-					if(firstCommentText.matches(getAssociatedElementRegex(newNote)))
+					String newNoteRegex = getAssociatedElementRegex(newNote);
+					if(firstCommentText.matches(newNoteRegex))
 					{
 						super.handle(oldNote);
 					}
@@ -179,14 +197,15 @@ public class CreateNoteUpload
 		String oldStyleRegex = elementType+"\\s*#"+n.elementId;
 		// i.e. www.openstreetmap.org/way/123
 		String newStyleRegex = "openstreetmap\\.org\\/"+elementType+"\\/"+n.elementId;
-		return ".*(("+oldStyleRegex+")|("+newStyleRegex+")).*";
+		// i: turns on case insensitive regex, s: newlines are also captured with "."
+		return "(?is).*(("+oldStyleRegex+")|("+newStyleRegex+")).*";
 	}
 
 	static String getAssociatedElementString(CreateNote n)
 	{
-		if(!n.hasAssociatedElement()) return "";
+		if(!n.hasAssociatedElement()) return null;
 
 		String elementName = n.elementType.name().toLowerCase(Locale.UK);
-		return "\n\nhttps://www.openstreetmap.org/" + elementName + "/" + n.elementId;
+		return "https://www.openstreetmap.org/" + elementName + "/" + n.elementId;
 	}
 }

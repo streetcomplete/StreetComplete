@@ -17,8 +17,8 @@ android {
         applicationId "de.westnordost.streetcomplete"
         minSdkVersion 17
         targetSdkVersion 25
-        versionCode 7
-        versionName "0.10"
+        versionCode 8
+        versionName "0.11"
         multiDexEnabled true
         testInstrumentationRunner "com.android.test.runner.MultiDexTestRunner"
         buildConfigField "String", "MAPZEN_API_KEY", MAPZEN_API_KEY
@@ -57,41 +57,43 @@ dependencies {
     // tests (perhaps migrate to junit4 later if any features of it seem convenient or necessary)
     testCompile 'junit:junit:3.8.1'
     testCompile 'org.mockito:mockito-core:1.10.19'
-    testCompile 'org.objenesis:objenesis:2.2'
+    testCompile 'org.objenesis:objenesis:2.5.1'
 
     androidTestCompile 'org.mockito:mockito-core:1.10.19'
-    androidTestCompile 'org.objenesis:objenesis:2.2'
+    androidTestCompile 'org.objenesis:objenesis:2.5.1'
     androidTestCompile "com.crittercism.dexmaker:dexmaker:1.4"
     androidTestCompile "com.crittercism.dexmaker:dexmaker-dx:1.4"
     androidTestCompile "com.crittercism.dexmaker:dexmaker-mockito:1.4"
-
 
     // dependency injection
     compile 'com.google.dagger:dagger:2.5'
     apt 'com.google.dagger:dagger-compiler:2.5'
 
     // Android stuff
-    compile 'com.android.support:appcompat-v7:25.2.0'
-    compile 'com.android.support:support-v13:25.2.0'
-    compile 'com.android.support:support-v4:25.2.0'
-    compile 'com.android.support:design:25.2.0'
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support:support-v13:25.3.1'
+    compile 'com.android.support:support-v4:25.3.1'
+    compile 'com.android.support:design:25.3.1'
 
     // geometry
     compile 'com.vividsolutions:jts-core:1.14.0'
 
     // talking with OSM Api
     compile 'oauth.signpost:signpost-core:1.2.1.2'
-    compile ('de.westnordost:osmapi:1.6') {
+    compile ('de.westnordost:osmapi:1.7') {
         // it's already included in Android
         exclude group: 'net.sf.kxml', module: 'kxml2'
     }
 
     // serialization
+    // Kryo uses Objenesis 2.2 which uses a class that has been removed for Android O.
+    // see https://github.com/westnordost/StreetComplete/issues/286
+    compile 'org.objenesis:objenesis:2.5.1'
     compile 'com.esotericsoftware:kryo:4.0.0'
 
     // map and location
-    compile 'com.mapzen.tangram:tangram:0.6.2'
-    compile 'com.mapzen.android:lost:2.1.2'
+    compile 'com.mapzen.tangram:tangram:0.7.1'
+    compile 'com.mapzen.android:lost:3.0.0'
 
     // config files
     compile 'com.esotericsoftware.yamlbeans:yamlbeans:1.11'

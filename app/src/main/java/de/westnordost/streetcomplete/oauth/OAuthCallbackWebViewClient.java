@@ -42,31 +42,30 @@ public class OAuthCallbackWebViewClient extends WebViewClient
 		this.webView = webView;
 	}
 
-	@Override
-	@SuppressWarnings("deprecation")
-	public void onReceivedError(WebView view, int errorCode, String description, String failingUrl)
-	{
-		// TODO pass the error code up here...
-		onError(null);
-	}
+    @Override
+    @SuppressWarnings("deprecation")
+    public void onReceivedError(WebView view, int errorCode, String description, String failingUrl)
+    {
+        onError(new OAuthException(errorCode, description, failingUrl));
+    }
 
-	@Override
-	public void onReceivedHttpError(WebView view, WebResourceRequest request, WebResourceResponse errorResponse)
-	{
-		onError(null);
-	}
+    @Override
+    public void onReceivedHttpError(WebView view, WebResourceRequest request, WebResourceResponse errorResponse)
+    {
+        onError(new OAuthException(request, errorResponse));
+    }
 
-	@TargetApi(23)
-	public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error)
-	{
-		onError(null);
-	}
+    @TargetApi(23)
+    public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error)
+    {
+        onError(new OAuthException(request, error));
+    }
 
-	@Override
-	public void onReceivedSslError(WebView view, @NonNull SslErrorHandler handler, SslError error)
-	{
-		onError(null);
-	}
+    @Override
+    public void onReceivedSslError(WebView view, @NonNull SslErrorHandler handler, SslError error)
+    {
+        onError(null);
+    }
 
 	@Override
 	public void onPageStarted(WebView view, String url, Bitmap favicon)

@@ -15,10 +15,12 @@ public class OsmQuestTable
 				ELEMENT_TYPE  = "element_type",
 				QUEST_STATUS = "quest_status",
 				TAG_CHANGES = "tag_changes",
+				CHANGES_SOURCE = "changes_source",
 				LAST_UPDATE = "last_update";
 
 		public static final String[] ALL = {
-				QUEST_ID, QUEST_TYPE, ELEMENT_ID, ELEMENT_TYPE, QUEST_STATUS, TAG_CHANGES, LAST_UPDATE
+				QUEST_ID, QUEST_TYPE, ELEMENT_ID, ELEMENT_TYPE, QUEST_STATUS, TAG_CHANGES,
+				CHANGES_SOURCE, LAST_UPDATE
 				};
 	}
 }

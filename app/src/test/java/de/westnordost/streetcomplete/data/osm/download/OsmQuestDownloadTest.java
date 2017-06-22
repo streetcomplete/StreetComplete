@@ -96,10 +96,10 @@ public class OsmQuestDownloadTest extends TestCase
 		// in the quest database mock, there are quests for node 4 and node 5
 		List<OsmQuest> quests = new ArrayList<>();
 		quests.add(new OsmQuest(
-				12L, questType, Element.Type.NODE, 4, QuestStatus.NEW, null,
+				12L, questType, Element.Type.NODE, 4, QuestStatus.NEW, null, null,
 				new Date(), new ElementGeometry(pos)));
 		quests.add(new OsmQuest(
-				13L, questType, Element.Type.NODE, 5, QuestStatus.NEW, null,
+				13L, questType, Element.Type.NODE, 5, QuestStatus.NEW, null, null,
 				new Date(), new ElementGeometry(pos)));
 		when(osmQuestDao.getAll(
 				any(BoundingBox.class), any(QuestStatus.class), anyString(),

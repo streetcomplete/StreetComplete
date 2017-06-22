@@ -17,18 +17,19 @@ public class OsmQuest implements Quest
 	public OsmQuest(OsmElementQuestType type, Element.Type elementType, long elementId,
 					ElementGeometry geometry)
 	{
-		this(null, type, elementType, elementId, QuestStatus.NEW, null, new Date(), geometry);
+		this(null, type, elementType, elementId, QuestStatus.NEW, null, null, new Date(), geometry);
 	}
 
 	public OsmQuest(Long id, OsmElementQuestType type, Element.Type elementType, long elementId,
 					QuestStatus status, @Nullable StringMapChanges changes,
-					Date lastUpdate, ElementGeometry geometry)
+					@Nullable  String changesSource, Date lastUpdate, ElementGeometry geometry)
 	{
 		this.id = id;
 		this.type = type;
 		this.elementType = elementType;
 		this.elementId = elementId;
 		this.changes = changes;
+		this.changesSource = changesSource;
 		this.geometry = geometry;
 		this.status = status;
 		this.lastUpdate = lastUpdate;
@@ -46,6 +47,7 @@ public class OsmQuest implements Quest
 	// and the changes to the tags (in the future, streetcomplete should probably be able to edit more
 	// than just tags -> osmchange?)
 	private StringMapChanges changes;
+	private String changesSource;
 
 	private Date lastUpdate;
 
@@ -89,9 +91,12 @@ public class OsmQuest implements Quest
 		return changes;
 	}
 
-	public void setChanges(StringMapChanges changes)
+	public String getChangesSource() { return changesSource; }
+
+	public void setChanges(StringMapChanges changes, String source)
 	{
 		this.changes = changes;
+		this.changesSource = source;
 	}
 
 	@Override public QuestStatus getStatus()

@@ -55,11 +55,6 @@ public class ApplicationModule
 		return application.getAssets();
 	}
 
-	@Provides public PerApplicationStartPrefs perApplicationStartPrefs()
-	{
-		return ((StreetCompleteApplication)application).getPerApplicationStartPrefs();
-	}
-
 	@Provides public Resources resources()
 	{
 		return application.getResources();

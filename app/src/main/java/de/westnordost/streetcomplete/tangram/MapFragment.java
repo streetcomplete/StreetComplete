@@ -207,17 +207,13 @@ public class MapFragment extends Fragment implements
 			accuracyMarker.setVisible(false);
 			directionMarker.setVisible(false);
 		}
+		lastLocation = null;
 		zoomedYet = false;
 
-		try // TODO remove when https://github.com/mapzen/lost/issues/178 is solved
+		if(lostApiClient.isConnected())
 		{
-			if(lostApiClient.isConnected())
-			{
-				LocationServices.FusedLocationApi.removeLocationUpdates(lostApiClient, this);
-				lostApiClient.disconnect();
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
+			LocationServices.FusedLocationApi.removeLocationUpdates(lostApiClient, this);
+			lostApiClient.disconnect();
 		}
 	}
 
@@ -363,16 +359,6 @@ public class MapFragment extends Fragment implements
 		return Math.abs(screenPos1.y - screenPos0.y);
 	}
 
-	@Override public void onProviderEnabled(String provider)
-	{
-
-	}
-
-	@Override public void onProviderDisabled(String provider)
-	{
-
-	}
-
 	private static final String PREF_ROTATION = "map_rotation";
 	private static final String PREF_TILT = "map_tilt";
 	private static final String PREF_ZOOM = "map_zoom";
@@ -501,5 +487,10 @@ public class MapFragment extends Fragment implements
 		if(controller == null) return;
 		controller.setZoomEased(controller.getZoom() - 1, 500);
 		updateView();
+	}
+
+	public Location getDisplayedLocation()
+	{
+		return lastLocation;
 	}
 }

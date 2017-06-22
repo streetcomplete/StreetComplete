@@ -34,8 +34,9 @@ public class OpenChangesetsDao
 		replace = db.compileStatement(
 				"INSERT OR REPLACE INTO " + OpenChangesetsTable.NAME + " ("+
 				OpenChangesetsTable.Columns.QUEST_TYPE+","+
+				OpenChangesetsTable.Columns.SOURCE+","+
 				OpenChangesetsTable.Columns.CHANGESET_ID+
-				") values (?,?);");
+				") values (?,?,?);");
 	}
 
 	public long getLastQuestSolvedTime()
@@ -48,22 +49,24 @@ public class OpenChangesetsDao
 		prefs.edit().putLong(Prefs.LAST_SOLVED_QUEST_TIME, System.currentTimeMillis()).apply();
 	}
 
-	public void replace(String questType, long changesetId)
+	public void replace(OpenChangesetKey key, long changesetId)
 	{
 		synchronized (replace) // statements are not threadsafe
 		{
-			replace.bindString(1, questType);
-			replace.bindLong(2, changesetId);
+			replace.bindString(1, key.questType);
+			replace.bindString(2, key.source);
+			replace.bindLong(3, changesetId);
 			replace.executeInsert();
 			replace.clearBindings();
 		}
 	}
 
-	public OpenChangesetInfo get(String questType)
+	public OpenChangesetInfo get(OpenChangesetKey key)
 	{
 		SQLiteDatabase db = dbHelper.getReadableDatabase();
 		Cursor cursor = db.query(OpenChangesetsTable.NAME, null,
-				OpenChangesetsTable.Columns.QUEST_TYPE + " = ?", new String[]{questType},
+				OpenChangesetsTable.Columns.QUEST_TYPE + " = ? AND " +
+				OpenChangesetsTable.Columns.SOURCE + " = ?", new String[]{key.questType, key.source},
 				null,null,null,"1");
 
 		try
@@ -106,18 +109,19 @@ public class OpenChangesetsDao
 	private OpenChangesetInfo createFromCursor(Cursor cursor)
 	{
 		int colQuestType = cursor.getColumnIndexOrThrow(OpenChangesetsTable.Columns.QUEST_TYPE);
+		int colSource = cursor.getColumnIndex(OpenChangesetsTable.Columns.SOURCE);
 		int colChangesetId = cursor.getColumnIndexOrThrow(OpenChangesetsTable.Columns.CHANGESET_ID);
 
-		OpenChangesetInfo result = new OpenChangesetInfo();
-		result.questType = cursor.getString(colQuestType);
-		result.changesetId = cursor.getLong(colChangesetId);
-		return result;
+		return new OpenChangesetInfo(
+				new OpenChangesetKey(cursor.getString(colQuestType), cursor.getString(colSource)),
+				cursor.getLong(colChangesetId));
 	}
 
-	public boolean delete(String questType)
+	public boolean delete(OpenChangesetKey key)
 	{
 		SQLiteDatabase db = dbHelper.getWritableDatabase();
 		return db.delete(OpenChangesetsTable.NAME,
-				OpenChangesetsTable.Columns.QUEST_TYPE + " = ?", new String[]{questType}) == 1;
+				OpenChangesetsTable.Columns.QUEST_TYPE + " = ? AND " +
+				OpenChangesetsTable.Columns.SOURCE + " = ?", new String[]{key.questType, key.source}) == 1;
 	}
 }

@@ -36,8 +36,6 @@ public class LeaveNoteDialog extends DialogFragment
 	{
 		View view = inflater.inflate(R.layout.leave_note, container, false);
 
-		getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-
 		Button buttonCancel = (Button) view.findViewById(R.id.buttonCancel);
 		buttonCancel.setOnClickListener(new View.OnClickListener()
 		{
@@ -65,6 +63,7 @@ public class LeaveNoteDialog extends DialogFragment
 	@Override public void onCreate(Bundle inState)
 	{
 		super.onCreate(inState);
+		setStyle(STYLE_NO_TITLE,R.style.AppTheme_AlertDialog);
 		questAnswerComponent.onCreate(getArguments());
 		questTitle = getArguments().getString(ARG_QUEST_TITLE);
 	}
@@ -92,19 +91,7 @@ public class LeaveNoteDialog extends DialogFragment
 			return;
 		}
 
-		String noteText;
-		if(questTitle != null)
-		{
-			noteText = String.format(
-					getResources().getString(R.string.quest_leave_new_note_in_response_to),
-					questTitle, inputText);
-		}
-		else
-		{
-			noteText = inputText;
-		}
-
-		questAnswerComponent.onLeaveNote(noteText);
+		questAnswerComponent.onLeaveNote(questTitle, inputText);
 		dismiss();
 	}
 

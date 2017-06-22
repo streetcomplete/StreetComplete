@@ -109,15 +109,18 @@ public class QuestController
 
 	/** Create a note for the given OSM Quest instead of answering it. The quest will turn
 	 *  invisible. */
-	public void createNote(final long osmQuestId, final String text)
+	public void createNote(final long osmQuestId, final String questTitle, final String text)
 	{
 		workerHandler.post(new Runnable() { @Override public void run()
 		{
 			OsmQuest q = osmQuestDB.get(osmQuestId);
+			// race condition: another thread may have removed the element already (#288)
+			if(q == null) return;
 
 			CreateNote createNote = new CreateNote();
 			createNote.position = q.getMarkerLocation();
 			createNote.text = text;
+			createNote.questTitle = questTitle;
 			createNote.elementType = q.getElementType();
 			createNote.elementId = q.getElementId();
 			createNoteDB.add(createNote);
@@ -150,50 +153,78 @@ public class QuestController
 	}
 
 	/** Apply the user's answer to the given quest. (The quest will turn invisible.) */
-	public void solveQuest(final long questId, final QuestGroup group, final Bundle answer)
+	public void solveQuest(final long questId, final QuestGroup group, final Bundle answer,
+						   final String source)
 	{
 		workerHandler.post(new Runnable() { @Override public void run()
 		{
+			boolean success = false;
 			if (group == QuestGroup.OSM)
 			{
-				OsmQuest q = osmQuestDB.get(questId);
-				Element e = osmElementDB.get(q.getElementType(), q.getElementId());
-				StringMapChangesBuilder changesBuilder = new StringMapChangesBuilder(e.getTags());
-				q.getOsmElementQuestType().applyAnswerTo(answer, changesBuilder);
-				StringMapChanges changes = changesBuilder.create();
-				if(!changes.isEmpty())
-				{
-					q.setChanges(changes);
-					q.setStatus(QuestStatus.ANSWERED);
-					osmQuestDB.update(q);
-					openChangesetsDao.setLastQuestSolvedTimeToNow();
-					relay.onQuestSolved(q.getId(), group);
-				}
-				else
-				{
-					throw new RuntimeException(
-							"OsmQuest " + questId + " (" + q.getType().getClass().getSimpleName() +
-							") has been answered by the user but the changeset is empty!");
-				}
+				success = solveOsmQuest(questId, answer, source);
 			}
 			else if (group == QuestGroup.OSM_NOTE)
 			{
-				OsmNoteQuest q = osmNoteQuestDB.get(questId);
-				String comment = answer.getString(NoteDiscussionForm.TEXT);
-				if(comment != null && !comment.isEmpty())
-				{
-					q.setComment(comment);
-					q.setStatus(QuestStatus.ANSWERED);
-					osmNoteQuestDB.update(q);
-					relay.onQuestSolved(q.getId(), group);
-				}
-				else
-				{
-					throw new RuntimeException(
-							"NoteQuest has been answered with an empty comment!");
-				}
+				success = solveOsmNoteQuest(questId, answer);
 			}
+			if(success) relay.onQuestSolved(questId, group);
 		}});
+	}
+
+	private boolean solveOsmNoteQuest(long questId, Bundle answer)
+	{
+		OsmNoteQuest q = osmNoteQuestDB.get(questId);
+		String comment = answer.getString(NoteDiscussionForm.TEXT);
+		if(comment != null && !comment.isEmpty())
+		{
+			q.setComment(comment);
+			q.setStatus(QuestStatus.ANSWERED);
+			osmNoteQuestDB.update(q);
+			return true;
+		}
+		else
+		{
+			throw new RuntimeException(
+					"NoteQuest has been answered with an empty comment!");
+		}
+	}
+
+	private boolean solveOsmQuest(long questId, Bundle answer, String source)
+	{
+		// race condition: another thread (i.e. quest download thread) may have removed the
+		// element already (#282). So in this case, just ignore
+		OsmQuest q = osmQuestDB.get(questId);
+		if(q == null) return false;
+		Element ele = osmElementDB.get(q.getElementType(), q.getElementId());
+		if(ele == null) return false;
+
+		StringMapChangesBuilder changesBuilder = new StringMapChangesBuilder(ele.getTags());
+		try
+		{
+			q.getOsmElementQuestType().applyAnswerTo(answer, changesBuilder);
+		}
+		catch (IllegalArgumentException e)
+		{
+			// if applying the changes results in an error (=a conflict), the data the quest(ion)
+			// was based on is not valid anymore -> like with other conflicts, silently drop the
+			// user's change (#289)
+			return false;
+		}
+		StringMapChanges changes = changesBuilder.create();
+		if(!changes.isEmpty())
+		{
+			q.setChanges(changes, source);
+			q.setStatus(QuestStatus.ANSWERED);
+			osmQuestDB.update(q);
+			openChangesetsDao.setLastQuestSolvedTimeToNow();
+			return true;
+		}
+		else
+		{
+			throw new RuntimeException(
+					"OsmQuest " + questId + " (" + q.getType().getClass().getSimpleName() +
+							") has been answered by the user but the changeset is empty!");
+		}
 	}
 
 	/** Make the given quest invisible asynchronously (per user interaction). */
@@ -204,6 +235,7 @@ public class QuestController
 			if(group == QuestGroup.OSM)
 			{
 				OsmQuest q = osmQuestDB.get(questId);
+				if(q == null) return;
 				q.setStatus(QuestStatus.HIDDEN);
 				osmQuestDB.update(q);
 				relay.onQuestRemoved(q.getId(), group);
@@ -211,6 +243,7 @@ public class QuestController
 			else if(group == QuestGroup.OSM_NOTE)
 			{
 				OsmNoteQuest q = osmNoteQuestDB.get(questId);
+				if(q == null) return;
 				q.setStatus(QuestStatus.HIDDEN);
 				osmNoteQuestDB.update(q);
 				relay.onQuestRemoved(q.getId(), group);
@@ -226,12 +259,16 @@ public class QuestController
 			switch (group)
 			{
 				case OSM:
+					// race condition: another thread may have removed the element already (#288)
 					OsmQuest osmQuest = osmQuestDB.get(questId);
+					if(osmQuest == null) return;
 					Element element = osmElementDB.get(osmQuest.getElementType(), osmQuest.getElementId());
+					if(element == null) return;
 					relay.onQuestCreated(osmQuest, group, element);
 					break;
 				case OSM_NOTE:
 					OsmNoteQuest osmNoteQuest = osmNoteQuestDB.get(questId);
+					if(osmNoteQuest == null) return;
 					relay.onQuestCreated(osmNoteQuest, group, null);
 					break;
 			}

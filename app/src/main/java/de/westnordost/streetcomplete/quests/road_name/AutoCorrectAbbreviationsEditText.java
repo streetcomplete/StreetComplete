@@ -67,6 +67,8 @@ public class AutoCorrectAbbreviationsEditText extends android.support.v7.widget.
 	{
 		String textToCursor = s.subSequence(0, cursor).toString();
 		String[] words = textToCursor.split("[ -]+");
+		// really no idea how the result of split can ever be empty, but it apparently happens sometimes #287
+		if(words.length == 0) return;
 		String lastWordBeforeCursor = words[words.length-1];
 
 		boolean isFirstWord = words.length == 1;

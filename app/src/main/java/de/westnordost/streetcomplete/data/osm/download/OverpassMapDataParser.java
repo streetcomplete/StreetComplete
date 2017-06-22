@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.data.osm.download;
 
 import android.util.LongSparseArray;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -70,7 +71,7 @@ public class OverpassMapDataParser extends XmlParser implements ApiResponseReade
 	}
 
 	@Override
-	public Void parse(InputStream in)
+	public Void parse(InputStream in) throws IOException
 	{
 		if(handler == null) throw new NullPointerException();
 

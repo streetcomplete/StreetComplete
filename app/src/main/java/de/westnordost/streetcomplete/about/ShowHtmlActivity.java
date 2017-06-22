@@ -38,15 +38,4 @@ public class ShowHtmlActivity extends AppCompatActivity
 		String text = getIntent().getStringExtra(TEXT);
 		textView.setText(Html.fromHtml(text));
 	}
-
-	private String inputStreamIntoString(InputStream inputStream) throws IOException
-	{
-		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-		byte[] buffer = new byte[1024];
-		int length;
-		while((length = inputStream.read(buffer))!=-1)
-			baos.write(buffer,0,length);
-
-		return baos.toString("UTF-8");
-	}
 }

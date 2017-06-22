@@ -220,4 +220,35 @@ De informatie die je ingeeft wordt meteen toegevoegd aan OpenStreetMap in jouw n
     <string name="crash_title">"Oeps, StreetComplete is de vorige keer gecrasht!"</string>
     <string name="crash_compose_email">"Email opstellen"</string>
     <string name="no_email_client">"Je hebt geen email client geïnstalleerd."</string>
+    <string name="pref_title_keep_screen_on">"Scherm aan houden"</string>
+    <string name="download_server_error">"Verbindingsproblemen bij het zoeken naar vragen. Probeer het later opnieuw."</string>
+    <string name="upload_server_error">"Verbindingsproblemen bij het uploaden van antwoorden. Probeer het later opnieuw."</string>
+    <string name="quest_generic_hasFeature_yes">"Ja"</string>
+    <string name="quest_generic_hasFeature_no">"Nee"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopShelter_title">"Heeft deze halte een bushokje?"</string>
+    <string name="quest_bikeParkingCapacity_title">"Hoeveel fietsen kunnen hier geparkeerd worden?"</string>
+    <string name="quest_address_unusualHousenumber_confirmation_description">"Dit huisnummer ziet er vreemd uit"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_sport_title">"Voor welke sport is dit veld gemaakt?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_sport_answer_multi">"Niet één specifike sport"</string>
+    <string name="quest_sport_soccer">"Voetbal"</string>
+    <string name="quest_sport_tennis">"Tennis"</string>
+    <string name="quest_sport_baseball">"Honkbal"</string>
+    <string name="quest_sport_basketball">"Basketball"</string>
+    <string name="quest_sport_golf">"Golf"</string>
+    <string name="quest_sport_equestrian">"Paardensport"</string>
+    <string name="quest_sport_athletics">"Atletiek"</string>
+    <string name="quest_sport_volleyball">"Volleybal"</string>
+    <string name="quest_sport_beachvolleyball">"Beachvolleybal"</string>
+    <string name="quest_sport_table_tennis">"Tafeltennis"</string>
+    <string name="quest_sport_archery">"Boogschieten"</string>
+    <string name="quest_sport_badminton">"Badminton"</string>
+    <string name="quest_sport_handball">"Handbal"</string>
+    <string name="quest_sport_rugby">"Rugby"</string>
+    <string name="quest_select_hint">"Selecteer:"</string>
 </resources>

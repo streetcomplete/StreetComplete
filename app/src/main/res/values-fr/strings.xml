@@ -13,7 +13,7 @@
     <string name="pref_title_authorized_summary">"Votre compte a été autorisé avec succès"</string>
     <string name="pref_title_not_authorized_summary">"Pas encore autorisé"</string>
     <string name="pref_tilecache_size_summary">"%d Mo"</string>
-    <string name="pref_tilecache_size_message">"Espace en megaoctet réservé à la sauvegarde en cache sur stockage externe des tuiles de la carte"</string>
+    <string name="pref_tilecache_size_message">"Espace en megaoctets réservé à la sauvegarde en cache sur stockage externe des tuiles de la carte"</string>
     <string name="pref_title_quest_expiration_time">"Quêtes en cache"</string>
     <string name="pref_summary_quest_expiration">"pour %s avant de télécharger à nouveau"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Montrer toutes les notes"</string>
@@ -27,8 +27,12 @@
     <string name="map_attribution_osm">"© Contributeurs OpenStreetMap"</string>
     <string name="quest_generic_otherAnswers">"Autres réponses…"</string>
     <string name="quest_generic_answer_notApplicable">"Ne sait pas"</string>
-    <string name="quest_generic_confirmation_title">"Êtes-vous sûr⋅e ?"</string>
-    <string name="quest_generic_confirmation_yes">"Oui, je suis certain⋅e"</string>
+
+    <!-- je me suis permis d'éviter de sous-entendre que l'utilisateur est un homme ou une femme, ce qui évite la forme un peu étrange avec le point médian -->
+    <string name="quest_generic_confirmation_title">"Voulez-vous vraiment ?"</string>
+
+    <!-- cf commentaire sur "Are you sure?" -->
+    <string name="quest_generic_confirmation_yes">"Oui, c'est sûr"</string>
     <string name="quest_generic_confirmation_no">"Je vais vérifier"</string>
     <string name="quest_generic_error_field_empty">"Vous avez laissé ce champ vide"</string>
     <string name="quest_leave_new_note_title">"Laisser une note à la place ?"</string>
@@ -44,7 +48,7 @@
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title">"Abréviation dans le nom ?"</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Si vous pouvez écrire le nom sans abréviation, faites-le. Les abréviations communes sont développées automatiquement pendant que vous tapez, mais peut-être pas toutes."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Pas d'abréviation"</string>
-    <string name="quest_openingHours_name_title">"Quelles sont les horaires d'ouverture de %s ?"</string>
+    <string name="quest_openingHours_name_title">"Quelles sont les horaires d’ouverture de « %s » ?"</string>
     <string name="quest_openingHours_start_time">"heure d'ouverture"</string>
     <string name="quest_openingHours_end_time">"heure de fermeture"</string>
     <string name="quest_openingHours_add_months">"Ajouter des mois"</string>
@@ -112,12 +116,12 @@
     <string name="quest_openingHours_answer_no_regular_opening_hours">"Pas d'heures d'ouverture régulières"</string>
     <string name="quest_openingHours_comment_title">"Décrire les heures d'ouverture"</string>
     <string name="quest_openingHours_comment_description">"Soyez précis, utilisez idéallement les mots sur la pancarte. Par exemple « Sur rendez-vous seulement ». L'absence de pancarte ne veut pas nécessairement dire qu'il n'y a pas d'heures d'ouverture régulières."</string>
-    <string name="quest_buildingLevels_title">"Combien d'étages cet édifice a-t-il ?"</string>
-    <string name="quest_buildingLevels_title_buildingPart">"Combien d'étages cette partie de l'édifice a-t-elle ?"</string>
-    <string name="quest_buildingLevels_levelsLabel">"nombre d'étages"</string>
+    <string name="quest_buildingLevels_title">"Combien de niveaux cet édifice a-t-il ?"</string>
+    <string name="quest_buildingLevels_title_buildingPart">"Combien de niveaux cette partie de l'édifice a-t-elle ?"</string>
+    <string name="quest_buildingLevels_levelsLabel">"nombre de niveaux"</string>
 
     <!-- La phrase en anglais porte aussi à confusion, cet UI devrait être refactored. -->
-    <string name="quest_buildingLevels_roofLevelsLabel">"d'entre eux, combien sont dans le toit"</string>
+    <string name="quest_buildingLevels_roofLevelsLabel">"d'entre eux, combien sont dans le toit ?"</string>
     <string name="quest_roofShape_title">"Quelle forme a le toit de l'édifice ?"</string>
     <string name="quest_roofShape_select_one">"Sélectionner un :"</string>
     <string name="quest_roofShape_show_more">"Montrer d'avantage…"</string>
@@ -167,7 +171,9 @@ Pour afficher la carte, les tuiles vectorielles sont extraites du &lt;a href=\"h
     <!-- "sur wifi" or "en wifi" ? -->
     <string name="autosync_only_on_wifi">"Seulement en Wifi"</string>
     <string name="autosync_off">"Désactivé"</string>
-    <string name="quest_streetSurface_title">"Quel type de revêtement la rue a-t-elle ?"</string>
+
+    <!-- Plus simple et plus court : "Quel est le revêtement de cette rue ?" -->
+    <string name="quest_streetSurface_title">"Quel est le revêtement de cette rue ?"</string>
     <string name="quest_surface_description">"Sélectionner celui qui correspond le plus :"</string>
     <string name="quest_surface_value_paved">"Pavé (générique)"</string>
     <string name="quest_surface_value_unpaved">"Non pavé (générique)"</string>
@@ -210,10 +216,12 @@ Pour afficher la carte, les tuiles vectorielles sont extraites du &lt;a href=\"h
     <string name="quest_maxspeed_answer_noSign_rural">"Hors de la ville : la limite à %1$s s'applique."</string>
     <string name="quest_maxspeed_answer_noSign_implicitOk">"C'est suffisant"</string>
     <string name="quest_maxspeed_answer_variable">"Un panneau électronique affiche des limites de vitesse variables"</string>
-    <string name="quest_cyclewaySurface_title">"Quel type de revêtement la piste cyclable a-t-elle ?"</string>
+
+    <!-- Plus simple et plus court : Quel est le revêtement de cette piste cyclable ? -->
+    <string name="quest_cyclewaySurface_title">"Quel est le revêtement de cette piste cyclable ?"</string>
     <string name="quest_cycleway_title">"Est-ce qu'il y a une piste cyclable sur cette rue ?"</string>
-    <string name="quest_buildingType_title">"Quel type d'édifice est-ce ?"</string>
-    <string name="quest_serviceType_title">"Quel type de rue de service est-ce ?"</string>
+    <string name="quest_buildingType_title">"Quel est le type de cet édifice ?"</string>
+    <string name="quest_serviceType_title">"Quel est le type de cette rue de service ?"</string>
     <string name="quest_streetLanes_title">"Combien de voies cette rue a-t-elle ?"</string>
     <string name="quest_streetLanes_description">"S'il n'y a pas de marques routières, il n'y a pas de voie."</string>
     <string name="quest_streetLanes_north">"Direction nord"</string>
@@ -235,18 +243,59 @@ L'information que vous entrez est directement ajoutée à OpenStreetMap sous vot
     <string name="quest_name_answer_noName">"Il n'a pas de nom"</string>
     <string name="quest_name_answer_noName_confirmation_title">"Vraiment aucun nom ?"</string>
     <string name="quest_name_noName_confirmation_positive">"Oui, sans nom"</string>
-    <string name="quest_buildingLevels_negativeBuildingLevels">"Oups ! L'immeuble ne peut pas avoir plus d'étages au niveau du toit qu'au total !"</string>
+    <string name="quest_buildingLevels_negativeBuildingLevels">"Oups ! L'immeuble ne peut pas avoir plus de niveau dans le toit qu'au total !"</string>
     <string name="quest_openingHours_add_times">"Ajouter des heures d'ouverture"</string>
     <string name="crash_message">"Souhaitez-vous envoyer le rapport d'erreur au développeur ?"</string>
     <string name="crash_title">"StreetComplete s'est arrêté inopinément la dernière fois"</string>
     <string name="crash_compose_email">"Écrire un e-mail"</string>
     <string name="no_email_client">"Vous n'avez pas de client mail installé."</string>
     <string name="pref_title_keep_screen_on">"Conserver l'écran allumé"</string>
-    <string name="download_server_error">"Erreur de connexion lors de la recherche de quêtes. Essayez plus tard."</string>
-    <string name="upload_server_error">"Erreur de connexion lors de l'envoi des réponses. Essayez plus tard."</string>
+    <string name="download_server_error">"Erreur de connexion lors de la recherche de quêtes. Réessayez plus tard."</string>
+    <string name="upload_server_error">"Erreur de connexion lors de l'envoi des réponses. Réessayez plus tard."</string>
     <string name="quest_generic_hasFeature_yes">"Oui"</string>
     <string name="quest_generic_hasFeature_no">"Non"</string>
     <string name="quest_busStopShelter_title">"Y a t-il un abri à cet arrêt de bus ?"</string>
     <string name="quest_bikeParkingCapacity_title">"Combien de vélos peut-on garer ici ?"</string>
     <string name="quest_address_unusualHousenumber_confirmation_description">"Ce numéro de rue semble inhabituel."</string>
+    <string name="quest_sport_title">"À quel sport ce terrain permet de jouer ?"</string>
+    <string name="quest_sport_answer_multi">"Pas de sport particulier"</string>
+    <string name="quest_sport_soccer">"Football"</string>
+    <string name="quest_sport_tennis">"Tennis"</string>
+    <string name="quest_sport_baseball">"Baseball"</string>
+    <string name="quest_sport_basketball">"Basketball"</string>
+    <string name="quest_sport_golf">"Golf"</string>
+    <string name="quest_sport_equestrian">"Équitation"</string>
+    <string name="quest_sport_athletics">"Athlétisme"</string>
+    <string name="quest_sport_volleyball">"Volleyball"</string>
+    <string name="quest_sport_beachvolleyball">"Beach volley"</string>
+    <string name="quest_sport_american_football">"Football américain"</string>
+    <string name="quest_sport_skateboard">"Skateboard"</string>
+    <string name="quest_sport_bowls">"Boulingrin"</string>
+    <string name="quest_sport_boules">"Boules"</string>
+    <string name="quest_sport_shooting">"Tir"</string>
+    <string name="quest_sport_cricket">"Cricket"</string>
+    <string name="quest_sport_table_tennis">"Tennis de table"</string>
+    <string name="quest_sport_gymnastics">"Gymastique"</string>
+    <string name="quest_sport_archery">"Tir à l'arc"</string>
+    <string name="quest_sport_australian_football">"Football australien"</string>
+    <string name="quest_sport_badminton">"Badminton"</string>
+    <string name="quest_sport_canadian_football">"Football canadien"</string>
+    <string name="quest_sport_field_hockey">"Hockey sur gazon"</string>
+    <string name="quest_sport_handball">"Handball"</string>
+    <string name="quest_sport_ice_hockey">"Hockey sur glace"</string>
+    <string name="quest_sport_netball">"Netball"</string>
+    <string name="quest_sport_rugby">"Rugby"</string>
+    <string name="quest_select_hint">"Choisissez :"</string>
+    <string name="quest_sport_manySports_confirmation_description">"Ce terrain est-il spécifiquement prévu pour les sports indiqués (marquages et équipements présents), ou peut-on y jouer à toutes sortes de sports ?"</string>
+    <string name="quest_manySports_confirmation_specific">"Ces jeux en particulier"</string>
+    <string name="quest_manySports_confirmation_generic">"Tous types de sports"</string>
+    <string name="quest_sport_manySports_confirmation_title">"Vous avez sélectionné plusieurs sports"</string>
+
+    <!-- plus simple et plus court : L'arrêt de bus %s est-il abrité ? -->
+    <string name="quest_busStopShelter_name_title">"L’arrêt de bus « %s » a-t-il un abri ?"</string>
+    <string name="quest_leave_new_note_in_response_to">"Réponse à « %1$s » : %2$s"</string>
+    <string name="quest_toiletsFee_title">"Ces toilettes sont-elles payantes ?"</string>
+    <string name="quest_tactilePaving_title_bus">"Cet arrêt de bus a-t-il une surface podotactile ?"</string>
+    <string name="quest_tactilePaving_title_crosswalk">"Ce passage piéton a-t-il une surface podotactile ?"</string>
+    <string name="quest_tactilePaving_title_name_bus">"L’arrêt de bus « %s » a-t-il une surface podotactile ?"</string>
 </resources>

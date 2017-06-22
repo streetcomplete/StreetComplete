@@ -33,10 +33,10 @@ public class AddHousenumber implements OsmElementQuestType
 			" building ~ house|residential|apartments|detached|terrace|hotel|dormitory|houseboat|" +
 			            "school|civic|college|university|public|hospital|kindergarten|train_station|" +
 			            "retail|commercial" +
-			" and !addr:housenumber");
+			" and !addr:housenumber and !addr:housename");
 
 	private static final TagFilterExpression NODES_WITH_HOUSENUMBERS = new FiltersParser().parse(
-			" nodes with addr:housenumber");
+			" nodes with addr:housenumber or addr:housename");
 
 	private final OverpassMapDataDao overpassServer;
 
@@ -83,10 +83,9 @@ public class AddHousenumber implements OsmElementQuestType
 				handler.handle(element, geometry);
 			}
 		});
-		if(!success) return false;
 
-		return true;
-	}
+		return success;
+    }
 
 	@Override public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
 	{

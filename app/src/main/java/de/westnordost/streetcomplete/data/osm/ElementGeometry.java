@@ -8,6 +8,7 @@ import com.vividsolutions.jts.linearref.LengthIndexedLine;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.streetcomplete.util.JTSConst;
 
@@ -64,7 +65,7 @@ public class ElementGeometry
 				return JTSConst.toLatLon(lil.extractPoint(geom.getLength() / 2.0));
 			}
 		}
-		catch (IllegalArgumentException e)
+		catch (Exception e)
 		{
 			// unable to create proper geometry...
 			return null;
@@ -104,5 +105,30 @@ public class ElementGeometry
 			sum += pos1.getLongitude() * pos2.getLatitude() - pos2.getLongitude() * pos1.getLatitude();
 		}
 		return sum > 0;
+	}
+	public BoundingBox getBounds()
+	{
+		List<List<LatLon>> points;
+		if(polygons != null) points = polygons;
+		else if(polylines != null) points = polylines;
+		else return new BoundingBox(
+				center.getLatitude(), center.getLongitude(),
+				center.getLatitude(), center.getLongitude());
+
+		Double latMin = null, lonMin = null, latMax = null, lonMax = null;
+		for(List<LatLon> ps : points)
+		{
+			for(LatLon p : ps)
+			{
+				double lat = p.getLatitude();
+				double lon = p.getLongitude();
+
+				if (latMin == null || latMin > lat) latMin = lat;
+				if (latMax == null || latMax < lat) latMax = lat;
+				if (lonMin == null || lonMin > lon) lonMin = lon;
+				if (lonMax == null || lonMax < lon) lonMax = lon;
+			}
+		}
+		return new BoundingBox(latMin, lonMin, latMax, lonMax);
 	}
 }

@@ -118,35 +118,35 @@
     <string name="map_btn_zoom_out">"缩小"</string>
     <string name="map_btn_zoom_in">"放大"</string>
     <string name="privacy_html">"&lt;p&gt;喔，有些人在意隐私，这样很好！ 我想我只有好消息可告诉你：&lt;/p&gt;
-    &lt;p&gt;&lt;b&gt;直接贡献&lt;/b&gt;&lt;/p&gt;
-    &lt;p&gt;
-    首先，通过此APP，你可直接向开放街图做出贡献。&lt;br/&gt;
-    你在此APP上贡献的所有，将直接加在地图上，APP和开放街图设施之间不会有任何第三方管道，像 &lt;a href=\"https://wheelmap.org\"&gt;轮椅地图&lt;/a&gt; 或 &lt;a href=\"http://www.kort.ch\"&gt;Kort&lt;/a&gt;。
-    &lt;/p&gt;
-    &lt;p&gt;
-    开放街图不允许匿名编辑，这表示你任何编辑都是藉由你的开放街图帐号。这也表示任何资讯改编都会公开于开放街图网站。
-    &lt;/p&gt;
+&lt;p&gt;&lt;b&gt;直接贡献&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;
+首先，通过此APP，你可直接向开放街图做出贡献。&lt;br/&gt;
+你在此APP上贡献的所有，将直接加在地图上，APP和开放街图设施之间不会有任何第三方管道，像 &lt;a href=\"https://wheelmap.org\"&gt;轮椅地图&lt;/a&gt; 或 &lt;a href=\"http://www.kort.ch\"&gt;Kort&lt;/a&gt;。
+&lt;/p&gt;
+&lt;p&gt;
+开放街图不允许匿名编辑，这表示你任何编辑都是藉由你的开放街图帐号。这也表示任何资讯改编都会公开于开放街图网站。
+&lt;/p&gt;
 
-    &lt;b&gt;定位&lt;/b&gt;&lt;br/&gt;
-    &lt;p&gt;
-    你的定位只用在搜寻你附近的任务。别担心，你的定位此APP不会外传。
-    &lt;/p&gt;
+&lt;b&gt;定位&lt;/b&gt;&lt;br/&gt;
+&lt;p&gt;
+你的定位只用在搜寻你附近的任务。别担心，你的定位此APP不会外传。
+&lt;/p&gt;
 
-    &lt;p&gt;&lt;b&gt;资料使用&lt;/b&gt;&lt;/p&gt;
-    &lt;p&gt;
-    以上提到，此APP直接和开放街图的设施直接沟通，会使用 &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass API&lt;/a&gt; 下载任务(是匿名的)，且使用 &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API&lt;/a&gt; 上传资料。&lt;br/&gt;
-    上传你的更变之前，此APP会在我的伺服器上确认 &lt;a href=\"http://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;简单的文字档&lt;/a&gt; 是否被封锁而无法上传任何更变。这是一个防护措施，如果APP的版本更变后有严重的错误出现，开放街图的资料不会受污染。&lt;br/&gt;
-    &lt;/p&gt;
-    &lt;p&gt;
-    显示地图、向量图砖皆从 &lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt;Mapzen 向量图砖服务&lt;/a&gt; 匿名下载取得。此服务会记录图砖请求，来了解哪个区域是热门的，作为准备快取和改善效能之用。他们的平台同时也纪录IP地址，且他们的所有服务全部託管在Amazon，所以它会观察你的行为再决定动作。
-    &lt;/p&gt;
-    &lt;p&gt;
-    (&lt;i&gt;目前尚未实作，只是告知即将要到来！&lt;/i&gt;) 显示在设定档和排行榜的资料，都是从开放街图公开的可用资讯中统整出来。资料并不是来自APP，但基本上是从开放街图用户中的开放上传历史取用。
-    &lt;/p&gt;"</string>
+&lt;p&gt;&lt;b&gt;资料使用&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;
+以上提到，此APP直接和开放街图的设施直接沟通，会使用 &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass API&lt;/a&gt; 下载任务(是匿名的)，且使用 &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API&lt;/a&gt; 上传资料。&lt;br/&gt;
+上传你的更变之前，此APP会在我的伺服器上确认 &lt;a href=\"http://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;简单的文字档&lt;/a&gt; 是否被封锁而无法上传任何更变。这是一个防护措施，如果APP的版本更变后有严重的错误出现，开放街图的资料不会受污染。&lt;br/&gt;
+&lt;/p&gt;
+&lt;p&gt;
+显示地图、向量图砖皆从 &lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt;Mapzen 向量图砖服务&lt;/a&gt; 匿名下载取得。此服务会记录图砖请求，来了解哪个区域是热门的，作为准备快取和改善效能之用。他们的平台同时也纪录IP地址，且他们的所有服务全部託管在Amazon，所以它会观察你的行为再决定动作。
+&lt;/p&gt;
+&lt;p&gt;
+(&lt;i&gt;目前尚未实作，只是告知即将要到来！&lt;/i&gt;) 显示在设定档和排行榜的资料，都是从开放街图公开的可用资讯中统整出来。资料并不是来自APP，但基本上是从开放街图用户中的开放上传历史取用。
+&lt;/p&gt;"</string>
     <string name="authors_html">"&lt;p&gt;© 2017 Tobias Zwick&lt;/p&gt;
-    &lt;p&gt; 此APP使用了 Nick Roach 的&lt;a href=\"https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free\"&gt;Beautiful Flat Icons&lt;/a&gt;，以&lt;a href=\"http://www.gnu.org/licenses/gpl-2.0.html\"&gt;GPL&lt;/a&gt;授权释出。&lt;/p&gt;
-    &lt;p&gt;&lt;b&gt;翻译&lt;/b&gt;&lt;/p&gt;
-    %1$s"</string>
+&lt;p&gt; 此APP使用了 Nick Roach 的&lt;a href=\"https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free\"&gt;Beautiful Flat Icons&lt;/a&gt;，以&lt;a href=\"http://www.gnu.org/licenses/gpl-2.0.html\"&gt;GPL&lt;/a&gt;授权释出。&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;翻译&lt;/b&gt;&lt;/p&gt;
+%1$s"</string>
     <string name="quest_expiration_one_day">"一天"</string>
     <string name="quest_expiration_a_week">"一周"</string>
     <string name="quest_expiration_two_weeks">"两周"</string>
@@ -208,12 +208,60 @@
     <string name="store_listing_short_description">"开放街图 调测APP"</string>
     <string name="store_listing_full_description">"使用 StreetComplete 改善开放街图的图资！
 
-    此APP会在你的附近找到非完整且可扩充的资料，以标记显示在地图上。每个只要回答简单的问题就可以解决。
+此APP会在你的附近找到非完整且可扩充的资料，以标记显示在地图上。每个只要回答简单的问题就可以解决。
 
-    你所输入的资料会直接新增至开放街图，而不需要其他的编辑器。"</string>
+你所输入的资料会直接新增至开放街图，而不需要其他的编辑器。"</string>
     <string name="quest_name_answer_noName">"没有名称"</string>
     <string name="quest_name_answer_noName_confirmation_title">"确定没有名称?"</string>
     <string name="quest_name_noName_confirmation_positive">"是，没有名称"</string>
     <string name="quest_buildingLevels_negativeBuildingLevels">"呃！ 你描述了比总楼层还多的天花板！"</string>
     <string name="quest_openingHours_add_times">"新增营业时间"</string>
+    <string name="crash_message">"能否请你寄错误报告给开发者吗？"</string>
+    <string name="crash_title">"天啊，上次 StreetComplete 出错了！"</string>
+    <string name="crash_compose_email">"撰写 Email"</string>
+    <string name="no_email_client">"你没有安装 email 软体。"</string>
+    <string name="pref_title_keep_screen_on">"保持萤幕开启状态"</string>
+    <string name="download_server_error">"搜寻任务时出现连线问题，请稍后再试。"</string>
+    <string name="upload_server_error">"上传回答时出现连线问题，请稍后再试。"</string>
+    <string name="quest_generic_hasFeature_yes">"有"</string>
+    <string name="quest_generic_hasFeature_no">"没有"</string>
+    <string name="quest_busStopShelter_title">"这个站牌有遮荫吗？"</string>
+    <string name="quest_bikeParkingCapacity_title">"这裡可以停几量单车？"</string>
+    <string name="quest_address_unusualHousenumber_confirmation_description">"门牌号码看起来怪怪的。"</string>
+    <string name="quest_sport_title">"这个场地是为哪一种运动而设的？"</string>
+    <string name="quest_sport_answer_multi">"无特定运动"</string>
+    <string name="quest_sport_soccer">"足球"</string>
+    <string name="quest_sport_tennis">"网球"</string>
+    <string name="quest_sport_baseball">"棒球"</string>
+    <string name="quest_sport_basketball">"篮球"</string>
+    <string name="quest_sport_golf">"高尔夫球"</string>
+    <string name="quest_sport_equestrian">"马术"</string>
+    <string name="quest_sport_athletics">"田径"</string>
+    <string name="quest_sport_volleyball">"排球"</string>
+    <string name="quest_sport_beachvolleyball">"沙滩排球"</string>
+    <string name="quest_sport_american_football">"美式足球"</string>
+    <string name="quest_sport_skateboard">"滑板"</string>
+    <string name="quest_sport_bowls">"草地滚球"</string>
+    <string name="quest_sport_boules">"掷球"</string>
+    <string name="quest_sport_shooting">"射击"</string>
+    <string name="quest_sport_cricket">"板球"</string>
+    <string name="quest_sport_table_tennis">"乒乓球"</string>
+    <string name="quest_sport_gymnastics">"体操"</string>
+    <string name="quest_sport_archery">"射箭"</string>
+    <string name="quest_sport_australian_football">"澳洲式足球"</string>
+    <string name="quest_sport_badminton">"羽毛球"</string>
+    <string name="quest_sport_canadian_football">"加拿大式足球"</string>
+    <string name="quest_sport_field_hockey">"草地曲棍球"</string>
+    <string name="quest_sport_handball">"手球"</string>
+    <string name="quest_sport_ice_hockey">"冰上曲棍球"</string>
+    <string name="quest_sport_netball">"投球"</string>
+    <string name="quest_sport_rugby">"榄球"</string>
+    <string name="quest_select_hint">"选取："</string>
+    <string name="quest_sport_manySports_confirmation_description">"这个场地是否专为这些运动而设（设有相关界线与设备），或是适合各种运动的通用场地？"</string>
+    <string name="quest_manySports_confirmation_specific">"专属场地"</string>
+    <string name="quest_manySports_confirmation_generic">"通用场地"</string>
+    <string name="quest_sport_manySports_confirmation_title">"你选取了多种运动"</string>
+    <string name="quest_busStopShelter_name_title">"巴士站\"%s\"有没有上盖？"</string>
+    <string name="quest_leave_new_note_in_response_to">"回应%1$s：
+%2$s"</string>
 </resources>

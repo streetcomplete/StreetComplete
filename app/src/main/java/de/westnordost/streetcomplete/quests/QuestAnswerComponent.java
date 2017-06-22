@@ -50,9 +50,9 @@ public class QuestAnswerComponent
 		callbackListener.onAnsweredQuest(questId, questGroup, answer);
 	}
 
-	public void onLeaveNote(String text)
+	public void onLeaveNote(String questTitle, String text)
 	{
-		callbackListener.onLeaveNote(questId, questGroup, text);
+		callbackListener.onLeaveNote(questId, questGroup, questTitle, text);
 	}
 
 	public void onSkippedQuest()

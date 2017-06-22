@@ -59,7 +59,7 @@ public class ElementCreatorTestGeometry extends TestCase implements WayGeometryS
 			RM3 = new OsmRelationMember(3L, "", Element.Type.WAY);
 
 	private static final Relation
-			R0 = new OsmRelation(0L, 0, Arrays.asList(RM0, RM1, RM2, RM3), relationArea),
+			R0 = new OsmRelation(0L, 0, Arrays.asList(RM0, RM1, RM3), relationArea),
 			R1 = new OsmRelation(1L, 0, Arrays.asList(RM0, RM1, RM2, RM3), null);
 
 	private static final List<Node> nodes = Arrays.asList(N0, N1, N2, N3);
@@ -137,7 +137,7 @@ public class ElementCreatorTestGeometry extends TestCase implements WayGeometryS
 		ElementGeometry geom = createCreator().create(R0);
 
 		assertNotNull(geom.polygons);
-		assertEquals(2, geom.polygons.size());
+		assertEquals(1, geom.polygons.size());
 	}
 
 	public void testCreateForPolylineRelation()

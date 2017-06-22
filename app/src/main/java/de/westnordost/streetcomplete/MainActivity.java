@@ -25,12 +25,15 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.AttributeSet;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -63,6 +66,7 @@ import de.westnordost.streetcomplete.oauth.OAuthWebViewDialogFragment;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 import de.westnordost.streetcomplete.quests.OsmQuestAnswerListener;
 import de.westnordost.streetcomplete.quests.QuestAnswerComponent;
+import de.westnordost.streetcomplete.quests.FindQuestSourceComponent;
 import de.westnordost.streetcomplete.settings.SettingsActivity;
 import de.westnordost.streetcomplete.statistics.AnswersCounter;
 import de.westnordost.streetcomplete.location.LocationState;
@@ -95,14 +99,20 @@ public class MainActivity extends AppCompatActivity implements
 	@Inject QuestController questController;
 
 	@Inject SharedPreferences prefs;
-	@Inject PerApplicationStartPrefs perApplicationStartPrefs;
 	@Inject OAuthComponent oAuthComponent;
 
 	@Inject CountryInfos countryInfos;
+	@Inject FindQuestSourceComponent questSource;
+
+	// per application start settings
+	private static boolean isFollowingPosition = true;
+	private static boolean hasAskedForLocation = false;
+	private static boolean dontShowRequestAuthorizationAgain = false;
 
 	private QuestsMapFragment mapFragment;
 	private LocationStateButton trackingButton;
 	private SingleLocationRequest singleLocationRequest;
+	private Location lastLocation;
 
 	private Long clickedQuestId = null;
 	private QuestGroup clickedQuestGroup = null;
@@ -200,6 +210,8 @@ public class MainActivity extends AppCompatActivity implements
 
 		oAuthComponent.setListener(this);
 
+		questSource.onCreate(this);
+
 		getSupportFragmentManager().beginTransaction()
 				.add(locationRequestFragment, LocationRequestFragment.class.getSimpleName())
 				.commit();
@@ -210,6 +222,8 @@ public class MainActivity extends AppCompatActivity implements
 		progressBar.setMax(1000);
 
 		mapFragment = (QuestsMapFragment) getFragmentManager().findFragmentById(R.id.map_fragment);
+		mapFragment.setQuestYOffsets(50,
+				getResources().getDimensionPixelSize(R.dimen.quest_bottom_sheet_peek_height));
 
 		mapFragment.getMapAsync(BuildConfig.MAPZEN_API_KEY != null ?
 				BuildConfig.MAPZEN_API_KEY :
@@ -231,8 +245,7 @@ public class MainActivity extends AppCompatActivity implements
 				}
 			}
 		});
-		boolean isFollowing = perApplicationStartPrefs.get().getBoolean(Prefs.FOLLOW_POSITION, true);
-        trackingButton.setActivated(isFollowing);
+        trackingButton.setActivated(isFollowingPosition);
 
 		ImageButton zoomInButton = (ImageButton) findViewById(R.id.zoom_in);
 		zoomInButton.setOnClickListener(new View.OnClickListener()
@@ -277,7 +290,7 @@ public class MainActivity extends AppCompatActivity implements
 				new Intent(this, QuestDownloadService.class),
 				downloadServiceConnection, BIND_AUTO_CREATE);
 
-		if(!perApplicationStartPrefs.get().getBoolean(Prefs.HAS_ASKED_FOR_LOCATION, false))
+		if(!hasAskedForLocation)
 		{
 			locationRequestFragment.startRequest();
 		}
@@ -311,7 +324,7 @@ public class MainActivity extends AppCompatActivity implements
 		questController.onStop();
 		questAutoSyncer.onStop();
 
-        perApplicationStartPrefs.get().putBoolean(Prefs.FOLLOW_POSITION, trackingButton.isActivated());
+		isFollowingPosition = trackingButton.isActivated();
 
 		if (downloadServiceIsBound) unbindService(downloadServiceConnection);
 		if (downloadService != null)
@@ -378,20 +391,30 @@ public class MainActivity extends AppCompatActivity implements
 
 	private void requestOAuthorized()
 	{
-		DialogInterface.OnClickListener onYes = new DialogInterface.OnClickListener()
-		{
-			@Override public void onClick(DialogInterface dialog, int which)
-			{
-				OAuthWebViewDialogFragment dlg = OAuthWebViewDialogFragment.create(
-						OAuth.createConsumer(), OAuth.createProvider());
-				dlg.show(getFragmentManager(), OAuthWebViewDialogFragment.TAG);
-			}
-		};
+		if(dontShowRequestAuthorizationAgain) return;
+
+		View inner = LayoutInflater.from(this).inflate(
+				R.layout.authorize_now_dialog_layout, null, false);
+		final CheckBox checkBox = (CheckBox) inner.findViewById(R.id.checkBoxDontShowAgain);
 
 		new AlertDialogBuilder(this)
-				.setMessage(R.string.confirmation_authorize_now)
-				.setPositiveButton(android.R.string.ok, onYes)
-				.setNegativeButton(R.string.later, null).show();
+				.setView(inner)
+				.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener()
+				{
+					@Override public void onClick(DialogInterface dialog, int which)
+					{
+						OAuthWebViewDialogFragment dlg = OAuthWebViewDialogFragment.create(
+								OAuth.createConsumer(), OAuth.createProvider());
+						dlg.show(getFragmentManager(), OAuthWebViewDialogFragment.TAG);
+					}
+				})
+				.setNegativeButton(R.string.later, new DialogInterface.OnClickListener()
+				{
+					@Override public void onClick(DialogInterface dialog, int which)
+					{
+						dontShowRequestAuthorizationAgain = checkBox.isChecked();
+					}
+				}).show();
 	}
 
 	@Override public void onOAuthAuthorized(OAuthConsumer consumer, List<String> permissions)
@@ -414,7 +437,7 @@ public class MainActivity extends AppCompatActivity implements
 	private void downloadDisplayedArea()
 	{
 		BoundingBox displayArea;
-		if ((displayArea = mapFragment.getDisplayedArea()) == null)
+		if ((displayArea = mapFragment.getDisplayedArea(0,0)) == null)
 		{
 			Toast.makeText(this, R.string.cannot_find_bbox, Toast.LENGTH_LONG).show();
 		}
@@ -579,17 +602,25 @@ public class MainActivity extends AppCompatActivity implements
 
 	/* ------------- OsmQuestAnswerListener ------------- */
 
-	@Override public void onAnsweredQuest(long questId, QuestGroup group, Bundle answer)
+	@Override public void onAnsweredQuest(final long questId, final QuestGroup group, final Bundle answer)
 	{
-		closeQuestDetailsFor(questId, group);
-		answersCounter.answeredQuest();
-		questController.solveQuest(questId, group, answer);
+		// line between location now and location when the form was opened
+		Location[] locations = new Location[]{ lastLocation, mapFragment.getDisplayedLocation() };
+		questSource.findSource(questId, group, locations, new FindQuestSourceComponent.Listener()
+		{
+			@Override public void onFindQuestSourceResult(String source)
+			{
+				closeQuestDetailsFor(questId, group);
+				answersCounter.answeredQuest(source);
+				questController.solveQuest(questId, group, answer, source);
+			}
+		});
 	}
 
-	@Override public void onLeaveNote(long questId, QuestGroup group, String note)
+	@Override public void onLeaveNote(long questId, QuestGroup group, String questTitle, String note)
 	{
 		closeQuestDetailsFor(questId, group);
-		questController.createNote(questId, note);
+		questController.createNote(questId, questTitle, note);
 	}
 
 	@Override public void onSkippedQuest(long questId, QuestGroup group)
@@ -679,7 +710,13 @@ public class MainActivity extends AppCompatActivity implements
 
 	@UiThread private void closeQuestDetails()
 	{
-		getFragmentManager().popBackStack(BOTTOM_SHEET, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+		// #285: This method may be called after the user tapped the home button from removeQuests().
+		// At this point, it wouldn't be legal to pop the fragment back stack etc.
+		// I am not entirely sure if checking for these things will solve #285 though
+		// some more info here http://www.androiddesignpatterns.com/2013/08/fragment-transaction-commit-state-loss.html
+		if(isDestroyed() || isFinishing() || isChangingConfigurations()) return;
+
+		getFragmentManager().popBackStackImmediate(BOTTOM_SHEET, FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
 		mapFragment.removeQuestGeometry();
 
@@ -728,6 +765,7 @@ public class MainActivity extends AppCompatActivity implements
 			closeQuestDetails();
 		}
 
+		lastLocation = mapFragment.getDisplayedLocation();
 		mapFragment.addQuestGeometry(quest.getGeometry());
 
 		AbstractQuestAnswerFragment f = quest.getType().createForm();
@@ -842,7 +880,7 @@ public class MainActivity extends AppCompatActivity implements
 
 	@Override public void onLocationRequestFinished(LocationState withLocationState)
 	{
-		perApplicationStartPrefs.get().putBoolean(Prefs.HAS_ASKED_FOR_LOCATION, true);
+		hasAskedForLocation = true;
 		trackingButton.setState(withLocationState);
 		boolean enabled = withLocationState.isEnabled();
 		if(enabled)
