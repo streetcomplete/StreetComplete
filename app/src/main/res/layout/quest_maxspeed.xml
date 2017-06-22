@@ -7,8 +7,8 @@
 
     <LinearLayout
         android:orientation="vertical"
-        android:layout_width="118dp"
-        android:layout_height="118dp"
+        android:layout_width="112dp"
+        android:layout_height="112dp"
         android:padding="18dp"
         android:background="@drawable/background_maxspeed"
         android:gravity="center">
@@ -21,7 +21,7 @@
             android:inputType="number"
             android:gravity="center"
             android:textStyle="bold"
-            android:textSize="40dp"
+            android:textSize="36dp"
             android:maxLength="3"
             android:background="#00ffffff"/>
 

@@ -7,9 +7,9 @@
 
     <LinearLayout
         android:orientation="vertical"
-        android:layout_width="128dp"
+        android:layout_width="112dp"
         android:layout_height="wrap_content"
-        android:padding="18dp"
+        android:padding="16dp"
         android:background="@drawable/background_maxspeed_rectangular"
         android:gravity="center">
 
@@ -32,7 +32,7 @@
             android:gravity="center"
             android:textStyle="bold"
             android:maxLength="3"
-            android:textSize="34dp"/>
+            android:textSize="32dp"/>
 
         <TextView
             android:id="@+id/unitText"
