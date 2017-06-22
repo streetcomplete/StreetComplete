@@ -20,27 +20,36 @@ public class AddWheelchairAccessPublicTransportForm extends WheelchairAccessAnsw
 
 	private void setTitle()
 	{
-		String highway = null;
 		OsmElement element = getOsmElement();
-		if (highway == null) {highway = element != null && element.getTags() != null ? element.getTags().get("highway") : null;}
-		if (highway == null) {highway = element != null && element.getTags() != null ? element.getTags().get("railway") : null;}
-		if (highway == null) {highway = element != null && element.getTags() != null ? element.getTags().get("public_transport") : null;}
+		String name = element != null && element.getTags() != null ? element.getTags().get("name") : null;
+		String type = element.getTags().get("highway");
+		if (type == null) {type = element.getTags().get("railway");}
+		if (type == null) {type = element.getTags().get("public_transport");}
+		String typeString;
 
-		switch (highway) {
+		switch (type)
+		{
 			case "bus_stop":
-				setTitle(R.string.quest_wheelchairAccess_public_transport_bus_stop_title);
+				typeString = getString(R.string.element_bus_stop);
 				break;
 			case "platform":
-				setTitle(R.string.quest_wheelchairAccess_public_transport_platform_title);
+				typeString = getString(R.string.element_platform);
 				break;
 			case "station":
-				setTitle(R.string.quest_wheelchairAccess_public_transport_station_title);
+				typeString = getString(R.string.element_railway_station);
 				break;
 			case "subway_entrance":
-				setTitle(R.string.quest_wheelchairAccess_public_transport_entrance_title);
+				typeString = getString(R.string.element_subway_entrance);
 				break;
 			default:
-				setTitle(R.string.quest_wheelchairAccess_public_transport_default_title);
+				typeString = getString(R.string.element_location);
+		}
+
+		if(name != null && !name.trim().isEmpty())
+		{
+			setTitle(R.string.quest_wheelchairAccess_name_type_title, typeString, name);
+		} else {
+			setTitle(R.string.quest_wheelchairAccess_type_title, typeString);
 		}
 	}
 }
