@@ -11,8 +11,8 @@ import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 
-public class AddRoadSurface extends SimpleOverpassQuestType {
-	@Inject public AddRoadSurface(OverpassMapDataDao overpassServer)
+public class DetailUnpavedRoadSurface extends SimpleOverpassQuestType {
+	@Inject public DetailUnpavedRoadSurface(OverpassMapDataDao overpassServer)
 	{
 		super(overpassServer);
 	}
@@ -20,30 +20,34 @@ public class AddRoadSurface extends SimpleOverpassQuestType {
 	@Override
 	protected String getTagFilters()
 	{
-		return " ways with ( highway ~ " + TextUtils.join("|", RoadSurfaceConfig.ROADS_WITH_SURFACES) + " and" +
-			   " !surface)";
+		return " ways with ( highway ~ " + TextUtils.join("|", RoadSurfaceConfig.ALL_ROADS) + " and" +
+				" surface=unpaved)";
 	}
 
 	@Override
 	public int importance()
 	{
-		return QuestImportance.MAJOR;
+		return QuestImportance.EXTRA;
 	}
 
 	public AbstractQuestAnswerFragment createForm()
 	{
-		return new AddRoadSurfaceForm();
+		return new DetailUnpavedRoadSurfaceForm();
 	}
 
 	public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
 	{
-		changes.add("surface", answer.getString(AddRoadSurfaceForm.SURFACE));
+		changes.modify("surface", answer.getString(DetailUnpavedRoadSurfaceForm.SURFACE));
 	}
 
-	@Override public String getCommitMessage()
+	@Override
+	public String getCommitMessage()
 	{
-		return "Add road surfaces";
+		return "Detail road surfaces";
 	}
 
-	@Override public String getIconName() {	return "street_surface"; }
+	@Override
+	public String getIconName()	{
+		return "street_surface";
+	}
 }
