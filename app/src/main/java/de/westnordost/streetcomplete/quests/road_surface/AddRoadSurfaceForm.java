@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import java.util.Arrays;
 
+import de.westnordost.osmapi.map.data.OsmElement;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
 import de.westnordost.streetcomplete.view.GroupedImageSelectAdapter;
@@ -46,7 +47,7 @@ public class AddRoadSurfaceForm extends AbstractQuestFormAnswerFragment
 	{
 		View view = super.onCreateView(inflater, container, savedInstanceState);
 
-		setTitle(R.string.quest_streetSurface_title);
+		setTitle();
 
 		View contentView = setContentView(R.layout.quest_street_surface);
 
@@ -56,6 +57,20 @@ public class AddRoadSurfaceForm extends AbstractQuestFormAnswerFragment
 		surfaceSelect.setNestedScrollingEnabled(false);
 
 		return view;
+	}
+
+	private void setTitle()
+	{
+		OsmElement element = getOsmElement();
+		String name = element != null && element.getTags() != null ? element.getTags().get("name") : null;
+		if(name != null && !name.trim().isEmpty())
+		{
+			setTitle(R.string.quest_streetSurface_name_title, name);
+		}
+		else
+		{
+			setTitle(R.string.quest_streetSurface_title);
+		}
 	}
 
 	@Override protected void onClickOk()
