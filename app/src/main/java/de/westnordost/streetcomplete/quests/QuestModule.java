@@ -23,6 +23,8 @@ import de.westnordost.streetcomplete.quests.road_name.AddRoadName;
 import de.westnordost.streetcomplete.quests.road_surface.AddRoadSurface;
 import de.westnordost.streetcomplete.quests.roof_shape.AddRoofShape;
 import de.westnordost.streetcomplete.quests.sport.AddSport;
+import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelChairAccessPublicTransport;
+import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAccessBusiness;
 
 @Module
 public class QuestModule
@@ -44,7 +46,9 @@ public class QuestModule
 				new AddMaxSpeed(o),
 				new AddBikeParkingCover(o),
 				new AddTactilePavingBusStop(o),
-				new AddTactilePavingCrosswalk(o)
+				new AddTactilePavingCrosswalk(o),
+				new AddWheelchairAccessBusiness(o),
+				new AddWheelChairAccessPublicTransport(o)
 		};
 
 		return new QuestTypes(Arrays.asList(questTypes));
