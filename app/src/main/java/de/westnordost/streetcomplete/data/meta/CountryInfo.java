@@ -19,6 +19,7 @@ public class CountryInfo implements Serializable, Cloneable
 	String maxspeedLayout;
 	String additionalValidHousenumberRegex;
 	List<String> officialLanguages;
+	Boolean isSlowZoneKnown;
 
 	public String getSpeedUnit()
 	{
@@ -43,6 +44,11 @@ public class CountryInfo implements Serializable, Cloneable
 	public String getMaxspeedLayout()
 	{
 		return maxspeedLayout;
+	}
+
+	public boolean isSlowZoneKnown()
+	{
+		return isSlowZoneKnown;
 	}
 
 	public String getAdditionalValidHousenumberRegex()

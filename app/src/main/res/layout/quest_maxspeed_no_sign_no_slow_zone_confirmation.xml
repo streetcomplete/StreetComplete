@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="@dimen/dialog_horizontal_margin">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/quest_maxspeed_answer_noSign_confirmation"
+            android:paddingBottom="8dp"
+            android:textAppearance="@android:style/TextAppearance.Theme.Dialog"
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingEnd="4dp"
+                android:text="@string/quest_maxspeed_answer_noSign_info_zone"
+                android:textAppearance="@android:style/TextAppearance.Theme.Dialog"
+                android:layout_toStartOf="@+id/imgSlowZone"
+                />
+
+            <ImageView
+                android:id="@+id/imgSlowZone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_slow_zone"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"/>
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+</ScrollView>

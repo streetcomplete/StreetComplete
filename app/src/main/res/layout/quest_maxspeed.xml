@@ -1,39 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:gravity="center">
+              android:layout_height="wrap_content">
 
     <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="112dp"
-        android:layout_height="112dp"
-        android:padding="18dp"
-        android:background="@drawable/background_maxspeed"
-        android:gravity="center">
+        android:id="@+id/zoneContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_alignParentEnd="true"
+        >
 
-        <EditText
-            android:id="@+id/maxSpeedInput"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:inputType="number"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:textSize="36dp"
-            android:maxLength="3"
-            android:background="#00ffffff"/>
-
-        <TextView
-            android:id="@+id/unitText"
+        <CheckBox
+            android:id="@+id/zoneCheckbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="-4dp"
-            android:textStyle="bold"
-            android:textSize="16dp"
-            android:textColor="#000"
+            android:checked="false"/>
+
+        <ImageView
+            android:id="@+id/zoneImg"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_slow_zone"
             />
 
     </LinearLayout>
-</LinearLayout>
+
+    <EditText
+        android:id="@+id/maxSpeedInput"
+        android:layout_gravity="center"
+        android:layout_width="112dp"
+        android:layout_height="112dp"
+        android:background="@drawable/background_maxspeed_sign"
+        android:padding="16dp"
+        android:inputType="number"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="44dp"
+        android:layout_centerInParent="true"
+        android:maxLength="3"/>
+
+</RelativeLayout>

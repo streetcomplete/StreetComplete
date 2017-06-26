@@ -1,4 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
+isSlowZoneKnown: false
 maxspeedLayout: quest_maxspeed_ca
 officialLanguages: [en, fr]
 popularSports: [baseball, soccer, tennis, basketball, canadian_football, american_football, ices_hockey,

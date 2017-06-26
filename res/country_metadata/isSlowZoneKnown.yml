@@ -1,0 +1,53 @@
+# see https://en.wikipedia.org/wiki/30_km/h_zone and extend
+default: false
+# European countries
+AD: true
+AT: true
+BA: true
+BE: true
+BG: true
+BY: true
+CH: true
+CZ: true
+DE: true
+DK: true
+EE: true
+ES: true
+FI: true
+FR: true
+GB: true
+GR: true
+HR: true
+HU: true
+IL: true
+IS: true
+IT: true
+LI: true
+LT: true
+LU: true
+LV: true
+MC: true
+MD: true
+ME: true
+MK: true
+MT: true
+NL: true
+'NO': true
+PL: true
+PT: true
+RO: true
+RS: true
+RU: true
+SE: true
+SI: true
+SM: true
+SK: true
+UA: true
+# only in NYC so far
+US-NY: true
+# according to research, there are only "school zones". This is a different concept
+# if this is ever enabled, the quest_maxspeed_ca.xml layout needs to be extended
+CA: false
+# according to wikipedia
+MX: true
+PE: true

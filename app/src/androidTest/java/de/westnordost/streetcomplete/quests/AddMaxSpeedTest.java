@@ -14,20 +14,22 @@ public class AddMaxSpeedTest extends AOsmElementQuestTypeTest
 		verify(new StringMapEntryAdd("source:maxspeed","XX:flubberway"));
 	}
 
-	public void testElectronicSign()
-	{
-		bundle.putString(AddMaxSpeedForm.MAX_SPEED, "signals");
-		verify(
-				new StringMapEntryAdd("maxspeed","signals"),
-				new StringMapEntryAdd("source:maxspeed","sign"));
-	}
-
 	public void testNormalSign()
 	{
 		bundle.putString(AddMaxSpeedForm.MAX_SPEED, "123");
 		verify(
 				new StringMapEntryAdd("maxspeed","123"),
 				new StringMapEntryAdd("source:maxspeed","sign"));
+	}
+
+	public void testZoneSign()
+	{
+		bundle.putString(AddMaxSpeedForm.MAX_SPEED, "123");
+		bundle.putString(AddMaxSpeedForm.MAX_SPEED_IMPLICIT_ROADTYPE, "zoneXYZ");
+		bundle.putString(AddMaxSpeedForm.MAX_SPEED_IMPLICIT_COUNTRY, "AA");
+		verify(
+				new StringMapEntryAdd("maxspeed","123"),
+				new StringMapEntryAdd("source:maxspeed","AA:zoneXYZ"));
 	}
 
 	@Override protected OsmElementQuestType createQuestType()

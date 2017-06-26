@@ -210,17 +210,19 @@ To display the map, vector tiles are retrieved from the &lt;a href=\"https://map
     <string name="quest_sidewalk_onlyWest">"Only on western side"</string>
     <string name="quest_sidewalk_onlyEast">"Only on eastern side"</string>
     <string name="quest_sidewalk_yes">"Yes"</string>
-    <string name="quest_maxspeed_title_short">"Is there a speed limit sign for this street?"</string>
+    <string name="quest_maxspeed_title_short">"What is the speed limit sign for this street?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"This speed limit looks implausible."</string>
-    <string name="quest_maxspeed_answer_variable">"Electronic signs show variable speed limits"</string>
     <string name="quest_maxspeed_answer_noSign">"There is no sign"</string>
-    <string name="quest_maxspeed_answer_noSign_info">"Well, if there are no signs, general speed limits apply."</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation_title">"Are you sure no limit is posted?"</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation">"Did you check at the ends of the street?
+If there are no signs, default speed limits apply."</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Yes, no sign"</string>
+
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Where is this street?"</string>
+    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">Urban roads have a different default speed limit than rural roads.</string>
     <string name="quest_maxspeed_answer_noSign_urbanOk">"In town"</string>
     <string name="quest_maxspeed_answer_noSign_ruralOk">"Out of town"</string>
-    <string name="quest_maxspeed_answer_noSign_info_zone">"Oftentimes, roads within a residential area do not have explicit speed limit signs. Instead, there may be only one sign at the start of a whole zone.
-
-At the main street intersection, do you see a sign like this?:"</string>
+    <string name="quest_maxspeed_answer_noSign_info_zone">"If there is a sign like this at the main street intersection, you won't find individual signs within the zone because the speed limit posted there applies to the whole zone."</string>
     <string name="quest_cyclewaySurface_title">"What surface does the cycleway here have?"</string>
     <string name="quest_cycleway_title">"Is there a cycleway in this street?"</string>
     <string name="quest_buildingType_title">"What kind of building is this?"</string>
@@ -279,5 +281,4 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="quest_sport_gaelic_games">Gaelic Games</string>
     <string name="quest_sport_sepak_takraw">Sepak Takraw</string>
     <string name="quest_sport_skating">Skating</string>
-    <string name="quest_maxspeed_sign_zone">ZONE</string>
 </resources>
