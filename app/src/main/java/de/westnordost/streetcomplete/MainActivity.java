@@ -696,17 +696,17 @@ public class MainActivity extends AppCompatActivity implements
 		// some more info here http://www.androiddesignpatterns.com/2013/08/fragment-transaction-commit-state-loss.html
 		if(isDestroyed() || isFinishing() || isChangingConfigurations()) return;
 
-		getFragmentManager().popBackStackImmediate(BOTTOM_SHEET, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-
-		mapFragment.removeQuestGeometry();
-
-		// sometimes the keyboard fails to close
+		// manually close the keyboard before popping the fragment
 		View view = this.getCurrentFocus();
 		if (view != null)
 		{
 			InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 			inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
 		}
+
+		getFragmentManager().popBackStackImmediate(BOTTOM_SHEET, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+		mapFragment.removeQuestGeometry();
 	}
 
 	private boolean isQuestDetailsCurrentlyDisplayedFor(long questId, QuestGroup group)
