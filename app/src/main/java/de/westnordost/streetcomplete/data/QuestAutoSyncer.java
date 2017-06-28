@@ -27,7 +27,6 @@ import de.westnordost.streetcomplete.data.download.MobileDataAutoDownloadStrateg
 import de.westnordost.streetcomplete.data.download.QuestAutoDownloadStrategy;
 import de.westnordost.streetcomplete.data.download.WifiAutoDownloadStrategy;
 import de.westnordost.streetcomplete.data.osm.upload.ChangesetAutoCloserReceiver;
-import de.westnordost.streetcomplete.util.SphericalEarthMath;
 
 import static android.app.PendingIntent.FLAG_CANCEL_CURRENT;
 
@@ -83,10 +82,17 @@ public class QuestAutoSyncer implements LocationListener, LostApiClient.Connecti
 
 	public void stopPositionTracking()
 	{
-		if(lostApiClient.isConnected())
+		try
 		{
-			LocationServices.FusedLocationApi.removeLocationUpdates(lostApiClient, this);
-			lostApiClient.disconnect();
+			if(lostApiClient.isConnected())
+			{
+				LocationServices.FusedLocationApi.removeLocationUpdates(lostApiClient, this);
+				lostApiClient.disconnect();
+			}
+		}
+		catch (RuntimeException e)
+		{
+			// ignore. See https://github.com/mapzen/lost/issues/224
 		}
 	}
 

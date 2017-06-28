@@ -210,10 +210,17 @@ public class MapFragment extends Fragment implements
 		lastLocation = null;
 		zoomedYet = false;
 
-		if(lostApiClient.isConnected())
+		try
 		{
-			LocationServices.FusedLocationApi.removeLocationUpdates(lostApiClient, this);
-			lostApiClient.disconnect();
+			if(lostApiClient.isConnected())
+			{
+				LocationServices.FusedLocationApi.removeLocationUpdates(lostApiClient, this);
+				lostApiClient.disconnect();
+			}
+		}
+		catch (RuntimeException e)
+		{
+			// ignore. See https://github.com/mapzen/lost/issues/224
 		}
 	}
 
