@@ -39,18 +39,19 @@ public class SingleLocationRequest implements LocationListener, LostApiClient.Co
 
 	public void stopRequest()
 	{
-		try
+		Handler h = new Handler(Looper.getMainLooper());
+		h.post(new Runnable()
 		{
-			if(lostApiClient.isConnected())
+			@Override public void run()
 			{
-				LocationServices.FusedLocationApi.removeLocationUpdates(lostApiClient, this);
-				lostApiClient.disconnect();
+				if(lostApiClient.isConnected())
+				{
+					LocationServices.FusedLocationApi.removeLocationUpdates(lostApiClient, SingleLocationRequest.this);
+					lostApiClient.disconnect();
+				}
 			}
-		}
-		catch (RuntimeException e)
-		{
-			// ignore. See https://github.com/mapzen/lost/issues/224
-		}
+		});
+
 	}
 
 	@Override public void onConnected() throws SecurityException
