@@ -36,21 +36,7 @@ public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 		input = (EditText) contentView.findViewById(R.id.input);
 		input.setInputType(InputType.TYPE_CLASS_NUMBER);
 		final Button toggleKeyboardButton = (Button) contentView.findViewById(R.id.toggleKeyboard);
-		toggleKeyboardButton.setVisibility(View.INVISIBLE);
 		toggleKeyboardButton.setText("abc");
-
-		input.setOnFocusChangeListener(new View.OnFocusChangeListener()
-		{
-			@Override public void onFocusChange(View v, boolean hasFocus)
-			{
-				if(hasFocus)
-				{
-					Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_in_from_bottom);
-					toggleKeyboardButton.startAnimation(animation);
-				}
-				toggleKeyboardButton.setVisibility(hasFocus ? View.VISIBLE: View.INVISIBLE);
-			}
-		});
 
 		toggleKeyboardButton.setOnClickListener(new View.OnClickListener()
 		{
