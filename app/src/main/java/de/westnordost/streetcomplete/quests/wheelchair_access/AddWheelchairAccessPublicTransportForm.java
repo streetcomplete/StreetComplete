@@ -22,19 +22,14 @@ public class AddWheelchairAccessPublicTransportForm extends WheelchairAccessAnsw
 	{
 		OsmElement element = getOsmElement();
 		String name = element != null && element.getTags() != null ? element.getTags().get("name") : null;
-		String type = element.getTags().get("highway");
+		String type = element.getTags().get("amenity");
 		if (type == null) {type = element.getTags().get("railway");}
-		if (type == null) {type = element.getTags().get("public_transport");}
 		String typeString;
 
 		switch (type)
 		{
-			case "bus_stop":
-				typeString = getString(R.string.element_bus_stop);
-				break;
-			case "platform":
-				typeString = getString(R.string.element_platform);
-				break;
+			case "bus_station":
+				typeString = getString(R.string.element_bus_station);
 			case "station":
 				typeString = getString(R.string.element_railway_station);
 				break;
