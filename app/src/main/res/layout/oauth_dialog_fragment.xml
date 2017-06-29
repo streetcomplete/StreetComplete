@@ -1,14 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/oauth_dialog"
-    tools:context="de.westnordost.streetcomplete.oauth.OAuthWebViewDialogFragment">
-
-    <WebView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/webview" />
+    android:id="@+id/oauth_dialog">
 
     <RelativeLayout
         android:orientation="vertical"
@@ -23,6 +16,7 @@
             style="@android:style/Widget.ProgressBar.Large"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:indeterminate="true"
             android:id="@+id/progressbar"
             android:layout_gravity="center_horizontal"/>
 

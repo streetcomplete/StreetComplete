@@ -25,7 +25,6 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -42,7 +41,6 @@ import com.mapzen.android.lost.api.LocationRequest;
 
 import java.util.Collection;
 import java.util.Collections;
-import java.util.List;
 
 import javax.inject.Inject;
 
@@ -60,9 +58,8 @@ import de.westnordost.streetcomplete.data.meta.CountryInfos;
 import de.westnordost.streetcomplete.location.LocationRequestFragment;
 import de.westnordost.streetcomplete.location.LocationUtil;
 import de.westnordost.streetcomplete.location.SingleLocationRequest;
-import de.westnordost.streetcomplete.oauth.OAuth;
-import de.westnordost.streetcomplete.oauth.OAuthComponent;
-import de.westnordost.streetcomplete.oauth.OAuthWebViewDialogFragment;
+import de.westnordost.streetcomplete.oauth.OAuthPrefs;
+import de.westnordost.streetcomplete.oauth.OsmOAuthFragment;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 import de.westnordost.streetcomplete.quests.OsmQuestAnswerListener;
 import de.westnordost.streetcomplete.quests.QuestAnswerComponent;
@@ -81,15 +78,13 @@ import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.map.data.OsmElement;
 import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
-import oauth.signpost.OAuthConsumer;
 
 import static android.location.LocationManager.PROVIDERS_CHANGED_ACTION;
 import static de.westnordost.streetcomplete.location.LocationUtil.MODE_CHANGED;
 
 public class MainActivity extends AppCompatActivity implements
 		OsmQuestAnswerListener, VisibleQuestListener, QuestsMapFragment.Listener, MapFragment.Listener,
-		OAuthWebViewDialogFragment.OAuthListener, OAuthComponent.Listener,
-		LocationRequestFragment.LocationRequestListener
+		OsmOAuthFragment.Listener, LocationRequestFragment.LocationRequestListener
 {
 	@Inject CrashReportExceptionHandler crashReportExceptionHandler;
 
@@ -99,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements
 	@Inject QuestController questController;
 
 	@Inject SharedPreferences prefs;
-	@Inject OAuthComponent oAuthComponent;
+	@Inject OAuthPrefs oAuth;
 
 	@Inject CountryInfos countryInfos;
 	@Inject FindQuestSourceComponent questSource;
@@ -146,7 +141,7 @@ public class MainActivity extends AppCompatActivity implements
 			if(intent.getBooleanExtra(QuestChangesUploadService.IS_AUTH_FAILED, false))
 			{
 				// delete secret in case it failed while already having a token -> token is invalid
-				OAuth.deleteConsumer(prefs);
+				oAuth.saveConsumer(null);
 				requestOAuthorized();
 			}
 			else if(intent.getBooleanExtra(QuestChangesUploadService.IS_CONNECTION_ERROR, false))
@@ -207,8 +202,6 @@ public class MainActivity extends AppCompatActivity implements
 		questController.onCreate();
 
 		answersCounter = (AnswersCounter) toolbar.findViewById(R.id.answersCounter);
-
-		oAuthComponent.setListener(this);
 
 		questSource.onCreate(this);
 
@@ -301,16 +294,6 @@ public class MainActivity extends AppCompatActivity implements
 		}
 	}
 
-	@Override public void onResume()
-	{
-		super.onResume();
-	}
-
-	@Override public void onPause()
-	{
-		super.onPause();
-	}
-
 	@Override public void onStop()
 	{
 		super.onStop();
@@ -379,7 +362,7 @@ public class MainActivity extends AppCompatActivity implements
 	private void uploadChanges()
 	{
 		// because the app should ask for permission even if there is nothing to upload right now
-		if(!OAuth.isAuthorized(prefs))
+		if(!oAuth.isAuthorized())
 		{
 			requestOAuthorized();
 		}
@@ -403,9 +386,7 @@ public class MainActivity extends AppCompatActivity implements
 				{
 					@Override public void onClick(DialogInterface dialog, int which)
 					{
-						OAuthWebViewDialogFragment dlg = OAuthWebViewDialogFragment.create(
-								OAuth.createConsumer(), OAuth.createProvider());
-						dlg.show(getFragmentManager(), OAuthWebViewDialogFragment.TAG);
+						new OsmOAuthFragment().show(getFragmentManager(), OsmOAuthFragment.TAG);
 					}
 				})
 				.setNegativeButton(R.string.later, new DialogInterface.OnClickListener()
@@ -417,17 +398,7 @@ public class MainActivity extends AppCompatActivity implements
 				}).show();
 	}
 
-	@Override public void onOAuthAuthorized(OAuthConsumer consumer, List<String> permissions)
-	{
-		oAuthComponent.onOAuthAuthorized(consumer, permissions);
-	}
-
-	@Override public void onOAuthCancelled()
-	{
-		oAuthComponent.onOAuthCancelled();
-	}
-
-	@Override public void onOAuthAuthorizationVerified()
+	@Override public void onOAuthAuthorized()
 	{
 		answersCounter.update();
 		// now finally we can upload our changes!

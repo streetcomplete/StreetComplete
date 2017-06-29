@@ -23,6 +23,7 @@ import de.westnordost.streetcomplete.data.osmnotes.CreateNoteDao;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestDao;
 import de.westnordost.streetcomplete.data.tiles.DownloadedTilesDao;
 import de.westnordost.streetcomplete.location.LocationRequestFragment;
+import de.westnordost.streetcomplete.oauth.OsmOAuthFragment;
 import de.westnordost.streetcomplete.tools.CrashReportExceptionHandler;
 
 @Module
@@ -96,5 +97,10 @@ public class ApplicationModule
 	@Provides @Singleton public static CrashReportExceptionHandler serializer(Context ctx)
 	{
 		return new CrashReportExceptionHandler(ctx);
+	}
+
+	@Provides public static OsmOAuthFragment osmOAuthFragment()
+	{
+		return new OsmOAuthFragment();
 	}
 }
