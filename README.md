@@ -31,6 +31,8 @@ You can help translate this app over here:
 
 [<img src="https://poeditor.com/public/images/logo_small.png" alt="POEditor">](https://poeditor.com/join/project/IE4GC127Ki)
 
+If you have ideas for new quest types, please read this guide: [Adding new Quests to StreetComplete](https://github.com/westnordost/StreetComplete/wiki/Adding-new-Quests-to-StreetComplete).
+
 If you would like to help and are able to contribute code, you are most welcome.
 I have a few tasks in mind that would be very helpful for the project, some of which do not require knowledge about the current code base. So best get in touch with me.
 
