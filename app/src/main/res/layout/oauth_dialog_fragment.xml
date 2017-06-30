@@ -5,20 +5,20 @@
 
     <RelativeLayout
         android:orientation="vertical"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
         android:layout_gravity="center"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:id="@+id/progress">
 
         <ProgressBar
-            style="@android:style/Widget.ProgressBar.Large"
+            style="@style/Base.Widget.AppCompat.ProgressBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:indeterminate="true"
             android:id="@+id/progressbar"
-            android:layout_gravity="center_horizontal"/>
+            android:layout_centerInParent="true"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -27,36 +27,6 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="@string/loading"
             android:layout_below="@+id/progressbar"
-            android:layout_centerHorizontal="true"/>
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:orientation="vertical"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/error"
-        android:visibility="invisible">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:id="@+id/error_text"
-            android:text="@string/oauth_communication_error"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/retry"
-            android:id="@+id/retry_button"
-            android:layout_below="@+id/error_text"
             android:layout_centerHorizontal="true"/>
 
     </RelativeLayout>

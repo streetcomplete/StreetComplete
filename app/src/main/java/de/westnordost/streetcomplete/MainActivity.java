@@ -59,7 +59,6 @@ import de.westnordost.streetcomplete.location.LocationRequestFragment;
 import de.westnordost.streetcomplete.location.LocationUtil;
 import de.westnordost.streetcomplete.location.SingleLocationRequest;
 import de.westnordost.streetcomplete.oauth.OAuthPrefs;
-import de.westnordost.streetcomplete.oauth.OsmOAuthFragment;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 import de.westnordost.streetcomplete.quests.OsmQuestAnswerListener;
 import de.westnordost.streetcomplete.quests.QuestAnswerComponent;
@@ -83,8 +82,8 @@ import static android.location.LocationManager.PROVIDERS_CHANGED_ACTION;
 import static de.westnordost.streetcomplete.location.LocationUtil.MODE_CHANGED;
 
 public class MainActivity extends AppCompatActivity implements
-		OsmQuestAnswerListener, VisibleQuestListener, QuestsMapFragment.Listener, MapFragment.Listener,
-		OsmOAuthFragment.Listener, LocationRequestFragment.LocationRequestListener
+		OsmQuestAnswerListener, VisibleQuestListener, QuestsMapFragment.Listener,
+		MapFragment.Listener, LocationRequestFragment.LocationRequestListener
 {
 	@Inject CrashReportExceptionHandler crashReportExceptionHandler;
 
@@ -386,7 +385,9 @@ public class MainActivity extends AppCompatActivity implements
 				{
 					@Override public void onClick(DialogInterface dialog, int which)
 					{
-						new OsmOAuthFragment().show(getFragmentManager(), OsmOAuthFragment.TAG);
+						Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+						intent.putExtra(SettingsActivity.EXTRA_LAUNCH_AUTH, true);
+						startActivity(intent);
 					}
 				})
 				.setNegativeButton(R.string.later, new DialogInterface.OnClickListener()
@@ -396,13 +397,6 @@ public class MainActivity extends AppCompatActivity implements
 						dontShowRequestAuthorizationAgain = checkBox.isChecked();
 					}
 				}).show();
-	}
-
-	@Override public void onOAuthAuthorized()
-	{
-		answersCounter.update();
-		// now finally we can upload our changes!
-		questAutoSyncer.triggerAutoUpload();
 	}
 
 	private void downloadDisplayedArea()

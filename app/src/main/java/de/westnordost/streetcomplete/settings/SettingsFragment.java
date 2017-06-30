@@ -15,7 +15,7 @@ import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuest;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestDao;
 import de.westnordost.streetcomplete.oauth.OAuthPrefs;
 import de.westnordost.streetcomplete.R;
-import de.westnordost.streetcomplete.oauth.OsmOAuthFragment;
+import de.westnordost.streetcomplete.oauth.OsmOAuthDialogFragment;
 
 public class SettingsFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener
 {
@@ -38,7 +38,7 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
 			@Override
 			public boolean onPreferenceClick(Preference preference)
 			{
-				new OsmOAuthFragment().show(getFragmentManager(), OsmOAuthFragment.TAG);
+				new OsmOAuthDialogFragment().show(getFragmentManager(), OsmOAuthDialogFragment.TAG);
 				return true;
 			}
 		});

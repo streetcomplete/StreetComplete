@@ -26,11 +26,13 @@ public class OsmModule
 
 	public static String OVERPASS_API_URL = "http://overpass-api.de/api/";
 
+	/** Returns the osm connection singleton used for all daos with the saved oauth consumer */
 	@Provides @Singleton public static OsmConnection osmConnection(OAuthPrefs oAuth)
 	{
 		return osmConnection(oAuth.loadConsumer());
 	}
 
+	/** Returns an osm connection with the supplied consumer (note the difference to the above function) */
 	public static OsmConnection osmConnection(OAuthConsumer consumer)
 	{
 		return new OsmConnection(OSM_API_URL, ApplicationConstants.USER_AGENT, consumer);

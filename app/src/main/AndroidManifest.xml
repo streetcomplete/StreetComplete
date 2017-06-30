@@ -22,21 +22,22 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".settings.SettingsActivity"
+            android:label="@string/action_settings"
+            android:launchMode="singleTop"
+            android:parentActivityName=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MANAGE_NETWORK_USAGE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT"/>
                 <category android:name="android.intent.category.BROWSABLE" />
                 <!-- see OsmOAuthDialogFragment.CALLBACK_URL -->
-                <data android:scheme="oauth" android:host="streetcomplete" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".settings.SettingsActivity"
-            android:label="@string/action_settings"
-            android:parentActivityName=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MANAGE_NETWORK_USAGE" />
-                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="streetcomplete" android:host="oauth" />
             </intent-filter>
         </activity>
         <activity
