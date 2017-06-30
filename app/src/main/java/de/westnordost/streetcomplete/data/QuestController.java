@@ -166,7 +166,15 @@ public class QuestController
 			{
 				success = solveOsmNoteQuest(questId, answer);
 			}
-			if(success) relay.onQuestSolved(questId, group);
+
+			if(success)
+			{
+				relay.onQuestSolved(questId, group);
+			}
+			else
+			{
+				relay.onQuestRemoved(questId, group);
+			}
 		}});
 	}
 
@@ -206,7 +214,8 @@ public class QuestController
 		{
 			// if applying the changes results in an error (=a conflict), the data the quest(ion)
 			// was based on is not valid anymore -> like with other conflicts, silently drop the
-			// user's change (#289)
+			// user's change (#289) and the quest
+			osmQuestDB.delete(questId);
 			return false;
 		}
 		StringMapChanges changes = changesBuilder.create();
