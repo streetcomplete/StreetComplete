@@ -27,9 +27,9 @@ public class MobileDataAutoDownloadStrategy extends AActiveRadiusStrategy
 		return 8;
 	}
 
-	@Override protected int getActiveRadius()
+	@Override protected int[] getActiveRadii()
 	{
-		return 400;
+		return new int[]{400};
 	}
 
 	@Override protected int getDownloadRadius()
