@@ -1,5 +1,5 @@
 # the first day in a workweek (not necessarily the first day of the week in a calendar)
-# Source: https://en.wikipedia.org/wiki/Workweek_and_weekend#Around_the_world (retrieved 27.10.2016)
+# Source: https://en.wikipedia.org/wiki/Workweek_and_weekend#Around_the_world (retrieved 2016-10-27)
 default: Mo
 AE: Su
 AF: Sa
