@@ -5,7 +5,7 @@
         android:id="@+id/description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/quest_wheelchair_limited_description_business"
+        android:text="@string/quest_wheelchairAccess_limited_description_business"
         android:labelFor="@+id/nameInput"/>
 
 </merge>
