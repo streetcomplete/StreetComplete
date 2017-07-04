@@ -277,14 +277,16 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="quest_sport_gaelic_games">Gaelic Games</string>
     <string name="quest_sport_sepak_takraw">Sepak Takraw</string>
     <string name="quest_sport_roller_skating">Roller Skating</string>
-    <string name="quest_wheelchairAccess_type_title">Is this %s wheelchair accessible?</string>
     <string name="quest_wheelchairAccess_name_title">Is “%s” wheelchair accessible?</string>
-    <string name="quest_wheelchairAccess_name_type_title">Is the %1$s “%2$s” wheelchair accessible?</string>
-    <string name="element_bus_station">bus station</string>
-    <string name="element_subway_entrance">subway entrance</string>
-    <string name="element_railway_station">railway station</string>
-    <string name="element_location">location</string>
+    <string name="quest_wheelchairAccess_bus_station_title">Is this bus station wheelchair accessible?</string>
+    <string name="quest_wheelchairAccess_subway_entrance_title">Is this subway entrance wheelchair accessible?</string>
+    <string name="quest_wheelchairAccess_railway_station_title">Is this railway station wheelchair accessible?</string>
+    <string name="quest_wheelchairAccess_location_title">Is this location wheelchair accessible?</string>
+    <string name="quest_wheelchairAccess_bus_station_name_title">Is the bus station “%s” wheelchair accessible?</string>
+    <string name="quest_wheelchairAccess_subway_entrance_name_title">Is the subway entrance “%s” wheelchair accessible?</string>
+    <string name="quest_wheelchairAccess_railway_station_name_title">Is the railway station “%s” wheelchair accessible?</string>
+    <string name="quest_wheelchairAccess_location_name_title">Is the location “%s” wheelchair accessible?</string>
     <string name="quest_wheelchairAccess_limited">Partially</string>
-    <string name="quest_wheelchair_limited_description_business">Partially means that there is no more than a single step to access the business and that most rooms inside are wheelchair accessible.</string>
-    <string name="quest_wheelchair_limited_description_public_transport">Partially means that there is no more than a single step to access it.</string>
+    <string name="quest_wheelchairAccess_limited_description_business">Partially means that there is no more than a single step to access the business and that most rooms inside are wheelchair accessible.</string>
+    <string name="quest_wheelchairAccess_limited_description_public_transport">Partially means that there is no more than a single step to access it.</string>
 </resources>
