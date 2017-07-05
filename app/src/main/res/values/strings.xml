@@ -275,7 +275,7 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="quest_sport_paddle_tennis">Paddle Tennis</string>
     <string name="quest_sport_gaelic_games">Gaelic Games</string>
     <string name="quest_sport_sepak_takraw">Sepak Takraw</string>
-    <string name="quest_sport_skating">Skating</string>
+    <string name="quest_sport_roller_skating">Roller Skating</string>
     <string name="quest_wheelchairAccess_type_title">Is this %s wheelchair accessible?</string>
     <string name="quest_wheelchairAccess_name_title">Is “%s” wheelchair accessible?</string>
     <string name="quest_wheelchairAccess_name_type_title">Is the %1$s “%2$s” wheelchair accessible?</string>

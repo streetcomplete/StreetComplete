@@ -24,7 +24,7 @@ public class AddSport extends SimpleOverpassQuestType
 	@Override
 	protected String getTagFilters()
 	{
-		return "nodes, ways with leisure=pitch and (!sport or sport=team_handball or sport=hockey)";
+		return "nodes, ways with leisure=pitch and (!sport or sport ~ team_handball|hockey|skating)";
 	}
 
 	@Override
@@ -49,7 +49,7 @@ public class AddSport extends SimpleOverpassQuestType
 			// only modify the previous values in case of these ~deprecated ones, otherwise assume
 			// always that the tag has not been set yet (will drop the solution if it has been set
 			// in the meantime by other people) (#291)
-			if("hockey".equals(prev) || "team_handball".equals(prev))
+			if("hockey".equals(prev) || "team_handball".equals(prev) || "skating".equals(prev))
 			{
 				changes.modify("sport",valuesStr);
 			}
