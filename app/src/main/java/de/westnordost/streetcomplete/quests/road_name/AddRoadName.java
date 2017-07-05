@@ -62,8 +62,24 @@ public class AddRoadName extends SimpleOverpassQuestType
 			return;
 		}
 
-		String name = answer.getString(AddRoadNameForm.NAME);
-		if(name != null) changes.add("name", name);
+		String[] names = answer.getStringArray(AddRoadNameForm.NAMES);
+		String[] languages = answer.getStringArray(AddRoadNameForm.LANGUAGE_CODES);
+
+		changes.add("name", names[0]);
+
+		// TODO what about transliterations?! (latinizations):
+		// https://wiki.openstreetmap.org/wiki/Talk:Multilingual_names#Standard_language_codes)
+
+		if(names.length > 1)
+		{
+			for (int i = 0; i < names.length; i++)
+			{
+				if(languages[i] != null)
+				{
+					changes.add("name:" + languages[i], names[i]);
+				}
+			}
+		}
 	}
 
 	@Override public String getCommitMessage()

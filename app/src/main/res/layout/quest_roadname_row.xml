@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/languageButton"
+        style="@style/Base.Widget.AppCompat.Button.Borderless"
+        android:layout_alignParentStart="true"
+        android:textColor="#ffffff"
+        android:textAllCaps="false"
+        android:layout_width="52dp"
+        android:layout_height="wrap_content"/>
+
+    <de.westnordost.streetcomplete.quests.road_name.AutoCorrectAbbreviationsEditText
+        android:id="@+id/nameInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/languageButton"
+        android:layout_toStartOf="@id/deleteButton"
+        android:layout_centerVertical="true"
+        android:textSize="28dp"
+        android:background="#000000ff"
+        android:textColor="#ffffff"
+        />
+
+    <TextView
+        android:id="@+id/deleteButton"
+        android:text="❌"
+        android:textColor="#ffffff"
+        android:layout_width="32dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        style="@style/Base.Widget.AppCompat.Button.Borderless"/>
+
+</RelativeLayout>

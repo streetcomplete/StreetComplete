@@ -105,12 +105,6 @@ public class AutoCorrectAbbreviationsEditText extends android.support.v7.widget.
 		setSelection(selEnd + addedCharacters);
 	}
 
-	public boolean containsAbbreviations()
-	{
-		if(abbreviations == null) return false;
-		return abbreviations.containsAbbreviations(getText().toString());
-	}
-
 	private class AbbreviationAutoCorrecter implements TextWatcher
 	{
 		private int cursorPos;
