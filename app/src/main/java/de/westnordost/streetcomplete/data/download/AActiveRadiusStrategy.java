@@ -56,7 +56,7 @@ public abstract class AActiveRadiusStrategy implements QuestAutoDownloadStrategy
 		Rect tiles = SlippyMapMath.enclosingTiles(bbox, ApplicationConstants.QUEST_TILE_ZOOM);
 		long questExpirationTime = ApplicationConstants.REFRESH_QUESTS_AFTER;
 		long ignoreOlderThan = Math.max(0,System.currentTimeMillis() - questExpirationTime);
-		int alreadyDownloadedQuestTypes = downloadedTilesDao.getQuestTypeNames(tiles, ignoreOlderThan).size();
+		int alreadyDownloadedQuestTypes = downloadedTilesDao.get(tiles, ignoreOlderThan).size();
 		if(alreadyDownloadedQuestTypes >= totalQuestTypes)
 		{
 			Log.i(TAG, "Not downloading quests because everything has been downloaded already in" + radius + "m radius");

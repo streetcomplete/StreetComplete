@@ -137,7 +137,7 @@ public class QuestDownload
 
 		long questExpirationTime = ApplicationConstants.REFRESH_QUESTS_AFTER;
 		long ignoreOlderThan = Math.max(0,System.currentTimeMillis() - questExpirationTime);
-		List<String> alreadyDownloadedNames = downloadedTilesDao.getQuestTypeNames(tiles, ignoreOlderThan);
+		List<String> alreadyDownloadedNames = downloadedTilesDao.get(tiles, ignoreOlderThan);
 		if(!alreadyDownloadedNames.isEmpty())
 		{
 			Set<QuestType> alreadyDownloaded = new HashSet<>(alreadyDownloadedNames.size());

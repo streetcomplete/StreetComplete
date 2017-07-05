@@ -136,7 +136,7 @@ public class OsmNotesDownload
 
 		int closedAmount = previousQuestsByNoteId.size();
 
-		downloadedTilesDao.putQuestType(tiles, OsmNoteQuest.type.getClass().getSimpleName());
+		downloadedTilesDao.put(tiles, OsmNoteQuest.type.getClass().getSimpleName());
 
 		Log.i(TAG, "Successfully added " + newAmount + " new and removed " + closedAmount +
 				" closed notes (" + hiddenAmount + " of " + (hiddenAmount + visibleAmount) +
