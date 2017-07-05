@@ -6,7 +6,6 @@ import android.util.Log;
 
 
 import de.westnordost.streetcomplete.ApplicationConstants;
-import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.data.QuestStatus;
 import de.westnordost.streetcomplete.data.QuestTypes;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
@@ -55,7 +54,7 @@ public abstract class AActiveRadiusStrategy implements QuestAutoDownloadStrategy
 		// nothing more to download
 		int totalQuestTypes = questTypes.getAmount() + 1; // +1 because of note quests
 		Rect tiles = SlippyMapMath.enclosingTiles(bbox, ApplicationConstants.QUEST_TILE_ZOOM);
-		long questExpirationTime = Integer.parseInt(prefs.getString(Prefs.QUESTS_EXPIRATION_TIME_IN_MIN, "0")) * 1000 * 60;
+		long questExpirationTime = ApplicationConstants.REFRESH_QUESTS_AFTER;
 		long ignoreOlderThan = Math.max(0,System.currentTimeMillis() - questExpirationTime);
 		int alreadyDownloadedQuestTypes = downloadedTilesDao.getQuestTypeNames(tiles, ignoreOlderThan).size();
 		if(alreadyDownloadedQuestTypes >= totalQuestTypes)

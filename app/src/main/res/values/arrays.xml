@@ -1,19 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="pref_entries_quest_expiration_times">
-        <item>@string/quest_expiration_one_day</item>
-        <item>@string/quest_expiration_a_week</item>
-        <item>@string/quest_expiration_two_weeks</item>
-        <item>@string/quest_expiration_one_month</item>
-    </string-array>
-
-    <string-array name="pref_entryvalues_quest_expiration_times" translatable="false">
-        <item>1440</item>
-        <item>10080</item>
-        <item>20160</item>
-        <item>43200</item>
-    </string-array>
-
     <string-array name="pref_entries_autosync">
         <item>@string/autosync_on</item>
         <item>@string/autosync_only_on_wifi</item>

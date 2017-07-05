@@ -14,8 +14,6 @@
     <string name="pref_title_not_authorized_summary">"Not yet authorized"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
     <string name="pref_tilecache_size_message">"Space in megabytes reserved on external storage to cache map tiles"</string>
-    <string name="pref_title_quest_expiration_time">"Cache Quests"</string>
-    <string name="pref_summary_quest_expiration">"for %s before downloading anew"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Show all notes"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Also showing notes not phrased as questions"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Ignoring notes not phrased as questions"</string>
@@ -176,10 +174,6 @@ To display the map, vector tiles are retrieved from the &lt;a href=\"https://map
 &lt;p&gt;The app uses the &lt;a href=\"https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free\"&gt;Beautiful Flat Icons&lt;/a&gt; set by Nick Roach, licensed under the &lt;a href=\"http://www.gnu.org/licenses/gpl-2.0.html\"&gt;GPL&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Translations&lt;/b&gt;&lt;/p&gt;
 %1$s"</string>
-    <string name="quest_expiration_one_day">"One day"</string>
-    <string name="quest_expiration_a_week">"A week"</string>
-    <string name="quest_expiration_two_weeks">"Two weeks"</string>
-    <string name="quest_expiration_one_month">"One month"</string>
     <string name="autosync_on">"On"</string>
     <string name="autosync_only_on_wifi">"Only on Wifi"</string>
     <string name="autosync_off">"Off"</string>
