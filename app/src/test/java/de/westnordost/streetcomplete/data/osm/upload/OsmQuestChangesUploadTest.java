@@ -105,7 +105,7 @@ public class OsmQuestChangesUploadTest extends TestCase
 		assertFalse(u.uploadQuestChange(-1, quest, null, false, false));
 
 		verify(downloadedTilesDao).remove(any(Point.class));
-		verify(questDb).delete(quest.getId());
+		assertEquals(QuestStatus.CLOSED, quest.getStatus());
 	}
 
 	public void testDropChangeWhenUnresolvableElementChange()
@@ -119,7 +119,7 @@ public class OsmQuestChangesUploadTest extends TestCase
 		OsmQuestChangesUpload u = new OsmQuestChangesUpload(null, questDb, null, null, null, null,
 				null, downloadedTilesDao, null);
 		assertFalse(u.uploadQuestChange(123, quest, element, false, false));
-		verify(questDb).delete(quest.getId());
+		assertEquals(QuestStatus.CLOSED, quest.getStatus());
 		verify(downloadedTilesDao).remove(any(Point.class));
 	}
 
@@ -149,7 +149,7 @@ public class OsmQuestChangesUploadTest extends TestCase
 				null, null, changesetsDao, downloadedTilesDao, prefs);
 
 		assertFalse(u.uploadQuestChange(changesetId, quest, element, false, false));
-		verify(questDb).delete(quest.getId());
+		assertEquals(QuestStatus.CLOSED, quest.getStatus());
 		verify(elementDb).delete(Element.Type.NODE, A_NODE_ID);
 		verify(downloadedTilesDao).remove(any(Point.class));
 	}
@@ -209,7 +209,7 @@ public class OsmQuestChangesUploadTest extends TestCase
 		assertFalse(u.uploadQuestChange(firstChangesetId, quest, element, false, false));
 
 		verify(manageChangesetsDb).replace(new OpenChangesetKey("TestQuestType","test case"), secondChangesetId);
-		verify(questDb).delete(quest.getId());
+		assertEquals(QuestStatus.CLOSED, quest.getStatus());
 		verify(elementDb).delete(Element.Type.NODE, A_NODE_ID);
 		verify(downloadedTilesDao).remove(any(Point.class));
 	}
@@ -265,7 +265,7 @@ public class OsmQuestChangesUploadTest extends TestCase
 				statisticsDao, null, null, null, null);
 
 		assertTrue(u.uploadQuestChange(1, quest, element, false, false));
-		verify(questDb).delete(quest.getId());
+		assertEquals(QuestStatus.CLOSED, quest.getStatus());
 		verify(statisticsDao).addOne("TestQuestType");
 	}
 

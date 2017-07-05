@@ -69,6 +69,14 @@ public class OsmQuestDao extends AQuestDao<OsmQuest>
 		});
 	}
 
+	public int deleteAll(QuestStatus status, long olderThan)
+	{
+		WhereSelectionBuilder qb = new WhereSelectionBuilder();
+		addQuestStatus(status, qb);
+		qb.appendAnd(OsmQuestTable.Columns.LAST_UPDATE + " < ?", String.valueOf(olderThan));
+		return deleteAllThings(getTableName(), qb);
+	}
+
 	private void addQuestType(String questTypeName, WhereSelectionBuilder builder)
 	{
 		if(questTypeName != null)
@@ -152,7 +160,7 @@ public class OsmQuestDao extends AQuestDao<OsmQuest>
 		if(quest.getChangesSource() != null) stmt.bindString(5, quest.getChangesSource());
 		else                                 stmt.bindNull(5);
 
-		stmt.bindLong(6, quest.getLastUpdate().getTime());
+		stmt.bindLong(6, new Date().getTime());
 		stmt.bindLong(7, quest.getElementId());
 		stmt.bindString(8, quest.getElementType().name());
 
@@ -174,7 +182,7 @@ public class OsmQuestDao extends AQuestDao<OsmQuest>
 	{
 		ContentValues values = new ContentValues();
 		values.put(OsmQuestTable.Columns.QUEST_STATUS, quest.getStatus().name());
-		values.put(OsmQuestTable.Columns.LAST_UPDATE, quest.getLastUpdate().getTime());
+		values.put(OsmQuestTable.Columns.LAST_UPDATE, new Date().getTime());
 
 		if(quest.getChanges() != null)
 		{

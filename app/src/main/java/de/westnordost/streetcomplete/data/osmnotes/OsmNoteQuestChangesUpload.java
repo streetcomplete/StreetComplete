@@ -59,14 +59,14 @@ public class OsmNoteQuestChangesUpload
 		{
 			Note newNote = osmDao.comment(quest.getNote().id, text);
 
-			/* Unlike OSM quests, note quests are not deleted when the user contributed to it
-			   but must remain in the database with the status HIDDEN as long as they are not
+			/* Unlike OSM quests, note quests are never deleted when the user contributed to it
+			   but must remain in the database with the status CLOSED as long as they are not
 			   solved. The reason is because as long as a note is unsolved, the problem at that
 			   position persists and thus it should still block other quests to be created.
 			   (Reminder: Note quests block other quests)
 			  */
 			// so, not this: questDB.delete(quest.getId());
-			quest.setStatus(QuestStatus.HIDDEN);
+			quest.setStatus(QuestStatus.CLOSED);
 			quest.setNote(newNote);
 			questDB.update(quest);
 			noteDB.put(newNote);

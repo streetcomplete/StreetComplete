@@ -50,9 +50,9 @@ public class OsmNoteQuest implements Quest
 	@Override public void setStatus(QuestStatus status)
 	{
 		this.status = status;
-		/* if it is hidden, clear notes comments because we do not need them anymore and they take
+		/* if it is closed, clear notes comments because we do not need them anymore and they take
 		 up (a lot of) space in the DB */
-		if(status == QuestStatus.HIDDEN)
+		if(status == QuestStatus.CLOSED)
 		{
 			if (note != null) note.comments.clear();
 		}

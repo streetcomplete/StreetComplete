@@ -96,8 +96,7 @@ public class OsmQuestChangesUpload
 			}
 		}
 
-		elementGeometryDB.deleteUnreferenced();
-		elementDB.deleteUnreferenced();
+		cleanUp();
 
 		String logMsg = "Committed " + commits + " changes";
 		if(obsolete > 0)
@@ -108,6 +107,17 @@ public class OsmQuestChangesUpload
 		Log.i(TAG, logMsg);
 
 		closeOpenChangesets();
+	}
+
+	private void cleanUp()
+	{
+		long yesterday = System.currentTimeMillis() - 24 * 60 * 60 * 1000;
+		int deletedQuests = questDB.deleteAll(QuestStatus.CLOSED, yesterday);
+		if(deletedQuests > 0)
+		{
+			elementGeometryDB.deleteUnreferenced();
+			elementDB.deleteUnreferenced();
+		}
 	}
 
 	public synchronized void closeOpenChangesets()
@@ -172,7 +182,7 @@ public class OsmQuestChangesUpload
 		Element elementWithChangesApplied = changesApplied(element, quest);
 		if(elementWithChangesApplied == null)
 		{
-			questDB.delete(quest.getId());
+			closeQuest(quest);
 			LatLon questPosition = quest.getGeometry().center;
 			Point tile = SlippyMapMath.enclosingTile(questPosition, ApplicationConstants.QUEST_TILE_ZOOM);
 			downloadedTilesDao.remove(tile);
@@ -192,10 +202,16 @@ public class OsmQuestChangesUpload
 					alreadyHandlingChangesetConflict, e);
 		}
 
-		questDB.delete(quest.getId());
+		closeQuest(quest);
 		statisticsDB.addOne(quest.getType().getClass().getSimpleName());
 
 		return true;
+	}
+
+	private void closeQuest(OsmQuest quest)
+	{
+		quest.setStatus(QuestStatus.CLOSED);
+		questDB.update(quest);
 	}
 
 	private Element changesApplied(Element element, OsmQuest quest)

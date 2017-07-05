@@ -75,10 +75,10 @@ public class CreateNoteUpload
 
 		if (newNote != null)
 		{
-			// add a hidden quest as a blocker so that at this location no quests are created.
+			// add a closed quest as a blocker so that at this location no quests are created.
 			// if the note was not added, don't do this (see below) -> probably based on old data
 			OsmNoteQuest noteQuest = new OsmNoteQuest(newNote);
-			noteQuest.setStatus(QuestStatus.HIDDEN);
+			noteQuest.setStatus(QuestStatus.CLOSED);
 			noteDB.put(newNote);
 			noteQuestDB.add(noteQuest);
 		}

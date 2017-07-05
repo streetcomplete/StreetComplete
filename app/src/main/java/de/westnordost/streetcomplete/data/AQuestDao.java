@@ -98,6 +98,12 @@ public abstract class AQuestDao<T extends Quest>
 		}
 	}
 
+	protected final int deleteAllThings(String tablename, WhereSelectionBuilder query)
+	{
+		SQLiteDatabase db = dbHelper.getWritableDatabase();
+		return db.delete(tablename, query.getWhere(), query.getArgs());
+	}
+
 	protected final <E> List<E> getAllThings(String tablename, String[] cols,
 											 WhereSelectionBuilder query, CreateFromCursor<E> creator)
 	{

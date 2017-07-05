@@ -73,9 +73,9 @@ public class OsmNotesDownload
 			{
 
 				OsmNoteQuest quest = new OsmNoteQuest(note);
-				if(makeNoteHidden(userId, note))
+				if(makeNoteClosed(userId, note))
 				{
-					quest.setStatus(QuestStatus.HIDDEN);
+					quest.setStatus(QuestStatus.CLOSED);
 					hiddenQuests.add(quest);
 				}
 				else if(makeNoteInvisible(quest))
@@ -155,7 +155,7 @@ public class OsmNotesDownload
 		return result;
 	}
 
-	private boolean makeNoteHidden(Long userId, Note note)
+	private boolean makeNoteClosed(Long userId, Note note)
 	{
 		/* hide a note if he already contributed to it. This can also happen from outside
 		   this application, which is why we need to overwrite its quest status. */
