@@ -99,8 +99,8 @@
     <string name="quest_streetName_answer_noProperStreet_track">"Це лише путівець"</string>
     <string name="about_title_privacy_statement">"Заява про конфіденційність"</string>
     <string name="about_summary_privacy_statement">"та використання даних"</string>
-    <string name="quest_openingHours_public_holidays">"Святкові дні"</string>
-    <string name="quest_openingHours_public_holidays_short">"Святкові дні"</string>
+    <string name="quest_openingHours_public_holidays">"святкові дні"</string>
+    <string name="quest_openingHours_public_holidays_short">"святкові дні"</string>
     <string name="quest_openingHours_open_end">"до останнього клієнта"</string>
     <string name="quest_openingHours_answer_247">"Цілодобово"</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">"В залежності від місяця"</string>
@@ -134,7 +134,7 @@
 Ваше місцезнаходження використовується тільки для автоматичного пошуку завдань навколо вас. Не турбуйтеся, додаток нікуди не передає цю інформацію.
 &lt;/p&gt;
 
-&lt;p&gt;&lt;b&gt;Використовування даних&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Використання даних&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 Як було вказано вище, додаток взаємодіє безпосередньо з інфраструктурою OSM, а саме з &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass API&lt;/a&gt; для завантаження завдань (анонімно) і з &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API&lt;/a&gt; для відправлення змін.&lt;br/&gt;
 Однак перед відправленням змін на сайт додаток перевіряє &lt;a href=\"http://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;простий текстовий файл&lt;/a&gt; на моєму сервері, щоб переконатися, чи не було заборонено цій версії додатку відправляти буді-які зміни. Це зроблено для того, щоб у крайньому випадку версія з критичними помилками не псувала дані OSM.&lt;br/&gt;
@@ -147,7 +147,7 @@
 (&lt;i&gt;Це насправді ще не реалізовано, просто хочу сказати, що незабаром буде!:&lt;/i&gt;) Дані, які відображаються у топі лідерів та профілях, агрегуються з публічної інформації, доступної на OpenStreetMap. Дані беруться не з додатку, а з публічної історії правок користувачів OSM.
 &lt;/p&gt;"</string>
     <string name="authors_html">"&lt;p&gt;© 2017 Тобіас Звік&lt;/p&gt;
-&lt;p&gt;Додаток використовує &lt;a href=\"https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free\"&gt;набір чудових іконок&lt;/a&gt; Ніка Роуча, розміщених під ліцензією &lt;a href=\"http://www.gnu.org/licenses/gpl-2.0.html\"&gt;GPL&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;У додатку використаний &lt;a href=\"https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free\"&gt;набір чудових іконок&lt;/a&gt; Ніка Роуча, розміщених під ліцензією &lt;a href=\"http://www.gnu.org/licenses/gpl-2.0.html\"&gt;GPL&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Переклади&lt;/b&gt;&lt;/p&gt;
 %1$s"</string>
     <string name="quest_expiration_one_day">"Один день"</string>
@@ -186,16 +186,8 @@
     <string name="quest_sidewalk_onlyWest">"Тільки на західній стороні"</string>
     <string name="quest_sidewalk_onlyEast">"Тільки на східній стороні"</string>
     <string name="quest_sidewalk_yes">"Так"</string>
-    <string name="quest_maxspeed_title">"Яке обмеження швидкості встановлює знак на цій вулиці?"</string>
     <string name="quest_maxspeed_answer_noSign">"Знаку немає"</string>
-    <string name="quest_maxspeed_answer_noSign_info">"Добре, якщо знаку немає, встановлюється загальне обмеження."</string>
-    <string name="quest_maxspeed_answer_noSign_info_motorway">"Це %1$s на автомагістралі."</string>
-    <string name="quest_maxspeed_answer_noSign_info_living_street">"Це %1$s на вулиці в житловій зоні."</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Де знаходиться вулиця?"</string>
-    <string name="quest_maxspeed_answer_noSign_urban">"У місті: %1$s обмеження швидкості встановлюється."</string>
-    <string name="quest_maxspeed_answer_noSign_rural">"Поза містом: %1$s обмеження швидкості встановлюється."</string>
-    <string name="quest_maxspeed_answer_noSign_implicitOk">"Добре"</string>
-    <string name="quest_maxspeed_answer_variable">"Електронні знаки показують тимчасові обмеження"</string>
     <string name="quest_cyclewaySurface_title">"Яке покриття тут має велосипедна доріжка?"</string>
     <string name="quest_cycleway_title">"Чи є на цій вулиці велосипедна доріжка?"</string>
     <string name="quest_buildingType_title">"Якого типу ця будівля?"</string>
@@ -266,7 +258,5 @@
     <string name="quest_manySports_confirmation_specific">"Для цих видів спорту"</string>
     <string name="quest_manySports_confirmation_generic">"Загального призначення"</string>
     <string name="quest_sport_manySports_confirmation_title">"Ви обрали забагато видів спорту"</string>
-    <string name="quest_busStopShelter_name_title">"Чи має зупинка \"%s\" навіс?"</string>
-    <string name="quest_leave_new_note_in_response_to">"У відповідь \"%1$s\":
-%2$s"</string>
+    <string name="quest_busStopShelter_name_title">"Чи має зупинка «%s» навіс?"</string>
 </resources>

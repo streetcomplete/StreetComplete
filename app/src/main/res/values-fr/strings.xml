@@ -29,7 +29,7 @@
     <string name="quest_generic_answer_notApplicable">"Ne sait pas"</string>
 
     <!-- je me suis permis d'éviter de sous-entendre que l'utilisateur est un homme ou une femme, ce qui évite la forme un peu étrange avec le point médian -->
-    <string name="quest_generic_confirmation_title">"Voulez-vous vraiment ?"</string>
+    <string name="quest_generic_confirmation_title">"Confirmez-vous ?"</string>
 
     <!-- cf commentaire sur "Are you sure?" -->
     <string name="quest_generic_confirmation_yes">"Oui, c'est sûr"</string>
@@ -65,6 +65,8 @@
     <string name="quest_noteDiscussion_reopen">"%1$s a réouvert la note (%2$s)"</string>
     <string name="quest_noteDiscussion_anonymous">"Anonyme"</string>
     <string name="quest_noteDiscussion_comments_title">"Réponses"</string>
+
+    <!-- In the context of this sentence, maybe prefer the verb "Abandonner" instead of "Rejeter" because it's an idea to give up an input -->
     <string name="confirmation_discard_title">"Rejeter l'entrée ?"</string>
     <string name="confirmation_discard_positive">"Rejeter"</string>
     <string name="confirmation_discard_negative">"Annuler"</string>
@@ -94,7 +96,7 @@
     <string name="offline">"Vous êtes hors ligne"</string>
 
     <!-- téléverser est horrible. On tend à préférer uploader et c'est souvent le mot choisi dans les GUI, que se soit dans Transmission ou dans LibreOffice -->
-    <string name="confirmation_authorize_now">"Vous devez lier votre compte OSM pour téléverser vos réponses. Le faire maintenant ?"</string>
+    <string name="confirmation_authorize_now">"Vous devez lier votre compte OSM pour publier vos réponses. Le faire maintenant ?"</string>
     <string name="not_authorized">"Non autorisé"</string>
     <string name="version_banned_message">"L'upload de réponses avec cette version de StreetComplete a été banni. Veuillez mettre à jour votre application."</string>
     <string name="no_gps_no_quests">"Pour rechercher des quêtes autour de vous automatiquement, activer la localisation"</string>
@@ -206,22 +208,14 @@ Pour afficher la carte, les tuiles vectorielles sont extraites du &lt;a href=\"h
     <string name="quest_sidewalk_onlyWest">"Seulement le côté ouest"</string>
     <string name="quest_sidewalk_onlyEast">"Seulement le côté est"</string>
     <string name="quest_sidewalk_yes">"Oui"</string>
-    <string name="quest_maxspeed_title">"Qu'indiquent les panneaux à propos de la limitation de vitesse dans cette rue ?"</string>
     <string name="quest_maxspeed_answer_noSign">"Il n'y a pas de panneau"</string>
-    <string name="quest_maxspeed_answer_noSign_info">"Bien, s'il n'y a pas de panneau, les limites génériques s'appliquent."</string>
-    <string name="quest_maxspeed_answer_noSign_info_motorway">"C'est %1$s sur une autoroute."</string>
-    <string name="quest_maxspeed_answer_noSign_info_living_street">"C'est %1$s sur une rue résidentielle."</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Où est cette rue ?"</string>
-    <string name="quest_maxspeed_answer_noSign_urban">"En ville : la limite à %1$s s'applique."</string>
-    <string name="quest_maxspeed_answer_noSign_rural">"Hors de la ville : la limite à %1$s s'applique."</string>
-    <string name="quest_maxspeed_answer_noSign_implicitOk">"C'est suffisant"</string>
-    <string name="quest_maxspeed_answer_variable">"Un panneau électronique affiche des limites de vitesse variables"</string>
 
     <!-- Plus simple et plus court : Quel est le revêtement de cette piste cyclable ? -->
     <string name="quest_cyclewaySurface_title">"Quel est le revêtement de cette piste cyclable ?"</string>
     <string name="quest_cycleway_title">"Est-ce qu'il y a une piste cyclable sur cette rue ?"</string>
-    <string name="quest_buildingType_title">"Quel type d'édifice est-ce ?"</string>
-    <string name="quest_serviceType_title">"Quel type de rue de service est-ce ?"</string>
+    <string name="quest_buildingType_title">"Quel est le type de cet édifice ?"</string>
+    <string name="quest_serviceType_title">"Quel est le type de cette rue de service ?"</string>
     <string name="quest_streetLanes_title">"Combien de voies cette rue a-t-elle ?"</string>
     <string name="quest_streetLanes_description">"S'il n'y a pas de marques routières, il n'y a pas de voie."</string>
     <string name="quest_streetLanes_north">"Direction nord"</string>
@@ -233,7 +227,7 @@ Pour afficher la carte, les tuiles vectorielles sont extraites du &lt;a href=\"h
     <string name="quest_oneway_title">"Est-ce une rue à sens unique ?"</string>
 
     <!-- "édifice" or "bâtiment" ? -->
-    <string name="quest_address_title">"Quel est le numéro de cet édifice ?"</string>
+    <string name="quest_address_title">"Quel est le numéro de ce bâtiment ?"</string>
     <string name="store_listing_short_description">"Application d'arpentage OpenStreetMap"</string>
     <string name="store_listing_full_description">"Aidez à améliorer OpenStreetMap avec StreetComplete !
 
@@ -243,7 +237,7 @@ L'information que vous entrez est directement ajoutée à OpenStreetMap sous vot
     <string name="quest_name_answer_noName">"Il n'a pas de nom"</string>
     <string name="quest_name_answer_noName_confirmation_title">"Vraiment aucun nom ?"</string>
     <string name="quest_name_noName_confirmation_positive">"Oui, sans nom"</string>
-    <string name="quest_buildingLevels_negativeBuildingLevels">"Oups ! L'immeuble ne peut pas avoir plus de niveau dans le toit qu'au total !"</string>
+    <string name="quest_buildingLevels_negativeBuildingLevels">"Oups ! L'immeuble ne peut pas avoir plus de niveaux dans le toit qu'au total !"</string>
     <string name="quest_openingHours_add_times">"Ajouter des heures d'ouverture"</string>
     <string name="crash_message">"Souhaitez-vous envoyer le rapport d'erreur au développeur ?"</string>
     <string name="crash_title">"StreetComplete s'est arrêté inopinément la dernière fois"</string>
@@ -293,9 +287,32 @@ L'information que vous entrez est directement ajoutée à OpenStreetMap sous vot
 
     <!-- plus simple et plus court : L'arrêt de bus %s est-il abrité ? -->
     <string name="quest_busStopShelter_name_title">"L’arrêt de bus « %s » a-t-il un abri ?"</string>
-    <string name="quest_leave_new_note_in_response_to">"Réponse à « %1$s » : %2$s"</string>
     <string name="quest_toiletsFee_title">"Ces toilettes sont-elles payantes ?"</string>
     <string name="quest_tactilePaving_title_bus">"Cet arrêt de bus a-t-il une surface podotactile ?"</string>
     <string name="quest_tactilePaving_title_crosswalk">"Ce passage piéton a-t-il une surface podotactile ?"</string>
+    <string name="quest_source_dialog_title">"Confirmez-vous avoir vérifier cela sur place ?"</string>
     <string name="quest_tactilePaving_title_name_bus">"L’arrêt de bus « %s » a-t-il une surface podotactile ?"</string>
+    <string name="quest_source_dialog_note">"Seules les informations relevées sur place peuvent être ajoutées."</string>
+    <string name="quest_bicycleParkingCoveredStatus_title">"Ce parking à vélo est-il abrité (protégé de la pluie) ?"</string>
+    <string name="dialog_session_dont_show_again">"Ne plus afficher pour cette session"</string>
+    <string name="quest_streetSurface_name_title">"Quel est la surface de la route \"%s\" ?"</string>
+    <string name="quest_maxspeed_title_short">"Quel est le panneau de vitesse maximale pour cette route ?"</string>
+    <string name="quest_maxspeed_unusualInput_confirmation_description">"La limitation de vitesse paraît étrange."</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation_title">"Êtes-vous sûr(e) de l'absence de panneau de limitation de vitesse ?"</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation">"Avez-vous vérifié jusqu'au bout de la rue ?
+S'il n'y a aucun panneau, les limitations de vitesse par défaut s'appliquent."</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Oui, aucun panneau"</string>
+    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Les routes en agglomérations ont une limitation de vitesse par défaut différente des routes hors-agglomération."</string>
+    <string name="quest_maxspeed_answer_noSign_urbanOk">"En agglomération"</string>
+    <string name="quest_maxspeed_answer_noSign_ruralOk">"Hors-agglomération"</string>
+    <string name="quest_maxspeed_answer_noSign_info_zone">"S'il y a un panneau comme celui-ci à une intersection, vous ne trouverez pas des panneaux spécifiques dans cette zone car la limitation de vitesse indiquée ici s'applique sur toute la zone."</string>
+    <string name="quest_sport_softball">"Softball"</string>
+    <string name="quest_sport_racquet">"Racquetball"</string>
+    <string name="quest_sport_ice_skating">"Patinage sur glace"</string>
+    <string name="quest_sport_paddle_tennis">"Paddle-tennis"</string>
+    <string name="quest_sport_gaelic_games">"Jeux gaéliques"</string>
+    <string name="quest_sport_sepak_takraw">"Sepak Takraw"</string>
+    <string name="quest_wheelchairAccess_name_title">"Le/La/L' \"%s\" est-il/elle accessible aux personnes à mobilité réduite ?"</string>
+    <string name="quest_wheelchairAccess_limited">"Partiellement"</string>
+    <string name="quest_sport_roller_skating">"Roller"</string>
 </resources>

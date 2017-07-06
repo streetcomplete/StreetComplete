@@ -22,7 +22,7 @@
     <string name="pref_title_map_cache">"Velikost mezipaměti pro mapu"</string>
     <string name="map_btn_gps_tracking">"Sledovat mě"</string>
     <string name="map_attribution_mapzen">"Powered by %s"</string>
-    <string name="map_attribution_osm">"© OpenStreetMap přispěvatelé"</string>
+    <string name="map_attribution_osm">"© přispěvatelé OpenStreetMap"</string>
     <string name="quest_generic_otherAnswers">"Další odpovědi..."</string>
     <string name="quest_generic_answer_notApplicable">"Nedá se to určit"</string>
     <string name="quest_generic_confirmation_title">"Opravdu?"</string>
@@ -187,16 +187,8 @@ Pro zobrazení mapy se stahují vektorové dlaždice z projektu &lt;a href=\"htt
     <string name="quest_sidewalk_onlyWest">"Jen na západní straně"</string>
     <string name="quest_sidewalk_onlyEast">"Jen na východní straně"</string>
     <string name="quest_sidewalk_yes">"Ano"</string>
-    <string name="quest_maxspeed_title">"Co říkají značky o omezení rychlosti na této cestě?"</string>
     <string name="quest_maxspeed_answer_noSign">"Není tu žádná značka"</string>
-    <string name="quest_maxspeed_answer_noSign_info">"Dobře. Pokud tu nejsou značky, platí obecné omezení rychlosti."</string>
-    <string name="quest_maxspeed_answer_noSign_info_motorway">"To je %1$s na dálnici."</string>
-    <string name="quest_maxspeed_answer_noSign_info_living_street">"To je %1$s v obytné zóně."</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Kde je tato cesta?"</string>
-    <string name="quest_maxspeed_answer_noSign_urban">"Ve městě platí omezení rychlosti %1$s."</string>
-    <string name="quest_maxspeed_answer_noSign_rural">"Mimo město platí omezení rychlosti %1$s."</string>
-    <string name="quest_maxspeed_answer_noSign_implicitOk">"To by mohlo být"</string>
-    <string name="quest_maxspeed_answer_variable">"Elektronické značky ukazují různé omezení rychlosti"</string>
     <string name="quest_cyclewaySurface_title">"Jaký povrch má tato cyklostezka?"</string>
     <string name="quest_cycleway_title">"Je na této cestě cyklostezka?"</string>
     <string name="quest_buildingType_title">"Jakého druhu je tato stavba?"</string>
@@ -270,8 +262,6 @@ Vámi vložené informace jsou potom vaším jménem přímo přidány do OpenSt
     <string name="quest_manySports_confirmation_generic">"Různé hry"</string>
     <string name="quest_sport_manySports_confirmation_title">"Vybrali jste více sportů"</string>
     <string name="quest_busStopShelter_name_title">"Má autobusová zastávka  „%s“ střechu?"</string>
-    <string name="quest_leave_new_note_in_response_to">"Odpověď na „%1$s“:
-%2$s"</string>
     <string name="quest_toiletsFee_title">"Musí se na těchto toaletách platit?"</string>
     <string name="quest_tactilePaving_title_bus">"Má tato autobusová zastávka hmatovou dlažbu?"</string>
     <string name="quest_tactilePaving_title_crosswalk">"Má tento přechod hmatovou dlažbu?"</string>
@@ -280,4 +270,23 @@ Vámi vložené informace jsou potom vaším jménem přímo přidány do OpenSt
     <string name="quest_source_dialog_note">"Měly by být přidávány pouze informace zjištěné během průzkumu."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Je toto parkoviště pro kola zakryté (chráněno proti dešti)?"</string>
     <string name="dialog_session_dont_show_again">"V této relaci znovu nezobrazovat"</string>
+    <string name="quest_streetSurface_name_title">"Jaký povrch má cesta „%s“?"</string>
+    <string name="quest_maxspeed_title_short">"Jaké je předepsané omezení rychlosti na této cestě?"</string>
+    <string name="quest_maxspeed_unusualInput_confirmation_description">"Toto omezení rychlosti se zdá nepravděpodobné."</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation_title">"Opravdu tu není žádná značka omezující rychlost?"</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation">"Zkontrolovali jste konce cesty?
+Pokud tam nejsou žádné značky, bude použito výchozí omezení rychlosti."</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Není tam žádná značka"</string>
+    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Silnice ve městě mají jiné výchozí omezení rychlosti než silnice mimo město."</string>
+    <string name="quest_maxspeed_answer_noSign_urbanOk">"Ve městě"</string>
+    <string name="quest_maxspeed_answer_noSign_ruralOk">"Mimo město"</string>
+    <string name="quest_maxspeed_answer_noSign_info_zone">"Pokud je na křižovatce hlavní ulice takováhle značka, nenajdete v zóně další samostatné značky, protože uvedené omezení rychlosti na značce se vztahuje na celou zónu"</string>
+    <string name="quest_sport_softball">"Softball"</string>
+    <string name="quest_sport_racquet">"Raketbal"</string>
+    <string name="quest_sport_ice_skating">"Bruslení na ledu"</string>
+    <string name="quest_sport_paddle_tennis">"Pádlový tenis"</string>
+    <string name="quest_sport_gaelic_games">"Galské hry"</string>
+    <string name="quest_sport_sepak_takraw">"Sepak takraw"</string>
+    <string name="quest_wheelchairAccess_name_title">"Má „%s“ bezbariérový přístup?"</string>
+    <string name="quest_wheelchairAccess_limited">"Částečně"</string>
 </resources>

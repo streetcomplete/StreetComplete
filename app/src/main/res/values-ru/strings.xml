@@ -65,7 +65,7 @@
     <string name="close">"закрыть"</string>
     <string name="download_error">"Не удалось найти квесты"</string>
     <string name="upload_error">"Не удалось отправить ответы"</string>
-    <string name="cannot_find_bbox">"Не удалось найти квесты. Попробуйте приблизить ещё"</string>
+    <string name="cannot_find_bbox">"Поиск невозможен. Попробуйте приблизить ещё"</string>
     <string name="download_area_too_big">"Приблизьте ещё"</string>
     <string name="confirmation_cancel_prev_download_title">"Завершить текущее сканирование и сканировать здесь?"</string>
     <string name="notification_downloading">"Поиск квестов"</string>
@@ -86,7 +86,7 @@
     <string name="confirmation_authorize_now">"Вам нужно авторизоваться через ваш OSM аккаунт, чтобы применились ваши ответы. Авторизоваться сейчас?"</string>
     <string name="not_authorized">"Не авторизовано"</string>
     <string name="version_banned_message">"Этой версии StreetComplete было запрещено отправлять ответы! Обновите StreetComplete!"</string>
-    <string name="no_gps_no_quests">"Для автоматического сканирования заданий вокруг вас, включите определение местоположения"</string>
+    <string name="no_gps_no_quests">"Для автоматического сканирования заданий поблизости включите определение местоположения"</string>
     <string name="nothing_more_to_download">"Больше квестов нет"</string>
     <string name="later">"Не сейчас"</string>
     <string name="quest_streetName_answer_noProperStreet">"Это не настоящая улица"</string>
@@ -118,7 +118,7 @@
     <string name="map_btn_zoom_out">"Отдалить"</string>
     <string name="map_btn_zoom_in">"Приблизить"</string>
     <string name="privacy_html">"&lt;p&gt;Ага, кто-то, кто заботится о конфиденциальности, отлично! Надеюсь, у меня для вас только хорошие новости:&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;Direct Contributions&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Внесение вклада напрямую&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 Прежде всего, с помощью этого приложения вы отправляете все улучшения и заметки в OpenStreetMap напрямую.&lt;br/&gt;
 Все данные добавляются прямо на карту, между этим приложением и инфраструктурой OSM нет посредников (как происходит в случае с &lt;a href=\"https://wheelmap.org\"&gt;wheelmap.org&lt;/a&gt; или &lt;a href=\"http://www.kort.ch\"&gt;Kort&lt;/a&gt;).
@@ -141,7 +141,7 @@
 Векторные изображения для отображения карты анонимно загружаются с &lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt;сервиса векторных карт Mapzen&lt;/a&gt;. Данный сервис запоминает запросы, чтобы оценить популярность определённых районов для кэширования и повышения скорости работы. Платформа Mapzen также запоминает IP-адреса и полностью находится на Amazon, поэтому подчиняется условиям использования хостинга этой компании.
 &lt;/p&gt;
 &lt;p&gt;
-(&lt;i&gt;Это на самом деле ещё не реализовано, просто хочу вам сообщить, что грядёт!:&lt;/i&gt;) Данные, отображающееся в топе лидеров и профилях, агрегируются из публично доступной информации проекта OpenStreetMap. Данные поступают не из этого приложения, а из публичной истории изменений пользователей OSM.
+(&lt;i&gt;Это на самом деле ещё не реализовано, просто хочу вам сообщить, что грядёт!:&lt;/i&gt;) Данные, отображающиеся в топе лидеров и профилях, агрегируются из публично доступной информации проекта OpenStreetMap. Данные поступают не из этого приложения, а из публичной истории изменений пользователей OSM.
 &lt;/p&gt;"</string>
     <string name="authors_html">"&lt;p&gt;© 2017 Тобиас Цвик&lt;/p&gt;
 &lt;p&gt;Приложение использует набор значков &lt;a href=\"https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free\"&gt;Beautiful Flat Icons&lt;/a&gt; от Ника Роуча с лицензией &lt;a href=\"http://www.gnu.org/licenses/gpl-2.0.html\"&gt;GPL&lt;/a&gt;.&lt;/p&gt;
@@ -181,16 +181,8 @@
     <string name="quest_sidewalk_onlyWest">"Только на западной стороне"</string>
     <string name="quest_sidewalk_onlyEast">"Только на восточной стороне"</string>
     <string name="quest_sidewalk_yes">"Да"</string>
-    <string name="quest_maxspeed_title">"Какой скоростной режим установлен знаками на этой улице?"</string>
     <string name="quest_maxspeed_answer_noSign">"Знаков нет"</string>
-    <string name="quest_maxspeed_answer_noSign_info">"Если знаков нет, значит действует общий скоростной режим."</string>
-    <string name="quest_maxspeed_answer_noSign_info_motorway">"Это %1$s на автомагистрали."</string>
-    <string name="quest_maxspeed_answer_noSign_info_living_street">"Это %1$s на улице в населённом пункте."</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Где находится эта улица?"</string>
-    <string name="quest_maxspeed_answer_noSign_urban">"В городе: применится ограничение %1$s"</string>
-    <string name="quest_maxspeed_answer_noSign_rural">"За городом: применится ограничение %1$s"</string>
-    <string name="quest_maxspeed_answer_noSign_implicitOk">"Правильно"</string>
-    <string name="quest_maxspeed_answer_variable">"Электронное табло с переменным ограничением скорости"</string>
     <string name="quest_cyclewaySurface_title">"Какое покрытие у этой велодорожки?"</string>
     <string name="quest_cycleway_title">"На этой улице есть велодорожка?"</string>
     <string name="quest_buildingType_title">"Какого типа здание?"</string>
@@ -262,8 +254,6 @@
     <string name="quest_manySports_confirmation_generic">"Общего назначения"</string>
     <string name="quest_sport_manySports_confirmation_title">"Вы выбрали несколько видов спорта"</string>
     <string name="quest_busStopShelter_name_title">"Защищена ли автобусная остановка %s от погодных условий?"</string>
-    <string name="quest_leave_new_note_in_response_to">"В ответ на «%1$s»:
-%2$s"</string>
     <string name="quest_toiletsFee_title">"Это платные туалеты?"</string>
     <string name="quest_tactilePaving_title_bus">"Есть ли на этой автобусной остановке тактильная разметка?"</string>
     <string name="quest_tactilePaving_title_crosswalk">"Есть ли на этом пешеходном переходе тактильная разметка?"</string>
@@ -271,4 +261,22 @@
     <string name="quest_tactilePaving_title_name_bus">"Есть ли на автобусной остановке %s тактильная разметка?"</string>
     <string name="quest_source_dialog_note">"Нужно вводить только то, что вы видели своими глазами."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Эта велосипедная парковка крытая (защищена от дождя)?"</string>
+    <string name="dialog_session_dont_show_again">"Не показывать снова в текущей сессии"</string>
+    <string name="quest_streetSurface_name_title">"Какое покрытие у дороги «%s»?"</string>
+    <string name="quest_maxspeed_title_short">"Какое ограничение скорости на этой улице?"</string>
+    <string name="quest_maxspeed_unusualInput_confirmation_description">"Это ограничение скорости выглядит неправдоподобно."</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation_title">"Вы уверены, что ограничение не установлено?"</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation">"Вы проверили знаки на концах улицы?
+Если их нет, то действует общее ограничение скорости."</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Да, знаков нет"</string>
+    <string name="quest_maxspeed_answer_noSign_urbanOk">"В городе"</string>
+    <string name="quest_maxspeed_answer_noSign_ruralOk">"Вне города"</string>
+    <string name="quest_maxspeed_answer_noSign_info_zone">"Если на перекрёстке главной улицы есть такой знак, то других знаков внутри зоны не будет, так как ограничение скорости распространяется на всю зону."</string>
+    <string name="quest_sport_softball">"Софтбол"</string>
+    <string name="quest_sport_racquet">"Ракетбол"</string>
+    <string name="quest_sport_ice_skating">"Катание на коньках"</string>
+    <string name="quest_sport_paddle_tennis">"Паддл-теннис"</string>
+    <string name="quest_sport_gaelic_games">"Гэльские игры"</string>
+    <string name="quest_sport_sepak_takraw">"Сепактакрау"</string>
+    <string name="quest_wheelchairAccess_limited">"Частично"</string>
 </resources>
