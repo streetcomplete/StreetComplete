@@ -93,7 +93,7 @@ dependencies {
 
     // map and location
     compile 'com.mapzen.tangram:tangram:0.7.1'
-    compile 'com.mapzen.android:lost:3.0.0'
+    compile 'com.mapzen.android:lost:3.0.2'
 
     // config files
     compile 'com.esotericsoftware.yamlbeans:yamlbeans:1.09'
