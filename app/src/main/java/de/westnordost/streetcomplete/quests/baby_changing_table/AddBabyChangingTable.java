@@ -22,7 +22,7 @@ public class AddBabyChangingTable extends SimpleOverpassQuestType
 	@Override
 	protected String getTagFilters()
 	{
-		return "nodes, ways with (((amenity ~ restaurant|pub|cafe|ice_cream|fuel or shop=mall or building=retail) and toilets=yes) or amenity=toilets) and !diaper";
+		return "nodes, ways with (((amenity ~ restaurant|cafe|fuel|fast_food or shop ~ mall|department_store) and name and toilets=yes) or amenity=toilets) and !diaper";
 	}
 
 	@Override
@@ -33,9 +33,7 @@ public class AddBabyChangingTable extends SimpleOverpassQuestType
 
 	public AbstractQuestAnswerFragment createForm()
 	{
-		AbstractQuestAnswerFragment form =  new YesNoQuestAnswerFragment();
-		form.setTitle(R.string.quest_baby_changing_table_title);
-		return form;
+		return new AddBabyChangingTableFragment();
 	}
 
 	public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
