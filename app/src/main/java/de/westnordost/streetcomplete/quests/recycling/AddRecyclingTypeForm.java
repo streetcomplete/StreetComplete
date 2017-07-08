@@ -1,62 +1,52 @@
 package de.westnordost.streetcomplete.quests.recycling;
 
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import de.westnordost.streetcomplete.R;
-import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
+import de.westnordost.streetcomplete.quests.ImageListQuestAnswerFragment;
+import de.westnordost.streetcomplete.view.ImageSelectAdapter;
 
-public class AddRecyclingTypeForm extends AbstractQuestAnswerFragment
+public class AddRecyclingTypeForm extends ImageListQuestAnswerFragment
 {
-	public static final String ANSWER = "answer";
+	private final OsmItem[] TYPES = new OsmItem[] {
+			new OsmItem("overground", R.drawable.recycling_container, R.string.overground_recycling_container),
+			new OsmItem("underground", R.drawable.recycling_container_underground, R.string.underground_recycling_container),
+			new OsmItem("centre", R.drawable.recycling_centre, R.string.recycling_centre)
+	};
+
+	@Override protected ImageListQuestAnswerFragment.OsmItem[] getItems()
+	{
+		return TYPES;
+	}
+
+	@Override protected int getMaxSelectableItems()
+	{
+		return 1;
+	}
+
+	@Override protected int getMaxNumberOfInitiallyShownItems()
+	{
+		return TYPES.length;
+	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState)
 	{
 		View view = super.onCreateView(inflater, container, savedInstanceState);
-		View buttonPanel = setContentView(R.layout.quest_recycling_type);
 		setTitle(R.string.quest_recycling_type_title);
 
-		Button buttonYes = (Button) buttonPanel.findViewById(R.id.buttonCentre);
-		buttonYes.setOnClickListener(new View.OnClickListener()
-		{
-			@Override public void onClick(View v)
-			{
-				onClickAnswer("centre");
-			}
-		});
-		Button buttonLimited = (Button) buttonPanel.findViewById(R.id.buttonOverground);
-		buttonLimited.setOnClickListener(new View.OnClickListener()
-		{
-			@Override public void onClick(View v)
-			{
-				onClickAnswer("overground");
-			}
-		});
-		Button buttonNo = (Button) buttonPanel.findViewById(R.id.buttonUnderground);
-		buttonNo.setOnClickListener(new View.OnClickListener()
-		{
-			@Override public void onClick(View v)
-			{
-				onClickAnswer("underground");
-			}
-		});
+		View contentView = setContentView(R.layout.quest_generic_list);
+		imageSelector = new ImageSelectAdapter(1);
+		RecyclerView valueList = (RecyclerView) contentView.findViewById(R.id.listSelect);
+		GridLayoutManager lm = new GridLayoutManager(getActivity(), TYPES.length);
+		valueList.setLayoutManager(lm);
+
 		return view;
-	}
-
-	@Override public boolean hasChanges()
-	{
-		return false;
-	}
-
-	protected void onClickAnswer(String answer)
-	{
-		Bundle bundle = new Bundle();
-		bundle.putString(ANSWER, answer);
-		applyImmediateAnswer(bundle);
 	}
 }

@@ -2,6 +2,8 @@ package de.westnordost.streetcomplete.quests.recycling;
 
 import android.os.Bundle;
 
+import java.util.ArrayList;
+
 import javax.inject.Inject;
 
 import de.westnordost.streetcomplete.data.QuestImportance;
@@ -35,7 +37,9 @@ public class AddRecyclingType extends SimpleOverpassQuestType
 
 	@Override public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
 	{
-		String recycling = answer.getString(AddRecyclingTypeForm.ANSWER);
+		ArrayList<String> values = answer.getStringArrayList(AddRecyclingTypeForm.OSM_VALUES);
+		String recycling = values.get(0);
+
 		switch (recycling) {
 			case "centre":
 				changes.add("recycling_type", "centre");
