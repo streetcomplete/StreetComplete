@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.upload;
 
 import android.content.SharedPreferences;
+import android.graphics.Point;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ import javax.inject.Inject;
 
 import de.westnordost.osmapi.changesets.ChangesetInfo;
 import de.westnordost.osmapi.changesets.ChangesetsDao;
+import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.map.data.Node;
 import de.westnordost.osmapi.map.data.OsmNode;
 import de.westnordost.osmapi.map.data.OsmRelation;
@@ -35,6 +37,8 @@ import de.westnordost.streetcomplete.data.statistics.QuestStatisticsDao;
 import de.westnordost.osmapi.common.errors.OsmConflictException;
 import de.westnordost.osmapi.map.MapDataDao;
 import de.westnordost.osmapi.map.data.Element;
+import de.westnordost.streetcomplete.data.tiles.DownloadedTilesDao;
+import de.westnordost.streetcomplete.util.SlippyMapMath;
 
 public class OsmQuestChangesUpload
 {
@@ -47,6 +51,7 @@ public class OsmQuestChangesUpload
 	private final QuestStatisticsDao statisticsDB;
 	private final OpenChangesetsDao openChangesetsDB;
 	private final ChangesetsDao changesetsDao;
+	private final DownloadedTilesDao downloadedTilesDao;
 	private final SharedPreferences prefs;
 
 	// The cache is just here so that uploading 500 quests of same quest type does not result in 500 DB requests.
@@ -56,7 +61,7 @@ public class OsmQuestChangesUpload
 			MapDataDao osmDao, OsmQuestDao questDB, MergedElementDao elementDB,
 			ElementGeometryDao elementGeometryDB, QuestStatisticsDao statisticsDB,
 			OpenChangesetsDao openChangesetsDB, ChangesetsDao changesetsDao,
-			SharedPreferences prefs)
+			DownloadedTilesDao downloadedTilesDao, SharedPreferences prefs)
 	{
 		this.osmDao = osmDao;
 		this.questDB = questDB;
@@ -65,6 +70,7 @@ public class OsmQuestChangesUpload
 		this.elementGeometryDB = elementGeometryDB;
 		this.openChangesetsDB = openChangesetsDB;
 		this.changesetsDao = changesetsDao;
+		this.downloadedTilesDao = downloadedTilesDao;
 		this.prefs = prefs;
 	}
 
@@ -84,13 +90,13 @@ public class OsmQuestChangesUpload
 			{
 				commits++;
 			}
-			else {
+			else
+			{
 				obsolete++;
 			}
 		}
 
-		elementGeometryDB.deleteUnreferenced();
-		elementDB.deleteUnreferenced();
+		cleanUp();
 
 		String logMsg = "Committed " + commits + " changes";
 		if(obsolete > 0)
@@ -101,6 +107,17 @@ public class OsmQuestChangesUpload
 		Log.i(TAG, logMsg);
 
 		closeOpenChangesets();
+	}
+
+	private void cleanUp()
+	{
+		long yesterday = System.currentTimeMillis() - 24 * 60 * 60 * 1000;
+		int deletedQuests = questDB.deleteAll(QuestStatus.CLOSED, yesterday);
+		if(deletedQuests > 0)
+		{
+			elementGeometryDB.deleteUnreferenced();
+			elementDB.deleteUnreferenced();
+		}
 	}
 
 	public synchronized void closeOpenChangesets()
@@ -165,7 +182,10 @@ public class OsmQuestChangesUpload
 		Element elementWithChangesApplied = changesApplied(element, quest);
 		if(elementWithChangesApplied == null)
 		{
-			questDB.delete(quest.getId());
+			closeQuest(quest);
+			LatLon questPosition = quest.getGeometry().center;
+			Point tile = SlippyMapMath.enclosingTile(questPosition, ApplicationConstants.QUEST_TILE_ZOOM);
+			downloadedTilesDao.remove(tile);
 			return false;
 		}
 
@@ -182,10 +202,16 @@ public class OsmQuestChangesUpload
 					alreadyHandlingChangesetConflict, e);
 		}
 
-		questDB.delete(quest.getId());
+		closeQuest(quest);
 		statisticsDB.addOne(quest.getType().getClass().getSimpleName());
 
 		return true;
+	}
+
+	private void closeQuest(OsmQuest quest)
+	{
+		quest.setStatus(QuestStatus.CLOSED);
+		questDB.update(quest);
 	}
 
 	private Element changesApplied(Element element, OsmQuest quest)

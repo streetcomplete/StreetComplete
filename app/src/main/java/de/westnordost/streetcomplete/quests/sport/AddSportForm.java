@@ -43,7 +43,7 @@ public class AddSportForm extends ImageListQuestAnswerFragment
 			new OsmItem("american_football", R.drawable.ic_sport_american_football, R.string.quest_sport_american_football),
 			new OsmItem("equestrian",		R.drawable.ic_sport_equestrian,		R.string.quest_sport_equestrian),
 			new OsmItem("archery",			R.drawable.ic_sport_archery,		R.string.quest_sport_archery),
-			new OsmItem("skating",			R.drawable.ic_sport_skating,		R.string.quest_sport_skating),
+			new OsmItem("roller_skating",	R.drawable.ic_sport_roller_skating,		R.string.quest_sport_roller_skating),
 			// 1k - 0k
 			new OsmItem("badminton",		R.drawable.ic_sport_badminton,		R.string.quest_sport_badminton),
 			new OsmItem("cricket",			R.drawable.ic_sport_cricket,		R.string.quest_sport_cricket),

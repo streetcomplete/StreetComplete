@@ -80,7 +80,7 @@ public class OsmNoteQuestChangesUploadTest extends TestCase
 		Note n = new OsmNoteQuestChangesUpload(osmDao, questDb, noteDb).uploadNoteChanges(quest);
 		assertNotNull(n);
 		assertEquals(n, quest.getNote());
-		assertEquals(QuestStatus.HIDDEN, quest.getStatus());
+		assertEquals(QuestStatus.CLOSED, quest.getStatus());
 		verify(questDb).update(quest);
 		verify(noteDb).put(n);
 	}

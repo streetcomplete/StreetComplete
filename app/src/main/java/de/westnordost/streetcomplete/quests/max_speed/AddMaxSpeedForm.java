@@ -31,7 +31,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 			MAX_SPEED_IMPLICIT_ROADTYPE = "maxspeed_roadtype";
 
 	private static final Collection<String>
-			URBAN_OR_RURAL_ROADS = Arrays.asList("primary","secondary","tertiary","unclassified," +
+			URBAN_OR_RURAL_ROADS = Arrays.asList("primary","secondary","tertiary","unclassified",
 					"primary_link","secondary_link","tertiary_link","road"),
 			ROADS_WITH_DEFINITE_SPEED_LIMIT = Arrays.asList("trunk","motorway","living_street"),
 			URBAN_OR_SLOWZONE_ROADS = Arrays.asList("residential");

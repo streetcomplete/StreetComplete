@@ -11,7 +11,6 @@ public class Prefs
 			MAP_TILECACHE = "map.tilecache",
 			OSM_USER_ID = "osm.userid",
 			SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS = "display.nonQuestionNotes",
-			QUESTS_EXPIRATION_TIME_IN_MIN = "download.expirationTime",
 			AUTOSYNC = "autosync",
 			LAST_SOLVED_QUEST_TIME = "changesets.lastQuestSolvedTime",
 			KEEP_SCREEN_ON = "display.keepScreenOn";

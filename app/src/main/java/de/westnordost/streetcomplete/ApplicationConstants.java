@@ -21,4 +21,8 @@ public class ApplicationConstants
 	public final static double MIN_DOWNLOADABLE_RADIUS_IN_METERS = 1000;
 
 	public final static int QUEST_TILE_ZOOM = 14;
+
+	/** a "best before" duration for quests. Quests will not be downloaded again for any tile
+	 *  before the time expired */
+	public static final int REFRESH_QUESTS_AFTER = 7*24*60*60*1000; // one week in ms
 }

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase;
 import de.westnordost.streetcomplete.data.QuestStatus;
 import de.westnordost.streetcomplete.data.QuestType;
@@ -38,13 +39,10 @@ public class OsmQuestDaoTest extends ApplicationDbTestCase
 
 	public void testAddGetNoChanges()
 	{
-		ElementGeometry geometry = new ElementGeometry(new OsmLatLon(5,5));
-		OsmQuest quest = new OsmQuest(null, new TestQuestType(), Element.Type.NODE, 11,
-				QuestStatus.ANSWERED, null, null, new Date(1000), geometry);
+		OsmQuest quest = createNewQuest(11, Element.Type.NODE);
 
-		geometryDao.put(quest.getElementType(), quest.getElementId(), geometry);
+		addToDaos(quest);
 
-		dao.add(quest);
 		assertEquals(1, (long) quest.getId());
 		OsmQuest dbQuest = dao.get(1);
 
@@ -53,55 +51,72 @@ public class OsmQuestDaoTest extends ApplicationDbTestCase
 
 	public void testAddGetWithChanges()
 	{
-		ElementGeometry geometry = new ElementGeometry(new OsmLatLon(5,5));
 		List<StringMapEntryChange> changes = new ArrayList<>();
 		changes.add(new StringMapEntryAdd("a key", "a value"));
 		changes.add(new StringMapEntryDelete("delete this","key"));
 		changes.add(new StringMapEntryModify("modify","this","to that"));
-		OsmQuest quest = new OsmQuest(
-				null, new TestQuestType(), Element.Type.NODE, 11, QuestStatus.ANSWERED,
-				new StringMapChanges(changes), "bla", new Date(1000), geometry);
+		OsmQuest quest = createNewQuest(11, Element.Type.NODE);
+		quest.setChanges(new StringMapChanges(changes), "bla");
 
-		geometryDao.put(quest.getElementType(), quest.getElementId(), geometry);
+		addToDaos(quest);
 
-		dao.add(quest);
 		assertEquals(1, (long) quest.getId());
 		OsmQuest dbQuest = dao.get(1);
 
 		checkEqual(quest, dbQuest);
 	}
 
-	public void testGetAllByBBoxAndType()
+	public void testGetAllByBBox()
 	{
-		ElementGeometry geometry = new ElementGeometry(new OsmLatLon(5,5));
-		OsmQuest quest1 = new OsmQuest(null, new TestQuestType(), Element.Type.NODE, 11,
-				QuestStatus.ANSWERED, null, null, new Date(1000), geometry);
-		OsmQuest quest2 = new OsmQuest(null, new TestQuestType2(), Element.Type.NODE, 11,
-				QuestStatus.ANSWERED, null, null, new Date(1000), geometry);
+		OsmQuest quest1 = createNewQuest(11, Element.Type.NODE);
+		OsmQuest quest2 = createNewQuest(12, Element.Type.NODE, new ElementGeometry(new OsmLatLon(11,11)));
 
-		geometryDao.put(quest1.getElementType(), quest1.getElementId(), geometry);
-		dao.add(quest1);
-		dao.add(quest2);
+		addToDaos(quest1, quest2);
 
-		assertEquals(1,dao.getAll(null, null, "TestQuestType", null, null).size());
+		assertEquals(1,dao.getAll(new BoundingBox(0,0,10,10), null, null, null, null).size());
 		assertEquals(2,dao.getAll(null, null, null, null, null).size());
 	}
 
 	public void testGetAllByElementTypeAndId()
 	{
-		ElementGeometry geometry = new ElementGeometry(new OsmLatLon(5,5));
-		OsmQuest quest1 = new OsmQuest(null, new TestQuestType(), Element.Type.NODE, 11,
-				QuestStatus.ANSWERED, null, null, new Date(1000), geometry);
-		OsmQuest quest2 = new OsmQuest(null, new TestQuestType(), Element.Type.WAY, 12,
-				QuestStatus.ANSWERED, null, null, new Date(1000), geometry);
+		OsmQuest quest1 = createNewQuest(11, Element.Type.NODE);
+		OsmQuest quest2 = createNewQuest(12, Element.Type.WAY);
 
-		geometryDao.put(quest1.getElementType(), quest1.getElementId(), geometry);
-		geometryDao.put(quest2.getElementType(), quest2.getElementId(), geometry);
-		dao.add(quest1);
-		dao.add(quest2);
+		addToDaos(quest1, quest2);
 
 		assertEquals(1,dao.getAll(null, null, null, Element.Type.NODE, null).size());
 		assertEquals(1,dao.getAll(null, null, null, Element.Type.WAY, 12L).size());
+	}
+
+	private static OsmQuest createNewQuest(long id, Element.Type elementType)
+	{
+		return createNewQuest(id, elementType, new ElementGeometry(new OsmLatLon(5,5)));
+	}
+
+	private static OsmQuest createNewQuest(long id, Element.Type elementType, ElementGeometry geometry)
+	{
+		return new OsmQuest(null, new TestQuestType(), elementType, id,
+				QuestStatus.ANSWERED, null, null, new Date(), geometry);
+	}
+
+	private void addToDaos(OsmQuest ...quests)
+	{
+		for (OsmQuest quest : quests)
+		{
+			geometryDao.put(quest.getElementType(), quest.getElementId(), quest.getGeometry());
+			dao.add(quest);
+		}
+	}
+
+	public void testDeleteAll()
+	{
+		OsmQuest quest1 = createNewQuest(1, Element.Type.NODE);
+		quest1.setStatus(QuestStatus.CLOSED);
+		OsmQuest quest2 = createNewQuest(2, Element.Type.NODE);
+
+		addToDaos(quest1, quest2);
+
+		assertEquals(1,dao.deleteAll(QuestStatus.CLOSED, System.currentTimeMillis() + 10000L));
 	}
 
 	private void checkEqual(OsmQuest quest, OsmQuest dbQuest)
@@ -115,6 +130,7 @@ public class OsmQuestDaoTest extends ApplicationDbTestCase
 		assertEquals(quest.getChangesSource(), dbQuest.getChangesSource());
 		assertEquals(quest.getGeometry(), dbQuest.getGeometry());
 		assertEquals(quest.getMarkerLocation(), dbQuest.getMarkerLocation());
-		assertEquals(quest.getLastUpdate(), dbQuest.getLastUpdate());
+		// is now updated to current time on DB insert
+		// no: assertEquals(quest.getLastUpdate(), dbQuest.getLastUpdate());
 	}
 }

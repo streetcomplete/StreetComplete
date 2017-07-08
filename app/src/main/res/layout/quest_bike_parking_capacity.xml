@@ -1,37 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="bottom">
-
-    <EditText
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:textSize="48dp"
-        android:layout_centerVertical="true"
-        android:layout_toStartOf="@+id/capacityMultiplier"
-        android:minEms="1"
-        android:id="@+id/capacityInput"
-        android:inputType="number"
-        android:maxLines="1"
-        />
+    android:orientation="vertical">
 
     <TextView
-        android:id="@+id/capacityMultiplier"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="38dp"
-        android:layout_centerInParent="true"
-        android:padding="6dp"
-        android:text=" × " />
+        android:layout_alignParentTop="true"
+        android:id="@+id/clarificationText"
+        android:text="@string/quest_bikeParkingCapacity_hint"/>
 
-    <ImageView
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_toEndOf="@+id/capacityMultiplier"
-        android:id="@+id/capacityBike"
-        android:background="@drawable/ic_bicycle"/>
+        android:gravity="bottom">
 
-</RelativeLayout>
+        <EditText
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textSize="48dp"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@+id/capacityMultiplier"
+            android:minEms="1"
+            android:id="@+id/capacityInput"
+            android:inputType="number"
+            android:maxLines="1"
+            />
+
+        <TextView
+            android:id="@+id/capacityMultiplier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="38dp"
+            android:layout_centerInParent="true"
+            android:padding="6dp"
+            android:text=" × " />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/capacityMultiplier"
+            android:id="@+id/capacityBike"
+            android:background="@drawable/ic_bicycle"/>
+
+    </RelativeLayout>
+</LinearLayout>

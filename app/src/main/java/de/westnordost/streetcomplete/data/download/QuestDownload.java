@@ -135,9 +135,9 @@ public class QuestDownload
 		List<QuestType> result = new ArrayList<>(questTypeList.getQuestTypesSortedByImportance());
 		result.add(0, OsmNoteQuest.type);
 
-		long questExpirationTime = Integer.parseInt(prefs.getString(Prefs.QUESTS_EXPIRATION_TIME_IN_MIN, "0")) * 1000 * 60;
+		long questExpirationTime = ApplicationConstants.REFRESH_QUESTS_AFTER;
 		long ignoreOlderThan = Math.max(0,System.currentTimeMillis() - questExpirationTime);
-		List<String> alreadyDownloadedNames = downloadedTilesDao.getQuestTypeNames(tiles, ignoreOlderThan);
+		List<String> alreadyDownloadedNames = downloadedTilesDao.get(tiles, ignoreOlderThan);
 		if(!alreadyDownloadedNames.isEmpty())
 		{
 			Set<QuestType> alreadyDownloaded = new HashSet<>(alreadyDownloadedNames.size());

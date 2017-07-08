@@ -6,7 +6,6 @@ import android.util.Log;
 
 
 import de.westnordost.streetcomplete.ApplicationConstants;
-import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.data.QuestStatus;
 import de.westnordost.streetcomplete.data.QuestTypes;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
@@ -37,9 +36,9 @@ public abstract class AActiveRadiusStrategy implements QuestAutoDownloadStrategy
 		this.prefs = prefs;
 	}
 
-	@Override public boolean mayDownloadHere(LatLon pos)
+	public boolean mayDownloadHere(LatLon pos, int radius)
 	{
-		BoundingBox bbox = SphericalEarthMath.enclosingBoundingBox(pos, getActiveRadius());
+		BoundingBox bbox = SphericalEarthMath.enclosingBoundingBox(pos, radius);
 
 		double areaInKm2 = SphericalEarthMath.enclosedArea(bbox) / 1000 / 1000;
 
@@ -47,7 +46,7 @@ public abstract class AActiveRadiusStrategy implements QuestAutoDownloadStrategy
 		int visibleQuests = osmQuestDB.getCount(bbox, QuestStatus.NEW);
 		if(visibleQuests / areaInKm2 > getMinQuestsInActiveRadiusPerKm2())
 		{
-			Log.i(TAG, "Not downloading quests because there are enough quests around here");
+			Log.i(TAG, "Not downloading quests because there are enough quests in " + radius + "m radius");
 			return false;
 		}
 
@@ -55,16 +54,25 @@ public abstract class AActiveRadiusStrategy implements QuestAutoDownloadStrategy
 		// nothing more to download
 		int totalQuestTypes = questTypes.getAmount() + 1; // +1 because of note quests
 		Rect tiles = SlippyMapMath.enclosingTiles(bbox, ApplicationConstants.QUEST_TILE_ZOOM);
-		long questExpirationTime = Integer.parseInt(prefs.getString(Prefs.QUESTS_EXPIRATION_TIME_IN_MIN, "0")) * 1000 * 60;
+		long questExpirationTime = ApplicationConstants.REFRESH_QUESTS_AFTER;
 		long ignoreOlderThan = Math.max(0,System.currentTimeMillis() - questExpirationTime);
-		int alreadyDownloadedQuestTypes = downloadedTilesDao.getQuestTypeNames(tiles, ignoreOlderThan).size();
+		int alreadyDownloadedQuestTypes = downloadedTilesDao.get(tiles, ignoreOlderThan).size();
 		if(alreadyDownloadedQuestTypes >= totalQuestTypes)
 		{
-			Log.i(TAG, "Not downloading quests because everything has been downloaded here already");
+			Log.i(TAG, "Not downloading quests because everything has been downloaded already in" + radius + "m radius");
 			return false;
 		}
 
 		return true;
+	}
+
+	@Override public boolean mayDownloadHere(LatLon pos)
+	{
+		for (int activeRadius : getActiveRadii())
+		{
+			if(mayDownloadHere(pos, activeRadius)) return true;
+		}
+		return false;
 	}
 
 	@Override public BoundingBox getDownloadBoundingBox(LatLon pos)
@@ -73,7 +81,7 @@ public abstract class AActiveRadiusStrategy implements QuestAutoDownloadStrategy
 	}
 
 	protected abstract int getMinQuestsInActiveRadiusPerKm2();
-	protected abstract int getActiveRadius();
+	protected abstract int[] getActiveRadii();
 	protected abstract int getDownloadRadius();
 
 }

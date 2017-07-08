@@ -24,27 +24,38 @@ public class AddWheelchairAccessPublicTransportForm extends WheelchairAccessAnsw
 		String name = element != null && element.getTags() != null ? element.getTags().get("name") : null;
 		String type = element.getTags().get("amenity");
 		if (type == null) {type = element.getTags().get("railway");}
-		String typeString;
-
-		switch (type)
-		{
-			case "bus_station":
-				typeString = getString(R.string.element_bus_station);
-			case "station":
-				typeString = getString(R.string.element_railway_station);
-				break;
-			case "subway_entrance":
-				typeString = getString(R.string.element_subway_entrance);
-				break;
-			default:
-				typeString = getString(R.string.element_location);
-		}
 
 		if(name != null && !name.trim().isEmpty())
 		{
-			setTitle(R.string.quest_wheelchairAccess_name_type_title, typeString, name);
+			switch (type)
+			{
+				case "bus_station":
+					setTitle(R.string.quest_wheelchairAccess_bus_station_name_title, name);
+					break;
+				case "station":
+					setTitle(R.string.quest_wheelchairAccess_railway_station_name_title, name);
+					break;
+				case "subway_entrance":
+					setTitle(R.string.quest_wheelchairAccess_subway_entrance_name_title, name);
+					break;
+				default:
+					setTitle(R.string.quest_wheelchairAccess_location_name_title, name);
+			}
 		} else {
-			setTitle(R.string.quest_wheelchairAccess_type_title, typeString);
+			switch (type)
+			{
+				case "bus_station":
+					setTitle(R.string.quest_wheelchairAccess_bus_station_title);
+					break;
+				case "station":
+					setTitle(R.string.quest_wheelchairAccess_railway_station_title);
+					break;
+				case "subway_entrance":
+					setTitle(R.string.quest_wheelchairAccess_subway_entrance_title);
+					break;
+				default:
+					setTitle(R.string.quest_wheelchairAccess_location_title);
+			}
 		}
 	}
 }

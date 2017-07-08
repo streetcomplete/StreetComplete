@@ -4,6 +4,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
+import android.graphics.Point;
 import android.graphics.Rect;
 
 import java.util.ArrayList;
@@ -37,7 +38,7 @@ public class DownloadedTilesDao
 	}
 
 	/** Persist that the given quest type has been downloaded in every tile in the given tile range */
-	public void putQuestType(Rect tiles, String questTypeName)
+	public void put(Rect tiles, String questTypeName)
 	{
 		SQLiteDatabase db = dbHelper.getWritableDatabase();
 
@@ -59,9 +60,19 @@ public class DownloadedTilesDao
 		db.endTransaction();
 	}
 
+	/** Invalidate all quest types within the given tile. (consider them as not-downloaded)*/
+	public int remove(Point tile)
+	{
+		SQLiteDatabase db = dbHelper.getWritableDatabase();
+		String[] whereArgs = {String.valueOf(tile.x), String.valueOf(tile.y)};
+		return db.delete(DownloadedTilesTable.NAME,
+				DownloadedTilesTable.Columns.X + " = ? AND " +
+				DownloadedTilesTable.Columns.Y + " = ?", whereArgs);
+	}
+
 	/** @return a list of quest type names which have already been downloaded in every tile in the
 	 *          given tile range */
-	public List<String> getQuestTypeNames(Rect tiles, long ignoreOlderThan)
+	public List<String> get(Rect tiles, long ignoreOlderThan)
 	{
 		SQLiteDatabase db = dbHelper.getReadableDatabase();
 

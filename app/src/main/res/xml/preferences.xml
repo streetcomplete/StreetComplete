@@ -28,16 +28,6 @@
     <PreferenceCategory
         android:title="@string/pref_category_cache">
 
-        <ListPreference
-            android:key="download.expirationTime"
-            android:title="@string/pref_title_quest_expiration_time"
-            android:summary="@string/pref_summary_quest_expiration"
-            android:defaultValue="10080"
-            android:entries="@array/pref_entries_quest_expiration_times"
-            android:entryValues="@array/pref_entryvalues_quest_expiration_times"
-            android:persistent="true"
-            />
-
         <de.westnordost.streetcomplete.settings.NumberPickerPreference
             android:key="map.tilecache"
             android:title="@string/pref_title_map_cache"

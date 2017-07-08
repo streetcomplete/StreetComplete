@@ -35,9 +35,10 @@ public class WifiAutoDownloadStrategy extends AActiveRadiusStrategy
 		return 12;
 	}
 
-	@Override protected int getActiveRadius()
+	@Override protected int[] getActiveRadii()
 	{
-		return 1200;
+		// checks if either in 1200 or 400m radius, there are enough quests.
+		return new int[]{1200, 400};
 	}
 
 	@Override protected int getDownloadRadius()

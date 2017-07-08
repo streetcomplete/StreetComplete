@@ -124,7 +124,7 @@ public class OsmQuestDownload
 		geometryDB.deleteUnreferenced();
 		elementDB.deleteUnreferenced();
 
-		downloadedTilesDao.putQuestType(tiles, getQuestTypeName(questType));
+		downloadedTilesDao.put(tiles, getQuestTypeName(questType));
 
 		int visibleQuestsByQuestType = quests.size();
 		int obsoleteAmount = previousQuests.size();
