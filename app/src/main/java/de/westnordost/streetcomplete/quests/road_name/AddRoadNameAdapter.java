@@ -127,7 +127,6 @@ public class AddRoadNameAdapter extends RecyclerView.Adapter
 	private void showLanguageSelectMenu(
 			View v, final List<String> languageList, final OnLanguageSelected callback)
 	{
-		// TODO enabled state?
 		if(languageList.isEmpty()) return;
 
 		PopupMenu m = new PopupMenu(context, v);

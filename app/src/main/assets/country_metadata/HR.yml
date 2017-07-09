@@ -1,4 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
+additionalStreetsignLanguages: [sr, it]
 isSlowZoneKnown: true
 officialLanguages: [hr]
 popularSports: [soccer, tennis, basketball, boules, handball]

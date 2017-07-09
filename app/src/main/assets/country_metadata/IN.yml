@@ -1,3 +1,4 @@
 # Do not edit. Source files are in /res/country_metadata
-officialLanguages: [hi, en, bn, te, mr, ta, ur, gu, kn, ml, or, pa, as, mai, ks]
+additionalStreetsignLanguages: [en]
+officialLanguages: [en, hi, bn, te, mr, ta, ur, gu, kn, ml, or, pa, as, mai, ks]
 popularSports: [tennis, basketball, soccer, cricket, field_hockey]

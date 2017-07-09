@@ -67,9 +67,6 @@ public class AddRoadName extends SimpleOverpassQuestType
 
 		changes.add("name", names[0]);
 
-		// TODO what about transliterations?! (latinizations):
-		// https://wiki.openstreetmap.org/wiki/Talk:Multilingual_names#Standard_language_codes)
-
 		if(names.length > 1)
 		{
 			for (int i = 0; i < names.length; i++)

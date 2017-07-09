@@ -217,7 +217,7 @@ public class OsmOAuthDialogFragment extends DialogFragment
 
 			Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(authorizeUrl));
 			intent.putExtra(Browser.EXTRA_APPLICATION_ID, getActivity().getPackageName());
-			intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_SINGLE_TOP); // TODO brauchmandas?
+			intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_SINGLE_TOP);
 			startActivity(intent);
 			state = State.AUTHENTICATING_IN_BROWSER;
 		}

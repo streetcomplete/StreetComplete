@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
@@ -67,10 +68,9 @@ public class AddRoadNameForm extends AbstractQuestFormAnswerFragment
 			data = new ArrayList<>();
 		}
 
-		// TODO: merge official languages data with "multilingual street sign" data
 		Button addLanguageButton = (Button) contentView.findViewById(R.id.btn_add);
 		adapter = new AddRoadNameAdapter(
-				data, getActivity(), getCountryInfo().getOfficialLanguages(),
+				data, getActivity(), getPossibleStreetsignLanguages(),
 				abbreviationsByLocale, addLanguageButton);
 		RecyclerView recyclerView = (RecyclerView) contentView.findViewById(R.id.roadnames);
 		recyclerView.setLayoutManager(
@@ -78,6 +78,19 @@ public class AddRoadNameForm extends AbstractQuestFormAnswerFragment
 		recyclerView.setAdapter(adapter);
 		recyclerView.setNestedScrollingEnabled(false);
 		return view;
+	}
+
+	private List<String> getPossibleStreetsignLanguages()
+	{
+		List<String> possibleStreetsignLanguages = new ArrayList<>();
+		possibleStreetsignLanguages.addAll(getCountryInfo().getOfficialLanguages());
+		List<String> additionalLanguages = getCountryInfo().getAdditionalStreetsignLanguages();
+		if(additionalLanguages != null)
+		{
+			possibleStreetsignLanguages.addAll(additionalLanguages);
+		}
+		// removes duplicates
+		return new ArrayList<>(new LinkedHashSet<>(possibleStreetsignLanguages));
 	}
 
 	@Override public void onSaveInstanceState(Bundle outState)
@@ -98,8 +111,6 @@ public class AddRoadNameForm extends AbstractQuestFormAnswerFragment
 						Toast.LENGTH_LONG).show();
 				return;
 			}
-
-			// TODO check if scripture is correct. (I.e. do not allow latin characters in Thai name)
 
 			Abbreviations abbr = abbreviationsByLocale.get(new Locale(roadName.languageCode));
 			boolean containsAbbreviations = abbr != null && abbr.containsAbbreviations(name);
