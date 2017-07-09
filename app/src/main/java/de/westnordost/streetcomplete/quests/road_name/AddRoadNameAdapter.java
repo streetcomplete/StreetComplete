@@ -149,7 +149,7 @@ public class AddRoadNameAdapter extends RecyclerView.Adapter
 
 	private String getMenuItemTitle(String languageCode)
 	{
-		if(languageCode == null) return "";
+		if(languageCode == null) return context.getString(R.string.quest_streetName_menuItem_nolanguage);
 
 		Locale locale = new Locale(languageCode);
 
