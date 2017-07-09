@@ -89,6 +89,8 @@ public class AddRoadNameAdapter extends RecyclerView.Adapter
 		if(index < 1) return;
 		data.remove(index);
 		notifyItemRemoved(index);
+
+		updateAddLanguageButtonVisibility();
 	}
 
 	private void add(String languageCode)
