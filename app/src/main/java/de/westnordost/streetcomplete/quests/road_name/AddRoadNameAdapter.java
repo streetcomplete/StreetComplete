@@ -6,7 +6,6 @@ import android.os.AsyncTask;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,6 +20,7 @@ import java.util.Locale;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.meta.Abbreviations;
 import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale;
+import de.westnordost.streetcomplete.util.DefaultTextWatcher;
 
 import static android.view.Menu.NONE;
 
@@ -86,6 +86,7 @@ public class AddRoadNameAdapter extends RecyclerView.Adapter
 
 	private void remove(int index)
 	{
+		if(index < 1) return;
 		data.remove(index);
 		notifyItemRemoved(index);
 	}
@@ -95,8 +96,11 @@ public class AddRoadNameAdapter extends RecyclerView.Adapter
 		RoadName entry = new RoadName();
 		entry.languageCode = languageCode;
 		entry.name = "";
+
+		int insertIndex = getItemCount();
 		data.add(entry);
-		notifyItemInserted(data.size()-1);
+		notifyItemInserted(insertIndex);
+
 		updateAddLanguageButtonVisibility();
 	}
 
@@ -123,14 +127,14 @@ public class AddRoadNameAdapter extends RecyclerView.Adapter
 	private void showLanguageSelectMenu(
 			View v, final List<String> languageList, final OnLanguageSelected callback)
 	{
+		// TODO enabled state?
 		if(languageList.isEmpty()) return;
 
 		PopupMenu m = new PopupMenu(context, v);
 		int i = 0;
 		for (String languageCode : languageList)
 		{
-			String displayLanguage = new Locale(languageCode).getDisplayLanguage();
-			m.getMenu().add(NONE,i++,NONE, languageCode + " - " + displayLanguage);
+			m.getMenu().add(NONE,i++,NONE, getMenuItemTitle(languageCode));
 		}
 
 		m.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener()
@@ -142,6 +146,28 @@ public class AddRoadNameAdapter extends RecyclerView.Adapter
 			}
 		});
 		m.show();
+	}
+
+	private String getMenuItemTitle(String languageCode)
+	{
+		if(languageCode == null) return "";
+
+		Locale locale = new Locale(languageCode);
+
+		String displayLanguage = locale.getDisplayLanguage();
+		String nativeDisplayLanguage = locale.getDisplayLanguage(locale);
+		if(displayLanguage.equals(nativeDisplayLanguage))
+		{
+			return String.format(
+					context.getString(R.string.quest_streetName_menuItem_language_simple),
+					languageCode, displayLanguage);
+		}
+		else
+		{
+			return String.format(
+					context.getString(R.string.quest_streetName_menuItem_language_native),
+					languageCode, nativeDisplayLanguage, displayLanguage);
+		}
 	}
 
 	private class ViewHolder extends RecyclerView.ViewHolder
@@ -159,41 +185,19 @@ public class AddRoadNameAdapter extends RecyclerView.Adapter
 			nameInput = (AutoCorrectAbbreviationsEditText) itemView.findViewById(R.id.nameInput);
 			languageButton = (TextView) itemView.findViewById(R.id.languageButton);
 			deleteButton = (TextView) itemView.findViewById(R.id.deleteButton);
-
-			nameInput.addTextChangedListener(new TextWatcher()
-			{
-				@Override
-				public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-
-				@Override
-				public void onTextChanged(CharSequence s, int start, int before, int count) {}
-
-				@Override public void afterTextChanged(Editable s)
-				{
-					// TODO
-					String name = s.toString();
-
-					boolean isScriptOrNumbers = name.matches("[\\p{InThai}\\d\\W]*");
-					if(!isScriptOrNumbers)
-					{
-						nameInput.setError("TEST TEST");
-					}
-
-					roadName.name = name;
-				}
-			});
 		}
 
 		public void update(final int index, RoadName rn)
 		{
+			this.roadName = rn;
+
 			final boolean isFirst = index == 0;
 
 			deleteButton.setVisibility(isFirst ? View.INVISIBLE : View.VISIBLE);
 			languageButton.setVisibility(languages.size() > 1 ? View.VISIBLE : View.INVISIBLE);
 
-			this.roadName = rn;
-
 			nameInput.setText(roadName.name);
+			nameInput.requestFocus();
 			languageButton.setText(roadName.languageCode);
 
 			// first entry is bold (the first entry is supposed to be the "default language", I
@@ -205,7 +209,9 @@ public class AddRoadNameAdapter extends RecyclerView.Adapter
 			{
 				@Override public void onClick(View v)
 				{
-					remove(index);
+					// clearing focus is very necessary, otherwise crash
+					nameInput.clearFocus();
+					remove(getAdapterPosition());
 				}
 			});
 
@@ -219,17 +225,27 @@ public class AddRoadNameAdapter extends RecyclerView.Adapter
 					// https://wiki.openstreetmap.org/wiki/Multilingual_names#Sardegna_.28Sardinia.29
 					if(isFirst)
 					{
-						notAddedLanguages.add(null);
+						notAddedLanguages.add(0,null);
 					}
 
-					showLanguageSelectMenu(v, getNotAddedLanguages(), new OnLanguageSelected()
+					showLanguageSelectMenu(v, notAddedLanguages, new OnLanguageSelected()
 					{
 						@Override public void onLanguageSelected(String languageCode)
 						{
 							roadName.languageCode = languageCode;
 							languageButton.setText(languageCode);
+							updateAddLanguageButtonVisibility();
 						}
 					});
+				}
+			});
+
+			nameInput.addTextChangedListener(new DefaultTextWatcher()
+			{
+				@Override public void afterTextChanged(Editable s)
+				{
+					String name = s.toString();
+					roadName.name = name;
 				}
 			});
 

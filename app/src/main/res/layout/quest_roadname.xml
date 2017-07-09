@@ -13,20 +13,16 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/roadnames"
+        android:background="@drawable/background_roadname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/background_roadname"
         android:layout_marginTop="12dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:paddingStart="14dp"
-        android:paddingEnd="14dp"
         />
 
     <Button
         android:id="@+id/btn_add"
-        android:text="@string/quest_streetName_add_language"
-        android:layout_width="wrap_content"
+        android:text="➕"
+        android:layout_width="50dp"
         android:layout_height="wrap_content"/>
 
 </LinearLayout>

@@ -86,6 +86,9 @@ dependencies {
         exclude group: 'net.sf.kxml', module: 'kxml2'
     }
 
+    // widgets
+    compile 'me.grantland:autofittextview:0.2.+'
+
     // serialization
     // Kryo uses Objenesis 2.2 which uses a class that has been removed for Android O.
     // see https://github.com/westnordost/StreetComplete/issues/286
@@ -94,7 +97,7 @@ dependencies {
 
     // map and location
     compile 'com.mapzen.tangram:tangram:0.7.1'
-    compile 'com.mapzen.android:lost:3.0.1'
+    compile 'com.mapzen.android:lost:3.0.2'
 
     // config files
     compile 'com.esotericsoftware.yamlbeans:yamlbeans:1.11'
