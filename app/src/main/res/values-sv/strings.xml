@@ -260,6 +260,4 @@ Den information du anger sedan direkt till den OpenStreetMap i ditt namn, utan a
     <string name="quest_manySports_confirmation_generic">"Allmän"</string>
     <string name="quest_sport_manySports_confirmation_title">"Du valde många sporter"</string>
     <string name="quest_busStopShelter_name_title">"Har bushållplatsen \"%s\" ett skydd?"</string>
-    <string name="quest_leave_new_note_in_response_to">"Som svar till \"%1$s\":
-%2$s"</string>
 </resources>

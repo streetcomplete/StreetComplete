@@ -285,8 +285,6 @@ As informações inseridas são adicionadas diretamente ao OpenStreetMap em seu 
     <string name="quest_manySports_confirmation_generic">"Multiúso"</string>
     <string name="quest_sport_manySports_confirmation_title">"Você selecionou muitos esportes"</string>
     <string name="quest_busStopShelter_name_title">"O ponto de ônibus %s tem um telhado?"</string>
-    <string name="quest_leave_new_note_in_response_to">"Em resposta ao \"%1$s\":
-%2$s"</string>
     <string name="quest_source_dialog_title">"Tem a certeza que verificou isto no local?"</string>
     <string name="quest_source_dialog_note">"Apenas informação que foi feita durante um levantamento deve ser adicionada."</string>
     <string name="dialog_session_dont_show_again">"Não mostrar de novo nesta sessão"</string>

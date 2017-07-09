@@ -262,6 +262,4 @@
     <string name="quest_manySports_confirmation_generic">"通用場地"</string>
     <string name="quest_sport_manySports_confirmation_title">"你選取了多種運動"</string>
     <string name="quest_busStopShelter_name_title">"巴士站\"%s\"有沒有上蓋？"</string>
-    <string name="quest_leave_new_note_in_response_to">"回應%1$s：
-%2$s"</string>
 </resources>

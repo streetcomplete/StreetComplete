@@ -261,6 +261,4 @@ Jūsų įvesta informacija tiesiog įkeliama į OpenStreetMap jūsų vardu, be k
     <string name="quest_manySports_confirmation_generic">"Bendros paskirties"</string>
     <string name="quest_sport_manySports_confirmation_title">"Jūs parinkote kelias sporto šakas"</string>
     <string name="quest_busStopShelter_name_title">"Ar autobuso stotelė %s turi stogą?"</string>
-    <string name="quest_leave_new_note_in_response_to">"Atsakant į „%1$s“:
-%2$s"</string>
 </resources>
