@@ -84,11 +84,7 @@ public class AddRoadNameForm extends AbstractQuestFormAnswerFragment
 	{
 		List<String> possibleStreetsignLanguages = new ArrayList<>();
 		possibleStreetsignLanguages.addAll(getCountryInfo().getOfficialLanguages());
-		List<String> additionalLanguages = getCountryInfo().getAdditionalStreetsignLanguages();
-		if(additionalLanguages != null)
-		{
-			possibleStreetsignLanguages.addAll(additionalLanguages);
-		}
+		possibleStreetsignLanguages.addAll(getCountryInfo().getAdditionalStreetsignLanguages());
 		// removes duplicates
 		return new ArrayList<>(new LinkedHashSet<>(possibleStreetsignLanguages));
 	}

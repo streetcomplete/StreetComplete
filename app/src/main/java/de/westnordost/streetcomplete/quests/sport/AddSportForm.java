@@ -76,22 +76,20 @@ public class AddSportForm extends ImageListQuestAnswerFragment
 	{
 		List<OsmItem> sportsList = new ArrayList<>(Arrays.asList(ALL_SPORTS_VALUES));
 		List<String> popularSportsNames = getCountryInfo().getPopularSports();
-		if(popularSportsNames != null)
+
+		// in reverse because the first element in the list should be first in sportsList
+		for (int i = popularSportsNames.size()-1; i >= 0; --i)
 		{
-			// in reverse because the first element in the list should be first in sportsList
-			for (int i = popularSportsNames.size()-1; i >= 0; --i)
+			String popularSportName = popularSportsNames.get(i);
+			for(int j = 0; j < sportsList.size(); ++j)
 			{
-				String popularSportName = popularSportsNames.get(i);
-				for(int j = 0; j < sportsList.size(); ++j)
+				OsmItem sport = sportsList.get(j);
+				if(sport.osmValue.equals(popularSportName))
 				{
-					OsmItem sport = sportsList.get(j);
-					if(sport.osmValue.equals(popularSportName))
-					{
-						// shuffle to start of list
-						sportsList.remove(j);
-						sportsList.add(0,sport);
-						break;
-					}
+					// shuffle to start of list
+					sportsList.remove(j);
+					sportsList.add(0,sport);
+					break;
 				}
 			}
 		}
