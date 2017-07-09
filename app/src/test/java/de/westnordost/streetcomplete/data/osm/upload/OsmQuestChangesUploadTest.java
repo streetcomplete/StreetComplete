@@ -90,8 +90,9 @@ public class OsmQuestChangesUploadTest extends TestCase
 		// feeded it only with nulls to work with
 		t.join();
 
-		verify(elementGeometryDao).deleteUnreferenced();
-		verify(elementDB).deleteUnreferenced();
+		// this is not called anymore immediately since quests are kept in DB for some time before deletion (#373)
+		//verify(elementGeometryDao).deleteUnreferenced();
+		//verify(elementDB).deleteUnreferenced();
 	}
 
 	public void testDropChangeWhenElementDeleted()
