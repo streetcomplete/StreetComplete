@@ -9,6 +9,7 @@ import dagger.Provides;
 import de.westnordost.streetcomplete.data.QuestType;
 import de.westnordost.streetcomplete.data.QuestTypes;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
+import de.westnordost.streetcomplete.quests.baby_changing_table.AddBabyChangingTable;
 import de.westnordost.streetcomplete.quests.bike_parking_capacity.AddBikeParkingCapacity;
 import de.westnordost.streetcomplete.quests.bike_parking_cover.AddBikeParkingCover;
 import de.westnordost.streetcomplete.quests.building_levels.AddBuildingLevels;
@@ -40,6 +41,7 @@ public class QuestModule
 				new AddRoadSurface(o),
 				new AddBusStopShelter(o),
 				new AddToiletsFee(o),
+				new AddBabyChangingTable(o),
 				new AddHousenumber(o),
 				new AddBikeParkingCapacity(o),
 				new AddSport(o),

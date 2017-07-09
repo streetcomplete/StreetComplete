@@ -178,7 +178,7 @@ To display the map, vector tiles are retrieved from the &lt;a href=\"https://map
     <string name="autosync_only_on_wifi">"Only on Wifi"</string>
     <string name="autosync_off">"Off"</string>
     <string name="quest_streetSurface_title">"What surface does this piece of road have?"</string>
-    <string name="quest_streetSurface_name_title">"What surface does the road \"%s\" have?"</string>
+    <string name="quest_streetSurface_name_title">"What surface does the road \"%s\" have here?"</string>
     <string name="quest_surface_description">"Select the most specific one that fits:"</string>
     <string name="quest_surface_value_paved">"Paved (generic)"</string>
     <string name="quest_surface_value_unpaved">"Unpaved (generic)"</string>
@@ -263,6 +263,8 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="quest_sport_manySports_confirmation_title">"You selected many sports"</string>
     <string name="quest_busStopShelter_name_title">"Does the bus stop \"%s\" have a shelter?"</string>
 	<string name="quest_toiletsFee_title">"Do these toilets require a fee?"</string>
+    <string name="quest_baby_changing_table_toilets_title">"Does this toilet have a baby changing table?"</string>
+    <string name="quest_baby_changing_table_title">"Does \"%s\" have a baby changing table?"</string>
     <string name="quest_tactilePaving_title_bus">"Does this bus stop have tactile pavings?"</string>
     <string name="quest_tactilePaving_title_crosswalk">"Does this crosswalk have tactile pavings?"</string>
     <string name="quest_source_dialog_title">Are you sure you checked this on-site?</string>
