@@ -14,8 +14,6 @@
     <string name="pref_title_not_authorized_summary">"Noch nicht autorisiert"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
     <string name="pref_tilecache_size_message">"Größe des Caches für die Karte auf dem externen Speicher (in MB)"</string>
-    <string name="pref_title_quest_expiration_time">"Aufgabencache"</string>
-    <string name="pref_summary_quest_expiration">"hält %s bis sie neu heruntergeladen werden"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Alle Notizen anzeigen"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Auch nicht als Fragen formulierte Notizen anzeigen"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Nicht als Fragen formulierte Notizen ignorieren"</string>
@@ -113,48 +111,46 @@
     <string name="quest_roofShape_select_one">"Wähle eine aus:"</string>
     <string name="quest_roofShape_show_more">"Weitere anzeigen…"</string>
     <string name="quest_roofShape_answer_many">"Es hat mehrere unterschiedliche"</string>
+    <string name="quest_sport_title">"Für welchen Sport ist dieses Spielfeld vorgesehen?"</string>
+    <string name="quest_sport_answer_multi">"Für keinen bestimmten"</string>
+    <string name="quest_sport_soccer">"Fußball"</string>
+    <string name="quest_sport_tennis">"Tennis"</string>
+    <string name="quest_sport_baseball">"Baseball"</string>
+    <string name="quest_sport_basketball">"Basketball"</string>
+    <string name="quest_sport_golf">"Golf"</string>
+    <string name="quest_sport_equestrian">"Reitsport"</string>
+    <string name="quest_sport_athletics">"Leichtathletik"</string>
+    <string name="quest_sport_volleyball">"Volleyball"</string>
+    <string name="quest_sport_beachvolleyball">"Beachvolleyball"</string>
+    <string name="quest_sport_american_football">"American Football"</string>
+    <string name="quest_sport_skateboard">"Skateboard"</string>
+    <string name="quest_sport_bowls">"Bowls"</string>
+    <string name="quest_sport_boules">"Boule"</string>
+    <string name="quest_sport_shooting">"Sportschießen"</string>
+    <string name="quest_sport_cricket">"Cricket"</string>
+    <string name="quest_sport_table_tennis">"Tischtennis"</string>
+    <string name="quest_sport_gymnastics">"Gymnastik"</string>
+
+    <string name="quest_sport_archery">"Bogenschießen"</string>
+    <string name="quest_sport_australian_football">"Australian Football"</string>
+    <string name="quest_sport_badminton">"Badminton"</string>
+    <string name="quest_sport_canadian_football">"Canadian Football"</string>
+    <string name="quest_sport_field_hockey">"Feldhockey"</string>
+    <string name="quest_sport_handball">"Handball"</string>
+    <string name="quest_sport_ice_hockey">"Eishockey"</string>
+    <string name="quest_sport_netball">"Netball"</string>
+    <string name="quest_sport_rugby">"Rugby"</string>
     <string name="pref_category_cache">"Cache"</string>
     <string name="pref_title_sync">"Auto-Syncronisierung"</string>
     <string name="map_btn_zoom_out">"Verkleinern"</string>
     <string name="map_btn_zoom_in">"Vergrößern"</string>
-    <string name="privacy_html">"&lt;p&gt;Ah, jemand dem Datenschutz wichtig ist, schön! Ich denke, dass ich nur gute Nachrichten für dich habe:&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;Direkte Mitwirkung&lt;/b&gt;&lt;/p&gt;
-&lt;p&gt;
-Zuallererst solltest du wissen, dass du mit dieser App unmittelbare Beiträge zur OpenStreetMap leistest.&lt;br/&gt;
-Alle Aufgaben, die du mit dieser App löst, werden direkt auf die Karte übertragen. Es gibt keine Instanz zwischen der App und der OSM-Infrastruktur, wie es etwa mit &lt;a href=\"https://wheelmap.org\"&gt;wheelmap.org&lt;/a&gt; oder &lt;a href=\"http://www.kort.ch\"&gt;Kort&lt;/a&gt; der Fall ist.
-&lt;/p&gt;
-&lt;p&gt;
-Es ist nicht möglich, die OpenStreetMap anonym zu bearbeiten, dass heißt jede Änderung, die du machst, wird deinem OSM-Benutzerkonto zugeordnet. Das bedeutet, dass die Zeit, der Inhalt und implizit der Ort der Änderungen öffentlich auf der OpenStreetMap-Website sichtbar sind und deinem Benutzerkonto zugeordnet werden können.
-&lt;/p&gt;
-
-&lt;b&gt;Standort&lt;/b&gt;&lt;br/&gt;
-&lt;p&gt;
-Dein Standort wird genutzt, um automatisch nach Aufgaben in deiner Nähe zu suchen. Keine Sorge, die App behält deinen Standort für sich.
-&lt;/p&gt;
-
-&lt;p&gt;&lt;b&gt;Datennutzung&lt;/b&gt;&lt;/p&gt;
-&lt;p&gt;
-Wie schon gesagt, die App kommuniziert direkt mit der OSM-Infrastruktur. Genauer, mit der &lt;a href=\"https://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass-API&lt;/a&gt; zum Herunterladen der Aufgaben (das ist anonym) und direkt mit der &lt;a href=\"https://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM-API&lt;/a&gt; zum Hochladen der Änderungen.&lt;br/&gt;
-Bevor deine Änderungen hochgeladen werden, prüft die App allerdings &lt;a href=\"http://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;eine simple Textdatei&lt;/a&gt; auf meinem Server ab, um zu sehen, ob sie für den Upload gesperrt wurde. Das ist eine Vorsichtsmaßnahme, um Versionen dieser App, die möglicherweise kritische Fehler enthalten, davon abzuhalten, OSM-Daten zu korrumpieren.&lt;br/&gt;
-&lt;/p&gt;
-&lt;p&gt;
-Um die Karte darzustellen, werden Kartendaten vom &lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt;Mapzen Vector Tile Service&lt;/a&gt; heruntergeladen. Das ist anonym. Der Service loggt Anfragen auf Kartendaten, einerseits, um zu sehen welche Gebiete genutzt werden, andererseits zum Pre-Caching und anderen Performanceverbesserungen. Die Platform loggt auch IP-Adressen und ihr Hosting ist bei Amazon und unterliegt so auch dem, was Amazon tut.
-&lt;/p&gt;
-&lt;p&gt;
-(&lt;i&gt;Das ist noch nicht implementiert, ich will dich nur informieren was noch kommt!:&lt;/i&gt;) Die Daten, die in der Bestenliste und im Profil angezeigt werden, werden aus öffentlich zugänglichen Informationen auf der OpenStreetMap zusammengetragen. Die Daten kommen nicht aus dieser App, sondern praktisch aus der Commit-History der OSM-Benutzer.
-&lt;/p&gt;"</string>
-    <string name="authors_html">"&lt;p&gt;© 2017 Tobias Zwick&lt;/p&gt;
-&lt;p&gt;Die App nutzt den &lt;a href=\"https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free\"&gt;Beautiful Flat Icons&lt;/a&gt;-Satz von Nick Roach, lizensiert unter der &lt;a href=\"http://www.gnu.org/licenses/gpl-2.0.html\"&gt;GPL&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;Übersetzungen&lt;/b&gt;&lt;/p&gt;
-%1$s"</string>
-    <string name="quest_expiration_one_day">"einen Tag"</string>
-    <string name="quest_expiration_a_week">"eine Woche"</string>
-    <string name="quest_expiration_two_weeks">"zwei Wochen"</string>
-    <string name="quest_expiration_one_month">"einen Monat"</string>
+    <string name="privacy_html">"<p>Ah, jemand dem Datenschutz wichtig ist, schön! Ich denke, dass ich nur gute Nachrichten für dich habe:</p> <p><b>Direkte Mitwirkung</b></p> <p> Zuallererst solltest du wissen, dass du mit dieser App unmittelbare Beiträge zur OpenStreetMap leistest.<br/> Alle Aufgaben, die du mit dieser App löst, werden direkt auf die Karte übertragen. Es gibt keine Instanz zwischen der App und der OSM-Infrastruktur, wie es etwa mit <a href=\"https://wheelmap.org\">wheelmap.org</a> oder <a href=\"http://www.kort.ch\">Kort</a> der Fall ist. </p> <p> Es ist nicht möglich, die OpenStreetMap anonym zu bearbeiten, dass heißt jede Änderung, die du machst, wird deinem OSM-Benutzerkonto zugeordnet. Das bedeutet, dass die Zeit, der Inhalt und implizit der Ort der Änderungen öffentlich auf der OpenStreetMap-Website sichtbar sind und deinem Benutzerkonto zugeordnet werden können. </p>  <b>Standort</b><br/> <p> Dein Standort wird genutzt, um automatisch nach Aufgaben in deiner Nähe zu suchen. Keine Sorge, die App behält deinen Standort für sich. </p>  <p><b>Datennutzung</b></p> <p> Wie schon gesagt, die App kommuniziert direkt mit der OSM-Infrastruktur. Genauer, mit der <a href=\"https://wiki.openstreetmap.org/wiki/Overpass_API\">Overpass-API</a> zum Herunterladen der Aufgaben (das ist anonym) und direkt mit der <a href=\"https://wiki.openstreetmap.org/wiki/API_v0.6\">OSM-API</a> zum Hochladen der Änderungen.<br/> Bevor deine Änderungen hochgeladen werden, prüft die App allerdings <a href=\"http://www.westnordost.de/streetcomplete/banned_versions.txt\">eine simple Textdatei</a> auf meinem Server ab, um zu sehen, ob sie für den Upload gesperrt wurde. Das ist eine Vorsichtsmaßnahme, um Versionen dieser App, die möglicherweise kritische Fehler enthalten, davon abzuhalten, OSM-Daten zu korrumpieren.<br/> </p> <p> Um die Karte darzustellen, werden Kartendaten vom <a href=\"https://mapzen.com/projects/vector-tiles/\">Mapzen Vector Tile Service</a> heruntergeladen. Das ist anonym. Der Service loggt Anfragen auf Kartendaten, einerseits, um zu sehen welche Gebiete genutzt werden, andererseits zum Pre-Caching und anderen Performanceverbesserungen. Die Platform loggt auch IP-Adressen und ihr Hosting ist bei Amazon und unterliegt so auch dem, was Amazon tut. </p> <p> (<i>Das ist noch nicht implementiert, ich will dich nur informieren was noch kommt!:</i>) Die Daten, die in der Bestenliste und im Profil angezeigt werden, werden aus öffentlich zugänglichen Informationen auf der OpenStreetMap zusammengetragen. Die Daten kommen nicht aus dieser App, sondern praktisch aus der Commit-History der OSM-Benutzer. </p>"</string>
+    <string name="authors_html">"<p>© 2017 Tobias Zwick</p> <p>Die App nutzt den <a href=\"https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free\">Beautiful Flat Icons</a>-Satz von Nick Roach, lizensiert unter der <a href=\"http://www.gnu.org/licenses/gpl-2.0.html\">GPL</a>.</p> <p><b>Übersetzungen</b></p> %1$s"</string>
     <string name="autosync_on">"An"</string>
     <string name="autosync_only_on_wifi">"Nur mit WLAN"</string>
     <string name="autosync_off">"Aus"</string>
     <string name="quest_streetSurface_title">"Welche Oberfläche hat dieser Straßenabschnitt?"</string>
+    <string name="quest_streetSurface_name_title">Welche Oberfläche hat \"%s"</string>
     <string name="quest_surface_description">"Wähle die passendste:"</string>
     <string name="quest_surface_value_paved">"Befestigt (allgemein)"</string>
     <string name="quest_surface_value_unpaved">"Unbefestigt (allgemein)"</string>
@@ -181,8 +177,16 @@ Um die Karte darzustellen, werden Kartendaten vom &lt;a href=\"https://mapzen.co
     <string name="quest_sidewalk_onlyWest">"Nur auf der westlichen Seite"</string>
     <string name="quest_sidewalk_onlyEast">"Nur auf der östlichen Seite"</string>
     <string name="quest_sidewalk_yes">"Ja"</string>
+    <string name="quest_maxspeed_title_short">Welche Geschwindigkeitsbegrenzung gilt auf dieser Straße?</string>
+    <string name="quest_maxspeed_unusualInput_confirmation_description">Diese Geschwindigkeit ist unglaubwürdig.</string>
     <string name="quest_maxspeed_answer_noSign">"Es gibt kein Schild"</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation_title">Bist du sicher dass keine Geschwindigkeitsbegrenzungen angeben ist?</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation">Hast du überprüft ob Schilder am Anfang oder Ende der Straße stehen? Wenn dort keine stehen gelten die üblichen Tempolimits.</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation_positive">Ja, da ist kein Schild</string>
+
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Wo befindet sich diese Straße?"</string>
+    <string name="quest_maxspeed_answer_noSign_urbanOk">Innerorts</string>
+    <string name="quest_maxspeed_answer_noSign_ruralOk">Außerhalb geschlossener Ortschaften</string>
     <string name="quest_cyclewaySurface_title">"Welche Oberfläche hat dieser Radweg?"</string>
     <string name="quest_cycleway_title">"Gibt für diese Straße einen Radweg?"</string>
     <string name="quest_buildingType_title">"Welche Art Gebäude ist das?"</string>
@@ -197,14 +201,8 @@ Um die Karte darzustellen, werden Kartendaten vom &lt;a href=\"https://mapzen.co
     <string name="quest_streetLanes_noLanes_estWidth">"Bitte schätze, wie viele Autos auf dieser Straße nebeneinander passen würden."</string>
     <string name="quest_oneway_title">"Ist dies eine Einbahnstraße?"</string>
     <string name="quest_address_title">"Was ist die Hausnummer dieses Gebäudes?"</string>
-
-    <!-- Is this intended not to be translated? -->
     <string name="store_listing_short_description">"OpenStreetMap-Surveyor-App"</string>
-    <string name="store_listing_full_description">"Hilf mit, die OpenStreetMap-Karte zu vervollständigen - mit StreetComplete!
-
-Diese App findet unvollständige und erweiterbare Daten in deiner Nähe und zeigt diese als Aufgaben auf einer Karte an. Jede dieser Aufgaben kann vor Ort durch Beantwortung einer einfachen Frage gelöst werden.
-
-Die von dir eingegebenen Informationen werden dann direkt in deinem Namen zu OpenStreetMap hinzugefügt, ohne einen weiteren Editor benutzen zu müssen."</string>
+    <string name="store_listing_full_description">"Hilf mit, die OpenStreetMap-Karte zu vervollständigen - mit StreetComplete!  Diese App findet unvollständige und erweiterbare Daten in deiner Nähe und zeigt diese als Aufgaben auf einer Karte an. Jede dieser Aufgaben kann vor Ort durch Beantwortung einer einfachen Frage gelöst werden.  Die von dir eingegebenen Informationen werden dann direkt in deinem Namen zu OpenStreetMap hinzugefügt, ohne einen weiteren Editor benutzen zu müssen."</string>
     <string name="quest_name_answer_noName">"Es hat keinen Namen"</string>
     <string name="quest_name_answer_noName_confirmation_title">"Wirklich kein Name?"</string>
     <string name="quest_name_noName_confirmation_positive">"Ja, kein Name"</string>
@@ -221,78 +219,36 @@ Die von dir eingegebenen Informationen werden dann direkt in deinem Namen zu Ope
     <string name="quest_generic_hasFeature_no">"Nein"</string>
     <string name="quest_busStopShelter_title">"Hat diese Bushaltestelle einen Unterstand?"</string>
     <string name="quest_bikeParkingCapacity_title">"Wie viele Räder können hier abgestellt werden?"</string>
+    <string name="quest_bikeParkingCapacity_hint">Berücksichtige dass Fahrradständer meistens beidseitig genutzt werden können.</string>
     <string name="quest_address_unusualHousenumber_confirmation_description">"Das sieht für eine Hausnummer sehr ungewöhnlich aus."</string>
-    <string name="quest_sport_title">"Für welchen Sport ist dieses Spielfeld vorgesehen?"</string>
-    <string name="quest_sport_answer_multi">"Für keinen bestimmten"</string>
-    <string name="quest_sport_soccer">"Fußball"</string>
-    <string name="quest_sport_tennis">"Tennis"</string>
-    <string name="quest_sport_baseball">"Baseball"</string>
-    <string name="quest_sport_basketball">"Basketball"</string>
-    <string name="quest_sport_golf">"Golf"</string>
-    <string name="quest_sport_equestrian">"Reitsport"</string>
-    <string name="quest_sport_athletics">"Leichtathletik"</string>
-    <string name="quest_sport_volleyball">"Volleyball"</string>
-    <string name="quest_sport_beachvolleyball">"Beachvolleyball"</string>
-    <string name="quest_sport_american_football">"American Football"</string>
-    <string name="quest_sport_skateboard">"Skateboard"</string>
-    <string name="quest_sport_bowls">"Bowls"</string>
-    <string name="quest_sport_boules">"Boule"</string>
-    <string name="quest_sport_shooting">"Sportschießen"</string>
-    <string name="quest_sport_cricket">"Cricket"</string>
-    <string name="quest_sport_table_tennis">"Tischtennis"</string>
-    <string name="quest_sport_gymnastics">"Gymnastik"</string>
-    <string name="quest_sport_archery">"Bogenschießen"</string>
-    <string name="quest_sport_australian_football">"Australian Football"</string>
-    <string name="quest_sport_badminton">"Badminton"</string>
-    <string name="quest_sport_canadian_football">"Canadian Football"</string>
-    <string name="quest_sport_field_hockey">"Feldhockey"</string>
-    <string name="quest_sport_handball">"Handball"</string>
-    <string name="quest_sport_ice_hockey">"Eishockey"</string>
-    <string name="quest_sport_netball">"Netball"</string>
-    <string name="quest_sport_rugby">"Rugby"</string>
     <string name="quest_select_hint">"Wähle:"</string>
     <string name="quest_sport_manySports_confirmation_description">"Ist dieses Spielfeld speziell für genau diese Sportarten vorgesehen oder als Allzweckfeld für alle möglichen Spiele?"</string>
     <string name="quest_manySports_confirmation_specific">"Speziell für diese"</string>
     <string name="quest_manySports_confirmation_generic">"Allzweck"</string>
     <string name="quest_sport_manySports_confirmation_title">"Viele Sportarten ausgewählt"</string>
     <string name="quest_busStopShelter_name_title">"Hat die Bushaltestelle „%s“ einen Unterstand?"</string>
-    <string name="quest_toiletsFee_title">"Kostet die Benutzung dieser Toiletten etwas?"</string>
+	<string name="quest_toiletsFee_title">"Kostet die Benutzung dieser Toiletten etwas?"</string>
     <string name="quest_tactilePaving_title_bus">"Hat diese Haltestelle ein Bodenleitsystem?"</string>
     <string name="quest_tactilePaving_title_crosswalk">"Hat dieser Überweg ein Bodenleitsystem?"</string>
     <string name="quest_source_dialog_title">"Wurde die Information vor Ort überprüft?"</string>
-    <string name="quest_tactilePaving_title_name_bus">"Hat die Haltestelle \"%s\" ein Bodenleitsystem?"</string>
     <string name="quest_source_dialog_note">"Nur vor Ort erhobe Informationen sollen ergänzt werden."</string>
+    <string name="quest_tactilePaving_title_name_bus">"Hat die Haltestelle \"%s\" ein Bodenleitsystem?"</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Ist der Fahrradstellplatz überdacht (Schutz vor Regen)?"</string>
     <string name="dialog_session_dont_show_again">"Ausblenden bis zur nächsten Bearbeitung"</string>
-    <string name="quest_streetSurface_name_title">"Welche Oberfläche hat die Straße \"%s\"?"</string>
-    <string name="quest_maxspeed_title_short">"Was ist die Höchstgeschwindigkeit für diese Straße?"</string>
-    <string name="quest_maxspeed_unusualInput_confirmation_description">"Diese Höchstgeschwindigkeit scheint unplausibel."</string>
-    <string name="quest_maxspeed_answer_noSign_confirmation_title">"Bist du sicher, dass keine Höchstgeschwindigkeit angegeben ist?"</string>
-    <string name="quest_maxspeed_answer_noSign_confirmation">"Hast Du am anderen Ender der Straße geschaut?
-Wenn dort kein Schild steht, gilt die standard Höchstgeschwindigkeit."</string>
-    <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Ja, kein Schild"</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Stadtstraßen haben eine andere zulässige Höchstgeschwindigkeit als Landstraßen."</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOk">"Innerstädtisch"</string>
-    <string name="quest_maxspeed_answer_noSign_ruralOk">"Stadtauswärts"</string>
-    <string name="quest_maxspeed_answer_noSign_info_zone">"Wenn es ein Schild wie dieses an der Kreuzung zur Hauptstraße steht, wirst du keine weiteren Zeichen innerhalb der Zone finden, da die dort angegebene Höchstgeschwindigkeit für die gesamte Zone gilt."</string>
-    <string name="quest_sport_softball">"Softball"</string>
-    <string name="quest_sport_racquet">"Racquetball"</string>
-    <string name="quest_sport_ice_skating">"Schlittschuhlaufen"</string>
-    <string name="quest_sport_paddle_tennis">"Padel-Tennis"</string>
-    <string name="quest_sport_gaelic_games">"Gälische Sportarten"</string>
-    <string name="quest_sport_sepak_takraw">"Sepak Takraw"</string>
-    <string name="quest_wheelchairAccess_name_title">"Ist “%s” zugäglich für Rollstühle?"</string>
-    <string name="quest_wheelchairAccess_limited">"Teilweise"</string>
-    <string name="quest_bikeParkingCapacity_hint">"Beachten Sie, dass die meisten Ständer auf beiden Seiten von einem Fahrrad beparkt werden können."</string>
-    <string name="quest_sport_roller_skating">"Rollschuhlaufen"</string>
-    <string name="quest_wheelchairAccess_bus_station_title">"Ist diese Busstation rollstuhlgängig?"</string>
-    <string name="quest_wheelchairAccess_subway_entrance_title">"Ist dieser U-Bahn-Eingang rollstuhlgänging?"</string>
-    <string name="quest_wheelchairAccess_railway_station_title">"Ist diese Bahnstation rollstuhlgängig?"</string>
-    <string name="quest_wheelchairAccess_location_title">"Ist dieser Ort rollstuhlgängig?"</string>
-    <string name="quest_wheelchairAccess_bus_station_name_title">"Ist die Busstation \"%s\" rollstuhlgängig?"</string>
-    <string name="quest_wheelchairAccess_subway_entrance_name_title">"Ist der U-Bahn-Eingang \"%s\" rollstuhlgängig?"</string>
-    <string name="quest_wheelchairAccess_railway_station_name_title">"Ist die Bahnstation \"%s\" rollstuhlgängig?"</string>
-    <string name="quest_wheelchairAccess_location_name_title">"Ist der Ort \"%s\" rollstuhlgängig?"</string>
-    <string name="quest_wheelchairAccess_limited_description_business">"Teilweise bedeutet, dass es nicht mehr als eine Stufe benötigt um das Gebäude zu betreten und die meisten Räume darin rollstuhlgängig sind."</string>
-    <string name="quest_wheelchairAccess_limited_description_public_transport">"Teilweise bedeutet, dass es nicht mehr als eine Stufe benötigt um es zu betreten."</string>
+    <string name="quest_sport_ice_skating">Schlittschuhlaufen</string>
+    <string name="quest_sport_paddle_tennis">Tischtennis</string>
+    <string name="quest_sport_gaelic_games">Gälische Sportarten</string>
+    <string name="quest_sport_roller_skating">Inlineskating</string>
+    <string name="quest_wheelchairAccess_name_title">Ist \"%s\" Rollstuhl gerecht?</string>
+    <string name="quest_wheelchairAccess_bus_station_title">Ist diese Bushaltestelle Rollstuhl gerecht?</string>
+    <string name="quest_wheelchairAccess_subway_entrance_title">Ist dieser U-Bahn Eingang Rollstuhl gerecht?</string>
+    <string name="quest_wheelchairAccess_railway_station_title">Ist der Bahnhof Rollstuhl gerecht?</string>
+    <string name="quest_wheelchairAccess_location_title">Ist dieser Ort Rollstuhl gerecht?</string>
+    <string name="quest_wheelchairAccess_bus_station_name_title">Ist die Bushaltestelle \"%s\" Rollstuhl gerecht</string>
+    <string name="quest_wheelchairAccess_subway_entrance_name_title">Ist der U-Bahn Eingang \"%s\" Rollstuhl gerecht?</string>
+    <string name="quest_wheelchairAccess_railway_station_name_title">Ist der Bahnhof \"%s\" Rollstuhl gerecht?</string>
+    <string name="quest_wheelchairAccess_location_name_title">Ist dieser Ort \"%s\" Rollstuhl gerecht?</string>
+    <string name="quest_wheelchairAccess_limited">Teilweise</string>
+    <string name="quest_wheelchairAccess_limited_description_business">Teilweise bedeutet dass maximal eine Stufe vorhanden ist und dass die meisten Räume Rollstuhl gerecht ausgestattet sind.</string>
+    <string name="quest_wheelchairAccess_limited_description_public_transport">Teilweise bedeutet dass maximal eine Stufe vorhanden ist.</string>
 </resources>
