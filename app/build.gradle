@@ -17,8 +17,8 @@ android {
         applicationId "de.westnordost.streetcomplete"
         minSdkVersion 17
         targetSdkVersion 25
-        versionCode 10
-        versionName "0.13"
+        versionCode 11
+        versionName "0.14"
         multiDexEnabled true
         testInstrumentationRunner "com.android.test.runner.MultiDexTestRunner"
         buildConfigField "String", "MAPZEN_API_KEY", MAPZEN_API_KEY
