@@ -53,6 +53,7 @@ textures:
             street_surface_paved_detail: [768,768,192,192]
             toilets: [960,768,192,192]
             mail: [1152,768,192,192]
+            baby_changing_table: [1344,768,192,192]
             # 6th row
             note: [0,960,192,192]
             quest: [192,960,192,192]
