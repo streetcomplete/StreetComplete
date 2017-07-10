@@ -46,11 +46,6 @@ public class AddRoofShapeForm extends ImageListQuestAnswerFragment
 		return view;
 	}
 
-	@Override protected int getMaxSelectableItems()
-	{
-		return 1;
-	}
-
 	@Override protected int getMaxNumberOfInitiallyShownItems()
 	{
 		return MORE_THAN_95_PERCENT_COVERED;
