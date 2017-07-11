@@ -291,4 +291,8 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="quest_wheelchairAccess_limited">Partially</string>
     <string name="quest_wheelchairAccess_limited_description_business">Partially means that there is no more than a single step to access the business and that most rooms inside are wheelchair accessible.</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">Partially means that there is no more than a single step to access it.</string>
+    <string name="quest_recycling_type_title">What type of recycling facility is this?</string>
+    <string name="recycling_centre">Centre</string>
+    <string name="overground_recycling_container">Container</string>
+    <string name="underground_recycling_container">Underground container</string>
 </resources>

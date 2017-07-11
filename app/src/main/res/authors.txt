@@ -22,3 +22,7 @@ surface_wood.jpg                https://commons.wikimedia.org/wiki/File:Wooden_B
 tactile_paving_illustration.jpg https://www.flickr.com/photos/jeanlouis_zimmermann/10072029534/in/album-72157635218804514/
                                 https://www.flickr.com/photos/jeanlouis_zimmermann/10493532264/in/album-72157635218804514/
                                 https://www.flickr.com/photos/jeanlouis_zimmermann/10473021344/in/album-72157635218804514/
+
+recycling_centre.jpg                http://www.afgsc.af.mil/News/Art/igphoto/2000375277/
+recycling_container_underground.jpg https://commons.wikimedia.org/wiki/File:San_Fernando_de_Henares_-_reciclaje_de_residuos_urbanos_04.JPG
+recycling_container.jpg             https://commons.wikimedia.org/wiki/File:Vitoria_-_Contenedores_de_reciclaje_en_la_Avenida_de_Gasteiz.jpg
