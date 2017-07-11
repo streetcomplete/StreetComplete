@@ -232,6 +232,7 @@ If there are no signs, default speed limits apply."</string>
     <string name="quest_streetLanes_noLanes_estWidth">"Please estimate how many cars would fit alongside each other on this road."</string>
     <string name="quest_oneway_title">"Is this a one-way street?"</string>
     <string name="quest_address_title">"What is the house number of this building?"</string>
+    <string name="quest_address_name_title">"What is the house number of the building \"%s\"?"</string>
     <string name="store_listing_short_description">"OpenStreetMap surveyor app"</string>
     <string name="store_listing_full_description">"Help to improve the OpenStreetMap with StreetComplete!
 
