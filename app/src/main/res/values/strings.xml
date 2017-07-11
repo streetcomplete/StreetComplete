@@ -292,7 +292,6 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="quest_wheelchairAccess_limited_description_business">Partially means that there is no more than a single step to access the business and that most rooms inside are wheelchair accessible.</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">Partially means that there is no more than a single step to access it.</string>
     <string name="quest_generic_error_a_field_empty">You left a field empty</string>
-    <string name="quest_streetName_add_language">➕ Add Language</string>
     <string name="quest_streetName_menuItem_language_simple">%1$s - %2$s</string>
     <string name="quest_streetName_menuItem_language_native">%1$s - %2$s (%3$s)</string>
     <string name="quest_streetName_answer_cantType">"Can't type the characters on the sign"</string>
