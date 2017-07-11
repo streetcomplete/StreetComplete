@@ -451,14 +451,11 @@ public class MainActivity extends AppCompatActivity implements
 			LatLon pos = mapFragment.getPosition();
 			if (pos != null)
 			{
-				questController.download(SphericalEarthMath.enclosingBoundingBox(pos,
-						ApplicationConstants.MIN_DOWNLOADABLE_RADIUS_IN_METERS), null, true);
+				bbox = SphericalEarthMath.enclosingBoundingBox(pos,
+						ApplicationConstants.MIN_DOWNLOADABLE_RADIUS_IN_METERS);
 			}
 		}
-		else
-		{
-			questController.download(bbox, null, true);
-		}
+		questController.download(bbox, 5, true);
 	}
 
 
