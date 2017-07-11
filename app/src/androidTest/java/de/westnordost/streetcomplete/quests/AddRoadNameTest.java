@@ -20,10 +20,32 @@ public class AddRoadNameTest extends AOsmElementQuestTypeTest
 		verify(new StringMapEntryAdd("noname","yes"));
 	}
 
-	public void testName()
+	public void testOneName()
 	{
-		bundle.putString(AddRoadNameForm.NAME, "my name");
+		bundle.putStringArray(AddRoadNameForm.NAMES, new String[]{"my name"});
 		verify(new StringMapEntryAdd("name","my name"));
+	}
+
+	public void testMultipleNames()
+	{
+		bundle.putStringArray(AddRoadNameForm.NAMES, new String[]{"my name","kröötz"});
+		bundle.putStringArray(AddRoadNameForm.LANGUAGE_CODES, new String[]{"en","de"});
+		verify(
+				new StringMapEntryAdd("name","my name"),
+				new StringMapEntryAdd("name:en","my name"),
+				new StringMapEntryAdd("name:de","kröötz")
+		);
+	}
+
+	public void testMultipleNamesDefaultNameIsOfNoSpecificLanguage()
+	{
+		bundle.putStringArray(AddRoadNameForm.NAMES, new String[]{"my name / kröötz", "my name","kröötz"});
+		bundle.putStringArray(AddRoadNameForm.LANGUAGE_CODES, new String[]{null, "en","de"});
+		verify(
+				new StringMapEntryAdd("name","my name / kröötz"),
+				new StringMapEntryAdd("name:en","my name"),
+				new StringMapEntryAdd("name:de","kröötz")
+		);
 	}
 
 	public void testIsService()

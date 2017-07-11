@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.meta;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
@@ -19,6 +20,7 @@ public class CountryInfo implements Serializable, Cloneable
 	String maxspeedLayout;
 	String additionalValidHousenumberRegex;
 	List<String> officialLanguages;
+	List<String> additionalStreetsignLanguages;
 	Boolean isSlowZoneKnown;
 
 	public String getSpeedUnit()
@@ -28,6 +30,7 @@ public class CountryInfo implements Serializable, Cloneable
 
 	public List<String> getPopularSports()
 	{
+		if(popularSports == null) return new ArrayList<>(1);
 		return Collections.unmodifiableList(popularSports);
 	}
 
@@ -58,7 +61,14 @@ public class CountryInfo implements Serializable, Cloneable
 
 	public List<String> getOfficialLanguages()
 	{
+		if(officialLanguages == null) return new ArrayList<>(1);
 		return Collections.unmodifiableList(officialLanguages);
+	}
+
+	public List<String> getAdditionalStreetsignLanguages()
+	{
+		if(additionalStreetsignLanguages == null) return new ArrayList<>(1);
+		return Collections.unmodifiableList(additionalStreetsignLanguages);
 	}
 
 	public String getCountryCode()
@@ -69,7 +79,7 @@ public class CountryInfo implements Serializable, Cloneable
 	public Locale getLocale()
 	{
 		List<String> languages = getOfficialLanguages();
-		if (languages != null && languages.size() > 0)
+		if (!languages.isEmpty())
 		{
 			return new Locale(languages.get(0), countryCode);
 		}

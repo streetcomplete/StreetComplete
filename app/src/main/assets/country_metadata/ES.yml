@@ -1,4 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
+additionalStreetsignLanguages: [ca, eu, gl]
 additionalValidHousenumberRegex: s/n
 isSlowZoneKnown: true
 officialLanguages: [es]

@@ -26,10 +26,13 @@ import de.westnordost.streetcomplete.quests.opening_hours.OpeningMonths;
 import de.westnordost.streetcomplete.quests.opening_hours.OpeningWeekdays;
 import de.westnordost.streetcomplete.quests.opening_hours.TimeRange;
 import de.westnordost.streetcomplete.quests.opening_hours.Weekdays;
+import de.westnordost.streetcomplete.quests.road_name.RoadName;
 
 @Singleton
 public class KryoSerializer implements Serializer
 {
+	// NEVER CHANGE THE ORDER OF THIS LIST. ALWAYS APPEND NEW CLASSES AT THE BOTTOM
+	// IF CLASSES ARE DELETED, INSERT A PLACEHOLDER (i.e. Object.class) THERE
 	private static final Class[] registeredClasses =
 	{
 			HashMap.class,
@@ -51,7 +54,8 @@ public class KryoSerializer implements Serializer
 			Weekdays.class,
 			boolean[].class,
 			OpeningMonths.class,
-			OpeningWeekdays.class
+			OpeningWeekdays.class,
+			RoadName.class
 	};
 
 
