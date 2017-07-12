@@ -14,6 +14,7 @@ import de.westnordost.streetcomplete.quests.bike_parking_capacity.AddBikeParking
 import de.westnordost.streetcomplete.quests.bike_parking_cover.AddBikeParkingCover;
 import de.westnordost.streetcomplete.quests.building_levels.AddBuildingLevels;
 import de.westnordost.streetcomplete.quests.bus_stop_shelter.AddBusStopShelter;
+import de.westnordost.streetcomplete.quests.recycling.AddRecyclingType;
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingBusStop;
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingCrosswalk;
 import de.westnordost.streetcomplete.quests.toilets_fee.AddToiletsFee;
@@ -50,7 +51,8 @@ public class QuestModule
 				new AddTactilePavingBusStop(o),
 				new AddTactilePavingCrosswalk(o),
 				new AddWheelchairAccessBusiness(o),
-				new AddWheelChairAccessPublicTransport(o)
+				new AddWheelChairAccessPublicTransport(o),
+				new AddRecyclingType(o)
 		};
 
 		return new QuestTypes(Arrays.asList(questTypes));

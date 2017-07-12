@@ -86,6 +86,9 @@ dependencies {
         exclude group: 'net.sf.kxml', module: 'kxml2'
     }
 
+    // widgets
+    compile 'me.grantland:autofittextview:0.2.+'
+
     // serialization
     // Kryo uses Objenesis 2.2 which uses a class that has been removed for Android O.
     // see https://github.com/westnordost/StreetComplete/issues/286

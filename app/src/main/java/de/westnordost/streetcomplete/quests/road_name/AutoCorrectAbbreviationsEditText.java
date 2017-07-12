@@ -11,6 +11,7 @@ import android.widget.TextView;
 import java.util.Locale;
 
 import de.westnordost.streetcomplete.data.meta.Abbreviations;
+import de.westnordost.streetcomplete.util.DefaultTextWatcher;
 
 /** An edit text that expands abbreviations automatically when finishing a word (via space, "-" or
  *  ".") and capitalizes the first letter of each word that is longer than 3 letters. */
@@ -105,20 +106,11 @@ public class AutoCorrectAbbreviationsEditText extends android.support.v7.widget.
 		setSelection(selEnd + addedCharacters);
 	}
 
-	public boolean containsAbbreviations()
-	{
-		if(abbreviations == null) return false;
-		return abbreviations.containsAbbreviations(getText().toString());
-	}
-
-	private class AbbreviationAutoCorrecter implements TextWatcher
+	private class AbbreviationAutoCorrecter extends DefaultTextWatcher
 	{
 		private int cursorPos;
 		private int lastTextLength;
 		private boolean addedText;
-
-		@Override
-		public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
 
 		@Override
 		public void onTextChanged(CharSequence s, int start, int before, int count)

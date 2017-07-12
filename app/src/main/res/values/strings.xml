@@ -34,7 +34,7 @@
     <string name="quest_streetName_title">"What is the name of this road?"</string>
     <string name="quest_streetName_description">"as written on the street sign, abbreviations are expanded:"</string>
     <string name="quest_streetName_answer_noName_confirmation_description">"Sometimes the street sign is only at one end of the street. Also, note that there may not be extra street signs for side streets that belong to a bigger street. Usually, any street with houses has a name."</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title">"Abbreviation in the name?"</string>
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Abbreviation in the name “%s”?"</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"If the name can be spelled without an abbreviation, then it should be expanded. Many common abbreviations are expanded automatically while you type, but probably not all."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"No abbreviation"</string>
     <string name="quest_openingHours_name_title">"What are the opening hours of \"%s\"?"</string>
@@ -292,4 +292,19 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="quest_wheelchairAccess_limited">Partially</string>
     <string name="quest_wheelchairAccess_limited_description_business">Partially means that there is no more than a single step to access the business and that most rooms inside are wheelchair accessible.</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">Partially means that there is no more than a single step to access it.</string>
+    <string name="quest_recycling_type_title">What type of recycling facility is this?</string>
+    <string name="recycling_centre">Centre</string>
+    <string name="overground_recycling_container">Container</string>
+    <string name="underground_recycling_container">Underground container</string>
+    <string name="quest_generic_error_a_field_empty">You left a field empty</string>
+    <string name="quest_streetName_menuItem_language_simple">%1$s - %2$s</string>
+    <string name="quest_streetName_menuItem_language_native">%1$s - %2$s (%3$s)</string>
+    <string name="quest_streetName_answer_cantType">"Can't type the characters on the sign"</string>
+    <string name="quest_streetName_cantType_title">Missing keyboard layout?</string>
+    <string name="quest_streetName_cantType_open_settings">Open settings</string>
+    <string name="quest_streetName_cantType_open_store">Open store</string>
+    <string name="quest_streetName_cantType_description">"If you use a default keyboard, chances are that you can simply enable the keyboard layout for the language you need in the input method settings.
+
+Otherwise, you can download another keyboard in the app store. Popular keyboards that support many languages are Google Gboard, SwiftKey Keyboard and Multiling O Keyboard."</string>
+    <string name="quest_streetName_menuItem_nolanguage">(unspecified)</string>
 </resources>

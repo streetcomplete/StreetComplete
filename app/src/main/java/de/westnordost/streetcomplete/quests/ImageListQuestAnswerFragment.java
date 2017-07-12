@@ -33,8 +33,6 @@ public abstract class ImageListQuestAnswerFragment extends AbstractQuestFormAnsw
     private Button showMoreButton;
 	private RecyclerView valueList;
 
-	private int maxInitiallyShownItems;
-
     @Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                        Bundle savedInstanceState)
     {
@@ -43,7 +41,7 @@ public abstract class ImageListQuestAnswerFragment extends AbstractQuestFormAnsw
         View contentView = setContentView(R.layout.quest_generic_list);
 
 		valueList = (RecyclerView) contentView.findViewById(R.id.listSelect);
-        GridLayoutManager lm = new GridLayoutManager(getActivity(), 4);
+        GridLayoutManager lm = new GridLayoutManager(getActivity(), getItemsPerRow());
         valueList.setLayoutManager(lm);
 		valueList.setNestedScrollingEnabled(false);
 
@@ -88,10 +86,20 @@ public abstract class ImageListQuestAnswerFragment extends AbstractQuestFormAnsw
 		valueList.setAdapter(imageSelector);
 	}
 
-	/** return -1 for any number*/
-    protected abstract int getMaxSelectableItems();
-	/** return -1 for showing all items at once */
-	protected abstract int getMaxNumberOfInitiallyShownItems();
+	protected int getItemsPerRow()
+	{
+		return 4;
+	}
+	/** return -1 for any number. Default: 1 */
+    protected int getMaxSelectableItems()
+	{
+		return 1;
+	}
+	/** return -1 for showing all items at once. Default: -1 */
+	protected int getMaxNumberOfInitiallyShownItems()
+	{
+		return -1;
+	}
 	protected abstract OsmItem[] getItems();
 
 	private void showInitialItems(int initiallyShow)

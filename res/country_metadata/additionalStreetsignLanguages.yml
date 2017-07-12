@@ -1,0 +1,47 @@
+# A mapping of additional languages that one can expect to find on a street sign that are not official languages
+# Sources:
+# https://wiki.openstreetmap.org/wiki/Multilingual_names
+# https://commons.wikimedia.org/wiki/Category:Street_signs_by_country
+# https://en.wikipedia.org/wiki/Bilingual_sign#Bilingual_signs_around_the_world
+AE: [en]
+AM: [en]
+BG: [en]
+BH: [en]
+# Shanghai
+CN-31: [en]
+# Beijing
+CN-11: [en]
+EG: [en]
+EE: [ru]
+# can be removed if osmBoundaries is extended to differenciate between Catalunia, Valencia, Basque,...
+ES: [ca, eu, gl]
+# unclear where exactly in France this is also spoken. When it is clear -> osmBoundaries could be extended
+FR: [oc, ca, br]
+# can be removed if osmBoundaries is extended to differenciate between Scotland, Wales,...
+GB: [cy, gd]
+GE: [en]
+GR: [en]
+HR: [sr, it]
+IL: [en]
+IN: [en]
+IN-PY: [fr]
+IR: [en]
+JP: [en]
+JO: [en]
+KH: [en]
+KR: [en]
+KW: [en]
+LB: [fr]
+LK: [en]
+MA: [fr,es]
+MK: [en]
+MM: [en]
+MO: [en]
+MY: [en]
+OM: [en]
+QA: [en]
+SA: [en]
+SY: [en]
+TN: [fr]
+TH: [en]
+TW: [en]

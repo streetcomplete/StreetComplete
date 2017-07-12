@@ -1,36 +1,51 @@
 package de.westnordost.streetcomplete.quests.road_name;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Locale;
+import java.util.Queue;
 
 import javax.inject.Inject;
 
-import de.westnordost.streetcomplete.ApplicationComponent;
 import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.meta.Abbreviations;
 import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale;
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
+import de.westnordost.streetcomplete.util.Serializer;
 import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 
 public class AddRoadNameForm extends AbstractQuestFormAnswerFragment
 {
-	public static final String NO_NAME = "no_name";
-	public static final String NAME = "name";
+	private static final String	ROAD_NAMES_DATA = "oh_data";
 
-	public static final String NO_PROPER_ROAD = "no_proper_road";
+	public static final String
+			NO_NAME = "no_name",
+			NO_PROPER_ROAD = "no_proper_road",
+			NAMES = "names",
+			LANGUAGE_CODES = "language_codes";
+
 	public static final int IS_SERVICE = 1, IS_LINK = 2, IS_TRACK = 3;
 
-	private AutoCorrectAbbreviationsEditText nameInput;
-
 	@Inject AbbreviationsByLocale abbreviationsByLocale;
+	@Inject Serializer serializer;
+
+	private AddRoadNameAdapter adapter;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -43,24 +58,72 @@ public class AddRoadNameForm extends AbstractQuestFormAnswerFragment
 		setTitle(R.string.quest_streetName_title);
 		View contentView = setContentView(R.layout.quest_roadname);
 
-		nameInput = (AutoCorrectAbbreviationsEditText) contentView.findViewById(R.id.nameInput);
-		new Thread(new Runnable()
+		ArrayList<RoadName> data;
+		if(savedInstanceState != null)
 		{
-			@Override public void run()
-			{
-				Abbreviations abbreviations = abbreviationsByLocale.get(getCountryInfo().getLocale());
-				nameInput.setAbbreviations(abbreviations);
-			}
-		});
+			data = serializer.toObject(savedInstanceState.getByteArray(ROAD_NAMES_DATA),ArrayList.class);
+		}
+		else
+		{
+			data = new ArrayList<>();
+		}
 
+		Button addLanguageButton = (Button) contentView.findViewById(R.id.btn_add);
+		adapter = new AddRoadNameAdapter(
+				data, getActivity(), getPossibleStreetsignLanguages(),
+				abbreviationsByLocale, addLanguageButton);
+		RecyclerView recyclerView = (RecyclerView) contentView.findViewById(R.id.roadnames);
+		recyclerView.setLayoutManager(
+				new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+		recyclerView.setAdapter(adapter);
+		recyclerView.setNestedScrollingEnabled(false);
 		return view;
+	}
+
+	private List<String> getPossibleStreetsignLanguages()
+	{
+		List<String> possibleStreetsignLanguages = new ArrayList<>();
+		possibleStreetsignLanguages.addAll(getCountryInfo().getOfficialLanguages());
+		possibleStreetsignLanguages.addAll(getCountryInfo().getAdditionalStreetsignLanguages());
+		// removes duplicates
+		return new ArrayList<>(new LinkedHashSet<>(possibleStreetsignLanguages));
+	}
+
+	@Override public void onSaveInstanceState(Bundle outState)
+	{
+		super.onSaveInstanceState(outState);
+		outState.putByteArray(ROAD_NAMES_DATA, serializer.toBytes(adapter.getData()));
 	}
 
 	@Override protected void onClickOk()
 	{
-		if(!validate()) return;
+		LinkedList<String> possibleAbbreviations = new LinkedList<>();
+		for (RoadName roadName : adapter.getData())
+		{
+			String name = roadName.name;
+			if(name.trim().isEmpty())
+			{
+				Toast.makeText(getActivity(), R.string.quest_generic_error_a_field_empty,
+						Toast.LENGTH_LONG).show();
+				return;
+			}
 
-		applyNameAnswer();
+			Abbreviations abbr = abbreviationsByLocale.get(new Locale(roadName.languageCode));
+			boolean containsAbbreviations = abbr != null && abbr.containsAbbreviations(name);
+
+			if(name.contains(".") || containsAbbreviations)
+			{
+				possibleAbbreviations.add(name);
+			}
+		}
+
+		confirmPossibleAbbreviationsIfAny(possibleAbbreviations, new Runnable()
+		{
+			@Override public void run()
+			{
+				applyNameAnswer();
+			}
+		});
 	}
 
 	@Override protected List<Integer> getOtherAnswerResourceIds()
@@ -68,6 +131,7 @@ public class AddRoadNameForm extends AbstractQuestFormAnswerFragment
 		List<Integer> answers = super.getOtherAnswerResourceIds();
 		answers.add(R.string.quest_name_answer_noName);
 		answers.add(R.string.quest_streetName_answer_noProperStreet);
+		answers.add(R.string.quest_streetName_answer_cantType);
 		return answers;
 	}
 
@@ -78,65 +142,98 @@ public class AddRoadNameForm extends AbstractQuestFormAnswerFragment
 		if(itemResourceId == R.string.quest_name_answer_noName)
 		{
 			confirmNoStreetName();
-			return true;
 		}
 		else if (itemResourceId == R.string.quest_streetName_answer_noProperStreet)
 		{
 			selectNoProperStreetWhatThen();
 		}
+		else if(itemResourceId == R.string.quest_streetName_answer_cantType)
+		{
+			showKeyboardInfo();
+		}
 
-		return false;
+		return true;
 	}
 
 	private void applyNameAnswer()
 	{
-		Bundle data = new Bundle();
-		String name = nameInput.getText().toString().trim();
-		data.putString(NAME, name);
-		applyFormAnswer(data);
-	}
+		Bundle bundle = new Bundle();
+		ArrayList<RoadName> data = adapter.getData();
 
-	private boolean validate()
-	{
-		String name = nameInput.getText().toString().trim();
-		if(name.isEmpty())
+		String[] names = new String[data.size()];
+		String[] languageCodes = new String[data.size()];
+		for (int i = 0; i<data.size(); ++i)
 		{
-			nameInput.setError(getResources().getString(R.string.quest_generic_error_field_empty));
-			return false;
+			names[i] = data.get(i).name;
+			languageCodes[i] = data.get(i).languageCode;
 		}
 
-		if(name.contains(".") || nameInput.containsAbbreviations())
-		{
-			confirmPossibleAbbreviation();
-			return false;
-		}
-		return true;
+		bundle.putStringArray(NAMES, names);
+		bundle.putStringArray(LANGUAGE_CODES, languageCodes);
+		applyFormAnswer(bundle);
 	}
 
-	private void confirmPossibleAbbreviation()
+	private void confirmPossibleAbbreviationsIfAny(final Queue<String> names, final Runnable onConfirmedAll)
 	{
-		DialogInterface.OnClickListener onYes = new DialogInterface.OnClickListener()
+		if(names.isEmpty())
 		{
-			@Override
-			public void onClick(DialogInterface dialog, int which)
-			{
-				applyNameAnswer();
-			}
-		};
-		DialogInterface.OnClickListener onNo = new DialogInterface.OnClickListener()
+			onConfirmedAll.run();
+		}
+		else
 		{
-			@Override
-			public void onClick(DialogInterface dialog, int which)
+			/* recursively call self on confirm until the list of not-abbreviations to confirm is
+			   through */
+			String name = names.remove();
+			confirmPossibleAbbreviation(name, new Runnable() { @Override public void run()
 			{
-				// nothing, just go back
+				confirmPossibleAbbreviationsIfAny(names, onConfirmedAll);
 			}
-		};
+			});
+		}
+	}
+
+	private void confirmPossibleAbbreviation(String name, final Runnable onConfirmed)
+	{
+		String title = String.format(
+				getResources().getString(R.string.quest_streetName_nameWithAbbreviations_confirmation_title_name),
+				name);
 
 		new AlertDialogBuilder(getActivity())
-				.setTitle(R.string.quest_streetName_nameWithAbbreviations_confirmation_title)
+				.setTitle(title)
 				.setMessage(R.string.quest_streetName_nameWithAbbreviations_confirmation_description)
-				.setPositiveButton(R.string.quest_streetName_nameWithAbbreviations_confirmation_positive, onYes)
-				.setNegativeButton(R.string.quest_generic_confirmation_no, onNo)
+				.setPositiveButton(R.string.quest_streetName_nameWithAbbreviations_confirmation_positive, new DialogInterface.OnClickListener()
+				{
+					@Override public void onClick(DialogInterface dialog, int which)
+					{
+						onConfirmed.run();
+					}
+				})
+				.setNegativeButton(R.string.quest_generic_confirmation_no, null)
+				.show();
+	}
+
+	private void showKeyboardInfo()
+	{
+		new AlertDialogBuilder(getActivity())
+				.setTitle(R.string.quest_streetName_cantType_title)
+				.setMessage(R.string.quest_streetName_cantType_description)
+				.setPositiveButton(R.string.quest_streetName_cantType_open_settings, new DialogInterface.OnClickListener()
+				{
+					@Override public void onClick(DialogInterface dialog, int which)
+					{
+						startActivity(new Intent(Settings.ACTION_SETTINGS));
+					}
+				})
+				.setNeutralButton(R.string.quest_streetName_cantType_open_store, new DialogInterface.OnClickListener()
+				{
+					@Override public void onClick(DialogInterface dialog, int which)
+					{
+						Intent intent = new Intent(Intent.ACTION_MAIN);
+						intent.addCategory(Intent.CATEGORY_APP_MARKET);
+						startActivity(intent);
+					}
+				})
+				.setNegativeButton(android.R.string.cancel, null)
 				.show();
 	}
 
@@ -236,6 +333,7 @@ public class AddRoadNameForm extends AbstractQuestFormAnswerFragment
 
 	@Override public boolean hasChanges()
 	{
-		return !nameInput.getText().toString().trim().isEmpty();
+		// either the user added a language or typed something for the street name
+		return adapter.getData().size() > 1 || !adapter.getData().get(0).name.trim().isEmpty();
 	}
 }
