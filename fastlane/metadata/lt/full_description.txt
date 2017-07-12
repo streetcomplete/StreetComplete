@@ -1,0 +1,5 @@
+Padėkite tobulinti OpenStreetMap su StreetComplete!
+
+Ši aplikacija randa nepilnus, išplečiamus duomenis aplink jus ir parodo juos žemėlapyje kaip ženkliukus. Visus juos galima išspręsti atsakant į paprastą klausimą, padedantį užpildyti trūkstamą informaciją.
+
+Jūsų įvesta informacija tiesiog įkeliama į OpenStreetMap jūsų vardu, be kito žmogaus pagalbos.

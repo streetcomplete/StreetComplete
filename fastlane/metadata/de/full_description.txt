@@ -1,0 +1,5 @@
+Hilf mit, die OpenStreetMap-Karte zu vervollständigen - mit StreetComplete!
+
+Diese App findet unvollständige und erweiterbare Daten in deiner Nähe und zeigt diese als Aufgaben auf einer Karte an. Jede dieser Aufgaben kann vor Ort durch Beantwortung einer einfachen Frage gelöst werden.
+
+Die von dir eingegebenen Informationen werden dann direkt in deinem Namen zu OpenStreetMap hinzugefügt, ohne einen weiteren Editor benutzen zu müssen.

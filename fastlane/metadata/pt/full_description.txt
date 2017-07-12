@@ -1,0 +1,5 @@
+Ajude a melhorar o OpenStreetMap com o StreetComplete!
+
+A app detecta informação incorrecta ou incompleta na sua cidade favorita e mostra-as no mapa como marcadores. Cada destes marcadores são desafios que podem ser resolvidos atráves de simples respostas que complementam a informação no site.
+
+A informação que submeter na app é adicionada directamente ao OpenStreetMap com o seu nome, sem ser necessário a utilização de outro editor.

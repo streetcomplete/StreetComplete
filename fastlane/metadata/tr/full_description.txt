@@ -1,0 +1,5 @@
+StreetComplete ile OpenStreetMap'in geliştirilmesine yardım edin!
+
+Bu uygulama, çevrenizdeki tamamlanmamış ve genişletilebilir verileri bulur ve bir harita üzerinde işaretleyiciler olarak görüntüler. Her biri, sitedeki bilgiyi tamamlamak için basit bir soruyu yanıtlayarak çözülebilir.
+
+Girdiğiniz bilgiler daha sonra başka bir editör kullanmak zorunda kalmadan adınıza doğrudan OpenStreetMap'a eklenir.

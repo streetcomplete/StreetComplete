@@ -1,0 +1,5 @@
+Se StreetComplete můžete pomoci vylepšit OpenStreetMap!
+
+Tato aplikace vyhledá data ve vašem okolí, která nejsou kompletní, a která lze rozšířit a zobrazí je na mapě jako „úkoly“. Každý z těchto „úkolů“ lze snadno vyřešit na místě odpovědí na jednoduchou otázku a doplnit tak informace na mapě.
+
+Vámi vložené informace jsou potom vaším jménem přímo přidány do OpenStreetMap, bez toho, abyste museli použít další editor.

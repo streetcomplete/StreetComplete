@@ -93,7 +93,7 @@ def read(source_file_name):
 	relation = None
 	element = None
 	parser = ET.XMLPullParser(['start'])
-	source_file = open(source_file_name, "rb")
+	source_file = open(source_file_name, "rb", encoding='utf8')
 	parser.feed(source_file.read())
 	source_file.close()
 	for event, elem in parser.read_events():
@@ -149,8 +149,8 @@ def convert_relations(relations):
 			geometries.append(multipoly)
 	return geometries
 
-source_file_name = sys.argv[1]
-target_file_name = sys.argv[2]
+source_file_name = "../res/countryBoundaries.osm"
+target_file_name = "src/main/assets/countryBoundaries.json"
 
 ways, relations = read(source_file_name)
 geometries = convert_ways(ways) + convert_relations(relations)
@@ -160,7 +160,7 @@ for geometry in geometries:
 	if not has_interesting_tags(geometry.tags):
 		continue
 	features.append(geometry.to_string())
-target_file = open(target_file_name, "w")
+target_file = open(target_file_name, "w", encoding='utf8')
 target_file.write("""\
 {
 "type":"FeatureCollection",
