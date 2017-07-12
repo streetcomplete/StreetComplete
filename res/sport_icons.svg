@@ -215,17 +215,17 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1"
-     inkscape:cx="135.3891"
-     inkscape:cy="311.49691"
+     inkscape:cx="210.46756"
+     inkscape:cy="509.71368"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="true"
      units="px"
-     inkscape:window-width="1920"
-     inkscape:window-height="1018"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
-     inkscape:window-maximized="1"
+     inkscape:window-width="944"
+     inkscape:window-height="1002"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
      inkscape:object-nodes="false"
      objecttolerance="30"
      gridtolerance="5"
@@ -259,9 +259,10 @@
      id="layer1"
      transform="translate(0,-93.799983)">
     <g
-       id="g10-3"
+       id="american_football"
        transform="matrix(0.64217399,0,0,-0.64217399,0.37456413,169.45989)"
-       style="stroke-width:0.54481703">
+       style="stroke-width:0.54481703"
+       inkscape:label="#g10-3">
       <path
          inkscape:connector-curvature="0"
          id="path22-6"
@@ -335,9 +336,10 @@
          sodipodi:nodetypes="ccccc" />
     </g>
     <g
-       id="g10-9"
+       id="equestrian"
        transform="matrix(0.63804455,0,0,-0.63804455,25.888789,143.00121)"
-       style="stroke-width:0.5183481">
+       style="stroke-width:0.5183481"
+       inkscape:label="#g10-9">
       <g
          id="g12-9"
          style="stroke-width:0.5183481">
@@ -520,9 +522,10 @@
       </g>
     </g>
     <g
-       id="g5065"
+       id="tennis"
        transform="matrix(0.39411803,0,0,0.39411803,25.265938,93.92475)"
-       style="stroke-width:0.52440691">
+       style="stroke-width:0.52440691"
+       inkscape:label="#g5065">
       <g
          id="g6025"
          transform="translate(-0.66110667,-0.49157017)">
@@ -689,8 +692,9 @@
       </g>
     </g>
     <g
-       id="g8168"
-       transform="translate(-0.46772167,-0.46772167)">
+       id="athletics"
+       transform="translate(-0.46772167,-0.46772167)"
+       inkscape:label="#g8168">
       <path
          sodipodi:nodetypes="ccccccc"
          inkscape:connector-curvature="0"
@@ -797,9 +801,10 @@
          sodipodi:nodetypes="cccccc" />
     </g>
     <g
-       id="g5208"
+       id="cricket"
        transform="matrix(0.38175837,0,0,0.38175837,51.124022,144.8267)"
-       style="stroke-width:0.52970594">
+       style="stroke-width:0.52970594"
+       inkscape:label="#g5208">
       <circle
          id="circle5125"
          r="9.6000004"
@@ -888,9 +893,10 @@
       </g>
     </g>
     <g
-       id="g5224"
+       id="volleyball"
        transform="matrix(0.37768678,0,0,0.37768678,51.373986,119.84989)"
-       style="stroke-width:0.54131544">
+       style="stroke-width:0.54131544"
+       inkscape:label="#g5224">
       <circle
          id="circle5210"
          r="30"
@@ -916,9 +922,10 @@
          style="fill:#a7b2b1;fill-opacity:1;stroke-width:0.54131544" />
     </g>
     <g
-       id="g5267"
+       id="table_tennis"
        transform="matrix(0.38094985,0,0,0.38094985,51.049004,170.20584)"
-       style="stroke-width:0.51915628">
+       style="stroke-width:0.51915628"
+       inkscape:label="#g5267">
       <path
          id="path5226"
          d="M 55.3,8.7 C 49.1,2.5 34.8,-3.2 21.2,10.3 c -9,8.9 -12.2,20.2 0,32.4 12.2,12.1 23.5,8.9 32.5,0 13.6,-13.6 7.8,-27.8 1.6,-34"
@@ -1035,9 +1042,10 @@
        id="g5534"
        transform="matrix(0.08196919,0,0,0.08196919,40.468435,267.31072)" />
     <g
-       id="g5698"
+       id="gymnastics"
        transform="matrix(0.392892,0,0,0.392892,76.158314,170.01539)"
-       style="stroke-width:0.52066952">
+       style="stroke-width:0.52066952"
+       inkscape:label="#g5698">
       <g
          id="g5641"
          style="fill:#fed0ac;stroke-width:0.52066952">
@@ -1126,9 +1134,10 @@
          transform="matrix(0.81348427,-0.21797245,0.21797245,0.81348427,-4.1992215,15.338848)" />
     </g>
     <g
-       id="g5879"
+       id="boules"
        transform="matrix(1.7874793,0,0,1.7874793,26.117046,-312.77086)"
-       style="stroke-width:0.55944705">
+       style="stroke-width:0.55944705"
+       inkscape:label="#g5879">
       <g
          transform="matrix(0.33675275,0.33675276,-0.33675276,0.33675275,94.355217,178.20872)"
          id="g5838"
@@ -1311,9 +1320,10 @@
       </g>
     </g>
     <g
-       id="g5983"
+       id="bowls"
        transform="matrix(1.8316618,0,0,1.8316618,-23.783539,-324.769)"
-       style="stroke-width:0.54595232">
+       style="stroke-width:0.54595232"
+       inkscape:label="#g5983">
       <g
          transform="matrix(0.59375889,-0.59375889,0.59375889,0.59375889,-163.04106,120.99081)"
          id="g5948-7"
@@ -1389,9 +1399,10 @@
       </g>
     </g>
     <g
-       id="g5475"
+       id="baseball"
        transform="matrix(1.9363325,0,0,1.9363325,25.304597,-379.01162)"
-       style="stroke-width:0.51644021">
+       style="stroke-width:0.51644021"
+       inkscape:label="#g5475">
       <g
          id="g36-7"
          transform="matrix(-0.10486618,0.10486618,0.10486618,0.10486618,17.000131,244.35345)"
@@ -1540,9 +1551,10 @@
          sodipodi:nodetypes="cscsc" />
     </g>
     <g
-       id="g6043"
+       id="basketball"
        transform="matrix(1.8038032,0,0,1.8038155,30.273687,-258.5416)"
-       style="stroke-width:0.55438226">
+       style="stroke-width:0.55438226"
+       inkscape:label="#g6043">
       <g
          id="g6056"
          style="stroke-width:0.55438226">
@@ -1619,8 +1631,9 @@
       </g>
     </g>
     <g
-       id="g6221"
-       transform="translate(50.647575,-101.56242)">
+       id="golf"
+       transform="translate(50.647575,-101.56242)"
+       inkscape:label="#g6221">
       <g
          transform="matrix(0.63991158,0,0,-0.63991158,-50.405361,245.30747)"
          id="g12-0"
@@ -1833,8 +1846,9 @@
       </g>
     </g>
     <g
-       id="g6683"
-       transform="translate(66.550112,-102.23059)">
+       id="soccer"
+       transform="translate(66.550112,-102.23059)"
+       inkscape:label="#g6683">
       <g
          style="fill:#f0f0f0;fill-opacity:1;stroke:none;stroke-width:0.34806505"
          transform="matrix(0.59386048,0,0,0.59386048,-68.373924,194.68497)"
@@ -1875,7 +1889,8 @@
          id="path5987" />
     </g>
     <g
-       id="g7802">
+       id="beach_volleyball"
+       inkscape:label="#g7802">
       <g
          style="stroke-width:0.50960982"
          transform="matrix(1.9622855,0,0,1.9622855,23.966519,-385.86497)"
@@ -2044,8 +2059,9 @@
       </g>
     </g>
     <g
-       id="g7416"
-       transform="translate(50.51394,-76.572719)">
+       id="shooting"
+       transform="translate(50.51394,-76.572719)"
+       inkscape:label="#g7416">
       <g
          style="stroke-width:1.72009826"
          transform="matrix(0.58136214,0,0,0.58136214,-20.689244,114.24795)"
@@ -2168,8 +2184,9 @@
       </g>
     </g>
     <g
-       id="g7319"
-       transform="translate(50.51394,-76.03818)">
+       id="badminton"
+       transform="translate(50.51394,-76.03818)"
+       inkscape:label="#g7319">
       <g
          transform="matrix(0.27961997,0,0,0.27962884,32.433718,297.10032)"
          style="stroke:#e8e8e8;stroke-width:0.73912793;stroke-opacity:1"
@@ -2303,9 +2320,10 @@
          inkscape:connector-curvature="0" />
     </g>
     <g
-       id="g7391"
+       id="rugby"
        transform="matrix(1.4709405,0,0,1.4709405,26.949837,-263.1106)"
-       style="stroke-width:0.67983717">
+       style="stroke-width:0.67983717"
+       inkscape:label="#g7391">
       <path
          id="path2"
          d="m 31.866181,330.61483 c -1.481667,-1.48166 -7.514167,-1.11125 -11.456458,2.83104 -3.942292,3.9423 -4.312709,9.94834 -2.831042,11.45646 1.481667,1.48167 7.514167,1.11125 11.456458,-2.83104 3.942292,-3.94229 4.312709,-9.94833 2.831042,-11.45646 z"
@@ -2343,7 +2361,8 @@
       </g>
     </g>
     <g
-       id="g9285">
+       id="field_hockey"
+       inkscape:label="#g9285">
       <path
          style="fill:#3e4347;stroke-width:0.26458332"
          inkscape:connector-curvature="0"
@@ -2379,8 +2398,9 @@
     </g>
     <g
        style="stroke-width:0.45365563"
-       id="g4524"
-       transform="matrix(0.3953001,0,0,0.3953001,25.113819,221.0108)">
+       id="ice_hockey"
+       transform="matrix(0.3953001,0,0,0.3953001,25.113819,221.0108)"
+       inkscape:label="#g4524">
       <path
          d="M 23.3,36.9 C 17.8,36.5 11.2,35.2 4.8,33.7 c -1.9,-0.4 -4.1,9.4 -2,10.1 12.8,4 26.3,3 31.3,2.2 1.8,-0.3 3.1,-2.4 3.2,-2.4 l 8,-13.4 -4.6,-2.9 c -7.2,8.5 -13.8,9.9 -17.4,9.6"
          id="path2-3"
@@ -2452,9 +2472,10 @@
       </g>
     </g>
     <g
-       id="g10-3-9"
+       id="australian_football"
        transform="matrix(0.64217399,0,0,-0.64217399,0.49393213,270.98168)"
-       style="stroke-width:0.54481703">
+       style="stroke-width:0.54481703"
+       inkscape:label="#g10-3-9">
       <path
          inkscape:connector-curvature="0"
          id="path22-6-5"
@@ -2516,8 +2537,9 @@
          sodipodi:nodetypes="cc" />
     </g>
     <g
-       id="g5032"
-       transform="translate(50.647575,-101.56242)">
+       id="archery"
+       transform="translate(50.647575,-101.56242)"
+       inkscape:label="#g5032">
       <g
          style="stroke-width:1.72009826"
          transform="matrix(0.58136213,0,0,0.58136213,4.4793697,139.25587)"
@@ -2706,9 +2728,10 @@
          style="fill:#e25148;fill-opacity:1" />
     </g>
     <g
-       id="g6321"
+       id="sepak_takraw"
        transform="matrix(0.70971441,-0.40975094,0.4097538,0.70970946,-90.246072,119.04002)"
-       style="stroke-width:1.22024906">
+       style="stroke-width:1.22024906"
+       inkscape:label="#g6321">
       <path
          style="opacity:1;vector-effect:none;fill:#5d5134;fill-opacity:1;stroke:none;stroke-width:2.44049811;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
          d="m 334.74609,678.81055 a 40.305554,40.305554 0 0 0 -40.30468,40.30468 40.305554,40.305554 0 0 0 40.30468,40.30665 40.305554,40.305554 0 0 0 40.30664,-40.30665 40.305554,40.305554 0 0 0 -40.30664,-40.30468 z m 1.30664,2.42968 9.61329,0.68555 8.69921,5.95313 -5.03515,9.84375 -14.88086,-1.60352 -4.34961,-9.15625 z m -9.61523,21.28907 6.86719,15.5664 -10.30078,9.15625 -13.04883,-5.95117 1.60351,-14.8789 z m 25.41016,2.28906 12.13281,5.49414 -0.91602,14.65039 L 352.99219,730 343.60547,718.7832 Z m -23.10157,29.99805 14.88086,1.60156 4.34766,9.1582 -5.95117,5.72266 -9.61524,-0.6875 -8.69726,-5.95117 z"
@@ -2905,7 +2928,8 @@
       </g>
     </g>
     <g
-       id="g7323">
+       id="netball"
+       inkscape:label="#g7323">
       <g
          style="stroke-width:0.55438226"
          transform="matrix(1.8038032,0,0,1.8038155,4.9263781,-157.02081)"
@@ -2968,9 +2992,10 @@
       </g>
     </g>
     <g
-       id="g6683-1"
+       id="handball"
        transform="matrix(0.83646315,0,0,0.83646194,138.46146,53.203165)"
-       style="stroke-width:1.19551075">
+       style="stroke-width:1.19551075"
+       inkscape:label="#g6683-1">
       <ellipse
          style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.9489367;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
          id="path8952"
@@ -3103,7 +3128,8 @@
          style="stroke-width:0.54481703" />
     </g>
     <g
-       id="g6016">
+       id="canadian_football"
+       inkscape:label="#g6016">
       <path
          inkscape:connector-curvature="0"
          id="path22-6-3"
@@ -3180,9 +3206,10 @@
       </g>
     </g>
     <g
-       id="g5065-3"
+       id="racquetball"
        transform="matrix(0.39411804,0,0,0.39411804,25.408968,245.58213)"
-       style="stroke-width:0.52440691">
+       style="stroke-width:0.52440691"
+       inkscape:label="#g5065-3">
       <path
          style="fill:none;fill-rule:evenodd;stroke:#d0d0d0;stroke-width:1.34266031;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          d="m 21.172098,30.921535 13.328229,13.56919"
@@ -3347,9 +3374,10 @@
       </g>
     </g>
     <g
-       id="g5065-7"
+       id="paddle_tennis"
        transform="matrix(0.39411804,0,0,0.39411804,50.939988,246.24782)"
-       style="stroke-width:0.52440691">
+       style="stroke-width:0.52440691"
+       inkscape:label="#g5065-7">
       <g
          id="g6025-3"
          transform="translate(-0.66110667,-0.49157017)">
@@ -3458,9 +3486,10 @@
       </g>
     </g>
     <g
-       id="g10274"
+       id="ice_skating"
        transform="matrix(1.4084667,0,0,1.4084667,23.694741,-140.84897)"
-       style="stroke-width:0.70999193">
+       style="stroke-width:0.70999193"
+       inkscape:label="#g10274">
       <path
          id="path2-1"
          d="m 41.30664,288.71852 c 0,0 -1.349375,1.08479 -1.772708,1.50813 -0.635,0.60854 -1.058333,1.48166 3.730625,1.48166 3.04271,0 10.18646,0 10.18646,0 v -0.76729 h -1.03188 c 0,0 -0.58208,-1.74625 -0.71437,-2.2225 -0.0529,-0.18521 -0.84667,0.0529 -0.74083,0.23813 0.1852,0.37041 -0.10584,1.98437 -0.10584,1.98437 h -5.979582 c -0.635,0 -0.238125,-0.47625 -0.07938,-1.00542 l -1.031875,-0.0529 c 0,0 0.15875,1.05833 -1.693333,1.05833 -1.164167,0 -2.116667,-0.18521 -1.719792,-0.55562 0.343959,-0.34396 1.481667,-1.24355 1.481667,-1.24355 l -0.529167,-0.42334"
@@ -3587,9 +3616,10 @@
       </g>
     </g>
     <g
-       id="g5475-2"
+       id="softball"
        transform="matrix(1.9363325,0,0,1.9363325,-0.15882253,-201.4357)"
-       style="stroke-width:0.51644021">
+       style="stroke-width:0.51644021"
+       inkscape:label="#g5475-2">
       <g
          id="g36-7-2"
          transform="matrix(-0.10486618,0.10486618,0.10486618,0.10486618,17.000131,244.35345)"
@@ -3745,8 +3775,9 @@
          sodipodi:nodetypes="cscsc" />
     </g>
     <g
-       id="g11020"
-       transform="translate(0,0.42828021)">
+       id="gaelic_games"
+       transform="translate(0,0.42828021)"
+       inkscape:label="#g11020">
       <g
          style="stroke-width:0.51644021"
          transform="matrix(-1.9363325,0,0,-1.9363325,103.83843,768.66396)"
@@ -3873,41 +3904,11 @@
         </g>
       </g>
     </g>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.41111112px;line-height:6.61458302px;font-family:Roboto;-inkscape-font-specification:Roboto;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="106.16378"
-       y="163.39481"
-       id="text12514"><tspan
-         sodipodi:role="line"
-         id="tspan12512"
-         x="106.16378"
-         y="167.05487"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;font-family:sans-serif;-inkscape-font-specification:sans-serif;stroke-width:0.26458332px" /><tspan
-         sodipodi:role="line"
-         x="106.16378"
-         y="174.78291"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;font-family:sans-serif;-inkscape-font-specification:sans-serif;stroke-width:0.26458332px"
-         id="tspan12522">Copyright Tobias Zwick, Adrien Pavie, </tspan><tspan
-         sodipodi:role="line"
-         x="106.16378"
-         y="182.51096"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;font-family:sans-serif;-inkscape-font-specification:sans-serif;stroke-width:0.26458332px"
-         id="tspan12532">                 twitter twemoji and emojione 2.2.7 contributors</tspan><tspan
-         sodipodi:role="line"
-         x="106.16378"
-         y="189.12553"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;font-family:sans-serif;-inkscape-font-specification:sans-serif;stroke-width:0.26458332px"
-         id="tspan12534" /><tspan
-         sodipodi:role="line"
-         x="106.16378"
-         y="196.85358"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;font-family:sans-serif;-inkscape-font-specification:sans-serif;stroke-width:0.26458332px"
-         id="tspan12530">License: CC BY 4</tspan></text>
     <g
-       id="g12689"
+       id="ice_stock"
        transform="matrix(0.48594496,0,0,0.48594496,1.7763793,153.19204)"
-       style="stroke-width:2.05784631">
+       style="stroke-width:2.05784631"
+       inkscape:label="#g12689">
       <g
          id="g12697"
          transform="matrix(1.2298438,0,0,1.2298438,-3.660963,-68.495077)"
@@ -4043,9 +4044,10 @@
       </g>
     </g>
     <g
-       id="g5960"
+       id="skateboard"
        transform="matrix(1.2156843,-0.25849975,0.25849975,1.2156843,-47.984383,-23.5223)"
-       style="stroke-width:0.80459338">
+       style="stroke-width:0.80459338"
+       inkscape:label="#g5960">
       <g
          style="stroke-width:0.70134604"
          transform="matrix(1.1472131,0,0,1.1472131,-13.571734,-16.123733)"
@@ -4189,8 +4191,9 @@
       </g>
     </g>
     <g
-       id="g5496"
-       transform="translate(0,-0.59531248)">
+       id="skating"
+       transform="translate(0,-0.59531248)"
+       inkscape:label="#g5496">
       <ellipse
          ry="1.9879773"
          rx="2.0355217"
@@ -4305,10 +4308,10 @@
          style="fill:#6d6d85;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
     </g>
     <g
-       id="g7319-5"
-       transform="translate(25.153918,0.34044895)">
+       id="squash"
+       inkscape:label="#g5348">
       <g
-         transform="matrix(0.34351817,0,0,0.34351817,29.206921,296.44655)"
+         transform="matrix(0.34351817,0,0,0.34351817,54.360839,296.787)"
          style="stroke-width:0.60165149"
          id="g5949-9">
         <path
@@ -4380,7 +4383,7 @@
       <g
          id="g8-9"
          style="fill:#71a5ff;fill-opacity:1;stroke-width:0.76490057"
-         transform="matrix(0.34590551,0,0,0.34590551,28.807427,297.33106)">
+         transform="matrix(0.34590551,0,0,0.34590551,53.961345,297.67151)">
         <path
            style="fill:#71a5ff;fill-opacity:1;stroke-width:0.76490057"
            d="M 35.101344,6.6564522 C 29.571834,12.13359 23.064391,25.377691 21.595292,31.647419 c -1.469099,6.269728 -2.295064,9.165545 -5.242914,12.891182 l -3.685516,3.499984 2.093637,2.096727 3.827792,-3.690477 c 5.2641,-2.941784 7.150482,-3.655452 13.745742,-5.667568 6.595261,-2.012116 17.874903,-7.350526 23.779214,-13.01006 5.904312,-5.659534 9.739205,-16.545005 2.329694,-23.2429256 -7.40951,-6.6979203 -17.812086,-3.344967 -23.341597,2.1321708 z m 21.209466,0 C 61.483602,11.686328 59.878041,19.87744 54.1786,25.733708 48.479158,31.589975 31.160118,42.079152 25.416558,37.40688 19.672991,32.734616 31.597687,14.303891 37.235095,8.7902029 42.872503,3.2765147 51.138019,1.626576 56.31081,6.6564522 Z M 22.237115,38.127364 c 0.643742,1.173569 1.807949,1.979042 2.931404,2.372888 -1.938116,0.84189 -3.313852,1.800051 -5.037381,2.670662 0.753046,-1.522016 1.44059,-3.218577 2.105977,-5.04355 z"
@@ -4390,13 +4393,13 @@
       </g>
       <path
          id="path10-4-9"
-         d="m 28.333692,321.32646 c 0,0 0.317486,-0.75403 0.515914,-0.95245 2.143028,-2.14304 3.8892,-3.88921 3.8892,-3.88921 l 1.349313,-2.02396 -0.714343,-0.75404 -2.023971,1.34932 c 0,0 -1.785857,1.78586 -3.889198,3.88921 -0.198429,0.19842 -0.952457,0.5159 -0.952457,0.5159 -0.238115,0.1191 -0.277801,0.35718 -0.119064,0.55561 l 1.428685,1.42868 c 0.158742,0.19844 0.396856,0.15874 0.515913,-0.11908"
+         d="m 53.48761,321.66691 c 0,0 0.317486,-0.75403 0.515914,-0.95245 2.143028,-2.14304 3.8892,-3.88921 3.8892,-3.88921 l 1.349313,-2.02396 -0.714343,-0.75404 -2.023971,1.34932 c 0,0 -1.785857,1.78586 -3.889198,3.88921 -0.198429,0.19842 -0.952457,0.5159 -0.952457,0.5159 -0.238115,0.1191 -0.277801,0.35718 -0.119064,0.55561 l 1.428685,1.42868 c 0.158742,0.19844 0.396856,0.15874 0.515913,-0.11908"
          style="fill:#3e4347;stroke-width:0.26458338"
          inkscape:connector-curvature="0" />
       <g
          id="g26-92"
          style="fill:#b2c1c0;stroke-width:0.66669685"
-         transform="matrix(0.39685703,0,0,0.39685703,25.436634,296.9594)">
+         transform="matrix(0.39685703,0,0,0.39685703,50.590552,297.29985)">
         <path
            id="path14-1-5"
            d="m 13,47.4 -0.8,0.9 5.3,1.8 z"
@@ -4428,40 +4431,40 @@
            inkscape:connector-curvature="0"
            style="opacity:0.5;stroke-width:0.66669685" />
       </g>
-    </g>
-    <g
-       id="g5065-3-3"
-       transform="matrix(0.37158471,0,0,0.37158471,52.829339,295.65649)"
-       style="stroke-width:0.55620754">
       <g
-         id="g6030-4-6"
-         transform="matrix(0.75479562,0,0,0.75479562,13.810957,10.695015)"
-         style="stroke-width:0.73689824">
+         style="stroke-width:0.55620754"
+         transform="matrix(0.37158471,0,0,0.37158471,52.829339,295.65649)"
+         id="g5065-3-3">
+        <g
+           style="stroke-width:0.73689824"
+           transform="matrix(0.75479562,0,0,0.75479562,13.810957,10.695015)"
+           id="g6030-4-6">
+          <circle
+             id="circle4994-7-1"
+             r="11"
+             cy="11.982781"
+             cx="12.49139"
+             style="fill:#333333;fill-opacity:1;stroke:none;stroke-width:3.77342105;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers" />
+          <circle
+             id="circle4994-1-1-8"
+             r="8.1953773"
+             cy="10.950933"
+             cx="11.580728"
+             style="fill:#555555;fill-opacity:1;stroke:none;stroke-width:3.77342105;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers" />
+        </g>
         <circle
-           style="fill:#333333;fill-opacity:1;stroke:none;stroke-width:3.77342105;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
-           cx="12.49139"
-           cy="11.982781"
-           r="11"
-           id="circle4994-7-1" />
+           r="1.1274178"
+           cy="18.00712"
+           cx="19.72295"
+           id="path6701"
+           style="opacity:1;vector-effect:none;fill:#f0f000;fill-opacity:1;stroke:none;stroke-width:5.69632339;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers" />
         <circle
-           style="fill:#555555;fill-opacity:1;stroke:none;stroke-width:3.77342105;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
-           cx="11.580728"
-           cy="10.950933"
-           r="8.1953773"
-           id="circle4994-1-1-8" />
+           r="1.1274178"
+           cy="19.84659"
+           cx="22.452488"
+           id="path6701-2"
+           style="opacity:1;vector-effect:none;fill:#f0f000;fill-opacity:1;stroke:none;stroke-width:5.69632339;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers" />
       </g>
-      <circle
-         style="opacity:1;vector-effect:none;fill:#f0f000;fill-opacity:1;stroke:none;stroke-width:5.69632339;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
-         id="path6701"
-         cx="19.72295"
-         cy="18.00712"
-         r="1.1274178" />
-      <circle
-         style="opacity:1;vector-effect:none;fill:#f0f000;fill-opacity:1;stroke:none;stroke-width:5.69632339;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
-         id="path6701-2"
-         cx="22.452488"
-         cy="19.84659"
-         r="1.1274178" />
     </g>
   </g>
 </svg>

@@ -1,0 +1,109 @@
+All assets made by and (c) Tobias Zwick unless explicitly stated otherwise. License: CC-BY-SA 4.0.
+
+URLs to other sources used:
+ - Twemoji 2 (MIT license)		https://github.com/twitter/twemoji/
+ - EmojiOne 2 (CC-BY 4 license)	https://github.com/emojione/emojione/tree/2.2.7
+ - elegant themes (GPL)			https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free
+
+
+File                            Author if not Tobias Zwick / Source
+===============================================================================
+
+appicon_fancy.svg				elegant themes
+
+appicon_flat.svg				elegant themes
+
+building_levels_illustration.svg
+
+roof_shape_icons.svg
+
+quest_icons.svg
+	bicycle
+	bicycle_parking
+	blind
+	blind_bus					parts taken from Twemoji 2: U+1F68D
+	blind_pedestrian_crossing
+	blind_traffic_lights
+	building
+	building_height
+	building_levels
+	housenumber
+	bicycleway
+	clock
+	ferry						modified from Twemoji 2: U+26F4
+	fuel
+	label
+	lantern
+	leaf
+	mail
+	max_width
+	max_height
+	max_speed
+	max_weight
+	notes
+	parking
+	parking_maxstay
+	pedestrian
+	pedestrian_crossing
+	phone
+	oneway
+	quest
+	roof_shape
+	recycling					modified from Twemoji 2: U+267B
+	smoke
+	sport						modified from EmojiOne 2: U+26BD
+	street
+	street_lanes
+	street_name
+	street_surface
+	street_surface_paved_detail
+	street_turn_lanes
+	street_width
+	toilets
+	tractor
+	traffic_lights
+	way_surface
+	wifi
+	wheelchair
+	wheelchair_shop
+	
+slow_zone.svg
+
+slow_zone_us.svg
+
+sport_icons.svg
+	american_football
+	archery						modified from Twemoji 2: U+1F3F9
+	athletics
+	australian_football
+	badminton					EmojiOne 2: U+1F3F8
+	baseball
+	basketball					EmojiOne 2: U+1F3C0
+	beach_volleyball			by Adrien Pavie, modified from EmojiOne 2: U+1F3D0 
+	boules
+	bowls
+	canadian_football
+	cricket						EmojiOne 2: U+1F3CF
+	equestrian					Twemoji 2: U+1F3C7
+	field_hockey				EmojiOne 2: U+1F3D1
+	gaelic_games				parts taken from EmojiOne 2: U+1F3D0
+	golf						Twemoji 2: U+26F3
+	gymnastics					modified from EmojiOne 2: U+1F938
+	handball
+	ice_hockey					EmojiOne 2: U+1F3D2
+	ice_skating					EmojiOne 2: U+26F8
+	ice_stock
+	netball						mashup from EmojiOne 2: U+1F3D0 and U+1F3C0
+	racquetball
+	rugby						EmojiOne 2: U+1F3C9
+	paddle_tennis
+	sepak_takraw
+	shooting					modified from Twemoji 2: U+1F52B
+	skateboard
+	soccer						EmojiOne 2: U+26BD
+	softball
+	skating
+	squash						modified from EmojiOne 2: U+1F3F8
+	table_tennis				EmojiOne 2: U+1F3D3
+	tennis						EmojiOne 2: U+1F3BE
+	volleyball					EmojiOne 2: U+1F3D0
