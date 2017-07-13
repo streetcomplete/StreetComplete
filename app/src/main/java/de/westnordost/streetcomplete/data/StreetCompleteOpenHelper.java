@@ -18,12 +18,13 @@ import de.westnordost.streetcomplete.data.osm.persist.WayTable;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestTable;
 import de.westnordost.streetcomplete.data.statistics.QuestStatisticsTable;
 import de.westnordost.streetcomplete.data.tiles.DownloadedTilesTable;
+import de.westnordost.streetcomplete.quests.road_name.data.RoadNamesTablesHelper;
 
 @Singleton
 public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 {
 	public static final String DB_NAME = "streetcomplete.db";
-	public static final int DB_VERSION = 5;
+	public static final int DB_VERSION = 6;
 
 	private static final String OSM_QUESTS_TABLE_CREATE =
 			"CREATE TABLE " + OsmQuestTable.NAME +
@@ -173,9 +174,12 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 				") " +
 			");";
 
+	private final TablesHelper[] extensions;
+
 	public StreetCompleteOpenHelper(Context context)
 	{
 		super(context, DB_NAME, null, DB_VERSION);
+		extensions = new TablesHelper[]{ new RoadNamesTablesHelper() };
 	}
 
 	@Override
@@ -200,6 +204,11 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 		db.execSQL(OSM_NOTES_VIEW_CREATE);
 
 		db.execSQL(OPEN_CHANGESETS_TABLE_CREATE);
+
+		for (TablesHelper extension : extensions)
+		{
+			extension.onCreate(db);
+		}
 	}
 
 	@Override
@@ -220,12 +229,12 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 			db.execSQL("DROP TABLE " + oldTableName);
 		}
 
-		if(oldVersion < 3)
+		if(oldVersion < 3 && newVersion >= 3)
 		{
 			db.execSQL(OPEN_CHANGESETS_TABLE_CREATE);
 		}
 
-		if(oldVersion < 4)
+		if(oldVersion < 4 && newVersion >= 4)
 		{
 			db.execSQL("ALTER TABLE " + OsmQuestTable.NAME + " ADD COLUMN " +
 					OsmQuestTable.Columns.CHANGES_SOURCE +	" varchar(255);");
@@ -241,12 +250,18 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 			db.execSQL(OPEN_CHANGESETS_TABLE_CREATE);
 		}
 
-		if(oldVersion < 5)
+		if(oldVersion < 5 && newVersion >= 5)
 		{
 			db.execSQL("ALTER TABLE " + CreateNoteTable.NAME + " ADD COLUMN " +
 				CreateNoteTable.Columns.QUEST_TITLE + " text;");
 		}
 
 		// for later changes to the DB
+		// ...
+
+		for (TablesHelper extension : extensions)
+		{
+			extension.onUpgrade(db, oldVersion, newVersion);
+		}
 	}
 }
