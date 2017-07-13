@@ -26,7 +26,7 @@
         <activity
             android:name=".settings.SettingsActivity"
             android:label="@string/action_settings"
-            android:launchMode="singleTop"
+            android:launchMode="singleTask"
             android:parentActivityName=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MANAGE_NETWORK_USAGE" />
