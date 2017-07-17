@@ -36,6 +36,7 @@ textures:
             ferry: [1152,384,192,192]
             fuel: [1344,384,192,192]
             parking_maxstay: [1536,384,192,192]
+            fire_hydrant_type: [1728,384,192,192]
             # 4th row
             street: [0,576,192,192]
             max_width: [192,576,192,192]

@@ -26,3 +26,9 @@ tactile_paving_illustration.jpg https://www.flickr.com/photos/jeanlouis_zimmerma
 recycling_centre.jpg                http://www.afgsc.af.mil/News/Art/igphoto/2000375277/
 recycling_container_underground.jpg https://commons.wikimedia.org/wiki/File:San_Fernando_de_Henares_-_reciclaje_de_residuos_urbanos_04.JPG
 recycling_container.jpg             https://commons.wikimedia.org/wiki/File:Vitoria_-_Contenedores_de_reciclaje_en_la_Avenida_de_Gasteiz.jpg
+
+fire_hydrant_pillar.jpg        https://commons.wikimedia.org/wiki/File:W%C3%ABntreng,_Hydrant.jpg
+fire_hydrant_wall.jpg          https://commons.wikimedia.org/wiki/File:Guentherscheid_Tunnel_Rescue4.jpg
+fire_hydrant_underground.jpg   https://commons.wikimedia.org/wiki/File:Hydrant_MPWiK.jpg
+fire_hydrant_pond.jpg          https://commons.wikimedia.org/wiki/File:Dry_hydrant.jpg
+
