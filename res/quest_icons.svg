@@ -25,7 +25,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -109,6 +109,38 @@
          id="path18-3-2-2"
          d="M 0,38 H 38 V 0 H 0 Z" />
     </clipPath>
+    <filter
+       style="color-interpolation-filters:sRGB;"
+       inkscape:label="Drop Shadow"
+       id="filter5578">
+      <feFlood
+         flood-opacity="1"
+         flood-color="rgb(204,177,68)"
+         result="flood"
+         id="feFlood5568" />
+      <feComposite
+         in="flood"
+         in2="SourceGraphic"
+         operator="in"
+         result="composite1"
+         id="feComposite5570" />
+      <feGaussianBlur
+         in="composite1"
+         stdDeviation="2.05669e-14"
+         result="blur"
+         id="feGaussianBlur5572" />
+      <feOffset
+         dx="4.63518e-15"
+         dy="4"
+         result="offset"
+         id="feOffset5574" />
+      <feComposite
+         in="SourceGraphic"
+         in2="offset"
+         operator="over"
+         result="composite2"
+         id="feComposite5576" />
+    </filter>
   </defs>
   <sodipodi:namedview
      pagecolor="#000000"
@@ -123,13 +155,13 @@
      inkscape:window-height="1046"
      id="namedview4499"
      showgrid="false"
-     inkscape:zoom="1.0926393"
-     inkscape:cx="1739.6943"
-     inkscape:cy="1564.1593"
+     inkscape:zoom="2.1852786"
+     inkscape:cx="1755.1036"
+     inkscape:cy="1381.7221"
      inkscape:window-x="0"
      inkscape:window-y="16"
      inkscape:window-maximized="0"
-     inkscape:current-layer="svg4497"
+     inkscape:current-layer="g6079"
      showguides="true"
      inkscape:lockguides="true"
      inkscape:snap-global="true"
@@ -5394,7 +5426,7 @@
        class="st0" />
     <g
        transform="translate(1608.098,275.42347)"
-       style="display:inline"
+       style="display:inline;filter:url(#filter5578)"
        id="g66">
       <rect
          style="fill:#cd584c"
