@@ -93,7 +93,7 @@ def read(source_file_name):
 	relation = None
 	element = None
 	parser = ET.XMLPullParser(['start'])
-	source_file = open(source_file_name, "rb", encoding='utf8')
+	source_file = open(source_file_name, "r", encoding='utf8')
 	parser.feed(source_file.read())
 	source_file.close()
 	for event, elem in parser.read_events():
