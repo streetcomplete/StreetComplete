@@ -27,6 +27,11 @@ public class AddFireHydrantTypeForm extends ImageListQuestAnswerFragment
 		return 2;
 	}
 
+	@Override protected int getMaxNumberOfInitiallyShownItems()
+	{
+		return 2;
+	}
+
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState)
 	{
