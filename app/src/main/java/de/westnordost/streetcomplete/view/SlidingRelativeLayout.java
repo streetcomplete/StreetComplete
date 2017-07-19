@@ -1,9 +1,7 @@
 package de.westnordost.streetcomplete.view;
 
 import android.content.Context;
-import android.support.design.widget.CoordinatorLayout;
 import android.util.AttributeSet;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout;
 
@@ -43,5 +41,19 @@ public class SlidingRelativeLayout extends RelativeLayout
 	{
 		if(getHeight() == 0) return 0;
 		return getTranslationY() / getHeight();
+	}
+
+	public void setXFraction(float fraction)
+	{
+		setVisibility(getWidth() == 0 && fraction != 0 ? View.INVISIBLE : View.VISIBLE);
+
+		float translationX = getWidth() * fraction;
+		setTranslationX(translationX);
+	}
+
+	public float getXFraction()
+	{
+		if(getWidth() == 0) return 0;
+		return getTranslationX() / getWidth();
 	}
 }

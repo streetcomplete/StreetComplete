@@ -72,7 +72,7 @@
     <string name="no_location_permission_warning">"Your location is needed to scan for quests in your vicinity."</string>
     <string name="action_about">"About StreetComplete"</string>
     <string name="about_title_version">"Version"</string>
-    <string name="about_title_authors">"Authors"</string>
+    <string name="about_title_authors">"Credits"</string>
     <string name="about_summary_authors">"© 2016–2017 Tobias Zwick and contributors"</string>
     <string name="about_title_repository">"Source Repository"</string>
     <string name="about_summary_repository">"on GitHub"</string>
@@ -170,10 +170,6 @@ To display the map, vector tiles are retrieved from the &lt;a href=\"https://map
 &lt;p&gt;
 (&lt;i&gt;This is actually not implemented yet, just want to inform you what is to come!:&lt;/i&gt;) The data shown in the leaderboard and profile is aggregated from publicly available information from the OpenStreetMap. The data does not come from this app but basically from the public commit history of OSM users.
 &lt;/p&gt;"</string>
-    <string name="authors_html">"&lt;p&gt;© 2017 Tobias Zwick&lt;/p&gt;
-&lt;p&gt;The app uses the &lt;a href=\"https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free\"&gt;Beautiful Flat Icons&lt;/a&gt; set by Nick Roach, licensed under the &lt;a href=\"http://www.gnu.org/licenses/gpl-2.0.html\"&gt;GPL&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;Translations&lt;/b&gt;&lt;/p&gt;
-%1$s"</string>
     <string name="autosync_on">"On"</string>
     <string name="autosync_only_on_wifi">"Only on Wifi"</string>
     <string name="autosync_off">"Off"</string>
@@ -306,4 +302,10 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
 
 Otherwise, you can download another keyboard in the app store. Popular keyboards that support many languages are Google Gboard, SwiftKey Keyboard and Multiling O Keyboard."</string>
     <string name="quest_streetName_menuItem_nolanguage">(unspecified)</string>
+    <string name="credits_contributors">"See the &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;complete list on GitHub&lt;/a&gt;."</string>
+    <string name="credits_translations">"See the &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;project on POEditor&lt;/a&gt; for a complete list."</string>
+    <string name="credits_translations_title">Translations</string>
+    <string name="credits_contributors_title">Code Contributors</string>
+    <string name="credits_author_title">Author and Maintainer</string>
+    <string name="credits_and_more">and more …</string>
 </resources>
