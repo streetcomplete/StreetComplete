@@ -34,7 +34,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 			URBAN_OR_RURAL_ROADS = Arrays.asList("primary","secondary","tertiary","unclassified",
 					"primary_link","secondary_link","tertiary_link","road"),
 			ROADS_WITH_DEFINITE_SPEED_LIMIT = Arrays.asList("trunk","motorway","living_street"),
-			URBAN_OR_SLOWZONE_ROADS = Arrays.asList("residential");
+			URBAN_OR_SLOWZONE_ROADS = Arrays.asList("residential","unclassified");
 
 	private EditText speedInput;
 	private CheckBox zoneCheckbox;
