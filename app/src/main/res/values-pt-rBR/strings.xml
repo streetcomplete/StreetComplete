@@ -14,8 +14,6 @@
     <string name="pref_title_not_authorized_summary">"Ainda não autorizado"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
     <string name="pref_tilecache_size_message">"Espeço em megabytes reservado no armazenamento externo para cachear blocos do mapa"</string>
-    <string name="pref_title_quest_expiration_time">"Cachear Missões"</string>
-    <string name="pref_summary_quest_expiration">"para %s antes de fazer o download novamente"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Mostrar todas as notas"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Também mostrando notas não formuladas como perguntas"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Ignorando notas não formuladas como perguntas"</string>
@@ -36,7 +34,6 @@
     <string name="quest_streetName_title">"Qual o nome desta rua?"</string>
     <string name="quest_streetName_description">"como escrito na placa, abreviaturas são expandidas:"</string>
     <string name="quest_streetName_answer_noName_confirmation_description">"Às vezes a placa está apenas em uma das extremidades da rua. Além disso, note que pode não haver placas extra para ruas laterais que pertencem a uma rua maior. Normalmente, qualquer rua com casas tem um nome."</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title">"Abreviação no nome?"</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Se o nome pode ser escrito sem uma abreviação, então ele deve ser expandido. Muitas abreviaturas comuns são expandidas automaticamente enquanto você digita, mas provavelmente não todas."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Sem abreviação"</string>
     <string name="quest_openingHours_name_title">"Qual é o horário de funcionamento de %s?"</string>
@@ -74,6 +71,8 @@
     <string name="no_location_permission_warning">"A sua localização é necessária para escanear por missões nesta área."</string>
     <string name="action_about">"Sobre StreetComplete"</string>
     <string name="about_title_version">"Versão"</string>
+
+    <!-- Fuzzy -->
     <string name="about_title_authors">"Autores"</string>
     <string name="about_summary_authors">"© 2016–2017 Tobias Zwick e contribuidores"</string>
     <string name="about_title_repository">"Repositório fonte"</string>
@@ -150,14 +149,6 @@ Para exibir o mapa, os blocos vetoriais são recuperadas do &lt;a href=\"https:/
 &lt;p&gt;
 (&lt;i&gt;Isto ainda não está implementado, apenas queremos informar o que está por vir!:&lt;/i&gt;) Os dados apresentados no leaderboard e no perfil são agregados a partir das informações publicamente disponíveis do OpenStreetMap. Os dados não vêm deste aplicativo, mas basicamente do histórico de commit público dos usuários do OSM.
 &lt;/p&gt;"</string>
-    <string name="authors_html">"&lt;p&gt;© 2017 Tobias Zwick&lt;/p&gt;
-&lt;p&gt;O aplicativo usa o &lt;a href=\"https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free\"&gt;Beautiful Flat Icons&lt;/a&gt; Definido por Nick Roach, licenciado sob a &lt;a href=\"http://www.gnu.org/licenses/gpl-2.0.html\"&gt;GPL&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;Traduções&lt;/b&gt;&lt;/p&gt;
-%1$s"</string>
-    <string name="quest_expiration_one_day">"Um dia"</string>
-    <string name="quest_expiration_a_week">"Uma semana"</string>
-    <string name="quest_expiration_two_weeks">"Duas semanas"</string>
-    <string name="quest_expiration_one_month">"Um mês"</string>
     <string name="autosync_on">"Ligado"</string>
 
     <!-- Fuzzy -->
@@ -190,18 +181,8 @@ Para exibir o mapa, os blocos vetoriais são recuperadas do &lt;a href=\"https:/
     <string name="quest_sidewalk_onlyWest">"Apenas no lado ocidental"</string>
     <string name="quest_sidewalk_onlyEast">"Apenas no lado oriental"</string>
     <string name="quest_sidewalk_yes">"Sim"</string>
-    <string name="quest_maxspeed_title">"O que as placas dizem sobre o limite de velocidade nesta rua?"</string>
     <string name="quest_maxspeed_answer_noSign">"Não há placa"</string>
-    <string name="quest_maxspeed_answer_noSign_info">"Bem, se não houver nenhuma placa, os limites de velocidade gerais aplicam-se."</string>
-    <string name="quest_maxspeed_answer_noSign_info_motorway">"Isso é %1$s em uma estrada."</string>
-    <string name="quest_maxspeed_answer_noSign_info_living_street">"Isso é %1$s em uma área residencial."</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Onde é esta rua?"</string>
-    <string name="quest_maxspeed_answer_noSign_urban">"Na cidade: aplica-se o limite de velocidade de %1$s"</string>
-    <string name="quest_maxspeed_answer_noSign_rural">"Fora da cidade: aplica-se o limite de velocidade de %1$s."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_maxspeed_answer_noSign_implicitOk">"Justo"</string>
-    <string name="quest_maxspeed_answer_variable">"Sinais eletrônicos mostram limites de velocidade variáveis"</string>
     <string name="quest_cyclewaySurface_title">"Que superfície tem a ciclovia aqui?"</string>
     <string name="quest_cycleway_title">"Existe uma ciclovia nesta rua?"</string>
     <string name="quest_buildingType_title">"Que tipo de edifício é esse?"</string>
@@ -285,8 +266,6 @@ As informações inseridas são adicionadas diretamente ao OpenStreetMap em seu 
     <string name="quest_manySports_confirmation_generic">"Multiúso"</string>
     <string name="quest_sport_manySports_confirmation_title">"Você selecionou muitos esportes"</string>
     <string name="quest_busStopShelter_name_title">"O ponto de ônibus %s tem um telhado?"</string>
-    <string name="quest_leave_new_note_in_response_to">"Em resposta ao \"%1$s\":
-%2$s"</string>
     <string name="quest_source_dialog_title">"Tem a certeza que verificou isto no local?"</string>
     <string name="quest_source_dialog_note">"Apenas informação que foi feita durante um levantamento deve ser adicionada."</string>
     <string name="dialog_session_dont_show_again">"Não mostrar de novo nesta sessão"</string>

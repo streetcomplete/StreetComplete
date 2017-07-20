@@ -14,8 +14,6 @@
     <string name="pref_title_not_authorized_summary">"Aún no autorizado"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
     <string name="pref_tilecache_size_message">"Espacio en megabytes reservado en el almacenamiento para guardar las secciones del mapa en la caché"</string>
-    <string name="pref_title_quest_expiration_time">"Guardar tareas en caché"</string>
-    <string name="pref_summary_quest_expiration">"durante %s antes de descargar de nuevo"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Mostrar todas las notas"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Se muestran también las notas no formuladas como preguntas"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Se ignoran las notas no formuladas como preguntas"</string>
@@ -36,7 +34,6 @@
     <string name="quest_streetName_title">"¿Cómo se llama esta vía?"</string>
     <string name="quest_streetName_description">"tal y como se lee en el letrero de calle, las abreviaturas se amplían:"</string>
     <string name="quest_streetName_answer_noName_confirmation_description">"Algunas veces el letrero solo está en un extremo de la calle. También, ten presente que puede no haber letreros en las vías adyacentes que pertenecen a una calle grande. Generalmente, cualquier calle con casas tiene un nombre."</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title">"¿Hay alguna abreviatura en el nombre?"</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Si el nombre se puede decir sin una abreviatura, entonces debe ser ampliado. Muchas abreviaturas comunes se expanden automáticamente mientras se escribe, pero probablemente no todas."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Sin abreviatura"</string>
     <string name="quest_openingHours_name_title">"¿Cuáles son las horas de apertura de %s?"</string>
@@ -74,6 +71,8 @@
     <string name="no_location_permission_warning">"Tu ubicación es necesaria para descargar tareas cercanas."</string>
     <string name="action_about">"Acerca de StreetComplete"</string>
     <string name="about_title_version">"Versión"</string>
+
+    <!-- Fuzzy -->
     <string name="about_title_authors">"Autores"</string>
     <string name="about_summary_authors">"© 2016–2017 Tobias Zwick y colaboradores"</string>
     <string name="about_title_repository">"Repositorio de código fuente"</string>
@@ -143,14 +142,6 @@ Para visualizar el mapa, se descargan secciones de mapa del &lt;a href=\"https:/
 &lt;p&gt;
 (&lt;i&gt;Lo siguiente no se ha implementado todavía, ¡solo quiero informarte de lo que viene!:&lt;/i&gt;) Los datos que se muestran en la tabla de clasificación y el perfil se consigue de información disponible públicamente desde OpenStreetMap. Los datos no proceden de esta aplicación sino esencialmente del historial de cambios público de los usuarios de OSM.
 &lt;/p&gt;"</string>
-    <string name="authors_html">"&lt;p&gt;© 2017 Tobias Zwick&lt;/p&gt;
-&lt;p&gt;La aplicación utiliza &lt;a href=\"https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free\"&gt;Beautiful Flat Icons&lt;/a&gt; hecho por Nick Roach, bajo licencia &lt;a href=\"http://www.gnu.org/licenses/gpl-2.0.html\"&gt;GPL&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;Traducciones&lt;/b&gt;&lt;/p&gt;
-%1$s"</string>
-    <string name="quest_expiration_one_day">"un día"</string>
-    <string name="quest_expiration_a_week">"una semana"</string>
-    <string name="quest_expiration_two_weeks">"dos semanas"</string>
-    <string name="quest_expiration_one_month">"un mes"</string>
     <string name="autosync_on">"Activada"</string>
     <string name="autosync_only_on_wifi">"Sólo en wifi"</string>
     <string name="autosync_off">"Desactivada"</string>
@@ -181,16 +172,8 @@ Para visualizar el mapa, se descargan secciones de mapa del &lt;a href=\"https:/
     <string name="quest_sidewalk_onlyWest">"Sólo en el lado oeste"</string>
     <string name="quest_sidewalk_onlyEast">"Solo en el lado este"</string>
     <string name="quest_sidewalk_yes">"Sí"</string>
-    <string name="quest_maxspeed_title">"¿Qué límite de velocidad indican las señales en esta calle?"</string>
     <string name="quest_maxspeed_answer_noSign">"No hay señal"</string>
-    <string name="quest_maxspeed_answer_noSign_info">"Bueno, si no hay señales, se aplican los límites de velocidad genéricos."</string>
-    <string name="quest_maxspeed_answer_noSign_info_motorway">"Esto es %1$s en una autopista"</string>
-    <string name="quest_maxspeed_answer_noSign_info_living_street">"Esto es %1$s en una vía residencial"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"¿Dónde está esta calle?"</string>
-    <string name="quest_maxspeed_answer_noSign_urban">"En zona urbana: se aplica un límite de velocidad de %1$s."</string>
-    <string name="quest_maxspeed_answer_noSign_rural">"Fuera de la zona urbana: se aplica un límite de velocidad de %1$s."</string>
-    <string name="quest_maxspeed_answer_noSign_implicitOk">"Bastante lejos"</string>
-    <string name="quest_maxspeed_answer_variable">"Los carteles electrónicos muestran límites de velocidad variables"</string>
     <string name="quest_cyclewaySurface_title">"¿Qué superficie tiene el carril bici?"</string>
     <string name="quest_cycleway_title">"¿Hay un carril bici en esta calle?"</string>
     <string name="quest_buildingType_title">"¿Qué tipo de edificio es éste?"</string>
@@ -262,6 +245,4 @@ La información que introduzcas se añade directamente a OpenStreetMap con tu no
     <string name="quest_manySports_confirmation_generic">"De propósito general"</string>
     <string name="quest_sport_manySports_confirmation_title">"Seleccionaste demasiados deportes"</string>
     <string name="quest_busStopShelter_name_title">"¿Está cubierta la parada de autobús %s?"</string>
-    <string name="quest_leave_new_note_in_response_to">"Respondiendo a «%1$s»:
-%2$s"</string>
 </resources>
