@@ -14,8 +14,6 @@
     <string name="pref_title_not_authorized_summary">"Ei vielä kirjauduttu"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
     <string name="pref_tilecache_size_message">"Ulkoisen tallennustilan määrä megabiteissä varattuna karttatiilien välimuistiksi"</string>
-    <string name="pref_title_quest_expiration_time">"Varastoi kohteita"</string>
-    <string name="pref_summary_quest_expiration">" %s ennen uuden lataamista"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Näytä kaikki huomautukset"</string>
 
     <!-- Fuzzy -->
@@ -42,7 +40,6 @@
     <string name="quest_streetName_title">"Mikä on tämän tien nimi?"</string>
     <string name="quest_streetName_description">"kuten kirjoitettu tienviitassa, lyhennökset laajennettuna"</string>
     <string name="quest_streetName_answer_noName_confirmation_description">"Joskus tienviitta on vain tien päässä. Huomioi myös ettei sivuteillä, jotka alkavat isommasta tiestä, ole välttämättä ylimääräisiä tienviittoja. Yleensä kaikilla teillä joiden varressa on taloja on myös nimi."</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title">"Lyhennös nimessä?"</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Jos nimi pystytään sanomaan ilman lyhennöstä, se myös kirjoitetaan ilman. Monet yleiset lyhenteet laajennetaan automaattisesti kirjoitettaessa, muttei kaikkia."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Ei lyhennettä"</string>
     <string name="quest_openingHours_name_title">"Mitkä ovat paikan %s aukioloajat?"</string>
@@ -82,6 +79,8 @@
     <string name="no_location_permission_warning">"Sijaintiasi tarvitaan täydennyksien hakuun lähiympäristöstäsi."</string>
     <string name="action_about">"Tietoja StreetCompletesta"</string>
     <string name="about_title_version">"Versio"</string>
+
+    <!-- Fuzzy -->
     <string name="about_title_authors">"Tekijät"</string>
     <string name="about_summary_authors">"© 2016-2017 Tobias Zwick ja avustajat"</string>
     <string name="about_title_repository">"Lähdekoodin sijainti"</string>
@@ -150,14 +149,6 @@ Näytettäessä karttaa, vektoritiilet haetaan &lt;a href=\"https://mapzen.com/p
 &lt;p&gt;
 (&lt;i&gt;Tätä ei oikeastaan ome vielä lisätty, haluan vain informoida mitä on tulossa!:&lt;/i&gt;) Data joka näytetään kärkitilastossa ja profiilissa on kerätty julkisesti saatavilla OpenStreetMapista. Data ei tule tästä sovelluksesta, vaan julkisesti luovutetusta OSM -käyttäjien muokkaushistoriasta.
 &lt;/p&gt;"</string>
-    <string name="authors_html">"&lt;p&gt;© 2017 Tobias Zwick&lt;/p&gt;
-&lt;p&gt;Sovellus käyttää &lt;a href=\"https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free\"&gt;Beautiful Flat -kuvakkeita&lt;/a&gt; Nick Roachin kokoelmaa, joka lisensoitu käyttäen &lt;a href=\"http://www.gnu.org/licenses/gpl-2.0.html\"&gt;GPL -lisenssiä&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;Käännökset&lt;/b&gt;&lt;/p&gt;
-%1$s"</string>
-    <string name="quest_expiration_one_day">"Yksi päivä"</string>
-    <string name="quest_expiration_a_week">"Viikko"</string>
-    <string name="quest_expiration_two_weeks">"Kaksi viikkoa"</string>
-    <string name="quest_expiration_one_month">"Kuukausi"</string>
     <string name="autosync_on">"Päällä"</string>
     <string name="autosync_only_on_wifi">"Vain Wifi"</string>
     <string name="autosync_off">"Off"</string>
@@ -190,16 +181,8 @@ Näytettäessä karttaa, vektoritiilet haetaan &lt;a href=\"https://mapzen.com/p
     <string name="quest_sidewalk_onlyWest">"Vain länsisivulla"</string>
     <string name="quest_sidewalk_onlyEast">"Vain itäsivulla"</string>
     <string name="quest_sidewalk_yes">"Kyllä"</string>
-    <string name="quest_maxspeed_title">"Mitä kyltit sanovat nopeusrajoitukseksi tällä tiellä?"</string>
     <string name="quest_maxspeed_answer_noSign">"Ei kylttiä"</string>
-    <string name="quest_maxspeed_answer_noSign_info">"Ei kylttejä, yleinen nopeusrajoitus käytössä."</string>
-    <string name="quest_maxspeed_answer_noSign_info_motorway">"Tämä on %1$s moottoritiellä."</string>
-    <string name="quest_maxspeed_answer_noSign_info_living_street">"Tämä on %1$s asuinkadulla"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Missä tämä katu on?"</string>
-    <string name="quest_maxspeed_answer_noSign_urban">"Kaupungissa: %1$s rajoitus käytössä."</string>
-    <string name="quest_maxspeed_answer_noSign_rural">"Kaupungin ulkopuolella: %1$s rajoitus käytössä."</string>
-    <string name="quest_maxspeed_answer_noSign_implicitOk">"Tarpeeksi reilu"</string>
-    <string name="quest_maxspeed_answer_variable">"Sähköinen kyltti näyttää vaihtelevia nopeuksia"</string>
     <string name="quest_cyclewaySurface_title">"Mikä päällyste tällä pyörätiellä on?"</string>
     <string name="quest_cycleway_title">"Onko tällä tiellä pyörätie?"</string>
     <string name="quest_buildingType_title">"Millainen rakennus tämä on?"</string>
@@ -271,5 +254,4 @@ Tiedot jotka laitat lähetetään suoraan OpenStreetMapiin nimelläsi ilman tarv
     <string name="quest_manySports_confirmation_generic">"Yleiskäyttöön"</string>
     <string name="quest_sport_manySports_confirmation_title">"Valitsit monia lajeja"</string>
     <string name="quest_busStopShelter_name_title">"Onko bussipusäkillä %s katosta?"</string>
-    <string name="quest_leave_new_note_in_response_to">"Vastauksena viestiin \"%1$s\": %2$s"</string>
 </resources>

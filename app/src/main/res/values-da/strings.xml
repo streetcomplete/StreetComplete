@@ -14,8 +14,6 @@
     <string name="pref_title_not_authorized_summary">"Er endnu ikke autoriseret"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
     <string name="pref_tilecache_size_message">"Plads i megabytes reserveret på den eksterne hukommelse til at gemme kortfliser"</string>
-    <string name="pref_title_quest_expiration_time">"Gem opgaver"</string>
-    <string name="pref_summary_quest_expiration">"i %s før nye downloades"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Vis alle noter"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Vis også noter der ikke er skrevet som spørgsmål"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Ignorer noter der ikke er formuleret som spørgsmål"</string>
@@ -38,7 +36,6 @@
     <!-- I'm unsure what this means, "abbreviations *will be* expanded" or "expand abbrevations"? (currently translated to "will be" -->
     <string name="quest_streetName_description">"som skrevet på vejskiltet, forkortelser bliver udvidet:"</string>
     <string name="quest_streetName_answer_noName_confirmation_description">"Nogle gange er vejskiltet kun på den ene side af gaden. Bemærk også at der måske ikke er et ekstra vejskilt for sidegader der tilhører en større gade. For det meste har alle gader med huse et navn."</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title">"Forkortelse i navnet?"</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Hvis navnet kan skrives uden en forkortelse bør den det. Mange typiske forkortelser er udvidede automatisk mens to skriver, men ikke alle."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Ingen forkortelse"</string>
     <string name="quest_openingHours_name_title">"Hvad er åbningstiderne for %s?"</string>
@@ -76,6 +73,8 @@
     <string name="no_location_permission_warning">"Din lokation er nødvendig for at skanne efter opgaver i dit nærområde."</string>
     <string name="action_about">"Om StreetComplete"</string>
     <string name="about_title_version">"Udgave"</string>
+
+    <!-- Fuzzy -->
     <string name="about_title_authors">"Udviklere"</string>
     <string name="about_summary_authors">"© 2016–2017 Tobias Zwick og bidragsydere"</string>
     <string name="about_title_repository">"Kildekode"</string>
@@ -147,14 +146,6 @@ For at vise kortet er vektorfliser hentet fra &lt;a href=\"https://mapzen.com/pr
 &lt;p&gt;
 (&lt;i&gt;Dette er ikke implementeret endnu, jeg vil bare informere dig om hvad der er i vente!&lt;/i&gt;) Data der vises på top-yder boards og profiler er indstamlet fra offentligt tilgængelige informationer fra OpenStreetMap. Denne data kommer ikke fra denne app, men fra den offentligt tilgængelige bidragshistorik af OSM brugere.
 &lt;/p&gt;"</string>
-    <string name="authors_html">"&lt;p&gt;© 2017 Tobias Zwick&lt;/p&gt;
-&lt;p&gt;Denne app bruger &lt;a href=\"https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free\"&gt;Beautiful Flat Icons&lt;/a&gt; sæt af Nick Roach, underlagt licensen &lt;a href=\"http://www.gnu.org/licenses/gpl-2.0.html\"&gt;GPL&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;Oversættelser&lt;/b&gt;&lt;/p&gt;
-%1$s "</string>
-    <string name="quest_expiration_one_day">"En dag"</string>
-    <string name="quest_expiration_a_week">"En uge"</string>
-    <string name="quest_expiration_two_weeks">"To uger"</string>
-    <string name="quest_expiration_one_month">"En måned"</string>
     <string name="autosync_on">"Til"</string>
     <string name="autosync_only_on_wifi">"Kun på Wifi"</string>
     <string name="autosync_off">"Fra"</string>
@@ -189,19 +180,8 @@ For at vise kortet er vektorfliser hentet fra &lt;a href=\"https://mapzen.com/pr
     <string name="quest_sidewalk_onlyWest">"Kun på den vestlige side"</string>
     <string name="quest_sidewalk_onlyEast">"Kun på den østlige side"</string>
     <string name="quest_sidewalk_yes">"Ja"</string>
-    <string name="quest_maxspeed_title">"Hvad siger skiltene omkring fartbegrænsninger på denne vej?"</string>
     <string name="quest_maxspeed_answer_noSign">"Der er intet skilt"</string>
-    <string name="quest_maxspeed_answer_noSign_info">"Tja, hvis der ikke er skilte må generele fartregler gælde"</string>
-    <string name="quest_maxspeed_answer_noSign_info_motorway">"Dette er %1$s på en motorvej"</string>
-    <string name="quest_maxspeed_answer_noSign_info_living_street">"Dette er %1$s på en beboelsesvej"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Hvor er denne vej?"</string>
-    <string name="quest_maxspeed_answer_noSign_urban">"I byer: gælder %1$s fartbegrænsning"</string>
-    <string name="quest_maxspeed_answer_noSign_rural">"Udenfor byer: gælder %1$s fartbegrænsing"</string>
-
-    <!-- Is there a example use of this tekst? (it sounds very chill) -->
-    <!-- Fuzzy -->
-    <string name="quest_maxspeed_answer_noSign_implicitOk">"Lyder rigtigt"</string>
-    <string name="quest_maxspeed_answer_variable">"Elektroniske skilte viser varierende fartbegrænsninger"</string>
     <string name="quest_cyclewaySurface_title">"Hvilken overflade har cykelstien?"</string>
     <string name="quest_cycleway_title">"Er der en cykelsti til denne vej?"</string>
     <string name="quest_buildingType_title">"Hvilken slags bygning er dette?"</string>

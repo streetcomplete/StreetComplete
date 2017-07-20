@@ -14,8 +14,6 @@
     <string name="pref_title_not_authorized_summary">"まだ認証されていません"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
     <string name="pref_tilecache_size_message">"メガバイト単位の容量で、マップタイルをキャッシュするために外部ストレージを予約します"</string>
-    <string name="pref_title_quest_expiration_time">"キャッシュの探索"</string>
-    <string name="pref_summary_quest_expiration">"新しいダウンロードの前の %s"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"すべてのメモを表示"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"質問として表現されていないメモも表示します"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"質問として表現されていないメモを無視します"</string>
@@ -36,7 +34,6 @@
     <string name="quest_streetName_title">"この道の名前は何ですか?"</string>
     <string name="quest_streetName_description">"通りの標識に書かれているように、略語が展開されます:"</string>
     <string name="quest_streetName_answer_noName_confirmation_description">"ときどき通りの標識は通りの片端にしかないことがあります。 また、大きな通りに属する側は追加の標識がないことがあることに注意してください。 通常、店がある通りには名前があります。"</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title">"名前の略語は?"</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"名前を略語で綴ることができない場合は、展開する必要があります。 入力時に一般的な略語の多くは自動的に展開されますが、すべてではありません。"</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"略語はありません"</string>
     <string name="quest_openingHours_name_title">"%s の営業時間はどのくらいですか?"</string>
@@ -74,6 +71,8 @@
     <string name="no_location_permission_warning">"近くの探索をスキャンするには、あなたの場所が必要です。"</string>
     <string name="action_about">"StreetComplete について"</string>
     <string name="about_title_version">"バージョン"</string>
+
+    <!-- Fuzzy -->
     <string name="about_title_authors">"作者"</string>
     <string name="about_summary_authors">"© 2016–2017 Tobias Zwick と貢献者"</string>
     <string name="about_title_repository">"ソースリポジトリ"</string>
@@ -143,14 +142,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
 &lt;p&gt;
 （&lt;i&gt;これは実際にはまだ実装されていませんが、何が来るのかをお知らせします!:&lt;/i&gt;）リーダーボードとプロフィールに表示されるデータは、OpenStreetMap から公開されている情報から集約されます。データはこのアプリからは得らるものではなく、基本的に OSM ユーザーの公開コミット履歴から取得されます。
 &lt;/p&gt;"</string>
-    <string name="authors_html">"&lt;p&gt;© 2017 Tobias Zwick&lt;/p&gt;
-&lt;p&gt;アプリは &lt;a href=\"http://www.gnu.org/licenses/gpl-2.0.html\"&gt;GPL&lt;/a&gt; ライセンスの下で、 Nick Roach の &lt;a href=\"https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free\"&gt;Beautiful Flat Icons&lt;/a&gt; セットを使用しています。&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;翻訳&lt;/b&gt;&lt;/p&gt;
-%1$s"</string>
-    <string name="quest_expiration_one_day">"1 日"</string>
-    <string name="quest_expiration_a_week">"1 週間"</string>
-    <string name="quest_expiration_two_weeks">"2 週間"</string>
-    <string name="quest_expiration_one_month">"1 ヶ月"</string>
     <string name="autosync_on">"オン"</string>
     <string name="autosync_only_on_wifi">"Wifi 接続時のみ"</string>
     <string name="autosync_off">"オフ"</string>
@@ -181,16 +172,8 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_sidewalk_onlyWest">"西側のみ"</string>
     <string name="quest_sidewalk_onlyEast">"東側のみ"</string>
     <string name="quest_sidewalk_yes">"はい"</string>
-    <string name="quest_maxspeed_title">"標識は、この通りの速度制限について何と言っていますか?"</string>
     <string name="quest_maxspeed_answer_noSign">"標識なし"</string>
-    <string name="quest_maxspeed_answer_noSign_info">"まあ、標識がない場合、一般的な速度制限が適用されます。"</string>
-    <string name="quest_maxspeed_answer_noSign_info_motorway">"これは高速道路では %1$s です。"</string>
-    <string name="quest_maxspeed_answer_noSign_info_living_street">"これは生活道路では %1$s です。"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"この通りはどこにありますか?"</string>
-    <string name="quest_maxspeed_answer_noSign_urban">"街中: %1$s の速度制限が適用されます。"</string>
-    <string name="quest_maxspeed_answer_noSign_rural">"郊外: %1$s の制限が適用されます。"</string>
-    <string name="quest_maxspeed_answer_noSign_implicitOk">"十分に公正"</string>
-    <string name="quest_maxspeed_answer_variable">"電子標識が可変の速度制限を示します"</string>
     <string name="quest_cyclewaySurface_title">"ここの自転車道はどんな路面ですか?"</string>
     <string name="quest_cycleway_title">"この通りに自転車道はありますか?"</string>
     <string name="quest_buildingType_title">"これはどんな建物ですか?"</string>
@@ -262,10 +245,33 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_manySports_confirmation_generic">"一般用途"</string>
     <string name="quest_sport_manySports_confirmation_title">"多くのスポーツを選んています"</string>
     <string name="quest_busStopShelter_name_title">"バス停 %s には屋根がありますか?"</string>
-    <string name="quest_leave_new_note_in_response_to">"\"%1$s\" への返信:
-%2$s"</string>
     <string name="quest_toiletsFee_title">"これらのトイレは有料ですか?"</string>
     <string name="quest_tactilePaving_title_bus">"このバス停には点字ブロックがありますか?"</string>
     <string name="quest_tactilePaving_title_crosswalk">"この横断歩道には点字ブロックがありますか?"</string>
+    <string name="quest_source_dialog_title">"この場所で実際に確認しましたか?"</string>
     <string name="quest_tactilePaving_title_name_bus">"バス停 \"%s\" には点字ブロックがありますか?"</string>
+    <string name="quest_source_dialog_note">"調査で見つかった情報のみを入力する必要があります。"</string>
+    <string name="quest_bicycleParkingCoveredStatus_title">"この駐輪場は屋根がありますか (雨から守られていますか)?"</string>
+    <string name="dialog_session_dont_show_again">"このセッションを今後表示しない"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_streetSurface_name_title">"道路 \"%s\" はどのような路面ですか?"</string>
+    <string name="quest_maxspeed_title_short">"この通りの速度制限標識は何ですか?"</string>
+    <string name="quest_maxspeed_unusualInput_confirmation_description">"この速度制限は不確かです。"</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation_title">"何の制限も表示されていませんか?"</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation">"通りの端で確認しましたか?
+標識がない場合は、既定の速度制限が適用されます。"</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation_positive">"はい。標識はありません"</string>
+    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"都市の道路は、農村の道路とは異なる既定の速度制限があります。"</string>
+    <string name="quest_maxspeed_answer_noSign_urbanOk">"街中"</string>
+    <string name="quest_maxspeed_answer_noSign_ruralOk">"街の外"</string>
+    <string name="quest_maxspeed_answer_noSign_info_zone">"幹線道路の交差点にこのようなサインがある場合、そこに掲示された速度制限が区域全体に適用されるため、区域内に個別の標識はありません。"</string>
+    <string name="quest_sport_softball">"ソフトボール"</string>
+    <string name="quest_sport_racquet">"ラケットボール"</string>
+    <string name="quest_sport_ice_skating">"アイススケート"</string>
+    <string name="quest_sport_paddle_tennis">"パドルテニス"</string>
+    <string name="quest_sport_gaelic_games">"ゲーリックフットボール"</string>
+    <string name="quest_sport_sepak_takraw">"セパタクロー"</string>
+    <string name="quest_wheelchairAccess_name_title">"\"%s\" 車椅子にアクセスできますか?"</string>
+    <string name="quest_wheelchairAccess_limited">"部分的"</string>
 </resources>

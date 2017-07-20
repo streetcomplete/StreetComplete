@@ -14,8 +14,6 @@
     <string name="pref_title_not_authorized_summary">"Dar neautorizuota"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
     <string name="pref_tilecache_size_message">"Vieta megabaitais, rezervuota išorinėje laikmenoje žemėlapio kaladėlių podėliui"</string>
-    <string name="pref_title_quest_expiration_time">"Atsiminti užduotis"</string>
-    <string name="pref_summary_quest_expiration">"prieš atsisiunčiant iš naujo"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Rodyti visas pastabas"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Į tas, kurios nėra suformuluotos kaip klausimai"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Ignoruojant tas, kurios nėra suformuluotos kaip klausimai"</string>
@@ -36,7 +34,6 @@
     <string name="quest_streetName_title">"Koks šio kelio pavadinimas?"</string>
     <string name="quest_streetName_description">"kaip parašyta ant gatvės ženklo, sutrumpinimai išplėsti:"</string>
     <string name="quest_streetName_answer_noName_confirmation_description">"Kartais gatvės pavadinimas būna tik viename gatvės gale. Taip pat pastebėtina, kad gali nebūti ženklų šalutinėms gatvėms, kurios priklauso didesnei gatvei. Paprastai bet kokia gatvė su namais turi pavadinimą."</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title">"Sutrumpinimas pavadinime?"</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Jei pavadinimas gali būti parašytas be sutrumpinimo, tai jis taip ir turi būti parašytas (išskyrus „g.“ gatvei)."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Nėra sutrumpinimo"</string>
     <string name="quest_openingHours_name_title">"Koks yra %s darbo laikas?"</string>
@@ -74,6 +71,8 @@
     <string name="no_location_permission_warning">"Jūsų vietos reikia tam, kad būtų galima ieškoti užduočių šalia jūsų."</string>
     <string name="action_about">"Apie StreetComplete"</string>
     <string name="about_title_version">"Versija"</string>
+
+    <!-- Fuzzy -->
     <string name="about_title_authors">"Autoriai"</string>
     <string name="about_summary_authors">"© 2016–2017 Tobias Zwick ir talkininkai"</string>
     <string name="about_title_repository">"Išeities kodo repozitorija"</string>
@@ -143,14 +142,6 @@ Bet, prieš įkeliant jūsų pakeitimus, aplikacija patikrina &lt;a href=\"http:
 &lt;p&gt;
 (&lt;i&gt;Tai kol kas dar nepadaryta, bet noriu informuoti, kas bus artimiausiu metu:&lt;/i&gt;) Duomenys rodomi lyderių lentoje ir profilyje agreguojami iš viešai prieinamos OpenStreetMap informacijos. Duomenys imami ne iš šios aplikacijos, bet iš viešos OSM naudotojų pakeitimų istorijos.
 &lt;/p&gt;"</string>
-    <string name="authors_html">"&lt;p&gt;© 2017 Tobias Zwick&lt;/p&gt;
-&lt;p&gt;Aplikacija naudoja &lt;a href=\"https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free\"&gt;Beautiful Flat Icons&lt;/a&gt; rinkinį, sukurtą Nick Roach, licencijuotą &lt;a href=\"http://www.gnu.org/licenses/gpl-2.0.html\"&gt;GPL&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;Vertimai&lt;/b&gt;&lt;/p&gt;
-%1$s"</string>
-    <string name="quest_expiration_one_day">"Vieną dieną"</string>
-    <string name="quest_expiration_a_week">"Savaitę"</string>
-    <string name="quest_expiration_two_weeks">"Dvi savaites"</string>
-    <string name="quest_expiration_one_month">"Vieną mėnesį"</string>
     <string name="autosync_on">"Įjungta"</string>
     <string name="autosync_only_on_wifi">"Tik per Wifi"</string>
     <string name="autosync_off">"Išjungta"</string>
@@ -180,16 +171,8 @@ Bet, prieš įkeliant jūsų pakeitimus, aplikacija patikrina &lt;a href=\"http:
     <string name="quest_sidewalk_onlyWest">"Tik vakarinėje pusėje"</string>
     <string name="quest_sidewalk_onlyEast">"Tik rytinėje pusėje"</string>
     <string name="quest_sidewalk_yes">"Taip"</string>
-    <string name="quest_maxspeed_title">"Ką ženklai sako apie didžiausią leistiną greitį šiame kelyje?"</string>
     <string name="quest_maxspeed_answer_noSign">"Nėra ženklo"</string>
-    <string name="quest_maxspeed_answer_noSign_info">"Na, kadangi ženklų nėra, tai galioja bendras greičio apribojimas."</string>
-    <string name="quest_maxspeed_answer_noSign_info_motorway">"Kuris yra %1$s greitkelyje."</string>
-    <string name="quest_maxspeed_answer_noSign_info_living_street">"uris yra %1$s gyvenamojoje zonoje."</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Kur yra ši gatvė?"</string>
-    <string name="quest_maxspeed_answer_noSign_urban">"Mieste: galioja greičio apribojimas %1$s."</string>
-    <string name="quest_maxspeed_answer_noSign_rural">"Užmiestyje: galioja greičio apribojimas %1$s."</string>
-    <string name="quest_maxspeed_answer_noSign_implicitOk">"Tinka"</string>
-    <string name="quest_maxspeed_answer_variable">"Elektroniniai ženklai rodo kintantį maksimalų greitį"</string>
     <string name="quest_cyclewaySurface_title">"Kokia yra šio dviračių tako danga?"</string>
     <string name="quest_cycleway_title">"Ar šioje gatvėje yra dviračių takas?"</string>
     <string name="quest_buildingType_title">"Kokio tipo šis pastatas?"</string>
@@ -261,6 +244,4 @@ Jūsų įvesta informacija tiesiog įkeliama į OpenStreetMap jūsų vardu, be k
     <string name="quest_manySports_confirmation_generic">"Bendros paskirties"</string>
     <string name="quest_sport_manySports_confirmation_title">"Jūs parinkote kelias sporto šakas"</string>
     <string name="quest_busStopShelter_name_title">"Ar autobuso stotelė %s turi stogą?"</string>
-    <string name="quest_leave_new_note_in_response_to">"Atsakant į „%1$s“:
-%2$s"</string>
 </resources>

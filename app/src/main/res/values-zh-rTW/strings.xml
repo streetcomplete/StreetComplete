@@ -14,8 +14,6 @@
     <string name="pref_title_not_authorized_summary">"尚未驗證"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
     <string name="pref_tilecache_size_message">"MB為單位的空間保留用來暫存地圖圖磚"</string>
-    <string name="pref_title_quest_expiration_time">"暫存任務"</string>
-    <string name="pref_summary_quest_expiration">"下載新資料前需 %s"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"顯示所有註記"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"也顯示非問題格式的注記"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"忽略非問題格式的注記"</string>
@@ -36,7 +34,6 @@
     <string name="quest_streetName_title">"這條路的名稱？"</string>
     <string name="quest_streetName_description">"被寫在街道標示上，縮寫被展開為："</string>
     <string name="quest_streetName_answer_noName_confirmation_description">"有時候街道標誌只會立在街道的底端。而且注意，屬於大條街道的分支街道也許不會有多餘的標示。路上有房子的街道經常會有名稱。"</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title">"在名稱中簡寫？"</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"假如此名稱可以不縮寫拼出,所以它應該要可被展開。許多常見的縮寫，在你輸入的時候會自動被展開，但並非全部。"</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"無縮寫"</string>
     <string name="quest_openingHours_name_title">"%s 的營業時間是？"</string>
@@ -74,6 +71,8 @@
     <string name="no_location_permission_warning">"你的位置會被用在搜尋身邊的任務上"</string>
     <string name="action_about">"關於 StreetComplete"</string>
     <string name="about_title_version">"版本"</string>
+
+    <!-- Fuzzy -->
     <string name="about_title_authors">"作者"</string>
     <string name="about_summary_authors">"© 2016–2017 Tobias Zwick 和貢獻者們"</string>
     <string name="about_title_repository">"原始碼倉儲"</string>
@@ -143,14 +142,6 @@
 &lt;p&gt;
 (&lt;i&gt;目前尚未實作，只是告知即將要到來！&lt;/i&gt;) 顯示在設定檔和排行榜的資料，都是從開放街圖公開的可用資訊中統整出來。資料並不是來自APP，但基本上是從開放街圖用戶中的開放上傳歷史取用。
 &lt;/p&gt;"</string>
-    <string name="authors_html">"&lt;p&gt;© 2017 Tobias Zwick&lt;/p&gt;
-&lt;p&gt; 此APP使用了 Nick Roach 的&lt;a href=\"https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free\"&gt;Beautiful Flat Icons&lt;/a&gt;，以&lt;a href=\"http://www.gnu.org/licenses/gpl-2.0.html\"&gt;GPL&lt;/a&gt;授權釋出。&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;翻譯&lt;/b&gt;&lt;/p&gt;
-%1$s"</string>
-    <string name="quest_expiration_one_day">"一天"</string>
-    <string name="quest_expiration_a_week">"一週"</string>
-    <string name="quest_expiration_two_weeks">"兩週"</string>
-    <string name="quest_expiration_one_month">"一個月"</string>
     <string name="autosync_on">"開"</string>
     <string name="autosync_only_on_wifi">"只在 Wifi 上開啟"</string>
     <string name="autosync_off">"關"</string>
@@ -181,16 +172,8 @@
     <string name="quest_sidewalk_onlyWest">"只在西邊"</string>
     <string name="quest_sidewalk_onlyEast">"只在南邊"</string>
     <string name="quest_sidewalk_yes">"是"</string>
-    <string name="quest_maxspeed_title">"街道上限速標誌的意思?"</string>
     <string name="quest_maxspeed_answer_noSign">"這裡沒有標誌"</string>
-    <string name="quest_maxspeed_answer_noSign_info">"那，如果這裡沒有標示，就套用預設速限"</string>
-    <string name="quest_maxspeed_answer_noSign_info_motorway">"%1$s 位於高速公路上"</string>
-    <string name="quest_maxspeed_answer_noSign_info_living_street">"%1$s 位於寧靜街道上"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"此條街道位在?"</string>
-    <string name="quest_maxspeed_answer_noSign_urban">"在市區內： %1$s 套用了速限"</string>
-    <string name="quest_maxspeed_answer_noSign_rural">"在市區外： %1$s 套用了速限"</string>
-    <string name="quest_maxspeed_answer_noSign_implicitOk">"足夠充分"</string>
-    <string name="quest_maxspeed_answer_variable">"電子標誌顯示動態的速限"</string>
     <string name="quest_cyclewaySurface_title">"此自行車道的鋪面是?"</string>
     <string name="quest_cycleway_title">"這條街道有自行車道嗎?"</string>
     <string name="quest_buildingType_title">"這棟建築物的種類是?"</string>
@@ -262,6 +245,45 @@
     <string name="quest_manySports_confirmation_generic">"通用場地"</string>
     <string name="quest_sport_manySports_confirmation_title">"你選取了多種運動"</string>
     <string name="quest_busStopShelter_name_title">"巴士站\"%s\"有沒有上蓋？"</string>
-    <string name="quest_leave_new_note_in_response_to">"回應%1$s：
-%2$s"</string>
+    <string name="quest_toiletsFee_title">"使用這間廁所是否需要費用？"</string>
+    <string name="quest_tactilePaving_title_bus">"這座公車站是否有盲人磚？"</string>
+    <string name="quest_tactilePaving_title_crosswalk">"這個人行穿越道是否有盲人指引？"</string>
+    <string name="quest_source_dialog_title">"你確定你在現場探察確認？"</string>
+    <string name="quest_tactilePaving_title_name_bus">"公車站 \"%s\" 是否有盲人磚？"</string>
+    <string name="quest_source_dialog_note">"只有調查需要的資訊才需要輸入。"</string>
+    <string name="quest_bicycleParkingCoveredStatus_title">"這座單車停車場是否有遮蔽 (防止淋雨)？"</string>
+    <string name="dialog_session_dont_show_again">"這次不再顯示"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_streetSurface_name_title">"道路 \"%s\" 的鋪面為何？ "</string>
+    <string name="quest_maxspeed_title_short">"這條街的道速限牌顯示多少？"</string>
+    <string name="quest_maxspeed_unusualInput_confirmation_description">"這個速限看來怪怪的。"</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation_title">"你確定沒有速限限制嗎？"</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation">"你有在街道盡頭確認嗎？
+不然如果沒有速限牌，視為以預設的速限為準。"</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation_positive">"對，並沒有速限牌"</string>
+    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"市區道路跟鄉村的預設速限並不相同。"</string>
+    <string name="quest_maxspeed_answer_noSign_urbanOk">"市區"</string>
+    <string name="quest_maxspeed_answer_noSign_ruralOk">"市區之外"</string>
+    <string name="quest_maxspeed_answer_noSign_info_zone">"如果在幹道交匯處有指標，那麼你不會在這一間找到個別的速限牌，因此整區將用同一個預設速度。"</string>
+    <string name="quest_sport_softball">"壘球"</string>
+    <string name="quest_sport_racquet">"壁球"</string>
+    <string name="quest_sport_ice_skating">"溜冰"</string>
+    <string name="quest_sport_paddle_tennis">"槳網球"</string>
+    <string name="quest_sport_gaelic_games">"蓋爾式運動"</string>
+    <string name="quest_sport_sepak_takraw">"藤球"</string>
+    <string name="quest_wheelchairAccess_name_title">"“%s” 是否是輪倚通行無處？"</string>
+    <string name="quest_wheelchairAccess_limited">"部分可通行"</string>
+    <string name="quest_bikeParkingCapacity_hint">"注意單車架兩邊都能夠停放一台單車。"</string>
+    <string name="quest_sport_roller_skating">"滾輪溜冰"</string>
+    <string name="quest_wheelchairAccess_bus_station_title">"這間客運站是否輪倚通行無阻？"</string>
+    <string name="quest_wheelchairAccess_subway_entrance_title">"這個捷運站出口是否輪倚通行無阻？"</string>
+    <string name="quest_wheelchairAccess_railway_station_title">"這座車站是否輪倚通行無阻？"</string>
+    <string name="quest_wheelchairAccess_location_title">"這個地方是否輪倚通行無阻？"</string>
+    <string name="quest_wheelchairAccess_bus_station_name_title">"“%s” 客運站是否輪倚通行無阻？"</string>
+    <string name="quest_wheelchairAccess_subway_entrance_name_title">"“%s” 捷運出口是否輪倚通行無阻？"</string>
+    <string name="quest_wheelchairAccess_railway_station_name_title">"“%s” 車站是否輪倚通行無阻？"</string>
+    <string name="quest_wheelchairAccess_location_name_title">"“%s”  是否輪倚通行無阻？"</string>
+    <string name="quest_wheelchairAccess_limited_description_business">"部分可通行意味沒有多過一個步驟，就可以進到場所裡，並且裡面的房間是輪倚可通行的狀況。"</string>
+    <string name="quest_wheelchairAccess_limited_description_public_transport">"部分可通行意味沒有多過一個步驟，就可以進到場所裡，"</string>
 </resources>

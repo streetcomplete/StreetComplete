@@ -1,45 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="action_settings">"设置"</string>
-    <string name="oauth_communication_error">"无法连接到验证服务器"</string>
-    <string name="loading">"正在载入"</string>
+    <string name="oauth_communication_error">"无法连接验证服务器"</string>
+    <string name="loading">"载入中"</string>
     <string name="retry">"重试"</string>
-    <string name="oauth_cancelled">"验证取消"</string>
-    <string name="oauth_failed_permissions">"验证失败。所有列出的请求都须许可"</string>
+    <string name="oauth_cancelled">"验证已取消"</string>
+    <string name="oauth_failed_permissions">"验证失败：所有列出的请求都须许可"</string>
     <string name="title_activity_settings">"设置"</string>
     <string name="pref_category_communication">"通讯"</string>
     <string name="pref_category_display">"显示"</string>
-    <string name="pref_title_authorization">"验证开放街图存取"</string>
-    <string name="pref_title_authorized_summary">"成功验证到你的帐号"</string>
-    <string name="pref_title_not_authorized_summary">"未认证"</string>
+    <string name="pref_title_authorization">"OpenStreetMap 账号验证"</string>
+    <string name="pref_title_authorized_summary">"帐号验证成功"</string>
+    <string name="pref_title_not_authorized_summary">"帐号未验证"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
     <string name="pref_tilecache_size_message">"MB为单位的空间保留用来暂存地图图砖"</string>
-    <string name="pref_title_quest_expiration_time">"暂存任务 "</string>
-    <string name="pref_summary_quest_expiration">"下载新资料前需 %s"</string>
-    <string name="pref_title_show_notes_not_phrased_as_questions">"显示所有笔记"</string>
-    <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"也显示非问题格式的注记"</string>
+    <string name="pref_title_show_notes_not_phrased_as_questions">"显示所有注释"</string>
+    <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"包括提问和描述性注释"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"忽略非问题格式的注记"</string>
-    <string name="pref_title_map_cache">"地图缓存大小"</string>
+    <string name="pref_title_map_cache">"地图缓存容量"</string>
     <string name="map_btn_gps_tracking">"跟随我"</string>
     <string name="map_attribution_mapzen">"%s协力"</string>
     <string name="map_attribution_osm">"© OpenStreetMap贡献者"</string>
-    <string name="quest_generic_otherAnswers">"其他答案…"</string>
-    <string name="quest_generic_answer_notApplicable">"不能说"</string>
+    <string name="quest_generic_otherAnswers">"更多答案…"</string>
+    <string name="quest_generic_answer_notApplicable">"不好说"</string>
     <string name="quest_generic_confirmation_title">"你确定？"</string>
     <string name="quest_generic_confirmation_yes">"是的，我确定"</string>
     <string name="quest_generic_confirmation_no">"我会检查"</string>
     <string name="quest_generic_error_field_empty">"你留下空的栏位"</string>
-    <string name="quest_leave_new_note_title">"留下留言？"</string>
-    <string name="quest_leave_new_note_description">"你可以在这留下其他图客可以讨论和解决的注记："</string>
+    <string name="quest_leave_new_note_title">"有话要说？"</string>
+    <string name="quest_leave_new_note_description">"需要和其他贡献者讨论和解决问题？您可以写在这里："</string>
     <string name="quest_leave_new_note_yes">"好"</string>
-    <string name="quest_leave_new_note_no">"不，请隐藏"</string>
+    <string name="quest_leave_new_note_no">"以后再说"</string>
     <string name="quest_streetName_title">"这条路的名字是什么？"</string>
     <string name="quest_streetName_description">"被写在街道标示上，缩写被展开为"</string>
     <string name="quest_streetName_answer_noName_confirmation_description">"有时街道标志只会立在街道的底端。并且请注意，属于许多大条街道的分支街道没有标示。通常有房子的街道有街名。"</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title">"名字有缩写吗？"</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"如果标志名称可不缩拼写, 尽量展开拼写。许多常见缩写在输入时自动展开，但并非完整。"</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"没有缩写"</string>
-    <string name="quest_openingHours_name_title">"\"%s\"的描述营业时间为？"</string>
+    <string name="quest_openingHours_name_title">"\"%s\"的营业时间是？"</string>
     <string name="quest_openingHours_start_time">"开放时间"</string>
     <string name="quest_openingHours_end_time">"关闭时间"</string>
     <string name="quest_openingHours_add_months">"添加月"</string>
@@ -59,12 +56,12 @@
     <string name="confirmation_discard_title">"丢弃输入?"</string>
     <string name="confirmation_discard_positive">"丢弃"</string>
     <string name="confirmation_discard_negative">"取消"</string>
-    <string name="action_download">"在这里搜寻任务"</string>
-    <string name="action_upload">"上传答案"</string>
+    <string name="action_download">"任务搜寻"</string>
+    <string name="action_upload">"数据上传"</string>
     <string name="no_changes">"你留下空的表单"</string>
     <string name="close">"关闭"</string>
     <string name="download_error">"寻找任务时出现问题"</string>
-    <string name="upload_error">"上传答案出错"</string>
+    <string name="upload_error">"上传出错"</string>
     <string name="cannot_find_bbox">"无法在这里扫描。尝试进一步放大"</string>
     <string name="download_area_too_big">"请进一步放大"</string>
     <string name="confirmation_cancel_prev_download_title">"取消目前的搜寻并以搜寻取代？"</string>
@@ -74,18 +71,20 @@
     <string name="no_location_permission_warning">"你的位置会被用在搜寻身边的任务上"</string>
     <string name="action_about">"关于StreetComplete"</string>
     <string name="about_title_version">"版本"</string>
+
+    <!-- Fuzzy -->
     <string name="about_title_authors">"作者"</string>
     <string name="about_summary_authors">"© 2016–2017 Tobias Zwick 和贡献者们"</string>
-    <string name="about_title_repository">"原始码仓储"</string>
-    <string name="about_summary_repository">"在GitHub上"</string>
+    <string name="about_title_repository">"代码托管"</string>
+    <string name="about_summary_repository">"通过GitHub"</string>
     <string name="about_title_report_error">"报告错误"</string>
-    <string name="about_title_feedback">"给出反馈"</string>
+    <string name="about_title_feedback">"反馈信息"</string>
     <string name="about_title_license">"许可证"</string>
     <string name="about_summary_license">"GNU 通用公共许可证"</string>
     <string name="offline">"您离线"</string>
     <string name="confirmation_authorize_now">"你需要验证你的开放街图使用者帐号来套用你的回答。现在验证吗？"</string>
     <string name="not_authorized">"未认证"</string>
-    <string name="version_banned_message">" 这个版本的StreetComplete已经被屏蔽了上传答案。请更新到新版本。"</string>
+    <string name="version_banned_message">"此版本的StreetComplete已无法上传数据，请更新至最新版本。"</string>
     <string name="no_gps_no_quests">"如果要自动寻找你附近的任务，开启定位"</string>
     <string name="nothing_more_to_download">"没有更多的可用任务"</string>
     <string name="later">"稍后"</string>
@@ -100,7 +99,7 @@
     <string name="quest_openingHours_public_holidays">"公共假期"</string>
     <string name="quest_openingHours_public_holidays_short">"公共假期"</string>
     <string name="quest_openingHours_open_end">"开放/关闭"</string>
-    <string name="quest_openingHours_answer_247">"全天开放"</string>
+    <string name="quest_openingHours_answer_247">"24*7 全天开放"</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">"按月份不同"</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">"不定期开放时间"</string>
     <string name="quest_openingHours_comment_title">"描述营业时间"</string>
@@ -117,117 +116,101 @@
     <string name="pref_title_sync">"自动同步"</string>
     <string name="map_btn_zoom_out">"缩小"</string>
     <string name="map_btn_zoom_in">"放大"</string>
-    <string name="privacy_html">"&lt;p&gt;喔，有些人在意隐私，这样很好！ 我想我只有好消息可告诉你：&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;直接贡献&lt;/b&gt;&lt;/p&gt;
+    <string name="privacy_html">"&lt;p&gt;您很在意隐私？非常好！ 我们只有好消息可以告诉你：&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;数据传输&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-首先，通过此APP，你可直接向开放街图做出贡献。&lt;br/&gt;
-你在此APP上贡献的所有，将直接加在地图上，APP和开放街图设施之间不会有任何第三方管道，像 &lt;a href=\"https://wheelmap.org\"&gt;轮椅地图&lt;/a&gt; 或 &lt;a href=\"http://www.kort.ch\"&gt;Kort&lt;/a&gt;。
+首先，通过此APP，您可以帮助完善OpenStreetMap。&lt;br/&gt;
+您在此APP上所提交的所有数据，均将直接传输并加载至OpenStreetMap，此APP和OpenStreetMap之间不会有任何第三方介入，像 &lt;a href=\"https://wheelmap.org\"&gt;wheelmap.org&lt;/a&gt; 或 &lt;a href=\"http://www.kort.ch\"&gt;Kort&lt;/a&gt;。
 &lt;/p&gt;
 &lt;p&gt;
-开放街图不允许匿名编辑，这表示你任何编辑都是藉由你的开放街图帐号。这也表示任何资讯改编都会公开于开放街图网站。
+OpenStreetMap不接受匿名编辑，您需要登录您的OpenStreetMap帐号。您在此APP中作出的数据贡献都会在OpenStreetMap公开。
 &lt;/p&gt;
 
-&lt;b&gt;定位&lt;/b&gt;&lt;br/&gt;
+&lt;b&gt;定位讯息&lt;/b&gt;&lt;br/&gt;
 &lt;p&gt;
-你的定位只用在搜寻你附近的任务。别担心，你的定位此APP不会外传。
+您的定位讯息仅用于搜寻附近的任务。不用担心，我们不会将您的定位讯息传至第三方。
 &lt;/p&gt;
 
 &lt;p&gt;&lt;b&gt;资料使用&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-以上提到，此APP直接和开放街图的设施直接沟通，会使用 &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass API&lt;/a&gt; 下载任务(是匿名的)，且使用 &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API&lt;/a&gt; 上传资料。&lt;br/&gt;
-上传你的更变之前，此APP会在我的伺服器上确认 &lt;a href=\"http://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;简单的文字档&lt;/a&gt; 是否被封锁而无法上传任何更变。这是一个防护措施，如果APP的版本更变后有严重的错误出现，开放街图的资料不会受污染。&lt;br/&gt;
+以上提到，此APP直接和OpenStreetMap的设施直接沟通，会使用 &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass API&lt;/a&gt; 下载任务(是匿名的)，且使用 &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API&lt;/a&gt; 上传资料。&lt;br/&gt;
+上传你的更变之前，此APP会在我的伺服器上确认 &lt;a href=\"http://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;简单的文字档&lt;/a&gt; 是否被封锁而无法上传任何更变。这是一个防护措施，如果APP的版本更变后有严重的错误出现，OpenStreetMap的资料不会受污染。&lt;br/&gt;
 &lt;/p&gt;
 &lt;p&gt;
 显示地图、向量图砖皆从 &lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt;Mapzen 向量图砖服务&lt;/a&gt; 匿名下载取得。此服务会记录图砖请求，来了解哪个区域是热门的，作为准备快取和改善效能之用。他们的平台同时也纪录IP地址，且他们的所有服务全部託管在Amazon，所以它会观察你的行为再决定动作。
 &lt;/p&gt;
 &lt;p&gt;
-(&lt;i&gt;目前尚未实作，只是告知即将要到来！&lt;/i&gt;) 显示在设定档和排行榜的资料，都是从开放街图公开的可用资讯中统整出来。资料并不是来自APP，但基本上是从开放街图用户中的开放上传历史取用。
+(&lt;i&gt;目前尚未实作，只是告知即将要到来！&lt;/i&gt;) 显示在设定档和排行榜的资料，都是从OpenStreetMap公开的可用资讯中统整出来。资料并不是来自APP，但基本上是从OpenStreetMap用户中的开放上传历史取用。
 &lt;/p&gt;"</string>
-    <string name="authors_html">"&lt;p&gt;© 2017 Tobias Zwick&lt;/p&gt;
-&lt;p&gt; 此APP使用了 Nick Roach 的&lt;a href=\"https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free\"&gt;Beautiful Flat Icons&lt;/a&gt;，以&lt;a href=\"http://www.gnu.org/licenses/gpl-2.0.html\"&gt;GPL&lt;/a&gt;授权释出。&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;翻译&lt;/b&gt;&lt;/p&gt;
-%1$s"</string>
-    <string name="quest_expiration_one_day">"一天"</string>
-    <string name="quest_expiration_a_week">"一周"</string>
-    <string name="quest_expiration_two_weeks">"两周"</string>
-    <string name="quest_expiration_one_month">"一个月"</string>
-    <string name="autosync_on">"已开"</string>
-    <string name="autosync_only_on_wifi">"只在Wifi上"</string>
-    <string name="autosync_off">"已关"</string>
-    <string name="quest_streetSurface_title">"此道路路段的铺面材质是？"</string>
+    <string name="autosync_on">"通过Wi-Fi和移动网络"</string>
+    <string name="autosync_only_on_wifi">"仅通过Wi-Fi"</string>
+    <string name="autosync_off">"关闭"</string>
+    <string name="quest_streetSurface_title">"这段道路的铺面材料是？"</string>
     <string name="quest_surface_description">"选择最合适的一个："</string>
-    <string name="quest_surface_value_paved">"铺面(一般)"</string>
-    <string name="quest_surface_value_unpaved">"无铺面(一般)"</string>
-    <string name="quest_surface_value_ground">"地面(一般)"</string>
-    <string name="quest_surface_value_asphalt">"柏油"</string>
+    <string name="quest_surface_value_paved">"有路面"</string>
+    <string name="quest_surface_value_unpaved">"简单路面"</string>
+    <string name="quest_surface_value_ground">"无路面"</string>
+    <string name="quest_surface_value_asphalt">"沥青"</string>
     <string name="quest_surface_value_cobblestone">"鹅卵石"</string>
-    <string name="quest_surface_value_compacted">"紧緻"</string>
-    <string name="quest_surface_value_concrete">"溷凝土"</string>
-    <string name="quest_surface_value_dirt">"泥土"</string>
-    <string name="quest_surface_value_fine_gravel">"良好的砾石"</string>
+    <string name="quest_surface_value_compacted">"紧实"</string>
+    <string name="quest_surface_value_concrete">"混凝土"</string>
+    <string name="quest_surface_value_dirt">"土地"</string>
+    <string name="quest_surface_value_fine_gravel">"细碎的砾石"</string>
     <string name="quest_surface_value_grass">"草地"</string>
-    <string name="quest_surface_value_grass_paver">"整理过的草地"</string>
+    <string name="quest_surface_value_grass_paver">"草坪砖"</string>
     <string name="quest_surface_value_gravel">"砾石"</string>
-    <string name="quest_surface_value_paving_stones">"铺路石"</string>
+    <string name="quest_surface_value_paving_stones">"花砖"</string>
     <string name="quest_surface_value_pebblestone">"细鹅卵石"</string>
-    <string name="quest_surface_value_sand">"沙子"</string>
-    <string name="quest_surface_value_sett">"四方型的铺路石"</string>
-    <string name="quest_surface_value_wood">"木头"</string>
-    <string name="quest_placeName_title">"这个地方叫做?"</string>
+    <string name="quest_surface_value_sand">"沙地"</string>
+    <string name="quest_surface_value_sett">"小方块岩石"</string>
+    <string name="quest_surface_value_wood">"木材"</string>
+    <string name="quest_placeName_title">"这个地方的名字是?"</string>
     <string name="quest_sidewalk_title">"这条街道有人行道吗?"</string>
-    <string name="map_orientation_info">"地图是朝向北方"</string>
-    <string name="quest_sidewalk_onlyNorth">"只在北边"</string>
-    <string name="quest_sidewalk_onlySouth">"只在南边"</string>
-    <string name="quest_sidewalk_onlyWest">"只在西边"</string>
-    <string name="quest_sidewalk_onlyEast">"只在南边"</string>
-    <string name="quest_sidewalk_yes">"是"</string>
-    <string name="quest_maxspeed_title">"街道上限速标志的意思?"</string>
-    <string name="quest_maxspeed_answer_noSign">"这裡没有标志"</string>
-    <string name="quest_maxspeed_answer_noSign_info">"那，如果这裡没有标示，就套用预设速限"</string>
-    <string name="quest_maxspeed_answer_noSign_info_motorway">"%1$s 位于高速公路上"</string>
-    <string name="quest_maxspeed_answer_noSign_info_living_street">"%1$s 位于宁静街道上"</string>
+    <string name="map_orientation_info">"地图朝向归北"</string>
+    <string name="quest_sidewalk_onlyNorth">"只在道路北面一侧"</string>
+    <string name="quest_sidewalk_onlySouth">"只在道路南面一侧"</string>
+    <string name="quest_sidewalk_onlyWest">"只在道路西面一侧"</string>
+    <string name="quest_sidewalk_onlyEast">"只在道路东面一侧"</string>
+    <string name="quest_sidewalk_yes">"好"</string>
+    <string name="quest_maxspeed_answer_noSign">"这里没有限速标志"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"此条街道位在?"</string>
-    <string name="quest_maxspeed_answer_noSign_urban">"在市区内： %1$s 套用了速限"</string>
-    <string name="quest_maxspeed_answer_noSign_rural">"在市区外： %1$s 套用了速限"</string>
-    <string name="quest_maxspeed_answer_noSign_implicitOk">"足够充分"</string>
-    <string name="quest_maxspeed_answer_variable">"电子标志显示动态的速限"</string>
-    <string name="quest_cyclewaySurface_title">"此自行车道的铺面是?"</string>
+    <string name="quest_cyclewaySurface_title">"此自行车道的路面材料是?"</string>
     <string name="quest_cycleway_title">"这条街道有自行车道吗?"</string>
     <string name="quest_buildingType_title">"这栋建筑物的种类是?"</string>
     <string name="quest_serviceType_title">"此条联络道路的种类是?"</string>
     <string name="quest_streetLanes_title">"此条道路有多少车道?"</string>
-    <string name="quest_streetLanes_description">"如果这裡没有道路标记，它将不会有车道"</string>
+    <string name="quest_streetLanes_description">"如果这里没有道路标记，它将不会有车道"</string>
     <string name="quest_streetLanes_north">"朝向北边"</string>
     <string name="quest_streetLanes_west">"朝向西边"</string>
     <string name="quest_streetLanes_east">"朝向东边"</string>
     <string name="quest_streetLanes_south">"朝向南边"</string>
     <string name="quest_streetLanes_answer_noLanes">"没有标记的车道"</string>
-    <string name="quest_streetLanes_noLanes_estWidth">"请估计这条路的宽度能有多少车并排"</string>
-    <string name="quest_oneway_title">"这是单行道吗?"</string>
+    <string name="quest_streetLanes_noLanes_estWidth">"这条路的宽度能让多少辆车并排行进（双向合计）"</string>
+    <string name="quest_oneway_title">"这条路是单行道吗?"</string>
     <string name="quest_address_title">"此栋建筑物的门牌号码是?"</string>
-    <string name="store_listing_short_description">"开放街图 调测APP"</string>
-    <string name="store_listing_full_description">"使用 StreetComplete 改善开放街图的图资！
+    <string name="store_listing_short_description">"OpenStreetMap 调测APP"</string>
+    <string name="store_listing_full_description">"使用 StreetComplete 改善 OpenStreetMap！
 
 此APP会在你的附近找到非完整且可扩充的资料，以标记显示在地图上。每个只要回答简单的问题就可以解决。
 
 你所输入的资料会直接新增至开放街图，而不需要其他的编辑器。"</string>
     <string name="quest_name_answer_noName">"没有名称"</string>
-    <string name="quest_name_answer_noName_confirmation_title">"确定没有名称?"</string>
-    <string name="quest_name_noName_confirmation_positive">"是，没有名称"</string>
-    <string name="quest_buildingLevels_negativeBuildingLevels">"呃！ 你描述了比总楼层还多的天花板！"</string>
-    <string name="quest_openingHours_add_times">"新增营业时间"</string>
-    <string name="crash_message">"能否请你寄错误报告给开发者吗？"</string>
-    <string name="crash_title">"天啊，上次 StreetComplete 出错了！"</string>
+    <string name="quest_name_answer_noName_confirmation_title">"确定没有名称吗?"</string>
+    <string name="quest_name_noName_confirmation_positive">"是的，没有名称"</string>
+    <string name="quest_buildingLevels_negativeBuildingLevels">"呃！ 您描述的屋顶层数比总楼层还多！"</string>
+    <string name="quest_openingHours_add_times">"添加营业时间"</string>
+    <string name="crash_message">"能否请您寄错误报告给开发者吗？"</string>
+    <string name="crash_title">"糟糕，刚才 StreetComplete 程序崩溃了！"</string>
     <string name="crash_compose_email">"撰写 Email"</string>
-    <string name="no_email_client">"你没有安装 email 软体。"</string>
-    <string name="pref_title_keep_screen_on">"保持萤幕开启状态"</string>
-    <string name="download_server_error">"搜寻任务时出现连线问题，请稍后再试。"</string>
-    <string name="upload_server_error">"上传回答时出现连线问题，请稍后再试。"</string>
+    <string name="no_email_client">"你没有安装可以发送Email的客户端 。"</string>
+    <string name="pref_title_keep_screen_on">"屏幕保持唤醒"</string>
+    <string name="download_server_error">"搜寻任务时网络连接出现问题，请稍后再试。"</string>
+    <string name="upload_server_error">"上传数据时网络连接出现问题，请稍后再试。"</string>
     <string name="quest_generic_hasFeature_yes">"有"</string>
     <string name="quest_generic_hasFeature_no">"没有"</string>
-    <string name="quest_busStopShelter_title">"这个站牌有遮荫吗？"</string>
-    <string name="quest_bikeParkingCapacity_title">"这裡可以停几量单车？"</string>
-    <string name="quest_address_unusualHousenumber_confirmation_description">"门牌号码看起来怪怪的。"</string>
+    <string name="quest_busStopShelter_title">"这个公车站有遮荫吗？"</string>
+    <string name="quest_bikeParkingCapacity_title">"这里可以停多少辆自行车？"</string>
+    <string name="quest_address_unusualHousenumber_confirmation_description">"这个门牌号码看起来怪怪的。"</string>
     <string name="quest_sport_title">"这个场地是为哪一种运动而设的？"</string>
     <string name="quest_sport_answer_multi">"无特定运动"</string>
     <string name="quest_sport_soccer">"足球"</string>
@@ -239,18 +222,18 @@
     <string name="quest_sport_athletics">"田径"</string>
     <string name="quest_sport_volleyball">"排球"</string>
     <string name="quest_sport_beachvolleyball">"沙滩排球"</string>
-    <string name="quest_sport_american_football">"美式足球"</string>
+    <string name="quest_sport_american_football">"美式橄榄球"</string>
     <string name="quest_sport_skateboard">"滑板"</string>
     <string name="quest_sport_bowls">"草地滚球"</string>
-    <string name="quest_sport_boules">"掷球"</string>
+    <string name="quest_sport_boules">"地掷球"</string>
     <string name="quest_sport_shooting">"射击"</string>
     <string name="quest_sport_cricket">"板球"</string>
     <string name="quest_sport_table_tennis">"乒乓球"</string>
     <string name="quest_sport_gymnastics">"体操"</string>
     <string name="quest_sport_archery">"射箭"</string>
-    <string name="quest_sport_australian_football">"澳洲式足球"</string>
+    <string name="quest_sport_australian_football">"澳大利亚式橄榄球"</string>
     <string name="quest_sport_badminton">"羽毛球"</string>
-    <string name="quest_sport_canadian_football">"加拿大式足球"</string>
+    <string name="quest_sport_canadian_football">"加拿大式橄榄球"</string>
     <string name="quest_sport_field_hockey">"草地曲棍球"</string>
     <string name="quest_sport_handball">"手球"</string>
     <string name="quest_sport_ice_hockey">"冰上曲棍球"</string>
@@ -260,8 +243,12 @@
     <string name="quest_sport_manySports_confirmation_description">"这个场地是否专为这些运动而设（设有相关界线与设备），或是适合各种运动的通用场地？"</string>
     <string name="quest_manySports_confirmation_specific">"专属场地"</string>
     <string name="quest_manySports_confirmation_generic">"通用场地"</string>
-    <string name="quest_sport_manySports_confirmation_title">"你选取了多种运动"</string>
-    <string name="quest_busStopShelter_name_title">"巴士站\"%s\"有没有上盖？"</string>
-    <string name="quest_leave_new_note_in_response_to">"回应%1$s：
-%2$s"</string>
+    <string name="quest_sport_manySports_confirmation_title">"您选取了多种运动"</string>
+    <string name="quest_busStopShelter_name_title">"公交站\"%s\"有遮挡吗？"</string>
+    <string name="quest_toiletsFee_title">"是付费洗手间吗？"</string>
+    <string name="quest_tactilePaving_title_bus">"这个公车站有盲道设施吗？"</string>
+    <string name="quest_tactilePaving_title_crosswalk">"这个人行横道有盲道设施吗？"</string>
+    <string name="quest_tactilePaving_title_name_bus">"公交站\"%s\"有盲道设施吗？"</string>
+    <string name="quest_bicycleParkingCoveredStatus_title">"这个自行车停放设施有遮雨棚吗？"</string>
+    <string name="dialog_session_dont_show_again">"请勿在此对话中再次显示"</string>
 </resources>

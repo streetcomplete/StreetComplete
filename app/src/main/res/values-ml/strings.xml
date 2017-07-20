@@ -14,8 +14,6 @@
     <string name="pref_title_not_authorized_summary">"ഇതുവരെ അംഗീകരിച്ചിട്ടില്ല"</string>
     <string name="pref_tilecache_size_summary">"%d മെഗാബൈറ്റുകൾ"</string>
     <string name="pref_tilecache_size_message">"പുറം സ്റ്റോറേജിൽ റിസേർവ് ചെയ്തിരിക്കുന്ന മെഗാബിറ്റ് സ്പേസ്  സ്പെയ്സ് കാഷെ ടൈലുകളിലേക് "</string>
-    <string name="pref_title_quest_expiration_time">"കാഷെ ക്വസ്റ്റുകൾ"</string>
-    <string name="pref_summary_quest_expiration">"പുതിയ ഡൌൺലോഡിന് %s മുമ്പ് "</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"എല്ലാ കുറിപ്പുകളും കാണിക്കുക"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"ചോദ്യങ്ങളായും പരാമർശിക്കാതെ കുറിപ്പുകൾ കാണിക്കുന്നു"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"ചോദ്യങ്ങൾ ആയി പറയാത്ത നോട്സ് അവഗണിക്കുന്നു"</string>
@@ -37,7 +35,6 @@
     <string name="quest_streetName_description">"തെരുവ് ചിഹ്നത്തിൽ എഴുതിയിരിക്കുന്നതുപോലെ, ചുരുക്കരൂപങ്ങൾ വികസിപ്പിച്ചു കൊണ്ട് "</string>
     <string name="quest_streetName_answer_noName_confirmation_description">"ചിലപ്പോൾ തെരുവ് ചിഹ്നം തെരുവിലെ ഒരു അറ്റത്ത് മാത്രമാണ്. കൂടാതെ, ഒരു വലിയ തെരുവിൽ ഉൾപ്പെടുന്ന സൈഡ് റോഡുകൾക്  ചിഹ്നം ഉണ്ടായിരിക്കില്ലെന്ന് ഓർക്കുക. സാധാരണയായി, വീടുകൾ ഉള്ള തെരുവിന് പേര് ഉണ്ട്
 "</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title">"പേരിലെ ചുരുക്കെഴുത്ത്?"</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"ഒരു ചുരുക്കെഴുത്ത് ഇല്ലാതെ പേര് സ്പെല്ലിംഗ് ആണെങ്കിൽ, അത് വിപുലമാക്കണം. എല്ലാം ഇല്ലെങ്കിലും നിങ്ങൾ സാധാരണ ടൈപ്പ് ചെയ്യുമ്പോൾ തന്നെ പല ചുരുക്കെഴുത്തും വികസിപ്പിക്കുന്നു."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"ചുരുക്കെഴുത്ത് ഇല്ല"</string>
     <string name="quest_openingHours_name_title">"%s തുറക്കുന്ന  സമയം എപ്പോഴാണ് ?"</string>
@@ -75,6 +72,8 @@
     <string name="no_location_permission_warning">"നിങ്ങളുടെ സമീപത്തായുള്ള അന്വേഷണങ്ങൾക്കായി സ്കാൻ ചെയ്യാൻ നിങ്ങളുടെ ലൊക്കേഷൻ ആവശ്യമാണ്."</string>
     <string name="action_about">"StreetComplete എന്നതിനെക്കുറിച്ച്"</string>
     <string name="about_title_version">"പതിപ്പ്"</string>
+
+    <!-- Fuzzy -->
     <string name="about_title_authors">"രചയിതാക്കൾ"</string>
     <string name="about_title_repository">"ഉറവിട റിപ്പോസിറ്ററി"</string>
     <string name="about_summary_repository">"GitHub- ൽ"</string>
@@ -117,10 +116,6 @@
     <string name="pref_title_sync">"യാന്ത്രിക സമന്വയം"</string>
     <string name="map_btn_zoom_out">"സൂം ഔട്ട് ചെയ്യുക"</string>
     <string name="map_btn_zoom_in">"വലുതാക്കുക"</string>
-    <string name="quest_expiration_one_day">"ഒരുദിവസം"</string>
-    <string name="quest_expiration_a_week">"ഒരാഴ്ച"</string>
-    <string name="quest_expiration_two_weeks">"രണ്ടാഴ്ച"</string>
-    <string name="quest_expiration_one_month">"ഒരു മാസം"</string>
     <string name="autosync_on">"ഓൺ"</string>
     <string name="autosync_only_on_wifi">"Wifi- ൽ മാത്രം"</string>
     <string name="autosync_off">"ഓഫ്"</string>
@@ -151,16 +146,8 @@
     <string name="quest_sidewalk_onlyWest">"പടിഞ്ഞാറ് ഭാഗത്ത് മാത്രം"</string>
     <string name="quest_sidewalk_onlyEast">"കിഴക്ക് വശത്ത് മാത്രം"</string>
     <string name="quest_sidewalk_yes">"അതെ"</string>
-    <string name="quest_maxspeed_title">"ഈ തെരുവിലെ വേഗതാ പരിധിയെക്കുറിച്ച് സൂചനകൾ എന്താണ് പറയുന്നത്?"</string>
     <string name="quest_maxspeed_answer_noSign">"യാതൊരു അടയാളവുമില്ല"</string>
-    <string name="quest_maxspeed_answer_noSign_info">"സൂചനകൾ ഇല്ലെങ്കിൽ, സാധാരണ വേഗത പരിധി  ബാധകമാണ്."</string>
-    <string name="quest_maxspeed_answer_noSign_info_motorway">"%1$s  ഒരു മോട്ടോർവേയിലാണ്"</string>
-    <string name="quest_maxspeed_answer_noSign_info_living_street">"%1$s  ഒരു ആൾതാമസം ഉള്ള തെരുവ് ആണ് "</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"ഈ തെരുവ് എവിടെയാണ്?"</string>
-    <string name="quest_maxspeed_answer_noSign_urban">"നഗരത്തിൽ: %1$s സ്പീഡ്ലിപ്പ് ബാധകമാണ്."</string>
-    <string name="quest_maxspeed_answer_noSign_rural">"നഗരത്തിന് പുറത്താണ്: %1$s വേഗതനിയമം ബാധകമാണ്"</string>
-    <string name="quest_maxspeed_answer_noSign_implicitOk">"തൃപ്തികരമായത്"</string>
-    <string name="quest_maxspeed_answer_variable">"ഇലക്ട്രോണിക് അടയാളങ്ങൾ വേരിയബിൾ സ്പീഡ് ലിമിറ്റുകൾ കാണിക്കുന്നു"</string>
     <string name="quest_cyclewaySurface_title">"സൈക്കിൾ പാതയുടെ പ്രതലം എന്താണ് ?"</string>
     <string name="quest_cycleway_title">"ഈ തെരുവിൽ ഒരു സൈക്കിൾപാത ഉണ്ടോ?"</string>
     <string name="quest_buildingType_title">"ഇത് എന്തുതരം കെട്ടിടമാണ്?"</string>
