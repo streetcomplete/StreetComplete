@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import de.westnordost.osmapi.map.data.OsmElement;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
 import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
@@ -32,7 +33,7 @@ public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 									   Bundle savedInstanceState)
 	{
 		View view = super.onCreateView(inflater, container, savedInstanceState);
-		setTitle(R.string.quest_address_title);
+		setTitle();
 
 		View contentView = setContentView(R.layout.quest_housenumber);
 
@@ -62,6 +63,20 @@ public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 		});
 
 		return view;
+	}
+
+	private void setTitle()
+	{
+		OsmElement element = getOsmElement();
+		String name = element != null && element.getTags() != null ? element.getTags().get("name") : null;
+		if(name != null && !name.trim().isEmpty())
+		{
+			setTitle(R.string.quest_address_name_title, name);
+		}
+		else
+		{
+			setTitle(R.string.quest_address_title);
+		}
 	}
 
 	@Override protected void onClickOk()
