@@ -22,6 +22,7 @@ public class CountryInfo implements Serializable, Cloneable
 	List<String> officialLanguages;
 	List<String> additionalStreetsignLanguages;
 	Boolean isSlowZoneKnown;
+	Boolean isLivingStreetKnown;
 
 	public String getSpeedUnit()
 	{
@@ -84,5 +85,10 @@ public class CountryInfo implements Serializable, Cloneable
 			return new Locale(languages.get(0), countryCode);
 		}
 		return Locale.getDefault();
+	}
+
+	public boolean isLivingStreetKnown()
+	{
+		return isLivingStreetKnown;
 	}
 }

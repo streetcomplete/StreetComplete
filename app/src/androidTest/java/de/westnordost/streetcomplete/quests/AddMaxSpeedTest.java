@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests;
 
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd;
+import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryModify;
 import de.westnordost.streetcomplete.quests.max_speed.AddMaxSpeed;
 import de.westnordost.streetcomplete.quests.max_speed.AddMaxSpeedForm;
 
@@ -30,6 +31,14 @@ public class AddMaxSpeedTest extends AOsmElementQuestTypeTest
 		verify(
 				new StringMapEntryAdd("maxspeed","123"),
 				new StringMapEntryAdd("source:maxspeed","AA:zoneXYZ"));
+	}
+
+	public void testLivingStreet()
+	{
+		tags.put("highway","residential");
+		bundle.putBoolean(AddMaxSpeedForm.LIVING_STREET, true);
+		verify(
+				new StringMapEntryModify("highway","residential","living_street"));
 	}
 
 	@Override protected OsmElementQuestType createQuestType()

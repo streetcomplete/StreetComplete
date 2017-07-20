@@ -16,6 +16,8 @@ appicon_flat.svg				elegant themes
 
 building_levels_illustration.svg
 
+living_street.svg
+
 roof_shape_icons.svg
 
 quest_icons.svg
