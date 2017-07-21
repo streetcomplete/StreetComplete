@@ -18,7 +18,8 @@ public class AddMaxSpeed extends SimpleOverpassQuestType
 	{
 		return "ways with highway ~ " +
 		       "motorway|trunk|primary|secondary|tertiary|unclassified|residential and " +
-		       "!maxspeed and !source:maxspeed" +
+		       "!maxspeed and !source:maxspeed " +
+		       " and !maxspeed:forward and !maxspeed:backward " +
 		       // other tags that are used for basically the same thing as source:maxspeed
 		       " and !zone:maxspeed and !maxspeed:type";
 	}
