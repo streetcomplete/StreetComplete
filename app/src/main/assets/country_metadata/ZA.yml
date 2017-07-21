@@ -1,3 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
+isLivingStreetKnown: true
+livingStreetSign: ic_living_street_sadc
 officialLanguages: [en, zu, xh, af, st, tn, nso, ts]
 popularSports: [tennis, soccer, bowls, basketball, golf, cricket, netball, field_hockey, rugby]

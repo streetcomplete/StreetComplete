@@ -190,6 +190,13 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 	{
 		View view = LayoutInflater.from(getActivity()).inflate(R.layout.quest_maxspeed_living_street_confirmation, null, false);
 
+		ImageView img = (ImageView) view.findViewById(R.id.imgLivingStreet);
+		int drawableId = getResources().getIdentifier(
+				getCountryInfo().getLivingStreetSign(),
+				"drawable",
+				getActivity().getPackageName());
+		img.setImageDrawable(getResources().getDrawable(drawableId));
+
 		new AlertDialogBuilder(getActivity())
 				.setView(view)
 				.setTitle(R.string.quest_maxspeed_answer_living_street_confirmation_title)

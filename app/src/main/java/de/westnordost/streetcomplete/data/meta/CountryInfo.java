@@ -23,6 +23,7 @@ public class CountryInfo implements Serializable, Cloneable
 	List<String> additionalStreetsignLanguages;
 	Boolean isSlowZoneKnown;
 	Boolean isLivingStreetKnown;
+	String livingStreetSign;
 
 	public String getSpeedUnit()
 	{
@@ -90,5 +91,10 @@ public class CountryInfo implements Serializable, Cloneable
 	public boolean isLivingStreetKnown()
 	{
 		return isLivingStreetKnown;
+	}
+
+	public String getLivingStreetSign()
+	{
+		return livingStreetSign;
 	}
 }

@@ -1,4 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
+isLivingStreetKnown: true
 isSlowZoneKnown: true
 officialLanguages: [ru]
 popularSports: [soccer, basketball, tennis, field_hockey, volleyball, ice_hockey]

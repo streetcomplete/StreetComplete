@@ -1,4 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [en]
+isLivingStreetKnown: true
 isSlowZoneKnown: true
 officialLanguages: [el]

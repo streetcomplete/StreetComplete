@@ -1,3 +1,4 @@
 # Do not edit. Source files are in /res/country_metadata
+isLivingStreetKnown: true
 officialLanguages: [en]
 popularSports: [tennis, bowls, golf, netball, basketball, soccer, rugby, cricket]

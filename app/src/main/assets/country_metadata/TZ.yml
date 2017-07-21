@@ -1,2 +1,4 @@
 # Do not edit. Source files are in /res/country_metadata
+isLivingStreetKnown: true
+livingStreetSign: ic_living_street_sadc
 officialLanguages: [sw, en]
