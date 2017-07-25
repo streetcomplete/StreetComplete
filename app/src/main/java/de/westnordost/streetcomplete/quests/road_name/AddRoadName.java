@@ -25,7 +25,6 @@ public class AddRoadName extends SimpleOverpassQuestType
 		       " and !name and !ref and noname != yes and !junction and !area";
 	}
 
-	@Override
 	public int importance()
 	{
 		return QuestImportance.WARNING;

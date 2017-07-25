@@ -4,7 +4,6 @@ import android.os.Bundle;
 
 import javax.inject.Inject;
 
-import de.westnordost.streetcomplete.data.QuestImportance;
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
@@ -22,11 +21,6 @@ public class AddWheelChairAccessPublicTransport extends SimpleOverpassQuestType
 				" amenity = bus_station or " +
 				" railway ~ station|subway_entrance" +
 				" and !wheelchair";
-	}
-
-	@Override public int importance()
-	{
-		return QuestImportance.MAJOR;
 	}
 
 	@Override public WheelchairAccessAnswerFragment createForm()

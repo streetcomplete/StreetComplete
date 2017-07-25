@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 import javax.inject.Inject;
 
-import de.westnordost.streetcomplete.data.QuestImportance;
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
@@ -23,11 +22,6 @@ public class AddRecyclingType extends SimpleOverpassQuestType
 		return " nodes, ways, relations with " +
 				" amenity = recycling" +
 				" and !recycling_type";
-	}
-
-	@Override public int importance()
-	{
-		return QuestImportance.MINOR;
 	}
 
 	@Override public AddRecyclingTypeForm createForm()

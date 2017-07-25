@@ -152,7 +152,6 @@ public class OsmQuestDownloadTest extends TestCase
 			this.list = list;
 		}
 
-		@Override public int importance() { return 0; }
 		@Override public AbstractQuestAnswerFragment createForm() { return null; }
 		@Override public String getIconName() { return null; }
 		@Override public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes) {}

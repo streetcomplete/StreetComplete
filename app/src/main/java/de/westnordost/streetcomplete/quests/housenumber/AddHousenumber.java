@@ -11,7 +11,6 @@ import javax.inject.Inject;
 
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
-import de.westnordost.streetcomplete.data.QuestImportance;
 import de.westnordost.streetcomplete.data.osm.ElementGeometry;
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
@@ -24,7 +23,6 @@ import de.westnordost.streetcomplete.util.JTSConst;
 
 import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.geom.Point;
-import com.vividsolutions.jts.operation.valid.IsValidOp;
 
 public class AddHousenumber implements OsmElementQuestType
 {
@@ -93,7 +91,6 @@ public class AddHousenumber implements OsmElementQuestType
 		changes.add("addr:housenumber", housenumber);
 	}
 
-	@Override public int importance() { return QuestImportance.MAJOR; }
 	@Override public AbstractQuestAnswerFragment createForm() { return new AddHousenumberForm(); }
 	@Override public String getCommitMessage() { return "Add housenumbers"; }
 	@Override public String getIconName() { return "housenumber"; }
