@@ -52,7 +52,6 @@ public class QuestDownload
 	// state
 	private int downloadedQuestTypes = 0;
 	private int totalQuestTypes;
-	private int visibleQuests = 0;
 	private boolean finished = false;
 
 	@Inject public QuestDownload(Provider<OsmNotesDownload> notesDownloadProvider,
@@ -112,14 +111,14 @@ public class QuestDownload
 			Set<LatLon> notesPositions;
 			if(questTypes.contains(OsmNoteQuest.type))
 			{
-				notesPositions = downloadNotes();
+				notesPositions = downloadNotes(bbox);
 			}
 			else
 			{
-				notesPositions = getNotePositionsFromDb();
+				notesPositions = getNotePositionsFromDb(bbox);
 			}
 
-			downloadQuestTypes(questTypes, notesPositions);
+			downloadQuestTypes(bbox, questTypes, notesPositions);
 			progressListener.onSuccess();
 		}
 		finally
@@ -161,9 +160,8 @@ public class QuestDownload
 		return result;
 	}
 
-	private Set<LatLon> getNotePositionsFromDb()
+	private Set<LatLon> getNotePositionsFromDb(BoundingBox bbox)
 	{
-		BoundingBox bbox = SlippyMapMath.asBoundingBox(tiles, ApplicationConstants.QUEST_TILE_ZOOM);
 		List<LatLon> positionList = osmNoteQuestDb.getAllPositions(bbox);
 		Set<LatLon> positions = new HashSet<>(positionList.size());
 		for (LatLon pos : positionList)
@@ -173,7 +171,7 @@ public class QuestDownload
 		return positions;
 	}
 
-	private Set<LatLon> downloadNotes()
+	private Set<LatLon> downloadNotes(BoundingBox bbox)
 	{
 		OsmNotesDownload notesDownload = notesDownloadProvider.get();
 		notesDownload.setQuestListener(questListener);
@@ -182,15 +180,16 @@ public class QuestDownload
 		if(userId == -1) userId = null;
 
 		int maxNotes = 10000;
-		Set<LatLon> result = notesDownload.download(tiles, userId, maxNotes);
+		Set<LatLon> result = notesDownload.download(bbox, userId, maxNotes);
+		downloadedTilesDao.put(tiles, OsmNoteQuest.type.getClass().getSimpleName());
 		downloadedQuestTypes++;
 		dispatchProgress();
 		return result;
 	}
 
-	private int downloadQuestTypes(List<QuestType> questTypes, Set<LatLon> notesPositions)
+	private void downloadQuestTypes(BoundingBox bbox, List<QuestType> questTypes,
+									Set<LatLon> notesPositions)
 	{
-		int visibleQuests = 0;
 		for (QuestType questType : questTypes)
 		{
 			if (cancelState.get()) break;
@@ -201,13 +200,15 @@ public class QuestDownload
 				OsmQuestDownload questDownload = questDownloadProvider.get();
 				questDownload.setQuestListener(questListener);
 
-				visibleQuests += questDownload.download((OsmElementQuestType) questType, tiles, notesPositions);
+				if(questDownload.download((OsmElementQuestType) questType, bbox, notesPositions))
+				{
+					downloadedTilesDao.put(tiles, questType.getClass().getSimpleName());
+				}
 
 				downloadedQuestTypes++;
 				dispatchProgress();
 			}
 		}
-		return visibleQuests;
 	}
 
 	public float getProgress()
