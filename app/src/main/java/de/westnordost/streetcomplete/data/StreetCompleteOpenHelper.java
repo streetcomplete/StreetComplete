@@ -18,7 +18,6 @@ import de.westnordost.streetcomplete.data.osm.persist.WayTable;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestTable;
 import de.westnordost.streetcomplete.data.statistics.QuestStatisticsTable;
 import de.westnordost.streetcomplete.data.tiles.DownloadedTilesTable;
-import de.westnordost.streetcomplete.quests.road_name.data.RoadNamesTablesHelper;
 
 @Singleton
 public class StreetCompleteOpenHelper extends SQLiteOpenHelper
@@ -176,10 +175,10 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 
 	private final TablesHelper[] extensions;
 
-	public StreetCompleteOpenHelper(Context context)
+	public StreetCompleteOpenHelper(Context context, TablesHelper[] extensions)
 	{
 		super(context, DB_NAME, null, DB_VERSION);
-		extensions = new TablesHelper[]{ new RoadNamesTablesHelper() };
+		this.extensions = extensions;
 	}
 
 	@Override
