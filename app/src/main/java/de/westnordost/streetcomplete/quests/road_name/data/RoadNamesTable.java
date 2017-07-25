@@ -8,6 +8,11 @@ public class RoadNamesTable
 	{
 		public static final String
 				WAY_ID = "way_id",
-				NAMES = "names";
+				NAMES = "names",
+				GEOMETRY = "geometry",
+				MIN_LATITUDE = "min_latitude",
+				MIN_LONGITUDE = "min_longitude",
+				MAX_LATITUDE = "max_latitude",
+				MAX_LONGITUDE = "max_longitude";
 	}
 }
