@@ -27,6 +27,7 @@
 
     <style name="QuestTitleQuestion">
         <item name="android:textAlignment">viewStart</item>
+        <item name="android:textColor">#ffffff</item>
         <item name="android:textAppearance">@android:style/TextAppearance.DeviceDefault.Widget.ActionBar.Title.Inverse</item>
         <item name="android:shadowRadius">0</item>
     </style>
