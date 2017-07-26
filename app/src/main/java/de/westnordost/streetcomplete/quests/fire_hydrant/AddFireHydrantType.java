@@ -25,12 +25,6 @@ public class AddFireHydrantType extends SimpleOverpassQuestType
 		return "nodes with emergency=fire_hydrant and !fire_hydrant:type";
 	}
 
-	@Override
-	public int importance()
-	{
-		return QuestImportance.MINOR;
-	}
-
 	public AbstractQuestAnswerFragment createForm()
 	{
 		return new AddFireHydrantTypeForm();
