@@ -2,7 +2,14 @@ package de.westnordost.streetcomplete.data.meta;
 
 import android.content.res.AssetManager;
 
+import com.vividsolutions.jts.geom.GeometryCollection;
+
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.concurrent.Callable;
+import java.util.concurrent.Future;
+import java.util.concurrent.FutureTask;
 
 import javax.inject.Singleton;
 
@@ -13,20 +20,53 @@ import dagger.Provides;
 public class MetadataModule
 {
 	@Provides @Singleton public static CountryInfos countryInfos(
-			AssetManager assetManager, CountryBoundaries countryBoundaries)
+			AssetManager assetManager, Future<CountryBoundaries> countryBoundaries)
 	{
 		return new CountryInfos(assetManager, countryBoundaries);
 	}
 
-	@Provides @Singleton public static CountryBoundaries countryBoundaries(AssetManager assetManager)
+	@Provides public static GeoJsonReader geoJsonReader()
+	{
+		return new GeoJsonReader();
+	}
+
+	@Provides @Singleton public static Future<CountryBoundaries> countryBoundariesFuture(
+			final AssetManager assetManager, final GeoJsonReader geoJsonReader)
+	{
+		FutureTask<CountryBoundaries> ft = new FutureTask<>(new Callable<CountryBoundaries>()
+		{
+			@Override public CountryBoundaries call() throws Exception
+			{
+				InputStream is = assetManager.open("countryBoundaries.json");
+				return new CountryBoundaries(
+						(GeometryCollection) geoJsonReader.read(readToString(is)));
+			}
+		});
+		// start creating (=loading) CountryBoundaries asynchronously
+		new Thread(ft).start();
+		return ft;
+	}
+
+	private static String readToString(InputStream is) throws IOException
 	{
 		try
 		{
-			return new CountryBoundaries(assetManager.open("countryBoundaries.json"));
+			ByteArrayOutputStream result = new ByteArrayOutputStream();
+			byte[] buffer = new byte[1024];
+			int length;
+			while ((length = is.read(buffer)) != -1)
+			{
+				result.write(buffer, 0, length);
+			}
+			return result.toString("UTF-8");
 		}
-		catch (IOException e)
+		finally
 		{
-			throw new RuntimeException(e);
+			if(is != null) try
+			{
+				is.close();
+			}
+			catch (IOException e) { }
 		}
 	}
 }

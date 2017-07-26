@@ -79,6 +79,7 @@ public class OsmOAuthDialogFragment extends DialogFragment
 		INITIAL,
 		RETRIEVING_REQUEST_TOKEN,
 		AUTHENTICATING_IN_BROWSER,
+		AUTHENTICATED_FROM_BROWSER,
 		RETRIEVING_ACCESS_TOKEN,
 		POST_AUTHORIZATION,
 		CANCELLED
@@ -145,6 +146,7 @@ public class OsmOAuthDialogFragment extends DialogFragment
 		if (uri != null && uri.getScheme().equals(CALLBACK_SCHEME) && uri.getHost().equals(CALLBACK_HOST))
 		{
 			verifier = uri.getQueryParameter("oauth_verifier");
+			state = State.AUTHENTICATED_FROM_BROWSER;
 		}
 		else
 		{
@@ -161,7 +163,7 @@ public class OsmOAuthDialogFragment extends DialogFragment
 			state = State.RETRIEVING_REQUEST_TOKEN;
 			new RetrieveRequestTokenTask().execute();
 		}
-		else if(state == State.AUTHENTICATING_IN_BROWSER)
+		else if(state == State.AUTHENTICATED_FROM_BROWSER)
 		{
 			state = State.RETRIEVING_ACCESS_TOKEN;
 			new RetrieveAccessTokenTask().execute();

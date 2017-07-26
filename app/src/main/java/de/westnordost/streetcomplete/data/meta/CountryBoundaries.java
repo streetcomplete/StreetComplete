@@ -7,11 +7,9 @@ import com.vividsolutions.jts.geom.GeometryCollection;
 import com.vividsolutions.jts.geom.GeometryFactory;
 import com.vividsolutions.jts.geom.Point;
 import com.vividsolutions.jts.geom.PrecisionModel;
-import com.vividsolutions.jts.index.quadtree.Quadtree;
+import com.vividsolutions.jts.index.SpatialIndex;
+import com.vividsolutions.jts.index.strtree.STRtree;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -29,18 +27,17 @@ public class CountryBoundaries
 	private static final int WGS84 = 4326;
 
 	private final GeometryFactory factory = new GeometryFactory(new PrecisionModel(), WGS84);
-	private final Quadtree quadtree;
+	private final SpatialIndex index;
 	private final Map<String, Geometry> geometriesByIsoCodes;
-
 	private final Map<Geometry, Double> geometrySizeCache;
 
-	public CountryBoundaries(InputStream is)
+	public CountryBoundaries(GeometryCollection countriesBoundaries)
 	{
-		quadtree = new Quadtree();
+		long time = System.currentTimeMillis();
+		index = new STRtree();
 		geometrySizeCache = new HashMap<>(400);
 		geometriesByIsoCodes = new HashMap<>(400);
 
-		GeometryCollection countriesBoundaries = (GeometryCollection) load(is);
 		for(int i = 0; i < countriesBoundaries.getNumGeometries(); ++i)
 		{
 			Geometry countryBoundary = countriesBoundaries.getGeometryN(i);
@@ -49,7 +46,7 @@ public class CountryBoundaries
 			if(props == null) continue;
 			if(props.containsKey(ISO3166_1_ALPHA2) || props.containsKey(ISO3166_2))
 			{
-				insertIntoQuadtree(countryBoundary);
+				insertIntoIndex(countryBoundary);
 				insertIntoIsoCodes(countryBoundary);
 
 			}
@@ -72,11 +69,11 @@ public class CountryBoundaries
 		}
 	}
 
-	private void insertIntoQuadtree(Geometry countryBoundary)
+	private void insertIntoIndex(Geometry countryBoundary)
 	{
 		// split multipolygons into its elements and copy the properties to them to make better use
-		// of the quadtree data structure. I.e. the United Kingdom would be on the top level of the
-		// quadtree since because with all those oversees territories, it spans almost the whole
+		// of the index data structure. I.e. the United Kingdom would be on the top level of the
+		// index since because with all those oversees territories, it spans almost the whole
 		// world.
 		if(countryBoundary instanceof GeometryCollection)
 		{
@@ -84,12 +81,12 @@ public class CountryBoundaries
 			for (int j = 0; j < countryBoundaries.getNumGeometries(); j++)
 			{
 				Geometry countryBoundariesSegment =  countryBoundaries.getGeometryN(j);
-				quadtree.insert(countryBoundariesSegment.getEnvelopeInternal(), countryBoundary);
+				index.insert(countryBoundariesSegment.getEnvelopeInternal(), countryBoundary);
 			}
 		}
 		else
 		{
-			quadtree.insert(countryBoundary.getEnvelopeInternal(), countryBoundary);
+			index.insert(countryBoundary.getEnvelopeInternal(), countryBoundary);
 		}
 	}
 
@@ -113,7 +110,7 @@ public class CountryBoundaries
 	{
 		Coordinate coord = new Coordinate(longitude, latitude, 0);
 		Point point = factory.createPoint(coord);
-		Set possibleMatches = new HashSet(quadtree.query(new Envelope(coord)));
+		Set possibleMatches = new HashSet(index.query(new Envelope(coord)));
 		List<Geometry> matches = new ArrayList<>();
 		for (Object possibleMatch : possibleMatches)
 		{
@@ -149,40 +146,5 @@ public class CountryBoundaries
 				result.add(props.get(ISO3166_2));
 		}
 		return result;
-	}
-
-	private String readToString(InputStream is) throws IOException
-	{
-		try
-		{
-			ByteArrayOutputStream result = new ByteArrayOutputStream();
-			byte[] buffer = new byte[1024];
-			int length;
-			while ((length = is.read(buffer)) != -1)
-			{
-				result.write(buffer, 0, length);
-			}
-			return result.toString("UTF-8");
-		}
-		finally
-		{
-			if(is != null) try
-			{
-				is.close();
-			}
-			catch (IOException e) { }
-		}
-	}
-
-	private Geometry load(InputStream is)
-	{
-		try
-		{
-			return new GeoJsonReader().read(readToString(is));
-		}
-		catch (IOException e)
-		{
-			throw new RuntimeException(e);
-		}
 	}
 }
