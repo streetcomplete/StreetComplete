@@ -14,6 +14,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.Future;
 
 import javax.inject.Inject;
 
@@ -22,13 +23,13 @@ public class CountryInfos
 	private static final String BASEPATH = "country_metadata";
 
 	private final AssetManager assetManager;
-	private final CountryBoundaries countryBoundaries;
+	private final Future<CountryBoundaries> countryBoundaries;
 
 	private CountryInfo defaultCountryInfo;
 
 	private Map<String, CountryInfo> countryInfoMap;
 
-	@Inject public CountryInfos(AssetManager assetManager, CountryBoundaries countryBoundaries)
+	@Inject public CountryInfos(AssetManager assetManager, Future<CountryBoundaries> countryBoundaries)
 	{
 		this.assetManager = assetManager;
 		this.countryBoundaries = countryBoundaries;
@@ -38,8 +39,15 @@ public class CountryInfos
 	/** Get the info by location */
 	public CountryInfo get(double longitude, double latitude)
 	{
-		List<String> countryCodesIso3166 = countryBoundaries.getIsoCodes(longitude, latitude);
-		return get(countryCodesIso3166);
+		try
+		{
+			List<String> countryCodesIso3166 = countryBoundaries.get().getIsoCodes(longitude, latitude);
+			return get(countryCodesIso3166);
+		}
+		catch (Exception e)
+		{
+			throw new RuntimeException(e);
+		}
 	}
 
 	/** Get the info by a list of country codes sorted by size. I.e. DE-NI,DE,EU gets the info
