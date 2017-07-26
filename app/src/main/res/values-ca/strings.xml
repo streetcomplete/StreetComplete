@@ -14,8 +14,6 @@
     <string name="pref_title_not_authorized_summary">"Encara no esteu autoritzat"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
     <string name="pref_tilecache_size_message">"Espai en MB reservat en el magatzem extern com memòria cau per les tessel·les"</string>
-    <string name="pref_title_quest_expiration_time">"Missions en memòria cau"</string>
-    <string name="pref_summary_quest_expiration">"durant %s abans de baixar-ne de noves"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Mostra totes les notes"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Mostra totes les notes"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Ignora les notes que no són preguntes"</string>
@@ -36,7 +34,6 @@
     <string name="quest_streetName_title">"Quin nom té aquesta via?"</string>
     <string name="quest_streetName_description">"com està escrita en el senyal del carrer, les abreviatures s'expandeixen:"</string>
     <string name="quest_streetName_answer_noName_confirmation_description">"De vegades, el senyal només es troba en un extrem del carrer. També, tingueu present que potser no hi ha senyals addicionals per a costats de carrer que pertanyen a altres carrers més grans. Habitualment, qualsevol carrer amb cases té un nom."</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title">"Hi ha abreviatures en el nom?"</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Si el nom es pot escriure sense cap abreviatures, aleshores s'expandirà. Moltes abreviatures comuns s'expandeixen automàticament en escriure, però potser no totes."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Sense abreviatures"</string>
     <string name="quest_openingHours_name_title">"Quin és l'horari d'obertura de: %s?"</string>
@@ -74,6 +71,8 @@
     <string name="no_location_permission_warning">"Cal la teva ubicació per a cercar missions prop teu."</string>
     <string name="action_about">"Quant a l'StreetComplete"</string>
     <string name="about_title_version">"Versió"</string>
+
+    <!-- Fuzzy -->
     <string name="about_title_authors">"Autors"</string>
     <string name="about_summary_authors">"© 2016–2017 Tobias Zwick i col·laboradors"</string>
     <string name="about_title_repository">"Dipòsit font"</string>
@@ -143,14 +142,6 @@ Per a visualitzar el mapa, es recuperen tessel·les vectorials del servei &lt;a 
 &lt;p&gt;
 (&lt;i&gt; Això és el que actualment no s'ha implementat encara, només vull informar-vos del que està per venir: &lt;/i&gt;) Les dades que es mostren a la taula de classificació i el perfil s'agreguen a la informació a disposició del públic des de l'OpenStreetMap. Les dades no provenen d'aquesta aplicació, sinó bàsicament de l'historial de canvis públic dels usuaris OSM.
 &lt;/p&gt;"</string>
-    <string name="authors_html">"&lt;p&gt;© 2017 Tobias Zwick&lt;/p&gt;
-&lt;p&gt;L'aplicació usa el conjunt &lt;a href=\"https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free\"&gt;Beautiful Flat Icons&lt;/a&gt; d'en Nick Roach, llicenciat en els termes de la &lt;a href=\"http://www.gnu.org/licenses/gpl-2.0.html\"&gt;GPL&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;Tranduccions&lt;/b&gt;&lt;/p&gt;
-%1$s"</string>
-    <string name="quest_expiration_one_day">"1 dia"</string>
-    <string name="quest_expiration_a_week">"1 setmana"</string>
-    <string name="quest_expiration_two_weeks">"2 setmanes"</string>
-    <string name="quest_expiration_one_month">"1 mes"</string>
     <string name="autosync_on">"Activat"</string>
     <string name="autosync_only_on_wifi">"Només per Wifi"</string>
     <string name="autosync_off">"Desactivat"</string>
@@ -181,16 +172,8 @@ Per a visualitzar el mapa, es recuperen tessel·les vectorials del servei &lt;a 
     <string name="quest_sidewalk_onlyWest">"Només en el costat oest"</string>
     <string name="quest_sidewalk_onlyEast">"Només en el costat est"</string>
     <string name="quest_sidewalk_yes">"Sí"</string>
-    <string name="quest_maxspeed_title">"Què diuen els senyals de velocitat màxima en aquest carrer?"</string>
     <string name="quest_maxspeed_answer_noSign">"No hi ha cap senyal"</string>
-    <string name="quest_maxspeed_answer_noSign_info">"Bé, no hi ha cap senyal, s'apliquen els límits de velocitat generals."</string>
-    <string name="quest_maxspeed_answer_noSign_info_motorway">"Això és %1$s en una autopista."</string>
-    <string name="quest_maxspeed_answer_noSign_info_living_street">"Això és %1$s en una via residencial."</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"On és aquest carrer?"</string>
-    <string name="quest_maxspeed_answer_noSign_urban">"En poblat: s'aplica el límit de velocitat %1$s."</string>
-    <string name="quest_maxspeed_answer_noSign_rural">"Fora de poblat: s'aplica el límit de velocitat %1$s."</string>
-    <string name="quest_maxspeed_answer_noSign_implicitOk">"Prou lluny"</string>
-    <string name="quest_maxspeed_answer_variable">"Els senyals electrònics mostren límits de velocitat variables"</string>
     <string name="quest_cyclewaySurface_title">"Quina superfície té el carril bici aquí?"</string>
     <string name="quest_cycleway_title">"Hi ha carril bici en aquest carrer?"</string>
     <string name="quest_buildingType_title">"Quin tipus d'edifici és?"</string>
@@ -223,4 +206,52 @@ Aleshores, la informació que introdueixes s'afegeix directament a l'OpenStreetM
     <string name="pref_title_keep_screen_on">"Conserva la pantalla activa"</string>
     <string name="download_server_error">"S'ha produït un error de connexió en escanejar missions. Torneu-ho a intentar."</string>
     <string name="upload_server_error">"S'ha produït un error en pujar les respostes. Torneu-ho a intentar."</string>
+    <string name="quest_generic_hasFeature_yes">"Sí"</string>
+    <string name="quest_generic_hasFeature_no">"No"</string>
+    <string name="quest_busStopShelter_title">"Aquesta parada té marquesina?"</string>
+    <string name="quest_bikeParkingCapacity_title">"Quantes bicis es poden aparcar aquí?"</string>
+    <string name="quest_address_unusualHousenumber_confirmation_description">"Aquest número de carrer sembla estrany."</string>
+    <string name="quest_sport_title">"Per a quin esport és aquest camp o pista?"</string>
+    <string name="quest_sport_answer_multi">"Cap esport en concret"</string>
+    <string name="quest_sport_soccer">"Fútbol"</string>
+    <string name="quest_sport_tennis">"Tennis"</string>
+    <string name="quest_sport_baseball">"Basebol"</string>
+    <string name="quest_sport_basketball">"Basquetbol"</string>
+    <string name="quest_sport_golf">"Golf"</string>
+    <string name="quest_sport_equestrian">"Equitació"</string>
+    <string name="quest_sport_athletics">"Atletisme"</string>
+    <string name="quest_sport_volleyball">"Voleibol"</string>
+    <string name="quest_sport_beachvolleyball">"Voleibol platja"</string>
+    <string name="quest_sport_american_football">"Futbol americà"</string>
+    <string name="quest_sport_skateboard">"Monopatí"</string>
+    <string name="quest_sport_bowls">"Bitlles"</string>
+    <string name="quest_sport_boules">"Botxes"</string>
+    <string name="quest_sport_shooting">"Tir"</string>
+    <string name="quest_sport_cricket">"Criquet"</string>
+    <string name="quest_sport_table_tennis">"Tennis taula"</string>
+    <string name="quest_sport_gymnastics">"Gimnàsia"</string>
+    <string name="quest_sport_archery">"Tir amb arc"</string>
+    <string name="quest_sport_australian_football">"Futbol australià"</string>
+    <string name="quest_sport_badminton">"Bàdminton"</string>
+    <string name="quest_sport_canadian_football">"Futbol canadenc"</string>
+    <string name="quest_sport_field_hockey">"Hoquei herba"</string>
+    <string name="quest_sport_handball">"Handbol"</string>
+    <string name="quest_sport_ice_hockey">"Hoquei gel"</string>
+    <string name="quest_sport_netball">"Netbol"</string>
+    <string name="quest_sport_rugby">"Rugbi"</string>
+    <string name="quest_select_hint">"Trieu:"</string>
+    <string name="quest_sport_manySports_confirmation_description">"Aquest camp de joc està dissenyat específicament per a aquests esports (hi ha presents les línies de joc i equipaments) o té un ús general per a qualsevol tipus de joc?"</string>
+    <string name="quest_manySports_confirmation_specific">"Per a aquests en concret"</string>
+    <string name="quest_manySports_confirmation_generic">"Ús general"</string>
+    <string name="quest_sport_manySports_confirmation_title">"Heu seleccionat massa esports"</string>
+    <string name="quest_busStopShelter_name_title">"
+La parada de bus «%s» té marquesina?"</string>
+    <string name="quest_toiletsFee_title">"Cal pagar per l'ús dels serveis?"</string>
+    <string name="quest_tactilePaving_title_bus">"Aquesta parada d'autobús té paviment tàctil?"</string>
+    <string name="quest_tactilePaving_title_crosswalk">"Aquest pas de vianants té paviment tàctil?"</string>
+    <string name="quest_source_dialog_title">"Esteu segur que heu comprovat això presencialment?"</string>
+    <string name="quest_tactilePaving_title_name_bus">"Aquesta parada d'autobús «%s» té paviment tàctil?"</string>
+    <string name="quest_source_dialog_note">"Només hauríeu d'entrar la informació recollida en expedició de camp"</string>
+    <string name="quest_bicycleParkingCoveredStatus_title">"Aquest pàrquing de bicis és cobert (protegit de la pluja)?"</string>
+    <string name="dialog_session_dont_show_again">"No ho mostris més durant aquesta sessió"</string>
 </resources>

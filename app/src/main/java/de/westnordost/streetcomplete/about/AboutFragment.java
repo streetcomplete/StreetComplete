@@ -1,18 +1,11 @@
 package de.westnordost.streetcomplete.about;
 
+import android.app.Fragment;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
-
-import com.esotericsoftware.yamlbeans.YamlException;
-import com.esotericsoftware.yamlbeans.YamlReader;
-
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.List;
-import java.util.Map;
 
 import de.westnordost.streetcomplete.ApplicationConstants;
 import de.westnordost.streetcomplete.BuildConfig;
@@ -24,6 +17,7 @@ public class AboutFragment extends PreferenceFragment
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
+
 		addPreferencesFromResource(R.xml.about);
 
 		getPreferenceScreen().findPreference("version").setSummary(BuildConfig.VERSION_NAME);
@@ -46,16 +40,14 @@ public class AboutFragment extends PreferenceFragment
 			@Override
 			public boolean onPreferenceClick(Preference preference)
 			{
-				String translationCredits;
-				try {
-					translationCredits = creditTranslationsAsHtmlString();
-				}
-				catch (YamlException e)
-				{
-					throw new RuntimeException(e);
-				}
-				showHtmlRes(R.string.about_title_authors,
-						String.format(getResources().getString(R.string.authors_html), translationCredits));
+
+				getFragmentManager()
+						.beginTransaction()
+						.replace(R.id.fragment_container, new CreditsFragment())
+						.addToBackStack(null)
+						.setCustomAnimations(R.animator.enter_from_right, R.animator.exit_to_right)
+						.commit();
+
 				return true;
 			}
 		});
@@ -66,7 +58,15 @@ public class AboutFragment extends PreferenceFragment
 			@Override
 			public boolean onPreferenceClick(Preference preference)
 			{
-				showHtmlRes(R.string.about_title_privacy_statement, getResources().getString(R.string.privacy_html));
+				Fragment f = ShowHtmlFragment.create(
+						getResources().getString(R.string.privacy_html),
+						R.string.about_title_privacy_statement);
+				getFragmentManager()
+						.beginTransaction()
+						.replace(R.id.fragment_container,f)
+						.addToBackStack(null)
+						.commit();
+
 				return true;
 			}
 		});
@@ -113,26 +113,9 @@ public class AboutFragment extends PreferenceFragment
 		});
 	}
 
-	private String creditTranslationsAsHtmlString() throws YamlException
+	@Override public void onStart()
 	{
-		InputStream is = getResources().openRawResource(R.raw.credits_translations);
-		YamlReader reader = new YamlReader(new InputStreamReader(is));
-		List list = (List) reader.read();
-		StringBuilder htmlString = new StringBuilder();
-		for (Object o : list)
-		{
-			Map m = (Map) o;
-			Map.Entry pair = (Map.Entry) m.entrySet().iterator().next();
-			htmlString.append(pair.getKey()+"<br/>		"+pair.getValue()+"<br/>");
-		}
-		return htmlString.toString();
-	}
-
-	private void showHtmlRes(int titleResourceId, String htmlText)
-	{
-		Intent intent = new Intent(getActivity(), ShowHtmlActivity.class);
-		intent.putExtra(ShowHtmlActivity.TITLE_STRING_RESOURCE_ID, titleResourceId);
-		intent.putExtra(ShowHtmlActivity.TEXT, htmlText);
-		startActivity(intent);
+		super.onStart();
+		getActivity().setTitle(R.string.action_about);
 	}
 }

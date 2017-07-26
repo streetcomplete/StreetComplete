@@ -14,8 +14,6 @@
     <string name="pref_title_not_authorized_summary">"Pas encore autorisé"</string>
     <string name="pref_tilecache_size_summary">"%d Mo"</string>
     <string name="pref_tilecache_size_message">"Espace en megaoctets réservé à la sauvegarde en cache sur stockage externe des tuiles de la carte"</string>
-    <string name="pref_title_quest_expiration_time">"Quêtes en cache"</string>
-    <string name="pref_summary_quest_expiration">"pour %s avant de télécharger à nouveau"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Montrer toutes les notes"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Montrer également les notes qui ne ressemblent pas à des questions"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Ignorer les notes qui ne ressemblent pas à des questions"</string>
@@ -29,7 +27,7 @@
     <string name="quest_generic_answer_notApplicable">"Ne sait pas"</string>
 
     <!-- je me suis permis d'éviter de sous-entendre que l'utilisateur est un homme ou une femme, ce qui évite la forme un peu étrange avec le point médian -->
-    <string name="quest_generic_confirmation_title">"Voulez-vous vraiment ?"</string>
+    <string name="quest_generic_confirmation_title">"Confirmez-vous ?"</string>
 
     <!-- cf commentaire sur "Are you sure?" -->
     <string name="quest_generic_confirmation_yes">"Oui, c'est sûr"</string>
@@ -45,7 +43,6 @@
     <!-- "Also, note that there may not be extra street signs for side streets that belong to a bigger street."
     That is not very clear to me. Any further explanations? -->
     <string name="quest_streetName_answer_noName_confirmation_description">"Parfois le panneau ne se trouve qu'à une seule extrémité de la rue. Les ruelles adjacentes aux grandes rues n'ont souvent pas de panneaux supplémentaires. Habituellement, une rue qui a une maison porte un nom."</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title">"Abréviation dans le nom ?"</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Si vous pouvez écrire le nom sans abréviation, faites-le. Les abréviations communes sont développées automatiquement pendant que vous tapez, mais peut-être pas toutes."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Pas d'abréviation"</string>
     <string name="quest_openingHours_name_title">"Quelles sont les horaires d’ouverture de « %s » ?"</string>
@@ -56,7 +53,7 @@
     <string name="quest_openingHours_add_weekdays">"Ajouter des jours de la semaine"</string>
     <string name="quest_openingHours_chooseMonthsTitle">"Sélectionner des mois"</string>
     <string name="quest_openingHours_chooseWeekdaysTitle">"Sélectionner des jours de la semaine"</string>
-    <string name="quest_openingHours_24_7_confirmation">"En d'autres termes, il est ouvert tout le temps et tous les jours ?"</string>
+    <string name="quest_openingHours_24_7_confirmation">"En d'autres termes, il est ouvert 24h/24 ?"</string>
     <string name="quest_noteDiscussion_title">"Pouvez-vous contribuer à cette note ?"</string>
     <string name="quest_noteDiscussion_no">"Non, cacher"</string>
     <string name="quest_noteDiscussion_create">"créé par %1$s (%2$s)"</string>
@@ -65,6 +62,8 @@
     <string name="quest_noteDiscussion_reopen">"%1$s a réouvert la note (%2$s)"</string>
     <string name="quest_noteDiscussion_anonymous">"Anonyme"</string>
     <string name="quest_noteDiscussion_comments_title">"Réponses"</string>
+
+    <!-- In the context of this sentence, maybe prefer the verb "Abandonner" instead of "Rejeter" because it's an idea to give up an input -->
     <string name="confirmation_discard_title">"Rejeter l'entrée ?"</string>
     <string name="confirmation_discard_positive">"Rejeter"</string>
     <string name="confirmation_discard_negative">"Annuler"</string>
@@ -83,6 +82,8 @@
     <string name="no_location_permission_warning">"Votre position est nécessaire pour rechercher des quêtes"</string>
     <string name="action_about">"À propos de StreetComplete"</string>
     <string name="about_title_version">"Version"</string>
+
+    <!-- Fuzzy -->
     <string name="about_title_authors">"Auteurs"</string>
     <string name="about_summary_authors">"© 2016–2017 Tobias Zwick et contributeurs"</string>
     <string name="about_title_repository">"Code Source"</string>
@@ -94,7 +95,7 @@
     <string name="offline">"Vous êtes hors ligne"</string>
 
     <!-- téléverser est horrible. On tend à préférer uploader et c'est souvent le mot choisi dans les GUI, que se soit dans Transmission ou dans LibreOffice -->
-    <string name="confirmation_authorize_now">"Vous devez lier votre compte OSM pour téléverser vos réponses. Le faire maintenant ?"</string>
+    <string name="confirmation_authorize_now">"Vous devez lier votre compte OSM pour publier vos réponses. Le faire maintenant ?"</string>
     <string name="not_authorized">"Non autorisé"</string>
     <string name="version_banned_message">"L'upload de réponses avec cette version de StreetComplete a été banni. Veuillez mettre à jour votre application."</string>
     <string name="no_gps_no_quests">"Pour rechercher des quêtes autour de vous automatiquement, activer la localisation"</string>
@@ -158,14 +159,6 @@ Pour afficher la carte, les tuiles vectorielles sont extraites du &lt;a href=\"h
 &lt;p&gt;
 (&lt;I&gt;Ce qui suit n'est pas encore implémenté, mais je voulais simplement vous informer de ce qui est à venir :&lt;/I&gt;) Les données affichées dans le classement et le profil sont agrégées à partir des informations publiées sur OpenStreetMap. Les données ne proviennent pas de cette application, mais principalement de l'historique publique des contributions à OSM.
 &lt;/p&gt;"</string>
-    <string name="authors_html">"&lt;p&gt; © 2017 Tobias Zwick &lt;/ p&gt;
-&lt;p&gt; L'application utilise le set &lt;a href=\"https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free\"&gt; Beautiful Flat Icons &lt;/a&gt; par Nick Roach, sous la licence &lt;a href=\"http://www.gnu.org/licenses/gpl-2.0.html\"&gt; GPL &lt;/a&gt;. &lt;/ p&gt;
-&lt;p&gt;&lt;b&gt;Traductions &lt;/b&gt;&lt;/p&gt;
-%1$s"</string>
-    <string name="quest_expiration_one_day">"Un jour"</string>
-    <string name="quest_expiration_a_week">"Une semaine"</string>
-    <string name="quest_expiration_two_weeks">"Deux semaines"</string>
-    <string name="quest_expiration_one_month">"Un mois"</string>
     <string name="autosync_on">"Activé"</string>
 
     <!-- "sur wifi" or "en wifi" ? -->
@@ -174,18 +167,24 @@ Pour afficher la carte, les tuiles vectorielles sont extraites du &lt;a href=\"h
 
     <!-- Plus simple et plus court : "Quel est le revêtement de cette rue ?" -->
     <string name="quest_streetSurface_title">"Quel est le revêtement de cette rue ?"</string>
-    <string name="quest_streetSurface_name_title">"Quel est le revêtement de la rue « %s » ?"</string>
     <string name="quest_surface_description">"Sélectionner celui qui correspond le plus :"</string>
     <string name="quest_surface_value_paved">"Pavé (générique)"</string>
     <string name="quest_surface_value_unpaved">"Non pavé (générique)"</string>
     <string name="quest_surface_value_ground">"Terre (générique)"</string>
     <string name="quest_surface_value_asphalt">"Asphalte"</string>
+
+    <!-- "Pierre" is not enough specific -->
     <string name="quest_surface_value_cobblestone">"Pierre"</string>
     <string name="quest_surface_value_compacted">"Compacté"</string>
+
+    <!-- en:concrete = fr:béton = de:Beton
+    en:cement = fr:ciment = de:Zement -->
     <string name="quest_surface_value_concrete">"Ciment"</string>
     <string name="quest_surface_value_dirt">"Terre"</string>
     <string name="quest_surface_value_fine_gravel">"Petits graviers"</string>
     <string name="quest_surface_value_grass">"Gazon"</string>
+
+    <!-- I don't know "Gazon pavé", I think in France it does not mean anything. Other French speakers elsewhere to explain this? -->
     <string name="quest_surface_value_grass_paver">"Gazon pavé"</string>
 
     <!-- Maybe "gravier" for roads ? -->
@@ -207,16 +206,8 @@ Pour afficher la carte, les tuiles vectorielles sont extraites du &lt;a href=\"h
     <string name="quest_sidewalk_onlyWest">"Seulement le côté ouest"</string>
     <string name="quest_sidewalk_onlyEast">"Seulement le côté est"</string>
     <string name="quest_sidewalk_yes">"Oui"</string>
-    <string name="quest_maxspeed_title">"Qu'indiquent les panneaux à propos de la limitation de vitesse dans cette rue ?"</string>
     <string name="quest_maxspeed_answer_noSign">"Il n'y a pas de panneau"</string>
-    <string name="quest_maxspeed_answer_noSign_info">"Bien, s'il n'y a pas de panneau, les limites génériques s'appliquent."</string>
-    <string name="quest_maxspeed_answer_noSign_info_motorway">"C'est %1$s sur une autoroute."</string>
-    <string name="quest_maxspeed_answer_noSign_info_living_street">"C'est %1$s sur une rue résidentielle."</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Où est cette rue ?"</string>
-    <string name="quest_maxspeed_answer_noSign_urban">"En ville : la limite à %1$s s'applique."</string>
-    <string name="quest_maxspeed_answer_noSign_rural">"Hors de la ville : la limite à %1$s s'applique."</string>
-    <string name="quest_maxspeed_answer_noSign_implicitOk">"C'est suffisant"</string>
-    <string name="quest_maxspeed_answer_variable">"Un panneau électronique affiche des limites de vitesse variables"</string>
 
     <!-- Plus simple et plus court : Quel est le revêtement de cette piste cyclable ? -->
     <string name="quest_cyclewaySurface_title">"Quel est le revêtement de cette piste cyclable ?"</string>
@@ -234,7 +225,7 @@ Pour afficher la carte, les tuiles vectorielles sont extraites du &lt;a href=\"h
     <string name="quest_oneway_title">"Est-ce une rue à sens unique ?"</string>
 
     <!-- "édifice" or "bâtiment" ? -->
-    <string name="quest_address_title">"Quel est le numéro de cet édifice ?"</string>
+    <string name="quest_address_title">"Quel est le numéro de ce bâtiment ?"</string>
     <string name="store_listing_short_description">"Application d'arpentage OpenStreetMap"</string>
     <string name="store_listing_full_description">"Aidez à améliorer OpenStreetMap avec StreetComplete !
 
@@ -244,7 +235,7 @@ L'information que vous entrez est directement ajoutée à OpenStreetMap sous vot
     <string name="quest_name_answer_noName">"Il n'a pas de nom"</string>
     <string name="quest_name_answer_noName_confirmation_title">"Vraiment aucun nom ?"</string>
     <string name="quest_name_noName_confirmation_positive">"Oui, sans nom"</string>
-    <string name="quest_buildingLevels_negativeBuildingLevels">"Oups ! L'immeuble ne peut pas avoir plus de niveau dans le toit qu'au total !"</string>
+    <string name="quest_buildingLevels_negativeBuildingLevels">"Oups ! L'immeuble ne peut pas avoir plus de niveaux dans le toit qu'au total !"</string>
     <string name="quest_openingHours_add_times">"Ajouter des heures d'ouverture"</string>
     <string name="crash_message">"Souhaitez-vous envoyer le rapport d'erreur au développeur ?"</string>
     <string name="crash_title">"StreetComplete s'est arrêté inopinément la dernière fois"</string>
@@ -294,7 +285,6 @@ L'information que vous entrez est directement ajoutée à OpenStreetMap sous vot
 
     <!-- plus simple et plus court : L'arrêt de bus %s est-il abrité ? -->
     <string name="quest_busStopShelter_name_title">"L’arrêt de bus « %s » a-t-il un abri ?"</string>
-    <string name="quest_leave_new_note_in_response_to">"Réponse à « %1$s » : %2$s"</string>
     <string name="quest_toiletsFee_title">"Ces toilettes sont-elles payantes ?"</string>
     <string name="quest_tactilePaving_title_bus">"Cet arrêt de bus a-t-il une surface podotactile ?"</string>
     <string name="quest_tactilePaving_title_crosswalk">"Ce passage piéton a-t-il une surface podotactile ?"</string>
@@ -303,4 +293,55 @@ L'information que vous entrez est directement ajoutée à OpenStreetMap sous vot
     <string name="quest_source_dialog_note">"Seules les informations relevées sur place peuvent être ajoutées."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Ce parking à vélo est-il abrité (protégé de la pluie) ?"</string>
     <string name="dialog_session_dont_show_again">"Ne plus afficher pour cette session"</string>
+
+    <!-- Je remets "revêtement" car la "surface d'une route" ça ne veut rien dire. -->
+    <!-- Fuzzy -->
+    <string name="quest_streetSurface_name_title">"Quel est le revêtement de la route « %s » ?"</string>
+    <string name="quest_maxspeed_title_short">"Quel est le panneau de vitesse maximale pour cette route ?"</string>
+    <string name="quest_maxspeed_unusualInput_confirmation_description">"La limitation de vitesse paraît étrange."</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation_title">"Êtes-vous sûr(e) de l'absence de panneau de limitation de vitesse ?"</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation">"Avez-vous vérifié jusqu'au bout de la rue ?
+S'il n'y a aucun panneau, les limitations de vitesse par défaut s'appliquent."</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Oui, aucun panneau"</string>
+    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Les routes en agglomérations ont une limitation de vitesse par défaut différente des routes hors-agglomération."</string>
+    <string name="quest_maxspeed_answer_noSign_urbanOk">"En agglomération"</string>
+    <string name="quest_maxspeed_answer_noSign_ruralOk">"Hors-agglomération"</string>
+    <string name="quest_maxspeed_answer_noSign_info_zone">"S'il y a un panneau comme celui-ci à une intersection, vous ne trouverez pas des panneaux spécifiques dans cette zone car la limitation de vitesse indiquée ici s'applique sur toute la zone."</string>
+    <string name="quest_sport_softball">"Softball"</string>
+    <string name="quest_sport_racquet">"Racquetball"</string>
+    <string name="quest_sport_ice_skating">"Patinage sur glace"</string>
+    <string name="quest_sport_paddle_tennis">"Paddle-tennis"</string>
+    <string name="quest_sport_gaelic_games">"Jeux gaéliques"</string>
+    <string name="quest_sport_sepak_takraw">"Sepak Takraw"</string>
+    <string name="quest_wheelchairAccess_name_title">"Est-ce que l'élément « %s » est accessible aux personnes à mobilité réduite ?"</string>
+    <string name="quest_wheelchairAccess_limited">"Partiellement"</string>
+    <string name="quest_bikeParkingCapacity_hint">"NB : la plupart des arceaux peuvent accueillir un vélo de chaque côté."</string>
+    <string name="quest_sport_roller_skating">"Roller"</string>
+    <string name="quest_wheelchairAccess_bus_station_title">"Cet arrêt de bus est-il accessible en fauteuil roulant ?"</string>
+    <string name="quest_wheelchairAccess_subway_entrance_title">"Cette station de métro est-elle accessible en fauteuil roulant ?"</string>
+    <string name="quest_wheelchairAccess_railway_station_title">"Cette gare est-elle accessible en fauteuil roulant ?"</string>
+    <string name="quest_wheelchairAccess_location_title">"Ce lieu est-il accessible en fauteuil roulant ?"</string>
+    <string name="quest_wheelchairAccess_bus_station_name_title">"L'arrêt de bus « %s » est-il accessible en fauteuil roulant ?"</string>
+    <string name="quest_wheelchairAccess_subway_entrance_name_title">"La station de métro « %s » est-elle accessible en fauteuil roulant ?"</string>
+    <string name="quest_wheelchairAccess_railway_station_name_title">"La gare « %s » est-elle accessible en fauteuil roulant ?"</string>
+    <string name="quest_wheelchairAccess_location_name_title">"Le lieu « %s » est-il accessible en fauteuil roulant ?"</string>
+    <string name="quest_wheelchairAccess_limited_description_business">"Partiellement signifie qu'il n'y a pas plus d'une marche d'escalier afin d'accéder au magasin et que la plupart des pièces sont accessibles en fauteuil roulant."</string>
+    <string name="quest_wheelchairAccess_limited_description_public_transport">"Partiellement signifie qu'il n'y a pas plus d'une marche d'escalier pour y accéder."</string>
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Abréviation du nom \"% s\"?"</string>
+    <string name="quest_baby_changing_table_toilets_title">"Est-ce que ces toilettes disposent d'une table à langer?"</string>
+    <string name="quest_baby_changing_table_title">"Est-ce que \"% s\" possède une table à langer?"</string>
+    <string name="quest_recycling_type_title">"Quel type d'installation de recyclage est-ce?"</string>
+    <string name="recycling_centre">"Déchetterie"</string>
+    <string name="overground_recycling_container">"Conteneur de recyclage"</string>
+    <string name="underground_recycling_container">"Conteneur de recyclage enterré"</string>
+    <string name="quest_generic_error_a_field_empty">"Vous avez laissé un champ vide"</string>
+    <string name="quest_streetName_menuItem_language_simple">"%1$s - %2$s"</string>
+    <string name="quest_streetName_menuItem_language_native">"%1$s - %2$s (%3$s)"</string>
+    <string name="quest_streetName_answer_cantType">"Impossible de taper ces caractères"</string>
+    <string name="quest_streetName_cantType_open_settings">"Ouvrir les paramètres"</string>
+    <string name="quest_streetName_cantType_description">"Si vous utilisez un clavier par défaut, il est probable que vous puissiez simplement activer la langue du clavier dont vous avez besoin dans les paramètres d'entrée.
+
+Sinon, vous pouvez télécharger un autre clavier dans la boutique d'applications. Les claviers populaires qui prennent en charge plusieurs langues sont Google Gboard, SwiftKey Keyboard et Multiling O Keyboard."</string>
+    <string name="quest_streetName_menuItem_nolanguage">"(non spécifié)
+"</string>
 </resources>

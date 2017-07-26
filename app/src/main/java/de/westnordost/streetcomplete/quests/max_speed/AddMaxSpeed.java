@@ -17,7 +17,8 @@ public class AddMaxSpeed extends SimpleOverpassQuestType
 	{
 		return "ways with highway ~ " +
 		       "motorway|trunk|primary|secondary|tertiary|unclassified|residential and " +
-		       "!maxspeed and !source:maxspeed" +
+		       "!maxspeed and !source:maxspeed " +
+		       " and !maxspeed:forward and !maxspeed:backward " +
 		       // other tags that are used for basically the same thing as source:maxspeed
 		       " and !zone:maxspeed and !maxspeed:type";
 	}
@@ -29,21 +30,28 @@ public class AddMaxSpeed extends SimpleOverpassQuestType
 
 	@Override public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
 	{
-		String maxspeed = answer.getString(AddMaxSpeedForm.MAX_SPEED);
-		if(maxspeed != null)
+		boolean isLivingStreet = answer.getBoolean(AddMaxSpeedForm.LIVING_STREET);
+		if(isLivingStreet)
 		{
-			changes.add("maxspeed", maxspeed);
-
+			changes.modify("highway","living_street");
 		}
-		String country = answer.getString(AddMaxSpeedForm.MAX_SPEED_IMPLICIT_COUNTRY);
-		String roadtype = answer.getString(AddMaxSpeedForm.MAX_SPEED_IMPLICIT_ROADTYPE);
-		if(roadtype != null && country != null)
+		else
 		{
-			changes.add("source:maxspeed", country + ":" + roadtype);
-		}
-		else if(maxspeed != null)
-		{
-			changes.add("source:maxspeed", "sign");
+			String maxspeed = answer.getString(AddMaxSpeedForm.MAX_SPEED);
+			if (maxspeed != null)
+			{
+				changes.add("maxspeed", maxspeed);
+			}
+			String country = answer.getString(AddMaxSpeedForm.MAX_SPEED_IMPLICIT_COUNTRY);
+			String roadtype = answer.getString(AddMaxSpeedForm.MAX_SPEED_IMPLICIT_ROADTYPE);
+			if (roadtype != null && country != null)
+			{
+				changes.add("source:maxspeed", country + ":" + roadtype);
+			}
+			else if (maxspeed != null)
+			{
+				changes.add("source:maxspeed", "sign");
+			}
 		}
 	}
 

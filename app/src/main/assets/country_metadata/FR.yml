@@ -1,6 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [oc, ca, br]
 additionalValidHousenumberRegex: \p{N}{1,4}\sbis
+isLivingStreetKnown: true
 isSlowZoneKnown: true
 officialLanguages: [fr]
 popularSports: [soccer, tennis, basketball, boules, equestrian, rugby]

@@ -28,13 +28,15 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 	public static final String
 			MAX_SPEED = "maxspeed",
 			MAX_SPEED_IMPLICIT_COUNTRY = "maxspeed_country",
-			MAX_SPEED_IMPLICIT_ROADTYPE = "maxspeed_roadtype";
+			MAX_SPEED_IMPLICIT_ROADTYPE = "maxspeed_roadtype",
+			LIVING_STREET = "living_street";
 
 	private static final Collection<String>
 			URBAN_OR_RURAL_ROADS = Arrays.asList("primary","secondary","tertiary","unclassified",
 					"primary_link","secondary_link","tertiary_link","road"),
 			ROADS_WITH_DEFINITE_SPEED_LIMIT = Arrays.asList("trunk","motorway","living_street"),
-			URBAN_OR_SLOWZONE_ROADS = Arrays.asList("residential");
+			URBAN_OR_SLOWZONE_ROADS = Arrays.asList("residential","unclassified"),
+			MAYBE_LIVING_STREET = Arrays.asList("residential");
 
 	private EditText speedInput;
 	private CheckBox zoneCheckbox;
@@ -100,6 +102,11 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 	{
 		List<Integer> answers = super.getOtherAnswerResourceIds();
 		answers.add(R.string.quest_maxspeed_answer_noSign);
+		final String highwayTag = getOsmElement().getTags().get("highway");
+		if(getCountryInfo().isLivingStreetKnown() && MAYBE_LIVING_STREET.contains(highwayTag))
+		{
+			answers.add(R.string.quest_maxspeed_answer_living_street);
+		}
 		return answers;
 	}
 
@@ -155,6 +162,19 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 			}
 			return true;
 		}
+		else if(itemResourceId == R.string.quest_maxspeed_answer_living_street)
+		{
+			confirmLivingStreet(new Runnable()
+			{
+				@Override public void run()
+				{
+					Bundle answer = new Bundle();
+					answer.putBoolean(LIVING_STREET, true);
+					applyImmediateAnswer(answer);
+				}
+			});
+			return true;
+		}
 
 		return false;
 	}
@@ -164,6 +184,32 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 		Configuration configuration = new Configuration(getActivity().getResources().getConfiguration());
 		configuration.setLocale(locale);
 		return getActivity().createConfigurationContext(configuration).getResources();
+	}
+
+	private void confirmLivingStreet(final Runnable callback)
+	{
+		View view = LayoutInflater.from(getActivity()).inflate(R.layout.quest_maxspeed_living_street_confirmation, null, false);
+
+		ImageView img = (ImageView) view.findViewById(R.id.imgLivingStreet);
+		int drawableId = getResources().getIdentifier(
+				getCountryInfo().getLivingStreetSign(),
+				"drawable",
+				getActivity().getPackageName());
+		img.setImageDrawable(getResources().getDrawable(drawableId));
+
+		new AlertDialogBuilder(getActivity())
+				.setView(view)
+				.setTitle(R.string.quest_maxspeed_answer_living_street_confirmation_title)
+				.setPositiveButton(R.string.quest_generic_confirmation_yes,
+						new DialogInterface.OnClickListener()
+						{
+							@Override public void onClick(DialogInterface dialog, int which)
+							{
+								callback.run();
+							}
+						})
+				.setNegativeButton(R.string.quest_generic_confirmation_no, null)
+				.show();
 	}
 
 	private void confirmNoSignSlowZone(final Runnable callback)

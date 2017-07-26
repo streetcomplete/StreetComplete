@@ -14,8 +14,6 @@
     <string name="pref_title_not_authorized_summary">"Du är ännu inte auktoriserad"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
     <string name="pref_tilecache_size_message">"Utrymme i megabyte som reserveras på yttre lagring för att cacha kartdelar"</string>
-    <string name="pref_title_quest_expiration_time">"Cache uppdrag"</string>
-    <string name="pref_summary_quest_expiration">"%s före laddar ner på nytt"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Visa alla anteckningar"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Visar även anteckningar som inte är ställda som frågor"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Ignorerar anteckningar som inte är ställda som frågor"</string>
@@ -36,7 +34,6 @@
     <string name="quest_streetName_title">"Vad heter vägen?"</string>
     <string name="quest_streetName_description">"så som det står på vägskylten, utveckla gärna förkortningar:"</string>
     <string name="quest_streetName_answer_noName_confirmation_description">"I bland finns det en gatuskylt bara i ena ändan av gatan. Märk även att det kanske inte finns separata gatuskyltar för sidovägar som hör till en större gata. Vanligtvis har en gata med villabebyggelse ett namn."</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title">"Finns det en förkortning i namnet?"</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Om namnet kan skrivas utan förkortningen, ska det skrivas så. Många vanliga förkortningar utvecklas automatiskt medan du skriver, men troligen inte alla."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Ingen förkortning"</string>
     <string name="quest_openingHours_name_title">"Hur ser öppenhållningstiderna ut för %s?"</string>
@@ -74,6 +71,8 @@
     <string name="no_location_permission_warning">"Din plats är nödvändigt för att söka efter uppdrag i din närhet."</string>
     <string name="action_about">"Om StreetComplete"</string>
     <string name="about_title_version">"Version"</string>
+
+    <!-- Fuzzy -->
     <string name="about_title_authors">"Författare"</string>
     <string name="about_summary_authors">"© 2016–2017 Tobias Zwick och bidragsgivare"</string>
     <string name="about_title_repository">"källkodsarkiv"</string>
@@ -147,14 +146,6 @@ För att visa på kartan, är vektor brickor hämtas från &lt;a href=\"https://
 &lt;P&gt;
 (&lt;I&gt; Detta är faktiskt inte implementerat ännu, vill bara informera er vad som komma skall: &lt;/ i&gt;) De data som visas i leaderboarden och profil sammanställs från allmänt tillgänglig information från OpenStreetMap. Data kommer inte från den här appen, men i grund och botten från allmänheten begå historia OSM användare.
 &lt;/ P&gt;"</string>
-    <string name="authors_html">"&lt;P&gt; © 2017 Tobias Zwick &lt;/ p&gt;
-&lt;P&gt; app använder &lt;a href=\"https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free\"&gt; vackra Flat Ikoner &lt;/a&gt; satt av Nick Roach, licensierad under &lt;a href=\"http://www.gnu.org/licenses/gpl-2.0.html\"&gt; GPL &lt;/a&gt;. &lt;/ p&gt;
-&lt;P&gt; &lt;b&gt; Översättningar &lt;/ b&gt; &lt;/ p&gt;
-%1$s"</string>
-    <string name="quest_expiration_one_day">"En dag"</string>
-    <string name="quest_expiration_a_week">"En vecka"</string>
-    <string name="quest_expiration_two_weeks">"Två veckor"</string>
-    <string name="quest_expiration_one_month">"En månad"</string>
     <string name="autosync_on">"På"</string>
     <string name="autosync_only_on_wifi">"Endast på Wifi"</string>
     <string name="autosync_off">"Av"</string>
@@ -185,16 +176,8 @@ För att visa på kartan, är vektor brickor hämtas från &lt;a href=\"https://
     <string name="quest_sidewalk_onlyWest">"Endast på västra sidan"</string>
     <string name="quest_sidewalk_onlyEast">"Endast på östra sidan"</string>
     <string name="quest_sidewalk_yes">"Ja"</string>
-    <string name="quest_maxspeed_title">"Vad säger skyltarna om hastighetsgränsen på den här gatan?"</string>
     <string name="quest_maxspeed_answer_noSign">"Det finns inga skyltar"</string>
-    <string name="quest_maxspeed_answer_noSign_info">"Okay, om det inte finns några skyltar, ska allmänna hastighetsbegränsningar tillämpas."</string>
-    <string name="quest_maxspeed_answer_noSign_info_motorway">"Detta är %1$s på en motorväg."</string>
-    <string name="quest_maxspeed_answer_noSign_info_living_street">"Detta är %1$s på en gårdsgata."</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Var är den här gatan?"</string>
-    <string name="quest_maxspeed_answer_noSign_urban">"I stad: %1$s hastighetsgräns gäller."</string>
-    <string name="quest_maxspeed_answer_noSign_rural">"Ut ur staden: %1$s hastighetsgräns gäller."</string>
-    <string name="quest_maxspeed_answer_noSign_implicitOk">"Rimligt nog"</string>
-    <string name="quest_maxspeed_answer_variable">"Elektroniska skyltar visar variabla hastighetsgränser"</string>
 
     <!-- Fuzzy -->
     <string name="quest_cyclewaySurface_title">"Vad yta anser cycleway här har?"</string>
@@ -260,6 +243,4 @@ Den information du anger sedan direkt till den OpenStreetMap i ditt namn, utan a
     <string name="quest_manySports_confirmation_generic">"Allmän"</string>
     <string name="quest_sport_manySports_confirmation_title">"Du valde många sporter"</string>
     <string name="quest_busStopShelter_name_title">"Har bushållplatsen \"%s\" ett skydd?"</string>
-    <string name="quest_leave_new_note_in_response_to">"Som svar till \"%1$s\":
-%2$s"</string>
 </resources>

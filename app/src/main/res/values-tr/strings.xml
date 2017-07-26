@@ -16,8 +16,6 @@ Hesabınıza başarıyla yetkilendirildi"</string>
     <string name="pref_tilecache_size_summary">"
  %d MB"</string>
     <string name="pref_tilecache_size_message">"Harici depolama biriminde önbellek harita fayanslarına ayrılmış megabaytlık alan"</string>
-    <string name="pref_title_quest_expiration_time">"Önbellek Görevleri"</string>
-    <string name="pref_summary_quest_expiration">"Yeniden indirmeden önce %s için"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Tüm notları göste"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Sorularla ifade edilmeyen notları da gösteriliyor"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Sorularla ifade edilmeyen notları yoksayma"</string>
@@ -38,7 +36,6 @@ Hesabınıza başarıyla yetkilendirildi"</string>
     <string name="quest_streetName_title">"Bu yolun adı ne?"</string>
     <string name="quest_streetName_description">"Sokak işaretinde yazıldığı gibi kısaltmalar genişletilir:"</string>
     <string name="quest_streetName_answer_noName_confirmation_description">"Bazen sokak levhası yalnızca sokağın bir ucundadır. Ayrıca, daha büyük bir sokağa ait yan sokaklar için ilave sokak işaretleri olmayabileceğini unutmayın. Genellikle evlerin bulunduğu sokakların bir adı vardır."</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title">"Kısaltma adına mı?"</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"İsim kısaltma olmaksızın hecele ediliyorsa, genişletilmelidir. Birçok yaygın kısaltma siz yazarken otomatik olarak genişletilir, ancak muhtemelen hepsi değil."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Kısaltma yok"</string>
     <string name="quest_openingHours_name_title">"%s saatinin çalışma saatleri nedir?"</string>
@@ -76,6 +73,8 @@ Hesabınıza başarıyla yetkilendirildi"</string>
     <string name="no_location_permission_warning">"Çevrenizdeki görevleri taramak için konumunuz gerekiyor."</string>
     <string name="action_about">"StreetComplete Hakkında"</string>
     <string name="about_title_version">"Sürüm"</string>
+
+    <!-- Fuzzy -->
     <string name="about_title_authors">"Yazarlar"</string>
     <string name="about_summary_authors">"© 2016–2017 Tobias Zwick ve katkıda bulunan kişiler"</string>
     <string name="about_title_repository">"Kaynak havuzu"</string>
@@ -145,15 +144,6 @@ Haritayı görüntülemek için vektör karoları, anonim olan &lt;a href=\"http
 &lt;P&gt;
 (&lt;I&gt; Bu henüz gerçekleştirilmedi, yalnızca size neyin geleceğini size bildirmek istiyoruz! &lt;/ I&gt;) Afiş tablosunda ve profilde gösterilen veriler, OpenStreetMap'ten halka açık bilgilerden toplandı. Veriler bu uygulamadan değil, temelde OSM kullanıcılarının kamusal taahhüt geçmişinden gelmektedir.
 &lt;/ P&gt;"</string>
-    <string name="authors_html">"&lt;P&gt; © 2017 Tobias Zwick &lt;/ p&gt;
-&lt;P&gt; Uygulama, &lt;a href=\"https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free\"&gt; Güzel Düz Simgeleri &lt;/a&gt; kullanıyor &lt;/a&gt; Nick Roach tarafından belirlenmiş, &lt;a href=\"http://www.gnu.org/licenses/gpl-2.0.html\"&gt; GPL lisansıyla lisanslanmıştır. &lt;/ P&gt;
-&lt;P&gt; &lt;b&gt; Çeviriler &lt;/ b&gt; &lt;/ p&gt;
-%1$s"</string>
-    <string name="quest_expiration_one_day">"
-Bir gün"</string>
-    <string name="quest_expiration_a_week">"Bir hafta"</string>
-    <string name="quest_expiration_two_weeks">"İki hafta"</string>
-    <string name="quest_expiration_one_month">"Bir ay"</string>
     <string name="autosync_on">"Açık"</string>
     <string name="autosync_only_on_wifi">"Sadece Wifi'de"</string>
     <string name="autosync_off">"Kapalı"</string>
@@ -184,16 +174,8 @@ Bir gün"</string>
     <string name="quest_sidewalk_onlyWest">"Sadece batı yakasında"</string>
     <string name="quest_sidewalk_onlyEast">"Sadece doğu tarafında"</string>
     <string name="quest_sidewalk_yes">"Evet"</string>
-    <string name="quest_maxspeed_title">"İşaretler, bu caddedeki hız sınırı hakkında ne diyor?"</string>
     <string name="quest_maxspeed_answer_noSign">"Hiçbir işaret yok"</string>
-    <string name="quest_maxspeed_answer_noSign_info">"Hiçbir işaret yoksa, genel hız sınırlamaları geçerli."</string>
-    <string name="quest_maxspeed_answer_noSign_info_motorway">"Bir otobanda %1$s var."</string>
-    <string name="quest_maxspeed_answer_noSign_info_living_street">"Bu, yaşayan bir sokakta %1$s."</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Bu cadde nerede"</string>
-    <string name="quest_maxspeed_answer_noSign_urban">"Şehirde:%1$s hız sınırı geçerli."</string>
-    <string name="quest_maxspeed_answer_noSign_rural">"Şehir dışı:%1$s hız sınırı geçerli."</string>
-    <string name="quest_maxspeed_answer_noSign_implicitOk">"Yeterince adil"</string>
-    <string name="quest_maxspeed_answer_variable">"Elektronik işaretler değişken hız sınırlarını gösterir"</string>
     <string name="quest_cyclewaySurface_title">"Burada bisiklet yolunun yüzeyi nedir?"</string>
     <string name="quest_cycleway_title">"Bu caddede bir döngü yolu var mı?"</string>
     <string name="quest_buildingType_title">"Bu nasıl bir bina?"</string>

@@ -21,7 +21,7 @@ public class AddToiletsFee extends SimpleOverpassQuestType
 	@Override
 	protected String getTagFilters()
 	{
-		return "nodes, ways with amenity=toilets and access!=private and !fee";
+		return "nodes, ways with amenity = toilets and access !~ private|customers and !fee";
 	}
 
 	public AbstractQuestAnswerFragment createForm()
