@@ -45,17 +45,14 @@ public class AddOrchardProduceForm extends ImageListQuestAnswerFragment
 			new OsmItem("trees=lime_trees",			R.drawable.surface_grass, R.string.produce_limes),
 			new OsmItem("trees=mango_trees",		R.drawable.surface_grass, R.string.produce_mangos),
 			new OsmItem("trees=mate_plants",		R.drawable.surface_grass, R.string.produce_mate),
-			// TODO: "nut"?
 			new OsmItem("trees=nutmeg_trees",		R.drawable.surface_grass, R.string.produce_nutmeg),
 			new OsmItem("trees=oil_palms",			R.drawable.surface_grass, R.string.produce_oil_palms),
 			new OsmItem("trees=olive_trees",		R.drawable.surface_grass, R.string.produce_olives),
 			new OsmItem("trees=orange_trees",		R.drawable.surface_grass, R.string.produce_oranges),
-			// TODO: "palm"?
 			new OsmItem("trees=papaya_trees",		R.drawable.surface_grass, R.string.produce_papayas),
 			new OsmItem("trees=peach_trees",		R.drawable.surface_grass, R.string.produce_peaches),
 			new OsmItem("trees=pear_trees",			R.drawable.surface_grass, R.string.produce_pears),
-			// TODO: "pepper plant"? (chilis, bell pepper?)
-			new OsmItem("???????????",				R.drawable.surface_grass, R.string.produce_chili),
+			new OsmItem("trees=chili_plants",		R.drawable.surface_grass, R.string.produce_chili),
 			new OsmItem("trees=persimmon_trees",	R.drawable.surface_grass, R.string.produce_persimmons),
 			new OsmItem("trees=pineapple_plants", 	R.drawable.surface_grass, R.string.produce_pineapples),
 			new OsmItem("trees=piper_plants",		R.drawable.surface_grass, R.string.produce_pepper),
@@ -67,7 +64,6 @@ public class AddOrchardProduceForm extends ImageListQuestAnswerFragment
 			new OsmItem("trees=tea_plants",			R.drawable.surface_grass, R.string.produce_tea),
 			new OsmItem("trees=vanilla_plants",		R.drawable.surface_grass, R.string.produce_vanilla),
 			new OsmItem("trees=walnut_trees",		R.drawable.surface_grass, R.string.produce_walnuts),
-			// TODO: jute?!
 	};
 
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
