@@ -6,7 +6,6 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import de.westnordost.streetcomplete.data.QuestImportance;
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
