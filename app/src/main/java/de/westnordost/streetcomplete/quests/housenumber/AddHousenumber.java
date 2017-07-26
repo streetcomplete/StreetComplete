@@ -47,9 +47,9 @@ public class AddHousenumber implements OsmElementQuestType
 
 	@Override public boolean download(BoundingBox bbox, final MapDataWithGeometryHandler handler)
 	{
-		boolean success = true;
+		boolean success;
 
-		final List<Point> housenumberCoords = new ArrayList<>();
+		final ArrayList<Point> housenumberCoords = new ArrayList<>();
 		String nodesWithHousenumbersQuery = NODES_WITH_HOUSENUMBERS.toOverpassQLString(bbox);
 		success = overpassServer.getAndHandleQuota(nodesWithHousenumbersQuery, new MapDataWithGeometryHandler()
 		{
@@ -76,9 +76,16 @@ public class AddHousenumber implements OsmElementQuestType
 				if(!g.isValid()) return;
 
 				// exclude buildings with housenumber-nodes inside them
-				for(Point p : housenumberCoords)
+				for(int i = 0; i < housenumberCoords.size(); ++i)
 				{
-					if(g.covers(p)) return;
+					Point p = housenumberCoords.get(i);
+					if(g.covers(p))
+					{
+						// one housenumber-node cannot be covered by multiple buildings. So, it can
+						// be removed to reduce the amount of remaining point-in-polygon checks
+						housenumberCoords.remove(i);
+						return;
+					}
 				}
 				handler.handle(element, geometry);
 			}
