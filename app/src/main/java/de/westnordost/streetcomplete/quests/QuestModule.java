@@ -26,6 +26,7 @@ import de.westnordost.streetcomplete.quests.road_name.AddRoadName;
 import de.westnordost.streetcomplete.quests.road_surface.AddRoadSurface;
 import de.westnordost.streetcomplete.quests.roof_shape.AddRoofShape;
 import de.westnordost.streetcomplete.quests.sport.AddSport;
+import de.westnordost.streetcomplete.quests.way_light.AddWayLight;
 import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelChairAccessPublicTransport;
 import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAccessBusiness;
 
@@ -41,6 +42,7 @@ public class QuestModule
 				new AddRoofShape(o),
 				// new AddPlaceName(), doesn't make sense as long as the app cannot tell the generic name of elements
 				new AddRoadSurface(o),
+				new AddWayLight(o),
 				new AddBusStopShelter(o),
 				new AddToiletsFee(o),
 				new AddBabyChangingTable(o),
