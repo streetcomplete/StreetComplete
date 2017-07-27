@@ -27,16 +27,24 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import javax.inject.Inject;
+
+import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.map.data.OsmElement;
+import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.QuestGroup;
 import de.westnordost.streetcomplete.data.meta.CountryInfo;
+import de.westnordost.streetcomplete.data.meta.CountryInfos;
+import de.westnordost.streetcomplete.data.osm.ElementGeometry;
 import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 
 /** Abstract base class for any dialog with which the user answers a specific quest(ion) */
 public abstract class AbstractQuestAnswerFragment extends Fragment
 {
-	public static final String ARG_ELEMENT = "element", ARG_COUNTRY_INFO = "countryInfo";
+	public static final String ARG_ELEMENT = "element", ARG_GEOMETRY = "geometry";
+
+	@Inject CountryInfos countryInfos;
 
 	private int titleTextResId = -1;
 	private Object[] titleTextFormatArgs;
@@ -53,22 +61,24 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 
 	private ImageButton buttonClose;
 
-	private CountryInfo countryInfo;
 	private OsmElement osmElement;
+	private ElementGeometry elementGeometry;
+	private CountryInfo countryInfo;
 
 	public AbstractQuestAnswerFragment()
 	{
 		super();
+		Injector.instance.getApplicationComponent().inject(this);
 		questAnswerComponent = new QuestAnswerComponent();
 	}
-
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState)
 	{
 		osmElement = (OsmElement) getArguments().getSerializable(ARG_ELEMENT);
-		countryInfo = (CountryInfo) getArguments().getSerializable(ARG_COUNTRY_INFO);
+		elementGeometry = (ElementGeometry) getArguments().getSerializable(ARG_GEOMETRY);
+		countryInfo = null;
 
 		View view = inflater.inflate(R.layout.quest_answer_fragment, container, false);
 
@@ -318,8 +328,18 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 		return osmElement;
 	}
 
+	protected final ElementGeometry getElementGeometry()
+	{
+		return elementGeometry;
+	}
+
 	protected final CountryInfo getCountryInfo()
 	{
+		// cache it
+		if(countryInfo != null) return countryInfo;
+
+		LatLon latLon = elementGeometry.center;
+		countryInfo = countryInfos.get(latLon.getLongitude(), latLon.getLatitude());
 		return countryInfo;
 	}
 }

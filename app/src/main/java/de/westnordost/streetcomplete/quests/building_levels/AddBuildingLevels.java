@@ -4,7 +4,6 @@ import android.os.Bundle;
 
 import javax.inject.Inject;
 
-import de.westnordost.streetcomplete.data.QuestImportance;
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
@@ -26,12 +25,6 @@ public class AddBuildingLevels extends SimpleOverpassQuestType
 							"retail|commercial|warehouse|industrial|manufacture" +
 		       " and !building:levels and !height and !building:height";
 		// building:height is undocumented, but used the same way as height and currently over 50k times
-	}
-
-	@Override
-	public int importance()
-	{
-		return QuestImportance.MINOR;
 	}
 
 	public AbstractQuestAnswerFragment createForm()

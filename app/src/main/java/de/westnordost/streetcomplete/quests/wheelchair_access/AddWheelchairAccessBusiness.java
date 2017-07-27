@@ -5,7 +5,6 @@ import android.text.TextUtils;
 
 import javax.inject.Inject;
 
-import de.westnordost.streetcomplete.data.QuestImportance;
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
@@ -52,11 +51,6 @@ public class AddWheelchairAccessBusiness extends SimpleOverpassQuestType
 				" leisure ~ " + TextUtils.join("|",leisures)  + " or"+
 				" historic = memorial)" +
 				" and !wheelchair and name";
-	}
-
-	@Override public int importance()
-	{
-		return QuestImportance.MINOR;
 	}
 
 	@Override public WheelchairAccessAnswerFragment createForm()

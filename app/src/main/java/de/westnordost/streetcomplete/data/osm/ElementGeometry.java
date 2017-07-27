@@ -5,6 +5,7 @@ import com.vividsolutions.jts.geom.Lineal;
 import com.vividsolutions.jts.geom.Polygonal;
 import com.vividsolutions.jts.linearref.LengthIndexedLine;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +14,7 @@ import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.streetcomplete.util.JTSConst;
 
 /** Information on the geometry of a quest */
-public class ElementGeometry
+public class ElementGeometry implements Serializable
 {
 	public LatLon center;
 	//* polygons are considered holes if they are defined clockwise */

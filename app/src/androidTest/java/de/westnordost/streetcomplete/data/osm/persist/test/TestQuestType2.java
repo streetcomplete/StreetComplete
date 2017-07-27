@@ -7,7 +7,6 @@ import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
-import de.westnordost.osmapi.map.data.Element;
 
 public class TestQuestType2 implements OsmElementQuestType
 {
@@ -16,10 +15,6 @@ public class TestQuestType2 implements OsmElementQuestType
 	@Override public boolean download(BoundingBox bbox, MapDataWithGeometryHandler handler)
 	{
 		return false;
-	}
-	@Override public int importance()
-	{
-		return 0;
 	}
 	@Override public AbstractQuestAnswerFragment createForm()
 	{

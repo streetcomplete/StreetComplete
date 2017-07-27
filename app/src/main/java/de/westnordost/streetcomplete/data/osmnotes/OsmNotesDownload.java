@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.data.osmnotes;
 
 import android.content.SharedPreferences;
-import android.graphics.Rect;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -13,13 +12,10 @@ import java.util.Set;
 
 import javax.inject.Inject;
 
-import de.westnordost.streetcomplete.ApplicationConstants;
 import de.westnordost.streetcomplete.data.QuestGroup;
 import de.westnordost.streetcomplete.data.QuestStatus;
 import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.data.VisibleQuestListener;
-import de.westnordost.streetcomplete.data.tiles.DownloadedTilesDao;
-import de.westnordost.streetcomplete.util.SlippyMapMath;
 import de.westnordost.osmapi.common.Handler;
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.LatLon;
@@ -35,20 +31,18 @@ public class OsmNotesDownload
 	private final NoteDao noteDB;
 	private final OsmNoteQuestDao noteQuestDB;
 	private final CreateNoteDao createNoteDB;
-	private final DownloadedTilesDao downloadedTilesDao;
 	private final SharedPreferences preferences;
 
 	private VisibleQuestListener listener;
 
 	@Inject public OsmNotesDownload(
 			NotesDao noteServer, NoteDao noteDB, OsmNoteQuestDao noteQuestDB,
-			CreateNoteDao createNoteDB, DownloadedTilesDao downloadedTilesDao, SharedPreferences preferences)
+			CreateNoteDao createNoteDB, SharedPreferences preferences)
 	{
 		this.noteServer = noteServer;
 		this.noteDB = noteDB;
 		this.noteQuestDB = noteQuestDB;
 		this.createNoteDB = createNoteDB;
-		this.downloadedTilesDao = downloadedTilesDao;
 		this.preferences = preferences;
 	}
 
@@ -57,10 +51,8 @@ public class OsmNotesDownload
 		this.listener = listener;
 	}
 
-	public Set<LatLon> download(final Rect tiles, final Long userId, int max)
+	public Set<LatLon> download(BoundingBox bbox, final Long userId, int max)
 	{
-		BoundingBox bbox = SlippyMapMath.asBoundingBox(tiles, ApplicationConstants.QUEST_TILE_ZOOM);
-
 		final Set<LatLon> positions = new HashSet<>();
 		final HashMap<Long, Long> previousQuestsByNoteId = getPreviousQuestsByNoteId(bbox);
 		final Collection<Note> notes = new ArrayList<>();
@@ -135,8 +127,6 @@ public class OsmNotesDownload
 		}
 
 		int closedAmount = previousQuestsByNoteId.size();
-
-		downloadedTilesDao.put(tiles, OsmNoteQuest.type.getClass().getSimpleName());
 
 		Log.i(TAG, "Successfully added " + newAmount + " new and removed " + closedAmount +
 				" closed notes (" + hiddenAmount + " of " + (hiddenAmount + visibleAmount) +

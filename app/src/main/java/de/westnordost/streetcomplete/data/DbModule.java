@@ -11,6 +11,7 @@ import dagger.Provides;
 import de.westnordost.streetcomplete.data.changesets.OpenChangesetsDao;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
 import de.westnordost.streetcomplete.data.statistics.QuestStatisticsDao;
+import de.westnordost.streetcomplete.quests.road_name.data.RoadNamesTablesHelper;
 import de.westnordost.streetcomplete.util.KryoSerializer;
 import de.westnordost.streetcomplete.util.Serializer;
 import de.westnordost.osmapi.changesets.ChangesetsDao;
@@ -20,7 +21,7 @@ public class DbModule
 {
 	@Provides @Singleton public static SQLiteOpenHelper sqliteOpenHelper(Context ctx)
 	{
-		return new StreetCompleteOpenHelper(ctx);
+		return new StreetCompleteOpenHelper(ctx, new TablesHelper[]{ new RoadNamesTablesHelper() });
 	}
 
 	@Provides @Singleton public static Serializer serializer()

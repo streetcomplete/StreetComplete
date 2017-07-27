@@ -5,7 +5,6 @@ import android.text.TextUtils;
 
 import javax.inject.Inject;
 
-import de.westnordost.streetcomplete.data.QuestImportance;
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
@@ -57,11 +56,6 @@ public class AddPlaceName extends SimpleOverpassQuestType
  			   " tourism ~ " + TextUtils.join("|",TOURISMS_WITH_NAMES) + " or" +
 			   " tourism = information and information = office or" +
 			   " leisure ~ " + TextUtils.join("|",LEISURES_WITH_NAMES) + " )";
-	}
-
-	@Override public int importance()
-	{
-		return QuestImportance.MAJOR;
 	}
 
 	@Override public AbstractQuestAnswerFragment createForm()

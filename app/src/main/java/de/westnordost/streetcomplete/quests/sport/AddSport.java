@@ -8,7 +8,6 @@ import java.util.Arrays;
 
 import javax.inject.Inject;
 
-import de.westnordost.streetcomplete.data.QuestImportance;
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
@@ -33,12 +32,6 @@ public class AddSport extends SimpleOverpassQuestType
 	{
 		return "nodes, ways with leisure=pitch and" +
 				" (!sport or sport ~ " + TextUtils.join("|", AMBIGUOUS_SPORT_VALUES)+ ")";
-	}
-
-	@Override
-	public int importance()
-	{
-		return QuestImportance.MAJOR;
 	}
 
 	public AbstractQuestAnswerFragment createForm()
