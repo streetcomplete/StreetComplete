@@ -5,7 +5,6 @@ import android.text.TextUtils;
 
 import javax.inject.Inject;
 
-import de.westnordost.streetcomplete.data.QuestImportance;
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
@@ -34,12 +33,6 @@ public class AddWayLight extends SimpleOverpassQuestType
 	protected String getTagFilters()
 	{
 		return "ways with ( highway ~ " + TextUtils.join("|", WAYS_WITH_LIGHT) + " and !lit)";
-	}
-
-	@Override
-	public int importance()
-	{
-		return QuestImportance.MINOR;
 	}
 
 	public AbstractQuestAnswerFragment createForm()
