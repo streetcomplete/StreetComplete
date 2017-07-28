@@ -1,10 +1,13 @@
-package de.westnordost.streetcomplete.quests;
+package de.westnordost.streetcomplete.quests.road_name;
 
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryModify;
-import de.westnordost.streetcomplete.quests.road_name.AddRoadName;
-import de.westnordost.streetcomplete.quests.road_name.AddRoadNameForm;
+import de.westnordost.streetcomplete.quests.AOsmElementQuestTypeTest;
+import de.westnordost.streetcomplete.quests.road_name.data.PutRoadNameSuggestionsHandler;
+import de.westnordost.streetcomplete.quests.road_name.data.RoadNameSuggestionsDao;
+
+import static org.mockito.Mockito.mock;
 
 public class AddRoadNameTest extends AOsmElementQuestTypeTest
 {
@@ -40,7 +43,7 @@ public class AddRoadNameTest extends AOsmElementQuestTypeTest
 	public void testMultipleNamesDefaultNameIsOfNoSpecificLanguage()
 	{
 		bundle.putStringArray(AddRoadNameForm.NAMES, new String[]{"my name / kröötz", "my name","kröötz"});
-		bundle.putStringArray(AddRoadNameForm.LANGUAGE_CODES, new String[]{null, "en","de"});
+		bundle.putStringArray(AddRoadNameForm.LANGUAGE_CODES, new String[]{"", "en","de"});
 		verify(
 				new StringMapEntryAdd("name","my name / kröötz"),
 				new StringMapEntryAdd("name:en","my name"),
@@ -76,6 +79,8 @@ public class AddRoadNameTest extends AOsmElementQuestTypeTest
 
 	@Override protected OsmElementQuestType createQuestType()
 	{
-		return new AddRoadName(null);
+		return new AddRoadName(null,
+				mock(RoadNameSuggestionsDao.class),
+				mock(PutRoadNameSuggestionsHandler.class));
 	}
 }

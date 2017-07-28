@@ -4,7 +4,6 @@ import android.os.Bundle;
 
 import javax.inject.Inject;
 
-import de.westnordost.streetcomplete.data.QuestImportance;
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
@@ -22,11 +21,6 @@ public class AddMaxSpeed extends SimpleOverpassQuestType
 		       " and !maxspeed:forward and !maxspeed:backward " +
 		       // other tags that are used for basically the same thing as source:maxspeed
 		       " and !zone:maxspeed and !maxspeed:type";
-	}
-
-	@Override public int importance()
-	{
-		return QuestImportance.MAJOR;
 	}
 
 	@Override public AbstractQuestAnswerFragment createForm()

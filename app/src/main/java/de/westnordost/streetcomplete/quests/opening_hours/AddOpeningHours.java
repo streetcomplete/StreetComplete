@@ -5,7 +5,6 @@ import android.text.TextUtils;
 
 import javax.inject.Inject;
 
-import de.westnordost.streetcomplete.data.QuestImportance;
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
@@ -49,11 +48,6 @@ public class AddOpeningHours extends SimpleOverpassQuestType
 				" leisure ~ " + TextUtils.join("|",leisures) + ")" +
 				" and !opening_hours and name";
 	}
-	
-    @Override public int importance()
-    {
-        return QuestImportance.MINOR;
-    }
 
 	@Override public AbstractQuestAnswerFragment createForm()
 	{

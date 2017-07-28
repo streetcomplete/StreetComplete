@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.data;
 
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,7 +18,6 @@ public class QuestTypes
 	public QuestTypes(List<QuestType> types)
 	{
 		this.types = types;
-		Collections.sort(types, new QuestImportanceComparator());
 
 		typeMap = new HashMap<>();
 		for (QuestType questType : types)
@@ -37,14 +35,6 @@ public class QuestTypes
 	public int getAmount()
 	{
 		return types.size();
-	}
-
-	private static class QuestImportanceComparator implements Comparator<QuestType>
-	{
-		@Override public int compare(QuestType lhs, QuestType rhs)
-		{
-			return lhs.importance() - rhs.importance();
-		}
 	}
 
 	public QuestType forName(String typeName)
