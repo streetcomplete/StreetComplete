@@ -78,7 +78,7 @@ public class OsmQuestDownloadTest extends TestCase
 		VisibleQuestListener listener = mock(VisibleQuestListener.class);
 		dl.setQuestListener(listener);
 
-		assertEquals(0,dl.download(questType, new Rect(0,0,1,1), Collections.singleton(blacklistPos)));
+		dl.download(questType, new Rect(0,0,1,1), Collections.singleton(blacklistPos));
 
 		verify(listener, times(0)).onQuestsCreated(any(Collection.class), any(QuestGroup.class));
 	}
@@ -152,7 +152,6 @@ public class OsmQuestDownloadTest extends TestCase
 			this.list = list;
 		}
 
-		@Override public int importance() { return 0; }
 		@Override public AbstractQuestAnswerFragment createForm() { return null; }
 		@Override public String getIconName() { return null; }
 		@Override public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes) {}

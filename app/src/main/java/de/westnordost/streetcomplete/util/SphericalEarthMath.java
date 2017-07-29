@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.util;
 
+import java.util.List;
+
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.map.data.OsmLatLon;
@@ -29,6 +31,25 @@ public class SphericalEarthMath
 		LatLon max = translate(center, distance, 45);
 
 		return new BoundingBox(min, max);
+	}
+
+	/**
+	 * Calculate a bounding box that contains the given positions.
+	 */
+	public static BoundingBox enclosingBoundingBox(List<LatLon> positions)
+	{
+		Double minLat = null, minLon = null, maxLat = null, maxLon = null;
+		for(LatLon pos : positions)
+		{
+			double lat = pos.getLatitude();
+			double lon = pos.getLongitude();
+
+			if(minLat == null || lat < minLat) minLat = lat;
+			if(minLon == null || lon < minLon) minLon = lon;
+			if(maxLat == null || lat > maxLat) maxLat = lat;
+			if(maxLon == null || lon > maxLon) maxLon = lon;
+		}
+		return new BoundingBox(minLat, minLon, maxLat, maxLon);
 	}
 
 	/** @return a new position in the given distance and angle from the original position */
@@ -101,6 +122,23 @@ public class SphericalEarthMath
 				Math.toRadians(pos2.getLatitude()),
 				Math.toRadians(pos2.getLongitude()
 				));
+	}
+
+	/** @return whether any point on line1 is at most the given distance away from any other point
+	 *          on line2. */
+	public static boolean isWithinDistance(double distance, List<LatLon> line1, List<LatLon> line2)
+	{
+		for (LatLon linePoint1 : line1)
+		{
+			for (LatLon linePoint2 : line2)
+			{
+				if (SphericalEarthMath.distance(linePoint1, linePoint2) <= distance )
+				{
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 
 	/** @return initial bearing from one point to the other.<br/>

@@ -11,7 +11,6 @@ import javax.inject.Inject;
 
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
-import de.westnordost.streetcomplete.data.QuestImportance;
 import de.westnordost.streetcomplete.data.osm.ElementGeometry;
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
@@ -24,7 +23,6 @@ import de.westnordost.streetcomplete.util.JTSConst;
 
 import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.geom.Point;
-import com.vividsolutions.jts.operation.valid.IsValidOp;
 
 public class AddHousenumber implements OsmElementQuestType
 {
@@ -47,9 +45,9 @@ public class AddHousenumber implements OsmElementQuestType
 
 	@Override public boolean download(BoundingBox bbox, final MapDataWithGeometryHandler handler)
 	{
-		boolean success = true;
+		boolean success;
 
-		final List<Point> housenumberCoords = new ArrayList<>();
+		final ArrayList<Point> housenumberCoords = new ArrayList<>();
 		String nodesWithHousenumbersQuery = NODES_WITH_HOUSENUMBERS.toOverpassQLString(bbox);
 		success = overpassServer.getAndHandleQuota(nodesWithHousenumbersQuery, new MapDataWithGeometryHandler()
 		{
@@ -76,9 +74,16 @@ public class AddHousenumber implements OsmElementQuestType
 				if(!g.isValid()) return;
 
 				// exclude buildings with housenumber-nodes inside them
-				for(Point p : housenumberCoords)
+				for(int i = 0; i < housenumberCoords.size(); ++i)
 				{
-					if(g.covers(p)) return;
+					Point p = housenumberCoords.get(i);
+					if(g.covers(p))
+					{
+						// one housenumber-node cannot be covered by multiple buildings. So, it can
+						// be removed to reduce the amount of remaining point-in-polygon checks
+						housenumberCoords.remove(i);
+						return;
+					}
 				}
 				handler.handle(element, geometry);
 			}
@@ -93,7 +98,6 @@ public class AddHousenumber implements OsmElementQuestType
 		changes.add("addr:housenumber", housenumber);
 	}
 
-	@Override public int importance() { return QuestImportance.MAJOR; }
 	@Override public AbstractQuestAnswerFragment createForm() { return new AddHousenumberForm(); }
 	@Override public String getCommitMessage() { return "Add housenumbers"; }
 	@Override public String getIconName() { return "housenumber"; }

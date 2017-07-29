@@ -1,8 +1,10 @@
 package de.westnordost.streetcomplete.data;
 
+import android.database.sqlite.SQLiteOpenHelper;
+
 public class StreetCompleteOpenHelperTest extends AndroidDbTestCase
 {
-	private StreetCompleteOpenHelper helper;
+	private SQLiteOpenHelper helper;
 
 	public StreetCompleteOpenHelperTest()
 	{
@@ -12,7 +14,7 @@ public class StreetCompleteOpenHelperTest extends AndroidDbTestCase
 	@Override public void setUp()
 	{
 		super.setUp();
-		helper = new StreetCompleteOpenHelper(getContext());
+		helper = DbModule.sqliteOpenHelper(getContext());
 	}
 
 	@Override public void tearDown()

@@ -26,6 +26,7 @@
         android:paddingStart="14dp"
         android:paddingEnd="14dp"
         >
+
         <de.westnordost.streetcomplete.quests.road_name.AutoCorrectAbbreviationsEditText
             android:id="@+id/nameInput"
             android:layout_width="match_parent"
@@ -37,7 +38,18 @@
             android:textColor="#ffffff"
             android:background="#000000ff"
             />
+
     </me.grantland.widget.AutofitLayout>
+
+    <ImageView
+        android:id="@+id/nameSuggestions"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_arrow_drop_down_white_24dp"
+        android:layout_toStartOf="@+id/deleteButton"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="14dp"
+        style="@style/Base.Widget.AppCompat.Button.Borderless"/>
 
     <TextView
         android:id="@+id/deleteButton"

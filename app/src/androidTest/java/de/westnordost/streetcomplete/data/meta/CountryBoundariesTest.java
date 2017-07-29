@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.data.meta;
 
+import com.vividsolutions.jts.geom.GeometryCollection;
+
 import junit.framework.TestCase;
 
-import java.io.ByteArrayInputStream;
-import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 import java.util.Collections;
 
@@ -25,14 +25,8 @@ public class CountryBoundariesTest extends TestCase
 
 	public void setUp()
 	{
-		try
-		{
-			countryBoundaries = new CountryBoundaries(new ByteArrayInputStream(testGeoJson.getBytes("UTF-8")));
-		}
-		catch (UnsupportedEncodingException e)
-		{
-			throw new RuntimeException(e);
-		}
+		countryBoundaries = new CountryBoundaries(
+				(GeometryCollection) new GeoJsonReader().read(testGeoJson));
 	}
 
 	public void testIsIn()

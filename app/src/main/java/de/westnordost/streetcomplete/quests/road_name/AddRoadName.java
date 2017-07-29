@@ -1,34 +1,77 @@
 package de.westnordost.streetcomplete.quests.road_name;
 
 import android.os.Bundle;
+import android.text.TextUtils;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.inject.Inject;
 
-import de.westnordost.streetcomplete.data.QuestImportance;
-import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType;
+import de.westnordost.osmapi.map.data.BoundingBox;
+import de.westnordost.streetcomplete.data.osm.ElementGeometry;
+import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
+import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
+import de.westnordost.streetcomplete.quests.road_name.data.PutRoadNameSuggestionsHandler;
+import de.westnordost.streetcomplete.quests.road_name.data.RoadNameSuggestionsDao;
 
-public class AddRoadName extends SimpleOverpassQuestType
+public class AddRoadName implements OsmElementQuestType
 {
-	@Inject public AddRoadName(OverpassMapDataDao overpassServer)
+	public static final double MAX_DIST_FOR_ROAD_NAME_SUGGESTION = 30; //m
+
+	private static final String ROADS =	TextUtils.join("|", new String[]{
+			"living_street", "residential", "pedestrian", "primary", "secondary", "tertiary", "unclassified"
+	});
+	private static final String ROADS_WITH_NAMES = "way[highway~\"^("+ROADS+")$\"][name]";
+	private static final String ROADS_WITHOUT_NAMES =
+			"way[highway~\"^("+ROADS+")$\"][!name][!ref][noname != yes][!junction][!area]";
+
+	/** @return overpass query string for creating the quests */
+	private static String getOverpassQuery(BoundingBox bbox)
 	{
-		super(overpassServer);
+		return getOverpassBBox(bbox) + ROADS_WITHOUT_NAMES + "; out meta geom;";
 	}
 
-	@Override
-	protected String getTagFilters()
+	/** @return overpass query string to get roads with names near roads that don't have names */
+	private static String getStreetNameSuggestionsOverpassQuery(BoundingBox bbox)
 	{
-		return " ways with " +
-		       " highway ~ living_street|residential|pedestrian|primary|secondary|tertiary|unclassified|road " +
-		       " and !name and !ref and noname != yes and !junction and !area";
+		return getOverpassBBox(bbox) +
+				ROADS_WITHOUT_NAMES + " -> .without_names;" +
+				ROADS_WITH_NAMES + " -> .with_names;" +
+				"way.with_names(around.without_names:" +
+				MAX_DIST_FOR_ROAD_NAME_SUGGESTION + ");" +
+				"out meta geom;";
 	}
 
-	@Override
-	public int importance()
+	private static String getOverpassBBox(BoundingBox bbox)
 	{
-		return QuestImportance.WARNING;
+		return "[bbox:" +
+				bbox.getMinLatitude() + "," + bbox.getMinLongitude() + "," +
+				bbox.getMaxLatitude() + "," + bbox.getMaxLongitude() +
+				"];";
+	}
+
+	private final RoadNameSuggestionsDao roadNameSuggestionsDao;
+	private final OverpassMapDataDao overpassServer;
+	private final PutRoadNameSuggestionsHandler putRoadNameSuggestionsHandler;
+
+	@Inject public AddRoadName(OverpassMapDataDao overpassServer,
+							   RoadNameSuggestionsDao roadNameSuggestionsDao,
+							   PutRoadNameSuggestionsHandler putRoadNameSuggestionsHandler)
+	{
+		this.overpassServer = overpassServer;
+		this.roadNameSuggestionsDao = roadNameSuggestionsDao;
+		this.putRoadNameSuggestionsHandler = putRoadNameSuggestionsHandler;
+	}
+
+	public boolean download(BoundingBox bbox, final MapDataWithGeometryHandler handler)
+	{
+		return overpassServer.getAndHandleQuota(getOverpassQuery(bbox), handler) &&
+				overpassServer.getAndHandleQuota(getStreetNameSuggestionsOverpassQuery(bbox), putRoadNameSuggestionsHandler);
 	}
 
 	public AbstractQuestAnswerFragment createForm()
@@ -65,18 +108,49 @@ public class AddRoadName extends SimpleOverpassQuestType
 		String[] names = answer.getStringArray(AddRoadNameForm.NAMES);
 		String[] languages = answer.getStringArray(AddRoadNameForm.LANGUAGE_CODES);
 
-		changes.add("name", names[0]);
+		HashMap<String,String> roadNameByLanguage = toRoadNameByLanguage(names, languages);
+		for (Map.Entry<String, String> e : roadNameByLanguage.entrySet())
+		{
+			if(e.getKey().isEmpty())
+			{
+				changes.add("name", e.getValue());
+			}
+			else
+			{
+				changes.add("name:" + e.getKey(), e.getValue());
+			}
+		}
 
+		// these params are passed from the form only to update the road name suggestions so that
+		// newly input street names turn up in the suggestions as well
+
+		long wayId = answer.getLong(AddRoadNameForm.WAY_ID);
+		ElementGeometry geometry = (ElementGeometry) answer.getSerializable(AddRoadNameForm.WAY_GEOMETRY);
+		if (geometry != null && geometry.polylines != null && !geometry.polylines.isEmpty())
+		{
+			roadNameSuggestionsDao.putRoad(wayId, roadNameByLanguage,
+					new ArrayList<>(geometry.polylines.get(0)));
+		}
+	}
+
+	private static HashMap<String,String> toRoadNameByLanguage(String[] names, String[] languages)
+	{
+		HashMap<String,String> result = new HashMap<>();
+		result.put("", names[0]);
+		// add languages only if there is more than one name specified. If there is more than one
+		// name, the "main" name (name specified in top row) is also added with the language.
 		if(names.length > 1)
 		{
 			for (int i = 0; i < names.length; i++)
 			{
-				if(languages[i] != null)
+				// (the first) element may have no specific language
+				if(!languages[i].isEmpty())
 				{
-					changes.add("name:" + languages[i], names[i]);
+					result.put(languages[i], names[i]);
 				}
 			}
 		}
+		return result;
 	}
 
 	@Override public String getCommitMessage()

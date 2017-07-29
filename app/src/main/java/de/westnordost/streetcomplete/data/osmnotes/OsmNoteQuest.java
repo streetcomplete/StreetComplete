@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.data.osmnotes;
 import java.util.Date;
 
 import de.westnordost.streetcomplete.data.Quest;
-import de.westnordost.streetcomplete.data.QuestImportance;
 import de.westnordost.streetcomplete.data.QuestStatus;
 import de.westnordost.streetcomplete.data.QuestType;
 import de.westnordost.streetcomplete.data.osm.ElementGeometry;
@@ -111,11 +110,6 @@ public class OsmNoteQuest implements Quest
 
 	private static class NoteQuestType implements QuestType
 	{
-		@Override public int importance()
-		{
-			return QuestImportance.NOTE;
-		}
-
 		@Override public AbstractQuestAnswerFragment createForm()
 		{
 			return new NoteDiscussionForm();
