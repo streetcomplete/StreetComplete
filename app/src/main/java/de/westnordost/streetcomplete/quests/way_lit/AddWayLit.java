@@ -17,11 +17,11 @@ public class AddWayLit extends SimpleOverpassQuestType
 {
 	static final String[] ROADS_WITH_LIGHT = {
 			"primary", "secondary", "tertiary", "unclassified", "residential", "living_street",
-			"service"
+			"service", "pedestrian"
 	};
 
 	static final String[] WAYS_WITH_LIGHT = {
-			"pedestrian", "footway", "track", "road", "cycleway", "path"
+			"footway", "road", "cycleway", "path"
 	};
 
 	@Inject public AddWayLit(OverpassMapDataDao overpassServer)
