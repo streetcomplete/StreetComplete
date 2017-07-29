@@ -61,9 +61,8 @@ public class AddRoadSurfaceForm extends AbstractQuestFormAnswerFragment
 
 	private void setTitle()
 	{
-		OsmElement element = getOsmElement();
-		String name = element != null && element.getTags() != null ? element.getTags().get("name") : null;
-		if(name != null && !name.trim().isEmpty())
+		String name = getName();
+		if(name != null)
 		{
 			setTitle(R.string.quest_streetSurface_name_title, name);
 		}
