@@ -21,9 +21,6 @@ public class AddWheelchairAccessBusinessForm extends WheelchairAccessAnswerFragm
 
 	private void setTitle()
 	{
-		OsmElement element = getOsmElement();
-		String name = element != null && element.getTags() != null ? element.getTags().get("name") : null;
-		setTitle(R.string.quest_wheelchairAccess_name_title, name);
-
+		setTitle(R.string.quest_wheelchairAccess_name_title, getName());
 	}
 }

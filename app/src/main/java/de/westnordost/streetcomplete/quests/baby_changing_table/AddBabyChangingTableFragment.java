@@ -20,8 +20,8 @@ public class AddBabyChangingTableFragment extends YesNoQuestAnswerFragment
 
 	private void setTitle()
 	{
-		String name = getName(getOsmElement());
-		if(name != null && !name.trim().isEmpty())
+		String name = getName();
+		if(name != null)
 		{
 			setTitle(R.string.quest_baby_changing_table_title, name);
 		}
@@ -31,8 +31,4 @@ public class AddBabyChangingTableFragment extends YesNoQuestAnswerFragment
 		}
 	}
 
-	private String getName(OsmElement element)
-	{
-		return element != null && element.getTags() != null ? element.getTags().get("name") : null;
-	}
 }

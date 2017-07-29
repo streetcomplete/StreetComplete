@@ -202,6 +202,17 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 		questAnswerComponent.onAttach((OsmQuestAnswerListener) activity);
 	}
 
+	protected String getName()
+	{
+		OsmElement element = getOsmElement();
+		String name = element.getTags() != null ? element.getTags().get("name") : null;
+		if ((name == null) || name.trim().isEmpty()) {
+			return null;
+		} else {
+			return name.trim();
+		}
+	}
+
 	protected List<Integer> getOtherAnswerResourceIds()
 	{
 		List<Integer> answers = new ArrayList<>();
