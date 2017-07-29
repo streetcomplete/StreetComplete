@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import de.westnordost.osmapi.map.data.OsmElement;
 import de.westnordost.streetcomplete.R;
 
 
@@ -21,6 +20,6 @@ public class AddWheelchairAccessBusinessForm extends WheelchairAccessAnswerFragm
 
 	private void setTitle()
 	{
-		setTitle(R.string.quest_wheelchairAccess_name_title, getName());
+		setTitle(R.string.quest_wheelchairAccess_name_title, getElementName());
 	}
 }

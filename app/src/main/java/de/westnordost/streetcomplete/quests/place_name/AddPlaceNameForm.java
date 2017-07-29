@@ -7,8 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
-import java.util.List;
-
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
 import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
@@ -29,6 +27,15 @@ public class AddPlaceNameForm extends AbstractQuestFormAnswerFragment
 		setTitle(R.string.quest_placeName_title);
 		View contentView = setContentView(R.layout.quest_placename);
 		nameInput = (EditText) contentView.findViewById(R.id.nameInput);
+
+		addOtherAnswer(R.string.quest_name_answer_noName, new Runnable()
+		{
+			@Override public void run()
+			{
+				confirmNoName();
+			}
+		});
+
 		return view;
 	}
 
@@ -40,50 +47,21 @@ public class AddPlaceNameForm extends AbstractQuestFormAnswerFragment
 		applyFormAnswer(data);
 	}
 
-	@Override protected List<Integer> getOtherAnswerResourceIds()
-	{
-		List<Integer> answers = super.getOtherAnswerResourceIds();
-		answers.add(R.string.quest_name_answer_noName);
-		return answers;
-	}
-
-	@Override protected boolean onClickOtherAnswer(int itemResourceId)
-	{
-		if(super.onClickOtherAnswer(itemResourceId)) return true;
-
-		if(itemResourceId == R.string.quest_name_answer_noName)
-		{
-			confirmNoName();
-			return true;
-		}
-		return false;
-	}
-
 	private void confirmNoName()
 	{
-		DialogInterface.OnClickListener onYes = new DialogInterface.OnClickListener()
-		{
-			@Override
-			public void onClick(DialogInterface dialog, int which)
-			{
-				Bundle data = new Bundle();
-				data.putBoolean(NO_NAME, true);
-				applyImmediateAnswer(data);
-			}
-		};
-		DialogInterface.OnClickListener onNo = new DialogInterface.OnClickListener()
-		{
-			@Override
-			public void onClick(DialogInterface dialog, int which)
-			{
-				// nothing, just go back
-			}
-		};
-
 		new AlertDialogBuilder(getActivity())
 				.setTitle(R.string.quest_name_answer_noName_confirmation_title)
-				.setPositiveButton(R.string.quest_name_noName_confirmation_positive, onYes)
-				.setNegativeButton(R.string.quest_generic_confirmation_no, onNo)
+				.setPositiveButton(R.string.quest_name_noName_confirmation_positive, new DialogInterface.OnClickListener()
+				{
+					@Override
+					public void onClick(DialogInterface dialog, int which)
+					{
+						Bundle data = new Bundle();
+						data.putBoolean(NO_NAME, true);
+						applyImmediateAnswer(data);
+					}
+				})
+				.setNegativeButton(R.string.quest_generic_confirmation_no, null)
 				.show();
 	}
 

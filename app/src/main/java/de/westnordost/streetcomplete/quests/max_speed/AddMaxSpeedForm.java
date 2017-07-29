@@ -1,8 +1,6 @@
 package de.westnordost.streetcomplete.quests.max_speed;
 
 import android.content.DialogInterface;
-import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,8 +14,6 @@ import android.widget.Toast;
 
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
-import java.util.Locale;
 
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
@@ -55,6 +51,8 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 		{
 			initZoneCheckbox(zoneContainer);
 		}
+
+		addOtherAnswers();
 
 		return view;
 	}
@@ -98,92 +96,75 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 		return R.layout.quest_maxspeed;
 	}
 
-	@Override protected List<Integer> getOtherAnswerResourceIds()
+	private void addOtherAnswers()
 	{
-		List<Integer> answers = super.getOtherAnswerResourceIds();
-		answers.add(R.string.quest_maxspeed_answer_noSign);
-		final String highwayTag = getOsmElement().getTags().get("highway");
-		if(getCountryInfo().isLivingStreetKnown() && MAYBE_LIVING_STREET.contains(highwayTag))
+		addOtherAnswer(R.string.quest_maxspeed_answer_noSign, new Runnable()
 		{
-			answers.add(R.string.quest_maxspeed_answer_living_street);
-		}
-		return answers;
-	}
-
-	@Override protected boolean onClickOtherAnswer(int itemResourceId)
-	{
-		if(super.onClickOtherAnswer(itemResourceId)) return true;
-
-		if(itemResourceId == R.string.quest_maxspeed_answer_noSign)
-		{
-			final String highwayTag = getOsmElement().getTags().get("highway");
-			if(URBAN_OR_RURAL_ROADS.contains(highwayTag))
+			@Override public void run()
 			{
-				confirmNoSign(new Runnable()
-				{
-					@Override public void run()
-					{
-						askUrbanOrRural();
-					}
-				});
-			}
-			else if(URBAN_OR_SLOWZONE_ROADS.contains(highwayTag))
-			{
-				if(getCountryInfo().isSlowZoneKnown())
-				{
-					confirmNoSignSlowZone(new Runnable()
-					{
-						@Override public void run()
-						{
-							applyNoSignAnswer("urban");
-						}
-					});
-				}
-				else
+				final String highwayTag = getOsmElement().getTags().get("highway");
+				if(URBAN_OR_RURAL_ROADS.contains(highwayTag))
 				{
 					confirmNoSign(new Runnable()
 					{
 						@Override public void run()
 						{
-							applyNoSignAnswer("urban");
+							askUrbanOrRural();
+						}
+					});
+				}
+				else if(URBAN_OR_SLOWZONE_ROADS.contains(highwayTag))
+				{
+					if(getCountryInfo().isSlowZoneKnown())
+					{
+						confirmNoSignSlowZone(new Runnable()
+						{
+							@Override public void run()
+							{
+								applyNoSignAnswer("urban");
+							}
+						});
+					}
+					else
+					{
+						confirmNoSign(new Runnable()
+						{
+							@Override public void run()
+							{
+								applyNoSignAnswer("urban");
+							}
+						});
+					}
+				}
+				else if(ROADS_WITH_DEFINITE_SPEED_LIMIT.contains(highwayTag))
+				{
+					confirmNoSign(new Runnable()
+					{
+						@Override public void run()
+						{
+							applyNoSignAnswer(highwayTag);
 						}
 					});
 				}
 			}
-			else if(ROADS_WITH_DEFINITE_SPEED_LIMIT.contains(highwayTag))
-			{
-				confirmNoSign(new Runnable()
-				{
-					@Override public void run()
-					{
-						applyNoSignAnswer(highwayTag);
-					}
-				});
-			}
-			return true;
-		}
-		else if(itemResourceId == R.string.quest_maxspeed_answer_living_street)
+		});
+
+		final String highwayTag = getOsmElement().getTags().get("highway");
+		if(getCountryInfo().isLivingStreetKnown() && MAYBE_LIVING_STREET.contains(highwayTag))
 		{
-			confirmLivingStreet(new Runnable()
+			addOtherAnswer(R.string.quest_maxspeed_answer_living_street, new Runnable()
 			{
 				@Override public void run()
 				{
-					Bundle answer = new Bundle();
-					answer.putBoolean(LIVING_STREET, true);
-					applyImmediateAnswer(answer);
+					confirmLivingStreet(new Runnable() { @Override public void run()
+					{
+						Bundle answer = new Bundle();
+						answer.putBoolean(LIVING_STREET, true);
+						applyImmediateAnswer(answer);
+					}});
 				}
 			});
-			return true;
 		}
-
-		return false;
-	}
-
-	private Resources getResources(Locale locale)
-	{
-		Configuration configuration = new Configuration(getActivity().getResources().getConfiguration());
-		configuration.setLocale(locale);
-		return getActivity().createConfigurationContext(configuration).getResources();
 	}
 
 	private void confirmLivingStreet(final Runnable callback)

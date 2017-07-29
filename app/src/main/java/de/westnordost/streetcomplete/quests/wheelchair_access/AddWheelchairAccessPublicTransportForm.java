@@ -21,7 +21,7 @@ public class AddWheelchairAccessPublicTransportForm extends WheelchairAccessAnsw
 	private void setTitle()
 	{
 		OsmElement element = getOsmElement();
-		String name = getName();
+		String name = getElementName();
 		String type = element.getTags().get("amenity");
 		if (type == null) {type = element.getTags().get("railway");}
 

@@ -66,6 +66,40 @@ public class AddRoadNameForm extends AbstractQuestFormAnswerFragment
 		setTitle(R.string.quest_streetName_title);
 		View contentView = setContentView(R.layout.quest_roadname);
 
+		addOtherAnswers();
+
+		initRoadNameAdapter(contentView, savedInstanceState);
+
+		return view;
+	}
+
+	private void addOtherAnswers()
+	{
+		addOtherAnswer(R.string.quest_name_answer_noName, new Runnable()
+		{
+			@Override public void run()
+			{
+				confirmNoStreetName();
+			}
+		});
+		addOtherAnswer(R.string.quest_streetName_answer_noProperStreet, new Runnable()
+		{
+			@Override public void run()
+			{
+				selectNoProperStreetWhatThen();
+			}
+		});
+		addOtherAnswer(R.string.quest_streetName_answer_cantType, new Runnable()
+		{
+			@Override public void run()
+			{
+				showKeyboardInfo();
+			}
+		});
+	}
+
+	private void initRoadNameAdapter(View contentView, Bundle savedInstanceState)
+	{
 		ArrayList<RoadName> data;
 		if(savedInstanceState != null)
 		{
@@ -86,7 +120,6 @@ public class AddRoadNameForm extends AbstractQuestFormAnswerFragment
 				new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
 		recyclerView.setAdapter(adapter);
 		recyclerView.setNestedScrollingEnabled(false);
-		return view;
 	}
 
 	private List<Map<String, String>> getRoadnameSuggestions()
@@ -146,35 +179,6 @@ public class AddRoadNameForm extends AbstractQuestFormAnswerFragment
 				applyNameAnswer();
 			}
 		});
-	}
-
-	@Override protected List<Integer> getOtherAnswerResourceIds()
-	{
-		List<Integer> answers = super.getOtherAnswerResourceIds();
-		answers.add(R.string.quest_name_answer_noName);
-		answers.add(R.string.quest_streetName_answer_noProperStreet);
-		answers.add(R.string.quest_streetName_answer_cantType);
-		return answers;
-	}
-
-	@Override protected boolean onClickOtherAnswer(int itemResourceId)
-	{
-		if(super.onClickOtherAnswer(itemResourceId)) return true;
-
-		if(itemResourceId == R.string.quest_name_answer_noName)
-		{
-			confirmNoStreetName();
-		}
-		else if (itemResourceId == R.string.quest_streetName_answer_noProperStreet)
-		{
-			selectNoProperStreetWhatThen();
-		}
-		else if(itemResourceId == R.string.quest_streetName_answer_cantType)
-		{
-			showKeyboardInfo();
-		}
-
-		return true;
 	}
 
 	private void applyNameAnswer()

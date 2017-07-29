@@ -6,13 +6,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.Arrays;
-import java.util.List;
 
 import de.westnordost.osmapi.map.data.OsmElement;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment;
 
-public class WayLightFragment extends YesNoQuestAnswerFragment
+public class WayLitForm extends YesNoQuestAnswerFragment
 {
 	public static final String OTHER_ANSWER = "OTHER_ANSWER";
 
@@ -21,6 +20,7 @@ public class WayLightFragment extends YesNoQuestAnswerFragment
 	{
 		View view = super.onCreateView(inflater, container, savedInstanceState);
 		setTitle();
+		addOtherAnswers();
 		return view;
 	}
 
@@ -28,7 +28,7 @@ public class WayLightFragment extends YesNoQuestAnswerFragment
 	{
 		final OsmElement element = getOsmElement();
 		String type = element.getTags().get("highway");
-		String name = getName();
+		String name = getElementName();
 		if (Arrays.asList(AddWayLit.ROADS_WITH_LIGHT).contains(type)) {
 			if (name != null)
 			{
@@ -52,37 +52,28 @@ public class WayLightFragment extends YesNoQuestAnswerFragment
 		}
 	}
 
-	@Override protected List<Integer> getOtherAnswerResourceIds()
+	private void addOtherAnswers()
 	{
-		List<Integer> answers = super.getOtherAnswerResourceIds();
-		answers.add(R.string.quest_way_lit_24_7);
-		answers.add(R.string.quest_way_lit_automatic);
-		return answers;
+		addOtherAnswer(R.string.quest_way_lit_24_7, new Runnable()
+		{
+			@Override public void run()
+			{
+				applyAnswer("24/7");
+			}
+		});
+		addOtherAnswer(R.string.quest_way_lit_automatic, new Runnable()
+		{
+			@Override public void run()
+			{
+				applyAnswer("automatic");
+			}
+		});
 	}
 
-	@Override protected boolean onClickOtherAnswer(int itemResourceId)
-	{
-		if (super.onClickOtherAnswer(itemResourceId)) return true;
-
-		if (itemResourceId == R.string.quest_way_lit_24_7)
-		{
-			addAnswer("24/7");
-			return true;
-		}
-		if (itemResourceId == R.string.quest_way_lit_automatic)
-		{
-			addAnswer("automatic");
-			return true;
-		}
-
-		return false;
-	}
-
-	private void addAnswer(String value)
+	private void applyAnswer(String value)
 	{
 		Bundle answer = new Bundle();
 		answer.putString(OTHER_ANSWER, value);
 		applyImmediateAnswer(answer);
 	}
-
 }

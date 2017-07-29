@@ -13,7 +13,6 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.inject.Inject;
 
@@ -47,8 +46,26 @@ public class AddOpeningHoursForm extends AbstractQuestFormAnswerFragment
 
 		setTitle();
 
+		addOtherAnswers();
+
 		View contentView = setContentView(R.layout.quest_opening_hours);
 
+		initOpeningHoursAdapter(contentView, savedInstanceState);
+
+		Button addTimes = (Button) contentView.findViewById(R.id.btn_add);
+		addTimes.setOnClickListener(new View.OnClickListener()
+		{
+			@Override public void onClick(View v)
+			{
+				onClickAddButton(v);
+			}
+		});
+
+		return view;
+	}
+
+	private void initOpeningHoursAdapter(View contentView, Bundle savedInstanceState)
+	{
 		ArrayList<OpeningMonths> data;
 		if(savedInstanceState != null)
 		{
@@ -68,17 +85,32 @@ public class AddOpeningHoursForm extends AbstractQuestFormAnswerFragment
 		openingHoursList.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
 		openingHoursList.setAdapter(openingHoursAdapter);
 		openingHoursList.setNestedScrollingEnabled(false);
+	}
 
-		Button addTimes = (Button) contentView.findViewById(R.id.btn_add);
-		addTimes.setOnClickListener(new View.OnClickListener()
+	private void addOtherAnswers()
+	{
+		addOtherAnswer(R.string.quest_openingHours_answer_no_regular_opening_hours, new Runnable()
 		{
-			@Override public void onClick(View v)
+			@Override public void run()
 			{
-				onClickAddButton(v);
+				showInputCommentDialog();
 			}
 		});
-
-		return view;
+		addOtherAnswer(R.string.quest_openingHours_answer_247, new Runnable()
+		{
+			@Override public void run()
+			{
+				showConfirm24_7Dialog();
+			}
+		});
+		addOtherAnswer(R.string.quest_openingHours_answer_seasonal_opening_hours, new Runnable()
+		{
+			@Override public void run()
+			{
+				isAlsoAddingMonths = true;
+				openingHoursAdapter.changeToMonthsMode();
+			}
+		});
 	}
 
 	private void onClickAddButton(View v)
@@ -121,39 +153,6 @@ public class AddOpeningHoursForm extends AbstractQuestFormAnswerFragment
 			name = element.getTags().get("name");
 		}
 		setTitle(R.string.quest_openingHours_name_title, name);
-	}
-
-	@Override protected List<Integer> getOtherAnswerResourceIds()
-	{
-		List<Integer> answers = super.getOtherAnswerResourceIds();
-		answers.add(R.string.quest_openingHours_answer_no_regular_opening_hours);
-		answers.add(R.string.quest_openingHours_answer_247);
-		answers.add(R.string.quest_openingHours_answer_seasonal_opening_hours);
-		return answers;
-	}
-
-	@Override protected boolean onClickOtherAnswer(int itemResourceId)
-	{
-		if(super.onClickOtherAnswer(itemResourceId)) return true;
-
-		if(itemResourceId == R.string.quest_openingHours_answer_247)
-		{
-			showConfirm24_7Dialog();
-			return true;
-		}
-		if(itemResourceId == R.string.quest_openingHours_answer_seasonal_opening_hours)
-		{
-			isAlsoAddingMonths = true;
-			openingHoursAdapter.changeToMonthsMode();
-			return true;
-		}
-		if(itemResourceId == R.string.quest_openingHours_answer_no_regular_opening_hours)
-		{
-			showInputCommentDialog();
-			return true;
-		}
-
-		return false;
 	}
 
 	@Override protected void onClickOk()
