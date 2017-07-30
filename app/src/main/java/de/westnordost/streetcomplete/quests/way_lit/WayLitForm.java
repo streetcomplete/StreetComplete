@@ -29,7 +29,7 @@ public class WayLitForm extends YesNoQuestAnswerFragment
 		final OsmElement element = getOsmElement();
 		String type = element.getTags().get("highway");
 		String name = getElementName();
-		if (Arrays.asList(AddWayLit.ROADS_WITH_LIGHT).contains(type)) {
+		if (Arrays.asList(AddWayLit.LIT_ROADS).contains(type)) {
 			if (name != null)
 			{
 				setTitle(R.string.quest_way_lit_named_road_title, name);
