@@ -3,6 +3,10 @@ package de.westnordost.streetcomplete.quests.way_lit;
 import android.os.Bundle;
 import android.text.TextUtils;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import javax.inject.Inject;
 
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType;
@@ -30,8 +34,12 @@ public class AddWayLit extends SimpleOverpassQuestType
 	@Override
 	protected String getTagFilters()
 	{
-		return "ways with highway ~ " + TextUtils.join("|", ROADS_WITH_LIGHT)
-				+ "|" + TextUtils.join("|", WAYS_WITH_LIGHT) + " and !lit";
+		List<String> waysWithoutPath = new ArrayList<>(Arrays.asList(WAYS_WITH_LIGHT));
+		waysWithoutPath.remove("path");
+		return "ways with (highway ~ " + TextUtils.join("|", ROADS_WITH_LIGHT)
+				+ "|" + TextUtils.join("|", waysWithoutPath)
+				+ ") or (highway = path and (foot = designated or bicycle = designated))"
+				+ " and !lit";
 	}
 
 	public AbstractQuestAnswerFragment createForm()
