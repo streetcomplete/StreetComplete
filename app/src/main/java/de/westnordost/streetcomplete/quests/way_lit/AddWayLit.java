@@ -38,7 +38,7 @@ public class AddWayLit extends SimpleOverpassQuestType
 
 		return "ways with " +
 				"(" +
-				" highway ~ " + TextUtils.join("|", LIT_ROADS) + " and sidewalk ~ both|left|right|yes" +
+				" highway ~ " + TextUtils.join("|", LIT_ROADS) + " and sidewalk ~ both|left|right|yes|separate" +
 				" or" +
 				" highway ~ " + TextUtils.join("|", LIT_WAYS) +
 				" or" +
