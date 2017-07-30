@@ -3,10 +3,6 @@ package de.westnordost.streetcomplete.quests.way_lit;
 import android.os.Bundle;
 import android.text.TextUtils;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import javax.inject.Inject;
 
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType;
@@ -17,14 +13,12 @@ import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment;
 
 public class AddWayLit extends SimpleOverpassQuestType
 {
-	static final String[] ROADS_WITH_LIGHT = {
+	static final String[] LIT_ROADS = {
 			"primary", "secondary", "tertiary", "unclassified", "residential", "living_street",
 			"service", "pedestrian"
 	};
 
-	static final String[] WAYS_WITH_LIGHT = {
-			"footway", "road", "cycleway", "path"
-	};
+	static final String[] LIT_WAYS = { "footway", "cycleway" };
 
 	@Inject public AddWayLit(OverpassMapDataDao overpassServer)
 	{
@@ -34,12 +28,23 @@ public class AddWayLit extends SimpleOverpassQuestType
 	@Override
 	protected String getTagFilters()
 	{
-		List<String> waysWithoutPath = new ArrayList<>(Arrays.asList(WAYS_WITH_LIGHT));
-		waysWithoutPath.remove("path");
-		return "ways with (highway ~ " + TextUtils.join("|", ROADS_WITH_LIGHT)
-				+ "|" + TextUtils.join("|", waysWithoutPath)
-				+ ") or (highway = path and (foot = designated or bicycle = designated))"
-				+ " and !lit";
+		/* Using sidewalk as a tell-tale tag for (urban) streets which reached a certain level of
+		   development. I.e. non-urban streets will usually not even be lit in industrialized
+		   countries.
+		   Also, only include paths only for those which are equal to footway/cycleway to exclude
+		   most hike paths and trails.
+
+		   See #427 for discussion. */
+
+		return "ways with " +
+				"(" +
+				" highway ~ " + TextUtils.join("|", LIT_ROADS) + " and sidewalk ~ both|left|right|yes|separate" +
+				" or" +
+				" highway ~ " + TextUtils.join("|", LIT_WAYS) +
+				" or" +
+				" highway = path and (foot = designated or bicycle = designated)" +
+				")" +
+				" and !lit";
 	}
 
 	public AbstractQuestAnswerFragment createForm()
