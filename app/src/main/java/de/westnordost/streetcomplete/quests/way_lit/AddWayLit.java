@@ -3,8 +3,6 @@ package de.westnordost.streetcomplete.quests.way_lit;
 import android.os.Bundle;
 import android.text.TextUtils;
 
-import java.util.Arrays;
-
 import javax.inject.Inject;
 
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType;
@@ -38,12 +36,12 @@ public class AddWayLit extends SimpleOverpassQuestType
 
 	public AbstractQuestAnswerFragment createForm()
 	{
-		return new WayLightFragment();
+		return new WayLitForm();
 	}
 
 	public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
 	{
-		String other = answer.getString(WayLightFragment.OTHER_ANSWER);
+		String other = answer.getString(WayLitForm.OTHER_ANSWER);
 		if (other != null)
 		{
 			changes.add("lit", other);

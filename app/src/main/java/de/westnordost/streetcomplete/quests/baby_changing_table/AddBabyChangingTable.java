@@ -25,7 +25,7 @@ public class AddBabyChangingTable extends SimpleOverpassQuestType
 
 	public AbstractQuestAnswerFragment createForm()
 	{
-		return new AddBabyChangingTableFragment();
+		return new AddBabyChangingTableForm();
 	}
 
 	public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)

@@ -6,26 +6,26 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import javax.inject.Inject;
 
 import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestDao;
-import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
+import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 import de.westnordost.streetcomplete.util.InlineAsyncTask;
 import de.westnordost.osmapi.notes.Note;
 import de.westnordost.osmapi.notes.NoteComment;
 
 import static android.text.format.DateUtils.MINUTE_IN_MILLIS;
 
-public class NoteDiscussionForm extends AbstractQuestFormAnswerFragment
+public class NoteDiscussionForm extends AbstractQuestAnswerFragment
 {
 	private static final String TAG = "NoteDiscussionForm";
 	public static final String TEXT = "text";
@@ -50,8 +50,28 @@ public class NoteDiscussionForm extends AbstractQuestFormAnswerFragment
 		setTitle(R.string.quest_noteDiscussion_title);
 		View contentView = setContentView(R.layout.quest_note_discussion);
 
+		View buttonPanel = setButtonsView(R.layout.quest_notediscussion_buttonbar);
+		Button buttonOk = (Button) buttonPanel.findViewById(R.id.buttonOk);
+		buttonOk.setOnClickListener(new View.OnClickListener()
+		{
+			@Override public void onClick(View v)
+			{
+				onClickOk();
+			}
+		});
+		Button buttonNo = (Button) buttonPanel.findViewById(R.id.buttonNo);
+		buttonNo.setOnClickListener(new View.OnClickListener()
+		{
+			@Override public void onClick(View v)
+			{
+				skipQuest();
+			}
+		});
+
 		noteInput = (EditText) contentView.findViewById(R.id.noteInput);
 		noteDiscussion = (LinearLayout) contentView.findViewById(R.id.noteDiscussion);
+
+		buttonOtherAnswers.setVisibility(View.GONE);
 
 		new InlineAsyncTask<Note>()
 		{
@@ -103,7 +123,6 @@ public class NoteDiscussionForm extends AbstractQuestFormAnswerFragment
 				noteText.setText(noteComment.text);
 				TextView noteAuthor = (TextView) getView().findViewById(R.id.noteAuthor);
 				noteAuthor.setText(commenter);
-
 			}
 			else
 			{
@@ -133,35 +152,18 @@ public class NoteDiscussionForm extends AbstractQuestFormAnswerFragment
 		throw new RuntimeException();
 	}
 
-	@Override protected void onClickOk()
+	private void onClickOk()
 	{
 		String noteText = noteInput.getText().toString().trim();
 		if(noteText.isEmpty())
 		{
-			noteInput.setError(getResources().getString(R.string.quest_generic_error_field_empty));
+			Toast.makeText(getActivity(), R.string.no_changes, Toast.LENGTH_SHORT).show();
 			return;
 		}
 
 		Bundle answer = new Bundle();
 		answer.putString(TEXT, noteText);
-		applyFormAnswer(answer);
-	}
-
-	@Override protected List<Integer> getOtherAnswerResourceIds()
-	{
-		List<Integer> answers = new ArrayList<>();
-		answers.add(R.string.quest_noteDiscussion_no);
-		return answers;
-	}
-
-	@Override protected boolean onClickOtherAnswer(int itemResourceId)
-	{
-		if(itemResourceId == R.string.quest_noteDiscussion_no)
-		{
-			skipQuest();
-			return true;
-		}
-		return false;
+		applyImmediateAnswer(answer);
 	}
 
 	@Override public boolean hasChanges()

@@ -69,6 +69,15 @@ public class AddSportForm extends ImageListQuestAnswerFragment
 		actualSportsValues = createItems();
 		setTitle(R.string.quest_sport_title);
 		imageSelector.setCellLayout(R.layout.icon_select_cell_with_label_below);
+
+		addOtherAnswer(R.string.quest_sport_answer_multi, new Runnable()
+		{
+			@Override public void run()
+			{
+				applyMultiAnswer();
+			}
+		});
+
 		return view;
 	}
 
@@ -144,26 +153,6 @@ public class AddSportForm extends ImageListQuestAnswerFragment
 	@Override protected OsmItem[] getItems()
 	{
 		return actualSportsValues;
-	}
-
-	@Override protected List<Integer> getOtherAnswerResourceIds()
-	{
-		List<Integer> answers = super.getOtherAnswerResourceIds();
-		answers.add(R.string.quest_sport_answer_multi);
-		return answers;
-	}
-
-	@Override protected boolean onClickOtherAnswer(int itemResourceId)
-	{
-		if(super.onClickOtherAnswer(itemResourceId)) return true;
-
-		if(itemResourceId == R.string.quest_sport_answer_multi)
-		{
-			applyMultiAnswer();
-			return true;
-		}
-
-		return false;
 	}
 
 	private void applyMultiAnswer()

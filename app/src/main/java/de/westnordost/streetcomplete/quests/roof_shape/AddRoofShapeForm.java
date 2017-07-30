@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.ImageListQuestAnswerFragment;
@@ -43,7 +42,25 @@ public class AddRoofShapeForm extends ImageListQuestAnswerFragment
 		View view = super.onCreateView(inflater, container, savedInstanceState);
 		setTitle(R.string.quest_roofShape_title);
 		imageSelector.setCellLayout(R.layout.labeled_icon_select_cell);
+
+		addOtherAnswer(R.string.quest_roofShape_answer_many, new Runnable()
+		{
+			@Override public void run()
+			{
+				applyManyRoofsAnswer();
+			}
+		});
+
 		return view;
+	}
+
+	private void applyManyRoofsAnswer()
+	{
+		Bundle answer = new Bundle();
+		ArrayList<String> strings = new ArrayList<>(1);
+		strings.add("many");
+		answer.putStringArrayList(OSM_VALUES, strings);
+		applyImmediateAnswer(answer);
 	}
 
 	@Override protected int getMaxNumberOfInitiallyShownItems()
@@ -56,27 +73,4 @@ public class AddRoofShapeForm extends ImageListQuestAnswerFragment
 		return ROOF_SHAPES;
 	}
 
-	@Override protected List<Integer> getOtherAnswerResourceIds()
-	{
-		List<Integer> answers = super.getOtherAnswerResourceIds();
-		answers.add(R.string.quest_roofShape_answer_many);
-		return answers;
-	}
-
-	@Override protected boolean onClickOtherAnswer(int itemResourceId)
-	{
-		if(super.onClickOtherAnswer(itemResourceId)) return true;
-
-		if(itemResourceId == R.string.quest_roofShape_answer_many)
-		{
-			Bundle answer = new Bundle();
-			ArrayList<String> strings = new ArrayList<>(1);
-			strings.add("many");
-			answer.putStringArrayList(OSM_VALUES, strings);
-			applyImmediateAnswer(answer);
-			return true;
-		}
-
-		return false;
-	}
 }
