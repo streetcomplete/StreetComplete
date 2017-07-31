@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.data.osmnotes;
 
 import android.content.SharedPreferences;
-import android.graphics.Rect;
 
 import junit.framework.TestCase;
 
@@ -23,7 +22,6 @@ import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.data.QuestGroup;
 import de.westnordost.streetcomplete.data.QuestStatus;
 import de.westnordost.streetcomplete.data.VisibleQuestListener;
-import de.westnordost.streetcomplete.data.tiles.DownloadedTilesDao;
 
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.doAnswer;
@@ -38,7 +36,6 @@ public class OsmNotesDownloadTest extends TestCase
 	private NoteDao noteDB;
 	private OsmNoteQuestDao noteQuestDB;
 	private CreateNoteDao createNoteDB;
-	private DownloadedTilesDao downloadedTilesDa;
 	private SharedPreferences preferences;
 
 	@Override public void setUp()
@@ -47,7 +44,6 @@ public class OsmNotesDownloadTest extends TestCase
 		noteDB = mock(NoteDao.class);
 		noteQuestDB = mock(OsmNoteQuestDao.class);
 		createNoteDB = mock(CreateNoteDao.class);
-		downloadedTilesDa = mock(DownloadedTilesDao.class);
 		preferences = mock(SharedPreferences.class);
 	}
 
@@ -83,12 +79,12 @@ public class OsmNotesDownloadTest extends TestCase
 		NotesDao noteServer = new TestListBasedNotesDao(notes);
 
 		OsmNotesDownload dl = new OsmNotesDownload(
-				noteServer, noteDB, noteQuestDB, createNoteDB, downloadedTilesDa, preferences);
+				noteServer, noteDB, noteQuestDB, createNoteDB, preferences);
 
 		VisibleQuestListener listener = mock(VisibleQuestListener.class);
 		dl.setQuestListener(listener);
 
-		dl.download(new Rect(0,0,1,1), null, 1000);
+		dl.download(new BoundingBox(0,0,1,1), null, 1000);
 
 		verify(noteQuestDB).deleteAll(any(Collection.class));
 		verify(listener).onQuestsRemoved(any(Collection.class), any(QuestGroup.class));

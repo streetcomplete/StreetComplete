@@ -83,10 +83,10 @@ public class SphericalEarthMathTest extends TestCase
 		positions.add(new OsmLatLon(0, -6));
 
 		BoundingBox bbox = SphericalEarthMath.enclosingBoundingBox(positions);
-		assertEquals(-4, bbox.getMinLatitude());
-		assertEquals(12, bbox.getMaxLatitude());
-		assertEquals(16, bbox.getMaxLongitude());
-		assertEquals(-6, bbox.getMinLongitude());
+		assertEquals(-4.0, bbox.getMinLatitude());
+		assertEquals(12.0, bbox.getMaxLatitude());
+		assertEquals(16.0, bbox.getMaxLongitude());
+		assertEquals(-6.0, bbox.getMinLongitude());
 	}
 
 	public void testTranslateLatitudeNorth()
