@@ -19,9 +19,11 @@ import android.text.Html;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.mapzen.android.lost.api.LocationListener;
@@ -38,6 +40,7 @@ import com.mapzen.tangram.TouchInput;
 import java.io.File;
 
 import de.westnordost.osmapi.map.data.LatLon;
+import de.westnordost.streetcomplete.MainActivity;
 import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.util.SphericalEarthMath;
@@ -349,6 +352,16 @@ public class MapFragment extends Fragment implements
 							TextUtils.join(",",directionMarkerSize) +
 							"], order: 2000, collide: false, flat: true, angle: " + r + " }");
 		}
+
+		if (MainActivity.isRotating)
+		{
+			controller.setRotationEased(-rotation, 100, MapController.EaseType.LINEAR);
+		}
+		else
+		{
+			controller.setRotationEased(0, 100, MapController.EaseType.LINEAR);
+		}
+
 	}
 
 	private float meters2Pixels(LngLat at, float meters) {

@@ -12,6 +12,7 @@ import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.Location;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -25,6 +26,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -100,9 +102,11 @@ public class MainActivity extends AppCompatActivity implements
 	private static boolean isFollowingPosition = true;
 	private static boolean hasAskedForLocation = false;
 	private static boolean dontShowRequestAuthorizationAgain = false;
+	public static boolean isRotating = false;
 
 	private QuestsMapFragment mapFragment;
 	private LocationStateButton trackingButton;
+	ImageButton RotateButton;
 	private SingleLocationRequest singleLocationRequest;
 	private Location lastLocation;
 
@@ -236,6 +240,25 @@ public class MainActivity extends AppCompatActivity implements
 			}
 		});
         trackingButton.setActivated(isFollowingPosition);
+
+		RotateButton = (ImageButton) findViewById(R.id.rotate_map);
+		RotateButton.setOnClickListener(new View.OnClickListener()
+		{
+			@Override public void onClick(View v)
+			{
+				if(isRotating)
+				{
+					isRotating = false;
+					RotateButton.setRotation(0);
+                    RotateButton.setColorFilter(Color.parseColor("#000000"));
+				}
+				else
+				{
+					isRotating = true;
+                    RotateButton.setColorFilter(Color.parseColor("#ff6600"));
+				}
+			}
+		});
 
 		ImageButton zoomInButton = (ImageButton) findViewById(R.id.zoom_in);
 		zoomInButton.setOnClickListener(new View.OnClickListener()

@@ -321,4 +321,5 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="credits_and_more">and more …</string>
     <string name="quest_maxspeed_answer_living_street">It is a living street</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">So, there is a sign like this?</string>
+    <string name="map_btn_rotate">Rotate map</string>
 </resources>
