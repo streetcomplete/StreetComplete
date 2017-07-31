@@ -27,11 +27,6 @@ public class AddCrossingTypeForm extends ImageListQuestAnswerFragment
         return 4;
     }
 
-    @Override protected int getMaxNumberOfInitiallyShownItems()
-    {
-        return 4;
-    }
-
     @Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                        Bundle savedInstanceState)
     {
