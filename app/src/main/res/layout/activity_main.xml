@@ -20,7 +20,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:layout_marginRight="4dp"
-        android:layout_marginTop="64sp"
+        android:layout_marginTop="60sp"
         android:padding="8dp"
         android:clipToPadding="false"
         android:showDividers="middle"
