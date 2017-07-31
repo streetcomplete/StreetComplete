@@ -32,8 +32,7 @@
             android:id="@+id/rotate_map"
             style="@style/RoundMapButton"
             android:contentDescription="@string/map_btn_rotate"
-            android:src="@drawable/ic_compass"
-            android:tint="@color/activated_tint"/>
+            android:src="@drawable/ic_compass_disabled" />
 
     </LinearLayout>
 

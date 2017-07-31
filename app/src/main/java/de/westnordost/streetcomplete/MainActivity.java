@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity implements
 
 	private QuestsMapFragment mapFragment;
 	private LocationStateButton trackingButton;
-	ImageButton RotateButton;
+	private ImageButton RotateButton;
 	private SingleLocationRequest singleLocationRequest;
 	private Location lastLocation;
 
@@ -241,24 +241,26 @@ public class MainActivity extends AppCompatActivity implements
 		});
         trackingButton.setActivated(isFollowingPosition);
 
-		RotateButton = (ImageButton) findViewById(R.id.rotate_map);
-		RotateButton.setOnClickListener(new View.OnClickListener()
-		{
-			@Override public void onClick(View v)
-			{
-				if(isRotating)
-				{
-					isRotating = false;
-					RotateButton.setRotation(0);
-                    RotateButton.setColorFilter(Color.parseColor("#000000"));
-				}
-				else
-				{
-					isRotating = true;
-                    RotateButton.setColorFilter(Color.parseColor("#ff6600"));
-				}
-			}
-		});
+        RotateButton = (ImageButton) findViewById(R.id.rotate_map);
+        RotateButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override public void onClick(View v)
+            {
+                if(isRotating)
+                {
+                    isRotating = false;
+                    RotateButton.setRotation(0);
+                    RotateButton.setImageResource(R.drawable.ic_compass_disabled);
+                    RotateButton.clearColorFilter();
+                }
+                else
+                {
+                    isRotating = true;
+                    RotateButton.setImageResource(R.drawable.ic_compass_enabled);
+                    RotateButton.setColorFilter(getResources().getColor(R.color.colorAccent));
+                }
+            }
+        });
 
 		ImageButton zoomInButton = (ImageButton) findViewById(R.id.zoom_in);
 		zoomInButton.setOnClickListener(new View.OnClickListener()

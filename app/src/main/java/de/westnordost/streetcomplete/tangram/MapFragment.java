@@ -19,11 +19,9 @@ import android.text.Html;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.mapzen.android.lost.api.LocationListener;
@@ -46,6 +44,8 @@ import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.util.SphericalEarthMath;
 
 import static android.content.Context.SENSOR_SERVICE;
+import static android.content.res.Configuration.ORIENTATION_LANDSCAPE;
+import static android.content.res.Configuration.ORIENTATION_PORTRAIT;
 
 public class MapFragment extends Fragment implements
 		FragmentCompat.OnRequestPermissionsResultCallback, LocationListener,
@@ -355,7 +355,14 @@ public class MapFragment extends Fragment implements
 
 		if (MainActivity.isRotating)
 		{
-			controller.setRotationEased(-rotation, 100, MapController.EaseType.LINEAR);
+			if (getResources().getConfiguration().orientation == ORIENTATION_PORTRAIT)
+			{
+				controller.setRotationEased(-rotation, 100, MapController.EaseType.LINEAR);
+			}
+			else if (getResources().getConfiguration().orientation == ORIENTATION_LANDSCAPE)
+			{
+				controller.setRotationEased(-rotation-90, 100, MapController.EaseType.LINEAR);
+			}
 		}
 		else
 		{
