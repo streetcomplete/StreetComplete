@@ -11,11 +11,16 @@ import de.westnordost.streetcomplete.quests.ImageListQuestAnswerFragment;
 public class AddCrossingTypeForm extends ImageListQuestAnswerFragment
 {
     private final OsmItem[] TYPES = new OsmItem[] {
-            new OsmItem("traffic_signals", R.drawable.fire_hydrant_pillar, R.string.quest_crossing_type_signals),
-            new OsmItem("uncontrolled", R.drawable.fire_hydrant_pillar, R.string.quest_crossing_type_uncontrolled),
-            new OsmItem("island", R.drawable.fire_hydrant_pillar, R.string.quest_crossing_type_island),
-            new OsmItem("unmarked", R.drawable.fire_hydrant_pillar, R.string.quest_crossing_type_unmarked)
+            new OsmItem("traffic_signals", R.drawable.crossing_type_signals, R.string.quest_crossing_type_signals),
+            new OsmItem("uncontrolled", R.drawable.crossing_type_zebra, R.string.quest_crossing_type_uncontrolled),
+            new OsmItem("island", R.drawable.crossing_type_island, R.string.quest_crossing_type_island),
+            new OsmItem("unmarked", R.drawable.crossing_type_unmarked, R.string.quest_crossing_type_unmarked)
     };
+
+    @Override protected int getMaxSelectableItems()
+    {
+        return -1;
+    }
 
     @Override protected OsmItem[] getItems()
     {
@@ -32,6 +37,7 @@ public class AddCrossingTypeForm extends ImageListQuestAnswerFragment
     {
         View view = super.onCreateView(inflater, container, savedInstanceState);
         setTitle(R.string.quest_crossing_type_title);
+        imageSelector.setCellLayout(R.layout.icon_select_cell_with_label_below);
         return view;
     }
 }
