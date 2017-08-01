@@ -12,6 +12,8 @@ import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
 import android.location.Location;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -101,6 +103,10 @@ public class MainActivity extends AppCompatActivity implements
 	private static boolean hasAskedForLocation = false;
 	private static boolean dontShowRequestAuthorizationAgain = false;
 	public static boolean isRotating = false;
+
+	private SensorManager mSensorManager;
+	private Sensor mSensor;
+	private boolean hasCompass;
 
 	private QuestsMapFragment mapFragment;
 	private LocationStateButton trackingButton;
@@ -240,11 +246,17 @@ public class MainActivity extends AppCompatActivity implements
         trackingButton.setActivated(isFollowingPosition);
 
         RotateButton = (ImageButton) findViewById(R.id.rotate_map);
-        PackageManager PM = this.getPackageManager();
-        boolean hasAccelerometer = PM.hasSystemFeature(PackageManager.FEATURE_SENSOR_ACCELEROMETER);
-        boolean hasCompass = PM.hasSystemFeature(PackageManager.FEATURE_SENSOR_COMPASS);
 
-        if (hasAccelerometer && hasCompass)
+		mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+		mSensor = null;
+		if (mSensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD) != null){
+			mSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
+			hasCompass = true;
+		}
+		else{
+			hasCompass = false;
+		}
+		if (hasCompass)
         {
             RotateButton.setOnClickListener(new View.OnClickListener()
             {
