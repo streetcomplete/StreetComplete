@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.quests.crossing_type;
 
 import android.os.Bundle;
-import android.text.TextUtils;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -32,10 +31,9 @@ public class AddCrossingType extends SimpleOverpassQuestType
     public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
     {
         List<String> values = answer.getStringArrayList(AddCrossingTypeForm.OSM_VALUES);
-        if(values != null && !values.isEmpty())
+        if(values != null  && values.size() == 1)
         {
-            String valuesStr = TextUtils.join(";", values);
-            changes.add("crossing", valuesStr);
+            changes.add("crossing", values.get(0));
         }
     }
 

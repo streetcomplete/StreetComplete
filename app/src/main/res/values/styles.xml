@@ -76,4 +76,11 @@
         <item name="android:textAlignment">center</item>
         <item name="android:gravity">center_horizontal</item>
     </style>
+
+    <style name="ImageSelectLabelEnd">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:gravity">center_horizontal</item>
+    </style>
 </resources>

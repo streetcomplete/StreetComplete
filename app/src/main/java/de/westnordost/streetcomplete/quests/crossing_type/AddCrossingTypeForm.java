@@ -13,14 +13,8 @@ public class AddCrossingTypeForm extends ImageListQuestAnswerFragment
     private final OsmItem[] TYPES = new OsmItem[] {
             new OsmItem("traffic_signals", R.drawable.crossing_type_signals, R.string.quest_crossing_type_signals),
             new OsmItem("uncontrolled", R.drawable.crossing_type_zebra, R.string.quest_crossing_type_uncontrolled),
-            new OsmItem("island", R.drawable.crossing_type_island, R.string.quest_crossing_type_island),
             new OsmItem("unmarked", R.drawable.crossing_type_unmarked, R.string.quest_crossing_type_unmarked)
     };
-
-    @Override protected int getMaxSelectableItems()
-    {
-        return -1;
-    }
 
     @Override protected OsmItem[] getItems()
     {
@@ -29,7 +23,7 @@ public class AddCrossingTypeForm extends ImageListQuestAnswerFragment
 
     @Override protected int getItemsPerRow()
     {
-        return 4;
+        return 1;
     }
 
     @Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -37,7 +31,7 @@ public class AddCrossingTypeForm extends ImageListQuestAnswerFragment
     {
         View view = super.onCreateView(inflater, container, savedInstanceState);
         setTitle(R.string.quest_crossing_type_title);
-        imageSelector.setCellLayout(R.layout.icon_select_cell_with_label_below);
+        imageSelector.setCellLayout(R.layout.small_image_with_label_at_end);
         return view;
     }
 }
