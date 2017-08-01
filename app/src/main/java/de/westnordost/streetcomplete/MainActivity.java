@@ -240,25 +240,36 @@ public class MainActivity extends AppCompatActivity implements
         trackingButton.setActivated(isFollowingPosition);
 
         RotateButton = (ImageButton) findViewById(R.id.rotate_map);
-        RotateButton.setOnClickListener(new View.OnClickListener()
+        PackageManager PM = this.getPackageManager();
+        boolean hasAccelerometer = PM.hasSystemFeature(PackageManager.FEATURE_SENSOR_ACCELEROMETER);
+        boolean hasCompass = PM.hasSystemFeature(PackageManager.FEATURE_SENSOR_COMPASS);
+
+        if (hasAccelerometer && hasCompass)
         {
-            @Override public void onClick(View v)
+            RotateButton.setOnClickListener(new View.OnClickListener()
             {
-                if(isRotating)
+                @Override public void onClick(View v)
                 {
-                    isRotating = false;
-                    RotateButton.setRotation(0);
-                    RotateButton.setImageResource(R.drawable.ic_compass_disabled);
-                    RotateButton.clearColorFilter();
+                    if(isRotating)
+                    {
+                        isRotating = false;
+                        RotateButton.setRotation(0);
+                        RotateButton.setImageResource(R.drawable.ic_compass_disabled);
+                        RotateButton.clearColorFilter();
+                    }
+                    else
+                    {
+                        isRotating = true;
+                        RotateButton.setImageResource(R.drawable.ic_compass_enabled);
+                        RotateButton.setColorFilter(getResources().getColor(R.color.colorAccent));
+                    }
                 }
-                else
-                {
-                    isRotating = true;
-                    RotateButton.setImageResource(R.drawable.ic_compass_enabled);
-                    RotateButton.setColorFilter(getResources().getColor(R.color.colorAccent));
-                }
-            }
-        });
+            });
+        }
+        else
+        {
+            RotateButton.setVisibility(View.INVISIBLE);
+        }
 
 		ImageButton zoomInButton = (ImageButton) findViewById(R.id.zoom_in);
 		zoomInButton.setOnClickListener(new View.OnClickListener()
