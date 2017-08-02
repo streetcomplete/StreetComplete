@@ -103,8 +103,6 @@ public class MainActivity extends AppCompatActivity implements
 	private static boolean hasAskedForLocation = false;
 	private static boolean dontShowRequestAuthorizationAgain = false;
 
-	private boolean isCompassMode = false;
-
 	private QuestsMapFragment mapFragment;
 	private LocationStateButton trackingButton;
 	private ImageButton rotateButton;
@@ -882,6 +880,14 @@ public class MainActivity extends AppCompatActivity implements
 		else
 		{
 			Toast.makeText(MainActivity.this, R.string.no_gps_no_quests, Toast.LENGTH_LONG).show();
+		}
+	}
+
+	@Override public void setRotateButtonRotation(float rotation)
+	{
+		if (rotateButton.getRotation() != rotation)
+		{
+			rotateButton.setRotation(rotateButton.getRotation() + rotation);
 		}
 	}
 

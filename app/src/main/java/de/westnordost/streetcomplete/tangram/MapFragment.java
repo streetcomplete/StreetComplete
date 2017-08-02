@@ -38,6 +38,7 @@ import com.mapzen.tangram.TouchInput;
 import java.io.File;
 
 import de.westnordost.osmapi.map.data.LatLon;
+import de.westnordost.streetcomplete.MainActivity;
 import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.util.SphericalEarthMath;
@@ -83,6 +84,7 @@ public class MapFragment extends Fragment implements
 	{
 		void onMapReady();
 		void onUnglueViewFromPosition();
+		void setRotateButtonRotation(float rotation);
 	}
 
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -343,7 +345,7 @@ public class MapFragment extends Fragment implements
 		}
 	}
 
-	@Override public void onRotationChanged(float rotation)
+	@Override public void onRotationChanged(final float rotation)
 	{
 		if(directionMarker != null && directionMarker.isVisible())
 		{
@@ -360,10 +362,12 @@ public class MapFragment extends Fragment implements
 			if (getResources().getConfiguration().orientation == ORIENTATION_PORTRAIT)
 			{
 				controller.setRotation(-rotation);
+				if (listener != null) listener.setRotateButtonRotation(-rotation);
 			}
 			else if (getResources().getConfiguration().orientation == ORIENTATION_LANDSCAPE)
 			{
 				controller.setRotation(-rotation-90);
+				if (listener != null) listener.setRotateButtonRotation(-rotation-90);
 			}
 		}
 		else
@@ -376,11 +380,13 @@ public class MapFragment extends Fragment implements
 
 	}
 
-	public boolean getIsCompassMode() {
+	public boolean getIsCompassMode()
+	{
 		return isCompassMode;
 	}
 
-	public void setIsCompassMode (boolean isCompassMode) {
+	public void setIsCompassMode (boolean isCompassMode)
+	{
 		this.isCompassMode = isCompassMode;
 	}
 
