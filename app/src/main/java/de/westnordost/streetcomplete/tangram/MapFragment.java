@@ -368,8 +368,10 @@ public class MapFragment extends Fragment implements
 		}
 		else
 		{
-			controller.setRotation(0);
-			directionMarker.setVisible(true);
+			if (controller.getRotation() != 0){
+				controller.setRotation(0);
+				directionMarker.setVisible(true);
+			}
 		}
 
 	}
