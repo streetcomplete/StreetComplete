@@ -27,6 +27,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -887,7 +888,8 @@ public class MainActivity extends AppCompatActivity implements
 	{
 		if (rotateButton.getRotation() != rotation)
 		{
-			rotateButton.setRotation(rotateButton.getRotation() + rotation);
+			double northRotation = (double)rotation * 360 / (2 * Math.PI);
+			rotateButton.setRotation((float)northRotation);
 		}
 	}
 
