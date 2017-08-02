@@ -23,6 +23,8 @@ import de.westnordost.streetcomplete.util.Serializer;
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
 
+import static de.westnordost.streetcomplete.data.osm.persist.OsmQuestTable.Columns;
+
 public class OsmQuestDao extends AQuestDao<OsmQuest>
 {
 	private final Serializer serializer;
@@ -36,14 +38,14 @@ public class OsmQuestDao extends AQuestDao<OsmQuest>
 		this.serializer = serializer;
 		this.questTypeList = questTypeList;
 		String sql = OsmQuestTable.NAME + " ("+
-				OsmQuestTable.Columns.QUEST_ID+","+
-				OsmQuestTable.Columns.QUEST_TYPE+","+
-				OsmQuestTable.Columns.QUEST_STATUS+","+
-				OsmQuestTable.Columns.TAG_CHANGES+","+
-				OsmQuestTable.Columns.CHANGES_SOURCE+","+
-				OsmQuestTable.Columns.LAST_UPDATE+","+
-				OsmQuestTable.Columns.ELEMENT_ID+","+
-				OsmQuestTable.Columns.ELEMENT_TYPE+
+				Columns.QUEST_ID+","+
+				Columns.QUEST_TYPE+","+
+				Columns.QUEST_STATUS+","+
+				Columns.TAG_CHANGES+","+
+				Columns.CHANGES_SOURCE+","+
+				Columns.LAST_UPDATE+","+
+				Columns.ELEMENT_ID+","+
+				Columns.ELEMENT_TYPE+
 				") values (?,?,?,?,?,?,?,?);";
 		SQLiteDatabase db = dbHelper.getWritableDatabase();
 		add = db.compileStatement("INSERT OR IGNORE INTO " + sql);
@@ -73,7 +75,7 @@ public class OsmQuestDao extends AQuestDao<OsmQuest>
 	{
 		WhereSelectionBuilder qb = new WhereSelectionBuilder();
 		addQuestStatus(status, qb);
-		qb.appendAnd(OsmQuestTable.Columns.LAST_UPDATE + " < ?", String.valueOf(olderThan));
+		qb.appendAnd(Columns.LAST_UPDATE + " < ?", String.valueOf(olderThan));
 		return deleteAllThings(getTableName(), qb);
 	}
 
@@ -81,7 +83,7 @@ public class OsmQuestDao extends AQuestDao<OsmQuest>
 	{
 		if(questTypeName != null)
 		{
-			builder.appendAnd(OsmQuestTable.Columns.QUEST_TYPE + " = ?", questTypeName);
+			builder.appendAnd(Columns.QUEST_TYPE + " = ?", questTypeName);
 		}
 	}
 
@@ -90,7 +92,7 @@ public class OsmQuestDao extends AQuestDao<OsmQuest>
 		if(elementType != null)
 		{
 			String elementKeyName = elementType.name();
-			builder.appendAnd(OsmQuestTable.Columns.ELEMENT_TYPE + " = ?", elementKeyName);
+			builder.appendAnd(Columns.ELEMENT_TYPE + " = ?", elementKeyName);
 		}
 	}
 
@@ -99,39 +101,17 @@ public class OsmQuestDao extends AQuestDao<OsmQuest>
 		if(elementId != null)
 		{
 			String elementIdStr = String.valueOf(elementId);
-			builder.appendAnd(OsmQuestTable.Columns.ELEMENT_ID + " = ?", elementIdStr);
+			builder.appendAnd(Columns.ELEMENT_ID + " = ?", elementIdStr);
 		}
 	}
 
-	@Override protected String getTableName()
-	{
-		return OsmQuestTable.NAME;
-	}
-
-	@Override protected String getMergedViewName()
-	{
-		return OsmQuestTable.NAME_MERGED_VIEW;
-	}
-
-	@Override protected String getIdColumnName()
-	{
-		return OsmQuestTable.Columns.QUEST_ID;
-	}
-
-	@Override protected String getLatitudeColumnName()
-	{
-		return ElementGeometryTable.Columns.LATITUDE;
-	}
-
-	@Override protected String getLongitudeColumnName()
-	{
-		return ElementGeometryTable.Columns.LONGITUDE;
-	}
-
-	@Override protected String getQuestStatusColumnName()
-	{
-		return OsmQuestTable.Columns.QUEST_STATUS;
-	}
+	@Override protected String getTableName() { return OsmQuestTable.NAME; }
+	@Override protected String getMergedViewName() { return OsmQuestTable.NAME_MERGED_VIEW; }
+	@Override protected String getIdColumnName() { return Columns.QUEST_ID; }
+	@Override protected String getLatitudeColumnName() { return ElementGeometryTable.Columns.LATITUDE; }
+	@Override protected String getLongitudeColumnName() { return ElementGeometryTable.Columns.LONGITUDE; }
+	@Override protected String getQuestStatusColumnName() { return Columns.QUEST_STATUS; }
+	@Override protected String getLastChangedColumnName() {	return Columns.LAST_UPDATE; }
 
 	@Override protected synchronized long executeInsert(OsmQuest quest, boolean replace)
 	{
@@ -172,25 +152,25 @@ public class OsmQuestDao extends AQuestDao<OsmQuest>
 	@Override protected ContentValues createFinalContentValuesFrom(OsmQuest quest)
 	{
 		ContentValues values = new ContentValues();
-		values.put(OsmQuestTable.Columns.QUEST_TYPE, quest.getType().getClass().getSimpleName());
-		values.put(OsmQuestTable.Columns.ELEMENT_ID, quest.getElementId());
-		values.put(OsmQuestTable.Columns.ELEMENT_TYPE, quest.getElementType().name());
+		values.put(Columns.QUEST_TYPE, quest.getType().getClass().getSimpleName());
+		values.put(Columns.ELEMENT_ID, quest.getElementId());
+		values.put(Columns.ELEMENT_TYPE, quest.getElementType().name());
 		return values;
 	}
 
 	@Override protected ContentValues createNonFinalContentValuesFrom(OsmQuest quest)
 	{
 		ContentValues values = new ContentValues();
-		values.put(OsmQuestTable.Columns.QUEST_STATUS, quest.getStatus().name());
-		values.put(OsmQuestTable.Columns.LAST_UPDATE, new Date().getTime());
+		values.put(Columns.QUEST_STATUS, quest.getStatus().name());
+		values.put(Columns.LAST_UPDATE, new Date().getTime());
 
 		if(quest.getChanges() != null)
 		{
-			values.put(OsmQuestTable.Columns.TAG_CHANGES, serializer.toBytes(quest.getChanges()));
+			values.put(Columns.TAG_CHANGES, serializer.toBytes(quest.getChanges()));
 		}
 		if(quest.getChangesSource() != null)
 		{
-			values.put(OsmQuestTable.Columns.CHANGES_SOURCE, quest.getChangesSource());
+			values.put(Columns.CHANGES_SOURCE, quest.getChangesSource());
 		}
 
 		return values;
@@ -198,14 +178,14 @@ public class OsmQuestDao extends AQuestDao<OsmQuest>
 
 	@Override protected OsmQuest createObjectFrom(Cursor cursor)
 	{
-		int colQuestId = cursor.getColumnIndexOrThrow(OsmQuestTable.Columns.QUEST_ID),
-			colElementId = cursor.getColumnIndexOrThrow(OsmQuestTable.Columns.ELEMENT_ID),
-			colElementType = cursor.getColumnIndexOrThrow(OsmQuestTable.Columns.ELEMENT_TYPE),
-			colQuestStatus = cursor.getColumnIndexOrThrow(OsmQuestTable.Columns.QUEST_STATUS),
-			colQuestType = cursor.getColumnIndexOrThrow(OsmQuestTable.Columns.QUEST_TYPE),
-			colChanges = cursor.getColumnIndexOrThrow(OsmQuestTable.Columns.TAG_CHANGES),
-			colChangesSource = cursor.getColumnIndexOrThrow(OsmQuestTable.Columns.CHANGES_SOURCE),
-			colLastChange = cursor.getColumnIndexOrThrow(OsmQuestTable.Columns.LAST_UPDATE);
+		int colQuestId = cursor.getColumnIndexOrThrow(Columns.QUEST_ID),
+			colElementId = cursor.getColumnIndexOrThrow(Columns.ELEMENT_ID),
+			colElementType = cursor.getColumnIndexOrThrow(Columns.ELEMENT_TYPE),
+			colQuestStatus = cursor.getColumnIndexOrThrow(Columns.QUEST_STATUS),
+			colQuestType = cursor.getColumnIndexOrThrow(Columns.QUEST_TYPE),
+			colChanges = cursor.getColumnIndexOrThrow(Columns.TAG_CHANGES),
+			colChangesSource = cursor.getColumnIndexOrThrow(Columns.CHANGES_SOURCE),
+			colLastChange = cursor.getColumnIndexOrThrow(Columns.LAST_UPDATE);
 
 		long questId = cursor.getLong(colQuestId);
 		long elementId = cursor.getLong(colElementId);

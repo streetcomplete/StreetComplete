@@ -20,6 +20,8 @@ import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.map.data.OsmLatLon;
 import de.westnordost.osmapi.notes.Note;
 
+import static de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestTable.Columns;
+
 public class OsmNoteQuestDao extends AQuestDao<OsmNoteQuest>
 {
 	private final Serializer serializer;
@@ -31,11 +33,11 @@ public class OsmNoteQuestDao extends AQuestDao<OsmNoteQuest>
 		this.serializer = serializer;
 
 		String sql = OsmNoteQuestTable.NAME + " ("+
-				OsmNoteQuestTable.Columns.QUEST_ID+","+
-				OsmNoteQuestTable.Columns.NOTE_ID+","+
-				OsmNoteQuestTable.Columns.QUEST_STATUS+","+
-				OsmNoteQuestTable.Columns.COMMENT+","+
-				OsmNoteQuestTable.Columns.LAST_UPDATE+
+				Columns.QUEST_ID+","+
+				Columns.NOTE_ID+","+
+				Columns.QUEST_STATUS+","+
+				Columns.COMMENT+","+
+				Columns.LAST_UPDATE+
 				") values (?,?,?,?,?);";
 		SQLiteDatabase db = dbHelper.getWritableDatabase();
 		add = db.compileStatement("INSERT OR IGNORE INTO " + sql);
@@ -56,35 +58,13 @@ public class OsmNoteQuestDao extends AQuestDao<OsmNoteQuest>
 		});
 	}
 
-	@Override protected String getTableName()
-	{
-		return OsmNoteQuestTable.NAME;
-	}
-
-	@Override protected String getMergedViewName()
-	{
-		return OsmNoteQuestTable.NAME_MERGED_VIEW;
-	}
-
-	@Override protected String getIdColumnName()
-	{
-		return OsmNoteQuestTable.Columns.QUEST_ID;
-	}
-
-	@Override protected String getLatitudeColumnName()
-	{
-		return NoteTable.Columns.LATITUDE;
-	}
-
-	@Override protected String getLongitudeColumnName()
-	{
-		return NoteTable.Columns.LONGITUDE;
-	}
-
-	@Override protected String getQuestStatusColumnName()
-	{
-		return OsmNoteQuestTable.Columns.QUEST_STATUS;
-	}
+	@Override protected String getTableName() { return OsmNoteQuestTable.NAME; }
+	@Override protected String getMergedViewName() { return OsmNoteQuestTable.NAME_MERGED_VIEW; }
+	@Override protected String getIdColumnName() { return Columns.QUEST_ID; }
+	@Override protected String getLatitudeColumnName() { return NoteTable.Columns.LATITUDE; }
+	@Override protected String getLongitudeColumnName()	{ return NoteTable.Columns.LONGITUDE; }
+	@Override protected String getQuestStatusColumnName() { return Columns.QUEST_STATUS; }
+	@Override protected String getLastChangedColumnName() {	return Columns.LAST_UPDATE; }
 
 	@Override protected synchronized long executeInsert(OsmNoteQuest quest, boolean replace)
 	{
@@ -119,12 +99,12 @@ public class OsmNoteQuestDao extends AQuestDao<OsmNoteQuest>
 	@Override protected ContentValues createNonFinalContentValuesFrom(OsmNoteQuest quest)
 	{
 		ContentValues values = new ContentValues();
-		values.put(OsmNoteQuestTable.Columns.QUEST_STATUS, quest.getStatus().name());
-		values.put(OsmNoteQuestTable.Columns.LAST_UPDATE, quest.getLastUpdate().getTime());
+		values.put(Columns.QUEST_STATUS, quest.getStatus().name());
+		values.put(Columns.LAST_UPDATE, quest.getLastUpdate().getTime());
 
 		if(quest.getComment() != null)
 		{
-			values.put(OsmNoteQuestTable.Columns.COMMENT, quest.getComment());
+			values.put(Columns.COMMENT, quest.getComment());
 		}
 
 		return values;
@@ -135,18 +115,18 @@ public class OsmNoteQuestDao extends AQuestDao<OsmNoteQuest>
 		ContentValues values = new ContentValues();
 		if(quest.getNote() != null)
 		{
-			values.put(OsmNoteQuestTable.Columns.NOTE_ID, quest.getNote().id);
+			values.put(Columns.NOTE_ID, quest.getNote().id);
 		}
 		return values;
 	}
 
 	@Override protected OsmNoteQuest createObjectFrom(Cursor cursor)
 	{
-		int colQuestId = cursor.getColumnIndexOrThrow(OsmNoteQuestTable.Columns.QUEST_ID),
-			colNoteId = cursor.getColumnIndexOrThrow(OsmNoteQuestTable.Columns.NOTE_ID),
-			colQuestStatus = cursor.getColumnIndexOrThrow(OsmNoteQuestTable.Columns.QUEST_STATUS),
-			colComment = cursor.getColumnIndexOrThrow(OsmNoteQuestTable.Columns.COMMENT),
-			colLastUpdate = cursor.getColumnIndexOrThrow(OsmNoteQuestTable.Columns.LAST_UPDATE);
+		int colQuestId = cursor.getColumnIndexOrThrow(Columns.QUEST_ID),
+			colNoteId = cursor.getColumnIndexOrThrow(Columns.NOTE_ID),
+			colQuestStatus = cursor.getColumnIndexOrThrow(Columns.QUEST_STATUS),
+			colComment = cursor.getColumnIndexOrThrow(Columns.COMMENT),
+			colLastUpdate = cursor.getColumnIndexOrThrow(Columns.LAST_UPDATE);
 
 		long questId = cursor.getLong(colQuestId);
 

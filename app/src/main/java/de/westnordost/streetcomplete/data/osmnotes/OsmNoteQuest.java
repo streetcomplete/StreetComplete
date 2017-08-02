@@ -98,7 +98,7 @@ public class OsmNoteQuest implements Quest
 		this.comment = comment;
 	}
 
-	public Date getLastUpdate()
+	@Override public Date getLastUpdate()
 	{
 		return lastUpdate;
 	}

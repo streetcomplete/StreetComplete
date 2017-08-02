@@ -55,6 +55,27 @@ public abstract class AQuestDao<T extends Quest>
 		});
 	}
 
+	public T getLastSolved()
+	{
+		SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+		String questStatus = getQuestStatusColumnName();
+		String query = questStatus + " = ? OR " + questStatus + " = ?";
+		String[] args = {QuestStatus.ANSWERED.name(), QuestStatus.CLOSED.name()};
+		String orderBy = getLastChangedColumnName() + " DESC";
+		Cursor cursor = db.query(getMergedViewName(),null,query,args,null,null,orderBy,"1");
+
+		try
+		{
+			if(!cursor.moveToFirst()) return null;
+			return createObjectFrom(cursor);
+		}
+		finally
+		{
+			cursor.close();
+		}
+	}
+
 	public int getCount(BoundingBox bbox, QuestStatus status)
 	{
 		SQLiteDatabase db = dbHelper.getReadableDatabase();
@@ -265,6 +286,7 @@ public abstract class AQuestDao<T extends Quest>
 	protected abstract String getMergedViewName();
 	protected abstract String getIdColumnName();
 	protected abstract String getQuestStatusColumnName();
+	protected abstract String getLastChangedColumnName();
 
 	protected abstract String getLatitudeColumnName();
 	protected abstract String getLongitudeColumnName();
