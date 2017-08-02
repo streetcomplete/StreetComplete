@@ -369,6 +369,7 @@ public class MapFragment extends Fragment implements
 		else
 		{
 			controller.setRotation(0);
+			directionMarker.setVisible(true);
 		}
 
 	}
