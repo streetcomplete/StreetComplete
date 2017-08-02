@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="action_settings">"Impostazioni"</string>
-    <string name="oauth_communication_error">"Impossibile raggiungere il server per l'autorizzazione"</string>
-    <string name="loading">"Caricamento"</string>
+    <string name="oauth_communication_error">"Impossibile raggiungere il server per l'autenticazione"</string>
+    <string name="loading">"Caricamento in corso"</string>
     <string name="retry">"Riprova"</string>
     <string name="oauth_cancelled">"Autorizzazione annullata"</string>
-    <string name="oauth_failed_permissions">"Autorizzazione negata: tutti i permessi elencati hanno bisogno di essere abilitati"</string>
+    <string name="oauth_failed_permissions">"Autorizzazione negata: devono essere concessi tutti i permessi elencati"</string>
     <string name="title_activity_settings">"Impostazioni"</string>
-    <string name="pref_category_communication">"Comunicazione"</string>
+    <string name="pref_category_communication">"Comunicazioni"</string>
     <string name="pref_category_display">"Schermo"</string>
-    <string name="pref_title_authorization">"Autorizza accesso OSM"</string>
+    <string name="pref_title_authorization">"Autorizza accesso ad OSM"</string>
     <string name="pref_title_authorized_summary">"Autorizzazione avvenuta"</string>
     <string name="pref_title_not_authorized_summary">"Non ancora autorizzato"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
     <string name="pref_tilecache_size_message">"Spazio in megabyte riservato su supporto esterno per memorizzare le mappe nella cache"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Mostra tutte le note"</string>
-    <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Mostra anche le note non sotto forma di domanda"</string>
-    <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Ignorare le note non sotto forma di domanda"</string>
-    <string name="pref_title_map_cache">"Dimensioni cache per la mappa"</string>
+    <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Mostra anche le note non poste come domande"</string>
+    <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Ignorare le note non poste sotto forma di domande"</string>
+    <string name="pref_title_map_cache">"Dimensioni della cache per la mappa"</string>
     <string name="map_btn_gps_tracking">"Seguimi"</string>
     <string name="map_attribution_mapzen">"Powered by %s"</string>
     <string name="map_attribution_osm">"© OpenStreetMap contributors"</string>
@@ -26,18 +26,21 @@
     <!-- Potrebbe essere più friendly "Non so dirlo"? -->
     <string name="quest_generic_answer_notApplicable">"Non so dirlo"</string>
     <string name="quest_generic_confirmation_title">"Sei sicuro?"</string>
-    <string name="quest_generic_confirmation_yes">"Certo! Lo sono"</string>
+    <string name="quest_generic_confirmation_yes">"Sì, sono sicuro"</string>
     <string name="quest_generic_confirmation_no">"Farò una verifica"</string>
     <string name="quest_generic_error_field_empty">"Hai lasciato questo campo vuoto"</string>
     <string name="quest_leave_new_note_title">"Preferisci piuttosto lasciare una nota?"</string>
     <string name="quest_leave_new_note_description">"Puoi lasciare una nota pubblica in questa posizione in modo che altri mappatori possano commentare e spesso risolvere:"</string>
     <string name="quest_leave_new_note_yes">"OK"</string>
     <string name="quest_leave_new_note_no">"No, lascia nascosto"</string>
-    <string name="quest_streetName_title">"Quale è il nome di questa strada?"</string>
-    <string name="quest_streetName_description">"
-così come scritto sul cartello stradale, le abbreviazioni vengono espanse:"</string>
+    <string name="quest_streetName_title">"Qual è il nome di questa strada?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_streetName_description">"Come riportato sul cartello (le abbreviazioni vengono rese per esteso):"</string>
     <string name="quest_streetName_answer_noName_confirmation_description">"Spesso il segnale stradale è solamente ad un'estremità della strada. Inoltre potrebbero esserci segnali stradali aggiuntivi per vie laterali che appartengono a una strada più grande. Di solito, qualsiasi strada con case ha un nome."</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Se il nome può essere scritto senza un'abbreviazione, allora dovrebbe essere ampliato. Molte abbreviazioni comuni sono espanse automaticamente durante la digitazione, ma probabilmente non tutte."</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Se il nome può essere scritto senza un'abbreviazione, allora dovrebbe essere scritto per intero. Molte abbreviazioni comuni vengono automaticamente rese per esteso durante la digitazione."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Nessuna abbreviazione"</string>
     <string name="quest_openingHours_name_title">"Quali sono gli orari di apertura di %s?"</string>
     <string name="quest_openingHours_start_time">"orario di apertura"</string>
@@ -74,9 +77,7 @@ così come scritto sul cartello stradale, le abbreviazioni vengono espanse:"</st
     <string name="no_location_permission_warning">"La tua posizione è necessaria per capire cosa aggiornare vicino a te"</string>
     <string name="action_about">"Informazioni su StreetComplete"</string>
     <string name="about_title_version">"Versione"</string>
-
-    <!-- Fuzzy -->
-    <string name="about_title_authors">"Autore"</string>
+    <string name="about_title_authors">"Ringraziamenti"</string>
     <string name="about_summary_authors">"© 2016–2017 Tobias Zwick e contributori"</string>
     <string name="about_title_repository">"Repository codice sorgente"</string>
     <string name="about_summary_repository">"su GitHub"</string>
@@ -91,7 +92,7 @@ così come scritto sul cartello stradale, le abbreviazioni vengono espanse:"</st
     <string name="no_gps_no_quests">"Al fine di individuare missioni attorno a te, abilita la localizzazione"</string>
     <string name="nothing_more_to_download">"Non ci sono disponibili ulteriori missioni"</string>
     <string name="later">"Più tardi"</string>
-    <string name="quest_streetName_answer_noProperStreet">"Non propriamente una strada"</string>
+    <string name="quest_streetName_answer_noProperStreet">"Non è propriamente una strada"</string>
     <string name="quest_streetName_answer_noProperStreet_question">"Quindi cosa è?"</string>
     <string name="quest_streetName_answer_noProperStreet_link">"è solo un collegamento fra due strade"</string>
     <string name="quest_streetName_answer_noProperStreet_service">"è una strade di servizio"</string>
@@ -164,7 +165,7 @@ Per visualizzare la mappa, vengono utilizzati tile vettoriali dal &lt;a href=\"h
     <string name="quest_surface_value_sand">"Sabbia"</string>
     <string name="quest_surface_value_sett">"Bolognini"</string>
     <string name="quest_surface_value_wood">"Legno"</string>
-    <string name="quest_placeName_title">"Quale è il nome di questo luogo?"</string>
+    <string name="quest_placeName_title">"Qual è il nome di questo luogo?"</string>
     <string name="quest_sidewalk_title">"C'è un marciapiede in questa strada?"</string>
     <string name="map_orientation_info">"La mappa è orientata con il nord in alto"</string>
     <string name="quest_sidewalk_onlyNorth">"Solo sul lato a nord"</string>
@@ -187,15 +188,17 @@ Per visualizzare la mappa, vengono utilizzati tile vettoriali dal &lt;a href=\"h
     <string name="quest_streetLanes_answer_noLanes">"non ci sono corsie marcate"</string>
     <string name="quest_streetLanes_noLanes_estWidth">"Si prega di stimare quante auto possono stare una accanto all'altro su questa strada."</string>
     <string name="quest_oneway_title">"Si tratta di una strada a senso unico?"</string>
-    <string name="quest_address_title">"Quale è il numero civico di questo edificio?"</string>
+    <string name="quest_address_title">"Qual è il numero civico di questo edificio?"</string>
     <string name="store_listing_short_description">"app di verifica di OpenStreetMap"</string>
     <string name="store_listing_full_description">"Aiuta a migliorare la mappa di OpenStreetMap con StreetComplete!
 
 Questa app trova dati da verificare e da estendere vicino a te a li mostra come marcatori su una mappa. Ciascuno di questi dati presenta delle domande a cui rispondere per completare le informazioni sul posto.
 
 Le informazioni inserite vengono aggiunte direttamente su OpenStreetMap a tuo nome senza aver bisogno di utilizzare un altro editor."</string>
-    <string name="quest_name_answer_noName">"non ha nome"</string>
-    <string name="quest_name_answer_noName_confirmation_title">"Veramente non ha nome?"</string>
+    <string name="quest_name_answer_noName">"Non ha un nome"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_name_answer_noName_confirmation_title">"Sei sicuro sia senza nome?"</string>
     <string name="quest_name_noName_confirmation_positive">"Confermo. Nessun nome"</string>
     <string name="quest_buildingLevels_negativeBuildingLevels">"Ops! Hai specificato più piani per il sottotetto che il numero totale di piani. "</string>
     <string name="quest_openingHours_add_times">"Aggiungi orari di apertura"</string>
@@ -255,7 +258,7 @@ Le informazioni inserite vengono aggiunte direttamente su OpenStreetMap a tuo no
     <string name="dialog_session_dont_show_again">"Non mostrarlo piú per questa sessione"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetSurface_name_title">"Di che materiale é fatta la strada \"%s\"? "</string>
+    <string name="quest_streetSurface_name_title">"Come è pavimentata la strada \"%s\"?"</string>
     <string name="quest_maxspeed_title_short">"Cosa indica il cartello del limite di velocità per questa strada?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Questo limite di velocità sembra improbabile"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Sei sicuro che non vi é un limite?"</string>
@@ -284,11 +287,103 @@ Se non ci sono cartelli, saranno applicati dei limiti standard"</string>
     <string name="quest_wheelchairAccess_subway_entrance_name_title">"L'entrata della metro \"%s\" è accessibile ai disabili?"</string>
     <string name="quest_wheelchairAccess_railway_station_name_title">"La stazione dei treni \"%s\" è accessibile ai disabili?"</string>
     <string name="quest_wheelchairAccess_location_name_title">"Il posto \"%s\" è accessibile ai disabili?"</string>
+    <string name="quest_wheelchairAccess_limited_description_business">"\"Parzialmente\" significa che c'è al più un gradino per entrare nel negozio e che si può accedere con la sedia a rotelle alla maggior parte delle stanze."</string>
+    <string name="quest_wheelchairAccess_limited_description_public_transport">"\"Parzialmente\" significa che c'è al più un gradino per accedervi."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Il nome \"%s\" contiene un'abbreviazione?"</string>
+    <string name="quest_baby_changing_table_toilets_title">"Questo bagno ha un fasciatoio?"</string>
+    <string name="quest_baby_changing_table_title">"\"%s\" ha un fasciatoio?"</string>
+    <string name="quest_recycling_type_title">"Che tipo di impianto di riciclaggio è? "</string>
     <string name="recycling_centre">"Centro"</string>
     <string name="overground_recycling_container">"Contenitore"</string>
     <string name="underground_recycling_container">"Contenitore sotterraneo"</string>
     <string name="quest_generic_error_a_field_empty">"Hai lasciato un campo vuoto"</string>
     <string name="quest_streetName_menuItem_language_simple">"%1$s - %2$s"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_streetName_answer_cantType">"Non posso digitare i caratteri presenti sul cartello"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_streetName_cantType_title">"Layout della tastiera mancante?"</string>
+    <string name="quest_streetName_cantType_open_settings">"Apri le impostazioni"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_streetName_cantType_open_store">"Apri lo store"</string>
+    <string name="quest_streetName_cantType_description">"Se utilizzi la tastiera predefinita, è probabile che tu possa scegliere il layout per la lingua desiderata modificando le impostazioni del sistema di input."</string>
     <string name="quest_streetName_menuItem_nolanguage">"(non specificato)"</string>
+    <string name="quest_fireHydrant_type_title">"Che tipo di idrante è?"</string>
+    <string name="quest_fireHydrant_type_pillar">"Colonna"</string>
+    <string name="quest_fireHydrant_type_underground">"Sotterraneo"</string>
+    <string name="quest_fireHydrant_type_wall">"Muro"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_fireHydrant_type_pond">"Laghetto"</string>
+    <string name="credits_contributors">"Vedi la &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;lista completa su GitHub&lt;/a&gt;."</string>
+    <string name="credits_translations">"Vedi il &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;progetto  suPOEditor&lt;/a&gt; per la lista completa."</string>
+    <string name="credits_translations_title">"Traduzioni"</string>
+
+    <!-- Fuzzy -->
+    <string name="credits_contributors_title">"Autori"</string>
+    <string name="credits_author_title">"Autore e manutentore"</string>
+
+    <!-- Fuzzy -->
+    <string name="credits_and_more">"e tanti altri..."</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_maxspeed_answer_living_street">"È una via residenziale/pedonale"</string>
+    <string name="quest_maxspeed_answer_living_street_confirmation_title">"È quindi presente un cartello di questo tipo?"</string>
+    <string name="quest_orchard_produce_title">"Cosa ci viene coltivato?"</string>
+    <string name="produce_grapes">"Uva"</string>
+    <string name="produce_agaves">"Agave"</string>
+    <string name="produce_almonds">"Mandorle"</string>
+    <string name="produce_apples">"Mele"</string>
+    <string name="produce_apricots">"Albicocche"</string>
+    <string name="produce_avocados">"Avocado"</string>
+    <string name="produce_bananas">"Banane"</string>
+    <string name="produce_blueberries">"Mirtilli"</string>
+    <string name="produce_cacao">"Cacao"</string>
+    <string name="produce_cashew_nuts">"Anacardi"</string>
+    <string name="produce_cherries">"Ciliegie"</string>
+    <string name="produce_chestnuts">"Castagne"</string>
+    <string name="produce_coconuts">"Noci di cocco"</string>
+    <string name="produce_coffee">"Caffè"</string>
+    <string name="produce_cranberries">"Mirtilli rossi"</string>
+    <string name="produce_dates">"Datteri"</string>
+    <string name="produce_figs">"Fichi"</string>
+    <string name="produce_grapefruits">"Pompelmi"</string>
+    <string name="produce_guavas">"Guaiave"</string>
+    <string name="produce_hazelnuts">"Nocciole"</string>
+    <string name="produce_hops">"Luppolo"</string>
+    <string name="produce_jojoba">"Jojoba"</string>
+    <string name="produce_kiwis">"Kiwi"</string>
+    <string name="produce_kola_nuts">"Noci di cola"</string>
+    <string name="produce_lemons">"Limoni"</string>
+    <string name="produce_limes">"Lime"</string>
+    <string name="produce_mangos">"Mango"</string>
+    <string name="produce_mate">"Mate"</string>
+    <string name="produce_nutmeg">"Noce moscata"</string>
+    <string name="produce_oil_palms">"Palme da olio"</string>
+    <string name="produce_olives">"Olive"</string>
+    <string name="produce_oranges">"Arance"</string>
+    <string name="produce_papayas">"Papaia"</string>
+    <string name="produce_peaches">"Pesche"</string>
+    <string name="produce_pears">"Pere"</string>
+    <string name="produce_chili">"Chili"</string>
+    <string name="produce_persimmons">"Cachi"</string>
+    <string name="produce_pineapples">"Ananas"</string>
+    <string name="produce_pepper">"Peperoni"</string>
+    <string name="produce_pistachios">"Pistacchi"</string>
+    <string name="produce_plums">"Prugne"</string>
+    <string name="produce_raspberries">"Lampone"</string>
+    <string name="produce_rubber">"Caucciù"</string>
+    <string name="produce_strawberries">"Fragole"</string>
+    <string name="produce_tea">"Tè"</string>
+    <string name="produce_vanilla">"Vaniglia"</string>
+    <string name="produce_walnuts">"Noci"</string>
+    <string name="produce_sisal">"Agave sisalana"</string>
+    <string name="quest_way_lit_title">"Questa porzione del percorso è illuminata?"</string>
+    <string name="quest_way_lit_named_title">"\"%s\" è illuminato/a qui?"</string>
+    <string name="quest_way_lit_road_title">"Questa porzione di strada è illuminata?"</string>
+    <string name="quest_way_lit_named_road_title">"La strada \"%s\" è illuminata in questo punto?"</string>
+    <string name="quest_way_lit_automatic">"Utilizza "</string>
+    <string name="quest_way_lit_24_7">"È illuminato sia di giorno sia di notte"</string>
 </resources>

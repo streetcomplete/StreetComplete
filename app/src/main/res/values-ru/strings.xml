@@ -71,9 +71,7 @@
     <string name="no_location_permission_warning">"Местоположение нужно для поиска квестов поблизости."</string>
     <string name="action_about">"О приложении"</string>
     <string name="about_title_version">"Версия"</string>
-
-    <!-- Fuzzy -->
-    <string name="about_title_authors">"Авторы"</string>
+    <string name="about_title_authors">"Участники"</string>
     <string name="about_summary_authors">"© 2016–2017 Тобиас Цвик и другие"</string>
     <string name="about_title_repository">"Исходный код"</string>
     <string name="about_summary_repository">"на GitHub"</string>
@@ -176,7 +174,7 @@
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Где находится эта улица?"</string>
     <string name="quest_cyclewaySurface_title">"Какое покрытие у этой велодорожки?"</string>
     <string name="quest_cycleway_title">"На этой улице есть велодорожка?"</string>
-    <string name="quest_buildingType_title">"Какого типа здание?"</string>
+    <string name="quest_buildingType_title">"Какого типа это здание?"</string>
     <string name="quest_serviceType_title">"Какой тип служебного проезда?"</string>
     <string name="quest_streetLanes_title">"Сколько полос у этой дороги?"</string>
     <string name="quest_streetLanes_description">"Если разметки нет, значит полосы не размечены."</string>
@@ -253,9 +251,7 @@
     <string name="quest_source_dialog_note">"Нужно вводить только то, что вы видели своими глазами."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Эта велосипедная парковка крытая (защищена от дождя)?"</string>
     <string name="dialog_session_dont_show_again">"Не показывать снова в текущей сессии"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetSurface_name_title">"Какое покрытие у дороги «%s»?"</string>
+    <string name="quest_streetSurface_name_title">"Какое покрытие у этого участка дороги «%s»?"</string>
     <string name="quest_maxspeed_title_short">"Какое ограничение скорости на этой улице?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Это ограничение скорости выглядит неправдоподобно."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Вы уверены, что ограничение не установлено?"</string>
@@ -283,14 +279,24 @@
     <string name="quest_wheelchairAccess_limited_description_business">"«Частично» значит, что нужно преодолеть не более одной ступеньки для доступа в заведение, и что все комнаты внутри доступны для инвалидных колясок."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"«Частично» значит, что нужно преодолеть не более одной ступеньки."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Сокращение в названии «%s»?"</string>
+    <string name="quest_baby_changing_table_toilets_title">"В этом туалете есть столик для смены пелёнок?"</string>
+    <string name="quest_baby_changing_table_title">"В «%s» есть столик для смены пелёнок?"</string>
+    <string name="quest_recycling_type_title">"Какого типа этот пункт переработки отходов?"</string>
     <string name="recycling_centre">"Центр"</string>
     <string name="overground_recycling_container">"Контейнер"</string>
     <string name="underground_recycling_container">"Подземный контейнер"</string>
     <string name="quest_generic_error_a_field_empty">"Поле не было заполнено"</string>
     <string name="quest_streetName_answer_cantType">"Не могу ввести символы на знаке"</string>
+    <string name="quest_streetName_cantType_title">"Нет нужной раскладки?"</string>
     <string name="quest_streetName_cantType_open_settings">"Открыть настройки"</string>
-    <string name="quest_streetName_cantType_description">"Если у вас клавиатура по умолчанию, скорее всего, нужно лишь добавить раскладку для нужного языка в настройках ввода.
+    <string name="quest_streetName_cantType_description">"Если у вас клавиатура по умолчанию, скорее всего, нужно лишь добавить раскладку клавиатуры для нужного языка в настройках ввода.
 
 В противном случае можно загрузить другую клавиатуру. Популярные клавиатуры, которые поддерживают множество языков: Google Gboard, SwiftKey Keyboard и Multiling O Keyboard."</string>
     <string name="quest_streetName_menuItem_nolanguage">"(не указано)"</string>
+    <string name="quest_fireHydrant_type_title">"Какого типа этот пожарный гидрант?"</string>
+    <string name="quest_fireHydrant_type_pillar">"Надземный"</string>
+    <string name="quest_fireHydrant_type_underground">"Подземный"</string>
+    <string name="quest_fireHydrant_type_wall">"Пожарный кран"</string>
+    <string name="quest_fireHydrant_type_pond">"Пруд"</string>
+    <string name="credits_translations_title">"Перевод"</string>
 </resources>
