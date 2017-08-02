@@ -102,15 +102,12 @@ public class MainActivity extends AppCompatActivity implements
 	private static boolean isFollowingPosition = true;
 	private static boolean hasAskedForLocation = false;
 	private static boolean dontShowRequestAuthorizationAgain = false;
-	public static boolean isRotating = false;
 
-	private SensorManager mSensorManager;
-	private Sensor mSensor;
-	private boolean hasCompass;
+	private boolean isCompassMode = false;
 
 	private QuestsMapFragment mapFragment;
 	private LocationStateButton trackingButton;
-	private ImageButton RotateButton;
+	private ImageButton rotateButton;
 	private SingleLocationRequest singleLocationRequest;
 	private Location lastLocation;
 
@@ -245,43 +242,34 @@ public class MainActivity extends AppCompatActivity implements
 		});
         trackingButton.setActivated(isFollowingPosition);
 
-        RotateButton = (ImageButton) findViewById(R.id.rotate_map);
+		rotateButton = (ImageButton) findViewById(R.id.rotate_map);
+		SensorManager sensorManager;
+		sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+		if (sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD) != null){
 
-		mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-		mSensor = null;
-		if (mSensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD) != null){
-			mSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
-			hasCompass = true;
+			rotateButton.setOnClickListener(new View.OnClickListener()
+			{
+				@Override public void onClick(View v)
+				{
+					if(mapFragment.getIsCompassMode())
+					{
+						mapFragment.setIsCompassMode(false);
+						rotateButton.setRotation(0);
+						rotateButton.setImageResource(R.drawable.ic_compass_disabled);
+						rotateButton.clearColorFilter();
+					}
+					else
+					{
+						mapFragment.setIsCompassMode(true);
+						rotateButton.setImageResource(R.drawable.ic_compass_enabled);
+						rotateButton.setColorFilter(getResources().getColor(R.color.colorAccent));
+					}
+				}
+			});
 		}
 		else{
-			hasCompass = false;
+			rotateButton.setVisibility(View.INVISIBLE);
 		}
-		if (hasCompass)
-        {
-            RotateButton.setOnClickListener(new View.OnClickListener()
-            {
-                @Override public void onClick(View v)
-                {
-                    if(isRotating)
-                    {
-                        isRotating = false;
-                        RotateButton.setRotation(0);
-                        RotateButton.setImageResource(R.drawable.ic_compass_disabled);
-                        RotateButton.clearColorFilter();
-                    }
-                    else
-                    {
-                        isRotating = true;
-                        RotateButton.setImageResource(R.drawable.ic_compass_enabled);
-                        RotateButton.setColorFilter(getResources().getColor(R.color.colorAccent));
-                    }
-                }
-            });
-        }
-        else
-        {
-            RotateButton.setVisibility(View.INVISIBLE);
-        }
 
 		ImageButton zoomInButton = (ImageButton) findViewById(R.id.zoom_in);
 		zoomInButton.setOnClickListener(new View.OnClickListener()

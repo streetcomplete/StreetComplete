@@ -38,7 +38,6 @@ import com.mapzen.tangram.TouchInput;
 import java.io.File;
 
 import de.westnordost.osmapi.map.data.LatLon;
-import de.westnordost.streetcomplete.MainActivity;
 import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.util.SphericalEarthMath;
@@ -73,6 +72,8 @@ public class MapFragment extends Fragment implements
 	private boolean isFollowingPosition;
 	private Location lastLocation;
 	private boolean zoomedYet;
+
+	private boolean isCompassMode = false;
 
 	private Listener listener;
 
@@ -353,22 +354,31 @@ public class MapFragment extends Fragment implements
 							"], order: 2000, collide: false, flat: true, angle: " + r + " }");
 		}
 
-		if (MainActivity.isRotating)
+		if (isCompassMode)
 		{
+			directionMarker.setVisible(false);
 			if (getResources().getConfiguration().orientation == ORIENTATION_PORTRAIT)
 			{
-				controller.setRotationEased(-rotation, 100, MapController.EaseType.LINEAR);
+				controller.setRotation(-rotation);
 			}
 			else if (getResources().getConfiguration().orientation == ORIENTATION_LANDSCAPE)
 			{
-				controller.setRotationEased(-rotation-90, 100, MapController.EaseType.LINEAR);
+				controller.setRotation(-rotation-90);
 			}
 		}
 		else
 		{
-			controller.setRotationEased(0, 100, MapController.EaseType.LINEAR);
+			controller.setRotation(0);
 		}
 
+	}
+
+	public boolean getIsCompassMode() {
+		return isCompassMode;
+	}
+
+	public void setIsCompassMode (boolean isCompassMode) {
+		this.isCompassMode = isCompassMode;
 	}
 
 	private float meters2Pixels(LngLat at, float meters) {
