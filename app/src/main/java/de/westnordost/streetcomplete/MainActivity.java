@@ -260,7 +260,7 @@ public class MainActivity extends AppCompatActivity implements
 					else
 					{
 						mapFragment.setIsCompassMode(true);
-						rotateButton.setImageResource(R.drawable.ic_compass_enabled);
+						rotateButton.setImageResource(R.drawable.ic_compass_north);
 						rotateButton.setColorFilter(getResources().getColor(R.color.colorAccent));
 					}
 				}
