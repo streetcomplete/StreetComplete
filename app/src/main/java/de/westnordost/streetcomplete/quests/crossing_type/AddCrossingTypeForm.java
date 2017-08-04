@@ -23,7 +23,7 @@ public class AddCrossingTypeForm extends ImageListQuestAnswerFragment
 
     @Override protected int getItemsPerRow()
     {
-        return 1;
+        return 3;
     }
 
     @Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -31,7 +31,6 @@ public class AddCrossingTypeForm extends ImageListQuestAnswerFragment
     {
         View view = super.onCreateView(inflater, container, savedInstanceState);
         setTitle(R.string.quest_crossing_type_title);
-        imageSelector.setCellLayout(R.layout.small_image_with_label_at_end);
         return view;
     }
 }
