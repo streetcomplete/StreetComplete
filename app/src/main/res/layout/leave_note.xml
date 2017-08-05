@@ -76,6 +76,14 @@
             android:text="@string/quest_leave_new_note_no"
             android:layout_height="wrap_content" />
         <Button
+            android:id="@+id/buttonUploadImage"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            style="?android:attr/buttonBarButtonStyle"
+            android:text="@string/upload_image"
+            android:layout_height="wrap_content" />
+        <Button
             android:id="@+id/buttonOk"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

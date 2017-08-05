@@ -321,4 +321,10 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="credits_and_more">and more …</string>
     <string name="quest_maxspeed_answer_living_street">It is a living street</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">So, there is a sign like this?</string>
+    <string name="upload_image">Upload image</string>
+    <string name="select_image">Select image</string>
+    <string name="connection_error">There is no connection at the moment. Please try again later!</string>
+    <string name="publishing_image">Publishing image. Please wait.</string>
+    <string name="confirmation_publish_image">Are you sure that you want to publish this image?</string>
+    <string name="image_upload_error">There was an error while uploading the image. Please try again later!</string>
 </resources>
