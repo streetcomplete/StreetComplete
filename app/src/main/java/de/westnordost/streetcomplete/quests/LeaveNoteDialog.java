@@ -18,6 +18,7 @@ import android.provider.OpenableColumns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -186,10 +187,10 @@ public class LeaveNoteDialog extends DialogFragment
 	private class ImageUploadHelper extends AsyncTask<Uri, String, String>
 	{
 
-		private Context mContext;
+		private Context context;
 
-		ImageUploadHelper (Context context){
-			mContext = context;
+		ImageUploadHelper (Context Context){
+			context = Context;
 		}
 
 		private ProgressDialog LoadingDialog;
@@ -206,8 +207,8 @@ public class LeaveNoteDialog extends DialogFragment
 
 		@Override
 		protected String doInBackground(Uri... imageUri) {
-			if (!isConnectedToInternet(mContext)) {
-				new AlertDialogBuilder(mContext)
+			if (!isConnectedToInternet(context)) {
+				new AlertDialogBuilder(context)
 						.setMessage(R.string.connection_error)
 						.setPositiveButton(android.R.string.ok, null)
 						.setNegativeButton(android.R.string.cancel, null)
@@ -227,7 +228,7 @@ public class LeaveNoteDialog extends DialogFragment
 			InputStream stream = null;
 			DataOutputStream request = null;
 			try {
-				if (isConnectedToInternet(mContext)) {
+				if (isConnectedToInternet(context)) {
 
 					String crlf = "\r\n";
 					String hyphens = "--";
@@ -278,7 +279,7 @@ public class LeaveNoteDialog extends DialogFragment
 					request_size += keepExif.length();
 
 					String[] proj = {OpenableColumns.DISPLAY_NAME, OpenableColumns.SIZE};
-					Cursor cursor = mContext.getContentResolver().query(imageUri[0], proj, null, null, null);
+					Cursor cursor = context.getContentResolver().query(imageUri[0], proj, null, null, null);
 					String fileName = null;
 					long size = 0;
 					if (cursor != null && cursor.moveToFirst()) {
@@ -312,7 +313,7 @@ public class LeaveNoteDialog extends DialogFragment
 					request.flush();
 					InputStream streamIn = null;
 					try {
-						streamIn = mContext.getContentResolver().openInputStream(imageUri[0]);
+						streamIn = context.getContentResolver().openInputStream(imageUri[0]);
 					} catch (Exception e) {
 						e.printStackTrace();
 						LoadingDialog.dismiss();
@@ -396,8 +397,17 @@ public class LeaveNoteDialog extends DialogFragment
 		}
 
 		protected void onPostExecute(String result) {
-			noteInput.setText(result + "\n");
 			LoadingDialog.dismiss();
+			if (!result.equals("https://lut.im/")){
+				noteInput.setText(result);
+			}
+			else
+			{
+				new AlertDialogBuilder(context)
+						.setMessage(R.string.image_upload_error)
+						.setPositiveButton(android.R.string.ok, null)
+						.show();
+			}
 		}
 
 		private boolean isConnectedToInternet(Context context) {

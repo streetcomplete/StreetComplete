@@ -326,4 +326,5 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="connection_error">There is no connection at the moment. Please try again later!</string>
     <string name="publishing_image">Publishing image. Please wait.</string>
     <string name="confirmation_publish_image">Are you sure that you want to publish this image?</string>
+    <string name="image_upload_error">There was an error while uploading the image. Please try again later!</string>
 </resources>
