@@ -340,6 +340,13 @@ public class NoteDiscussionForm extends AbstractQuestAnswerFragment
 					duration += 0 + crlf;
 					request_size += duration.length();
 
+					//keep EXIF tags
+					String keepExif = hyphens + boundary + crlf;
+					keepExif += "Content-Disposition: form-data; name=\"keep-exif\"" + crlf;
+					keepExif += crlf;
+					keepExif += 1 + crlf;
+					request_size += keepExif.length();
+
 					String[] proj = {OpenableColumns.DISPLAY_NAME, OpenableColumns.SIZE};
 					Cursor cursor = mContext.getContentResolver().query(imageUri[0], proj, null, null, null);
 					String fileName = null;
@@ -369,7 +376,7 @@ public class NoteDiscussionForm extends AbstractQuestAnswerFragment
 					//write data
 					request = new DataOutputStream(conn.getOutputStream());
 					request.writeBytes(answer);
-					request.writeBytes(duration);
+					request.writeBytes(keepExif);
 					request.writeBytes(outputInformations);
 					request.flush();
 					InputStream streamIn = null;
@@ -458,7 +465,7 @@ public class NoteDiscussionForm extends AbstractQuestAnswerFragment
 		}
 
 		protected void onPostExecute(String result) {
-			noteInput.setText(result);
+			noteInput.setText(result + "\n");
 			LoadingDialog.dismiss();
 		}
 
