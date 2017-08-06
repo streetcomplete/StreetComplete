@@ -324,6 +324,5 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_crossing_type_title">What kind of crossing is this?</string>
     <string name="quest_crossing_type_signals">Crossing with traffic lights</string>
     <string name="quest_crossing_type_uncontrolled">Uncontrolled crossing</string>
-    <string name="quest_crossing_type_island">Crossing with traffic-island</string>
     <string name="quest_crossing_type_unmarked">Crossing without road markings</string>
 </resources>
