@@ -1,15 +1,12 @@
 package de.westnordost.streetcomplete.location;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Animatable;
-import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.AttributeSet;
-import android.widget.ImageButton;
 
 import java.util.Arrays;
 
@@ -18,7 +15,7 @@ import de.westnordost.streetcomplete.R;
 /**
  * An image button which shows the current location state
  */
-public class LocationStateButton extends ImageButton
+public class LocationStateButton extends android.support.v7.widget.AppCompatImageButton
 {
 	// must be defined in the same order as the LocationState enum (but minus the first)
 	private static final int[] STATES = {
@@ -34,9 +31,11 @@ public class LocationStateButton extends ImageButton
 			R.styleable.LocationStateButton_state_enabled,
 			R.styleable.LocationStateButton_state_searching,
 			R.styleable.LocationStateButton_state_updating,
+			R.styleable.LocationStateButton_compass_mode
 	};
 
 	private LocationState state;
+	private boolean compassMode;
 
 	private ColorStateList tint;
 
@@ -57,24 +56,13 @@ public class LocationStateButton extends ImageButton
 		TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.LocationStateButton);
 		state = determineStateFrom(a);
 		tint = a.getColorStateList(R.styleable.LocationStateButton_tint);
+		compassMode = a.getBoolean(R.styleable.LocationStateButton_compass_mode, false);
 		a.recycle();
-	}
-
-	@TargetApi(Build.VERSION_CODES.LOLLIPOP)
-	public LocationStateButton(Context context, AttributeSet attrs, int defStyle, int defStyleRes)
-	{
-		super(context, attrs, defStyle, defStyleRes);
-
-		TypedArray a = context.obtainStyledAttributes( attrs, R.styleable.LocationStateButton,
-				defStyle, defStyleRes);
-		state = determineStateFrom(a);
-		a.recycle();
-		refreshDrawableState();
 	}
 
 	private LocationState determineStateFrom(TypedArray a)
 	{
-		for(int i=STYLEABLES.length-1; i>=0; --i)
+		for(int i=LocationState.values().length-1; i>=0; --i)
 		{
 			if(a.getBoolean(STYLEABLES[i], false)) return LocationState.values()[i+1];
 		}
@@ -109,15 +97,29 @@ public class LocationStateButton extends ImageButton
 		return state;
 	}
 
+	public boolean isCompassMode()
+	{
+		return compassMode;
+	}
+
+	public void setCompassMode(boolean compassMode)
+	{
+		this.compassMode = compassMode;
+		refreshDrawableState();
+	}
+
 	@Override
 	public int[] onCreateDrawableState(int extraSpace)
 	{
-		final int[] drawableState = super.onCreateDrawableState(extraSpace + STATES.length);
+		int additionalLength = STATES.length + 1;
+		final int[] drawableState = super.onCreateDrawableState(extraSpace + additionalLength);
 		int arrPos = getState().ordinal();
-		if (arrPos > 0)
+		int[] additionalArray = Arrays.copyOf(Arrays.copyOf(STATES, arrPos), additionalLength);
+		if(compassMode)
 		{
-			mergeDrawableStates(drawableState, Arrays.copyOf(STATES, arrPos));
+			additionalArray[STATES.length] = R.attr.compass_mode;
 		}
+		mergeDrawableStates(drawableState, additionalArray);
 		return drawableState;
 	}
 
@@ -137,6 +139,7 @@ public class LocationStateButton extends ImageButton
 		SavedState ss = (SavedState) s;
 		super.onRestoreInstanceState(ss.getSuperState());
 		this.state = ss.state;
+		this.compassMode = ss.compassMode;
 		setActivated(ss.activated);
 		requestLayout();
 	}
@@ -144,6 +147,7 @@ public class LocationStateButton extends ImageButton
 	static class SavedState extends BaseSavedState
 	{
 		LocationState state;
+		boolean compassMode;
 		boolean activated;
 
 		SavedState(Parcelable superState) {
@@ -155,12 +159,14 @@ public class LocationStateButton extends ImageButton
 			super(in);
 			state = LocationState.valueOf(in.readString());
 			activated = in.readInt() == 1;
+			compassMode = in.readInt() == 1;
 		}
 
 		@Override public void writeToParcel(Parcel out, int flags) {
 			super.writeToParcel(out, flags);
 			out.writeString(state.name());
 			out.writeInt(activated ? 1 : 0);
+			out.writeInt(compassMode ? 1 : 0);
 		}
 
 		public static final Parcelable.Creator<SavedState> CREATOR

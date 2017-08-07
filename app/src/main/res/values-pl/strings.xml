@@ -303,4 +303,66 @@ Udzielone odpowiedzi zostają potem umieszczone na OpenStreetMap w Twoim imieniu
 
 W przeciwnym wypadku możesz ściągnąć dodatkowe aplikacje klawiatury ze sklepu z aplikacjami. Popularne klawiatury, które wspierają wiele języków, to Google Gboard, SwiftKey Keyboard oraz Multiling O Keyboard."</string>
     <string name="quest_streetName_menuItem_nolanguage">"(nieokreślony)"</string>
+    <string name="quest_fireHydrant_type_title">"Jaki to rodzaj hydrantu?"</string>
+    <string name="quest_fireHydrant_type_pillar">"Naziemny"</string>
+    <string name="quest_fireHydrant_type_underground">"Podziemny"</string>
+    <string name="quest_fireHydrant_type_wall">"Wewnętrzny"</string>
+    <string name="quest_fireHydrant_type_pond">"Staw"</string>
+    <string name="credits_contributors">"Zobacz &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;pełną listę na GitHubie&lt;/a&gt;."</string>
+    <string name="credits_translations">"Zobacz pełną listę w &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;projekcie na POEditor&lt;/a&gt;"</string>
+    <string name="credits_translations_title">"Tłumaczenia"</string>
+    <string name="credits_contributors_title">"Współtwórcy"</string>
+    <string name="credits_author_title">"Autor i opiekun"</string>
+    <string name="credits_and_more">"i inni..."</string>
+    <string name="quest_maxspeed_answer_living_street">"Jest to droga w strefie zamieszkania"</string>
+    <string name="quest_maxspeed_answer_living_street_confirmation_title">"Czyli jest tu taki znak?"</string>
+    <string name="quest_orchard_produce_title">"Co się tutaj uprawia?"</string>
+    <string name="produce_grapes">"Winogrona"</string>
+    <string name="produce_agaves">"Agawy"</string>
+    <string name="produce_almonds">"Migdały"</string>
+    <string name="produce_apples">"Jabłka"</string>
+    <string name="produce_apricots">"Morele"</string>
+    <string name="produce_avocados">"Awokado"</string>
+    <string name="produce_bananas">"Banany"</string>
+    <string name="produce_blueberries">"Jagody"</string>
+    <string name="produce_cacao">"Kakaowce"</string>
+    <string name="produce_cashew_nuts">"Orzechy nerkowca"</string>
+    <string name="produce_cherries">"Wiśnie"</string>
+    <string name="produce_chestnuts">"Kasztany"</string>
+    <string name="produce_coconuts">"Kokosy"</string>
+    <string name="produce_coffee">"Kawę"</string>
+    <string name="produce_cranberries">"Żurawina"</string>
+    <string name="produce_dates">"Daktyle"</string>
+    <string name="produce_figs">"Figi"</string>
+    <string name="produce_grapefruits">"Grejpfruty"</string>
+    <string name="produce_guavas">"Gujawę"</string>
+    <string name="produce_hazelnuts">"Orzechy laskowe"</string>
+    <string name="produce_hops">"Chmiel"</string>
+    <string name="produce_jojoba">"Jojoba"</string>
+    <string name="produce_kiwis">"Kiwi"</string>
+    <string name="produce_kola_nuts">"Kolę"</string>
+    <string name="produce_lemons">"Cytryny"</string>
+    <string name="produce_limes">"Limonki"</string>
+    <string name="produce_mangos">"Mango"</string>
+    <string name="produce_mate">"Ostrokrzew"</string>
+    <string name="produce_nutmeg">"Gałkę muszkatołowa"</string>
+    <string name="produce_oil_palms">"Palmy olejowe"</string>
+    <string name="produce_olives">"Oliwki"</string>
+    <string name="produce_oranges">"Pomarańcze"</string>
+    <string name="produce_papayas">"Papaje"</string>
+    <string name="produce_peaches">"Brzoskwinie"</string>
+    <string name="produce_pears">"Gruszki"</string>
+    <string name="produce_chili">"Chilli"</string>
+    <string name="produce_persimmons">"Hurmy"</string>
+    <string name="produce_pineapples">"Ananasy"</string>
+    <string name="produce_pepper">"Papryki"</string>
+    <string name="produce_pistachios">"Pistacje"</string>
+    <string name="produce_plums">"Śliwki"</string>
+    <string name="produce_raspberries">"Maliny"</string>
+    <string name="produce_rubber">"Kauczukowce"</string>
+    <string name="produce_strawberries">"Truskawki"</string>
+    <string name="produce_tea">"Herbata"</string>
+    <string name="produce_vanilla">"Wanilia"</string>
+    <string name="produce_walnuts">"Orzechy włoskie"</string>
+    <string name="produce_sisal">"Agawy sizalowe"</string>
 </resources>

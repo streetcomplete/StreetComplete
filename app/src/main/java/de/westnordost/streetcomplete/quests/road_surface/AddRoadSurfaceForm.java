@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 
 import java.util.Arrays;
 
-import de.westnordost.osmapi.map.data.OsmElement;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
 import de.westnordost.streetcomplete.view.GroupedImageSelectAdapter;
@@ -61,9 +60,8 @@ public class AddRoadSurfaceForm extends AbstractQuestFormAnswerFragment
 
 	private void setTitle()
 	{
-		OsmElement element = getOsmElement();
-		String name = element != null && element.getTags() != null ? element.getTags().get("name") : null;
-		if(name != null && !name.trim().isEmpty())
+		String name = getElementName();
+		if(name != null)
 		{
 			setTitle(R.string.quest_streetSurface_name_title, name);
 		}

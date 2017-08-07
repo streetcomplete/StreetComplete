@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <selector xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item app:compass_mode="true" android:drawable="@drawable/ic_compass_black_24dp"/>
     <item app:state_updating="true" android:drawable="@drawable/ic_location_black_24dp"/>
     <item app:state_searching="true" android:drawable="@drawable/ic_location_searching_black_24dp"/>
     <item app:state_enabled="true" android:drawable="@drawable/ic_location_nolocation_black_24dp"/>

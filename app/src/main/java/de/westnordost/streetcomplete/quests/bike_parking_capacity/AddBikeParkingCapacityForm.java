@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
@@ -35,7 +34,8 @@ public class AddBikeParkingCapacityForm extends AbstractQuestFormAnswerFragment
 		Bundle answer = new Bundle();
 		String bikeCapacityString = capacityInput.getText().toString();
 
-		if(hasChanges()) {
+		if(hasChanges())
+		{
 			int bikeCapacity = Integer.parseInt(bikeCapacityString);
 			answer.putInt(BIKE_PARKING_CAPACITY, bikeCapacity);
 		}

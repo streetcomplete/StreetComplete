@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import de.westnordost.osmapi.map.data.OsmElement;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment;
 
@@ -21,9 +20,8 @@ public class TactilePavingBusStopForm extends YesNoQuestAnswerFragment
 
 	private void setTitle()
 	{
-		OsmElement element = getOsmElement();
-		String name = element != null && element.getTags() != null ? element.getTags().get("name") : null;
-		if(name != null && !name.trim().isEmpty())
+		String name = getElementName();
+		if(name != null)
 		{
 			setTitle(R.string.quest_tactilePaving_title_name_bus, name);
 		}

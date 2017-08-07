@@ -261,6 +261,12 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
 	<string name="quest_toiletsFee_title">"Do these toilets require a fee?"</string>
     <string name="quest_baby_changing_table_toilets_title">"Does this toilet have a baby changing table?"</string>
     <string name="quest_baby_changing_table_title">"Does \"%s\" have a baby changing table?"</string>
+    <string name="quest_way_lit_title">"Is this section of way lit?"</string>
+    <string name="quest_way_lit_named_title">"Is \"%s\" lit here?"</string>
+    <string name="quest_way_lit_road_title">"Is this section of road lit?"</string>
+    <string name="quest_way_lit_named_road_title">"Is \"%s\" road lit here?"</string>
+    <string name="quest_way_lit_automatic">"It uses motion detection"</string>
+    <string name="quest_way_lit_24_7">"It's lit night and day"</string>
     <string name="quest_tactilePaving_title_bus">"Does this bus stop have tactile pavings?"</string>
     <string name="quest_tactilePaving_title_crosswalk">"Does this crosswalk have tactile pavings?"</string>
     <string name="quest_source_dialog_title">Are you sure you checked this on-site?</string>
@@ -315,6 +321,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="credits_and_more">and more …</string>
     <string name="quest_maxspeed_answer_living_street">It is a living street</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">So, there is a sign like this?</string>
+    <string name="compass_north_one_letter">N</string>
     <string name="quest_orchard_produce_title">What is being cultivated here?</string>
     <string name="produce_grapes">Grapes</string>
     <string name="produce_agaves">Agaves</string>

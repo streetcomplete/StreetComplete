@@ -17,6 +17,8 @@ import de.westnordost.streetcomplete.quests.bus_stop_shelter.AddBusStopShelter;
 import de.westnordost.streetcomplete.quests.fire_hydrant.AddFireHydrantType;
 import de.westnordost.streetcomplete.quests.orchard_produce.AddOrchardProduce;
 import de.westnordost.streetcomplete.quests.recycling.AddRecyclingType;
+import de.westnordost.streetcomplete.quests.road_name.data.PutRoadNameSuggestionsHandler;
+import de.westnordost.streetcomplete.quests.road_name.data.RoadNameSuggestionsDao;
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingBusStop;
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingCrosswalk;
 import de.westnordost.streetcomplete.quests.toilets_fee.AddToiletsFee;
@@ -27,38 +29,51 @@ import de.westnordost.streetcomplete.quests.road_name.AddRoadName;
 import de.westnordost.streetcomplete.quests.road_surface.AddRoadSurface;
 import de.westnordost.streetcomplete.quests.roof_shape.AddRoofShape;
 import de.westnordost.streetcomplete.quests.sport.AddSport;
+import de.westnordost.streetcomplete.quests.way_lit.AddWayLit;
 import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelChairAccessPublicTransport;
 import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAccessBusiness;
 
 @Module
 public class QuestModule
 {
-	@Provides @Singleton public static QuestTypes questTypeList(OverpassMapDataDao o)
+	@Provides @Singleton public static QuestTypes questTypeList(
+			OverpassMapDataDao o, RoadNameSuggestionsDao roadNameSuggestionsDao, PutRoadNameSuggestionsHandler
+			putRoadNameSuggestionsHandler)
 	{
-		QuestType[] questTypes = {
-				new AddRoadName(o),
-				new AddOpeningHours(o),
-				new AddBuildingLevels(o),
-				new AddRoofShape(o),
-				// new AddPlaceName(), doesn't make sense as long as the app cannot tell the generic name of elements
+		QuestType[] questTypesOrderedByImportance = {
+				// ↓ reserved for notes
+				// ...
+				// ↓ may be shown as missing in QA tools
+				new AddRoadName(o, roadNameSuggestionsDao, putRoadNameSuggestionsHandler),
+				// ↓ may be shown as possibly missing in QA tools
+				new AddHousenumber(o),
+				// new AddPlaceName(o), doesn't make sense as long as the app cannot tell the generic name of elements
+				new AddRecyclingType(o),
+				// ↓ important data that is used by many data consumers
+				new AddMaxSpeed(o),
 				new AddRoadSurface(o),
+				new AddOpeningHours(o),
+				// ↓ useful data that is used by some data consumers
+				new AddSport(o),
+				new AddBuildingLevels(o),
+				// ↓ data useful for only a specific use case
+				new AddRoofShape(o),
+				new AddWheelChairAccessPublicTransport(o),
+				new AddTactilePavingBusStop(o),
+				new AddTactilePavingCrosswalk(o),
+				new AddWheelchairAccessBusiness(o),
+				// ↓ defined in the wiki, but not really used by anyone yet. Just collected for the
+				//   sake of mapping it in case it makes sense later
+				new AddBikeParkingCapacity(o),
+				new AddBikeParkingCover(o),
 				new AddBusStopShelter(o),
 				new AddToiletsFee(o),
 				new AddBabyChangingTable(o),
 				new AddFireHydrantType(o),
-				new AddHousenumber(o),
-				new AddBikeParkingCapacity(o),
-				new AddSport(o),
-				new AddMaxSpeed(o),
-				new AddBikeParkingCover(o),
-				new AddTactilePavingBusStop(o),
-				new AddTactilePavingCrosswalk(o),
-				new AddWheelchairAccessBusiness(o),
-				new AddWheelChairAccessPublicTransport(o),
-				new AddRecyclingType(o),
+				new AddWayLit(o)
 				new AddOrchardProduce(o)
 		};
 
-		return new QuestTypes(Arrays.asList(questTypes));
+		return new QuestTypes(Arrays.asList(questTypesOrderedByImportance));
 	}
 }

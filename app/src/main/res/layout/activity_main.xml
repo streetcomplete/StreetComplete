@@ -11,7 +11,9 @@
         android:id="@+id/map_fragment"
         android:name="de.westnordost.streetcomplete.tangram.QuestsMapFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_below="@+id/topPanel"
+        android:layout_marginTop="-8dp"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -52,6 +54,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/topPanel"
         android:orientation="vertical">
         <!-- the toolbar somehow always wants to be in front in its layout, so let's ban it into
              a sub frame layout -->

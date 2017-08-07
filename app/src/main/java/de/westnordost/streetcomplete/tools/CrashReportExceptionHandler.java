@@ -21,6 +21,7 @@ import java.util.Arrays;
 import javax.inject.Inject;
 
 import de.westnordost.streetcomplete.ApplicationConstants;
+import de.westnordost.streetcomplete.BuildConfig;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 
@@ -111,8 +112,9 @@ public class CrashReportExceptionHandler implements Thread.UncaughtExceptionHand
 		StringWriter stackTrace = new StringWriter();
 		e.printStackTrace(new PrintWriter(stackTrace));
 		writeCrashReportToFile(
-				getThreadString(t) +
-				"\nStack trace:\n" + stackTrace.toString());
+				getThreadString(t) + "\n" +
+				"App version: " + BuildConfig.VERSION_NAME + "\n" +
+				"Stack trace:\n" + stackTrace.toString());
 		defaultUncaughtExceptionHandler.uncaughtException(t, e);
 	}
 

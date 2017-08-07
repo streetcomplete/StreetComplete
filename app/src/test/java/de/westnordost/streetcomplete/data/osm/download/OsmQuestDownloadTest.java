@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.osm.download;
 
-import android.graphics.Rect;
 import android.os.Bundle;
 
 import junit.framework.TestCase;
@@ -46,14 +45,12 @@ public class OsmQuestDownloadTest extends TestCase
 {
 	private ElementGeometryDao geometryDb;
 	private MergedElementDao elementDb;
-	private DownloadedTilesDao downloadedTilesDao;
 	private OsmQuestDao osmQuestDao;
 
 	@Override public void setUp()
 	{
 		geometryDb = mock(ElementGeometryDao.class);
 		elementDb = mock(MergedElementDao.class);
-		downloadedTilesDao = mock(DownloadedTilesDao.class);
 		osmQuestDao = mock(OsmQuestDao.class);
 	}
 
@@ -73,12 +70,12 @@ public class OsmQuestDownloadTest extends TestCase
 
 		setUpOsmQuestDaoMockWithNoPreviousElements();
 
-		OsmQuestDownload dl = new OsmQuestDownload(geometryDb, elementDb, osmQuestDao, downloadedTilesDao);
+		OsmQuestDownload dl = new OsmQuestDownload(geometryDb, elementDb, osmQuestDao);
 
 		VisibleQuestListener listener = mock(VisibleQuestListener.class);
 		dl.setQuestListener(listener);
 
-		assertEquals(0,dl.download(questType, new Rect(0,0,1,1), Collections.singleton(blacklistPos)));
+		dl.download(questType, new BoundingBox(0,0,1,1), Collections.singleton(blacklistPos));
 
 		verify(listener, times(0)).onQuestsCreated(any(Collection.class), any(QuestGroup.class));
 	}
@@ -116,13 +113,13 @@ public class OsmQuestDownloadTest extends TestCase
 			}
 		}).when(osmQuestDao).deleteAll(any(Collection.class));
 
-		OsmQuestDownload dl = new OsmQuestDownload(geometryDb, elementDb, osmQuestDao, downloadedTilesDao);
+		OsmQuestDownload dl = new OsmQuestDownload(geometryDb, elementDb, osmQuestDao);
 
 		VisibleQuestListener listener = mock(VisibleQuestListener.class);
 		dl.setQuestListener(listener);
 
 		// -> we expect that quest with node #5 is removed
-		dl.download(questType, new Rect(0,0,1,1), null);
+		dl.download(questType, new BoundingBox(0,0,1,1), null);
 
 		verify(osmQuestDao).deleteAll(any(Collection.class));
 		verify(listener).onQuestsRemoved(any(Collection.class), any(QuestGroup.class));
@@ -152,7 +149,6 @@ public class OsmQuestDownloadTest extends TestCase
 			this.list = list;
 		}
 
-		@Override public int importance() { return 0; }
 		@Override public AbstractQuestAnswerFragment createForm() { return null; }
 		@Override public String getIconName() { return null; }
 		@Override public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes) {}

@@ -5,11 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import de.westnordost.osmapi.map.data.OsmElement;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment;
 
-public class AddBabyChangingTableFragment extends YesNoQuestAnswerFragment
+public class AddBabyChangingTableForm extends YesNoQuestAnswerFragment
 {
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
@@ -20,8 +19,8 @@ public class AddBabyChangingTableFragment extends YesNoQuestAnswerFragment
 
 	private void setTitle()
 	{
-		String name = getName(getOsmElement());
-		if(name != null && !name.trim().isEmpty())
+		String name = getElementName();
+		if(name != null)
 		{
 			setTitle(R.string.quest_baby_changing_table_title, name);
 		}
@@ -29,10 +28,5 @@ public class AddBabyChangingTableFragment extends YesNoQuestAnswerFragment
 		{
 			setTitle(R.string.quest_baby_changing_table_toilets_title);
 		}
-	}
-
-	private String getName(OsmElement element)
-	{
-		return element != null && element.getTags() != null ? element.getTags().get("name") : null;
 	}
 }

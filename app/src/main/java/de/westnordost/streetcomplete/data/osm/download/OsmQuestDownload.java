@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.osm.download;
 
-import android.graphics.Rect;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -13,7 +12,6 @@ import java.util.Set;
 
 import javax.inject.Inject;
 
-import de.westnordost.streetcomplete.ApplicationConstants;
 import de.westnordost.streetcomplete.data.QuestGroup;
 import de.westnordost.streetcomplete.data.QuestType;
 import de.westnordost.streetcomplete.data.VisibleQuestListener;
@@ -24,8 +22,6 @@ import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao;
 import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
 import de.westnordost.streetcomplete.data.osm.persist.OsmElementKey;
-import de.westnordost.streetcomplete.data.tiles.DownloadedTilesDao;
-import de.westnordost.streetcomplete.util.SlippyMapMath;
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.map.data.LatLon;
@@ -39,20 +35,17 @@ public class OsmQuestDownload
 	private final ElementGeometryDao geometryDB;
 	private final MergedElementDao elementDB;
 	private final OsmQuestDao osmQuestDB;
-	private final DownloadedTilesDao downloadedTilesDao;
 
 	// listener
 	private VisibleQuestListener questListener;
 
 	@Inject public OsmQuestDownload(
 			ElementGeometryDao geometryDB,
-			MergedElementDao elementDB, OsmQuestDao osmQuestDB,
-			DownloadedTilesDao downloadedTilesDao)
+			MergedElementDao elementDB, OsmQuestDao osmQuestDB)
 	{
 		this.geometryDB = geometryDB;
 		this.elementDB = elementDB;
 		this.osmQuestDB = osmQuestDB;
-		this.downloadedTilesDao = downloadedTilesDao;
 	}
 
 	public void setQuestListener(VisibleQuestListener listener)
@@ -60,16 +53,15 @@ public class OsmQuestDownload
 		this.questListener = listener;
 	}
 
-	public int download(final OsmElementQuestType questType, Rect tiles,
+	public boolean download(final OsmElementQuestType questType, BoundingBox bbox,
 						  final Set<LatLon> blacklistedPositions)
 	{
-		BoundingBox bbox = SlippyMapMath.asBoundingBox(tiles, ApplicationConstants.QUEST_TILE_ZOOM);
-
 		final ArrayList<ElementGeometryDao.Row> geometryRows = new ArrayList<>();
 		final Map<OsmElementKey,Element> elements = new HashMap<>();
 		final ArrayList<OsmQuest> quests = new ArrayList<>();
 		final Map<OsmElementKey, Long> previousQuests = getPreviousQuestsIdsByElementKey(questType, bbox);
 
+		long time = System.currentTimeMillis();
 		boolean success = questType.download(bbox, new MapDataWithGeometryHandler()
 		{
 			@Override public void handle(@NonNull Element element, @Nullable ElementGeometry geometry)
@@ -90,7 +82,7 @@ public class OsmQuestDownload
 				}
 			}
 		});
-		if(!success) return 0;
+		if(!success) return false;
 
 		// geometry and elements must be put into DB first because quests have foreign keys on it
 		geometryDB.putAll(geometryRows);
@@ -124,16 +116,14 @@ public class OsmQuestDownload
 		geometryDB.deleteUnreferenced();
 		elementDB.deleteUnreferenced();
 
-		downloadedTilesDao.put(tiles, getQuestTypeName(questType));
-
-		int visibleQuestsByQuestType = quests.size();
 		int obsoleteAmount = previousQuests.size();
 		Log.i(TAG, getQuestTypeName(questType) + ": " +
 				"Added " + newQuestsByQuestType + " new and " +
 				"removed " + obsoleteAmount + " already resolved quests." +
-				" (Total: " + visibleQuestsByQuestType + ")");
+				" (Total: " + quests.size() + ")" +
+				" in " + (System.currentTimeMillis() - time) + "ms");
 
-		return visibleQuestsByQuestType;
+		return true;
 	}
 
 	private Map<OsmElementKey, Long> getPreviousQuestsIdsByElementKey(

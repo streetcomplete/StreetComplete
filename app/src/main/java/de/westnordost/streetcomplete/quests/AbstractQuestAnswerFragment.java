@@ -10,6 +10,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.annotation.UiThread;
 import android.support.design.widget.BottomSheetBehavior;
 import android.view.LayoutInflater;
@@ -27,16 +28,24 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import javax.inject.Inject;
+
+import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.map.data.OsmElement;
+import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.QuestGroup;
 import de.westnordost.streetcomplete.data.meta.CountryInfo;
+import de.westnordost.streetcomplete.data.meta.CountryInfos;
+import de.westnordost.streetcomplete.data.osm.ElementGeometry;
 import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 
 /** Abstract base class for any dialog with which the user answers a specific quest(ion) */
 public abstract class AbstractQuestAnswerFragment extends Fragment
 {
-	public static final String ARG_ELEMENT = "element", ARG_COUNTRY_INFO = "countryInfo";
+	public static final String ARG_ELEMENT = "element", ARG_GEOMETRY = "geometry";
+
+	@Inject CountryInfos countryInfos;
 
 	private int titleTextResId = -1;
 	private Object[] titleTextFormatArgs;
@@ -53,22 +62,27 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 
 	private ImageButton buttonClose;
 
-	private CountryInfo countryInfo;
 	private OsmElement osmElement;
+	private ElementGeometry elementGeometry;
+	private CountryInfo countryInfo;
+
+	private List<OtherAnswer> otherAnswers;
 
 	public AbstractQuestAnswerFragment()
 	{
 		super();
+		Injector.instance.getApplicationComponent().inject(this);
 		questAnswerComponent = new QuestAnswerComponent();
+		otherAnswers = new ArrayList<>();
 	}
-
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState)
 	{
 		osmElement = (OsmElement) getArguments().getSerializable(ARG_ELEMENT);
-		countryInfo = (CountryInfo) getArguments().getSerializable(ARG_COUNTRY_INFO);
+		elementGeometry = (ElementGeometry) getArguments().getSerializable(ARG_GEOMETRY);
+		countryInfo = null;
 
 		View view = inflater.inflate(R.layout.quest_answer_fragment, container, false);
 
@@ -116,19 +130,31 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 			}
 		});
 
-		final List<Integer> otherAnswers = getOtherAnswerResourceIds();
-		if(otherAnswers.isEmpty())
+		addOtherAnswer(R.string.quest_generic_answer_notApplicable, new Runnable()
 		{
-			buttonOtherAnswers.setVisibility(View.INVISIBLE);
-		}
-		else if(otherAnswers.size() == 1)
+			@Override public void run()
+			{
+				onClickCantSay();
+			}
+		});
+
+		content = (ViewGroup) view.findViewById(R.id.content);
+
+		return view;
+	}
+
+	@Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState)
+	{
+		super.onViewCreated(view, savedInstanceState);
+
+		if(otherAnswers.size() == 1)
 		{
-			buttonOtherAnswers.setText(otherAnswers.get(0));
+			buttonOtherAnswers.setText(otherAnswers.get(0).titleResourceId);
 			buttonOtherAnswers.setOnClickListener(new View.OnClickListener()
 			{
 				@Override public void onClick(View v)
 				{
-					onClickOtherAnswer(otherAnswers.get(0));
+					otherAnswers.get(0).action.run();
 				}
 			});
 		}
@@ -142,8 +168,9 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 					PopupMenu popup = new PopupMenu(getActivity(), buttonOtherAnswers);
 					for(int i = 0; i<otherAnswers.size(); ++i)
 					{
-						int otherAnswer = otherAnswers.get(i);
-						popup.getMenu().add(Menu.NONE, otherAnswer, otherAnswers.size()-i, otherAnswer);
+						OtherAnswer otherAnswer = otherAnswers.get(i);
+						int order = otherAnswers.size()-i;
+						popup.getMenu().add(Menu.NONE, i, order, otherAnswer.titleResourceId);
 					}
 					popup.show();
 
@@ -151,16 +178,13 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 					{
 						@Override public boolean onMenuItemClick(MenuItem item)
 						{
-							return onClickOtherAnswer(item.getItemId());
+							otherAnswers.get(item.getItemId()).action.run();
+							return true;
 						}
 					});
 				}
 			});
 		}
-
-		content = (ViewGroup) view.findViewById(R.id.content);
-
-		return view;
 	}
 
 	private void updateCloseButtonVisibility()
@@ -192,21 +216,15 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 		questAnswerComponent.onAttach((OsmQuestAnswerListener) activity);
 	}
 
-	protected List<Integer> getOtherAnswerResourceIds()
+	protected final String getElementName()
 	{
-		List<Integer> answers = new ArrayList<>();
-		answers.add(R.string.quest_generic_answer_notApplicable);
-		return answers;
-	}
-
-	protected boolean onClickOtherAnswer(int itemResourceId)
-	{
-		if(itemResourceId == R.string.quest_generic_answer_notApplicable)
-		{
-			onClickCantSay();
-			return true;
+		OsmElement element = getOsmElement();
+		String name = element.getTags() != null ? element.getTags().get("name") : null;
+		if ((name == null) || name.trim().isEmpty()) {
+			return null;
+		} else {
+			return name.trim();
 		}
-		return false;
 	}
 
 	protected final void onClickCantSay()
@@ -318,8 +336,32 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 		return osmElement;
 	}
 
+	protected final ElementGeometry getElementGeometry()
+	{
+		return elementGeometry;
+	}
+
 	protected final CountryInfo getCountryInfo()
 	{
+		// cache it
+		if(countryInfo != null) return countryInfo;
+
+		LatLon latLon = elementGeometry.center;
+		countryInfo = countryInfos.get(latLon.getLongitude(), latLon.getLatitude());
 		return countryInfo;
+	}
+
+	protected final void addOtherAnswer(int titleResourceId, Runnable action)
+	{
+		OtherAnswer oa = new OtherAnswer();
+		oa.titleResourceId = titleResourceId;
+		oa.action = action;
+		otherAnswers.add(oa);
+	}
+
+	private class OtherAnswer
+	{
+		int titleResourceId;
+		Runnable action;
 	}
 }

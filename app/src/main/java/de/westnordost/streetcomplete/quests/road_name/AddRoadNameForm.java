@@ -14,35 +14,43 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Queue;
 
 import javax.inject.Inject;
 
+import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.meta.Abbreviations;
 import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale;
+import de.westnordost.streetcomplete.data.osm.ElementGeometry;
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
+import de.westnordost.streetcomplete.quests.road_name.data.RoadNameSuggestionsDao;
 import de.westnordost.streetcomplete.util.Serializer;
 import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 
 public class AddRoadNameForm extends AbstractQuestFormAnswerFragment
 {
-	private static final String	ROAD_NAMES_DATA = "oh_data";
+	private static final String	ROAD_NAMES_DATA = "road_names_data";
 
 	public static final String
 			NO_NAME = "no_name",
 			NO_PROPER_ROAD = "no_proper_road",
 			NAMES = "names",
-			LANGUAGE_CODES = "language_codes";
+			LANGUAGE_CODES = "language_codes",
+			WAY_ID = "way_id",
+			WAY_GEOMETRY = "way_geometry";
 
 	public static final int IS_SERVICE = 1, IS_LINK = 2, IS_TRACK = 3;
 
 	@Inject AbbreviationsByLocale abbreviationsByLocale;
+	@Inject RoadNameSuggestionsDao roadNameSuggestionsDao;
 	@Inject Serializer serializer;
 
 	private AddRoadNameAdapter adapter;
@@ -58,6 +66,40 @@ public class AddRoadNameForm extends AbstractQuestFormAnswerFragment
 		setTitle(R.string.quest_streetName_title);
 		View contentView = setContentView(R.layout.quest_roadname);
 
+		addOtherAnswers();
+
+		initRoadNameAdapter(contentView, savedInstanceState);
+
+		return view;
+	}
+
+	private void addOtherAnswers()
+	{
+		addOtherAnswer(R.string.quest_name_answer_noName, new Runnable()
+		{
+			@Override public void run()
+			{
+				confirmNoStreetName();
+			}
+		});
+		addOtherAnswer(R.string.quest_streetName_answer_noProperStreet, new Runnable()
+		{
+			@Override public void run()
+			{
+				selectNoProperStreetWhatThen();
+			}
+		});
+		addOtherAnswer(R.string.quest_streetName_answer_cantType, new Runnable()
+		{
+			@Override public void run()
+			{
+				showKeyboardInfo();
+			}
+		});
+	}
+
+	private void initRoadNameAdapter(View contentView, Bundle savedInstanceState)
+	{
 		ArrayList<RoadName> data;
 		if(savedInstanceState != null)
 		{
@@ -69,15 +111,28 @@ public class AddRoadNameForm extends AbstractQuestFormAnswerFragment
 		}
 
 		Button addLanguageButton = (Button) contentView.findViewById(R.id.btn_add);
+
 		adapter = new AddRoadNameAdapter(
 				data, getActivity(), getPossibleStreetsignLanguages(),
-				abbreviationsByLocale, addLanguageButton);
+				abbreviationsByLocale, getRoadnameSuggestions(), addLanguageButton);
 		RecyclerView recyclerView = (RecyclerView) contentView.findViewById(R.id.roadnames);
 		recyclerView.setLayoutManager(
 				new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
 		recyclerView.setAdapter(adapter);
 		recyclerView.setNestedScrollingEnabled(false);
-		return view;
+	}
+
+	private List<Map<String, String>> getRoadnameSuggestions()
+	{
+		ElementGeometry geometry = getElementGeometry();
+		if(geometry == null || geometry.polylines == null || geometry.polylines.isEmpty())
+		{
+			return new ArrayList<>();
+		}
+		List<LatLon> points = geometry.polylines.get(0);
+		List<LatLon> onlyFirstAndLast = Arrays.asList(points.get(0), points.get(points.size()-1));
+
+		return roadNameSuggestionsDao.getNames(onlyFirstAndLast, AddRoadName.MAX_DIST_FOR_ROAD_NAME_SUGGESTION);
 	}
 
 	private List<String> getPossibleStreetsignLanguages()
@@ -111,7 +166,7 @@ public class AddRoadNameForm extends AbstractQuestFormAnswerFragment
 			Abbreviations abbr = abbreviationsByLocale.get(new Locale(roadName.languageCode));
 			boolean containsAbbreviations = abbr != null && abbr.containsAbbreviations(name);
 
-			if(name.contains(".") || containsAbbreviations)
+			if (name.contains(".") || containsAbbreviations)
 			{
 				possibleAbbreviations.add(name);
 			}
@@ -124,35 +179,6 @@ public class AddRoadNameForm extends AbstractQuestFormAnswerFragment
 				applyNameAnswer();
 			}
 		});
-	}
-
-	@Override protected List<Integer> getOtherAnswerResourceIds()
-	{
-		List<Integer> answers = super.getOtherAnswerResourceIds();
-		answers.add(R.string.quest_name_answer_noName);
-		answers.add(R.string.quest_streetName_answer_noProperStreet);
-		answers.add(R.string.quest_streetName_answer_cantType);
-		return answers;
-	}
-
-	@Override protected boolean onClickOtherAnswer(int itemResourceId)
-	{
-		if(super.onClickOtherAnswer(itemResourceId)) return true;
-
-		if(itemResourceId == R.string.quest_name_answer_noName)
-		{
-			confirmNoStreetName();
-		}
-		else if (itemResourceId == R.string.quest_streetName_answer_noProperStreet)
-		{
-			selectNoProperStreetWhatThen();
-		}
-		else if(itemResourceId == R.string.quest_streetName_answer_cantType)
-		{
-			showKeyboardInfo();
-		}
-
-		return true;
 	}
 
 	private void applyNameAnswer()
@@ -170,6 +196,8 @@ public class AddRoadNameForm extends AbstractQuestFormAnswerFragment
 
 		bundle.putStringArray(NAMES, names);
 		bundle.putStringArray(LANGUAGE_CODES, languageCodes);
+		bundle.putLong(WAY_ID, getOsmElement().getId());
+		bundle.putSerializable(WAY_GEOMETRY, getElementGeometry());
 		applyFormAnswer(bundle);
 	}
 

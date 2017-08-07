@@ -19,7 +19,7 @@ public class ApplicationDbTestCase extends AndroidDbTestCase
 	{
 		super.setUp();
 		serializer = new KryoSerializer();
-		dbHelper = new StreetCompleteOpenHelper(getContext());
+		dbHelper = DbModule.sqliteOpenHelper(getContext());
 	}
 
 	@Override public void tearDown()

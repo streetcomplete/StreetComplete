@@ -2,6 +2,10 @@ package de.westnordost.streetcomplete.util;
 
 import junit.framework.TestCase;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.map.data.OsmLatLon;
@@ -68,6 +72,21 @@ public class SphericalEarthMathTest extends TestCase
 
 		assertEquals(225, Math.round(SphericalEarthMath.bearing(pos, bbox.getMin())));
 		assertEquals(45, Math.round(SphericalEarthMath.bearing(pos, bbox.getMax())));
+	}
+
+	public void testEnclosingBoundingBoxLine()
+	{
+		List<LatLon> positions = new ArrayList<>();
+		positions.add(new OsmLatLon(-4, 0));
+		positions.add(new OsmLatLon(12, 3));
+		positions.add(new OsmLatLon(1, 16));
+		positions.add(new OsmLatLon(0, -6));
+
+		BoundingBox bbox = SphericalEarthMath.enclosingBoundingBox(positions);
+		assertEquals(-4.0, bbox.getMinLatitude());
+		assertEquals(12.0, bbox.getMaxLatitude());
+		assertEquals(16.0, bbox.getMaxLongitude());
+		assertEquals(-6.0, bbox.getMinLongitude());
 	}
 
 	public void testTranslateLatitudeNorth()

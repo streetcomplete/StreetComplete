@@ -4,8 +4,6 @@ import android.os.Bundle;
 
 import javax.inject.Inject;
 
-import de.westnordost.streetcomplete.R;
-import de.westnordost.streetcomplete.data.QuestImportance;
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
@@ -25,15 +23,9 @@ public class AddBabyChangingTable extends SimpleOverpassQuestType
 		return "nodes, ways with (((amenity ~ restaurant|cafe|fuel|fast_food or shop ~ mall|department_store) and name and toilets=yes) or amenity=toilets) and !diaper";
 	}
 
-	@Override
-	public int importance()
-	{
-		return QuestImportance.MINOR;
-	}
-
 	public AbstractQuestAnswerFragment createForm()
 	{
-		return new AddBabyChangingTableFragment();
+		return new AddBabyChangingTableForm();
 	}
 
 	public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
