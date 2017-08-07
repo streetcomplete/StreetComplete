@@ -54,6 +54,7 @@ import de.westnordost.streetcomplete.data.download.QuestDownloadProgressListener
 import de.westnordost.streetcomplete.data.download.QuestDownloadService;
 import de.westnordost.streetcomplete.data.QuestGroup;
 import de.westnordost.streetcomplete.data.VisibleQuestListener;
+import de.westnordost.streetcomplete.data.osm.OsmQuest;
 import de.westnordost.streetcomplete.location.LocationRequestFragment;
 import de.westnordost.streetcomplete.location.LocationUtil;
 import de.westnordost.streetcomplete.location.SingleLocationRequest;
@@ -343,10 +344,46 @@ public class MainActivity extends AppCompatActivity implements
 		questController.onDestroy();
 	}
 
+	private MenuItem undoMenuItem;
+
 	@Override public boolean onCreateOptionsMenu(Menu menu)
 	{
 		getMenuInflater().inflate(R.menu.menu_main, menu);
+		for (int i = 0; i < menu.size(); i++)
+		{
+			MenuItem item = menu.getItem(i);
+			if(item.getItemId() == R.id.action_undo)
+			{
+				undoMenuItem = item;
+			}
+		}
 		return true;
+	}
+
+	public boolean onPrepareOptionsMenu(Menu menu) {
+		super.onPrepareOptionsMenu(menu);
+		updateUndoMenuItem();
+		return true;
+	}
+
+	private void updateUndoMenuItem()
+	{
+		undoMenuItem.setEnabled(questController.getLastSolvedOsmQuest() != null);
+	}
+
+	private void confirmUndo(final OsmQuest quest)
+	{
+		new AlertDialogBuilder(this)
+				.setTitle(R.string.undo_confirm_title)
+				.setPositiveButton(R.string.action_undo, new DialogInterface.OnClickListener()
+				{
+					@Override public void onClick(DialogInterface dialog, int which)
+					{
+						questController.undoOsmQuest(quest.getId());
+						answersCounter.undidQuest(quest.getChangesSource());
+					}
+				})
+				.setNegativeButton(android.R.string.cancel, null);
 	}
 
 	@Override public boolean onOptionsItemSelected(MenuItem item)
@@ -355,6 +392,11 @@ public class MainActivity extends AppCompatActivity implements
 
 		switch (id)
 		{
+			case R.id.action_undo:
+				OsmQuest quest = questController.getLastSolvedOsmQuest();
+				if(quest != null) confirmUndo(quest);
+				else              Toast.makeText(this, R.string.no_changes_to_undo, Toast.LENGTH_SHORT).show();
+				return true;
 			case R.id.action_settings:
 				Intent intent = new Intent(this, SettingsActivity.class);
 				startActivity(intent);
@@ -370,7 +412,6 @@ public class MainActivity extends AppCompatActivity implements
 				if(isConnected()) uploadChanges();
 				else              Toast.makeText(this, R.string.offline, Toast.LENGTH_SHORT).show();
 				return true;
-
 		}
 
 		return super.onOptionsItemSelected(item);
@@ -593,6 +634,7 @@ public class MainActivity extends AppCompatActivity implements
 				closeQuestDetailsFor(questId, group);
 				answersCounter.answeredQuest(source);
 				questController.solveQuest(questId, group, answer, source);
+				undoMenuItem.setEnabled(true);
 			}
 		});
 	}

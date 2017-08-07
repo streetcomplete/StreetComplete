@@ -179,6 +179,48 @@ public class QuestController
 		}});
 	}
 
+	public OsmQuest getLastSolvedOsmQuest()
+	{
+		return osmQuestDB.getLastSolved();
+	}
+
+	public void undoOsmQuest(final long questId)
+	{
+		workerHandler.post(new Runnable() { @Override public void run()
+		{
+			OsmQuest quest = osmQuestDB.get(questId);
+			if(quest == null) return;
+
+			if(quest.getStatus() == QuestStatus.ANSWERED)
+			{
+				quest.setStatus(QuestStatus.NEW);
+				quest.setChanges(null, null);
+				osmQuestDB.update(quest);
+				// inform relay that the quest is visible again
+				Element element = osmElementDB.get(quest.getElementType(), quest.getElementId());
+				relay.onQuestCreated(quest, QuestGroup.OSM, element);
+			}
+			else if(quest.getStatus() == QuestStatus.CLOSED)
+			{
+				OsmQuest reversedQuest = new OsmQuest(
+						quest.getOsmElementQuestType(),
+						quest.getElementType(),
+						quest.getElementId(),
+						quest.getGeometry());
+				reversedQuest.setChanges(quest.getChanges().reversed(), quest.getChangesSource());
+				reversedQuest.setStatus(QuestStatus.ANSWERED);
+				reversedQuest.setIsUndo(true);
+				osmQuestDB.add(reversedQuest);
+				// already uploaded quests are not undone in a way that they are displayed again
+				// right away because this'd lead to conflicts in the upload process
+			}
+			else
+			{
+				throw new IllegalStateException("Tried to undo a quest that hasn't been answered yet");
+			}
+		}});
+	}
+
 	private boolean solveOsmNoteQuest(long questId, Bundle answer)
 	{
 		OsmNoteQuest q = osmNoteQuestDB.get(questId);

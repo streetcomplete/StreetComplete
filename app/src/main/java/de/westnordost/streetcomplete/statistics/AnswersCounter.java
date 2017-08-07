@@ -48,6 +48,12 @@ public class AnswersCounter extends android.support.v7.widget.AppCompatTextView
 		updateText();
 	}
 
+	public void undidQuest(String source)
+	{
+		answeredQuests--;
+		updateText();
+	}
+
 	public void update()
 	{
 		new AsyncTask<Void, Void, Void>()
