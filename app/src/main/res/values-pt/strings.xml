@@ -71,9 +71,7 @@
     <string name="no_location_permission_warning">"A sua localização é necessária para procurar novos desafios na sua área favorita"</string>
     <string name="action_about">"Acerca do StreetComplete"</string>
     <string name="about_title_version">"Versão"</string>
-
-    <!-- Fuzzy -->
-    <string name="about_title_authors">"Autores"</string>
+    <string name="about_title_authors">"Créditos"</string>
     <string name="about_summary_authors">"© 2016–2017 Tobias Zwick e contribuidores"</string>
     <string name="about_title_repository">"Fonte do repositório"</string>
     <string name="about_summary_repository">"no GitHub"</string>
@@ -249,9 +247,7 @@ A informação que submeter na app é adicionada directamente ao OpenStreetMap c
     <string name="quest_source_dialog_note">"Apenas informação que foi recolhida durante um levantamento deve ser adicionada."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Este estacionamento para bicicletas é coberto (protecção da chuva)?"</string>
     <string name="dialog_session_dont_show_again">"Não mostrar de novo nesta sessão"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetSurface_name_title">"Qual o tipo de superfície que a estrada %s possui?"</string>
+    <string name="quest_streetSurface_name_title">"Que tipo de superfície a estrada %s possui?"</string>
     <string name="quest_maxspeed_title_short">"Qual é o limite de velocidade nesta rua?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Este limite de velocidade não é plaúsivel"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Tem a certeza do limite?"</string>
@@ -299,4 +295,66 @@ A informação que submeter na app é adicionada directamente ao OpenStreetMap c
 
 Caso contrário, pode fazer o download de outro teclado na loja de apps. Alguns teclados populares e que suportam vários idiomas são Google Gboard, SwiftKey Keyboard e Multiling O Keyboard"</string>
     <string name="quest_streetName_menuItem_nolanguage">"(não especificado)"</string>
+    <string name="quest_fireHydrant_type_title">"Que tipo de boca de hidrante é este?"</string>
+    <string name="quest_fireHydrant_type_pillar">"Marco de água"</string>
+    <string name="quest_fireHydrant_type_underground">"Subterrâneo"</string>
+    <string name="quest_fireHydrant_type_wall">"Boca de incêndio ou de parede"</string>
+    <string name="quest_fireHydrant_type_pond">"Dum poço"</string>
+    <string name="credits_contributors">"Veja a &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;lista completa em GitHub&lt;/a&gt;."</string>
+    <string name="credits_translations">"Veja o &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;projecto em POEditor&lt;/a&gt; for a complete list."</string>
+    <string name="credits_translations_title">"Traduções"</string>
+    <string name="credits_contributors_title">"Contribuidores de código"</string>
+    <string name="credits_author_title">"Autor e manutenção"</string>
+    <string name="credits_and_more">"e mais..."</string>
+    <string name="quest_maxspeed_answer_living_street">"É uma rua partilhada"</string>
+    <string name="quest_maxspeed_answer_living_street_confirmation_title">"então há um sinal como este?"</string>
+    <string name="quest_orchard_produce_title">"O que é cultivado aqui?"</string>
+    <string name="produce_grapes">"Uvas"</string>
+    <string name="produce_agaves">"Agave"</string>
+    <string name="produce_almonds">"Amêndoas"</string>
+    <string name="produce_apples">"Maças"</string>
+    <string name="produce_apricots">"Damasco"</string>
+    <string name="produce_avocados">"Pêras Abacate"</string>
+    <string name="produce_bananas">"Bananas"</string>
+    <string name="produce_blueberries">"Amoras"</string>
+    <string name="produce_cacao">"Cacau"</string>
+    <string name="produce_cashew_nuts">"Cajus"</string>
+    <string name="produce_cherries">"Cerejas"</string>
+    <string name="produce_chestnuts">"Castanhas"</string>
+    <string name="produce_coconuts">"Cocos"</string>
+    <string name="produce_coffee">"Café"</string>
+    <string name="produce_cranberries">"Arandos"</string>
+    <string name="produce_dates">"Tâmaras"</string>
+    <string name="produce_figs">"Figos"</string>
+    <string name="produce_grapefruits">"Toranja"</string>
+    <string name="produce_guavas">"Goiaba"</string>
+    <string name="produce_hazelnuts">"Avelãs"</string>
+    <string name="produce_hops">"Lúpulo"</string>
+    <string name="produce_jojoba">"Jojoba "</string>
+    <string name="produce_kiwis">"Kiwis"</string>
+    <string name="produce_kola_nuts">"Noz-de-cola"</string>
+    <string name="produce_lemons">"Limões"</string>
+    <string name="produce_limes">"Limas"</string>
+    <string name="produce_mangos">"Mangos"</string>
+    <string name="produce_mate">"Erva-mate"</string>
+    <string name="produce_nutmeg">"Noz-moscada"</string>
+    <string name="produce_oil_palms">"Óleo de palma"</string>
+    <string name="produce_olives">"Azeitonas"</string>
+    <string name="produce_oranges">"Laranjas"</string>
+    <string name="produce_papayas">"Papaias"</string>
+    <string name="produce_peaches">"Pêssegos"</string>
+    <string name="produce_pears">"Pêras"</string>
+    <string name="produce_chili">"Chili"</string>
+    <string name="produce_persimmons">"Dióspiros"</string>
+    <string name="produce_pineapples">"Ananases "</string>
+    <string name="produce_pepper">"Pimenta"</string>
+    <string name="produce_pistachios">"Pistachos"</string>
+    <string name="produce_plums">"Ameixas"</string>
+    <string name="produce_raspberries">"Framboesa "</string>
+    <string name="produce_rubber">"Borracha"</string>
+    <string name="produce_strawberries">"Morangos"</string>
+    <string name="produce_tea">"Chá"</string>
+    <string name="produce_vanilla">"Baunilha"</string>
+    <string name="produce_walnuts">"Nozes"</string>
+    <string name="produce_sisal">"Sisal"</string>
 </resources>
