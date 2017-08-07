@@ -5,12 +5,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.ImageListQuestAnswerFragment;
 
 public class AddOrchardProduceForm extends ImageListQuestAnswerFragment
 {
-	private static final OsmItem[] PRODUCE = new OsmItem[]{
+	private static final OsmItem[] PRODUCES = new OsmItem[]{
 			// ordered alphabetically here for overview
 
 			// may have been mistaken for an orchard (i.e. agave) from satellite imagery
@@ -68,6 +72,11 @@ public class AddOrchardProduceForm extends ImageListQuestAnswerFragment
 			new OsmItem("vanilla",		R.drawable.surface_grass, R.string.produce_vanilla),
 			new OsmItem("walnut",		R.drawable.surface_grass, R.string.produce_walnuts),
 	};
+	private static final Map<String,OsmItem> PRODUCES_MAP = new HashMap<>();
+	static
+	{
+		for(OsmItem item : PRODUCES) PRODUCES_MAP.put(item.osmValue, item);
+	}
 
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
 									   Bundle savedInstanceState)
@@ -79,7 +88,13 @@ public class AddOrchardProduceForm extends ImageListQuestAnswerFragment
 
 	@Override protected OsmItem[] getItems()
 	{
-		// TODO add country intelligence
-		return PRODUCE;
+		// only include what is given for that country
+		ArrayList<OsmItem> result = new ArrayList<>();
+		for(String name : getCountryInfo().getOrchardProduces())
+		{
+			OsmItem item = PRODUCES_MAP.get(name);
+			if(item != null) result.add(item);
+		}
+		return result.toArray(new OsmItem[result.size()]);
 	}
 }

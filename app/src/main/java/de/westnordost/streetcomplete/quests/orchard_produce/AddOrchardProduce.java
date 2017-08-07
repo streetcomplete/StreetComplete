@@ -2,6 +2,8 @@ package de.westnordost.streetcomplete.quests.orchard_produce;
 
 import android.os.Bundle;
 
+import java.util.ArrayList;
+
 import de.westnordost.streetcomplete.data.QuestImportance;
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
@@ -24,7 +26,22 @@ public class AddOrchardProduce extends SimpleOverpassQuestType
 
 	@Override public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
 	{
-		// TODO
+		ArrayList<String> values = answer.getStringArrayList(AddOrchardProduceForm.OSM_VALUES);
+		if(values != null && !values.isEmpty())
+		{
+			String produce = values.get(0);
+
+			changes.add("produce", produce);
+
+			if(produce.equals("grape"))
+			{
+				changes.modify("landuse","vineyard");
+			}
+			else if(produce.equals("sisal"))
+			{
+				changes.modify("landuse","farmland");
+			}
+		}
 	}
 
 	@Override public String getCommitMessage() { return "Add orchard produces"; }
