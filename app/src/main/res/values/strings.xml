@@ -364,4 +364,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="produce_vanilla">Vanilla</string>
     <string name="produce_walnuts">Walnuts</string>
     <string name="produce_sisal">Sisal</string>
+    <string name="produce_mangosteen">Mangosteen</string>
+    <string name="produce_tomatoes">Tomatoes</string>
 </resources>
