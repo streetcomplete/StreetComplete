@@ -125,18 +125,6 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		return new BitmapDrawable(getResources(), bitmap);
 	}
 
-	@Override public boolean onShove(float distance)
-	{
-		// no tilting the map! (for now)
-		return true;
-	}
-
-	@Override public boolean onRotate(float x, float y, float rotation)
-	{
-		// no rotating the map! (for now)
-		return true;
-	}
-
 	@Override public boolean onSingleTapUp(float x, float y)
 	{
 		return false;

@@ -1,13 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-       android:layout_width="match_parent"
-       android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                xmlns:tools="http://schemas.android.com/tools">
 
     <com.mapzen.tangram.MapView
         android:id="@+id/map"
         android:name="com.mapzen.tangram.MapView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
+    <RelativeLayout
+        android:layout_width="54dp"
+        android:layout_height="54dp"
+        android:orientation="vertical"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_margin="14dp"
+        android:padding="2dp"
+        tools:ignore="RtlHardcoded"
+        android:background="@drawable/roundbutton">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_above="@+id/compass"
+            android:text="@string/compass_north_one_letter"/>
+
+        <de.westnordost.streetcomplete.view.CompassView
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/compass"
+            android:layout_alignParentBottom="true"
+            />
+
+    </RelativeLayout>
 
     <TextView
         android:layout_width="wrap_content"
@@ -18,7 +47,8 @@
         android:textSize="11sp"
         android:text="@string/map_attribution_mapzen"
         android:layout_margin="8sp"
-        android:layout_gravity="start|bottom"/>
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -27,6 +57,7 @@
         android:textSize="11sp"
         android:text="@string/map_attribution_osm"
         android:layout_margin="8sp"
-        android:layout_gravity="end|bottom"/>
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"/>
 
-</FrameLayout>
+</RelativeLayout>

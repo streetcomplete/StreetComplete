@@ -12,8 +12,6 @@ import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.hardware.Sensor;
-import android.hardware.SensorManager;
 import android.location.Location;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -27,7 +25,6 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -101,12 +98,12 @@ public class MainActivity extends AppCompatActivity implements
 
 	// per application start settings
 	private static boolean isFollowingPosition = true;
+	private static boolean isCompassMode = false;
 	private static boolean hasAskedForLocation = false;
 	private static boolean dontShowRequestAuthorizationAgain = false;
 
 	private QuestsMapFragment mapFragment;
 	private LocationStateButton trackingButton;
-	private ImageButton rotateButton;
 	private SingleLocationRequest singleLocationRequest;
 	private Location lastLocation;
 
@@ -228,10 +225,27 @@ public class MainActivity extends AppCompatActivity implements
 		{
 			@Override public void onClick(View v)
 			{
-				if(trackingButton.getState().isEnabled())
+
+				LocationState state = trackingButton.getState();
+				if(state.isEnabled())
 				{
 					boolean isFollowing = mapFragment.isFollowingPosition();
-					setIsFollowingPosition(!isFollowing);
+					boolean isCompassMode = mapFragment.isCompassMode();
+					// cycle through these three states
+					if(!isFollowing)
+					{
+						setIsFollowingPosition(true);
+					}
+					// cycle to compass mode only if position already known
+					else if(!isCompassMode)
+					{
+						trackingButton.setCompassMode(true);
+						mapFragment.setCompassMode(true);
+					}
+					else
+					{
+						setIsFollowingPosition(false);
+					}
 				}
 				else
 				{
@@ -240,35 +254,7 @@ public class MainActivity extends AppCompatActivity implements
 			}
 		});
         trackingButton.setActivated(isFollowingPosition);
-
-		rotateButton = (ImageButton) findViewById(R.id.rotate_map);
-		SensorManager sensorManager;
-		sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-		if (sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD) != null){
-
-			rotateButton.setOnClickListener(new View.OnClickListener()
-			{
-				@Override public void onClick(View v)
-				{
-					if(mapFragment.getIsCompassMode())
-					{
-						mapFragment.setIsCompassMode(false);
-						rotateButton.setRotation(0);
-						rotateButton.setImageResource(R.drawable.ic_compass_disabled);
-						rotateButton.clearColorFilter();
-					}
-					else
-					{
-						mapFragment.setIsCompassMode(true);
-						rotateButton.setImageResource(R.drawable.ic_compass_north);
-						rotateButton.setColorFilter(getResources().getColor(R.color.colorAccent));
-					}
-				}
-			});
-		}
-		else{
-			rotateButton.setVisibility(View.INVISIBLE);
-		}
+		trackingButton.setCompassMode(isCompassMode);
 
 		ImageButton zoomInButton = (ImageButton) findViewById(R.id.zoom_in);
 		zoomInButton.setOnClickListener(new View.OnClickListener()
@@ -338,6 +324,7 @@ public class MainActivity extends AppCompatActivity implements
 		questAutoSyncer.onStop();
 
 		isFollowingPosition = trackingButton.isActivated();
+		isCompassMode = trackingButton.isCompassMode();
 
 		if (downloadServiceIsBound) unbindService(downloadServiceConnection);
 		if (downloadService != null)
@@ -784,21 +771,24 @@ public class MainActivity extends AppCompatActivity implements
 		return (AbstractQuestAnswerFragment) getFragmentManager().findFragmentByTag(BOTTOM_SHEET);
 	}
 
-	/* ---------- QuestsMapFragment.Listener ---------- */
+	/* ---------- MapFragment.Listener ---------- */
 
 	@Override public void onMapReady()
 	{
 
 	}
 
-	@Override public void onFirstInView(BoundingBox bbox)
-	{
-		questController.retrieve(bbox);
-	}
-
 	@Override public void onUnglueViewFromPosition()
 	{
 		trackingButton.setActivated(false);
+		trackingButton.setCompassMode(false);
+	}
+
+	/* ---------- QuestsMapFragment.Listener ---------- */
+
+	@Override public void onFirstInView(BoundingBox bbox)
+	{
+		questController.retrieve(bbox);
 	}
 
 	@Override public void onClickedQuest(QuestGroup questGroup, Long questId)
@@ -867,6 +857,11 @@ public class MainActivity extends AppCompatActivity implements
 	{
 		trackingButton.setActivated(follow);
 		mapFragment.setIsFollowingPosition(follow);
+		if(!follow)
+		{
+			trackingButton.setCompassMode(false);
+			mapFragment.setCompassMode(false);
+		}
 	}
 
 	@Override public void onLocationRequestFinished(LocationState withLocationState)
@@ -881,15 +876,6 @@ public class MainActivity extends AppCompatActivity implements
 		else
 		{
 			Toast.makeText(MainActivity.this, R.string.no_gps_no_quests, Toast.LENGTH_LONG).show();
-		}
-	}
-
-	@Override public void setRotateButtonRotation(float rotation)
-	{
-		if (rotateButton.getRotation() != rotation)
-		{
-			double northRotation = (double)rotation * 360 / (2 * Math.PI);
-			rotateButton.setRotation((float)northRotation);
 		}
 	}
 
