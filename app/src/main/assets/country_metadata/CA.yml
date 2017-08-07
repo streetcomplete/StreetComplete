@@ -2,5 +2,7 @@
 isSlowZoneKnown: false
 maxspeedLayout: quest_maxspeed_ca
 officialLanguages: [en, fr]
+orchardProduces: [apple, tomatoe, cranberry, blueberry, grape, chilli, peach, strawberry, cherry, raspberry,
+  pear, plum, apricot, kiwi]
 popularSports: [baseball, soccer, tennis, basketball, canadian_football, american_football, ices_hockey,
   curling]

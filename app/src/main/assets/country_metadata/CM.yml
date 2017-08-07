@@ -1,3 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
 officialLanguages: [fr, en]
+orchardProduces: [banana, palm_oil, tomatoe, cacao, pineapple, avocado, rubber, kola_nut, coffee, chilli,
+  tea, coconut, peach, guava, mango, mangosteen, apricot]
 popularSports: [soccer, tennis, basketball, handball]

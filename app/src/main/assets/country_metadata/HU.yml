@@ -2,3 +2,5 @@
 isLivingStreetKnown: true
 isSlowZoneKnown: true
 officialLanguages: [hu]
+orchardProduces: [apple, grape, tomatoe, cherry, plum, peach, pear, apricot, chilli, strawberry, walnut,
+  raspberry, chestnut, almond, hazelnut]

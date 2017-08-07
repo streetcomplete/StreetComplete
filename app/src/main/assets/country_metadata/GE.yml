@@ -2,3 +2,5 @@
 additionalStreetsignLanguages: [en]
 isLivingStreetKnown: true
 officialLanguages: [ka]
+orchardProduces: [grape, apple, tomatoe, orange, hazelnut, peach, pear, plum, walnut, cherry, chilli,
+  tea, lemon, lime, strawberry, almond]

@@ -3,3 +3,5 @@ isLivingStreetKnown: true
 isSlowZoneKnown: true
 livingStreetSign: ic_living_street_russian
 officialLanguages: [uk, ru]
+orchardProduces: [tomatoe, apple, grape, cherry, chilli, plum, pear, walnut, apricot, strawberry, raspberry,
+  peach, blueberry, cranberry, hop]

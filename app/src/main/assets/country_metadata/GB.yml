@@ -3,5 +3,6 @@ additionalStreetsignLanguages: [cy, gd]
 isLivingStreetKnown: true
 isSlowZoneKnown: true
 officialLanguages: [en]
+orchardProduces: [apple, strawberry, tomatoe, pear, chilli, raspberry, plum, cherry, hop, grape]
 popularSports: [soccer, tennis, bowls, cricket, golf, basketball, rugby]
 speedUnit: mph

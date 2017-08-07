@@ -4,4 +4,6 @@ additionalValidHousenumberRegex: s/n
 isLivingStreetKnown: true
 isSlowZoneKnown: true
 officialLanguages: [es]
+orchardProduces: [olive, grape, tomatoe, orange, peach, chilli, lemon, lime, apple, pear, banana, strawberry,
+  persimmon, plum, almond, apricot]
 popularSports: [soccer, tennis, basketball, golf, paddle_tennis, pelota]

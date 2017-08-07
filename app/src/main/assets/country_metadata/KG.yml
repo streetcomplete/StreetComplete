@@ -2,3 +2,5 @@
 isLivingStreetKnown: true
 livingStreetSign: ic_living_street_russian
 officialLanguages: [ky, ru]
+orchardProduces: [tomatoe, apple, apricot, chilli, plum, peach, pear, grape, walnut, cherry, hazelnut,
+  raspberry, strawberry, almond, pistachio]

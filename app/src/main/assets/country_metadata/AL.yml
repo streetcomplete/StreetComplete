@@ -1,3 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
 isLivingStreetKnown: true
 officialLanguages: [sq]
+orchardProduces: [tomatoe, grape, olive, apple, chilli, plum, fig, cherry, peach, date, orange, pear,
+  chestnut, apricot, lemon, lime]

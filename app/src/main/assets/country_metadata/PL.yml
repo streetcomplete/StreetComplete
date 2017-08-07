@@ -2,4 +2,6 @@
 isLivingStreetKnown: true
 isSlowZoneKnown: true
 officialLanguages: [pl]
+orchardProduces: [apple, tomatoe, strawberry, cherry, raspberry, plum, pear, blueberry, peach, walnut,
+  hazelnut, apricot, hop, chestnut]
 regularShoppingDays: 5

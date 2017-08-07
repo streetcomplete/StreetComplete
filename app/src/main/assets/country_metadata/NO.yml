@@ -2,3 +2,4 @@
 isLivingStreetKnown: true
 isSlowZoneKnown: true
 officialLanguages: [nb, nn, 'no']
+orchardProduces: [tomatoe, apple, strawberry, raspberry, plum, cherry, pear, blueberry, palm_oil]

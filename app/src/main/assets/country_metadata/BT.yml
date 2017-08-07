@@ -1,2 +1,4 @@
 # Do not edit. Source files are in /res/country_metadata
 officialLanguages: [dz]
+orchardProduces: [orange, nut, apple, chilli, banana, pear, peach, nutmeg, walnut, guava, mango, mangosteen,
+  plum, tomatoe, apricot]

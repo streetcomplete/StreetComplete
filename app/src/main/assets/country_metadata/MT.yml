@@ -1,3 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
 isSlowZoneKnown: true
 officialLanguages: [mt, en]
+orchardProduces: [tomatoe, grape, strawberry, peach, orange, lemon, lime, fig, pear, apricot, apple,
+  olive, grapefruit]
