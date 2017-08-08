@@ -13,12 +13,14 @@ import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment;
 
 public class AddWayLit extends SimpleOverpassQuestType
 {
+	static final String[] LIT_RESIDENTIAL_ROADS = { "residential", "living_street" };
+
 	static final String[] LIT_ROADS = {
 			"primary", "secondary", "tertiary", "unclassified", "residential", "living_street",
 			"service", "pedestrian"
 	};
 
-	static final String[] LIT_WAYS = { "footway", "cycleway" };
+	private static final String[] LIT_WAYS = { "footway", "cycleway" };
 
 	@Inject public AddWayLit(OverpassMapDataDao overpassServer)
 	{
@@ -38,7 +40,10 @@ public class AddWayLit extends SimpleOverpassQuestType
 
 		return "ways with " +
 				"(" +
-				" highway ~ " + TextUtils.join("|", LIT_ROADS) + " and sidewalk ~ both|left|right|yes|separate" +
+				" highway ~ " + TextUtils.join("|", LIT_RESIDENTIAL_ROADS) +
+				" or" +
+				" highway ~ " + TextUtils.join("|", LIT_ROADS) +
+				" and ( sidewalk ~ both|left|right|yes|separate or source:maxspeed ~ .+:urban )" +
 				" or" +
 				" highway ~ " + TextUtils.join("|", LIT_WAYS) +
 				" or" +
