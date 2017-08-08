@@ -44,6 +44,9 @@ public class CompassComponent implements SensorEventListener
 
 	public void onResume()
 	{
+		// no compass
+		if(magnetometer == null) return;
+
 		sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_UI);
 		sensorManager.registerListener(this, magnetometer, SensorManager.SENSOR_DELAY_UI);
 
@@ -54,7 +57,7 @@ public class CompassComponent implements SensorEventListener
 
 	public void onPause()
 	{
-		compassTimer.cancel();
+		if(compassTimer != null) compassTimer.cancel();
 		sensorManager.unregisterListener(this);
 	}
 

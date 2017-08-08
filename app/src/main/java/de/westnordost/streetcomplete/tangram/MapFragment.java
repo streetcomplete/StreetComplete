@@ -8,6 +8,7 @@ import android.graphics.Canvas;
 import android.graphics.PointF;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.location.Location;
 import android.os.Bundle;
@@ -80,6 +81,8 @@ public class MapFragment extends Fragment implements
 
 	private String apiKey;
 
+	private boolean deviceHasCompass;
+
 	public interface Listener
 	{
 		void onMapReady();
@@ -141,6 +144,9 @@ public class MapFragment extends Fragment implements
 		locationMarker.setStylingFromString("{ style: 'points', color: 'white', size: ["+TextUtils.join(",",sizeInDp(dot))+"], order: 2000, flat: true, collide: false }");
 		locationMarker.setDrawable(dot);
 		locationMarker.setDrawOrder(3);
+
+		SensorManager sm = (SensorManager)getActivity().getSystemService(SENSOR_SERVICE);
+		deviceHasCompass = sm.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD) != null;
 
 		directionMarker = controller.addMarker();
 		BitmapDrawable directionImg = createBitmapDrawableFrom(R.drawable.location_direction);
@@ -331,7 +337,7 @@ public class MapFragment extends Fragment implements
 			LngLat pos = new LngLat(lastLocation.getLongitude(), lastLocation.getLatitude());
 			locationMarker.setVisible(true);
 			accuracyMarker.setVisible(true);
-			directionMarker.setVisible(true);
+			directionMarker.setVisible(deviceHasCompass);
 			locationMarker.setPointEased(pos, 1000, MapController.EaseType.CUBIC);
 			accuracyMarker.setPointEased(pos, 1000, MapController.EaseType.CUBIC);
 			directionMarker.setPointEased(pos, 1000, MapController.EaseType.CUBIC);

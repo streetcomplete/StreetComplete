@@ -12,6 +12,8 @@ import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
 import android.location.Location;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -231,13 +233,15 @@ public class MainActivity extends AppCompatActivity implements
 				{
 					boolean isFollowing = mapFragment.isFollowingPosition();
 					boolean isCompassMode = mapFragment.isCompassMode();
+					SensorManager sm = (SensorManager)getSystemService(SENSOR_SERVICE);
+					boolean deviceHasCompass = sm.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD) != null;
 					// cycle through these three states
 					if(!isFollowing)
 					{
 						setIsFollowingPosition(true);
 					}
 					// cycle to compass mode only if position already known
-					else if(!isCompassMode)
+					else if(!isCompassMode && deviceHasCompass)
 					{
 						trackingButton.setCompassMode(true);
 						mapFragment.setCompassMode(true);
