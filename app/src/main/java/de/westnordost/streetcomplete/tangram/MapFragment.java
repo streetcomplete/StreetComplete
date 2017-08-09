@@ -394,6 +394,8 @@ public class MapFragment extends Fragment implements
 		isShowingDirection = true;
 	}
 
+	public boolean isShowingDirection() { return isShowingDirection; }
+
 	public boolean isCompassMode()
 	{
 		return isCompassMode;
