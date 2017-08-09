@@ -5,6 +5,7 @@ import android.text.TextUtils;
 
 import javax.inject.Inject;
 
+import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
@@ -43,10 +44,7 @@ public class AddPlaceName extends SimpleOverpassQuestType
 			"adult_gaming_centre", "tanning_salon","horse_riding"
 	};
 
-	@Inject public AddPlaceName(OverpassMapDataDao overpassServer)
-	{
-		super(overpassServer);
-	}
+	@Inject public AddPlaceName(OverpassMapDataDao overpassServer) { super(overpassServer); }
 
 	@Override protected String getTagFilters()
 	{
@@ -75,10 +73,6 @@ public class AddPlaceName extends SimpleOverpassQuestType
 		if(name != null) changes.add("name", name);
 	}
 
-	@Override public String getCommitMessage()
-	{
-		return "Determine place names";
-	}
-
-	@Override public String getIconName() {	return "label"; }
+	@Override public String getCommitMessage() { return "Determine place names"; }
+	@Override public int getIcon() { return R.drawable.ic_quest_label; }
 }

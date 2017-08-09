@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import javax.inject.Inject;
 
+import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
@@ -11,14 +12,12 @@ import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 
 public class AddBikeParkingCapacity extends SimpleOverpassQuestType
 {
-	@Inject
-	public AddBikeParkingCapacity(OverpassMapDataDao overpassServer)
+	@Inject public AddBikeParkingCapacity(OverpassMapDataDao overpassServer)
 	{
 		super(overpassServer);
 	}
 
-	@Override
-	protected String getTagFilters()
+	@Override protected String getTagFilters()
 	{
 		return "nodes, ways with amenity=bicycle_parking and !capacity";
 	}
@@ -33,10 +32,6 @@ public class AddBikeParkingCapacity extends SimpleOverpassQuestType
 		changes.add("capacity", ""+answer.getInt(AddBikeParkingCapacityForm.BIKE_PARKING_CAPACITY));
 	}
 
-	@Override public String getCommitMessage()
-	{
-		return "Add bicycle parking capacities";
-	}
-
-	@Override public String getIconName() {	return "bicycle_parking"; }
+	@Override public String getCommitMessage() { return "Add bicycle parking capacities"; }
+	@Override public int getIcon() { return R.drawable.ic_quest_bicycle_parking; }
 }

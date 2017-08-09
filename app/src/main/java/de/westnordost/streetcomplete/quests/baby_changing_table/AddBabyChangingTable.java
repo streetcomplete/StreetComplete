@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import javax.inject.Inject;
 
+import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
@@ -12,15 +13,14 @@ import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment;
 
 public class AddBabyChangingTable extends SimpleOverpassQuestType
 {
-	@Inject public AddBabyChangingTable(OverpassMapDataDao overpassServer)
-	{
-		super(overpassServer);
-	}
+	@Inject public AddBabyChangingTable(OverpassMapDataDao overpassServer) { super(overpassServer); }
 
-	@Override
-	protected String getTagFilters()
+	@Override protected String getTagFilters()
 	{
-		return "nodes, ways with (((amenity ~ restaurant|cafe|fuel|fast_food or shop ~ mall|department_store) and name and toilets=yes) or amenity=toilets) and !diaper";
+		return "nodes, ways with (" +
+				"((amenity ~ restaurant|cafe|fuel|fast_food or shop ~ mall|department_store) and name and toilets=yes)" +
+				" or amenity=toilets" +
+				") and !diaper";
 	}
 
 	public AbstractQuestAnswerFragment createForm()
@@ -34,10 +34,6 @@ public class AddBabyChangingTable extends SimpleOverpassQuestType
 		changes.add("diaper", yesno);
 	}
 
-	@Override public String getCommitMessage()
-	{
-		return "Add baby changing table";
-	}
-
-	@Override public String getIconName() {	return "baby_changing_table"; }
+	@Override public String getCommitMessage() { return "Add baby changing table"; }
+	@Override public int getIcon() { return R.drawable.ic_quest_baby; }
 }

@@ -13,13 +13,9 @@ import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment;
 
 public class AddToiletsFee extends SimpleOverpassQuestType
 {
-	@Inject public AddToiletsFee(OverpassMapDataDao overpassServer)
-	{
-		super(overpassServer);
-	}
+	@Inject public AddToiletsFee(OverpassMapDataDao overpassServer) { super(overpassServer); }
 
-	@Override
-	protected String getTagFilters()
+	@Override protected String getTagFilters()
 	{
 		return "nodes, ways with amenity = toilets and access !~ private|customers and !fee";
 	}
@@ -37,10 +33,6 @@ public class AddToiletsFee extends SimpleOverpassQuestType
 		changes.add("fee", yesno);
 	}
 
-	@Override public String getCommitMessage()
-	{
-		return "Add toilets fee";
-	}
-
-	@Override public String getIconName() {	return "toilets"; }
+	@Override public String getCommitMessage() { return "Add toilets fee"; }
+	@Override public int getIcon() { return R.drawable.ic_quest_toilets; }
 }

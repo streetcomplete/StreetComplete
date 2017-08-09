@@ -29,7 +29,6 @@ import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
-import de.westnordost.streetcomplete.data.tiles.DownloadedTilesDao;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 
 import static org.mockito.Matchers.any;
@@ -150,7 +149,7 @@ public class OsmQuestDownloadTest extends TestCase
 		}
 
 		@Override public AbstractQuestAnswerFragment createForm() { return null; }
-		@Override public String getIconName() { return null; }
+		@Override public int getIcon() { return 0; }
 		@Override public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes) {}
 		@Override public String getCommitMessage() { return null; }
 		@Override public boolean download(BoundingBox bbox, MapDataWithGeometryHandler handler)

@@ -10,6 +10,7 @@ import java.util.Map;
 import javax.inject.Inject;
 
 import de.westnordost.osmapi.map.data.BoundingBox;
+import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.osm.ElementGeometry;
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler;
@@ -153,10 +154,6 @@ public class AddRoadName implements OsmElementQuestType
 		return result;
 	}
 
-	@Override public String getCommitMessage()
-	{
-		return "Determine road names";
-	}
-
-	@Override public String getIconName() {	return "signpost"; }
+	@Override public String getCommitMessage() { return "Determine road names"; }
+	@Override public int getIcon() { return R.drawable.ic_quest_street_name; }
 }
