@@ -27,7 +27,7 @@ public class AddWheelchairAccessBusiness extends SimpleOverpassQuestType
 		String[] amenities = {
 				"restaurant", "cafe", "ice_cream", "fast_food",
 				"bar", "pub", "biergarten", "food_court",
-				"cinema", "nightclub", "bank", "atm",
+				"cinema", "nightclub", "bank",
 				"bureau_de_change",	"money_transfer", "post_office", "library",
 				"courthouse", "embassy", "car_wash", "car_rental",
 				"marketplace", "fuel", "driving_school", "dentist",
@@ -43,14 +43,12 @@ public class AddWheelchairAccessBusiness extends SimpleOverpassQuestType
 
 		return " nodes, ways, relations with ( shop and shop !~ no|vacant or" +
 				" amenity ~ " + TextUtils.join("|", amenities) + " or" +
-				" amenity = bicycle_parking and bicycle_parking = building or" +
 				" amenity = parking and parking = multi-storey or" +
 				" amenity = recycling and recycling_type = centre or" +
 				" tourism ~ " + TextUtils.join("|", tourism) + " or" +
 				" tourism = information and information = office or" +
-				" leisure ~ " + TextUtils.join("|",leisures)  + " or"+
-				" historic = memorial)" +
-				" and !wheelchair and name";
+				" leisure ~ " + TextUtils.join("|",leisures)  +
+				" ) and !wheelchair and name";
 	}
 
 	@Override public WheelchairAccessAnswerFragment createForm()
