@@ -32,3 +32,7 @@ fire_hydrant_wall.jpg          https://commons.wikimedia.org/wiki/File:Guenthers
 fire_hydrant_underground.jpg   https://commons.wikimedia.org/wiki/File:Hydrant_MPWiK.jpg
 fire_hydrant_pond.jpg          https://commons.wikimedia.org/wiki/File:Dry_hydrant.jpg
 
+crossing_type_signals.jpg      http://maxpixel.freegreatpicture.com/Green-Traffic-Lights-Little-Green-Man-Go-819851
+crossing_type_zebra.jpg        https://commons.wikimedia.org/wiki/File%3AZebra_crossing.jpg
+crossing_type_unmarked.jpg     http://www.jrlawfirm.com/wp-content/uploads/2016/04/unmarked-crosswalks-texas.jpg
+
