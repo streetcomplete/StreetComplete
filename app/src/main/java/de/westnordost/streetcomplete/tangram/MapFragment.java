@@ -81,7 +81,7 @@ public class MapFragment extends Fragment implements
 
 	private String apiKey;
 
-	private boolean deviceHasCompass;
+	private boolean isShowingDirection;
 
 	public interface Listener
 	{
@@ -144,9 +144,6 @@ public class MapFragment extends Fragment implements
 		locationMarker.setStylingFromString("{ style: 'points', color: 'white', size: ["+TextUtils.join(",",sizeInDp(dot))+"], order: 2000, flat: true, collide: false }");
 		locationMarker.setDrawable(dot);
 		locationMarker.setDrawOrder(3);
-
-		SensorManager sm = (SensorManager)getActivity().getSystemService(SENSOR_SERVICE);
-		deviceHasCompass = sm.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD) != null;
 
 		directionMarker = controller.addMarker();
 		BitmapDrawable directionImg = createBitmapDrawableFrom(R.drawable.location_direction);
@@ -221,6 +218,7 @@ public class MapFragment extends Fragment implements
 		}
 		lastLocation = null;
 		zoomedYet = false;
+		isShowingDirection = false;
 
 		if(lostApiClient.isConnected())
 		{
@@ -234,6 +232,7 @@ public class MapFragment extends Fragment implements
 		isFollowingPosition = value;
 		if(!isFollowingPosition) {
 			zoomedYet = false;
+			isShowingDirection = false;
 		}
 		followPosition();
 	}
@@ -337,7 +336,7 @@ public class MapFragment extends Fragment implements
 			LngLat pos = new LngLat(lastLocation.getLongitude(), lastLocation.getLatitude());
 			locationMarker.setVisible(true);
 			accuracyMarker.setVisible(true);
-			directionMarker.setVisible(deviceHasCompass);
+			directionMarker.setVisible(isShowingDirection);
 			locationMarker.setPointEased(pos, 1000, MapController.EaseType.CUBIC);
 			accuracyMarker.setPointEased(pos, 1000, MapController.EaseType.CUBIC);
 			directionMarker.setPointEased(pos, 1000, MapController.EaseType.CUBIC);
@@ -386,6 +385,13 @@ public class MapFragment extends Fragment implements
 			if (controller.getTilt() != mapTilt) controller.setTiltEased(mapTilt,50);
 			compassView.setOrientation(mapRotation, mapTilt);
 		}
+	}
+
+	@Override public void onMagnetometerEvent()
+	{
+		// we received an event from magnetometer, magnetometer is working
+		// so direction can be displayed on screen
+		isShowingDirection = true;
 	}
 
 	public boolean isCompassMode()

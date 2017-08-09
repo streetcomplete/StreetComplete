@@ -28,6 +28,8 @@ public class CompassComponent implements SensorEventListener
 	public interface Listener
 	{
 		void onRotationChanged(float rotation, float tilt);
+
+		void onMagnetometerEvent();
 	}
 
 	public void setListener(Listener listener)
@@ -70,8 +72,10 @@ public class CompassComponent implements SensorEventListener
 	{
 		if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER)
 			gravity = event.values;
-		if (event.sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD)
+		if (event.sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD) {
+			if(listener != null) listener.onMagnetometerEvent();
 			geomagnetic = event.values;
+		}
 		if (gravity != null && geomagnetic != null)
 		{
 			float R[] = new float[9];
