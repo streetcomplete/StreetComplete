@@ -8,6 +8,7 @@ import android.graphics.Canvas;
 import android.graphics.PointF;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.location.Location;
 import android.os.Bundle;
@@ -41,8 +42,10 @@ import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.util.SphericalEarthMath;
+import de.westnordost.streetcomplete.view.CompassView;
 
 import static android.content.Context.SENSOR_SERVICE;
+import static android.content.res.Configuration.ORIENTATION_LANDSCAPE;
 
 public class MapFragment extends Fragment implements
 		FragmentCompat.OnRequestPermissionsResultCallback, LocationListener,
@@ -58,6 +61,7 @@ public class MapFragment extends Fragment implements
 	private String[] directionMarkerSize;
 
 	private MapView mapView;
+	private CompassView compassView;
 
 	private HttpHandler httpHandler;
 
@@ -71,9 +75,13 @@ public class MapFragment extends Fragment implements
 	private Location lastLocation;
 	private boolean zoomedYet;
 
+	private boolean isCompassMode;
+
 	private Listener listener;
 
 	private String apiKey;
+
+	private boolean deviceHasCompass;
 
 	public interface Listener
 	{
@@ -87,6 +95,7 @@ public class MapFragment extends Fragment implements
 		View view = inflater.inflate(R.layout.fragment_map, container, false);
 
 		mapView = (MapView) view.findViewById(R.id.map);
+		compassView = (CompassView) view.findViewById(R.id.compass);
 		TextView mapzenLink = (TextView) view.findViewById(R.id.mapzenLink);
 
 		mapzenLink.setText(Html.fromHtml(
@@ -135,6 +144,9 @@ public class MapFragment extends Fragment implements
 		locationMarker.setStylingFromString("{ style: 'points', color: 'white', size: ["+TextUtils.join(",",sizeInDp(dot))+"], order: 2000, flat: true, collide: false }");
 		locationMarker.setDrawable(dot);
 		locationMarker.setDrawOrder(3);
+
+		SensorManager sm = (SensorManager)getActivity().getSystemService(SENSOR_SERVICE);
+		deviceHasCompass = sm.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD) != null;
 
 		directionMarker = controller.addMarker();
 		BitmapDrawable directionImg = createBitmapDrawableFrom(R.drawable.location_direction);
@@ -239,7 +251,7 @@ public class MapFragment extends Fragment implements
 			if(!zoomedYet)
 			{
 				zoomedYet = true;
-				controller.setZoomEased(19, 1000);
+				controller.setZoomEased(19, 500);
 			}
 			updateView();
 		}
@@ -280,12 +292,16 @@ public class MapFragment extends Fragment implements
 
 	@Override public boolean onShove(float distance)
 	{
+		unglueViewFromPosition();
+		compassView.setOrientation(controller.getRotation(), controller.getTilt());
 		updateView();
 		return false;
 	}
 
 	@Override public boolean onRotate(float x, float y, float rotation)
 	{
+		unglueViewFromPosition();
+		compassView.setOrientation(controller.getRotation(), controller.getTilt());
 		updateView();
 		return false;
 	}
@@ -297,9 +313,10 @@ public class MapFragment extends Fragment implements
 
 	private void unglueViewFromPosition()
 	{
-		if(isFollowingPosition())
+		if(isFollowingPosition || isCompassMode)
 		{
 			setIsFollowingPosition(false);
+			setCompassMode(false);
 			listener.onUnglueViewFromPosition();
 		}
 	}
@@ -320,7 +337,7 @@ public class MapFragment extends Fragment implements
 			LngLat pos = new LngLat(lastLocation.getLongitude(), lastLocation.getLatitude());
 			locationMarker.setVisible(true);
 			accuracyMarker.setVisible(true);
-			directionMarker.setVisible(true);
+			directionMarker.setVisible(deviceHasCompass);
 			locationMarker.setPointEased(pos, 1000, MapController.EaseType.CUBIC);
 			accuracyMarker.setPointEased(pos, 1000, MapController.EaseType.CUBIC);
 			directionMarker.setPointEased(pos, 1000, MapController.EaseType.CUBIC);
@@ -339,16 +356,46 @@ public class MapFragment extends Fragment implements
 		}
 	}
 
-	@Override public void onRotationChanged(float rotation)
+	@Override public void onRotationChanged(float rotation, float tilt)
 	{
 		if(directionMarker != null && directionMarker.isVisible())
 		{
 			double r = rotation * 180 / Math.PI;
 			directionMarker.setStylingFromString(
 					"{ style: 'points', color: '#cc536dfe', size: [" +
-							TextUtils.join(",",directionMarkerSize) +
+							TextUtils.join(",", directionMarkerSize) +
 							"], order: 2000, collide: false, flat: true, angle: " + r + " }");
 		}
+
+		float mapRotation = 0;
+		float mapTilt = 0;
+		if (isCompassMode)
+		{
+			boolean isLandscape = getResources().getConfiguration().orientation == ORIENTATION_LANDSCAPE;
+			mapRotation = -rotation;
+			if(isLandscape) mapRotation -= Math.PI / 2;
+			mapTilt = Math.min(Math.abs(tilt), (float) (Math.PI / 4));
+		}
+
+		if(isFollowingPosition || isCompassMode)
+		{
+			// though the rotation and tilt are already smoothened by the CompassComponent, when it
+			// involves rotating the whole view, it feels better for the user if this is smoothened
+			// even further
+			if (controller.getRotation() != mapRotation) controller.setRotationEased(mapRotation,50);
+			if (controller.getTilt() != mapTilt) controller.setTiltEased(mapTilt,50);
+			compassView.setOrientation(mapRotation, mapTilt);
+		}
+	}
+
+	public boolean isCompassMode()
+	{
+		return isCompassMode;
+	}
+
+	public void setCompassMode(boolean isCompassMode)
+	{
+		this.isCompassMode = isCompassMode;
 	}
 
 	private float meters2Pixels(LngLat at, float meters) {
@@ -356,7 +403,7 @@ public class MapFragment extends Fragment implements
 		LatLon pos1 = SphericalEarthMath.translate(pos0, meters, 0);
 		PointF screenPos0 = controller.lngLatToScreenPosition(at);
 		PointF screenPos1 = controller.lngLatToScreenPosition(TangramConst.toLngLat(pos1));
-		return Math.abs(screenPos1.y - screenPos0.y);
+		return (float) Math.sqrt(Math.pow(screenPos1.y - screenPos0.y,2) + Math.pow(screenPos1.x - screenPos0.x,2));
 	}
 
 	private static final String PREF_ROTATION = "map_rotation";

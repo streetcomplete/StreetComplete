@@ -53,7 +53,7 @@
     <string name="quest_openingHours_add_weekdays">"Ajouter des jours de la semaine"</string>
     <string name="quest_openingHours_chooseMonthsTitle">"Sélectionner des mois"</string>
     <string name="quest_openingHours_chooseWeekdaysTitle">"Sélectionner des jours de la semaine"</string>
-    <string name="quest_openingHours_24_7_confirmation">"En d'autres termes, il est ouvert 24h/24 ?"</string>
+    <string name="quest_openingHours_24_7_confirmation">"En d'autres termes, c'est ouvert 24h/24 ?"</string>
     <string name="quest_noteDiscussion_title">"Pouvez-vous contribuer à cette note ?"</string>
     <string name="quest_noteDiscussion_no">"Non, cacher"</string>
     <string name="quest_noteDiscussion_create">"créé par %1$s (%2$s)"</string>
@@ -338,10 +338,81 @@ S'il n'y a aucun panneau, les limitations de vitesse par défaut s'appliquent."<
     <string name="quest_streetName_menuItem_language_simple">"%1$s - %2$s"</string>
     <string name="quest_streetName_menuItem_language_native">"%1$s - %2$s (%3$s)"</string>
     <string name="quest_streetName_answer_cantType">"Impossible de taper ces caractères"</string>
+    <string name="quest_streetName_cantType_title">"Caractère introuvable sur votre clavier ?"</string>
     <string name="quest_streetName_cantType_open_settings">"Ouvrir les paramètres"</string>
+    <string name="quest_streetName_cantType_open_store">"Magasin ouvert"</string>
     <string name="quest_streetName_cantType_description">"Si vous utilisez un clavier par défaut, il est probable que vous puissiez simplement activer la langue du clavier dont vous avez besoin dans les paramètres d'entrée.
 
 Sinon, vous pouvez télécharger un autre clavier dans la boutique d'applications. Les claviers populaires qui prennent en charge plusieurs langues sont Google Gboard, SwiftKey Keyboard et Multiling O Keyboard."</string>
-    <string name="quest_streetName_menuItem_nolanguage">"(non spécifié)
-"</string>
+    <string name="quest_streetName_menuItem_nolanguage">"(non spécifié)"</string>
+    <string name="quest_fireHydrant_type_title">"Quel type de bouche d'incendie est-ce ?"</string>
+    <string name="quest_fireHydrant_type_pillar">"Poteau"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_fireHydrant_type_underground">"Enterrée"</string>
+    <string name="quest_fireHydrant_type_wall">"Mur"</string>
+    <string name="quest_fireHydrant_type_pond">"Étang"</string>
+    <string name="credits_contributors">"Voir la &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;liste complète sur GitHub&lt;/a&gt;."</string>
+    <string name="credits_translations">"Voir le &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;projet sur POEditor&lt;/a&gt; pour la liste complète."</string>
+    <string name="credits_translations_title">"Traductions"</string>
+    <string name="credits_contributors_title">"Contributeurs du code"</string>
+    <string name="credits_author_title">"Auteur et Contributeur"</string>
+    <string name="credits_and_more">"plus ..."</string>
+    <string name="quest_maxspeed_answer_living_street">"C'est une zone résidentielle"</string>
+    <string name="quest_maxspeed_answer_living_street_confirmation_title">"Il y a donc un panneau comme celui-ci ?"</string>
+    <string name="quest_orchard_produce_title">"Qu'est-ce qui est cultivé ici ?"</string>
+    <string name="produce_grapes">"Raisins"</string>
+    <string name="produce_agaves">"Agaves"</string>
+    <string name="produce_almonds">"Amandes"</string>
+    <string name="produce_apples">"Pommes"</string>
+    <string name="produce_apricots">"Abricots"</string>
+    <string name="produce_avocados">"Avocats"</string>
+    <string name="produce_bananas">"Bananes"</string>
+    <string name="produce_blueberries">"Myrtilles"</string>
+    <string name="produce_cacao">"Cacao"</string>
+    <string name="produce_cashew_nuts">"Noix de cajou"</string>
+    <string name="produce_cherries">"Cerises"</string>
+    <string name="produce_chestnuts">"Châtaignes"</string>
+    <string name="produce_coconuts">"Noix de coco"</string>
+    <string name="produce_coffee">"Café"</string>
+    <string name="produce_cranberries">"Cranberries"</string>
+    <string name="produce_dates">"Dattes"</string>
+    <string name="produce_figs">"Figues"</string>
+    <string name="produce_grapefruits">"Pamplemousse"</string>
+    <string name="produce_guavas">"Goyaves"</string>
+    <string name="produce_hazelnuts">"Noisettes"</string>
+    <string name="produce_hops">"Houblon"</string>
+    <string name="produce_jojoba">"Jojoba"</string>
+    <string name="produce_kiwis">"Kiwis"</string>
+    <string name="produce_kola_nuts">"Noix de kola"</string>
+    <string name="produce_lemons">"Citrons"</string>
+    <string name="produce_limes">"Citrons verts"</string>
+    <string name="produce_mangos">"Mangues"</string>
+    <string name="produce_mate">"Maté"</string>
+    <string name="produce_nutmeg">"Noix de muscade"</string>
+    <string name="produce_oil_palms">"Palmiers à huile"</string>
+    <string name="produce_olives">"Olives"</string>
+    <string name="produce_oranges">"Oranges"</string>
+    <string name="produce_papayas">"Papayes"</string>
+    <string name="produce_peaches">"Pèches"</string>
+    <string name="produce_pears">"Poires"</string>
+    <string name="produce_chili">"Piments"</string>
+    <string name="produce_persimmons">"Kaki"</string>
+    <string name="produce_pineapples">"Ananas"</string>
+    <string name="produce_pepper">"Poivrons"</string>
+    <string name="produce_pistachios">"Pistaches"</string>
+    <string name="produce_plums">"Prunes"</string>
+    <string name="produce_raspberries">"Franboises"</string>
+    <string name="produce_rubber">"Caoutchouc"</string>
+    <string name="produce_strawberries">"Fraises"</string>
+    <string name="produce_tea">"Thé"</string>
+    <string name="produce_vanilla">"Vanille"</string>
+    <string name="produce_walnuts">"Noix"</string>
+    <string name="produce_sisal">"Sisal"</string>
+    <string name="quest_way_lit_title">"Cette section de voie est-elle éclairée ?"</string>
+    <string name="quest_way_lit_named_title">"La voie « %s » est-elle éclairée ?"</string>
+    <string name="quest_way_lit_road_title">"Cette section de route est-elle éclairée ?"</string>
+    <string name="quest_way_lit_named_road_title">"La route « %s » est-elle éclairée ?"</string>
+    <string name="quest_way_lit_automatic">"Cela utilise la détection de mouvement"</string>
+    <string name="quest_way_lit_24_7">"Voie allumée jour et nuit"</string>
 </resources>

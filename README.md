@@ -19,7 +19,7 @@ contribute to the OpenStreetMap by surveying their neighbourhood (or other place
 
 [<img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" alt="Get it on Google Play" height="80">](https://play.google.com/store/apps/details?id=de.westnordost.streetcomplete)[<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid"
       height="80"><br/>](https://f-droid.org/repository/browse/?fdid=de.westnordost.streetcomplete)
-Also available in the [IzzyOnDroid](https://apt.izzysoft.de/fdroid/index/apk/de.westnordost.streetcomplete) F-Droid repository (usually has faster updates).
+You can also simply download the APK from the [Releases](https://github.com/westnordost/StreetComplete/releases) section of this GitHub page.
 
 ## State of Development
 

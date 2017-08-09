@@ -12,5 +12,6 @@
         <attr name="state_enabled" format="boolean"/>
         <attr name="state_searching" format="boolean"/>
         <attr name="state_updating" format="boolean"/>
+        <attr name="compass_mode" format="boolean"/>
     </declare-styleable>
 </resources>
