@@ -28,6 +28,7 @@ import de.westnordost.osmapi.OsmConnection;
 import de.westnordost.osmapi.user.Permission;
 import de.westnordost.osmapi.user.PermissionsDao;
 import de.westnordost.osmapi.user.UserDao;
+import de.westnordost.osmapi.user.UserDetails;
 import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.R;
@@ -264,9 +265,15 @@ public class OsmOAuthDialogFragment extends DialogFragment
 
 		@Override protected Void doInBackground() throws Exception
 		{
-			long userId = new UserDao(osmConnection).getMine().id;
+			// Get userDetails from remote API
+			UserDetails userDetails = new UserDao(osmConnection).getMine();
+			// Get SC preferences editor
 			SharedPreferences.Editor editor = prefs.edit();
-			editor.putLong(Prefs.OSM_USER_ID, userId);
+			// Store user id in preferences file
+			editor.putLong(Prefs.OSM_USER_ID, userDetails.id);
+			// Store user display name in preferences file
+			editor.putString(Prefs.OSM_USER_DISPLAY_NAME, userDetails.displayName);
+			// Write new preferences in files
 			editor.apply();
 			return null;
 		}
@@ -275,7 +282,10 @@ public class OsmOAuthDialogFragment extends DialogFragment
 		{
 			if(getActivity() == null || state == State.CANCELLED) return;
 
-			Toast.makeText(getActivity(), R.string.pref_title_authorized_summary, Toast.LENGTH_LONG).show();
+			// Get username from SC preferences file
+			String username = prefs.getString(Prefs.OSM_USER_DISPLAY_NAME, null);
+			String summary = String.format(getResources().getString(R.string.pref_title_authorized_username_summary), username);
+			Toast.makeText(getActivity(), summary, Toast.LENGTH_LONG).show();
 			applyOAuthConsumer(consumer);
 			listener.onOAuthAuthorized();
 			dismiss();
