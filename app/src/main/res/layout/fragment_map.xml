@@ -31,6 +31,7 @@
         <de.westnordost.streetcomplete.view.CompassView
             android:layout_width="34dp"
             android:layout_height="34dp"
+            android:layout_marginTop="-1dp"
             android:layout_centerHorizontal="true"
             android:id="@+id/compass"
             android:layout_alignParentBottom="true"
