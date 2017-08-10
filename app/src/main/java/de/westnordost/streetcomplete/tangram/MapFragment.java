@@ -8,7 +8,6 @@ import android.graphics.Canvas;
 import android.graphics.PointF;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.location.Location;
 import android.os.Bundle;
@@ -357,6 +356,9 @@ public class MapFragment extends Fragment implements
 
 	@Override public void onRotationChanged(float rotation, float tilt)
 	{
+		// we received an event from the compass, so compass is working - direction can be displayed on screen
+		isShowingDirection = true;
+
 		if(directionMarker != null && directionMarker.isVisible())
 		{
 			double r = rotation * 180 / Math.PI;
@@ -385,13 +387,6 @@ public class MapFragment extends Fragment implements
 			if (controller.getTilt() != mapTilt) controller.setTiltEased(mapTilt,50);
 			compassView.setOrientation(mapRotation, mapTilt);
 		}
-	}
-
-	@Override public void onMagnetometerEvent()
-	{
-		// we received an event from magnetometer, magnetometer is working
-		// so direction can be displayed on screen
-		isShowingDirection = true;
 	}
 
 	public boolean isShowingDirection() { return isShowingDirection; }
