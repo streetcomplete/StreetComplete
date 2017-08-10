@@ -233,15 +233,14 @@ public class MainActivity extends AppCompatActivity implements
 				{
 					boolean isFollowing = mapFragment.isFollowingPosition();
 					boolean isCompassMode = mapFragment.isCompassMode();
-					SensorManager sm = (SensorManager)getSystemService(SENSOR_SERVICE);
-					boolean deviceHasCompass = sm.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD) != null;
+					boolean isShowingDirection = mapFragment.isShowingDirection();
 					// cycle through these three states
 					if(!isFollowing)
 					{
 						setIsFollowingPosition(true);
 					}
 					// cycle to compass mode only if position already known
-					else if(!isCompassMode && deviceHasCompass)
+					else if(!isCompassMode && isShowingDirection)
 					{
 						trackingButton.setCompassMode(true);
 						mapFragment.setCompassMode(true);

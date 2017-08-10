@@ -84,7 +84,6 @@ public class CompassView extends GLSurfaceView
 			gl.glLoadIdentity();
 			GLU.gluLookAt(gl, 0,0,-5, 0,0,0, 0,1,0);
 
-			gl.glTranslatef(0,0.5f,0);
 			gl.glScalef(1.25f, 1.25f,1.25f);
 			gl.glRotatef(tilt * 180 / (float) Math.PI, 1, 0, 0);
 			gl.glRotatef(rotation * 180 / (float) Math.PI, 0, 0, 1);

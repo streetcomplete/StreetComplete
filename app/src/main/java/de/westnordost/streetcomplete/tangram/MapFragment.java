@@ -8,7 +8,6 @@ import android.graphics.Canvas;
 import android.graphics.PointF;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.location.Location;
 import android.os.Bundle;
@@ -81,7 +80,7 @@ public class MapFragment extends Fragment implements
 
 	private String apiKey;
 
-	private boolean deviceHasCompass;
+	private boolean isShowingDirection;
 
 	public interface Listener
 	{
@@ -144,9 +143,6 @@ public class MapFragment extends Fragment implements
 		locationMarker.setStylingFromString("{ style: 'points', color: 'white', size: ["+TextUtils.join(",",sizeInDp(dot))+"], order: 2000, flat: true, collide: false }");
 		locationMarker.setDrawable(dot);
 		locationMarker.setDrawOrder(3);
-
-		SensorManager sm = (SensorManager)getActivity().getSystemService(SENSOR_SERVICE);
-		deviceHasCompass = sm.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD) != null;
 
 		directionMarker = controller.addMarker();
 		BitmapDrawable directionImg = createBitmapDrawableFrom(R.drawable.location_direction);
@@ -221,6 +217,7 @@ public class MapFragment extends Fragment implements
 		}
 		lastLocation = null;
 		zoomedYet = false;
+		isShowingDirection = false;
 
 		if(lostApiClient.isConnected())
 		{
@@ -234,6 +231,7 @@ public class MapFragment extends Fragment implements
 		isFollowingPosition = value;
 		if(!isFollowingPosition) {
 			zoomedYet = false;
+			isShowingDirection = false;
 		}
 		followPosition();
 	}
@@ -337,7 +335,7 @@ public class MapFragment extends Fragment implements
 			LngLat pos = new LngLat(lastLocation.getLongitude(), lastLocation.getLatitude());
 			locationMarker.setVisible(true);
 			accuracyMarker.setVisible(true);
-			directionMarker.setVisible(deviceHasCompass);
+			directionMarker.setVisible(isShowingDirection);
 			locationMarker.setPointEased(pos, 1000, MapController.EaseType.CUBIC);
 			accuracyMarker.setPointEased(pos, 1000, MapController.EaseType.CUBIC);
 			directionMarker.setPointEased(pos, 1000, MapController.EaseType.CUBIC);
@@ -358,6 +356,9 @@ public class MapFragment extends Fragment implements
 
 	@Override public void onRotationChanged(float rotation, float tilt)
 	{
+		// we received an event from the compass, so compass is working - direction can be displayed on screen
+		isShowingDirection = true;
+
 		if(directionMarker != null && directionMarker.isVisible())
 		{
 			double r = rotation * 180 / Math.PI;
@@ -387,6 +388,8 @@ public class MapFragment extends Fragment implements
 			compassView.setOrientation(mapRotation, mapTilt);
 		}
 	}
+
+	public boolean isShowingDirection() { return isShowingDirection; }
 
 	public boolean isCompassMode()
 	{
