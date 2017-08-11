@@ -32,7 +32,7 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
 
 		addPreferencesFromResource(R.xml.preferences);
 
-		Preference oauth = getPreferenceScreen().findPreference(Prefs.OAUTH);
+		Preference oauth = getPreferenceScreen().findPreference("oauth");
 		oauth.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener()
 		{
 			@Override
@@ -53,7 +53,7 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
 
 	private void updateOsmAuthSummary()
 	{
-		Preference oauth = getPreferenceScreen().findPreference(Prefs.OAUTH);
+		Preference oauth = getPreferenceScreen().findPreference("oauth");
 		String username = prefs.getString(Prefs.OSM_USER_NAME, null);
 		if (oAuth.isAuthorized())
 		{
