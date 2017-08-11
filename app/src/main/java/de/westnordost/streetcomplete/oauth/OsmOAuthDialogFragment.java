@@ -265,15 +265,10 @@ public class OsmOAuthDialogFragment extends DialogFragment
 
 		@Override protected Void doInBackground() throws Exception
 		{
-			// Get userDetails from remote API
 			UserDetails userDetails = new UserDao(osmConnection).getMine();
-			// Get SC preferences editor
 			SharedPreferences.Editor editor = prefs.edit();
-			// Store user id in preferences file
 			editor.putLong(Prefs.OSM_USER_ID, userDetails.id);
-			// Store user display name in preferences file
-			editor.putString(Prefs.OSM_USER_DISPLAY_NAME, userDetails.displayName);
-			// Write new preferences in files
+			editor.putString(Prefs.OSM_USER_NAME, userDetails.displayName);
 			editor.apply();
 			return null;
 		}
@@ -282,8 +277,7 @@ public class OsmOAuthDialogFragment extends DialogFragment
 		{
 			if(getActivity() == null || state == State.CANCELLED) return;
 
-			// Get username from SC preferences file
-			String username = prefs.getString(Prefs.OSM_USER_DISPLAY_NAME, null);
+			String username = prefs.getString(Prefs.OSM_USER_NAME, null);
 			String summary = String.format(getResources().getString(R.string.pref_title_authorized_username_summary), username);
 			Toast.makeText(getActivity(), summary, Toast.LENGTH_LONG).show();
 			applyOAuthConsumer(consumer);
