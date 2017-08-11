@@ -9,7 +9,6 @@ import android.preference.PreferenceFragment;
 
 import de.westnordost.streetcomplete.ApplicationConstants;
 import de.westnordost.streetcomplete.BuildConfig;
-import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.R;
 
 public class AboutFragment extends PreferenceFragment
@@ -21,9 +20,9 @@ public class AboutFragment extends PreferenceFragment
 
 		addPreferencesFromResource(R.xml.about);
 
-		getPreferenceScreen().findPreference(Prefs.VERSION).setSummary(BuildConfig.VERSION_NAME);
+		getPreferenceScreen().findPreference("version").setSummary(BuildConfig.VERSION_NAME);
 
-		getPreferenceScreen().findPreference(Prefs.LICENSE).setOnPreferenceClickListener(
+		getPreferenceScreen().findPreference("license").setOnPreferenceClickListener(
 				new Preference.OnPreferenceClickListener()
 		{
 			@Override public boolean onPreferenceClick(Preference preference)
@@ -35,7 +34,7 @@ public class AboutFragment extends PreferenceFragment
 			}
 		});
 
-		getPreferenceScreen().findPreference(Prefs.AUTHORS).setOnPreferenceClickListener(
+		getPreferenceScreen().findPreference("authors").setOnPreferenceClickListener(
 				new Preference.OnPreferenceClickListener()
 		{
 			@Override
@@ -53,7 +52,7 @@ public class AboutFragment extends PreferenceFragment
 			}
 		});
 
-		getPreferenceScreen().findPreference(Prefs.PRIVACY).setOnPreferenceClickListener(
+		getPreferenceScreen().findPreference("privacy").setOnPreferenceClickListener(
 				new Preference.OnPreferenceClickListener()
 		{
 			@Override
@@ -72,7 +71,7 @@ public class AboutFragment extends PreferenceFragment
 			}
 		});
 
-		getPreferenceScreen().findPreference(Prefs.REPOSITORY).setOnPreferenceClickListener(
+		getPreferenceScreen().findPreference("repository").setOnPreferenceClickListener(
 				new Preference.OnPreferenceClickListener()
 				{
 					@Override public boolean onPreferenceClick(Preference preference)
@@ -84,7 +83,7 @@ public class AboutFragment extends PreferenceFragment
 					}
 				});
 
-		getPreferenceScreen().findPreference(Prefs.REPORT_ERROR).setOnPreferenceClickListener(
+		getPreferenceScreen().findPreference("report_error").setOnPreferenceClickListener(
 				new Preference.OnPreferenceClickListener()
 		{
 			@Override public boolean onPreferenceClick(Preference preference)
@@ -96,7 +95,7 @@ public class AboutFragment extends PreferenceFragment
 			}
 		});
 
-		getPreferenceScreen().findPreference(Prefs.EMAIL_FEEDBACK).setOnPreferenceClickListener(
+		getPreferenceScreen().findPreference("email_feedback").setOnPreferenceClickListener(
 				new Preference.OnPreferenceClickListener()
 		{
 			@Override public boolean onPreferenceClick(Preference preference)

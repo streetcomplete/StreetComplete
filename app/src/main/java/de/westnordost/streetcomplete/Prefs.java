@@ -14,14 +14,7 @@ public class Prefs
 			SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS = "display.nonQuestionNotes",
 			AUTOSYNC = "autosync",
 			LAST_SOLVED_QUEST_TIME = "changesets.lastQuestSolvedTime",
-			KEEP_SCREEN_ON = "display.keepScreenOn",
-			VERSION = "version",
-			LICENSE = "license",
-			AUTHORS = "authors",
-			PRIVACY = "privacy",
-			REPOSITORY = "repository",
-			REPORT_ERROR = "report_error",
-			EMAIL_FEEDBACK = "email_feedback";
+			KEEP_SCREEN_ON = "display.keepScreenOn";
 
 	public enum Autosync
 	{
