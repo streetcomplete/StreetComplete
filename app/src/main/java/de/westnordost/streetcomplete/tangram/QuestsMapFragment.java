@@ -161,7 +161,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		previousZoom = Math.max(17.5f,controller.getZoom());
 
 		float targetZoom = getMaxZoomThatContains(g);
-		if(Double.isNaN(targetZoom) || targetZoom > MAX_QUEST_ZOOM)
+		if(Float.isNaN(targetZoom) || targetZoom > MAX_QUEST_ZOOM)
 		{
 			targetZoom = MAX_QUEST_ZOOM;
 		}
@@ -203,6 +203,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		float currentZoom;
 		synchronized(controller) {
 			screenArea = getDisplayedArea(questTopOffset, questBottomOffset);
+			if(screenArea == null) return Float.NaN;
 			currentZoom = controller.getZoom();
 		}
 
