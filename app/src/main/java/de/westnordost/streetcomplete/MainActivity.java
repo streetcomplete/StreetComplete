@@ -379,7 +379,7 @@ public class MainActivity extends AppCompatActivity implements
 				{
 					@Override public void onClick(DialogInterface dialog, int which)
 					{
-						questController.undoOsmQuest(quest.getId());
+						questController.undoOsmQuest(quest);
 						answersCounter.undidQuest(quest.getChangesSource());
 					}
 				})

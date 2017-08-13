@@ -24,6 +24,7 @@ import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao;
 import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
+import de.westnordost.streetcomplete.data.osm.persist.UndoOsmQuestDao;
 import de.westnordost.streetcomplete.data.osmnotes.CreateNote;
 import de.westnordost.streetcomplete.data.osmnotes.CreateNoteDao;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuest;
@@ -38,6 +39,7 @@ import static android.content.Context.BIND_AUTO_CREATE;
 public class QuestController
 {
 	private final OsmQuestDao osmQuestDB;
+	private final UndoOsmQuestDao undoOsmQuestDB;
 	private final MergedElementDao osmElementDB;
 	private final ElementGeometryDao geometryDB;
 	private final OsmNoteQuestDao osmNoteQuestDB;
@@ -65,12 +67,13 @@ public class QuestController
 	private Handler workerHandler;
 	private HandlerThread worker;
 
-	@Inject public QuestController(OsmQuestDao osmQuestDB, MergedElementDao osmElementDB,
-								   ElementGeometryDao geometryDB, OsmNoteQuestDao osmNoteQuestDB,
-								   CreateNoteDao createNoteDB, OpenChangesetsDao openChangesetsDao,
-								   Context context)
+	@Inject public QuestController(OsmQuestDao osmQuestDB, UndoOsmQuestDao undoOsmQuestDB,
+								   MergedElementDao osmElementDB, ElementGeometryDao geometryDB,
+								   OsmNoteQuestDao osmNoteQuestDB, CreateNoteDao createNoteDB,
+								   OpenChangesetsDao openChangesetsDao, Context context)
 	{
 		this.osmQuestDB = osmQuestDB;
+		this.undoOsmQuestDB = undoOsmQuestDB;
 		this.osmElementDB = osmElementDB;
 		this.geometryDB = geometryDB;
 		this.osmNoteQuestDB = osmNoteQuestDB;
@@ -184,13 +187,13 @@ public class QuestController
 		return osmQuestDB.getLastSolved();
 	}
 
-	public void undoOsmQuest(final long questId)
+	public void undoOsmQuest(final OsmQuest quest)
 	{
 		workerHandler.post(new Runnable() { @Override public void run()
 		{
-			OsmQuest quest = osmQuestDB.get(questId);
 			if(quest == null) return;
 
+			// not uploaded yet -> simply revert to NEW
 			if(quest.getStatus() == QuestStatus.ANSWERED)
 			{
 				quest.setStatus(QuestStatus.NEW);
@@ -200,6 +203,7 @@ public class QuestController
 				Element element = osmElementDB.get(quest.getElementType(), quest.getElementId());
 				relay.onQuestCreated(quest, QuestGroup.OSM, element);
 			}
+			// already uploaded! -> create change to reverse the previous change
 			else if(quest.getStatus() == QuestStatus.CLOSED)
 			{
 				OsmQuest reversedQuest = new OsmQuest(
@@ -209,10 +213,7 @@ public class QuestController
 						quest.getGeometry());
 				reversedQuest.setChanges(quest.getChanges().reversed(), quest.getChangesSource());
 				reversedQuest.setStatus(QuestStatus.ANSWERED);
-				reversedQuest.setIsUndo(true);
-				osmQuestDB.add(reversedQuest);
-				// already uploaded quests are not undone in a way that they are displayed again
-				// right away because this'd lead to conflicts in the upload process
+				undoOsmQuestDB.add(reversedQuest);
 			}
 			else
 			{
