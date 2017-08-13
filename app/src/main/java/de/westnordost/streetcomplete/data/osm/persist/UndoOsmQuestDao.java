@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.util.Serializer;
 
 /** Same as OsmQuestDao, only operates on a different table to have a clear cut between
  * "real" quests and reversed quests used to revert changes made by another quest */
-public class UndoOsmQuestDao extends OsmQuestDao
+public class UndoOsmQuestDao extends AOsmQuestDao
 {
 	@Inject public UndoOsmQuestDao(SQLiteOpenHelper dbHelper, Serializer serializer, QuestTypes questTypeList)
 	{

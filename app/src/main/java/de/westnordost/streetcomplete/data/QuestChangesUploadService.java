@@ -20,6 +20,7 @@ import de.westnordost.osmapi.common.errors.OsmConnectionException;
 import de.westnordost.streetcomplete.ApplicationConstants;
 import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.data.osm.upload.OsmQuestChangesUpload;
+import de.westnordost.streetcomplete.data.osm.upload.UndoOsmQuestChangesUpload;
 import de.westnordost.streetcomplete.data.osmnotes.CreateNoteUpload;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestChangesUpload;
 import de.westnordost.streetcomplete.oauth.OAuthPrefs;
@@ -45,6 +46,7 @@ public class QuestChangesUploadService extends IntentService
 
 	@Inject Provider<OsmNoteQuestChangesUpload> noteQuestUploadProvider;
 	@Inject Provider<OsmQuestChangesUpload> questUploadProvider;
+	@Inject Provider<UndoOsmQuestChangesUpload> undoQuestUploadProvider;
 	@Inject Provider<CreateNoteUpload> createNoteUploadProvider;
 	@Inject OAuthPrefs oAuth;
 
@@ -97,6 +99,11 @@ public class QuestChangesUploadService extends IntentService
 		{
 			OsmNoteQuestChangesUpload noteQuestUpload = noteQuestUploadProvider.get();
 			noteQuestUpload.upload(cancelState);
+
+			if (cancelState.get()) return;
+
+			UndoOsmQuestChangesUpload undoOsmQuestUpload = undoQuestUploadProvider.get();
+			undoOsmQuestUpload.upload(cancelState);
 
 			if (cancelState.get()) return;
 

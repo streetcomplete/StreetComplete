@@ -5,18 +5,18 @@ import android.content.SharedPreferences;
 import javax.inject.Inject;
 
 import de.westnordost.osmapi.changesets.ChangesetsDao;
+import de.westnordost.osmapi.map.MapDataDao;
 import de.westnordost.streetcomplete.data.changesets.OpenChangesetsDao;
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao;
 import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao;
-import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
+import de.westnordost.streetcomplete.data.osm.persist.UndoOsmQuestDao;
 import de.westnordost.streetcomplete.data.statistics.QuestStatisticsDao;
-import de.westnordost.osmapi.map.MapDataDao;
 import de.westnordost.streetcomplete.data.tiles.DownloadedTilesDao;
 
-public class OsmQuestChangesUpload extends AOsmQuestChangesUpload
+public class UndoOsmQuestChangesUpload extends AOsmQuestChangesUpload
 {
-	@Inject public OsmQuestChangesUpload(
-			MapDataDao osmDao, OsmQuestDao questDB, MergedElementDao elementDB,
+	@Inject public UndoOsmQuestChangesUpload(
+			MapDataDao osmDao, UndoOsmQuestDao questDB, MergedElementDao elementDB,
 			ElementGeometryDao elementGeometryDB, QuestStatisticsDao statisticsDB,
 			OpenChangesetsDao openChangesetsDB, ChangesetsDao changesetsDao,
 			DownloadedTilesDao downloadedTilesDao, SharedPreferences prefs)
