@@ -20,7 +20,7 @@ import dagger.Provides;
 public class MetadataModule
 {
 	@Provides @Singleton public static CountryInfos countryInfos(
-			AssetManager assetManager, Future<CountryBoundaries> countryBoundaries)
+			AssetManager assetManager, FutureTask<CountryBoundaries> countryBoundaries)
 	{
 		return new CountryInfos(assetManager, countryBoundaries);
 	}
@@ -30,10 +30,10 @@ public class MetadataModule
 		return new GeoJsonReader();
 	}
 
-	@Provides @Singleton public static Future<CountryBoundaries> countryBoundariesFuture(
+	@Provides @Singleton public static FutureTask<CountryBoundaries> countryBoundariesFuture(
 			final AssetManager assetManager, final GeoJsonReader geoJsonReader)
 	{
-		FutureTask<CountryBoundaries> ft = new FutureTask<>(new Callable<CountryBoundaries>()
+		return new FutureTask<>(new Callable<CountryBoundaries>()
 		{
 			@Override public CountryBoundaries call() throws Exception
 			{
@@ -42,9 +42,6 @@ public class MetadataModule
 						(GeometryCollection) geoJsonReader.read(readToString(is)));
 			}
 		});
-		// start creating (=loading) CountryBoundaries asynchronously
-		new Thread(ft).start();
-		return ft;
 	}
 
 	private static String readToString(InputStream is) throws IOException
