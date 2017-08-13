@@ -18,6 +18,16 @@ building_levels_illustration.svg
 
 living_street.svg
 
+advisory_speed_limit_blue.svg	Andreas 06, Mediatus; CC0L; https://en.wikipedia.org/wiki/File:Zeichen_380-52_-_Richtgeschwindigkeit_80_km-h,_StVO_1992.svg
+
+advisory_speed_limit_yellow.svg	Standards Australia; Public Domain; 
+
+advisory_speed_limit_white.svg	Public Domain; https://en.wikipedia.org/wiki/File:Philippines_road_sign_W8-1.svg
+
+advisory_speed_limit_white_horizontal.svg	UK Traffic signs image database; Open Government Licence v1.0; https://en.wikipedia.org/wiki/File:UK_traffic_sign_513.2.svg
+
+advisory_speed_limit_china		Beijing Traffic Management Bureau, https://commons.wikimedia.org/wiki/File:China_road_sign_%E8%B7%AF_62a.jpg
+
 roof_shape_icons.svg
 
 quest_icons.svg

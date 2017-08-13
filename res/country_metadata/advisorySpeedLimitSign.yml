@@ -1,0 +1,37 @@
+# Sources:
+# https://en.wikipedia.org/wiki/advisory_speed_limit
+# https://en.wikipedia.org/wiki/Comparison_of_European_road_signs
+# https://commons.wikimedia.org/wiki/Category:Advisory_speed_limit_road_signs
+# Obviously not needed for countries without advisory speed limits. (see isAdvisorySpeedLimitKnown.yml)
+
+default: advisory_speed_limit_blue
+CZ: advisory_speed_limit_blue # color a bit darker though https://en.wikipedia.org/wiki/File:IP05cr.jpg
+DK: advisory_speed_limit_blue
+EE: advisory_speed_limit_blue # a bit lighter though https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Estonia_road_sign_556.svg/60px-Estonia_road_sign_556.svg.png
+FI: advisory_speed_limit_blue # a bit lighter though https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Finland_road_sign_653_%2870%29.svg/60px-Finland_road_sign_653_%2870%29.svg.png
+FR: advisory_speed_limit_blue # color a bit different and small white border https://en.wikipedia.org/wiki/File:France_road_sign_C4a_(50).svg
+GR: advisory_speed_limit_blue
+HU: advisory_speed_limit_blue # color a bit darker though https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Hungary_road_sign_G-003.svg/60px-Hungary_road_sign_G-003.svg.png
+IT: advisory_speed_limit_blue # color a bit darker though
+LU: advisory_speed_limit_blue
+NL: advisory_speed_limit_blue # with km/h on shield, however
+'NO': advisory_speed_limit_white # km/t originally, instead of km/h, however
+PT: advisory_speed_limit_blue
+RO: advisory_speed_limit_blue
+RU: advisory_speed_limit_blue
+BY: advisory_speed_limit_blue
+SK: advisory_speed_limit_blue # color a bit darker though
+SI: advisory_speed_limit_blue # color a bit darker though
+ES: advisory_speed_limit_blue # color a bit darker though
+SE: advisory_speed_limit_blue # with a white border, though (MAYBE DESERVES OWN ICON?) https://en.wikipedia.org/wiki/File:Sweden_road_sign_E11-3.svg
+UA: advisory_speed_limit_blue
+GB: advisory_speed_limit_white_horizontal
+AU: advisory_speed_limit_yellow
+CA: advisory_speed_limit_yellow # however, square
+JP: advisory_speed_limit_white # or, correct Chinese version? https://en.wikipedia.org/wiki/File:Japan_road_sign_510_Safety_Speed.svg
+NZ: advisory_speed_limit_yellow # without, km/h, however
+PH: advisory_speed_limit_white
+KR: advisory_speed_limit_white # different km/h label
+US: advisory_speed_limit_yellow # foten rather square, however
+CN: advisory_speed_limit_china # (also advisory_speed_limit_yellow)
+
