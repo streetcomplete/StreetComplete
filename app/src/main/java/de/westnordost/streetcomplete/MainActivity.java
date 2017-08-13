@@ -12,8 +12,6 @@ import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.hardware.Sensor;
-import android.hardware.SensorManager;
 import android.location.Location;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -425,7 +423,7 @@ public class MainActivity extends AppCompatActivity implements
 		BoundingBox displayArea;
 		if ((displayArea = mapFragment.getDisplayedArea(0,0)) == null)
 		{
-			Toast.makeText(this, R.string.cannot_find_bbox, Toast.LENGTH_LONG).show();
+			Toast.makeText(this, R.string.cannot_find_bbox_or_reduce_tilt, Toast.LENGTH_LONG).show();
 		}
 		else
 		{

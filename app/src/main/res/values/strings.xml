@@ -63,7 +63,7 @@
     <string name="close">"close"</string>
     <string name="download_error">"Error while scanning for quests"</string>
     <string name="upload_error">"Error while uploading answers"</string>
-    <string name="cannot_find_bbox">"Can't scan here. Try to zoom in further"</string>
+    <string name="cannot_find_bbox_or_reduce_tilt">"Can't scan here. Try to zoom in further or tilt the map less."</string>
     <string name="download_area_too_big">"Please zoom in further"</string>
     <string name="confirmation_cancel_prev_download_title">"Cancel the current search and scan here instead?"</string>
     <string name="notification_downloading">"Scanning for quests"</string>
