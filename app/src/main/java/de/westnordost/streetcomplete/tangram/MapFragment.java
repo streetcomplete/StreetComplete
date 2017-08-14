@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.tangram;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -15,6 +14,7 @@ import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v13.app.FragmentCompat;
+import android.support.v4.app.Fragment;
 import android.text.Html;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
@@ -41,7 +41,6 @@ import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.util.SphericalEarthMath;
-import de.westnordost.streetcomplete.view.CompassView;
 
 import static android.content.Context.SENSOR_SERVICE;
 import static android.content.res.Configuration.ORIENTATION_LANDSCAPE;
@@ -60,7 +59,6 @@ public class MapFragment extends Fragment implements
 	private String[] directionMarkerSize;
 
 	private MapView mapView;
-	private CompassView compassView;
 
 	private HttpHandler httpHandler;
 
@@ -76,6 +74,8 @@ public class MapFragment extends Fragment implements
 
 	private boolean isCompassMode;
 
+	private MapControlsFragment mapControls;
+
 	private Listener listener;
 
 	private String apiKey;
@@ -85,7 +85,6 @@ public class MapFragment extends Fragment implements
 	public interface Listener
 	{
 		void onMapReady();
-		void onUnglueViewFromPosition();
 	}
 
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -94,7 +93,6 @@ public class MapFragment extends Fragment implements
 		View view = inflater.inflate(R.layout.fragment_map, container, false);
 
 		mapView = (MapView) view.findViewById(R.id.map);
-		compassView = (CompassView) view.findViewById(R.id.compass);
 		TextView mapzenLink = (TextView) view.findViewById(R.id.mapzenLink);
 
 		mapzenLink.setText(Html.fromHtml(
@@ -104,6 +102,13 @@ public class MapFragment extends Fragment implements
 		mapzenLink.setMovementMethod(LinkMovementMethod.getInstance());
 
 		return view;
+	}
+
+	@Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState)
+	{
+		super.onViewCreated(view, savedInstanceState);
+		mapControls = (MapControlsFragment) getChildFragmentManager().findFragmentById(R.id.controls_fragment);
+		mapControls.setMapFragment(this);
 	}
 
 	/* --------------------------------- Map and Location --------------------------------------- */
@@ -192,9 +197,9 @@ public class MapFragment extends Fragment implements
 
 	private HttpHandler createHttpHandler()
 	{
-		int cacheSize = PreferenceManager.getDefaultSharedPreferences(getActivity()).getInt(Prefs.MAP_TILECACHE, 50);
+		int cacheSize = PreferenceManager.getDefaultSharedPreferences(getContext()).getInt(Prefs.MAP_TILECACHE, 50);
 
-		File cacheDir = getActivity().getExternalCacheDir();
+		File cacheDir = getContext().getExternalCacheDir();
 		if (cacheDir != null && cacheDir.exists())
 		{
 			return new TileHttpHandler(apiKey, new File(cacheDir, "tile_cache"), cacheSize * 1024 * 1024);
@@ -245,11 +250,16 @@ public class MapFragment extends Fragment implements
 	{
 		if(isFollowingPosition && controller != null && lastLocation != null)
 		{
-			controller.setPositionEased(new LngLat(lastLocation.getLongitude(), lastLocation.getLatitude()),1000);
+			controller.setPositionEased(new LngLat(lastLocation.getLongitude(), lastLocation.getLatitude()),500);
 			if(!zoomedYet)
 			{
 				zoomedYet = true;
 				controller.setZoomEased(19, 500);
+				if(!isCompassMode)
+				{
+					controller.setRotationEased(0, 50);
+					controller.setTiltEased(0, 50);
+				}
 			}
 			updateView();
 		}
@@ -259,9 +269,11 @@ public class MapFragment extends Fragment implements
 
 	@Override public boolean onDoubleTap(float x, float y)
 	{
-		unglueViewFromPosition();
-		LngLat zoomTo = controller.screenPositionToLngLat(new PointF(x, y));
-		controller.setPositionEased(zoomTo, 500);
+		if(requestUnglueViewFromPosition())
+		{
+			LngLat zoomTo = controller.screenPositionToLngLat(new PointF(x, y));
+			controller.setPositionEased(zoomTo, 500);
+		}
 		controller.setZoomEased(controller.getZoom() + 1.5f, 500);
 		updateView();
 		return true;
@@ -269,37 +281,36 @@ public class MapFragment extends Fragment implements
 
 	@Override public boolean onScale(float x, float y, float scale, float velocity)
 	{
-		unglueViewFromPosition();
 		updateView();
 		return false;
 	}
 
 	@Override public boolean onPan(float startX, float startY, float endX, float endY)
 	{
-		unglueViewFromPosition();
+		if(!requestUnglueViewFromPosition()) return true;
 		updateView();
 		return false;
 	}
 
 	@Override public boolean onFling(float posX, float posY, float velocityX, float velocityY)
 	{
-		unglueViewFromPosition();
+		if(!requestUnglueViewFromPosition()) return true;
 		updateView();
 		return false;
 	}
 
 	@Override public boolean onShove(float distance)
 	{
-		unglueViewFromPosition();
-		compassView.setOrientation(controller.getRotation(), controller.getTilt());
+		if(!requestUnglueViewFromRotation()) return true;
+		mapControls.onMapOrientation(controller.getRotation(), controller.getTilt());
 		updateView();
 		return false;
 	}
 
 	@Override public boolean onRotate(float x, float y, float rotation)
 	{
-		unglueViewFromPosition();
-		compassView.setOrientation(controller.getRotation(), controller.getTilt());
+		if(!requestUnglueViewFromRotation()) return true;
+		mapControls.onMapOrientation(controller.getRotation(), controller.getTilt());
 		updateView();
 		return false;
 	}
@@ -307,16 +318,39 @@ public class MapFragment extends Fragment implements
 	protected void updateView()
 	{
 		updateAccuracy();
+		if(isFollowingPosition && controller != null && lastLocation != null)
+		{
+			controller.setPositionEased(new LngLat(lastLocation.getLongitude(), lastLocation.getLatitude()),500);
+		}
 	}
 
-	private void unglueViewFromPosition()
+	private boolean requestUnglueViewFromPosition()
 	{
-		if(isFollowingPosition || isCompassMode)
+		if(isFollowingPosition)
 		{
-			setIsFollowingPosition(false);
-			setCompassMode(false);
-			listener.onUnglueViewFromPosition();
+			if(mapControls.requestUnglueViewFromPosition())
+			{
+				setIsFollowingPosition(false);
+				setCompassMode(false);
+				return true;
+			}
+			return false;
 		}
+		return true;
+	}
+
+	private boolean requestUnglueViewFromRotation()
+	{
+		if(isCompassMode)
+		{
+			if(mapControls.requestUnglueViewFromRotation())
+			{
+				setCompassMode(false);
+				return true;
+			}
+			return false;
+		}
+		return true;
 	}
 
 	/* ------------------------------------ LOST ------------------------------------------- */
@@ -368,24 +402,25 @@ public class MapFragment extends Fragment implements
 							"], order: 2000, collide: false, flat: true, angle: " + r + " }");
 		}
 
-		float mapRotation = 0;
-		float mapTilt = 0;
 		if (isCompassMode)
 		{
 			boolean isLandscape = getResources().getConfiguration().orientation == ORIENTATION_LANDSCAPE;
-			mapRotation = -rotation;
-			if(isLandscape) mapRotation -= Math.PI / 2;
-			mapTilt = Math.min(Math.abs(tilt), (float) (Math.PI / 4));
-		}
+			float mapRotation = -rotation;
+			if (isLandscape) mapRotation -= Math.PI / 2;
+			float mapTilt = Math.abs(tilt); //Math.min(Math.abs(tilt), (float) (Math.PI / 4));
 
-		if(isFollowingPosition || isCompassMode)
-		{
 			// though the rotation and tilt are already smoothened by the CompassComponent, when it
 			// involves rotating the whole view, it feels better for the user if this is smoothened
 			// even further
-			if (controller.getRotation() != mapRotation) controller.setRotationEased(mapRotation,50);
-			if (controller.getTilt() != mapTilt) controller.setTiltEased(mapTilt,50);
-			compassView.setOrientation(mapRotation, mapTilt);
+			if (controller.getRotation() != mapRotation)
+			{
+				controller.setRotationEased(mapRotation, 50);
+			}
+			if (controller.getTilt() != mapTilt)
+			{
+				controller.setTiltEased(mapTilt, 50);
+			}
+			mapControls.onMapOrientation(mapRotation, mapTilt);
 		}
 	}
 
@@ -452,7 +487,7 @@ public class MapFragment extends Fragment implements
 	@Override public void onCreate(@Nullable Bundle bundle)
 	{
 		super.onCreate(bundle);
-		compass.onCreate((SensorManager) getActivity().getSystemService(SENSOR_SERVICE));
+		compass.onCreate((SensorManager) getContext().getSystemService(SENSOR_SERVICE));
 		if(mapView != null) mapView.onCreate(bundle);
 	}
 
@@ -543,4 +578,13 @@ public class MapFragment extends Fragment implements
 	{
 		return lastLocation;
 	}
+
+	public void setMapOrientation(float rotation, float tilt)
+	{
+		if(controller == null) return;
+		controller.setRotation(rotation);
+		controller.setTilt(tilt);
+		mapControls.onMapOrientation(rotation, tilt);
+	}
+
 }
