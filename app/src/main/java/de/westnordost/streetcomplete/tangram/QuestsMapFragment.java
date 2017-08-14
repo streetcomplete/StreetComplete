@@ -225,6 +225,12 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		listener.onClickedMapAt(TangramConst.toLatLon(pos));
 	}
 
+	@Override protected boolean shouldCenterCurrentPosition()
+	{
+		// don't center position while displaying a quest
+		return super.shouldCenterCurrentPosition() && previousZoom == null;
+	}
+
 	protected void updateView()
 	{
 		super.updateView();
@@ -311,9 +317,11 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 	public void removeQuestGeometry()
 	{
 		if(geometryLayer != null) geometryLayer.clear();
-		if(controller != null)
+		if(controller != null && previousZoom != null)
 		{
-			if (previousZoom != null) controller.setZoomEased(previousZoom, 500);
+			controller.setZoomEased(previousZoom, 500);
+			previousZoom = null;
+			followPosition();
 		}
 	}
 /*

@@ -246,9 +246,9 @@ public class MapFragment extends Fragment implements
 		return isFollowingPosition;
 	}
 
-	private void followPosition()
+	protected void followPosition()
 	{
-		if(isFollowingPosition && controller != null && lastLocation != null)
+		if(shouldCenterCurrentPosition())
 		{
 			controller.setPositionEased(new LngLat(lastLocation.getLongitude(), lastLocation.getLatitude()),500);
 			if(!zoomedYet)
@@ -318,10 +318,15 @@ public class MapFragment extends Fragment implements
 	protected void updateView()
 	{
 		updateAccuracy();
-		if(isFollowingPosition && controller != null && lastLocation != null)
+		if(shouldCenterCurrentPosition())
 		{
 			controller.setPositionEased(new LngLat(lastLocation.getLongitude(), lastLocation.getLatitude()),500);
 		}
+	}
+
+	protected boolean shouldCenterCurrentPosition()
+	{
+		return isFollowingPosition && controller != null && lastLocation != null;
 	}
 
 	private boolean requestUnglueViewFromPosition()
