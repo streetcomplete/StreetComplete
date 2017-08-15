@@ -399,8 +399,9 @@ public class MapFragment extends Fragment implements
 		// we received an event from the compass, so compass is working - direction can be displayed on screen
 		isShowingDirection = true;
 
-		if(directionMarker != null && directionMarker.isVisible())
+		if(directionMarker != null)
 		{
+			directionMarker.setVisible(true);
 			double r = rotation * 180 / Math.PI;
 			directionMarker.setStylingFromString(
 					"{ style: 'points', color: '#cc536dfe', size: [" +

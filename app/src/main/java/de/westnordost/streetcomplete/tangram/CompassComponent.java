@@ -50,7 +50,11 @@ public class CompassComponent implements SensorEventListener
 
 	public void onPause()
 	{
-		if(compassTimer != null) compassTimer.cancel();
+		if(compassTimer != null)
+		{
+			compassTimer.cancel();
+			compassTimer = null;
+		}
 		sensorManager.unregisterListener(this);
 	}
 
