@@ -10,7 +10,7 @@
     <string name="pref_category_communication">"Communication"</string>
     <string name="pref_category_display">"Affichage"</string>
     <string name="pref_title_authorization">"Autoriser l'accès OSM"</string>
-    <string name="pref_title_authorized_username_summary">"Compte autorisé : %s"</string>
+    <string name="pref_title_authorized_summary">"Votre compte a été autorisé avec succès"</string>
     <string name="pref_title_not_authorized_summary">"Pas encore autorisé"</string>
     <string name="pref_tilecache_size_summary">"%d Mo"</string>
     <string name="pref_tilecache_size_message">"Espace en megaoctets réservé à la sauvegarde en cache sur stockage externe des tuiles de la carte"</string>

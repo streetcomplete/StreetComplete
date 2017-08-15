@@ -208,9 +208,97 @@ Girdiğiniz bilgiler daha sonra başka bir editör kullanmak zorunda kalmadan ad
 Hiçbir e-posta istemcisi kurulu değil."</string>
     <string name="pref_title_keep_screen_on">"Ekranı açık tut"</string>
     <string name="download_server_error">"Görevler taranırken bağlantı hatası oluştu. Tekrar deneyin."</string>
+    <string name="upload_server_error">"Yanıtlar yüklenirken bağlantı hatası. Daha sonra tekrar deneyin."</string>
     <string name="quest_generic_hasFeature_yes">"Evet"</string>
     <string name="quest_generic_hasFeature_no">"Hayır"</string>
     <string name="quest_busStopShelter_title">"Bu otobüs durağının üstü kapalı mı?"</string>
     <string name="quest_bikeParkingCapacity_title">"Burada kaç bisiklet park edilebilir?"</string>
     <string name="quest_address_unusualHousenumber_confirmation_description">"Bu numara çok sıradışı gözüküyor."</string>
+    <string name="quest_sport_title">"Burada ne gibi bir spor oynuyor?"</string>
+    <string name="quest_sport_answer_multi">"Spesifik bir spor değil"</string>
+    <string name="quest_sport_soccer">"Futbol"</string>
+    <string name="quest_sport_tennis">"Tenis"</string>
+    <string name="quest_sport_baseball">"Beyzbol"</string>
+    <string name="quest_sport_basketball">"Basketbol"</string>
+    <string name="quest_sport_golf">"Golf"</string>
+    <string name="quest_sport_equestrian">"Atlı"</string>
+    <string name="quest_sport_athletics">"Atletizm"</string>
+    <string name="quest_sport_volleyball">"Voleybol"</string>
+    <string name="quest_sport_beachvolleyball">"Plaj Voleybolu"</string>
+    <string name="quest_sport_american_football">"Amerikan Futbolu"</string>
+    <string name="quest_sport_skateboard">"Kaykay"</string>
+    <string name="quest_sport_bowls">"Çim Topu"</string>
+    <string name="quest_sport_boules">"Petank Oyunu"</string>
+    <string name="quest_sport_cricket">"Kriket Oyunu"</string>
+    <string name="quest_sport_table_tennis">"Masa Tenisi"</string>
+    <string name="quest_sport_gymnastics">"Jimnastik"</string>
+    <string name="quest_sport_archery">"Okçuluk"</string>
+    <string name="quest_sport_australian_football">"Avustralya Futbolu"</string>
+    <string name="quest_sport_badminton">"Badminton"</string>
+    <string name="quest_sport_canadian_football">"Kanada Futbolu"</string>
+    <string name="quest_sport_field_hockey">"Çim Hokeyi"</string>
+    <string name="quest_sport_handball">"Hentbol"</string>
+    <string name="quest_sport_ice_hockey">"Buz Hokeyi"</string>
+    <string name="quest_sport_netball">"Netbol"</string>
+    <string name="quest_manySports_confirmation_generic">"Genel Amaç"</string>
+    <string name="quest_sport_manySports_confirmation_title">"Birçok spor seçtiniz"</string>
+    <string name="quest_toiletsFee_title">"Bu tuvaletler ücret istiyor mu?"</string>
+    <string name="quest_tactilePaving_title_bus">"Bu otobüs durağında dokunmatik kaplamalar var mı?"</string>
+    <string name="quest_tactilePaving_title_crosswalk">"Bu geçit dokunmatik kaplamalara sahip mi?"</string>
+    <string name="quest_source_dialog_title">"Bunu yerinde kontrol ettiğinden emin misin?"</string>
+    <string name="quest_bicycleParkingCoveredStatus_title">"Bu bisiklet park yeri kapalı mı (yağmur korumalı)?"</string>
+    <string name="dialog_session_dont_show_again">"Bu oturum için tekrar gösterme"</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Evet, işaret yok"</string>
+    <string name="quest_maxspeed_answer_noSign_urbanOk">"Kasabada"</string>
+    <string name="quest_maxspeed_answer_noSign_ruralOk">"Şehir Dışında"</string>
+    <string name="quest_sport_racquet">"Raketbol"</string>
+    <string name="quest_sport_ice_skating">"Buz Pateni"</string>
+    <string name="quest_wheelchairAccess_limited">"Kısmen"</string>
+    <string name="quest_bikeParkingCapacity_hint">"Çoğu normal standın, her iki taraftan da bisiklet park etmek için kullanılabileceğini unutmayın."</string>
+    <string name="quest_sport_roller_skating">"Tekerlekli patenle kayma"</string>
+    <string name="quest_wheelchairAccess_railway_station_title">"Bu demiryolu istasyonuna tekerlekli sandalyeye erişilebilir mi?"</string>
+    <string name="quest_wheelchairAccess_location_title">"Bu yer tekerlekli sandalye ile erişilebilir mi?"</string>
+    <string name="overground_recycling_container">"Konteyner"</string>
+    <string name="underground_recycling_container">"Yeraltı Konteyneri"</string>
+    <string name="quest_generic_error_a_field_empty">"Alanı boş bıraktın"</string>
+    <string name="quest_streetName_cantType_title">"Klavye düzeni eksik mi?"</string>
+    <string name="quest_streetName_cantType_open_settings">"Ayarları Aç"</string>
+    <string name="quest_streetName_cantType_open_store">"Mağazayı Aç"</string>
+    <string name="quest_streetName_cantType_description">"
+Varsayılan klavyeyi kullanırsanız, giriş yöntemi ayarlarında ihtiyacınız olan dilde klavye düzenini etkinleştirebilirsiniz.
+
+
+Aksi takdirde, uygulama mağazasında başka bir klavye indirebilirsiniz. Birçok dili destekleyen popüler klavyeler Google Gboard, SwiftKey Klavye ve Çok Amaçlı Klavye'dir.
+
+"</string>
+    <string name="quest_streetName_menuItem_nolanguage">"(Tanımlanmamış)"</string>
+    <string name="quest_fireHydrant_type_title">"Bu nasıl bir yangın söndürücüdür?"</string>
+    <string name="quest_fireHydrant_type_pillar">"Sütun"</string>
+    <string name="quest_fireHydrant_type_underground">"Yeraltı"</string>
+    <string name="quest_fireHydrant_type_wall">"Duvar"</string>
+    <string name="quest_fireHydrant_type_pond">"Gölet"</string>
+    <string name="credits_translations_title">"Çeviriler"</string>
+    <string name="credits_contributors_title">"Kod Katkıda Bulurlar"</string>
+    <string name="produce_cherries">"Kirazlar"</string>
+    <string name="produce_chestnuts">"Kestane"</string>
+    <string name="produce_coconuts">"Hindistan Cevizi"</string>
+    <string name="produce_coffee">"Kahve"</string>
+    <string name="produce_cranberries">"Kızılcık"</string>
+    <string name="produce_dates">"Tarih"</string>
+    <string name="produce_figs">"İncir"</string>
+    <string name="produce_grapefruits">"Greyfurt"</string>
+    <string name="produce_hazelnuts">"Fındıklar"</string>
+    <string name="produce_hops">"Şerbetçiotu"</string>
+    <string name="produce_kiwis">"Kivi"</string>
+    <string name="produce_kola_nuts">"Kola fıstığı"</string>
+    <string name="produce_lemons">"Limonlar"</string>
+    <string name="produce_limes">"Misket limonu"</string>
+    <string name="produce_mangos">"Mango"</string>
+    <string name="produce_mate">"Dostum"</string>
+    <string name="produce_nutmeg">"Küçük Hindistan Cevizi"</string>
+    <string name="produce_oil_palms">"Yağlı avuç içi"</string>
+    <string name="quest_way_lit_title">"Bu bölüm aydınlatılmış mı?"</string>
+    <string name="quest_way_lit_road_title">"Bu yolun bölümü yanıyor mu?"</string>
+    <string name="quest_way_lit_automatic">"Hareket algılama kullanır"</string>
+    <string name="quest_way_lit_24_7">"Gece gündüz aydınlandı"</string>
 </resources>
