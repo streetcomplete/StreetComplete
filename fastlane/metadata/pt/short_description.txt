@@ -1,1 +1,1 @@
-App de levantamento para o OpenStreetMap
+App para aprimorar a informação do OpenStreetMap

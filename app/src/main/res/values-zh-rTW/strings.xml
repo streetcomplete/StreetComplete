@@ -27,14 +27,14 @@
     <string name="quest_generic_confirmation_yes">"是，我確定"</string>
     <string name="quest_generic_confirmation_no">"我會檢查"</string>
     <string name="quest_generic_error_field_empty">"你留下空的欄位"</string>
-    <string name="quest_leave_new_note_title">"離開以註記取代?"</string>
-    <string name="quest_leave_new_note_description">"你可以在這個位置，留下其他圖客可以討論和解決的注記："</string>
+    <string name="quest_leave_new_note_title">"以留下註記取代?"</string>
+    <string name="quest_leave_new_note_description">"你可以在這個位置，留下其他圖客可以討論和解決的註記："</string>
     <string name="quest_leave_new_note_yes">"好"</string>
     <string name="quest_leave_new_note_no">"不，僅隱藏"</string>
     <string name="quest_streetName_title">"這條路的名稱？"</string>
     <string name="quest_streetName_description">"被寫在街道標示上，縮寫被展開為："</string>
     <string name="quest_streetName_answer_noName_confirmation_description">"有時候街道標誌只會立在街道的底端。而且注意，屬於大條街道的分支街道也許不會有多餘的標示。路上有房子的街道經常會有名稱。"</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"假如此名稱可以不縮寫拼出,所以它應該要可被展開。許多常見的縮寫，在你輸入的時候會自動被展開，但並非全部。"</string>
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"假如此名稱可以不縮寫拼出，所以它應該要可被展開。許多常見的縮寫，在你輸入的時候會自動被展開，但並非全部。"</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"無縮寫"</string>
     <string name="quest_openingHours_name_title">"%s 的營業時間是？"</string>
     <string name="quest_openingHours_start_time">"開放時間"</string>
@@ -44,13 +44,13 @@
     <string name="quest_openingHours_add_weekdays">"新增工作天"</string>
     <string name="quest_openingHours_chooseMonthsTitle">"選擇月份"</string>
     <string name="quest_openingHours_chooseWeekdaysTitle">"選擇工作天"</string>
-    <string name="quest_openingHours_24_7_confirmation">"換句話說，它每天且隨時開放？"</string>
-    <string name="quest_noteDiscussion_title">"你可以貢獻此注記嗎？"</string>
+    <string name="quest_openingHours_24_7_confirmation">"換句話說，每天而且隨時開放？"</string>
+    <string name="quest_noteDiscussion_title">"你可以貢獻此註記嗎？"</string>
     <string name="quest_noteDiscussion_no">"不，隱藏"</string>
     <string name="quest_noteDiscussion_create">"由 %1$s (%2$s) 建立"</string>
     <string name="quest_noteDiscussion_comment">"%1$s (%2$s)"</string>
-    <string name="quest_noteDiscussion_closed">"%1$s 個已關閉的注記 (%2$s)"</string>
-    <string name="quest_noteDiscussion_reopen">"%1$s 個再開的注記 (%2$s)"</string>
+    <string name="quest_noteDiscussion_closed">"%1$s 個已關閉的註記 (%2$s)"</string>
+    <string name="quest_noteDiscussion_reopen">"%1$s 個再開的註記 (%2$s)"</string>
     <string name="quest_noteDiscussion_anonymous">"匿名"</string>
     <string name="quest_noteDiscussion_comments_title">"回答"</string>
     <string name="confirmation_discard_title">"放棄輸入?"</string>
@@ -64,7 +64,7 @@
     <string name="upload_error">"在上傳回答時出錯"</string>
     <string name="cannot_find_bbox">"無法搜尋。嘗試拉近一點"</string>
     <string name="download_area_too_big">"請拉近一點"</string>
-    <string name="confirmation_cancel_prev_download_title">"取消目前的搜尋並以搜尋取代？"</string>
+    <string name="confirmation_cancel_prev_download_title">"取消目前的搜尋並以搜尋這裡取代？"</string>
     <string name="notification_downloading">"正在搜尋任務"</string>
     <string name="now_downloading_toast">"搜尋更多任務"</string>
     <string name="turn_on_location_request">"定位已關閉。到設定中開啟它？"</string>
@@ -90,9 +90,9 @@
     <string name="later">"稍後"</string>
     <string name="quest_streetName_answer_noProperStreet">"非合適的街道"</string>
     <string name="quest_streetName_answer_noProperStreet_question">"那些是？"</string>
-    <string name="quest_streetName_answer_noProperStreet_link">"它只連接兩條道路、"</string>
+    <string name="quest_streetName_answer_noProperStreet_link">"它只連接兩條道路"</string>
     <string name="quest_streetName_answer_noProperStreet_service">"它只是聯絡道路"</string>
-    <string name="quest_streetName_answer_noProperStreet_leaveNote">"其他（留下注記）"</string>
+    <string name="quest_streetName_answer_noProperStreet_leaveNote">"其他（留下註記）"</string>
     <string name="quest_streetName_answer_noProperStreet_track">"它只是產業道路"</string>
     <string name="about_title_privacy_statement">"隱私聲明"</string>
     <string name="about_summary_privacy_statement">"和資料使用量"</string>
@@ -119,8 +119,8 @@
     <string name="privacy_html">"&lt;p&gt;喔，有些人在意隱私，這樣很好！ 我想我只有好消息可告訴你：&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;直接貢獻&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-首先，通過此APP，你可直接向開放街做出圖貢獻。&lt;br/&gt;
-你在此APP上貢獻的所有會直接加在地圖上，APP和開放街圖設施之間不會有任何第三方管道，像 &lt;a href=\"https://wheelmap.org\"&gt;輪椅地圖&lt;/a&gt; 或 &lt;a href=\"http://www.kort.ch\"&gt;Kort&lt;/a&gt;。
+首先，通過此APP，你可直接向開放街圖做出貢獻。&lt;br/&gt;
+你在此APP上所有貢獻會直接加在地圖上，APP和開放街圖設施之間不會有任何第三方管道，像 &lt;a href=\"https://wheelmap.org\"&gt;輪椅地圖&lt;/a&gt; 或 &lt;a href=\"http://www.kort.ch\"&gt;Kort&lt;/a&gt;。
 &lt;/p&gt;
 &lt;p&gt;
 開放街圖是不允許匿名編輯，所以你任何編輯都是藉由你的開放街圖帳號。這表示日期、內容和你改動後產生的間接地理資訊，都會公開於開放街圖網站並標示你的帳號。
@@ -137,7 +137,7 @@
 在上傳你的更變之前，此APP會在我的伺服器上確認 &lt;a href=\"http://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;簡單的文字檔&lt;/a&gt; 來確認APP是否被封鎖而無法上傳任何更變。這是一個防護措施，如果APP的版本更變後有嚴重的錯誤出現，開放街圖的資料不受汙染。&lt;br/&gt;
 &lt;/p&gt;
 &lt;p&gt;
-顯示地圖、向量圖磚皆從 &lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt;Mapzen 向量圖磚服務&lt;/a&gt; 匿名下载取得。此服務會記錄圖磚請求，來了解哪個區域是熱門的，作為準備快取和改善效能之用。他們的平台同時也紀錄IP地址，且他們的所有服務全部託管在Amazon，所以它會觀察你的行為再決定動作。
+顯示地圖、向量圖磚皆從 &lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt;Mapzen 向量圖磚服務&lt;/a&gt; 匿名下載取得。此服務會記錄圖磚請求，來了解哪個區域是熱門的，作為準備快取和改善效能之用。他們的平台同時也紀錄IP地址，且他們的所有服務全部託管在Amazon，所以它會觀察你的行為再決定動作。
 &lt;/p&gt;
 &lt;p&gt;
 (&lt;i&gt;目前尚未實作，只是告知即將要到來！&lt;/i&gt;) 顯示在設定檔和排行榜的資料，都是從開放街圖公開的可用資訊中統整出來。資料並不是來自APP，但基本上是從開放街圖用戶中的開放上傳歷史取用。
@@ -165,7 +165,7 @@
     <string name="quest_surface_value_sett">"四方型的鋪路石"</string>
     <string name="quest_surface_value_wood">"木頭"</string>
     <string name="quest_placeName_title">"這個地方叫做?"</string>
-    <string name="quest_sidewalk_title">"這條街道有人行道嗎?"</string>
+    <string name="quest_sidewalk_title">"這條道路有人行道嗎?"</string>
     <string name="map_orientation_info">"地圖是朝向北方"</string>
     <string name="quest_sidewalk_onlyNorth">"只在北邊"</string>
     <string name="quest_sidewalk_onlySouth">"只在南邊"</string>
@@ -186,7 +186,7 @@
     <string name="quest_streetLanes_south">"朝向南邊"</string>
     <string name="quest_streetLanes_answer_noLanes">"沒有標記的車道"</string>
     <string name="quest_streetLanes_noLanes_estWidth">"請估計這條路的寬度能有多少車並排"</string>
-    <string name="quest_oneway_title">"這是單行道嗎?"</string>
+    <string name="quest_oneway_title">"這條是單行道嗎?"</string>
     <string name="quest_address_title">"此棟建築物的門牌號碼是?"</string>
     <string name="store_listing_short_description">"開放街圖 調測APP"</string>
     <string name="store_listing_full_description">"使用 StreetComplete 改善開放街圖的圖資！
@@ -209,7 +209,7 @@
     <string name="quest_generic_hasFeature_yes">"有"</string>
     <string name="quest_generic_hasFeature_no">"沒有"</string>
     <string name="quest_busStopShelter_title">"這個站牌有遮蔭嗎？"</string>
-    <string name="quest_bikeParkingCapacity_title">"這裡可以停幾量單車？"</string>
+    <string name="quest_bikeParkingCapacity_title">"這裡可以停幾量輛單車？"</string>
     <string name="quest_address_unusualHousenumber_confirmation_description">"門牌號碼看起來怪怪的。"</string>
     <string name="quest_sport_title">"這個場地是為哪一種運動而設的？"</string>
     <string name="quest_sport_answer_multi">"無特定運動"</string>
@@ -237,8 +237,8 @@
     <string name="quest_sport_field_hockey">"草地曲棍球"</string>
     <string name="quest_sport_handball">"手球"</string>
     <string name="quest_sport_ice_hockey">"冰上曲棍球"</string>
-    <string name="quest_sport_netball">"投球"</string>
-    <string name="quest_sport_rugby">"欖球"</string>
+    <string name="quest_sport_netball">"籃網球"</string>
+    <string name="quest_sport_rugby">"橄欖球"</string>
     <string name="quest_select_hint">"選取："</string>
     <string name="quest_sport_manySports_confirmation_description">"這個場地是否專為這些運動而設（設有相關界線與設備），或是適合各種運動的通用場地？"</string>
     <string name="quest_manySports_confirmation_specific">"專屬場地"</string>
@@ -250,13 +250,13 @@
     <string name="quest_tactilePaving_title_crosswalk">"這個人行穿越道是否有盲人指引？"</string>
     <string name="quest_source_dialog_title">"你確定你在現場探察確認？"</string>
     <string name="quest_tactilePaving_title_name_bus">"公車站 \"%s\" 是否有盲人磚？"</string>
-    <string name="quest_source_dialog_note">"只有調查需要的資訊才需要輸入。"</string>
+    <string name="quest_source_dialog_note">"只有調查發現的資訊才需要輸入。"</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"這座單車停車場是否有遮蔽 (防止淋雨)？"</string>
     <string name="dialog_session_dont_show_again">"這次不再顯示"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetSurface_name_title">"道路 \"%s\" 的鋪面為何？ "</string>
-    <string name="quest_maxspeed_title_short">"這條街的道速限牌顯示多少？"</string>
+    <string name="quest_streetSurface_name_title">"道路 \"%s\" 的鋪面為何？"</string>
+    <string name="quest_maxspeed_title_short">"這條街的道路速限牌顯示多少？"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"這個速限看來怪怪的。"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"你確定沒有速限限制嗎？"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">"你有在街道盡頭確認嗎？
@@ -272,18 +272,108 @@
     <string name="quest_sport_paddle_tennis">"槳網球"</string>
     <string name="quest_sport_gaelic_games">"蓋爾式運動"</string>
     <string name="quest_sport_sepak_takraw">"藤球"</string>
-    <string name="quest_wheelchairAccess_name_title">"“%s” 是否是輪倚通行無處？"</string>
+    <string name="quest_wheelchairAccess_name_title">"“%s” 是否是輪椅通行無處？"</string>
     <string name="quest_wheelchairAccess_limited">"部分可通行"</string>
     <string name="quest_bikeParkingCapacity_hint">"注意單車架兩邊都能夠停放一台單車。"</string>
     <string name="quest_sport_roller_skating">"滾輪溜冰"</string>
-    <string name="quest_wheelchairAccess_bus_station_title">"這間客運站是否輪倚通行無阻？"</string>
-    <string name="quest_wheelchairAccess_subway_entrance_title">"這個捷運站出口是否輪倚通行無阻？"</string>
-    <string name="quest_wheelchairAccess_railway_station_title">"這座車站是否輪倚通行無阻？"</string>
-    <string name="quest_wheelchairAccess_location_title">"這個地方是否輪倚通行無阻？"</string>
-    <string name="quest_wheelchairAccess_bus_station_name_title">"“%s” 客運站是否輪倚通行無阻？"</string>
-    <string name="quest_wheelchairAccess_subway_entrance_name_title">"“%s” 捷運出口是否輪倚通行無阻？"</string>
-    <string name="quest_wheelchairAccess_railway_station_name_title">"“%s” 車站是否輪倚通行無阻？"</string>
-    <string name="quest_wheelchairAccess_location_name_title">"“%s”  是否輪倚通行無阻？"</string>
-    <string name="quest_wheelchairAccess_limited_description_business">"部分可通行意味沒有多過一個步驟，就可以進到場所裡，並且裡面的房間是輪倚可通行的狀況。"</string>
-    <string name="quest_wheelchairAccess_limited_description_public_transport">"部分可通行意味沒有多過一個步驟，就可以進到場所裡，"</string>
+    <string name="quest_wheelchairAccess_bus_station_title">"這間客運站是否輪椅通行無阻？"</string>
+    <string name="quest_wheelchairAccess_subway_entrance_title">"這個捷運站出口是否輪椅通行無阻？"</string>
+    <string name="quest_wheelchairAccess_railway_station_title">"這座車站是否輪椅通行無阻？"</string>
+    <string name="quest_wheelchairAccess_location_title">"這個地方是否輪椅通行無阻？"</string>
+    <string name="quest_wheelchairAccess_bus_station_name_title">"“%s” 客運站是否輪椅通行無阻？"</string>
+    <string name="quest_wheelchairAccess_subway_entrance_name_title">"“%s” 捷運出口是否輪椅通行無阻？"</string>
+    <string name="quest_wheelchairAccess_railway_station_name_title">"“%s” 車站是否輪椅通行無阻？"</string>
+    <string name="quest_wheelchairAccess_location_name_title">"“%s”  是否輪椅通行無阻？"</string>
+    <string name="quest_wheelchairAccess_limited_description_business">"部分可通行意味沒有多過一個步驟，就可以進到場所裡，並且裡面的房間是輪椅可通行的狀況。"</string>
+    <string name="quest_wheelchairAccess_limited_description_public_transport">"部分可通行意味沒有多過一個步驟，就可以進到場所裡。"</string>
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"\"%s\" 的簡稱縮寫是？"</string>
+    <string name="quest_baby_changing_table_toilets_title">"這個洗手間有設置嬰兒用尿布檯嗎？"</string>
+    <string name="quest_baby_changing_table_title">"\"%s\" 有設置嬰兒用尿布檯嗎？"</string>
+    <string name="quest_recycling_type_title">"這是哪一種資源回收設施？"</string>
+    <string name="recycling_centre">"資源回收中心"</string>
+    <string name="overground_recycling_container">"資源回收箱"</string>
+    <string name="underground_recycling_container">"地下式資源回收箱"</string>
+    <string name="quest_generic_error_a_field_empty">"你留了空白欄位"</string>
+    <string name="quest_streetName_menuItem_language_simple">"%1$s - %2$s"</string>
+    <string name="quest_streetName_menuItem_language_native">"1$s - %2$s (%3$s)"</string>
+    <string name="quest_streetName_answer_cantType">"無法在標識上輸入字元"</string>
+    <string name="quest_streetName_cantType_title">"缺少鍵盤配置？"</string>
+    <string name="quest_streetName_cantType_open_settings">"開啟設定"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_streetName_cantType_open_store">"開啓商店"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_streetName_cantType_description">"如果您使用預設鍵盤，您或者可以嘗試在輸入法設置中啓用所需語言的鍵盤佈局。
+
+否則，您可能需要在應用商店中下載其他鍵盤。 支持多種語言的熱門鍵盤包括 Google Gboard、SwiftKey Keyboard 和 Multiling O。"</string>
+    <string name="quest_streetName_menuItem_nolanguage">"(未指定)"</string>
+    <string name="quest_fireHydrant_type_title">"這是哪一種類的消防栓？"</string>
+    <string name="quest_fireHydrant_type_pillar">"地上式消防栓"</string>
+    <string name="quest_fireHydrant_type_underground">"地下式消防栓"</string>
+    <string name="quest_fireHydrant_type_wall">"消防栓箱"</string>
+    <string name="quest_fireHydrant_type_pond">"池塘"</string>
+    <string name="credits_contributors">"&lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;在GitHub上瀏覽完整列表&lt;/a&gt;。"</string>
+    <string name="credits_translations">"在 &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;POEditor 專案&lt;/a&gt;上瀏覽完整列表。"</string>
+    <string name="credits_translations_title">"翻譯"</string>
+    <string name="credits_contributors_title">"程式碼貢獻者"</string>
+    <string name="credits_author_title">"作者及維護者"</string>
+    <string name="credits_and_more">"以及更多…"</string>
+    <string name="quest_maxspeed_answer_living_street">"社區街道"</string>
+    <string name="quest_maxspeed_answer_living_street_confirmation_title">"所以那裡有一個像這樣的道路標識嗎？"</string>
+    <string name="quest_orchard_produce_title">"這裡栽種了些什麼？"</string>
+    <string name="produce_grapes">"葡萄"</string>
+    <string name="produce_agaves">"龍舌蘭"</string>
+    <string name="produce_almonds">"杏仁"</string>
+    <string name="produce_apples">"蘋果"</string>
+    <string name="produce_apricots">"杏桃"</string>
+    <string name="produce_avocados">"酪梨"</string>
+    <string name="produce_bananas">"香蕉"</string>
+    <string name="produce_blueberries">"藍莓"</string>
+    <string name="produce_cacao">"可可"</string>
+    <string name="produce_cashew_nuts">"腰果"</string>
+    <string name="produce_cherries">"櫻桃"</string>
+    <string name="produce_chestnuts">"栗子"</string>
+    <string name="produce_coconuts">"椰子"</string>
+    <string name="produce_coffee">"咖啡豆"</string>
+    <string name="produce_cranberries">"蔓越莓"</string>
+    <string name="produce_dates">"日期"</string>
+    <string name="produce_figs">"無花果"</string>
+    <string name="produce_grapefruits">"葡萄柚"</string>
+    <string name="produce_guavas">"芭樂"</string>
+    <string name="produce_hazelnuts">"榛果"</string>
+    <string name="produce_hops">"啤酒花"</string>
+    <string name="produce_jojoba">"荷荷芭"</string>
+    <string name="produce_kiwis">"奇異果"</string>
+    <string name="produce_kola_nuts">"可樂果"</string>
+    <string name="produce_lemons">"檸檬"</string>
+    <string name="produce_limes">"萊姆"</string>
+    <string name="produce_mangos">"芒果"</string>
+    <string name="produce_mate">"冬青"</string>
+    <string name="produce_nutmeg">"肉豆蔻"</string>
+    <string name="produce_oil_palms">"棕櫚"</string>
+    <string name="produce_olives">"橄欖"</string>
+    <string name="produce_oranges">"柑橘"</string>
+    <string name="produce_papayas">"木瓜"</string>
+    <string name="produce_peaches">"水蜜桃"</string>
+    <string name="produce_pears">"梨"</string>
+    <string name="produce_chili">"辣椒"</string>
+    <string name="produce_persimmons">"柿"</string>
+    <string name="produce_pineapples">"鳳梨"</string>
+    <string name="produce_pepper">"胡椒"</string>
+    <string name="produce_pistachios">"開心果"</string>
+    <string name="produce_plums">"李子"</string>
+    <string name="produce_raspberries">"桑葚"</string>
+    <string name="produce_rubber">"橡膠"</string>
+    <string name="produce_strawberries">"草莓"</string>
+    <string name="produce_tea">"茶葉"</string>
+    <string name="produce_vanilla">"香草"</string>
+    <string name="produce_walnuts">"核桃"</string>
+    <string name="produce_sisal">"瓊麻"</string>
+    <string name="quest_way_lit_title">"這段路徑有照明設施嗎？"</string>
+    <string name="quest_way_lit_named_title">"\"%s\" 有照明設施嗎？"</string>
+    <string name="quest_way_lit_road_title">"這段道路有照明設施嗎？"</string>
+    <string name="quest_way_lit_named_road_title">"\"%s\" 沿路上有照明設施？"</string>
+    <string name="quest_way_lit_automatic">"使用動態偵測"</string>
+    <string name="quest_way_lit_24_7">"不分日夜照明"</string>
 </resources>
