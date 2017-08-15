@@ -36,3 +36,7 @@ crossing_type_signals.jpg      http://maxpixel.freegreatpicture.com/Green-Traffi
 crossing_type_zebra.jpg        https://commons.wikimedia.org/wiki/File%3AZebra_crossing.jpg
 crossing_type_unmarked.jpg     http://www.jrlawfirm.com/wp-content/uploads/2016/04/unmarked-crosswalks-texas.jpg
 
+parking_type_multistorage.jpg  https://en.wikipedia.org/wiki/File:Hradec_Kr%C3%A1lov%C3%A9,_Resslova,_parkovac%C3%AD_d%C5%AFm.jpg
+parking_type_surface.jpg       https://wiki.openstreetmap.org/wiki/File:Car_park2.jpg
+parking_type_underground.jpg   https://en.wikipedia.org/wiki/File:Parkhaus_Rheinauhafen.jpg
+
