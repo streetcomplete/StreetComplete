@@ -2,4 +2,4 @@
 isLivingStreetKnown: true
 isSlowZoneKnown: true
 officialLanguages: [lt]
-orchardProduces: [apple, tomatoe, strawberry, raspberry, pear, plum, cherry, blueberry]
+orchardProduces: [apple, blueberry, raspberry, strawberry, pear, cherry, plum, tomatoe]

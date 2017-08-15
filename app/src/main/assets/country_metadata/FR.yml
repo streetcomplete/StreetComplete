@@ -4,6 +4,6 @@ additionalValidHousenumberRegex: \p{N}{1,4}\sbis
 isLivingStreetKnown: true
 isSlowZoneKnown: true
 officialLanguages: [fr]
-orchardProduces: [grape, apple, tomatoe, peach, plum, apricot, pear, kiwi, strawberry, cherry, walnut,
-  chilli, olive, orange, hazelnut]
+orchardProduces: [grape, apple, walnut, plum, olive, apricot, peach, cherry, chestnut, pear, hazelnut,
+  kiwi, strawberry, tomatoe, blueberry]
 popularSports: [soccer, tennis, basketball, boules, equestrian, rugby]

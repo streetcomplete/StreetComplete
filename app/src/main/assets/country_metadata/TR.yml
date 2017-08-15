@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
 isLivingStreetKnown: true
 officialLanguages: [tr]
-orchardProduces: [tomatoe, grape, apple, olive, orange, lemon, lime, peach, apricot, hazelnut, pear,
-  strawberry, fig, plum, banana, grapefruit]
+orchardProduces: [olive, hazelnut, grape, tomatoe, pistachio, apple, apricot, chili, pepper, tea, walnut,
+  fig, peach, orange, lemon, lime, almond]

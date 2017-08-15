@@ -1,6 +1,6 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [en]
 officialLanguages: [ja]
-orchardProduces: [apple, tomatoe, pear, persimmon, grape, strawberry, peach, apricot, tea, kiwi, orange,
-  plum, chestnut, cherry, fig]
+orchardProduces: [tea, apple, persimmon, chestnut, grape, apricot, pear, tomatoe, peach, strawberry,
+  cherry, plum, orange, kiwi, fig]
 popularSports: [tennis, baseball]

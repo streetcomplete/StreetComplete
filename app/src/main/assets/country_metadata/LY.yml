@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
 firstDayOfWorkweek: Su
 officialLanguages: [ar]
-orchardProduces: [tomatoe, olive, date, plum, almond, grape, chilli, apricot, apple, lemon, lime, peach,
-  fig, orange, pear, grapefruit]
+orchardProduces: [olive, almond, date, tomatoe, plum, grape, orange, apricot, fig, lemon, lime, chili,
+  pepper, peach, apple, pear, grapefruit]

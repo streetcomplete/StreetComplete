@@ -2,7 +2,7 @@
 isLivingStreetKnown: true
 isSlowZoneKnown: true
 officialLanguages: [de]
-orchardProduces: [grape, apple, strawberry, tomatoe, plum, pear, hop, walnut, cherry, blueberry, chilli,
-  raspberry, peach, apricot, kiwi]
+orchardProduces: [grape, apple, hop, strawberry, walnut, plum, cherry, blueberry, pear, raspberry,
+  tomatoe, chili, pepper, peach, apricot, kiwi]
 popularSports: [soccer, tennis, equestrian]
 regularShoppingDays: 5

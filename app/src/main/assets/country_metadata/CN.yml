@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
 officialLanguages: [zh]
-orchardProduces: [tomatoe, apple, pear, chilli, orange, peach, grape, banana, plum, guava, mango, mangosteen,
-  persimmon, grapefruit, strawberry, lemon, lime, tea]
+orchardProduces: [apple, tea, plum, orange, pear, tomatoe, persimmon, grape, peach, rubber, guava,
+  mango, mangosteen, walnut, banana, chestnut, tung_nut]
 popularSports: [basketball, soccer, badminton]

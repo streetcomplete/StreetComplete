@@ -2,5 +2,5 @@
 isLivingStreetKnown: true
 livingStreetSign: ic_living_street_sadc
 officialLanguages: [ss, en]
-orchardProduces: [grapefruit, orange, pineapple, banana, tomatoe, plum, lemon, lime, almond, avocado,
-  date, guava, mango, mangosteen]
+orchardProduces: [grapefruit, pineapple, banana, almond, tomatoe, plum, orange, avocado, date, guava,
+  mango, mangosteen]

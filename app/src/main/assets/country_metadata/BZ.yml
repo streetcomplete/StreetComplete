@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
 officialLanguages: [en, bzj]
-orchardProduces: [orange, banana, papaya, grapefruit, pineapple, coconut, tomatoe, chilli, guava, mango,
-  mangosteen, cashew_nut, coffee, cacao]
+orchardProduces: [orange, grapefruit, banana, cacao, papaya, coconut, pineapple, cashew_nut, chili,
+  pepper, coffee, tomatoe, guava, mango, mangosteen]
 speedUnit: mph

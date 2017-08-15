@@ -82,6 +82,9 @@ public class AddOrchardProduceForm extends ImageListQuestAnswerFragment
 		for(OsmItem item : PRODUCES) PRODUCES_MAP.put(item.osmValue, item);
 	}
 
+	protected int getItemsPerRow() { return 3; }
+	protected int getMaxNumberOfInitiallyShownItems() { return -1; }
+
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
 									   Bundle savedInstanceState)
 	{

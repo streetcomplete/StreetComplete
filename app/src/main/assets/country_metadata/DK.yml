@@ -2,4 +2,4 @@
 isLivingStreetKnown: true
 isSlowZoneKnown: true
 officialLanguages: [da]
-orchardProduces: [apple, tomatoe, pear, strawberry, cherry, plum, raspberry, blueberry, hazelnut]
+orchardProduces: [apple, strawberry, cherry, pear, plum, blueberry, tomatoe, raspberry, hazelnut]

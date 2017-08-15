@@ -3,5 +3,5 @@ additionalStreetsignLanguages: [en]
 isLivingStreetKnown: true
 isSlowZoneKnown: true
 officialLanguages: [el]
-orchardProduces: [olive, tomatoe, grape, peach, apple, kiwi, orange, chilli, apricot, pear, lemon,
-  lime, strawberry, cherry, chestnut, walnut]
+orchardProduces: [olive, grape, peach, orange, tomatoe, cherry, apple, almond, walnut, chestnut, kiwi,
+  apricot, lemon, lime, pear, pistachio]

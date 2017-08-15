@@ -2,5 +2,5 @@
 isLivingStreetKnown: true
 isSlowZoneKnown: true
 officialLanguages: [fi, sv]
-orchardProduces: [tomatoe, strawberry, apple, raspberry, chilli]
+orchardProduces: [strawberry, apple, raspberry, tomatoe, chili, pepper]
 popularSports: [soccer, tennis, basketball, beachvolleyball, shooting, ice_hockey]

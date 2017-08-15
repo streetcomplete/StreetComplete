@@ -56,12 +56,15 @@ public class QuestModule
 				new AddOpeningHours(o),
 				// ↓ useful data that is used by some data consumers
 				new AddSport(o),
+				new AddOrchardProduce(o),
+				new AddCrossingType(o),
 				new AddBuildingLevels(o),
 				// ↓ data useful for only a specific use case
 				new AddRoofShape(o),
 				new AddWheelChairAccessPublicTransport(o),
 				new AddTactilePavingBusStop(o),
 				new AddTactilePavingCrosswalk(o),
+				new AddWayLit(o),
 				new AddWheelchairAccessBusiness(o),
 				// ↓ defined in the wiki, but not really used by anyone yet. Just collected for the
 				//   sake of mapping it in case it makes sense later
@@ -71,9 +74,6 @@ public class QuestModule
 				new AddToiletsFee(o),
 				new AddBabyChangingTable(o),
 				new AddFireHydrantType(o),
-				new AddWayLit(o),
-				new AddOrchardProduce(o),
-				new AddCrossingType(o)
 		};
 
 		return new QuestTypes(Arrays.asList(questTypesOrderedByImportance));

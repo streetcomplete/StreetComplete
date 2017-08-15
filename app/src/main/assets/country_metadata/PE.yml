@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
 isSlowZoneKnown: true
 officialLanguages: [es, qu, ay]
-orchardProduces: [grape, pineapple, guava, mango, mangosteen, orange, avocado, tomatoe, lemon, lime,
-  banana, coffee, apple, papaya, palm_oil, olive, chilli, cacao]
+orchardProduces: [coffee, cacao, palm_oil, guava, mango, mangosteen, avocado, lemon, lime, grape, olive,
+  pineapple, orange, chili, pepper, papaya, brazil_nut, apple, banana]
