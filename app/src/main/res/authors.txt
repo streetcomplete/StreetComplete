@@ -36,3 +36,7 @@ crossing_type_signals.jpg      http://maxpixel.freegreatpicture.com/Green-Traffi
 crossing_type_zebra.jpg        https://commons.wikimedia.org/wiki/File%3AZebra_crossing.jpg
 crossing_type_unmarked.jpg     http://www.jrlawfirm.com/wp-content/uploads/2016/04/unmarked-crosswalks-texas.jpg
 
+power_pole_wood.jpg            https://commons.wikimedia.org/wiki/File:Two_armed_power_pole_1.jpg
+power_pole_metal.jpg           https://commons.wikimedia.org/wiki/File:High_voltage_powerline_support_-_Hillsboro,_Oregon.JPG
+power_pole_concrete.jpg        https://commons.wikimedia.org/wiki/File:Concrete_utility_pole.jpg
+
