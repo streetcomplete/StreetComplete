@@ -44,6 +44,6 @@ public class AddPowerPolesMaterial extends SimpleOverpassQuestType
 	}
 
 	@Override public String getIconName() {
-		return "pedestrian_crossing";
+		return "quest";
 	}
 }
