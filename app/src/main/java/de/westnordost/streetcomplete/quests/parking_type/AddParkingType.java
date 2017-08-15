@@ -21,7 +21,7 @@ public class AddParkingType extends SimpleOverpassQuestType
 	@Override
 	protected String getTagFilters()
 	{
-		return "nodes, ways, relations with amenity=parking and !parking";
+		return "nodes, ways with amenity=parking and !parking";
 	}
 
 	public AbstractQuestAnswerFragment createForm()
