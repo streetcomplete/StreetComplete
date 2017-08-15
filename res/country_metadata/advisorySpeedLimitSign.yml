@@ -25,7 +25,7 @@ SI: advisory_speed_limit_blue # color a bit darker though
 ES: advisory_speed_limit_blue # color a bit darker though
 SE: advisory_speed_limit_blue # with a white border, though (MAYBE DESERVES OWN ICON?) https://en.wikipedia.org/wiki/File:Sweden_road_sign_E11-3.svg
 UA: advisory_speed_limit_blue
-GB: advisory_speed_limit_white_horizontal
+GB: advisory_speed_limit_white
 AU: advisory_speed_limit_yellow
 CA: advisory_speed_limit_yellow # however, square
 JP: advisory_speed_limit_white # or, correct Chinese version? https://en.wikipedia.org/wiki/File:Japan_road_sign_510_Safety_Speed.svg
@@ -33,5 +33,4 @@ NZ: advisory_speed_limit_yellow # without, km/h, however
 PH: advisory_speed_limit_white
 KR: advisory_speed_limit_white # different km/h label
 US: advisory_speed_limit_yellow # foten rather square, however
-CN: advisory_speed_limit_china # (also advisory_speed_limit_yellow)
-
+CN: advisory_speed_limit_yellow

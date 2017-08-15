@@ -39,34 +39,3 @@ PH: true
 KR: true
 US: true
 CN: true
-
-# UNKNOWN BELOW
-AL: false
-AO: false
-AM: false
-BA: false
-BW: false
-BG: false
-HR: false
-GE: false
-KZ: false
-KG: false
-LV: false
-LS: false
-LT: false
-MG: false
-MW: false
-MU: false
-MN: false
-MZ: false
-NA: false
-NL: false
-RS: false
-SC: false
-ZA: false
-SZ: false
-TZ: false
-ZM: false
-ZW: false
-# EVEN MISSING ON WIKIPEDIA BELOW
-TR: false

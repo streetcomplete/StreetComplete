@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:paddingTop="16dp"
         android:paddingBottom="12dp"
-        android:background="@drawable/background_maxspeed_rectangular_sign"
+        android:background="@drawable/background_rectangular_sign_white"
         android:gravity="center">
 
         <TextView
