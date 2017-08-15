@@ -31,7 +31,6 @@ public class CompassView extends GLSurfaceView
 		setEGLContextClientVersion(1);
 		getHolder().setFormat(PixelFormat.TRANSLUCENT);
 		setEGLConfigChooser(8, 8, 8, 8, 16, 0);
-		setZOrderOnTop(true);
 
 		setRenderer(new CompassRenderer());
 	}
@@ -65,7 +64,7 @@ public class CompassView extends GLSurfaceView
 
 		@Override public void onSurfaceCreated(GL10 gl, EGLConfig config)
 		{
-			gl.glClearColor(0, 0, 0, 0);
+			gl.glClearColor(1, 1, 1, 0);
 		}
 
 		@Override public void onSurfaceChanged(GL10 gl, int width, int height)
@@ -84,7 +83,6 @@ public class CompassView extends GLSurfaceView
 			gl.glLoadIdentity();
 			GLU.gluLookAt(gl, 0,0,-5, 0,0,0, 0,1,0);
 
-			gl.glTranslatef(0,0.5f,0);
 			gl.glScalef(1.25f, 1.25f,1.25f);
 			gl.glRotatef(tilt * 180 / (float) Math.PI, 1, 0, 0);
 			gl.glRotatef(rotation * 180 / (float) Math.PI, 0, 0, 1);

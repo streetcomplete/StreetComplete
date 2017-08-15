@@ -10,7 +10,7 @@
     <string name="pref_category_communication">"Communication"</string>
     <string name="pref_category_display">"Display"</string>
     <string name="pref_title_authorization">"Authorize OSM access"</string>
-    <string name="pref_title_authorized_summary">"Successfully authorized to your account"</string>
+    <string name="pref_title_authorized_username_summary">"Authorized account: %s"</string>
     <string name="pref_title_not_authorized_summary">"Not yet authorized"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
     <string name="pref_tilecache_size_message">"Space in megabytes reserved on external storage to cache map tiles"</string>
@@ -63,7 +63,7 @@
     <string name="close">"close"</string>
     <string name="download_error">"Error while scanning for quests"</string>
     <string name="upload_error">"Error while uploading answers"</string>
-    <string name="cannot_find_bbox">"Can't scan here. Try to zoom in further"</string>
+    <string name="cannot_find_bbox_or_reduce_tilt">"Can't scan here. Try to zoom in further or tilt the map less."</string>
     <string name="download_area_too_big">"Please zoom in further"</string>
     <string name="confirmation_cancel_prev_download_title">"Cancel the current search and scan here instead?"</string>
     <string name="notification_downloading">"Scanning for quests"</string>
@@ -321,6 +321,10 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="credits_and_more">and more …</string>
     <string name="quest_maxspeed_answer_living_street">It is a living street</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">So, there is a sign like this?</string>
+    <string name="quest_crossing_type_title">What kind of crossing is this?</string>
+    <string name="quest_crossing_type_signals">Crossing with traffic lights</string>
+    <string name="quest_crossing_type_uncontrolled">Uncontrolled crossing</string>
+    <string name="quest_crossing_type_unmarked">Crossing without road markings</string>
     <string name="compass_north_one_letter">N</string>
     <string name="quest_orchard_produce_title">What is being cultivated here?</string>
     <string name="produce_grapes">Grapes</string>
