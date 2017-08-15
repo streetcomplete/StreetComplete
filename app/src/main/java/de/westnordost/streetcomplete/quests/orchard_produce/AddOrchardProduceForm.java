@@ -62,7 +62,7 @@ public class AddOrchardProduceForm extends ImageListQuestAnswerFragment
 			new OsmItem("papaya",		R.drawable.produce_papaya, R.string.produce_papayas),
 			new OsmItem("peach",		R.drawable.produce_peach, R.string.produce_peaches),
 			new OsmItem("pear",			R.drawable.produce_pear, R.string.produce_pears),
-			new OsmItem("pepper",		R.drawable.produce_pepper, R.string.produce_pepper),
+			new OsmItem("piper",		R.drawable.produce_pepper, R.string.produce_pepper),
 			new OsmItem("persimmon",	R.drawable.produce_persimmon, R.string.produce_persimmons),
 			new OsmItem("pineapple", 	R.drawable.produce_pineapple, R.string.produce_pineapples),
 			new OsmItem("pistachio",	R.drawable.produce_pistachio, R.string.produce_pistachios),
