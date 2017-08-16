@@ -27,7 +27,7 @@ import de.westnordost.streetcomplete.data.QuestTypes;
 public class TangramQuestSpriteSheetCreator
 {
 	private static final String QUEST_ICONS_FILE = "quests.png";
-	private static final String SPRITESHEET_YAML = "quests_spritesheet.yaml";
+	private static final String SPRITESHEET_YAML = "streetcomplete_quests.yaml";
 
 	private final Context context;
 	private final QuestTypes questTypes;
@@ -108,7 +108,11 @@ public class TangramQuestSpriteSheetCreator
 			context.deleteFile(SPRITESHEET_YAML);
 			FileOutputStream spriteSheetYamlFile = context.openFileOutput(SPRITESHEET_YAML, Context.MODE_PRIVATE);
 			PrintWriter p = new PrintWriter(spriteSheetYamlFile);
-			p.print(sprites);
+			p.println("textures:");
+			p.println("    quests:");
+			p.println("        url: "+QUEST_ICONS_FILE);
+			p.println("        filtering: mipmap");
+			p.println("        sprites: " + sprites);
 			p.flush();
 			p.close();
 		}
