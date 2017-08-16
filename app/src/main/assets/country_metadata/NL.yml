@@ -2,4 +2,6 @@
 isLivingStreetKnown: true
 isSlowZoneKnown: true
 officialLanguages: [nl]
+orchardProduces: [pear, apple, strawberry, tomatoe, chili, pepper, cherry, blueberry, grape, plum,
+  raspberry, peach]
 popularSports: [soccer, tennis, equestrian, basketball, field_hockey]

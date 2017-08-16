@@ -3,3 +3,4 @@ additionalStreetsignLanguages: [ru]
 isLivingStreetKnown: true
 isSlowZoneKnown: true
 officialLanguages: [et]
+orchardProduces: [apple, strawberry, plum, raspberry, cherry, tomatoe]

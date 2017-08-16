@@ -62,9 +62,9 @@
     <string name="close">"cerrar"</string>
     <string name="download_error">"Hubo un error al buscar tareas"</string>
     <string name="upload_error">"Hubo un error al subir las respuestas"</string>
-    <string name="cannot_find_bbox">"No es posible buscar tareas aquí, inténtalo ampliando el mapa."</string>
+    <string name="cannot_find_bbox">"Aquí no se pueden buscar tareas, prueba ampliando el mapa."</string>
     <string name="download_area_too_big">"Si quieres prueba ampliando un poco más el mapa"</string>
-    <string name="confirmation_cancel_prev_download_title">"¿Cancelar la descarga actual y buscar tareas aquí en su lugar?"</string>
+    <string name="confirmation_cancel_prev_download_title">"¿Quieres cancelar la descarga actual y empezar a buscar tareas en este lugar?"</string>
     <string name="notification_downloading">"Descargando tareas"</string>
     <string name="now_downloading_toast">"Descargando más tareas"</string>
     <string name="turn_on_location_request">"La ubicación esta desactivada. ¿Ir a los ajustes para activarla ahora?"</string>
@@ -103,7 +103,7 @@
     <string name="quest_openingHours_answer_seasonal_opening_hours">"Depende del mes"</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">"Sin horario de apertura"</string>
     <string name="quest_openingHours_comment_title">"Describe los horarios de apertura"</string>
-    <string name="quest_openingHours_comment_description">"Sé conciso, mejor usa las palabras del letrero. Por ejemplo; «con cita previa». La ausencia de letrero no significa necesariamente que no haya un horario de apertura habitual."</string>
+    <string name="quest_openingHours_comment_description">"Sé conciso, mejor transcribe las palabras del letrero. Por ejemplo; «con cita previa». La ausencia de letrero no significa necesariamente que no haya un horario de apertura habitual."</string>
     <string name="quest_buildingLevels_title">"¿Cuántos niveles tiene este edificio?"</string>
     <string name="quest_buildingLevels_title_buildingPart">"¿Cuántos niveles tiene esta parte del edificio?"</string>
     <string name="quest_buildingLevels_levelsLabel">"niveles totales"</string>
@@ -116,31 +116,31 @@
     <string name="pref_title_sync">"Sincronización automática"</string>
     <string name="map_btn_zoom_out">"Reducir"</string>
     <string name="map_btn_zoom_in">"Ampliar"</string>
-    <string name="privacy_html">"&lt;p&gt;Vaya, alguien que se preocupa por la privacidad, ¡que bien! Creo que de aquí en adelante son todo buenas noticias:&lt;/p&gt;
+    <string name="privacy_html">"&lt;p&gt;Vaya, alguien que se preocupa por la privacidad, ¡qué bien! Creo que de aquí en adelante van a ser todo buenas noticias:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Aportaciones directas&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 En primer lugar, entiende que con esta aplicación estás enviando contribuciones directas y totalmente reales a OpenStreetMap.&lt;br/&gt;
-Cualquier aporte realizado con la aplicación se añade directamente al mapa sin intermediarios entre la aplicación y la infraestructura de OSM, tal y como ocurren con &lt;a href=\"https://wheelmap.org\"&gt;wheelmap.org&lt;/a&gt; o &lt;a href=\"http://www.kort.ch\"&gt;Kort&lt;/a&gt;.
+Cualquier aporte realizado con esta aplicación se añade directamente al mapa sin ningún intermediario entre aplicación e infraestructura de OSM, al contrario que en proyectos como &lt;a href=\"https://wheelmap.org\"&gt;wheelmap.org&lt;/a&gt; o &lt;a href=\"http://www.kort.ch\"&gt;Kort&lt;/a&gt;.
 &lt;/p&gt;
 &lt;p&gt;
-No se pueden aportar datos anónimos a OpenStreetMap, por lo que cualquier cambio que hagas se hace con tu cuenta de usuario en OSM, lo que significa que tus cambios en el mapa son visibles públicamente en su sitio Web y se atribuyen como tal.
+No se pueden aportar datos anónimos a OpenStreetMap, por lo que cualquier cambio que hagas se hace con tu propia cuenta de usuario en OSM, con lo que los cambios que hagas se van a ver públicamente con tu nombre en la Web.
 &lt;/p&gt;
 
 &lt;b&gt;Ubicación&lt;/b&gt;&lt;br/&gt;
 &lt;p&gt;
-Tu ubicación se utiliza solamente para buscar de forma desatendida tareas disponibles en la zona. No te preocupes, la aplicación no la comparte con nadie.
+Tu posición no se comparte con nadie, sólo se utiliza para buscar tareas disponibles en la zona, y de forma totalmente desatendida.
 &lt;/p&gt;
 
 &lt;p&gt;&lt;b&gt;Uso de datos&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-Como se ha mencionado, la aplicación se comunica directamente con la infraestructura de OSM. Es decir, con la &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;API de Overpass&lt;/a&gt; para descargar tareas (de forma anónima) y con la &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;API de OSM&lt;/a&gt; para subir los cambios.&lt;br/&gt;
-No obstante, antes de subir los cambios, la aplicación comprueba con un &lt;a href=\"http://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;fichero de texto plano&lt;/a&gt; en mi servidor si he prohibido subir cualquier cambio. Esta es una medida preventiva para permitir restringir versiones de la aplicación que tengan errores críticos que puedan corromper los datos de OSM.&lt;br/&gt;
+Continuando con lo de antes, la aplicación se comunica directamente con la infraestructura de OSM. Es decir, con la &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;API de Overpass&lt;/a&gt; para descargar tareas (de forma anónima) y con la &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;API de OSM&lt;/a&gt; para subir los cambios.&lt;br/&gt;
+No obstante, antes de subir cualquier cambio, la aplicación comprueba si la versión actual aparece en un &lt;a href=\"http://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;fichero de texto plano&lt;/a&gt; de mi servidor. Esta es una medida preventiva para poder restringir subidas en versiones de la aplicación que tengan errores críticos que puedan corromper los datos de OSM.&lt;br/&gt;
 &lt;/p&gt;
 &lt;p&gt;
-Para visualizar el mapa, se descargan secciones de mapa del &lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt;servicio de teselas de Mapzen&lt;/a&gt;, el cual es anónimo. El servicio registra las solicitudes de secciones para comprender qué áreas son populares para almacenarlas en caché y mejorar el rendimiento. Su plataforma también registra las direcciones IP y su alojamiento está en Amazon por lo que están sujetos a aquello que se les permite hacer.
+Para poder ver el mapa las secciones se descargan del &lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt;servicio de teselas de Mapzen&lt;/a&gt;, de forma totalmente anónima. El servicio registra las solicitudes de las distintas partes del globo para medir su popularidad y almacenarlas en caché, mejorando su rendimiento. Su plataforma también registra las direcciones IP y está alojada en Amazon, por lo que dependen de un tercero.
 &lt;/p&gt;
 &lt;p&gt;
-(&lt;i&gt;Lo siguiente no se ha implementado todavía, ¡solo quiero informarte de lo que viene!:&lt;/i&gt;) Los datos que se muestran en la tabla de clasificación y el perfil se consigue de información disponible públicamente desde OpenStreetMap. Los datos no proceden de esta aplicación sino esencialmente del historial de cambios público de los usuarios de OSM.
+(&lt;i&gt;Lo que viene a continuación todavía no está terminado, es sólo para que sepas lo que está al caer:&lt;/i&gt;) Los datos que se muestran en la tabla de clasificación y en el perfil se consiguen de información pública en OpenStreetMap. Estos datos no proceden de la aplicación, sino del historial público de cambios de los propios usuarios.
 &lt;/p&gt;"</string>
     <string name="autosync_on">"Activada"</string>
     <string name="autosync_only_on_wifi">"Sólo con WiFi"</string>
@@ -200,7 +200,7 @@ La información añadida se incluye directamente en OpenStreetMap con tu nombre 
     <string name="quest_buildingLevels_negativeBuildingLevels">"¡Vaya, has puesto más niveles de tejado de los que hay en total!"</string>
     <string name="quest_openingHours_add_times">"Añadir horarios de apertura"</string>
     <string name="crash_message">"¿Podría enviar el error al desarrollador, por favor?"</string>
-    <string name="crash_title">"¡Oh, no, StreetComplete ha cerrado inesperadamente!"</string>
+    <string name="crash_title">"¡Vaya, StreetComplete se ha cerrado inesperadamente!"</string>
     <string name="crash_compose_email">"Redactar correo electrónico"</string>
     <string name="no_email_client">"No tienes ningún cliente de correo instalado."</string>
     <string name="pref_title_keep_screen_on">"Mantener la pantalla encendida"</string>
@@ -344,9 +344,7 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <string name="produce_mangos">"Mangos"</string>
     <string name="produce_mate">"Yerba mate"</string>
     <string name="produce_nutmeg">"Nuez moscada"</string>
-
-    <!-- Fuzzy -->
-    <string name="produce_oil_palms">"Aceite de palmas"</string>
+    <string name="produce_oil_palms">"Palmas aceiteras"</string>
     <string name="produce_olives">"Aceitunas"</string>
     <string name="produce_oranges">"Naranjas"</string>
     <string name="produce_papayas">"Papayas"</string>
@@ -365,4 +363,10 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <string name="produce_vanilla">"Vainilla"</string>
     <string name="produce_walnuts">"Nueces"</string>
     <string name="produce_sisal">"Sisal (enequén)"</string>
+    <string name="quest_way_lit_title">"¿Está alumbrada esta parte de la vía?"</string>
+    <string name="quest_way_lit_named_title">"¿Está alumbrada \"%s\" aquí?"</string>
+    <string name="quest_way_lit_road_title">"¿Está alumbrada esta parte de la calle?"</string>
+    <string name="quest_way_lit_named_road_title">"¿Está alumbrada la calle \"%s\" aquí?"</string>
+    <string name="quest_way_lit_automatic">"Con sensores de movimiento"</string>
+    <string name="quest_way_lit_24_7">"Está alumbrada de día y de noche"</string>
 </resources>
