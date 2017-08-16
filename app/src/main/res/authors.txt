@@ -38,5 +38,4 @@ crossing_type_unmarked.jpg     http://www.jrlawfirm.com/wp-content/uploads/2016/
 
 parking_type_multistorage.jpg  https://en.wikipedia.org/wiki/File:Hradec_Kr%C3%A1lov%C3%A9,_Resslova,_parkovac%C3%AD_d%C5%AFm.jpg
 parking_type_surface.jpg       https://wiki.openstreetmap.org/wiki/File:Car_park2.jpg
-parking_type_underground.jpg   https://commons.wikimedia.org/wiki/File:Tiefgarageneinfahrt_in_Kirchheim.JPG
-
+parking_type_underground.jpg   https://pixabay.com/de/tiefgarage-einfahrt-absch%C3%BCssig-273439/
