@@ -35,6 +35,8 @@ import de.westnordost.osmapi.map.data.OsmElement;
 import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.QuestGroup;
+import de.westnordost.streetcomplete.data.QuestType;
+import de.westnordost.streetcomplete.data.QuestTypes;
 import de.westnordost.streetcomplete.data.meta.CountryInfo;
 import de.westnordost.streetcomplete.data.meta.CountryInfos;
 import de.westnordost.streetcomplete.data.osm.ElementGeometry;
@@ -43,9 +45,13 @@ import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 /** Abstract base class for any dialog with which the user answers a specific quest(ion) */
 public abstract class AbstractQuestAnswerFragment extends Fragment
 {
-	public static final String ARG_ELEMENT = "element", ARG_GEOMETRY = "geometry";
+	public static final String
+			ARG_ELEMENT = "element",
+			ARG_GEOMETRY = "geometry",
+			ARG_QUESTTYPE = "quest_type";
 
 	@Inject CountryInfos countryInfos;
+	@Inject QuestTypes questTypes;
 
 	private int titleTextResId = -1;
 	private Object[] titleTextFormatArgs;
@@ -64,6 +70,7 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 
 	private OsmElement osmElement;
 	private ElementGeometry elementGeometry;
+	private QuestType questType;
 	private CountryInfo countryInfo;
 
 	private List<OtherAnswer> otherAnswers;
@@ -82,6 +89,7 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 	{
 		osmElement = (OsmElement) getArguments().getSerializable(ARG_ELEMENT);
 		elementGeometry = (ElementGeometry) getArguments().getSerializable(ARG_GEOMETRY);
+		questType = questTypes.forName(getArguments().getString(ARG_QUESTTYPE));
 		countryInfo = null;
 
 		View view = inflater.inflate(R.layout.quest_answer_fragment, container, false);
@@ -106,7 +114,7 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 		});
 
 		title = (TextView) view.findViewById(R.id.title);
-		updateTitle();
+		setTitle(questType.getDefaultTitle());
 
 		buttonPanel = (LinearLayout) view.findViewById(R.id.buttonPanel);
 		buttonOtherAnswers = (Button) buttonPanel.findViewById(R.id.buttonOtherAnswers);
@@ -281,32 +289,17 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 		questAnswerComponent.onSkippedQuest();
 	}
 
-	public final void setTitle(int resourceId)
+	protected final void setTitle(int resourceId)
 	{
 		titleTextResId = resourceId;
-		updateTitle();
+		title.setText(resourceId);
 	}
 
-	public final void setTitle(int resourceId, Object... formatArgs)
+	protected final void setTitle(int resourceId, Object... formatArgs)
 	{
 		titleTextResId = resourceId;
 		titleTextFormatArgs = formatArgs;
-		updateTitle();
-	}
-
-	private void updateTitle()
-	{
-		if(title != null && titleTextResId != -1)
-		{
-			if(titleTextFormatArgs != null)
-			{
-				title.setText(getResources().getString(titleTextResId, titleTextFormatArgs));
-			}
-			else
-			{
-				title.setText(titleTextResId);
-			}
-		}
+		title.setText(getResources().getString(titleTextResId, titleTextFormatArgs));
 	}
 
 	protected final View setContentView(int resourceId)

@@ -33,4 +33,5 @@ public class AddBusStopShelter extends SimpleOverpassQuestType
 
 	@Override public String getCommitMessage() { return "Add bus stop shelter"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_bus; }
+	@Override public int getDefaultTitle() { return R.string.quest_busStopShelter_title; }
 }

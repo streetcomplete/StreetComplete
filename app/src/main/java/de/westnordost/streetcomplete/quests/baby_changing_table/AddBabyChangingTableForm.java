@@ -24,9 +24,5 @@ public class AddBabyChangingTableForm extends YesNoQuestAnswerFragment
 		{
 			setTitle(R.string.quest_baby_changing_table_title, name);
 		}
-		else
-		{
-			setTitle(R.string.quest_baby_changing_table_toilets_title);
-		}
 	}
 }

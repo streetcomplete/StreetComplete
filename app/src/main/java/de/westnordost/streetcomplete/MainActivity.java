@@ -742,6 +742,7 @@ public class MainActivity extends AppCompatActivity implements
 			args.putSerializable(AbstractQuestAnswerFragment.ARG_ELEMENT, (OsmElement) element);
 		}
 		args.putSerializable(AbstractQuestAnswerFragment.ARG_GEOMETRY, quest.getGeometry());
+		args.putString(AbstractQuestAnswerFragment.ARG_QUESTTYPE, quest.getType().getClass().getSimpleName());
 		f.setArguments(args);
 
 		android.app.FragmentTransaction ft = getFragmentManager().beginTransaction();

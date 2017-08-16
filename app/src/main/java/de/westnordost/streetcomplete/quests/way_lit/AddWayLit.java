@@ -68,4 +68,5 @@ public class AddWayLit extends SimpleOverpassQuestType
 
 	@Override public String getCommitMessage() { return "Add way lit"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_lantern; }
+	@Override public int getDefaultTitle() { return R.string.quest_way_lit_road_title; }
 }

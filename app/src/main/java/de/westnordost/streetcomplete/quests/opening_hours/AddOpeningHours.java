@@ -63,4 +63,5 @@ public class AddOpeningHours extends SimpleOverpassQuestType
 
 	@Override public String getCommitMessage() { return "Add opening hours"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_opening_hours; }
+	@Override public int getDefaultTitle() { return R.string.quest_openingHours_name_title; }
 }

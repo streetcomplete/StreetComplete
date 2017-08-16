@@ -150,6 +150,7 @@ public class OsmQuestDownloadTest extends TestCase
 
 		@Override public AbstractQuestAnswerFragment createForm() { return null; }
 		@Override public int getIcon() { return 0; }
+		@Override public int getDefaultTitle() { return 0; }
 		@Override public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes) {}
 		@Override public String getCommitMessage() { return null; }
 		@Override public boolean download(BoundingBox bbox, MapDataWithGeometryHandler handler)

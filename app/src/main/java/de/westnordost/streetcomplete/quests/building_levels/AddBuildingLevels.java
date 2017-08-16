@@ -44,4 +44,5 @@ public class AddBuildingLevels extends SimpleOverpassQuestType
 
 	@Override public String getCommitMessage() { return "Add building and roof levels"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_building_levels; }
+	@Override public int getDefaultTitle() { return R.string.quest_buildingLevels_title; }
 }

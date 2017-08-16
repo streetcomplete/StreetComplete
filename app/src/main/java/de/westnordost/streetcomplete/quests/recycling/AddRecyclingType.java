@@ -50,4 +50,5 @@ public class AddRecyclingType extends SimpleOverpassQuestType
 
 	@Override public String getCommitMessage() { return "Add recycling type to recycling amenity"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_recycling; }
+	@Override public int getDefaultTitle() { return R.string.quest_recycling_type_title; }
 }

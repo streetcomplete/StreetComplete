@@ -68,4 +68,5 @@ public class AddWheelchairAccessBusiness extends SimpleOverpassQuestType
 
 	@Override public String getCommitMessage() { return "Add wheelchair access to businesses"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_wheelchair_shop; }
+	@Override public int getDefaultTitle() { return R.string.quest_wheelchairAccess_location_title; }
 }

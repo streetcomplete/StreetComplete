@@ -65,10 +65,6 @@ public class AddRoadSurfaceForm extends AbstractQuestFormAnswerFragment
 		{
 			setTitle(R.string.quest_streetSurface_name_title, name);
 		}
-		else
-		{
-			setTitle(R.string.quest_streetSurface_title);
-		}
 	}
 
 	@Override protected void onClickOk()

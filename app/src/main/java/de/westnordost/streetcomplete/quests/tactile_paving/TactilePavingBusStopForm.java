@@ -25,9 +25,5 @@ public class TactilePavingBusStopForm extends YesNoQuestAnswerFragment
 		{
 			setTitle(R.string.quest_tactilePaving_title_name_bus, name);
 		}
-		else
-		{
-			setTitle(R.string.quest_tactilePaving_title_bus);
-		}
 	}
 }

@@ -75,4 +75,5 @@ public class AddPlaceName extends SimpleOverpassQuestType
 
 	@Override public String getCommitMessage() { return "Determine place names"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_label; }
+	@Override public int getDefaultTitle() { return R.string.quest_placeName_title; }
 }

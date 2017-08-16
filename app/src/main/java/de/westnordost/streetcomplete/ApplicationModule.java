@@ -19,6 +19,7 @@ import de.westnordost.streetcomplete.data.download.WifiAutoDownloadStrategy;
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao;
 import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
+import de.westnordost.streetcomplete.data.osm.persist.UndoOsmQuestDao;
 import de.westnordost.streetcomplete.data.osmnotes.CreateNoteDao;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestDao;
 import de.westnordost.streetcomplete.data.tiles.DownloadedTilesDao;
@@ -62,13 +63,13 @@ public class ApplicationModule
 	}
 
 	@Provides public QuestController questController(
-			OsmQuestDao osmQuestDB, MergedElementDao osmElementDB, ElementGeometryDao geometryDB,
-			OsmNoteQuestDao osmNoteQuestDB,	CreateNoteDao createNoteDB,
-			OpenChangesetsDao manageChangesetsDB)
+			OsmQuestDao osmQuestDB, UndoOsmQuestDao undoOsmQuestDB, MergedElementDao osmElementDB,
+			ElementGeometryDao geometryDB, OsmNoteQuestDao osmNoteQuestDB,
+			CreateNoteDao createNoteDB, OpenChangesetsDao manageChangesetsDB)
 	{
 		return new QuestController(
-				osmQuestDB, osmElementDB, geometryDB, osmNoteQuestDB, createNoteDB, manageChangesetsDB,
-				appContext());
+				osmQuestDB, undoOsmQuestDB, osmElementDB, geometryDB, osmNoteQuestDB, createNoteDB,
+				manageChangesetsDB,	appContext());
 	}
 
 	@Provides public static MobileDataAutoDownloadStrategy mobileDataAutoDownloadStrategy(

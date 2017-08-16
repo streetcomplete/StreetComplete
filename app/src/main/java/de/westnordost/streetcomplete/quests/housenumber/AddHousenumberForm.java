@@ -30,7 +30,6 @@ public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 									   Bundle savedInstanceState)
 	{
 		View view = super.onCreateView(inflater, container, savedInstanceState);
-		setTitle(R.string.quest_address_title);
 
 		View contentView = setContentView(R.layout.quest_housenumber);
 

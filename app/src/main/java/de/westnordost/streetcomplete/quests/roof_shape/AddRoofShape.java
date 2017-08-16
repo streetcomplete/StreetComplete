@@ -37,4 +37,5 @@ public class AddRoofShape extends SimpleOverpassQuestType
 
 	@Override public String getCommitMessage() { return "Add roof shapes"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_roof_shape; }
+	@Override public int getDefaultTitle() { return R.string.quest_roofShape_title; }
 }

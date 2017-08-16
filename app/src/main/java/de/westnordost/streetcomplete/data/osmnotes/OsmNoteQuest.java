@@ -116,6 +116,7 @@ public class OsmNoteQuest implements Quest
 			return new NoteDiscussionForm();
 		}
 		@Override public int getIcon() { return R.drawable.ic_quest_notes; }
+		@Override public int getDefaultTitle() { return R.string.quest_noteDiscussion_title; }
 	}
 
 	public boolean probablyContainsQuestion()

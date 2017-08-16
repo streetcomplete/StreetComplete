@@ -156,4 +156,5 @@ public class AddRoadName implements OsmElementQuestType
 
 	@Override public String getCommitMessage() { return "Determine road names"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_street_name; }
+	@Override public int getDefaultTitle() { return R.string.quest_streetName_title; }
 }

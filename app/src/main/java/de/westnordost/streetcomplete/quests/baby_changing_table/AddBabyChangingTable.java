@@ -36,4 +36,5 @@ public class AddBabyChangingTable extends SimpleOverpassQuestType
 
 	@Override public String getCommitMessage() { return "Add baby changing table"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_baby; }
+	@Override public int getDefaultTitle() { return R.string.quest_baby_changing_table_toilets_title; }
 }

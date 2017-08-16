@@ -101,4 +101,5 @@ public class AddHousenumber implements OsmElementQuestType
 	@Override public AbstractQuestAnswerFragment createForm() { return new AddHousenumberForm(); }
 	@Override public String getCommitMessage() { return "Add housenumbers"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_housenumber; }
+	@Override public int getDefaultTitle() { return R.string.quest_address_title; }
 }

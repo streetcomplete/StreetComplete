@@ -62,4 +62,5 @@ public class AddSport extends SimpleOverpassQuestType
 
 	@Override public String getCommitMessage() { return "Add pitches sport"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_sport; }
+	@Override public int getDefaultTitle() { return R.string.quest_sport_title; }
 }

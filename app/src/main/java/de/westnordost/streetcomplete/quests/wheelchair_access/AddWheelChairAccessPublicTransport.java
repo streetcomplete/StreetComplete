@@ -43,4 +43,5 @@ public class AddWheelChairAccessPublicTransport extends SimpleOverpassQuestType
 		return "Add wheelchair access to public transport platforms";
 	}
 	@Override public int getIcon() { return R.drawable.ic_quest_wheelchair; }
+	@Override public int getDefaultTitle() { return R.string.quest_wheelchairAccess_location_title; }
 }

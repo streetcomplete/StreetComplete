@@ -34,4 +34,5 @@ public class AddCrossingType extends SimpleOverpassQuestType
 
     @Override public String getCommitMessage() { return "Add crossing type"; }
     @Override public int getIcon() { return R.drawable.ic_quest_pedestrian_crossing; }
+    @Override public int getDefaultTitle() { return R.string.quest_crossing_type_title; }
 }

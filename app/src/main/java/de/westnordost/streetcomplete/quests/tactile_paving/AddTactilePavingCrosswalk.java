@@ -36,4 +36,5 @@ public class AddTactilePavingCrosswalk extends SimpleOverpassQuestType
 
 	@Override public String getCommitMessage() { return "Add tactile pavings on crosswalks"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_blind_pedestrian_crossing; }
+	@Override public int getDefaultTitle() { return R.string.quest_tactilePaving_title_crosswalk; }
 }

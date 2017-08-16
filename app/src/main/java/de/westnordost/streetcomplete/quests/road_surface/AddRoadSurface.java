@@ -43,4 +43,5 @@ public class AddRoadSurface extends SimpleOverpassQuestType
 
 	@Override public String getCommitMessage() { return "Add road surfaces"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_street_surface; }
+	@Override public int getDefaultTitle() { return R.string.quest_streetSurface_title; }
 }

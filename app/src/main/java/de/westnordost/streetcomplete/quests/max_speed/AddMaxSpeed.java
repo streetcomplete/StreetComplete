@@ -58,6 +58,5 @@ public class AddMaxSpeed extends SimpleOverpassQuestType
 
 	@Override public String getCommitMessage() { return "Add speed limits"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_max_speed; }
-
-
+	@Override public int getDefaultTitle() { return R.string.quest_maxspeed_title_short; }
 }

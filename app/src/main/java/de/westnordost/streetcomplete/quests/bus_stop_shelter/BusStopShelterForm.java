@@ -26,9 +26,5 @@ public class BusStopShelterForm extends YesNoQuestAnswerFragment
 		{
 			setTitle(R.string.quest_busStopShelter_name_title, name);
 		}
-		else
-		{
-			setTitle(R.string.quest_busStopShelter_title);
-		}
 	}
 }

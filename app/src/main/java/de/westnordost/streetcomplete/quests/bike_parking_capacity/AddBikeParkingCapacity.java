@@ -34,4 +34,5 @@ public class AddBikeParkingCapacity extends SimpleOverpassQuestType
 
 	@Override public String getCommitMessage() { return "Add bicycle parking capacities"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_bicycle_parking; }
+	@Override public int getDefaultTitle() { return R.string.quest_bikeParkingCapacity_title; }
 }
