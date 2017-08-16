@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import javax.inject.Inject;
 
+import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
@@ -41,6 +42,5 @@ public class AddWheelChairAccessPublicTransport extends SimpleOverpassQuestType
 	{
 		return "Add wheelchair access to public transport platforms";
 	}
-
-	@Override public String getIconName() {	return "wheelchair"; }
+	@Override public int getIcon() { return R.drawable.ic_quest_wheelchair; }
 }

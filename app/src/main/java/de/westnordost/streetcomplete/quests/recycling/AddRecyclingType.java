@@ -6,16 +6,14 @@ import java.util.ArrayList;
 
 import javax.inject.Inject;
 
+import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
 
 public class AddRecyclingType extends SimpleOverpassQuestType
 {
-	@Inject public AddRecyclingType(OverpassMapDataDao overpassServer)
-	{
-		super(overpassServer);
-	}
+	@Inject public AddRecyclingType(OverpassMapDataDao overpassServer) { super(overpassServer); }
 
 	@Override protected String getTagFilters()
 	{
@@ -50,10 +48,6 @@ public class AddRecyclingType extends SimpleOverpassQuestType
 		}
 	}
 
-	@Override public String getCommitMessage()
-	{
-		return "Add recycling type to recycling amenity";
-	}
-
-	@Override public String getIconName() {	return "recycling"; }
+	@Override public String getCommitMessage() { return "Add recycling type to recycling amenity"; }
+	@Override public int getIcon() { return R.drawable.ic_quest_recycling; }
 }

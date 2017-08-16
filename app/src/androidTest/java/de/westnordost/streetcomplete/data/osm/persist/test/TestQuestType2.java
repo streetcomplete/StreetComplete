@@ -20,5 +20,5 @@ public class TestQuestType2 implements OsmElementQuestType
 	{
 		return null;
 	}
-	@Override public String getIconName() {	return null; }
+	@Override public int getIcon() { return 0; }
 }

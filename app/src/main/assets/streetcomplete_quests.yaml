@@ -1,0 +1,5 @@
+textures:
+    quests:
+        url: quests.png
+        filtering: mipmap
+        sprites: {ic_quest_street_surface: [0,0,128,128], ic_quest_bicycle_parking: [128,0,128,128], ic_quest_apple: [256,0,128,128], ic_quest_wheelchair_shop: [384,0,128,128], ic_quest_roof_shape: [512,0,128,128], ic_quest_toilets: [0,128,128,128], ic_quest_opening_hours: [128,128,128,128], ic_quest_recycling: [256,128,128,128], ic_quest_fire_hydrant: [384,128,128,128], ic_quest_housenumber: [512,128,128,128], ic_quest_parking: [0,256,128,128], ic_quest_street_name: [128,256,128,128], ic_quest_max_speed: [256,256,128,128], ic_quest_blind_bus: [384,256,128,128], ic_quest_pedestrian_crossing: [512,256,128,128], ic_quest_lantern: [0,384,128,128], ic_quest_baby: [128,384,128,128], ic_quest_bus: [256,384,128,128], ic_quest_sport: [384,384,128,128], ic_quest_wheelchair: [512,384,128,128], ic_quest_blind_pedestrian_crossing: [0,512,128,128], ic_quest_building_levels: [128,512,128,128]}

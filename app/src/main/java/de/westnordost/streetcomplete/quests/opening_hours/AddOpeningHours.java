@@ -5,6 +5,7 @@ import android.text.TextUtils;
 
 import javax.inject.Inject;
 
+import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
@@ -12,10 +13,7 @@ import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 
 public class AddOpeningHours extends SimpleOverpassQuestType
 {
-	@Inject public AddOpeningHours(OverpassMapDataDao overpassServer)
-	{
-		super(overpassServer);
-	}
+	@Inject public AddOpeningHours(OverpassMapDataDao overpassServer) { super(overpassServer); }
 
     @Override protected String getTagFilters()
 	{
@@ -63,10 +61,6 @@ public class AddOpeningHours extends SimpleOverpassQuestType
 		}
 	}
 
-	@Override public String getCommitMessage()
-	{
-		return "Add opening hours";
-	}
-
-	@Override public String getIconName() {	return "opening_hours"; }
+	@Override public String getCommitMessage() { return "Add opening hours"; }
+	@Override public int getIcon() { return R.drawable.ic_quest_opening_hours; }
 }

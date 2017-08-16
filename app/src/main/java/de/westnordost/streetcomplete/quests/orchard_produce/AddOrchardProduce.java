@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import java.util.ArrayList;
 
+import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
@@ -44,5 +45,5 @@ public class AddOrchardProduce extends SimpleOverpassQuestType
 	}
 
 	@Override public String getCommitMessage() { return "Add orchard produces"; }
-	@Override public String getIconName() { return "apple"; }
+	@Override public int getIcon() { return R.drawable.ic_quest_apple; }
 }

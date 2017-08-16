@@ -1,13 +1,9 @@
 package de.westnordost.streetcomplete.tangram;
 
 import android.app.Activity;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
 import android.graphics.Point;
 import android.graphics.PointF;
 import android.graphics.Rect;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
 
 import com.mapzen.tangram.LabelPickResult;
@@ -60,6 +56,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 	private int questTopOffset, questBottomOffset;
 
 	@Inject QuestTypes questTypes;
+	@Inject TangramQuestSpriteSheetCreator spriteSheetCreator;
 
 	public interface Listener
 	{
@@ -104,25 +101,19 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 
 		retrievedTiles = new HashSet<>();
 
+		/*
+		TODO uncomment when https://github.com/tangrams/tangram-es/issues/1607 is fixed
+		List<SceneUpdate> sceneUpdates = spriteSheetCreator.get();
+		controller.queueSceneUpdate(sceneUpdates);
+		controller.applySceneUpdates();
+		*/
+
 		geometryLayer = controller.addDataLayer(GEOMETRY_LAYER);
 		questsLayer = controller.addDataLayer(QUESTS_LAYER);
 
 		controller.setTapResponder(this);
 		controller.setLabelPickListener(this);
 		controller.setPickRadius(1);
-	}
-
-	private BitmapDrawable createBitmapDrawableFrom(int resId)
-	{
-		Drawable drawable = getResources().getDrawable(resId);
-		if(drawable instanceof BitmapDrawable) return (BitmapDrawable) drawable;
-
-		Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(),
-				drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
-		Canvas canvas = new Canvas(bitmap);
-		drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
-		drawable.draw(canvas);
-		return new BitmapDrawable(getResources(), bitmap);
 	}
 
 	@Override public boolean onSingleTapUp(float x, float y)
@@ -357,6 +348,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 			else      geoJson.append(",");
 
 			LatLon pos = quest.getMarkerLocation();
+			String questIconName = getActivity().getResources().getResourceEntryName(quest.getType().getIcon());
 
 			geoJson.append("{\"type\":\"Feature\",");
 			geoJson.append("\"geometry\":{\"type\":\"Point\",\"coordinates\": [");
@@ -364,7 +356,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 			geoJson.append(",");
 			geoJson.append(pos.getLatitude());
 			geoJson.append("]},\"properties\": {\"type\":\"point\", \"kind\":\"");
-			geoJson.append(quest.getType().getIconName());
+			geoJson.append(questIconName);
 			geoJson.append("\",\"");
 			geoJson.append(MARKER_QUEST_GROUP);
 			geoJson.append("\":\"");

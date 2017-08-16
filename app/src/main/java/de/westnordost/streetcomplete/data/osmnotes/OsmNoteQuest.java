@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.data.osmnotes;
 
 import java.util.Date;
 
+import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.Quest;
 import de.westnordost.streetcomplete.data.QuestStatus;
 import de.westnordost.streetcomplete.data.QuestType;
@@ -114,8 +115,7 @@ public class OsmNoteQuest implements Quest
 		{
 			return new NoteDiscussionForm();
 		}
-
-		@Override public String getIconName() {	return "note"; }
+		@Override public int getIcon() { return R.drawable.ic_quest_notes; }
 	}
 
 	public boolean probablyContainsQuestion()

@@ -5,6 +5,7 @@ import android.text.TextUtils;
 
 import javax.inject.Inject;
 
+import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
@@ -21,13 +22,9 @@ public class AddWayLit extends SimpleOverpassQuestType
 
 	private static final String[] LIT_WAYS = { "footway", "cycleway" };
 
-	@Inject public AddWayLit(OverpassMapDataDao overpassServer)
-	{
-		super(overpassServer);
-	}
+	@Inject public AddWayLit(OverpassMapDataDao overpassServer) { super(overpassServer); }
 
-	@Override
-	protected String getTagFilters()
+	@Override protected String getTagFilters()
 	{
 		/* Using sidewalk as a tell-tale tag for (urban) streets which reached a certain level of
 		   development. I.e. non-urban streets will usually not even be lit in industrialized
@@ -69,13 +66,6 @@ public class AddWayLit extends SimpleOverpassQuestType
 		}
 	}
 
-	@Override public String getCommitMessage()
-	{
-		return "Add way lit";
-	}
-
-	@Override public String getIconName()
-	{
-		return "lantern";
-	}
+	@Override public String getCommitMessage() { return "Add way lit"; }
+	@Override public int getIcon() { return R.drawable.ic_quest_lantern; }
 }

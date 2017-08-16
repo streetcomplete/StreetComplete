@@ -4,8 +4,6 @@ import android.content.res.AssetManager;
 
 import com.vividsolutions.jts.geom.GeometryCollection;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.concurrent.Callable;
 import java.util.concurrent.Future;
@@ -15,6 +13,7 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import de.westnordost.streetcomplete.util.StreamUtils;
 
 @Module
 public class MetadataModule
@@ -39,31 +38,8 @@ public class MetadataModule
 			{
 				InputStream is = assetManager.open("countryBoundaries.json");
 				return new CountryBoundaries(
-						(GeometryCollection) geoJsonReader.read(readToString(is)));
+						(GeometryCollection) geoJsonReader.read(StreamUtils.readToString(is)));
 			}
 		});
-	}
-
-	private static String readToString(InputStream is) throws IOException
-	{
-		try
-		{
-			ByteArrayOutputStream result = new ByteArrayOutputStream();
-			byte[] buffer = new byte[1024];
-			int length;
-			while ((length = is.read(buffer)) != -1)
-			{
-				result.write(buffer, 0, length);
-			}
-			return result.toString("UTF-8");
-		}
-		finally
-		{
-			if(is != null) try
-			{
-				is.close();
-			}
-			catch (IOException e) { }
-		}
 	}
 }
