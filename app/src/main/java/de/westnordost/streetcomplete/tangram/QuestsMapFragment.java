@@ -10,7 +10,6 @@ import com.mapzen.tangram.LabelPickResult;
 import com.mapzen.tangram.LngLat;
 import com.mapzen.tangram.MapController;
 import com.mapzen.tangram.MapData;
-import com.mapzen.tangram.SceneUpdate;
 import com.mapzen.tangram.TouchInput;
 
 import java.util.Collection;
@@ -102,9 +101,12 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 
 		retrievedTiles = new HashSet<>();
 
-		List<SceneUpdate> sceneUpdates = spriteSheetCreator.create();
+		/*
+		TODO uncomment when https://github.com/tangrams/tangram-es/issues/1607 is fixed
+		List<SceneUpdate> sceneUpdates = spriteSheetCreator.get();
 		controller.queueSceneUpdate(sceneUpdates);
 		controller.applySceneUpdates();
+		*/
 
 		geometryLayer = controller.addDataLayer(GEOMETRY_LAYER);
 		questsLayer = controller.addDataLayer(QUESTS_LAYER);
