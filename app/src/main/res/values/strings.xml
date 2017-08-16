@@ -381,6 +381,10 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="produce_bell_peppers">Bell peppers</string>
     <string name="produce_brazil_nuts">Brazil nuts</string>
     <string name="produce_tung_nuts">Tung nuts</string>
+    <string name="quest_parkingType_title">What kind of parking is this?</string>
+    <string name="quest_parkingType_surface">Normal</string>
+    <string name="quest_parkingType_underground">Underground garage</string>
+    <string name="quest_parkingType_multiStorage">Car park</string>
     <string name="quest_powerPolesMaterial_title">What kind of material is this?</string>
     <string name="quest_powerPolesMaterial_wood">Wood</string>
     <string name="quest_powerPolesMaterial_metal">Metal</string>

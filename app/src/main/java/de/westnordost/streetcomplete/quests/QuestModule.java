@@ -16,6 +16,7 @@ import de.westnordost.streetcomplete.quests.building_levels.AddBuildingLevels;
 import de.westnordost.streetcomplete.quests.bus_stop_shelter.AddBusStopShelter;
 import de.westnordost.streetcomplete.quests.crossing_type.AddCrossingType;
 import de.westnordost.streetcomplete.quests.fire_hydrant.AddFireHydrantType;
+import de.westnordost.streetcomplete.quests.parking_type.AddParkingType;
 import de.westnordost.streetcomplete.quests.powerpoles_material.AddPowerPolesMaterial;
 import de.westnordost.streetcomplete.quests.orchard_produce.AddOrchardProduce;
 import de.westnordost.streetcomplete.quests.recycling.AddRecyclingType;
@@ -75,7 +76,8 @@ public class QuestModule
 				new AddToiletsFee(o),
 				new AddBabyChangingTable(o),
 				new AddFireHydrantType(o),
-				new AddPowerPolesMaterial(o)
+				new AddParkingType(o),
+        new AddPowerPolesMaterial(o)
 		};
 
 		return new QuestTypes(Arrays.asList(questTypesOrderedByImportance));
