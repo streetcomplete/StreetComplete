@@ -311,7 +311,6 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 			props.put("type", "point");
 			geometryLayer.addPoint(TangramConst.toLngLat(g.center), props);
 		}
-		controller.applySceneUpdates();
 	}
 
 	public void removeQuestGeometry()
