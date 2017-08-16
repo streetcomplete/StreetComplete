@@ -10,6 +10,7 @@ public class Prefs
 			OAUTH_ACCESS_TOKEN_SECRET = "oauth.accessTokenSecret",
 			MAP_TILECACHE = "map.tilecache",
 			OSM_USER_ID = "osm.userid",
+			OSM_USER_NAME = "osm.username",
 			SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS = "display.nonQuestionNotes",
 			AUTOSYNC = "autosync",
 			LAST_SOLVED_QUEST_TIME = "changesets.lastQuestSolvedTime",

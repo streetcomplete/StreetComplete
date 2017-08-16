@@ -150,7 +150,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		previousZoom = Math.max(17.5f,controller.getZoom());
 
 		float targetZoom = getMaxZoomThatContains(g);
-		if(Double.isNaN(targetZoom) || targetZoom > MAX_QUEST_ZOOM)
+		if(Float.isNaN(targetZoom) || targetZoom > MAX_QUEST_ZOOM)
 		{
 			targetZoom = MAX_QUEST_ZOOM;
 		}
@@ -192,6 +192,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		float currentZoom;
 		synchronized(controller) {
 			screenArea = getDisplayedArea(questTopOffset, questBottomOffset);
+			if(screenArea == null) return Float.NaN;
 			currentZoom = controller.getZoom();
 		}
 
@@ -211,6 +212,12 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 	{
 		final LngLat pos = controller.screenPositionToLngLat(new PointF(positionX, positionY));
 		listener.onClickedMapAt(TangramConst.toLatLon(pos));
+	}
+
+	@Override protected boolean shouldCenterCurrentPosition()
+	{
+		// don't center position while displaying a quest
+		return super.shouldCenterCurrentPosition() && previousZoom == null;
 	}
 
 	protected void updateView()
@@ -299,9 +306,11 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 	public void removeQuestGeometry()
 	{
 		if(geometryLayer != null) geometryLayer.clear();
-		if(controller != null)
+		if(controller != null && previousZoom != null)
 		{
-			if (previousZoom != null) controller.setZoomEased(previousZoom, 500);
+			controller.setZoomEased(previousZoom, 500);
+			previousZoom = null;
+			followPosition();
 		}
 	}
 /*

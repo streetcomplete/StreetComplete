@@ -1,3 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
 officialLanguages: [es]
+orchardProduces: [grape, mate, olive, lemon, lime, tea, apple, orange, pear, peach, plum, tomatoe,
+  grapefruit, banana, walnut, chili, pepper]
 popularSports: [soccer, tennis, basketball, paddle_tennis, field_hockey, rugby]

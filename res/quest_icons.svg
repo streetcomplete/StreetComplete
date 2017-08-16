@@ -12,7 +12,7 @@
    version="1.1"
    viewBox="0 0 1024 1280"
    id="svg4497"
-   sodipodi:docname="quest_icons.svg"
+   sodipodi:docname="quest_icons1.svg"
    inkscape:version="0.92.1 r15371"
    inkscape:export-filename="C:\Users\Newton\AndroidStudioProjects\streetcomplete\res\quest_icons.svg.png"
    inkscape:export-xdpi="95.983444"
@@ -25,7 +25,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -155,9 +155,9 @@
      inkscape:window-height="1008"
      id="namedview4499"
      showgrid="true"
-     inkscape:zoom="0.54631966"
-     inkscape:cx="492.11103"
-     inkscape:cy="591.75764"
+     inkscape:zoom="0.27315983"
+     inkscape:cx="242.26196"
+     inkscape:cy="914.0348"
      inkscape:window-x="953"
      inkscape:window-y="0"
      inkscape:window-maximized="0"
@@ -5668,6 +5668,44 @@
              inkscape:connector-curvature="0" />
         </g>
       </g>
+    </g>
+  </g>
+  <g
+     transform="translate(-1208,-784.00005)"
+     id="apple"
+     inkscape:label="#g9042">
+    <path
+       inkscape:connector-curvature="0"
+       d="m 1336,848.00005 c 0,35.346 -28.654,64 -64,64 -35.346,0 -64,-28.654 -64,-64 0,-35.346 28.654,-64 64,-64 35.346,0 64,28.654 64,64"
+       id="path4485-9-6-7-1-8-8-8"
+       style="fill:#b9a065;fill-opacity:1;stroke-width:0.2" />
+    <path
+       style="fill:#000000;fill-opacity:0.2;stroke-width:1.88046122"
+       d="m 1257.8556,803.71036 c -2.7074,0.11517 -5.3643,1.38651 -7.1367,3.66797 -3.151,4.05593 -2.3743,9.83725 1.6816,12.98828 1.2584,0.97764 3.7001,1.70553 6.4688,2.24609 -12.8595,-0.18755 -27.0469,6.08799 -27.0469,29.1836 0,20.49817 20.7711,44.19726 31.3262,44.19726 4.7421,0 6.2635,-2.00781 9.1699,-2.00781 2.7535,0 3.8323,2.00781 9.9512,2.00781 10.555,0 29.539,-23.06175 29.539,-43.71289 0,-30.48058 -24.7419,-32.10516 -36.8594,-27.84375 0.6189,-3.72084 3.3108,-12.11914 14.2051,-12.11914 v -3.97656 c -11.0407,0 -15.8544,6.312 -17.5644,12.24023 -1.6899,-4.70893 -4.8839,-12.77175 -7.7168,-14.97265 -1.7745,-1.37858 -3.9119,-1.98802 -6.0176,-1.89844 z"
+       id="path5491-1"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccssssscccccc" />
+    <g
+       transform="matrix(1.5297143,0,0,1.5297143,1224.0378,797.06571)"
+       id="g5508">
+      <path
+         style="fill:#83bf4f;stroke-width:1.22928917"
+         inkscape:connector-curvature="0"
+         id="path5491"
+         d="m 32.007415,14.992564 c 0,0 -10.682705,-0.37149 -13.334135,-2.431371 -2.651431,-2.059881 -3.157992,-5.838859 -1.098111,-8.4902895 2.059881,-2.6514304 5.946987,-3.2164729 8.598417,-1.1565919 2.651431,2.0598811 5.833829,12.0782524 5.833829,12.0782524 z"
+         sodipodi:nodetypes="csscc" />
+      <path
+         style="fill:#947151"
+         inkscape:connector-curvature="0"
+         id="path5493"
+         d="m 30.7,16.3 c 0,-4.3 2.4,-11.6 12,-11.6 v 2.6 c -8.7,0 -9.4,8.2 -9.4,9 z"
+         sodipodi:nodetypes="ccccc" />
+      <path
+         style="fill:#ef4d3c"
+         inkscape:connector-curvature="0"
+         id="path5495"
+         d="M 32,15.8 C 23.509096,12.377697 5.221044,11.907504 5.221044,33.107504 5.221044,46.507504 18.8,62 25.7,62 28.8,62 29.794236,60.687466 31.694236,60.687466 33.494236,60.687466 34.2,62 38.2,62 45.1,62 57.509788,46.924796 57.509788,33.424796 57.509788,12.224796 39.1983,12.377697 32,15.8 Z"
+         sodipodi:nodetypes="csssssc" />
     </g>
   </g>
 </svg>

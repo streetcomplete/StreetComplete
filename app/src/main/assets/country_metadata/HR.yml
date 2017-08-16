@@ -3,4 +3,6 @@ additionalStreetsignLanguages: [sr, it]
 isLivingStreetKnown: true
 isSlowZoneKnown: true
 officialLanguages: [hr]
+orchardProduces: [grape, olive, apple, plum, walnut, hazelnut, orange, cherry, peach, pear, chili,
+  pepper, tomatoe, strawberry, apricot, raspberry]
 popularSports: [soccer, tennis, basketball, boules, handball]

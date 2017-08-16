@@ -44,20 +44,17 @@ public class CompassComponent implements SensorEventListener
 
 	public void onResume()
 	{
-		// no compass
-		if(magnetometer == null) return;
-
 		sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_UI);
 		sensorManager.registerListener(this, magnetometer, SensorManager.SENSOR_DELAY_UI);
-
-		compassTimer = new Timer();
-		compassAnimator = new CompassAnimator();
-		compassTimer.scheduleAtFixedRate(compassAnimator, 0, 1000/RotationUpdateFPS);
 	}
 
 	public void onPause()
 	{
-		if(compassTimer != null) compassTimer.cancel();
+		if(compassTimer != null)
+		{
+			compassTimer.cancel();
+			compassTimer = null;
+		}
 		sensorManager.unregisterListener(this);
 	}
 
@@ -66,14 +63,28 @@ public class CompassComponent implements SensorEventListener
 
 	}
 
+	private void initializeCompassAnimator()
+	{
+		compassTimer = new Timer();
+		compassAnimator = new CompassAnimator();
+		compassTimer.scheduleAtFixedRate(compassAnimator, 0, 1000/RotationUpdateFPS);
+	}
+
 	@Override public void onSensorChanged(SensorEvent event)
 	{
-		if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER)
-			gravity = event.values;
 		if (event.sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD)
+		{
 			geomagnetic = event.values;
+		}
+		else if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER)
+		{
+			gravity = event.values;
+		}
+
 		if (gravity != null && geomagnetic != null)
 		{
+			if(compassTimer == null) initializeCompassAnimator();
+
 			float R[] = new float[9];
 			float I[] = new float[9];
 			boolean success = SensorManager.getRotationMatrix(R, I, gravity, geomagnetic);

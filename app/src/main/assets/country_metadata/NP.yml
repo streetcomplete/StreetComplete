@@ -1,3 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
 firstDayOfWorkweek: Su
 officialLanguages: [ne]
+orchardProduces: [guava, mango, mangosteen, tea, orange, banana, nutmeg, chili, pepper, apple, lemon,
+  lime, areca_nut, pear, peach, walnut, coffee, papaya, plum]

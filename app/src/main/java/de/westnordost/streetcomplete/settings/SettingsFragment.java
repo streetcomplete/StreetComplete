@@ -54,9 +54,11 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
 	private void updateOsmAuthSummary()
 	{
 		Preference oauth = getPreferenceScreen().findPreference("oauth");
+		String username = prefs.getString(Prefs.OSM_USER_NAME, null);
 		if (oAuth.isAuthorized())
 		{
-			oauth.setSummary(R.string.pref_title_authorized_summary);
+			String summary = String.format(getResources().getString(R.string.pref_title_authorized_username_summary), username);
+			oauth.setSummary(summary);
 		}
 		else
 		{

@@ -71,9 +71,7 @@
     <string name="no_location_permission_warning">"A sua localização é necessária para escanear por missões nesta área."</string>
     <string name="action_about">"Sobre StreetComplete"</string>
     <string name="about_title_version">"Versão"</string>
-
-    <!-- Fuzzy -->
-    <string name="about_title_authors">"Autores"</string>
+    <string name="about_title_authors">"Créditos"</string>
     <string name="about_summary_authors">"© 2016–2017 Tobias Zwick e contribuidores"</string>
     <string name="about_title_repository">"Repositório fonte"</string>
     <string name="about_summary_repository">"no GitHub"</string>
@@ -117,9 +115,7 @@
     <string name="quest_roofShape_show_more">"Mostre mais…"</string>
     <string name="quest_roofShape_answer_many">"Tem várias formas diferentes"</string>
     <string name="pref_category_cache">"Cache"</string>
-
-    <!-- Fuzzy -->
-    <string name="pref_title_sync">"Auto-Sync"</string>
+    <string name="pref_title_sync">"Auto-Sincronização"</string>
     <string name="map_btn_zoom_out">"Aumentar"</string>
     <string name="map_btn_zoom_in">"Reduzir"</string>
     <string name="privacy_html">"&lt;p&gt;Ah, alguém que se preocupa com a privacidade, ótimo! Acredito que só tenho boas notícias para você: &lt;/p&gt;
@@ -150,9 +146,7 @@ Para exibir o mapa, os blocos vetoriais são recuperadas do &lt;a href=\"https:/
 (&lt;i&gt;Isto ainda não está implementado, apenas queremos informar o que está por vir!:&lt;/i&gt;) Os dados apresentados no leaderboard e no perfil são agregados a partir das informações publicamente disponíveis do OpenStreetMap. Os dados não vêm deste aplicativo, mas basicamente do histórico de commit público dos usuários do OSM.
 &lt;/p&gt;"</string>
     <string name="autosync_on">"Ligado"</string>
-
-    <!-- Fuzzy -->
-    <string name="autosync_only_on_wifi">"Somente no WiFi"</string>
+    <string name="autosync_only_on_wifi">"Somente por WiFi"</string>
     <string name="autosync_off">"Desligado"</string>
     <string name="quest_streetSurface_title">"Que superfície tem este pedaço de rua?"</string>
     <string name="quest_surface_description">"Selecione o mais específico que se encaixa:"</string>
@@ -241,11 +235,7 @@ As informações inseridas são adicionadas diretamente ao OpenStreetMap em seu 
     <string name="quest_sport_beachvolleyball">"Vôlei de praia"</string>
     <string name="quest_sport_american_football">"Futebol americano"</string>
     <string name="quest_sport_skateboard">"Skate"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_sport_bowls">"Bocha"</string>
-
-    <!-- Fuzzy -->
+    <string name="quest_sport_bowls">"Bowls"</string>
     <string name="quest_sport_boules">"Bocha"</string>
     <string name="quest_sport_shooting">"Tiro"</string>
     <string name="quest_sport_cricket">"Críquete"</string>
@@ -266,7 +256,134 @@ As informações inseridas são adicionadas diretamente ao OpenStreetMap em seu 
     <string name="quest_manySports_confirmation_generic">"Multiúso"</string>
     <string name="quest_sport_manySports_confirmation_title">"Você selecionou muitos esportes"</string>
     <string name="quest_busStopShelter_name_title">"O ponto de ônibus %s tem um telhado?"</string>
+    <string name="quest_toiletsFee_title">"Esses sanitários são pagos?"</string>
+    <string name="quest_tactilePaving_title_bus">"Essa parada de de ônibus tem pavimentos táteis?"</string>
+    <string name="quest_tactilePaving_title_crosswalk">"Essa faixa de pedestres tem pavimentos táteis?"</string>
     <string name="quest_source_dialog_title">"Tem a certeza que verificou isto no local?"</string>
+    <string name="quest_tactilePaving_title_name_bus">"A parada de de ônibus \"%S\" tem pavimentos táteis?"</string>
     <string name="quest_source_dialog_note">"Apenas informação que foi feita durante um levantamento deve ser adicionada."</string>
+    <string name="quest_bicycleParkingCoveredStatus_title">"Essa parada de bicicleta é coberta (protegida da chuva)?"</string>
     <string name="dialog_session_dont_show_again">"Não mostrar de novo nesta sessão"</string>
+    <string name="quest_streetSurface_name_title">"Que tipo de pavimento possui a estrada %s aqui?"</string>
+    <string name="quest_maxspeed_title_short">"Qual a placa de limite de velocidade para essa rua?"</string>
+    <string name="quest_maxspeed_unusualInput_confirmation_description">"Esse limite de velocidade parece errado."</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation_title">"Tem certeza de que não há nenhum limite sinalizado?"</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation">"Confirmou nos extremos da estrada? Se não há sinalização, aplicam-se os limites de velocidade padrão. "</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Sim, sem placas."</string>
+    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Vias urbanas têm um limite de velocidade padrão diferente das vias rurais."</string>
+    <string name="quest_maxspeed_answer_noSign_urbanOk">"Dentro da cidade."</string>
+    <string name="quest_maxspeed_answer_noSign_ruralOk">"Fora da cidade."</string>
+    <string name="quest_maxspeed_answer_noSign_info_zone">"Se existir sinalização como esta nas principais interseções da rua, não encontrará sinalização dentro dessa zona, já que o limite de velocidade aplica-se a toda a zona."</string>
+    <string name="quest_sport_softball">"Softbol"</string>
+    <string name="quest_sport_racquet">"Raquetebol"</string>
+    <string name="quest_sport_ice_skating">"Patinação no gelo"</string>
+    <string name="quest_sport_paddle_tennis">"Pádel"</string>
+    <string name="quest_sport_gaelic_games">"Jogos Gaélicos"</string>
+    <string name="quest_sport_sepak_takraw">"Futevôlei"</string>
+    <string name="quest_wheelchairAccess_name_title">"\"%s\" é acessível por cadeiras de rodas?"</string>
+    <string name="quest_wheelchairAccess_limited">"Parcial"</string>
+    <string name="quest_bikeParkingCapacity_hint">"Note que a maioria dos suportes podem ser utilizados para estacionar uma bicicleta de cada lado."</string>
+    <string name="quest_sport_roller_skating">"Patinação"</string>
+    <string name="quest_wheelchairAccess_bus_station_title">"Esta parada de ônibus é acessível por cadeiras de rodas?"</string>
+    <string name="quest_wheelchairAccess_subway_entrance_title">"Esta entrada de metrô é acessível por cadeiras de rodas?"</string>
+    <string name="quest_wheelchairAccess_railway_station_title">"Esta estação de trem é acessível por cadeiras de rodas?"</string>
+    <string name="quest_wheelchairAccess_location_title">"Este local é acessível por cadeiras de rodas?"</string>
+    <string name="quest_wheelchairAccess_bus_station_name_title">"A parada de ônibus \"%s\" é acessível por cadeiras de rodas?"</string>
+    <string name="quest_wheelchairAccess_subway_entrance_name_title">"A entrada de metrô \"%s\" é acessível por cadeiras de rodas?"</string>
+    <string name="quest_wheelchairAccess_railway_station_name_title">"A estação de trem \"%s\" é acessível por cadeiras de rodas?"</string>
+    <string name="quest_wheelchairAccess_location_name_title">"O local \"%s\" é acessível por cadeiras de rodas?"</string>
+    <string name="quest_wheelchairAccess_limited_description_business">"Parcial significa que não mais que uma etapa a necessária para acessar o negócio, e que a maioria das salas internas é acessível para cadeiras de rodas."</string>
+    <string name="quest_wheelchairAccess_limited_description_public_transport">"Parcial significa que não mais que uma etapa a necessária para acessar."</string>
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Abreviação no nome \"%s\"?"</string>
+    <string name="quest_baby_changing_table_toilets_title">"Este sanitário tem trocador para bebê?"</string>
+    <string name="quest_baby_changing_table_title">"\"%s\" tem trocador para bebê?"</string>
+    <string name="quest_recycling_type_title">"Que tipo de instalação de reciclagem é esta?"</string>
+    <string name="recycling_centre">"Centro"</string>
+    <string name="overground_recycling_container">"Container"</string>
+    <string name="underground_recycling_container">"Container subterrâneo"</string>
+    <string name="quest_generic_error_a_field_empty">"Você deixou um campo vazio"</string>
+    <string name="quest_streetName_menuItem_language_simple">"%1$s - %2$s"</string>
+    <string name="quest_streetName_menuItem_language_native">"%1$s - %2$s (%3$s)"</string>
+    <string name="quest_streetName_answer_cantType">"Não é possível introduzir os caracteres da placa"</string>
+    <string name="quest_streetName_cantType_title">"Falta o layout do teclado?"</string>
+    <string name="quest_streetName_cantType_open_settings">"Abrir opções"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_streetName_cantType_open_store">"Depósito aberto"</string>
+    <string name="quest_streetName_cantType_description">"Se usa o teclado padrão, é provável que simplesmente tenha de configurar o layout do teclado, nas opções de métodos de entrada, para o idioma que necessita.
+
+Caso contrário, pode baixar outro teclado na loja de aplicativos. Alguns dos teclados mais populares e que suportam vários idiomas são o Google Gboard, SwiftKey Keyboard e Multiling O Keyboard."</string>
+    <string name="quest_streetName_menuItem_nolanguage">"(não especificado)"</string>
+    <string name="quest_fireHydrant_type_title">"Que tipo de hidrante é este?"</string>
+    <string name="quest_fireHydrant_type_pillar">"Pilar"</string>
+    <string name="quest_fireHydrant_type_underground">"Subterrâneo"</string>
+    <string name="quest_fireHydrant_type_wall">"Parede"</string>
+    <string name="quest_fireHydrant_type_pond">"Açude"</string>
+    <string name="credits_contributors">"Veja a lista completa em &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;no GitHub&lt;/a&gt;. "</string>
+    <string name="credits_translations">"Para a lista completa veja o &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;projeto no POEditor&lt;/a&gt;. "</string>
+    <string name="credits_translations_title">"Traduções"</string>
+    <string name="credits_contributors_title">"Contribuidores de código"</string>
+    <string name="credits_author_title">"Autor e Mantedor"</string>
+    <string name="credits_and_more">"e mais..."</string>
+    <string name="quest_maxspeed_answer_living_street">"É uma rua compartilhada"</string>
+    <string name="quest_maxspeed_answer_living_street_confirmation_title">"Então, existe uma placa como essa?"</string>
+    <string name="quest_orchard_produce_title">"O que é cultivado aqui?"</string>
+    <string name="produce_grapes">"Uvas"</string>
+    <string name="produce_agaves">"Agaves"</string>
+    <string name="produce_almonds">"Amêndoas"</string>
+    <string name="produce_apples">"Maçãs"</string>
+    <string name="produce_apricots">"Damascos"</string>
+    <string name="produce_avocados">"Abacates"</string>
+    <string name="produce_bananas">"Bananas"</string>
+    <string name="produce_blueberries">"Mirtilos"</string>
+    <string name="produce_cacao">"Cacau"</string>
+    <string name="produce_cashew_nuts">"Cajus"</string>
+    <string name="produce_cherries">"Cerejas"</string>
+    <string name="produce_chestnuts">"Castanhas"</string>
+    <string name="produce_coconuts">"Cocos"</string>
+    <string name="produce_coffee">"Café"</string>
+    <string name="produce_cranberries">"Oxicocos"</string>
+    <string name="produce_dates">"Tâmaras"</string>
+    <string name="produce_figs">"Figos"</string>
+    <string name="produce_grapefruits">"Toranjas"</string>
+    <string name="produce_guavas">"Goiabas"</string>
+    <string name="produce_hazelnuts">"Avelãs"</string>
+    <string name="produce_hops">"Lúpulo"</string>
+    <string name="produce_jojoba">"Jojoba"</string>
+    <string name="produce_kiwis">"Kiwis"</string>
+    <string name="produce_kola_nuts">"Noz de cola"</string>
+    <string name="produce_lemons">"Limões Sicilianos"</string>
+    <string name="produce_limes">"Limões Taiti"</string>
+    <string name="produce_mangos">"Mangas"</string>
+    <string name="produce_mate">"Erva mate"</string>
+    <string name="produce_nutmeg">"Noz moscada"</string>
+    <string name="produce_oil_palms">"Palmas"</string>
+    <string name="produce_olives">"Azeitonas"</string>
+    <string name="produce_oranges">"Laranjas"</string>
+    <string name="produce_papayas">"Mamões"</string>
+    <string name="produce_peaches">"Pêssegos"</string>
+    <string name="produce_pears">"Peras"</string>
+
+    <!-- Fuzzy -->
+    <string name="produce_chili">"Pimentas"</string>
+    <string name="produce_persimmons">"Caqui"</string>
+    <string name="produce_pineapples">"Abacaxis"</string>
+
+    <!-- Fuzzy -->
+    <string name="produce_pepper">"Pimentas"</string>
+    <string name="produce_pistachios">"Pistaches"</string>
+    <string name="produce_plums">"Ameixas"</string>
+    <string name="produce_raspberries">"Framboesas"</string>
+    <string name="produce_rubber">"Seringueiras"</string>
+    <string name="produce_strawberries">"Morangos"</string>
+    <string name="produce_tea">"Chá"</string>
+    <string name="produce_vanilla">"Baunilha"</string>
+    <string name="produce_walnuts">"Nozes"</string>
+    <string name="produce_sisal">"Sisal"</string>
+    <string name="quest_way_lit_title">"Este trecho de caminho tem iluminação?"</string>
+    <string name="quest_way_lit_named_title">"%s tem iluminação aqui?"</string>
+    <string name="quest_way_lit_road_title">"Este trecho de estrada tem iluminação?"</string>
+    <string name="quest_way_lit_named_road_title">"A estrada %s tem iluminação aqui? "</string>
+    <string name="quest_way_lit_automatic">"Usa detector de movimento "</string>
+    <string name="quest_way_lit_24_7">"É iluminado dia e noite"</string>
 </resources>

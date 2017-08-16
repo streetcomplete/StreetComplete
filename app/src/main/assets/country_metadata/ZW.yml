@@ -2,3 +2,5 @@
 isLivingStreetKnown: true
 livingStreetSign: ic_living_street_sadc
 officialLanguages: [en, sn, nd]
+orchardProduces: [banana, orange, chili, pepper, tea, tomatoe, lemon, lime, coffee, piper, grapefruit,
+  guava, mango, mangosteen, apple, grape, avocado, peach, pear]

@@ -300,6 +300,9 @@ Se non ci sono cartelli, saranno applicati dei limiti standard"</string>
     <string name="quest_streetName_menuItem_language_simple">"%1$s - %2$s"</string>
 
     <!-- Fuzzy -->
+    <string name="quest_streetName_menuItem_language_native">"%1$s - %2$s (%3$s)"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetName_answer_cantType">"Non posso digitare i caratteri presenti sul cartello"</string>
 
     <!-- Fuzzy -->
@@ -316,7 +319,7 @@ Se non ci sono cartelli, saranno applicati dei limiti standard"</string>
     <string name="quest_fireHydrant_type_wall">"Muro"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_fireHydrant_type_pond">"Laghetto"</string>
+    <string name="quest_fireHydrant_type_pond">"Bacino"</string>
     <string name="credits_contributors">"Vedi la &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;lista completa su GitHub&lt;/a&gt;."</string>
     <string name="credits_translations">"Vedi il &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;progetto  suPOEditor&lt;/a&gt; per la lista completa."</string>
     <string name="credits_translations_title">"Traduzioni"</string>

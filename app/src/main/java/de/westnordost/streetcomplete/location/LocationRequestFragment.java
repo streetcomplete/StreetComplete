@@ -13,6 +13,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AlertDialog;
 
 import de.westnordost.streetcomplete.R;
@@ -31,14 +32,12 @@ import static de.westnordost.streetcomplete.location.LocationUtil.MODE_CHANGED;
  *  The process is started via {@link #startRequest()} */
 public class LocationRequestFragment extends Fragment
 {
+	public static final String
+			ACTION_FINISHED = "de.westnordost.LocationRequestFragment.FINISHED",
+			STATE = "state";
+
 	private static final int LOCATION_PERMISSION_REQUEST = 1;
 	private static final int LOCATION_TURN_ON_REQUEST = 2;
-
-	public interface LocationRequestListener
-	{
-		void onLocationRequestFinished(LocationState withLocationState);
-	}
-	private LocationRequestListener callbackListener;
 
 	private LocationState state;
 	private boolean inProgress;
@@ -80,12 +79,9 @@ public class LocationRequestFragment extends Fragment
 	private void finish()
 	{
 		inProgress = false;
-		callbackListener.onLocationRequestFinished(state);
-	}
-
-	@Override public void onAttach(Context context) {
-		super.onAttach(context);
-		callbackListener = (LocationRequestListener) context;
+		Intent intent = new Intent(ACTION_FINISHED);
+		intent.putExtra(STATE, state.name());
+		LocalBroadcastManager.getInstance(getContext()).sendBroadcast(intent);
 	}
 
 	@Override public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,

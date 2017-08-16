@@ -254,4 +254,5 @@ Tiedot jotka laitat lähetetään suoraan OpenStreetMapiin nimelläsi ilman tarv
     <string name="quest_manySports_confirmation_generic">"Yleiskäyttöön"</string>
     <string name="quest_sport_manySports_confirmation_title">"Valitsit monia lajeja"</string>
     <string name="quest_busStopShelter_name_title">"Onko bussipusäkillä %s katosta?"</string>
+    <string name="quest_toiletsFee_title">"Vaativatko nämä käymälät maksun?"</string>
 </resources>

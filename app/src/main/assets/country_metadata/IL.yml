@@ -3,3 +3,5 @@ additionalStreetsignLanguages: [en]
 firstDayOfWorkweek: Su
 isSlowZoneKnown: true
 officialLanguages: [heb, ar]
+orchardProduces: [olive, grape, avocado, tomatoe, orange, chili, pepper, date, peach, grapefruit, apple,
+  banana, lemon, lime, guava, mango, mangosteen, plum, persimmon]
