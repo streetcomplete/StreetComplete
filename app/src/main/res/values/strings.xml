@@ -328,6 +328,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="compass_north_one_letter">N</string>
     <string name="quest_powerPolesMaterial_title">What kind of material is this?</string>
     <string name="quest_powerPolesMaterial_wood">Wood</string>
-    <string name="quest_powerPolesMaterial_metal">Metal</string>
+    <string name="quest_powerPolesMaterial_metal">Steel</string>
     <string name="quest_powerPolesMaterial_concrete">Concrete</string>
 </resources>

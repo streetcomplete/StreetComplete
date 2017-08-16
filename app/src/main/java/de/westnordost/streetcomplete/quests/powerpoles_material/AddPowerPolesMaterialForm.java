@@ -12,7 +12,7 @@ public class AddPowerPolesMaterialForm extends ImageListQuestAnswerFragment
 {
 	private final OsmItem[] TYPES = new OsmItem[] {
 			new OsmItem("wood", R.drawable.power_pole_wood, R.string.quest_powerPolesMaterial_wood),
-			new OsmItem("metal", R.drawable.power_pole_metal, R.string.quest_powerPolesMaterial_metal),
+			new OsmItem("steel", R.drawable.power_pole_steel, R.string.quest_powerPolesMaterial_metal),
 			new OsmItem("concrete", R.drawable.power_pole_concrete, R.string.quest_powerPolesMaterial_concrete)
 	};
 
