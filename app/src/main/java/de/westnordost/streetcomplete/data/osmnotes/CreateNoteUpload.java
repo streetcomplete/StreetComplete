@@ -25,16 +25,18 @@ public class CreateNoteUpload
 	private final NoteDao noteDB;
 	private final OsmNoteQuestDao noteQuestDB;
 	private final MapDataDao mapDataDao;
+	private final OsmNoteQuestType questType;
 
 	@Inject public CreateNoteUpload(
 			CreateNoteDao createNoteDB, NotesDao osmDao, NoteDao noteDB,
-			OsmNoteQuestDao noteQuestDB, MapDataDao mapDataDao)
+			OsmNoteQuestDao noteQuestDB, MapDataDao mapDataDao, OsmNoteQuestType questType)
 	{
 		this.createNoteDB = createNoteDB;
 		this.noteQuestDB = noteQuestDB;
 		this.noteDB = noteDB;
 		this.osmDao = osmDao;
 		this.mapDataDao = mapDataDao;
+		this.questType = questType;
 	}
 
 	public void upload(AtomicBoolean cancelState)
@@ -77,7 +79,7 @@ public class CreateNoteUpload
 		{
 			// add a closed quest as a blocker so that at this location no quests are created.
 			// if the note was not added, don't do this (see below) -> probably based on old data
-			OsmNoteQuest noteQuest = new OsmNoteQuest(newNote);
+			OsmNoteQuest noteQuest = new OsmNoteQuest(newNote, questType);
 			noteQuest.setStatus(QuestStatus.CLOSED);
 			noteDB.put(newNote);
 			noteQuestDB.add(noteQuest);

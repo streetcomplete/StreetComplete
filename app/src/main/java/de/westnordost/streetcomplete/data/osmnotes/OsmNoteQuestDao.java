@@ -25,12 +25,15 @@ import static de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestTable.Colu
 public class OsmNoteQuestDao extends AQuestDao<OsmNoteQuest>
 {
 	private final Serializer serializer;
+	private final OsmNoteQuestType questType;
 	private final SQLiteStatement add, replace;
 
-	@Inject public OsmNoteQuestDao(SQLiteOpenHelper dbHelper, Serializer serializer)
+	@Inject public OsmNoteQuestDao(SQLiteOpenHelper dbHelper, Serializer serializer,
+								   OsmNoteQuestType questType)
 	{
 		super(dbHelper);
 		this.serializer = serializer;
+		this.questType = questType;
 
 		String sql = OsmNoteQuestTable.NAME + " ("+
 				Columns.QUEST_ID+","+
@@ -145,6 +148,6 @@ public class OsmNoteQuestDao extends AQuestDao<OsmNoteQuest>
 			note = NoteDao.createObjectFrom(serializer, cursor);
 		}
 
-		return new OsmNoteQuest(questId, note, status, comment, lastUpdate);
+		return new OsmNoteQuest(questId, note, status, comment, lastUpdate, questType);
 	}
 }

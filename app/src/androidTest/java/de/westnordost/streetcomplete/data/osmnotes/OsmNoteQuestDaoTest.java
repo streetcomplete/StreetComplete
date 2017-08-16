@@ -18,14 +18,14 @@ public class OsmNoteQuestDaoTest extends ApplicationDbTestCase
 	@Override public void setUp()
 	{
 		super.setUp();
-		dao = new OsmNoteQuestDao(dbHelper, serializer);
+		dao = new OsmNoteQuestDao(dbHelper, serializer, new OsmNoteQuestType());
 		noteDao = new NoteDao(dbHelper, serializer);
 	}
 
 	public void testAddGetNoChanges()
 	{
 		Note note = NoteDaoTest.createNote();
-		OsmNoteQuest quest = new OsmNoteQuest(note);
+		OsmNoteQuest quest = new OsmNoteQuest(note, new OsmNoteQuestType());
 		noteDao.put(note);
 		dao.add(quest);
 		OsmNoteQuest dbQuest = dao.get(quest.getId());
@@ -36,7 +36,7 @@ public class OsmNoteQuestDaoTest extends ApplicationDbTestCase
 	public void testAddGetWithChanges()
 	{
 		Note note = NoteDaoTest.createNote();
-		OsmNoteQuest quest = new OsmNoteQuest(null, note, QuestStatus.ANSWERED, "hi da du", new Date(1234));
+		OsmNoteQuest quest = new OsmNoteQuest(null, note, QuestStatus.ANSWERED, "hi da du", new Date(1234), new OsmNoteQuestType());
 		noteDao.put(note);
 		dao.add(quest);
 		OsmNoteQuest dbQuest = dao.get(quest.getId());
@@ -51,10 +51,10 @@ public class OsmNoteQuestDaoTest extends ApplicationDbTestCase
 		Note note = NoteDaoTest.createNote();
 		noteDao.put(note);
 
-		OsmNoteQuest quest = new OsmNoteQuest(note);
+		OsmNoteQuest quest = new OsmNoteQuest(note, new OsmNoteQuestType());
 		dao.add(quest);
 
-		OsmNoteQuest questForSameNote = new OsmNoteQuest(note);
+		OsmNoteQuest questForSameNote = new OsmNoteQuest(note, new OsmNoteQuestType());
 		questForSameNote.setStatus(QuestStatus.HIDDEN);
 		boolean result = dao.add(questForSameNote);
 
@@ -70,10 +70,10 @@ public class OsmNoteQuestDaoTest extends ApplicationDbTestCase
 		Note note = NoteDaoTest.createNote();
 		noteDao.put(note);
 
-		OsmNoteQuest quest = new OsmNoteQuest(note);
+		OsmNoteQuest quest = new OsmNoteQuest(note, new OsmNoteQuestType());
 		dao.add(quest);
 
-		OsmNoteQuest questForSameNote = new OsmNoteQuest(note);
+		OsmNoteQuest questForSameNote = new OsmNoteQuest(note, new OsmNoteQuestType());
 		questForSameNote.setStatus(QuestStatus.HIDDEN);
 		boolean result = dao.replace(questForSameNote);
 
@@ -88,7 +88,7 @@ public class OsmNoteQuestDaoTest extends ApplicationDbTestCase
 		Note note = NoteDaoTest.createNote();
 		note.position = new OsmLatLon(34,35);
 		noteDao.put(note);
-		OsmNoteQuest quest = new OsmNoteQuest(note);
+		OsmNoteQuest quest = new OsmNoteQuest(note, new OsmNoteQuestType());
 		dao.add(quest);
 		List<LatLon> positions = dao.getAllPositions(new BoundingBox(0,0,50,50));
 		assertEquals(1,positions.size());
