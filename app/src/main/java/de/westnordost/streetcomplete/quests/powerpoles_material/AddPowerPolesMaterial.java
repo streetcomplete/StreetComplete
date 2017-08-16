@@ -21,7 +21,7 @@ public class AddPowerPolesMaterial extends SimpleOverpassQuestType
 	@Override
 	protected String getTagFilters()
 	{
-		return "nodes, ways with power=poles and !material";
+		return "nodes, ways with power=pole and !material";
 	}
 
 	public AbstractQuestAnswerFragment createForm()
