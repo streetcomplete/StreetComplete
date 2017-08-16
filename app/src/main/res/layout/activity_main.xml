@@ -16,42 +16,6 @@
         android:layout_marginTop="-8dp"/>
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginRight="4dp"
-        android:layout_marginBottom="24sp"
-        android:padding="8dp"
-        android:clipToPadding="false"
-        android:showDividers="middle"
-        android:divider="@drawable/vertical_button_bar_divider"
-        android:layout_gravity="bottom|right"
-        tools:ignore="RtlHardcoded">
-
-        <ImageButton
-            android:id="@+id/zoom_in"
-            style="@style/RoundMapButton"
-            android:src="@drawable/ic_add_black_24dp"
-            android:contentDescription="@string/map_btn_zoom_in"/>
-
-        <ImageButton
-            android:id="@+id/zoom_out"
-            style="@style/RoundMapButton"
-            android:src="@drawable/ic_remove_black_24dp"
-            android:contentDescription="@string/map_btn_zoom_out"/>
-
-        <de.westnordost.streetcomplete.location.LocationStateButton
-            android:id="@+id/gps_tracking"
-            style="@style/RoundMapButton"
-            android:src="@drawable/ic_location_24dp"
-            app:tint="@color/activated_tint"
-            android:contentDescription="@string/map_btn_gps_tracking"/>
-
-    </LinearLayout>
-
-    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/topPanel"

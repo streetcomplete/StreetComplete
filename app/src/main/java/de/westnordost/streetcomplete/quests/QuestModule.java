@@ -14,7 +14,9 @@ import de.westnordost.streetcomplete.quests.bike_parking_capacity.AddBikeParking
 import de.westnordost.streetcomplete.quests.bike_parking_cover.AddBikeParkingCover;
 import de.westnordost.streetcomplete.quests.building_levels.AddBuildingLevels;
 import de.westnordost.streetcomplete.quests.bus_stop_shelter.AddBusStopShelter;
+import de.westnordost.streetcomplete.quests.crossing_type.AddCrossingType;
 import de.westnordost.streetcomplete.quests.fire_hydrant.AddFireHydrantType;
+import de.westnordost.streetcomplete.quests.orchard_produce.AddOrchardProduce;
 import de.westnordost.streetcomplete.quests.recycling.AddRecyclingType;
 import de.westnordost.streetcomplete.quests.road_name.data.PutRoadNameSuggestionsHandler;
 import de.westnordost.streetcomplete.quests.road_name.data.RoadNameSuggestionsDao;
@@ -54,12 +56,15 @@ public class QuestModule
 				new AddOpeningHours(o),
 				// ↓ useful data that is used by some data consumers
 				new AddSport(o),
+				new AddOrchardProduce(o),
+				new AddCrossingType(o),
 				new AddBuildingLevels(o),
 				// ↓ data useful for only a specific use case
 				new AddRoofShape(o),
 				new AddWheelChairAccessPublicTransport(o),
 				new AddTactilePavingBusStop(o),
 				new AddTactilePavingCrosswalk(o),
+				new AddWayLit(o),
 				new AddWheelchairAccessBusiness(o),
 				// ↓ defined in the wiki, but not really used by anyone yet. Just collected for the
 				//   sake of mapping it in case it makes sense later
@@ -69,7 +74,6 @@ public class QuestModule
 				new AddToiletsFee(o),
 				new AddBabyChangingTable(o),
 				new AddFireHydrantType(o),
-				new AddWayLit(o)
 		};
 
 		return new QuestTypes(Arrays.asList(questTypesOrderedByImportance));

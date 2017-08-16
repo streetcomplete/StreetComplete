@@ -1,5 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [en]
 officialLanguages: [my]
+orchardProduces: [rubber, chili, pepper, tea, areca_nut, coconut, coffee, cashew_nut, guava, mango,
+  mangosteen]
 popularSports: [soccer, tennis, sepak_takraw]
 speedUnit: mph

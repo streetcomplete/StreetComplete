@@ -1,3 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
 officialLanguages: [vi]
+orchardProduces: [coffee, rubber, cashew_nut, coconut, tea, banana, guava, mango, mangosteen, chili,
+  pepper, piper, orange, grapefruit, pineapple, grape]
 popularSports: [soccer, tennis, badminton, australian_football, sepak_takraw]

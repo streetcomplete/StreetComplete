@@ -33,11 +33,8 @@ import android.view.WindowManager;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.CheckBox;
-import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-
-import com.mapzen.android.lost.api.LocationRequest;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -57,7 +54,6 @@ import de.westnordost.streetcomplete.data.VisibleQuestListener;
 import de.westnordost.streetcomplete.data.osm.OsmQuest;
 import de.westnordost.streetcomplete.location.LocationRequestFragment;
 import de.westnordost.streetcomplete.location.LocationUtil;
-import de.westnordost.streetcomplete.location.SingleLocationRequest;
 import de.westnordost.streetcomplete.oauth.OAuthPrefs;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 import de.westnordost.streetcomplete.quests.OsmQuestAnswerListener;
@@ -66,7 +62,6 @@ import de.westnordost.streetcomplete.quests.FindQuestSourceComponent;
 import de.westnordost.streetcomplete.settings.SettingsActivity;
 import de.westnordost.streetcomplete.statistics.AnswersCounter;
 import de.westnordost.streetcomplete.location.LocationState;
-import de.westnordost.streetcomplete.location.LocationStateButton;
 import de.westnordost.streetcomplete.tangram.MapFragment;
 import de.westnordost.streetcomplete.tangram.QuestsMapFragment;
 import de.westnordost.streetcomplete.tools.CrashReportExceptionHandler;
@@ -82,8 +77,7 @@ import static android.location.LocationManager.PROVIDERS_CHANGED_ACTION;
 import static de.westnordost.streetcomplete.location.LocationUtil.MODE_CHANGED;
 
 public class MainActivity extends AppCompatActivity implements
-		OsmQuestAnswerListener, VisibleQuestListener, QuestsMapFragment.Listener,
-		MapFragment.Listener, LocationRequestFragment.LocationRequestListener
+		OsmQuestAnswerListener, VisibleQuestListener, QuestsMapFragment.Listener, MapFragment.Listener
 {
 	@Inject CrashReportExceptionHandler crashReportExceptionHandler;
 
@@ -98,14 +92,10 @@ public class MainActivity extends AppCompatActivity implements
 	@Inject FindQuestSourceComponent questSource;
 
 	// per application start settings
-	private static boolean isFollowingPosition = true;
-	private static boolean isCompassMode = false;
 	private static boolean hasAskedForLocation = false;
 	private static boolean dontShowRequestAuthorizationAgain = false;
 
 	private QuestsMapFragment mapFragment;
-	private LocationStateButton trackingButton;
-	private SingleLocationRequest singleLocationRequest;
 	private Location lastLocation;
 
 	private Long clickedQuestId = null;
@@ -171,11 +161,20 @@ public class MainActivity extends AppCompatActivity implements
 		}
 	};
 
-	private BroadcastReceiver locationAvailabilityReceiver = new BroadcastReceiver()
+	private final BroadcastReceiver locationAvailabilityReceiver = new BroadcastReceiver()
 	{
 		@Override public void onReceive(Context context, Intent intent)
 		{
 			updateLocationAvailability();
+		}
+	};
+
+	private final BroadcastReceiver locationRequestFinishedReceiver = new BroadcastReceiver()
+	{
+		@Override public void onReceive(Context context, Intent intent)
+		{
+			LocationState state = LocationState.valueOf(intent.getStringExtra(LocationRequestFragment.STATE));
+			onLocationRequestFinished(state);
 		}
 	};
 
@@ -208,71 +207,16 @@ public class MainActivity extends AppCompatActivity implements
 				.add(locationRequestFragment, LocationRequestFragment.class.getSimpleName())
 				.commit();
 
-		singleLocationRequest = new SingleLocationRequest(this);
-
 		progressBar = (ProgressBar) findViewById(R.id.download_progress);
 		progressBar.setMax(1000);
 
-		mapFragment = (QuestsMapFragment) getFragmentManager().findFragmentById(R.id.map_fragment);
+		mapFragment = (QuestsMapFragment) getSupportFragmentManager().findFragmentById(R.id.map_fragment);
 		mapFragment.setQuestYOffsets(50,
 				getResources().getDimensionPixelSize(R.dimen.quest_bottom_sheet_peek_height));
 
 		mapFragment.getMapAsync(BuildConfig.MAPZEN_API_KEY != null ?
 				BuildConfig.MAPZEN_API_KEY :
 				new String(new char[]{118,101,99,116,111,114,45,116,105,108,101,115,45,102,75,85,99,117,65,74}));
-
-		trackingButton = (LocationStateButton) findViewById(R.id.gps_tracking);
-		trackingButton.setOnClickListener(new View.OnClickListener()
-		{
-			@Override public void onClick(View v)
-			{
-
-				LocationState state = trackingButton.getState();
-				if(state.isEnabled())
-				{
-					boolean isFollowing = mapFragment.isFollowingPosition();
-					boolean isCompassMode = mapFragment.isCompassMode();
-					// cycle through these three states
-					if(!isFollowing)
-					{
-						setIsFollowingPosition(true);
-					}
-					// cycle to compass mode only if position already known
-					else if(!isCompassMode)
-					{
-						trackingButton.setCompassMode(true);
-						mapFragment.setCompassMode(true);
-					}
-					else
-					{
-						setIsFollowingPosition(false);
-					}
-				}
-				else
-				{
-					locationRequestFragment.startRequest();
-				}
-			}
-		});
-        trackingButton.setActivated(isFollowingPosition);
-		trackingButton.setCompassMode(isCompassMode);
-
-		ImageButton zoomInButton = (ImageButton) findViewById(R.id.zoom_in);
-		zoomInButton.setOnClickListener(new View.OnClickListener()
-		{
-			@Override public void onClick(View v)
-			{
-				mapFragment.zoomIn();
-			}
-		});
-		ImageButton zoomOutButton = (ImageButton) findViewById(R.id.zoom_out);
-		zoomOutButton.setOnClickListener(new View.OnClickListener()
-		{
-			@Override public void onClick(View v)
-			{
-				mapFragment.zoomOut();
-			}
-		});
 	}
 
 	@Override public void onStart()
@@ -286,11 +230,14 @@ public class MainActivity extends AppCompatActivity implements
 
 		LocalBroadcastManager localBroadcaster = LocalBroadcastManager.getInstance(this);
 
-		IntentFilter uploadChangesErrFilter = new IntentFilter(QuestChangesUploadService.ACTION_ERROR);
-		localBroadcaster.registerReceiver(uploadChangesErrorReceiver, uploadChangesErrFilter);
+		localBroadcaster.registerReceiver(uploadChangesErrorReceiver,
+				new IntentFilter(QuestChangesUploadService.ACTION_ERROR));
 
-		IntentFilter uploadChangesFinishedFilter = new IntentFilter(QuestChangesUploadService.ACTION_FINISHED);
-		localBroadcaster.registerReceiver(uploadChangesFinishedReceiver, uploadChangesFinishedFilter);
+		localBroadcaster.registerReceiver(uploadChangesFinishedReceiver,
+				new IntentFilter(QuestChangesUploadService.ACTION_FINISHED));
+
+		localBroadcaster.registerReceiver(locationRequestFinishedReceiver,
+				new IntentFilter(LocationRequestFragment.ACTION_FINISHED));
 
 		questController.onStart(this);
 		questAutoSyncer.onStart();
@@ -318,14 +265,12 @@ public class MainActivity extends AppCompatActivity implements
 		LocalBroadcastManager localBroadcaster = LocalBroadcastManager.getInstance(this);
 		localBroadcaster.unregisterReceiver(uploadChangesErrorReceiver);
 		localBroadcaster.unregisterReceiver(uploadChangesFinishedReceiver);
+		localBroadcaster.unregisterReceiver(locationRequestFinishedReceiver);
 
 		unregisterReceiver(locationAvailabilityReceiver);
 
 		questController.onStop();
 		questAutoSyncer.onStop();
-
-		isFollowingPosition = trackingButton.isActivated();
-		isCompassMode = trackingButton.isCompassMode();
 
 		if (downloadServiceIsBound) unbindService(downloadServiceConnection);
 		if (downloadService != null)
@@ -463,7 +408,7 @@ public class MainActivity extends AppCompatActivity implements
 		BoundingBox displayArea;
 		if ((displayArea = mapFragment.getDisplayedArea(0,0)) == null)
 		{
-			Toast.makeText(this, R.string.cannot_find_bbox, Toast.LENGTH_LONG).show();
+			Toast.makeText(this, R.string.cannot_find_bbox_or_reduce_tilt, Toast.LENGTH_LONG).show();
 		}
 		else
 		{
@@ -820,12 +765,6 @@ public class MainActivity extends AppCompatActivity implements
 
 	}
 
-	@Override public void onUnglueViewFromPosition()
-	{
-		trackingButton.setActivated(false);
-		trackingButton.setCompassMode(false);
-	}
-
 	/* ---------- QuestsMapFragment.Listener ---------- */
 
 	@Override public void onFirstInView(BoundingBox bbox)
@@ -862,58 +801,21 @@ public class MainActivity extends AppCompatActivity implements
 	{
 		if(LocationUtil.isLocationSettingsOn(this))
 		{
-			onLocationIsEnabled();
+			questAutoSyncer.startPositionTracking();
 		}
 		else
 		{
-			onLocationIsDisabled();
+			questAutoSyncer.stopPositionTracking();
 		}
 	}
 
-	private void onLocationIsEnabled()
-	{
-		trackingButton.setState(LocationState.SEARCHING);
-		mapFragment.setIsFollowingPosition(trackingButton.isActivated());
-		mapFragment.startPositionTracking();
-		questAutoSyncer.startPositionTracking();
-		singleLocationRequest.startRequest(LocationRequest.PRIORITY_HIGH_ACCURACY,
-				new SingleLocationRequest.Callback()
-				{
-					@Override public void onLocation(Location location)
-					{
-						trackingButton.setState(LocationState.UPDATING);
-					}
-				});
-	}
-
-	private void onLocationIsDisabled()
-	{
-		trackingButton.setState(LocationState.ALLOWED);
-		setIsFollowingPosition(false);
-		mapFragment.stopPositionTracking();
-		questAutoSyncer.stopPositionTracking();
-		singleLocationRequest.stopRequest();
-	}
-
-	private void setIsFollowingPosition(boolean follow)
-	{
-		trackingButton.setActivated(follow);
-		mapFragment.setIsFollowingPosition(follow);
-		if(!follow)
-		{
-			trackingButton.setCompassMode(false);
-			mapFragment.setCompassMode(false);
-		}
-	}
-
-	@Override public void onLocationRequestFinished(LocationState withLocationState)
+	private void onLocationRequestFinished(LocationState withLocationState)
 	{
 		hasAskedForLocation = true;
-		trackingButton.setState(withLocationState);
 		boolean enabled = withLocationState.isEnabled();
 		if(enabled)
 		{
-			onLocationIsEnabled();
+			updateLocationAvailability();
 		}
 		else
 		{
