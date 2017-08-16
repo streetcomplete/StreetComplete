@@ -2,4 +2,5 @@
 isLivingStreetKnown: true
 livingStreetSign: ic_living_street_sadc
 officialLanguages: [en, bem, ny]
+orchardProduces: [coffee, tomatoe, orange, tea, chili, pepper, banana, piper]
 popularSports: [soccer, tennis, cricket]

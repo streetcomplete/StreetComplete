@@ -46,6 +46,7 @@ textures:
             sport: [960,576,192,192]
             recycling: [1152,576,192,192]
             leaf: [1344,576,192,192]
+            apple: [1536,576,192,192]
             # 5th row
             street_lanes: [0,768,192,192]
             street_turnlanes: [192,768,192,192]

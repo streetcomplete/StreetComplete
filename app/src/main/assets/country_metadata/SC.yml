@@ -2,3 +2,5 @@
 isLivingStreetKnown: true
 livingStreetSign: ic_living_street_sadc
 officialLanguages: [en, fr, crs]
+orchardProduces: [coconut, banana, tomatoe, tea, guava, mango, mangosteen, orange, lemon, lime, pineapple,
+  avocado]
