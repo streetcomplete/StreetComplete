@@ -259,6 +259,7 @@ public class MapFragment extends Fragment implements
 				{
 					controller.setRotationEased(0, 50);
 					controller.setTiltEased(0, 50);
+					mapControls.onMapOrientation(0,0);
 				}
 			}
 			updateView();
@@ -398,8 +399,9 @@ public class MapFragment extends Fragment implements
 		// we received an event from the compass, so compass is working - direction can be displayed on screen
 		isShowingDirection = true;
 
-		if(directionMarker != null && directionMarker.isVisible())
+		if(directionMarker != null)
 		{
+			directionMarker.setVisible(true);
 			double r = rotation * 180 / Math.PI;
 			directionMarker.setStylingFromString(
 					"{ style: 'points', color: '#cc536dfe', size: [" +
@@ -468,6 +470,8 @@ public class MapFragment extends Fragment implements
 		if(prefs.contains(PREF_ROTATION)) controller.setRotation(prefs.getFloat(PREF_ROTATION,0));
 		if(prefs.contains(PREF_TILT)) controller.setTilt(prefs.getFloat(PREF_TILT,0));
 		if(prefs.contains(PREF_ZOOM)) controller.setZoom(prefs.getFloat(PREF_ZOOM,0));
+
+		mapControls.onMapOrientation(controller.getRotation(), controller.getTilt());
 
 		if(prefs.contains(PREF_LAT) && prefs.contains(PREF_LON))
 		{

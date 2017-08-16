@@ -3,4 +3,6 @@ additionalValidHousenumberRegex: ev\.\p{N}{1,4}
 isLivingStreetKnown: true
 isSlowZoneKnown: true
 officialLanguages: [cs]
+orchardProduces: [grape, apple, hop, plum, chili, pepper, apricot, cherry, pear, peach, walnut, strawberry,
+  tomatoe, raspberry]
 popularSports: [soccer, tennis, volleyball, beachvolleyball, ice_hockey, handball]

@@ -24,6 +24,7 @@ public class CountryInfo implements Serializable, Cloneable
 	Boolean isSlowZoneKnown;
 	Boolean isLivingStreetKnown;
 	String livingStreetSign;
+	List<String> orchardProduces;
 
 	public String getSpeedUnit()
 	{
@@ -96,5 +97,11 @@ public class CountryInfo implements Serializable, Cloneable
 	public String getLivingStreetSign()
 	{
 		return livingStreetSign;
+	}
+
+	public List<String> getOrchardProduces()
+	{
+		if(orchardProduces == null) return new ArrayList<>(1);
+		return Collections.unmodifiableList(orchardProduces);
 	}
 }

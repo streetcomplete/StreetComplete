@@ -1,3 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [fr]
 officialLanguages: [ar]
+orchardProduces: [olive, apple, grape, cherry, almond, apricot, lemon, lime, tomatoe, peach, banana,
+  plum, orange, pear, fig, walnut]

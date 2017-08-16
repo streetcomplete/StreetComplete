@@ -2,4 +2,6 @@
 isLivingStreetKnown: true
 livingStreetSign: ic_living_street_sadc
 officialLanguages: [en, zu, xh, af, st, tn, nso, ts]
+orchardProduces: [grape, orange, apple, avocado, grapefruit, lemon, lime, pear, peach, chili, pepper,
+  banana, plum, pineapple, tomatoe, apricot, guava, mango, mangosteen]
 popularSports: [tennis, soccer, bowls, basketball, golf, cricket, netball, field_hockey, rugby]

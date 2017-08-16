@@ -2,4 +2,6 @@
 isLivingStreetKnown: true
 livingStreetSign: ic_living_street_australia
 officialLanguages: [en]
+orchardProduces: [grape, kiwi, apple, avocado, peach, tomatoe, orange, cherry, blueberry, pear, walnut,
+  apricot, lemon, lime, plum, hop]
 popularSports: [tennis, bowls, golf, netball, basketball, soccer, rugby, cricket]
