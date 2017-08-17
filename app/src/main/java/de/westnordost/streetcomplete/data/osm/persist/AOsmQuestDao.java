@@ -9,8 +9,6 @@ import android.database.sqlite.SQLiteStatement;
 import java.util.Date;
 import java.util.List;
 
-import javax.inject.Inject;
-
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.streetcomplete.data.AQuestDao;
@@ -37,7 +35,7 @@ public abstract class AOsmQuestDao extends AQuestDao<OsmQuest>
 		super(dbHelper);
 		this.serializer = serializer;
 		this.questTypeList = questTypeList;
-		String sql = OsmQuestTable.NAME + " ("+
+		String sql = getTableName() + " ("+
 				Columns.QUEST_ID+","+
 				Columns.QUEST_TYPE+","+
 				Columns.QUEST_STATUS+","+
@@ -69,14 +67,6 @@ public abstract class AOsmQuestDao extends AQuestDao<OsmQuest>
 				return createObjectFrom(cursor);
 			}
 		});
-	}
-
-	public int deleteAll(QuestStatus status, long olderThan)
-	{
-		WhereSelectionBuilder qb = new WhereSelectionBuilder();
-		addQuestStatus(status, qb);
-		qb.appendAnd(Columns.LAST_UPDATE + " < ?", String.valueOf(olderThan));
-		return deleteAllThings(getTableName(), qb);
 	}
 
 	private void addQuestType(String questTypeName, WhereSelectionBuilder builder)

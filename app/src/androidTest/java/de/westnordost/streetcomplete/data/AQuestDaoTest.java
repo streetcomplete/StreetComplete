@@ -174,6 +174,12 @@ public class AQuestDaoTest extends AndroidDbTestCase
 		assertNotNull(dao.getLastSolved());
 	}
 
+	public void testGetLastSolvedDoesNotIncludeRevertedQuests()
+	{
+		dao.add(createQuest(0,0, QuestStatus.REVERT));
+		assertNull(dao.getLastSolved());
+	}
+
 	public void testGetLastSolvedSortsByLastUpdate()
 	{
 		dao.add(createQuest(0,10000, QuestStatus.ANSWERED));

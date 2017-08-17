@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.data.osm;
 
+import java.util.Collections;
+
 import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
 import de.westnordost.streetcomplete.data.osm.tql.FiltersParser;
@@ -31,5 +33,10 @@ public abstract class SimpleOverpassQuestType implements OsmElementQuestType
 	public boolean download(BoundingBox bbox, MapDataWithGeometryHandler handler)
 	{
 		return overpassServer.getAndHandleQuota(getOverpassQuery(bbox), handler);
+	}
+
+	@Override public final int getTitle()
+	{
+		return getTitle(Collections.<String, String>emptyMap());
 	}
 }

@@ -10,7 +10,9 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.IBinder;
 
+import java.lang.annotation.ElementType;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -187,6 +189,11 @@ public class QuestController
 		return osmQuestDB.getLastSolved();
 	}
 
+	public Element getOsmElement(OsmQuest quest)
+	{
+		return osmElementDB.get(quest.getElementType(), quest.getElementId());
+	}
+
 	public void undoOsmQuest(final OsmQuest quest)
 	{
 		workerHandler.post(new Runnable() { @Override public void run()
@@ -201,11 +208,14 @@ public class QuestController
 				osmQuestDB.update(quest);
 				// inform relay that the quest is visible again
 				Element element = osmElementDB.get(quest.getElementType(), quest.getElementId());
-				relay.onQuestCreated(quest, QuestGroup.OSM, element);
+				relay.onQuestsCreated(Collections.singletonList(quest), QuestGroup.OSM);
 			}
 			// already uploaded! -> create change to reverse the previous change
 			else if(quest.getStatus() == QuestStatus.CLOSED)
 			{
+				quest.setStatus(QuestStatus.REVERT);
+				osmQuestDB.update(quest);
+
 				OsmQuest reversedQuest = new OsmQuest(
 						quest.getOsmElementQuestType(),
 						quest.getElementType(),

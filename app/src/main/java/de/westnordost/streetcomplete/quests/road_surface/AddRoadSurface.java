@@ -3,6 +3,8 @@ package de.westnordost.streetcomplete.quests.road_surface;
 import android.os.Bundle;
 import android.text.TextUtils;
 
+import java.util.Map;
+
 import javax.inject.Inject;
 
 import de.westnordost.streetcomplete.R;
@@ -43,5 +45,10 @@ public class AddRoadSurface extends SimpleOverpassQuestType
 
 	@Override public String getCommitMessage() { return "Add road surfaces"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_street_surface; }
-	@Override public int getDefaultTitle() { return R.string.quest_streetSurface_title; }
+	@Override public int getTitle(Map<String, String> tags)
+	{
+		boolean hasName = tags.containsKey("name");
+		if(hasName) return R.string.quest_streetSurface_name_title;
+		else        return R.string.quest_streetSurface_title;
+	}
 }

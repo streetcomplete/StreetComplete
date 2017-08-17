@@ -119,12 +119,6 @@ public abstract class AQuestDao<T extends Quest>
 		}
 	}
 
-	protected final int deleteAllThings(String tablename, WhereSelectionBuilder query)
-	{
-		SQLiteDatabase db = dbHelper.getWritableDatabase();
-		return db.delete(tablename, query.getWhere(), query.getArgs());
-	}
-
 	protected final <E> List<E> getAllThings(String tablename, String[] cols,
 											 WhereSelectionBuilder query, CreateFromCursor<E> creator)
 	{
@@ -207,6 +201,17 @@ public abstract class AQuestDao<T extends Quest>
 			idsString.append(id);
 		}
 		return db.delete(getTableName(), getIdColumnName() + " IN (" + idsString.toString() + ")", null);
+	}
+
+	public int deleteAllClosed(long olderThan)
+	{
+		String statusCol = getQuestStatusColumnName();
+		String query = "(" + statusCol + " = ? OR " + statusCol + " = ?) AND " +
+				getLastChangedColumnName() + " < ?";
+
+		SQLiteDatabase db = dbHelper.getWritableDatabase();
+		return db.delete(getTableName(), query, new String[]{
+				QuestStatus.CLOSED.name(), QuestStatus.REVERT.name(), String.valueOf(olderThan)});
 	}
 
 	public int addAll(Collection<T> quests)

@@ -110,7 +110,7 @@ public abstract class AOsmQuestChangesUpload
 	private void cleanUp()
 	{
 		long yesterday = System.currentTimeMillis() - 24 * 60 * 60 * 1000;
-		int deletedQuests = questDB.deleteAll(QuestStatus.CLOSED, yesterday);
+		int deletedQuests = questDB.deleteAllClosed(yesterday);
 		if(deletedQuests > 0)
 		{
 			elementGeometryDB.deleteUnreferenced();
@@ -201,6 +201,7 @@ public abstract class AOsmQuestChangesUpload
 		}
 
 		closeQuest(quest);
+		elementDB.put(elementWithChangesApplied);
 		statisticsDB.addOne(quest.getType().getClass().getSimpleName());
 
 		return true;

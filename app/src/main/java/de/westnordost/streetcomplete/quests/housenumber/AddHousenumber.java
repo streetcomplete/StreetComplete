@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -101,5 +102,6 @@ public class AddHousenumber implements OsmElementQuestType
 	@Override public AbstractQuestAnswerFragment createForm() { return new AddHousenumberForm(); }
 	@Override public String getCommitMessage() { return "Add housenumbers"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_housenumber; }
-	@Override public int getDefaultTitle() { return R.string.quest_address_title; }
+	@Override public int getTitle(Map<String,String> tags) { return getTitle(); }
+	@Override public int getTitle() { return R.string.quest_address_title; }
 }

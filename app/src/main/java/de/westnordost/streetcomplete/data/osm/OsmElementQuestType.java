@@ -1,6 +1,9 @@
 package de.westnordost.streetcomplete.data.osm;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+
+import java.util.Map;
 
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.streetcomplete.data.QuestType;
@@ -21,4 +24,7 @@ public interface OsmElementQuestType extends QuestType
 	 * @param handler called for each element for which this quest type applies
 	 * @return true if successful (false if interrupted) */
 	boolean download(BoundingBox bbox, MapDataWithGeometryHandler handler);
+
+	/** @return title resource for when the element has the specified tags. The tags are unmodifiable */
+	int getTitle(@NonNull Map<String,String> tags);
 }

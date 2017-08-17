@@ -2,6 +2,8 @@ package de.westnordost.streetcomplete.quests.toilets_fee;
 
 import android.os.Bundle;
 
+import java.util.Map;
+
 import javax.inject.Inject;
 
 import de.westnordost.streetcomplete.R;
@@ -30,5 +32,8 @@ public class AddToiletsFee extends SimpleOverpassQuestType
 
 	@Override public String getCommitMessage() { return "Add toilets fee"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_toilets; }
-	@Override public int getDefaultTitle() { return R.string.quest_toiletsFee_title; }
+	@Override public int getTitle(Map<String, String> tags)
+	{
+		return R.string.quest_toiletsFee_title;
+	}
 }

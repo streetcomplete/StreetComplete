@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.roof_shape;
 import android.os.Bundle;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -37,5 +38,8 @@ public class AddRoofShape extends SimpleOverpassQuestType
 
 	@Override public String getCommitMessage() { return "Add roof shapes"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_roof_shape; }
-	@Override public int getDefaultTitle() { return R.string.quest_roofShape_title; }
+	@Override public int getTitle(Map<String, String> tags)
+	{
+		return R.string.quest_roofShape_title;
+	}
 }

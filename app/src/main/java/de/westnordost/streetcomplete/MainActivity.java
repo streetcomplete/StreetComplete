@@ -33,11 +33,14 @@ import android.view.WindowManager;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -289,37 +292,33 @@ public class MainActivity extends AppCompatActivity implements
 		questController.onDestroy();
 	}
 
-	private MenuItem undoMenuItem;
-
 	@Override public boolean onCreateOptionsMenu(Menu menu)
 	{
 		getMenuInflater().inflate(R.menu.menu_main, menu);
-		for (int i = 0; i < menu.size(); i++)
-		{
-			MenuItem item = menu.getItem(i);
-			if(item.getItemId() == R.id.action_undo)
-			{
-				undoMenuItem = item;
-			}
-		}
 		return true;
 	}
 
 	public boolean onPrepareOptionsMenu(Menu menu) {
 		super.onPrepareOptionsMenu(menu);
-		updateUndoMenuItem();
 		return true;
-	}
-
-	private void updateUndoMenuItem()
-	{
-		undoMenuItem.setEnabled(questController.getLastSolvedOsmQuest() != null);
 	}
 
 	private void confirmUndo(final OsmQuest quest)
 	{
+		Element element = questController.getOsmElement(quest);
+
+		View inner = LayoutInflater.from(this).inflate(
+				R.layout.undo_dialog_layout, null, false);
+		ImageView icon = (ImageView) inner.findViewById(R.id.icon);
+		icon.setImageResource(quest.getType().getIcon());
+		TextView text = (TextView) inner.findViewById(R.id.text);
+
+		String name = element.getTags().get("name");
+		text.setText(getResources().getString(getQuestTitleResId(quest, element.getTags()), name));
+
 		new AlertDialogBuilder(this)
 				.setTitle(R.string.undo_confirm_title)
+				.setView(inner)
 				.setPositiveButton(R.string.action_undo, new DialogInterface.OnClickListener()
 				{
 					@Override public void onClick(DialogInterface dialog, int which)
@@ -328,7 +327,18 @@ public class MainActivity extends AppCompatActivity implements
 						answersCounter.undidQuest(quest.getChangesSource());
 					}
 				})
-				.setNegativeButton(android.R.string.cancel, null);
+				.setNegativeButton(android.R.string.cancel, null)
+				.show();
+	}
+
+	private int getQuestTitleResId(Quest quest, Map<String,String> tags)
+	{
+		if(quest instanceof OsmQuest)
+		{
+			OsmQuest osmQuest = (OsmQuest) quest;
+			return osmQuest.getOsmElementQuestType().getTitle(tags);
+		}
+		return quest.getType().getTitle();
 	}
 
 	@Override public boolean onOptionsItemSelected(MenuItem item)
@@ -579,7 +589,6 @@ public class MainActivity extends AppCompatActivity implements
 				closeQuestDetailsFor(questId, group);
 				answersCounter.answeredQuest(source);
 				questController.solveQuest(questId, group, answer, source);
-				undoMenuItem.setEnabled(true);
 			}
 		});
 	}

@@ -11,5 +11,5 @@ public interface QuestType
 	int getIcon();
 
 	/** @return the title resource id used to display the quest's question */
-	int getDefaultTitle();
+	int getTitle();
 }

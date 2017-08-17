@@ -15,5 +15,10 @@ public enum QuestStatus
 	 * is pulling it's data for creating quests from (usually Overpass) lags behind the database
 	 * where the app is uploading its changes to.
 	 * Note quests are generally closed after upload, they are never deleted */
-	CLOSED
+	CLOSED,
+	/** the quest has been closed and after that the user chose to revert (aka undo) it. This state
+	 * is basically the same as CLOSED, only that it will not turn up in the list of (revertable)
+	 * changes. Note, that the revert-change is done via another Quest upload, this state is only
+	 * to mark this quest as that a revert-quest has already been created*/
+	REVERT
 }

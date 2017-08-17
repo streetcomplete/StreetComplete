@@ -25,7 +25,6 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 	public static final String DB_NAME = "streetcomplete.db";
 	public static final int DB_VERSION = 7;
 
-
 	private static final String OSM_QUESTS_CREATE_PARAMS = " (" +
 			OsmQuestTable.Columns.QUEST_ID +		" INTEGER		PRIMARY KEY, " +
 			OsmQuestTable.Columns.QUEST_TYPE +		" varchar(255)	NOT NULL, " +
@@ -51,7 +50,6 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 	private static final String OSM_QUESTS_TABLE_CREATE =
 			"CREATE TABLE " + OsmQuestTable.NAME + OSM_QUESTS_CREATE_PARAMS;
 
-	// TODO: don'T forget - element & element geometry cleanup!
 	private static final String UNDO_OSM_QUESTS_TABLE_CREATE =
 			"CREATE TABLE " + OsmQuestTable.NAME_UNDO + OSM_QUESTS_CREATE_PARAMS;
 
