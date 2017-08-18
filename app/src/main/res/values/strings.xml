@@ -385,4 +385,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_parkingType_surface">Normal</string>
     <string name="quest_parkingType_underground">Underground garage</string>
     <string name="quest_parkingType_multiStorage">Car park</string>
+    <string name="quest_carWashType_title">Is this car wash automated or self service?</string>
+    <string name="quest_carWashType_automated">Automated</string>
+    <string name="quest_carWashType_selfService">Self service</string>
 </resources>
