@@ -15,6 +15,7 @@ import de.westnordost.streetcomplete.quests.bike_parking_cover.AddBikeParkingCov
 import de.westnordost.streetcomplete.quests.building_levels.AddBuildingLevels;
 import de.westnordost.streetcomplete.quests.bus_stop_shelter.AddBusStopShelter;
 import de.westnordost.streetcomplete.quests.crossing_type.AddCrossingType;
+import de.westnordost.streetcomplete.quests.diet_type.AddDietType;
 import de.westnordost.streetcomplete.quests.fire_hydrant.AddFireHydrantType;
 import de.westnordost.streetcomplete.quests.parking_type.AddParkingType;
 import de.westnordost.streetcomplete.quests.orchard_produce.AddOrchardProduce;
@@ -65,6 +66,7 @@ public class QuestModule
 				new AddWheelChairAccessPublicTransport(o),
 				new AddTactilePavingBusStop(o),
 				new AddTactilePavingCrosswalk(o),
+				new AddDietType(o),
 				new AddWayLit(o),
 				new AddWheelchairAccessBusiness(o),
 				// ↓ defined in the wiki, but not really used by anyone yet. Just collected for the

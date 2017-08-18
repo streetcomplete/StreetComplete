@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <Button
+        android:id="@+id/buttonVegetarian"
+        style="?android:attr/buttonBarButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="0dp"
+        android:layout_weight="1"
+        android:text="@string/quest_dietType_vegetarian" />
+
+    <Button
+        android:id="@+id/buttonVegan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="0dp"
+        android:layout_weight="1"
+        style="?android:attr/buttonBarButtonStyle"
+        android:text="@string/quest_dietType_vegan" />
+
+    <Button
+        android:id="@+id/buttonNo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="0dp"
+        android:layout_weight="1"
+        style="?android:attr/buttonBarButtonStyle"
+        android:text="@string/quest_generic_hasFeature_no" />
+
+</merge>
