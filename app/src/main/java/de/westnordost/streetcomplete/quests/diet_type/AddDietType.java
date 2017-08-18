@@ -49,6 +49,7 @@ public class AddDietType extends SimpleOverpassQuestType
 					break;
 				case AddDietTypeForm.VEGAN:
 					changes.add("diet:vegan", "yes");
+					changes.add("diet:vegetarian", "yes");
 					break;
 				case AddDietTypeForm.NO:
 					changes.add("diet:vegetarian", "no");
