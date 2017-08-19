@@ -388,4 +388,5 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_carWashType_title">Is this car wash automated or self service?</string>
     <string name="quest_carWashType_automated">Automated</string>
     <string name="quest_carWashType_selfService">Self service</string>
+    <string name="quest_carWashType_both">It\'s automated and self service</string>
 </resources>
