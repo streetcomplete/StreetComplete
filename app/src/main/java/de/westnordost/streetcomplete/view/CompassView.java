@@ -31,6 +31,7 @@ public class CompassView extends GLSurfaceView
 		setEGLContextClientVersion(1);
 		getHolder().setFormat(PixelFormat.TRANSLUCENT);
 		setEGLConfigChooser(8, 8, 8, 8, 16, 0);
+		setZOrderMediaOverlay(true);
 
 		setRenderer(new CompassRenderer());
 	}
