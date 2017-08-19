@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" >
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight=".5"/>
+
+    <de.westnordost.streetcomplete.view.SlidingRelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight=".5"
+        android:layout_gravity="end">
+
+        <android.support.design.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/buttonPanel"
+            android:background="#00000000"
+            >
+            <!-- If I do not set any background color here, the layout will leave a few pixels free at the
+         bottom on my Android 6.0 emulator; so, setting to transparent-->
+
+            <LinearLayout
+                android:id="@+id/bottomSheet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="16dp"
+                android:orientation="vertical"
+                app:layout_behavior="android.support.design.widget.BottomSheetBehavior"
+                app:behavior_peekHeight="@dimen/quest_bottom_sheet_peek_height"
+                android:background="@android:color/background_light"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_title"
+                    android:gravity="center_vertical"
+                    style="@style/Widget.AppCompat.Toolbar"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:id="@+id/close_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src = "@drawable/ic_close_white_24dp"
+                        style="@style/Widget.AppCompat.Toolbar.Button.Navigation"
+                        android:visibility="gone"
+                        android:contentDescription="@string/close"
+                        android:adjustViewBounds="true"
+                        android:padding="12dp"/>
+
+                    <TextView
+                        android:id="@+id/title"
+                        style="@style/QuestTitleQuestion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingRight="16dp"
+                        android:paddingLeft="16dp"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp"/>
+
+                </LinearLayout>
+
+                <android.support.v4.widget.NestedScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:id="@+id/content"
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp"
+                        >
+
+                    </LinearLayout>
+
+                </android.support.v4.widget.NestedScrollView>
+
+            </LinearLayout>
+
+        </android.support.design.widget.CoordinatorLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="16dp"
+            android:background="@drawable/more_gradient"
+            android:layout_above="@+id/buttonPanel"
+            />
+
+        <LinearLayout android:id="@+id/buttonPanel"
+                      android:layout_alignParentBottom="true"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="horizontal"
+                      android:layoutDirection="locale"
+                      android:background="@android:color/background_light"
+                      style="?android:attr/buttonBarStyle">
+
+            <Button
+                android:id="@+id/buttonOtherAnswers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="@string/quest_generic_otherAnswers"
+                style="?android:attr/buttonBarButtonStyle"/>
+
+
+        </LinearLayout>
+    </de.westnordost.streetcomplete.view.SlidingRelativeLayout>
+</LinearLayout>
