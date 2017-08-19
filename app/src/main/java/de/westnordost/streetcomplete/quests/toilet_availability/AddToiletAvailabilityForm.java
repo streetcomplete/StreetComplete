@@ -25,9 +25,5 @@ public class AddToiletAvailabilityForm extends YesNoQuestAnswerFragment
 		{
 			setTitle(R.string.quest_toiletAvailability_name_title, name);
 		}
-		else
-		{
-			setTitle(R.string.quest_toiletAvailability_title);
-		}
 	}
 }
