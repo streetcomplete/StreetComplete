@@ -1,4 +1,6 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [en]
 officialLanguages: [zh]
+orchardProduces: [areca_nut, guava, mango, mangosteen, banana, tea, pineapple, pear, orange, tomatoe,
+  persimmon, grapefruit, apricot, grape, coconut, chili, pepper, papaya]
 popularSports: [basketball, tennis, volleyball, baseball]

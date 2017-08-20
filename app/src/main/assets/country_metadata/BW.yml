@@ -2,3 +2,4 @@
 isLivingStreetKnown: true
 livingStreetSign: ic_living_street_sadc
 officialLanguages: [en, tn]
+orchardProduces: [orange]

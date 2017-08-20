@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import javax.inject.Inject;
 
+import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
@@ -11,10 +12,7 @@ import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 
 public class AddBuildingLevels extends SimpleOverpassQuestType
 {
-	@Inject public AddBuildingLevels(OverpassMapDataDao overpassServer)
-	{
-		super(overpassServer);
-	}
+	@Inject public AddBuildingLevels(OverpassMapDataDao overpassServer) { super(overpassServer); }
 
 	@Override
 	protected String getTagFilters()
@@ -44,10 +42,6 @@ public class AddBuildingLevels extends SimpleOverpassQuestType
 		}
 	}
 
-	@Override public String getCommitMessage()
-	{
-		return "Add building and roof levels";
-	}
-
-	@Override public String getIconName() {	return "building_levels"; }
+	@Override public String getCommitMessage() { return "Add building and roof levels"; }
+	@Override public int getIcon() { return R.drawable.ic_quest_building_levels; }
 }

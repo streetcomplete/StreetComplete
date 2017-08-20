@@ -27,6 +27,8 @@ import de.westnordost.streetcomplete.util.SerializedSavedState;
 		DbModule.class, MetadataModule.class})
 public interface ApplicationComponent
 {
+	void inject(StreetCompleteApplication app);
+
 	void inject(MainActivity mainActivity);
 	void inject(NoteDiscussionForm noteDiscussionForm);
 	void inject(SerializedSavedState tSerializedSavedState);

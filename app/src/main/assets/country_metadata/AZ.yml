@@ -1,2 +1,4 @@
 # Do not edit. Source files are in /res/country_metadata
 officialLanguages: [az]
+orchardProduces: [apple, tomatoe, hazelnut, grape, persimmon, pear, chili, pepper, plum, peach, walnut,
+  apricot, raspberry, fig, olive, cherry]

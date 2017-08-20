@@ -17,8 +17,8 @@ android {
         applicationId "de.westnordost.streetcomplete"
         minSdkVersion 17
         targetSdkVersion 25
-        versionCode 101
-        versionName "1.1"
+        versionCode 102
+        versionName "1.2"
         testInstrumentationRunner "android.test.InstrumentationTestRunner"
         buildConfigField "String", "MAPZEN_API_KEY", MAPZEN_API_KEY
     }
@@ -97,7 +97,7 @@ dependencies {
 
     // map and location
     compile 'com.mapzen.tangram:tangram:0.7.1'
-    compile 'com.mapzen.android:lost:3.0.2'
+    compile 'com.mapzen.android:lost:3.0.3'
 
     // config files
     compile 'com.esotericsoftware.yamlbeans:yamlbeans:1.11'

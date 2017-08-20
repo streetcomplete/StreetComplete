@@ -227,7 +227,7 @@
     <string name="quest_sport_shooting">"Пулевая стрельба"</string>
     <string name="quest_sport_cricket">"Крикет"</string>
     <string name="quest_sport_table_tennis">"Настольный теннис"</string>
-    <string name="quest_sport_gymnastics">"Гимaстика"</string>
+    <string name="quest_sport_gymnastics">"Гимнaстика"</string>
     <string name="quest_sport_archery">"Стрельба из лука"</string>
     <string name="quest_sport_australian_football">"Австралийский футбол"</string>
     <string name="quest_sport_badminton">"Бадминтон"</string>
@@ -258,6 +258,7 @@
     <string name="quest_maxspeed_answer_noSign_confirmation">"Вы проверили знаки на концах улицы?
 Если их нет, то действует общее ограничение скорости."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Да, знаков нет"</string>
+    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"На дорогах в городе и вне города по умолчанию действуют разные скоростные ограничения."</string>
     <string name="quest_maxspeed_answer_noSign_urbanOk">"В городе"</string>
     <string name="quest_maxspeed_answer_noSign_ruralOk">"Вне города"</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">"Если на перекрёстке главной улицы есть такой знак, то других знаков внутри зоны не будет, так как ограничение скорости распространяется на всю зону."</string>
@@ -272,10 +273,13 @@
     <string name="quest_bikeParkingCapacity_hint">"Заметьте, что к большинству обычных стоек можно закрепить по велосипеду с каждой стороны."</string>
     <string name="quest_sport_roller_skating">"Катание на роликах"</string>
     <string name="quest_wheelchairAccess_bus_station_title">"Доступна ли эта автобусная остановка для инвалидных колясок?"</string>
+    <string name="quest_wheelchairAccess_subway_entrance_title">"Этот вход в метро оборудован для инвалидных колясок?"</string>
     <string name="quest_wheelchairAccess_railway_station_title">"Доступна ли эта железнодорожная станция для инвалидных колясок?"</string>
     <string name="quest_wheelchairAccess_location_title">"Доступно ли это место для инвалидных колясок?"</string>
     <string name="quest_wheelchairAccess_bus_station_name_title">"Доступна ли автобусная остановка «%s» для инвалидных колясок?"</string>
+    <string name="quest_wheelchairAccess_subway_entrance_name_title">"Этот вход в метро “%s” оборудован для инвалидных колясок?"</string>
     <string name="quest_wheelchairAccess_railway_station_name_title">"Доступна ли железнодорожная станция «%s» для инвалидных колясок?"</string>
+    <string name="quest_wheelchairAccess_location_name_title">"Доступно ли место “%s” для инвалидных колясок?"</string>
     <string name="quest_wheelchairAccess_limited_description_business">"«Частично» значит, что нужно преодолеть не более одной ступеньки для доступа в заведение, и что все комнаты внутри доступны для инвалидных колясок."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"«Частично» значит, что нужно преодолеть не более одной ступеньки."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Сокращение в названии «%s»?"</string>
@@ -286,9 +290,12 @@
     <string name="overground_recycling_container">"Контейнер"</string>
     <string name="underground_recycling_container">"Подземный контейнер"</string>
     <string name="quest_generic_error_a_field_empty">"Поле не было заполнено"</string>
+    <string name="quest_streetName_menuItem_language_simple">"%1$s - %2$s"</string>
+    <string name="quest_streetName_menuItem_language_native">"%1$s - %2$s (%3$s)"</string>
     <string name="quest_streetName_answer_cantType">"Не могу ввести символы на знаке"</string>
     <string name="quest_streetName_cantType_title">"Нет нужной раскладки?"</string>
     <string name="quest_streetName_cantType_open_settings">"Открыть настройки"</string>
+    <string name="quest_streetName_cantType_open_store">"Открыть магазин"</string>
     <string name="quest_streetName_cantType_description">"Если у вас клавиатура по умолчанию, скорее всего, нужно лишь добавить раскладку клавиатуры для нужного языка в настройках ввода.
 
 В противном случае можно загрузить другую клавиатуру. Популярные клавиатуры, которые поддерживают множество языков: Google Gboard, SwiftKey Keyboard и Multiling O Keyboard."</string>
@@ -298,5 +305,67 @@
     <string name="quest_fireHydrant_type_underground">"Подземный"</string>
     <string name="quest_fireHydrant_type_wall">"Пожарный кран"</string>
     <string name="quest_fireHydrant_type_pond">"Пруд"</string>
+    <string name="credits_contributors">"Смотрите &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;полный список на GitHub&lt;/a&gt;"</string>
+    <string name="credits_translations">"Смотрите &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;проект на POEditor&lt;/a&gt;, где есть полный список."</string>
     <string name="credits_translations_title">"Перевод"</string>
+    <string name="credits_contributors_title">"Вклад в код внесли"</string>
+    <string name="credits_author_title">"Автор и сопровождающий"</string>
+    <string name="credits_and_more">"и другие…"</string>
+    <string name="quest_maxspeed_answer_living_street">"Это жилая улица"</string>
+    <string name="quest_maxspeed_answer_living_street_confirmation_title">"Значит здесь есть такой знак?"</string>
+    <string name="quest_orchard_produce_title">"Что здесь выращивают?"</string>
+    <string name="produce_grapes">"Виноград"</string>
+    <string name="produce_agaves">"Агава"</string>
+    <string name="produce_almonds">"Миндаль"</string>
+    <string name="produce_apples">"Яблоки"</string>
+    <string name="produce_apricots">"Абрикосы"</string>
+    <string name="produce_avocados">"Авокадо"</string>
+    <string name="produce_bananas">"Бананы"</string>
+    <string name="produce_blueberries">"Черника"</string>
+    <string name="produce_cacao">"Какао"</string>
+    <string name="produce_cashew_nuts">"Кешью"</string>
+    <string name="produce_cherries">"Вишня (черешня)"</string>
+    <string name="produce_chestnuts">"Каштаны"</string>
+    <string name="produce_coconuts">"Кокосы"</string>
+    <string name="produce_coffee">"Кофе"</string>
+    <string name="produce_cranberries">"Клюква"</string>
+    <string name="produce_dates">"Финики"</string>
+    <string name="produce_figs">"Инжир"</string>
+    <string name="produce_grapefruits">"Грейпфруты"</string>
+    <string name="produce_guavas">"Гуавы"</string>
+    <string name="produce_hazelnuts">"Фундук"</string>
+    <string name="produce_hops">"Хмель"</string>
+    <string name="produce_jojoba">"Жожоба"</string>
+    <string name="produce_kiwis">"Киви"</string>
+    <string name="produce_kola_nuts">"Орехи кола"</string>
+    <string name="produce_lemons">"Лимоны"</string>
+    <string name="produce_limes">"Лаймы"</string>
+    <string name="produce_mangos">"Манго"</string>
+    <string name="produce_mate">"Мате"</string>
+    <string name="produce_nutmeg">"Мускатный орех"</string>
+    <string name="produce_oil_palms">"Масличные пальмы"</string>
+    <string name="produce_olives">"Оливки"</string>
+    <string name="produce_oranges">"Апельсины"</string>
+    <string name="produce_papayas">"Папайя"</string>
+    <string name="produce_peaches">"Персики"</string>
+    <string name="produce_pears">"Груши"</string>
+    <string name="produce_chili">"Чили"</string>
+    <string name="produce_persimmons">"Хурма"</string>
+    <string name="produce_pineapples">"Ананасы"</string>
+    <string name="produce_pepper">"Перец"</string>
+    <string name="produce_pistachios">"Фисташки"</string>
+    <string name="produce_plums">"Сливы"</string>
+    <string name="produce_raspberries">"Малина"</string>
+    <string name="produce_rubber">"Каучук"</string>
+    <string name="produce_strawberries">"Клубника"</string>
+    <string name="produce_tea">"Чай"</string>
+    <string name="produce_vanilla">"Ваниль"</string>
+    <string name="produce_walnuts">"Грецкие орехи"</string>
+    <string name="produce_sisal">"Сизаль"</string>
+    <string name="quest_way_lit_title">"Освещена ли эта часть пути?"</string>
+    <string name="quest_way_lit_named_title">"Освещается ли \"%s\"?"</string>
+    <string name="quest_way_lit_road_title">"Освещена ли эта часть дороги?"</string>
+    <string name="quest_way_lit_named_road_title">"Освещена ли эта часть дороги «%s»?"</string>
+    <string name="quest_way_lit_automatic">"Используется обнаружение присутствия"</string>
+    <string name="quest_way_lit_24_7">"Освещается днём и ночью"</string>
 </resources>

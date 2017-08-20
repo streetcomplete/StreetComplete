@@ -279,7 +279,7 @@ public class OsmQuestChangesUploadTest extends TestCase
 			return true;
 		}
 		@Override public AbstractQuestAnswerFragment createForm() { return null; }
-		@Override public String getIconName() { return null; }
+		@Override public int getIcon() { return 0; }
 	}
 
 	private static OsmQuest createAnsweredQuestWithAppliableChange()

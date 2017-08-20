@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import javax.inject.Inject;
 
+import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
@@ -56,8 +57,7 @@ public class AddMaxSpeed extends SimpleOverpassQuestType
 	}
 
 	@Override public String getCommitMessage() { return "Add speed limits"; }
-
-	@Override public String getIconName() { return "max_speed"; }
+	@Override public int getIcon() { return R.drawable.ic_quest_max_speed; }
 
 
 }
