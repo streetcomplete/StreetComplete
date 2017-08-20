@@ -25,7 +25,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
         <cc:license
            rdf:resource="http://creativecommons.org/licenses/by-sa/4.0/" />
         <dc:creator>
@@ -107,13 +107,13 @@
      inkscape:window-height="1016"
      id="namedview4499"
      showgrid="false"
-     inkscape:zoom="2.1852786"
-     inkscape:cx="1755.1036"
-     inkscape:cy="1381.7221"
+     inkscape:zoom="0.54631965"
+     inkscape:cx="390.07102"
+     inkscape:cy="647.87374"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
-     inkscape:current-layer="g6079"
+     inkscape:current-layer="g10538-2"
      showguides="true"
      inkscape:lockguides="true"
      inkscape:snap-global="true"
@@ -5366,13 +5366,13 @@
          sodipodi:nodetypes="cc"
          inkscape:connector-curvature="0"
          id="path10510-6"
-         d="m -652.99992,-80.00022 24,11.625631"
+         d="m -647.39527,-81.978734 23.4011,-12.788435"
          style="fill:none;fill-rule:evenodd;stroke:#666666;stroke-width:16.08616066;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
       <path
          sodipodi:nodetypes="cc"
          inkscape:connector-curvature="0"
          id="path10516-8"
-         d="m -652.99992,-116.00022 v 36"
+         d="m -682.0298,-101.29026 29.02988,21.29004"
          style="fill:none;fill-rule:evenodd;stroke:#666666;stroke-width:10.72410679;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
       <ellipse
          ry="8.0146265"
