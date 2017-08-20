@@ -12,8 +12,8 @@
    version="1.1"
    viewBox="0 0 1024 1280"
    id="svg4497"
-   sodipodi:docname="quest_icons1.svg"
-   inkscape:version="0.92.1 r15371"
+   sodipodi:docname="quest_icons.svg"
+   inkscape:version="0.92+devel unknown"
    inkscape:export-filename="C:\Users\Newton\AndroidStudioProjects\streetcomplete\res\quest_icons.svg.png"
    inkscape:export-xdpi="95.983444"
    inkscape:export-ydpi="95.983444">
@@ -26,87 +26,39 @@
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
         <dc:title></dc:title>
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/by-sa/4.0/" />
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Tobias Zwick</dc:title>
+          </cc:Agent>
+        </dc:creator>
       </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/by-sa/4.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Notice" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Attribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#ShareAlike" />
+      </cc:License>
     </rdf:RDF>
   </metadata>
   <defs
      id="defs4501">
-    <symbol
-       id="WheelChairNew">
-      <title
-         id="title12017">New Wheelchair Accessible</title>
-      <g
-         style="stroke:none"
-         id="g12025">
-        <circle
-           cx="37"
-           cy="12.5"
-           r="5"
-           id="circle12019" />
-        <path
-           d="m 15.9,31.3 5.3,-7.7 c 0.3,-0.4 0.9,-0.8 1.3,-1 L 32,18.5 c 4,-1.8 7,2 6.5,4.7 l -2,9.8 9.5,2 c 1.3,0.3 2.1,0.9 2.8,2 l 7.3,12.3 2.8,-1.9 c 2.2,-1.5 4.5,1.7 2.2,3.3 l -5.6,3.8 c -1,0.7 -2.5,0.4 -3,-0.5 l -7,-12 -15,-3 c -2,-0.4 -3.8,-3 -3.5,-5 l 2,-10 -4.5,2 -5.4,7.6 c -1.5,2.2 -4.8,0 -3.2,-2.4 z"
-           id="path12021"
-           inkscape:connector-curvature="0" />
-        <path
-           d="m 25,36 1,-5.4 a 16,16 0 1 0 22,20 L 45,45.4 A 12,12 0 1 1 25,36 Z"
-           id="path12023"
-           inkscape:connector-curvature="0" />
-      </g>
-    </symbol>
-    <clipPath
-       id="clipPath16"
-       clipPathUnits="userSpaceOnUse">
-      <path
-         inkscape:connector-curvature="0"
-         id="path18"
-         d="M 0,36 H 36 V 0 H 0 Z" />
-    </clipPath>
-    <clipPath
-       id="clipPath16-1"
-       clipPathUnits="userSpaceOnUse">
-      <path
-         inkscape:connector-curvature="0"
-         id="path18-3"
-         d="M 0,38 H 38 V 0 H 0 Z" />
-    </clipPath>
     <clipPath
        id="clipPath16-1-0"
        clipPathUnits="userSpaceOnUse">
       <path
          inkscape:connector-curvature="0"
          id="path18-3-2"
-         d="M 0,38 H 38 V 0 H 0 Z" />
-    </clipPath>
-    <clipPath
-       id="clipPath16-1-0-4"
-       clipPathUnits="userSpaceOnUse">
-      <path
-         inkscape:connector-curvature="0"
-         id="path18-3-2-7"
-         d="M 0,38 H 38 V 0 H 0 Z" />
-    </clipPath>
-    <clipPath
-       id="clipPath16-1-0-46"
-       clipPathUnits="userSpaceOnUse">
-      <path
-         inkscape:connector-curvature="0"
-         id="path18-3-2-8"
-         d="M 0,38 H 38 V 0 H 0 Z" />
-    </clipPath>
-    <clipPath
-       id="clipPath16-12"
-       clipPathUnits="userSpaceOnUse">
-      <path
-         inkscape:connector-curvature="0"
-         id="path18-4"
-         d="M 0,36 H 36 V 0 H 0 Z" />
-    </clipPath>
-    <clipPath
-       id="clipPath16-1-0-1"
-       clipPathUnits="userSpaceOnUse">
-      <path
-         inkscape:connector-curvature="0"
-         id="path18-3-2-2"
          d="M 0,38 H 38 V 0 H 0 Z" />
     </clipPath>
     <filter
@@ -151,17 +103,17 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="958"
-     inkscape:window-height="1008"
+     inkscape:window-width="1920"
+     inkscape:window-height="1016"
      id="namedview4499"
-     showgrid="true"
-     inkscape:zoom="0.27315983"
-     inkscape:cx="242.26196"
-     inkscape:cy="914.0348"
-     inkscape:window-x="953"
+     showgrid="false"
+     inkscape:zoom="2.1852786"
+     inkscape:cx="1755.1036"
+     inkscape:cy="1381.7221"
+     inkscape:window-x="0"
      inkscape:window-y="0"
-     inkscape:window-maximized="0"
-     inkscape:current-layer="svg4497"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g6079"
      showguides="true"
      inkscape:lockguides="true"
      inkscape:snap-global="true"
@@ -175,7 +127,8 @@
      inkscape:snap-perpendicular="true"
      inkscape:snap-tangential="true"
      inkscape:measure-start="1817.62,1740.74"
-     inkscape:measure-end="1845.07,1778.26">
+     inkscape:measure-end="1845.07,1778.26"
+     inkscape:document-rotation="0">
     <inkscape:grid
        type="xygrid"
        id="grid4505"
