@@ -13,7 +13,7 @@
    viewBox="0 0 1920 1920"
    id="svg4497"
    sodipodi:docname="quest_icons.svg"
-   inkscape:version="0.92.1 r15371"
+   inkscape:version="0.92+devel unknown"
    inkscape:export-filename="C:\Users\Newton\AndroidStudioProjects\streetcomplete\res\quest_icons.svg.png"
    inkscape:export-xdpi="95.983444"
    inkscape:export-ydpi="95.983444">
@@ -25,8 +25,30 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/by-sa/4.0/" />
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Tobias Zwick</dc:title>
+          </cc:Agent>
+        </dc:creator>
       </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/by-sa/4.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Notice" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Attribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#ShareAlike" />
+      </cc:License>
     </rdf:RDF>
   </metadata>
   <defs
@@ -152,15 +174,15 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:window-width="1920"
-     inkscape:window-height="1046"
+     inkscape:window-height="1016"
      id="namedview4499"
      showgrid="false"
      inkscape:zoom="2.1852786"
      inkscape:cx="1755.1036"
      inkscape:cy="1381.7221"
      inkscape:window-x="0"
-     inkscape:window-y="16"
-     inkscape:window-maximized="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
      inkscape:current-layer="g6079"
      showguides="true"
      inkscape:lockguides="true"
@@ -175,7 +197,8 @@
      inkscape:snap-perpendicular="true"
      inkscape:snap-tangential="true"
      inkscape:measure-start="1817.62,1740.74"
-     inkscape:measure-end="1845.07,1778.26">
+     inkscape:measure-end="1845.07,1778.26"
+     inkscape:document-rotation="0">
     <inkscape:grid
        type="xygrid"
        id="grid4505"
