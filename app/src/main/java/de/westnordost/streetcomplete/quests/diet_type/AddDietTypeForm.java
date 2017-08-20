@@ -5,7 +5,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
+import de.westnordost.osmapi.map.data.OsmElement;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 
@@ -17,11 +19,14 @@ public class AddDietTypeForm extends AbstractQuestAnswerFragment
 	public static final String ONLY = "ONLY";
 	public static final String ANSWER = "answer";
 
+	TextView description;
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState)
 	{
 		View view = super.onCreateView(inflater, container, savedInstanceState);
+		View contentView = setContentView(R.layout.quest_diet_type_explanation);
 		View buttonPanel = setButtonsView(R.layout.quest_buttonpanel_diet_type);
 
 		Button buttonYes = (Button) buttonPanel.findViewById(R.id.buttonYes);
@@ -51,6 +56,9 @@ public class AddDietTypeForm extends AbstractQuestAnswerFragment
 			}
 		});
 
+		description = (TextView) contentView.findViewById(R.id.description);
+		setDescription();
+
 		return view;
 	}
 
@@ -64,5 +72,26 @@ public class AddDietTypeForm extends AbstractQuestAnswerFragment
 		Bundle bundle = new Bundle();
 		bundle.putString(ANSWER, answer);
 		applyImmediateAnswer(bundle);
+	}
+
+	private void setDescription()
+	{
+		OsmElement element = getOsmElement();
+		String name = element.getTags() != null ? element.getTags().get("amenity") : null;
+
+		switch (name)
+		{
+			case "cafe":
+				name = getResources().getString(R.string.quest_dietType_cafe);
+				break;
+			case "restaurant":
+				name = getResources().getString(R.string.quest_dietType_restaurant);
+				break;
+			case "fast_food":
+				name = getResources().getString(R.string.quest_dietType_fast_food);
+				break;
+		}
+
+		description.setText(getResources().getString(R.string.quest_dietType_explanation, name));
 	}
 }
