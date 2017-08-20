@@ -385,10 +385,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_parkingType_surface">Normal</string>
     <string name="quest_parkingType_underground">Underground garage</string>
     <string name="quest_parkingType_multiStorage">Car park</string>
-    <string name="quest_dietType_vegetarian_name_title">Is "%s" suitable for vegetarians?</string>
-    <string name="quest_dietType_vegetarian_title">Is this place suitable for vegetarians?</string>
-    <string name="quest_dietType_vegan_name_title">Is "%s" suitable for vegans?</string>
-    <string name="quest_dietType_vegan_title">Is this place suitable for vegans?</string>
-    <string name="quest_dietType_only_vegetarian">Only serves vegetarian food</string>
-    <string name="quest_dietType_only_vegan">Only serves vegan food</string>
+    <string name="quest_dietType_vegetarian_name_title">Does "%s" explicitly offer vegetarian food?</string>
+    <string name="quest_dietType_vegan_name_title">Does "%s" explicitly offer vegan food?</string>
+    <string name="quest_dietType_only">Only</string>
 </resources>

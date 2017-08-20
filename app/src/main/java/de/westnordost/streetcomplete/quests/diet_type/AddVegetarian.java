@@ -17,7 +17,7 @@ public class AddVegetarian extends SimpleOverpassQuestType
 
 	@Override protected String getTagFilters()
 	{
-		return "nodes, ways with ( amenity ~ restaurant|cafe|pub|fast_food|bar ) and !diet:vegetarian";
+		return "nodes, ways with amenity ~ restaurant|cafe|fast_food and name and !diet:vegetarian";
 	}
 
 	public AbstractQuestAnswerFragment createForm()
@@ -27,14 +27,20 @@ public class AddVegetarian extends SimpleOverpassQuestType
 
 	public void applyAnswerTo(Bundle bundle, StringMapChangesBuilder changes)
 	{
-		String other = bundle.getString(AddVeganForm.OTHER_ANSWER);
-		if (other != null)
-		{
-			changes.add("diet:vegetarian", other);
-		}
-		else
-		{
-			changes.add("diet:vegetarian", bundle.getBoolean(YesNoQuestAnswerFragment.ANSWER) ? "yes" : "no");
+		String answer = bundle.getString(AddVegetarianForm.ANSWER);
+		if (answer != null) {
+			switch (answer)
+			{
+				case AddVeganForm.ONLY:
+					changes.add("diet:vegetarian", "only");
+					break;
+				case AddVeganForm.YES:
+					changes.add("diet:vegetarian", "yes");
+					break;
+				case AddVeganForm.NO:
+					changes.add("diet:vegetarian", "no");
+					break;
+			}
 		}
 	}
 
