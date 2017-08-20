@@ -9,7 +9,6 @@ import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
-import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment;
 
 public class AddVegetarian extends SimpleOverpassQuestType
 {
@@ -22,22 +21,28 @@ public class AddVegetarian extends SimpleOverpassQuestType
 
 	public AbstractQuestAnswerFragment createForm()
 	{
-		return new AddVegetarianForm();
+		AbstractQuestAnswerFragment form =  new AddDietTypeForm();
+		String name = form.getElementName();
+		if(name != null)
+		{
+			form.setTitle(R.string.quest_dietType_vegetarian_name_title, name);
+		}
+		return form;
 	}
 
 	public void applyAnswerTo(Bundle bundle, StringMapChangesBuilder changes)
 	{
-		String answer = bundle.getString(AddVegetarianForm.ANSWER);
+		String answer = bundle.getString(AddDietTypeForm.ANSWER);
 		if (answer != null) {
 			switch (answer)
 			{
-				case AddVeganForm.ONLY:
+				case AddDietTypeForm.ONLY:
 					changes.add("diet:vegetarian", "only");
 					break;
-				case AddVeganForm.YES:
+				case AddDietTypeForm.YES:
 					changes.add("diet:vegetarian", "yes");
 					break;
-				case AddVeganForm.NO:
+				case AddDietTypeForm.NO:
 					changes.add("diet:vegetarian", "no");
 					break;
 			}

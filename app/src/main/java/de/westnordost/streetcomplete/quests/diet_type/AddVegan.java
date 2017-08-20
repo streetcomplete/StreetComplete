@@ -22,22 +22,28 @@ public class AddVegan extends SimpleOverpassQuestType
 
 	public AbstractQuestAnswerFragment createForm()
 	{
-		return new AddVeganForm();
+		AbstractQuestAnswerFragment form =  new AddDietTypeForm();
+		String name = form.getElementName();
+		if(name != null)
+		{
+			form.setTitle(R.string.quest_dietType_vegan_name_title, name);
+		}
+		return form;
 	}
 
 	public void applyAnswerTo(Bundle bundle, StringMapChangesBuilder changes)
 	{
-		String answer = bundle.getString(AddVeganForm.ANSWER);
+		String answer = bundle.getString(AddDietTypeForm.ANSWER);
 		if (answer != null) {
 			switch (answer)
 			{
-				case AddVeganForm.ONLY:
+				case AddDietTypeForm.ONLY:
 					changes.add("diet:vegan", "only");
 					break;
-				case AddVeganForm.YES:
+				case AddDietTypeForm.YES:
 					changes.add("diet:vegan", "yes");
 					break;
-				case AddVeganForm.NO:
+				case AddDietTypeForm.NO:
 					changes.add("diet:vegan", "no");
 					break;
 			}

@@ -9,7 +9,7 @@ import android.widget.Button;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 
-public class AddVegetarianForm extends AbstractQuestAnswerFragment
+public class AddDietTypeForm extends AbstractQuestAnswerFragment
 {
 
 	public static final String YES = "YES";
@@ -19,7 +19,7 @@ public class AddVegetarianForm extends AbstractQuestAnswerFragment
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-									   Bundle savedInstanceState)
+							 Bundle savedInstanceState)
 	{
 		View view = super.onCreateView(inflater, container, savedInstanceState);
 		View buttonPanel = setButtonsView(R.layout.quest_buttonpanel_diet_type);
@@ -51,17 +51,7 @@ public class AddVegetarianForm extends AbstractQuestAnswerFragment
 			}
 		});
 
-		setTitle();
 		return view;
-	}
-
-	private void setTitle()
-	{
-		String name = getElementName();
-		if(name != null)
-		{
-			setTitle(R.string.quest_dietType_vegetarian_name_title, name);
-		}
 	}
 
 	@Override public boolean hasChanges()

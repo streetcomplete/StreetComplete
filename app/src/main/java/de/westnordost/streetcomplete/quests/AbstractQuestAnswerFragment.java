@@ -216,7 +216,7 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 		questAnswerComponent.onAttach((OsmQuestAnswerListener) activity);
 	}
 
-	protected final String getElementName()
+	public final String getElementName()
 	{
 		OsmElement element = getOsmElement();
 		String name = element.getTags() != null ? element.getTags().get("name") : null;
