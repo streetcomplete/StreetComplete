@@ -12,6 +12,7 @@ import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.location.Location;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -702,13 +703,25 @@ public class MainActivity extends AppCompatActivity implements
 		args.putSerializable(AbstractQuestAnswerFragment.ARG_GEOMETRY, quest.getGeometry());
 		f.setArguments(args);
 
-		android.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
-		ft.setCustomAnimations(
-				R.animator.enter_from_bottom, R.animator.exit_to_bottom,
-				R.animator.enter_from_bottom, R.animator.exit_to_bottom);
-		ft.add(R.id.map_bottom_sheet_container, f, BOTTOM_SHEET);
-		ft.addToBackStack(BOTTOM_SHEET);
-		ft.commit();
+		if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
+		{
+			android.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
+			ft.setCustomAnimations(
+					R.animator.enter_from_bottom, R.animator.exit_to_bottom,
+					R.animator.enter_from_bottom, R.animator.exit_to_bottom);
+			ft.add(R.id.map_bottom_sheet_container, f, BOTTOM_SHEET);
+			ft.addToBackStack(BOTTOM_SHEET);
+			ft.commit();
+		}
+		else if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE)
+		{
+			android.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
+			ft.setCustomAnimations(
+					R.animator.enter_from_left, R.animator.exit_to_left);
+			ft.add(R.id.map_bottom_sheet_container, f, BOTTOM_SHEET);
+			ft.addToBackStack(BOTTOM_SHEET);
+			ft.commit();
+		}
 	}
 
 	private AbstractQuestAnswerFragment getQuestDetailsFragment()
