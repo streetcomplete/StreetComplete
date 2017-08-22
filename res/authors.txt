@@ -4,7 +4,6 @@ URLs to other sources used:
  - Twemoji 2 (MIT license)		   https://github.com/twitter/twemoji/
  - EmojiOne 2 (CC-BY 4 license)	   https://github.com/emojione/emojione/tree/2.2.7
  - elegant themes (GPL)			   https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free
- - Creative Tail Object Icons (CC-BY 4 license) https://www.creativetail.com/free-objects-icons/
 
 
 File                            Author if not Tobias Zwick / Source
@@ -31,7 +30,11 @@ quest_icons.svg
 	building_height
 	building_levels
 	housenumber
+	housenumber_street
 	bicycleway
+	car							modified from Twemoji 2: U+1F698
+	car_wash					modified from Twemoji 2: U+1F698
+	car_charger					parts taken from Twemoji 2: U+1F698 and U+1F50C
 	clock
 	ferry						modified from Twemoji 2: U+26F4
 	fuel
@@ -43,15 +46,20 @@ quest_icons.svg
 	max_height
 	max_speed
 	max_weight
+	money						modified from EmojiOne 2: U+1F4B8
 	notes
 	parking
 	parking_maxstay
-    fire_hydrant               modified from Creative Tail Object Icons
+	power
+    fire_hydrant
 	pedestrian
 	pedestrian_crossing
 	phone
+	restaurant					modified from Twemoji 2: U+1F37D
+	restaurant_veg				parts taken from Twemoji 2: U+1F37D and U+1F955
 	oneway
 	quest
+	railway
 	roof_shape
 	recycling					modified from Twemoji 2: U+267B
 	smoke
