@@ -21,7 +21,7 @@ public class AddMaxSpeed extends SimpleOverpassQuestType
 		       "!maxspeed and !source:maxspeed " +
 		       " and !maxspeed:forward and !maxspeed:backward " +
 		       // other tags that are used for basically the same thing as source:maxspeed
-		       " and !zone:maxspeed and !maxspeed:type";
+		       " and !zone:maxspeed and !maxspeed:type and access != private";
 	}
 
 	@Override public AbstractQuestAnswerFragment createForm()
