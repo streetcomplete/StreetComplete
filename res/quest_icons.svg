@@ -108,12 +108,12 @@
      id="namedview4499"
      showgrid="false"
      inkscape:zoom="0.54631965"
-     inkscape:cx="390.07102"
-     inkscape:cy="647.87374"
+     inkscape:cx="319.73986"
+     inkscape:cy="527.14338"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
-     inkscape:current-layer="g10538-2"
+     inkscape:current-layer="g10538"
      showguides="true"
      inkscape:lockguides="true"
      inkscape:snap-global="true"
@@ -128,7 +128,9 @@
      inkscape:snap-tangential="true"
      inkscape:measure-start="1817.62,1740.74"
      inkscape:measure-end="1845.07,1778.26"
-     inkscape:document-rotation="0">
+     inkscape:document-rotation="0"
+     inkscape:snap-object-midpoints="true"
+     inkscape:snap-center="true">
     <inkscape:grid
        type="xygrid"
        id="grid4505"
@@ -2476,19 +2478,19 @@
          sodipodi:nodetypes="cc"
          inkscape:connector-curvature="0"
          id="path10510"
-         d="m -652.99992,-80.00022 24,11.625631"
+         d="m -652.95306,-80.000221 -21.23396,-16.133017"
          style="fill:none;fill-rule:evenodd;stroke:#666666;stroke-width:8;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
       <path
          sodipodi:nodetypes="cc"
          inkscape:connector-curvature="0"
          id="path10516"
-         d="m -652.99992,-116.00022 v 36"
+         d="m -622.00634,-98.46628 -30.91761,18.441835"
          style="fill:none;fill-rule:evenodd;stroke:#666666;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
       <ellipse
          ry="8.0146265"
          rx="8.0302515"
-         cy="-80.000221"
-         cx="-652.95306"
+         cy="-80.024445"
+         cx="-652.92395"
          id="path10514"
          style="opacity:1;vector-effect:none;fill:#444444;fill-opacity:1;stroke:none;stroke-width:12.83589458;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
     </g>
