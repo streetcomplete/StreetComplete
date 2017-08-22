@@ -10,7 +10,8 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight=".5"
-        android:layout_gravity="start">
+        android:layout_gravity="start"
+        android:background="@drawable/background_border">
 
         <android.support.design.widget.CoordinatorLayout
             android:layout_width="match_parent"
@@ -65,18 +66,19 @@
 
                 <android.support.v4.widget.NestedScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="match_parent"
+                    android:id="@+id/NestedScrollView">
 
                     <LinearLayout
                         android:id="@+id/content"
-                        android:layout_height="wrap_content"
                         android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:orientation="vertical"
+                        android:layout_gravity="center_vertical"
+                        android:paddingBottom="8dp"
                         android:paddingLeft="16dp"
                         android:paddingRight="16dp"
-                        android:paddingTop="8dp"
-                        android:paddingBottom="8dp"
-                        >
+                        android:paddingTop="8dp">
 
                     </LinearLayout>
 
