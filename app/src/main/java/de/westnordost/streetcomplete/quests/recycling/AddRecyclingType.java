@@ -38,6 +38,7 @@ public class AddRecyclingType extends SimpleOverpassQuestType
 				break;
 			case "overground":
 				changes.add("recycling_type", "container");
+				changes.add("location", "overground");
 				break;
 			case "underground":
 				changes.add("recycling_type", "container");

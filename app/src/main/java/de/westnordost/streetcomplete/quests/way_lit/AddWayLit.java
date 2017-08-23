@@ -45,7 +45,7 @@ public class AddWayLit extends SimpleOverpassQuestType
 				" or" +
 				" highway = path and (foot = designated or bicycle = designated)" +
 				")" +
-				" and !lit";
+				" and !lit and access != private";
 	}
 
 	public AbstractQuestAnswerFragment createForm()
