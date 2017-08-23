@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.data;
 import java.util.Collection;
 
 import de.westnordost.osmapi.map.data.Element;
+import de.westnordost.streetcomplete.data.osm.OsmQuest;
 
 public interface VisibleQuestListener
 {
@@ -15,4 +16,8 @@ public interface VisibleQuestListener
 	/** Called when the given quests are removed without being solved. I.e. hidden by the user or
 	 *  when they become obsolete. */
 	void onQuestsRemoved(Collection<Long> questIds, QuestGroup group);
+
+	// after revert
+
+	void onQuestReverted(long revertQuestId, QuestGroup group);
 }

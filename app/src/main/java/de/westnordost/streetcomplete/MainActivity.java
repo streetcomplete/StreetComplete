@@ -684,6 +684,12 @@ public class MainActivity extends AppCompatActivity implements
 		removeQuests(Collections.singletonList(questId), group);
 	}
 
+	@AnyThread
+	@Override public void onQuestReverted(long revertQuestId, QuestGroup group)
+	{
+		questAutoSyncer.triggerAutoUpload();
+	}
+
 	private void removeQuests(Collection<Long> questIds, QuestGroup group)
 	{
 		// amount of quests is reduced -> check if redownloding now makes sense
