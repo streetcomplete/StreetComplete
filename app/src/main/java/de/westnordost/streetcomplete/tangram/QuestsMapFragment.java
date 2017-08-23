@@ -133,7 +133,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		if(labelPickResult == null
 				|| labelPickResult.getType() != LabelPickResult.LabelType.ICON
 				|| labelPickResult.getProperties() == null
-				|| !labelPickResult.getProperties().containsKey(MARKER_QUEST_ID))
+				|| labelPickResult.getProperties().get(MARKER_QUEST_ID) == null)
 		{
 			onClickedMap(positionX, positionY);
 			return;
