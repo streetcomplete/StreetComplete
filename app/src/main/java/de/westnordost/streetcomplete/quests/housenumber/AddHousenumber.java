@@ -37,6 +37,9 @@ public class AddHousenumber implements OsmElementQuestType
 	private static final TagFilterExpression NODES_WITH_HOUSENUMBERS = new FiltersParser().parse(
 			" nodes with addr:housenumber or addr:housename");
 
+	private static final TagFilterExpression NON_BUILDING_AREAS_WITH_HOUSENUMBERS = new FiltersParser().parse(
+			"ways, relations with !building and (addr:housenumber or addr:housename)");
+
 	private final OverpassMapDataDao overpassServer;
 
 	@Inject public AddHousenumber(OverpassMapDataDao overpassServer)
@@ -57,6 +60,20 @@ public class AddHousenumber implements OsmElementQuestType
 				if(geometry != null)
 				{
 					housenumberCoords.add(JTSConst.toPoint(geometry.center));
+				}
+			}
+		});
+		if(!success) return false;
+
+		final ArrayList<Geometry> areasWithHousenumber = new ArrayList<>();
+		String areasWithHousenumbersQuery = NON_BUILDING_AREAS_WITH_HOUSENUMBERS.toOverpassQLString(bbox);
+		success = overpassServer.getAndHandleQuota(areasWithHousenumbersQuery, new MapDataWithGeometryHandler()
+		{
+			@Override public void handle(@NonNull Element element, @Nullable ElementGeometry geometry)
+			{
+				if(geometry != null)
+				{
+					areasWithHousenumber.add(JTSConst.toGeometry(geometry));
 				}
 			}
 		});
@@ -87,6 +104,12 @@ public class AddHousenumber implements OsmElementQuestType
 						return;
 					}
 				}
+				// further exclude buildings that are contained in an area with a housenumber
+				for (Geometry areaWithHousenumber : areasWithHousenumber)
+				{
+					if(g.coveredBy(areaWithHousenumber)) return;
+				}
+
 				handler.handle(element, geometry);
 			}
 		});
