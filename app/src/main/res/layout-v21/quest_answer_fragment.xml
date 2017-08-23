@@ -11,5 +11,3 @@
     <include layout="@layout/quest_answer_fragment_bottom_bar"/>
 
 </de.westnordost.streetcomplete.view.SlidingRelativeLayout>
-
-

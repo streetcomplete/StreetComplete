@@ -130,6 +130,8 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 			}
 		});
 
+		if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) BottomSheetBehavior.from(bottomSheet).setState(BottomSheetBehavior.STATE_EXPANDED);
+
 		addOtherAnswer(R.string.quest_generic_answer_notApplicable, new Runnable()
 		{
 			@Override public void run()
