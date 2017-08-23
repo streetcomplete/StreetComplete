@@ -79,7 +79,7 @@ public class QuestModule
 				new AddBabyChangingTable(o),
 				new AddFireHydrantType(o),
 				new AddParkingType(o),
-        new AddPowerPolesMaterial(o)
+        		new AddPowerPolesMaterial(o)
 		};
 
 		return new QuestTypes(Arrays.asList(questTypesOrderedByImportance));

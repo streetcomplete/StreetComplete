@@ -1,11 +1,14 @@
 package de.westnordost.streetcomplete.quests.powerpoles_material;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
+import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
@@ -38,12 +41,10 @@ public class AddPowerPolesMaterial extends SimpleOverpassQuestType
 		}
 	}
 
-	@Override public String getCommitMessage()
+	@Override public String getCommitMessage() { return "Add powerpoles material type"; }
+	@Override public int getIcon() { return R.drawable.ic_quest_power; }
+	@Override public int getTitle(@NonNull Map<String, String> tags)
 	{
-		return "Add powerpoles material type";
-	}
-
-	@Override public String getIconName() {
-		return "quest";
+		return R.string.quest_powerPolesMaterial_title;
 	}
 }
