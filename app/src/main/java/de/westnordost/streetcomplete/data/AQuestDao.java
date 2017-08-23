@@ -55,6 +55,27 @@ public abstract class AQuestDao<T extends Quest>
 		});
 	}
 
+	public T getLastSolved()
+	{
+		SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+		String questStatus = getQuestStatusColumnName();
+		String query = questStatus + " = ? OR " + questStatus + " = ?";
+		String[] args = {QuestStatus.ANSWERED.name(), QuestStatus.CLOSED.name()};
+		String orderBy = getLastChangedColumnName() + " DESC";
+		Cursor cursor = db.query(getMergedViewName(),null,query,args,null,null,orderBy,"1");
+
+		try
+		{
+			if(!cursor.moveToFirst()) return null;
+			return createObjectFrom(cursor);
+		}
+		finally
+		{
+			cursor.close();
+		}
+	}
+
 	public int getCount(BoundingBox bbox, QuestStatus status)
 	{
 		SQLiteDatabase db = dbHelper.getReadableDatabase();
@@ -96,12 +117,6 @@ public abstract class AQuestDao<T extends Quest>
 		{
 			builder.appendAnd(getQuestStatusColumnName() + " = ?", status.name());
 		}
-	}
-
-	protected final int deleteAllThings(String tablename, WhereSelectionBuilder query)
-	{
-		SQLiteDatabase db = dbHelper.getWritableDatabase();
-		return db.delete(tablename, query.getWhere(), query.getArgs());
 	}
 
 	protected final <E> List<E> getAllThings(String tablename, String[] cols,
@@ -188,6 +203,17 @@ public abstract class AQuestDao<T extends Quest>
 		return db.delete(getTableName(), getIdColumnName() + " IN (" + idsString.toString() + ")", null);
 	}
 
+	public int deleteAllClosed(long olderThan)
+	{
+		String statusCol = getQuestStatusColumnName();
+		String query = "(" + statusCol + " = ? OR " + statusCol + " = ?) AND " +
+				getLastChangedColumnName() + " < ?";
+
+		SQLiteDatabase db = dbHelper.getWritableDatabase();
+		return db.delete(getTableName(), query, new String[]{
+				QuestStatus.CLOSED.name(), QuestStatus.REVERT.name(), String.valueOf(olderThan)});
+	}
+
 	public int addAll(Collection<T> quests)
 	{
 		return insertAll(quests, false);
@@ -265,6 +291,7 @@ public abstract class AQuestDao<T extends Quest>
 	protected abstract String getMergedViewName();
 	protected abstract String getIdColumnName();
 	protected abstract String getQuestStatusColumnName();
+	protected abstract String getLastChangedColumnName();
 
 	protected abstract String getLatitudeColumnName();
 	protected abstract String getLongitudeColumnName();

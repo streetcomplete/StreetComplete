@@ -24,7 +24,6 @@ public class AddPlaceNameForm extends AbstractQuestFormAnswerFragment
 	{
 		View view = super.onCreateView(inflater, container, savedInstanceState);
 
-		setTitle(R.string.quest_placeName_title);
 		View contentView = setContentView(R.layout.quest_placename);
 		nameInput = (EditText) contentView.findViewById(R.id.nameInput);
 

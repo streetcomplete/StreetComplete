@@ -63,7 +63,6 @@ public class AddRoadNameForm extends AbstractQuestFormAnswerFragment
 
 		Injector.instance.getApplicationComponent().inject(this);
 
-		setTitle(R.string.quest_streetName_title);
 		View contentView = setContentView(R.layout.quest_roadname);
 
 		addOtherAnswers();

@@ -180,7 +180,7 @@ public class QuestDownloadService extends Service
 			try
 			{
 				currentDownload.setProgressListener(progressListenerRelay);
-				currentDownload.setQuestTypeListener(visibleQuestRelay);
+				currentDownload.setVisibleQuestListener(visibleQuestRelay);
 				currentDownload.download();
 			}
 			catch(Exception e)

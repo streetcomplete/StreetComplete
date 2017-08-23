@@ -1,10 +1,5 @@
 package de.westnordost.streetcomplete.quests.orchard_produce;
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -30,14 +25,14 @@ public class AddOrchardProduceForm extends ImageListQuestAnswerFragment
 			new OsmItem("areca_nut",	R.drawable.produce_areca_nut, R.string.produce_areca_nuts),
 			new OsmItem("avocado",		R.drawable.produce_avocado, R.string.produce_avocados),
 			new OsmItem("banana",		R.drawable.produce_banana, R.string.produce_bananas),
-			new OsmItem("bell_pepper",	R.drawable.produce_bell_pepper, R.string.produce_bell_peppers),
+			new OsmItem("sweet_pepper",	R.drawable.produce_bell_pepper, R.string.produce_sweet_peppers),
 			new OsmItem("blueberry",	R.drawable.produce_blueberry, R.string.produce_blueberries),
 			new OsmItem("brazil_nut",	R.drawable.produce_brazil_nut, R.string.produce_brazil_nuts),
 			new OsmItem("cacao",		R.drawable.produce_cacao, R.string.produce_cacao),
 			new OsmItem("cashew",		R.drawable.produce_cashew, R.string.produce_cashew_nuts),
 			new OsmItem("cherry",		R.drawable.produce_cherry, R.string.produce_cherries),
 			new OsmItem("chestnut",		R.drawable.produce_chestnut, R.string.produce_chestnuts),
-			new OsmItem("chili",		R.drawable.produce_chili, R.string.produce_chili),
+			new OsmItem("chilli_pepper",R.drawable.produce_chili, R.string.produce_chili),
 			new OsmItem("coconut",		R.drawable.produce_coconut, R.string.produce_coconuts),
 			new OsmItem("coffee",		R.drawable.produce_coffee, R.string.produce_coffee),
 			new OsmItem("cranberry",	R.drawable.produce_cranberry, R.string.produce_cranberries),
@@ -62,7 +57,7 @@ public class AddOrchardProduceForm extends ImageListQuestAnswerFragment
 			new OsmItem("papaya",		R.drawable.produce_papaya, R.string.produce_papayas),
 			new OsmItem("peach",		R.drawable.produce_peach, R.string.produce_peaches),
 			new OsmItem("pear",			R.drawable.produce_pear, R.string.produce_pears),
-			new OsmItem("piper",		R.drawable.produce_pepper, R.string.produce_pepper),
+			new OsmItem("pepper",		R.drawable.produce_pepper, R.string.produce_pepper),
 			new OsmItem("persimmon",	R.drawable.produce_persimmon, R.string.produce_persimmons),
 			new OsmItem("pineapple", 	R.drawable.produce_pineapple, R.string.produce_pineapples),
 			new OsmItem("pistachio",	R.drawable.produce_pistachio, R.string.produce_pistachios),
@@ -84,14 +79,6 @@ public class AddOrchardProduceForm extends ImageListQuestAnswerFragment
 
 	protected int getItemsPerRow() { return 3; }
 	protected int getMaxNumberOfInitiallyShownItems() { return -1; }
-
-	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
-									   Bundle savedInstanceState)
-	{
-		View view = super.onCreateView(inflater, container, savedInstanceState);
-		setTitle(R.string.quest_orchard_produce_title);
-		return view;
-	}
 
 	@Override protected OsmItem[] getItems()
 	{

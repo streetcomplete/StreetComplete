@@ -34,4 +34,9 @@ public class StringMapEntryDelete implements StringMapEntryChange
 		StringMapEntryDelete o = (StringMapEntryDelete) other;
 		return key.equals(o.key) && valueBefore.equals(o.valueBefore);
 	}
+
+	@Override public StringMapEntryChange reversed()
+	{
+		return new StringMapEntryAdd(key, valueBefore);
+	}
 }

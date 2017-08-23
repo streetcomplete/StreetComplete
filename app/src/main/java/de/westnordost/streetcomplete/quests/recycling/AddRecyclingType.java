@@ -3,19 +3,18 @@ package de.westnordost.streetcomplete.quests.recycling;
 import android.os.Bundle;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import javax.inject.Inject;
 
+import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
 
 public class AddRecyclingType extends SimpleOverpassQuestType
 {
-	@Inject public AddRecyclingType(OverpassMapDataDao overpassServer)
-	{
-		super(overpassServer);
-	}
+	@Inject public AddRecyclingType(OverpassMapDataDao overpassServer) { super(overpassServer); }
 
 	@Override protected String getTagFilters()
 	{
@@ -40,6 +39,7 @@ public class AddRecyclingType extends SimpleOverpassQuestType
 				break;
 			case "overground":
 				changes.add("recycling_type", "container");
+				changes.add("location", "overground");
 				break;
 			case "underground":
 				changes.add("recycling_type", "container");
@@ -50,10 +50,10 @@ public class AddRecyclingType extends SimpleOverpassQuestType
 		}
 	}
 
-	@Override public String getCommitMessage()
+	@Override public String getCommitMessage() { return "Add recycling type to recycling amenity"; }
+	@Override public int getIcon() { return R.drawable.ic_quest_recycling; }
+	@Override public int getTitle(Map<String, String> tags)
 	{
-		return "Add recycling type to recycling amenity";
+		return R.string.quest_recycling_type_title;
 	}
-
-	@Override public String getIconName() {	return "recycling"; }
 }
