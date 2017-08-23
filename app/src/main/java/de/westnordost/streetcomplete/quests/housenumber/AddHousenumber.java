@@ -78,6 +78,7 @@ public class AddHousenumber implements OsmElementQuestType
 				for(int i = 0; i < housenumberCoords.size(); ++i)
 				{
 					Point p = housenumberCoords.get(i);
+					// this line is a very expensive computation
 					if(g.covers(p))
 					{
 						// one housenumber-node cannot be covered by multiple buildings. So, it can
@@ -97,6 +98,19 @@ public class AddHousenumber implements OsmElementQuestType
 	{
 		String housenumber = answer.getString(AddHousenumberForm.HOUSENUMBER);
 		changes.add("addr:housenumber", housenumber);
+	}
+
+	@Override public boolean appliesTo(Element element)
+	{
+		/* Whether this element applies to this quest cannot be determined by looking at that
+		   element alone (see download()), an Overpass query would need to be made to find this out.
+		   This is too heavy-weight for this method so it always returns false. */
+
+		/* The implications of this are that AddHousenumber quests will never be created directly
+		*  as consequence of solving another quest and also after reverting a house number input,
+		*  the quest will not immediately pop up again. Instead, they are downloaded well after an
+		*  element became fit for this quest. */
+		return false;
 	}
 
 	@Override public AbstractQuestAnswerFragment createForm() { return new AddHousenumberForm(); }

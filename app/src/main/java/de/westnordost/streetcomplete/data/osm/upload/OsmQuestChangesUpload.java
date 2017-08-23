@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import de.westnordost.osmapi.changesets.ChangesetsDao;
 import de.westnordost.streetcomplete.data.changesets.OpenChangesetsDao;
+import de.westnordost.streetcomplete.data.osm.OsmQuestUnlocker;
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao;
 import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
@@ -19,9 +20,10 @@ public class OsmQuestChangesUpload extends AOsmQuestChangesUpload
 			MapDataDao osmDao, OsmQuestDao questDB, MergedElementDao elementDB,
 			ElementGeometryDao elementGeometryDB, QuestStatisticsDao statisticsDB,
 			OpenChangesetsDao openChangesetsDB, ChangesetsDao changesetsDao,
-			DownloadedTilesDao downloadedTilesDao, SharedPreferences prefs)
+			DownloadedTilesDao downloadedTilesDao, SharedPreferences prefs,
+			OsmQuestUnlocker questUnlocker)
 	{
 		super(osmDao, questDB, elementDB, elementGeometryDB, statisticsDB, openChangesetsDB,
-				changesetsDao, downloadedTilesDao, prefs);
+				changesetsDao, downloadedTilesDao, prefs, questUnlocker);
 	}
 }

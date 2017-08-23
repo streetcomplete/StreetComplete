@@ -68,7 +68,7 @@ public class QuestDownload
 		this.prefs = prefs;
 	}
 
-	public void setQuestTypeListener(VisibleQuestListener questListener)
+	public void setVisibleQuestListener(VisibleQuestListener questListener)
 	{
 		this.questListener = questListener;
 	}

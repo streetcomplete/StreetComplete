@@ -1,8 +1,9 @@
-package de.westnordost.streetcomplete.data;
+package de.westnordost.streetcomplete.data.upload;
 
 import android.app.IntentService;
 import android.content.Intent;
-import android.support.v4.content.LocalBroadcastManager;
+import android.os.Binder;
+import android.os.IBinder;
 import android.util.Log;
 
 import java.io.BufferedReader;
@@ -16,9 +17,10 @@ import javax.inject.Inject;
 import javax.inject.Provider;
 
 import de.westnordost.osmapi.common.errors.OsmAuthorizationException;
-import de.westnordost.osmapi.common.errors.OsmConnectionException;
 import de.westnordost.streetcomplete.ApplicationConstants;
 import de.westnordost.streetcomplete.Injector;
+import de.westnordost.streetcomplete.data.VisibleQuestListener;
+import de.westnordost.streetcomplete.data.VisibleQuestRelay;
 import de.westnordost.streetcomplete.data.osm.upload.OsmQuestChangesUpload;
 import de.westnordost.streetcomplete.data.osm.upload.UndoOsmQuestChangesUpload;
 import de.westnordost.streetcomplete.data.osmnotes.CreateNoteUpload;
@@ -29,16 +31,6 @@ import de.westnordost.streetcomplete.oauth.OAuthPrefs;
  *  notes and quests he answered */
 public class QuestChangesUploadService extends IntentService
 {
-	public static final String
-			ACTION_ERROR = "de.westnordost.QuestChangesUploadService.ERROR",
-			IS_AUTH_FAILED = "authFailed",
-			IS_VERSION_BANNED = "banned",
-			IS_CONNECTION_ERROR = "connectionError",
-			EXCEPTION = "exception";
-
-	public static final String
-			ACTION_FINISHED = "de.westnordost.QuestChangesUploadService.FINISHED";
-
 	private static final String TAG = "QuestChangesUpload";
 
 	private static Boolean banned = null;
@@ -49,6 +41,12 @@ public class QuestChangesUploadService extends IntentService
 	@Inject Provider<UndoOsmQuestChangesUpload> undoQuestUploadProvider;
 	@Inject Provider<CreateNoteUpload> createNoteUploadProvider;
 	@Inject OAuthPrefs oAuth;
+
+	private final IBinder binder = new Interface();
+
+	// listeners
+	private final VisibleQuestRelay visibleQuestRelay  = new VisibleQuestRelay();
+	private QuestChangesUploadProgressListener progressListener;
 
 	private AtomicBoolean cancelState;
 
@@ -64,6 +62,11 @@ public class QuestChangesUploadService extends IntentService
 		cancelState = new AtomicBoolean(false);
 	}
 
+	@Override public IBinder onBind(Intent intent)
+	{
+		return binder;
+	}
+
 	@Override public void onDestroy()
 	{
 		cancelState.set(true);
@@ -74,40 +77,34 @@ public class QuestChangesUploadService extends IntentService
 	{
 		if(cancelState.get()) return;
 
-		if(isBanned())
-		{
-			Log.i(TAG, "This version is banned from making any changes!");
-			Intent errorIntent = new Intent(ACTION_ERROR);
-			errorIntent.putExtra(IS_VERSION_BANNED, true);
-			send(errorIntent);
-			return;
-		}
-
-		// let's fail early in case of no authorization
-		if(!oAuth.isAuthorized())
-		{
-			Log.i(TAG, "User is not authorized");
-			Intent errorIntent = new Intent(ACTION_ERROR);
-			errorIntent.putExtra(IS_AUTH_FAILED, true);
-			send(errorIntent);
-			return;
-		}
-
-		Log.i(TAG, "Starting upload changes");
-
 		try
 		{
+			if(isBanned())
+			{
+				throw new VersionBannedException();
+			}
+
+			// let's fail early in case of no authorization
+			if(!oAuth.isAuthorized())
+			{
+				throw new OsmAuthorizationException(401, "Unauthorized", "User is not authorized");
+			}
+
+			Log.i(TAG, "Starting upload changes");
+
 			OsmNoteQuestChangesUpload noteQuestUpload = noteQuestUploadProvider.get();
 			noteQuestUpload.upload(cancelState);
 
 			if (cancelState.get()) return;
 
 			UndoOsmQuestChangesUpload undoOsmQuestUpload = undoQuestUploadProvider.get();
+			undoOsmQuestUpload.setVisibleQuestListener(visibleQuestRelay);
 			undoOsmQuestUpload.upload(cancelState);
 
 			if (cancelState.get()) return;
 
 			OsmQuestChangesUpload osmQuestUpload = questUploadProvider.get();
+			osmQuestUpload.setVisibleQuestListener(visibleQuestRelay);
 			osmQuestUpload.upload(cancelState);
 
 			if (cancelState.get()) return;
@@ -115,31 +112,13 @@ public class QuestChangesUploadService extends IntentService
 			CreateNoteUpload createNoteUpload = createNoteUploadProvider.get();
 			createNoteUpload.upload(cancelState);
 		}
-		catch (OsmConnectionException e)
-		{
-			Log.i(TAG, "No connection");
-			Intent errorIntent = new Intent(ACTION_ERROR);
-			errorIntent.putExtra(IS_CONNECTION_ERROR, true);
-			errorIntent.putExtra(EXCEPTION, e);
-			send(errorIntent);
-		}
-		catch (OsmAuthorizationException e)
-		{
-			Log.i(TAG, "User is not authorized");
-			Intent errorIntent = new Intent(ACTION_ERROR);
-			errorIntent.putExtra(IS_AUTH_FAILED, true);
-			errorIntent.putExtra(EXCEPTION, e);
-			send(errorIntent);
-		}
 		catch (Exception e)
 		{
 			Log.e(TAG, "Unable to upload changes", e);
-			Intent errorIntent = new Intent(ACTION_ERROR);
-			errorIntent.putExtra(EXCEPTION, e);
-			send(errorIntent);
+			progressListener.onError(e);
 		}
 
-		send(new Intent(ACTION_FINISHED));
+		progressListener.onFinished();
 
 		Log.i(TAG, "Finished upload changes");
 	}
@@ -181,8 +160,17 @@ public class QuestChangesUploadService extends IntentService
 		banned = false;
 	}
 
-	private void send(Intent intent)
+	/** Public interface to classes that are bound to this service */
+	public class Interface extends Binder
 	{
-		LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
+		public void setProgressListener(QuestChangesUploadProgressListener listener)
+		{
+			progressListener = listener;
+		}
+
+		public void setQuestListener(VisibleQuestListener listener)
+		{
+			visibleQuestRelay.setListener(listener);
+		}
 	}
 }

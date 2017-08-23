@@ -155,6 +155,7 @@ public class OsmQuestDownloadTest extends TestCase
 		@Override public int getTitle(Map<String,String> tags) { return 0; }
 		@Override public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes) {}
 		@Override public String getCommitMessage() { return null; }
+		@Override public boolean appliesTo(Element element) { return false; }
 		@Override public boolean download(BoundingBox bbox, MapDataWithGeometryHandler handler)
 		{
 			for (ElementWithGeometry e : list)

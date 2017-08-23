@@ -44,17 +44,20 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
+import de.westnordost.osmapi.common.errors.OsmAuthorizationException;
 import de.westnordost.osmapi.common.errors.OsmConnectionException;
 import de.westnordost.streetcomplete.about.AboutActivity;
 import de.westnordost.streetcomplete.data.Quest;
 import de.westnordost.streetcomplete.data.QuestAutoSyncer;
-import de.westnordost.streetcomplete.data.QuestChangesUploadService;
+import de.westnordost.streetcomplete.data.upload.QuestChangesUploadProgressListener;
+import de.westnordost.streetcomplete.data.upload.QuestChangesUploadService;
 import de.westnordost.streetcomplete.data.QuestController;
 import de.westnordost.streetcomplete.data.download.QuestDownloadProgressListener;
 import de.westnordost.streetcomplete.data.download.QuestDownloadService;
 import de.westnordost.streetcomplete.data.QuestGroup;
 import de.westnordost.streetcomplete.data.VisibleQuestListener;
 import de.westnordost.streetcomplete.data.osm.OsmQuest;
+import de.westnordost.streetcomplete.data.upload.VersionBannedException;
 import de.westnordost.streetcomplete.location.LocationRequestFragment;
 import de.westnordost.streetcomplete.location.LocationUtil;
 import de.westnordost.streetcomplete.oauth.OAuthPrefs;
@@ -123,44 +126,19 @@ public class MainActivity extends AppCompatActivity implements
 			downloadService = null;
 		}
 	};
-
-	private final BroadcastReceiver uploadChangesErrorReceiver = new BroadcastReceiver()
+	private boolean uploadServiceIsBound;
+	private QuestChangesUploadService.Interface uploadService;
+	private ServiceConnection uploadServiceConnection = new ServiceConnection()
 	{
-		@Override public void onReceive(Context context, Intent intent)
+		public void onServiceConnected(ComponentName className, IBinder service)
 		{
-			Exception e = (Exception) intent.getSerializableExtra(QuestChangesUploadService.EXCEPTION);
-
-			if(intent.getBooleanExtra(QuestChangesUploadService.IS_AUTH_FAILED, false))
-			{
-				// delete secret in case it failed while already having a token -> token is invalid
-				oAuth.saveConsumer(null);
-				requestOAuthorized();
-			}
-			else if(intent.getBooleanExtra(QuestChangesUploadService.IS_CONNECTION_ERROR, false))
-			{
-				// a 5xx error is not the fault of this app. Nothing we can do about it, so
-				// just notify the user
-				Toast.makeText(MainActivity.this, R.string.upload_server_error, Toast.LENGTH_LONG).show();
-			}
-			else if(intent.getBooleanExtra(QuestChangesUploadService.IS_VERSION_BANNED, false))
-			{
-				new AlertDialogBuilder(MainActivity.this)
-						.setMessage(R.string.version_banned_message)
-						.setPositiveButton(android.R.string.ok, null)
-						.show();
-			}
-			else if(e != null)// any other error
-			{
-				crashReportExceptionHandler.askUserToSendErrorReport(
-						MainActivity.this, R.string.upload_error, e);
-			}
+			uploadService = (QuestChangesUploadService.Interface) service;
+			uploadService.setProgressListener(uploadProgressListener);
 		}
-	};
-	private final BroadcastReceiver uploadChangesFinishedReceiver = new BroadcastReceiver()
-	{
-		@Override public void onReceive(Context context, Intent intent)
+
+		public void onServiceDisconnected(ComponentName className)
 		{
-			answersCounter.update();
+			uploadService = null;
 		}
 	};
 
@@ -233,12 +211,6 @@ public class MainActivity extends AppCompatActivity implements
 
 		LocalBroadcastManager localBroadcaster = LocalBroadcastManager.getInstance(this);
 
-		localBroadcaster.registerReceiver(uploadChangesErrorReceiver,
-				new IntentFilter(QuestChangesUploadService.ACTION_ERROR));
-
-		localBroadcaster.registerReceiver(uploadChangesFinishedReceiver,
-				new IntentFilter(QuestChangesUploadService.ACTION_FINISHED));
-
 		localBroadcaster.registerReceiver(locationRequestFinishedReceiver,
 				new IntentFilter(LocationRequestFragment.ACTION_FINISHED));
 
@@ -246,9 +218,10 @@ public class MainActivity extends AppCompatActivity implements
 		questAutoSyncer.onStart();
 
 		progressBar.setAlpha(0f);
-		downloadServiceIsBound = bindService(
-				new Intent(this, QuestDownloadService.class),
+		downloadServiceIsBound = bindService(new Intent(this, QuestDownloadService.class),
 				downloadServiceConnection, BIND_AUTO_CREATE);
+		uploadServiceIsBound = bindService(new Intent(this, QuestChangesUploadService.class),
+				uploadServiceConnection, BIND_AUTO_CREATE);
 
 		if(!hasAskedForLocation)
 		{
@@ -266,8 +239,6 @@ public class MainActivity extends AppCompatActivity implements
 		super.onStop();
 
 		LocalBroadcastManager localBroadcaster = LocalBroadcastManager.getInstance(this);
-		localBroadcaster.unregisterReceiver(uploadChangesErrorReceiver);
-		localBroadcaster.unregisterReceiver(uploadChangesFinishedReceiver);
 		localBroadcaster.unregisterReceiver(locationRequestFinishedReceiver);
 
 		unregisterReceiver(locationAvailabilityReceiver);
@@ -283,6 +254,12 @@ public class MainActivity extends AppCompatActivity implements
 			// since we unbound from the service, we won't get the onFinished call. But we will get
 			// the onStarted call when we return to this activity when the service is rebound
 			progressBar.setAlpha(0f);
+		}
+
+		if (uploadServiceIsBound) unbindService(uploadServiceConnection);
+		if (uploadService != null)
+		{
+			uploadService.setProgressListener(null);
 		}
 	}
 
@@ -472,6 +449,45 @@ public class MainActivity extends AppCompatActivity implements
 		questController.download(bbox, 5, true);
 	}
 
+
+	/* ------------------------------ Upload progress listener ---------------------------------- */
+
+	private final QuestChangesUploadProgressListener uploadProgressListener
+			= new QuestChangesUploadProgressListener()
+	{
+		@Override public void onError(Exception e)
+		{
+			if(e instanceof VersionBannedException)
+			{
+				new AlertDialogBuilder(MainActivity.this)
+						.setMessage(R.string.version_banned_message)
+						.setPositiveButton(android.R.string.ok, null)
+						.show();
+			}
+			else if(e instanceof OsmConnectionException)
+			{
+				// a 5xx error is not the fault of this app. Nothing we can do about it, so
+				// just notify the user
+				Toast.makeText(MainActivity.this, R.string.upload_server_error, Toast.LENGTH_LONG).show();
+			}
+			else if(e instanceof OsmAuthorizationException)
+			{
+				// delete secret in case it failed while already having a token -> token is invalid
+				oAuth.saveConsumer(null);
+				requestOAuthorized();
+			}
+			else
+			{
+				crashReportExceptionHandler.askUserToSendErrorReport(
+						MainActivity.this, R.string.upload_error, e);
+			}
+		}
+
+		@Override public void onFinished()
+		{
+			answersCounter.update();
+		}
+	};
 
 	/* ------------------------------------ Progress bar  --------------------------------------- */
 

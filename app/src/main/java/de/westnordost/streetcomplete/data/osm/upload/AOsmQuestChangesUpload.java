@@ -7,6 +7,7 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -24,12 +25,15 @@ import de.westnordost.osmapi.map.data.Relation;
 import de.westnordost.osmapi.map.data.Way;
 import de.westnordost.streetcomplete.ApplicationConstants;
 import de.westnordost.streetcomplete.Prefs;
+import de.westnordost.streetcomplete.data.QuestGroup;
 import de.westnordost.streetcomplete.data.QuestStatus;
+import de.westnordost.streetcomplete.data.VisibleQuestListener;
 import de.westnordost.streetcomplete.data.changesets.OpenChangesetInfo;
 import de.westnordost.streetcomplete.data.changesets.OpenChangesetKey;
 import de.westnordost.streetcomplete.data.changesets.OpenChangesetsDao;
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.OsmQuest;
+import de.westnordost.streetcomplete.data.osm.OsmQuestUnlocker;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChanges;
 import de.westnordost.streetcomplete.data.osm.persist.AOsmQuestDao;
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao;
@@ -51,6 +55,10 @@ public abstract class AOsmQuestChangesUpload
 	private final ChangesetsDao changesetsDao;
 	private final DownloadedTilesDao downloadedTilesDao;
 	private final SharedPreferences prefs;
+	private final OsmQuestUnlocker questUnlocker;
+
+	private List<OsmQuest> unlockedQuests;
+	private VisibleQuestListener visibleQuestListener;
 
 	// The cache is just here so that uploading 500 quests of same quest type does not result in 500 DB requests.
 	private Map<OpenChangesetKey, Long> changesetIdsCache = new HashMap<>();
@@ -59,7 +67,8 @@ public abstract class AOsmQuestChangesUpload
 			MapDataDao osmDao, AOsmQuestDao questDB, MergedElementDao elementDB,
 			ElementGeometryDao elementGeometryDB, QuestStatisticsDao statisticsDB,
 			OpenChangesetsDao openChangesetsDB, ChangesetsDao changesetsDao,
-			DownloadedTilesDao downloadedTilesDao, SharedPreferences prefs)
+			DownloadedTilesDao downloadedTilesDao, SharedPreferences prefs,
+			OsmQuestUnlocker questUnlocker)
 	{
 		this.osmDao = osmDao;
 		this.questDB = questDB;
@@ -70,12 +79,20 @@ public abstract class AOsmQuestChangesUpload
 		this.changesetsDao = changesetsDao;
 		this.downloadedTilesDao = downloadedTilesDao;
 		this.prefs = prefs;
+		this.questUnlocker = questUnlocker;
+		unlockedQuests = new ArrayList<>();
+	}
+
+	public synchronized void setVisibleQuestListener(VisibleQuestListener visibleQuestListener)
+	{
+		this.visibleQuestListener = visibleQuestListener;
 	}
 
 	public synchronized void upload(AtomicBoolean cancelState)
 	{
 		int commits = 0, obsolete = 0;
 		changesetIdsCache = new HashMap<>();
+		unlockedQuests = new ArrayList<>();
 
 		for(OsmQuest quest : questDB.getAll(null, QuestStatus.ANSWERED))
 		{
@@ -103,6 +120,16 @@ public abstract class AOsmQuestChangesUpload
 		}
 
 		Log.i(TAG, logMsg);
+
+		if(!unlockedQuests.isEmpty())
+		{
+			int unlockedQuestsCount = unlockedQuests.size();
+			if(visibleQuestListener != null)
+			{
+				visibleQuestListener.onQuestsCreated(unlockedQuests, QuestGroup.OSM);
+			}
+			Log.i(TAG, "Unlocked " + unlockedQuestsCount + " new quests");
+		}
 
 		closeOpenChangesets();
 	}
@@ -203,6 +230,8 @@ public abstract class AOsmQuestChangesUpload
 		closeQuest(quest);
 		elementDB.put(elementWithChangesApplied);
 		statisticsDB.addOne(quest.getType().getClass().getSimpleName());
+
+		unlockedQuests.addAll(questUnlocker.unlockNewQuests(elementWithChangesApplied));
 
 		return true;
 	}
