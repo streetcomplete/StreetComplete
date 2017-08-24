@@ -33,9 +33,9 @@ public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 
 		View contentView = setContentView(R.layout.quest_housenumber);
 
-		input = (EditText) contentView.findViewById(R.id.input);
+		input = contentView.findViewById(R.id.input);
 		input.setInputType(InputType.TYPE_CLASS_NUMBER);
-		final Button toggleKeyboardButton = (Button) contentView.findViewById(R.id.toggleKeyboard);
+		final Button toggleKeyboardButton = contentView.findViewById(R.id.toggleKeyboard);
 		toggleKeyboardButton.setText("abc");
 
 		toggleKeyboardButton.setOnClickListener(new View.OnClickListener()

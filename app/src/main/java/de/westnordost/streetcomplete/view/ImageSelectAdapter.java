@@ -166,9 +166,9 @@ public class ImageSelectAdapter extends RecyclerView.Adapter<ImageSelectAdapter.
 		public ViewHolder(View v)
 		{
 			super(v);
-			imageView = (ImageView) itemView.findViewById(R.id.imageView);
+			imageView = itemView.findViewById(R.id.imageView);
 			imageView.setOnClickListener(this);
-			textView = (TextView) itemView.findViewById(R.id.textView);
+			textView = itemView.findViewById(R.id.textView);
 		}
 
 		@Override public void onClick(View v)

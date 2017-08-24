@@ -109,12 +109,12 @@ public class AddRoadNameForm extends AbstractQuestFormAnswerFragment
 			data = new ArrayList<>();
 		}
 
-		Button addLanguageButton = (Button) contentView.findViewById(R.id.btn_add);
+		Button addLanguageButton = contentView.findViewById(R.id.btn_add);
 
 		adapter = new AddRoadNameAdapter(
 				data, getActivity(), getPossibleStreetsignLanguages(),
 				abbreviationsByLocale, getRoadnameSuggestions(), addLanguageButton);
-		RecyclerView recyclerView = (RecyclerView) contentView.findViewById(R.id.roadnames);
+		RecyclerView recyclerView = contentView.findViewById(R.id.roadnames);
 		recyclerView.setLayoutManager(
 				new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
 		recyclerView.setAdapter(adapter);

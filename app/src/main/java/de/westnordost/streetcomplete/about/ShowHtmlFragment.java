@@ -32,7 +32,7 @@ public class ShowHtmlFragment extends Fragment
 							 Bundle savedInstanceState)
 	{
 		View view = inflater.inflate(R.layout.showhtml, container, false);
-		final TextView textView = (TextView) view.findViewById(R.id.text);
+		final TextView textView = view.findViewById(R.id.text);
 		textView.setMovementMethod(LinkMovementMethod.getInstance());
 		textView.setText(Html.fromHtml(getArguments().getString(TEXT)));
 		return view;

@@ -288,9 +288,9 @@ public class AddRoadNameAdapter extends RecyclerView.Adapter
 		{
 			super(itemView);
 
-			nameInput = (AutoCorrectAbbreviationsEditText) itemView.findViewById(R.id.nameInput);
-			languageButton = (TextView) itemView.findViewById(R.id.languageButton);
-			deleteButton = (TextView) itemView.findViewById(R.id.deleteButton);
+			nameInput = itemView.findViewById(R.id.nameInput);
+			languageButton = itemView.findViewById(R.id.languageButton);
+			deleteButton = itemView.findViewById(R.id.deleteButton);
 			nameSuggestionsButton = itemView.findViewById(R.id.nameSuggestions);
 
 			nameInput.addTextChangedListener(new DefaultTextWatcher()

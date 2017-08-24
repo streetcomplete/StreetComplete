@@ -48,7 +48,7 @@ public class AddRoadSurfaceForm extends AbstractQuestFormAnswerFragment
 
 		View contentView = setContentView(R.layout.quest_street_surface);
 
-		RecyclerView surfaceSelect = (RecyclerView) contentView.findViewById(R.id.surfaceSelect);
+		RecyclerView surfaceSelect = contentView.findViewById(R.id.surfaceSelect);
 		imageSelector = new GroupedImageSelectAdapter(Arrays.<GroupedImageSelectAdapter.Item>asList(SURFACES));
 		surfaceSelect.setAdapter(imageSelector);
 		surfaceSelect.setNestedScrollingEnabled(false);

@@ -175,12 +175,12 @@ public class MainActivity extends AppCompatActivity implements
 			getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 		}
 
-		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+		Toolbar toolbar = findViewById(R.id.toolbar);
 		setSupportActionBar(toolbar);
 
 		questController.onCreate();
 
-		answersCounter = (AnswersCounter) toolbar.findViewById(R.id.answersCounter);
+		answersCounter = toolbar.findViewById(R.id.answersCounter);
 
 		questSource.onCreate(this);
 
@@ -188,7 +188,7 @@ public class MainActivity extends AppCompatActivity implements
 				.add(locationRequestFragment, LocationRequestFragment.class.getSimpleName())
 				.commit();
 
-		progressBar = (ProgressBar) findViewById(R.id.download_progress);
+		progressBar = findViewById(R.id.download_progress);
 		progressBar.setMax(1000);
 
 		mapFragment = (QuestsMapFragment) getSupportFragmentManager().findFragmentById(R.id.map_fragment);
@@ -286,9 +286,9 @@ public class MainActivity extends AppCompatActivity implements
 
 		View inner = LayoutInflater.from(this).inflate(
 				R.layout.undo_dialog_layout, null, false);
-		ImageView icon = (ImageView) inner.findViewById(R.id.icon);
+		ImageView icon = inner.findViewById(R.id.icon);
 		icon.setImageResource(quest.getType().getIcon());
-		TextView text = (TextView) inner.findViewById(R.id.text);
+		TextView text = inner.findViewById(R.id.text);
 
 		String name = element.getTags().get("name");
 		text.setText(getResources().getString(getQuestTitleResId(quest, element.getTags()), name));
@@ -368,7 +368,7 @@ public class MainActivity extends AppCompatActivity implements
 
 		View inner = LayoutInflater.from(this).inflate(
 				R.layout.authorize_now_dialog_layout, null, false);
-		final CheckBox checkBox = (CheckBox) inner.findViewById(R.id.checkBoxDontShowAgain);
+		final CheckBox checkBox = inner.findViewById(R.id.checkBoxDontShowAgain);
 
 		new AlertDialogBuilder(this)
 				.setView(inner)

@@ -94,7 +94,7 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 
 		View view = inflater.inflate(R.layout.quest_answer_fragment, container, false);
 
-		bottomSheet = (LinearLayout) view.findViewById(R.id.bottomSheet);
+		bottomSheet = view.findViewById(R.id.bottomSheet);
 		bottomSheet.addOnLayoutChangeListener(new View.OnLayoutChangeListener()
 		{
 			@Override
@@ -113,13 +113,13 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 			}
 		});
 
-		title = (TextView) view.findViewById(R.id.title);
+		title = view.findViewById(R.id.title);
 		title.setText(getResources().getString(getQuestTitleResId(), getElementName()));
 
-		buttonPanel = (LinearLayout) view.findViewById(R.id.buttonPanel);
-		buttonOtherAnswers = (Button) buttonPanel.findViewById(R.id.buttonOtherAnswers);
+		buttonPanel = view.findViewById(R.id.buttonPanel);
+		buttonOtherAnswers = buttonPanel.findViewById(R.id.buttonOtherAnswers);
 
-		buttonClose = (ImageButton) view.findViewById(R.id.close_btn);
+		buttonClose = view.findViewById(R.id.close_btn);
 		buttonClose.setOnClickListener(new View.OnClickListener()
 		{
 			@Override public void onClick(View v)

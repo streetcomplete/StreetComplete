@@ -92,8 +92,8 @@ public class MapFragment extends Fragment implements
 	{
 		View view = inflater.inflate(R.layout.fragment_map, container, false);
 
-		mapView = (MapView) view.findViewById(R.id.map);
-		TextView mapzenLink = (TextView) view.findViewById(R.id.mapzenLink);
+		mapView = view.findViewById(R.id.map);
+		TextView mapzenLink = view.findViewById(R.id.mapzenLink);
 
 		mapzenLink.setText(Html.fromHtml(
 				String.format(getResources().getString(R.string.map_attribution_mapzen),
