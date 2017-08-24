@@ -389,4 +389,8 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_parkingType_underground">Underground garage</string>
     <string name="quest_parkingType_multiStorage">Car park</string>
     <string name="quest_toiletAvailability_name_title">Does "%s" have a toilet?</string>
+    <string name="quest_powerPolesMaterial_title">What is the material of this power pole?</string>
+    <string name="quest_powerPolesMaterial_wood">Wood</string>
+    <string name="quest_powerPolesMaterial_metal">Steel</string>
+    <string name="quest_powerPolesMaterial_concrete">Concrete</string>
 </resources>
