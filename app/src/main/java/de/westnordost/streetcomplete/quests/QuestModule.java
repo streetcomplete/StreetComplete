@@ -25,6 +25,7 @@ import de.westnordost.streetcomplete.quests.road_name.data.PutRoadNameSuggestion
 import de.westnordost.streetcomplete.quests.road_name.data.RoadNameSuggestionsDao;
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingBusStop;
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingCrosswalk;
+import de.westnordost.streetcomplete.quests.toilet_availability.AddToiletAvailability;
 import de.westnordost.streetcomplete.quests.toilets_fee.AddToiletsFee;
 import de.westnordost.streetcomplete.quests.housenumber.AddHousenumber;
 import de.westnordost.streetcomplete.quests.max_speed.AddMaxSpeed;
@@ -70,6 +71,7 @@ public class QuestModule
 				new AddTactilePavingCrosswalk(o),
 				new AddWayLit(o),
 				new AddWheelchairAccessBusiness(o),
+				new AddToiletAvailability(o),
 				// ↓ defined in the wiki, but not really used by anyone yet. Just collected for the
 				//   sake of mapping it in case it makes sense later
 				new AddBikeParkingCapacity(o),
