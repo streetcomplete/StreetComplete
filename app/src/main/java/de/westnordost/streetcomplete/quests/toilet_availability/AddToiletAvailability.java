@@ -1,6 +1,9 @@
 package de.westnordost.streetcomplete.quests.toilet_availability;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -22,7 +25,7 @@ public class AddToiletAvailability extends SimpleOverpassQuestType
 
 	public AbstractQuestAnswerFragment createForm()
 	{
-		return new AddToiletAvailabilityForm();
+		return new YesNoQuestAnswerFragment();
 	}
 
 	public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
@@ -33,4 +36,8 @@ public class AddToiletAvailability extends SimpleOverpassQuestType
 
 	@Override public String getCommitMessage() { return "Add toilet availability"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_toilets; }
+	@Override public int getTitle(@NonNull Map<String, String> tags)
+	{
+		return R.string.quest_toiletAvailability_name_title;
+	}
 }
