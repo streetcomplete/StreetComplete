@@ -34,4 +34,9 @@ public class StringMapEntryAdd implements StringMapEntryChange
 		StringMapEntryAdd o = (StringMapEntryAdd) other;
 		return key.equals(o.key) && value.equals(o.value);
 	}
+
+	@Override public StringMapEntryChange reversed()
+	{
+		return new StringMapEntryDelete(key, value);
+	}
 }

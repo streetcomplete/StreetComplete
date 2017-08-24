@@ -45,7 +45,7 @@
             android:label="@string/action_about"
             android:parentActivityName=".MainActivity"/>
         <service android:name="de.westnordost.streetcomplete.data.download.QuestDownloadService" />
-        <service android:name="de.westnordost.streetcomplete.data.QuestChangesUploadService" />
+        <service android:name="de.westnordost.streetcomplete.data.upload.QuestChangesUploadService" />
 
         <receiver android:name="de.westnordost.streetcomplete.data.osm.upload.ChangesetAutoCloserReceiver" />
         <service android:name="de.westnordost.streetcomplete.data.osm.upload.ChangesetAutoCloserService" />

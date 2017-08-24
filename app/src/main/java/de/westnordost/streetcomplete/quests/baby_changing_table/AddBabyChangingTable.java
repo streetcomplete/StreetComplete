@@ -2,6 +2,8 @@ package de.westnordost.streetcomplete.quests.baby_changing_table;
 
 import android.os.Bundle;
 
+import java.util.Map;
+
 import javax.inject.Inject;
 
 import de.westnordost.streetcomplete.R;
@@ -25,7 +27,7 @@ public class AddBabyChangingTable extends SimpleOverpassQuestType
 
 	public AbstractQuestAnswerFragment createForm()
 	{
-		return new AddBabyChangingTableForm();
+		return new YesNoQuestAnswerFragment();
 	}
 
 	public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
@@ -36,4 +38,10 @@ public class AddBabyChangingTable extends SimpleOverpassQuestType
 
 	@Override public String getCommitMessage() { return "Add baby changing table"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_baby; }
+	@Override public int getTitle(Map<String, String> tags)
+	{
+		boolean hasName = tags.containsKey("name");
+		if(hasName) return R.string.quest_baby_changing_table_title;
+		else        return R.string.quest_baby_changing_table_toilets_title;
+	}
 }

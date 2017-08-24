@@ -44,7 +44,8 @@ public class CreateNoteUploadTest extends TestCase
 
 	private CreateNoteUpload makeCreateNoteUpload()
 	{
-		return new CreateNoteUpload(createNoteDb, notesDao, noteDb, osmNoteQuestDb, mapDataDao);
+		return new CreateNoteUpload(createNoteDb, notesDao, noteDb, osmNoteQuestDb, mapDataDao,
+				new OsmNoteQuestType());
 	}
 
 	public void testCancel() throws InterruptedException

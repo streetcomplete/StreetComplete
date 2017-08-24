@@ -33,6 +33,7 @@ import de.westnordost.streetcomplete.data.changesets.OpenChangesetsDao;
 import de.westnordost.streetcomplete.data.osm.ElementGeometry;
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.OsmQuest;
+import de.westnordost.streetcomplete.data.osm.OsmQuestUnlocker;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChanges;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd;
@@ -72,7 +73,7 @@ public class OsmQuestChangesUploadTest extends TestCase
 				});
 
 		final OsmQuestChangesUpload u = new OsmQuestChangesUpload(null, questDb, elementDB,
-				elementGeometryDao, null, openChangesetsDb, null, null, null);
+				elementGeometryDao, null, openChangesetsDb, null, null, null, null);
 		final AtomicBoolean cancel = new AtomicBoolean(false);
 
 		Thread t = new Thread(new Runnable()
@@ -101,7 +102,7 @@ public class OsmQuestChangesUploadTest extends TestCase
 		OsmQuestDao questDb = mock(OsmQuestDao.class);
 		DownloadedTilesDao downloadedTilesDao = mock(DownloadedTilesDao.class);
 		OsmQuestChangesUpload u = new OsmQuestChangesUpload(null, questDb, null, null, null, null,
-				null, downloadedTilesDao, null);
+				null, downloadedTilesDao, null, null);
 
 		assertFalse(u.uploadQuestChange(-1, quest, null, false, false));
 
@@ -118,7 +119,7 @@ public class OsmQuestChangesUploadTest extends TestCase
 		MergedElementDao elementDao = mock(MergedElementDao.class);
 		DownloadedTilesDao downloadedTilesDao = mock(DownloadedTilesDao.class);
 		OsmQuestChangesUpload u = new OsmQuestChangesUpload(null, questDb, null, null, null, null,
-				null, downloadedTilesDao, null);
+				null, downloadedTilesDao, null, null);
 		assertFalse(u.uploadQuestChange(123, quest, element, false, false));
 		assertEquals(QuestStatus.CLOSED, quest.getStatus());
 		verify(downloadedTilesDao).remove(any(Point.class));
@@ -147,7 +148,7 @@ public class OsmQuestChangesUploadTest extends TestCase
 		when(prefs.getLong(Prefs.OSM_USER_ID, -1)).thenReturn(userId);
 
 		OsmQuestChangesUpload u = new OsmQuestChangesUpload(mapDataDao, questDb, elementDb, null,
-				null, null, changesetsDao, downloadedTilesDao, prefs);
+				null, null, changesetsDao, downloadedTilesDao, prefs, null);
 
 		assertFalse(u.uploadQuestChange(changesetId, quest, element, false, false));
 		assertEquals(QuestStatus.CLOSED, quest.getStatus());
@@ -205,7 +206,7 @@ public class OsmQuestChangesUploadTest extends TestCase
 		SharedPreferences prefs = createPreferencesForUser(userId);
 
 		OsmQuestChangesUpload u = new OsmQuestChangesUpload(mapDataDao, questDb, elementDb, null,
-				null, manageChangesetsDb, changesetsDao, downloadedTilesDao, prefs);
+				null, manageChangesetsDb, changesetsDao, downloadedTilesDao, prefs, null);
 
 		assertFalse(u.uploadQuestChange(firstChangesetId, quest, element, false, false));
 
@@ -262,8 +263,10 @@ public class OsmQuestChangesUploadTest extends TestCase
 		OsmQuestDao questDb = mock(OsmQuestDao.class);
 		MapDataDao mapDataDao = mock(MapDataDao.class);
 		QuestStatisticsDao statisticsDao = mock(QuestStatisticsDao.class);
-		OsmQuestChangesUpload u = new OsmQuestChangesUpload(mapDataDao, questDb, null, null,
-				statisticsDao, null, null, null, null);
+		MergedElementDao elementDb = mock(MergedElementDao.class);
+		OsmQuestUnlocker osmQuestUnlocker = mock(OsmQuestUnlocker.class);
+		OsmQuestChangesUpload u = new OsmQuestChangesUpload(mapDataDao, questDb, elementDb, null,
+				statisticsDao, null, null, null, null, osmQuestUnlocker);
 
 		assertTrue(u.uploadQuestChange(1, quest, element, false, false));
 		assertEquals(QuestStatus.CLOSED, quest.getStatus());
@@ -280,6 +283,9 @@ public class OsmQuestChangesUploadTest extends TestCase
 		}
 		@Override public AbstractQuestAnswerFragment createForm() { return null; }
 		@Override public int getIcon() { return 0; }
+		@Override public int getTitle() { return 0; }
+		@Override public int getTitle(Map<String,String> tags) { return 0; }
+		@Override public boolean appliesTo(Element element) { return false; }
 	}
 
 	private static OsmQuest createAnsweredQuestWithAppliableChange()

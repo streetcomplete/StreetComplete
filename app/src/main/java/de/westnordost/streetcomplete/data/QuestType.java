@@ -9,4 +9,7 @@ public interface QuestType
 
 	/** @return the icon resource id used to display this quest type on the map */
 	int getIcon();
+
+	/** @return the title resource id used to display the quest's question */
+	int getTitle();
 }

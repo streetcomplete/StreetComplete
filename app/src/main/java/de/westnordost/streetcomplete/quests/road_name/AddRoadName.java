@@ -10,11 +10,14 @@ import java.util.Map;
 import javax.inject.Inject;
 
 import de.westnordost.osmapi.map.data.BoundingBox;
+import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.osm.ElementGeometry;
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
+import de.westnordost.streetcomplete.data.osm.tql.FiltersParser;
+import de.westnordost.streetcomplete.data.osm.tql.TagFilterExpression;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.quests.road_name.data.PutRoadNameSuggestionsHandler;
@@ -30,6 +33,9 @@ public class AddRoadName implements OsmElementQuestType
 	private static final String ROADS_WITH_NAMES = "way[highway~\"^("+ROADS+")$\"][name]";
 	private static final String ROADS_WITHOUT_NAMES =
 			"way[highway~\"^("+ROADS+")$\"][!name][!ref][noname != yes][!junction][!area]";
+	// this must be the same as above but in tag filter expression syntax
+	private static final TagFilterExpression ROADS_WITHOUT_NAMES_TFE = new FiltersParser().parse(
+			"ways with highway~" + ROADS + " and !name and !ref and noname != yes and !junction and !area");
 
 	/** @return overpass query string for creating the quests */
 	private static String getOverpassQuery(BoundingBox bbox)
@@ -154,6 +160,13 @@ public class AddRoadName implements OsmElementQuestType
 		return result;
 	}
 
+	@Override public boolean appliesTo(Element element)
+	{
+		return ROADS_WITHOUT_NAMES_TFE.matches(element);
+	}
+
 	@Override public String getCommitMessage() { return "Determine road names"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_street_name; }
+	@Override public int getTitle() { return R.string.quest_streetName_title; }
+	@Override public int getTitle(Map<String,String> tags) { return getTitle(); }
 }

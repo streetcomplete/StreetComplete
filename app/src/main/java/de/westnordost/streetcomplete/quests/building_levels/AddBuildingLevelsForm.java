@@ -22,26 +22,12 @@ public class AddBuildingLevelsForm extends AbstractQuestFormAnswerFragment
 	{
 		View view = super.onCreateView(inflater, container, savedInstanceState);
 
-		setTitle();
-
 		View contentView = setContentView(R.layout.quest_building_levels);
 
 		levelsInput = (EditText) contentView.findViewById(R.id.levelsInput);
 		roofLevelsInput = (EditText) contentView.findViewById(R.id.roofLevelsInput);
 
 		return view;
-	}
-
-	private void setTitle()
-	{
-		if(getOsmElement().getTags().containsKey("building:part"))
-		{
-			setTitle(R.string.quest_buildingLevels_title_buildingPart);
-		}
-		else
-		{
-			setTitle(R.string.quest_buildingLevels_title);
-		}
 	}
 
 	@Override protected void onClickOk()
