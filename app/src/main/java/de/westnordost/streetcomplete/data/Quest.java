@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.data;
 
+import java.util.Date;
+
 import de.westnordost.streetcomplete.data.osm.ElementGeometry;
 import de.westnordost.osmapi.map.data.LatLon;
 
@@ -16,4 +18,6 @@ public interface Quest
 
 	QuestStatus getStatus();
 	void setStatus(QuestStatus status);
+
+	Date getLastUpdate();
 }

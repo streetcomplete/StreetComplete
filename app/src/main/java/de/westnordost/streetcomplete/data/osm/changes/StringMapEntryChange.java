@@ -8,4 +8,5 @@ public interface StringMapEntryChange
 	String toString();
 	boolean conflictsWith(Map<String,String> map);
 	boolean equals(Object other);
+	StringMapEntryChange reversed();
 }

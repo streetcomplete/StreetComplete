@@ -25,8 +25,10 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -35,20 +37,24 @@ import de.westnordost.osmapi.map.data.OsmElement;
 import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.QuestGroup;
+import de.westnordost.streetcomplete.data.QuestType;
+import de.westnordost.streetcomplete.data.QuestTypes;
 import de.westnordost.streetcomplete.data.meta.CountryInfo;
 import de.westnordost.streetcomplete.data.meta.CountryInfos;
 import de.westnordost.streetcomplete.data.osm.ElementGeometry;
+import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 
 /** Abstract base class for any dialog with which the user answers a specific quest(ion) */
 public abstract class AbstractQuestAnswerFragment extends Fragment
 {
-	public static final String ARG_ELEMENT = "element", ARG_GEOMETRY = "geometry";
+	public static final String
+			ARG_ELEMENT = "element",
+			ARG_GEOMETRY = "geometry",
+			ARG_QUESTTYPE = "quest_type";
 
 	@Inject CountryInfos countryInfos;
-
-	private int titleTextResId = -1;
-	private Object[] titleTextFormatArgs;
+	@Inject QuestTypes questTypes;
 
 	private TextView title;
 	private ViewGroup content;
@@ -64,6 +70,7 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 
 	private OsmElement osmElement;
 	private ElementGeometry elementGeometry;
+	private QuestType questType;
 	private CountryInfo countryInfo;
 
 	private List<OtherAnswer> otherAnswers;
@@ -82,6 +89,7 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 	{
 		osmElement = (OsmElement) getArguments().getSerializable(ARG_ELEMENT);
 		elementGeometry = (ElementGeometry) getArguments().getSerializable(ARG_GEOMETRY);
+		questType = questTypes.forName(getArguments().getString(ARG_QUESTTYPE));
 		countryInfo = null;
 
 		View view = inflater.inflate(R.layout.quest_answer_fragment, container, false);
@@ -106,7 +114,7 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 		});
 
 		title = (TextView) view.findViewById(R.id.title);
-		updateTitle();
+		title.setText(getResources().getString(getQuestTitleResId(), getElementName()));
 
 		buttonPanel = (LinearLayout) view.findViewById(R.id.buttonPanel);
 		buttonOtherAnswers = (Button) buttonPanel.findViewById(R.id.buttonOtherAnswers);
@@ -216,22 +224,16 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 		questAnswerComponent.onAttach((OsmQuestAnswerListener) activity);
 	}
 
-	public final String getElementName()
+	private String getElementName()
 	{
-		OsmElement element = getOsmElement();
-		String name = element.getTags() != null ? element.getTags().get("name") : null;
-		if ((name == null) || name.trim().isEmpty()) {
-			return null;
-		} else {
-			return name.trim();
-		}
+		return osmElement != null && osmElement.getTags() != null ? osmElement.getTags().get("name") : null;
 	}
 
 	protected final void onClickCantSay()
 	{
 		DialogFragment leaveNote = new LeaveNoteDialog();
 		Bundle leaveNoteArgs = questAnswerComponent.getArguments();
-		String questTitle = getEnglishResources().getString(titleTextResId, titleTextFormatArgs);
+		String questTitle = getEnglishResources().getString(getQuestTitleResId(), getElementName());
 		leaveNoteArgs.putString(LeaveNoteDialog.ARG_QUEST_TITLE, questTitle);
 		leaveNote.setArguments(leaveNoteArgs);
 		leaveNote.show(getFragmentManager(), null);
@@ -281,32 +283,18 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 		questAnswerComponent.onSkippedQuest();
 	}
 
-	public final void setTitle(int resourceId)
+	private int getQuestTitleResId()
 	{
-		titleTextResId = resourceId;
-		updateTitle();
-	}
-
-	public final void setTitle(int resourceId, Object... formatArgs)
-	{
-		titleTextResId = resourceId;
-		titleTextFormatArgs = formatArgs;
-		updateTitle();
-	}
-
-	private void updateTitle()
-	{
-		if(title != null && titleTextResId != -1)
+		if(questType instanceof OsmElementQuestType)
 		{
-			if(titleTextFormatArgs != null)
+			Map<String,String> tags = Collections.emptyMap();
+			if(osmElement != null && osmElement.getTags() != null)
 			{
-				title.setText(getResources().getString(titleTextResId, titleTextFormatArgs));
+				tags = osmElement.getTags();
 			}
-			else
-			{
-				title.setText(titleTextResId);
-			}
+			return ((OsmElementQuestType) questType).getTitle(tags);
 		}
+		return questType.getTitle();
 	}
 
 	protected final View setContentView(int resourceId)

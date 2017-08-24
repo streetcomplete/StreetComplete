@@ -41,7 +41,6 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 									   Bundle savedInstanceState)
 	{
 		View view = super.onCreateView(inflater, container, savedInstanceState);
-		setTitle(R.string.quest_maxspeed_title_short);
 
 		View contentView = setContentView(getMaxSpeedLayoutResourceId());
 		speedInput = (EditText) contentView.findViewById(R.id.maxSpeedInput);

@@ -13,6 +13,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import de.westnordost.osmapi.map.data.OsmLatLon;
 import de.westnordost.osmapi.map.data.OsmNode;
@@ -150,8 +151,11 @@ public class OsmQuestDownloadTest extends TestCase
 
 		@Override public AbstractQuestAnswerFragment createForm() { return null; }
 		@Override public int getIcon() { return 0; }
+		@Override public int getTitle() { return 0; }
+		@Override public int getTitle(Map<String,String> tags) { return 0; }
 		@Override public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes) {}
 		@Override public String getCommitMessage() { return null; }
+		@Override public boolean appliesTo(Element element) { return false; }
 		@Override public boolean download(BoundingBox bbox, MapDataWithGeometryHandler handler)
 		{
 			for (ElementWithGeometry e : list)

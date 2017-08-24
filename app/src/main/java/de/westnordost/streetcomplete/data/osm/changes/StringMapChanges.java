@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.data.osm.changes;
 
 import android.support.annotation.NonNull;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
@@ -22,6 +23,18 @@ public class StringMapChanges
 	public StringMapChanges(@NonNull List<StringMapEntryChange> changes)
 	{
 		this.changes = changes;
+	}
+
+	/** @return a StringMapChanges that exactly reverses this StringMapChanges */
+	public StringMapChanges reversed()
+	{
+		List<StringMapEntryChange> reverse = new ArrayList<>(changes.size());
+		for(StringMapEntryChange change : changes)
+		{
+			StringMapEntryChange reverseChange = change.reversed();
+			reverse.add(reverseChange);
+		}
+		return new StringMapChanges(reverse);
 	}
 
 	public boolean hasConflictsTo(@NonNull final Map<String,String> map)

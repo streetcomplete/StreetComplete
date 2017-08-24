@@ -2,6 +2,8 @@ package de.westnordost.streetcomplete.quests.tactile_paving;
 
 import android.os.Bundle;
 
+import java.util.Map;
+
 import javax.inject.Inject;
 
 import de.westnordost.streetcomplete.R;
@@ -36,4 +38,8 @@ public class AddTactilePavingCrosswalk extends SimpleOverpassQuestType
 
 	@Override public String getCommitMessage() { return "Add tactile pavings on crosswalks"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_blind_pedestrian_crossing; }
+	@Override public int getTitle(Map<String, String> tags)
+	{
+		return R.string.quest_tactilePaving_title_crosswalk;
+	}
 }

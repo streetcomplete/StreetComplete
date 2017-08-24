@@ -2,6 +2,8 @@ package de.westnordost.streetcomplete.quests.tactile_paving;
 
 import android.os.Bundle;
 
+import java.util.Map;
+
 import javax.inject.Inject;
 
 import de.westnordost.streetcomplete.R;
@@ -36,4 +38,10 @@ public class AddTactilePavingBusStop extends SimpleOverpassQuestType
 
 	@Override public String getCommitMessage() { return "Add tactile pavings on bus stops"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_blind_bus; }
+	@Override public int getTitle(Map<String,String> tags)
+	{
+		boolean hasName = tags.containsKey("name");
+		if(hasName) return R.string.quest_tactilePaving_title_name_bus;
+		else        return R.string.quest_tactilePaving_title_bus;
+	}
 }

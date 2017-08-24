@@ -9,6 +9,7 @@ import dagger.Provides;
 import de.westnordost.streetcomplete.data.QuestType;
 import de.westnordost.streetcomplete.data.QuestTypes;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
+import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestType;
 import de.westnordost.streetcomplete.quests.baby_changing_table.AddBabyChangingTable;
 import de.westnordost.streetcomplete.quests.bike_parking_capacity.AddBikeParkingCapacity;
 import de.westnordost.streetcomplete.quests.bike_parking_cover.AddBikeParkingCover;
@@ -41,12 +42,13 @@ import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAcces
 public class QuestModule
 {
 	@Provides @Singleton public static QuestTypes questTypeList(
-			OverpassMapDataDao o, RoadNameSuggestionsDao roadNameSuggestionsDao, PutRoadNameSuggestionsHandler
-			putRoadNameSuggestionsHandler)
+			OsmNoteQuestType osmNoteQuestType, OverpassMapDataDao o,
+			RoadNameSuggestionsDao roadNameSuggestionsDao,
+			PutRoadNameSuggestionsHandler putRoadNameSuggestionsHandler)
 	{
 		QuestType[] questTypesOrderedByImportance = {
-				// ↓ reserved for notes
-				// ...
+				// ↓ notes
+				osmNoteQuestType,
 				// ↓ may be shown as missing in QA tools
 				new AddRoadName(o, roadNameSuggestionsDao, putRoadNameSuggestionsHandler),
 				// ↓ may be shown as possibly missing in QA tools
@@ -83,5 +85,10 @@ public class QuestModule
 		};
 
 		return new QuestTypes(Arrays.asList(questTypesOrderedByImportance));
+	}
+
+	@Provides @Singleton public static OsmNoteQuestType osmNoteQuestType()
+	{
+		return new OsmNoteQuestType();
 	}
 }

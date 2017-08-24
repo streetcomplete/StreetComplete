@@ -2,6 +2,8 @@ package de.westnordost.streetcomplete.quests.toilets_fee;
 
 import android.os.Bundle;
 
+import java.util.Map;
+
 import javax.inject.Inject;
 
 import de.westnordost.streetcomplete.R;
@@ -20,12 +22,7 @@ public class AddToiletsFee extends SimpleOverpassQuestType
 		return "nodes, ways with amenity = toilets and access !~ private|customers and !fee";
 	}
 
-	public AbstractQuestAnswerFragment createForm()
-	{
-		AbstractQuestAnswerFragment form =  new YesNoQuestAnswerFragment();
-		form.setTitle(R.string.quest_toiletsFee_title);
-		return form;
-	}
+	public AbstractQuestAnswerFragment createForm() { return new YesNoQuestAnswerFragment(); }
 
 	public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
 	{
@@ -35,4 +32,8 @@ public class AddToiletsFee extends SimpleOverpassQuestType
 
 	@Override public String getCommitMessage() { return "Add toilets fee"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_toilets; }
+	@Override public int getTitle(Map<String, String> tags)
+	{
+		return R.string.quest_toiletsFee_title;
+	}
 }

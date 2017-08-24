@@ -32,18 +32,20 @@ public class OsmNotesDownload
 	private final OsmNoteQuestDao noteQuestDB;
 	private final CreateNoteDao createNoteDB;
 	private final SharedPreferences preferences;
+	private final OsmNoteQuestType questType;
 
 	private VisibleQuestListener listener;
 
 	@Inject public OsmNotesDownload(
 			NotesDao noteServer, NoteDao noteDB, OsmNoteQuestDao noteQuestDB,
-			CreateNoteDao createNoteDB, SharedPreferences preferences)
+			CreateNoteDao createNoteDB, SharedPreferences preferences, OsmNoteQuestType questType)
 	{
 		this.noteServer = noteServer;
 		this.noteDB = noteDB;
 		this.noteQuestDB = noteQuestDB;
 		this.createNoteDB = createNoteDB;
 		this.preferences = preferences;
+		this.questType = questType;
 	}
 
 	public void setQuestListener(VisibleQuestListener listener)
@@ -64,7 +66,7 @@ public class OsmNotesDownload
 			@Override public void handle(Note note)
 			{
 
-				OsmNoteQuest quest = new OsmNoteQuest(note);
+				OsmNoteQuest quest = new OsmNoteQuest(note, questType);
 				if(makeNoteClosed(userId, note))
 				{
 					quest.setStatus(QuestStatus.CLOSED);

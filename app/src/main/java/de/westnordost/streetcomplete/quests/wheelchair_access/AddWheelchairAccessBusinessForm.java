@@ -13,7 +13,6 @@ public class AddWheelchairAccessBusinessForm extends WheelchairAccessAnswerFragm
 	{
 		View view = super.onCreateView(inflater, container, savedInstanceState);
 		setContentView(R.layout.quest_wheelchair_business_explanation);
-		setTitle(R.string.quest_wheelchairAccess_name_title, getElementName());
 		return view;
 	}
 }

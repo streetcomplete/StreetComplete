@@ -3,6 +3,8 @@ package de.westnordost.streetcomplete.quests.opening_hours;
 import android.os.Bundle;
 import android.text.TextUtils;
 
+import java.util.Map;
+
 import javax.inject.Inject;
 
 import de.westnordost.streetcomplete.R;
@@ -63,4 +65,8 @@ public class AddOpeningHours extends SimpleOverpassQuestType
 
 	@Override public String getCommitMessage() { return "Add opening hours"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_opening_hours; }
+	@Override public int getTitle(Map<String, String> tags)
+	{
+		return R.string.quest_openingHours_name_title;
+	}
 }

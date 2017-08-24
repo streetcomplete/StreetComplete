@@ -47,7 +47,6 @@ public class NoteDiscussionForm extends AbstractQuestAnswerFragment
 	{
 		View view = super.onCreateView(inflater, container, savedInstanceState);
 
-		setTitle(R.string.quest_noteDiscussion_title);
 		View contentView = setContentView(R.layout.quest_note_discussion);
 
 		View buttonPanel = setButtonsView(R.layout.quest_notediscussion_buttonbar);

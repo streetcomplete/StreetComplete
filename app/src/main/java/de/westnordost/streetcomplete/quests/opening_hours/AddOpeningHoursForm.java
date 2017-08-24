@@ -18,7 +18,6 @@ import javax.inject.Inject;
 
 import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.R;
-import de.westnordost.osmapi.map.data.OsmElement;
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
 import de.westnordost.streetcomplete.util.Serializer;
 import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
@@ -43,8 +42,6 @@ public class AddOpeningHoursForm extends AbstractQuestFormAnswerFragment
 		View view = super.onCreateView(inflater, container, savedInstanceState);
 
 		Injector.instance.getApplicationComponent().inject(this);
-
-		setTitle();
 
 		addOtherAnswers();
 
@@ -142,17 +139,6 @@ public class AddOpeningHoursForm extends AbstractQuestFormAnswerFragment
 		super.onSaveInstanceState(outState);
 		outState.putByteArray(OPENING_HOURS_DATA, serializer.toBytes(openingHoursAdapter.getData()));
 		outState.putBoolean(IS_ADD_MONTHS_MODE, isAlsoAddingMonths);
-	}
-
-	private void setTitle()
-	{
-		OsmElement element = getOsmElement();
-		String name = null;
-		if(element != null && element.getTags() != null)
-		{
-			name = element.getTags().get("name");
-		}
-		setTitle(R.string.quest_openingHours_name_title, name);
 	}
 
 	@Override protected void onClickOk()

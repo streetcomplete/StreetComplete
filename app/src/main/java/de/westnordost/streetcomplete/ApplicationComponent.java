@@ -5,7 +5,7 @@ import javax.inject.Singleton;
 import dagger.Component;
 import de.westnordost.streetcomplete.data.DbModule;
 import de.westnordost.streetcomplete.data.OsmModule;
-import de.westnordost.streetcomplete.data.QuestChangesUploadService;
+import de.westnordost.streetcomplete.data.upload.QuestChangesUploadService;
 import de.westnordost.streetcomplete.data.download.QuestDownloadService;
 import de.westnordost.streetcomplete.data.meta.MetadataModule;
 import de.westnordost.streetcomplete.data.osm.upload.ChangesetAutoCloserService;

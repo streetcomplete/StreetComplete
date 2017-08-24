@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# This script does not work, currently.
 
 import argparse, subprocess, cmd
 import re

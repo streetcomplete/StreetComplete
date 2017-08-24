@@ -40,7 +40,6 @@ public class AddRoofShapeForm extends ImageListQuestAnswerFragment
 									   Bundle savedInstanceState)
 	{
 		View view = super.onCreateView(inflater, container, savedInstanceState);
-		setTitle(R.string.quest_roofShape_title);
 		imageSelector.setCellLayout(R.layout.labeled_icon_select_cell);
 
 		addOtherAnswer(R.string.quest_roofShape_answer_many, new Runnable()

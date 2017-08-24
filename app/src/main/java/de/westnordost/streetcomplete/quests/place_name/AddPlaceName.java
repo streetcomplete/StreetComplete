@@ -3,6 +3,8 @@ package de.westnordost.streetcomplete.quests.place_name;
 import android.os.Bundle;
 import android.text.TextUtils;
 
+import java.util.Map;
+
 import javax.inject.Inject;
 
 import de.westnordost.streetcomplete.R;
@@ -75,4 +77,8 @@ public class AddPlaceName extends SimpleOverpassQuestType
 
 	@Override public String getCommitMessage() { return "Determine place names"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_label; }
+	@Override public int getTitle(Map<String, String> tags)
+	{
+		return R.string.quest_placeName_title;
+	}
 }
