@@ -390,9 +390,8 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_parkingType_multiStorage">Car park</string>
     <string name="quest_dietType_vegetarian_name_title">Does "%s" explicitly offer vegetarian food?</string>
     <string name="quest_dietType_vegan_name_title">Does "%s" explicitly offer vegan food?</string>
-    <string name="quest_dietType_only">Only</string>
-    <string name="quest_dietType_explanation">A %s fulfills the criteria if there is a proper choice of dishes.</string>
-    <string name="quest_dietType_restaurant">restaurant</string>
-    <string name="quest_dietType_fast_food">fast food restaurant</string>
-    <string name="quest_dietType_cafe">café</string>
+    <string name="quest_hasFeature_only">Only</string>
+    <string name="quest_dietType_explanation_vegan">Vegan meals contain no animal products (no meat, no milk products, no eggs,…).</string>
+    <string name="quest_dietType_explanation_vegetarian">Vegetarian meals contain no meat.</string>
+    <string name="quest_dietType_explanation">Only answer "yes" if the place provides proper eating options for this diet, ignore starters, snacks etc.</string>
 </resources>

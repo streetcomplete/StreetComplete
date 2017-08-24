@@ -1,6 +1,9 @@
 package de.westnordost.streetcomplete.quests.diet_type;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -21,34 +24,25 @@ public class AddVegetarian extends SimpleOverpassQuestType
 
 	public AbstractQuestAnswerFragment createForm()
 	{
-		AbstractQuestAnswerFragment form =  new AddDietTypeForm();
-		String name = form.getElementName();
-		if(name != null)
-		{
-			form.setTitle(R.string.quest_dietType_vegetarian_name_title, name);
-		}
-		return form;
+		return AddDietTypeForm.create(R.string.quest_dietType_explanation_vegetarian);
 	}
 
 	public void applyAnswerTo(Bundle bundle, StringMapChangesBuilder changes)
 	{
-		String answer = bundle.getString(AddDietTypeForm.ANSWER);
-		if (answer != null) {
-			switch (answer)
-			{
-				case AddDietTypeForm.ONLY:
-					changes.add("diet:vegetarian", "only");
-					break;
-				case AddDietTypeForm.YES:
-					changes.add("diet:vegetarian", "yes");
-					break;
-				case AddDietTypeForm.NO:
-					changes.add("diet:vegetarian", "no");
-					break;
-			}
+		String osmValue = bundle.getString(AddDietTypeForm.OSM_VALUE);
+		if (osmValue != null)
+		{
+			changes.add("diet:vegetarian", osmValue);
 		}
 	}
 
 	@Override public String getCommitMessage() { return "Add vegetarian diet type"; }
-	@Override public int getIcon() { return R.drawable.ic_quest_apple; }
+	@Override public int getIcon() { return R.drawable.ic_quest_restaurant_veg; }
+	@Override public int getTitle(@NonNull Map<String, String> tags)
+	{
+		return R.string.quest_dietType_vegetarian_name_title;
+	}
+
+	// TODO: show only for a certain set of countries: See https://github.com/westnordost/StreetComplete/pull/506#issuecomment-323579888
+
 }
