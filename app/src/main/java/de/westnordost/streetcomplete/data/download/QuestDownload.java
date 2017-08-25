@@ -144,17 +144,9 @@ public class QuestDownload
 		if(!alreadyDownloadedNames.isEmpty())
 		{
 			Set<QuestType> alreadyDownloaded = new HashSet<>(alreadyDownloadedNames.size());
-			String osmNoteQuestName = OsmNoteQuestType.class.getSimpleName();
 			for (String questTypeName : alreadyDownloadedNames)
 			{
-				if(questTypeName.equals(osmNoteQuestName))
-				{
-					alreadyDownloaded.add(getOsmNoteQuestType());
-				}
-				else
-				{
-					alreadyDownloaded.add(questTypeList.forName(questTypeName));
-				}
+				alreadyDownloaded.add(questTypeList.forName(questTypeName));
 			}
 			result.removeAll(alreadyDownloaded);
 
