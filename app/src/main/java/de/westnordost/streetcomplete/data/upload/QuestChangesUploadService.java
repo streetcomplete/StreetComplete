@@ -115,10 +115,16 @@ public class QuestChangesUploadService extends IntentService
 		catch (Exception e)
 		{
 			Log.e(TAG, "Unable to upload changes", e);
-			progressListener.onError(e);
+			if(progressListener != null)
+			{
+				progressListener.onError(e);
+			}
 		}
 
-		progressListener.onFinished();
+		if(progressListener != null)
+		{
+			progressListener.onFinished();
+		}
 
 		Log.i(TAG, "Finished upload changes");
 	}
