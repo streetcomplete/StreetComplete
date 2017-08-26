@@ -10,6 +10,7 @@ import dagger.Module;
 import dagger.Provides;
 import de.westnordost.streetcomplete.data.changesets.OpenChangesetsDao;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
+import de.westnordost.streetcomplete.data.osm.persist.UndoOsmQuestDao;
 import de.westnordost.streetcomplete.data.statistics.QuestStatisticsDao;
 import de.westnordost.streetcomplete.quests.road_name.data.RoadNamesTablesHelper;
 import de.westnordost.streetcomplete.util.KryoSerializer;
@@ -47,4 +48,9 @@ public class DbModule
 		return new OsmQuestDao(dbHelper, serializer, questTypeList);
 	}
 
+	@Provides @Singleton public static UndoOsmQuestDao undoOsmQuestDao(
+			SQLiteOpenHelper dbHelper, Serializer serializer, QuestTypes questTypeList)
+	{
+		return new UndoOsmQuestDao(dbHelper, serializer, questTypeList);
+	}
 }

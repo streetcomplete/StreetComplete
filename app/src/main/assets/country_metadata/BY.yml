@@ -3,4 +3,5 @@ isLivingStreetKnown: true
 isSlowZoneKnown: true
 livingStreetSign: ic_living_street_russian
 officialLanguages: [be, ru]
+orchardProduces: [apple, cranberry, strawberry, plum, tomatoe, pear, walnut, grape, hazelnut, cherry]
 popularSports: [soccer, basketball, tennis, field_hockey, volleyball, ice_hockey]

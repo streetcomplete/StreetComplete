@@ -291,8 +291,8 @@ Ha nincsen tábla, akkor az alapártelmezett sebességkorlátozás érvényes."<
     <string name="quest_baby_changing_table_title">"\"%s\"-ban van pelenkázó asztal?"</string>
     <string name="quest_recycling_type_title">"Ez milyen típusú újrahasznosító?"</string>
     <string name="recycling_centre">"Központ"</string>
-    <string name="overground_recycling_container">"Tartály"</string>
-    <string name="underground_recycling_container">"Földalatti tartály"</string>
+    <string name="overground_recycling_container">"Konténer"</string>
+    <string name="underground_recycling_container">"Földalatti konténer"</string>
     <string name="quest_generic_error_a_field_empty">"Üresen hagytál egy mezőt"</string>
     <string name="quest_streetName_menuItem_language_simple">"%1$s - %2$s"</string>
     <string name="quest_streetName_menuItem_language_native">"%1$s - %2$s (%3$s)"</string>
@@ -314,7 +314,7 @@ Vagy le is tölthetsz egy másik billentyűzetet az áruházból. Népszerű bil
     <string name="credits_translations_title">"Fordítás"</string>
     <string name="credits_contributors_title">"Kód közreműködők"</string>
     <string name="credits_author_title">"Szerző és működtető"</string>
-    <string name="credits_and_more">"és mások"</string>
+    <string name="credits_and_more">"és mások..."</string>
     <string name="quest_maxspeed_answer_living_street">"Ez egy lakó-pihenő utca"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"Tehát ki van téve egy ilyen tábla?"</string>
     <string name="quest_orchard_produce_title">"Mit termesztenek itt?"</string>
@@ -366,4 +366,10 @@ Vagy le is tölthetsz egy másik billentyűzetet az áruházból. Népszerű bil
     <string name="produce_vanilla">"Vanília"</string>
     <string name="produce_walnuts">"Dió"</string>
     <string name="produce_sisal">"Szizálkender"</string>
+    <string name="quest_way_lit_title">"Ez az útszakasz ki van világítva?"</string>
+    <string name="quest_way_lit_named_title">"\"%s\" ki van itt világítva?"</string>
+    <string name="quest_way_lit_road_title">"Ez az utcaszakasz ki van világítva?"</string>
+    <string name="quest_way_lit_named_road_title">"\"%s\" ki van itt világítva?"</string>
+    <string name="quest_way_lit_automatic">"Mozgásérzékelővel rendelkezik"</string>
+    <string name="quest_way_lit_24_7">"Éjjel-nappal ki van világítva"</string>
 </resources>

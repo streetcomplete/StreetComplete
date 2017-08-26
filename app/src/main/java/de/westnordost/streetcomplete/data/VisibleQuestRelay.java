@@ -41,4 +41,9 @@ public class VisibleQuestRelay implements VisibleQuestListener
 	{
 		onQuestsRemoved(Collections.singletonList(questId), group);
 	}
+
+	@Override public void onQuestReverted(long revertQuestId, QuestGroup group)
+	{
+		if (listener != null) listener.onQuestReverted(revertQuestId, group);
+	}
 }

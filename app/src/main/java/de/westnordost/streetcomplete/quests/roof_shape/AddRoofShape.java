@@ -3,9 +3,11 @@ package de.westnordost.streetcomplete.quests.roof_shape;
 import android.os.Bundle;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import javax.inject.Inject;
 
+import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
@@ -13,13 +15,9 @@ import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 
 public class AddRoofShape extends SimpleOverpassQuestType
 {
-	@Inject public AddRoofShape(OverpassMapDataDao overpassServer)
-	{
-		super(overpassServer);
-	}
+	@Inject public AddRoofShape(OverpassMapDataDao overpassServer) { super(overpassServer); }
 
-	@Override
-	protected String getTagFilters()
+	@Override protected String getTagFilters()
 	{
 		return "ways, relations with roof:levels and roof:levels!=0 and !roof:shape";
 	}
@@ -38,10 +36,10 @@ public class AddRoofShape extends SimpleOverpassQuestType
 		}
 	}
 
-	@Override public String getCommitMessage()
+	@Override public String getCommitMessage() { return "Add roof shapes"; }
+	@Override public int getIcon() { return R.drawable.ic_quest_roof_shape; }
+	@Override public int getTitle(Map<String, String> tags)
 	{
-		return "Add roof shapes";
+		return R.string.quest_roofShape_title;
 	}
-
-	@Override public String getIconName() {	return "roof_shape"; }
 }

@@ -2,8 +2,11 @@ package de.westnordost.streetcomplete.quests.tactile_paving;
 
 import android.os.Bundle;
 
+import java.util.Map;
+
 import javax.inject.Inject;
 
+import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
@@ -17,8 +20,7 @@ public class AddTactilePavingCrosswalk extends SimpleOverpassQuestType
 		super(overpassServer);
 	}
 
-	@Override
-	protected String getTagFilters()
+	@Override protected String getTagFilters()
 	{
 		return "nodes with highway=crossing and !tactile_paving";
 	}
@@ -34,12 +36,10 @@ public class AddTactilePavingCrosswalk extends SimpleOverpassQuestType
 		changes.add("tactile_paving", yesno);
 	}
 
-	@Override public String getCommitMessage()
+	@Override public String getCommitMessage() { return "Add tactile pavings on crosswalks"; }
+	@Override public int getIcon() { return R.drawable.ic_quest_blind_pedestrian_crossing; }
+	@Override public int getTitle(Map<String, String> tags)
 	{
-		return "Add tactile pavings on crosswalks";
-	}
-
-	@Override public String getIconName() {
-		return "blind_pedestrian_crossing";
+		return R.string.quest_tactilePaving_title_crosswalk;
 	}
 }

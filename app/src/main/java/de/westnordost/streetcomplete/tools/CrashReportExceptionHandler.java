@@ -10,7 +10,6 @@ import android.os.Handler;
 import android.os.Looper;
 import android.widget.Toast;
 
-import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -23,6 +22,7 @@ import javax.inject.Inject;
 import de.westnordost.streetcomplete.ApplicationConstants;
 import de.westnordost.streetcomplete.BuildConfig;
 import de.westnordost.streetcomplete.R;
+import de.westnordost.streetcomplete.util.StreamUtils;
 import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 
 public class CrashReportExceptionHandler implements Thread.UncaughtExceptionHandler
@@ -149,14 +149,7 @@ public class CrashReportExceptionHandler implements Thread.UncaughtExceptionHand
 		try
 		{
 			FileInputStream fis = appCtx.openFileInput(CRASHREPORT);
-			ByteArrayOutputStream result = new ByteArrayOutputStream();
-			byte[] buffer = new byte[1024];
-			int length;
-			while ((length = fis.read(buffer)) != -1) {
-				result.write(buffer, 0, length);
-			}
-			fis.close();
-			return result.toString(ENC);
+			return StreamUtils.readToString(fis);
 		}
 		catch (IOException e) {}
 		return null;

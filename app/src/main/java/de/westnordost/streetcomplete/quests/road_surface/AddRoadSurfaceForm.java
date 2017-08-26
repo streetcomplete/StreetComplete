@@ -46,29 +46,14 @@ public class AddRoadSurfaceForm extends AbstractQuestFormAnswerFragment
 	{
 		View view = super.onCreateView(inflater, container, savedInstanceState);
 
-		setTitle();
-
 		View contentView = setContentView(R.layout.quest_street_surface);
 
-		RecyclerView surfaceSelect = (RecyclerView) contentView.findViewById(R.id.surfaceSelect);
+		RecyclerView surfaceSelect = contentView.findViewById(R.id.surfaceSelect);
 		imageSelector = new GroupedImageSelectAdapter(Arrays.<GroupedImageSelectAdapter.Item>asList(SURFACES));
 		surfaceSelect.setAdapter(imageSelector);
 		surfaceSelect.setNestedScrollingEnabled(false);
 
 		return view;
-	}
-
-	private void setTitle()
-	{
-		String name = getElementName();
-		if(name != null)
-		{
-			setTitle(R.string.quest_streetSurface_name_title, name);
-		}
-		else
-		{
-			setTitle(R.string.quest_streetSurface_title);
-		}
 	}
 
 	@Override protected void onClickOk()

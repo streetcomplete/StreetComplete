@@ -14,7 +14,6 @@ public class TactilePavingCrosswalkForm extends YesNoQuestAnswerFragment
 	{
 		View view = super.onCreateView(inflater, container, savedInstanceState);
 		setContentView(R.layout.quest_tactile_paving);
-		setTitle(R.string.quest_tactilePaving_title_crosswalk);
 		return view;
 	}
 }

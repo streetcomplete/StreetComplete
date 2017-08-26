@@ -5,9 +5,11 @@ import android.text.TextUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Map;
 
 import javax.inject.Inject;
 
+import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
@@ -15,10 +17,7 @@ import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 
 public class AddSport extends SimpleOverpassQuestType
 {
-	@Inject public AddSport(OverpassMapDataDao overpassServer)
-	{
-		super(overpassServer);
-	}
+	@Inject public AddSport(OverpassMapDataDao overpassServer) { super(overpassServer); }
 
 	private static final String[] AMBIGUOUS_SPORT_VALUES = {
 			"team_handball", // -> not really ambiguous but same as handball
@@ -62,10 +61,10 @@ public class AddSport extends SimpleOverpassQuestType
 		}
 	}
 
-	@Override public String getCommitMessage()
+	@Override public String getCommitMessage() { return "Add pitches sport"; }
+	@Override public int getIcon() { return R.drawable.ic_quest_sport; }
+	@Override public int getTitle(Map<String,String> tags)
 	{
-		return "Add pitches sport";
+		return R.string.quest_sport_title;
 	}
-
-	@Override public String getIconName() {	return "sport"; }
 }

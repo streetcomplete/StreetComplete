@@ -10,34 +10,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <RelativeLayout
-        android:layout_width="54dp"
-        android:layout_height="54dp"
-        android:orientation="vertical"
+    <fragment
+        android:id="@+id/controls_fragment"
+        android:name="de.westnordost.streetcomplete.tangram.MapControlsFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/openstreetmapLink"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:layout_margin="14dp"
-        android:padding="2dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginTop="8dp"
         tools:ignore="RtlHardcoded"
-        android:background="@drawable/roundbutton">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_above="@+id/compass"
-            android:text="@string/compass_north_one_letter"/>
-
-        <de.westnordost.streetcomplete.view.CompassView
-            android:layout_width="34dp"
-            android:layout_height="34dp"
-            android:layout_marginTop="-1dp"
-            android:layout_centerHorizontal="true"
-            android:id="@+id/compass"
-            android:layout_alignParentBottom="true"
-            />
-
-    </RelativeLayout>
+        />
 
     <TextView
         android:layout_width="wrap_content"
@@ -54,6 +38,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/openstreetmapLink"
         android:textColor="#444444"
         android:textSize="11sp"
         android:text="@string/map_attribution_osm"

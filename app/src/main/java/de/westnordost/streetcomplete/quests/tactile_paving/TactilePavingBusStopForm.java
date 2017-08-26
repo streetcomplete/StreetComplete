@@ -14,20 +14,6 @@ public class TactilePavingBusStopForm extends YesNoQuestAnswerFragment
 	{
 		View view = super.onCreateView(inflater, container, savedInstanceState);
 		setContentView(R.layout.quest_tactile_paving);
-		setTitle();
 		return view;
-	}
-
-	private void setTitle()
-	{
-		String name = getElementName();
-		if(name != null)
-		{
-			setTitle(R.string.quest_tactilePaving_title_name_bus, name);
-		}
-		else
-		{
-			setTitle(R.string.quest_tactilePaving_title_bus);
-		}
 	}
 }

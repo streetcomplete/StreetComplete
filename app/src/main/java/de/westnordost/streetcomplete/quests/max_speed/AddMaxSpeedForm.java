@@ -41,10 +41,9 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 									   Bundle savedInstanceState)
 	{
 		View view = super.onCreateView(inflater, container, savedInstanceState);
-		setTitle(R.string.quest_maxspeed_title_short);
 
 		View contentView = setContentView(getMaxSpeedLayoutResourceId());
-		speedInput = (EditText) contentView.findViewById(R.id.maxSpeedInput);
+		speedInput = contentView.findViewById(R.id.maxSpeedInput);
 
 		View zoneContainer = contentView.findViewById(R.id.zoneContainer);
 		if(zoneContainer != null)
@@ -63,7 +62,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 		boolean isSlowZoneKnown = getCountryInfo().isSlowZoneKnown();
 		zoneContainer.setVisibility(isSlowZoneKnown && isResidential ? View.VISIBLE : View.GONE);
 
-		zoneCheckbox = (CheckBox) zoneContainer.findViewById(R.id.zoneCheckbox);
+		zoneCheckbox = zoneContainer.findViewById(R.id.zoneCheckbox);
 		zoneCheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
 		{
 			@Override public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
@@ -171,7 +170,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 	{
 		View view = LayoutInflater.from(getActivity()).inflate(R.layout.quest_maxspeed_living_street_confirmation, null, false);
 
-		ImageView img = (ImageView) view.findViewById(R.id.imgLivingStreet);
+		ImageView img = view.findViewById(R.id.imgLivingStreet);
 		int drawableId = getResources().getIdentifier(
 				getCountryInfo().getLivingStreetSign(),
 				"drawable",
@@ -197,7 +196,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 	{
 		View view = LayoutInflater.from(getActivity()).inflate(R.layout.quest_maxspeed_no_sign_no_slow_zone_confirmation, null, false);
 
-		ImageView imgSlowZone = (ImageView) view.findViewById(R.id.imgSlowZone);
+		ImageView imgSlowZone = view.findViewById(R.id.imgSlowZone);
 		Drawable slowZoneDrawable = ((ImageView) getView().findViewById(R.id.zoneImg)).getDrawable();
 		imgSlowZone.setImageDrawable(slowZoneDrawable);
 

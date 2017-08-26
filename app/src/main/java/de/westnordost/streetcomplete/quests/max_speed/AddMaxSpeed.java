@@ -2,8 +2,11 @@ package de.westnordost.streetcomplete.quests.max_speed;
 
 import android.os.Bundle;
 
+import java.util.Map;
+
 import javax.inject.Inject;
 
+import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
@@ -20,7 +23,7 @@ public class AddMaxSpeed extends SimpleOverpassQuestType
 		       "!maxspeed and !source:maxspeed " +
 		       " and !maxspeed:forward and !maxspeed:backward " +
 		       // other tags that are used for basically the same thing as source:maxspeed
-		       " and !zone:maxspeed and !maxspeed:type";
+		       " and !zone:maxspeed and !maxspeed:type and access != private";
 	}
 
 	@Override public AbstractQuestAnswerFragment createForm()
@@ -56,8 +59,9 @@ public class AddMaxSpeed extends SimpleOverpassQuestType
 	}
 
 	@Override public String getCommitMessage() { return "Add speed limits"; }
-
-	@Override public String getIconName() { return "max_speed"; }
-
-
+	@Override public int getIcon() { return R.drawable.ic_quest_max_speed; }
+	@Override public int getTitle(Map<String, String> tags)
+	{
+		return R.string.quest_maxspeed_title_short;
+	}
 }

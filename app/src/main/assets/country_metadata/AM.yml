@@ -3,3 +3,4 @@ additionalStreetsignLanguages: [en]
 isLivingStreetKnown: true
 livingStreetSign: ic_living_street_russian
 officialLanguages: [hy]
+orchardProduces: [grape, apple, apricot, tomatoe, peach, pear, plum, cherry, walnut, fig, hazelnut]
