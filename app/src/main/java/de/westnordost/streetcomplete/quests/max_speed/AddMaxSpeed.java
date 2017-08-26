@@ -34,13 +34,19 @@ public class AddMaxSpeed extends SimpleOverpassQuestType
 	@Override public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
 	{
 		boolean isLivingStreet = answer.getBoolean(AddMaxSpeedForm.LIVING_STREET);
+		String maxspeed = answer.getString(AddMaxSpeedForm.MAX_SPEED);
+		String advisory = answer.getString(AddMaxSpeedForm.ADVISORY_SPEED);
 		if(isLivingStreet)
 		{
 			changes.modify("highway","living_street");
 		}
+		else if(advisory != null)
+		{
+			changes.add("maxspeed:advisory", advisory);
+			changes.add("source:maxspeed:advisory", "sign");
+		}
 		else
 		{
-			String maxspeed = answer.getString(AddMaxSpeedForm.MAX_SPEED);
 			if (maxspeed != null)
 			{
 				changes.add("maxspeed", maxspeed);

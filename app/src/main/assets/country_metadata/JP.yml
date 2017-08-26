@@ -1,5 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [en]
+advisorySpeedLimitLayout: quest_maxspeed_advisory_white
+isAdvisorySpeedLimitKnown: true
 officialLanguages: [ja]
 orchardProduces: [tea, apple, persimmon, chestnut, grape, apricot, pear, tomatoe, peach, strawberry,
   cherry, plum, orange, kiwi, fig]
