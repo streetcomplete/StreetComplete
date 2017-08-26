@@ -23,6 +23,14 @@ public class AddMaxSpeedTest extends AOsmElementQuestTypeTest
 				new StringMapEntryAdd("source:maxspeed","sign"));
 	}
 
+	public void testAdvisoryNormalSign()
+	{
+		bundle.putString(AddMaxSpeedForm.ADVISORY_SPEED, "123");
+		verify(
+				new StringMapEntryAdd("maxspeed:advisory","123"),
+				new StringMapEntryAdd("source:maxspeed:advisory","sign"));
+	}
+
 	public void testZoneSign()
 	{
 		bundle.putString(AddMaxSpeedForm.MAX_SPEED, "123");

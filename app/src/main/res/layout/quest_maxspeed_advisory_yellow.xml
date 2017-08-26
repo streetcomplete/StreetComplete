@@ -3,38 +3,26 @@
               android:layout_width="match_parent"
               android:layout_height="wrap_content">
 
-    <LinearLayout
+    <FrameLayout
         android:layout_centerInParent="true"
-        android:orientation="vertical"
         android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:paddingTop="16dp"
-        android:paddingBottom="12dp"
-        android:background="@drawable/background_rectangular_sign_white"
+        android:layout_height="100dp"
+        android:background="@drawable/background_rectangular_sign_yellow"
         android:gravity="center">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="MAXIMUM"
-            android:textStyle="bold"
-            android:textSize="15dp"
-            android:gravity="center"
-            android:textColor="#000000"/>
 
         <EditText
             android:id="@+id/maxSpeedInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:paddingTop="8dp"
             android:background="#00ffffff"
+            android:textColor="#000"
             android:inputType="number"
             android:gravity="center"
             android:textStyle="bold"
             android:maxLength="3"
             android:textSize="48dp"/>
 
-    </LinearLayout>
+    </FrameLayout>
 
 </RelativeLayout>

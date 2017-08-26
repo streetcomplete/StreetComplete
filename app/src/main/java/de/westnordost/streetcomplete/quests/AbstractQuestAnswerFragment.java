@@ -146,7 +146,7 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 			}
 		});
 
-		content = (ViewGroup) view.findViewById(R.id.content);
+		content = view.findViewById(R.id.content);
 
 		return view;
 	}
@@ -299,6 +299,10 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 
 	protected final View setContentView(int resourceId)
 	{
+		if(content.getChildCount() > 0)
+		{
+			content.removeAllViews();
+		}
 		return getActivity().getLayoutInflater().inflate(resourceId, content);
 	}
 
