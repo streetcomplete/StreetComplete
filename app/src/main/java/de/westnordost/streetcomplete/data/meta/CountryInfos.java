@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.data.meta;
 import android.content.res.AssetManager;
 
 import com.esotericsoftware.yamlbeans.YamlReader;
+import com.esotericsoftware.yamlbeans.YamlWriter;
 
 import java.io.File;
 import java.io.IOException;

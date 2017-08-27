@@ -44,7 +44,6 @@ import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.util.SphericalEarthMath;
 
 import static android.content.Context.SENSOR_SERVICE;
-import static android.content.res.Configuration.ORIENTATION_LANDSCAPE;
 
 public class MapFragment extends Fragment implements
 		FragmentCompat.OnRequestPermissionsResultCallback, LocationListener,
@@ -93,8 +92,8 @@ public class MapFragment extends Fragment implements
 	{
 		View view = inflater.inflate(R.layout.fragment_map, container, false);
 
-		mapView = (MapView) view.findViewById(R.id.map);
-		TextView mapzenLink = (TextView) view.findViewById(R.id.mapzenLink);
+		mapView = view.findViewById(R.id.map);
+		TextView mapzenLink = view.findViewById(R.id.mapzenLink);
 
 		mapzenLink.setText(Html.fromHtml(
 				String.format(getResources().getString(R.string.map_attribution_mapzen),
@@ -412,10 +411,8 @@ public class MapFragment extends Fragment implements
 
 		if (isCompassMode)
 		{
-			boolean isLandscape = getResources().getConfiguration().orientation == ORIENTATION_LANDSCAPE;
 			float mapRotation = -rotation;
-			if (isLandscape) mapRotation -= Math.PI / 2;
-			float mapTilt = Math.abs(tilt); //Math.min(Math.abs(tilt), (float) (Math.PI / 4));
+			float mapTilt = -tilt;
 
 			// though the rotation and tilt are already smoothened by the CompassComponent, when it
 			// involves rotating the whole view, it feels better for the user if this is smoothened
@@ -503,7 +500,6 @@ public class MapFragment extends Fragment implements
 	@Override public void onCreate(@Nullable Bundle bundle)
 	{
 		super.onCreate(bundle);
-		compass.onCreate((SensorManager) getContext().getSystemService(SENSOR_SERVICE));
 		if(mapView != null) mapView.onCreate(bundle);
 	}
 
@@ -511,6 +507,9 @@ public class MapFragment extends Fragment implements
 	{
 		super.onAttach(activity);
 		listener = (Listener) activity;
+		compass.onCreate(
+				(SensorManager) activity.getSystemService(SENSOR_SERVICE),
+				activity.getWindowManager().getDefaultDisplay());
 		lostApiClient = new LostApiClient.Builder(activity).addConnectionCallbacks(this).build();
 	}
 

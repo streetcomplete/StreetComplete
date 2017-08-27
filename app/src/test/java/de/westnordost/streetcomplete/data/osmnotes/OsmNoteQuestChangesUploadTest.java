@@ -90,7 +90,7 @@ public class OsmNoteQuestChangesUploadTest extends TestCase
 		Note note = new Note();
 		note.id = 1;
 		note.position = new OsmLatLon(1.0, 2.0);
-		OsmNoteQuest quest = new OsmNoteQuest(note);
+		OsmNoteQuest quest = new OsmNoteQuest(note, new OsmNoteQuestType());
 		quest.setId(3);
 		quest.setStatus(QuestStatus.NEW);
 		quest.setComment("blablub");

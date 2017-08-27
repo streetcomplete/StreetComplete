@@ -19,4 +19,19 @@ public class StringMapEntryModifyTest extends TestCase
 		c.applyTo(m);
 		assertTrue(c.conflictsWith(m));
 	}
+
+	public void testReverse()
+	{
+		StringMapEntryChange modify = new StringMapEntryModify("a","b","c");
+		StringMapEntryChange reverseModify = modify.reversed();
+
+		Map<String,String> m = new HashMap<>();
+		m.put("a","b");
+
+		modify.applyTo(m);
+		reverseModify.applyTo(m);
+
+		assertEquals(1, m.size());
+		assertEquals("b",m.get("a"));
+	}
 }

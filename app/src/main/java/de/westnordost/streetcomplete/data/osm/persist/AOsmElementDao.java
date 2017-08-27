@@ -67,14 +67,20 @@ public abstract class AOsmElementDao<T extends Element>
 	public void deleteUnreferenced()
 	{
 		SQLiteDatabase db = dbHelper.getWritableDatabase();
-
 		String where = NodeTable.Columns.ID + " NOT IN ( " +
-				"SELECT " + OsmQuestTable.Columns.ELEMENT_ID + " AS " + getIdColumnName() + " " +
-				"FROM " + OsmQuestTable.NAME + " " +
-				"WHERE " + OsmQuestTable.Columns.ELEMENT_TYPE + " = \"" + getElementTypeName() +"\"" +
+				getSelectAllElementIdsIn(OsmQuestTable.NAME) +
+				" UNION " +
+				getSelectAllElementIdsIn(OsmQuestTable.NAME_UNDO) +
 				")";
 
 		db.delete(getTableName(), where, null);
+	}
+
+	private String getSelectAllElementIdsIn(String table)
+	{
+		return 	"SELECT " + OsmQuestTable.Columns.ELEMENT_ID + " AS " + getIdColumnName() +
+				" FROM " + table +
+				" WHERE " + OsmQuestTable.Columns.ELEMENT_TYPE + " = \"" + getElementTypeName() +"\"";
 	}
 
 	protected abstract String getElementTypeName();

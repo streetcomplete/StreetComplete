@@ -19,7 +19,7 @@ public abstract class AbstractQuestFormAnswerFragment extends AbstractQuestAnswe
 	{
 		View view = super.onCreateView(inflater, container, savedInstanceState);
 		View buttonPanel = setButtonsView(R.layout.quest_buttonpanel_ok);
-		Button buttonOk = (Button) buttonPanel.findViewById(R.id.buttonOk);
+		Button buttonOk = buttonPanel.findViewById(R.id.buttonOk);
 		buttonOk.setOnClickListener(new View.OnClickListener()
 		{
 			@Override public void onClick(View v)

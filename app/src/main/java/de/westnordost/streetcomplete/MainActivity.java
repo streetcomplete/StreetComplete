@@ -33,24 +33,31 @@ import android.view.WindowManager;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Map;
 
 import javax.inject.Inject;
 
+import de.westnordost.osmapi.common.errors.OsmAuthorizationException;
 import de.westnordost.osmapi.common.errors.OsmConnectionException;
 import de.westnordost.streetcomplete.about.AboutActivity;
 import de.westnordost.streetcomplete.data.Quest;
 import de.westnordost.streetcomplete.data.QuestAutoSyncer;
-import de.westnordost.streetcomplete.data.QuestChangesUploadService;
+import de.westnordost.streetcomplete.data.upload.QuestChangesUploadProgressListener;
+import de.westnordost.streetcomplete.data.upload.QuestChangesUploadService;
 import de.westnordost.streetcomplete.data.QuestController;
 import de.westnordost.streetcomplete.data.download.QuestDownloadProgressListener;
 import de.westnordost.streetcomplete.data.download.QuestDownloadService;
 import de.westnordost.streetcomplete.data.QuestGroup;
 import de.westnordost.streetcomplete.data.VisibleQuestListener;
+import de.westnordost.streetcomplete.data.osm.OsmQuest;
+import de.westnordost.streetcomplete.data.upload.VersionBannedException;
 import de.westnordost.streetcomplete.location.LocationRequestFragment;
 import de.westnordost.streetcomplete.location.LocationUtil;
 import de.westnordost.streetcomplete.oauth.OAuthPrefs;
@@ -119,44 +126,19 @@ public class MainActivity extends AppCompatActivity implements
 			downloadService = null;
 		}
 	};
-
-	private final BroadcastReceiver uploadChangesErrorReceiver = new BroadcastReceiver()
+	private boolean uploadServiceIsBound;
+	private QuestChangesUploadService.Interface uploadService;
+	private ServiceConnection uploadServiceConnection = new ServiceConnection()
 	{
-		@Override public void onReceive(Context context, Intent intent)
+		public void onServiceConnected(ComponentName className, IBinder service)
 		{
-			Exception e = (Exception) intent.getSerializableExtra(QuestChangesUploadService.EXCEPTION);
-
-			if(intent.getBooleanExtra(QuestChangesUploadService.IS_AUTH_FAILED, false))
-			{
-				// delete secret in case it failed while already having a token -> token is invalid
-				oAuth.saveConsumer(null);
-				requestOAuthorized();
-			}
-			else if(intent.getBooleanExtra(QuestChangesUploadService.IS_CONNECTION_ERROR, false))
-			{
-				// a 5xx error is not the fault of this app. Nothing we can do about it, so
-				// just notify the user
-				Toast.makeText(MainActivity.this, R.string.upload_server_error, Toast.LENGTH_LONG).show();
-			}
-			else if(intent.getBooleanExtra(QuestChangesUploadService.IS_VERSION_BANNED, false))
-			{
-				new AlertDialogBuilder(MainActivity.this)
-						.setMessage(R.string.version_banned_message)
-						.setPositiveButton(android.R.string.ok, null)
-						.show();
-			}
-			else if(e != null)// any other error
-			{
-				crashReportExceptionHandler.askUserToSendErrorReport(
-						MainActivity.this, R.string.upload_error, e);
-			}
+			uploadService = (QuestChangesUploadService.Interface) service;
+			uploadService.setProgressListener(uploadProgressListener);
 		}
-	};
-	private final BroadcastReceiver uploadChangesFinishedReceiver = new BroadcastReceiver()
-	{
-		@Override public void onReceive(Context context, Intent intent)
+
+		public void onServiceDisconnected(ComponentName className)
 		{
-			answersCounter.update();
+			uploadService = null;
 		}
 	};
 
@@ -193,12 +175,12 @@ public class MainActivity extends AppCompatActivity implements
 			getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 		}
 
-		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+		Toolbar toolbar = findViewById(R.id.toolbar);
 		setSupportActionBar(toolbar);
 
 		questController.onCreate();
 
-		answersCounter = (AnswersCounter) toolbar.findViewById(R.id.answersCounter);
+		answersCounter = toolbar.findViewById(R.id.answersCounter);
 
 		questSource.onCreate(this);
 
@@ -206,7 +188,7 @@ public class MainActivity extends AppCompatActivity implements
 				.add(locationRequestFragment, LocationRequestFragment.class.getSimpleName())
 				.commit();
 
-		progressBar = (ProgressBar) findViewById(R.id.download_progress);
+		progressBar = findViewById(R.id.download_progress);
 		progressBar.setMax(1000);
 
 		mapFragment = (QuestsMapFragment) getSupportFragmentManager().findFragmentById(R.id.map_fragment);
@@ -229,12 +211,6 @@ public class MainActivity extends AppCompatActivity implements
 
 		LocalBroadcastManager localBroadcaster = LocalBroadcastManager.getInstance(this);
 
-		localBroadcaster.registerReceiver(uploadChangesErrorReceiver,
-				new IntentFilter(QuestChangesUploadService.ACTION_ERROR));
-
-		localBroadcaster.registerReceiver(uploadChangesFinishedReceiver,
-				new IntentFilter(QuestChangesUploadService.ACTION_FINISHED));
-
 		localBroadcaster.registerReceiver(locationRequestFinishedReceiver,
 				new IntentFilter(LocationRequestFragment.ACTION_FINISHED));
 
@@ -242,9 +218,10 @@ public class MainActivity extends AppCompatActivity implements
 		questAutoSyncer.onStart();
 
 		progressBar.setAlpha(0f);
-		downloadServiceIsBound = bindService(
-				new Intent(this, QuestDownloadService.class),
+		downloadServiceIsBound = bindService(new Intent(this, QuestDownloadService.class),
 				downloadServiceConnection, BIND_AUTO_CREATE);
+		uploadServiceIsBound = bindService(new Intent(this, QuestChangesUploadService.class),
+				uploadServiceConnection, BIND_AUTO_CREATE);
 
 		if(!hasAskedForLocation)
 		{
@@ -262,8 +239,6 @@ public class MainActivity extends AppCompatActivity implements
 		super.onStop();
 
 		LocalBroadcastManager localBroadcaster = LocalBroadcastManager.getInstance(this);
-		localBroadcaster.unregisterReceiver(uploadChangesErrorReceiver);
-		localBroadcaster.unregisterReceiver(uploadChangesFinishedReceiver);
 		localBroadcaster.unregisterReceiver(locationRequestFinishedReceiver);
 
 		unregisterReceiver(locationAvailabilityReceiver);
@@ -280,6 +255,12 @@ public class MainActivity extends AppCompatActivity implements
 			// the onStarted call when we return to this activity when the service is rebound
 			progressBar.setAlpha(0f);
 		}
+
+		if (uploadServiceIsBound) unbindService(uploadServiceConnection);
+		if (uploadService != null)
+		{
+			uploadService.setProgressListener(null);
+		}
 	}
 
 	@Override public void onDestroy()
@@ -294,12 +275,60 @@ public class MainActivity extends AppCompatActivity implements
 		return true;
 	}
 
+	public boolean onPrepareOptionsMenu(Menu menu) {
+		super.onPrepareOptionsMenu(menu);
+		return true;
+	}
+
+	private void confirmUndo(final OsmQuest quest)
+	{
+		Element element = questController.getOsmElement(quest);
+
+		View inner = LayoutInflater.from(this).inflate(
+				R.layout.undo_dialog_layout, null, false);
+		ImageView icon = inner.findViewById(R.id.icon);
+		icon.setImageResource(quest.getType().getIcon());
+		TextView text = inner.findViewById(R.id.text);
+
+		String name = element.getTags().get("name");
+		text.setText(getResources().getString(getQuestTitleResId(quest, element.getTags()), name));
+
+		new AlertDialogBuilder(this)
+				.setTitle(R.string.undo_confirm_title)
+				.setView(inner)
+				.setPositiveButton(R.string.action_undo, new DialogInterface.OnClickListener()
+				{
+					@Override public void onClick(DialogInterface dialog, int which)
+					{
+						questController.undoOsmQuest(quest);
+						answersCounter.undidQuest(quest.getChangesSource());
+					}
+				})
+				.setNegativeButton(android.R.string.cancel, null)
+				.show();
+	}
+
+	private int getQuestTitleResId(Quest quest, Map<String,String> tags)
+	{
+		if(quest instanceof OsmQuest)
+		{
+			OsmQuest osmQuest = (OsmQuest) quest;
+			return osmQuest.getOsmElementQuestType().getTitle(tags);
+		}
+		return quest.getType().getTitle();
+	}
+
 	@Override public boolean onOptionsItemSelected(MenuItem item)
 	{
 		int id = item.getItemId();
 
 		switch (id)
 		{
+			case R.id.action_undo:
+				OsmQuest quest = questController.getLastSolvedOsmQuest();
+				if(quest != null) confirmUndo(quest);
+				else              Toast.makeText(this, R.string.no_changes_to_undo, Toast.LENGTH_SHORT).show();
+				return true;
 			case R.id.action_settings:
 				Intent intent = new Intent(this, SettingsActivity.class);
 				startActivity(intent);
@@ -315,7 +344,6 @@ public class MainActivity extends AppCompatActivity implements
 				if(isConnected()) uploadChanges();
 				else              Toast.makeText(this, R.string.offline, Toast.LENGTH_SHORT).show();
 				return true;
-
 		}
 
 		return super.onOptionsItemSelected(item);
@@ -340,7 +368,7 @@ public class MainActivity extends AppCompatActivity implements
 
 		View inner = LayoutInflater.from(this).inflate(
 				R.layout.authorize_now_dialog_layout, null, false);
-		final CheckBox checkBox = (CheckBox) inner.findViewById(R.id.checkBoxDontShowAgain);
+		final CheckBox checkBox = inner.findViewById(R.id.checkBoxDontShowAgain);
 
 		new AlertDialogBuilder(this)
 				.setView(inner)
@@ -421,6 +449,45 @@ public class MainActivity extends AppCompatActivity implements
 		questController.download(bbox, 5, true);
 	}
 
+
+	/* ------------------------------ Upload progress listener ---------------------------------- */
+
+	private final QuestChangesUploadProgressListener uploadProgressListener
+			= new QuestChangesUploadProgressListener()
+	{
+		@Override public void onError(Exception e)
+		{
+			if(e instanceof VersionBannedException)
+			{
+				new AlertDialogBuilder(MainActivity.this)
+						.setMessage(R.string.version_banned_message)
+						.setPositiveButton(android.R.string.ok, null)
+						.show();
+			}
+			else if(e instanceof OsmConnectionException)
+			{
+				// a 5xx error is not the fault of this app. Nothing we can do about it, so
+				// just notify the user
+				Toast.makeText(MainActivity.this, R.string.upload_server_error, Toast.LENGTH_LONG).show();
+			}
+			else if(e instanceof OsmAuthorizationException)
+			{
+				// delete secret in case it failed while already having a token -> token is invalid
+				oAuth.saveConsumer(null);
+				requestOAuthorized();
+			}
+			else
+			{
+				crashReportExceptionHandler.askUserToSendErrorReport(
+						MainActivity.this, R.string.upload_error, e);
+			}
+		}
+
+		@Override public void onFinished()
+		{
+			answersCounter.update();
+		}
+	};
 
 	/* ------------------------------------ Progress bar  --------------------------------------- */
 
@@ -617,6 +684,12 @@ public class MainActivity extends AppCompatActivity implements
 		removeQuests(Collections.singletonList(questId), group);
 	}
 
+	@AnyThread
+	@Override public void onQuestReverted(long revertQuestId, QuestGroup group)
+	{
+		questAutoSyncer.triggerAutoUpload();
+	}
+
 	private void removeQuests(Collection<Long> questIds, QuestGroup group)
 	{
 		// amount of quests is reduced -> check if redownloding now makes sense
@@ -700,6 +773,7 @@ public class MainActivity extends AppCompatActivity implements
 			args.putSerializable(AbstractQuestAnswerFragment.ARG_ELEMENT, (OsmElement) element);
 		}
 		args.putSerializable(AbstractQuestAnswerFragment.ARG_GEOMETRY, quest.getGeometry());
+		args.putString(AbstractQuestAnswerFragment.ARG_QUESTTYPE, quest.getType().getClass().getSimpleName());
 		f.setArguments(args);
 
 		android.app.FragmentTransaction ft = getFragmentManager().beginTransaction();

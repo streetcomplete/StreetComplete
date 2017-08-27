@@ -2,6 +2,8 @@ package de.westnordost.streetcomplete.quests.bike_parking_cover;
 
 import android.os.Bundle;
 
+import java.util.Map;
+
 import javax.inject.Inject;
 
 import de.westnordost.streetcomplete.R;
@@ -13,23 +15,14 @@ import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment;
 
 public class AddBikeParkingCover extends SimpleOverpassQuestType
 {
-	@Inject public AddBikeParkingCover(OverpassMapDataDao overpassServer)
-	{
-		super(overpassServer);
-	}
+	@Inject public AddBikeParkingCover(OverpassMapDataDao overpassServer) { super(overpassServer); }
 
-	@Override
-	protected String getTagFilters()
+	@Override protected String getTagFilters()
 	{
 		return "nodes, ways with amenity=bicycle_parking and access!=private and !covered and bicycle_parking !~ shed|lockers|building";
 	}
 
-	public AbstractQuestAnswerFragment createForm()
-	{
-		AbstractQuestAnswerFragment form = new YesNoQuestAnswerFragment();
-		form.setTitle(R.string.quest_bicycleParkingCoveredStatus_title);
-		return form;
-	}
+	public AbstractQuestAnswerFragment createForm() { return new YesNoQuestAnswerFragment(); }
 
 	public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
 	{
@@ -37,10 +30,10 @@ public class AddBikeParkingCover extends SimpleOverpassQuestType
 		changes.add("covered", yesno);
 	}
 
-	@Override public String getCommitMessage()
+	@Override public String getCommitMessage() { return "Add bicycle parkings cover"; }
+	@Override public int getIcon() { return R.drawable.ic_quest_bicycle_parking_cover; }
+	@Override public int getTitle(Map<String,String> tags)
 	{
-		return "Add bicycle parkings cover";
+		return R.string.quest_bicycleParkingCoveredStatus_title;
 	}
-
-	@Override public String getIconName() {	return "bicycle_parking"; }
 }

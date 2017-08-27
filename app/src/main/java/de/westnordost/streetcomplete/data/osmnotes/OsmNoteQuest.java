@@ -6,25 +6,25 @@ import de.westnordost.streetcomplete.data.Quest;
 import de.westnordost.streetcomplete.data.QuestStatus;
 import de.westnordost.streetcomplete.data.QuestType;
 import de.westnordost.streetcomplete.data.osm.ElementGeometry;
-import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
-import de.westnordost.streetcomplete.quests.note_discussion.NoteDiscussionForm;
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.notes.Note;
 
 public class OsmNoteQuest implements Quest
 {
-	public OsmNoteQuest(Note note)
+	public OsmNoteQuest(Note note, OsmNoteQuestType osmNoteQuestType)
 	{
-		this(null, note, QuestStatus.NEW, null, new Date());
+		this(null, note, QuestStatus.NEW, null, new Date(), osmNoteQuestType);
 	}
 
-	public OsmNoteQuest(Long id, Note note, QuestStatus status, String comment, Date lastUpdate)
+	public OsmNoteQuest(Long id, Note note, QuestStatus status, String comment, Date lastUpdate,
+						OsmNoteQuestType questType)
 	{
 		this.id = id;
 		this.note = note;
 		this.status = status;
 		this.comment = comment;
 		this.lastUpdate = lastUpdate;
+		this.questType = questType;
 	}
 
 	private Long id;
@@ -34,11 +34,11 @@ public class OsmNoteQuest implements Quest
 
 	private String comment;
 
-	public static final QuestType type = new NoteQuestType();
+	private final OsmNoteQuestType questType;
 
 	@Override public QuestType getType()
 	{
-		return type;
+		return questType;
 	}
 
 	@Override public QuestStatus getStatus()
@@ -98,7 +98,7 @@ public class OsmNoteQuest implements Quest
 		this.comment = comment;
 	}
 
-	public Date getLastUpdate()
+	@Override public Date getLastUpdate()
 	{
 		return lastUpdate;
 	}
@@ -106,16 +106,6 @@ public class OsmNoteQuest implements Quest
 	@Override public void setId(long id)
 	{
 		this.id = id;
-	}
-
-	private static class NoteQuestType implements QuestType
-	{
-		@Override public AbstractQuestAnswerFragment createForm()
-		{
-			return new NoteDiscussionForm();
-		}
-
-		@Override public String getIconName() {	return "note"; }
 	}
 
 	public boolean probablyContainsQuestion()

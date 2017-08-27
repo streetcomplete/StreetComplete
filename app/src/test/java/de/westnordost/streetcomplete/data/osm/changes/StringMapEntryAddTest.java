@@ -21,4 +21,17 @@ public class StringMapEntryAddTest extends TestCase
 
 		assertTrue(c.conflictsWith(m));
 	}
+
+	public void testReverse()
+	{
+		Map<String,String> m = new HashMap<>();
+
+		StringMapEntryChange add = new StringMapEntryAdd("a","b");
+		StringMapEntryChange reverseAdd = add.reversed();
+
+		add.applyTo(m);
+		reverseAdd.applyTo(m);
+
+		assertTrue(m.isEmpty());
+	}
 }

@@ -326,6 +326,9 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_crossing_type_uncontrolled">Uncontrolled crossing</string>
     <string name="quest_crossing_type_unmarked">Crossing without road markings</string>
     <string name="compass_north_one_letter">N</string>
+    <string name="action_undo">Undo</string>
+    <string name="no_changes_to_undo">Nothing to undo</string>
+    <string name="undo_confirm_title">Undo the following last answer?</string>
     <string name="quest_orchard_produce_title">What is being cultivated here?</string>
     <string name="produce_grapes">Grapes</string>
     <string name="produce_agaves">Agaves</string>
@@ -378,7 +381,17 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="produce_mangosteen">Mangosteen</string>
     <string name="produce_tomatoes">Tomatoes</string>
     <string name="produce_areca_nuts">Areca nuts</string>
-    <string name="produce_bell_peppers">Bell peppers</string>
+    <string name="produce_sweet_peppers">Sweet peppers</string>
     <string name="produce_brazil_nuts">Brazil nuts</string>
     <string name="produce_tung_nuts">Tung nuts</string>
+    <string name="quest_parkingType_title">What kind of parking is this?</string>
+    <string name="quest_parkingType_surface">Normal</string>
+    <string name="quest_parkingType_underground">Underground garage</string>
+    <string name="quest_parkingType_multiStorage">Car park</string>
+    <string name="quest_toiletAvailability_name_title">Does "%s" have a toilet?</string>
+    <string name="quest_powerPolesMaterial_title">What is the material of this power pole?</string>
+    <string name="quest_powerPolesMaterial_wood">Wood</string>
+    <string name="quest_powerPolesMaterial_metal">Steel</string>
+    <string name="quest_powerPolesMaterial_concrete">Concrete</string>
+    <string name="quest_maxspeed_answer_advisory_speed_limit">Just an advisory speed limit</string>
 </resources>

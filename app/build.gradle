@@ -7,8 +7,8 @@ android {
     signingConfigs {
         release
     }
-    compileSdkVersion 25
-    buildToolsVersion '25.0.2'
+    compileSdkVersion 26
+    buildToolsVersion '26.0.1'
     testOptions {
         unitTests.returnDefaultValues = true
     }
@@ -16,9 +16,9 @@ android {
     defaultConfig {
         applicationId "de.westnordost.streetcomplete"
         minSdkVersion 17
-        targetSdkVersion 25
-        versionCode 102
-        versionName "1.2"
+        targetSdkVersion 26
+        versionCode 200
+        versionName "2.0"
         testInstrumentationRunner "android.test.InstrumentationTestRunner"
         buildConfigField "String", "MAPZEN_API_KEY", MAPZEN_API_KEY
     }
@@ -58,7 +58,7 @@ dependencies {
     testCompile 'org.mockito:mockito-core:1.10.19'
     testCompile 'org.objenesis:objenesis:2.5.1'
 
-    androidTestCompile 'com.android.support:support-annotations:25.3.1'
+    androidTestCompile 'com.android.support:support-annotations:26.0.1'
     androidTestCompile 'com.android.support.test:runner:0.5'
     androidTestCompile 'org.mockito:mockito-core:1.10.19'
     androidTestCompile 'org.objenesis:objenesis:2.5.1'
@@ -71,10 +71,10 @@ dependencies {
     apt 'com.google.dagger:dagger-compiler:2.5'
 
     // Android stuff
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support:support-v13:25.3.1'
-    compile 'com.android.support:support-v4:25.3.1'
-    compile 'com.android.support:design:25.3.1'
+    compile 'com.android.support:appcompat-v7:26.0.1'
+    compile 'com.android.support:support-v13:26.0.1'
+    compile 'com.android.support:support-v4:26.0.1'
+    compile 'com.android.support:design:26.0.1'
 
     // geometry
     compile 'com.vividsolutions:jts-core:1.14.0'

@@ -36,7 +36,7 @@ public class ValuePickerDialog extends AlertDialog implements DialogInterface.On
 		setButton(BUTTON_POSITIVE, context.getString(android.R.string.ok), this);
 		setButton(BUTTON_NEGATIVE, context.getString(android.R.string.cancel), this);
 
-		numberPicker = (NumberPicker) view.findViewById(R.id.number_picker);
+		numberPicker = view.findViewById(R.id.number_picker);
 
 		String[] selectableValues = Arrays.copyOfRange(values, minIndex, maxIndex+1);
 		numberPicker.setDisplayedValues(selectableValues);

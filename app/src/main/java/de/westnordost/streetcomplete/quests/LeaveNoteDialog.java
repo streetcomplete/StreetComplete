@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -36,7 +35,7 @@ public class LeaveNoteDialog extends DialogFragment
 	{
 		View view = inflater.inflate(R.layout.leave_note, container, false);
 
-		Button buttonCancel = (Button) view.findViewById(R.id.buttonCancel);
+		Button buttonCancel = view.findViewById(R.id.buttonCancel);
 		buttonCancel.setOnClickListener(new View.OnClickListener()
 		{
 			@Override
@@ -45,7 +44,7 @@ public class LeaveNoteDialog extends DialogFragment
 				onClickCancel();
 			}
 		});
-		buttonOk = (Button) view.findViewById(R.id.buttonOk);
+		buttonOk = view.findViewById(R.id.buttonOk);
 		buttonOk.setOnClickListener(new View.OnClickListener()
 		{
 			@Override
@@ -55,7 +54,7 @@ public class LeaveNoteDialog extends DialogFragment
 			}
 		});
 
-		noteInput = (EditText) view.findViewById(R.id.noteInput);
+		noteInput = view.findViewById(R.id.noteInput);
 
 		return view;
 	}

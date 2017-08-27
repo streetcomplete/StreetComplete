@@ -30,13 +30,12 @@ public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 									   Bundle savedInstanceState)
 	{
 		View view = super.onCreateView(inflater, container, savedInstanceState);
-		setTitle(R.string.quest_address_title);
 
 		View contentView = setContentView(R.layout.quest_housenumber);
 
-		input = (EditText) contentView.findViewById(R.id.input);
+		input = contentView.findViewById(R.id.input);
 		input.setInputType(InputType.TYPE_CLASS_NUMBER);
-		final Button toggleKeyboardButton = (Button) contentView.findViewById(R.id.toggleKeyboard);
+		final Button toggleKeyboardButton = contentView.findViewById(R.id.toggleKeyboard);
 		toggleKeyboardButton.setText("abc");
 
 		toggleKeyboardButton.setOnClickListener(new View.OnClickListener()

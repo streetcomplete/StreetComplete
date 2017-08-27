@@ -1,5 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [en]
+advisorySpeedLimitLayout: quest_maxspeed_advisory_white
+isAdvisorySpeedLimitKnown: true
 officialLanguages: [ko]
 orchardProduces: [apple, chili, pepper, chestnut, apple, persimmon, chili, pepper, peach, orange, grape,
   peach, pear, tomatoe, strawberry, tomatoe, plum]

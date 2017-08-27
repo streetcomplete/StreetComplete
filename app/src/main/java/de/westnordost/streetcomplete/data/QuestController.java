@@ -11,6 +11,7 @@ import android.os.HandlerThread;
 import android.os.IBinder;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -24,10 +25,12 @@ import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao;
 import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
+import de.westnordost.streetcomplete.data.osm.persist.UndoOsmQuestDao;
 import de.westnordost.streetcomplete.data.osmnotes.CreateNote;
 import de.westnordost.streetcomplete.data.osmnotes.CreateNoteDao;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuest;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestDao;
+import de.westnordost.streetcomplete.data.upload.QuestChangesUploadService;
 import de.westnordost.streetcomplete.quests.note_discussion.NoteDiscussionForm;
 import de.westnordost.streetcomplete.util.SlippyMapMath;
 import de.westnordost.osmapi.map.data.BoundingBox;
@@ -38,6 +41,7 @@ import static android.content.Context.BIND_AUTO_CREATE;
 public class QuestController
 {
 	private final OsmQuestDao osmQuestDB;
+	private final UndoOsmQuestDao undoOsmQuestDB;
 	private final MergedElementDao osmElementDB;
 	private final ElementGeometryDao geometryDB;
 	private final OsmNoteQuestDao osmNoteQuestDB;
@@ -61,16 +65,32 @@ public class QuestController
 			downloadService = null;
 		}
 	};
+	private boolean uploadServiceIsBound;
+	private QuestChangesUploadService.Interface uploadService;
+	private ServiceConnection uploadServiceConnection = new ServiceConnection()
+	{
+		public void onServiceConnected(ComponentName className, IBinder service)
+		{
+			uploadService = ((QuestChangesUploadService.Interface)service);
+			uploadService.setQuestListener(relay);
+		}
+
+		public void onServiceDisconnected(ComponentName className)
+		{
+			uploadService = null;
+		}
+	};
 
 	private Handler workerHandler;
 	private HandlerThread worker;
 
-	@Inject public QuestController(OsmQuestDao osmQuestDB, MergedElementDao osmElementDB,
-								   ElementGeometryDao geometryDB, OsmNoteQuestDao osmNoteQuestDB,
-								   CreateNoteDao createNoteDB, OpenChangesetsDao openChangesetsDao,
-								   Context context)
+	@Inject public QuestController(OsmQuestDao osmQuestDB, UndoOsmQuestDao undoOsmQuestDB,
+								   MergedElementDao osmElementDB, ElementGeometryDao geometryDB,
+								   OsmNoteQuestDao osmNoteQuestDB, CreateNoteDao createNoteDB,
+								   OpenChangesetsDao openChangesetsDao, Context context)
 	{
 		this.osmQuestDB = osmQuestDB;
+		this.undoOsmQuestDB = undoOsmQuestDB;
 		this.osmElementDB = osmElementDB;
 		this.geometryDB = geometryDB;
 		this.osmNoteQuestDB = osmNoteQuestDB;
@@ -93,6 +113,9 @@ public class QuestController
 		downloadServiceIsBound = context.bindService(
 				new Intent(context, QuestDownloadService.class),
 				downloadServiceConnection, BIND_AUTO_CREATE);
+		uploadServiceIsBound = context.bindService(
+				new Intent(context, QuestChangesUploadService.class),
+				uploadServiceConnection, BIND_AUTO_CREATE);
 	}
 
 	public void onStop()
@@ -100,6 +123,8 @@ public class QuestController
 		relay.setListener(null);
 		if(downloadServiceIsBound) context.unbindService(downloadServiceConnection);
 		if(downloadService != null) downloadService.setQuestListener(null);
+		if(uploadServiceIsBound) context.unbindService(uploadServiceConnection);
+		if(uploadService != null) uploadService.setQuestListener(null);
 	}
 
 	public void onDestroy()
@@ -179,6 +204,54 @@ public class QuestController
 		}});
 	}
 
+	public OsmQuest getLastSolvedOsmQuest()
+	{
+		return osmQuestDB.getLastSolved();
+	}
+
+	public Element getOsmElement(OsmQuest quest)
+	{
+		return osmElementDB.get(quest.getElementType(), quest.getElementId());
+	}
+
+	public void undoOsmQuest(final OsmQuest quest)
+	{
+		workerHandler.post(new Runnable() { @Override public void run()
+		{
+			if(quest == null) return;
+
+			// not uploaded yet -> simply revert to NEW
+			if(quest.getStatus() == QuestStatus.ANSWERED)
+			{
+				quest.setStatus(QuestStatus.NEW);
+				quest.setChanges(null, null);
+				osmQuestDB.update(quest);
+				// inform relay that the quest is visible again
+				relay.onQuestsCreated(Collections.singletonList(quest), QuestGroup.OSM);
+			}
+			// already uploaded! -> create change to reverse the previous change
+			else if(quest.getStatus() == QuestStatus.CLOSED)
+			{
+				quest.setStatus(QuestStatus.REVERT);
+				osmQuestDB.update(quest);
+
+				OsmQuest reversedQuest = new OsmQuest(
+						quest.getOsmElementQuestType(),
+						quest.getElementType(),
+						quest.getElementId(),
+						quest.getGeometry());
+				reversedQuest.setChanges(quest.getChanges().reversed(), quest.getChangesSource());
+				reversedQuest.setStatus(QuestStatus.ANSWERED);
+				undoOsmQuestDB.add(reversedQuest);
+				relay.onQuestReverted(quest.getId(), QuestGroup.OSM);
+			}
+			else
+			{
+				throw new IllegalStateException("Tried to undo a quest that hasn't been answered yet");
+			}
+		}});
+	}
+
 	private boolean solveOsmNoteQuest(long questId, Bundle answer)
 	{
 		OsmNoteQuest q = osmNoteQuestDB.get(questId);
@@ -203,13 +276,15 @@ public class QuestController
 		// element already (#282). So in this case, just ignore
 		OsmQuest q = osmQuestDB.get(questId);
 		if(q == null) return false;
-		Element ele = osmElementDB.get(q.getElementType(), q.getElementId());
-		if(ele == null) return false;
+		Element element = osmElementDB.get(q.getElementType(), q.getElementId());
+		if(element == null) return false;
 
-		StringMapChangesBuilder changesBuilder = new StringMapChangesBuilder(ele.getTags());
+		StringMapChanges changes;
 		try
 		{
+			StringMapChangesBuilder changesBuilder = new StringMapChangesBuilder(element.getTags());
 			q.getOsmElementQuestType().applyAnswerTo(answer, changesBuilder);
+			changes = changesBuilder.create();
 		}
 		catch (IllegalArgumentException e)
 		{
@@ -219,7 +294,7 @@ public class QuestController
 			osmQuestDB.delete(questId);
 			return false;
 		}
-		StringMapChanges changes = changesBuilder.create();
+
 		if(!changes.isEmpty())
 		{
 			q.setChanges(changes, source);

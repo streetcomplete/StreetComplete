@@ -49,7 +49,7 @@ public class NumberPickerPreference extends DialogPreference
 	@Override
 	protected void onBindDialogView(View view) {
 		super.onBindDialogView(view);
-		picker = (NumberPicker) view.findViewById(R.id.number_picker);
+		picker = view.findViewById(R.id.number_picker);
 
 		picker.setMinValue(minValue);
 		picker.setMaxValue(maxValue);

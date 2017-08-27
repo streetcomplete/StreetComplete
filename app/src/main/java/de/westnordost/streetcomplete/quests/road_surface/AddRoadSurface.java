@@ -3,8 +3,11 @@ package de.westnordost.streetcomplete.quests.road_surface;
 import android.os.Bundle;
 import android.text.TextUtils;
 
+import java.util.Map;
+
 import javax.inject.Inject;
 
+import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
@@ -22,16 +25,12 @@ public class AddRoadSurface extends SimpleOverpassQuestType
 			/*"service", */ // this is too much, and the information value is very low
 	};
 
-	@Inject public AddRoadSurface(OverpassMapDataDao overpassServer)
-	{
-		super(overpassServer);
-	}
+	@Inject public AddRoadSurface(OverpassMapDataDao overpassServer) { super(overpassServer); }
 
-	@Override
-	protected String getTagFilters()
+	@Override protected String getTagFilters()
 	{
-		return " ways with ( highway ~ " + TextUtils.join("|",ROADS_WITH_SURFACES) + " and" +
-			   " !surface)";
+		return " ways with highway ~ " + TextUtils.join("|",ROADS_WITH_SURFACES) + " and" +
+			   " !surface and access != private";
 	}
 
 	public AbstractQuestAnswerFragment createForm()
@@ -44,10 +43,12 @@ public class AddRoadSurface extends SimpleOverpassQuestType
 		changes.add("surface", answer.getString(AddRoadSurfaceForm.SURFACE));
 	}
 
-	@Override public String getCommitMessage()
+	@Override public String getCommitMessage() { return "Add road surfaces"; }
+	@Override public int getIcon() { return R.drawable.ic_quest_street_surface; }
+	@Override public int getTitle(Map<String, String> tags)
 	{
-		return "Add road surfaces";
+		boolean hasName = tags.containsKey("name");
+		if(hasName) return R.string.quest_streetSurface_name_title;
+		else        return R.string.quest_streetSurface_title;
 	}
-
-	@Override public String getIconName() {	return "street_surface"; }
 }

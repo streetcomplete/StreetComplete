@@ -62,7 +62,7 @@ public class MapControlsFragment extends Fragment
 									   Bundle savedInstanceState)
 	{
 		View view = inflater.inflate(R.layout.map_controls, container, false);
-		compassNeedle = (CompassView) view.findViewById(R.id.compassNeedle);
+		compassNeedle = view.findViewById(R.id.compassNeedle);
 
 		view.findViewById(R.id.compass).setOnClickListener(new View.OnClickListener()
 		{
@@ -72,7 +72,7 @@ public class MapControlsFragment extends Fragment
 			}
 		});
 
-		trackingButton = (LocationStateButton) view.findViewById(R.id.gps_tracking);
+		trackingButton = view.findViewById(R.id.gps_tracking);
 		trackingButton.setOnClickListener(new View.OnClickListener()
 		{
 			@Override public void onClick(View v)
@@ -114,7 +114,7 @@ public class MapControlsFragment extends Fragment
 		trackingButton.setActivated(isFollowingPosition);
 		trackingButton.setCompassMode(isCompassMode);
 
-		ImageButton zoomInButton = (ImageButton) view.findViewById(R.id.zoom_in);
+		ImageButton zoomInButton = view.findViewById(R.id.zoom_in);
 		zoomInButton.setOnClickListener(new View.OnClickListener()
 		{
 			@Override public void onClick(View v)
@@ -122,7 +122,7 @@ public class MapControlsFragment extends Fragment
 				mapFragment.zoomIn();
 			}
 		});
-		ImageButton zoomOutButton = (ImageButton) view.findViewById(R.id.zoom_out);
+		ImageButton zoomOutButton = view.findViewById(R.id.zoom_out);
 		zoomOutButton.setOnClickListener(new View.OnClickListener()
 		{
 			@Override public void onClick(View v)

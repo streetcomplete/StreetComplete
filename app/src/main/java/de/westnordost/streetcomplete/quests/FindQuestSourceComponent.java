@@ -86,7 +86,7 @@ public class FindQuestSourceComponent
 		{
 			View inner = LayoutInflater.from(activity).inflate(
 					R.layout.quest_source_dialog_layout, null, false);
-			final CheckBox checkBox = (CheckBox) inner.findViewById(R.id.checkBoxDontShowAgain);
+			final CheckBox checkBox = inner.findViewById(R.id.checkBoxDontShowAgain);
 
 			AlertDialogBuilder alertDialogBuilder = new AlertDialogBuilder(activity);
 			alertDialogBuilder
