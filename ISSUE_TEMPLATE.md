@@ -1,4 +1,4 @@
-[Please read the guidelines](https://github.com/westnordost/StreetComplete/wiki/Adding-new-Quests-to-StreetComplete) before suggesting a new quest type. If you were not going to do that, ignore/delete this. 
+Guidelines for quest suggestions: https://github.com/westnordost/StreetComplete/wiki/Adding-new-Quests-to-StreetComplete
 
 Checklist (see guidelines):
 - [ ] 🚧 To be added tag is established, has a useful purpose
