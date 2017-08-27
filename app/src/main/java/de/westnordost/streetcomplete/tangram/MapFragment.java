@@ -33,6 +33,7 @@ import com.mapzen.tangram.LngLat;
 import com.mapzen.tangram.MapController;
 import com.mapzen.tangram.MapView;
 import com.mapzen.tangram.Marker;
+import com.mapzen.tangram.SceneError;
 import com.mapzen.tangram.TouchInput;
 
 import java.io.File;
@@ -120,14 +121,14 @@ public class MapFragment extends Fragment implements
 	public void getMapAsync(String apiKey, @NonNull final String sceneFilePath)
 	{
 		this.apiKey = apiKey;
-		mapView.getMapAsync(new MapView.OnMapReadyCallback()
+		controller = mapView.getMap(new MapController.SceneLoadListener()
 		{
-			@Override public void onMapReady(MapController ctrl)
+			@Override public void onSceneReady(int sceneId, SceneError sceneError)
 			{
-				controller = ctrl;
 				initMap();
 			}
-		}, sceneFilePath);
+		});
+		controller.loadSceneFile(sceneFilePath);
 	}
 
 	protected void initMap()
