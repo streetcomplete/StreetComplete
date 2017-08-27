@@ -22,8 +22,6 @@ Please try to satisfy all conditions. If one cannot be satisfied that may mean y
 If you are not sure about how one condition applies to your suggestion or you have (very) strong reasons that a condition may not needed to be satisfied in your case, just note that down. Other people may come up with some ideas.
 -->
 
-What is the purpose of this element?
-
 ### Ideas for implementation
 <!-- If you do not have any, just skip this part. ;)  -->
 
