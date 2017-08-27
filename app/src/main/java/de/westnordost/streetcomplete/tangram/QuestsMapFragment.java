@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.tangram;
 
 import android.app.Activity;
+import android.content.res.Configuration;
 import android.graphics.Point;
 import android.graphics.PointF;
 import android.graphics.Rect;
@@ -22,6 +23,7 @@ import java.util.Set;
 import javax.inject.Inject;
 
 import de.westnordost.streetcomplete.Injector;
+import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.Quest;
 import de.westnordost.streetcomplete.data.QuestGroup;
 import de.westnordost.streetcomplete.data.QuestTypes;
@@ -53,7 +55,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 
 	private Listener listener;
 
-	private int questTopOffset, questBottomOffset;
+	private Rect questOffset;
 
 	@Inject QuestTypes questTypes;
 	@Inject TangramQuestSpriteSheetCreator spriteSheetCreator;
@@ -176,12 +178,23 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 
 	private LngLat getCenterWithOffset(ElementGeometry geometry)
 	{
-		LngLat top = controller.screenPositionToLngLat(new PointF(0, questTopOffset));
-		LngLat bottom = controller.screenPositionToLngLat(new PointF(0, questBottomOffset));
-		LngLat offset = new LngLat(0,0);
-		offset.latitude = (top.latitude - bottom.latitude) / 2;
-		offset.longitude = (top.longitude - bottom.longitude) / 2;
 		LngLat pos = TangramConst.toLngLat(geometry.center);
+		LngLat offset = new LngLat(0,0);
+
+		if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
+		{
+			LngLat top = controller.screenPositionToLngLat(new PointF(0, questOffset.top));
+			LngLat bottom = controller.screenPositionToLngLat(new PointF(0, questOffset.bottom));
+			offset.latitude = (top.latitude - bottom.latitude) / 2;
+			offset.longitude = (top.longitude - bottom.longitude) / 2;
+		}
+		else if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE)
+		{
+			LngLat left = controller.screenPositionToLngLat(new PointF(questOffset.left, 0));
+			LngLat bottom = controller.screenPositionToLngLat(new PointF(0, questOffset.bottom));
+			offset.latitude = (left.latitude - bottom.latitude) / 2;
+			offset.longitude = (left.longitude - bottom.longitude) / 2;
+		}
 		pos.latitude -= offset.latitude;
 		pos.longitude -= offset.longitude;
 		return pos;
@@ -193,7 +206,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		BoundingBox screenArea;
 		float currentZoom;
 		synchronized(controller) {
-			screenArea = getDisplayedArea(questTopOffset, questBottomOffset);
+			screenArea = getDisplayedArea(questOffset.top, questOffset.bottom);
 			if(screenArea == null) return Float.NaN;
 			currentZoom = controller.getZoom();
 		}
@@ -268,10 +281,18 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		retrievedTiles.addAll(tiles);
 	}
 
-	public void setQuestYOffsets(int questTopOffset, int questBottomOffset)
+	public void setQuestOffsets()
 	{
-		this.questTopOffset = questTopOffset;
-		this.questBottomOffset = questBottomOffset;
+		questOffset = new Rect();
+		questOffset.top = 50;
+		if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
+		{
+			questOffset.bottom = getResources().getDimensionPixelSize(R.dimen.quest_bottom_sheet_peek_height);
+		}
+		else if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE)
+		{
+			questOffset.left = getResources().getDimensionPixelSize(R.dimen.quest_bottom_sheet_landscape_width);
+		}
 	}
 
 	public void addQuestGeometry(ElementGeometry g)

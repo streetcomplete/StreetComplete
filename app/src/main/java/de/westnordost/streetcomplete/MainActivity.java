@@ -211,8 +211,7 @@ public class MainActivity extends AppCompatActivity implements
 		progressBar.setMax(1000);
 
 		mapFragment = (QuestsMapFragment) getSupportFragmentManager().findFragmentById(R.id.map_fragment);
-		mapFragment.setQuestYOffsets(50,
-				getResources().getDimensionPixelSize(R.dimen.quest_bottom_sheet_peek_height));
+		mapFragment.setQuestOffsets();
 
 		mapFragment.getMapAsync(BuildConfig.MAPZEN_API_KEY != null ?
 				BuildConfig.MAPZEN_API_KEY :

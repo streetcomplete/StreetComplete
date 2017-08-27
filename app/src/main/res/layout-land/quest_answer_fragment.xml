@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <de.westnordost.streetcomplete.view.SlidingRelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="350dp"
+    android:layout_width="@dimen/quest_bottom_sheet_landscape_width"
     android:layout_height="match_parent">
 
     <include layout="@layout/quest_answer_fragment_content"/>
