@@ -12,6 +12,8 @@ public class AddCarWashTypeForm extends ImageListQuestAnswerFragment
 {
 	public static final String AUTOMATED = "AUTOMATED";
 	public static final String SELF_SERVICE = "SELF_SERVICE";
+	public static final String OTHER_ANSWER = "OTHER_ANSWER";
+	public static final String SERVICE = "SERVICE";
 
 	private final ImageListQuestAnswerFragment.OsmItem[] TYPES = new ImageListQuestAnswerFragment.OsmItem[] {
 			new ImageListQuestAnswerFragment.OsmItem(AUTOMATED, R.drawable.car_wash_automated, R.string.quest_carWashType_automated),
@@ -38,6 +40,20 @@ public class AddCarWashTypeForm extends ImageListQuestAnswerFragment
 	{
 		View view = super.onCreateView(inflater, container, savedInstanceState);
 		setTitle(R.string.quest_carWashType_title);
+		addOtherAnswers();
 		return view;
+	}
+
+	private void addOtherAnswers()
+	{
+		addOtherAnswer(R.string.quest_carWashType_service, new Runnable()
+		{
+			@Override public void run()
+			{
+				Bundle answer = new Bundle();
+				answer.putString(OTHER_ANSWER, SERVICE);
+				applyImmediateAnswer(answer);
+			}
+		});
 	}
 }
