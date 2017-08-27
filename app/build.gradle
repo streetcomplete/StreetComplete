@@ -96,7 +96,7 @@ dependencies {
     compile 'com.esotericsoftware:kryo:4.0.0'
 
     // map and location
-    compile 'com.mapzen.tangram:tangram:0.8.0-RC2'
+    compile 'com.mapzen.tangram:tangram:0.8.0'
     compile 'com.mapzen.android:lost:3.0.3'
 
     // config files
