@@ -191,9 +191,9 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		else if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE)
 		{
 			LngLat left = controller.screenPositionToLngLat(new PointF(questOffset.left, 0));
-			LngLat bottom = controller.screenPositionToLngLat(new PointF(0, questOffset.bottom));
-			offset.latitude = (left.latitude - bottom.latitude) / 2;
-			offset.longitude = (left.longitude - bottom.longitude) / 2;
+			LngLat right = controller.screenPositionToLngLat(new PointF(questOffset.right, 0));
+			offset.latitude = (left.latitude - right.latitude) / 2;
+			offset.longitude = (left.longitude - right.longitude) / 2;
 		}
 		pos.latitude -= offset.latitude;
 		pos.longitude -= offset.longitude;
@@ -281,18 +281,9 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		retrievedTiles.addAll(tiles);
 	}
 
-	public void setQuestOffsets()
+	public void setQuestOffsets(Rect offsets)
 	{
-		questOffset = new Rect();
-		questOffset.top = 50;
-		if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
-		{
-			questOffset.bottom = getResources().getDimensionPixelSize(R.dimen.quest_bottom_sheet_peek_height);
-		}
-		else if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE)
-		{
-			questOffset.left = getResources().getDimensionPixelSize(R.dimen.quest_bottom_sheet_landscape_width);
-		}
+		questOffset = offsets;
 	}
 
 	public void addQuestGeometry(ElementGeometry g)
