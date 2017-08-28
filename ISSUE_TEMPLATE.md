@@ -23,7 +23,7 @@ If you are not sure about how one condition applies to your suggestion or you ha
 -->
 
 ### Ideas for implementation
-<!-- If you do not have any, just skip this part. ;)  -->
+<!-- If you do not have any, just delete this part. ;)  -->
 
 <!-- If you have any idea for how elements should be selected, add it here. Possibly include an overpass-api query if you are sure what you do. -->
 **Element selection:** 
@@ -31,7 +31,7 @@ If you are not sure about how one condition applies to your suggestion or you ha
 <!-- If you have any idea whether metadata per country is needed, add it here. -->
 **Metadata needed:** 
 
-<!-- If you have any idea on how the GUI (the from appearing when the quest is asked) should look like. (i.e. whether a simple yes/no answer is suitable or what else you imagine) You can use any way to propose a UI. Use simple markdown tables or complex image mockups. That's your decicion.
+<!-- If you have any idea on how the GUI (the from appearing when the quest is asked) should look like. (i.e. whether a simple yes/no answer is suitable or what else you imagine) You can use any way to propose a UI. Use simple markdown tables (https://help.github.com/articles/organizing-information-with-tables/) or complex image mockups. That's your decicion.
 Do include all answer possibilities you consider for that quest. -->
 **Proposed GUI:** 
 
