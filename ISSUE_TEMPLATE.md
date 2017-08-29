@@ -5,7 +5,7 @@ Guidelines for quest suggestions: https://github.com/westnordost/StreetComplete/
 -->
 
 ### General
-Affected tag(s) to be modified: [?????](https://wiki.openstreetmap.org/wiki/Tag:?????)
+Affected key(s) (or tags) to be modified: [](https://wiki.openstreetmap.org/wiki/Key:)
 Question asked: **Is there an example tag on item XY?**
 
 <!-- If the answer is not obvious, please append a short explanation to each item (or, if it is longer, below), explaining the reason. -->
@@ -28,7 +28,7 @@ If you are not sure about how one condition applies to your suggestion or you ha
 <!-- If you have any idea for how elements should be selected, add it here. Possibly include an overpass-api query if you are sure what you do. -->
 **Element selection:** 
 
-<!-- If you have any idea whether metadata per country is needed, add it here. -->
+<!-- If you have any idea whether metadata per country is needed, add it here. If you even have ideas, where to get this data from, you can of course also mention it! -->
 **Metadata needed:** 
 
 <!-- If you have any idea on how the GUI (the from appearing when the quest is asked) should look like. (i.e. whether a simple yes/no answer is suitable or what else you imagine) You can use any way to propose a UI. Use simple markdown tables (https://help.github.com/articles/organizing-information-with-tables/) or complex image mockups. That's your decicion.
