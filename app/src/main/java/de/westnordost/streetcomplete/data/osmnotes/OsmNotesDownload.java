@@ -151,7 +151,7 @@ public class OsmNotesDownload
 	{
 		/* hide a note if he already contributed to it. This can also happen from outside
 		   this application, which is why we need to overwrite its quest status. */
-		return containsCommentFromUser(userId, note);
+		return containsCommentFromUser(userId, note) || userProbablyCreatedNoteInApp(userId, note);
 	}
 
 	// the difference to hidden is that is that invisible quests may turn visible again, dependent
@@ -173,9 +173,23 @@ public class OsmNotesDownload
 
 		for(NoteComment comment : note.comments)
 		{
-			if(comment.user != null && comment.user.id == userId)
-				return true;
+			boolean isComment = comment.action == NoteComment.Action.COMMENTED;
+			if(isFromUser(userId, comment) && isComment) return true;
 		}
 		return false;
+	}
+
+	private boolean userProbablyCreatedNoteInApp(Long userId, Note note)
+	{
+		if(userId == null) return false;
+
+		NoteComment firstComment = note.comments.get(0);
+		boolean isViaApp = firstComment.text.contains("via StreetComplete");
+		return isFromUser(userId, firstComment) && isViaApp;
+	}
+
+	private boolean isFromUser(long userId, NoteComment comment)
+	{
+		return comment.user != null && comment.user.id == userId;
 	}
 }
