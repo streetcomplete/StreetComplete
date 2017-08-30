@@ -61,7 +61,7 @@ public class OverpassMapDataDao
 		}
 		catch(OsmApiException e)
 		{
-			if(e.getErrorCode() == 429)
+			if(e.getErrorCode() == 429 || e.getErrorCode() == 504)
 				throw new OsmTooManyRequestsException(e.getErrorCode(), e.getErrorTitle(), e.getDescription());
 			else
 				throw e;
