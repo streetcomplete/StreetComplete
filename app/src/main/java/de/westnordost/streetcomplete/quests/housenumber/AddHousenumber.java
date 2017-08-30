@@ -120,7 +120,16 @@ public class AddHousenumber implements OsmElementQuestType
 	@Override public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
 	{
 		String housenumber = answer.getString(AddHousenumberForm.HOUSENUMBER);
-		changes.add("addr:housenumber", housenumber);
+		String housename = answer.getString(AddHousenumberForm.HOUSENAME);
+
+		if(housenumber != null)
+		{
+			changes.add("addr:housenumber", housenumber);
+		}
+		if(housename != null)
+		{
+			changes.add("addr:housename", housename);
+		}
 	}
 
 	@Override public boolean appliesTo(Element element)

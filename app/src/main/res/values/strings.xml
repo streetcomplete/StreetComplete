@@ -394,4 +394,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_powerPolesMaterial_metal">Steel</string>
     <string name="quest_powerPolesMaterial_concrete">Concrete</string>
     <string name="quest_maxspeed_answer_advisory_speed_limit">Just an advisory speed limit</string>
+    <string name="quest_address_answer_house_name">No house number but a name</string>
+    <string name="quest_address_house_name_label">House name:</string>
 </resources>
