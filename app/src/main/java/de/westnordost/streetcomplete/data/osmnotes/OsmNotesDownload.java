@@ -12,6 +12,7 @@ import java.util.Set;
 
 import javax.inject.Inject;
 
+import de.westnordost.streetcomplete.ApplicationConstants;
 import de.westnordost.streetcomplete.data.QuestGroup;
 import de.westnordost.streetcomplete.data.QuestStatus;
 import de.westnordost.streetcomplete.Prefs;
@@ -184,7 +185,7 @@ public class OsmNotesDownload
 		if(userId == null) return false;
 
 		NoteComment firstComment = note.comments.get(0);
-		boolean isViaApp = firstComment.text.contains("via StreetComplete");
+		boolean isViaApp = firstComment.text.contains("via " + ApplicationConstants.NAME);
 		return isFromUser(userId, firstComment) && isViaApp;
 	}
 
