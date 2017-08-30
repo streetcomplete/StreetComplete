@@ -7,6 +7,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import javax.inject.Inject;
 
+import de.westnordost.streetcomplete.ApplicationConstants;
 import de.westnordost.streetcomplete.data.QuestStatus;
 import de.westnordost.osmapi.common.SingleElementHandler;
 import de.westnordost.osmapi.common.errors.OsmConflictException;
@@ -155,7 +156,7 @@ public class CreateNoteUpload
 			{
 				return "Unable to answer \"" + note.questTitle + "\"" +
 						" for " + getAssociatedElementString(note) +
-						" via StreetComplete:\n\n" + note.text;
+						" via "+ ApplicationConstants.USER_AGENT+":\n\n" + note.text;
 			}
 			else
 			{
