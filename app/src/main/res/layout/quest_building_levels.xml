@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="bottom">
@@ -13,13 +14,13 @@
         android:layout_alignParentLeft="true"
         android:background="@drawable/building_levels_illustration_bg_left"
         android:scaleType="fitEnd"
-        />
+        tools:ignore="RtlHardcoded"/>
 
     <ImageView
         android:id="@+id/building_illustration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/building_levels_illustration"
+        android:src="@drawable/ic_building_levels_illustration"
         android:scaleType="fitEnd"
         android:layout_centerHorizontal="true"
         />
@@ -32,23 +33,27 @@
         android:layout_alignParentRight="true"
         android:background="@drawable/building_levels_illustration_bg_right"
         android:scaleType="fitEnd"
-        />
+        tools:ignore="RtlHardcoded"/>
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toLeftOf="@+id/building_illustration"
-        android:layout_marginRight="-28dp">
+        android:layout_marginRight="-28dp"
+        android:layout_alignBottom="@id/building_illustration"
+        android:layout_marginBottom="20dp"
+        tools:ignore="RtlHardcoded">
 
         <TextView
             android:id="@+id/levelsInputLabel"
-            android:text="@string/quest_buildingLevels_levelsLabel"
+            android:text="@string/quest_buildingLevels_levelsLabel2"
             android:gravity="right"
             android:labelFor="@+id/levelsInput"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
             android:layout_marginRight="4dp"
-            />
+            tools:ignore="RtlHardcoded"/>
 
         <EditText
             android:layout_height="wrap_content"
@@ -61,17 +66,19 @@
             android:inputType="number"
             android:maxLines="1"
             android:nextFocusDown="@+id/roofLevelsInput"
-            />
-
+            tools:ignore="RtlHardcoded"/>
 
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_toRightOf="@+id/building_illustration"
+        android:layout_alignTop="@id/building_illustration"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="-34dp"
-        android:gravity="center_vertical">
+        android:layout_marginTop="8dp"
+        android:gravity="center_vertical"
+        tools:ignore="RtlHardcoded">
 
         <EditText
             android:layout_height="wrap_content"
@@ -86,7 +93,7 @@
             />
 
         <TextView
-            android:text="@string/quest_buildingLevels_roofLevelsLabel"
+            android:text="@string/quest_buildingLevels_roofLevelsLabel2"
             android:labelFor="@+id/roofLevelsInput"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

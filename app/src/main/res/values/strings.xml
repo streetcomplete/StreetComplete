@@ -105,8 +105,6 @@
     <string name="quest_openingHours_comment_description">"Be concise, ideally use the wording from the sign. I.e. \"by appointment\". The absence of a sign does not necessarily mean there are no regular opening hours."</string>
     <string name="quest_buildingLevels_title">"How many levels does this building have?"</string>
     <string name="quest_buildingLevels_title_buildingPart">"How many levels does this building part have?"</string>
-    <string name="quest_buildingLevels_levelsLabel">"total levels"</string>
-    <string name="quest_buildingLevels_roofLevelsLabel">"of these, levels in the roof"</string>
     <string name="quest_roofShape_title">"What basic shape does this building's roof have?"</string>
     <string name="quest_roofShape_select_one">"Select one:"</string>
     <string name="quest_roofShape_show_more">"Show more…"</string>
@@ -237,7 +235,6 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="quest_name_answer_noName">"It has no name"</string>
     <string name="quest_name_answer_noName_confirmation_title">"Really no name?"</string>
     <string name="quest_name_noName_confirmation_positive">"Yes, no name"</string>
-    <string name="quest_buildingLevels_negativeBuildingLevels">"Oops! You specified more roof levels than levels in total!"</string>
     <string name="quest_openingHours_add_times">"Add opening times"</string>
     <string name="crash_message">"Would you please send the error report to the developer?"</string>
     <string name="crash_title">"Oh no, StreetComplete crashed last time!"</string>
@@ -396,4 +393,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_maxspeed_answer_advisory_speed_limit">Just an advisory speed limit</string>
     <string name="quest_address_answer_house_name">No house number but a name</string>
     <string name="quest_address_house_name_label">House name:</string>
+    <string name="quest_buildingLevels_roofLevelsLabel2">levels in the roof</string>
+    <string name="quest_buildingLevels_levelsLabel2">regular levels (not counting the roof)</string>
 </resources>
