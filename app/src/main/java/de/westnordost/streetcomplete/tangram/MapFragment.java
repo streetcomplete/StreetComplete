@@ -71,7 +71,6 @@ public class MapFragment extends Fragment implements
 	private boolean isFollowingPosition;
 	private Location lastLocation;
 	private boolean zoomedYet;
-
 	private boolean isCompassMode;
 
 	private MapControlsFragment mapControls;
@@ -135,7 +134,7 @@ public class MapFragment extends Fragment implements
 	{
 		updateMapTileCacheSize();
 		controller.setHttpHandler(httpHandler);
-		restoreCameraState();
+		restoreMapState();
 
 		controller.setRotateResponder(this);
 		controller.setShoveResponder(this);
@@ -167,6 +166,7 @@ public class MapFragment extends Fragment implements
 		updateView();
 
 		listener.onMapReady();
+		mapControls.onMapReady();
 	}
 
 	private String[] sizeInDp(Drawable drawable)
@@ -237,6 +237,7 @@ public class MapFragment extends Fragment implements
 		if(!isFollowingPosition) {
 			zoomedYet = false;
 			isShowingDirection = false;
+			isCompassMode = false;
 		}
 		followPosition();
 	}
@@ -255,12 +256,6 @@ public class MapFragment extends Fragment implements
 			{
 				zoomedYet = true;
 				controller.setZoomEased(19, 500);
-				if(!isCompassMode)
-				{
-					controller.setRotationEased(0, 50);
-					controller.setTiltEased(0, 50);
-					mapControls.onMapOrientation(0,0);
-				}
 			}
 			updateView();
 		}
@@ -302,7 +297,6 @@ public class MapFragment extends Fragment implements
 
 	@Override public boolean onShove(float distance)
 	{
-		if(!requestUnglueViewFromRotation()) return true;
 		mapControls.onMapOrientation(controller.getRotation(), controller.getTilt());
 		updateView();
 		return false;
@@ -412,7 +406,6 @@ public class MapFragment extends Fragment implements
 		if (isCompassMode)
 		{
 			float mapRotation = -rotation;
-			float mapTilt = -tilt;
 
 			// though the rotation and tilt are already smoothened by the CompassComponent, when it
 			// involves rotating the whole view, it feels better for the user if this is smoothened
@@ -421,11 +414,7 @@ public class MapFragment extends Fragment implements
 			{
 				controller.setRotationEased(mapRotation, 50);
 			}
-			if (controller.getTilt() != mapTilt)
-			{
-				controller.setTiltEased(mapTilt, 50);
-			}
-			mapControls.onMapOrientation(mapRotation, mapTilt);
+			mapControls.onMapOrientation(mapRotation, controller.getTilt());
 		}
 	}
 
@@ -438,7 +427,12 @@ public class MapFragment extends Fragment implements
 
 	public void setCompassMode(boolean isCompassMode)
 	{
+		if(!isFollowingPosition) return;
 		this.isCompassMode = isCompassMode;
+		if(isCompassMode)
+		{
+			if(controller != null) controller.setTilt((float) (Math.PI / 5));
+		}
 	}
 
 	private float meters2Pixels(LngLat at, float meters) {
@@ -455,21 +449,22 @@ public class MapFragment extends Fragment implements
 		);
 	}
 
-	private static final String PREF_ROTATION = "map_rotation";
-	private static final String PREF_TILT = "map_tilt";
-	private static final String PREF_ZOOM = "map_zoom";
-	private static final String PREF_LAT = "map_lat";
-	private static final String PREF_LON = "map_lon";
+	private static final String
+			PREF_ROTATION = "map_rotation",
+			PREF_TILT = "map_tilt",
+			PREF_ZOOM = "map_zoom",
+			PREF_LAT = "map_lat",
+			PREF_LON = "map_lon",
+			PREF_FOLLOWING = "map_following",
+			PREF_COMPASS_MODE = "map_compass_mode";
 
-	private void restoreCameraState()
+	private void restoreMapState()
 	{
 		SharedPreferences prefs = getActivity().getPreferences(Activity.MODE_PRIVATE);
 
 		if(prefs.contains(PREF_ROTATION)) controller.setRotation(prefs.getFloat(PREF_ROTATION,0));
 		if(prefs.contains(PREF_TILT)) controller.setTilt(prefs.getFloat(PREF_TILT,0));
 		if(prefs.contains(PREF_ZOOM)) controller.setZoom(prefs.getFloat(PREF_ZOOM,0));
-
-		mapControls.onMapOrientation(controller.getRotation(), controller.getTilt());
 
 		if(prefs.contains(PREF_LAT) && prefs.contains(PREF_LON))
 		{
@@ -479,9 +474,14 @@ public class MapFragment extends Fragment implements
 			);
 			controller.setPosition(pos);
 		}
+
+		setIsFollowingPosition(prefs.getBoolean(PREF_FOLLOWING, true));
+		setCompassMode(prefs.getBoolean(PREF_COMPASS_MODE, false));
+
+		mapControls.onMapOrientation(controller.getRotation(), controller.getTilt());
 	}
 
-	private void saveCameraState()
+	private void saveMapState()
 	{
 		if(controller == null) return;
 
@@ -492,6 +492,8 @@ public class MapFragment extends Fragment implements
 		LngLat pos = controller.getPosition();
 		editor.putLong(PREF_LAT, Double.doubleToRawLongBits(pos.latitude));
 		editor.putLong(PREF_LON, Double.doubleToRawLongBits(pos.longitude));
+		editor.putBoolean(PREF_FOLLOWING, isFollowingPosition);
+		editor.putBoolean(PREF_COMPASS_MODE, isCompassMode);
 		editor.apply();
 	}
 
@@ -531,7 +533,7 @@ public class MapFragment extends Fragment implements
 		super.onPause();
 		compass.onPause();
 		if(mapView != null) mapView.onPause();
-		saveCameraState();
+		saveMapState();
 	}
 
 	@Override public void onStop()
@@ -602,4 +604,8 @@ public class MapFragment extends Fragment implements
 		mapControls.onMapOrientation(rotation, tilt);
 	}
 
+	public float getRotation()
+	{
+		return controller != null ? controller.getRotation() : 0;
+	}
 }
