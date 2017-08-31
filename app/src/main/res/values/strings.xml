@@ -65,7 +65,7 @@
     <string name="upload_error">"Error while uploading answers"</string>
     <string name="cannot_find_bbox">"Can't scan here. Try to zoom in further"</string>
     <string name="download_area_too_big">"Please zoom in further"</string>
-    <string name="confirmation_cancel_prev_download_title">"Cancel the current search and scan here instead?"</string>
+    <string name="confirmation_cancel_prev_download_title">"Stop the current search and scan here instead?"</string>
     <string name="notification_downloading">"Scanning for quests…"</string>
     <string name="now_downloading_toast">"Scanning for more quests…"</string>
     <string name="turn_on_location_request">"Location is off. Open Settings to turn it on now?"</string>
