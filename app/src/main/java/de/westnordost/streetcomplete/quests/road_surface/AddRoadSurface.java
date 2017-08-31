@@ -30,7 +30,7 @@ public class AddRoadSurface extends SimpleOverpassQuestType
 	@Override protected String getTagFilters()
 	{
 		return " ways with highway ~ " + TextUtils.join("|",ROADS_WITH_SURFACES) + " and" +
-			   " !surface and access != private and access != no";
+			   " !surface and (access !~ private|no or foot !~ private|no)";
 	}
 
 	public AbstractQuestAnswerFragment createForm()
