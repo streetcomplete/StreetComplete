@@ -20,7 +20,7 @@ public class AddToiletAvailability extends SimpleOverpassQuestType
 
 	@Override protected String getTagFilters()
 	{
-		return "nodes, ways with shop ~ mall|department_store and name and !toilet";
+		return "nodes, ways with (shop ~ mall|department_store or name=McDonald's) and name and !toilets";
 	}
 
 	public AbstractQuestAnswerFragment createForm()
