@@ -144,7 +144,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 
 	@Override public boolean onSingleTapConfirmed(float x, float y)
 	{
-		controller.pickLabel(x,y);
+		if(controller != null) controller.pickLabel(x,y);
 		return true;
 	}
 
