@@ -118,6 +118,7 @@ public class QuestDownloadService extends Service
 	@Override public void onDestroy()
 	{
 		cancel();
+		serviceHandler.removeCallbacksAndMessages(null);
 		serviceLooper.quit();
 	}
 
