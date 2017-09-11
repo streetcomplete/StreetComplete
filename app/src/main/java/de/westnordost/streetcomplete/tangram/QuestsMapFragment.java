@@ -5,6 +5,7 @@ import android.graphics.Point;
 import android.graphics.PointF;
 import android.graphics.Rect;
 import android.support.annotation.Nullable;
+import android.support.annotation.UiThread;
 
 import com.mapzen.tangram.LabelPickResult;
 import com.mapzen.tangram.LngLat;
@@ -274,6 +275,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		this.questBottomOffset = questBottomOffset;
 	}
 
+	@UiThread
 	public void addQuestGeometry(ElementGeometry g)
 	{
 		if(geometryLayer == null) return; // might still be null - async calls...
@@ -304,6 +306,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		}
 	}
 
+	@UiThread
 	public void removeQuestGeometry()
 	{
 		if(geometryLayer != null) geometryLayer.clear();
@@ -332,6 +335,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 	}
 */
 
+	@UiThread
 	public void addQuests(Iterable quests, QuestGroup group)
 	{
 		if(questsLayer == null) return;
@@ -375,6 +379,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		questsLayer.addGeoJson(geoJson.toString());
 	}
 
+	@UiThread
 	public void removeQuests(Collection<Long> questIds, QuestGroup group)
 	{
 		// TODO: this method may also be called for quests that are not displayed on this map (anymore)
