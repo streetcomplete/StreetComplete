@@ -1,75 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bottomSheet"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_above="@+id/buttonPanel"
-    android:background="#00000000">
-    <!-- If I do not set any background color here, the layout will leave a few pixels free at the
- bottom on my Android 6.0 emulator; so, setting to transparent-->
+    android:layout_height="wrap_content"
+    android:elevation="16dp"
+    android:orientation="vertical"
+    app:layout_behavior="android.support.design.widget.BottomSheetBehavior"
+    app:behavior_peekHeight="@dimen/quest_form_bottomOffset"
+    android:background="@android:drawable/dialog_holo_light_frame">
 
-    <LinearLayout
-        android:id="@+id/bottomSheet"
+    <include layout="@layout/quest_answer_fragment_title_bar"/>
+
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:elevation="16dp"
-        android:orientation="vertical"
-        app:layout_behavior="android.support.design.widget.BottomSheetBehavior"
-        app:behavior_peekHeight="@dimen/quest_bottom_sheet_peek_height"
-        android:background="@android:color/background_light"
-        >
+        android:layout_height="wrap_content">
 
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:id="@+id/content"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_title"
-            android:gravity="center_vertical"
-            style="@style/Widget.AppCompat.Toolbar"
-            android:orientation="horizontal">
-
-            <ImageButton
-                android:id="@+id/close_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src = "@drawable/ic_close_white_24dp"
-                style="@style/Widget.AppCompat.Toolbar.Button.Navigation"
-                android:visibility="gone"
-                android:contentDescription="@string/close"
-                android:adjustViewBounds="true"
-                android:padding="12dp"/>
-
-            <TextView
-                android:id="@+id/title"
-                style="@style/QuestTitleQuestion"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingRight="16dp"
-                android:paddingLeft="16dp"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"/>
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            >
 
         </LinearLayout>
 
-        <android.support.v4.widget.NestedScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+    </android.support.v4.widget.NestedScrollView>
 
-            <LinearLayout
-                android:id="@+id/content"
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent"
-                android:orientation="vertical"
-                android:paddingLeft="16dp"
-                android:paddingRight="16dp"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"
-                >
-
-            </LinearLayout>
-
-        </android.support.v4.widget.NestedScrollView>
-
-    </LinearLayout>
-
-</android.support.design.widget.CoordinatorLayout>
+</LinearLayout>

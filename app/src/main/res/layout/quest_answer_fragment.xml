@@ -4,7 +4,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include layout="@layout/quest_answer_fragment_content"/>
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/buttonPanel"
+        android:layout_marginStart="-9dp"
+        android:layout_marginEnd="-9dp"
+        android:layout_marginTop="-8dp"
+        android:layout_marginBottom="-8dp"
+        android:background="#00000000">
+        <!-- Set negative margin to display elevation only on the top and bottom side -->
+        <!-- If I do not set any background color here, the layout will leave a few pixels free at the
+     bottom on my Android 6.0 emulator; so, setting to transparent-->
+
+        <include layout="@layout/quest_answer_fragment_content"/>
+
+    </android.support.design.widget.CoordinatorLayout>
 
     <include layout="@layout/quest_answer_fragment_gradient"/>
 

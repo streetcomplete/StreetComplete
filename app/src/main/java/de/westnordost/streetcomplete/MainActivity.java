@@ -13,6 +13,7 @@ import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
+import android.graphics.Rect;
 import android.location.Location;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -194,8 +195,8 @@ public class MainActivity extends AppCompatActivity implements
 		progressBar.setMax(1000);
 
 		mapFragment = (QuestsMapFragment) getSupportFragmentManager().findFragmentById(R.id.map_fragment);
-		mapFragment.setQuestYOffsets(50,
-				getResources().getDimensionPixelSize(R.dimen.quest_bottom_sheet_peek_height));
+		mapFragment.setQuestOffsets(new Rect(R.dimen.quest_form_leftOffset, R.dimen.quest_form_topOffset,
+				R.dimen.quest_form_rightOffset ,R.dimen.quest_form_bottomOffset));
 
 		mapFragment.getMapAsync(BuildConfig.MAPZEN_API_KEY != null ?
 				BuildConfig.MAPZEN_API_KEY :
@@ -776,8 +777,7 @@ public class MainActivity extends AppCompatActivity implements
 		f.setArguments(args);
 
 		android.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
-		if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) ft.setCustomAnimations(R.animator.enter_from_bottom, R.animator.exit_to_bottom, R.animator.enter_from_bottom, R.animator.exit_to_bottom);
-		else if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) ft.setCustomAnimations(R.animator.enter_from_left, R.animator.exit_to_left);
+		ft.setCustomAnimations(R.animator.quest_answer_form_appear, R.animator.quest_answer_form_disappear);
 		ft.add(R.id.map_bottom_sheet_container, f, BOTTOM_SHEET);
 		ft.addToBackStack(BOTTOM_SHEET);
 		ft.commit();
