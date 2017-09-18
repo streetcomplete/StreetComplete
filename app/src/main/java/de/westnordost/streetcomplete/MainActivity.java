@@ -110,6 +110,8 @@ public class MainActivity extends AppCompatActivity implements
 	private ProgressBar progressBar;
 	private AnswersCounter answersCounter;
 
+	private float mapRotation, mapTilt;
+
 	private boolean downloadServiceIsBound;
 	private QuestDownloadService.Interface downloadService;
 	private ServiceConnection downloadServiceConnection = new ServiceConnection()
@@ -774,6 +776,8 @@ public class MainActivity extends AppCompatActivity implements
 		}
 		args.putSerializable(AbstractQuestAnswerFragment.ARG_GEOMETRY, quest.getGeometry());
 		args.putString(AbstractQuestAnswerFragment.ARG_QUESTTYPE, quest.getType().getClass().getSimpleName());
+		args.putFloat(AbstractQuestAnswerFragment.ARG_MAP_ROTATION, mapRotation);
+		args.putFloat(AbstractQuestAnswerFragment.ARG_MAP_TILT, mapTilt);
 		f.setArguments(args);
 
 		android.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
@@ -795,6 +799,17 @@ public class MainActivity extends AppCompatActivity implements
 	@Override public void onMapReady()
 	{
 
+	}
+
+	@Override public void onMapOrientation(float rotation, float tilt)
+	{
+		mapRotation = rotation;
+		mapTilt = tilt;
+		AbstractQuestAnswerFragment f = getQuestDetailsFragment();
+		if(f != null)
+		{
+			f.onMapOrientation(rotation, tilt);
+		}
 	}
 
 	/* ---------- QuestsMapFragment.Listener ---------- */

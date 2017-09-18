@@ -2,6 +2,7 @@
 advisorySpeedLimitLayout: quest_maxspeed_advisory_blue
 firstDayOfWorkweek: Mo
 isAdvisorySpeedLimitKnown: false
+isLeftHandTraffic: false
 isLivingStreetKnown: false
 isSlowZoneKnown: false
 livingStreetSign: ic_living_street

@@ -107,6 +107,7 @@ public class ElementGeometry implements Serializable
 		}
 		return sum > 0;
 	}
+
 	public BoundingBox getBounds()
 	{
 		List<List<LatLon>> points;

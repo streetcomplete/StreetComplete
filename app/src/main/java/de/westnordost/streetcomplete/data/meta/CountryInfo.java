@@ -25,6 +25,7 @@ public class CountryInfo implements Serializable, Cloneable
 	Boolean isLivingStreetKnown;
 	List<String> orchardProduces;
 	Boolean isAdvisorySpeedLimitKnown;
+	Boolean isLeftHandTraffic;
 
 	// streetcomplete specific (layout files etc)
 	String maxspeedLayout;
@@ -120,4 +121,8 @@ public class CountryInfo implements Serializable, Cloneable
 		return isAdvisorySpeedLimitKnown;
 	}
 
+	public boolean isLeftHandTraffic()
+	{
+		return isLeftHandTraffic;
+	}
 }

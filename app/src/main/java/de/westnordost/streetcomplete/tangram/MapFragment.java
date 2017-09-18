@@ -84,6 +84,7 @@ public class MapFragment extends Fragment implements
 	public interface Listener
 	{
 		void onMapReady();
+		void onMapOrientation(float rotation, float tilt);
 	}
 
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -297,7 +298,7 @@ public class MapFragment extends Fragment implements
 
 	@Override public boolean onShove(float distance)
 	{
-		mapControls.onMapOrientation(controller.getRotation(), controller.getTilt());
+		onMapOrientation();
 		updateView();
 		return false;
 	}
@@ -305,9 +306,20 @@ public class MapFragment extends Fragment implements
 	@Override public boolean onRotate(float x, float y, float rotation)
 	{
 		if(!requestUnglueViewFromRotation()) return true;
-		mapControls.onMapOrientation(controller.getRotation(), controller.getTilt());
+		onMapOrientation();
 		updateView();
 		return false;
+	}
+
+	private void onMapOrientation()
+	{
+		onMapOrientation(controller.getRotation(), controller.getTilt());
+	}
+
+	private void onMapOrientation(float rotation, float tilt)
+	{
+		mapControls.onMapOrientation(rotation, tilt);
+		listener.onMapOrientation(rotation, tilt);
 	}
 
 	protected void updateView()
@@ -414,7 +426,7 @@ public class MapFragment extends Fragment implements
 			{
 				controller.setRotationEased(mapRotation, 50);
 			}
-			mapControls.onMapOrientation(mapRotation, controller.getTilt());
+			onMapOrientation(mapRotation, controller.getTilt());
 		}
 	}
 
@@ -478,7 +490,7 @@ public class MapFragment extends Fragment implements
 		setIsFollowingPosition(prefs.getBoolean(PREF_FOLLOWING, true));
 		setCompassMode(prefs.getBoolean(PREF_COMPASS_MODE, false));
 
-		mapControls.onMapOrientation(controller.getRotation(), controller.getTilt());
+		onMapOrientation();
 	}
 
 	private void saveMapState()
@@ -601,7 +613,7 @@ public class MapFragment extends Fragment implements
 		if(controller == null) return;
 		controller.setRotation(rotation);
 		controller.setTilt(tilt);
-		mapControls.onMapOrientation(rotation, tilt);
+		onMapOrientation(rotation, tilt);
 	}
 
 	public float getRotation()

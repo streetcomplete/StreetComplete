@@ -258,9 +258,9 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
 	<string name="quest_toiletsFee_title">"Do these toilets require a fee?"</string>
     <string name="quest_baby_changing_table_toilets_title">"Does this toilet have a baby changing table?"</string>
     <string name="quest_baby_changing_table_title">"Does \"%s\" have a baby changing table?"</string>
-    <string name="quest_way_lit_title">"Is this section of way lit?"</string>
+    <string name="quest_way_lit_title">"Is this stretch of way lit?"</string>
     <string name="quest_way_lit_named_title">"Is \"%s\" lit here?"</string>
-    <string name="quest_way_lit_road_title">"Is this section of road lit?"</string>
+    <string name="quest_way_lit_road_title">"Is this stretch of road lit?"</string>
     <string name="quest_way_lit_named_road_title">"Is \"%s\" road lit here?"</string>
     <string name="quest_way_lit_automatic">"It uses motion detection"</string>
     <string name="quest_way_lit_24_7">"It's lit night and day"</string>
@@ -395,4 +395,13 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_address_house_name_label">House name:</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">levels in the roof</string>
     <string name="quest_buildingLevels_levelsLabel2">regular levels (not counting the roof)</string>
+    <string name="quest_cycleway_value_track">cycle track</string>
+    <string name="quest_cycleway_value_lane">cycle lane</string>
+    <string name="quest_cycleway_value_none">none</string>
+    <string name="quest_cycleway_value_shared">lane shared explicitly with other traffic</string>
+    <string name="quest_cycleway_value_bus_lane">on bus lane</string>
+    <string name="quest_cycleway_value_sidewalk">explicitly shared sidewalk</string>
+    <string name="quest_cycleway_value_lane_dual">cycle lane, both directions</string>
+    <string name="quest_cycleway_value_track_dual">cycle track, both directions</string>
+    <string name="quest_cycleway_value_sidewalk_allowed">none, but cyclists are explicitly allowed on sidewalk</string>
 </resources>

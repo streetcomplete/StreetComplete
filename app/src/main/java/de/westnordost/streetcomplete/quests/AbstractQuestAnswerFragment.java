@@ -51,7 +51,9 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 	public static final String
 			ARG_ELEMENT = "element",
 			ARG_GEOMETRY = "geometry",
-			ARG_QUESTTYPE = "quest_type";
+			ARG_QUESTTYPE = "quest_type",
+			ARG_MAP_ROTATION = "map_rotation",
+			ARG_MAP_TILT = "map_tilt";
 
 	@Inject CountryInfos countryInfos;
 	@Inject QuestTypes questTypes;
@@ -73,6 +75,8 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 	private QuestType questType;
 	private CountryInfo countryInfo;
 
+	private float initialMapRotation, initialMapTilt;
+
 	private List<OtherAnswer> otherAnswers;
 
 	public AbstractQuestAnswerFragment()
@@ -91,6 +95,8 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 		elementGeometry = (ElementGeometry) getArguments().getSerializable(ARG_GEOMETRY);
 		questType = questTypes.forName(getArguments().getString(ARG_QUESTTYPE));
 		countryInfo = null;
+		initialMapRotation = getArguments().getFloat(ARG_MAP_ROTATION);
+		initialMapTilt = getArguments().getFloat(ARG_MAP_TILT);
 
 		View view = inflater.inflate(R.layout.quest_answer_fragment, container, false);
 
@@ -193,6 +199,8 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 				}
 			});
 		}
+
+		onMapOrientation(initialMapRotation, initialMapTilt);
 	}
 
 	private void updateCloseButtonVisibility()
@@ -349,6 +357,11 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 		oa.titleResourceId = titleResourceId;
 		oa.action = action;
 		otherAnswers.add(oa);
+	}
+
+	public void onMapOrientation(float rotation, float tilt)
+	{
+		// default empty implementation
 	}
 
 	private class OtherAnswer
