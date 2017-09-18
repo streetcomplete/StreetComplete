@@ -10,7 +10,6 @@
     <string name="pref_category_communication">"Kommunikation"</string>
     <string name="pref_category_display">"Visning"</string>
     <string name="pref_title_authorization">"Autoriser OSM adgang"</string>
-    <string name="pref_title_authorized_summary">"Autoriserede din konto succesfuldt"</string>
     <string name="pref_title_not_authorized_summary">"Er endnu ikke autoriseret"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
     <string name="pref_tilecache_size_message">"Plads i megabytes reserveret på den eksterne hukommelse til at gemme kortfliser"</string>
@@ -67,8 +66,8 @@
     <string name="cannot_find_bbox">"Kan ikke skanne her. Prøv at zoome længere ind"</string>
     <string name="download_area_too_big">"Zoom venligst længere ind"</string>
     <string name="confirmation_cancel_prev_download_title">"Afbrud den nuværende søgning og skan her i stedet?"</string>
-    <string name="notification_downloading">"Skanner efter Opgaver"</string>
-    <string name="now_downloading_toast">"Skanner efter flere opgaver"</string>
+    <string name="notification_downloading">"Skanner efter Opgaver…"</string>
+    <string name="now_downloading_toast">"Skanner efter flere opgaver…"</string>
     <string name="turn_on_location_request">"Lokation er fra. Gå til indstillinger og tænd nu?"</string>
     <string name="no_location_permission_warning">"Din lokation er nødvendig for at skanne efter opgaver i dit nærområde."</string>
     <string name="action_about">"Om StreetComplete"</string>
