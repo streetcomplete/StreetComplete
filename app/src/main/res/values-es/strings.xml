@@ -10,14 +10,13 @@
     <string name="pref_category_communication">"Conexión"</string>
     <string name="pref_category_display">"Pantalla"</string>
     <string name="pref_title_authorization">"Autorizar el acceso a OSM"</string>
-    <string name="pref_title_authorized_summary">"Cuenta autorizada corectamente"</string>
     <string name="pref_title_not_authorized_summary">"Aún no autorizado"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
     <string name="pref_tilecache_size_message">"Espacio en megabytes reservado en el almacenamiento para guardar las secciones del mapa en la caché"</string>
-    <string name="pref_title_show_notes_not_phrased_as_questions">"Mostrar todas las notas"</string>
+    <string name="pref_title_show_notes_not_phrased_as_questions">"Ver todas las notas"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Se muestran también las notas no formuladas como preguntas"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Se ignoran las notas no formuladas como preguntas"</string>
-    <string name="pref_title_map_cache">"Tamaño de la caché del mapa"</string>
+    <string name="pref_title_map_cache">"Tamaño de caché del mapa"</string>
     <string name="map_btn_gps_tracking">"Sígueme"</string>
     <string name="map_attribution_mapzen">"Usa %s"</string>
     <string name="map_attribution_osm">"© Voluntarios de OpenStreetMap"</string>
@@ -30,7 +29,7 @@
     <string name="quest_leave_new_note_title">"¿Dejar una nota en su lugar?"</string>
     <string name="quest_leave_new_note_description">"Puedes dejar una nota pública en esta ubicación para que otros mapeadores la comenten y puedan llegar a resolverla:"</string>
     <string name="quest_leave_new_note_yes">"Vale"</string>
-    <string name="quest_leave_new_note_no">"No, solo ocúltala"</string>
+    <string name="quest_leave_new_note_no">"No, paso"</string>
     <string name="quest_streetName_title">"¿Cómo se llama esta vía?"</string>
     <string name="quest_streetName_description">"tal y como se lee en el letrero de calle, las abreviaturas se amplían:"</string>
     <string name="quest_streetName_answer_noName_confirmation_description">"Algunas veces el letrero solo está en un extremo de la calle. Ten en cuenta que puede que no haya letreros en las vías adyacentes que pertenezcan a una calle grande. Lo normal es que cualquier calle con casas tenga nombre."</string>
@@ -42,15 +41,15 @@
     <string name="quest_openingHours_add_months">"Añadir meses"</string>
     <string name="quest_openingHours_add_hours">"Añadir horas"</string>
     <string name="quest_openingHours_add_weekdays">"Añadir días de la semana"</string>
-    <string name="quest_openingHours_chooseMonthsTitle">"Selecciona los meses"</string>
-    <string name="quest_openingHours_chooseWeekdaysTitle">"Selecciona los días de la semana"</string>
+    <string name="quest_openingHours_chooseMonthsTitle">"Elige los meses"</string>
+    <string name="quest_openingHours_chooseWeekdaysTitle">"Elige los días de la semana"</string>
     <string name="quest_openingHours_24_7_confirmation">"O, dicho de otra forma, ¿está abierto todos los días a todas horas?"</string>
     <string name="quest_noteDiscussion_title">"¿Puedes añadir información útil en la nota?"</string>
-    <string name="quest_noteDiscussion_no">"No, esconder"</string>
+    <string name="quest_noteDiscussion_no">"No, paso"</string>
     <string name="quest_noteDiscussion_create">"creada por %1$s (%2$s)"</string>
     <string name="quest_noteDiscussion_comment">"%1$s (%2$s)"</string>
-    <string name="quest_noteDiscussion_closed">"%1$s nota cerrada (%2$s)"</string>
-    <string name="quest_noteDiscussion_reopen">"%1$s nota reabierta (%2$s)"</string>
+    <string name="quest_noteDiscussion_closed">"%1$s cerró la nota (%2$s)"</string>
+    <string name="quest_noteDiscussion_reopen">"%1$s reabrió la nota (%2$s)"</string>
     <string name="quest_noteDiscussion_anonymous">"Anónimo"</string>
     <string name="quest_noteDiscussion_comments_title">"Respuestas"</string>
     <string name="confirmation_discard_title">"¿Quieres descartar los datos añadidos?"</string>
@@ -63,29 +62,27 @@
     <string name="download_error">"Hubo un error al buscar tareas"</string>
     <string name="upload_error">"Hubo un error al subir las respuestas"</string>
     <string name="cannot_find_bbox">"Aquí no se pueden buscar tareas, prueba ampliando el mapa."</string>
-    <string name="download_area_too_big">"Si quieres prueba ampliando un poco más el mapa"</string>
+    <string name="download_area_too_big">"Amplía un poco más el mapa"</string>
     <string name="confirmation_cancel_prev_download_title">"¿Quieres cancelar la descarga actual y empezar a buscar tareas en este lugar?"</string>
-    <string name="notification_downloading">"Descargando tareas"</string>
-    <string name="now_downloading_toast">"Descargando más tareas"</string>
+    <string name="notification_downloading">"Descargando tareas…"</string>
+    <string name="now_downloading_toast">"Descargando más tareas…"</string>
     <string name="turn_on_location_request">"La ubicación esta desactivada. ¿Ir a los ajustes para activarla ahora?"</string>
     <string name="no_location_permission_warning">"Tu ubicación es necesaria para descargar tareas cercanas."</string>
     <string name="action_about">"Acerca de StreetComplete"</string>
     <string name="about_title_version">"Versión"</string>
-
-    <!-- Fuzzy -->
-    <string name="about_title_authors">"Autores"</string>
+    <string name="about_title_authors">"Agradecimientos"</string>
     <string name="about_summary_authors">"© 2016–2017 Tobias Zwick y colaboradores"</string>
     <string name="about_title_repository">"Repositorio de código"</string>
     <string name="about_summary_repository">"en GitHub"</string>
     <string name="about_title_report_error">"Notificar errores"</string>
-    <string name="about_title_feedback">"Dar tu opinión"</string>
+    <string name="about_title_feedback">"Tu opinión importa"</string>
     <string name="about_title_license">"Licencia"</string>
-    <string name="about_summary_license">"Licencia Pública General de GNU (GPL)"</string>
+    <string name="about_summary_license">"Pública General de GNU (GPL)"</string>
     <string name="offline">"No hay conexión a Internet"</string>
-    <string name="confirmation_authorize_now">"Necesitas autorizar con tu cuenta de usuario de OSM para hacer efectivas cualquiera de tus respuestas. ¿Quieres autorizar ahora?"</string>
+    <string name="confirmation_authorize_now">"Necesitas iniciar sesión con tu cuenta de usuario de OSM para enviar tus respuestas. ¿Quieres hacerlo ahora?"</string>
     <string name="not_authorized">"Sin autorización"</string>
     <string name="version_banned_message">"Desde esta versión de StreetComplete ya no se pueden subir respuestas, prueba actualizando la aplicación."</string>
-    <string name="no_gps_no_quests">"Para buscar tareas a tu alrededor automáticamente, activa la ubicación"</string>
+    <string name="no_gps_no_quests">"Para buscar tareas a tu alrededor automáticamente activa la ubicación"</string>
     <string name="nothing_more_to_download">"No hay más tareas"</string>
     <string name="later">"Luego"</string>
     <string name="quest_streetName_answer_noProperStreet">"No es una calle"</string>
@@ -96,12 +93,12 @@
     <string name="quest_streetName_answer_noProperStreet_track">"Es un camino agrícola o forestal"</string>
     <string name="about_title_privacy_statement">"Declaración de privacidad"</string>
     <string name="about_summary_privacy_statement">"y uso de datos"</string>
-    <string name="quest_openingHours_public_holidays">"días festivos"</string>
-    <string name="quest_openingHours_public_holidays_short">"festivos"</string>
-    <string name="quest_openingHours_open_end">"Cierre abierto"</string>
+    <string name="quest_openingHours_public_holidays">"Días festivos"</string>
+    <string name="quest_openingHours_public_holidays_short">"Festivos"</string>
+    <string name="quest_openingHours_open_end">"Hora de cierre flexible"</string>
     <string name="quest_openingHours_answer_247">"Abierto todo el día"</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">"Depende del mes"</string>
-    <string name="quest_openingHours_answer_no_regular_opening_hours">"Sin horario de apertura"</string>
+    <string name="quest_openingHours_answer_no_regular_opening_hours">"Sin horario de apertura fijo"</string>
     <string name="quest_openingHours_comment_title">"Describe los horarios de apertura"</string>
     <string name="quest_openingHours_comment_description">"Sé conciso, mejor transcribe las palabras del letrero. Por ejemplo; «con cita previa». La ausencia de letrero no significa necesariamente que no haya un horario de apertura habitual."</string>
     <string name="quest_buildingLevels_title">"¿Cuántos niveles tiene este edificio?"</string>
@@ -116,14 +113,14 @@
     <string name="pref_title_sync">"Sincronización automática"</string>
     <string name="map_btn_zoom_out">"Reducir"</string>
     <string name="map_btn_zoom_in">"Ampliar"</string>
-    <string name="privacy_html">"&lt;p&gt;Vaya, alguien que se preocupa por la privacidad, ¡qué bien! Creo que de aquí en adelante van a ser todo buenas noticias:&lt;/p&gt;
+    <string name="privacy_html">"&lt;p&gt;Vaya, por fin alguien que se preocupa por la privacidad. Creo que de aquí en adelante van a ser todo buenas noticias:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Aportaciones directas&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-En primer lugar, entiende que con esta aplicación estás enviando contribuciones directas y totalmente reales a OpenStreetMap.&lt;br/&gt;
+Punto número uno, con esta aplicación estás enviando contribuciones directas y totalmente reales a OpenStreetMap.&lt;br/&gt;
 Cualquier aporte realizado con esta aplicación se añade directamente al mapa sin ningún intermediario entre aplicación e infraestructura de OSM, al contrario que en proyectos como &lt;a href=\"https://wheelmap.org\"&gt;wheelmap.org&lt;/a&gt; o &lt;a href=\"http://www.kort.ch\"&gt;Kort&lt;/a&gt;.
 &lt;/p&gt;
 &lt;p&gt;
-No se pueden aportar datos anónimos a OpenStreetMap, por lo que cualquier cambio que hagas se hace con tu propia cuenta de usuario en OSM, con lo que los cambios que hagas se van a ver públicamente con tu nombre en la Web.
+No se pueden aportar datos anónimos a OpenStreetMap, con lo que cualquier cambio que hagas será con tu propia cuenta de usuario en OSM, por lo que aparecerán públicamente con tu nombre en la Web.
 &lt;/p&gt;
 
 &lt;b&gt;Ubicación&lt;/b&gt;&lt;br/&gt;
@@ -134,10 +131,10 @@ Tu posición no se comparte con nadie, sólo se utiliza para buscar tareas dispo
 &lt;p&gt;&lt;b&gt;Uso de datos&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 Continuando con lo de antes, la aplicación se comunica directamente con la infraestructura de OSM. Es decir, con la &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;API de Overpass&lt;/a&gt; para descargar tareas (de forma anónima) y con la &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;API de OSM&lt;/a&gt; para subir los cambios.&lt;br/&gt;
-No obstante, antes de subir cualquier cambio, la aplicación comprueba si la versión actual aparece en un &lt;a href=\"http://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;fichero de texto plano&lt;/a&gt; de mi servidor. Esta es una medida preventiva para poder restringir subidas en versiones de la aplicación que tengan errores críticos que puedan corromper los datos de OSM.&lt;br/&gt;
+No obstante, antes de subir cualquier cambio la aplicación comprueba si la versión actual aparece en un &lt;a href=\"http://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;archivo de texto plano&lt;/a&gt; de mi servidor. Esta es una medida preventiva para poder restringir subidas en versiones de la aplicación que tengan errores críticos y puedan corromper los datos en OSM.&lt;br/&gt;
 &lt;/p&gt;
 &lt;p&gt;
-Para poder ver el mapa las secciones se descargan del &lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt;servicio de teselas de Mapzen&lt;/a&gt;, de forma totalmente anónima. El servicio registra las solicitudes de las distintas partes del globo para medir su popularidad y almacenarlas en caché, mejorando su rendimiento. Su plataforma también registra las direcciones IP y está alojada en Amazon, por lo que dependen de un tercero.
+Para que puedas ver las últimas secciones del mapa utilizamos el &lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt;servicio anónimo de teselas de Mapzen&lt;/a&gt;. Este servicio registra las solicitudes en distintas partes del globo para medir las zonas más populares y almacenarlas en caché, mejorando su rendimiento. Esta plataforma también registra las direcciones IP y está alojada en Amazon, por lo que dependen del contrato de servicio de un tercero.
 &lt;/p&gt;
 &lt;p&gt;
 (&lt;i&gt;Lo que viene a continuación todavía no está terminado, es sólo para que sepas lo que está al caer:&lt;/i&gt;) Los datos que se muestran en la tabla de clasificación y en el perfil se consiguen de información pública en OpenStreetMap. Estos datos no proceden de la aplicación, sino del historial público de cambios de los propios usuarios.
@@ -203,7 +200,7 @@ La información añadida se incluye directamente en OpenStreetMap con tu nombre 
     <string name="crash_title">"¡Vaya, StreetComplete se ha cerrado inesperadamente!"</string>
     <string name="crash_compose_email">"Redactar correo electrónico"</string>
     <string name="no_email_client">"No tienes ningún cliente de correo instalado."</string>
-    <string name="pref_title_keep_screen_on">"Mantener la pantalla encendida"</string>
+    <string name="pref_title_keep_screen_on">"No apagar la pantalla"</string>
     <string name="download_server_error">"Ocurrió un error de red al buscar tareas, prueba más tarde."</string>
     <string name="upload_server_error">"Ocurrió un error de red al subir las respuestas, prueba más tarde."</string>
     <string name="quest_generic_hasFeature_yes">"Sí"</string>
@@ -245,7 +242,7 @@ La información añadida se incluye directamente en OpenStreetMap con tu nombre 
     <string name="quest_manySports_confirmation_generic">"De propósito general"</string>
     <string name="quest_sport_manySports_confirmation_title">"Has seleccionado demasiados deportes"</string>
     <string name="quest_busStopShelter_name_title">"¿La parada de bus «%s» está bajo cubierto?"</string>
-    <string name="quest_toiletsFee_title">"¿El acceso a los servicios es previo pago?"</string>
+    <string name="quest_toiletsFee_title">"¿El acceso a los servicios/baños es previo pago?"</string>
     <string name="quest_tactilePaving_title_bus">"¿La parada de bus tiene pavimento táctil?"</string>
     <string name="quest_tactilePaving_title_crosswalk">"¿El cruce tiene pavimento táctil?"</string>
     <string name="quest_source_dialog_title">"¿Lo has comprobado tú mismo?"</string>
@@ -284,7 +281,7 @@ La información añadida se incluye directamente en OpenStreetMap con tu nombre 
     <string name="quest_wheelchairAccess_limited_description_business">"Parcialmente significa que no hay más de un peldaño en todo el recorrido y que se puede acceder a la mayor parte de las salas en silla de ruedas."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"Parcialmente significa que no hay más de un peldaño en todo el recorrido."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"¿«%s» contiene alguna abreviatura?"</string>
-    <string name="quest_baby_changing_table_toilets_title">"¿Los servicios tienen un cambiador para bebé?"</string>
+    <string name="quest_baby_changing_table_toilets_title">"¿Los servicios/baños tienen un cambiador para bebé?"</string>
     <string name="quest_baby_changing_table_title">"¿«%s» tiene un cambiador para bebé?"</string>
     <string name="quest_recycling_type_title">"¿Qué tipo de estructura de reciclado es?"</string>
     <string name="recycling_centre">"Centro de reciclado"</string>
@@ -369,4 +366,30 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <string name="quest_way_lit_named_road_title">"¿Está alumbrada la calle \"%s\" aquí?"</string>
     <string name="quest_way_lit_automatic">"Con sensores de movimiento"</string>
     <string name="quest_way_lit_24_7">"Está alumbrada de día y de noche"</string>
+    <string name="pref_title_authorized_username_summary">"Cuenta autorizada: %s"</string>
+    <string name="cannot_find_bbox_or_reduce_tilt">"Amplía el mapa un poco más para buscar tareas."</string>
+    <string name="quest_crossing_type_title">"¿Qué tipo de cruce es?"</string>
+    <string name="quest_crossing_type_signals">"Cruce señalizado con semáforo"</string>
+    <string name="quest_crossing_type_uncontrolled">"Cruce señalizado sin semáforo"</string>
+    <string name="quest_crossing_type_unmarked">"Cruce sin señalizar"</string>
+    <string name="compass_north_one_letter">"N"</string>
+    <string name="action_undo">"Deshacer"</string>
+    <string name="no_changes_to_undo">"No hay nada que deshacer"</string>
+    <string name="undo_confirm_title">"¿Quieres deshacer la última pregunta respondida?"</string>
+    <string name="produce_mangosteen">"Mangostino"</string>
+    <string name="produce_tomatoes">"Tomates"</string>
+    <string name="produce_areca_nuts">"Nuez de areca"</string>
+    <string name="produce_sweet_peppers">"Pimiento morrón"</string>
+    <string name="produce_brazil_nuts">"Nuez amazónica"</string>
+    <string name="produce_tung_nuts">"Nueces del tung"</string>
+    <string name="quest_parkingType_title">"¿Qué tipo de aparcamiento es?"</string>
+    <string name="quest_parkingType_surface">"Normal"</string>
+    <string name="quest_parkingType_underground">"Aparcamiento subterráneo"</string>
+    <string name="quest_parkingType_multiStorage">"Aparcamiento de automóviles"</string>
+    <string name="quest_toiletAvailability_name_title">"¿«%s» tiene servicios/baños?"</string>
+    <string name="quest_powerPolesMaterial_title">"¿De qué esta hecho este poste eléctrico?"</string>
+    <string name="quest_powerPolesMaterial_wood">"Madera"</string>
+    <string name="quest_powerPolesMaterial_metal">"Acero"</string>
+    <string name="quest_powerPolesMaterial_concrete">"Cemento u hormigón"</string>
+    <string name="quest_maxspeed_answer_advisory_speed_limit">"Sólo señala la velocidad máxima aconsejada"</string>
 </resources>

@@ -10,7 +10,6 @@
     <string name="pref_category_communication">"Verbindung"</string>
     <string name="pref_category_display">"Anzeige"</string>
     <string name="pref_title_authorization">"OSM-Zugang autorisieren"</string>
-    <string name="pref_title_authorized_summary">"Kontozugang erfolgreich autorisiert"</string>
     <string name="pref_title_not_authorized_summary">"Noch nicht autorisiert"</string>
 
     <!-- Fuzzy -->
@@ -67,8 +66,8 @@
     <string name="cannot_find_bbox">"Kann hier nicht suchen. Versuche, weiter hineinzuzoomen"</string>
     <string name="download_area_too_big">"Zoome weiter hinein"</string>
     <string name="confirmation_cancel_prev_download_title">"Aktuelle Suche abbrechen und stattdessen hier suchen?"</string>
-    <string name="notification_downloading">"Suche nach Aufgaben"</string>
-    <string name="now_downloading_toast">"Suche nach weiteren Aufgaben"</string>
+    <string name="notification_downloading">"Suche nach Aufgaben…"</string>
+    <string name="now_downloading_toast">"Suche nach weiteren Aufgaben…"</string>
     <string name="turn_on_location_request">"Standort ist aus. Jetzt in die Einstellungen gehen, um ihn anzuschalten?"</string>
     <string name="no_location_permission_warning">"Dein Standort wird benötigt, um nach Aufgaben in deiner Nähe zu suchen."</string>
     <string name="action_about">"Über StreetComplete"</string>
@@ -254,19 +253,19 @@ Die von dir eingegebenen Informationen werden dann direkt in deinem Namen zu Ope
     <string name="quest_tactilePaving_title_crosswalk">"Hat dieser Überweg ein Bodenleitsystem?"</string>
     <string name="quest_source_dialog_title">"Wurde die Information vor Ort überprüft?"</string>
     <string name="quest_tactilePaving_title_name_bus">"Hat die Haltestelle „%s“ ein Bodenleitsystem?"</string>
-    <string name="quest_source_dialog_note">"Nur vor Ort erhobe Informationen sollen ergänzt werden."</string>
+    <string name="quest_source_dialog_note">"Nur vor Ort erhobene Informationen sollen ergänzt werden."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Ist der Fahrradstellplatz überdacht (Schutz vor Regen)?"</string>
     <string name="dialog_session_dont_show_again">"Ausblenden bis zur nächsten Bearbeitung"</string>
 
     <!-- Fuzzy -->
     <string name="quest_streetSurface_name_title">"Welche Oberfläche hat die Straße „%s“ hier?"</string>
-    <string name="quest_maxspeed_title_short">"Was ist die Höchstgeschwindigkeit für diese Straße?"</string>
+    <string name="quest_maxspeed_title_short">"Welche Höchstgeschwindigkeit ist für diese Straße angegeben?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Diese Höchstgeschwindigkeit scheint nicht plausibel."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Bist du sicher, dass keine Höchstgeschwindigkeit angegeben ist?"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">"Hast Du am anderen Ende der Straße nachgeschaut?
 Wenn dort kein Schild steht, gelten die gesetzlichen Geschwindigkeitsbegrenzungen."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Ja, kein Schild"</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Innerorts gelten andere Geschwindigkeitsbegrenzungen als außerhalb."</string>
+    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Innerorts gelten andere Geschwindigkeitsbegrenzungen als außerorts."</string>
     <string name="quest_maxspeed_answer_noSign_urbanOk">"Innerorts"</string>
     <string name="quest_maxspeed_answer_noSign_ruralOk">"Außerorts"</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">"Wenn es ein Schild wie dieses an der Kreuzung zur Hauptstraße gibt, wirst Du keine weiteren Zeichen innerhalb der Zone finden, da die dort angegebene Höchstgeschwindigkeit für die gesamte Zone gilt."</string>
@@ -376,10 +375,38 @@ Andernfalls kannst Du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="produce_vanilla">"Vanille"</string>
     <string name="produce_walnuts">"Walnüsse"</string>
     <string name="produce_sisal">"Sisal"</string>
-    <string name="quest_way_lit_title">"Ist dieses Stück Weg beleuchtet?"</string>
+    <string name="quest_way_lit_title">"Ist dieser Wegabschnitt beleuchtet?"</string>
     <string name="quest_way_lit_named_title">"Ist „%s\" hier beleuchtet?"</string>
-    <string name="quest_way_lit_road_title">"Ist dieses Stück Straße beleuchtet?"</string>
+    <string name="quest_way_lit_road_title">"Ist dieser Straßenabschnitt beleuchtet?"</string>
     <string name="quest_way_lit_named_road_title">"Ist „%s\" hier beleuchtet?"</string>
     <string name="quest_way_lit_automatic">"per Bewegungsmelder"</string>
     <string name="quest_way_lit_24_7">"sogar Tag und Nacht beleuchtet"</string>
+    <string name="pref_title_authorized_username_summary">"Autorisierter Account: %s"</string>
+    <string name="cannot_find_bbox_or_reduce_tilt">"Kann hier nicht scannen. Zoome weiter herein oder kippe die Karte weniger"</string>
+    <string name="quest_crossing_type_title">"Welche Art von Kreuzung ist das?"</string>
+    <string name="quest_crossing_type_signals">"Kreuzung mit Ampeln"</string>
+    <string name="quest_crossing_type_uncontrolled">"Unkontrollierter Übergang"</string>
+    <string name="quest_crossing_type_unmarked">"Kreuzung ohne Markierungen"</string>
+
+    <!-- Shouldn't this be translatable="false"? -->
+    <string name="compass_north_one_letter">"N"</string>
+    <string name="action_undo">"Rückgängig machen"</string>
+    <string name="no_changes_to_undo">"Nichts rückgängig zu machen"</string>
+    <string name="undo_confirm_title">"Die folgende Antwort rückgängig machen?"</string>
+    <string name="produce_mangosteen">"Mangostane"</string>
+    <string name="produce_tomatoes">"Tomaten"</string>
+    <string name="produce_areca_nuts">"Betelnüsse"</string>
+    <string name="produce_sweet_peppers">"Paprika"</string>
+    <string name="produce_brazil_nuts">"Paranuss"</string>
+    <string name="produce_tung_nuts">"Tungnüsse"</string>
+    <string name="quest_parkingType_title">"Welche Art von Parkplatz ist das?"</string>
+    <string name="quest_parkingType_surface">"Gewöhnlich"</string>
+    <string name="quest_parkingType_underground">"Tiefgarage"</string>
+    <string name="quest_parkingType_multiStorage">"Parkhaus"</string>
+    <string name="quest_toiletAvailability_name_title">"Hat %s eine Toilette?"</string>
+    <string name="quest_powerPolesMaterial_title">"Aus welchem Material ist der Strommast?"</string>
+    <string name="quest_powerPolesMaterial_wood">"Holz"</string>
+    <string name="quest_powerPolesMaterial_metal">"Stahl"</string>
+    <string name="quest_powerPolesMaterial_concrete">"Beton"</string>
+    <string name="quest_maxspeed_answer_advisory_speed_limit">"Nur eine Richtgeschwindigkeit"</string>
 </resources>

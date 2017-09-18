@@ -10,7 +10,6 @@
     <string name="pref_category_communication">"Связь"</string>
     <string name="pref_category_display">"Вид"</string>
     <string name="pref_title_authorization">"Авторизовать доступ к OSM"</string>
-    <string name="pref_title_authorized_summary">"Успешная авторизация через ваш аккаунт"</string>
     <string name="pref_title_not_authorized_summary">"Пока не авторизовано"</string>
     <string name="pref_tilecache_size_summary">"%d МБ"</string>
     <string name="pref_tilecache_size_message">"Место в мегабайтах под кэш карты на внешнем накопителе"</string>
@@ -65,8 +64,8 @@
     <string name="cannot_find_bbox">"Поиск невозможен. Попробуйте приблизить ещё"</string>
     <string name="download_area_too_big">"Приблизьте ещё"</string>
     <string name="confirmation_cancel_prev_download_title">"Завершить текущее сканирование и сканировать здесь?"</string>
-    <string name="notification_downloading">"Поиск квестов"</string>
-    <string name="now_downloading_toast">"Поиск дополнительных квестов"</string>
+    <string name="notification_downloading">"Поиск квестов…"</string>
+    <string name="now_downloading_toast">"Поиск дополнительных квестов…"</string>
     <string name="turn_on_location_request">"Определение местоположения выключено. Перейти в настройки, чтобы включить?"</string>
     <string name="no_location_permission_warning">"Местоположение нужно для поиска квестов поблизости."</string>
     <string name="action_about">"О приложении"</string>
@@ -368,4 +367,32 @@
     <string name="quest_way_lit_named_road_title">"Освещена ли эта часть дороги «%s»?"</string>
     <string name="quest_way_lit_automatic">"Используется обнаружение присутствия"</string>
     <string name="quest_way_lit_24_7">"Освещается днём и ночью"</string>
+    <string name="pref_title_authorized_username_summary">"Авторизованная учётная запись: %s"</string>
+    <string name="cannot_find_bbox_or_reduce_tilt">"Поиск невозможен. Попробуйте приблизить ещё или повернуть карту под меньшим углом."</string>
+    <string name="quest_crossing_type_title">"Какого типа этот пешеходный переход?"</string>
+    <string name="quest_crossing_type_signals">"Регулируемый переход со светофором"</string>
+    <string name="quest_crossing_type_uncontrolled">"Нерегулируемый переход"</string>
+    <string name="quest_crossing_type_unmarked">"Переход без дорожной разметки"</string>
+    <string name="compass_north_one_letter">"С"</string>
+    <string name="action_undo">"Отменить"</string>
+    <string name="no_changes_to_undo">"Отменять нечего"</string>
+    <string name="undo_confirm_title">"Отменить последний ответ на вопрос?"</string>
+    <string name="produce_mangosteen">"Мангостан"</string>
+    <string name="produce_tomatoes">"Томаты"</string>
+    <string name="produce_areca_nuts">"Орехи бетель"</string>
+    <string name="produce_sweet_peppers">"Сладкие перцы"</string>
+    <string name="produce_brazil_nuts">"Бразильские орехи"</string>
+    <string name="produce_tung_nuts">"Орехи тунга"</string>
+    <string name="quest_parkingType_title">"Какого типа эта парковка?"</string>
+    <string name="quest_parkingType_surface">"Открытая парковка"</string>
+    <string name="quest_parkingType_underground">"Подземный гараж"</string>
+    <string name="quest_parkingType_multiStorage">"Многоэтажная парковка"</string>
+    <string name="quest_toiletAvailability_name_title">"Есть ли в %s туалет?"</string>
+    <string name="quest_powerPolesMaterial_title">"Из чего сделан этот столб ЛЭП?"</string>
+    <string name="quest_powerPolesMaterial_wood">"Дерево"</string>
+    <string name="quest_powerPolesMaterial_metal">"Сталь"</string>
+    <string name="quest_powerPolesMaterial_concrete">"Бетон"</string>
+
+    <!-- https://wiki.openstreetmap.org/wiki/Proposed_features/recommended_speed ? -->
+    <string name="quest_maxspeed_answer_advisory_speed_limit">"Есть знак рекомендуемой скорости"</string>
 </resources>
