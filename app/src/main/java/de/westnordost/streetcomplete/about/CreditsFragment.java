@@ -33,7 +33,7 @@ public class CreditsFragment extends Fragment
 	{
 		View view = inflater.inflate(R.layout.credits, container, false);
 
-		RecyclerView contributorCredits = (RecyclerView) view.findViewById(R.id.contributorCredits);
+		RecyclerView contributorCredits = view.findViewById(R.id.contributorCredits);
 		contributorCredits.setNestedScrollingEnabled(false);
 		contributorCredits.setLayoutManager(
 				new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
@@ -52,7 +52,7 @@ public class CreditsFragment extends Fragment
 			}
 		});
 
-		RecyclerView translationCredits = (RecyclerView) view.findViewById(R.id.translationCredits);
+		RecyclerView translationCredits = view.findViewById(R.id.translationCredits);
 		translationCredits.setNestedScrollingEnabled(false);
 		translationCredits.setLayoutManager(
 				new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
@@ -72,10 +72,10 @@ public class CreditsFragment extends Fragment
 			}
 		});
 
-		TextView translationsCreditsMore = (TextView) view.findViewById(R.id.translationCreditsMore);
+		TextView translationsCreditsMore = view.findViewById(R.id.translationCreditsMore);
 		translationsCreditsMore.setMovementMethod(LinkMovementMethod.getInstance());
 		translationsCreditsMore.setText(Html.fromHtml(getString(R.string.credits_translations)));
-		TextView contributorMore = (TextView) view.findViewById(R.id.contributorMore);
+		TextView contributorMore = view.findViewById(R.id.contributorMore);
 		contributorMore.setMovementMethod(LinkMovementMethod.getInstance());
 		contributorMore.setText(Html.fromHtml(getString(R.string.credits_contributors)));
 

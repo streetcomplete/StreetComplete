@@ -1,4 +1,6 @@
 # Do not edit. Source files are in /res/country_metadata
+advisorySpeedLimitLayout: quest_maxspeed_advisory_blue
+isAdvisorySpeedLimitKnown: true
 isLivingStreetKnown: true
 isSlowZoneKnown: true
 officialLanguages: [ro]

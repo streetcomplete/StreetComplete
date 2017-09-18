@@ -18,48 +18,87 @@ import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 
 public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 {
-	public static final String HOUSENUMBER = "housenumber";
+	public static final String
+			HOUSENUMBER = "housenumber",
+			HOUSENAME = "housename";
 
+	private static final String	IS_HOUSENAME = "is_housename";
 	// i.e. 9999/a, 9/a, 99/9, 99a, 99 a, 9 / a
 	public static final String VALID_HOUSENUMBER_REGEX =
 			"\\p{N}{1,4}((\\s?/\\s?\\p{N})|(\\s?/?\\s?\\p{L}))?";
 
 	private EditText input;
 
+	private boolean isHousename;
+
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
 									   Bundle savedInstanceState)
 	{
 		View view = super.onCreateView(inflater, container, savedInstanceState);
-		setTitle(R.string.quest_address_title);
 
-		View contentView = setContentView(R.layout.quest_housenumber);
-
-		input = (EditText) contentView.findViewById(R.id.input);
-		input.setInputType(InputType.TYPE_CLASS_NUMBER);
-		final Button toggleKeyboardButton = (Button) contentView.findViewById(R.id.toggleKeyboard);
-		toggleKeyboardButton.setText("abc");
-
-		toggleKeyboardButton.setOnClickListener(new View.OnClickListener()
+		isHousename = false;
+		if(savedInstanceState != null)
 		{
-			@Override public void onClick(View v)
-			{
-				if((input.getInputType() & InputType.TYPE_CLASS_NUMBER) != 0)
-				{
-					input.setInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
-					toggleKeyboardButton.setText("123");
-				}
-				else
-				{
-					input.setInputType(InputType.TYPE_CLASS_NUMBER);
-					toggleKeyboardButton.setText("abc");
-				}
+			isHousename = savedInstanceState.getBoolean(IS_HOUSENAME);
+		}
 
-				InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-				imm.showSoftInput(input, InputMethodManager.SHOW_IMPLICIT);
+		if(isHousename)
+		{
+			setLayout(R.layout.quest_housename);
+		}
+		else
+		{
+			setLayout(R.layout.quest_housenumber);
+		}
+
+		addOtherAnswer(R.string.quest_address_answer_house_name, new Runnable()
+		{
+			@Override public void run()
+			{
+				isHousename = true;
+				setLayout(R.layout.quest_housename);
 			}
 		});
 
 		return view;
+	}
+
+	private void setLayout(int layoutResourceId)
+	{
+		View contentView = setContentView(layoutResourceId);
+
+		input = contentView.findViewById(R.id.input);
+		final Button toggleKeyboardButton = contentView.findViewById(R.id.toggleKeyboard);
+
+		if(toggleKeyboardButton != null)
+		{
+			toggleKeyboardButton.setText("abc");
+
+			toggleKeyboardButton.setOnClickListener(new View.OnClickListener()
+			{
+				@Override public void onClick(View v)
+				{
+					if ((input.getInputType() & InputType.TYPE_CLASS_NUMBER) != 0)
+					{
+						input.setInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
+						toggleKeyboardButton.setText("123");
+					} else
+					{
+						input.setInputType(InputType.TYPE_CLASS_NUMBER);
+						toggleKeyboardButton.setText("abc");
+					}
+
+					InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+					imm.showSoftInput(input, InputMethodManager.SHOW_IMPLICIT);
+				}
+			});
+		}
+	}
+
+	@Override public void onSaveInstanceState(Bundle outState)
+	{
+		super.onSaveInstanceState(outState);
+		outState.putBoolean(IS_HOUSENAME, isHousename);
 	}
 
 	@Override protected void onClickOk()
@@ -70,6 +109,35 @@ public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 			return;
 		}
 
+		final Bundle answer = new Bundle();
+		final String input = getInputText();
+
+		if(isHousename)
+		{
+			answer.putString(HOUSENAME, input);
+		}
+		else
+		{
+			if (!input.matches(getValidHousenumberRegex()))
+			{
+				confirmUnusualHousenumber(new Runnable()
+				{
+					@Override public void run()
+					{
+						answer.putString(HOUSENUMBER, input);
+					}
+				});
+			}
+			else
+			{
+				answer.putString(HOUSENUMBER, input);
+			}
+		}
+		applyFormAnswer(answer);
+	}
+
+	private String getValidHousenumberRegex()
+	{
 		String regexNum = VALID_HOUSENUMBER_REGEX;
 		String additionalRegex = getCountryInfo().getAdditionalValidHousenumberRegex();
 		if(additionalRegex != null)
@@ -77,43 +145,27 @@ public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 			regexNum = "((" + regexNum + ")|("+additionalRegex+"))";
 		}
 		// i.e. 95-98 etc.
-		String completeRegex = "^" + regexNum + "(-" + regexNum + ")?";
-
-		if(!getHousenumber().matches(completeRegex))
-		{
-			confirmUnusualHousenumber();
-		}
-		else
-		{
-			applyHousenumberAnswer();
-		}
+		return "^" + regexNum + "(-" + regexNum + ")?";
 	}
 
 	@Override public boolean hasChanges()
 	{
-		return !getHousenumber().isEmpty();
+		return !getInputText().isEmpty();
 	}
 
-	private void applyHousenumberAnswer()
-	{
-		Bundle answer = new Bundle();
-		answer.putString(HOUSENUMBER, getHousenumber());
-		applyFormAnswer(answer);
-	}
-
-	private String getHousenumber()
+	private String getInputText()
 	{
 		return input.getText().toString().trim();
 	}
 
-	private void confirmUnusualHousenumber()
+	private void confirmUnusualHousenumber(final Runnable onConfirmed)
 	{
 		DialogInterface.OnClickListener onYes = new DialogInterface.OnClickListener()
 		{
 			@Override
 			public void onClick(DialogInterface dialog, int which)
 			{
-				applyHousenumberAnswer();
+				onConfirmed.run();
 			}
 		};
 		DialogInterface.OnClickListener onNo = new DialogInterface.OnClickListener()

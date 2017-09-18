@@ -27,7 +27,6 @@ import de.westnordost.streetcomplete.data.download.MobileDataAutoDownloadStrateg
 import de.westnordost.streetcomplete.data.download.QuestAutoDownloadStrategy;
 import de.westnordost.streetcomplete.data.download.WifiAutoDownloadStrategy;
 import de.westnordost.streetcomplete.data.osm.upload.ChangesetAutoCloserReceiver;
-import de.westnordost.streetcomplete.util.SphericalEarthMath;
 
 import static android.app.PendingIntent.FLAG_CANCEL_CURRENT;
 

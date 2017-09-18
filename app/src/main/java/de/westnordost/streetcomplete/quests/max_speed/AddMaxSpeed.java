@@ -2,6 +2,8 @@ package de.westnordost.streetcomplete.quests.max_speed;
 
 import android.os.Bundle;
 
+import java.util.Map;
+
 import javax.inject.Inject;
 
 import de.westnordost.streetcomplete.R;
@@ -21,7 +23,7 @@ public class AddMaxSpeed extends SimpleOverpassQuestType
 		       "!maxspeed and !source:maxspeed " +
 		       " and !maxspeed:forward and !maxspeed:backward " +
 		       // other tags that are used for basically the same thing as source:maxspeed
-		       " and !zone:maxspeed and !maxspeed:type";
+		       " and !zone:maxspeed and !maxspeed:type and (access !~ private|no or (foot and foot !~ private|no))";
 	}
 
 	@Override public AbstractQuestAnswerFragment createForm()
@@ -32,13 +34,19 @@ public class AddMaxSpeed extends SimpleOverpassQuestType
 	@Override public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
 	{
 		boolean isLivingStreet = answer.getBoolean(AddMaxSpeedForm.LIVING_STREET);
+		String maxspeed = answer.getString(AddMaxSpeedForm.MAX_SPEED);
+		String advisory = answer.getString(AddMaxSpeedForm.ADVISORY_SPEED);
 		if(isLivingStreet)
 		{
 			changes.modify("highway","living_street");
 		}
+		else if(advisory != null)
+		{
+			changes.add("maxspeed:advisory", advisory);
+			changes.add("source:maxspeed:advisory", "sign");
+		}
 		else
 		{
-			String maxspeed = answer.getString(AddMaxSpeedForm.MAX_SPEED);
 			if (maxspeed != null)
 			{
 				changes.add("maxspeed", maxspeed);
@@ -58,6 +66,8 @@ public class AddMaxSpeed extends SimpleOverpassQuestType
 
 	@Override public String getCommitMessage() { return "Add speed limits"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_max_speed; }
-
-
+	@Override public int getTitle(Map<String, String> tags)
+	{
+		return R.string.quest_maxspeed_title_short;
+	}
 }

@@ -108,15 +108,17 @@ public class OsmQuestDaoTest extends ApplicationDbTestCase
 		}
 	}
 
-	public void testDeleteAll()
+	public void testDeleteAllClosed()
 	{
 		OsmQuest quest1 = createNewQuest(1, Element.Type.NODE);
 		quest1.setStatus(QuestStatus.CLOSED);
 		OsmQuest quest2 = createNewQuest(2, Element.Type.NODE);
+		quest2.setStatus(QuestStatus.REVERT);
+		OsmQuest quest3 = createNewQuest(3, Element.Type.NODE);
 
 		addToDaos(quest1, quest2);
 
-		assertEquals(1,dao.deleteAll(QuestStatus.CLOSED, System.currentTimeMillis() + 10000L));
+		assertEquals(2,dao.deleteAllClosed(System.currentTimeMillis() + 10000L));
 	}
 
 	private void checkEqual(OsmQuest quest, OsmQuest dbQuest)

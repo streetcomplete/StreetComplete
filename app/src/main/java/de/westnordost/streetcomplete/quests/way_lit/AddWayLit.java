@@ -3,6 +3,9 @@ package de.westnordost.streetcomplete.quests.way_lit;
 import android.os.Bundle;
 import android.text.TextUtils;
 
+import java.util.Arrays;
+import java.util.Map;
+
 import javax.inject.Inject;
 
 import de.westnordost.streetcomplete.R;
@@ -14,9 +17,9 @@ import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment;
 
 public class AddWayLit extends SimpleOverpassQuestType
 {
-	static final String[] LIT_RESIDENTIAL_ROADS = { "residential", "living_street", "pedestrian" };
+	private static final String[] LIT_RESIDENTIAL_ROADS = { "residential", "living_street", "pedestrian" };
 
-	static final String[] LIT_NON_RESIDENTIAL_ROADS = {
+	private static final String[] LIT_NON_RESIDENTIAL_ROADS = {
 			"primary", "secondary", "tertiary", "unclassified", "service",
 	};
 
@@ -45,7 +48,7 @@ public class AddWayLit extends SimpleOverpassQuestType
 				" or" +
 				" highway = path and (foot = designated or bicycle = designated)" +
 				")" +
-				" and !lit";
+				" and !lit and (access !~ private|no or (foot and foot !~ private|no))";
 	}
 
 	public AbstractQuestAnswerFragment createForm()
@@ -68,4 +71,21 @@ public class AddWayLit extends SimpleOverpassQuestType
 
 	@Override public String getCommitMessage() { return "Add way lit"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_lantern; }
+	@Override public int getTitle(Map<String,String> tags)
+	{
+		String type = tags.get("highway");
+		boolean hasName = tags.containsKey("name");
+		boolean isRoad = Arrays.asList(LIT_NON_RESIDENTIAL_ROADS).contains(type) ||
+				Arrays.asList(LIT_RESIDENTIAL_ROADS).contains(type);
+		if (isRoad)
+		{
+			if (hasName) return R.string.quest_way_lit_named_road_title;
+			else         return R.string.quest_way_lit_road_title;
+		}
+		else
+		{
+			if (hasName) return R.string.quest_way_lit_named_title;
+			else         return R.string.quest_way_lit_title;
+		}
+	}
 }

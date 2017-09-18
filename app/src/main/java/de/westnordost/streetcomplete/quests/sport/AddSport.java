@@ -5,6 +5,7 @@ import android.text.TextUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -62,4 +63,8 @@ public class AddSport extends SimpleOverpassQuestType
 
 	@Override public String getCommitMessage() { return "Add pitches sport"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_sport; }
+	@Override public int getTitle(Map<String,String> tags)
+	{
+		return R.string.quest_sport_title;
+	}
 }

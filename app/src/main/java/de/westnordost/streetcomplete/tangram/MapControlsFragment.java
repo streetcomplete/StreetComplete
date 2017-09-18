@@ -32,10 +32,6 @@ import static de.westnordost.streetcomplete.location.LocationUtil.MODE_CHANGED;
 
 public class MapControlsFragment extends Fragment
 {
-	// per application start settings
-	private static boolean isFollowingPosition = true;
-	private static boolean isCompassMode = false;
-
 	private SingleLocationRequest singleLocationRequest;
 	private MapFragment mapFragment;
 	private CompassView compassNeedle;
@@ -62,17 +58,29 @@ public class MapControlsFragment extends Fragment
 									   Bundle savedInstanceState)
 	{
 		View view = inflater.inflate(R.layout.map_controls, container, false);
-		compassNeedle = (CompassView) view.findViewById(R.id.compassNeedle);
+		compassNeedle = view.findViewById(R.id.compassNeedle);
 
 		view.findViewById(R.id.compass).setOnClickListener(new View.OnClickListener()
 		{
 			@Override public void onClick(View v)
 			{
-				orientNorth();
+				boolean isFollowing = mapFragment.isFollowingPosition();
+				boolean isCompassMode = mapFragment.isCompassMode();
+				boolean isNorthUp = mapFragment.getRotation() == 0;
+
+				if(!isNorthUp)
+				{
+					mapFragment.setMapOrientation(0, 0);
+				}
+
+				if(isFollowing)
+				{
+					setIsCompassMode(!isCompassMode);
+				}
 			}
 		});
 
-		trackingButton = (LocationStateButton) view.findViewById(R.id.gps_tracking);
+		trackingButton = view.findViewById(R.id.gps_tracking);
 		trackingButton.setOnClickListener(new View.OnClickListener()
 		{
 			@Override public void onClick(View v)
@@ -80,19 +88,9 @@ public class MapControlsFragment extends Fragment
 				LocationState state = trackingButton.getState();
 				if(state.isEnabled())
 				{
-					boolean isFollowing = mapFragment.isFollowingPosition();
-					boolean isCompassMode = mapFragment.isCompassMode();
-					boolean isShowingDirection = mapFragment.isShowingDirection();
-					// cycle through these three states
-					if(!isFollowing)
+					if(!mapFragment.isFollowingPosition())
 					{
 						setIsFollowingPosition(true);
-					}
-					// cycle to compass mode only if position already known
-					else if(!isCompassMode && isShowingDirection)
-					{
-						trackingButton.setCompassMode(true);
-						mapFragment.setCompassMode(true);
 					}
 					else
 					{
@@ -111,10 +109,8 @@ public class MapControlsFragment extends Fragment
 				}
 			}
 		});
-		trackingButton.setActivated(isFollowingPosition);
-		trackingButton.setCompassMode(isCompassMode);
 
-		ImageButton zoomInButton = (ImageButton) view.findViewById(R.id.zoom_in);
+		ImageButton zoomInButton = view.findViewById(R.id.zoom_in);
 		zoomInButton.setOnClickListener(new View.OnClickListener()
 		{
 			@Override public void onClick(View v)
@@ -122,7 +118,7 @@ public class MapControlsFragment extends Fragment
 				mapFragment.zoomIn();
 			}
 		});
-		ImageButton zoomOutButton = (ImageButton) view.findViewById(R.id.zoom_out);
+		ImageButton zoomOutButton = view.findViewById(R.id.zoom_out);
 		zoomOutButton.setOnClickListener(new View.OnClickListener()
 		{
 			@Override public void onClick(View v)
@@ -157,9 +153,6 @@ public class MapControlsFragment extends Fragment
 	{
 		super.onStop();
 
-		isFollowingPosition = trackingButton.isActivated();
-		isCompassMode = trackingButton.isCompassMode();
-
 		getContext().unregisterReceiver(locationAvailabilityReceiver);
 
 		LocalBroadcastManager.getInstance(getContext()).registerReceiver(locationRequestFinishedReceiver,
@@ -176,6 +169,12 @@ public class MapControlsFragment extends Fragment
 	public void onMapOrientation(float rotation, float tilt)
 	{
 		compassNeedle.setOrientation(rotation, tilt);
+	}
+
+	public void onMapReady()
+	{
+		trackingButton.setActivated(mapFragment.isFollowingPosition());
+		trackingButton.setCompassMode(mapFragment.isCompassMode());
 	}
 
 	public boolean requestUnglueViewFromPosition()
@@ -202,16 +201,10 @@ public class MapControlsFragment extends Fragment
 		}
 	}
 
-	private void orientNorth()
-	{
-		setIsCompassMode(false);
-		mapFragment.setMapOrientation(0,0);
-	}
 
 	private void onLocationIsEnabled()
 	{
 		trackingButton.setState(LocationState.SEARCHING);
-		mapFragment.setIsFollowingPosition(trackingButton.isActivated());
 		mapFragment.startPositionTracking();
 		singleLocationRequest.startRequest(LocationRequest.PRIORITY_HIGH_ACCURACY,
 				new SingleLocationRequest.Callback()
@@ -226,7 +219,6 @@ public class MapControlsFragment extends Fragment
 	private void onLocationIsDisabled()
 	{
 		trackingButton.setState(LocationState.ALLOWED);
-		setIsFollowingPosition(false);
 		mapFragment.stopPositionTracking();
 		singleLocationRequest.stopRequest();
 	}

@@ -5,7 +5,7 @@
         <attr name="maxValue" format="integer"/>
     </declare-styleable>
     <declare-styleable name="LocationStateButton">
-        <attr name="tint" format="reference|color" />
+        <attr name="tint" format="color" />
         <!-- See LocationState. Assume that for each state that is set to true, any state that is
         defined before that is true also -->
         <attr name="state_allowed" format="boolean"/>

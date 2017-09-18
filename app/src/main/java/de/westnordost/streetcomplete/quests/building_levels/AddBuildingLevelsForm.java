@@ -22,51 +22,28 @@ public class AddBuildingLevelsForm extends AbstractQuestFormAnswerFragment
 	{
 		View view = super.onCreateView(inflater, container, savedInstanceState);
 
-		setTitle();
-
 		View contentView = setContentView(R.layout.quest_building_levels);
 
-		levelsInput = (EditText) contentView.findViewById(R.id.levelsInput);
-		roofLevelsInput = (EditText) contentView.findViewById(R.id.roofLevelsInput);
+		levelsInput = contentView.findViewById(R.id.levelsInput);
+		roofLevelsInput = contentView.findViewById(R.id.roofLevelsInput);
 
 		return view;
-	}
-
-	private void setTitle()
-	{
-		if(getOsmElement().getTags().containsKey("building:part"))
-		{
-			setTitle(R.string.quest_buildingLevels_title_buildingPart);
-		}
-		else
-		{
-			setTitle(R.string.quest_buildingLevels_title);
-		}
 	}
 
 	@Override protected void onClickOk()
 	{
 		Bundle answer = new Bundle();
-		String totalBuildingLevelsString = levelsInput.getText().toString();
+		String buildingLevelsString = levelsInput.getText().toString();
 		String roofLevelsString  = roofLevelsInput.getText().toString();
 
-		if (totalBuildingLevelsString.isEmpty())
+		if (buildingLevelsString.isEmpty())
 		{
 			Toast.makeText(getActivity(), R.string.no_changes, Toast.LENGTH_SHORT).show();
 		}
 		else
 		{
-			// the form asks for "levels in total" because it is more intuitive to ask but OSM expects
-			// the building:levels to not include the roof
-			int totalBuildingLevels = Integer.parseInt(totalBuildingLevelsString);
+			int buildingLevels = Integer.parseInt(buildingLevelsString);
 			int roofLevels = !roofLevelsString.isEmpty() ? Integer.parseInt(roofLevelsString) : 0;
-			int buildingLevels = totalBuildingLevels - roofLevels; // without roof
-
-			if(buildingLevels < 0)
-			{
-				Toast.makeText(getActivity(), R.string.quest_buildingLevels_negativeBuildingLevels, Toast.LENGTH_LONG).show();
-				return;
-			}
 
 			answer.putInt(BUILDING_LEVELS, buildingLevels);
 			if(!roofLevelsString.isEmpty())

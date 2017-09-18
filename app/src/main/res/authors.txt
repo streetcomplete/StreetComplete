@@ -4,8 +4,8 @@ File                            License / Source (if not given, follow link for 
 produce_areca_nut.jpg      CC-BY-SA 2.5      https://commons.wikimedia.org/wiki/File:Betel_nut_tree.JPG
 produce_tung_nut.jpg       CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Vernicia_fordii5.jpg
 produce_brazil_nut.jpg     CC-BY 2.0         https://commons.wikimedia.org/wiki/File:%22Bertholetia_excelsa%22_Castanha-do-Par%C3%A1_Brazil-nuts_tree_2.jpg
-produce_chili.jpg          CC-BY-SA 3.0      https://de.wikipedia.org/wiki/Datei:Thai_peppers.jpg
-produce_pepper.jpg         CC0               https://pixabay.com/de/paprika-nachtschattengew%C3%A4chs-1539491/
+produce_chilli_pepper.jpg  CC-BY-SA 3.0      https://de.wikipedia.org/wiki/Datei:Thai_peppers.jpg
+produce_sweet_pepper.jpg   CC0               https://pixabay.com/de/paprika-nachtschattengew%C3%A4chs-1539491/
 produce_banana.jpg         CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Musa-sp3.1.jpg
 produce_orange.jpg         CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:OrangeBloss_wb.jpg
 produce_lemon.jpg          CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Limonu.jpg
@@ -36,7 +36,7 @@ produce_almond.jpg         CC-BY-SA 2.0      https://commons.wikimedia.org/wiki/
 produce_raspberry.jpg      CC0               https://pixabay.com/de/obst-himbeeren-garten-2292701/
 produce_kiwi.jpg           CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Actinidia_chinensis4.jpg
 produce_blueberry.jpg      Public Domain     https://commons.wikimedia.org/wiki/File:PattsBlueberries.jpg
-produce_piper.jpg          CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Piper_nigrum001.JPG
+produce_pepper.jpg          CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Piper_nigrum001.JPG
 produce_olive.jpg          CC-BY 3.0         https://commons.wikimedia.org/wiki/File:Olea_europaea_01_by-dpc.jpg
 produce_date.jpg           CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Dates005.jpg
 produce_rubber.jpg         CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Latex_-_Hevea_-_Cameroun.JPG
@@ -87,10 +87,14 @@ fire_hydrant_wall.jpg          https://commons.wikimedia.org/wiki/File:Guenthers
 fire_hydrant_underground.jpg   https://commons.wikimedia.org/wiki/File:Hydrant_MPWiK.jpg
 fire_hydrant_pond.jpg          https://commons.wikimedia.org/wiki/File:Dry_hydrant.jpg
 
-crossing_type_signals.jpg      http://maxpixel.freegreatpicture.com/Green-Traffic-Lights-Little-Green-Man-Go-819851
+crossing_type_signals.jpg      https://pixabay.com/en/little-green-man-traffic-lights-819851/
 crossing_type_zebra.jpg        https://commons.wikimedia.org/wiki/File%3AZebra_crossing.jpg
 crossing_type_unmarked.jpg     http://www.jrlawfirm.com/wp-content/uploads/2016/04/unmarked-crosswalks-texas.jpg
 
 parking_type_multistorage.jpg  https://en.wikipedia.org/wiki/File:Hradec_Kr%C3%A1lov%C3%A9,_Resslova,_parkovac%C3%AD_d%C5%AFm.jpg
 parking_type_surface.jpg       https://wiki.openstreetmap.org/wiki/File:Car_park2.jpg
 parking_type_underground.jpg   https://pixabay.com/de/tiefgarage-einfahrt-absch%C3%BCssig-273439/
+
+power_pole_wood.jpg            https://commons.wikimedia.org/wiki/File:Two_armed_power_pole_1.jpg
+power_pole_steel.jpg           https://commons.wikimedia.org/wiki/File:Steel_tube_pylon.JPG
+power_pole_concrete.jpg        https://commons.wikimedia.org/wiki/File:Concrete_utility_pole.jpg

@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -36,6 +37,9 @@ public class AddHousenumber implements OsmElementQuestType
 	private static final TagFilterExpression NODES_WITH_HOUSENUMBERS = new FiltersParser().parse(
 			" nodes with addr:housenumber or addr:housename");
 
+	private static final TagFilterExpression NON_BUILDING_AREAS_WITH_HOUSENUMBERS = new FiltersParser().parse(
+			"ways, relations with !building and (addr:housenumber or addr:housename)");
+
 	private final OverpassMapDataDao overpassServer;
 
 	@Inject public AddHousenumber(OverpassMapDataDao overpassServer)
@@ -61,6 +65,20 @@ public class AddHousenumber implements OsmElementQuestType
 		});
 		if(!success) return false;
 
+		final ArrayList<Geometry> areasWithHousenumber = new ArrayList<>();
+		String areasWithHousenumbersQuery = NON_BUILDING_AREAS_WITH_HOUSENUMBERS.toOverpassQLString(bbox);
+		success = overpassServer.getAndHandleQuota(areasWithHousenumbersQuery, new MapDataWithGeometryHandler()
+		{
+			@Override public void handle(@NonNull Element element, @Nullable ElementGeometry geometry)
+			{
+				if(geometry != null)
+				{
+					areasWithHousenumber.add(JTSConst.toGeometry(geometry));
+				}
+			}
+		});
+		if(!success) return false;
+
 		String buildingsWithoutHousenumbersQuery = HOUSES_WITHOUT_HOUSENUMBERS.toOverpassQLString(bbox);
 		success = overpassServer.getAndHandleQuota(buildingsWithoutHousenumbersQuery, new MapDataWithGeometryHandler()
 		{
@@ -77,6 +95,7 @@ public class AddHousenumber implements OsmElementQuestType
 				for(int i = 0; i < housenumberCoords.size(); ++i)
 				{
 					Point p = housenumberCoords.get(i);
+					// this line is a very expensive computation
 					if(g.covers(p))
 					{
 						// one housenumber-node cannot be covered by multiple buildings. So, it can
@@ -85,6 +104,12 @@ public class AddHousenumber implements OsmElementQuestType
 						return;
 					}
 				}
+				// further exclude buildings that are contained in an area with a housenumber
+				for (Geometry areaWithHousenumber : areasWithHousenumber)
+				{
+					if(g.coveredBy(areaWithHousenumber)) return;
+				}
+
 				handler.handle(element, geometry);
 			}
 		});
@@ -95,10 +120,34 @@ public class AddHousenumber implements OsmElementQuestType
 	@Override public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
 	{
 		String housenumber = answer.getString(AddHousenumberForm.HOUSENUMBER);
-		changes.add("addr:housenumber", housenumber);
+		String housename = answer.getString(AddHousenumberForm.HOUSENAME);
+
+		if(housenumber != null)
+		{
+			changes.add("addr:housenumber", housenumber);
+		}
+		if(housename != null)
+		{
+			changes.add("addr:housename", housename);
+		}
+	}
+
+	@Override public boolean appliesTo(Element element)
+	{
+		/* Whether this element applies to this quest cannot be determined by looking at that
+		   element alone (see download()), an Overpass query would need to be made to find this out.
+		   This is too heavy-weight for this method so it always returns false. */
+
+		/* The implications of this are that AddHousenumber quests will never be created directly
+		*  as consequence of solving another quest and also after reverting a house number input,
+		*  the quest will not immediately pop up again. Instead, they are downloaded well after an
+		*  element became fit for this quest. */
+		return false;
 	}
 
 	@Override public AbstractQuestAnswerFragment createForm() { return new AddHousenumberForm(); }
 	@Override public String getCommitMessage() { return "Add housenumbers"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_housenumber; }
+	@Override public int getTitle(Map<String,String> tags) { return getTitle(); }
+	@Override public int getTitle() { return R.string.quest_address_title; }
 }

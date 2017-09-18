@@ -54,8 +54,8 @@ public class TimeRangePickerDialog extends AlertDialog implements View.OnClickLi
 		startPicker.setIs24HourView(true);
 
 		endPickerContainer = (ViewGroup) inflater.inflate(R.layout.time_range_picker_end_picker, null);
-		openEndCheckbox = (CheckBox) endPickerContainer.findViewById(R.id.checkBox);
-		endPicker = (TimePicker) endPickerContainer.findViewById(R.id.picker);
+		openEndCheckbox = endPickerContainer.findViewById(R.id.checkBox);
+		endPicker = endPickerContainer.findViewById(R.id.picker);
 		endPicker.setIs24HourView(true);
 		if(timeRange != null)
 		{
@@ -67,10 +67,10 @@ public class TimeRangePickerDialog extends AlertDialog implements View.OnClickLi
 			openEndCheckbox.setChecked(timeRange.isOpenEnded);
 		}
 
-		viewPager = (ViewPager) view.findViewById(R.id.view_pager);
+		viewPager = view.findViewById(R.id.view_pager);
 		viewPager.setAdapter(new CustomAdapter(startTimeLabel, endTimeLabel));
 
-		tabLayout = (TabLayout) view.findViewById(R.id.tab_layout);
+		tabLayout = view.findViewById(R.id.tab_layout);
 		tabLayout.setupWithViewPager(viewPager);
 
 		tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener()

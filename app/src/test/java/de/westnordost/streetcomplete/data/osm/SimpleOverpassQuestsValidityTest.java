@@ -5,13 +5,15 @@ import junit.framework.TestCase;
 import java.util.List;
 
 import de.westnordost.streetcomplete.data.QuestType;
+import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestType;
 import de.westnordost.streetcomplete.quests.QuestModule;
 
 public class SimpleOverpassQuestsValidityTest extends TestCase
 {
 	public void testQueryValid()
 	{
-		List<QuestType> questTypes = QuestModule.questTypeList(null,null,null).getQuestTypesSortedByImportance();
+		List<QuestType> questTypes = QuestModule.questTypeList(new OsmNoteQuestType(),
+				null,null,null).getQuestTypesSortedByImportance();
 		for(QuestType questType : questTypes)
 		{
 			if(questType instanceof SimpleOverpassQuestType)

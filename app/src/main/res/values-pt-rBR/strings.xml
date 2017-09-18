@@ -10,7 +10,6 @@
     <string name="pref_category_communication">"Comunicação"</string>
     <string name="pref_category_display">"Mostrar"</string>
     <string name="pref_title_authorization">"Autorizar acesso ao OSM"</string>
-    <string name="pref_title_authorized_summary">"Sucesso: autorização concedida"</string>
     <string name="pref_title_not_authorized_summary">"Ainda não autorizado"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
     <string name="pref_tilecache_size_message">"Espeço em megabytes reservado no armazenamento externo para cachear blocos do mapa"</string>
@@ -65,8 +64,8 @@
     <string name="cannot_find_bbox">"Não é possível escanear aqui. Tente aumentar o zoom"</string>
     <string name="download_area_too_big">"Por favor, aumente o zoom"</string>
     <string name="confirmation_cancel_prev_download_title">"Cancelar a pesquisa atual e escanear aqui em vez disso?"</string>
-    <string name="notification_downloading">"Escaneando por Missões"</string>
-    <string name="now_downloading_toast">"Escaneando para mais missões "</string>
+    <string name="notification_downloading">"Escaneando por Missões…"</string>
+    <string name="now_downloading_toast">"Escaneando para mais missões…"</string>
     <string name="turn_on_location_request">"A localização está desativada. Ir para as configurações e ligar agora?"</string>
     <string name="no_location_permission_warning">"A sua localização é necessária para escanear por missões nesta área."</string>
     <string name="action_about">"Sobre StreetComplete"</string>
@@ -183,17 +182,9 @@ Para exibir o mapa, os blocos vetoriais são recuperadas do &lt;a href=\"https:/
     <string name="quest_serviceType_title">"Que tipo de rua de serviço é essa?"</string>
     <string name="quest_streetLanes_title">"Quantas pistas tem essa rua?"</string>
     <string name="quest_streetLanes_description">"Se não houver marcações rodoviárias, não há pistas."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetLanes_north">"indo para o norte"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetLanes_west">"indo para o oeste"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetLanes_east">"indo para o leste"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetLanes_south">"indo para o sul"</string>
     <string name="quest_streetLanes_answer_noLanes">"Não tem faixas marcadas"</string>
     <string name="quest_streetLanes_noLanes_estWidth">"Estime por favor quantos carros caberiam lado a lado nesta rua."</string>
@@ -363,14 +354,10 @@ Caso contrário, pode baixar outro teclado na loja de aplicativos. Alguns dos te
     <string name="produce_papayas">"Mamões"</string>
     <string name="produce_peaches">"Pêssegos"</string>
     <string name="produce_pears">"Peras"</string>
-
-    <!-- Fuzzy -->
-    <string name="produce_chili">"Pimentas"</string>
+    <string name="produce_chili">"Pimenta"</string>
     <string name="produce_persimmons">"Caqui"</string>
     <string name="produce_pineapples">"Abacaxis"</string>
-
-    <!-- Fuzzy -->
-    <string name="produce_pepper">"Pimentas"</string>
+    <string name="produce_pepper">"Pimenta-do-reino"</string>
     <string name="produce_pistachios">"Pistaches"</string>
     <string name="produce_plums">"Ameixas"</string>
     <string name="produce_raspberries">"Framboesas"</string>
@@ -386,4 +373,32 @@ Caso contrário, pode baixar outro teclado na loja de aplicativos. Alguns dos te
     <string name="quest_way_lit_named_road_title">"A estrada %s tem iluminação aqui? "</string>
     <string name="quest_way_lit_automatic">"Usa detector de movimento "</string>
     <string name="quest_way_lit_24_7">"É iluminado dia e noite"</string>
+    <string name="pref_title_authorized_username_summary">"Conta autorizada: %s"</string>
+    <string name="cannot_find_bbox_or_reduce_tilt">"Não é possível buscar aqui.  Tente aproximar mais ou inclinar menos o mapa."</string>
+    <string name="quest_crossing_type_title">"Que tipo de cruzamento é esse?"</string>
+    <string name="quest_crossing_type_signals">"Cruzamento com semáforo"</string>
+    <string name="quest_crossing_type_uncontrolled">"Cruzamento sem controle"</string>
+    <string name="quest_crossing_type_unmarked">"Cruzamento sem marcação na pista"</string>
+    <string name="compass_north_one_letter">"N"</string>
+    <string name="action_undo">"Desfazer"</string>
+    <string name="no_changes_to_undo">"Nada para desfazer"</string>
+    <string name="undo_confirm_title">"Desfazer a última resposta?"</string>
+    <string name="produce_mangosteen">"Mangostão"</string>
+    <string name="produce_tomatoes">"Tomates"</string>
+    <string name="produce_areca_nuts">"Noz de Areca"</string>
+    <string name="produce_sweet_peppers">"Pimentão"</string>
+    <string name="produce_brazil_nuts">"Castanha do Pará"</string>
+
+    <!-- Fuzzy -->
+    <string name="produce_tung_nuts">"Noz da Índia"</string>
+    <string name="quest_parkingType_title">"Que tipo de estacionamento é esse?"</string>
+    <string name="quest_parkingType_surface">"Normal"</string>
+    <string name="quest_parkingType_underground">"Garagem subterrânea"</string>
+    <string name="quest_parkingType_multiStorage">"Edifício-garagem"</string>
+    <string name="quest_toiletAvailability_name_title">"%s oferece banheiro?"</string>
+    <string name="quest_powerPolesMaterial_title">"De que material é este poste?"</string>
+    <string name="quest_powerPolesMaterial_wood">"Madeira"</string>
+    <string name="quest_powerPolesMaterial_metal">"Aço"</string>
+    <string name="quest_powerPolesMaterial_concrete">"Concreto"</string>
+    <string name="quest_maxspeed_answer_advisory_speed_limit">"apenas um limite de velocidade indicativo"</string>
 </resources>

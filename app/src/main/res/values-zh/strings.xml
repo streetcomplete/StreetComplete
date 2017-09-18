@@ -10,7 +10,6 @@
     <string name="pref_category_communication">"通讯"</string>
     <string name="pref_category_display">"显示"</string>
     <string name="pref_title_authorization">"OpenStreetMap 账号验证"</string>
-    <string name="pref_title_authorized_summary">"帐号验证成功"</string>
     <string name="pref_title_not_authorized_summary">"帐号未验证"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
     <string name="pref_tilecache_size_message">"MB为单位的空间保留用来暂存地图图砖"</string>
@@ -370,4 +369,20 @@ OpenStreetMap不接受匿名编辑，您需要登录您的OpenStreetMap帐号。
     <string name="quest_way_lit_named_road_title">"\"%s\" 沿路上有照明设施？"</string>
     <string name="quest_way_lit_automatic">"使用动态侦测"</string>
     <string name="quest_way_lit_24_7">"不分日夜照明"</string>
+    <string name="quest_crossing_type_title">"这是哪种交叉口？"</string>
+    <string name="compass_north_one_letter">"北"</string>
+    <string name="produce_mangosteen">"山竹"</string>
+    <string name="produce_tomatoes">"西红柿"</string>
+    <string name="produce_areca_nuts">"槟榔"</string>
+    <string name="produce_sweet_peppers">"青椒"</string>
+    <string name="produce_brazil_nuts">"巴西坚果"</string>
+    <string name="produce_tung_nuts">"油桐子"</string>
+    <string name="quest_parkingType_title">"这是哪种停车场？"</string>
+    <string name="quest_parkingType_surface">"一般"</string>
+    <string name="quest_parkingType_underground">"地下停车场"</string>
+    <string name="quest_parkingType_multiStorage">"停车场"</string>
+    <string name="quest_toiletAvailability_name_title">"%s有洗手间吗？"</string>
+    <string name="quest_powerPolesMaterial_wood">"木头"</string>
+    <string name="quest_powerPolesMaterial_metal">"钢铁"</string>
+    <string name="quest_powerPolesMaterial_concrete">"水泥"</string>
 </resources>

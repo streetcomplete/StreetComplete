@@ -20,11 +20,9 @@ public class AddBikeParkingCapacityForm extends AbstractQuestFormAnswerFragment
 	{
 		View view = super.onCreateView(inflater, container, savedInstanceState);
 
-		setTitle(R.string.quest_bikeParkingCapacity_title);
-
 		View contentView = setContentView(R.layout.quest_bike_parking_capacity);
 
-		capacityInput = (EditText) contentView.findViewById(R.id.capacityInput);
+		capacityInput = contentView.findViewById(R.id.capacityInput);
 
 		return view;
 	}

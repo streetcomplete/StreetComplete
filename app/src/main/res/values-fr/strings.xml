@@ -10,7 +10,6 @@
     <string name="pref_category_communication">"Communication"</string>
     <string name="pref_category_display">"Affichage"</string>
     <string name="pref_title_authorization">"Autoriser l'accès OSM"</string>
-    <string name="pref_title_authorized_summary">"Votre compte a été autorisé avec succès"</string>
     <string name="pref_title_not_authorized_summary">"Pas encore autorisé"</string>
     <string name="pref_tilecache_size_summary">"%d Mo"</string>
     <string name="pref_tilecache_size_message">"Espace en megaoctets réservé à la sauvegarde en cache sur stockage externe des tuiles de la carte"</string>
@@ -64,8 +63,8 @@
     <string name="quest_noteDiscussion_comments_title">"Réponses"</string>
 
     <!-- In the context of this sentence, maybe prefer the verb "Abandonner" instead of "Rejeter" because it's an idea to give up an input -->
-    <string name="confirmation_discard_title">"Rejeter l'entrée ?"</string>
-    <string name="confirmation_discard_positive">"Rejeter"</string>
+    <string name="confirmation_discard_title">"Abandonner cette saisie ?"</string>
+    <string name="confirmation_discard_positive">"Abandonner"</string>
     <string name="confirmation_discard_negative">"Annuler"</string>
     <string name="action_download">"Rechercher des quêtes ici"</string>
     <string name="action_upload">"Téléverser les réponses"</string>
@@ -76,8 +75,8 @@
     <string name="cannot_find_bbox">"Impossible de rechercher ici. Essayez de zoomer un peu plus"</string>
     <string name="download_area_too_big">"Veuillez zoomer un peu plus"</string>
     <string name="confirmation_cancel_prev_download_title">"Annuler la recherche en cours et rechercher ici à la place ?"</string>
-    <string name="notification_downloading">"Recherche de quêtes"</string>
-    <string name="now_downloading_toast">"Recherche de quêtes additionnelles"</string>
+    <string name="notification_downloading">"Recherche de quêtes…"</string>
+    <string name="now_downloading_toast">"Recherche de quêtes additionnelles…"</string>
     <string name="turn_on_location_request">"La géolocalisation est désactivé. Aller dans les paramètres pour l'activer ?"</string>
     <string name="no_location_permission_warning">"Votre position est nécessaire pour rechercher des quêtes"</string>
     <string name="action_about">"À propos de StreetComplete"</string>
@@ -327,10 +326,10 @@ S'il n'y a aucun panneau, les limitations de vitesse par défaut s'appliquent."<
     <string name="quest_wheelchairAccess_location_name_title">"Le lieu « %s » est-il accessible en fauteuil roulant ?"</string>
     <string name="quest_wheelchairAccess_limited_description_business">"Partiellement signifie qu'il n'y a pas plus d'une marche d'escalier afin d'accéder au magasin et que la plupart des pièces sont accessibles en fauteuil roulant."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"Partiellement signifie qu'il n'y a pas plus d'une marche d'escalier pour y accéder."</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Abréviation du nom \"% s\"?"</string>
-    <string name="quest_baby_changing_table_toilets_title">"Est-ce que ces toilettes disposent d'une table à langer?"</string>
-    <string name="quest_baby_changing_table_title">"Est-ce que \"% s\" possède une table à langer?"</string>
-    <string name="quest_recycling_type_title">"Quel type d'installation de recyclage est-ce?"</string>
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Abréviation du nom \"%s\" ?"</string>
+    <string name="quest_baby_changing_table_toilets_title">"Est-ce que ces toilettes disposent d'une table à langer ?"</string>
+    <string name="quest_baby_changing_table_title">"Est-ce que \"%s\" possède une table à langer ?"</string>
+    <string name="quest_recycling_type_title">"Quel type d'installation de recyclage est-ce ?"</string>
     <string name="recycling_centre">"Déchetterie"</string>
     <string name="overground_recycling_container">"Conteneur de recyclage"</string>
     <string name="underground_recycling_container">"Conteneur de recyclage enterré"</string>
@@ -347,8 +346,6 @@ Sinon, vous pouvez télécharger un autre clavier dans la boutique d'application
     <string name="quest_streetName_menuItem_nolanguage">"(non spécifié)"</string>
     <string name="quest_fireHydrant_type_title">"Quel type de bouche d'incendie est-ce ?"</string>
     <string name="quest_fireHydrant_type_pillar">"Poteau"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_fireHydrant_type_underground">"Enterrée"</string>
     <string name="quest_fireHydrant_type_wall">"Mur"</string>
     <string name="quest_fireHydrant_type_pond">"Étang"</string>
@@ -394,7 +391,7 @@ Sinon, vous pouvez télécharger un autre clavier dans la boutique d'application
     <string name="produce_olives">"Olives"</string>
     <string name="produce_oranges">"Oranges"</string>
     <string name="produce_papayas">"Papayes"</string>
-    <string name="produce_peaches">"Pèches"</string>
+    <string name="produce_peaches">"Pêches"</string>
     <string name="produce_pears">"Poires"</string>
     <string name="produce_chili">"Piments"</string>
     <string name="produce_persimmons">"Kaki"</string>
@@ -402,7 +399,7 @@ Sinon, vous pouvez télécharger un autre clavier dans la boutique d'application
     <string name="produce_pepper">"Poivrons"</string>
     <string name="produce_pistachios">"Pistaches"</string>
     <string name="produce_plums">"Prunes"</string>
-    <string name="produce_raspberries">"Franboises"</string>
+    <string name="produce_raspberries">"Framboises"</string>
     <string name="produce_rubber">"Caoutchouc"</string>
     <string name="produce_strawberries">"Fraises"</string>
     <string name="produce_tea">"Thé"</string>
@@ -415,4 +412,30 @@ Sinon, vous pouvez télécharger un autre clavier dans la boutique d'application
     <string name="quest_way_lit_named_road_title">"La route « %s » est-elle éclairée ?"</string>
     <string name="quest_way_lit_automatic">"Cela utilise la détection de mouvement"</string>
     <string name="quest_way_lit_24_7">"Voie allumée jour et nuit"</string>
+    <string name="pref_title_authorized_username_summary">"Compte autorisé : %s"</string>
+    <string name="cannot_find_bbox_or_reduce_tilt">"Impossible de rechercher ici. Essayez de zoomer un peu plus or de moins incliner la carte."</string>
+    <string name="quest_crossing_type_title">"Quel est le type de ce passage piétons ?"</string>
+    <string name="quest_crossing_type_signals">"Passage piétons avec feux"</string>
+    <string name="quest_crossing_type_uncontrolled">"Passage piétons non protégé"</string>
+    <string name="quest_crossing_type_unmarked">"Passage piétons sans marquage"</string>
+    <string name="compass_north_one_letter">"N"</string>
+    <string name="action_undo">"Annuler"</string>
+    <string name="no_changes_to_undo">"Rien à annuler"</string>
+    <string name="undo_confirm_title">"Annuler la dernière réponse ?"</string>
+    <string name="produce_mangosteen">"Mangoustan"</string>
+    <string name="produce_tomatoes">"Tomates"</string>
+    <string name="produce_areca_nuts">"Noix d'arec"</string>
+    <string name="produce_sweet_peppers">"Poivons"</string>
+    <string name="produce_brazil_nuts">"Noix du Brésil"</string>
+    <string name="produce_tung_nuts">"Noix de bancoul"</string>
+    <string name="quest_parkingType_title">"Quel est le type de ce parking ?"</string>
+    <string name="quest_parkingType_surface">"En surface"</string>
+    <string name="quest_parkingType_underground">"Sous-terrain"</string>
+    <string name="quest_parkingType_multiStorage">"Bâtiment"</string>
+    <string name="quest_toiletAvailability_name_title">"Est que %s dispose de toilettes"</string>
+    <string name="quest_powerPolesMaterial_title">"Quel est le matériau de ce poteau électrique ?"</string>
+    <string name="quest_powerPolesMaterial_wood">"Bois"</string>
+    <string name="quest_powerPolesMaterial_metal">"Acier"</string>
+    <string name="quest_powerPolesMaterial_concrete">"Béton"</string>
+    <string name="quest_maxspeed_answer_advisory_speed_limit">"Vitesse limite indicative uniquement"</string>
 </resources>
