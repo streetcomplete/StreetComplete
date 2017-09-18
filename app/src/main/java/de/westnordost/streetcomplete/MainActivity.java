@@ -44,6 +44,7 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
+import de.westnordost.osmapi.common.errors.OsmApiReadResponseException;
 import de.westnordost.osmapi.common.errors.OsmAuthorizationException;
 import de.westnordost.osmapi.common.errors.OsmConnectionException;
 import de.westnordost.streetcomplete.about.AboutActivity;
@@ -525,7 +526,8 @@ public class MainActivity extends AppCompatActivity implements
 		{
 			// a 5xx error is not the fault of this app. Nothing we can do about it, so it does not
 			// make sense to send an error report. Just notify the user
-			if(e instanceof OsmConnectionException)
+			// Also, we treat an invalid response the same as a (temporary) connection error
+			if(e instanceof OsmConnectionException || e instanceof OsmApiReadResponseException)
 			{
 				Toast.makeText(MainActivity.this, R.string.download_server_error, Toast.LENGTH_LONG).show();
 			}
