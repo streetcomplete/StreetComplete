@@ -44,6 +44,7 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
+import de.westnordost.osmapi.common.errors.OsmApiReadResponseException;
 import de.westnordost.osmapi.common.errors.OsmAuthorizationException;
 import de.westnordost.osmapi.common.errors.OsmConnectionException;
 import de.westnordost.streetcomplete.about.AboutActivity;
@@ -498,42 +499,37 @@ public class MainActivity extends AppCompatActivity implements
 	{
 		@Override public void onStarted()
 		{
-			runOnUiThread(new Runnable()
+			runOnUiThread(new Runnable() { @Override public void run()
 			{
-				@Override public void run()
-				{
-					ObjectAnimator fadeInAnimator = ObjectAnimator.ofFloat(progressBar, View.ALPHA, 1f);
-					fadeInAnimator.start();
-					progressBar.setProgress(0);
+				ObjectAnimator fadeInAnimator = ObjectAnimator.ofFloat(progressBar, View.ALPHA, 1f);
+				fadeInAnimator.start();
+				progressBar.setProgress(0);
 
-					Toast.makeText(
-							MainActivity.this,
-							R.string.now_downloading_toast,
-							Toast.LENGTH_SHORT).show();
-				}
-			});
+				Toast.makeText(
+						MainActivity.this,
+						R.string.now_downloading_toast,
+						Toast.LENGTH_SHORT).show();
+			}});
 		}
 
 		@Override public void onProgress(final float progress)
 		{
-			runOnUiThread(new Runnable()
+			runOnUiThread(new Runnable() { @Override public void run()
 			{
-				@Override public void run()
-				{
-					int intProgress = (int) (1000 * progress);
-					ObjectAnimator progressAnimator = ObjectAnimator.ofInt(progressBar, "progress", intProgress);
-					progressAnimator.setDuration(1000);
-					progressAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
-					progressAnimator.start();
-				}
-			});
+				int intProgress = (int) (1000 * progress);
+				ObjectAnimator progressAnimator = ObjectAnimator.ofInt(progressBar, "progress", intProgress);
+				progressAnimator.setDuration(1000);
+				progressAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
+				progressAnimator.start();
+			}});
 		}
 
 		@Override public void onError(final Exception e)
 		{
 			// a 5xx error is not the fault of this app. Nothing we can do about it, so it does not
 			// make sense to send an error report. Just notify the user
-			if(e instanceof OsmConnectionException)
+			// Also, we treat an invalid response the same as a (temporary) connection error
+			if(e instanceof OsmConnectionException || e instanceof OsmApiReadResponseException)
 			{
 				Toast.makeText(MainActivity.this, R.string.download_server_error, Toast.LENGTH_LONG).show();
 			}
@@ -552,15 +548,12 @@ public class MainActivity extends AppCompatActivity implements
 
 		@Override public void onFinished()
 		{
-			runOnUiThread(new Runnable()
+			runOnUiThread(new Runnable() { @Override public void run()
 			{
-				@Override public void run()
-				{
-					ObjectAnimator fadeOutAnimator = ObjectAnimator.ofFloat(progressBar, View.ALPHA, 0f);
-					fadeOutAnimator.setDuration(1000);
-					fadeOutAnimator.start();
-				}
-			});
+				ObjectAnimator fadeOutAnimator = ObjectAnimator.ofFloat(progressBar, View.ALPHA, 0f);
+				fadeOutAnimator.setDuration(1000);
+				fadeOutAnimator.start();
+			}});
 		}
 
 		@Override public void onNotStarted()
@@ -634,9 +627,12 @@ public class MainActivity extends AppCompatActivity implements
 	/* ------------- VisibleQuestListener ------------- */
 
 	@AnyThread
-	@Override public void onQuestsCreated(Collection<? extends Quest> quests, QuestGroup group)
+	@Override public void onQuestsCreated(final Collection<? extends Quest> quests, final QuestGroup group)
 	{
-		mapFragment.addQuests(quests, group);
+		runOnUiThread(new Runnable() { @Override public void run()
+		{
+			mapFragment.addQuests(quests, group);
+		}});
 		// to recreate element geometry of selected quest (if any) after recreation of activity
 		if(getQuestDetailsFragment() != null)
 		{
@@ -657,19 +653,18 @@ public class MainActivity extends AppCompatActivity implements
 	{
 		if (clickedQuestId != null && quest.getId().equals(clickedQuestId) && group == clickedQuestGroup)
 		{
-			runOnUiThread(new Runnable()
+			runOnUiThread(new Runnable() { @Override public void run()
 			{
-				@Override public void run()
-				{
-					requestShowQuestDetails(quest, group, element);
-				}
-			});
-
+				requestShowQuestDetails(quest, group, element);
+			}});
 			clickedQuestId = null;
 			clickedQuestGroup = null;
 		} else if (isQuestDetailsCurrentlyDisplayedFor(quest.getId(), group))
 		{
-			mapFragment.addQuestGeometry(quest.getGeometry());
+			runOnUiThread(new Runnable() { @Override public void run()
+			{
+				mapFragment.addQuestGeometry(quest.getGeometry());
+			}});
 		}
 	}
 
@@ -701,7 +696,10 @@ public class MainActivity extends AppCompatActivity implements
 		{
 			if (!isQuestDetailsCurrentlyDisplayedFor(questId, group)) continue;
 
-			runOnUiThread(new Runnable() { @Override public void run() { closeQuestDetails(); }});
+			runOnUiThread(new Runnable() { @Override public void run()
+			{
+				closeQuestDetails();
+			}});
 			break;
 		}
 

@@ -10,7 +10,6 @@
     <string name="pref_category_communication">"Komunikimi"</string>
     <string name="pref_category_display">"Shfaq"</string>
     <string name="pref_title_authorization">"Autorizo qasjen në OSM"</string>
-    <string name="pref_title_authorized_summary">"Autorizuar me sukses në llogarinë tuaj"</string>
     <string name="pref_title_not_authorized_summary">"Ende pa autorizuar"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
     <string name="pref_tilecache_size_message">"Hapësira në megabajt e rezervuar në memorje të jashtme për të ruajtur hartën"</string>
@@ -65,8 +64,8 @@
     <string name="cannot_find_bbox">"Nuk mund të skanoj këtu. Mundohu ta zmadhoni më tej."</string>
     <string name="download_area_too_big">"Ju lutemi afrohuni më shumë"</string>
     <string name="confirmation_cancel_prev_download_title">"Anuloni kërkimin aktual dhe skanoni këtu?"</string>
-    <string name="notification_downloading">"Po skanohet për Gjurmime"</string>
-    <string name="now_downloading_toast">"Po skanohet për më shumë gjurmime"</string>
+    <string name="notification_downloading">"Po skanohet për Gjurmime…"</string>
+    <string name="now_downloading_toast">"Po skanohet për më shumë gjurmime…"</string>
     <string name="turn_on_location_request">"Vendndodhja është ndalur. Shko në Rregullime për ta aktivizuar?"</string>
     <string name="no_location_permission_warning">"Duhet vendndodhja për të gjurmuar në afërsinë tuaj."</string>
     <string name="action_about">"Për StreetComplete"</string>

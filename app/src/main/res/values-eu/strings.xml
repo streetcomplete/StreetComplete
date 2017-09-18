@@ -10,7 +10,6 @@
     <string name="pref_category_communication">"Komunikazioa"</string>
     <string name="pref_category_display">"Pantaila"</string>
     <string name="pref_title_authorization">"Baimendu"</string>
-    <string name="pref_title_authorized_summary">"Zure kontura sarbidea ongi baimendu da"</string>
     <string name="pref_title_not_authorized_summary">"Oraindik baimendu gabe"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
     <string name="pref_tilecache_size_message">"Maparen lauzak kanpo biltegiratzean gordetzeko espazioa megabytetan"</string>
@@ -65,8 +64,8 @@
     <string name="cannot_find_bbox">"Ezin da hemen bilatu, Urrundu zooma gehiago"</string>
     <string name="download_area_too_big">"Hurbildu zooma gehiago"</string>
     <string name="confirmation_cancel_prev_download_title">"Utzi abian dagoen bilaketa eta bilatu hemen ordez?"</string>
-    <string name="notification_downloading">"Erronkak bilatzen"</string>
-    <string name="now_downloading_toast">"Erronka gehiago bilatzen"</string>
+    <string name="notification_downloading">"Erronkak bilatzen…"</string>
+    <string name="now_downloading_toast">"Erronka gehiago bilatzen…"</string>
     <string name="turn_on_location_request">"Kokapena itzalita dago. ireki ezarpenak orain pizteko?"</string>
     <string name="no_location_permission_warning">"Zure kokalekua behar da inguruko erronkak bilatzeko."</string>
     <string name="action_about">"StreetComplete-i buruz"</string>
@@ -370,4 +369,27 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_way_lit_named_road_title">"\"%s\" kalea argituta dago hemen?"</string>
     <string name="quest_way_lit_automatic">"Mugimendu-antzematea darabil"</string>
     <string name="quest_way_lit_24_7">"Gau eta egunez dago argituta"</string>
+    <string name="pref_title_authorized_username_summary">"Baimendutako kontua: %s"</string>
+    <string name="cannot_find_bbox_or_reduce_tilt">"Ezin da hemen eskaneatu. Saiatu zooma hurbiltzen."</string>
+    <string name="quest_crossing_type_title">"Zein motako bidegurutzea da hau?"</string>
+    <string name="quest_crossing_type_signals">"Semaforoak dituen bidegurutzea"</string>
+    <string name="quest_crossing_type_uncontrolled">"Kontrolatu gabeko bidegurutzea"</string>
+    <string name="quest_crossing_type_unmarked">"Errepide-markarik gabeko bidegurutzea"</string>
+    <string name="compass_north_one_letter">"I"</string>
+    <string name="action_undo">"Desegin"</string>
+    <string name="no_changes_to_undo">"Ez dago ezer egiteko"</string>
+    <string name="undo_confirm_title">"Desegin azken erantzun hau?"</string>
+    <string name="produce_mangosteen">"Mangostanak"</string>
+    <string name="produce_tomatoes">"Tomateak"</string>
+    <string name="produce_sweet_peppers">"Piper gozoak"</string>
+    <string name="quest_parkingType_title">"Zer motako aparkalekua da hau?"</string>
+    <string name="quest_parkingType_surface">"Arrunta"</string>
+    <string name="quest_parkingType_underground">"Lurrazpiko garajea"</string>
+    <string name="quest_parkingType_multiStorage">"Kotxeetarako aparkalekua"</string>
+    <string name="quest_toiletAvailability_name_title">"%s(ek)k komuna du?"</string>
+    <string name="quest_powerPolesMaterial_title">"Zein da zutoin honen materiala?"</string>
+    <string name="quest_powerPolesMaterial_wood">"Egurra"</string>
+    <string name="quest_powerPolesMaterial_metal">"Altzairua"</string>
+    <string name="quest_powerPolesMaterial_concrete">"Hormigoia"</string>
+    <string name="quest_maxspeed_answer_advisory_speed_limit">"Aholkatutako abiadura muga besterik ez"</string>
 </resources>

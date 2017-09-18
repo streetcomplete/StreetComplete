@@ -10,7 +10,6 @@
     <string name="pref_category_communication">"Kommunikation"</string>
     <string name="pref_category_display">"Visa"</string>
     <string name="pref_title_authorization">"Ge tillgång till OSM"</string>
-    <string name="pref_title_authorized_summary">"Ditt konto har blivit auktoriserat"</string>
     <string name="pref_title_not_authorized_summary">"Du är ännu inte auktoriserad"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
     <string name="pref_tilecache_size_message">"Utrymme i megabyte som reserveras på yttre lagring för att cacha kartdelar"</string>
@@ -65,8 +64,8 @@
     <string name="cannot_find_bbox">"Det går inte att skanna här. Försök att zooma in ytterligare"</string>
     <string name="download_area_too_big">"Zooma in ytterligare"</string>
     <string name="confirmation_cancel_prev_download_title">"Avbryta den aktuella sökningen och skanna här i stället?"</string>
-    <string name="notification_downloading">"Söker efter uppdrag"</string>
-    <string name="now_downloading_toast">"Söker efter fler uppdrag"</string>
+    <string name="notification_downloading">"Söker efter uppdrag…"</string>
+    <string name="now_downloading_toast">"Söker efter fler uppdrag…"</string>
     <string name="turn_on_location_request">"Lokalisering är avstängd. Öppna inställningar för att slå på det nu?"</string>
     <string name="no_location_permission_warning">"Din plats är nödvändigt för att söka efter uppdrag i din närhet."</string>
     <string name="action_about">"Om StreetComplete"</string>
@@ -272,7 +271,7 @@ Den information du anger sedan direkt till den OpenStreetMap i ditt namn, utan a
     <string name="quest_bicycleParkingCoveredStatus_title">"Är den här cykelparkeringen skyddad (från regn)"</string>
     <string name="dialog_session_dont_show_again">"Visa inte igen under den här sessionen."</string>
     <string name="quest_streetSurface_name_title">"Vad har %s för underlag här?"</string>
-    <string name="quest_maxspeed_title_short">"Vad är det för hastighetsbegränsning här?"</string>
+    <string name="quest_maxspeed_title_short">"Vad står det på hastighetskylten?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Den här hastighetsbegränsningen verkar osannolik."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Är du säker att det inte finns någon skylt?"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">"Kollade du i början och slutet av gatan? Om det inte finns någon skylt gäller bashastighet."</string>
@@ -387,4 +386,26 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_way_lit_named_road_title">"Är %s belyst här?"</string>
     <string name="quest_way_lit_automatic">"Den använder rörelsedetektion"</string>
     <string name="quest_way_lit_24_7">"Det är belyst dygnet runt."</string>
+    <string name="pref_title_authorized_username_summary">"Auktoriserat konto: %s"</string>
+    <string name="quest_crossing_type_title">"Vilken typ av övergångsställe är det här?"</string>
+    <string name="quest_crossing_type_signals">"Övergångsställe med trafikljus"</string>
+    <string name="quest_crossing_type_uncontrolled">"Obevakat övergångsställe"</string>
+    <string name="quest_crossing_type_unmarked">"Övergångsställe utan vägmarkeringar"</string>
+    <string name="compass_north_one_letter">"N"</string>
+    <string name="action_undo">"Ångra"</string>
+    <string name="no_changes_to_undo">"Finns inget att ångra"</string>
+    <string name="produce_mangosteen">"Mangostan"</string>
+    <string name="produce_tomatoes">"Tomater"</string>
+    <string name="produce_areca_nuts">"Arekanötter"</string>
+    <string name="produce_sweet_peppers">"Paprika"</string>
+    <string name="produce_brazil_nuts">"Paranötter"</string>
+    <string name="produce_tung_nuts">"Tungnötter"</string>
+    <string name="quest_parkingType_title">"Vilken typ av parkering är det här?"</string>
+    <string name="quest_parkingType_underground">"Underjordiskt garage"</string>
+    <string name="quest_parkingType_multiStorage">"Parkeringshus"</string>
+    <string name="quest_toiletAvailability_name_title">"Har %s en toalett?"</string>
+    <string name="quest_powerPolesMaterial_title">"Vilket material är den här ledningsstolpen gjord av?"</string>
+    <string name="quest_powerPolesMaterial_wood">"Trä"</string>
+    <string name="quest_powerPolesMaterial_metal">"Stål"</string>
+    <string name="quest_powerPolesMaterial_concrete">"Betong"</string>
 </resources>

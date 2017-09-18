@@ -10,7 +10,6 @@
     <string name="pref_category_communication">"Ryšys"</string>
     <string name="pref_category_display">"Vaizdas"</string>
     <string name="pref_title_authorization">"Autorizuoti prieigą prie OSM"</string>
-    <string name="pref_title_authorized_summary">"Jūsų paskyra sėkmingai autorizuota"</string>
     <string name="pref_title_not_authorized_summary">"Dar neautorizuota"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
     <string name="pref_tilecache_size_message">"Vieta megabaitais, rezervuota išorinėje laikmenoje žemėlapio kaladėlių podėliui"</string>
@@ -65,8 +64,8 @@
     <string name="cannot_find_bbox">"Nepavyksta ieškoti čia. Pabandykite labiau priartinti"</string>
     <string name="download_area_too_big">"Prašome labiau priartinti"</string>
     <string name="confirmation_cancel_prev_download_title">"Nutraukti dabartinę paiešką ir vietoje to ieškoti čia?"</string>
-    <string name="notification_downloading">"Ieškoma užduočių"</string>
-    <string name="now_downloading_toast">"Ieškoma daugiau užduočių"</string>
+    <string name="notification_downloading">"Ieškoma užduočių…"</string>
+    <string name="now_downloading_toast">"Ieškoma daugiau užduočių…"</string>
     <string name="turn_on_location_request">"Vietovės aptikimas išjungtas. Eiti į nustatymus ir įjungti dabar?"</string>
     <string name="no_location_permission_warning">"Jūsų vietos reikia tam, kad būtų galima ieškoti užduočių šalia jūsų."</string>
     <string name="action_about">"Apie StreetComplete"</string>
@@ -367,4 +366,24 @@ Priešingu atveju galite atsisiųsti kitą klaviatūrą programėlių parduotuv�
     <string name="quest_way_lit_named_road_title">"Ar „%s“ kelias čia apšviestas?"</string>
     <string name="quest_way_lit_automatic">"Naudoja judesio daviklį"</string>
     <string name="quest_way_lit_24_7">"Apšviesta dieną ir naktį"</string>
+    <string name="pref_title_authorized_username_summary">"Autorizuota paskyra:"</string>
+    <string name="cannot_find_bbox_or_reduce_tilt">"Nepavyksta čia skenuoti. Labiau priartinkite arba mažiau pakreipkite žemėlapį."</string>
+    <string name="quest_crossing_type_title">"Kokio tipo tai perėja?"</string>
+    <string name="quest_crossing_type_signals">"Perėja su šviesoforu"</string>
+    <string name="quest_crossing_type_uncontrolled">"Nereguliuojama perėja"</string>
+    <string name="quest_crossing_type_unmarked">"Perėja be horizontalaus žymėjimo"</string>
+    <string name="compass_north_one_letter">"Š"</string>
+    <string name="action_undo">"Atšaukti"</string>
+    <string name="no_changes_to_undo">"Nėra ko atšaukti"</string>
+    <string name="undo_confirm_title">"Atšaukti šį paskutinį atsakymą?"</string>
+    <string name="produce_tomatoes">"Pomidorai"</string>
+    <string name="produce_sweet_peppers">"Saldžioji paprika"</string>
+    <string name="quest_parkingType_title">"Kokio tipo tai stovėjimo aikštelė?"</string>
+    <string name="quest_parkingType_underground">"Požeminis garažas"</string>
+    <string name="quest_toiletAvailability_name_title">"Ar %s turi tualetą?"</string>
+    <string name="quest_powerPolesMaterial_title">"Kokia yra šio elektros stulpo medžiaga?"</string>
+    <string name="quest_powerPolesMaterial_wood">"Medis"</string>
+    <string name="quest_powerPolesMaterial_metal">"Plienas"</string>
+    <string name="quest_powerPolesMaterial_concrete">"Betonas"</string>
+    <string name="quest_maxspeed_answer_advisory_speed_limit">"Tik siūlomas greičio apribojimas"</string>
 </resources>
