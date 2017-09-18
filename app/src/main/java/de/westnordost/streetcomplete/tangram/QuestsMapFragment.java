@@ -100,6 +100,8 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 	{
 		super.initMap();
 
+		if(getActivity() == null) return;
+
 		retrievedTiles = new HashSet<>();
 
 		/*

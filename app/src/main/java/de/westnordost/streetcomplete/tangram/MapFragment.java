@@ -132,6 +132,8 @@ public class MapFragment extends Fragment implements
 
 	protected void initMap()
 	{
+		if(getActivity() == null) return;
+
 		updateMapTileCacheSize();
 		controller.setHttpHandler(httpHandler);
 		restoreMapState();
