@@ -3,8 +3,8 @@
     <objectAnimator
         android:propertyName="xFraction"
         android:valueType="floatType"
-        android:valueFrom="-1.1"
-        android:valueTo="0"
+        android:valueFrom="0"
+        android:valueTo="-1.1"
         android:duration="200"
         android:interpolator="@android:anim/accelerate_decelerate_interpolator"/>
 </set>
