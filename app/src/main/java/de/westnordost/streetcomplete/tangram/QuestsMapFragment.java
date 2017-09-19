@@ -54,7 +54,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 
 	private Listener listener;
 
-	private int questTopOffset, questBottomOffset;
+	private Rect questOffset;
 
 	@Inject QuestTypes questTypes;
 	@Inject TangramQuestSpriteSheetCreator spriteSheetCreator;
@@ -179,14 +179,18 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 
 	private LngLat getCenterWithOffset(ElementGeometry geometry)
 	{
-		LngLat top = controller.screenPositionToLngLat(new PointF(0, questTopOffset));
-		LngLat bottom = controller.screenPositionToLngLat(new PointF(0, questBottomOffset));
-		LngLat offset = new LngLat(0,0);
-		offset.latitude = (top.latitude - bottom.latitude) / 2;
-		offset.longitude = (top.longitude - bottom.longitude) / 2;
+		int w = getView().getWidth();
+		int h = getView().getHeight();
+
+		LngLat normalCenter = controller.screenPositionToLngLat(new PointF(w/2, h/2));
+
+		LngLat offsetCenter = controller.screenPositionToLngLat(new PointF(
+				questOffset.left + (w - questOffset.left - questOffset.right)/2,
+				questOffset.top + (h - questOffset.top - questOffset.bottom)/2));
+
 		LngLat pos = TangramConst.toLngLat(geometry.center);
-		pos.latitude -= offset.latitude;
-		pos.longitude -= offset.longitude;
+		pos.latitude -= offsetCenter.latitude - normalCenter.latitude;
+		pos.longitude -= offsetCenter.longitude - normalCenter.longitude;
 		return pos;
 	}
 
@@ -196,7 +200,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		BoundingBox screenArea;
 		float currentZoom;
 		synchronized(controller) {
-			screenArea = getDisplayedArea(questTopOffset, questBottomOffset);
+			screenArea = getDisplayedArea(questOffset);
 			if(screenArea == null) return Float.NaN;
 			currentZoom = controller.getZoom();
 		}
@@ -236,7 +240,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		if(lastPos != null  && lastPos.equals(positionNow)) return;
 		lastPos = positionNow;
 
-		BoundingBox displayedArea = getDisplayedArea(0,0);
+		BoundingBox displayedArea = getDisplayedArea(new Rect());
 		if(displayedArea == null) return;
 
 		Rect tilesRect = SlippyMapMath.enclosingTiles(displayedArea, TILES_ZOOM);
@@ -271,10 +275,9 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		retrievedTiles.addAll(tiles);
 	}
 
-	public void setQuestYOffsets(int questTopOffset, int questBottomOffset)
+	public void setQuestOffsets(Rect offsets)
 	{
-		this.questTopOffset = questTopOffset;
-		this.questBottomOffset = questBottomOffset;
+		questOffset = offsets;
 	}
 
 	@UiThread
@@ -398,13 +401,13 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		updateView();
 	}
 
-	public BoundingBox getDisplayedArea(int topOffset, int bottomOffset)
+	public BoundingBox getDisplayedArea(Rect offset)
 	{
 		if(controller == null) return null;
 		if(getView() == null) return null;
 		Point size = new Point(
-				getView().getMeasuredWidth(),
-				getView().getMeasuredHeight() - topOffset - bottomOffset);
+				getView().getWidth() - offset.left - offset.right,
+				getView().getHeight() - offset.top - offset.bottom);
 
 		// the special cases here are: map tilt and map rotation:
 		// * map tilt makes the screen area -> world map area into a trapezoid
@@ -414,10 +417,10 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		if(controller.getTilt() > Math.PI / 4f) return null; // 45°
 
 		LatLon[] positions = new LatLon[4];
-		positions[0] = getLatLonAtPos(new PointF(topOffset,0));
-		positions[1] = getLatLonAtPos(new PointF(size.x, 0));
-		positions[2] = getLatLonAtPos(new PointF(topOffset,size.y));
-		positions[3] = getLatLonAtPos(new PointF(size));
+		positions[0] = getLatLonAtPos(new PointF(offset.left,          offset.top));
+		positions[1] = getLatLonAtPos(new PointF(offset.left + size.x ,offset.top));
+		positions[2] = getLatLonAtPos(new PointF(offset.left,          offset.top + size.y));
+		positions[3] = getLatLonAtPos(new PointF(offset.left + size.x, offset.top + size.y));
 
 		// dealing with rotation: find each the largest latlon and the smallest latlon, that'll
 		// be our bounding box

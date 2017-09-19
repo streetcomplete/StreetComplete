@@ -12,6 +12,8 @@ import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
+import android.graphics.Rect;
 import android.location.Location;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -193,8 +195,11 @@ public class MainActivity extends AppCompatActivity implements
 		progressBar.setMax(1000);
 
 		mapFragment = (QuestsMapFragment) getSupportFragmentManager().findFragmentById(R.id.map_fragment);
-		mapFragment.setQuestYOffsets(50,
-				getResources().getDimensionPixelSize(R.dimen.quest_bottom_sheet_peek_height));
+		mapFragment.setQuestOffsets(new Rect(
+				getResources().getDimensionPixelSize(R.dimen.quest_form_leftOffset),
+				getResources().getDimensionPixelSize(R.dimen.quest_form_topOffset),
+				getResources().getDimensionPixelSize(R.dimen.quest_form_rightOffset),
+				getResources().getDimensionPixelSize(R.dimen.quest_form_bottomOffset)));
 
 		mapFragment.getMapAsync(BuildConfig.MAPZEN_API_KEY != null ?
 				BuildConfig.MAPZEN_API_KEY :
@@ -394,7 +399,7 @@ public class MainActivity extends AppCompatActivity implements
 	private void downloadDisplayedArea()
 	{
 		BoundingBox displayArea;
-		if ((displayArea = mapFragment.getDisplayedArea(0,0)) == null)
+		if ((displayArea = mapFragment.getDisplayedArea(new Rect())) == null)
 		{
 			Toast.makeText(this, R.string.cannot_find_bbox_or_reduce_tilt, Toast.LENGTH_LONG).show();
 		}
@@ -776,8 +781,8 @@ public class MainActivity extends AppCompatActivity implements
 
 		android.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
 		ft.setCustomAnimations(
-				R.animator.enter_from_bottom, R.animator.exit_to_bottom,
-				R.animator.enter_from_bottom, R.animator.exit_to_bottom);
+				R.animator.quest_answer_form_appear, R.animator.quest_answer_form_disappear,
+				R.animator.quest_answer_form_appear, R.animator.quest_answer_form_disappear);
 		ft.add(R.id.map_bottom_sheet_container, f, BOTTOM_SHEET);
 		ft.addToBackStack(BOTTOM_SHEET);
 		ft.commit();
