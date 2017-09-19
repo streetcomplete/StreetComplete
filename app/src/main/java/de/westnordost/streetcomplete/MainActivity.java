@@ -777,7 +777,9 @@ public class MainActivity extends AppCompatActivity implements
 		f.setArguments(args);
 
 		android.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
-		ft.setCustomAnimations(R.animator.quest_answer_form_appear, R.animator.quest_answer_form_disappear);
+		ft.setCustomAnimations(
+				R.animator.quest_answer_form_appear, R.animator.quest_answer_form_disappear,
+				R.animator.quest_answer_form_appear, R.animator.quest_answer_form_disappear);
 		ft.add(R.id.map_bottom_sheet_container, f, BOTTOM_SHEET);
 		ft.addToBackStack(BOTTOM_SHEET);
 		ft.commit();
