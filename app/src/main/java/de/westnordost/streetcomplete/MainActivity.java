@@ -399,7 +399,7 @@ public class MainActivity extends AppCompatActivity implements
 	private void downloadDisplayedArea()
 	{
 		BoundingBox displayArea;
-		if ((displayArea = mapFragment.getDisplayedArea(0,0)) == null)
+		if ((displayArea = mapFragment.getDisplayedArea(new Rect())) == null)
 		{
 			Toast.makeText(this, R.string.cannot_find_bbox_or_reduce_tilt, Toast.LENGTH_LONG).show();
 		}

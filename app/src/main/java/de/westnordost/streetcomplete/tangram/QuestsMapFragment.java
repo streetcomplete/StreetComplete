@@ -209,7 +209,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		BoundingBox screenArea;
 		float currentZoom;
 		synchronized(controller) {
-			screenArea = getDisplayedArea(questOffset.top, questOffset.bottom);
+			screenArea = getDisplayedArea(questOffset);
 			if(screenArea == null) return Float.NaN;
 			currentZoom = controller.getZoom();
 		}
@@ -249,7 +249,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		if(lastPos != null  && lastPos.equals(positionNow)) return;
 		lastPos = positionNow;
 
-		BoundingBox displayedArea = getDisplayedArea(0,0);
+		BoundingBox displayedArea = getDisplayedArea(new Rect());
 		if(displayedArea == null) return;
 
 		Rect tilesRect = SlippyMapMath.enclosingTiles(displayedArea, TILES_ZOOM);
@@ -410,13 +410,13 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		updateView();
 	}
 
-	public BoundingBox getDisplayedArea(int topOffset, int bottomOffset)
+	public BoundingBox getDisplayedArea(Rect offset)
 	{
 		if(controller == null) return null;
 		if(getView() == null) return null;
 		Point size = new Point(
-				getView().getMeasuredWidth(),
-				getView().getMeasuredHeight() - topOffset - bottomOffset);
+				getView().getWidth() - offset.left - offset.right,
+				getView().getHeight() - offset.top - offset.bottom);
 
 		// the special cases here are: map tilt and map rotation:
 		// * map tilt makes the screen area -> world map area into a trapezoid
@@ -426,10 +426,10 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		if(controller.getTilt() > Math.PI / 4f) return null; // 45°
 
 		LatLon[] positions = new LatLon[4];
-		positions[0] = getLatLonAtPos(new PointF(topOffset,0));
-		positions[1] = getLatLonAtPos(new PointF(size.x, 0));
-		positions[2] = getLatLonAtPos(new PointF(topOffset,size.y));
-		positions[3] = getLatLonAtPos(new PointF(size));
+		positions[0] = getLatLonAtPos(new PointF(offset.left,          offset.top));
+		positions[1] = getLatLonAtPos(new PointF(offset.left + size.x ,offset.top));
+		positions[2] = getLatLonAtPos(new PointF(offset.left,          offset.top + size.y));
+		positions[3] = getLatLonAtPos(new PointF(offset.left + size.x, offset.top + size.y));
 
 		// dealing with rotation: find each the largest latlon and the smallest latlon, that'll
 		// be our bounding box
