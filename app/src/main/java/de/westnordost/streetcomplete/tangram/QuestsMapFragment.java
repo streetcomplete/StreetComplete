@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.tangram;
 
 import android.app.Activity;
-import android.content.res.Configuration;
 import android.graphics.Point;
 import android.graphics.PointF;
 import android.graphics.Rect;
@@ -24,7 +23,6 @@ import java.util.Set;
 import javax.inject.Inject;
 
 import de.westnordost.streetcomplete.Injector;
-import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.Quest;
 import de.westnordost.streetcomplete.data.QuestGroup;
 import de.westnordost.streetcomplete.data.QuestTypes;
@@ -181,25 +179,18 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 
 	private LngLat getCenterWithOffset(ElementGeometry geometry)
 	{
-		LngLat pos = TangramConst.toLngLat(geometry.center);
-		LngLat offset = new LngLat(0,0);
+		int w = getView().getWidth();
+		int h = getView().getHeight();
 
-		if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
-		{
-			LngLat top = controller.screenPositionToLngLat(new PointF(0, questOffset.top));
-			LngLat bottom = controller.screenPositionToLngLat(new PointF(0, questOffset.bottom));
-			offset.latitude = (top.latitude - bottom.latitude) / 2;
-			offset.longitude = (top.longitude - bottom.longitude) / 2;
-		}
-		else if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE)
-		{
-			LngLat left = controller.screenPositionToLngLat(new PointF(questOffset.left, 0));
-			LngLat right = controller.screenPositionToLngLat(new PointF(questOffset.right, 0));
-			offset.latitude = (left.latitude - right.latitude) / 2;
-			offset.longitude = (left.longitude - right.longitude) / 2;
-		}
-		pos.latitude -= offset.latitude;
-		pos.longitude -= offset.longitude;
+		LngLat normalCenter = controller.screenPositionToLngLat(new PointF(w/2, h/2));
+
+		LngLat offsetCenter = controller.screenPositionToLngLat(new PointF(
+				questOffset.left + (w - questOffset.left - questOffset.right)/2,
+				questOffset.top + (h - questOffset.top - questOffset.bottom)/2));
+
+		LngLat pos = TangramConst.toLngLat(geometry.center);
+		pos.latitude -= offsetCenter.latitude - normalCenter.latitude;
+		pos.longitude -= offsetCenter.longitude - normalCenter.longitude;
 		return pos;
 	}
 
