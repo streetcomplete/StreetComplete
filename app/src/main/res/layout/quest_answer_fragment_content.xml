@@ -8,7 +8,7 @@
     android:elevation="16dp"
     android:orientation="vertical"
     app:layout_behavior="android.support.design.widget.BottomSheetBehavior"
-    app:behavior_peekHeight="@dimen/quest_form_bottomOffset"
+    app:behavior_peekHeight="@dimen/quest_form_peekHeight"
     android:background="@android:drawable/dialog_holo_light_frame">
 
     <include layout="@layout/quest_answer_fragment_title_bar"/>
