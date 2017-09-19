@@ -195,8 +195,11 @@ public class MainActivity extends AppCompatActivity implements
 		progressBar.setMax(1000);
 
 		mapFragment = (QuestsMapFragment) getSupportFragmentManager().findFragmentById(R.id.map_fragment);
-		mapFragment.setQuestOffsets(new Rect(R.dimen.quest_form_leftOffset, R.dimen.quest_form_topOffset,
-				R.dimen.quest_form_rightOffset ,R.dimen.quest_form_bottomOffset));
+		mapFragment.setQuestOffsets(new Rect(
+				getResources().getDimensionPixelSize(R.dimen.quest_form_leftOffset),
+				getResources().getDimensionPixelSize(R.dimen.quest_form_topOffset),
+				getResources().getDimensionPixelSize(R.dimen.quest_form_rightOffset),
+				getResources().getDimensionPixelSize(R.dimen.quest_form_bottomOffset)));
 
 		mapFragment.getMapAsync(BuildConfig.MAPZEN_API_KEY != null ?
 				BuildConfig.MAPZEN_API_KEY :
