@@ -8,6 +8,6 @@
 
     <dimen name="quest_form_peekHeight">320dp</dimen>
 
-    <dimen name="quest_form_width">350dp</dimen>
+    <dimen name="quest_form_width">320dp</dimen>
 
 </resources>
