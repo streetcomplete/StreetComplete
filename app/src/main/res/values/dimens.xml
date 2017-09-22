@@ -15,7 +15,7 @@
     <dimen name="quest_form_rightOffset">0dp</dimen>
     <dimen name="quest_form_bottomOffset">@dimen/quest_form_peekHeight</dimen>
 
-    <dimen name="quest_form_peekHeight">200dp</dimen>
+    <dimen name="quest_form_peekHeight">220dp</dimen>
     <dimen name="quest_form_width">@dimen/match_parent</dimen>
 
 </resources>
