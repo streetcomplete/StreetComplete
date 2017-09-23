@@ -1,15 +1,12 @@
 package de.westnordost.streetcomplete.tangram;
 
-import android.Manifest;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,9 +23,6 @@ import de.westnordost.streetcomplete.location.LocationStateButton;
 import de.westnordost.streetcomplete.location.LocationUtil;
 import de.westnordost.streetcomplete.location.SingleLocationRequest;
 import de.westnordost.streetcomplete.view.CompassView;
-
-import static android.location.LocationManager.PROVIDERS_CHANGED_ACTION;
-import static de.westnordost.streetcomplete.location.LocationUtil.MODE_CHANGED;
 
 public class MapControlsFragment extends Fragment
 {
@@ -136,17 +130,12 @@ public class MapControlsFragment extends Fragment
 	{
 		super.onStart();
 
-		String name = LocationUtil.isNewLocationApi() ? MODE_CHANGED : PROVIDERS_CHANGED_ACTION;
-		getContext().registerReceiver(locationAvailabilityReceiver, new IntentFilter(name));
+		getContext().registerReceiver(locationAvailabilityReceiver, LocationUtil.createLocationAvailabilityIntentFilter());
 
 		LocalBroadcastManager.getInstance(getContext()).registerReceiver(locationRequestFinishedReceiver,
 				new IntentFilter(LocationRequestFragment.ACTION_FINISHED));
 
-		if(ContextCompat.checkSelfPermission(getActivity(),
-				Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED)
-		{
-			updateLocationAvailability();
-		}
+		updateLocationAvailability();
 	}
 
 	@Override public void onStop()
@@ -191,7 +180,7 @@ public class MapControlsFragment extends Fragment
 
 	private void updateLocationAvailability()
 	{
-		if(LocationUtil.isLocationSettingsOn(getActivity()))
+		if(LocationUtil.isLocationOn(getActivity()))
 		{
 			onLocationIsEnabled();
 		}

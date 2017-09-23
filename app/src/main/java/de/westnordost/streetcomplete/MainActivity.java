@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete;
 
-import android.Manifest;
 import android.animation.ObjectAnimator;
 import android.app.FragmentManager;
 import android.content.BroadcastReceiver;
@@ -11,8 +10,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.content.res.Configuration;
 import android.graphics.Rect;
 import android.location.Location;
 import android.net.ConnectivityManager;
@@ -23,7 +20,6 @@ import android.preference.PreferenceManager;
 import android.support.annotation.AnyThread;
 import android.support.annotation.Nullable;
 import android.support.annotation.UiThread;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -81,9 +77,6 @@ import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.map.data.OsmElement;
 import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
-
-import static android.location.LocationManager.PROVIDERS_CHANGED_ACTION;
-import static de.westnordost.streetcomplete.location.LocationUtil.MODE_CHANGED;
 
 public class MainActivity extends AppCompatActivity implements
 		OsmQuestAnswerListener, VisibleQuestListener, QuestsMapFragment.Listener, MapFragment.Listener
@@ -212,8 +205,7 @@ public class MainActivity extends AppCompatActivity implements
 
 		answersCounter.update();
 
-		String name = LocationUtil.isNewLocationApi() ? MODE_CHANGED : PROVIDERS_CHANGED_ACTION;
-		registerReceiver(locationAvailabilityReceiver, new IntentFilter(name));
+		registerReceiver(locationAvailabilityReceiver, LocationUtil.createLocationAvailabilityIntentFilter());
 
 		LocalBroadcastManager localBroadcaster = LocalBroadcastManager.getInstance(this);
 
@@ -233,8 +225,7 @@ public class MainActivity extends AppCompatActivity implements
 		{
 			locationRequestFragment.startRequest();
 		}
-		else if(ContextCompat.checkSelfPermission(this,
-				Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED)
+		else
 		{
 			updateLocationAvailability();
 		}
@@ -834,7 +825,7 @@ public class MainActivity extends AppCompatActivity implements
 
 	private void updateLocationAvailability()
 	{
-		if(LocationUtil.isLocationSettingsOn(this))
+		if(LocationUtil.isLocationOn(this))
 		{
 			questAutoSyncer.startPositionTracking();
 		}
