@@ -4,5 +4,5 @@ advisorySpeedLimitLayout: quest_maxspeed_advisory_white
 isAdvisorySpeedLimitKnown: true
 officialLanguages: [ja]
 orchardProduces: [tea, apple, persimmon, chestnut, grape, apricot, pear, tomatoe, peach, strawberry,
-  cherry, plum, orange, kiwi, fig]
+  cherry, chilli_pepper, sweet_pepper, plum, orange, kiwi]
 popularSports: [tennis, baseball]

@@ -2,4 +2,5 @@
 additionalStreetsignLanguages: [en]
 firstDayOfWorkweek: Su
 officialLanguages: [ar]
-orchardProduces: [date, banana, tomatoe, guava, mango, mangosteen, lemon, lime, chili, pepper, papaya]
+orchardProduces: [date, banana, tomatoe, guava, mango, mangosteen, lemon, lime, chilli_pepper, sweet_pepper,
+  papaya]

@@ -4,6 +4,6 @@ isLivingStreetKnown: true
 isSlowZoneKnown: true
 officialLanguages: [de]
 orchardProduces: [grape, cherry, apple, plum, pear, strawberry, apricot, peach, hop, tomatoe, raspberry,
-  chili, pepper, walnut]
+  chilli_pepper, sweet_pepper, walnut]
 popularSports: [soccer, tennis, equestrian, beachvolleyball]
 regularShoppingDays: 5

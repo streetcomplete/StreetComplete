@@ -1,3 +1,4 @@
 # Do not edit. Source files are in /res/country_metadata
 officialLanguages: [ms, en]
-orchardProduces: [rubber, banana, coconut, pineapple, chili, pepper, piper, orange, lemon, lime, tomatoe]
+orchardProduces: [rubber, banana, coconut, pineapple, chilli_pepper, sweet_pepper, pepper, orange,
+  lemon, lime, tomatoe]

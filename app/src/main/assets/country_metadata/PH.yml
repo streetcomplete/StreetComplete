@@ -3,5 +3,5 @@ advisorySpeedLimitLayout: quest_maxspeed_advisory_white
 isAdvisorySpeedLimitKnown: true
 officialLanguages: [en, fil, es, ceb, ilo, hil]
 orchardProduces: [coconut, banana, rubber, guava, mango, mangosteen, coffee, pineapple, palm_oil, cashew_nut,
-  tomatoe, cacao, papaya, avocado, grapefruit, chili, pepper, agave]
+  tomatoe, cacao, papaya, avocado, grapefruit, chilli_pepper, sweet_pepper, agave]
 popularSports: [basketball, tennis, soccer, volleyball]
