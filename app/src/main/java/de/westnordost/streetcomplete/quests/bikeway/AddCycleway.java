@@ -23,7 +23,7 @@ public class AddCycleway implements OsmElementQuestType
 {
 	private final OverpassMapDataDao overpassServer;
 
-	private static final int MIN_DIST_TO_CYCLEWAYS = 10;
+	private static final int MIN_DIST_TO_CYCLEWAYS = 15;
 
 	@Inject public AddCycleway(OverpassMapDataDao overpassServer)
 	{
@@ -46,6 +46,11 @@ public class AddCycleway implements OsmElementQuestType
 		{
 			applyCyclewayAnswerTo(cyclewayLeft, Side.LEFT, cyclewayLeftDir, changes);
 			applyCyclewayAnswerTo(cyclewayRight, Side.RIGHT, cyclewayRightDir, changes);
+		}
+
+		if(answer.getBoolean(AddCyclewayForm.IS_ONEWAY_NOT_FOR_CYCLISTS))
+		{
+			changes.addOrModify("oneway:bicycle", "no");
 		}
 	}
 

@@ -31,7 +31,8 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 			CYCLEWAY_LEFT = "cycleway_left",
 			CYCLEWAY_RIGHT = "cycleway_right",
 			CYCLEWAY_LEFT_DIR = "cycleway_left_opposite",
-			CYCLEWAY_RIGHT_DIR = "cycleway_right_opposite";
+			CYCLEWAY_RIGHT_DIR = "cycleway_right_opposite",
+			IS_ONEWAY_NOT_FOR_CYCLISTS = "oneway_not_for_cyclists";
 
 	public enum Cycleway
 	{
@@ -171,6 +172,8 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 			return;
 		}
 
+		boolean isOnewayNotForCyclists = false;
+
 		// a cycleway that goes into opposite direction of a oneway street needs special tagging
 		Bundle bundle = new Bundle();
 		if(isOneway())
@@ -183,6 +186,7 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 				if(rightSide == Cycleway.TRACK || rightSide == Cycleway.LANE)
 				{
 					bundle.putInt(CYCLEWAY_RIGHT_DIR, reverseDir);
+					isOnewayNotForCyclists = true;
 				}
 			}
 			else
@@ -190,12 +194,17 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 				if(leftSide == Cycleway.TRACK || leftSide == Cycleway.LANE)
 				{
 					bundle.putInt(CYCLEWAY_LEFT_DIR, reverseDir);
+					isOnewayNotForCyclists = true;
 				}
 			}
+
+			isOnewayNotForCyclists |= leftSide == Cycleway.TRACK_DUAL || leftSide == Cycleway.LANE_DUAL;
+			isOnewayNotForCyclists |= rightSide == Cycleway.TRACK_DUAL || rightSide == Cycleway.LANE_DUAL;
 		}
 
 		bundle.putString(CYCLEWAY_LEFT, leftSide.name());
 		bundle.putString(CYCLEWAY_RIGHT, rightSide.name());
+		bundle.putBoolean(IS_ONEWAY_NOT_FOR_CYCLISTS, isOnewayNotForCyclists);
 		applyFormAnswer(bundle);
 	}
 
