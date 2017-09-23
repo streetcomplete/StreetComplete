@@ -49,14 +49,20 @@ public class AddCycleway implements OsmElementQuestType
 		}
 	}
 
-	private enum Side { LEFT, RIGHT, BOTH }
+	private enum Side
+	{
+		LEFT("left"), RIGHT("right"), BOTH("both");
+
+		public final String value;
+		Side(String value) { this.value = value; }
+	}
 
 	private void applyCyclewayAnswerTo(Cycleway cycleway, Side side, int dir, StringMapChangesBuilder changes)
 	{
 		String directionValue = null;
 		if(dir != 0) directionValue = dir > 0 ? "yes" : "-1";
 
-		String cyclewayKey = "cycleway" + getSideKey(side);
+		String cyclewayKey = "cycleway:" + side.value;
 		switch (cycleway)
 		{
 			case NONE:
@@ -92,8 +98,8 @@ public class AddCycleway implements OsmElementQuestType
 			case SIDEWALK_OK:
 				// https://wiki.openstreetmap.org/wiki/File:Z239Z1022-10GehwegRadfahrerFrei.jpeg
 				changes.add(cyclewayKey, "no");
-				changes.addOrModify("sidewalk", getSideValue(side));
-				changes.add("sidewalk" + getSideKey(side) + ":bicycle", "yes");
+				changes.addOrModify("sidewalk", side.value);
+				changes.add("sidewalk:" + side.value + ":bicycle", "yes");
 				break;
 			case SHARED:
 				changes.add(cyclewayKey, "shared_lane");
@@ -101,26 +107,6 @@ public class AddCycleway implements OsmElementQuestType
 			case BUSWAY:
 				changes.add(cyclewayKey, "share_busway");
 				break;
-		}
-	}
-
-	private static String getSideKey(Side side)
-	{
-		switch (side)
-		{
-			case LEFT:   return ":left";
-			case RIGHT:  return ":right";
-			default:     return "";
-		}
-	}
-
-	private static String getSideValue(Side side)
-	{
-		switch (side)
-		{
-			case LEFT:   return "left";
-			case RIGHT:  return "right";
-			default:     return "both";
 		}
 	}
 
