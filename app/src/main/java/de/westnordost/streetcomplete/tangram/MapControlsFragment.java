@@ -168,12 +168,22 @@ public class MapControlsFragment extends Fragment
 
 	public boolean requestUnglueViewFromPosition()
 	{
-		trackingButton.startAnimation( AnimationUtils.loadAnimation(getContext(), R.anim.pinch));
-		return false;
+		return requestUnglueView();
 	}
 
 	public boolean requestUnglueViewFromRotation()
 	{
+		return requestUnglueView();
+	}
+
+	private boolean requestUnglueView()
+	{
+		if(!LocationUtil.isLocationOn(getActivity()))
+		{
+			setIsFollowingPosition(false);
+			return true;
+		}
+
 		trackingButton.startAnimation( AnimationUtils.loadAnimation(getContext(), R.anim.pinch));
 		return false;
 	}
