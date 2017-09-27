@@ -237,6 +237,8 @@ public class MapControlsFragment extends Fragment
 
 	private void onLocationRequestFinished(LocationState state)
 	{
+		if(getActivity() == null) return;
+		
 		trackingButton.setState(state);
 		if(state.isEnabled())
 		{
