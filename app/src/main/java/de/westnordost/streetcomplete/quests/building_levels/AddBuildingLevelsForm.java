@@ -25,6 +25,7 @@ public class AddBuildingLevelsForm extends AbstractQuestFormAnswerFragment
 		View contentView = setContentView(R.layout.quest_building_levels);
 
 		levelsInput = contentView.findViewById(R.id.levelsInput);
+		levelsInput.requestFocus();
 		roofLevelsInput = contentView.findViewById(R.id.roofLevelsInput);
 
 		return view;
