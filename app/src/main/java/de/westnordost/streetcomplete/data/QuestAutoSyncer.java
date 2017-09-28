@@ -2,7 +2,10 @@ package de.westnordost.streetcomplete.data;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
+import android.app.job.JobInfo;
+import android.app.job.JobScheduler;
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -10,6 +13,7 @@ import android.content.SharedPreferences;
 import android.location.Location;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Build;
 import android.util.Log;
 
 import com.mapzen.android.lost.api.LocationListener;
@@ -21,11 +25,13 @@ import javax.inject.Inject;
 
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.map.data.OsmLatLon;
+import de.westnordost.streetcomplete.JobIds;
 import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.data.changesets.OpenChangesetsDao;
 import de.westnordost.streetcomplete.data.download.MobileDataAutoDownloadStrategy;
 import de.westnordost.streetcomplete.data.download.QuestAutoDownloadStrategy;
 import de.westnordost.streetcomplete.data.download.WifiAutoDownloadStrategy;
+import de.westnordost.streetcomplete.data.osm.upload.ChangesetAutoCloserJobService;
 import de.westnordost.streetcomplete.data.osm.upload.ChangesetAutoCloserReceiver;
 
 import static android.app.PendingIntent.FLAG_CANCEL_CURRENT;
@@ -141,11 +147,24 @@ public class QuestAutoSyncer implements LocationListener, LostApiClient.Connecti
 
 	private void triggerDelayedClosingOfChangesets()
 	{
-		AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 		long delayTime = System.currentTimeMillis() + OpenChangesetsDao.CLOSE_CHANGESETS_AFTER_INACTIVITY_OF;
-		Intent intent = new Intent(context, ChangesetAutoCloserReceiver.class);
-		PendingIntent pi = PendingIntent.getBroadcast(context, 0, intent, FLAG_CANCEL_CURRENT);
-		alarmManager.set(AlarmManager.RTC_WAKEUP, delayTime, pi);
+
+		if (android.os.Build.VERSION.SDK_INT <  Build.VERSION_CODES.LOLLIPOP)
+		{
+			AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+			Intent intent = new Intent(context, ChangesetAutoCloserReceiver.class);
+			PendingIntent pi = PendingIntent.getBroadcast(context, 0, intent, FLAG_CANCEL_CURRENT);
+			alarmManager.set(AlarmManager.RTC_WAKEUP, delayTime, pi);
+		}
+		else
+		{
+			JobScheduler jobScheduler = (JobScheduler) context.getSystemService(Context.JOB_SCHEDULER_SERVICE);
+			ComponentName componentName = new ComponentName(context, ChangesetAutoCloserJobService.class);
+			JobInfo jobInfo = new JobInfo.Builder(JobIds.AUTO_CLOSE_CHANGESET, componentName)
+					.setMinimumLatency(delayTime)
+					.build();
+			jobScheduler.schedule(jobInfo);
+		}
 	}
 
 	private boolean updateConnectionState()

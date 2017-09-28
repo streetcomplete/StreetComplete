@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" android:maxSdkVersion="20" />
 
     <application
         android:name="de.westnordost.streetcomplete.StreetCompleteApplication"
@@ -50,6 +50,8 @@
 
         <receiver android:name="de.westnordost.streetcomplete.data.osm.upload.ChangesetAutoCloserReceiver" />
         <service android:name="de.westnordost.streetcomplete.data.osm.upload.ChangesetAutoCloserService" />
+        <service android:name="de.westnordost.streetcomplete.data.osm.upload.ChangesetAutoCloserJobService"
+                 android:permission="android.permission.BIND_JOB_SERVICE"/>
     </application>
 
 </manifest>

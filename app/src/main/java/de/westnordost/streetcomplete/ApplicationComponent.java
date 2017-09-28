@@ -5,6 +5,7 @@ import javax.inject.Singleton;
 import dagger.Component;
 import de.westnordost.streetcomplete.data.DbModule;
 import de.westnordost.streetcomplete.data.OsmModule;
+import de.westnordost.streetcomplete.data.osm.upload.ChangesetAutoCloserJobService;
 import de.westnordost.streetcomplete.data.upload.QuestChangesUploadService;
 import de.westnordost.streetcomplete.data.download.QuestDownloadService;
 import de.westnordost.streetcomplete.data.meta.MetadataModule;
@@ -36,6 +37,7 @@ public interface ApplicationComponent
 	void inject(QuestChangesUploadService questChangesUploadService);
 	void inject(QuestDownloadService questChangesDownloadService);
 	void inject(ChangesetAutoCloserService changesetAutoCloserService);
+	void inject(ChangesetAutoCloserJobService changesetAutoCloserJobService);
 
 	void inject(SettingsFragment settingsFragment);
 	void inject(SettingsActivity settingsActivity);
