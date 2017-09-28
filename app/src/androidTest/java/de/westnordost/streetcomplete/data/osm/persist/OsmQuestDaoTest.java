@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.ApplicationDbTestCase;
 import de.westnordost.streetcomplete.data.QuestStatus;
 import de.westnordost.streetcomplete.data.QuestType;
 import de.westnordost.streetcomplete.data.osm.ElementGeometry;
+import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.OsmQuest;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChanges;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd;
@@ -95,7 +96,13 @@ public class OsmQuestDaoTest extends ApplicationDbTestCase
 
 	private static OsmQuest createNewQuest(long id, Element.Type elementType, ElementGeometry geometry)
 	{
-		return new OsmQuest(null, new TestQuestType(), elementType, id,
+		return createNewQuest(new TestQuestType(), id, elementType, geometry);
+	}
+
+	private static OsmQuest createNewQuest(OsmElementQuestType questType, long id,
+										   Element.Type elementType, ElementGeometry geometry)
+	{
+		return new OsmQuest(null, questType, elementType, id,
 				QuestStatus.ANSWERED, null, null, new Date(), geometry);
 	}
 
@@ -116,9 +123,27 @@ public class OsmQuestDaoTest extends ApplicationDbTestCase
 		quest2.setStatus(QuestStatus.REVERT);
 		OsmQuest quest3 = createNewQuest(3, Element.Type.NODE);
 
-		addToDaos(quest1, quest2);
+		addToDaos(quest1, quest2, quest3);
 
 		assertEquals(2,dao.deleteAllClosed(System.currentTimeMillis() + 10000L));
+	}
+
+	public void testDeleteReverted()
+	{
+		ElementGeometry geom = new ElementGeometry(new OsmLatLon(5,5));
+
+		OsmQuest quest1 = createNewQuest(new TestQuestType(), 1, Element.Type.NODE, geom);
+		quest1.setStatus(QuestStatus.CLOSED);
+		OsmQuest quest2 = createNewQuest(new TestQuestType2(), 1, Element.Type.NODE, geom);
+		quest2.setStatus(QuestStatus.REVERT);
+		OsmQuest quest3 = createNewQuest(new TestQuestType2(), 2, Element.Type.NODE, geom);
+		quest3.setStatus(QuestStatus.REVERT);
+		OsmQuest quest4 = createNewQuest(new TestQuestType2(), 1, Element.Type.WAY, geom);
+		quest4.setStatus(QuestStatus.REVERT);
+
+		addToDaos(quest1, quest2);
+
+		assertEquals(1,dao.deleteAllReverted(Element.Type.NODE,1));
 	}
 
 	private void checkEqual(OsmQuest quest, OsmQuest dbQuest)

@@ -16,7 +16,7 @@ public abstract class AQuestDao<T extends Quest>
 {
     private static final String TAG = "QuestDao";
 
-	private final SQLiteOpenHelper dbHelper;
+	protected final SQLiteOpenHelper dbHelper;
 
 	public AQuestDao(SQLiteOpenHelper dbHelper)
 	{
