@@ -21,9 +21,10 @@ contribute to the OpenStreetMap by surveying their neighbourhood (or other place
       height="80"><br/>](https://f-droid.org/repository/browse/?fdid=de.westnordost.streetcomplete)
 You can also simply download the APK from the [Releases](https://github.com/westnordost/StreetComplete/releases) section of this GitHub page.
 
-## State of Development
+## Quests
 
 Right now, there are very few different question types. More will be added over time.
+You can see a community-managed [list of all quests in the OSM wiki](https://wiki.openstreetmap.org/wiki/StreetComplete/Quests).
 
 ## Contributing
 
