@@ -33,7 +33,6 @@ public class AddCarWashType extends SimpleOverpassQuestType
 	public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
 	{
 		List<String> values = answer.getStringArrayList(AddCarWashTypeForm.OSM_VALUES);
-		String other = answer.getString(AddCarWashTypeForm.OTHER_ANSWER);
 		if(values != null  && values.size() == 1)
 		{
 			switch (values.get(0))
@@ -46,15 +45,17 @@ public class AddCarWashType extends SimpleOverpassQuestType
 					changes.add("automated", "no");
 					changes.add("self_service", "yes");
 					break;
+				case AddCarWashTypeForm.SERVICE:
+					changes.add("automated", "no");
+					changes.add("self_service", "no");
 			}
 		} else if (values != null && values.size() == 2)
 		{
-			changes.add("automated", "yes");
-			changes.add("self_service", "yes");
-		} else if (values == null && other != null && other == AddCarWashTypeForm.SERVICE)
-		{
-			changes.add("automated", "no");
-			changes.add("self_service", "no");
+			if (!values.contains(AddCarWashTypeForm.SERVICE))
+			{
+				changes.add("automated", "yes");
+				changes.add("self_service", "yes");
+			}
 		}
 	}
 
