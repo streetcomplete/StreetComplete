@@ -76,6 +76,9 @@ dependencies {
     compile 'com.android.support:support-v4:26.0.1'
     compile 'com.android.support:design:26.0.1'
 
+    // scheduling background jobs
+    compile 'com.evernote:android-job:1.1.11'
+
     // geometry
     compile 'com.vividsolutions:jts-core:1.14.0'
 
