@@ -133,6 +133,8 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 	@Override
 	public void onLabelPick(LabelPickResult labelPickResult, float positionX, float positionY)
 	{
+		if(controller == null) return;
+
 		if(labelPickResult == null
 				|| labelPickResult.getType() != LabelPickResult.LabelType.ICON
 				|| labelPickResult.getProperties() == null
