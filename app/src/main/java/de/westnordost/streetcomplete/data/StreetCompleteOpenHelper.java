@@ -236,7 +236,7 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 			String oldTableName = tableName + "_old";
 			db.execSQL("ALTER TABLE " + tableName + " RENAME TO " + oldTableName );
 			db.execSQL(OSM_QUESTS_TABLE_CREATE);
-			String allColumns = TextUtils.join(",", OsmQuestTable.Columns.ALL);
+			String allColumns = TextUtils.join(",", OsmQuestTable.Columns.ALL_DB_VERSION_3);
 			db.execSQL("INSERT INTO " + tableName + "(" + allColumns + ") " +
 					   " SELECT " + allColumns + " FROM " + oldTableName);
 			db.execSQL("DROP TABLE " + oldTableName);
