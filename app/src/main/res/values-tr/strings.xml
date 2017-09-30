@@ -10,8 +10,6 @@
     <string name="pref_category_communication">"İletişim"</string>
     <string name="pref_category_display">"Görüntüle"</string>
     <string name="pref_title_authorization">"OSM erişimine izin ver"</string>
-    <string name="pref_title_authorized_summary">"
-Hesabınıza başarıyla yetkilendirildi"</string>
     <string name="pref_title_not_authorized_summary">"Henüz yetkili değil"</string>
     <string name="pref_tilecache_size_summary">"
  %d MB"</string>
@@ -55,7 +53,7 @@ Hesabınıza başarıyla yetkilendirildi"</string>
     <string name="quest_noteDiscussion_reopen">"%1$s yeniden açıldı nota (%2$s)"</string>
     <string name="quest_noteDiscussion_anonymous">"Anonim"</string>
     <string name="quest_noteDiscussion_comments_title">"Cevaplar"</string>
-    <string name="confirmation_discard_title">"Girdiyi silinsin mi?"</string>
+    <string name="confirmation_discard_title">"Girdi silinsin mi?"</string>
     <string name="confirmation_discard_positive">"Terket"</string>
     <string name="confirmation_discard_negative">"İptal etmek"</string>
     <string name="action_download">"Görevleri burada tara"</string>
@@ -67,8 +65,8 @@ Hesabınıza başarıyla yetkilendirildi"</string>
     <string name="cannot_find_bbox">"Burayı tarayamıyorum. Daha da büyütmeyi deneyin"</string>
     <string name="download_area_too_big">"Lütfen yakınlaştırın."</string>
     <string name="confirmation_cancel_prev_download_title">"Geçerli aramayı iptal et ve bunun yerine buraya tarama yapalım mı?"</string>
-    <string name="notification_downloading">"Görevleri Taramak"</string>
-    <string name="now_downloading_toast">"Daha fazla görev taramak için"</string>
+    <string name="notification_downloading">"Görevleri Taramak…"</string>
+    <string name="now_downloading_toast">"Daha fazla görev taramak için…"</string>
     <string name="turn_on_location_request">"Yer kapalı. Şimdi açmak için Ayarlar'a gidin mi?"</string>
     <string name="no_location_permission_warning">"Çevrenizdeki görevleri taramak için konumunuz gerekiyor."</string>
     <string name="action_about">"StreetComplete Hakkında"</string>
@@ -240,15 +238,25 @@ Hiçbir e-posta istemcisi kurulu değil."</string>
     <string name="quest_sport_handball">"Hentbol"</string>
     <string name="quest_sport_ice_hockey">"Buz Hokeyi"</string>
     <string name="quest_sport_netball">"Netbol"</string>
+    <string name="quest_select_hint">"Seçin:"</string>
+    <string name="quest_manySports_confirmation_specific">"Özellikle bunlar"</string>
     <string name="quest_manySports_confirmation_generic">"Genel Amaç"</string>
     <string name="quest_sport_manySports_confirmation_title">"Birçok spor seçtiniz"</string>
+    <string name="quest_busStopShelter_name_title">"\"%s\" otobüs durağının üstü kapalı mı?"</string>
     <string name="quest_toiletsFee_title">"Bu tuvaletler ücret istiyor mu?"</string>
     <string name="quest_tactilePaving_title_bus">"Bu otobüs durağında dokunmatik kaplamalar var mı?"</string>
     <string name="quest_tactilePaving_title_crosswalk">"Bu geçit dokunmatik kaplamalara sahip mi?"</string>
     <string name="quest_source_dialog_title">"Bunu yerinde kontrol ettiğinden emin misin?"</string>
+    <string name="quest_source_dialog_note">"Sadece bir inceleme ile bulunan bilgiler girilmelidir."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Bu bisiklet park yeri kapalı mı (yağmur korumalı)?"</string>
     <string name="dialog_session_dont_show_again">"Bu oturum için tekrar gösterme"</string>
+    <string name="quest_streetSurface_name_title">"\"%s\" yolunun yüzeyi nedir?"</string>
+    <string name="quest_maxspeed_title_short">"Bu sokak için hız limiti tabelasında ne yazıyor?"</string>
+    <string name="quest_maxspeed_unusualInput_confirmation_description">"Bu hız limiti mantıksız gözüküyor."</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation_title">"Hiçbir hız limiti belirtilmediğine emin misiniz?"</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation">"Sokağın uçlarına baktınız mı? Eğer tabela yoksa varsayılan limitler geçerlidir."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Evet, işaret yok"</string>
+    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Şehiriçi yolların hız limiti, şehirdışı yollardan farklıdır."</string>
     <string name="quest_maxspeed_answer_noSign_urbanOk">"Kasabada"</string>
     <string name="quest_maxspeed_answer_noSign_ruralOk">"Şehir Dışında"</string>
     <string name="quest_sport_racquet">"Raketbol"</string>

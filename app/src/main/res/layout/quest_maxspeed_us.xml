@@ -32,7 +32,7 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:padding="12dp"
-        android:background="@drawable/background_maxspeed_rectangular_sign"
+        android:background="@drawable/background_rectangular_sign_white"
         android:gravity="center"
         android:layout_centerInParent="true">
 

@@ -5,22 +5,17 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AlertDialog;
 
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
-
-import static android.location.LocationManager.PROVIDERS_CHANGED_ACTION;
-import static de.westnordost.streetcomplete.location.LocationUtil.MODE_CHANGED;
 
 /** Manages the process to ensure that the app can access the user's location. Two steps:
  *  <ol>
@@ -143,8 +138,7 @@ public class LocationRequestFragment extends Fragment
 
 	private void requestLocationPermissions()
 	{
-		if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION)
-				== PackageManager.PERMISSION_GRANTED)
+		if (LocationUtil.hasLocationPermission(getContext()))
 		{
 			state = LocationState.ALLOWED;
 			nextStep();
@@ -157,7 +151,7 @@ public class LocationRequestFragment extends Fragment
 
 	private void requestLocationSettingsToBeOn()
 	{
-		if(LocationUtil.isLocationSettingsOn(getContext()))
+		if(LocationUtil.isLocationOn(getContext()))
 		{
 			state = LocationState.ENABLED;
 			nextStep();
@@ -220,8 +214,7 @@ public class LocationRequestFragment extends Fragment
 			}
 		};
 
-		String name = LocationUtil.isNewLocationApi() ? MODE_CHANGED : PROVIDERS_CHANGED_ACTION;
-		getActivity().registerReceiver(locationProviderChangedReceiver, new IntentFilter(name));
+		getActivity().registerReceiver(locationProviderChangedReceiver, LocationUtil.createLocationAvailabilityIntentFilter());
 	}
 
 	private void unregisterForLocationProviderChanges()

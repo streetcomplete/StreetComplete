@@ -21,8 +21,8 @@ import de.westnordost.streetcomplete.data.QuestTypes;
 import de.westnordost.streetcomplete.data.VisibleQuestListener;
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.download.OsmQuestDownload;
-import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuest;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestDao;
+import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestType;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNotesDownload;
 import de.westnordost.streetcomplete.data.tiles.DownloadedTilesDao;
 import de.westnordost.streetcomplete.util.SlippyMapMath;
@@ -68,7 +68,7 @@ public class QuestDownload
 		this.prefs = prefs;
 	}
 
-	public void setQuestTypeListener(VisibleQuestListener questListener)
+	public void setVisibleQuestListener(VisibleQuestListener questListener)
 	{
 		this.questListener = questListener;
 	}
@@ -109,7 +109,7 @@ public class QuestDownload
 			progressListener.onStarted();
 
 			Set<LatLon> notesPositions;
-			if(questTypes.contains(OsmNoteQuest.type))
+			if(questTypes.contains(getOsmNoteQuestType()))
 			{
 				notesPositions = downloadNotes(bbox);
 			}
@@ -129,10 +129,14 @@ public class QuestDownload
 		}
 	}
 
+	private QuestType getOsmNoteQuestType()
+	{
+		return questTypeList.forName(OsmNoteQuestType.class.getSimpleName());
+	}
+
 	private List<QuestType> getQuestTypesToDownload()
 	{
 		List<QuestType> result = new ArrayList<>(questTypeList.getQuestTypesSortedByImportance());
-		result.add(0, OsmNoteQuest.type);
 
 		long questExpirationTime = ApplicationConstants.REFRESH_QUESTS_AFTER;
 		long ignoreOlderThan = Math.max(0,System.currentTimeMillis() - questExpirationTime);
@@ -142,14 +146,7 @@ public class QuestDownload
 			Set<QuestType> alreadyDownloaded = new HashSet<>(alreadyDownloadedNames.size());
 			for (String questTypeName : alreadyDownloadedNames)
 			{
-				if(questTypeName.equals(OsmNoteQuest.type.getClass().getSimpleName()))
-				{
-					alreadyDownloaded.add(OsmNoteQuest.type);
-				}
-				else
-				{
-					alreadyDownloaded.add(questTypeList.forName(questTypeName));
-				}
+				alreadyDownloaded.add(questTypeList.forName(questTypeName));
 			}
 			result.removeAll(alreadyDownloaded);
 
@@ -181,7 +178,7 @@ public class QuestDownload
 
 		int maxNotes = 10000;
 		Set<LatLon> result = notesDownload.download(bbox, userId, maxNotes);
-		downloadedTilesDao.put(tiles, OsmNoteQuest.type.getClass().getSimpleName());
+		downloadedTilesDao.put(tiles, OsmNoteQuestType.class.getSimpleName());
 		downloadedQuestTypes++;
 		dispatchProgress();
 		return result;

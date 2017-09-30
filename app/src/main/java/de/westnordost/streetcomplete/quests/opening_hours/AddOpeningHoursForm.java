@@ -18,7 +18,6 @@ import javax.inject.Inject;
 
 import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.R;
-import de.westnordost.osmapi.map.data.OsmElement;
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
 import de.westnordost.streetcomplete.util.Serializer;
 import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
@@ -44,15 +43,13 @@ public class AddOpeningHoursForm extends AbstractQuestFormAnswerFragment
 
 		Injector.instance.getApplicationComponent().inject(this);
 
-		setTitle();
-
 		addOtherAnswers();
 
 		View contentView = setContentView(R.layout.quest_opening_hours);
 
 		initOpeningHoursAdapter(contentView, savedInstanceState);
 
-		Button addTimes = (Button) contentView.findViewById(R.id.btn_add);
+		Button addTimes = contentView.findViewById(R.id.btn_add);
 		addTimes.setOnClickListener(new View.OnClickListener()
 		{
 			@Override public void onClick(View v)
@@ -81,7 +78,7 @@ public class AddOpeningHoursForm extends AbstractQuestFormAnswerFragment
 
 		openingHoursAdapter = new AddOpeningHoursAdapter(data, getActivity(), getCountryInfo());
 		openingHoursAdapter.setDisplayMonths(isAlsoAddingMonths);
-		RecyclerView openingHoursList = (RecyclerView) contentView.findViewById(R.id.opening_hours_list);
+		RecyclerView openingHoursList = contentView.findViewById(R.id.opening_hours_list);
 		openingHoursList.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
 		openingHoursList.setAdapter(openingHoursAdapter);
 		openingHoursList.setNestedScrollingEnabled(false);
@@ -144,17 +141,6 @@ public class AddOpeningHoursForm extends AbstractQuestFormAnswerFragment
 		outState.putBoolean(IS_ADD_MONTHS_MODE, isAlsoAddingMonths);
 	}
 
-	private void setTitle()
-	{
-		OsmElement element = getOsmElement();
-		String name = null;
-		if(element != null && element.getTags() != null)
-		{
-			name = element.getTags().get("name");
-		}
-		setTitle(R.string.quest_openingHours_name_title, name);
-	}
-
 	@Override protected void onClickOk()
 	{
 		applyOpeningHours(openingHoursAdapter.toString());
@@ -163,7 +149,7 @@ public class AddOpeningHoursForm extends AbstractQuestFormAnswerFragment
 	private void showInputCommentDialog()
 	{
 		View view = LayoutInflater.from(getActivity()).inflate(R.layout.quest_opening_hours_comment, null);
-		final EditText editText = (EditText)view.findViewById(R.id.commentInput);
+		final EditText editText = view.findViewById(R.id.commentInput);
 
 		new AlertDialogBuilder(getActivity())
 				.setTitle(R.string.quest_openingHours_comment_title)

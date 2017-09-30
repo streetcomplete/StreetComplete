@@ -15,7 +15,7 @@
         android:textStyle="bold"
         android:background="@drawable/background_housenumber"
         android:padding="18dp"
-        android:inputType="textNoSuggestions"
+        android:inputType="number"
         android:imeOptions="actionDone"
         android:gravity="center"
         android:layout_gravity="center"

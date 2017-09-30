@@ -1,3 +1,4 @@
 # Do not edit. Source files are in /res/country_metadata
 officialLanguages: [sw, en]
-orchardProduces: [coffee, banana, cacao, tea, tomatoe, chili, pepper, piper, pineapple, vanilla, sisal]
+orchardProduces: [coffee, banana, cacao, tea, tomatoe, chilli_pepper, sweet_pepper, pepper, pineapple,
+  vanilla, sisal]

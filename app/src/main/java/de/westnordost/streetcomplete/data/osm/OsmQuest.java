@@ -109,7 +109,7 @@ public class OsmQuest implements Quest
 		this.status = status;
 	}
 
-	public Date getLastUpdate()
+	@Override public Date getLastUpdate()
 	{
 		return lastUpdate;
 	}

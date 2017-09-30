@@ -5,10 +5,9 @@ import javax.inject.Singleton;
 import dagger.Component;
 import de.westnordost.streetcomplete.data.DbModule;
 import de.westnordost.streetcomplete.data.OsmModule;
-import de.westnordost.streetcomplete.data.QuestChangesUploadService;
+import de.westnordost.streetcomplete.data.upload.QuestChangesUploadService;
 import de.westnordost.streetcomplete.data.download.QuestDownloadService;
 import de.westnordost.streetcomplete.data.meta.MetadataModule;
-import de.westnordost.streetcomplete.data.osm.upload.ChangesetAutoCloserService;
 import de.westnordost.streetcomplete.oauth.OAuthModule;
 import de.westnordost.streetcomplete.oauth.OsmOAuthDialogFragment;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
@@ -35,7 +34,6 @@ public interface ApplicationComponent
 
 	void inject(QuestChangesUploadService questChangesUploadService);
 	void inject(QuestDownloadService questChangesDownloadService);
-	void inject(ChangesetAutoCloserService changesetAutoCloserService);
 
 	void inject(SettingsFragment settingsFragment);
 	void inject(SettingsActivity settingsActivity);

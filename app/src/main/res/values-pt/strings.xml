@@ -10,7 +10,6 @@
     <string name="pref_category_communication">"Comunicação"</string>
     <string name="pref_category_display">"Mostrar"</string>
     <string name="pref_title_authorization">"Autorizar acesso ao OSM"</string>
-    <string name="pref_title_authorized_summary">"Autorização realizada com sucesso"</string>
     <string name="pref_title_not_authorized_summary">"Ainda não está autorizado"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
     <string name="pref_tilecache_size_message">"Espaço reservado em megabytes na unidade de armazenamento para a cache de mosaicos do mapa"</string>
@@ -65,8 +64,8 @@
     <string name="cannot_find_bbox">"Não foi realizar a procura nesta área. Tente aumentar o zoom"</string>
     <string name="download_area_too_big">"Por favor, aumente o zoom"</string>
     <string name="confirmation_cancel_prev_download_title">"Anular a procura atual e, em alternativa, procurar nesta área?"</string>
-    <string name="notification_downloading">"A procurar desafios"</string>
-    <string name="now_downloading_toast">"A procurar mais desafios"</string>
+    <string name="notification_downloading">"A procurar desafios…"</string>
+    <string name="now_downloading_toast">"A procurar mais desafios…"</string>
     <string name="turn_on_location_request">"A sua localização está desligada. Aceder agora às Opções para a ligar?"</string>
     <string name="no_location_permission_warning">"A sua localização é necessária para procurar desafios na sua área favorita."</string>
     <string name="action_about">"Acerca do StreetComplete"</string>
@@ -186,10 +185,10 @@ Para a representação do mapa, é utilizado o mosaico de mapas vectoriais&lt;a 
     <string name="quest_streetLanes_noLanes_estWidth">"Quantos carros podem estacionar de cada lado desta rua (estimativa)?"</string>
     <string name="quest_oneway_title">"É uma rua de sentido único?"</string>
     <string name="quest_address_title">"Qual o número de porta deste edifício?"</string>
-    <string name="store_listing_short_description">"App para aprimorar a informação do OpenStreetMap"</string>
+    <string name="store_listing_short_description">"App para melhorar a informação existente no OpenStreetMap"</string>
     <string name="store_listing_full_description">"Ajude a melhorar o OpenStreetMap com o StreetComplete!
 
-Esta app procura dados incorretos ou incompletos na sua cidade favorita e mostra-os no mapa como marcadores. Cada um destes marcadores são desafios que podem ser resolvidos através de simples respostas que complementam a informação no site.
+Esta app procura dados incorretos ou incompletos na sua cidade favorita e mostra-os no mapa como marcadores. Cada um destes marcadores são desafios que podem ser resolvidos através de simples respostas que complementam a informação existente no site.
 
 A informação que submeter nesta app é adicionada diretamente ao OpenStreetMap com o seu nome, sem ser necessário utilizar outro editor."</string>
     <string name="quest_name_answer_noName">"Não tem nome"</string>
@@ -197,7 +196,7 @@ A informação que submeter nesta app é adicionada diretamente ao OpenStreetMap
     <string name="quest_name_noName_confirmation_positive">"Sim, não tem"</string>
     <string name="quest_buildingLevels_negativeBuildingLevels">"Oops! Especificou mais pisos do que o número total de pisos!"</string>
     <string name="quest_openingHours_add_times">"Adicionar horário de abertura"</string>
-    <string name="crash_message">"Pode, por favor, enviar o relatório de erro para o desenvolvedor?"</string>
+    <string name="crash_message">"Pode, por favor, enviar o relatório de erro para o programador?"</string>
     <string name="crash_title">"Oh não, o StreetComplete crashou da última vez!"</string>
     <string name="crash_compose_email">"Compor email"</string>
     <string name="no_email_client">"Não está instalado um cliente de email."</string>
@@ -367,4 +366,30 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="quest_way_lit_named_road_title">"A estrada %s tem iluminação aqui?"</string>
     <string name="quest_way_lit_automatic">"Utiliza detetor de movimento"</string>
     <string name="quest_way_lit_24_7">"Está iluminado de dia e de noite"</string>
+    <string name="pref_title_authorized_username_summary">"Autorizar conta: %s"</string>
+    <string name="cannot_find_bbox_or_reduce_tilt">"Não é possível procurar. Tente um zoom mais próximo ou procure inclinar menos o mapa."</string>
+    <string name="quest_crossing_type_title">"Que tipo de passadeira é esta?"</string>
+    <string name="quest_crossing_type_signals">"Passadeira com semáforos"</string>
+    <string name="quest_crossing_type_uncontrolled">"Passadeira com sinalização horizontal"</string>
+    <string name="quest_crossing_type_unmarked">"Passadeira sem qualquer tipo de marcação"</string>
+    <string name="compass_north_one_letter">"N"</string>
+    <string name="action_undo">"Desfazer"</string>
+    <string name="no_changes_to_undo">"Nada a desfazer"</string>
+    <string name="undo_confirm_title">"Desfazer a última resposta?"</string>
+    <string name="produce_mangosteen">"Mangostim"</string>
+    <string name="produce_tomatoes">"Tomates"</string>
+    <string name="produce_areca_nuts">"Noz de areca"</string>
+    <string name="produce_sweet_peppers">"Pimentos"</string>
+    <string name="produce_brazil_nuts">"astanha-do-brasil"</string>
+    <string name="produce_tung_nuts">"Noz da Índia "</string>
+    <string name="quest_parkingType_title">"Que tipo de estacionamento é este?"</string>
+    <string name="quest_parkingType_surface">"Normal"</string>
+    <string name="quest_parkingType_underground">"Garagem subterrânea "</string>
+    <string name="quest_parkingType_multiStorage">"Estacionamento para carro"</string>
+    <string name="quest_toiletAvailability_name_title">"%s possuí casa de banho?"</string>
+    <string name="quest_powerPolesMaterial_title">"Qual o tipo de material deste poste?"</string>
+    <string name="quest_powerPolesMaterial_wood">"Madeira"</string>
+    <string name="quest_powerPolesMaterial_metal">"Aço"</string>
+    <string name="quest_powerPolesMaterial_concrete">"Cimento"</string>
+    <string name="quest_maxspeed_answer_advisory_speed_limit">"apenas um limite de velocidade indicativo"</string>
 </resources>

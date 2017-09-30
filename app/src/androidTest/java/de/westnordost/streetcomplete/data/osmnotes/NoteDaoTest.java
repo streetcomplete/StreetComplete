@@ -73,7 +73,8 @@ public class NoteDaoTest extends ApplicationDbTestCase
 		assertEquals(1,dao.deleteUnreferenced());
 
 		dao.put(note);
-		new OsmNoteQuestDao(dbHelper,serializer).add(new OsmNoteQuest(note));
+		new OsmNoteQuestDao(dbHelper,serializer, new OsmNoteQuestType())
+				.add(new OsmNoteQuest(note, new OsmNoteQuestType()));
 		assertEquals(0,dao.deleteUnreferenced());
 	}
 

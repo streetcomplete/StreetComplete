@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.parking_type;
 import android.os.Bundle;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -14,10 +15,7 @@ import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 
 public class AddParkingType extends SimpleOverpassQuestType
 {
-	@Inject public AddParkingType(OverpassMapDataDao overpassServer)
-	{
-		super(overpassServer);
-	}
+	@Inject public AddParkingType(OverpassMapDataDao overpassServer) { super(overpassServer); }
 
 	@Override
 	protected String getTagFilters()
@@ -39,10 +37,10 @@ public class AddParkingType extends SimpleOverpassQuestType
 		}
 	}
 
-	@Override public String getCommitMessage()
-	{
-		return "Add parking type";
-	}
-
+	@Override public String getCommitMessage() { return "Add parking type"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_parking; }
+	@Override public int getTitle(Map<String, String> tags)
+	{
+		return R.string.quest_parkingType_title;
+	}
 }

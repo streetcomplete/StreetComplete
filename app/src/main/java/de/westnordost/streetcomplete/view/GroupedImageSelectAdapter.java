@@ -143,8 +143,8 @@ public class GroupedImageSelectAdapter extends RecyclerView.Adapter<GroupedImage
 		public ViewHolder(View itemView)
 		{
 			super(itemView);
-			imageView = (ImageView) itemView.findViewById(R.id.imageView);
-			textView = (TextView) itemView.findViewById(R.id.textView);
+			imageView = itemView.findViewById(R.id.imageView);
+			textView = itemView.findViewById(R.id.textView);
 			itemView.setOnClickListener(new View.OnClickListener()
 			{
 				@Override public void onClick(View v)

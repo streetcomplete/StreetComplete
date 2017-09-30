@@ -1,4 +1,4 @@
-![StreetComplete](fastlane/metadata/en/images/featureGraphic.png)
+![StreetComplete](metadata/en/images/featureGraphic.png)
 
 An Android app which finds wrong, incomplete or extendable data in the user's vicinity and provides the tools to complete these easily and directly on site without having to use another editor.
 
@@ -13,7 +13,7 @@ The app is aimed at users who do not know anything about OSM tagging schemes but
 contribute to the OpenStreetMap by surveying their neighbourhood (or other places as well). Because of the target group, only those quests are shown which are answerable very clearly by asking one simple question and only those quests are created which contain very few false positives.
 
 ## Screenshots
-<img src="fastlane/metadata/en/images/phoneScreenshots/screenshot1.png" width="170"/> <img src="fastlane/metadata/en/images/phoneScreenshots/screenshot2.png" width="170"/> <img src="fastlane/metadata/en/images/phoneScreenshots/screenshot3.png" width="170"/> <img src="fastlane/metadata/en/images/phoneScreenshots/screenshot4.png" width="170"/> <img src="fastlane/metadata/en/images/phoneScreenshots/screenshot5.png" width="170"/>
+<img src="metadata/en/images/phoneScreenshots/screenshot1.png" width="170"/> <img src="metadata/en/images/phoneScreenshots/screenshot2.png" width="170"/> <img src="metadata/en/images/phoneScreenshots/screenshot3.png" width="170"/> <img src="metadata/en/images/phoneScreenshots/screenshot4.png" width="170"/> <img src="metadata/en/images/phoneScreenshots/screenshot5.png" width="170"/>
 
 ## Download
 
@@ -21,9 +21,10 @@ contribute to the OpenStreetMap by surveying their neighbourhood (or other place
       height="80"><br/>](https://f-droid.org/repository/browse/?fdid=de.westnordost.streetcomplete)
 You can also simply download the APK from the [Releases](https://github.com/westnordost/StreetComplete/releases) section of this GitHub page.
 
-## State of Development
+## Quests
 
 Right now, there are very few different question types. More will be added over time.
+You can see a community-managed [list of all quests in the OSM wiki](https://wiki.openstreetmap.org/wiki/StreetComplete/Quests).
 
 ## Contributing
 

@@ -10,7 +10,6 @@
     <string name="pref_category_communication">"通訊"</string>
     <string name="pref_category_display">"顯示"</string>
     <string name="pref_title_authorization">"驗證開放街圖存取"</string>
-    <string name="pref_title_authorized_summary">"成功驗證到你的帳號"</string>
     <string name="pref_title_not_authorized_summary">"尚未驗證"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
     <string name="pref_tilecache_size_message">"MB為單位的空間保留用來暫存地圖圖磚"</string>
@@ -376,4 +375,20 @@
     <string name="quest_way_lit_named_road_title">"\"%s\" 沿路上有照明設施？"</string>
     <string name="quest_way_lit_automatic">"使用動態偵測"</string>
     <string name="quest_way_lit_24_7">"不分日夜照明"</string>
+    <string name="quest_crossing_type_title">"這是哪種交叉口?"</string>
+    <string name="compass_north_one_letter">"北"</string>
+    <string name="produce_mangosteen">"山竹"</string>
+    <string name="produce_tomatoes">"番茄"</string>
+    <string name="produce_areca_nuts">"檳榔"</string>
+    <string name="produce_sweet_peppers">"青椒"</string>
+    <string name="produce_brazil_nuts">"巴西堅果"</string>
+    <string name="produce_tung_nuts">"油桐子"</string>
+    <string name="quest_parkingType_title">"這是哪種停車場?"</string>
+    <string name="quest_parkingType_surface">"一般"</string>
+    <string name="quest_parkingType_underground">"地下停車場"</string>
+    <string name="quest_parkingType_multiStorage">"停車場"</string>
+    <string name="quest_toiletAvailability_name_title">"%s有洗手間嗎?"</string>
+    <string name="quest_powerPolesMaterial_wood">"木頭"</string>
+    <string name="quest_powerPolesMaterial_metal">"鋼鐵"</string>
+    <string name="quest_powerPolesMaterial_concrete">"水泥"</string>
 </resources>

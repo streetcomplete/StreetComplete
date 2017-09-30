@@ -1,4 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
 officialLanguages: [fr]
-orchardProduces: [pineapple, banana, tea, vanilla, guava, mango, mangosteen, tomatoe, chili, pepper,
-  avocado, orange, coconut, peach, papaya, strawberry, grape, lemon, lime]
+orchardProduces: [pineapple, banana, tea, vanilla, guava, mango, mangosteen, tomatoe, chilli_pepper,
+  sweet_pepper, avocado, orange, coconut, peach, papaya, strawberry, grape, lemon,
+  lime]

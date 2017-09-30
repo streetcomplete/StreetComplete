@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.orchard_produce;
 import android.os.Bundle;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType;
@@ -12,10 +13,7 @@ import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 
 public class AddOrchardProduce extends SimpleOverpassQuestType
 {
-	public AddOrchardProduce(OverpassMapDataDao overpassServer)
-	{
-		super(overpassServer);
-	}
+	public AddOrchardProduce(OverpassMapDataDao overpassServer) { super(overpassServer); }
 
 	@Override protected String getTagFilters()
 	{
@@ -46,4 +44,8 @@ public class AddOrchardProduce extends SimpleOverpassQuestType
 
 	@Override public String getCommitMessage() { return "Add orchard produces"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_apple; }
+	@Override public int getTitle(Map<String, String> tags)
+	{
+		return R.string.quest_orchard_produce_title;
+	}
 }

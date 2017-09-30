@@ -33,11 +33,16 @@ public class AddHousenumberTest extends AOsmElementQuestTypeTest
 		assertFalse("1234AB".matches(r));
 	}
 
-	public void testNoName()
+	public void testNumber()
 	{
 		bundle.putString(AddHousenumberForm.HOUSENUMBER, "99b");
-		verify(
-				new StringMapEntryAdd("addr:housenumber","99b"));
+		verify(new StringMapEntryAdd("addr:housenumber","99b"));
+	}
+
+	public void testName()
+	{
+		bundle.putString(AddHousenumberForm.HOUSENAME, "La Escalera");
+		verify(new StringMapEntryAdd("addr:housename","La Escalera"));
 	}
 
 	@Override protected OsmElementQuestType createQuestType()

@@ -150,15 +150,25 @@ public class ElementGeometryDao
 		/* SQLite does not allow selecting multiple columns in a DELETE subquery. Using a workaround
 		*  as described here:
 		*  http://blog.programmingsolution.net/sql-server-2008/tsql/delete-rows-of-a-table-matching-multiple-columns-of-another-table/*/
-		String lumpTogether = "+'#'+";
 		String where =
 				"(" +
-					ElementGeometryTable.Columns.ELEMENT_TYPE + lumpTogether +
+					ElementGeometryTable.Columns.ELEMENT_TYPE +
+					LUMP +
 					ElementGeometryTable.Columns.ELEMENT_ID +
-				") NOT IN ( SELECT " +
-					OsmQuestTable.Columns.ELEMENT_TYPE + lumpTogether +
-					OsmQuestTable.Columns.ELEMENT_ID +	" FROM " + OsmQuestTable.NAME + ")";
+				")  NOT IN ( " +
+					getSelectAllElementsIn(OsmQuestTable.NAME) +
+					" UNION " +
+					getSelectAllElementsIn(OsmQuestTable.NAME_UNDO) +
+				")";
 
 		return db.delete(ElementGeometryTable.NAME, where, null);
+	}
+
+	private static final String LUMP = "+'#'+";
+
+	private static String getSelectAllElementsIn(String table)
+	{
+		return "SELECT " + OsmQuestTable.Columns.ELEMENT_TYPE + LUMP + OsmQuestTable.Columns.ELEMENT_ID +
+				" FROM " + table;
 	}
 }

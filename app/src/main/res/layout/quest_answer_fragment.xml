@@ -2,15 +2,20 @@
 <de.westnordost.streetcomplete.view.SlidingRelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="@dimen/quest_form_width"
+    android:layout_height="match_parent"
+    >
 
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/buttonPanel"
-        android:background="#00000000"
-        >
+        android:layout_marginStart="-9dp"
+        android:layout_marginEnd="-9dp"
+        android:layout_marginTop="-9dp"
+        android:layout_marginBottom="-9dp"
+        android:clipChildren="false"
+        android:background="#00000000">
         <!-- If I do not set any background color here, the layout will leave a few pixels free at the
      bottom on my Android 6.0 emulator; so, setting to transparent-->
 
@@ -18,12 +23,11 @@
             android:id="@+id/bottomSheet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:elevation="16dp"
             android:orientation="vertical"
             app:layout_behavior="android.support.design.widget.BottomSheetBehavior"
-            app:behavior_peekHeight="@dimen/quest_bottom_sheet_peek_height"
-            android:background="@android:color/background_light"
-            >
+            android:background="@android:drawable/dialog_holo_light_frame"
+            android:clipChildren="true"
+            app:behavior_peekHeight="@dimen/quest_form_peekHeight">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -79,21 +83,19 @@
 
     </android.support.design.widget.CoordinatorLayout>
 
-    <View
+    <LinearLayout
+        android:id="@+id/buttonPanel"
+        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
-        android:layout_height="16dp"
-        android:background="@drawable/more_gradient"
-        android:layout_above="@+id/buttonPanel"
-        />
-
-    <LinearLayout android:id="@+id/buttonPanel"
-                  android:layout_alignParentBottom="true"
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:orientation="horizontal"
-                  android:layoutDirection="locale"
-                  android:background="@android:color/background_light"
-                  style="?android:attr/buttonBarStyle">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layoutDirection="locale"
+        android:background="@android:drawable/dialog_holo_light_frame"
+        android:layout_marginStart="-9dp"
+        android:layout_marginEnd="-9dp"
+        android:layout_marginTop="-9dp"
+        android:layout_marginBottom="-9dp"
+        style="?android:attr/buttonBarStyle">
 
         <Button
             android:id="@+id/buttonOtherAnswers"
@@ -103,8 +105,14 @@
             android:text="@string/quest_generic_otherAnswers"
             style="?android:attr/buttonBarButtonStyle"/>
 
-
     </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="16dp"
+        android:background="@drawable/more_gradient"
+        android:layout_above="@+id/buttonPanel" />
+
 </de.westnordost.streetcomplete.view.SlidingRelativeLayout>
 
 

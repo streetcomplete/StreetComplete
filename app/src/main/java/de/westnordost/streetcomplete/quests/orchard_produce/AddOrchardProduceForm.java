@@ -1,10 +1,5 @@
 package de.westnordost.streetcomplete.quests.orchard_produce;
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -84,14 +79,6 @@ public class AddOrchardProduceForm extends ImageListQuestAnswerFragment
 
 	protected int getItemsPerRow() { return 3; }
 	protected int getMaxNumberOfInitiallyShownItems() { return -1; }
-
-	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
-									   Bundle savedInstanceState)
-	{
-		View view = super.onCreateView(inflater, container, savedInstanceState);
-		setTitle(R.string.quest_orchard_produce_title);
-		return view;
-	}
 
 	@Override protected OsmItem[] getItems()
 	{

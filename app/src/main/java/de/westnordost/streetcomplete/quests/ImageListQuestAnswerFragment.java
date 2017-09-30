@@ -40,12 +40,12 @@ public abstract class ImageListQuestAnswerFragment extends AbstractQuestFormAnsw
 
         View contentView = setContentView(R.layout.quest_generic_list);
 
-		valueList = (RecyclerView) contentView.findViewById(R.id.listSelect);
+		valueList = contentView.findViewById(R.id.listSelect);
         GridLayoutManager lm = new GridLayoutManager(getActivity(), getItemsPerRow());
         valueList.setLayoutManager(lm);
 		valueList.setNestedScrollingEnabled(false);
 
-		showMoreButton = (Button) view.findViewById(R.id.buttonShowMore);
+		showMoreButton = view.findViewById(R.id.buttonShowMore);
 		showMoreButton.setOnClickListener(new View.OnClickListener()
 		{
 			@Override public void onClick(View v)
@@ -57,7 +57,7 @@ public abstract class ImageListQuestAnswerFragment extends AbstractQuestFormAnsw
 		});
 
 		int selectableItems = getMaxSelectableItems();
-		TextView selectHint = (TextView) view.findViewById(R.id.selectHint);
+		TextView selectHint = view.findViewById(R.id.selectHint);
 		selectHint.setText(selectableItems == 1 ? R.string.quest_roofShape_select_one : R.string.quest_select_hint);
 
 		imageSelector = new ImageSelectAdapter(selectableItems);

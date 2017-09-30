@@ -1,7 +1,5 @@
 package de.westnordost.streetcomplete.data;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -22,14 +20,10 @@ import javax.inject.Inject;
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.map.data.OsmLatLon;
 import de.westnordost.streetcomplete.Prefs;
-import de.westnordost.streetcomplete.data.changesets.OpenChangesetsDao;
 import de.westnordost.streetcomplete.data.download.MobileDataAutoDownloadStrategy;
 import de.westnordost.streetcomplete.data.download.QuestAutoDownloadStrategy;
 import de.westnordost.streetcomplete.data.download.WifiAutoDownloadStrategy;
-import de.westnordost.streetcomplete.data.osm.upload.ChangesetAutoCloserReceiver;
-import de.westnordost.streetcomplete.util.SphericalEarthMath;
-
-import static android.app.PendingIntent.FLAG_CANCEL_CURRENT;
+import de.westnordost.streetcomplete.data.osm.upload.ChangesetAutoCloserJob;
 
 /** Automatically downloads and uploads new quests around the user's location and uploads quests.
  *
@@ -142,11 +136,8 @@ public class QuestAutoSyncer implements LocationListener, LostApiClient.Connecti
 
 	private void triggerDelayedClosingOfChangesets()
 	{
-		AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-		long delayTime = System.currentTimeMillis() + OpenChangesetsDao.CLOSE_CHANGESETS_AFTER_INACTIVITY_OF;
-		Intent intent = new Intent(context, ChangesetAutoCloserReceiver.class);
-		PendingIntent pi = PendingIntent.getBroadcast(context, 0, intent, FLAG_CANCEL_CURRENT);
-		alarmManager.set(AlarmManager.RTC_WAKEUP, delayTime, pi);
+		ChangesetAutoCloserJob.scheduleJob();
+
 	}
 
 	private boolean updateConnectionState()

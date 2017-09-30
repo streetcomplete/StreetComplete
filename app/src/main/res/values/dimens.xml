@@ -8,6 +8,14 @@
 
     <!-- Form content -->
     <dimen name="quest_form_vertical_margin">8dp</dimen>
-    <dimen name="quest_bottom_sheet_peek_height">200dp</dimen>
+
+    <!-- Quest form offsets -->
+    <dimen name="quest_form_leftOffset">0dp</dimen>
+    <dimen name="quest_form_topOffset">50dp</dimen>
+    <dimen name="quest_form_rightOffset">0dp</dimen>
+    <dimen name="quest_form_bottomOffset">@dimen/quest_form_peekHeight</dimen>
+
+    <dimen name="quest_form_peekHeight">220dp</dimen>
+    <dimen name="quest_form_width">@dimen/match_parent</dimen>
 
 </resources>

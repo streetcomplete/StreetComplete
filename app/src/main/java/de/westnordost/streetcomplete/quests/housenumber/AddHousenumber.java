@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -94,6 +95,7 @@ public class AddHousenumber implements OsmElementQuestType
 				for(int i = 0; i < housenumberCoords.size(); ++i)
 				{
 					Point p = housenumberCoords.get(i);
+					// this line is a very expensive computation
 					if(g.covers(p))
 					{
 						// one housenumber-node cannot be covered by multiple buildings. So, it can
@@ -118,10 +120,34 @@ public class AddHousenumber implements OsmElementQuestType
 	@Override public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
 	{
 		String housenumber = answer.getString(AddHousenumberForm.HOUSENUMBER);
-		changes.add("addr:housenumber", housenumber);
+		String housename = answer.getString(AddHousenumberForm.HOUSENAME);
+
+		if(housenumber != null)
+		{
+			changes.add("addr:housenumber", housenumber);
+		}
+		if(housename != null)
+		{
+			changes.add("addr:housename", housename);
+		}
+	}
+
+	@Override public boolean appliesTo(Element element)
+	{
+		/* Whether this element applies to this quest cannot be determined by looking at that
+		   element alone (see download()), an Overpass query would need to be made to find this out.
+		   This is too heavy-weight for this method so it always returns false. */
+
+		/* The implications of this are that AddHousenumber quests will never be created directly
+		*  as consequence of solving another quest and also after reverting a house number input,
+		*  the quest will not immediately pop up again. Instead, they are downloaded well after an
+		*  element became fit for this quest. */
+		return false;
 	}
 
 	@Override public AbstractQuestAnswerFragment createForm() { return new AddHousenumberForm(); }
 	@Override public String getCommitMessage() { return "Add housenumbers"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_housenumber; }
+	@Override public int getTitle(Map<String,String> tags) { return getTitle(); }
+	@Override public int getTitle() { return R.string.quest_address_title; }
 }

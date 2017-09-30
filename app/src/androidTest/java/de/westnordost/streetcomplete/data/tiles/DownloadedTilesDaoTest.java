@@ -33,6 +33,15 @@ public class DownloadedTilesDaoTest extends ApplicationDbTestCase
 		assertTrue(huhus.isEmpty());
 	}
 
+	public void testPutSomeOld() throws InterruptedException
+	{
+		dao.put(new Rect(0,0,1,3), "Huhu");
+		Thread.sleep(2000);
+		dao.put(new Rect(1,3,5,5), "Huhu");
+		List<String> huhus = dao.get(new Rect(0,0,2,2),System.currentTimeMillis() - 1000);
+		assertTrue(huhus.isEmpty());
+	}
+
 	public void testPutMoreGetOne()
 	{
 		dao.put(new Rect(5,8,6,10), "Huhu");
