@@ -100,5 +100,5 @@ power_pole_steel.jpg           https://commons.wikimedia.org/wiki/File:Steel_tub
 power_pole_concrete.jpg        https://commons.wikimedia.org/wiki/File:Concrete_utility_pole.jpg
 
 car_wash_automated.jpg    https://commons.wikimedia.org/wiki/File:Carwas.jpg
-car_wash_self_service.jpg https://commons.wikimedia.org/wiki/File:2015_K%C5%82odzko,_ul._Dusznicka,_myjnia_samochodowa_02.jpg
-car_wash_service.jpg      https://pixabay.com/en/wash-a-car-the-car-blue-1822415/
+car_wash_service.jpg      https://commons.wikimedia.org/wiki/File:2015_K%C5%82odzko,_ul._Dusznicka,_myjnia_samochodowa_02.jpg
+car_wash_self_service.jpg https://pixabay.com/en/wash-a-car-the-car-blue-1822415/

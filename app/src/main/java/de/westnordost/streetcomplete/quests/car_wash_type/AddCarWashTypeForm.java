@@ -66,7 +66,6 @@ public class AddCarWashTypeForm extends ImageListQuestAnswerFragment
 									   Bundle savedInstanceState)
 	{
 		View view = super.onCreateView(inflater, container, savedInstanceState);
-		setTitle(R.string.quest_carWashType_title);
 		return view;
 	}
 }
