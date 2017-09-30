@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.quests.car_wash_type;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
