@@ -22,6 +22,19 @@ global:
             // if a ux_langauge has been defined use that, else if there is feature name in the fallback_ux_language then use that, else use the feature's default name in the local language
             return (global.ux_language && feature['name:'+global.ux_language]) || (global.ux_language_fallback && feature['name:'+global.ux_language_fallback]) || feature.name;
         }
+    ux_language_text_source_left: |
+        function() {
+            // if a ux_langauge has been defined use that, else if there is feature name in the fallback_ux_language then use that, else use the feature's default name in the local language
+            return (global.ux_language && feature['name:left:'+global.ux_language]) || (global.ux_language_fallback && feature['name:left:'+global.ux_language_fallback]) || feature['name:left'];
+        }
+    ux_language_text_source_right: |
+        function() {
+            // if a ux_langauge has been defined use that, else if there is feature name in the fallback_ux_language then use that, else use the feature's default name in the local language
+            return (global.ux_language && feature['name:right:'+global.ux_language]) || (global.ux_language_fallback && feature['name:right:'+global.ux_language_fallback]) || feature['name:right'];
+        }
+    ux_language_text_source_boundary_lines_left_right:
+        left: global.ux_language_text_source_left
+        right: global.ux_language_text_source_right
     ux_language_text_source_boundary_lines: |
         function() {
             var right = (global.ux_language && feature['name:right:'+global.ux_language]) || (global.ux_language_fallback && feature['name:right:'+global.ux_language_fallback]) || feature['name:right'];
@@ -442,14 +455,14 @@ textures:
             # define sprites: [x origin, y origin, width, height]
             'US:CA-1char': [488, 642, 82, 92]
             'US:CA-2char': [388, 642, 94, 94]
-            'US:CA-3char': [268, 642, 114, 92]
+            'US:CA-3char': [268, 642, 112, 92]
             'US:CA-4char': [136, 642, 124, 92]
             'US:CA-5char': [0, 642, 128, 92]
-            'US:I-1char': [908, 746, 90, 100]
-            'US:I-2char': [798, 746, 102, 100]
-            'US:I-3char': [658, 746, 132, 100]
-            'US:I-4char': [512, 746, 140, 100]
-            'US:I-5char': [352, 746, 152, 100]
+            'US:I-1char': [908, 745, 88, 100]
+            'US:I-2char': [798, 745, 102, 100]
+            'US:I-3char': [658, 745, 134, 100]
+            'US:I-4char': [512, 745, 140, 100]
+            'US:I-5char': [352, 745, 152, 100]
             'US:NY-1char': [756, 386, 72, 88]
             'US:NY-2char': [660, 386, 88, 88]
             'US:NY-3char': [548, 386, 104, 86]
@@ -458,8 +471,8 @@ textures:
             'US:PA-1char': [216, 386, 72, 88]
             'US:PA-2char': [120, 386, 88, 88]
             'US:PA-3char': [0, 386, 112, 88]
-            'US:PA-4char': [844, 254, 120, 88]
-            'US:PA-5char': [708, 254, 128, 88]
+            'US:PA-4char': [892, 254, 120, 88]
+            'US:PA-5char': [756, 254, 128, 88]
             'US:US-1char': [256, 746, 88, 94]
             'US:US-2char': [144, 746, 106, 94]
             'US:US-3char': [0, 746, 138, 100]
@@ -468,6 +481,7 @@ textures:
             airport: [870, 0, 38, 38]
             aerodrome: [870, 0, 38, 38]
             aquarium: [732, 168, 38, 38]
+            arrow: [368, 210, 38, 38]
             atm: [918, 126, 38, 38]
             bakery: [548, 168, 38, 38]
             bank: [964, 126, 38, 38]
@@ -500,11 +514,11 @@ textures:
             cafe: [502, 168, 38, 38]
             camp_site: [782, 84, 38, 38]
             summer_camp: [782, 84, 38, 38]
-            capital-l: [544, 210, 32, 32]
-            capital-m: [512, 210, 24, 24]
-            capital-s: [482, 210, 20, 20]
-            capital-xl: [632, 210, 40, 40]
-            capital-xs: [460, 210, 16, 16]
+            capital-l: [590, 210, 32, 32]
+            capital-m: [558, 210, 24, 24]
+            capital-s: [528, 210, 20, 20]
+            capital-xl: [678, 210, 42, 36]
+            capital-xs: [506, 210, 16, 16]
             car: [780, 126, 38, 38]
             category-namespace-mobility: [780, 126, 38, 38]
             category-predicate-mobility: [780, 126, 38, 38]
@@ -558,9 +572,9 @@ textures:
             fuel: [960, 168, 38, 38]
             gallery: [640, 168, 38, 38]
             garden: [644, 84, 38, 38]
-            generic: [368, 210, 38, 38]
-            category-namespace-other: [368, 210, 38, 38]
-            category-predicate-addressing: [368, 210, 38, 38]
+            generic: [414, 210, 38, 38]
+            category-namespace-other: [414, 210, 38, 38]
+            category-predicate-addressing: [414, 210, 38, 38]
             generic_shield-1char: [104, 554, 72, 72]
             generic_shield-2char: [0, 554, 98, 72]
             generic_shield-3char: [832, 478, 132, 72]
@@ -586,7 +600,7 @@ textures:
             hostel: [732, 0, 38, 38]
             category-predicate-sleep: [732, 0, 38, 38]
             ice_cream: [322, 210, 38, 38]
-            information: [414, 210, 38, 38]
+            information: [460, 210, 38, 38]
             jewelry: [736, 42, 38, 38]
             jewish: [46, 0, 38, 38]
             landmark: [272, 0, 38, 38]
@@ -681,31 +695,31 @@ textures:
             theme_park: [966, 84, 38, 38]
             amusement_ride: [966, 84, 38, 38]
             toilets: [828, 84, 38, 38]
-            townspot-l: [932, 210, 32, 32]
-            townspot-l-rev: [760, 210, 32, 32]
-            townspot-m: [900, 210, 24, 24]
-            townspot-m-rev: [728, 210, 24, 24]
-            townspot-s: [872, 210, 20, 20]
-            townspot-s-rev: [700, 210, 20, 20]
-            townspot-xl: [972, 210, 40, 40]
-            townspot-xl-rev: [800, 210, 40, 40]
-            townspot-xs: [848, 210, 16, 16]
-            townspot-xs-rev: [680, 210, 12, 12]
+            townspot-l: [978, 210, 32, 32]
+            townspot-l-rev: [806, 210, 32, 32]
+            townspot-m: [946, 210, 24, 24]
+            townspot-m-rev: [774, 210, 24, 24]
+            townspot-s: [918, 210, 20, 20]
+            townspot-s-rev: [746, 210, 20, 20]
+            townspot-xl: [0, 254, 40, 40]
+            townspot-xl-rev: [846, 210, 38, 38]
+            townspot-xs: [894, 210, 16, 16]
+            townspot-xs-rev: [726, 210, 12, 12]
             toys: [916, 0, 38, 38]
             traffic_signals: [916, 168, 38, 38]
             train_station: [410, 0, 38, 38]
             station: [410, 0, 38, 38]
             train: [410, 0, 38, 38]
             category-predicate-transport: [410, 0, 38, 38]
-            ux-current-location: [294, 254, 88, 88]
-            ux-locate-off: [628, 254, 72, 72]
-            ux-locate-on: [548, 254, 72, 72]
-            ux-route-arrow: [0, 254, 128, 128]
-            ux-route-start: [214, 254, 72, 92]
-            ux-route-stop: [136, 254, 72, 92]
-            ux-search-active: [388, 254, 72, 108]
-            ux-search-inactive: [468, 254, 72, 108]
-            ux-transit-stop: [584, 212, 42, 36]
+            ux-current-location: [342, 254, 88, 88]
+            ux-locate-off: [676, 254, 72, 72]
+            ux-locate-on: [596, 254, 72, 72]
+            ux-route-arrow: [48, 254, 128, 128]
+            ux-route-start: [262, 254, 72, 92]
+            ux-route-stop: [184, 254, 72, 92]
+            ux-search-active: [436, 254, 72, 108]
+            ux-search-inactive: [516, 254, 72, 108]
+            ux-transit-stop: [630, 212, 42, 36]
             veterinary: [138, 0, 38, 38]
             viewpoint: [686, 168, 38, 38]
             category-namespace-do_and_see: [686, 168, 38, 38]
@@ -1664,6 +1678,22 @@ layers:
                     family: global.text_font_family
                     weight: 400
                     fill: global.text_fill
+
+        arrows:
+            # oneway arrows and shields are distinct groups!
+            filter: { oneway: yes, shield_text: false, not: { kind: rail }, $zoom: { min: 17 } }
+            draw:
+                arrows:
+                    style: icons
+                    flat: true
+                    visible: global.icon_visible_landuse_green
+                    sprite: arrow
+                    color: [0.766,0.705,0.706]
+                    size: [[17, 7px], [20, 14px]]
+                    placement: spaced
+                    placement_spacing: [[17, 70px], [20, 175px]]
+                    angle: auto
+
         early-minor_road:
             filter: { $zoom: { max: 15 }, kind: [minor_road] }
             draw:
@@ -3491,6 +3521,19 @@ layers:
                 color: global.building2
                 width: [[14,0.1px],[15,0.5px],[17,0.5px],[18,0.75px],[19,0.4m]]
                 extrude: global.sdk_building_extrude
+
+        basement:
+            filter:
+                all:
+                    - layer: [-1, -2, -3, -4, -5]
+            draw:
+                polygons:
+                    extrude: false
+                    order: 329
+                outline:
+                    extrude: false
+                    order: 330
+
         in_park:
             #todo: does forest belong here?
             filter: { landuse_kind: [park,forest,nature_reserve,conservation,golf_course,garden] }
@@ -3633,7 +3676,7 @@ layers:
         # country subdivisions (states, provinces)
         draw:
             lines:
-                order: function() { return (feature.sort_rank + 100); }
+                order: global.feature_order
         country:
             filter:
                 any:
@@ -3648,13 +3691,14 @@ layers:
                 draw:
                     lines:
                         visible: false
-            labels-z9-up:
+            country-labels:
                 filter: { name: true, $zoom: { min: 9 }, not: { maritime_boundary: true } }
                 draw:
                     text-blend-order:
                         priority: 2
                         visible: global.text_visible_admin
-                        text_source: global.ux_language_text_source_boundary_lines
+                        text_source: global.ux_language_text_source_boundary_lines_left_right
+                        offset: [0, 5px]
                         text_wrap: 100
                         font:
                             family: global.text_font_family
@@ -3662,11 +3706,18 @@ layers:
                             fill: [0.00,0.00,0.00]
                             transform: uppercase
                             stroke: { color: global.earth1, width: 3px }
+                no-left-right:
+                    filter: { "name:left": false, "name:right": false }
+                    draw:
+                        text-blend-order:
+                            text_source: global.ux_language_text_source_boundary_lines
+                            offset: 0px
+
         other_country_boundary_disputed_etc:
             filter: { kind: [disputed, indefinite, indeterminate, lease_limit, line_of_control, overlay_limit] }
             draw:
                 dashed:
-                    order: function() { return (feature.sort_rank + 100); }
+                    order: global.feature_order
                     color: global.country_boundary
                     width: [[1,0.2px],[9,1.5px],[17,10m]]
             disputed:
@@ -3675,17 +3726,14 @@ layers:
                     dashed:
                         visible: false
                     dashed_big:
-                        order: function() { return (feature.sort_rank + 100); }
+                        order: global.feature_order
                         color: global.country_boundary
                         width: [[1,0.5px],[9,2.5px],[17,14m]]
         region:
             filter:
-                kind: region
-                # any:
-                #     - type: state
-                #     # territorial here is probably a hack
-                #     - kind: [state, department, region, provincial, territorial]
-                #     - admin_level: 4
+                any:
+                    - kind: [region,macroregion]
+                    - kind_detail: [3,4]
             draw:
                 lines:
                     color: global.region_boundary
@@ -3701,16 +3749,17 @@ layers:
                     lines:
                         visible: false
 
-            labels-z9-up:
+            region-labels:
                 filter: { name: true, $zoom: { min: 9 }, not: { maritime_boundary: true } }
                 draw:
                     text-blend-order:
                         priority: 3
                         visible: global.text_visible_admin
-                        text_source: global.ux_language_text_source_boundary_lines
+                        text_source: global.ux_language_text_source_boundary_lines_left_right
+                        offset: [0, 5px]
                         text_wrap: 100px
-                        offset: 10px
-                        anchor: top
+                        # offset: 10px
+                        # anchor: top
                         font:
                             family: Varela
                             size: 9px
@@ -3719,6 +3768,12 @@ layers:
                             # stroke: { color: global.text_stroke, width: 4 }
                             transform: uppercase
                             stroke: { color: global.earth1, width: 3px }
+                no-left-right:
+                    filter: { "name:left": false, "name:right": false }
+                    draw:
+                        text-blend-order:
+                            text_source: global.ux_language_text_source_boundary_lines
+                            offset: 0px
 
     places:
         data: { source: mapzen, layer: places }
@@ -4592,7 +4647,7 @@ layers:
                 icons:
                     visible: false
             # eg park polygons in SF that have area but no name, sigh
-            no-name-no-area:
+            no-name-with-area-any-kind-default:
                 filter:
                     kind: true
                     name: false
@@ -5066,18 +5121,18 @@ layers:
                         font:
                             style: italic
 
-        # TODO: this isn't working, should see small icons near the transbay terminal in SF
         bus_stop:
             filter:
                 kind: [bus_stop]
             draw:
                 icons:
-                    size: 14px
+                    size: [[18,12px],[20,18px]]
                     text:
+                        optional: true
                         font:
                             size: 11px
                             weight: normal
-            later:
+            early:
                 filter: { $zoom: { max: 19 } }
                 draw:
                     icons:
@@ -5833,7 +5888,7 @@ layers:
                             color: global.grey1_e
             pedestrian:
                 filter:
-                    kind: [pedestrian,common]
+                    kind: [pedestrian,common,footway]
                 draw:
                     polygons:
                         color: global.grey7
