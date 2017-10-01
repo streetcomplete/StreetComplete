@@ -96,10 +96,7 @@ dependencies {
     compile 'com.github.westnordost:viewtooltip:master-SNAPSHOT'
 
     // serialization
-    // Kryo uses Objenesis 2.2 which uses a class that has been removed for Android O.
-    // see https://github.com/westnordost/StreetComplete/issues/286
-    compile 'org.objenesis:objenesis:2.5.1'
-    compile 'com.esotericsoftware:kryo:4.0.0'
+    compile 'com.esotericsoftware:kryo:4.0.1'
 
     // map and location
     compile 'com.mapzen.tangram:tangram:0.8.0'
