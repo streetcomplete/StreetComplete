@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="de.westnordost.streetcomplete"
+          xmlns:tools="http://schemas.android.com/tools"
+          package="de.westnordost.streetcomplete"
     >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.WAKE_LOCK" android:maxSdkVersion="20" />
+
+    <!-- evernote lib adds this permission but we do not use that feature-->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" tools:node="remove" />
 
     <application
         android:name="de.westnordost.streetcomplete.StreetCompleteApplication"
