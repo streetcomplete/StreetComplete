@@ -23,7 +23,6 @@ import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.data.download.MobileDataAutoDownloadStrategy;
 import de.westnordost.streetcomplete.data.download.QuestAutoDownloadStrategy;
 import de.westnordost.streetcomplete.data.download.WifiAutoDownloadStrategy;
-import de.westnordost.streetcomplete.data.osm.upload.ChangesetAutoCloserJob;
 
 /** Automatically downloads and uploads new quests around the user's location and uploads quests.
  *
