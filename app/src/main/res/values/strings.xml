@@ -398,4 +398,5 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingLevels_levelsLabel2">regular levels (not counting the roof)</string>
     <string name="quest_buildingLevels_answer_multipleLevels">differs per building part</string>
     <string name="quest_buildingLevels_answer_description">In this case, simply input the values of the highest building part.</string>
+    <string name="unglue_hint">Tap to unglue view from position</string>
 </resources>

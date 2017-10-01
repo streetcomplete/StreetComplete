@@ -48,6 +48,7 @@ if (keystorePropertiesFile.exists()) {
 repositories {
     mavenLocal()
     mavenCentral()
+    maven { url "https://jitpack.io" }
 }
 
 dependencies {
@@ -92,6 +93,7 @@ dependencies {
     // widgets
     compile 'me.grantland:autofittextview:0.2.1'
     compile 'com.duolingo.open:rtl-viewpager:1.0.2'
+    compile 'com.github.westnordost:viewtooltip:master-SNAPSHOT'
 
     // serialization
     // Kryo uses Objenesis 2.2 which uses a class that has been removed for Android O.

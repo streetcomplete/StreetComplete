@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 
+import com.github.florent37.viewtooltip.ViewTooltip;
 import com.mapzen.android.lost.api.LocationRequest;
 
 import de.westnordost.streetcomplete.R;
@@ -162,7 +163,7 @@ public class MapControlsFragment extends Fragment
 
 	public void onMapReady()
 	{
-		trackingButton.setActivated(mapFragment.isFollowingPosition());
+		setTrackingButtonActivated(mapFragment.isFollowingPosition());
 		trackingButton.setCompassMode(mapFragment.isCompassMode());
 	}
 
@@ -211,6 +212,7 @@ public class MapControlsFragment extends Fragment
 					@Override public void onLocation(Location location)
 					{
 						trackingButton.setState(LocationState.UPDATING);
+						showUnglueHint();
 					}
 				});
 	}
@@ -224,9 +226,28 @@ public class MapControlsFragment extends Fragment
 
 	private void setIsFollowingPosition(boolean follow)
 	{
-		trackingButton.setActivated(follow);
+		setTrackingButtonActivated(follow);
 		mapFragment.setIsFollowingPosition(follow);
 		if(!follow) setIsCompassMode(false);
+	}
+
+	private void setTrackingButtonActivated(boolean activated)
+	{
+		trackingButton.setActivated(activated);
+		showUnglueHint();
+	}
+
+	private void showUnglueHint()
+	{
+		if(trackingButton.isActivated() && LocationUtil.isLocationOn(getActivity()))
+		{
+			ViewTooltip.on(trackingButton)
+					.position(ViewTooltip.Position.LEFT)
+					.text(getResources().getString(R.string.unglue_hint))
+					.color(getResources().getColor(R.color.colorTooltip))
+					.duration(3000)
+					.show();
+		}
 	}
 
 	private void setIsCompassMode(boolean compassMode)
