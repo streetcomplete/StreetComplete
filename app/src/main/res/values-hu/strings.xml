@@ -10,7 +10,7 @@
     <string name="pref_category_communication">"Kommunikáció"</string>
     <string name="pref_category_display">"Megjelenítés"</string>
     <string name="pref_title_authorization">"OSM-hozzáférés engedélyezése"</string>
-    <string name="pref_title_not_authorized_summary">"Még nincs engedélyezve"</string>
+    <string name="pref_title_not_authorized_summary">"Még nincs hitelesítve"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
     <string name="pref_tilecache_size_message">"A külső tárolón a térképcsempék gyorsítótárának fenntartott hely (Megabyte)"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Összes megjegyzés megjelenítése"</string>
@@ -397,4 +397,9 @@ Vagy le is tölthetsz egy másik billentyűzetet az áruházból. Népszerű bil
     <string name="quest_powerPolesMaterial_metal">"Acél"</string>
     <string name="quest_powerPolesMaterial_concrete">"Beton"</string>
     <string name="quest_maxspeed_answer_advisory_speed_limit">"Csak egy javasolt sebességhatár"</string>
+    <string name="quest_address_answer_house_name">"Nincsen házszáma, csak neve"</string>
+    <string name="quest_address_house_name_label">"Ház neve:"</string>
+    <string name="quest_buildingLevels_roofLevelsLabel2">"tetőtér emeletei"</string>
+    <string name="quest_buildingLevels_levelsLabel2">"normál emeletek (tetőtér nélkül)"</string>
+    <string name="pref_title_authorized_summary">"Hitelesített"</string>
 </resources>

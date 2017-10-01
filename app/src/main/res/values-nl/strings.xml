@@ -376,6 +376,7 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire keybor
     <string name="quest_way_lit_named_road_title">"Is deze straat verlicht?"</string>
     <string name="quest_way_lit_automatic">"Het gebruikt bewegingsdetectie"</string>
     <string name="quest_way_lit_24_7">"Het is dag en nacht vericht"</string>
+    <string name="pref_title_authorized_username_summary">"Geautoriseerd Account: %s"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Niet mogelijk hier te scannen. Probeer meer in te zoomen, of tilt de kaart minder."</string>
     <string name="quest_crossing_type_title">"Wat voor kruispunt is dit?"</string>
     <string name="quest_crossing_type_signals">"Kruispunt met verkeerslichten"</string>

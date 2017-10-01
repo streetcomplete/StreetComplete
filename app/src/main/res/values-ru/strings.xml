@@ -101,7 +101,7 @@
     <string name="quest_openingHours_answer_no_regular_opening_hours">"Нет постоянного времени работы"</string>
     <string name="quest_openingHours_comment_title">"Опишите режим работы"</string>
     <string name="quest_openingHours_comment_description">"Будьте кратки, по возможности используйте надписи с табличек (например, «по записи»). Отсутствие табличек не обязательно означает особый режим работы."</string>
-    <string name="quest_buildingLevels_title">"Сколько этажей у здания?"</string>
+    <string name="quest_buildingLevels_title">"Сколько этажей у этого здания?"</string>
     <string name="quest_buildingLevels_title_buildingPart">"Сколько этажей у этой части здания?"</string>
     <string name="quest_buildingLevels_levelsLabel">"всего этажей"</string>
     <string name="quest_buildingLevels_roofLevelsLabel">"из них в составе крыши"</string>
@@ -395,4 +395,10 @@
 
     <!-- https://wiki.openstreetmap.org/wiki/Proposed_features/recommended_speed ? -->
     <string name="quest_maxspeed_answer_advisory_speed_limit">"Есть знак рекомендуемой скорости"</string>
+    <string name="quest_address_answer_house_name">"Номера нет, есть название"</string>
+    <string name="quest_address_house_name_label">"Название дома:"</string>
+    <string name="quest_buildingLevels_roofLevelsLabel2">"этажи в составе крыши"</string>
+    <string name="quest_buildingLevels_levelsLabel2">"обычные этажи (исключая крышу)"</string>
+    <string name="pref_title_authorized_summary">"Авторизовано"</string>
+    <string name="quest_buildingLevels_answer_description">"В этом случае просто введите значения для самой высокой части здания."</string>
 </resources>

@@ -375,8 +375,16 @@
     <string name="quest_way_lit_named_road_title">"\"%s\" 沿路上有照明設施？"</string>
     <string name="quest_way_lit_automatic">"使用動態偵測"</string>
     <string name="quest_way_lit_24_7">"不分日夜照明"</string>
+    <string name="pref_title_authorized_username_summary">"認證帳號：%s"</string>
+    <string name="cannot_find_bbox_or_reduce_tilt">"在這裡無法掃描。請進一步放大或是傾斜地圖程度小點。"</string>
     <string name="quest_crossing_type_title">"這是哪種交叉口?"</string>
+    <string name="quest_crossing_type_signals">"有交通號誌的路口"</string>
+    <string name="quest_crossing_type_uncontrolled">"無交通號誌控制的路口"</string>
+    <string name="quest_crossing_type_unmarked">"無道路標記的路口"</string>
     <string name="compass_north_one_letter">"北"</string>
+    <string name="action_undo">"復原"</string>
+    <string name="no_changes_to_undo">"沒有可以復原的動作"</string>
+    <string name="undo_confirm_title">"復原上個回答？"</string>
     <string name="produce_mangosteen">"山竹"</string>
     <string name="produce_tomatoes">"番茄"</string>
     <string name="produce_areca_nuts">"檳榔"</string>
@@ -388,7 +396,9 @@
     <string name="quest_parkingType_underground">"地下停車場"</string>
     <string name="quest_parkingType_multiStorage">"停車場"</string>
     <string name="quest_toiletAvailability_name_title">"%s有洗手間嗎?"</string>
+    <string name="quest_powerPolesMaterial_title">"電線桿的材質是？"</string>
     <string name="quest_powerPolesMaterial_wood">"木頭"</string>
     <string name="quest_powerPolesMaterial_metal">"鋼鐵"</string>
     <string name="quest_powerPolesMaterial_concrete">"水泥"</string>
+    <string name="quest_maxspeed_answer_advisory_speed_limit">"只是建議速度限制"</string>
 </resources>

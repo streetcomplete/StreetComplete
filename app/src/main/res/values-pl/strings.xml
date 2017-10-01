@@ -396,4 +396,11 @@ W przeciwnym wypadku możesz ściągnąć dodatkowe aplikacje klawiatury ze skle
     <string name="quest_powerPolesMaterial_metal">"Stal"</string>
     <string name="quest_powerPolesMaterial_concrete">"Beton"</string>
     <string name="quest_maxspeed_answer_advisory_speed_limit">"Tylko sugerowana prędkość maksymalna"</string>
+    <string name="quest_address_answer_house_name">"Nie ma numeru, tylko nazwę"</string>
+    <string name="quest_address_house_name_label">"Nazwa budynku:"</string>
+    <string name="quest_buildingLevels_roofLevelsLabel2">"kondygnacje w poddaszu"</string>
+    <string name="quest_buildingLevels_levelsLabel2">"zwykłe kondygnacje (bez poddasza)"</string>
+    <string name="pref_title_authorized_summary">"Autoryzowany"</string>
+    <string name="quest_buildingLevels_answer_multipleLevels">"inaczej w różnych częściach budynku"</string>
+    <string name="quest_buildingLevels_answer_description">"W takim razie po prostu wpisz wartość najwyżej części budynku."</string>
 </resources>

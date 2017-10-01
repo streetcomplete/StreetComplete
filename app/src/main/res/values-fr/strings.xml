@@ -419,7 +419,7 @@ Sinon, vous pouvez télécharger un autre clavier dans la boutique d'application
     <string name="quest_crossing_type_uncontrolled">"Passage piétons non protégé"</string>
     <string name="quest_crossing_type_unmarked">"Passage piétons sans marquage"</string>
     <string name="compass_north_one_letter">"N"</string>
-    <string name="action_undo">"Annuler"</string>
+    <string name="action_undo">"Confirmer"</string>
     <string name="no_changes_to_undo">"Rien à annuler"</string>
     <string name="undo_confirm_title">"Annuler la dernière réponse ?"</string>
     <string name="produce_mangosteen">"Mangoustan"</string>

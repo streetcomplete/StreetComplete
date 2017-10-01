@@ -409,4 +409,11 @@ Andernfalls kannst Du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="quest_powerPolesMaterial_metal">"Stahl"</string>
     <string name="quest_powerPolesMaterial_concrete">"Beton"</string>
     <string name="quest_maxspeed_answer_advisory_speed_limit">"Nur eine Richtgeschwindigkeit"</string>
+    <string name="quest_address_answer_house_name">"Keine Nummer aber ein Hausname"</string>
+    <string name="quest_address_house_name_label">"Hausname:"</string>
+    <string name="quest_buildingLevels_roofLevelsLabel2">"Dachgeschosse"</string>
+    <string name="quest_buildingLevels_levelsLabel2">"Stockwerke"</string>
+    <string name="pref_title_authorized_summary">"Autorisiert"</string>
+    <string name="quest_buildingLevels_answer_multipleLevels">"Je nach Gebäudeteil verschieden"</string>
+    <string name="quest_buildingLevels_answer_description">"In diesem Fall sollen einfach die Werte für den höchsten Gebäudeteil eingegeben werden."</string>
 </resources>

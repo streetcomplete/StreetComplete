@@ -27,7 +27,7 @@
     <string name="quest_generic_confirmation_no">"Podívám se"</string>
     <string name="quest_generic_error_field_empty">"Toto pole jste nechali prázdné"</string>
     <string name="quest_leave_new_note_title">"Napsat poznámku?"</string>
-    <string name="quest_leave_new_note_description">"Můžete na tomto místě nechat veřejnou poznámku, ke které můžou další uživatelé posílat komentáře a doufejme, že i vyřešit:"</string>
+    <string name="quest_leave_new_note_description">"Zde můžete nechat veřejnou poznámku, ke které můžou další uživatelé posílat komentáře a doufejme, že i vyřešit:"</string>
     <string name="quest_leave_new_note_yes">"OK"</string>
 
     <!-- Is this mean somethimg ike "I don't want to write note, just hide quest"? -->
@@ -402,4 +402,13 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_powerPolesMaterial_metal">"Ocelový"</string>
     <string name="quest_powerPolesMaterial_concrete">"Betonový"</string>
     <string name="quest_maxspeed_answer_advisory_speed_limit">"Jen doporučená rychlost"</string>
+    <string name="quest_address_answer_house_name">"Budova nemá číslo, ale jméno"</string>
+    <string name="quest_address_house_name_label">"Jméno budovy:"</string>
+    <string name="quest_buildingLevels_roofLevelsLabel2">"patra ve střeše"</string>
+    <string name="quest_buildingLevels_levelsLabel2">"normální patra (bez střechy)"</string>
+    <string name="pref_title_authorized_summary">"Autorizováno"</string>
+
+    <!-- Could you write example, how is this used, plese? -->
+    <string name="quest_buildingLevels_answer_multipleLevels">"liší se podle části budovy"</string>
+    <string name="quest_buildingLevels_answer_description">"V tom případě vložte hodnoty pro nejvyšší část budovy."</string>
 </resources>
