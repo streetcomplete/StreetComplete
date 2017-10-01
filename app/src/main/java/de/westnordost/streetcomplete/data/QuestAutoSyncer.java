@@ -131,13 +131,6 @@ public class QuestAutoSyncer implements LocationListener, LostApiClient.Connecti
 		if(!isAllowedByPreference()) return;
 		if(!isConnected) return;
 		questController.upload();
-		triggerDelayedClosingOfChangesets();
-	}
-
-	private void triggerDelayedClosingOfChangesets()
-	{
-		ChangesetAutoCloserJob.scheduleJob();
-
 	}
 
 	private boolean updateConnectionState()
