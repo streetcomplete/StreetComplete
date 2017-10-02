@@ -103,7 +103,7 @@ dependencies {
     compile 'com.mapzen.android:lost:3.0.3'
 
     // config files
-    compile 'com.esotericsoftware.yamlbeans:yamlbeans:1.11'
+    compile 'com.esotericsoftware.yamlbeans:yamlbeans:1.12'
 }
 
 task generateMetadata(type: Exec) {
