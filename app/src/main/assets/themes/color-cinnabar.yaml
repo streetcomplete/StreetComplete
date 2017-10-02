@@ -1,0 +1,155 @@
+global:
+    #
+    #label styling
+    text_fill:              [0.200,0.200,0.200]     # DARK GRAY
+    text_fill2:             [0.000,0.000,0.000]     # BLACK
+    text_fill_road_e:       [0.333,0.333,0.333]     # DARK GRAY
+    text_fill_exits:        '#D16768'               # motorway junctions, highway_casing1
+    text_fill_address:      [0.667,0.667,0.667]     # GRAY
+    text_fill_water:        '#4c89b5'               # blue
+    text_fill_park:         '#43a254'               # green
+    text_fill_beach:        '#99905c'               # green
+    text_fill_piste:        [0.267,0.267,0.267]     # dark gray
+    text_fill_shield:       [0.308,0.308,0.308]     # road shield fill color
+    text_fill_shield2:      [0.508,0.508,0.508]     # road shield fill color
+    text_fill_landuse:      [0.400,0.400,0.400]
+    text_stroke:            '#e4e1de'               # land color
+    text_stroke_water:      [0.900,0.900,0.900]     # water stroke color
+    text_stroke_building:   [0.850,0.850,0.850]     # buildings stroke color
+    text_stroke_address:    [0.800,0.800,0.800]     # address stroke color
+    text_stroke_road1:      '#f8c2c2'               # road stroke color highway
+    text_stroke_road2:      '#fbf2f2'               # road stroke color major road
+    text_stroke_road3:      '#f8d8d9'               # road stroke color major road route
+    text_stroke_road4:      [1.000,1.000,1.000]     # road stroke color minor road
+    text_stroke_transit:    [1.000,1.000,1.000]
+    text_fill_region:       [0.400,0.400,0.400]     # region labels
+    text_fill_pois:         [0.200,0.200,0.200]
+    text_fill_pois2:        [0.600,0.600,0.600]
+    text_font_family:       'Open Sans'             # branding in asperational Unicode, yo (or Helvetica)
+    #
+    # roads:
+    highway1:                   '#f8c2c2'
+    highway1_e:                 '#eeb1b1'
+    highway_link1:              '#D19596'
+    highway_casing1:            '#D16768'
+    highway_tunnel1:            '#D19596'           #85%
+    highway_tunnel_casing1:     [0.300,0.300,0.300] #95%
+    ferry1:                     '#7caacb'
+    rail1:                      [0.467,0.467,0.467]
+    rail1_e:                    [0.733,0.733,0.733]
+    rail2:                      [0.950,0.950,0.950] # less important rail (service, sidings)
+    major_road1:                '#fbf2f2'           #80%
+    major_road1b:               '#faeeee'           #10%
+    major_road2:                [1.000,1.000,1.000]
+    major_road3:                [1.000,1.000,1.000]
+    major_road4:                [1.000,1.000,1.000]
+    major_road5:                '#e3989a'
+    major_casing1:              '#d19596'           # same as highway_casing1
+    major_casing2:              '#d19596'           # zoomed out
+    major_tunnel1:              grey                # light orange (major_route1)
+    major_tunnel_casing1:       [0.300,0.300,0.300]
+    major_route1:               '#f8d8d9'
+    major_route2:               '#e3989a'           # zoomed out
+    minor_route:                '#d19596'           # same as major_route
+    minor_road1:                [1.000,1.000,1.000] # natural earth
+    minor_road2:                [1.000,1.000,1.000] # natural earth, same as major_road2
+    minor_road3:                [1.000,1.000,1.000]
+    minor_casing1:              [1.000,1.000,1.000] # same as highway_casing1
+    minor_casing2:              grey                # zoomed out
+    minor_tunnel1:              [1.000,1.000,1.000]
+    minor_tunnel_casing1:       [0.300,0.300,0.300]
+    service_road:               [1.000,1.000,1.000]
+    service_road_casing:        grey
+    path1:                      [1.000,1.000,1.000]
+    path_casing1:               [0.750,0.750,0.750]
+    path_bridge_casing1:        black
+    path_bridge_casing2:        grey                # zoomed out
+    path_steps1:                [0.794,0.815,0.667]
+    path_steps2:                '#e3e2e0'
+    piste_easy:                 '#d0d0d0'
+    piste_intermediate:         '#d0d0d0'
+    piste_advanced:             '#b3b3b3'
+    piste_expert:               '#a6a6a6'
+    runway:                     orange
+    arrows:                     [0.766,0.705,0.706]
+    taxiway:                    '#ffc52a'
+    runway:                     orange
+    earth1_r:                   [0.400,0.400,0.400] # land color road
+    green1_r:                   '#bddec5'           # park roads
+    green2_r:                   [0.700,0.700,0.700] # cemetery road
+    hospital_r:                 [0.788,0.708,0.708] # hospital roads
+    university_r:               '#cec1b2'           # university roads
+
+    # boundaries:
+    country_boundary:           [1.000,1.000,1.000]
+    region_boundary:            [0.933,0.933,0.933]
+    subregion_boundary:         [0.933,0.933,0.933]
+    city_wall:                  '#ccb38f'
+    retaining_wall:             [0.902,0.769,0.647]
+    snow_fence:                 '#d9c4a5'
+    fence:                      [0.333,0.333,0.333]
+
+    #areas:
+    scene1:             [1.000,1.000,1.000]     # map background, water
+    water1:             '#9dc3de'               # water
+    water2:             [0.750,0.750,0.750]     # playa
+    water1_o:           '#9dc3de'               # water stroke
+    water2_o:           '#9dc3de'               # water stroke 2
+    earth1:             [0.890,0.886,0.878]     # land color
+    urban1:             '#d8d3ca'               # urban early
+    urban_v:            true                    # urban early visibility
+    green1:             '#aed0b6'               # park (national park, local parks)
+    green1_b:           '#9caca0'               # park buildings
+    green1_bo:          [0.414,0.457,0.425]     # park building outlines
+    green1_w:           '#b7d7bf'               # wilderness area
+    green2:             [0.722,0.824,0.749]     # cemetery
+    green2_b:           '#9caca0'               # cemetery, zoo buildings
+    green2_bo:          [0.200,0.200,0.200]     # cemetery, zoo building outline
+    golf_course:        '#b8d2bf'               # golf course
+    farm:               [0.861,0.896,0.870]     # farm faint
+    farm_v:             false                   # farm faint
+    pitch_o:            [0.580,0.835,0.624]    # pitch outline
+    park_forest:        '#bddec5'               # forest, parks, national park
+    sports_centre:      '#c7d4c0'               # sports_centre
+    zoo:            '#d8ddd0'               # minor zoo related AOIs
+    zoo_o:          '#aec7b5'               # minor zoo related AOIs outline
+    industrial:         [0.820,0.820,0.820]
+    grass:              [0.584,0.843,0.792]     # grass (common areas)
+    orange1:            '#bfb08e'               # stadium
+    orange2:            [0.847,0.800,0.690]     # pitch (play field)
+    orange3:            '#b9a597'               # racetrack (play field)
+    university:                 '#D9CFC3'
+    university_b:       '#b1aca4'               # university buildings
+    university_bo:      [0.300,0.300,0.300]     # university building outlines]
+    chairlift:          [0.300,0.300,0.300]
+    school:             '#D9CFC3'               # school
+    playground:         [0.930,0.761,0.539]     # playground
+    hospital:           '#d9c3c3'               # hospital
+    hospital_b:         '#b5a7a7'               # hospital buildings
+    hospital_bo:        [0.300,0.300,0.300]     # hospital building outlines
+    grey1:              [0.843,0.843,0.843]     # retail, airport apron, parking, church
+    grey1_e:            [0.792,0.792,0.792]     # retail, airport apron, parking, church early zoom 14
+    grey1_v:            true                    # retail, airport apron, parking, church
+    grey6:              [0.820,0.820,0.820]     # industrial
+    grey6_b:            [0.700,0.700,0.700]     # industrial buildings
+    grey2:              [0.200,0.200,0.200]     # industrial building outlines
+    grey7:              [0.925,0.922,0.914]     # pedestrian, match minor road / path color
+    grey7_v:            true                    # pedestrian visibility
+    grey8:              '#ecebe9'               # winter sports
+    grey8_v:            true                    # winter sports visibility
+    platform:           [0.569,0.690,0.722,0.5] # transit platform
+    platform_o:         [0.500,0.500,0.500]     # transit platform outline
+    platform_v:         true                    # transit platform visibility
+    tourism:            [0.831,0.800,0.902]     # generic major landuse (theme park, resort, aquarium, winery)
+    minor_landuse:      [0.843,0.843,0.843]     # generic minor landuse (attraction, artwork)
+    purple:             '#d2d1cd'               # airport
+    purple_v:           true                    # airport visibility
+    airport_b:          [0.761,0.765,0.769]     # airport buildings
+    airport_bo:         [0.588,0.592,0.596]     # airport buildings outline
+    recreation:         [0.851,0.843,0.765]     # recreation ground
+    beach:              [0.906,0.929,0.659]     # beach
+    building1:          [0.800,0.800,0.800]     # building
+    building2:          [0.600,0.600,0.600]     # building stroke
+    sdk_building_extrude:  true                 # building extrude
+    building_extrude_height: |                  # building extrude height logic
+        function() { return feature.height || 20; }
