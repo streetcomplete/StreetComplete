@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.text.TextUtils;
@@ -46,6 +47,29 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 			ElementGeometryTable.Columns.ELEMENT_ID +
 			")" +
 			");";
+
+	private static final String OSM_QUESTS_TABLE_CREATE_DB_VERSION_3 =
+			"CREATE TABLE " + OsmQuestTable.NAME + " (" +
+				OsmQuestTable.Columns.QUEST_ID +		" INTEGER		PRIMARY KEY, " +
+				OsmQuestTable.Columns.QUEST_TYPE +		" varchar(255)	NOT NULL, " +
+				OsmQuestTable.Columns.QUEST_STATUS +	" varchar(255)	NOT NULL, " +
+				OsmQuestTable.Columns.TAG_CHANGES +		" blob, " + // null if no changes
+				OsmQuestTable.Columns.LAST_UPDATE + 	" int			NOT NULL, " +
+				OsmQuestTable.Columns.ELEMENT_ID +		" int			NOT NULL, " +
+				OsmQuestTable.Columns.ELEMENT_TYPE +	" varchar(255)	NOT NULL, " +
+			"CONSTRAINT same_osm_quest UNIQUE (" +
+				OsmQuestTable.Columns.QUEST_TYPE + ", " +
+				OsmQuestTable.Columns.ELEMENT_ID + ", " +
+				OsmQuestTable.Columns.ELEMENT_TYPE +
+			"), " +
+			"CONSTRAINT element_key FOREIGN KEY (" +
+				OsmQuestTable.Columns.ELEMENT_TYPE + ", " + OsmQuestTable.Columns.ELEMENT_ID +
+			") REFERENCES " + ElementGeometryTable.NAME + " (" +
+				ElementGeometryTable.Columns.ELEMENT_TYPE + ", " +
+				ElementGeometryTable.Columns.ELEMENT_ID +
+			")" +
+			");";
+
 
 	private static final String OSM_QUESTS_TABLE_CREATE =
 			"CREATE TABLE " + OsmQuestTable.NAME + OSM_QUESTS_CREATE_PARAMS;
@@ -235,7 +259,7 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 			String tableName = OsmQuestTable.NAME;
 			String oldTableName = tableName + "_old";
 			db.execSQL("ALTER TABLE " + tableName + " RENAME TO " + oldTableName );
-			db.execSQL(OSM_QUESTS_TABLE_CREATE);
+			db.execSQL(OSM_QUESTS_TABLE_CREATE_DB_VERSION_3);
 			String allColumns = TextUtils.join(",", OsmQuestTable.Columns.ALL_DB_VERSION_3);
 			db.execSQL("INSERT INTO " + tableName + "(" + allColumns + ") " +
 					   " SELECT " + allColumns + " FROM " + oldTableName);
@@ -249,8 +273,11 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 
 		if(oldVersion < 4 && newVersion >= 4)
 		{
-			db.execSQL("ALTER TABLE " + OsmQuestTable.NAME + " ADD COLUMN " +
-					OsmQuestTable.Columns.CHANGES_SOURCE +	" varchar(255);");
+			if(!tableHasColumn(db, OsmQuestTable.NAME, OsmQuestTable.Columns.CHANGES_SOURCE))
+			{
+				db.execSQL("ALTER TABLE " + OsmQuestTable.NAME + " ADD COLUMN " +
+						OsmQuestTable.Columns.CHANGES_SOURCE + " varchar(255);");
+			}
 			db.execSQL("UPDATE " + OsmQuestTable.NAME + " SET " +
 					OsmQuestTable.Columns.CHANGES_SOURCE + " = 'survey' WHERE " +
 					OsmQuestTable.Columns.CHANGES_SOURCE + " ISNULL;");
@@ -282,5 +309,29 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 		{
 			extension.onUpgrade(db, oldVersion, newVersion);
 		}
+	}
+
+
+	private static boolean tableHasColumn(SQLiteDatabase db, String tableName, String columnName)
+	{
+		Cursor cursor = db.rawQuery("PRAGMA table_info(" + tableName + ")", null);
+
+		try
+		{
+			if (cursor.moveToFirst())
+			{
+				while(!cursor.isAfterLast())
+				{
+					String name = cursor.getString(cursor.getColumnIndexOrThrow("name"));
+					if(columnName.equals(name)) return true;
+					cursor.moveToNext();
+				}
+			}
+		}
+		finally
+		{
+			cursor.close();
+		}
+		return false;
 	}
 }
