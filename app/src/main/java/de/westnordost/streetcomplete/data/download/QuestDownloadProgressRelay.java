@@ -4,6 +4,7 @@ import android.app.Notification;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
+import android.os.Build;
 
 import de.westnordost.streetcomplete.MainActivity;
 import de.westnordost.streetcomplete.ApplicationConstants;
@@ -41,6 +42,11 @@ public class QuestDownloadProgressRelay implements QuestDownloadProgressListener
 				.setContentTitle(ApplicationConstants.NAME)
 				.setContentText(service.getResources().getString(R.string.notification_downloading))
 				.setContentIntent(pendingIntent);
+
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+		{
+			notificationBuilder.setCategory(Notification.CATEGORY_PROGRESS);
+		}
 	}
 
 	@Override synchronized public void onStarted()
