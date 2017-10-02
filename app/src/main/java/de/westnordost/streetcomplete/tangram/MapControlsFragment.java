@@ -161,7 +161,7 @@ public class MapControlsFragment extends Fragment
 		compassNeedle.setOrientation(rotation, tilt);
 	}
 
-	public void onMapReady()
+	public void onMapInitialized()
 	{
 		setTrackingButtonActivated(mapFragment.isFollowingPosition());
 		trackingButton.setCompassMode(mapFragment.isCompassMode());

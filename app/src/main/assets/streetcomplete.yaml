@@ -1,6 +1,12 @@
 global:
     geometry_color: '#88536dfe' # location color + alpha
 
+textures:
+    quests:
+        url: ''
+        filtering: mipmap
+        sprites: {}
+
 styles:
     quest-icons:
         base: points

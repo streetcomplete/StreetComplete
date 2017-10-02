@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.graphics.Point;
 import android.graphics.PointF;
 import android.graphics.Rect;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.UiThread;
 
@@ -11,6 +12,8 @@ import com.mapzen.tangram.LabelPickResult;
 import com.mapzen.tangram.LngLat;
 import com.mapzen.tangram.MapController;
 import com.mapzen.tangram.MapData;
+import com.mapzen.tangram.SceneError;
+import com.mapzen.tangram.SceneUpdate;
 import com.mapzen.tangram.TouchInput;
 
 import java.util.Collection;
@@ -96,27 +99,27 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		questsLayer = geometryLayer = null;
 	}
 
-	protected void initMap()
+	@Override public void getMapAsync(String apiKey, @NonNull final String sceneFilePath)
 	{
-		super.initMap();
-
-		if(getActivity() == null) return;
-
-		retrievedTiles = new HashSet<>();
-
-		/*
-		TODO uncomment when https://github.com/tangrams/tangram-es/issues/1607 is fixed
-		List<SceneUpdate> sceneUpdates = spriteSheetCreator.get();
-		controller.queueSceneUpdate(sceneUpdates);
-		controller.applySceneUpdates();
-		*/
-
-		geometryLayer = controller.addDataLayer(GEOMETRY_LAYER);
-		questsLayer = controller.addDataLayer(QUESTS_LAYER);
+		super.getMapAsync(apiKey, sceneFilePath);
 
 		controller.setTapResponder(this);
 		controller.setLabelPickListener(this);
 		controller.setPickRadius(1);
+
+		List<SceneUpdate> sceneUpdates = spriteSheetCreator.get();
+		controller.updateSceneAsync(sceneUpdates);
+
+		retrievedTiles = new HashSet<>();
+	}
+
+	@Override public void onSceneReady(int sceneId, SceneError sceneError)
+	{
+		super.onSceneReady(sceneId, sceneError);
+		if (getActivity() == null) return;
+
+		geometryLayer = controller.addDataLayer(GEOMETRY_LAYER);
+		questsLayer = controller.addDataLayer(QUESTS_LAYER);
 	}
 
 	@Override public boolean onSingleTapUp(float x, float y)

@@ -11,6 +11,7 @@ import android.hardware.SensorManager;
 import android.location.Location;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.annotation.CallSuper;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v13.app.FragmentCompat;
@@ -49,7 +50,7 @@ public class MapFragment extends Fragment implements
 		FragmentCompat.OnRequestPermissionsResultCallback, LocationListener,
 		LostApiClient.ConnectionCallbacks, TouchInput.ScaleResponder,
 		TouchInput.ShoveResponder, TouchInput.RotateResponder,
-		TouchInput.PanResponder, TouchInput.DoubleTapResponder, CompassComponent.Listener
+		TouchInput.PanResponder, TouchInput.DoubleTapResponder, CompassComponent.Listener, MapController.SceneLoadListener
 {
 	private CompassComponent compass = new CompassComponent();
 
@@ -75,16 +76,9 @@ public class MapFragment extends Fragment implements
 
 	private MapControlsFragment mapControls;
 
-	private Listener listener;
-
 	private String apiKey;
 
 	private boolean isShowingDirection;
-
-	public interface Listener
-	{
-		void onMapReady();
-	}
 
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
 									   Bundle savedInstanceState)
@@ -117,33 +111,40 @@ public class MapFragment extends Fragment implements
 		getMapAsync(apiKey, "scene.yaml");
 	}
 
-	public void getMapAsync(String apiKey, @NonNull final String sceneFilePath)
+	@CallSuper public void getMapAsync(String apiKey, @NonNull final String sceneFilePath)
 	{
 		this.apiKey = apiKey;
-		controller = mapView.getMap(new MapController.SceneLoadListener()
-		{
-			@Override public void onSceneReady(int sceneId, SceneError sceneError)
-			{
-				initMap();
-			}
-		});
-		controller.loadSceneFile(sceneFilePath);
-	}
 
-	protected void initMap()
-	{
-		if(getActivity() == null) return;
-
-		updateMapTileCacheSize();
-		controller.setHttpHandler(httpHandler);
-		restoreMapState();
-
+		controller = mapView.getMap(this);
 		controller.setRotateResponder(this);
 		controller.setShoveResponder(this);
 		controller.setScaleResponder(this);
 		controller.setPanResponder(this);
 		controller.setDoubleTapResponder(this);
+		updateMapTileCacheSize();
+		controller.setHttpHandler(httpHandler);
 
+		restoreMapState();
+
+		compass.setListener(this);
+		mapControls.onMapInitialized();
+
+		controller.loadSceneFile(sceneFilePath);
+	}
+
+
+	@CallSuper @Override public void onSceneReady(int sceneId, SceneError sceneError)
+	{
+		if(getActivity() == null) return;
+
+		initMarkers();
+		followPosition();
+		showLocation();
+		updateView();
+	}
+
+	private void initMarkers()
+	{
 		locationMarker = controller.addMarker();
 		BitmapDrawable dot = createBitmapDrawableFrom(R.drawable.location_dot);
 		locationMarker.setStylingFromString("{ style: 'points', color: 'white', size: ["+TextUtils.join(",",sizeInDp(dot))+"], order: 2000, flat: true, collide: false }");
@@ -159,16 +160,6 @@ public class MapFragment extends Fragment implements
 		accuracyMarker = controller.addMarker();
 		accuracyMarker.setDrawable(createBitmapDrawableFrom(R.drawable.accuracy_circle));
 		accuracyMarker.setDrawOrder(1);
-
-		compass.setListener(this);
-
-		showLocation();
-		followPosition();
-
-		updateView();
-
-		listener.onMapReady();
-		mapControls.onMapReady();
 	}
 
 	private String[] sizeInDp(Drawable drawable)
@@ -510,7 +501,6 @@ public class MapFragment extends Fragment implements
 	@Override public void onAttach(Activity activity)
 	{
 		super.onAttach(activity);
-		listener = (Listener) activity;
 		compass.onCreate(
 				(SensorManager) activity.getSystemService(SENSOR_SERVICE),
 				activity.getWindowManager().getDefaultDisplay());

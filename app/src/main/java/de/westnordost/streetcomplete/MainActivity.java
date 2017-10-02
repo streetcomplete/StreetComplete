@@ -67,7 +67,6 @@ import de.westnordost.streetcomplete.quests.FindQuestSourceComponent;
 import de.westnordost.streetcomplete.settings.SettingsActivity;
 import de.westnordost.streetcomplete.statistics.AnswersCounter;
 import de.westnordost.streetcomplete.location.LocationState;
-import de.westnordost.streetcomplete.tangram.MapFragment;
 import de.westnordost.streetcomplete.tangram.QuestsMapFragment;
 import de.westnordost.streetcomplete.tools.CrashReportExceptionHandler;
 import de.westnordost.streetcomplete.util.SlippyMapMath;
@@ -79,7 +78,7 @@ import de.westnordost.osmapi.map.data.OsmElement;
 import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 
 public class MainActivity extends AppCompatActivity implements
-		OsmQuestAnswerListener, VisibleQuestListener, QuestsMapFragment.Listener, MapFragment.Listener
+		OsmQuestAnswerListener, VisibleQuestListener, QuestsMapFragment.Listener
 {
 	@Inject CrashReportExceptionHandler crashReportExceptionHandler;
 
@@ -791,13 +790,6 @@ public class MainActivity extends AppCompatActivity implements
 	private AbstractQuestAnswerFragment getQuestDetailsFragment()
 	{
 		return (AbstractQuestAnswerFragment) getFragmentManager().findFragmentByTag(BOTTOM_SHEET);
-	}
-
-	/* ---------- MapFragment.Listener ---------- */
-
-	@Override public void onMapReady()
-	{
-
 	}
 
 	/* ---------- QuestsMapFragment.Listener ---------- */
