@@ -2,13 +2,12 @@ package de.westnordost.streetcomplete.about;
 
 import android.app.Fragment;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.esotericsoftware.yamlbeans.YamlException;
@@ -23,7 +22,6 @@ import java.util.List;
 import java.util.Map;
 
 import de.westnordost.streetcomplete.R;
-import de.westnordost.streetcomplete.view.ListAdapter;
 
 public class CreditsFragment extends Fragment
 {
@@ -33,44 +31,25 @@ public class CreditsFragment extends Fragment
 	{
 		View view = inflater.inflate(R.layout.credits, container, false);
 
-		RecyclerView contributorCredits = view.findViewById(R.id.contributorCredits);
-		contributorCredits.setNestedScrollingEnabled(false);
-		contributorCredits.setLayoutManager(
-				new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-		contributorCredits.setAdapter(new ListAdapter<String>(readContributors())
+		LinearLayout contributorCredits = view.findViewById(R.id.contributorCredits);
+		for(String contributor : readContributors())
 		{
-			@Override public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
-			{
-				return new ViewHolder(LayoutInflater.from(getActivity()).inflate(
-						R.layout.credits_contributors_row, parent, false))
-				{
-					@Override protected void update(String with)
-					{
-						((TextView) itemView).setText(with);
-					}
-				};
-			}
-		});
+			TextView textView = new TextView(getActivity());
+			textView.setText(contributor);
+			contributorCredits.addView(textView, new LinearLayout.LayoutParams(
+					ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+		}
 
-		RecyclerView translationCredits = view.findViewById(R.id.translationCredits);
-		translationCredits.setNestedScrollingEnabled(false);
-		translationCredits.setLayoutManager(
-				new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-		translationCredits.setAdapter(new ListAdapter<Map.Entry<String,String>>(readTranslators())
+		LinearLayout translationCredits = view.findViewById(R.id.translationCredits);
+		for(Map.Entry<String,String> translatorsByLanguage : readTranslators())
 		{
-			@Override public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
-			{
-				return new ViewHolder(LayoutInflater.from(getActivity()).inflate(
-						R.layout.credits_translators_row, parent, false))
-				{
-					@Override protected void update(Map.Entry<String, String> with)
-					{
-						((TextView) itemView.findViewById(R.id.language)).setText(with.getKey());
-						((TextView) itemView.findViewById(R.id.contributors)).setText(with.getValue());
-					}
-				};
-			}
-		});
+			String language = translatorsByLanguage.getKey();
+			String translators = translatorsByLanguage.getValue();
+			View item = inflater.inflate(R.layout.credits_translators_row, translationCredits, false);
+			((TextView) item.findViewById(R.id.language)).setText(language);
+			((TextView) item.findViewById(R.id.contributors)).setText(translators);
+			translationCredits.addView(item);
+		}
 
 		TextView translationsCreditsMore = view.findViewById(R.id.translationCreditsMore);
 		translationsCreditsMore.setMovementMethod(LinkMovementMethod.getInstance());
