@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- API 18 and up understand soft hyphens in that they at least don't render them when not necessary -->
+    <string name="app_name" translatable="false">Street­Complete Dev</string>
+</resources>
