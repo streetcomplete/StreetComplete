@@ -23,7 +23,7 @@ public class AddWayLit extends SimpleOverpassQuestType
 			"primary", "secondary", "tertiary", "unclassified", "service",
 	};
 
-	private static final String[] LIT_WAYS = { "footway", "cycleway" };
+	private static final String[] LIT_WAYS = { "footway", "cycleway", "steps" };
 
 	@Inject public AddWayLit(OverpassMapDataDao overpassServer) { super(overpassServer); }
 
