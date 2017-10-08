@@ -237,7 +237,7 @@ public class ElementGeometryCreator
 		{
 			LatLon addLast = way.get(way.size() - 1);
 			LatLon toLast = polyWay.get(polyWay.size() - 1);
-			if(addLast == toLast)
+			if(addLast.equals(toLast))
 			{
 				// -1 to not add the last vertex because it has already been added
 				ListIterator<LatLon> it = way.listIterator(way.size()-1);
