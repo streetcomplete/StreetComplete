@@ -211,6 +211,7 @@ public class MapControlsFragment extends Fragment
 				{
 					@Override public void onLocation(Location location)
 					{
+						if(getActivity() == null) return;
 						trackingButton.setState(LocationState.UPDATING);
 						showUnglueHint();
 					}
