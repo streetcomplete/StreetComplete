@@ -145,22 +145,38 @@ public class MapFragment extends Fragment implements
 
 	private void initMarkers()
 	{
-		locationMarker = controller.addMarker();
-		BitmapDrawable dot = createBitmapDrawableFrom(R.drawable.location_dot);
-		locationMarker.setStylingFromString("{ style: 'points', color: 'white', size: ["+TextUtils.join(",",sizeInDp(dot))+"], order: 2000, flat: true, collide: false }");
-		locationMarker.setDrawable(dot);
-		locationMarker.setDrawOrder(3);
+		locationMarker = createLocationMarker(3);
+		directionMarker = createDirectionMarker(2);
+		accuracyMarker = createAccuracyMarker(1);
+	}
 
+	private Marker createLocationMarker(int order)
+	{
+		Marker marker = controller.addMarker();
+		BitmapDrawable dot = createBitmapDrawableFrom(R.drawable.location_dot);
+		marker.setStylingFromString("{ style: 'points', color: 'white', size: ["+TextUtils.join(",",sizeInDp(dot))+"], order: 2000, flat: true, collide: false }");
+		marker.setDrawable(dot);
+		marker.setDrawOrder(order);
+		return marker;
+	}
+
+	private Marker createDirectionMarker(int order)
+	{
 		BitmapDrawable directionImg = createBitmapDrawableFrom(R.drawable.location_direction);
 		directionMarkerSize = sizeInDp(directionImg);
 
-		directionMarker = controller.addMarker();
-		directionMarker.setDrawable(directionImg);
-		directionMarker.setDrawOrder(2);
+		Marker marker = controller.addMarker();
+		marker.setDrawable(directionImg);
+		marker.setDrawOrder(order);
+		return marker;
+	}
 
-		accuracyMarker = controller.addMarker();
-		accuracyMarker.setDrawable(createBitmapDrawableFrom(R.drawable.accuracy_circle));
-		accuracyMarker.setDrawOrder(1);
+	private Marker createAccuracyMarker(int order)
+	{
+		Marker marker = controller.addMarker();
+		marker.setDrawable(createBitmapDrawableFrom(R.drawable.accuracy_circle));
+		marker.setDrawOrder(order);
+		return marker;
 	}
 
 	private String[] sizeInDp(Drawable drawable)
