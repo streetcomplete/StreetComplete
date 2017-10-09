@@ -151,9 +151,10 @@ public class MapFragment extends Fragment implements
 		locationMarker.setDrawable(dot);
 		locationMarker.setDrawOrder(3);
 
-		directionMarker = controller.addMarker();
 		BitmapDrawable directionImg = createBitmapDrawableFrom(R.drawable.location_direction);
 		directionMarkerSize = sizeInDp(directionImg);
+
+		directionMarker = controller.addMarker();
 		directionMarker.setDrawable(directionImg);
 		directionMarker.setDrawOrder(2);
 
