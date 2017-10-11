@@ -18,6 +18,7 @@ import de.westnordost.streetcomplete.quests.note_discussion.NoteDiscussionForm;
 import de.westnordost.streetcomplete.settings.SettingsActivity;
 import de.westnordost.streetcomplete.settings.SettingsFragment;
 import de.westnordost.streetcomplete.statistics.AnswersCounter;
+import de.westnordost.streetcomplete.tangram.MapControlsFragment;
 import de.westnordost.streetcomplete.tangram.QuestsMapFragment;
 import de.westnordost.streetcomplete.util.SerializedSavedState;
 
@@ -48,4 +49,6 @@ public interface ApplicationComponent
 	void inject(AbstractQuestAnswerFragment abstractQuestAnswerFragment);
 
 	void inject(QuestsMapFragment questsMapFragment);
+
+	void inject(MapControlsFragment mapControlsFragment);
 }

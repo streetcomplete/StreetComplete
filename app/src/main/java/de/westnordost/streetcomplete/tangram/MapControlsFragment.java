@@ -4,8 +4,10 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.location.Location;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.LocalBroadcastManager;
 import android.view.LayoutInflater;
@@ -17,6 +19,10 @@ import android.widget.ImageButton;
 import com.github.florent37.viewtooltip.ViewTooltip;
 import com.mapzen.android.lost.api.LocationRequest;
 
+import javax.inject.Inject;
+
+import de.westnordost.streetcomplete.Injector;
+import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.location.LocationRequestFragment;
 import de.westnordost.streetcomplete.location.LocationState;
@@ -31,6 +37,8 @@ public class MapControlsFragment extends Fragment
 	private MapFragment mapFragment;
 	private CompassView compassNeedle;
 	private LocationStateButton trackingButton;
+
+	@Inject SharedPreferences prefs;
 
 	private BroadcastReceiver locationAvailabilityReceiver = new BroadcastReceiver()
 	{
@@ -48,6 +56,12 @@ public class MapControlsFragment extends Fragment
 			onLocationRequestFinished(state);
 		}
 	};
+
+	@Override public void onCreate(@Nullable Bundle savedInstanceState)
+	{
+		super.onCreate(savedInstanceState);
+		Injector.instance.getApplicationComponent().inject(this);
+	}
 
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
 									   Bundle savedInstanceState)
@@ -240,7 +254,8 @@ public class MapControlsFragment extends Fragment
 
 	private void showUnglueHint()
 	{
-		if(trackingButton.isActivated() && LocationUtil.isLocationOn(getActivity()))
+		int timesShown = prefs.getInt(Prefs.UNGLUE_HINT_TIMES_SHOWN, 0);
+		if(timesShown < 3 && trackingButton.isActivated() && LocationUtil.isLocationOn(getActivity()))
 		{
 			ViewTooltip.on(trackingButton)
 					.position(ViewTooltip.Position.LEFT)
@@ -248,6 +263,7 @@ public class MapControlsFragment extends Fragment
 					.color(getResources().getColor(R.color.colorTooltip))
 					.duration(3000)
 					.show();
+			prefs.edit().putInt(Prefs.UNGLUE_HINT_TIMES_SHOWN, timesShown + 1).apply();
 		}
 	}
 
