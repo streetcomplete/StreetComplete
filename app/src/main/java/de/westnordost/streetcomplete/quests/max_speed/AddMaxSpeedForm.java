@@ -144,7 +144,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 					{
 						@Override public void run()
 						{
-							askUrbanOrRural();
+							determineImplicitMaxspeedType(false);
 						}
 					});
 				}
@@ -156,7 +156,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 						{
 							@Override public void run()
 							{
-								applyNoSignAnswer("urban");
+								determineImplicitMaxspeedType(true);
 							}
 						});
 					}
@@ -166,7 +166,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 						{
 							@Override public void run()
 							{
-								applyNoSignAnswer("urban");
+								determineImplicitMaxspeedType(true);
 							}
 						});
 					}
@@ -211,6 +211,25 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 					setStreetSignLayout(getAdvisorySpeedLimitLayoutResourceId());
 				}
 			});
+		}
+	}
+
+	private void determineImplicitMaxspeedType(boolean isDefinitelyUrban)
+	{
+		if(getCountryInfo().getCountryCode().equals("GB"))
+		{
+			askSingleOrDualCarriageway();
+		}
+		else
+		{
+			if(isDefinitelyUrban)
+			{
+				applyNoSignAnswer("urban");
+			}
+			else
+			{
+				askUrbanOrRural();
+			}
 		}
 	}
 
@@ -282,6 +301,29 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 					public void onClick(DialogInterface dialog, int which)
 					{
 						applyNoSignAnswer("rural");
+					}
+				})
+				.show();
+	}
+
+	private void askSingleOrDualCarriageway()
+	{
+		new AlertDialogBuilder(getActivity())
+				.setMessage(R.string.quest_maxspeed_answer_noSign_singleOrDualCarriageway_description)
+				.setPositiveButton(R.string.quest_generic_hasFeature_yes, new DialogInterface.OnClickListener()
+				{
+					@Override
+					public void onClick(DialogInterface dialog, int which)
+					{
+						applyNoSignAnswer("nsl_dual");
+					}
+				})
+				.setNegativeButton(R.string.quest_generic_hasFeature_no, new DialogInterface.OnClickListener()
+				{
+					@Override
+					public void onClick(DialogInterface dialog, int which)
+					{
+						applyNoSignAnswer("nsl_single");
 					}
 				})
 				.show();

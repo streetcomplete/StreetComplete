@@ -19,11 +19,10 @@ public class AddMaxSpeed extends SimpleOverpassQuestType
 	@Override protected String getTagFilters()
 	{
 		return "ways with highway ~ " +
-		       "motorway|trunk|primary|secondary|tertiary|unclassified|residential and " +
-		       "!maxspeed and !source:maxspeed " +
-		       " and !maxspeed:forward and !maxspeed:backward " +
-		       // other tags that are used for basically the same thing as source:maxspeed
-		       " and !zone:maxspeed and !maxspeed:type and (access !~ private|no or (foot and foot !~ private|no))";
+		       "motorway|trunk|primary|secondary|tertiary|unclassified|residential" +
+		       " and !maxspeed and !maxspeed:forward and !maxspeed:backward" +
+		       " and !source:maxspeed and !zone:maxspeed and !maxspeed:type" + // implicit speed limits
+		       " and (access !~ private|no or (foot and foot !~ private|no))"; // no private roads
 	}
 
 	@Override public AbstractQuestAnswerFragment createForm()
