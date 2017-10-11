@@ -399,4 +399,5 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingLevels_answer_multipleLevels">differs per building part</string>
     <string name="quest_buildingLevels_answer_description">In this case, simply input the values of the highest building part.</string>
     <string name="unglue_hint">Tap to unglue view from position</string>
+    <string name="oauth_authorize_in_browser_explanation">You now need to authorize this app in your browser. On completion, it leads you back here.</string>
 </resources>
