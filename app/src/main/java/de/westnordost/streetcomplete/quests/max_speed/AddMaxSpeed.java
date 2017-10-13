@@ -14,6 +14,8 @@ import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 
 public class AddMaxSpeed extends SimpleOverpassQuestType
 {
+	private static final String MAXSPEED_TYPE = "maxspeed:type";
+
 	@Inject public AddMaxSpeed(OverpassMapDataDao overpassServer) { super(overpassServer); }
 
 	@Override protected String getTagFilters()
@@ -42,7 +44,7 @@ public class AddMaxSpeed extends SimpleOverpassQuestType
 		else if(advisory != null)
 		{
 			changes.add("maxspeed:advisory", advisory);
-			changes.add("source:maxspeed:advisory", "sign");
+			changes.add(MAXSPEED_TYPE+":advisory", "sign");
 		}
 		else
 		{
@@ -54,11 +56,11 @@ public class AddMaxSpeed extends SimpleOverpassQuestType
 			String roadtype = answer.getString(AddMaxSpeedForm.MAX_SPEED_IMPLICIT_ROADTYPE);
 			if (roadtype != null && country != null)
 			{
-				changes.add("source:maxspeed", country + ":" + roadtype);
+				changes.add(MAXSPEED_TYPE, country + ":" + roadtype);
 			}
 			else if (maxspeed != null)
 			{
-				changes.add("source:maxspeed", "sign");
+				changes.add(MAXSPEED_TYPE, "sign");
 			}
 		}
 	}
