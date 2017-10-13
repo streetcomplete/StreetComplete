@@ -34,7 +34,6 @@ import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.OsmModule;
 import de.westnordost.streetcomplete.util.InlineAsyncTask;
-import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 import oauth.signpost.OAuthConsumer;
 import oauth.signpost.OAuthProvider;
 
@@ -43,7 +42,7 @@ public class OsmOAuthDialogFragment extends DialogFragment
 	public static final String TAG = "OsmOAuthDialogFragment";
 
 	// for loading and saving from bundle
-	private static final String	CONSUMER = "consumer", STATE = "state", AUTH_URL = "auth_url";
+	private static final String	CONSUMER = "consumer", STATE = "state";
 
 	public static final List<String> REQUIRED_PERMISSIONS = Arrays.asList(
 			Permission.READ_PREFERENCES_AND_USER_DETAILS,
@@ -80,14 +79,12 @@ public class OsmOAuthDialogFragment extends DialogFragment
 	{
 		INITIAL,
 		RETRIEVING_REQUEST_TOKEN,
-		RETRIEVED_REQUEST_TOKEN,
 		AUTHENTICATING_IN_BROWSER,
 		AUTHENTICATED_FROM_BROWSER,
 		RETRIEVING_ACCESS_TOKEN,
 		POST_AUTHORIZATION,
 		CANCELLED
 	}
-	private String authorizeUrl;
 
 	@Override public void onCreate(@Nullable Bundle inState)
 	{
@@ -98,7 +95,6 @@ public class OsmOAuthDialogFragment extends DialogFragment
 		{
 			consumer = (OAuthConsumer) inState.getSerializable(CONSUMER);
 			state = State.valueOf(inState.getString(STATE));
-			authorizeUrl = inState.getString(AUTH_URL);
 		}
 		else
 		{
@@ -142,7 +138,6 @@ public class OsmOAuthDialogFragment extends DialogFragment
 	{
 		outState.putSerializable(CONSUMER, consumer);
 		outState.putString(STATE, state.toString());
-		outState.putString(AUTH_URL, authorizeUrl);
 		super.onSaveInstanceState(outState);
 	}
 
@@ -168,10 +163,6 @@ public class OsmOAuthDialogFragment extends DialogFragment
 		{
 			state = State.RETRIEVING_REQUEST_TOKEN;
 			new RetrieveRequestTokenTask().execute();
-		}
-		else if(state == State.RETRIEVED_REQUEST_TOKEN)
-		{
-			authorizeInBrowser();
 		}
 		else if(state == State.AUTHENTICATED_FROM_BROWSER)
 		{
@@ -216,20 +207,22 @@ public class OsmOAuthDialogFragment extends DialogFragment
 
 	/* ---------------------------------------------------------------------------------------- */
 
-	private class RetrieveRequestTokenTask extends InlineAsyncTask<String>
-	{
+	private class RetrieveRequestTokenTask extends InlineAsyncTask<String> {
+
 		@Override protected String doInBackground() throws Exception
 		{
 			return provider.retrieveRequestToken(consumer, CALLBACK_URL);
 		}
 
-		@Override public void onSuccess(String url)
+		@Override public void onSuccess(String authorizeUrl)
 		{
 			if(getActivity() == null || state == State.CANCELLED) return;
 
-			state = State.RETRIEVED_REQUEST_TOKEN;
-			authorizeUrl = url;
-			authorizeInBrowser();
+			Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(authorizeUrl));
+			intent.putExtra(Browser.EXTRA_APPLICATION_ID, getActivity().getPackageName());
+			intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+			startActivity(intent);
+			state = State.AUTHENTICATING_IN_BROWSER;
 		}
 
 		@Override public void onError(Exception e)
@@ -238,28 +231,8 @@ public class OsmOAuthDialogFragment extends DialogFragment
 		}
 	}
 
-	private void authorizeInBrowser()
-	{
-		new AlertDialogBuilder(getActivity())
-				.setMessage(R.string.oauth_authorize_in_browser_explanation)
-				.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener()
-				{
-					@Override public void onClick(DialogInterface dialogInterface, int i)
-					{
-						if(getActivity() == null) return;
-						Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(authorizeUrl));
-						intent.putExtra(Browser.EXTRA_APPLICATION_ID, getActivity().getPackageName());
-						intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-						startActivity(intent);
-						state = State.AUTHENTICATING_IN_BROWSER;
-					}
-				})
-				.setCancelable(false)
-				.show();
-	}
+	private class RetrieveAccessTokenTask extends InlineAsyncTask<Boolean> {
 
-	private class RetrieveAccessTokenTask extends InlineAsyncTask<Boolean>
-	{
 		@Override protected Boolean doInBackground() throws Exception
 		{
 			provider.retrieveAccessToken(consumer, verifier);
@@ -288,8 +261,8 @@ public class OsmOAuthDialogFragment extends DialogFragment
 		}
 	}
 
-	private class PostAuthorizationTask extends InlineAsyncTask<Void>
-	{
+	private class PostAuthorizationTask extends InlineAsyncTask<Void> {
+
 		@Override protected Void doInBackground() throws Exception
 		{
 			UserDetails userDetails = new UserDao(osmConnection).getMine();

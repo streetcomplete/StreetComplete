@@ -19,7 +19,7 @@
         <Preference
             android:key="oauth"
             android:title="@string/pref_title_authorization"
-            android:summary="@string/pref_title_not_authorized_summary"
+            android:summary="@string/pref_title_not_authorized_summary2"
             android:persistent="true"
             />
 

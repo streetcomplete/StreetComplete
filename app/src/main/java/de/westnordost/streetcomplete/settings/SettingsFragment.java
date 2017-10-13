@@ -68,7 +68,7 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
 		}
 		else
 		{
-			oauth.setSummary(R.string.pref_title_not_authorized_summary);
+			oauth.setSummary(R.string.pref_title_not_authorized_summary2);
 		}
 	}
 
