@@ -125,15 +125,16 @@ public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 					@Override public void run()
 					{
 						answer.putString(HOUSENUMBER, input);
+						applyFormAnswer(answer);
 					}
 				});
 			}
 			else
 			{
 				answer.putString(HOUSENUMBER, input);
+				applyFormAnswer(answer);
 			}
 		}
-		applyFormAnswer(answer);
 	}
 
 	private String getValidHousenumberRegex()
