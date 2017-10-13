@@ -67,6 +67,7 @@ public class QuestModule
 
 				// ↓ 6. useful data that is used by some data consumers
 				new AddSport(o),
+				new AddBikeParkingCapacity(o), // cycle map layer on osm.org
 				new AddOrchardProduce(o),
 				new AddCrossingType(o),
 				new AddBuildingLevels(o),
@@ -83,7 +84,6 @@ public class QuestModule
 
 				// ↓ 8. defined in the wiki, but not really used by anyone yet. Just collected for
 				//      the sake of mapping it in case it makes sense later
-				new AddBikeParkingCapacity(o),
 				new AddBikeParkingCover(o),
 				new AddToiletsFee(o),
 				new AddBabyChangingTable(o),
