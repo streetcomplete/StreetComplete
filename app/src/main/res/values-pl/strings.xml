@@ -403,4 +403,5 @@ W przeciwnym wypadku możesz ściągnąć dodatkowe aplikacje klawiatury ze skle
     <string name="pref_title_authorized_summary">"Autoryzowany"</string>
     <string name="quest_buildingLevels_answer_multipleLevels">"inaczej w różnych częściach budynku"</string>
     <string name="quest_buildingLevels_answer_description">"W takim razie po prostu wpisz wartość najwyżej części budynku."</string>
+    <string name="unglue_hint">"Dotknij, by umożliwić przesuwanie mapy"</string>
 </resources>

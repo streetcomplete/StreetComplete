@@ -280,15 +280,15 @@ De informatie die je ingeeft wordt meteen toegevoegd aan OpenStreetMap in jouw n
     <string name="quest_wheelchairAccess_limited">"Gedeeltelijk"</string>
     <string name="quest_bikeParkingCapacity_hint">"Let op dat bij de meeste fietsenrekken van 2 kanten fietsens geparkeerd kunnen worden"</string>
     <string name="quest_sport_roller_skating">"Rolschaatsen"</string>
-    <string name="quest_wheelchairAccess_bus_station_title">"Is dit busstation rolstel toegankelijk?"</string>
-    <string name="quest_wheelchairAccess_subway_entrance_title">"Is deze metroingang rolsteltoegankelijk?"</string>
+    <string name="quest_wheelchairAccess_bus_station_title">"Is dit busstation rolstoel toegankelijk?"</string>
+    <string name="quest_wheelchairAccess_subway_entrance_title">"Is deze metro-ingang rolsteltoegankelijk?"</string>
     <string name="quest_wheelchairAccess_railway_station_title">"Is dit treinstation rolstoel toegankelijk? "</string>
     <string name="quest_wheelchairAccess_location_title">"Is deze locatie rolstoel toegankelijk?"</string>
     <string name="quest_wheelchairAccess_bus_station_name_title">"Is het busstation “%s” rolstoel toegankelijk?"</string>
-    <string name="quest_wheelchairAccess_subway_entrance_name_title">"Is de metroingang “%s” rolstoel toegankelijk?"</string>
+    <string name="quest_wheelchairAccess_subway_entrance_name_title">"Is de metro-ingang “%s” rolstoel toegankelijk?"</string>
     <string name="quest_wheelchairAccess_railway_station_name_title">"Is het treinstation “%s” rolstoel toegankelijk?"</string>
     <string name="quest_wheelchairAccess_location_name_title">"Is de locatie “%s” rolstoel toegankelijk?"</string>
-    <string name="quest_wheelchairAccess_limited_description_business">"\"Gedeeltelijk\" is wanneer er niet meer dan één tree opstap is om het gebouw binne tegaan en dat de meeste ruimtes binne rolstoel toegankelijk is. "</string>
+    <string name="quest_wheelchairAccess_limited_description_business">"\"Gedeeltelijk\" is wanneer er niet meer dan één tree opstap is om het gebouw binnen tegaan en dat de meeste ruimtes binnen rolstoel toegankelijk zijn. "</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"\"Gedeeltelijk\" is wanneer er niet meer dan één tree opstap om naar binnen te gaan."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Afkorting in de naam “%s”?"</string>
     <string name="quest_baby_changing_table_toilets_title">"Heeft dit toilet een baby verschoontafel?"</string>
@@ -402,4 +402,12 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire keybor
     <string name="quest_powerPolesMaterial_metal">"Staal"</string>
     <string name="quest_powerPolesMaterial_concrete">"Beton"</string>
     <string name="quest_maxspeed_answer_advisory_speed_limit">"Enkel een geadviseerde snelheidslimiet"</string>
+    <string name="quest_address_answer_house_name">"Geen huisnummer maar een naam"</string>
+    <string name="quest_address_house_name_label">"Naam van het gebouw"</string>
+    <string name="quest_buildingLevels_roofLevelsLabel2">"aantal etages in het dak"</string>
+    <string name="quest_buildingLevels_levelsLabel2">"aantal etages (in het dak niet mee gerekend)"</string>
+    <string name="pref_title_authorized_summary">"Toegestaan"</string>
+    <string name="quest_buildingLevels_answer_multipleLevels">"Verschilt per gebouwdeel"</string>
+    <string name="quest_buildingLevels_answer_description">"Vul in dit geval gewoon de waarde  van het hoogste gebouwdeel in."</string>
+    <string name="unglue_hint">"Tip aan  om gefixeerd beeld op positie los te maken. "</string>
 </resources>

@@ -413,19 +413,21 @@ Sinon, vous pouvez télécharger un autre clavier dans la boutique d'application
     <string name="quest_way_lit_automatic">"Cela utilise la détection de mouvement"</string>
     <string name="quest_way_lit_24_7">"Voie allumée jour et nuit"</string>
     <string name="pref_title_authorized_username_summary">"Compte autorisé : %s"</string>
-    <string name="cannot_find_bbox_or_reduce_tilt">"Impossible de rechercher ici. Essayez de zoomer un peu plus or de moins incliner la carte."</string>
+    <string name="cannot_find_bbox_or_reduce_tilt">"Impossible de rechercher ici. Essayez de zoomer un peu plus ou de moins incliner la carte."</string>
     <string name="quest_crossing_type_title">"Quel est le type de ce passage piétons ?"</string>
     <string name="quest_crossing_type_signals">"Passage piétons avec feux"</string>
     <string name="quest_crossing_type_uncontrolled">"Passage piétons non protégé"</string>
     <string name="quest_crossing_type_unmarked">"Passage piétons sans marquage"</string>
     <string name="compass_north_one_letter">"N"</string>
+
+    <!-- "Confirmer" (EN:Confirm)? Even if it is a general word, have you an example please? -->
     <string name="action_undo">"Confirmer"</string>
     <string name="no_changes_to_undo">"Rien à annuler"</string>
     <string name="undo_confirm_title">"Annuler la dernière réponse ?"</string>
     <string name="produce_mangosteen">"Mangoustan"</string>
     <string name="produce_tomatoes">"Tomates"</string>
     <string name="produce_areca_nuts">"Noix d'arec"</string>
-    <string name="produce_sweet_peppers">"Poivons"</string>
+    <string name="produce_sweet_peppers">"Poivrons"</string>
     <string name="produce_brazil_nuts">"Noix du Brésil"</string>
     <string name="produce_tung_nuts">"Noix de bancoul"</string>
     <string name="quest_parkingType_title">"Quel est le type de ce parking ?"</string>
@@ -438,4 +440,12 @@ Sinon, vous pouvez télécharger un autre clavier dans la boutique d'application
     <string name="quest_powerPolesMaterial_metal">"Acier"</string>
     <string name="quest_powerPolesMaterial_concrete">"Béton"</string>
     <string name="quest_maxspeed_answer_advisory_speed_limit">"Vitesse limite indicative uniquement"</string>
+    <string name="quest_address_answer_house_name">"Pas de numéro mais un nom"</string>
+    <string name="quest_address_house_name_label">"Nom de la maison :"</string>
+    <string name="quest_buildingLevels_roofLevelsLabel2">"Niveaux dans le toit"</string>
+    <string name="quest_buildingLevels_levelsLabel2">"Niveaux (sans compter ceux du toit)"</string>
+    <string name="pref_title_authorized_summary">"Autorisé"</string>
+    <string name="quest_buildingLevels_answer_multipleLevels">"diffère selon la partie du bâtiment"</string>
+    <string name="quest_buildingLevels_answer_description">"Dans ce cas, entrez simplement les valeurs de la partie du bâtiment la plus grande."</string>
+    <string name="unglue_hint">"Appuyer pour ne plus fixer la vue sur la position"</string>
 </resources>

@@ -401,4 +401,12 @@
     <string name="quest_powerPolesMaterial_metal">"鋼鐵"</string>
     <string name="quest_powerPolesMaterial_concrete">"水泥"</string>
     <string name="quest_maxspeed_answer_advisory_speed_limit">"只是建議速度限制"</string>
+    <string name="quest_address_answer_house_name">"沒有門牌號碼但有名字"</string>
+    <string name="quest_address_house_name_label">"房屋名稱："</string>
+    <string name="quest_buildingLevels_roofLevelsLabel2">"屋頂樓層數"</string>
+    <string name="quest_buildingLevels_levelsLabel2">"一般的樓層數 (不計算屋頂)"</string>
+    <string name="pref_title_authorized_summary">"驗證"</string>
+    <string name="quest_buildingLevels_answer_multipleLevels">"建築部分的不同"</string>
+    <string name="quest_buildingLevels_answer_description">"在這一個例子，簡單填寫建築部分最高樓層數值。"</string>
+    <string name="unglue_hint">"從位置點取消界限視圖"</string>
 </resources>

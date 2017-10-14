@@ -400,7 +400,7 @@ Andernfalls kannst Du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="produce_brazil_nuts">"Paranuss"</string>
     <string name="produce_tung_nuts">"Tungnüsse"</string>
     <string name="quest_parkingType_title">"Welche Art von Parkplatz ist das?"</string>
-    <string name="quest_parkingType_surface">"Gewöhnlich"</string>
+    <string name="quest_parkingType_surface">"Ebenerdig"</string>
     <string name="quest_parkingType_underground">"Tiefgarage"</string>
     <string name="quest_parkingType_multiStorage">"Parkhaus"</string>
     <string name="quest_toiletAvailability_name_title">"Hat %s eine Toilette?"</string>
@@ -415,5 +415,8 @@ Andernfalls kannst Du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="quest_buildingLevels_levelsLabel2">"Stockwerke"</string>
     <string name="pref_title_authorized_summary">"Autorisiert"</string>
     <string name="quest_buildingLevels_answer_multipleLevels">"Je nach Gebäudeteil verschieden"</string>
-    <string name="quest_buildingLevels_answer_description">"In diesem Fall sollen einfach die Werte für den höchsten Gebäudeteil eingegeben werden."</string>
+    <string name="quest_buildingLevels_answer_description">"In diesem Fall einfach die Werte für den höchsten Gebäudeteil eingeben."</string>
+    <string name="unglue_hint">"Antippen, um Ansicht von Position zu trennen"</string>
+    <string name="pref_title_not_authorized_summary2">"Logge dich zur Autorisierung im Webbrowser ein"</string>
+    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Sind die Fahrbahnen dieser Straße hier baulich getrennt (z.B. durch eine Leitplanke)? Es gelten unterschiedliche Geschwindigkeitsbegrenzungen, je nachdem ob der Mittelstreifen überfahrbar ist oder nicht."</string>
 </resources>

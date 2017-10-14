@@ -402,4 +402,12 @@
     <string name="quest_powerPolesMaterial_metal">"فولاد"</string>
     <string name="quest_powerPolesMaterial_concrete">"بتن"</string>
     <string name="quest_maxspeed_answer_advisory_speed_limit">"محدودیت سرعت تنها با علائم"</string>
+    <string name="quest_address_answer_house_name">"فاقد شماره پلاک‌هست یک نام وارد کنید"</string>
+    <string name="quest_address_house_name_label">"اسم خانه"</string>
+    <string name="quest_buildingLevels_roofLevelsLabel2">"طبقات دارای پشت بام"</string>
+    <string name="quest_buildingLevels_levelsLabel2">"طبقات بدون پشت بام"</string>
+    <string name="pref_title_authorized_summary">"اختیاری"</string>
+    <string name="quest_buildingLevels_answer_multipleLevels">"متفاوت در هر بخش از ساختمان"</string>
+    <string name="quest_buildingLevels_answer_description">"در این بخش ، ارتفاع این قسمت از ساختمان را وارد نمایید"</string>
+    <string name="unglue_hint">"یک نما را برای این مکان انتخاب کنید"</string>
 </resources>

@@ -411,4 +411,5 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <!-- Could you write example, how is this used, plese? -->
     <string name="quest_buildingLevels_answer_multipleLevels">"liší se podle části budovy"</string>
     <string name="quest_buildingLevels_answer_description">"V tom případě vložte hodnoty pro nejvyšší část budovy."</string>
+    <string name="unglue_hint">"Klepněte pro odemknutí zobrazení od polohy"</string>
 </resources>

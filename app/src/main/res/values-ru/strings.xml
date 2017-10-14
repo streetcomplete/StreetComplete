@@ -22,8 +22,8 @@
     <string name="map_attribution_osm">"© Участники OpenStreetMap"</string>
     <string name="quest_generic_otherAnswers">"Другие варианты…"</string>
     <string name="quest_generic_answer_notApplicable">"Не знаю"</string>
-    <string name="quest_generic_confirmation_title">"Вы уверены?"</string>
-    <string name="quest_generic_confirmation_yes">"Да, уверен"</string>
+    <string name="quest_generic_confirmation_title">"Точно?"</string>
+    <string name="quest_generic_confirmation_yes">"Да, точно"</string>
     <string name="quest_generic_confirmation_no">"Я проверю"</string>
     <string name="quest_generic_error_field_empty">"Вы оставили это поле пустым"</string>
     <string name="quest_leave_new_note_title">"Оставить заметку взамен?"</string>
@@ -253,7 +253,7 @@
     <string name="quest_streetSurface_name_title">"Какое покрытие у этого участка дороги «%s»?"</string>
     <string name="quest_maxspeed_title_short">"Какое ограничение скорости на этой улице?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Это ограничение скорости выглядит неправдоподобно."</string>
-    <string name="quest_maxspeed_answer_noSign_confirmation_title">"Вы уверены, что ограничение не установлено?"</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation_title">"Ограничение точно не установлено?"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">"Вы проверили знаки на концах улицы?
 Если их нет, то действует общее ограничение скорости."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Да, знаков нет"</string>
