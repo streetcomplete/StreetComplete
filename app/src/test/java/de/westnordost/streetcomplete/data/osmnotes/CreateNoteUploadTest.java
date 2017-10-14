@@ -21,6 +21,7 @@ import de.westnordost.osmapi.map.data.Way;
 import de.westnordost.osmapi.notes.Note;
 import de.westnordost.osmapi.notes.NoteComment;
 import de.westnordost.osmapi.notes.NotesDao;
+import de.westnordost.streetcomplete.ApplicationConstants;
 
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.*;
@@ -192,7 +193,7 @@ public class CreateNoteUploadTest extends TestCase
 		assertNotNull(makeCreateNoteUpload().uploadCreateNote(createNote));
 
 		verify(notesDao).create(createNote.position,
-				"Unable to answer \"What?\" for https://www.openstreetmap.org/way/5 via StreetComplete:\n\njo ho");
+				"Unable to answer \"What?\" for https://www.openstreetmap.org/way/5 via "+ ApplicationConstants.USER_AGENT+":\n\njo ho");
 
 		verifyNoteInsertedIntoDb(createNote.id, note);
 	}
