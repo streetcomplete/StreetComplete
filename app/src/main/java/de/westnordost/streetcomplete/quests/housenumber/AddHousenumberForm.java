@@ -86,7 +86,7 @@ public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 					} else
 					{
 						input.setInputType(InputType.TYPE_CLASS_NUMBER);
-						input.setKeyListener(DigitsKeyListener.getInstance("0123456789- /"));
+						input.setKeyListener(DigitsKeyListener.getInstance("0123456789.,- /"));
 						toggleKeyboardButton.setText("abc");
 					}
 
