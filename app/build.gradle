@@ -17,8 +17,8 @@ android {
         applicationId "de.westnordost.streetcomplete"
         minSdkVersion 17
         targetSdkVersion 26
-        versionCode 200
-        versionName "2.0"
+        versionCode 202
+        versionName "2.2"
         testInstrumentationRunner "android.test.InstrumentationTestRunner"
         buildConfigField "String", "MAPZEN_API_KEY", MAPZEN_API_KEY
     }
@@ -27,6 +27,11 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
+        }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            applicationIdSuffix ".debug"
         }
     }
 
@@ -48,6 +53,7 @@ if (keystorePropertiesFile.exists()) {
 repositories {
     mavenLocal()
     mavenCentral()
+    maven { url "https://jitpack.io" }
 }
 
 dependencies {
@@ -76,6 +82,9 @@ dependencies {
     compile 'com.android.support:support-v4:26.0.1'
     compile 'com.android.support:design:26.0.1'
 
+    // scheduling background jobs
+    compile 'com.evernote:android-job:1.1.11'
+
     // geometry
     compile 'com.vividsolutions:jts-core:1.14.0'
 
@@ -87,20 +96,19 @@ dependencies {
     }
 
     // widgets
-    compile 'me.grantland:autofittextview:0.2.+'
+    compile 'me.grantland:autofittextview:0.2.1'
+    compile 'com.duolingo.open:rtl-viewpager:1.0.2'
+    compile 'com.github.westnordost:viewtooltip:master-SNAPSHOT'
 
     // serialization
-    // Kryo uses Objenesis 2.2 which uses a class that has been removed for Android O.
-    // see https://github.com/westnordost/StreetComplete/issues/286
-    compile 'org.objenesis:objenesis:2.5.1'
-    compile 'com.esotericsoftware:kryo:4.0.0'
+    compile 'com.esotericsoftware:kryo:4.0.1'
 
     // map and location
-    compile 'com.mapzen.tangram:tangram:0.8.0'
+    compile 'com.mapzen.tangram:tangram:0.8.1'
     compile 'com.mapzen.android:lost:3.0.3'
 
     // config files
-    compile 'com.esotericsoftware.yamlbeans:yamlbeans:1.11'
+    compile 'com.esotericsoftware.yamlbeans:yamlbeans:1.12'
 }
 
 task generateMetadata(type: Exec) {

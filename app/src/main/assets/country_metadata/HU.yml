@@ -4,5 +4,5 @@ isAdvisorySpeedLimitKnown: true
 isLivingStreetKnown: true
 isSlowZoneKnown: true
 officialLanguages: [hu]
-orchardProduces: [grape, apple, cherry, plum, peach, apricot, walnut, pear, chili, pepper, tomatoe,
-  strawberry, raspberry, chestnut, almond, hazelnut]
+orchardProduces: [grape, apple, cherry, plum, peach, apricot, walnut, pear, chilli_pepper, sweet_pepper,
+  tomatoe, strawberry, raspberry, chestnut, almond, hazelnut]

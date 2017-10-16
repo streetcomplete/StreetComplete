@@ -1,14 +1,22 @@
 package de.westnordost.streetcomplete.location;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.provider.Settings;
+import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
+
+import static android.location.LocationManager.PROVIDERS_CHANGED_ACTION;
 
 public class LocationUtil
 {
-	public static boolean isLocationSettingsOn(Context context)
+	public static boolean isLocationOn(Context context)
 	{
+		if(!hasLocationPermission(context)) return false;
+
 		String locationProviders;
 		try
 		{
@@ -30,11 +38,23 @@ public class LocationUtil
 		}
 	}
 
-	public static boolean isNewLocationApi()
+	public static boolean hasLocationPermission(Context context)
 	{
-		return Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT;
+		return ContextCompat.checkSelfPermission(context,
+				Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED;
+	}
+
+	public static IntentFilter createLocationAvailabilityIntentFilter()
+	{
+		String action = LocationUtil.isNewLocationApi() ? MODE_CHANGED : PROVIDERS_CHANGED_ACTION;
+		return new IntentFilter(action);
 	}
 
 	// because LocationManager.MODE_CHANGED is not defined before KitKat
-	public static String MODE_CHANGED = "android.location.MODE_CHANGED";
+	private static String MODE_CHANGED = "android.location.MODE_CHANGED";
+
+	private static boolean isNewLocationApi()
+	{
+		return Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT;
+	}
 }

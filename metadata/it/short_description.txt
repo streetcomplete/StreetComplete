@@ -1,1 +1,1 @@
-app di verifica di OpenStreetMap
+app di indagine dati OpenStreetMap

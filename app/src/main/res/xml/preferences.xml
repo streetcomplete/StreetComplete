@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-                  xmlns:custom="http://schemas.android.com/apk/res/de.westnordost.streetcomplete">
+                  xmlns:custom="http://schemas.android.com/apk/res-auto">
 
     <PreferenceCategory
         android:key="communication"
@@ -19,7 +19,7 @@
         <Preference
             android:key="oauth"
             android:title="@string/pref_title_authorization"
-            android:summary="@string/pref_title_not_authorized_summary"
+            android:summary="@string/pref_title_not_authorized_summary2"
             android:persistent="true"
             />
 

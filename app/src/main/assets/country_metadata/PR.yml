@@ -1,6 +1,6 @@
 # Do not edit. Source files are in /res/country_metadata
 officialLanguages: [en]
 orchardProduces: [coffee, banana, orange, guava, mango, mangosteen, avocado, pineapple, tomatoe, coconut,
-  papaya, grapefruit, chili, pepper, lemon, lime]
+  papaya, grapefruit, chilli_pepper, sweet_pepper, lemon, lime]
 popularSports: [basketball, tennis, baseball]
 speedUnit: mph

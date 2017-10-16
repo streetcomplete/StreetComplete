@@ -10,7 +10,6 @@ import com.mapzen.tangram.SceneUpdate;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -27,7 +26,6 @@ import de.westnordost.streetcomplete.data.QuestTypes;
 public class TangramQuestSpriteSheetCreator
 {
 	private static final String QUEST_ICONS_FILE = "quests.png";
-	private static final String SPRITESHEET_YAML = "streetcomplete_quests.yaml";
 
 	private final Context context;
 	private final QuestTypes questTypes;
@@ -103,18 +101,6 @@ public class TangramQuestSpriteSheetCreator
 			FileOutputStream spriteSheetIconsFile = context.openFileOutput(QUEST_ICONS_FILE, Context.MODE_PRIVATE);
 			spriteSheet.compress(Bitmap.CompressFormat.PNG, 0, spriteSheetIconsFile);
 			spriteSheetIconsFile.close();
-
-			// TODO this is not necessary anymore after https://github.com/tangrams/tangram-es/issues/1607 has been fixed
-			context.deleteFile(SPRITESHEET_YAML);
-			FileOutputStream spriteSheetYamlFile = context.openFileOutput(SPRITESHEET_YAML, Context.MODE_PRIVATE);
-			PrintWriter p = new PrintWriter(spriteSheetYamlFile);
-			p.println("textures:");
-			p.println("    quests:");
-			p.println("        url: "+QUEST_ICONS_FILE);
-			p.println("        filtering: mipmap");
-			p.println("        sprites: " + sprites);
-			p.flush();
-			p.close();
 		}
 		catch (IOException e)
 		{

@@ -14,7 +14,8 @@ public class Prefs
 			SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS = "display.nonQuestionNotes",
 			AUTOSYNC = "autosync",
 			LAST_SOLVED_QUEST_TIME = "changesets.lastQuestSolvedTime",
-			KEEP_SCREEN_ON = "display.keepScreenOn";
+			KEEP_SCREEN_ON = "display.keepScreenOn",
+			UNGLUE_HINT_TIMES_SHOWN = "unglueHint.shown";
 
 	public enum Autosync
 	{

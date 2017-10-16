@@ -18,7 +18,7 @@
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"忽略非问题格式的注记"</string>
     <string name="pref_title_map_cache">"地图缓存容量"</string>
     <string name="map_btn_gps_tracking">"跟随我"</string>
-    <string name="map_attribution_mapzen">"%s协力"</string>
+    <string name="map_attribution_mapzen">"%s技术支持"</string>
     <string name="map_attribution_osm">"© OpenStreetMap贡献者"</string>
     <string name="quest_generic_otherAnswers">"更多答案…"</string>
     <string name="quest_generic_answer_notApplicable">"不好说"</string>

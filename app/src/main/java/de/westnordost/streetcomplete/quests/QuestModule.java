@@ -48,25 +48,33 @@ public class QuestModule
 			PutRoadNameSuggestionsHandler putRoadNameSuggestionsHandler)
 	{
 		QuestType[] questTypesOrderedByImportance = {
-				// ↓ notes
+				// ↓ 1. notes
 				osmNoteQuestType,
-				// ↓ may be shown as missing in QA tools
+
+				// ↓ 2. definitely shown as errors in QA tools
+
+				// ↓ 3. may be shown as missing in QA tools
 				new AddRoadName(o, roadNameSuggestionsDao, putRoadNameSuggestionsHandler),
-				// ↓ may be shown as possibly missing in QA tools
+
+				// ↓ 4. may be shown as possibly missing in QA tools
 				new AddHousenumber(o),
 				// new AddPlaceName(o), doesn't make sense as long as the app cannot tell the generic name of elements
 				new AddRecyclingType(o),
-				// ↓ important data that is used by many data consumers
 				new AddCycleway(o),
+				// ↓ 5. important data that is used by many data consumers
 				new AddMaxSpeed(o),
 				new AddRoadSurface(o),
 				new AddOpeningHours(o),
-				// ↓ useful data that is used by some data consumers
+
+				// ↓ 6. useful data that is used by some data consumers
 				new AddSport(o),
+				new AddBikeParkingCapacity(o), // cycle map layer on osm.org
 				new AddOrchardProduce(o),
 				new AddCrossingType(o),
 				new AddBuildingLevels(o),
-				// ↓ data useful for only a specific use case
+				new AddBusStopShelter(o), // at least OsmAnd
+
+				// ↓ 7. data useful for only a specific use case
 				new AddRoofShape(o),
 				new AddWheelChairAccessPublicTransport(o),
 				new AddTactilePavingBusStop(o),
@@ -74,11 +82,10 @@ public class QuestModule
 				new AddWayLit(o),
 				new AddWheelchairAccessBusiness(o),
 				new AddToiletAvailability(o),
-				// ↓ defined in the wiki, but not really used by anyone yet. Just collected for the
-				//   sake of mapping it in case it makes sense later
-				new AddBikeParkingCapacity(o),
+
+				// ↓ 8. defined in the wiki, but not really used by anyone yet. Just collected for
+				//      the sake of mapping it in case it makes sense later
 				new AddBikeParkingCover(o),
-				new AddBusStopShelter(o),
 				new AddToiletsFee(o),
 				new AddBabyChangingTable(o),
 				new AddFireHydrantType(o),

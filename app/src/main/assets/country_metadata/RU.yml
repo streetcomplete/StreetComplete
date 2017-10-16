@@ -6,5 +6,5 @@ isSlowZoneKnown: true
 livingStreetSign: ic_living_street_russian
 officialLanguages: [ru]
 orchardProduces: [apple, tomatoe, grape, plum, strawberry, raspberry, cherry, apricot, pear, peach,
-  blueberry, tea, hop, orange, walnut]
+  blueberry, tea, hop, orange]
 popularSports: [soccer, basketball, tennis, field_hockey, volleyball, ice_hockey]

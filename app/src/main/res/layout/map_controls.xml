@@ -26,8 +26,8 @@
             android:text="@string/compass_north_one_letter"/>
 
         <de.westnordost.streetcomplete.view.CompassView
-            android:layout_width="31.5dp"
-            android:layout_height="31.5dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_marginTop="-2dp"
             android:layout_centerHorizontal="true"
             android:id="@+id/compassNeedle"

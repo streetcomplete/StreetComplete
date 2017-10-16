@@ -2,7 +2,7 @@
 <resources>
     <string name="action_settings">"Impostazioni"</string>
     <string name="oauth_communication_error">"Impossibile raggiungere il server per l'autenticazione"</string>
-    <string name="loading">"Caricamento ..."</string>
+    <string name="loading">"Caricamento"</string>
     <string name="retry">"Riprova"</string>
     <string name="oauth_cancelled">"Autorizzazione annullata"</string>
     <string name="oauth_failed_permissions">"Autorizzazione negata: vanno concessi tutti i permessi elencati"</string>
@@ -96,8 +96,8 @@
     <string name="about_title_privacy_statement">"Informativa sulla privacy"</string>
     <string name="about_summary_privacy_statement">"e uso dei dati"</string>
     <string name="quest_openingHours_public_holidays">"feste pubbliche"</string>
-    <string name="quest_openingHours_public_holidays_short">"gg fest."</string>
-    <string name="quest_openingHours_open_end">"inizio fine"</string>
+    <string name="quest_openingHours_public_holidays_short">"Giorni festivi"</string>
+    <string name="quest_openingHours_open_end">"finale aperto"</string>
     <string name="quest_openingHours_answer_247">"Aperto 24/7"</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">"Diverso per mese"</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">"Nessuna apertura regolare"</string>
@@ -294,7 +294,9 @@ Se non ci sono cartelli, saranno applicati dei limiti standard"</string>
     <string name="quest_streetName_cantType_title">"Layout della tastiera mancante?"</string>
     <string name="quest_streetName_cantType_open_settings">"Apri le impostazioni"</string>
     <string name="quest_streetName_cantType_open_store">"Apri lo store"</string>
-    <string name="quest_streetName_cantType_description">"Se utilizzi la tastiera predefinita, è probabile che tu possa scegliere il layout per la lingua desiderata modificando le impostazioni del sistema di input."</string>
+    <string name="quest_streetName_cantType_description">"Se si utilizza una tastiera predefinita, le probabilità sono che è possibile abilitare semplicemente il layout della tastiera per la lingua necessaria nelle impostazioni del metodo di immissione.
+
+Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le tastiere popolari che supportano molte lingue sono Google Gboard, SwiftKey Keyboard e Multiling O Keyboard"</string>
     <string name="quest_streetName_menuItem_nolanguage">"(non specificato)"</string>
     <string name="quest_fireHydrant_type_title">"Che tipo di idrante è?"</string>
     <string name="quest_fireHydrant_type_pillar">"Colonna"</string>
@@ -390,4 +392,12 @@ Se non ci sono cartelli, saranno applicati dei limiti standard"</string>
     <string name="quest_powerPolesMaterial_metal">"Acciaio"</string>
     <string name="quest_powerPolesMaterial_concrete">"Cemento"</string>
     <string name="quest_maxspeed_answer_advisory_speed_limit">"Solo un limite di velocità consigliato"</string>
+    <string name="quest_address_answer_house_name">"Nessun numero di casa ma un nome"</string>
+    <string name="quest_address_house_name_label">"Nome della casa:"</string>
+    <string name="quest_buildingLevels_roofLevelsLabel2">"Livelli sul tetto"</string>
+    <string name="quest_buildingLevels_levelsLabel2">"Livelli regolari (senza contare il tetto)"</string>
+    <string name="pref_title_authorized_summary">"Autorizzato"</string>
+    <string name="quest_buildingLevels_answer_multipleLevels">"differisce per parte dell'edificio"</string>
+    <string name="quest_buildingLevels_answer_description">"In questo caso, inserisci semplicemente i valori della parte più alta dell'edificio."</string>
+    <string name="unglue_hint">"Tocca per scollare la vista dalla posizione"</string>
 </resources>

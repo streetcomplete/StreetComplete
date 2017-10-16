@@ -48,10 +48,11 @@
                 android:text="@string/credits_contributors_title"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
 
-            <android.support.v7.widget.RecyclerView
+            <LinearLayout
                 android:id="@+id/contributorCredits"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:orientation="vertical"/>
 
             <TextView
                 android:id="@+id/contributorMore"
@@ -74,10 +75,11 @@
                 android:text="@string/credits_translations_title"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
 
-            <android.support.v7.widget.RecyclerView
+            <LinearLayout
                 android:id="@+id/translationCredits"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:orientation="vertical"/>
 
             <TextView
                 android:id="@+id/translationCreditsMore"

@@ -2,5 +2,5 @@
 isLivingStreetKnown: true
 livingStreetSign: ic_living_street_russian
 officialLanguages: [kk, ru]
-orchardProduces: [apple, tomatoe, grape, apricot, pear, cherry, strawberry, plum, walnut, peach, chili,
-  pepper, almond]
+orchardProduces: [apple, tomatoe, grape, apricot, pear, cherry, strawberry, plum, walnut, peach, chilli_pepper,
+  sweet_pepper, almond]

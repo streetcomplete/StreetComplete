@@ -1,15 +1,14 @@
 package de.westnordost.streetcomplete.tangram;
 
-import android.Manifest;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.pm.PackageManager;
+import android.content.SharedPreferences;
 import android.location.Location;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,8 +16,13 @@ import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 
+import com.github.florent37.viewtooltip.ViewTooltip;
 import com.mapzen.android.lost.api.LocationRequest;
 
+import javax.inject.Inject;
+
+import de.westnordost.streetcomplete.Injector;
+import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.location.LocationRequestFragment;
 import de.westnordost.streetcomplete.location.LocationState;
@@ -27,15 +31,14 @@ import de.westnordost.streetcomplete.location.LocationUtil;
 import de.westnordost.streetcomplete.location.SingleLocationRequest;
 import de.westnordost.streetcomplete.view.CompassView;
 
-import static android.location.LocationManager.PROVIDERS_CHANGED_ACTION;
-import static de.westnordost.streetcomplete.location.LocationUtil.MODE_CHANGED;
-
 public class MapControlsFragment extends Fragment
 {
 	private SingleLocationRequest singleLocationRequest;
 	private MapFragment mapFragment;
 	private CompassView compassNeedle;
 	private LocationStateButton trackingButton;
+
+	@Inject SharedPreferences prefs;
 
 	private BroadcastReceiver locationAvailabilityReceiver = new BroadcastReceiver()
 	{
@@ -53,6 +56,12 @@ public class MapControlsFragment extends Fragment
 			onLocationRequestFinished(state);
 		}
 	};
+
+	@Override public void onCreate(@Nullable Bundle savedInstanceState)
+	{
+		super.onCreate(savedInstanceState);
+		Injector.instance.getApplicationComponent().inject(this);
+	}
 
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
 									   Bundle savedInstanceState)
@@ -136,17 +145,12 @@ public class MapControlsFragment extends Fragment
 	{
 		super.onStart();
 
-		String name = LocationUtil.isNewLocationApi() ? MODE_CHANGED : PROVIDERS_CHANGED_ACTION;
-		getContext().registerReceiver(locationAvailabilityReceiver, new IntentFilter(name));
+		getContext().registerReceiver(locationAvailabilityReceiver, LocationUtil.createLocationAvailabilityIntentFilter());
 
 		LocalBroadcastManager.getInstance(getContext()).registerReceiver(locationRequestFinishedReceiver,
 				new IntentFilter(LocationRequestFragment.ACTION_FINISHED));
 
-		if(ContextCompat.checkSelfPermission(getActivity(),
-				Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED)
-		{
-			updateLocationAvailability();
-		}
+		updateLocationAvailability();
 	}
 
 	@Override public void onStop()
@@ -171,27 +175,37 @@ public class MapControlsFragment extends Fragment
 		compassNeedle.setOrientation(rotation, tilt);
 	}
 
-	public void onMapReady()
+	public void onMapInitialized()
 	{
-		trackingButton.setActivated(mapFragment.isFollowingPosition());
+		setTrackingButtonActivated(mapFragment.isFollowingPosition());
 		trackingButton.setCompassMode(mapFragment.isCompassMode());
 	}
 
 	public boolean requestUnglueViewFromPosition()
 	{
-		trackingButton.startAnimation( AnimationUtils.loadAnimation(getContext(), R.anim.pinch));
-		return false;
+		return requestUnglueView();
 	}
 
 	public boolean requestUnglueViewFromRotation()
 	{
+		return requestUnglueView();
+	}
+
+	private boolean requestUnglueView()
+	{
+		if(!LocationUtil.isLocationOn(getActivity()))
+		{
+			setIsFollowingPosition(false);
+			return true;
+		}
+
 		trackingButton.startAnimation( AnimationUtils.loadAnimation(getContext(), R.anim.pinch));
 		return false;
 	}
 
 	private void updateLocationAvailability()
 	{
-		if(LocationUtil.isLocationSettingsOn(getActivity()))
+		if(LocationUtil.isLocationOn(getActivity()))
 		{
 			onLocationIsEnabled();
 		}
@@ -211,7 +225,9 @@ public class MapControlsFragment extends Fragment
 				{
 					@Override public void onLocation(Location location)
 					{
+						if(getActivity() == null) return;
 						trackingButton.setState(LocationState.UPDATING);
+						showUnglueHint();
 					}
 				});
 	}
@@ -225,9 +241,30 @@ public class MapControlsFragment extends Fragment
 
 	private void setIsFollowingPosition(boolean follow)
 	{
-		trackingButton.setActivated(follow);
+		setTrackingButtonActivated(follow);
 		mapFragment.setIsFollowingPosition(follow);
 		if(!follow) setIsCompassMode(false);
+	}
+
+	private void setTrackingButtonActivated(boolean activated)
+	{
+		trackingButton.setActivated(activated);
+		showUnglueHint();
+	}
+
+	private void showUnglueHint()
+	{
+		int timesShown = prefs.getInt(Prefs.UNGLUE_HINT_TIMES_SHOWN, 0);
+		if(timesShown < 3 && trackingButton.isActivated() && LocationUtil.isLocationOn(getActivity()))
+		{
+			ViewTooltip.on(trackingButton)
+					.position(ViewTooltip.Position.LEFT)
+					.text(getResources().getString(R.string.unglue_hint))
+					.color(getResources().getColor(R.color.colorTooltip))
+					.duration(3000)
+					.show();
+			prefs.edit().putInt(Prefs.UNGLUE_HINT_TIMES_SHOWN, timesShown + 1).apply();
+		}
 	}
 
 	private void setIsCompassMode(boolean compassMode)
@@ -238,6 +275,8 @@ public class MapControlsFragment extends Fragment
 
 	private void onLocationRequestFinished(LocationState state)
 	{
+		if(getActivity() == null) return;
+		
 		trackingButton.setState(state);
 		if(state.isEnabled())
 		{

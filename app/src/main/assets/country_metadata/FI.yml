@@ -4,5 +4,5 @@ isAdvisorySpeedLimitKnown: true
 isLivingStreetKnown: true
 isSlowZoneKnown: true
 officialLanguages: [fi, sv]
-orchardProduces: [strawberry, apple, raspberry, tomatoe, chili, pepper]
+orchardProduces: [strawberry, apple, raspberry, tomatoe, chilli_pepper, sweet_pepper]
 popularSports: [soccer, tennis, basketball, beachvolleyball, shooting, ice_hockey]

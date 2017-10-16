@@ -3,6 +3,6 @@ additionalStreetsignLanguages: [en]
 advisorySpeedLimitLayout: quest_maxspeed_advisory_white
 isAdvisorySpeedLimitKnown: true
 officialLanguages: [ko]
-orchardProduces: [apple, chili, pepper, chestnut, apple, persimmon, chili, pepper, peach, orange, grape,
-  peach, pear, tomatoe, strawberry, tomatoe, plum]
+orchardProduces: [apple, chilli_pepper, sweet_pepper, chestnut, apple, persimmon, chilli_pepper, sweet_pepper,
+  peach, orange, grape, peach, pear, tomatoe, strawberry, tomatoe, plum]
 popularSports: [baseball, badminton, archery]

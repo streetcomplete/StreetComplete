@@ -21,8 +21,8 @@ public class AddWheelChairAccessPublicTransport extends SimpleOverpassQuestType
 	@Override protected String getTagFilters()
 	{
 		return " nodes, ways, relations with " +
-				" amenity = bus_station or " +
-				" railway ~ station|subway_entrance" +
+				" (amenity = bus_station or " +
+				" railway ~ station|subway_entrance)" +
 				" and !wheelchair";
 	}
 

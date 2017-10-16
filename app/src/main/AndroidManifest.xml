@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="de.westnordost.streetcomplete"
+          xmlns:tools="http://schemas.android.com/tools"
+          package="de.westnordost.streetcomplete"
     >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" android:maxSdkVersion="20" />
+
+    <!-- evernote lib adds this permission but we do not use that feature-->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" tools:node="remove" />
 
     <application
         android:name="de.westnordost.streetcomplete.StreetCompleteApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme.NoActionBar" >
+        android:theme="@style/AppTheme.NoActionBar"
+        android:supportsRtl="true">
         <activity
             android:windowSoftInputMode="adjustResize"
             android:name="de.westnordost.streetcomplete.MainActivity"
@@ -46,9 +51,6 @@
             android:parentActivityName=".MainActivity"/>
         <service android:name="de.westnordost.streetcomplete.data.download.QuestDownloadService" />
         <service android:name="de.westnordost.streetcomplete.data.upload.QuestChangesUploadService" />
-
-        <receiver android:name="de.westnordost.streetcomplete.data.osm.upload.ChangesetAutoCloserReceiver" />
-        <service android:name="de.westnordost.streetcomplete.data.osm.upload.ChangesetAutoCloserService" />
     </application>
 
 </manifest>

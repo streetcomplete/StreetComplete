@@ -59,6 +59,10 @@ public class OsmQuestUnlocker
 
 		if(!quests.isEmpty())
 		{
+			// Before new quests are unlocked, all reverted quests need to be removed for
+			// this element so that they can be created anew as the case may be
+			questDB.deleteAllReverted(element.getType(), element.getId());
+
 			int questCount = questDB.addAll(quests);
 
 			Log.i(TAG, "Unlocked " + questCount + " new quests" +

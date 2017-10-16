@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="match_parent" type="dimen">-1px</item>
+    <item name="wrap_content" type="dimen">-2px</item>
+</resources>

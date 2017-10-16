@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete;
 
-import android.Manifest;
 import android.animation.ObjectAnimator;
 import android.app.FragmentManager;
 import android.content.BroadcastReceiver;
@@ -11,7 +10,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
+import android.graphics.Rect;
 import android.location.Location;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -21,7 +20,6 @@ import android.preference.PreferenceManager;
 import android.support.annotation.AnyThread;
 import android.support.annotation.Nullable;
 import android.support.annotation.UiThread;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -69,7 +67,6 @@ import de.westnordost.streetcomplete.quests.FindQuestSourceComponent;
 import de.westnordost.streetcomplete.settings.SettingsActivity;
 import de.westnordost.streetcomplete.statistics.AnswersCounter;
 import de.westnordost.streetcomplete.location.LocationState;
-import de.westnordost.streetcomplete.tangram.MapFragment;
 import de.westnordost.streetcomplete.tangram.QuestsMapFragment;
 import de.westnordost.streetcomplete.tools.CrashReportExceptionHandler;
 import de.westnordost.streetcomplete.util.SlippyMapMath;
@@ -80,11 +77,8 @@ import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.map.data.OsmElement;
 import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 
-import static android.location.LocationManager.PROVIDERS_CHANGED_ACTION;
-import static de.westnordost.streetcomplete.location.LocationUtil.MODE_CHANGED;
-
 public class MainActivity extends AppCompatActivity implements
-		OsmQuestAnswerListener, VisibleQuestListener, QuestsMapFragment.Listener, MapFragment.Listener
+		OsmQuestAnswerListener, VisibleQuestListener, QuestsMapFragment.Listener
 {
 	@Inject CrashReportExceptionHandler crashReportExceptionHandler;
 
@@ -195,8 +189,11 @@ public class MainActivity extends AppCompatActivity implements
 		progressBar.setMax(1000);
 
 		mapFragment = (QuestsMapFragment) getSupportFragmentManager().findFragmentById(R.id.map_fragment);
-		mapFragment.setQuestYOffsets(50,
-				getResources().getDimensionPixelSize(R.dimen.quest_bottom_sheet_peek_height));
+		mapFragment.setQuestOffsets(new Rect(
+				getResources().getDimensionPixelSize(R.dimen.quest_form_leftOffset),
+				getResources().getDimensionPixelSize(R.dimen.quest_form_topOffset),
+				getResources().getDimensionPixelSize(R.dimen.quest_form_rightOffset),
+				getResources().getDimensionPixelSize(R.dimen.quest_form_bottomOffset)));
 
 		mapFragment.getMapAsync(BuildConfig.MAPZEN_API_KEY != null ?
 				BuildConfig.MAPZEN_API_KEY :
@@ -209,8 +206,7 @@ public class MainActivity extends AppCompatActivity implements
 
 		answersCounter.update();
 
-		String name = LocationUtil.isNewLocationApi() ? MODE_CHANGED : PROVIDERS_CHANGED_ACTION;
-		registerReceiver(locationAvailabilityReceiver, new IntentFilter(name));
+		registerReceiver(locationAvailabilityReceiver, LocationUtil.createLocationAvailabilityIntentFilter());
 
 		LocalBroadcastManager localBroadcaster = LocalBroadcastManager.getInstance(this);
 
@@ -230,8 +226,7 @@ public class MainActivity extends AppCompatActivity implements
 		{
 			locationRequestFragment.startRequest();
 		}
-		else if(ContextCompat.checkSelfPermission(this,
-				Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED)
+		else
 		{
 			updateLocationAvailability();
 		}
@@ -352,7 +347,7 @@ public class MainActivity extends AppCompatActivity implements
 		return super.onOptionsItemSelected(item);
 	}
 
-	private void uploadChanges()
+	@UiThread private void uploadChanges()
 	{
 		// because the app should ask for permission even if there is nothing to upload right now
 		if(!oAuth.isAuthorized())
@@ -365,7 +360,7 @@ public class MainActivity extends AppCompatActivity implements
 		}
 	}
 
-	private void requestOAuthorized()
+	@UiThread private void requestOAuthorized()
 	{
 		if(dontShowRequestAuthorizationAgain) return;
 
@@ -393,10 +388,10 @@ public class MainActivity extends AppCompatActivity implements
 				}).show();
 	}
 
-	private void downloadDisplayedArea()
+	@UiThread private void downloadDisplayedArea()
 	{
 		BoundingBox displayArea;
-		if ((displayArea = mapFragment.getDisplayedArea(0,0)) == null)
+		if ((displayArea = mapFragment.getDisplayedArea(new Rect())) == null)
 		{
 			Toast.makeText(this, R.string.cannot_find_bbox_or_reduce_tilt, Toast.LENGTH_LONG).show();
 		}
@@ -458,37 +453,42 @@ public class MainActivity extends AppCompatActivity implements
 	private final QuestChangesUploadProgressListener uploadProgressListener
 			= new QuestChangesUploadProgressListener()
 	{
-		@Override public void onError(Exception e)
+		@AnyThread @Override public void onError(final Exception e)
 		{
-			if(e instanceof VersionBannedException)
+			runOnUiThread(new Runnable() { @Override public void run()
 			{
-				new AlertDialogBuilder(MainActivity.this)
-						.setMessage(R.string.version_banned_message)
-						.setPositiveButton(android.R.string.ok, null)
-						.show();
-			}
-			else if(e instanceof OsmConnectionException)
-			{
-				// a 5xx error is not the fault of this app. Nothing we can do about it, so
-				// just notify the user
-				Toast.makeText(MainActivity.this, R.string.upload_server_error, Toast.LENGTH_LONG).show();
-			}
-			else if(e instanceof OsmAuthorizationException)
-			{
-				// delete secret in case it failed while already having a token -> token is invalid
-				oAuth.saveConsumer(null);
-				requestOAuthorized();
-			}
-			else
-			{
-				crashReportExceptionHandler.askUserToSendErrorReport(
-						MainActivity.this, R.string.upload_error, e);
-			}
+				if(e instanceof VersionBannedException)
+				{
+					new AlertDialogBuilder(MainActivity.this)
+							.setMessage(R.string.version_banned_message)
+							.setPositiveButton(android.R.string.ok, null)
+							.show();
+				}
+				else if(e instanceof OsmConnectionException)
+				{
+					// a 5xx error is not the fault of this app. Nothing we can do about it, so
+					// just notify the user
+					Toast.makeText(MainActivity.this, R.string.upload_server_error, Toast.LENGTH_LONG).show();
+				}
+				else if(e instanceof OsmAuthorizationException)
+				{
+					// delete secret in case it failed while already having a token -> token is invalid
+					oAuth.saveConsumer(null);
+					requestOAuthorized();
+				}
+				else
+				{
+					crashReportExceptionHandler.askUserToSendErrorReport(
+							MainActivity.this, R.string.upload_error, e);
+				}
+			}});
 		}
 
-		@Override public void onFinished()
+		@AnyThread @Override public void onFinished()
 		{
-			answersCounter.update();
+			runOnUiThread(new Runnable() { @Override public void run() {
+				answersCounter.update();
+			}});
 		}
 	};
 
@@ -497,7 +497,7 @@ public class MainActivity extends AppCompatActivity implements
 	private final QuestDownloadProgressListener downloadProgressListener
 			= new QuestDownloadProgressListener()
 	{
-		@Override public void onStarted()
+		@AnyThread @Override public void onStarted()
 		{
 			runOnUiThread(new Runnable() { @Override public void run()
 			{
@@ -512,7 +512,7 @@ public class MainActivity extends AppCompatActivity implements
 			}});
 		}
 
-		@Override public void onProgress(final float progress)
+		@AnyThread @Override public void onProgress(final float progress)
 		{
 			runOnUiThread(new Runnable() { @Override public void run()
 			{
@@ -524,29 +524,32 @@ public class MainActivity extends AppCompatActivity implements
 			}});
 		}
 
-		@Override public void onError(final Exception e)
+		@AnyThread @Override public void onError(final Exception e)
 		{
-			// a 5xx error is not the fault of this app. Nothing we can do about it, so it does not
-			// make sense to send an error report. Just notify the user
-			// Also, we treat an invalid response the same as a (temporary) connection error
-			if(e instanceof OsmConnectionException || e instanceof OsmApiReadResponseException)
+			runOnUiThread(new Runnable() { @Override public void run()
 			{
-				Toast.makeText(MainActivity.this, R.string.download_server_error, Toast.LENGTH_LONG).show();
-			}
-			else
-			{
-				crashReportExceptionHandler.askUserToSendErrorReport(MainActivity.this, R.string.download_error, e);
-			}
+				// a 5xx error is not the fault of this app. Nothing we can do about it, so it does not
+				// make sense to send an error report. Just notify the user
+				// Also, we treat an invalid response the same as a (temporary) connection error
+				if (e instanceof OsmConnectionException || e instanceof OsmApiReadResponseException)
+				{
+					Toast.makeText(MainActivity.this,R.string.download_server_error, Toast.LENGTH_LONG).show();
+				}
+				else
+				{
+					crashReportExceptionHandler.askUserToSendErrorReport(MainActivity.this, R.string.download_error, e);
+				}
+			}});
 		}
 
-		@Override public void onSuccess()
+		@AnyThread @Override public void onSuccess()
 		{
 			// after downloading, regardless if triggered manually or automatically, the
 			// auto downloader should check whether there are enough quests in the vicinity now
 			questAutoSyncer.triggerAutoDownload();
 		}
 
-		@Override public void onFinished()
+		@AnyThread @Override public void onFinished()
 		{
 			runOnUiThread(new Runnable() { @Override public void run()
 			{
@@ -556,12 +559,15 @@ public class MainActivity extends AppCompatActivity implements
 			}});
 		}
 
-		@Override public void onNotStarted()
+		@AnyThread @Override public void onNotStarted()
 		{
-			if(downloadService.currentDownloadHasPriority())
+			runOnUiThread(new Runnable() { @Override public void run()
 			{
-				Toast.makeText(MainActivity.this, R.string.nothing_more_to_download, Toast.LENGTH_SHORT).show();
-			}
+				if (downloadService.currentDownloadHasPriority())
+				{
+					Toast.makeText(MainActivity.this, R.string.nothing_more_to_download, Toast.LENGTH_SHORT).show();
+				}
+			}});
 		}
 	};
 
@@ -574,15 +580,14 @@ public class MainActivity extends AppCompatActivity implements
 		AbstractQuestAnswerFragment f = getQuestDetailsFragment();
 		if(f != null)
 		{
-			f.onClickClose(new Runnable()
+			f.onClickClose(new Runnable() { @Override public void run()
 			{
-				@Override public void run()
-				{
-					mapFragment.removeQuestGeometry();
-					MainActivity.super.onBackPressed();
-				}
-			});
-		} else {
+				mapFragment.removeQuestGeometry();
+				MainActivity.super.onBackPressed();
+			}});
+		}
+		else
+		{
 			super.onBackPressed();
 		}
 	}
@@ -626,8 +631,8 @@ public class MainActivity extends AppCompatActivity implements
 
 	/* ------------- VisibleQuestListener ------------- */
 
-	@AnyThread
-	@Override public void onQuestsCreated(final Collection<? extends Quest> quests, final QuestGroup group)
+	@AnyThread @Override
+	public void onQuestsCreated(final Collection<? extends Quest> quests, final QuestGroup group)
 	{
 		runOnUiThread(new Runnable() { @Override public void run()
 		{
@@ -647,9 +652,8 @@ public class MainActivity extends AppCompatActivity implements
 		}
 	}
 
-	@AnyThread
-	@Override public synchronized void onQuestCreated(final Quest quest, final QuestGroup group,
-														final Element element)
+	@AnyThread @Override
+	public synchronized void onQuestCreated(final Quest quest, final QuestGroup group, final Element element)
 	{
 		if (clickedQuestId != null && quest.getId().equals(clickedQuestId) && group == clickedQuestGroup)
 		{
@@ -668,21 +672,21 @@ public class MainActivity extends AppCompatActivity implements
 		}
 	}
 
-	@AnyThread
-	@Override public synchronized void onQuestsRemoved(Collection<Long> questIds, QuestGroup group)
+	@AnyThread @Override
+	public synchronized void onQuestsRemoved(Collection<Long> questIds, QuestGroup group)
 	{
 		removeQuests(questIds, group);
 	}
 
-	@AnyThread
-	@Override public synchronized void onQuestSolved(long questId, QuestGroup group)
+	@AnyThread @Override
+	public synchronized void onQuestSolved(long questId, QuestGroup group)
 	{
 		questAutoSyncer.triggerAutoUpload();
 		removeQuests(Collections.singletonList(questId), group);
 	}
 
-	@AnyThread
-	@Override public void onQuestReverted(long revertQuestId, QuestGroup group)
+	@AnyThread @Override
+	public void onQuestReverted(long revertQuestId, QuestGroup group)
 	{
 		questAutoSyncer.triggerAutoUpload();
 	}
@@ -780,8 +784,8 @@ public class MainActivity extends AppCompatActivity implements
 
 		android.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
 		ft.setCustomAnimations(
-				R.animator.enter_from_bottom, R.animator.exit_to_bottom,
-				R.animator.enter_from_bottom, R.animator.exit_to_bottom);
+				R.animator.quest_answer_form_appear, R.animator.quest_answer_form_disappear,
+				R.animator.quest_answer_form_appear, R.animator.quest_answer_form_disappear);
 		ft.add(R.id.map_bottom_sheet_container, f, BOTTOM_SHEET);
 		ft.addToBackStack(BOTTOM_SHEET);
 		ft.commit();
@@ -791,11 +795,6 @@ public class MainActivity extends AppCompatActivity implements
 	{
 		return (AbstractQuestAnswerFragment) getFragmentManager().findFragmentByTag(BOTTOM_SHEET);
 	}
-
-	/* ---------- MapFragment.Listener ---------- */
-
-	@Override public void onMapReady()
-	{
 
 	}
 
@@ -808,8 +807,6 @@ public class MainActivity extends AppCompatActivity implements
 		{
 			f.onMapOrientation(rotation, tilt);
 		}
-	}
-
 	/* ---------- QuestsMapFragment.Listener ---------- */
 
 	@Override public void onFirstInView(BoundingBox bbox)
@@ -844,7 +841,7 @@ public class MainActivity extends AppCompatActivity implements
 
 	private void updateLocationAvailability()
 	{
-		if(LocationUtil.isLocationSettingsOn(this))
+		if(LocationUtil.isLocationOn(this))
 		{
 			questAutoSyncer.startPositionTracking();
 		}

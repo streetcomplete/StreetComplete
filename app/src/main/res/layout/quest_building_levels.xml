@@ -66,6 +66,7 @@
             android:inputType="number"
             android:maxLines="1"
             android:nextFocusDown="@+id/roofLevelsInput"
+            android:focusable="true"
             tools:ignore="RtlHardcoded"/>
 
     </RelativeLayout>
@@ -89,6 +90,7 @@
             android:id="@+id/roofLevelsInput"
             android:inputType="number"
             android:maxLines="1"
+            android:nextFocusUp="@+id/levelsInput"
             android:imeOptions="actionDone"
             />
 

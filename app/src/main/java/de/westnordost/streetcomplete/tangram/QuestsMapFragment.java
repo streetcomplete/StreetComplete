@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.graphics.Point;
 import android.graphics.PointF;
 import android.graphics.Rect;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.UiThread;
 
@@ -11,6 +12,8 @@ import com.mapzen.tangram.LabelPickResult;
 import com.mapzen.tangram.LngLat;
 import com.mapzen.tangram.MapController;
 import com.mapzen.tangram.MapData;
+import com.mapzen.tangram.SceneError;
+import com.mapzen.tangram.SceneUpdate;
 import com.mapzen.tangram.TouchInput;
 
 import java.util.Collection;
@@ -54,7 +57,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 
 	private Listener listener;
 
-	private int questTopOffset, questBottomOffset;
+	private Rect questOffset;
 
 	@Inject QuestTypes questTypes;
 	@Inject TangramQuestSpriteSheetCreator spriteSheetCreator;
@@ -96,27 +99,27 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		questsLayer = geometryLayer = null;
 	}
 
-	protected void initMap()
+	@Override public void getMapAsync(String apiKey, @NonNull final String sceneFilePath)
 	{
-		super.initMap();
-
-		if(getActivity() == null) return;
-
-		retrievedTiles = new HashSet<>();
-
-		/*
-		TODO uncomment when https://github.com/tangrams/tangram-es/issues/1607 is fixed
-		List<SceneUpdate> sceneUpdates = spriteSheetCreator.get();
-		controller.queueSceneUpdate(sceneUpdates);
-		controller.applySceneUpdates();
-		*/
-
-		geometryLayer = controller.addDataLayer(GEOMETRY_LAYER);
-		questsLayer = controller.addDataLayer(QUESTS_LAYER);
+		super.getMapAsync(apiKey, sceneFilePath);
 
 		controller.setTapResponder(this);
 		controller.setLabelPickListener(this);
 		controller.setPickRadius(1);
+
+		List<SceneUpdate> sceneUpdates = spriteSheetCreator.get();
+		controller.updateSceneAsync(sceneUpdates);
+
+		retrievedTiles = new HashSet<>();
+	}
+
+	@Override public void onSceneReady(int sceneId, SceneError sceneError)
+	{
+		super.onSceneReady(sceneId, sceneError);
+		if (getActivity() == null) return;
+
+		geometryLayer = controller.addDataLayer(GEOMETRY_LAYER);
+		questsLayer = controller.addDataLayer(QUESTS_LAYER);
 	}
 
 	@Override public boolean onSingleTapUp(float x, float y)
@@ -133,6 +136,8 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 	@Override
 	public void onLabelPick(LabelPickResult labelPickResult, float positionX, float positionY)
 	{
+		if(controller == null) return;
+
 		if(labelPickResult == null
 				|| labelPickResult.getType() != LabelPickResult.LabelType.ICON
 				|| labelPickResult.getProperties() == null
@@ -179,14 +184,18 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 
 	private LngLat getCenterWithOffset(ElementGeometry geometry)
 	{
-		LngLat top = controller.screenPositionToLngLat(new PointF(0, questTopOffset));
-		LngLat bottom = controller.screenPositionToLngLat(new PointF(0, questBottomOffset));
-		LngLat offset = new LngLat(0,0);
-		offset.latitude = (top.latitude - bottom.latitude) / 2;
-		offset.longitude = (top.longitude - bottom.longitude) / 2;
+		int w = getView().getWidth();
+		int h = getView().getHeight();
+
+		LngLat normalCenter = controller.screenPositionToLngLat(new PointF(w/2, h/2));
+
+		LngLat offsetCenter = controller.screenPositionToLngLat(new PointF(
+				questOffset.left + (w - questOffset.left - questOffset.right)/2,
+				questOffset.top + (h - questOffset.top - questOffset.bottom)/2));
+
 		LngLat pos = TangramConst.toLngLat(geometry.center);
-		pos.latitude -= offset.latitude;
-		pos.longitude -= offset.longitude;
+		pos.latitude -= offsetCenter.latitude - normalCenter.latitude;
+		pos.longitude -= offsetCenter.longitude - normalCenter.longitude;
 		return pos;
 	}
 
@@ -196,7 +205,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		BoundingBox screenArea;
 		float currentZoom;
 		synchronized(controller) {
-			screenArea = getDisplayedArea(questTopOffset, questBottomOffset);
+			screenArea = getDisplayedArea(questOffset);
 			if(screenArea == null) return Float.NaN;
 			currentZoom = controller.getZoom();
 		}
@@ -236,7 +245,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		if(lastPos != null  && lastPos.equals(positionNow)) return;
 		lastPos = positionNow;
 
-		BoundingBox displayedArea = getDisplayedArea(0,0);
+		BoundingBox displayedArea = getDisplayedArea(new Rect());
 		if(displayedArea == null) return;
 
 		Rect tilesRect = SlippyMapMath.enclosingTiles(displayedArea, TILES_ZOOM);
@@ -271,10 +280,9 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		retrievedTiles.addAll(tiles);
 	}
 
-	public void setQuestYOffsets(int questTopOffset, int questBottomOffset)
+	public void setQuestOffsets(Rect offsets)
 	{
-		this.questTopOffset = questTopOffset;
-		this.questBottomOffset = questBottomOffset;
+		questOffset = offsets;
 	}
 
 	@UiThread
@@ -398,13 +406,13 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		updateView();
 	}
 
-	public BoundingBox getDisplayedArea(int topOffset, int bottomOffset)
+	public BoundingBox getDisplayedArea(Rect offset)
 	{
 		if(controller == null) return null;
 		if(getView() == null) return null;
 		Point size = new Point(
-				getView().getMeasuredWidth(),
-				getView().getMeasuredHeight() - topOffset - bottomOffset);
+				getView().getWidth() - offset.left - offset.right,
+				getView().getHeight() - offset.top - offset.bottom);
 
 		// the special cases here are: map tilt and map rotation:
 		// * map tilt makes the screen area -> world map area into a trapezoid
@@ -414,10 +422,10 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		if(controller.getTilt() > Math.PI / 4f) return null; // 45°
 
 		LatLon[] positions = new LatLon[4];
-		positions[0] = getLatLonAtPos(new PointF(topOffset,0));
-		positions[1] = getLatLonAtPos(new PointF(size.x, 0));
-		positions[2] = getLatLonAtPos(new PointF(topOffset,size.y));
-		positions[3] = getLatLonAtPos(new PointF(size));
+		positions[0] = getLatLonAtPos(new PointF(offset.left,          offset.top));
+		positions[1] = getLatLonAtPos(new PointF(offset.left + size.x ,offset.top));
+		positions[2] = getLatLonAtPos(new PointF(offset.left,          offset.top + size.y));
+		positions[3] = getLatLonAtPos(new PointF(offset.left + size.x, offset.top + size.y));
 
 		// dealing with rotation: find each the largest latlon and the smallest latlon, that'll
 		// be our bounding box

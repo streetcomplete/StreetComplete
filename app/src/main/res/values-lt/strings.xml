@@ -366,7 +366,7 @@ Priešingu atveju galite atsisiųsti kitą klaviatūrą programėlių parduotuv�
     <string name="quest_way_lit_named_road_title">"Ar „%s“ kelias čia apšviestas?"</string>
     <string name="quest_way_lit_automatic">"Naudoja judesio daviklį"</string>
     <string name="quest_way_lit_24_7">"Apšviesta dieną ir naktį"</string>
-    <string name="pref_title_authorized_username_summary">"Autorizuota paskyra:"</string>
+    <string name="pref_title_authorized_username_summary">"Autorizuota paskyra: %s"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Nepavyksta čia skenuoti. Labiau priartinkite arba mažiau pakreipkite žemėlapį."</string>
     <string name="quest_crossing_type_title">"Kokio tipo tai perėja?"</string>
     <string name="quest_crossing_type_signals">"Perėja su šviesoforu"</string>

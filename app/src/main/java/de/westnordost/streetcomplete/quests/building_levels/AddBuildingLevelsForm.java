@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
+import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 
 public class AddBuildingLevelsForm extends AbstractQuestFormAnswerFragment
 {
@@ -25,7 +26,19 @@ public class AddBuildingLevelsForm extends AbstractQuestFormAnswerFragment
 		View contentView = setContentView(R.layout.quest_building_levels);
 
 		levelsInput = contentView.findViewById(R.id.levelsInput);
+		levelsInput.requestFocus();
 		roofLevelsInput = contentView.findViewById(R.id.roofLevelsInput);
+
+		addOtherAnswer(R.string.quest_buildingLevels_answer_multipleLevels, new Runnable()
+		{
+			@Override public void run()
+			{
+				new AlertDialogBuilder(getActivity())
+						.setMessage(R.string.quest_buildingLevels_answer_description)
+						.setPositiveButton(android.R.string.ok, null)
+						.show();
+			}
+		});
 
 		return view;
 	}
