@@ -410,4 +410,6 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire keybor
     <string name="quest_buildingLevels_answer_multipleLevels">"Verschilt per gebouwdeel"</string>
     <string name="quest_buildingLevels_answer_description">"Vul in dit geval gewoon de waarde  van het hoogste gebouwdeel in."</string>
     <string name="unglue_hint">"Tip aan  om gefixeerd beeld op positie los te maken. "</string>
+    <string name="pref_title_not_authorized_summary2">"Log via je web browser in om toegang te krijgen"</string>
+    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Zijn de rijbanen van deze weg fysiek gescheiden (door bijvoorbeeld een vangrail of andere barrière)? De standaard maximum snelheid hangt af of dit het geval is of niet."</string>
 </resources>
