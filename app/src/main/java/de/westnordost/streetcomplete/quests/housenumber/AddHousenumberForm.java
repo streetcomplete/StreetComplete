@@ -117,6 +117,7 @@ public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 		if(isHousename)
 		{
 			answer.putString(HOUSENAME, input);
+			applyFormAnswer(answer);
 		}
 		else
 		{
