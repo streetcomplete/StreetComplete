@@ -17,8 +17,6 @@ import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
 import de.westnordost.streetcomplete.data.osm.tql.OverpassQLUtil;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 
-import static de.westnordost.streetcomplete.quests.bikeway.AddCyclewayForm.Cycleway;
-
 public class AddCycleway implements OsmElementQuestType
 {
 	private final OverpassMapDataDao overpassServer;
@@ -102,6 +100,7 @@ public class AddCycleway implements OsmElementQuestType
 				// https://wiki.openstreetmap.org/wiki/File:Z240GemeinsamerGehundRadweg.jpeg
 				changes.add(cyclewayKey, "track");
 				changes.add(cyclewayKey + ":segregated", "no");
+				changes.addOrModify("sidewalk", side.value);
 				break;
 			case SIDEWALK_OK:
 				// https://wiki.openstreetmap.org/wiki/File:Z239Z1022-10GehwegRadfahrerFrei.jpeg
@@ -159,6 +158,4 @@ public class AddCycleway implements OsmElementQuestType
 	@Override public int getIcon() { return R.drawable.ic_quest_bicycleway; }
 	@Override public int getTitle(@NonNull Map<String, String> tags) { return getTitle(); }
 	@Override public int getTitle() { return R.string.quest_cycleway_title; }
-
-	// TODO unit test!
 }
