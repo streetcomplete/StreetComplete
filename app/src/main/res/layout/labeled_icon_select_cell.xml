@@ -14,8 +14,7 @@
         android:layout_centerHorizontal="true"
         android:padding="6dp"
         android:scaleType="fitCenter"
-        android:adjustViewBounds="true"
-        android:src="@drawable/ic_roof_double_saltbox"/>
+        android:adjustViewBounds="true"/>
 
     <TextView
         android:id="@+id/textView"
@@ -28,7 +27,6 @@
         style="@style/ImageSelectLabel"
         android:maxLines="3"
         android:padding="8dp"
-        android:text="@string/quest_surface_value_paving_stones"
         />
 
 
