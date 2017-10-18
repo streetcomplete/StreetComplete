@@ -20,7 +20,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import de.westnordost.streetcomplete.R;
 
@@ -57,12 +56,10 @@ public class StreetSideSelectPuzzle extends FrameLayout
 
 	private ImageView rightSideImage;
 	private ImageView leftSideImage;
-	private ImageView oldRightSideImage;
-	private ImageView oldLeftSideImage;
 
 	private OnClickSideListener listener;
 
-	private int defaultImageResId, leftImageResId, rightImageResId;
+	private int leftImageResId, rightImageResId;
 
 	public interface OnClickSideListener
 	{
@@ -75,8 +72,6 @@ public class StreetSideSelectPuzzle extends FrameLayout
 
 		rotateContainer = findViewById(R.id.rotateContainer);
 
-		oldRightSideImage = findViewById(R.id.oldRightSideImage);
-		oldLeftSideImage = findViewById(R.id.oldLeftSideImage);
 		rightSideImage = findViewById(R.id.rightSideImage);
 		leftSideImage = findViewById(R.id.leftSideImage);
 
@@ -112,12 +107,6 @@ public class StreetSideSelectPuzzle extends FrameLayout
 				}
 
 				int streetWidth = width / 2;
-				if(defaultImageResId != 0)
-				{
-					setStreetDrawable(defaultImageResId, streetWidth, oldLeftSideImage, true);
-					setStreetDrawable(defaultImageResId, streetWidth, oldRightSideImage, false);
-					defaultImageResId = 0;
-				}
 				if(leftImageResId != 0)
 				{
 					setStreetDrawable(leftImageResId, streetWidth, leftSideImage, true);
@@ -140,11 +129,9 @@ public class StreetSideSelectPuzzle extends FrameLayout
 	public void setStreetRotation(float rotation)
 	{
 		rotateContainer.setRotation(rotation);
-	}
-
-	public void setDefaultStreetSideImageResource(int resId)
-	{
-		defaultImageResId = resId;
+		float scale = (float) Math.abs(Math.cos(rotation * Math.PI / 180));
+		rotateContainer.setScaleX(1 + scale*2/3f);
+		rotateContainer.setScaleY(1 + scale*2/3f);
 	}
 
 	public void setLeftSideImageResource(int resId)
@@ -159,23 +146,22 @@ public class StreetSideSelectPuzzle extends FrameLayout
 
 	public void replaceLeftSideImageResource(int resId)
 	{
-		replaceAnimated(resId, leftSideImage, oldLeftSideImage, true);
+		replaceAnimated(resId, leftSideImage, true);
 	}
 
 	public void replaceRightSideImageResource(int resId)
 	{
-		replaceAnimated(resId, rightSideImage, oldRightSideImage, false);
+		replaceAnimated(resId, rightSideImage, false);
 	}
 
-	private void replaceAnimated(int resId, ImageView imgView, ImageView oldImgView, boolean flip180Degrees)
+	private void replaceAnimated(int resId, ImageView imgView, boolean flip180Degrees)
 	{
-		oldImgView.setImageDrawable(imgView.getDrawable());
 		int width = rotateContainer.getWidth() / 2;
 		setStreetDrawable(resId, width, imgView, flip180Degrees);
 
-		int animationDir = flip180Degrees ? -1 : 1;
-		ObjectAnimator.ofFloat(imgView, "translationX", animationDir * imgView.getWidth(), 0).start();
-		ObjectAnimator.ofFloat(oldImgView, "alpha", 1, 0).start();
+		((View)imgView.getParent()).bringToFront();
+		ObjectAnimator.ofFloat(imgView, "scaleX", 3, 1).start();
+		ObjectAnimator.ofFloat(imgView, "scaleY", 3, 1).start();
 	}
 
 	private void setStreetDrawable(int resId, int width, ImageView imageView, boolean flip180Degrees)

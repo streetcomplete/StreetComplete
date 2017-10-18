@@ -409,5 +409,5 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_cycleway_value_sidewalk">explicitly shared sidewalk</string>
     <string name="quest_cycleway_value_lane_dual">cycle lane, both directions</string>
     <string name="quest_cycleway_value_track_dual">cycle track, both directions</string>
-    <string name="quest_cycleway_value_sidewalk_allowed">none, but cyclists are explicitly allowed on sidewalk</string>
+    <string name="quest_cycleway_value_sidewalk_allowed">none, but cyclists are allowed on sidewalk</string>
 </resources>

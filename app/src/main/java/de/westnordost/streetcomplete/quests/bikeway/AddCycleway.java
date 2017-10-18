@@ -23,7 +23,7 @@ public class AddCycleway implements OsmElementQuestType
 {
 	private final OverpassMapDataDao overpassServer;
 
-	private static final int MIN_DIST_TO_CYCLEWAYS = 15;
+	private static final int MIN_DIST_TO_CYCLEWAYS = 15; //m
 
 	@Inject public AddCycleway(OverpassMapDataDao overpassServer)
 	{
@@ -38,7 +38,10 @@ public class AddCycleway implements OsmElementQuestType
 		int cyclewayRightDir = answer.getInt(AddCyclewayForm.CYCLEWAY_RIGHT_DIR);
 		int cyclewayLeftDir = answer.getInt(AddCyclewayForm.CYCLEWAY_LEFT_DIR);
 
-		if(cyclewayLeft == cyclewayRight && cyclewayRightDir == 0 && cyclewayLeftDir == 0)
+		boolean bothSidesAreSame = cyclewayLeft == cyclewayRight
+				&& cyclewayRightDir == 0 && cyclewayLeftDir == 0;
+
+		if(bothSidesAreSame)
 		{
 			applyCyclewayAnswerTo(cyclewayLeft, Side.BOTH, 0, changes);
 		}

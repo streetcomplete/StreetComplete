@@ -76,10 +76,6 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 		setContentView(R.layout.quest_cycleway);
 
 		puzzle = view.findViewById(R.id.puzzle);
-		int defaultResId = getCountryInfo().isLeftHandTraffic() ?
-				R.drawable.ic_cycleway_unknown_l : R.drawable.ic_cycleway_unknown;
-
-		puzzle.setDefaultStreetSideImageResource(defaultResId);
 		puzzle.setListener(new StreetSideSelectPuzzle.OnClickSideListener()
 		{
 			@Override public void onClick(boolean isRight) { showCyclewaySelectionDialog(isRight); }
@@ -87,6 +83,13 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 
 		wayOrientationAtCenter = getWayOrientationAtCenterLineInDegrees(getElementGeometry());
 
+		restoreInstanceState(inState);
+
+		return view;
+	}
+
+	private void restoreInstanceState(Bundle inState)
+	{
 		if(inState != null)
 		{
 			String rightSideString = inState.getString(CYCLEWAY_RIGHT);
@@ -102,8 +105,13 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 				puzzle.setLeftSideImageResource(leftSide.getIconResId(isLeftHandTraffic()));
 			}
 		}
-
-		return view;
+		else
+		{
+			int defaultResId = getCountryInfo().isLeftHandTraffic() ?
+					R.drawable.ic_cycleway_unknown_l : R.drawable.ic_cycleway_unknown;
+			puzzle.setLeftSideImageResource(defaultResId);
+			puzzle.setRightSideImageResource(defaultResId);
+		}
 	}
 
 	@Override public void onSaveInstanceState(Bundle outState)
@@ -183,7 +191,7 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 
 			if(isReverseSideRight())
 			{
-				if(rightSide == Cycleway.TRACK || rightSide == Cycleway.LANE)
+				if(isSingleTrackOrLane(rightSide))
 				{
 					bundle.putInt(CYCLEWAY_RIGHT_DIR, reverseDir);
 					isOnewayNotForCyclists = true;
@@ -191,21 +199,31 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 			}
 			else
 			{
-				if(leftSide == Cycleway.TRACK || leftSide == Cycleway.LANE)
+				if(isSingleTrackOrLane(leftSide))
 				{
 					bundle.putInt(CYCLEWAY_LEFT_DIR, reverseDir);
 					isOnewayNotForCyclists = true;
 				}
 			}
 
-			isOnewayNotForCyclists |= leftSide == Cycleway.TRACK_DUAL || leftSide == Cycleway.LANE_DUAL;
-			isOnewayNotForCyclists |= rightSide == Cycleway.TRACK_DUAL || rightSide == Cycleway.LANE_DUAL;
+			isOnewayNotForCyclists |= isDualTrackOrLane(leftSide);
+			isOnewayNotForCyclists |= isDualTrackOrLane(rightSide);
 		}
 
 		bundle.putString(CYCLEWAY_LEFT, leftSide.name());
 		bundle.putString(CYCLEWAY_RIGHT, rightSide.name());
 		bundle.putBoolean(IS_ONEWAY_NOT_FOR_CYCLISTS, isOnewayNotForCyclists);
 		applyFormAnswer(bundle);
+	}
+
+	private static boolean isSingleTrackOrLane(Cycleway cycleway)
+	{
+		return cycleway == Cycleway.TRACK || cycleway == Cycleway.LANE;
+	}
+
+	private static boolean isDualTrackOrLane(Cycleway cycleway)
+	{
+		return cycleway == Cycleway.TRACK_DUAL || cycleway == Cycleway.LANE_DUAL;
 	}
 
 	@Override public boolean hasChanges()
@@ -285,7 +303,7 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 	}
 
 	/** @return whether the side that goes into the opposite direction of the driving direction of a
-	 *          one-way is the right side */
+	 *          one-way is on the right side of the way */
 	private boolean isReverseSideRight()
 	{
 		return isReversedOneway() ^ isLeftHandTraffic();

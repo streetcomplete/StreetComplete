@@ -67,6 +67,7 @@ import de.westnordost.streetcomplete.quests.FindQuestSourceComponent;
 import de.westnordost.streetcomplete.settings.SettingsActivity;
 import de.westnordost.streetcomplete.statistics.AnswersCounter;
 import de.westnordost.streetcomplete.location.LocationState;
+import de.westnordost.streetcomplete.tangram.MapFragment;
 import de.westnordost.streetcomplete.tangram.QuestsMapFragment;
 import de.westnordost.streetcomplete.tools.CrashReportExceptionHandler;
 import de.westnordost.streetcomplete.util.SlippyMapMath;
@@ -78,7 +79,7 @@ import de.westnordost.osmapi.map.data.OsmElement;
 import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 
 public class MainActivity extends AppCompatActivity implements
-		OsmQuestAnswerListener, VisibleQuestListener, QuestsMapFragment.Listener
+		OsmQuestAnswerListener, VisibleQuestListener, QuestsMapFragment.Listener, MapFragment.Listener
 {
 	@Inject CrashReportExceptionHandler crashReportExceptionHandler;
 
@@ -796,17 +797,16 @@ public class MainActivity extends AppCompatActivity implements
 		return (AbstractQuestAnswerFragment) getFragmentManager().findFragmentByTag(BOTTOM_SHEET);
 	}
 
-	}
-
 	@Override public void onMapOrientation(float rotation, float tilt)
 	{
 		mapRotation = rotation;
 		mapTilt = tilt;
 		AbstractQuestAnswerFragment f = getQuestDetailsFragment();
-		if(f != null)
+		if (f != null)
 		{
 			f.onMapOrientation(rotation, tilt);
 		}
+	}
 	/* ---------- QuestsMapFragment.Listener ---------- */
 
 	@Override public void onFirstInView(BoundingBox bbox)

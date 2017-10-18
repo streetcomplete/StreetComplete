@@ -63,8 +63,10 @@ public class MapFragment extends Fragment implements
 
 	private HttpHandler httpHandler;
 
-	/** controller to the asynchronously loaded map. Since it is loaded asynchronously, could be
-	 *  null still at any point! */
+	/**
+	 * controller to the asynchronously loaded map. Since it is loaded asynchronously, could be
+	 * null still at any point!
+	 */
 	protected MapController controller;
 
 	private LostApiClient lostApiClient;
@@ -80,7 +82,12 @@ public class MapFragment extends Fragment implements
 
 	private boolean isShowingDirection;
 
+	private Listener listener;
+	public interface Listener
+	{
 		void onMapOrientation(float rotation, float tilt);
+	}
+
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
 									   Bundle savedInstanceState)
 	{
@@ -534,6 +541,7 @@ public class MapFragment extends Fragment implements
 				(SensorManager) activity.getSystemService(SENSOR_SERVICE),
 				activity.getWindowManager().getDefaultDisplay());
 		lostApiClient = new LostApiClient.Builder(activity).addConnectionCallbacks(this).build();
+		listener = (Listener) activity;
 	}
 
 	@Override public void onStart()
