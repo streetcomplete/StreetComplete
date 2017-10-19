@@ -11,6 +11,7 @@ import de.westnordost.osmapi.common.errors.OsmConflictException;
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.notes.Note;
 import de.westnordost.osmapi.notes.NotesDao;
+import de.westnordost.streetcomplete.util.ImageUploadHelper;
 
 public class OsmNoteQuestChangesUpload
 {
@@ -19,6 +20,9 @@ public class OsmNoteQuestChangesUpload
 	private final NotesDao osmDao;
 	private final OsmNoteQuestDao questDB;
 	private final NoteDao noteDB;
+
+	private String imageLinkText;
+	private Boolean waitForImageUpload = false;
 
 	@Inject public OsmNoteQuestChangesUpload(NotesDao osmDao, OsmNoteQuestDao questDB, NoteDao noteDB)
 	{
@@ -57,7 +61,30 @@ public class OsmNoteQuestChangesUpload
 
 		try
 		{
-			Note newNote = osmDao.comment(quest.getNote().id, text);
+			Note newNote;
+			if (quest.getImagePaths() != null)
+			{
+				waitForImageUpload = true;
+
+				new ImageUploadHelper(quest.getImagePaths(), new ImageUploadHelper.ImageUploadListener() {
+					@Override
+					public void onImageUploaded(String linksToImages) {
+						imageLinkText = linksToImages;
+						waitForImageUpload = false;
+					}
+					@Override
+					public void onUploadFailed() {
+						imageLinkText = "";
+						waitForImageUpload = false;
+					}
+				}).execute();
+
+				while (waitForImageUpload) {}
+				newNote = osmDao.comment(quest.getNote().id, text + "\n" + imageLinkText);
+			} else
+			{
+				newNote = osmDao.comment(quest.getNote().id, text);
+			}
 
 			/* Unlike OSM quests, note quests are never deleted when the user contributed to it
 			   but must remain in the database with the status CLOSED as long as they are not

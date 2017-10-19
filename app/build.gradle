@@ -100,6 +100,9 @@ dependencies {
     compile 'com.duolingo.open:rtl-viewpager:1.0.2'
     compile 'com.github.westnordost:viewtooltip:master-SNAPSHOT'
 
+    // making requests (e.g. uploading images)
+    compile 'com.squareup.okhttp3:okhttp:3.9.0'
+
     // serialization
     compile 'com.esotericsoftware:kryo:4.0.1'
 

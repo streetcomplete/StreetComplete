@@ -16,6 +16,7 @@ import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.notes.Note;
 import de.westnordost.osmapi.notes.NotesDao;
+import de.westnordost.streetcomplete.util.ImageUploadHelper;
 
 public class CreateNoteUpload
 {
@@ -27,6 +28,9 @@ public class CreateNoteUpload
 	private final OsmNoteQuestDao noteQuestDB;
 	private final MapDataDao mapDataDao;
 	private final OsmNoteQuestType questType;
+
+	private String imageLinkText;
+	private Boolean waitForImageUpload = false;
 
 	@Inject public CreateNoteUpload(
 			CreateNoteDao createNoteDB, NotesDao osmDao, NoteDao noteDB,
@@ -134,7 +138,29 @@ public class CreateNoteUpload
 				{
 					try
 					{
-						return osmDao.comment(oldNote.id, n.text);
+						if (n.imagePaths != null)
+						{
+							waitForImageUpload = true;
+
+							new ImageUploadHelper(n.imagePaths, new ImageUploadHelper.ImageUploadListener() {
+								@Override
+								public void onImageUploaded(String linksToImages) {
+									imageLinkText = linksToImages;
+									waitForImageUpload = false;
+								}
+								@Override
+								public void onUploadFailed() {
+									imageLinkText = "";
+									waitForImageUpload = false;
+								}
+							}).execute();
+
+							while (waitForImageUpload) {}
+							return osmDao.comment(oldNote.id, n.text + "\n" + imageLinkText);
+						} else
+						{
+							return osmDao.comment(oldNote.id, n.text);
+						}
 					}
 					catch (OsmConflictException e)
 					{
@@ -147,7 +173,29 @@ public class CreateNoteUpload
 				}
 			}
 		}
-		return osmDao.create(n.position, getCreateNoteText(n));
+		if (n.imagePaths != null)
+		{
+			waitForImageUpload = true;
+
+			new ImageUploadHelper(n.imagePaths, new ImageUploadHelper.ImageUploadListener() {
+				@Override
+				public void onImageUploaded(String linksToImages) {
+					imageLinkText = linksToImages;
+					waitForImageUpload = false;
+				}
+				@Override
+				public void onUploadFailed() {
+					imageLinkText = "";
+					waitForImageUpload = false;
+				}
+			}).execute();
+
+			while (waitForImageUpload) {}
+			return osmDao.create(n.position, getCreateNoteText(n) + "\n" + imageLinkText);
+		} else
+		{
+			return osmDao.create(n.position, getCreateNoteText(n));
+		}
 	}
 
 	static String getCreateNoteText(CreateNote note)

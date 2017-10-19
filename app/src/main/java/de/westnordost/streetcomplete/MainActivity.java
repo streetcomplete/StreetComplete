@@ -36,6 +36,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Map;
@@ -607,10 +608,10 @@ public class MainActivity extends AppCompatActivity implements
 		});
 	}
 
-	@Override public void onLeaveNote(long questId, QuestGroup group, String questTitle, String note)
+	@Override public void onLeaveNote(long questId, QuestGroup group, String questTitle, String note, ArrayList<String> imagePaths)
 	{
 		closeQuestDetailsFor(questId, group);
-		questController.createNote(questId, questTitle, note);
+		questController.createNote(questId, questTitle, note, imagePaths);
 	}
 
 	@Override public void onSkippedQuest(long questId, QuestGroup group)

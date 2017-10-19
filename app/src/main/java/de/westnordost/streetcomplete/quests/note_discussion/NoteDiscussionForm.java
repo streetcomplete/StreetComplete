@@ -1,17 +1,31 @@
 package de.westnordost.streetcomplete.quests.note_discussion;
 
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import javax.inject.Inject;
 
@@ -22,13 +36,27 @@ import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 import de.westnordost.streetcomplete.util.InlineAsyncTask;
 import de.westnordost.osmapi.notes.Note;
 import de.westnordost.osmapi.notes.NoteComment;
+import de.westnordost.streetcomplete.view.NoteImageAdapter;
+import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 
+import static android.app.Activity.RESULT_OK;
+import static android.support.v4.content.FileProvider.getUriForFile;
 import static android.text.format.DateUtils.MINUTE_IN_MILLIS;
 
 public class NoteDiscussionForm extends AbstractQuestAnswerFragment
 {
 	private static final String TAG = "NoteDiscussionForm";
 	public static final String TEXT = "text";
+	public static final String IMAGE_PATHS = "image_paths";
+
+	private ArrayList<String> imagePaths = new ArrayList<>();
+	private ArrayList<Bitmap> imageBitmaps = new ArrayList<>();
+
+	File photoFile = null;
+
+	static final int REQUEST_TAKE_PHOTO = 1;
+
+	GridView gridView;
 
 	@Inject OsmNoteQuestDao noteDb;
 
@@ -64,6 +92,38 @@ public class NoteDiscussionForm extends AbstractQuestAnswerFragment
 			@Override public void onClick(View v)
 			{
 				skipQuest();
+			}
+		});
+		Button takePhoto = buttonPanel.findViewById(R.id.buttonTakeImage);
+		takePhoto.setOnClickListener(new View.OnClickListener()
+		{
+			@Override public void onClick(View v)
+			{
+				takePhoto();
+			}
+		});
+
+		final NoteImageAdapter noteImageAdapter = new NoteImageAdapter(getActivity(), imageBitmaps);
+		gridView = view.findViewById(R.id.gridView);
+		gridView.setAdapter(noteImageAdapter);
+		gridView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+		{
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, final int position, long id)
+			{
+				new AlertDialogBuilder(getActivity())
+						.setMessage(R.string.quest_leave_new_note_photo_delete_title)
+						.setNegativeButton(android.R.string.cancel, null)
+						.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener()
+						{
+							@Override public void onClick(DialogInterface dialog, int which)
+							{
+								imageBitmaps.remove(position);
+								imagePaths.remove(position);
+								noteImageAdapter.notifyDataSetChanged();
+							}
+						})
+						.show();
 			}
 		});
 
@@ -162,7 +222,47 @@ public class NoteDiscussionForm extends AbstractQuestAnswerFragment
 
 		Bundle answer = new Bundle();
 		answer.putString(TEXT, noteText);
+		answer.putStringArrayList(IMAGE_PATHS, imagePaths);
 		applyImmediateAnswer(answer);
+	}
+
+	private void takePhoto()
+	{
+		Intent takePhotoIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+		if (takePhotoIntent.resolveActivity(getActivity().getPackageManager()) != null) {
+			try {
+				photoFile = createImageFile();
+			} catch (IOException ex) {
+			}
+			if (photoFile != null) {
+				if (Build.VERSION.SDK_INT > 21) {
+					takePhotoIntent.putExtra(MediaStore.EXTRA_OUTPUT, getUriForFile(getActivity(), "de.westnordost.streetcomplete.fileprovider", photoFile));
+				} else {
+					takePhotoIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(photoFile));
+				}
+				startActivityForResult(takePhotoIntent, REQUEST_TAKE_PHOTO);
+			}
+		}
+	}
+
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if (requestCode == REQUEST_TAKE_PHOTO && resultCode == RESULT_OK) {
+			imageBitmaps.add(BitmapFactory.decodeFile(photoFile.getAbsolutePath()));
+			imagePaths.add(photoFile.toString());
+		}
+	}
+
+	private File createImageFile() throws IOException
+	{
+		String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+		String imageFileName = "JPEG_" + timeStamp + "_";
+		File directory = getActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+		return File.createTempFile(
+				imageFileName,
+				".jpg",
+				directory
+		);
 	}
 
 	@Override public boolean hasChanges()

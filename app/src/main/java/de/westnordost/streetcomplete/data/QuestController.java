@@ -134,7 +134,7 @@ public class QuestController
 
 	/** Create a note for the given OSM Quest instead of answering it. The quest will turn
 	 *  invisible. */
-	public void createNote(final long osmQuestId, final String questTitle, final String text)
+	public void createNote(final long osmQuestId, final String questTitle, final String text, final ArrayList<String> imagePaths)
 	{
 		workerHandler.post(new Runnable() { @Override public void run()
 		{
@@ -148,6 +148,7 @@ public class QuestController
 			createNote.questTitle = questTitle;
 			createNote.elementType = q.getElementType();
 			createNote.elementId = q.getElementId();
+			createNote.imagePaths = imagePaths;
 			createNoteDB.add(createNote);
 
 			/* The quests that reference the same element for which the user was not able to
@@ -255,11 +256,13 @@ public class QuestController
 	private boolean solveOsmNoteQuest(long questId, Bundle answer)
 	{
 		OsmNoteQuest q = osmNoteQuestDB.get(questId);
+		ArrayList<String> imagePaths = answer.getStringArrayList(NoteDiscussionForm.IMAGE_PATHS);
 		String comment = answer.getString(NoteDiscussionForm.TEXT);
 		if(comment != null && !comment.isEmpty())
 		{
 			q.setComment(comment);
 			q.setStatus(QuestStatus.ANSWERED);
+			q.setImagePaths(imagePaths);
 			osmNoteQuestDB.update(q);
 			return true;
 		}

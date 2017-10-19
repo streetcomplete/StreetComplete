@@ -4,6 +4,10 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+
+import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +41,10 @@ public class CreateNoteDao
 		if(note.elementId != null)
 		{
 			values.put(CreateNoteTable.Columns.ELEMENT_ID, note.elementId);
+		}
+		if (note.imagePaths != null)
+		{
+			values.put(CreateNoteTable.Columns.IMAGE_PATHS, note.imagePaths.toString());
 		}
 		values.put(CreateNoteTable.Columns.TEXT, note.text);
 		values.put(CreateNoteTable.Columns.QUEST_TITLE, note.questTitle);
@@ -121,7 +129,8 @@ public class CreateNoteDao
 			colText = cursor.getColumnIndexOrThrow(CreateNoteTable.Columns.TEXT),
 			colElementType = cursor.getColumnIndexOrThrow(CreateNoteTable.Columns.ELEMENT_TYPE),
 			colElementId = cursor.getColumnIndexOrThrow(CreateNoteTable.Columns.ELEMENT_ID),
-			colQuestTitle = cursor.getColumnIndexOrThrow(CreateNoteTable.Columns.QUEST_TITLE);
+			colQuestTitle = cursor.getColumnIndexOrThrow(CreateNoteTable.Columns.QUEST_TITLE),
+			colImagePaths = cursor.getColumnIndexOrThrow(CreateNoteTable.Columns.IMAGE_PATHS);
 
 		CreateNote note = new CreateNote();
 		note.position = new OsmLatLon(cursor.getDouble(colLat), cursor.getDouble(colLon));
@@ -137,6 +146,23 @@ public class CreateNoteDao
 		if(!cursor.isNull(colElementId))
 		{
 			note.elementId = cursor.getLong(colElementId);
+		}
+		if(!cursor.isNull(colImagePaths))
+		{
+			ArrayList<String> imagePaths = new ArrayList<>();
+			try
+			{
+				JSONArray jsonArray = new JSONArray(cursor.getString(colImagePaths));
+				for(int i = 0; i < jsonArray.length(); i ++)
+				{
+					String value = jsonArray.getString(i);
+					imagePaths.add(value);
+				}
+			} catch (JSONException e)
+			{
+
+			}
+			note.imagePaths = imagePaths;
 		}
 		note.id = cursor.getLong(colNoteId);
 

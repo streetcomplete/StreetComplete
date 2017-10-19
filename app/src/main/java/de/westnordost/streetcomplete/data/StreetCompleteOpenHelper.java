@@ -24,7 +24,7 @@ import de.westnordost.streetcomplete.data.tiles.DownloadedTilesTable;
 public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 {
 	public static final String DB_NAME = "streetcomplete.db";
-	public static final int DB_VERSION = 7;
+	public static final int DB_VERSION = 8;
 
 	private static final String OSM_QUESTS_CREATE_PARAMS = " (" +
 			OsmQuestTable.Columns.QUEST_ID +		" INTEGER		PRIMARY KEY, " +
@@ -115,7 +115,8 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 				OsmNoteQuestTable.Columns.QUEST_STATUS +	" varchar(255)	NOT NULL, " +
 				OsmNoteQuestTable.Columns.COMMENT +			" text, " +
 				OsmNoteQuestTable.Columns.LAST_UPDATE + 	" int			NOT NULL, " +
-				OsmNoteQuestTable.Columns.NOTE_ID +			" INTEGER		UNIQUE NOT NULL " +
+				OsmNoteQuestTable.Columns.NOTE_ID +			" INTEGER		UNIQUE NOT NULL, " +
+				OsmNoteQuestTable.Columns.IMAGE_PATHS +		" text " +
 					"REFERENCES " + NoteTable.NAME + "(" + NoteTable.Columns.ID + ")" +
 			");";
 
@@ -140,7 +141,8 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 					CreateNoteTable.Columns.ELEMENT_TYPE +	" varchar(255), " +
 					CreateNoteTable.Columns.ELEMENT_ID +	" int, " +
 					CreateNoteTable.Columns.TEXT + 		" text			NOT NULL, " +
-					CreateNoteTable.Columns.QUEST_TITLE + " text" +
+					CreateNoteTable.Columns.QUEST_TITLE + " text, " +
+					CreateNoteTable.Columns.IMAGE_PATHS + " text" +
 					");";
 
 	private static final String OSM_NOTES_VIEW_CREATE =
@@ -300,6 +302,14 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 		{
 			db.execSQL(UNDO_OSM_QUESTS_TABLE_CREATE);
 			db.execSQL(OSM_UNDO_QUESTS_VIEW_CREATE);
+		}
+
+		if(oldVersion < 8 && newVersion >= 8)
+		{
+			db.execSQL("ALTER TABLE " + CreateNoteTable.NAME + " ADD COLUMN " +
+					CreateNoteTable.Columns.IMAGE_PATHS + " text ;");
+			db.execSQL("ALTER TABLE " + OsmNoteQuestTable.NAME + " ADD COLUMN " +
+					OsmNoteQuestTable.Columns.IMAGE_PATHS + " text ;");
 		}
 
 		// for later changes to the DB
