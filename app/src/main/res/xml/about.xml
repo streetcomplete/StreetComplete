@@ -27,7 +27,7 @@
 
     <PreferenceCategory
         android:key="feedback"
-        android:title="Feedback">
+        android:title="@string/about_category_feedback">
 
         <Preference
             android:key="report_error"
