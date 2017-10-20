@@ -16,7 +16,7 @@ import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.notes.Note;
 import de.westnordost.osmapi.notes.NotesDao;
-import de.westnordost.streetcomplete.util.ImageUploadHelper;
+import de.westnordost.streetcomplete.util.LutimImageUploader;
 
 public class CreateNoteUpload
 {
@@ -142,7 +142,7 @@ public class CreateNoteUpload
 						{
 							waitForImageUpload = true;
 
-							new ImageUploadHelper(n.imagePaths, new ImageUploadHelper.ImageUploadListener() {
+							LutimImageUploader imageUploadHelper = new LutimImageUploader(new LutimImageUploader.ImageUploadListener() {
 								@Override
 								public void onImageUploaded(String linksToImages) {
 									imageLinkText = linksToImages;
@@ -153,9 +153,17 @@ public class CreateNoteUpload
 									imageLinkText = "";
 									waitForImageUpload = false;
 								}
-							}).execute();
+							});
 
-							while (waitForImageUpload) {}
+							imageUploadHelper.upload("https://images.mondedie.fr/", n.imagePaths);
+
+							while (waitForImageUpload) {
+								try
+								{
+									wait();
+								} catch (InterruptedException e) {}
+							}
+
 							return osmDao.comment(oldNote.id, n.text + "\n" + imageLinkText);
 						} else
 						{
@@ -177,20 +185,30 @@ public class CreateNoteUpload
 		{
 			waitForImageUpload = true;
 
-			new ImageUploadHelper(n.imagePaths, new ImageUploadHelper.ImageUploadListener() {
+			LutimImageUploader imageUploadHelper = new LutimImageUploader(new LutimImageUploader.ImageUploadListener() {
 				@Override
 				public void onImageUploaded(String linksToImages) {
 					imageLinkText = linksToImages;
 					waitForImageUpload = false;
+					notifyAll();
 				}
 				@Override
 				public void onUploadFailed() {
 					imageLinkText = "";
 					waitForImageUpload = false;
+					notifyAll();
 				}
-			}).execute();
+			});
 
-			while (waitForImageUpload) {}
+			imageUploadHelper.upload("https://images.mondedie.fr/", n.imagePaths);
+
+			while (waitForImageUpload) {
+				try
+				{
+					wait();
+				} catch (InterruptedException e) {}
+			}
+
 			return osmDao.create(n.position, getCreateNoteText(n) + "\n" + imageLinkText);
 		} else
 		{

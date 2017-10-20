@@ -63,6 +63,14 @@
                 android:numColumns="3"
                 android:verticalSpacing="10dp" />
 
+            <Button
+                android:id="@+id/buttonTakeImage"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/quest_leave_new_note_photo" />
+
         </LinearLayout>
 
     </LinearLayout>
@@ -81,14 +89,6 @@
             android:layout_weight="1"
             style="?android:attr/buttonBarButtonStyle"
             android:text="@string/quest_leave_new_note_no"
-            android:layout_height="wrap_content" />
-        <Button
-            android:id="@+id/buttonTakeImage"
-            android:layout_width="wrap_content"
-            android:layout_gravity="start"
-            android:layout_weight="1"
-            style="?android:attr/buttonBarButtonStyle"
-            android:text="@string/quest_leave_new_note_photo"
             android:layout_height="wrap_content" />
         <Button
             android:id="@+id/buttonOk"

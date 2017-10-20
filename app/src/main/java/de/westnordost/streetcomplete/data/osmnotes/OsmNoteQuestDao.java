@@ -101,7 +101,7 @@ public class OsmNoteQuestDao extends AQuestDao<OsmNoteQuest>
 
 		if(quest.getImagePaths() != null)
 		{
-			stmt.bindString(6, quest.getImagePaths().toString());
+			stmt.bindBlob(6, serializer.toBytes(quest.getImagePaths()));
 		}
 		else
 		{
@@ -155,21 +155,10 @@ public class OsmNoteQuestDao extends AQuestDao<OsmNoteQuest>
 		}
 		QuestStatus status = QuestStatus.valueOf(cursor.getString(colQuestStatus));
 
-		ArrayList<String> imagePaths = new ArrayList<>();
+		ArrayList imagePaths = new ArrayList<>();
 		if(!cursor.isNull(colImagePaths))
 		{
-			try
-			{
-				JSONArray jsonArray = new JSONArray(cursor.getString(colImagePaths));
-				for(int i = 0; i < jsonArray.length(); i ++)
-				{
-					String value = jsonArray.getString(i);
-					imagePaths.add(value);
-				}
-			} catch (JSONException e)
-			{
-
-			}
+			imagePaths = serializer.toObject(cursor.getBlob(colImagePaths), ArrayList.class);
 		}
 
 		Date lastUpdate = new Date(cursor.getLong(colLastUpdate));

@@ -10,14 +10,6 @@
         android:text="@string/quest_noteDiscussion_no" />
 
     <Button
-        android:id="@+id/buttonTakeImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        style="?android:attr/buttonBarButtonStyle"
-        android:text="@string/quest_leave_new_note_photo" />
-
-    <Button
         android:id="@+id/buttonOk"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -60,6 +60,7 @@ public class AboutFragment extends PreferenceFragment
 			{
 				Fragment f = ShowHtmlFragment.create(
 						getResources().getString(R.string.privacy_html),
+						getResources().getString(R.string.privacy_html_addendum1),
 						R.string.about_title_privacy_statement);
 				getFragmentManager()
 						.beginTransaction()

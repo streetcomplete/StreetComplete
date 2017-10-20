@@ -2,12 +2,12 @@ package de.westnordost.streetcomplete.quests.note_discussion;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.text.format.DateUtils;
 import android.util.Log;
@@ -23,6 +23,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -94,7 +95,8 @@ public class NoteDiscussionForm extends AbstractQuestAnswerFragment
 				skipQuest();
 			}
 		});
-		Button takePhoto = buttonPanel.findViewById(R.id.buttonTakeImage);
+
+		Button takePhoto = view.findViewById(R.id.buttonTakeImage);
 		takePhoto.setOnClickListener(new View.OnClickListener()
 		{
 			@Override public void onClick(View v)
@@ -102,6 +104,11 @@ public class NoteDiscussionForm extends AbstractQuestAnswerFragment
 				takePhoto();
 			}
 		});
+
+		if (!getActivity().getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA))
+		{
+			takePhoto.setVisibility(View.GONE);
+		}
 
 		final NoteImageAdapter noteImageAdapter = new NoteImageAdapter(getActivity(), imageBitmaps);
 		gridView = view.findViewById(R.id.gridView);
@@ -232,7 +239,7 @@ public class NoteDiscussionForm extends AbstractQuestAnswerFragment
 		if (takePhotoIntent.resolveActivity(getActivity().getPackageManager()) != null) {
 			try {
 				photoFile = createImageFile();
-			} catch (IOException ex) {
+			} catch (IOException e) {
 			}
 			if (photoFile != null) {
 				if (Build.VERSION.SDK_INT > 21) {
@@ -257,12 +264,13 @@ public class NoteDiscussionForm extends AbstractQuestAnswerFragment
 	{
 		String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
 		String imageFileName = "JPEG_" + timeStamp + "_";
-		File directory = getActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-		return File.createTempFile(
-				imageFileName,
-				".jpg",
-				directory
-		);
+
+		File file = new File(getActivity().getFilesDir() + File.separator + "images" + File.separator + imageFileName + ".jpg");
+		file.getParentFile().mkdirs();
+		FileOutputStream fos = new FileOutputStream(file);
+		fos.close();
+
+		return file;
 	}
 
 	@Override public boolean hasChanges()

@@ -27,6 +27,16 @@ public class ShowHtmlFragment extends Fragment
 		return result;
 	}
 
+	public static ShowHtmlFragment create(String firstText, String secondText, int titleStringId)
+	{
+		Bundle args = new Bundle();
+		args.putString(TEXT, firstText + secondText);
+		args.putInt(TITLE_STRING_RESOURCE_ID, titleStringId);
+		ShowHtmlFragment result = new ShowHtmlFragment();
+		result.setArguments(args);
+		return result;
+	}
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState)

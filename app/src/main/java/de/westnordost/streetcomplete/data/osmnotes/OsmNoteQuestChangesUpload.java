@@ -11,7 +11,7 @@ import de.westnordost.osmapi.common.errors.OsmConflictException;
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.notes.Note;
 import de.westnordost.osmapi.notes.NotesDao;
-import de.westnordost.streetcomplete.util.ImageUploadHelper;
+import de.westnordost.streetcomplete.util.LutimImageUploader;
 
 public class OsmNoteQuestChangesUpload
 {
@@ -66,20 +66,30 @@ public class OsmNoteQuestChangesUpload
 			{
 				waitForImageUpload = true;
 
-				new ImageUploadHelper(quest.getImagePaths(), new ImageUploadHelper.ImageUploadListener() {
+				LutimImageUploader imageUploadHelper = new LutimImageUploader(new LutimImageUploader.ImageUploadListener() {
 					@Override
 					public void onImageUploaded(String linksToImages) {
 						imageLinkText = linksToImages;
 						waitForImageUpload = false;
+						notifyAll();
 					}
 					@Override
 					public void onUploadFailed() {
 						imageLinkText = "";
 						waitForImageUpload = false;
+						notifyAll();
 					}
-				}).execute();
+				});
 
-				while (waitForImageUpload) {}
+				imageUploadHelper.upload("https://images.mondedie.fr/", quest.getImagePaths());
+
+				while (waitForImageUpload) {
+					try
+					{
+						wait();
+					} catch (InterruptedException e) {}
+				}
+
 				newNote = osmDao.comment(quest.getNote().id, text + "\n" + imageLinkText);
 			} else
 			{

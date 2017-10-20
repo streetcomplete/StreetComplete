@@ -5,13 +5,14 @@ import android.app.DialogFragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,7 @@ import android.widget.EditText;
 import android.widget.GridView;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -91,6 +93,11 @@ public class LeaveNoteDialog extends DialogFragment
 				takePhoto();
 			}
 		});
+
+		if (!getActivity().getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA))
+		{
+			takePhoto.setVisibility(View.GONE);
+		}
 
 		final NoteImageAdapter noteImageAdapter = new NoteImageAdapter(getActivity(), imageBitmaps);
 		gridView = view.findViewById(R.id.gridView);
@@ -168,9 +175,10 @@ public class LeaveNoteDialog extends DialogFragment
 		if (takePhotoIntent.resolveActivity(getActivity().getPackageManager()) != null) {
 			try {
 				photoFile = createImageFile();
-			} catch (IOException ex) {
+			} catch (IOException e) {
 			}
 			if (photoFile != null) {
+				Log.d("photoFile", photoFile.toString());
 				if (Build.VERSION.SDK_INT > 21) {
 					takePhotoIntent.putExtra(MediaStore.EXTRA_OUTPUT, getUriForFile(getActivity(), "de.westnordost.streetcomplete.fileprovider", photoFile));
 				} else {
@@ -193,11 +201,12 @@ public class LeaveNoteDialog extends DialogFragment
 	{
 		String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
 		String imageFileName = "JPEG_" + timeStamp + "_";
-		File directory = getActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-		return File.createTempFile(
-				imageFileName,
-				".jpg",
-				directory
-		);
+
+		File file = new File(getActivity().getFilesDir() + File.separator + "images" + File.separator + imageFileName + ".jpg");
+		file.getParentFile().mkdirs();
+		FileOutputStream fos = new FileOutputStream(file);
+		fos.close();
+
+		return file;
 	}
 }

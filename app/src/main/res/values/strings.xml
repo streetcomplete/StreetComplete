@@ -172,6 +172,8 @@ To display the map, vector tiles are retrieved from the &lt;a href=\"https://map
 &lt;p&gt;
 (&lt;i&gt;This is actually not implemented yet, just want to inform you what is to come!:&lt;/i&gt;) The data shown in the leaderboard and profile is aggregated from publicly available information from the OpenStreetMap. The data does not come from this app but basically from the public commit history of OSM users.
 &lt;/p&gt;"</string>
+    <string name="privacy_html_addendum1">&lt;p&gt;
+    If the user wants to attach a photo to a note, the photo is uploaded to &lt;a href=\"https://images.mondedie.fr/\"&gt;an instance of lut.im&lt;/a&gt;, a service which is anonymous and without tracking.&lt;/p&gt;</string>
     <string name="autosync_on">"On"</string>
     <string name="autosync_only_on_wifi">"Only on Wifi"</string>
     <string name="autosync_off">"Off"</string>
