@@ -1,8 +1,22 @@
 package de.westnordost.streetcomplete;
 
-public enum Injector
+public class Injector
 {
-	instance;
+	private static Injector instance;
+	public static Injector getInstance()
+	{
+		if(instance == null)
+		{
+			instance = new Injector();
+		}
+		return instance;
+	}
+
+	/** For tests only */
+	static void setInstance(Injector instance)
+	{
+		Injector.instance = instance;
+	}
 
 	private ApplicationComponent applicationComponent;
 

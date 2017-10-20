@@ -72,6 +72,8 @@ dependencies {
     androidTestCompile "com.crittercism.dexmaker:dexmaker:1.4"
     androidTestCompile "com.crittercism.dexmaker:dexmaker-dx:1.4"
     androidTestCompile "com.crittercism.dexmaker:dexmaker-mockito:1.4"
+    androidTestCompile "com.android.support.test.espresso:espresso-core:3.0.1"
+    androidTestCompile "com.android.support.test:runner:1.0.1"
 
     // dependency injection
     compile 'com.google.dagger:dagger:2.5'

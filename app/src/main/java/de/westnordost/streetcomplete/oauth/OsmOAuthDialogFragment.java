@@ -89,7 +89,7 @@ public class OsmOAuthDialogFragment extends DialogFragment
 	@Override public void onCreate(@Nullable Bundle inState)
 	{
 		super.onCreate(inState);
-		Injector.instance.getApplicationComponent().inject(this);
+		Injector.getInstance().getApplicationComponent().inject(this);
 
 		if(inState != null)
 		{

@@ -72,7 +72,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 
 	public QuestsMapFragment()
 	{
-		Injector.instance.getApplicationComponent().inject(this);
+		Injector.getInstance().getApplicationComponent().inject(this);
 	}
 
 	@Override public void onAttach(Activity activity)

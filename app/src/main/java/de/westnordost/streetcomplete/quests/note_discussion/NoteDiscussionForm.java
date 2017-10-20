@@ -39,7 +39,7 @@ public class NoteDiscussionForm extends AbstractQuestAnswerFragment
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		Injector.instance.getApplicationComponent().inject(this);
+		Injector.getInstance().getApplicationComponent().inject(this);
 	}
 
 	@Override

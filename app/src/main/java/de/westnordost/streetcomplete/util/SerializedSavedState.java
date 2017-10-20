@@ -36,7 +36,7 @@ public class SerializedSavedState extends View.BaseSavedState
 
 	private void inject()
 	{
-		ApplicationComponent component = Injector.instance.getApplicationComponent();
+		ApplicationComponent component = Injector.getInstance().getApplicationComponent();
 		// the component is null when testing
 		if(component != null) component.inject(this);
 	}

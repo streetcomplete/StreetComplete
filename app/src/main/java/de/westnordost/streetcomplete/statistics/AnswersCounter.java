@@ -39,7 +39,7 @@ public class AnswersCounter extends android.support.v7.widget.AppCompatTextView
 
 	private void init()
 	{
-		Injector.instance.getApplicationComponent().inject(this);
+		Injector.getInstance().getApplicationComponent().inject(this);
 	}
 
 	public void answeredQuest(String source)

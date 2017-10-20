@@ -60,7 +60,7 @@ public class MapControlsFragment extends Fragment
 	@Override public void onCreate(@Nullable Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		Injector.instance.getApplicationComponent().inject(this);
+		Injector.getInstance().getApplicationComponent().inject(this);
 	}
 
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
