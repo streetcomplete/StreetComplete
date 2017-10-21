@@ -108,12 +108,15 @@ public class CreateNoteUpload
 	{
 		createNoteDB.delete(n.id);
 
-		for (String path : n.imagePaths)
+		if(n.imagePaths != null)
 		{
-			File file = new File(path);
-			if (file.exists())
+			for (String path : n.imagePaths)
 			{
-				file.delete();
+				File file = new File(path);
+				if (file.exists())
+				{
+					file.delete();
+				}
 			}
 		}
 	}

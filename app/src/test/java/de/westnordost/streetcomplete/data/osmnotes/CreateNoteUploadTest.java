@@ -22,6 +22,7 @@ import de.westnordost.osmapi.notes.Note;
 import de.westnordost.osmapi.notes.NoteComment;
 import de.westnordost.osmapi.notes.NotesDao;
 import de.westnordost.streetcomplete.ApplicationConstants;
+import de.westnordost.streetcomplete.util.ImageUploader;
 
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.*;
@@ -46,7 +47,7 @@ public class CreateNoteUploadTest extends TestCase
 	private CreateNoteUpload makeCreateNoteUpload()
 	{
 		return new CreateNoteUpload(createNoteDb, notesDao, noteDb, osmNoteQuestDb, mapDataDao,
-				new OsmNoteQuestType());
+				new OsmNoteQuestType(), mock(ImageUploader.class));
 	}
 
 	public void testCancel() throws InterruptedException

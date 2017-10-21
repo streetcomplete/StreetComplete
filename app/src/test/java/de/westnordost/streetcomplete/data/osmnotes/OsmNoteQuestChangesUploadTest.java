@@ -14,6 +14,7 @@ import de.westnordost.osmapi.map.data.OsmLatLon;
 import de.westnordost.osmapi.notes.Note;
 import de.westnordost.osmapi.notes.NotesDao;
 import de.westnordost.streetcomplete.data.QuestStatus;
+import de.westnordost.streetcomplete.util.ImageUploader;
 
 import static org.mockito.Mockito.*;
 
@@ -34,7 +35,7 @@ public class OsmNoteQuestChangesUploadTest extends TestCase
 					}
 				});
 
-		final OsmNoteQuestChangesUpload u = new OsmNoteQuestChangesUpload(null, questDb, null);
+		final OsmNoteQuestChangesUpload u = new OsmNoteQuestChangesUpload(null, questDb, null, null);
 		final AtomicBoolean cancel = new AtomicBoolean(false);
 
 		Thread t = new Thread(new Runnable()
@@ -61,8 +62,10 @@ public class OsmNoteQuestChangesUploadTest extends TestCase
 		when(osmDao.comment(anyLong(), anyString())).thenThrow(OsmConflictException.class);
 		OsmNoteQuestDao questDb = mock(OsmNoteQuestDao.class);
 		NoteDao noteDb = mock(NoteDao.class);
+		ImageUploader imageUploader = mock(ImageUploader.class);
 
-		assertNull(new OsmNoteQuestChangesUpload(osmDao, questDb, noteDb).uploadNoteChanges(quest));
+		assertNull(new OsmNoteQuestChangesUpload(osmDao, questDb, noteDb, imageUploader)
+				.uploadNoteChanges(quest));
 
 		verify(questDb).delete(quest.getId());
 		verify(noteDb).delete(quest.getNote().id);
@@ -76,8 +79,10 @@ public class OsmNoteQuestChangesUploadTest extends TestCase
 		when(osmDao.comment(anyLong(), anyString())).thenReturn(mock(Note.class));
 		OsmNoteQuestDao questDb = mock(OsmNoteQuestDao.class);
 		NoteDao noteDb = mock(NoteDao.class);
+		ImageUploader imageUploader = mock(ImageUploader.class);
 
-		Note n = new OsmNoteQuestChangesUpload(osmDao, questDb, noteDb).uploadNoteChanges(quest);
+		Note n = new OsmNoteQuestChangesUpload(osmDao, questDb, noteDb, imageUploader)
+				.uploadNoteChanges(quest);
 		assertNotNull(n);
 		assertEquals(n, quest.getNote());
 		assertEquals(QuestStatus.CLOSED, quest.getStatus());

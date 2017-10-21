@@ -104,12 +104,15 @@ public class OsmNoteQuestChangesUpload
 
 	private void deleteNoteImages(List<String> imagePaths)
 	{
-		for (String path : imagePaths)
+		if(imagePaths != null)
 		{
-			File file = new File(path);
-			if (file.exists())
+			for (String path : imagePaths)
 			{
-				file.delete();
+				File file = new File(path);
+				if (file.exists())
+				{
+					file.delete();
+				}
 			}
 		}
 	}
