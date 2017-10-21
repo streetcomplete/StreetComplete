@@ -82,7 +82,7 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 	public AbstractQuestAnswerFragment()
 	{
 		super();
-		Injector.getInstance().getApplicationComponent().inject(this);
+		Injector.instance.getApplicationComponent().inject(this);
 		questAnswerComponent = new QuestAnswerComponent();
 		otherAnswers = new ArrayList<>();
 	}

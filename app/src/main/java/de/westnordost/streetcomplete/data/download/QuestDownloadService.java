@@ -68,7 +68,7 @@ public class QuestDownloadService extends Service
 	public QuestDownloadService()
 	{
 		super();
-		Injector.getInstance().getApplicationComponent().inject(this);
+		Injector.instance.getApplicationComponent().inject(this);
 		cancelState = new AtomicBoolean(false);
 	}
 

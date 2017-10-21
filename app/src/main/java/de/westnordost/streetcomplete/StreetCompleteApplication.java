@@ -22,8 +22,8 @@ public class StreetCompleteApplication extends Application
 	public void onCreate()
 	{
 		super.onCreate();
-		Injector.getInstance().initializeApplicationComponent(this);
-		Injector.getInstance().getApplicationComponent().inject(this);
+		Injector.instance.initializeApplicationComponent(this);
+		Injector.instance.getApplicationComponent().inject(this);
 		JobManager.create(this).addJobCreator(jobCreator);
 		preload();
 	}

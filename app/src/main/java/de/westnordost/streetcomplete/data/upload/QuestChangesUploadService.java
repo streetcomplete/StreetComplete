@@ -53,7 +53,7 @@ public class QuestChangesUploadService extends IntentService
 	public QuestChangesUploadService()
 	{
 		super(TAG);
-		Injector.getInstance().getApplicationComponent().inject(this);
+		Injector.instance.getApplicationComponent().inject(this);
 	}
 
 	@Override public void onCreate()

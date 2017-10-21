@@ -41,7 +41,7 @@ public class AddOpeningHoursForm extends AbstractQuestFormAnswerFragment
 	{
 		View view = super.onCreateView(inflater, container, savedInstanceState);
 
-		Injector.getInstance().getApplicationComponent().inject(this);
+		Injector.instance.getApplicationComponent().inject(this);
 
 		addOtherAnswers();
 

@@ -28,7 +28,7 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
 	{
 		super.onCreate(savedInstanceState);
 
-		Injector.getInstance().getApplicationComponent().inject(this);
+		Injector.instance.getApplicationComponent().inject(this);
 
 		addPreferencesFromResource(R.xml.preferences);
 
