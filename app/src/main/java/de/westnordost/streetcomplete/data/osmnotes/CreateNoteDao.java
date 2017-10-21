@@ -4,10 +4,6 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
-
-import org.json.JSONArray;
-import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,14 +14,17 @@ import de.westnordost.streetcomplete.data.WhereSelectionBuilder;
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.map.data.OsmLatLon;
+import de.westnordost.streetcomplete.util.Serializer;
 
 public class CreateNoteDao
 {
 	protected final SQLiteOpenHelper dbHelper;
+	private final Serializer serializer;
 
-	@Inject public CreateNoteDao(SQLiteOpenHelper dbHelper)
+	@Inject public CreateNoteDao(SQLiteOpenHelper dbHelper, Serializer serializer)
 	{
 		this.dbHelper = dbHelper;
+		this.serializer = serializer;
 	}
 
 	public boolean add(CreateNote note)
@@ -149,20 +148,7 @@ public class CreateNoteDao
 		}
 		if(!cursor.isNull(colImagePaths))
 		{
-			ArrayList<String> imagePaths = new ArrayList<>();
-			try
-			{
-				JSONArray jsonArray = new JSONArray(cursor.getString(colImagePaths));
-				for(int i = 0; i < jsonArray.length(); i ++)
-				{
-					String value = jsonArray.getString(i);
-					imagePaths.add(value);
-				}
-			} catch (JSONException e)
-			{
-
-			}
-			note.imagePaths = imagePaths;
+			note.imagePaths = serializer.toObject(cursor.getBlob(colImagePaths), ArrayList.class);
 		}
 		note.id = cursor.getLong(colNoteId);
 

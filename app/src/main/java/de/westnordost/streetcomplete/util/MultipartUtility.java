@@ -72,11 +72,6 @@ public class MultipartUtility {
 		writer.flush();
 	}
 
-	public void addHeaderField(String name, String value) {
-		writer.append(name + ": " + value).append(LINE_FEED);
-		writer.flush();
-	}
-
 	public String finish() throws IOException {
 		String response = "";
 		writer.append(LINE_FEED).flush();

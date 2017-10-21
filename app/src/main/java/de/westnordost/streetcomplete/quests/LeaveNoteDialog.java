@@ -198,7 +198,10 @@ public class LeaveNoteDialog extends DialogFragment
 				imagePaths.add(photoFile.toString());
 			} else
 			{
-				photoFile.delete();
+				if (photoFile.exists())
+				{
+					photoFile.delete();
+				}
 			}
 		}
 	}

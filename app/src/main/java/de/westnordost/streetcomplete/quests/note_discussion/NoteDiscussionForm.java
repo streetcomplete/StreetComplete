@@ -261,7 +261,10 @@ public class NoteDiscussionForm extends AbstractQuestAnswerFragment
 				imagePaths.add(photoFile.toString());
 			} else
 			{
-				photoFile.delete();
+				if (photoFile.exists())
+				{
+					photoFile.delete();
+				}
 			}
 		}
 	}
@@ -280,6 +283,7 @@ public class NoteDiscussionForm extends AbstractQuestAnswerFragment
 
 	@Override public boolean hasChanges()
 	{
+		if (!imageBitmaps.isEmpty()) return !imageBitmaps.isEmpty();
 		return !noteInput.getText().toString().trim().isEmpty();
 	}
 
