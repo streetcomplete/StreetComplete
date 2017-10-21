@@ -2,6 +2,8 @@ package de.westnordost.streetcomplete.data.osmnotes;
 
 import android.util.Log;
 
+import java.io.File;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import javax.inject.Inject;
@@ -11,7 +13,7 @@ import de.westnordost.osmapi.common.errors.OsmConflictException;
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.notes.Note;
 import de.westnordost.osmapi.notes.NotesDao;
-import de.westnordost.streetcomplete.util.LutimImageUploader;
+import de.westnordost.streetcomplete.util.ImageUploader;
 
 public class OsmNoteQuestChangesUpload
 {
@@ -20,15 +22,15 @@ public class OsmNoteQuestChangesUpload
 	private final NotesDao osmDao;
 	private final OsmNoteQuestDao questDB;
 	private final NoteDao noteDB;
+	private final ImageUploader imageUploader;
 
-	private String imageLinkText;
-	private Boolean waitForImageUpload = false;
-
-	@Inject public OsmNoteQuestChangesUpload(NotesDao osmDao, OsmNoteQuestDao questDB, NoteDao noteDB)
+	@Inject public OsmNoteQuestChangesUpload(NotesDao osmDao, OsmNoteQuestDao questDB,
+											 NoteDao noteDB, ImageUploader imageUploader)
 	{
 		this.osmDao = osmDao;
 		this.questDB = questDB;
 		this.noteDB = noteDB;
+		this.imageUploader = imageUploader;
 	}
 
 	public void upload(AtomicBoolean cancelState)
@@ -61,40 +63,15 @@ public class OsmNoteQuestChangesUpload
 
 		try
 		{
-			Note newNote;
 			if (quest.getImagePaths() != null)
 			{
-				waitForImageUpload = true;
-
-				LutimImageUploader imageUploadHelper = new LutimImageUploader(new LutimImageUploader.ImageUploadListener() {
-					@Override
-					public void onImageUploaded(String linksToImages) {
-						imageLinkText = linksToImages;
-						waitForImageUpload = false;
-						notifyAll();
-					}
-					@Override
-					public void onUploadFailed() {
-						imageLinkText = "";
-						waitForImageUpload = false;
-						notifyAll();
-					}
-				});
-
-				imageUploadHelper.upload("https://images.mondedie.fr/", quest.getImagePaths());
-
-				while (waitForImageUpload) {
-					try
-					{
-						wait();
-					} catch (InterruptedException e) {}
+				List<String> urls = imageUploader.upload(quest.getImagePaths());
+				if(urls != null)
+				{
+					text += "\n" + getAttachedImagesUrls(urls);
 				}
-
-				newNote = osmDao.comment(quest.getNote().id, text + "\n" + imageLinkText);
-			} else
-			{
-				newNote = osmDao.comment(quest.getNote().id, text);
 			}
+			Note newNote = osmDao.comment(quest.getNote().id, text);
 
 			/* Unlike OSM quests, note quests are never deleted when the user contributed to it
 			   but must remain in the database with the status CLOSED as long as they are not
@@ -107,6 +84,7 @@ public class OsmNoteQuestChangesUpload
 			quest.setNote(newNote);
 			questDB.update(quest);
 			noteDB.put(newNote);
+			deleteNoteImages(quest.getImagePaths());
 
 			return newNote;
 		}
@@ -115,11 +93,24 @@ public class OsmNoteQuestChangesUpload
 			// someone else already closed the note -> our contribution is probably worthless. Delete
 			questDB.delete(quest.getId());
 			noteDB.delete(quest.getNote().id);
+			deleteNoteImages(quest.getImagePaths());
 
 			Log.i(TAG, "Dropped the comment " + getNoteQuestStringForLog(quest) +
 					" because the note has already been closed");
 
 			return null;
+		}
+	}
+
+	private void deleteNoteImages(List<String> imagePaths)
+	{
+		for (String path : imagePaths)
+		{
+			File file = new File(path);
+			if (file.exists())
+			{
+				file.delete();
+			}
 		}
 	}
 
@@ -129,4 +120,13 @@ public class OsmNoteQuestChangesUpload
 		return "\"" + n.getComment() + "\" at " + pos.getLatitude() + ", " + pos.getLongitude();
 	}
 
+	private static String getAttachedImagesUrls(List<String> imageLinks)
+	{
+		StringBuilder sb = new StringBuilder("Attached photo(s):\n");
+		for(String link : imageLinks)
+		{
+			sb.append(link).append("\n");
+		}
+		return sb.toString();
+	}
 }

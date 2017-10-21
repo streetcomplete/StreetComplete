@@ -6,39 +6,33 @@ import org.json.JSONObject;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
-public class LutimImageUploader
+public class LutimImageUploader implements ImageUploader
 {
+	private final String baseUrl;
 
-	public interface ImageUploadListener {
-		void onImageUploaded(String result);
-		void onUploadFailed();
+	public LutimImageUploader(String baseUrl)
+	{
+		this.baseUrl = baseUrl;
 	}
 
-	private ImageUploadListener listener;
-
-	public LutimImageUploader(ImageUploadListener listener){
-		this.listener = listener;
-	}
-
-	public void upload(String baseUrl, ArrayList<String> imagePaths)
+	@Override public List<String> upload(List<String> imagePaths)
 	{
 		ArrayList<String> imageLinks = new ArrayList<>();
 		try
 		{
-			for (int i = 0; imagePaths.size() > i; i++)
+			for (String path : imagePaths)
 			{
-				if (new File(imagePaths.get(i)).exists())
+				File file = new File(path);
+				if (file.exists())
 				{
 					MultipartUtility multipart = new MultipartUtility(baseUrl, "UTF-8");
 					multipart.addFormField("format", "json");
 					multipart.addFormField("keep-exif", "1");
-					multipart.addFilePart("file", new File(imagePaths.get(i)));
+					multipart.addFilePart("file", file);
 
 					String response = multipart.finish();
-
-					File file = new File(imagePaths.get(i));
-					file.delete();
 
 					JSONObject msg = new JSONObject(response).getJSONObject("msg");
 					String urlToImage = msg.getString("short");
@@ -47,32 +41,15 @@ public class LutimImageUploader
 					imageLinks.add(finalLinkToImage);
 				}
 			}
-
-		} catch (IOException e)
-		{
-			listener.onUploadFailed();
-			throw new RuntimeException(e);
-		} catch (JSONException e)
-		{
-			listener.onUploadFailed();
 		}
-		listener.onImageUploaded(getLinkText(imageLinks));
-	}
-
-	private String getLinkText(ArrayList<String> imageLinks)
-	{
-		String linkText = "Attached photo(s):\n";
-		if (imageLinks != null)
+		catch (IOException e)
 		{
-			for (int i = 0; imageLinks.size() > i; i++)
-			{
-				linkText += imageLinks.get(i);
-				linkText += "\n";
-			}
-			return linkText;
-		} else
-		{
-			return "";
+			return null;
 		}
+		catch (JSONException e)
+		{
+			return null;
+		}
+		return imageLinks;
 	}
 }

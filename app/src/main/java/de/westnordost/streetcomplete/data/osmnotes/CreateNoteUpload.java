@@ -2,6 +2,8 @@ package de.westnordost.streetcomplete.data.osmnotes;
 
 import android.util.Log;
 
+import java.io.File;
+import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -16,7 +18,7 @@ import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.notes.Note;
 import de.westnordost.osmapi.notes.NotesDao;
-import de.westnordost.streetcomplete.util.LutimImageUploader;
+import de.westnordost.streetcomplete.util.ImageUploader;
 
 public class CreateNoteUpload
 {
@@ -28,13 +30,13 @@ public class CreateNoteUpload
 	private final OsmNoteQuestDao noteQuestDB;
 	private final MapDataDao mapDataDao;
 	private final OsmNoteQuestType questType;
+	private final ImageUploader imageUploader;
 
-	private String imageLinkText;
-	private Boolean waitForImageUpload = false;
 
 	@Inject public CreateNoteUpload(
 			CreateNoteDao createNoteDB, NotesDao osmDao, NoteDao noteDB,
-			OsmNoteQuestDao noteQuestDB, MapDataDao mapDataDao, OsmNoteQuestType questType)
+			OsmNoteQuestDao noteQuestDB, MapDataDao mapDataDao, OsmNoteQuestType questType,
+			ImageUploader imageUploader)
 	{
 		this.createNoteDB = createNoteDB;
 		this.noteQuestDB = noteQuestDB;
@@ -42,6 +44,7 @@ public class CreateNoteUpload
 		this.osmDao = osmDao;
 		this.mapDataDao = mapDataDao;
 		this.questType = questType;
+		this.imageUploader = imageUploader;
 	}
 
 	public void upload(AtomicBoolean cancelState)
@@ -74,7 +77,7 @@ public class CreateNoteUpload
 		{
 			Log.i(TAG, "Dropped to be created note " + getCreateNoteStringForLog(n) +
 					" because the associated element has already been deleted");
-			createNoteDB.delete(n.id);
+			deleteNote(n);
 			return null;
 		}
 
@@ -96,8 +99,23 @@ public class CreateNoteUpload
 			// so the problem has likely been solved by another mapper
 		}
 
-		createNoteDB.delete(n.id);
+		deleteNote(n);
+
 		return newNote;
+	}
+
+	private void deleteNote(CreateNote n)
+	{
+		createNoteDB.delete(n.id);
+
+		for (String path : n.imagePaths)
+		{
+			File file = new File(path);
+			if (file.exists())
+			{
+				file.delete();
+			}
+		}
 	}
 
 	private static String getCreateNoteStringForLog(CreateNote n)
@@ -131,92 +149,42 @@ public class CreateNoteUpload
 		if(n.hasAssociatedElement())
 		{
 			Note oldNote = findAlreadyExistingNoteWithSameAssociatedElement(n);
-
 			if(oldNote != null)
 			{
-				if(oldNote.isOpen())
-				{
-					try
-					{
-						if (n.imagePaths != null)
-						{
-							waitForImageUpload = true;
-
-							LutimImageUploader imageUploadHelper = new LutimImageUploader(new LutimImageUploader.ImageUploadListener() {
-								@Override
-								public void onImageUploaded(String linksToImages) {
-									imageLinkText = linksToImages;
-									waitForImageUpload = false;
-								}
-								@Override
-								public void onUploadFailed() {
-									imageLinkText = "";
-									waitForImageUpload = false;
-								}
-							});
-
-							imageUploadHelper.upload("https://images.mondedie.fr/", n.imagePaths);
-
-							while (waitForImageUpload) {
-								try
-								{
-									wait();
-								} catch (InterruptedException e) {}
-							}
-
-							return osmDao.comment(oldNote.id, n.text + "\n" + imageLinkText);
-						} else
-						{
-							return osmDao.comment(oldNote.id, n.text);
-						}
-					}
-					catch (OsmConflictException e)
-					{
-						return null;
-					}
-				}
-				else
-				{
-					return null;
-				}
+				return commentNote(oldNote, n.text, n.imagePaths);
 			}
 		}
-		if (n.imagePaths != null)
+		return createNote(n);
+	}
+
+	private Note createNote(CreateNote n)
+	{
+		String text = getCreateNoteText(n);
+		text += uploadPhotosAndGetCommentText(n.imagePaths);
+		return osmDao.create(n.position, text);
+	}
+
+	private Note commentNote(Note note, String text, List<String> attachedImagePaths)
+	{
+		if(note.isOpen())
 		{
-			waitForImageUpload = true;
-
-			LutimImageUploader imageUploadHelper = new LutimImageUploader(new LutimImageUploader.ImageUploadListener() {
-				@Override
-				public void onImageUploaded(String linksToImages) {
-					imageLinkText = linksToImages;
-					waitForImageUpload = false;
-					notifyAll();
-				}
-				@Override
-				public void onUploadFailed() {
-					imageLinkText = "";
-					waitForImageUpload = false;
-					notifyAll();
-				}
-			});
-
-			imageUploadHelper.upload("https://images.mondedie.fr/", n.imagePaths);
-
-			while (waitForImageUpload) {
-				try
-				{
-					wait();
-				} catch (InterruptedException e) {}
+			try
+			{
+				text += uploadPhotosAndGetCommentText(attachedImagePaths);
+				return osmDao.comment(note.id, text);
 			}
-
-			return osmDao.create(n.position, getCreateNoteText(n) + "\n" + imageLinkText);
-		} else
+			catch (OsmConflictException e)
+			{
+				return null;
+			}
+		}
+		else
 		{
-			return osmDao.create(n.position, getCreateNoteText(n));
+			return null;
 		}
 	}
 
-	static String getCreateNoteText(CreateNote note)
+	private static String getCreateNoteText(CreateNote note)
 	{
 		if(note.hasAssociatedElement())
 		{
@@ -232,6 +200,19 @@ public class CreateNoteUpload
 			}
 		}
 		return note.text;
+	}
+
+	private String uploadPhotosAndGetCommentText(List<String> imagePaths)
+	{
+		if (imagePaths != null)
+		{
+			List<String> urls = imageUploader.upload(imagePaths);
+			if(urls != null)
+			{
+				return "\n" + getAttachedPhotosUrls(urls);
+			}
+		}
+		return "";
 	}
 
 	private Note findAlreadyExistingNoteWithSameAssociatedElement(final CreateNote newNote)
@@ -268,6 +249,16 @@ public class CreateNoteUpload
 		String newStyleRegex = "openstreetmap\\.org\\/"+elementType+"\\/"+n.elementId;
 		// i: turns on case insensitive regex, s: newlines are also captured with "."
 		return "(?is).*(("+oldStyleRegex+")|("+newStyleRegex+")).*";
+	}
+
+	private static String getAttachedPhotosUrls(List<String> imageLinks)
+	{
+		StringBuilder sb = new StringBuilder("Attached photo(s):\n");
+		for(String link : imageLinks)
+		{
+			sb.append(link).append("\n");
+		}
+		return sb.toString();
 	}
 
 	static String getAssociatedElementString(CreateNote n)

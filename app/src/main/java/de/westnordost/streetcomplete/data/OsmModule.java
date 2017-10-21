@@ -17,6 +17,8 @@ import de.westnordost.osmapi.map.MapDataDao;
 import de.westnordost.osmapi.map.MapDataFactory;
 import de.westnordost.osmapi.map.OsmMapDataFactory;
 import de.westnordost.osmapi.notes.NotesDao;
+import de.westnordost.streetcomplete.util.ImageUploader;
+import de.westnordost.streetcomplete.util.LutimImageUploader;
 import oauth.signpost.OAuthConsumer;
 
 @Module
@@ -74,5 +76,10 @@ public class OsmModule
 	@Provides public static MapDataDao mapDataDao(OsmConnection osm)
 	{
 		return new MapDataDao(osm);
+	}
+
+	@Provides public static ImageUploader imageUploader()
+	{
+		return new LutimImageUploader("https://images.mondedie.fr/");
 	}
 }
