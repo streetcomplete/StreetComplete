@@ -59,8 +59,7 @@ public class AboutFragment extends PreferenceFragment
 			public boolean onPreferenceClick(Preference preference)
 			{
 				Fragment f = ShowHtmlFragment.create(
-						getResources().getString(R.string.privacy_html),
-						getResources().getString(R.string.privacy_html_addendum1),
+						getResources().getString(R.string.privacy_html) + getResources().getString(R.string.privacy_html_addendum1),
 						R.string.about_title_privacy_statement);
 				getFragmentManager()
 						.beginTransaction()

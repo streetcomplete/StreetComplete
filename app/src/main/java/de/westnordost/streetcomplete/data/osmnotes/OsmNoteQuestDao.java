@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
+import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -99,15 +100,6 @@ public class OsmNoteQuestDao extends AQuestDao<OsmNoteQuest>
 
 		stmt.bindLong(5, quest.getLastUpdate().getTime());
 
-		if(quest.getImagePaths() != null)
-		{
-			stmt.bindBlob(6, serializer.toBytes(quest.getImagePaths()));
-		}
-		else
-		{
-			stmt.bindNull(6);
-		}
-
 		long result = stmt.executeInsert();
 		stmt.clearBindings();
 		return result;
@@ -122,6 +114,11 @@ public class OsmNoteQuestDao extends AQuestDao<OsmNoteQuest>
 		if(quest.getComment() != null)
 		{
 			values.put(Columns.COMMENT, quest.getComment());
+		}
+
+		if (quest.getImagePaths() != null)
+		{
+			values.put(Columns.IMAGE_PATHS, quest.getImagePaths().toString());
 		}
 
 		return values;
@@ -155,7 +152,7 @@ public class OsmNoteQuestDao extends AQuestDao<OsmNoteQuest>
 		}
 		QuestStatus status = QuestStatus.valueOf(cursor.getString(colQuestStatus));
 
-		ArrayList imagePaths = new ArrayList<>();
+		ArrayList<String> imagePaths = new ArrayList<>();
 		if(!cursor.isNull(colImagePaths))
 		{
 			imagePaths = serializer.toObject(cursor.getBlob(colImagePaths), ArrayList.class);

@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.IBinder;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -257,6 +258,7 @@ public class QuestController
 	{
 		OsmNoteQuest q = osmNoteQuestDB.get(questId);
 		ArrayList<String> imagePaths = answer.getStringArrayList(NoteDiscussionForm.IMAGE_PATHS);
+		Log.d("imagePaths", imagePaths.toString());
 		String comment = answer.getString(NoteDiscussionForm.TEXT);
 		if(comment != null && !comment.isEmpty())
 		{

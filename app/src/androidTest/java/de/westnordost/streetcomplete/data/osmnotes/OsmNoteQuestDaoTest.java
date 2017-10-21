@@ -38,7 +38,7 @@ public class OsmNoteQuestDaoTest extends ApplicationDbTestCase
 	public void testAddGetWithChanges()
 	{
 		Note note = NoteDaoTest.createNote();
-		OsmNoteQuest quest = new OsmNoteQuest(null, note, QuestStatus.ANSWERED, "hi da du", new Date(1234), questType);
+		OsmNoteQuest quest = new OsmNoteQuest(null, note, QuestStatus.ANSWERED, "hi da du", new Date(1234), questType, null);
 		noteDao.put(note);
 		dao.add(quest);
 		OsmNoteQuest dbQuest = dao.get(quest.getId());

@@ -11,6 +11,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -22,7 +23,6 @@ import android.widget.EditText;
 import android.widget.GridView;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -191,9 +191,15 @@ public class LeaveNoteDialog extends DialogFragment
 
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
-		if (requestCode == REQUEST_TAKE_PHOTO && resultCode == RESULT_OK) {
-			imageBitmaps.add(BitmapFactory.decodeFile(photoFile.getAbsolutePath()));
-			imagePaths.add(photoFile.toString());
+		if (requestCode == REQUEST_TAKE_PHOTO) {
+			if (resultCode == RESULT_OK)
+			{
+				imageBitmaps.add(BitmapFactory.decodeFile(photoFile.getAbsolutePath()));
+				imagePaths.add(photoFile.toString());
+			} else
+			{
+				photoFile.delete();
+			}
 		}
 	}
 
@@ -201,12 +207,11 @@ public class LeaveNoteDialog extends DialogFragment
 	{
 		String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
 		String imageFileName = "JPEG_" + timeStamp + "_";
-
-		File file = new File(getActivity().getFilesDir() + File.separator + "images" + File.separator + imageFileName + ".jpg");
-		file.getParentFile().mkdirs();
-		FileOutputStream fos = new FileOutputStream(file);
-		fos.close();
-
-		return file;
+		File directory = getActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+		return File.createTempFile(
+				imageFileName,
+				".jpg",
+				directory
+		);
 	}
 }
