@@ -4,6 +4,8 @@ import android.os.Bundle;
 
 import junit.framework.TestCase;
 
+import java.util.ArrayList;
+
 import de.westnordost.streetcomplete.data.QuestGroup;
 
 public class QuestAnswerComponentTest extends TestCase
@@ -44,7 +46,7 @@ public class QuestAnswerComponentTest extends TestCase
 			}
 
 			@Override public void onLeaveNote(long questId, QuestGroup group, String questTitle,
-											  String note)
+											  String note, ArrayList<String> imagePaths)
 			{
 				assertEquals(expectQuestId, questId);
 				assertEquals(expectGroup, group);
@@ -60,7 +62,7 @@ public class QuestAnswerComponentTest extends TestCase
 		});
 
 		c1.onCreate(QuestAnswerComponent.createArguments(expectQuestId, expectGroup));
-		c1.onLeaveNote(expectQuestTitle, expectNote);
+		c1.onLeaveNote(expectQuestTitle, expectNote, null);
 		c1.onAnswerQuest(expectBundle);
 		c1.onSkippedQuest();
 	}

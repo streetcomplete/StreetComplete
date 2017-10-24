@@ -255,10 +255,12 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 	{
 		if (!hasChanges())
 		{
+			onDiscard();
 			confirmed.run();
 		}
 		else
 		{
+			onDiscard();
 			DialogInterface.OnClickListener onYes = new DialogInterface.OnClickListener()
 			{
 				@Override
@@ -274,6 +276,8 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 					.show();
 		}
 	}
+
+	protected void onDiscard() {}
 
 	protected final void applyImmediateAnswer(Bundle data)
 	{

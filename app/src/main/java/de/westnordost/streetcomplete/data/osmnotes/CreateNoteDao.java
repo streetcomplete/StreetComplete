@@ -43,7 +43,7 @@ public class CreateNoteDao
 		}
 		if (note.imagePaths != null)
 		{
-			values.put(CreateNoteTable.Columns.IMAGE_PATHS, note.imagePaths.toString());
+			values.put(CreateNoteTable.Columns.IMAGE_PATHS, serializer.toBytes(note.imagePaths));
 		}
 		values.put(CreateNoteTable.Columns.TEXT, note.text);
 		values.put(CreateNoteTable.Columns.QUEST_TITLE, note.questTitle);

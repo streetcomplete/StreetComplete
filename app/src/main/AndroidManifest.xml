@@ -13,6 +13,8 @@
     <!-- evernote lib adds this permission but we do not use that feature-->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" tools:node="remove" />
 
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+
     <application
         android:name="de.westnordost.streetcomplete.StreetCompleteApplication"
         android:allowBackup="true"

@@ -5,10 +5,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
-import android.util.Log;
-
-import org.json.JSONArray;
-import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -118,7 +114,7 @@ public class OsmNoteQuestDao extends AQuestDao<OsmNoteQuest>
 
 		if (quest.getImagePaths() != null)
 		{
-			values.put(Columns.IMAGE_PATHS, quest.getImagePaths().toString());
+			values.put(Columns.IMAGE_PATHS, serializer.toBytes(quest.getImagePaths()));
 		}
 
 		return values;

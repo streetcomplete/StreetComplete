@@ -56,20 +56,10 @@
                 android:maxLines="12"
                  />
 
-            <GridView
-                android:id="@+id/gridView"
+            <fragment
+                android:name="de.westnordost.streetcomplete.quests.AttachPhotoFragment"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:numColumns="3"
-                android:verticalSpacing="10dp" />
-
-            <Button
-                android:id="@+id/buttonTakeImage"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/quest_leave_new_note_photo" />
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 
