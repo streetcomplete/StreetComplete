@@ -5,7 +5,7 @@ global:
     text_fill2:             [0.000,0.000,0.000]     # BLACK
     text_fill_road_e:       [0.333,0.333,0.333]     # DARK GRAY
     text_fill_exits:        '#D16768'               # motorway junctions, highway_casing1
-    text_fill_address:      [0.667,0.667,0.667]     # GRAY
+    text_fill_address:      [0.333,0.333,0.333]     # DARK GRAY
     text_fill_water:        '#4c89b5'               # blue
     text_fill_park:         '#43a254'               # green
     text_fill_beach:        '#99905c'               # green
