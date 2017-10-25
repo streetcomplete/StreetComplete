@@ -152,4 +152,4 @@ global:
     building2:          [0.600,0.600,0.600]     # building stroke
     sdk_building_extrude:  true                 # building extrude
     building_extrude_height: |                  # building extrude height logic
-        function() { return feature.height || 20; }
+        function() { return feature.height || 5; }
