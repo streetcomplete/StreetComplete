@@ -12,7 +12,7 @@
 
 import:
     - themes/color-cinnabar.yaml
-    - themes/label-5.yaml
+    - themes/label-11.yaml
     - themes/cinnabar-icons.yaml
 
 global:
