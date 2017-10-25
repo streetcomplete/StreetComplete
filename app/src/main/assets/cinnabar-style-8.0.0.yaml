@@ -2747,7 +2747,7 @@ layers:
             filter:
                 all:
                     - function() { return global.text_visible_address; }
-                    - $zoom: { min: 20 }
+                    - $zoom: { min: 17 }
                 any:
                     - kind: address
                     - { label_position: true, addr_housenumber: true, name: false }
