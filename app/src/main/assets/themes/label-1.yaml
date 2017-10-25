@@ -1,0 +1,37 @@
+global:
+    #label visibility
+    icon_size:                      [[13, '14px'], [16, '18px'], [18, '19px']]
+    text_visible_continent:         false
+    text_visible_admin:             false
+    text_visible_populated_places:  false
+    icon_visible_populated_places:  false
+    text_visible_neighbourhoods:    false
+    text_visible_neighbourhoods_e:  false
+    text_visible_building:          false     # false for default
+    text_visible_address:           false     # false for default
+    text_visible_water_labels:      false
+    text_visible_island:            false
+    icon_visible_arrows:            false
+    icon_visible_landuse_green:     false   # needs work
+    text_visible_landuse_green:     false
+    icon_size_green:                [[0, '0px']]      # 0px for no, default, more  [[13, 14px], [16, 18px], [18, 19px]]
+    label_visible_poi_landuse:      false
+    icon_visible_poi_landuse:       false     # false for default
+    text_visible_poi_landuse:       false     # false for default
+    icon_visible_poi_landuse_e:     false     # false for default
+    text_visible_landuse_generic:   false     # false for default
+    icon_visible_station:           false     # false for default
+    text_visible_station:           false     # false for default
+    text_visible_highway:           false
+    text_visible_trunk_primary:     false
+    text_visible_secondary:         false
+    text_visible_tertiary:          false
+    text_visible_minor_road:        false
+    text_visible_service_road:      false
+    text_visible_path:              false
+    text_visible_piste:             false
+    text_visible_steps:             false
+    text_visible_aerialway:         false
+    text_visible_airport_gate:      false
+    sdk_road_shields:               false
+    text_visible_exits:             false

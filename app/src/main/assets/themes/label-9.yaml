@@ -1,0 +1,43 @@
+global:
+    #label visibility
+    icon_size:                      [[13, '14px'], [16, '18px'], [18, '19px']]
+    text_visible_continent:         true
+    text_visible_admin:             true
+    text_visible_populated_places:  true
+    icon_visible_populated_places:  true
+    text_visible_neighbourhoods:    true
+    text_visible_neighbourhoods_e:  true
+    text_visible_building:          true     # false for default
+    text_visible_address:           true     # false for default
+    text_visible_water_labels:      true
+    text_visible_island:            true
+    icon_visible_arrows:            true
+    icon_visible_landuse_green:     true    # needs work
+    text_visible_landuse_green:     true
+    icon_size_green:                [[13, '14px'], [16, '18px'], [18, '19px']]      # 0px for no, default, more  [[13, 14px], [16, 18px], [18, 19px]]
+    label_visible_poi_landuse:      true
+    icon_visible_poi_landuse:       true     # false for default
+    text_visible_poi_landuse:       true     # false for default
+    icon_visible_poi_landuse_e:     true     # false for default
+    text_visible_landuse_generic:   true     # false for default
+    icon_visible_station:           true     # false for default
+    text_visible_station:           true     # false for default
+    text_visible_highway:           true
+    text_visible_trunk_primary:     true
+    text_visible_secondary:         true
+    text_visible_tertiary:          true
+    text_visible_minor_road:        true
+    text_visible_service_road:      true
+    text_visible_path:              true
+    text_visible_piste:             true
+    text_visible_steps:             true
+    text_visible_aerialway:         true
+    text_visible_airport_gate:      true
+    sdk_road_shields:               true
+    text_visible_exits:             true
+
+layers:
+    pois:
+        draw:
+            mapzen_icon_library:
+                buffer: 24px
