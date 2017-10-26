@@ -26,7 +26,6 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import de.westnordost.streetcomplete.R;
-import de.westnordost.streetcomplete.quests.note_discussion.NoteDiscussionForm;
 import de.westnordost.streetcomplete.view.NoteImageAdapter;
 import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 
@@ -48,9 +47,9 @@ public class AttachPhotoFragment extends Fragment
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState)
 	{
-		final View panel = inflater.inflate(R.layout.attach_photo_fragment, container, false);
+		View view = inflater.inflate(R.layout.attach_photo_fragment, container, false);
 
-		Button takePhoto = panel.findViewById(R.id.buttonTakeImage);
+		Button takePhoto = view.findViewById(R.id.buttonTakeImage);
 		takePhoto.setOnClickListener(new View.OnClickListener()
 		{
 			@Override public void onClick(View v)
@@ -65,7 +64,7 @@ public class AttachPhotoFragment extends Fragment
 		}
 
 		final NoteImageAdapter noteImageAdapter = new NoteImageAdapter(getActivity(), imageBitmaps);
-		gridView = panel.findViewById(R.id.gridView);
+		gridView = view.findViewById(R.id.gridView);
 		gridView.setAdapter(noteImageAdapter);
 		gridView.setOnItemClickListener(new AdapterView.OnItemClickListener()
 		{
@@ -88,7 +87,7 @@ public class AttachPhotoFragment extends Fragment
 			}
 		});
 
-		return panel;
+		return view;
 	}
 
 	private void takePhoto()
@@ -118,9 +117,6 @@ public class AttachPhotoFragment extends Fragment
 			{
 				imageBitmaps.add(ThumbnailUtils.extractThumbnail(BitmapFactory.decodeFile(photoFile.getPath()), 150, 150));
 				imagePaths.add(photoFile.toString());
-
-				LeaveNoteDialog.imagePaths = imagePaths;
-				NoteDiscussionForm.imagePaths = imagePaths;
 			} else
 			{
 				if (photoFile.exists())
@@ -143,11 +139,16 @@ public class AttachPhotoFragment extends Fragment
 		);
 	}
 
-	public void deleteImages(ArrayList<String> imagesForDeletetion)
+	public ArrayList<String> getImagePaths()
 	{
-		if(imagesForDeletetion != null)
+		return imagePaths;
+	}
+
+	public void deleteImages()
+	{
+		if(imagePaths != null)
 		{
-			for (String path : imagesForDeletetion)
+			for (String path : imagePaths)
 			{
 				File file = new File(path);
 				if (file.exists())

@@ -48,6 +48,7 @@
         />
 
     <fragment
+        android:id="@+id/attachPhotoFragment"
         android:name="de.westnordost.streetcomplete.quests.AttachPhotoFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

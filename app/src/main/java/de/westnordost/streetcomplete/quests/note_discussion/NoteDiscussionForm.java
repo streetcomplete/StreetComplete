@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.note_discussion;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,7 +13,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.Date;
 import javax.inject.Inject;
 
@@ -35,7 +35,7 @@ public class NoteDiscussionForm extends AbstractQuestAnswerFragment
 
 	@Inject OsmNoteQuestDao noteDb;
 
-	public static ArrayList<String> imagePaths = new ArrayList<>();
+	private AttachPhotoFragment attachPhotoFragment;
 
 	private EditText noteInput;
 	private LinearLayout noteDiscussion;
@@ -99,6 +99,18 @@ public class NoteDiscussionForm extends AbstractQuestAnswerFragment
 		}.execute();
 
 		return view;
+	}
+
+	@Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState)
+	{
+		super.onViewCreated(view, savedInstanceState);
+		attachPhotoFragment = (AttachPhotoFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.attachPhotoFragment);
+	}
+
+	@Override
+	public void onDestroyView() {
+		super.onDestroyView();
+		if (attachPhotoFragment != null) getActivity().getSupportFragmentManager().beginTransaction().remove(attachPhotoFragment).commit();
 	}
 
 	private void inflateNoteDiscussion(Note note)
@@ -167,20 +179,19 @@ public class NoteDiscussionForm extends AbstractQuestAnswerFragment
 
 		Bundle answer = new Bundle();
 		answer.putString(TEXT, noteText);
-		answer.putStringArrayList(IMAGE_PATHS, imagePaths);
+		answer.putStringArrayList(IMAGE_PATHS, attachPhotoFragment.getImagePaths());
 		applyImmediateAnswer(answer);
 	}
 
 	@Override
 	public void onDiscard()
 	{
-		AttachPhotoFragment attachPhotoFragment = new AttachPhotoFragment();
-		attachPhotoFragment.deleteImages(imagePaths);
+		attachPhotoFragment.deleteImages();
 	}
 
 	@Override public boolean hasChanges()
 	{
-		if (!imagePaths.isEmpty()) return !imagePaths.isEmpty();
+		if (!attachPhotoFragment.getImagePaths().isEmpty()) return !attachPhotoFragment.getImagePaths().isEmpty();
 		return !noteInput.getText().toString().trim().isEmpty();
 	}
 
