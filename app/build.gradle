@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.neenbedankt.android-apt'
 
 def MAPZEN_API_KEY = hasProperty('mapzenApiKey') ? '"' + mapzenApiKey + '"' : "null";
 
@@ -8,7 +7,7 @@ android {
         release
     }
     compileSdkVersion 26
-    buildToolsVersion '26.0.1'
+    buildToolsVersion '26.0.2'
     testOptions {
         unitTests.returnDefaultValues = true
     }
@@ -73,8 +72,10 @@ dependencies {
     androidTestCompile "com.crittercism.dexmaker:dexmaker-mockito:1.4"
 
     // dependency injection
-    compile 'com.google.dagger:dagger:2.5'
-    apt 'com.google.dagger:dagger-compiler:2.5'
+    dependencies {
+        compile 'com.google.dagger:dagger:2.5'
+        annotationProcessor 'com.google.dagger:dagger-compiler:2.5'
+    }
 
     // Android stuff
     compile 'com.android.support:appcompat-v7:26.0.1'
