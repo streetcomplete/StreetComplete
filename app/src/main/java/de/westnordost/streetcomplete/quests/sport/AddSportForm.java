@@ -67,7 +67,7 @@ public class AddSportForm extends ImageListQuestAnswerFragment
 	{
 		View view = super.onCreateView(inflater, container, savedInstanceState);
 		actualSportsValues = createItems();
-		imageSelector.setCellLayout(R.layout.icon_select_cell_with_label_below);
+		imageSelector.setCellLayout(R.layout.cell_icon_select_with_label_below);
 
 		addOtherAnswer(R.string.quest_sport_answer_multi, new Runnable()
 		{

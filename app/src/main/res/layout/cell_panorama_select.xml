@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                xmlns:tools="http://schemas.android.com/tools"
                 android:padding="2dp">
 
     <ImageView
@@ -10,7 +11,7 @@
         android:layout_height="wrap_content"
         android:scaleType="centerCrop"
         android:adjustViewBounds="true"
-        android:src="@drawable/panorama_surface_unpaved"/>
+        tools:src="@drawable/panorama_surface_unpaved"/>
 
     <View
         android:layout_width="wrap_content"
@@ -26,7 +27,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/quest_surface_value_unpaved"
+        tools:text="@string/quest_surface_value_unpaved"
         android:layout_alignBottom="@+id/imageView"
         android:layout_centerHorizontal="true"
         style="@style/ImageSelectLabel"

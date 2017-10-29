@@ -10,7 +10,7 @@ import com.mapzen.android.lost.api.LocationRequest;
 import com.mapzen.android.lost.api.LocationServices;
 import com.mapzen.android.lost.api.LostApiClient;
 
-/** Request ONE location update */
+/** Request ONE location onBind */
 public class SingleLocationRequest implements LocationListener, LostApiClient.ConnectionCallbacks
 {
 	private final LostApiClient lostApiClient;

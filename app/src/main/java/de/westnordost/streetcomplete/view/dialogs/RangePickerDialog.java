@@ -29,7 +29,7 @@ public class RangePickerDialog extends AlertDialog implements DialogInterface.On
 		this.listener = listener;
 
 		final LayoutInflater inflater = LayoutInflater.from(context);
-		final View view = inflater.inflate(R.layout.range_picker_dialog, null);
+		final View view = inflater.inflate(R.layout.dialog_range_picker, null);
 		setView(view);
 		setTitle(title);
 		setButton(BUTTON_POSITIVE, context.getString(android.R.string.ok), this);

@@ -14,7 +14,6 @@ import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.streetcomplete.data.QuestStatus;
 import de.westnordost.streetcomplete.data.QuestType;
-import de.westnordost.streetcomplete.data.QuestTypes;
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestDao;
@@ -26,10 +25,11 @@ public class OsmQuestUnlocker
 	private final OsmNoteQuestDao osmNoteQuestDb;
 	private final OsmQuestDao questDB;
 	private final ElementGeometryDao elementGeometryDB;
-	private final QuestTypes questTypes;
+	private final List<QuestType> questTypes;
 
-	@Inject public OsmQuestUnlocker(OsmNoteQuestDao osmNoteQuestDb, OsmQuestDao questDB,
-									ElementGeometryDao elementGeometryDB, QuestTypes questTypes)
+	@Inject public OsmQuestUnlocker(
+			OsmNoteQuestDao osmNoteQuestDb, OsmQuestDao questDB,
+			ElementGeometryDao elementGeometryDB, List<QuestType> questTypes)
 	{
 		this.osmNoteQuestDb = osmNoteQuestDb;
 		this.questDB = questDB;
@@ -46,7 +46,7 @@ public class OsmQuestUnlocker
 
 		Set<QuestType> currentQuestTypes = getCurrentQuestTypes(element);
 
-		for(QuestType questType : questTypes.getQuestTypesSortedByImportance())
+		for(QuestType questType : questTypes)
 		{
 			if(!(questType instanceof OsmElementQuestType)) continue;
 			OsmElementQuestType osmQuestType = (OsmElementQuestType)questType;

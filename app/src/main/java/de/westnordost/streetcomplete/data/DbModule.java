@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.List;
+
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -11,6 +13,7 @@ import dagger.Provides;
 import de.westnordost.streetcomplete.data.changesets.OpenChangesetsDao;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
 import de.westnordost.streetcomplete.data.osm.persist.UndoOsmQuestDao;
+import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeDao;
 import de.westnordost.streetcomplete.data.statistics.QuestStatisticsDao;
 import de.westnordost.streetcomplete.quests.road_name.data.RoadNamesTablesHelper;
 import de.westnordost.streetcomplete.util.KryoSerializer;
@@ -43,14 +46,25 @@ public class DbModule
 	}
 
 	@Provides @Singleton public static OsmQuestDao osmQuestDao(
-			SQLiteOpenHelper dbHelper, Serializer serializer, QuestTypes questTypeList)
+			SQLiteOpenHelper dbHelper, Serializer serializer, QuestTypeRegistry questTypeList)
 	{
 		return new OsmQuestDao(dbHelper, serializer, questTypeList);
 	}
 
 	@Provides @Singleton public static UndoOsmQuestDao undoOsmQuestDao(
-			SQLiteOpenHelper dbHelper, Serializer serializer, QuestTypes questTypeList)
+			SQLiteOpenHelper dbHelper, Serializer serializer, QuestTypeRegistry questTypeList)
 	{
 		return new UndoOsmQuestDao(dbHelper, serializer, questTypeList);
+	}
+
+	@Provides @Singleton public static VisibleQuestTypeDao visibleQuestTypeDao(
+			SQLiteOpenHelper dbHelper, QuestTypeRegistry questTypeList)
+	{
+		return new VisibleQuestTypeDao(dbHelper, questTypeList);
+	}
+
+	@Provides public static List<QuestType> visibleQuestTypes(VisibleQuestTypeDao visibleQuestTypeDao)
+	{
+		return visibleQuestTypeDao.getAll();
 	}
 }

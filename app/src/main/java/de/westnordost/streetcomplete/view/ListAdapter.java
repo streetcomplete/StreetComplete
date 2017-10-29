@@ -5,7 +5,7 @@ import android.view.View;
 
 import java.util.List;
 
-public abstract class ListAdapter<T> extends RecyclerView.Adapter<ListAdapter.ViewHolder>
+public abstract class ListAdapter<T> extends RecyclerView.Adapter<ListAdapter.ViewHolder<T>>
 {
 	private List<T> list;
 
@@ -14,9 +14,9 @@ public abstract class ListAdapter<T> extends RecyclerView.Adapter<ListAdapter.Vi
 		this.list = list;
 	}
 
-	@Override public void onBindViewHolder(ListAdapter.ViewHolder holder, int position)
+	@Override public void onBindViewHolder(ListAdapter.ViewHolder<T> holder, int position)
 	{
-		holder.update(list.get(position));
+		holder.onBind(list.get(position));
 	}
 
 	@Override public int getItemCount()
@@ -24,13 +24,20 @@ public abstract class ListAdapter<T> extends RecyclerView.Adapter<ListAdapter.Vi
 		return list.size();
 	}
 
-	public abstract class ViewHolder extends RecyclerView.ViewHolder
+	protected List<T> getList()
+	{
+		return list;
+	}
+
+	public static abstract class ViewHolder<U> extends RecyclerView.ViewHolder
 	{
 		public ViewHolder(View itemView)
 		{
 			super(itemView);
+			onCreate();
 		}
 
-		protected abstract void update(T with);
+		protected void onCreate() {}
+		protected abstract void onBind(U with);
 	}
 }

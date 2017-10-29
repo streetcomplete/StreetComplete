@@ -45,7 +45,7 @@ import javax.inject.Inject;
 import de.westnordost.osmapi.common.errors.OsmApiReadResponseException;
 import de.westnordost.osmapi.common.errors.OsmAuthorizationException;
 import de.westnordost.osmapi.common.errors.OsmConnectionException;
-import de.westnordost.streetcomplete.about.AboutActivity;
+import de.westnordost.streetcomplete.about.AboutFragment;
 import de.westnordost.streetcomplete.data.Quest;
 import de.westnordost.streetcomplete.data.QuestAutoSyncer;
 import de.westnordost.streetcomplete.data.upload.QuestChangesUploadProgressListener;
@@ -281,7 +281,7 @@ public class MainActivity extends AppCompatActivity implements
 		Element element = questController.getOsmElement(quest);
 
 		View inner = LayoutInflater.from(this).inflate(
-				R.layout.undo_dialog_layout, null, false);
+				R.layout.dialog_undo, null, false);
 		ImageView icon = inner.findViewById(R.id.icon);
 		icon.setImageResource(quest.getType().getIcon());
 		TextView text = inner.findViewById(R.id.text);
@@ -317,6 +317,7 @@ public class MainActivity extends AppCompatActivity implements
 	@Override public boolean onOptionsItemSelected(MenuItem item)
 	{
 		int id = item.getItemId();
+		Intent intent;
 
 		switch (id)
 		{
@@ -326,11 +327,13 @@ public class MainActivity extends AppCompatActivity implements
 				else              Toast.makeText(this, R.string.no_changes_to_undo, Toast.LENGTH_SHORT).show();
 				return true;
 			case R.id.action_settings:
-				Intent intent = new Intent(this, SettingsActivity.class);
+				intent = new Intent(this, SettingsActivity.class);
 				startActivity(intent);
 				return true;
 			case R.id.action_about:
-				startActivity(new Intent(this, AboutActivity.class));
+				intent = new Intent(this, FragmentContainerActivity.class);
+				intent.putExtra(FragmentContainerActivity.EXTRA_FRAGMENT_CLASS, AboutFragment.class.getName());
+				startActivity(intent);
 				return true;
 			case R.id.action_download:
 				if(isConnected()) downloadDisplayedArea();
@@ -363,7 +366,7 @@ public class MainActivity extends AppCompatActivity implements
 		if(dontShowRequestAuthorizationAgain) return;
 
 		View inner = LayoutInflater.from(this).inflate(
-				R.layout.authorize_now_dialog_layout, null, false);
+				R.layout.dialog_authorize_now, null, false);
 		final CheckBox checkBox = inner.findViewById(R.id.checkBoxDontShowAgain);
 
 		new AlertDialogBuilder(this)

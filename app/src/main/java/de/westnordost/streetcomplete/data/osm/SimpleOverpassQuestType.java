@@ -45,4 +45,6 @@ public abstract class SimpleOverpassQuestType implements OsmElementQuestType
 	{
 		return getTitle(Collections.<String, String>emptyMap());
 	}
+
+	@Override public boolean isDefaultEnabled() { return true; }
 }

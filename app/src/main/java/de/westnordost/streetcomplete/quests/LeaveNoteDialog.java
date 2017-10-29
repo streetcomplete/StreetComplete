@@ -33,7 +33,7 @@ public class LeaveNoteDialog extends DialogFragment
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState)
 	{
-		View view = inflater.inflate(R.layout.leave_note, container, false);
+		View view = inflater.inflate(R.layout.dialog_leave_note, container, false);
 
 		Button buttonCancel = view.findViewById(R.id.buttonCancel);
 		buttonCancel.setOnClickListener(new View.OnClickListener()

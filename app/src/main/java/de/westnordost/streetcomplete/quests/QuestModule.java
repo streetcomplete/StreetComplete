@@ -7,7 +7,7 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 import de.westnordost.streetcomplete.data.QuestType;
-import de.westnordost.streetcomplete.data.QuestTypes;
+import de.westnordost.streetcomplete.data.QuestTypeRegistry;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestType;
 import de.westnordost.streetcomplete.quests.baby_changing_table.AddBabyChangingTable;
@@ -41,7 +41,7 @@ import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAcces
 @Module
 public class QuestModule
 {
-	@Provides @Singleton public static QuestTypes questTypeList(
+	@Provides @Singleton public static QuestTypeRegistry questTypeRegistry(
 			OsmNoteQuestType osmNoteQuestType, OverpassMapDataDao o,
 			RoadNameSuggestionsDao roadNameSuggestionsDao,
 			PutRoadNameSuggestionsHandler putRoadNameSuggestionsHandler)
@@ -92,7 +92,7 @@ public class QuestModule
         		new AddPowerPolesMaterial(o)
 		};
 
-		return new QuestTypes(Arrays.asList(questTypesOrderedByImportance));
+		return new QuestTypeRegistry(Arrays.asList(questTypesOrderedByImportance));
 	}
 
 	@Provides @Singleton public static OsmNoteQuestType osmNoteQuestType()

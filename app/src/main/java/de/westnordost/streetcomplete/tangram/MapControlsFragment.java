@@ -22,7 +22,6 @@ import com.mapzen.android.lost.api.LocationRequest;
 import javax.inject.Inject;
 
 import de.westnordost.streetcomplete.Injector;
-import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.location.LocationRequestFragment;
 import de.westnordost.streetcomplete.location.LocationState;
@@ -66,7 +65,7 @@ public class MapControlsFragment extends Fragment
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
 									   Bundle savedInstanceState)
 	{
-		View view = inflater.inflate(R.layout.map_controls, container, false);
+		View view = inflater.inflate(R.layout.fragment_map_controls, container, false);
 		compassNeedle = view.findViewById(R.id.compassNeedle);
 
 		view.findViewById(R.id.compass).setOnClickListener(new View.OnClickListener()

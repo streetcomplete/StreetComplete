@@ -17,6 +17,7 @@ import de.westnordost.streetcomplete.data.osmnotes.NoteTable;
 import de.westnordost.streetcomplete.data.osm.persist.RelationTable;
 import de.westnordost.streetcomplete.data.osm.persist.WayTable;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestTable;
+import de.westnordost.streetcomplete.data.visiblequests.QuestVisibilityTable;
 import de.westnordost.streetcomplete.data.statistics.QuestStatisticsTable;
 import de.westnordost.streetcomplete.data.tiles.DownloadedTilesTable;
 
@@ -24,7 +25,7 @@ import de.westnordost.streetcomplete.data.tiles.DownloadedTilesTable;
 public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 {
 	public static final String DB_NAME = "streetcomplete.db";
-	public static final int DB_VERSION = 7;
+	public static final int DB_VERSION = 8;
 
 	private static final String OSM_QUESTS_CREATE_PARAMS = " (" +
 			OsmQuestTable.Columns.QUEST_ID +		" INTEGER		PRIMARY KEY, " +
@@ -209,6 +210,13 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 				") " +
 			");";
 
+	private static final String QUEST_VISIBILITY_TABLE_CREATE =
+			"CREATE TABLE " + QuestVisibilityTable.NAME +
+			" (" +
+				QuestVisibilityTable.Columns.QUEST_TYPE +    " varchar(255) PRIMARY KEY, " +
+				QuestVisibilityTable.Columns.VISIBILITY +    " int NOT NULL " +
+			");";
+
 	private final TablesHelper[] extensions;
 
 	public StreetCompleteOpenHelper(Context context, TablesHelper[] extensions)
@@ -241,6 +249,8 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 		db.execSQL(OSM_NOTES_VIEW_CREATE);
 
 		db.execSQL(OPEN_CHANGESETS_TABLE_CREATE);
+
+		db.execSQL(QUEST_VISIBILITY_TABLE_CREATE);
 
 		for (TablesHelper extension : extensions)
 		{
@@ -296,10 +306,15 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 				CreateNoteTable.Columns.QUEST_TITLE + " text;");
 		}
 
-		if(oldVersion < 7 && newVersion >= 6)
+		if(oldVersion < 7 && newVersion >= 7)
 		{
 			db.execSQL(UNDO_OSM_QUESTS_TABLE_CREATE);
 			db.execSQL(OSM_UNDO_QUESTS_VIEW_CREATE);
+		}
+
+		if(oldVersion < 8 && newVersion >= 8)
+		{
+			db.execSQL(QUEST_VISIBILITY_TABLE_CREATE);
 		}
 
 		// for later changes to the DB

@@ -49,6 +49,7 @@ public class QuestController
 	private final OpenChangesetsDao openChangesetsDao;
 	private final Context context;
 	private final VisibleQuestRelay relay;
+	private final List<QuestType> questTypes;
 
 	private boolean downloadServiceIsBound;
 	private QuestDownloadService.Interface downloadService;
@@ -87,7 +88,8 @@ public class QuestController
 	@Inject public QuestController(OsmQuestDao osmQuestDB, UndoOsmQuestDao undoOsmQuestDB,
 								   MergedElementDao osmElementDB, ElementGeometryDao geometryDB,
 								   OsmNoteQuestDao osmNoteQuestDB, CreateNoteDao createNoteDB,
-								   OpenChangesetsDao openChangesetsDao, Context context)
+								   OpenChangesetsDao openChangesetsDao, List<QuestType> questTypes,
+								   Context context)
 	{
 		this.osmQuestDB = osmQuestDB;
 		this.undoOsmQuestDB = undoOsmQuestDB;
@@ -96,6 +98,7 @@ public class QuestController
 		this.osmNoteQuestDB = osmNoteQuestDB;
 		this.createNoteDB = createNoteDB;
 		this.openChangesetsDao = openChangesetsDao;
+		this.questTypes = questTypes;
 		this.context = context;
 		this.relay = new VisibleQuestRelay();
 	}
@@ -365,7 +368,14 @@ public class QuestController
 	{
 		workerHandler.post(new Runnable() { @Override public void run()
 		{
-			relay.onQuestsCreated(osmQuestDB.getAll(bbox, QuestStatus.NEW), QuestGroup.OSM);
+
+			List<String> questTypeNames = new ArrayList<>(questTypes.size());
+			for (QuestType questType : questTypes)
+			{
+				questTypeNames.add(questType.getClass().getSimpleName());
+			}
+
+			relay.onQuestsCreated(osmQuestDB.getAll(bbox, QuestStatus.NEW, questTypeNames), QuestGroup.OSM);
 			relay.onQuestsCreated(osmNoteQuestDB.getAll(bbox, QuestStatus.NEW), QuestGroup.OSM_NOTE);
 		}});
 	}

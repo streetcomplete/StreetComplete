@@ -128,7 +128,7 @@ public class AddRoadName implements OsmElementQuestType
 			}
 		}
 
-		// these params are passed from the form only to update the road name suggestions so that
+		// these params are passed from the form only to onBind the road name suggestions so that
 		// newly input street names turn up in the suggestions as well
 
 		long wayId = answer.getLong(AddRoadNameForm.WAY_ID);
@@ -169,4 +169,5 @@ public class AddRoadName implements OsmElementQuestType
 	@Override public int getIcon() { return R.drawable.ic_quest_street_name; }
 	@Override public int getTitle() { return R.string.quest_streetName_title; }
 	@Override public int getTitle(Map<String,String> tags) { return getTitle(); }
+	@Override public boolean isDefaultEnabled() { return true; }
 }
