@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.inject.Singleton;
@@ -13,6 +15,7 @@ import dagger.Provides;
 import de.westnordost.streetcomplete.data.changesets.OpenChangesetsDao;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
 import de.westnordost.streetcomplete.data.osm.persist.UndoOsmQuestDao;
+import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderList;
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeDao;
 import de.westnordost.streetcomplete.data.statistics.QuestStatisticsDao;
 import de.westnordost.streetcomplete.quests.road_name.data.RoadNamesTablesHelper;
@@ -58,13 +61,33 @@ public class DbModule
 	}
 
 	@Provides @Singleton public static VisibleQuestTypeDao visibleQuestTypeDao(
-			SQLiteOpenHelper dbHelper, QuestTypeRegistry questTypeList)
+			SQLiteOpenHelper dbHelper)
 	{
-		return new VisibleQuestTypeDao(dbHelper, questTypeList);
+		return new VisibleQuestTypeDao(dbHelper);
 	}
 
-	@Provides public static List<QuestType> visibleQuestTypes(VisibleQuestTypeDao visibleQuestTypeDao)
+	@Provides @Singleton public static QuestTypeOrderList questTypeOrderDao(
+			SharedPreferences prefs, QuestTypeRegistry questTypeRegistry)
 	{
-		return visibleQuestTypeDao.getAll();
+		return new QuestTypeOrderList(prefs, questTypeRegistry);
+	}
+
+	@Provides public static List<QuestType> visibleQuestTypes(
+			QuestTypeRegistry questTypeRegistry, VisibleQuestTypeDao visibleQuestTypeDao,
+			QuestTypeOrderList questTypeOrderList)
+	{
+		List<QuestType> questTypes = new ArrayList<>(questTypeRegistry.getAll());
+		Iterator<QuestType> it = questTypes.listIterator();
+		while(it.hasNext())
+		{
+			QuestType questType = it.next();
+			if(!visibleQuestTypeDao.isVisible(questType))
+			{
+				it.remove();
+			}
+		}
+		questTypeOrderList.sort(questTypes);
+
+		return questTypes;
 	}
 }

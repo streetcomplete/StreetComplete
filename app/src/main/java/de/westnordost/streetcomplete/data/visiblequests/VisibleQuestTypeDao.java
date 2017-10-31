@@ -4,63 +4,43 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
-
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
 
 import de.westnordost.streetcomplete.data.QuestType;
-import de.westnordost.streetcomplete.data.QuestTypeRegistry;
 
 public class VisibleQuestTypeDao
 {
 	private final SQLiteOpenHelper dbHelper;
-	private final QuestTypeRegistry questTypeRegistry;
 	private final SQLiteStatement replaceVisibility;
 
-	@Inject public VisibleQuestTypeDao(SQLiteOpenHelper dbHelper, QuestTypeRegistry questTypeRegistry)
+	private Map<String, Boolean> questTypeVisibilities;
+
+	@Inject public VisibleQuestTypeDao(SQLiteOpenHelper dbHelper)
 	{
 		this.dbHelper = dbHelper;
-		this.questTypeRegistry = questTypeRegistry;
+		questTypeVisibilities = null;
 
 		replaceVisibility = dbHelper.getWritableDatabase().compileStatement(
 				"INSERT OR REPLACE INTO " + QuestVisibilityTable.NAME + " ("+
 						QuestVisibilityTable.Columns.QUEST_TYPE+","+
 						QuestVisibilityTable.Columns.VISIBILITY+
 						") values (?,?);");
-	}
 
-	/** @return all visible quests ordered by importance */
-	public List<QuestType> getAll()
-	{
-		List<QuestType> questTypes = new ArrayList<>(questTypeRegistry.getAll());
-
-		Map<String, Boolean> questTypeVisibilities = getQuestTypeVisibilities();
-
-		Iterator<QuestType> it = questTypes.listIterator();
-		while(it.hasNext())
-		{
-			QuestType questType = it.next();
-			Boolean isVisible = questTypeVisibilities.get(questType.getClass().getSimpleName());
-			if(isVisible == null)
-			{
-				isVisible = questType.isDefaultEnabled();
-			}
-
-			if(!isVisible)
-			{
-				it.remove();
-			}
-		}
-
-		return questTypes;
 	}
 
 	private Map<String, Boolean> getQuestTypeVisibilities()
+	{
+		if(questTypeVisibilities == null)
+		{
+			questTypeVisibilities = loadQuestTypeVisibilities();
+		}
+		return questTypeVisibilities;
+	}
+
+	private Map<String, Boolean> loadQuestTypeVisibilities()
 	{
 		SQLiteDatabase db = dbHelper.getReadableDatabase();
 		Cursor cursor = db.query(QuestVisibilityTable.NAME, null, null,null, null, null, null, null);
@@ -91,14 +71,38 @@ public class VisibleQuestTypeDao
 		}
 	}
 
-	public void setVisible(QuestType questType, boolean visible)
+	public synchronized boolean isVisible(QuestType questType)
 	{
+		String questTypeName = questType.getClass().getSimpleName();
+		Boolean isVisible = getQuestTypeVisibilities().get(questTypeName);
+		if(isVisible == null)
+		{
+			isVisible = questType.isDefaultEnabled();
+		}
+		return isVisible;
+	}
+
+	public synchronized void setVisible(QuestType questType, boolean visible)
+	{
+		String questTypeName = questType.getClass().getSimpleName();
 		synchronized (replaceVisibility)
 		{
-			replaceVisibility.bindString(1, questType.getClass().getSimpleName());
+			replaceVisibility.bindString(1, questTypeName);
 			replaceVisibility.bindLong(2, visible ? 1 : 0);
 			replaceVisibility.executeInsert();
 			replaceVisibility.clearBindings();
 		}
+		// update cache
+		if(questTypeVisibilities != null)
+		{
+			questTypeVisibilities.put(questTypeName, visible);
+		}
+	}
+
+	public synchronized void clear()
+	{
+		SQLiteDatabase db = dbHelper.getReadableDatabase();
+		db.execSQL("DELETE FROM " + QuestVisibilityTable.NAME);
+		questTypeVisibilities = null;
 	}
 }

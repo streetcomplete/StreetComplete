@@ -3,10 +3,10 @@ package de.westnordost.streetcomplete.settings;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceFragmentCompat;
+import android.support.v7.preference.PreferenceManager;
 
 import javax.inject.Inject;
 import javax.inject.Provider;
@@ -50,7 +50,7 @@ public class SettingsFragment extends PreferenceFragmentCompat
 		{
 			@Override public boolean onPreferenceClick(Preference preference)
 			{
-				getFragmentActivity().setCurrentFragment(new QuestVisibilityFragment());
+				getFragmentActivity().setCurrentFragment(new QuestSelectionFragment());
 				return true;
 			}
 		});

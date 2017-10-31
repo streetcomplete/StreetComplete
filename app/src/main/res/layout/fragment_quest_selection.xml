@@ -3,9 +3,13 @@
               xmlns:tools="http://schemas.android.com/tools"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent"
-    android:padding="@dimen/activity_horizontal_margin">
+              android:layout_height="match_parent">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/reorder_quest_priority_hint"
+        android:padding="8dp"/>
 
     <RelativeLayout
         android:layout_width="match_parent"

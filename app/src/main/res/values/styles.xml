@@ -87,9 +87,6 @@
     </style>
 
     <style name="TableHeader">
-        <item name="android:paddingTop">20dp</item>
-        <item name="android:paddingBottom">8dp</item>
-        <item name="android:paddingStart">8dp</item>
-        <item name="android:paddingEnd">8dp</item>
+        <item name="android:padding">8dp</item>
     </style>
 </resources>

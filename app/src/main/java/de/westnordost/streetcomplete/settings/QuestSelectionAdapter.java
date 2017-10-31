@@ -10,16 +10,14 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 import javax.inject.Inject;
 
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.QuestType;
-import de.westnordost.streetcomplete.data.QuestTypeRegistry;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestType;
+import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderList;
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeDao;
 import de.westnordost.streetcomplete.view.ListAdapter;
 
@@ -28,15 +26,18 @@ import static android.support.v7.widget.helper.ItemTouchHelper.ACTION_STATE_IDLE
 import static android.support.v7.widget.helper.ItemTouchHelper.DOWN;
 import static android.support.v7.widget.helper.ItemTouchHelper.UP;
 
-public class QuestVisibilityAdapter extends ListAdapter<QuestVisibilityAdapter.QuestVisibility>
+public class QuestSelectionAdapter extends ListAdapter<QuestSelectionAdapter.QuestVisibility>
 {
 	private final VisibleQuestTypeDao visibleQuestTypeDao;
+	private final QuestTypeOrderList questTypeOrderList;
 
-	@Inject public QuestVisibilityAdapter(VisibleQuestTypeDao visibleQuestTypeDao,
-										  QuestTypeRegistry questTypeRegistry)
+
+	@Inject public QuestSelectionAdapter(
+			VisibleQuestTypeDao visibleQuestTypeDao, QuestTypeOrderList questTypeOrderList)
 	{
-		super(createQuestTypeVisibilityList(questTypeRegistry.getAll(), visibleQuestTypeDao.getAll()));
+		super();
 		this.visibleQuestTypeDao = visibleQuestTypeDao;
+		this.questTypeOrderList = questTypeOrderList;
 	}
 
 	@Override public void onAttachedToRecyclerView(RecyclerView recyclerView)
@@ -44,20 +45,6 @@ public class QuestVisibilityAdapter extends ListAdapter<QuestVisibilityAdapter.Q
 		super.onAttachedToRecyclerView(recyclerView);
 		ItemTouchHelper ith = new ItemTouchHelper(new TouchHelperCallback());
 		ith.attachToRecyclerView(recyclerView);
-	}
-
-	private static List<QuestVisibility> createQuestTypeVisibilityList(
-			List<QuestType> questTypes, List<QuestType> visibleQuestTypes)
-	{
-		List<QuestVisibility> list = new ArrayList<>(questTypes.size());
-		for (QuestType questType : questTypes)
-		{
-			QuestVisibility questVisibility = new QuestVisibility();
-			questVisibility.questType = questType;
-			questVisibility.visible = visibleQuestTypes.contains(questType);
-			list.add(questVisibility);
-		}
-		return list;
 	}
 
 	@Override
@@ -70,29 +57,60 @@ public class QuestVisibilityAdapter extends ListAdapter<QuestVisibilityAdapter.Q
 
 	private class TouchHelperCallback extends ItemTouchHelper.Callback
 	{
+		private int draggedFrom = -1, draggedTo = -1;
+
 		@Override
 		public int getMovementFlags(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder)
 		{
-			return 0;
-/*			QuestVisibility qv = ((QuestVisibilityViewHolder)viewHolder).item;
+			QuestVisibility qv = ((QuestVisibilityViewHolder)viewHolder).item;
 			if(!qv.isInteractionEnabled()) return 0;
 
-			return makeFlag(ACTION_STATE_IDLE, UP | DOWN) | makeFlag(ACTION_STATE_DRAG, UP | DOWN);*/
+			return makeFlag(ACTION_STATE_IDLE, UP | DOWN) | makeFlag(ACTION_STATE_DRAG, UP | DOWN);
 		}
 
 		@Override
 		public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target)
 		{
-			QuestVisibility qv = ((QuestVisibilityViewHolder)target).item;
-			if(!qv.isInteractionEnabled()) return false;
-
-			Collections.swap(getList(), viewHolder.getAdapterPosition(), target.getAdapterPosition());
-			notifyItemMoved(viewHolder.getAdapterPosition(), target.getAdapterPosition());
-
-
-
+			int from = viewHolder.getAdapterPosition();
+			int to = target.getAdapterPosition();
+			Collections.swap(getList(), from, to);
+			notifyItemMoved(from, to);
 			return true;
 		}
+
+		@Override
+		public boolean canDropOver(RecyclerView recyclerView, RecyclerView.ViewHolder current, RecyclerView.ViewHolder target)
+		{
+			QuestVisibility qv = ((QuestVisibilityViewHolder)target).item;
+			return qv.isInteractionEnabled();
+		}
+
+		@Override
+		public void onMoved(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, int fromPos, RecyclerView.ViewHolder target, int toPos, int x, int y)
+		{
+			super.onMoved(recyclerView, viewHolder, fromPos, target, toPos, x, y);
+			if(draggedFrom == -1) draggedFrom = fromPos;
+			draggedTo = toPos;
+		}
+
+		@Override public void onSelectedChanged(RecyclerView.ViewHolder viewHolder, int actionState)
+		{
+			super.onSelectedChanged(viewHolder, actionState);
+			if(actionState == ACTION_STATE_IDLE && draggedTo != draggedFrom)
+			{
+				int pos = draggedTo;
+				if(draggedTo == 0) pos++;
+
+				QuestType before = getList().get(pos-1).questType;
+				QuestType after = getList().get(pos).questType;
+
+				questTypeOrderList.apply(before, after);
+
+				draggedTo = draggedFrom = -1;
+			}
+		}
+
+		@Override public boolean isItemViewSwipeEnabled() { return false; }
 
 		@Override public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) { }
 	}

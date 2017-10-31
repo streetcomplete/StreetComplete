@@ -27,19 +27,21 @@ public class FragmentContainerActivity extends AppCompatActivity
 	@Override protected void onPostCreate(@Nullable Bundle savedInstanceState)
 	{
 		super.onPostCreate(savedInstanceState);
-		String fragmentClass = getIntent().getStringExtra(EXTRA_FRAGMENT_CLASS);
-		if(fragmentClass != null)
+		if(savedInstanceState == null)
 		{
-			try
+			String fragmentClass = getIntent().getStringExtra(EXTRA_FRAGMENT_CLASS);
+			if (fragmentClass != null)
 			{
-				Class c = Class.forName(fragmentClass);
-				Fragment f = (Fragment) c.newInstance();
-				f.setArguments(getIntent().getExtras());
-				setCurrentFragment(f, false);
-			}
-			catch(Exception e)
-			{
-				throw new RuntimeException(e);
+				try
+				{
+					Class c = Class.forName(fragmentClass);
+					Fragment f = (Fragment) c.newInstance();
+					f.setArguments(getIntent().getExtras());
+					setCurrentFragment(f, false);
+				} catch (Exception e)
+				{
+					throw new RuntimeException(e);
+				}
 			}
 		}
 	}
@@ -58,6 +60,11 @@ public class FragmentContainerActivity extends AppCompatActivity
 		tr.replace(R.id.fragment_container, fragment);
 		if(addToBackStack) tr.addToBackStack(null);
 		tr.commit();
+	}
+
+	private Fragment getCurrentFragment()
+	{
+		return getSupportFragmentManager().findFragmentById(R.id.fragment_container);
 	}
 
 	@Override public void onBackPressed() {
@@ -81,12 +88,10 @@ public class FragmentContainerActivity extends AppCompatActivity
 	{
 		super.onNewIntent(intent);
 
-		for (Fragment fragment : getSupportFragmentManager().getFragments())
+		Fragment f = getCurrentFragment();
+		if(f instanceof IntentListener)
 		{
-			if(fragment instanceof IntentListener)
-			{
-				((IntentListener)fragment).onNewIntent(intent);
-			}
+			((IntentListener)f).onNewIntent(intent);
 		}
 	}
 }
