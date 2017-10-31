@@ -132,7 +132,7 @@ A helyzetedet kizárólag arra használjuk, hogy automatikusan beolvassuk a kör
 
 &lt;p&gt;&lt;b&gt;Adathasználat&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-Ahogy említettük az alkalmazás közvetlenül kommunikál az OSM infrastruktúrával. Az &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass API&lt;/a&gt;-t használjuk a kérdések letöltéséhez (ami névtelen) és az &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API&lt;/a&gt;-t a változtatások feltöltéséhez.&lt;br/&gt;
+Ahogy említettük, az alkalmazás közvetlenül kommunikál az OSM infrastruktúrával. Az &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass API&lt;/a&gt;-t használjuk a kérdések letöltéséhez (ami névtelen) és az &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API&lt;/a&gt;-t a változtatások feltöltéséhez.&lt;br/&gt;
 Azonban mielőtt az alkalmazás feltölti a változtatásaidat, először leellenőrzi egy &lt;a href=\"http://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;egyszerű szövegfájl&lt;/a&gt; alapján a szerveremen, hogy nincs-e letiltva számára a módosítások feltöltése. Ez egy óvintézkedés, hogy az alkalmazás azon verzióit kiszűrje, amelyekben olyan súlyos programhibák vannak, amelyek tönkretehetnék az OSM adatait.&lt;br/&gt;
 &lt;/p&gt;
 &lt;p&gt;
@@ -405,4 +405,6 @@ Vagy le is tölthetsz egy másik billentyűzetet az áruházból. Népszerű bil
     <string name="quest_buildingLevels_answer_multipleLevels">"épületrészenként különböző"</string>
     <string name="quest_buildingLevels_answer_description">"Ebben az esetben egyszerűen a legmagasabb épületrész emeleit add meg."</string>
     <string name="unglue_hint">"Pozíció rögzítésének feloldása"</string>
+    <string name="pref_title_not_authorized_summary2">"A hitelesítéshez jelentkezz be a böngészőben"</string>
+    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Az úttest két iránya itt el van választva fizikailag (pl. egy akadállyal)? Az alapértelmezett sebességkorlátozás attól függ, hogy ez a helyzet áll-e fent, vagy sem."</string>
 </resources>

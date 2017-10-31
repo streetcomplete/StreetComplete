@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.InputType;
+import android.text.method.DigitsKeyListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -85,6 +86,7 @@ public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 					} else
 					{
 						input.setInputType(InputType.TYPE_CLASS_NUMBER);
+						input.setKeyListener(DigitsKeyListener.getInstance("0123456789.,- /"));
 						toggleKeyboardButton.setText("abc");
 					}
 
@@ -115,6 +117,7 @@ public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 		if(isHousename)
 		{
 			answer.putString(HOUSENAME, input);
+			applyFormAnswer(answer);
 		}
 		else
 		{

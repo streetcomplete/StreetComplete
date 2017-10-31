@@ -16,8 +16,7 @@
         android:paddingEnd="6dp"
         android:paddingTop="6dp"
         android:scaleType="fitCenter"
-        android:adjustViewBounds="true"
-        android:src="@drawable/ic_sport_australian_football"/>
+        android:adjustViewBounds="true"/>
 
     <TextView
         android:id="@+id/textView"
@@ -30,7 +29,6 @@
         style="@style/ImageSelectLabelBelow"
         android:maxLines="3"
         android:minLines="2"
-        android:text="@string/quest_sport_australian_football"
         />
 
 

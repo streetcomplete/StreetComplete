@@ -58,7 +58,7 @@ public abstract class AActiveRadiusStrategy implements QuestAutoDownloadStrategy
 		int alreadyDownloadedQuestTypes = downloadedTilesDao.get(tiles, ignoreOlderThan).size();
 		if(alreadyDownloadedQuestTypes >= questTypes.getAmount())
 		{
-			Log.i(TAG, "Not downloading quests because everything has been downloaded already in" + radius + "m radius");
+			Log.i(TAG, "Not downloading quests because everything has been downloaded already in " + radius + "m radius");
 			return false;
 		}
 

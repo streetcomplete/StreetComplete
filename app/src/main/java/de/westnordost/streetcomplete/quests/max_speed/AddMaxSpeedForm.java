@@ -264,8 +264,12 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 		View view = LayoutInflater.from(getActivity()).inflate(R.layout.quest_maxspeed_no_sign_no_slow_zone_confirmation, null, false);
 
 		ImageView imgSlowZone = view.findViewById(R.id.imgSlowZone);
-		Drawable slowZoneDrawable = ((ImageView) getView().findViewById(R.id.zoneImg)).getDrawable();
-		imgSlowZone.setImageDrawable(slowZoneDrawable);
+		ImageView mainLayoutImgSlowZone = getView() != null ? (ImageView) getView().findViewById(R.id.zoneImg) : null;
+		if(mainLayoutImgSlowZone != null)
+		{
+			Drawable slowZoneDrawable = mainLayoutImgSlowZone.getDrawable();
+			imgSlowZone.setImageDrawable(slowZoneDrawable);
+		}
 
 		new AlertDialogBuilder(getActivity())
 				.setView(view)

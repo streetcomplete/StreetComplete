@@ -411,5 +411,7 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <!-- Could you write example, how is this used, plese? -->
     <string name="quest_buildingLevels_answer_multipleLevels">"liší se podle části budovy"</string>
     <string name="quest_buildingLevels_answer_description">"V tom případě vložte hodnoty pro nejvyšší část budovy."</string>
-    <string name="unglue_hint">"Klepněte pro odemknutí zobrazení od polohy"</string>
+    <string name="unglue_hint">"Klepněte pro zrušení propojení obrazovky a polohy"</string>
+    <string name="pref_title_not_authorized_summary2">"Autorizujte se přihlášením přes váš webový prohlížeč"</string>
+    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Jsou vozovky na této cestě fyzicky oddělené (např. bariérou)? Omezení rychlosti může být v každém případě jiné."</string>
 </resources>
