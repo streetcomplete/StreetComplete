@@ -254,8 +254,8 @@ public class MapControlsFragment extends Fragment
 
 	private void showUnglueHint()
 	{
-		int timesShown = prefs.getInt(Prefs.UNGLUE_HINT_TIMES_SHOWN, 0);
-		if(timesShown < 3 && trackingButton.isActivated() && LocationUtil.isLocationOn(getActivity()))
+		//int timesShown = prefs.getInt(Prefs.UNGLUE_HINT_TIMES_SHOWN, 0);
+		if(trackingButton.isActivated() && LocationUtil.isLocationOn(getActivity()))
 		{
 			ViewTooltip.on(trackingButton)
 					.position(ViewTooltip.Position.LEFT)
@@ -263,7 +263,7 @@ public class MapControlsFragment extends Fragment
 					.color(getResources().getColor(R.color.colorTooltip))
 					.duration(3000)
 					.show();
-			prefs.edit().putInt(Prefs.UNGLUE_HINT_TIMES_SHOWN, timesShown + 1).apply();
+			//prefs.edit().putInt(Prefs.UNGLUE_HINT_TIMES_SHOWN, timesShown + 1).apply();
 		}
 	}
 

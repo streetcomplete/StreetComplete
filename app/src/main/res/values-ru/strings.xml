@@ -400,5 +400,11 @@
     <string name="quest_buildingLevels_roofLevelsLabel2">"этажи в составе крыши"</string>
     <string name="quest_buildingLevels_levelsLabel2">"обычные этажи (исключая крышу)"</string>
     <string name="pref_title_authorized_summary">"Авторизовано"</string>
+    <string name="quest_buildingLevels_answer_multipleLevels">"По-разному для разных частей здания"</string>
     <string name="quest_buildingLevels_answer_description">"В этом случае просто введите значения для самой высокой части здания."</string>
+
+    <!-- s/position/location/ for consistency? -->
+    <string name="unglue_hint">"Отвязать карту от местоположения"</string>
+    <string name="pref_title_not_authorized_summary2">"Войти через браузер и авторизовать"</string>
+    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Разделены ли полосы противоположных направлений физически (барьером или островком безопасности)? От этого зависит ограничение скорости по умолчанию."</string>
 </resources>

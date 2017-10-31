@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete;
 import android.app.Application;
 
 import com.evernote.android.job.JobManager;
+import com.squareup.leakcanary.LeakCanary;
 
 import java.util.concurrent.FutureTask;
 
@@ -22,6 +23,13 @@ public class StreetCompleteApplication extends Application
 	public void onCreate()
 	{
 		super.onCreate();
+		if (LeakCanary.isInAnalyzerProcess(this)) {
+			// This process is dedicated to LeakCanary for heap analysis.
+			// You should not init your app in this process.
+			return;
+		}
+		LeakCanary.install(this);
+
 		Injector.instance.initializeApplicationComponent(this);
 		Injector.instance.getApplicationComponent().inject(this);
 		JobManager.create(this).addJobCreator(jobCreator);

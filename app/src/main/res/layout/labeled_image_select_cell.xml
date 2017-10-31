@@ -12,8 +12,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:scaleType="fitCenter"
-        android:adjustViewBounds="true"
-        android:src="@drawable/surface_paving_stones"/>
+        android:adjustViewBounds="true"/>
 
     <View
         android:layout_width="wrap_content"
@@ -36,7 +35,6 @@
         style="@style/ImageSelectLabel"
         android:maxLines="3"
         android:padding="8dp"
-        android:text="@string/quest_surface_value_paving_stones"
         />
 
 

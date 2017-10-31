@@ -404,4 +404,6 @@ W przeciwnym wypadku możesz ściągnąć dodatkowe aplikacje klawiatury ze skle
     <string name="quest_buildingLevels_answer_multipleLevels">"inaczej w różnych częściach budynku"</string>
     <string name="quest_buildingLevels_answer_description">"W takim razie po prostu wpisz wartość najwyżej części budynku."</string>
     <string name="unglue_hint">"Dotknij, by umożliwić przesuwanie mapy"</string>
+    <string name="pref_title_not_authorized_summary2">"Zaloguj się przez przeglądarkę"</string>
+    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Czy jezdnie na tej ulicy są fizycznie odseparowane (np. barierkami)? Od tego zależy domyślne ograniczenie prędkości."</string>
 </resources>
