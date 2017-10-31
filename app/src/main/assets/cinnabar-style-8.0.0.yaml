@@ -12,7 +12,7 @@
 
 import:
     - themes/color-cinnabar.yaml
-    - themes/label-5.yaml
+    - themes/label-11.yaml
     - themes/cinnabar-icons.yaml
 
 global:
@@ -2747,7 +2747,7 @@ layers:
             filter:
                 all:
                     - function() { return global.text_visible_address; }
-                    - $zoom: { min: 20 }
+                    - $zoom: { min: 17 }
                 any:
                     - kind: address
                     - { label_position: true, addr_housenumber: true, name: false }

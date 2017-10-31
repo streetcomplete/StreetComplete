@@ -1,0 +1,71 @@
+global:
+    #label visibility
+    icon_size:                      [[13, '14px'], [16, '18px'], [18, '19px']]
+    text_visible_continent:         true
+    text_visible_admin:             true
+    text_visible_populated_places:  true
+    icon_visible_populated_places:  true
+    text_visible_neighbourhoods:    true
+    text_visible_neighbourhoods_e:  false
+    text_visible_building:          false     # false for default
+    text_visible_address:           false     # false for default
+    text_visible_water_labels:      true
+    text_visible_island:            true
+    icon_visible_arrows:            true
+    icon_visible_landuse_green:     false    # needs work
+    text_visible_landuse_green:     true
+    icon_size_green:                [[0, '0px']]      # 0px for no, default, more  [[13, 14px], [16, 18px], [18, 19px]]
+    label_visible_poi_landuse:      true
+    icon_visible_poi_landuse:       false     # false for default
+    text_visible_poi_landuse:       true     # false for default
+    icon_visible_poi_landuse_e:     false     # false for default
+    text_visible_landuse_generic:   false     # false for default
+    icon_visible_station:           false     # false for default
+    text_visible_station:           true     # false for default
+    text_visible_highway:           true
+    text_visible_trunk_primary:     true
+    text_visible_secondary:         true
+    text_visible_tertiary:          true
+    text_visible_minor_road:        true
+    text_visible_service_road:      true
+    text_visible_path:              true
+    text_visible_piste:             true
+    text_visible_steps:             true
+    text_visible_aerialway:         true
+    text_visible_airport_gate:      true
+    sdk_road_shields:               false
+    text_visible_exits:             true
+
+layers:
+    roads:
+        major_road:
+            secondary:
+                labels-secondary:
+                    filter: { $zoom: { min: 17 } }
+            tertiary:
+                labels-tertiary:
+                    filter: { $zoom: { min: 17 } }
+
+        minor_road:
+            labels-minor_road:
+                filter: { $zoom: { min: 17 } }
+
+    places:
+        populated-places:
+            draw:
+                mapzen_icon_library:
+                    buffer: 42px
+                text-blend-order:
+                    buffer: 42px
+
+        neighbourhoods:
+            filter:
+                $zoom: { min: 16, max: 17 }
+
+    pois:
+        filter:
+            all:
+                - not: { kind: [building, address, farm, tree, apron, residential, commercial, industrial] }
+                # White list a few kinds to "always" show per the tile zoom inclusion, else test feature's min_zoom
+                #- function() { return feature.min_zoom <= $zoom }
+                - function() { return feature.min_zoom <= ($zoom - 3) }
