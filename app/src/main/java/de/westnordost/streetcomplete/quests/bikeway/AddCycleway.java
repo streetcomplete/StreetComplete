@@ -143,6 +143,7 @@ public class AddCycleway implements OsmElementQuestType
 			"way[highway ~ \"^(primary|secondary|tertiary|unclassified|residential)$\"]" +
 			   "[!cycleway][!\"cycleway:left\"][!\"cycleway:right\"]" +
 			   "[!\"sidewalk:bicycle\"][!\"sidewalk:left:bicycle\"][!\"sidewalk:right:bicycle\"]" +
+			   "[bicycle != no]" +
 			   " -> .streets;" +
 			"(" +
 			   "way[highway=cycleway](around.streets: "+d+");" +
