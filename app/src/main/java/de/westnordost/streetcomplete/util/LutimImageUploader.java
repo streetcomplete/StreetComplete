@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.util;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.json.JSONTokener;
 
 import java.io.File;
 import java.io.IOException;
