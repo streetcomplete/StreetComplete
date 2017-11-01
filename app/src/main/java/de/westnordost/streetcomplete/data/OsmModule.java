@@ -80,6 +80,9 @@ public class OsmModule
 
 	@Provides public static ImageUploader imageUploader()
 	{
-		return new LutimImageUploader("https://images.mondedie.fr/");
+		LutimImageUploader imageUploader = new LutimImageUploader(ApplicationConstants.LUTIM_INSTANCE);
+		imageUploader.setKeepExif(true);
+		imageUploader.setDeleteAfterDays(ApplicationConstants.LUTIM_DELETE_AFTER_DAYS);
+		return imageUploader;
 	}
 }

@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.util;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.json.JSONTokener;
 
 import java.io.File;
 import java.io.IOException;
@@ -11,6 +12,10 @@ import java.util.List;
 public class LutimImageUploader implements ImageUploader
 {
 	private final String baseUrl;
+
+	private Integer deleteAfterDays;
+	private Boolean keepExif;
+	private Boolean deleteOnFirstView;
 
 	public LutimImageUploader(String baseUrl)
 	{
@@ -29,16 +34,32 @@ public class LutimImageUploader implements ImageUploader
 				{
 					MultipartUtility multipart = new MultipartUtility(baseUrl, "UTF-8");
 					multipart.addFormField("format", "json");
-					multipart.addFormField("keep-exif", "1");
+					if(keepExif != null)
+					{
+						multipart.addFormField("keep-exif", keepExif ? "1" : "0");
+					}
+					if(deleteAfterDays != null)
+					{
+						multipart.addFormField("delete-day", String.valueOf(deleteAfterDays));
+					}
+					if(deleteOnFirstView != null)
+					{
+						multipart.addFormField("first-view", deleteOnFirstView ? "1" : "0");
+					}
 					multipart.addFilePart("file", file);
 
 					String response = multipart.finish();
 
-					JSONObject msg = new JSONObject(response).getJSONObject("msg");
-					String urlToImage = msg.getString("short");
-					String finalLinkToImage = baseUrl + urlToImage;
+					JSONObject jsonResponse = new JSONObject(response);
 
-					imageLinks.add(finalLinkToImage);
+					if(jsonResponse.getBoolean("success"))
+					{
+						JSONObject msg = jsonResponse.getJSONObject("msg");
+						String urlToImage = msg.getString("short");
+						String finalLinkToImage = baseUrl + urlToImage;
+
+						imageLinks.add(finalLinkToImage);
+					}
 				}
 			}
 		}
@@ -51,5 +72,35 @@ public class LutimImageUploader implements ImageUploader
 			return null;
 		}
 		return imageLinks;
+	}
+
+	public Integer getDeleteAfterDays()
+	{
+		return deleteAfterDays;
+	}
+
+	public void setDeleteAfterDays(Integer deleteAfterDays)
+	{
+		this.deleteAfterDays = deleteAfterDays;
+	}
+
+	public Boolean getKeepExif()
+	{
+		return keepExif;
+	}
+
+	public void setKeepExif(Boolean keepExif)
+	{
+		this.keepExif = keepExif;
+	}
+
+	public Boolean getDeleteOnFirstView()
+	{
+		return deleteOnFirstView;
+	}
+
+	public void setDeleteOnFirstView(Boolean deleteOnFirstView)
+	{
+		this.deleteOnFirstView = deleteOnFirstView;
 	}
 }
