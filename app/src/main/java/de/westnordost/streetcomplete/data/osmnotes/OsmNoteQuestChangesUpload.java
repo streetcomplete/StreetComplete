@@ -2,8 +2,6 @@ package de.westnordost.streetcomplete.data.osmnotes;
 
 import android.util.Log;
 
-import java.io.File;
-import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import javax.inject.Inject;
@@ -63,14 +61,7 @@ public class OsmNoteQuestChangesUpload
 
 		try
 		{
-			if (quest.getImagePaths() != null)
-			{
-				List<String> urls = imageUploader.upload(quest.getImagePaths());
-				if(urls != null)
-				{
-					text += "\n" + getAttachedImagesUrls(urls);
-				}
-			}
+			text += AttachPhotoUtils.uploadAndGetAttachedPhotosText(imageUploader, quest.getImagePaths());
 			Note newNote = osmDao.comment(quest.getNote().id, text);
 
 			/* Unlike OSM quests, note quests are never deleted when the user contributed to it
@@ -84,7 +75,7 @@ public class OsmNoteQuestChangesUpload
 			quest.setNote(newNote);
 			questDB.update(quest);
 			noteDB.put(newNote);
-			deleteNoteImages(quest.getImagePaths());
+			AttachPhotoUtils.deleteImages(quest.getImagePaths());
 
 			return newNote;
 		}
@@ -93,7 +84,7 @@ public class OsmNoteQuestChangesUpload
 			// someone else already closed the note -> our contribution is probably worthless. Delete
 			questDB.delete(quest.getId());
 			noteDB.delete(quest.getNote().id);
-			deleteNoteImages(quest.getImagePaths());
+			AttachPhotoUtils.deleteImages(quest.getImagePaths());
 
 			Log.i(TAG, "Dropped the comment " + getNoteQuestStringForLog(quest) +
 					" because the note has already been closed");
@@ -102,34 +93,9 @@ public class OsmNoteQuestChangesUpload
 		}
 	}
 
-	private void deleteNoteImages(List<String> imagePaths)
-	{
-		if(imagePaths != null)
-		{
-			for (String path : imagePaths)
-			{
-				File file = new File(path);
-				if (file.exists())
-				{
-					file.delete();
-				}
-			}
-		}
-	}
-
 	private static String getNoteQuestStringForLog(OsmNoteQuest n)
 	{
 		LatLon pos = n.getMarkerLocation();
 		return "\"" + n.getComment() + "\" at " + pos.getLatitude() + ", " + pos.getLongitude();
-	}
-
-	private static String getAttachedImagesUrls(List<String> imageLinks)
-	{
-		StringBuilder sb = new StringBuilder("Attached photo(s):\n");
-		for(String link : imageLinks)
-		{
-			sb.append(link).append("\n");
-		}
-		return sb.toString();
 	}
 }

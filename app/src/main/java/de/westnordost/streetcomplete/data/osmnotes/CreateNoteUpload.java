@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.data.osmnotes;
 
 import android.util.Log;
 
-import java.io.File;
 import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -107,18 +106,7 @@ public class CreateNoteUpload
 	private void deleteNote(CreateNote n)
 	{
 		createNoteDB.delete(n.id);
-
-		if(n.imagePaths != null)
-		{
-			for (String path : n.imagePaths)
-			{
-				File file = new File(path);
-				if (file.exists())
-				{
-					file.delete();
-				}
-			}
-		}
+		AttachPhotoUtils.deleteImages(n.imagePaths);
 	}
 
 	private static String getCreateNoteStringForLog(CreateNote n)
@@ -163,7 +151,7 @@ public class CreateNoteUpload
 	private Note createNote(CreateNote n)
 	{
 		String text = getCreateNoteText(n);
-		text += uploadPhotosAndGetCommentText(n.imagePaths);
+		text += AttachPhotoUtils.uploadAndGetAttachedPhotosText(imageUploader, n.imagePaths);
 		return osmDao.create(n.position, text);
 	}
 
@@ -173,7 +161,7 @@ public class CreateNoteUpload
 		{
 			try
 			{
-				text += uploadPhotosAndGetCommentText(attachedImagePaths);
+				text += AttachPhotoUtils.uploadAndGetAttachedPhotosText(imageUploader, attachedImagePaths);
 				return osmDao.comment(note.id, text);
 			}
 			catch (OsmConflictException e)
@@ -203,19 +191,6 @@ public class CreateNoteUpload
 			}
 		}
 		return note.text;
-	}
-
-	private String uploadPhotosAndGetCommentText(List<String> imagePaths)
-	{
-		if (imagePaths != null)
-		{
-			List<String> urls = imageUploader.upload(imagePaths);
-			if(urls != null)
-			{
-				return "\n" + getAttachedPhotosUrls(urls);
-			}
-		}
-		return "";
 	}
 
 	private Note findAlreadyExistingNoteWithSameAssociatedElement(final CreateNote newNote)
@@ -252,16 +227,6 @@ public class CreateNoteUpload
 		String newStyleRegex = "openstreetmap\\.org\\/"+elementType+"\\/"+n.elementId;
 		// i: turns on case insensitive regex, s: newlines are also captured with "."
 		return "(?is).*(("+oldStyleRegex+")|("+newStyleRegex+")).*";
-	}
-
-	private static String getAttachedPhotosUrls(List<String> imageLinks)
-	{
-		StringBuilder sb = new StringBuilder("Attached photo(s):\n");
-		for(String link : imageLinks)
-		{
-			sb.append(link).append("\n");
-		}
-		return sb.toString();
 	}
 
 	static String getAssociatedElementString(CreateNote n)
