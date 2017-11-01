@@ -36,7 +36,7 @@ public class OsmNoteQuest implements Quest
 
 	private String comment;
 
-	private ArrayList<String> imagePaths = new ArrayList<>();
+	private ArrayList<String> imagePaths;
 
 	private final OsmNoteQuestType questType;
 

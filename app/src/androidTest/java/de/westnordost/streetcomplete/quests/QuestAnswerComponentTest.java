@@ -34,6 +34,10 @@ public class QuestAnswerComponentTest extends TestCase
 		final String expectNote = "test";
 		final String expectQuestTitle = "What?";
 		final Bundle expectBundle = new Bundle();
+		final ArrayList<String> expectImagePaths = new ArrayList<>();
+		expectImagePaths.add("dings");
+		expectImagePaths.add("dongs");
+
 		expectBundle.putString("A","B");
 
 		c1.onAttach(new OsmQuestAnswerListener()
@@ -52,6 +56,7 @@ public class QuestAnswerComponentTest extends TestCase
 				assertEquals(expectGroup, group);
 				assertEquals(expectNote, note);
 				assertEquals(expectQuestTitle, questTitle);
+				assertEquals(expectImagePaths, imagePaths);
 			}
 
 			@Override public void onSkippedQuest(long questId, QuestGroup group)
@@ -62,7 +67,7 @@ public class QuestAnswerComponentTest extends TestCase
 		});
 
 		c1.onCreate(QuestAnswerComponent.createArguments(expectQuestId, expectGroup));
-		c1.onLeaveNote(expectQuestTitle, expectNote, null);
+		c1.onLeaveNote(expectQuestTitle, expectNote, expectImagePaths);
 		c1.onAnswerQuest(expectBundle);
 		c1.onSkippedQuest();
 	}

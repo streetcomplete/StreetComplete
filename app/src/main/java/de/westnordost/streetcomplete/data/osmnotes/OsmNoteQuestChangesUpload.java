@@ -24,8 +24,8 @@ public class OsmNoteQuestChangesUpload
 	private final NoteDao noteDB;
 	private final ImageUploader imageUploader;
 
-	@Inject public OsmNoteQuestChangesUpload(NotesDao osmDao, OsmNoteQuestDao questDB,
-											 NoteDao noteDB, ImageUploader imageUploader)
+	@Inject public OsmNoteQuestChangesUpload(
+			NotesDao osmDao, OsmNoteQuestDao questDB, NoteDao noteDB, ImageUploader imageUploader)
 	{
 		this.osmDao = osmDao;
 		this.questDB = questDB;

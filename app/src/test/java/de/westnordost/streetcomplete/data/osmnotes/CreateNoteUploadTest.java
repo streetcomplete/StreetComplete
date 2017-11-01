@@ -159,7 +159,6 @@ public class CreateNoteUploadTest extends TestCase
 		verifyNoteInsertedIntoDb(createNote.id, note);
 	}
 
-
 	public void testCreateNoteWithNoQuestTitleButAssociatedElement()
 	{
 		CreateNote createNote = createACreateNote();
