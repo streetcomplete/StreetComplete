@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.util;
 
+import android.util.Log;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -16,6 +18,8 @@ public class LutimImageUploader implements ImageUploader
 	private Boolean keepExif;
 	private Boolean deleteOnFirstView;
 
+	private static final String TAG = "LutimImageUploader";
+
 	public LutimImageUploader(String baseUrl)
 	{
 		this.baseUrl = baseUrl;
@@ -24,24 +28,25 @@ public class LutimImageUploader implements ImageUploader
 	@Override public List<String> upload(List<String> imagePaths)
 	{
 		ArrayList<String> imageLinks = new ArrayList<>();
-		try
+
+		for (String path : imagePaths)
 		{
-			for (String path : imagePaths)
+			File file = new File(path);
+			if (file.exists())
 			{
-				File file = new File(path);
-				if (file.exists())
+				try
 				{
 					MultipartUtility multipart = new MultipartUtility(baseUrl, "UTF-8");
 					multipart.addFormField("format", "json");
-					if(keepExif != null)
+					if (keepExif != null)
 					{
 						multipart.addFormField("keep-exif", keepExif ? "1" : "0");
 					}
-					if(deleteAfterDays != null)
+					if (deleteAfterDays != null)
 					{
 						multipart.addFormField("delete-day", String.valueOf(deleteAfterDays));
 					}
-					if(deleteOnFirstView != null)
+					if (deleteOnFirstView != null)
 					{
 						multipart.addFormField("first-view", deleteOnFirstView ? "1" : "0");
 					}
@@ -51,7 +56,7 @@ public class LutimImageUploader implements ImageUploader
 
 					JSONObject jsonResponse = new JSONObject(response);
 
-					if(jsonResponse.getBoolean("success"))
+					if (jsonResponse.getBoolean("success"))
 					{
 						JSONObject msg = jsonResponse.getJSONObject("msg");
 						String urlToImage = msg.getString("short");
@@ -60,16 +65,17 @@ public class LutimImageUploader implements ImageUploader
 						imageLinks.add(finalLinkToImage);
 					}
 				}
+				catch (IOException e)
+				{
+					Log.e(TAG, "Unable to access the file", e);
+				}
+				catch (JSONException e)
+				{
+					Log.e(TAG, "Lutim seems to have a returned a bogus response", e);
+				}
 			}
 		}
-		catch (IOException e)
-		{
-			return null;
-		}
-		catch (JSONException e)
-		{
-			return null;
-		}
+
 		return imageLinks;
 	}
 
