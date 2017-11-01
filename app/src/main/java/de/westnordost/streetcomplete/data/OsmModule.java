@@ -81,7 +81,6 @@ public class OsmModule
 	@Provides public static ImageUploader imageUploader()
 	{
 		LutimImageUploader imageUploader = new LutimImageUploader(ApplicationConstants.LUTIM_INSTANCE);
-		imageUploader.setKeepExif(true);
 		imageUploader.setDeleteAfterDays(ApplicationConstants.LUTIM_DELETE_AFTER_DAYS);
 		return imageUploader;
 	}

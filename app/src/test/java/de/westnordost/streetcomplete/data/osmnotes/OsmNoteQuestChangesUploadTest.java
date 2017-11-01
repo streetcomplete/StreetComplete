@@ -109,7 +109,7 @@ public class OsmNoteQuestChangesUploadTest extends TestCase
 
 		osmNoteQuestChangesUpload.uploadNoteChanges(quest);
 
-		verify(osmDao).comment(1, "blablub\nAttached photo(s):\nnever");
+		verify(osmDao).comment(1, "blablub\n\nAttached photo(s):\nnever");
 	}
 
 	private static OsmNoteQuest createQuest()

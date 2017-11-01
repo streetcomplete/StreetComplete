@@ -217,7 +217,7 @@ public class CreateNoteUploadTest extends TestCase
 
 		verify(imageUploader).upload(createNote.imagePaths);
 
-		verify(notesDao).create(createNote.position,"jo ho\nAttached photo(s):\nhello, too");
+		verify(notesDao).create(createNote.position,"jo ho\n\nAttached photo(s):\nhello, too");
 	}
 
 	public void testCommentNoteUploadsImagesAndDisplaysLinks()
@@ -238,7 +238,7 @@ public class CreateNoteUploadTest extends TestCase
 		when(notesDao.comment(anyLong(), anyString())).thenReturn(note);
 		assertNotNull(createNoteUpload.uploadCreateNote(createNote));
 
-		verify(notesDao).comment(note.id ,"jo ho\nAttached photo(s):\nhello, too");
+		verify(notesDao).comment(note.id ,"jo ho\n\nAttached photo(s):\nhello, too");
 		verifyNoteInsertedIntoDb(createNote.id, note);
 	}
 

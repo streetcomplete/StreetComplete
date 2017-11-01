@@ -15,7 +15,6 @@ public class LutimImageUploader implements ImageUploader
 	private final String baseUrl;
 
 	private Integer deleteAfterDays;
-	private Boolean keepExif;
 	private Boolean deleteOnFirstView;
 
 	private static final String TAG = "LutimImageUploader";
@@ -38,10 +37,6 @@ public class LutimImageUploader implements ImageUploader
 				{
 					MultipartUtility multipart = new MultipartUtility(baseUrl, "UTF-8");
 					multipart.addFormField("format", "json");
-					if (keepExif != null)
-					{
-						multipart.addFormField("keep-exif", keepExif ? "1" : "0");
-					}
 					if (deleteAfterDays != null)
 					{
 						multipart.addFormField("delete-day", String.valueOf(deleteAfterDays));
@@ -87,16 +82,6 @@ public class LutimImageUploader implements ImageUploader
 	public void setDeleteAfterDays(Integer deleteAfterDays)
 	{
 		this.deleteAfterDays = deleteAfterDays;
-	}
-
-	public Boolean getKeepExif()
-	{
-		return keepExif;
-	}
-
-	public void setKeepExif(Boolean keepExif)
-	{
-		this.keepExif = keepExif;
 	}
 
 	public Boolean getDeleteOnFirstView()

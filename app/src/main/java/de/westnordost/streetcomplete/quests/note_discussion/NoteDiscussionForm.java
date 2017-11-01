@@ -20,7 +20,6 @@ import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestDao;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
-import de.westnordost.streetcomplete.quests.AttachPhotoFragment;
 import de.westnordost.streetcomplete.util.InlineAsyncTask;
 import de.westnordost.osmapi.notes.Note;
 import de.westnordost.osmapi.notes.NoteComment;
@@ -34,8 +33,6 @@ public class NoteDiscussionForm extends AbstractQuestAnswerFragment
 	public static final String IMAGE_PATHS = "image_paths";
 
 	@Inject OsmNoteQuestDao noteDb;
-
-	private AttachPhotoFragment attachPhotoFragment;
 
 	private EditText noteInput;
 	private LinearLayout noteDiscussion;
@@ -104,13 +101,15 @@ public class NoteDiscussionForm extends AbstractQuestAnswerFragment
 	@Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState)
 	{
 		super.onViewCreated(view, savedInstanceState);
-		attachPhotoFragment = (AttachPhotoFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.attachPhotoFragment);
+		if(savedInstanceState == null)
+		{
+			getChildFragmentManager().beginTransaction().add(R.id.attachPhotoFragment, new AttachPhotoFragment()).commit();
+		}
 	}
 
-	@Override
-	public void onDestroyView() {
-		super.onDestroyView();
-		if (attachPhotoFragment != null) getActivity().getSupportFragmentManager().beginTransaction().remove(attachPhotoFragment).commit();
+	private AttachPhotoFragment getAttachPhotoFragment()
+	{
+		return (AttachPhotoFragment) getChildFragmentManager().findFragmentById(R.id.attachPhotoFragment);
 	}
 
 	private void inflateNoteDiscussion(Note note)
@@ -179,20 +178,22 @@ public class NoteDiscussionForm extends AbstractQuestAnswerFragment
 
 		Bundle answer = new Bundle();
 		answer.putString(TEXT, noteText);
-		answer.putStringArrayList(IMAGE_PATHS, attachPhotoFragment.getImagePaths());
+		answer.putStringArrayList(IMAGE_PATHS, getAttachPhotoFragment().getImagePaths());
 		applyImmediateAnswer(answer);
 	}
 
 	@Override
 	public void onDiscard()
 	{
-		attachPhotoFragment.deleteImages();
+		getAttachPhotoFragment().deleteImages();
 	}
 
 	@Override public boolean hasChanges()
 	{
-		if (!attachPhotoFragment.getImagePaths().isEmpty()) return !attachPhotoFragment.getImagePaths().isEmpty();
-		return !noteInput.getText().toString().trim().isEmpty();
+		boolean hasPhotos = !getAttachPhotoFragment().getImagePaths().isEmpty();
+		boolean hasText = !noteInput.getText().toString().trim().isEmpty();
+
+		return hasPhotos || hasText;
 	}
 
 }

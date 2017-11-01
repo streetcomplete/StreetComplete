@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import de.westnordost.streetcomplete.R;
+import de.westnordost.streetcomplete.quests.note_discussion.AttachPhotoFragment;
 
 public class LeaveNoteDialog extends DialogFragment
 {
@@ -21,8 +22,6 @@ public class LeaveNoteDialog extends DialogFragment
 	private Button buttonOk;
 
 	private QuestAnswerComponent questAnswerComponent;
-
-	private AttachPhotoFragment attachPhotoFragment;
 
 	private String questTitle;
 
@@ -36,7 +35,7 @@ public class LeaveNoteDialog extends DialogFragment
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState)
 	{
-		View view = inflater.inflate(R.layout.leave_note, container, false);
+		View view = inflater.inflate(R.layout.dialog_leave_note, container, false);
 
 		Button buttonCancel = view.findViewById(R.id.buttonCancel);
 		buttonCancel.setOnClickListener(new View.OnClickListener()
@@ -65,7 +64,15 @@ public class LeaveNoteDialog extends DialogFragment
 	@Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState)
 	{
 		super.onViewCreated(view, savedInstanceState);
-		attachPhotoFragment = (AttachPhotoFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.attachPhotoFragment);
+		if(savedInstanceState == null)
+		{
+			getChildFragmentManager().beginTransaction().add(R.id.attachPhotoFragment, new AttachPhotoFragment()).commit();
+		}
+	}
+
+	private AttachPhotoFragment getAttachPhotoFragment()
+	{
+		return (AttachPhotoFragment) getChildFragmentManager().findFragmentById(R.id.attachPhotoFragment);
 	}
 
 	@Override public void onCreate(Bundle inState)
@@ -90,12 +97,6 @@ public class LeaveNoteDialog extends DialogFragment
 		questAnswerComponent.onAttach((OsmQuestAnswerListener) activity);
 	}
 
-	@Override
-	public void onDestroyView() {
-		super.onDestroyView();
-		if (attachPhotoFragment != null) getActivity().getSupportFragmentManager().beginTransaction().remove(attachPhotoFragment).commit();
-	}
-
 	private void onClickOk()
 	{
 		String inputText = noteInput.getText().toString().trim();
@@ -104,13 +105,13 @@ public class LeaveNoteDialog extends DialogFragment
 			noteInput.setError(getResources().getString(R.string.quest_generic_error_field_empty));
 			return;
 		}
-		questAnswerComponent.onLeaveNote(questTitle, inputText, attachPhotoFragment.getImagePaths());
+		questAnswerComponent.onLeaveNote(questTitle, inputText, getAttachPhotoFragment().getImagePaths());
 		dismiss();
 	}
 
 	private void onClickCancel()
 	{
-		attachPhotoFragment.deleteImages();
+		getAttachPhotoFragment().deleteImages();
 		questAnswerComponent.onSkippedQuest();
 		dismiss();
 	}

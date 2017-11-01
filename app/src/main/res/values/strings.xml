@@ -405,4 +405,5 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="unglue_hint">Tap to unglue view from position</string>
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">Are the carriageways of this road here physically separated (i.e. through a barrier)? The default speed limit depends on whether this is the case or not.</string>
     <string name="about_category_feedback">Feedback</string>
+    <string name="quest_leave_new_note_create_image_error">Unable to create file for photo</string>
 </resources>

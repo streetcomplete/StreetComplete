@@ -70,7 +70,7 @@ dependencies {
     // non-android test cases
     testCompile 'org.eclipse.ecf:org.json:1.0.0.v201011060100'
 
-    androidTestCompile 'com.android.support:support-annotations:26.0.1'
+    androidTestCompile 'com.android.support:support-annotations:26.1.0'
     androidTestCompile 'com.android.support.test:runner:0.5'
     androidTestCompile 'org.mockito:mockito-core:1.10.19'
     androidTestCompile 'org.objenesis:objenesis:2.5.1'
@@ -85,10 +85,10 @@ dependencies {
     }
 
     // Android stuff
-    compile 'com.android.support:appcompat-v7:26.0.1'
-    compile 'com.android.support:support-v13:26.0.1'
-    compile 'com.android.support:support-v4:26.0.1'
-    compile 'com.android.support:design:26.0.1'
+    compile 'com.android.support:appcompat-v7:26.1.0'
+    compile 'com.android.support:support-v13:26.1.0'
+    compile 'com.android.support:support-v4:26.1.0'
+    compile 'com.android.support:design:26.1.0'
 
     // scheduling background jobs
     compile 'com.evernote:android-job:1.1.12'
@@ -107,6 +107,7 @@ dependencies {
     compile 'me.grantland:autofittextview:0.2.1'
     compile 'com.duolingo.open:rtl-viewpager:1.0.2'
     compile 'com.github.westnordost:viewtooltip:master-SNAPSHOT'
+    compile 'com.android.support:exifinterface:26.1.0'
 
     // serialization
     compile 'com.esotericsoftware:kryo:4.0.1'

@@ -22,7 +22,6 @@ import com.mapzen.android.lost.api.LocationRequest;
 import javax.inject.Inject;
 
 import de.westnordost.streetcomplete.Injector;
-import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.location.LocationRequestFragment;
 import de.westnordost.streetcomplete.location.LocationState;
