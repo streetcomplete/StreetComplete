@@ -60,6 +60,8 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 
 	private void restoreInstanceState(Bundle inState)
 	{
+		int defaultResId = getCountryInfo().isLeftHandTraffic() ?
+				R.drawable.ic_cycleway_unknown_l : R.drawable.ic_cycleway_unknown;
 		if(inState != null)
 		{
 			String rightSideString = inState.getString(CYCLEWAY_RIGHT);
@@ -68,17 +70,23 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 				rightSide = Cycleway.valueOf(rightSideString);
 				puzzle.setRightSideImageResource(rightSide.getIconResId(isLeftHandTraffic()));
 			}
+			else
+			{
+				puzzle.setRightSideImageResource(defaultResId);
+			}
 			String leftSideString = inState.getString(CYCLEWAY_LEFT);
 			if(leftSideString != null)
 			{
 				leftSide = Cycleway.valueOf(leftSideString);
 				puzzle.setLeftSideImageResource(leftSide.getIconResId(isLeftHandTraffic()));
 			}
+			else
+			{
+				puzzle.setLeftSideImageResource(defaultResId);
+			}
 		}
 		else
 		{
-			int defaultResId = getCountryInfo().isLeftHandTraffic() ?
-					R.drawable.ic_cycleway_unknown_l : R.drawable.ic_cycleway_unknown;
 			puzzle.setLeftSideImageResource(defaultResId);
 			puzzle.setRightSideImageResource(defaultResId);
 		}
