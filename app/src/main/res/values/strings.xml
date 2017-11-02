@@ -407,5 +407,5 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_enabled">Enabled</string>
     <string name="quest_type">Quest type</string>
     <string name="action_reset">Reset</string>
-    <string name="reorder_quest_priority_hint">Long-press on a quest to reorder its priority for download and display on the map.</string>
+    <string name="reorder_quest_priority_hint">Long-press and move a quest to reorder its priority for download and display on the map.</string>
 </resources>
