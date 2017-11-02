@@ -4,19 +4,27 @@ package de.westnordost.streetcomplete.data.visiblequests;
 import android.content.Context;
 import android.test.AndroidTestCase;
 
-
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import de.westnordost.streetcomplete.data.QuestType;
 import de.westnordost.streetcomplete.data.QuestTypeRegistry;
 import de.westnordost.streetcomplete.data.osm.persist.test.TestQuestType;
 import de.westnordost.streetcomplete.data.osm.persist.test.TestQuestType2;
+import de.westnordost.streetcomplete.data.osm.persist.test.TestQuestType3;
+import de.westnordost.streetcomplete.data.osm.persist.test.TestQuestType4;
+import de.westnordost.streetcomplete.data.osm.persist.test.TestQuestType5;
+
+import static org.assertj.core.api.Assertions.*;
 
 public class QuestTypeOrderListTest extends AndroidTestCase
 {
-	private QuestType testQuestType;
-	private QuestType testQuestType2;
+	private QuestType one;
+	private QuestType two;
+	private QuestType three;
+	private QuestType four;
+	private QuestType five;
 
 	private List<QuestType> list;
 
@@ -25,34 +33,121 @@ public class QuestTypeOrderListTest extends AndroidTestCase
 	@Override public void setUp() throws Exception
 	{
 		super.setUp();
-		testQuestType = new TestQuestType();
-		testQuestType2 = new TestQuestType2();
+		one = new TestQuestType();
+		two = new TestQuestType2();
+		three = new TestQuestType3();
+		four = new TestQuestType4();
+		five = new TestQuestType5();
 
 		list = new ArrayList<>();
-		list.add(testQuestType);
-		list.add(testQuestType2);
+		list.addAll(Arrays.asList(one, two, three, four, five));
 
 		questTypeOrderList = new QuestTypeOrderList(
 				getContext().getSharedPreferences("Test", Context.MODE_PRIVATE),
 				new QuestTypeRegistry(list));
+		questTypeOrderList.clear();
 	}
 
 	public void testSimpleReorder()
 	{
-		questTypeOrderList.apply(testQuestType2, testQuestType);
+		questTypeOrderList.apply(two, one);
 		questTypeOrderList.sort(list);
 
-		assertEquals(testQuestType2, list.get(0));
-		assertEquals(testQuestType, list.get(1));
+		assertThat(list).containsSequence(two, one);
+	}
+
+	public void testTwoSeparateOrderLists()
+	{
+		questTypeOrderList.apply(two, one);
+		questTypeOrderList.apply(five, four);
+
+		questTypeOrderList.sort(list);
+
+		assertThat(list).containsSequence(two, one);
+		assertThat(list).containsSequence(five, four);
+	}
+
+	public void testExtendOrderList()
+	{
+		questTypeOrderList.apply(three, two);
+		questTypeOrderList.apply(two, one);
+		questTypeOrderList.sort(list);
+
+		assertThat(list).containsSequence(three, two, one);
+	}
+
+	public void testExtendOrderListInReverse()
+	{
+		questTypeOrderList.apply(two, one);
+		questTypeOrderList.apply(three, two);
+		questTypeOrderList.sort(list);
+
+		assertThat(list).containsSequence(three, two, one);
 	}
 
 	public void testClear()
 	{
-		questTypeOrderList.apply(testQuestType2, testQuestType);
+		questTypeOrderList.apply(two, one);
 		questTypeOrderList.clear();
 		questTypeOrderList.sort(list);
 
-		assertEquals(testQuestType, list.get(0));
-		assertEquals(testQuestType2, list.get(1));
+		assertThat(list).containsSequence(one, two);
+	}
+
+	public void testQuestTypeInOrderListButNotInToBeSortedList()
+	{
+		list.remove(three);
+		questTypeOrderList.apply(three, one);
+		List<QuestType> before = new ArrayList<>(list);
+		questTypeOrderList.sort(list);
+		assertEquals(before, list);
+	}
+
+	public void testQuestTypeInOrderListButNotInToBeSortedListDoesNotInhibitSorting()
+	{
+		list.remove(three);
+		questTypeOrderList.apply(three, two);
+		questTypeOrderList.apply(two, one);
+		questTypeOrderList.sort(list);
+
+		assertThat(list).containsSequence(two, one);
+	}
+
+	public void testQuestTypeOrderIsUpdatedCorrectlyMovedDown()
+	{
+		questTypeOrderList.apply(three, two);
+		questTypeOrderList.apply(two, one);
+		// this now conflicts with the first statement -> should move the 3 after the 1
+		questTypeOrderList.apply(one, three);
+
+		questTypeOrderList.sort(list);
+
+		assertThat(list).containsSequence(two, one, three);
+	}
+
+	public void testQuestTypeOrderIsUpdatedCorrectlyMovedUp()
+	{
+		questTypeOrderList.apply(three, two);
+		questTypeOrderList.apply(two, one);
+		// this now conflicts with the first statement -> should move the 1 before the 2
+		questTypeOrderList.apply(three, one);
+
+		questTypeOrderList.sort(list);
+
+		assertThat(list).containsSequence(three, one, two);
+	}
+
+	public void testMergeQuestTypeOrders()
+	{
+		questTypeOrderList.apply(four, three);
+		questTypeOrderList.apply(two, one);
+		questTypeOrderList.apply(one, five);
+
+		// now, this should merge 4->3 into 2->1->5:
+		questTypeOrderList.apply(one, three);
+		// so it should be 2->1->4->3->5. Let's check!
+
+		questTypeOrderList.sort(list);
+		assertThat(list).containsSequence(two, one, four, three, five);
 	}
 }

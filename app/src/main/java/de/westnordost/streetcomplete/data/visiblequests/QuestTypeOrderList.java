@@ -59,7 +59,7 @@ public class QuestTypeOrderList
 			lists.get(afterIndices[0]).add(afterIndices[1], beforeName);
 		}
 		// case 3: both in same list -> reorder that list
-		else if(beforeIndices[0] == afterIndices[1])
+		else if(beforeIndices[0] == afterIndices[0])
 		{
 			List<String> list = lists.get(beforeIndices[0]);
 			move(list, afterIndices[1], beforeIndices[1]+1);
@@ -67,8 +67,9 @@ public class QuestTypeOrderList
 		// case 4: both in different lists -> put the whole other list into first list
 		else
 		{
-			List<String> list = lists.remove(afterIndices[0]);
+			List<String> list = lists.get(afterIndices[0]);
 			lists.get(beforeIndices[0]).addAll(beforeIndices[1]+1, list);
+			lists.remove(afterIndices[0]);
 		}
 	}
 
@@ -107,7 +108,7 @@ public class QuestTypeOrderList
 	{
 		if(fromIndex < toIndex)
 		{
-			Collections.rotate(list.subList(fromIndex, toIndex+1), -1);
+			Collections.rotate(list.subList(fromIndex, toIndex), -1);
 		}
 		else if(fromIndex > toIndex)
 		{
