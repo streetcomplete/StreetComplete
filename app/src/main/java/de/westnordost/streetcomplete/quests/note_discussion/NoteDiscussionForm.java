@@ -176,21 +176,25 @@ public class NoteDiscussionForm extends AbstractQuestAnswerFragment
 			return;
 		}
 
+		AttachPhotoFragment f = getAttachPhotoFragment();
+
 		Bundle answer = new Bundle();
 		answer.putString(TEXT, noteText);
-		answer.putStringArrayList(IMAGE_PATHS, getAttachPhotoFragment().getImagePaths());
+		answer.putStringArrayList(IMAGE_PATHS, f != null ? f.getImagePaths() : null);
 		applyImmediateAnswer(answer);
 	}
 
 	@Override
 	public void onDiscard()
 	{
-		getAttachPhotoFragment().deleteImages();
+		AttachPhotoFragment f = getAttachPhotoFragment();
+		if(f != null) f.deleteImages();
 	}
 
 	@Override public boolean hasChanges()
 	{
-		boolean hasPhotos = !getAttachPhotoFragment().getImagePaths().isEmpty();
+		AttachPhotoFragment f = getAttachPhotoFragment();
+		boolean hasPhotos = f != null && !f.getImagePaths().isEmpty();
 		boolean hasText = !noteInput.getText().toString().trim().isEmpty();
 
 		return hasPhotos || hasText;

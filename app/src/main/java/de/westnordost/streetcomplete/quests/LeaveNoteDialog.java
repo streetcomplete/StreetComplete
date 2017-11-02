@@ -105,13 +105,15 @@ public class LeaveNoteDialog extends DialogFragment
 			noteInput.setError(getResources().getString(R.string.quest_generic_error_field_empty));
 			return;
 		}
-		questAnswerComponent.onLeaveNote(questTitle, inputText, getAttachPhotoFragment().getImagePaths());
+		AttachPhotoFragment f = getAttachPhotoFragment();
+		questAnswerComponent.onLeaveNote(questTitle, inputText, f != null ? f.getImagePaths() : null);
 		dismiss();
 	}
 
 	private void onClickCancel()
 	{
-		getAttachPhotoFragment().deleteImages();
+		AttachPhotoFragment f = getAttachPhotoFragment();
+		if(f != null) f.deleteImages();
 		questAnswerComponent.onSkippedQuest();
 		dismiss();
 	}
