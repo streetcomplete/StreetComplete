@@ -128,7 +128,7 @@ public class AddRoadName implements OsmElementQuestType
 			}
 		}
 
-		// these params are passed from the form only to onBind the road name suggestions so that
+		// these params are passed from the form only to update the road name suggestions so that
 		// newly input street names turn up in the suggestions as well
 
 		long wayId = answer.getLong(AddRoadNameForm.WAY_ID);
