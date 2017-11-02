@@ -70,7 +70,7 @@ public class LeaveNoteDialog extends DialogFragment
 		}
 	}
 
-	private AttachPhotoFragment getAttachPhotoFragment()
+	private @Nullable AttachPhotoFragment getAttachPhotoFragment()
 	{
 		return (AttachPhotoFragment) getChildFragmentManager().findFragmentById(R.id.attachPhotoFragment);
 	}

@@ -107,7 +107,7 @@ public class NoteDiscussionForm extends AbstractQuestAnswerFragment
 		}
 	}
 
-	private AttachPhotoFragment getAttachPhotoFragment()
+	private @Nullable AttachPhotoFragment getAttachPhotoFragment()
 	{
 		return (AttachPhotoFragment) getChildFragmentManager().findFragmentById(R.id.attachPhotoFragment);
 	}
