@@ -63,8 +63,10 @@ public class MapFragment extends Fragment implements
 
 	private HttpHandler httpHandler;
 
-	/** controller to the asynchronously loaded map. Since it is loaded asynchronously, could be
-	 *  null still at any point! */
+	/**
+	 * controller to the asynchronously loaded map. Since it is loaded asynchronously, could be
+	 * null still at any point!
+	 */
 	protected MapController controller;
 
 	private LostApiClient lostApiClient;
@@ -81,6 +83,12 @@ public class MapFragment extends Fragment implements
 	private boolean isShowingDirection;
 
 	private boolean isMapInitialized;
+
+	private Listener listener;
+	public interface Listener
+	{
+		void onMapOrientation(float rotation, float tilt);
+	}
 
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
 									   Bundle savedInstanceState)
@@ -329,7 +337,7 @@ public class MapFragment extends Fragment implements
 
 	@Override public boolean onShove(float distance)
 	{
-		if(mapControls != null) mapControls.onMapOrientation(controller.getRotation(), controller.getTilt());
+		onMapOrientation();
 		updateView();
 		return false;
 	}
@@ -337,9 +345,20 @@ public class MapFragment extends Fragment implements
 	@Override public boolean onRotate(float x, float y, float rotation)
 	{
 		if(!requestUnglueViewFromRotation()) return true;
-		if(mapControls != null) mapControls.onMapOrientation(controller.getRotation(), controller.getTilt());
+		onMapOrientation();
 		updateView();
 		return false;
+	}
+
+	private void onMapOrientation()
+	{
+		onMapOrientation(controller.getRotation(), controller.getTilt());
+	}
+
+	private void onMapOrientation(float rotation, float tilt)
+	{
+		if(mapControls != null) mapControls.onMapOrientation(rotation, tilt);
+		listener.onMapOrientation(rotation, tilt);
 	}
 
 	protected void updateView()
@@ -446,7 +465,7 @@ public class MapFragment extends Fragment implements
 			{
 				controller.setRotationEased(mapRotation, 50);
 			}
-			if(mapControls != null) mapControls.onMapOrientation(mapRotation, controller.getTilt());
+			onMapOrientation(mapRotation, controller.getTilt());
 		}
 	}
 
@@ -542,6 +561,7 @@ public class MapFragment extends Fragment implements
 				(SensorManager) activity.getSystemService(SENSOR_SERVICE),
 				activity.getWindowManager().getDefaultDisplay());
 		lostApiClient = new LostApiClient.Builder(activity).addConnectionCallbacks(this).build();
+		listener = (Listener) activity;
 	}
 
 	@Override public void onStart()
@@ -630,7 +650,7 @@ public class MapFragment extends Fragment implements
 		if(controller == null) return;
 		controller.setRotation(rotation);
 		controller.setTilt(tilt);
-		if(mapControls != null) mapControls.onMapOrientation(rotation, tilt);
+		onMapOrientation(rotation, tilt);
 	}
 
 	public float getRotation()

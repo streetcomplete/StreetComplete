@@ -1,4 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
+isLeftHandTraffic: true
 officialLanguages: [en]
 orchardProduces: [banana, coconut, cacao, guava, mango, mangosteen, grapefruit, orange, coffee, lemon,
   lime, avocado, tomatoe, pineapple, nutmeg, papaya]

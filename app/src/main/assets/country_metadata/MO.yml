@@ -1,4 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [en]
+isLeftHandTraffic: true
 officialLanguages: [zh, pt]
 orchardProduces: [pepper]

@@ -69,6 +69,7 @@ import de.westnordost.streetcomplete.quests.FindQuestSourceComponent;
 import de.westnordost.streetcomplete.settings.SettingsActivity;
 import de.westnordost.streetcomplete.statistics.AnswersCounter;
 import de.westnordost.streetcomplete.location.LocationState;
+import de.westnordost.streetcomplete.tangram.MapFragment;
 import de.westnordost.streetcomplete.tangram.QuestsMapFragment;
 import de.westnordost.streetcomplete.tools.CrashReportExceptionHandler;
 import de.westnordost.streetcomplete.util.SlippyMapMath;
@@ -80,7 +81,7 @@ import de.westnordost.osmapi.map.data.OsmElement;
 import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 
 public class MainActivity extends AppCompatActivity implements
-		OsmQuestAnswerListener, VisibleQuestListener, QuestsMapFragment.Listener
+		OsmQuestAnswerListener, VisibleQuestListener, QuestsMapFragment.Listener, MapFragment.Listener
 {
 	@Inject CrashReportExceptionHandler crashReportExceptionHandler;
 
@@ -106,6 +107,8 @@ public class MainActivity extends AppCompatActivity implements
 
 	private ProgressBar progressBar;
 	private AnswersCounter answersCounter;
+
+	private float mapRotation, mapTilt;
 
 	private boolean downloadServiceIsBound;
 	private QuestDownloadService.Interface downloadService;
@@ -781,6 +784,8 @@ public class MainActivity extends AppCompatActivity implements
 		}
 		args.putSerializable(AbstractQuestAnswerFragment.ARG_GEOMETRY, quest.getGeometry());
 		args.putString(AbstractQuestAnswerFragment.ARG_QUESTTYPE, quest.getType().getClass().getSimpleName());
+		args.putFloat(AbstractQuestAnswerFragment.ARG_MAP_ROTATION, mapRotation);
+		args.putFloat(AbstractQuestAnswerFragment.ARG_MAP_TILT, mapTilt);
 		f.setArguments(args);
 
 		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
@@ -797,6 +802,16 @@ public class MainActivity extends AppCompatActivity implements
 		return (AbstractQuestAnswerFragment) getSupportFragmentManager().findFragmentByTag(BOTTOM_SHEET);
 	}
 
+	@Override public void onMapOrientation(float rotation, float tilt)
+	{
+		mapRotation = rotation;
+		mapTilt = tilt;
+		AbstractQuestAnswerFragment f = getQuestDetailsFragment();
+		if (f != null)
+		{
+			f.onMapOrientation(rotation, tilt);
+		}
+	}
 	/* ---------- QuestsMapFragment.Listener ---------- */
 
 	@Override public void onFirstInView(BoundingBox bbox)

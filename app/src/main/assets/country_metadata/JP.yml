@@ -2,6 +2,7 @@
 additionalStreetsignLanguages: [en]
 advisorySpeedLimitLayout: quest_maxspeed_advisory_white
 isAdvisorySpeedLimitKnown: true
+isLeftHandTraffic: true
 officialLanguages: [ja]
 orchardProduces: [tea, apple, persimmon, chestnut, grape, apricot, pear, tomatoe, peach, strawberry,
   cherry, chilli_pepper, sweet_pepper, plum, orange, kiwi]
