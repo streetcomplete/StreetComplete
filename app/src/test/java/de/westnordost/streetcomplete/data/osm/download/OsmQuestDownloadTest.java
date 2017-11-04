@@ -156,6 +156,7 @@ public class OsmQuestDownloadTest extends TestCase
 		@Override public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes) {}
 		@Override public String getCommitMessage() { return null; }
 		@Override public boolean appliesTo(Element element) { return false; }
+		@Override public boolean isDefaultEnabled() { return true; }
 		@Override public boolean download(BoundingBox bbox, MapDataWithGeometryHandler handler)
 		{
 			for (ElementWithGeometry e : list)

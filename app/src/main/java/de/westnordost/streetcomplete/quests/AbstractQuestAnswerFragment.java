@@ -38,7 +38,7 @@ import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.QuestGroup;
 import de.westnordost.streetcomplete.data.QuestType;
-import de.westnordost.streetcomplete.data.QuestTypes;
+import de.westnordost.streetcomplete.data.QuestTypeRegistry;
 import de.westnordost.streetcomplete.data.meta.CountryInfo;
 import de.westnordost.streetcomplete.data.meta.CountryInfos;
 import de.westnordost.streetcomplete.data.osm.ElementGeometry;
@@ -56,7 +56,7 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 			ARG_MAP_TILT = "map_tilt";
 
 	@Inject CountryInfos countryInfos;
-	@Inject QuestTypes questTypes;
+	@Inject QuestTypeRegistry questTypeRegistry;
 
 	private TextView title;
 	private ViewGroup content;
@@ -93,12 +93,12 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 	{
 		osmElement = (OsmElement) getArguments().getSerializable(ARG_ELEMENT);
 		elementGeometry = (ElementGeometry) getArguments().getSerializable(ARG_GEOMETRY);
-		questType = questTypes.forName(getArguments().getString(ARG_QUESTTYPE));
+		questType = questTypeRegistry.getByName(getArguments().getString(ARG_QUESTTYPE));
 		countryInfo = null;
 		initialMapRotation = getArguments().getFloat(ARG_MAP_ROTATION);
 		initialMapTilt = getArguments().getFloat(ARG_MAP_TILT);
 
-		View view = inflater.inflate(R.layout.quest_answer_fragment, container, false);
+		View view = inflater.inflate(R.layout.fragment_quest_answer, container, false);
 
 		bottomSheet = view.findViewById(R.id.bottomSheet);
 		bottomSheet.addOnLayoutChangeListener(new View.OnLayoutChangeListener()

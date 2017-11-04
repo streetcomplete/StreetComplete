@@ -28,7 +28,8 @@ import javax.inject.Inject;
 import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.data.Quest;
 import de.westnordost.streetcomplete.data.QuestGroup;
-import de.westnordost.streetcomplete.data.QuestTypes;
+import de.westnordost.streetcomplete.data.QuestType;
+import de.westnordost.streetcomplete.data.QuestTypeRegistry;
 import de.westnordost.streetcomplete.data.osm.ElementGeometry;
 import de.westnordost.streetcomplete.util.SlippyMapMath;
 import de.westnordost.osmapi.map.data.BoundingBox;
@@ -59,8 +60,9 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 
 	private Rect questOffset;
 
-	@Inject QuestTypes questTypes;
+	@Inject List<QuestType> questTypes;
 	@Inject TangramQuestSpriteSheetCreator spriteSheetCreator;
+	private final Map<QuestType, Integer> questTypeOrder;
 
 	public interface Listener
 	{
@@ -73,6 +75,12 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 	public QuestsMapFragment()
 	{
 		Injector.instance.getApplicationComponent().inject(this);
+		questTypeOrder = new HashMap<>();
+		int order = 0;
+		for (QuestType questType : questTypes)
+		{
+			questTypeOrder.put(questType, order++);
+		}
 	}
 
 	@Override public void onAttach(Activity activity)
@@ -363,6 +371,9 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 			LatLon pos = quest.getMarkerLocation();
 			String questIconName = getActivity().getResources().getResourceEntryName(quest.getType().getIcon());
 
+			Integer order = questTypeOrder.get(quest.getType());
+			if(order == null) order = 0;
+
 			geoJson.append("{\"type\":\"Feature\",");
 			geoJson.append("\"geometry\":{\"type\":\"Point\",\"coordinates\": [");
 			geoJson.append(pos.getLongitude());
@@ -381,7 +392,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 			geoJson.append("\",\"");
 			geoJson.append("order");
 			geoJson.append("\":\"");
-			geoJson.append(questTypes.getQuestTypesSortedByImportance().indexOf(quest.getType()));
+			geoJson.append(order);
 			geoJson.append("\"}}");
 		}
 		geoJson.append("]}");

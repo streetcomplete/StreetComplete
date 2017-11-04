@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.oauth;
 
-import android.app.Activity;
-import android.app.DialogFragment;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -11,6 +10,7 @@ import android.provider.Browser;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.UiThread;
+import android.support.v4.app.DialogFragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -107,18 +107,18 @@ public class OsmOAuthDialogFragment extends DialogFragment
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
 									   Bundle savedInstanceState)
 	{
-
-		View view = inflater.inflate(R.layout.oauth_dialog_fragment, container, false);
-
+		View view = inflater.inflate(R.layout.dialog_oauth, container, false);
 		getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-
 		return view;
 	}
 
-	@Override public void onAttach(Activity activity)
+	@Override public void onAttach(Context context)
 	{
-		super.onAttach(activity);
-		listener = (Listener) getActivity();
+		super.onAttach(context);
+		if(getActivity() instanceof Listener)
+		{
+			listener = (Listener) getActivity();
+		}
 	}
 
 	@Override public void onResume()
@@ -281,7 +281,7 @@ public class OsmOAuthDialogFragment extends DialogFragment
 			String summary = String.format(getResources().getString(R.string.pref_title_authorized_username_summary), username);
 			Toast.makeText(getActivity(), summary, Toast.LENGTH_LONG).show();
 			applyOAuthConsumer(consumer);
-			listener.onOAuthAuthorized();
+			if(listener != null) listener.onOAuthAuthorized();
 			dismiss();
 		}
 

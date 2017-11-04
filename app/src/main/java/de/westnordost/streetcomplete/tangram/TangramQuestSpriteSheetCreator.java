@@ -21,21 +21,21 @@ import javax.inject.Inject;
 
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.QuestType;
-import de.westnordost.streetcomplete.data.QuestTypes;
+import de.westnordost.streetcomplete.data.QuestTypeRegistry;
 
 public class TangramQuestSpriteSheetCreator
 {
 	private static final String QUEST_ICONS_FILE = "quests.png";
 
 	private final Context context;
-	private final QuestTypes questTypes;
+	private final QuestTypeRegistry questTypeRegistry;
 
 	private List<SceneUpdate> sceneUpdates;
 
-	@Inject public TangramQuestSpriteSheetCreator(Context context, QuestTypes questTypes)
+	@Inject public TangramQuestSpriteSheetCreator(Context context, QuestTypeRegistry questTypeRegistry)
 	{
 		this.context = context;
-		this.questTypes = questTypes;
+		this.questTypeRegistry = questTypeRegistry;
 	}
 
 	public synchronized List<SceneUpdate> get()
@@ -48,7 +48,7 @@ public class TangramQuestSpriteSheetCreator
 
 	private Set<Integer> getQuestIconResourceIds()
 	{
-		List<QuestType> questTypeList = questTypes.getQuestTypesSortedByImportance();
+		List<QuestType> questTypeList = questTypeRegistry.getAll();
 		Set<Integer> questIconResIds = new HashSet<>(questTypeList.size());
 		for(QuestType questType : questTypeList)
 		{

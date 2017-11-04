@@ -5,15 +5,15 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-    <!-- make the dialog as broad as possible -->
-    <View
-        android:layout_width="wrap_content"
-        android:layout_height="1dp"
-        android:layout_gravity="fill_horizontal" />
+        <!-- make the dialog as broad as possible -->
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_gravity="fill_horizontal" />
 
         <LinearLayout
             android:layout_height="wrap_content"
@@ -68,30 +68,30 @@
 
         </LinearLayout>
 
-    <LinearLayout android:id="@+id/buttonPanel"
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:orientation="horizontal"
-                  android:layoutDirection="locale"
-                  style="?android:attr/buttonBarStyle"
-        >
-        <Button
-            android:id="@+id/buttonCancel"
-            android:layout_width="wrap_content"
-            android:layout_gravity="start"
-            android:layout_weight="1"
-            style="?android:attr/buttonBarButtonStyle"
-            android:text="@string/quest_leave_new_note_no"
-            android:layout_height="wrap_content" />
-        <Button
-            android:id="@+id/buttonOk"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_gravity="end"
-            android:text="@string/quest_leave_new_note_yes"
-            style="?android:attr/buttonBarButtonStyle"
-             />
+        <LinearLayout android:id="@+id/buttonPanel"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="horizontal"
+                      android:layoutDirection="locale"
+                      style="?android:attr/buttonBarStyle"
+            >
+            <Button
+                android:id="@+id/buttonCancel"
+                android:layout_width="wrap_content"
+                android:layout_gravity="start"
+                android:layout_weight="1"
+                style="?android:attr/buttonBarButtonStyle"
+                android:text="@string/quest_leave_new_note_no"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/buttonOk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="end"
+                android:text="@string/quest_leave_new_note_yes"
+                style="?android:attr/buttonBarButtonStyle"
+                />
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
 </ScrollView>

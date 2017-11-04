@@ -21,6 +21,7 @@
             android:title="@string/pref_title_authorization"
             android:summary="@string/pref_title_not_authorized_summary2"
             android:persistent="true"
+            android:widgetLayout="@layout/widget_image_open_in_browser"
             />
 
     </PreferenceCategory>
@@ -37,7 +38,7 @@
             custom:minValue="1"
             custom:maxValue="250"
             android:dialogMessage="@string/pref_tilecache_size_message"
-            android:dialogLayout="@layout/numberpicker_preference"
+            android:dialogLayout="@layout/dialog_number_picker_preference"
             android:positiveButtonText="@android:string/ok"
             android:negativeButtonText="@android:string/cancel"
             />
@@ -60,6 +61,19 @@
             android:summaryOn="@string/pref_summaryOn_show_notes_not_phrased_as_questions"
             android:summaryOff="@string/pref_summaryOff_show_notes_not_phrased_as_questions"
             android:persistent="true"
+            />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="advanced"
+        android:title="@string/pref_category_advanced"
+        >
+
+        <Preference
+            android:key="quests"
+            android:title="@string/pref_title_quests"
+            android:widgetLayout="@layout/widget_image_next"
             />
 
     </PreferenceCategory>

@@ -5,9 +5,11 @@ import android.graphics.Rect;
 import android.util.Log;
 
 
+import java.util.List;
+
 import de.westnordost.streetcomplete.ApplicationConstants;
 import de.westnordost.streetcomplete.data.QuestStatus;
-import de.westnordost.streetcomplete.data.QuestTypes;
+import de.westnordost.streetcomplete.data.QuestType;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
 import de.westnordost.streetcomplete.data.tiles.DownloadedTilesDao;
 import de.westnordost.streetcomplete.util.SlippyMapMath;
@@ -23,17 +25,15 @@ public abstract class AActiveRadiusStrategy implements QuestAutoDownloadStrategy
 
 	private final OsmQuestDao osmQuestDB;
 	private final DownloadedTilesDao downloadedTilesDao;
-	private final QuestTypes questTypes;
-	private final SharedPreferences prefs;
+	private final List<QuestType> questTypes;
 
 	public AActiveRadiusStrategy(
-			OsmQuestDao osmQuestDB, DownloadedTilesDao downloadedTilesDao, QuestTypes questTypes,
-			SharedPreferences prefs)
+			OsmQuestDao osmQuestDB, DownloadedTilesDao downloadedTilesDao,
+			List<QuestType> questTypes)
 	{
 		this.osmQuestDB = osmQuestDB;
 		this.downloadedTilesDao = downloadedTilesDao;
 		this.questTypes = questTypes;
-		this.prefs = prefs;
 	}
 
 	public boolean mayDownloadHere(LatLon pos, int radius)
@@ -56,7 +56,7 @@ public abstract class AActiveRadiusStrategy implements QuestAutoDownloadStrategy
 		long questExpirationTime = ApplicationConstants.REFRESH_QUESTS_AFTER;
 		long ignoreOlderThan = Math.max(0,System.currentTimeMillis() - questExpirationTime);
 		int alreadyDownloadedQuestTypes = downloadedTilesDao.get(tiles, ignoreOlderThan).size();
-		if(alreadyDownloadedQuestTypes >= questTypes.getAmount())
+		if(alreadyDownloadedQuestTypes >= questTypes.size())
 		{
 			Log.i(TAG, "Not downloading quests because everything has been downloaded already in " + radius + "m radius");
 			return false;

@@ -2,19 +2,15 @@ package de.westnordost.streetcomplete.settings;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.preference.DialogPreference;
-import android.support.annotation.IntDef;
+import android.support.v7.preference.PreferenceDialogFragmentCompat;
 import android.util.AttributeSet;
-import android.view.View;
-import android.widget.NumberPicker;
 
 import de.westnordost.streetcomplete.R;
 
 /**
  * Preference that shows a simple number picker
  */
-public class NumberPickerPreference extends DialogPreference
-		implements NumberPicker.OnValueChangeListener
+public class NumberPickerPreference extends DialogPreferenceCompat
 {
 	private static final int DEFAULT_MIN_VALUE = 1;
 	private static final int DEFAULT_MAX_VALUE = 100;
@@ -25,7 +21,28 @@ public class NumberPickerPreference extends DialogPreference
 	private int minValue;
 	private int maxValue;
 
-	private NumberPicker picker;
+	public NumberPickerPreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes)
+	{
+		super(context, attrs, defStyleAttr, defStyleRes);
+		init(context, attrs);
+	}
+
+	public NumberPickerPreference(Context context, AttributeSet attrs, int defStyleAttr)
+	{
+		super(context, attrs, defStyleAttr);
+		init(context, attrs);
+	}
+
+	public NumberPickerPreference(Context context)
+	{
+		super(context);
+		init(context, null);
+	}
+
+	@Override public PreferenceDialogFragmentCompat createDialog()
+	{
+		return new NumberPickerPreferenceDialog();
+	}
 
 	public NumberPickerPreference(Context context, AttributeSet attrs)
 	{
@@ -35,7 +52,7 @@ public class NumberPickerPreference extends DialogPreference
 
 	private void init(Context context, AttributeSet attrs)
 	{
-		setDialogLayoutResource(R.layout.numberpicker_preference);
+		setDialogLayoutResource(R.layout.dialog_number_picker_preference);
 
 		final TypedArray a = context.obtainStyledAttributes(attrs,
 				R.styleable.NumberPickerPreference);
@@ -46,55 +63,41 @@ public class NumberPickerPreference extends DialogPreference
 		a.recycle();
 	}
 
-	@Override
-	protected void onBindDialogView(View view) {
-		super.onBindDialogView(view);
-		picker = view.findViewById(R.id.number_picker);
-
-		picker.setMinValue(minValue);
-		picker.setMaxValue(maxValue);
-		picker.setValue(value);
-		picker.setWrapSelectorWheel(false);
-		picker.setOnValueChangedListener(this);
-	}
-
-	@Override
-	public void onValueChange(NumberPicker picker, int oldVal, int newVal)
-	{
-		value = picker.getValue();
-	}
-
-	@Override
-	protected void onSetInitialValue(boolean restorePersistedValue, Object defaultValue)
+	@Override protected void onSetInitialValue(boolean restorePersistedValue, Object defaultValue)
 	{
 		if (restorePersistedValue) value = getPersistedInt(DEFAULT_VALUE);
 		else                       value = (Integer) defaultValue;
 	}
 
-	@Override
-	protected Object onGetDefaultValue(TypedArray a, int index)
+	@Override protected Object onGetDefaultValue(TypedArray a, int index)
 	{
 		return a.getInteger(index, DEFAULT_VALUE);
 	}
 
-	@Override
-	protected void onDialogClosed(boolean positiveResult)
-	{
-		// hackfix: The Android number picker accepts input via soft keyboard (which makes sense
-		// from a UX viewpoint) but is not designed for that. By default, it does not apply the
-		// input there. See http://stackoverflow.com/questions/18944997/numberpicker-doesnt-work-with-keyboard
-		// A workaround is to clear the focus before saving.
-		picker.clearFocus();
-
-		if(positiveResult)
-		{
-			if(persistInt(value)) notifyChanged();
-		}
-	}
-
-	@Override
-	public CharSequence getSummary()
+	@Override public CharSequence getSummary()
 	{
 		return String.format(super.getSummary().toString(), value);
+	}
+
+	public int getMinValue()
+	{
+		return minValue;
+	}
+
+	public int getMaxValue()
+	{
+		return maxValue;
+	}
+
+	public int getValue()
+	{
+		return value;
+	}
+
+	public void setValue(int value)
+	{
+		this.value = value;
+		persistInt(value);
+		notifyChanged();
 	}
 }

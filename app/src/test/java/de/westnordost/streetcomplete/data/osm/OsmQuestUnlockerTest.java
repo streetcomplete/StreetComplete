@@ -12,7 +12,6 @@ import de.westnordost.osmapi.map.data.Node;
 import de.westnordost.osmapi.map.data.OsmLatLon;
 import de.westnordost.osmapi.map.data.OsmNode;
 import de.westnordost.streetcomplete.data.QuestType;
-import de.westnordost.streetcomplete.data.QuestTypes;
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestDao;
@@ -45,8 +44,7 @@ public class OsmQuestUnlockerTest extends TestCase
 				.thenReturn(Collections.<OsmQuest>emptyList());
 
 		questType = mock(OsmElementQuestType.class);
-		QuestTypes questTypes = new QuestTypes(Collections.<QuestType>singletonList(questType));
-
+		List<QuestType> questTypes = Collections.<QuestType>singletonList(questType);
 		osmQuestUnlocker = new OsmQuestUnlocker(osmNoteQuestDao, osmQuestDao, elementGeometryDao,
 				questTypes);
 	}
