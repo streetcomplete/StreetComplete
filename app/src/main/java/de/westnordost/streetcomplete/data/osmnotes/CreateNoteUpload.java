@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.data.osmnotes;
 
 import android.util.Log;
 
+import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -16,6 +17,7 @@ import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.notes.Note;
 import de.westnordost.osmapi.notes.NotesDao;
+import de.westnordost.streetcomplete.util.ImageUploader;
 
 public class CreateNoteUpload
 {
@@ -27,10 +29,13 @@ public class CreateNoteUpload
 	private final OsmNoteQuestDao noteQuestDB;
 	private final MapDataDao mapDataDao;
 	private final OsmNoteQuestType questType;
+	private final ImageUploader imageUploader;
+
 
 	@Inject public CreateNoteUpload(
 			CreateNoteDao createNoteDB, NotesDao osmDao, NoteDao noteDB,
-			OsmNoteQuestDao noteQuestDB, MapDataDao mapDataDao, OsmNoteQuestType questType)
+			OsmNoteQuestDao noteQuestDB, MapDataDao mapDataDao, OsmNoteQuestType questType,
+			ImageUploader imageUploader)
 	{
 		this.createNoteDB = createNoteDB;
 		this.noteQuestDB = noteQuestDB;
@@ -38,6 +43,7 @@ public class CreateNoteUpload
 		this.osmDao = osmDao;
 		this.mapDataDao = mapDataDao;
 		this.questType = questType;
+		this.imageUploader = imageUploader;
 	}
 
 	public void upload(AtomicBoolean cancelState)
@@ -70,7 +76,7 @@ public class CreateNoteUpload
 		{
 			Log.i(TAG, "Dropped to be created note " + getCreateNoteStringForLog(n) +
 					" because the associated element has already been deleted");
-			createNoteDB.delete(n.id);
+			deleteNote(n);
 			return null;
 		}
 
@@ -92,8 +98,15 @@ public class CreateNoteUpload
 			// so the problem has likely been solved by another mapper
 		}
 
-		createNoteDB.delete(n.id);
+		deleteNote(n);
+
 		return newNote;
+	}
+
+	private void deleteNote(CreateNote n)
+	{
+		createNoteDB.delete(n.id);
+		AttachPhotoUtils.deleteImages(n.imagePaths);
 	}
 
 	private static String getCreateNoteStringForLog(CreateNote n)
@@ -127,30 +140,42 @@ public class CreateNoteUpload
 		if(n.hasAssociatedElement())
 		{
 			Note oldNote = findAlreadyExistingNoteWithSameAssociatedElement(n);
-
 			if(oldNote != null)
 			{
-				if(oldNote.isOpen())
-				{
-					try
-					{
-						return osmDao.comment(oldNote.id, n.text);
-					}
-					catch (OsmConflictException e)
-					{
-						return null;
-					}
-				}
-				else
-				{
-					return null;
-				}
+				return commentNote(oldNote, n.text, n.imagePaths);
 			}
 		}
-		return osmDao.create(n.position, getCreateNoteText(n));
+		return createNote(n);
 	}
 
-	static String getCreateNoteText(CreateNote note)
+	private Note createNote(CreateNote n)
+	{
+		String text = getCreateNoteText(n);
+		text += AttachPhotoUtils.uploadAndGetAttachedPhotosText(imageUploader, n.imagePaths);
+		return osmDao.create(n.position, text);
+	}
+
+	private Note commentNote(Note note, String text, List<String> attachedImagePaths)
+	{
+		if(note.isOpen())
+		{
+			try
+			{
+				text += AttachPhotoUtils.uploadAndGetAttachedPhotosText(imageUploader, attachedImagePaths);
+				return osmDao.comment(note.id, text);
+			}
+			catch (OsmConflictException e)
+			{
+				return null;
+			}
+		}
+		else
+		{
+			return null;
+		}
+	}
+
+	private static String getCreateNoteText(CreateNote note)
 	{
 		if(note.hasAssociatedElement())
 		{

@@ -1,7 +1,8 @@
 package de.westnordost.streetcomplete.quests;
 
 import android.app.Activity;
-import android.app.DialogFragment;
+import android.support.annotation.Nullable;
+import android.support.v4.app.DialogFragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import de.westnordost.streetcomplete.R;
+import de.westnordost.streetcomplete.quests.note_discussion.AttachPhotoFragment;
 
 public class LeaveNoteDialog extends DialogFragment
 {
@@ -33,7 +35,7 @@ public class LeaveNoteDialog extends DialogFragment
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState)
 	{
-		View view = inflater.inflate(R.layout.leave_note, container, false);
+		View view = inflater.inflate(R.layout.dialog_leave_note, container, false);
 
 		Button buttonCancel = view.findViewById(R.id.buttonCancel);
 		buttonCancel.setOnClickListener(new View.OnClickListener()
@@ -57,6 +59,20 @@ public class LeaveNoteDialog extends DialogFragment
 		noteInput = view.findViewById(R.id.noteInput);
 
 		return view;
+	}
+
+	@Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState)
+	{
+		super.onViewCreated(view, savedInstanceState);
+		if(savedInstanceState == null)
+		{
+			getChildFragmentManager().beginTransaction().add(R.id.attachPhotoFragment, new AttachPhotoFragment()).commit();
+		}
+	}
+
+	private @Nullable AttachPhotoFragment getAttachPhotoFragment()
+	{
+		return (AttachPhotoFragment) getChildFragmentManager().findFragmentById(R.id.attachPhotoFragment);
 	}
 
 	@Override public void onCreate(Bundle inState)
@@ -89,13 +105,15 @@ public class LeaveNoteDialog extends DialogFragment
 			noteInput.setError(getResources().getString(R.string.quest_generic_error_field_empty));
 			return;
 		}
-
-		questAnswerComponent.onLeaveNote(questTitle, inputText);
+		AttachPhotoFragment f = getAttachPhotoFragment();
+		questAnswerComponent.onLeaveNote(questTitle, inputText, f != null ? f.getImagePaths() : null);
 		dismiss();
 	}
 
 	private void onClickCancel()
 	{
+		AttachPhotoFragment f = getAttachPhotoFragment();
+		if(f != null) f.deleteImages();
 		questAnswerComponent.onSkippedQuest();
 		dismiss();
 	}

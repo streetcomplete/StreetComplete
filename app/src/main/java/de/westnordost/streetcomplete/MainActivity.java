@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete;
 
 import android.animation.ObjectAnimator;
-import android.app.FragmentManager;
+import android.support.v4.app.FragmentManager;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
@@ -20,6 +20,7 @@ import android.preference.PreferenceManager;
 import android.support.annotation.AnyThread;
 import android.support.annotation.Nullable;
 import android.support.annotation.UiThread;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -36,6 +37,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Map;
@@ -610,10 +612,10 @@ public class MainActivity extends AppCompatActivity implements
 		});
 	}
 
-	@Override public void onLeaveNote(long questId, QuestGroup group, String questTitle, String note)
+	@Override public void onLeaveNote(long questId, QuestGroup group, String questTitle, String note, ArrayList<String> imagePaths)
 	{
 		closeQuestDetailsFor(questId, group);
-		questController.createNote(questId, questTitle, note);
+		questController.createNote(questId, questTitle, note, imagePaths);
 	}
 
 	@Override public void onSkippedQuest(long questId, QuestGroup group)
@@ -727,7 +729,7 @@ public class MainActivity extends AppCompatActivity implements
 			inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
 		}
 
-		getFragmentManager().popBackStackImmediate(BOTTOM_SHEET, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+		getSupportFragmentManager().popBackStackImmediate(BOTTOM_SHEET, FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
 		mapFragment.removeQuestGeometry();
 	}
@@ -783,7 +785,7 @@ public class MainActivity extends AppCompatActivity implements
 		args.putFloat(AbstractQuestAnswerFragment.ARG_MAP_TILT, mapTilt);
 		f.setArguments(args);
 
-		android.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
+		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 		ft.setCustomAnimations(
 				R.animator.quest_answer_form_appear, R.animator.quest_answer_form_disappear,
 				R.animator.quest_answer_form_appear, R.animator.quest_answer_form_disappear);
@@ -794,7 +796,7 @@ public class MainActivity extends AppCompatActivity implements
 
 	private AbstractQuestAnswerFragment getQuestDetailsFragment()
 	{
-		return (AbstractQuestAnswerFragment) getFragmentManager().findFragmentByTag(BOTTOM_SHEET);
+		return (AbstractQuestAnswerFragment) getSupportFragmentManager().findFragmentByTag(BOTTOM_SHEET);
 	}
 
 	@Override public void onMapOrientation(float rotation, float tilt)

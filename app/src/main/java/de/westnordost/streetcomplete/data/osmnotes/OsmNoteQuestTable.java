@@ -13,6 +13,7 @@ public class OsmNoteQuestTable
 				NOTE_ID = NoteTable.Columns.ID,
 				QUEST_STATUS = "quest_status",
 				COMMENT = "changes",
-				LAST_UPDATE = "last_update";
+				LAST_UPDATE = "last_update",
+				IMAGE_PATHS = "image_paths";
 	}
 }
