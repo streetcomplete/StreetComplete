@@ -34,7 +34,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 			URBAN_OR_RURAL_ROADS = Arrays.asList("primary","secondary","tertiary","unclassified",
 					"primary_link","secondary_link","tertiary_link","road"),
 			ROADS_WITH_DEFINITE_SPEED_LIMIT = Arrays.asList("trunk","motorway","living_street"),
-			URBAN_OR_SLOWZONE_ROADS = Arrays.asList("residential","unclassified"),
+			POSSIBLY_SLOWZONE_ROADS = Arrays.asList("residential","unclassified"),
 			MAYBE_LIVING_STREET = Arrays.asList("residential");
 
 	private EditText speedInput;
@@ -88,7 +88,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 
 	private void initZoneCheckbox(View zoneContainer)
 	{
-		boolean isResidential = URBAN_OR_SLOWZONE_ROADS.contains(getOsmElement().getTags().get("highway"));
+		boolean isResidential = POSSIBLY_SLOWZONE_ROADS.contains(getOsmElement().getTags().get("highway"));
 		boolean isSlowZoneKnown = getCountryInfo().isSlowZoneKnown();
 		zoneContainer.setVisibility(isSlowZoneKnown && isResidential ? View.VISIBLE : View.GONE);
 
@@ -144,11 +144,11 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 					{
 						@Override public void run()
 						{
-							determineImplicitMaxspeedType(false);
+							determineImplicitMaxspeedType();
 						}
 					});
 				}
-				else if(URBAN_OR_SLOWZONE_ROADS.contains(highwayTag))
+				else if(POSSIBLY_SLOWZONE_ROADS.contains(highwayTag))
 				{
 					if(getCountryInfo().isSlowZoneKnown())
 					{
@@ -156,7 +156,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 						{
 							@Override public void run()
 							{
-								determineImplicitMaxspeedType(true);
+								determineImplicitMaxspeedType();
 							}
 						});
 					}
@@ -166,7 +166,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 						{
 							@Override public void run()
 							{
-								determineImplicitMaxspeedType(true);
+								determineImplicitMaxspeedType();
 							}
 						});
 					}
@@ -214,7 +214,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 		}
 	}
 
-	private void determineImplicitMaxspeedType(boolean isDefinitelyUrban)
+	private void determineImplicitMaxspeedType()
 	{
 		if(getCountryInfo().getCountryCode().equals("GB"))
 		{
@@ -222,14 +222,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 		}
 		else
 		{
-			if(isDefinitelyUrban)
-			{
-				applyNoSignAnswer("urban");
-			}
-			else
-			{
-				askUrbanOrRural();
-			}
+			askUrbanOrRural();
 		}
 	}
 
