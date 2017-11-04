@@ -74,4 +74,6 @@ public class AddWheelchairAccessBusiness extends SimpleOverpassQuestType
 	{
 		return R.string.quest_wheelchairAccess_name_title;
 	}
+	/* Disabled by default because this quest requires the user to go inside and explore the place */
+	@Override public boolean isDefaultEnabled() { return false; }
 }

@@ -2,8 +2,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="2dp"
-                >
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_margin="2dp"
+                android:background="@drawable/image_select_cell"
+    >
 
     <ImageView
         android:id="@+id/imageView"
@@ -11,18 +13,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+        android:padding="6dp"
         android:scaleType="fitCenter"
+        tools:src="@drawable/ic_sport_archery"
         android:adjustViewBounds="true"/>
-
-    <View
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/imageView"
-        android:layout_alignEnd="@+id/imageView"
-        android:layout_alignStart="@+id/imageView"
-        android:layout_alignTop="@+id/imageView"
-        android:background="@drawable/image_select_cell"
-        />
 
     <TextView
         android:id="@+id/textView"
@@ -33,6 +27,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         style="@style/ImageSelectLabel"
+        tools:text="@string/quest_sport_archery"
         android:maxLines="3"
         android:padding="8dp"
         />

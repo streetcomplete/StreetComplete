@@ -10,12 +10,12 @@ import java.util.Map;
  *  Could theoretically be done with Reflection, but that doesn't really work on Android
  */
 
-public class QuestTypes
+public class QuestTypeRegistry
 {
 	private final List<QuestType> types;
 	private final Map<String, QuestType> typeMap;
 
-	public QuestTypes(List<QuestType> types)
+	public QuestTypeRegistry(List<QuestType> types)
 	{
 		this.types = types;
 
@@ -32,17 +32,12 @@ public class QuestTypes
 		}
 	}
 
-	public int getAmount()
-	{
-		return types.size();
-	}
-
-	public QuestType forName(String typeName)
+	public QuestType getByName(String typeName)
 	{
 		return typeMap.get(typeName);
 	}
 
-	public List<QuestType> getQuestTypesSortedByImportance()
+	public List<QuestType> getAll()
 	{
 		return Collections.unmodifiableList(types);
 	}

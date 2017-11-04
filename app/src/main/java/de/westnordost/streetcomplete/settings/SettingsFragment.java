@@ -1,35 +1,37 @@
 package de.westnordost.streetcomplete.settings;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.preference.Preference;
-import android.preference.PreferenceFragment;
+import android.support.v4.app.DialogFragment;
+import android.support.v7.preference.Preference;
+import android.support.v7.preference.PreferenceFragmentCompat;
+import android.support.v7.preference.PreferenceManager;
 
 import javax.inject.Inject;
+import javax.inject.Provider;
 
+import de.westnordost.streetcomplete.FragmentContainerActivity;
 import de.westnordost.streetcomplete.Injector;
+import de.westnordost.streetcomplete.IntentListener;
 import de.westnordost.streetcomplete.Prefs;
-import de.westnordost.streetcomplete.data.QuestStatus;
-import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuest;
-import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestDao;
 import de.westnordost.streetcomplete.oauth.OAuthPrefs;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.oauth.OsmOAuthDialogFragment;
 
-public class SettingsFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener
+public class SettingsFragment extends PreferenceFragmentCompat
+		implements SharedPreferences.OnSharedPreferenceChangeListener, IntentListener
 {
+	public static final String ARG_LAUNCH_AUTH = "de.westnordost.streetcomplete.settings.launch_auth";
+
 	@Inject SharedPreferences prefs;
 	@Inject OAuthPrefs oAuth;
-	@Inject OsmNoteQuestDao osmNoteQuestDao;
+	@Inject Provider<ApplyNoteVisibilityChangedTask> applyNoteVisibilityChangedTask;
 
-	@Override
-	public void onCreate(Bundle savedInstanceState)
+	@Override public void onCreatePreferences(Bundle savedInstanceState, String rootKey)
 	{
-		super.onCreate(savedInstanceState);
-
 		Injector.instance.getApplicationComponent().inject(this);
-
+		PreferenceManager.setDefaultValues(getContext(), R.xml.preferences, false);
 		addPreferencesFromResource(R.xml.preferences);
 
 		Preference oauth = getPreferenceScreen().findPreference("oauth");
@@ -42,6 +44,16 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
 				return true;
 			}
 		});
+
+		Preference quests = getPreferenceScreen().findPreference("quests");
+		quests.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener()
+		{
+			@Override public boolean onPreferenceClick(Preference preference)
+			{
+				getFragmentActivity().setCurrentFragment(new QuestSelectionFragment());
+				return true;
+			}
+		});
 	}
 
 	@Override
@@ -49,6 +61,7 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
 	{
 		super.onStart();
 		updateOsmAuthSummary();
+		getActivity().setTitle(R.string.action_settings);
 	}
 
 	private void updateOsmAuthSummary()
@@ -93,37 +106,38 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
 		}
 		else if(key.equals(Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS))
 		{
-			final Preference pref = getPreferenceScreen().findPreference(Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS);
+			ApplyNoteVisibilityChangedTask task = applyNoteVisibilityChangedTask.get();
+			task.setPreference(getPreferenceScreen().findPreference(Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS));
+			task.execute();
+		}
+	}
 
-			pref.setEnabled(false);
-			new AsyncTask<Void, Void, Void>()
-			{
-				@Override protected Void doInBackground(Void... params)
-				{
-					for(OsmNoteQuest quest : osmNoteQuestDao.getAll(null,null))
-					{
-						if (quest.getStatus() == QuestStatus.NEW || quest.getStatus() == QuestStatus.INVISIBLE)
-						{
-							boolean showNonQuestionNotes = prefs.getBoolean(Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS, false);
-							boolean visible = quest.probablyContainsQuestion() || showNonQuestionNotes;
-							QuestStatus newQuestStatus = visible ? QuestStatus.NEW : QuestStatus.INVISIBLE;
+	@Override
+	public void onDisplayPreferenceDialog(Preference preference) {
+		DialogFragment fragment;
+		if (preference instanceof DialogPreferenceCompat) {
+			fragment = ((DialogPreferenceCompat)preference).createDialog();
+			Bundle bundle = new Bundle(1);
+			bundle.putString("key", preference.getKey());
+			fragment.setArguments(bundle);
+			fragment.setTargetFragment(this, 0);
+			fragment.show(getFragmentManager(),
+					"android.support.v7.preference.PreferenceFragment.DIALOG");
+		} else super.onDisplayPreferenceDialog(preference);
+	}
 
-							if (quest.getStatus() != newQuestStatus)
-							{
-								quest.setStatus(newQuestStatus);
-								osmNoteQuestDao.update(quest);
-							}
-						}
-					}
-					return null;
-				}
+	private FragmentContainerActivity getFragmentActivity()
+	{
+		return (FragmentContainerActivity) getActivity();
+	}
 
-				@Override protected void onPostExecute(Void result)
-				{
-					pref.setEnabled(true);
-				}
-
-			}.execute();
+	@Override public void onNewIntent(Intent intent)
+	{
+		OsmOAuthDialogFragment oauthFragment = (OsmOAuthDialogFragment) getFragmentManager()
+				.findFragmentByTag(OsmOAuthDialogFragment.TAG);
+		if(oauthFragment != null)
+		{
+			oauthFragment.onNewIntent(intent);
 		}
 	}
 }

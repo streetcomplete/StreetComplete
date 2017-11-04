@@ -30,7 +30,7 @@ public class ValuePickerDialog extends AlertDialog implements DialogInterface.On
 		this.selectedIndex = selectedIndex;
 
 		final LayoutInflater inflater = LayoutInflater.from(context);
-		final View view = inflater.inflate(R.layout.number_picker_dialog, null);
+		final View view = inflater.inflate(R.layout.dialog_number_picker, null);
 		setView(view);
 		setTitle(title);
 		setButton(BUTTON_POSITIVE, context.getString(android.R.string.ok), this);

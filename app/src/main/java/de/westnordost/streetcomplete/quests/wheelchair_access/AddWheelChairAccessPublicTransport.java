@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.wheelchair_access;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 
 import java.util.Map;
 
@@ -45,11 +46,12 @@ public class AddWheelChairAccessPublicTransport extends SimpleOverpassQuestType
 		return "Add wheelchair access to public transport platforms";
 	}
 	@Override public int getIcon() { return R.drawable.ic_quest_wheelchair; }
-	@Override public int getTitle(Map<String, String> tags)
+	@Override public int getTitle(@NonNull Map<String, String> tags)
 	{
 		boolean hasName = tags.containsKey("name");
 		String type = tags.get("amenity");
 		if (type == null) type = tags.get("railway");
+		if (type == null) type = "";
 
 		if(hasName)
 		{

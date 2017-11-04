@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="8dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                xmlns:tools="http://schemas.android.com/tools">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="@dimen/table_icon_size"
+        android:layout_height="@dimen/table_icon_size"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        tools:src="@drawable/ic_quest_street"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/imageView"
+        android:layout_toStartOf="@+id/checkboxContainer"
+        android:layout_centerVertical="true"
+        tools:text="@string/quest_streetLanes_title"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:textAppearance="@android:style/TextAppearance.Theme.Dialog"
+        android:id="@+id/textView"/>
+
+    <FrameLayout
+        android:id="@+id/checkboxContainer"
+        android:layout_width="@dimen/table_icon_size"
+        android:layout_height="@dimen/table_icon_size"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        >
+
+        <CheckBox
+            android:id="@+id/checkBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            />
+
+    </FrameLayout>
+
+
+
+</RelativeLayout>

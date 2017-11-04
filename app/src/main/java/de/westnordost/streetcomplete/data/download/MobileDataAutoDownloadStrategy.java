@@ -1,20 +1,20 @@
 package de.westnordost.streetcomplete.data.download;
 
-import android.content.SharedPreferences;
+import java.util.List;
 
 import javax.inject.Inject;
 
-import de.westnordost.streetcomplete.data.QuestTypes;
+import de.westnordost.streetcomplete.data.QuestType;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
 import de.westnordost.streetcomplete.data.tiles.DownloadedTilesDao;
 
 public class MobileDataAutoDownloadStrategy extends AActiveRadiusStrategy
 {
 	@Inject public MobileDataAutoDownloadStrategy(OsmQuestDao osmQuestDB,
-										  DownloadedTilesDao downloadedTilesDao,
-										  QuestTypes questTypes, SharedPreferences prefs)
+												  DownloadedTilesDao downloadedTilesDao,
+												  List<QuestType> questTypes)
 	{
-		super(osmQuestDB, downloadedTilesDao, questTypes, prefs);
+		super(osmQuestDB, downloadedTilesDao, questTypes);
 	}
 
 	@Override public int getQuestTypeDownloadCount()

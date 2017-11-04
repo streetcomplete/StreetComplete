@@ -12,8 +12,8 @@ public class SimpleOverpassQuestsValidityTest extends TestCase
 {
 	public void testQueryValid()
 	{
-		List<QuestType> questTypes = QuestModule.questTypeList(new OsmNoteQuestType(),
-				null,null,null).getQuestTypesSortedByImportance();
+		List<QuestType> questTypes = QuestModule.questTypeRegistry(new OsmNoteQuestType(),
+				null,null,null).getAll();
 		for(QuestType questType : questTypes)
 		{
 			if(questType instanceof SimpleOverpassQuestType)

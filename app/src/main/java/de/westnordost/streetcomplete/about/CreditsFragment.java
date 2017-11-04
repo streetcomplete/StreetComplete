@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.about;
 
-import android.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
@@ -29,7 +29,7 @@ public class CreditsFragment extends Fragment
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState)
 	{
-		View view = inflater.inflate(R.layout.credits, container, false);
+		View view = inflater.inflate(R.layout.fragment_credits, container, false);
 
 		LinearLayout contributorCredits = view.findViewById(R.id.contributorCredits);
 		for(String contributor : readContributors())
@@ -45,7 +45,7 @@ public class CreditsFragment extends Fragment
 		{
 			String language = translatorsByLanguage.getKey();
 			String translators = translatorsByLanguage.getValue();
-			View item = inflater.inflate(R.layout.credits_translators_row, translationCredits, false);
+			View item = inflater.inflate(R.layout.row_credits_translators, translationCredits, false);
 			((TextView) item.findViewById(R.id.language)).setText(language);
 			((TextView) item.findViewById(R.id.contributors)).setText(translators);
 			translationCredits.addView(item);

@@ -1,20 +1,20 @@
 package de.westnordost.streetcomplete.data.download;
 
-import android.content.SharedPreferences;
+import java.util.List;
 
 import javax.inject.Inject;
 
-import de.westnordost.streetcomplete.data.QuestTypes;
+import de.westnordost.streetcomplete.data.QuestType;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
 import de.westnordost.streetcomplete.data.tiles.DownloadedTilesDao;
 
 public class WifiAutoDownloadStrategy extends AActiveRadiusStrategy
 {
-	@Inject public WifiAutoDownloadStrategy(OsmQuestDao osmQuestDB,
-											DownloadedTilesDao downloadedTilesDao,
-											QuestTypes questTypes, SharedPreferences prefs)
+	@Inject public WifiAutoDownloadStrategy(
+			OsmQuestDao osmQuestDB, DownloadedTilesDao downloadedTilesDao,
+			List<QuestType> questTypes)
 	{
-		super(osmQuestDB, downloadedTilesDao, questTypes, prefs);
+		super(osmQuestDB, downloadedTilesDao, questTypes);
 	}
 
 	/** Let's assume that if the user is on wifi, he is either at home, at work, in the hotel, at a

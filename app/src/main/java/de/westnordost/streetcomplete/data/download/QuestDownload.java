@@ -17,7 +17,7 @@ import javax.inject.Provider;
 import de.westnordost.streetcomplete.ApplicationConstants;
 import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.data.QuestType;
-import de.westnordost.streetcomplete.data.QuestTypes;
+import de.westnordost.streetcomplete.data.QuestTypeRegistry;
 import de.westnordost.streetcomplete.data.VisibleQuestListener;
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.download.OsmQuestDownload;
@@ -35,7 +35,8 @@ public class QuestDownload
 
 	private final Provider<OsmNotesDownload> notesDownloadProvider;
 	private final Provider<OsmQuestDownload> questDownloadProvider;
-	private final QuestTypes questTypeList;
+	private final QuestTypeRegistry questTypeRegistry;
+	private final List<QuestType> questTypes;
 	private final SharedPreferences prefs;
 	private final DownloadedTilesDao downloadedTilesDao;
 	private final OsmNoteQuestDao osmNoteQuestDb;
@@ -58,14 +59,16 @@ public class QuestDownload
 								 Provider<OsmQuestDownload> questDownloadProvider,
 								 DownloadedTilesDao downloadedTilesDao,
 								 OsmNoteQuestDao osmNoteQuestDb,
-								 QuestTypes questTypeList, SharedPreferences prefs)
+								 QuestTypeRegistry questTypeRegistry, SharedPreferences prefs,
+								 List<QuestType> questTypes)
 	{
 		this.notesDownloadProvider = notesDownloadProvider;
 		this.questDownloadProvider = questDownloadProvider;
 		this.downloadedTilesDao = downloadedTilesDao;
 		this.osmNoteQuestDb = osmNoteQuestDb;
-		this.questTypeList = questTypeList;
+		this.questTypeRegistry = questTypeRegistry;
 		this.prefs = prefs;
+		this.questTypes = questTypes;
 	}
 
 	public void setVisibleQuestListener(VisibleQuestListener questListener)
@@ -131,12 +134,12 @@ public class QuestDownload
 
 	private QuestType getOsmNoteQuestType()
 	{
-		return questTypeList.forName(OsmNoteQuestType.class.getSimpleName());
+		return questTypeRegistry.getByName(OsmNoteQuestType.class.getSimpleName());
 	}
 
 	private List<QuestType> getQuestTypesToDownload()
 	{
-		List<QuestType> result = new ArrayList<>(questTypeList.getQuestTypesSortedByImportance());
+		List<QuestType> result = new ArrayList<>(questTypes);
 
 		long questExpirationTime = ApplicationConstants.REFRESH_QUESTS_AFTER;
 		long ignoreOlderThan = Math.max(0,System.currentTimeMillis() - questExpirationTime);
@@ -146,7 +149,7 @@ public class QuestDownload
 			Set<QuestType> alreadyDownloaded = new HashSet<>(alreadyDownloadedNames.size());
 			for (String questTypeName : alreadyDownloadedNames)
 			{
-				alreadyDownloaded.add(questTypeList.forName(questTypeName));
+				alreadyDownloaded.add(questTypeRegistry.getByName(questTypeName));
 			}
 			result.removeAll(alreadyDownloaded);
 

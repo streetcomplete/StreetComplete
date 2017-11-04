@@ -20,7 +20,7 @@ public class ImageSelectAdapter extends RecyclerView.Adapter<ImageSelectAdapter.
 	private ArrayList<ImageSelectAdapter.Item> items;
 	private Set<Integer> selectedIndices;
 	private int maxSelectableIndices;
-	private int cellLayoutId = R.layout.labeled_image_select_cell;
+	private int cellLayoutId = R.layout.cell_labeled_image_select;
 
 	public interface OnItemSelectionListener
 	{

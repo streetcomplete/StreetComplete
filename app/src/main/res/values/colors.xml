@@ -11,4 +11,6 @@
 
     <color name="colorTooltip">#cc4141ba</color>
 
+    <color name="colorGreyedOut">#99dddddd</color>
+
 </resources>
