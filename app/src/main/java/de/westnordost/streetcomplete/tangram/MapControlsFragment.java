@@ -164,9 +164,7 @@ public class MapControlsFragment extends Fragment
 		super.onStop();
 
 		getContext().unregisterReceiver(locationAvailabilityReceiver);
-
-		LocalBroadcastManager.getInstance(getContext()).registerReceiver(locationRequestFinishedReceiver,
-				new IntentFilter(LocationRequestFragment.ACTION_FINISHED));
+		LocalBroadcastManager.getInstance(getContext()).unregisterReceiver(locationRequestFinishedReceiver);
 	}
 
 	/* ------------------------ Calls from the MapFragment ------------------------ */
