@@ -80,10 +80,14 @@ public class MapFragment extends Fragment implements
 
 	private boolean isShowingDirection;
 
+	private boolean isMapInitialized;
+
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
 									   Bundle savedInstanceState)
 	{
 		View view = inflater.inflate(R.layout.fragment_map, container, false);
+
+		isMapInitialized = false;
 
 		mapView = view.findViewById(R.id.map);
 		TextView mapzenLink = view.findViewById(R.id.mapzenLink);
@@ -100,8 +104,10 @@ public class MapFragment extends Fragment implements
 	@Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState)
 	{
 		super.onViewCreated(view, savedInstanceState);
-		mapControls = (MapControlsFragment) getChildFragmentManager().findFragmentById(R.id.controls_fragment);
-		mapControls.setMapFragment(this);
+		if(savedInstanceState == null)
+		{
+			getChildFragmentManager().beginTransaction().add(R.id.controls_fragment, new MapControlsFragment()).commit();
+		}
 	}
 
 	/* --------------------------------- Map and Location --------------------------------------- */
@@ -127,11 +133,27 @@ public class MapFragment extends Fragment implements
 		restoreMapState();
 
 		compass.setListener(this);
-		mapControls.onMapInitialized();
+
+		isMapInitialized = true;
+		tryInitializeMapControls();
 
 		controller.loadSceneFile(sceneFilePath);
 	}
 
+	public void onMapControlsCreated(MapControlsFragment mapControls)
+	{
+		this.mapControls = mapControls;
+		tryInitializeMapControls();
+	}
+
+	private void tryInitializeMapControls()
+	{
+		if(isMapInitialized && mapControls != null)
+		{
+			mapControls.onMapInitialized();
+			mapControls.onMapOrientation(controller.getRotation(), controller.getTilt());
+		}
+	}
 
 	@CallSuper @Override public void onSceneReady(int sceneId, SceneError sceneError)
 	{
@@ -307,7 +329,7 @@ public class MapFragment extends Fragment implements
 
 	@Override public boolean onShove(float distance)
 	{
-		mapControls.onMapOrientation(controller.getRotation(), controller.getTilt());
+		if(mapControls != null) mapControls.onMapOrientation(controller.getRotation(), controller.getTilt());
 		updateView();
 		return false;
 	}
@@ -315,7 +337,7 @@ public class MapFragment extends Fragment implements
 	@Override public boolean onRotate(float x, float y, float rotation)
 	{
 		if(!requestUnglueViewFromRotation()) return true;
-		mapControls.onMapOrientation(controller.getRotation(), controller.getTilt());
+		if(mapControls != null) mapControls.onMapOrientation(controller.getRotation(), controller.getTilt());
 		updateView();
 		return false;
 	}
@@ -338,7 +360,7 @@ public class MapFragment extends Fragment implements
 	{
 		if(isFollowingPosition)
 		{
-			if(mapControls.requestUnglueViewFromPosition())
+			if(mapControls == null || mapControls.requestUnglueViewFromPosition())
 			{
 				setIsFollowingPosition(false);
 				setCompassMode(false);
@@ -353,7 +375,7 @@ public class MapFragment extends Fragment implements
 	{
 		if(isCompassMode)
 		{
-			if(mapControls.requestUnglueViewFromRotation())
+			if(mapControls == null || mapControls.requestUnglueViewFromRotation())
 			{
 				setCompassMode(false);
 				return true;
@@ -424,7 +446,7 @@ public class MapFragment extends Fragment implements
 			{
 				controller.setRotationEased(mapRotation, 50);
 			}
-			mapControls.onMapOrientation(mapRotation, controller.getTilt());
+			if(mapControls != null) mapControls.onMapOrientation(mapRotation, controller.getTilt());
 		}
 	}
 
@@ -487,8 +509,6 @@ public class MapFragment extends Fragment implements
 
 		setIsFollowingPosition(prefs.getBoolean(PREF_FOLLOWING, true));
 		setCompassMode(prefs.getBoolean(PREF_COMPASS_MODE, false));
-
-		mapControls.onMapOrientation(controller.getRotation(), controller.getTilt());
 	}
 
 	private void saveMapState()
@@ -610,7 +630,7 @@ public class MapFragment extends Fragment implements
 		if(controller == null) return;
 		controller.setRotation(rotation);
 		controller.setTilt(tilt);
-		mapControls.onMapOrientation(rotation, tilt);
+		if(mapControls != null) mapControls.onMapOrientation(rotation, tilt);
 	}
 
 	public float getRotation()

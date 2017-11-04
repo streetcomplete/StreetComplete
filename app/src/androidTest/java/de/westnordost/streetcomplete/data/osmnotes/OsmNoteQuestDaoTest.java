@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osmnotes;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -38,7 +39,10 @@ public class OsmNoteQuestDaoTest extends ApplicationDbTestCase
 	public void testAddGetWithChanges()
 	{
 		Note note = NoteDaoTest.createNote();
-		OsmNoteQuest quest = new OsmNoteQuest(null, note, QuestStatus.ANSWERED, "hi da du", new Date(1234), questType);
+		ArrayList<String> imagePaths = new ArrayList<>();
+		imagePaths.add("blubbi");
+		imagePaths.add("diblub");
+		OsmNoteQuest quest = new OsmNoteQuest(null, note, QuestStatus.ANSWERED, "hi da du", new Date(1234), questType, imagePaths);
 		noteDao.put(note);
 		dao.add(quest);
 		OsmNoteQuest dbQuest = dao.get(quest.getId());

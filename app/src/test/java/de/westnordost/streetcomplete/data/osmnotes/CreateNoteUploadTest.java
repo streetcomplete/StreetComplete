@@ -6,6 +6,7 @@ import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -22,6 +23,7 @@ import de.westnordost.osmapi.notes.Note;
 import de.westnordost.osmapi.notes.NoteComment;
 import de.westnordost.osmapi.notes.NotesDao;
 import de.westnordost.streetcomplete.ApplicationConstants;
+import de.westnordost.streetcomplete.util.ImageUploader;
 
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.*;
@@ -33,6 +35,9 @@ public class CreateNoteUploadTest extends TestCase
 	private NotesDao notesDao;
 	private OsmNoteQuestDao osmNoteQuestDb;
 	private NoteDao noteDb;
+	private ImageUploader imageUploader;
+
+	private CreateNoteUpload createNoteUpload;
 
 	@Override public void setUp()
 	{
@@ -41,13 +46,12 @@ public class CreateNoteUploadTest extends TestCase
 		notesDao = mock(NotesDao.class);
 		osmNoteQuestDb = mock(OsmNoteQuestDao.class);
 		noteDb = mock(NoteDao.class);
+		imageUploader = mock(ImageUploader.class);
+
+		createNoteUpload = new CreateNoteUpload(createNoteDb, notesDao, noteDb, osmNoteQuestDb,
+				mapDataDao, new OsmNoteQuestType(), imageUploader);
 	}
 
-	private CreateNoteUpload makeCreateNoteUpload()
-	{
-		return new CreateNoteUpload(createNoteDb, notesDao, noteDb, osmNoteQuestDb, mapDataDao,
-				new OsmNoteQuestType());
-	}
 
 	public void testCancel() throws InterruptedException
 	{
@@ -63,14 +67,13 @@ public class CreateNoteUploadTest extends TestCase
 			}
 		});
 
-		final CreateNoteUpload u = makeCreateNoteUpload();
 		final AtomicBoolean cancel = new AtomicBoolean(false);
 
 		Thread t = new Thread(new Runnable()
 		{
 			@Override public void run()
 			{
-				u.upload(cancel);
+				createNoteUpload.upload(cancel);
 			}
 		});
 		t.start();
@@ -89,7 +92,7 @@ public class CreateNoteUploadTest extends TestCase
 		createNote.elementType = Element.Type.WAY;
 		createNote.elementId = 5L;
 
-		assertNull(makeCreateNoteUpload().uploadCreateNote(createNote));
+		assertNull(createNoteUpload.uploadCreateNote(createNote));
 		verifyNoteNotInsertedIntoDb(createNote.id);
 	}
 
@@ -103,7 +106,7 @@ public class CreateNoteUploadTest extends TestCase
 		setUpThereIsANoteFor(createNote, note);
 
 		when(notesDao.comment(anyLong(), anyString())).thenReturn(note);
-		assertNotNull(makeCreateNoteUpload().uploadCreateNote(createNote));
+		assertNotNull(createNoteUpload.uploadCreateNote(createNote));
 		verify(notesDao).comment(note.id, createNote.text);
 
 		verifyNoteInsertedIntoDb(createNote.id, note);
@@ -119,7 +122,7 @@ public class CreateNoteUploadTest extends TestCase
 		note.status = Note.Status.CLOSED;
 		setUpThereIsANoteFor(createNote, note);
 
-		assertNull(makeCreateNoteUpload().uploadCreateNote(createNote));
+		assertNull(createNoteUpload.uploadCreateNote(createNote));
 
 		verify(notesDao).getAll(any(BoundingBox.class), any(Handler.class), anyInt(), anyInt());
 		verifyNoMoreInteractions(notesDao);
@@ -137,7 +140,7 @@ public class CreateNoteUploadTest extends TestCase
 
 		when(notesDao.comment(anyLong(), anyString())).thenThrow(OsmConflictException.class);
 
-		assertNull(makeCreateNoteUpload().uploadCreateNote(createNote));
+		assertNull(createNoteUpload.uploadCreateNote(createNote));
 
 		verify(notesDao).comment(note.id, createNote.text);
 
@@ -151,13 +154,12 @@ public class CreateNoteUploadTest extends TestCase
 
 		when(notesDao.create(any(LatLon.class), anyString())).thenReturn(note);
 
-		assertNotNull(makeCreateNoteUpload().uploadCreateNote(createNote));
+		assertNotNull(createNoteUpload.uploadCreateNote(createNote));
 
 		verify(notesDao).create(createNote.position, createNote.text);
 
 		verifyNoteInsertedIntoDb(createNote.id, note);
 	}
-
 
 	public void testCreateNoteWithNoQuestTitleButAssociatedElement()
 	{
@@ -170,7 +172,7 @@ public class CreateNoteUploadTest extends TestCase
 
 		when(notesDao.create(any(LatLon.class), anyString())).thenReturn(note);
 
-		assertNotNull(makeCreateNoteUpload().uploadCreateNote(createNote));
+		assertNotNull(createNoteUpload.uploadCreateNote(createNote));
 
 		verify(notesDao).create(createNote.position,
 				"for https://www.openstreetmap.org/way/5 :\n\njo ho");
@@ -190,11 +192,53 @@ public class CreateNoteUploadTest extends TestCase
 
 		when(notesDao.create(any(LatLon.class), anyString())).thenReturn(note);
 
-		assertNotNull(makeCreateNoteUpload().uploadCreateNote(createNote));
+		assertNotNull(createNoteUpload.uploadCreateNote(createNote));
 
 		verify(notesDao).create(createNote.position,
 				"Unable to answer \"What?\" for https://www.openstreetmap.org/way/5 via "+ ApplicationConstants.USER_AGENT+":\n\njo ho");
 
+		verifyNoteInsertedIntoDb(createNote.id, note);
+	}
+
+	public void testCreateNoteUploadsImagesAndDisplaysLinks()
+	{
+		CreateNote createNote = createACreateNote();
+		createNote.imagePaths = new ArrayList<>();
+		createNote.imagePaths.add("hello");
+
+		Note note = createNote(null);
+		when(notesDao.create(any(LatLon.class), anyString())).thenReturn(note);
+
+		when(imageUploader.upload(createNote.imagePaths)).thenReturn(
+				Collections.singletonList("hello, too")
+		);
+
+		assertNotNull(createNoteUpload.uploadCreateNote(createNote));
+
+		verify(imageUploader).upload(createNote.imagePaths);
+
+		verify(notesDao).create(createNote.position,"jo ho\n\nAttached photo(s):\nhello, too");
+	}
+
+	public void testCommentNoteUploadsImagesAndDisplaysLinks()
+	{
+		CreateNote createNote = createACreateNote();
+		createNote.elementType = Element.Type.WAY;
+		createNote.elementId = 5L;
+		createNote.imagePaths = new ArrayList<>();
+		createNote.imagePaths.add("hello");
+
+		Note note = createNote(createNote);
+		setUpThereIsANoteFor(createNote, note);
+
+		when(imageUploader.upload(createNote.imagePaths)).thenReturn(
+				Collections.singletonList("hello, too")
+		);
+
+		when(notesDao.comment(anyLong(), anyString())).thenReturn(note);
+		assertNotNull(createNoteUpload.uploadCreateNote(createNote));
+
+		verify(notesDao).comment(note.id ,"jo ho\n\nAttached photo(s):\nhello, too");
 		verifyNoteInsertedIntoDb(createNote.id, note);
 	}
 

@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -40,8 +41,9 @@ public class OsmNoteQuestDao extends AQuestDao<OsmNoteQuest>
 				Columns.NOTE_ID+","+
 				Columns.QUEST_STATUS+","+
 				Columns.COMMENT+","+
-				Columns.LAST_UPDATE+
-				") values (?,?,?,?,?);";
+				Columns.LAST_UPDATE+","+
+				Columns.IMAGE_PATHS+
+				") values (?,?,?,?,?,?);";
 		SQLiteDatabase db = dbHelper.getWritableDatabase();
 		add = db.compileStatement("INSERT OR IGNORE INTO " + sql);
 		replace = db.compileStatement("INSERT OR REPLACE INTO " +sql);
@@ -110,6 +112,11 @@ public class OsmNoteQuestDao extends AQuestDao<OsmNoteQuest>
 			values.put(Columns.COMMENT, quest.getComment());
 		}
 
+		if (quest.getImagePaths() != null)
+		{
+			values.put(Columns.IMAGE_PATHS, serializer.toBytes(quest.getImagePaths()));
+		}
+
 		return values;
 	}
 
@@ -129,7 +136,8 @@ public class OsmNoteQuestDao extends AQuestDao<OsmNoteQuest>
 			colNoteId = cursor.getColumnIndexOrThrow(Columns.NOTE_ID),
 			colQuestStatus = cursor.getColumnIndexOrThrow(Columns.QUEST_STATUS),
 			colComment = cursor.getColumnIndexOrThrow(Columns.COMMENT),
-			colLastUpdate = cursor.getColumnIndexOrThrow(Columns.LAST_UPDATE);
+			colLastUpdate = cursor.getColumnIndexOrThrow(Columns.LAST_UPDATE),
+			colImagePaths = cursor.getColumnIndexOrThrow(Columns.IMAGE_PATHS);
 
 		long questId = cursor.getLong(colQuestId);
 
@@ -140,6 +148,12 @@ public class OsmNoteQuestDao extends AQuestDao<OsmNoteQuest>
 		}
 		QuestStatus status = QuestStatus.valueOf(cursor.getString(colQuestStatus));
 
+		ArrayList<String> imagePaths = new ArrayList<>();
+		if(!cursor.isNull(colImagePaths))
+		{
+			imagePaths = serializer.toObject(cursor.getBlob(colImagePaths), ArrayList.class);
+		}
+
 		Date lastUpdate = new Date(cursor.getLong(colLastUpdate));
 
 		Note note = null;
@@ -148,6 +162,6 @@ public class OsmNoteQuestDao extends AQuestDao<OsmNoteQuest>
 			note = NoteDao.createObjectFrom(serializer, cursor);
 		}
 
-		return new OsmNoteQuest(questId, note, status, comment, lastUpdate, questType);
+		return new OsmNoteQuest(questId, note, status, comment, lastUpdate, questType, imagePaths);
 	}
 }

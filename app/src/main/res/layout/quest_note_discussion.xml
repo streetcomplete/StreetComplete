@@ -47,4 +47,9 @@
         android:maxLines="12"
         />
 
+    <FrameLayout
+        android:id="@+id/attachPhotoFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
 </merge>

@@ -1,9 +1,12 @@
 package de.westnordost.streetcomplete.data.osmnotes;
 
+import java.util.ArrayList;
+
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase;
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.map.data.OsmLatLon;
+import de.westnordost.streetcomplete.util.Serializer;
 
 public class CreateNoteDaoTest extends ApplicationDbTestCase
 {
@@ -12,7 +15,7 @@ public class CreateNoteDaoTest extends ApplicationDbTestCase
 	@Override public void setUp()
 	{
 		super.setUp();
-		dao = new CreateNoteDao(dbHelper);
+		dao = new CreateNoteDao(dbHelper, serializer);
 	}
 
 	public void testAddGetDelete()
@@ -23,6 +26,9 @@ public class CreateNoteDaoTest extends ApplicationDbTestCase
 		note.position = new OsmLatLon(3,5);
 		note.elementId = 123L;
 		note.elementType = Element.Type.NODE;
+		note.imagePaths = new ArrayList<>();
+		note.imagePaths.add("hullo");
+		note.imagePaths.add("hey");
 
 		assertTrue(dao.add(note));
 		CreateNote dbNote = dao.get(note.id);
@@ -33,6 +39,7 @@ public class CreateNoteDaoTest extends ApplicationDbTestCase
 		assertEquals(note.position, dbNote.position);
 		assertEquals(note.elementType, dbNote.elementType);
 		assertEquals(note.elementId, dbNote.elementId);
+		assertEquals(note.imagePaths, dbNote.imagePaths);
 
 		assertTrue(dao.delete(note.id));
 
@@ -51,6 +58,7 @@ public class CreateNoteDaoTest extends ApplicationDbTestCase
 		assertNull(dbNote.elementType);
 		assertNull(dbNote.elementId);
 		assertNull(dbNote.questTitle);
+		assertNull(dbNote.imagePaths);
 	}
 
 	public void testGetAll()

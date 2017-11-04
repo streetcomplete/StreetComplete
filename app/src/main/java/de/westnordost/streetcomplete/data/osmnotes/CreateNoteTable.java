@@ -13,6 +13,7 @@ public class CreateNoteTable
 				TEXT = "text",
 				ELEMENT_TYPE = "element_type",
 				ELEMENT_ID = "element_id",
-				QUEST_TITLE = "quest_title";
+				QUEST_TITLE = "quest_title",
+				IMAGE_PATHS = "image_paths";
 	}
 }

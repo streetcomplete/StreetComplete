@@ -60,6 +60,7 @@ public class MapControlsFragment extends Fragment
 	{
 		super.onCreate(savedInstanceState);
 		Injector.instance.getApplicationComponent().inject(this);
+		mapFragment = (MapFragment) getParentFragment();
 	}
 
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -140,6 +141,12 @@ public class MapControlsFragment extends Fragment
 		return view;
 	}
 
+	@Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState)
+	{
+		super.onViewCreated(view, savedInstanceState);
+		mapFragment.onMapControlsCreated(this);
+	}
+
 	@Override public void onStart()
 	{
 		super.onStart();
@@ -157,17 +164,10 @@ public class MapControlsFragment extends Fragment
 		super.onStop();
 
 		getContext().unregisterReceiver(locationAvailabilityReceiver);
-
-		LocalBroadcastManager.getInstance(getContext()).registerReceiver(locationRequestFinishedReceiver,
-				new IntentFilter(LocationRequestFragment.ACTION_FINISHED));
+		LocalBroadcastManager.getInstance(getContext()).unregisterReceiver(locationRequestFinishedReceiver);
 	}
 
 	/* ------------------------ Calls from the MapFragment ------------------------ */
-
-	public void setMapFragment(MapFragment mapFragment)
-	{
-		this.mapFragment = mapFragment;
-	}
 
 	public void onMapOrientation(float rotation, float tilt)
 	{
