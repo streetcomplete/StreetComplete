@@ -250,7 +250,7 @@ Die von dir eingegebenen Informationen werden dann direkt in deinem Namen zu Ope
     <string name="quest_busStopShelter_name_title">"Hat die Haltestelle „%s“ einen Unterstand?"</string>
     <string name="quest_toiletsFee_title">"Kostet die Benutzung dieser Toiletten etwas?"</string>
     <string name="quest_tactilePaving_title_bus">"Hat diese Haltestelle ein Bodenleitsystem?"</string>
-    <string name="quest_tactilePaving_title_crosswalk">"Hat dieser Überweg ein Bodenleitsystem?"</string>
+    <string name="quest_tactilePaving_title_crosswalk">"Hat dieser Überweg ein Bodenleitsystem auf beiden Seiten?"</string>
     <string name="quest_source_dialog_title">"Wurde die Information vor Ort überprüft?"</string>
     <string name="quest_tactilePaving_title_name_bus">"Hat die Haltestelle „%s“ ein Bodenleitsystem?"</string>
     <string name="quest_source_dialog_note">"Nur vor Ort erhobene Informationen sollen ergänzt werden."</string>
