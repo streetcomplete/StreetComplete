@@ -448,4 +448,8 @@ Sinon, vous pouvez télécharger un autre clavier dans la boutique d'application
     <string name="quest_buildingLevels_answer_multipleLevels">"diffère selon la partie du bâtiment"</string>
     <string name="quest_buildingLevels_answer_description">"Dans ce cas, entrez simplement les valeurs de la partie du bâtiment la plus grande."</string>
     <string name="unglue_hint">"Appuyer pour ne plus fixer la vue sur la position"</string>
+    <string name="pref_title_not_authorized_summary2">"Connectez-vous depuis votre navigateur pour autoriser"</string>
+    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Les chaussées de cette route sont-elles physiquement séparées (c'est-à-dire à travers une barrière)? La limite de vitesse par défaut dépend de si c'est le cas ou non
+"</string>
+    <string name="about_category_feedback">"Commentaire"</string>
 </resources>

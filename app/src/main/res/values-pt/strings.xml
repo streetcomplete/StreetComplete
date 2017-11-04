@@ -402,4 +402,5 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="unglue_hint">"Toque para descolar a vista da posição"</string>
     <string name="pref_title_not_authorized_summary2">"Proceda à autenticação no seu navegador para autorizar "</string>
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Existe separação física entre as faixas de rodagem (ex: separador central)? A velocidade máxima por defeito, depende se esta situação se verificar ou não."</string>
+    <string name="about_category_feedback">"Envie um comentário"</string>
 </resources>

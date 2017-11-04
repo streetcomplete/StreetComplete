@@ -99,7 +99,7 @@
     <string name="quest_openingHours_public_holidays_short">"NÜ"</string>
     <string name="quest_openingHours_open_end">"rugalmas zárás"</string>
     <string name="quest_openingHours_answer_247">"Éjjel-nappal nyitva"</string>
-    <string name="quest_openingHours_answer_seasonal_opening_hours">"Havonta változik"</string>
+    <string name="quest_openingHours_answer_seasonal_opening_hours">"Hónaptól függően változik"</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">"Nincs rendszeres nyitvatartás"</string>
     <string name="quest_openingHours_comment_title">"Nyitva tartás leírása"</string>
     <string name="quest_openingHours_comment_description">"Légy tömör, lehetőleg a táblán lévő szavakat írd le, pl. „előzetes megbeszélés alapján”. Attól, hogy nincs is kiírva, még lehet rendszeres nyitva tartás."</string>
@@ -407,4 +407,5 @@ Vagy le is tölthetsz egy másik billentyűzetet az áruházból. Népszerű bil
     <string name="unglue_hint">"Pozíció rögzítésének feloldása"</string>
     <string name="pref_title_not_authorized_summary2">"A hitelesítéshez jelentkezz be a böngészőben"</string>
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Az úttest két iránya itt el van választva fizikailag (pl. egy akadállyal)? Az alapértelmezett sebességkorlátozás attól függ, hogy ez a helyzet áll-e fent, vagy sem."</string>
+    <string name="about_category_feedback">"Visszajelzés"</string>
 </resources>

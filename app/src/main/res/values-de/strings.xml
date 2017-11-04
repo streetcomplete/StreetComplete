@@ -259,7 +259,7 @@ Die von dir eingegebenen Informationen werden dann direkt in deinem Namen zu Ope
 
     <!-- Fuzzy -->
     <string name="quest_streetSurface_name_title">"Welche Oberfläche hat die Straße „%s“ hier?"</string>
-    <string name="quest_maxspeed_title_short">"Welche Höchstgeschwindigkeit ist für diese Straße angegeben?"</string>
+    <string name="quest_maxspeed_title_short">"Welche Höchstgeschwindigkeit ist hier per Schild vorgeschrieben?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Diese Höchstgeschwindigkeit scheint nicht plausibel."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Bist du sicher, dass keine Höchstgeschwindigkeit angegeben ist?"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">"Hast Du am anderen Ende der Straße nachgeschaut?
@@ -268,7 +268,7 @@ Wenn dort kein Schild steht, gelten die gesetzlichen Geschwindigkeitsbegrenzunge
     <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Innerorts gelten andere Geschwindigkeitsbegrenzungen als außerorts."</string>
     <string name="quest_maxspeed_answer_noSign_urbanOk">"Innerorts"</string>
     <string name="quest_maxspeed_answer_noSign_ruralOk">"Außerorts"</string>
-    <string name="quest_maxspeed_answer_noSign_info_zone">"Wenn es ein Schild wie dieses an der Kreuzung zur Hauptstraße gibt, wirst Du keine weiteren Zeichen innerhalb der Zone finden, da die dort angegebene Höchstgeschwindigkeit für die gesamte Zone gilt."</string>
+    <string name="quest_maxspeed_answer_noSign_info_zone">"Wenn es ein Schild wie dieses an der Kreuzung zur Hauptstraße gibt, wirst Du keine weiteren Schilder innerhalb der Zone finden, da die dort angegebene Höchstgeschwindigkeit für die gesamte Zone gilt."</string>
     <string name="quest_sport_softball">"Softball"</string>
     <string name="quest_sport_racquet">"Racquetball"</string>
     <string name="quest_sport_ice_skating">"Schlittschuhlaufen"</string>
@@ -419,4 +419,5 @@ Andernfalls kannst Du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="unglue_hint">"Antippen, um Ansicht von Position zu trennen"</string>
     <string name="pref_title_not_authorized_summary2">"Logge dich zur Autorisierung im Webbrowser ein"</string>
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Sind die Fahrbahnen dieser Straße hier baulich getrennt (z.B. durch eine Leitplanke)? Es gelten unterschiedliche Geschwindigkeitsbegrenzungen, je nachdem ob der Mittelstreifen überfahrbar ist oder nicht."</string>
+    <string name="about_category_feedback">"Feedback"</string>
 </resources>

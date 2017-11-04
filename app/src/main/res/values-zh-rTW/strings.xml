@@ -409,4 +409,6 @@
     <string name="quest_buildingLevels_answer_multipleLevels">"建築部分的不同"</string>
     <string name="quest_buildingLevels_answer_description">"在這一個例子，簡單填寫建築部分最高樓層數值。"</string>
     <string name="unglue_hint">"從位置點取消界限視圖"</string>
+    <string name="pref_title_not_authorized_summary2">"經由你的瀏覽器登入來認證帳號"</string>
+    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"這條路的車道是否實體分隔(例如有障礙物)？預設速限依照上述設定決定或為否。"</string>
 </resources>
