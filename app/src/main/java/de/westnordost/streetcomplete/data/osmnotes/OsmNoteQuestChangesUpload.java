@@ -11,6 +11,7 @@ import de.westnordost.osmapi.common.errors.OsmConflictException;
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.notes.Note;
 import de.westnordost.osmapi.notes.NotesDao;
+import de.westnordost.streetcomplete.util.ImageUploader;
 
 public class OsmNoteQuestChangesUpload
 {
@@ -19,12 +20,15 @@ public class OsmNoteQuestChangesUpload
 	private final NotesDao osmDao;
 	private final OsmNoteQuestDao questDB;
 	private final NoteDao noteDB;
+	private final ImageUploader imageUploader;
 
-	@Inject public OsmNoteQuestChangesUpload(NotesDao osmDao, OsmNoteQuestDao questDB, NoteDao noteDB)
+	@Inject public OsmNoteQuestChangesUpload(
+			NotesDao osmDao, OsmNoteQuestDao questDB, NoteDao noteDB, ImageUploader imageUploader)
 	{
 		this.osmDao = osmDao;
 		this.questDB = questDB;
 		this.noteDB = noteDB;
+		this.imageUploader = imageUploader;
 	}
 
 	public void upload(AtomicBoolean cancelState)
@@ -57,6 +61,7 @@ public class OsmNoteQuestChangesUpload
 
 		try
 		{
+			text += AttachPhotoUtils.uploadAndGetAttachedPhotosText(imageUploader, quest.getImagePaths());
 			Note newNote = osmDao.comment(quest.getNote().id, text);
 
 			/* Unlike OSM quests, note quests are never deleted when the user contributed to it
@@ -70,6 +75,7 @@ public class OsmNoteQuestChangesUpload
 			quest.setNote(newNote);
 			questDB.update(quest);
 			noteDB.put(newNote);
+			AttachPhotoUtils.deleteImages(quest.getImagePaths());
 
 			return newNote;
 		}
@@ -78,6 +84,7 @@ public class OsmNoteQuestChangesUpload
 			// someone else already closed the note -> our contribution is probably worthless. Delete
 			questDB.delete(quest.getId());
 			noteDB.delete(quest.getNote().id);
+			AttachPhotoUtils.deleteImages(quest.getImagePaths());
 
 			Log.i(TAG, "Dropped the comment " + getNoteQuestStringForLog(quest) +
 					" because the note has already been closed");
@@ -91,5 +98,4 @@ public class OsmNoteQuestChangesUpload
 		LatLon pos = n.getMarkerLocation();
 		return "\"" + n.getComment() + "\" at " + pos.getLatitude() + ", " + pos.getLongitude();
 	}
-
 }

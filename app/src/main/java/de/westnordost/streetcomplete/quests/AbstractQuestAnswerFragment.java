@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.quests;
 
 import android.app.Activity;
-import android.app.DialogFragment;
-import android.app.Fragment;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.Fragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.Configuration;
@@ -238,7 +238,7 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 		String questTitle = getEnglishResources().getString(getQuestTitleResId(), getElementName());
 		leaveNoteArgs.putString(LeaveNoteDialog.ARG_QUEST_TITLE, questTitle);
 		leaveNote.setArguments(leaveNoteArgs);
-		leaveNote.show(getFragmentManager(), null);
+		leaveNote.show(getActivity().getSupportFragmentManager(), null);
 	}
 
 	private Resources getEnglishResources()
@@ -255,6 +255,7 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 	{
 		if (!hasChanges())
 		{
+			onDiscard();
 			confirmed.run();
 		}
 		else
@@ -264,6 +265,7 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 				@Override
 				public void onClick(DialogInterface dialog, int which)
 				{
+					onDiscard();
 					confirmed.run();
 				}
 			};
@@ -274,6 +276,8 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 					.show();
 		}
 	}
+
+	protected void onDiscard() {}
 
 	protected final void applyImmediateAnswer(Bundle data)
 	{
