@@ -60,12 +60,17 @@ public class LutimImageUploader implements ImageUploader
 						imageLinks.add(finalLinkToImage);
 					}
 				}
+				// an error here should neither crash the app nor make the whole note upload
+				// fail but should not be silently ignored -> middle ground: include error message
+				// in note (comment) and log to console
 				catch (IOException e)
 				{
-					Log.e(TAG, "Unable to access the file", e);
+					imageLinks.add("(error: upload failed)");
+					Log.e(TAG, "Unable to upload the file", e);
 				}
 				catch (JSONException e)
 				{
+					imageLinks.add("(error: upload failed)");
 					Log.e(TAG, "Lutim seems to have a returned a bogus response", e);
 				}
 			}
