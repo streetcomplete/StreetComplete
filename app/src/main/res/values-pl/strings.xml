@@ -406,4 +406,5 @@ W przeciwnym wypadku możesz ściągnąć dodatkowe aplikacje klawiatury ze skle
     <string name="unglue_hint">"Dotknij, by umożliwić przesuwanie mapy"</string>
     <string name="pref_title_not_authorized_summary2">"Zaloguj się przez przeglądarkę"</string>
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Czy jezdnie na tej ulicy są fizycznie odseparowane (np. barierkami)? Od tego zależy domyślne ograniczenie prędkości."</string>
+    <string name="about_category_feedback">"Opinia"</string>
 </resources>

@@ -407,4 +407,5 @@
     <string name="unglue_hint">"Отвязать карту от местоположения"</string>
     <string name="pref_title_not_authorized_summary2">"Войти через браузер и авторизовать"</string>
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Разделены ли полосы противоположных направлений физически (барьером или островком безопасности)? От этого зависит ограничение скорости по умолчанию."</string>
+    <string name="about_category_feedback">"Обратная связь"</string>
 </resources>
