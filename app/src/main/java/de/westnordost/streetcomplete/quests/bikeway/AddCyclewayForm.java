@@ -219,12 +219,12 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 	{
 		return new ListAdapter<Cycleway>(items)
 		{
-			@Override public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
+			@Override public ViewHolder<Cycleway> onCreateViewHolder(ViewGroup parent, int viewType)
 			{
-				return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(
+				return new ViewHolder<Cycleway>(LayoutInflater.from(parent.getContext()).inflate(
 						R.layout.labeled_icon_button_cell, parent, false))
 				{
-					@Override protected void update(final Cycleway item)
+					@Override protected void onBind(final Cycleway item)
 					{
 						ImageView iconView = itemView.findViewById(R.id.imageView);
 						TextView textView = itemView.findViewById(R.id.textView);
