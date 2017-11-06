@@ -142,8 +142,14 @@ public class AddCycleway implements OsmElementQuestType
 		int d = MIN_DIST_TO_CYCLEWAYS;
 		return OverpassQLUtil.getOverpassBBox(bbox) +
 			"way[highway ~ \"^(primary|secondary|tertiary|unclassified|residential)$\"]" +
+				// only without cycleway tags
 			   "[!cycleway][!\"cycleway:left\"][!\"cycleway:right\"][!\"cycleway:both\"]" +
-			   "[!\"sidewalk:bicycle\"][!\"sidewalk:left:bicycle\"][!\"sidewalk:right:bicycle\"][!\"sidewalk:both:bicycle\"]" +
+			   "[!\"sidewalk:bicycle\"][!\"sidewalk:both:bicycle\"][!\"sidewalk:left:bicycle\"][!\"sidewalk:right:bicycle\"]" +
+			   // not any with low speed limit because they not very likely to have cycleway infrastructure
+			   "[maxspeed !~ \"^(30|25|20|15|10|8|7|6|5|20 mph|15 mph|10 mph|5 mph|walk)$\"]" +
+			   // not any unpaved because of the same reason
+			   "[surface !~ \"^(unpaved|compacted|gravel|fine_gravel|pebblestone|grass_paver|ground|earth|dirt|grass|sand|mud|ice|salt|snow|woodchips)$\"]" +
+			   // not any explicitly tagged as no bicycles
 			   "[bicycle != no]" +
 			   " -> .streets;" +
 			"(" +
