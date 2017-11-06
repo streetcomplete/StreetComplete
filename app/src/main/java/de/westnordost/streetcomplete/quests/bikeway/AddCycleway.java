@@ -142,8 +142,8 @@ public class AddCycleway implements OsmElementQuestType
 		int d = MIN_DIST_TO_CYCLEWAYS;
 		return OverpassQLUtil.getOverpassBBox(bbox) +
 			"way[highway ~ \"^(primary|secondary|tertiary|unclassified|residential)$\"]" +
-			   "[!cycleway][!\"cycleway:left\"][!\"cycleway:right\"]" +
-			   "[!\"sidewalk:bicycle\"][!\"sidewalk:left:bicycle\"][!\"sidewalk:right:bicycle\"]" +
+			   "[!cycleway][!\"cycleway:left\"][!\"cycleway:right\"][!\"cycleway:both\"]" +
+			   "[!\"sidewalk:bicycle\"][!\"sidewalk:left:bicycle\"][!\"sidewalk:right:bicycle\"][!\"sidewalk:both:bicycle\"]" +
 			   "[bicycle != no]" +
 			   " -> .streets;" +
 			"(" +
