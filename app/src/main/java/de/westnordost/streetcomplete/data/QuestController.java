@@ -225,7 +225,7 @@ public class QuestController
 			if(quest == null) return;
 
 			// not uploaded yet -> simply revert to NEW
-			if(quest.getStatus() == QuestStatus.ANSWERED)
+			if(quest.getStatus() == QuestStatus.ANSWERED || quest.getStatus() == QuestStatus.HIDDEN)
 			{
 				quest.setStatus(QuestStatus.NEW);
 				quest.setChanges(null, null);

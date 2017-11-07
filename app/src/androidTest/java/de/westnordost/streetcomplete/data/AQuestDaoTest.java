@@ -157,7 +157,6 @@ public class AQuestDaoTest extends AndroidDbTestCase
 	public void testGetLastSolvedContainsOnlySolvedQuests()
 	{
 		dao.add(createQuest(0,0, QuestStatus.NEW));
-		dao.add(createQuest(1,0, QuestStatus.HIDDEN));
 		dao.add(createQuest(2,0, QuestStatus.INVISIBLE));
 		assertNull(dao.getLastSolved());
 	}
@@ -171,6 +170,12 @@ public class AQuestDaoTest extends AndroidDbTestCase
 	public void testGetLastSolvedIncludesAnsweredQuests()
 	{
 		dao.add(createQuest(1,0, QuestStatus.ANSWERED));
+		assertNotNull(dao.getLastSolved());
+	}
+
+	public void testGetLastSolvedIncludesHiddenQuests()
+	{
+		dao.add(createQuest(1,0, QuestStatus.HIDDEN));
 		assertNotNull(dao.getLastSolved());
 	}
 
