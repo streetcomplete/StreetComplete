@@ -15,10 +15,10 @@ public class AttachPhotoUtils
 {
 	public static String uploadAndGetAttachedPhotosText(ImageUploader imageUploader, List<String> imagePaths)
 	{
-		if(imagePaths != null)
+		if(imagePaths != null && !imagePaths.isEmpty())
 		{
 			List<String> urls = imageUploader.upload(imagePaths);
-			if (urls != null)
+			if (urls != null && !urls.isEmpty())
 			{
 				StringBuilder sb = new StringBuilder("\n\nAttached photo(s):");
 				for(String link : urls)
