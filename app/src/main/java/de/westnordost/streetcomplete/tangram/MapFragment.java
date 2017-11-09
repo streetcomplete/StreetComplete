@@ -23,6 +23,7 @@ import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.TextView;
 
 import com.mapzen.android.lost.api.LocationListener;
@@ -170,12 +171,35 @@ public class MapFragment extends Fragment implements
 
 	@CallSuper @Override public void onSceneReady(int sceneId, SceneError sceneError)
 	{
-		if(getActivity() == null) return;
+		if(getActivity() != null)
+		{
+			initMarkers();
+			followPosition();
+			showLocation();
+			postOnLayout(new Runnable()
+			{
+				@Override public void run()
+				{
+					updateView();
+				}
+			});
+		}
+	}
 
-		initMarkers();
-		followPosition();
-		showLocation();
-		updateView();
+	private void postOnLayout(final Runnable runnable)
+	{
+		ViewTreeObserver vto = getView().getViewTreeObserver();
+		if(vto.isAlive())
+		{
+			vto.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
+			{
+				@Override public void onGlobalLayout()
+				{
+					getView().getViewTreeObserver().removeOnGlobalLayoutListener(this);
+					runnable.run();
+				}
+			});
+		}
 	}
 
 	private void initMarkers()

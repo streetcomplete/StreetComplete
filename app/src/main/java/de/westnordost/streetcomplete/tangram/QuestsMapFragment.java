@@ -50,7 +50,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 
 	private LngLat lastPos;
 	private Rect lastDisplayedRect;
-	private Set<Point> retrievedTiles;
+	private final Set<Point> retrievedTiles;
 	private static final int TILES_ZOOM = 14;
 
 	private static float MAX_QUEST_ZOOM = 19;
@@ -75,6 +75,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 	{
 		Injector.instance.getApplicationComponent().inject(this);
 		questTypeOrder = new HashMap<>();
+		retrievedTiles = new HashSet<>();
 		int order = 0;
 		for (QuestType questType : questTypes)
 		{
@@ -89,15 +90,12 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		listener = (Listener) activity;
 	}
 
-	@Override public void onStart()
+	@Override public void onStop()
 	{
-		super.onStart();
-		/* while the map fragment is stopped, there could still be a download which retrieves new
-		 * quests in progress. If the retrieved tiles memory would not be cleared, the map would not
- 		 * retrieve these new quests from DB when the user scrolls over the map because the map
-		 * thinks it already retrieved the quests from DB.
-		 * (If a download is active while the user views the map, the quests are added on the fly) */
-		retrievedTiles = new HashSet<>();
+		super.onStop();
+		/* When reentering the fragment, the database may have changed (quest download in
+		*  background or change in settings), so the quests must be pulled from DB again */
+		clearQuests();
 	}
 
 	@Override public void onDestroy()
@@ -113,8 +111,6 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		controller.setTapResponder(this);
 		controller.setLabelPickListener(this);
 		controller.setPickRadius(1);
-
-		retrievedTiles = new HashSet<>();
 	}
 
 	@Override protected void loadScene(String sceneFilePath)
@@ -125,11 +121,13 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 
 	@Override public void onSceneReady(int sceneId, SceneError sceneError)
 	{
+		if (getActivity() != null)
+		{
+			retrievedTiles.clear();
+			geometryLayer = controller.addDataLayer(GEOMETRY_LAYER);
+			questsLayer = controller.addDataLayer(QUESTS_LAYER);
+		}
 		super.onSceneReady(sceneId, sceneError);
-		if (getActivity() == null) return;
-
-		geometryLayer = controller.addDataLayer(GEOMETRY_LAYER);
-		questsLayer = controller.addDataLayer(QUESTS_LAYER);
 	}
 
 	@Override public boolean onSingleTapUp(float x, float y)
@@ -295,8 +293,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		questOffset = offsets;
 	}
 
-	@UiThread
-	public void addQuestGeometry(ElementGeometry g)
+	@UiThread public void addQuestGeometry(ElementGeometry g)
 	{
 		if(geometryLayer == null) return; // might still be null - async calls...
 
@@ -400,6 +397,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		geoJson.append("]}");
 
 		questsLayer.addGeoJson(geoJson.toString());
+		controller.requestRender();
 	}
 
 	@UiThread
@@ -412,11 +410,16 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		// be added
 
 		// so for now...:
-		questsLayer.clear();
+		clearQuests();
+		updateView();
+	}
+
+	private void clearQuests()
+	{
+		if(questsLayer != null) questsLayer.clear();
 		retrievedTiles.clear();
 		lastPos = null;
 		lastDisplayedRect = null;
-		updateView();
 	}
 
 	public BoundingBox getDisplayedArea(Rect offset)
@@ -426,6 +429,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		Point size = new Point(
 				getView().getWidth() - offset.left - offset.right,
 				getView().getHeight() - offset.top - offset.bottom);
+		if(size.equals(0,0)) return null;
 
 		// the special cases here are: map tilt and map rotation:
 		// * map tilt makes the screen area -> world map area into a trapezoid
