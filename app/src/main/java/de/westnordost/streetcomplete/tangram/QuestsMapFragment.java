@@ -29,7 +29,6 @@ import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.data.Quest;
 import de.westnordost.streetcomplete.data.QuestGroup;
 import de.westnordost.streetcomplete.data.QuestType;
-import de.westnordost.streetcomplete.data.QuestTypeRegistry;
 import de.westnordost.streetcomplete.data.osm.ElementGeometry;
 import de.westnordost.streetcomplete.util.SlippyMapMath;
 import de.westnordost.osmapi.map.data.BoundingBox;
@@ -115,10 +114,13 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		controller.setLabelPickListener(this);
 		controller.setPickRadius(1);
 
-		List<SceneUpdate> sceneUpdates = spriteSheetCreator.get();
-		controller.updateSceneAsync(sceneUpdates);
-
 		retrievedTiles = new HashSet<>();
+	}
+
+	@Override protected void loadScene(String sceneFilePath)
+	{
+		List<SceneUpdate> sceneUpdates = spriteSheetCreator.get();
+		controller.loadSceneFile(sceneFilePath, sceneUpdates);
 	}
 
 	@Override public void onSceneReady(int sceneId, SceneError sceneError)

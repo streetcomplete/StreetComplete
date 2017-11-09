@@ -145,6 +145,11 @@ public class MapFragment extends Fragment implements
 		isMapInitialized = true;
 		tryInitializeMapControls();
 
+		loadScene(sceneFilePath);
+	}
+
+	protected void loadScene(String sceneFilePath)
+	{
 		controller.loadSceneFile(sceneFilePath);
 	}
 
