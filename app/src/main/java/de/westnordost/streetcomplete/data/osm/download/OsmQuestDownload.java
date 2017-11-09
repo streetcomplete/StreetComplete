@@ -90,7 +90,7 @@ public class OsmQuestDownload
 
 		int newQuestsByQuestType = osmQuestDB.addAll(quests);
 
-		if(questListener != null && !quests.isEmpty())
+		if(questListener != null)
 		{
 			Iterator<OsmQuest> it = quests.iterator();
 			while(it.hasNext())
@@ -98,7 +98,7 @@ public class OsmQuestDownload
 				// it is null if this quest is already in the DB, so don't call onQuestCreated
 				if(it.next().getId() == null) it.remove();
 			}
-			questListener.onQuestsCreated(quests, QuestGroup.OSM);
+			if(!quests.isEmpty()) questListener.onQuestsCreated(quests, QuestGroup.OSM);
 		}
 
 		if(!previousQuests.isEmpty())
