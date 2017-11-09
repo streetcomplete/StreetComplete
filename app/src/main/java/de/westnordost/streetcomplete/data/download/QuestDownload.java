@@ -36,7 +36,7 @@ public class QuestDownload
 	private final Provider<OsmNotesDownload> notesDownloadProvider;
 	private final Provider<OsmQuestDownload> questDownloadProvider;
 	private final QuestTypeRegistry questTypeRegistry;
-	private final List<QuestType> questTypes;
+	private final Provider<List<QuestType>> questTypesProvider;
 	private final SharedPreferences prefs;
 	private final DownloadedTilesDao downloadedTilesDao;
 	private final OsmNoteQuestDao osmNoteQuestDb;
@@ -60,7 +60,7 @@ public class QuestDownload
 								 DownloadedTilesDao downloadedTilesDao,
 								 OsmNoteQuestDao osmNoteQuestDb,
 								 QuestTypeRegistry questTypeRegistry, SharedPreferences prefs,
-								 List<QuestType> questTypes)
+								 Provider<List<QuestType>> questTypesProvider)
 	{
 		this.notesDownloadProvider = notesDownloadProvider;
 		this.questDownloadProvider = questDownloadProvider;
@@ -68,7 +68,7 @@ public class QuestDownload
 		this.osmNoteQuestDb = osmNoteQuestDb;
 		this.questTypeRegistry = questTypeRegistry;
 		this.prefs = prefs;
-		this.questTypes = questTypes;
+		this.questTypesProvider = questTypesProvider;
 	}
 
 	public void setVisibleQuestListener(VisibleQuestListener questListener)
@@ -139,7 +139,7 @@ public class QuestDownload
 
 	private List<QuestType> getQuestTypesToDownload()
 	{
-		List<QuestType> result = new ArrayList<>(questTypes);
+		List<QuestType> result = new ArrayList<>(questTypesProvider.get());
 
 		long questExpirationTime = ApplicationConstants.REFRESH_QUESTS_AFTER;
 		long ignoreOlderThan = Math.max(0,System.currentTimeMillis() - questExpirationTime);

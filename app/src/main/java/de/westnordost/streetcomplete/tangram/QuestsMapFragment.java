@@ -24,6 +24,7 @@ import java.util.Map;
 import java.util.Set;
 
 import javax.inject.Inject;
+import javax.inject.Provider;
 
 import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.data.Quest;
@@ -59,9 +60,9 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 
 	private Rect questOffset;
 
-	@Inject List<QuestType> questTypes;
+	@Inject Provider<List<QuestType>> questTypesProvider;
 	@Inject TangramQuestSpriteSheetCreator spriteSheetCreator;
-	private final Map<QuestType, Integer> questTypeOrder;
+	private Map<QuestType, Integer> questTypeOrder;
 
 	public interface Listener
 	{
@@ -74,13 +75,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 	public QuestsMapFragment()
 	{
 		Injector.instance.getApplicationComponent().inject(this);
-		questTypeOrder = new HashMap<>();
 		retrievedTiles = new HashSet<>();
-		int order = 0;
-		for (QuestType questType : questTypes)
-		{
-			questTypeOrder.put(questType, order++);
-		}
 	}
 
 	@Override public void onAttach(Activity activity)
@@ -88,6 +83,17 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		super.onAttach(activity);
 
 		listener = (Listener) activity;
+	}
+
+	@Override public void onStart()
+	{
+		super.onStart();
+		questTypeOrder = new HashMap<>();
+		int order = 0;
+		for (QuestType questType : questTypesProvider.get())
+		{
+			questTypeOrder.put(questType, order++);
+		}
 	}
 
 	@Override public void onStop()

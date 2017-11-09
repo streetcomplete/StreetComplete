@@ -9,6 +9,7 @@ import android.preference.PreferenceManager;
 
 import java.util.List;
 
+import javax.inject.Provider;
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -68,25 +69,25 @@ public class ApplicationModule
 			OsmQuestDao osmQuestDB, UndoOsmQuestDao undoOsmQuestDB, MergedElementDao osmElementDB,
 			ElementGeometryDao geometryDB, OsmNoteQuestDao osmNoteQuestDB,
 			CreateNoteDao createNoteDB, OpenChangesetsDao manageChangesetsDB,
-			List<QuestType> questTypes)
+			Provider<List<QuestType>> questTypesProvider)
 	{
 		return new QuestController(
 				osmQuestDB, undoOsmQuestDB, osmElementDB, geometryDB, osmNoteQuestDB, createNoteDB,
-				manageChangesetsDB,	questTypes, appContext());
+				manageChangesetsDB,	questTypesProvider, appContext());
 	}
 
 	@Provides public static MobileDataAutoDownloadStrategy mobileDataAutoDownloadStrategy(
 			OsmQuestDao osmQuestDB, DownloadedTilesDao downloadedTilesDao,
-			List<QuestType> questTypes)
+			Provider<List<QuestType>> questTypesProvider)
 	{
-		return new MobileDataAutoDownloadStrategy(osmQuestDB, downloadedTilesDao, questTypes);
+		return new MobileDataAutoDownloadStrategy(osmQuestDB, downloadedTilesDao, questTypesProvider);
 	}
 
 	@Provides public static WifiAutoDownloadStrategy wifiAutoDownloadStrategy(
 			OsmQuestDao osmQuestDB, DownloadedTilesDao downloadedTilesDao,
-			List<QuestType> questTypes)
+			Provider<List<QuestType>> questTypesProvider)
 	{
-		return new WifiAutoDownloadStrategy(osmQuestDB, downloadedTilesDao, questTypes);
+		return new WifiAutoDownloadStrategy(osmQuestDB, downloadedTilesDao, questTypesProvider);
 	}
 
 	@Provides public static LocationRequestFragment locationRequestComponent()

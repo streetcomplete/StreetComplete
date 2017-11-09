@@ -15,6 +15,7 @@ import java.util.Collections;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.inject.Provider;
 
 import de.westnordost.streetcomplete.ApplicationConstants;
 import de.westnordost.streetcomplete.data.changesets.OpenChangesetsDao;
@@ -49,7 +50,7 @@ public class QuestController
 	private final OpenChangesetsDao openChangesetsDao;
 	private final Context context;
 	private final VisibleQuestRelay relay;
-	private final List<QuestType> questTypes;
+	private final Provider<List<QuestType>> questTypesProvider;
 
 	private boolean downloadServiceIsBound;
 	private QuestDownloadService.Interface downloadService;
@@ -88,8 +89,8 @@ public class QuestController
 	@Inject public QuestController(OsmQuestDao osmQuestDB, UndoOsmQuestDao undoOsmQuestDB,
 								   MergedElementDao osmElementDB, ElementGeometryDao geometryDB,
 								   OsmNoteQuestDao osmNoteQuestDB, CreateNoteDao createNoteDB,
-								   OpenChangesetsDao openChangesetsDao, List<QuestType> questTypes,
-								   Context context)
+								   OpenChangesetsDao openChangesetsDao,
+								   Provider<List<QuestType>> questTypesProvider, Context context)
 	{
 		this.osmQuestDB = osmQuestDB;
 		this.undoOsmQuestDB = undoOsmQuestDB;
@@ -98,7 +99,7 @@ public class QuestController
 		this.osmNoteQuestDB = osmNoteQuestDB;
 		this.createNoteDB = createNoteDB;
 		this.openChangesetsDao = openChangesetsDao;
-		this.questTypes = questTypes;
+		this.questTypesProvider = questTypesProvider;
 		this.context = context;
 		this.relay = new VisibleQuestRelay();
 	}
@@ -372,6 +373,7 @@ public class QuestController
 		workerHandler.post(new Runnable() { @Override public void run()
 		{
 
+			List<QuestType> questTypes = questTypesProvider.get();
 			List<String> questTypeNames = new ArrayList<>(questTypes.size());
 			for (QuestType questType : questTypes)
 			{

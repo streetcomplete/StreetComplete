@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Set;
 
 import javax.inject.Inject;
+import javax.inject.Provider;
 
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
@@ -25,16 +26,16 @@ public class OsmQuestUnlocker
 	private final OsmNoteQuestDao osmNoteQuestDb;
 	private final OsmQuestDao questDB;
 	private final ElementGeometryDao elementGeometryDB;
-	private final List<QuestType> questTypes;
+	private final Provider<List<QuestType>> questTypesProvider;
 
 	@Inject public OsmQuestUnlocker(
 			OsmNoteQuestDao osmNoteQuestDb, OsmQuestDao questDB,
-			ElementGeometryDao elementGeometryDB, List<QuestType> questTypes)
+			ElementGeometryDao elementGeometryDB, Provider<List<QuestType>> questTypesProvider)
 	{
 		this.osmNoteQuestDb = osmNoteQuestDb;
 		this.questDB = questDB;
 		this.elementGeometryDB = elementGeometryDB;
-		this.questTypes = questTypes;
+		this.questTypesProvider = questTypesProvider;
 	}
 
 	public List<OsmQuest> unlockNewQuests(Element element)
@@ -46,7 +47,7 @@ public class OsmQuestUnlocker
 
 		Set<QuestType> currentQuestTypes = getCurrentQuestTypes(element);
 
-		for(QuestType questType : questTypes)
+		for(QuestType questType : questTypesProvider.get())
 		{
 			if(!(questType instanceof OsmElementQuestType)) continue;
 			OsmElementQuestType osmQuestType = (OsmElementQuestType)questType;

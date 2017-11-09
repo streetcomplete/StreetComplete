@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.data.download;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.inject.Provider;
 
 import de.westnordost.streetcomplete.data.QuestType;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
@@ -12,9 +13,9 @@ public class MobileDataAutoDownloadStrategy extends AActiveRadiusStrategy
 {
 	@Inject public MobileDataAutoDownloadStrategy(OsmQuestDao osmQuestDB,
 												  DownloadedTilesDao downloadedTilesDao,
-												  List<QuestType> questTypes)
+												  Provider<List<QuestType>> questTypesProvider)
 	{
-		super(osmQuestDB, downloadedTilesDao, questTypes);
+		super(osmQuestDB, downloadedTilesDao, questTypesProvider);
 	}
 
 	@Override public int getQuestTypeDownloadCount()

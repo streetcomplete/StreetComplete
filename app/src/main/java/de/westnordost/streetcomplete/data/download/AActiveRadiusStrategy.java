@@ -1,11 +1,11 @@
 package de.westnordost.streetcomplete.data.download;
 
-import android.content.SharedPreferences;
 import android.graphics.Rect;
 import android.util.Log;
 
-
 import java.util.List;
+
+import javax.inject.Provider;
 
 import de.westnordost.streetcomplete.ApplicationConstants;
 import de.westnordost.streetcomplete.data.QuestStatus;
@@ -25,18 +25,18 @@ public abstract class AActiveRadiusStrategy implements QuestAutoDownloadStrategy
 
 	private final OsmQuestDao osmQuestDB;
 	private final DownloadedTilesDao downloadedTilesDao;
-	private final List<QuestType> questTypes;
+	private final Provider<List<QuestType>> questTypesProvider;
 
 	public AActiveRadiusStrategy(
 			OsmQuestDao osmQuestDB, DownloadedTilesDao downloadedTilesDao,
-			List<QuestType> questTypes)
+			Provider<List<QuestType>> questTypesProvider)
 	{
 		this.osmQuestDB = osmQuestDB;
 		this.downloadedTilesDao = downloadedTilesDao;
-		this.questTypes = questTypes;
+		this.questTypesProvider = questTypesProvider;
 	}
 
-	public boolean mayDownloadHere(LatLon pos, int radius)
+	private boolean mayDownloadHere(LatLon pos, int radius, int numberOfQuestTypes)
 	{
 		BoundingBox bbox = SphericalEarthMath.enclosingBoundingBox(pos, radius);
 
@@ -56,7 +56,7 @@ public abstract class AActiveRadiusStrategy implements QuestAutoDownloadStrategy
 		long questExpirationTime = ApplicationConstants.REFRESH_QUESTS_AFTER;
 		long ignoreOlderThan = Math.max(0,System.currentTimeMillis() - questExpirationTime);
 		int alreadyDownloadedQuestTypes = downloadedTilesDao.get(tiles, ignoreOlderThan).size();
-		if(alreadyDownloadedQuestTypes >= questTypes.size())
+		if(alreadyDownloadedQuestTypes >= numberOfQuestTypes)
 		{
 			Log.i(TAG, "Not downloading quests because everything has been downloaded already in " + radius + "m radius");
 			return false;
@@ -67,9 +67,10 @@ public abstract class AActiveRadiusStrategy implements QuestAutoDownloadStrategy
 
 	@Override public boolean mayDownloadHere(LatLon pos)
 	{
+		int numberOfQuestTypes = questTypesProvider.get().size();
 		for (int activeRadius : getActiveRadii())
 		{
-			if(mayDownloadHere(pos, activeRadius)) return true;
+			if(mayDownloadHere(pos, activeRadius, numberOfQuestTypes)) return true;
 		}
 		return false;
 	}
