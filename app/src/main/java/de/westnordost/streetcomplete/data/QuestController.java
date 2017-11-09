@@ -378,8 +378,11 @@ public class QuestController
 				questTypeNames.add(questType.getClass().getSimpleName());
 			}
 
-			relay.onQuestsCreated(osmQuestDB.getAll(bbox, QuestStatus.NEW, questTypeNames), QuestGroup.OSM);
-			relay.onQuestsCreated(osmNoteQuestDB.getAll(bbox, QuestStatus.NEW), QuestGroup.OSM_NOTE);
+			List<OsmQuest> osmQuests = osmQuestDB.getAll(bbox, QuestStatus.NEW, questTypeNames);
+			if(!osmQuests.isEmpty()) relay.onQuestsCreated(osmQuests, QuestGroup.OSM);
+
+			List<OsmNoteQuest> osmNoteQuests = osmNoteQuestDB.getAll(bbox, QuestStatus.NEW);
+			if(!osmNoteQuests.isEmpty()) relay.onQuestsCreated(osmNoteQuests, QuestGroup.OSM_NOTE);
 		}});
 	}
 
