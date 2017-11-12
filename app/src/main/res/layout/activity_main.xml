@@ -46,6 +46,18 @@
                 android:drawablePadding="2dp"
                 />
 
+            <de.westnordost.streetcomplete.statistics.UploadsCounter
+                android:id="@+id/uploadsCounter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:drawablePadding="2dp"
+                android:drawableStart="@drawable/ic_star_white_24dp"
+                android:gravity="center_vertical"
+                android:minEms="7"
+                android:paddingEnd="8dp"
+                android:paddingStart="8dp" />
+
         </android.support.v7.widget.Toolbar>
 
         <ProgressBar
