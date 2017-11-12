@@ -47,4 +47,6 @@ public abstract class SimpleOverpassQuestType implements OsmElementQuestType
 	}
 
 	@Override public boolean isDefaultEnabled() { return true; }
+
+	@Override public String[] getDisabledForCountries()	{ return null; }
 }

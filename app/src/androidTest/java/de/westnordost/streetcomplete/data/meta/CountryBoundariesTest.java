@@ -7,6 +7,8 @@ import junit.framework.TestCase;
 import java.util.Arrays;
 import java.util.Collections;
 
+import de.westnordost.osmapi.map.data.BoundingBox;
+
 public class CountryBoundariesTest extends TestCase
 {
 	private static final String testGeoJson = "" +
@@ -23,8 +25,9 @@ public class CountryBoundariesTest extends TestCase
 
 	private CountryBoundaries countryBoundaries;
 
-	public void setUp()
+	public void setUp() throws Exception
 	{
+		super.setUp();
 		countryBoundaries = new CountryBoundaries(
 				(GeometryCollection) new GeoJsonReader().read(testGeoJson));
 	}
@@ -44,10 +47,31 @@ public class CountryBoundariesTest extends TestCase
 		assertTrue(countryBoundaries.isIn("AA",-40,63));
 	}
 
+	public void testIntersectsWith()
+	{
+		// outside
+		assertFalse(countryBoundaries.intersectsWith("BB", new BoundingBox(0,40,80,55)));
+		assertFalse(countryBoundaries.intersectsWith("BB", new BoundingBox(0,40,15,110)));
+		assertFalse(countryBoundaries.intersectsWith("BB", new BoundingBox(80,55,90,110)));
+		assertFalse(countryBoundaries.intersectsWith("BB", new BoundingBox(15,110,90,120)));
+
+		// completely inside
+		assertTrue(countryBoundaries.intersectsWith("BB", new BoundingBox(30,70,50,90)));
+
+		// partly inside (classical intersection)
+		assertTrue(countryBoundaries.intersectsWith("BB", new BoundingBox(0,0,30,70)));
+	}
+
+	public void testIntersectsWithAny()
+	{
+		assertTrue(countryBoundaries.intersectsWithAny(
+				new String[] {"AA-DD", "BB"}, new BoundingBox(0,0,30,70)));
+	}
+
 	public void testIsInAny()
 	{
-		assertTrue(countryBoundaries.isInAny(Arrays.asList("BB","AA-DD"),-30,20));
-		assertFalse(countryBoundaries.isInAny(Arrays.asList("BB","AA-DD"),-30,-10));
+		assertTrue(countryBoundaries.isInAny(new String[]{"BB","AA-DD"},-30,20));
+		assertFalse(countryBoundaries.isInAny(new String[]{"BB","AA-DD"},-30,-10));
 	}
 
 	public void testBoundaries()
@@ -57,4 +81,6 @@ public class CountryBoundariesTest extends TestCase
 		assertEquals(Arrays.asList("AA"), countryBoundaries.getIsoCodes(-40,63));
 		assertEquals(Collections.emptyList(), countryBoundaries.getIsoCodes(20,20));
 	}
+
+
 }

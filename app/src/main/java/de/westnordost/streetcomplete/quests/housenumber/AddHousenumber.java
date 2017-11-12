@@ -151,4 +151,14 @@ public class AddHousenumber implements OsmElementQuestType
 	@Override public int getTitle(Map<String,String> tags) { return getTitle(); }
 	@Override public int getTitle() { return R.string.quest_address_title; }
 	@Override public boolean isDefaultEnabled() { return true; }
+
+	@Override public String[] getDisabledForCountries()
+	{
+		return new String[]{
+				"NL", // https://forum.openstreetmap.org/viewtopic.php?id=60356
+				"DK", // https://lists.openstreetmap.org/pipermail/talk-dk/2017-November/004898.html
+				"NO", // https://forum.openstreetmap.org/viewtopic.php?id=60357
+				"CZ"  // https://lists.openstreetmap.org/pipermail/talk-cz/2017-November/017901.html
+		};
+	}
 }
