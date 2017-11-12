@@ -297,7 +297,7 @@ public class MainActivity extends AppCompatActivity implements
 		new AlertDialogBuilder(this)
 				.setTitle(R.string.undo_confirm_title)
 				.setView(inner)
-				.setPositiveButton(R.string.action_undo, new DialogInterface.OnClickListener()
+				.setPositiveButton(R.string.undo_confirm_positive, new DialogInterface.OnClickListener()
 				{
 					@Override public void onClick(DialogInterface dialog, int which)
 					{
@@ -305,7 +305,7 @@ public class MainActivity extends AppCompatActivity implements
 						answersCounter.undidQuest(quest.getChangesSource());
 					}
 				})
-				.setNegativeButton(android.R.string.cancel, null)
+				.setNegativeButton(R.string.undo_confirm_negative, null)
 				.show();
 	}
 
