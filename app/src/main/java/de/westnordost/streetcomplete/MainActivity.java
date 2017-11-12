@@ -68,6 +68,7 @@ import de.westnordost.streetcomplete.quests.FindQuestSourceComponent;
 import de.westnordost.streetcomplete.settings.SettingsActivity;
 import de.westnordost.streetcomplete.statistics.AnswersCounter;
 import de.westnordost.streetcomplete.location.LocationState;
+import de.westnordost.streetcomplete.statistics.UploadsCounter;
 import de.westnordost.streetcomplete.tangram.MapFragment;
 import de.westnordost.streetcomplete.tangram.QuestsMapFragment;
 import de.westnordost.streetcomplete.tools.CrashReportExceptionHandler;
@@ -106,6 +107,7 @@ public class MainActivity extends AppCompatActivity implements
 
 	private ProgressBar progressBar;
 	private AnswersCounter answersCounter;
+	private UploadsCounter uploadsCounter;
 
 	private float mapRotation, mapTilt;
 
@@ -180,6 +182,7 @@ public class MainActivity extends AppCompatActivity implements
 		questController.onCreate();
 
 		answersCounter = toolbar.findViewById(R.id.answersCounter);
+		uploadsCounter = toolbar.findViewById(R.id.uploadsCounter);
 
 		questSource.onCreate(this);
 
@@ -207,6 +210,7 @@ public class MainActivity extends AppCompatActivity implements
 		super.onStart();
 
 		answersCounter.update();
+		uploadsCounter.update();
 
 		registerReceiver(locationAvailabilityReceiver, LocationUtil.createLocationAvailabilityIntentFilter());
 
@@ -298,8 +302,10 @@ public class MainActivity extends AppCompatActivity implements
 				.setView(inner)
 				.setPositiveButton(R.string.undo_confirm_positive, (dialog, which) ->
 				{
-					questController.undoOsmQuest(quest);
-					answersCounter.undidQuest(quest.getChangesSource());
+
+						questController.undoOsmQuest(quest);
+						uploadsCounter.undidQuest(quest.getChangesSource());
+
 				})
 				.setNegativeButton(R.string.undo_confirm_negative, null)
 				.show();
@@ -473,7 +479,10 @@ public class MainActivity extends AppCompatActivity implements
 
 		@AnyThread @Override public void onFinished()
 		{
-			runOnUiThread(() -> answersCounter.update());
+			runOnUiThread(() -> {
+				answersCounter.update();
+				uploadsCounter.update();
+			});
 		}
 	};
 
@@ -585,9 +594,11 @@ public class MainActivity extends AppCompatActivity implements
 		Location[] locations = new Location[]{ lastLocation, mapFragment.getDisplayedLocation() };
 		questSource.findSource(questId, group, locations, source ->
 		{
-			closeQuestDetailsFor(questId, group);
-			answersCounter.answeredQuest(source);
-			questController.solveQuest(questId, group, answer, source);
+
+				closeQuestDetailsFor(questId, group);
+				uploadsCounter.answeredQuest(source);
+				questController.solveQuest(questId, group, answer, source);
+
 		});
 	}
 
