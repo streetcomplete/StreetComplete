@@ -91,8 +91,8 @@ public class QuestModule
 				new AddBabyChangingTable(o),
 				new AddFireHydrantType(o),
 				new AddParkingType(o),
-        new AddPowerPolesMaterial(o),
-        new AddCarWashType(o),
+				new AddPowerPolesMaterial(o),
+				new AddCarWashType(o),
 		};
 
 		return new QuestTypeRegistry(Arrays.asList(questTypesOrderedByImportance));

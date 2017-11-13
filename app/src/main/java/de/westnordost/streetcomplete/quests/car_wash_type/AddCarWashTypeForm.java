@@ -1,27 +1,33 @@
 package de.westnordost.streetcomplete.quests.car_wash_type;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
+import android.support.annotation.Nullable;
 import android.view.View;
-import android.view.ViewGroup;
-
-import java.util.ArrayList;
 
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.ImageListQuestAnswerFragment;
-import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
+import de.westnordost.streetcomplete.view.ImageSelectAdapter;
 
 public class AddCarWashTypeForm extends ImageListQuestAnswerFragment
+		implements ImageSelectAdapter.OnItemSelectionListener
 {
-	public static final String AUTOMATED = "AUTOMATED";
-	public static final String SELF_SERVICE = "SELF_SERVICE";
-	public static final String SERVICE = "SERVICE";
+	public static final String
+			AUTOMATED = "AUTOMATED",
+			SELF_SERVICE = "SELF_SERVICE",
+			SERVICE = "SERVICE";
 
 	private final ImageListQuestAnswerFragment.OsmItem[] TYPES = new ImageListQuestAnswerFragment.OsmItem[] {
 			new ImageListQuestAnswerFragment.OsmItem(AUTOMATED, R.drawable.car_wash_automated, R.string.quest_carWashType_automated),
-			new ImageListQuestAnswerFragment.OsmItem(SERVICE, R.drawable.car_wash_service, R.string.quest_carWashType_service),
-			new ImageListQuestAnswerFragment.OsmItem(SELF_SERVICE, R.drawable.car_wash_self_service, R.string.quest_carWashType_selfService)
+			new ImageListQuestAnswerFragment.OsmItem(SELF_SERVICE, R.drawable.car_wash_self_service, R.string.quest_carWashType_selfService),
+			new ImageListQuestAnswerFragment.OsmItem(SERVICE, R.drawable.car_wash_service, R.string.quest_carWashType_service)
 	};
+
+	@Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState)
+	{
+		super.onViewCreated(view, savedInstanceState);
+
+		imageSelector.setOnItemSelectionListener(this);
+	}
 
 	@Override protected ImageListQuestAnswerFragment.OsmItem[] getItems()
 	{
@@ -35,36 +41,25 @@ public class AddCarWashTypeForm extends ImageListQuestAnswerFragment
 
 	@Override protected int getMaxSelectableItems()
 	{
-		return 2;
+		return 3;
 	}
 
-	@Override protected void onClickOk()
+	@Override public void onIndexSelected(int index)
 	{
-		Bundle answer = new Bundle();
-
-		ArrayList<String> osmValues = new ArrayList<>();
-		for(Integer selectedIndex : imageSelector.getSelectedIndices())
+		// service is exclusive with everything else
+		if(index == 2)
 		{
-			osmValues.add(getItems()[selectedIndex].osmValue);
+			imageSelector.deselectIndex(0);
+			imageSelector.deselectIndex(1);
 		}
-		if(!osmValues.isEmpty() && osmValues.size() == 1)
+		else
 		{
-			answer.putStringArrayList(OSM_VALUES, osmValues);
-			applyFormAnswer(answer);
-		} else if (!osmValues.isEmpty() && osmValues.size() == 2 && osmValues.contains(SERVICE))
-		{
-			new AlertDialogBuilder(getActivity())
-					.setTitle(R.string.quest_carWash_wrongInput)
-					.setMessage(R.string.quest_carWash_wrongInput_description)
-					.setNegativeButton(R.string.cancel, null)
-					.show();
+			imageSelector.deselectIndex(2);
 		}
 	}
 
-	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
-									   Bundle savedInstanceState)
+	@Override public void onIndexDeselected(int index)
 	{
-		View view = super.onCreateView(inflater, container, savedInstanceState);
-		return view;
+		// no thanks, we are fine
 	}
 }
