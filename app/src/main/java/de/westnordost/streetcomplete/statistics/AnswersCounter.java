@@ -57,7 +57,6 @@ public class AnswersCounter extends android.support.v7.widget.AppCompatTextView
 
 	private void updateText()
 	{
-		String text = "" + solvedQuests;
-		setText(text);
+		setText(String.valueOf(solvedQuests));
 	}
 }
