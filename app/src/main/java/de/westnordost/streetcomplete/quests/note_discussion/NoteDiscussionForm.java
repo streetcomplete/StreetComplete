@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.note_discussion;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -29,6 +30,7 @@ public class NoteDiscussionForm extends AbstractQuestAnswerFragment
 {
 	private static final String TAG = "NoteDiscussionForm";
 	public static final String TEXT = "text";
+	public static final String IMAGE_PATHS = "image_paths";
 
 	@Inject OsmNoteQuestDao noteDb;
 
@@ -96,6 +98,20 @@ public class NoteDiscussionForm extends AbstractQuestAnswerFragment
 		return view;
 	}
 
+	@Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState)
+	{
+		super.onViewCreated(view, savedInstanceState);
+		if(savedInstanceState == null)
+		{
+			getChildFragmentManager().beginTransaction().add(R.id.attachPhotoFragment, new AttachPhotoFragment()).commit();
+		}
+	}
+
+	private @Nullable AttachPhotoFragment getAttachPhotoFragment()
+	{
+		return (AttachPhotoFragment) getChildFragmentManager().findFragmentById(R.id.attachPhotoFragment);
+	}
+
 	private void inflateNoteDiscussion(Note note)
 	{
 		for(NoteComment noteComment : note.comments)
@@ -160,14 +176,28 @@ public class NoteDiscussionForm extends AbstractQuestAnswerFragment
 			return;
 		}
 
+		AttachPhotoFragment f = getAttachPhotoFragment();
+
 		Bundle answer = new Bundle();
 		answer.putString(TEXT, noteText);
+		answer.putStringArrayList(IMAGE_PATHS, f != null ? f.getImagePaths() : null);
 		applyImmediateAnswer(answer);
+	}
+
+	@Override
+	public void onDiscard()
+	{
+		AttachPhotoFragment f = getAttachPhotoFragment();
+		if(f != null) f.deleteImages();
 	}
 
 	@Override public boolean hasChanges()
 	{
-		return !noteInput.getText().toString().trim().isEmpty();
+		AttachPhotoFragment f = getAttachPhotoFragment();
+		boolean hasPhotos = f != null && !f.getImagePaths().isEmpty();
+		boolean hasText = !noteInput.getText().toString().trim().isEmpty();
+
+		return hasPhotos || hasText;
 	}
 
 }

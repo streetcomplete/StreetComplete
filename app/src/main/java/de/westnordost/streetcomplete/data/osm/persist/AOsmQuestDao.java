@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
+import android.text.TextUtils;
 
 import java.util.Date;
 import java.util.List;
@@ -13,7 +14,7 @@ import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.streetcomplete.data.AQuestDao;
 import de.westnordost.streetcomplete.data.QuestStatus;
-import de.westnordost.streetcomplete.data.QuestTypes;
+import de.westnordost.streetcomplete.data.QuestTypeRegistry;
 import de.westnordost.streetcomplete.data.WhereSelectionBuilder;
 import de.westnordost.streetcomplete.data.osm.ElementGeometry;
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
@@ -26,15 +27,15 @@ import static de.westnordost.streetcomplete.data.osm.persist.OsmQuestTable.Colum
 public abstract class AOsmQuestDao extends AQuestDao<OsmQuest>
 {
 	private final Serializer serializer;
-	private final QuestTypes questTypeList;
+	private final QuestTypeRegistry questTypeRegistry;
 	private final SQLiteStatement add, replace;
 
 	public AOsmQuestDao(SQLiteOpenHelper dbHelper, Serializer serializer,
-								QuestTypes questTypeList)
+								QuestTypeRegistry questTypeRegistry)
 	{
 		super(dbHelper);
 		this.serializer = serializer;
-		this.questTypeList = questTypeList;
+		this.questTypeRegistry = questTypeRegistry;
 		String sql = getTableName() + " ("+
 				Columns.QUEST_ID+","+
 				Columns.QUEST_TYPE+","+
@@ -69,6 +70,22 @@ public abstract class AOsmQuestDao extends AQuestDao<OsmQuest>
 		});
 	}
 
+	public List<OsmQuest> getAll(BoundingBox bbox, QuestStatus status, List<String> questTypesNames)
+	{
+		WhereSelectionBuilder qb = new WhereSelectionBuilder();
+		addBBox(bbox, qb);
+		addQuestStatus(status, qb);
+		addQuestTypes(questTypesNames, qb);
+
+		return getAllThings(getMergedViewName(), null, qb, new CreateFromCursor<OsmQuest>()
+		{
+			@Override public OsmQuest create(Cursor cursor)
+			{
+				return createObjectFrom(cursor);
+			}
+		});
+	}
+
 	public int deleteAllReverted(Element.Type type, long id)
 	{
 		String query = getQuestStatusColumnName() + " = ? AND " +
@@ -84,6 +101,22 @@ public abstract class AOsmQuestDao extends AQuestDao<OsmQuest>
 		if(questTypeName != null)
 		{
 			builder.appendAnd(Columns.QUEST_TYPE + " = ?", questTypeName);
+		}
+	}
+
+	private void addQuestTypes(List<String> questTypeNames, WhereSelectionBuilder builder)
+	{
+		if(questTypeNames != null)
+		{
+			StringBuilder sb = new StringBuilder();
+			boolean first = true;
+			for (String questTypeName : questTypeNames)
+			{
+				if(first) first = false;
+				else sb.append(",");
+				sb.append("\"").append(questTypeName).append("\"");
+			}
+			builder.appendAnd(Columns.QUEST_TYPE + " IN (" + sb.toString() + ")");
 		}
 	}
 
@@ -192,7 +225,7 @@ public abstract class AOsmQuestDao extends AQuestDao<OsmQuest>
 		QuestStatus questStatus = QuestStatus.valueOf(cursor.getString(colQuestStatus));
 
         String questTypeName = cursor.getString(colQuestType);
-		OsmElementQuestType questType = (OsmElementQuestType) questTypeList.forName(questTypeName);
+		OsmElementQuestType questType = (OsmElementQuestType) questTypeRegistry.getByName(questTypeName);
         if(questType == null) {
             throw new IllegalArgumentException("The quest type " + questTypeName + " does not exist!");
         }

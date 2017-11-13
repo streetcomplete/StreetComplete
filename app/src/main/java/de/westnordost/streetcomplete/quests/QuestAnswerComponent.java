@@ -2,6 +2,8 @@ package de.westnordost.streetcomplete.quests;
 
 import android.os.Bundle;
 
+import java.util.ArrayList;
+
 import de.westnordost.streetcomplete.data.QuestGroup;
 
 public class QuestAnswerComponent
@@ -50,9 +52,9 @@ public class QuestAnswerComponent
 		callbackListener.onAnsweredQuest(questId, questGroup, answer);
 	}
 
-	public void onLeaveNote(String questTitle, String text)
+	public void onLeaveNote(String questTitle, String text, ArrayList<String> imagePaths)
 	{
-		callbackListener.onLeaveNote(questId, questGroup, questTitle, text);
+		callbackListener.onLeaveNote(questId, questGroup, questTitle, text, imagePaths);
 	}
 
 	public void onSkippedQuest()

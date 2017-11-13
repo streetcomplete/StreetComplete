@@ -132,6 +132,12 @@ public abstract class AOsmQuestChangesUpload
 		}
 
 		closeOpenChangesets();
+
+		if(commits > 0)
+		{
+			// changesets are closed delayed after X minutes of inactivity
+			ChangesetAutoCloserJob.scheduleJob();
+		}
 	}
 
 	private void cleanUp()

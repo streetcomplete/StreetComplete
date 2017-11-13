@@ -2,6 +2,7 @@
 additionalStreetsignLanguages: [cy, gd]
 advisorySpeedLimitLayout: quest_maxspeed_advisory_white
 isAdvisorySpeedLimitKnown: true
+isLeftHandTraffic: true
 isLivingStreetKnown: true
 isSlowZoneKnown: true
 officialLanguages: [en]

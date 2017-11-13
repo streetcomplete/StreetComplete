@@ -6,6 +6,8 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
+
     </style>
 
     <style name="MapProgressBar.Horizontal" parent="android:Widget.ProgressBar.Horizontal">
@@ -67,7 +69,7 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textAlignment">center</item>
         <item name="android:gravity">center_horizontal</item>
-        <item name="android:shadowRadius">2</item>
+        <item name="android:shadowRadius">10</item>
         <item name="android:shadowColor">#000000</item>
     </style>
 
@@ -76,5 +78,15 @@
         <item name="android:textStyle">normal</item>
         <item name="android:textAlignment">center</item>
         <item name="android:gravity">center_horizontal</item>
+    </style>
+
+    <style name="TableHeaderCell">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
+    <style name="TableHeader">
+        <item name="android:padding">8dp</item>
     </style>
 </resources>

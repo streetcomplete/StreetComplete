@@ -27,7 +27,10 @@ public class AddOpeningHours extends SimpleOverpassQuestType
 		String[] amenities = {
 				"restaurant", "cafe", "ice_cream", "fast_food",
 				"bar", "pub", "biergarten", "food_court",
-				"cinema", "nightclub", "bank", "atm",
+				// not ATM because too often it's simply 24/7 and too often it is confused with
+				// a bank that might be just next door because the app does not tell the user what
+				// kind of object this is about
+				"cinema", "nightclub", "bank", // "atm",
 				"bureau_de_change",	"money_transfer", "post_office", "library",
 				"courthouse", "embassy", "car_wash", "car_rental",
 				"marketplace", "fuel", "driving_school", "dentist",

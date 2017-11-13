@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.util;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import de.westnordost.osmapi.map.data.BoundingBox;
@@ -122,6 +123,42 @@ public class SphericalEarthMath
 				Math.toRadians(pos2.getLatitude()),
 				Math.toRadians(pos2.getLongitude()
 				));
+	}
+
+	/**
+	 * @return distance covered by the given polyline
+	 */
+	public static double distance(List<LatLon> positions)
+	{
+		double length = 0;
+		for(int i = 0; i < positions.size() -1; i++)
+		{
+			LatLon p0 = positions.get(i);
+			LatLon p1 = positions.get(i+1);
+			length += distance(p0, p1);
+		}
+		return length;
+	}
+
+	/**
+	 * @return the center line of the given polyline
+	 */
+	public static List<LatLon> centerLineOf(List<LatLon> positions)
+	{
+		double halfDistance = distance(positions) / 2;
+		for(int i = 0; i < positions.size() -1; i++)
+		{
+			LatLon pos0 = positions.get(i);
+			LatLon pos1 = positions.get(i+1);
+			halfDistance -= distance(pos0, pos1);
+			if(halfDistance > 0) continue;
+
+			List<LatLon> result = new ArrayList<>(2);
+			result.add(pos0);
+			result.add(pos1);
+			return result;
+		}
+		return null;
 	}
 
 	/** @return whether any point on line1 is at most the given distance away from any other point

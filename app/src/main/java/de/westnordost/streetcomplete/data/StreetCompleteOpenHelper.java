@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.text.TextUtils;
@@ -16,6 +17,7 @@ import de.westnordost.streetcomplete.data.osmnotes.NoteTable;
 import de.westnordost.streetcomplete.data.osm.persist.RelationTable;
 import de.westnordost.streetcomplete.data.osm.persist.WayTable;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestTable;
+import de.westnordost.streetcomplete.data.visiblequests.QuestVisibilityTable;
 import de.westnordost.streetcomplete.data.statistics.QuestStatisticsTable;
 import de.westnordost.streetcomplete.data.tiles.DownloadedTilesTable;
 
@@ -23,7 +25,7 @@ import de.westnordost.streetcomplete.data.tiles.DownloadedTilesTable;
 public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 {
 	public static final String DB_NAME = "streetcomplete.db";
-	public static final int DB_VERSION = 7;
+	public static final int DB_VERSION = 9;
 
 	private static final String OSM_QUESTS_CREATE_PARAMS = " (" +
 			OsmQuestTable.Columns.QUEST_ID +		" INTEGER		PRIMARY KEY, " +
@@ -46,6 +48,29 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 			ElementGeometryTable.Columns.ELEMENT_ID +
 			")" +
 			");";
+
+	private static final String OSM_QUESTS_TABLE_CREATE_DB_VERSION_3 =
+			"CREATE TABLE " + OsmQuestTable.NAME + " (" +
+				OsmQuestTable.Columns.QUEST_ID +		" INTEGER		PRIMARY KEY, " +
+				OsmQuestTable.Columns.QUEST_TYPE +		" varchar(255)	NOT NULL, " +
+				OsmQuestTable.Columns.QUEST_STATUS +	" varchar(255)	NOT NULL, " +
+				OsmQuestTable.Columns.TAG_CHANGES +		" blob, " + // null if no changes
+				OsmQuestTable.Columns.LAST_UPDATE + 	" int			NOT NULL, " +
+				OsmQuestTable.Columns.ELEMENT_ID +		" int			NOT NULL, " +
+				OsmQuestTable.Columns.ELEMENT_TYPE +	" varchar(255)	NOT NULL, " +
+			"CONSTRAINT same_osm_quest UNIQUE (" +
+				OsmQuestTable.Columns.QUEST_TYPE + ", " +
+				OsmQuestTable.Columns.ELEMENT_ID + ", " +
+				OsmQuestTable.Columns.ELEMENT_TYPE +
+			"), " +
+			"CONSTRAINT element_key FOREIGN KEY (" +
+				OsmQuestTable.Columns.ELEMENT_TYPE + ", " + OsmQuestTable.Columns.ELEMENT_ID +
+			") REFERENCES " + ElementGeometryTable.NAME + " (" +
+				ElementGeometryTable.Columns.ELEMENT_TYPE + ", " +
+				ElementGeometryTable.Columns.ELEMENT_ID +
+			")" +
+			");";
+
 
 	private static final String OSM_QUESTS_TABLE_CREATE =
 			"CREATE TABLE " + OsmQuestTable.NAME + OSM_QUESTS_CREATE_PARAMS;
@@ -91,7 +116,8 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 				OsmNoteQuestTable.Columns.QUEST_STATUS +	" varchar(255)	NOT NULL, " +
 				OsmNoteQuestTable.Columns.COMMENT +			" text, " +
 				OsmNoteQuestTable.Columns.LAST_UPDATE + 	" int			NOT NULL, " +
-				OsmNoteQuestTable.Columns.NOTE_ID +			" INTEGER		UNIQUE NOT NULL " +
+				OsmNoteQuestTable.Columns.NOTE_ID +			" INTEGER		UNIQUE NOT NULL, " +
+				OsmNoteQuestTable.Columns.IMAGE_PATHS +		" blob " +
 					"REFERENCES " + NoteTable.NAME + "(" + NoteTable.Columns.ID + ")" +
 			");";
 
@@ -116,7 +142,8 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 					CreateNoteTable.Columns.ELEMENT_TYPE +	" varchar(255), " +
 					CreateNoteTable.Columns.ELEMENT_ID +	" int, " +
 					CreateNoteTable.Columns.TEXT + 		" text			NOT NULL, " +
-					CreateNoteTable.Columns.QUEST_TITLE + " text" +
+					CreateNoteTable.Columns.QUEST_TITLE + " text, " +
+					CreateNoteTable.Columns.IMAGE_PATHS + " blob" +
 					");";
 
 	private static final String OSM_NOTES_VIEW_CREATE =
@@ -185,6 +212,13 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 				") " +
 			");";
 
+	private static final String QUEST_VISIBILITY_TABLE_CREATE =
+			"CREATE TABLE " + QuestVisibilityTable.NAME +
+			" (" +
+				QuestVisibilityTable.Columns.QUEST_TYPE +    " varchar(255) PRIMARY KEY, " +
+				QuestVisibilityTable.Columns.VISIBILITY +    " int NOT NULL " +
+			");";
+
 	private final TablesHelper[] extensions;
 
 	public StreetCompleteOpenHelper(Context context, TablesHelper[] extensions)
@@ -218,6 +252,8 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 
 		db.execSQL(OPEN_CHANGESETS_TABLE_CREATE);
 
+		db.execSQL(QUEST_VISIBILITY_TABLE_CREATE);
+
 		for (TablesHelper extension : extensions)
 		{
 			extension.onCreate(db);
@@ -235,7 +271,7 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 			String tableName = OsmQuestTable.NAME;
 			String oldTableName = tableName + "_old";
 			db.execSQL("ALTER TABLE " + tableName + " RENAME TO " + oldTableName );
-			db.execSQL(OSM_QUESTS_TABLE_CREATE);
+			db.execSQL(OSM_QUESTS_TABLE_CREATE_DB_VERSION_3);
 			String allColumns = TextUtils.join(",", OsmQuestTable.Columns.ALL_DB_VERSION_3);
 			db.execSQL("INSERT INTO " + tableName + "(" + allColumns + ") " +
 					   " SELECT " + allColumns + " FROM " + oldTableName);
@@ -249,8 +285,11 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 
 		if(oldVersion < 4 && newVersion >= 4)
 		{
-			db.execSQL("ALTER TABLE " + OsmQuestTable.NAME + " ADD COLUMN " +
-					OsmQuestTable.Columns.CHANGES_SOURCE +	" varchar(255);");
+			if(!tableHasColumn(db, OsmQuestTable.NAME, OsmQuestTable.Columns.CHANGES_SOURCE))
+			{
+				db.execSQL("ALTER TABLE " + OsmQuestTable.NAME + " ADD COLUMN " +
+						OsmQuestTable.Columns.CHANGES_SOURCE + " varchar(255);");
+			}
 			db.execSQL("UPDATE " + OsmQuestTable.NAME + " SET " +
 					OsmQuestTable.Columns.CHANGES_SOURCE + " = 'survey' WHERE " +
 					OsmQuestTable.Columns.CHANGES_SOURCE + " ISNULL;");
@@ -269,12 +308,26 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 				CreateNoteTable.Columns.QUEST_TITLE + " text;");
 		}
 
-		if(oldVersion < 7 && newVersion >= 6)
+		if(oldVersion < 7 && newVersion >= 7)
 		{
 			db.execSQL(UNDO_OSM_QUESTS_TABLE_CREATE);
 			db.execSQL(OSM_UNDO_QUESTS_VIEW_CREATE);
 		}
 
+		if(oldVersion < 8 && newVersion >= 8)
+		{
+			db.execSQL("ALTER TABLE " + CreateNoteTable.NAME + " ADD COLUMN " +
+					CreateNoteTable.Columns.IMAGE_PATHS + " blob ;");
+			db.execSQL("ALTER TABLE " + OsmNoteQuestTable.NAME + " ADD COLUMN " +
+					OsmNoteQuestTable.Columns.IMAGE_PATHS + " blob ;");
+		}
+
+		if(oldVersion < 9 && newVersion >= 9)
+		{
+			db.execSQL(QUEST_VISIBILITY_TABLE_CREATE);
+		}
+
+		
 		// for later changes to the DB
 		// ...
 
@@ -282,5 +335,29 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 		{
 			extension.onUpgrade(db, oldVersion, newVersion);
 		}
+	}
+
+
+	private static boolean tableHasColumn(SQLiteDatabase db, String tableName, String columnName)
+	{
+		Cursor cursor = db.rawQuery("PRAGMA table_info(" + tableName + ")", null);
+
+		try
+		{
+			if (cursor.moveToFirst())
+			{
+				while(!cursor.isAfterLast())
+				{
+					String name = cursor.getString(cursor.getColumnIndexOrThrow("name"));
+					if(columnName.equals(name)) return true;
+					cursor.moveToNext();
+				}
+			}
+		}
+		finally
+		{
+			cursor.close();
+		}
+		return false;
 	}
 }

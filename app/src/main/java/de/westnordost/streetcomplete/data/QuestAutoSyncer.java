@@ -23,7 +23,6 @@ import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.data.download.MobileDataAutoDownloadStrategy;
 import de.westnordost.streetcomplete.data.download.QuestAutoDownloadStrategy;
 import de.westnordost.streetcomplete.data.download.WifiAutoDownloadStrategy;
-import de.westnordost.streetcomplete.data.osm.upload.ChangesetAutoCloserJob;
 
 /** Automatically downloads and uploads new quests around the user's location and uploads quests.
  *
@@ -131,13 +130,6 @@ public class QuestAutoSyncer implements LocationListener, LostApiClient.Connecti
 		if(!isAllowedByPreference()) return;
 		if(!isConnected) return;
 		questController.upload();
-		triggerDelayedClosingOfChangesets();
-	}
-
-	private void triggerDelayedClosingOfChangesets()
-	{
-		ChangesetAutoCloserJob.scheduleJob();
-
 	}
 
 	private boolean updateConnectionState()

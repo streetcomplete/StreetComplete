@@ -1,5 +1,0 @@
-textures:
-    quests:
-        url: quests.png
-        filtering: mipmap
-        sprites: {ic_quest_wheelchair: [0,0,168,168], ic_quest_max_speed: [168,0,168,168], ic_quest_pedestrian_crossing: [336,0,168,168], ic_quest_lantern: [504,0,168,168], ic_quest_bicycle_parking_cover: [672,0,168,168], ic_quest_wheelchair_shop: [840,0,168,168], ic_quest_bus: [0,168,168,168], ic_quest_blind_bus: [168,168,168,168], ic_quest_notes: [336,168,168,168], ic_quest_bicycle_parking: [504,168,168,168], ic_quest_roof_shape: [672,168,168,168], ic_quest_toilets: [840,168,168,168], ic_quest_power: [0,336,168,168], ic_quest_street_name: [168,336,168,168], ic_quest_apple: [336,336,168,168], ic_quest_parking: [504,336,168,168], ic_quest_car_wash: [672,336,168,168], ic_quest_fire_hydrant: [840,336,168,168], ic_quest_baby: [0,504,168,168], ic_quest_building_levels: [168,504,168,168], ic_quest_sport: [336,504,168,168], ic_quest_recycling: [504,504,168,168], ic_quest_housenumber: [672,504,168,168], ic_quest_opening_hours: [840,504,168,168], ic_quest_street_surface: [0,672,168,168], ic_quest_blind_pedestrian_crossing: [168,672,168,168]}

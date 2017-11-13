@@ -103,7 +103,7 @@ public class OsmNotesDownload
 				if(it.next().getId() == null) it.remove();
 			}
 
-			listener.onQuestsCreated(quests, QuestGroup.OSM_NOTE);
+			if(!quests.isEmpty()) listener.onQuestsCreated(quests, QuestGroup.OSM_NOTE);
 			/* we do not call listener.onNoteQuestRemoved for hiddenQuests here, because on
 			*  replacing hiddenQuests into DB, they get new quest IDs. As far as the DB is concerned,
 			*  hidden note quests are always new quests which are hidden.

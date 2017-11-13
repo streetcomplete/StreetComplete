@@ -32,4 +32,8 @@ public interface OsmElementQuestType extends QuestType
 
 	/** @return title resource for when the element has the specified tags. The tags are unmodifiable */
 	int getTitle(@NonNull Map<String,String> tags);
+
+	/** @return null if the quest is enabled for every country in the world or an array of
+	 *          ISO 3166 language codes for which the quest should never be shown */
+	String[] getDisabledForCountries();
 }

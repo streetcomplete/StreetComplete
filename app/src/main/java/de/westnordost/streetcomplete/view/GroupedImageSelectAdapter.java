@@ -42,7 +42,7 @@ public class GroupedImageSelectAdapter extends RecyclerView.Adapter<GroupedImage
 	@Override public GroupedImageSelectAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
 	{
 		int layoutId = viewType == GROUP ?
-				R.layout.panorama_select_cell : R.layout.labeled_image_select_cell;
+				R.layout.cell_panorama_select : R.layout.cell_labeled_image_select;
 		View view = LayoutInflater.from(parent.getContext()).inflate(layoutId, parent, false);
 		return new ViewHolder(view);
 	}

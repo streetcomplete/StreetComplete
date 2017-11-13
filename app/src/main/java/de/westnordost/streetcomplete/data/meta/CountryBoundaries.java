@@ -11,7 +11,6 @@ import com.vividsolutions.jts.index.SpatialIndex;
 import com.vividsolutions.jts.index.strtree.STRtree;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -19,6 +18,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
+import de.westnordost.osmapi.map.data.BoundingBox;
+import de.westnordost.streetcomplete.util.JTSConst;
 
 public class CountryBoundaries
 {
@@ -90,7 +92,23 @@ public class CountryBoundaries
 		}
 	}
 
-	public boolean isInAny(Collection<String> isoCodes, double longitude, double latitude)
+	public boolean intersectsWithAny(String[] isoCodes, BoundingBox bbox)
+	{
+		for (String isoCode : isoCodes)
+		{
+			if(intersectsWith(isoCode, bbox)) return true;
+		}
+		return false;
+	}
+
+	public boolean intersectsWith(String isoCode, BoundingBox bbox)
+	{
+		Geometry geometry = geometriesByIsoCodes.get(isoCode);
+		if (geometry == null) return false;
+		return geometry.intersects(JTSConst.toLinearRing(bbox));
+	}
+
+	public boolean isInAny(String[] isoCodes, double longitude, double latitude)
 	{
 		for (String isoCode : isoCodes)
 		{

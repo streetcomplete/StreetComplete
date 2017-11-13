@@ -9,12 +9,15 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.Future;
+import java.util.concurrent.FutureTask;
 
 import javax.inject.Inject;
 
 import de.westnordost.streetcomplete.data.QuestGroup;
 import de.westnordost.streetcomplete.data.QuestType;
 import de.westnordost.streetcomplete.data.VisibleQuestListener;
+import de.westnordost.streetcomplete.data.meta.CountryBoundaries;
 import de.westnordost.streetcomplete.data.osm.ElementGeometry;
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.OsmQuest;
@@ -26,7 +29,6 @@ import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.map.data.LatLon;
 
-// TODO test case
 public class OsmQuestDownload
 {
 	private static final String TAG = "QuestDownload";
@@ -35,17 +37,19 @@ public class OsmQuestDownload
 	private final ElementGeometryDao geometryDB;
 	private final MergedElementDao elementDB;
 	private final OsmQuestDao osmQuestDB;
+	private final Future<CountryBoundaries> countryBoundariesFuture;
 
 	// listener
 	private VisibleQuestListener questListener;
 
 	@Inject public OsmQuestDownload(
-			ElementGeometryDao geometryDB,
-			MergedElementDao elementDB, OsmQuestDao osmQuestDB)
+			ElementGeometryDao geometryDB, MergedElementDao elementDB, OsmQuestDao osmQuestDB,
+			FutureTask<CountryBoundaries> countryBoundariesFuture)
 	{
 		this.geometryDB = geometryDB;
 		this.elementDB = elementDB;
 		this.osmQuestDB = osmQuestDB;
+		this.countryBoundariesFuture = countryBoundariesFuture;
 	}
 
 	public void setQuestListener(VisibleQuestListener listener)
@@ -56,6 +60,26 @@ public class OsmQuestDownload
 	public boolean download(final OsmElementQuestType questType, BoundingBox bbox,
 						  final Set<LatLon> blacklistedPositions)
 	{
+		String[] disabledCountries = questType.getDisabledForCountries();
+		if(disabledCountries != null && disabledCountries.length > 0)
+		{
+			CountryBoundaries countryBoundaries;
+			try
+			{
+				countryBoundaries = countryBoundariesFuture.get();
+			}
+			catch (Exception e)
+			{
+				throw new RuntimeException(e);
+			}
+			if(countryBoundaries.intersectsWithAny(disabledCountries, bbox))
+			{
+				Log.i(TAG, getQuestTypeName(questType) + ": " +
+						"Skipped because it is disabled for this country");
+				return true;
+			}
+		}
+
 		final ArrayList<ElementGeometryDao.Row> geometryRows = new ArrayList<>();
 		final Map<OsmElementKey,Element> elements = new HashMap<>();
 		final ArrayList<OsmQuest> quests = new ArrayList<>();
@@ -90,7 +114,7 @@ public class OsmQuestDownload
 
 		int newQuestsByQuestType = osmQuestDB.addAll(quests);
 
-		if(questListener != null && !quests.isEmpty())
+		if(questListener != null)
 		{
 			Iterator<OsmQuest> it = quests.iterator();
 			while(it.hasNext())
@@ -98,7 +122,7 @@ public class OsmQuestDownload
 				// it is null if this quest is already in the DB, so don't call onQuestCreated
 				if(it.next().getId() == null) it.remove();
 			}
-			questListener.onQuestsCreated(quests, QuestGroup.OSM);
+			if(!quests.isEmpty()) questListener.onQuestsCreated(quests, QuestGroup.OSM);
 		}
 
 		if(!previousQuests.isEmpty())

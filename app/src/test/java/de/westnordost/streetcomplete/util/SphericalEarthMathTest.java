@@ -10,6 +10,8 @@ import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.map.data.OsmLatLon;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class SphericalEarthMathTest extends TestCase
 {
 	private static LatLon HH = new OsmLatLon(53.5,10.0);
@@ -142,6 +144,73 @@ public class SphericalEarthMathTest extends TestCase
 		checkTranslate(new OsmLatLon(-45, 90), quarterOfEarth, 180);
 	}
 
+	public void testDistanceOfPolylineIsZeroForOnePosition()
+	{
+		List<LatLon> positions = new ArrayList<>();
+		positions.add(new OsmLatLon(0,0));
+		assertEquals(0.0, SphericalEarthMath.distance(positions));
+	}
+
+	public void testDistanceOfPolylineForTwoPositions()
+	{
+		List<LatLon> positions = new ArrayList<>();
+		LatLon p0 = new OsmLatLon(0,0);
+		LatLon p1 = new OsmLatLon(1,1);
+		positions.add(p0);
+		positions.add(p1);
+		assertEquals(SphericalEarthMath.distance(p0,p1), SphericalEarthMath.distance(positions));
+	}
+
+	public void testDistanceOfPolylineForThreePositions()
+	{
+		List<LatLon> positions = new ArrayList<>();
+		LatLon p0 = new OsmLatLon(0,0);
+		LatLon p1 = new OsmLatLon(1,1);
+		LatLon p2 = new OsmLatLon(2,2);
+		positions.addAll(Arrays.asList(p0,p1,p2));
+		assertEquals(
+				SphericalEarthMath.distance(p0,p1) + SphericalEarthMath.distance(p1,p2),
+				SphericalEarthMath.distance(positions)
+		);
+	}
+
+	public void testNoCenterLineForPoint()
+	{
+		List<LatLon> positions = new ArrayList<>();
+		positions.add(new OsmLatLon(0,0));
+		assertEquals(null, SphericalEarthMath.centerLineOf(positions));
+	}
+
+	public void testCenterLineOfLineIsLine()
+	{
+		List<LatLon> positions = new ArrayList<>();
+		LatLon p0 = new OsmLatLon(0,0);
+		LatLon p1 = new OsmLatLon(1,1);
+		positions.addAll(Arrays.asList(p0,p1));
+		assertThat(SphericalEarthMath.centerLineOf(positions)).containsExactly(p0, p1);
+	}
+
+	public void testCenterLineIsTheMiddleOne()
+	{
+		List<LatLon> positions = new ArrayList<>();
+		LatLon p0 = new OsmLatLon(0,0);
+		LatLon p1 = new OsmLatLon(1,1);
+		LatLon p2 = new OsmLatLon(2,2);
+		LatLon p3 = new OsmLatLon(3,3);
+		positions.addAll(Arrays.asList(p0,p1,p2,p3));
+		assertThat(SphericalEarthMath.centerLineOf(positions)).containsExactly(p1, p2);
+	}
+
+	public void testCenterLineIsNotMiddleOneBeauseItIsSoLong()
+	{
+		List<LatLon> positions = new ArrayList<>();
+		LatLon p0 = new OsmLatLon(0,0);
+		LatLon p1 = new OsmLatLon(10,10);
+		LatLon p2 = new OsmLatLon(11,11);
+		LatLon p3 = new OsmLatLon(12,12);
+		positions.addAll(Arrays.asList(p0,p1,p2,p3));
+		assertThat(SphericalEarthMath.centerLineOf(positions)).containsExactly(p0, p1);
+	}
 
 	private void checkTranslate(LatLon one, int distance, int angle)
 	{

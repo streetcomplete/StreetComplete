@@ -18,4 +18,7 @@
     <dimen name="quest_form_peekHeight">220dp</dimen>
     <dimen name="quest_form_width">@dimen/match_parent</dimen>
 
+    <!-- Tables -->
+    <dimen name="table_icon_size">64dp</dimen>
+
 </resources>

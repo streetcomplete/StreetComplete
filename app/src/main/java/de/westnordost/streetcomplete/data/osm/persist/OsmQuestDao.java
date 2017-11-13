@@ -4,13 +4,13 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import javax.inject.Inject;
 
-import de.westnordost.streetcomplete.data.QuestTypes;
+import de.westnordost.streetcomplete.data.QuestTypeRegistry;
 import de.westnordost.streetcomplete.util.Serializer;
 
 public class OsmQuestDao extends AOsmQuestDao
 {
 
-	@Inject public OsmQuestDao(SQLiteOpenHelper dbHelper, Serializer serializer, QuestTypes questTypeList)
+	@Inject public OsmQuestDao(SQLiteOpenHelper dbHelper, Serializer serializer, QuestTypeRegistry questTypeList)
 	{
 		super(dbHelper, serializer, questTypeList);
 	}

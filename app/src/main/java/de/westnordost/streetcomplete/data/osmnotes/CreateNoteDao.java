@@ -14,14 +14,17 @@ import de.westnordost.streetcomplete.data.WhereSelectionBuilder;
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.map.data.OsmLatLon;
+import de.westnordost.streetcomplete.util.Serializer;
 
 public class CreateNoteDao
 {
 	protected final SQLiteOpenHelper dbHelper;
+	private final Serializer serializer;
 
-	@Inject public CreateNoteDao(SQLiteOpenHelper dbHelper)
+	@Inject public CreateNoteDao(SQLiteOpenHelper dbHelper, Serializer serializer)
 	{
 		this.dbHelper = dbHelper;
+		this.serializer = serializer;
 	}
 
 	public boolean add(CreateNote note)
@@ -37,6 +40,10 @@ public class CreateNoteDao
 		if(note.elementId != null)
 		{
 			values.put(CreateNoteTable.Columns.ELEMENT_ID, note.elementId);
+		}
+		if (note.imagePaths != null)
+		{
+			values.put(CreateNoteTable.Columns.IMAGE_PATHS, serializer.toBytes(note.imagePaths));
 		}
 		values.put(CreateNoteTable.Columns.TEXT, note.text);
 		values.put(CreateNoteTable.Columns.QUEST_TITLE, note.questTitle);
@@ -121,7 +128,8 @@ public class CreateNoteDao
 			colText = cursor.getColumnIndexOrThrow(CreateNoteTable.Columns.TEXT),
 			colElementType = cursor.getColumnIndexOrThrow(CreateNoteTable.Columns.ELEMENT_TYPE),
 			colElementId = cursor.getColumnIndexOrThrow(CreateNoteTable.Columns.ELEMENT_ID),
-			colQuestTitle = cursor.getColumnIndexOrThrow(CreateNoteTable.Columns.QUEST_TITLE);
+			colQuestTitle = cursor.getColumnIndexOrThrow(CreateNoteTable.Columns.QUEST_TITLE),
+			colImagePaths = cursor.getColumnIndexOrThrow(CreateNoteTable.Columns.IMAGE_PATHS);
 
 		CreateNote note = new CreateNote();
 		note.position = new OsmLatLon(cursor.getDouble(colLat), cursor.getDouble(colLon));
@@ -137,6 +145,10 @@ public class CreateNoteDao
 		if(!cursor.isNull(colElementId))
 		{
 			note.elementId = cursor.getLong(colElementId);
+		}
+		if(!cursor.isNull(colImagePaths))
+		{
+			note.imagePaths = serializer.toObject(cursor.getBlob(colImagePaths), ArrayList.class);
 		}
 		note.id = cursor.getLong(colNoteId);
 

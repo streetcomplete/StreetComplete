@@ -43,7 +43,7 @@ public class TimeRangePickerDialog extends AlertDialog implements View.OnClickLi
 		this.listener = listener;
 
 		final LayoutInflater inflater = LayoutInflater.from(context);
-		final View view = inflater.inflate(R.layout.time_range_picker_dialog, null);
+		final View view = inflater.inflate(R.layout.dialog_time_range_picker, null);
 		setView(view);
 
 		setButton(BUTTON_POSITIVE, context.getString(android.R.string.ok), (OnClickListener) null);

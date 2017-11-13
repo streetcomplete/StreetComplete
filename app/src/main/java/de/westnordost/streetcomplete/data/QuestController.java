@@ -15,6 +15,7 @@ import java.util.Collections;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.inject.Provider;
 
 import de.westnordost.streetcomplete.ApplicationConstants;
 import de.westnordost.streetcomplete.data.changesets.OpenChangesetsDao;
@@ -49,6 +50,7 @@ public class QuestController
 	private final OpenChangesetsDao openChangesetsDao;
 	private final Context context;
 	private final VisibleQuestRelay relay;
+	private final Provider<List<QuestType>> questTypesProvider;
 
 	private boolean downloadServiceIsBound;
 	private QuestDownloadService.Interface downloadService;
@@ -87,7 +89,8 @@ public class QuestController
 	@Inject public QuestController(OsmQuestDao osmQuestDB, UndoOsmQuestDao undoOsmQuestDB,
 								   MergedElementDao osmElementDB, ElementGeometryDao geometryDB,
 								   OsmNoteQuestDao osmNoteQuestDB, CreateNoteDao createNoteDB,
-								   OpenChangesetsDao openChangesetsDao, Context context)
+								   OpenChangesetsDao openChangesetsDao,
+								   Provider<List<QuestType>> questTypesProvider, Context context)
 	{
 		this.osmQuestDB = osmQuestDB;
 		this.undoOsmQuestDB = undoOsmQuestDB;
@@ -96,6 +99,7 @@ public class QuestController
 		this.osmNoteQuestDB = osmNoteQuestDB;
 		this.createNoteDB = createNoteDB;
 		this.openChangesetsDao = openChangesetsDao;
+		this.questTypesProvider = questTypesProvider;
 		this.context = context;
 		this.relay = new VisibleQuestRelay();
 	}
@@ -134,7 +138,7 @@ public class QuestController
 
 	/** Create a note for the given OSM Quest instead of answering it. The quest will turn
 	 *  invisible. */
-	public void createNote(final long osmQuestId, final String questTitle, final String text)
+	public void createNote(final long osmQuestId, final String questTitle, final String text, final ArrayList<String> imagePaths)
 	{
 		workerHandler.post(new Runnable() { @Override public void run()
 		{
@@ -148,6 +152,7 @@ public class QuestController
 			createNote.questTitle = questTitle;
 			createNote.elementType = q.getElementType();
 			createNote.elementId = q.getElementId();
+			createNote.imagePaths = imagePaths;
 			createNoteDB.add(createNote);
 
 			/* The quests that reference the same element for which the user was not able to
@@ -221,7 +226,7 @@ public class QuestController
 			if(quest == null) return;
 
 			// not uploaded yet -> simply revert to NEW
-			if(quest.getStatus() == QuestStatus.ANSWERED)
+			if(quest.getStatus() == QuestStatus.ANSWERED || quest.getStatus() == QuestStatus.HIDDEN)
 			{
 				quest.setStatus(QuestStatus.NEW);
 				quest.setChanges(null, null);
@@ -255,11 +260,13 @@ public class QuestController
 	private boolean solveOsmNoteQuest(long questId, Bundle answer)
 	{
 		OsmNoteQuest q = osmNoteQuestDB.get(questId);
+		ArrayList<String> imagePaths = answer.getStringArrayList(NoteDiscussionForm.IMAGE_PATHS);
 		String comment = answer.getString(NoteDiscussionForm.TEXT);
 		if(comment != null && !comment.isEmpty())
 		{
 			q.setComment(comment);
 			q.setStatus(QuestStatus.ANSWERED);
+			q.setImagePaths(imagePaths);
 			osmNoteQuestDB.update(q);
 			return true;
 		}
@@ -365,8 +372,19 @@ public class QuestController
 	{
 		workerHandler.post(new Runnable() { @Override public void run()
 		{
-			relay.onQuestsCreated(osmQuestDB.getAll(bbox, QuestStatus.NEW), QuestGroup.OSM);
-			relay.onQuestsCreated(osmNoteQuestDB.getAll(bbox, QuestStatus.NEW), QuestGroup.OSM_NOTE);
+
+			List<QuestType> questTypes = questTypesProvider.get();
+			List<String> questTypeNames = new ArrayList<>(questTypes.size());
+			for (QuestType questType : questTypes)
+			{
+				questTypeNames.add(questType.getClass().getSimpleName());
+			}
+
+			List<OsmQuest> osmQuests = osmQuestDB.getAll(bbox, QuestStatus.NEW, questTypeNames);
+			if(!osmQuests.isEmpty()) relay.onQuestsCreated(osmQuests, QuestGroup.OSM);
+
+			List<OsmNoteQuest> osmNoteQuests = osmNoteQuestDB.getAll(bbox, QuestStatus.NEW);
+			if(!osmNoteQuests.isEmpty()) relay.onQuestsCreated(osmNoteQuests, QuestGroup.OSM_NOTE);
 		}});
 	}
 

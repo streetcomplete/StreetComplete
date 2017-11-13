@@ -10,4 +10,7 @@
 
     <dimen name="quest_form_width">320dp</dimen>
 
+    <!-- Tables -->
+    <dimen name="table_icon_size">48dp</dimen>
+
 </resources>

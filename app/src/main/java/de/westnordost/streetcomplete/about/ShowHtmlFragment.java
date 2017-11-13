@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.about;
 
-import android.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
@@ -31,7 +31,7 @@ public class ShowHtmlFragment extends Fragment
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState)
 	{
-		View view = inflater.inflate(R.layout.showhtml, container, false);
+		View view = inflater.inflate(R.layout.fragment_show_html, container, false);
 		final TextView textView = view.findViewById(R.id.text);
 		textView.setMovementMethod(LinkMovementMethod.getInstance());
 		textView.setText(Html.fromHtml(getArguments().getString(TEXT)));

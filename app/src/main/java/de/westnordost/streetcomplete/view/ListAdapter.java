@@ -3,20 +3,26 @@ package de.westnordost.streetcomplete.view;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import java.util.Collections;
 import java.util.List;
 
-public abstract class ListAdapter<T> extends RecyclerView.Adapter<ListAdapter.ViewHolder>
+public abstract class ListAdapter<T> extends RecyclerView.Adapter<ListAdapter.ViewHolder<T>>
 {
 	private List<T> list;
+
+	public ListAdapter()
+	{
+		this.list = Collections.emptyList();
+	}
 
 	public ListAdapter(List<T> list)
 	{
 		this.list = list;
 	}
 
-	@Override public void onBindViewHolder(ListAdapter.ViewHolder holder, int position)
+	@Override public void onBindViewHolder(ListAdapter.ViewHolder<T> holder, int position)
 	{
-		holder.update(list.get(position));
+		holder.onBind(list.get(position));
 	}
 
 	@Override public int getItemCount()
@@ -24,13 +30,26 @@ public abstract class ListAdapter<T> extends RecyclerView.Adapter<ListAdapter.Vi
 		return list.size();
 	}
 
-	public abstract class ViewHolder extends RecyclerView.ViewHolder
+	public List<T> getList()
+	{
+		return list;
+	}
+
+	public void setList(List<T> list)
+	{
+		this.list = list;
+		notifyDataSetChanged();
+	}
+
+	public static abstract class ViewHolder<U> extends RecyclerView.ViewHolder
 	{
 		public ViewHolder(View itemView)
 		{
 			super(itemView);
+			onCreate();
 		}
 
-		protected abstract void update(T with);
+		protected void onCreate() {}
+		protected abstract void onBind(U with);
 	}
 }

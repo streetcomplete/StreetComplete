@@ -4,7 +4,6 @@ package de.westnordost.streetcomplete;
 public class Prefs
 {
 	public static final String
-
 			OAUTH = "oauth",
 			OAUTH_ACCESS_TOKEN = "oauth.accessToken",
 			OAUTH_ACCESS_TOKEN_SECRET = "oauth.accessTokenSecret",
@@ -14,7 +13,12 @@ public class Prefs
 			SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS = "display.nonQuestionNotes",
 			AUTOSYNC = "autosync",
 			LAST_SOLVED_QUEST_TIME = "changesets.lastQuestSolvedTime",
-			KEEP_SCREEN_ON = "display.keepScreenOn";
+			KEEP_SCREEN_ON = "display.keepScreenOn",
+			UNGLUE_HINT_TIMES_SHOWN = "unglueHint.shown";
+
+	// not shown anywhere directly
+	public static final String
+			QUEST_ORDER = "quests.order";
 
 	public enum Autosync
 	{

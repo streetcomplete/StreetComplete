@@ -4,8 +4,10 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.location.Location;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.LocalBroadcastManager;
 import android.view.LayoutInflater;
@@ -14,8 +16,12 @@ import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 
+import com.github.florent37.viewtooltip.ViewTooltip;
 import com.mapzen.android.lost.api.LocationRequest;
 
+import javax.inject.Inject;
+
+import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.location.LocationRequestFragment;
 import de.westnordost.streetcomplete.location.LocationState;
@@ -30,6 +36,8 @@ public class MapControlsFragment extends Fragment
 	private MapFragment mapFragment;
 	private CompassView compassNeedle;
 	private LocationStateButton trackingButton;
+
+	@Inject SharedPreferences prefs;
 
 	private BroadcastReceiver locationAvailabilityReceiver = new BroadcastReceiver()
 	{
@@ -48,10 +56,17 @@ public class MapControlsFragment extends Fragment
 		}
 	};
 
+	@Override public void onCreate(@Nullable Bundle savedInstanceState)
+	{
+		super.onCreate(savedInstanceState);
+		Injector.instance.getApplicationComponent().inject(this);
+		mapFragment = (MapFragment) getParentFragment();
+	}
+
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
 									   Bundle savedInstanceState)
 	{
-		View view = inflater.inflate(R.layout.map_controls, container, false);
+		View view = inflater.inflate(R.layout.fragment_map_controls, container, false);
 		compassNeedle = view.findViewById(R.id.compassNeedle);
 
 		view.findViewById(R.id.compass).setOnClickListener(new View.OnClickListener()
@@ -126,6 +141,12 @@ public class MapControlsFragment extends Fragment
 		return view;
 	}
 
+	@Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState)
+	{
+		super.onViewCreated(view, savedInstanceState);
+		mapFragment.onMapControlsCreated(this);
+	}
+
 	@Override public void onStart()
 	{
 		super.onStart();
@@ -143,26 +164,19 @@ public class MapControlsFragment extends Fragment
 		super.onStop();
 
 		getContext().unregisterReceiver(locationAvailabilityReceiver);
-
-		LocalBroadcastManager.getInstance(getContext()).registerReceiver(locationRequestFinishedReceiver,
-				new IntentFilter(LocationRequestFragment.ACTION_FINISHED));
+		LocalBroadcastManager.getInstance(getContext()).unregisterReceiver(locationRequestFinishedReceiver);
 	}
 
 	/* ------------------------ Calls from the MapFragment ------------------------ */
-
-	public void setMapFragment(MapFragment mapFragment)
-	{
-		this.mapFragment = mapFragment;
-	}
 
 	public void onMapOrientation(float rotation, float tilt)
 	{
 		compassNeedle.setOrientation(rotation, tilt);
 	}
 
-	public void onMapReady()
+	public void onMapInitialized()
 	{
-		trackingButton.setActivated(mapFragment.isFollowingPosition());
+		setTrackingButtonActivated(mapFragment.isFollowingPosition());
 		trackingButton.setCompassMode(mapFragment.isCompassMode());
 	}
 
@@ -210,7 +224,9 @@ public class MapControlsFragment extends Fragment
 				{
 					@Override public void onLocation(Location location)
 					{
+						if(getActivity() == null) return;
 						trackingButton.setState(LocationState.UPDATING);
+						showUnglueHint();
 					}
 				});
 	}
@@ -224,9 +240,30 @@ public class MapControlsFragment extends Fragment
 
 	private void setIsFollowingPosition(boolean follow)
 	{
-		trackingButton.setActivated(follow);
+		setTrackingButtonActivated(follow);
 		mapFragment.setIsFollowingPosition(follow);
 		if(!follow) setIsCompassMode(false);
+	}
+
+	private void setTrackingButtonActivated(boolean activated)
+	{
+		trackingButton.setActivated(activated);
+		showUnglueHint();
+	}
+
+	private void showUnglueHint()
+	{
+		//int timesShown = prefs.getInt(Prefs.UNGLUE_HINT_TIMES_SHOWN, 0);
+		if(trackingButton.isActivated() && LocationUtil.isLocationOn(getActivity()))
+		{
+			ViewTooltip.on(trackingButton)
+					.position(ViewTooltip.Position.LEFT)
+					.text(getResources().getString(R.string.unglue_hint))
+					.color(getResources().getColor(R.color.colorTooltip))
+					.duration(3000)
+					.show();
+			//prefs.edit().putInt(Prefs.UNGLUE_HINT_TIMES_SHOWN, timesShown + 1).apply();
+		}
 	}
 
 	private void setIsCompassMode(boolean compassMode)

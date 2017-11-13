@@ -375,8 +375,16 @@
     <string name="quest_way_lit_named_road_title">"\"%s\" 沿路上有照明設施？"</string>
     <string name="quest_way_lit_automatic">"使用動態偵測"</string>
     <string name="quest_way_lit_24_7">"不分日夜照明"</string>
+    <string name="pref_title_authorized_username_summary">"認證帳號：%s"</string>
+    <string name="cannot_find_bbox_or_reduce_tilt">"在這裡無法掃描。請進一步放大或是傾斜地圖程度小點。"</string>
     <string name="quest_crossing_type_title">"這是哪種交叉口?"</string>
+    <string name="quest_crossing_type_signals">"有交通號誌的路口"</string>
+    <string name="quest_crossing_type_uncontrolled">"無交通號誌控制的路口"</string>
+    <string name="quest_crossing_type_unmarked">"無道路標記的路口"</string>
     <string name="compass_north_one_letter">"北"</string>
+    <string name="action_undo">"復原"</string>
+    <string name="no_changes_to_undo">"沒有可以復原的動作"</string>
+    <string name="undo_confirm_title">"復原上個回答？"</string>
     <string name="produce_mangosteen">"山竹"</string>
     <string name="produce_tomatoes">"番茄"</string>
     <string name="produce_areca_nuts">"檳榔"</string>
@@ -388,7 +396,19 @@
     <string name="quest_parkingType_underground">"地下停車場"</string>
     <string name="quest_parkingType_multiStorage">"停車場"</string>
     <string name="quest_toiletAvailability_name_title">"%s有洗手間嗎?"</string>
+    <string name="quest_powerPolesMaterial_title">"電線桿的材質是？"</string>
     <string name="quest_powerPolesMaterial_wood">"木頭"</string>
     <string name="quest_powerPolesMaterial_metal">"鋼鐵"</string>
     <string name="quest_powerPolesMaterial_concrete">"水泥"</string>
+    <string name="quest_maxspeed_answer_advisory_speed_limit">"只是建議速度限制"</string>
+    <string name="quest_address_answer_house_name">"沒有門牌號碼但有名字"</string>
+    <string name="quest_address_house_name_label">"房屋名稱："</string>
+    <string name="quest_buildingLevels_roofLevelsLabel2">"屋頂樓層數"</string>
+    <string name="quest_buildingLevels_levelsLabel2">"一般的樓層數 (不計算屋頂)"</string>
+    <string name="pref_title_authorized_summary">"驗證"</string>
+    <string name="quest_buildingLevels_answer_multipleLevels">"建築部分的不同"</string>
+    <string name="quest_buildingLevels_answer_description">"在這一個例子，簡單填寫建築部分最高樓層數值。"</string>
+    <string name="unglue_hint">"從位置點取消界限視圖"</string>
+    <string name="pref_title_not_authorized_summary2">"經由你的瀏覽器登入來認證帳號"</string>
+    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"這條路的車道是否實體分隔(例如有障礙物)？預設速限依照上述設定決定或為否。"</string>
 </resources>

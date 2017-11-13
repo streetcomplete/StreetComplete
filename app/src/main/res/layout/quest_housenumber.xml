@@ -21,6 +21,7 @@
         android:layout_gravity="center"
         android:text=""
         android:maxLines="1"
+        android:digits="0123456789.,- /"
         />
 
     <Button

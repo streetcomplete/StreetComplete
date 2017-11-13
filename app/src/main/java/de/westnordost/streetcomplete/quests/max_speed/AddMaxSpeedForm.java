@@ -34,7 +34,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 			URBAN_OR_RURAL_ROADS = Arrays.asList("primary","secondary","tertiary","unclassified",
 					"primary_link","secondary_link","tertiary_link","road"),
 			ROADS_WITH_DEFINITE_SPEED_LIMIT = Arrays.asList("trunk","motorway","living_street"),
-			URBAN_OR_SLOWZONE_ROADS = Arrays.asList("residential","unclassified"),
+			POSSIBLY_SLOWZONE_ROADS = Arrays.asList("residential","unclassified"),
 			MAYBE_LIVING_STREET = Arrays.asList("residential");
 
 	private EditText speedInput;
@@ -88,7 +88,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 
 	private void initZoneCheckbox(View zoneContainer)
 	{
-		boolean isResidential = URBAN_OR_SLOWZONE_ROADS.contains(getOsmElement().getTags().get("highway"));
+		boolean isResidential = POSSIBLY_SLOWZONE_ROADS.contains(getOsmElement().getTags().get("highway"));
 		boolean isSlowZoneKnown = getCountryInfo().isSlowZoneKnown();
 		zoneContainer.setVisibility(isSlowZoneKnown && isResidential ? View.VISIBLE : View.GONE);
 
@@ -144,11 +144,11 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 					{
 						@Override public void run()
 						{
-							askUrbanOrRural();
+							determineImplicitMaxspeedType();
 						}
 					});
 				}
-				else if(URBAN_OR_SLOWZONE_ROADS.contains(highwayTag))
+				else if(POSSIBLY_SLOWZONE_ROADS.contains(highwayTag))
 				{
 					if(getCountryInfo().isSlowZoneKnown())
 					{
@@ -156,7 +156,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 						{
 							@Override public void run()
 							{
-								applyNoSignAnswer("urban");
+								determineImplicitMaxspeedType();
 							}
 						});
 					}
@@ -166,7 +166,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 						{
 							@Override public void run()
 							{
-								applyNoSignAnswer("urban");
+								determineImplicitMaxspeedType();
 							}
 						});
 					}
@@ -214,6 +214,18 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 		}
 	}
 
+	private void determineImplicitMaxspeedType()
+	{
+		if(getCountryInfo().getCountryCode().equals("GB"))
+		{
+			askSingleOrDualCarriageway();
+		}
+		else
+		{
+			askUrbanOrRural();
+		}
+	}
+
 	private void confirmLivingStreet(final Runnable callback)
 	{
 		View view = LayoutInflater.from(getActivity()).inflate(R.layout.quest_maxspeed_living_street_confirmation, null, false);
@@ -245,8 +257,12 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 		View view = LayoutInflater.from(getActivity()).inflate(R.layout.quest_maxspeed_no_sign_no_slow_zone_confirmation, null, false);
 
 		ImageView imgSlowZone = view.findViewById(R.id.imgSlowZone);
-		Drawable slowZoneDrawable = ((ImageView) getView().findViewById(R.id.zoneImg)).getDrawable();
-		imgSlowZone.setImageDrawable(slowZoneDrawable);
+		ImageView mainLayoutImgSlowZone = getView() != null ? (ImageView) getView().findViewById(R.id.zoneImg) : null;
+		if(mainLayoutImgSlowZone != null)
+		{
+			Drawable slowZoneDrawable = mainLayoutImgSlowZone.getDrawable();
+			imgSlowZone.setImageDrawable(slowZoneDrawable);
+		}
 
 		new AlertDialogBuilder(getActivity())
 				.setView(view)
@@ -282,6 +298,29 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 					public void onClick(DialogInterface dialog, int which)
 					{
 						applyNoSignAnswer("rural");
+					}
+				})
+				.show();
+	}
+
+	private void askSingleOrDualCarriageway()
+	{
+		new AlertDialogBuilder(getActivity())
+				.setMessage(R.string.quest_maxspeed_answer_noSign_singleOrDualCarriageway_description)
+				.setPositiveButton(R.string.quest_generic_hasFeature_yes, new DialogInterface.OnClickListener()
+				{
+					@Override
+					public void onClick(DialogInterface dialog, int which)
+					{
+						applyNoSignAnswer("nsl_dual");
+					}
+				})
+				.setNegativeButton(R.string.quest_generic_hasFeature_no, new DialogInterface.OnClickListener()
+				{
+					@Override
+					public void onClick(DialogInterface dialog, int which)
+					{
+						applyNoSignAnswer("nsl_single");
 					}
 				})
 				.show();

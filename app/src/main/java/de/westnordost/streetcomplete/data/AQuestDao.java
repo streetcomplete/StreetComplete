@@ -60,8 +60,8 @@ public abstract class AQuestDao<T extends Quest>
 		SQLiteDatabase db = dbHelper.getReadableDatabase();
 
 		String questStatus = getQuestStatusColumnName();
-		String query = questStatus + " = ? OR " + questStatus + " = ?";
-		String[] args = {QuestStatus.ANSWERED.name(), QuestStatus.CLOSED.name()};
+		String query = questStatus + " IN (?,?,?)";
+		String[] args = {QuestStatus.HIDDEN.name(), QuestStatus.ANSWERED.name(), QuestStatus.CLOSED.name()};
 		String orderBy = getLastChangedColumnName() + " DESC";
 		Cursor cursor = db.query(getMergedViewName(),null,query,args,null,null,orderBy,"1");
 

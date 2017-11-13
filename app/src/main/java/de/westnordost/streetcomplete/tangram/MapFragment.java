@@ -10,11 +10,12 @@ import android.graphics.drawable.Drawable;
 import android.hardware.SensorManager;
 import android.location.Location;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
+import android.support.annotation.CallSuper;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v13.app.FragmentCompat;
 import android.support.v4.app.Fragment;
+import android.support.v7.preference.PreferenceManager;
 import android.text.Html;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
@@ -22,6 +23,7 @@ import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.TextView;
 
 import com.mapzen.android.lost.api.LocationListener;
@@ -49,7 +51,7 @@ public class MapFragment extends Fragment implements
 		FragmentCompat.OnRequestPermissionsResultCallback, LocationListener,
 		LostApiClient.ConnectionCallbacks, TouchInput.ScaleResponder,
 		TouchInput.ShoveResponder, TouchInput.RotateResponder,
-		TouchInput.PanResponder, TouchInput.DoubleTapResponder, CompassComponent.Listener
+		TouchInput.PanResponder, TouchInput.DoubleTapResponder, CompassComponent.Listener, MapController.SceneLoadListener
 {
 	private CompassComponent compass = new CompassComponent();
 
@@ -62,8 +64,10 @@ public class MapFragment extends Fragment implements
 
 	private HttpHandler httpHandler;
 
-	/** controller to the asynchronously loaded map. Since it is loaded asynchronously, could be
-	 *  null still at any point! */
+	/**
+	 * controller to the asynchronously loaded map. Since it is loaded asynchronously, could be
+	 * null still at any point!
+	 */
 	protected MapController controller;
 
 	private LostApiClient lostApiClient;
@@ -75,21 +79,24 @@ public class MapFragment extends Fragment implements
 
 	private MapControlsFragment mapControls;
 
-	private Listener listener;
-
 	private String apiKey;
 
 	private boolean isShowingDirection;
 
+	private boolean isMapInitialized;
+
+	private Listener listener;
 	public interface Listener
 	{
-		void onMapReady();
+		void onMapOrientation(float rotation, float tilt);
 	}
 
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
 									   Bundle savedInstanceState)
 	{
 		View view = inflater.inflate(R.layout.fragment_map, container, false);
+
+		isMapInitialized = false;
 
 		mapView = view.findViewById(R.id.map);
 		TextView mapzenLink = view.findViewById(R.id.mapzenLink);
@@ -106,8 +113,10 @@ public class MapFragment extends Fragment implements
 	@Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState)
 	{
 		super.onViewCreated(view, savedInstanceState);
-		mapControls = (MapControlsFragment) getChildFragmentManager().findFragmentById(R.id.controls_fragment);
-		mapControls.setMapFragment(this);
+		if(savedInstanceState == null)
+		{
+			getChildFragmentManager().beginTransaction().add(R.id.controls_fragment, new MapControlsFragment()).commit();
+		}
 	}
 
 	/* --------------------------------- Map and Location --------------------------------------- */
@@ -117,58 +126,116 @@ public class MapFragment extends Fragment implements
 		getMapAsync(apiKey, "scene.yaml");
 	}
 
-	public void getMapAsync(String apiKey, @NonNull final String sceneFilePath)
+	@CallSuper public void getMapAsync(String apiKey, @NonNull final String sceneFilePath)
 	{
 		this.apiKey = apiKey;
-		controller = mapView.getMap(new MapController.SceneLoadListener()
-		{
-			@Override public void onSceneReady(int sceneId, SceneError sceneError)
-			{
-				initMap();
-			}
-		});
-		controller.loadSceneFile(sceneFilePath);
-	}
 
-	protected void initMap()
-	{
-		if(getActivity() == null) return;
-
-		updateMapTileCacheSize();
-		controller.setHttpHandler(httpHandler);
-		restoreMapState();
-
+		controller = mapView.getMap(this);
 		controller.setRotateResponder(this);
 		controller.setShoveResponder(this);
 		controller.setScaleResponder(this);
 		controller.setPanResponder(this);
 		controller.setDoubleTapResponder(this);
+		updateMapTileCacheSize();
+		controller.setHttpHandler(httpHandler);
 
-		locationMarker = controller.addMarker();
-		BitmapDrawable dot = createBitmapDrawableFrom(R.drawable.location_dot);
-		locationMarker.setStylingFromString("{ style: 'points', color: 'white', size: ["+TextUtils.join(",",sizeInDp(dot))+"], order: 2000, flat: true, collide: false }");
-		locationMarker.setDrawable(dot);
-		locationMarker.setDrawOrder(3);
-
-		directionMarker = controller.addMarker();
-		BitmapDrawable directionImg = createBitmapDrawableFrom(R.drawable.location_direction);
-		directionMarkerSize = sizeInDp(directionImg);
-		directionMarker.setDrawable(directionImg);
-		directionMarker.setDrawOrder(2);
-
-		accuracyMarker = controller.addMarker();
-		accuracyMarker.setDrawable(createBitmapDrawableFrom(R.drawable.accuracy_circle));
-		accuracyMarker.setDrawOrder(1);
+		restoreMapState();
 
 		compass.setListener(this);
 
-		showLocation();
-		followPosition();
+		isMapInitialized = true;
+		tryInitializeMapControls();
 
-		updateView();
+		loadScene(sceneFilePath);
+	}
 
-		listener.onMapReady();
-		mapControls.onMapReady();
+	protected void loadScene(String sceneFilePath)
+	{
+		controller.loadSceneFile(sceneFilePath);
+	}
+
+	public void onMapControlsCreated(MapControlsFragment mapControls)
+	{
+		this.mapControls = mapControls;
+		tryInitializeMapControls();
+	}
+
+	private void tryInitializeMapControls()
+	{
+		if(isMapInitialized && mapControls != null)
+		{
+			mapControls.onMapInitialized();
+			mapControls.onMapOrientation(controller.getRotation(), controller.getTilt());
+		}
+	}
+
+	@CallSuper @Override public void onSceneReady(int sceneId, SceneError sceneError)
+	{
+		if(getActivity() != null)
+		{
+			initMarkers();
+			followPosition();
+			showLocation();
+			postOnLayout(new Runnable()
+			{
+				@Override public void run()
+				{
+					updateView();
+				}
+			});
+		}
+	}
+
+	private void postOnLayout(final Runnable runnable)
+	{
+		ViewTreeObserver vto = getView().getViewTreeObserver();
+		if(vto.isAlive())
+		{
+			vto.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
+			{
+				@Override public void onGlobalLayout()
+				{
+					getView().getViewTreeObserver().removeOnGlobalLayoutListener(this);
+					runnable.run();
+				}
+			});
+		}
+	}
+
+	private void initMarkers()
+	{
+		locationMarker = createLocationMarker(3);
+		directionMarker = createDirectionMarker(2);
+		accuracyMarker = createAccuracyMarker(1);
+	}
+
+	private Marker createLocationMarker(int order)
+	{
+		Marker marker = controller.addMarker();
+		BitmapDrawable dot = createBitmapDrawableFrom(R.drawable.location_dot);
+		marker.setStylingFromString("{ style: 'points', color: 'white', size: ["+TextUtils.join(",",sizeInDp(dot))+"], order: 2000, flat: true, collide: false }");
+		marker.setDrawable(dot);
+		marker.setDrawOrder(order);
+		return marker;
+	}
+
+	private Marker createDirectionMarker(int order)
+	{
+		BitmapDrawable directionImg = createBitmapDrawableFrom(R.drawable.location_direction);
+		directionMarkerSize = sizeInDp(directionImg);
+
+		Marker marker = controller.addMarker();
+		marker.setDrawable(directionImg);
+		marker.setDrawOrder(order);
+		return marker;
+	}
+
+	private Marker createAccuracyMarker(int order)
+	{
+		Marker marker = controller.addMarker();
+		marker.setDrawable(createBitmapDrawableFrom(R.drawable.accuracy_circle));
+		marker.setDrawOrder(order);
+		return marker;
 	}
 
 	private String[] sizeInDp(Drawable drawable)
@@ -299,7 +366,7 @@ public class MapFragment extends Fragment implements
 
 	@Override public boolean onShove(float distance)
 	{
-		mapControls.onMapOrientation(controller.getRotation(), controller.getTilt());
+		onMapOrientation();
 		updateView();
 		return false;
 	}
@@ -307,9 +374,20 @@ public class MapFragment extends Fragment implements
 	@Override public boolean onRotate(float x, float y, float rotation)
 	{
 		if(!requestUnglueViewFromRotation()) return true;
-		mapControls.onMapOrientation(controller.getRotation(), controller.getTilt());
+		onMapOrientation();
 		updateView();
 		return false;
+	}
+
+	private void onMapOrientation()
+	{
+		onMapOrientation(controller.getRotation(), controller.getTilt());
+	}
+
+	private void onMapOrientation(float rotation, float tilt)
+	{
+		if(mapControls != null) mapControls.onMapOrientation(rotation, tilt);
+		listener.onMapOrientation(rotation, tilt);
 	}
 
 	protected void updateView()
@@ -330,7 +408,7 @@ public class MapFragment extends Fragment implements
 	{
 		if(isFollowingPosition)
 		{
-			if(mapControls.requestUnglueViewFromPosition())
+			if(mapControls == null || mapControls.requestUnglueViewFromPosition())
 			{
 				setIsFollowingPosition(false);
 				setCompassMode(false);
@@ -345,7 +423,7 @@ public class MapFragment extends Fragment implements
 	{
 		if(isCompassMode)
 		{
-			if(mapControls.requestUnglueViewFromRotation())
+			if(mapControls == null || mapControls.requestUnglueViewFromRotation())
 			{
 				setCompassMode(false);
 				return true;
@@ -416,7 +494,7 @@ public class MapFragment extends Fragment implements
 			{
 				controller.setRotationEased(mapRotation, 50);
 			}
-			mapControls.onMapOrientation(mapRotation, controller.getTilt());
+			onMapOrientation(mapRotation, controller.getTilt());
 		}
 	}
 
@@ -479,8 +557,6 @@ public class MapFragment extends Fragment implements
 
 		setIsFollowingPosition(prefs.getBoolean(PREF_FOLLOWING, true));
 		setCompassMode(prefs.getBoolean(PREF_COMPASS_MODE, false));
-
-		mapControls.onMapOrientation(controller.getRotation(), controller.getTilt());
 	}
 
 	private void saveMapState()
@@ -510,11 +586,11 @@ public class MapFragment extends Fragment implements
 	@Override public void onAttach(Activity activity)
 	{
 		super.onAttach(activity);
-		listener = (Listener) activity;
 		compass.onCreate(
 				(SensorManager) activity.getSystemService(SENSOR_SERVICE),
 				activity.getWindowManager().getDefaultDisplay());
 		lostApiClient = new LostApiClient.Builder(activity).addConnectionCallbacks(this).build();
+		listener = (Listener) activity;
 	}
 
 	@Override public void onStart()
@@ -603,7 +679,7 @@ public class MapFragment extends Fragment implements
 		if(controller == null) return;
 		controller.setRotation(rotation);
 		controller.setTilt(tilt);
-		mapControls.onMapOrientation(rotation, tilt);
+		onMapOrientation(rotation, tilt);
 	}
 
 	public float getRotation()

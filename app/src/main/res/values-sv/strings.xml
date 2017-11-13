@@ -92,7 +92,7 @@
     <string name="quest_streetName_answer_noProperStreet_link">"den bara förbinder två vägar"</string>
     <string name="quest_streetName_answer_noProperStreet_service">"Det är bara en serviceväg"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Något annat (lämna notering)"</string>
-    <string name="quest_streetName_answer_noProperStreet_track">"Det är bara ett spår"</string>
+    <string name="quest_streetName_answer_noProperStreet_track">"Det är bara en skogsväg"</string>
     <string name="about_title_privacy_statement">"Sekretesspolicy"</string>
     <string name="about_summary_privacy_statement">"och dataanvändning"</string>
     <string name="quest_openingHours_public_holidays">"allmänna helgdagar"</string>
@@ -380,9 +380,9 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="produce_vanilla">"Vanilj"</string>
     <string name="produce_walnuts">"Valnötter"</string>
     <string name="produce_sisal">"Sisal"</string>
-    <string name="quest_way_lit_title">"Är denna sektion av väg belyst?"</string>
+    <string name="quest_way_lit_title">"Är den här delen av vägen belyst?"</string>
     <string name="quest_way_lit_named_title">"Är \"%s\" belyst här?"</string>
-    <string name="quest_way_lit_road_title">"Är denna sektion av vägen belyst?"</string>
+    <string name="quest_way_lit_road_title">"Är den här delen av vägen belyst?"</string>
     <string name="quest_way_lit_named_road_title">"Är %s belyst här?"</string>
     <string name="quest_way_lit_automatic">"Den använder rörelsedetektion"</string>
     <string name="quest_way_lit_24_7">"Det är belyst dygnet runt."</string>
@@ -394,6 +394,7 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="compass_north_one_letter">"N"</string>
     <string name="action_undo">"Ångra"</string>
     <string name="no_changes_to_undo">"Finns inget att ångra"</string>
+    <string name="undo_confirm_title">"Ångra det senaste svaret?"</string>
     <string name="produce_mangosteen">"Mangostan"</string>
     <string name="produce_tomatoes">"Tomater"</string>
     <string name="produce_areca_nuts">"Arekanötter"</string>
@@ -408,4 +409,7 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_powerPolesMaterial_wood">"Trä"</string>
     <string name="quest_powerPolesMaterial_metal">"Stål"</string>
     <string name="quest_powerPolesMaterial_concrete">"Betong"</string>
+    <string name="quest_maxspeed_answer_advisory_speed_limit">"Enbart rekommenderad hastighet"</string>
+    <string name="quest_address_answer_house_name">"Inget nummer men ett namn"</string>
+    <string name="quest_address_house_name_label">"Husnamn:"</string>
 </resources>
