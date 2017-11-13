@@ -48,13 +48,6 @@ public class UploadsCounter extends android.support.v7.widget.AppCompatTextView 
     }
 
     private void updateText() {
-        String text = "0";
-        if (answeredQuests < 0) {
-            text += answeredQuests;
-        } else if (answeredQuests > 0) {
-            text += "+" + answeredQuests;
-        }
-
-        setText(text);
+        setText(String.valueOf(answeredQuests));
     }
 }
