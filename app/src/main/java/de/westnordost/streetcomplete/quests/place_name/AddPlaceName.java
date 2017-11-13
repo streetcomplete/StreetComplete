@@ -50,7 +50,7 @@ public class AddPlaceName extends SimpleOverpassQuestType
 
 	@Override protected String getTagFilters()
 	{
-		return " nodes, ways, relations with !name and !noname and (" +
+		return " nodes, ways, relations with !name and noname != yes and (" +
 			   " shop and shop !~ no|vacant or" +
 			   " amenity ~ " + TextUtils.join("|",AMENITIES_WITH_NAMES) + " or" +
  			   " tourism ~ " + TextUtils.join("|",TOURISMS_WITH_NAMES) + " or" +

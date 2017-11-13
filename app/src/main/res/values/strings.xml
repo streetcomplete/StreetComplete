@@ -11,7 +11,9 @@
     <string name="pref_category_display">"Display"</string>
     <string name="pref_title_authorization">"Authorize OSM access"</string>
     <string name="pref_title_authorized_username_summary">"Authorized account: %s"</string>
+    <string name="pref_title_authorized_summary">"Authorized"</string>
     <string name="pref_title_not_authorized_summary">"Not yet authorized"</string>
+    <string name="pref_title_not_authorized_summary2">"Log in from your web browser to authorize"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
     <string name="pref_tilecache_size_message">"Space in megabytes reserved on external storage to cache map tiles"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Show all notes"</string>
@@ -31,6 +33,8 @@
     <string name="quest_leave_new_note_description">"You can leave a public note at this location which other mappers can comment on and hopefully resolve:"</string>
     <string name="quest_leave_new_note_yes">"OK"</string>
     <string name="quest_leave_new_note_no">"No, just hide"</string>
+    <string name="quest_leave_new_note_photo">Attach photo</string>
+    <string name="quest_leave_new_note_photo_delete_title">Do you want to delete this picture?</string>
     <string name="quest_streetName_title">"What is the name of this road?"</string>
     <string name="quest_streetName_description">"as written on the street sign, abbreviations are expanded:"</string>
     <string name="quest_streetName_answer_noName_confirmation_description">"Sometimes the street sign is only at one end of the street. Also, note that there may not be extra street signs for side streets that belong to a bigger street. Usually, any street with houses has a name."</string>
@@ -46,7 +50,7 @@
     <string name="quest_openingHours_chooseMonthsTitle">"Select months"</string>
     <string name="quest_openingHours_chooseWeekdaysTitle">"Select weekdays"</string>
     <string name="quest_openingHours_24_7_confirmation">"In other words, it is open any time, every day?"</string>
-    <string name="quest_noteDiscussion_title">"Can you contribute to this note?"</string>
+    <string name="quest_noteDiscussion_title">"Can you contribute anything to this note?"</string>
     <string name="quest_noteDiscussion_no">"No, hide"</string>
     <string name="quest_noteDiscussion_create">"created by %1$s (%2$s)"</string>
     <string name="quest_noteDiscussion_comment">"%1$s (%2$s)"</string>
@@ -65,9 +69,9 @@
     <string name="upload_error">"Error while uploading answers"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Can't scan here. Try to zoom in further or tilt the map less."</string>
     <string name="download_area_too_big">"Please zoom in further"</string>
-    <string name="confirmation_cancel_prev_download_title">"Cancel the current search and scan here instead?"</string>
-    <string name="notification_downloading">"Scanning for quests"</string>
-    <string name="now_downloading_toast">"Scanning for more quests"</string>
+    <string name="confirmation_cancel_prev_download_title">"Stop the current search and scan here instead?"</string>
+    <string name="notification_downloading">"Scanning for quests…"</string>
+    <string name="now_downloading_toast">"Scanning for more quests…"</string>
     <string name="turn_on_location_request">"Location is off. Open Settings to turn it on now?"</string>
     <string name="no_location_permission_warning">"Your location is needed to scan for quests in your vicinity."</string>
     <string name="action_about">"About StreetComplete"</string>
@@ -105,8 +109,6 @@
     <string name="quest_openingHours_comment_description">"Be concise, ideally use the wording from the sign. I.e. \"by appointment\". The absence of a sign does not necessarily mean there are no regular opening hours."</string>
     <string name="quest_buildingLevels_title">"How many levels does this building have?"</string>
     <string name="quest_buildingLevels_title_buildingPart">"How many levels does this building part have?"</string>
-    <string name="quest_buildingLevels_levelsLabel">"total levels"</string>
-    <string name="quest_buildingLevels_roofLevelsLabel">"of these, levels in the roof"</string>
     <string name="quest_roofShape_title">"What basic shape does this building's roof have?"</string>
     <string name="quest_roofShape_select_one">"Select one:"</string>
     <string name="quest_roofShape_show_more">"Show more…"</string>
@@ -170,6 +172,7 @@ To display the map, vector tiles are retrieved from the &lt;a href=\"https://map
 &lt;p&gt;
 (&lt;i&gt;This is actually not implemented yet, just want to inform you what is to come!:&lt;/i&gt;) The data shown in the leaderboard and profile is aggregated from publicly available information from the OpenStreetMap. The data does not come from this app but basically from the public commit history of OSM users.
 &lt;/p&gt;"</string>
+    <string name="privacy_html_image_upload">&lt;p&gt;Photos you attach to notes are uploaded to &lt;a href=\"https://lut.im\"&gt;lut.im&lt;/a&gt;, a service which is anonymous and without tracking.&lt;/p&gt;</string>
     <string name="autosync_on">"On"</string>
     <string name="autosync_only_on_wifi">"Only on Wifi"</string>
     <string name="autosync_off">"Off"</string>
@@ -237,7 +240,6 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="quest_name_answer_noName">"It has no name"</string>
     <string name="quest_name_answer_noName_confirmation_title">"Really no name?"</string>
     <string name="quest_name_noName_confirmation_positive">"Yes, no name"</string>
-    <string name="quest_buildingLevels_negativeBuildingLevels">"Oops! You specified more roof levels than levels in total!"</string>
     <string name="quest_openingHours_add_times">"Add opening times"</string>
     <string name="crash_message">"Would you please send the error report to the developer?"</string>
     <string name="crash_title">"Oh no, StreetComplete crashed last time!"</string>
@@ -261,14 +263,14 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
 	<string name="quest_toiletsFee_title">"Do these toilets require a fee?"</string>
     <string name="quest_baby_changing_table_toilets_title">"Does this toilet have a baby changing table?"</string>
     <string name="quest_baby_changing_table_title">"Does \"%s\" have a baby changing table?"</string>
-    <string name="quest_way_lit_title">"Is this section of way lit?"</string>
+    <string name="quest_way_lit_title">"Is this stretch of way lit?"</string>
     <string name="quest_way_lit_named_title">"Is \"%s\" lit here?"</string>
-    <string name="quest_way_lit_road_title">"Is this section of road lit?"</string>
+    <string name="quest_way_lit_road_title">"Is this stretch of road lit?"</string>
     <string name="quest_way_lit_named_road_title">"Is \"%s\" road lit here?"</string>
     <string name="quest_way_lit_automatic">"It uses motion detection"</string>
     <string name="quest_way_lit_24_7">"It's lit night and day"</string>
     <string name="quest_tactilePaving_title_bus">"Does this bus stop have tactile pavings?"</string>
-    <string name="quest_tactilePaving_title_crosswalk">"Does this crosswalk have tactile pavings?"</string>
+    <string name="quest_tactilePaving_title_crosswalk">"Does this crosswalk have tactile pavings on both sides?"</string>
     <string name="quest_source_dialog_title">Are you sure you checked this on-site?</string>
     <string name="quest_source_dialog_note">Only information that was found on a survey should be entered.</string>
     <string name="quest_tactilePaving_title_name_bus">"Does the bus stop \"%s\" have tactile pavings?"</string>
@@ -394,4 +396,37 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_dietType_explanation_vegan">Vegan meals contain no animal products (no meat, no milk products, no eggs,…).</string>
     <string name="quest_dietType_explanation_vegetarian">Vegetarian meals contain no meat.</string>
     <string name="quest_dietType_explanation">Only answer "yes" if the place provides proper eating options for this diet, ignore starters, snacks etc.</string>
+    <string name="quest_toiletAvailability_name_title">Does "%s" have a toilet?</string>
+    <string name="quest_powerPolesMaterial_title">What is the material of this power pole?</string>
+    <string name="quest_powerPolesMaterial_wood">Wood</string>
+    <string name="quest_powerPolesMaterial_metal">Steel</string>
+    <string name="quest_powerPolesMaterial_concrete">Concrete</string>
+    <string name="quest_maxspeed_answer_advisory_speed_limit">Just an advisory speed limit</string>
+    <string name="quest_address_answer_house_name">No house number but a name</string>
+    <string name="quest_address_house_name_label">House name:</string>
+    <string name="quest_buildingLevels_roofLevelsLabel2">levels in the roof</string>
+    <string name="quest_buildingLevels_levelsLabel2">regular levels (not counting the roof)</string>
+    <string name="quest_cycleway_value_track">cycle track</string>
+    <string name="quest_cycleway_value_lane">cycle lane</string>
+    <string name="quest_cycleway_value_none">none</string>
+    <string name="quest_cycleway_value_shared">lane shared explicitly with other traffic</string>
+    <string name="quest_buildingLevels_answer_multipleLevels">differs per building part</string>
+    <string name="quest_buildingLevels_answer_description">In this case, simply input the values of the highest building part.</string>
+    <string name="unglue_hint">Tap to unglue view from position</string>
+    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">Are the carriageways of this road here physically separated (i.e. through a barrier)? The default speed limit depends on whether this is the case or not.</string>
+    <string name="quest_cycleway_value_bus_lane">on bus lane</string>
+    <string name="about_category_feedback">Feedback</string>
+    <string name="quest_cycleway_value_sidewalk">explicitly shared sidewalk</string>
+    <string name="quest_leave_new_note_create_image_error">Unable to create file for photo</string>
+    <string name="quest_cycleway_value_lane_dual">cycle lane, both directions</string>
+    <string name="quest_cycleway_value_track_dual">cycle track, both directions</string>
+    <string name="quest_cycleway_value_sidewalk_allowed">none, but cyclists are allowed on sidewalk</string>
+    <string name="pref_category_advanced">Advanced</string>
+    <string name="pref_title_quests">Quest selection</string>
+    <string name="quest_enabled">Enabled</string>
+    <string name="quest_type">Quest type</string>
+    <string name="action_reset">Reset</string>
+    <string name="reorder_quest_priority_hint">Long-press and move a quest to reorder its priority for download and display on the map.</string>
+    <string name="undo_confirm_positive">Undo</string>
+    <string name="undo_confirm_negative">Cancel</string>
 </resources>

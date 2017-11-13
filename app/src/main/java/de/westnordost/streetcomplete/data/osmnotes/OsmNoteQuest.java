@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osmnotes;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import de.westnordost.streetcomplete.data.Quest;
@@ -13,11 +14,11 @@ public class OsmNoteQuest implements Quest
 {
 	public OsmNoteQuest(Note note, OsmNoteQuestType osmNoteQuestType)
 	{
-		this(null, note, QuestStatus.NEW, null, new Date(), osmNoteQuestType);
+		this(null, note, QuestStatus.NEW, null, new Date(), osmNoteQuestType, null);
 	}
 
 	public OsmNoteQuest(Long id, Note note, QuestStatus status, String comment, Date lastUpdate,
-						OsmNoteQuestType questType)
+						OsmNoteQuestType questType, ArrayList<String> imagePaths)
 	{
 		this.id = id;
 		this.note = note;
@@ -25,6 +26,7 @@ public class OsmNoteQuest implements Quest
 		this.comment = comment;
 		this.lastUpdate = lastUpdate;
 		this.questType = questType;
+		this.imagePaths = imagePaths;
 	}
 
 	private Long id;
@@ -33,6 +35,8 @@ public class OsmNoteQuest implements Quest
 	private Note note;
 
 	private String comment;
+
+	private ArrayList<String> imagePaths;
 
 	private final OsmNoteQuestType questType;
 
@@ -106,6 +110,16 @@ public class OsmNoteQuest implements Quest
 	@Override public void setId(long id)
 	{
 		this.id = id;
+	}
+
+	public void setImagePaths(ArrayList<String> imagePaths)
+	{
+		this.imagePaths = imagePaths;
+	}
+
+	public ArrayList<String> getImagePaths()
+	{
+		return imagePaths;
 	}
 
 	public boolean probablyContainsQuestion()

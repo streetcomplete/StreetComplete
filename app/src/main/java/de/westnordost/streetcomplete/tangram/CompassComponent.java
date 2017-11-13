@@ -4,6 +4,8 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.view.Display;
+import android.view.Surface;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -14,6 +16,7 @@ import java.util.TimerTask;
 public class CompassComponent implements SensorEventListener
 {
 	private SensorManager sensorManager;
+	private Display display;
 	private Sensor accelerometer, magnetometer;
 	private Timer compassTimer;
 	private CompassAnimator compassAnimator;
@@ -35,11 +38,36 @@ public class CompassComponent implements SensorEventListener
 		this.listener = listener;
 	}
 
-	public void onCreate(SensorManager sensorManager)
+	public void onCreate(SensorManager sensorManager, Display display)
 	{
+		this.display = display;
 		this.sensorManager = sensorManager;
 		accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 		magnetometer = sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
+	}
+
+	private float getDisplayTilt(float pitch, float roll)
+	{
+		switch (display.getRotation())
+		{
+			case Surface.ROTATION_0: return pitch;
+			case Surface.ROTATION_90: return roll;
+			case Surface.ROTATION_180: return -pitch;
+			case Surface.ROTATION_270: return -roll;
+		}
+		return 0;
+	}
+
+	private int getDisplayRotation()
+	{
+		switch (display.getRotation())
+		{
+			case Surface.ROTATION_0: return 0;
+			case Surface.ROTATION_90: return 90;
+			case Surface.ROTATION_180: return 180;
+			case Surface.ROTATION_270: return 270;
+		}
+		return 0;
 	}
 
 	public void onResume()
@@ -91,10 +119,15 @@ public class CompassComponent implements SensorEventListener
 			if (success) {
 				float orientation[] = new float[3];
 				SensorManager.getOrientation(R, orientation);
-				float azimut = orientation[0]; // orientation contains: azimut, pitch and roll
+				float azimut = orientation[0];
 				float pitch = orientation[1];
-				compassAnimator.targetRotation = azimut;
-				compassAnimator.targetTilt = pitch;
+				float roll = orientation[2];
+
+				float displayRotation = (float) (Math.PI * getDisplayRotation() / 180);
+				float displayTilt = getDisplayTilt(pitch, roll);
+
+				compassAnimator.targetRotation = azimut + displayRotation;
+				compassAnimator.targetTilt = displayTilt;
 			}
 		}
 	}

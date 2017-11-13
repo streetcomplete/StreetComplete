@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [en]
 officialLanguages: [km]
-orchardProduces: [banana, rubber, coconut, chili, pepper, orange, guava, mango, mangosteen, pineapple,
-  coffee, piper, lemon, lime, grapefruit]
+orchardProduces: [banana, rubber, coconut, chilli_pepper, sweet_pepper, orange, guava, mango, mangosteen,
+  pineapple, coffee, pepper, lemon, lime, grapefruit]

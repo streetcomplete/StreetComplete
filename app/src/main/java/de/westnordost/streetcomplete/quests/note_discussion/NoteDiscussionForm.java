@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.note_discussion;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -29,6 +30,7 @@ public class NoteDiscussionForm extends AbstractQuestAnswerFragment
 {
 	private static final String TAG = "NoteDiscussionForm";
 	public static final String TEXT = "text";
+	public static final String IMAGE_PATHS = "image_paths";
 
 	@Inject OsmNoteQuestDao noteDb;
 
@@ -50,7 +52,7 @@ public class NoteDiscussionForm extends AbstractQuestAnswerFragment
 		View contentView = setContentView(R.layout.quest_note_discussion);
 
 		View buttonPanel = setButtonsView(R.layout.quest_notediscussion_buttonbar);
-		Button buttonOk = (Button) buttonPanel.findViewById(R.id.buttonOk);
+		Button buttonOk = buttonPanel.findViewById(R.id.buttonOk);
 		buttonOk.setOnClickListener(new View.OnClickListener()
 		{
 			@Override public void onClick(View v)
@@ -58,7 +60,7 @@ public class NoteDiscussionForm extends AbstractQuestAnswerFragment
 				onClickOk();
 			}
 		});
-		Button buttonNo = (Button) buttonPanel.findViewById(R.id.buttonNo);
+		Button buttonNo = buttonPanel.findViewById(R.id.buttonNo);
 		buttonNo.setOnClickListener(new View.OnClickListener()
 		{
 			@Override public void onClick(View v)
@@ -67,8 +69,8 @@ public class NoteDiscussionForm extends AbstractQuestAnswerFragment
 			}
 		});
 
-		noteInput = (EditText) contentView.findViewById(R.id.noteInput);
-		noteDiscussion = (LinearLayout) contentView.findViewById(R.id.noteDiscussion);
+		noteInput = contentView.findViewById(R.id.noteInput);
+		noteDiscussion = contentView.findViewById(R.id.noteDiscussion);
 
 		buttonOtherAnswers.setVisibility(View.GONE);
 
@@ -96,6 +98,20 @@ public class NoteDiscussionForm extends AbstractQuestAnswerFragment
 		return view;
 	}
 
+	@Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState)
+	{
+		super.onViewCreated(view, savedInstanceState);
+		if(savedInstanceState == null)
+		{
+			getChildFragmentManager().beginTransaction().add(R.id.attachPhotoFragment, new AttachPhotoFragment()).commit();
+		}
+	}
+
+	private @Nullable AttachPhotoFragment getAttachPhotoFragment()
+	{
+		return (AttachPhotoFragment) getChildFragmentManager().findFragmentById(R.id.attachPhotoFragment);
+	}
+
 	private void inflateNoteDiscussion(Note note)
 	{
 		for(NoteComment noteComment : note.comments)
@@ -118,9 +134,9 @@ public class NoteDiscussionForm extends AbstractQuestAnswerFragment
 
 			if(noteComment == note.comments.get(0))
 			{
-				TextView noteText = (TextView) getView().findViewById(R.id.noteText);
+				TextView noteText = getView().findViewById(R.id.noteText);
 				noteText.setText(noteComment.text);
-				TextView noteAuthor = (TextView) getView().findViewById(R.id.noteAuthor);
+				TextView noteAuthor = getView().findViewById(R.id.noteAuthor);
 				noteAuthor.setText(commenter);
 			}
 			else
@@ -128,10 +144,10 @@ public class NoteDiscussionForm extends AbstractQuestAnswerFragment
 				ViewGroup discussionItem = (ViewGroup) LayoutInflater.from(getActivity()).inflate(
 						R.layout.quest_note_discussion_item, noteDiscussion, false);
 
-				TextView commentInfo = (TextView) discussionItem.findViewById(R.id.comment_info);
+				TextView commentInfo = discussionItem.findViewById(R.id.comment_info);
 				commentInfo.setText(commenter);
 
-				TextView commentText = (TextView) discussionItem.findViewById(R.id.comment_text);
+				TextView commentText = discussionItem.findViewById(R.id.comment_text);
 				commentText.setText(noteComment.text);
 
 				noteDiscussion.addView(discussionItem);
@@ -160,14 +176,28 @@ public class NoteDiscussionForm extends AbstractQuestAnswerFragment
 			return;
 		}
 
+		AttachPhotoFragment f = getAttachPhotoFragment();
+
 		Bundle answer = new Bundle();
 		answer.putString(TEXT, noteText);
+		answer.putStringArrayList(IMAGE_PATHS, f != null ? f.getImagePaths() : null);
 		applyImmediateAnswer(answer);
+	}
+
+	@Override
+	public void onDiscard()
+	{
+		AttachPhotoFragment f = getAttachPhotoFragment();
+		if(f != null) f.deleteImages();
 	}
 
 	@Override public boolean hasChanges()
 	{
-		return !noteInput.getText().toString().trim().isEmpty();
+		AttachPhotoFragment f = getAttachPhotoFragment();
+		boolean hasPhotos = f != null && !f.getImagePaths().isEmpty();
+		boolean hasText = !noteInput.getText().toString().trim().isEmpty();
+
+		return hasPhotos || hasText;
 	}
 
 }

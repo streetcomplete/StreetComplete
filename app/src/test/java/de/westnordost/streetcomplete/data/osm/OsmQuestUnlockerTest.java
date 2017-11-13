@@ -5,6 +5,8 @@ import junit.framework.TestCase;
 import java.util.Collections;
 import java.util.List;
 
+import javax.inject.Provider;
+
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.map.data.LatLon;
@@ -12,7 +14,6 @@ import de.westnordost.osmapi.map.data.Node;
 import de.westnordost.osmapi.map.data.OsmLatLon;
 import de.westnordost.osmapi.map.data.OsmNode;
 import de.westnordost.streetcomplete.data.QuestType;
-import de.westnordost.streetcomplete.data.QuestTypes;
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestDao;
@@ -45,10 +46,15 @@ public class OsmQuestUnlockerTest extends TestCase
 				.thenReturn(Collections.<OsmQuest>emptyList());
 
 		questType = mock(OsmElementQuestType.class);
-		QuestTypes questTypes = new QuestTypes(Collections.<QuestType>singletonList(questType));
-
+		final List<QuestType> questTypes = Collections.<QuestType>singletonList(questType);
 		osmQuestUnlocker = new OsmQuestUnlocker(osmNoteQuestDao, osmQuestDao, elementGeometryDao,
-				questTypes);
+				new Provider<List<QuestType>>()
+				{
+					@Override public List<QuestType> get()
+					{
+						return questTypes;
+					}
+				});
 	}
 
 	public void testNoteBlocksNewQuests()

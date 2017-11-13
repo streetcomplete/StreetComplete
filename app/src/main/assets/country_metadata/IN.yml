@@ -1,4 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [en]
+isLeftHandTraffic: true
 officialLanguages: [en, hi, bn, te, mr, ta, ur, gu, kn, ml, or, pa, as, mai, ks]
 popularSports: [tennis, basketball, soccer, cricket, field_hockey]

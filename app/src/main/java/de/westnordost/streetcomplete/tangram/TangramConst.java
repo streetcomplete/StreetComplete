@@ -17,10 +17,6 @@ public class TangramConst
 
 	public static LatLon toLatLon(LngLat pos)
 	{
-		// TODO https://github.com/tangrams/tangram-es/issues/1097
-		while(pos.longitude > 180) pos.longitude -= 360;
-		while(pos.longitude <= -180) pos.longitude += 360;
-
 		return new OsmLatLon(pos.latitude, pos.longitude);
 	}
 

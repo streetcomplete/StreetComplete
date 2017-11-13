@@ -10,7 +10,6 @@
     <string name="pref_category_communication">"Зв'язок"</string>
     <string name="pref_category_display">"Відображення"</string>
     <string name="pref_title_authorization">"Авторизація в OSM"</string>
-    <string name="pref_title_authorized_summary">"Ви успішно авторизовані"</string>
     <string name="pref_title_not_authorized_summary">"Ви не авторизовані"</string>
     <string name="pref_tilecache_size_summary">"%d МБ"</string>
     <string name="pref_tilecache_size_message">"Розмір сховища на зовнішньому носії для збереження тайлів мапи"</string>
@@ -65,8 +64,8 @@
     <string name="cannot_find_bbox">"Пошук неможливий. Збільшіть масштаб"</string>
     <string name="download_area_too_big">"Збільшіть масштаб"</string>
     <string name="confirmation_cancel_prev_download_title">"Скасувати попередній пошук та спробувати пошукати тут?"</string>
-    <string name="notification_downloading">"Пошук завдань"</string>
-    <string name="now_downloading_toast">"Пошук інших завдань"</string>
+    <string name="notification_downloading">"Пошук завдань…"</string>
+    <string name="now_downloading_toast">"Пошук інших завдань…"</string>
     <string name="turn_on_location_request">"Позиціювання вимкнене. Перейти до налаштувань, щоб увімкнути?"</string>
     <string name="no_location_permission_warning">"Позиціювання потрібне для пошуку завдань поруч з вами."</string>
     <string name="action_about">"Про StreetComplete"</string>

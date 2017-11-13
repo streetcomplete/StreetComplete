@@ -8,13 +8,13 @@ import java.util.List;
 import java.util.Set;
 
 import javax.inject.Inject;
+import javax.inject.Provider;
 
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.streetcomplete.data.QuestStatus;
 import de.westnordost.streetcomplete.data.QuestType;
-import de.westnordost.streetcomplete.data.QuestTypes;
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestDao;
@@ -26,15 +26,16 @@ public class OsmQuestUnlocker
 	private final OsmNoteQuestDao osmNoteQuestDb;
 	private final OsmQuestDao questDB;
 	private final ElementGeometryDao elementGeometryDB;
-	private final QuestTypes questTypes;
+	private final Provider<List<QuestType>> questTypesProvider;
 
-	@Inject public OsmQuestUnlocker(OsmNoteQuestDao osmNoteQuestDb, OsmQuestDao questDB,
-									ElementGeometryDao elementGeometryDB, QuestTypes questTypes)
+	@Inject public OsmQuestUnlocker(
+			OsmNoteQuestDao osmNoteQuestDb, OsmQuestDao questDB,
+			ElementGeometryDao elementGeometryDB, Provider<List<QuestType>> questTypesProvider)
 	{
 		this.osmNoteQuestDb = osmNoteQuestDb;
 		this.questDB = questDB;
 		this.elementGeometryDB = elementGeometryDB;
-		this.questTypes = questTypes;
+		this.questTypesProvider = questTypesProvider;
 	}
 
 	public List<OsmQuest> unlockNewQuests(Element element)
@@ -46,7 +47,7 @@ public class OsmQuestUnlocker
 
 		Set<QuestType> currentQuestTypes = getCurrentQuestTypes(element);
 
-		for(QuestType questType : questTypes.getQuestTypesSortedByImportance())
+		for(QuestType questType : questTypesProvider.get())
 		{
 			if(!(questType instanceof OsmElementQuestType)) continue;
 			OsmElementQuestType osmQuestType = (OsmElementQuestType)questType;
@@ -59,6 +60,10 @@ public class OsmQuestUnlocker
 
 		if(!quests.isEmpty())
 		{
+			// Before new quests are unlocked, all reverted quests need to be removed for
+			// this element so that they can be created anew as the case may be
+			questDB.deleteAllReverted(element.getType(), element.getId());
+
 			int questCount = questDB.addAll(quests);
 
 			Log.i(TAG, "Unlocked " + questCount + " new quests" +

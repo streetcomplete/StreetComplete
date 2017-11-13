@@ -1,7 +1,8 @@
 # Do not edit. Source files are in /res/country_metadata
+advisorySpeedLimitLayout: quest_maxspeed_advisory_blue
 isLivingStreetKnown: true
 isSlowZoneKnown: true
 officialLanguages: [nl]
-orchardProduces: [pear, apple, strawberry, tomatoe, chili, pepper, cherry, blueberry, grape, plum,
-  raspberry, peach]
+orchardProduces: [pear, apple, strawberry, tomatoe, chilli_pepper, sweet_pepper, cherry, blueberry,
+  grape, plum, raspberry]
 popularSports: [soccer, tennis, equestrian, basketball, field_hockey]

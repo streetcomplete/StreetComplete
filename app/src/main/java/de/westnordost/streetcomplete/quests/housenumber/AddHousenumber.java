@@ -120,7 +120,16 @@ public class AddHousenumber implements OsmElementQuestType
 	@Override public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
 	{
 		String housenumber = answer.getString(AddHousenumberForm.HOUSENUMBER);
-		changes.add("addr:housenumber", housenumber);
+		String housename = answer.getString(AddHousenumberForm.HOUSENAME);
+
+		if(housenumber != null)
+		{
+			changes.add("addr:housenumber", housenumber);
+		}
+		if(housename != null)
+		{
+			changes.add("addr:housename", housename);
+		}
 	}
 
 	@Override public boolean appliesTo(Element element)
@@ -129,10 +138,10 @@ public class AddHousenumber implements OsmElementQuestType
 		   element alone (see download()), an Overpass query would need to be made to find this out.
 		   This is too heavy-weight for this method so it always returns false. */
 
-		/* The implications of this are that AddHousenumber quests will never be created directly
-		*  as consequence of solving another quest and also after reverting a house number input,
-		*  the quest will not immediately pop up again. Instead, they are downloaded well after an
-		*  element became fit for this quest. */
+		/* The implications of this are that this quest will never be created directly
+		   as consequence of solving another quest and also after reverting an input,
+		   the quest will not immediately pop up again. Instead, they are downloaded well after an
+		   element became fit for this quest. */
 		return false;
 	}
 
@@ -141,4 +150,15 @@ public class AddHousenumber implements OsmElementQuestType
 	@Override public int getIcon() { return R.drawable.ic_quest_housenumber; }
 	@Override public int getTitle(Map<String,String> tags) { return getTitle(); }
 	@Override public int getTitle() { return R.string.quest_address_title; }
+	@Override public boolean isDefaultEnabled() { return true; }
+
+	@Override public String[] getDisabledForCountries()
+	{
+		return new String[]{
+				"NL", // https://forum.openstreetmap.org/viewtopic.php?id=60356
+				"DK", // https://lists.openstreetmap.org/pipermail/talk-dk/2017-November/004898.html
+				"NO", // https://forum.openstreetmap.org/viewtopic.php?id=60357
+				"CZ"  // https://lists.openstreetmap.org/pipermail/talk-cz/2017-November/017901.html
+		};
+	}
 }

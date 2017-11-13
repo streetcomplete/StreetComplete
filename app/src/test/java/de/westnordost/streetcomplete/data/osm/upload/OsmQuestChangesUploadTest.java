@@ -286,6 +286,8 @@ public class OsmQuestChangesUploadTest extends TestCase
 		@Override public int getTitle() { return 0; }
 		@Override public int getTitle(Map<String,String> tags) { return 0; }
 		@Override public boolean appliesTo(Element element) { return false; }
+		@Override public boolean isDefaultEnabled() { return true; }
+		@Override public String[] getDisabledForCountries()	{ return null; }
 	}
 
 	private static OsmQuest createAnsweredQuestWithAppliableChange()

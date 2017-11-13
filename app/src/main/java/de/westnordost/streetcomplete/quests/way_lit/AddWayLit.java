@@ -23,7 +23,7 @@ public class AddWayLit extends SimpleOverpassQuestType
 			"primary", "secondary", "tertiary", "unclassified", "service",
 	};
 
-	private static final String[] LIT_WAYS = { "footway", "cycleway" };
+	private static final String[] LIT_WAYS = { "footway", "cycleway", "steps" };
 
 	@Inject public AddWayLit(OverpassMapDataDao overpassServer) { super(overpassServer); }
 
@@ -39,16 +39,20 @@ public class AddWayLit extends SimpleOverpassQuestType
 
 		return "ways with " +
 				"(" +
-				" highway ~ " + TextUtils.join("|", LIT_RESIDENTIAL_ROADS) +
-				" or" +
-				" highway ~ " + TextUtils.join("|", LIT_NON_RESIDENTIAL_ROADS) +
-				" and ( sidewalk ~ both|left|right|yes|separate or source:maxspeed ~ .+:urban )" +
-				" or" +
-				" highway ~ " + TextUtils.join("|", LIT_WAYS) +
-				" or" +
-				" highway = path and (foot = designated or bicycle = designated)" +
+				"  highway ~ " + TextUtils.join("|", LIT_RESIDENTIAL_ROADS) +
+				"  or" +
+				"  highway ~ " + TextUtils.join("|", LIT_NON_RESIDENTIAL_ROADS) + " and" +
+				"  (" +
+				"    sidewalk ~ both|left|right|yes|separate" +
+				"    or source:maxspeed ~ .+:urban or maxspeed:type ~ .+:urban or zone:maxspeed ~ .+:urban" +
+				"  )" +
+				"  or" +
+				"  highway ~ " + TextUtils.join("|", LIT_WAYS) +
+				"  or" +
+				"  highway = path and (foot = designated or bicycle = designated)" +
 				")" +
-				" and !lit and access != private";
+				" and !lit" +
+				" and (access !~ private|no or (foot and foot !~ private|no))"; // not private roads
 	}
 
 	public AbstractQuestAnswerFragment createForm()

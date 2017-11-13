@@ -29,20 +29,20 @@ public class RangePickerDialog extends AlertDialog implements DialogInterface.On
 		this.listener = listener;
 
 		final LayoutInflater inflater = LayoutInflater.from(context);
-		final View view = inflater.inflate(R.layout.range_picker_dialog, null);
+		final View view = inflater.inflate(R.layout.dialog_range_picker, null);
 		setView(view);
 		setTitle(title);
 		setButton(BUTTON_POSITIVE, context.getString(android.R.string.ok), this);
 		setButton(BUTTON_NEGATIVE, context.getString(android.R.string.cancel), this);
 
-		startPicker = (NumberPicker) view.findViewById(R.id.number_picker_start);
+		startPicker = view.findViewById(R.id.number_picker_start);
 		startPicker.setWrapSelectorWheel(false);
 		startPicker.setDisplayedValues(values);
 		startPicker.setMinValue(0);
 		startPicker.setMaxValue(values.length - 1);
 		startPicker.setValue(startIndex != null ? startIndex : 0);
 
-		endPicker = (NumberPicker) view.findViewById(R.id.number_picker_end);
+		endPicker = view.findViewById(R.id.number_picker_end);
 		endPicker.setWrapSelectorWheel(false);
 		endPicker.setDisplayedValues(values);
 		endPicker.setMinValue(0);

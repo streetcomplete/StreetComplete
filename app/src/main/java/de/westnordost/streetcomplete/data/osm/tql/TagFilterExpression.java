@@ -50,11 +50,7 @@ public class TagFilterExpression
 		StringBuilder oql = new StringBuilder();
 		if(bbox != null)
 		{
-			oql.append(
-					"[bbox:" +
-							bbox.getMinLatitude() + "," + bbox.getMinLongitude() + "," +
-							bbox.getMaxLatitude() + "," + bbox.getMaxLongitude() +
-					"];");
+			oql.append(OverpassQLUtil.getOverpassBBox(bbox));
 		}
 
 		BooleanExpression<OQLExpressionValue> expandedExpression = createExpandedExpression();

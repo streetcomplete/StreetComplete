@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+
+    <ImageButton
+        android:id="@+id/buttonTakeImage"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:src="@drawable/ic_add_photo_black_24dp"
+        android:contentDescription="@string/quest_leave_new_note_photo"
+        android:layout_centerVertical="true"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/gridView"
+        android:layout_toEndOf="@id/buttonTakeImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"/>
+
+</RelativeLayout>

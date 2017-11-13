@@ -12,6 +12,7 @@ import java.util.Set;
 
 import javax.inject.Inject;
 
+import de.westnordost.streetcomplete.ApplicationConstants;
 import de.westnordost.streetcomplete.data.QuestGroup;
 import de.westnordost.streetcomplete.data.QuestStatus;
 import de.westnordost.streetcomplete.Prefs;
@@ -102,7 +103,7 @@ public class OsmNotesDownload
 				if(it.next().getId() == null) it.remove();
 			}
 
-			listener.onQuestsCreated(quests, QuestGroup.OSM_NOTE);
+			if(!quests.isEmpty()) listener.onQuestsCreated(quests, QuestGroup.OSM_NOTE);
 			/* we do not call listener.onNoteQuestRemoved for hiddenQuests here, because on
 			*  replacing hiddenQuests into DB, they get new quest IDs. As far as the DB is concerned,
 			*  hidden note quests are always new quests which are hidden.
@@ -151,7 +152,7 @@ public class OsmNotesDownload
 	{
 		/* hide a note if he already contributed to it. This can also happen from outside
 		   this application, which is why we need to overwrite its quest status. */
-		return containsCommentFromUser(userId, note);
+		return containsCommentFromUser(userId, note) || userProbablyCreatedNoteInApp(userId, note);
 	}
 
 	// the difference to hidden is that is that invisible quests may turn visible again, dependent
@@ -173,9 +174,23 @@ public class OsmNotesDownload
 
 		for(NoteComment comment : note.comments)
 		{
-			if(comment.user != null && comment.user.id == userId)
-				return true;
+			boolean isComment = comment.action == NoteComment.Action.COMMENTED;
+			if(isFromUser(userId, comment) && isComment) return true;
 		}
 		return false;
+	}
+
+	private boolean userProbablyCreatedNoteInApp(Long userId, Note note)
+	{
+		if(userId == null) return false;
+
+		NoteComment firstComment = note.comments.get(0);
+		boolean isViaApp = firstComment.text.contains("via " + ApplicationConstants.NAME);
+		return isFromUser(userId, firstComment) && isViaApp;
+	}
+
+	private boolean isFromUser(long userId, NoteComment comment)
+	{
+		return comment.user != null && comment.user.id == userId;
 	}
 }

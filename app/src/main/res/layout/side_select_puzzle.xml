@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:id="@+id/rotateContainer"
+        android:background="#ddd"
+        android:layout_width="280dp"
+        android:layout_height="280dp"
+        android:layout_gravity="center"
+        >
+
+        <View
+            android:id="@+id/strut"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_centerHorizontal="true"/>
+
+        <RelativeLayout
+            android:id="@+id/leftSide"
+            style="android:attr/selectableItemBackground"
+            android:layout_alignParentLeft="true"
+            android:layout_toLeftOf="@+id/strut"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:ignore="RtlHardcoded">
+
+            <ImageView
+                android:id="@+id/leftSideImage"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:scaleType="fitXY"
+                tools:ignore="RtlHardcoded" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rightSide"
+            style="android:attr/selectableItemBackground"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@+id/strut"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:ignore="RtlHardcoded">
+
+            <ImageView
+                android:id="@+id/rightSideImage"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:scaleType="fitXY"
+                tools:ignore="RtlHardcoded" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</merge>

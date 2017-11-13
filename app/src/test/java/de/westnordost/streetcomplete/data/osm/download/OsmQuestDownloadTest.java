@@ -14,12 +14,14 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.FutureTask;
 
 import de.westnordost.osmapi.map.data.OsmLatLon;
 import de.westnordost.osmapi.map.data.OsmNode;
 import de.westnordost.streetcomplete.data.QuestGroup;
 import de.westnordost.streetcomplete.data.QuestStatus;
 import de.westnordost.streetcomplete.data.VisibleQuestListener;
+import de.westnordost.streetcomplete.data.meta.CountryBoundaries;
 import de.westnordost.streetcomplete.data.osm.ElementGeometry;
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.OsmQuest;
@@ -46,12 +48,14 @@ public class OsmQuestDownloadTest extends TestCase
 	private ElementGeometryDao geometryDb;
 	private MergedElementDao elementDb;
 	private OsmQuestDao osmQuestDao;
+	private FutureTask<CountryBoundaries> countryBoundariesFuture;
 
 	@Override public void setUp()
 	{
 		geometryDb = mock(ElementGeometryDao.class);
 		elementDb = mock(MergedElementDao.class);
 		osmQuestDao = mock(OsmQuestDao.class);
+		countryBoundariesFuture = mock(FutureTask.class);
 	}
 
 	public void testIgnoreBlacklistedPositionsAndInvalidGeometry()
@@ -70,7 +74,7 @@ public class OsmQuestDownloadTest extends TestCase
 
 		setUpOsmQuestDaoMockWithNoPreviousElements();
 
-		OsmQuestDownload dl = new OsmQuestDownload(geometryDb, elementDb, osmQuestDao);
+		OsmQuestDownload dl = new OsmQuestDownload(geometryDb, elementDb, osmQuestDao, countryBoundariesFuture);
 
 		VisibleQuestListener listener = mock(VisibleQuestListener.class);
 		dl.setQuestListener(listener);
@@ -113,7 +117,7 @@ public class OsmQuestDownloadTest extends TestCase
 			}
 		}).when(osmQuestDao).deleteAll(any(Collection.class));
 
-		OsmQuestDownload dl = new OsmQuestDownload(geometryDb, elementDb, osmQuestDao);
+		OsmQuestDownload dl = new OsmQuestDownload(geometryDb, elementDb, osmQuestDao, countryBoundariesFuture);
 
 		VisibleQuestListener listener = mock(VisibleQuestListener.class);
 		dl.setQuestListener(listener);
@@ -156,6 +160,9 @@ public class OsmQuestDownloadTest extends TestCase
 		@Override public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes) {}
 		@Override public String getCommitMessage() { return null; }
 		@Override public boolean appliesTo(Element element) { return false; }
+		@Override public boolean isDefaultEnabled() { return true; }
+		@Override public String[] getDisabledForCountries()	{ return null; }
+
 		@Override public boolean download(BoundingBox bbox, MapDataWithGeometryHandler handler)
 		{
 			for (ElementWithGeometry e : list)

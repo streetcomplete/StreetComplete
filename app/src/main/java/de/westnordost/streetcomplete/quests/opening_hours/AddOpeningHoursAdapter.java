@@ -224,7 +224,7 @@ public class AddOpeningHoursAdapter extends RecyclerView.Adapter
 		public MonthsViewHolder(View itemView)
 		{
 			super(itemView);
-			monthsText = (TextView) itemView.findViewById(R.id.months_from_to);
+			monthsText = itemView.findViewById(R.id.months_from_to);
 			delete = itemView.findViewById(R.id.delete);
 			delete.setOnClickListener(new View.OnClickListener()
 			{
@@ -316,8 +316,8 @@ public class AddOpeningHoursAdapter extends RecyclerView.Adapter
 		public WeekdayViewHolder(View itemView)
 		{
 			super(itemView);
-			weekdaysText = (TextView) itemView.findViewById(R.id.weekday_from_to);
-			hoursText = (TextView) itemView.findViewById(R.id.hours_from_to);
+			weekdaysText = itemView.findViewById(R.id.weekday_from_to);
+			hoursText = itemView.findViewById(R.id.hours_from_to);
 			delete = itemView.findViewById(R.id.delete);
 			delete.setOnClickListener(new View.OnClickListener()
 			{

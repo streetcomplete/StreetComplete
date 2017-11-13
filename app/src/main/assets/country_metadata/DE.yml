@@ -1,8 +1,9 @@
 # Do not edit. Source files are in /res/country_metadata
+isAdvisorySpeedLimitKnown: false
 isLivingStreetKnown: true
 isSlowZoneKnown: true
 officialLanguages: [de]
 orchardProduces: [grape, apple, hop, strawberry, walnut, plum, cherry, blueberry, pear, raspberry,
-  tomatoe, chili, pepper, peach, apricot, kiwi]
+  tomatoe, chilli_pepper, sweet_pepper, peach, apricot]
 popularSports: [soccer, tennis, equestrian]
 regularShoppingDays: 5

@@ -14,16 +14,17 @@ import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 
 public class AddMaxSpeed extends SimpleOverpassQuestType
 {
+	private static final String MAXSPEED_TYPE = "maxspeed:type";
+
 	@Inject public AddMaxSpeed(OverpassMapDataDao overpassServer) { super(overpassServer); }
 
 	@Override protected String getTagFilters()
 	{
 		return "ways with highway ~ " +
-		       "motorway|trunk|primary|secondary|tertiary|unclassified|residential and " +
-		       "!maxspeed and !source:maxspeed " +
-		       " and !maxspeed:forward and !maxspeed:backward " +
-		       // other tags that are used for basically the same thing as source:maxspeed
-		       " and !zone:maxspeed and !maxspeed:type and access != private";
+		       "motorway|trunk|primary|secondary|tertiary|unclassified|residential" +
+		       " and !maxspeed and !maxspeed:forward and !maxspeed:backward" +
+		       " and !source:maxspeed and !zone:maxspeed and !maxspeed:type" + // implicit speed limits
+		       " and (access !~ private|no or (foot and foot !~ private|no))"; // no private roads
 	}
 
 	@Override public AbstractQuestAnswerFragment createForm()
@@ -34,13 +35,19 @@ public class AddMaxSpeed extends SimpleOverpassQuestType
 	@Override public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
 	{
 		boolean isLivingStreet = answer.getBoolean(AddMaxSpeedForm.LIVING_STREET);
+		String maxspeed = answer.getString(AddMaxSpeedForm.MAX_SPEED);
+		String advisory = answer.getString(AddMaxSpeedForm.ADVISORY_SPEED);
 		if(isLivingStreet)
 		{
 			changes.modify("highway","living_street");
 		}
+		else if(advisory != null)
+		{
+			changes.add("maxspeed:advisory", advisory);
+			changes.add(MAXSPEED_TYPE+":advisory", "sign");
+		}
 		else
 		{
-			String maxspeed = answer.getString(AddMaxSpeedForm.MAX_SPEED);
 			if (maxspeed != null)
 			{
 				changes.add("maxspeed", maxspeed);
@@ -49,11 +56,11 @@ public class AddMaxSpeed extends SimpleOverpassQuestType
 			String roadtype = answer.getString(AddMaxSpeedForm.MAX_SPEED_IMPLICIT_ROADTYPE);
 			if (roadtype != null && country != null)
 			{
-				changes.add("source:maxspeed", country + ":" + roadtype);
+				changes.add(MAXSPEED_TYPE, country + ":" + roadtype);
 			}
 			else if (maxspeed != null)
 			{
-				changes.add("source:maxspeed", "sign");
+				changes.add(MAXSPEED_TYPE, "sign");
 			}
 		}
 	}

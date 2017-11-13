@@ -13,18 +13,24 @@ public class CountryInfo implements Serializable, Cloneable
 	// this value is not defined in the yaml file but it is the file name!
 	String countryCode;
 
+	// generic properties
 	String speedUnit;
 	List<String> popularSports;
 	String firstDayOfWorkweek;
 	Integer regularShoppingDays;
-	String maxspeedLayout;
 	String additionalValidHousenumberRegex;
 	List<String> officialLanguages;
 	List<String> additionalStreetsignLanguages;
 	Boolean isSlowZoneKnown;
 	Boolean isLivingStreetKnown;
-	String livingStreetSign;
 	List<String> orchardProduces;
+	Boolean isAdvisorySpeedLimitKnown;
+	Boolean isLeftHandTraffic;
+
+	// streetcomplete specific (layout files etc)
+	String maxspeedLayout;
+	String livingStreetSign;
+	String advisorySpeedLimitLayout;
 
 	public String getSpeedUnit()
 	{
@@ -50,6 +56,11 @@ public class CountryInfo implements Serializable, Cloneable
 	public String getMaxspeedLayout()
 	{
 		return maxspeedLayout;
+	}
+
+	public String getAdvisorySpeedLimitLayout()
+	{
+		return advisorySpeedLimitLayout;
 	}
 
 	public boolean isSlowZoneKnown()
@@ -103,5 +114,15 @@ public class CountryInfo implements Serializable, Cloneable
 	{
 		if(orchardProduces == null) return new ArrayList<>(1);
 		return Collections.unmodifiableList(orchardProduces);
+	}
+
+	public boolean isAdvisorySpeedLimitKnown()
+	{
+		return isAdvisorySpeedLimitKnown;
+	}
+
+	public boolean isLeftHandTraffic()
+	{
+		return isLeftHandTraffic;
 	}
 }

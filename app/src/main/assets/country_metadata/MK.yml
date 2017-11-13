@@ -2,5 +2,5 @@
 additionalStreetsignLanguages: [en]
 isSlowZoneKnown: true
 officialLanguages: [mk, sq]
-orchardProduces: [grape, apple, plum, walnut, olive, tomatoe, pear, peach, cherry, strawberry, chili,
-  pepper, apricot, almond, chestnut, cranberry]
+orchardProduces: [grape, apple, plum, walnut, olive, tomatoe, pear, peach, cherry, strawberry, chilli_pepper,
+  sweet_pepper, apricot, almond, chestnut, cranberry]

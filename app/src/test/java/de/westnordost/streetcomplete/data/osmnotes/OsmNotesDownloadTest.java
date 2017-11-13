@@ -55,10 +55,10 @@ public class OsmNotesDownloadTest extends TestCase
 		List<OsmNoteQuest> quests = new ArrayList<>();
 		Note note1 = createANote();
 		note1.id = 4L;
-		quests.add(new OsmNoteQuest(12L, note1, QuestStatus.NEW, null, new Date(), new OsmNoteQuestType()));
+		quests.add(new OsmNoteQuest(12L, note1, QuestStatus.NEW, null, new Date(), new OsmNoteQuestType(), null));
 		Note note2 = createANote();
 		note2.id = 5L;
-		quests.add(new OsmNoteQuest(13L, note2, QuestStatus.NEW, null, new Date(), new OsmNoteQuestType()));
+		quests.add(new OsmNoteQuest(13L, note2, QuestStatus.NEW, null, new Date(), new OsmNoteQuestType(), null));
 		when(noteQuestDB.getAll(any(BoundingBox.class), any(QuestStatus.class)))
 				.thenReturn(quests);
 

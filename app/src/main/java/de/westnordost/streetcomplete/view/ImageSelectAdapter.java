@@ -20,7 +20,7 @@ public class ImageSelectAdapter extends RecyclerView.Adapter<ImageSelectAdapter.
 	private ArrayList<ImageSelectAdapter.Item> items;
 	private Set<Integer> selectedIndices;
 	private int maxSelectableIndices;
-	private int cellLayoutId = R.layout.labeled_image_select_cell;
+	private int cellLayoutId = R.layout.cell_labeled_image_select;
 
 	public interface OnItemSelectionListener
 	{
@@ -166,9 +166,9 @@ public class ImageSelectAdapter extends RecyclerView.Adapter<ImageSelectAdapter.
 		public ViewHolder(View v)
 		{
 			super(v);
-			imageView = (ImageView) itemView.findViewById(R.id.imageView);
+			imageView = itemView.findViewById(R.id.imageView);
 			imageView.setOnClickListener(this);
-			textView = (TextView) itemView.findViewById(R.id.textView);
+			textView = itemView.findViewById(R.id.textView);
 		}
 
 		@Override public void onClick(View v)

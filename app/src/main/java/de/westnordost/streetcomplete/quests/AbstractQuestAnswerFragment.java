@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.quests;
 
 import android.app.Activity;
-import android.app.DialogFragment;
-import android.app.Fragment;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.Fragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.Configuration;
@@ -38,7 +38,7 @@ import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.QuestGroup;
 import de.westnordost.streetcomplete.data.QuestType;
-import de.westnordost.streetcomplete.data.QuestTypes;
+import de.westnordost.streetcomplete.data.QuestTypeRegistry;
 import de.westnordost.streetcomplete.data.meta.CountryInfo;
 import de.westnordost.streetcomplete.data.meta.CountryInfos;
 import de.westnordost.streetcomplete.data.osm.ElementGeometry;
@@ -51,10 +51,12 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 	public static final String
 			ARG_ELEMENT = "element",
 			ARG_GEOMETRY = "geometry",
-			ARG_QUESTTYPE = "quest_type";
+			ARG_QUESTTYPE = "quest_type",
+			ARG_MAP_ROTATION = "map_rotation",
+			ARG_MAP_TILT = "map_tilt";
 
 	@Inject CountryInfos countryInfos;
-	@Inject QuestTypes questTypes;
+	@Inject QuestTypeRegistry questTypeRegistry;
 
 	private TextView title;
 	private ViewGroup content;
@@ -73,6 +75,8 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 	private QuestType questType;
 	private CountryInfo countryInfo;
 
+	private float initialMapRotation, initialMapTilt;
+
 	private List<OtherAnswer> otherAnswers;
 
 	public AbstractQuestAnswerFragment()
@@ -89,12 +93,14 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 	{
 		osmElement = (OsmElement) getArguments().getSerializable(ARG_ELEMENT);
 		elementGeometry = (ElementGeometry) getArguments().getSerializable(ARG_GEOMETRY);
-		questType = questTypes.forName(getArguments().getString(ARG_QUESTTYPE));
+		questType = questTypeRegistry.getByName(getArguments().getString(ARG_QUESTTYPE));
 		countryInfo = null;
+		initialMapRotation = getArguments().getFloat(ARG_MAP_ROTATION);
+		initialMapTilt = getArguments().getFloat(ARG_MAP_TILT);
 
-		View view = inflater.inflate(R.layout.quest_answer_fragment, container, false);
+		View view = inflater.inflate(R.layout.fragment_quest_answer, container, false);
 
-		bottomSheet = (LinearLayout) view.findViewById(R.id.bottomSheet);
+		bottomSheet = view.findViewById(R.id.bottomSheet);
 		bottomSheet.addOnLayoutChangeListener(new View.OnLayoutChangeListener()
 		{
 			@Override
@@ -113,13 +119,13 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 			}
 		});
 
-		title = (TextView) view.findViewById(R.id.title);
+		title = view.findViewById(R.id.title);
 		title.setText(getResources().getString(getQuestTitleResId(), getElementName()));
 
-		buttonPanel = (LinearLayout) view.findViewById(R.id.buttonPanel);
-		buttonOtherAnswers = (Button) buttonPanel.findViewById(R.id.buttonOtherAnswers);
+		buttonPanel = view.findViewById(R.id.buttonPanel);
+		buttonOtherAnswers = buttonPanel.findViewById(R.id.buttonOtherAnswers);
 
-		buttonClose = (ImageButton) view.findViewById(R.id.close_btn);
+		buttonClose = view.findViewById(R.id.close_btn);
 		buttonClose.setOnClickListener(new View.OnClickListener()
 		{
 			@Override public void onClick(View v)
@@ -138,6 +144,8 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 			}
 		});
 
+		if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) BottomSheetBehavior.from(bottomSheet).setState(BottomSheetBehavior.STATE_EXPANDED);
+
 		addOtherAnswer(R.string.quest_generic_answer_notApplicable, new Runnable()
 		{
 			@Override public void run()
@@ -146,7 +154,7 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 			}
 		});
 
-		content = (ViewGroup) view.findViewById(R.id.content);
+		content = view.findViewById(R.id.content);
 
 		return view;
 	}
@@ -193,6 +201,8 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 				}
 			});
 		}
+
+		onMapOrientation(initialMapRotation, initialMapTilt);
 	}
 
 	private void updateCloseButtonVisibility()
@@ -236,7 +246,7 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 		String questTitle = getEnglishResources().getString(getQuestTitleResId(), getElementName());
 		leaveNoteArgs.putString(LeaveNoteDialog.ARG_QUEST_TITLE, questTitle);
 		leaveNote.setArguments(leaveNoteArgs);
-		leaveNote.show(getFragmentManager(), null);
+		leaveNote.show(getActivity().getSupportFragmentManager(), null);
 	}
 
 	private Resources getEnglishResources()
@@ -253,6 +263,7 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 	{
 		if (!hasChanges())
 		{
+			onDiscard();
 			confirmed.run();
 		}
 		else
@@ -262,6 +273,7 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 				@Override
 				public void onClick(DialogInterface dialog, int which)
 				{
+					onDiscard();
 					confirmed.run();
 				}
 			};
@@ -272,6 +284,8 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 					.show();
 		}
 	}
+
+	protected void onDiscard() {}
 
 	protected final void applyImmediateAnswer(Bundle data)
 	{
@@ -299,6 +313,10 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 
 	protected final View setContentView(int resourceId)
 	{
+		if(content.getChildCount() > 0)
+		{
+			content.removeAllViews();
+		}
 		return getActivity().getLayoutInflater().inflate(resourceId, content);
 	}
 
@@ -345,6 +363,11 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 		oa.titleResourceId = titleResourceId;
 		oa.action = action;
 		otherAnswers.add(oa);
+	}
+
+	public void onMapOrientation(float rotation, float tilt)
+	{
+		// default empty implementation
 	}
 
 	private class OtherAnswer

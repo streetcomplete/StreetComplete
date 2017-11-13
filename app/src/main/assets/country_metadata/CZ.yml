@@ -1,8 +1,10 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalValidHousenumberRegex: ev\.\p{N}{1,4}
+advisorySpeedLimitLayout: quest_maxspeed_advisory_blue
+isAdvisorySpeedLimitKnown: true
 isLivingStreetKnown: true
 isSlowZoneKnown: true
 officialLanguages: [cs]
-orchardProduces: [grape, apple, hop, plum, chili, pepper, apricot, cherry, pear, peach, walnut, strawberry,
-  tomatoe, raspberry]
+orchardProduces: [grape, apple, hop, plum, chilli_pepper, sweet_pepper, apricot, cherry, pear, peach,
+  walnut, strawberry, tomatoe, raspberry]
 popularSports: [soccer, tennis, volleyball, beachvolleyball, ice_hockey, handball]

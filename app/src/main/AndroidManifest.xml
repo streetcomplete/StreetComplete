@@ -1,19 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="de.westnordost.streetcomplete"
+          xmlns:tools="http://schemas.android.com/tools"
+          package="de.westnordost.streetcomplete"
     >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" android:maxSdkVersion="20" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="18"/>
+
+    <!-- evernote lib adds this permission but we do not use that feature-->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" tools:node="remove" />
+
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
 
     <application
-        android:name="de.westnordost.streetcomplete.StreetCompleteApplication"
+        android:name=".StreetCompleteApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme.NoActionBar" >
+        android:theme="@style/AppTheme.NoActionBar"
+        android:supportsRtl="true">
         <activity
             android:windowSoftInputMode="adjustResize"
             android:name="de.westnordost.streetcomplete.MainActivity"
@@ -40,15 +48,18 @@
                 <data android:scheme="streetcomplete" android:host="oauth" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".about.AboutActivity"
-            android:label="@string/action_about"
-            android:parentActivityName=".MainActivity"/>
-        <service android:name="de.westnordost.streetcomplete.data.download.QuestDownloadService" />
-        <service android:name="de.westnordost.streetcomplete.data.upload.QuestChangesUploadService" />
-
-        <receiver android:name="de.westnordost.streetcomplete.data.osm.upload.ChangesetAutoCloserReceiver" />
-        <service android:name="de.westnordost.streetcomplete.data.osm.upload.ChangesetAutoCloserService" />
+        <activity android:name=".FragmentContainerActivity"/>
+        <service android:name=".data.download.QuestDownloadService" />
+        <service android:name=".data.upload.QuestChangesUploadService" />
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="de.westnordost.streetcomplete.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
     </application>
 
 </manifest>

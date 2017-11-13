@@ -23,32 +23,43 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 {
 	public static final String
 			MAX_SPEED = "maxspeed",
+			ADVISORY_SPEED = "advisory_speed",
 			MAX_SPEED_IMPLICIT_COUNTRY = "maxspeed_country",
 			MAX_SPEED_IMPLICIT_ROADTYPE = "maxspeed_roadtype",
 			LIVING_STREET = "living_street";
+
+	private static final String	IS_ADVISORY_SPEED_LIMIT = "is_advisory_speed_limit";
 
 	private static final Collection<String>
 			URBAN_OR_RURAL_ROADS = Arrays.asList("primary","secondary","tertiary","unclassified",
 					"primary_link","secondary_link","tertiary_link","road"),
 			ROADS_WITH_DEFINITE_SPEED_LIMIT = Arrays.asList("trunk","motorway","living_street"),
-			URBAN_OR_SLOWZONE_ROADS = Arrays.asList("residential","unclassified"),
+			POSSIBLY_SLOWZONE_ROADS = Arrays.asList("residential","unclassified"),
 			MAYBE_LIVING_STREET = Arrays.asList("residential");
 
 	private EditText speedInput;
 	private CheckBox zoneCheckbox;
+
+	private boolean isAdvisorySpeedLimit;
 
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
 									   Bundle savedInstanceState)
 	{
 		View view = super.onCreateView(inflater, container, savedInstanceState);
 
-		View contentView = setContentView(getMaxSpeedLayoutResourceId());
-		speedInput = (EditText) contentView.findViewById(R.id.maxSpeedInput);
-
-		View zoneContainer = contentView.findViewById(R.id.zoneContainer);
-		if(zoneContainer != null)
+		isAdvisorySpeedLimit = false;
+		if(savedInstanceState != null)
 		{
-			initZoneCheckbox(zoneContainer);
+			isAdvisorySpeedLimit = savedInstanceState.getBoolean(IS_ADVISORY_SPEED_LIMIT);
+		}
+
+		if(isAdvisorySpeedLimit)
+		{
+			setStreetSignLayout(getAdvisorySpeedLimitLayoutResourceId());
+		}
+		else
+		{
+			setStreetSignLayout(getMaxSpeedLayoutResourceId());
 		}
 
 		addOtherAnswers();
@@ -56,13 +67,32 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 		return view;
 	}
 
+	@Override public void onSaveInstanceState(Bundle outState)
+	{
+		super.onSaveInstanceState(outState);
+		outState.putBoolean(IS_ADVISORY_SPEED_LIMIT, isAdvisorySpeedLimit);
+	}
+
+	private void setStreetSignLayout(int resourceId)
+	{
+		View contentView = setContentView(resourceId);
+
+		speedInput = contentView.findViewById(R.id.maxSpeedInput);
+
+		View zoneContainer = contentView.findViewById(R.id.zoneContainer);
+		if(zoneContainer != null)
+		{
+			initZoneCheckbox(zoneContainer);
+		}
+	}
+
 	private void initZoneCheckbox(View zoneContainer)
 	{
-		boolean isResidential = URBAN_OR_SLOWZONE_ROADS.contains(getOsmElement().getTags().get("highway"));
+		boolean isResidential = POSSIBLY_SLOWZONE_ROADS.contains(getOsmElement().getTags().get("highway"));
 		boolean isSlowZoneKnown = getCountryInfo().isSlowZoneKnown();
 		zoneContainer.setVisibility(isSlowZoneKnown && isResidential ? View.VISIBLE : View.GONE);
 
-		zoneCheckbox = (CheckBox) zoneContainer.findViewById(R.id.zoneCheckbox);
+		zoneCheckbox = zoneContainer.findViewById(R.id.zoneCheckbox);
 		zoneCheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
 		{
 			@Override public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
@@ -95,6 +125,12 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 		return R.layout.quest_maxspeed;
 	}
 
+	private int getAdvisorySpeedLimitLayoutResourceId()
+	{
+		String layout = getCountryInfo().getAdvisorySpeedLimitLayout();
+		return getResources().getIdentifier(layout,"layout", getActivity().getPackageName());
+	}
+
 	private void addOtherAnswers()
 	{
 		addOtherAnswer(R.string.quest_maxspeed_answer_noSign, new Runnable()
@@ -108,11 +144,11 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 					{
 						@Override public void run()
 						{
-							askUrbanOrRural();
+							determineImplicitMaxspeedType();
 						}
 					});
 				}
-				else if(URBAN_OR_SLOWZONE_ROADS.contains(highwayTag))
+				else if(POSSIBLY_SLOWZONE_ROADS.contains(highwayTag))
 				{
 					if(getCountryInfo().isSlowZoneKnown())
 					{
@@ -120,7 +156,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 						{
 							@Override public void run()
 							{
-								applyNoSignAnswer("urban");
+								determineImplicitMaxspeedType();
 							}
 						});
 					}
@@ -130,7 +166,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 						{
 							@Override public void run()
 							{
-								applyNoSignAnswer("urban");
+								determineImplicitMaxspeedType();
 							}
 						});
 					}
@@ -164,13 +200,37 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 				}
 			});
 		}
+
+		if(getCountryInfo().isAdvisorySpeedLimitKnown())
+		{
+			addOtherAnswer(R.string.quest_maxspeed_answer_advisory_speed_limit, new Runnable()
+			{
+				@Override public void run()
+				{
+					isAdvisorySpeedLimit = true;
+					setStreetSignLayout(getAdvisorySpeedLimitLayoutResourceId());
+				}
+			});
+		}
+	}
+
+	private void determineImplicitMaxspeedType()
+	{
+		if(getCountryInfo().getCountryCode().equals("GB"))
+		{
+			askSingleOrDualCarriageway();
+		}
+		else
+		{
+			askUrbanOrRural();
+		}
 	}
 
 	private void confirmLivingStreet(final Runnable callback)
 	{
 		View view = LayoutInflater.from(getActivity()).inflate(R.layout.quest_maxspeed_living_street_confirmation, null, false);
 
-		ImageView img = (ImageView) view.findViewById(R.id.imgLivingStreet);
+		ImageView img = view.findViewById(R.id.imgLivingStreet);
 		int drawableId = getResources().getIdentifier(
 				getCountryInfo().getLivingStreetSign(),
 				"drawable",
@@ -196,9 +256,13 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 	{
 		View view = LayoutInflater.from(getActivity()).inflate(R.layout.quest_maxspeed_no_sign_no_slow_zone_confirmation, null, false);
 
-		ImageView imgSlowZone = (ImageView) view.findViewById(R.id.imgSlowZone);
-		Drawable slowZoneDrawable = ((ImageView) getView().findViewById(R.id.zoneImg)).getDrawable();
-		imgSlowZone.setImageDrawable(slowZoneDrawable);
+		ImageView imgSlowZone = view.findViewById(R.id.imgSlowZone);
+		ImageView mainLayoutImgSlowZone = getView() != null ? (ImageView) getView().findViewById(R.id.zoneImg) : null;
+		if(mainLayoutImgSlowZone != null)
+		{
+			Drawable slowZoneDrawable = mainLayoutImgSlowZone.getDrawable();
+			imgSlowZone.setImageDrawable(slowZoneDrawable);
+		}
 
 		new AlertDialogBuilder(getActivity())
 				.setView(view)
@@ -234,6 +298,29 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 					public void onClick(DialogInterface dialog, int which)
 					{
 						applyNoSignAnswer("rural");
+					}
+				})
+				.show();
+	}
+
+	private void askSingleOrDualCarriageway()
+	{
+		new AlertDialogBuilder(getActivity())
+				.setMessage(R.string.quest_maxspeed_answer_noSign_singleOrDualCarriageway_description)
+				.setPositiveButton(R.string.quest_generic_hasFeature_yes, new DialogInterface.OnClickListener()
+				{
+					@Override
+					public void onClick(DialogInterface dialog, int which)
+					{
+						applyNoSignAnswer("nsl_dual");
+					}
+				})
+				.setNegativeButton(R.string.quest_generic_hasFeature_no, new DialogInterface.OnClickListener()
+				{
+					@Override
+					public void onClick(DialogInterface dialog, int which)
+					{
+						applyNoSignAnswer("nsl_single");
 					}
 				})
 				.show();
@@ -316,12 +403,20 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 		{
 			speedStr.append(" " + speedUnit);
 		}
-		answer.putString(MAX_SPEED, speedStr.toString());
-		if(zoneCheckbox != null && zoneCheckbox.isChecked())
+
+		if (isAdvisorySpeedLimit)
 		{
-			String countryCode = getCountryInfo().getCountryCode();
-			answer.putString(MAX_SPEED_IMPLICIT_COUNTRY, countryCode);
-			answer.putString(MAX_SPEED_IMPLICIT_ROADTYPE, "zone" + speed);
+			answer.putString(ADVISORY_SPEED, speedStr.toString());
+		}
+		else
+		{
+			answer.putString(MAX_SPEED, speedStr.toString());
+			if (zoneCheckbox != null && zoneCheckbox.isChecked())
+			{
+				String countryCode = getCountryInfo().getCountryCode();
+				answer.putString(MAX_SPEED_IMPLICIT_COUNTRY, countryCode);
+				answer.putString(MAX_SPEED_IMPLICIT_ROADTYPE, "zone" + speed);
+			}
 		}
 
 		applyFormAnswer(answer);
