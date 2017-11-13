@@ -98,3 +98,7 @@ parking_type_underground.jpg   https://pixabay.com/de/tiefgarage-einfahrt-absch%
 power_pole_wood.jpg            https://commons.wikimedia.org/wiki/File:Two_armed_power_pole_1.jpg
 power_pole_steel.jpg           https://commons.wikimedia.org/wiki/File:Steel_tube_pylon.JPG
 power_pole_concrete.jpg        https://commons.wikimedia.org/wiki/File:Concrete_utility_pole.jpg
+
+car_wash_automated.jpg    https://commons.wikimedia.org/wiki/File:Carwas.jpg
+car_wash_service.jpg      http://ctproductsandservices.com/2013/10/splash-car-wash/
+car_wash_self_service.jpg https://pixabay.com/en/wash-a-car-the-car-blue-1822415/

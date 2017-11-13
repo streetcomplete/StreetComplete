@@ -16,6 +16,7 @@ import de.westnordost.streetcomplete.quests.bike_parking_cover.AddBikeParkingCov
 import de.westnordost.streetcomplete.quests.bikeway.AddCycleway;
 import de.westnordost.streetcomplete.quests.building_levels.AddBuildingLevels;
 import de.westnordost.streetcomplete.quests.bus_stop_shelter.AddBusStopShelter;
+import de.westnordost.streetcomplete.quests.car_wash_type.AddCarWashType;
 import de.westnordost.streetcomplete.quests.crossing_type.AddCrossingType;
 import de.westnordost.streetcomplete.quests.diet_type.AddVegan;
 import de.westnordost.streetcomplete.quests.diet_type.AddVegetarian;
@@ -93,7 +94,8 @@ public class QuestModule
 				new AddBabyChangingTable(o),
 				new AddFireHydrantType(o),
 				new AddParkingType(o),
-        		new AddPowerPolesMaterial(o)
+				new AddPowerPolesMaterial(o),
+				new AddCarWashType(o),
 		};
 
 		return new QuestTypeRegistry(Arrays.asList(questTypesOrderedByImportance));

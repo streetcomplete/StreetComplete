@@ -103,7 +103,7 @@ public class ImageSelectAdapter extends RecyclerView.Adapter<ImageSelectAdapter.
 			return;
 		}
 
-		selectedIndices.add(index);
+		if(!selectedIndices.add(index)) return;
 
 		notifyItemChanged(index);
 		if(onItemSelectionListener != null)
@@ -115,7 +115,7 @@ public class ImageSelectAdapter extends RecyclerView.Adapter<ImageSelectAdapter.
 	public void deselectIndex(int index)
 	{
 		checkIndexRange(index);
-		selectedIndices.remove(index);
+		if(!selectedIndices.remove(index)) return;
 
 		notifyItemChanged(index);
 		if(onItemSelectionListener != null)
