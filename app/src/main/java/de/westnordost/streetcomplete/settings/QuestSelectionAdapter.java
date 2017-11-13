@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.settings;
 
+import android.content.DialogInterface;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
@@ -20,6 +21,7 @@ import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestType;
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderList;
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeDao;
 import de.westnordost.streetcomplete.view.ListAdapter;
+import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 
 import static android.support.v7.widget.helper.ItemTouchHelper.ACTION_STATE_DRAG;
 import static android.support.v7.widget.helper.ItemTouchHelper.ACTION_STATE_IDLE;
@@ -169,11 +171,26 @@ public class QuestSelectionAdapter extends ListAdapter<QuestSelectionAdapter.Que
 			textView.setEnabled(item.visible);
 		}
 
-		@Override public void onCheckedChanged(CompoundButton compoundButton, boolean b)
+		@Override public void onCheckedChanged(final CompoundButton compoundButton, boolean b)
 		{
 			item.visible = b;
 			updateSelectionStatus();
 			visibleQuestTypeDao.setVisible(item.questType, item.visible);
+			if(b && item.questType.getDefaultDisabledMessage() > 0)
+			{
+				new AlertDialogBuilder(compoundButton.getContext())
+						.setTitle(R.string.enable_quest_confirmation_title)
+						.setMessage(item.questType.getDefaultDisabledMessage())
+						.setPositiveButton(android.R.string.yes, null)
+						.setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener()
+						{
+							@Override public void onClick(DialogInterface dialog, int which)
+							{
+								compoundButton.setChecked(false);
+							}
+						})
+						.show();
+			}
 		}
 	}
 }

@@ -13,8 +13,7 @@ public interface QuestType
 	/** @return the title resource id used to display the quest's question */
 	int getTitle();
 
-	/** @return whether the quest is downloaded and is visible by default. Quests that are not
-	 *          enabled by default will not be shown to any user unless that user explicitly
-	 *          enabled this quest in the settings */
-	boolean isDefaultEnabled();
+	/** @return the string resource id that explains why this quest is disabled by default or zero
+	 *          if it is not disabled by default */
+	int getDefaultDisabledMessage();
 }

@@ -77,7 +77,7 @@ public class VisibleQuestTypeDao
 		Boolean isVisible = getQuestTypeVisibilities().get(questTypeName);
 		if(isVisible == null)
 		{
-			isVisible = questType.isDefaultEnabled();
+			isVisible = questType.getDefaultDisabledMessage() <= 0;
 		}
 		return isVisible;
 	}

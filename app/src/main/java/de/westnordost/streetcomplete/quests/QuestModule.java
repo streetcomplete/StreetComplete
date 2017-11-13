@@ -17,6 +17,8 @@ import de.westnordost.streetcomplete.quests.bikeway.AddCycleway;
 import de.westnordost.streetcomplete.quests.building_levels.AddBuildingLevels;
 import de.westnordost.streetcomplete.quests.bus_stop_shelter.AddBusStopShelter;
 import de.westnordost.streetcomplete.quests.crossing_type.AddCrossingType;
+import de.westnordost.streetcomplete.quests.diet_type.AddVegan;
+import de.westnordost.streetcomplete.quests.diet_type.AddVegetarian;
 import de.westnordost.streetcomplete.quests.fire_hydrant.AddFireHydrantType;
 import de.westnordost.streetcomplete.quests.parking_type.AddParkingType;
 import de.westnordost.streetcomplete.quests.powerpoles_material.AddPowerPolesMaterial;
@@ -73,7 +75,8 @@ public class QuestModule
 				new AddCrossingType(o),
 				new AddBuildingLevels(o),
 				new AddBusStopShelter(o), // at least OsmAnd
-
+				new AddVegetarian(o),
+				new AddVegan(o),
 				// ↓ 7. data useful for only a specific use case
 				new AddRoofShape(o),
 				new AddWheelChairAccessPublicTransport(o),

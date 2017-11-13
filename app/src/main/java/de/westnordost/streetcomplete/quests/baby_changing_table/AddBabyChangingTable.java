@@ -44,6 +44,9 @@ public class AddBabyChangingTable extends SimpleOverpassQuestType
 		if(hasName) return R.string.quest_baby_changing_table_title;
 		else        return R.string.quest_baby_changing_table_toilets_title;
 	}
-	/* Disabled by default because this quest requires the user to go inside the place */
-	@Override public boolean isDefaultEnabled() { return false; }
+
+	@Override public int getDefaultDisabledMessage()
+	{
+		return R.string.default_disabled_msg_go_inside;
+	}
 }
