@@ -162,6 +162,7 @@ public class AddRoadName implements OsmElementQuestType
 	@Override public int getIcon() { return R.drawable.ic_quest_street_name; }
 	@Override public int getTitle() { return R.string.quest_streetName_title; }
 	@Override public int getTitle(Map<String,String> tags) { return getTitle(); }
-	@Override public boolean isDefaultEnabled() { return true; }
+
+	@Override public int getDefaultDisabledMessage() { return 0; }
 	@Override public String[] getDisabledForCountries() { return null; }
 }

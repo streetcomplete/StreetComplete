@@ -37,11 +37,14 @@ public class AddVegan extends SimpleOverpassQuestType
 	}
 
 	@Override public String getCommitMessage() { return "Add vegan diet type"; }
-	@Override public int getIcon() { return R.drawable.ic_quest_restaurant_veg; }
+	@Override public int getIcon() { return R.drawable.ic_quest_restaurant_vegan; }
 	@Override public int getTitle(@NonNull Map<String, String> tags)
 	{
 		return R.string.quest_dietType_vegan_name_title;
 	}
 
-	// TODO: show only for a certain set of countries: See https://github.com/westnordost/StreetComplete/pull/506#issuecomment-323579888
+	@Override public int getDefaultDisabledMessage()
+	{
+		return R.string.default_disabled_msg_go_inside;
+	}
 }

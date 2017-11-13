@@ -35,7 +35,7 @@ public class AddDietTypeForm extends AbstractQuestAnswerFragment
 	{
 		View view = super.onCreateView(inflater, container, savedInstanceState);
 		View contentView = setContentView(R.layout.quest_diet_type_explanation);
-		View buttonPanel = setButtonsView(R.layout.quest_buttonpanel_diet_type);
+		View buttonPanel = setButtonsView(R.layout.quest_buttonpanel_yes_no_only);
 
 		buttonPanel.findViewById(R.id.buttonYes).setOnClickListener(new View.OnClickListener()
 		{
@@ -59,7 +59,7 @@ public class AddDietTypeForm extends AbstractQuestAnswerFragment
 			}
 		});
 
-		TextView description = (TextView) contentView.findViewById(R.id.dietType_description);
+		TextView description = contentView.findViewById(R.id.dietType_description);
 		int resId = getArguments().getInt(ARG_DIET);
 		if(resId > 0)
 		{

@@ -150,7 +150,8 @@ public class AddHousenumber implements OsmElementQuestType
 	@Override public int getIcon() { return R.drawable.ic_quest_housenumber; }
 	@Override public int getTitle(Map<String,String> tags) { return getTitle(); }
 	@Override public int getTitle() { return R.string.quest_address_title; }
-	@Override public boolean isDefaultEnabled() { return true; }
+
+	@Override public int getDefaultDisabledMessage() { return 0; }
 
 	@Override public String[] getDisabledForCountries()
 	{
