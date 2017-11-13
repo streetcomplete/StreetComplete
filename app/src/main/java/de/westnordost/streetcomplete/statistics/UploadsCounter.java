@@ -48,15 +48,13 @@ public class UploadsCounter extends android.support.v7.widget.AppCompatTextView 
     }
 
     private void updateText() {
-        String text = "";
+        String text = "0";
         if (answeredQuests < 0) {
             text += answeredQuests;
         } else if (answeredQuests > 0) {
             text += "+" + answeredQuests;
         }
 
-        // min ems = number of digits in "(+XX)" for answered quests
-        setMinEms(4 + 2);
         setText(text);
     }
 }

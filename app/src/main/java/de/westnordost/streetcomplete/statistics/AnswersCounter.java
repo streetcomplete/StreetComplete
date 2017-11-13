@@ -58,8 +58,6 @@ public class AnswersCounter extends android.support.v7.widget.AppCompatTextView
 	private void updateText()
 	{
 		String text = "" + solvedQuests;
-		// min ems = number of digits in solved quests
-		setMinEms((int) Math.floor(Math.log10(solvedQuests)) + 4 + 2);
 		setText(text);
 	}
 }
