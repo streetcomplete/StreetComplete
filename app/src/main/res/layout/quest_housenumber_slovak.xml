@@ -17,7 +17,7 @@
         >
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="128dp"
             android:layout_height="wrap_content"
             android:text="@string/quest_housenumber_conscription_number"
             android:layout_gravity="center_horizontal"
@@ -47,7 +47,7 @@
         </me.grantland.widget.AutofitLayout>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="128dp"
             android:layout_height="wrap_content"
             android:text="@string/quest_housenumber_street_number_optional"
             android:layout_gravity="center_horizontal"
