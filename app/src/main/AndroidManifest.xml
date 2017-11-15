@@ -53,7 +53,7 @@
         <service android:name=".data.upload.QuestChangesUploadService" />
         <provider
             android:name="android.support.v4.content.FileProvider"
-            android:authorities="de.westnordost.streetcomplete.fileprovider"
+            android:authorities="@string/fileprovider_authority"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data

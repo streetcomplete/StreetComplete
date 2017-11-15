@@ -104,7 +104,7 @@ public class AttachPhotoFragment extends Fragment
 				if (Build.VERSION.SDK_INT > 21)
 				{
 					//Use FileProvider for getting the content:// URI, see: https://developer.android.com/training/camera/photobasics.html#TaskPath
-					photoUri = getUriForFile(getActivity(), "de.westnordost.streetcomplete.fileprovider", photoFile);
+					photoUri = getUriForFile(getActivity(), getString(R.string.fileprovider_authority), photoFile);
 				}
 				else
 				{
