@@ -7,6 +7,7 @@
     <dimen name="dialog_vertical_margin">16dp</dimen>
 
     <!-- Form content -->
+    <dimen name="quest_form_horizontal_margin">8dp</dimen>
     <dimen name="quest_form_vertical_margin">8dp</dimen>
 
     <!-- Quest form offsets -->

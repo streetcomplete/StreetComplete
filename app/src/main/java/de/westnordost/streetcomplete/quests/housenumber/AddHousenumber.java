@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.housenumber;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -32,13 +33,13 @@ public class AddHousenumber implements OsmElementQuestType
 			" building ~ house|residential|apartments|detached|terrace|hotel|dormitory|houseboat|" +
 			            "school|civic|college|university|public|hospital|kindergarten|train_station|" +
 			            "retail|commercial" +
-			" and !addr:housenumber and !addr:housename");
+			" and !addr:housenumber and !addr:housename and !addr:conscriptionnumber and !addr:streetnumber");
 
 	private static final TagFilterExpression NODES_WITH_HOUSENUMBERS = new FiltersParser().parse(
-			" nodes with addr:housenumber or addr:housename");
+			" nodes with addr:housenumber or addr:housename or addr:conscriptionnumber or addr:streetnumber");
 
 	private static final TagFilterExpression NON_BUILDING_AREAS_WITH_HOUSENUMBERS = new FiltersParser().parse(
-			"ways, relations with !building and (addr:housenumber or addr:housename)");
+			"ways, relations with !building and (addr:housenumber or addr:housename or addr:conscriptionnumber or addr:streetnumber)");
 
 	private final OverpassMapDataDao overpassServer;
 
@@ -121,12 +122,23 @@ public class AddHousenumber implements OsmElementQuestType
 	{
 		String housenumber = answer.getString(AddHousenumberForm.HOUSENUMBER);
 		String housename = answer.getString(AddHousenumberForm.HOUSENAME);
+		String conscriptionnumber = answer.getString(AddHousenumberForm.CONSCRIPTIONNUMBER);
+		String streetnumber = answer.getString(AddHousenumberForm.STREETNUMBER);
 
-		if(housenumber != null)
+		if(conscriptionnumber != null)
+		{
+			changes.add("addr:conscriptionnumber", conscriptionnumber);
+			if(!TextUtils.isEmpty(streetnumber)) changes.add("addr:streetnumber", streetnumber);
+
+			housenumber = streetnumber;
+			if(TextUtils.isEmpty(housenumber)) housenumber = conscriptionnumber;
+			changes.add("addr:housenumber", housenumber);
+		}
+		else if(housenumber != null)
 		{
 			changes.add("addr:housenumber", housenumber);
 		}
-		if(housename != null)
+		else if(housename != null)
 		{
 			changes.add("addr:housename", housename);
 		}

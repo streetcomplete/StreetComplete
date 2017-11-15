@@ -45,6 +45,24 @@ public class AddHousenumberTest extends AOsmElementQuestTypeTest
 		verify(new StringMapEntryAdd("addr:housename","La Escalera"));
 	}
 
+	public void testConscriptionNumber()
+	{
+		bundle.putString(AddHousenumberForm.CONSCRIPTIONNUMBER, "I.123");
+		verify(
+				new StringMapEntryAdd("addr:conscriptionnumber","I.123"),
+				new StringMapEntryAdd("addr:housenumber","I.123"));
+	}
+
+	public void testConscriptionNumberAndStreetNumber()
+	{
+		bundle.putString(AddHousenumberForm.CONSCRIPTIONNUMBER, "I.123");
+		bundle.putString(AddHousenumberForm.STREETNUMBER, "12b");
+		verify(
+				new StringMapEntryAdd("addr:conscriptionnumber","I.123"),
+				new StringMapEntryAdd("addr:streetnumber","12b"),
+				new StringMapEntryAdd("addr:housenumber","12b"));
+	}
+
 	@Override protected OsmElementQuestType createQuestType()
 	{
 		return new AddHousenumber(null);

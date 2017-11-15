@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:divider="@drawable/space_8dp"
-                android:showDividers="middle">
+              xmlns:tools="http://schemas.android.com/tools"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:divider="@drawable/space_8dp"
+              android:showDividers="middle">
 
     <TextView
         android:layout_width="wrap_content"
@@ -17,26 +19,19 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
+        android:background="#fff"
         >
 
         <android.support.v7.widget.AppCompatEditText
-            android:id="@+id/input"
+            android:id="@+id/inputHouseName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="38sp"
-            android:textColor="#ffffff"
-            android:textStyle="bold"
-            android:background="@drawable/background_housenumber"
-            android:paddingTop="18dp"
-            android:paddingBottom="18dp"
-            android:paddingStart="26dp"
-            android:paddingEnd="26dp"
+            android:background="@drawable/background_housenumber_frame"
+            app:backgroundTint="#495aad"
             android:inputType="text"
             android:imeOptions="actionDone"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:text=""
-            android:maxLines="1"
+            tools:text="My Cool House"
+            style="@style/HousenumberEditText"
             />
 
     </me.grantland.widget.AutofitLayout>
