@@ -11,8 +11,6 @@
     <string name="pref_category_display">"Anzeige"</string>
     <string name="pref_title_authorization">"OSM-Zugang autorisieren"</string>
     <string name="pref_title_not_authorized_summary">"Noch nicht autorisiert"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_tilecache_size_summary">"%d MB"</string>
     <string name="pref_tilecache_size_message">"Größe des Caches für die Karte auf dem externen Speicher (in MB)"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Alle Notizen anzeigen"</string>
@@ -63,7 +61,6 @@
     <string name="close">"Schließen"</string>
     <string name="download_error">"Fehler beim Suchen nach Aufgaben"</string>
     <string name="upload_error">"Fehler beim Hochladen der Antworten"</string>
-    <string name="cannot_find_bbox">"Kann hier nicht suchen. Versuche, weiter hineinzuzoomen"</string>
     <string name="download_area_too_big">"Zoome weiter hinein"</string>
     <string name="confirmation_cancel_prev_download_title">"Aktuelle Suche abbrechen und stattdessen hier suchen?"</string>
     <string name="notification_downloading">"Suche nach Aufgaben…"</string>
@@ -72,8 +69,6 @@
     <string name="no_location_permission_warning">"Dein Standort wird benötigt, um nach Aufgaben in deiner Nähe zu suchen."</string>
     <string name="action_about">"Über StreetComplete"</string>
     <string name="about_title_version">"Version"</string>
-
-    <!-- Fuzzy -->
     <string name="about_title_authors">"Autoren"</string>
     <string name="about_summary_authors">"© 2016–2017 Tobias Zwick und Mitwirkende"</string>
     <string name="about_title_repository">"Quellcode-Repository"</string>
@@ -107,8 +102,6 @@
     <string name="quest_openingHours_comment_description">"Kurz und bündig, am besten direkt so, wie es auf dem Schild steht. Zum Beispiel „nach Vereinbarung“. Fehlt ein Schild, bedeutet dies nicht zwangsweise, dass es keine regulären Öffnungszeiten gibt."</string>
     <string name="quest_buildingLevels_title">"Wie viele Stockwerke hat dieses Gebäude?"</string>
     <string name="quest_buildingLevels_title_buildingPart">"Wie viele Stockwerke hat dieses Gebäudeteil?"</string>
-    <string name="quest_buildingLevels_levelsLabel">"Stockwerke insgesamt"</string>
-    <string name="quest_buildingLevels_roofLevelsLabel">"davon Dachgeschosse"</string>
     <string name="quest_roofShape_title">"Welche grundlegende Dachform hat dieses Gebäude?"</string>
     <string name="quest_roofShape_select_one">"Wähle eine aus:"</string>
     <string name="quest_roofShape_show_more">"Weitere anzeigen…"</string>
@@ -200,7 +193,6 @@ Die von dir eingegebenen Informationen werden dann direkt in deinem Namen zu Ope
     <string name="quest_name_answer_noName">"Es hat keinen Namen"</string>
     <string name="quest_name_answer_noName_confirmation_title">"Wirklich kein Name?"</string>
     <string name="quest_name_noName_confirmation_positive">"Ja, kein Name"</string>
-    <string name="quest_buildingLevels_negativeBuildingLevels">"Ups! Du hast mehr Dachgeschosse als Stockwerke insgesamt angegeben!"</string>
     <string name="quest_openingHours_add_times">"➕ Öffnungszeiten"</string>
     <string name="crash_message">"Würdest du dem Entwickler bitte den Fehlerbericht senden?"</string>
     <string name="crash_title">"Oh nein, StreetComplete ist letztes Mal abgestürzt!"</string>
@@ -255,9 +247,7 @@ Die von dir eingegebenen Informationen werden dann direkt in deinem Namen zu Ope
     <string name="quest_tactilePaving_title_name_bus">"Hat die Haltestelle „%s“ ein Bodenleitsystem?"</string>
     <string name="quest_source_dialog_note">"Nur vor Ort erhobene Informationen sollen ergänzt werden."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Ist der Fahrradstellplatz überdacht (Schutz vor Regen)?"</string>
-    <string name="dialog_session_dont_show_again">"Ausblenden bis zur nächsten Bearbeitung"</string>
-
-    <!-- Fuzzy -->
+    <string name="dialog_session_dont_show_again">"Für diese Sitzung nicht mehr fragen"</string>
     <string name="quest_streetSurface_name_title">"Welche Oberfläche hat die Straße „%s“ hier?"</string>
     <string name="quest_maxspeed_title_short">"Welche Höchstgeschwindigkeit ist hier per Schild vorgeschrieben?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Diese Höchstgeschwindigkeit scheint nicht plausibel."</string>
@@ -420,4 +410,40 @@ Andernfalls kannst Du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="pref_title_not_authorized_summary2">"Logge dich zur Autorisierung im Webbrowser ein"</string>
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Sind die Fahrbahnen dieser Straße hier baulich getrennt (z.B. durch eine Leitplanke)? Es gelten unterschiedliche Geschwindigkeitsbegrenzungen, je nachdem ob der Mittelstreifen überfahrbar ist oder nicht."</string>
     <string name="about_category_feedback">"Feedback"</string>
+    <string name="quest_leave_new_note_photo">"Foto anhängen"</string>
+    <string name="quest_leave_new_note_photo_delete_title">"Dieses Foto löschen?"</string>
+    <string name="privacy_html_image_upload">"&lt;p&gt;Fotos die an Notizen angehängt werden, werden hochgeladen auf&lt;a href=\"https://lut.im\"&gt;lut.im&lt;/a&gt;, ein anonymer Service ohne Tracking.&lt;/p&gt;"</string>
+    <string name="quest_cycleway_value_track">"Fahrradweg"</string>
+    <string name="quest_cycleway_value_lane">"Radfahrstreifen"</string>
+    <string name="quest_cycleway_value_none">"kein"</string>
+    <string name="quest_cycleway_value_shared">"gemeinsamer Fahrstreifen mit anderen Verkehrsteilnehmern"</string>
+    <string name="quest_cycleway_value_bus_lane">"auf der Busspur"</string>
+    <string name="quest_cycleway_value_sidewalk">"explizite Mitbenutzung des Bürgersteigs"</string>
+    <string name="quest_leave_new_note_create_image_error">"Datei für Foto kann nicht erstellt werden"</string>
+    <string name="quest_cycleway_value_lane_dual">"Radfahrstreifen, beide Richtungen"</string>
+    <string name="quest_cycleway_value_track_dual">"Fahrradweg, beide Richtungen"</string>
+    <string name="quest_cycleway_value_sidewalk_allowed">"keiner, aber Fahrradfahrer dürfen auf dem Bürgersteig fahren"</string>
+    <string name="pref_category_advanced">"Erweitert"</string>
+    <string name="pref_title_quests">"Aufgabenauswahl"</string>
+    <string name="quest_enabled">"Aktiviert"</string>
+    <string name="quest_type">"Aufgabentyp"</string>
+    <string name="action_reset">"Zurücksetzen"</string>
+    <string name="reorder_quest_priority_hint">"Halte und bewege eine Aufgabe um ihre Download-Priorität und Anzeige auf der Karte zu verändern."</string>
+    <string name="undo_confirm_positive">"Rückgängig machen"</string>
+    <string name="undo_confirm_negative">"Abbrechen"</string>
+    <string name="quest_dietType_vegetarian_name_title">"Hat %s vegetarisches Essen auf der Karte?"</string>
+    <string name="quest_dietType_vegan_name_title">"Hat %s veganes Essen auf der Karte?"</string>
+    <string name="quest_hasFeature_only">"Ausschließlich"</string>
+    <string name="quest_dietType_explanation_vegan">"Veganes Essen enthält keine Tierprodukte (kein Fleisch, keine Milchprodukte, keine Eier, …)."</string>
+    <string name="quest_dietType_explanation_vegetarian">"Vegetarisches Essen enthält kein Fleisch."</string>
+    <string name="quest_dietType_explanation">"Nur mit \"Ja\" antworten, wenn es hier ordentliche Alternativen für diese Ernährung gibt, Vorspeisen usw. zählen nicht."</string>
+    <string name="quest_carWashType_title">"Was für eine Autowaschanlage ist das?"</string>
+    <string name="quest_carWashType_automated">"Automatisiert"</string>
+    <string name="quest_carWashType_selfService">"Selbstbedienung"</string>
+    <string name="quest_carWashType_service">"keine Selbstbedienung"</string>
+    <string name="enable_quest_confirmation_title">"Diesen Aufgabentyp aktivieren?"</string>
+    <string name="default_disabled_msg_go_inside">"Dieser Aufgabentyp ist standardmäßig deaktiviert, weil du hier wahrscheinlich den Ort betreten musst, um die von der Aufgabe gestellte Frage zu beantworten."</string>
+    <string name="quest_housenumber_conscription_number">"Konskriptionsnummer"</string>
+    <string name="quest_housenumber_street_number_optional">"Orientierungsnummer (optional)"</string>
+    <string name="quest_housenumber_conscription_number_required">"Eine Konskriptionsnummer muss angegeben werden"</string>
 </resources>

@@ -63,7 +63,6 @@
     <string name="close">"zavřít"</string>
     <string name="download_error">"Během vyhledávání úkolů došlo k chybě"</string>
     <string name="upload_error">"Během nahrávání odpovědí došlo k chybě"</string>
-    <string name="cannot_find_bbox">"Tady se nedá nic najít. Zkuste přiblížit mapu"</string>
     <string name="download_area_too_big">"Přibližte, prosím, více mapu"</string>
     <string name="confirmation_cancel_prev_download_title">"Zrušit aktuální vyhledávání a hledat místo toho zde?"</string>
     <string name="notification_downloading">"Vyhledávání úkolů…"</string>
@@ -109,8 +108,6 @@
     <string name="quest_openingHours_comment_description">"Buďte struční a v ideálním případě použijte slova z cedulky s otevírací dobou. Např.  „Otevřeno po dohodě“. Chybějící cedulka nemusí znamenat, že tu není pravidelná otevírací doba."</string>
     <string name="quest_buildingLevels_title">"Kolik pater má tato budova?"</string>
     <string name="quest_buildingLevels_title_buildingPart">"Kolik pater má tato část budovy?"</string>
-    <string name="quest_buildingLevels_levelsLabel">"celkový počet pater"</string>
-    <string name="quest_buildingLevels_roofLevelsLabel">"z toho počet pater ve střeše"</string>
     <string name="quest_roofShape_title">"Jaký základní tvar má střecha této budovy?"</string>
     <string name="quest_roofShape_select_one">"Vyberte jeden:"</string>
     <string name="quest_roofShape_show_more">"Zobrazit více..."</string>
@@ -202,7 +199,6 @@ Vámi vložené informace jsou potom vaším jménem přímo přidány do OpenSt
     <string name="quest_name_answer_noName">"Nemá žádné jméno"</string>
     <string name="quest_name_answer_noName_confirmation_title">"Opravdu nemá jméno?"</string>
     <string name="quest_name_noName_confirmation_positive">"Opravdu je bez jména"</string>
-    <string name="quest_buildingLevels_negativeBuildingLevels">"Jejda, zadali jste víc pater ve střeše než je jejich celkový počet!"</string>
     <string name="quest_openingHours_add_times">"Přidat otevírací hodiny"</string>
     <string name="crash_message">"Mohli byste, prosím, zaslat vývojáři hlášení o chybě?"</string>
     <string name="crash_title">"Ale ne, aplikace StreetComplete minule spadla!"</string>
@@ -252,6 +248,8 @@ Vámi vložené informace jsou potom vaším jménem přímo přidány do OpenSt
     <string name="quest_busStopShelter_name_title">"Má autobusová zastávka  „%s“ střechu?"</string>
     <string name="quest_toiletsFee_title">"Musí se na těchto toaletách platit?"</string>
     <string name="quest_tactilePaving_title_bus">"Má tato autobusová zastávka hmatovou dlažbu?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"Má tento přechod hmatovou dlažbu?"</string>
     <string name="quest_source_dialog_title">"Opravdu jste to zkontroloval na místě?"</string>
     <string name="quest_tactilePaving_title_name_bus">"Má autobusová zastávka  „%s“ hmatovou dlažbu?"</string>
@@ -370,8 +368,12 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="produce_vanilla">"Vanilka"</string>
     <string name="produce_walnuts">"Vlašské ořechy"</string>
     <string name="produce_sisal">"Sisal"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_way_lit_title">"Je tato část cesty osvětlena?"</string>
     <string name="quest_way_lit_named_title">"Je tady „%s“ osvětlena?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_way_lit_road_title">"Je tato část silnice osvětlena?"</string>
     <string name="quest_way_lit_named_road_title">"Je tady silnice „%s“ osvětlena?"</string>
     <string name="quest_way_lit_automatic">"Používá detektory pohybu"</string>
@@ -414,4 +416,24 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="unglue_hint">"Klepněte pro zrušení propojení obrazovky a polohy"</string>
     <string name="pref_title_not_authorized_summary2">"Autorizujte se přihlášením přes váš webový prohlížeč"</string>
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Jsou vozovky na této cestě fyzicky oddělené (např. bariérou)? Omezení rychlosti může být v každém případě jiné."</string>
+    <string name="about_category_feedback">"Zpětná vazba"</string>
+    <string name="quest_leave_new_note_photo">"Připojit fotku"</string>
+    <string name="quest_leave_new_note_photo_delete_title">"Chcete smazat tento obrázek?"</string>
+    <string name="privacy_html_image_upload">"&lt;p&gt;Připojené fotografie jsou nahrané do &lt;a href=\"https://lut.im\"&gt;lut.im&lt;/a&gt; anonymního úložiště bez sledování.&lt;/p&gt;"</string>
+    <string name="quest_cycleway_value_track">"cyklostezka"</string>
+    <string name="quest_cycleway_value_lane">"cyklopruh"</string>
+    <string name="quest_cycleway_value_none">"žádná"</string>
+    <string name="quest_cycleway_value_shared">"pruh výslovně sdílený s jinou dopravou"</string>
+    <string name="quest_cycleway_value_bus_lane">"na pruhu pro autobusy"</string>
+    <string name="quest_cycleway_value_sidewalk">"výslovně sdílený s chodníkem"</string>
+    <string name="quest_leave_new_note_create_image_error">"Nepodařilo se vytvořit fotku"</string>
+    <string name="quest_cycleway_value_lane_dual">"cyklopruh, oba směry"</string>
+    <string name="quest_cycleway_value_track_dual">"cyklostezka, oba směry"</string>
+    <string name="quest_cycleway_value_sidewalk_allowed">"žádná, ale cyklisté můžou používat chodník"</string>
+    <string name="pref_category_advanced">"Pokročilé"</string>
+    <string name="pref_title_quests">"Výběr úkolu"</string>
+    <string name="quest_enabled">"Povoleno"</string>
+    <string name="quest_type">"Druh úkolu"</string>
+    <string name="action_reset">"Resetovat"</string>
+    <string name="reorder_quest_priority_hint">"Dlouze stiskněte a přesuňte úkol pro jeho změnu pořadí při stahování a zobrazení na mapě."</string>
 </resources>

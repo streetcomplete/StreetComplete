@@ -72,7 +72,6 @@
     <string name="close">"fermer"</string>
     <string name="download_error">"Erreur pendant la recherche de quêtes"</string>
     <string name="upload_error">"Erreur pendant le téléversement des réponses"</string>
-    <string name="cannot_find_bbox">"Impossible de rechercher ici. Essayez de zoomer un peu plus"</string>
     <string name="download_area_too_big">"Veuillez zoomer un peu plus"</string>
     <string name="confirmation_cancel_prev_download_title">"Annuler la recherche en cours et rechercher ici à la place ?"</string>
     <string name="notification_downloading">"Recherche de quêtes…"</string>
@@ -118,10 +117,6 @@
     <string name="quest_openingHours_comment_description">"Soyez précis, utilisez idéallement les mots sur la pancarte. Par exemple « Sur rendez-vous seulement ». L'absence de pancarte ne veut pas nécessairement dire qu'il n'y a pas d'heures d'ouverture régulières."</string>
     <string name="quest_buildingLevels_title">"Combien de niveaux cet édifice a-t-il ?"</string>
     <string name="quest_buildingLevels_title_buildingPart">"Combien de niveaux cette partie de l'édifice a-t-elle ?"</string>
-    <string name="quest_buildingLevels_levelsLabel">"nombre de niveaux"</string>
-
-    <!-- La phrase en anglais porte aussi à confusion, cet UI devrait être refactored. -->
-    <string name="quest_buildingLevels_roofLevelsLabel">"d'entre eux, combien sont dans le toit ?"</string>
     <string name="quest_roofShape_title">"Quelle forme a le toit de l'édifice ?"</string>
     <string name="quest_roofShape_select_one">"Sélectionner un :"</string>
     <string name="quest_roofShape_show_more">"Montrer d'avantage…"</string>
@@ -234,7 +229,6 @@ L'information que vous entrez est directement ajoutée à OpenStreetMap sous vot
     <string name="quest_name_answer_noName">"Il n'a pas de nom"</string>
     <string name="quest_name_answer_noName_confirmation_title">"Vraiment aucun nom ?"</string>
     <string name="quest_name_noName_confirmation_positive">"Oui, sans nom"</string>
-    <string name="quest_buildingLevels_negativeBuildingLevels">"Oups ! L'immeuble ne peut pas avoir plus de niveaux dans le toit qu'au total !"</string>
     <string name="quest_openingHours_add_times">"Ajouter des heures d'ouverture"</string>
     <string name="crash_message">"Souhaitez-vous envoyer le rapport d'erreur au développeur ?"</string>
     <string name="crash_title">"StreetComplete s'est arrêté inopinément la dernière fois"</string>
@@ -286,6 +280,8 @@ L'information que vous entrez est directement ajoutée à OpenStreetMap sous vot
     <string name="quest_busStopShelter_name_title">"L’arrêt de bus « %s » a-t-il un abri ?"</string>
     <string name="quest_toiletsFee_title">"Ces toilettes sont-elles payantes ?"</string>
     <string name="quest_tactilePaving_title_bus">"Cet arrêt de bus a-t-il une surface podotactile ?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"Ce passage piéton a-t-il une surface podotactile ?"</string>
     <string name="quest_source_dialog_title">"Confirmez-vous avoir vérifier cela sur place ?"</string>
     <string name="quest_tactilePaving_title_name_bus">"L’arrêt de bus « %s » a-t-il une surface podotactile ?"</string>
@@ -406,8 +402,12 @@ Sinon, vous pouvez télécharger un autre clavier dans la boutique d'application
     <string name="produce_vanilla">"Vanille"</string>
     <string name="produce_walnuts">"Noix"</string>
     <string name="produce_sisal">"Sisal"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_way_lit_title">"Cette section de voie est-elle éclairée ?"</string>
     <string name="quest_way_lit_named_title">"La voie « %s » est-elle éclairée ?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_way_lit_road_title">"Cette section de route est-elle éclairée ?"</string>
     <string name="quest_way_lit_named_road_title">"La route « %s » est-elle éclairée ?"</string>
     <string name="quest_way_lit_automatic">"Cela utilise la détection de mouvement"</string>
@@ -452,4 +452,23 @@ Sinon, vous pouvez télécharger un autre clavier dans la boutique d'application
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Les chaussées de cette route sont-elles physiquement séparées (c'est-à-dire à travers une barrière)? La limite de vitesse par défaut dépend de si c'est le cas ou non
 "</string>
     <string name="about_category_feedback">"Commentaire"</string>
+    <string name="quest_leave_new_note_photo">"Ajouter une photo"</string>
+    <string name="quest_leave_new_note_photo_delete_title">"Voulez-vous supprimer cette image ?"</string>
+    <string name="privacy_html_image_upload">"&lt;p&gt;Les images attachées à vos notes sont téléversées sur &lt;a href=\"https://lut.im\"&gt;lut.im&lt;/a&gt; (service anonyme et sans pistage).&lt;/p&gt;"</string>
+    <string name="quest_cycleway_value_track">"piste cyclable"</string>
+    <string name="quest_cycleway_value_lane">"piste cyclable"</string>
+    <string name="quest_cycleway_value_none">"aucune"</string>
+    <string name="quest_cycleway_value_shared">"ligne partagée avec la circulation"</string>
+    <string name="quest_cycleway_value_bus_lane">"sur la voie de bus"</string>
+    <string name="quest_cycleway_value_sidewalk">"trottoir partagé"</string>
+    <string name="quest_leave_new_note_create_image_error">"Impossible de créer un fichier pour cette photo"</string>
+    <string name="quest_cycleway_value_lane_dual">"ligne cyclable (sur la route) dans les 2 sens"</string>
+    <string name="quest_cycleway_value_track_dual">"piste cyclable, dans les 2 sens"</string>
+    <string name="quest_cycleway_value_sidewalk_allowed">"aucune, mais les cycliste sont admis sur le torttoir"</string>
+    <string name="pref_category_advanced">"Avancée"</string>
+    <string name="pref_title_quests">"Sélection de quête"</string>
+    <string name="quest_enabled">"Activée"</string>
+    <string name="quest_type">"Type de quête"</string>
+    <string name="action_reset">"Réinitialiser"</string>
+    <string name="reorder_quest_priority_hint">"Faites des glisser-déposer pour ordonner la priorité des quêtes  (téléchargement et affichage sur la carte)"</string>
 </resources>

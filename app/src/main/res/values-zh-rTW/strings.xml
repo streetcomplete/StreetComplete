@@ -61,7 +61,6 @@
     <string name="close">"關閉"</string>
     <string name="download_error">"在搜尋任務時出錯"</string>
     <string name="upload_error">"在上傳回答時出錯"</string>
-    <string name="cannot_find_bbox">"無法搜尋。嘗試拉近一點"</string>
     <string name="download_area_too_big">"請拉近一點"</string>
     <string name="confirmation_cancel_prev_download_title">"取消目前的搜尋並以搜尋這裡取代？"</string>
     <string name="notification_downloading">"正在搜尋任務"</string>
@@ -105,8 +104,6 @@
     <string name="quest_openingHours_comment_description">"理想中，在標示上的文字都是言簡意賅的，像是\"預約\"。不存在的標示並不需要代表這裡沒有規律的營業時間。"</string>
     <string name="quest_buildingLevels_title">"此棟建築物有多少層樓？"</string>
     <string name="quest_buildingLevels_title_buildingPart">"此建築物的一部份中有多少層樓？"</string>
-    <string name="quest_buildingLevels_levelsLabel">"總樓層數"</string>
-    <string name="quest_buildingLevels_roofLevelsLabel">"之中，屋頂內的樓層"</string>
     <string name="quest_roofShape_title">"此棟建築物的屋頂形狀是？"</string>
     <string name="quest_roofShape_select_one">"選擇一個："</string>
     <string name="quest_roofShape_show_more">"顯示更多…"</string>
@@ -196,7 +193,6 @@
     <string name="quest_name_answer_noName">"沒有名稱"</string>
     <string name="quest_name_answer_noName_confirmation_title">"確定沒有名稱?"</string>
     <string name="quest_name_noName_confirmation_positive">"是，沒有名稱"</string>
-    <string name="quest_buildingLevels_negativeBuildingLevels">"呃！ 你描述了比總樓層還多的天花板！"</string>
     <string name="quest_openingHours_add_times">"新增營業時間"</string>
     <string name="crash_message">"能否請你寄錯誤報告給開發者嗎？"</string>
     <string name="crash_title">"天啊，上次 StreetComplete 出錯了！"</string>
@@ -246,6 +242,8 @@
     <string name="quest_busStopShelter_name_title">"巴士站\"%s\"有沒有上蓋？"</string>
     <string name="quest_toiletsFee_title">"使用這間廁所是否需要費用？"</string>
     <string name="quest_tactilePaving_title_bus">"這座公車站是否有盲人磚？"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"這個人行穿越道是否有盲人指引？"</string>
     <string name="quest_source_dialog_title">"你確定你在現場探察確認？"</string>
     <string name="quest_tactilePaving_title_name_bus">"公車站 \"%s\" 是否有盲人磚？"</string>
@@ -369,8 +367,12 @@
     <string name="produce_vanilla">"香草"</string>
     <string name="produce_walnuts">"核桃"</string>
     <string name="produce_sisal">"瓊麻"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_way_lit_title">"這段路徑有照明設施嗎？"</string>
     <string name="quest_way_lit_named_title">"\"%s\" 有照明設施嗎？"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_way_lit_road_title">"這段道路有照明設施嗎？"</string>
     <string name="quest_way_lit_named_road_title">"\"%s\" 沿路上有照明設施？"</string>
     <string name="quest_way_lit_automatic">"使用動態偵測"</string>

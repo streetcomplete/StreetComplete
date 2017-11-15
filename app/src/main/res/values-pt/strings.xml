@@ -61,7 +61,6 @@
     <string name="close">"Fechar"</string>
     <string name="download_error">"Erro ao procurar novos desafios"</string>
     <string name="upload_error">"Erro ao fazer upload das respostas"</string>
-    <string name="cannot_find_bbox">"Não foi realizar a procura nesta área. Tente aumentar o zoom"</string>
     <string name="download_area_too_big">"Por favor, aumente o zoom"</string>
     <string name="confirmation_cancel_prev_download_title">"Anular a procura atual e, em alternativa, procurar nesta área?"</string>
     <string name="notification_downloading">"A procurar desafios…"</string>
@@ -103,8 +102,6 @@
     <string name="quest_openingHours_comment_description">"Seja preciso, idealmente utilizando a palavra da placa, por exemplo \"por marcação\". A ausência de uma placa não significa que não esteja estabelecido um horário."</string>
     <string name="quest_buildingLevels_title">"Quantos pisos tem este edifício?"</string>
     <string name="quest_buildingLevels_title_buildingPart">"Quantos pisos tem esta parte do edifício?"</string>
-    <string name="quest_buildingLevels_levelsLabel">"número total de pisos"</string>
-    <string name="quest_buildingLevels_roofLevelsLabel">"destes, quantos pisos são do telhado?"</string>
     <string name="quest_roofShape_title">"Qual a forma básica do telhado deste edifício?"</string>
     <string name="quest_roofShape_select_one">"Selecione um:"</string>
     <string name="quest_roofShape_show_more">"Mostrar mais..."</string>
@@ -194,7 +191,6 @@ A informação que submeter nesta app é adicionada diretamente ao OpenStreetMap
     <string name="quest_name_answer_noName">"Não tem nome"</string>
     <string name="quest_name_answer_noName_confirmation_title">"Tem a certeza de que não tem nome?"</string>
     <string name="quest_name_noName_confirmation_positive">"Sim, não tem"</string>
-    <string name="quest_buildingLevels_negativeBuildingLevels">"Oops! Especificou mais pisos do que o número total de pisos!"</string>
     <string name="quest_openingHours_add_times">"Adicionar horário de abertura"</string>
     <string name="crash_message">"Pode, por favor, enviar o relatório de erro para o programador?"</string>
     <string name="crash_title">"Oh não, o StreetComplete crashou da última vez!"</string>
@@ -244,6 +240,8 @@ A informação que submeter nesta app é adicionada diretamente ao OpenStreetMap
     <string name="quest_busStopShelter_name_title">"A paragem de autocarro %s tem abrigo?"</string>
     <string name="quest_toiletsFee_title">"Esta casa de banho é de acesso pago?"</string>
     <string name="quest_tactilePaving_title_bus">"Esta paragem de autocarro tem pavimento tátil?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"Esta passadeira tem pavimento tátil?"</string>
     <string name="quest_source_dialog_title">"Tem a certeza que verificou isto no local?"</string>
     <string name="quest_tactilePaving_title_name_bus">"A paragem de autocarro %s tem pavimento tátil?"</string>
@@ -360,8 +358,12 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="produce_vanilla">"Baunilha"</string>
     <string name="produce_walnuts">"Nozes"</string>
     <string name="produce_sisal">"Sisal"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_way_lit_title">"Este troço de caminho tem iluminação?"</string>
     <string name="quest_way_lit_named_title">"%s tem iluminação aqui?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_way_lit_road_title">"Este troço de estrada tem iluminação?"</string>
     <string name="quest_way_lit_named_road_title">"A estrada %s tem iluminação aqui?"</string>
     <string name="quest_way_lit_automatic">"Utiliza detetor de movimento"</string>
@@ -403,4 +405,25 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="pref_title_not_authorized_summary2">"Proceda à autenticação no seu navegador para autorizar "</string>
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Existe separação física entre as faixas de rodagem (ex: separador central)? A velocidade máxima por defeito, depende se esta situação se verificar ou não."</string>
     <string name="about_category_feedback">"Envie um comentário"</string>
+    <string name="quest_leave_new_note_photo">"Anexar fotografia"</string>
+    <string name="quest_leave_new_note_photo_delete_title">"Quer apagar esta fotografia?"</string>
+    <string name="privacy_html_image_upload">"&lt;p&gt;As photos que anexar como notas serão carregadas para &lt;a href=\"https://lut.im\"&gt;lut.im&lt;/a&gt;, um serviço que é anónimo e que não rastreia os utilizadores&lt;/p&gt;"</string>
+    <string name="quest_cycleway_value_track">"Pista de ciclismo"</string>
+    <string name="quest_cycleway_value_lane">"Ciclo via"</string>
+    <string name="quest_cycleway_value_none">"Nenhum"</string>
+    <string name="quest_cycleway_value_shared">"Faixa explicitamente partilhada com outros veículos"</string>
+    <string name="quest_cycleway_value_bus_lane">"Em faixa bus"</string>
+    <string name="quest_cycleway_value_sidewalk">"Explicitamente partilhada com passeio"</string>
+    <string name="quest_leave_new_note_create_image_error">"Não foi possível criar ficheiro de fotografia"</string>
+    <string name="quest_cycleway_value_lane_dual">"Ciclo via, em ambas as direcções"</string>
+    <string name="quest_cycleway_value_track_dual">"Ciclo trilho, em ambas as direcções"</string>
+    <string name="quest_cycleway_value_sidewalk_allowed">"Nenhum, mas é permitido aos ciclistas utilizarem o passeio"</string>
+    <string name="pref_category_advanced">"Avançado"</string>
+    <string name="pref_title_quests">"Seleção de desafio"</string>
+    <string name="quest_enabled">"Activado"</string>
+    <string name="quest_type">"Tipo de desafio"</string>
+    <string name="action_reset">"Eliminar"</string>
+    <string name="reorder_quest_priority_hint">"Pressione de forma longa para mover um desafio e reordenar a sua prioridade para download e aparência no mapa"</string>
+    <string name="undo_confirm_positive">"Desfazer"</string>
+    <string name="undo_confirm_negative">"Cancelar"</string>
 </resources>

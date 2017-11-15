@@ -57,21 +57,20 @@
     <string name="confirmation_discard_title">"Kasser input?"</string>
     <string name="confirmation_discard_positive">"Kasser"</string>
     <string name="confirmation_discard_negative">"Afbryd"</string>
-    <string name="action_download">"Skan for Opgaver her"</string>
-    <string name="action_upload">"Upload Svar"</string>
+    <string name="action_download">"Skan efter opgaver her"</string>
+    <string name="action_upload">"Upload svar"</string>
     <string name="no_changes">"Du efterlod formularen tom"</string>
     <string name="close">"luk"</string>
     <string name="download_error">"Fejl mens der blev skannet for opgaver"</string>
     <string name="upload_error">"Fejl mens der blev uploadet svar"</string>
-    <string name="cannot_find_bbox">"Kan ikke skanne her. Prøv at zoome længere ind"</string>
     <string name="download_area_too_big">"Zoom venligst længere ind"</string>
     <string name="confirmation_cancel_prev_download_title">"Afbrud den nuværende søgning og skan her i stedet?"</string>
-    <string name="notification_downloading">"Skanner efter Opgaver…"</string>
+    <string name="notification_downloading">"Skanner efter opgaver…"</string>
     <string name="now_downloading_toast">"Skanner efter flere opgaver…"</string>
     <string name="turn_on_location_request">"Lokation er fra. Gå til indstillinger og tænd nu?"</string>
     <string name="no_location_permission_warning">"Din lokation er nødvendig for at skanne efter opgaver i dit nærområde."</string>
     <string name="action_about">"Om StreetComplete"</string>
-    <string name="about_title_version">"Udgave"</string>
+    <string name="about_title_version">"Version"</string>
 
     <!-- Fuzzy -->
     <string name="about_title_authors">"Udviklere"</string>
@@ -80,12 +79,12 @@
     <string name="about_summary_repository">"på GitHub"</string>
     <string name="about_title_report_error">"Rapporter fejl"</string>
     <string name="about_title_feedback">"Giv feedback"</string>
-    <string name="about_title_license">"Lisens"</string>
+    <string name="about_title_license">"Licens"</string>
     <string name="about_summary_license">"GNU General Public License"</string>
     <string name="offline">"Du er offline"</string>
     <string name="confirmation_authorize_now">"Du er nød til at autentificere med din OSM konto for at faktisk sende dine svar. Autentificer nu?"</string>
     <string name="not_authorized">"Ikke autentificeret"</string>
-    <string name="version_banned_message">"Denne udgave af StreetComplete må ikke indsende svar! Opdater din udgave!"</string>
+    <string name="version_banned_message">"Denne version af StreetComplete må ikke indsende svar! Opdater din version!"</string>
     <string name="no_gps_no_quests">"For at skanne efter opgaver tæt på dig skal du tænde Lokation."</string>
     <string name="nothing_more_to_download">"Der er ikke flere opgaver tilgængelige"</string>
     <string name="later">"Senere"</string>
@@ -107,8 +106,6 @@
     <string name="quest_openingHours_comment_description">"Vær præcis, ideelt set så brug teksten fra skiltet, f.eks. \"efter aftale\". Manglen af et skilt betyder ikke nødvendigvis at der ikke er normale åbningstider"</string>
     <string name="quest_buildingLevels_title">"Hvor mange etager har denne bygning?"</string>
     <string name="quest_buildingLevels_title_buildingPart">"Hvor mange etager har denne bygningsdel?"</string>
-    <string name="quest_buildingLevels_levelsLabel">"total etagetal"</string>
-    <string name="quest_buildingLevels_roofLevelsLabel">"af disse, etager på taget"</string>
     <string name="quest_roofShape_title">"Hvilken form har bygningens tag?"</string>
     <string name="quest_roofShape_select_one">"Vælg en:"</string>
     <string name="quest_roofShape_show_more">"Vis mere…"</string>
@@ -137,7 +134,7 @@ Din lokation er kun brugt til at automatisk skanne efter opgaver tæt på dig. B
 &lt;p&gt;&lt;b&gt;Databrug&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 Som sagt, denne app kommunikerer direkte med OSM's infrastruktur. Det vil sige &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass API'et&lt;/a&gt; til at downloade opgaver (hvilket sker anonymt) og med &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API'et&lt;/a&gt; for at indsende ændringer.&lt;br/&gt;
-Før ændringer sendes tjekker appen dog en &lt;a href=\"http://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;simpel tekst fil&lt;/a&gt; på min server om denne udgaver er bandlyst fra at sende ændringer. Dette sker som et sikkerhedstjek for at holde udgaver af appen med kritiske fejl fra et skade OSM data.&lt;br/&gt;
+Før ændringer sendes tjekker appen dog en &lt;a href=\"http://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;simpel tekst fil&lt;/a&gt; på min server om denne version er bandlyst fra at sende ændringer. Dette sker som et sikkerhedstjek for at holde versioner af appen med kritiske fejl fra et skade OSM data.&lt;br/&gt;
 &lt;/p&gt;
 &lt;p&gt;
 For at vise kortet er vektorfliser hentet fra &lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt;Mapzen vector tile service&lt;/a&gt;, hvilket sker anonymt. Servicen logger anmodninger for at forstå hvilke områder er populære så de kan lave performance forbedringer. Deres platform logger også IP adresser og alt deres hosting (hjemmeside udbyder osv.) sker hos Amazon så de er muligvis også underlagt regler der.
@@ -204,7 +201,6 @@ Informationerne du skriver sendes direkte til OpenStreetMap i dit navn, uden du 
     <string name="quest_name_answer_noName">"Den har intet navn"</string>
     <string name="quest_name_answer_noName_confirmation_title">"Virkeligt inget navn?"</string>
     <string name="quest_name_noName_confirmation_positive">"Ja, inget navn"</string>
-    <string name="quest_buildingLevels_negativeBuildingLevels">"Hovsa! Du specificerede flere loftetager end etager totalt!"</string>
     <string name="quest_openingHours_add_times">"Tilføj åbningstider"</string>
     <string name="crash_message">"Vil du sende en fejlrapport til udvikleren?"</string>
     <string name="crash_title">"Åh nej, StreetComplete crashede sidste gang!"</string>
@@ -256,6 +252,8 @@ Informationerne du skriver sendes direkte til OpenStreetMap i dit navn, uden du 
 
     <!-- There may be a better word than "taktil" but it is correct to use. -->
     <string name="quest_tactilePaving_title_bus">"Har stoppestedet taktil markering?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"Har denne fodgængerovergang taktil markering?"</string>
     <string name="quest_source_dialog_title">"Er du sikker på at du har tjekket dette på stedet?"</string>
     <string name="quest_tactilePaving_title_name_bus">"Har stoppestedet \"%s\" taktil markering?"</string>
@@ -325,7 +323,7 @@ Ellers kan du downloade et andet keyboard i Forretning. Populære keyboards der 
     <string name="credits_author_title">"Udvikler og Vedligeholder"</string>
     <string name="credits_and_more">"og mere ..."</string>
     <string name="quest_maxspeed_answer_living_street">"Det er en beboelsesvej"</string>
-    <string name="quest_maxspeed_answer_living_street_confirmation_title">"Så der er ikke et skilt som dette?"</string>
+    <string name="quest_maxspeed_answer_living_street_confirmation_title">"Så der er et skilt som dette?"</string>
     <string name="quest_orchard_produce_title">"Hvad dyrkes her?"</string>
     <string name="produce_grapes">"Grapes"</string>
     <string name="produce_agaves">"Agaver"</string>
@@ -375,10 +373,68 @@ Ellers kan du downloade et andet keyboard i Forretning. Populære keyboards der 
     <string name="produce_vanilla">"Vanilje"</string>
     <string name="produce_walnuts">"Valnøder"</string>
     <string name="produce_sisal">"Sisal"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_way_lit_title">"Er denne sektion af vejen belyst?"</string>
     <string name="quest_way_lit_named_title">"Er \"%s\" belyst her?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_way_lit_road_title">"Er denne sektion af vejen belyst?"</string>
     <string name="quest_way_lit_named_road_title">"Er vejen \"%s\" belyst her?"</string>
     <string name="quest_way_lit_automatic">"Der bruges bevægelsessensorer"</string>
     <string name="quest_way_lit_24_7">"Det er oplyst nat og dag"</string>
+    <string name="pref_title_authorized_username_summary">"Godkendt konto: %s"</string>
+    <string name="cannot_find_bbox_or_reduce_tilt">"Kan ikke skanne her. Prøv at zoome yderligere ind eller vip kortet mindre."</string>
+    <string name="quest_crossing_type_title">"Hvilken type overgang er dette?"</string>
+    <string name="quest_crossing_type_signals">"Overgang med traffiklys"</string>
+    <string name="quest_crossing_type_uncontrolled">"Ukontrolleret overgang"</string>
+    <string name="quest_crossing_type_unmarked">"Overgang uden markering på vejen"</string>
+    <string name="compass_north_one_letter">"N"</string>
+    <string name="action_undo">"Fortryd"</string>
+    <string name="no_changes_to_undo">"Intet at fortryde"</string>
+    <string name="undo_confirm_title">"Fortryd følgende sidste svar?"</string>
+    <string name="produce_mangosteen">"Mangostan"</string>
+    <string name="produce_tomatoes">"Tomater"</string>
+    <string name="produce_areca_nuts">"Betelnødder"</string>
+    <string name="produce_sweet_peppers">"Peberfrugt"</string>
+    <string name="produce_brazil_nuts">"Paranødder"</string>
+    <string name="produce_tung_nuts">"Kukui nødder"</string>
+    <string name="quest_parkingType_title">"Hvilken type parkering er dette?"</string>
+    <string name="quest_parkingType_surface">"Normal"</string>
+    <string name="quest_parkingType_underground">"Underjordisk garage"</string>
+    <string name="quest_parkingType_multiStorage">"Parkeringsområde"</string>
+    <string name="quest_toiletAvailability_name_title">"Har %s et toilet?"</string>
+    <string name="quest_powerPolesMaterial_title">"Hvad er denne elpæl lavet af?"</string>
+    <string name="quest_powerPolesMaterial_wood">"Træ"</string>
+    <string name="quest_powerPolesMaterial_metal">"Stål"</string>
+    <string name="quest_powerPolesMaterial_concrete">"Beton"</string>
+    <string name="quest_maxspeed_answer_advisory_speed_limit">"Kun en anbefalet hastighedsgrænse"</string>
+    <string name="quest_address_answer_house_name">"Intet husnummer men et navn"</string>
+    <string name="quest_address_house_name_label">"Husnavn:"</string>
+    <string name="quest_buildingLevels_roofLevelsLabel2">"etager i taget"</string>
+    <string name="quest_buildingLevels_levelsLabel2">"normale etager (eksl. taget)"</string>
+    <string name="pref_title_authorized_summary">"Godkendt"</string>
+    <string name="quest_buildingLevels_answer_multipleLevels">"forskellig per bygningsdel"</string>
+    <string name="quest_buildingLevels_answer_description">"I dette tilfælde skal værdien for den højeste bygningsdel angives."</string>
+    <string name="pref_title_not_authorized_summary2">"Log ind fra din webbrowser for at godkende"</string>
+    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Er vejbanerne på denne vej opdelt fysisk (f.eks. med en barriere)? Standard  hastigheden afhænger af om dette er tilfældet eller ej."</string>
+    <string name="about_category_feedback">"Feedback"</string>
+    <string name="quest_leave_new_note_photo">"Vedhæft foto"</string>
+    <string name="quest_leave_new_note_photo_delete_title">"Ønsker du at slette dette billede?"</string>
+    <string name="privacy_html_image_upload">"&lt;p&gt;De fotos du vedhæfter til noter uploades til &lt;a href=\"https://lut.im\"&gt;lut.im&lt;/a&gt;, en anonym service og uden sporing.&lt;/p&gt;"</string>
+    <string name="quest_cycleway_value_track">"cykelsti"</string>
+    <string name="quest_cycleway_value_lane">"cykelbane"</string>
+    <string name="quest_cycleway_value_none">"ingen"</string>
+    <string name="quest_cycleway_value_shared">"bane delt med anden trafik"</string>
+    <string name="quest_cycleway_value_bus_lane">"i busbane"</string>
+    <string name="quest_cycleway_value_sidewalk">"Udtrykkeligt delt fortov"</string>
+    <string name="quest_leave_new_note_create_image_error">"Kunne ikke oprette fil til foto"</string>
+    <string name="quest_cycleway_value_lane_dual">"cykelbane, begge retninger"</string>
+    <string name="quest_cycleway_value_track_dual">"cykelsti, begge retninger"</string>
+    <string name="quest_cycleway_value_sidewalk_allowed">"ingen, men cyklister er tilladt på fortov"</string>
+    <string name="pref_category_advanced">"Avanceret"</string>
+    <string name="pref_title_quests">"Opgavevalg"</string>
+    <string name="quest_enabled">"Aktiveret"</string>
+    <string name="quest_type">"Opgavetype"</string>
+    <string name="action_reset">"Nulstil"</string>
 </resources>

@@ -436,6 +436,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="enable_quest_confirmation_title">Enable this quest type?</string>
     <string name="default_disabled_msg_go_inside">This quest type is disabled by default because you will likely have to enter the place to be able to answer a quest of this type.</string>
     <string name="quest_housenumber_conscription_number">Conscription number</string>
-    <string name="quest_housenumber_street_number_optional">Street number (optional)</string>
+    <string name="quest_housenumber_street_number_optional">Orientation number (optional)</string>
     <string name="quest_housenumber_conscription_number_required">A conscription number must be specified</string>
 </resources>
