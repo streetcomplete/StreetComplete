@@ -23,12 +23,13 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
         }
         debug {
-            minifyEnabled false
+            minifyEnabled true
+            useProguard false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             applicationIdSuffix ".debug"
         }
@@ -59,8 +60,8 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     // debugging
-    //debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
-    //releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
+    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
 
     // tests (perhaps migrate to junit4 later if any features of it seem convenient or necessary)
     testImplementation 'junit:junit:3.8.1'
