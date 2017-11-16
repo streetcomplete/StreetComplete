@@ -184,6 +184,18 @@ public class MainActivity extends AppCompatActivity implements
 		answersCounter = toolbar.findViewById(R.id.answersCounter);
 		uploadsCounter = toolbar.findViewById(R.id.uploadsCounter);
 
+        uploadsCounter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (isConnected()) {
+                    uploadChanges();
+                }
+                else {
+                    Toast.makeText(MainActivity.this, R.string.offline, Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
 		questSource.onCreate(this);
 
 		getSupportFragmentManager().beginTransaction()
@@ -344,10 +356,6 @@ public class MainActivity extends AppCompatActivity implements
 				return true;
 			case R.id.action_download:
 				if(isConnected()) downloadDisplayedArea();
-				else              Toast.makeText(this, R.string.offline, Toast.LENGTH_SHORT).show();
-				return true;
-			case R.id.action_upload:
-				if(isConnected()) uploadChanges();
 				else              Toast.makeText(this, R.string.offline, Toast.LENGTH_SHORT).show();
 				return true;
 		}
