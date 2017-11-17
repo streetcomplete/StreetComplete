@@ -4,7 +4,6 @@ import android.content.SharedPreferences;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -41,34 +40,40 @@ public class QuestTypeOrderList
 		int beforeIndices[] = findLocationInLists(beforeName, lists);
 		int afterIndices[] = findLocationInLists(afterName, lists);
 
-		// case 1: not in a list at all -> add in new list
-		if(beforeIndices == null && afterIndices == null)
+		List<String> afterNames = new ArrayList<>(2);
+		afterNames.add(afterName);
+
+		// 1. remove after-item from the list it is in
+		if(afterIndices != null)
+		{
+			List<String> list = lists.get(afterIndices[0]);
+			// if it is the head of a list, transplant the whole list
+			if(afterIndices[1] == 0)
+			{
+				afterNames = list;
+			}
+			else
+			{
+				list.remove(afterIndices[1]);
+			}
+		}
+
+		// 2. add it/them back to a list after before-item
+		if(beforeIndices != null)
+		{
+			lists.get(beforeIndices[0]).addAll(beforeIndices[1]+1, afterNames);
+		}
+		else
 		{
 			List<String> list = new ArrayList<>();
 			list.add(beforeName);
-			list.add(afterName);
+			list.addAll(afterNames);
 			lists.add(list);
 		}
-		// case 2: one is in a list, the other not -> add other to the one list
-		else if(afterIndices == null)
+
+		// clean up list that became too small to be meaningful
+		if(afterIndices != null && lists.get(afterIndices[0]).size() < 2)
 		{
-			lists.get(beforeIndices[0]).add(beforeIndices[1]+1, afterName);
-		}
-		else if(beforeIndices == null)
-		{
-			lists.get(afterIndices[0]).add(afterIndices[1], beforeName);
-		}
-		// case 3: both in same list -> reorder that list
-		else if(beforeIndices[0] == afterIndices[0])
-		{
-			List<String> list = lists.get(beforeIndices[0]);
-			move(list, afterIndices[1], beforeIndices[1]+1);
-		}
-		// case 4: both in different lists -> put the whole other list into first list
-		else
-		{
-			List<String> list = lists.get(afterIndices[0]);
-			lists.get(beforeIndices[0]).addAll(beforeIndices[1]+1, list);
 			lists.remove(afterIndices[0]);
 		}
 	}
@@ -101,18 +106,6 @@ public class QuestTypeOrderList
 
 			int startIndex = questTypes.indexOf(list.get(0));
 			questTypes.addAll(startIndex+1, reorderedQuestTypes);
-		}
-	}
-
-	private static void move(List<?> list, int fromIndex, int toIndex)
-	{
-		if(fromIndex < toIndex)
-		{
-			Collections.rotate(list.subList(fromIndex, toIndex), -1);
-		}
-		else if(fromIndex > toIndex)
-		{
-			Collections.rotate(list.subList(toIndex, fromIndex+1), 1);
 		}
 	}
 

@@ -137,17 +137,28 @@ public class QuestTypeOrderListTest extends AndroidTestCase
 		assertThat(list).containsSequence(three, one, two);
 	}
 
-	public void testMergeQuestTypeOrders()
+	public void testPickQuestTypeOrders()
 	{
 		questTypeOrderList.apply(four, three);
 		questTypeOrderList.apply(two, one);
 		questTypeOrderList.apply(one, five);
 
-		// now, this should merge 4->3 into 2->1->5:
+		// merging the two here..
 		questTypeOrderList.apply(one, three);
-		// so it should be 2->1->4->3->5. Let's check!
 
 		questTypeOrderList.sort(list);
-		assertThat(list).containsSequence(two, one, four, three, five);
+		assertThat(list).containsSequence(two, one, three, five);
+	}
+
+	public void testMergeQuestTypeOrders()
+	{
+		questTypeOrderList.apply(four, three);
+		questTypeOrderList.apply(two, one);
+
+		// merging the two here..
+		questTypeOrderList.apply(three, two);
+
+		questTypeOrderList.sort(list);
+		assertThat(list).containsSequence(four, three, two, one);
 	}
 }
