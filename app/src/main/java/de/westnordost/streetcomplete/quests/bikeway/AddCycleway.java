@@ -151,6 +151,9 @@ public class AddCycleway implements OsmElementQuestType
 			   "[surface !~ \"^(unpaved|compacted|gravel|fine_gravel|pebblestone|grass_paver|ground|earth|dirt|grass|sand|mud|ice|salt|snow|woodchips)$\"]" +
 			   // not any explicitly tagged as no bicycles
 			   "[bicycle != no]" +
+			   // not any roundabouts because the form (StreetSideSelectPuzzle) is not suited to
+			   // represent the road as it is straight, not round, and will confuse users (#690)
+			   "[junction != roundabout]" +
 			   " -> .streets;" +
 			"(" +
 			   "way[highway=cycleway](around.streets: "+d+");" +
