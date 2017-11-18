@@ -18,6 +18,8 @@ import java.util.Map;
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.osm.ElementGeometry;
+import de.westnordost.streetcomplete.data.osm.tql.FiltersParser;
+import de.westnordost.streetcomplete.data.osm.tql.TagFilterExpression;
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
 import de.westnordost.streetcomplete.util.SphericalEarthMath;
 import de.westnordost.streetcomplete.view.ListAdapter;
@@ -33,8 +35,18 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 			CYCLEWAY_RIGHT_DIR = "cycleway_right_opposite",
 			IS_ONEWAY_NOT_FOR_CYCLISTS = "oneway_not_for_cyclists";
 
+	private static final String
+			DEFINE_BOTH_SIDES = "define_both_sides";
+
+	private static final TagFilterExpression LIKELY_NO_BICYCLE_CONTRAFLOW = new FiltersParser().parse(
+			"ways with oneway ~ yes|-1 and oneway:bicycle != no and " +
+			" (highway ~ primary|secondary|tertiary or junction=roundabout)");
+
+
 	private StreetSideSelectPuzzle puzzle;
 	private float wayOrientationAtCenter;
+
+	private boolean isDefiningBothSides;
 
 	private Cycleway leftSide;
 	private Cycleway rightSide;
@@ -50,15 +62,37 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 
 		wayOrientationAtCenter = getWayOrientationAtCenterLineInDegrees(getElementGeometry());
 
-		restoreInstanceState(inState);
+		initPuzzleDisplay(inState);
+		initPuzzleImages(inState);
 
 		return view;
 	}
 
-	private void restoreInstanceState(Bundle inState)
+	private void initPuzzleDisplay(Bundle inState)
 	{
-		int defaultResId = getCountryInfo().isLeftHandTraffic() ?
+		if(inState != null)
+		{
+			isDefiningBothSides = inState.getBoolean(DEFINE_BOTH_SIDES);
+		}
+		else
+		{
+			isDefiningBothSides = !LIKELY_NO_BICYCLE_CONTRAFLOW.matches(getOsmElement());
+		}
+
+		if(!isDefiningBothSides)
+		{
+			if(isLeftHandTraffic()) puzzle.showOnlyLeftSide();
+			else                    puzzle.showOnlyRightSide();
+
+			addOtherAnswer(R.string.quest_cycleway_answer_contraflow_cycleway, this::showBothSides);
+		}
+	}
+
+	private void initPuzzleImages(Bundle inState)
+	{
+		int defaultResId = isLeftHandTraffic() ?
 				R.drawable.ic_cycleway_unknown_l : R.drawable.ic_cycleway_unknown;
+
 		if(inState != null)
 		{
 			String rightSideString = inState.getString(CYCLEWAY_RIGHT);
@@ -94,6 +128,7 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 		super.onSaveInstanceState(outState);
 		if(rightSide != null) outState.putString(CYCLEWAY_RIGHT, rightSide.name());
 		if(leftSide != null)  outState.putString(CYCLEWAY_LEFT, leftSide.name());
+		outState.putBoolean(DEFINE_BOTH_SIDES, isDefiningBothSides);
 	}
 
 	public void onMapOrientation(float rotation, float tilt)
@@ -119,7 +154,8 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 
 	@Override protected void onClickOk()
 	{
-		if(leftSide == null || rightSide == null)
+		if(  isDefiningBothSides && (leftSide == null || rightSide == null) ||
+		    !isDefiningBothSides && leftSide == null && rightSide == null)
 		{
 			Toast.makeText(getActivity(), R.string.no_changes, Toast.LENGTH_SHORT).show();
 			return;
@@ -129,7 +165,7 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 
 		// a cycleway that goes into opposite direction of a oneway street needs special tagging
 		Bundle bundle = new Bundle();
-		if(isOneway())
+		if(isOneway() && leftSide != null && rightSide != null)
 		{
 			// if the road is oneway=-1, a cycleway that goes opposite to it would be cycleway:oneway=yes
 			int reverseDir = isReversedOneway() ? 1 : -1;
@@ -155,8 +191,8 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 			isOnewayNotForCyclists |= isDualTrackOrLane(rightSide);
 		}
 
-		bundle.putString(CYCLEWAY_LEFT, leftSide.name());
-		bundle.putString(CYCLEWAY_RIGHT, rightSide.name());
+		if(leftSide != null)  bundle.putString(CYCLEWAY_LEFT, leftSide.name());
+		if(rightSide != null) bundle.putString(CYCLEWAY_RIGHT, rightSide.name());
 		bundle.putBoolean(IS_ONEWAY_NOT_FOR_CYCLISTS, isOnewayNotForCyclists);
 		applyFormAnswer(bundle);
 	}
@@ -229,6 +265,12 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 				};
 			}
 		};
+	}
+
+	private void showBothSides()
+	{
+		isDefiningBothSides = true;
+		puzzle.showBothSides();
 	}
 
 	private boolean isOneway()
