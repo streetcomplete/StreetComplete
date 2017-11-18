@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.quests.sport;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -69,13 +68,7 @@ public class AddSportForm extends ImageListQuestAnswerFragment
 		actualSportsValues = createItems();
 		imageSelector.setCellLayout(R.layout.cell_icon_select_with_label_below);
 
-		addOtherAnswer(R.string.quest_sport_answer_multi, new Runnable()
-		{
-			@Override public void run()
-			{
-				applyMultiAnswer();
-			}
-		});
+		addOtherAnswer(R.string.quest_sport_answer_multi, this::applyMultiAnswer);
 
 		return view;
 	}
@@ -109,28 +102,11 @@ public class AddSportForm extends ImageListQuestAnswerFragment
 	{
 		if(imageSelector.getSelectedIndices().size() > 3)
 		{
-			DialogInterface.OnClickListener onSpecific = new DialogInterface.OnClickListener()
-			{
-				@Override
-				public void onClick(DialogInterface dialog, int which)
-				{
-					applyAnswer();
-				}
-			};
-			DialogInterface.OnClickListener onGeneric = new DialogInterface.OnClickListener()
-			{
-				@Override
-				public void onClick(DialogInterface dialog, int which)
-				{
-					applyMultiAnswer();
-				}
-			};
-
 			new AlertDialogBuilder(getActivity())
 					.setTitle(R.string.quest_sport_manySports_confirmation_title)
 					.setMessage(R.string.quest_sport_manySports_confirmation_description)
-					.setPositiveButton(R.string.quest_manySports_confirmation_specific, onSpecific)
-					.setNegativeButton(R.string.quest_manySports_confirmation_generic, onGeneric)
+					.setPositiveButton(R.string.quest_manySports_confirmation_specific, (dialog, which) -> applyAnswer())
+					.setNegativeButton(R.string.quest_manySports_confirmation_generic, (dialog, which) -> applyMultiAnswer())
 					.show();
 		}
 		else

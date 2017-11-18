@@ -46,14 +46,11 @@ public abstract class ImageListQuestAnswerFragment extends AbstractQuestFormAnsw
 		valueList.setNestedScrollingEnabled(false);
 
 		showMoreButton = view.findViewById(R.id.buttonShowMore);
-		showMoreButton.setOnClickListener(new View.OnClickListener()
+		showMoreButton.setOnClickListener(v ->
 		{
-			@Override public void onClick(View v)
-			{
-				List<ImageSelectAdapter.Item> all = Arrays.<ImageSelectAdapter.Item>asList(getItems());
-				imageSelector.addItems(all.subList(imageSelector.getItemCount(), all.size()));
-				showMoreButton.setVisibility(View.GONE);
-			}
+			List<ImageSelectAdapter.Item> all = Arrays.asList(getItems());
+			imageSelector.addItems(all.subList(imageSelector.getItemCount(), all.size()));
+			showMoreButton.setVisibility(View.GONE);
 		});
 
 		int selectableItems = getMaxSelectableItems();

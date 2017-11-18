@@ -45,13 +45,7 @@ public class StringMapChanges
 	/** Return an iterable to iterate through the changes that have conflicts with the given map */
 	public Iterable<StringMapEntryChange> getConflictsTo(@NonNull final Map<String,String> map)
 	{
-		return new Iterable<StringMapEntryChange>()
-		{
-			@Override public Iterator<StringMapEntryChange> iterator()
-			{
-				return new ConflictIterator(map);
-			}
-		};
+		return () -> new ConflictIterator(map);
 	}
 
 	/** Applies this diff to the given map. */

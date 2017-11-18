@@ -18,7 +18,7 @@ public class QuestStatisticsDaoTest extends ApplicationDbTestCase
 	private static final String ONE = "one";
 	private static final String TWO = "two";
 
-	@Override public void setUp()
+	@Override public void setUp() throws Exception
 	{
 		super.setUp();
 		dao = new QuestStatisticsDao(dbHelper, null);

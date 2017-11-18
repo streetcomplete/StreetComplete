@@ -4,9 +4,6 @@ import android.os.Bundle;
 
 import junit.framework.TestCase;
 
-import org.mockito.invocation.InvocationOnMock;
-import org.mockito.stubbing.Answer;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -50,8 +47,9 @@ public class OsmQuestDownloadTest extends TestCase
 	private OsmQuestDao osmQuestDao;
 	private FutureTask<CountryBoundaries> countryBoundariesFuture;
 
-	@Override public void setUp()
+	@Override public void setUp() throws Exception
 	{
+		super.setUp();
 		geometryDb = mock(ElementGeometryDao.class);
 		elementDb = mock(MergedElementDao.class);
 		osmQuestDao = mock(OsmQuestDao.class);
@@ -106,15 +104,12 @@ public class OsmQuestDownloadTest extends TestCase
 				any(BoundingBox.class), any(QuestStatus.class), anyString(),
 				any(Element.Type.class), anyLong()))
 				.thenReturn(quests);
-		doAnswer(new Answer<Integer>()
+		doAnswer(invocation ->
 		{
-			@Override public Integer answer(InvocationOnMock invocation) throws Throwable
-			{
-				Collection<Long> deletedQuests = (Collection<Long>) (invocation.getArguments()[0]);
-				assertEquals(1, deletedQuests.size());
-				assertEquals(13L, (long) deletedQuests.iterator().next());
-				return 1;
-			}
+			Collection<Long> deletedQuests = (Collection<Long>) (invocation.getArguments()[0]);
+			assertEquals(1, deletedQuests.size());
+			assertEquals(13L, (long) deletedQuests.iterator().next());
+			return 1;
 		}).when(osmQuestDao).deleteAll(any(Collection.class));
 
 		OsmQuestDownload dl = new OsmQuestDownload(geometryDb, elementDb, osmQuestDao, countryBoundariesFuture);

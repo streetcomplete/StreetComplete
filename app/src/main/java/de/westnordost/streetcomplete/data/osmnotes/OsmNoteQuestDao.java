@@ -54,13 +54,8 @@ public class OsmNoteQuestDao extends AQuestDao<OsmNoteQuest>
 		String[] cols = { NoteTable.Columns.LATITUDE, NoteTable.Columns.LONGITUDE };
 		WhereSelectionBuilder qb = new WhereSelectionBuilder();
 		addBBox(bbox, qb);
-		return getAllThings(getMergedViewName(), cols, qb, new CreateFromCursor<LatLon>()
-		{
-			@Override public LatLon create(Cursor cursor)
-			{
-				return new OsmLatLon(cursor.getDouble(0), cursor.getDouble(1));
-			}
-		});
+		return getAllThings(getMergedViewName(), cols, qb,
+				cursor -> new OsmLatLon(cursor.getDouble(0), cursor.getDouble(1)));
 	}
 
 	@Override protected String getTableName() { return OsmNoteQuestTable.NAME; }

@@ -1,12 +1,10 @@
 package de.westnordost.streetcomplete.quests.opening_hours;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -50,13 +48,7 @@ public class AddOpeningHoursForm extends AbstractQuestFormAnswerFragment
 		initOpeningHoursAdapter(contentView, savedInstanceState);
 
 		Button addTimes = contentView.findViewById(R.id.btn_add);
-		addTimes.setOnClickListener(new View.OnClickListener()
-		{
-			@Override public void onClick(View v)
-			{
-				onClickAddButton(v);
-			}
-		});
+		addTimes.setOnClickListener(this::onClickAddButton);
 
 		return view;
 	}
@@ -86,28 +78,9 @@ public class AddOpeningHoursForm extends AbstractQuestFormAnswerFragment
 
 	private void addOtherAnswers()
 	{
-		addOtherAnswer(R.string.quest_openingHours_answer_no_regular_opening_hours, new Runnable()
-		{
-			@Override public void run()
-			{
-				showInputCommentDialog();
-			}
-		});
-		addOtherAnswer(R.string.quest_openingHours_answer_247, new Runnable()
-		{
-			@Override public void run()
-			{
-				showConfirm24_7Dialog();
-			}
-		});
-		addOtherAnswer(R.string.quest_openingHours_answer_seasonal_opening_hours, new Runnable()
-		{
-			@Override public void run()
-			{
-				isAlsoAddingMonths = true;
-				openingHoursAdapter.changeToMonthsMode();
-			}
-		});
+		addOtherAnswer(R.string.quest_openingHours_answer_no_regular_opening_hours, this::showInputCommentDialog);
+		addOtherAnswer(R.string.quest_openingHours_answer_247, this::showConfirm24_7Dialog);
+		addOtherAnswer(R.string.quest_openingHours_answer_seasonal_opening_hours, this::changeToMonthsMode);
 	}
 
 	private void onClickAddButton(View v)
@@ -121,14 +94,11 @@ public class AddOpeningHoursForm extends AbstractQuestFormAnswerFragment
 			PopupMenu m = new PopupMenu(getActivity(), v);
 			m.getMenu().add(NONE,0,NONE,R.string.quest_openingHours_add_weekdays);
 			m.getMenu().add(NONE,1,NONE,R.string.quest_openingHours_add_months);
-			m.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener()
+			m.setOnMenuItemClickListener(item ->
 			{
-				@Override public boolean onMenuItemClick(MenuItem item)
-				{
-					if(0 == item.getItemId()) openingHoursAdapter.addNewWeekdays();
-					else if(1 == item.getItemId()) openingHoursAdapter.addNewMonths();
-					return true;
-				}
+				if(0 == item.getItemId()) openingHoursAdapter.addNewWeekdays();
+				else if(1 == item.getItemId()) openingHoursAdapter.addNewMonths();
+				return true;
 			});
 			m.show();
 		}
@@ -154,15 +124,12 @@ public class AddOpeningHoursForm extends AbstractQuestFormAnswerFragment
 		new AlertDialogBuilder(getActivity())
 				.setTitle(R.string.quest_openingHours_comment_title)
 				.setView(view)
-				.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener()
+				.setPositiveButton(android.R.string.ok, (dialog, which) ->
 				{
-					@Override public void onClick(DialogInterface dialog, int which)
-					{
-						String txt = editText.getText().toString().replaceAll("\"","");
-						Bundle answer = new Bundle();
-						answer.putString(OPENING_HOURS, "\""+txt+"\"");
-						applyImmediateAnswer(answer);
-					}
+					String txt = editText.getText().toString().replaceAll("\"","");
+					Bundle answer = new Bundle();
+					answer.putString(OPENING_HOURS, "\""+txt+"\"");
+					applyImmediateAnswer(answer);
 				})
 				.setNegativeButton(android.R.string.cancel, null)
 				.show();
@@ -172,17 +139,20 @@ public class AddOpeningHoursForm extends AbstractQuestFormAnswerFragment
 	{
 		new AlertDialogBuilder(getActivity())
 				.setMessage(R.string.quest_openingHours_24_7_confirmation)
-				.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener()
+				.setPositiveButton(android.R.string.yes, (dialog, which) ->
 				{
-					@Override public void onClick(DialogInterface dialog, int which)
-					{
-						Bundle answer = new Bundle();
-						answer.putString(OPENING_HOURS, "24/7");
-						applyImmediateAnswer(answer);
-					}
+					Bundle answer = new Bundle();
+					answer.putString(OPENING_HOURS, "24/7");
+					applyImmediateAnswer(answer);
 				})
 				.setNegativeButton(android.R.string.no, null)
 				.show();
+	}
+
+	private void changeToMonthsMode()
+	{
+		isAlsoAddingMonths = true;
+		openingHoursAdapter.changeToMonthsMode();
 	}
 
 	private void applyOpeningHours(String openingHours)

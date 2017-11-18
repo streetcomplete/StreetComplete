@@ -46,10 +46,7 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 		setContentView(R.layout.quest_cycleway);
 
 		puzzle = view.findViewById(R.id.puzzle);
-		puzzle.setListener(new StreetSideSelectPuzzle.OnClickSideListener()
-		{
-			@Override public void onClick(boolean isRight) { showCyclewaySelectionDialog(isRight); }
-		});
+		puzzle.setListener(this::showCyclewaySelectionDialog);
 
 		wayOrientationAtCenter = getWayOrientationAtCenterLineInDegrees(getElementGeometry());
 
@@ -191,24 +188,21 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 				.setView(recyclerView)
 				.create();
 
-		recyclerView.setAdapter(createAdapter(Arrays.asList(Cycleway.values()), new OnCyclewaySelected()
+		recyclerView.setAdapter(createAdapter(Arrays.asList(Cycleway.values()), cycleway ->
 		{
-			@Override public void onCyclewaySelected(Cycleway cycleway)
+			alertDialog.dismiss();
+
+			int iconResId = cycleway.getIconResId(isLeftHandTraffic());
+
+			if (isRight)
 			{
-				alertDialog.dismiss();
-
-				int iconResId = cycleway.getIconResId(isLeftHandTraffic());
-
-				if (isRight)
-				{
-					puzzle.replaceRightSideImageResource(iconResId);
-					rightSide = cycleway;
-				}
-				else
-				{
-					puzzle.replaceLeftSideImageResource(iconResId);
-					leftSide = cycleway;
-				}
+				puzzle.replaceRightSideImageResource(iconResId);
+				rightSide = cycleway;
+			}
+			else
+			{
+				puzzle.replaceLeftSideImageResource(iconResId);
+				leftSide = cycleway;
 			}
 		}));
 		alertDialog.show();
@@ -230,13 +224,7 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 						TextView textView = itemView.findViewById(R.id.textView);
 						iconView.setImageResource(item.getIconResId(isLeftHandTraffic()));
 						textView.setText(item.nameResId);
-						itemView.setOnClickListener(new View.OnClickListener()
-						{
-							@Override public void onClick(View view)
-							{
-								callback.onCyclewaySelected(item);
-							}
-						});
+						itemView.setOnClickListener(view -> callback.onCyclewaySelected(item));
 					}
 				};
 			}

@@ -42,13 +42,7 @@ public class AddRoofShapeForm extends ImageListQuestAnswerFragment
 		View view = super.onCreateView(inflater, container, savedInstanceState);
 		imageSelector.setCellLayout(R.layout.cell_labeled_icon_select);
 
-		addOtherAnswer(R.string.quest_roofShape_answer_many, new Runnable()
-		{
-			@Override public void run()
-			{
-				applyManyRoofsAnswer();
-			}
-		});
+		addOtherAnswer(R.string.quest_roofShape_answer_many, this::applyManyRoofsAnswer);
 
 		return view;
 	}

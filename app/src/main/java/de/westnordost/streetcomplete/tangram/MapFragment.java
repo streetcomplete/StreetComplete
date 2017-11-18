@@ -178,13 +178,7 @@ public class MapFragment extends Fragment implements
 			initMarkers();
 			followPosition();
 			showLocation();
-			postOnLayout(new Runnable()
-			{
-				@Override public void run()
-				{
-					updateView();
-				}
-			});
+			postOnLayout(this::updateView);
 		}
 	}
 

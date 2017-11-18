@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.settings;
 
-import android.content.DialogInterface;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
@@ -182,13 +181,7 @@ public class QuestSelectionAdapter extends ListAdapter<QuestSelectionAdapter.Que
 						.setTitle(R.string.enable_quest_confirmation_title)
 						.setMessage(item.questType.getDefaultDisabledMessage())
 						.setPositiveButton(android.R.string.yes, null)
-						.setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener()
-						{
-							@Override public void onClick(DialogInterface dialog, int which)
-							{
-								compoundButton.setChecked(false);
-							}
-						})
+						.setNegativeButton(android.R.string.no, (dialog, which) -> compoundButton.setChecked(false))
 						.show();
 			}
 		}

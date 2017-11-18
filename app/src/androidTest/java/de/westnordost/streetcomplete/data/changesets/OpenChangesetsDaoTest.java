@@ -9,7 +9,7 @@ public class OpenChangesetsDaoTest extends ApplicationDbTestCase
 	private static final OpenChangesetKey Q = new OpenChangesetKey("Hurzipurz","test");
 	private static final OpenChangesetKey P = new OpenChangesetKey("Brasliweks","test");
 
-	@Override public void setUp()
+	@Override public void setUp() throws Exception
 	{
 		super.setUp();
 		dao = new OpenChangesetsDao(dbHelper, null);

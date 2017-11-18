@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.quests.place_name;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,13 +26,7 @@ public class AddPlaceNameForm extends AbstractQuestFormAnswerFragment
 		View contentView = setContentView(R.layout.quest_placename);
 		nameInput = contentView.findViewById(R.id.nameInput);
 
-		addOtherAnswer(R.string.quest_name_answer_noName, new Runnable()
-		{
-			@Override public void run()
-			{
-				confirmNoName();
-			}
-		});
+		addOtherAnswer(R.string.quest_name_answer_noName, this::confirmNoName);
 
 		return view;
 	}
@@ -50,15 +43,11 @@ public class AddPlaceNameForm extends AbstractQuestFormAnswerFragment
 	{
 		new AlertDialogBuilder(getActivity())
 				.setTitle(R.string.quest_name_answer_noName_confirmation_title)
-				.setPositiveButton(R.string.quest_name_noName_confirmation_positive, new DialogInterface.OnClickListener()
+				.setPositiveButton(R.string.quest_name_noName_confirmation_positive, (dialog, which) ->
 				{
-					@Override
-					public void onClick(DialogInterface dialog, int which)
-					{
-						Bundle data = new Bundle();
-						data.putBoolean(NO_NAME, true);
-						applyImmediateAnswer(data);
-					}
+					Bundle data = new Bundle();
+					data.putBoolean(NO_NAME, true);
+					applyImmediateAnswer(data);
 				})
 				.setNegativeButton(R.string.quest_generic_confirmation_no, null)
 				.show();

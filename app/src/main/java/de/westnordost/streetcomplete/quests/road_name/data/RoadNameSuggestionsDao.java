@@ -91,32 +91,24 @@ public class RoadNameSuggestionsDao
 			args[ai + 3] = "" + bbox.getMinLongitude();
 		}
 
-		Cursor cursor = db.query(
-				RoadNamesTable.NAME,
-				new String[]{RoadNamesTable.Columns.GEOMETRY, RoadNamesTable.Columns.NAMES},
-				query.toString(), args,	null, null, null
-		);
-
 		List<Map<String,String>> result = new ArrayList<>();
 
-		try
+		String[] cols = new String[]{RoadNamesTable.Columns.GEOMETRY, RoadNamesTable.Columns.NAMES};
+
+		try (Cursor cursor = db.query(RoadNamesTable.NAME, cols, query.toString(), args, null, null, null))
 		{
-			if(cursor.moveToFirst())
+			if (cursor.moveToFirst())
 			{
-				while(!cursor.isAfterLast())
+				while (!cursor.isAfterLast())
 				{
 					ArrayList<LatLon> geometry = serializer.toObject(cursor.getBlob(0), ArrayList.class);
-					if(SphericalEarthMath.isWithinDistance(maxDistance, points, geometry))
+					if (SphericalEarthMath.isWithinDistance(maxDistance, points, geometry))
 					{
 						result.add(serializer.toObject(cursor.getBlob(1), HashMap.class));
 					}
 					cursor.moveToNext();
 				}
 			}
-		}
-		finally
-		{
-			cursor.close();
 		}
 		return result;
 	}

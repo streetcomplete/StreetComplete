@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.quests.note_discussion;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,13 +41,10 @@ public class NoteImageAdapter extends ListAdapter<String>
 		{
 			super(itemView);
 			imageView = itemView.findViewById(R.id.imageView);
-			imageView.setOnClickListener(new View.OnClickListener()
+			imageView.setOnClickListener(view ->
 			{
-				@Override public void onClick(View view)
-				{
-					int index = getAdapterPosition();
-					if(index > -1) onClickDelete(index);
-				}
+				int index = getAdapterPosition();
+				if(index > -1) onClickDelete(index);
 			});
 			deleteButton = itemView.findViewById(R.id.deleteButton);
 		}
@@ -78,13 +74,7 @@ public class NoteImageAdapter extends ListAdapter<String>
 		new AlertDialogBuilder(context)
 				.setMessage(R.string.quest_leave_new_note_photo_delete_title)
 				.setNegativeButton(android.R.string.cancel, null)
-				.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener()
-				{
-					@Override public void onClick(DialogInterface dialog, int which)
-					{
-						delete(index);
-					}
-				})
+				.setPositiveButton(android.R.string.ok, (dialog, which) -> delete(index))
 				.show();
 	}
 

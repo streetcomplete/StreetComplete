@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.location;
 import android.Manifest;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -95,34 +94,9 @@ public class LocationRequestFragment extends Fragment
 		{
 			new AlertDialogBuilder(getContext())
 					.setMessage(R.string.no_location_permission_warning)
-					.setPositiveButton(R.string.retry,
-							new DialogInterface.OnClickListener()
-							{
-								@Override
-								public void onClick(DialogInterface dialog, int which)
-								{
-									requestLocationPermissions();
-								}
-							})
-					.setNegativeButton(android.R.string.cancel,
-							new DialogInterface.OnClickListener()
-							{
-								@Override public void onClick(DialogInterface dialog, int which)
-								{
-									state = LocationState.DENIED;
-									finish();
-								}
-							})
-					.setOnCancelListener(
-							new DialogInterface.OnCancelListener()
-							{
-								@Override public void onCancel(DialogInterface dialog)
-								{
-									state = LocationState.DENIED;
-									finish();
-								}
-							}
-					)
+					.setPositiveButton(R.string.retry,	(dialog, which) -> requestLocationPermissions())
+					.setNegativeButton(android.R.string.cancel, (dialog, which) -> deniedlocationPermissions())
+					.setOnCancelListener(dialog -> deniedlocationPermissions())
 					.show();
 		}
 	}
@@ -134,6 +108,12 @@ public class LocationRequestFragment extends Fragment
 		// we ignore the resultCode, because we always get Activity.RESULT_CANCELED. Instead, we
 		// check if the conditions are fulfilled now
 		requestLocationSettingsToBeOn();
+	}
+
+	private void deniedlocationPermissions()
+	{
+		state = LocationState.DENIED;
+		finish();
 	}
 
 	private void requestLocationPermissions()
@@ -160,33 +140,15 @@ public class LocationRequestFragment extends Fragment
 		{
 			final AlertDialog dlg = new AlertDialogBuilder(getContext())
 					.setMessage(R.string.turn_on_location_request)
-					.setPositiveButton(android.R.string.yes,
-							new DialogInterface.OnClickListener()
-							{
-								@Override public void onClick(DialogInterface dialog, int which)
-								{
-									dialog.dismiss();
-									Intent viewIntent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-									startActivityForResult(viewIntent, LOCATION_TURN_ON_REQUEST);
-								}
-							})
-					.setNegativeButton(android.R.string.no,
-							new DialogInterface.OnClickListener()
-							{
-								@Override public void onClick(DialogInterface dialog, int which)
-								{
-									cancelTurnLocationOnDialog();
-								}
-							})
-					.setOnCancelListener(
-							new DialogInterface.OnCancelListener()
-							{
-								@Override public void onCancel(DialogInterface dialog)
-								{
-									cancelTurnLocationOnDialog();
-								}
-							}
-					).create();
+					.setPositiveButton(android.R.string.yes, (dialog, which) ->
+					{
+						dialog.dismiss();
+						Intent viewIntent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+						startActivityForResult(viewIntent, LOCATION_TURN_ON_REQUEST);
+					})
+					.setNegativeButton(android.R.string.no,	(dialog, which) -> cancelTurnLocationOnDialog())
+					.setOnCancelListener(dialog -> cancelTurnLocationOnDialog())
+					.create();
 
 			// the user may turn on location in the pull-down-overlay, without actually going into
 			// settings dialog

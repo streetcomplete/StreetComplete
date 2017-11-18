@@ -61,17 +61,12 @@ public class CreateNoteDao
 	public CreateNote get(long id)
 	{
 		SQLiteDatabase db = dbHelper.getWritableDatabase();
-		Cursor cursor = db.query(CreateNoteTable.NAME, null, CreateNoteTable.Columns.ID + " = " + id,
-				null, null, null, null, "1");
+		String where = CreateNoteTable.Columns.ID + " = " + id;
 
-		try
+		try (Cursor cursor = db.query(CreateNoteTable.NAME, null, where, null, null, null, null, "1"))
 		{
-			if(!cursor.moveToFirst()) return null;
+			if (!cursor.moveToFirst()) return null;
 			return createObjectFrom(cursor);
-		}
-		finally
-		{
-			cursor.close();
 		}
 	}
 
@@ -96,25 +91,19 @@ public class CreateNoteDao
 					String.valueOf(bbox.getMaxLongitude()));
 		}
 
-		Cursor cursor = db.query(CreateNoteTable.NAME, null, builder.getWhere(), builder.getArgs(),
-				null, null, null, null);
-
 		List<CreateNote> result = new ArrayList<>();
 
-		try
+		try (Cursor cursor = db.query(CreateNoteTable.NAME, null, builder.getWhere(), builder.getArgs(),
+				null, null, null, null))
 		{
-			if(cursor.moveToFirst())
+			if (cursor.moveToFirst())
 			{
-				while(!cursor.isAfterLast())
+				while (!cursor.isAfterLast())
 				{
 					result.add(createObjectFrom(cursor));
 					cursor.moveToNext();
 				}
 			}
-		}
-		finally
-		{
-			cursor.close();
 		}
 
 		return result;

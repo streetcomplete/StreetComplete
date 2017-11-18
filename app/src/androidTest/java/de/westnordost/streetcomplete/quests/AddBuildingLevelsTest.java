@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.quests.building_levels.AddBuildingLevelsFor
 
 public class AddBuildingLevelsTest extends AOsmElementQuestTypeTest
 {
-	@Override public void setUp()
+	@Override public void setUp() throws Exception
 	{
 		super.setUp();
 		tags.put("building","residential");

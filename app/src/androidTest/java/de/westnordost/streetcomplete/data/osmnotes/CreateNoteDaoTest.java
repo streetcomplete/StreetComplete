@@ -11,7 +11,7 @@ public class CreateNoteDaoTest extends ApplicationDbTestCase
 {
 	private CreateNoteDao dao;
 
-	@Override public void setUp()
+	@Override public void setUp() throws Exception
 	{
 		super.setUp();
 		dao = new CreateNoteDao(dbHelper, serializer);

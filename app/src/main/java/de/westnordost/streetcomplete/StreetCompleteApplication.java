@@ -40,7 +40,7 @@ public class StreetCompleteApplication extends Application
 	private void preload()
 	{
 		// sprite sheet is necessary to display quests
-		new Thread(new Runnable() { @Override public void run() { spriteSheetCreator.get(); }}).start();
+		new Thread(() -> spriteSheetCreator.get()).start();
 		// country boundaries are necessary latest for when a quest is opened
 		new Thread(countryBoundariesFuture).start();
 	}

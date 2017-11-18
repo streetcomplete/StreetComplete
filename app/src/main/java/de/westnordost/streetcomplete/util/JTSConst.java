@@ -97,7 +97,7 @@ public class JTSConst
 				{
 					if(shellsWithHoles.get(shell) == null)
 					{
-						shellsWithHoles.put(shell, new ArrayList<LinearRing>());
+						shellsWithHoles.put(shell, new ArrayList<>());
 					}
 					shellsWithHoles.get(shell).add(hole);
 					it.remove();

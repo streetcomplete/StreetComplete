@@ -17,7 +17,7 @@ public class ElementGeometryDaoTest extends ApplicationDbTestCase
 {
 	private ElementGeometryDao dao;
 
-	@Override public void setUp()
+	@Override public void setUp() throws Exception
 	{
 		super.setUp();
 		dao = new ElementGeometryDao(dbHelper, serializer);

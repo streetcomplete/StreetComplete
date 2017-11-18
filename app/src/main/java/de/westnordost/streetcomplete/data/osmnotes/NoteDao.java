@@ -89,17 +89,13 @@ public class NoteDao
 	public Note get(long id)
 	{
 		SQLiteDatabase db = dbHelper.getReadableDatabase();
-		Cursor cursor = db.query(NoteTable.NAME, null, NoteTable.Columns.ID + " = " + id,
-				null, null, null, null, "1");
+		String where = NoteTable.Columns.ID + " = " + id;
 
-		try
+		try (Cursor cursor = db.query(NoteTable.NAME, null, where,
+				null, null, null, null, "1"))
 		{
-			if(!cursor.moveToFirst()) return null;
+			if (!cursor.moveToFirst()) return null;
 			return createObjectFrom(serializer, cursor);
-		}
-		finally
-		{
-			cursor.close();
 		}
 	}
 

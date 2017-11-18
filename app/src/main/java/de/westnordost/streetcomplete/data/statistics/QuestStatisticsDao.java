@@ -16,9 +16,7 @@ import de.westnordost.osmapi.map.data.Node;
 import de.westnordost.osmapi.map.data.Relation;
 import de.westnordost.osmapi.map.data.Way;
 import de.westnordost.streetcomplete.ApplicationConstants;
-import de.westnordost.osmapi.changesets.ChangesetInfo;
 import de.westnordost.osmapi.changesets.ChangesetsDao;
-import de.westnordost.osmapi.common.Handler;
 
 public class QuestStatisticsDao
 {
@@ -38,27 +36,24 @@ public class QuestStatisticsDao
 	{
 		final Map<String, Integer> data = new HashMap<>();
 
-		userChangesetsDao.findAll(new Handler<ChangesetInfo>()
+		userChangesetsDao.findAll(changeset ->
 		{
-			@Override public void handle(ChangesetInfo changeset)
-			{
-				if(changeset.tags == null) return;
+			if(changeset.tags == null) return;
 
-				String userAgent = changeset.tags.get("created_by");
-				if(userAgent == null) return;
+			String userAgent = changeset.tags.get("created_by");
+			if(userAgent == null) return;
 
-				if(!userAgent.startsWith(ApplicationConstants.NAME)) return;
+			if(!userAgent.startsWith(ApplicationConstants.NAME)) return;
 
-				String questType = changeset.tags.get(ApplicationConstants.QUESTTYPE_TAG_KEY);
-				if(questType == null) return;
+			String questType = changeset.tags.get(ApplicationConstants.QUESTTYPE_TAG_KEY);
+			if(questType == null) return;
 
-				int prev = data.get(questType) != null ? data.get(questType) : 0;
+			int prev = data.get(questType) != null ? data.get(questType) : 0;
 
-				MapDataChangesCounter counter = new MapDataChangesCounter();
-				changesetsDao.getData(changeset.id, counter);
+			MapDataChangesCounter counter = new MapDataChangesCounter();
+			changesetsDao.getData(changeset.id, counter);
 
-				data.put(questType, prev + counter.count );
-			}
+			data.put(questType, prev + counter.count );
 		}, userId, ApplicationConstants.DATE_OF_BIRTH);
 
 		SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -109,38 +104,26 @@ public class QuestStatisticsDao
 	{
 		SQLiteDatabase db = dbHelper.getReadableDatabase();
 
-		Cursor cursor = db.query(QuestStatisticsTable.NAME,
-				new String[]{QuestStatisticsTable.Columns.SUCCEEDED},
-				QuestStatisticsTable.Columns.QUEST_TYPE + " = ?",
-				new String[]{questType},
-				null, null, null, "1");
+		String[] cols = new String[]{QuestStatisticsTable.Columns.SUCCEEDED};
+		String where = QuestStatisticsTable.Columns.QUEST_TYPE + " = ?";
+		String[] args = new String[]{questType};
 
-		try
+		try (Cursor cursor = db.query(QuestStatisticsTable.NAME, cols, where, args, null, null, null, "1"))
 		{
-			if(!cursor.moveToFirst()) return 0;
+			if (!cursor.moveToFirst()) return 0;
 			return cursor.getInt(0);
-		}
-		finally
-		{
-			cursor.close();
 		}
 	}
 
 	public int getTotalAmount()
 	{
 		SQLiteDatabase db = dbHelper.getReadableDatabase();
-
 		String[] cols = {"total("+QuestStatisticsTable.Columns.SUCCEEDED+")"};
-		Cursor cursor = db.query(QuestStatisticsTable.NAME, cols, null,	null, null, null, null, null);
 
-		try
+		try (Cursor cursor = db.query(QuestStatisticsTable.NAME, cols, null, null, null, null, null, null))
 		{
-			if(!cursor.moveToFirst()) return 0;
+			if (!cursor.moveToFirst()) return 0;
 			return cursor.getInt(0);
-		}
-		finally
-		{
-			cursor.close();
 		}
 	}
 }

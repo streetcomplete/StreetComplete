@@ -17,7 +17,7 @@ public class OsmNoteQuestDaoTest extends ApplicationDbTestCase
 	private NoteDao noteDao;
 	private OsmNoteQuestType questType;
 
-	@Override public void setUp()
+	@Override public void setUp() throws Exception
 	{
 		super.setUp();
 		questType = new OsmNoteQuestType();

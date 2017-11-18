@@ -47,8 +47,9 @@ ddhhhyysyhdhyo+ymNmNNmmNNNNMNNh//::hdysosyhyyhNm:---/oshdNMNNNMMNNNmdysso:..---.
 	private final CircularSection inTheSummerTime = new CircularSection(5,8);
 
 
-	@Override public void setUp()
+	@Override public void setUp() throws Exception
 	{
+		super.setUp();
 		Locale.setDefault(Locale.US);
 	}
 

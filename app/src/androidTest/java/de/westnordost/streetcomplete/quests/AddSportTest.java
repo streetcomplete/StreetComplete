@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.quests.sport.AddSportForm;
 
 public class AddSportTest extends AOsmElementQuestTypeTest
 {
-	@Override public void setUp()
+	@Override public void setUp() throws Exception
 	{
 		super.setUp();
 		tags.put("leisure","pitch");

@@ -53,13 +53,7 @@ public class AttachPhotoFragment extends Fragment
 		View view = inflater.inflate(R.layout.fragment_attach_photo, container, false);
 
 		ImageButton takePhoto = view.findViewById(R.id.buttonTakeImage);
-		takePhoto.setOnClickListener(new View.OnClickListener()
-		{
-			@Override public void onClick(View v)
-			{
-				takePhoto();
-			}
-		});
+		takePhoto.setOnClickListener(v -> takePhoto());
 
 		if (!getActivity().getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA))
 		{

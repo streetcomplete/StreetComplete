@@ -75,50 +75,38 @@ public class StreetSideSelectPuzzle extends FrameLayout
 		rightSideImage = findViewById(R.id.rightSideImage);
 		leftSideImage = findViewById(R.id.leftSideImage);
 
-		findViewById(R.id.leftSide).setOnClickListener(new OnClickListener()
-		{
-			@Override public void onClick(View view)
-			{
-				if(listener != null) listener.onClick(false);
-			}
-		});
-		findViewById(R.id.rightSide).setOnClickListener(new OnClickListener()
-		{
-			@Override public void onClick(View view)
-			{
-				if(listener != null) listener.onClick(true);
-			}
-		});
+		findViewById(R.id.leftSide).setOnClickListener(view -> onClick(false));
+		findViewById(R.id.rightSide).setOnClickListener(view -> onClick(true));
 
-		addOnLayoutChangeListener(new OnLayoutChangeListener()
+		addOnLayoutChangeListener((v, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom) ->
 		{
-			@Override
-			public void onLayoutChange(View v, int left, int top, int right, int bottom,
-									   int oldLeft, int oldTop, int oldRight, int oldBottom)
+			int height = Math.max(bottom - top, right - left);
+			int width = Math.min(bottom - top, right - left);
+			ViewGroup.LayoutParams params = rotateContainer.getLayoutParams();
+			if(params.width != width || params.height != height)
 			{
-				int height = Math.max(bottom - top, right - left);
-				int width = Math.min(bottom - top, right - left);
-				ViewGroup.LayoutParams params = rotateContainer.getLayoutParams();
-				if(params.width != width || params.height != height)
-				{
-					params.width = width;
-					params.height = height;
-					rotateContainer.setLayoutParams(params);
-				}
+				params.width = width;
+				params.height = height;
+				rotateContainer.setLayoutParams(params);
+			}
 
-				int streetWidth = width / 2;
-				if(leftImageResId != 0)
-				{
-					setStreetDrawable(leftImageResId, streetWidth, leftSideImage, true);
-					leftImageResId = 0;
-				}
-				if(rightImageResId != 0)
-				{
-					setStreetDrawable(rightImageResId, streetWidth, rightSideImage, false);
-					rightImageResId = 0;
-				}
+			int streetWidth = width / 2;
+			if(leftImageResId != 0)
+			{
+				setStreetDrawable(leftImageResId, streetWidth, leftSideImage, true);
+				leftImageResId = 0;
+			}
+			if(rightImageResId != 0)
+			{
+				setStreetDrawable(rightImageResId, streetWidth, rightSideImage, false);
+				rightImageResId = 0;
 			}
 		});
+	}
+
+	private void onClick(boolean isRight)
+	{
+		if(listener != null) listener.onClick(isRight);
 	}
 
 	public void setListener(OnClickSideListener listener)

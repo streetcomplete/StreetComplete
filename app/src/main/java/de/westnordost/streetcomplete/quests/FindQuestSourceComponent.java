@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.quests;
 
 import android.app.Activity;
-import android.content.DialogInterface;
 import android.location.Location;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -92,22 +91,13 @@ public class FindQuestSourceComponent
 			alertDialogBuilder
 					.setTitle(R.string.quest_source_dialog_title)
 					.setView(inner)
-					.setPositiveButton(R.string.quest_generic_confirmation_yes, new DialogInterface.OnClickListener()
+					.setPositiveButton(R.string.quest_generic_confirmation_yes, (dialog, which) ->
 					{
-						@Override public void onClick(DialogInterface dialog, int which)
-						{
-							++timesShown;
-							dontShowAgain = checkBox.isChecked();
-							listener.onFindQuestSourceResult(SURVEY);
-						}
+						++timesShown;
+						dontShowAgain = checkBox.isChecked();
+						listener.onFindQuestSourceResult(SURVEY);
 					})
-					.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener()
-			{
-				@Override public void onClick(DialogInterface dialog, int which)
-				{
-					// nothing
-				}
-			});
+					.setNegativeButton(android.R.string.cancel, null);
 
 			checkBox.setVisibility(timesShown < 2 ? View.GONE : View.VISIBLE);
 

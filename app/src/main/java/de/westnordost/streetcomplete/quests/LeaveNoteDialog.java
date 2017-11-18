@@ -18,7 +18,6 @@ public class LeaveNoteDialog extends DialogFragment
 	public static final String ARG_QUEST_TITLE = "questTitle";
 
 	private EditText noteInput;
-	private Button buttonOk;
 
 	private QuestAnswerComponent questAnswerComponent;
 
@@ -37,23 +36,9 @@ public class LeaveNoteDialog extends DialogFragment
 		View view = inflater.inflate(R.layout.dialog_leave_note, container, false);
 
 		Button buttonCancel = view.findViewById(R.id.buttonCancel);
-		buttonCancel.setOnClickListener(new View.OnClickListener()
-		{
-			@Override
-			public void onClick(View v)
-			{
-				onClickCancel();
-			}
-		});
-		buttonOk = view.findViewById(R.id.buttonOk);
-		buttonOk.setOnClickListener(new View.OnClickListener()
-		{
-			@Override
-			public void onClick(View v)
-			{
-				onClickOk();
-			}
-		});
+		buttonCancel.setOnClickListener(v -> onClickCancel());
+		Button buttonOk = view.findViewById(R.id.buttonOk);
+		buttonOk.setOnClickListener(v -> onClickOk());
 
 		noteInput = view.findViewById(R.id.noteInput);
 
