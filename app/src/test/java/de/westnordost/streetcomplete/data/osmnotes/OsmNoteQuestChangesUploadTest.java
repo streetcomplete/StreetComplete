@@ -13,7 +13,6 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import de.westnordost.osmapi.common.errors.OsmConflictException;
 import de.westnordost.osmapi.map.data.OsmLatLon;
 import de.westnordost.osmapi.notes.Note;
-import de.westnordost.osmapi.notes.NoteComment;
 import de.westnordost.osmapi.notes.NotesDao;
 import de.westnordost.streetcomplete.data.QuestStatus;
 import de.westnordost.streetcomplete.util.ImageUploader;

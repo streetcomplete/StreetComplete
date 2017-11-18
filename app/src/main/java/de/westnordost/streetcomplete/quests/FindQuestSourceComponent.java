@@ -172,14 +172,13 @@ public class FindQuestSourceComponent
 	{
 		List<Location> result = new ArrayList<>(locations.length);
 		Location previous = null;
-		for (int i = 0; i < locations.length; i++)
+		for (Location current : locations)
 		{
-			Location current = locations[i];
-			if(current == null) continue;
-			if(previous != null)
+			if (current == null) continue;
+			if (previous != null)
 			{
-				if(	previous.getLatitude() == current.getLatitude() &&
-					previous.getLongitude() == current.getLongitude()) continue;
+				if (previous.getLatitude() == current.getLatitude() &&
+						previous.getLongitude() == current.getLongitude()) continue;
 			}
 
 			result.add(current);

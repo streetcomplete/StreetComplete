@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.quests.road_name;
 
 import android.content.Context;
 import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.view.inputmethod.EditorInfo;

@@ -20,7 +20,7 @@ public class WheelchairAccessAnswerFragment extends AbstractQuestAnswerFragment
 		View view = super.onCreateView(inflater, container, savedInstanceState);
 		View buttonPanel = setButtonsView(R.layout.quest_wheelchair_access);
 
-		Button buttonYes = (Button) buttonPanel.findViewById(R.id.buttonYes);
+		Button buttonYes = buttonPanel.findViewById(R.id.buttonYes);
 		buttonYes.setOnClickListener(new View.OnClickListener()
 		{
 			@Override public void onClick(View v)
@@ -28,7 +28,7 @@ public class WheelchairAccessAnswerFragment extends AbstractQuestAnswerFragment
 				onClickAnswer("yes");
 			}
 		});
-		Button buttonLimited = (Button) buttonPanel.findViewById(R.id.buttonLimited);
+		Button buttonLimited = buttonPanel.findViewById(R.id.buttonLimited);
 		buttonLimited.setOnClickListener(new View.OnClickListener()
 		{
 			@Override public void onClick(View v)
@@ -36,7 +36,7 @@ public class WheelchairAccessAnswerFragment extends AbstractQuestAnswerFragment
 				onClickAnswer("limited");
 			}
 		});
-		Button buttonNo = (Button) buttonPanel.findViewById(R.id.buttonNo);
+		Button buttonNo = buttonPanel.findViewById(R.id.buttonNo);
 		buttonNo.setOnClickListener(new View.OnClickListener()
 		{
 			@Override public void onClick(View v)

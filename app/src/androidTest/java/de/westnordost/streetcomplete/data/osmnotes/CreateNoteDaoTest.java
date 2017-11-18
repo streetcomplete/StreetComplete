@@ -6,7 +6,6 @@ import de.westnordost.streetcomplete.data.ApplicationDbTestCase;
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.map.data.OsmLatLon;
-import de.westnordost.streetcomplete.util.Serializer;
 
 public class CreateNoteDaoTest extends ApplicationDbTestCase
 {

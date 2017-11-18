@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.quests;
 
-import android.app.Activity;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.content.Context;
@@ -226,12 +225,6 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 	{
 		super.onAttach(ctx);
 		questAnswerComponent.onAttach((OsmQuestAnswerListener) ctx);
-	}
-
-	@Override public void onAttach(Activity activity)
-	{
-		super.onAttach(activity);
-		questAnswerComponent.onAttach((OsmQuestAnswerListener) activity);
 	}
 
 	private String getElementName()

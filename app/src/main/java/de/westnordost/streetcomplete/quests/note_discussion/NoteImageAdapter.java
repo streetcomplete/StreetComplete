@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.quests.note_discussion;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
-import android.support.media.ExifInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +10,6 @@ import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.List;
 
 import de.westnordost.streetcomplete.R;

@@ -6,7 +6,6 @@ import com.vividsolutions.jts.geom.GeometryCollection;
 
 import java.io.InputStream;
 import java.util.concurrent.Callable;
-import java.util.concurrent.Future;
 import java.util.concurrent.FutureTask;
 
 import javax.inject.Singleton;

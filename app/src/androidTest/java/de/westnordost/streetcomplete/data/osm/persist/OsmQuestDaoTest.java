@@ -19,7 +19,6 @@ import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryChange;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryDelete;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryModify;
-import de.westnordost.streetcomplete.data.osm.persist.test.DisabledTestQuestType;
 import de.westnordost.streetcomplete.data.osm.persist.test.TestQuestType;
 import de.westnordost.streetcomplete.data.osm.persist.test.TestQuestType2;
 import de.westnordost.osmapi.map.data.Element;

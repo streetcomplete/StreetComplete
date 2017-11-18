@@ -62,7 +62,7 @@ public class MultipartUtility {
 
 		FileInputStream inputStream = new FileInputStream(uploadFile);
 		byte[] buffer = new byte[4096];
-		int bytesRead = -1;
+		int bytesRead;
 		while ((bytesRead = inputStream.read(buffer)) != -1) {
 			outputStream.write(buffer, 0, bytesRead);
 		}
@@ -73,7 +73,7 @@ public class MultipartUtility {
 	}
 
 	public String finish() throws IOException {
-		String response = "";
+		StringBuilder response = new StringBuilder();
 		writer.append(LINE_FEED).flush();
 		writer.append("--" + boundary + "--").append(LINE_FEED);
 		writer.close();
@@ -83,13 +83,13 @@ public class MultipartUtility {
 			BufferedReader reader = new BufferedReader(new InputStreamReader(httpConnection.getInputStream()));
 			String line;
 			while ((line = reader.readLine()) != null) {
-				response += line;
+				response.append(line);
 			}
 			reader.close();
 			httpConnection.disconnect();
 		} else {
 			throw new IOException("Server returned non-OK status: " + status);
 		}
-		return response;
+		return response.toString();
 	}
 }

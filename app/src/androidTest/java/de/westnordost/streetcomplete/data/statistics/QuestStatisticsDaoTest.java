@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.statistics;
 
-import java.util.Date;
 import java.util.HashMap;
 
 import de.westnordost.osmapi.map.changes.MapDataChangesHandler;

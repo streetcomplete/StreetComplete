@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.quests;
 
-import android.app.Activity;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.content.Context;
@@ -88,13 +87,6 @@ public class LeaveNoteDialog extends DialogFragment
 	{
 		super.onAttach(ctx);
 		questAnswerComponent.onAttach((OsmQuestAnswerListener) ctx);
-	}
-
-	@Override
-	public void onAttach(Activity activity)
-	{
-		super.onAttach(activity);
-		questAnswerComponent.onAttach((OsmQuestAnswerListener) activity);
 	}
 
 	private void onClickOk()

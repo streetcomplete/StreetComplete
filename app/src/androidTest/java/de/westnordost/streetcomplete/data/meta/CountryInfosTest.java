@@ -96,14 +96,13 @@ public class CountryInfosTest extends AndroidTestCase
 		String[] fileList = am.list("country_metadata");
 		CountryInfos cis = new CountryInfos(am, null);
 		Map<String,CountryInfo> all = new HashMap<>();
-		for(int i = 0; i < fileList.length; ++i)
+		for (String filename : fileList)
 		{
-			String filename = fileList[i];
 			String country = filename.substring(0, filename.lastIndexOf("."));
 			try
 			{
 				CountryInfo info = cis.get(Collections.singletonList(country));
-				all.put(country,info);
+				all.put(country, info);
 			}
 			catch (Throwable e)
 			{
