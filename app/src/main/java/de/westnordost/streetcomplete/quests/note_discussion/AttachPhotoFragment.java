@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 
 import de.westnordost.streetcomplete.ApplicationConstants;
 import de.westnordost.streetcomplete.R;
@@ -164,7 +165,7 @@ public class AttachPhotoFragment extends Fragment
 
 	private File createImageFile() throws IOException
 	{
-		String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+		String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.US).format(new Date());
 		String imageFileName = "photo_" + timeStamp + "_";
 		File directory = getActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES);
 		return File.createTempFile(imageFileName, ".jpg", directory);

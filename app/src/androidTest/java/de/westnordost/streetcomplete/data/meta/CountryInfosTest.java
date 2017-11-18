@@ -85,11 +85,6 @@ public class CountryInfosTest extends AndroidTestCase
 		checkAdditionalValidHousenumberRegexes(infos);
 	}
 
-	private interface EachCountryInfo
-	{
-		void check(CountryInfo countryInfo);
-	}
-
 	private Map<String, CountryInfo> getAllCountryInfos() throws IOException
 	{
 		AssetManager am = getContext().getAssets();
