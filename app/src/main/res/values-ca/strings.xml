@@ -239,8 +239,7 @@ Aleshores, la informació que introdueixes s'afegeix directament a l'OpenStreetM
     <string name="quest_manySports_confirmation_specific">"Per a aquests en concret"</string>
     <string name="quest_manySports_confirmation_generic">"Ús general"</string>
     <string name="quest_sport_manySports_confirmation_title">"Heu seleccionat massa esports"</string>
-    <string name="quest_busStopShelter_name_title">"
-La parada de bus «%s» té marquesina?"</string>
+    <string name="quest_busStopShelter_name_title">"La parada de bus «%s» té marquesina?"</string>
     <string name="quest_toiletsFee_title">"Cal pagar per l'ús dels serveis?"</string>
     <string name="quest_tactilePaving_title_bus">"Aquesta parada d'autobús té paviment tàctil?"</string>
 

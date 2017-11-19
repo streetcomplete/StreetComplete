@@ -439,7 +439,7 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_carWashType_selfService">"Self Service"</string>
     <string name="quest_carWashType_service">"Operatori puliscono l'auto"</string>
     <string name="enable_quest_confirmation_title">"Abilito questa ricerca?"</string>
-    <string name="default_disabled_msg_go_inside">"Questo tipo di ricerca si presenta disabilitato perchè è molto probabile che dovrai entrare nel luogo  "</string>
+    <string name="default_disabled_msg_go_inside">"Questo tipo di ricerca si presenta disabilitato perché è molto probabile che dovrai entrare nel luogo  "</string>
     <string name="quest_housenumber_conscription_number">"Numero di coscrizione"</string>
     <string name="quest_housenumber_street_number_optional">"Orientamento dei numero (opzionale)"</string>
     <string name="quest_housenumber_conscription_number_required">"Deve essere specificato un numero di coscrizione"</string>

@@ -245,7 +245,7 @@ De informatie die je ingeeft wordt meteen toegevoegd aan OpenStreetMap in jouw n
     <string name="quest_manySports_confirmation_specific">"Specifiek deze?"</string>
     <string name="quest_manySports_confirmation_generic">"Algemeen gebruik"</string>
     <string name="quest_sport_manySports_confirmation_title">"Je hebt veel sporten geselecteerd."</string>
-    <string name="quest_busStopShelter_name_title">"Heeft deze bushalte een beschutting?"</string>
+    <string name="quest_busStopShelter_name_title">"Heeft de bushalte „%s“ een beschutting?"</string>
     <string name="quest_toiletsFee_title">"Moet je voor deze toiletten betalen?"</string>
     <string name="quest_tactilePaving_title_bus">"Heeft deze bushalte geleide lijnen / markeringen voor blinden en slechtzienden?"</string>
 
@@ -258,7 +258,7 @@ De informatie die je ingeeft wordt meteen toegevoegd aan OpenStreetMap in jouw n
     <string name="dialog_session_dont_show_again">"Laat dit niet meer zien voor deze sessie."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetSurface_name_title">"Welk wegdek heeft deze weg?"</string>
+    <string name="quest_streetSurface_name_title">"Welk wegdek heeft de weg „%s“ hier?"</string>
     <string name="quest_maxspeed_title_short">"Wat is de maximum snelheid volgens het bord in deze straat?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Deze maximum snelheid lijkt onwaarschijnlijk."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Weet je zeker dat er geen limiet is aangegeven?"</string>
@@ -371,11 +371,11 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire keybor
 
     <!-- Fuzzy -->
     <string name="quest_way_lit_title">"Is dit deel van de weg verlicht?"</string>
-    <string name="quest_way_lit_named_title">"Is er verlichting hier?"</string>
+    <string name="quest_way_lit_named_title">"Is dit deel van de weg „%s\" verlicht?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_way_lit_road_title">"Is dit deel van de straat verlicht?"</string>
-    <string name="quest_way_lit_named_road_title">"Is deze straat verlicht?"</string>
+    <string name="quest_way_lit_named_road_title">"Is dit deel van de straat „%s\" verlicht?"</string>
     <string name="quest_way_lit_automatic">"Het gebruikt bewegingsdetectie"</string>
     <string name="quest_way_lit_24_7">"Het is dag en nacht vericht"</string>
     <string name="pref_title_authorized_username_summary">"Geautoriseerd Account: %s"</string>

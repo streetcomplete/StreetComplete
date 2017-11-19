@@ -47,7 +47,7 @@
     <string name="quest_noteDiscussion_title">"Você pode contribuir com essa nota?"</string>
     <string name="quest_noteDiscussion_no">"Não, esconada"</string>
     <string name="quest_noteDiscussion_create">"criado por %1$s (%2$s)"</string>
-    <string name="quest_noteDiscussion_comment">"quest_noteDiscussion_comment"</string>
+    <string name="quest_noteDiscussion_comment">"%1$s (%2$s)"</string>
     <string name="quest_noteDiscussion_closed">"%1$s fechar nota (%2$s)"</string>
     <string name="quest_noteDiscussion_reopen">"%1$s reabrir nota (%2$s)"</string>
     <string name="quest_noteDiscussion_anonymous">"Anônimo"</string>
@@ -249,7 +249,7 @@ As informações inseridas são adicionadas diretamente ao OpenStreetMap em seu 
     <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"Essa faixa de pedestres tem pavimentos táteis?"</string>
     <string name="quest_source_dialog_title">"Tem a certeza que verificou isto no local?"</string>
-    <string name="quest_tactilePaving_title_name_bus">"A parada de de ônibus \"%S\" tem pavimentos táteis?"</string>
+    <string name="quest_tactilePaving_title_name_bus">"A parada de ônibus \"%S\" tem pavimentos táteis?"</string>
     <string name="quest_source_dialog_note">"Apenas informação que foi feita durante um levantamento deve ser adicionada."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Essa parada de bicicleta é coberta (protegida da chuva)?"</string>
     <string name="dialog_session_dont_show_again">"Não mostrar de novo nesta sessão"</string>

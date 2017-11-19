@@ -35,7 +35,7 @@
     <string name="quest_streetName_answer_noName_confirmation_description">"Por vezes, a sinalética de nomes de rua está apenas disponível numa das suas extremidades. Por vezes, nas ruas de maior extensão pode não existir sinalética em todas as suas interseções Normalmente, qualquer rua com casas, possui nome."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Se o nome puder ser pronunciado sem abreviatura, então deve ser expandido. As abreviaturas mais comuns são expandidas automaticamente, mas nem todas."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Sem abreviatura"</string>
-    <string name="quest_openingHours_name_title">"Qual o horário de funcionamento de $s?"</string>
+    <string name="quest_openingHours_name_title">"Qual o horário de funcionamento de %s?"</string>
     <string name="quest_openingHours_start_time">"Hora de abertura"</string>
     <string name="quest_openingHours_end_time">"Hora de fecho"</string>
     <string name="quest_openingHours_add_months">"Adicionar meses"</string>
