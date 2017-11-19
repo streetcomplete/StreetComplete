@@ -181,7 +181,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		else
 		{
 			// zoom out a bit
-			targetZoom -= 0.35;
+			targetZoom -= 0.4;
 		}
 
 		float currentZoom = controller.getZoom();
