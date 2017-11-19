@@ -291,8 +291,7 @@ Nëse nuk ka shenja, vlen shpejtësia e paracaktuar."</string>
     <string name="underground_recycling_container">"Kontejner i nëndheshëm"</string>
     <string name="quest_generic_error_a_field_empty">"Lat një fushë të zbrazët"</string>
     <string name="quest_streetName_menuItem_language_simple">"%1$s - %2$s"</string>
-    <string name="quest_streetName_menuItem_language_native">"
-%1$ - %2$ (%3$) "</string>
+    <string name="quest_streetName_menuItem_language_native">"%1$s - %2$s (%3$s)"</string>
     <string name="quest_streetName_answer_cantType">"Nuk mund t'i shkruani karaktereret në shenjë"</string>
     <string name="quest_streetName_cantType_title">"Mungon radhitja e tastierës?"</string>
     <string name="quest_streetName_cantType_open_settings">"Hap rregullimet"</string>

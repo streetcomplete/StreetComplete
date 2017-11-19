@@ -296,8 +296,8 @@
     <string name="overground_recycling_container">"سطل بزرگ فلزی"</string>
     <string name="underground_recycling_container">"مخزن زیر زمینی"</string>
     <string name="quest_generic_error_a_field_empty">"شما یک کادر را خالی گذاشتید"</string>
-    <string name="quest_streetName_menuItem_language_simple">"%1$s - %2$s"</string>
-    <string name="quest_streetName_menuItem_language_native">"%1$s - %2$s (%3$s)"</string>
+    <string name="quest_streetName_menuItem_language_simple">"%2$s - %1$s"</string>
+    <string name="quest_streetName_menuItem_language_native">"(%3$s) %2$s - %1$s"</string>
     <string name="quest_streetName_answer_cantType">"مشخصات روی تابلو را نمی توانید بنویسید"</string>
     <string name="quest_streetName_cantType_title">"خطای صفحه کلید"</string>
     <string name="quest_streetName_cantType_open_settings">"بازکردن تنظیمات"</string>

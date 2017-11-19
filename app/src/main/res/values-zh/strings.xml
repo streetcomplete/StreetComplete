@@ -290,7 +290,7 @@ OpenStreetMap不接受匿名编辑，您需要登录您的OpenStreetMap帐号。
     <string name="underground_recycling_container">"地下式资源回收箱"</string>
     <string name="quest_generic_error_a_field_empty">"你留了空白栏位"</string>
     <string name="quest_streetName_menuItem_language_simple">"%1$s - %2$s"</string>
-    <string name="quest_streetName_menuItem_language_native">"1$s - %2$s (%3$s)"</string>
+    <string name="quest_streetName_menuItem_language_native">"%1$s - %2$s (%3$s)"</string>
     <string name="quest_streetName_answer_cantType">"无法在标识上输入字元"</string>
     <string name="quest_streetName_cantType_title">"缺少键盘配置？"</string>
     <string name="quest_streetName_cantType_open_settings">"开启设定"</string>
