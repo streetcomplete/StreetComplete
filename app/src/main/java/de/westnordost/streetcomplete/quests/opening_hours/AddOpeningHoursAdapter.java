@@ -124,7 +124,7 @@ public class AddOpeningHoursAdapter extends RecyclerView.Adapter
 		else if(p.length == 2)
 		{
 			ArrayList<OpeningWeekdays> weekdays = data.get(p[0]).weekdaysList;
-			OpeningWeekdays ow = weekdays.remove(p[1]);
+			weekdays.remove(p[1]);
 			notifyItemRemoved(position);
 			// if not last weekday removed -> element after this one may need to be updated
 			// because it may need to show the weekdays now

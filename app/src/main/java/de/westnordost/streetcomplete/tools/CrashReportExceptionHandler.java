@@ -119,13 +119,11 @@ public class CrashReportExceptionHandler implements Thread.UncaughtExceptionHand
 
 	private void writeCrashReportToFile(String text)
 	{
-		try
+		try(FileOutputStream fos = appCtx.openFileOutput(CRASHREPORT, Context.MODE_PRIVATE))
 		{
-			FileOutputStream fos = appCtx.openFileOutput(CRASHREPORT, Context.MODE_PRIVATE);
 			fos.write(text.getBytes(ENC));
-			fos.close();
 		}
-		catch (IOException e)	{}
+		catch (IOException ignored) {}
 	}
 
 	private boolean hasCrashReport()

@@ -16,7 +16,7 @@ public class NumberSystemTest extends TestCase
 			new NumberSystem(10,3);
 			fail();
 		}
-		catch(Exception e) {}
+		catch(Exception ignored) {}
 	}
 
 	public void testGetSize()

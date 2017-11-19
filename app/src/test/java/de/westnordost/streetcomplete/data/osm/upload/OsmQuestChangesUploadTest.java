@@ -104,7 +104,7 @@ public class OsmQuestChangesUploadTest extends TestCase
 		OsmQuestDao questDb = mock(OsmQuestDao.class);
 		MergedElementDao elementDao = mock(MergedElementDao.class);
 		DownloadedTilesDao downloadedTilesDao = mock(DownloadedTilesDao.class);
-		OsmQuestChangesUpload u = new OsmQuestChangesUpload(null, questDb, null, null, null, null,
+		OsmQuestChangesUpload u = new OsmQuestChangesUpload(null, questDb, elementDao, null, null, null,
 				null, downloadedTilesDao, null, null);
 		assertFalse(u.uploadQuestChange(123, quest, element, false, false));
 		assertEquals(QuestStatus.CLOSED, quest.getStatus());
