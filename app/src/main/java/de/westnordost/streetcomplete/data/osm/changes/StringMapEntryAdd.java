@@ -35,6 +35,13 @@ public class StringMapEntryAdd implements StringMapEntryChange
 		return key.equals(o.key) && value.equals(o.value);
 	}
 
+	@Override public int hashCode()
+	{
+		int result = key.hashCode();
+		result = 31 * result + value.hashCode();
+		return result;
+	}
+
 	@Override public StringMapEntryChange reversed()
 	{
 		return new StringMapEntryDelete(key, value);

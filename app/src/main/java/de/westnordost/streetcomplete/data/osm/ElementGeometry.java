@@ -49,6 +49,13 @@ public class ElementGeometry implements Serializable
 				(polygons == null ? o.polygons == null : polygons.equals(o.polygons));
 	}
 
+	@Override public int hashCode()
+	{
+		int result = polygons != null ? polygons.hashCode() : 0;
+		result = 31 * result + (polylines != null ? polylines.hashCode() : 0);
+		return result;
+	}
+
 	private LatLon findCenterPoint()
 	{
 		try

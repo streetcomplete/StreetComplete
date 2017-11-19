@@ -96,6 +96,11 @@ public class StringMapChanges
 		return changes.equals(o.changes);
 	}
 
+	@Override public int hashCode()
+	{
+		return changes.hashCode();
+	}
+
 	private class ConflictIterator implements Iterator<StringMapEntryChange>
 	{
 		private Map<String,String> map;

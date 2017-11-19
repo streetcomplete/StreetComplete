@@ -37,6 +37,14 @@ public class StringMapEntryModify implements StringMapEntryChange
 		return key.equals(o.key) && valueBefore.equals(o.valueBefore) && value.equals(o.value);
 	}
 
+	@Override public int hashCode()
+	{
+		int result = key.hashCode();
+		result = 31 * result + valueBefore.hashCode();
+		result = 31 * result + value.hashCode();
+		return result;
+	}
+
 	@Override public StringMapEntryChange reversed()
 	{
 		return new StringMapEntryModify(key, value, valueBefore);
