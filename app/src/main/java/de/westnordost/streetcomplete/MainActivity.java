@@ -781,7 +781,7 @@ public class MainActivity extends AppCompatActivity implements
 		questController.retrieve(bbox);
 	}
 
-	@Override public void onClickedQuest(QuestGroup questGroup, Long questId)
+	@Override public synchronized void onClickedQuest(QuestGroup questGroup, Long questId)
 	{
 		clickedQuestId = questId;
 		clickedQuestGroup = questGroup;

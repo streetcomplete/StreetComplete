@@ -133,13 +133,13 @@ public class OsmQuestDownloadTest extends TestCase
 				.thenReturn(Collections.<OsmQuest>emptyList());
 	}
 
-	private class ElementWithGeometry
+	private static class ElementWithGeometry
 	{
 		Element element;
 		ElementGeometry geometry;
 	}
 
-	private class ListBackedQuestType implements OsmElementQuestType
+	private static class ListBackedQuestType implements OsmElementQuestType
 	{
 		private final List<ElementWithGeometry> list;
 

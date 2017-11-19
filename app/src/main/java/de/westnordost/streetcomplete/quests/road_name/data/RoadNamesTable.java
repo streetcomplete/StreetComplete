@@ -4,7 +4,7 @@ public class RoadNamesTable
 {
 	public static final String NAME = "road_names";
 
-	public class Columns
+	public static class Columns
 	{
 		public static final String
 				WAY_ID = "way_id",

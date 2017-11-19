@@ -279,7 +279,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 
 	private boolean userSelectedUnrealisticSpeedLimit()
 	{
-		int speed = Integer.valueOf(speedInput.getText().toString());
+		int speed = Integer.parseInt(speedInput.getText().toString());
 		String speedUnit = getCountryInfo().getSpeedUnit();
 		double speedInKmh = speedUnit.equals("mph") ? mphToKmh(speed) : speed;
 		return speedInKmh > 140 || speed > 20 && speed % 5 != 0;
@@ -295,7 +295,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 		Bundle answer = new Bundle();
 
 		StringBuilder speedStr = new StringBuilder();
-		int speed = Integer.valueOf(speedInput.getText().toString());
+		int speed = Integer.parseInt(speedInput.getText().toString());
 		speedStr.append(speed);
 
 		// km/h is the OSM default, does not need to be mentioned

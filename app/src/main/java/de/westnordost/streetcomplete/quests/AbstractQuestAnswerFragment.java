@@ -322,7 +322,7 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 		// default empty implementation
 	}
 
-	private class OtherAnswer
+	private static class OtherAnswer
 	{
 		int titleResourceId;
 		Runnable action;
