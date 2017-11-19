@@ -27,7 +27,6 @@ public class JTSConst
 
 	public static Geometry toGeometry(ElementGeometry e)
 	{
-		GeometryFactory factory = new GeometryFactory();
 		if(e.polygons != null)
 		{
 			ElementGeometry.Polygons p = e.getPolygonsOrderedByOrientation();
@@ -49,9 +48,10 @@ public class JTSConst
 
 		Polygon[] polys = new Polygon[shellsWithHoles.size()];
 		int i = 0;
-		for(LinearRing shell : shellsWithHoles.keySet())
+		for(Map.Entry<LinearRing, ArrayList<LinearRing>> shellWithHoles : shellsWithHoles.entrySet())
 		{
-			ArrayList<LinearRing> holesList = shellsWithHoles.get(shell);
+			LinearRing shell = shellWithHoles.getKey();
+			ArrayList<LinearRing> holesList = shellWithHoles.getValue();
 			LinearRing[] holes = null;
 			if(holesList != null)
 			{

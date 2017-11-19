@@ -267,7 +267,7 @@ public class MapFragment extends Fragment implements
 		File cacheDir = getContext().getExternalCacheDir();
 		if (cacheDir != null && cacheDir.exists())
 		{
-			return new TileHttpHandler(apiKey, new File(cacheDir, "tile_cache"), cacheSize * 1024 * 1024);
+			return new TileHttpHandler(apiKey, new File(cacheDir, "tile_cache"), cacheSize * 1024L * 1024L);
 		}
 		return new TileHttpHandler(apiKey);
 	}

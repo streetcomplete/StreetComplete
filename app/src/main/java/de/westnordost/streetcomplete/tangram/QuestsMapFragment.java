@@ -201,7 +201,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		int w = getView().getWidth();
 		int h = getView().getHeight();
 
-		LngLat normalCenter = controller.screenPositionToLngLat(new PointF(w/2, h/2));
+		LngLat normalCenter = controller.screenPositionToLngLat(new PointF(w/2f, h/2f));
 
 		LngLat offsetCenter = controller.screenPositionToLngLat(new PointF(
 				questOffset.left + (w - questOffset.left - questOffset.right)/2,

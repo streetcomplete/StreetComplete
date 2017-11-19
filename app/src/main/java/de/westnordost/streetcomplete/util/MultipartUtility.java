@@ -60,14 +60,16 @@ public class MultipartUtility {
 		writer.append(LINE_FEED);
 		writer.flush();
 
-		FileInputStream inputStream = new FileInputStream(uploadFile);
 		byte[] buffer = new byte[4096];
 		int bytesRead;
-		while ((bytesRead = inputStream.read(buffer)) != -1) {
-			outputStream.write(buffer, 0, bytesRead);
+		try (FileInputStream inputStream = new FileInputStream(uploadFile))
+		{
+			while ((bytesRead = inputStream.read(buffer)) != -1)
+			{
+				outputStream.write(buffer, 0, bytesRead);
+			}
+			outputStream.flush();
 		}
-		outputStream.flush();
-		inputStream.close();
 		writer.append(LINE_FEED);
 		writer.flush();
 	}

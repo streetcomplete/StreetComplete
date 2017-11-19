@@ -88,8 +88,6 @@ public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 			return;
 		}
 
-		final Bundle answer = new Bundle();
-
 		if(inputHouseName != null)
 		{
 			applyHouseNameAnswer(getInputText(inputHouseName));

@@ -34,7 +34,6 @@ public class CountryBoundaries
 
 	public CountryBoundaries(GeometryCollection countriesBoundaries)
 	{
-		long time = System.currentTimeMillis();
 		index = new STRtree();
 		geometrySizeCache = new HashMap<>(400);
 		geometriesByIsoCodes = new HashMap<>(400);

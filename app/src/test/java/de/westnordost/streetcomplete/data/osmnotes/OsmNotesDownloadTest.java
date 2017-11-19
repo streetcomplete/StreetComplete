@@ -28,8 +28,6 @@ import static org.mockito.Mockito.when;
 
 public class OsmNotesDownloadTest extends TestCase
 {
-
-	private NotesDao noteServer;
 	private NoteDao noteDB;
 	private OsmNoteQuestDao noteQuestDB;
 	private CreateNoteDao createNoteDB;
@@ -38,7 +36,6 @@ public class OsmNotesDownloadTest extends TestCase
 	@Override public void setUp() throws Exception
 	{
 		super.setUp();
-		noteServer = mock(NotesDao.class);
 		noteDB = mock(NoteDao.class);
 		noteQuestDB = mock(OsmNoteQuestDao.class);
 		createNoteDB = mock(CreateNoteDao.class);
@@ -100,7 +97,7 @@ public class OsmNotesDownloadTest extends TestCase
 		return note;
 	}
 
-	private class TestListBasedNotesDao extends NotesDao
+	private static class TestListBasedNotesDao extends NotesDao
 	{
 		List<Note> notes;
 
