@@ -62,7 +62,6 @@
     <string name="close">"Kapat"</string>
     <string name="download_error">"Görevler için tarama yapılırken hata oluştu"</string>
     <string name="upload_error">"Yanıtlar yüklenirken hata oluştu"</string>
-    <string name="cannot_find_bbox">"Burayı tarayamıyorum. Daha da büyütmeyi deneyin"</string>
     <string name="download_area_too_big">"Lütfen yakınlaştırın."</string>
     <string name="confirmation_cancel_prev_download_title">"Geçerli aramayı iptal et ve bunun yerine buraya tarama yapalım mı?"</string>
     <string name="notification_downloading">"Görevleri Taramak…"</string>
@@ -106,8 +105,6 @@
     <string name="quest_openingHours_comment_description">"Özlü olun, ideal olarak işaretten gelen ifadeyi kullanın. Ben. \"randevu ile\". İşaretin olmaması, mutlaka düzenli bir çalışma saatinin olmadığı anlamına gelmez."</string>
     <string name="quest_buildingLevels_title">"Bu bina kaç katlıdır?"</string>
     <string name="quest_buildingLevels_title_buildingPart">"Bu bina katmanı kaç katlıdır?"</string>
-    <string name="quest_buildingLevels_levelsLabel">"Toplam düzeyler"</string>
-    <string name="quest_buildingLevels_roofLevelsLabel">"Bunlardan, çatı seviyeleri"</string>
     <string name="quest_roofShape_title">"Bu bina çatısının temel şekli nedir?"</string>
     <string name="quest_roofShape_select_one">"Birini seç:"</string>
     <string name="quest_roofShape_show_more">"Daha fazla göster…"</string>
@@ -197,7 +194,6 @@ Girdiğiniz bilgiler daha sonra başka bir editör kullanmak zorunda kalmadan ad
     <string name="quest_name_answer_noName">"Adı yok."</string>
     <string name="quest_name_answer_noName_confirmation_title">"Gerçekten adı yok mu"</string>
     <string name="quest_name_noName_confirmation_positive">"Evet, isim yok"</string>
-    <string name="quest_buildingLevels_negativeBuildingLevels">"Hata! Toplam katlardan daha fazla çatı seviyesi belirttiniz!"</string>
     <string name="quest_openingHours_add_times">"Açılış saatlerini ekle"</string>
     <string name="crash_message">"Lütfen hata raporunu geliştiriciye gönderir misiniz?"</string>
     <string name="crash_title">"Oh hayır, StreetComplete son kez düştü!"</string>
@@ -245,6 +241,8 @@ Hiçbir e-posta istemcisi kurulu değil."</string>
     <string name="quest_busStopShelter_name_title">"\"%s\" otobüs durağının üstü kapalı mı?"</string>
     <string name="quest_toiletsFee_title">"Bu tuvaletler ücret istiyor mu?"</string>
     <string name="quest_tactilePaving_title_bus">"Bu otobüs durağında dokunmatik kaplamalar var mı?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"Bu geçit dokunmatik kaplamalara sahip mi?"</string>
     <string name="quest_source_dialog_title">"Bunu yerinde kontrol ettiğinden emin misin?"</string>
     <string name="quest_source_dialog_note">"Sadece bir inceleme ile bulunan bilgiler girilmelidir."</string>
@@ -305,7 +303,11 @@ Aksi takdirde, uygulama mağazasında başka bir klavye indirebilirsiniz. Birço
     <string name="produce_mate">"Dostum"</string>
     <string name="produce_nutmeg">"Küçük Hindistan Cevizi"</string>
     <string name="produce_oil_palms">"Yağlı avuç içi"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_way_lit_title">"Bu bölüm aydınlatılmış mı?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_way_lit_road_title">"Bu yolun bölümü yanıyor mu?"</string>
     <string name="quest_way_lit_automatic">"Hareket algılama kullanır"</string>
     <string name="quest_way_lit_24_7">"Gece gündüz aydınlandı"</string>

@@ -61,7 +61,6 @@
     <string name="close">"zamknij"</string>
     <string name="download_error">"Błąd podczas szukania zadań"</string>
     <string name="upload_error">"Błąd przy wysyłaniu odpowiedzi"</string>
-    <string name="cannot_find_bbox">"Tutaj nie można skanować. Spróbuj przybliżyć."</string>
     <string name="download_area_too_big">"Przybliż bardziej"</string>
     <string name="confirmation_cancel_prev_download_title">"Zatrzymać bieżące wyszukiwanie i zacząć skanowanie tutaj?"</string>
     <string name="notification_downloading">"Trwa szukanie zadań…"</string>
@@ -70,8 +69,6 @@
     <string name="no_location_permission_warning">"Potrzebuję lokalizacji, żeby poszukać zadań w okolicy."</string>
     <string name="action_about">"O StreetComplete"</string>
     <string name="about_title_version">"Wersja"</string>
-
-    <!-- Fuzzy -->
     <string name="about_title_authors">"Autorzy"</string>
     <string name="about_summary_authors">"© 2016–2017 Tobias Zwick i współautorzy"</string>
     <string name="about_title_repository">"Repozytorium kodu źródłowego"</string>
@@ -105,8 +102,6 @@
     <string name="quest_openingHours_comment_description">"Krótko i zwięźle, najlepiej tak jak jest napisane na tabliczce, np. \"po uzgodnieniu terminu\". Brak tabliczki nie koniecznie oznacza braku stałych godzin otwarcia."</string>
     <string name="quest_buildingLevels_title">"Ile pięter ma ten budynek?"</string>
     <string name="quest_buildingLevels_title_buildingPart">"Ile pięter ma ta część budynku?"</string>
-    <string name="quest_buildingLevels_levelsLabel">"wszystkie piętra"</string>
-    <string name="quest_buildingLevels_roofLevelsLabel">"w tym piętra w poddaszu"</string>
     <string name="quest_roofShape_title">"Jaki ogólny kształt dachu ma ten budynek?"</string>
     <string name="quest_roofShape_select_one">"Wybierz jeden:"</string>
     <string name="quest_roofShape_show_more">"Pokaż więcej…"</string>
@@ -196,7 +191,6 @@ Udzielone odpowiedzi zostają potem umieszczone na OpenStreetMap w Twoim imieniu
     <string name="quest_name_answer_noName">"Nie ma nazwy"</string>
     <string name="quest_name_answer_noName_confirmation_title">"Naprawdę nie ma nazwy?"</string>
     <string name="quest_name_noName_confirmation_positive">"Tak, nie ma nazwy"</string>
-    <string name="quest_buildingLevels_negativeBuildingLevels">"Ups! Wpisano więcej pięter w poddaszu niż jest wszystkich w ogóle!"</string>
     <string name="quest_openingHours_add_times">"Dodaj godziny otwarcia"</string>
     <string name="crash_message">"Wysłać raport błędu do programistów?"</string>
     <string name="crash_title">"O nie, ostatnie użycie StreetComplete zakończyło się błędem!"</string>
@@ -246,6 +240,8 @@ Udzielone odpowiedzi zostają potem umieszczone na OpenStreetMap w Twoim imieniu
     <string name="quest_busStopShelter_name_title">"Czy przystanek \"%s\" posiada wiatę?"</string>
     <string name="quest_toiletsFee_title">"Czy te toalety są płatne?"</string>
     <string name="quest_tactilePaving_title_bus">"Czy na tym przystanku są płyty prowadzące?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"Czy to przejście ma płyty prowadzące?"</string>
     <string name="quest_source_dialog_title">"Na pewno sprawdzono to na miejscu?"</string>
     <string name="quest_tactilePaving_title_name_bus">"Czy przystanek \"%s\" ma płyty prowadzące?"</string>
@@ -364,8 +360,12 @@ W przeciwnym wypadku możesz ściągnąć dodatkowe aplikacje klawiatury ze skle
     <string name="produce_vanilla">"Wanilię"</string>
     <string name="produce_walnuts">"Orzechy włoskie"</string>
     <string name="produce_sisal">"Agawy sizalowe"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_way_lit_title">"Czy ta część jest oświetlona?"</string>
     <string name="quest_way_lit_named_title">"Czy \"%s\" jest oświetlona?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_way_lit_road_title">"Czy ta część drogi jest oświetlona?"</string>
     <string name="quest_way_lit_named_road_title">"Czy droga \"%s\" jest oświetlona?"</string>
     <string name="quest_way_lit_automatic">"Wykrywa ruch"</string>
@@ -407,4 +407,41 @@ W przeciwnym wypadku możesz ściągnąć dodatkowe aplikacje klawiatury ze skle
     <string name="pref_title_not_authorized_summary2">"Zaloguj się przez przeglądarkę"</string>
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Czy jezdnie na tej ulicy są fizycznie odseparowane (np. barierkami)? Od tego zależy domyślne ograniczenie prędkości."</string>
     <string name="about_category_feedback">"Opinia"</string>
+    <string name="quest_leave_new_note_photo">"Załącz zdjęcie"</string>
+    <string name="quest_leave_new_note_photo_delete_title">"Czy chcesz usunąć ten obrazek?"</string>
+    <string name="privacy_html_image_upload">"&lt;p&gt;Zdjęcia załączone przez ciebie zostaną wysłane na &lt;a href=\"https://lut.im\"&gt;lut.im&lt;/a&gt;, serwis zapewniający anonimowość i brak śledzenia.&lt;/p&gt;"</string>
+    <string name="quest_cycleway_value_track">"droga dla rowerów"</string>
+    <string name="quest_cycleway_value_lane">"pas dla rowerów"</string>
+    <string name="quest_cycleway_value_none">"brak"</string>
+    <string name="quest_cycleway_value_shared">"pas dzielony z innymi uczestnikami ruchu"</string>
+    <string name="quest_cycleway_value_bus_lane">"na buspasie"</string>
+    <string name="quest_cycleway_value_sidewalk">"chodnik wspóldzielony"</string>
+    <string name="quest_leave_new_note_create_image_error">"Nie udało się utworzyć pliku dla zdjęcia"</string>
+    <string name="quest_cycleway_value_lane_dual">"pas dla rowerów w obu kierunkach"</string>
+    <string name="quest_cycleway_value_track_dual">"droga dla rowerów w obu kierunkach"</string>
+    <string name="quest_cycleway_value_sidewalk_allowed">"brak, ale rowerzyści mogą poruszać się po chodniku"</string>
+    <string name="pref_category_advanced">"Zaawansowane"</string>
+    <string name="pref_title_quests">"Wybór zadań"</string>
+    <string name="quest_enabled">"Włączone"</string>
+    <string name="quest_type">"Rodzaj zadań"</string>
+    <string name="action_reset">"Reset"</string>
+    <string name="reorder_quest_priority_hint">"Przytrzymanie i poruszanie zadaniem zmieni jego priorytet pobierania i wyświetlania na mapie."</string>
+    <string name="undo_confirm_positive">"Cofnij"</string>
+    <string name="undo_confirm_negative">"Anuluj"</string>
+    <string name="quest_dietType_vegetarian_name_title">"Czy %s posiada w menu ofertę dla wegetarian?"</string>
+    <string name="quest_dietType_vegan_name_title">"Czy %s posiada w menu ofertę dla wegan?"</string>
+    <string name="quest_hasFeature_only">"Tylko"</string>
+    <string name="quest_dietType_explanation_vegan">"Wegańskie potrawy nie zawierają produktów pochodzenia zwierzęcego (mięso, nabiał, jaja itp)"</string>
+    <string name="quest_dietType_explanation_vegetarian">"Dania wegetariańskie nie zawierają mięsa."</string>
+    <string name="quest_dietType_explanation">"Zaznacz tylko jeśli miejsce oferuje pełnoprawne danie dla tej diety, wykluczając przystawki itp."</string>
+    <string name="quest_carWashType_title">"Jaki to rodzaj myjni samochodowej?"</string>
+    <string name="quest_carWashType_automated">"Automatyczne"</string>
+    <string name="quest_carWashType_selfService">"Samoobsługowe"</string>
+    <string name="quest_carWashType_service">"Myje obsługa"</string>
+    <string name="enable_quest_confirmation_title">"Aktywować ten rodzaj zadań?"</string>
+    <string name="default_disabled_msg_go_inside">"To zadanie jest domyślnie nieaktywne, ponieważ trzeba raczej do niego wejść, żeby móc na nie odpowiedzieć."</string>
+    <string name="quest_housenumber_conscription_number">"Numer konskrypcyjny"</string>
+    <string name="quest_housenumber_street_number_optional">"Numer orientacyjny (opcjonalny)"</string>
+    <string name="quest_housenumber_conscription_number_required">"Numer konskrypcyjny musi być podany"</string>
+    <string name="quest_cycleway_answer_contraflow_cycleway">"Znajduje się tu kontrapas"</string>
 </resources>

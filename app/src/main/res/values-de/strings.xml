@@ -117,7 +117,7 @@ Zuallererst solltest du wissen, dass du mit dieser App unmittelbare Beiträge zu
 Alle Aufgaben, die du mit dieser App löst, werden direkt auf die Karte übertragen. Es gibt keine Instanz zwischen der App und der OSM-Infrastruktur, wie es etwa mit &lt;a href=\"https://wheelmap.org\"&gt;wheelmap.org&lt;/a&gt; oder &lt;a href=\"http://www.kort.ch\"&gt;Kort&lt;/a&gt; der Fall ist.
 &lt;/p&gt;
 &lt;p&gt;
-Es ist nicht möglich, die OpenStreetMap anonym zu bearbeiten, dass heißt jede Änderung, die du machst, wird deinem OSM-Benutzerkonto zugeordnet. Das bedeutet, dass die Zeit, der Inhalt und implizit der Ort der Änderungen öffentlich auf der OpenStreetMap-Website sichtbar sind und deinem Benutzerkonto zugeordnet werden können.
+Es ist nicht möglich, die OpenStreetMap anonym zu bearbeiten, das heißt jede Änderung, die du machst, wird deinem OSM-Benutzerkonto zugeordnet. Das bedeutet, dass die Zeit, der Inhalt und implizit der Ort der Änderungen öffentlich auf der OpenStreetMap-Website sichtbar sind und deinem Benutzerkonto zugeordnet werden können.
 &lt;/p&gt;
 
 &lt;b&gt;Standort&lt;/b&gt;&lt;br/&gt;
@@ -446,4 +446,5 @@ Andernfalls kannst Du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="quest_housenumber_conscription_number">"Konskriptionsnummer"</string>
     <string name="quest_housenumber_street_number_optional">"Orientierungsnummer (optional)"</string>
     <string name="quest_housenumber_conscription_number_required">"Eine Konskriptionsnummer muss angegeben werden"</string>
+    <string name="quest_cycleway_answer_contraflow_cycleway">"Fahrradweg auch auf anderer Seite"</string>
 </resources>

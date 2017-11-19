@@ -61,7 +61,6 @@
     <string name="close">"uždaryti"</string>
     <string name="download_error">"Klaida ieškant užduočių"</string>
     <string name="upload_error">"Klaida nusiunčiant atsakymus"</string>
-    <string name="cannot_find_bbox">"Nepavyksta ieškoti čia. Pabandykite labiau priartinti"</string>
     <string name="download_area_too_big">"Prašome labiau priartinti"</string>
     <string name="confirmation_cancel_prev_download_title">"Nutraukti dabartinę paiešką ir vietoje to ieškoti čia?"</string>
     <string name="notification_downloading">"Ieškoma užduočių…"</string>
@@ -105,8 +104,6 @@
     <string name="quest_openingHours_comment_description">"Rašykite glaustai. Stenkitės naudoti tekstą iš informacijos, pavyzdžiui „pagal susitarimą“. Jei nėra ženklo, tai nebūtinai reiškia, kad pastovaus darbo laiko nėra."</string>
     <string name="quest_buildingLevels_title">"Kiek aukštų turi šis pastatas?"</string>
     <string name="quest_buildingLevels_title_buildingPart">"Kiek aukštų turi ši pastato dalis?"</string>
-    <string name="quest_buildingLevels_levelsLabel">"iš viso aukštų"</string>
-    <string name="quest_buildingLevels_roofLevelsLabel">"iš jų, aukštų po stogu"</string>
     <string name="quest_roofShape_title">"Kokia pagrindinė šio pastato stogo forma?"</string>
     <string name="quest_roofShape_select_one">"Parinkite vieną:"</string>
     <string name="quest_roofShape_show_more">"Rodyti daugiau..."</string>
@@ -196,7 +193,6 @@ Jūsų įvesta informacija tiesiog įkeliama į OpenStreetMap jūsų vardu, be k
     <string name="quest_name_answer_noName">"Nėra pavadinimo"</string>
     <string name="quest_name_answer_noName_confirmation_title">"Tikrai nėra pavadinimo?"</string>
     <string name="quest_name_noName_confirmation_positive">"Taip, nėra pavadinimo"</string>
-    <string name="quest_buildingLevels_negativeBuildingLevels">"Oi! Jūs nurodėte daugiau stogo aukštų nei yra iš viso aukštų!"</string>
     <string name="quest_openingHours_add_times">"Pridėti darbo laiką"</string>
     <string name="crash_message">"Ar norėtumėte nusiųsti klaidos pranešimą programuotojui?"</string>
     <string name="crash_title">"O ne, StreetComplete nulūžo!"</string>
@@ -246,6 +242,8 @@ Jūsų įvesta informacija tiesiog įkeliama į OpenStreetMap jūsų vardu, be k
     <string name="quest_busStopShelter_name_title">"Ar autobuso stotelė %s turi stogą?"</string>
     <string name="quest_toiletsFee_title">"Ar šis tualetas yra mokamas?"</string>
     <string name="quest_tactilePaving_title_bus">"Ar ši stotelė turi taktilinę dangą?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"Ar ši perėja turi taktilinę dangą?"</string>
     <string name="quest_source_dialog_title">"Ar tikrai patikrinote vietoje?"</string>
     <string name="quest_tactilePaving_title_name_bus">"Ar stotelė „%s“ turi taktilinę dangą?"</string>
@@ -360,8 +358,12 @@ Priešingu atveju galite atsisiųsti kitą klaviatūrą programėlių parduotuv�
     <string name="produce_vanilla">"Vanilė"</string>
     <string name="produce_walnuts">"Graikiniai riešutai"</string>
     <string name="produce_sisal">"Sizalis"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_way_lit_title">"Ar ši kelio atkarpa apšviesta?"</string>
     <string name="quest_way_lit_named_title">"Aš „%s“ čia apšviesta?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_way_lit_road_title">"Ar ši kelio atkarpa apšviesta?"</string>
     <string name="quest_way_lit_named_road_title">"Ar „%s“ kelias čia apšviestas?"</string>
     <string name="quest_way_lit_automatic">"Naudoja judesio daviklį"</string>
@@ -378,12 +380,61 @@ Priešingu atveju galite atsisiųsti kitą klaviatūrą programėlių parduotuv�
     <string name="undo_confirm_title">"Atšaukti šį paskutinį atsakymą?"</string>
     <string name="produce_tomatoes">"Pomidorai"</string>
     <string name="produce_sweet_peppers">"Saldžioji paprika"</string>
+    <string name="produce_brazil_nuts">"Braziliški riešutai"</string>
     <string name="quest_parkingType_title">"Kokio tipo tai stovėjimo aikštelė?"</string>
+    <string name="quest_parkingType_surface">"Normali"</string>
     <string name="quest_parkingType_underground">"Požeminis garažas"</string>
+    <string name="quest_parkingType_multiStorage">"Mašinų parkas"</string>
     <string name="quest_toiletAvailability_name_title">"Ar %s turi tualetą?"</string>
     <string name="quest_powerPolesMaterial_title">"Kokia yra šio elektros stulpo medžiaga?"</string>
     <string name="quest_powerPolesMaterial_wood">"Medis"</string>
     <string name="quest_powerPolesMaterial_metal">"Plienas"</string>
     <string name="quest_powerPolesMaterial_concrete">"Betonas"</string>
     <string name="quest_maxspeed_answer_advisory_speed_limit">"Tik siūlomas greičio apribojimas"</string>
+    <string name="quest_address_answer_house_name">"Nėra namo numerio, tik pavadinimas"</string>
+    <string name="quest_address_house_name_label">"Namo pavadinimas:"</string>
+    <string name="quest_buildingLevels_roofLevelsLabel2">"aukštų stoge"</string>
+    <string name="quest_buildingLevels_levelsLabel2">"paprasti aukštai (neskaičiuojant stogo)"</string>
+    <string name="pref_title_authorized_summary">"Autorizuota"</string>
+    <string name="quest_buildingLevels_answer_multipleLevels">"skiriasi skirtingose pastato dalyse"</string>
+    <string name="quest_buildingLevels_answer_description">"Tokiu atveju tiesiog įveskite aukščiausios pastato dalies reikšmę."</string>
+    <string name="unglue_hint">"Spustelėkite, kad atklijuotumėte rodinį nuo pozicijos"</string>
+    <string name="pref_title_not_authorized_summary2">"Autorizacijai prisijunkite iš jūsų naršyklės"</string>
+    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Ar šio kelio juostos yra fiziškai atskirtos (pavyzdžiui barjeru)? Nuo to priklauso numatytasis greičio apribojimas priklauso."</string>
+    <string name="about_category_feedback">"Atsiliepimai"</string>
+    <string name="quest_leave_new_note_photo">"Prisegti nuotrauką"</string>
+    <string name="quest_leave_new_note_photo_delete_title">"Ar norite ištrinti šią nuotrauką?"</string>
+    <string name="privacy_html_image_upload">"&lt;p&gt;Jūsų prisegtos nuotraukos įkeliamos į &lt;a href=\"https://lut.im\"&gt;lut.im&lt;/a&gt;, anoniminę paslaugą be sekimo.&lt;/p&gt;"</string>
+    <string name="quest_cycleway_value_track">"dviračių takas"</string>
+    <string name="quest_cycleway_value_lane">"dviračių juosta"</string>
+    <string name="quest_cycleway_value_none">"nėra"</string>
+    <string name="quest_cycleway_value_shared">"juosta, kuria dalinamasi su kitu transportu"</string>
+    <string name="quest_cycleway_value_bus_lane">"autobusų juostoje"</string>
+    <string name="quest_cycleway_value_sidewalk">"išskirtinai bendras šaligatvis"</string>
+    <string name="quest_leave_new_note_create_image_error">"Nepavyko sukurti failo arba nuotraukos"</string>
+    <string name="quest_cycleway_value_lane_dual">"dviračių juosta į abi puses"</string>
+    <string name="quest_cycleway_value_track_dual">"dviračių takas į abi puses"</string>
+    <string name="quest_cycleway_value_sidewalk_allowed">"nėra, bet dviratininkai gali važiuoti šaligatviu"</string>
+    <string name="pref_category_advanced">"Išmanesni"</string>
+    <string name="pref_title_quests">"Užduočių parinkimas"</string>
+    <string name="quest_enabled">"Įjungtas"</string>
+    <string name="quest_type">"Užduočių tipas"</string>
+    <string name="action_reset">"Atstatyti"</string>
+    <string name="reorder_quest_priority_hint">"Ilgai spauskite ir tempkite užduotį, kad pakeistumėte jos prioritetą atsiuntimui ir rodymui žemėlapyje."</string>
+    <string name="undo_confirm_positive">"Atšaukti"</string>
+    <string name="undo_confirm_negative">"Nutraukti"</string>
+    <string name="quest_dietType_vegetarian_name_title">"Ar %s turi vegetariško maisto savo meniu?"</string>
+    <string name="quest_dietType_vegan_name_title">"Ar %s turi veganų maisto savo meniu?"</string>
+    <string name="quest_hasFeature_only">"Tik"</string>
+    <string name="quest_dietType_explanation_vegan">"Veganų maiste nėra jokių gyvulinės kilmės produktų (mėsos, pieno produktų, kiaušinių, ...)"</string>
+    <string name="quest_dietType_explanation_vegetarian">"Vegetariškame maiste nėra mėsos."</string>
+    <string name="quest_dietType_explanation">"Atsakykite taip tik tada, jei vieta teikia tinkamus valgius šioms dietoms, ignoruojant užkandžius ir pan."</string>
+    <string name="quest_carWashType_title">"Kokio tipo tai plovykla?"</string>
+    <string name="quest_carWashType_automated">"Automatinė"</string>
+    <string name="quest_carWashType_selfService">"Savitarnos"</string>
+    <string name="quest_carWashType_service">"Darbuotojai valo mašiną"</string>
+    <string name="enable_quest_confirmation_title">"Įjungti šį užduočių tipą?"</string>
+    <string name="default_disabled_msg_go_inside">"Šis užduočių tipas išjungtas pagal nutylėjimą, nes jums tikriausiai teks įvesti vietą, kad vykdytumėte tokias užduotis."</string>
+    <string name="quest_housenumber_street_number_optional">"Orientacijos numeris (pasirinktinai)"</string>
+    <string name="quest_cycleway_answer_contraflow_cycleway">"Taip pat dviračių takas kitoje pusėje"</string>
 </resources>

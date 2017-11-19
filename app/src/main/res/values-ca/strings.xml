@@ -61,7 +61,6 @@
     <string name="close">"tanca"</string>
     <string name="download_error">"S'ha produït un error en cercar missions"</string>
     <string name="upload_error">"S'ha produït un error en pujar les respostes"</string>
-    <string name="cannot_find_bbox">"No es pot cercar aquí. Prova d'apropar-t'hi més"</string>
     <string name="download_area_too_big">"Apropa-t'hi més"</string>
     <string name="confirmation_cancel_prev_download_title">"Voleu cancel·lar la cerca actual i fer-ho aquí?"</string>
     <string name="notification_downloading">"S'estan cercant missions…"</string>
@@ -105,8 +104,6 @@
     <string name="quest_openingHours_comment_description">"Sigues concís, idealment usa el mateix redactat del cartell. P. e. «amb cita prèvia». L'absència de cartell no implica necessàriament que no hi hagi horari d'obertura habitual."</string>
     <string name="quest_buildingLevels_title">"Quantes plantes té aquest edifici?"</string>
     <string name="quest_buildingLevels_title_buildingPart">"Quantes plantes té aquesta part de l'edifici?"</string>
-    <string name="quest_buildingLevels_levelsLabel">"plantes totals"</string>
-    <string name="quest_buildingLevels_roofLevelsLabel">"d'aquestes plantes, en la teulada"</string>
     <string name="quest_roofShape_title">"Quina forma bàsica té la teulada d'aquest edifici?"</string>
     <string name="quest_roofShape_select_one">"Selecciona'n un:"</string>
     <string name="quest_roofShape_show_more">"Mostra'n més…"</string>
@@ -196,7 +193,6 @@ Aleshores, la informació que introdueixes s'afegeix directament a l'OpenStreetM
     <string name="quest_name_answer_noName">"No té nom"</string>
     <string name="quest_name_answer_noName_confirmation_title">"De veritat no té nom?"</string>
     <string name="quest_name_noName_confirmation_positive">"Sí, no té nom"</string>
-    <string name="quest_buildingLevels_negativeBuildingLevels">"Ep! Has especificat més nivells de teulada que nivells en total!"</string>
     <string name="quest_openingHours_add_times">"Afegir horaris d'apertura"</string>
     <string name="crash_message">"Voleu enviar l'informe d'error al desenvolupador?"</string>
     <string name="crash_title">"oh no, l'StreetComplete va fallar l'última vegada!"</string>
@@ -247,6 +243,8 @@ Aleshores, la informació que introdueixes s'afegeix directament a l'OpenStreetM
 La parada de bus «%s» té marquesina?"</string>
     <string name="quest_toiletsFee_title">"Cal pagar per l'ús dels serveis?"</string>
     <string name="quest_tactilePaving_title_bus">"Aquesta parada d'autobús té paviment tàctil?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"Aquest pas de vianants té paviment tàctil?"</string>
     <string name="quest_source_dialog_title">"Esteu segur que heu comprovat això presencialment?"</string>
     <string name="quest_tactilePaving_title_name_bus">"Aquesta parada d'autobús «%s» té paviment tàctil?"</string>
@@ -262,16 +260,25 @@ La parada de bus «%s» té marquesina?"</string>
     <string name="quest_maxspeed_answer_noSign_urbanOk">"Dins el nucli urbà"</string>
     <string name="quest_maxspeed_answer_noSign_ruralOk">"Fora del nucli urbà"</string>
     <string name="quest_sport_softball">"Softbol"</string>
+    <string name="quest_sport_racquet">"Raquetbol"</string>
     <string name="quest_sport_paddle_tennis">"Pàdel"</string>
     <string name="quest_wheelchairAccess_name_title">"Es pot accedir a «%s» amb cadira de rodes?"</string>
     <string name="quest_wheelchairAccess_limited">"Parcialment"</string>
+    <string name="quest_wheelchairAccess_bus_station_title">"Aquesta estació de bus és accessible amb cadira de rodes?"</string>
     <string name="quest_wheelchairAccess_subway_entrance_title">"Es pot accedir en cadira de rodes a aquesta entrada de metro?"</string>
     <string name="quest_wheelchairAccess_railway_station_title">"Es pot accedir en cadira de rodes a aquesta estació de tren?"</string>
     <string name="quest_wheelchairAccess_location_title">"Es pot accedir en cadira de rodes a aquesta ubicació?"</string>
+    <string name="quest_wheelchairAccess_bus_station_name_title">"La estació de bus \"%s\" és accessible amb cadira de rodes?"</string>
+    <string name="quest_wheelchairAccess_subway_entrance_name_title">"La entrada de metro \"%s\" és accessible amb cadira de rodes?"</string>
+    <string name="quest_wheelchairAccess_railway_station_name_title">"La estació de tren \"%s\" és accessible amb cadira de rodes?"</string>
+    <string name="overground_recycling_container">"Contenidor"</string>
+    <string name="underground_recycling_container">"Contenidor soterrat"</string>
     <string name="quest_generic_error_a_field_empty">"Heu deixat un camp en blanc"</string>
     <string name="quest_streetName_menuItem_language_simple">"%1$s - %2$s"</string>
     <string name="quest_streetName_menuItem_language_native">"%1$s - %2$s (%3$s)"</string>
     <string name="quest_streetName_menuItem_nolanguage">"(sense especificar)"</string>
+    <string name="quest_fireHydrant_type_underground">"Soterrat"</string>
+    <string name="quest_fireHydrant_type_wall">"Paret"</string>
     <string name="credits_translations_title">"Traduccions"</string>
     <string name="credits_contributors_title">"Col·laboradors de codi"</string>
     <string name="credits_author_title">"Autor i mantenidor"</string>
@@ -279,18 +286,45 @@ La parada de bus «%s» té marquesina?"</string>
     <string name="quest_maxspeed_answer_living_street">"És una via residencial"</string>
     <string name="quest_orchard_produce_title">"Què hi cultiven, aquí?"</string>
     <string name="produce_grapes">"Raïm"</string>
+    <string name="produce_almonds">"Ametlles"</string>
     <string name="produce_apples">"Pomes"</string>
+    <string name="produce_apricots">"Albercocs"</string>
+    <string name="produce_avocados">"Alvocats"</string>
+    <string name="produce_bananas">"Plàtans"</string>
+    <string name="produce_blueberries">"Nabius"</string>
+    <string name="produce_cacao">"Cacau"</string>
+    <string name="produce_cashew_nuts">"Anacards"</string>
+    <string name="produce_cherries">"Cireres"</string>
+    <string name="produce_chestnuts">"Castanyes"</string>
+    <string name="produce_coconuts">"Cocos"</string>
+    <string name="produce_coffee">"Cafè"</string>
+    <string name="produce_figs">"Figues"</string>
+    <string name="produce_hops">"Llúpol"</string>
     <string name="produce_kiwis">"Kiwis"</string>
     <string name="produce_lemons">"Llimones"</string>
     <string name="produce_limes">"Llima"</string>
     <string name="produce_mangos">"Mangos"</string>
+    <string name="produce_nutmeg">"Nou moscada"</string>
     <string name="produce_olives">"Olives"</string>
     <string name="produce_oranges">"Taronges"</string>
     <string name="produce_papayas">"Papaies"</string>
     <string name="produce_peaches">"Préssecs"</string>
     <string name="produce_pears">"Peres"</string>
+    <string name="produce_persimmons">"Caquis"</string>
     <string name="produce_pineapples">"Pinyes tropicals"</string>
+    <string name="produce_pepper">"Pebre"</string>
     <string name="produce_pistachios">"Festucs"</string>
+    <string name="produce_plums">"Prunes"</string>
+    <string name="produce_raspberries">"Gerds"</string>
+    <string name="produce_rubber">"Goma"</string>
+    <string name="produce_strawberries">"Maduixes"</string>
     <string name="produce_tea">"Te"</string>
     <string name="produce_vanilla">"Vainilla"</string>
+    <string name="produce_walnuts">"Nous"</string>
+    <string name="compass_north_one_letter">"N"</string>
+    <string name="produce_tomatoes">"Tomàquets"</string>
+    <string name="quest_powerPolesMaterial_wood">"Fusta"</string>
+    <string name="quest_powerPolesMaterial_metal">"Acer"</string>
+    <string name="quest_powerPolesMaterial_concrete">"Formigó"</string>
+    <string name="pref_title_authorized_summary">"Autoritzat"</string>
 </resources>

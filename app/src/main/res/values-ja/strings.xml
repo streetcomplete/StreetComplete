@@ -10,7 +10,6 @@
     <string name="pref_category_communication">"通信"</string>
     <string name="pref_category_display">"表示"</string>
     <string name="pref_title_authorization">"OSM アクセスの認証"</string>
-    <string name="pref_title_authorized_summary">"アカウントへの認証が成功しました"</string>
     <string name="pref_title_not_authorized_summary">"まだ認証されていません"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
     <string name="pref_tilecache_size_message">"メガバイト単位の容量で、マップタイルをキャッシュするために外部ストレージを予約します"</string>
@@ -62,7 +61,6 @@
     <string name="close">"閉じる"</string>
     <string name="download_error">"探索のスキャン中にエラーが発生しました"</string>
     <string name="upload_error">"回答のアップロード中にエラーが発生しました"</string>
-    <string name="cannot_find_bbox">"ここでスキャンできません。 ズームインしてみてください"</string>
     <string name="download_area_too_big">"ズームインしてみてください"</string>
     <string name="confirmation_cancel_prev_download_title">"現在の検索をキャンセルして、代わりにここでスキャンしますか?"</string>
     <string name="notification_downloading">"探索のスキャン中"</string>
@@ -106,8 +104,6 @@
     <string name="quest_openingHours_comment_description">"簡潔に、理想的には標識からの文言を使用してください。 例えば、\"予約で\"。 標識がない場合も、必ずしも定期的な営業時間がないわけではありません。"</string>
     <string name="quest_buildingLevels_title">"この建物は何階建てですか?"</string>
     <string name="quest_buildingLevels_title_buildingPart">"この建物部分は何階建てですか?"</string>
-    <string name="quest_buildingLevels_levelsLabel">"総階数"</string>
-    <string name="quest_buildingLevels_roofLevelsLabel">"これらのうち、屋根の階"</string>
     <string name="quest_roofShape_title">"この建物の屋根の基本形は何ですか?"</string>
     <string name="quest_roofShape_select_one">"1 つ選択:"</string>
     <string name="quest_roofShape_show_more">"さらに表示…"</string>
@@ -197,7 +193,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_name_answer_noName">"名前がありません"</string>
     <string name="quest_name_answer_noName_confirmation_title">"本当に名前はありませんか?"</string>
     <string name="quest_name_noName_confirmation_positive">"はい、名前なし"</string>
-    <string name="quest_buildingLevels_negativeBuildingLevels">"おっと! 総階数より多い屋根の階数を指定しました!"</string>
     <string name="quest_openingHours_add_times">"開店時間を追加"</string>
     <string name="crash_message">"開発者にエラーレポートを送信していただけますか?"</string>
     <string name="crash_title">"StreetComplete がクラッシュしました!"</string>
@@ -247,6 +242,8 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_busStopShelter_name_title">"バス停 %s には屋根がありますか?"</string>
     <string name="quest_toiletsFee_title">"これらのトイレは有料ですか?"</string>
     <string name="quest_tactilePaving_title_bus">"このバス停には点字ブロックがありますか?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"この横断歩道には点字ブロックがありますか?"</string>
     <string name="quest_source_dialog_title">"この場所で実際に確認しましたか?"</string>
     <string name="quest_tactilePaving_title_name_bus">"バス停 \"%s\" には点字ブロックがありますか?"</string>
@@ -366,8 +363,12 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="produce_vanilla">"バニラ"</string>
     <string name="produce_walnuts">"クルミ"</string>
     <string name="produce_sisal">"サイザル"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_way_lit_title">"この道の箇所は照明が点灯していますか?"</string>
     <string name="quest_way_lit_named_title">"\"%s\" は照明が点灯していますか?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_way_lit_road_title">"この道路の箇所は照明が点灯していますか?"</string>
     <string name="quest_way_lit_named_road_title">"\"%s\" 道路は照明が点灯していますか?"</string>
     <string name="quest_way_lit_automatic">"動き検出を使用します"</string>

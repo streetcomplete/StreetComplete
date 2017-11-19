@@ -419,15 +419,15 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire keybor
     <string name="quest_leave_new_note_photo_delete_title">"Wil jij deze foto deleten?"</string>
     <string name="privacy_html_image_upload">"&lt;p&gt;De foto's toegevoegd aan de noties zijn geüpload naar &lt;a href=\"https://lut.im\"&gt;lut.im&lt;/a&gt;, een service die anoniemen is en waarbij je positie niet wordt bijgehouden.&lt;p&gt;"</string>
     <string name="quest_cycleway_value_track">"fietspad"</string>
-    <string name="quest_cycleway_value_lane">"Fietspad"</string>
+    <string name="quest_cycleway_value_lane">"Fietsstrook"</string>
     <string name="quest_cycleway_value_none">"geen"</string>
-    <string name="quest_cycleway_value_shared">"strook uitdrukkelijk gedeeldmet ander verkeer"</string>
+    <string name="quest_cycleway_value_shared">"strook uitdrukkelijk gedeeld met ander verkeer"</string>
     <string name="quest_cycleway_value_bus_lane">"op een busstrook"</string>
     <string name="quest_cycleway_value_sidewalk">"gedeeld met voetpad"</string>
     <string name="quest_leave_new_note_create_image_error">"niet mogelijk om bestand of foto tecreëren "</string>
-    <string name="quest_cycleway_value_lane_dual">"fietspad met tweerichtingsverkeer"</string>
-    <string name="quest_cycleway_value_track_dual">"Fiets strook met tweerichtingsverkeer"</string>
-    <string name="quest_cycleway_value_sidewalk_allowed">"geen,maar fietsers zijn toegestaan op het voetpad"</string>
+    <string name="quest_cycleway_value_lane_dual">"fietsstrook met tweerichtingsverkeer"</string>
+    <string name="quest_cycleway_value_track_dual">"Fietspad met tweerichtingsverkeer"</string>
+    <string name="quest_cycleway_value_sidewalk_allowed">"geen, maar fietsers zijn toegestaan op het voetpad"</string>
     <string name="pref_category_advanced">"gevorderd"</string>
     <string name="pref_title_quests">"vraag selectie"</string>
     <string name="quest_enabled">"ingeschakeld"</string>
@@ -436,4 +436,17 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire keybor
     <string name="reorder_quest_priority_hint">"houd een vraag vast en verplaats hem om de prioriteit opnieuw in te stellen bij download en tonen op de kaart."</string>
     <string name="undo_confirm_positive">"Ongedaan maken"</string>
     <string name="undo_confirm_negative">"Annuleren"</string>
+    <string name="quest_dietType_vegetarian_name_title">"Heeft %s vegetarische gerechten op het menu? "</string>
+    <string name="quest_dietType_vegan_name_title">"Heeft %s veganistische gerechten op het menu? "</string>
+    <string name="quest_hasFeature_only">"Alleen"</string>
+    <string name="quest_dietType_explanation_vegan">"Veganistische gerechten bevatten geen dierlijke producten (geen vlees, geen melkproducten, geen eieren,....)."</string>
+    <string name="quest_dietType_explanation_vegetarian">"Vegetarische gerechten bevatten geen vlees"</string>
+    <string name="quest_dietType_explanation">"Beantwoord deze vraag alleen als deze plek voldoende mogelijkheden biedt voor dit dieet. Vergeet voorgerechten, etc."</string>
+    <string name="quest_carWashType_title">"Wat voor soort wasstraat is dit?"</string>
+    <string name="quest_carWashType_automated">"Geautomatiseerd"</string>
+    <string name="quest_carWashType_selfService">"Self service"</string>
+    <string name="quest_carWashType_service">"Bemande auto schoonmaak"</string>
+    <string name="enable_quest_confirmation_title">"Dit type vraag aanzetten?"</string>
+    <string name="default_disabled_msg_go_inside">"Dit type vraag is standaard gesloten omdat je zeer waarschijnlijk voor het antwoord op dit type vraag de plaats moet invullen. "</string>
+    <string name="quest_cycleway_answer_contraflow_cycleway">"Ook een fietspad aan de overkant"</string>
 </resources>

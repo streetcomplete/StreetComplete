@@ -437,4 +437,18 @@ Ellers kan du downloade et andet keyboard i Forretning. Populære keyboards der 
     <string name="quest_enabled">"Aktiveret"</string>
     <string name="quest_type">"Opgavetype"</string>
     <string name="action_reset">"Nulstil"</string>
+    <string name="undo_confirm_positive">"Fortryd"</string>
+    <string name="undo_confirm_negative">"Annuller"</string>
+    <string name="quest_dietType_vegetarian_name_title">"Har %s vegetarretter på menuen?"</string>
+    <string name="quest_dietType_vegan_name_title">"Har %s veganske retter på menuen?"</string>
+    <string name="quest_hasFeature_only">"Kun"</string>
+    <string name="quest_dietType_explanation_vegan">"Veganske retter indeholder ingen dyreprodukter (ingen kød, mælkeprodukter, æg, ...)."</string>
+    <string name="quest_dietType_explanation_vegetarian">"Vegetarretter inderholder intet kød."</string>
+    <string name="quest_dietType_explanation">"Svar kun ja, hvis stedet tilbyder et komplet måltid af denne type, ignorer forretter osv."</string>
+    <string name="quest_carWashType_title">"Hvilken type bilvask er dette?"</string>
+    <string name="quest_carWashType_automated">"Automatisk"</string>
+    <string name="quest_carWashType_selfService">"Gør det selv"</string>
+    <string name="quest_carWashType_service">"Personale vasker bilen"</string>
+    <string name="enable_quest_confirmation_title">"Aktiver denne opgavetype?"</string>
+    <string name="default_disabled_msg_go_inside">"Denne opgavetype er normalt deaktiveret, da du sandsynligvis skal ind i stedet for at kunne svare på denne opgavetype."</string>
 </resources>

@@ -426,4 +426,20 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="reorder_quest_priority_hint">"Pressione de forma longa para mover um desafio e reordenar a sua prioridade para download e aparência no mapa"</string>
     <string name="undo_confirm_positive">"Desfazer"</string>
     <string name="undo_confirm_negative">"Cancelar"</string>
+    <string name="quest_dietType_vegetarian_name_title">"%s possui refeições vegetarianas na ementa?"</string>
+    <string name="quest_dietType_vegan_name_title">"%s possui refeições vegan na ementa?"</string>
+    <string name="quest_hasFeature_only">"Apenas"</string>
+    <string name="quest_dietType_explanation_vegan">"As refeições vegan não contêm qualquer tipo de produto animal ( não possuem: carne, leite ou ovos...)"</string>
+    <string name="quest_dietType_explanation_vegetarian">"As refeições vegetarianas não contêm carne."</string>
+    <string name="quest_dietType_explanation">"Apenas responde que sim, se o local possui opções viáveis para este tipo de dieta, ignore locais recentes, etc."</string>
+    <string name="quest_carWashType_title">"Que tipo de lavagem de carro é esta?"</string>
+    <string name="quest_carWashType_automated">"Automática"</string>
+    <string name="quest_carWashType_selfService">"Self service"</string>
+    <string name="quest_carWashType_service">"Há funcionários para lavar o carro"</string>
+    <string name="enable_quest_confirmation_title">"Ativar este tipo de desafio?"</string>
+    <string name="default_disabled_msg_go_inside">"Este tipo de desafio está desativado por predefinição, dado que provavelmente tem de estar no local para poder responder a este tipo de desafio."</string>
+    <string name="quest_housenumber_conscription_number">"Número matricial"</string>
+    <string name="quest_housenumber_street_number_optional">"Número de porta para além do matricial"</string>
+    <string name="quest_housenumber_conscription_number_required">"Um número matricial deve ser especificado"</string>
+    <string name="quest_cycleway_answer_contraflow_cycleway">"Também possui ciclovia aos lados"</string>
 </resources>

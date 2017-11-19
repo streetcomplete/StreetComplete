@@ -61,7 +61,6 @@
     <string name="close">"bezárás"</string>
     <string name="download_error">"Hiba a kérdések beolvasása során"</string>
     <string name="upload_error">"Hiba a válaszok feltöltése során"</string>
-    <string name="cannot_find_bbox">"Itt nem lehet beolvasni. Próbálj meg jobban ránagyítani"</string>
     <string name="download_area_too_big">"Nagyíts rá jobban"</string>
     <string name="confirmation_cancel_prev_download_title">"Törlöd a jelenlegi keresést, és inkább itt olvasol be?"</string>
     <string name="notification_downloading">"Kérdések keresése…"</string>
@@ -105,8 +104,6 @@
     <string name="quest_openingHours_comment_description">"Légy tömör, lehetőleg a táblán lévő szavakat írd le, pl. „előzetes megbeszélés alapján”. Attól, hogy nincs is kiírva, még lehet rendszeres nyitva tartás."</string>
     <string name="quest_buildingLevels_title">"Hány szintes ez az épület?"</string>
     <string name="quest_buildingLevels_title_buildingPart">"Hány szintes ez az épületrész?"</string>
-    <string name="quest_buildingLevels_levelsLabel">"összes szint"</string>
-    <string name="quest_buildingLevels_roofLevelsLabel">"ebből a tetőtér szintjei"</string>
     <string name="quest_roofShape_title">"Milyen alapformájú ennek az épületnek a teteje?"</string>
     <string name="quest_roofShape_select_one">"Jelölj ki egyet:"</string>
     <string name="quest_roofShape_show_more">"Továbbiak…"</string>
@@ -196,7 +193,6 @@ A megadott adatok közvetlenül az OpenStreetMapre kerülnek a nevedben, ehhez n
     <string name="quest_name_answer_noName">"Nincs neve"</string>
     <string name="quest_name_answer_noName_confirmation_title">"Tényleg nincs neve?"</string>
     <string name="quest_name_noName_confirmation_positive">"Így van, nincs neve"</string>
-    <string name="quest_buildingLevels_negativeBuildingLevels">"Hoppá! Több szintet adtál meg a tetőtérnek, mint az egész épületnek!"</string>
     <string name="quest_openingHours_add_times">"Nyitva tartás hozzáadása."</string>
     <string name="crash_message">"El tudnád küldeni a hibajelentést a fejlesztőnek?"</string>
     <string name="crash_title">"Jaj ne, a StreetComplete legutóbb összeomlott!"</string>
@@ -246,6 +242,8 @@ A megadott adatok közvetlenül az OpenStreetMapre kerülnek a nevedben, ehhez n
     <string name="quest_busStopShelter_name_title">"\"%s\" buszmegálló fedett?"</string>
     <string name="quest_toiletsFee_title">"Fizetős ez a WC?"</string>
     <string name="quest_tactilePaving_title_bus">"Van vakvezető burkolat ebben a buszmegállóban?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"Van vakvezető burkolat ezen a gyalogosátkelőn?"</string>
     <string name="quest_source_dialog_title">"Biztos, hogy ellenőrizted a helyszínen?"</string>
     <string name="quest_tactilePaving_title_name_bus">"\"%s\" buszmegállóban van vakvezető burkolat?"</string>
@@ -365,8 +363,12 @@ Vagy le is tölthetsz egy másik billentyűzetet az áruházból. Népszerű bil
     <string name="produce_vanilla">"Vanília"</string>
     <string name="produce_walnuts">"Dió"</string>
     <string name="produce_sisal">"Szizálkender"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_way_lit_title">"Ki van világítva ez az útszakasz?"</string>
     <string name="quest_way_lit_named_title">"\"%s\" ki van itt világítva?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_way_lit_road_title">"Ki van világítva ez az útszakasz?"</string>
     <string name="quest_way_lit_named_road_title">"\"%s\" ki van itt világítva?"</string>
     <string name="quest_way_lit_automatic">"Mozgásérzékelővel rendelkezik"</string>

@@ -44,7 +44,7 @@
     <string name="quest_openingHours_chooseMonthsTitle">"Выберите месяцы"</string>
     <string name="quest_openingHours_chooseWeekdaysTitle">"Выберите дни работы"</string>
     <string name="quest_openingHours_24_7_confirmation">"Другими словами, работает круглосуточно в любой день недели?"</string>
-    <string name="quest_noteDiscussion_title">"Есть, что сказать?"</string>
+    <string name="quest_noteDiscussion_title">"Есть что-то, что вы можете добавить к этой заметке?"</string>
     <string name="quest_noteDiscussion_no">"Нет, скрыть"</string>
     <string name="quest_noteDiscussion_create">"создано %1$s (%2$s)"</string>
     <string name="quest_noteDiscussion_comment">"%1$s (%2$s)"</string>
@@ -61,7 +61,6 @@
     <string name="close">"закрыть"</string>
     <string name="download_error">"Не удалось найти квесты"</string>
     <string name="upload_error">"Не удалось отправить ответы"</string>
-    <string name="cannot_find_bbox">"Поиск невозможен. Попробуйте приблизить ещё"</string>
     <string name="download_area_too_big">"Приблизьте ещё"</string>
     <string name="confirmation_cancel_prev_download_title">"Завершить текущее сканирование и сканировать здесь?"</string>
     <string name="notification_downloading">"Поиск квестов…"</string>
@@ -103,8 +102,6 @@
     <string name="quest_openingHours_comment_description">"Будьте кратки, по возможности используйте надписи с табличек (например, «по записи»). Отсутствие табличек не обязательно означает особый режим работы."</string>
     <string name="quest_buildingLevels_title">"Сколько этажей у этого здания?"</string>
     <string name="quest_buildingLevels_title_buildingPart">"Сколько этажей у этой части здания?"</string>
-    <string name="quest_buildingLevels_levelsLabel">"всего этажей"</string>
-    <string name="quest_buildingLevels_roofLevelsLabel">"из них в составе крыши"</string>
     <string name="quest_roofShape_title">"Какой формы крыша у этого здания?"</string>
     <string name="quest_roofShape_select_one">"Выберите один вариант:"</string>
     <string name="quest_roofShape_show_more">"Ещё…"</string>
@@ -194,7 +191,6 @@
     <string name="quest_name_answer_noName">"Нет названия"</string>
     <string name="quest_name_answer_noName_confirmation_title">"Действительно нет названия?"</string>
     <string name="quest_name_noName_confirmation_positive">"Да, нет названия"</string>
-    <string name="quest_buildingLevels_negativeBuildingLevels">"Ой! Было указано больше этажей в составе крыши, чем есть всего!"</string>
     <string name="quest_openingHours_add_times">"Добавить время работы"</string>
     <string name="crash_message">"Хотите отправить отчёт об ошибке разработчику?"</string>
     <string name="crash_title">"О нет, в прошлый раз произошел сбой StreetComplete"</string>
@@ -244,6 +240,8 @@
     <string name="quest_busStopShelter_name_title">"Защищена ли автобусная остановка «%s» от погодных условий?"</string>
     <string name="quest_toiletsFee_title">"Это платные туалеты?"</string>
     <string name="quest_tactilePaving_title_bus">"Есть ли на этой автобусной остановке тактильная разметка?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"Есть ли на этом пешеходном переходе тактильная разметка?"</string>
     <string name="quest_source_dialog_title">"Вы точно проверили это на месте?"</string>
     <string name="quest_tactilePaving_title_name_bus">"Есть ли на автобусной остановке «%s» тактильная разметка?"</string>
@@ -361,8 +359,12 @@
     <string name="produce_vanilla">"Ваниль"</string>
     <string name="produce_walnuts">"Грецкие орехи"</string>
     <string name="produce_sisal">"Сизаль"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_way_lit_title">"Освещена ли эта часть пути?"</string>
     <string name="quest_way_lit_named_title">"Освещается ли \"%s\"?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_way_lit_road_title">"Освещена ли эта часть дороги?"</string>
     <string name="quest_way_lit_named_road_title">"Освещена ли эта часть дороги «%s»?"</string>
     <string name="quest_way_lit_automatic">"Используется обнаружение присутствия"</string>
@@ -408,4 +410,38 @@
     <string name="pref_title_not_authorized_summary2">"Войти через браузер и авторизовать"</string>
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Разделены ли полосы противоположных направлений физически (барьером или островком безопасности)? От этого зависит ограничение скорости по умолчанию."</string>
     <string name="about_category_feedback">"Обратная связь"</string>
+    <string name="quest_leave_new_note_photo">"Прикрепить фото"</string>
+    <string name="quest_leave_new_note_photo_delete_title">"Удалить это изображение?"</string>
+    <string name="privacy_html_image_upload">"&lt;p&gt;Прикреплённые к заметкам фото загружаются на &lt;a href=\"https://lut.im\"&gt;lut.im&lt;/a&gt;, анонимный сервис, не отслеживающий пользователей.&lt;/p&gt;"</string>
+
+    <!-- Может лучше "выделанная велодорожка"? В нашем ПДД отсуствует термин полоса или дорожка. Всё - велосипедная дорожка. -->
+    <string name="quest_cycleway_value_track">"велодорожка"</string>
+    <string name="quest_cycleway_value_lane">"полоса для велосипедистов"</string>
+    <string name="quest_cycleway_value_none">"нет"</string>
+    <string name="quest_cycleway_value_shared">"полоса явно указанная для совместного движения"</string>
+    <string name="quest_cycleway_value_bus_lane">"на выделенной для автобусов полосе"</string>
+    <string name="quest_cycleway_value_sidewalk">"тротуар для пешеходов и велосипедистов"</string>
+    <string name="quest_leave_new_note_create_image_error">"Не удалось создать файл для фото"</string>
+    <string name="quest_cycleway_value_lane_dual">"велосипедная полоса, движение в обе стороны"</string>
+    <string name="quest_cycleway_value_track_dual">"велодорожка, в обе стороны"</string>
+    <string name="quest_cycleway_value_sidewalk_allowed">"нет, но велосипеды разрешены на тротуаре"</string>
+    <string name="pref_category_advanced">"Расширенные"</string>
+    <string name="pref_title_quests">"Выбор квестов"</string>
+    <string name="quest_enabled">"Включён"</string>
+    <string name="quest_type">"Тип квестов"</string>
+    <string name="action_reset">"Сбросить"</string>
+    <string name="reorder_quest_priority_hint">"Долгое нажатие и перетаскивание квестов меняет их приоритет при загрузке и отображении на карте."</string>
+    <string name="undo_confirm_positive">"Отменить"</string>
+    <string name="undo_confirm_negative">"Оставить"</string>
+    <string name="quest_dietType_vegetarian_name_title">"Если ли у \"%s\" вегетарианские блюда в меню?"</string>
+    <string name="quest_dietType_vegan_name_title">"Если ли у \"%s\" веганские блюда в меню?"</string>
+    <string name="quest_hasFeature_only">"Только"</string>
+    <string name="quest_dietType_explanation_vegan">"Веганские блюда не содержат продуктов животного происхождения (мяса, молочных продуктов, яиц и т.д.)."</string>
+    <string name="quest_dietType_explanation_vegetarian">"Вегетарианские блюда не содержат мяса."</string>
+    <string name="quest_carWashType_title">"Какого типа эта автомойка?"</string>
+    <string name="quest_carWashType_automated">"Автоматическая"</string>
+    <string name="quest_carWashType_selfService">"Самообслуживания"</string>
+    <string name="quest_carWashType_service">"Обслуживаемая персоналом"</string>
+    <string name="enable_quest_confirmation_title">"Включить этот тип квестов?"</string>
+    <string name="default_disabled_msg_go_inside">"Этот тип квестов выключен по умолчанию, потому что для ответа на такие вопросы, скорее всего, нужно войти в заведение."</string>
 </resources>

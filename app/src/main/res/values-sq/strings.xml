@@ -61,7 +61,6 @@
     <string name="close">"mbylle"</string>
     <string name="download_error">"Gabim gjatë skanimit për gjurmime"</string>
     <string name="upload_error">"Gabim gjatë ngarkimit të përgjigjeve"</string>
-    <string name="cannot_find_bbox">"Nuk mund të skanoj këtu. Mundohu ta zmadhoni më tej."</string>
     <string name="download_area_too_big">"Ju lutemi afrohuni më shumë"</string>
     <string name="confirmation_cancel_prev_download_title">"Anuloni kërkimin aktual dhe skanoni këtu?"</string>
     <string name="notification_downloading">"Po skanohet për Gjurmime…"</string>
@@ -105,8 +104,6 @@
     <string name="quest_openingHours_comment_description">"Jini i shkurt, më së miri duke përdorur fjalë nga shenja. I.e. \"me rezervim\". Mungesa e shenjës nuk do të thotë që nuk ka orar të rregulltë."</string>
     <string name="quest_buildingLevels_title">"Sa katë ka kjo ndërtesë?"</string>
     <string name="quest_buildingLevels_title_buildingPart">"Sa katë ka kjo pjesë e ndërtesë?"</string>
-    <string name="quest_buildingLevels_levelsLabel">"nivelet totale"</string>
-    <string name="quest_buildingLevels_roofLevelsLabel">"prej këtyre, nivelet në nënkulm"</string>
     <string name="quest_roofShape_title">"Çfarë forme bazike ka kulmi i kësaj ndertese?"</string>
     <string name="quest_roofShape_select_one">"Zgjedh një:"</string>
     <string name="quest_roofShape_show_more">"Trego më shumë…"</string>
@@ -196,7 +193,6 @@ Informacioni që futni shtohet direkt në OpenStreetMap në emrin tuaj, pa nevoj
     <string name="quest_name_answer_noName">"Nuk ka emër"</string>
     <string name="quest_name_answer_noName_confirmation_title">"Me të vërtetë nuk ka emër?"</string>
     <string name="quest_name_noName_confirmation_positive">"Po, nuk ka emër"</string>
-    <string name="quest_buildingLevels_negativeBuildingLevels">"Oops! Keni dhënë më shumë katë të nënkulmit se krejt katet e objektit!"</string>
     <string name="quest_openingHours_add_times">"Shto orën e hapjes"</string>
     <string name="crash_message">"A do ta dërgoni raportin e gabimit te zhvilluesit?"</string>
     <string name="crash_title">"Oh jo, StreetComplete dështoi heren e fundit!"</string>
@@ -246,6 +242,8 @@ Informacioni që futni shtohet direkt në OpenStreetMap në emrin tuaj, pa nevoj
     <string name="quest_busStopShelter_name_title">"A ka ndalesa e autobusit \"%s\" mbulesë?"</string>
     <string name="quest_toiletsFee_title">"A kërkojnë këto toalete pagesë?"</string>
     <string name="quest_tactilePaving_title_bus">"A ka kjo ndalesë e autobusit shtresë taktile?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"A ka ky kalim këmbësorësh shtresë taktile?"</string>
     <string name="quest_source_dialog_title">"A jeni i sigurt që e keni konfirmuar këtë në vend?"</string>
     <string name="quest_tactilePaving_title_name_bus">"A ka ndalesa e autobusit \"%s\" shtresë taktile?
@@ -292,7 +290,7 @@ Nëse nuk ka shenja, vlen shpejtësia e paracaktuar."</string>
     <string name="overground_recycling_container">"Kontejner"</string>
     <string name="underground_recycling_container">"Kontejner i nëndheshëm"</string>
     <string name="quest_generic_error_a_field_empty">"Lat një fushë të zbrazët"</string>
-    <string name="quest_streetName_menuItem_language_simple">"%1$ - %2$"</string>
+    <string name="quest_streetName_menuItem_language_simple">"%1$s - %2$s"</string>
     <string name="quest_streetName_menuItem_language_native">"
 %1$ - %2$ (%3$) "</string>
     <string name="quest_streetName_answer_cantType">"Nuk mund t'i shkruani karaktereret në shenjë"</string>
@@ -365,8 +363,12 @@ Përndryshe, mund të shkarkoni një tastierë tjetër në dyqanin e aplikacione
     <string name="produce_vanilla">"Vanilla"</string>
     <string name="produce_walnuts">"Arra"</string>
     <string name="produce_sisal">"Sizal"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_way_lit_title">"A është e ndriçuar kjo pjesë e rrugës?"</string>
     <string name="quest_way_lit_named_title">"A është \"%s\" i ndriçuar këtu?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_way_lit_road_title">"A është kjo pjesë e rrugës e ndriçuar?"</string>
     <string name="quest_way_lit_named_road_title">"A është \"%s\" i ndriçuar këtu?"</string>
     <string name="quest_way_lit_automatic">"Përdor detekim të lëvizjes"</string>

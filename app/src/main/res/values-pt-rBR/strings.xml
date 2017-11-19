@@ -61,7 +61,6 @@
     <string name="close">"fechar"</string>
     <string name="download_error">"Erro escaneando por missões"</string>
     <string name="upload_error">"Erro fazendo upload de respostas"</string>
-    <string name="cannot_find_bbox">"Não é possível escanear aqui. Tente aumentar o zoom"</string>
     <string name="download_area_too_big">"Por favor, aumente o zoom"</string>
     <string name="confirmation_cancel_prev_download_title">"Cancelar a pesquisa atual e escanear aqui em vez disso?"</string>
     <string name="notification_downloading">"Escaneando por Missões…"</string>
@@ -107,8 +106,6 @@
     <string name="quest_openingHours_comment_description">"Seja preciso, idealmente use a frese da placa. I.e. \"por consulta\". A ausência de uma placa não significa necessariamente que não há horários de abertura regulares."</string>
     <string name="quest_buildingLevels_title">"Quantos andares esse edifício tem?"</string>
     <string name="quest_buildingLevels_title_buildingPart">"Quantos andares essa parte do edifício tem?"</string>
-    <string name="quest_buildingLevels_levelsLabel">"andares totais"</string>
-    <string name="quest_buildingLevels_roofLevelsLabel">"destes, níveis no telhado"</string>
     <string name="quest_roofShape_title">"Que forma básica tem o telhado deste edifício?"</string>
     <string name="quest_roofShape_select_one">"Selecione um:"</string>
     <string name="quest_roofShape_show_more">"Mostre mais…"</string>
@@ -199,14 +196,13 @@ As informações inseridas são adicionadas diretamente ao OpenStreetMap em seu 
     <string name="quest_name_answer_noName">"Não há nome"</string>
     <string name="quest_name_answer_noName_confirmation_title">"Certeza, sem nome?"</string>
     <string name="quest_name_noName_confirmation_positive">"Sim, sem nome"</string>
-    <string name="quest_buildingLevels_negativeBuildingLevels">"Ups! Você especificou mais níveis de telhado que níveis no total!"</string>
     <string name="quest_openingHours_add_times">"Adicionar horário de início"</string>
     <string name="crash_message">"Você gostaria de enviar um relatório de erro para o desenvolvedor?"</string>
     <string name="crash_title">"Ah não, o StreetComplete pendurou da última vez!"</string>
     <string name="crash_compose_email">"Compor e-mail"</string>
     <string name="no_email_client">"Você não tem nenhum cliente de email instalado."</string>
     <string name="pref_title_keep_screen_on">"Manter a tela ligada"</string>
-    <string name="download_server_error">"Erro de conexão buscando tarefas.  Tente novamente mais tarde."</string>
+    <string name="download_server_error">"Erro de conexão buscando missões.  Tente novamente mais tarde."</string>
     <string name="upload_server_error">"Erro de conexão subindo respostas.  Tente novamente mais tarde."</string>
     <string name="quest_generic_hasFeature_yes">"Sim"</string>
     <string name="quest_generic_hasFeature_no">"Não"</string>
@@ -248,7 +244,9 @@ As informações inseridas são adicionadas diretamente ao OpenStreetMap em seu 
     <string name="quest_sport_manySports_confirmation_title">"Você selecionou muitos esportes"</string>
     <string name="quest_busStopShelter_name_title">"O ponto de ônibus %s tem um telhado?"</string>
     <string name="quest_toiletsFee_title">"Esses sanitários são pagos?"</string>
-    <string name="quest_tactilePaving_title_bus">"Essa parada de de ônibus tem pavimentos táteis?"</string>
+    <string name="quest_tactilePaving_title_bus">"Essa parada de ônibus tem pavimentos táteis?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"Essa faixa de pedestres tem pavimentos táteis?"</string>
     <string name="quest_source_dialog_title">"Tem a certeza que verificou isto no local?"</string>
     <string name="quest_tactilePaving_title_name_bus">"A parada de de ônibus \"%S\" tem pavimentos táteis?"</string>
@@ -367,8 +365,12 @@ Caso contrário, pode baixar outro teclado na loja de aplicativos. Alguns dos te
     <string name="produce_vanilla">"Baunilha"</string>
     <string name="produce_walnuts">"Nozes"</string>
     <string name="produce_sisal">"Sisal"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_way_lit_title">"Este trecho de caminho tem iluminação?"</string>
     <string name="quest_way_lit_named_title">"%s tem iluminação aqui?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_way_lit_road_title">"Este trecho de estrada tem iluminação?"</string>
     <string name="quest_way_lit_named_road_title">"A estrada %s tem iluminação aqui? "</string>
     <string name="quest_way_lit_automatic">"Usa detector de movimento "</string>
@@ -401,4 +403,48 @@ Caso contrário, pode baixar outro teclado na loja de aplicativos. Alguns dos te
     <string name="quest_powerPolesMaterial_metal">"Aço"</string>
     <string name="quest_powerPolesMaterial_concrete">"Concreto"</string>
     <string name="quest_maxspeed_answer_advisory_speed_limit">"apenas um limite de velocidade indicativo"</string>
+    <string name="quest_address_answer_house_name">"Sem o número da casa, mas um nome"</string>
+    <string name="quest_address_house_name_label">"Nome da casa:"</string>
+    <string name="quest_buildingLevels_roofLevelsLabel2">"andares no telhado"</string>
+    <string name="quest_buildingLevels_levelsLabel2">"andares comuns (sem contar o telhado)"</string>
+    <string name="pref_title_authorized_summary">"Autorizado"</string>
+    <string name="quest_buildingLevels_answer_multipleLevels">"Difere por parte do edifício"</string>
+    <string name="quest_buildingLevels_answer_description">"Neste caso é só inserir os valores da parte mais alta da construção."</string>
+    <string name="unglue_hint">"Toque para de selecionar a visão da posição"</string>
+    <string name="pref_title_not_authorized_summary2">"Autentique no seu navegador para autorizar"</string>
+    <string name="about_category_feedback">"Envie um comentário"</string>
+    <string name="quest_leave_new_note_photo">"Anexar foto"</string>
+    <string name="quest_leave_new_note_photo_delete_title">"Você quer remover esta foto?"</string>
+    <string name="privacy_html_image_upload">"&lt;p&gt;Fotos que você adicionar para as notas são enviadas para &lt;a href=\"https://lut.im\"&gt;lut.im&lt;/a&gt;, um serviço que é anônimo e sem rastreamento."</string>
+    <string name="quest_cycleway_value_track">"Ciclovia"</string>
+    <string name="quest_cycleway_value_lane">"Ciclofaixa"</string>
+    <string name="quest_cycleway_value_none">"Nenhuma"</string>
+    <string name="quest_cycleway_value_shared">"Faixa compartilhada explicitamente"</string>
+    <string name="quest_cycleway_value_bus_lane">"Na faixa de ônibus"</string>
+    <string name="quest_cycleway_value_sidewalk">"Compartilhada explicitamente com calçada"</string>
+    <string name="quest_leave_new_note_create_image_error">"Não foi possível criar o arquivo para foto"</string>
+    <string name="quest_cycleway_value_lane_dual">"Ciclofaixa, ambas as direções"</string>
+    <string name="quest_cycleway_value_track_dual">"Ciclovia, ambas as direções"</string>
+    <string name="quest_cycleway_value_sidewalk_allowed">"Nenhuma, mas ciclistas permitidos na calçada"</string>
+    <string name="pref_category_advanced">"Avançado"</string>
+    <string name="pref_title_quests">"Seleção de missões"</string>
+    <string name="quest_enabled">"Habilitado"</string>
+    <string name="quest_type">"Tipo de missão"</string>
+    <string name="action_reset">"Limpar"</string>
+    <string name="reorder_quest_priority_hint">"Pressione e mova a missão para reorganizar a prioridade de download e apresentação no mapa."</string>
+    <string name="undo_confirm_positive">"Desfazer"</string>
+    <string name="undo_confirm_negative">"Cancelar"</string>
+    <string name="quest_dietType_vegetarian_name_title">"O %s tem opções vegetarianas no cardápio?"</string>
+    <string name="quest_dietType_vegan_name_title">"O %s tem opções veganas no cardápio?"</string>
+    <string name="quest_hasFeature_only">"Apenas"</string>
+    <string name="quest_dietType_explanation_vegan">"Refeições veganas não contém produtos animais (carne, laticínios, ovos, etc.)."</string>
+    <string name="quest_dietType_explanation_vegetarian">"Refeições vegetarianas não contém carne."</string>
+    <string name="quest_dietType_explanation">"Somente responda sim se o lugar prover opções de alimentação para esta dieta, ignore couvert etc."</string>
+    <string name="quest_carWashType_title">"Que tipo de lavagem de carro é essa?"</string>
+    <string name="quest_carWashType_automated">"Automatizado"</string>
+    <string name="quest_carWashType_selfService">"Auto-serviço"</string>
+    <string name="quest_carWashType_service">"Funcionários limpam o carro"</string>
+    <string name="enable_quest_confirmation_title">"Habilitar esse tipo de missão?"</string>
+    <string name="default_disabled_msg_go_inside">"Esse tipo de missão está desabilitado por padrão porque provavelmente você deve entrar no local para completar uma missão desse tipo."</string>
+    <string name="quest_cycleway_answer_contraflow_cycleway">"Ciclovia presente do outro lado"</string>
 </resources>
