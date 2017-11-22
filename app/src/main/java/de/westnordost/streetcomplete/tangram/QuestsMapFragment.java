@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.tangram;
 
-import android.app.Activity;
+import android.content.Context;
 import android.graphics.Point;
 import android.graphics.PointF;
 import android.graphics.Rect;
@@ -78,11 +78,10 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		retrievedTiles = new HashSet<>();
 	}
 
-	@Override public void onAttach(Activity activity)
+	@Override public void onAttach(Context context)
 	{
-		super.onAttach(activity);
-
-		listener = (Listener) activity;
+		super.onAttach(context);
+		listener = (Listener) context;
 	}
 
 	@Override public void onStart()
