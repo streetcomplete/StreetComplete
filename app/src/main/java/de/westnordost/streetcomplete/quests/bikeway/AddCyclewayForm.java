@@ -154,10 +154,14 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 
 	@Override protected void onClickOk()
 	{
-		if(  isDefiningBothSides && (leftSide == null || rightSide == null) ||
-		    !isDefiningBothSides && leftSide == null && rightSide == null)
+		if(leftSide == null && rightSide == null)
 		{
 			Toast.makeText(getActivity(), R.string.no_changes, Toast.LENGTH_SHORT).show();
+			return;
+		}
+		else if(isDefiningBothSides && (leftSide == null || rightSide == null))
+		{
+			Toast.makeText(getActivity(), R.string.need_specify_both_sides, Toast.LENGTH_SHORT).show();
 			return;
 		}
 
