@@ -37,31 +37,38 @@ public class QuestTypeOrderList
 	{
 		String beforeName = before.getClass().getSimpleName();
 		String afterName = after.getClass().getSimpleName();
-		int beforeIndices[] = findLocationInLists(beforeName, lists);
-		int afterIndices[] = findLocationInLists(afterName, lists);
+
+		// 1. remove after-item from the list it is in
+		List<String> afterList = findListThatContains(afterName, lists);
 
 		List<String> afterNames = new ArrayList<>(2);
 		afterNames.add(afterName);
 
-		// 1. remove after-item from the list it is in
-		if(afterIndices != null)
+		if(afterList != null)
 		{
-			List<String> list = lists.get(afterIndices[0]);
+			int afterIndex = afterList.indexOf(afterName);
+			List<String> beforeList = findListThatContains(beforeName, lists);
 			// if it is the head of a list, transplant the whole list
-			if(afterIndices[1] == 0)
+			if(afterIndex == 0 && afterList != beforeList)
 			{
-				afterNames = list;
+				afterNames = afterList;
+				lists.remove(afterList);
 			}
 			else
 			{
-				list.remove(afterIndices[1]);
+				afterList.remove(afterIndex);
+				// remove that list if it became too small to be meaningful
+				if(afterList.size() < 2) lists.remove(afterList);
 			}
 		}
 
 		// 2. add it/them back to a list after before-item
-		if(beforeIndices != null)
+		List<String> beforeList = findListThatContains(beforeName, lists);
+
+		if(beforeList != null)
 		{
-			lists.get(beforeIndices[0]).addAll(beforeIndices[1]+1, afterNames);
+			int beforeIndex = beforeList.indexOf(beforeName);
+			beforeList.addAll(beforeIndex+1, afterNames);
 		}
 		else
 		{
@@ -70,21 +77,14 @@ public class QuestTypeOrderList
 			list.addAll(afterNames);
 			lists.add(list);
 		}
-
-		// clean up list that became too small to be meaningful
-		if(afterIndices != null && lists.get(afterIndices[0]).size() < 2)
-		{
-			lists.remove(afterIndices[0]);
-		}
 	}
 
-	private static int[] findLocationInLists(String name, List<List<String>> lists)
+	private static List<String> findListThatContains(String name, List<List<String>> lists)
 	{
 		for (int i = 0; i < lists.size(); i++)
 		{
 			List<String> names = lists.get(i);
-			int idx = names.indexOf(name);
-			if(idx != -1) return new int[]{i, idx};
+			if(names.contains(name)) return names;
 		}
 		return null;
 	}

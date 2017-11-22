@@ -161,4 +161,28 @@ public class QuestTypeOrderListTest extends AndroidTestCase
 		questTypeOrderList.sort(list);
 		assertThat(list).containsSequence(four, three, two, one);
 	}
+
+	public void testReorderFirstItemToBackOfSameList()
+	{
+		questTypeOrderList.apply(one, two);
+		questTypeOrderList.apply(two, three);
+		questTypeOrderList.apply(three, four);
+
+		questTypeOrderList.apply(four, one);
+
+		questTypeOrderList.sort(list);
+		assertThat(list).containsSequence(two, three, four, one);
+	}
+
+	public void testReorderAnItemToBackOfSameList()
+	{
+		questTypeOrderList.apply(one, two);
+		questTypeOrderList.apply(two, three);
+		questTypeOrderList.apply(three, four);
+
+		questTypeOrderList.apply(four, two);
+
+		questTypeOrderList.sort(list);
+		assertThat(list).containsSequence(one, three, four, two);
+	}
 }
