@@ -216,6 +216,12 @@ public abstract class AQuestDao<T extends Quest>
 		return addRows;
 	}
 
+	public void clear()
+	{
+		SQLiteDatabase db = dbHelper.getReadableDatabase();
+		db.execSQL("DELETE FROM " + getTableName());
+	}
+
 	/** Add given quest to DB and sets the quest's id after inserting it
 	 * @return true if successfully inserted, false if quest already exists in DB (= not inserted) */
 	public boolean add(T quest)

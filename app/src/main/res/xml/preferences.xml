@@ -76,6 +76,13 @@
             android:widgetLayout="@layout/widget_image_next"
             />
 
+        <Preference
+            android:key="quests.deletion"
+            android:title="@string/pref_title_quests_deletion"
+            android:summary="@string/pref_title_quests_deletion_summary"
+            android:widgetLayout="@layout/widget_image_delete"
+            />
+
     </PreferenceCategory>
 
 </PreferenceScreen>

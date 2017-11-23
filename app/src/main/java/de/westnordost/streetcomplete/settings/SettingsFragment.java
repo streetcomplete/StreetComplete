@@ -7,6 +7,7 @@ import android.support.v4.app.DialogFragment;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceFragmentCompat;
 import android.support.v7.preference.PreferenceManager;
+import android.widget.Toast;
 
 import javax.inject.Inject;
 import javax.inject.Provider;
@@ -15,6 +16,9 @@ import de.westnordost.streetcomplete.FragmentContainerActivity;
 import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.IntentListener;
 import de.westnordost.streetcomplete.Prefs;
+import de.westnordost.streetcomplete.data.osm.persist.AOsmQuestDao;
+import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
+import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestDao;
 import de.westnordost.streetcomplete.oauth.OAuthPrefs;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.oauth.OsmOAuthDialogFragment;
@@ -27,6 +31,8 @@ public class SettingsFragment extends PreferenceFragmentCompat
 	@Inject SharedPreferences prefs;
 	@Inject OAuthPrefs oAuth;
 	@Inject Provider<ApplyNoteVisibilityChangedTask> applyNoteVisibilityChangedTask;
+	@Inject OsmNoteQuestDao osmNoteQuestDao;
+	@Inject OsmQuestDao osmQuestDao;
 
 	@Override public void onCreatePreferences(Bundle savedInstanceState, String rootKey)
 	{
@@ -45,6 +51,15 @@ public class SettingsFragment extends PreferenceFragmentCompat
 		quests.setOnPreferenceClickListener(preference ->
 		{
 			getFragmentActivity().setCurrentFragment(new QuestSelectionFragment());
+			return true;
+		});
+
+		Preference questsDeletion = getPreferenceScreen().findPreference("quests.deletion");
+		questsDeletion.setOnPreferenceClickListener(preference ->
+		{
+			osmQuestDao.clear();
+			osmNoteQuestDao.clear();
+			Toast.makeText(getContext(), R.string.deletion_success, Toast.LENGTH_SHORT).show();
 			return true;
 		});
 	}
