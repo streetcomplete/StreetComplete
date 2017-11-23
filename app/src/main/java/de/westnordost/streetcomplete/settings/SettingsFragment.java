@@ -16,7 +16,6 @@ import de.westnordost.streetcomplete.FragmentContainerActivity;
 import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.IntentListener;
 import de.westnordost.streetcomplete.Prefs;
-import de.westnordost.streetcomplete.data.osm.persist.AOsmQuestDao;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestDao;
 import de.westnordost.streetcomplete.oauth.OAuthPrefs;
