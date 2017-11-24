@@ -6,16 +6,15 @@ import android.content.SharedPreferences;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceFragmentCompat;
 import android.support.v7.preference.PreferenceManager;
-import android.widget.Toast;
-
-import com.mapzen.tangram.LngLat;
 
 import javax.inject.Inject;
 import javax.inject.Provider;
 
+import de.westnordost.osmapi.map.data.OsmLatLon;
 import de.westnordost.streetcomplete.ApplicationConstants;
 import de.westnordost.streetcomplete.FragmentContainerActivity;
 import de.westnordost.streetcomplete.Injector;
@@ -25,13 +24,9 @@ import de.westnordost.streetcomplete.data.tiles.DownloadedTilesDao;
 import de.westnordost.streetcomplete.oauth.OAuthPrefs;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.oauth.OsmOAuthDialogFragment;
+import de.westnordost.streetcomplete.tangram.MapFragment;
 import de.westnordost.streetcomplete.util.SlippyMapMath;
 import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
-
-import static de.westnordost.streetcomplete.tangram.MapFragment.PREF_LAT;
-import static de.westnordost.streetcomplete.tangram.MapFragment.PREF_LON;
-import static de.westnordost.streetcomplete.tangram.MapFragment.PREF_NAME;
-import static de.westnordost.streetcomplete.tangram.TangramConst.toLatLon;
 
 public class SettingsFragment extends PreferenceFragmentCompat
 		implements SharedPreferences.OnSharedPreferenceChangeListener, IntentListener
@@ -66,24 +61,26 @@ public class SettingsFragment extends PreferenceFragmentCompat
 		Preference questsInvalidation = getPreferenceScreen().findPreference("quests.invalidation");
 		questsInvalidation.setOnPreferenceClickListener(preference ->
 		{
-			new AlertDialogBuilder(getContext())
+			AlertDialog alertDialog = new AlertDialogBuilder(getContext())
+					.setTitle(R.string.invalidation_dialog_title)
 					.setMessage(R.string.invalidation_dialog_message)
-					.setPositiveButton(R.string.invalidate_shown_tile, (dialog, which) -> {
-						if (getShownTile() != null)
-						{
-							downloadedTilesDao.remove(getShownTile());
-							Toast.makeText(getContext(), R.string.invalidation_success, Toast.LENGTH_SHORT).show();
-						} else
-						{
-							Toast.makeText(getContext(), R.string.invalidation_error, Toast.LENGTH_SHORT).show();
-						}
+					.setPositiveButton(R.string.invalidate_here, (dialog, which) -> {
+						downloadedTilesDao.remove(getShownTile());
 					})
-					.setNeutralButton(R.string.invalidate_whole_cache, (dialog, which) -> {
+					.setNeutralButton(R.string.invalidate_everywhere, (dialog, which) -> {
 						downloadedTilesDao.removeAll();
-						Toast.makeText(getContext(), R.string.invalidation_success, Toast.LENGTH_SHORT).show();
 					})
 					.setNegativeButton(android.R.string.cancel, (dialog, which) -> {})
-					.show();
+					.create();
+			alertDialog.setOnShowListener((dialog) ->
+			{
+				if (getShownTile() == null)
+				{
+					((AlertDialog) dialog).getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
+				}
+			});
+			alertDialog.show();
+
 			return true;
 		});
 	}
@@ -98,14 +95,13 @@ public class SettingsFragment extends PreferenceFragmentCompat
 
 	private Point getShownTile()
 	{
-		SharedPreferences preferences = getActivity().getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
-		if(preferences.contains(PREF_LAT) && preferences.contains(PREF_LON))
+		SharedPreferences preferences = getActivity().getSharedPreferences(MapFragment.PREF_NAME, Context.MODE_PRIVATE);
+		if(preferences.contains(MapFragment.PREF_LAT) && preferences.contains(MapFragment.PREF_LON))
 		{
-			LngLat pos = new LngLat(
-					Double.longBitsToDouble(preferences.getLong(PREF_LON,0)),
-					Double.longBitsToDouble(preferences.getLong(PREF_LAT,0))
-			);
-			return SlippyMapMath.enclosingTile(toLatLon(pos), ApplicationConstants.QUEST_TILE_ZOOM);
+			OsmLatLon pos = new OsmLatLon(
+					Double.longBitsToDouble(preferences.getLong(MapFragment.PREF_LON,0)),
+					Double.longBitsToDouble(preferences.getLong(MapFragment.PREF_LAT,0)));
+			return SlippyMapMath.enclosingTile(pos, ApplicationConstants.QUEST_TILE_ZOOM);
 
 		}
 		return null;

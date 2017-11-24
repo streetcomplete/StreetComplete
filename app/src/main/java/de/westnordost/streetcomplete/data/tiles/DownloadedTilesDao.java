@@ -72,7 +72,7 @@ public class DownloadedTilesDao
 
 	public void removeAll()
 	{
-		SQLiteDatabase db = dbHelper.getReadableDatabase();
+		SQLiteDatabase db = dbHelper.getWritableDatabase();
 		db.execSQL("DELETE FROM " + DownloadedTilesTable.NAME);
 	}
 
