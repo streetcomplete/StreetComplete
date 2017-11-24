@@ -438,4 +438,13 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_housenumber_conscription_number">Conscription number</string>
     <string name="quest_housenumber_street_number_optional">Orientation number (optional)</string>
     <string name="quest_housenumber_conscription_number_required">A conscription number must be specified</string>
+    <string name="quest_bridge_structure_value_arch">Arch</string>
+    <string name="quest_bridge_structure_value_beam">Beam</string>
+    <string name="quest_bridge_structure_value_truss">Truss</string>
+    <string name="quest_bridge_structure_value_floating">Floating</string>
+    <string name="quest_bridge_structure_value_suspension">Suspension</string>
+    <string name="quest_bridge_structure_value_cablestayed">Cable-Stayed</string>
+    <string name="quest_bridgetructure_value_simplesuspension">Simple Suspension</string>
+    <string name="quest_bridge_structure_value_humpback">Humpback</string>
+    <string name="quest_bridge_structure_description">Select the one resembling the structure the most</string>
 </resources>
