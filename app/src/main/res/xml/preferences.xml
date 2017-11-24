@@ -77,10 +77,9 @@
             />
 
         <Preference
-            android:key="quests.deletion"
-            android:title="@string/pref_title_quests_deletion"
-            android:summary="@string/pref_title_quests_deletion_summary"
-            android:widgetLayout="@layout/widget_image_delete"
+            android:key="quests.invalidation"
+            android:title="@string/pref_title_quests_invalidation"
+            android:summary="@string/pref_title_quests_invalidation_summary"
             />
 
     </PreferenceCategory>

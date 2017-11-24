@@ -1,7 +1,9 @@
 package de.westnordost.streetcomplete.settings;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.preference.Preference;
@@ -9,18 +11,27 @@ import android.support.v7.preference.PreferenceFragmentCompat;
 import android.support.v7.preference.PreferenceManager;
 import android.widget.Toast;
 
+import com.mapzen.tangram.LngLat;
+
 import javax.inject.Inject;
 import javax.inject.Provider;
 
+import de.westnordost.streetcomplete.ApplicationConstants;
 import de.westnordost.streetcomplete.FragmentContainerActivity;
 import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.IntentListener;
 import de.westnordost.streetcomplete.Prefs;
-import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
-import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestDao;
+import de.westnordost.streetcomplete.data.tiles.DownloadedTilesDao;
 import de.westnordost.streetcomplete.oauth.OAuthPrefs;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.oauth.OsmOAuthDialogFragment;
+import de.westnordost.streetcomplete.util.SlippyMapMath;
+import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
+
+import static de.westnordost.streetcomplete.tangram.MapFragment.PREF_LAT;
+import static de.westnordost.streetcomplete.tangram.MapFragment.PREF_LON;
+import static de.westnordost.streetcomplete.tangram.MapFragment.PREF_NAME;
+import static de.westnordost.streetcomplete.tangram.TangramConst.toLatLon;
 
 public class SettingsFragment extends PreferenceFragmentCompat
 		implements SharedPreferences.OnSharedPreferenceChangeListener, IntentListener
@@ -30,8 +41,7 @@ public class SettingsFragment extends PreferenceFragmentCompat
 	@Inject SharedPreferences prefs;
 	@Inject OAuthPrefs oAuth;
 	@Inject Provider<ApplyNoteVisibilityChangedTask> applyNoteVisibilityChangedTask;
-	@Inject OsmNoteQuestDao osmNoteQuestDao;
-	@Inject OsmQuestDao osmQuestDao;
+	@Inject DownloadedTilesDao downloadedTilesDao;
 
 	@Override public void onCreatePreferences(Bundle savedInstanceState, String rootKey)
 	{
@@ -53,12 +63,27 @@ public class SettingsFragment extends PreferenceFragmentCompat
 			return true;
 		});
 
-		Preference questsDeletion = getPreferenceScreen().findPreference("quests.deletion");
-		questsDeletion.setOnPreferenceClickListener(preference ->
+		Preference questsInvalidation = getPreferenceScreen().findPreference("quests.invalidation");
+		questsInvalidation.setOnPreferenceClickListener(preference ->
 		{
-			osmQuestDao.clear();
-			osmNoteQuestDao.clear();
-			Toast.makeText(getContext(), R.string.deletion_success, Toast.LENGTH_SHORT).show();
+			new AlertDialogBuilder(getContext())
+					.setMessage(R.string.invalidation_dialog_message)
+					.setPositiveButton(R.string.invalidate_shown_tile, (dialog, which) -> {
+						if (getShownTile() != null)
+						{
+							downloadedTilesDao.remove(getShownTile());
+							Toast.makeText(getContext(), R.string.invalidation_success, Toast.LENGTH_SHORT).show();
+						} else
+						{
+							Toast.makeText(getContext(), R.string.invalidation_error, Toast.LENGTH_SHORT).show();
+						}
+					})
+					.setNeutralButton(R.string.invalidate_whole_cache, (dialog, which) -> {
+						downloadedTilesDao.removeAll();
+						Toast.makeText(getContext(), R.string.invalidation_success, Toast.LENGTH_SHORT).show();
+					})
+					.setNegativeButton(android.R.string.cancel, (dialog, which) -> {})
+					.show();
 			return true;
 		});
 	}
@@ -69,6 +94,21 @@ public class SettingsFragment extends PreferenceFragmentCompat
 		super.onStart();
 		updateOsmAuthSummary();
 		getActivity().setTitle(R.string.action_settings);
+	}
+
+	private Point getShownTile()
+	{
+		SharedPreferences preferences = getActivity().getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+		if(preferences.contains(PREF_LAT) && preferences.contains(PREF_LON))
+		{
+			LngLat pos = new LngLat(
+					Double.longBitsToDouble(preferences.getLong(PREF_LON,0)),
+					Double.longBitsToDouble(preferences.getLong(PREF_LAT,0))
+			);
+			return SlippyMapMath.enclosingTile(toLatLon(pos), ApplicationConstants.QUEST_TILE_ZOOM);
+
+		}
+		return null;
 	}
 
 	private void updateOsmAuthSummary()

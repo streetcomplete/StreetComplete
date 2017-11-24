@@ -19,7 +19,7 @@ public class Prefs
 	// not shown anywhere directly
 	public static final String
 			QUEST_ORDER = "quests.order",
-			QUEST_DELETION = "quests.deletion";
+			QUEST_INVALIDATION = "quests.invalidation";
 
 	public enum Autosync
 	{
