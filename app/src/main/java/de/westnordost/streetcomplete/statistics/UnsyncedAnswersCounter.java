@@ -10,14 +10,14 @@ import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.data.QuestStatus;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
 
-public class UploadsCounter extends android.support.v7.widget.AppCompatTextView {
+public class UnsyncedAnswersCounter extends android.support.v7.widget.AppCompatTextView {
 
     @Inject
     OsmQuestDao questDB;
 
     private int answeredQuests;
 
-    public UploadsCounter(Context context, AttributeSet attrs) {
+    public UnsyncedAnswersCounter(Context context, AttributeSet attrs) {
         super(context, attrs);
         Injector.instance.getApplicationComponent().inject(this);
     }
