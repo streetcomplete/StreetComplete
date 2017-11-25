@@ -61,25 +61,14 @@ public class SettingsFragment extends PreferenceFragmentCompat
 		Preference questsInvalidation = getPreferenceScreen().findPreference("quests.invalidation");
 		questsInvalidation.setOnPreferenceClickListener(preference ->
 		{
-			AlertDialog alertDialog = new AlertDialogBuilder(getContext())
-					.setTitle(R.string.invalidation_dialog_title)
+			new AlertDialogBuilder(getContext())
 					.setMessage(R.string.invalidation_dialog_message)
-					.setPositiveButton(R.string.invalidate_here, (dialog, which) -> {
-						downloadedTilesDao.remove(getShownTile());
-					})
-					.setNeutralButton(R.string.invalidate_everywhere, (dialog, which) -> {
+					.setPositiveButton(R.string.invalidate_confirmation, (dialog, which) -> {
 						downloadedTilesDao.removeAll();
 					})
 					.setNegativeButton(android.R.string.cancel, (dialog, which) -> {})
-					.create();
-			alertDialog.setOnShowListener((dialog) ->
-			{
-				if (getShownTile() == null)
-				{
-					((AlertDialog) dialog).getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
-				}
-			});
-			alertDialog.show();
+					.create()
+					.show();
 
 			return true;
 		});
@@ -91,20 +80,6 @@ public class SettingsFragment extends PreferenceFragmentCompat
 		super.onStart();
 		updateOsmAuthSummary();
 		getActivity().setTitle(R.string.action_settings);
-	}
-
-	private Point getShownTile()
-	{
-		SharedPreferences preferences = getActivity().getSharedPreferences(MapFragment.PREF_NAME, Context.MODE_PRIVATE);
-		if(preferences.contains(MapFragment.PREF_LAT) && preferences.contains(MapFragment.PREF_LON))
-		{
-			OsmLatLon pos = new OsmLatLon(
-					Double.longBitsToDouble(preferences.getLong(MapFragment.PREF_LON,0)),
-					Double.longBitsToDouble(preferences.getLong(MapFragment.PREF_LAT,0)));
-			return SlippyMapMath.enclosingTile(pos, ApplicationConstants.QUEST_TILE_ZOOM);
-
-		}
-		return null;
 	}
 
 	private void updateOsmAuthSummary()

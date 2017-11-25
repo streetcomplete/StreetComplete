@@ -532,12 +532,11 @@ public class MapFragment extends Fragment implements
 			PREF_LAT = "map_lat",
 			PREF_LON = "map_lon",
 			PREF_FOLLOWING = "map_following",
-			PREF_COMPASS_MODE = "map_compass_mode",
-			PREF_NAME = "map_settings";
+			PREF_COMPASS_MODE = "map_compass_mode";
 
 	private void restoreMapState()
 	{
-		SharedPreferences prefs = getActivity().getSharedPreferences(PREF_NAME, Activity.MODE_PRIVATE);
+		SharedPreferences prefs = getActivity().getPreferences(Activity.MODE_PRIVATE);
 
 		if(prefs.contains(PREF_ROTATION)) controller.setRotation(prefs.getFloat(PREF_ROTATION,0));
 		if(prefs.contains(PREF_TILT)) controller.setTilt(prefs.getFloat(PREF_TILT,0));
@@ -560,7 +559,7 @@ public class MapFragment extends Fragment implements
 	{
 		if(controller == null) return;
 
-		SharedPreferences.Editor editor = getActivity().getSharedPreferences(PREF_NAME, Activity.MODE_PRIVATE).edit();
+		SharedPreferences.Editor editor = getActivity().getPreferences(Activity.MODE_PRIVATE).edit();
 		editor.putFloat(PREF_ROTATION, controller.getRotation());
 		editor.putFloat(PREF_TILT, controller.getTilt());
 		editor.putFloat(PREF_ZOOM, controller.getZoom());

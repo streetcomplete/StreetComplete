@@ -442,8 +442,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="need_specify_both_sides">You need to specify both sides</string>
     <string name="pref_title_quests_invalidation">Invalidate Quest Cache</string>
     <string name="pref_title_quests_invalidation_summary">Useful if you think that some quests are outdated</string>
-    <string name="invalidation_dialog_title">Where to invalidate the cache?</string>
-    <string name="invalidate_here">Here</string>
-    <string name="invalidate_everywhere">Everywhere</string>
+    <string name="invalidate_confirmation">Invalidate</string>
     <string name="invalidation_dialog_message">Invalidating the cache causes the quests to be updated next time they are downloaded each. The quest cache is invalidated automatically after one week and immediately when a quest you solved turns out to be already answered by someone else.</string>
 </resources>
