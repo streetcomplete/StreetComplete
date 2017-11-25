@@ -448,7 +448,10 @@
     <string name="quest_carWashType_service">"نظافت خودرو توسط کارگر"</string>
     <string name="enable_quest_confirmation_title">"این نوع جستار را فعال کنید؟"</string>
     <string name="default_disabled_msg_go_inside">"این نوع جستار به طور پیش فرض غیر فعال شده است زیرا شما ابتدا باید وارد این مکان شوید تا بتوانید به این جستار پاسخ دهید."</string>
-    <string name="quest_housenumber_conscription_number">"شماره اداری"</string>
+    <string name="quest_housenumber_conscription_number">"شماره اداری (پلاک خانه)"</string>
     <string name="quest_housenumber_street_number_optional">"شماره جهت یابی (اختیاری)"</string>
-    <string name="quest_housenumber_conscription_number_required">"شماره اداری باید مشخص شود"</string>
+    <string name="quest_housenumber_conscription_number_required">"شماره اداری (پلاک خانه) باید مشخص شود"</string>
+    <string name="quest_cycleway_answer_contraflow_cycleway">"مسیر رفت و برگشت دوچرخه سواری مجزا است"</string>
+    <string name="need_specify_both_sides">"شما می بایست هر دو طرف مسیر را مشخص کنید
+"</string>
 </resources>

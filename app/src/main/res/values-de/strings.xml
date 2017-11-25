@@ -447,4 +447,5 @@ Andernfalls kannst Du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="quest_housenumber_street_number_optional">"Orientierungsnummer (optional)"</string>
     <string name="quest_housenumber_conscription_number_required">"Eine Konskriptionsnummer muss angegeben werden"</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">"Fahrradweg auch auf anderer Seite"</string>
+    <string name="need_specify_both_sides">"Beide Seiten müssen angegeben werden"</string>
 </resources>
