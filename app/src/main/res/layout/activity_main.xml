@@ -43,8 +43,8 @@
                 android:gravity="center_vertical"
                 />
 
-            <de.westnordost.streetcomplete.statistics.AnswersCounter
-                android:id="@+id/answersCounter"
+            <de.westnordost.streetcomplete.statistics.UploadedAnswersCounter
+                android:id="@+id/uploadedAnswersCounter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"

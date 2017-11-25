@@ -66,7 +66,7 @@ import de.westnordost.streetcomplete.quests.OsmQuestAnswerListener;
 import de.westnordost.streetcomplete.quests.QuestAnswerComponent;
 import de.westnordost.streetcomplete.quests.FindQuestSourceComponent;
 import de.westnordost.streetcomplete.settings.SettingsActivity;
-import de.westnordost.streetcomplete.statistics.AnswersCounter;
+import de.westnordost.streetcomplete.statistics.UploadedAnswersCounter;
 import de.westnordost.streetcomplete.location.LocationState;
 import de.westnordost.streetcomplete.statistics.UploadsCounter;
 import de.westnordost.streetcomplete.tangram.MapFragment;
@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity implements
 	private QuestGroup clickedQuestGroup = null;
 
 	private ProgressBar progressBar;
-	private AnswersCounter answersCounter;
+	private UploadedAnswersCounter uploadedAnswersCounter;
 	private UploadsCounter uploadsCounter;
 
 	private float mapRotation, mapTilt;
@@ -181,7 +181,7 @@ public class MainActivity extends AppCompatActivity implements
 
 		questController.onCreate();
 
-		answersCounter = toolbar.findViewById(R.id.answersCounter);
+		uploadedAnswersCounter = toolbar.findViewById(R.id.uploadedAnswersCounter);
 		uploadsCounter = toolbar.findViewById(R.id.uploadsCounter);
 
         uploadsCounter.setOnClickListener(new View.OnClickListener() {
@@ -221,7 +221,7 @@ public class MainActivity extends AppCompatActivity implements
 	{
 		super.onStart();
 
-		answersCounter.update();
+		uploadedAnswersCounter.update();
 		uploadsCounter.update();
 
 		registerReceiver(locationAvailabilityReceiver, LocationUtil.createLocationAvailabilityIntentFilter());
@@ -488,7 +488,7 @@ public class MainActivity extends AppCompatActivity implements
 		@AnyThread @Override public void onFinished()
 		{
 			runOnUiThread(() -> {
-				answersCounter.update();
+				uploadedAnswersCounter.update();
 				uploadsCounter.update();
 			});
 		}
