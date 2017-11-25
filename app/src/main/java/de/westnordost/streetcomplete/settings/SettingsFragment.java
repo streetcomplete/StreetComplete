@@ -66,7 +66,7 @@ public class SettingsFragment extends PreferenceFragmentCompat
 					.setPositiveButton(R.string.invalidate_confirmation, (dialog, which) -> {
 						downloadedTilesDao.removeAll();
 					})
-					.setNegativeButton(android.R.string.cancel, (dialog, which) -> {})
+					.setNegativeButton(android.R.string.cancel, null)
 					.create()
 					.show();
 
