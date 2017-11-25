@@ -9,25 +9,25 @@ import javax.inject.Inject;
 import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.data.statistics.QuestStatisticsDao;
 
-public class AnswersCounter extends android.support.v7.widget.AppCompatTextView
+public class UploadedAnswersCounter extends android.support.v7.widget.AppCompatTextView
 {
 	@Inject QuestStatisticsDao questStatisticsDB;
 
 	private int solvedQuests;
 
-	public AnswersCounter(Context context)
+	public UploadedAnswersCounter(Context context)
 	{
 		super(context);
 		init();
 	}
 
-	public AnswersCounter(Context context, AttributeSet attrs)
+	public UploadedAnswersCounter(Context context, AttributeSet attrs)
 	{
 		super(context, attrs);
 		init();
 	}
 
-	public AnswersCounter(Context context, AttributeSet attrs, int defStyleAttr)
+	public UploadedAnswersCounter(Context context, AttributeSet attrs, int defStyleAttr)
 	{
 		super(context, attrs, defStyleAttr);
 		init();
