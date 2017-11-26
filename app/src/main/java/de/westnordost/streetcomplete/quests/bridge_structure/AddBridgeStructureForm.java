@@ -17,14 +17,14 @@ public class AddBridgeStructureForm extends AbstractQuestFormAnswerFragment {
     public static final String STRUCTURE = "structure";
 
     private final BridgeStructure[] STRUCTURES = new BridgeStructure[] {
-            new BridgeStructure("arch", R.drawable.surface_asphalt, R.string.quest_bridge_structure_value_arch),
-            new BridgeStructure("beam", R.drawable.surface_asphalt, R.string.quest_bridge_structure_value_beam),
-            new BridgeStructure("truss", R.drawable.surface_asphalt, R.string.quest_bridge_structure_value_truss),
-            new BridgeStructure("floating", R.drawable.surface_asphalt, R.string.quest_bridge_structure_value_floating),
-            new BridgeStructure("suspension", R.drawable.surface_asphalt, R.string.quest_bridge_structure_value_suspension),
-            new BridgeStructure("cable-stayed", R.drawable.surface_asphalt, R.string.quest_bridge_structure_value_cablestayed),
-            new BridgeStructure("simple-suspension", R.drawable.surface_asphalt, R.string.quest_bridgetructure_value_simplesuspension),
-            new BridgeStructure("humpback", R.drawable.surface_asphalt, R.string.quest_bridge_structure_value_humpback)
+            new BridgeStructure("arch", R.drawable.bridge_structure_arch, R.string.quest_bridge_structure_value_arch, new BridgeStructure[]{}),
+            new BridgeStructure("beam", R.drawable.bridge_structure_beam, R.string.quest_bridge_structure_value_beam, new BridgeStructure[]{}),
+            new BridgeStructure("truss", R.drawable.bridge_structure_truss, R.string.quest_bridge_structure_value_truss, new BridgeStructure[]{}),
+            new BridgeStructure("floating", R.drawable.bridge_structure_floating, R.string.quest_bridge_structure_value_floating, new BridgeStructure[]{}),
+            new BridgeStructure("suspension", R.drawable.bridge_structure_suspension, R.string.quest_bridge_structure_value_suspension, new BridgeStructure[]{}),
+            new BridgeStructure("cable-stayed", R.drawable.bridge_structure_cablestayed, R.string.quest_bridge_structure_value_cablestayed, new BridgeStructure[]{}),
+            new BridgeStructure("simple-suspension", R.drawable.bridge_structure_simplesuspension, R.string.quest_bridgetructure_value_simplesuspension, new BridgeStructure[]{}),
+            new BridgeStructure("humpback", R.drawable.bridge_structure_humpback, R.string.quest_bridge_structure_value_humpback, new BridgeStructure[]{})
     };
 
     private GroupedImageSelectAdapter imageSelector;
@@ -68,6 +68,12 @@ public class AddBridgeStructureForm extends AbstractQuestFormAnswerFragment {
 
         public BridgeStructure(String value, int drawableId, int titleId) {
             super(drawableId, titleId);
+            this.value = value;
+        }
+
+        public BridgeStructure(String value, int drawableId, int titleId, GroupedImageSelectAdapter.Item[] items)
+        {
+            super(drawableId, titleId, items);
             this.value = value;
         }
     }
