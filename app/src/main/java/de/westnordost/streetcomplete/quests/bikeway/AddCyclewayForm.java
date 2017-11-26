@@ -140,6 +140,8 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 
 	private static float getWayOrientationAtCenterLineInDegrees(ElementGeometry e)
 	{
+		if(e.polylines == null) return 0;
+
 		List<LatLon> points = e.polylines.get(0);
 		if(points != null && points.size() > 1)
 		{
