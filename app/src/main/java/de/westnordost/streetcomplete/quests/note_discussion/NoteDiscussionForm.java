@@ -53,21 +53,9 @@ public class NoteDiscussionForm extends AbstractQuestAnswerFragment
 
 		View buttonPanel = setButtonsView(R.layout.quest_notediscussion_buttonbar);
 		Button buttonOk = buttonPanel.findViewById(R.id.buttonOk);
-		buttonOk.setOnClickListener(new View.OnClickListener()
-		{
-			@Override public void onClick(View v)
-			{
-				onClickOk();
-			}
-		});
+		buttonOk.setOnClickListener(v -> onClickOk());
 		Button buttonNo = buttonPanel.findViewById(R.id.buttonNo);
-		buttonNo.setOnClickListener(new View.OnClickListener()
-		{
-			@Override public void onClick(View v)
-			{
-				skipQuest();
-			}
-		});
+		buttonNo.setOnClickListener(v -> skipQuest());
 
 		noteInput = contentView.findViewById(R.id.noteInput);
 		noteDiscussion = contentView.findViewById(R.id.noteDiscussion);

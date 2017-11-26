@@ -4,9 +4,6 @@ import android.content.SharedPreferences;
 
 import junit.framework.TestCase;
 
-import org.mockito.invocation.InvocationOnMock;
-import org.mockito.stubbing.Answer;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -31,16 +28,14 @@ import static org.mockito.Mockito.when;
 
 public class OsmNotesDownloadTest extends TestCase
 {
-
-	private NotesDao noteServer;
 	private NoteDao noteDB;
 	private OsmNoteQuestDao noteQuestDB;
 	private CreateNoteDao createNoteDB;
 	private SharedPreferences preferences;
 
-	@Override public void setUp()
+	@Override public void setUp() throws Exception
 	{
-		noteServer = mock(NotesDao.class);
+		super.setUp();
 		noteDB = mock(NoteDao.class);
 		noteQuestDB = mock(OsmNoteQuestDao.class);
 		createNoteDB = mock(CreateNoteDao.class);
@@ -62,15 +57,12 @@ public class OsmNotesDownloadTest extends TestCase
 		when(noteQuestDB.getAll(any(BoundingBox.class), any(QuestStatus.class)))
 				.thenReturn(quests);
 
-		doAnswer(new Answer<Integer>()
+		doAnswer(invocation ->
 		{
-			@Override public Integer answer(InvocationOnMock invocation) throws Throwable
-			{
-				Collection<Long> deletedQuests = (Collection<Long>) (invocation.getArguments()[0]);
-				assertEquals(1, deletedQuests.size());
-				assertEquals(13L, (long) deletedQuests.iterator().next());
-				return 1;
-			}
+			Collection<Long> deletedQuests = (Collection<Long>) (invocation.getArguments()[0]);
+			assertEquals(1, deletedQuests.size());
+			assertEquals(13L, (long) deletedQuests.iterator().next());
+			return 1;
 		}).when(noteQuestDB).deleteAll(any(Collection.class));
 
 		// note dao mock will only "find" the note #4
@@ -105,7 +97,7 @@ public class OsmNotesDownloadTest extends TestCase
 		return note;
 	}
 
-	private class TestListBasedNotesDao extends NotesDao
+	private static class TestListBasedNotesDao extends NotesDao
 	{
 		List<Note> notes;
 

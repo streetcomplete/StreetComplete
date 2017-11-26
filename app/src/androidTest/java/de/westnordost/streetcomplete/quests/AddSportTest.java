@@ -1,8 +1,6 @@
 package de.westnordost.streetcomplete.quests;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd;
@@ -12,7 +10,7 @@ import de.westnordost.streetcomplete.quests.sport.AddSportForm;
 
 public class AddSportTest extends AOsmElementQuestTypeTest
 {
-	@Override public void setUp()
+	@Override public void setUp() throws Exception
 	{
 		super.setUp();
 		tags.put("leisure","pitch");

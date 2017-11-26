@@ -12,12 +12,10 @@ import java.util.regex.Pattern;
 
 import javax.inject.Inject;
 
-import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.streetcomplete.data.osm.ElementGeometry;
 import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler;
-import de.westnordost.streetcomplete.util.SphericalEarthMath;
 
 public class PutRoadNameSuggestionsHandler implements MapDataWithGeometryHandler
 {
@@ -37,7 +35,6 @@ public class PutRoadNameSuggestionsHandler implements MapDataWithGeometryHandler
 		if(geometry == null || geometry.polylines == null || geometry.polylines.isEmpty()) return;
 
 		List<LatLon> points = geometry.polylines.get(0);
-		BoundingBox wayBbox = SphericalEarthMath.enclosingBoundingBox(points);
 
 		roadNameSuggestionsDao.putRoad(
 				element.getId(),

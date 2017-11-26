@@ -5,7 +5,6 @@ import android.content.Context;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,7 +48,6 @@ public class TimeRangePickerDialog extends AlertDialog implements View.OnClickLi
 		setButton(BUTTON_POSITIVE, context.getString(android.R.string.ok), (OnClickListener) null);
 		setButton(BUTTON_NEGATIVE, context.getString(android.R.string.cancel), (OnClickListener) null);
 
-		AttributeSet a;
 		startPicker = (TimePicker) inflater.inflate(R.layout.time_range_picker_start_picker, null);
 		startPicker.setIs24HourView(true);
 

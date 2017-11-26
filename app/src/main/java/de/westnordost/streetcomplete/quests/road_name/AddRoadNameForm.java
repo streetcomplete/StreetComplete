@@ -74,27 +74,9 @@ public class AddRoadNameForm extends AbstractQuestFormAnswerFragment
 
 	private void addOtherAnswers()
 	{
-		addOtherAnswer(R.string.quest_name_answer_noName, new Runnable()
-		{
-			@Override public void run()
-			{
-				confirmNoStreetName();
-			}
-		});
-		addOtherAnswer(R.string.quest_streetName_answer_noProperStreet, new Runnable()
-		{
-			@Override public void run()
-			{
-				selectNoProperStreetWhatThen();
-			}
-		});
-		addOtherAnswer(R.string.quest_streetName_answer_cantType, new Runnable()
-		{
-			@Override public void run()
-			{
-				showKeyboardInfo();
-			}
-		});
+		addOtherAnswer(R.string.quest_name_answer_noName, this::confirmNoStreetName);
+		addOtherAnswer(R.string.quest_streetName_answer_noProperStreet, this::selectNoProperStreetWhatThen);
+		addOtherAnswer(R.string.quest_streetName_answer_cantType, this::showKeyboardInfo);
 	}
 
 	private void initRoadNameAdapter(View contentView, Bundle savedInstanceState)
@@ -171,13 +153,7 @@ public class AddRoadNameForm extends AbstractQuestFormAnswerFragment
 			}
 		}
 
-		confirmPossibleAbbreviationsIfAny(possibleAbbreviations, new Runnable()
-		{
-			@Override public void run()
-			{
-				applyNameAnswer();
-			}
-		});
+		confirmPossibleAbbreviationsIfAny(possibleAbbreviations, this::applyNameAnswer);
 	}
 
 	private void applyNameAnswer()
@@ -211,11 +187,8 @@ public class AddRoadNameForm extends AbstractQuestFormAnswerFragment
 			/* recursively call self on confirm until the list of not-abbreviations to confirm is
 			   through */
 			String name = names.remove();
-			confirmPossibleAbbreviation(name, new Runnable() { @Override public void run()
-			{
-				confirmPossibleAbbreviationsIfAny(names, onConfirmedAll);
-			}
-			});
+			confirmPossibleAbbreviation(name,
+					() -> confirmPossibleAbbreviationsIfAny(names, onConfirmedAll));
 		}
 	}
 
@@ -228,13 +201,7 @@ public class AddRoadNameForm extends AbstractQuestFormAnswerFragment
 		new AlertDialogBuilder(getActivity())
 				.setTitle(title)
 				.setMessage(R.string.quest_streetName_nameWithAbbreviations_confirmation_description)
-				.setPositiveButton(R.string.quest_streetName_nameWithAbbreviations_confirmation_positive, new DialogInterface.OnClickListener()
-				{
-					@Override public void onClick(DialogInterface dialog, int which)
-					{
-						onConfirmed.run();
-					}
-				})
+				.setPositiveButton(R.string.quest_streetName_nameWithAbbreviations_confirmation_positive, (dialog, which) -> onConfirmed.run())
 				.setNegativeButton(R.string.quest_generic_confirmation_no, null)
 				.show();
 	}
@@ -244,21 +211,13 @@ public class AddRoadNameForm extends AbstractQuestFormAnswerFragment
 		new AlertDialogBuilder(getActivity())
 				.setTitle(R.string.quest_streetName_cantType_title)
 				.setMessage(R.string.quest_streetName_cantType_description)
-				.setPositiveButton(R.string.quest_streetName_cantType_open_settings, new DialogInterface.OnClickListener()
+				.setPositiveButton(R.string.quest_streetName_cantType_open_settings,
+						(dialog, which) -> startActivity(new Intent(Settings.ACTION_SETTINGS)))
+				.setNeutralButton(R.string.quest_streetName_cantType_open_store, (dialog, which) ->
 				{
-					@Override public void onClick(DialogInterface dialog, int which)
-					{
-						startActivity(new Intent(Settings.ACTION_SETTINGS));
-					}
-				})
-				.setNeutralButton(R.string.quest_streetName_cantType_open_store, new DialogInterface.OnClickListener()
-				{
-					@Override public void onClick(DialogInterface dialog, int which)
-					{
-						Intent intent = new Intent(Intent.ACTION_MAIN);
-						intent.addCategory(Intent.CATEGORY_APP_MARKET);
-						startActivity(intent);
-					}
+					Intent intent = new Intent(Intent.ACTION_MAIN);
+					intent.addCategory(Intent.CATEGORY_APP_MARKET);
+					startActivity(intent);
 				})
 				.setNegativeButton(android.R.string.cancel, null)
 				.show();
@@ -266,30 +225,16 @@ public class AddRoadNameForm extends AbstractQuestFormAnswerFragment
 
 	private void confirmNoStreetName()
 	{
-		DialogInterface.OnClickListener onYes = new DialogInterface.OnClickListener()
-		{
-			@Override
-			public void onClick(DialogInterface dialog, int which)
-			{
-				Bundle data = new Bundle();
-				data.putBoolean(NO_NAME, true);
-				applyImmediateAnswer(data);
-			}
-		};
-		DialogInterface.OnClickListener onNo = new DialogInterface.OnClickListener()
-		{
-			@Override
-			public void onClick(DialogInterface dialog, int which)
-			{
-				// nothing, just go back
-			}
-		};
-
 		new AlertDialogBuilder(getActivity())
 				.setTitle(R.string.quest_name_answer_noName_confirmation_title)
 				.setMessage(R.string.quest_streetName_answer_noName_confirmation_description)
-				.setPositiveButton(R.string.quest_name_noName_confirmation_positive, onYes)
-				.setNegativeButton(R.string.quest_generic_confirmation_no, onNo)
+				.setPositiveButton(R.string.quest_name_noName_confirmation_positive, (dialog, which) ->
+				{
+					Bundle data = new Bundle();
+					data.putBoolean(NO_NAME, true);
+					applyImmediateAnswer(data);
+				})
+				.setNegativeButton(R.string.quest_generic_confirmation_no, null)
 				.show();
 	}
 

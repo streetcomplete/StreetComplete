@@ -35,24 +35,17 @@ public class SettingsFragment extends PreferenceFragmentCompat
 		addPreferencesFromResource(R.xml.preferences);
 
 		Preference oauth = getPreferenceScreen().findPreference("oauth");
-		oauth.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener()
+		oauth.setOnPreferenceClickListener(preference ->
 		{
-			@Override
-			public boolean onPreferenceClick(Preference preference)
-			{
-				new OsmOAuthDialogFragment().show(getFragmentManager(), OsmOAuthDialogFragment.TAG);
-				return true;
-			}
+			new OsmOAuthDialogFragment().show(getFragmentManager(), OsmOAuthDialogFragment.TAG);
+			return true;
 		});
 
 		Preference quests = getPreferenceScreen().findPreference("quests");
-		quests.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener()
+		quests.setOnPreferenceClickListener(preference ->
 		{
-			@Override public boolean onPreferenceClick(Preference preference)
-			{
-				getFragmentActivity().setCurrentFragment(new QuestSelectionFragment());
-				return true;
-			}
+			getFragmentActivity().setCurrentFragment(new QuestSelectionFragment());
+			return true;
 		});
 	}
 

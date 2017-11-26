@@ -340,23 +340,18 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 
 	private static boolean tableHasColumn(SQLiteDatabase db, String tableName, String columnName)
 	{
-		Cursor cursor = db.rawQuery("PRAGMA table_info(" + tableName + ")", null);
 
-		try
+		try (Cursor cursor = db.rawQuery("PRAGMA table_info(" + tableName + ")", null))
 		{
 			if (cursor.moveToFirst())
 			{
-				while(!cursor.isAfterLast())
+				while (!cursor.isAfterLast())
 				{
 					String name = cursor.getString(cursor.getColumnIndexOrThrow("name"));
-					if(columnName.equals(name)) return true;
+					if (columnName.equals(name)) return true;
 					cursor.moveToNext();
 				}
 			}
-		}
-		finally
-		{
-			cursor.close();
 		}
 		return false;
 	}

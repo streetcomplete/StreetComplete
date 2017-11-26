@@ -29,15 +29,12 @@ public class AddBuildingLevelsForm extends AbstractQuestFormAnswerFragment
 		levelsInput.requestFocus();
 		roofLevelsInput = contentView.findViewById(R.id.roofLevelsInput);
 
-		addOtherAnswer(R.string.quest_buildingLevels_answer_multipleLevels, new Runnable()
+		addOtherAnswer(R.string.quest_buildingLevels_answer_multipleLevels,	() ->
 		{
-			@Override public void run()
-			{
-				new AlertDialogBuilder(getActivity())
-						.setMessage(R.string.quest_buildingLevels_answer_description)
-						.setPositiveButton(android.R.string.ok, null)
-						.show();
-			}
+			new AlertDialogBuilder(getActivity())
+					.setMessage(R.string.quest_buildingLevels_answer_description)
+					.setPositiveButton(android.R.string.ok, null)
+					.show();
 		});
 
 		return view;

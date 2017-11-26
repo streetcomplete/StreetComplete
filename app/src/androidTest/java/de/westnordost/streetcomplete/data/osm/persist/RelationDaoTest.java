@@ -16,7 +16,7 @@ public class RelationDaoTest extends ApplicationDbTestCase
 {
 	private RelationDao dao;
 
-	@Override public void setUp()
+	@Override public void setUp() throws Exception
 	{
 		super.setUp();
 		dao = new RelationDao(dbHelper, serializer);

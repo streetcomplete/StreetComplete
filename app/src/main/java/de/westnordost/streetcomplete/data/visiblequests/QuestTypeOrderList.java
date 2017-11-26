@@ -4,7 +4,6 @@ import android.content.SharedPreferences;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -38,48 +37,54 @@ public class QuestTypeOrderList
 	{
 		String beforeName = before.getClass().getSimpleName();
 		String afterName = after.getClass().getSimpleName();
-		int beforeIndices[] = findLocationInLists(beforeName, lists);
-		int afterIndices[] = findLocationInLists(afterName, lists);
 
-		// case 1: not in a list at all -> add in new list
-		if(beforeIndices == null && afterIndices == null)
+		// 1. remove after-item from the list it is in
+		List<String> afterList = findListThatContains(afterName, lists);
+
+		List<String> afterNames = new ArrayList<>(2);
+		afterNames.add(afterName);
+
+		if(afterList != null)
+		{
+			int afterIndex = afterList.indexOf(afterName);
+			List<String> beforeList = findListThatContains(beforeName, lists);
+			// if it is the head of a list, transplant the whole list
+			if(afterIndex == 0 && afterList != beforeList)
+			{
+				afterNames = afterList;
+				lists.remove(afterList);
+			}
+			else
+			{
+				afterList.remove(afterIndex);
+				// remove that list if it became too small to be meaningful
+				if(afterList.size() < 2) lists.remove(afterList);
+			}
+		}
+
+		// 2. add it/them back to a list after before-item
+		List<String> beforeList = findListThatContains(beforeName, lists);
+
+		if(beforeList != null)
+		{
+			int beforeIndex = beforeList.indexOf(beforeName);
+			beforeList.addAll(beforeIndex+1, afterNames);
+		}
+		else
 		{
 			List<String> list = new ArrayList<>();
 			list.add(beforeName);
-			list.add(afterName);
+			list.addAll(afterNames);
 			lists.add(list);
-		}
-		// case 2: one is in a list, the other not -> add other to the one list
-		else if(afterIndices == null)
-		{
-			lists.get(beforeIndices[0]).add(beforeIndices[1]+1, afterName);
-		}
-		else if(beforeIndices == null)
-		{
-			lists.get(afterIndices[0]).add(afterIndices[1], beforeName);
-		}
-		// case 3: both in same list -> reorder that list
-		else if(beforeIndices[0] == afterIndices[0])
-		{
-			List<String> list = lists.get(beforeIndices[0]);
-			move(list, afterIndices[1], beforeIndices[1]+1);
-		}
-		// case 4: both in different lists -> put the whole other list into first list
-		else
-		{
-			List<String> list = lists.get(afterIndices[0]);
-			lists.get(beforeIndices[0]).addAll(beforeIndices[1]+1, list);
-			lists.remove(afterIndices[0]);
 		}
 	}
 
-	private static int[] findLocationInLists(String name, List<List<String>> lists)
+	private static List<String> findListThatContains(String name, List<List<String>> lists)
 	{
 		for (int i = 0; i < lists.size(); i++)
 		{
 			List<String> names = lists.get(i);
-			int idx = names.indexOf(name);
-			if(idx != -1) return new int[]{i, idx};
+			if(names.contains(name)) return names;
 		}
 		return null;
 	}
@@ -101,18 +106,6 @@ public class QuestTypeOrderList
 
 			int startIndex = questTypes.indexOf(list.get(0));
 			questTypes.addAll(startIndex+1, reorderedQuestTypes);
-		}
-	}
-
-	private static void move(List<?> list, int fromIndex, int toIndex)
-	{
-		if(fromIndex < toIndex)
-		{
-			Collections.rotate(list.subList(fromIndex, toIndex), -1);
-		}
-		else if(fromIndex > toIndex)
-		{
-			Collections.rotate(list.subList(toIndex, fromIndex+1), 1);
 		}
 	}
 

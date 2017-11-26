@@ -1,7 +1,5 @@
 package de.westnordost.streetcomplete.data.osm.download;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -86,24 +84,21 @@ public class OsmQuestDownload
 		final Map<OsmElementKey, Long> previousQuests = getPreviousQuestsIdsByElementKey(questType, bbox);
 
 		long time = System.currentTimeMillis();
-		boolean success = questType.download(bbox, new MapDataWithGeometryHandler()
+		boolean success = questType.download(bbox, (element, geometry) ->
 		{
-			@Override public void handle(@NonNull Element element, @Nullable ElementGeometry geometry)
+			if(mayCreateQuestFrom(questType, element, geometry, blacklistedPositions))
 			{
-				if(mayCreateQuestFrom(questType, element, geometry, blacklistedPositions))
-				{
-					Element.Type elementType = element.getType();
-					long elementId = element.getId();
+				Element.Type elementType = element.getType();
+				long elementId = element.getId();
 
-					OsmQuest quest = new OsmQuest(questType, elementType, elementId, geometry);
+				OsmQuest quest = new OsmQuest(questType, elementType, elementId, geometry);
 
-					geometryRows.add(new ElementGeometryDao.Row(
-							elementType, elementId, quest.getGeometry()));
-					quests.add(quest);
-					OsmElementKey elementKey = new OsmElementKey(elementType, elementId);
-					elements.put(elementKey, element);
-					previousQuests.remove(elementKey);
-				}
+				geometryRows.add(new ElementGeometryDao.Row(
+						elementType, elementId, quest.getGeometry()));
+				quests.add(quest);
+				OsmElementKey elementKey = new OsmElementKey(elementType, elementId);
+				elements.put(elementKey, element);
+				previousQuests.remove(elementKey);
 			}
 		});
 		if(!success) return false;

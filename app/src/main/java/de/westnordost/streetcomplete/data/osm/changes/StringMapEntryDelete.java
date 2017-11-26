@@ -35,6 +35,13 @@ public class StringMapEntryDelete implements StringMapEntryChange
 		return key.equals(o.key) && valueBefore.equals(o.valueBefore);
 	}
 
+	@Override public int hashCode()
+	{
+		int result = key.hashCode();
+		result = 31 * result + valueBefore.hashCode();
+		return result;
+	}
+
 	@Override public StringMapEntryChange reversed()
 	{
 		return new StringMapEntryAdd(key, valueBefore);

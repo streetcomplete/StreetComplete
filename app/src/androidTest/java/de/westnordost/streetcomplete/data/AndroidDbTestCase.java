@@ -23,14 +23,16 @@ public abstract class AndroidDbTestCase extends AndroidTestCase
 		return ctx;
 	}
 
-	@Override public void setUp()
+	@Override public void setUp() throws Exception
 	{
+		super.setUp();
 		// make sure the DB is created new for each test case
 		getContext().deleteDatabase(dbName);
 	}
 
-	@Override public void tearDown()
+	@Override public void tearDown() throws Exception
 	{
+		super.tearDown();
 		getContext().deleteDatabase(dbName);
 	}
 }

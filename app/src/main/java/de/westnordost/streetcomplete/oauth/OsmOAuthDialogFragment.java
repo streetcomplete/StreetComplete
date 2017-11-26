@@ -44,7 +44,7 @@ public class OsmOAuthDialogFragment extends DialogFragment
 	// for loading and saving from bundle
 	private static final String	CONSUMER = "consumer", STATE = "state";
 
-	public static final List<String> REQUIRED_PERMISSIONS = Arrays.asList(
+	private static final List<String> REQUIRED_PERMISSIONS = Arrays.asList(
 			Permission.READ_PREFERENCES_AND_USER_DETAILS,
 			Permission.MODIFY_MAP,
 			Permission.WRITE_NOTES);

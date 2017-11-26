@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -26,14 +25,14 @@ public class AQuestDaoTest extends AndroidDbTestCase
 		super(TestQuestDao.TESTDB);
 	}
 
-	@Override public void setUp()
+	@Override public void setUp() throws Exception
 	{
 		super.setUp();
 		dbHelper = new TestQuestDao.TestDbHelper(getContext());
 		dao = new TestQuestDao(dbHelper);
 	}
 
-	@Override public void tearDown()
+	@Override public void tearDown() throws Exception
 	{
 		// first close, then call super (= delete database) to avoid warning
 		dbHelper.close();
@@ -111,7 +110,7 @@ public class AQuestDaoTest extends AndroidDbTestCase
 			dao.update(createQuest(0,0,0,QuestStatus.NEW));
 			fail();
 		}
-		catch(NullPointerException e) { }
+		catch(NullPointerException ignored) { }
 	}
 
 	public void testUpdate()
@@ -135,13 +134,7 @@ public class AQuestDaoTest extends AndroidDbTestCase
 		dao.add(createQuest(4,50.5,1.5, QuestStatus.NEW));
 
 		List<Quest> quests = dao.getAll(bbox, QuestStatus.NEW);
-		Collections.sort(quests, new Comparator<Quest>()
-		{
-			@Override public int compare(Quest lhs, Quest rhs)
-			{
-				return (int) (lhs.getId() - rhs.getId());
-			}
-		});
+		Collections.sort(quests, (lhs, rhs) -> (int) (lhs.getId() - rhs.getId()));
 		assertEquals(2,quests.size());
 		assertEquals(1,(long) quests.get(0).getId());
 		assertEquals(4,(long) quests.get(1).getId());

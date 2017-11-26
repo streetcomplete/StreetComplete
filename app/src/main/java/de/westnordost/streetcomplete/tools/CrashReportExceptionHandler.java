@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.tools;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
@@ -83,28 +82,18 @@ public class CrashReportExceptionHandler implements Thread.UncaughtExceptionHand
 				"Describe how to reproduce it here:\n\n\n\n" +
 				getDeviceInformationString() + "\n" + error;
 
-		new Handler(Looper.getMainLooper()).post(new Runnable() { @Override public void run()
+		new Handler(Looper.getMainLooper()).post(() ->
 		{
 			new AlertDialogBuilder(activityCtx)
 					.setTitle(titleResourceId)
 					.setMessage(R.string.crash_message)
-					.setPositiveButton(R.string.crash_compose_email, new DialogInterface.OnClickListener()
-					{
-						@Override public void onClick(DialogInterface dialog, int which)
-						{
-							sendEmail(activityCtx, report);
-						}
-					})
-					.setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener()
-					{
-						@Override public void onClick(DialogInterface dialog, int which)
-						{
-							Toast.makeText(activityCtx, "\uD83D\uDE22",Toast.LENGTH_SHORT).show();
-						}
-					})
+					.setPositiveButton(R.string.crash_compose_email,
+							(dialog, which) -> sendEmail(activityCtx, report))
+					.setNegativeButton(android.R.string.no,
+							(dialog, which) -> Toast.makeText(activityCtx, "\uD83D\uDE22",Toast.LENGTH_SHORT).show())
 					.setCancelable(false)
 					.show();
-		}});
+		});
 	}
 
 	@Override public void uncaughtException(Thread t, Throwable e)
@@ -130,13 +119,11 @@ public class CrashReportExceptionHandler implements Thread.UncaughtExceptionHand
 
 	private void writeCrashReportToFile(String text)
 	{
-		try
+		try(FileOutputStream fos = appCtx.openFileOutput(CRASHREPORT, Context.MODE_PRIVATE))
 		{
-			FileOutputStream fos = appCtx.openFileOutput(CRASHREPORT, Context.MODE_PRIVATE);
 			fos.write(text.getBytes(ENC));
-			fos.close();
 		}
-		catch (IOException e)	{}
+		catch (IOException ignored) {}
 	}
 
 	private boolean hasCrashReport()

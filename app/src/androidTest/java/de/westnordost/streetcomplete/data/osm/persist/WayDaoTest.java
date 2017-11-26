@@ -13,7 +13,7 @@ public class WayDaoTest extends ApplicationDbTestCase
 {
 	private WayDao dao;
 
-	@Override public void setUp()
+	@Override public void setUp() throws Exception
 	{
 		super.setUp();
 		dao = new WayDao(dbHelper, serializer);

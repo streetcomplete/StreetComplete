@@ -19,20 +19,8 @@ public class YesNoQuestAnswerFragment extends AbstractQuestAnswerFragment
 		View view = super.onCreateView(inflater, container, savedInstanceState);
 		View buttonPanel = setButtonsView(R.layout.quest_buttonpanel_yesno);
 
-		buttonPanel.findViewById(R.id.buttonYes).setOnClickListener(new View.OnClickListener()
-		{
-			@Override public void onClick(View v)
-			{
-				onClickYesNo(true);
-			}
-		});
-		buttonPanel.findViewById(R.id.buttonNo).setOnClickListener(new View.OnClickListener()
-		{
-			@Override public void onClick(View v)
-			{
-				onClickYesNo(false);
-			}
-		});
+		buttonPanel.findViewById(R.id.buttonYes).setOnClickListener(v -> onClickYesNo(true));
+		buttonPanel.findViewById(R.id.buttonNo).setOnClickListener(v -> onClickYesNo(false));
 		return view;
 	}
 

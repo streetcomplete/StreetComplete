@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
@@ -20,30 +19,9 @@ public class WheelchairAccessAnswerFragment extends AbstractQuestAnswerFragment
 		View view = super.onCreateView(inflater, container, savedInstanceState);
 		View buttonPanel = setButtonsView(R.layout.quest_wheelchair_access);
 
-		Button buttonYes = (Button) buttonPanel.findViewById(R.id.buttonYes);
-		buttonYes.setOnClickListener(new View.OnClickListener()
-		{
-			@Override public void onClick(View v)
-			{
-				onClickAnswer("yes");
-			}
-		});
-		Button buttonLimited = (Button) buttonPanel.findViewById(R.id.buttonLimited);
-		buttonLimited.setOnClickListener(new View.OnClickListener()
-		{
-			@Override public void onClick(View v)
-			{
-				onClickAnswer("limited");
-			}
-		});
-		Button buttonNo = (Button) buttonPanel.findViewById(R.id.buttonNo);
-		buttonNo.setOnClickListener(new View.OnClickListener()
-		{
-			@Override public void onClick(View v)
-			{
-				onClickAnswer("no");
-			}
-		});
+		buttonPanel.findViewById(R.id.buttonYes).setOnClickListener(v -> onClickAnswer("yes"));
+		buttonPanel.findViewById(R.id.buttonLimited).setOnClickListener(v -> onClickAnswer("limited"));
+		buttonPanel.findViewById(R.id.buttonNo).setOnClickListener(v -> onClickAnswer("no"));
 		return view;
 	}
 

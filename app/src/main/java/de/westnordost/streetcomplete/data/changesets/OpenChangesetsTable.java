@@ -4,7 +4,7 @@ public class OpenChangesetsTable
 {
 	public static final String NAME = "open_changesets";
 
-	public class Columns
+	public static class Columns
 	{
 		public static final String
 				QUEST_TYPE = "quest_type",

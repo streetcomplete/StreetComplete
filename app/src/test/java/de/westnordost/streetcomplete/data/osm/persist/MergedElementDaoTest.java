@@ -27,8 +27,9 @@ public class MergedElementDaoTest extends TestCase
 	private RelationDao relationDao;
 	private MergedElementDao dao;
 
-	@Override public void setUp()
+	@Override public void setUp() throws Exception
 	{
+		super.setUp();
 		nodeDao = mock(NodeDao.class);
 		wayDao = mock(WayDao.class);
 		relationDao = mock(RelationDao.class);

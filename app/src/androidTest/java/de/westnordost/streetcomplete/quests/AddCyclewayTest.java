@@ -9,30 +9,20 @@ import de.westnordost.streetcomplete.quests.bikeway.Cycleway;
 
 public class AddCyclewayTest extends AOsmElementQuestTypeTest
 {
-	public void testCyclewayLeftAndRightMustBeSpecified1()
+	public void testCyclewayLeftAndRightDontHaveToBeSpecified1()
 	{
 		bundle.putString(AddCyclewayForm.CYCLEWAY_LEFT, Cycleway.LANE.name());
 		StringMapChangesBuilder cb = new StringMapChangesBuilder(tags);
-		try {
-			createQuestType().applyAnswerTo(bundle, cb);
-			fail();
-		}
-		catch (NullPointerException e) {
-			// missing CYCLEWAY_RIGHT
-		}
+		createQuestType().applyAnswerTo(bundle, cb);
+		// success if no exception thrown
 	}
 
-	public void testCyclewayLeftAndRightMustBeSpecified2()
+	public void testCyclewayLeftAndRightDontHaveToBeSpecified2()
 	{
 		bundle.putString(AddCyclewayForm.CYCLEWAY_RIGHT, Cycleway.LANE.name());
 		StringMapChangesBuilder cb = new StringMapChangesBuilder(tags);
-		try {
-			createQuestType().applyAnswerTo(bundle, cb);
-			fail();
-		}
-		catch (NullPointerException e) {
-			// missing CYCLEWAY_LEFT
-		}
+		createQuestType().applyAnswerTo(bundle, cb);
+		// success if no exception thrown
 	}
 
 	public void testCyclewayLane()

@@ -61,7 +61,6 @@
     <string name="close">"关闭"</string>
     <string name="download_error">"寻找任务时出现问题"</string>
     <string name="upload_error">"上传出错"</string>
-    <string name="cannot_find_bbox">"无法在这里扫描。尝试进一步放大"</string>
     <string name="download_area_too_big">"请进一步放大"</string>
     <string name="confirmation_cancel_prev_download_title">"取消目前的搜寻并以搜寻取代？"</string>
     <string name="notification_downloading">"搜寻任务"</string>
@@ -105,8 +104,6 @@
     <string name="quest_openingHours_comment_description">"理想中，在标示上的文字都是言简意赅的，像是\"预约\"。不存在的标示并不需要代表这裡没有规律的营业时间。"</string>
     <string name="quest_buildingLevels_title">"这个建筑有多少层次？"</string>
     <string name="quest_buildingLevels_title_buildingPart">"此建筑物的一部份中有多少层楼？"</string>
-    <string name="quest_buildingLevels_levelsLabel">"总楼层"</string>
-    <string name="quest_buildingLevels_roofLevelsLabel">"之中，屋顶内的楼层"</string>
     <string name="quest_roofShape_title">"此建筑物的屋顶形状是？"</string>
     <string name="quest_roofShape_select_one">"请挑选："</string>
     <string name="quest_roofShape_show_more">"显示更多…"</string>
@@ -196,7 +193,6 @@ OpenStreetMap不接受匿名编辑，您需要登录您的OpenStreetMap帐号。
     <string name="quest_name_answer_noName">"没有名称"</string>
     <string name="quest_name_answer_noName_confirmation_title">"确定没有名称吗?"</string>
     <string name="quest_name_noName_confirmation_positive">"是的，没有名称"</string>
-    <string name="quest_buildingLevels_negativeBuildingLevels">"呃！ 您描述的屋顶层数比总楼层还多！"</string>
     <string name="quest_openingHours_add_times">"添加营业时间"</string>
     <string name="crash_message">"能否请您寄错误报告给开发者吗？"</string>
     <string name="crash_title">"糟糕，刚才 StreetComplete 程序崩溃了！"</string>
@@ -246,6 +242,8 @@ OpenStreetMap不接受匿名编辑，您需要登录您的OpenStreetMap帐号。
     <string name="quest_busStopShelter_name_title">"公交站\"%s\"有遮挡吗？"</string>
     <string name="quest_toiletsFee_title">"是付费洗手间吗？"</string>
     <string name="quest_tactilePaving_title_bus">"这个公车站有盲道设施吗？"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"这个人行横道有盲道设施吗？"</string>
     <string name="quest_source_dialog_title">"你确定你在现场探察确认？"</string>
     <string name="quest_tactilePaving_title_name_bus">"公交站\"%s\"有盲道设施吗？"</string>
@@ -292,7 +290,7 @@ OpenStreetMap不接受匿名编辑，您需要登录您的OpenStreetMap帐号。
     <string name="underground_recycling_container">"地下式资源回收箱"</string>
     <string name="quest_generic_error_a_field_empty">"你留了空白栏位"</string>
     <string name="quest_streetName_menuItem_language_simple">"%1$s - %2$s"</string>
-    <string name="quest_streetName_menuItem_language_native">"1$s - %2$s (%3$s)"</string>
+    <string name="quest_streetName_menuItem_language_native">"%1$s - %2$s (%3$s)"</string>
     <string name="quest_streetName_answer_cantType">"无法在标识上输入字元"</string>
     <string name="quest_streetName_cantType_title">"缺少键盘配置？"</string>
     <string name="quest_streetName_cantType_open_settings">"开启设定"</string>
@@ -363,8 +361,12 @@ OpenStreetMap不接受匿名编辑，您需要登录您的OpenStreetMap帐号。
     <string name="produce_vanilla">"香草"</string>
     <string name="produce_walnuts">"核桃"</string>
     <string name="produce_sisal">"琼麻"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_way_lit_title">"这段路径有照明设施吗？"</string>
     <string name="quest_way_lit_named_title">"\"%s\" 有照明设施吗？"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_way_lit_road_title">"这段道路有照明设施吗？"</string>
     <string name="quest_way_lit_named_road_title">"\"%s\" 沿路上有照明设施？"</string>
     <string name="quest_way_lit_automatic">"使用动态侦测"</string>

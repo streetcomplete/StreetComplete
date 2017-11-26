@@ -64,45 +64,34 @@ public class OpenChangesetsDao
 	public OpenChangesetInfo get(OpenChangesetKey key)
 	{
 		SQLiteDatabase db = dbHelper.getReadableDatabase();
-		Cursor cursor = db.query(OpenChangesetsTable.NAME, null,
-				OpenChangesetsTable.Columns.QUEST_TYPE + " = ? AND " +
-				OpenChangesetsTable.Columns.SOURCE + " = ?", new String[]{key.questType, key.source},
-				null,null,null,"1");
+		String where = OpenChangesetsTable.Columns.QUEST_TYPE + " = ? AND " + OpenChangesetsTable.Columns.SOURCE + " = ?";
+		String[] args = new String[]{key.questType, key.source};
 
-		try
+		try (Cursor cursor = db.query(OpenChangesetsTable.NAME, null, where, args, null, null, null, "1"))
 		{
-			if(!cursor.moveToFirst()) return null; // nothing found for this quest type
+			if (!cursor.moveToFirst()) return null; // nothing found for this quest type
 			return createFromCursor(cursor);
-		}
-		finally
-		{
-			cursor.close();
 		}
 	}
 
 	public Collection<OpenChangesetInfo> getAll()
 	{
 		SQLiteDatabase db = dbHelper.getReadableDatabase();
-		// https://youtu.be/B1BdQcJ2ZYY?t=85
-		Cursor cursor = db.query(OpenChangesetsTable.NAME, null, null, null, null, null, null, null);
 
 		List<OpenChangesetInfo> result = new ArrayList<>();
 
-		try
+		// https://youtu.be/B1BdQcJ2ZYY?t=85
+		try (Cursor cursor = db.query(OpenChangesetsTable.NAME, null, null, null, null, null, null, null))
 		{
-			if(cursor.moveToFirst())
+			if (cursor.moveToFirst())
 			{
-				while(!cursor.isAfterLast())
+				while (!cursor.isAfterLast())
 				{
 					result.add(createFromCursor(cursor));
 					cursor.moveToNext();
 				}
 			}
 			return result;
-		}
-		finally
-		{
-			cursor.close();
 		}
 	}
 

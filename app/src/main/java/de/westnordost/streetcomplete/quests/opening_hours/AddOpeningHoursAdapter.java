@@ -124,7 +124,7 @@ public class AddOpeningHoursAdapter extends RecyclerView.Adapter
 		else if(p.length == 2)
 		{
 			ArrayList<OpeningWeekdays> weekdays = data.get(p[0]).weekdaysList;
-			OpeningWeekdays ow = weekdays.remove(p[1]);
+			weekdays.remove(p[1]);
 			notifyItemRemoved(position);
 			// if not last weekday removed -> element after this one may need to be updated
 			// because it may need to show the weekdays now
@@ -134,26 +134,14 @@ public class AddOpeningHoursAdapter extends RecyclerView.Adapter
 
 	public void addNewMonths()
 	{
-		// Welcome! Welcome to callback hell! (well, it's not that bad if you let IntelliJ fold it)
-		openSetMonthsRangeDialog(getMonthsRangeSuggestion(), new RangePickerDialog.OnRangeChangeListener()
+		openSetMonthsRangeDialog(getMonthsRangeSuggestion(), (startIndex, endIndex) ->
 		{
-			@Override public void onRangeChange(int startIndex, int endIndex)
+			final CircularSection months = new CircularSection(startIndex, endIndex);
+			openSetWeekdaysDialog(getWeekdaysSuggestion(true), weekdays ->
 			{
-				final CircularSection months = new CircularSection(startIndex, endIndex);
-				openSetWeekdaysDialog(getWeekdaysSuggestion(true), new WeekdaysPickedListener()
-				{
-					@Override public void onWeekdaysPicked(final Weekdays weekdays)
-					{
-						openSetTimeRangeDialog(getOpeningHoursSuggestion(), new TimeRangePickerDialog.OnTimeRangeChangeListener()
-						{
-							@Override public void onTimeRangeChange(final TimeRange timeRange)
-							{
-								addMonths(months, weekdays, timeRange);
-							}
-						});
-					}
-				});
-			}
+				openSetTimeRangeDialog(getOpeningHoursSuggestion(),
+						timeRange -> addMonths(months, weekdays, timeRange));
+			});
 		});
 	}
 
@@ -167,18 +155,10 @@ public class AddOpeningHoursAdapter extends RecyclerView.Adapter
 	public void addNewWeekdays()
 	{
 		boolean isFirst = data.get(data.size()-1).weekdaysList.isEmpty();
-		openSetWeekdaysDialog(getWeekdaysSuggestion(isFirst), new WeekdaysPickedListener()
+		openSetWeekdaysDialog(getWeekdaysSuggestion(isFirst), (weekdays) ->
 		{
-			@Override public void onWeekdaysPicked(final Weekdays weekdays)
-			{
-				openSetTimeRangeDialog(getOpeningHoursSuggestion(), new TimeRangePickerDialog.OnTimeRangeChangeListener()
-				{
-					@Override public void onTimeRangeChange(final TimeRange timeRange)
-					{
-						addWeekdays(weekdays, timeRange);
-					}
-				});
-			}
+			openSetTimeRangeDialog(getOpeningHoursSuggestion(),
+					timeRange -> addWeekdays(weekdays, timeRange));
 		});
 	}
 
@@ -204,13 +184,10 @@ public class AddOpeningHoursAdapter extends RecyclerView.Adapter
 	{
 		setDisplayMonths(true);
 		final OpeningMonths om = data.get(0);
-		openSetMonthsRangeDialog(om.months, new RangePickerDialog.OnRangeChangeListener()
+		openSetMonthsRangeDialog(om.months, (startIndex, endIndex) ->
 		{
-			@Override public void onRangeChange(int startIndex, int endIndex)
-			{
-				om.months = new CircularSection(startIndex, endIndex);
-				notifyItemChanged(0);
-			}
+			om.months = new CircularSection(startIndex, endIndex);
+			notifyItemChanged(0);
 		});
 	}
 
@@ -226,13 +203,10 @@ public class AddOpeningHoursAdapter extends RecyclerView.Adapter
 			super(itemView);
 			monthsText = itemView.findViewById(R.id.months_from_to);
 			delete = itemView.findViewById(R.id.delete);
-			delete.setOnClickListener(new View.OnClickListener()
+			delete.setOnClickListener(v ->
 			{
-				@Override public void onClick(View v)
-				{
-					int index = getAdapterPosition();
-					if(index != RecyclerView.NO_POSITION) remove(index);
-				}
+				int index = getAdapterPosition();
+				if(index != RecyclerView.NO_POSITION) remove(index);
 			});
 		}
 
@@ -259,19 +233,13 @@ public class AddOpeningHoursAdapter extends RecyclerView.Adapter
 			setVisibility(displayMonths);
 			delete.setVisibility(index==0 ? View.GONE : View.VISIBLE);
 			monthsText.setText(data.getLocalizedMonthsString());
-			monthsText.setOnClickListener(new View.OnClickListener()
+			monthsText.setOnClickListener(v ->
 			{
-				@Override public void onClick(View v)
+				openSetMonthsRangeDialog(data.months, (startIndex, endIndex) ->
 				{
-					openSetMonthsRangeDialog(data.months, new RangePickerDialog.OnRangeChangeListener()
-					{
-						@Override public void onRangeChange(int startIndex, int endIndex)
-						{
-							data.months = new CircularSection(startIndex, endIndex);
-							notifyItemChanged(getAdapterPosition());
-						}
-					});
-				}
+					data.months = new CircularSection(startIndex, endIndex);
+					notifyItemChanged(getAdapterPosition());
+				});
 			});
 		}
 	}
@@ -319,13 +287,10 @@ public class AddOpeningHoursAdapter extends RecyclerView.Adapter
 			weekdaysText = itemView.findViewById(R.id.weekday_from_to);
 			hoursText = itemView.findViewById(R.id.hours_from_to);
 			delete = itemView.findViewById(R.id.delete);
-			delete.setOnClickListener(new View.OnClickListener()
+			delete.setOnClickListener(v ->
 			{
-				@Override public void onClick(View v)
-				{
-					int index = getAdapterPosition();
-					if(index != RecyclerView.NO_POSITION) remove(getAdapterPosition());
-				}
+				int index = getAdapterPosition();
+				if(index != RecyclerView.NO_POSITION) remove(getAdapterPosition());
 			});
 		}
 
@@ -342,34 +307,22 @@ public class AddOpeningHoursAdapter extends RecyclerView.Adapter
 				weekdaysText.setText(data.weekdays.toLocalizedString(context.getResources()));
 			}
 
-			weekdaysText.setOnClickListener(new View.OnClickListener()
+			weekdaysText.setOnClickListener(v ->
 			{
-				@Override public void onClick(View v)
+				openSetWeekdaysDialog(data.weekdays, weekdays ->
 				{
-					openSetWeekdaysDialog(data.weekdays, new WeekdaysPickedListener()
-					{
-						@Override public void onWeekdaysPicked(Weekdays weekdays)
-						{
-							data.weekdays = weekdays;
-							notifyItemChanged(getAdapterPosition());
-						}
-					});
-				}
+					data.weekdays = weekdays;
+					notifyItemChanged(getAdapterPosition());
+				});
 			});
 			hoursText.setText(data.timeRange.toStringUsing("–"));
-			hoursText.setOnClickListener(new View.OnClickListener()
+			hoursText.setOnClickListener(v ->
 			{
-				@Override public void onClick(View v)
+				openSetTimeRangeDialog(data.timeRange, timeRange ->
 				{
-					openSetTimeRangeDialog(data.timeRange, new TimeRangePickerDialog.OnTimeRangeChangeListener()
-					{
-						@Override public void onTimeRangeChange(TimeRange timeRange)
-						{
-							data.timeRange = timeRange;
-							notifyItemChanged(getAdapterPosition());
-						}
-					});
-				}
+					data.timeRange = timeRange;
+					notifyItemChanged(getAdapterPosition());
+				});
 			});
 		}
 	}
@@ -400,21 +353,11 @@ public class AddOpeningHoursAdapter extends RecyclerView.Adapter
 
 		AlertDialog dlg = new AlertDialogBuilder(context)
 				.setTitle(R.string.quest_openingHours_chooseWeekdaysTitle)
-				.setMultiChoiceItems(Weekdays.getNames(context.getResources()), selection, new DialogInterface.OnMultiChoiceClickListener()
-				{
-					@Override public void onClick(DialogInterface dialog, int which, boolean isChecked)
-					{
-						updateDialogOkButtonEnablement((AlertDialog) dialog, selection);
-					}
-				})
+				.setMultiChoiceItems(Weekdays.getNames(context.getResources()), selection,
+						(dialog, which, isChecked) -> updateDialogOkButtonEnablement((AlertDialog) dialog, selection))
 				.setNegativeButton(android.R.string.cancel, null)
-				.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener()
-				{
-					@Override public void onClick(DialogInterface dialog, int which)
-					{
-						callback.onWeekdaysPicked(new Weekdays(selection));
-					}
-				})
+				.setPositiveButton(android.R.string.ok,
+						(dialog, which) -> callback.onWeekdaysPicked(new Weekdays(selection)))
 				.show();
 
 		updateDialogOkButtonEnablement(dlg, selection);

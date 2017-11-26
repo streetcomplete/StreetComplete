@@ -11,13 +11,13 @@ public class StreetCompleteOpenHelperTest extends AndroidDbTestCase
 		super(StreetCompleteOpenHelper.DB_NAME);
 	}
 
-	@Override public void setUp()
+	@Override public void setUp() throws Exception
 	{
 		super.setUp();
 		helper = DbModule.sqliteOpenHelper(getContext());
 	}
 
-	@Override public void tearDown()
+	@Override public void tearDown() throws Exception
 	{
 		// first close, then call super (= delete database) to avoid warning
 		helper.close();

@@ -106,17 +106,12 @@ public class ElementGeometryDao
 		String where = ElementGeometryTable.Columns.ELEMENT_TYPE + " = ? AND " +
 				ElementGeometryTable.Columns.ELEMENT_ID + " = ?";
 		String[] args = {type.name(), String.valueOf(id)};
-		Cursor cursor = db.query(ElementGeometryTable.NAME, null, where, args,
-				null, null, null, "1");
 
-		try
+		try (Cursor cursor = db.query(ElementGeometryTable.NAME, null, where, args,
+				null, null, null, "1"))
 		{
-			if(!cursor.moveToFirst()) return null;
+			if (!cursor.moveToFirst()) return null;
 			return createObjectFrom(serializer, cursor);
-		}
-		finally
-		{
-			cursor.close();
 		}
 	}
 

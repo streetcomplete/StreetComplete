@@ -1,5 +1,9 @@
 package de.westnordost.streetcomplete.data.osm.persist;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 public class OsmQuestTable
 {
 	public static final String NAME = "osm_quests";
@@ -21,14 +25,12 @@ public class OsmQuestTable
 				CHANGES_SOURCE = "changes_source",
 				LAST_UPDATE = "last_update";
 
-		public static final String[] ALL = {
+		public static final List<String> ALL = Collections.unmodifiableList(Arrays.asList(
 				QUEST_ID, QUEST_TYPE, ELEMENT_ID, ELEMENT_TYPE, QUEST_STATUS, TAG_CHANGES,
-				CHANGES_SOURCE, LAST_UPDATE
-				};
+				CHANGES_SOURCE, LAST_UPDATE));
 
-		public static final String[] ALL_DB_VERSION_3 = {
+		public static final List<String> ALL_DB_VERSION_3 = Collections.unmodifiableList(Arrays.asList(
 				QUEST_ID, QUEST_TYPE, ELEMENT_ID, ELEMENT_TYPE, QUEST_STATUS, TAG_CHANGES,
-				LAST_UPDATE
-		};
+				LAST_UPDATE));
 	}
 }

@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.quests.housenumber.AddHousenumberForm;
 
 public class AddHousenumberTest extends AOsmElementQuestTypeTest
 {
-	@Override public void setUp()
+	@Override public void setUp() throws Exception
 	{
 		super.setUp();
 		tags.put("building","house");

@@ -9,6 +9,7 @@
         android:layout_width="280dp"
         android:layout_height="280dp"
         android:layout_gravity="center"
+        tools:rotation="20"
         >
 
         <View
@@ -32,7 +33,9 @@
                 android:layout_height="match_parent"
                 android:layout_alignParentLeft="true"
                 android:scaleType="fitXY"
-                tools:ignore="RtlHardcoded" />
+                tools:ignore="RtlHardcoded"
+                tools:src="@drawable/ic_cycleway_sidewalk_ok"
+                tools:rotation="180"/>
 
         </RelativeLayout>
 
@@ -51,7 +54,8 @@
                 android:layout_height="match_parent"
                 android:layout_alignParentLeft="true"
                 android:scaleType="fitXY"
-                tools:ignore="RtlHardcoded" />
+                tools:ignore="RtlHardcoded"
+                tools:src="@drawable/ic_cycleway_sidewalk_ok"/>
 
         </RelativeLayout>
 

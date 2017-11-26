@@ -2,8 +2,6 @@ package de.westnordost.streetcomplete.oauth;
 
 import android.content.SharedPreferences;
 
-import javax.inject.Provider;
-
 import dagger.Module;
 import dagger.Provides;
 import oauth.signpost.OAuthConsumer;
@@ -21,13 +19,7 @@ public class OAuthModule
 
 	@Provides public static OAuthPrefs oAuthPrefs(SharedPreferences prefs)
 	{
-		return new OAuthPrefs(prefs, new Provider<OAuthConsumer>()
-		{
-			@Override public OAuthConsumer get()
-			{
-				return defaultOAuthConsumer();
-			}
-		});
+		return new OAuthPrefs(prefs, OAuthModule::defaultOAuthConsumer);
 	}
 
 	@Provides public static OAuthProvider oAuthProvider()

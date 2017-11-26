@@ -394,7 +394,7 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="produce_sweet_peppers">"Sladké papriky"</string>
     <string name="produce_brazil_nuts">"Juvie"</string>
     <string name="produce_tung_nuts">"Tungovníky"</string>
-    <string name="quest_parkingType_title">"Jaký je tohle druh parkoviště?"</string>
+    <string name="quest_parkingType_title">"Jakého druhu je toto parkoviště?"</string>
     <string name="quest_parkingType_surface">"Normální"</string>
     <string name="quest_parkingType_underground">"Podzemní parkoviště"</string>
     <string name="quest_parkingType_multiStorage">"Víceposchoďové pakoviště"</string>
@@ -436,4 +436,23 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_type">"Druh úkolu"</string>
     <string name="action_reset">"Resetovat"</string>
     <string name="reorder_quest_priority_hint">"Dlouze stiskněte a přesuňte úkol pro jeho změnu pořadí při stahování a zobrazení na mapě."</string>
+    <string name="undo_confirm_positive">"Zpět"</string>
+    <string name="undo_confirm_negative">"Zrušit"</string>
+    <string name="quest_dietType_vegetarian_name_title">"Má „%s“ na jídelním lístku vegetariánská jídla?"</string>
+    <string name="quest_dietType_vegan_name_title">"Má „%s“ na jídelním lístku veganská jídla?"</string>
+    <string name="quest_hasFeature_only">"Jenom"</string>
+    <string name="quest_dietType_explanation_vegan">"Veganské jídlo neobsahuje žádné živočišné produkty (maso, mléčné výrobky, vajíčka...)."</string>
+    <string name="quest_dietType_explanation_vegetarian">"Vegetariánské jídlo neobsahuje žádné maso."</string>
+    <string name="quest_dietType_explanation">"Odpovězte  „Ano“, jen pokud místo nabízí řádné stravovací možnosti pro tuto dietu, ignorujte předkrmy atd."</string>
+    <string name="quest_carWashType_title">"Jakého druhu je tato myčka aut?"</string>
+    <string name="quest_carWashType_automated">"Automatická"</string>
+    <string name="quest_carWashType_selfService">"Samoobslužná"</string>
+    <string name="quest_carWashType_service">"Zaměstnanec myje auta"</string>
+    <string name="enable_quest_confirmation_title">"Povolit tento typ úkolů?"</string>
+    <string name="default_disabled_msg_go_inside">"Tento typ úkolů je ve výchozím nastavení zakázán, protože pro získání odpovědi je pravděpodobně nutné navštívit místo úkolu."</string>
+    <string name="quest_housenumber_conscription_number">"Číslo popisné"</string>
+    <string name="quest_housenumber_street_number_optional">"Orientační číslo (volitelné)"</string>
+    <string name="quest_housenumber_conscription_number_required">"Číslo popisné musí být určeno"</string>
+    <string name="quest_cycleway_answer_contraflow_cycleway">"Cyklostezka je i na druhé straně"</string>
+    <string name="need_specify_both_sides">"Musíte určit obě strany"</string>
 </resources>

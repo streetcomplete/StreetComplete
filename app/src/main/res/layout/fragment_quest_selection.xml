@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:tools="http://schemas.android.com/tools"
-              android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/reorder_quest_priority_hint"
+        android:layout_alignParentTop="true"
         android:padding="8dp"/>
 
     <RelativeLayout
+        android:id="@+id/table_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/text"
         style="@style/TableHeader">
 
         <TextView
@@ -39,8 +42,14 @@
         android:id="@+id/questSelectionList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:listitem="@layout/row_quest_selection">
+        android:layout_below="@+id/table_header"
+        android:layout_above="@+id/footer_space"
+        tools:listitem="@layout/row_quest_selection"/>
 
-    </android.support.v7.widget.RecyclerView>
+    <View
+        android:id="@+id/footer_space"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/activity_vertical_margin"
+        android:layout_alignParentBottom="true"/>
 
-</LinearLayout>
+</RelativeLayout>

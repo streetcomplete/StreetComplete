@@ -30,8 +30,11 @@ public class AddCycleway implements OsmElementQuestType
 
 	@Override public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
 	{
-		Cycleway cyclewayRight = Cycleway.valueOf(answer.getString(AddCyclewayForm.CYCLEWAY_RIGHT));
-		Cycleway cyclewayLeft = Cycleway.valueOf(answer.getString(AddCyclewayForm.CYCLEWAY_LEFT));
+		String right = answer.getString(AddCyclewayForm.CYCLEWAY_RIGHT);
+		String left = answer.getString(AddCyclewayForm.CYCLEWAY_LEFT);
+
+		Cycleway cyclewayRight = right != null ? Cycleway.valueOf(right) : null;
+		Cycleway cyclewayLeft = left != null ? Cycleway.valueOf(left) : null;
 
 		int cyclewayRightDir = answer.getInt(AddCyclewayForm.CYCLEWAY_RIGHT_DIR);
 		int cyclewayLeftDir = answer.getInt(AddCyclewayForm.CYCLEWAY_LEFT_DIR);
@@ -45,8 +48,14 @@ public class AddCycleway implements OsmElementQuestType
 		}
 		else
 		{
-			applyCyclewayAnswerTo(cyclewayLeft, Side.LEFT, cyclewayLeftDir, changes);
-			applyCyclewayAnswerTo(cyclewayRight, Side.RIGHT, cyclewayRightDir, changes);
+			if(cyclewayLeft != null)
+			{
+				applyCyclewayAnswerTo(cyclewayLeft, Side.LEFT, cyclewayLeftDir, changes);
+			}
+			if(cyclewayRight != null)
+			{
+				applyCyclewayAnswerTo(cyclewayRight, Side.RIGHT, cyclewayRightDir, changes);
+			}
 		}
 
 		if(answer.getBoolean(AddCyclewayForm.IS_ONEWAY_NOT_FOR_CYCLISTS))

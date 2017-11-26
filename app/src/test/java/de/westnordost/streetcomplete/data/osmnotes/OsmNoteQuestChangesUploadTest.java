@@ -2,18 +2,13 @@ package de.westnordost.streetcomplete.data.osmnotes;
 
 import junit.framework.TestCase;
 
-import org.mockito.invocation.InvocationOnMock;
-import org.mockito.stubbing.Answer;
-
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import de.westnordost.osmapi.common.errors.OsmConflictException;
 import de.westnordost.osmapi.map.data.OsmLatLon;
 import de.westnordost.osmapi.notes.Note;
-import de.westnordost.osmapi.notes.NoteComment;
 import de.westnordost.osmapi.notes.NotesDao;
 import de.westnordost.streetcomplete.data.QuestStatus;
 import de.westnordost.streetcomplete.util.ImageUploader;
@@ -29,8 +24,9 @@ public class OsmNoteQuestChangesUploadTest extends TestCase
 
 	private OsmNoteQuestChangesUpload osmNoteQuestChangesUpload;
 
-	@Override public void setUp()
+	@Override public void setUp() throws Exception
 	{
+		super.setUp();
 		osmDao = mock(NotesDao.class);
 		noteDb = mock(NoteDao.class);
 		imageUploader = mock(ImageUploader.class);
@@ -41,27 +37,17 @@ public class OsmNoteQuestChangesUploadTest extends TestCase
 
 	public void testCancel() throws InterruptedException
 	{
-		when(questDb.getAll(null, QuestStatus.ANSWERED)).thenAnswer(
-				new Answer<List<OsmNoteQuest>>()
-				{
-					@Override public List<OsmNoteQuest> answer(InvocationOnMock invocation) throws Throwable
-					{
-						Thread.sleep(1000); // take your time...
-						ArrayList<OsmNoteQuest> result = new ArrayList<>();
-						result.add(null);
-						return result;
-					}
-				});
+		when(questDb.getAll(null, QuestStatus.ANSWERED)).thenAnswer( invocation ->
+		{
+			Thread.sleep(1000); // take your time...
+			ArrayList<OsmNoteQuest> result = new ArrayList<>();
+			result.add(null);
+			return result;
+		});
 
 		final AtomicBoolean cancel = new AtomicBoolean(false);
 
-		Thread t = new Thread(new Runnable()
-		{
-			@Override public void run()
-			{
-				osmNoteQuestChangesUpload.upload(cancel);
-			}
-		});
+		Thread t = new Thread(() -> osmNoteQuestChangesUpload.upload(cancel));
 		t.start();
 
 		cancel.set(true);

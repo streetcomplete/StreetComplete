@@ -5,8 +5,6 @@ import junit.framework.TestCase;
 import java.util.Collections;
 import java.util.List;
 
-import javax.inject.Provider;
-
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.map.data.LatLon;
@@ -32,8 +30,9 @@ public class OsmQuestUnlockerTest extends TestCase
 	private OsmQuestUnlocker osmQuestUnlocker;
 	private OsmElementQuestType questType;
 
-	@Override public void setUp()
+	@Override public void setUp() throws Exception
 	{
+		super.setUp();
 		ElementGeometryDao elementGeometryDao = mock(ElementGeometryDao.class);
 		when(elementGeometryDao.get(Element.Type.NODE, 1)).thenReturn(new ElementGeometry(POS));
 
@@ -48,13 +47,7 @@ public class OsmQuestUnlockerTest extends TestCase
 		questType = mock(OsmElementQuestType.class);
 		final List<QuestType> questTypes = Collections.<QuestType>singletonList(questType);
 		osmQuestUnlocker = new OsmQuestUnlocker(osmNoteQuestDao, osmQuestDao, elementGeometryDao,
-				new Provider<List<QuestType>>()
-				{
-					@Override public List<QuestType> get()
-					{
-						return questTypes;
-					}
-				});
+				() -> questTypes);
 	}
 
 	public void testNoteBlocksNewQuests()

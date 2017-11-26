@@ -6,13 +6,12 @@ import de.westnordost.streetcomplete.data.ApplicationDbTestCase;
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.map.data.OsmLatLon;
-import de.westnordost.streetcomplete.util.Serializer;
 
 public class CreateNoteDaoTest extends ApplicationDbTestCase
 {
 	private CreateNoteDao dao;
 
-	@Override public void setUp()
+	@Override public void setUp() throws Exception
 	{
 		super.setUp();
 		dao = new CreateNoteDao(dbHelper, serializer);

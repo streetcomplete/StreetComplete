@@ -24,9 +24,9 @@ import oauth.signpost.OAuthConsumer;
 @Module
 public class OsmModule
 {
-	public static String OSM_API_URL = "https://api.openstreetmap.org/api/0.6/";
+	public static final String OSM_API_URL = "https://api.openstreetmap.org/api/0.6/";
 
-	public static String OVERPASS_API_URL = "http://overpass-api.de/api/";
+	public static final String OVERPASS_API_URL = "http://overpass-api.de/api/";
 
 	/** Returns the osm connection singleton used for all daos with the saved oauth consumer */
 	@Provides @Singleton public static OsmConnection osmConnection(OAuthPrefs oAuth)

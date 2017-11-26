@@ -69,7 +69,6 @@
     <string name="close">"sulje"</string>
     <string name="download_error">"Kohteiden etsinnässä tapahtui virhe"</string>
     <string name="upload_error">"Vastausten lähettämisessä tapahtui virhe"</string>
-    <string name="cannot_find_bbox">"Tässä ei voi skannata. Yritä lähentää karttaa"</string>
     <string name="download_area_too_big">"Lähennä karttaa"</string>
     <string name="confirmation_cancel_prev_download_title">"Peruuta nykyinen haku ja hae tästä?"</string>
     <string name="notification_downloading">"Haetaan täydennettävää…"</string>
@@ -113,8 +112,6 @@
     <string name="quest_openingHours_comment_description">"Muotoile lyhyesti, esimerkiksi samoja sanoja käyttäen mitä kyltissä. Kyltin poissaolo ei suoraan kerro etteikö säännöllisiä aukioloaikoja olisi."</string>
     <string name="quest_buildingLevels_title">"Kuinka monta kerrosta tässä rakennuksessa on?"</string>
     <string name="quest_buildingLevels_title_buildingPart">"Kuinka monta kerrosta tässä rakennuksen osassa on?"</string>
-    <string name="quest_buildingLevels_levelsLabel">"kerroksia kaikkiaan"</string>
-    <string name="quest_buildingLevels_roofLevelsLabel">"näistä katolla on "</string>
     <string name="quest_roofShape_title">"Millainen perusmuoto katolla on?"</string>
     <string name="quest_roofShape_select_one">"Valitse yksi:"</string>
     <string name="quest_roofShape_show_more">"Näytä lisää"</string>
@@ -205,7 +202,6 @@ Tiedot jotka laitat lähetetään suoraan OpenStreetMapiin nimelläsi ilman tarv
     <string name="quest_name_answer_noName">"Sillä ei ole nimeä"</string>
     <string name="quest_name_answer_noName_confirmation_title">"Eikö todellakaan nimeä?"</string>
     <string name="quest_name_noName_confirmation_positive">"Kyllä, ei nimeä"</string>
-    <string name="quest_buildingLevels_negativeBuildingLevels">"Ups! Täydensit enemmän kattojen korkeutta kuin korkeutta yhteensä!"</string>
     <string name="quest_openingHours_add_times">"Lisää aukeamisaika"</string>
     <string name="crash_message">"Lähettäisitkö virheraportin kehittäjälle?"</string>
     <string name="crash_title">"Oho, StreetComplete kaatui viime kerralla!"</string>
@@ -304,6 +300,8 @@ Tiedot jotka laitat lähetetään suoraan OpenStreetMapiin nimelläsi ilman tarv
     <string name="produce_tea">"Teenlehdet"</string>
     <string name="produce_vanilla">"Vanilja"</string>
     <string name="produce_walnuts">"Saksanpähkinät"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_way_lit_title">"Onko tämä osa tietä valaistu?"</string>
     <string name="quest_way_lit_named_title">"Onko tämä \"%s\" valaistu?"</string>
 </resources>

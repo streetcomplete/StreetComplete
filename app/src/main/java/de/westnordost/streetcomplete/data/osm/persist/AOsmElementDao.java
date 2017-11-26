@@ -50,16 +50,11 @@ public abstract class AOsmElementDao<T extends Element>
 	public T get(long id)
 	{
 		SQLiteDatabase db = dbHelper.getReadableDatabase();
-		Cursor cursor = db.query(getTableName(), null, getIdColumnName() + " = " + id,
-					null, null, null, null, "1");
-		try
+		String where = getIdColumnName() + " = " + id;
+		try (Cursor cursor = db.query(getTableName(), null, where, null, null, null, null, "1"))
 		{
 			if (!cursor.moveToFirst()) return null;
 			return createObjectFrom(cursor);
-		}
-		finally
-		{
-			cursor.close();
 		}
 	}
 

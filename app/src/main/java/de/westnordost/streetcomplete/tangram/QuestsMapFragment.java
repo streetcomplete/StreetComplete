@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.tangram;
 
-import android.app.Activity;
+import android.content.Context;
 import android.graphics.Point;
 import android.graphics.PointF;
 import android.graphics.Rect;
@@ -54,7 +54,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 	private final Set<Point> retrievedTiles;
 	private static final int TILES_ZOOM = 14;
 
-	private static float MAX_QUEST_ZOOM = 19;
+	private static final float MAX_QUEST_ZOOM = 19;
 
 	private Listener listener;
 
@@ -78,11 +78,10 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		retrievedTiles = new HashSet<>();
 	}
 
-	@Override public void onAttach(Activity activity)
+	@Override public void onAttach(Context context)
 	{
-		super.onAttach(activity);
-
-		listener = (Listener) activity;
+		super.onAttach(context);
+		listener = (Listener) context;
 	}
 
 	@Override public void onStart()
@@ -181,7 +180,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		else
 		{
 			// zoom out a bit
-			targetZoom -= 0.35;
+			targetZoom -= 0.4;
 		}
 
 		float currentZoom = controller.getZoom();
@@ -201,7 +200,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		int w = getView().getWidth();
 		int h = getView().getHeight();
 
-		LngLat normalCenter = controller.screenPositionToLngLat(new PointF(w/2, h/2));
+		LngLat normalCenter = controller.screenPositionToLngLat(new PointF(w/2f, h/2f));
 
 		LngLat offsetCenter = controller.screenPositionToLngLat(new PointF(
 				questOffset.left + (w - questOffset.left - questOffset.right)/2,
