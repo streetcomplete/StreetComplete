@@ -14,6 +14,7 @@ import de.westnordost.streetcomplete.quests.baby_changing_table.AddBabyChangingT
 import de.westnordost.streetcomplete.quests.bike_parking_capacity.AddBikeParkingCapacity;
 import de.westnordost.streetcomplete.quests.bike_parking_cover.AddBikeParkingCover;
 import de.westnordost.streetcomplete.quests.bikeway.AddCycleway;
+import de.westnordost.streetcomplete.quests.bridge_structure.AddBridgeStructure;
 import de.westnordost.streetcomplete.quests.building_levels.AddBuildingLevels;
 import de.westnordost.streetcomplete.quests.bus_stop_shelter.AddBusStopShelter;
 import de.westnordost.streetcomplete.quests.car_wash_type.AddCarWashType;
@@ -86,6 +87,7 @@ public class QuestModule
 				new AddWayLit(o),
 				new AddWheelchairAccessBusiness(o),
 				new AddToiletAvailability(o),
+				new AddBridgeStructure(o),
 
 				// ↓ 8. defined in the wiki, but not really used by anyone yet. Just collected for
 				//      the sake of mapping it in case it makes sense later
