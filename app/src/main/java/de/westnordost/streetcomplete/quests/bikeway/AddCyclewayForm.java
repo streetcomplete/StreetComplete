@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.bikeway;
 
 import android.os.Bundle;
+import android.support.annotation.AnyThread;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -131,11 +132,14 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 		outState.putBoolean(DEFINE_BOTH_SIDES, isDefiningBothSides);
 	}
 
-	public void onMapOrientation(float rotation, float tilt)
+	@AnyThread public void onMapOrientation(float rotation, float tilt)
 	{
 		if(puzzle == null) return;
 		float rotationInDegrees = (float) (rotation * 180 / Math.PI);
-		puzzle.setStreetRotation(wayOrientationAtCenter + rotationInDegrees);
+		getActivity().runOnUiThread(() ->
+		{
+			puzzle.setStreetRotation(wayOrientationAtCenter + rotationInDegrees);
+		});
 	}
 
 	private static float getWayOrientationAtCenterLineInDegrees(ElementGeometry e)

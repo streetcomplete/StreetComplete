@@ -764,7 +764,7 @@ public class MainActivity extends AppCompatActivity implements
 		return (AbstractQuestAnswerFragment) getSupportFragmentManager().findFragmentByTag(BOTTOM_SHEET);
 	}
 
-	@Override public void onMapOrientation(float rotation, float tilt)
+	@AnyThread @Override public void onMapOrientation(float rotation, float tilt)
 	{
 		mapRotation = rotation;
 		mapTilt = tilt;

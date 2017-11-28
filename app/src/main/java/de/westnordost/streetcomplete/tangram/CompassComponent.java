@@ -4,6 +4,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.support.annotation.AnyThread;
 import android.view.Display;
 import android.view.Surface;
 
@@ -30,7 +31,7 @@ public class CompassComponent implements SensorEventListener
 	private Listener listener;
 	public interface Listener
 	{
-		void onRotationChanged(float rotation, float tilt);
+		@AnyThread void onRotationChanged(float rotation, float tilt);
 	}
 
 	public void setListener(Listener listener)
