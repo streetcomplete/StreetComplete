@@ -292,8 +292,8 @@ public class MapFragment extends Fragment implements
 		if(lostApiClient.isConnected())
 		{
 			LocationServices.FusedLocationApi.removeLocationUpdates(lostApiClient, this);
-			lostApiClient.disconnect();
 		}
+		lostApiClient.disconnect();
 	}
 
 	public void setIsFollowingPosition(boolean value)

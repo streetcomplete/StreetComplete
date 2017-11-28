@@ -45,8 +45,8 @@ public class SingleLocationRequest implements LocationListener, LostApiClient.Co
 			if(lostApiClient.isConnected())
 			{
 				LocationServices.FusedLocationApi.removeLocationUpdates(lostApiClient, SingleLocationRequest.this);
-				lostApiClient.disconnect();
 			}
+			lostApiClient.disconnect();
 		});
 
 	}
