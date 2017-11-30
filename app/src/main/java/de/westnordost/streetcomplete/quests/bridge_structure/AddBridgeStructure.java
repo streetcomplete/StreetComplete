@@ -34,7 +34,7 @@ public class AddBridgeStructure extends SimpleOverpassQuestType{
 
     @Override
     public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes) {
-        changes.add("structure", answer.getString(AddBridgeStructureForm.STRUCTURE));
+        changes.add("bridge:structure", answer.getString(AddBridgeStructureForm.STRUCTURE));
     }
 
     @Override
@@ -44,12 +44,10 @@ public class AddBridgeStructure extends SimpleOverpassQuestType{
 
     @Override
     public int getTitle(Map<String, String> tags) {
-        boolean hasName = tags.containsKey("name");
-        if (hasName) return R.string.quest_bridge_structure_name_title;
-        else return R.string.quest_bridge_structure_title;
+        return R.string.quest_bridge_structure_title;
     }
     @Override
     protected String getTagFilters() {
-        return "ways with bridge and !structure";
+        return "ways with bridge or man_made=bridge and !bridge:structure";
     }
 }
