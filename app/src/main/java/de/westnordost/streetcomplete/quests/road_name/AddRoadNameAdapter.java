@@ -8,7 +8,6 @@ import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -52,19 +51,8 @@ public class AddRoadNameAdapter extends RecyclerView.Adapter
 		this.roadNameSuggestions = roadNameSuggestions;
 		putDefaultRoadNameSuggestion();
 		this.addLanguageButton = addLanguageButton;
-
-		this.addLanguageButton.setOnClickListener(new View.OnClickListener()
-		{
-			@Override public void onClick(View v)
-			{
-				showLanguageSelectMenu(v, getNotAddedLanguages(), new OnLanguageSelected()
-				{
-					@Override public void onLanguageSelected(String languageCode)
-					{
-						add(languageCode);
-					}
-				});
-			}
+		this.addLanguageButton.setOnClickListener(v -> {
+			showLanguageSelectMenu(v, getNotAddedLanguages(), this::add);
 		});
 
 		updateAddLanguageButtonVisibility();
@@ -187,13 +175,10 @@ public class AddRoadNameAdapter extends RecyclerView.Adapter
 			m.getMenu().add(NONE,i++,NONE, getLanguageMenuItemTitle(languageCode));
 		}
 
-		m.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener()
+		m.setOnMenuItemClickListener(item ->
 		{
-			@Override public boolean onMenuItemClick(MenuItem item)
-			{
-				callback.onLanguageSelected(languageList.get(item.getItemId()));
-				return true;
-			}
+			callback.onLanguageSelected(languageList.get(item.getItemId()));
+			return true;
 		});
 		m.show();
 	}
@@ -237,15 +222,11 @@ public class AddRoadNameAdapter extends RecyclerView.Adapter
 			m.getMenu().add(NONE,i++,NONE, entry.getKey());
 		}
 
-		m.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener()
+		m.setOnMenuItemClickListener(item ->
 		{
-			@Override public boolean onMenuItemClick(MenuItem item)
-			{
-
-				Map<String, String> selected = roadNameSuggestionsMap.get(item.getTitle().toString());
-				callback.onRoadNameSuggestionSelected(selected);
-				return true;
-			}
+			Map<String, String> selected = roadNameSuggestionsMap.get(item.getTitle().toString());
+			callback.onRoadNameSuggestionSelected(selected);
+			return true;
 		});
 		m.show();
 	}
@@ -311,14 +292,11 @@ public class AddRoadNameAdapter extends RecyclerView.Adapter
 				}
 			});
 
-			deleteButton.setOnClickListener(new View.OnClickListener()
+			deleteButton.setOnClickListener(v ->
 			{
-				@Override public void onClick(View v)
-				{
-					// clearing focus is very necessary, otherwise crash
-					nameInput.clearFocus();
-					remove(getAdapterPosition());
-				}
+				// clearing focus is very necessary, otherwise crash
+				nameInput.clearFocus();
+				remove(getAdapterPosition());
 			});
 		}
 
@@ -340,30 +318,24 @@ public class AddRoadNameAdapter extends RecyclerView.Adapter
 			languageButton.setTypeface(null, isFirst ? Typeface.BOLD : Typeface.NORMAL);
 			nameInput.setTypeface(null, isFirst ? Typeface.BOLD : Typeface.NORMAL);
 
-			languageButton.setOnClickListener(new View.OnClickListener()
+			languageButton.setOnClickListener((View v) ->
 			{
-				@Override public void onClick(View v)
+				List<String> notAddedLanguages = getNotAddedLanguages();
+				// in first entry user may select "unspecified language" to cover cases where
+				// the default name is no specific language. I.e. see
+				// https://wiki.openstreetmap.org/wiki/Multilingual_names#Sardegna_.28Sardinia.29
+				if(isFirst)
 				{
-					List<String> notAddedLanguages = getNotAddedLanguages();
-					// in first entry user may select "unspecified language" to cover cases where
-					// the default name is no specific language. I.e. see
-					// https://wiki.openstreetmap.org/wiki/Multilingual_names#Sardegna_.28Sardinia.29
-					if(isFirst)
-					{
-						notAddedLanguages.add(0,"");
-					}
-
-					showLanguageSelectMenu(v, notAddedLanguages, new OnLanguageSelected()
-					{
-						@Override public void onLanguageSelected(String languageCode)
-						{
-							roadName.languageCode = languageCode;
-							languageButton.setText(languageCode);
-							updateAddLanguageButtonVisibility();
-							updateNameSuggestions();
-						}
-					});
+					notAddedLanguages.add(0,"");
 				}
+
+				showLanguageSelectMenu(v, notAddedLanguages, languageCode ->
+				{
+					roadName.languageCode = languageCode;
+					languageButton.setText(languageCode);
+					updateAddLanguageButtonVisibility();
+					updateNameSuggestions();
+				});
 			});
 
 			updateNameSuggestions();
@@ -391,20 +363,14 @@ public class AddRoadNameAdapter extends RecyclerView.Adapter
 			boolean nameInputNotEmpty = !nameInput.getText().toString().isEmpty();
 			nameSuggestionsButton.setVisibility(
 					roadNameSuggestionsMap.isEmpty() || nameInputNotEmpty ? View.GONE : View.VISIBLE);
-			nameSuggestionsButton.setOnClickListener(new View.OnClickListener()
+			nameSuggestionsButton.setOnClickListener(v ->
 			{
-				@Override public void onClick(View v)
+				showNameSuggestionsMenu(v, roadNameSuggestionsMap, selection ->
 				{
-					showNameSuggestionsMenu(v, roadNameSuggestionsMap, new OnRoadNameSuggestionSelected()
-					{
-						@Override public void onRoadNameSuggestionSelected(Map<String, String> selection)
-						{
-							data = toRoadNameList(selection);
-							notifyDataSetChanged();
-							updateAddLanguageButtonVisibility();
-						}
-					});
-				}
+					data = toRoadNameList(selection);
+					notifyDataSetChanged();
+					updateAddLanguageButtonVisibility();
+				});
 			});
 		}
 	}

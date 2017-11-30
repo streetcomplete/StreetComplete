@@ -60,20 +60,22 @@ public class MultipartUtility {
 		writer.append(LINE_FEED);
 		writer.flush();
 
-		FileInputStream inputStream = new FileInputStream(uploadFile);
 		byte[] buffer = new byte[4096];
-		int bytesRead = -1;
-		while ((bytesRead = inputStream.read(buffer)) != -1) {
-			outputStream.write(buffer, 0, bytesRead);
+		int bytesRead;
+		try (FileInputStream inputStream = new FileInputStream(uploadFile))
+		{
+			while ((bytesRead = inputStream.read(buffer)) != -1)
+			{
+				outputStream.write(buffer, 0, bytesRead);
+			}
+			outputStream.flush();
 		}
-		outputStream.flush();
-		inputStream.close();
 		writer.append(LINE_FEED);
 		writer.flush();
 	}
 
 	public String finish() throws IOException {
-		String response = "";
+		StringBuilder response = new StringBuilder();
 		writer.append(LINE_FEED).flush();
 		writer.append("--" + boundary + "--").append(LINE_FEED);
 		writer.close();
@@ -83,13 +85,13 @@ public class MultipartUtility {
 			BufferedReader reader = new BufferedReader(new InputStreamReader(httpConnection.getInputStream()));
 			String line;
 			while ((line = reader.readLine()) != null) {
-				response += line;
+				response.append(line);
 			}
 			reader.close();
 			httpConnection.disconnect();
 		} else {
 			throw new IOException("Server returned non-OK status: " + status);
 		}
-		return response;
+		return response.toString();
 	}
 }

@@ -61,7 +61,6 @@
     <string name="close">"itxi"</string>
     <string name="download_error">"Errorea erronkak bilatzean"</string>
     <string name="upload_error">"Errorea erantzunak igotzean"</string>
-    <string name="cannot_find_bbox">"Ezin da hemen bilatu, Urrundu zooma gehiago"</string>
     <string name="download_area_too_big">"Hurbildu zooma gehiago"</string>
     <string name="confirmation_cancel_prev_download_title">"Utzi abian dagoen bilaketa eta bilatu hemen ordez?"</string>
     <string name="notification_downloading">"Erronkak bilatzen…"</string>
@@ -104,8 +103,6 @@
     <string name="quest_openingHours_comment_description">"Izan laburra, ahal dela karteleko esaldia erabili. Adib. \"zita eskatu behar da\". errotulurik ez egoteak ez du esan nahi ordutegi erregularrik ez dutenik."</string>
     <string name="quest_buildingLevels_title">"Zenbat pisu ditu eraikin honek?"</string>
     <string name="quest_buildingLevels_title_buildingPart">"Zenbat pisu ditu eraikinaren parte honek?"</string>
-    <string name="quest_buildingLevels_levelsLabel">"pisuak guztira"</string>
-    <string name="quest_buildingLevels_roofLevelsLabel">"hauetatik zenbat teilatupean"</string>
     <string name="quest_roofShape_title">"Zein da eraikin honen oinarrizko forma"</string>
     <string name="quest_roofShape_select_one">"hautatu bat:"</string>
     <string name="quest_roofShape_show_more">"Erakutsi gehiago..."</string>
@@ -195,7 +192,6 @@ Sartzen duzun informazioa zuzenean OpenStreetMap proiektura gehitzen da zure ize
     <string name="quest_name_answer_noName">"Ez du izenik"</string>
     <string name="quest_name_answer_noName_confirmation_title">"Izenik ez, benetan?"</string>
     <string name="quest_name_noName_confirmation_positive">"Bai, izenik ez"</string>
-    <string name="quest_buildingLevels_negativeBuildingLevels">"Ene! Teilatupean guztira dauden baino pisu gehiago jarri dituzu!"</string>
     <string name="quest_openingHours_add_times">"Gehitu ordutegia"</string>
     <string name="crash_message">"Errore-txostena bidali nahi diozu garatzaileari?"</string>
     <string name="crash_title">"StreetComplete aurrekoan kraskatu da!"</string>
@@ -245,6 +241,8 @@ Sartzen duzun informazioa zuzenean OpenStreetMap proiektura gehitzen da zure ize
     <string name="quest_busStopShelter_name_title">"\"%s\" autobus geltokiak aterpea du?"</string>
     <string name="quest_toiletsFee_title">"Komun hau ordainpekoa da?"</string>
     <string name="quest_tactilePaving_title_bus">"Autobus geltoki honek ukipen-zoladura du?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"Zebrabide honek ukipen-zoladura du?"</string>
     <string name="quest_source_dialog_title">"Ziur hor bertan egiaztatu duzula?"</string>
     <string name="quest_tactilePaving_title_name_bus">"\"%s\" autobus geltokiak ukipen-zoladura du?"</string>
@@ -363,8 +361,12 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="produce_vanilla">"Bainila"</string>
     <string name="produce_walnuts">"Intxaurrak"</string>
     <string name="produce_sisal">"SIsala"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_way_lit_title">"Bidearen atal hau argituta dago?"</string>
     <string name="quest_way_lit_named_title">"\"%s\" argituta dago hemen?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_way_lit_road_title">"Kalearen atal hau argituta dago?"</string>
     <string name="quest_way_lit_named_road_title">"\"%s\" kalea argituta dago hemen?"</string>
     <string name="quest_way_lit_automatic">"Mugimendu-antzematea darabil"</string>

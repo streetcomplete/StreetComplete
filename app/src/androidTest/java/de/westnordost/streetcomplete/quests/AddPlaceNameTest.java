@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.quests.place_name.AddPlaceNameForm;
 
 public class AddPlaceNameTest extends AOsmElementQuestTypeTest
 {
-	@Override public void setUp()
+	@Override public void setUp() throws Exception
 	{
 		super.setUp();
 		tags.put("shop","kiosk");

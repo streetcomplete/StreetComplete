@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.quests;
 
-import android.app.Activity;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.content.Context;
@@ -15,7 +14,6 @@ import android.support.annotation.UiThread;
 import android.support.design.widget.BottomSheetBehavior;
 import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -58,7 +56,6 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 	@Inject CountryInfos countryInfos;
 	@Inject QuestTypeRegistry questTypeRegistry;
 
-	private TextView title;
 	private ViewGroup content;
 
 	private LinearLayout bottomSheet;
@@ -101,38 +98,21 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 		View view = inflater.inflate(R.layout.fragment_quest_answer, container, false);
 
 		bottomSheet = view.findViewById(R.id.bottomSheet);
-		bottomSheet.addOnLayoutChangeListener(new View.OnLayoutChangeListener()
+		bottomSheet.addOnLayoutChangeListener((v, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom) ->
 		{
-			@Override
-			public void onLayoutChange(View v, int left, int top, int right, int bottom,
-									   int oldLeft, int oldTop, int oldRight, int oldBottom)
-			{
-				// not immediately because this is called during layout change (view.getTop() == 0)
-				final Handler handler = new Handler();
-				handler.post(new Runnable()
-				{
-					@Override public void run()
-					{
-						updateCloseButtonVisibility();
-					}
-				});
-			}
+			// not immediately because this is called during layout change (view.getTop() == 0)
+			final Handler handler = new Handler();
+			handler.post(this::updateCloseButtonVisibility);
 		});
 
-		title = view.findViewById(R.id.title);
+		TextView title = view.findViewById(R.id.title);
 		title.setText(getResources().getString(getQuestTitleResId(), getElementName()));
 
 		buttonPanel = view.findViewById(R.id.buttonPanel);
 		buttonOtherAnswers = buttonPanel.findViewById(R.id.buttonOtherAnswers);
 
 		buttonClose = view.findViewById(R.id.close_btn);
-		buttonClose.setOnClickListener(new View.OnClickListener()
-		{
-			@Override public void onClick(View v)
-			{
-				getActivity().onBackPressed();
-			}
-		});
+		buttonClose.setOnClickListener(v -> getActivity().onBackPressed());
 
 		BottomSheetBehavior.from(bottomSheet).setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback()
 		{
@@ -146,13 +126,7 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 
 		if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) BottomSheetBehavior.from(bottomSheet).setState(BottomSheetBehavior.STATE_EXPANDED);
 
-		addOtherAnswer(R.string.quest_generic_answer_notApplicable, new Runnable()
-		{
-			@Override public void run()
-			{
-				onClickCantSay();
-			}
-		});
+		addOtherAnswer(R.string.quest_generic_answer_notApplicable, this::onClickCantSay);
 
 		content = view.findViewById(R.id.content);
 
@@ -166,39 +140,27 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 		if(otherAnswers.size() == 1)
 		{
 			buttonOtherAnswers.setText(otherAnswers.get(0).titleResourceId);
-			buttonOtherAnswers.setOnClickListener(new View.OnClickListener()
-			{
-				@Override public void onClick(View v)
-				{
-					otherAnswers.get(0).action.run();
-				}
-			});
+			buttonOtherAnswers.setOnClickListener(v -> otherAnswers.get(0).action.run());
 		}
 		else
 		{
 			buttonOtherAnswers.setText(R.string.quest_generic_otherAnswers);
-			buttonOtherAnswers.setOnClickListener(new View.OnClickListener()
+			buttonOtherAnswers.setOnClickListener(v ->
 			{
-				@Override public void onClick(View v)
+				PopupMenu popup = new PopupMenu(getActivity(), buttonOtherAnswers);
+				for(int i = 0; i<otherAnswers.size(); ++i)
 				{
-					PopupMenu popup = new PopupMenu(getActivity(), buttonOtherAnswers);
-					for(int i = 0; i<otherAnswers.size(); ++i)
-					{
-						OtherAnswer otherAnswer = otherAnswers.get(i);
-						int order = otherAnswers.size()-i;
-						popup.getMenu().add(Menu.NONE, i, order, otherAnswer.titleResourceId);
-					}
-					popup.show();
-
-					popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener()
-					{
-						@Override public boolean onMenuItemClick(MenuItem item)
-						{
-							otherAnswers.get(item.getItemId()).action.run();
-							return true;
-						}
-					});
+					OtherAnswer otherAnswer = otherAnswers.get(i);
+					int order = otherAnswers.size()-i;
+					popup.getMenu().add(Menu.NONE, i, order, otherAnswer.titleResourceId);
 				}
+				popup.show();
+
+				popup.setOnMenuItemClickListener(item ->
+				{
+					otherAnswers.get(item.getItemId()).action.run();
+					return true;
+				});
 			});
 		}
 
@@ -226,12 +188,6 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 	{
 		super.onAttach(ctx);
 		questAnswerComponent.onAttach((OsmQuestAnswerListener) ctx);
-	}
-
-	@Override public void onAttach(Activity activity)
-	{
-		super.onAttach(activity);
-		questAnswerComponent.onAttach((OsmQuestAnswerListener) activity);
 	}
 
 	private String getElementName()
@@ -268,14 +224,10 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 		}
 		else
 		{
-			DialogInterface.OnClickListener onYes = new DialogInterface.OnClickListener()
+			DialogInterface.OnClickListener onYes = (dialog, which) ->
 			{
-				@Override
-				public void onClick(DialogInterface dialog, int which)
-				{
-					onDiscard();
-					confirmed.run();
-				}
+				onDiscard();
+				confirmed.run();
 			};
 			new AlertDialogBuilder(getActivity())
 					.setMessage(R.string.confirmation_discard_title)
@@ -370,7 +322,7 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 		// default empty implementation
 	}
 
-	private class OtherAnswer
+	private static class OtherAnswer
 	{
 		int titleResourceId;
 		Runnable action;

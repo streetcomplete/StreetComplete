@@ -61,7 +61,6 @@
     <string name="close">"stäng"</string>
     <string name="download_error">"Fel vid scanning för uppdrag"</string>
     <string name="upload_error">"Fel vid uppladdning svar"</string>
-    <string name="cannot_find_bbox">"Det går inte att skanna här. Försök att zooma in ytterligare"</string>
     <string name="download_area_too_big">"Zooma in ytterligare"</string>
     <string name="confirmation_cancel_prev_download_title">"Avbryta den aktuella sökningen och skanna här i stället?"</string>
     <string name="notification_downloading">"Söker efter uppdrag…"</string>
@@ -107,8 +106,6 @@
     <string name="quest_openingHours_comment_description">"Var kortfattad, helst använda formuleringen från skylten. Ex. \"enligt överenskommelse\". Avsaknaden av en skylt betyder inte nödvändigtvis att det inte finns några ordinarie öppettider."</string>
     <string name="quest_buildingLevels_title">"Hur många våningar har den här byggnaden?"</string>
     <string name="quest_buildingLevels_title_buildingPart">"Hur många våningar har denna byggnad del?"</string>
-    <string name="quest_buildingLevels_levelsLabel">"totalt antal våningar"</string>
-    <string name="quest_buildingLevels_roofLevelsLabel">"varav våningar i taket"</string>
     <string name="quest_roofShape_title">"Vilken form har byggnadens tak?"</string>
     <string name="quest_roofShape_select_one">"Välj en:"</string>
     <string name="quest_roofShape_show_more">"Visa mer…"</string>
@@ -214,7 +211,6 @@ Den information du anger sedan direkt till den OpenStreetMap i ditt namn, utan a
     <string name="quest_name_answer_noName">"Den har inget namn"</string>
     <string name="quest_name_answer_noName_confirmation_title">"Verkligen inget namn?"</string>
     <string name="quest_name_noName_confirmation_positive">"Ja, inget namn"</string>
-    <string name="quest_buildingLevels_negativeBuildingLevels">"Hoppsan! Du angav fler tak nivåer än nivåer totalt!"</string>
     <string name="quest_openingHours_add_times">"Lägg till öppettider"</string>
     <string name="crash_message">"Vill du skicka felrapporten till utvecklaren?"</string>
     <string name="crash_title">"Åh nej, StreetComplete kraschade förra gången!"</string>
@@ -264,6 +260,8 @@ Den information du anger sedan direkt till den OpenStreetMap i ditt namn, utan a
     <string name="quest_busStopShelter_name_title">"Har hållplatsen \"%s\" en busskur?"</string>
     <string name="quest_toiletsFee_title">"Är de här toaletterna avgiftsbelagda?"</string>
     <string name="quest_tactilePaving_title_bus">"Har busshållplatsen taktil beläggning?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"Har övergångsstället taktil beläggning?"</string>
     <string name="quest_source_dialog_title">"Har du kontrollerat detta på plats?"</string>
     <string name="quest_tactilePaving_title_name_bus">"Har busshållplatsen %s taktil beläggning?"</string>
@@ -380,8 +378,12 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="produce_vanilla">"Vanilj"</string>
     <string name="produce_walnuts">"Valnötter"</string>
     <string name="produce_sisal">"Sisal"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_way_lit_title">"Är den här delen av vägen belyst?"</string>
     <string name="quest_way_lit_named_title">"Är \"%s\" belyst här?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_way_lit_road_title">"Är den här delen av vägen belyst?"</string>
     <string name="quest_way_lit_named_road_title">"Är %s belyst här?"</string>
     <string name="quest_way_lit_automatic">"Den använder rörelsedetektion"</string>

@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.quests.bike_parking_capacity.AddBikeParking
 
 public class AddBikeParkingCapacityTest extends AOsmElementQuestTypeTest
 {
-	@Override public void setUp()
+	@Override public void setUp() throws Exception
 	{
 		super.setUp();
 		tags.put("amenity","bicycle_parking");

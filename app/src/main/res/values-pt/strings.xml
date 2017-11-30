@@ -35,7 +35,7 @@
     <string name="quest_streetName_answer_noName_confirmation_description">"Por vezes, a sinalética de nomes de rua está apenas disponível numa das suas extremidades. Por vezes, nas ruas de maior extensão pode não existir sinalética em todas as suas interseções Normalmente, qualquer rua com casas, possui nome."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Se o nome puder ser pronunciado sem abreviatura, então deve ser expandido. As abreviaturas mais comuns são expandidas automaticamente, mas nem todas."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Sem abreviatura"</string>
-    <string name="quest_openingHours_name_title">"Qual o horário de funcionamento de $s?"</string>
+    <string name="quest_openingHours_name_title">"Qual o horário de funcionamento de %s?"</string>
     <string name="quest_openingHours_start_time">"Hora de abertura"</string>
     <string name="quest_openingHours_end_time">"Hora de fecho"</string>
     <string name="quest_openingHours_add_months">"Adicionar meses"</string>
@@ -426,4 +426,21 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="reorder_quest_priority_hint">"Pressione de forma longa para mover um desafio e reordenar a sua prioridade para download e aparência no mapa"</string>
     <string name="undo_confirm_positive">"Desfazer"</string>
     <string name="undo_confirm_negative">"Cancelar"</string>
+    <string name="quest_dietType_vegetarian_name_title">"%s possui refeições vegetarianas na ementa?"</string>
+    <string name="quest_dietType_vegan_name_title">"%s possui refeições vegan na ementa?"</string>
+    <string name="quest_hasFeature_only">"Apenas"</string>
+    <string name="quest_dietType_explanation_vegan">"As refeições vegan não contêm qualquer tipo de produto animal ( não possuem: carne, leite ou ovos...)"</string>
+    <string name="quest_dietType_explanation_vegetarian">"As refeições vegetarianas não contêm carne."</string>
+    <string name="quest_dietType_explanation">"Apenas responde que sim, se o local possui opções viáveis para este tipo de dieta, ignore locais recentes, etc."</string>
+    <string name="quest_carWashType_title">"Que tipo de lavagem de carro é esta?"</string>
+    <string name="quest_carWashType_automated">"Automática"</string>
+    <string name="quest_carWashType_selfService">"Self service"</string>
+    <string name="quest_carWashType_service">"Há funcionários para lavar o carro"</string>
+    <string name="enable_quest_confirmation_title">"Ativar este tipo de desafio?"</string>
+    <string name="default_disabled_msg_go_inside">"Este tipo de desafio está desativado por predefinição, dado que provavelmente tem de estar no local para poder responder a este tipo de desafio."</string>
+    <string name="quest_housenumber_conscription_number">"Número matricial"</string>
+    <string name="quest_housenumber_street_number_optional">"Número de porta para além do matricial"</string>
+    <string name="quest_housenumber_conscription_number_required">"Um número matricial deve ser especificado"</string>
+    <string name="quest_cycleway_answer_contraflow_cycleway">"Também possui ciclovia aos lados"</string>
+    <string name="need_specify_both_sides">"Tem de especificar ambos os lados"</string>
 </resources>

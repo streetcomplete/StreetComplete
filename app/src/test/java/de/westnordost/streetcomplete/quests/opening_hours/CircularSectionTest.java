@@ -72,7 +72,7 @@ public class CircularSectionTest extends TestCase
 	public void testEquals()
 	{
 		CircularSection cs = new CircularSection(0,10);
-		assertFalse(cs.equals(null));
+		assertNotNull(cs);
 		assertEquals(cs, cs);
 		assertFalse(cs.equals(new Object()));
 		assertFalse(cs.equals(new CircularSection(10,0)));

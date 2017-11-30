@@ -20,11 +20,11 @@ public class NodeWayMap<T>
 
 			if (!wayEndpoints.containsKey(firstNode))
 			{
-				wayEndpoints.put(firstNode, new ArrayList<List<T>>());
+				wayEndpoints.put(firstNode, new ArrayList<>());
 			}
 			if (!wayEndpoints.containsKey(lastNode))
 			{
-				wayEndpoints.put(lastNode, new ArrayList<List<T>>());
+				wayEndpoints.put(lastNode, new ArrayList<>());
 			}
 			wayEndpoints.get(firstNode).add(way);
 			wayEndpoints.get(lastNode).add(way);

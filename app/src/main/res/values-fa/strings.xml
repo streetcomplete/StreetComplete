@@ -68,7 +68,6 @@
     <string name="close">"بستن"</string>
     <string name="download_error">"خطا هنگام جستجوی جستارها"</string>
     <string name="upload_error">"خطا هنگام بارگیری پاسخ‌ها"</string>
-    <string name="cannot_find_bbox">"نمی توانید اینجا را بررسی کنید. دوباره با بزرگنمایی بیشتر سعی کنید"</string>
     <string name="download_area_too_big">"لطفا بیشتر بزرگنمایی کنید"</string>
     <string name="confirmation_cancel_prev_download_title">"به جای آن ، جستجوی فعلی را لغو کنید و اینجا را جستجو کنید"</string>
     <string name="notification_downloading">"جستجو برای جستارها..."</string>
@@ -111,8 +110,6 @@
     <string name="quest_openingHours_comment_description">"به صورت مختصر باشد، بهتر است از کلمات روی تابلو استفاده کنید. مانند \"با تعیین وقت قبلی\". فقدان علایم لزوماً به این معنی نیست که ساعات کاری نامنظم می باشد."</string>
     <string name="quest_buildingLevels_title">"این ساختمان چند طبقه دارد؟"</string>
     <string name="quest_buildingLevels_title_buildingPart">"این قسمت از ساختمان چند طبقه دارد؟"</string>
-    <string name="quest_buildingLevels_levelsLabel">"طبقات کل"</string>
-    <string name="quest_buildingLevels_roofLevelsLabel">"از اینجا، طبقاتِ پشت بام"</string>
     <string name="quest_roofShape_title">"شکل کلی سقف این ساختمان چگونه است؟"</string>
     <string name="quest_roofShape_select_one">"یکی را انتخاب کنید:"</string>
     <string name="quest_roofShape_show_more">"نمایش بیشتر..."</string>
@@ -203,7 +200,6 @@
     <string name="quest_name_answer_noName">"بدون نام"</string>
     <string name="quest_name_answer_noName_confirmation_title">"واقعا نامی ندارد؟"</string>
     <string name="quest_name_noName_confirmation_positive">"بله ، بدون نام است"</string>
-    <string name="quest_buildingLevels_negativeBuildingLevels">"وای! شما تعداد طبقات دارای پشت بام بیشتری را نسبت به کل طبقات تعیین کرده‌اید!"</string>
     <string name="quest_openingHours_add_times">"افزودن زمان ساعات کار"</string>
     <string name="crash_message">"لطفا گزارش خطا را به سازنده ارسال کنید؟"</string>
     <string name="crash_title">"برنامه در آخرین تلاش دچار خطا شد!"</string>
@@ -253,6 +249,8 @@
     <string name="quest_busStopShelter_name_title">"آیا ایستگاه اتوبوس \"%s\" سایبان دارد؟"</string>
     <string name="quest_toiletsFee_title">"آیا این سرویس بهداشتی غیر رایگان است؟"</string>
     <string name="quest_tactilePaving_title_bus">"آیا این ایستگاه اتوبوس دارای سنگفرش برجسته نابینایان است؟"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"آیا این پیاده رو دارای سنگفرش برجسته نابینایان است؟"</string>
     <string name="quest_source_dialog_title">"آیا مطمئن هستید که این سایت را بررسی کرده اید؟"</string>
     <string name="quest_tactilePaving_title_name_bus">"آیا ایستگاه اتوبوس \"%s\" دارای سنگفرش برجسته نابینایان است؟"</string>
@@ -298,8 +296,8 @@
     <string name="overground_recycling_container">"سطل بزرگ فلزی"</string>
     <string name="underground_recycling_container">"مخزن زیر زمینی"</string>
     <string name="quest_generic_error_a_field_empty">"شما یک کادر را خالی گذاشتید"</string>
-    <string name="quest_streetName_menuItem_language_simple">"%1$s - %2$s"</string>
-    <string name="quest_streetName_menuItem_language_native">"%1$s - %2$s (%3$s)"</string>
+    <string name="quest_streetName_menuItem_language_simple">"%2$s - %1$s"</string>
+    <string name="quest_streetName_menuItem_language_native">"(%3$s) %2$s - %1$s"</string>
     <string name="quest_streetName_answer_cantType">"مشخصات روی تابلو را نمی توانید بنویسید"</string>
     <string name="quest_streetName_cantType_title">"خطای صفحه کلید"</string>
     <string name="quest_streetName_cantType_open_settings">"بازکردن تنظیمات"</string>
@@ -370,8 +368,12 @@
     <string name="produce_vanilla">"وانیل"</string>
     <string name="produce_walnuts">"گردو"</string>
     <string name="produce_sisal">"سیسال"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_way_lit_title">"آیا این بخش از راه روشنایی دارد؟"</string>
     <string name="quest_way_lit_named_title">"آیا \"%s\" روشنایی دارد؟"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_way_lit_road_title">"آیا این بخش مسیر روشنایی دارد؟"</string>
     <string name="quest_way_lit_named_road_title">"آیا در مسیر \"%s\" چراغ روشنایی وجود دارد؟"</string>
     <string name="quest_way_lit_automatic">"از ردیاب حرکت برای روشنایی استفاده می کند"</string>
@@ -410,4 +412,46 @@
     <string name="quest_buildingLevels_answer_multipleLevels">"متفاوت در هر بخش از ساختمان"</string>
     <string name="quest_buildingLevels_answer_description">"در این بخش ، ارتفاع این قسمت از ساختمان را وارد نمایید"</string>
     <string name="unglue_hint">"یک نما را برای این مکان انتخاب کنید"</string>
+    <string name="pref_title_not_authorized_summary2">"برای ورود به سامانه با مرورگر خود وارد شوید."</string>
+    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"آیا مسیر پیاده روی این راه به صورت فیزیکی مجزا شده است (یعنی از طریق یک مانع)؟ محدودیت سرعت پیشفرض بستگی به این دارد که آیا این مورد است یا خیر"</string>
+    <string name="about_category_feedback">"بازخورد"</string>
+    <string name="quest_leave_new_note_photo">"پیوست کردن تصویر"</string>
+    <string name="quest_leave_new_note_photo_delete_title">"آیا می خواهید این تصویر را حذف کنید؟"</string>
+    <string name="privacy_html_image_upload">"&lt;p&gt;تصاویری که به پیوست یادداشت ها بارگذاری کرده اید&lt;a href=\"https://lut.im\"&gt;lut.im&lt;/a&gt;, در سامانه ناشناس و بدون ردیابی می باشد.&lt;/p&gt;"</string>
+    <string name="quest_cycleway_value_track">"مسیر دوچرخه سواری"</string>
+    <string name="quest_cycleway_value_lane">"خط دوچرخه سواری"</string>
+    <string name="quest_cycleway_value_none">"هیچیک"</string>
+    <string name="quest_cycleway_value_shared">"خط دوچرخه سواری با سایر خطوط تردد خودرو مشترک است"</string>
+    <string name="quest_cycleway_value_bus_lane">"با خط اتوبوس مشترک است"</string>
+    <string name="quest_cycleway_value_sidewalk">"با پیاده رو مشترک است."</string>
+    <string name="quest_leave_new_note_create_image_error">"ناتوان در ساخت تصویر"</string>
+    <string name="quest_cycleway_value_lane_dual">"خط دوچرخه سواری، دوطرفه"</string>
+    <string name="quest_cycleway_value_track_dual">"مسیر دوچرخه سواری، دوطرفه"</string>
+    <string name="quest_cycleway_value_sidewalk_allowed">"هیچیک، اما دوچرخه سواری در پیاده رو مجاز می باشد"</string>
+    <string name="pref_category_advanced">"پیشرفته"</string>
+    <string name="pref_title_quests">"انتخاب جستار"</string>
+    <string name="quest_enabled">"فعالسازی"</string>
+    <string name="quest_type">"نوع جستار"</string>
+    <string name="action_reset">"بازنشانی"</string>
+    <string name="reorder_quest_priority_hint">"لمس ممتد و حرکت برای تغییر منطقه جستارها و نیز بارگیری و نمایش آنها روی نقشه."</string>
+    <string name="undo_confirm_positive">"برگشت"</string>
+    <string name="undo_confirm_negative">"لغو"</string>
+    <string name="quest_dietType_vegetarian_name_title">"آیا در %s خوراک گیاهی در منو وجود دارد؟"</string>
+    <string name="quest_dietType_vegan_name_title">"آیا در %s وعده های خوراکی گیاه خواری وگان در منو وجود دارد؟"</string>
+    <string name="quest_hasFeature_only">"فقط"</string>
+    <string name="quest_dietType_explanation_vegan">"وعده غذایی وگان بدون اجزاء حیوانی (بدون گوشت، بدون محصولات شیر، بدون تخم مرغ، ...)."</string>
+    <string name="quest_dietType_explanation_vegetarian">"خوراک گیاهی بدون گوشت"</string>
+    <string name="quest_dietType_explanation">"اگر فقط تایید کنید بدین معنی است که در این محل برای هر ذائقه خوراک سرو می شود ، در صورت عدم تایید ادامه دهید"</string>
+    <string name="quest_carWashType_title">"روش نظافت خودرو به چگونه است؟"</string>
+    <string name="quest_carWashType_automated">"خودکار"</string>
+    <string name="quest_carWashType_selfService">"نظافت خودرو با دستگاه"</string>
+    <string name="quest_carWashType_service">"نظافت خودرو توسط کارگر"</string>
+    <string name="enable_quest_confirmation_title">"این نوع جستار را فعال کنید؟"</string>
+    <string name="default_disabled_msg_go_inside">"این نوع جستار به طور پیش فرض غیر فعال شده است زیرا شما ابتدا باید وارد این مکان شوید تا بتوانید به این جستار پاسخ دهید."</string>
+    <string name="quest_housenumber_conscription_number">"شماره اداری (پلاک خانه)"</string>
+    <string name="quest_housenumber_street_number_optional">"شماره جهت یابی (اختیاری)"</string>
+    <string name="quest_housenumber_conscription_number_required">"شماره اداری (پلاک خانه) باید مشخص شود"</string>
+    <string name="quest_cycleway_answer_contraflow_cycleway">"مسیر رفت و برگشت دوچرخه سواری مجزا است"</string>
+    <string name="need_specify_both_sides">"شما می بایست هر دو طرف مسیر را مشخص کنید
+"</string>
 </resources>

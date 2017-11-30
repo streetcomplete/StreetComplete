@@ -2,13 +2,9 @@ package de.westnordost.streetcomplete.data.osmnotes;
 
 import junit.framework.TestCase;
 
-import org.mockito.invocation.InvocationOnMock;
-import org.mockito.stubbing.Answer;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
-import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import de.westnordost.osmapi.common.Handler;
@@ -39,8 +35,9 @@ public class CreateNoteUploadTest extends TestCase
 
 	private CreateNoteUpload createNoteUpload;
 
-	@Override public void setUp()
+	@Override public void setUp() throws Exception
 	{
+		super.setUp();
 		mapDataDao = mock(MapDataDao.class);
 		createNoteDb = mock(CreateNoteDao.class);
 		notesDao = mock(NotesDao.class);
@@ -55,27 +52,17 @@ public class CreateNoteUploadTest extends TestCase
 
 	public void testCancel() throws InterruptedException
 	{
-		when(createNoteDb.getAll(any(BoundingBox.class))).thenAnswer(
-				new Answer<List<CreateNote>>()
+		when(createNoteDb.getAll(any(BoundingBox.class))).thenAnswer(invocation ->
 		{
-			@Override public List<CreateNote> answer(InvocationOnMock invocation) throws Throwable
-			{
-				Thread.sleep(1000); // take your time...
-				ArrayList<CreateNote> result = new ArrayList<>();
-				result.add(null);
-				return result;
-			}
+			Thread.sleep(1000); // take your time...
+			ArrayList<CreateNote> result = new ArrayList<>();
+			result.add(null);
+			return result;
 		});
 
 		final AtomicBoolean cancel = new AtomicBoolean(false);
 
-		Thread t = new Thread(new Runnable()
-		{
-			@Override public void run()
-			{
-				createNoteUpload.upload(cancel);
-			}
-		});
+		Thread t = new Thread(() -> createNoteUpload.upload(cancel));
 		t.start();
 
 		cancel.set(true);
@@ -258,14 +245,11 @@ public class CreateNoteUploadTest extends TestCase
 	private void setUpThereIsANoteFor(CreateNote createNote, final Note note)
 	{
 		when(mapDataDao.getWay(createNote.elementId)).thenReturn(mock(Way.class));
-		doAnswer(new Answer<Void>()
+		doAnswer(invocation ->
 		{
-			@Override public Void answer(InvocationOnMock invocation) throws Throwable
-			{
-				Handler<Note> handler = (Handler<Note>) invocation.getArguments()[1];
-				handler.handle(note);
-				return null;
-			}
+			Handler<Note> handler = (Handler<Note>) invocation.getArguments()[1];
+			handler.handle(note);
+			return null;
 		}).when(notesDao).getAll(any(BoundingBox.class), any(Handler.class), anyInt(), anyInt());
 	}
 

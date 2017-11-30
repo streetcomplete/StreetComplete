@@ -5,8 +5,8 @@ import junit.framework.TestCase;
 public class WeekdaysTest extends TestCase
 {
 	// hihi
-	private final boolean l = true;
-	private final boolean o = false;
+	private static final boolean l = true;
+	private static final boolean o = false;
 
 	public void testToString() {
 		assertEquals("Mo,Tu", new Weekdays(new boolean[]{l,l,o,o,o,o,o,o}).toString());

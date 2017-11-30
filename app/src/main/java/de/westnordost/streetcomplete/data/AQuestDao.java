@@ -26,17 +26,11 @@ public abstract class AQuestDao<T extends Quest>
 	public T get(long id)
 	{
 		SQLiteDatabase db = dbHelper.getReadableDatabase();
-		Cursor cursor = db.query(getMergedViewName(), null, getIdColumnName() + " = " + id,
-				null, null, null, null, "1");
-
-		try
+		String where = getIdColumnName() + " = " + id;
+		try (Cursor cursor = db.query(getMergedViewName(), null, where,	null, null, null, null, "1"))
 		{
-			if(!cursor.moveToFirst()) return null;
+			if (!cursor.moveToFirst()) return null;
 			return createObjectFrom(cursor);
-		}
-		finally
-		{
-			cursor.close();
 		}
 	}
 
@@ -46,13 +40,7 @@ public abstract class AQuestDao<T extends Quest>
 		addBBox(bbox, qb);
 		addQuestStatus(status, qb);
 
-		return getAllThings(getMergedViewName(), null, qb, new CreateFromCursor<T>()
-		{
-			@Override public T create(Cursor cursor)
-			{
-				return createObjectFrom(cursor);
-			}
-		});
+		return getAllThings(getMergedViewName(), null, qb, this::createObjectFrom);
 	}
 
 	public T getLastSolved()
@@ -63,16 +51,11 @@ public abstract class AQuestDao<T extends Quest>
 		String query = questStatus + " IN (?,?,?)";
 		String[] args = {QuestStatus.HIDDEN.name(), QuestStatus.ANSWERED.name(), QuestStatus.CLOSED.name()};
 		String orderBy = getLastChangedColumnName() + " DESC";
-		Cursor cursor = db.query(getMergedViewName(),null,query,args,null,null,orderBy,"1");
 
-		try
+		try (Cursor cursor = db.query(getMergedViewName(), null, query, args, null, null, orderBy, "1"))
 		{
-			if(!cursor.moveToFirst()) return null;
+			if (!cursor.moveToFirst()) return null;
 			return createObjectFrom(cursor);
-		}
-		finally
-		{
-			cursor.close();
 		}
 	}
 
@@ -84,17 +67,11 @@ public abstract class AQuestDao<T extends Quest>
 		addBBox(bbox, qb);
 		addQuestStatus(status, qb);
 
-		Cursor cursor = db.query(getMergedViewName(), new String[]{"COUNT(*)"},
-				qb.getWhere(), qb.getArgs(), null, null, null, null);
-
-		try
+		try (Cursor cursor = db.query(getMergedViewName(), new String[]{"COUNT(*)"},
+				qb.getWhere(), qb.getArgs(), null, null, null, null))
 		{
 			cursor.moveToFirst();
 			return cursor.getInt(0);
-		}
-		finally
-		{
-			cursor.close();
 		}
 	}
 
@@ -124,36 +101,28 @@ public abstract class AQuestDao<T extends Quest>
 	{
 		SQLiteDatabase db = dbHelper.getReadableDatabase();
 
-		Cursor cursor = db.query(tablename, cols, query.getWhere(), query.getArgs(),
-				null, null, null, null);
-
 		List<E> result = new ArrayList<>();
 
         List<Long> invalidIds = new ArrayList<>();
 
-		try
+		try (Cursor cursor = db.query(tablename, cols, query.getWhere(), query.getArgs(), null, null, null, null))
 		{
-			if(cursor.moveToFirst())
+			if (cursor.moveToFirst())
 			{
-				while(!cursor.isAfterLast())
+				while (!cursor.isAfterLast())
 				{
-                    try
+					try
 					{
-                        result.add(creator.create(cursor));
-                    }
-                    catch (Exception e)
-                    {
-                        Log.e(TAG,"Getting quest from db caused an exception",e);
-                        int idCol = cursor.getColumnIndex(getIdColumnName());
-                        invalidIds.add(cursor.getLong(idCol));
-                    }
+						result.add(creator.create(cursor));
+					} catch (Exception e)
+					{
+						Log.e(TAG, "Getting quest from db caused an exception", e);
+						int idCol = cursor.getColumnIndex(getIdColumnName());
+						invalidIds.add(cursor.getLong(idCol));
+					}
 					cursor.moveToNext();
 				}
 			}
-		}
-		finally
-		{
-			cursor.close();
 		}
 
 		if(!invalidIds.isEmpty())

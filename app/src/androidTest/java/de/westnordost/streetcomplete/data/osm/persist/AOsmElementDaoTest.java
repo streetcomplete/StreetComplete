@@ -28,14 +28,14 @@ public class AOsmElementDaoTest extends AndroidDbTestCase
 		super(TESTDB);
 	}
 
-	@Override public void setUp()
+	@Override public void setUp() throws Exception
 	{
 		super.setUp();
 		dbHelper = new TestDbHelper(getContext());
 		dao = new TestOsmElementDao(dbHelper);
 	}
 
-	@Override public void tearDown()
+	@Override public void tearDown() throws Exception
 	{
 		// first close, then call super (= delete database) to avoid warning
 		dbHelper.close();

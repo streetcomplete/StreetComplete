@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAcces
 
 public class AddWheelchairPublicTransportTest extends AOsmElementQuestTypeTest
 {
-	@Override public void setUp()
+	@Override public void setUp() throws Exception
 	{
 		super.setUp();
 		tags.put("highway","bus_stop");

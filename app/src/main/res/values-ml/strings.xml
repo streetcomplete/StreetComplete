@@ -10,7 +10,6 @@
     <string name="pref_category_communication">"ആശയവിനിമയം"</string>
     <string name="pref_category_display">"ഡിസ്പ്ലേ"</string>
     <string name="pref_title_authorization">"OSM ആക്സസ്സ് അംഗീകരിക്കുക"</string>
-    <string name="pref_title_authorized_summary">"നിങ്ങളുടെ അക്കൗണ്ടിലേക്ക് വിജയകരമായി അംഗീകാരം നൽകി"</string>
     <string name="pref_title_not_authorized_summary">"ഇതുവരെ അംഗീകരിച്ചിട്ടില്ല"</string>
     <string name="pref_tilecache_size_summary">"%d മെഗാബൈറ്റുകൾ"</string>
     <string name="pref_tilecache_size_message">"പുറം സ്റ്റോറേജിൽ റിസേർവ് ചെയ്തിരിക്കുന്ന മെഗാബിറ്റ് സ്പേസ്  സ്പെയ്സ് കാഷെ ടൈലുകളിലേക് "</string>
@@ -63,7 +62,6 @@
     <string name="close">"അടയ്ക്കുക"</string>
     <string name="download_error">"ക്വസ്റ്റുകൾക്കായി സ്കാൻ ചെയ്യുമ്പോൾ പിശകുണ്ടായി"</string>
     <string name="upload_error">"ഉത്തരങ്ങൾ അപ്ലോഡ് ചെയ്യുമ്പോൾ പിശകുണ്ടായി"</string>
-    <string name="cannot_find_bbox">"ഇവിടെ സ്കാൻ ചെയ്യാനാകില്ല. കൂടുതൽ സൂം ചെയ്യാൻ ശ്രമിക്കൂ"</string>
     <string name="download_area_too_big">"കൂടുതൽ സൂം ഇൻ ചെയ്യുക"</string>
     <string name="confirmation_cancel_prev_download_title">"നിലവിലുള്ള തിരയൽ റദ്ദാക്കി പകരം ഇവിടെ സ്കാൻ ചെയ്യുക"</string>
     <string name="notification_downloading">"അന്വേഷണങ്ങൾക്കായി സ്കാൻ ചെയ്യുന്നു"</string>
@@ -106,8 +104,6 @@
     <string name="quest_openingHours_comment_description">"ചുരുക്കമായിരിക്കുക, ചിഹ്നങ്ങളിൽ നിന്ന് വാക്കുകളെ ഉപയോഗിക്കുക. അതായത് \"അപ്പോയ്ന്റ്മെന്റ് വഴി\". എന്ന ഒരു അടയാളം ഇല്ലെന്നത് തുറന്നിരിക്കുന്ന സമയമില്ലെന്ന് അർത്ഥമാക്കുന്നില്ല."</string>
     <string name="quest_buildingLevels_title">"ഈ കെട്ടിടത്തിന് എത്ര നിലകൾ ഉണ്ട് ?"</string>
     <string name="quest_buildingLevels_title_buildingPart">"ഈ കെട്ടിട ഭാഗത്തിന് എത്ര നില ഉണ്ട്?"</string>
-    <string name="quest_buildingLevels_levelsLabel">"മൊത്തം ലെവലുകൾ"</string>
-    <string name="quest_buildingLevels_roofLevelsLabel">"അതിൽ, മേൽക്കൂരയുടെ ലെവലുകൾ"</string>
     <string name="quest_roofShape_title">"ഈ കെട്ടിടത്തിന്റെ മേൽക്കൂരയുടെ  ആകൃതി എന്താണ് ?"</string>
     <string name="quest_roofShape_select_one">"ഒന്ന് തിരഞ്ഞെടുക്കുക:"</string>
     <string name="quest_roofShape_show_more">"കൂടുതൽ കാണിക്കുക…"</string>
@@ -167,7 +163,6 @@
     <string name="quest_name_answer_noName">"ഇതിനു പേര് ഇല്ല"</string>
     <string name="quest_name_answer_noName_confirmation_title">"പേര് ഇല്ലേ?"</string>
     <string name="quest_name_noName_confirmation_positive">"അതെ, പേര് ഇല്ല"</string>
-    <string name="quest_buildingLevels_negativeBuildingLevels">"നിങ്ങൾ ആകെ നിലയെക്കാൾ കൂടുതലായ സംഘ്യയാണ് കൊടുത്തത്!"</string>
     <string name="quest_openingHours_add_times">"തുറക്കുന്ന സമയം ചേർക്കുക"</string>
     <string name="crash_message">"പിശക് റിപ്പോർട്ട് ഡവലപ്പർക്ക് അയയ്ക്കാമോ?"</string>
     <string name="crash_title">" StreetComplete കഴിഞ്ഞ തവണ തകർന്നു!"</string>

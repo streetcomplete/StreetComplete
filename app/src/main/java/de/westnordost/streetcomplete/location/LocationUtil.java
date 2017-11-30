@@ -51,7 +51,7 @@ public class LocationUtil
 	}
 
 	// because LocationManager.MODE_CHANGED is not defined before KitKat
-	private static String MODE_CHANGED = "android.location.MODE_CHANGED";
+	private static final String MODE_CHANGED = "android.location.MODE_CHANGED";
 
 	private static boolean isNewLocationApi()
 	{

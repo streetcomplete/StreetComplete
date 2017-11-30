@@ -5,8 +5,6 @@ import android.content.res.AssetManager;
 import com.vividsolutions.jts.geom.GeometryCollection;
 
 import java.io.InputStream;
-import java.util.concurrent.Callable;
-import java.util.concurrent.Future;
 import java.util.concurrent.FutureTask;
 
 import javax.inject.Singleton;
@@ -32,14 +30,11 @@ public class MetadataModule
 	@Provides @Singleton public static FutureTask<CountryBoundaries> countryBoundariesFuture(
 			final AssetManager assetManager, final GeoJsonReader geoJsonReader)
 	{
-		return new FutureTask<>(new Callable<CountryBoundaries>()
+		return new FutureTask<>(() ->
 		{
-			@Override public CountryBoundaries call() throws Exception
-			{
-				InputStream is = assetManager.open("countryBoundaries.json");
-				return new CountryBoundaries(
-						(GeometryCollection) geoJsonReader.read(StreamUtils.readToString(is)));
-			}
+			InputStream is = assetManager.open("countryBoundaries.json");
+			return new CountryBoundaries(
+					(GeometryCollection) geoJsonReader.read(StreamUtils.readToString(is)));
 		});
 	}
 }

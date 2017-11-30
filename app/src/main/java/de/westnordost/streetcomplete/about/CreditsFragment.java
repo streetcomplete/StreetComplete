@@ -17,7 +17,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
@@ -94,14 +93,7 @@ public class CreditsFragment extends Fragment
 			{
 				result.add((Map.Entry<String, String>) e);
 			}
-			Collections.sort(result, new Comparator<Map.Entry<String, String>>()
-			{
-				@Override
-				public int compare(Map.Entry<String, String> o1, Map.Entry<String, String> o2)
-				{
-					return o1.getKey().compareTo(o2.getKey());
-				}
-			});
+			Collections.sort(result, (o1, o2) -> o1.getKey().compareTo(o2.getKey()));
 			return result;
 		} catch (YamlException e)
 		{

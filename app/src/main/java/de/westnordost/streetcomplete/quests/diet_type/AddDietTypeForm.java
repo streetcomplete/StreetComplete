@@ -37,27 +37,9 @@ public class AddDietTypeForm extends AbstractQuestAnswerFragment
 		View contentView = setContentView(R.layout.quest_diet_type_explanation);
 		View buttonPanel = setButtonsView(R.layout.quest_buttonpanel_yes_no_only);
 
-		buttonPanel.findViewById(R.id.buttonYes).setOnClickListener(new View.OnClickListener()
-		{
-			@Override public void onClick(View v)
-			{
-				onClickAnswer(YES);
-			}
-		});
-		buttonPanel.findViewById(R.id.buttonNo).setOnClickListener(new View.OnClickListener()
-		{
-			@Override public void onClick(View v)
-			{
-				onClickAnswer(NO);
-			}
-		});
-		buttonPanel.findViewById(R.id.buttonOnly).setOnClickListener(new View.OnClickListener()
-		{
-			@Override public void onClick(View v)
-			{
-				onClickAnswer(ONLY);
-			}
-		});
+		buttonPanel.findViewById(R.id.buttonYes).setOnClickListener(v -> onClickAnswer(YES));
+		buttonPanel.findViewById(R.id.buttonNo).setOnClickListener(v -> onClickAnswer(NO));
+		buttonPanel.findViewById(R.id.buttonOnly).setOnClickListener(v -> onClickAnswer(ONLY));
 
 		TextView description = contentView.findViewById(R.id.dietType_description);
 		int resId = getArguments().getInt(ARG_DIET);

@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
-import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -69,72 +68,54 @@ public class MapControlsFragment extends Fragment
 		View view = inflater.inflate(R.layout.fragment_map_controls, container, false);
 		compassNeedle = view.findViewById(R.id.compassNeedle);
 
-		view.findViewById(R.id.compass).setOnClickListener(new View.OnClickListener()
+		view.findViewById(R.id.compass).setOnClickListener(v ->
 		{
-			@Override public void onClick(View v)
+			boolean isFollowing = mapFragment.isFollowingPosition();
+			boolean isCompassMode = mapFragment.isCompassMode();
+			boolean isNorthUp = mapFragment.getRotation() == 0;
+
+			if(!isNorthUp)
 			{
-				boolean isFollowing = mapFragment.isFollowingPosition();
-				boolean isCompassMode = mapFragment.isCompassMode();
-				boolean isNorthUp = mapFragment.getRotation() == 0;
+				mapFragment.setMapOrientation(0, 0);
+			}
 
-				if(!isNorthUp)
-				{
-					mapFragment.setMapOrientation(0, 0);
-				}
-
-				if(isFollowing)
-				{
-					setIsCompassMode(!isCompassMode);
-				}
+			if(isFollowing)
+			{
+				setIsCompassMode(!isCompassMode);
 			}
 		});
 
 		trackingButton = view.findViewById(R.id.gps_tracking);
-		trackingButton.setOnClickListener(new View.OnClickListener()
+		trackingButton.setOnClickListener(v ->
 		{
-			@Override public void onClick(View v)
+			LocationState state = trackingButton.getState();
+			if(state.isEnabled())
 			{
-				LocationState state = trackingButton.getState();
-				if(state.isEnabled())
+				if(!mapFragment.isFollowingPosition())
 				{
-					if(!mapFragment.isFollowingPosition())
-					{
-						setIsFollowingPosition(true);
-					}
-					else
-					{
-						setIsFollowingPosition(false);
-					}
+					setIsFollowingPosition(true);
 				}
 				else
 				{
-					String tag = LocationRequestFragment.class.getSimpleName();
-					LocationRequestFragment locationRequestFragment = (LocationRequestFragment)
-							getActivity().getSupportFragmentManager().findFragmentByTag(tag);
-					if(locationRequestFragment != null)
-					{
-						locationRequestFragment.startRequest();
-					}
+					setIsFollowingPosition(false);
+				}
+			}
+			else
+			{
+				String tag = LocationRequestFragment.class.getSimpleName();
+				LocationRequestFragment locationRequestFragment = (LocationRequestFragment)
+						getActivity().getSupportFragmentManager().findFragmentByTag(tag);
+				if(locationRequestFragment != null)
+				{
+					locationRequestFragment.startRequest();
 				}
 			}
 		});
 
 		ImageButton zoomInButton = view.findViewById(R.id.zoom_in);
-		zoomInButton.setOnClickListener(new View.OnClickListener()
-		{
-			@Override public void onClick(View v)
-			{
-				mapFragment.zoomIn();
-			}
-		});
+		zoomInButton.setOnClickListener(v -> mapFragment.zoomIn());
 		ImageButton zoomOutButton = view.findViewById(R.id.zoom_out);
-		zoomOutButton.setOnClickListener(new View.OnClickListener()
-		{
-			@Override public void onClick(View v)
-			{
-				mapFragment.zoomOut();
-			}
-		});
+		zoomOutButton.setOnClickListener(v -> mapFragment.zoomOut());
 
 		singleLocationRequest = new SingleLocationRequest(getActivity());
 
@@ -219,16 +200,12 @@ public class MapControlsFragment extends Fragment
 	{
 		trackingButton.setState(LocationState.SEARCHING);
 		mapFragment.startPositionTracking();
-		singleLocationRequest.startRequest(LocationRequest.PRIORITY_HIGH_ACCURACY,
-				new SingleLocationRequest.Callback()
-				{
-					@Override public void onLocation(Location location)
-					{
-						if(getActivity() == null) return;
-						trackingButton.setState(LocationState.UPDATING);
-						showUnglueHint();
-					}
-				});
+		singleLocationRequest.startRequest(LocationRequest.PRIORITY_HIGH_ACCURACY, location ->
+		{
+			if (getActivity() == null) return;
+			trackingButton.setState(LocationState.UPDATING);
+			showUnglueHint();
+		});
 	}
 
 	private void onLocationIsDisabled()

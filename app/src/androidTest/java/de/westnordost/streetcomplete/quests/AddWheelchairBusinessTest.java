@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAcces
 
 public class AddWheelchairBusinessTest extends AOsmElementQuestTypeTest
 {
-	@Override public void setUp()
+	@Override public void setUp() throws Exception
 	{
 		super.setUp();
 		tags.put("shop","yes");

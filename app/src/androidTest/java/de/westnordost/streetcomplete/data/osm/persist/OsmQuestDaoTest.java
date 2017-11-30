@@ -19,7 +19,6 @@ import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryChange;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryDelete;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryModify;
-import de.westnordost.streetcomplete.data.osm.persist.test.DisabledTestQuestType;
 import de.westnordost.streetcomplete.data.osm.persist.test.TestQuestType;
 import de.westnordost.streetcomplete.data.osm.persist.test.TestQuestType2;
 import de.westnordost.osmapi.map.data.Element;
@@ -30,7 +29,7 @@ public class OsmQuestDaoTest extends ApplicationDbTestCase
 	private ElementGeometryDao geometryDao;
 	private OsmQuestDao dao;
 
-	@Override public void setUp()
+	@Override public void setUp() throws Exception
 	{
 		super.setUp();
 		geometryDao = new ElementGeometryDao(dbHelper, serializer);

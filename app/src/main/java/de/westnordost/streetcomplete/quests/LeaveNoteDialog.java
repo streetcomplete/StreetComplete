@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.quests;
 
-import android.app.Activity;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.content.Context;
@@ -19,7 +18,6 @@ public class LeaveNoteDialog extends DialogFragment
 	public static final String ARG_QUEST_TITLE = "questTitle";
 
 	private EditText noteInput;
-	private Button buttonOk;
 
 	private QuestAnswerComponent questAnswerComponent;
 
@@ -38,23 +36,9 @@ public class LeaveNoteDialog extends DialogFragment
 		View view = inflater.inflate(R.layout.dialog_leave_note, container, false);
 
 		Button buttonCancel = view.findViewById(R.id.buttonCancel);
-		buttonCancel.setOnClickListener(new View.OnClickListener()
-		{
-			@Override
-			public void onClick(View v)
-			{
-				onClickCancel();
-			}
-		});
-		buttonOk = view.findViewById(R.id.buttonOk);
-		buttonOk.setOnClickListener(new View.OnClickListener()
-		{
-			@Override
-			public void onClick(View v)
-			{
-				onClickOk();
-			}
-		});
+		buttonCancel.setOnClickListener(v -> onClickCancel());
+		Button buttonOk = view.findViewById(R.id.buttonOk);
+		buttonOk.setOnClickListener(v -> onClickOk());
 
 		noteInput = view.findViewById(R.id.noteInput);
 
@@ -88,13 +72,6 @@ public class LeaveNoteDialog extends DialogFragment
 	{
 		super.onAttach(ctx);
 		questAnswerComponent.onAttach((OsmQuestAnswerListener) ctx);
-	}
-
-	@Override
-	public void onAttach(Activity activity)
-	{
-		super.onAttach(activity);
-		questAnswerComponent.onAttach((OsmQuestAnswerListener) activity);
 	}
 
 	private void onClickOk()

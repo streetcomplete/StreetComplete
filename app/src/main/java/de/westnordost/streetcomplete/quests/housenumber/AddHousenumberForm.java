@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.quests.housenumber;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.InputType;
@@ -57,13 +56,10 @@ public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 			setLayout(R.layout.quest_housenumber);
 		}
 
-		addOtherAnswer(R.string.quest_address_answer_house_name, new Runnable()
+		addOtherAnswer(R.string.quest_address_answer_house_name, () ->
 		{
-			@Override public void run()
-			{
-				isHousename = true;
-				setLayout(R.layout.quest_housename);
-			}
+			isHousename = true;
+			setLayout(R.layout.quest_housename);
 		});
 
 		return view;
@@ -92,8 +88,6 @@ public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 			return;
 		}
 
-		final Bundle answer = new Bundle();
-
 		if(inputHouseName != null)
 		{
 			applyHouseNameAnswer(getInputText(inputHouseName));
@@ -120,11 +114,11 @@ public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 		final Bundle answer = new Bundle();
 		boolean looksInvalid = !houseNumber.matches(getValidHousenumberRegex());
 
-		confirmHousenumber(looksInvalid, new Runnable()	{ @Override public void run()
+		confirmHousenumber(looksInvalid, () ->
 		{
 			answer.putString(HOUSENUMBER, houseNumber);
 			applyFormAnswer(answer);
-		}});
+		});
 	}
 
 	private void applyConscriptionNumberAnswer(final String conscriptionNumber, final String streetNumber)
@@ -145,12 +139,12 @@ public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 		}
 		looksInvalid |= !conscriptionNumber.matches(VALID_CONSCRIPTIONNUMBER_REGEX);
 
-		confirmHousenumber(looksInvalid, new Runnable()	{ @Override public void run()
+		confirmHousenumber(looksInvalid, () ->
 		{
 			answer.putString(CONSCRIPTIONNUMBER, conscriptionNumber);
 			answer.putString(STREETNUMBER, streetNumber);
 			applyFormAnswer(answer);
-		}});
+		});
 	}
 
 	@Override public boolean hasChanges()
@@ -183,28 +177,25 @@ public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 		if(toggleKeyboardButton != null)
 		{
 			toggleKeyboardButton.setText("abc");
-			toggleKeyboardButton.setOnClickListener(new View.OnClickListener()
+			toggleKeyboardButton.setOnClickListener(v ->
 			{
-				@Override public void onClick(View view)
+				View focus = getActivity().getCurrentFocus();
+				if(focus != null && focus instanceof EditText)
 				{
-					View focus = getActivity().getCurrentFocus();
-					if(focus != null && focus instanceof EditText)
+					EditText input = (EditText) focus;
+					if ((input.getInputType() & InputType.TYPE_CLASS_NUMBER) != 0)
 					{
-						EditText input = (EditText) focus;
-						if ((input.getInputType() & InputType.TYPE_CLASS_NUMBER) != 0)
-						{
-							input.setInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
-							toggleKeyboardButton.setText("123");
-						} else
-						{
-							input.setInputType(InputType.TYPE_CLASS_NUMBER);
-							input.setKeyListener(DigitsKeyListener.getInstance("0123456789.,- /"));
-							toggleKeyboardButton.setText("abc");
-						}
-
-						InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-						imm.showSoftInput(input, InputMethodManager.SHOW_IMPLICIT);
+						input.setInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
+						toggleKeyboardButton.setText("123");
+					} else
+					{
+						input.setInputType(InputType.TYPE_CLASS_NUMBER);
+						input.setKeyListener(DigitsKeyListener.getInstance("0123456789.,- /"));
+						toggleKeyboardButton.setText("abc");
 					}
+
+					InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+					imm.showSoftInput(input, InputMethodManager.SHOW_IMPLICIT);
 				}
 			});
 		}
@@ -231,28 +222,11 @@ public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 	{
 		if(isUnusual)
 		{
-			DialogInterface.OnClickListener onYes = new DialogInterface.OnClickListener()
-			{
-				@Override
-				public void onClick(DialogInterface dialog, int which)
-				{
-					onConfirmed.run();
-				}
-			};
-			DialogInterface.OnClickListener onNo = new DialogInterface.OnClickListener()
-			{
-				@Override
-				public void onClick(DialogInterface dialog, int which)
-				{
-					// nothing, just go back
-				}
-			};
-
 			new AlertDialogBuilder(getActivity())
 					.setTitle(R.string.quest_generic_confirmation_title)
 					.setMessage(R.string.quest_address_unusualHousenumber_confirmation_description)
-					.setPositiveButton(R.string.quest_generic_confirmation_yes, onYes)
-					.setNegativeButton(R.string.quest_generic_confirmation_no, onNo)
+					.setPositiveButton(R.string.quest_generic_confirmation_yes, (dialog, which) -> onConfirmed.run())
+					.setNegativeButton(R.string.quest_generic_confirmation_no, null)
 					.show();
 		}
 		else

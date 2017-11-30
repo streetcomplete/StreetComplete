@@ -1,8 +1,6 @@
 package de.westnordost.streetcomplete.quests.housenumber;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.text.TextUtils;
 
 import java.util.ArrayList;
@@ -13,7 +11,6 @@ import javax.inject.Inject;
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.streetcomplete.R;
-import de.westnordost.streetcomplete.data.osm.ElementGeometry;
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler;
@@ -54,65 +51,56 @@ public class AddHousenumber implements OsmElementQuestType
 
 		final ArrayList<Point> housenumberCoords = new ArrayList<>();
 		String nodesWithHousenumbersQuery = NODES_WITH_HOUSENUMBERS.toOverpassQLString(bbox);
-		success = overpassServer.getAndHandleQuota(nodesWithHousenumbersQuery, new MapDataWithGeometryHandler()
+		success = overpassServer.getAndHandleQuota(nodesWithHousenumbersQuery, (element, geometry) ->
 		{
-			@Override public void handle(@NonNull Element element, @Nullable ElementGeometry geometry)
+			if(geometry != null)
 			{
-				if(geometry != null)
-				{
-					housenumberCoords.add(JTSConst.toPoint(geometry.center));
-				}
+				housenumberCoords.add(JTSConst.toPoint(geometry.center));
 			}
 		});
 		if(!success) return false;
 
 		final ArrayList<Geometry> areasWithHousenumber = new ArrayList<>();
 		String areasWithHousenumbersQuery = NON_BUILDING_AREAS_WITH_HOUSENUMBERS.toOverpassQLString(bbox);
-		success = overpassServer.getAndHandleQuota(areasWithHousenumbersQuery, new MapDataWithGeometryHandler()
+		success = overpassServer.getAndHandleQuota(areasWithHousenumbersQuery, (element, geometry) ->
 		{
-			@Override public void handle(@NonNull Element element, @Nullable ElementGeometry geometry)
+			if(geometry != null)
 			{
-				if(geometry != null)
-				{
-					areasWithHousenumber.add(JTSConst.toGeometry(geometry));
-				}
+				areasWithHousenumber.add(JTSConst.toGeometry(geometry));
 			}
 		});
 		if(!success) return false;
 
 		String buildingsWithoutHousenumbersQuery = HOUSES_WITHOUT_HOUSENUMBERS.toOverpassQLString(bbox);
-		success = overpassServer.getAndHandleQuota(buildingsWithoutHousenumbersQuery, new MapDataWithGeometryHandler()
+		success = overpassServer.getAndHandleQuota(buildingsWithoutHousenumbersQuery, (element, geometry) ->
 		{
-			@Override public void handle(@NonNull Element element, @Nullable ElementGeometry geometry)
+			// invalid geometry
+			if(geometry == null) return;
+
+			Geometry g = JTSConst.toGeometry(geometry);
+			// invalid geometry out of other reasons? (Not sure when this can happen...)
+			if(!g.isValid()) return;
+
+			// exclude buildings with housenumber-nodes inside them
+			for(int i = 0; i < housenumberCoords.size(); ++i)
 			{
-				// invalid geometry
-				if(geometry == null) return;
-
-				Geometry g = JTSConst.toGeometry(geometry);
-				// invalid geometry out of other reasons? (Not sure when this can happen...)
-				if(!g.isValid()) return;
-
-				// exclude buildings with housenumber-nodes inside them
-				for(int i = 0; i < housenumberCoords.size(); ++i)
+				Point p = housenumberCoords.get(i);
+				// this line is a very expensive computation
+				if(g.covers(p))
 				{
-					Point p = housenumberCoords.get(i);
-					// this line is a very expensive computation
-					if(g.covers(p))
-					{
-						// one housenumber-node cannot be covered by multiple buildings. So, it can
-						// be removed to reduce the amount of remaining point-in-polygon checks
-						housenumberCoords.remove(i);
-						return;
-					}
+					// one housenumber-node cannot be covered by multiple buildings. So, it can
+					// be removed to reduce the amount of remaining point-in-polygon checks
+					housenumberCoords.remove(i);
+					return;
 				}
-				// further exclude buildings that are contained in an area with a housenumber
-				for (Geometry areaWithHousenumber : areasWithHousenumber)
-				{
-					if(g.coveredBy(areaWithHousenumber)) return;
-				}
-
-				handler.handle(element, geometry);
 			}
+			// further exclude buildings that are contained in an area with a housenumber
+			for (Geometry areaWithHousenumber : areasWithHousenumber)
+			{
+				if(g.coveredBy(areaWithHousenumber)) return;
+			}
+
+			handler.handle(element, geometry);
 		});
 
 		return success;

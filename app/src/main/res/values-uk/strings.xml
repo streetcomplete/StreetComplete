@@ -61,7 +61,6 @@
     <string name="close">"закрити"</string>
     <string name="download_error">"Помилка пошуку завдань"</string>
     <string name="upload_error">"Помилка надсилання відповідей"</string>
-    <string name="cannot_find_bbox">"Пошук неможливий. Збільшіть масштаб"</string>
     <string name="download_area_too_big">"Збільшіть масштаб"</string>
     <string name="confirmation_cancel_prev_download_title">"Скасувати попередній пошук та спробувати пошукати тут?"</string>
     <string name="notification_downloading">"Пошук завдань…"</string>
@@ -107,8 +106,6 @@
     <string name="quest_openingHours_comment_description">"Будьте лаконічні, за можливостю використовуйте дані з табличок (наприклад, «за призначенням»). Відсутність табличок не обов'язково означає особливий режим роботи."</string>
     <string name="quest_buildingLevels_title">"Скільки поверхів у цього будинка?"</string>
     <string name="quest_buildingLevels_title_buildingPart">"Скільки поверхів має ця частина будинка?"</string>
-    <string name="quest_buildingLevels_levelsLabel">"загальна кількість поверхів"</string>
-    <string name="quest_buildingLevels_roofLevelsLabel">"з них під дахом"</string>
     <string name="quest_roofShape_title">"Якої форми дах цього будинка?"</string>
     <string name="quest_roofShape_select_one">"Оберіть з:"</string>
     <string name="quest_roofShape_show_more">"Показати ще…"</string>
@@ -201,7 +198,6 @@
     <string name="quest_name_answer_noName">"Без назви"</string>
     <string name="quest_name_answer_noName_confirmation_title">"Дійсно без назви?"</string>
     <string name="quest_name_noName_confirmation_positive">"Так, без назви"</string>
-    <string name="quest_buildingLevels_negativeBuildingLevels">"Упс! Ви обрали більше рівнів даху, аніж є поверхів взагалі."</string>
     <string name="quest_openingHours_add_times">"Вкажіть час роботи"</string>
     <string name="crash_message">"Не могли б ви, будь ласка, повідомити розробнику про помилку?"</string>
     <string name="crash_title">"О ні, StreetComplete «крашнувся» останнього разу!"</string>
@@ -251,6 +247,8 @@
     <string name="quest_busStopShelter_name_title">"Чи має зупинка «%s» навіс?"</string>
     <string name="quest_toiletsFee_title">"Цей туалет платний?"</string>
     <string name="quest_tactilePaving_title_bus">"Чи є на цій зупинці тактильне покриття?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"Чи є на цьому переході тактильне покриття?"</string>
     <string name="quest_source_dialog_title">"Ви впевнені, що перевірили це на місці?"</string>
     <string name="quest_tactilePaving_title_name_bus">"Чи має зупинка \"%s\" тактильне покриття?"</string>
@@ -326,6 +324,8 @@
     <string name="produce_vanilla">"Ваніль"</string>
     <string name="produce_walnuts">"Волоський горіх"</string>
     <string name="produce_sisal">"Сісал"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_way_lit_title">"Чи має освітлення ця ділянка дороги?"</string>
     <string name="quest_way_lit_automatic">"Є датчики руху"</string>
 </resources>

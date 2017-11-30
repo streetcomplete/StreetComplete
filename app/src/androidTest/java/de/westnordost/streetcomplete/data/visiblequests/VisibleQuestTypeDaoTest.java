@@ -10,7 +10,7 @@ public class VisibleQuestTypeDaoTest extends ApplicationDbTestCase
 	private TestQuestType testQuestType = new TestQuestType();
 	private DisabledTestQuestType disabledTestQuestType = new DisabledTestQuestType();
 
-	@Override public void setUp()
+	@Override public void setUp() throws Exception
 	{
 		super.setUp();
 		dao = new VisibleQuestTypeDao(dbHelper);
@@ -35,7 +35,7 @@ public class VisibleQuestTypeDaoTest extends ApplicationDbTestCase
 	public void testEnableQuest()
 	{
 		dao.setVisible(disabledTestQuestType, true);
-		assertFalse(dao.isVisible(disabledTestQuestType));
+		assertTrue(dao.isVisible(disabledTestQuestType));
 	}
 
 	public void testReset()

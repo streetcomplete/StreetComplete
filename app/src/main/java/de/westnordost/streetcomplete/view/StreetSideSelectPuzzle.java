@@ -20,6 +20,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import de.westnordost.streetcomplete.R;
 
@@ -57,9 +58,13 @@ public class StreetSideSelectPuzzle extends FrameLayout
 	private ImageView rightSideImage;
 	private ImageView leftSideImage;
 
+	private View strut;
+
 	private OnClickSideListener listener;
 
 	private int leftImageResId, rightImageResId;
+	private boolean isLeftImageSet, isRightImageSet;
+	private boolean onlyShowingOneSide;
 
 	public interface OnClickSideListener
 	{
@@ -75,50 +80,40 @@ public class StreetSideSelectPuzzle extends FrameLayout
 		rightSideImage = findViewById(R.id.rightSideImage);
 		leftSideImage = findViewById(R.id.leftSideImage);
 
-		findViewById(R.id.leftSide).setOnClickListener(new OnClickListener()
-		{
-			@Override public void onClick(View view)
-			{
-				if(listener != null) listener.onClick(false);
-			}
-		});
-		findViewById(R.id.rightSide).setOnClickListener(new OnClickListener()
-		{
-			@Override public void onClick(View view)
-			{
-				if(listener != null) listener.onClick(true);
-			}
-		});
+		strut = findViewById(R.id.strut);
 
-		addOnLayoutChangeListener(new OnLayoutChangeListener()
-		{
-			@Override
-			public void onLayoutChange(View v, int left, int top, int right, int bottom,
-									   int oldLeft, int oldTop, int oldRight, int oldBottom)
-			{
-				int height = Math.max(bottom - top, right - left);
-				int width = Math.min(bottom - top, right - left);
-				ViewGroup.LayoutParams params = rotateContainer.getLayoutParams();
-				if(params.width != width || params.height != height)
-				{
-					params.width = width;
-					params.height = height;
-					rotateContainer.setLayoutParams(params);
-				}
+		findViewById(R.id.leftSide).setOnClickListener(view -> onClick(false));
+		findViewById(R.id.rightSide).setOnClickListener(view -> onClick(true));
 
-				int streetWidth = width / 2;
-				if(leftImageResId != 0)
-				{
-					setStreetDrawable(leftImageResId, streetWidth, leftSideImage, true);
-					leftImageResId = 0;
-				}
-				if(rightImageResId != 0)
-				{
-					setStreetDrawable(rightImageResId, streetWidth, rightSideImage, false);
-					rightImageResId = 0;
-				}
+		addOnLayoutChangeListener((v, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom) ->
+		{
+			int height = Math.max(bottom - top, right - left);
+			int width = Math.min(bottom - top, right - left);
+			ViewGroup.LayoutParams params = rotateContainer.getLayoutParams();
+			if(params.width != width || params.height != height)
+			{
+				params.width = width;
+				params.height = height;
+				rotateContainer.setLayoutParams(params);
+			}
+
+			int streetWidth = onlyShowingOneSide ? width : width / 2;
+			if(!isLeftImageSet && leftImageResId != 0)
+			{
+				setStreetDrawable(leftImageResId, streetWidth, leftSideImage, true);
+				isLeftImageSet = true;
+			}
+			if(!isRightImageSet && rightImageResId != 0)
+			{
+				setStreetDrawable(rightImageResId, streetWidth, rightSideImage, false);
+				isRightImageSet = true;
 			}
 		});
+	}
+
+	private void onClick(boolean isRight)
+	{
+		if(listener != null) listener.onClick(isRight);
 	}
 
 	public void setListener(OnClickSideListener listener)
@@ -146,17 +141,46 @@ public class StreetSideSelectPuzzle extends FrameLayout
 
 	public void replaceLeftSideImageResource(int resId)
 	{
+		leftImageResId = resId;
 		replaceAnimated(resId, leftSideImage, true);
 	}
 
 	public void replaceRightSideImageResource(int resId)
 	{
+		rightImageResId = resId;
 		replaceAnimated(resId, rightSideImage, false);
+	}
+
+	public void showOnlyRightSide()
+	{
+		isRightImageSet = false;
+		onlyShowingOneSide = true;
+		RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(0,0);
+		params.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+		strut.setLayoutParams(params);
+	}
+
+	public void showOnlyLeftSide()
+	{
+		isLeftImageSet = false;
+		onlyShowingOneSide = true;
+		RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(0,0);
+		params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+		strut.setLayoutParams(params);
+	}
+
+	public void showBothSides()
+	{
+		isLeftImageSet = isRightImageSet = false;
+		onlyShowingOneSide = false;
+		RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(0,0);
+		params.addRule(RelativeLayout.CENTER_HORIZONTAL);
+		strut.setLayoutParams(params);
 	}
 
 	private void replaceAnimated(int resId, ImageView imgView, boolean flip180Degrees)
 	{
-		int width = rotateContainer.getWidth() / 2;
+		int width = onlyShowingOneSide ? rotateContainer.getWidth() : rotateContainer.getWidth() / 2;
 		setStreetDrawable(resId, width, imgView, flip180Degrees);
 
 		((View)imgView.getParent()).bringToFront();

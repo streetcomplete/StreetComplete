@@ -17,8 +17,9 @@ public abstract class AOsmElementQuestTypeTest extends TestCase
 	protected Bundle bundle;
 	protected Map<String,String> tags;
 
-	public void setUp()
+	public void setUp() throws Exception
 	{
+		super.setUp();
 		bundle = new Bundle();
 		tags = new HashMap<>();
 	}

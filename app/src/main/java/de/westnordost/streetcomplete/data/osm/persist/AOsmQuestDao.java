@@ -5,7 +5,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
-import android.text.TextUtils;
 
 import java.util.Date;
 import java.util.List;
@@ -61,13 +60,7 @@ public abstract class AOsmQuestDao extends AQuestDao<OsmQuest>
 		addElementType(elementType, qb);
 		addElementId(elementId, qb);
 
-		return getAllThings(getMergedViewName(), null, qb, new CreateFromCursor<OsmQuest>()
-		{
-			@Override public OsmQuest create(Cursor cursor)
-			{
-				return createObjectFrom(cursor);
-			}
-		});
+		return getAllThings(getMergedViewName(), null, qb, this::createObjectFrom);
 	}
 
 	public List<OsmQuest> getAll(BoundingBox bbox, QuestStatus status, List<String> questTypesNames)
@@ -77,13 +70,7 @@ public abstract class AOsmQuestDao extends AQuestDao<OsmQuest>
 		addQuestStatus(status, qb);
 		addQuestTypes(questTypesNames, qb);
 
-		return getAllThings(getMergedViewName(), null, qb, new CreateFromCursor<OsmQuest>()
-		{
-			@Override public OsmQuest create(Cursor cursor)
-			{
-				return createObjectFrom(cursor);
-			}
-		});
+		return getAllThings(getMergedViewName(), null, qb, this::createObjectFrom);
 	}
 
 	public int deleteAllReverted(Element.Type type, long id)

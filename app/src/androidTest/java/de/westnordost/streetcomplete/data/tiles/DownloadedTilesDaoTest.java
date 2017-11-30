@@ -11,7 +11,7 @@ public class DownloadedTilesDaoTest extends ApplicationDbTestCase
 {
 	private DownloadedTilesDao dao;
 
-	@Override public void setUp()
+	@Override public void setUp() throws Exception
 	{
 		super.setUp();
 		dao = new DownloadedTilesDao(dbHelper);

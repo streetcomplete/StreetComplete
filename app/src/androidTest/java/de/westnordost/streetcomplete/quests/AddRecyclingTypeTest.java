@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.quests.recycling.AddRecyclingTypeForm;
 
 public class AddRecyclingTypeTest extends AOsmElementQuestTypeTest
 {
-	@Override public void setUp()
+	@Override public void setUp() throws Exception
 	{
 		super.setUp();
 		tags.put("amenity","recycling");

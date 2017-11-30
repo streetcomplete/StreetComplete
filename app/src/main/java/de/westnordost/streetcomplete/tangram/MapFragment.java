@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.tangram;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -24,6 +25,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.mapzen.android.lost.api.LocationListener;
@@ -176,13 +178,7 @@ public class MapFragment extends Fragment implements
 			initMarkers();
 			followPosition();
 			showLocation();
-			postOnLayout(new Runnable()
-			{
-				@Override public void run()
-				{
-					updateView();
-				}
-			});
+			postOnLayout(this::updateView);
 		}
 	}
 
@@ -271,7 +267,7 @@ public class MapFragment extends Fragment implements
 		File cacheDir = getContext().getExternalCacheDir();
 		if (cacheDir != null && cacheDir.exists())
 		{
-			return new TileHttpHandler(apiKey, new File(cacheDir, "tile_cache"), cacheSize * 1024 * 1024);
+			return new TileHttpHandler(apiKey, new File(cacheDir, "tile_cache"), cacheSize * 1024L * 1024L);
 		}
 		return new TileHttpHandler(apiKey);
 	}
@@ -583,14 +579,14 @@ public class MapFragment extends Fragment implements
 		if(mapView != null) mapView.onCreate(bundle);
 	}
 
-	@Override public void onAttach(Activity activity)
+	@Override public void onAttach(Context context)
 	{
-		super.onAttach(activity);
+		super.onAttach(context);
 		compass.onCreate(
-				(SensorManager) activity.getSystemService(SENSOR_SERVICE),
-				activity.getWindowManager().getDefaultDisplay());
-		lostApiClient = new LostApiClient.Builder(activity).addConnectionCallbacks(this).build();
-		listener = (Listener) activity;
+				(SensorManager) context.getSystemService(SENSOR_SERVICE),
+				((WindowManager) context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay());
+		lostApiClient = new LostApiClient.Builder(context).addConnectionCallbacks(this).build();
+		listener = (Listener) context;
 	}
 
 	@Override public void onStart()

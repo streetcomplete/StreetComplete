@@ -63,7 +63,7 @@ public class OverpassMapDataParserTest extends TestCase
 				"</way>";
 
 		LongSparseArray<List<LatLon>> expectedGeometry = new LongSparseArray<>();
-		expectedGeometry.put(8, new ArrayList<LatLon>(Arrays.asList(p)));
+		expectedGeometry.put(8, new ArrayList<>(Arrays.asList(p)));
 
 		Element e = parseOne(xml, expectedGeometry);
 
@@ -104,8 +104,8 @@ public class OverpassMapDataParserTest extends TestCase
 				"</relation>";
 
 		LongSparseArray<List<LatLon>> expectedGeometry = new LongSparseArray<>();
-		expectedGeometry.put(1, new ArrayList<LatLon>(Arrays.asList(new OsmLatLon[]{p[0], p[1]})));
-		expectedGeometry.put(2, new ArrayList<LatLon>(Arrays.asList(new OsmLatLon[]{p[2], p[3]})));
+		expectedGeometry.put(1, new ArrayList<>(Arrays.asList(new OsmLatLon[]{p[0], p[1]})));
+		expectedGeometry.put(2, new ArrayList<>(Arrays.asList(new OsmLatLon[]{p[2], p[3]})));
 
 		Element e = parseOne(xml, expectedGeometry);
 

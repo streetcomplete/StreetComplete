@@ -13,7 +13,7 @@ public class RoadNameSuggestionsDaoTest extends ApplicationDbTestCase
 {
 	private RoadNameSuggestionsDao dao;
 
-	@Override public void setUp()
+	@Override public void setUp() throws Exception
 	{
 		super.setUp();
 		dao = new RoadNameSuggestionsDao(dbHelper, serializer);

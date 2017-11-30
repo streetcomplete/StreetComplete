@@ -14,7 +14,7 @@ public class NodeDaoTest extends ApplicationDbTestCase
 {
 	private NodeDao dao;
 
-	@Override public void setUp()
+	@Override public void setUp() throws Exception
 	{
 		super.setUp();
 		dao = new NodeDao(dbHelper, serializer);

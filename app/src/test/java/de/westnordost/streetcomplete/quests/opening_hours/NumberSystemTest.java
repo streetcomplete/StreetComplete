@@ -16,7 +16,7 @@ public class NumberSystemTest extends TestCase
 			new NumberSystem(10,3);
 			fail();
 		}
-		catch(Exception e) {}
+		catch(Exception ignored) {}
 	}
 
 	public void testGetSize()
@@ -32,7 +32,7 @@ public class NumberSystemTest extends TestCase
 	public void testComplementNone()
 	{
 		NumberSystem s = new NumberSystem(0,10);
-		List<CircularSection> r = s.complemented(new ArrayList<CircularSection>());
+		List<CircularSection> r = s.complemented(new ArrayList<>());
 		assertEquals(1,r.size());
 		assertEquals(new CircularSection(0,10),r.get(0));
 	}

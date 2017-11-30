@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -25,6 +24,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 
 import de.westnordost.streetcomplete.ApplicationConstants;
 import de.westnordost.streetcomplete.R;
@@ -53,13 +53,7 @@ public class AttachPhotoFragment extends Fragment
 		View view = inflater.inflate(R.layout.fragment_attach_photo, container, false);
 
 		ImageButton takePhoto = view.findViewById(R.id.buttonTakeImage);
-		takePhoto.setOnClickListener(new View.OnClickListener()
-		{
-			@Override public void onClick(View v)
-			{
-				takePhoto();
-			}
-		});
+		takePhoto.setOnClickListener(v -> takePhoto());
 
 		if (!getActivity().getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA))
 		{
@@ -165,7 +159,7 @@ public class AttachPhotoFragment extends Fragment
 
 	private File createImageFile() throws IOException
 	{
-		String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+		String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.US).format(new Date());
 		String imageFileName = "photo_" + timeStamp + "_";
 		File directory = getActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES);
 		return File.createTempFile(imageFileName, ".jpg", directory);

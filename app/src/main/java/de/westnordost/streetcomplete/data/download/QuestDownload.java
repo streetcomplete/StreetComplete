@@ -164,10 +164,7 @@ public class QuestDownload
 	{
 		List<LatLon> positionList = osmNoteQuestDb.getAllPositions(bbox);
 		Set<LatLon> positions = new HashSet<>(positionList.size());
-		for (LatLon pos : positionList)
-		{
-			positions.add(pos);
-		}
+		positions.addAll(positionList);
 		return positions;
 	}
 

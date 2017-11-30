@@ -11,7 +11,7 @@ import static org.mockito.Mockito.mock;
 
 public class AddRoadNameTest extends AOsmElementQuestTypeTest
 {
-	@Override public void setUp()
+	@Override public void setUp() throws Exception
 	{
 		super.setUp();
 		tags.put("highway","residential");

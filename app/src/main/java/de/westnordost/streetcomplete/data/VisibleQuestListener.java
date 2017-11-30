@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.data;
 import java.util.Collection;
 
 import de.westnordost.osmapi.map.data.Element;
-import de.westnordost.streetcomplete.data.osm.OsmQuest;
 
 public interface VisibleQuestListener
 {

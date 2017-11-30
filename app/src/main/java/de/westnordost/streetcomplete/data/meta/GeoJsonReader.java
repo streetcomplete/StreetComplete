@@ -157,8 +157,6 @@ public class GeoJsonReader
 	{
 		if(polygons.size() == 1) return;
 
-		long time = System.currentTimeMillis();
-
 		for(int i1 = 0; i1 < polygons.size() - 1; ++i1)
 		{
 			Polygon p1 = polygons.get(i1);

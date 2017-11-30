@@ -17,7 +17,6 @@ import de.westnordost.streetcomplete.data.QuestGroup;
 import de.westnordost.streetcomplete.data.QuestStatus;
 import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.data.VisibleQuestListener;
-import de.westnordost.osmapi.common.Handler;
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.notes.Note;
@@ -62,31 +61,27 @@ public class OsmNotesDownload
 		final Collection<OsmNoteQuest> quests = new ArrayList<>();
 		final Collection<OsmNoteQuest> hiddenQuests = new ArrayList<>();
 
-		noteServer.getAll(bbox, new Handler<Note>()
+		noteServer.getAll(bbox, note ->
 		{
-			@Override public void handle(Note note)
+			OsmNoteQuest quest = new OsmNoteQuest(note, questType);
+			if(makeNoteClosed(userId, note))
 			{
-
-				OsmNoteQuest quest = new OsmNoteQuest(note, questType);
-				if(makeNoteClosed(userId, note))
-				{
-					quest.setStatus(QuestStatus.CLOSED);
-					hiddenQuests.add(quest);
-				}
-				else if(makeNoteInvisible(quest))
-				{
-					quest.setStatus(QuestStatus.INVISIBLE);
-					hiddenQuests.add(quest);
-				}
-				else
-				{
-					quests.add(quest);
-					previousQuestsByNoteId.remove(note.id);
-				}
-
-				notes.add(note);
-				positions.add(note.position);
+				quest.setStatus(QuestStatus.CLOSED);
+				hiddenQuests.add(quest);
 			}
+			else if(makeNoteInvisible(quest))
+			{
+				quest.setStatus(QuestStatus.INVISIBLE);
+				hiddenQuests.add(quest);
+			}
+			else
+			{
+				quests.add(quest);
+				previousQuestsByNoteId.remove(note.id);
+			}
+
+			notes.add(note);
+			positions.add(note.position);
 		}, max, 0);
 
 		noteDB.putAll(notes);

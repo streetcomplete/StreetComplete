@@ -2,11 +2,8 @@ package de.westnordost.streetcomplete.quests.road_name;
 
 import android.content.Context;
 import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.AttributeSet;
-import android.view.KeyEvent;
 import android.view.inputmethod.EditorInfo;
-import android.widget.TextView;
 
 import java.util.Locale;
 
@@ -50,17 +47,13 @@ public class AutoCorrectAbbreviationsEditText extends android.support.v7.widget.
 		setInputType(EditorInfo.TYPE_CLASS_TEXT | EditorInfo.TYPE_TEXT_FLAG_NO_SUGGESTIONS |
 				EditorInfo.TYPE_TEXT_FLAG_CAP_SENTENCES);
 
-		setOnEditorActionListener(new TextView.OnEditorActionListener()
+		setOnEditorActionListener((v, actionId, event) ->
 		{
-			@Override
-			public boolean onEditorAction(TextView v, int actionId, KeyEvent event)
+			if (actionId == EditorInfo.IME_ACTION_DONE)
 			{
-				if (actionId == EditorInfo.IME_ACTION_DONE)
-				{
-					autoCorrectTextAt(getText(), length());
-				}
-				return false;
+				autoCorrectTextAt(getText(), length());
 			}
+			return false;
 		});
 	}
 

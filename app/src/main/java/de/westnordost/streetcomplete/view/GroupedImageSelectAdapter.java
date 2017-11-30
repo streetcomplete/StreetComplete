@@ -145,13 +145,10 @@ public class GroupedImageSelectAdapter extends RecyclerView.Adapter<GroupedImage
 			super(itemView);
 			imageView = itemView.findViewById(R.id.imageView);
 			textView = itemView.findViewById(R.id.textView);
-			itemView.setOnClickListener(new View.OnClickListener()
+			itemView.setOnClickListener(v ->
 			{
-				@Override public void onClick(View v)
-				{
-					int index = getAdapterPosition();
-					if(index != RecyclerView.NO_POSITION) onSelect(getAdapterPosition());
-				}
+				int index = getAdapterPosition();
+				if(index != RecyclerView.NO_POSITION) onSelect(getAdapterPosition());
 			});
 		}
 	}

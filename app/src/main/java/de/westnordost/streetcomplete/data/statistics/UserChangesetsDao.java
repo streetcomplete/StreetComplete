@@ -38,7 +38,7 @@ public class UserChangesetsDao
 	}
 
 
-	private class RememberLastHandlerRelay implements Handler<ChangesetInfo>
+	private static class RememberLastHandlerRelay implements Handler<ChangesetInfo>
 	{
 		Handler<ChangesetInfo> relayTo;
 		ChangesetInfo earliest;

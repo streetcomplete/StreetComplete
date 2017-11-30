@@ -34,12 +34,13 @@ public class OverpassMapDataDaoTest extends TestCase
 
 		// the dao will call get(), get an exception in return, ask its status
 		// then and at least wait for the specified amount of time before calling again
+		final boolean[] result = new boolean[1];
 		Thread dlThread = new Thread()
 		{
 			@Override public void run()
 			{
 				// assert false because we interrupt the thread further down...
-				assertFalse(dao.getAndHandleQuota("", null));
+				result[0] = dao.getAndHandleQuota("", null);
 			}
 		};
 		dlThread.start();
@@ -60,5 +61,6 @@ public class OverpassMapDataDaoTest extends TestCase
 		// we are done here, interrupt thread (still part of the test though...)
 		dlThread.interrupt();
 		dlThread.join();
+		assertFalse(result[0]);
 	}
 }

@@ -22,20 +22,8 @@ public class WayLitForm extends YesNoQuestAnswerFragment
 
 	private void addOtherAnswers()
 	{
-		addOtherAnswer(R.string.quest_way_lit_24_7, new Runnable()
-		{
-			@Override public void run()
-			{
-				applyAnswer("24/7");
-			}
-		});
-		addOtherAnswer(R.string.quest_way_lit_automatic, new Runnable()
-		{
-			@Override public void run()
-			{
-				applyAnswer("automatic");
-			}
-		});
+		addOtherAnswer(R.string.quest_way_lit_24_7, () -> applyAnswer("24/7"));
+		addOtherAnswer(R.string.quest_way_lit_automatic, () -> applyAnswer("automatic"));
 	}
 
 	private void applyAnswer(String value)
