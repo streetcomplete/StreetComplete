@@ -23,6 +23,7 @@ import de.westnordost.streetcomplete.quests.diet_type.AddVegetarian;
 import de.westnordost.streetcomplete.quests.fire_hydrant.AddFireHydrantType;
 import de.westnordost.streetcomplete.quests.parking_type.AddParkingType;
 import de.westnordost.streetcomplete.quests.powerpoles_material.AddPowerPolesMaterial;
+import de.westnordost.streetcomplete.quests.public_transport_bus_stop.AddPublicTransportBusStop;
 import de.westnordost.streetcomplete.quests.orchard_produce.AddOrchardProduce;
 import de.westnordost.streetcomplete.quests.recycling.AddRecyclingType;
 import de.westnordost.streetcomplete.quests.road_name.data.PutRoadNameSuggestionsHandler;
@@ -68,6 +69,7 @@ public class QuestModule
 				new AddMaxSpeed(o),
 				new AddRoadSurface(o),
 				new AddOpeningHours(o),
+				new AddPublicTransportBusStop(o),
 
 				// ↓ 6. useful data that is used by some data consumers
 				new AddSport(o),
