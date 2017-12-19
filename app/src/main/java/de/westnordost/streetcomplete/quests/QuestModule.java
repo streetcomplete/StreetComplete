@@ -31,6 +31,7 @@ import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingBusSt
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingCrosswalk;
 import de.westnordost.streetcomplete.quests.toilet_availability.AddToiletAvailability;
 import de.westnordost.streetcomplete.quests.toilets_fee.AddToiletsFee;
+import de.westnordost.streetcomplete.quests.tracktype.AddTracktype;
 import de.westnordost.streetcomplete.quests.housenumber.AddHousenumber;
 import de.westnordost.streetcomplete.quests.max_speed.AddMaxSpeed;
 import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHours;
@@ -68,6 +69,7 @@ public class QuestModule
 				new AddMaxSpeed(o),
 				new AddRoadSurface(o),
 				new AddOpeningHours(o),
+				new AddTracktype(o),
 
 				// ↓ 6. useful data that is used by some data consumers
 				new AddSport(o),
