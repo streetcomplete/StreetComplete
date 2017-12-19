@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import java.util.ArrayList;
 
+import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.streetcomplete.data.QuestGroup;
 
 public class QuestAnswerComponent
@@ -55,6 +56,11 @@ public class QuestAnswerComponent
 	public void onLeaveNote(String questTitle, String text, ArrayList<String> imagePaths)
 	{
 		callbackListener.onLeaveNote(questId, questGroup, questTitle, text, imagePaths);
+	}
+
+	public void onLeaveNote(String text, ArrayList<String> imagePaths, LatLon position)
+	{
+		callbackListener.onLeaveNote(text, imagePaths, position);
 	}
 
 	public void onSkippedQuest()

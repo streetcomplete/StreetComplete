@@ -46,7 +46,10 @@ public class CreateNoteDao
 			values.put(CreateNoteTable.Columns.IMAGE_PATHS, serializer.toBytes(note.imagePaths));
 		}
 		values.put(CreateNoteTable.Columns.TEXT, note.text);
-		values.put(CreateNoteTable.Columns.QUEST_TITLE, note.questTitle);
+		if (note.questTitle != null)
+		{
+			values.put(CreateNoteTable.Columns.QUEST_TITLE, note.questTitle);
+		}
 
 		long rowId = db.insert(CreateNoteTable.NAME, null, values);
 

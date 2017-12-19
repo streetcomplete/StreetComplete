@@ -16,6 +16,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v13.app.FragmentCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.preference.PreferenceManager;
 import android.text.Html;
 import android.text.TextUtils;
@@ -27,6 +28,7 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.mapzen.android.lost.api.LocationListener;
 import com.mapzen.android.lost.api.LocationRequest;
@@ -43,17 +45,21 @@ import com.mapzen.tangram.TouchInput;
 import java.io.File;
 
 import de.westnordost.osmapi.map.data.LatLon;
+import de.westnordost.streetcomplete.ApplicationConstants;
 import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.R;
+import de.westnordost.streetcomplete.data.osmnotes.CreateNoteDialog;
+import de.westnordost.streetcomplete.data.osmnotes.CreateNoteFragment;
 import de.westnordost.streetcomplete.util.SphericalEarthMath;
 
 import static android.content.Context.SENSOR_SERVICE;
+import static de.westnordost.streetcomplete.MainActivity.CREATE_NOTE;
 
 public class MapFragment extends Fragment implements
 		FragmentCompat.OnRequestPermissionsResultCallback, LocationListener,
 		LostApiClient.ConnectionCallbacks, TouchInput.ScaleResponder,
 		TouchInput.ShoveResponder, TouchInput.RotateResponder,
-		TouchInput.PanResponder, TouchInput.DoubleTapResponder, CompassComponent.Listener, MapController.SceneLoadListener
+		TouchInput.PanResponder, TouchInput.DoubleTapResponder, TouchInput.LongPressResponder, CompassComponent.Listener, MapController.SceneLoadListener
 {
 	private CompassComponent compass = new CompassComponent();
 
@@ -138,6 +144,7 @@ public class MapFragment extends Fragment implements
 		controller.setScaleResponder(this);
 		controller.setPanResponder(this);
 		controller.setDoubleTapResponder(this);
+		controller.setLongPressResponder(this);
 		updateMapTileCacheSize();
 		controller.setHttpHandler(httpHandler);
 
@@ -373,6 +380,28 @@ public class MapFragment extends Fragment implements
 		onMapOrientation();
 		updateView();
 		return false;
+	}
+
+	@Override public void onLongPress(float x, float y)
+	{
+		if (controller.getZoom() < ApplicationConstants.NOTE_MIN_ZOOM)
+		{
+			Toast.makeText(getActivity(), R.string.create_new_note_unprecise, Toast.LENGTH_LONG).show();
+		}
+		else
+		{
+			CreateNoteFragment f = new CreateNoteFragment();
+			Bundle args = new Bundle();
+			LngLat pos = controller.getPosition();
+			args.putDouble(CreateNoteDialog.ARG_LAT, pos.latitude);
+			args.putDouble(CreateNoteDialog.ARG_LON, pos.longitude);
+			f.setArguments(args);
+
+			FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+			ft.add(R.id.map_create_note_container, f, CREATE_NOTE);
+			ft.addToBackStack(CREATE_NOTE);
+			ft.commit();
+		}
 	}
 
 	private void onMapOrientation()

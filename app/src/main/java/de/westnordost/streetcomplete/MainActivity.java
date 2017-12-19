@@ -58,6 +58,8 @@ import de.westnordost.streetcomplete.data.QuestGroup;
 import de.westnordost.streetcomplete.data.VisibleQuestListener;
 import de.westnordost.streetcomplete.data.osm.OsmQuest;
 import de.westnordost.streetcomplete.data.upload.VersionBannedException;
+import de.westnordost.streetcomplete.data.osmnotes.CreateNoteDialog;
+import de.westnordost.streetcomplete.data.osmnotes.CreateNoteFragment;
 import de.westnordost.streetcomplete.location.LocationRequestFragment;
 import de.westnordost.streetcomplete.location.LocationUtil;
 import de.westnordost.streetcomplete.oauth.OAuthPrefs;
@@ -344,9 +346,34 @@ public class MainActivity extends AppCompatActivity implements
 				if(isConnected()) uploadChanges();
 				else              Toast.makeText(this, R.string.offline, Toast.LENGTH_SHORT).show();
 				return true;
+			case R.id.action_note:
+				createNote();
+				return true;
 		}
 
 		return super.onOptionsItemSelected(item);
+	}
+
+	@UiThread private void createNote()
+	{
+		if (mapFragment.getZoom() < ApplicationConstants.NOTE_MIN_ZOOM)
+		{
+			Toast.makeText(this, R.string.create_new_note_unprecise, Toast.LENGTH_LONG).show();
+		}
+		else
+		{
+			CreateNoteFragment f = new CreateNoteFragment();
+			Bundle args = new Bundle();
+			LatLon pos = mapFragment.getPosition();
+			args.putDouble(CreateNoteDialog.ARG_LAT, pos.getLatitude());
+			args.putDouble(CreateNoteDialog.ARG_LON, pos.getLongitude());
+			f.setArguments(args);
+
+			FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+			ft.add(R.id.map_create_note_container, f, CREATE_NOTE);
+			ft.addToBackStack(CREATE_NOTE);
+			ft.commit();
+		}
 	}
 
 	@UiThread private void uploadChanges()
@@ -559,6 +586,7 @@ public class MainActivity extends AppCompatActivity implements
 	/* ------------ Managing bottom sheet (quest details) and interaction with map  ------------- */
 
 	private final static String BOTTOM_SHEET = "bottom_sheet";
+	public final static String CREATE_NOTE = "create_note";
 
 	@Override public void onBackPressed()
 	{
@@ -595,6 +623,11 @@ public class MainActivity extends AppCompatActivity implements
 	{
 		closeQuestDetailsFor(questId, group);
 		questController.createNote(questId, questTitle, note, imagePaths);
+	}
+
+	@Override public void onLeaveNote(String note, ArrayList<String> imagePaths, LatLon position)
+	{
+		questController.createNote(note, imagePaths, position);
 	}
 
 	@Override public void onSkippedQuest(long questId, QuestGroup group)

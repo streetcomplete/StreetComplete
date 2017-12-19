@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import java.util.ArrayList;
 
+import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.streetcomplete.data.QuestGroup;
 
 public interface OsmQuestAnswerListener
@@ -17,4 +18,7 @@ public interface OsmQuestAnswerListener
 
 	/** Called when the user chose to skip the quest */
 	void onSkippedQuest(long questId, QuestGroup group);
+
+	/** Called when the user wants to leave a note which is not related to a quest */
+	void onLeaveNote(String note, ArrayList<String> imagePaths, LatLon position);
 }
