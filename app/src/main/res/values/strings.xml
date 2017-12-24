@@ -441,6 +441,8 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_cycleway_answer_contraflow_cycleway">Also cycleway on other side</string>
     <string name="need_specify_both_sides">You need to specify both sides</string>
     <string name="quest_internet_access_name_title">Does "%s" offer internet access?</string>
-    <string name="quest_internet_access_wifi">Yes, WiFi</string>
-    <string name="quest_internet_access_wired">Wired (LAN)</string>
+    <string name="quest_internet_access_wifi">WiFi</string>
+    <string name="quest_internet_access_wired">Wired</string>
+    <string name="quest_internet_access_terminal">Terminal</string>
+    <string name="quest_internet_access_yes">Other kind of connection</string>
 </resources>

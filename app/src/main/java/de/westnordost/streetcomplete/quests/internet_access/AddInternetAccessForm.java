@@ -14,7 +14,8 @@ public class AddInternetAccessForm extends AbstractQuestAnswerFragment
 			YES = "yes",
 			NO = "no",
 			WIFI = "wifi",
-			WIRED = "wired";
+			WIRED = "wired",
+			TERMINAL = "terminal";
 
 	public static final String OSM_VALUE = "answer";
 
@@ -25,7 +26,7 @@ public class AddInternetAccessForm extends AbstractQuestAnswerFragment
 		View view = super.onCreateView(inflater, container, savedInstanceState);
 		View buttonPanel = setButtonsView(R.layout.quest_buttonpanel_internet_access);
 
-		buttonPanel.findViewById(R.id.buttonYes).setOnClickListener(v -> applyAnswer(YES));
+		buttonPanel.findViewById(R.id.buttonWired).setOnClickListener(v -> applyAnswer(WIRED));
 		buttonPanel.findViewById(R.id.buttonNo).setOnClickListener(v -> applyAnswer(NO));
 		buttonPanel.findViewById(R.id.buttonWifi).setOnClickListener(v -> applyAnswer(WIFI));
 
@@ -41,7 +42,8 @@ public class AddInternetAccessForm extends AbstractQuestAnswerFragment
 
 	private void addOtherAnswers()
 	{
-		addOtherAnswer(R.string.quest_internet_access_wired, () -> applyAnswer(WIRED));
+		addOtherAnswer(R.string.quest_internet_access_terminal, () -> applyAnswer(TERMINAL));
+		addOtherAnswer(R.string.quest_internet_access_yes, () -> applyAnswer(YES));
 	}
 
 	private void applyAnswer(String answer)

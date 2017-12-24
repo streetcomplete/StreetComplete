@@ -10,12 +10,12 @@
         android:text="@string/quest_generic_hasFeature_no" />
 
     <Button
-        android:id="@+id/buttonYes"
+        android:id="@+id/buttonWired"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         style="?android:attr/buttonBarButtonStyle"
-        android:text="@string/quest_generic_hasFeature_yes" />
+        android:text="@string/quest_internet_access_wired" />
 
     <Button
         android:id="@+id/buttonWifi"

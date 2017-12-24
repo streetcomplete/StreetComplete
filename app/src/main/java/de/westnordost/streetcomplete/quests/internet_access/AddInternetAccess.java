@@ -23,7 +23,7 @@ public class AddInternetAccess extends SimpleOverpassQuestType
 				" amenity ~ restaurant|cafe|ice_cream|fast_food|bar|pub|biergarten|food_court|cinema|library" +
 				"  or" +
 				" tourism ~ hotel|guest_house|hostel|motel" +
-				" and !internet_access and !name";
+				" and !internet_access and name";
 	}
 
 	public AbstractQuestAnswerFragment createForm()
