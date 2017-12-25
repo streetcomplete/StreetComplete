@@ -440,4 +440,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_housenumber_conscription_number_required">A conscription number must be specified</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">Also cycleway on other side</string>
     <string name="need_specify_both_sides">You need to specify both sides</string>
+    <string name="quest_public_transport_bus_stop_title">Is it where the bus stops on the road, or where passengers wait for their bus?</string>
+    <string name="quest_public_transport_bus_stop_platform">Where passengers wait</string>
+    <string name="quest_public_transport_bus_stop_stop_position">On the road</string>
 </resources>
