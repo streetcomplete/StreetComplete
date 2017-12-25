@@ -13,7 +13,7 @@ Question asked: **Is there an example tag on item XY?**
 Checklist for quest suggestions (see guidelines):
 - [ ] 🚧 To be added tag is established and has a useful purpose
 - [ ] 🤔 Any answer the user can give must have an equivalent tagging (Quest should not reappear to other users when solved by one)
-- [ ] 🐿️ Easily answerable by everyone from the outside
+- [ ] 🐿️ Easily answerable by everyone from the outside but a survey is necessary 
 - [ ] 💤 Not an overwhelming percentage of elements have the same answer (No spam)
 - [ ] 🕓 Applies to a reasonable number of elements (Worth the effort)
 
