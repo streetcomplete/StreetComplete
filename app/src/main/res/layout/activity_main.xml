@@ -40,7 +40,6 @@
                 android:gravity="center_vertical"
                 android:drawableStart="@drawable/ic_star_white_24dp"
                 android:drawablePadding="2dp"
-                android:minEms="7"
                 android:paddingEnd="8dp"
                 android:paddingStart="8dp"
                 />
@@ -53,7 +52,6 @@
                 android:drawableStart="@drawable/ic_file_upload_24dp"
                 android:gravity="center_vertical"
                 android:background="?android:attr/selectableItemBackground"
-                android:minEms="7"
                 android:paddingEnd="8dp"
                 android:paddingStart="8dp"
                 />
