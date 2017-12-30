@@ -19,11 +19,11 @@ public class AddInternetAccess extends SimpleOverpassQuestType
 
 	@Override
 	protected String getTagFilters() {
-		return "nodes, ways, relations with " +
-				" amenity ~ restaurant|cafe|ice_cream|fast_food|bar|pub|biergarten|food_court|cinema|library" +
+		return "nodes, ways, relations with" +
+				" amenity=library" +
 				"  or" +
 				" tourism ~ hotel|guest_house|hostel|motel" +
-				" and !internet_access and name";
+				" and !internet_access and !wifi and name";
 	}
 
 	public AbstractQuestAnswerFragment createForm()
@@ -33,7 +33,7 @@ public class AddInternetAccess extends SimpleOverpassQuestType
 
 	public void applyAnswerTo(Bundle bundle, StringMapChangesBuilder changes)
 	{
-		String osmValue = bundle.getString(AddInternetAccessForm.OSM_VALUE);
+		String osmValue = bundle.getString(AddInternetAccessForm.INTERNET_ACCESS);
 		if (osmValue != null)
 		{
 			changes.add("internet_access", osmValue);
