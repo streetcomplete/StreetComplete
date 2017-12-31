@@ -443,4 +443,5 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="action_note">Create new note</string>
     <string name="finish_note">Finish</string>
     <string name="create_new_note_unprecise">Can\'t create a new note here. Please zoom in further</string>
+    <string name="create_new_note_description">You can leave a public note here. Move the marker by moving the map:</string>
 </resources>

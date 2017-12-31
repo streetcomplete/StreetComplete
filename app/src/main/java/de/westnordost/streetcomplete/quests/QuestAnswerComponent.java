@@ -58,11 +58,6 @@ public class QuestAnswerComponent
 		callbackListener.onLeaveNote(questId, questGroup, questTitle, text, imagePaths);
 	}
 
-	public void onLeaveNote(String text, ArrayList<String> imagePaths, LatLon position)
-	{
-		callbackListener.onLeaveNote(text, imagePaths, position);
-	}
-
 	public void onSkippedQuest()
 	{
 		callbackListener.onSkippedQuest(questId, questGroup);

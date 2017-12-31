@@ -249,7 +249,7 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 		questAnswerComponent.onSkippedQuest();
 	}
 
-	private int getQuestTitleResId()
+	protected int getQuestTitleResId()
 	{
 		if(questType instanceof OsmElementQuestType)
 		{

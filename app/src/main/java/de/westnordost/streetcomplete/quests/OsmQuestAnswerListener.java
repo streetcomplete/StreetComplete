@@ -18,7 +18,4 @@ public interface OsmQuestAnswerListener
 
 	/** Called when the user chose to skip the quest */
 	void onSkippedQuest(long questId, QuestGroup group);
-
-	/** Called when the user wants to leave a note which is not related to a quest */
-	void onLeaveNote(String note, ArrayList<String> imagePaths, LatLon position);
 }

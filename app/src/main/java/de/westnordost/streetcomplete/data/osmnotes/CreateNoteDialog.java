@@ -1,8 +1,9 @@
 package de.westnordost.streetcomplete.data.osmnotes;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,17 +12,18 @@ import android.widget.Toast;
 
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.map.data.OsmLatLon;
+import de.westnordost.streetcomplete.MainActivity;
 import de.westnordost.streetcomplete.R;
-import de.westnordost.streetcomplete.quests.QuestAnswerComponent;
+import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 import de.westnordost.streetcomplete.quests.note_discussion.AttachPhotoFragment;
 
 
-public class CreateNoteDialog extends DialogFragment
+public class CreateNoteDialog extends AbstractQuestAnswerFragment
 {
 
 	private EditText noteInput;
 
-	private QuestAnswerComponent questAnswerComponent;
+	private CreateNoteAnswerComponent createNoteAnswerComponent;
 
 	public static final String ARG_LAT = "latitude";
 	public static final String ARG_LON = "longitude";
@@ -29,19 +31,24 @@ public class CreateNoteDialog extends DialogFragment
 	public CreateNoteDialog()
 	{
 		super();
-		questAnswerComponent = new QuestAnswerComponent();
+		createNoteAnswerComponent = new CreateNoteAnswerComponent();
 	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState)
 	{
-		View view = inflater.inflate(R.layout.dialog_create_note, container, false);
+		View view = super.onCreateView(inflater, container, savedInstanceState);
 
-		view.findViewById(R.id.buttonCancel).setOnClickListener(v -> onClickCancel());
-		view.findViewById(R.id.buttonOk).setOnClickListener(v -> onClickOk());
+		View contentView = setContentView(R.layout.create_note);
+		View buttonPanel = setButtonsView(R.layout.quest_buttonpanel_ok_cancel);
 
-		noteInput = view.findViewById(R.id.noteInput);
+		buttonPanel.findViewById(R.id.buttonCancel).setOnClickListener(v -> onClickCancel());
+		buttonPanel.findViewById(R.id.buttonOk).setOnClickListener(v -> onClickOk());
+
+		noteInput = contentView.findViewById(R.id.noteInput);
+
+		buttonOtherAnswers.setVisibility(View.GONE);
 
 		return view;
 	}
@@ -53,6 +60,13 @@ public class CreateNoteDialog extends DialogFragment
 		{
 			getChildFragmentManager().beginTransaction().add(R.id.attachPhotoFragment, new AttachPhotoFragment()).commit();
 		}
+	}
+
+	@Override
+	public void onAttach(Context ctx)
+	{
+		super.onAttach(ctx);
+		createNoteAnswerComponent.onAttach((CreateNoteListener) ctx);
 	}
 
 	private @Nullable AttachPhotoFragment getAttachPhotoFragment()
@@ -76,14 +90,26 @@ public class CreateNoteDialog extends DialogFragment
 		Double longitude = getArguments().getDouble(ARG_LON);
 		LatLon position = new OsmLatLon(latitude, longitude);
 
-		questAnswerComponent.onLeaveNote(noteText, f != null ? f.getImagePaths() : null, position);
-		dismiss();
+		createNoteAnswerComponent.onLeaveNote(noteText, f != null ? f.getImagePaths() : null, position);
+
+		getActivity().getSupportFragmentManager().popBackStackImmediate(MainActivity.BOTTOM_SHEET, FragmentManager.POP_BACK_STACK_INCLUSIVE);
 	}
 
 	private void onClickCancel()
 	{
 		AttachPhotoFragment f = getAttachPhotoFragment();
 		if(f != null) f.deleteImages();
-		dismiss();
+
+		getActivity().getSupportFragmentManager().popBackStackImmediate(MainActivity.BOTTOM_SHEET, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+	}
+
+	@Override public boolean hasChanges()
+	{
+		return !noteInput.getText().toString().trim().isEmpty();
+	}
+
+	@Override protected int getQuestTitleResId()
+	{
+		return R.string.action_note;
 	}
 }

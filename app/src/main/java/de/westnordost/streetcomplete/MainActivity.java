@@ -49,6 +49,7 @@ import de.westnordost.osmapi.common.errors.OsmConnectionException;
 import de.westnordost.streetcomplete.about.AboutFragment;
 import de.westnordost.streetcomplete.data.Quest;
 import de.westnordost.streetcomplete.data.QuestAutoSyncer;
+import de.westnordost.streetcomplete.data.osmnotes.CreateNoteListener;
 import de.westnordost.streetcomplete.data.upload.QuestChangesUploadProgressListener;
 import de.westnordost.streetcomplete.data.upload.QuestChangesUploadService;
 import de.westnordost.streetcomplete.data.QuestController;
@@ -82,7 +83,7 @@ import de.westnordost.osmapi.map.data.OsmElement;
 import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 
 public class MainActivity extends AppCompatActivity implements
-		OsmQuestAnswerListener, VisibleQuestListener, QuestsMapFragment.Listener, MapFragment.Listener
+		OsmQuestAnswerListener, CreateNoteListener, VisibleQuestListener, QuestsMapFragment.Listener, MapFragment.Listener
 {
 	@Inject CrashReportExceptionHandler crashReportExceptionHandler;
 
@@ -363,15 +364,21 @@ public class MainActivity extends AppCompatActivity implements
 		else
 		{
 			CreateNoteFragment f = new CreateNoteFragment();
-			Bundle args = new Bundle();
+			AbstractQuestAnswerFragment form = f.createForm();
+
+			Bundle args = QuestAnswerComponent.createArguments(123, QuestGroup.OSM_NOTE);
 			LatLon pos = mapFragment.getPosition();
 			args.putDouble(CreateNoteDialog.ARG_LAT, pos.getLatitude());
 			args.putDouble(CreateNoteDialog.ARG_LON, pos.getLongitude());
-			f.setArguments(args);
+			form.setArguments(args);
 
 			FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-			ft.add(R.id.map_create_note_container, f, CREATE_NOTE);
-			ft.addToBackStack(CREATE_NOTE);
+			ft.setCustomAnimations(
+					R.animator.quest_answer_form_appear, R.animator.quest_answer_form_disappear,
+					R.animator.quest_answer_form_appear, R.animator.quest_answer_form_disappear);
+			ft.add(R.id.map_bottom_sheet_container, f, BOTTOM_SHEET);
+			ft.add(R.id.map_bottom_sheet_container, form, BOTTOM_SHEET);
+			ft.addToBackStack(BOTTOM_SHEET);
 			ft.commit();
 		}
 	}
@@ -585,8 +592,7 @@ public class MainActivity extends AppCompatActivity implements
 
 	/* ------------ Managing bottom sheet (quest details) and interaction with map  ------------- */
 
-	private final static String BOTTOM_SHEET = "bottom_sheet";
-	public final static String CREATE_NOTE = "create_note";
+	public final static String BOTTOM_SHEET = "bottom_sheet";
 
 	@Override public void onBackPressed()
 	{
@@ -625,11 +631,6 @@ public class MainActivity extends AppCompatActivity implements
 		questController.createNote(questId, questTitle, note, imagePaths);
 	}
 
-	@Override public void onLeaveNote(String note, ArrayList<String> imagePaths, LatLon position)
-	{
-		questController.createNote(note, imagePaths, position);
-	}
-
 	@Override public void onSkippedQuest(long questId, QuestGroup group)
 	{
 		closeQuestDetailsFor(questId, group);
@@ -642,6 +643,13 @@ public class MainActivity extends AppCompatActivity implements
 		{
 			closeQuestDetails();
 		}
+	}
+
+	/* ------------- CreateNoteListener ------------- */
+
+	@Override public void onLeaveNote(String note, ArrayList<String> imagePaths, LatLon position)
+	{
+		questController.createNote(note, imagePaths, position);
 	}
 
 	/* ------------- VisibleQuestListener ------------- */

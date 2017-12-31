@@ -67,11 +67,4 @@
         android:clipChildren="false">
     </FrameLayout>
 
-    <FrameLayout
-        android:id="@+id/map_create_note_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clipChildren="false">
-    </FrameLayout>
-
  </RelativeLayout >

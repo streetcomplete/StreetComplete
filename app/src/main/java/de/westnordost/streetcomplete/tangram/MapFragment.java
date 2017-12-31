@@ -46,14 +46,17 @@ import java.io.File;
 
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.streetcomplete.ApplicationConstants;
+import de.westnordost.streetcomplete.MainActivity;
 import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.R;
+import de.westnordost.streetcomplete.data.QuestGroup;
 import de.westnordost.streetcomplete.data.osmnotes.CreateNoteDialog;
 import de.westnordost.streetcomplete.data.osmnotes.CreateNoteFragment;
+import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
+import de.westnordost.streetcomplete.quests.QuestAnswerComponent;
 import de.westnordost.streetcomplete.util.SphericalEarthMath;
 
 import static android.content.Context.SENSOR_SERVICE;
-import static de.westnordost.streetcomplete.MainActivity.CREATE_NOTE;
 
 public class MapFragment extends Fragment implements
 		FragmentCompat.OnRequestPermissionsResultCallback, LocationListener,
@@ -391,15 +394,21 @@ public class MapFragment extends Fragment implements
 		else
 		{
 			CreateNoteFragment f = new CreateNoteFragment();
-			Bundle args = new Bundle();
+			AbstractQuestAnswerFragment form = f.createForm();
+
+			Bundle args = QuestAnswerComponent.createArguments(123, QuestGroup.OSM_NOTE);
 			LngLat pos = controller.getPosition();
 			args.putDouble(CreateNoteDialog.ARG_LAT, pos.latitude);
 			args.putDouble(CreateNoteDialog.ARG_LON, pos.longitude);
-			f.setArguments(args);
+			form.setArguments(args);
 
 			FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-			ft.add(R.id.map_create_note_container, f, CREATE_NOTE);
-			ft.addToBackStack(CREATE_NOTE);
+			ft.setCustomAnimations(
+					R.animator.quest_answer_form_appear, R.animator.quest_answer_form_disappear,
+					R.animator.quest_answer_form_appear, R.animator.quest_answer_form_disappear);
+			ft.add(R.id.map_bottom_sheet_container, f, MainActivity.BOTTOM_SHEET);
+			ft.add(R.id.map_bottom_sheet_container, form, MainActivity.BOTTOM_SHEET);
+			ft.addToBackStack(MainActivity.BOTTOM_SHEET);
 			ft.commit();
 		}
 	}
@@ -710,5 +719,10 @@ public class MapFragment extends Fragment implements
 	public float getRotation()
 	{
 		return controller != null ? controller.getRotation() : 0;
+	}
+
+	public float getZoom()
+	{
+		return controller.getZoom();
 	}
 }
