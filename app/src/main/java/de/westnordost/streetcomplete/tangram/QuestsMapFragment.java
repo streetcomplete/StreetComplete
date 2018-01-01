@@ -20,6 +20,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
@@ -121,6 +122,8 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 	@Override protected void loadScene(String sceneFilePath)
 	{
 		List<SceneUpdate> sceneUpdates = spriteSheetCreator.get();
+		sceneUpdates.add(new SceneUpdate("global.ux_language", Locale.getDefault().getLanguage()));
+
 		controller.loadSceneFile(sceneFilePath, sceneUpdates);
 	}
 
