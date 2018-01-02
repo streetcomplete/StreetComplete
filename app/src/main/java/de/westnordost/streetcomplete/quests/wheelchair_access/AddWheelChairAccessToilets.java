@@ -23,6 +23,7 @@ public class AddWheelChairAccessToilets extends SimpleOverpassQuestType
 	{
 		return " nodes, ways with " +
 				" amenity=toilets" +
+				" and access !~ private|customers" +
 				" and !wheelchair";
 	}
 
