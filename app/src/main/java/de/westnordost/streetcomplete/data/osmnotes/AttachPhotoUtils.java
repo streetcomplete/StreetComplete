@@ -38,10 +38,13 @@ public class AttachPhotoUtils
 		{
 			for (String path : imagePaths)
 			{
-				File file = new File(path);
-				if (file.exists())
+				if(path != null)
 				{
-					file.delete();
+					File file = new File(path);
+					if (file.exists())
+					{
+						file.delete();
+					}
 				}
 			}
 		}

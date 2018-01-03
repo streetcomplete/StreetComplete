@@ -150,10 +150,13 @@ public class AttachPhotoFragment extends Fragment
 
 	private void removeCurrentImage()
 	{
-		File photoFile = new File(currentImagePath);
-		if (photoFile.exists())
+		if(currentImagePath != null)
 		{
-			photoFile.delete();
+			File photoFile = new File(currentImagePath);
+			if (photoFile.exists())
+			{
+				photoFile.delete();
+			}
 		}
 	}
 
