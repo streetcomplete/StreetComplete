@@ -198,5 +198,14 @@ public class AddCycleway implements OsmElementQuestType
 	@Override public int getTitle() { return R.string.quest_cycleway_title; }
 
 	@Override public int getDefaultDisabledMessage() { return 0; }
-	@Override public Countries getEnabledForCountries() { return Countries.ALL; }
+	@Override public Countries getEnabledForCountries()
+	{
+		return Countries.noneExcept(new String[]
+		{
+			// most of Western Europe (from North to South):
+			"NO","SE","FI","IS","GB","DK","IE","DE","PL","NL","BE","FR","LU","AT","CH","IT","ES",
+			// East Asia
+			"JP","KR","TW"
+		});
+	}
 }
