@@ -24,6 +24,7 @@ import de.westnordost.streetcomplete.data.osm.tql.FiltersParser;
 import de.westnordost.streetcomplete.data.osm.tql.TagFilterExpression;
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
 import de.westnordost.streetcomplete.util.SphericalEarthMath;
+import de.westnordost.streetcomplete.view.CompassView;
 import de.westnordost.streetcomplete.view.ListAdapter;
 import de.westnordost.streetcomplete.view.StreetSideSelectPuzzle;
 import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
@@ -46,6 +47,7 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 
 
 	private StreetSideSelectPuzzle puzzle;
+	private CompassView compassView;
 	private float wayOrientationAtCenter;
 
 	private boolean isDefiningBothSides;
@@ -61,6 +63,8 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 
 		puzzle = view.findViewById(R.id.puzzle);
 		puzzle.setListener(this::showCyclewaySelectionDialog);
+
+		compassView = view.findViewById(R.id.compassNeedle);
 
 		wayOrientationAtCenter = getWayOrientationAtCenterLineInDegrees(getElementGeometry());
 
@@ -133,13 +137,19 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 		outState.putBoolean(DEFINE_BOTH_SIDES, isDefiningBothSides);
 	}
 
-	@AnyThread public void onMapOrientation(float rotation, float tilt)
+	@AnyThread public void onMapOrientation(final float rotation, final float tilt)
 	{
-		if(puzzle == null) return;
-		float rotationInDegrees = (float) (rotation * 180 / Math.PI);
+		final float rotationInDegrees = (float) (rotation * 180 / Math.PI);
 		getActivity().runOnUiThread(() ->
 		{
-			puzzle.setStreetRotation(wayOrientationAtCenter + rotationInDegrees);
+			if(puzzle != null)
+			{
+				puzzle.setStreetRotation(wayOrientationAtCenter + rotationInDegrees);
+			}
+			if(compassView != null)
+			{
+				compassView.setOrientation(rotation, tilt);
+			}
 		});
 	}
 
