@@ -36,7 +36,7 @@ public abstract class SimpleOverpassQuestType implements OsmElementQuestType
 		return overpassServer.getAndHandleQuota(getOverpassQuery(bbox), handler);
 	}
 
-	@Override public boolean appliesTo(Element element)
+	@Override public Boolean isApplicableTo(Element element)
 	{
 		return filter.matches(element);
 	}

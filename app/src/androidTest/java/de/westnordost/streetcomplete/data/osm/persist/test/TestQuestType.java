@@ -27,7 +27,7 @@ public class TestQuestType implements OsmElementQuestType
 	@Override public int getIcon() { return 0; }
 	@Override public int getTitle() { return 0; }
 	@Override public int getTitle(Map<String,String> tags) { return 0; }
-	@Override public boolean appliesTo(Element element) { return false; }
+	@Override public Boolean isApplicableTo(Element element) { return false; }
 
 	@Override public int getDefaultDisabledMessage() { return 0; }
 

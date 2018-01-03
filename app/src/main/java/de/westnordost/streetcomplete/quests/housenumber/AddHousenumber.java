@@ -132,7 +132,7 @@ public class AddHousenumber implements OsmElementQuestType
 		}
 	}
 
-	@Override public boolean appliesTo(Element element)
+	@Override public Boolean isApplicableTo(Element element)
 	{
 		/* Whether this element applies to this quest cannot be determined by looking at that
 		   element alone (see download()), an Overpass query would need to be made to find this out.
@@ -142,7 +142,7 @@ public class AddHousenumber implements OsmElementQuestType
 		   as consequence of solving another quest and also after reverting an input,
 		   the quest will not immediately pop up again. Instead, they are downloaded well after an
 		   element became fit for this quest. */
-		return false;
+		return null;
 	}
 
 	@Override public AbstractQuestAnswerFragment createForm() { return new AddHousenumberForm(); }

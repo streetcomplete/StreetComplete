@@ -17,8 +17,8 @@ public interface OsmElementQuestType extends QuestType
 	void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes);
 
 	/** whether a quest of this quest type could be created out of the given element. If the
-	 *  element alone does not suffice to find this out, this should return false */
-	boolean appliesTo(Element element);
+	 *  element alone does not suffice to find this out, this should return null */
+	Boolean isApplicableTo(Element element);
 
 	/** @return the commit message to be used for this quest type */
 	String getCommitMessage();

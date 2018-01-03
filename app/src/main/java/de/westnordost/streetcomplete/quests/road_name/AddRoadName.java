@@ -153,7 +153,7 @@ public class AddRoadName implements OsmElementQuestType
 		return result;
 	}
 
-	@Override public boolean appliesTo(Element element)
+	@Override public Boolean isApplicableTo(Element element)
 	{
 		return ROADS_WITHOUT_NAMES_TFE.matches(element);
 	}

@@ -271,7 +271,7 @@ public class OsmQuestChangesUploadTest extends TestCase
 		@Override public int getIcon() { return 0; }
 		@Override public int getTitle() { return 0; }
 		@Override public int getTitle(Map<String,String> tags) { return 0; }
-		@Override public boolean appliesTo(Element element) { return false; }
+		@Override public Boolean isApplicableTo(Element element) { return false; }
 
 		@Override public String[] getDisabledForCountries()	{ return null; }
 		@Override public int getDefaultDisabledMessage() { return 0; }

@@ -154,7 +154,7 @@ public class OsmQuestDownloadTest extends TestCase
 		@Override public int getTitle(Map<String,String> tags) { return 0; }
 		@Override public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes) {}
 		@Override public String getCommitMessage() { return null; }
-		@Override public boolean appliesTo(Element element) { return false; }
+		@Override public Boolean isApplicableTo(Element element) { return false; }
 
 		@Override public String[] getDisabledForCountries()	{ return null; }
 		@Override public int getDefaultDisabledMessage() { return 0; }
