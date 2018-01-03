@@ -58,9 +58,29 @@ public class AddCycleway implements OsmElementQuestType
 			}
 		}
 
+		applySidewalkAnswerTo(cyclewayLeft, cyclewayRight, changes);
+
 		if(answer.getBoolean(AddCyclewayForm.IS_ONEWAY_NOT_FOR_CYCLISTS))
 		{
 			changes.addOrModify("oneway:bicycle", "no");
+		}
+	}
+
+	private void applySidewalkAnswerTo(Cycleway cyclewayLeft, Cycleway cyclewayRight,
+									   StringMapChangesBuilder changes)
+	{
+		boolean hasSidewalkLeft = cyclewayLeft != null && cyclewayLeft.isOnSidewalk();
+		boolean hasSidewalkRight = cyclewayRight != null && cyclewayRight.isOnSidewalk();
+
+		Side side;
+		if(hasSidewalkLeft && hasSidewalkRight)	side = Side.BOTH;
+		else if(hasSidewalkLeft)				side = Side.LEFT;
+		else if(hasSidewalkRight)				side = Side.RIGHT;
+		else									side = null;
+
+		if(side != null)
+		{
+			changes.addOrModify("sidewalk", side.value);
 		}
 	}
 
@@ -109,12 +129,10 @@ public class AddCycleway implements OsmElementQuestType
 				// https://wiki.openstreetmap.org/wiki/File:Z240GemeinsamerGehundRadweg.jpeg
 				changes.add(cyclewayKey, "track");
 				changes.add(cyclewayKey + ":segregated", "no");
-				changes.addOrModify("sidewalk", side.value);
 				break;
 			case SIDEWALK_OK:
 				// https://wiki.openstreetmap.org/wiki/File:Z239Z1022-10GehwegRadfahrerFrei.jpeg
 				changes.add(cyclewayKey, "no");
-				changes.addOrModify("sidewalk", side.value);
 				changes.add("sidewalk:" + side.value + ":bicycle", "yes");
 				break;
 			case SHARED:

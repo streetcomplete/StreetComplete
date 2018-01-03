@@ -29,4 +29,9 @@ public enum Cycleway
 	{
 		return isLeftHandTraffic ? iconResIdLeft : iconResId;
 	}
+
+	public boolean isOnSidewalk()
+	{
+		return this == SIDEWALK || this == SIDEWALK_OK;
+	}
 }
