@@ -43,10 +43,10 @@ public abstract class SimpleOverpassQuestType implements OsmElementQuestType
 
 	@Override public final int getTitle()
 	{
-		return getTitle(Collections.<String, String>emptyMap());
+		return getTitle(Collections.emptyMap());
 	}
 
 	@Override public int getDefaultDisabledMessage() { return 0; }
 
-	@Override public String[] getDisabledForCountries()	{ return null; }
+	@Override public Countries getEnabledForCountries()	{ return Countries.ALL; }
 }

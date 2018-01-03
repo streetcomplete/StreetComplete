@@ -5,6 +5,7 @@ import android.os.Bundle;
 import java.util.Map;
 
 import de.westnordost.osmapi.map.data.BoundingBox;
+import de.westnordost.streetcomplete.data.osm.Countries;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
@@ -31,5 +32,5 @@ public class TestQuestType implements OsmElementQuestType
 
 	@Override public int getDefaultDisabledMessage() { return 0; }
 
-	@Override public String[] getDisabledForCountries() { return null; }
+	@Override public Countries getEnabledForCountries() { return Countries.ALL; }
 }

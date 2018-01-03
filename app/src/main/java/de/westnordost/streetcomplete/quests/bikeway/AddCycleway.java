@@ -10,6 +10,7 @@ import javax.inject.Inject;
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.streetcomplete.R;
+import de.westnordost.streetcomplete.data.osm.Countries;
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler;
@@ -197,5 +198,5 @@ public class AddCycleway implements OsmElementQuestType
 	@Override public int getTitle() { return R.string.quest_cycleway_title; }
 
 	@Override public int getDefaultDisabledMessage() { return 0; }
-	@Override public String[] getDisabledForCountries() { return null; }
+	@Override public Countries getEnabledForCountries() { return Countries.ALL; }
 }

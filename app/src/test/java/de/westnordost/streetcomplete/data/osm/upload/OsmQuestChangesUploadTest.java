@@ -26,6 +26,7 @@ import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.data.QuestStatus;
 import de.westnordost.streetcomplete.data.changesets.OpenChangesetKey;
 import de.westnordost.streetcomplete.data.changesets.OpenChangesetsDao;
+import de.westnordost.streetcomplete.data.osm.Countries;
 import de.westnordost.streetcomplete.data.osm.ElementGeometry;
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.OsmQuest;
@@ -273,7 +274,7 @@ public class OsmQuestChangesUploadTest extends TestCase
 		@Override public int getTitle(Map<String,String> tags) { return 0; }
 		@Override public Boolean isApplicableTo(Element element) { return false; }
 
-		@Override public String[] getDisabledForCountries()	{ return null; }
+		@Override public Countries getEnabledForCountries()	{ return Countries.ALL; }
 		@Override public int getDefaultDisabledMessage() { return 0; }
 	}
 

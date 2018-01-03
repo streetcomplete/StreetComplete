@@ -12,6 +12,7 @@ import javax.inject.Inject;
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.streetcomplete.R;
+import de.westnordost.streetcomplete.data.osm.Countries;
 import de.westnordost.streetcomplete.data.osm.ElementGeometry;
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler;
@@ -164,5 +165,5 @@ public class AddRoadName implements OsmElementQuestType
 	@Override public int getTitle(Map<String,String> tags) { return getTitle(); }
 
 	@Override public int getDefaultDisabledMessage() { return 0; }
-	@Override public String[] getDisabledForCountries() { return null; }
+	@Override public Countries getEnabledForCountries() { return Countries.ALL; }
 }
