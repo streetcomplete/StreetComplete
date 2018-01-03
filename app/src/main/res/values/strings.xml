@@ -209,7 +209,7 @@ To display the map, vector tiles are retrieved from the &lt;a href=\"https://map
     <string name="quest_maxspeed_answer_noSign">"There is no sign"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Are you sure no limit is posted?"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">"Did you check at the ends of the street?
-If there are no signs, default speed limits apply."</string>
+If there are no signs along the whole street which apply for the highlighted section, default speed limits apply."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Yes, no sign"</string>
 
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Where is this street?"</string>
