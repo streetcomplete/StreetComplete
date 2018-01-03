@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -185,16 +186,16 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 				if(isSingleTrackOrLane(rightSide))
 				{
 					bundle.putInt(CYCLEWAY_RIGHT_DIR, reverseDir);
-					isOnewayNotForCyclists = true;
 				}
+				isOnewayNotForCyclists = rightSide != Cycleway.NONE;
 			}
 			else
 			{
 				if(isSingleTrackOrLane(leftSide))
 				{
 					bundle.putInt(CYCLEWAY_LEFT_DIR, reverseDir);
-					isOnewayNotForCyclists = true;
 				}
+				isOnewayNotForCyclists = leftSide != Cycleway.NONE;
 			}
 
 			isOnewayNotForCyclists |= isDualTrackOrLane(leftSide);
@@ -234,7 +235,7 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 				.setView(recyclerView)
 				.create();
 
-		recyclerView.setAdapter(createAdapter(Arrays.asList(Cycleway.values()), cycleway ->
+		recyclerView.setAdapter(createAdapter(getCyclewayItems(isRight), cycleway ->
 		{
 			alertDialog.dismiss();
 
@@ -252,6 +253,20 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 			}
 		}));
 		alertDialog.show();
+	}
+
+	private List<Cycleway> getCyclewayItems(boolean isRight)
+	{
+		List<Cycleway> values = new ArrayList<>(Arrays.asList(Cycleway.values()));
+		if(isOneway() && isReverseSideRight() == isRight)
+		{
+			values.remove(Cycleway.SHARED);
+		}
+		else
+		{
+			values.remove(Cycleway.NONE_NO_ONEWAY);
+		}
+		return values;
 	}
 
 	private interface OnCyclewaySelected { void onCyclewaySelected(Cycleway cycleway); }

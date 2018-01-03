@@ -101,6 +101,7 @@ public class AddCycleway implements OsmElementQuestType
 		switch (cycleway)
 		{
 			case NONE:
+			case NONE_NO_ONEWAY:
 				changes.add(cyclewayKey, "no");
 				break;
 			case LANE:
