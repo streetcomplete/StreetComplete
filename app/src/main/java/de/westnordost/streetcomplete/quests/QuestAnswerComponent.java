@@ -4,7 +4,6 @@ import android.os.Bundle;
 
 import java.util.ArrayList;
 
-import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.streetcomplete.data.QuestGroup;
 
 public class QuestAnswerComponent
