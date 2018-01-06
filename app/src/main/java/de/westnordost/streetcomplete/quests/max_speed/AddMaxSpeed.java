@@ -23,6 +23,7 @@ public class AddMaxSpeed extends SimpleOverpassQuestType
 		return "ways with highway ~ " +
 		       "motorway|trunk|primary|secondary|tertiary|unclassified|residential" +
 		       " and !maxspeed and !maxspeed:forward and !maxspeed:backward" +
+		       " and motor_vehicle !~ private|no" + // exclude streets for passengers/bikes/… only
 		       " and !source:maxspeed and !zone:maxspeed and !maxspeed:type" + // implicit speed limits
 		       " and (access !~ private|no or (foot and foot !~ private|no))"; // no private roads
 	}
