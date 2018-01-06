@@ -14,7 +14,7 @@ public class CountryInfo implements Serializable, Cloneable
 	String countryCode;
 
 	// generic properties
-	String speedUnit;
+	List<String> speedUnit;
 	List<String> popularSports;
 	String firstDayOfWorkweek;
 	Integer regularShoppingDays;
@@ -32,7 +32,7 @@ public class CountryInfo implements Serializable, Cloneable
 	String livingStreetSign;
 	String advisorySpeedLimitLayout;
 
-	public String getSpeedUnit()
+	public List<String> getSpeedUnits()
 	{
 		return speedUnit;
 	}

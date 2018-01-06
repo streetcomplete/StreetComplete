@@ -1,6 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
+maxspeedLayout: quest_maxspeed_us
 officialLanguages: [en]
 orchardProduces: [coffee, banana, orange, guava, mango, mangosteen, avocado, pineapple, tomatoe, coconut,
   papaya, grapefruit, chilli_pepper, sweet_pepper, lemon, lime]
 popularSports: [basketball, tennis, baseball]
-speedUnit: mph
+speedUnit: [mph, km/h]

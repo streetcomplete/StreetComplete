@@ -1,28 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                xmlns:tools="http://schemas.android.com/tools">
 
-    <FrameLayout
+    <LinearLayout
         android:layout_centerInParent="true"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:background="@drawable/background_rectangular_sign_blue"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="vertical">
 
         <EditText
             android:id="@+id/maxSpeedInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:background="#00ffffff"
             android:textColor="#fff"
             android:inputType="number"
             android:gravity="center"
             android:textStyle="bold"
             android:maxLength="3"
-            android:textSize="48dp"/>
+            android:textSize="48dp"
+            tools:text="50"/>
 
-    </FrameLayout>
+        <Spinner
+            android:id="@+id/speedUnitSelect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#fff"
+            android:visibility="gone"
+            />
+
+    </LinearLayout>
 
 </RelativeLayout>

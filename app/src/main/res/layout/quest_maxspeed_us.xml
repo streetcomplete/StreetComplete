@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
         android:id="@+id/zoneContainer"
@@ -56,7 +57,15 @@
             android:gravity="center"
             android:textStyle="bold"
             android:maxLength="2"
-            android:textSize="42dp"/>
+            android:textSize="42dp"
+            tools:text="30"/>
+
+        <Spinner
+            android:id="@+id/speedUnitSelect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            />
 
     </LinearLayout>
 

@@ -3,3 +3,4 @@ isLeftHandTraffic: true
 officialLanguages: [en]
 orchardProduces: [coconut, banana, pepper, grapefruit, nutmeg, lemon, lime, orange, guava, mango, mangosteen,
   cacao, avocado, tomatoe, pineapple]
+speedUnit: [mph, km/h]
