@@ -200,12 +200,28 @@ public class AddCycleway implements OsmElementQuestType
 	@Override public int getDefaultDisabledMessage() { return 0; }
 	@Override public Countries getEnabledForCountries()
 	{
+		// #749. sources:
+		// Google Street View (driving around in virtual car)
+		// https://en.wikivoyage.org/wiki/Cycling
+		// http://peopleforbikes.org/get-local/ (US)
 		return Countries.noneExcept(new String[]
 		{
-			// most of Western Europe (from North to South):
-			"NO","SE","FI","IS","GB","DK","IE","DE","PL","NL","BE","FR","LU","AT","CH","IT","ES",
+			// all of Northern and Western Europe, most of Central Europe, some of Southern Europe
+			"NO","SE","FI","IS","DK",
+			"GB","IE","NL","BE","FR","LU",
+			"DE","PL","CZ","HU","AT","CH",
+			"ES","IT",
 			// East Asia
-			"JP","KR","TW"
+			"JP","KR","TW",
+			// Australia etc
+			"NZ","AU",
+			// some of Canada
+			"CA-BC","CA-QC","CA-ON","CA-NS","CA-PE",
+			// some of the US
+			// West Coast, East Coast, Center
+			"US-WA","US-OR","US-CA",
+			"US-MA","US-NJ","US-DC",
+			"US-MN"
 		});
 	}
 }
