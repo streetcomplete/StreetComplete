@@ -256,8 +256,8 @@
     <string name="quest_maxspeed_title_short">"這條街的道路速限牌顯示多少？"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"這個速限看來怪怪的。"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"你確定沒有速限限制嗎？"</string>
-    <string name="quest_maxspeed_answer_noSign_confirmation">"你有在街道盡頭確認嗎？
-不然如果沒有速限牌，視為以預設的速限為準。"</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation">"你有到街尾檢查嗎？
+如果整條路都沒有標示的區塊，那麼會套用預設限制。"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"對，並沒有速限牌"</string>
     <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"市區道路跟鄉村的預設速限並不相同。"</string>
     <string name="quest_maxspeed_answer_noSign_urbanOk">"市區"</string>
@@ -450,4 +450,8 @@
     <string name="quest_housenumber_conscription_number">"徵兵號碼"</string>
     <string name="quest_housenumber_street_number_optional">"定位號碼 (選填)"</string>
     <string name="quest_housenumber_conscription_number_required">"徵兵號碼必須被指定"</string>
+    <string name="quest_cycleway_answer_contraflow_cycleway">"另一側也有單車道"</string>
+    <string name="need_specify_both_sides">"你必須註明兩側都有"</string>
+    <string name="quest_openingHours_emptyAnswer">"你必須描述標示狀況。如果沒有標示，那麼你必須到店裡詢問。"</string>
+    <string name="quest_cycleway_value_none_but_no_oneway">"無，但單車騎士可能兩個方向都能騎乘"</string>
 </resources>

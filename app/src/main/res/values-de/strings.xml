@@ -253,7 +253,7 @@ Die von dir eingegebenen Informationen werden dann direkt in deinem Namen zu Ope
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Diese Höchstgeschwindigkeit scheint nicht plausibel."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Bist du sicher, dass keine Höchstgeschwindigkeit angegeben ist?"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">"Hast Du am anderen Ende der Straße nachgeschaut?
-Wenn dort kein Schild steht, gelten die gesetzlichen Geschwindigkeitsbegrenzungen."</string>
+Wenn es keine Schilder entlang der gesamten Straße gibt, die für den hervorgehobenen Abschnitt gelten, gelten die gesetzlichen Geschwindigkeitsbegrenzungen."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Ja, kein Schild"</string>
     <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Innerorts gelten andere Geschwindigkeitsbegrenzungen als außerorts."</string>
     <string name="quest_maxspeed_answer_noSign_urbanOk">"Innerorts"</string>
@@ -412,7 +412,7 @@ Andernfalls kannst Du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="about_category_feedback">"Feedback"</string>
     <string name="quest_leave_new_note_photo">"Foto anhängen"</string>
     <string name="quest_leave_new_note_photo_delete_title">"Dieses Foto löschen?"</string>
-    <string name="privacy_html_image_upload">"&lt;p&gt;Fotos die an Notizen angehängt werden, werden hochgeladen auf&lt;a href=\"https://lut.im\"&gt;lut.im&lt;/a&gt;, ein anonymer Service ohne Tracking.&lt;/p&gt;"</string>
+    <string name="privacy_html_image_upload">"&lt;p&gt;Fotos die an Notizen angehängt werden, werden hochgeladen auf &lt;a href=\"https://lut.im\"&gt;lut.im&lt;/a&gt;, ein anonymer Service ohne Tracking.&lt;/p&gt;"</string>
     <string name="quest_cycleway_value_track">"Fahrradweg"</string>
     <string name="quest_cycleway_value_lane">"Radfahrstreifen"</string>
     <string name="quest_cycleway_value_none">"kein"</string>
@@ -448,4 +448,6 @@ Andernfalls kannst Du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="quest_housenumber_conscription_number_required">"Eine Konskriptionsnummer muss angegeben werden"</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">"Fahrradweg auch auf anderer Seite"</string>
     <string name="need_specify_both_sides">"Beide Seiten müssen angegeben werden"</string>
+    <string name="quest_openingHours_emptyAnswer">"Du musst schreiben, was auf dem Schild steht. Wenn es kein Schild gibt, solltest Du drinnen nach den Öffnungszeiten fragen."</string>
+    <string name="quest_cycleway_value_none_but_no_oneway">"kein, aber Fahrradfahrer dürfen die Straße in beide Richtungen fahren"</string>
 </resources>

@@ -21,19 +21,19 @@
     <string name="map_attribution_mapzen">"طراحی شده توسط %s"</string>
     <string name="map_attribution_osm">"© همکاران OpenStreetMap"</string>
     <string name="quest_generic_otherAnswers">"دیگر پاسخ ها ..."</string>
-    <string name="quest_generic_answer_notApplicable">"نمیتوان اظهار نظر کرد"</string>
+    <string name="quest_generic_answer_notApplicable">"نمی‌توان اظهار نظر کرد"</string>
     <string name="quest_generic_confirmation_title">"شما مطمئن هستید؟"</string>
     <string name="quest_generic_confirmation_yes">"بله مطمئنم"</string>
-    <string name="quest_generic_confirmation_no">"من بررسی خواهم کرد"</string>
+    <string name="quest_generic_confirmation_no">"بررسی خواهم کرد"</string>
     <string name="quest_generic_error_field_empty">"شما این قسمت را خالی گذاشته‌اید"</string>
-    <string name="quest_leave_new_note_title">"به جای آن یک یاداشت می‌گذارید؟"</string>
+    <string name="quest_leave_new_note_title">"در عوض یک یاداشت می‌گذارید؟"</string>
 
     <!-- بهتر نیست به جای نقشه بردار نقشه کش یا یه عبارت دیگه به کار ببریم؟ به نظرم با توجه به معنی اصلی کلمه در اینجا مناسب نباشه -->
     <string name="quest_leave_new_note_description">"شما می توانید یک یادداشت عمومی در این مکان بگذارید که نقشه کش های دیگر در مورد آن نظر دهند و امیدواریم موضوع حل شود:"</string>
     <string name="quest_leave_new_note_yes">"تایید"</string>
     <string name="quest_leave_new_note_no">"نه، فقط پنهان کن"</string>
     <string name="quest_streetName_title">"نام این مسیر چیست؟"</string>
-    <string name="quest_streetName_description">"همانگونه که در علائم خیابان نوشته شده، کلمات اختصاری را وارد نمایید:"</string>
+    <string name="quest_streetName_description">"همانگونه که در نام خیابان نوشته شده، کلمات اختصاری را هم وارد نمایید:"</string>
     <string name="quest_streetName_answer_noName_confirmation_description">"گاهی علائم خیابان تنها در یک سوی خیابان است. همچنین توجه داشته باشید که ممکن است علائم خیابانی تکمیلی برای معابر فرعی که به خیابان اصلی متصل هستند، وجود نداشته باشد. معمولا هر خیابان یا خانه دارای یک نام است."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"اگر نام را بدون اختصار می نویسید، باید آن را توضیح دهید. بسیاری از کلمات اختصاری اغلب در حالی که شما می نویسید، به طور خودکار توسط صفحه کلید هوشمند به کلمه اصلی باز می گردند، البته نه همه آنها."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"بدون اختصار"</string>
@@ -69,7 +69,7 @@
     <string name="download_error">"خطا هنگام جستجوی جستارها"</string>
     <string name="upload_error">"خطا هنگام بارگیری پاسخ‌ها"</string>
     <string name="download_area_too_big">"لطفا بیشتر بزرگنمایی کنید"</string>
-    <string name="confirmation_cancel_prev_download_title">"به جای آن ، جستجوی فعلی را لغو کنید و اینجا را جستجو کنید"</string>
+    <string name="confirmation_cancel_prev_download_title">"درعوض ، جستجوی فعلی را لغو کنید و اینجا را جستجو کنید"</string>
     <string name="notification_downloading">"جستجو برای جستارها..."</string>
     <string name="now_downloading_toast">"جستجو برای جستارهای دیگر..."</string>
     <string name="turn_on_location_request">"مکان نما خاموش است. باز کردن تنظیمات برای روشن کردن آن؟"</string>
@@ -84,8 +84,7 @@
     <string name="about_title_feedback">"ارائه بازخورد"</string>
     <string name="about_title_license">"مجوز"</string>
     <string name="about_summary_license">"مجوز جامع عمومی گنو"</string>
-    <string name="offline">"شما متصل نیستید
-برون‌خط"</string>
+    <string name="offline">"شما متصل نیستید"</string>
     <string name="confirmation_authorize_now">"برای اعمال تغییرات ، نیاز به ورود با حساب کاربری خود در OSM دارید. آیا اکنون اجازه می دهید؟"</string>
     <string name="not_authorized">"مجاز نیست"</string>
     <string name="version_banned_message">"این نسخه از برنامه اجازه بارگذاری پاسخ ها را ندارد! لطفا این نسخه را به روز کنید!"</string>
@@ -413,7 +412,7 @@
     <string name="quest_buildingLevels_answer_description">"در این بخش ، ارتفاع این قسمت از ساختمان را وارد نمایید"</string>
     <string name="unglue_hint">"یک نما را برای این مکان انتخاب کنید"</string>
     <string name="pref_title_not_authorized_summary2">"برای ورود به سامانه با مرورگر خود وارد شوید."</string>
-    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"آیا مسیر پیاده روی این راه به صورت فیزیکی مجزا شده است (یعنی از طریق یک مانع)؟ محدودیت سرعت پیشفرض بستگی به این دارد که آیا این مورد است یا خیر"</string>
+    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"آیا مسیر پیاده روی این راه به صورت فیزیکی مجزا شده است (یعنی از طریق یک مانع)؟ محدودیت سرعت پیشفرض بستگی به این دارد که آیا این مورد وجود دارد یا خیر"</string>
     <string name="about_category_feedback">"بازخورد"</string>
     <string name="quest_leave_new_note_photo">"پیوست کردن تصویر"</string>
     <string name="quest_leave_new_note_photo_delete_title">"آیا می خواهید این تصویر را حذف کنید؟"</string>
@@ -437,12 +436,12 @@
     <string name="undo_confirm_positive">"برگشت"</string>
     <string name="undo_confirm_negative">"لغو"</string>
     <string name="quest_dietType_vegetarian_name_title">"آیا در %s خوراک گیاهی در منو وجود دارد؟"</string>
-    <string name="quest_dietType_vegan_name_title">"آیا در %s وعده های خوراکی گیاه خواری وگان در منو وجود دارد؟"</string>
+    <string name="quest_dietType_vegan_name_title">"آیا در %s وعده های گیاه خواری وگان در منو وجود دارد؟"</string>
     <string name="quest_hasFeature_only">"فقط"</string>
     <string name="quest_dietType_explanation_vegan">"وعده غذایی وگان بدون اجزاء حیوانی (بدون گوشت، بدون محصولات شیر، بدون تخم مرغ، ...)."</string>
     <string name="quest_dietType_explanation_vegetarian">"خوراک گیاهی بدون گوشت"</string>
-    <string name="quest_dietType_explanation">"اگر فقط تایید کنید بدین معنی است که در این محل برای هر ذائقه خوراک سرو می شود ، در صورت عدم تایید ادامه دهید"</string>
-    <string name="quest_carWashType_title">"روش نظافت خودرو به چگونه است؟"</string>
+    <string name="quest_dietType_explanation">"اگر فقط تایید کنید بدین معنی است که در این محل برای هر نوع ذائقه خوراک سرو می شود ، در صورت عدم تایید ادامه دهید"</string>
+    <string name="quest_carWashType_title">"روش نظافت خودرو چگونه است؟"</string>
     <string name="quest_carWashType_automated">"خودکار"</string>
     <string name="quest_carWashType_selfService">"نظافت خودرو با دستگاه"</string>
     <string name="quest_carWashType_service">"نظافت خودرو توسط کارگر"</string>
