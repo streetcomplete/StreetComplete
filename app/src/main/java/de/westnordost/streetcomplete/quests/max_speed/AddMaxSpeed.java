@@ -1,12 +1,14 @@
 package de.westnordost.streetcomplete.quests.max_speed;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 
 import java.util.Map;
 
 import javax.inject.Inject;
 
 import de.westnordost.streetcomplete.R;
+import de.westnordost.streetcomplete.data.meta.OsmTaggings;
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
@@ -20,11 +22,15 @@ public class AddMaxSpeed extends SimpleOverpassQuestType
 
 	@Override protected String getTagFilters()
 	{
-		return "ways with highway ~ " +
-		       "motorway|trunk|primary|secondary|tertiary|unclassified|residential" +
-		       " and !maxspeed and !maxspeed:forward and !maxspeed:backward" +
-		       " and !source:maxspeed and !zone:maxspeed and !maxspeed:type" + // implicit speed limits
-		       " and (access !~ private|no or (foot and foot !~ private|no))"; // no private roads
+		return
+			"ways with highway ~ motorway|trunk|primary|secondary|tertiary|unclassified|residential" +
+			" and !maxspeed and !maxspeed:forward and !maxspeed:backward" +
+			" and !source:maxspeed and !zone:maxspeed and !maxspeed:type" + // implicit speed limits
+			// not any unpaved as they are unlikely developed enough to have speed limits signposted
+			" and surface !~" + TextUtils.join("|", OsmTaggings.ANYTHING_UNPAVED) +
+			// neither private roads nor roads that are not for cars
+			" and motor_vehicle !~ private|no" +
+			" and (access !~ private|no or (foot and foot !~ private|no))";
 	}
 
 	@Override public AbstractQuestAnswerFragment createForm()

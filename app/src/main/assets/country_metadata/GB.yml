@@ -9,4 +9,4 @@ officialLanguages: [en]
 orchardProduces: [apple, strawberry, raspberry, pear, plum, cherry, hop, grape, tomatoe, chilli_pepper,
   sweet_pepper]
 popularSports: [soccer, tennis, bowls, cricket, golf, basketball, rugby]
-speedUnit: mph
+speedUnit: [mph]

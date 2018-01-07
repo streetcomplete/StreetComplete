@@ -82,10 +82,13 @@ public class NoteImageAdapter extends ListAdapter<String>
 	{
 		String imagePath = getList().remove(index);
 
-		File image = new File(imagePath);
-		if(image.exists())
+		if(imagePath != null)
 		{
-			image.delete();
+			File image = new File(imagePath);
+			if (image.exists())
+			{
+				image.delete();
+			}
 		}
 		notifyItemRemoved(index);
 	}

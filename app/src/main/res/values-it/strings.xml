@@ -239,9 +239,7 @@ Le informazioni inserite vengono aggiunte direttamente su OpenStreetMap a tuo no
     <string name="quest_busStopShelter_name_title">"La fermata del autobus \"%s\" ha una pensilina?"</string>
     <string name="quest_toiletsFee_title">"Questi servizi igienici sono a pagamento?"</string>
     <string name="quest_tactilePaving_title_bus">"Questa fermata del autobus ha un pavimento tattile?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tactilePaving_title_crosswalk">"Questo attraversamento pedonale ha un attraversamento tattile?"</string>
+    <string name="quest_tactilePaving_title_crosswalk">"Questo attraversamento pedonale ha un'indicazione tattile su entrambi i lati?"</string>
     <string name="quest_source_dialog_title">"Hai controllato questa cosa sul posto?"</string>
     <string name="quest_tactilePaving_title_name_bus">"La fermata del autobus \"%s\" ha un pavimento tattile?"</string>
     <string name="quest_source_dialog_note">"Sarebbe più opportuno inserire dati verficati sul posto."</string>
@@ -264,7 +262,7 @@ Se non ci sono cartelli, saranno applicati dei limiti standard"</string>
     <string name="quest_sport_paddle_tennis">"Paddle tennis"</string>
     <string name="quest_sport_gaelic_games">"Giochi irlandesi"</string>
     <string name="quest_sport_sepak_takraw">"Sepak Takraw"</string>
-    <string name="quest_wheelchairAccess_name_title">"\"%s\" é accessibile con una sedia a rotelle?"</string>
+    <string name="quest_wheelchairAccess_name_title">"\"%s\" è accessibile con una sedia a rotelle?"</string>
     <string name="quest_wheelchairAccess_limited">"Parzialmente"</string>
     <string name="quest_bikeParkingCapacity_hint">"Normalmente gli stalli delle bici possono essere usati da entrambi i lati per parcheggiare la propria bicicletta"</string>
     <string name="quest_sport_roller_skating">"Pattinaggio a rotelle"</string>
@@ -358,13 +356,9 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="produce_vanilla">"Vaniglia"</string>
     <string name="produce_walnuts">"Noci"</string>
     <string name="produce_sisal">"Agave sisalana"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_way_lit_title">"Questa pezzo di strada è illuminato?"</string>
+    <string name="quest_way_lit_title">"Questo tratto di strada è illuminato?"</string>
     <string name="quest_way_lit_named_title">"\"%s\" è una strada illuminata?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_way_lit_road_title">"Questa porzione di strada è illuminata?"</string>
+    <string name="quest_way_lit_road_title">"Questo tratto di strada è illuminato?"</string>
     <string name="quest_way_lit_named_road_title">"La strada \"%s\" è illuminata in questo punto?"</string>
     <string name="quest_way_lit_automatic">"fa uso di sensore di movimento"</string>
     <string name="quest_way_lit_24_7">"È illuminato sia di giorno sia di notte"</string>
@@ -405,7 +399,7 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="pref_title_not_authorized_summary2">"Autenticati dal tuo web browser per l'autorizzazione"</string>
 
     <!-- non sono certo di questa traduzione -->
-    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"La strada è composta da una doppia carreggiata divisa fisicamente (es. una barriera)? Il limite di velocità dipende se si è questo caso."</string>
+    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"La strada è composta da una doppia carreggiata divisa fisicamente (es. da una barriera)? Da questo dipende il limite di velocità."</string>
     <string name="about_category_feedback">"Feedback"</string>
     <string name="quest_leave_new_note_photo">"Allega una foto"</string>
     <string name="quest_leave_new_note_photo_delete_title">"Vuoi cancellare questa foto?"</string>
@@ -443,4 +437,6 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_housenumber_conscription_number">"Numero di coscrizione"</string>
     <string name="quest_housenumber_street_number_optional">"Orientamento dei numero (opzionale)"</string>
     <string name="quest_housenumber_conscription_number_required">"Deve essere specificato un numero di coscrizione"</string>
+    <string name="quest_cycleway_answer_contraflow_cycleway">"Pista ciclabile anche sull'altro lato"</string>
+    <string name="need_specify_both_sides">"Devi specificare entrambi i lati"</string>
 </resources>

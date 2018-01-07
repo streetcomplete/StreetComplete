@@ -11,6 +11,7 @@ import android.graphics.drawable.Drawable;
 import android.hardware.SensorManager;
 import android.location.Location;
 import android.os.Bundle;
+import android.support.annotation.AnyThread;
 import android.support.annotation.CallSuper;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -90,7 +91,7 @@ public class MapFragment extends Fragment implements
 	private Listener listener;
 	public interface Listener
 	{
-		void onMapOrientation(float rotation, float tilt);
+		@AnyThread void onMapOrientation(float rotation, float tilt);
 	}
 
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -292,8 +293,8 @@ public class MapFragment extends Fragment implements
 		if(lostApiClient.isConnected())
 		{
 			LocationServices.FusedLocationApi.removeLocationUpdates(lostApiClient, this);
-			lostApiClient.disconnect();
 		}
+		lostApiClient.disconnect();
 	}
 
 	public void setIsFollowingPosition(boolean value)
@@ -464,7 +465,7 @@ public class MapFragment extends Fragment implements
 		}
 	}
 
-	@Override public void onRotationChanged(float rotation, float tilt)
+	@AnyThread @Override public void onRotationChanged(float rotation, float tilt)
 	{
 		// we received an event from the compass, so compass is working - direction can be displayed on screen
 		isShowingDirection = true;

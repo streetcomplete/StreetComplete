@@ -476,7 +476,7 @@ Sinon, vous pouvez télécharger un autre clavier dans la boutique d'application
     <string name="quest_dietType_vegetarian_name_title">"Est-ce que %s propose des plats végétariens ?"</string>
     <string name="quest_dietType_vegan_name_title">"Est-ce que %s propose des plats vegan ?"</string>
     <string name="quest_hasFeature_only">"Seulement"</string>
-    <string name="quest_dietType_explanation_vegan">"Les plats vegan ne contiennent pas de produits issus de l'exploitation animal (pas de viande, produit laitier, oeufs, ...)."</string>
+    <string name="quest_dietType_explanation_vegan">"Les plats vegan ne contiennent pas de produits issus de l'exploitation animale (pas de viande, produit laitier, oeufs, ...)."</string>
     <string name="quest_dietType_explanation_vegetarian">"Les plats végétariens ne contiennent pas d'oeufs"</string>
     <string name="quest_dietType_explanation">"Répondez oui uniquement si ce lieu propose des repas adaptés à ce régime alimentaire (ignorez les entrées, etc.)"</string>
     <string name="quest_carWashType_title">"Quel est le type de cette station de lavage ?"</string>
@@ -488,4 +488,6 @@ Sinon, vous pouvez télécharger un autre clavier dans la boutique d'application
     <string name="quest_housenumber_conscription_number">"Numéro de conscription"</string>
     <string name="quest_housenumber_street_number_optional">"Numéro d'orientation (optionnel)"</string>
     <string name="quest_housenumber_conscription_number_required">"Un numéro de conscription doit être renseigné"</string>
+    <string name="quest_cycleway_answer_contraflow_cycleway">"Piste cyclable également de l'autre côté"</string>
+    <string name="need_specify_both_sides">"Vous devez renseigner les 2 côtés"</string>
 </resources>

@@ -4,4 +4,4 @@ officialLanguages: [my]
 orchardProduces: [rubber, chilli_pepper, sweet_pepper, tea, areca_nut, coconut, coffee, cashew_nut,
   guava, mango, mangosteen]
 popularSports: [soccer, tennis, sepak_takraw]
-speedUnit: mph
+speedUnit: [mph, km/h]

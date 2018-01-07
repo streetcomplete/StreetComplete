@@ -444,4 +444,5 @@ W przeciwnym wypadku możesz ściągnąć dodatkowe aplikacje klawiatury ze skle
     <string name="quest_housenumber_street_number_optional">"Numer orientacyjny (opcjonalny)"</string>
     <string name="quest_housenumber_conscription_number_required">"Numer konskrypcyjny musi być podany"</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">"Znajduje się tu kontrapas"</string>
+    <string name="need_specify_both_sides">"Musisz opisać obie strony"</string>
 </resources>

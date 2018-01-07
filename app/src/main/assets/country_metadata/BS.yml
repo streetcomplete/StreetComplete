@@ -4,4 +4,4 @@ officialLanguages: [en]
 orchardProduces: [grapefruit, banana, coconut, lemon, lime, orange, tomatoe, guava, mango, mangosteen,
   avocado, papaya]
 popularSports: [tennis, basketball, baseball]
-speedUnit: mph
+speedUnit: [mph, km/h]

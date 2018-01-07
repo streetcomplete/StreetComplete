@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.annotation.AnyThread;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.LocalBroadcastManager;
@@ -150,7 +151,7 @@ public class MapControlsFragment extends Fragment
 
 	/* ------------------------ Calls from the MapFragment ------------------------ */
 
-	public void onMapOrientation(float rotation, float tilt)
+	@AnyThread public void onMapOrientation(float rotation, float tilt)
 	{
 		compassNeedle.setOrientation(rotation, tilt);
 	}

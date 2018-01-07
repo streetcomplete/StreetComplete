@@ -7,6 +7,7 @@ public enum Cycleway
 	LANE	   ( R.drawable.ic_cycleway_lane,        R.drawable.ic_cycleway_lane_l,        R.string.quest_cycleway_value_lane ),
 	TRACK	   ( R.drawable.ic_cycleway_track,       R.drawable.ic_cycleway_track_l,       R.string.quest_cycleway_value_track ),
 	NONE	   ( R.drawable.ic_cycleway_none,        R.drawable.ic_cycleway_none,          R.string.quest_cycleway_value_none ),
+	NONE_NO_ONEWAY ( R.drawable.ic_cycleway_shared_lane, R.drawable.ic_cycleway_shared_lane_l, R.string.quest_cycleway_value_none_but_no_oneway ),
 	SHARED	   ( R.drawable.ic_cycleway_shared_lane, R.drawable.ic_cycleway_shared_lane_l, R.string.quest_cycleway_value_shared ),
 	SIDEWALK   ( R.drawable.ic_cycleway_sidewalk,    R.drawable.ic_cycleway_sidewalk_l,    R.string.quest_cycleway_value_sidewalk ),
 	SIDEWALK_OK( R.drawable.ic_cycleway_sidewalk_ok, R.drawable.ic_cycleway_sidewalk_ok,   R.string.quest_cycleway_value_sidewalk_allowed),
@@ -28,5 +29,10 @@ public enum Cycleway
 	public int getIconResId(boolean isLeftHandTraffic)
 	{
 		return isLeftHandTraffic ? iconResIdLeft : iconResId;
+	}
+
+	public boolean isOnSidewalk()
+	{
+		return this == SIDEWALK || this == SIDEWALK_OK;
 	}
 }

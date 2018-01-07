@@ -453,4 +453,6 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_housenumber_conscription_number">"Číslo popisné"</string>
     <string name="quest_housenumber_street_number_optional">"Orientační číslo (volitelné)"</string>
     <string name="quest_housenumber_conscription_number_required">"Číslo popisné musí být určeno"</string>
+    <string name="quest_cycleway_answer_contraflow_cycleway">"Cyklostezka je i na druhé straně"</string>
+    <string name="need_specify_both_sides">"Musíte určit obě strany"</string>
 </resources>

@@ -43,13 +43,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/table_header"
-        android:layout_above="@+id/footer_space"
+        android:layout_alignParentBottom="true"
         tools:listitem="@layout/row_quest_selection"/>
-
-    <View
-        android:id="@+id/footer_space"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/activity_vertical_margin"
-        android:layout_alignParentBottom="true"/>
 
 </RelativeLayout>

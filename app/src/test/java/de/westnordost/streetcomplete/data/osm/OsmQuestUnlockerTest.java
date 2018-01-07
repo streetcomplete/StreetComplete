@@ -69,14 +69,14 @@ public class OsmQuestUnlockerTest extends TestCase
 
 	public void testQuestDoesNotApplyToElement()
 	{
-		when(questType.appliesTo(NODE)).thenReturn(false);
+		when(questType.isApplicableTo(NODE)).thenReturn(false);
 
 		assertTrue(osmQuestUnlocker.unlockNewQuests(NODE).isEmpty());
 	}
 
 	public void testAddsNewQuest()
 	{
-		when(questType.appliesTo(NODE)).thenReturn(true);
+		when(questType.isApplicableTo(NODE)).thenReturn(true);
 		List<OsmQuest> quests = osmQuestUnlocker.unlockNewQuests(NODE);
 
 		assertEquals(1, quests.size());
