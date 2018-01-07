@@ -191,7 +191,7 @@ public class CreateNoteUpload
 						" via "+ ApplicationConstants.USER_AGENT+":\n\n" + note.text;
 			}
 		}
-		return "via "+ ApplicationConstants.USER_AGENT+":\n\n" + note.text;
+		return note.text;
 	}
 
 	private Note findAlreadyExistingNoteWithSameAssociatedElement(final CreateNote newNote)

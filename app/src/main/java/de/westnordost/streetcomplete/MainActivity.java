@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete;
 
 import android.animation.ObjectAnimator;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -59,11 +60,11 @@ import de.westnordost.streetcomplete.data.QuestGroup;
 import de.westnordost.streetcomplete.data.VisibleQuestListener;
 import de.westnordost.streetcomplete.data.osm.OsmQuest;
 import de.westnordost.streetcomplete.data.upload.VersionBannedException;
-import de.westnordost.streetcomplete.data.osmnotes.CreateNoteDialog;
 import de.westnordost.streetcomplete.data.osmnotes.CreateNoteFragment;
 import de.westnordost.streetcomplete.location.LocationRequestFragment;
 import de.westnordost.streetcomplete.location.LocationUtil;
 import de.westnordost.streetcomplete.oauth.OAuthPrefs;
+import de.westnordost.streetcomplete.quests.AbstractBottomSheetFragment;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 import de.westnordost.streetcomplete.quests.OsmQuestAnswerListener;
 import de.westnordost.streetcomplete.quests.QuestAnswerComponent;
@@ -364,22 +365,9 @@ public class MainActivity extends AppCompatActivity implements
 		else
 		{
 			CreateNoteFragment f = new CreateNoteFragment();
-			AbstractQuestAnswerFragment form = f.createForm();
+			showInBottomSheet(f);
 
-			Bundle args = QuestAnswerComponent.createArguments(123, QuestGroup.OSM_NOTE);
-			LatLon pos = mapFragment.getPosition();
-			args.putDouble(CreateNoteDialog.ARG_LAT, pos.getLatitude());
-			args.putDouble(CreateNoteDialog.ARG_LON, pos.getLongitude());
-			form.setArguments(args);
-
-			FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-			ft.setCustomAnimations(
-					R.animator.quest_answer_form_appear, R.animator.quest_answer_form_disappear,
-					R.animator.quest_answer_form_appear, R.animator.quest_answer_form_disappear);
-			ft.add(R.id.map_bottom_sheet_container, f, BOTTOM_SHEET);
-			ft.add(R.id.map_bottom_sheet_container, form, BOTTOM_SHEET);
-			ft.addToBackStack(BOTTOM_SHEET);
-			ft.commit();
+			 show pin!
 		}
 	}
 
@@ -592,11 +580,11 @@ public class MainActivity extends AppCompatActivity implements
 
 	/* ------------ Managing bottom sheet (quest details) and interaction with map  ------------- */
 
-	public final static String BOTTOM_SHEET = "bottom_sheet";
+	private final static String BOTTOM_SHEET = "bottom_sheet";
 
 	@Override public void onBackPressed()
 	{
-		AbstractQuestAnswerFragment f = getQuestDetailsFragment();
+		AbstractBottomSheetFragment f = getBottomSheetFragment();
 		if(f != null)
 		{
 			f.onClickClose(() ->
@@ -641,15 +629,20 @@ public class MainActivity extends AppCompatActivity implements
 	{
 		if (isQuestDetailsCurrentlyDisplayedFor(questId, group))
 		{
-			closeQuestDetails();
+			closeBottomSheet();
 		}
 	}
 
 	/* ------------- CreateNoteListener ------------- */
 
-	@Override public void onLeaveNote(String note, ArrayList<String> imagePaths, LatLon position)
+	@Override public void onLeaveNote(String note, ArrayList<String> imagePaths)
 	{
+		todo get position...
+
+		LatLon position = mapFragment.getPositionAtPos(...)
 		questController.createNote(note, imagePaths, position);
+
+		closeBottomSheet();
 	}
 
 	/* ------------- VisibleQuestListener ------------- */
@@ -715,14 +708,14 @@ public class MainActivity extends AppCompatActivity implements
 		{
 			if (!isQuestDetailsCurrentlyDisplayedFor(questId, group)) continue;
 
-			runOnUiThread(this::closeQuestDetails);
+			runOnUiThread(this::closeBottomSheet);
 			break;
 		}
 
 		mapFragment.removeQuests(questIds, group);
 	}
 
-	@UiThread private void closeQuestDetails()
+	@UiThread private void closeBottomSheet()
 	{
 		// #285: This method may be called after the user tapped the home button from removeQuests().
 		// At this point, it wouldn't be legal to pop the fragment back stack etc.
@@ -759,7 +752,7 @@ public class MainActivity extends AppCompatActivity implements
 	{
 		if (isQuestDetailsCurrentlyDisplayedFor(quest.getId(), group)) return;
 
-		AbstractQuestAnswerFragment f = getQuestDetailsFragment();
+		AbstractBottomSheetFragment f = getBottomSheetFragment();
 		if (f != null)
 		{
 			f.onClickClose(() -> showQuestDetails(quest, group, element));
@@ -771,9 +764,9 @@ public class MainActivity extends AppCompatActivity implements
 	@UiThread private void showQuestDetails(final Quest quest, final QuestGroup group,
 											final Element element)
 	{
-		if(getQuestDetailsFragment() != null)
+		if(getBottomSheetFragment() != null)
 		{
-			closeQuestDetails();
+			closeBottomSheet();
 		}
 
 		lastLocation = mapFragment.getDisplayedLocation();
@@ -791,6 +784,11 @@ public class MainActivity extends AppCompatActivity implements
 		args.putFloat(AbstractQuestAnswerFragment.ARG_MAP_TILT, mapTilt);
 		f.setArguments(args);
 
+		showInBottomSheet(f);
+	}
+
+	private void showInBottomSheet(Fragment f)
+	{
 		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 		ft.setCustomAnimations(
 				R.animator.quest_answer_form_appear, R.animator.quest_answer_form_disappear,
@@ -800,9 +798,14 @@ public class MainActivity extends AppCompatActivity implements
 		ft.commit();
 	}
 
+	private AbstractBottomSheetFragment getBottomSheetFragment()
+	{
+		return (AbstractBottomSheetFragment) getSupportFragmentManager().findFragmentByTag(BOTTOM_SHEET);
+	}
+
 	private AbstractQuestAnswerFragment getQuestDetailsFragment()
 	{
-		return (AbstractQuestAnswerFragment) getSupportFragmentManager().findFragmentByTag(BOTTOM_SHEET);
+		return (AbstractQuestAnswerFragment) getBottomSheetFragment();
 	}
 
 	@Override public void onMapOrientation(float rotation, float tilt)
@@ -831,14 +834,10 @@ public class MainActivity extends AppCompatActivity implements
 
 	@Override public void onClickedMapAt(@Nullable LatLon position)
 	{
-		AbstractQuestAnswerFragment f = getQuestDetailsFragment();
+		AbstractBottomSheetFragment f = getBottomSheetFragment();
 		if(f != null)
 		{
-			f.onClickClose(() ->
-			{
-				mapFragment.removeQuestGeometry();
-				closeQuestDetails();
-			});
+			f.onClickClose(this::closeBottomSheet);
 		}
 	}
 

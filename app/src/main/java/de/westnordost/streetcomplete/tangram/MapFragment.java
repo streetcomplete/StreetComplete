@@ -50,7 +50,6 @@ import de.westnordost.streetcomplete.MainActivity;
 import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.QuestGroup;
-import de.westnordost.streetcomplete.data.osmnotes.CreateNoteDialog;
 import de.westnordost.streetcomplete.data.osmnotes.CreateNoteFragment;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 import de.westnordost.streetcomplete.quests.QuestAnswerComponent;
@@ -385,6 +384,8 @@ public class MapFragment extends Fragment implements
 		return false;
 	}
 
+	todo move this to mainactivity
+
 	@Override public void onLongPress(float x, float y)
 	{
 		if (controller.getZoom() < ApplicationConstants.NOTE_MIN_ZOOM)
@@ -398,8 +399,8 @@ public class MapFragment extends Fragment implements
 
 			Bundle args = QuestAnswerComponent.createArguments(123, QuestGroup.OSM_NOTE);
 			LngLat pos = controller.getPosition();
-			args.putDouble(CreateNoteDialog.ARG_LAT, pos.latitude);
-			args.putDouble(CreateNoteDialog.ARG_LON, pos.longitude);
+			args.putDouble(CreateNoteFragment.ARG_LAT, pos.latitude);
+			args.putDouble(CreateNoteFragment.ARG_LON, pos.longitude);
 			form.setArguments(args);
 
 			FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
