@@ -180,7 +180,7 @@ public class AddCycleway implements OsmElementQuestType
 			   // not any with low speed limit because they not very likely to have cycleway infrastructure
 			   "[maxspeed !~ \"^(30|25|20|15|10|8|7|6|5|20 mph|15 mph|10 mph|5 mph|walk)$\"]" +
 			   // not any unpaved because of the same reason
-			   "[surface !~ \"^("+ TextUtils.join("|", OsmTaggings.ANYTHING_UNPAVED)+"$\"]" +
+			   "[surface !~ \"^("+ TextUtils.join("|", OsmTaggings.ANYTHING_UNPAVED)+")$\"]" +
 			   // not any explicitly tagged as no bicycles
 			   "[bicycle != no]" +
 			   " -> .streets;" +
