@@ -65,8 +65,8 @@ public class QuestModule
 				new AddRecyclingType(o),
 				new AddCycleway(o),
 				// ↓ 5. important data that is used by many data consumers
-				new AddMaxSpeed(o),
 				new AddRoadSurface(o),
+				new AddMaxSpeed(o), // should best be after road surface because it excludes unpaved roads
 				new AddOpeningHours(o),
 
 				// ↓ 6. useful data that is used by some data consumers

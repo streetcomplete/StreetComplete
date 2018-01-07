@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.bikeway;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.text.TextUtils;
 
 import java.util.Map;
 
@@ -10,6 +11,7 @@ import javax.inject.Inject;
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.streetcomplete.R;
+import de.westnordost.streetcomplete.data.meta.OsmTaggings;
 import de.westnordost.streetcomplete.data.osm.Countries;
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
@@ -178,7 +180,7 @@ public class AddCycleway implements OsmElementQuestType
 			   // not any with low speed limit because they not very likely to have cycleway infrastructure
 			   "[maxspeed !~ \"^(30|25|20|15|10|8|7|6|5|20 mph|15 mph|10 mph|5 mph|walk)$\"]" +
 			   // not any unpaved because of the same reason
-			   "[surface !~ \"^(unpaved|compacted|gravel|fine_gravel|pebblestone|grass_paver|ground|earth|dirt|grass|sand|mud|ice|salt|snow|woodchips)$\"]" +
+			   "[surface !~ \"^("+ TextUtils.join("|", OsmTaggings.ANYTHING_UNPAVED)+"$\"]" +
 			   // not any explicitly tagged as no bicycles
 			   "[bicycle != no]" +
 			   " -> .streets;" +
