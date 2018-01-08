@@ -335,15 +335,18 @@ public abstract class AOsmQuestChangesUpload
 
 		// if after updating to the new version of the element, the quest is not applicable to the
 		// element anymore, drop it (#720)
-		Boolean questIsApplicableToElement = quest.getOsmElementQuestType().isApplicableTo(element);
-		if(questIsApplicableToElement != null && !questIsApplicableToElement)
+		if(element != null)
 		{
-			Log.v(TAG, "Dropping quest " + getQuestStringForLog(quest) +
-					" because the quest is no longer applicable to the element");
+			Boolean questIsApplicableToElement = quest.getOsmElementQuestType().isApplicableTo(element);
+			if (questIsApplicableToElement != null && !questIsApplicableToElement)
+			{
+				Log.v(TAG, "Dropping quest " + getQuestStringForLog(quest) +
+						" because the quest is no longer applicable to the element");
 
-			closeQuest(quest);
-			invalidateAreaAroundQuest(quest);
-			return false;
+				closeQuest(quest);
+				invalidateAreaAroundQuest(quest);
+				return false;
+			}
 		}
 
 		return uploadQuestChange(changesetId, quest, element, true, alreadyHandlingChangesetConflict);
