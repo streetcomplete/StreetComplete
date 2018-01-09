@@ -30,6 +30,7 @@ public class AddMaxSpeed extends SimpleOverpassQuestType
 			" and surface !~" + TextUtils.join("|", OsmTaggings.ANYTHING_UNPAVED) +
 			// neither private roads nor roads that are not for cars
 			" and motor_vehicle !~ private|no" +
+			" and vehicle !~ private|no" +
 			" and (access !~ private|no or (foot and foot !~ private|no))";
 	}
 
