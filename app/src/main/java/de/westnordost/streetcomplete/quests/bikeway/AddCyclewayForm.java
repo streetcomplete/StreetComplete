@@ -42,8 +42,8 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 			DEFINE_BOTH_SIDES = "define_both_sides";
 
 	private static final TagFilterExpression LIKELY_NO_BICYCLE_CONTRAFLOW = new FiltersParser().parse(
-			"ways with oneway ~ yes|-1 and oneway:bicycle != no and " +
-			" (highway ~ primary|secondary|tertiary or junction=roundabout)");
+			"ways with oneway:bicycle != no and " +
+			" (oneway ~ yes|-1 and highway ~ primary|secondary|tertiary or junction=roundabout)");
 
 
 	private StreetSideSelectPuzzle puzzle;
