@@ -54,30 +54,32 @@ public class QuestModule
 				// ↓ 1. notes
 				osmNoteQuestType,
 
-				// ↓ 2. definitely shown as errors in QA tools
-
-				// ↓ 3. may be shown as missing in QA tools
+				// ↓ 2. important data that is used by many data consumers
 				new AddRoadName(o, roadNameSuggestionsDao, putRoadNameSuggestionsHandler),
-
-				// ↓ 4. may be shown as possibly missing in QA tools
 				new AddHousenumber(o),
 				// new AddPlaceName(o), doesn't make sense as long as the app cannot tell the generic name of elements
+
+				// ↓ 3. useful data that is used by some data consumers
 				new AddRecyclingType(o),
-				new AddCycleway(o),
-				// ↓ 5. important data that is used by many data consumers
 				new AddRoadSurface(o),
 				new AddMaxSpeed(o), // should best be after road surface because it excludes unpaved roads
 				new AddOpeningHours(o),
-
-				// ↓ 6. useful data that is used by some data consumers
 				new AddSport(o),
 				new AddBikeParkingCapacity(o), // cycle map layer on osm.org
 				new AddOrchardProduce(o),
+				new AddCycleway(o),
 				new AddCrossingType(o),
 				new AddBuildingLevels(o),
 				new AddBusStopShelter(o), // at least OsmAnd
 				new AddVegetarian(o),
 				new AddVegan(o),
+
+				// ↓ 4. definitely shown as errors in QA tools
+
+				// ↓ 5. may be shown as missing in QA tools
+
+				// ↓ 6. may be shown as possibly missing in QA tools
+
 				// ↓ 7. data useful for only a specific use case
 				new AddRoofShape(o),
 				new AddWheelChairAccessPublicTransport(o),
