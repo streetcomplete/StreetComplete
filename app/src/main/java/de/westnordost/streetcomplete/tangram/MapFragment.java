@@ -168,7 +168,7 @@ public class MapFragment extends Fragment implements
 		if(isMapInitialized && mapControls != null)
 		{
 			mapControls.onMapInitialized();
-			mapControls.onMapOrientation(controller.getRotation(), controller.getTilt());
+			onMapOrientation();
 		}
 	}
 
