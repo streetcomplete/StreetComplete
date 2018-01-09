@@ -53,7 +53,8 @@ public class OsmQuestUnlocker
 			OsmElementQuestType osmQuestType = (OsmElementQuestType)questType;
 
 			if(currentQuestTypes.contains(osmQuestType)) continue;
-			if(!osmQuestType.appliesTo(element)) continue;
+			Boolean appliesToElement = osmQuestType.isApplicableTo(element);
+			if(appliesToElement == null || !appliesToElement) continue;
 
 			quests.add(new OsmQuest(osmQuestType, element.getType(), element.getId(), geometry));
 		}

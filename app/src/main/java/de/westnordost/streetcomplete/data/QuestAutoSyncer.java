@@ -79,8 +79,8 @@ public class QuestAutoSyncer implements LocationListener, LostApiClient.Connecti
 		if(lostApiClient.isConnected())
 		{
 			LocationServices.FusedLocationApi.removeLocationUpdates(lostApiClient, this);
-			lostApiClient.disconnect();
 		}
+		lostApiClient.disconnect();
 	}
 
 	@Override

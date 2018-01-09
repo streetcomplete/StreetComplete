@@ -40,6 +40,7 @@ import de.westnordost.streetcomplete.quests.roof_shape.AddRoofShape;
 import de.westnordost.streetcomplete.quests.sport.AddSport;
 import de.westnordost.streetcomplete.quests.way_lit.AddWayLit;
 import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelChairAccessPublicTransport;
+import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelChairAccessToilets;
 import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAccessBusiness;
 
 @Module
@@ -65,8 +66,8 @@ public class QuestModule
 				new AddRecyclingType(o),
 				new AddCycleway(o),
 				// ↓ 5. important data that is used by many data consumers
-				new AddMaxSpeed(o),
 				new AddRoadSurface(o),
+				new AddMaxSpeed(o), // should best be after road surface because it excludes unpaved roads
 				new AddOpeningHours(o),
 
 				// ↓ 6. useful data that is used by some data consumers
@@ -86,6 +87,7 @@ public class QuestModule
 				new AddWayLit(o),
 				new AddWheelchairAccessBusiness(o),
 				new AddToiletAvailability(o),
+				new AddWheelChairAccessToilets(o),
 
 				// ↓ 8. defined in the wiki, but not really used by anyone yet. Just collected for
 				//      the sake of mapping it in case it makes sense later

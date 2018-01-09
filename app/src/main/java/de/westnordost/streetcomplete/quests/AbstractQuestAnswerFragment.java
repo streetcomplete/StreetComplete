@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests;
 
+import android.support.annotation.AnyThread;
 import android.support.v4.app.DialogFragment;
 import android.content.Context;
 import android.content.res.Configuration;
@@ -245,7 +246,7 @@ public abstract class AbstractQuestAnswerFragment extends AbstractBottomSheetFra
 		otherAnswers.add(oa);
 	}
 
-	public void onMapOrientation(float rotation, float tilt)
+	@AnyThread public void onMapOrientation(float rotation, float tilt)
 	{
 		// default empty implementation
 	}

@@ -6,4 +6,4 @@ officialLanguages: [en]
 orchardProduces: [grape, almond, tomatoe, apple, walnut, pistachio, peach, blueberry, grapefruit, plum,
   chilli_pepper, sweet_pepper, strawberry, avocado, orange, lemon, lime]
 popularSports: [baseball, tennis, basketball, soccer, golf, american_football]
-speedUnit: mph
+speedUnit: [mph]

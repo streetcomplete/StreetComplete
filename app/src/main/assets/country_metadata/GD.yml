@@ -4,3 +4,4 @@ officialLanguages: [en]
 orchardProduces: [coconut, cacao, banana, nutmeg, avocado, guava, mango, mangosteen, plum, grapefruit,
   orange, apple, tomatoe, lemon, lime, chilli_pepper, sweet_pepper, pineapple]
 popularSports: [cricket]
+speedUnit: [mph, km/h]

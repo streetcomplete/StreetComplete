@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
         android:id="@+id/zoneContainer"
@@ -27,18 +28,39 @@
 
     </LinearLayout>
 
-    <EditText
-        android:id="@+id/maxSpeedInput"
-        android:layout_gravity="center"
+    <RelativeLayout
         android:layout_width="112dp"
         android:layout_height="112dp"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
         android:background="@drawable/background_maxspeed_sign"
         android:padding="16dp"
-        android:inputType="number"
-        android:gravity="center"
-        android:textStyle="bold"
-        android:textSize="44dp"
-        android:layout_centerInParent="true"
-        android:maxLength="3"/>
+        >
+
+        <EditText
+            android:id="@+id/maxSpeedInput"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_centerInParent="true"
+            android:background="#0fff"
+            android:inputType="number"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="38dp"
+            android:maxLength="3"
+            tools:text="50"/>
+
+        <Spinner
+            android:id="@+id/speedUnitSelect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/maxSpeedInput"
+            android:layout_centerHorizontal="true"
+            android:visibility="gone"
+            android:layout_marginTop="-2dp"
+            android:background="#0fff"
+            />
+
+    </RelativeLayout>
 
 </RelativeLayout>

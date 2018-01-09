@@ -36,17 +36,17 @@ public abstract class SimpleOverpassQuestType implements OsmElementQuestType
 		return overpassServer.getAndHandleQuota(getOverpassQuery(bbox), handler);
 	}
 
-	@Override public boolean appliesTo(Element element)
+	@Override public Boolean isApplicableTo(Element element)
 	{
 		return filter.matches(element);
 	}
 
 	@Override public final int getTitle()
 	{
-		return getTitle(Collections.<String, String>emptyMap());
+		return getTitle(Collections.emptyMap());
 	}
 
 	@Override public int getDefaultDisabledMessage() { return 0; }
 
-	@Override public String[] getDisabledForCountries()	{ return null; }
+	@Override public Countries getEnabledForCountries()	{ return Countries.ALL; }
 }

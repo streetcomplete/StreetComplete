@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.bikeway;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.text.TextUtils;
 
 import java.util.Map;
 
@@ -10,6 +11,8 @@ import javax.inject.Inject;
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.streetcomplete.R;
+import de.westnordost.streetcomplete.data.meta.OsmTaggings;
+import de.westnordost.streetcomplete.data.osm.Countries;
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler;
@@ -58,9 +61,29 @@ public class AddCycleway implements OsmElementQuestType
 			}
 		}
 
+		applySidewalkAnswerTo(cyclewayLeft, cyclewayRight, changes);
+
 		if(answer.getBoolean(AddCyclewayForm.IS_ONEWAY_NOT_FOR_CYCLISTS))
 		{
 			changes.addOrModify("oneway:bicycle", "no");
+		}
+	}
+
+	private void applySidewalkAnswerTo(Cycleway cyclewayLeft, Cycleway cyclewayRight,
+									   StringMapChangesBuilder changes)
+	{
+		boolean hasSidewalkLeft = cyclewayLeft != null && cyclewayLeft.isOnSidewalk();
+		boolean hasSidewalkRight = cyclewayRight != null && cyclewayRight.isOnSidewalk();
+
+		Side side;
+		if(hasSidewalkLeft && hasSidewalkRight)	side = Side.BOTH;
+		else if(hasSidewalkLeft)				side = Side.LEFT;
+		else if(hasSidewalkRight)				side = Side.RIGHT;
+		else									side = null;
+
+		if(side != null)
+		{
+			changes.addOrModify("sidewalk", side.value);
 		}
 	}
 
@@ -81,6 +104,7 @@ public class AddCycleway implements OsmElementQuestType
 		switch (cycleway)
 		{
 			case NONE:
+			case NONE_NO_ONEWAY:
 				changes.add(cyclewayKey, "no");
 				break;
 			case LANE:
@@ -109,12 +133,10 @@ public class AddCycleway implements OsmElementQuestType
 				// https://wiki.openstreetmap.org/wiki/File:Z240GemeinsamerGehundRadweg.jpeg
 				changes.add(cyclewayKey, "track");
 				changes.add(cyclewayKey + ":segregated", "no");
-				changes.addOrModify("sidewalk", side.value);
 				break;
 			case SIDEWALK_OK:
 				// https://wiki.openstreetmap.org/wiki/File:Z239Z1022-10GehwegRadfahrerFrei.jpeg
 				changes.add(cyclewayKey, "no");
-				changes.addOrModify("sidewalk", side.value);
 				changes.add("sidewalk:" + side.value + ":bicycle", "yes");
 				break;
 			case SHARED:
@@ -126,7 +148,7 @@ public class AddCycleway implements OsmElementQuestType
 		}
 	}
 
-	@Override public boolean appliesTo(Element element)
+	@Override public Boolean isApplicableTo(Element element)
 	{
 		/* Whether this element applies to this quest cannot be determined by looking at that
 		   element alone (see download()), an Overpass query would need to be made to find this out.
@@ -136,7 +158,7 @@ public class AddCycleway implements OsmElementQuestType
 		   as consequence of solving another quest and also after reverting an input,
 		   the quest will not immediately pop up again. Instead, they are downloaded well after an
 		   element became fit for this quest. */
-		return false;
+		return null;
 	}
 
 	@Override public boolean download(BoundingBox bbox, MapDataWithGeometryHandler handler)
@@ -151,13 +173,14 @@ public class AddCycleway implements OsmElementQuestType
 		int d = MIN_DIST_TO_CYCLEWAYS;
 		return OverpassQLUtil.getOverpassBBox(bbox) +
 			"way[highway ~ \"^(primary|secondary|tertiary|unclassified|residential)$\"]" +
+			   "[area != yes]" +
 				// only without cycleway tags
 			   "[!cycleway][!\"cycleway:left\"][!\"cycleway:right\"][!\"cycleway:both\"]" +
 			   "[!\"sidewalk:bicycle\"][!\"sidewalk:both:bicycle\"][!\"sidewalk:left:bicycle\"][!\"sidewalk:right:bicycle\"]" +
 			   // not any with low speed limit because they not very likely to have cycleway infrastructure
 			   "[maxspeed !~ \"^(30|25|20|15|10|8|7|6|5|20 mph|15 mph|10 mph|5 mph|walk)$\"]" +
 			   // not any unpaved because of the same reason
-			   "[surface !~ \"^(unpaved|compacted|gravel|fine_gravel|pebblestone|grass_paver|ground|earth|dirt|grass|sand|mud|ice|salt|snow|woodchips)$\"]" +
+			   "[surface !~ \"^("+ TextUtils.join("|", OsmTaggings.ANYTHING_UNPAVED)+")$\"]" +
 			   // not any explicitly tagged as no bicycles
 			   "[bicycle != no]" +
 			   " -> .streets;" +
@@ -177,5 +200,30 @@ public class AddCycleway implements OsmElementQuestType
 	@Override public int getTitle() { return R.string.quest_cycleway_title; }
 
 	@Override public int getDefaultDisabledMessage() { return 0; }
-	@Override public String[] getDisabledForCountries() { return null; }
+	@Override public Countries getEnabledForCountries()
+	{
+		// #749. sources:
+		// Google Street View (driving around in virtual car)
+		// https://en.wikivoyage.org/wiki/Cycling
+		// http://peopleforbikes.org/get-local/ (US)
+		return Countries.noneExcept(new String[]
+		{
+			// all of Northern and Western Europe, most of Central Europe, some of Southern Europe
+			"NO","SE","FI","IS","DK",
+			"GB","IE","NL","BE","FR","LU",
+			"DE","PL","CZ","HU","AT","CH",
+			"ES","IT",
+			// East Asia
+			"JP","KR","TW",
+			// Australia etc
+			"NZ","AU",
+			// some of Canada
+			"CA-BC","CA-QC","CA-ON","CA-NS","CA-PE",
+			// some of the US
+			// West Coast, East Coast, Center
+			"US-WA","US-OR","US-CA",
+			"US-MA","US-NJ","US-DC",
+			"US-MN"
+		});
+	}
 }

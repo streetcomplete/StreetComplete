@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.bikeway;
 
 import android.os.Bundle;
+import android.support.annotation.AnyThread;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -11,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -22,6 +24,7 @@ import de.westnordost.streetcomplete.data.osm.tql.FiltersParser;
 import de.westnordost.streetcomplete.data.osm.tql.TagFilterExpression;
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
 import de.westnordost.streetcomplete.util.SphericalEarthMath;
+import de.westnordost.streetcomplete.view.CompassView;
 import de.westnordost.streetcomplete.view.ListAdapter;
 import de.westnordost.streetcomplete.view.StreetSideSelectPuzzle;
 import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
@@ -39,11 +42,12 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 			DEFINE_BOTH_SIDES = "define_both_sides";
 
 	private static final TagFilterExpression LIKELY_NO_BICYCLE_CONTRAFLOW = new FiltersParser().parse(
-			"ways with oneway ~ yes|-1 and oneway:bicycle != no and " +
-			" (highway ~ primary|secondary|tertiary or junction=roundabout)");
+			"ways with oneway:bicycle != no and " +
+			" (oneway ~ yes|-1 and highway ~ primary|secondary|tertiary or junction=roundabout)");
 
 
 	private StreetSideSelectPuzzle puzzle;
+	private CompassView compassView;
 	private float wayOrientationAtCenter;
 
 	private boolean isDefiningBothSides;
@@ -59,6 +63,8 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 
 		puzzle = view.findViewById(R.id.puzzle);
 		puzzle.setListener(this::showCyclewaySelectionDialog);
+
+		compassView = view.findViewById(R.id.compassNeedle);
 
 		wayOrientationAtCenter = getWayOrientationAtCenterLineInDegrees(getElementGeometry());
 
@@ -131,15 +137,26 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 		outState.putBoolean(DEFINE_BOTH_SIDES, isDefiningBothSides);
 	}
 
-	public void onMapOrientation(float rotation, float tilt)
+	@AnyThread public void onMapOrientation(final float rotation, final float tilt)
 	{
-		if(puzzle == null) return;
-		float rotationInDegrees = (float) (rotation * 180 / Math.PI);
-		puzzle.setStreetRotation(wayOrientationAtCenter + rotationInDegrees);
+		final float rotationInDegrees = (float) (rotation * 180 / Math.PI);
+		getActivity().runOnUiThread(() ->
+		{
+			if(puzzle != null)
+			{
+				puzzle.setStreetRotation(wayOrientationAtCenter + rotationInDegrees);
+			}
+			if(compassView != null)
+			{
+				compassView.setOrientation(rotation, tilt);
+			}
+		});
 	}
 
 	private static float getWayOrientationAtCenterLineInDegrees(ElementGeometry e)
 	{
+		if(e.polylines == null) return 0;
+
 		List<LatLon> points = e.polylines.get(0);
 		if(points != null && points.size() > 1)
 		{
@@ -179,16 +196,16 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 				if(isSingleTrackOrLane(rightSide))
 				{
 					bundle.putInt(CYCLEWAY_RIGHT_DIR, reverseDir);
-					isOnewayNotForCyclists = true;
 				}
+				isOnewayNotForCyclists = rightSide != Cycleway.NONE;
 			}
 			else
 			{
 				if(isSingleTrackOrLane(leftSide))
 				{
 					bundle.putInt(CYCLEWAY_LEFT_DIR, reverseDir);
-					isOnewayNotForCyclists = true;
 				}
+				isOnewayNotForCyclists = leftSide != Cycleway.NONE;
 			}
 
 			isOnewayNotForCyclists |= isDualTrackOrLane(leftSide);
@@ -228,7 +245,7 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 				.setView(recyclerView)
 				.create();
 
-		recyclerView.setAdapter(createAdapter(Arrays.asList(Cycleway.values()), cycleway ->
+		recyclerView.setAdapter(createAdapter(getCyclewayItems(isRight), cycleway ->
 		{
 			alertDialog.dismiss();
 
@@ -246,6 +263,20 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 			}
 		}));
 		alertDialog.show();
+	}
+
+	private List<Cycleway> getCyclewayItems(boolean isRight)
+	{
+		List<Cycleway> values = new ArrayList<>(Arrays.asList(Cycleway.values()));
+		if(isOneway() && isReverseSideRight() == isRight)
+		{
+			values.remove(Cycleway.SHARED);
+		}
+		else
+		{
+			values.remove(Cycleway.NONE_NO_ONEWAY);
+		}
+		return values;
 	}
 
 	private interface OnCyclewaySelected { void onCyclewaySelected(Cycleway cycleway); }

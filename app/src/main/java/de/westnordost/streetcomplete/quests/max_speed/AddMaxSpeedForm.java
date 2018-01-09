@@ -5,13 +5,16 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
@@ -37,6 +40,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 
 	private EditText speedInput;
 	private CheckBox zoneCheckbox;
+	private Spinner speedUnitSelect;
 
 	private boolean isAdvisorySpeedLimit;
 
@@ -77,11 +81,22 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 
 		speedInput = contentView.findViewById(R.id.maxSpeedInput);
 
+		speedUnitSelect = contentView.findViewById(R.id.speedUnitSelect);
+		initSpeedUnitSelect();
+
 		View zoneContainer = contentView.findViewById(R.id.zoneContainer);
 		if(zoneContainer != null)
 		{
 			initZoneCheckbox(zoneContainer);
 		}
+	}
+
+	private void initSpeedUnitSelect()
+	{
+		List<String> speedUnits = getCountryInfo().getSpeedUnits();
+		speedUnitSelect.setVisibility(speedUnits.size() == 1 ? View.GONE : View.VISIBLE);
+		speedUnitSelect.setAdapter(new ArrayAdapter<>(getContext(), R.layout.spinner_item_centered, speedUnits));
+		speedUnitSelect.setSelection(0);
 	}
 
 	private void initZoneCheckbox(View zoneContainer)
@@ -96,7 +111,8 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 			if(isChecked && speedInput.getText().toString().isEmpty())
 			{
 				// prefill speed input with normal "slow zone" value
-				boolean isMph = getCountryInfo().getSpeedUnit().equals("mph");
+				String speedUnit = (String) speedUnitSelect.getSelectedItem();
+				boolean isMph = speedUnit.equals("mph");
 				speedInput.setText(isMph ? "20" : "30");
 			}
 		});
@@ -107,11 +123,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 	private int getMaxSpeedLayoutResourceId()
 	{
 		String layout = getCountryInfo().getMaxspeedLayout();
-		if(layout != null)
-		{
-			return getResources().getIdentifier(layout,"layout", getActivity().getPackageName());
-		}
-		return R.layout.quest_maxspeed;
+		return getResources().getIdentifier(layout,"layout", getActivity().getPackageName());
 	}
 
 	private int getAdvisorySpeedLimitLayoutResourceId()
@@ -280,7 +292,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 	private boolean userSelectedUnrealisticSpeedLimit()
 	{
 		int speed = Integer.parseInt(speedInput.getText().toString());
-		String speedUnit = getCountryInfo().getSpeedUnit();
+		String speedUnit = (String) speedUnitSelect.getSelectedItem();
 		double speedInKmh = speedUnit.equals("mph") ? mphToKmh(speed) : speed;
 		return speedInKmh > 140 || speed > 20 && speed % 5 != 0;
 	}
@@ -299,7 +311,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 		speedStr.append(speed);
 
 		// km/h is the OSM default, does not need to be mentioned
-		String speedUnit = getCountryInfo().getSpeedUnit();
+		String speedUnit = (String) speedUnitSelect.getSelectedItem();
 		if(!speedUnit.equals("km/h"))
 		{
 			speedStr.append(" " + speedUnit);

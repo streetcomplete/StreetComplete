@@ -33,18 +33,29 @@
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             android:elevation="4dp">
 
-            <de.westnordost.streetcomplete.statistics.AnswersCounter
-                android:id="@+id/answersCounter"
+            <de.westnordost.streetcomplete.statistics.UploadedAnswersCounter
+                android:id="@+id/uploadedAnswersCounter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:minEms="7"
-                android:paddingEnd="8dp"
-                android:paddingStart="8dp"
                 android:gravity="center_vertical"
                 android:drawableStart="@drawable/ic_star_white_24dp"
                 android:drawablePadding="2dp"
+                android:paddingEnd="8dp"
+                android:paddingStart="8dp"
                 />
+
+            <de.westnordost.streetcomplete.statistics.UnsyncedAnswersCounter
+                android:id="@+id/unsyncedAnswersCounter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="2dp"
+                android:drawableStart="@drawable/ic_file_upload_24dp"
+                android:gravity="center_vertical"
+                android:background="?android:attr/selectableItemBackground"
+                android:paddingEnd="8dp"
+                android:paddingStart="8dp"
+                />
+
 
         </android.support.v7.widget.Toolbar>
 

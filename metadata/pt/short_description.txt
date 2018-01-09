@@ -1,1 +1,1 @@
-App para aprimorar a informação do OpenStreetMap
+App para melhorar a informação existente no OpenStreetMap

@@ -17,8 +17,8 @@ public interface OsmElementQuestType extends QuestType
 	void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes);
 
 	/** whether a quest of this quest type could be created out of the given element. If the
-	 *  element alone does not suffice to find this out, this should return false */
-	boolean appliesTo(Element element);
+	 *  element alone does not suffice to find this out, this should return null */
+	Boolean isApplicableTo(Element element);
 
 	/** @return the commit message to be used for this quest type */
 	String getCommitMessage();
@@ -33,7 +33,6 @@ public interface OsmElementQuestType extends QuestType
 	/** @return title resource for when the element has the specified tags. The tags are unmodifiable */
 	int getTitle(@NonNull Map<String,String> tags);
 
-	/** @return null if the quest is enabled for every country in the world or an array of
-	 *          ISO 3166 language codes for which the quest should never be shown */
-	String[] getDisabledForCountries();
+	/** @return for which countries the quest should be shown */
+	@NonNull Countries getEnabledForCountries();
 }

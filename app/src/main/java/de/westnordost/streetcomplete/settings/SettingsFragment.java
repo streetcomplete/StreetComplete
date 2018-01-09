@@ -1,9 +1,12 @@
 package de.westnordost.streetcomplete.settings;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceFragmentCompat;
 import android.support.v7.preference.PreferenceManager;
@@ -11,13 +14,19 @@ import android.support.v7.preference.PreferenceManager;
 import javax.inject.Inject;
 import javax.inject.Provider;
 
+import de.westnordost.osmapi.map.data.OsmLatLon;
+import de.westnordost.streetcomplete.ApplicationConstants;
 import de.westnordost.streetcomplete.FragmentContainerActivity;
 import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.IntentListener;
 import de.westnordost.streetcomplete.Prefs;
+import de.westnordost.streetcomplete.data.tiles.DownloadedTilesDao;
 import de.westnordost.streetcomplete.oauth.OAuthPrefs;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.oauth.OsmOAuthDialogFragment;
+import de.westnordost.streetcomplete.tangram.MapFragment;
+import de.westnordost.streetcomplete.util.SlippyMapMath;
+import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 
 public class SettingsFragment extends PreferenceFragmentCompat
 		implements SharedPreferences.OnSharedPreferenceChangeListener, IntentListener
@@ -27,6 +36,7 @@ public class SettingsFragment extends PreferenceFragmentCompat
 	@Inject SharedPreferences prefs;
 	@Inject OAuthPrefs oAuth;
 	@Inject Provider<ApplyNoteVisibilityChangedTask> applyNoteVisibilityChangedTask;
+	@Inject DownloadedTilesDao downloadedTilesDao;
 
 	@Override public void onCreatePreferences(Bundle savedInstanceState, String rootKey)
 	{
@@ -45,6 +55,21 @@ public class SettingsFragment extends PreferenceFragmentCompat
 		quests.setOnPreferenceClickListener(preference ->
 		{
 			getFragmentActivity().setCurrentFragment(new QuestSelectionFragment());
+			return true;
+		});
+
+		Preference questsInvalidation = getPreferenceScreen().findPreference("quests.invalidation");
+		questsInvalidation.setOnPreferenceClickListener(preference ->
+		{
+			new AlertDialogBuilder(getContext())
+					.setMessage(R.string.invalidation_dialog_message)
+					.setPositiveButton(R.string.invalidate_confirmation, (dialog, which) -> {
+						downloadedTilesDao.removeAll();
+					})
+					.setNegativeButton(android.R.string.cancel, null)
+					.create()
+					.show();
+
 			return true;
 		});
 	}

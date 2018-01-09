@@ -22,8 +22,8 @@ public class CountryInfosTest extends AndroidTestCase
 
 	private void checkSpeedUnitIsEitherKmhOrMph(CountryInfo info)
 	{
-		assertNotNull(info.getSpeedUnit());
-		assertTrue(info.getSpeedUnit().equals("mph") || info.getSpeedUnit().equals("km/h"));
+		assertNotNull(info.getSpeedUnits());
+		assertTrue(info.getSpeedUnits().contains("mph") || info.getSpeedUnits().contains("km/h"));
 	}
 
 	private void checkAdditionalValidHousenumberRegexes(Map<String, CountryInfo> infos)

@@ -96,7 +96,7 @@ public class VisibleQuestTypeDao
 
 	public synchronized void clear()
 	{
-		SQLiteDatabase db = dbHelper.getReadableDatabase();
+		SQLiteDatabase db = dbHelper.getWritableDatabase();
 		db.execSQL("DELETE FROM " + QuestVisibilityTable.NAME);
 		questTypeVisibilities = null;
 	}

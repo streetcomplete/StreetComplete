@@ -49,7 +49,7 @@
     <string name="quest_noteDiscussion_title">"Kan du tilføje noget til den her note?"</string>
     <string name="quest_noteDiscussion_no">"Nej, skjul"</string>
     <string name="quest_noteDiscussion_create">"oprettet af %1$s (%2$s)"</string>
-    <string name="quest_noteDiscussion_comment">"%1$s (%2$s) "</string>
+    <string name="quest_noteDiscussion_comment">"%1$s (%2$s)"</string>
     <string name="quest_noteDiscussion_closed">"%1$s lukkede noten (%2$s)"</string>
     <string name="quest_noteDiscussion_reopen">"%1$s genåbnede noten (%2$s)"</string>
     <string name="quest_noteDiscussion_anonymous">"Anonym"</string>
@@ -416,6 +416,7 @@ Ellers kan du downloade et andet keyboard i Forretning. Populære keyboards der 
     <string name="pref_title_authorized_summary">"Godkendt"</string>
     <string name="quest_buildingLevels_answer_multipleLevels">"forskellig per bygningsdel"</string>
     <string name="quest_buildingLevels_answer_description">"I dette tilfælde skal værdien for den højeste bygningsdel angives."</string>
+    <string name="unglue_hint">"Tryk for at frigøre skærm fra position"</string>
     <string name="pref_title_not_authorized_summary2">"Log ind fra din webbrowser for at godkende"</string>
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Er vejbanerne på denne vej opdelt fysisk (f.eks. med en barriere)? Standard  hastigheden afhænger af om dette er tilfældet eller ej."</string>
     <string name="about_category_feedback">"Feedback"</string>
@@ -437,6 +438,7 @@ Ellers kan du downloade et andet keyboard i Forretning. Populære keyboards der 
     <string name="quest_enabled">"Aktiveret"</string>
     <string name="quest_type">"Opgavetype"</string>
     <string name="action_reset">"Nulstil"</string>
+    <string name="reorder_quest_priority_hint">"Hold nede og flyt en opgave for at ændre den prioritet ved download og visning på kortet."</string>
     <string name="undo_confirm_positive">"Fortryd"</string>
     <string name="undo_confirm_negative">"Annuller"</string>
     <string name="quest_dietType_vegetarian_name_title">"Har %s vegetarretter på menuen?"</string>
@@ -451,4 +453,6 @@ Ellers kan du downloade et andet keyboard i Forretning. Populære keyboards der 
     <string name="quest_carWashType_service">"Personale vasker bilen"</string>
     <string name="enable_quest_confirmation_title">"Aktiver denne opgavetype?"</string>
     <string name="default_disabled_msg_go_inside">"Denne opgavetype er normalt deaktiveret, da du sandsynligvis skal ind i stedet for at kunne svare på denne opgavetype."</string>
+    <string name="quest_cycleway_answer_contraflow_cycleway">"Også cykelsti på den anden side"</string>
+    <string name="need_specify_both_sides">"Du skal specificere begge sider"</string>
 </resources>
