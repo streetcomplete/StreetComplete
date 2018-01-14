@@ -28,7 +28,7 @@ You can see a community-managed [list of all quests in the OSM wiki](https://wik
 
 ## Contributing
 
-You can help translate this app over here: 
+You can help translate this app over here:
 
 [<img src="https://poeditor.com/public/images/logo_small.png" alt="POEditor">](https://poeditor.com/join/project/IE4GC127Ki)
 
