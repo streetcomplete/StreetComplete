@@ -121,7 +121,7 @@ dependencies {
     implementation 'com.esotericsoftware:kryo:4.0.1'
 
     // map and location
-    implementation 'com.mapzen.tangram:tangram:0.8.1'
+    implementation 'com.mapzen.tangram:tangram:0.9.0'
     implementation 'com.mapzen.android:lost:3.0.4'
 
     // config files
