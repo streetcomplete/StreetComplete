@@ -30,7 +30,8 @@ public class AddSport extends SimpleOverpassQuestType
 	protected String getTagFilters()
 	{
 		return "nodes, ways with leisure=pitch and" +
-				" (!sport or sport ~ " + TextUtils.join("|", AMBIGUOUS_SPORT_VALUES)+ ")";
+				" (!sport or sport ~ " + TextUtils.join("|", AMBIGUOUS_SPORT_VALUES)+ ")" +
+				" and (access !~ private|no)"; // exclude ones without access to general public
 	}
 
 	public AbstractQuestAnswerFragment createForm()
