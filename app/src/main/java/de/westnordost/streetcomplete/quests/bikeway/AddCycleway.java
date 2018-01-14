@@ -186,7 +186,11 @@ public class AddCycleway implements OsmElementQuestType
 			   " -> .streets;" +
 			"(" +
 			   "way[highway=cycleway](around.streets: "+d+");" +
-			   "way[highway ~ \"^(path|footway)$\"][bicycle ~ \"^(yes|designated)$\"](around.streets: "+d+");" +
+			   // See #718: If a separate way exists, it may be that the user's answer should
+			   // correctly be tagged on that separate way and not on the street -> this app would
+			   // tag data on the wrong elements. So, don't ask at all for separately mapped ways.
+			   // :-(
+			   "way[highway ~ \"^(path|footway)$\"](around.streets: "+d+");" +
 			") -> .cycleways;" +
 		    "way.streets(around.cycleways: "+d+") -> .streets_near_cycleways;" +
 		    "(.streets; - .streets_near_cycleways;);" +
