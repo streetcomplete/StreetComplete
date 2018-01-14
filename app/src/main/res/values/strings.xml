@@ -450,4 +450,5 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="invalidation_dialog_message">Invalidating the cache causes the quests to be updated next time they are downloaded each. The quest cache is invalidated automatically after one week and immediately when a quest you solved turns out to be already answered by someone else.</string>
     <string name="quest_openingHours_emptyAnswer">You need to describe what is on the sign. If there is no sign, you should ask for the opening hours inside.</string>
     <string name="quest_cycleway_value_none_but_no_oneway">none, but cyclists may use road in both directions</string>
+    <string name="quest_generic_looks_like_this">Usually looks like this:</string>
 </resources>
