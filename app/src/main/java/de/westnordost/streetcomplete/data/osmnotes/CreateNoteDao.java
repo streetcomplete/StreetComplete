@@ -73,6 +73,19 @@ public class CreateNoteDao
 		}
 	}
 
+
+	public int getCount()
+	{
+		SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+		try (Cursor cursor = db.query(CreateNoteTable.NAME, new String[]{"COUNT(*)"},
+				null, null, null, null, null, null))
+		{
+			cursor.moveToFirst();
+			return cursor.getInt(0);
+		}
+	}
+
 	public boolean delete(long id)
 	{
 		SQLiteDatabase db = dbHelper.getWritableDatabase();

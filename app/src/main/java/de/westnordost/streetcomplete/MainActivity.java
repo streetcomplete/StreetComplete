@@ -77,7 +77,7 @@ import de.westnordost.streetcomplete.quests.FindQuestSourceComponent;
 import de.westnordost.streetcomplete.quests.OsmQuestAnswerListener;
 import de.westnordost.streetcomplete.quests.QuestAnswerComponent;
 import de.westnordost.streetcomplete.settings.SettingsActivity;
-import de.westnordost.streetcomplete.statistics.UnsyncedAnswersCounter;
+import de.westnordost.streetcomplete.statistics.UnsyncedChangesCounter;
 import de.westnordost.streetcomplete.statistics.UploadedAnswersCounter;
 import de.westnordost.streetcomplete.tangram.MapControlsFragment;
 import de.westnordost.streetcomplete.tangram.MapFragment;
@@ -103,6 +103,9 @@ public class MainActivity extends AppCompatActivity implements
 
 	@Inject FindQuestSourceComponent questSource;
 
+	@Inject UploadedAnswersCounter uploadedAnswersCounter;
+	@Inject UnsyncedChangesCounter unsyncedChangesCounter;
+
 	// per application start settings
 	private static boolean hasAskedForLocation = false;
 	private static boolean dontShowRequestAuthorizationAgain = false;
@@ -114,8 +117,6 @@ public class MainActivity extends AppCompatActivity implements
 	private QuestGroup clickedQuestGroup = null;
 
 	private ProgressBar progressBar;
-	private UploadedAnswersCounter uploadedAnswersCounter;
-	private UnsyncedAnswersCounter unsyncedAnswersCounter;
 
 	private float mapRotation, mapTilt;
 
@@ -190,10 +191,12 @@ public class MainActivity extends AppCompatActivity implements
 
 		questController.onCreate();
 
-		uploadedAnswersCounter = toolbar.findViewById(R.id.uploadedAnswersCounter);
-		unsyncedAnswersCounter = toolbar.findViewById(R.id.unsyncedAnswersCounter);
+		TextView uploadedAnswersView = toolbar.findViewById(R.id.uploadedAnswersCounter);
+		uploadedAnswersCounter.setTarget(uploadedAnswersView);
 
-        unsyncedAnswersCounter.setOnClickListener(view -> {
+		TextView unsyncedChangesView = toolbar.findViewById(R.id.unsyncedAnswersCounter);
+		unsyncedChangesCounter.setTarget(unsyncedChangesView);
+		unsyncedChangesView.setOnClickListener(view -> {
             if (isConnected()) {
                 uploadChanges();
             }
@@ -228,7 +231,7 @@ public class MainActivity extends AppCompatActivity implements
 		super.onStart();
 
 		uploadedAnswersCounter.update();
-		unsyncedAnswersCounter.update();
+		unsyncedChangesCounter.update();
 
 		registerReceiver(locationAvailabilityReceiver, LocationUtil.createLocationAvailabilityIntentFilter());
 
@@ -321,7 +324,7 @@ public class MainActivity extends AppCompatActivity implements
 				.setPositiveButton(R.string.undo_confirm_positive, (dialog, which) ->
 				{
 					questController.undoOsmQuest(quest);
-					unsyncedAnswersCounter.undidQuest(quest.getChangesSource());
+					unsyncedChangesCounter.decrement(quest.getChangesSource());
 				})
 				.setNegativeButton(R.string.undo_confirm_negative, null)
 				.show();
@@ -493,7 +496,7 @@ public class MainActivity extends AppCompatActivity implements
 		{
 			runOnUiThread(() -> {
 				uploadedAnswersCounter.update();
-				unsyncedAnswersCounter.update();
+				unsyncedChangesCounter.update();
 			});
 		}
 	};
@@ -607,7 +610,7 @@ public class MainActivity extends AppCompatActivity implements
 		questSource.findSource(questId, group, locations, source ->
 		{
 			closeQuestDetailsFor(questId, group);
-			unsyncedAnswersCounter.answeredQuest(source);
+			unsyncedChangesCounter.increase(source);
 			questController.solveQuest(questId, group, answer, source);
 		});
 	}
@@ -616,6 +619,8 @@ public class MainActivity extends AppCompatActivity implements
 	{
 		closeQuestDetailsFor(questId, group);
 		questController.createNote(questId, questTitle, note, imagePaths);
+
+		unsyncedChangesCounter.increase(null);
 	}
 
 	@Override public void onSkippedQuest(long questId, QuestGroup group)
@@ -665,6 +670,8 @@ public class MainActivity extends AppCompatActivity implements
 
 		LatLon position = mapFragment.getPositionAt(notePosition);
 		questController.createNote(note, imagePaths, position);
+
+		unsyncedChangesCounter.increase(null);
 
 		closeBottomSheet();
 	}
