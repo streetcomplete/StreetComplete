@@ -17,7 +17,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v13.app.FragmentCompat;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.preference.PreferenceManager;
 import android.text.Html;
 import android.text.TextUtils;
@@ -29,7 +28,6 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.mapzen.android.lost.api.LocationListener;
 import com.mapzen.android.lost.api.LocationRequest;
@@ -46,14 +44,8 @@ import com.mapzen.tangram.TouchInput;
 import java.io.File;
 
 import de.westnordost.osmapi.map.data.LatLon;
-import de.westnordost.streetcomplete.ApplicationConstants;
-import de.westnordost.streetcomplete.MainActivity;
 import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.R;
-import de.westnordost.streetcomplete.data.QuestGroup;
-import de.westnordost.streetcomplete.data.osmnotes.CreateNoteFragment;
-import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
-import de.westnordost.streetcomplete.quests.QuestAnswerComponent;
 import de.westnordost.streetcomplete.util.SphericalEarthMath;
 
 import static android.content.Context.SENSOR_SERVICE;
@@ -62,7 +54,8 @@ public class MapFragment extends Fragment implements
 		FragmentCompat.OnRequestPermissionsResultCallback, LocationListener,
 		LostApiClient.ConnectionCallbacks, TouchInput.ScaleResponder,
 		TouchInput.ShoveResponder, TouchInput.RotateResponder,
-		TouchInput.PanResponder, TouchInput.DoubleTapResponder, TouchInput.LongPressResponder, CompassComponent.Listener, MapController.SceneLoadListener
+		TouchInput.PanResponder, TouchInput.DoubleTapResponder,
+		CompassComponent.Listener, MapController.SceneLoadListener
 {
 	private CompassComponent compass = new CompassComponent();
 
@@ -147,7 +140,6 @@ public class MapFragment extends Fragment implements
 		controller.setScaleResponder(this);
 		controller.setPanResponder(this);
 		controller.setDoubleTapResponder(this);
-		controller.setLongPressResponder(this);
 		updateMapTileCacheSize();
 		controller.setHttpHandler(httpHandler);
 
@@ -383,36 +375,6 @@ public class MapFragment extends Fragment implements
 		onMapOrientation();
 		updateView();
 		return false;
-	}
-
-	todo move this to mainactivity
-
-	@Override public void onLongPress(float x, float y)
-	{
-		if (controller.getZoom() < ApplicationConstants.NOTE_MIN_ZOOM)
-		{
-			Toast.makeText(getActivity(), R.string.create_new_note_unprecise, Toast.LENGTH_LONG).show();
-		}
-		else
-		{
-			CreateNoteFragment f = new CreateNoteFragment();
-			AbstractQuestAnswerFragment form = f.createForm();
-
-			Bundle args = QuestAnswerComponent.createArguments(123, QuestGroup.OSM_NOTE);
-			LngLat pos = controller.getPosition();
-			args.putDouble(CreateNoteFragment.ARG_LAT, pos.latitude);
-			args.putDouble(CreateNoteFragment.ARG_LON, pos.longitude);
-			form.setArguments(args);
-
-			FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-			ft.setCustomAnimations(
-					R.animator.quest_answer_form_appear, R.animator.quest_answer_form_disappear,
-					R.animator.quest_answer_form_appear, R.animator.quest_answer_form_disappear);
-			ft.add(R.id.map_bottom_sheet_container, f, MainActivity.BOTTOM_SHEET);
-			ft.add(R.id.map_bottom_sheet_container, form, MainActivity.BOTTOM_SHEET);
-			ft.addToBackStack(MainActivity.BOTTOM_SHEET);
-			ft.commit();
-		}
 	}
 
 	private void onMapOrientation()
@@ -727,4 +689,5 @@ public class MapFragment extends Fragment implements
 	{
 		return controller.getZoom();
 	}
+
 }

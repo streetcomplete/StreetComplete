@@ -69,4 +69,26 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:orientation="vertical"
+        android:clipToPadding="false"
+        android:showDividers="middle"
+        android:padding="4dp"
+        android:divider="@drawable/vertical_button_bar_divider"
+        tools:ignore="RtlHardcoded">
+
+        <ImageButton
+            android:id="@+id/create_note"
+            style="@style/RoundMapButton"
+            android:src="@drawable/ic_create_note_black_24dp"
+            android:contentDescription="@string/map_btn_create_note"/>
+
+    </LinearLayout>
+
+
+
 </RelativeLayout>

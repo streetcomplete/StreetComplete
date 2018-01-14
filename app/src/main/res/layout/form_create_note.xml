@@ -7,7 +7,7 @@
 
     <TextView
         android:id="@+id/description"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/create_new_note_description"
         android:labelFor="@+id/noteInput"/>
@@ -15,13 +15,10 @@
     <EditText
         android:id="@+id/noteInput"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:inputType="textMultiLine"
-        android:scrollbars="vertical"
         android:gravity="top|start"
         android:minLines="3"
-        android:maxLines="12"
         />
 
     <FrameLayout

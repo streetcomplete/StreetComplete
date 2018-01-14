@@ -1,6 +1,8 @@
 package de.westnordost.streetcomplete;
 
 import android.animation.ObjectAnimator;
+import android.graphics.Point;
+import android.graphics.PointF;
 import android.support.v4.app.Fragment;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -77,6 +79,7 @@ import de.westnordost.streetcomplete.quests.QuestAnswerComponent;
 import de.westnordost.streetcomplete.settings.SettingsActivity;
 import de.westnordost.streetcomplete.statistics.UnsyncedAnswersCounter;
 import de.westnordost.streetcomplete.statistics.UploadedAnswersCounter;
+import de.westnordost.streetcomplete.tangram.MapControlsFragment;
 import de.westnordost.streetcomplete.tangram.MapFragment;
 import de.westnordost.streetcomplete.tangram.QuestsMapFragment;
 import de.westnordost.streetcomplete.tools.CrashReportExceptionHandler;
@@ -85,7 +88,8 @@ import de.westnordost.streetcomplete.util.SphericalEarthMath;
 import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 
 public class MainActivity extends AppCompatActivity implements
-		OsmQuestAnswerListener, CreateNoteListener, VisibleQuestListener, QuestsMapFragment.Listener, MapFragment.Listener
+		OsmQuestAnswerListener, CreateNoteListener, VisibleQuestListener,
+		QuestsMapFragment.Listener, MapFragment.Listener, MapControlsFragment.Listener
 {
 	@Inject CrashReportExceptionHandler crashReportExceptionHandler;
 
@@ -210,7 +214,7 @@ public class MainActivity extends AppCompatActivity implements
 		mapFragment = (QuestsMapFragment) getSupportFragmentManager().findFragmentById(R.id.map_fragment);
 		mapFragment.setQuestOffsets(new Rect(
 				getResources().getDimensionPixelSize(R.dimen.quest_form_leftOffset),
-				getResources().getDimensionPixelSize(R.dimen.quest_form_topOffset),
+				0,
 				getResources().getDimensionPixelSize(R.dimen.quest_form_rightOffset),
 				getResources().getDimensionPixelSize(R.dimen.quest_form_bottomOffset)));
 
@@ -358,27 +362,9 @@ public class MainActivity extends AppCompatActivity implements
 				if(isConnected()) downloadDisplayedArea();
 				else              Toast.makeText(this, R.string.offline, Toast.LENGTH_SHORT).show();
 				return true;
-			case R.id.action_note:
-				createNote();
-				return true;
 		}
 
 		return super.onOptionsItemSelected(item);
-	}
-
-	@UiThread private void createNote()
-	{
-		if (mapFragment.getZoom() < ApplicationConstants.NOTE_MIN_ZOOM)
-		{
-			Toast.makeText(this, R.string.create_new_note_unprecise, Toast.LENGTH_LONG).show();
-		}
-		else
-		{
-			CreateNoteFragment f = new CreateNoteFragment();
-			showInBottomSheet(f);
-
-			 show pin!
-		}
 	}
 
 	@UiThread private void uploadChanges()
@@ -646,13 +632,38 @@ public class MainActivity extends AppCompatActivity implements
 		}
 	}
 
-	/* ------------- CreateNoteListener ------------- */
+	/* ------------- creating notes ------------- */
 
-	@Override public void onLeaveNote(String note, ArrayList<String> imagePaths)
+	@Override public void onClickCreateNote()
 	{
-		todo get position...
+		if (mapFragment.getZoom() < ApplicationConstants.NOTE_MIN_ZOOM)
+		{
+			Toast.makeText(this, R.string.create_new_note_unprecise, Toast.LENGTH_LONG).show();
+			return;
+		}
 
-		LatLon position = mapFragment.getPositionAtPos(...)
+		AbstractBottomSheetFragment f = getBottomSheetFragment();
+		if (f != null)   f.onClickClose(this::composeNote);
+		else             composeNote();
+	}
+
+	private void composeNote()
+	{
+		showInBottomSheet(new CreateNoteFragment());
+	}
+
+	@Override public void onLeaveNote(String note, ArrayList<String> imagePaths, Point screenPosition)
+	{
+		int[] mapPosition = new int[2];
+		View mapView = mapFragment.getView();
+		if(mapView == null) return;
+
+		mapView.getLocationInWindow(mapPosition);
+
+		PointF notePosition = new PointF(screenPosition);
+		notePosition.offset(-mapPosition[0], -mapPosition[1]);
+
+		LatLon position = mapFragment.getPositionAt(notePosition);
 		questController.createNote(note, imagePaths, position);
 
 		closeBottomSheet();
@@ -818,7 +829,9 @@ public class MainActivity extends AppCompatActivity implements
 
 	private AbstractQuestAnswerFragment getQuestDetailsFragment()
 	{
-		return (AbstractQuestAnswerFragment) getBottomSheetFragment();
+		AbstractBottomSheetFragment f = getBottomSheetFragment();
+
+		return f instanceof AbstractQuestAnswerFragment ? (AbstractQuestAnswerFragment) f : null ;
 	}
 
 	@AnyThread @Override public void onMapOrientation(float rotation, float tilt)
