@@ -219,7 +219,6 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_maxspeed_answer_noSign_info_zone">"If there is a sign like this at the main street intersection, you won't find individual signs within the zone because the speed limit posted there applies to the whole zone."</string>
     <string name="quest_cyclewaySurface_title">"What surface does the cycleway here have?"</string>
     <string name="quest_cycleway_title">"Is there a cycleway in this street?"</string>
-    <string name="quest_buildingType_title">"What kind of building is this?"</string>
     <string name="quest_serviceType_title">"What kind of service road is this?"</string>
     <string name="quest_streetLanes_title">"How many lanes does this road have?"</string>
     <string name="quest_streetLanes_description">"If there are no road markings, it has no lanes."</string>
@@ -451,4 +450,25 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_openingHours_emptyAnswer">You need to describe what is on the sign. If there is no sign, you should ask for the opening hours inside.</string>
     <string name="quest_cycleway_value_none_but_no_oneway">none, but cyclists may use road in both directions</string>
     <string name="quest_generic_looks_like_this">Usually looks like this:</string>
+
+    <string name="quest_buildingType_title">"What kind of building is this?"</string>
+    <string name="quest_buildingType_house">House</string>
+    <string name="quest_buildingType_residential">Residential</string>
+    <string name="quest_buildingType_garage">Garage</string>
+    <string name="quest_buildingType_apartments">Apartments</string>
+    <string name="quest_buildingType_hut">Hut</string>
+    <string name="quest_buildingType_industrial">Industrial</string>
+    <string name="quest_buildingType_detached">Detached house</string>
+    <string name="quest_buildingType_shed">Shed</string>
+    <string name="quest_buildingType_roof">Roof</string>
+    <string name="quest_buildingType_commercial">Commercial</string>
+    <string name="quest_buildingType_terrace">Terraced house</string>
+    <string name="quest_buildingType_garages">Garages</string>
+    <string name="quest_buildingType_school">School</string>
+    <string name="quest_buildingType_retail">Retail</string>
+    <string name="quest_buildingType_greenhouse">Greenhouse</string>
+    <string name="quest_buildingType_barn">Barn</string>
+    <string name="quest_buildingType_church">Church</string>
+    <string name="quest_buildingType_civic">Civic building</string>
+    <string name="quest_buildingType_hotel">Hotel</string>
 </resources>
