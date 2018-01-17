@@ -15,31 +15,29 @@ public class AddBuildingTypeForm extends ImageListQuestAnswerFragment
 	protected static final int MORE_THAN_95_PERCENT_COVERED = 8;
 
 	private static final OsmItem[] BUILDING_TYPES = new OsmItem[]{
-			new OsmItem("house",		R.drawable.ic_building_house,		R.string.quest_buildingType_house),
-			new OsmItem("residential",	R.drawable.ic_building_residential,	R.string.quest_buildingType_residential),
-			new OsmItem("garage",		R.drawable.ic_building_garage,		R.string.quest_buildingType_garage),
-			new OsmItem("apartments",	R.drawable.ic_building_apartment,	R.string.quest_buildingType_apartments),
+			new OsmItem("house",		R.drawable.building_house,		R.string.quest_buildingType_house),
+			new OsmItem("residential",	R.drawable.building_residential,	R.string.quest_buildingType_residential),
+			new OsmItem("garage",		R.drawable.building_garage,		R.string.quest_buildingType_garage),
+			new OsmItem("apartments",	R.drawable.building_apartment,	R.string.quest_buildingType_apartments),
 
-			new OsmItem("hut",			R.drawable.ic_building_hut,			R.string.quest_buildingType_hut),
-			new OsmItem("industrial",	R.drawable.ic_building_industrial,  R.string.quest_buildingType_industrial),
-			new OsmItem("detached",		R.drawable.ic_building_house,		R.string.quest_buildingType_detached),
-			new OsmItem("shed",			R.drawable.ic_building_shed,		R.string.quest_buildingType_shed),
+			new OsmItem("hut",			R.drawable.building_hut,			R.string.quest_buildingType_hut),
+			new OsmItem("industrial",	R.drawable.building_industrial,  R.string.quest_buildingType_industrial),
+			new OsmItem("detached",		R.drawable.building_house,		R.string.quest_buildingType_detached),
+			new OsmItem("shed",			R.drawable.building_shed,		R.string.quest_buildingType_shed),
 
-			new OsmItem("roof",			R.drawable.ic_building_roof,		R.string.quest_buildingType_roof),
-			new OsmItem("commercial",	R.drawable.ic_building_commercial,	R.string.quest_buildingType_commercial),
-			//new OsmItem("terrace",		R.drawable.ic_building_house,		R.string.quest_buildingType_terrace),
-			new OsmItem("garages",		R.drawable.ic_building_garages,			R.string.quest_buildingType_garages),
+			new OsmItem("roof",			R.drawable.building_roof,		R.string.quest_buildingType_roof),
+			new OsmItem("commercial",	R.drawable.building_commercial,	R.string.quest_buildingType_commercial),
+			new OsmItem("garages",		R.drawable.building_garages,			R.string.quest_buildingType_garages),
+			new OsmItem("school", 		R.drawable.building_school, 		R.string.quest_buildingType_school),
 
-			new OsmItem("school", 		R.drawable.ic_building_school, 		R.string.quest_buildingType_school),
-			new OsmItem("retail",		R.drawable.ic_building_retail,		R.string.quest_buildingType_retail),
-
+			new OsmItem("retail",		R.drawable.building_retail,		R.string.quest_buildingType_retail),
 			//Necessary?
-			new OsmItem("greenhouse",	R.drawable.ic_building_greenhouse,	R.string.quest_buildingType_greenhouse),
-			new OsmItem("barn",			R.drawable.ic_building_barn,		R.string.quest_buildingType_barn),
+			new OsmItem("greenhouse",	R.drawable.building_greenhouse,	R.string.quest_buildingType_greenhouse),
+			new OsmItem("barn",			R.drawable.building_barn,		R.string.quest_buildingType_barn),
 
-			new OsmItem("church",		R.drawable.ic_building_church,		R.string.quest_buildingType_church),
-			new OsmItem("civic",		R.drawable.ic_building_civic,		R.string.quest_buildingType_civic),
-			new OsmItem("hotel",		R.drawable.ic_building_hotel,		R.string.quest_buildingType_hotel),
+			new OsmItem("church",		R.drawable.building_church,		R.string.quest_buildingType_church),
+			new OsmItem("civic",		R.drawable.building_civic,		R.string.quest_buildingType_civic),
+			new OsmItem("hotel",		R.drawable.building_hotel,		R.string.quest_buildingType_hotel),
 	};
 
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
