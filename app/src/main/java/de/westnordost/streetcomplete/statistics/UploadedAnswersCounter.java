@@ -1,41 +1,27 @@
 package de.westnordost.streetcomplete.statistics;
 
-import android.content.Context;
 import android.os.AsyncTask;
-import android.util.AttributeSet;
+import android.widget.TextView;
 
 import javax.inject.Inject;
 
-import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.data.statistics.QuestStatisticsDao;
 
-public class UploadedAnswersCounter extends android.support.v7.widget.AppCompatTextView
+public class UploadedAnswersCounter
 {
-	@Inject QuestStatisticsDao questStatisticsDB;
+	private final QuestStatisticsDao questStatisticsDB;
 
 	private int solvedQuests;
 
-	public UploadedAnswersCounter(Context context)
+	private TextView textView;
+
+	@Inject public UploadedAnswersCounter(QuestStatisticsDao questStatisticsDB)
 	{
-		super(context);
-		init();
+		this.questStatisticsDB = questStatisticsDB;
 	}
 
-	public UploadedAnswersCounter(Context context, AttributeSet attrs)
-	{
-		super(context, attrs);
-		init();
-	}
-
-	public UploadedAnswersCounter(Context context, AttributeSet attrs, int defStyleAttr)
-	{
-		super(context, attrs, defStyleAttr);
-		init();
-	}
-
-	private void init()
-	{
-		Injector.instance.getApplicationComponent().inject(this);
+	public void setTarget(TextView textView) {
+		this.textView = textView;
 	}
 
 	public void update()
@@ -55,8 +41,7 @@ public class UploadedAnswersCounter extends android.support.v7.widget.AppCompatT
 		}.execute();
 	}
 
-	private void updateText()
-	{
-		setText(String.valueOf(solvedQuests));
+	private void updateText() {
+		textView.setText(String.valueOf(solvedQuests));
 	}
 }

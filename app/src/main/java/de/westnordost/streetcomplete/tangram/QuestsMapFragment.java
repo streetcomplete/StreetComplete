@@ -456,10 +456,10 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		if(controller.getTilt() > Math.PI / 4f) return null; // 45°
 
 		LatLon[] positions = new LatLon[4];
-		positions[0] = getLatLonAtPos(new PointF(offset.left,          offset.top));
-		positions[1] = getLatLonAtPos(new PointF(offset.left + size.x ,offset.top));
-		positions[2] = getLatLonAtPos(new PointF(offset.left,          offset.top + size.y));
-		positions[3] = getLatLonAtPos(new PointF(offset.left + size.x, offset.top + size.y));
+		positions[0] = getPositionAt(new PointF(offset.left,          offset.top));
+		positions[1] = getPositionAt(new PointF(offset.left + size.x ,offset.top));
+		positions[2] = getPositionAt(new PointF(offset.left,          offset.top + size.y));
+		positions[3] = getPositionAt(new PointF(offset.left + size.x, offset.top + size.y));
 
 		// dealing with rotation: find each the largest latlon and the smallest latlon, that'll
 		// be our bounding box
@@ -479,7 +479,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		return new BoundingBox(latMin, lonMin, latMax, lonMax);
 	}
 
-	private LatLon getLatLonAtPos(PointF pointF)
+	public LatLon getPositionAt(PointF pointF)
 	{
 		return TangramConst.toLatLon(controller.screenPositionToLngLat(pointF));
 	}

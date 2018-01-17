@@ -444,6 +444,9 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_housenumber_conscription_number_required">A conscription number must be specified</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">Also cycleway on other side</string>
     <string name="need_specify_both_sides">You need to specify both sides</string>
+    <string name="map_btn_create_note">Create new note</string>
+    <string name="create_new_note_unprecise">Zoom in further to create a note</string>
+    <string name="create_new_note_description">You can leave a note to let other mappers know about an issue here. Adjust the note\'s position by moving the map:</string>
     <string name="pref_title_quests_invalidation">Invalidate Quest Cache</string>
     <string name="pref_title_quests_invalidation_summary">Useful if you think that some quests are outdated</string>
     <string name="invalidate_confirmation">Invalidate</string>

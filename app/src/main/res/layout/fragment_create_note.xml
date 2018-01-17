@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<de.westnordost.streetcomplete.view.SlidingRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/marker_create_note"/>
+    <include layout="@layout/fragment_quest_answer" />
+
+</de.westnordost.streetcomplete.view.SlidingRelativeLayout>

@@ -17,6 +17,7 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Provider;
 
+import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.streetcomplete.ApplicationConstants;
 import de.westnordost.streetcomplete.data.changesets.OpenChangesetsDao;
 import de.westnordost.streetcomplete.data.download.QuestDownloadService;
@@ -179,6 +180,18 @@ public class QuestController
 
 			osmElementDB.deleteUnreferenced();
 			geometryDB.deleteUnreferenced();
+		});
+	}
+
+	public void createNote(final String text, final ArrayList<String> imagePaths, LatLon position)
+	{
+		workerHandler.post(() ->
+		{
+			CreateNote createNote = new CreateNote();
+			createNote.position = position;
+			createNote.text = text;
+			createNote.imagePaths = imagePaths;
+			createNoteDB.add(createNote);
 		});
 	}
 
