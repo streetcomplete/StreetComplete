@@ -17,7 +17,7 @@ import de.westnordost.streetcomplete.R;
 
 public class ImageSelectAdapter extends RecyclerView.Adapter<ImageSelectAdapter.ViewHolder>
 {
-	private ArrayList<ImageSelectAdapter.Item> items;
+	private ArrayList<Item> items;
 	private Set<Integer> selectedIndices;
 	private int maxSelectableIndices;
 	private int cellLayoutId = R.layout.cell_labeled_image_select;
@@ -65,13 +65,13 @@ public class ImageSelectAdapter extends RecyclerView.Adapter<ImageSelectAdapter.
 		}
 	}
 
-	public void setItems(List<ImageSelectAdapter.Item> items)
+	public void setItems(List<Item> items)
 	{
 		this.items = new ArrayList<>(items);
 		notifyDataSetChanged();
 	}
 
-	public void addItems(Collection<ImageSelectAdapter.Item> items)
+	public void addItems(Collection<Item> items)
 	{
 		int len = this.items.size();
 		this.items.addAll(items);
@@ -145,7 +145,7 @@ public class ImageSelectAdapter extends RecyclerView.Adapter<ImageSelectAdapter.
 
 	@Override public void onBindViewHolder(ImageSelectAdapter.ViewHolder holder, int position)
 	{
-		ImageSelectAdapter.Item item = items.get(position);
+		Item item = items.get(position);
 		holder.imageView.setImageResource(item.drawableId);
 		holder.itemView.setSelected(isIndexSelected(position));
 		if(item.titleId > -1) holder.textView.setText(item.titleId);
@@ -174,18 +174,6 @@ public class ImageSelectAdapter extends RecyclerView.Adapter<ImageSelectAdapter.
 		@Override public void onClick(View v)
 		{
 			toggleIndex(getAdapterPosition());
-		}
-	}
-
-	public static class Item
-	{
-		public final int titleId;
-		public final int drawableId;
-
-		public Item(int drawableId, int titleId)
-		{
-			this.drawableId = drawableId;
-			this.titleId = titleId;
 		}
 	}
 }

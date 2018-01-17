@@ -28,7 +28,7 @@ You can see a community-managed [list of all quests in the OSM wiki](https://wik
 
 ## Contributing
 
-You can help translate this app over here: 
+You can help translate this app over here:
 
 [<img src="https://poeditor.com/public/images/logo_small.png" alt="POEditor">](https://poeditor.com/join/project/IE4GC127Ki)
 
@@ -39,6 +39,8 @@ I have a few tasks in mind that would be very helpful for the project, some of w
 
 Otherwise, there are many reasonable feature requests and ideas for new question types in the issue tracker which you could also engage yourself with.
 If you have own ideas how to improve this app and want to make sure that I will merge your Pull Request, I suggest you open an issue first in which the feature can be discussed.
+
+You can help with [processing OSM notes opened by StreetComplete users](https://ent8r.github.io/NotesReview/?query=StreetComplete&limit=100&start=true). With this tool, you can also find systematic problems or misunderstandings introduced through (users of) StreetComplete and report them back here.
 
 Finally, using it, testing it and giving constructive feedback is also a valuable contribution.
 

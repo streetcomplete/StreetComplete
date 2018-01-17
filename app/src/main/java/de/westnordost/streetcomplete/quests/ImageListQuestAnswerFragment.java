@@ -16,6 +16,7 @@ import java.util.List;
 
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.view.ImageSelectAdapter;
+import de.westnordost.streetcomplete.view.Item;
 
 /**
  * Abstract class for quests with a list of images and one to select.
@@ -48,7 +49,7 @@ public abstract class ImageListQuestAnswerFragment extends AbstractQuestFormAnsw
 		showMoreButton = view.findViewById(R.id.buttonShowMore);
 		showMoreButton.setOnClickListener(v ->
 		{
-			List<ImageSelectAdapter.Item> all = Arrays.asList(getItems());
+			List<Item> all = Arrays.asList(getItems());
 			imageSelector.addItems(all.subList(imageSelector.getItemCount(), all.size()));
 			showMoreButton.setVisibility(View.GONE);
 		});
@@ -97,11 +98,11 @@ public abstract class ImageListQuestAnswerFragment extends AbstractQuestFormAnsw
 	{
 		return -1;
 	}
-	protected abstract OsmItem[] getItems();
+	protected abstract Item[] getItems();
 
 	private void showInitialItems(int initiallyShow)
 	{
-		List<ImageSelectAdapter.Item> all = Arrays.<ImageSelectAdapter.Item>asList(getItems());
+		List<Item> all = Arrays.asList(getItems());
 		if(initiallyShow == -1 || initiallyShow >= all.size())
 		{
 			imageSelector.setItems(all);
@@ -125,7 +126,7 @@ public abstract class ImageListQuestAnswerFragment extends AbstractQuestFormAnsw
 		ArrayList<String> osmValues = new ArrayList<>();
 		for(Integer selectedIndex : imageSelector.getSelectedIndices())
 		{
-			osmValues.add(getItems()[selectedIndex].osmValue);
+			osmValues.add(getItems()[selectedIndex].value);
 		}
 		if(!osmValues.isEmpty())
 		{
@@ -144,20 +145,5 @@ public abstract class ImageListQuestAnswerFragment extends AbstractQuestFormAnsw
     @Override public boolean hasChanges()
     {
         return !imageSelector.getSelectedIndices().isEmpty();
-    }
-
-    protected static class OsmItem extends ImageSelectAdapter.Item
-    {
-        public final String osmValue;
-
-        public OsmItem(String osmValue, int drawableId, int titleId)
-        {
-            super(drawableId, titleId);
-            this.osmValue = osmValue;
-        }
-
-        public OsmItem(String osmValue, int drawableId) {
-            this(osmValue, drawableId, -1);
-        }
     }
 }
