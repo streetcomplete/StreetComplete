@@ -13,7 +13,11 @@ The app is aimed at users who do not know anything about OSM tagging schemes but
 contribute to the OpenStreetMap by surveying their neighbourhood (or other places as well). Because of the target group, only those quests are shown which are answerable very clearly by asking one simple question and only those quests are created which contain very few false positives.
 
 ## Screenshots
-<img src="metadata/en/images/phoneScreenshots/screenshot1.png" width="170"/> <img src="metadata/en/images/phoneScreenshots/screenshot2.png" width="170"/> <img src="metadata/en/images/phoneScreenshots/screenshot3.png" width="170"/> <img src="metadata/en/images/phoneScreenshots/screenshot4.png" width="170"/> <img src="metadata/en/images/phoneScreenshots/screenshot5.png" width="170"/>
+<img src="https://raw.githubusercontent.com/westnordost/StreetComplete/master/metadata/en/images/phoneScreenshots/screenshot1.png" width="170"/> 
+<img src="https://raw.githubusercontent.com/westnordost/StreetComplete/master/metadata/en/images/phoneScreenshots/screenshot2.png" width="170"/> 
+<img src="https://raw.githubusercontent.com/westnordost/StreetComplete/master/metadata/en/images/phoneScreenshots/screenshot3.png" width="170"/> 
+<img src="https://raw.githubusercontent.com/westnordost/StreetComplete/master/metadata/en/images/phoneScreenshots/screenshot4.png" width="170"/> 
+<img src="https://raw.githubusercontent.com/westnordost/StreetComplete/master/metadata/en/images/phoneScreenshots/screenshot5.png" width="170"/>
 
 ## Download
 
