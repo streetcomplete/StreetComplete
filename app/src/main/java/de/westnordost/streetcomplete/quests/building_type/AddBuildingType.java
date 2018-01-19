@@ -34,7 +34,7 @@ public class AddBuildingType extends SimpleOverpassQuestType
 		ArrayList<String> values = answer.getStringArrayList(AddRoofShapeForm.OSM_VALUES);
 		if(values != null  && values.size() == 1)
 		{
-			changes.add("building", values.get(0));
+			changes.modify("building", values.get(0));
 		}
 	}
 
