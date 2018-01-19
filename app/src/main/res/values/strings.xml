@@ -463,4 +463,18 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_internet_access_no">No connection</string>
     <string name="quest_busStopShelter_tram_name_title">"Does the tram stop \"%s\" have a shelter?"</string>
     <string name="quest_busStopShelter_tram_title">"Does this tram stop have a shelter?"</string>
+    <string name="quest_religion_for_place_of_worship_title">What religion is practised at “%s”?</string>
+    <string name="quest_religion_christian">Christianity</string>
+    <string name="quest_religion_muslim">Islam</string>
+    <string name="quest_religion_hindu">Hinduism</string>
+    <string name="quest_religion_buddhist">Buddhism</string>
+    <string name="quest_religion_shinto">Shinto</string>
+    <string name="quest_religion_jewish">Judaism</string>
+    <string name="quest_religion_taoist">Taoism</string>
+    <string name="quest_religion_for_place_of_worship_answer_multi">Place of worship for use by any religion</string>
+    <string name="quest_religion_sikh">Sikh</string>
+    <string name="quest_religion_jain">Jain</string>
+    <string name="quest_religion_bahai">Bahá\'í Faith</string>
+    <string name="quest_religion_caodaist">Caodaism</string>
+    <string name="quest_religion_confucian">Confucianism</string>
 </resources>
