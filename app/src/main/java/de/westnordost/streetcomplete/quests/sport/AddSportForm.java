@@ -95,7 +95,7 @@ public class AddSportForm extends ImageListQuestAnswerFragment
 			}
 		}
 		// only first 24 items (6 rows)
-		return sportsList.subList(0,MAX_DISPLAYED_ITEMS).toArray(new OsmItem[MAX_DISPLAYED_ITEMS]);
+		return sportsList.subList(0,Math.min(sportsList.size(), MAX_DISPLAYED_ITEMS)).toArray(new OsmItem[MAX_DISPLAYED_ITEMS]);
 	}
 
 	@Override protected void onClickOk()
