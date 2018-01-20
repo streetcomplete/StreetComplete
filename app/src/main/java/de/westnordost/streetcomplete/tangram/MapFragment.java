@@ -110,6 +110,7 @@ public class MapFragment extends Fragment implements
 				"<a href=\"https://mapzen.com/\">Mapzen</a>"))
 		);
 		mapzenLink.setMovementMethod(LinkMovementMethod.getInstance());
+		mapzenLink.setVisibility(View.GONE);
 
 		return view;
 	}

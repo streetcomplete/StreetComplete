@@ -239,7 +239,8 @@ sources:
         #binary MVT format is used in StreetComplete as it is recommended for mobile
         #https://mapzen.com/documentation/vector-tiles/)
         # https has been causing problems for certain Android devices - https://github.com/westnordost/StreetComplete/issues/175
-        url:  http://tile.mapzen.com/mapzen/vector/v1/512/all/{z}/{x}/{y}.mvt
+        url:  https://tiles.map-data.de/vector/v1/512/all/{z}/{x}/{y}.mvt
+        # http://tile.mapzen.com/mapzen/vector/v1/512/all/{z}/{x}/{y}.mvt
         #url: '//tile.dev.mapzen.com/mapzen/vector/v1/all/{z}/{x}/{y}.topojson'
         #url:  //localhost:8080/vector/all/{z}/{x}/{y}.json
         tile_size: 512
