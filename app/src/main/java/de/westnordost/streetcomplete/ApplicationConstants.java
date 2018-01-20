@@ -29,6 +29,9 @@ public class ApplicationConstants
 	public static final String LUTIM_INSTANCE = "https://lut.im/"; // must have trailing /
 	public static final Integer LUTIM_DELETE_AFTER_DAYS = 365 / 2; // half a year
 
+	public static final String COMPLETE_INSTANCE = "https://ent8r.lima-city.de/CompleteStreetComplete/";
+	public static final String COMPLETE_AUTH = new String(new char[]{100,101,109,111,117,115,101,114,58,49,50,51});
+
 	public static final int ATTACH_PHOTO_QUALITY = 60;
 	public static final int ATTACH_PHOTO_MAXWIDTH = 1280; // WXGA
 }

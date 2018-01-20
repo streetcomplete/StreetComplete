@@ -20,6 +20,8 @@ import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.QuestType;
 import de.westnordost.streetcomplete.data.QuestTypeRegistry;
+import de.westnordost.streetcomplete.data.complete.CompleteQuest;
+import de.westnordost.streetcomplete.data.complete.CompleteQuestType;
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderList;
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeDao;
 
@@ -88,10 +90,13 @@ public class QuestSelectionFragment extends Fragment
 		List<QuestSelectionAdapter.QuestVisibility> result = new ArrayList<>(questTypes.size());
 		for (QuestType questType : questTypes)
 		{
-			QuestSelectionAdapter.QuestVisibility questVisibility = new QuestSelectionAdapter.QuestVisibility();
-			questVisibility.questType = questType;
-			questVisibility.visible = visibleQuestTypeDao.isVisible(questType);
-			result.add(questVisibility);
+			if (!(questType instanceof CompleteQuestType))
+			{
+				QuestSelectionAdapter.QuestVisibility questVisibility = new QuestSelectionAdapter.QuestVisibility();
+				questVisibility.questType = questType;
+				questVisibility.visible = visibleQuestTypeDao.isVisible(questType);
+				result.add(questVisibility);
+			}
 		}
 		return result;
 	}

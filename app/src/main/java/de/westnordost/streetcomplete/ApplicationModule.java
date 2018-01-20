@@ -17,6 +17,7 @@ import dagger.Provides;
 import de.westnordost.streetcomplete.data.QuestController;
 import de.westnordost.streetcomplete.data.QuestType;
 import de.westnordost.streetcomplete.data.changesets.OpenChangesetsDao;
+import de.westnordost.streetcomplete.data.complete.CompleteQuestDao;
 import de.westnordost.streetcomplete.data.download.MobileDataAutoDownloadStrategy;
 import de.westnordost.streetcomplete.data.download.WifiAutoDownloadStrategy;
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao;
@@ -67,12 +68,12 @@ public class ApplicationModule
 
 	@Provides public QuestController questController(
 			OsmQuestDao osmQuestDB, UndoOsmQuestDao undoOsmQuestDB, MergedElementDao osmElementDB,
-			ElementGeometryDao geometryDB, OsmNoteQuestDao osmNoteQuestDB,
+			ElementGeometryDao geometryDB, CompleteQuestDao completeQuestDB, OsmNoteQuestDao osmNoteQuestDB,
 			CreateNoteDao createNoteDB, OpenChangesetsDao manageChangesetsDB,
 			Provider<List<QuestType>> questTypesProvider)
 	{
 		return new QuestController(
-				osmQuestDB, undoOsmQuestDB, osmElementDB, geometryDB, osmNoteQuestDB, createNoteDB,
+				osmQuestDB, undoOsmQuestDB, osmElementDB, geometryDB, completeQuestDB, osmNoteQuestDB, createNoteDB,
 				manageChangesetsDB,	questTypesProvider, appContext());
 	}
 

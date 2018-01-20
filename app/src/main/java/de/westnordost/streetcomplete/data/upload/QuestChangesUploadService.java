@@ -21,6 +21,7 @@ import de.westnordost.streetcomplete.ApplicationConstants;
 import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.data.VisibleQuestListener;
 import de.westnordost.streetcomplete.data.VisibleQuestRelay;
+import de.westnordost.streetcomplete.data.complete.CompleteQuestUpload;
 import de.westnordost.streetcomplete.data.osm.upload.OsmQuestChangesUpload;
 import de.westnordost.streetcomplete.data.osm.upload.UndoOsmQuestChangesUpload;
 import de.westnordost.streetcomplete.data.osmnotes.CreateNoteUpload;
@@ -40,6 +41,7 @@ public class QuestChangesUploadService extends IntentService
 	@Inject Provider<OsmQuestChangesUpload> questUploadProvider;
 	@Inject Provider<UndoOsmQuestChangesUpload> undoQuestUploadProvider;
 	@Inject Provider<CreateNoteUpload> createNoteUploadProvider;
+	@Inject Provider<CompleteQuestUpload> completeQuestUploadProvider;
 	@Inject OAuthPrefs oAuth;
 
 	private final IBinder binder = new Interface();
@@ -111,6 +113,11 @@ public class QuestChangesUploadService extends IntentService
 
 			CreateNoteUpload createNoteUpload = createNoteUploadProvider.get();
 			createNoteUpload.upload(cancelState);
+
+			if (cancelState.get()) return;
+
+			CompleteQuestUpload completeQuestUpload = completeQuestUploadProvider.get();
+			completeQuestUpload.upload(cancelState);
 		}
 		catch (Exception e)
 		{

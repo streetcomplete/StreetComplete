@@ -16,6 +16,7 @@ import javax.inject.Inject;
 
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.QuestType;
+import de.westnordost.streetcomplete.data.complete.CompleteQuestType;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestType;
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderList;
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeDao;
@@ -123,7 +124,7 @@ public class QuestSelectionAdapter extends ListAdapter<QuestSelectionAdapter.Que
 
 		public boolean isInteractionEnabled()
 		{
-			return !(questType instanceof OsmNoteQuestType);
+			return !((questType instanceof OsmNoteQuestType) || (questType instanceof CompleteQuestType));
 		}
 	}
 

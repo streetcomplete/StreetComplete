@@ -17,6 +17,9 @@ import de.westnordost.streetcomplete.quests.bikeway.AddCycleway;
 import de.westnordost.streetcomplete.quests.building_levels.AddBuildingLevels;
 import de.westnordost.streetcomplete.quests.bus_stop_shelter.AddBusStopShelter;
 import de.westnordost.streetcomplete.quests.car_wash_type.AddCarWashType;
+import de.westnordost.streetcomplete.quests.complete.PeakFeatures;
+import de.westnordost.streetcomplete.quests.complete.PostBoxCollectionTimes;
+import de.westnordost.streetcomplete.quests.complete.TactilePavings;
 import de.westnordost.streetcomplete.quests.crossing_type.AddCrossingType;
 import de.westnordost.streetcomplete.quests.diet_type.AddVegan;
 import de.westnordost.streetcomplete.quests.diet_type.AddVegetarian;
@@ -52,8 +55,11 @@ public class QuestModule
 			PutRoadNameSuggestionsHandler putRoadNameSuggestionsHandler)
 	{
 		QuestType[] questTypesOrderedByImportance = {
-				// ↓ 1. notes
+				// ↓ 1. notes && StreetComplete related questions
 				osmNoteQuestType,
+				new PostBoxCollectionTimes(o),
+				new TactilePavings(o),
+				new PeakFeatures(o),
 
 				// ↓ 2. important data that is used by many data consumers
 				new AddRoadName(o, roadNameSuggestionsDao, putRoadNameSuggestionsHandler),

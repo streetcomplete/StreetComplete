@@ -19,6 +19,10 @@ import javax.inject.Provider;
 
 import de.westnordost.streetcomplete.ApplicationConstants;
 import de.westnordost.streetcomplete.data.changesets.OpenChangesetsDao;
+import de.westnordost.streetcomplete.data.complete.CompleteQuest;
+import de.westnordost.streetcomplete.data.complete.CompleteQuestDao;
+import de.westnordost.streetcomplete.data.complete.CompleteQuestType;
+import de.westnordost.streetcomplete.data.complete.CompleteTypes;
 import de.westnordost.streetcomplete.data.download.QuestDownloadService;
 import de.westnordost.streetcomplete.data.osm.OsmQuest;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChanges;
@@ -45,6 +49,7 @@ public class QuestController
 	private final UndoOsmQuestDao undoOsmQuestDB;
 	private final MergedElementDao osmElementDB;
 	private final ElementGeometryDao geometryDB;
+	private final CompleteQuestDao completeQuestDB;
 	private final OsmNoteQuestDao osmNoteQuestDB;
 	private final CreateNoteDao createNoteDB;
 	private final OpenChangesetsDao openChangesetsDao;
@@ -88,14 +93,15 @@ public class QuestController
 
 	@Inject public QuestController(OsmQuestDao osmQuestDB, UndoOsmQuestDao undoOsmQuestDB,
 								   MergedElementDao osmElementDB, ElementGeometryDao geometryDB,
-								   OsmNoteQuestDao osmNoteQuestDB, CreateNoteDao createNoteDB,
-								   OpenChangesetsDao openChangesetsDao,
+								   CompleteQuestDao completeQuestDB, OsmNoteQuestDao osmNoteQuestDB,
+								   CreateNoteDao createNoteDB, OpenChangesetsDao openChangesetsDao,
 								   Provider<List<QuestType>> questTypesProvider, Context context)
 	{
 		this.osmQuestDB = osmQuestDB;
 		this.undoOsmQuestDB = undoOsmQuestDB;
 		this.osmElementDB = osmElementDB;
 		this.geometryDB = geometryDB;
+		this.completeQuestDB = completeQuestDB;
 		this.osmNoteQuestDB = osmNoteQuestDB;
 		this.createNoteDB = createNoteDB;
 		this.openChangesetsDao = openChangesetsDao;
@@ -197,6 +203,10 @@ public class QuestController
 			{
 				success = solveOsmNoteQuest(questId, answer);
 			}
+			else if (group == QuestGroup.COMPLETE)
+			{
+				success = solveCompleteQuest(questId, answer);
+			}
 
 			if(success)
 			{
@@ -255,6 +265,51 @@ public class QuestController
 				throw new IllegalStateException("Tried to undo a quest that hasn't been answered yet");
 			}
 		});
+	}
+
+	private boolean solveCompleteQuest(long questId, Bundle bundle)
+	{
+		CompleteQuest q = completeQuestDB.get(questId);
+
+		String answer;
+
+		if (q.getComplete().completeType.equals(CompleteTypes.CHART))
+		{
+			Boolean value = bundle.getBoolean(CompleteQuestType.ANSWER);
+			answer = value ? "Yes" : "No";
+		}
+		else if (q.getComplete().completeType.equals(CompleteTypes.TRANSLATION))
+		{
+			answer = bundle.getString(CompleteQuestType.ANSWER);
+		}
+		else
+		{
+			answer = String.valueOf(bundle.get(CompleteQuestType.ANSWER));
+		}
+
+		if(!answer.isEmpty())
+		{
+			q.setAnswer(answer);
+			q.setStatus(QuestStatus.ANSWERED);
+			completeQuestDB.update(q);
+
+			//Set all other quests for this type to hidden
+			List<CompleteQuest> allByType = completeQuestDB.getAllByType(q.getType().getClass().getSimpleName(), null);
+			for (CompleteQuest quest: allByType)
+			{
+				if (quest.getComplete().answer == null)
+				{
+					quest.setStatus(QuestStatus.HIDDEN);
+					completeQuestDB.update(quest);
+				}
+			}
+			return true;
+		}
+		else
+		{
+			throw new RuntimeException(
+					"CompleteQuest has been answered but the answer is empty!");
+		}
 	}
 
 	private boolean solveOsmNoteQuest(long questId, Bundle answer)
@@ -339,6 +394,15 @@ public class QuestController
 				osmNoteQuestDB.update(q);
 				relay.onQuestRemoved(q.getId(), group);
 			}
+			//TODO: is this necessary if the note input is hidden?
+			else if(group == QuestGroup.COMPLETE)
+			{
+				CompleteQuest q = completeQuestDB.get(questId);
+				if(q == null) return;
+				q.setStatus(QuestStatus.HIDDEN);
+				completeQuestDB.update(q);
+				relay.onQuestRemoved(q.getId(), group);
+			}
 		});
 	}
 
@@ -361,6 +425,11 @@ public class QuestController
 					OsmNoteQuest osmNoteQuest = osmNoteQuestDB.get(questId);
 					if(osmNoteQuest == null) return;
 					relay.onQuestCreated(osmNoteQuest, group, null);
+					break;
+				case COMPLETE:
+					CompleteQuest completeQuest = completeQuestDB.get(questId);
+					if(completeQuest == null) return;
+					relay.onQuestCreated(completeQuest, group, null);
 					break;
 			}
 		});
@@ -385,6 +454,9 @@ public class QuestController
 
 			List<OsmNoteQuest> osmNoteQuests = osmNoteQuestDB.getAll(bbox, QuestStatus.NEW);
 			if(!osmNoteQuests.isEmpty()) relay.onQuestsCreated(osmNoteQuests, QuestGroup.OSM_NOTE);
+
+			List<CompleteQuest> completeQuests = completeQuestDB.getAll(bbox, QuestStatus.NEW);
+			if(!completeQuests.isEmpty()) relay.onQuestsCreated(completeQuests, QuestGroup.COMPLETE);
 		});
 	}
 

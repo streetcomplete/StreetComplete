@@ -19,6 +19,9 @@ import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.data.QuestType;
 import de.westnordost.streetcomplete.data.QuestTypeRegistry;
 import de.westnordost.streetcomplete.data.VisibleQuestListener;
+import de.westnordost.streetcomplete.data.complete.CompleteQuestDownload;
+import de.westnordost.streetcomplete.data.complete.CompleteQuestType;
+import de.westnordost.streetcomplete.data.complete.SimpleOverpassCompleteQuestType;
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.download.OsmQuestDownload;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestDao;
@@ -35,6 +38,7 @@ public class QuestDownload
 
 	private final Provider<OsmNotesDownload> notesDownloadProvider;
 	private final Provider<OsmQuestDownload> questDownloadProvider;
+	private final Provider<CompleteQuestDownload> completeQuestDownloadProvider;
 	private final QuestTypeRegistry questTypeRegistry;
 	private final Provider<List<QuestType>> questTypesProvider;
 	private final SharedPreferences prefs;
@@ -57,6 +61,7 @@ public class QuestDownload
 
 	@Inject public QuestDownload(Provider<OsmNotesDownload> notesDownloadProvider,
 								 Provider<OsmQuestDownload> questDownloadProvider,
+								 Provider<CompleteQuestDownload> completeQuestDownloadProvider,
 								 DownloadedTilesDao downloadedTilesDao,
 								 OsmNoteQuestDao osmNoteQuestDb,
 								 QuestTypeRegistry questTypeRegistry, SharedPreferences prefs,
@@ -64,6 +69,7 @@ public class QuestDownload
 	{
 		this.notesDownloadProvider = notesDownloadProvider;
 		this.questDownloadProvider = questDownloadProvider;
+		this.completeQuestDownloadProvider = completeQuestDownloadProvider;
 		this.downloadedTilesDao = downloadedTilesDao;
 		this.osmNoteQuestDb = osmNoteQuestDb;
 		this.questTypeRegistry = questTypeRegistry;
@@ -198,6 +204,19 @@ public class QuestDownload
 				questDownload.setQuestListener(questListener);
 
 				if(questDownload.download((OsmElementQuestType) questType, bbox, notesPositions))
+				{
+					downloadedTilesDao.put(tiles, questType.getClass().getSimpleName());
+				}
+
+				downloadedQuestTypes++;
+				dispatchProgress();
+			}
+			else if (questType instanceof CompleteQuestType)
+			{
+				CompleteQuestDownload completeQuestDownload = completeQuestDownloadProvider.get();
+				completeQuestDownload.setQuestListener(questListener);
+
+				if (completeQuestDownload.download(bbox, (SimpleOverpassCompleteQuestType) questType))
 				{
 					downloadedTilesDao.put(tiles, questType.getClass().getSimpleName());
 				}

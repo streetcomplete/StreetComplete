@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import javax.inject.Singleton;
 
 import de.westnordost.streetcomplete.data.changesets.OpenChangesetsTable;
+import de.westnordost.streetcomplete.data.complete.CompleteQuestTable;
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryTable;
 import de.westnordost.streetcomplete.data.osm.persist.NodeTable;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestTable;
@@ -25,7 +26,7 @@ import de.westnordost.streetcomplete.data.tiles.DownloadedTilesTable;
 public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 {
 	public static final String DB_NAME = "streetcomplete.db";
-	public static final int DB_VERSION = 9;
+	public static final int DB_VERSION = 10;
 
 	private static final String OSM_QUESTS_CREATE_PARAMS = " (" +
 			OsmQuestTable.Columns.QUEST_ID +		" INTEGER		PRIMARY KEY, " +
@@ -219,6 +220,29 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 				QuestVisibilityTable.Columns.VISIBILITY +    " int NOT NULL " +
 			");";
 
+	private static final String COMPLETE_QUESTS_TABLE_CREATE =
+			"CREATE TABLE " + CompleteQuestTable.NAME +
+					" (" +
+					CompleteQuestTable.Columns.QUEST_ID + 	" INTEGER		PRIMARY KEY, " +
+					CompleteQuestTable.Columns.QUEST_TYPE +	" varchar(255)	NOT NULL, " +
+					CompleteQuestTable.Columns.API_ID + 	" int			NOT NULL, " +
+					CompleteQuestTable.Columns.QUEST_STATUS + " varchar(255) NOT NULL, " +
+					CompleteQuestTable.Columns.COUNTRY + 	" text			NOT NULL, " +
+					CompleteQuestTable.Columns.COMPLETE_TYPE + " text		NOT NULL, " +
+					CompleteQuestTable.Columns.ANSWER + 	" text, " +
+					CompleteQuestTable.Columns.LAST_UPDATE + " int			NOT NULL, " +
+					CompleteQuestTable.Columns.ELEMENT_ID +	" int			NOT NULL, " +
+					CompleteQuestTable.Columns.ELEMENT_TYPE + " varchar(255) NOT NULL" +
+					");";
+
+	private static final String COMPLETE_QUESTS_VIEW_TABLE_CREATE =
+			"CREATE VIEW " + CompleteQuestTable.NAME_MERGED_VIEW + " AS " +
+					"SELECT * FROM " + CompleteQuestTable.NAME + " " +
+					"INNER JOIN " + ElementGeometryTable.NAME + " USING (" +
+					ElementGeometryTable.Columns.ELEMENT_TYPE + ", " +
+					ElementGeometryTable.Columns.ELEMENT_ID +
+					");";
+
 	private final TablesHelper[] extensions;
 
 	public StreetCompleteOpenHelper(Context context, TablesHelper[] extensions)
@@ -253,6 +277,9 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 		db.execSQL(OPEN_CHANGESETS_TABLE_CREATE);
 
 		db.execSQL(QUEST_VISIBILITY_TABLE_CREATE);
+
+		db.execSQL(COMPLETE_QUESTS_TABLE_CREATE);
+		db.execSQL(COMPLETE_QUESTS_VIEW_TABLE_CREATE);
 
 		for (TablesHelper extension : extensions)
 		{
@@ -325,6 +352,12 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 		if(oldVersion < 9 && newVersion >= 9)
 		{
 			db.execSQL(QUEST_VISIBILITY_TABLE_CREATE);
+		}
+
+		if (oldVersion < 10 && newVersion >= 10)
+		{
+			db.execSQL(COMPLETE_QUESTS_TABLE_CREATE);
+			db.execSQL(COMPLETE_QUESTS_VIEW_TABLE_CREATE);
 		}
 
 		

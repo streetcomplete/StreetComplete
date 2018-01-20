@@ -2,5 +2,5 @@ package de.westnordost.streetcomplete.data;
 
 public enum QuestGroup
 {
-	OSM, OSM_NOTE
+	OSM, OSM_NOTE, COMPLETE
 }

@@ -12,6 +12,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import de.westnordost.streetcomplete.data.complete.CompleteQuestTable;
 import de.westnordost.streetcomplete.data.osm.ElementGeometry;
 import de.westnordost.streetcomplete.util.Serializer;
 import de.westnordost.osmapi.map.data.Element;
@@ -115,7 +116,7 @@ public class ElementGeometryDao
 		}
 	}
 
-	static ElementGeometry createObjectFrom(Serializer serializer, Cursor cursor)
+	public static ElementGeometry createObjectFrom(Serializer serializer, Cursor cursor)
 	{
 		int colGeometryPolygons = cursor.getColumnIndexOrThrow(ElementGeometryTable.Columns.GEOMETRY_POLYGONS),
 			colGeometryPolylines = cursor.getColumnIndexOrThrow(ElementGeometryTable.Columns.GEOMETRY_POLYLINES),
@@ -154,6 +155,8 @@ public class ElementGeometryDao
 					getSelectAllElementsIn(OsmQuestTable.NAME) +
 					" UNION " +
 					getSelectAllElementsIn(OsmQuestTable.NAME_UNDO) +
+					" UNION " +
+					getSelectAllElementsIn(CompleteQuestTable.NAME) +
 				")";
 
 		return db.delete(ElementGeometryTable.NAME, where, null);

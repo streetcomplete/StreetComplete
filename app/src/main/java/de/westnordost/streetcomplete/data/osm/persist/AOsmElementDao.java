@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.util.Collection;
 
 import de.westnordost.osmapi.map.data.Element;
+import de.westnordost.streetcomplete.data.complete.CompleteQuestTable;
 
 public abstract class AOsmElementDao<T extends Element>
 {
@@ -66,6 +67,8 @@ public abstract class AOsmElementDao<T extends Element>
 				getSelectAllElementIdsIn(OsmQuestTable.NAME) +
 				" UNION " +
 				getSelectAllElementIdsIn(OsmQuestTable.NAME_UNDO) +
+				" UNION " +
+				getSelectAllElementIdsIn(CompleteQuestTable.NAME) +
 				")";
 
 		db.delete(getTableName(), where, null);
