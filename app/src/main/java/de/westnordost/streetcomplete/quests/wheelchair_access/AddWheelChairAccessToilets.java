@@ -45,7 +45,7 @@ public class AddWheelChairAccessToilets extends SimpleOverpassQuestType
 	{
 		return "Add wheelchair access to toilets";
 	}
-	@Override public int getIcon() { return R.drawable.ic_quest_wheelchair; }
+	@Override public int getIcon() { return R.drawable.ic_quest_toilets_wheelchair; }
 	@Override public int getTitle(@NonNull Map<String, String> tags)
 	{
 		boolean hasName = tags.containsKey("name");
