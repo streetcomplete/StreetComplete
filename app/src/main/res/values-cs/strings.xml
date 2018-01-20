@@ -72,7 +72,7 @@
     <string name="action_about">"O StreetComplete"</string>
     <string name="about_title_version">"Verze"</string>
     <string name="about_title_authors">"Autoři"</string>
-    <string name="about_summary_authors">"© 2016–2017 Tobias Zwick a přispěvatelé"</string>
+    <string name="about_summary_authors">"© 2016–2018 Tobias Zwick a přispěvatelé"</string>
     <string name="about_title_repository">"Zdrojový kód"</string>
     <string name="about_summary_repository">"Na GitHubu"</string>
     <string name="about_title_report_error">"Nahlásit chybu"</string>
@@ -260,8 +260,8 @@ Vámi vložené informace jsou potom vaším jménem přímo přidány do OpenSt
     <string name="quest_maxspeed_title_short">"Jaké je předepsané omezení rychlosti na této cestě?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Toto omezení rychlosti se zdá nepravděpodobné."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Opravdu tu není žádná značka omezující rychlost?"</string>
-    <string name="quest_maxspeed_answer_noSign_confirmation">"Zkontrolovali jste konce cesty?
-Pokud tam nejsou žádné značky, bude použito výchozí omezení rychlosti."</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation">"Podívali jste se až na konce cesty?
+Pokud nejsou podél celé cesty žádné značky, které by omezovaly rychlost ve zvýrazněné části, tak platí výchozí omezení rychlosti."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Není tam žádná značka"</string>
     <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Silnice ve městě mají jiné výchozí omezení rychlosti než silnice mimo město."</string>
     <string name="quest_maxspeed_answer_noSign_urbanOk">"Ve městě"</string>
@@ -422,14 +422,14 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="privacy_html_image_upload">"&lt;p&gt;Připojené fotografie jsou nahrané do &lt;a href=\"https://lut.im\"&gt;lut.im&lt;/a&gt; anonymního úložiště bez sledování.&lt;/p&gt;"</string>
     <string name="quest_cycleway_value_track">"cyklostezka"</string>
     <string name="quest_cycleway_value_lane">"cyklopruh"</string>
-    <string name="quest_cycleway_value_none">"žádná"</string>
+    <string name="quest_cycleway_value_none">"není"</string>
     <string name="quest_cycleway_value_shared">"pruh výslovně sdílený s jinou dopravou"</string>
     <string name="quest_cycleway_value_bus_lane">"na pruhu pro autobusy"</string>
-    <string name="quest_cycleway_value_sidewalk">"výslovně sdílený s chodníkem"</string>
+    <string name="quest_cycleway_value_sidewalk">"výslovně sdílená s chodníkem"</string>
     <string name="quest_leave_new_note_create_image_error">"Nepodařilo se vytvořit fotku"</string>
     <string name="quest_cycleway_value_lane_dual">"cyklopruh, oba směry"</string>
     <string name="quest_cycleway_value_track_dual">"cyklostezka, oba směry"</string>
-    <string name="quest_cycleway_value_sidewalk_allowed">"žádná, ale cyklisté můžou používat chodník"</string>
+    <string name="quest_cycleway_value_sidewalk_allowed">"není, ale cyklisté můžou používat chodník"</string>
     <string name="pref_category_advanced">"Pokročilé"</string>
     <string name="pref_title_quests">"Výběr úkolu"</string>
     <string name="quest_enabled">"Povoleno"</string>
@@ -455,4 +455,6 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_housenumber_conscription_number_required">"Číslo popisné musí být určeno"</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">"Cyklostezka je i na druhé straně"</string>
     <string name="need_specify_both_sides">"Musíte určit obě strany"</string>
+    <string name="quest_openingHours_emptyAnswer">"Musíte opsat informace z cedulky s otevírací dobou. Pokud tu žádná není, měli byste se zeptat na otevírací hodiny uvnitř."</string>
+    <string name="quest_cycleway_value_none_but_no_oneway">"žádná, ale cyklisti můžou použít cestu v obou směrech"</string>
 </resources>

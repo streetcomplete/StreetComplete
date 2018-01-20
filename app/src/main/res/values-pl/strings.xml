@@ -70,7 +70,7 @@
     <string name="action_about">"O StreetComplete"</string>
     <string name="about_title_version">"Wersja"</string>
     <string name="about_title_authors">"Autorzy"</string>
-    <string name="about_summary_authors">"© 2016–2017 Tobias Zwick i współautorzy"</string>
+    <string name="about_summary_authors">"© 2016–2018 Tobias Zwick i współautorzy"</string>
     <string name="about_title_repository">"Repozytorium kodu źródłowego"</string>
     <string name="about_summary_repository">"na GitHubie"</string>
     <string name="about_title_report_error">"Zgłoś błąd"</string>
