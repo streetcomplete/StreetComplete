@@ -74,8 +74,7 @@ public class AddRoadNameForm extends AbstractQuestFormAnswerFragment
 
 	private void addOtherAnswers()
 	{
-		addOtherAnswer(R.string.quest_name_answer_noName, this::confirmNoStreetName);
-		addOtherAnswer(R.string.quest_streetName_answer_noProperStreet, this::selectNoProperStreetWhatThen);
+		addOtherAnswer(R.string.quest_name_answer_noName, this::selectNoStreetNameReason);
 		addOtherAnswer(R.string.quest_streetName_answer_cantType, this::showKeyboardInfo);
 	}
 
@@ -223,27 +222,13 @@ public class AddRoadNameForm extends AbstractQuestFormAnswerFragment
 				.show();
 	}
 
-	private void confirmNoStreetName()
-	{
-		new AlertDialogBuilder(getActivity())
-				.setTitle(R.string.quest_name_answer_noName_confirmation_title)
-				.setMessage(R.string.quest_streetName_answer_noName_confirmation_description)
-				.setPositiveButton(R.string.quest_name_noName_confirmation_positive, (dialog, which) ->
-				{
-					Bundle data = new Bundle();
-					data.putBoolean(NO_NAME, true);
-					applyImmediateAnswer(data);
-				})
-				.setNegativeButton(R.string.quest_generic_confirmation_no, null)
-				.show();
-	}
-
-	private void selectNoProperStreetWhatThen()
+	private void selectNoStreetNameReason()
 	{
 		final String
 				linkRoad = getResources().getString(R.string.quest_streetName_answer_noProperStreet_link),
 				serviceRoad = getResources().getString(R.string.quest_streetName_answer_noProperStreet_service),
-				trackRoad = getResources().getString(R.string.quest_streetName_answer_noProperStreet_track),
+				trackRoad = getResources().getString(R.string.quest_streetName_answer_noProperStreet_track2),
+				noName = getResources().getString(R.string.quest_streetName_answer_noName_noname),
 				leaveNote = getResources().getString(R.string.quest_streetName_answer_noProperStreet_leaveNote);
 
 		String highwayValue = getOsmElement().getTags().get("highway");
@@ -254,6 +239,7 @@ public class AddRoadNameForm extends AbstractQuestFormAnswerFragment
 		answers.add(serviceRoad);
 		answers.add(trackRoad);
 		answers.add(leaveNote);
+		answers.add(noName);
 
 		DialogInterface.OnClickListener onSelect = new DialogInterface.OnClickListener()
 		{
@@ -280,6 +266,10 @@ public class AddRoadNameForm extends AbstractQuestFormAnswerFragment
 				{
 					onClickCantSay();
 				}
+				else if(answer.equals(noName))
+				{
+					confirmNoStreetName();
+				}
 				else
 				{
 					Bundle data = new Bundle();
@@ -295,12 +285,27 @@ public class AddRoadNameForm extends AbstractQuestFormAnswerFragment
 
 		AlertDialog dlg = new AlertDialogBuilder(getActivity())
 				.setSingleChoiceItems(answers.toArray(new String[0]), -1, onSelect)
-				.setTitle(R.string.quest_streetName_answer_noProperStreet_question)
+				.setTitle(R.string.quest_streetName_answer_noName_question)
 				.setPositiveButton(android.R.string.ok, onSelect)
 				.setNegativeButton(android.R.string.cancel, null)
 				.show();
 
 		dlg.getButton(DialogInterface.BUTTON_POSITIVE).setEnabled(false);
+	}
+
+	private void confirmNoStreetName()
+	{
+		new AlertDialogBuilder(getActivity())
+				.setTitle(R.string.quest_name_answer_noName_confirmation_title)
+				.setMessage(R.string.quest_streetName_answer_noName_confirmation_description)
+				.setPositiveButton(R.string.quest_name_noName_confirmation_positive, (dialog, which) ->
+				{
+					Bundle data = new Bundle();
+					data.putBoolean(NO_NAME, true);
+					applyImmediateAnswer(data);
+				})
+				.setNegativeButton(R.string.quest_generic_confirmation_no, null)
+				.show();
 	}
 
 	@Override public boolean hasChanges()
