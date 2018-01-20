@@ -70,7 +70,7 @@
     <string name="action_about">"A StreetComplete névjegye"</string>
     <string name="about_title_version">"Verzió"</string>
     <string name="about_title_authors">"Szerzők"</string>
-    <string name="about_summary_authors">"© 2016–2017 Tobias Zwick és közreműködők"</string>
+    <string name="about_summary_authors">"© 2016–2018 Tobias Zwick és közreműködők"</string>
     <string name="about_title_repository">"Források"</string>
     <string name="about_summary_repository">"a GitHubon"</string>
     <string name="about_title_report_error">"Hiba bejelentése"</string>

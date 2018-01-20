@@ -47,7 +47,7 @@
     <string name="quest_noteDiscussion_title">"Kan du bidra till denna notering​?"</string>
     <string name="quest_noteDiscussion_no">"Nej, dölj"</string>
     <string name="quest_noteDiscussion_create">"skapad av %1$s (%2$s)"</string>
-    <string name="quest_noteDiscussion_comment">"%1$s (%2$s) "</string>
+    <string name="quest_noteDiscussion_comment">"%1$s (%2$s)"</string>
     <string name="quest_noteDiscussion_closed">"%1$s stängd notering (%2$s)"</string>
     <string name="quest_noteDiscussion_reopen">"%1$s återaktiverad notering (%2$s)"</string>
     <string name="quest_noteDiscussion_anonymous">"Anonym"</string>
@@ -72,7 +72,7 @@
 
     <!-- Fuzzy -->
     <string name="about_title_authors">"Författare"</string>
-    <string name="about_summary_authors">"© 2016–2017 Tobias Zwick och bidragsgivare"</string>
+    <string name="about_summary_authors">"© 2016–2018 Tobias Zwick och bidragsgivare"</string>
     <string name="about_title_repository">"Källkodsarkiv"</string>
     <string name="about_summary_repository">"på GitHub"</string>
     <string name="about_title_report_error">"Rapportera fel"</string>
@@ -177,9 +177,7 @@ För att visa på kartan, är vektor brickor hämtas från &lt;a href=\"https://
 
     <!-- Fuzzy -->
     <string name="quest_cyclewaySurface_title">"Vad har cykelvägen för underlag här?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_cycleway_title">"Finns det en cykelväg i denna gata?"</string>
+    <string name="quest_cycleway_title">"Har den här gatan en cykelfil?"</string>
     <string name="quest_buildingType_title">"Vilken typ av byggnad är detta?"</string>
 
     <!-- Fuzzy -->
@@ -272,7 +270,7 @@ Den information du anger sedan direkt till den OpenStreetMap i ditt namn, utan a
     <string name="quest_maxspeed_title_short">"Vad står det på hastighetskylten?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Den här hastighetsbegränsningen verkar osannolik."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Är du säker att det inte finns någon skylt?"</string>
-    <string name="quest_maxspeed_answer_noSign_confirmation">"Kollade du i början och slutet av gatan? Om det inte finns någon skylt gäller bashastighet."</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation">"Kontrollerade du i början och slutet av vägen? Om det inte finns några skyltar längs hela vägen som gäller för den markerade sektionen kommer rekommenderad hastighet att läggas till."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Ja, ingen skylt"</string>
     <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Vägar i tätbebyggt område har annan bashastighet än landsvägar."</string>
     <string name="quest_maxspeed_answer_noSign_urbanOk">"Tätbebyggt område"</string>
@@ -380,12 +378,12 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="produce_sisal">"Sisal"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_way_lit_title">"Är den här delen av vägen belyst?"</string>
-    <string name="quest_way_lit_named_title">"Är \"%s\" belyst här?"</string>
+    <string name="quest_way_lit_title">"Har den här delen av vägen belysning?"</string>
+    <string name="quest_way_lit_named_title">"Har \"%s\" belysning här?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_way_lit_road_title">"Är den här delen av vägen belyst?"</string>
-    <string name="quest_way_lit_named_road_title">"Är %s belyst här?"</string>
+    <string name="quest_way_lit_road_title">"Har den här delen av vägen belysning?"</string>
+    <string name="quest_way_lit_named_road_title">"Har %s belysning här?"</string>
     <string name="quest_way_lit_automatic">"Den använder rörelsedetektion"</string>
     <string name="quest_way_lit_24_7">"Det är belyst dygnet runt."</string>
     <string name="pref_title_authorized_username_summary">"Auktoriserat konto: %s"</string>
@@ -404,6 +402,7 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="produce_brazil_nuts">"Paranötter"</string>
     <string name="produce_tung_nuts">"Tungnötter"</string>
     <string name="quest_parkingType_title">"Vilken typ av parkering är det här?"</string>
+    <string name="quest_parkingType_surface">"Normal"</string>
     <string name="quest_parkingType_underground">"Underjordiskt garage"</string>
     <string name="quest_parkingType_multiStorage">"Parkeringshus"</string>
     <string name="quest_toiletAvailability_name_title">"Har %s en toalett?"</string>
@@ -414,4 +413,47 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_maxspeed_answer_advisory_speed_limit">"Enbart rekommenderad hastighet"</string>
     <string name="quest_address_answer_house_name">"Inget nummer men ett namn"</string>
     <string name="quest_address_house_name_label">"Husnamn:"</string>
+    <string name="quest_buildingLevels_roofLevelsLabel2">"takvåningar"</string>
+    <string name="quest_buildingLevels_levelsLabel2">"vanliga våningar (räknar inte takvåningar)"</string>
+    <string name="pref_title_authorized_summary">"Auktoriserad"</string>
+    <string name="quest_buildingLevels_answer_multipleLevels">"varierar mellan olika husdelar"</string>
+    <string name="quest_buildingLevels_answer_description">"I sådana fall, fyll i värdet för den högsta husdelen"</string>
+    <string name="unglue_hint">"Klicka för att lossa vyn utifrån position "</string>
+    <string name="pref_title_not_authorized_summary2">"Logga in med din webbläsare för att auktorisera."</string>
+    <string name="about_category_feedback">"Feedback"</string>
+    <string name="quest_leave_new_note_photo">"Bifoga foto"</string>
+    <string name="quest_leave_new_note_photo_delete_title">"Vill du ta bort den här bilden?"</string>
+    <string name="privacy_html_image_upload">"&lt;p&gt;Foton som du bifogar till noteringar laddas upp till &lt;a href=\"https://lut.im\"&gt;lut.im&lt;/a&gt;, en anonym tjänst utan spårning.&lt;/p&gt;"</string>
+    <string name="quest_cycleway_value_track">"cykelbana"</string>
+    <string name="quest_cycleway_value_lane">"cykelfil"</string>
+    <string name="quest_cycleway_value_none">"ingen"</string>
+    <string name="quest_cycleway_value_shared">"fil uttryckligt delad med annan trafik"</string>
+    <string name="quest_cycleway_value_bus_lane">"i bussfil"</string>
+    <string name="quest_cycleway_value_sidewalk">"uttryckligt delad trottoar"</string>
+    <string name="quest_cycleway_value_lane_dual">"cykelfil, båda riktningarna"</string>
+    <string name="quest_cycleway_value_track_dual">"cykelbana, båda riktningarna"</string>
+    <string name="quest_cycleway_value_sidewalk_allowed">"ingen, men cyklister är tillåtna på trottoaren"</string>
+    <string name="pref_category_advanced">"Avancerat"</string>
+    <string name="pref_title_quests">"Val av uppdrag"</string>
+    <string name="quest_enabled">"Aktiverad"</string>
+    <string name="quest_type">"Uppdrag"</string>
+    <string name="action_reset">"Återställ"</string>
+    <string name="reorder_quest_priority_hint">"Håll in och flytta ett uppdrag för att ändra dess prioritering av nedladdning och visning på kartan."</string>
+    <string name="undo_confirm_positive">"Ångra"</string>
+    <string name="undo_confirm_negative">"Avbryt"</string>
+    <string name="quest_dietType_vegetarian_name_title">"Har %s vegetariska rätter på menyn?"</string>
+    <string name="quest_dietType_vegan_name_title">"Har %s veganska rätter på menyn? "</string>
+    <string name="quest_hasFeature_only">"Enbart"</string>
+    <string name="quest_dietType_explanation_vegan">"Veganska rätter innehåller inga animaliska produkter (inget kött, inga mjölkprodukter, inga ägg, ...). "</string>
+    <string name="quest_dietType_explanation_vegetarian">"Vegetariska rätter innehåller inget kött."</string>
+    <string name="quest_carWashType_title">"Vilken typ av biltvätt är det här?"</string>
+    <string name="quest_carWashType_automated">"Automatisk"</string>
+    <string name="quest_carWashType_selfService">"Självservice"</string>
+    <string name="quest_carWashType_service">"Anställda tvättar bilen"</string>
+    <string name="enable_quest_confirmation_title">"Aktivera det här uppdraget? "</string>
+    <string name="default_disabled_msg_go_inside">"Frågan är avaktiverad i utgångsläget då du troligtvis behöver gå inomhus för att svara på frågor av den här typen."</string>
+    <string name="quest_cycleway_answer_contraflow_cycleway">"Även cykelbana på andra sidan"</string>
+    <string name="need_specify_both_sides">"Du behöver fylla i båda sidorna"</string>
+    <string name="quest_openingHours_emptyAnswer">"Beskriv vad som står på skylten. Saknas skylt, fråga om öppettiderna."</string>
+    <string name="quest_cycleway_value_none_but_no_oneway">"Inga, men cyklister får cykla i båda riktningarna"</string>
 </resources>

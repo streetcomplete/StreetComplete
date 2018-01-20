@@ -12,7 +12,7 @@
     <string name="pref_title_authorization">"Autoriser l'accès OSM"</string>
     <string name="pref_title_not_authorized_summary">"Pas encore autorisé"</string>
     <string name="pref_tilecache_size_summary">"%d Mo"</string>
-    <string name="pref_tilecache_size_message">"Espace en megaoctets réservé à la sauvegarde en cache sur stockage externe des tuiles de la carte"</string>
+    <string name="pref_tilecache_size_message">"Espace en mégaoctets réservé à la sauvegarde en cache sur stockage externe des tuiles de la carte"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Montrer toutes les notes"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Montrer également les notes qui ne ressemblent pas à des questions"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Ignorer les notes qui ne ressemblent pas à des questions"</string>
@@ -83,7 +83,7 @@
 
     <!-- Fuzzy -->
     <string name="about_title_authors">"Auteurs"</string>
-    <string name="about_summary_authors">"© 2016–2017 Tobias Zwick et contributeurs"</string>
+    <string name="about_summary_authors">"© 2016–2018 Tobias Zwick et contributeurs"</string>
     <string name="about_title_repository">"Code Source"</string>
     <string name="about_summary_repository">"sur GitHub"</string>
     <string name="about_title_report_error">"Signaler une erreur"</string>
@@ -295,8 +295,8 @@ L'information que vous entrez est directement ajoutée à OpenStreetMap sous vot
     <string name="quest_maxspeed_title_short">"Quel est le panneau de vitesse maximale pour cette route ?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"La limitation de vitesse paraît étrange."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Êtes-vous sûr(e) de l'absence de panneau de limitation de vitesse ?"</string>
-    <string name="quest_maxspeed_answer_noSign_confirmation">"Avez-vous vérifié jusqu'au bout de la rue ?
-S'il n'y a aucun panneau, les limitations de vitesse par défaut s'appliquent."</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation">"Avez-vous vérifié aux extrémités de la rue?
+S'il n'y a aucun panneau tout le long de la route mise en surbrillance, les limites de vitesse par défaut s'appliquent."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Oui, aucun panneau"</string>
     <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Les routes en agglomérations ont une limitation de vitesse par défaut différente des routes hors-agglomération."</string>
     <string name="quest_maxspeed_answer_noSign_urbanOk">"En agglomération"</string>
@@ -456,15 +456,17 @@ Sinon, vous pouvez télécharger un autre clavier dans la boutique d'application
     <string name="quest_leave_new_note_photo_delete_title">"Voulez-vous supprimer cette image ?"</string>
     <string name="privacy_html_image_upload">"&lt;p&gt;Les images attachées à vos notes sont téléversées sur &lt;a href=\"https://lut.im\"&gt;lut.im&lt;/a&gt; (service anonyme et sans pistage).&lt;/p&gt;"</string>
     <string name="quest_cycleway_value_track">"piste cyclable"</string>
-    <string name="quest_cycleway_value_lane">"piste cyclable"</string>
+
+    <!-- Attention à bien le différencier de "cycle track". -->
+    <string name="quest_cycleway_value_lane">"bande cyclable"</string>
     <string name="quest_cycleway_value_none">"aucune"</string>
-    <string name="quest_cycleway_value_shared">"ligne partagée avec la circulation"</string>
+    <string name="quest_cycleway_value_shared">"bande partagée avec la circulation"</string>
     <string name="quest_cycleway_value_bus_lane">"sur la voie de bus"</string>
     <string name="quest_cycleway_value_sidewalk">"trottoir partagé"</string>
     <string name="quest_leave_new_note_create_image_error">"Impossible de créer un fichier pour cette photo"</string>
-    <string name="quest_cycleway_value_lane_dual">"ligne cyclable (sur la route) dans les 2 sens"</string>
+    <string name="quest_cycleway_value_lane_dual">"bande cyclable (sur la route) dans les 2 sens"</string>
     <string name="quest_cycleway_value_track_dual">"piste cyclable, dans les 2 sens"</string>
-    <string name="quest_cycleway_value_sidewalk_allowed">"aucune, mais les cycliste sont admis sur le torttoir"</string>
+    <string name="quest_cycleway_value_sidewalk_allowed">"aucune, mais les cyclistes sont admis sur le trottoir"</string>
     <string name="pref_category_advanced">"Avancée"</string>
     <string name="pref_title_quests">"Sélection de quête"</string>
     <string name="quest_enabled">"Activée"</string>
@@ -472,7 +474,9 @@ Sinon, vous pouvez télécharger un autre clavier dans la boutique d'application
     <string name="action_reset">"Réinitialiser"</string>
     <string name="reorder_quest_priority_hint">"Faites des glisser-déposer pour ordonner la priorité des quêtes  (téléchargement et affichage sur la carte)"</string>
     <string name="undo_confirm_positive">"Annuler"</string>
-    <string name="undo_confirm_negative">"Annuler"</string>
+
+    <!-- Attention à le différencier de undo_confirm_positive (cf. https://github.com/westnordost/StreetComplete/issues/617) -->
+    <string name="undo_confirm_negative">"Ne pas annuler"</string>
     <string name="quest_dietType_vegetarian_name_title">"Est-ce que %s propose des plats végétariens ?"</string>
     <string name="quest_dietType_vegan_name_title">"Est-ce que %s propose des plats vegan ?"</string>
     <string name="quest_hasFeature_only">"Seulement"</string>
@@ -490,4 +494,6 @@ Sinon, vous pouvez télécharger un autre clavier dans la boutique d'application
     <string name="quest_housenumber_conscription_number_required">"Un numéro de conscription doit être renseigné"</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">"Piste cyclable également de l'autre côté"</string>
     <string name="need_specify_both_sides">"Vous devez renseigner les 2 côtés"</string>
+    <string name="quest_openingHours_emptyAnswer">"Vous devez décrire ce qui est écrit sur le panonceau. S'il n'y en a pas, vous devriez demander les heures d'ouverture à l'intérieur."</string>
+    <string name="quest_cycleway_value_none_but_no_oneway">"aucune, mais les cyclistes peuvent utiliser la route dans les deux sens"</string>
 </resources>
