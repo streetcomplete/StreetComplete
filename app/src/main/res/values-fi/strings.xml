@@ -294,8 +294,8 @@ Tiedot jotka laitat lähetetään suoraan OpenStreetMapiin nimelläsi ilman tarv
     <string name="overground_recycling_container">"Säiliö"</string>
     <string name="underground_recycling_container">"Maanalainen säiliö"</string>
     <string name="quest_generic_error_a_field_empty">"Jätit kirjoitustilan tyhjäksi"</string>
-    <string name="quest_streetName_menuItem_language_simple">"%1€s - %2€s"</string>
-    <string name="quest_streetName_menuItem_language_native">"%1€s - %2€s (%3€s)"</string>
+    <string name="quest_streetName_menuItem_language_simple">"%1$s - %2$s"</string>
+    <string name="quest_streetName_menuItem_language_native">"%1$s - %2$s (%3$s)"</string>
     <string name="quest_streetName_answer_cantType">"Liikennemerkin merkit eivät ole kirjoitettavissa"</string>
     <string name="quest_streetName_cantType_title">"Näppäimistöasettelu puuttuu?"</string>
     <string name="quest_streetName_cantType_open_settings">"Avaa asetukset"</string>

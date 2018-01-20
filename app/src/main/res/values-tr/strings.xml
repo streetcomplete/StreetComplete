@@ -285,8 +285,8 @@ Hiçbir e-posta istemcisi kurulu değil."</string>
     <string name="overground_recycling_container">"Konteyner"</string>
     <string name="underground_recycling_container">"Yeraltı Konteyneri"</string>
     <string name="quest_generic_error_a_field_empty">"Alanı boş bıraktın"</string>
-    <string name="quest_streetName_menuItem_language_simple">"%1$ - %2$"</string>
-    <string name="quest_streetName_menuItem_language_native">" %1$ - %2$ (%3$)"</string>
+    <string name="quest_streetName_menuItem_language_simple">"%1$s - %2$s"</string>
+    <string name="quest_streetName_menuItem_language_native">" %1$s - %2$s (%3$s)"</string>
     <string name="quest_streetName_answer_cantType">"Tabeladaki karakterleri yazamıyorum"</string>
     <string name="quest_streetName_cantType_title">"Klavye düzeni eksik mi?"</string>
     <string name="quest_streetName_cantType_open_settings">"Ayarları Aç"</string>
