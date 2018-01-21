@@ -79,6 +79,21 @@ quest_icons.svg
 	wheelchair
 	wheelchair_shop
 	
+religion_icons.svg
+	hindu						https://commons.wikimedia.org/wiki/File:Om_symbol.svg
+	jain						https://commons.wikimedia.org/wiki/File:Ahimsa.svg
+	sikh						https://en.wikipedia.org/wiki/File:Khanda.svg
+	buddhist
+	christian
+	jewish						https://commons.wikimedia.org/wiki/File:Star_of_David.svg
+	muslim						https://commons.wikimedia.org/wiki/File:Star_and_Crescent.svg
+	bahai						https://commons.wikimedia.org/wiki/File:Bahai_star.svg
+	confucian
+	shinto						https://commons.wikimedia.org/wiki/File:Shinto_torii_vermillion.svg
+	taoism						
+	chinese						https://commons.wikimedia.org/wiki/File:Chinese_lu_symbol_-_%E7%A6%84.svg
+	caodai
+	
 slow_zone.svg
 
 slow_zone_us.svg
