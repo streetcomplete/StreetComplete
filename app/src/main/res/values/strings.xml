@@ -465,7 +465,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingType_terrace">Terraced house</string>
     <string name="quest_buildingType_garages">Garages</string>
     <string name="quest_buildingType_school">School</string>
-    <string name="quest_buildingType_retail">Retail</string>
+    <string name="quest_buildingType_retail">Shop</string>
     <string name="quest_buildingType_greenhouse">Greenhouse</string>
     <string name="quest_buildingType_barn">Barn</string>
     <string name="quest_buildingType_church">Church</string>
