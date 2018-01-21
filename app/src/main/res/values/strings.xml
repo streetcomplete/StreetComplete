@@ -456,4 +456,9 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_generic_looks_like_this">Usually looks like this:</string>
     <string name="quest_surface_value_metal">Metal</string>
     <string name="quest_surface_generic_surface_confirmation">Are you sure that you can not determine the surface more specifically?</string>
+    <string name="quest_internet_access_name_title">What kind of connection does "%s" offer?</string>
+    <string name="quest_internet_access_wlan">WLAN</string>
+    <string name="quest_internet_access_wired">Wired (LAN)</string>
+    <string name="quest_internet_access_terminal">Computer with internet access</string>
+    <string name="quest_internet_access_no">No connection</string>
 </resources>
