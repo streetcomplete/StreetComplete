@@ -76,4 +76,35 @@ public class CreateNoteDaoTest extends ApplicationDbTestCase
 
 		assertEquals(2,dao.getAll(null).size());
 	}
+
+
+	public void testCountNone()
+	{
+		assertEquals(0, dao.getCount());
+	}
+
+	public void testCountOne()
+	{
+		CreateNote note1 = new CreateNote();
+		note1.position = new OsmLatLon(0.5,0.5);
+		note1.text = "joho";
+		dao.add(note1);
+
+		assertEquals(1, dao.getCount());
+	}
+
+	public void testCountSeveral()
+	{
+		CreateNote note1 = new CreateNote();
+		note1.position = new OsmLatLon(0.5,0.5);
+		note1.text = "joho";
+		dao.add(note1);
+
+		CreateNote note2 = new CreateNote();
+		note2.position = new OsmLatLon(0.1,0.5);
+		note2.text = "hey";
+		dao.add(note2);
+
+		assertEquals(2, dao.getCount());
+	}
 }

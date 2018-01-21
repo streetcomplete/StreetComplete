@@ -46,7 +46,10 @@ public class CreateNoteDao
 			values.put(CreateNoteTable.Columns.IMAGE_PATHS, serializer.toBytes(note.imagePaths));
 		}
 		values.put(CreateNoteTable.Columns.TEXT, note.text);
-		values.put(CreateNoteTable.Columns.QUEST_TITLE, note.questTitle);
+		if (note.questTitle != null)
+		{
+			values.put(CreateNoteTable.Columns.QUEST_TITLE, note.questTitle);
+		}
 
 		long rowId = db.insert(CreateNoteTable.NAME, null, values);
 
@@ -67,6 +70,19 @@ public class CreateNoteDao
 		{
 			if (!cursor.moveToFirst()) return null;
 			return createObjectFrom(cursor);
+		}
+	}
+
+
+	public int getCount()
+	{
+		SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+		try (Cursor cursor = db.query(CreateNoteTable.NAME, new String[]{"COUNT(*)"},
+				null, null, null, null, null, null))
+		{
+			cursor.moveToFirst();
+			return cursor.getInt(0);
 		}
 	}
 

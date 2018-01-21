@@ -31,7 +31,7 @@ If you are not sure about how one condition applies to your suggestion or you ha
 <!-- If you have any idea whether metadata per country is needed, add it here. If you even have ideas, where to get this data from, you can of course also mention it! -->
 **Metadata needed:** 
 
-<!-- If you have any idea on how the GUI (the from appearing when the quest is asked) should look like. (i.e. whether a simple yes/no answer is suitable or what else you imagine) You can use any way to propose a UI. Use simple markdown tables (https://help.github.com/articles/organizing-information-with-tables/) or complex image mockups. That's your decicion.
+<!-- If you have any idea on how the GUI (the from appearing when the quest is asked) should look like. (i.e. whether a simple yes/no answer is suitable or what else you imagine) You can use any way to propose a UI. Use simple markdown tables (https://help.github.com/articles/organizing-information-with-tables/) or complex image mockups. That's your decision.
 Do include all answer possibilities you consider for that quest. -->
 **Proposed GUI:** 
 

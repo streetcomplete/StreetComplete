@@ -73,6 +73,7 @@ surface_sand.jpg                https://commons.wikimedia.org/wiki/File:2013-08-
 surface_sett.jpg                https://commons.wikimedia.org/wiki/File:Brusteinshalden.JPG
 
 surface_wood.jpg                https://commons.wikimedia.org/wiki/File:Wooden_Bridge_In_Midst_of_Kaziranga_Wild_life_Sanctuary.jpg
+surface_metal.jpg               https://commons.wikimedia.org/wiki/File:Metal_steel_surface.jpg
 
 tactile_paving_illustration.jpg https://www.flickr.com/photos/jeanlouis_zimmermann/10072029534/in/album-72157635218804514/
                                 https://www.flickr.com/photos/jeanlouis_zimmermann/10493532264/in/album-72157635218804514/

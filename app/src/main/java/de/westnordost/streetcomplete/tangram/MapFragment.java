@@ -54,7 +54,8 @@ public class MapFragment extends Fragment implements
 		FragmentCompat.OnRequestPermissionsResultCallback, LocationListener,
 		LostApiClient.ConnectionCallbacks, TouchInput.ScaleResponder,
 		TouchInput.ShoveResponder, TouchInput.RotateResponder,
-		TouchInput.PanResponder, TouchInput.DoubleTapResponder, CompassComponent.Listener, MapController.SceneLoadListener
+		TouchInput.PanResponder, TouchInput.DoubleTapResponder,
+		CompassComponent.Listener, MapController.SceneLoadListener
 {
 	private CompassComponent compass = new CompassComponent();
 
@@ -109,6 +110,7 @@ public class MapFragment extends Fragment implements
 				"<a href=\"https://mapzen.com/\">Mapzen</a>"))
 		);
 		mapzenLink.setMovementMethod(LinkMovementMethod.getInstance());
+		mapzenLink.setVisibility(View.GONE);
 
 		return view;
 	}
@@ -683,4 +685,10 @@ public class MapFragment extends Fragment implements
 	{
 		return controller != null ? controller.getRotation() : 0;
 	}
+
+	public float getZoom()
+	{
+		return controller.getZoom();
+	}
+
 }

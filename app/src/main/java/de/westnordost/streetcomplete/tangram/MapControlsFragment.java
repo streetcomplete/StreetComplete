@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.annotation.AnyThread;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -38,6 +40,12 @@ public class MapControlsFragment extends Fragment
 	private LocationStateButton trackingButton;
 
 	@Inject SharedPreferences prefs;
+
+	private Listener listener;
+	public interface Listener
+	{
+		void onClickCreateNote();
+	}
 
 	private BroadcastReceiver locationAvailabilityReceiver = new BroadcastReceiver()
 	{
@@ -118,6 +126,14 @@ public class MapControlsFragment extends Fragment
 		ImageButton zoomOutButton = view.findViewById(R.id.zoom_out);
 		zoomOutButton.setOnClickListener(v -> mapFragment.zoomOut());
 
+		ImageButton createNoteButton = view.findViewById(R.id.create_note);
+		createNoteButton.setOnClickListener(v ->
+		{
+			v.setEnabled(false);
+			new Handler(Looper.getMainLooper()).postDelayed(() -> v.setEnabled(true), 200);
+			listener.onClickCreateNote();
+		});
+
 		singleLocationRequest = new SingleLocationRequest(getActivity());
 
 		return view;
@@ -147,6 +163,12 @@ public class MapControlsFragment extends Fragment
 
 		getContext().unregisterReceiver(locationAvailabilityReceiver);
 		LocalBroadcastManager.getInstance(getContext()).unregisterReceiver(locationRequestFinishedReceiver);
+	}
+
+	@Override public void onAttach(Context context)
+	{
+		super.onAttach(context);
+		listener = (Listener) context;
 	}
 
 	/* ------------------------ Calls from the MapFragment ------------------------ */

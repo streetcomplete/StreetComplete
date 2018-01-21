@@ -9,31 +9,32 @@ import java.util.ArrayList;
 
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.ImageListQuestAnswerFragment;
+import de.westnordost.streetcomplete.view.Item;
 
 public class AddRoofShapeForm extends ImageListQuestAnswerFragment
 {
 	protected static final int MORE_THAN_95_PERCENT_COVERED = 8;
 
-	private static final OsmItem[] ROOF_SHAPES = new OsmItem[]{
-			new OsmItem("gabled",			R.drawable.ic_roof_gabled),
-			new OsmItem("hipped",			R.drawable.ic_roof_hipped),
-			new OsmItem("flat",				R.drawable.ic_roof_flat),
-			new OsmItem("pyramidal",		R.drawable.ic_roof_pyramidal),
+	private static final Item[] ROOF_SHAPES = new Item[]{
+			new Item("gabled",			R.drawable.ic_roof_gabled),
+			new Item("hipped",			R.drawable.ic_roof_hipped),
+			new Item("flat",			R.drawable.ic_roof_flat),
+			new Item("pyramidal",		R.drawable.ic_roof_pyramidal),
 
-			new OsmItem("half-hipped",		R.drawable.ic_roof_half_hipped),
-			new OsmItem("skillion",			R.drawable.ic_roof_skillion),
-			new OsmItem("gambrel",			R.drawable.ic_roof_gambrel),
-			new OsmItem("round",			R.drawable.ic_roof_round),
+			new Item("half-hipped",		R.drawable.ic_roof_half_hipped),
+			new Item("skillion",		R.drawable.ic_roof_skillion),
+			new Item("gambrel",			R.drawable.ic_roof_gambrel),
+			new Item("round",			R.drawable.ic_roof_round),
 
-			new OsmItem("double_saltbox",	R.drawable.ic_roof_double_saltbox),
-			new OsmItem("saltbox",			R.drawable.ic_roof_saltbox),
-			new OsmItem("mansard",			R.drawable.ic_roof_mansard),
-			new OsmItem("dome",				R.drawable.ic_roof_dome),
+			new Item("double_saltbox",	R.drawable.ic_roof_double_saltbox),
+			new Item("saltbox",			R.drawable.ic_roof_saltbox),
+			new Item("mansard",			R.drawable.ic_roof_mansard),
+			new Item("dome",			R.drawable.ic_roof_dome),
 
-			new OsmItem("quadruple_saltbox", R.drawable.ic_roof_quadruple_saltbox),
-			new OsmItem("round_gabled",		R.drawable.ic_roof_round_gabled),
-			new OsmItem("onion",			R.drawable.ic_roof_onion),
-			new OsmItem("cone",				R.drawable.ic_roof_cone),
+			new Item("quadruple_saltbox", R.drawable.ic_roof_quadruple_saltbox),
+			new Item("round_gabled",	R.drawable.ic_roof_round_gabled),
+			new Item("onion",			R.drawable.ic_roof_onion),
+			new Item("cone",			R.drawable.ic_roof_cone),
 			};
 
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -56,14 +57,6 @@ public class AddRoofShapeForm extends ImageListQuestAnswerFragment
 		applyImmediateAnswer(answer);
 	}
 
-	@Override protected int getMaxNumberOfInitiallyShownItems()
-	{
-		return MORE_THAN_95_PERCENT_COVERED;
-	}
-
-	@Override protected OsmItem[] getItems()
-	{
-		return ROOF_SHAPES;
-	}
-
+	@Override protected int getMaxNumberOfInitiallyShownItems() { return MORE_THAN_95_PERCENT_COVERED; }
+	@Override protected Item[] getItems() { return ROOF_SHAPES; }
 }

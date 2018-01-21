@@ -4,7 +4,7 @@
 # 2. spoken trade languages / lingua franca(s) if the official language does not do the job
 # 3. spoken national majority languages in mother tongue by importance 
 # 4. languages spoken by a clear minority only if it spoken by the majority in their region and enjoys some official recognition (i.e. language used on signs) there
-# a good source (which doesn't make a distinction between spoken natively and spoken ingeneral though which this list tries to make though, so additional research is necessary): http://www.unicode.org/cldr/charts/latest/supplemental/territory_language_information.html
+# a good source (which doesn't make a distinction between spoken natively and spoken in general though which this list tries to make, so additional research is necessary): http://www.unicode.org/cldr/charts/latest/supplemental/territory_language_information.html
 default: [en]
 AD: [ca]
 AE: [ar]

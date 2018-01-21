@@ -77,7 +77,7 @@
     <string name="action_about">"About StreetComplete"</string>
     <string name="about_title_version">"Version"</string>
     <string name="about_title_authors">"Credits"</string>
-    <string name="about_summary_authors">"© 2016–2017 Tobias Zwick and contributors"</string>
+    <string name="about_summary_authors">"© 2016–2018 Tobias Zwick and contributors"</string>
     <string name="about_title_repository">"Source Repository"</string>
     <string name="about_summary_repository">"on GitHub"</string>
     <string name="about_title_report_error">"Report error"</string>
@@ -91,12 +91,12 @@
     <string name="no_gps_no_quests">"To scan for quests around you automatically, turn on location"</string>
     <string name="nothing_more_to_download">"No further quests available"</string>
     <string name="later">"Later"</string>
-    <string name="quest_streetName_answer_noProperStreet">"Not a proper street"</string>
-    <string name="quest_streetName_answer_noProperStreet_question">"What is it then?"</string>
+    <string name="quest_streetName_answer_noName_question">"Why does it have no name?"</string>
     <string name="quest_streetName_answer_noProperStreet_link">"it just links two roads"</string>
-    <string name="quest_streetName_answer_noProperStreet_service">"It is just a service road"</string>
+    <string name="quest_streetName_answer_noProperStreet_service2">"It is something like a driveway or parking aisle"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Something else (leave note)"</string>
-    <string name="quest_streetName_answer_noProperStreet_track">"It is just a track"</string>
+    <string name="quest_streetName_answer_noProperStreet_track2">"It is an agricultural or forestry road"</string>
+    <string name="quest_streetName_answer_noName_noname">None of the above, it simply has no name</string>
     <string name="about_title_privacy_statement">"Privacy Statement"</string>
     <string name="about_summary_privacy_statement">"and Data Usage"</string>
     <string name="quest_openingHours_public_holidays">"Public Holidays"</string>
@@ -443,6 +443,9 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_housenumber_conscription_number_required">A conscription number must be specified</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">Also cycleway on other side</string>
     <string name="need_specify_both_sides">You need to specify both sides</string>
+    <string name="map_btn_create_note">Create new note</string>
+    <string name="create_new_note_unprecise">Zoom in further to create a note</string>
+    <string name="create_new_note_description">You can leave a note to let other mappers know about an issue here. Adjust the note\'s position by moving the map:</string>
     <string name="pref_title_quests_invalidation">Invalidate Quest Cache</string>
     <string name="pref_title_quests_invalidation_summary">Useful if you think that some quests are outdated</string>
     <string name="invalidate_confirmation">Invalidate</string>
@@ -450,7 +453,9 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_openingHours_emptyAnswer">You need to describe what is on the sign. If there is no sign, you should ask for the opening hours inside.</string>
     <string name="quest_cycleway_value_none_but_no_oneway">none, but cyclists may use road in both directions</string>
     <string name="quest_generic_looks_like_this">Usually looks like this:</string>
-
+    <string name="quest_surface_value_metal">Metal</string>
+    <string name="quest_surface_generic_surface_confirmation">Are you sure that you can not determine the surface more specifically?</string>
+  
     <string name="quest_buildingType_title">"What kind of building is this?"</string>
     <string name="quest_buildingType_house">House</string>
     <string name="quest_buildingType_residential">Residential</string>
@@ -465,7 +470,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingType_terrace">Terraced house</string>
     <string name="quest_buildingType_garages">Garages</string>
     <string name="quest_buildingType_school">School</string>
-    <string name="quest_buildingType_retail">Shop</string>
+    <string name="quest_buildingType_retail">Retail</string>
     <string name="quest_buildingType_greenhouse">Greenhouse</string>
     <string name="quest_buildingType_barn">Barn</string>
     <string name="quest_buildingType_church">Church</string>

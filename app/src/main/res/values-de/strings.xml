@@ -70,7 +70,7 @@
     <string name="action_about">"Über StreetComplete"</string>
     <string name="about_title_version">"Version"</string>
     <string name="about_title_authors">"Autoren"</string>
-    <string name="about_summary_authors">"© 2016–2017 Tobias Zwick und Mitwirkende"</string>
+    <string name="about_summary_authors">"© 2016–2018 Tobias Zwick und Mitwirkende"</string>
     <string name="about_title_repository">"Quellcode-Repository"</string>
     <string name="about_summary_repository">"auf GitHub"</string>
     <string name="about_title_report_error">"Fehler melden"</string>
@@ -190,7 +190,7 @@ Um die Karte darzustellen, werden Kartendaten vom &lt;a href=\"https://mapzen.co
 Diese App findet unvollständige und erweiterbare Daten in deiner Nähe und zeigt diese als Aufgaben auf einer Karte an. Jede dieser Aufgaben kann vor Ort durch Beantwortung einer einfachen Frage gelöst werden.
 
 Die von dir eingegebenen Informationen werden dann direkt in deinem Namen zu OpenStreetMap hinzugefügt, ohne einen weiteren Editor benutzen zu müssen."</string>
-    <string name="quest_name_answer_noName">"Es hat keinen Namen"</string>
+    <string name="quest_name_answer_noName">"Sie hat keinen Namen"</string>
     <string name="quest_name_answer_noName_confirmation_title">"Wirklich kein Name?"</string>
     <string name="quest_name_noName_confirmation_positive">"Ja, kein Name"</string>
     <string name="quest_openingHours_add_times">"➕ Öffnungszeiten"</string>
