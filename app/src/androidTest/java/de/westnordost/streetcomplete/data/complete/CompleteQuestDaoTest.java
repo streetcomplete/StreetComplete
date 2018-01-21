@@ -11,6 +11,7 @@ import de.westnordost.streetcomplete.data.ApplicationDbTestCase;
 import de.westnordost.streetcomplete.data.QuestStatus;
 import de.westnordost.streetcomplete.data.QuestType;
 import de.westnordost.streetcomplete.data.QuestTypeRegistry;
+import de.westnordost.streetcomplete.data.complete.test.TestQuestType2;
 import de.westnordost.streetcomplete.data.osm.ElementGeometry;
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao;
 import de.westnordost.streetcomplete.data.complete.test.TestQuestType;
@@ -25,9 +26,9 @@ public class CompleteQuestDaoTest extends ApplicationDbTestCase
 		super.setUp();
 		List<QuestType> list = new ArrayList<>();
 		list.add(new TestQuestType());
+		list.add(new TestQuestType2());
 
 		geometryDao = new ElementGeometryDao(dbHelper, serializer);
-
 		dao = new CompleteQuestDao(dbHelper, new QuestTypeRegistry(list), serializer);
 	}
 
@@ -101,8 +102,8 @@ public class CompleteQuestDaoTest extends ApplicationDbTestCase
 
 		addToDaos(quest1, quest2);
 
-		assertEquals(1,dao.getAll(new BoundingBox(0,0,10,10), null).size());
-		assertEquals(2,dao.getAll(null, null).size());
+		assertEquals(1, dao.getAll(new BoundingBox(0,0,10,10), null).size());
+		assertEquals(2, dao.getAll(null, null).size());
 	}
 
 	public void testGetAll()

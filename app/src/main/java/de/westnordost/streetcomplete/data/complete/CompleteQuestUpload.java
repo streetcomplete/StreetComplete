@@ -47,7 +47,8 @@ public class CompleteQuestUpload
 
 	private CompleteQuest uploadCompleteAnswer(CompleteQuest quest)
 	{
-		uploadToServer(quest.getComplete().apiId, quest.getComplete().answer, quest.getComplete().country);
+		uploadToServer(quest.getComplete());
+
 		//hide the quest
 		CompleteQuest q = completeQuestDB.get(quest.getId());
 		q.setStatus(QuestStatus.HIDDEN);
@@ -56,9 +57,9 @@ public class CompleteQuestUpload
 		return q;
 	}
 
-	private void uploadToServer(Long id, String answer, String country)
+	private void uploadToServer(Complete complete)
 	{
-		String url = COMPLETE_INSTANCE + "api/post/" + String.valueOf(id);
+		String url = COMPLETE_INSTANCE + "api/post/" + String.valueOf(complete.apiId);
 		try
 		{
 			URL uri = new URL(url);
@@ -66,7 +67,7 @@ public class CompleteQuestUpload
 			connection.setRequestMethod("POST");
 			connection.setDoOutput(true);
 
-			String data = "{\"values\":{\"" + country + "\":\"" + answer + "\"}}";
+			String data = "{\"values\":{\"" + complete.country + "\":\"" + complete.answer + "\"}}";
 
 			String encoding = Base64.encodeToString(COMPLETE_AUTH.getBytes(), Base64.DEFAULT);
 			connection.setRequestProperty("Authorization", "Basic " + encoding);

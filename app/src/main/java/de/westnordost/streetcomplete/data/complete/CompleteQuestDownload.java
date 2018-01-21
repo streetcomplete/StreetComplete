@@ -7,6 +7,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.Future;
 import java.util.concurrent.FutureTask;
 
@@ -21,6 +22,7 @@ import de.westnordost.streetcomplete.data.QuestType;
 import de.westnordost.streetcomplete.data.VisibleQuestListener;
 import de.westnordost.streetcomplete.data.meta.CountryBoundaries;
 import de.westnordost.streetcomplete.data.osm.Countries;
+import de.westnordost.streetcomplete.data.osm.ElementGeometry;
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao;
 import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao;
 import de.westnordost.streetcomplete.data.osm.persist.OsmElementKey;
@@ -55,6 +57,16 @@ public class CompleteQuestDownload
 
 	public boolean download(BoundingBox bbox, SimpleOverpassCompleteQuestType questType)
 	{
+		/*Download the quest only if there are no hidden or answered quests for this type
+		(which means that this quest type has already been answered)*/
+		if (!completeQuestDB.getAllByType(getQuestTypeName(questType), QuestStatus.HIDDEN).isEmpty() &&
+				!completeQuestDB.getAllByType(getQuestTypeName(questType), QuestStatus.ANSWERED).isEmpty())
+		{
+			Log.i(TAG, getQuestTypeName(questType) + ": " +
+					"Skipped because this quest type has already been answered");
+			return true;
+		}
+
 		if(!checkIsEnabledFor(questType, bbox))
 		{
 			Log.i(TAG, getQuestTypeName(questType) + ": " +
@@ -69,31 +81,29 @@ public class CompleteQuestDownload
 		long time = System.currentTimeMillis();
 		boolean success = questType.download(bbox, (element, geometry) ->
 		{
-			Element.Type elementType = element.getType();
-			long elementId = element.getId();
-
-			Complete complete = new Complete();
-			complete.apiId = questType.getApiId();
-			complete.status = QuestStatus.NEW;
-			complete.country = getCountryForPosition(geometry.center);
-			complete.completeType = questType.getCompleteType();
-
-			CompleteQuest quest = new CompleteQuest(complete, questType, elementType, elementId, geometry);
-
-			geometryRows.add(new ElementGeometryDao.Row(elementType, elementId, quest.getGeometry()));
-			OsmElementKey elementKey = new OsmElementKey(elementType, elementId);
-			elements.put(elementKey, element);
-
-			//Add the quest only if there are no hidden or answered quests
-			if (completeQuestDB.getAllByType(getQuestTypeName(questType), QuestStatus.HIDDEN).isEmpty() &&
-					completeQuestDB.getAllByType(getQuestTypeName(questType), QuestStatus.ANSWERED).isEmpty())
+			if(mayCreateQuestFrom(questType, element, geometry))
 			{
+				Element.Type elementType = element.getType();
+				long elementId = element.getId();
+
+				Complete complete = new Complete();
+				complete.apiId = questType.getApiId();
+				complete.status = QuestStatus.NEW;
+				complete.country = getCountryForPosition(geometry.center);
+				complete.completeType = questType.getCompleteType();
+
+				CompleteQuest quest = new CompleteQuest(complete, questType, elementType, elementId, geometry);
+
+				geometryRows.add(new ElementGeometryDao.Row(elementType, elementId, quest.getGeometry()));
 				quests.add(quest);
+				OsmElementKey elementKey = new OsmElementKey(elementType, elementId);
+				elements.put(elementKey, element);
 			}
 		});
 		if(!success) return false;
 
 		// geometry and elements must be put into DB first because quests have foreign keys on it
+		//TODO: Why is the geometry not saved to the db?
 		geometryDB.putAll(geometryRows);
 		elementDB.putAll(elements.values());
 
@@ -138,6 +148,22 @@ public class CompleteQuestDownload
 		return countryBoundaries.getIsoCodes(position.getLongitude(), position.getLatitude()).get(0);
 	}
 
+	private boolean mayCreateQuestFrom(CompleteQuestType questType, Element element,
+									   ElementGeometry geometry)
+	{
+		// invalid geometry -> can't show this quest, so skip it
+		if(geometry == null)
+		{
+			// classified as warning because it might very well be a bug on the geometry
+			// creation on our side
+			Log.w(TAG, getQuestTypeName(questType) + ": Not adding a quest " +
+					" because the element " + getElementAsLogString(element) +
+					" has no valid geometry");
+			return false;
+		}
+		return true;
+	}
+
 	private boolean checkIsEnabledFor(CompleteQuestType questType, BoundingBox bbox)
 	{
 		Countries countries = questType.getEnabledForCountries();
@@ -174,4 +200,5 @@ public class CompleteQuestDownload
 	}
 
 	private static String getQuestTypeName(QuestType q) { return q.getClass().getSimpleName(); }
+	private static String getElementAsLogString(Element element) { return element.getType().name().toLowerCase() + " #" + element.getId(); }
 }

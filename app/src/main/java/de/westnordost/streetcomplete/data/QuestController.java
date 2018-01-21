@@ -273,18 +273,20 @@ public class QuestController
 
 		String answer;
 
-		if (q.getComplete().completeType.equals(CompleteTypes.CHART))
+		switch (q.getComplete().completeType)
 		{
-			Boolean value = bundle.getBoolean(CompleteQuestType.ANSWER);
-			answer = value ? "Yes" : "No";
-		}
-		else if (q.getComplete().completeType.equals(CompleteTypes.TRANSLATION))
-		{
-			answer = bundle.getString(CompleteQuestType.ANSWER);
-		}
-		else
-		{
-			answer = String.valueOf(bundle.get(CompleteQuestType.ANSWER));
+			case CompleteTypes.CHART:
+				Boolean value = bundle.getBoolean(CompleteQuestType.ANSWER);
+				answer = value ? "Yes" : "No";
+				break;
+
+			case CompleteTypes.TRANSLATION:
+				answer = bundle.getString(CompleteQuestType.ANSWER);
+				break;
+
+			default:
+				answer = String.valueOf(bundle.get(CompleteQuestType.ANSWER));
+				break;
 		}
 
 		if(!answer.isEmpty())

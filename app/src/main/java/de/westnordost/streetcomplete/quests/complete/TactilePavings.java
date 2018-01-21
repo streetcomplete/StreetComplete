@@ -20,6 +20,6 @@ public class TactilePavings extends SimpleOverpassCompleteQuestType
 	@Override public int getIcon() { return R.drawable.ic_quest_blind_pedestrian_crossing; }
 	@Override public int getTitle() { return R.string.complete_tactilePavings_title; }
 
-	@Override public int getApiId() { return 2; }
+	@Override public int getApiId() { return 1; }
 	@Override public String getCompleteType() { return CompleteTypes.CHART; }
 }

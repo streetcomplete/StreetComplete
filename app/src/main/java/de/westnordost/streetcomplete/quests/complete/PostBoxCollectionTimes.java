@@ -12,13 +12,13 @@ public class PostBoxCollectionTimes extends SimpleOverpassCompleteQuestType
 {
 	@Inject public PostBoxCollectionTimes(OverpassMapDataDao overpassServer) { super(overpassServer); }
 
-	@Override protected String getTagFilters() { return "nodes with amenity=post_box"; }
+	@Override protected String getTagFilters() { return "nodes, ways with amenity ~ post|post_box"; }
 
 	@Override public AbstractQuestAnswerFragment createForm() { return new CompleteQuestYesNoAnswerFragment(); }
 
 	@Override public int getIcon() { return R.drawable.ic_quest_mail; }
 	@Override public int getTitle() { return R.string.complete_postBox_title; }
 
-	@Override public int getApiId() { return 3; }
+	@Override public int getApiId() { return 2; }
 	@Override public String getCompleteType() { return CompleteTypes.CHART; }
 }
