@@ -18,8 +18,8 @@ public class TactilePavings extends SimpleOverpassCompleteQuestType
 	@Override public AbstractQuestAnswerFragment createForm() { return new CompleteQuestYesNoAnswerFragment(); }
 
 	@Override public int getIcon() { return R.drawable.ic_quest_blind_pedestrian_crossing; }
-	@Override public int getTitle() { return R.string.complete_tactilePavings_title; }
+	@Override public int getTitle() { return R.string.complete_tactile_pavings_title; }
 
 	@Override public int getApiId() { return 1; }
-	@Override public String getCompleteType() { return CompleteTypes.CHART; }
+	@Override public String getCompleteType() { return CompleteTypes.YES_NO; }
 }

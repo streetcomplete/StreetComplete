@@ -8,12 +8,17 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import javax.inject.Inject;
 import javax.net.ssl.HttpsURLConnection;
 
 import de.westnordost.streetcomplete.data.QuestStatus;
+import de.westnordost.streetcomplete.data.osmnotes.AttachPhotoUtils;
+import de.westnordost.streetcomplete.util.ImageUploader;
 
 import static de.westnordost.streetcomplete.ApplicationConstants.COMPLETE_AUTH;
 import static de.westnordost.streetcomplete.ApplicationConstants.COMPLETE_INSTANCE;
@@ -23,10 +28,12 @@ public class CompleteQuestUpload
 	private static final String TAG = "CompleteQuestUpload";
 
 	private final CompleteQuestDao completeQuestDB;
+	private final ImageUploader imageUploader;
 
-	@Inject public CompleteQuestUpload(CompleteQuestDao completeQuestDB)
+	@Inject public CompleteQuestUpload(CompleteQuestDao completeQuestDB, ImageUploader imageUploader)
 	{
 		this.completeQuestDB = completeQuestDB;
+		this.imageUploader = imageUploader;
 	}
 
 	public void upload(AtomicBoolean cancelState)
@@ -59,7 +66,7 @@ public class CompleteQuestUpload
 
 	private void uploadToServer(Complete complete)
 	{
-		String url = COMPLETE_INSTANCE + "api/post/" + String.valueOf(complete.apiId);
+		String url = COMPLETE_INSTANCE + "api/answer/" + String.valueOf(complete.apiId);
 		try
 		{
 			URL uri = new URL(url);
@@ -67,10 +74,20 @@ public class CompleteQuestUpload
 			connection.setRequestMethod("POST");
 			connection.setDoOutput(true);
 
-			String data = "{\"values\":{\"" + complete.country + "\":\"" + complete.answer + "\"}}";
-
 			String encoding = Base64.encodeToString(COMPLETE_AUTH.getBytes(), Base64.DEFAULT);
 			connection.setRequestProperty("Authorization", "Basic " + encoding);
+
+			String data;
+			if (complete.completeType.equals(CompleteTypes.IMAGE))
+			{
+				List<String> imageList = new ArrayList<>(Arrays.asList(complete.answer.split(",")));
+				String urls = AttachPhotoUtils.uploadAndGetUrlsAsArrayString(imageUploader, imageList);
+				data = "{\"values\":{\"" + complete.country + "\":" + urls + "}}";
+			}
+			else
+			{
+				data = "{\"values\":{\"" + complete.country + "\":\"" + complete.answer + "\"}}";
+			}
 
 			byte[] out = data.getBytes();
 			int length = out.length;
@@ -87,9 +104,21 @@ public class CompleteQuestUpload
 			while ((line = serverAnswer.readLine()) != null) {
 				System.out.println("LINE: " + line);
 			}
+
+			if (complete.completeType.equals(CompleteTypes.IMAGE))
+			{
+				List<String> imageList = new ArrayList<>(Arrays.asList(complete.answer.split(",")));
+				AttachPhotoUtils.deleteImages(imageList);
+			}
 		}
 		catch (IOException e)
 		{
+			if (complete.completeType.equals(CompleteTypes.IMAGE))
+			{
+				List<String> imageList = new ArrayList<>(Arrays.asList(complete.answer.split(",")));
+				AttachPhotoUtils.deleteImages(imageList);
+			}
+
 			throw new RuntimeException(e);
 		}
 	}

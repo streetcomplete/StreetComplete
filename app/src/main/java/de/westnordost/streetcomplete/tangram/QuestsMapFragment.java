@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.tangram;
 
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.graphics.Point;
 import android.graphics.PointF;
 import android.graphics.Rect;
@@ -32,8 +33,10 @@ import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.data.Quest;
 import de.westnordost.streetcomplete.data.QuestGroup;
 import de.westnordost.streetcomplete.data.QuestType;
+import de.westnordost.streetcomplete.data.complete.CompleteTypes;
 import de.westnordost.streetcomplete.data.osm.ElementGeometry;
 import de.westnordost.streetcomplete.quests.bikeway.AddCycleway;
+import de.westnordost.streetcomplete.quests.complete.CompleteQuestImageAnswerFragment;
 import de.westnordost.streetcomplete.util.SlippyMapMath;
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.LatLon;
@@ -377,6 +380,12 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 
 			// hack away cycleway quests for old Android SDK versions (#713)
 			if(quest.getType() instanceof AddCycleway && android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT)
+			{
+				continue;
+			}
+
+			//hack away complete quests which require to take a picture for phones which do not have a camera
+			if (quest.getType().createForm() instanceof CompleteQuestImageAnswerFragment && !getActivity().getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA))
 			{
 				continue;
 			}

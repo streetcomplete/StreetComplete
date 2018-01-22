@@ -36,6 +36,7 @@ import de.westnordost.streetcomplete.data.osmnotes.CreateNoteDao;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuest;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestDao;
 import de.westnordost.streetcomplete.data.upload.QuestChangesUploadService;
+import de.westnordost.streetcomplete.quests.complete.CompleteQuestImageAnswerFragment;
 import de.westnordost.streetcomplete.quests.note_discussion.NoteDiscussionForm;
 import de.westnordost.streetcomplete.util.SlippyMapMath;
 import de.westnordost.osmapi.map.data.BoundingBox;
@@ -275,9 +276,19 @@ public class QuestController
 
 		switch (q.getComplete().completeType)
 		{
-			case CompleteTypes.CHART:
+			case CompleteTypes.YES_NO:
 				Boolean value = bundle.getBoolean(CompleteQuestType.ANSWER);
 				answer = value ? "Yes" : "No";
+				break;
+
+			case CompleteTypes.IMAGE:
+				ArrayList<String> imagePaths = bundle.getStringArrayList(CompleteQuestImageAnswerFragment.IMAGE_PATHS);
+				StringBuilder builder = new StringBuilder();
+				for(String s : imagePaths) {
+					builder.append(",");
+					builder.append(s);
+				}
+				answer = builder.toString();
 				break;
 
 			case CompleteTypes.TRANSLATION:

@@ -17,8 +17,8 @@ public class PostBoxCollectionTimes extends SimpleOverpassCompleteQuestType
 	@Override public AbstractQuestAnswerFragment createForm() { return new CompleteQuestYesNoAnswerFragment(); }
 
 	@Override public int getIcon() { return R.drawable.ic_quest_mail; }
-	@Override public int getTitle() { return R.string.complete_postBox_title; }
+	@Override public int getTitle() { return R.string.complete_post_box_title; }
 
 	@Override public int getApiId() { return 2; }
-	@Override public String getCompleteType() { return CompleteTypes.CHART; }
+	@Override public String getCompleteType() { return CompleteTypes.YES_NO; }
 }

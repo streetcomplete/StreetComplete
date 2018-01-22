@@ -452,7 +452,8 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_cycleway_value_none_but_no_oneway">none, but cyclists may use road in both directions</string>
     <string name="quest_generic_looks_like_this">Usually looks like this:</string>
 
-    <string name="complete_peakFeatures_title">Are peak features common in your country?</string>
-    <string name="complete_tactilePavings_title">Are tactile pavings common in your country?</string>
-    <string name="complete_postBox_title">Do postboxes usually have collection times in your country?</string>
+    <string name="quest_complete_image_answer_description">Please take a photo! By uploading a picture you confirm that the developers of StreetComplete can reuse it without any kind of announcement.</string>
+    <string name="complete_tactile_pavings_title">Are tactile pavings common in your country?</string>
+    <string name="complete_post_box_title">Do postboxes usually have collection times in your country?</string>
+    <string name="complete_walking_signs_title">How do walking signs look like in your country?</string>
 </resources>

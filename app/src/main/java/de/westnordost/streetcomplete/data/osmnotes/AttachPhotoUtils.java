@@ -5,6 +5,8 @@ import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.support.media.ExifInterface;
 
+import org.json.JSONArray;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -27,6 +29,24 @@ public class AttachPhotoUtils
 					sb.append(link);
 				}
 				return sb.toString();
+			}
+		}
+		return "";
+	}
+
+	public static String uploadAndGetUrlsAsArrayString(ImageUploader imageUploader, List<String> imagePaths)
+	{
+		if(imagePaths != null && !imagePaths.isEmpty())
+		{
+			List<String> urls = imageUploader.upload(imagePaths);
+			if (urls != null && !urls.isEmpty())
+			{
+				JSONArray jsonArray = new JSONArray();
+				for(String link : urls)
+				{
+					jsonArray.put(link);
+				}
+				return jsonArray.toString();
 			}
 		}
 		return "";
