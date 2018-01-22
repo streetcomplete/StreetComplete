@@ -21,7 +21,7 @@ public class AddInternetAccess extends SimpleOverpassQuestType
 	protected String getTagFilters() {
 		return "nodes, ways, relations with" +
 				" (amenity=library or" +
-				" (tourism ~ hotel|guest_house|hostel|motel))" +
+				" tourism ~ hotel|guest_house|hostel|motel)" +
 				" and !internet_access and !wifi and name";
 	}
 
