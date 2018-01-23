@@ -162,10 +162,8 @@ public class AttachPhotoFragment extends Fragment
 
 	private File createImageFile() throws IOException
 	{
-		String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.US).format(new Date());
-		String imageFileName = "photo_" + timeStamp + "_";
 		File directory = getActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-		return File.createTempFile(imageFileName, ".jpg", directory);
+		return File.createTempFile("photo", ".jpg", directory);
 	}
 
 	public ArrayList<String> getImagePaths()
