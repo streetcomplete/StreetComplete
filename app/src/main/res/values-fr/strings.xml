@@ -283,7 +283,7 @@ L'information que vous entrez est directement ajoutée à OpenStreetMap sous vot
 
     <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"Ce passage piéton a-t-il une surface podotactile ?"</string>
-    <string name="quest_source_dialog_title">"Confirmez-vous avoir vérifier cela sur place ?"</string>
+    <string name="quest_source_dialog_title">"Confirmez-vous avoir vérifié cela sur place ?"</string>
     <string name="quest_tactilePaving_title_name_bus">"L’arrêt de bus « %s » a-t-il une surface podotactile ?"</string>
     <string name="quest_source_dialog_note">"Seules les informations relevées sur place peuvent être ajoutées."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Ce parking à vélo est-il abrité (protégé de la pluie) ?"</string>
