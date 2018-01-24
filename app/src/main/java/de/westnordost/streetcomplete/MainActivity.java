@@ -494,6 +494,10 @@ public class MainActivity extends AppCompatActivity implements
 
 		@AnyThread @Override public void onFinished()
 		{
+			Toast.makeText(
+					MainActivity.this,
+					"Finished uploading changes",
+					Toast.LENGTH_SHORT).show();
 			runOnUiThread(() -> {
 				uploadedAnswersCounter.update();
 				unsyncedChangesCounter.update();
