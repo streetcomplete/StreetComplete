@@ -201,7 +201,7 @@ public class AddCycleway implements OsmElementQuestType
 	@Override public String getCommitMessage() { return "Add whether there are cycleways"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_bicycleway; }
 	@Override public int getTitle(@NonNull Map<String, String> tags) { return getTitle(); }
-	@Override public int getTitle() { return R.string.quest_cycleway_title; }
+	@Override public int getTitle() { return R.string.quest_cycleway_title2; }
 
 	@Override public int getDefaultDisabledMessage() { return 0; }
 	@Override public Countries getEnabledForCountries()

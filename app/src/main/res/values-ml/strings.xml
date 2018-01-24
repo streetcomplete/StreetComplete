@@ -145,7 +145,7 @@
     <string name="quest_maxspeed_answer_noSign">"യാതൊരു അടയാളവുമില്ല"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"ഈ തെരുവ് എവിടെയാണ്?"</string>
     <string name="quest_cyclewaySurface_title">"സൈക്കിൾ പാതയുടെ പ്രതലം എന്താണ് ?"</string>
-    <string name="quest_cycleway_title">"ഈ തെരുവിൽ ഒരു സൈക്കിൾപാത ഉണ്ടോ?"</string>
+    <string name="quest_cycleway_title2">"ഈ തെരുവിൽ ഒരു സൈക്കിൾപാത ഉണ്ടോ?"</string>
     <string name="quest_buildingType_title">"ഇത് എന്തുതരം കെട്ടിടമാണ്?"</string>
     <string name="quest_serviceType_title">"എന്തുതരം സർവീസ് റോഡ് ആണ് ഇത് ?"</string>
     <string name="quest_streetLanes_title">"ഈ റോഡ് എത്ര വരി പാതയാണ്?"</string>

@@ -169,7 +169,7 @@ Sailkapenean eta profilean agertzen den informazioa OpenStreetMap-en publikoki e
     <string name="quest_maxspeed_answer_noSign">"Ez dago seinalerik"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Non dago kale hau?"</string>
     <string name="quest_cyclewaySurface_title">"Zein da bidegorriaren azalera?"</string>
-    <string name="quest_cycleway_title">"Bidegorria dago kale honetan?"</string>
+    <string name="quest_cycleway_title2">"Bidegorria dago kale honetan?"</string>
     <string name="quest_buildingType_title">"Ze motako eraikina da hau?"</string>
     <string name="quest_serviceType_title">"Ze motako zerbitzu bide da hau?"</string>
     <string name="quest_streetLanes_title">"Zenbat erraia ditu errepide honek?"</string>

@@ -171,7 +171,7 @@
     <string name="quest_maxspeed_answer_noSign">"這裡沒有標誌"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"此條街道位在?"</string>
     <string name="quest_cyclewaySurface_title">"此自行車道的鋪面是?"</string>
-    <string name="quest_cycleway_title">"這條街道有自行車道嗎?"</string>
+    <string name="quest_cycleway_title2">"這條街道有自行車道嗎?"</string>
     <string name="quest_buildingType_title">"這棟建築物的種類是?"</string>
     <string name="quest_serviceType_title">"此條聯絡道路的種類是?"</string>
     <string name="quest_streetLanes_title">"此條道路有多少車道?"</string>
