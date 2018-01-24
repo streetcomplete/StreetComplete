@@ -492,6 +492,10 @@ public class MainActivity extends AppCompatActivity implements
 
 		@AnyThread @Override public void onFinished()
 		{
+			if (Prefs.Autosync.valueOf(prefs.getString(Prefs.AUTOSYNC,"ON")) == Prefs.Autosync.OFF)
+			{
+				Toast.makeText(MainActivity.this, R.string.notify_end_upload_toast, Toast.LENGTH_SHORT).show();
+			}
 			runOnUiThread(() -> {
 				uploadedAnswersCounter.update();
 				unsyncedChangesCounter.update();
