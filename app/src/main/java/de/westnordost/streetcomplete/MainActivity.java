@@ -116,6 +116,7 @@ public class MainActivity extends AppCompatActivity implements
 	private ProgressBar progressBar;
 
 	private float mapRotation, mapTilt;
+	private boolean isFollowingPosition;
 
 	private boolean downloadServiceIsBound;
 	private QuestDownloadService.Interface downloadService;
@@ -589,6 +590,7 @@ public class MainActivity extends AppCompatActivity implements
 			f.onClickClose(() ->
 			{
 				mapFragment.removeQuestGeometry();
+				mapFragment.setIsFollowingPosition(isFollowingPosition);
 				MainActivity.super.onBackPressed();
 			});
 		}
@@ -761,6 +763,7 @@ public class MainActivity extends AppCompatActivity implements
 
 		getSupportFragmentManager().popBackStackImmediate(BOTTOM_SHEET, FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
+		mapFragment.setIsFollowingPosition(isFollowingPosition);
 		mapFragment.removeQuestGeometry();
 	}
 
@@ -800,6 +803,9 @@ public class MainActivity extends AppCompatActivity implements
 
 	private void showInBottomSheet(Fragment f)
 	{
+		isFollowingPosition = mapFragment.isFollowingPosition();
+		mapFragment.setIsFollowingPosition(false);
+
 		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 		ft.setCustomAnimations(
 				R.animator.quest_answer_form_appear, R.animator.quest_answer_form_disappear,
