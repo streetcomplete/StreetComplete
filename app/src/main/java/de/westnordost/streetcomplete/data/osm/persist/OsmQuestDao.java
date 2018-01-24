@@ -26,6 +26,7 @@ public class OsmQuestDao extends AOsmQuestDao
 	public OsmQuest getNextNewAt(long questId, final List<String> questTypesNames)
 	{
 		OsmQuest quest = get(questId);
+		if(quest == null) return null;
 
 		WhereSelectionBuilder qb = new WhereSelectionBuilder();
 		addQuestStatus(QuestStatus.NEW, qb);
