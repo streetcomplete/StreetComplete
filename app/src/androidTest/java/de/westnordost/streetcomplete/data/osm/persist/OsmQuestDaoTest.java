@@ -23,6 +23,9 @@ import de.westnordost.streetcomplete.data.osm.persist.test.TestQuestType;
 import de.westnordost.streetcomplete.data.osm.persist.test.TestQuestType2;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.map.data.OsmLatLon;
+import de.westnordost.streetcomplete.data.osm.persist.test.TestQuestType3;
+import de.westnordost.streetcomplete.data.osm.persist.test.TestQuestType4;
+import de.westnordost.streetcomplete.data.osm.persist.test.TestQuestType5;
 
 public class OsmQuestDaoTest extends ApplicationDbTestCase
 {
@@ -36,6 +39,9 @@ public class OsmQuestDaoTest extends ApplicationDbTestCase
 		List<QuestType> list = new ArrayList<>();
 		list.add(new TestQuestType());
 		list.add(new TestQuestType2());
+		list.add(new TestQuestType3());
+		list.add(new TestQuestType4());
+		list.add(new TestQuestType5());
 
 		dao = new OsmQuestDao(dbHelper, serializer, new QuestTypeRegistry(list));
 	}
@@ -123,7 +129,7 @@ public class OsmQuestDaoTest extends ApplicationDbTestCase
 										   Element.Type elementType, ElementGeometry geometry)
 	{
 		return new OsmQuest(null, questType, elementType, id,
-				QuestStatus.ANSWERED, null, null, new Date(), geometry);
+				QuestStatus.NEW, null, null, new Date(), geometry);
 	}
 
 	private void addToDaos(OsmQuest ...quests)
@@ -131,7 +137,8 @@ public class OsmQuestDaoTest extends ApplicationDbTestCase
 		for (OsmQuest quest : quests)
 		{
 			geometryDao.put(quest.getElementType(), quest.getElementId(), quest.getGeometry());
-			dao.add(quest);
+			boolean result = dao.add(quest);
+			assertTrue(result);
 		}
 	}
 
@@ -164,6 +171,49 @@ public class OsmQuestDaoTest extends ApplicationDbTestCase
 		addToDaos(quest1, quest2);
 
 		assertEquals(1,dao.deleteAllReverted(Element.Type.NODE,1));
+	}
+
+	public void testGetNextNewAt()
+	{
+		ElementGeometry geom = new ElementGeometry(new OsmLatLon(5,5));
+
+		OsmQuest quest = createNewQuest(new TestQuestType(), 1, Element.Type.NODE, geom);
+		quest.setStatus(QuestStatus.ANSWERED);
+
+		addToDaos(quest,
+				createNewQuest(new TestQuestType2(), 1, Element.Type.NODE, geom),
+				createNewQuest(new TestQuestType3(), 1, Element.Type.NODE, geom),
+				createNewQuest(new TestQuestType4(), 1, Element.Type.NODE, geom),
+				createNewQuest(new TestQuestType5(), 1, Element.Type.NODE, geom));
+
+		OsmQuest nextQuest = dao.getNextNewAt(1,
+				Arrays.asList("TestQuestType4", "TestQuestType3", "TestQuestType5"));
+
+		assertEquals(nextQuest.getType().getClass().getSimpleName(),"TestQuestType4");
+	}
+
+	public void testGetNoFittingNextNewAt()
+	{
+		ElementGeometry geom = new ElementGeometry(new OsmLatLon(5,5));
+
+		OsmQuest quest = createNewQuest(new TestQuestType(), 1, Element.Type.NODE, geom);
+		quest.setStatus(QuestStatus.ANSWERED);
+
+		addToDaos(quest,createNewQuest(new TestQuestType2(), 2, Element.Type.NODE, geom));
+
+		assertNull(dao.getNextNewAt(1,Arrays.asList("TestQuestType")));
+	}
+
+	public void testGetNoNextNewAt()
+	{
+		ElementGeometry geom = new ElementGeometry(new OsmLatLon(5,5));
+
+		OsmQuest quest = createNewQuest(new TestQuestType(), 1, Element.Type.NODE, geom);
+		quest.setStatus(QuestStatus.ANSWERED);
+
+		addToDaos(quest);
+
+		assertNull(dao.getNextNewAt(1,null));
 	}
 
 	private void checkEqual(OsmQuest quest, OsmQuest dbQuest)

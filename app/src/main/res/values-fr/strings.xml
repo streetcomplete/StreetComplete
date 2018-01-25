@@ -205,7 +205,7 @@ Pour afficher la carte, les tuiles vectorielles sont extraites du &lt;a href=\"h
 
     <!-- Plus simple et plus court : Quel est le revêtement de cette piste cyclable ? -->
     <string name="quest_cyclewaySurface_title">"Quel est le revêtement de cette piste cyclable ?"</string>
-    <string name="quest_cycleway_title">"Est-ce qu'il y a une piste cyclable sur cette rue ?"</string>
+    <string name="quest_cycleway_title2">"Est-ce qu'il y a une piste cyclable sur cette rue ?"</string>
     <string name="quest_buildingType_title">"Quel est le type de cet édifice ?"</string>
     <string name="quest_serviceType_title">"Quel est le type de cette rue de service ?"</string>
     <string name="quest_streetLanes_title">"Combien de voies cette rue a-t-elle ?"</string>

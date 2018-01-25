@@ -201,7 +201,7 @@ public class AddCycleway implements OsmElementQuestType
 	@Override public String getCommitMessage() { return "Add whether there are cycleways"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_bicycleway; }
 	@Override public int getTitle(@NonNull Map<String, String> tags) { return getTitle(); }
-	@Override public int getTitle() { return R.string.quest_cycleway_title; }
+	@Override public int getTitle() { return R.string.quest_cycleway_title2; }
 
 	@Override public int getDefaultDisabledMessage() { return 0; }
 	@Override public Countries getEnabledForCountries()
@@ -215,19 +215,23 @@ public class AddCycleway implements OsmElementQuestType
 			// all of Northern and Western Europe, most of Central Europe, some of Southern Europe
 			"NO","SE","FI","IS","DK",
 			"GB","IE","NL","BE","FR","LU",
-			"DE","PL","CZ","HU","AT","CH",
+			"DE","PL","CZ","HU","AT","CH","LI",
 			"ES","IT",
 			// East Asia
 			"JP","KR","TW",
+			// some of China (East Coast)
+			"CN-11","CN-12","CN-37","CN-32","CN-31",
+			"CN-33","CN-35","CN-44","CN-50",
 			// Australia etc
 			"NZ","AU",
 			// some of Canada
 			"CA-BC","CA-QC","CA-ON","CA-NS","CA-PE",
 			// some of the US
-			// West Coast, East Coast, Center
+			// West Coast, East Coast, Center, South
 			"US-WA","US-OR","US-CA",
-			"US-MA","US-NJ","US-DC",
-			"US-MN"
+			"US-MA","US-NJ","US-NY","US-DC","US-CT","US-FL",
+			"US-MN","US-MI","US-IL","US-WI","US-IN",
+			"US-AZ","US-TX",
 		});
 	}
 }

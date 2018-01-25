@@ -177,7 +177,7 @@ För att visa på kartan, är vektor brickor hämtas från &lt;a href=\"https://
 
     <!-- Fuzzy -->
     <string name="quest_cyclewaySurface_title">"Vad har cykelvägen för underlag här?"</string>
-    <string name="quest_cycleway_title">"Har den här gatan en cykelfil?"</string>
+    <string name="quest_cycleway_title2">"Har den här gatan en cykelfil?"</string>
     <string name="quest_buildingType_title">"Vilken typ av byggnad är detta?"</string>
 
     <!-- Fuzzy -->

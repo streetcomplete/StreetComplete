@@ -159,7 +159,7 @@ public class AddRoadName implements OsmElementQuestType
 		return ROADS_WITHOUT_NAMES_TFE.matches(element);
 	}
 
-	@Override public String getCommitMessage() { return "Determine road names"; }
+	@Override public String getCommitMessage() { return "Determine road names and types"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_street_name; }
 	@Override public int getTitle() { return R.string.quest_streetName_title; }
 	@Override public int getTitle(Map<String,String> tags) { return getTitle(); }
