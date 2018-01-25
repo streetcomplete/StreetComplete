@@ -104,22 +104,63 @@ car_wash_automated.jpg    https://commons.wikimedia.org/wiki/File:Carwas.jpg
 car_wash_service.jpg      http://ctproductsandservices.com/2013/10/splash-car-wash/
 car_wash_self_service.jpg https://pixabay.com/en/wash-a-car-the-car-blue-1822415/
 
+panorama_building_residential.jpg https://commons.wikimedia.org/wiki/File:Salinas_California_Residential_Area.jpg
+panorama_building_commercial.jpg https://commons.wikimedia.org/wiki/File:Akita_Prefectural_Government_Office_Building-2.jpg
+panorama_building_civic.jpg	https://wiki.openstreetmap.org/wiki/File:Scarborough_Civic_Centre.jpg
+panorama_building_religious.jpg https://commons.wikimedia.org/wiki/File:The_Parthenon_in_Athens.jpg
+panorama_building_cars.jpg https://wiki.openstreetmap.org/wiki/File:Gie%C3%9Fen-Uniklinik-Parkhaus.jpg
+panorama_building_farm_auxiliary.jpg https://wiki.openstreetmap.org/wiki/File:Horseshoe_Barn.jpg
+panorama_building_other.jpg https://wiki.openstreetmap.org/wiki/File:Kennedy%27s_hut_edit.jpg
+
 building_apartment.jpg		https://wiki.openstreetmap.org/wiki/File:Apartment_Building.JPG
-building_house.jpg		https://wiki.openstreetmap.org/wiki/File:House_in_Argentina.JPG
-building_garage.jpg		https://wiki.openstreetmap.org/wiki/File:Two-Car_Garage.jpg
-building_garages.jpg		https://wiki.openstreetmap.org/wiki/File:Landbouwstraat_garages.jpg
-building_residential.jpg	https://commons.wikimedia.org/wiki/File:Vuosaari_residential_blocks.jpg
-building_hut.jpg		https://wiki.openstreetmap.org/wiki/File:Kennedy%27s_hut_edit.jpg
-building_industrial.jpg		https://wiki.openstreetmap.org/wiki/File:Eley_Industrial_Estate1.JPG
-building_shed.jpg		https://wiki.openstreetmap.org/wiki/File:Schuppen_7235.jpg
-building_retail.jpg		https://wiki.openstreetmap.org/wiki/File:Macys_dep_store.JPG
-building_commercial.jpg		https://commons.wikimedia.org/wiki/File:Berlin,_Kreuzberg,_Friedrichstrasse_16,_Buerohaus_Aerztekammer_Berlin.jpg
-building_roof.jpg		https://commons.wikimedia.org/wiki/File:Star_Tankstelle.jpg
+building_house.jpg		https://commons.wikimedia.org/wiki/File:Semi-detached_houses_Acton.jpg
 building_terrace.jpg		https://wiki.openstreetmap.org/wiki/File:Treeton_Terrace.jpg
 building_detached.jpg		https://wiki.openstreetmap.org/wiki/File:House_in_Argentina.JPG
+building_hotel.jpg		https://commons.wikimedia.org/wiki/File:Frankfurt,_Nieder-Eschbach,_BB-Hotel.JPG
+building_dormitory.jpg		https://wiki.openstreetmap.org/wiki/File:Belgrade_Dormitory.jpg
+building_farm.jpg		https://wiki.openstreetmap.org/wiki/File:Studna_p%C5%99ed_%C4%8D.1.,Hola%C5%A1ovice.JPG
+building_houseboat.jpg		https://commons.wikimedia.org/wiki/File:LakeUnionHouseboat.jpg
+building_bungalow.jpg		https://wiki.openstreetmap.org/wiki/File:Bungalow2.jpg
+building_static_caravan.jpg	https://commons.wikimedia.org/wiki/File:Retro_static_caravan_(15068430005).jpg
+
+building_industrial.jpg		https://wiki.openstreetmap.org/wiki/File:Eley_Industrial_Estate1.JPG
+building_retail.jpg		https://wiki.openstreetmap.org/wiki/File:Macys_dep_store.JPG
+building_warehouse.jpg		https://wiki.openstreetmap.org/wiki/File:Copenhagen_warehouse.jpg
+building_kiosk.jpg		https://wiki.openstreetmap.org/wiki/File:Kiosk_germany.jpg
+
 building_school.jpg		https://commons.wikimedia.org/wiki/File:Uetersen_F.EbertSchule.jpg
-building_barn.jpg		https://wiki.openstreetmap.org/wiki/File:EJFrykBarn.jpg
-building_greenhouse.jpg		https://commons.wikimedia.org/wiki/File:Glasshouse_crops_1.jpg
+building_college.jpg		https://wiki.openstreetmap.org/wiki/File:(1)Hornsby_TAFE.jpg
+building_hospital.jpg		https://commons.wikimedia.org/wiki/File:Japanese_Red_Cross_Nagoya_Daini_hospital.JPG
+building_public.jpg		https://wiki.openstreetmap.org/wiki/File:Dominion_Public_Building.JPG
+building_stadium.jpg		https://commons.wikimedia.org/wiki/File:Le_Yankee_Stadium.jpg
+building_train_station.jpg	https://wiki.openstreetmap.org/wiki/File:Dobrepolje_train_station.jpg
+building_transportation.jpg	https://commons.wikimedia.org/wiki/File:Braunschweig_Brunswick_Busbahnhof_1_(2006).jpg
+building_university.jpg		https://wiki.openstreetmap.org/wiki/File:University_College_Oxford.jpg
+
+building_chapel.jpg		https://wiki.openstreetmap.org/wiki/File:Andachtskapelle_des_Moorbad_Gm%C3%B6s.jpg
+building_cathedral.jpg		https://commons.wikimedia.org/wiki/File:Canterbury-cathedral-wyrdlight.jpg
 building_church.jpg		https://wiki.openstreetmap.org/wiki/File:Hein%C3%A4vesi_Church_5.jpg
-building_civic.jpg		https://wiki.openstreetmap.org/wiki/File:Scarborough_Civic_Centre.jpg
-building_hotel.jpg		https://wiki.openstreetmap.org/wiki/File:Hotel_Logos.jpg
+building_mosque.jpg		https://wiki.openstreetmap.org/wiki/File:Khadija-Moschee_(Berlin).jpg
+building_temple.jpg		https://wiki.openstreetmap.org/wiki/File:New_Delhi_Temple.jpg
+building_synagogue.jpg		https://wiki.openstreetmap.org/wiki/File:Synagogue_Florence_Italy.JPG
+building_shrine.jpg		https://wiki.openstreetmap.org/wiki/File:Shinto_shrine_building.jpg
+
+building_carport.jpg		https://wiki.openstreetmap.org/wiki/File:Carport-gew%C3%B6lbt.jpg
+building_garage.jpg		https://wiki.openstreetmap.org/wiki/File:Two-Car_Garage.jpg
+building_garages.jpg		https://wiki.openstreetmap.org/wiki/File:Landbouwstraat_garages.jpg
+building_parking.jpg		https://wiki.openstreetmap.org/wiki/File:Gie%C3%9Fen-Uniklinik-Parkhaus.jpg
+
+building_barn.jpg		https://wiki.openstreetmap.org/wiki/File:EJFrykBarn.jpg
+building_cowshed.jpg		https://wiki.openstreetmap.org/wiki/File:Cowhouse_Hrazany2.jpg
+building_farm_auxialliary.jpg	https://wiki.openstreetmap.org/wiki/File:Horseshoe_Barn.jpg
+building_stable.jpg		https://commons.wikimedia.org/wiki/File:Horse_stable_-_Middletown.jpg
+
+building_cabin.jpg		https://wiki.openstreetmap.org/wiki/File:Koch_Cabin.JPG
+building_construction.jpg	https://wiki.openstreetmap.org/wiki/File:Altitude_Montreal_Under_Construction.jpg
+building_ruins.jpg		https://commons.wikimedia.org/wiki/File:Ruins_of_Roman_Forum.jpg
+building_service.jpg		https://wiki.openstreetmap.org/wiki/File:Service_building.png
+building_transformator_tower.jpg https://wiki.openstreetmap.org/wiki/File:OesterSkovVejHad.jpg
+building_greenhouse.jpg		https://commons.wikimedia.org/wiki/File:Glasshouse_crops_1.jpg
+building_roof.jpg		https://commons.wikimedia.org/wiki/File:Star_Tankstelle.jpg
+building_hut.jpg		https://wiki.openstreetmap.org/wiki/File:Kennedy%27s_hut_edit.jpg
+building_shed.jpg		https://wiki.openstreetmap.org/wiki/File:Schuppen_7235.jpg

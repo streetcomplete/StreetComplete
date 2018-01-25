@@ -26,5 +26,6 @@ public class Item
 		this.drawableId = drawableId;
 	}
 
+	public boolean hasValue() { return value != null; }
 	public boolean isGroup() { return items != null; }
 }

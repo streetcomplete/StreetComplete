@@ -458,22 +458,64 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
   
     <string name="quest_buildingType_title">"What kind of building is this?"</string>
     <string name="quest_building_type_generic_building_confirmation">Are you sure that you can not determine the building type more specifically?</string>
+    <string name="quest_building_type_no_value_confirmation">Please select a more specific value! The value you selected is not valid.</string>
+
     <string name="quest_buildingType_house">House</string>
     <string name="quest_buildingType_residential">Residential</string>
     <string name="quest_buildingType_apartments">Apartments</string>
     <string name="quest_buildingType_detached">Detached house</string>
+    <string name="quest_buildingType_terrace">Terraced house</string>
+    <string name="quest_buildingType_dormitory">Dormitory</string>
+    <string name="quest_buildingType_farm">Farmhouse</string>
+    <string name="quest_buildingType_houseboat">Houseboat</string>
+    <string name="quest_buildingType_bungalow">Bungalow</string>
+    <string name="quest_buildingType_static_caravan">Static caravan</string>
+    <string name="quest_buildingType_hotel">Hotel</string>
+
     <string name="quest_buildingType_industrial">Industrial</string>
     <string name="quest_buildingType_commercial">Commercial</string>
     <string name="quest_buildingType_retail">Shop</string>
-    <string name="quest_buildingType_roof">Roof</string>
-    <string name="quest_buildingType_garage">Garage</string>
-    <string name="quest_buildingType_garages">Garages</string>
-    <string name="quest_buildingType_greenhouse">Greenhouse</string>
-    <string name="quest_buildingType_hut">Hut</string>
-    <string name="quest_buildingType_barn">Barn</string>
-    <string name="quest_buildingType_shed">Shed</string>
+    <string name="quest_buildingType_warehouse">Warehouse</string>
+    <string name="quest_buildingType_kiosk">Kiosk</string>
+
+    <string name="quest_buildingType_religious">Religious building</string>
     <string name="quest_buildingType_church">Church</string>
+    <string name="quest_buildingType_chapel">Chapel</string>
+    <string name="quest_buildingType_cathedral">Cathedral</string>
+    <string name="quest_buildingType_mosque">Mosque</string>
+    <string name="quest_buildingType_temple">Temple</string>
+    <string name="quest_buildingType_synagogue">Synagogue</string>
+    <string name="quest_buildingType_shrine">Shrine</string>
+
     <string name="quest_buildingType_school">School</string>
     <string name="quest_buildingType_civic">Civic building</string>
-    <string name="quest_buildingType_hotel">Hotel</string>
+    <string name="quest_buildingType_college">College building</string>
+    <string name="quest_buildingType_hospital">Hospital</string>
+    <string name="quest_buildingType_public">Public building</string>
+    <string name="quest_buildingType_stadium">Stadium</string>
+    <string name="quest_buildingType_train_station">Train station</string>
+    <string name="quest_buildingType_transportation">Transportation building</string>
+    <string name="quest_buildingType_university">University</string>
+
+    <string name="quest_buildingType_cars">For cars</string>
+    <string name="quest_buildingType_carport">Carport</string>
+    <string name="quest_buildingType_garage">Single garage</string>
+    <string name="quest_buildingType_garages">Multiple garages</string>
+    <string name="quest_buildingType_parking">Parking</string>
+
+    <string name="quest_buildingType_farm_auxiliary">Farm building</string>
+    <string name="quest_buildingType_barn">Barn</string>
+    <string name="quest_buildingType_cowshed">Cowshed</string>
+    <string name="quest_buildingType_stable">Stable</string>
+
+    <string name="quest_buildingType_other">Other</string>
+    <string name="quest_buildingType_cabin">Cabin</string>
+    <string name="quest_buildingType_roof">Roof</string>
+    <string name="quest_buildingType_greenhouse">Greenhouse</string>
+    <string name="quest_buildingType_hut">Hut</string>
+    <string name="quest_buildingType_shed">Shed</string>
+    <string name="quest_buildingType_construction">Under construction</string>
+    <string name="quest_buildingType_ruins">Ruins</string>
+    <string name="quest_buildingType_service">Service building</string>
+    <string name="quest_buildingType_transformator_tower">Transformator tower</string>
 </resources>
