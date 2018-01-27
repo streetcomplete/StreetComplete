@@ -53,7 +53,7 @@ public class AddReligionToPlaceOfWorshipForm extends ImageListQuestAnswerFragmen
 		List<Item> religionsList = new ArrayList<>(Arrays.asList(ALL_RELIGION_VALUES));
 		List<String> popularReligionsNames = getCountryInfo().getPopularReligions();
 
-		religionsList = PriorityList.BuildList(religionsList, popularReligionsNames);
+		religionsList = PriorityList.buildList(religionsList, popularReligionsNames);
 
 		return religionsList.toArray(new Item[religionsList.size()]);
 	}
