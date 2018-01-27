@@ -16,23 +16,27 @@ import de.westnordost.streetcomplete.view.Item;
 
 public class AddReligionToPlaceOfWorshipForm extends ImageListQuestAnswerFragment
 {
-	private static final int INITIALLY_DISPLAYED_ITEMS = 8;
-
 	private static final Item[] ALL_RELIGION_VALUES = new Item[]{
-			// worldwide usage, values covering vast majority of used tags
-			new Item("christian",      R.drawable.ic_religion_christian,      R.string.quest_religion_christian),
-			new Item("muslim",      R.drawable.ic_religion_muslim,      R.string.quest_religion_muslim),
-			new Item("buddhist",      R.drawable.ic_religion_buddhist,      R.string.quest_religion_buddhist),
-			new Item("hindu",      R.drawable.ic_religion_hindu,      R.string.quest_religion_hindu),
-			new Item("shinto",      R.drawable.ic_religion_shinto,      R.string.quest_religion_shinto),
-			new Item("jewish",      R.drawable.ic_religion_jewish,      R.string.quest_religion_jewish),
-			new Item("taoist",      R.drawable.ic_religion_taoist,      R.string.quest_religion_taoist),
+			// sorted by worldwide usages, *minus* country specific ones
+			new Item("christian", R.drawable.ic_religion_christian, R.string.quest_religion_christian),
+			new Item("muslim",    R.drawable.ic_religion_muslim,    R.string.quest_religion_muslim),
+			new Item("buddhist",  R.drawable.ic_religion_buddhist,  R.string.quest_religion_buddhist),
+			new Item("hindu",     R.drawable.ic_religion_hindu,     R.string.quest_religion_hindu),
+
+			new Item("jewish",    R.drawable.ic_religion_jewish,    R.string.quest_religion_jewish),
+			// difficult to get the numbers on this, as they are counted alternating as buddhists,
+			// taoists, confucianists, not religious or "folk religion" in statistics. See
+			// https://en.wikipedia.org/wiki/Chinese_folk_religion
+			// sorting relatively far up because there are many Chinese expats around the world
+			new Item("chinese_folk", R.drawable.ic_religion_chinese_folk, R.string.quest_religion_chinese_folk),
+			new Item("bahai",     R.drawable.ic_religion_bahai,     R.string.quest_religion_bahai),
 			new Item("sikh",      R.drawable.ic_religion_sikh,      R.string.quest_religion_sikh),
-			new Item("jain",      R.drawable.ic_religion_jain,      R.string.quest_religion_jain),
-			new Item("bahai",      R.drawable.ic_religion_bahai,      R.string.quest_religion_bahai),
-			new Item("caodaism",      R.drawable.ic_religion_caodaist,      R.string.quest_religion_caodaist),
-			new Item("confucian",      R.drawable.ic_religion_confucian,      R.string.quest_religion_confucian),
-			};
+
+			new Item("taoist",    R.drawable.ic_religion_taoist,    R.string.quest_religion_taoist),
+			new Item("jain",      R.drawable.ic_religion_jain,      R.string.quest_religion_jain), // India
+			new Item("shinto",    R.drawable.ic_religion_shinto,    R.string.quest_religion_shinto), // Japan
+			new Item("caodaism",  R.drawable.ic_religion_caodaist,  R.string.quest_religion_caodaist), // Vietnam
+		};
 
 	private Item[] actualReligionsValues;
 
@@ -65,7 +69,7 @@ public class AddReligionToPlaceOfWorshipForm extends ImageListQuestAnswerFragmen
 
 	@Override protected int getMaxNumberOfInitiallyShownItems()
 	{
-		return INITIALLY_DISPLAYED_ITEMS;
+		return 4;
 	}
 
 	@Override protected Item[] getItems()
