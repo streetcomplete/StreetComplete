@@ -23,8 +23,7 @@ public class AddReligionToPlaceOfWorship extends SimpleOverpassQuestType
 	{
 		return "nodes, ways, relations with amenity=place_of_worship and" +
                 " !religion and" +
-                " name and" +
-                " (access !~ private|no)"; // exclude ones without access to general public
+                " name";
 	}
 
 	public AbstractQuestAnswerFragment createForm()
