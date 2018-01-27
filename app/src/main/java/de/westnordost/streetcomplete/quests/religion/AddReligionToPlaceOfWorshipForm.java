@@ -11,6 +11,7 @@ import java.util.List;
 
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.ImageListQuestAnswerFragment;
+import de.westnordost.streetcomplete.quests.PriorityList;
 import de.westnordost.streetcomplete.view.Item;
 
 public class AddReligionToPlaceOfWorshipForm extends ImageListQuestAnswerFragment
@@ -52,22 +53,8 @@ public class AddReligionToPlaceOfWorshipForm extends ImageListQuestAnswerFragmen
 		List<Item> religionsList = new ArrayList<>(Arrays.asList(ALL_RELIGION_VALUES));
 		List<String> popularReligionsNames = getCountryInfo().getPopularReligions();
 
-		// in reverse because the first element in the list should be first in religionsList
-		for (int i = popularReligionsNames.size()-1; i >= 0; --i)
-		{
-			String popularReligionName = popularReligionsNames.get(i);
-			for(int j = 0; j < religionsList.size(); ++j)
-			{
-				Item sport = religionsList.get(j);
-				if(sport.value.equals(popularReligionName))
-				{
-					// shuffle to start of list
-					religionsList.remove(j);
-					religionsList.add(0,sport);
-					break;
-				}
-			}
-		}
+		religionsList = PriorityList.BuildList(religionsList, popularReligionsNames);
+
 		return religionsList.toArray(new Item[religionsList.size()]);
 	}
 
