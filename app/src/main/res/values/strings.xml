@@ -476,5 +476,5 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_religion_jain">Jain</string>
     <string name="quest_religion_bahai">Bahá\'í Faith</string>
     <string name="quest_religion_caodaist">Caodaism</string>
-    <string name="quest_religion_confucian">Confucianism</string>
+    <string name="quest_religion_chinese_folk">Chinese folk religion</string>
 </resources>
