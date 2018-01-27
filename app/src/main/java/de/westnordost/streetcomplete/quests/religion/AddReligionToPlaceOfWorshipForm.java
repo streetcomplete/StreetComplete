@@ -15,8 +15,7 @@ import de.westnordost.streetcomplete.view.Item;
 
 public class AddReligionToPlaceOfWorshipForm extends ImageListQuestAnswerFragment
 {
-	private static final int
-			MAX_DISPLAYED_ITEMS = 24, INITIALLY_DISPLAYED_ITEMS = 8;
+	private static final int INITIALLY_DISPLAYED_ITEMS = 8;
 
 	private static final Item[] ALL_RELIGION_VALUES = new Item[]{
 			// woldwide usage, values covering vast majority of used tags
@@ -69,8 +68,7 @@ public class AddReligionToPlaceOfWorshipForm extends ImageListQuestAnswerFragmen
 				}
 			}
 		}
-		int arraySize = Math.min(religionsList.size(), MAX_DISPLAYED_ITEMS);
-		return religionsList.subList(0,arraySize).toArray(new Item[arraySize]);
+		return religionsList.toArray(new Item[religionsList.size()]);
 	}
 
 	@Override protected int getMaxSelectableItems()
