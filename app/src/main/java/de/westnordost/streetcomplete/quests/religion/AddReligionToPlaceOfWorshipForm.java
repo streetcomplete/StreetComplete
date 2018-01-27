@@ -19,7 +19,7 @@ public class AddReligionToPlaceOfWorshipForm extends ImageListQuestAnswerFragmen
 	private static final int INITIALLY_DISPLAYED_ITEMS = 8;
 
 	private static final Item[] ALL_RELIGION_VALUES = new Item[]{
-			// woldwide usage, values covering vast majority of used tags
+			// worldwide usage, values covering vast majority of used tags
 			new Item("christian",      R.drawable.ic_religion_christian,      R.string.quest_religion_christian),
 			new Item("muslim",      R.drawable.ic_religion_muslim,      R.string.quest_religion_muslim),
 			new Item("buddhist",      R.drawable.ic_religion_buddhist,      R.string.quest_religion_buddhist),
