@@ -10,6 +10,7 @@ maxspeedLayout: quest_maxspeed
 officialLanguages: [en]
 orchardProduces: []
 popularReligions: []
+popularReligionsForWaysideShrines: []
 popularSports: []
 regularShoppingDays: 6
 speedUnit: [km/h]
