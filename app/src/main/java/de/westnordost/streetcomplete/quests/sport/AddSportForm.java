@@ -80,7 +80,7 @@ public class AddSportForm extends ImageListQuestAnswerFragment
 		List<Item> sportsList = new ArrayList<>(Arrays.asList(ALL_SPORTS_VALUES));
 		List<String> popularSportsNames = getCountryInfo().getPopularSports();
 
-		sportsList = PriorityList.BuildList(sportsList, popularSportsNames);
+		sportsList = PriorityList.buildList(sportsList, popularSportsNames);
 
 		// only first 24 items (6 rows)
 		int arraySize = Math.min(sportsList.size(), MAX_DISPLAYED_ITEMS);

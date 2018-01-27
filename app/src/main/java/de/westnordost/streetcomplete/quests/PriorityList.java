@@ -5,7 +5,7 @@ import java.util.List;
 import de.westnordost.streetcomplete.view.Item;
 
 public class PriorityList {
-    public static List<Item> BuildList(List<Item> allItems, List<String> popularNames){
+    public static List<Item> buildList(List<Item> allItems, List<String> popularNames){
         // in reverse because the first element in the list should be first in religionsList
         for (int i = popularNames.size()-1; i >= 0; --i)
         {
