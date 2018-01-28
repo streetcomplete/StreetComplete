@@ -2,3 +2,4 @@
 isLeftHandTraffic: true
 officialLanguages: [en, ms, zh, ta]
 orchardProduces: [coconut, tomatoe]
+popularReligions: [buddhist, christian, muslim, chinese_folk, taoist, hindu]
