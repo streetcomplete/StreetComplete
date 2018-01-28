@@ -4,3 +4,4 @@ isLeftHandTraffic: true
 officialLanguages: [ne]
 orchardProduces: [guava, mango, mangosteen, tea, orange, banana, nutmeg, chilli_pepper, sweet_pepper,
   apple, lemon, lime, areca_nut, pear, peach, walnut, coffee, papaya, plum]
+popularReligions: [hindu, buddhist]
