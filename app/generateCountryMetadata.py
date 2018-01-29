@@ -11,7 +11,7 @@ if os.path.exists(targetDir):
 	shutil.rmtree(targetDir)
 os.makedirs(targetDir)
 
-for filename in os.listdir(sourceDir):
+for filename in sorted(os.listdir(sourceDir)):
 	print(filename)
 	if filename.endswith(".yml"):
 		basename = os.path.splitext(filename)[0]
