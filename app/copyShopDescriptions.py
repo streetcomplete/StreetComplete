@@ -25,7 +25,7 @@ def get_locale_from(dirname):
 		return components[1] + "-" + components[2][1:]
 	return None
 
-for dirname in os.listdir(source_dir):
+for dirname in sorted(os.listdir(source_dir)):
 	locale = get_locale_from(dirname)
 	if not locale:
 		continue
