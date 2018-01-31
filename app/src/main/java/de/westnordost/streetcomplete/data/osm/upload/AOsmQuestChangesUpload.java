@@ -213,8 +213,7 @@ public abstract class AOsmQuestChangesUpload
 		Element elementWithChangesApplied = changesApplied(element, quest);
 		if(elementWithChangesApplied == null)
 		{
-			closeQuest(quest);
-			invalidateAreaAroundQuest(quest);
+			deleteConflictingQuest(quest);
 			return false;
 		}
 
@@ -244,6 +243,14 @@ public abstract class AOsmQuestChangesUpload
 	{
 		quest.setStatus(QuestStatus.CLOSED);
 		questDB.update(quest);
+	}
+
+	private void deleteConflictingQuest(OsmQuest quest)
+	{
+		// #812 conflicting quests may not reside in the database, otherwise they would wrongfully
+		//      be candidates for an undo - even though nothing was changed
+		questDB.delete(quest.getId());
+		invalidateAreaAroundQuest(quest);
 	}
 
 	private void invalidateAreaAroundQuest(OsmQuest quest)
@@ -343,8 +350,7 @@ public abstract class AOsmQuestChangesUpload
 				Log.v(TAG, "Dropping quest " + getQuestStringForLog(quest) +
 						" because the quest is no longer applicable to the element");
 
-				closeQuest(quest);
-				invalidateAreaAroundQuest(quest);
+				deleteConflictingQuest(quest);
 				return false;
 			}
 		}
