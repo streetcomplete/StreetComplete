@@ -128,7 +128,7 @@ public class MapFragment extends Fragment implements
 
 	public void getMapAsync(String apiKey)
 	{
-		getMapAsync(apiKey, "scene.yaml");
+		getMapAsync(apiKey, "map_theme/scene.yaml");
 	}
 
 	@CallSuper public void getMapAsync(String apiKey, @NonNull final String sceneFilePath)
