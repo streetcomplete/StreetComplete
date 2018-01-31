@@ -461,4 +461,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_internet_access_wired">Wired (LAN)</string>
     <string name="quest_internet_access_terminal">Computer with internet access</string>
     <string name="quest_internet_access_no">No connection</string>
+    <string name="quest_busStopShelter_tram_name_title">"Does the tram stop \"%s\" have a shelter?"</string>
+    <string name="quest_busStopShelter_tram_title">"Does this tram stop have a shelter?"</string>
 </resources>
