@@ -215,10 +215,10 @@ public class AddCycleway implements OsmElementQuestType
 			// all of Northern and Western Europe, most of Central Europe, some of Southern Europe
 			"NO","SE","FI","IS","DK",
 			"GB","IE","NL","BE","FR","LU",
-			"DE","PL","CZ","HU","AT","CH","LI",
-			"ES","IT",
+			"DE","PL","CZ","HU","AT","CH","LI","LT",
+			"ES","IT","SI","GR",
 			// East Asia
-			"JP","KR","TW",
+			"JP","KR","TW","SG",
 			// some of China (East Coast)
 			"CN-11","CN-12","CN-37","CN-32","CN-31",
 			"CN-33","CN-35","CN-44","CN-50",
