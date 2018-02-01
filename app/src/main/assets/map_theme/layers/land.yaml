@@ -11,10 +11,9 @@ layers:
         data: { source: mapzen}
         filter: { kind: country }
         draw:
-            lines:
+            boundary_dashes:
                 order: global.sort_rank
                 color: global.boundary_color
-                dash: [1,2]
                 width: 1px
 
     water:
@@ -94,6 +93,9 @@ layers:
                     width: [[15, 1px], [18, 2m]]
 
 styles:
+    boundary_dashes:
+        base: lines
+        dash: [1, 2]
     buildings-style:
         base: polygons
         blend: opaque
