@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.inject.Inject;
 
 import de.westnordost.streetcomplete.R;
+import de.westnordost.streetcomplete.data.osm.Countries;
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
@@ -42,4 +43,16 @@ public class AddTactilePavingCrosswalk extends SimpleOverpassQuestType
 	{
 		return R.string.quest_tactilePaving_title_crosswalk;
 	}
+
+    @Override public Countries getEnabledForCountries()
+    {
+		return Countries.noneExcept(new String[]
+			{
+				// areas based on research
+				"CN-91", "SG", "AU", "NZ", "PL",
+				// generated from OSM data
+				"SK", "AT", "HU", "DE", "CZ", "BE", "SE", "GB", "IE",
+				"US", "AR", "ES", "CA", "FR", "NL", "RU-MOW",
+			});
+    }
 }
