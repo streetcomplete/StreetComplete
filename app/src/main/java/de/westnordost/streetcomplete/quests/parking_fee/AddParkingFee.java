@@ -32,6 +32,6 @@ public class AddParkingFee extends SimpleOverpassQuestType
 	}
 
 	@Override public String getCommitMessage() { return "Add whether there is a parking fee"; }
-	@Override public int getIcon() { return R.drawable.ic_quest_parking; }
+	@Override public int getIcon() { return R.drawable.ic_quest_parking_fee; }
 	@Override public int getTitle(Map<String, String> tags) { return R.string.quest_parking_fee_title; }
 }
