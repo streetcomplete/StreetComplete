@@ -21,7 +21,7 @@ public class AddParkingFee extends SimpleOverpassQuestType
 {
 	@Inject public AddParkingFee(OverpassMapDataDao overpassServer) { super(overpassServer); }
 
-	@Override protected String getTagFilters() { return "nodes with amenity=parking and access != private and !fee"; }
+	@Override protected String getTagFilters() { return "nodes, ways with amenity=parking and access!=private and !fee"; }
 
 	public AbstractQuestAnswerFragment createForm() { return new YesNoQuestAnswerFragment(); }
 
@@ -31,7 +31,7 @@ public class AddParkingFee extends SimpleOverpassQuestType
 		changes.add("fee", yesno);
 	}
 
-	@Override public String getCommitMessage() { return "Add parking fee"; }
+	@Override public String getCommitMessage() { return "Add whether there is a parking fee"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_parking; }
 	@Override public int getTitle(Map<String, String> tags) { return R.string.quest_parking_fee_title; }
 }
