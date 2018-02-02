@@ -52,7 +52,7 @@ public class AddTactilePavingCrosswalk extends SimpleOverpassQuestType
 				"CN-91", "SG", "AU", "NZ", "PL",
 				// generated from OSM data
 				"SK", "AT", "HU", "DE", "CZ", "BE", "SE", "GB", "IE",
-				"US", "AR", "ES", "CA", "FR", "NL", "RU-MOW",
+				"US", "AR", "ES", "CA", "FR", "NL", "RU",
 			});
     }
 }
