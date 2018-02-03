@@ -43,6 +43,7 @@ import de.westnordost.streetcomplete.quests.way_lit.AddWayLit;
 import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelChairAccessPublicTransport;
 import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelChairAccessToilets;
 import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAccessBusiness;
+import de.westnordost.streetcomplete.quests.bench_backrest.AddBenchBackrest;
 
 @Module
 public class QuestModule
@@ -102,6 +103,7 @@ public class QuestModule
 				new AddParkingType(o),
 				new AddPowerPolesMaterial(o),
 				new AddCarWashType(o),
+				new AddBenchBackrest(o),
 		};
 
 		return new QuestTypeRegistry(Arrays.asList(questTypesOrderedByImportance));

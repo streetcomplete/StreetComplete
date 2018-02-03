@@ -463,4 +463,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_internet_access_no">No connection</string>
     <string name="quest_busStopShelter_tram_name_title">"Does the tram stop \"%s\" have a shelter?"</string>
     <string name="quest_busStopShelter_tram_title">"Does this tram stop have a shelter?"</string>
+    <string name="quest_bench_backrest_title">Does this bench has a backrest?</string>
+    <string name="this_is_a_picnic_table">This is a picnic table</string>
 </resources>
