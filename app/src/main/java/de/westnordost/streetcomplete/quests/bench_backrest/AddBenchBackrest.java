@@ -27,15 +27,15 @@ public class AddBenchBackrest extends SimpleOverpassQuestType
 
 	public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
 	{
-        boolean isPicnicTable = answer.getBoolean(BenchBackrestForm.PICNIC_TABLE);
+		boolean isPicnicTable = answer.getBoolean(BenchBackrestForm.PICNIC_TABLE);
 
 		if (isPicnicTable) {
-            changes.add("leisure", "picnic_table");
-            changes.delete("amenity");
-        } else {
-            String yesno = answer.getBoolean(YesNoQuestAnswerFragment.ANSWER) ? "yes" : "no";
-            changes.add("backrest", yesno);
-        }
+		    changes.add("leisure", "picnic_table");
+		    changes.delete("amenity");
+		} else {
+		    String yesno = answer.getBoolean(YesNoQuestAnswerFragment.ANSWER) ? "yes" : "no";
+		    changes.add("backrest", yesno);
+		}
 	}
 
 	@Override public String getCommitMessage() { return "Add backrest information to benches"; }
