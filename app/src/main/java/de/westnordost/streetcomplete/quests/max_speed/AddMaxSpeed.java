@@ -9,6 +9,7 @@ import javax.inject.Inject;
 
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.meta.OsmTaggings;
+import de.westnordost.streetcomplete.data.osm.Countries;
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
@@ -77,5 +78,11 @@ public class AddMaxSpeed extends SimpleOverpassQuestType
 	@Override public int getTitle(Map<String, String> tags)
 	{
 		return R.string.quest_maxspeed_title_short;
+	}
+
+	@Override public Countries getEnabledForCountries()
+	{
+		// see #813: US has different rules for each different state which need to be respected
+		return Countries.allExcept(new String[]{"US"});
 	}
 }
