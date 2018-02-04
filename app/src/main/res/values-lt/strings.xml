@@ -172,6 +172,7 @@ Bet, prieš įkeliant jūsų pakeitimus, aplikacija patikrina &lt;a href=\"http:
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Kur yra ši gatvė?"</string>
     <string name="quest_cyclewaySurface_title">"Kokia yra šio dviračių tako danga?"</string>
     <string name="quest_cycleway_title2">"Ar šioje gatvėje yra dviračių takas?"</string>
+    <string name="quest_cycleway_title">"Ar šioje gatvėje yra dviračių takas?"</string>
     <string name="quest_buildingType_title">"Kokio tipo šis pastatas?"</string>
     <string name="quest_serviceType_title">"Kokio tipo tai privažiavimas?"</string>
     <string name="quest_streetLanes_title">"Kiek juostų turi šis kelias?"</string>

@@ -172,6 +172,7 @@ Pre zobrazenie mapy sa sťahujú vektorové dlaždice z &lt;a href=\"https://map
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Kde je táto ulica?"</string>
     <string name="quest_cyclewaySurface_title">"Aký povrch má cyklocesta v tomto mieste?"</string>
     <string name="quest_cycleway_title2">"Je na tejto ceste cyklochodník?"</string>
+    <string name="quest_cycleway_title">"Je na tejto ceste cyklochodník?"</string>
     <string name="quest_buildingType_title">"Aký je to typ budovy?"</string>
     <string name="quest_serviceType_title">"Aký druh servisnej cesty je toto?"</string>
     <string name="quest_streetLanes_title">"Koľko pruhov má táto cesta?"</string>

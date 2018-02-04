@@ -172,6 +172,7 @@
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"此條街道位在?"</string>
     <string name="quest_cyclewaySurface_title">"此自行車道的鋪面是?"</string>
     <string name="quest_cycleway_title2">"這條街道有自行車道嗎?"</string>
+    <string name="quest_cycleway_title">"這條街道有自行車道嗎?"</string>
     <string name="quest_buildingType_title">"這棟建築物的種類是?"</string>
     <string name="quest_serviceType_title">"此條聯絡道路的種類是?"</string>
     <string name="quest_streetLanes_title">"此條道路有多少車道?"</string>
@@ -454,4 +455,9 @@
     <string name="need_specify_both_sides">"你必須註明兩側都有"</string>
     <string name="quest_openingHours_emptyAnswer">"你必須描述標示狀況。如果沒有標示，那麼你必須到店裡詢問。"</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"無，但單車騎士可能兩個方向都能騎乘"</string>
+    <string name="quest_streetName_answer_noName_question">"為什麼這條路沒有名稱？"</string>
+    <string name="quest_streetName_answer_noProperStreet_track2">"這是一條產業道路"</string>
+    <string name="quest_wheelchairAccess_toilets_title">"這是無障礙廁所嗎？"</string>
+    <string name="quest_wheelchairAccess_toilets_name_title">"「%s」是一個無障礙廁所嗎？"</string>
+    <string name="quest_surface_value_metal">"金屬材質表面"</string>
 </resources>

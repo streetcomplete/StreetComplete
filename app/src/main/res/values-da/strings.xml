@@ -180,6 +180,7 @@ For at vise kortet er vektorfliser hentet fra &lt;a href=\"https://mapzen.com/pr
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Hvor er denne vej?"</string>
     <string name="quest_cyclewaySurface_title">"Hvilken overflade har cykelstien?"</string>
     <string name="quest_cycleway_title2">"Er der en cykelsti til denne vej?"</string>
+    <string name="quest_cycleway_title">"Er der en cykelsti til denne vej?"</string>
     <string name="quest_buildingType_title">"Hvilken slags bygning er dette?"</string>
     <string name="quest_serviceType_title">"Hvilken slags servicevej er dette?"</string>
     <string name="quest_streetLanes_title">"Hvor mange spor har denne vej?"</string>
