@@ -5,4 +5,5 @@ isAdvisorySpeedLimitKnown: true
 officialLanguages: [ko]
 orchardProduces: [apple, chilli_pepper, sweet_pepper, chestnut, apple, persimmon, chilli_pepper, sweet_pepper,
   peach, orange, grape, peach, pear, tomatoe, strawberry, tomatoe, plum]
+popularReligions: [christian, buddhist]
 popularSports: [baseball, badminton, archery]

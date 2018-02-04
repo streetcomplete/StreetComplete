@@ -11,6 +11,7 @@ import java.util.List;
 
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.ImageListQuestAnswerFragment;
+import de.westnordost.streetcomplete.quests.PriorityList;
 import de.westnordost.streetcomplete.view.Item;
 import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 
@@ -79,22 +80,8 @@ public class AddSportForm extends ImageListQuestAnswerFragment
 		List<Item> sportsList = new ArrayList<>(Arrays.asList(ALL_SPORTS_VALUES));
 		List<String> popularSportsNames = getCountryInfo().getPopularSports();
 
-		// in reverse because the first element in the list should be first in sportsList
-		for (int i = popularSportsNames.size()-1; i >= 0; --i)
-		{
-			String popularSportName = popularSportsNames.get(i);
-			for(int j = 0; j < sportsList.size(); ++j)
-			{
-				Item sport = sportsList.get(j);
-				if(sport.value.equals(popularSportName))
-				{
-					// shuffle to start of list
-					sportsList.remove(j);
-					sportsList.add(0,sport);
-					break;
-				}
-			}
-		}
+		sportsList = PriorityList.buildList(sportsList, popularSportsNames);
+
 		// only first 24 items (6 rows)
 		int arraySize = Math.min(sportsList.size(), MAX_DISPLAYED_ITEMS);
 		return sportsList.subList(0, arraySize).toArray(new Item[arraySize]);

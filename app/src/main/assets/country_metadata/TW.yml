@@ -3,4 +3,5 @@ additionalStreetsignLanguages: [en]
 officialLanguages: [zh]
 orchardProduces: [areca_nut, guava, mango, mangosteen, banana, tea, pineapple, pear, orange, tomatoe,
   persimmon, grapefruit, apricot, grape, coconut, chilli_pepper, sweet_pepper, papaya]
+popularReligions: [chinese_folk, taoist, buddhist, christian]
 popularSports: [basketball, tennis, volleyball, baseball]

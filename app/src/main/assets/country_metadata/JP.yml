@@ -6,4 +6,5 @@ isLeftHandTraffic: true
 officialLanguages: [ja]
 orchardProduces: [tea, apple, persimmon, chestnut, grape, apricot, pear, tomatoe, peach, strawberry,
   cherry, chilli_pepper, sweet_pepper, plum, orange, kiwi]
+popularReligions: [shinto, buddhist]
 popularSports: [tennis, baseball]
