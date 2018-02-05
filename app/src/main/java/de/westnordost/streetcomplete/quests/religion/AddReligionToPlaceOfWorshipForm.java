@@ -38,7 +38,7 @@ public class AddReligionToPlaceOfWorshipForm extends ImageListQuestAnswerFragmen
 			new Item("caodaism",  R.drawable.ic_religion_caodaist,  R.string.quest_religion_caodaist), // Vietnam
 		};
 
-	private Item[] actualReligionsValues;
+	protected Item[] actualReligionsValues;
 
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
 									   Bundle savedInstanceState)
@@ -52,7 +52,7 @@ public class AddReligionToPlaceOfWorshipForm extends ImageListQuestAnswerFragmen
 		return view;
 	}
 
-	private Item[] createItems()
+	protected Item[] createItems()
 	{
 		List<Item> religionsList = new ArrayList<>(Arrays.asList(ALL_RELIGION_VALUES));
 		List<String> popularReligionsNames = getCountryInfo().getPopularReligions();

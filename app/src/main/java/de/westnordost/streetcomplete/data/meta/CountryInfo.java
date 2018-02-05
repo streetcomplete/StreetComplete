@@ -17,7 +17,6 @@ public class CountryInfo implements Serializable, Cloneable
 	List<String> speedUnit;
 	List<String> popularSports;
 	List<String> popularReligions;
-	List<String> popularReligionsForWaysideShrines;
 	String firstDayOfWorkweek;
 	Integer regularShoppingDays;
 	String additionalValidHousenumberRegex;
@@ -49,12 +48,6 @@ public class CountryInfo implements Serializable, Cloneable
 	{
 		if(popularReligions == null) return new ArrayList<>(1);
 		return Collections.unmodifiableList(popularReligions);
-	}
-
-	public List<String> getPopularReligionsForWaysideShrines()
-	{
-		if(popularReligionsForWaysideShrines == null) return new ArrayList<>(1);
-		return Collections.unmodifiableList(popularReligionsForWaysideShrines);
 	}
 
 	public String getFirstDayOfWorkweek()
