@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.bikeway;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
 
 import java.util.Map;
@@ -148,7 +149,7 @@ public class AddCycleway implements OsmElementQuestType
 		}
 	}
 
-	@Override public Boolean isApplicableTo(Element element)
+	@Nullable @Override public Boolean isApplicableTo(Element element)
 	{
 		/* Whether this element applies to this quest cannot be determined by looking at that
 		   element alone (see download()), an Overpass query would need to be made to find this out.

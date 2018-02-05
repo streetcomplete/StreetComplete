@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import junit.framework.TestCase;
 
@@ -273,7 +274,7 @@ public class OsmQuestChangesUploadTest extends TestCase
 		@Override public int getIcon() { return 0; }
 		@Override public int getTitle() { return 0; }
 		@Override public int getTitle(@NonNull Map<String,String> tags) { return 0; }
-		@Override public Boolean isApplicableTo(Element element) { return false; }
+		@Nullable @Override public Boolean isApplicableTo(Element element) { return false; }
 
 		@NonNull @Override public Countries getEnabledForCountries()	{ return Countries.ALL; }
 		@Override public int getDefaultDisabledMessage() { return 0; }
