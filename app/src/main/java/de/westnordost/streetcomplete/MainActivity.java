@@ -221,7 +221,7 @@ public class MainActivity extends AppCompatActivity implements
 
 		mapFragment.getMapAsync(BuildConfig.MAPZEN_API_KEY != null ?
 				BuildConfig.MAPZEN_API_KEY :
-				new String(new char[]{118,101,99,116,111,114,45,116,105,108,101,115,45,102,75,85,99,117,65,74}));
+				new String(new char[]{55,104,71,105,86,45,105,79,82,106,109,79,53,89,68,68,57,120,112,114,48,103}));
 	}
 
 	@Override public void onStart()

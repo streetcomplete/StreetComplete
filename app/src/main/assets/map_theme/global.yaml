@@ -54,8 +54,10 @@ lights:
 sources:
     mapzen:
         type: MVT
-        url: https://tiles.map-data.de/vector/v1/all/{z}/{x}/{y}.mvt
-        tile_size: 512
+#       url: https://tiles.map-data.de/vector/v1/all/{z}/{x}/{y}.mvt
+#       tile_size: 512
+        url: https://tile.nextzen.org/tilezen/vector/v1/512/all/{z}/{x}/{y}.mvt
+
 
 fonts:
     Montserrat:
