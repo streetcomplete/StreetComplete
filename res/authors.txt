@@ -49,14 +49,16 @@ quest_icons.svg
 	money						modified from EmojiOne 2: U+1F4B8
 	notes
 	parking
+	parking_access					parts taken from EmojiOne 2: U+1F511
+	parking_fee					parts taken from EmojiOne 2: U+1F4B8
 	parking_maxstay
 	power
-    fire_hydrant
+    	fire_hydrant
 	pedestrian
 	pedestrian_crossing
 	phone
 	restaurant					modified from Twemoji 2: U+1F37D
-	restaurant_veg				parts taken from Twemoji 2: U+1F37D and U+1F955
+	restaurant_veg					parts taken from Twemoji 2: U+1F37D and U+1F955
 	oneway
 	quest
 	railway
