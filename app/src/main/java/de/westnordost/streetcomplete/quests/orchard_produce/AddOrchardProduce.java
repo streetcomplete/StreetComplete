@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.orchard_produce;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -44,7 +45,7 @@ public class AddOrchardProduce extends SimpleOverpassQuestType
 
 	@Override public String getCommitMessage() { return "Add orchard produces"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_apple; }
-	@Override public int getTitle(Map<String, String> tags)
+	@Override public int getTitle(@NonNull Map<String, String> tags)
 	{
 		return R.string.quest_orchard_produce_title;
 	}

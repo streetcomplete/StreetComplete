@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.download;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 
 import junit.framework.TestCase;
 
@@ -131,7 +132,7 @@ public class OsmQuestDownloadTest extends TestCase
 		when(osmQuestDao.getAll(
 				any(BoundingBox.class), any(QuestStatus.class), anyString(),
 				any(Element.Type.class), anyLong()))
-				.thenReturn(Collections.<OsmQuest>emptyList());
+				.thenReturn(Collections.emptyList());
 	}
 
 	private static class ElementWithGeometry
@@ -152,12 +153,12 @@ public class OsmQuestDownloadTest extends TestCase
 		@Override public AbstractQuestAnswerFragment createForm() { return null; }
 		@Override public int getIcon() { return 0; }
 		@Override public int getTitle() { return 0; }
-		@Override public int getTitle(Map<String,String> tags) { return 0; }
+		@Override public int getTitle(@NonNull Map<String,String> tags) { return 0; }
 		@Override public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes) {}
 		@Override public String getCommitMessage() { return null; }
 		@Override public Boolean isApplicableTo(Element element) { return false; }
 
-		@Override public Countries getEnabledForCountries()	{ return Countries.ALL; }
+		@NonNull @Override public Countries getEnabledForCountries()	{ return Countries.ALL; }
 		@Override public int getDefaultDisabledMessage() { return 0; }
 
 		@Override public boolean download(BoundingBox bbox, MapDataWithGeometryHandler handler)

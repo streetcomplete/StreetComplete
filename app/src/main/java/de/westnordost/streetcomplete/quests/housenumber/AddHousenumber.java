@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.housenumber;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
 import java.util.ArrayList;
@@ -149,12 +150,12 @@ public class AddHousenumber implements OsmElementQuestType
 	@Override public AbstractQuestAnswerFragment createForm() { return new AddHousenumberForm(); }
 	@Override public String getCommitMessage() { return "Add housenumbers"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_housenumber; }
-	@Override public int getTitle(Map<String,String> tags) { return getTitle(); }
+	@Override public int getTitle(@NonNull Map<String,String> tags) { return getTitle(); }
 	@Override public int getTitle() { return R.string.quest_address_title; }
 
 	@Override public int getDefaultDisabledMessage() { return 0; }
 
-	@Override public Countries getEnabledForCountries()
+	@NonNull @Override public Countries getEnabledForCountries()
 	{
 		return Countries.allExcept(new String[]{
 				"NL", // https://forum.openstreetmap.org/viewtopic.php?id=60356

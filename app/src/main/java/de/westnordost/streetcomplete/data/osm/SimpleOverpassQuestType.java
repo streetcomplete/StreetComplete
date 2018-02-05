@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.data.osm;
 
+import android.support.annotation.NonNull;
+
 import java.util.Collections;
 
 import de.westnordost.osmapi.map.data.Element;
@@ -48,5 +50,5 @@ public abstract class SimpleOverpassQuestType implements OsmElementQuestType
 
 	@Override public int getDefaultDisabledMessage() { return 0; }
 
-	@Override public Countries getEnabledForCountries()	{ return Countries.ALL; }
+	@NonNull @Override public Countries getEnabledForCountries()	{ return Countries.ALL; }
 }

@@ -204,7 +204,7 @@ public class AddCycleway implements OsmElementQuestType
 	@Override public int getTitle() { return R.string.quest_cycleway_title2; }
 
 	@Override public int getDefaultDisabledMessage() { return 0; }
-	@Override public Countries getEnabledForCountries()
+	@NonNull @Override public Countries getEnabledForCountries()
 	{
 		// #749. sources:
 		// Google Street View (driving around in virtual car)

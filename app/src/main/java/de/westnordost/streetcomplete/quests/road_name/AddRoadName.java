@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.road_name;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
 import java.util.ArrayList;
@@ -162,8 +163,8 @@ public class AddRoadName implements OsmElementQuestType
 	@Override public String getCommitMessage() { return "Determine road names and types"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_street_name; }
 	@Override public int getTitle() { return R.string.quest_streetName_title; }
-	@Override public int getTitle(Map<String,String> tags) { return getTitle(); }
+	@Override public int getTitle(@NonNull Map<String,String> tags) { return getTitle(); }
 
 	@Override public int getDefaultDisabledMessage() { return 0; }
-	@Override public Countries getEnabledForCountries() { return Countries.ALL; }
+	@NonNull @Override public Countries getEnabledForCountries() { return Countries.ALL; }
 }
