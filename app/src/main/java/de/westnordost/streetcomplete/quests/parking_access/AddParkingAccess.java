@@ -36,7 +36,7 @@ public class AddParkingAccess extends SimpleOverpassQuestType
 		}
 	}
 	@Override public String getCommitMessage() { return "Add type of parking access"; }
-	@Override public int getIcon() { return R.drawable.ic_quest_parking; }
+	@Override public int getIcon() { return R.drawable.ic_quest_parking_access; }
 	@Override public int getTitle(@NonNull Map<String, String> tags)
 	{
 		return R.string.quest_parking_access_title;
