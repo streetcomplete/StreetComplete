@@ -1,0 +1,27 @@
+# editorconfig.org
+
+root = true
+
+[*]
+# Unix style files
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+tab_width = 4
+
+[*.{java,py}]
+indent_style = tab
+
+[gradlew]
+indent_style = space
+indent_size = 4
+
+[*.{md,markdown}]
+indent_style = space
+indent_size = 2
+trim_trailing_whitespace = false
+
+[*.{yml,yaml}]
+indent_style = space
+indent_size = 2

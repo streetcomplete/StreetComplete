@@ -170,6 +170,7 @@ Para mostrar el mapa, las teselas vectoriales se obtienen del &lt;a href=\"https
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"¿Dónde está esta calle?"</string>
     <string name="quest_cyclewaySurface_title">"¿Qué superficie tiene el carril bici aquí?"</string>
     <string name="quest_cycleway_title2">"¿Hay un carril bici en esta calle?"</string>
+    <string name="quest_cycleway_title">"¿Hay un carril bici en esta calle?"</string>
     <string name="quest_buildingType_title">"¿Qué tipo de edificio es este?"</string>
     <string name="quest_serviceType_title">"¿Qué tipo de vía de servicio es esta?"</string>
     <string name="quest_streetLanes_title">"¿Cuantos carriles tiene esta vía?"</string>

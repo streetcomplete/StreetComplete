@@ -174,6 +174,7 @@ Om de kaart te tonen worden vector tegels van de &lt;a href=\"https://mapzen.com
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Waar is deze straat?"</string>
     <string name="quest_cyclewaySurface_title">"Welke wegbeddeking heeft dit fietspad"</string>
     <string name="quest_cycleway_title2">"Is er in deze straat een fietspad?"</string>
+    <string name="quest_cycleway_title">"Is er in deze straat een fietspad?"</string>
     <string name="quest_buildingType_title">"Wat voor gebouw is dit?"</string>
     <string name="quest_serviceType_title">"Wat voor dienstweg is dit?"</string>
     <string name="quest_streetLanes_title">"Hoeveel banen heeft deze weg?"</string>
@@ -455,4 +456,10 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire keybor
     <string name="quest_housenumber_conscription_number_required">"Een districtgetal moet voorzien worden"</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">"Er is ook een fietspad aan de overkant"</string>
     <string name="need_specify_both_sides">"Je moet beide zijden van de weg invullen"</string>
+    <string name="quest_cycleway_value_none_but_no_oneway">"Geen, maar fietsers mogen de weg gebruiken in beide richtingen."</string>
+    <string name="quest_streetName_answer_noName_question">"Waarom heeft dit geen naam?"</string>
+    <string name="quest_streetName_answer_noProperStreet_track2">"Het is een agrarisch of een bosweg"</string>
+    <string name="quest_streetName_answer_noName_noname">"Geen van bovenstaande, het heft gewoon geen naam"</string>
+    <string name="quest_wheelchairAccess_toilets_title">"Zijn deze toiletten toegankelijk voor rolstoelen?"</string>
+    <string name="quest_wheelchairAccess_toilets_name_title">"Zijn de toiletten “%s” rolstoeltoegankelijk?"</string>
 </resources>

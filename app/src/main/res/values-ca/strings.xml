@@ -172,6 +172,7 @@ Per a visualitzar el mapa, es recuperen tessel·les vectorials del servei &lt;a 
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"On és aquest carrer?"</string>
     <string name="quest_cyclewaySurface_title">"Quina superfície té el carril bici aquí?"</string>
     <string name="quest_cycleway_title2">"Hi ha carril bici en aquest carrer?"</string>
+    <string name="quest_cycleway_title">"Hi ha carril bici en aquest carrer?"</string>
     <string name="quest_buildingType_title">"Quin tipus d'edifici és?"</string>
     <string name="quest_serviceType_title">"Quin tipus de via de servei?"</string>
     <string name="quest_streetLanes_title">"Quants carrils té aquesta via?"</string>

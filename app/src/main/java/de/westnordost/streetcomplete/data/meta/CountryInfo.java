@@ -16,6 +16,7 @@ public class CountryInfo implements Serializable, Cloneable
 	// generic properties
 	List<String> speedUnit;
 	List<String> popularSports;
+	List<String> popularReligions;
 	String firstDayOfWorkweek;
 	Integer regularShoppingDays;
 	String additionalValidHousenumberRegex;
@@ -41,6 +42,12 @@ public class CountryInfo implements Serializable, Cloneable
 	{
 		if(popularSports == null) return new ArrayList<>(1);
 		return Collections.unmodifiableList(popularSports);
+	}
+
+	public List<String> getPopularReligions()
+	{
+		if(popularReligions == null) return new ArrayList<>(1);
+		return Collections.unmodifiableList(popularReligions);
 	}
 
 	public String getFirstDayOfWorkweek()

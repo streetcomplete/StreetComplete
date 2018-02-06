@@ -4084,8 +4084,8 @@
 {
 	"type":"Feature",
 	"properties":{
-		"ISO3166-2":"IN-AP",
-		"name:en":"Andhra Pradesh"
+		"ISO3166-2":"IN-AR",
+		"name:en":"Arunachal Pradesh"
 	},
 	"geometry":{
 		"type":"Polygon",

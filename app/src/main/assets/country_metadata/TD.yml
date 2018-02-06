@@ -1,3 +1,4 @@
 # Do not edit. Source files are in /res/country_metadata
 officialLanguages: [fr, ar]
 orchardProduces: [date, guava, mango, mangosteen]
+popularReligions: [muslim]

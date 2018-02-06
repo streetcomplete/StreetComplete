@@ -9,6 +9,7 @@ livingStreetSign: ic_living_street
 maxspeedLayout: quest_maxspeed
 officialLanguages: [en]
 orchardProduces: []
+popularReligions: []
 popularSports: []
 regularShoppingDays: 6
 speedUnit: [km/h]

@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.data.osm;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import java.util.Map;
 
@@ -18,7 +19,7 @@ public interface OsmElementQuestType extends QuestType
 
 	/** whether a quest of this quest type could be created out of the given element. If the
 	 *  element alone does not suffice to find this out, this should return null */
-	Boolean isApplicableTo(Element element);
+	@Nullable Boolean isApplicableTo(Element element);
 
 	/** @return the commit message to be used for this quest type */
 	String getCommitMessage();

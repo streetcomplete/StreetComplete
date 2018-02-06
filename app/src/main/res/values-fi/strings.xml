@@ -179,6 +179,7 @@ Näytettäessä karttaa, vektoritiilet haetaan &lt;a href=\"https://mapzen.com/p
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Missä tämä katu on?"</string>
     <string name="quest_cyclewaySurface_title">"Mikä päällyste tällä pyörätiellä on?"</string>
     <string name="quest_cycleway_title2">"Onko tällä tiellä pyörätie?"</string>
+    <string name="quest_cycleway_title">"Onko tällä tiellä pyörätie?"</string>
     <string name="quest_buildingType_title">"Millainen rakennus tämä on?"</string>
     <string name="quest_serviceType_title">"Millainen huoltotie tämä on?"</string>
     <string name="quest_streetLanes_title">"Kuinka monta kaistaa tällä tiellä on?"</string>

@@ -18,8 +18,8 @@ global:
     water_color: '#002'
     landuse_color: '#403066'
 
-    building_color: '#420'
-    building_outline_color: '#310'
+    building_color: rgb(68,34,0)
+    building_outline_color: rgb(51,17,0)
 
     boundary_color: '#e46'
 

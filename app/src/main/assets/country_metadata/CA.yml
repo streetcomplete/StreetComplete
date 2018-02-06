@@ -6,5 +6,6 @@ maxspeedLayout: quest_maxspeed_ca
 officialLanguages: [en, fr]
 orchardProduces: [blueberry, apple, grape, cranberry, tomatoe, strawberry, peach, raspberry, chilli_pepper,
   sweet_pepper, cherry, pear, plum, apricot, kiwi]
+popularReligions: [christian, muslim, jewish, hindu, sikh]
 popularSports: [baseball, soccer, tennis, basketball, canadian_football, american_football, ices_hockey,
   curling]

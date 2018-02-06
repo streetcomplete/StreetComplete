@@ -175,6 +175,7 @@ Para exibir o mapa, os blocos vetoriais são recuperadas do &lt;a href=\"https:/
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Onde é esta rua?"</string>
     <string name="quest_cyclewaySurface_title">"Que superfície tem a ciclovia aqui?"</string>
     <string name="quest_cycleway_title2">"Existe uma ciclovia nesta rua?"</string>
+    <string name="quest_cycleway_title">"Existe uma ciclovia nesta rua?"</string>
     <string name="quest_buildingType_title">"Que tipo de edifício é esse?"</string>
     <string name="quest_serviceType_title">"Que tipo de rua de serviço é essa?"</string>
     <string name="quest_streetLanes_title">"Quantas pistas tem essa rua?"</string>

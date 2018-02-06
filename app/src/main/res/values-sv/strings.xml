@@ -178,6 +178,7 @@ För att visa på kartan, är vektor brickor hämtas från &lt;a href=\"https://
     <!-- Fuzzy -->
     <string name="quest_cyclewaySurface_title">"Vad har cykelvägen för underlag här?"</string>
     <string name="quest_cycleway_title2">"Har den här gatan en cykelfil?"</string>
+    <string name="quest_cycleway_title">"Har den här gatan en cykelfil?"</string>
     <string name="quest_buildingType_title">"Vilken typ av byggnad är detta?"</string>
 
     <!-- Fuzzy -->
@@ -418,20 +419,20 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="pref_title_authorized_summary">"Auktoriserad"</string>
     <string name="quest_buildingLevels_answer_multipleLevels">"varierar mellan olika husdelar"</string>
     <string name="quest_buildingLevels_answer_description">"I sådana fall, fyll i värdet för den högsta husdelen"</string>
-    <string name="unglue_hint">"Klicka för att lossa vyn utifrån position "</string>
+    <string name="unglue_hint">"Klicka för att lossa låst vy"</string>
     <string name="pref_title_not_authorized_summary2">"Logga in med din webbläsare för att auktorisera."</string>
     <string name="about_category_feedback">"Feedback"</string>
     <string name="quest_leave_new_note_photo">"Bifoga foto"</string>
     <string name="quest_leave_new_note_photo_delete_title">"Vill du ta bort den här bilden?"</string>
     <string name="privacy_html_image_upload">"&lt;p&gt;Foton som du bifogar till noteringar laddas upp till &lt;a href=\"https://lut.im\"&gt;lut.im&lt;/a&gt;, en anonym tjänst utan spårning.&lt;/p&gt;"</string>
-    <string name="quest_cycleway_value_track">"cykelbana"</string>
+    <string name="quest_cycleway_value_track">"separat cykelbana"</string>
     <string name="quest_cycleway_value_lane">"cykelfil"</string>
     <string name="quest_cycleway_value_none">"ingen"</string>
-    <string name="quest_cycleway_value_shared">"fil uttryckligt delad med annan trafik"</string>
+    <string name="quest_cycleway_value_shared">"fil uttryckligen delad med annan trafik"</string>
     <string name="quest_cycleway_value_bus_lane">"i bussfil"</string>
-    <string name="quest_cycleway_value_sidewalk">"uttryckligt delad trottoar"</string>
+    <string name="quest_cycleway_value_sidewalk">"uttryckligen delad trottoar"</string>
     <string name="quest_cycleway_value_lane_dual">"cykelfil, båda riktningarna"</string>
-    <string name="quest_cycleway_value_track_dual">"cykelbana, båda riktningarna"</string>
+    <string name="quest_cycleway_value_track_dual">"separat cykelbana, båda riktningarna"</string>
     <string name="quest_cycleway_value_sidewalk_allowed">"ingen, men cyklister är tillåtna på trottoaren"</string>
     <string name="pref_category_advanced">"Avancerat"</string>
     <string name="pref_title_quests">"Val av uppdrag"</string>
@@ -456,4 +457,7 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="need_specify_both_sides">"Du behöver fylla i båda sidorna"</string>
     <string name="quest_openingHours_emptyAnswer">"Beskriv vad som står på skylten. Saknas skylt, fråga om öppettiderna."</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"Inga, men cyklister får cykla i båda riktningarna"</string>
+    <string name="quest_streetName_answer_noName_question">"Varför har den inget namn?"</string>
+    <string name="quest_streetName_answer_noProperStreet_track2">"Det är en traktor- eller skogsväg"</string>
+    <string name="quest_streetName_answer_noName_noname">"Inget av ovanstående, den har helt enkelt inget namn"</string>
 </resources>

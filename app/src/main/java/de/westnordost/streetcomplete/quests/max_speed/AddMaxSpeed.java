@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.max_speed;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
 import java.util.Map;
@@ -9,6 +10,7 @@ import javax.inject.Inject;
 
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.meta.OsmTaggings;
+import de.westnordost.streetcomplete.data.osm.Countries;
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
@@ -74,8 +76,14 @@ public class AddMaxSpeed extends SimpleOverpassQuestType
 
 	@Override public String getCommitMessage() { return "Add speed limits"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_max_speed; }
-	@Override public int getTitle(Map<String, String> tags)
+	@Override public int getTitle(@NonNull Map<String, String> tags)
 	{
 		return R.string.quest_maxspeed_title_short;
+	}
+
+	@NonNull @Override public Countries getEnabledForCountries()
+	{
+		// see #813: US has different rules for each different state which need to be respected
+		return Countries.allExcept(new String[]{"US"});
 	}
 }

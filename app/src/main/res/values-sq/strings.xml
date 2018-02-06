@@ -172,6 +172,7 @@ Për të shfaqur hartën, pllakat vektoriale merren nga &lt;a href=\"https://map
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Ku është kjo rrugë?"</string>
     <string name="quest_cyclewaySurface_title">"Çfarë mbulese ka rruga për biçikleta këtu?"</string>
     <string name="quest_cycleway_title2">"A ka rrugë për biçikleta këtu?"</string>
+    <string name="quest_cycleway_title">"A ka rrugë për biçikleta këtu?"</string>
     <string name="quest_buildingType_title">"Çfarë lloj ndërtese është kjo?"</string>
     <string name="quest_serviceType_title">"Çfarë lloj rruge shëbyese është kjo?"</string>
     <string name="quest_streetLanes_title">"Sa shirita i ka kjo rrugë?"</string>

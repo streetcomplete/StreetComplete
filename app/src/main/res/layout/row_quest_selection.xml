@@ -5,7 +5,8 @@
                 android:paddingStart="8dp"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
-                xmlns:tools="http://schemas.android.com/tools">
+                xmlns:tools="http://schemas.android.com/tools"
+                tools:ignore="RtlSymmetry">
 
     <ImageView
         android:id="@+id/imageView"

@@ -170,6 +170,7 @@
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Где находится эта улица?"</string>
     <string name="quest_cyclewaySurface_title">"Какое покрытие у этой велодорожки?"</string>
     <string name="quest_cycleway_title2">"На этой улице есть велодорожка?"</string>
+    <string name="quest_cycleway_title">"На этой улице есть велодорожка?"</string>
     <string name="quest_buildingType_title">"Какого типа это здание?"</string>
     <string name="quest_serviceType_title">"Какой тип служебного проезда?"</string>
     <string name="quest_streetLanes_title">"Сколько полос у этой дороги?"</string>

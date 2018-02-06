@@ -4,4 +4,5 @@ isLeftHandTraffic: true
 officialLanguages: [th]
 orchardProduces: [rubber, palm_oil, guava, mango, mangosteen, coconut, pineapple, coffee, banana, grapefruit,
   areca_nut, cashew_nut, lemon, lime, orange, tea, tomatoe, grape]
+popularReligions: [buddhist, muslim, chinese_folk, taoist]
 popularSports: [tennis, soccer, golf, basketball, badminton, sepak_takraw]

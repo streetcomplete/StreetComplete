@@ -170,6 +170,7 @@ A térkép megjelenítéséhez a vektoriális térképcsempéket a &lt;a href=\"
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Hol található ez az utca?"</string>
     <string name="quest_cyclewaySurface_title">"Milyen a burkolata ennek a kerékpárútnak?"</string>
     <string name="quest_cycleway_title2">"Van-e kerékpárút ebben az utcában?"</string>
+    <string name="quest_cycleway_title">"Van-e kerékpárút ebben az utcában?"</string>
     <string name="quest_buildingType_title">"Ez milyen épület?"</string>
     <string name="quest_serviceType_title">"Ez milyen szervizút?"</string>
     <string name="quest_streetLanes_title">"Hány sáv van ezen az úton?"</string>

@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.data.osm;
 
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+
 import java.util.Collections;
 
 import de.westnordost.osmapi.map.data.Element;
@@ -36,7 +39,7 @@ public abstract class SimpleOverpassQuestType implements OsmElementQuestType
 		return overpassServer.getAndHandleQuota(getOverpassQuery(bbox), handler);
 	}
 
-	@Override public Boolean isApplicableTo(Element element)
+	@Nullable @Override public Boolean isApplicableTo(Element element)
 	{
 		return filter.matches(element);
 	}
@@ -48,5 +51,5 @@ public abstract class SimpleOverpassQuestType implements OsmElementQuestType
 
 	@Override public int getDefaultDisabledMessage() { return 0; }
 
-	@Override public Countries getEnabledForCountries()	{ return Countries.ALL; }
+	@NonNull @Override public Countries getEnabledForCountries()	{ return Countries.ALL; }
 }

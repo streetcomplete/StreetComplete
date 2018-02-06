@@ -36,7 +36,7 @@
     <string name="quest_leave_new_note_description">"Vous pouvez laisser une note ici, afin que d'autres puissent commenter et peut-être résoudre :"</string>
     <string name="quest_leave_new_note_yes">"OK"</string>
     <string name="quest_leave_new_note_no">"Non, seulement cacher"</string>
-    <string name="quest_streetName_title">"Quelle est le nom de cette rue ?"</string>
+    <string name="quest_streetName_title">"Quel est le nom de cette voie ?"</string>
     <string name="quest_streetName_description">"tel qu'écrit sur le panneau (les abréviations sont automatiquement développées) :"</string>
 
     <!-- "Also, note that there may not be extra street signs for side streets that belong to a bigger street."
@@ -80,8 +80,6 @@
     <string name="no_location_permission_warning">"Votre position est nécessaire pour rechercher des quêtes"</string>
     <string name="action_about">"À propos de StreetComplete"</string>
     <string name="about_title_version">"Version"</string>
-
-    <!-- Fuzzy -->
     <string name="about_title_authors">"Auteurs"</string>
     <string name="about_summary_authors">"© 2016–2018 Tobias Zwick et contributeurs"</string>
     <string name="about_title_repository">"Code Source"</string>
@@ -206,16 +204,17 @@ Pour afficher la carte, les tuiles vectorielles sont extraites du &lt;a href=\"h
     <!-- Plus simple et plus court : Quel est le revêtement de cette piste cyclable ? -->
     <string name="quest_cyclewaySurface_title">"Quel est le revêtement de cette piste cyclable ?"</string>
     <string name="quest_cycleway_title2">"Est-ce qu'il y a une piste cyclable sur cette rue ?"</string>
+    <string name="quest_cycleway_title">"Est-ce qu'il y a une piste cyclable sur cette rue ?"</string>
     <string name="quest_buildingType_title">"Quel est le type de cet édifice ?"</string>
     <string name="quest_serviceType_title">"Quel est le type de cette rue de service ?"</string>
-    <string name="quest_streetLanes_title">"Combien de voies cette rue a-t-elle ?"</string>
+    <string name="quest_streetLanes_title">"Combien y'a-t-il de voies sur cette route ?"</string>
     <string name="quest_streetLanes_description">"S'il n'y a pas de marques routières, il n'y a pas de voie."</string>
     <string name="quest_streetLanes_north">"Direction nord"</string>
     <string name="quest_streetLanes_west">"Direction ouest"</string>
     <string name="quest_streetLanes_east">"Direction est"</string>
     <string name="quest_streetLanes_south">"Direction sud"</string>
     <string name="quest_streetLanes_answer_noLanes">"Il n'y a pas de lignes démarquant les voies"</string>
-    <string name="quest_streetLanes_noLanes_estWidth">"Estimez combien d'auto pourraient rentrer côte à côte"</string>
+    <string name="quest_streetLanes_noLanes_estWidth">"Estimez le nombre de voitures qui peuvent circuler côte à côte sur cette route."</string>
     <string name="quest_oneway_title">"Est-ce une rue à sens unique ?"</string>
 
     <!-- "édifice" or "bâtiment" ? -->
@@ -280,17 +279,14 @@ L'information que vous entrez est directement ajoutée à OpenStreetMap sous vot
     <string name="quest_busStopShelter_name_title">"L’arrêt de bus « %s » a-t-il un abri ?"</string>
     <string name="quest_toiletsFee_title">"Ces toilettes sont-elles payantes ?"</string>
     <string name="quest_tactilePaving_title_bus">"Cet arrêt de bus a-t-il une surface podotactile ?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"Ce passage piéton a-t-il une surface podotactile ?"</string>
-    <string name="quest_source_dialog_title">"Confirmez-vous avoir vérifier cela sur place ?"</string>
+    <string name="quest_source_dialog_title">"Confirmez-vous avoir vérifié cela sur place ?"</string>
     <string name="quest_tactilePaving_title_name_bus">"L’arrêt de bus « %s » a-t-il une surface podotactile ?"</string>
     <string name="quest_source_dialog_note">"Seules les informations relevées sur place peuvent être ajoutées."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Ce parking à vélo est-il abrité (protégé de la pluie) ?"</string>
     <string name="dialog_session_dont_show_again">"Ne plus afficher pour cette session"</string>
 
     <!-- Je remets "revêtement" car la "surface d'une route" ça ne veut rien dire. -->
-    <!-- Fuzzy -->
     <string name="quest_streetSurface_name_title">"Quel est le revêtement de la route « %s » ?"</string>
     <string name="quest_maxspeed_title_short">"Quel est le panneau de vitesse maximale pour cette route ?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"La limitation de vitesse paraît étrange."</string>
@@ -406,8 +402,6 @@ Sinon, vous pouvez télécharger un autre clavier dans la boutique d'application
     <!-- Fuzzy -->
     <string name="quest_way_lit_title">"Cette section de voie est-elle éclairée ?"</string>
     <string name="quest_way_lit_named_title">"La voie « %s » est-elle éclairée ?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_way_lit_road_title">"Cette section de route est-elle éclairée ?"</string>
     <string name="quest_way_lit_named_road_title">"La route « %s » est-elle éclairée ?"</string>
     <string name="quest_way_lit_automatic">"Cela utilise la détection de mouvement"</string>
@@ -488,7 +482,7 @@ Sinon, vous pouvez télécharger un autre clavier dans la boutique d'application
     <string name="quest_carWashType_selfService">"Self service"</string>
     <string name="quest_carWashType_service">"Les employés nettoient la voiture"</string>
     <string name="enable_quest_confirmation_title">"Activer ce type de quête ?"</string>
-    <string name="default_disabled_msg_go_inside">"Ce type de quête est désactivé par défaut. Rendre sur  place afin de pouvoir répondre à ce type de quête."</string>
+    <string name="default_disabled_msg_go_inside">"Ce type de quête est désactivé par défaut, car il faut certainement rentrer pour répondre à ce type de quête."</string>
     <string name="quest_housenumber_conscription_number">"Numéro de conscription"</string>
     <string name="quest_housenumber_street_number_optional">"Numéro d'orientation (optionnel)"</string>
     <string name="quest_housenumber_conscription_number_required">"Un numéro de conscription doit être renseigné"</string>
@@ -496,4 +490,22 @@ Sinon, vous pouvez télécharger un autre clavier dans la boutique d'application
     <string name="need_specify_both_sides">"Vous devez renseigner les 2 côtés"</string>
     <string name="quest_openingHours_emptyAnswer">"Vous devez décrire ce qui est écrit sur le panonceau. S'il n'y en a pas, vous devriez demander les heures d'ouverture à l'intérieur."</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"aucune, mais les cyclistes peuvent utiliser la route dans les deux sens"</string>
+    <string name="quest_streetName_answer_noName_question">"Pourquoi cette voie n'a pas de nom?"</string>
+    <string name="quest_streetName_answer_noProperStreet_service2">"Est ce que c'est une allée de parking ou d'accès au bâtiment"</string>
+    <string name="quest_streetName_answer_noProperStreet_track2">"C'est un chemin agricole ou forestier"</string>
+    <string name="quest_streetName_answer_noName_noname">"C'est une voie qui n'est pas nommée "</string>
+    <string name="quest_wheelchairAccess_toilets_title">"Est ce que ces toilettes sont accessible en fauteuil? "</string>
+    <string name="quest_wheelchairAccess_toilets_name_title">"Est ce que les toilettes \"%s\" sont accessibles en fauteuil?"</string>
+    <string name="quest_wheelchairAccess_description_toilets">"Un symbole de fauteuil roulant comme celui-ci pourrait être visible si les toilettes sont accessibles.
+Partiellement signifie qu'un fauteuil roulant peut entrer et utiliser les toilettes, mais qu'il n'y a aucune main courante ou bassin à main adapté."</string>
+    <string name="map_btn_create_note">"Ajouter une note"</string>
+    <string name="create_new_note_unprecise">"Zoomer pour créer une note"</string>
+    <string name="create_new_note_description">"Vous pouvez laisser une note pour informer les autres cartographes d'un problème à cet endroit. Ajustez la position de la note en déplaçant la carte :"</string>
+    <string name="pref_title_quests_invalidation">"Cache de quête invalide "</string>
+    <string name="pref_title_quests_invalidation_summary">"Utile si vous pensez que certaines quêtes sont obsolètes"</string>
+    <string name="invalidate_confirmation">"Invalider"</string>
+    <string name="invalidation_dialog_message">"L'invalidation du cache entraînera la mise à jour des quêtes lors du prochain téléchargement. Le cache des quête est automatiquement invalidé après une semaine et immédiatement lorsqu'une quête que vous avez résolue a déjà été traitée par quelqu'un d'autre."</string>
+    <string name="quest_generic_looks_like_this">"Ressemble habituellement à ceci :"</string>
+    <string name="quest_surface_value_metal">"Métal"</string>
+    <string name="quest_surface_generic_surface_confirmation">"Êtes-vous sûr de ne pas pouvoir déterminer la surface plus spécifiquement?"</string>
 </resources>
