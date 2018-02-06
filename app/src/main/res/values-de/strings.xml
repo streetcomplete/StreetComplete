@@ -170,6 +170,7 @@ Um die Karte darzustellen, werden Kartendaten vom &lt;a href=\"https://mapzen.co
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Wo befindet sich diese Straße?"</string>
     <string name="quest_cyclewaySurface_title">"Welche Oberfläche hat dieser Radweg?"</string>
     <string name="quest_cycleway_title2">"Hat diese Straße einen Radweg?"</string>
+    <string name="quest_cycleway_title">"Hat diese Straße einen Radweg?"</string>
     <string name="quest_buildingType_title">"Welche Art Gebäude ist das?"</string>
     <string name="quest_serviceType_title">"Welche Art von Erschließungsweg ist das?"</string>
     <string name="quest_streetLanes_title">"Wie viele Fahrspuren hat diese Straße?"</string>
@@ -251,7 +252,7 @@ Die von dir eingegebenen Informationen werden dann direkt in deinem Namen zu Ope
     <string name="quest_streetSurface_name_title">"Welche Oberfläche hat die Straße „%s“ hier?"</string>
     <string name="quest_maxspeed_title_short">"Welche Höchstgeschwindigkeit ist hier per Schild vorgeschrieben?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Diese Höchstgeschwindigkeit scheint nicht plausibel."</string>
-    <string name="quest_maxspeed_answer_noSign_confirmation_title">"Bist du sicher, dass keine Höchstgeschwindigkeit angegeben ist?"</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation_title">"Sicher, dass kein Schild vorhanden ist?"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">"Hast Du am anderen Ende der Straße nachgeschaut?
 Wenn es keine Schilder entlang der gesamten Straße gibt, die für den hervorgehobenen Abschnitt gelten, gelten die gesetzlichen Geschwindigkeitsbegrenzungen."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Ja, kein Schild"</string>
@@ -416,7 +417,7 @@ Andernfalls kannst Du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="quest_cycleway_value_track">"Fahrradweg"</string>
     <string name="quest_cycleway_value_lane">"Radfahrstreifen"</string>
     <string name="quest_cycleway_value_none">"kein"</string>
-    <string name="quest_cycleway_value_shared">"gemeinsamer Fahrstreifen mit anderen Verkehrsteilnehmern"</string>
+    <string name="quest_cycleway_value_shared">"explizit gemeinsamer Fahrstreifen mit anderen Verkehrsteilnehmern"</string>
     <string name="quest_cycleway_value_bus_lane">"auf der Busspur"</string>
     <string name="quest_cycleway_value_sidewalk">"explizite Mitbenutzung des Bürgersteigs"</string>
     <string name="quest_leave_new_note_create_image_error">"Datei für Foto kann nicht erstellt werden"</string>
@@ -450,4 +451,22 @@ Andernfalls kannst Du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="need_specify_both_sides">"Beide Seiten müssen angegeben werden"</string>
     <string name="quest_openingHours_emptyAnswer">"Du musst schreiben, was auf dem Schild steht. Wenn es kein Schild gibt, solltest Du drinnen nach den Öffnungszeiten fragen."</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"kein, aber Fahrradfahrer dürfen die Straße in beide Richtungen fahren"</string>
+    <string name="quest_streetName_answer_noName_question">"Warum hat sie keinen Namen?"</string>
+    <string name="quest_streetName_answer_noProperStreet_service2">"Ist bloß soetwas wie eine Zufahrt"</string>
+    <string name="quest_streetName_answer_noProperStreet_track2">"Ist nur ein Feld- oder Waldweg"</string>
+    <string name="quest_streetName_answer_noName_noname">"Nichts davon, sie hat ganz einfach keinen Namen"</string>
+    <string name="quest_wheelchairAccess_toilets_title">"Ist diese Toilette rollstuhlgängig?"</string>
+    <string name="quest_wheelchairAccess_toilets_name_title">"Ist die Toilette „%s“ rollstuhlgängig?"</string>
+    <string name="quest_wheelchairAccess_description_toilets">"Ein Symbol wie dieses ist oft zu sehen, wenn es eine spezielle Toilette für Rollstuhlfahrer gibt.
+Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber sie nicht speziell für Rollstuhlfahrer angepasst ist."</string>
+    <string name="map_btn_create_note">"Neue Notiz erstellen"</string>
+    <string name="create_new_note_unprecise">"Zoome weiter herein um eine Notiz zu erstellen"</string>
+    <string name="create_new_note_description">"Erstelle hier eine Notiz, um anderen Mappern Bescheid zu geben, dass es hier ein Problem gibt. Die Position der Notiz kann durch Bewegen der Karte angepasst werden:"</string>
+    <string name="pref_title_quests_invalidation">"Aufgabencache ungültig machen"</string>
+    <string name="pref_title_quests_invalidation_summary">"Nützlich wenn Du denkst dass einige Aufgaben veraltet sind"</string>
+    <string name="invalidate_confirmation">"Ungültig machen"</string>
+    <string name="invalidation_dialog_message">"Wenn der Cache ungültig gemacht wird, werden die Aufgaben das nächste mal wenn sie jeweils heruntergeladen werden aktualisiert. Der Aufgabencache wird automatisch nach einer Woche ungültig gemacht, und sofort, falls sich herausstellt, dass eine Aufgabe die Du beantwortet hast, schon von jemand anderem beantwortet wurde."</string>
+    <string name="quest_generic_looks_like_this">"Sieht normalerweise so aus:"</string>
+    <string name="quest_surface_value_metal">"Metall"</string>
+    <string name="quest_surface_generic_surface_confirmation">"Bist Du sicher dass Du die Oberfläche nicht genauer bestimmen kannst?"</string>
 </resources>

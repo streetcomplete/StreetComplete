@@ -22,10 +22,13 @@ import de.westnordost.streetcomplete.quests.diet_type.AddVegan;
 import de.westnordost.streetcomplete.quests.diet_type.AddVegetarian;
 import de.westnordost.streetcomplete.quests.fire_hydrant.AddFireHydrantType;
 import de.westnordost.streetcomplete.quests.internet_access.AddInternetAccess;
+import de.westnordost.streetcomplete.quests.parking_fee.AddParkingFee;
 import de.westnordost.streetcomplete.quests.parking_type.AddParkingType;
 import de.westnordost.streetcomplete.quests.powerpoles_material.AddPowerPolesMaterial;
 import de.westnordost.streetcomplete.quests.orchard_produce.AddOrchardProduce;
 import de.westnordost.streetcomplete.quests.recycling.AddRecyclingType;
+import de.westnordost.streetcomplete.quests.religion.AddReligionToPlaceOfWorship;
+import de.westnordost.streetcomplete.quests.religion.AddReligionToWaysideShrine;
 import de.westnordost.streetcomplete.quests.road_name.data.PutRoadNameSuggestionsHandler;
 import de.westnordost.streetcomplete.quests.road_name.data.RoadNameSuggestionsDao;
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingBusStop;
@@ -58,6 +61,7 @@ public class QuestModule
 				osmNoteQuestType,
 
 				// ↓ 2. important data that is used by many data consumers
+				new AddReligionToPlaceOfWorship(o),
 				new AddRoadName(o, roadNameSuggestionsDao, putRoadNameSuggestionsHandler),
 				new AddHousenumber(o),
 				// new AddPlaceName(o), doesn't make sense as long as the app cannot tell the generic name of elements
@@ -77,6 +81,7 @@ public class QuestModule
 				new AddVegetarian(o),
 				new AddVegan(o),
 				new AddInternetAccess(o),
+				new AddParkingFee(o),
 
 				// ↓ 4. definitely shown as errors in QA tools
 
@@ -93,6 +98,7 @@ public class QuestModule
 				new AddWheelchairAccessBusiness(o),
 				new AddToiletAvailability(o),
 				new AddWheelChairAccessToilets(o),
+				new AddReligionToWaysideShrine(o),
 
 				// ↓ 8. defined in the wiki, but not really used by anyone yet. Just collected for
 				//      the sake of mapping it in case it makes sense later

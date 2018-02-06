@@ -54,7 +54,7 @@ public class OverpassMapDataDao
 				@Override public void write(OutputStream out) throws IOException
 				{
 					String request = "data=" + urlEncode(query);
-					out.write(request.getBytes());
+					out.write(request.getBytes("UTF-8"));
 				}
 			};
 			osm.makeRequest("interpreter", "POST", false, writer, parser);

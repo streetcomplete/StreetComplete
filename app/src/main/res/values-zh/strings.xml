@@ -172,6 +172,7 @@ OpenStreetMap不接受匿名编辑，您需要登录您的OpenStreetMap帐号。
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"此条街道位在?"</string>
     <string name="quest_cyclewaySurface_title">"此自行车道的路面材料是?"</string>
     <string name="quest_cycleway_title2">"这条街道有自行车道吗?"</string>
+    <string name="quest_cycleway_title">"这条街道有自行车道吗?"</string>
     <string name="quest_buildingType_title">"这栋建筑物的种类是?"</string>
     <string name="quest_serviceType_title">"此条联络道路的种类是?"</string>
     <string name="quest_streetLanes_title">"此条道路有多少车道?"</string>

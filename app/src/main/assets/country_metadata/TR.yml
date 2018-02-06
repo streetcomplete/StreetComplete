@@ -3,3 +3,4 @@ isLivingStreetKnown: true
 officialLanguages: [tr]
 orchardProduces: [olive, hazelnut, grape, tomatoe, pistachio, apple, apricot, chilli_pepper, sweet_pepper,
   tea, walnut, fig, peach, orange, lemon, lime, almond]
+popularReligions: [muslim]

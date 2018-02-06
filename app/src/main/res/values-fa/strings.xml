@@ -178,6 +178,7 @@
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"این خیابان کجاست؟"</string>
     <string name="quest_cyclewaySurface_title">"جنس سطح مسیر دوچرخه سواری در اینجا چیست؟"</string>
     <string name="quest_cycleway_title2">"آیا مسیر دوچرخه در این خیابان وجود دارد؟"</string>
+    <string name="quest_cycleway_title">"آیا مسیر دوچرخه در این خیابان وجود دارد؟"</string>
     <string name="quest_buildingType_title">"نوع این ساختمان چیست؟"</string>
     <string name="quest_serviceType_title">"نوع این جاده خدماتی چیست؟"</string>
     <string name="quest_streetLanes_title">"این راه چند خط عبور دارد؟"</string>

@@ -5,4 +5,5 @@ isSlowZoneKnown: true
 officialLanguages: [nl]
 orchardProduces: [pear, apple, strawberry, tomatoe, chilli_pepper, sweet_pepper, cherry, blueberry,
   grape, plum, raspberry]
+popularReligions: [christian, muslim, jewish]
 popularSports: [soccer, tennis, equestrian, basketball, field_hockey]

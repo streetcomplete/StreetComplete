@@ -172,6 +172,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"この通りはどこにありますか?"</string>
     <string name="quest_cyclewaySurface_title">"ここの自転車道はどんな路面ですか?"</string>
     <string name="quest_cycleway_title2">"この通りに自転車道はありますか?"</string>
+    <string name="quest_cycleway_title">"この通りに自転車道はありますか?"</string>
     <string name="quest_buildingType_title">"これはどんな建物ですか?"</string>
     <string name="quest_serviceType_title">"これはどんな側道ですか?"</string>
     <string name="quest_streetLanes_title">"この道路にはいくつの車線がありますか?"</string>

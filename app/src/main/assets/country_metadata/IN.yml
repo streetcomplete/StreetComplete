@@ -2,4 +2,5 @@
 additionalStreetsignLanguages: [en]
 isLeftHandTraffic: true
 officialLanguages: [en, hi, bn, te, mr, ta, ur, gu, kn, ml, or, pa, as, mai, ks]
+popularReligions: [hindu, muslim, christian, buddhist, jain, sikh, bahai]
 popularSports: [tennis, basketball, soccer, cricket, field_hockey]

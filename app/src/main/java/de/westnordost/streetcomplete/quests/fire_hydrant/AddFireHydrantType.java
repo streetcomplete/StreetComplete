@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.fire_hydrant;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 
 import java.util.List;
 import java.util.Map;
@@ -38,7 +39,7 @@ public class AddFireHydrantType extends SimpleOverpassQuestType
 
 	@Override public String getCommitMessage() { return "Add fire hydrant type"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_fire_hydrant; }
-	@Override public int getTitle(Map<String,String> tags)
+	@Override public int getTitle(@NonNull Map<String,String> tags)
 	{
 		return R.string.quest_fireHydrant_type_title;
 	}

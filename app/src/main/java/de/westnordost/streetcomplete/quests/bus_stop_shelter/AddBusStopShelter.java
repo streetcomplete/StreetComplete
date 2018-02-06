@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.bus_stop_shelter;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 
 import java.util.Map;
 
@@ -39,7 +40,7 @@ public class AddBusStopShelter extends SimpleOverpassQuestType
 
 	@Override public String getCommitMessage() { return "Add bus stop shelter"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_bus; }
-	@Override public int getTitle(Map<String, String> tags)
+	@Override public int getTitle(@NonNull Map<String, String> tags)
 	{
 		boolean hasName = tags.containsKey("name");
 		String tram = tags.get("tram");

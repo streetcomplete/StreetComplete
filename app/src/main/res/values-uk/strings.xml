@@ -177,6 +177,7 @@
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Де знаходиться вулиця?"</string>
     <string name="quest_cyclewaySurface_title">"Яке покриття тут має велосипедна доріжка?"</string>
     <string name="quest_cycleway_title2">"Чи є на цій вулиці велосипедна доріжка?"</string>
+    <string name="quest_cycleway_title">"Чи є на цій вулиці велосипедна доріжка?"</string>
     <string name="quest_buildingType_title">"Якого типу ця будівля?"</string>
     <string name="quest_serviceType_title">"Якого типу цей проїзд?"</string>
     <string name="quest_streetLanes_title">"Скільки смуг має ця дорога?"</string>

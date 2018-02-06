@@ -38,14 +38,14 @@ public class OsmQuestUnlockerTest extends TestCase
 
 		osmNoteQuestDao = mock(OsmNoteQuestDao.class);
 		when(osmNoteQuestDao.getAllPositions(any(BoundingBox.class)))
-				.thenReturn(Collections.<LatLon>emptyList());
+				.thenReturn(Collections.emptyList());
 
 		osmQuestDao = mock(OsmQuestDao.class);
 		when(osmQuestDao.getAll(null, null, null, Element.Type.NODE, 1L))
-				.thenReturn(Collections.<OsmQuest>emptyList());
+				.thenReturn(Collections.emptyList());
 
 		questType = mock(OsmElementQuestType.class);
-		final List<QuestType> questTypes = Collections.<QuestType>singletonList(questType);
+		final List<QuestType> questTypes = Collections.singletonList(questType);
 		osmQuestUnlocker = new OsmQuestUnlocker(osmNoteQuestDao, osmQuestDao, elementGeometryDao,
 				() -> questTypes);
 	}

@@ -19,28 +19,30 @@ public class OverpassStatusParser implements ApiResponseReader<OverpassStatus>
 	{
 		OverpassStatus result = new OverpassStatus();
 
-		BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-		String line;
-		while ((line = reader.readLine()) != null)
+		try(BufferedReader reader = new BufferedReader(new InputStreamReader(in, "UTF-8")))
 		{
-			Matcher m;
-
-			m = availableSlotsPattern.matcher(line);
-			if(m.find()) result.availableSlots = Integer.parseInt(m.group(1));
-
-			m = nextAvailableSlotPattern.matcher(line);
-			if(m.find())
+			String line;
+			while ((line = reader.readLine()) != null)
 			{
-				int nextAvailableSlotIn = Integer.parseInt(m.group(2));
-				// Overpass may send several of those lines, actually. Lets take the one that takes least as long
-				if(result.nextAvailableSlotIn == null || result.nextAvailableSlotIn > nextAvailableSlotIn)
-				{
-					result.nextAvailableSlotIn = nextAvailableSlotIn;
-				}
-			}
+				Matcher m;
 
-			m = maxAvailableSlots.matcher(line);
-			if(m.find()) result.maxAvailableSlots = Integer.parseInt(m.group(1));
+				m = availableSlotsPattern.matcher(line);
+				if (m.find()) result.availableSlots = Integer.parseInt(m.group(1));
+
+				m = nextAvailableSlotPattern.matcher(line);
+				if (m.find())
+				{
+					int nextAvailableSlotIn = Integer.parseInt(m.group(2));
+					// Overpass may send several of those lines, actually. Lets take the one that takes least as long
+					if (result.nextAvailableSlotIn == null || result.nextAvailableSlotIn > nextAvailableSlotIn)
+					{
+						result.nextAvailableSlotIn = nextAvailableSlotIn;
+					}
+				}
+
+				m = maxAvailableSlots.matcher(line);
+				if (m.find()) result.maxAvailableSlots = Integer.parseInt(m.group(1));
+			}
 		}
 		return result;
 	}

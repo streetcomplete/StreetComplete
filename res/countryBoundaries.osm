@@ -18886,7 +18886,7 @@
     <tag k='driving_side' v='left' />
     <tag k='name:en' v='Antigua and Barbuda' />
   </way>
-  <way id='-28908' action='modify'>
+  <way id='-28908'>
     <nd ref='-6308' />
     <nd ref='-27580' />
     <nd ref='-27578' />
@@ -21051,7 +21051,7 @@
     <tag k='ISO3166-1:alpha2' v='BF' />
     <tag k='name:en' v='Burkina Faso' />
   </way>
-  <way id='-28946' action='modify'>
+  <way id='-28946'>
     <nd ref='-7018' />
     <nd ref='-19544' />
     <nd ref='-27436' />
@@ -22372,7 +22372,7 @@
     <tag k='driving_side' v='left' />
     <tag k='name:en' v='Brunei' />
   </way>
-  <way id='-28966' action='modify'>
+  <way id='-28966'>
     <nd ref='-7326' />
     <nd ref='-7328' />
     <nd ref='-2174' />
@@ -23011,7 +23011,7 @@
     <tag k='ISO3166-1:alpha2' v='CA' />
     <tag k='name:en' v='Canada' />
   </way>
-  <way id='-28974' action='modify'>
+  <way id='-28974'>
     <nd ref='-13006' />
     <nd ref='-13008' />
     <nd ref='-7714' />
@@ -28995,7 +28995,7 @@
     <tag k='maxspeed:urban' v='50' />
     <tag k='name:en' v='Hungary' />
   </way>
-  <way id='-29068' action='modify'>
+  <way id='-29068'>
     <nd ref='-7830' />
     <nd ref='-22168' />
     <nd ref='-22166' />
@@ -33011,7 +33011,7 @@
     <tag k='ISO3166-1:alpha2' v='ML' />
     <tag k='name:en' v='Mali' />
   </way>
-  <way id='-29128' action='modify'>
+  <way id='-29128'>
     <nd ref='-7044' />
     <nd ref='-7042' />
     <nd ref='-21948' />
@@ -34702,7 +34702,7 @@
     <tag k='ISO3166-1:alpha2' v='BV' />
     <tag k='name:en' v='Bouvet Island' />
   </way>
-  <way id='-29152' action='modify'>
+  <way id='-29152'>
     <nd ref='-10760' />
     <nd ref='-1790' />
     <nd ref='-1784' />
@@ -34994,7 +34994,7 @@
     <nd ref='-5732' />
     <nd ref='-6376' />
   </way>
-  <way id='-29160' action='modify'>
+  <way id='-29160'>
     <nd ref='-7836' />
     <nd ref='-21482' />
     <nd ref='-21484' />
@@ -35827,7 +35827,7 @@
     <tag k='maxspeed:urban' v='50' />
     <tag k='name:en' v='Poland' />
   </way>
-  <way id='-29170' action='modify'>
+  <way id='-29170'>
     <nd ref='-7736' />
     <nd ref='-27266' />
     <nd ref='-12878' />
@@ -39549,7 +39549,7 @@
     <tag k='ISO3166-1:alpha2' v='TR' />
     <tag k='name:en' v='Turkey' />
   </way>
-  <way id='-29236' action='modify'>
+  <way id='-29236'>
     <nd ref='-11952' />
     <nd ref='-11950' />
     <nd ref='-7764' />
@@ -42429,7 +42429,7 @@
     <tag k='driving_side' v='left' />
     <tag k='name:en' v='Japan' />
   </way>
-  <way id='-29312' action='modify'>
+  <way id='-29312'>
     <nd ref='-10938' />
     <nd ref='-27920' />
     <nd ref='-27922' />
@@ -43831,7 +43831,7 @@
     <tag k='ISO3166-1:alpha2' v='HM' />
     <tag k='name:en' v='Heard Island and McDonald Islands' />
   </way>
-  <way id='-29370' action='modify'>
+  <way id='-29370'>
     <nd ref='-22518' />
     <nd ref='-22520' />
     <nd ref='-22522' />
@@ -43917,7 +43917,7 @@
     <tag k='ISO3166-2' v='US-PR' />
     <tag k='name:en' v='Puerto Rico' />
   </way>
-  <way id='-29384' action='modify'>
+  <way id='-29384'>
     <nd ref='-22582' />
     <nd ref='-22584' />
     <nd ref='-22586' />
@@ -50182,7 +50182,7 @@
     <tag k='ISO3166-1:alpha2' v='SO' />
     <tag k='name:en' v='Somalia' />
   </way>
-  <way id='-85089' action='modify'>
+  <way id='-85089'>
     <nd ref='-22190' />
     <nd ref='-85088' />
     <nd ref='-85090' />
@@ -50479,7 +50479,7 @@
     <tag k='ISO3166-2' v='CN-54' />
     <tag k='name:en' v='Tibet' />
   </way>
-  <way id='-85625' action='modify'>
+  <way id='-85625'>
     <nd ref='-85126' />
     <nd ref='-85624' />
     <nd ref='-85626' />
@@ -50695,7 +50695,7 @@
     <tag k='ISO3166-2' v='CN-65' />
     <tag k='name:en' v='Xinjiang' />
   </way>
-  <way id='-86238' action='modify'>
+  <way id='-86238'>
     <nd ref='-7972' />
     <nd ref='-86237' />
     <nd ref='-86239' />
@@ -51033,7 +51033,7 @@
     <tag k='ISO3166-2' v='CN-15' />
     <tag k='name:en' v='Inner Mongolia' />
   </way>
-  <way id='-86868' action='modify'>
+  <way id='-86868'>
     <nd ref='-85288' />
     <nd ref='-86867' />
     <nd ref='-86873' />
@@ -51193,7 +51193,7 @@
     <tag k='ISO3166-2' v='CN-63' />
     <tag k='name:en' v='Qinghai' />
   </way>
-  <way id='-87708' action='modify'>
+  <way id='-87708'>
     <nd ref='-2504' />
     <nd ref='-87344' />
     <nd ref='-87346' />
@@ -51398,7 +51398,7 @@
     <tag k='ISO3166-2' v='CN-45' />
     <tag k='name:en' v='Guangxi' />
   </way>
-  <way id='-88317' action='modify'>
+  <way id='-88317'>
     <nd ref='-87376' />
     <nd ref='-88316' />
     <nd ref='-88318' />
@@ -51765,7 +51765,7 @@
     <tag k='ISO3166-2' v='CN-53' />
     <tag k='name:en' v='Yunnan' />
   </way>
-  <way id='-89333' action='modify'>
+  <way id='-89333'>
     <nd ref='-86949' />
     <nd ref='-89332' />
     <nd ref='-89334' />
@@ -51963,7 +51963,7 @@
     <tag k='ISO3166-2' v='CN-51' />
     <tag k='name:en' v='Sichuan' />
   </way>
-  <way id='-90005' action='modify'>
+  <way id='-90005'>
     <nd ref='-89338' />
     <nd ref='-89336' />
     <nd ref='-89334' />
@@ -52107,7 +52107,7 @@
     <tag k='ISO3166-2' v='CN-62' />
     <tag k='name:en' v='Gansu' />
   </way>
-  <way id='-90235' action='modify'>
+  <way id='-90235'>
     <nd ref='-90115' />
     <nd ref='-90234' />
     <nd ref='-90119' />
@@ -52140,7 +52140,7 @@
     <tag k='ISO3166-2' v='CN-64' />
     <tag k='name:en' v='Ningxia' />
   </way>
-  <way id='-90295' action='modify'>
+  <way id='-90295'>
     <nd ref='-86297' />
     <nd ref='-90294' />
     <nd ref='-90296' />
@@ -52273,7 +52273,7 @@
     <tag k='ISO3166-2' v='CN-23' />
     <tag k='name:en' v='Heilongjiang' />
   </way>
-  <way id='-90451' action='modify'>
+  <way id='-90451'>
     <nd ref='-86347' />
     <nd ref='-90450' />
     <nd ref='-90452' />
@@ -52405,7 +52405,7 @@
     <tag k='ISO3166-2' v='CN-22' />
     <tag k='name:en' v='Jilin' />
   </way>
-  <way id='-90625' action='modify'>
+  <way id='-90625'>
     <nd ref='-10870' />
     <nd ref='-90624' />
     <nd ref='-101621' />
@@ -52489,7 +52489,7 @@
     <tag k='ISO3166-2' v='CN-21' />
     <tag k='name:en' v='Liaoning' />
   </way>
-  <way id='-90752' action='modify'>
+  <way id='-90752'>
     <nd ref='-90878' />
     <nd ref='-90757' />
     <nd ref='-90759' />
@@ -52559,7 +52559,7 @@
     <tag k='ISO3166-2' v='IN-KL' />
     <tag k='name:en' v='Kerala' />
   </way>
-  <way id='-90894' action='modify'>
+  <way id='-90894'>
     <nd ref='-90873' />
     <nd ref='-90871' />
     <nd ref='-90869' />
@@ -52859,7 +52859,7 @@
     <tag k='ISO3166-2' v='IN-KA' />
     <tag k='name:en' v='Karnataka' />
   </way>
-  <way id='-91443' action='modify'>
+  <way id='-91443'>
     <nd ref='-91440' />
     <nd ref='-91358' />
     <nd ref='-91360' />
@@ -52964,7 +52964,7 @@
     <tag k='ISO3166-2' v='IN-TG' />
     <tag k='name:en' v='Telangana' />
   </way>
-  <way id='-91682' action='modify'>
+  <way id='-91682'>
     <nd ref='-91651' />
     <nd ref='-91649' />
     <nd ref='-91647' />
@@ -52986,7 +52986,7 @@
     <tag k='ISO3166-2' v='IN-GA' />
     <tag k='name:en' v='Goa' />
   </way>
-  <way id='-91879' action='modify'>
+  <way id='-91879'>
     <nd ref='-91735' />
     <nd ref='-91878' />
     <nd ref='-91880' />
@@ -53163,7 +53163,7 @@
     <tag k='ISO3166-2' v='IN-AP' />
     <tag k='name:en' v='Andhra Pradesh' />
   </way>
-  <way id='-92131' action='modify'>
+  <way id='-92131'>
     <nd ref='-91926' />
     <nd ref='-92250' />
     <nd ref='-92344' />
@@ -53274,21 +53274,21 @@
     <tag k='ISO3166-2' v='IN-TN' />
     <tag k='name:en' v='Tamil Nadu' />
   </way>
-  <way id='-92247' action='modify'>
+  <way id='-92247'>
     <nd ref='-92245' />
     <nd ref='-92246' />
     <nd ref='-92344' />
     <nd ref='-92250' />
     <nd ref='-92245' />
   </way>
-  <way id='-92256' action='modify'>
+  <way id='-92256'>
     <nd ref='-92254' />
     <nd ref='-92390' />
     <nd ref='-92257' />
     <nd ref='-92259' />
     <nd ref='-92254' />
   </way>
-  <way id='-92272' action='modify'>
+  <way id='-92272'>
     <nd ref='-92270' />
     <nd ref='-92271' />
     <nd ref='-92273' />
@@ -53297,14 +53297,14 @@
     <nd ref='-92422' />
     <nd ref='-92270' />
   </way>
-  <way id='-92284' action='modify'>
+  <way id='-92284'>
     <nd ref='-92282' />
     <nd ref='-92283' />
     <nd ref='-92285' />
     <nd ref='-92287' />
     <nd ref='-92282' />
   </way>
-  <way id='-92581' action='modify'>
+  <way id='-92581'>
     <nd ref='-22214' />
     <nd ref='-92580' />
     <nd ref='-92582' />
@@ -53426,7 +53426,7 @@
     <tag k='ISO3166-2' v='IN-JK' />
     <tag k='name:en' v='Jammu and Kashmir' />
   </way>
-  <way id='-92731' action='modify'>
+  <way id='-92731'>
     <nd ref='-22230' />
     <nd ref='-92730' />
     <nd ref='-92732' />
@@ -53489,7 +53489,7 @@
     <tag k='ISO3166-2' v='IN-UT' />
     <tag k='name:en' v='Uttarakhand' />
   </way>
-  <way id='-92838' action='modify'>
+  <way id='-92838'>
     <nd ref='-91710' />
     <nd ref='-92837' />
     <nd ref='-92839' />
@@ -53702,7 +53702,7 @@
     <tag k='ISO3166-2' v='IN-MH' />
     <tag k='name:en' v='Maharashtra' />
   </way>
-  <way id='-93207' action='modify'>
+  <way id='-93207'>
     <nd ref='-93205' />
     <nd ref='-93206' />
     <nd ref='-11796' />
@@ -53711,7 +53711,7 @@
     <tag k='ISO3166-2' v='IN-LD' />
     <tag k='name:en' v='Lakshadweep' />
   </way>
-  <way id='-93226' action='modify'>
+  <way id='-93226'>
     <nd ref='-12116' />
     <nd ref='-93225' />
     <nd ref='-11990' />
@@ -53722,7 +53722,7 @@
     <tag k='ISO3166-2' v='IN-AN' />
     <tag k='name:en' v='Andaman and Nicobar Islands' />
   </way>
-  <way id='-93267' action='modify'>
+  <way id='-93267'>
     <nd ref='-91733' />
     <nd ref='-93266' />
     <nd ref='-93268' />
@@ -53829,7 +53829,7 @@
     <tag k='ISO3166-2' v='IN-CT' />
     <tag k='name:en' v='Chhattisgarh' />
   </way>
-  <way id='-93662' action='modify'>
+  <way id='-93662'>
     <nd ref='-91924' />
     <nd ref='-93661' />
     <nd ref='-93663' />
@@ -53918,7 +53918,7 @@
     <tag k='ISO3166-2' v='IN-OR' />
     <tag k='name:en' v='Odisha' />
   </way>
-  <way id='-93978' action='modify'>
+  <way id='-93978'>
     <nd ref='-93661' />
     <nd ref='-9310' />
     <nd ref='-7048' />
@@ -54094,7 +54094,7 @@
     <tag k='ISO3166-2' v='IN-WB' />
     <tag k='name:en' v='West Bengal' />
   </way>
-  <way id='-94350' action='modify'>
+  <way id='-94350'>
     <nd ref='-92828' />
     <nd ref='-94090' />
     <nd ref='-94088' />
@@ -54124,7 +54124,7 @@
     <tag k='ISO3166-2' v='IN-SK' />
     <tag k='name:en' v='Sikkim' />
   </way>
-  <way id='-94589' action='modify'>
+  <way id='-94589'>
     <nd ref='-93368' />
     <nd ref='-94588' />
     <nd ref='-94590' />
@@ -54381,7 +54381,7 @@
     <tag k='ISO3166-2' v='IN-UP' />
     <tag k='name:en' v='Uttar Pradesh' />
   </way>
-  <way id='-95719' action='modify'>
+  <way id='-95719'>
     <nd ref='-94596' />
     <nd ref='-95718' />
     <nd ref='-95720' />
@@ -54481,7 +54481,7 @@
     <tag k='ISO3166-2' v='IN-JH' />
     <tag k='name:en' v='Jharkhand' />
   </way>
-  <way id='-95891' action='modify'>
+  <way id='-95891'>
     <nd ref='-94596' />
     <nd ref='-95718' />
     <nd ref='-95720' />
@@ -54647,7 +54647,7 @@
     <tag k='ISO3166-2' v='IN-BR' />
     <tag k='name:en' v='Bihar' />
   </way>
-  <way id='-96082' action='modify'>
+  <way id='-96082'>
     <nd ref='-96092' />
     <nd ref='-96091' />
     <nd ref='-96096' />
@@ -54659,7 +54659,7 @@
     <tag k='ISO3166-2' v='IN-DD' />
     <tag k='name:en' v='Daman &amp; Diu' />
   </way>
-  <way id='-96158' action='modify'>
+  <way id='-96158'>
     <nd ref='-96092' />
     <nd ref='-96157' />
     <nd ref='-9316' />
@@ -54766,7 +54766,7 @@
     <tag k='ISO3166-2' v='IN-GJ' />
     <tag k='name:en' v='Gujarat' />
   </way>
-  <way id='-96365' action='modify'>
+  <way id='-96365'>
     <nd ref='-92861' />
     <nd ref='-92859' />
     <nd ref='-92843' />
@@ -54782,7 +54782,7 @@
     <tag k='ISO3166-2' v='IN-DN' />
     <tag k='name:en' v='Dadra &amp; Nagar Haveli' />
   </way>
-  <way id='-96389' action='modify'>
+  <way id='-96389'>
     <nd ref='-96255' />
     <nd ref='-96388' />
     <nd ref='-96390' />
@@ -55030,7 +55030,7 @@
     <tag k='ISO3166-2' v='IN-MP' />
     <tag k='name:en' v='Madhya Pradesh' />
   </way>
-  <way id='-96806' action='modify'>
+  <way id='-96806'>
     <nd ref='-9372' />
     <nd ref='-96805' />
     <nd ref='-96807' />
@@ -55242,7 +55242,7 @@
     <tag k='ISO3166-2' v='IN-RJ' />
     <tag k='name:en' v='Rajasthan' />
   </way>
-  <way id='-97175' action='modify'>
+  <way id='-97175'>
     <nd ref='-94814' />
     <nd ref='-97174' />
     <nd ref='-97176' />
@@ -55388,7 +55388,7 @@
     <tag k='ISO3166-2' v='IN-DL' />
     <tag k='name:en' v='Delhi' />
   </way>
-  <way id='-97433' action='modify'>
+  <way id='-97433'>
     <nd ref='-97431' />
     <nd ref='-97432' />
     <nd ref='-97434' />
@@ -55415,7 +55415,7 @@
     <tag k='ISO3166-2' v='IN-CH' />
     <tag k='name:en' v='Chandigarh' />
   </way>
-  <way id='-97488' action='modify'>
+  <way id='-97488'>
     <nd ref='-97432' />
     <nd ref='-97487' />
     <nd ref='-97489' />
@@ -55672,7 +55672,7 @@
     <tag k='ISO3166-2' v='IN-HR' />
     <tag k='name:en' v='Haryana' />
   </way>
-  <way id='-97886' action='modify'>
+  <way id='-97886'>
     <nd ref='-97883' />
     <nd ref='-97885' />
     <nd ref='-97887' />
@@ -55728,7 +55728,7 @@
     <tag k='ISO3166-2' v='IN-HP' />
     <tag k='name:en' v='Himachal Pradesh' />
   </way>
-  <way id='-97967' action='modify'>
+  <way id='-97967'>
     <nd ref='-96807' />
     <nd ref='-96809' />
     <nd ref='-97655' />
@@ -55869,7 +55869,7 @@
     <tag k='ISO3166-2' v='IN-PB' />
     <tag k='name:en' v='Punjab' />
   </way>
-  <way id='-98136' action='modify'>
+  <way id='-98136'>
     <nd ref='-2168' />
     <nd ref='-98135' />
     <nd ref='-98137' />
@@ -55969,10 +55969,10 @@
     <nd ref='-2170' />
     <nd ref='-2166' />
     <nd ref='-2168' />
-    <tag k='ISO3166-2' v='IN-AP' />
-    <tag k='name:en' v='Andhra Pradesh' />
+    <tag k='ISO3166-2' v='IN-AR' />
+    <tag k='name:en' v='Arunachal Pradesh' />
   </way>
-  <way id='-98272' action='modify'>
+  <way id='-98272'>
     <nd ref='-27426' />
     <nd ref='-98271' />
     <nd ref='-98273' />
@@ -56005,7 +56005,7 @@
     <tag k='ISO3166-2' v='IN-ML' />
     <tag k='name:en' v='Meghalaya' />
   </way>
-  <way id='-98328' action='modify'>
+  <way id='-98328'>
     <nd ref='-94057' />
     <nd ref='-2162' />
     <nd ref='-27462' />
@@ -56102,7 +56102,7 @@
     <tag k='ISO3166-2' v='IN-AS' />
     <tag k='name:en' v='Assam' />
   </way>
-  <way id='-98462' action='modify'>
+  <way id='-98462'>
     <nd ref='-98389' />
     <nd ref='-98461' />
     <nd ref='-98463' />
@@ -56134,7 +56134,7 @@
     <tag k='ISO3166-2' v='IN-NL' />
     <tag k='name:en' v='Nagaland' />
   </way>
-  <way id='-98514' action='modify'>
+  <way id='-98514'>
     <nd ref='-98395' />
     <nd ref='-98513' />
     <nd ref='-21988' />
@@ -56169,7 +56169,7 @@
     <tag k='ISO3166-2' v='IN-MN' />
     <tag k='name:en' v='Manipur' />
   </way>
-  <way id='-98561' action='modify'>
+  <way id='-98561'>
     <nd ref='-98558' />
     <nd ref='-98560' />
     <nd ref='-19616' />
@@ -56211,7 +56211,7 @@
     <tag k='ISO3166-2' v='IN-TR' />
     <tag k='name:en' v='Tripura' />
   </way>
-  <way id='-98630' action='modify'>
+  <way id='-98630'>
     <nd ref='-98558' />
     <nd ref='-98405' />
     <nd ref='-98403' />
@@ -56261,7 +56261,7 @@
     <tag k='ISO3166-2' v='IN-MZ' />
     <tag k='name:en' v='Mizoram' />
   </way>
-  <way id='-98707' action='modify'>
+  <way id='-98707'>
     <nd ref='-90195' />
     <nd ref='-89372' />
     <nd ref='-89374' />
@@ -56388,7 +56388,7 @@
     <tag k='ISO3166-2' v='CN-61' />
     <tag k='name:en' v='Shaanxi' />
   </way>
-  <way id='-98912' action='modify'>
+  <way id='-98912'>
     <nd ref='-87466' />
     <nd ref='-98911' />
     <nd ref='-98913' />
@@ -56573,7 +56573,7 @@
     <tag k='ISO3166-2' v='CN-52' />
     <tag k='name:en' v='Guizhou' />
   </way>
-  <way id='-99015' action='modify'>
+  <way id='-99015'>
     <nd ref='-99011' />
     <nd ref='-98965' />
     <nd ref='-98967' />
@@ -56730,7 +56730,7 @@
     <tag k='ISO3166-2' v='CN-50' />
     <tag k='name:en' v='Chongqing' />
   </way>
-  <way id='-99432' action='modify'>
+  <way id='-99432'>
     <nd ref='-11960' />
     <nd ref='-11962' />
     <nd ref='-11966' />
@@ -56740,7 +56740,7 @@
     <tag k='ISO3166-2' v='CN-46' />
     <tag k='name:en' v='Hainan' />
   </way>
-  <way id='-99452' action='modify'>
+  <way id='-99452'>
     <nd ref='-11966' />
     <nd ref='-99434' />
     <nd ref='-99504' />
@@ -56850,7 +56850,7 @@
     <nd ref='-87895' />
     <nd ref='-11966' />
   </way>
-  <way id='-99761' action='modify'>
+  <way id='-99761'>
     <nd ref='-99758' />
     <nd ref='-99760' />
     <nd ref='-99762' />
@@ -57009,7 +57009,7 @@
     <tag k='ISO3166-2' v='CN-43' />
     <tag k='name:en' v='Hunan' />
   </way>
-  <way id='-100002' action='modify'>
+  <way id='-100002'>
     <nd ref='-98767' />
     <nd ref='-100001' />
     <nd ref='-100003' />
@@ -57160,7 +57160,7 @@
     <tag k='ISO3166-2' v='CN-42' />
     <tag k='name:en' v='Hubei' />
   </way>
-  <way id='-100210' action='modify'>
+  <way id='-100210'>
     <nd ref='-98779' />
     <nd ref='-100209' />
     <nd ref='-100211' />
@@ -57265,7 +57265,7 @@
     <tag k='ISO3166-2' v='CN-41' />
     <tag k='name:en' v='Henan' />
   </way>
-  <way id='-100399' action='modify'>
+  <way id='-100399'>
     <nd ref='-90624' />
     <nd ref='-100398' />
     <nd ref='-100400' />
@@ -57323,7 +57323,7 @@
     <tag k='ISO3166-2' v='CN-37' />
     <tag k='name:en' v='Shandong' />
   </way>
-  <way id='-100491' action='modify'>
+  <way id='-100491'>
     <nd ref='-99567' />
     <nd ref='-100490' />
     <nd ref='-100492' />
@@ -57445,7 +57445,7 @@
     <tag k='ISO3166-2' v='CN-36' />
     <tag k='name:en' v='Jiangxi' />
   </way>
-  <way id='-100567' action='modify'>
+  <way id='-100567'>
     <nd ref='-100564' />
     <nd ref='-100554' />
     <nd ref='-100556' />
@@ -57568,7 +57568,7 @@
     <tag k='ISO3166-2' v='CN-34' />
     <tag k='name:en' v='Anhui' />
   </way>
-  <way id='-100680' action='modify'>
+  <way id='-100680'>
     <nd ref='-99515' />
     <nd ref='-99504' />
     <nd ref='-7764' />
@@ -57645,7 +57645,7 @@
     <tag k='ISO3166-2' v='CN-35' />
     <tag k='name:en' v='Fujian' />
   </way>
-  <way id='-100973' action='modify'>
+  <way id='-100973'>
     <nd ref='-11942' />
     <nd ref='-100972' />
     <nd ref='-100974' />
@@ -57718,7 +57718,7 @@
     <tag k='ISO3166-2' v='CN-33' />
     <tag k='name:en' v='Zhejiang' />
   </way>
-  <way id='-101075' action='modify'>
+  <way id='-101075'>
     <nd ref='-100986' />
     <nd ref='-101074' />
     <nd ref='-101076' />
@@ -57816,7 +57816,7 @@
     <tag k='ISO3166-2' v='CN-32' />
     <tag k='name:en' v='Jiangsu' />
   </way>
-  <way id='-101242' action='modify'>
+  <way id='-101242'>
     <nd ref='-11942' />
     <nd ref='-100972' />
     <nd ref='-100974' />
@@ -57853,7 +57853,7 @@
     <tag k='ISO3166-2' v='CN-31' />
     <tag k='name:en' v='Shanghai' />
   </way>
-  <way id='-101286' action='modify'>
+  <way id='-101286'>
     <nd ref='-98779' />
     <nd ref='-98781' />
     <nd ref='-98783' />
@@ -57946,7 +57946,7 @@
     <tag k='ISO3166-2' v='CN-14' />
     <tag k='name:en' v='Shanxi' />
   </way>
-  <way id='-101411' action='modify'>
+  <way id='-101411'>
     <nd ref='-101382' />
     <nd ref='-100235' />
     <nd ref='-100237' />
@@ -58141,7 +58141,7 @@
     <tag k='ISO3166-2' v='CN-13' />
     <tag k='name:en' v='Hebei' />
   </way>
-  <way id='-101711' action='modify'>
+  <way id='-101711'>
     <nd ref='-101433' />
     <nd ref='-101619' />
     <nd ref='-101617' />
@@ -58195,7 +58195,7 @@
     <tag k='ISO3166-2' v='CN-12' />
     <tag k='name:en' v='Tianjin' />
   </way>
-  <way id='-101781' action='modify'>
+  <way id='-101781'>
     <nd ref='-101731' />
     <nd ref='-101733' />
     <nd ref='-101735' />
@@ -58702,7 +58702,7 @@
     <tag k='name:en' v='Musandam' />
     <tag k='type' v='multipolygon' />
   </relation>
-  <relation id='-92264' action='modify'>
+  <relation id='-92264'>
     <member type='way' ref='-92256' role='outer' />
     <member type='way' ref='-92247' role='outer' />
     <member type='way' ref='-92272' role='outer' />
@@ -58711,7 +58711,7 @@
     <tag k='name:en' v='Puducherry' />
     <tag k='type' v='multipolygon' />
   </relation>
-  <relation id='-99745' action='modify'>
+  <relation id='-99745'>
     <member type='way' ref='-99452' role='outer' />
     <member type='way' ref='-29370' role='inner' />
     <member type='way' ref='-29384' role='inner' />

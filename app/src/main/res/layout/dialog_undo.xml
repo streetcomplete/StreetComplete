@@ -22,6 +22,7 @@
         tools:text="@string/quest_address_title"
         android:paddingStart="@dimen/dialog_horizontal_margin"
         android:textAppearance="@android:style/TextAppearance.Theme.Dialog"
-        android:id="@+id/text"/>
+        android:id="@+id/text"
+        tools:ignore="RtlSymmetry"/>
 
 </RelativeLayout>

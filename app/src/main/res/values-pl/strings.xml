@@ -170,6 +170,7 @@ Niemniej przed każdym wysłaniem zmian aplikacja sprawdza &lt;a href=\"http://w
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Gdzie jest ta ulica?"</string>
     <string name="quest_cyclewaySurface_title">"Jaki rodzaj nawierzchni ma ta droga dla rowerów?"</string>
     <string name="quest_cycleway_title2">"Czy na tej ulicy jest droga dla rowerów?"</string>
+    <string name="quest_cycleway_title">"Czy na tej ulicy jest droga dla rowerów?"</string>
     <string name="quest_buildingType_title">"Jaki to rodzaj budynku?"</string>
     <string name="quest_serviceType_title">"Jaki to rodzaj drogi serwisowej?"</string>
     <string name="quest_streetLanes_title">"Ile wyznaczonych pasów jezdni ma ta ulica?"</string>
@@ -445,4 +446,8 @@ W przeciwnym wypadku możesz ściągnąć dodatkowe aplikacje klawiatury ze skle
     <string name="quest_housenumber_conscription_number_required">"Numer konskrypcyjny musi być podany"</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">"Znajduje się tu kontrapas"</string>
     <string name="need_specify_both_sides">"Musisz opisać obie strony"</string>
+    <string name="quest_streetName_answer_noName_question">"Dlaczego ten obiekt nie ma nazwy?"</string>
+    <string name="map_btn_create_note">"Utwórz nowe zgłoszenie o problemie"</string>
+    <string name="quest_surface_value_metal">"Metalowa"</string>
+    <string name="quest_surface_generic_surface_confirmation">"Czy jesteś pewien że nie można dokładniej określić nawierzchni?"</string>
 </resources>

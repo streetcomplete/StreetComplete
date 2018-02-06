@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.bike_parking_capacity;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 
 import java.util.Map;
 
@@ -36,7 +37,7 @@ public class AddBikeParkingCapacity extends SimpleOverpassQuestType
 
 	@Override public String getCommitMessage() { return "Add bicycle parking capacities"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_bicycle_parking; }
-	@Override public int getTitle(Map<String, String> tags)
+	@Override public int getTitle(@NonNull Map<String, String> tags)
 	{
 		return R.string.quest_bikeParkingCapacity_title;
 	}

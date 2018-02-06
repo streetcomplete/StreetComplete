@@ -176,6 +176,7 @@ Pro zobrazení mapy se stahují vektorové dlaždice z projektu &lt;a href=\"htt
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Kde je tato cesta?"</string>
     <string name="quest_cyclewaySurface_title">"Jaký povrch má tato cyklostezka?"</string>
     <string name="quest_cycleway_title2">"Je na této cestě cyklostezka?"</string>
+    <string name="quest_cycleway_title">"Je na této cestě cyklostezka?"</string>
     <string name="quest_buildingType_title">"Jakého druhu je tato stavba?"</string>
     <string name="quest_serviceType_title">"Jakého druhu je tato účelová komunikace?"</string>
     <string name="quest_streetLanes_title">"Kolik jízdních pruhů má tato cesta?"</string>
@@ -457,4 +458,24 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="need_specify_both_sides">"Musíte určit obě strany"</string>
     <string name="quest_openingHours_emptyAnswer">"Musíte opsat informace z cedulky s otevírací dobou. Pokud tu žádná není, měli byste se zeptat na otevírací hodiny uvnitř."</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"žádná, ale cyklisti můžou použít cestu v obou směrech"</string>
+    <string name="quest_streetName_answer_noName_question">"Proč nemá žádné jméno?"</string>
+    <string name="quest_streetName_answer_noProperStreet_service2">"Je to něco jako příjezdová cesta, nebo cesta na parkovišti."</string>
+    <string name="quest_streetName_answer_noProperStreet_track2">"Je to polní nebo lesní cesta"</string>
+    <string name="quest_streetName_answer_noName_noname">"Nic z výše uvedeného, prostě nemá jméno"</string>
+    <string name="quest_wheelchairAccess_toilets_title">"Mají tyto toalety přístup pro vozíčkáře?"</string>
+    <string name="quest_wheelchairAccess_toilets_name_title">"Mají toalety „%s“ přístup pro vozíčkáře?"</string>
+    <string name="quest_wheelchairAccess_description_toilets">"Pokud jsou toalety přístupné, můžete na nich vidět podobnou značku vozíčkáře.
+Částečně znamená, že se lze na toaletu dostat a používat ji i na kolečkovém křesle, ale nejsou na ní držáky, nebo upravené umývadlo."</string>
+    <string name="map_btn_create_note">"Vytvořit novou poznámku"</string>
+    <string name="create_new_note_unprecise">"Přibližte mapu pro vytvoření poznámky"</string>
+    <string name="create_new_note_description">"Můžete k tomuto místu napsat poznámku, aby ostatní uživatelé věděli o zdejším problému. Posunutím mapy upravte umístění poznámky."</string>
+
+    <!-- Could this be translated as "Clear Quest Cache"? -->
+    <string name="pref_title_quests_invalidation">"Zrušit platnost mezipaměti úkolů"</string>
+    <string name="pref_title_quests_invalidation_summary">"Užitečné, pokud si myslíte, že jsou některé úkoly zastaralé."</string>
+    <string name="invalidate_confirmation">"Zrušit platnost"</string>
+    <string name="invalidation_dialog_message">"Zrušením platnosti mezipaměti docílíte toho, že úkoly budou při jejich příštím stažení aktualizovány. Platnost mezipaměti úkolů je automaticky zrušena po uplynutí jednoho týdne a okamžitě zrušena, když vámi vyřešený úkol již vyřešil někdo jiný."</string>
+    <string name="quest_generic_looks_like_this">"Obvykle vypadá takhle:"</string>
+    <string name="quest_surface_value_metal">"Kov"</string>
+    <string name="quest_surface_generic_surface_confirmation">"Opravdu nemůžete určit materiál povrchu přesněji?"</string>
 </resources>
