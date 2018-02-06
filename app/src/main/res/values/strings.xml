@@ -478,4 +478,8 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_religion_caodaist">Caodaism</string>
     <string name="quest_religion_chinese_folk">Chinese folk religion</string>
     <string name="quest_religion_for_wayside_shrine_title">What religion is represented at this shrine?</string>
+    <string name="quest_parking_access_title">Who can use this parking?</string>
+    <string name="quest_parking_access_private">Private or business people</string>
+    <string name="quest_parking_access_yes">All citizens</string>
+    <string name="quest_parking_access_customers">Only customers</string>
 </resources>
