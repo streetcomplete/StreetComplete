@@ -50,7 +50,6 @@ quest_icons.svg
 	notes
 	parking
 	parking_maxstay
-	parking_fee					parts taken from EmojiOne 2: U+1F4B8
 	power
     fire_hydrant
 	pedestrian

@@ -5,6 +5,7 @@
 package de.westnordost.streetcomplete.quests.parking_fee;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 
 import java.util.Map;
 
@@ -21,7 +22,7 @@ public class AddParkingFee extends SimpleOverpassQuestType
 {
 	@Inject public AddParkingFee(OverpassMapDataDao overpassServer) { super(overpassServer); }
 
-	@Override protected String getTagFilters() { return "nodes, ways with amenity=parking and access!=private and !fee"; }
+	@Override protected String getTagFilters() { return "nodes, ways with amenity=parking and access ~ yes|customers|public and !fee"; }
 
 	public AbstractQuestAnswerFragment createForm() { return new YesNoQuestAnswerFragment(); }
 
@@ -32,6 +33,6 @@ public class AddParkingFee extends SimpleOverpassQuestType
 	}
 
 	@Override public String getCommitMessage() { return "Add whether there is a parking fee"; }
-	@Override public int getIcon() { return R.drawable.ic_quest_parking_fee; }
-	@Override public int getTitle(Map<String, String> tags) { return R.string.quest_parking_fee_title; }
+	@Override public int getIcon() { return R.drawable.ic_quest_parking; }
+	@Override public int getTitle(@NonNull Map<String, String> tags) { return R.string.quest_parking_fee_title; }
 }
