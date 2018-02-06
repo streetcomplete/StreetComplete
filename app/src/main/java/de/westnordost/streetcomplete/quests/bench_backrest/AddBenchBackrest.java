@@ -23,13 +23,14 @@ public class AddBenchBackrest extends SimpleOverpassQuestType
 
 	@Override protected String getTagFilters() { return "nodes with amenity=bench and !backrest"; }
 
-	public AbstractQuestAnswerFragment createForm() { return new BenchBackrestForm(); }
+	public AbstractQuestAnswerFragment createForm() { return new AddBenchBackrestForm(); }
 
 	public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
 	{
-		boolean isPicnicTable = answer.getBoolean(BenchBackrestForm.PICNIC_TABLE);
+		boolean isPicnicTable = answer.getBoolean(AddBenchBackrestForm.PICNIC_TABLE);
 
-		if (isPicnicTable) {
+		if (isPicnicTable)
+		{
 		    changes.add("leisure", "picnic_table");
 		    changes.delete("amenity");
 		} else {
@@ -39,6 +40,6 @@ public class AddBenchBackrest extends SimpleOverpassQuestType
 	}
 
 	@Override public String getCommitMessage() { return "Add backrest information to benches"; }
-	@Override public int getIcon() { return R.drawable.ic_quest_toilets; }
+	@Override public int getIcon() { return R.drawable.ic_quest_bench; }
 	@Override public int getTitle(Map<String, String> tags) { return R.string.quest_bench_backrest_title; }
 }

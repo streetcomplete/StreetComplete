@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment;
 
-public class BenchBackrestForm extends YesNoQuestAnswerFragment {
+public class AddBenchBackrestForm extends YesNoQuestAnswerFragment {
     public static final String PICNIC_TABLE = "picnic_table";
 
     @Override
@@ -21,7 +21,7 @@ public class BenchBackrestForm extends YesNoQuestAnswerFragment {
 
     private void addOtherAnswers()
     {
-        addOtherAnswer(R.string.this_is_a_picnic_table, () -> {
+        addOtherAnswer(R.string.quest_bench_answer_picnic_table, () -> {
             Bundle answer = new Bundle();
             answer.putBoolean(PICNIC_TABLE, true);
             applyImmediateAnswer(answer);
