@@ -72,7 +72,7 @@
 
     <!-- Fuzzy -->
     <string name="about_title_authors">"Autoriai"</string>
-    <string name="about_summary_authors">"© 2016–2017 Tobias Zwick ir talkininkai"</string>
+    <string name="about_summary_authors">"© 2016–2018 Tobias Zwick ir talkininkai"</string>
     <string name="about_title_repository">"Išeities kodo repozitorija"</string>
     <string name="about_summary_repository">"GitHub'e"</string>
     <string name="about_title_report_error">"Pranešti apie klaidą"</string>
@@ -171,6 +171,7 @@ Bet, prieš įkeliant jūsų pakeitimus, aplikacija patikrina &lt;a href=\"http:
     <string name="quest_maxspeed_answer_noSign">"Nėra ženklo"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Kur yra ši gatvė?"</string>
     <string name="quest_cyclewaySurface_title">"Kokia yra šio dviračių tako danga?"</string>
+    <string name="quest_cycleway_title2">"Ar šioje gatvėje yra dviračių takas?"</string>
     <string name="quest_cycleway_title">"Ar šioje gatvėje yra dviračių takas?"</string>
     <string name="quest_buildingType_title">"Kokio tipo šis pastatas?"</string>
     <string name="quest_serviceType_title">"Kokio tipo tai privažiavimas?"</string>

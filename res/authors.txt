@@ -49,14 +49,16 @@ quest_icons.svg
 	money						modified from EmojiOne 2: U+1F4B8
 	notes
 	parking
+	parking_access					parts taken from EmojiOne 2: U+1F511
+	parking_fee					parts taken from EmojiOne 2: U+1F4B8
 	parking_maxstay
 	power
-    fire_hydrant
+    	fire_hydrant
 	pedestrian
 	pedestrian_crossing
 	phone
 	restaurant					modified from Twemoji 2: U+1F37D
-	restaurant_veg				parts taken from Twemoji 2: U+1F37D and U+1F955
+	restaurant_veg					parts taken from Twemoji 2: U+1F37D and U+1F955
 	oneway
 	quest
 	railway
@@ -78,6 +80,21 @@ quest_icons.svg
 	wifi
 	wheelchair
 	wheelchair_shop
+	
+religion_icons.svg
+	hindu						https://commons.wikimedia.org/wiki/File:Om_symbol.svg
+	jain						https://commons.wikimedia.org/wiki/File:Ahimsa.svg
+	sikh						https://en.wikipedia.org/wiki/File:Khanda.svg
+	buddhist
+	christian
+	jewish						https://commons.wikimedia.org/wiki/File:Star_of_David.svg
+	muslim						https://commons.wikimedia.org/wiki/File:Star_and_Crescent.svg
+	bahai						https://commons.wikimedia.org/wiki/File:Bahai_star.svg
+	confucian
+	shinto						https://commons.wikimedia.org/wiki/File:Shinto_torii_vermillion.svg
+	taoism						
+	chinese						https://commons.wikimedia.org/wiki/File:Chinese_lu_symbol_-_%E7%A6%84.svg
+	caodai
 	
 slow_zone.svg
 

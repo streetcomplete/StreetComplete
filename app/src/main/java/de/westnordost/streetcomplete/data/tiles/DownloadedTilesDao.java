@@ -70,6 +70,12 @@ public class DownloadedTilesDao
 				DownloadedTilesTable.Columns.Y + " = ?", whereArgs);
 	}
 
+	public void removeAll()
+	{
+		SQLiteDatabase db = dbHelper.getWritableDatabase();
+		db.execSQL("DELETE FROM " + DownloadedTilesTable.NAME);
+	}
+
 	/** @return a list of quest type names which have already been downloaded in every tile in the
 	 *          given tile range */
 	public List<String> get(Rect tiles, long ignoreOlderThan)

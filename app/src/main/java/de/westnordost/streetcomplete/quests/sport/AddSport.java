@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.sport;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
 import java.util.ArrayList;
@@ -30,7 +31,8 @@ public class AddSport extends SimpleOverpassQuestType
 	protected String getTagFilters()
 	{
 		return "nodes, ways with leisure=pitch and" +
-				" (!sport or sport ~ " + TextUtils.join("|", AMBIGUOUS_SPORT_VALUES)+ ")";
+				" (!sport or sport ~ " + TextUtils.join("|", AMBIGUOUS_SPORT_VALUES)+ ")" +
+				" and (access !~ private|no)"; // exclude ones without access to general public
 	}
 
 	public AbstractQuestAnswerFragment createForm()
@@ -63,7 +65,7 @@ public class AddSport extends SimpleOverpassQuestType
 
 	@Override public String getCommitMessage() { return "Add pitches sport"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_sport; }
-	@Override public int getTitle(Map<String,String> tags)
+	@Override public int getTitle(@NonNull Map<String,String> tags)
 	{
 		return R.string.quest_sport_title;
 	}

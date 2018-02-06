@@ -70,7 +70,7 @@
     <string name="action_about">"Acerca do StreetComplete"</string>
     <string name="about_title_version">"Versão"</string>
     <string name="about_title_authors">"Créditos"</string>
-    <string name="about_summary_authors">"© 2016–2017 Tobias Zwick e contribuidores"</string>
+    <string name="about_summary_authors">"© 2016–2018 Tobias Zwick e contribuidores"</string>
     <string name="about_title_repository">"Fonte do repositório"</string>
     <string name="about_summary_repository">"no GitHub"</string>
     <string name="about_title_report_error">"Reportar erro"</string>
@@ -169,6 +169,7 @@ Para a representação do mapa, é utilizado o mosaico de mapas vectoriais&lt;a 
     <string name="quest_maxspeed_answer_noSign">"Não existe sinalização"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Onde fica esta rua?"</string>
     <string name="quest_cyclewaySurface_title">"Qual o tipo de pavimento que esta ciclovia possui?"</string>
+    <string name="quest_cycleway_title2">"Existe uma ciclovia nesta rua?"</string>
     <string name="quest_cycleway_title">"Existe uma ciclovia nesta rua?"</string>
     <string name="quest_buildingType_title">"Que tipo de edifício é este?"</string>
     <string name="quest_serviceType_title">"Que tipo de estrada de serviço é esta?"</string>
@@ -240,8 +241,6 @@ A informação que submeter nesta app é adicionada diretamente ao OpenStreetMap
     <string name="quest_busStopShelter_name_title">"A paragem de autocarro %s tem abrigo?"</string>
     <string name="quest_toiletsFee_title">"Esta casa de banho é de acesso pago?"</string>
     <string name="quest_tactilePaving_title_bus">"Esta paragem de autocarro tem pavimento tátil?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"Esta passadeira tem pavimento tátil?"</string>
     <string name="quest_source_dialog_title">"Tem a certeza que verificou isto no local?"</string>
     <string name="quest_tactilePaving_title_name_bus">"A paragem de autocarro %s tem pavimento tátil?"</string>
@@ -358,12 +357,8 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="produce_vanilla">"Baunilha"</string>
     <string name="produce_walnuts">"Nozes"</string>
     <string name="produce_sisal">"Sisal"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_way_lit_title">"Este troço de caminho tem iluminação?"</string>
     <string name="quest_way_lit_named_title">"%s tem iluminação aqui?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_way_lit_road_title">"Este troço de estrada tem iluminação?"</string>
     <string name="quest_way_lit_named_road_title">"A estrada %s tem iluminação aqui?"</string>
     <string name="quest_way_lit_automatic">"Utiliza detetor de movimento"</string>

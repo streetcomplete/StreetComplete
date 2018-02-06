@@ -35,7 +35,6 @@ public class NoteImageAdapter extends ListAdapter<String>
 	private class NoteImageViewHolder extends ViewHolder<String>
 	{
 		private ImageView imageView;
-		private View deleteButton;
 
 		public NoteImageViewHolder(View itemView)
 		{
@@ -46,7 +45,6 @@ public class NoteImageAdapter extends ListAdapter<String>
 				int index = getAdapterPosition();
 				if(index > -1) onClickDelete(index);
 			});
-			deleteButton = itemView.findViewById(R.id.deleteButton);
 		}
 
 		@Override protected void onBind(final String imagePath)
@@ -82,10 +80,13 @@ public class NoteImageAdapter extends ListAdapter<String>
 	{
 		String imagePath = getList().remove(index);
 
-		File image = new File(imagePath);
-		if(image.exists())
+		if(imagePath != null)
 		{
-			image.delete();
+			File image = new File(imagePath);
+			if (image.exists())
+			{
+				image.delete();
+			}
 		}
 		notifyItemRemoved(index);
 	}

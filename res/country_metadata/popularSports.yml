@@ -1,5 +1,5 @@
 # sports that should be shown first before the order defined in the form.
-# no total order required. Just mention the sports that should show within the firs few entries
+# no total order required. Just mention the sports that should show within the first few entries
 default: []
 AE: [tennis, golf]
 AR: [soccer, tennis, basketball, paddle_tennis, field_hockey, rugby]

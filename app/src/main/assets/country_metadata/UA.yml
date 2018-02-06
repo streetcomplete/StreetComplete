@@ -7,3 +7,4 @@ livingStreetSign: ic_living_street_russian
 officialLanguages: [uk, ru]
 orchardProduces: [apple, tomatoe, grape, plum, chilli_pepper, sweet_pepper, walnut, pear, cherry, apricot,
   strawberry, raspberry, peach, hop, cranberry, blueberry]
+popularReligions: [christian, muslim, jewish]

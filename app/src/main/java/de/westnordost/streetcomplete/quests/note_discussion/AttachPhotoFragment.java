@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.FileProvider;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -21,17 +22,13 @@ import android.widget.Toast;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Locale;
 
 import de.westnordost.streetcomplete.ApplicationConstants;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.osmnotes.AttachPhotoUtils;
 
 import static android.app.Activity.RESULT_OK;
-import static android.support.v4.content.FileProvider.getUriForFile;
 
 public class AttachPhotoFragment extends Fragment
 {
@@ -98,7 +95,7 @@ public class AttachPhotoFragment extends Fragment
 				if (Build.VERSION.SDK_INT > 21)
 				{
 					//Use FileProvider for getting the content:// URI, see: https://developer.android.com/training/camera/photobasics.html#TaskPath
-					photoUri = getUriForFile(getActivity(), getString(R.string.fileprovider_authority), photoFile);
+					photoUri = FileProvider.getUriForFile(getActivity(), getString(R.string.fileprovider_authority), photoFile);
 				}
 				else
 				{
@@ -108,7 +105,7 @@ public class AttachPhotoFragment extends Fragment
 				takePhotoIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri);
 				startActivityForResult(takePhotoIntent, REQUEST_TAKE_PHOTO);
 			}
-			catch (IOException e)
+			catch (IOException | IllegalArgumentException e)
 			{
 				Log.e(TAG, "Unable to create file for photo", e);
 				Toast.makeText(getContext(), R.string.quest_leave_new_note_create_image_error, Toast.LENGTH_SHORT).show();
@@ -150,19 +147,20 @@ public class AttachPhotoFragment extends Fragment
 
 	private void removeCurrentImage()
 	{
-		File photoFile = new File(currentImagePath);
-		if (photoFile.exists())
+		if(currentImagePath != null)
 		{
-			photoFile.delete();
+			File photoFile = new File(currentImagePath);
+			if (photoFile.exists())
+			{
+				photoFile.delete();
+			}
 		}
 	}
 
 	private File createImageFile() throws IOException
 	{
-		String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.US).format(new Date());
-		String imageFileName = "photo_" + timeStamp + "_";
 		File directory = getActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-		return File.createTempFile(imageFileName, ".jpg", directory);
+		return File.createTempFile("photo", ".jpg", directory);
 	}
 
 	public ArrayList<String> getImagePaths()

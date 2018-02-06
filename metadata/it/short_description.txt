@@ -1,1 +1,1 @@
-app di indagine dati OpenStreetMap
+app di raccolta dati per OpenStreetMap

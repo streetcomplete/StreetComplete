@@ -6,11 +6,9 @@
           android:icon="@drawable/ic_undo_white_24dp" android:orderInCategory="1" app:showAsAction="ifRoom" />
     <item android:id="@+id/action_download" android:title="@string/action_download"
           android:orderInCategory="2" app:showAsAction="never" />
-    <item android:id="@+id/action_upload" android:title="@string/action_upload"
-          android:orderInCategory="3" app:showAsAction="never" />
     <item android:id="@+id/action_settings" android:title="@string/action_settings"
-          android:orderInCategory="4" app:showAsAction="never" />
+          android:orderInCategory="3" app:showAsAction="never" />
     <item android:id="@+id/action_about" android:title="@string/action_about"
-          android:orderInCategory="5" app:showAsAction="never" />
+          android:orderInCategory="4" app:showAsAction="never" />
 
 </menu>

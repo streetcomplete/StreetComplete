@@ -4,3 +4,4 @@ isLivingStreetKnown: true
 livingStreetSign: ic_living_street_sadc
 officialLanguages: [en, fr, mfe]
 orchardProduces: [tomatoe, tea, pineapple, coconut, banana, chilli_pepper, sweet_pepper]
+popularReligions: [hindu, christian, muslim]

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/marker_layout_create_note"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/quest_form_topOffset"
+        android:paddingBottom="@dimen/quest_form_bottomOffset"
+        android:paddingLeft="@dimen/quest_form_leftOffset"
+        android:paddingRight="@dimen/quest_form_rightOffset"
+        android:layout_centerInParent="true"
+        tools:ignore="RtlHardcoded,RtlSymmetry">
+
+        <RelativeLayout
+            android:id="@+id/marker_create_note"
+            android:layout_width="wrap_content"
+            android:layout_height="128dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="16dp"
+                android:src="@drawable/quest_pin"
+                android:layout_gravity="right"
+                tools:ignore="RtlSymmetry"/>
+
+            <ImageView
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="19dp"
+                android:src="@drawable/ic_quest_create_note" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

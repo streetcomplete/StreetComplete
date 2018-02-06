@@ -1,0 +1,67 @@
+global:
+    language: false
+    text_font_family: 'Montserrat'
+    text_stroke_color: 'white'
+    text_stroke: { color: global.text_stroke_color, width: 2.5px }
+    text_places_stroke: { color: global.text_stroke_color, width: 2.5px }
+    text_fill_color: '#124'
+    text_size: 12px
+
+    railway_color: '#99a'
+    road_color: '#fff'
+    road_outline_color: '#cc9999'
+    path_color: global.road_color
+    path_outline_color: '#e0c9b3'
+
+    earth_color: '#f3eacc'
+    water_color: '#68d'
+    landuse_color: '#c6ddaa'
+
+    building_color: rgb(204,214,238)
+    building_outline_color: rgb(185,195,217)
+
+    boundary_color: '#e66'
+
+    name_source: |
+        function() {
+            // Use preferred language label if available
+            return (global.language && feature['name:'+global.language]) || feature.name;
+        }
+
+    suggested_min_zoom: |
+        function() {
+            return feature.min_zoom <= $zoom
+        }
+
+    sort_rank: function() { return feature.sort_rank; }
+
+scene:
+    animated: true
+    background:
+        color: global.earth_color
+
+camera:
+    type: perspective
+    fov: 80
+
+lights:
+    cameralight:
+        type: point
+        diffuse: 0.3
+        origin: camera
+        ambient: 0.7
+
+sources:
+    mapzen:
+        type: MVT
+        url: https://tiles.map-data.de/vector/v1/all/{z}/{x}/{y}.mvt
+        tile_size: 512
+
+fonts:
+    Montserrat:
+        - weight: normal
+          url: fonts/Montserrat-Regular.woff
+        - weight: 500
+          url: fonts/Montserrat-Medium.woff
+        - weight: 700
+          url: fonts/Montserrat-Bold.woff

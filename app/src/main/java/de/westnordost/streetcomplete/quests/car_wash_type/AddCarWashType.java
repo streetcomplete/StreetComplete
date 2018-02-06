@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.car_wash_type;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 
 import java.util.List;
 import java.util.Map;
@@ -52,7 +53,7 @@ public class AddCarWashType extends SimpleOverpassQuestType
 
 	@Override public int getIcon() { return R.drawable.ic_quest_car_wash; }
 
-	@Override public int getTitle(Map<String, String> tags)
+	@Override public int getTitle(@NonNull Map<String, String> tags)
 	{
 		return R.string.quest_carWashType_title;
 	}

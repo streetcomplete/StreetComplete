@@ -1,23 +1,17 @@
 package de.westnordost.streetcomplete.quests;
 
+import android.support.annotation.AnyThread;
 import android.support.v4.app.DialogFragment;
-import android.support.v4.app.Fragment;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.os.Handler;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.annotation.UiThread;
-import android.support.design.widget.BottomSheetBehavior;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
@@ -41,10 +35,9 @@ import de.westnordost.streetcomplete.data.meta.CountryInfo;
 import de.westnordost.streetcomplete.data.meta.CountryInfos;
 import de.westnordost.streetcomplete.data.osm.ElementGeometry;
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
-import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 
 /** Abstract base class for any dialog with which the user answers a specific quest(ion) */
-public abstract class AbstractQuestAnswerFragment extends Fragment
+public abstract class AbstractQuestAnswerFragment extends AbstractBottomSheetFragment
 {
 	public static final String
 			ARG_ELEMENT = "element",
@@ -58,14 +51,10 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 
 	private ViewGroup content;
 
-	private LinearLayout bottomSheet;
-
 	private QuestAnswerComponent questAnswerComponent;
 
 	private LinearLayout buttonPanel;
 	protected Button buttonOtherAnswers;
-
-	private ImageButton buttonClose;
 
 	private OsmElement osmElement;
 	private ElementGeometry elementGeometry;
@@ -97,34 +86,11 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 
 		View view = inflater.inflate(R.layout.fragment_quest_answer, container, false);
 
-		bottomSheet = view.findViewById(R.id.bottomSheet);
-		bottomSheet.addOnLayoutChangeListener((v, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom) ->
-		{
-			// not immediately because this is called during layout change (view.getTop() == 0)
-			final Handler handler = new Handler();
-			handler.post(this::updateCloseButtonVisibility);
-		});
-
 		TextView title = view.findViewById(R.id.title);
 		title.setText(getResources().getString(getQuestTitleResId(), getElementName()));
 
 		buttonPanel = view.findViewById(R.id.buttonPanel);
 		buttonOtherAnswers = buttonPanel.findViewById(R.id.buttonOtherAnswers);
-
-		buttonClose = view.findViewById(R.id.close_btn);
-		buttonClose.setOnClickListener(v -> getActivity().onBackPressed());
-
-		BottomSheetBehavior.from(bottomSheet).setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback()
-		{
-			@Override public void onStateChanged(@NonNull View bottomSheet, int newState) { }
-
-			@Override public void onSlide(@NonNull View bottomSheet, float slideOffset)
-			{
-				updateCloseButtonVisibility();
-			}
-		});
-
-		if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) BottomSheetBehavior.from(bottomSheet).setState(BottomSheetBehavior.STATE_EXPANDED);
 
 		addOtherAnswer(R.string.quest_generic_answer_notApplicable, this::onClickCantSay);
 
@@ -167,17 +133,6 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 		onMapOrientation(initialMapRotation, initialMapTilt);
 	}
 
-	private void updateCloseButtonVisibility()
-	{
-		// this is called asynchronously. It may happen that the activity is already gone when this
-		// method is finally called
-		if(getActivity() == null) return;
-
-		int toolbarHeight = getActivity().findViewById(R.id.toolbar).getHeight();
-		boolean coversToolbar = bottomSheet.getTop() < toolbarHeight;
-		buttonClose.setVisibility(coversToolbar ? View.VISIBLE : View.GONE);
-	}
-
 	@Override public void onCreate(Bundle inState)
 	{
 		super.onCreate(inState);
@@ -213,32 +168,6 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 		return localizedContext.getResources();
 	}
 
-	/** Request to close the form through user interaction (back button, clicked other quest,..),
-	 *  requires user confirmation if any changes have been made */
-	@UiThread public void onClickClose(final Runnable confirmed)
-	{
-		if (!hasChanges())
-		{
-			onDiscard();
-			confirmed.run();
-		}
-		else
-		{
-			DialogInterface.OnClickListener onYes = (dialog, which) ->
-			{
-				onDiscard();
-				confirmed.run();
-			};
-			new AlertDialogBuilder(getActivity())
-					.setMessage(R.string.confirmation_discard_title)
-					.setPositiveButton(R.string.confirmation_discard_positive, onYes)
-					.setNegativeButton(R.string.confirmation_discard_negative, null)
-					.show();
-		}
-	}
-
-	protected void onDiscard() {}
-
 	protected final void applyImmediateAnswer(Bundle data)
 	{
 		questAnswerComponent.onAnswerQuest(data);
@@ -249,7 +178,7 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 		questAnswerComponent.onSkippedQuest();
 	}
 
-	private int getQuestTitleResId()
+	protected int getQuestTitleResId()
 	{
 		if(questType instanceof OsmElementQuestType)
 		{
@@ -317,7 +246,7 @@ public abstract class AbstractQuestAnswerFragment extends Fragment
 		otherAnswers.add(oa);
 	}
 
-	public void onMapOrientation(float rotation, float tilt)
+	@AnyThread public void onMapOrientation(float rotation, float tilt)
 	{
 		// default empty implementation
 	}

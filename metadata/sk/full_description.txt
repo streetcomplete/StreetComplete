@@ -1,0 +1,5 @@
+Pomôžte zlepšiť OpenStreetMap pomocou StreetComplete!
+
+Táto aplikácia nájde neúplné a rozšíriteľné údaje vo vašom okolí a zobrazí ich na mape ako značky. Každý z nich je riešiteľný odpovedaním na jednoduchú otázku a doplniť tak informácie na mieste.
+
+Zadané informácie sa potom priamo pridávajú do OpenStreetMap vo vašom mene bez potreby použitia iného editora.

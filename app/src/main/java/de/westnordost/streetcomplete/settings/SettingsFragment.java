@@ -15,9 +15,11 @@ import de.westnordost.streetcomplete.FragmentContainerActivity;
 import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.IntentListener;
 import de.westnordost.streetcomplete.Prefs;
+import de.westnordost.streetcomplete.data.tiles.DownloadedTilesDao;
 import de.westnordost.streetcomplete.oauth.OAuthPrefs;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.oauth.OsmOAuthDialogFragment;
+import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 
 public class SettingsFragment extends PreferenceFragmentCompat
 		implements SharedPreferences.OnSharedPreferenceChangeListener, IntentListener
@@ -27,6 +29,7 @@ public class SettingsFragment extends PreferenceFragmentCompat
 	@Inject SharedPreferences prefs;
 	@Inject OAuthPrefs oAuth;
 	@Inject Provider<ApplyNoteVisibilityChangedTask> applyNoteVisibilityChangedTask;
+	@Inject DownloadedTilesDao downloadedTilesDao;
 
 	@Override public void onCreatePreferences(Bundle savedInstanceState, String rootKey)
 	{
@@ -45,6 +48,21 @@ public class SettingsFragment extends PreferenceFragmentCompat
 		quests.setOnPreferenceClickListener(preference ->
 		{
 			getFragmentActivity().setCurrentFragment(new QuestSelectionFragment());
+			return true;
+		});
+
+		Preference questsInvalidation = getPreferenceScreen().findPreference("quests.invalidation");
+		questsInvalidation.setOnPreferenceClickListener(preference ->
+		{
+			new AlertDialogBuilder(getContext())
+					.setMessage(R.string.invalidation_dialog_message)
+					.setPositiveButton(R.string.invalidate_confirmation, (dialog, which) -> {
+						downloadedTilesDao.removeAll();
+					})
+					.setNegativeButton(android.R.string.cancel, null)
+					.create()
+					.show();
+
 			return true;
 		});
 	}

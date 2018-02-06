@@ -19,24 +19,25 @@ public class GroupedImageSelectAdapter extends RecyclerView.Adapter<GroupedImage
 	private final static int GROUP = 0;
 	private final static int CELL = 1;
 
-	private final ArrayList<Item> data;
+	private ArrayList<Item> items = new ArrayList<>();
 	private Item selectedItem;
 
-	public GroupedImageSelectAdapter(List<Item> data)
+	public GroupedImageSelectAdapter(GridLayoutManager gridLayoutManager)
 	{
-		this.data = new ArrayList<>(data);
-	}
-
-	@Override public void onAttachedToRecyclerView(RecyclerView recyclerView)
-	{
-		GridLayoutManager glm = new GridLayoutManager(recyclerView.getContext(), 3);
-		glm.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
-			@Override
-			public int getSpanSize(int position) {
-				return data.get(position).isGroup() ? 3 : 1;
+		gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup()
+		{
+			@Override public int getSpanSize(int position)
+			{
+				return items.get(position).isGroup() ? 3 : 1;
 			}
 		});
-		recyclerView.setLayoutManager(glm);
+	}
+
+	public void setItems(List<Item> items)
+	{
+		this.items = new ArrayList<>(items);
+		selectedItem = null;
+		notifyDataSetChanged();
 	}
 
 	@Override public GroupedImageSelectAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
@@ -49,8 +50,8 @@ public class GroupedImageSelectAdapter extends RecyclerView.Adapter<GroupedImage
 
 	@Override public void onBindViewHolder(final GroupedImageSelectAdapter.ViewHolder viewHolder, final int position)
 	{
-		Item item = data.get(position);
-		final boolean isSelected = selectedItem != null && data.indexOf(selectedItem) == position;
+		Item item = items.get(position);
+		final boolean isSelected = selectedItem != null && items.indexOf(selectedItem) == position;
 
 		viewHolder.imageView.setImageResource(item.drawableId);
 		viewHolder.textView.setText(item.titleId);
@@ -65,21 +66,21 @@ public class GroupedImageSelectAdapter extends RecyclerView.Adapter<GroupedImage
 	private void onSelect(int index)
 	{
 		Item prevSelectedItem = selectedItem;
-		if(selectedItem == null || prevSelectedItem != data.get(index))
+		if(selectedItem == null || prevSelectedItem != items.get(index))
 		{
-			selectedItem = data.get(index);
+			selectedItem = items.get(index);
 		} else {
 			selectedItem = null;
 		}
 
 		if(selectedItem != null)
 		{
-			int selectedIndex = data.indexOf(selectedItem);
+			int selectedIndex = items.indexOf(selectedItem);
 			notifyItemChanged(selectedIndex);
 
 			if(selectedItem.isGroup())
 			{
-				if(prevSelectedItem == null || getGroup(data.indexOf(prevSelectedItem)) != selectedIndex )
+				if(prevSelectedItem == null || getGroup(items.indexOf(prevSelectedItem)) != selectedIndex )
 				{
 					expandGroup(selectedIndex);
 				}
@@ -87,13 +88,16 @@ public class GroupedImageSelectAdapter extends RecyclerView.Adapter<GroupedImage
 		}
 		if(prevSelectedItem != null)
 		{
-			int prevSelectedIndex = data.indexOf(prevSelectedItem);
+			int prevSelectedIndex = items.indexOf(prevSelectedItem);
 			notifyItemChanged(prevSelectedIndex);
 
 			int previousGroupIndex = getGroup(prevSelectedIndex);
-			if(selectedItem == null || previousGroupIndex != getGroup(data.indexOf(selectedItem)))
+			if(previousGroupIndex != -1)
 			{
-				retractGroup(previousGroupIndex);
+				if (selectedItem == null || previousGroupIndex != getGroup(items.indexOf(selectedItem)))
+				{
+					retractGroup(previousGroupIndex);
+				}
 			}
 		}
 	}
@@ -102,37 +106,37 @@ public class GroupedImageSelectAdapter extends RecyclerView.Adapter<GroupedImage
 	{
 		for (int i = index; i >= 0; i--)
 		{
-			if (data.get(i).isGroup()) return i;
+			if (items.get(i).isGroup()) return i;
 		}
 		return -1;
 	}
 
 	private void expandGroup(int index)
 	{
-		Item item = data.get(index);
+		Item item = items.get(index);
 		for (int i = 0; i < item.items.length; i++) {
-			data.add(index + i + 1, item.items[i]);
+			items.add(index + i + 1, item.items[i]);
 		}
 		notifyItemRangeInserted(index + 1, item.items.length);
 	}
 
 	private void retractGroup(int index)
 	{
-		Item item = data.get(index);
+		Item item = items.get(index);
 		for (int i = 0; i < item.items.length; i++) {
-			data.remove(index + 1);
+			items.remove(index + 1);
 		}
 		notifyItemRangeRemoved(index + 1, item.items.length);
 	}
 
 	@Override public int getItemCount()
 	{
-		return data.size();
+		return items.size();
 	}
 
 	@Override public int getItemViewType(int position)
 	{
-		return data.get(position).isGroup() ? GROUP : CELL;
+		return items.get(position).isGroup() ? GROUP : CELL;
 	}
 
 	public class ViewHolder extends RecyclerView.ViewHolder
@@ -151,26 +155,5 @@ public class GroupedImageSelectAdapter extends RecyclerView.Adapter<GroupedImage
 				if(index != RecyclerView.NO_POSITION) onSelect(getAdapterPosition());
 			});
 		}
-	}
-
-	public static class Item
-	{
-		public final int titleId;
-		public final int drawableId;
-		private final Item[] items;
-
-		public Item(int drawableId, int titleId)
-		{
-			this(drawableId, titleId, null);
-		}
-
-		public Item(int drawableId, int titleId, Item[] items)
-		{
-			this.items = items;
-			this.titleId = titleId;
-			this.drawableId = drawableId;
-		}
-
-		private boolean isGroup() { return items != null; }
 	}
 }

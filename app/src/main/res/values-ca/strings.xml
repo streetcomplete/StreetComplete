@@ -72,7 +72,7 @@
 
     <!-- Fuzzy -->
     <string name="about_title_authors">"Autors"</string>
-    <string name="about_summary_authors">"© 2016–2017 Tobias Zwick i col·laboradors"</string>
+    <string name="about_summary_authors">"© 2016–2018 Tobias Zwick i col·laboradors"</string>
     <string name="about_title_repository">"Dipòsit font"</string>
     <string name="about_summary_repository">"a GitHub"</string>
     <string name="about_title_report_error">"Informa d'un error"</string>
@@ -171,6 +171,7 @@ Per a visualitzar el mapa, es recuperen tessel·les vectorials del servei &lt;a 
     <string name="quest_maxspeed_answer_noSign">"No hi ha cap senyal"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"On és aquest carrer?"</string>
     <string name="quest_cyclewaySurface_title">"Quina superfície té el carril bici aquí?"</string>
+    <string name="quest_cycleway_title2">"Hi ha carril bici en aquest carrer?"</string>
     <string name="quest_cycleway_title">"Hi ha carril bici en aquest carrer?"</string>
     <string name="quest_buildingType_title">"Quin tipus d'edifici és?"</string>
     <string name="quest_serviceType_title">"Quin tipus de via de servei?"</string>
@@ -254,7 +255,8 @@ Aleshores, la informació que introdueixes s'afegeix directament a l'OpenStreetM
     <string name="quest_maxspeed_title_short">"Quin límit de velocitat té aquesta via?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Aquest límit no sembla versemblant."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Esteu segur que no hi ha indicat cap límit?"</string>
-    <string name="quest_maxspeed_answer_noSign_confirmation">"Heu comprovat els caps del carrer? Si no hi ha cap senyal, s'hi aplicaran els límits predeterminats."</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation">"Heu comprovat els caps del carrer?
+Si no hi ha cap senya en tot el carrer que s'apliqui en l'àrea realçada, s'apliquen els límits de velocitat predeterminat."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Sí, no hi ha cap senyal."</string>
     <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Les vies urbanes tenen límits de velocitat diferents que els vies rurals."</string>
     <string name="quest_maxspeed_answer_noSign_urbanOk">"Dins el nucli urbà"</string>
@@ -394,8 +396,8 @@ En cas contrari, podeu baixar un altre teclat a la botiga d'aplicacions. Els tec
     <string name="quest_maxspeed_answer_advisory_speed_limit">"Límit de velocitat aconsellable"</string>
     <string name="quest_address_answer_house_name">"Cap número de casa però un nom"</string>
     <string name="quest_address_house_name_label">"Nom de la casa"</string>
-    <string name="quest_buildingLevels_roofLevelsLabel2">"nivell fins al sostre"</string>
-    <string name="quest_buildingLevels_levelsLabel2">"nivells regulars (sense comptar el sostre)"</string>
+    <string name="quest_buildingLevels_roofLevelsLabel2">"nivell en la teulada"</string>
+    <string name="quest_buildingLevels_levelsLabel2">"nivells normals (sense comptar la teulada)"</string>
     <string name="pref_title_authorized_summary">"Autoritzat"</string>
     <string name="quest_buildingLevels_answer_multipleLevels">"És diferent a vàries parts de l'edifici"</string>
     <string name="quest_buildingLevels_answer_description">"En aquest cas, senzillament entreu els valors de la part d'edifici més alta."</string>
@@ -441,4 +443,6 @@ En cas contrari, podeu baixar un altre teclat a la botiga d'aplicacions. Els tec
     <string name="quest_housenumber_conscription_number_required">"S'ha d'especificar un número de circumscripció"</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">"També el carril bici en un altre costat"</string>
     <string name="need_specify_both_sides">"Cal especificar els dos costats"</string>
+    <string name="quest_openingHours_emptyAnswer">"Cal que descriviu què hi ha al cartell. Si no hi ha cap cartell, hauríeu de demanar l'horari d'obertura en l'interior."</string>
+    <string name="quest_cycleway_value_none_but_no_oneway">"cap,  però els ciclistes poden usar la via en ambdues direccions"</string>
 </resources>

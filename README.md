@@ -1,4 +1,4 @@
-![StreetComplete](metadata/en/images/featureGraphic.png)
+![StreetComplete](http://www.westnordost.de/streetcomplete/featureGraphic.png)
 
 An Android app which finds wrong, incomplete or extendable data in the user's vicinity and provides the tools to complete these easily and directly on site without having to use another editor.
 
@@ -13,12 +13,12 @@ The app is aimed at users who do not know anything about OSM tagging schemes but
 contribute to the OpenStreetMap by surveying their neighbourhood (or other places as well). Because of the target group, only those quests are shown which are answerable very clearly by asking one simple question and only those quests are created which contain very few false positives.
 
 ## Screenshots
-<img src="metadata/en/images/phoneScreenshots/screenshot1.png" width="170"/> <img src="metadata/en/images/phoneScreenshots/screenshot2.png" width="170"/> <img src="metadata/en/images/phoneScreenshots/screenshot3.png" width="170"/> <img src="metadata/en/images/phoneScreenshots/screenshot4.png" width="170"/> <img src="metadata/en/images/phoneScreenshots/screenshot5.png" width="170"/>
+<img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot1.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot2.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot3.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot4.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot5.png" width="170"/>
 
 ## Download
 
 [<img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" alt="Get it on Google Play" height="80">](https://play.google.com/store/apps/details?id=de.westnordost.streetcomplete)[<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid"
-      height="80"><br/>](https://f-droid.org/repository/browse/?fdid=de.westnordost.streetcomplete)
+      height="80"><br/>](https://f-droid.org/packages/de.westnordost.streetcomplete/)
 You can also simply download the APK from the [Releases](https://github.com/westnordost/StreetComplete/releases) section of this GitHub page.
 
 ## Quests
@@ -26,9 +26,13 @@ You can also simply download the APK from the [Releases](https://github.com/west
 Right now, there are very few different question types. More will be added over time.
 You can see a community-managed [list of all quests in the OSM wiki](https://wiki.openstreetmap.org/wiki/StreetComplete/Quests).
 
+## FAQ
+
+You can find a list of [frequently asked questions in the wiki](https://wiki.openstreetmap.org/wiki/StreetComplete/FAQ).
+
 ## Contributing
 
-You can help translate this app over here: 
+You can help translate this app over here:
 
 [<img src="https://poeditor.com/public/images/logo_small.png" alt="POEditor">](https://poeditor.com/join/project/IE4GC127Ki)
 
@@ -39,6 +43,8 @@ I have a few tasks in mind that would be very helpful for the project, some of w
 
 Otherwise, there are many reasonable feature requests and ideas for new question types in the issue tracker which you could also engage yourself with.
 If you have own ideas how to improve this app and want to make sure that I will merge your Pull Request, I suggest you open an issue first in which the feature can be discussed.
+
+You can help with [processing OSM notes opened by StreetComplete users](https://ent8r.github.io/NotesReview/?query=StreetComplete&limit=100&start=true). With this tool, you can also find systematic problems or misunderstandings introduced through (users of) StreetComplete and report them back here.
 
 Finally, using it, testing it and giving constructive feedback is also a valuable contribution.
 

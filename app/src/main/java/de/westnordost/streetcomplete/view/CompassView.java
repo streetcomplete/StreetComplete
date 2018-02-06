@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.PixelFormat;
 import android.opengl.GLSurfaceView;
 import android.opengl.GLU;
+import android.support.annotation.AnyThread;
 import android.util.AttributeSet;
 
 import java.nio.ByteBuffer;
@@ -36,7 +37,7 @@ public class CompassView extends GLSurfaceView
 		setRenderer(new CompassRenderer());
 	}
 
-	public void setOrientation(float rotation, float tilt)
+	@AnyThread public void setOrientation(float rotation, float tilt)
 	{
 		this.rotation = rotation;
 		this.tilt = tilt;

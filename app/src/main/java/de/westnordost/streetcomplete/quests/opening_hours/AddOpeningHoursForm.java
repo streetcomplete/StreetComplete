@@ -121,12 +121,21 @@ public class AddOpeningHoursForm extends AbstractQuestFormAnswerFragment
 		View view = LayoutInflater.from(getActivity()).inflate(R.layout.quest_opening_hours_comment, null);
 		final EditText editText = view.findViewById(R.id.commentInput);
 
-		new AlertDialogBuilder(getActivity())
+		new AlertDialogBuilder(getContext())
 				.setTitle(R.string.quest_openingHours_comment_title)
 				.setView(view)
 				.setPositiveButton(android.R.string.ok, (dialog, which) ->
 				{
-					String txt = editText.getText().toString().replaceAll("\"","");
+					String txt = editText.getText().toString().replaceAll("\"","").trim();
+					if(txt.isEmpty())
+					{
+						new AlertDialogBuilder(getContext())
+								.setMessage(R.string.quest_openingHours_emptyAnswer)
+								.setPositiveButton(R.string.ok, null)
+								.show();
+						return;
+					}
+
 					Bundle answer = new Bundle();
 					answer.putString(OPENING_HOURS, "\""+txt+"\"");
 					applyImmediateAnswer(answer);

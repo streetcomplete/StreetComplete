@@ -187,7 +187,8 @@ public class CreateNoteUpload
 			}
 			else
 			{
-				return "for " + getAssociatedElementString(note) + " :\n\n" + note.text;
+				return "for " + getAssociatedElementString(note) +
+						" via "+ ApplicationConstants.USER_AGENT+":\n\n" + note.text;
 			}
 		}
 		return note.text;

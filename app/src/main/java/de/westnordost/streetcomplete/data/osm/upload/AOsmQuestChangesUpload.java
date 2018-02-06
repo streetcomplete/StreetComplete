@@ -213,10 +213,7 @@ public abstract class AOsmQuestChangesUpload
 		Element elementWithChangesApplied = changesApplied(element, quest);
 		if(elementWithChangesApplied == null)
 		{
-			closeQuest(quest);
-			LatLon questPosition = quest.getGeometry().center;
-			Point tile = SlippyMapMath.enclosingTile(questPosition, ApplicationConstants.QUEST_TILE_ZOOM);
-			downloadedTilesDao.remove(tile);
+			deleteConflictingQuest(quest);
 			return false;
 		}
 
@@ -246,6 +243,23 @@ public abstract class AOsmQuestChangesUpload
 	{
 		quest.setStatus(QuestStatus.CLOSED);
 		questDB.update(quest);
+	}
+
+	private void deleteConflictingQuest(OsmQuest quest)
+	{
+		// #812 conflicting quests may not reside in the database, otherwise they would wrongfully
+		//      be candidates for an undo - even though nothing was changed
+		questDB.delete(quest.getId());
+		invalidateAreaAroundQuest(quest);
+	}
+
+	private void invalidateAreaAroundQuest(OsmQuest quest)
+	{
+		// called after a conflict. If there is a conflict, the user is not the only one in that
+		// area, so best invalidate all downloaded quests here and redownload on next occasion
+		LatLon questPosition = quest.getGeometry().center;
+		Point tile = SlippyMapMath.enclosingTile(questPosition, ApplicationConstants.QUEST_TILE_ZOOM);
+		downloadedTilesDao.remove(tile);
 	}
 
 	private Element changesApplied(Element element, OsmQuest quest)
@@ -325,6 +339,22 @@ public abstract class AOsmQuestChangesUpload
 										  boolean alreadyHandlingChangesetConflict)
 	{
 		Element element = updateElementFromServer(quest.getElementType(), quest.getElementId());
+
+		// if after updating to the new version of the element, the quest is not applicable to the
+		// element anymore, drop it (#720)
+		if(element != null)
+		{
+			Boolean questIsApplicableToElement = quest.getOsmElementQuestType().isApplicableTo(element);
+			if (questIsApplicableToElement != null && !questIsApplicableToElement)
+			{
+				Log.v(TAG, "Dropping quest " + getQuestStringForLog(quest) +
+						" because the quest is no longer applicable to the element");
+
+				deleteConflictingQuest(quest);
+				return false;
+			}
+		}
+
 		return uploadQuestChange(changesetId, quest, element, true, alreadyHandlingChangesetConflict);
 	}
 

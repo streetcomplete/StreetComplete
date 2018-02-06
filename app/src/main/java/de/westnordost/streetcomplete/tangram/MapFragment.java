@@ -11,6 +11,7 @@ import android.graphics.drawable.Drawable;
 import android.hardware.SensorManager;
 import android.location.Location;
 import android.os.Bundle;
+import android.support.annotation.AnyThread;
 import android.support.annotation.CallSuper;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -53,7 +54,8 @@ public class MapFragment extends Fragment implements
 		FragmentCompat.OnRequestPermissionsResultCallback, LocationListener,
 		LostApiClient.ConnectionCallbacks, TouchInput.ScaleResponder,
 		TouchInput.ShoveResponder, TouchInput.RotateResponder,
-		TouchInput.PanResponder, TouchInput.DoubleTapResponder, CompassComponent.Listener, MapController.SceneLoadListener
+		TouchInput.PanResponder, TouchInput.DoubleTapResponder,
+		CompassComponent.Listener, MapController.SceneLoadListener
 {
 	private CompassComponent compass = new CompassComponent();
 
@@ -90,7 +92,7 @@ public class MapFragment extends Fragment implements
 	private Listener listener;
 	public interface Listener
 	{
-		void onMapOrientation(float rotation, float tilt);
+		@AnyThread void onMapOrientation(float rotation, float tilt);
 	}
 
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -108,6 +110,7 @@ public class MapFragment extends Fragment implements
 				"<a href=\"https://mapzen.com/\">Mapzen</a>"))
 		);
 		mapzenLink.setMovementMethod(LinkMovementMethod.getInstance());
+		mapzenLink.setVisibility(View.GONE);
 
 		return view;
 	}
@@ -125,7 +128,7 @@ public class MapFragment extends Fragment implements
 
 	public void getMapAsync(String apiKey)
 	{
-		getMapAsync(apiKey, "scene.yaml");
+		getMapAsync(apiKey, "map_theme/scene.yaml");
 	}
 
 	@CallSuper public void getMapAsync(String apiKey, @NonNull final String sceneFilePath)
@@ -167,7 +170,7 @@ public class MapFragment extends Fragment implements
 		if(isMapInitialized && mapControls != null)
 		{
 			mapControls.onMapInitialized();
-			mapControls.onMapOrientation(controller.getRotation(), controller.getTilt());
+			onMapOrientation();
 		}
 	}
 
@@ -292,8 +295,8 @@ public class MapFragment extends Fragment implements
 		if(lostApiClient.isConnected())
 		{
 			LocationServices.FusedLocationApi.removeLocationUpdates(lostApiClient, this);
-			lostApiClient.disconnect();
 		}
+		lostApiClient.disconnect();
 	}
 
 	public void setIsFollowingPosition(boolean value)
@@ -464,7 +467,7 @@ public class MapFragment extends Fragment implements
 		}
 	}
 
-	@Override public void onRotationChanged(float rotation, float tilt)
+	@AnyThread @Override public void onRotationChanged(float rotation, float tilt)
 	{
 		// we received an event from the compass, so compass is working - direction can be displayed on screen
 		isShowingDirection = true;
@@ -525,7 +528,7 @@ public class MapFragment extends Fragment implements
 		);
 	}
 
-	private static final String
+	public static final String
 			PREF_ROTATION = "map_rotation",
 			PREF_TILT = "map_tilt",
 			PREF_ZOOM = "map_zoom",
@@ -682,4 +685,10 @@ public class MapFragment extends Fragment implements
 	{
 		return controller != null ? controller.getRotation() : 0;
 	}
+
+	public float getZoom()
+	{
+		return controller.getZoom();
+	}
+
 }

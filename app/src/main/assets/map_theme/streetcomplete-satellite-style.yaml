@@ -1,0 +1,17 @@
+import:
+    - global.yaml
+    - layers/labels.yaml
+
+sources:
+    mapbox-satellite:
+        type: Raster
+        url: https://api.mapbox.com/v4/mapbox.satellite/{z}/{x}/{y}.png
+        url_params:
+            access_token: pk.eyJ1IjoiZW50OHIiLCJhIjoiY2o5aXBvZGI1MGMyZzJxbjJtNGxzZzllYiJ9.7vUh6rE_BUG1RdfEqQdtCg
+
+layers:
+    terrain:
+        data: { source: mapbox-satellite }
+        draw:
+            raster:
+                order: 0
