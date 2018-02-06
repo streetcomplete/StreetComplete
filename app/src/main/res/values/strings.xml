@@ -456,7 +456,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_generic_looks_like_this">Usually looks like this:</string>
     <string name="quest_surface_value_metal">Metal</string>
     <string name="quest_surface_generic_surface_confirmation">Are you sure that you can not determine the surface more specifically?</string>
-  
+
     <string name="quest_buildingType_title">"What kind of building is this?"</string>
     <string name="quest_building_type_generic_building_confirmation">Are you sure that you can not determine the building type more specifically?</string>
     <string name="quest_building_type_no_value_confirmation">Please select a more specific value! The value you selected is not valid.</string>
@@ -518,5 +518,5 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingType_construction">Under construction</string>
     <string name="quest_buildingType_ruins">Ruins</string>
     <string name="quest_buildingType_service">Service building</string>
-    <string name="quest_buildingType_transformator_tower">Transformator tower</string>
+    <string name="quest_buildingType_transformer_tower">Transformer tower</string>
 </resources>

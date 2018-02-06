@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.building_type;
 
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -31,5 +32,5 @@ public class AddBuildingType extends SimpleOverpassQuestType
 
 	@Override public String getCommitMessage() { return "Add building type"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_building; }
-	@Override public int getTitle(Map<String, String> tags) { return R.string.quest_buildingType_title; }
+	@Override public int getTitle(@NonNull Map<String, String> tags) { return R.string.quest_buildingType_title; }
 }

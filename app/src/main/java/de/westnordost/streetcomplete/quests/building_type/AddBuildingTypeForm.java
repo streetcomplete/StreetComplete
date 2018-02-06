@@ -71,7 +71,7 @@ public class AddBuildingTypeForm extends AbstractQuestFormAnswerFragment
 			CONSTRUCTION =	new Item("construction", R.drawable.building_construction, R.string.quest_buildingType_construction),
 			RUINS =			new Item("ruins", R.drawable.building_ruins, R.string.quest_buildingType_ruins),
 			SERVICE =		new Item("service", R.drawable.building_service, R.string.quest_buildingType_service),
-			TRANSFORMATOR_TOWER = new Item("transformator_tower", R.drawable.building_transformator_tower, R.string.quest_buildingType_transformator_tower);
+			TRANSFORMER_TOWER = new Item("transformer_tower", R.drawable.building_transformer_tower, R.string.quest_buildingType_transformer_tower);
 
 	private final Item[] TOP_BUILDINGS = new Item[] {
 			HOUSE, DETACHED, APARTMENTS,
@@ -100,7 +100,7 @@ public class AddBuildingTypeForm extends AbstractQuestFormAnswerFragment
 					BARN, COWSHED, STABLE
 			}),
 			new Item(null, R.drawable.panorama_building_other, R.string.quest_buildingType_other, new Item[]{
-					HUT, SHED, CABIN, GREENHOUSE, CONSTRUCTION, RUINS, ROOF, SERVICE, TRANSFORMATOR_TOWER
+					HUT, SHED, CABIN, GREENHOUSE, CONSTRUCTION, RUINS, ROOF, SERVICE, TRANSFORMER_TOWER
 			}),
 	};
 
