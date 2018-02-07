@@ -22,10 +22,7 @@ public class AddParkingAccess extends SimpleOverpassQuestType
 		return "nodes, ways with amenity=parking and (!access or access=unknown)";
 	}
 
-	public AbstractQuestAnswerFragment createForm()
-	{
-		return new AddParkingAccessForm();
-	}
+	public AbstractQuestAnswerFragment createForm() { return new AddParkingAccessForm(); }
 
 	public void applyAnswerTo(Bundle bundle, StringMapChangesBuilder changes)
 	{

@@ -61,5 +61,5 @@ public class AddParkingAccessForm extends AbstractQuestFormAnswerFragment
 		}
 	}
 
-	@Override public boolean hasChanges() { return !(radioGroup.getCheckedRadioButtonId() == -1); }
+	@Override public boolean hasChanges() { return radioGroup.getCheckedRadioButtonId() != -1; }
 }
