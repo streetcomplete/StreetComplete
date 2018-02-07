@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.inject.Inject;
 
 import de.westnordost.streetcomplete.R;
+import de.westnordost.streetcomplete.data.osm.Countries;
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
@@ -44,5 +45,12 @@ public class AddTactilePavingBusStop extends SimpleOverpassQuestType
 		boolean hasName = tags.containsKey("name");
 		if(hasName) return R.string.quest_tactilePaving_title_name_bus;
 		else        return R.string.quest_tactilePaving_title_bus;
+	}
+
+	@Override public Countries getEnabledForCountries()
+	{
+		// See overview here: https://ent8r.github.io/blacklistr/?java=tactile_paving/AddTactilePavingBusStop.java
+		// #750
+		return AddTactilePavingCrosswalk.ENBABLED_FOR_COUNTRIES;
 	}
 }

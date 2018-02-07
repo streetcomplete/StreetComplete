@@ -161,7 +161,7 @@ public class CreateNoteUploadTest extends TestCase
 		assertNotNull(createNoteUpload.uploadCreateNote(createNote));
 
 		verify(notesDao).create(createNote.position,
-				"for https://www.openstreetmap.org/way/5 :\n\njo ho");
+				"for https://www.openstreetmap.org/way/5 via "+ ApplicationConstants.USER_AGENT+":\n\njo ho");
 
 		verifyNoteInsertedIntoDb(createNote.id, note);
 	}

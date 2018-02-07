@@ -14,6 +14,7 @@ import de.westnordost.streetcomplete.quests.baby_changing_table.AddBabyChangingT
 import de.westnordost.streetcomplete.quests.bike_parking_capacity.AddBikeParkingCapacity;
 import de.westnordost.streetcomplete.quests.bike_parking_cover.AddBikeParkingCover;
 import de.westnordost.streetcomplete.quests.bikeway.AddCycleway;
+import de.westnordost.streetcomplete.quests.bridge_structure.AddBridgeStructure;
 import de.westnordost.streetcomplete.quests.building_levels.AddBuildingLevels;
 import de.westnordost.streetcomplete.quests.bus_stop_shelter.AddBusStopShelter;
 import de.westnordost.streetcomplete.quests.car_wash_type.AddCarWashType;
@@ -23,6 +24,7 @@ import de.westnordost.streetcomplete.quests.diet_type.AddVegetarian;
 import de.westnordost.streetcomplete.quests.fire_hydrant.AddFireHydrantType;
 import de.westnordost.streetcomplete.quests.internet_access.AddInternetAccess;
 import de.westnordost.streetcomplete.quests.parking_access.AddParkingAccess;
+import de.westnordost.streetcomplete.quests.parking_fee.AddParkingFee;
 import de.westnordost.streetcomplete.quests.parking_type.AddParkingType;
 import de.westnordost.streetcomplete.quests.powerpoles_material.AddPowerPolesMaterial;
 import de.westnordost.streetcomplete.quests.orchard_produce.AddOrchardProduce;
@@ -46,6 +48,7 @@ import de.westnordost.streetcomplete.quests.way_lit.AddWayLit;
 import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelChairAccessPublicTransport;
 import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelChairAccessToilets;
 import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAccessBusiness;
+import de.westnordost.streetcomplete.quests.bench_backrest.AddBenchBackrest;
 
 @Module
 public class QuestModule
@@ -81,6 +84,7 @@ public class QuestModule
 				new AddVegan(o),
 				new AddInternetAccess(o),
 				new AddParkingAccess(o),
+				new AddParkingFee(o),
 
 				// ↓ 4. definitely shown as errors in QA tools
 
@@ -96,6 +100,7 @@ public class QuestModule
 				new AddWayLit(o),
 				new AddWheelchairAccessBusiness(o),
 				new AddToiletAvailability(o),
+				new AddBridgeStructure(o),
 				new AddWheelChairAccessToilets(o),
 				new AddReligionToWaysideShrine(o),
 
@@ -108,6 +113,7 @@ public class QuestModule
 				new AddParkingType(o),
 				new AddPowerPolesMaterial(o),
 				new AddCarWashType(o),
+				new AddBenchBackrest(o),
 		};
 
 		return new QuestTypeRegistry(Arrays.asList(questTypesOrderedByImportance));
