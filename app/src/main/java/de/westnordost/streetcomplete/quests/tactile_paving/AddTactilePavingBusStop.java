@@ -55,5 +55,7 @@ public class AddTactilePavingBusStop extends SimpleOverpassQuestType
 				// generated from OSM data
 				"DE", "CH", "GB", "IE", "JP", "ES", "FR", "NL", "US-GA",
 			});
+		// See overview here: https://ent8r.github.io/blacklistr/?java=tactile_paving/AddTactilePavingBusStop.java
+		// #750
 	}
 }

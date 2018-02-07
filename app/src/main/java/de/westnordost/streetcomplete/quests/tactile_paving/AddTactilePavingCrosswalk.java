@@ -54,5 +54,7 @@ public class AddTactilePavingCrosswalk extends SimpleOverpassQuestType
 				"SK", "AT", "HU", "DE", "CZ", "BE", "SE", "GB", "IE",
 				"US", "AR", "ES", "CA", "FR", "NL", "RU",
 			});
+		// See overview here: https://ent8r.github.io/blacklistr/?java=tactile_paving/AddTactilePavingCrosswalk.java
+		// #750
     }
 }

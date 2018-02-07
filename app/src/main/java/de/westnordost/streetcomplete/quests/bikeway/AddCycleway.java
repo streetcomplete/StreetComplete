@@ -206,6 +206,8 @@ public class AddCycleway implements OsmElementQuestType
 	@Override public int getDefaultDisabledMessage() { return 0; }
 	@Override public Countries getEnabledForCountries()
 	{
+		// See overview here: https://ent8r.github.io/blacklistr/?java=bikeway/AddCycleway.java
+
 		// #749. sources:
 		// Google Street View (driving around in virtual car)
 		// https://en.wikivoyage.org/wiki/Cycling
