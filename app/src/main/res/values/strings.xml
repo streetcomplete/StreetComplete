@@ -457,7 +457,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_generic_looks_like_this">Usually looks like this:</string>
     <string name="quest_surface_value_metal">Metal</string>
     <string name="quest_surface_generic_surface_confirmation">Are you sure that you can not determine the surface more specifically?</string>
-    <string name="quest_internet_access_name_title">What kind of internet connection does "%s" offer?</string>
+    <string name="quest_internet_access_name_title">What kind of internet connection does \"%s\" offer?</string>
     <string name="quest_internet_access_wlan">Wi-Fi</string>
     <string name="quest_internet_access_wired">Wired (LAN)</string>
     <string name="quest_internet_access_terminal">Computer with internet access</string>
@@ -474,12 +474,12 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_religion_shinto">Shinto</string>
     <string name="quest_religion_jewish">Judaism</string>
     <string name="quest_religion_taoist">Taoism</string>
-    <string name="quest_religion_for_place_of_worship_answer_multi">Place of worship for use by any religion</string>
+    <string name="quest_religion_for_place_of_worship_answer_multi">for use by any religion</string>
     <string name="quest_religion_sikh">Sikh</string>
     <string name="quest_religion_jain">Jain</string>
     <string name="quest_religion_bahai">Bahá\'í Faith</string>
     <string name="quest_religion_caodaist">Caodaism</string>
     <string name="quest_religion_chinese_folk">Chinese folk religion</string>
     <string name="quest_religion_for_wayside_shrine_title">What religion is represented at this shrine?</string>
-    <string name="quest_parking_fee_title">Is there a fee to park here?</string>
+    <string name="quest_parking_fee_title">Does it cost a fee to park here?</string>
 </resources>
