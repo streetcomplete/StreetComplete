@@ -63,7 +63,6 @@ public class QuestModule
 				osmNoteQuestType,
 
 				// ↓ 2. important data that is used by many data consumers
-				new AddReligionToPlaceOfWorship(o),
 				new AddRoadName(o, roadNameSuggestionsDao, putRoadNameSuggestionsHandler),
 				new AddHousenumber(o),
 				// new AddPlaceName(o), doesn't make sense as long as the app cannot tell the generic name of elements
@@ -72,6 +71,7 @@ public class QuestModule
 				new AddRecyclingType(o),
 				new AddRoadSurface(o),
 				new AddMaxSpeed(o), // should best be after road surface because it excludes unpaved roads
+				new AddReligionToPlaceOfWorship(o), // icon on maps are different
 				new AddOpeningHours(o),
 				new AddSport(o),
 				new AddBikeParkingCapacity(o), // cycle map layer on osm.org
