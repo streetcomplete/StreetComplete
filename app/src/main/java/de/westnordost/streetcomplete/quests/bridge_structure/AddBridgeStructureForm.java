@@ -2,28 +2,26 @@ package de.westnordost.streetcomplete.quests.bridge_structure;
 
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.ImageListQuestAnswerFragment;
+import de.westnordost.streetcomplete.view.Item;
 
-public class AddBridgeStructureForm extends ImageListQuestAnswerFragment {
+public class AddBridgeStructureForm extends ImageListQuestAnswerFragment
+{
+	// structures sorted highest to lowest amount of values on taginfo, footbridge-types last
+	private final Item[] STRUCTURES = new Item[]
+	{
+		new Item("beam", R.drawable.bridge_structure_beam),
+		new Item("suspension", R.drawable.bridge_structure_suspension),
+		new Item("arch", R.drawable.bridge_structure_arch),
+		new Item("arch", R.drawable.bridge_structure_tied_arch), // a subtype of arch, but visually quite different
+		new Item("truss", R.drawable.bridge_structure_truss),
+		new Item("cable-stayed", R.drawable.bridge_structure_cablestayed),
 
-    public static final String STRUCTURE = "structure";
+		// leaving out footway-type bridges because quest is only asked for man_made=bridge
+	/*	new Item("humpback", R.drawable.bridge_structure_humpback),
+		new Item("simple-suspension", R.drawable.bridge_structure_simple_suspension),
+		new Item("floating", R.drawable.bridge_structure_floating),*/
+	};
 
-    /**
-     * structures sorted lowest to highest amount of values on taginfo, 30.11.2017
-     */
-    private final OsmItem[] STRUCTURES = new OsmItem[] {
-            new OsmItem("beam", R.drawable.bridge_structure_beam),
-            new OsmItem("suspension", R.drawable.bridge_structure_suspension),
-            new OsmItem("simple-suspension", R.drawable.bridge_structure_simplesuspension),
-            new OsmItem("arch", R.drawable.bridge_structure_arch),
-            new OsmItem("truss", R.drawable.bridge_structure_truss),
-            new OsmItem("floating", R.drawable.bridge_structure_floating),
-            new OsmItem("cable-stayed", R.drawable.bridge_structure_cablestayed),
-            new OsmItem("humpback", R.drawable.bridge_structure_humpback)
-    };
-
-    @Override
-    protected OsmItem[] getItems() {
-        return STRUCTURES;
-    }
-    @Override protected int getItemsPerRow() { return 2; }
+	@Override protected Item[] getItems() { return STRUCTURES; }
+	@Override protected int getItemsPerRow() { return 2; }
 }
