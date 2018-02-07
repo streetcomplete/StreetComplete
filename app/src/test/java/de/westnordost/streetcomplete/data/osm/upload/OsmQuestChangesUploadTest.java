@@ -96,7 +96,7 @@ public class OsmQuestChangesUploadTest extends TestCase
 		assertFalse(u.uploadQuestChange(-1, quest, null, false, false));
 
 		verify(downloadedTilesDao).remove(any(Point.class));
-		assertEquals(QuestStatus.CLOSED, quest.getStatus());
+		verify(questDb).delete(quest.getId());
 	}
 
 	public void testDropChangeWhenUnresolvableElementChange()
@@ -110,7 +110,7 @@ public class OsmQuestChangesUploadTest extends TestCase
 		OsmQuestChangesUpload u = new OsmQuestChangesUpload(null, questDb, elementDao, null, null, null,
 				null, downloadedTilesDao, null, null);
 		assertFalse(u.uploadQuestChange(123, quest, element, false, false));
-		assertEquals(QuestStatus.CLOSED, quest.getStatus());
+		verify(questDb).delete(quest.getId());
 		verify(downloadedTilesDao).remove(any(Point.class));
 	}
 
@@ -140,7 +140,7 @@ public class OsmQuestChangesUploadTest extends TestCase
 				null, null, changesetsDao, downloadedTilesDao, prefs, null);
 
 		assertFalse(u.uploadQuestChange(changesetId, quest, element, false, false));
-		assertEquals(QuestStatus.CLOSED, quest.getStatus());
+		verify(questDb).delete(quest.getId());
 		verify(elementDb).delete(Element.Type.NODE, A_NODE_ID);
 		verify(downloadedTilesDao).remove(any(Point.class));
 	}
@@ -200,7 +200,7 @@ public class OsmQuestChangesUploadTest extends TestCase
 		assertFalse(u.uploadQuestChange(firstChangesetId, quest, element, false, false));
 
 		verify(manageChangesetsDb).replace(new OpenChangesetKey("TestQuestType","test case"), secondChangesetId);
-		assertEquals(QuestStatus.CLOSED, quest.getStatus());
+		verify(questDb).delete(quest.getId());
 		verify(elementDb).delete(Element.Type.NODE, A_NODE_ID);
 		verify(downloadedTilesDao).remove(any(Point.class));
 	}
