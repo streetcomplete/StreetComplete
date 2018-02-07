@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.inject.Inject;
 
 import de.westnordost.streetcomplete.R;
+import de.westnordost.streetcomplete.data.osm.Countries;
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
@@ -43,4 +44,26 @@ public class AddTactilePavingCrosswalk extends SimpleOverpassQuestType
 	{
 		return R.string.quest_tactilePaving_title_crosswalk;
 	}
+
+	static final Countries ENBABLED_FOR_COUNTRIES = Countries.noneExcept(new String[]
+	{
+		// Europe
+		"NO","SE",
+		"GB","IE","NL","BE","FR","ES",
+		"DE","PL","CZ","SK","HU","AT","CH",
+		"LV","LT","EE","RU",
+		// America
+		"US","CA","AR",
+		// Asia
+		"CN-91","SG","KR","JP",
+		// Oceania
+		"AU","NZ",
+	});
+
+    @Override public Countries getEnabledForCountries()
+    {
+		// See overview here: https://ent8r.github.io/blacklistr/?java=tactile_paving/AddTactilePavingCrosswalk.java
+		// #750
+		return ENBABLED_FOR_COUNTRIES;
+    }
 }

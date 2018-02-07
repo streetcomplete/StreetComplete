@@ -158,6 +158,8 @@ public class AddHousenumber implements OsmElementQuestType
 
 	@NonNull @Override public Countries getEnabledForCountries()
 	{
+		// See overview here: https://ent8r.github.io/blacklistr/?java=housenumber/AddHousenumber.java
+
 		return Countries.allExcept(new String[]{
 				"NL", // https://forum.openstreetmap.org/viewtopic.php?id=60356
 				"DK", // https://lists.openstreetmap.org/pipermail/talk-dk/2017-November/004898.html
