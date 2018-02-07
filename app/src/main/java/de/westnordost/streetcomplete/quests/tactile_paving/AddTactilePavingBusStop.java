@@ -48,14 +48,8 @@ public class AddTactilePavingBusStop extends SimpleOverpassQuestType
 
 	@Override public Countries getEnabledForCountries()
 	{
-		return Countries.noneExcept(new String[]
-			{
-				// areas based on research
-				"CN-91", "SG", "AU", "NZ",
-				// generated from OSM data
-				"DE", "CH", "GB", "IE", "JP", "ES", "FR", "NL", "US-GA",
-			});
 		// See overview here: https://ent8r.github.io/blacklistr/?java=tactile_paving/AddTactilePavingBusStop.java
 		// #750
+		return AddTactilePavingCrosswalk.ENBABLED_FOR_COUNTRIES;
 	}
 }

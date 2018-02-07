@@ -44,17 +44,25 @@ public class AddTactilePavingCrosswalk extends SimpleOverpassQuestType
 		return R.string.quest_tactilePaving_title_crosswalk;
 	}
 
+	static final Countries ENBABLED_FOR_COUNTRIES = Countries.noneExcept(new String[]
+	{
+		// Europe
+		"NO","SE",
+		"GB","IE","NL","BE","FR","ES",
+		"DE","PL","CZ","SK","HU","AT","CH",
+		"LV","LT","EE","RU",
+		// America
+		"US","CA","AR",
+		// Asia
+		"CN-91","SG","KR","JP",
+		// Oceania
+		"AU","NZ",
+	});
+
     @Override public Countries getEnabledForCountries()
     {
-		return Countries.noneExcept(new String[]
-			{
-				// areas based on research
-				"CN-91", "SG", "AU", "NZ", "PL",
-				// generated from OSM data
-				"SK", "AT", "HU", "DE", "CZ", "BE", "SE", "GB", "IE",
-				"US", "AR", "ES", "CA", "FR", "NL", "RU",
-			});
 		// See overview here: https://ent8r.github.io/blacklistr/?java=tactile_paving/AddTactilePavingCrosswalk.java
 		// #750
+		return ENBABLED_FOR_COUNTRIES;
     }
 }
