@@ -86,12 +86,8 @@
     <string name="no_gps_no_quests">"Om automatisch te kunnnen scannen voor vragen moet je \"locatie\" aanstaan."</string>
     <string name="nothing_more_to_download">"Verder geen vragen beschikbaar."</string>
     <string name="later">"Later"</string>
-    <string name="quest_streetName_answer_noProperStreet">"Geen echte straat"</string>
-    <string name="quest_streetName_answer_noProperStreet_question">"Wat is het dan?"</string>
     <string name="quest_streetName_answer_noProperStreet_link">"Het koppelt alleen twee wegen"</string>
-    <string name="quest_streetName_answer_noProperStreet_service">"Het is alleen een dienstweg"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Iets anders (maak een notitie)"</string>
-    <string name="quest_streetName_answer_noProperStreet_track">"Is het enkel een pad"</string>
     <string name="about_title_privacy_statement">"Privacy verklaring"</string>
     <string name="about_summary_privacy_statement">"en data gebruik"</string>
     <string name="quest_openingHours_public_holidays">"Feestdagen"</string>
@@ -173,8 +169,6 @@ Om de kaart te tonen worden vector tegels van de &lt;a href=\"https://mapzen.com
     <string name="quest_maxspeed_answer_noSign">"Er is geen bord"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Waar is deze straat?"</string>
     <string name="quest_cyclewaySurface_title">"Welke wegbeddeking heeft dit fietspad"</string>
-    <string name="quest_cycleway_title2">"Is er in deze straat een fietspad?"</string>
-    <string name="quest_cycleway_title">"Is er in deze straat een fietspad?"</string>
     <string name="quest_buildingType_title">"Wat voor gebouw is dit?"</string>
     <string name="quest_serviceType_title">"Wat voor dienstweg is dit?"</string>
     <string name="quest_streetLanes_title">"Hoeveel banen heeft deze weg?"</string>
@@ -265,7 +259,6 @@ De informatie die je ingeeft wordt meteen toegevoegd aan OpenStreetMap in jouw n
     <string name="quest_maxspeed_title_short">"Wat is de maximum snelheid volgens het bord in deze straat?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Deze maximum snelheid lijkt onwaarschijnlijk."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Weet je zeker dat er geen limiet is aangegeven?"</string>
-    <string name="quest_maxspeed_answer_noSign_confirmation">"Heb je aan de uiteinde van de straat gecontroleerd of er borden zijn met een maximum snelheid?"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Ja geen bord"</string>
     <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Stedelijke wegen hebben een andere standaard snelheidslimiet dan landelijke wegen"</string>
     <string name="quest_maxspeed_answer_noSign_urbanOk">"In de stad / dorp"</string>
@@ -462,4 +455,12 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire keybor
     <string name="quest_streetName_answer_noName_noname">"Geen van bovenstaande, het heft gewoon geen naam"</string>
     <string name="quest_wheelchairAccess_toilets_title">"Zijn deze toiletten toegankelijk voor rolstoelen?"</string>
     <string name="quest_wheelchairAccess_toilets_name_title">"Zijn de toiletten “%s” rolstoeltoegankelijk?"</string>
+    <string name="quest_generic_looks_like_this">"Ziet er meestal zo uit:"</string>
+    <string name="quest_surface_value_metal">"Metaal"</string>
+    <string name="quest_internet_access_wlan">"Wi-Fi"</string>
+    <string name="quest_internet_access_terminal">"Computer met toegang tot het internet"</string>
+    <string name="quest_internet_access_no">"Geen toegang tot internet."</string>
+    <string name="quest_bench_backrest_title">"Heeft deze bank een rugleuning?"</string>
+    <string name="quest_bench_answer_picnic_table">"Het is een picknicktafel."</string>
+    <string name="quest_parking_fee_title">"Kost het geld om hier te parkeren?"</string>
 </resources>

@@ -55,12 +55,12 @@
     <string name="confirmation_discard_title">"Descartar mudanças?"</string>
     <string name="confirmation_discard_positive">"Decartar"</string>
     <string name="confirmation_discard_negative">"Cancelar"</string>
-    <string name="action_download">"Escanear por missões aqui"</string>
+    <string name="action_download">"Procurar por missões aqui"</string>
     <string name="action_upload">"Fazer upload de respostas"</string>
     <string name="no_changes">"Você deixou o formulário vazio"</string>
     <string name="close">"fechar"</string>
-    <string name="download_error">"Erro escaneando por missões"</string>
-    <string name="upload_error">"Erro fazendo upload de respostas"</string>
+    <string name="download_error">"Erro ao procurar por missões"</string>
+    <string name="upload_error">"Erro ao enviar as respostas"</string>
     <string name="download_area_too_big">"Por favor, aumente o zoom"</string>
     <string name="confirmation_cancel_prev_download_title">"Cancelar a pesquisa atual e escanear aqui em vez disso?"</string>
     <string name="notification_downloading">"Escaneando por Missões…"</string>
@@ -84,12 +84,8 @@
     <string name="no_gps_no_quests">"Para escanear por missões em torno de você automaticamente, ative a localização"</string>
     <string name="nothing_more_to_download">"Sem novas missões disponíveis"</string>
     <string name="later">"Mais tarde"</string>
-    <string name="quest_streetName_answer_noProperStreet">"Não é propriamente uma rua"</string>
-    <string name="quest_streetName_answer_noProperStreet_question">"Então o que é?"</string>
     <string name="quest_streetName_answer_noProperStreet_link">"isso apenas liga duas estradas"</string>
-    <string name="quest_streetName_answer_noProperStreet_service">"Isso é somente uma rua de serviço"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Algo mais (deixe uma nota)"</string>
-    <string name="quest_streetName_answer_noProperStreet_track">"É apenas uma trilha"</string>
     <string name="about_title_privacy_statement">"Declaração de Privacidade"</string>
     <string name="about_summary_privacy_statement">"e Uso de Dados"</string>
     <string name="quest_openingHours_public_holidays">"Feriados Públicos"</string>
@@ -150,7 +146,9 @@ Para exibir o mapa, os blocos vetoriais são recuperadas do &lt;a href=\"https:/
     <string name="quest_surface_value_unpaved">"Não-pavimentado (genérico)"</string>
     <string name="quest_surface_value_ground">"Terra (genérico)"</string>
     <string name="quest_surface_value_asphalt">"Asfalto"</string>
-    <string name="quest_surface_value_cobblestone">"Pedras rústicas"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_surface_value_cobblestone">"Seixo"</string>
     <string name="quest_surface_value_compacted">"Batida"</string>
     <string name="quest_surface_value_concrete">"Concreto"</string>
     <string name="quest_surface_value_dirt">"Terra"</string>
@@ -174,8 +172,6 @@ Para exibir o mapa, os blocos vetoriais são recuperadas do &lt;a href=\"https:/
     <string name="quest_maxspeed_answer_noSign">"Não há placa"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Onde é esta rua?"</string>
     <string name="quest_cyclewaySurface_title">"Que superfície tem a ciclovia aqui?"</string>
-    <string name="quest_cycleway_title2">"Existe uma ciclovia nesta rua?"</string>
-    <string name="quest_cycleway_title">"Existe uma ciclovia nesta rua?"</string>
     <string name="quest_buildingType_title">"Que tipo de edifício é esse?"</string>
     <string name="quest_serviceType_title">"Que tipo de rua de serviço é essa?"</string>
     <string name="quest_streetLanes_title">"Quantas pistas tem essa rua?"</string>
@@ -245,7 +241,7 @@ As informações inseridas são adicionadas diretamente ao OpenStreetMap em seu 
     <string name="quest_manySports_confirmation_specific">"Especificamente"</string>
     <string name="quest_manySports_confirmation_generic">"Multiúso"</string>
     <string name="quest_sport_manySports_confirmation_title">"Você selecionou muitos esportes"</string>
-    <string name="quest_busStopShelter_name_title">"O ponto de ônibus %s tem um telhado?"</string>
+    <string name="quest_busStopShelter_name_title">"O ponto de ônibus \"%s\" tem um telhado?"</string>
     <string name="quest_toiletsFee_title">"Esses sanitários são pagos?"</string>
     <string name="quest_tactilePaving_title_bus">"Essa parada de ônibus tem pavimentos táteis?"</string>
 
@@ -260,7 +256,8 @@ As informações inseridas são adicionadas diretamente ao OpenStreetMap em seu 
     <string name="quest_maxspeed_title_short">"Qual a placa de limite de velocidade para essa rua?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Esse limite de velocidade parece errado."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Tem certeza de que não há nenhum limite sinalizado?"</string>
-    <string name="quest_maxspeed_answer_noSign_confirmation">"Confirmou nos extremos da estrada? Se não há sinalização, aplicam-se os limites de velocidade padrão. "</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation">"Você checou no final das ruas?
+Se não há placas ao longo de toda a rua que corresponda com a parte destacada o limite de velocidade padrão se aplica."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Sim, sem placas."</string>
     <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Vias urbanas têm um limite de velocidade padrão diferente das vias rurais."</string>
     <string name="quest_maxspeed_answer_noSign_urbanOk">"Dentro da cidade."</string>
@@ -301,7 +298,7 @@ As informações inseridas são adicionadas diretamente ao OpenStreetMap em seu 
     <string name="quest_streetName_cantType_open_settings">"Abrir opções"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetName_cantType_open_store">"Depósito aberto"</string>
+    <string name="quest_streetName_cantType_open_store">"Abrir na loja"</string>
     <string name="quest_streetName_cantType_description">"Se usa o teclado padrão, é provável que simplesmente tenha de configurar o layout do teclado, nas opções de métodos de entrada, para o idioma que necessita.
 
 Caso contrário, pode baixar outro teclado na loja de aplicativos. Alguns dos teclados mais populares e que suportam vários idiomas são o Google Gboard, SwiftKey Keyboard e Multiling O Keyboard."</string>
@@ -457,4 +454,71 @@ Caso contrário, pode baixar outro teclado na loja de aplicativos. Alguns dos te
     <string name="quest_housenumber_conscription_number_required">"Um número de conscription deve ser especificado"</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">"Ciclovia presente do outro lado"</string>
     <string name="need_specify_both_sides">"Você precisa especificar os dois lados"</string>
+    <string name="quest_openingHours_emptyAnswer">"Você precisa descrever o que está na placa. Se não houver placa você deveria perguntar pelos horários."</string>
+    <string name="quest_cycleway_value_none_but_no_oneway">"nenhum, mas ciclistas podem usar a rua em ambas direções"</string>
+    <string name="quest_streetName_answer_noName_question">"Por que não há nome?"</string>
+    <string name="quest_streetName_answer_noProperStreet_service2">"É algo como uma via ou entrada de garagem"</string>
+    <string name="quest_streetName_answer_noProperStreet_track2">"É uma estrada agrícola ou florestal"</string>
+    <string name="quest_streetName_answer_noName_noname">"Nenhuma das opções, simplesmente não há nome"</string>
+    <string name="quest_wheelchairAccess_toilets_title">"São esses banheiros acessíveis por cadeira de rodas?"</string>
+    <string name="quest_wheelchairAccess_toilets_name_title">"Os banheiros “%s” são acessiveis por cadeira de rodas?"</string>
+    <string name="quest_wheelchairAccess_description_toilets">"Um simbolo de cadeirante como esse deve estar visível se os banheiros são acessíveis.
+Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas barras ou adaptações não estão presentes."</string>
+    <string name="map_btn_create_note">"Criar uma nova nota"</string>
+    <string name="create_new_note_unprecise">"Aproxime o zoom para criar uma nota"</string>
+    <string name="create_new_note_description">"Você pode deixar uma nota para que outros mapeadores saibam sobre um problema aqui. Ajuste "</string>
+    <string name="pref_title_quests_invalidation">"Invalidar cache de missões"</string>
+    <string name="pref_title_quests_invalidation_summary">"Útil se você achar que algumas missões estão desatualizadas"</string>
+    <string name="invalidate_confirmation">"Invalidar"</string>
+    <string name="invalidation_dialog_message">"Invalidando o cache as missões elas são atualizadas na próxima vez que ocorrer o download. O cache das missões são invalidados automaticamente depois de uma semana e imediatamente quando uma missão que você completou já tinha sido respondida por outro usuário."</string>
+    <string name="quest_generic_looks_like_this">"Normalmente se parece assim:"</string>
+    <string name="quest_surface_value_metal">"Metal"</string>
+    <string name="quest_surface_generic_surface_confirmation">"Você está certo que não pode determinar a superfície mais específica?"</string>
+    <string name="quest_cycleway_title2">"Existe um ciclovia aqui? De que tipo?"</string>
+    <string name="quest_bridge_structure_title">"Qual a estrutura dessa ponte?"</string>
+    <string name="quest_internet_access_name_title">"Que tipo de conexão à Internet é oferecida por \"%s\"?"</string>
+    <string name="quest_internet_access_wlan">"Wi-Fi"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_internet_access_wired">"Cabeada (LAN)"</string>
+    <string name="quest_internet_access_terminal">"Computador com acesso à Internet"</string>
+    <string name="quest_internet_access_no">"Sem conexão"</string>
+    <string name="quest_busStopShelter_tram_name_title">"A parada de bonde \"%s\" tem abrigo?"</string>
+    <string name="quest_busStopShelter_tram_title">"Esta parada de bonde tem abrigo?"</string>
+    <string name="quest_bench_backrest_title">"Este banco tem encosto?"</string>
+    <string name="quest_bench_answer_picnic_table">"É uma mesa de piquenique"</string>
+    <string name="quest_religion_for_place_of_worship_title">"Qual religião é praticada em \"%s\"?"</string>
+    <string name="quest_religion_christian">"Cristianismo"</string>
+    <string name="quest_religion_muslim">"Islamismo"</string>
+    <string name="quest_religion_hindu">"Hinduísmo"</string>
+    <string name="quest_religion_buddhist">"Budismo"</string>
+    <string name="quest_religion_shinto">"Xintoismo"</string>
+    <string name="quest_religion_jewish">"Judaísmo"</string>
+    <string name="quest_religion_taoist">"Taoismo"</string>
+    <string name="quest_religion_for_place_of_worship_answer_multi">"para uso de qualquer religião"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_religion_sikh">"Sikh"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_religion_jain">"Jainismo"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_religion_bahai">"Bahaísmo"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_religion_caodaist">"Caodaísmo"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_religion_chinese_folk">"Religião popular chinesa"</string>
+    <string name="quest_religion_for_wayside_shrine_title">"Que religião é representada neste altar?"</string>
+    <string name="quest_parking_fee_title">"Existe custo para estacionar aqui?"</string>
+    <string name="quest_cycleway_value_lane_soft">"Ciclofaixa (marcas tracejadas)"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_surface_value_unhewn_cobblestone">"Seixo bruto"</string>
+    <string name="quest_parking_access_title">"Existe restrição para estacionar aqui?"</string>
+    <string name="quest_parking_access_private">"É privativo"</string>
+    <string name="quest_parking_access_yes">"É público (com ou sem taxa)"</string>
+    <string name="quest_parking_access_customers">"É apenas para clientes"</string>
 </resources>

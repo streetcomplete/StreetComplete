@@ -84,12 +84,8 @@
     <string name="no_gps_no_quests">"Aby automatycznie szukać zadań wokół ciebie, włącz lokalizacje."</string>
     <string name="nothing_more_to_download">"Brak nowych zadań"</string>
     <string name="later">"Później"</string>
-    <string name="quest_streetName_answer_noProperStreet">"To nie jest ulica"</string>
-    <string name="quest_streetName_answer_noProperStreet_question">"Czym jest w takim razie?"</string>
     <string name="quest_streetName_answer_noProperStreet_link">"Łącznik ulic"</string>
-    <string name="quest_streetName_answer_noProperStreet_service">"Droga serwisowa"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Inne (zostaw notatkę)"</string>
-    <string name="quest_streetName_answer_noProperStreet_track">"Polna droga"</string>
     <string name="about_title_privacy_statement">"Polityka prywatności"</string>
     <string name="about_summary_privacy_statement">"i wykorzystanie danych"</string>
     <string name="quest_openingHours_public_holidays">"święta i dni wolne"</string>
@@ -169,8 +165,6 @@ Niemniej przed każdym wysłaniem zmian aplikacja sprawdza &lt;a href=\"http://w
     <string name="quest_maxspeed_answer_noSign">"Nie ma znaków"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Gdzie jest ta ulica?"</string>
     <string name="quest_cyclewaySurface_title">"Jaki rodzaj nawierzchni ma ta droga dla rowerów?"</string>
-    <string name="quest_cycleway_title2">"Czy na tej ulicy jest droga dla rowerów?"</string>
-    <string name="quest_cycleway_title">"Czy na tej ulicy jest droga dla rowerów?"</string>
     <string name="quest_buildingType_title">"Jaki to rodzaj budynku?"</string>
     <string name="quest_serviceType_title">"Jaki to rodzaj drogi serwisowej?"</string>
     <string name="quest_streetLanes_title">"Ile wyznaczonych pasów jezdni ma ta ulica?"</string>
@@ -255,7 +249,6 @@ Udzielone odpowiedzi zostają potem umieszczone na OpenStreetMap w Twoim imieniu
     <string name="quest_maxspeed_title_short">"Jaki jest znak ograniczenia prędkości na tej ulicy?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"To ograniczenie prędkości nie wygląda wiarygodnie."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Na pewno nie ma znaku ograniczenia prędkości?"</string>
-    <string name="quest_maxspeed_answer_noSign_confirmation">"Sprawdziłeś na końcach ulicy? Jeśli nie ma znaków, to obowiązują domyślne ograniczenia."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Tak, nie ma znaków."</string>
     <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"W terenie zabudowanym obowiązuje inne domyślne ograniczenie prędkości niż poza terenem zabudowanym,"</string>
     <string name="quest_maxspeed_answer_noSign_urbanOk">"W terenie zabudowanym"</string>
@@ -447,7 +440,9 @@ W przeciwnym wypadku możesz ściągnąć dodatkowe aplikacje klawiatury ze skle
     <string name="quest_cycleway_answer_contraflow_cycleway">"Znajduje się tu kontrapas"</string>
     <string name="need_specify_both_sides">"Musisz opisać obie strony"</string>
     <string name="quest_streetName_answer_noName_question">"Dlaczego ten obiekt nie ma nazwy?"</string>
+    <string name="quest_streetName_answer_noProperStreet_track2">"Jest to droga polna lub leśna"</string>
     <string name="map_btn_create_note">"Utwórz nowe zgłoszenie o problemie"</string>
     <string name="quest_surface_value_metal">"Metalowa"</string>
     <string name="quest_surface_generic_surface_confirmation">"Czy jesteś pewien że nie można dokładniej określić nawierzchni?"</string>
+    <string name="quest_internet_access_wlan">"Wi-Fi"</string>
 </resources>

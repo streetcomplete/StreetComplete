@@ -97,12 +97,8 @@
     <string name="no_gps_no_quests">"Pour rechercher des quêtes autour de vous automatiquement, activer la localisation"</string>
     <string name="nothing_more_to_download">"Pas de nouvelles quêtes disponibles"</string>
     <string name="later">"Plus tard"</string>
-    <string name="quest_streetName_answer_noProperStreet">"N'est pas réellement une rue"</string>
-    <string name="quest_streetName_answer_noProperStreet_question">"Qu'est-ce que c'est alors ?"</string>
     <string name="quest_streetName_answer_noProperStreet_link">"cela relie juste deux rues"</string>
-    <string name="quest_streetName_answer_noProperStreet_service">"C'est une rue de service."</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Autre chose (laisser une note)"</string>
-    <string name="quest_streetName_answer_noProperStreet_track">"C'est juste un chemin"</string>
     <string name="about_title_privacy_statement">"Politique de confidentialité"</string>
     <string name="about_summary_privacy_statement">"et utilisation des données"</string>
     <string name="quest_openingHours_public_holidays">"Jours fériés"</string>
@@ -203,8 +199,6 @@ Pour afficher la carte, les tuiles vectorielles sont extraites du &lt;a href=\"h
 
     <!-- Plus simple et plus court : Quel est le revêtement de cette piste cyclable ? -->
     <string name="quest_cyclewaySurface_title">"Quel est le revêtement de cette piste cyclable ?"</string>
-    <string name="quest_cycleway_title2">"Est-ce qu'il y a une piste cyclable sur cette rue ?"</string>
-    <string name="quest_cycleway_title">"Est-ce qu'il y a une piste cyclable sur cette rue ?"</string>
     <string name="quest_buildingType_title">"Quel est le type de cet édifice ?"</string>
     <string name="quest_serviceType_title">"Quel est le type de cette rue de service ?"</string>
     <string name="quest_streetLanes_title">"Combien y'a-t-il de voies sur cette route ?"</string>
@@ -501,11 +495,52 @@ Partiellement signifie qu'un fauteuil roulant peut entrer et utiliser les toilet
     <string name="map_btn_create_note">"Ajouter une note"</string>
     <string name="create_new_note_unprecise">"Zoomer pour créer une note"</string>
     <string name="create_new_note_description">"Vous pouvez laisser une note pour informer les autres cartographes d'un problème à cet endroit. Ajustez la position de la note en déplaçant la carte :"</string>
-    <string name="pref_title_quests_invalidation">"Cache de quête invalide "</string>
+    <string name="pref_title_quests_invalidation">"Cache de quête invalide"</string>
     <string name="pref_title_quests_invalidation_summary">"Utile si vous pensez que certaines quêtes sont obsolètes"</string>
     <string name="invalidate_confirmation">"Invalider"</string>
     <string name="invalidation_dialog_message">"L'invalidation du cache entraînera la mise à jour des quêtes lors du prochain téléchargement. Le cache des quête est automatiquement invalidé après une semaine et immédiatement lorsqu'une quête que vous avez résolue a déjà été traitée par quelqu'un d'autre."</string>
     <string name="quest_generic_looks_like_this">"Ressemble habituellement à ceci :"</string>
     <string name="quest_surface_value_metal">"Métal"</string>
     <string name="quest_surface_generic_surface_confirmation">"Êtes-vous sûr de ne pas pouvoir déterminer la surface plus spécifiquement?"</string>
+    <string name="quest_cycleway_title2">"Y a-t-il une piste cyclable ici ? De quel type ?"</string>
+
+    <!-- ou « type de structure » ? -->
+    <!-- Fuzzy -->
+    <string name="quest_bridge_structure_title">"Quelle est la structure de ce pont ?"</string>
+    <string name="quest_internet_access_name_title">"Quel type de connexion internet \"%s\" offre-t-il ?"</string>
+    <string name="quest_internet_access_wlan">"Wi-Fi"</string>
+    <string name="quest_internet_access_wired">"Filaire"</string>
+    <string name="quest_internet_access_terminal">"Ordinateur avec accès internet"</string>
+    <string name="quest_internet_access_no">"Pas de connexion"</string>
+    <string name="quest_busStopShelter_tram_name_title">"L'arrêt de tram \"%s\" a-t-il un abris ?"</string>
+    <string name="quest_busStopShelter_tram_title">"Cet arrêt de tram a-t-il un abris ?"</string>
+    <string name="quest_bench_backrest_title">"Ce banc a-t-il un dossier ?"</string>
+    <string name="quest_bench_answer_picnic_table">"C'est une table à pique-nique"</string>
+    <string name="quest_religion_for_place_of_worship_title">"Quelle religion est pratiquée à \"%s\" ?"</string>
+    <string name="quest_religion_christian">"Christianisme"</string>
+    <string name="quest_religion_muslim">"Islam"</string>
+    <string name="quest_religion_hindu">"Hindouisme"</string>
+    <string name="quest_religion_buddhist">"Bouddhisme"</string>
+    <string name="quest_religion_shinto">"Shintoïsme"</string>
+    <string name="quest_religion_jewish">"Judaïsme"</string>
+    <string name="quest_religion_taoist">"Taoïsme"</string>
+    <string name="quest_religion_for_place_of_worship_answer_multi">"à l'usage de toute religion"</string>
+    <string name="quest_religion_sikh">"Sikhisme"</string>
+    <string name="quest_religion_jain">"Jaïnisme"</string>
+    <string name="quest_religion_bahai">"Bahaïsme"</string>
+    <string name="quest_religion_caodaist">"Caodaïsme"</string>
+    <string name="quest_religion_chinese_folk">"Religion traditionnelle chinoise"</string>
+    <string name="quest_religion_for_wayside_shrine_title">"Quelle religion est représentée dans ce sanctuaire ?"</string>
+    <string name="quest_parking_fee_title">"Le stationnement est-il payant ici ?"</string>
+    <string name="quest_cycleway_value_lane_soft">"voie cyclable (ligne discontinue)"</string>
+    <string name="quest_surface_value_unhewn_cobblestone">"Pavé non taillé"</string>
+
+    <!-- Un peu long. -->
+    <!-- Fuzzy -->
+    <string name="quest_parking_access_title">"L'utilisation de ce parking est-il restreint à certains usagers ?"</string>
+
+    <!-- Traduction non littérale. Il faudrait connaître le contexte. -->
+    <string name="quest_parking_access_private">"Privé"</string>
+    <string name="quest_parking_access_yes">"Public (payant ou gratuit)"</string>
+    <string name="quest_parking_access_customers">"Réservé aux clients"</string>
 </resources>

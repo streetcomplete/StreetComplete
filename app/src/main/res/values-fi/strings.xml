@@ -92,12 +92,8 @@
     <string name="no_gps_no_quests">"Kohteiden automaattiseen hakuun vaaditaan sijaintipalvelut"</string>
     <string name="nothing_more_to_download">"Ei enempää täydennettävää saatavilla"</string>
     <string name="later">"Myöhemmin"</string>
-    <string name="quest_streetName_answer_noProperStreet">"Ei kelvollinen katu"</string>
-    <string name="quest_streetName_answer_noProperStreet_question">"Mikä se on sitten?"</string>
     <string name="quest_streetName_answer_noProperStreet_link">"se vain yhdistää kaksi tietä"</string>
-    <string name="quest_streetName_answer_noProperStreet_service">"Se on vain huoltotie"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Jotain muuta (jätä huomautus)"</string>
-    <string name="quest_streetName_answer_noProperStreet_track">"Se on vain jälki"</string>
     <string name="about_title_privacy_statement">"Tietosuojalausunto"</string>
     <string name="about_summary_privacy_statement">"ja Datan käyttö"</string>
     <string name="quest_openingHours_public_holidays">"Julkiset lomat"</string>
@@ -178,8 +174,6 @@ Näytettäessä karttaa, vektoritiilet haetaan &lt;a href=\"https://mapzen.com/p
     <string name="quest_maxspeed_answer_noSign">"Ei kylttiä"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Missä tämä katu on?"</string>
     <string name="quest_cyclewaySurface_title">"Mikä päällyste tällä pyörätiellä on?"</string>
-    <string name="quest_cycleway_title2">"Onko tällä tiellä pyörätie?"</string>
-    <string name="quest_cycleway_title">"Onko tällä tiellä pyörätie?"</string>
     <string name="quest_buildingType_title">"Millainen rakennus tämä on?"</string>
     <string name="quest_serviceType_title">"Millainen huoltotie tämä on?"</string>
     <string name="quest_streetLanes_title">"Kuinka monta kaistaa tällä tiellä on?"</string>
@@ -262,6 +256,7 @@ Tiedot jotka laitat lähetetään suoraan OpenStreetMapiin nimelläsi ilman tarv
     <string name="quest_maxspeed_title_short">"Mikä on nopeusrajoituksen osoittava merkki tällä kadulla?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Tämä nopeusrajoitus vaikuttaa epätodennäköiseltä."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Oletko varma että rajoituskylttiä ei ole?"</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation">"Tarkistitko tien päistä? Jos tien päissä ei ole nopeusrajoitusmerkiä, niin sovelletaan yleistä nopeusrajoitusta"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Olen varma, ei liikennemerkkiä"</string>
     <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Kaupunkiteillä ovat eroavat vakionopeusrajoitukset kuin maaseututeillä."</string>
     <string name="quest_maxspeed_answer_noSign_urbanOk">"Kaupungissa"</string>
@@ -450,4 +445,24 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
     <string name="quest_housenumber_conscription_number_required">"Rekisterinumero pitää täsmentää"</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">"Toisella puolella myös pyörätie"</string>
     <string name="need_specify_both_sides">"Sinun tulee täsmentää molemmat puolet"</string>
+    <string name="quest_openingHours_emptyAnswer">"Kuvaile millainen merkki tämä on. Jos ei ole merkkiä, niin kysy sisältä aukioloajat. "</string>
+    <string name="quest_cycleway_value_none_but_no_oneway">"Ei, mutta pyöräilijät voivat käyttää tietä molempiin suntiin"</string>
+    <string name="quest_streetName_answer_noName_question">"Miksi tiellä ei ole nimeä?"</string>
+    <string name="quest_streetName_answer_noProperStreet_service2">"Se on tienvarsipysäköinnin kaltainen alue"</string>
+    <string name="quest_streetName_answer_noProperStreet_track2">"Kyseessä on pelto- tai metsäautotie"</string>
+    <string name="quest_streetName_answer_noName_noname">"Ei mikään näistä, sillä ei yksinkertaisesti ole nimeä"</string>
+    <string name="quest_wheelchairAccess_toilets_title">"Ovatko vessat sopivia pyörätuolille?"</string>
+    <string name="quest_wheelchairAccess_toilets_name_title">"Ovatko vessat “%s” pyörätuolille sopivia?"</string>
+    <string name="quest_wheelchairAccess_description_toilets">"Tämmöinen merkki voi olla näkyvissä, jos vessaan pääsee pyörätuolilla.
+     Kyseisessä WC:ssä ei kuitenkaan välttämättä ole apuvälineita, kuten apurautoja, laskettavaa allasta tms."</string>
+    <string name="map_btn_create_note">"Luo uusi huomautus"</string>
+    <string name="create_new_note_unprecise">"Zoomaa kauemmaksi ja luo huomautus"</string>
+    <string name="create_new_note_description">"Voit jättää huomautukset, jotta toiset kartan tekijät huomaavat tehtävää täällä. Siirrä huomautusta kartalla siirtämällä paikkaa."</string>
+    <string name="pref_title_quests_invalidation">"Virheellinen kysymys cache"</string>
+    <string name="pref_title_quests_invalidation_summary">"Hyödyllisiä, jos ajattelet osan kysymyksistä vanhentuneen"</string>
+    <string name="invalidate_confirmation">"Mitätöidä"</string>
+    <string name="invalidation_dialog_message">"Välimuistin tyhjennys johtaa siihen, että seuraavalla kerralla kysymykset ladataan uudelleen. Kysymysten välimuuisti tyhjennetään automaattisestiviikon välein ja välittömästi, kun valittavissa olevaan kysymykseen on joku toinen jo vastannut. "</string>
+    <string name="quest_generic_looks_like_this">"Normaalisti näyttää suunnilleen tältä: "</string>
+    <string name="quest_surface_value_metal">"Metalli"</string>
+    <string name="quest_surface_generic_surface_confirmation">"Oletko varma, että et voi määritellä pintaa tarkemmin?"</string>
 </resources>
