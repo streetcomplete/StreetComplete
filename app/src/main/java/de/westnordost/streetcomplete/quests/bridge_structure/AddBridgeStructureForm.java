@@ -15,11 +15,9 @@ public class AddBridgeStructureForm extends ImageListQuestAnswerFragment
 		new Item("arch", R.drawable.bridge_structure_tied_arch), // a subtype of arch, but visually quite different
 		new Item("truss", R.drawable.bridge_structure_truss),
 		new Item("cable-stayed", R.drawable.bridge_structure_cablestayed),
-
-		// leaving out footway-type bridges because quest is only asked for man_made=bridge
-	/*	new Item("humpback", R.drawable.bridge_structure_humpback),
+		new Item("humpback", R.drawable.bridge_structure_humpback),
 		new Item("simple-suspension", R.drawable.bridge_structure_simple_suspension),
-		new Item("floating", R.drawable.bridge_structure_floating),*/
+		new Item("floating", R.drawable.bridge_structure_floating),
 	};
 
 	@Override protected Item[] getItems() { return STRUCTURES; }
