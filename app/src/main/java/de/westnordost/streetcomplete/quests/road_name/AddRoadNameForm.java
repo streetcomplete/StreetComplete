@@ -226,7 +226,7 @@ public class AddRoadNameForm extends AbstractQuestFormAnswerFragment
 	{
 		final String
 				linkRoad = getResources().getString(R.string.quest_streetName_answer_noProperStreet_link),
-				serviceRoad = getResources().getString(R.string.quest_streetName_answer_noProperStreet_service),
+				serviceRoad = getResources().getString(R.string.quest_streetName_answer_noProperStreet_service2),
 				trackRoad = getResources().getString(R.string.quest_streetName_answer_noProperStreet_track2),
 				noName = getResources().getString(R.string.quest_streetName_answer_noName_noname),
 				leaveNote = getResources().getString(R.string.quest_streetName_answer_noProperStreet_leaveNote);
