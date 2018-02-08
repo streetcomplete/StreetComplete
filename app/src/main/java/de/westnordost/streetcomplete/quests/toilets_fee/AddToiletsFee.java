@@ -32,7 +32,7 @@ public class AddToiletsFee extends SimpleOverpassQuestType
 	}
 
 	@Override public String getCommitMessage() { return "Add toilets fee"; }
-	@Override public int getIcon() { return R.drawable.ic_quest_toilets; }
+	@Override public int getIcon() { return R.drawable.ic_quest_toilet_fee; }
 	@Override public int getTitle(@NonNull Map<String, String> tags)
 	{
 		return R.string.quest_toiletsFee_title;
