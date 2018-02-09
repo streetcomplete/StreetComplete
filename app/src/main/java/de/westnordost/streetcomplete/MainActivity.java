@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete;
 import android.animation.ObjectAnimator;
 import android.graphics.Point;
 import android.graphics.PointF;
+import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -228,6 +229,8 @@ public class MainActivity extends AppCompatActivity implements
 	{
 		super.onStart();
 
+		showUndoFuckupDescriptionOnce();
+
 		uploadedAnswersCounter.update();
 		unsyncedChangesCounter.update();
 
@@ -254,6 +257,33 @@ public class MainActivity extends AppCompatActivity implements
 		else
 		{
 			updateLocationAvailability();
+		}
+	}
+
+	private void showUndoFuckupDescriptionOnce()
+	{
+		boolean hasShown = prefs.getBoolean(Prefs.HAS_SHOWN_UNDO_FUCKUP_WARNING, false);
+		if(!hasShown)
+		{
+			prefs.edit().putBoolean(Prefs.HAS_SHOWN_UNDO_FUCKUP_WARNING, true).apply();
+			// only for users which already authenticated (non-new users)
+			if(prefs.getLong(Prefs.OSM_USER_ID, -1) != -1)
+			{
+				new AlertDialogBuilder(this)
+					.setTitle("Undo feature was broken")
+					.setMessage("Between Jan 7 and Feb 9 (v3.3 to v4.0-beta1) the undo feature was partly broken: Undoing answers that were already uploaded wasn't actually doing anything! (By default, answers are uploaded immediately.)\n\n" +
+						"I am terribly sorry about this. It's fixed now, but if you used the app in that period and undid something on your survey, please check that everything is correct!\n\n" +
+						"If you need assistance, click on \"More info\" or send me an email.")
+					.setCancelable(false)
+					.setNeutralButton("More info", (dialog, which) ->
+					{
+						Intent browserIntent = new Intent(Intent.ACTION_VIEW,
+							Uri.parse("https://github.com/westnordost/StreetComplete/issues/852"));
+						startActivity(browserIntent);
+					})
+					.setPositiveButton("Understood", null)
+					.show();
+			}
 		}
 	}
 
