@@ -339,17 +339,14 @@ public abstract class AOsmQuestChangesUpload
 										  boolean alreadyHandlingChangesetConflict)
 	{
 		Element element = updateElementFromServer(quest.getElementType(), quest.getElementId());
-
 		// if after updating to the new version of the element, the quest is not applicable to the
 		// element anymore, drop it (#720)
 		if(element != null)
 		{
-			Boolean questIsApplicableToElement = quest.getOsmElementQuestType().isApplicableTo(element);
-			if (questIsApplicableToElement != null && !questIsApplicableToElement)
+			if (!questIsApplicableToElement(quest, element))
 			{
 				Log.v(TAG, "Dropping quest " + getQuestStringForLog(quest) +
-						" because the quest is no longer applicable to the element");
-
+					" because the quest is no longer applicable to the element");
 				deleteConflictingQuest(quest);
 				return false;
 			}
@@ -357,6 +354,8 @@ public abstract class AOsmQuestChangesUpload
 
 		return uploadQuestChange(changesetId, quest, element, true, alreadyHandlingChangesetConflict);
 	}
+
+	protected abstract boolean questIsApplicableToElement(OsmQuest quest, Element element);
 
 	private static String getQuestStringForLog(OsmQuest quest)
 	{
