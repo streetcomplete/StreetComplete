@@ -218,7 +218,7 @@ public class OsmQuestChangesUploadTest extends TestCase
 	{
 		MapDataDao mapDataDao = mock(MapDataDao.class);
 		doThrow(OsmConflictException.class).when(mapDataDao)
-				.uploadChanges(any(Long.class), any(Iterable.class), isNull(Handler.class));
+				.uploadChanges(any(Long.class), any(Iterable.class), any(Handler.class));
 		when(mapDataDao.getNode(A_NODE_ID)).thenReturn(null);
 		return mapDataDao;
 	}
