@@ -217,24 +217,32 @@ public abstract class AOsmQuestChangesUpload
 			return false;
 		}
 
+		int[] newVersion = {element.getVersion()};
 		try
 		{
-			osmDao.uploadChanges( changesetId, Collections.singleton(elementWithChangesApplied), null);
-			/* A diff handler is not (yet) necessary: The local copy of an OSM element is updated
-			 * automatically on conflict. A diff handler would be necessary if elements could be
-			 * created or deleted through quests because IDs of elements would then change. */
+			osmDao.uploadChanges(changesetId, Collections.singleton(elementWithChangesApplied),	diffElement ->
+			{
+				if(diffElement.clientId == elementWithChangesApplied.getId())
+				{
+					newVersion[0] = diffElement.serverVersion;
+					/* It is not necessary (yet) to handle updating the element's id because
+					   StreetComplete does not add or delete elements */
+				}
+			});
 		}
 		catch(OsmConflictException e)
 		{
 			return handleConflict(changesetId, quest, element, alreadyHandlingElementConflict,
 					alreadyHandlingChangesetConflict, e);
 		}
+		Element updatedElement = copyElement(elementWithChangesApplied, newVersion[0]);
 
 		closeQuest(quest);
-		elementDB.put(elementWithChangesApplied);
+		// save with new version when persisting to DB
+		elementDB.put(updatedElement);
 		statisticsDB.addOne(quest.getType().getClass().getSimpleName());
 
-		unlockedQuests.addAll(questUnlocker.unlockNewQuests(elementWithChangesApplied));
+		unlockedQuests.addAll(questUnlocker.unlockNewQuests(updatedElement));
 
 		return true;
 	}
@@ -272,7 +280,7 @@ public abstract class AOsmQuestChangesUpload
 			return null;
 		}
 
-		Element copy = copyElement(element);
+		Element copy = copyElement(element, element.getVersion());
 
 		StringMapChanges changes = quest.getChanges();
 		if(changes.hasConflictsTo(copy.getTags()))
@@ -363,7 +371,7 @@ public abstract class AOsmQuestChangesUpload
 				quest.getElementType().name().toLowerCase() + " #" + quest.getElementId();
 	}
 
-	private static Element copyElement(Element e)
+	private static Element copyElement(Element e, int newVersion)
 	{
 		if(e == null) return null;
 		Map<String,String> tagsCopy = new HashMap<>();
@@ -371,16 +379,16 @@ public abstract class AOsmQuestChangesUpload
 
 		if(e instanceof Node)
 		{
-			return new OsmNode(e.getId(), e.getVersion(), ((Node)e).getPosition(), tagsCopy);
+			return new OsmNode(e.getId(), newVersion, ((Node)e).getPosition(), tagsCopy);
 		}
 		if(e instanceof Way)
 		{
-			return new OsmWay(e.getId(), e.getVersion(),
+			return new OsmWay(e.getId(), newVersion,
 					new ArrayList<>(((Way)e).getNodeIds()), tagsCopy);
 		}
 		if(e instanceof Relation)
 		{
-			return new OsmRelation(e.getId(), e.getVersion(),
+			return new OsmRelation(e.getId(), newVersion,
 					new ArrayList<>(((Relation)e).getMembers()), tagsCopy);
 		}
 		return null;
