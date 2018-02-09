@@ -30,6 +30,11 @@ public class OsmQuestChangesUpload extends AOsmQuestChangesUpload
 				changesetsDao, downloadedTilesDao, prefs, questUnlocker);
 	}
 
+	@Override protected String getLogTag()
+	{
+		return "OsmQuestUpload";
+	}
+
 	@Override protected boolean questIsApplicableToElement(OsmQuest quest, Element element)
 	{
 		Boolean questIsApplicableToElement = quest.getOsmElementQuestType().isApplicableTo(element);

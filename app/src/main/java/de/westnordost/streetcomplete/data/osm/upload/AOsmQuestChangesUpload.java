@@ -44,7 +44,7 @@ import de.westnordost.streetcomplete.util.SlippyMapMath;
 
 public abstract class AOsmQuestChangesUpload
 {
-	private static String TAG = "QuestUpload";
+	private final String TAG = getLogTag();
 
 	private final MapDataDao osmDao;
 	private final AOsmQuestDao questDB;
@@ -140,6 +140,8 @@ public abstract class AOsmQuestChangesUpload
 		}
 	}
 
+	protected abstract String getLogTag();
+
 	private void cleanUp()
 	{
 		long yesterday = System.currentTimeMillis() - 24 * 60 * 60 * 1000;
@@ -161,11 +163,11 @@ public abstract class AOsmQuestChangesUpload
 			try
 			{
 				osmDao.closeChangeset(info.changesetId);
-				Log.d(TAG, "Closed changeset #" + info.changesetId + ".");
+				Log.i(TAG, "Closed changeset #" + info.changesetId + ".");
 			}
 			catch (OsmConflictException e)
 			{
-				Log.i(TAG, "Couldn't close changeset #" + info.changesetId + " because it has already been closed.");
+				Log.w(TAG, "Couldn't close changeset #" + info.changesetId + " because it has already been closed.");
 			}
 			finally
 			{
@@ -275,7 +277,7 @@ public abstract class AOsmQuestChangesUpload
 		// The element can be null if it has been deleted in the meantime (outside this app usually)
 		if(element == null)
 		{
-			Log.v(TAG, "Dropping quest " + getQuestStringForLog(quest) +
+			Log.d(TAG, "Dropping quest " + getQuestStringForLog(quest) +
 					" because the associated element has already been deleted");
 			return null;
 		}
@@ -285,7 +287,7 @@ public abstract class AOsmQuestChangesUpload
 		StringMapChanges changes = quest.getChanges();
 		if(changes.hasConflictsTo(copy.getTags()))
 		{
-			Log.v(TAG, "Dropping quest " + getQuestStringForLog(quest) +
+			Log.d(TAG, "Dropping quest " + getQuestStringForLog(quest) +
 					" because there has been a conflict while applying the changes");
 			return null;
 		}
@@ -353,7 +355,7 @@ public abstract class AOsmQuestChangesUpload
 		{
 			if (!questIsApplicableToElement(quest, element))
 			{
-				Log.v(TAG, "Dropping quest " + getQuestStringForLog(quest) +
+				Log.d(TAG, "Dropping quest " + getQuestStringForLog(quest) +
 					" because the quest is no longer applicable to the element");
 				deleteConflictingQuest(quest);
 				return false;
