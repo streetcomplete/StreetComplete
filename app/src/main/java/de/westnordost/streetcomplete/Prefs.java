@@ -20,6 +20,8 @@ public class Prefs
 	public static final String
 			QUEST_ORDER = "quests.order";
 
+	public static final String HAS_SHOWN_UNDO_FUCKUP_WARNING = "alert.undo_fuckup_warning";
+
 	public enum Autosync
 	{
 		ON, WIFI, OFF
