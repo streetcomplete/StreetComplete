@@ -29,6 +29,11 @@ public class UndoOsmQuestChangesUpload extends AOsmQuestChangesUpload
 				changesetsDao, downloadedTilesDao, prefs, questUnlocker);
 	}
 
+	@Override protected String getLogTag()
+	{
+		return "UndoOsmQuestUpload";
+	}
+
 	@Override protected boolean questIsApplicableToElement(OsmQuest quest, Element element)
 	{
 		// can't ask the quest here if it is applicable to the element or not, because the change
