@@ -488,4 +488,8 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_parking_access_private">It is private</string>
     <string name="quest_parking_access_yes">It is public (with or without fee)</string>
     <string name="quest_parking_access_customers">It is only for customers</string>
+    <string name="quest_construction_road_title">Is construction of this road completed?</string>
+    <string name="quest_construction_cycleway_title">Is construction of this cycleway completed?</string>
+    <string name="quest_construction_footway_title">Is construction of this footway completed?</string>
+    <string name="quest_construction_generic_title">Is construction of this way completed?</string>
 </resources>
