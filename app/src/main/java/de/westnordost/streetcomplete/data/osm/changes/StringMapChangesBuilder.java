@@ -29,6 +29,15 @@ public class StringMapChangesBuilder
 		changes.put(key, new StringMapEntryDelete(key, valueBefore));
 	}
 
+	public void deleteIfExists(@NonNull String key)
+	{
+		if(source.get(key) == null)
+		{
+			return;
+		}
+		delete(key);
+	}
+
 	public void add(@NonNull String key, @NonNull String value)
 	{
 		if(source.containsKey(key))

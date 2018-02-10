@@ -1,7 +1,5 @@
 package de.westnordost.streetcomplete.data.osm.download;
 
-import java.time.LocalDate;
-
 import javax.inject.Provider;
 
 import de.westnordost.osmapi.OsmConnection;
