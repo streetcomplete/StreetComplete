@@ -28,12 +28,12 @@ import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 import de.westnordost.streetcomplete.quests.DateHandler;
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment;
 
-public class MarkCompletedConstruction  implements OsmElementQuestType
+public class MarkCompletedHighwayConstruction implements OsmElementQuestType
 {
 	private final OverpassMapDataDao overpassServer;
 
 	@Inject
-	public MarkCompletedConstruction(OverpassMapDataDao overpassServer)
+	public MarkCompletedHighwayConstruction(OverpassMapDataDao overpassServer)
 	{
 		this.overpassServer = overpassServer;
 	}
