@@ -62,6 +62,7 @@ public class QuestModule
 		QuestType[] questTypesOrderedByImportance = {
 				// ↓ 1. notes
 				osmNoteQuestType,
+
 				// ↓ 2. important data that is used by many data consumers
 				new AddRoadName(o, roadNameSuggestionsDao, putRoadNameSuggestionsHandler),
 				new AddHousenumber(o),
