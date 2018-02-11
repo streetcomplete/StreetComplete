@@ -68,30 +68,26 @@ public class MarkCompletedHighwayConstruction implements OsmElementQuestType
 		String currentDate = DateHandler.getCurrentDateString() + "T00:00:00Z";
 		String twoWeeksAgo = DateHandler.getOffsetDateString(-14) + "T00:00:00Z";
 
-		ArrayList<String> acceptedConstructionValues = new ArrayList<String>(Arrays.asList(OsmTaggings.ALL_ROADS));
-		acceptedConstructionValues.add("cycleway");
-		acceptedConstructionValues.add("footway");
-		acceptedConstructionValues.add("path");
 
 		String query = OverpassQLUtil.getOverpassBBox(bbox) +
-			"way[highway=construction] -> .all_roads_under_construction;" +
+			"way[" + mainKeyName() + "=construction] -> .all_ways_under_construction;" +
 			"(" +
 			"way[construction]" +
-				"[construction !~ \"^("+ TextUtils.join("|", acceptedConstructionValues)+")$\"]" +
+				"[construction !~ \"^("+ TextUtils.join("|", validConstructionValues())+")$\"]" +
 			") -> .invalid_construction_type;" +
 			"(" +
-			"way[highway=construction][opening_date](" +
+			"way[" + mainKeyName() + "=construction][opening_date](" +
 			"  if:is_date(t['opening_date']) && date(t['opening_date'])>date('" + currentDate + "'));" +
 			") -> .known_opening_date_in_future;" +
 			"(" +
-			"  way[highway=construction](newer:'" + twoWeeksAgo + "');" +
+			"  way[" + mainKeyName() + "=construction](newer:'" + twoWeeksAgo + "');" +
 			") -> .recently_edited;" +
 			"(" +
-			"  way[highway=construction][fixme];" +
+			"  way[" + mainKeyName() + "=construction][fixme];" +
 			") -> .with_fixme;" +
 			"(" +
 			"(((" +
-			"	.all_roads_under_construction" +
+			"	.all_ways_under_construction" +
 			"	- .known_opening_date_in_future)" +
 			"	- .recently_edited)" +
 			"	- .with_fixme)" +
@@ -100,6 +96,18 @@ public class MarkCompletedHighwayConstruction implements OsmElementQuestType
 			"out meta geom;";
 		Log.e("tag", query);
 		return query;
+	}
+
+	private static ArrayList<String> validConstructionValues(){
+		ArrayList<String> validConstructionValues = new ArrayList<String>(Arrays.asList(OsmTaggings.ALL_ROADS));
+		validConstructionValues.add("cycleway");
+		validConstructionValues.add("footway");
+		validConstructionValues.add("path");
+		return validConstructionValues;
+	}
+
+	private static String mainKeyName() {
+		return "highway";
 	}
 
 	public AbstractQuestAnswerFragment createForm()
