@@ -82,7 +82,7 @@ public class QuestChangesUploadService extends IntentService
 		{
 			if(isBanned())
 			{
-				throw new VersionBannedException();
+				throw new VersionBannedException(banReason);
 			}
 
 			// let's fail early in case of no authorization
@@ -150,9 +150,13 @@ public class QuestChangesUploadService extends IntentService
 					String line;
 					while ((line = reader.readLine()) != null)
 					{
-						if (line.startsWith(ApplicationConstants.USER_AGENT))
+						String[] text = line.split("\t");
+						String userAgent = text[0];
+
+						if (userAgent.equals(ApplicationConstants.USER_AGENT))
 						{
 							banned = true;
+							banReason = text.length > 1 ? text[1] : null;
 							return;
 						}
 					}

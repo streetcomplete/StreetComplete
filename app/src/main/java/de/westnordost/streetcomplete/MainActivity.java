@@ -24,9 +24,12 @@ import android.support.annotation.UiThread;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.LocalBroadcastManager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.preference.PreferenceManager;
 import android.support.v7.widget.Toolbar;
+import android.text.method.LinkMovementMethod;
+import android.text.util.Linkify;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -495,10 +498,28 @@ public class MainActivity extends AppCompatActivity implements
 			{
 				if(e instanceof VersionBannedException)
 				{
-					new AlertDialogBuilder(MainActivity.this)
-							.setMessage(R.string.version_banned_message)
+					String message = getString(R.string.version_banned_message);
+					VersionBannedException vbe = (VersionBannedException) e;
+					if(vbe.getBanReason() != null)
+					{
+						message += "\n\n" + vbe.getBanReason();
+					}
+
+					AlertDialog dialog = new AlertDialogBuilder(MainActivity.this)
+							.setMessage(message)
 							.setPositiveButton(android.R.string.ok, null)
-							.show();
+							.create();
+
+					dialog.show();
+
+					// Makes links in the alert dialog clickable
+					View messageView = dialog.findViewById(android.R.id.message);
+					if(messageView != null && messageView instanceof TextView)
+					{
+						TextView messageText = (TextView) messageView;
+						messageText.setMovementMethod(LinkMovementMethod.getInstance());
+						Linkify.addLinks(messageText, Linkify.WEB_URLS);
+					}
 				}
 				else if(e instanceof OsmConnectionException)
 				{
