@@ -110,6 +110,8 @@ public class MarkCompletedConstruction  implements OsmElementQuestType
 	public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
 	{
 		if(answer.getBoolean(YesNoQuestAnswerFragment.ANSWER)) {
+			changes.addOrModify(OsmTaggings.SURVEY_MARK_KEY, DateHandler.getCurrentDateString());
+		} else {
 			if(isAnyAccessTagPresent(changes)){
 				// there are some access tag present that are likely to be temporary
 				// and valid only during construction - marking construction as finished
@@ -127,8 +129,6 @@ public class MarkCompletedConstruction  implements OsmElementQuestType
 			changes.deleteIfPresent("opening_date");
 			changes.deleteIfPresent("source:opening_date");
 			changes.deleteIfPresent(OsmTaggings.SURVEY_MARK_KEY);
-		} else {
-			changes.addOrModify(OsmTaggings.SURVEY_MARK_KEY, DateHandler.getCurrentDateString());
 		}
 	}
 
