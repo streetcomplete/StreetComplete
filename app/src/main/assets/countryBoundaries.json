@@ -1860,7 +1860,7 @@
 	"type":"Feature",
 	"properties":{
 		"ISO3166-1:alpha2":"TW",
-		"ISO3166-2":"CN-71",
+		"ISO3166-2":"CN-TW",
 		"name:en":"Taiwan"
 	},
 	"geometry":{
@@ -2478,7 +2478,7 @@
 	"type":"Feature",
 	"properties":{
 		"ISO3166-1:alpha2":"HK",
-		"ISO3166-2":"CN-91",
+		"ISO3166-2":"CN-HK",
 		"name:en":"Hong Kong"
 	},
 	"geometry":{
@@ -2552,7 +2552,7 @@
 	"type":"Feature",
 	"properties":{
 		"ISO3166-1:alpha2":"MO",
-		"ISO3166-2":"CN-92",
+		"ISO3166-2":"CN-MO",
 		"name:en":"Macau"
 	},
 	"geometry":{
@@ -3644,7 +3644,7 @@
 {
 	"type":"Feature",
 	"properties":{
-		"ISO3166-2":"CN-54",
+		"ISO3166-2":"CN-XZ",
 		"name:en":"Tibet"
 	},
 	"geometry":{
@@ -3655,7 +3655,7 @@
 {
 	"type":"Feature",
 	"properties":{
-		"ISO3166-2":"CN-65",
+		"ISO3166-2":"CN-XJ",
 		"name:en":"Xinjiang"
 	},
 	"geometry":{
@@ -3666,7 +3666,7 @@
 {
 	"type":"Feature",
 	"properties":{
-		"ISO3166-2":"CN-15",
+		"ISO3166-2":"CN-NM",
 		"name:en":"Inner Mongolia"
 	},
 	"geometry":{
@@ -3677,7 +3677,7 @@
 {
 	"type":"Feature",
 	"properties":{
-		"ISO3166-2":"CN-63",
+		"ISO3166-2":"CN-QH",
 		"name:en":"Qinghai"
 	},
 	"geometry":{
@@ -3688,7 +3688,7 @@
 {
 	"type":"Feature",
 	"properties":{
-		"ISO3166-2":"CN-45",
+		"ISO3166-2":"CN-GX",
 		"name:en":"Guangxi"
 	},
 	"geometry":{
@@ -3699,7 +3699,7 @@
 {
 	"type":"Feature",
 	"properties":{
-		"ISO3166-2":"CN-53",
+		"ISO3166-2":"CN-YN",
 		"name:en":"Yunnan"
 	},
 	"geometry":{
@@ -3710,7 +3710,7 @@
 {
 	"type":"Feature",
 	"properties":{
-		"ISO3166-2":"CN-51",
+		"ISO3166-2":"CN-SC",
 		"name:en":"Sichuan"
 	},
 	"geometry":{
@@ -3721,7 +3721,7 @@
 {
 	"type":"Feature",
 	"properties":{
-		"ISO3166-2":"CN-62",
+		"ISO3166-2":"CN-GS",
 		"name:en":"Gansu"
 	},
 	"geometry":{
@@ -3732,7 +3732,7 @@
 {
 	"type":"Feature",
 	"properties":{
-		"ISO3166-2":"CN-64",
+		"ISO3166-2":"CN-NX",
 		"name:en":"Ningxia"
 	},
 	"geometry":{
@@ -3743,7 +3743,7 @@
 {
 	"type":"Feature",
 	"properties":{
-		"ISO3166-2":"CN-23",
+		"ISO3166-2":"CN-HL",
 		"name:en":"Heilongjiang"
 	},
 	"geometry":{
@@ -3754,7 +3754,7 @@
 {
 	"type":"Feature",
 	"properties":{
-		"ISO3166-2":"CN-22",
+		"ISO3166-2":"CN-JL",
 		"name:en":"Jilin"
 	},
 	"geometry":{
@@ -3765,7 +3765,7 @@
 {
 	"type":"Feature",
 	"properties":{
-		"ISO3166-2":"CN-21",
+		"ISO3166-2":"CN-LN",
 		"name:en":"Liaoning"
 	},
 	"geometry":{
@@ -4161,7 +4161,7 @@
 {
 	"type":"Feature",
 	"properties":{
-		"ISO3166-2":"CN-61",
+		"ISO3166-2":"CN-SN",
 		"name:en":"Shaanxi"
 	},
 	"geometry":{
@@ -4172,7 +4172,7 @@
 {
 	"type":"Feature",
 	"properties":{
-		"ISO3166-2":"CN-52",
+		"ISO3166-2":"CN-GZ",
 		"name:en":"Guizhou"
 	},
 	"geometry":{
@@ -4183,7 +4183,7 @@
 {
 	"type":"Feature",
 	"properties":{
-		"ISO3166-2":"CN-50",
+		"ISO3166-2":"CN-CQ",
 		"name:en":"Chongqing"
 	},
 	"geometry":{
@@ -4194,7 +4194,7 @@
 {
 	"type":"Feature",
 	"properties":{
-		"ISO3166-2":"CN-46",
+		"ISO3166-2":"CN-HI",
 		"name:en":"Hainan"
 	},
 	"geometry":{
@@ -4205,7 +4205,7 @@
 {
 	"type":"Feature",
 	"properties":{
-		"ISO3166-2":"CN-43",
+		"ISO3166-2":"CN-HN",
 		"name:en":"Hunan"
 	},
 	"geometry":{
@@ -4216,7 +4216,7 @@
 {
 	"type":"Feature",
 	"properties":{
-		"ISO3166-2":"CN-42",
+		"ISO3166-2":"CN-HB",
 		"name:en":"Hubei"
 	},
 	"geometry":{
@@ -4227,7 +4227,7 @@
 {
 	"type":"Feature",
 	"properties":{
-		"ISO3166-2":"CN-41",
+		"ISO3166-2":"CN-HA",
 		"name:en":"Henan"
 	},
 	"geometry":{
@@ -4238,7 +4238,7 @@
 {
 	"type":"Feature",
 	"properties":{
-		"ISO3166-2":"CN-37",
+		"ISO3166-2":"CN-SD",
 		"name:en":"Shandong"
 	},
 	"geometry":{
@@ -4249,7 +4249,7 @@
 {
 	"type":"Feature",
 	"properties":{
-		"ISO3166-2":"CN-36",
+		"ISO3166-2":"CN-JX",
 		"name:en":"Jiangxi"
 	},
 	"geometry":{
@@ -4260,7 +4260,7 @@
 {
 	"type":"Feature",
 	"properties":{
-		"ISO3166-2":"CN-34",
+		"ISO3166-2":"CN-AH",
 		"name:en":"Anhui"
 	},
 	"geometry":{
@@ -4271,7 +4271,7 @@
 {
 	"type":"Feature",
 	"properties":{
-		"ISO3166-2":"CN-35",
+		"ISO3166-2":"CN-FJ",
 		"name:en":"Fujian"
 	},
 	"geometry":{
@@ -4282,7 +4282,7 @@
 {
 	"type":"Feature",
 	"properties":{
-		"ISO3166-2":"CN-33",
+		"ISO3166-2":"CN-ZJ",
 		"name:en":"Zhejiang"
 	},
 	"geometry":{
@@ -4293,7 +4293,7 @@
 {
 	"type":"Feature",
 	"properties":{
-		"ISO3166-2":"CN-32",
+		"ISO3166-2":"CN-JS",
 		"name:en":"Jiangsu"
 	},
 	"geometry":{
@@ -4304,7 +4304,7 @@
 {
 	"type":"Feature",
 	"properties":{
-		"ISO3166-2":"CN-31",
+		"ISO3166-2":"CN-SH",
 		"name:en":"Shanghai"
 	},
 	"geometry":{
@@ -4315,7 +4315,7 @@
 {
 	"type":"Feature",
 	"properties":{
-		"ISO3166-2":"CN-14",
+		"ISO3166-2":"CN-SX",
 		"name:en":"Shanxi"
 	},
 	"geometry":{
@@ -4326,7 +4326,7 @@
 {
 	"type":"Feature",
 	"properties":{
-		"ISO3166-2":"CN-13",
+		"ISO3166-2":"CN-HE",
 		"name:en":"Hebei"
 	},
 	"geometry":{
@@ -4337,7 +4337,7 @@
 {
 	"type":"Feature",
 	"properties":{
-		"ISO3166-2":"CN-12",
+		"ISO3166-2":"CN-TJ",
 		"name:en":"Tianjin"
 	},
 	"geometry":{
@@ -4348,7 +4348,7 @@
 {
 	"type":"Feature",
 	"properties":{
-		"ISO3166-2":"CN-11",
+		"ISO3166-2":"CN-BJ",
 		"name:en":"Beijing"
 	},
 	"geometry":{
@@ -4945,7 +4945,7 @@
 {
 	"type":"Feature",
 	"properties":{
-		"ISO3166-2":"CN-44",
+		"ISO3166-2":"CN-GD",
 		"name:en":"Guangdong"
 	},
 	"geometry":{

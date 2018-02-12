@@ -39565,7 +39565,7 @@
     <nd ref='-11956' />
     <nd ref='-11952' />
     <tag k='ISO3166-1:alpha2' v='TW' />
-    <tag k='ISO3166-2' v='CN-71' />
+    <tag k='ISO3166-2' v='CN-TW' />
     <tag k='name:en' v='Taiwan' />
     <tag k='note' v='Self admin.; Claimed by China' />
   </way>
@@ -43863,7 +43863,7 @@
     <nd ref='-22530' />
     <nd ref='-22518' />
     <tag k='ISO3166-1:alpha2' v='HK' />
-    <tag k='ISO3166-2' v='CN-91' />
+    <tag k='ISO3166-2' v='CN-HK' />
     <tag k='driving_side' v='left' />
     <tag k='name:en' v='Hong Kong' />
   </way>
@@ -43935,7 +43935,7 @@
     <nd ref='-22610' />
     <nd ref='-22582' />
     <tag k='ISO3166-1:alpha2' v='MO' />
-    <tag k='ISO3166-2' v='CN-92' />
+    <tag k='ISO3166-2' v='CN-MO' />
     <tag k='driving_side' v='left' />
     <tag k='name:en' v='Macau' />
   </way>
@@ -50476,7 +50476,7 @@
     <nd ref='-22184' />
     <nd ref='-22186' />
     <nd ref='-22190' />
-    <tag k='ISO3166-2' v='CN-54' />
+    <tag k='ISO3166-2' v='CN-XZ' />
     <tag k='name:en' v='Tibet' />
   </way>
   <way id='-85625'>
@@ -50692,7 +50692,7 @@
     <nd ref='-85122' />
     <nd ref='-85124' />
     <nd ref='-85126' />
-    <tag k='ISO3166-2' v='CN-65' />
+    <tag k='ISO3166-2' v='CN-XJ' />
     <tag k='name:en' v='Xinjiang' />
   </way>
   <way id='-86238'>
@@ -51030,7 +51030,7 @@
     <nd ref='-13020' />
     <nd ref='-13018' />
     <nd ref='-7972' />
-    <tag k='ISO3166-2' v='CN-15' />
+    <tag k='ISO3166-2' v='CN-NM' />
     <tag k='name:en' v='Inner Mongolia' />
   </way>
   <way id='-86868'>
@@ -51190,7 +51190,7 @@
     <nd ref='-85284' />
     <nd ref='-85286' />
     <nd ref='-85288' />
-    <tag k='ISO3166-2' v='CN-63' />
+    <tag k='ISO3166-2' v='CN-QH' />
     <tag k='name:en' v='Qinghai' />
   </way>
   <way id='-87708'>
@@ -51395,7 +51395,7 @@
     <nd ref='-2502' />
     <nd ref='-2550' />
     <nd ref='-2504' />
-    <tag k='ISO3166-2' v='CN-45' />
+    <tag k='ISO3166-2' v='CN-GX' />
     <tag k='name:en' v='Guangxi' />
   </way>
   <way id='-88317'>
@@ -51762,7 +51762,7 @@
     <nd ref='-87372' />
     <nd ref='-87374' />
     <nd ref='-87376' />
-    <tag k='ISO3166-2' v='CN-53' />
+    <tag k='ISO3166-2' v='CN-YN' />
     <tag k='name:en' v='Yunnan' />
   </way>
   <way id='-89333'>
@@ -51960,7 +51960,7 @@
     <nd ref='-86943' />
     <nd ref='-86947' />
     <nd ref='-86949' />
-    <tag k='ISO3166-2' v='CN-51' />
+    <tag k='ISO3166-2' v='CN-SC' />
     <tag k='name:en' v='Sichuan' />
   </way>
   <way id='-90005'>
@@ -52104,7 +52104,7 @@
     <nd ref='-89342' />
     <nd ref='-89340' />
     <nd ref='-89338' />
-    <tag k='ISO3166-2' v='CN-62' />
+    <tag k='ISO3166-2' v='CN-GS' />
     <tag k='name:en' v='Gansu' />
   </way>
   <way id='-90235'>
@@ -52137,7 +52137,7 @@
     <nd ref='-90111' />
     <nd ref='-90113' />
     <nd ref='-90115' />
-    <tag k='ISO3166-2' v='CN-64' />
+    <tag k='ISO3166-2' v='CN-NX' />
     <tag k='name:en' v='Ningxia' />
   </way>
   <way id='-90295'>
@@ -52270,7 +52270,7 @@
     <nd ref='-86293' />
     <nd ref='-86295' />
     <nd ref='-86297' />
-    <tag k='ISO3166-2' v='CN-23' />
+    <tag k='ISO3166-2' v='CN-HL' />
     <tag k='name:en' v='Heilongjiang' />
   </way>
   <way id='-90451'>
@@ -52402,7 +52402,7 @@
     <nd ref='-86343' />
     <nd ref='-86345' />
     <nd ref='-86347' />
-    <tag k='ISO3166-2' v='CN-22' />
+    <tag k='ISO3166-2' v='CN-JL' />
     <tag k='name:en' v='Jilin' />
   </way>
   <way id='-90625'>
@@ -52486,7 +52486,7 @@
     <nd ref='-27310' />
     <nd ref='-12220' />
     <nd ref='-10870' />
-    <tag k='ISO3166-2' v='CN-21' />
+    <tag k='ISO3166-2' v='CN-LN' />
     <tag k='name:en' v='Liaoning' />
   </way>
   <way id='-90752'>
@@ -56385,7 +56385,7 @@
     <nd ref='-90191' />
     <nd ref='-90193' />
     <nd ref='-90195' />
-    <tag k='ISO3166-2' v='CN-61' />
+    <tag k='ISO3166-2' v='CN-SN' />
     <tag k='name:en' v='Shaanxi' />
   </way>
   <way id='-98912'>
@@ -56570,7 +56570,7 @@
     <nd ref='-87462' />
     <nd ref='-87464' />
     <nd ref='-87466' />
-    <tag k='ISO3166-2' v='CN-52' />
+    <tag k='ISO3166-2' v='CN-GZ' />
     <tag k='name:en' v='Guizhou' />
   </way>
   <way id='-99015'>
@@ -56727,7 +56727,7 @@
     <nd ref='-99021' />
     <nd ref='-99017' />
     <nd ref='-99011' />
-    <tag k='ISO3166-2' v='CN-50' />
+    <tag k='ISO3166-2' v='CN-CQ' />
     <tag k='name:en' v='Chongqing' />
   </way>
   <way id='-99432'>
@@ -56737,7 +56737,7 @@
     <nd ref='-99434' />
     <nd ref='-11958' />
     <nd ref='-11960' />
-    <tag k='ISO3166-2' v='CN-46' />
+    <tag k='ISO3166-2' v='CN-HI' />
     <tag k='name:en' v='Hainan' />
   </way>
   <way id='-99452'>
@@ -57006,7 +57006,7 @@
     <nd ref='-98983' />
     <nd ref='-98985' />
     <nd ref='-99758' />
-    <tag k='ISO3166-2' v='CN-43' />
+    <tag k='ISO3166-2' v='CN-HN' />
     <tag k='name:en' v='Hunan' />
   </way>
   <way id='-100002'>
@@ -57157,7 +57157,7 @@
     <nd ref='-98763' />
     <nd ref='-98765' />
     <nd ref='-98767' />
-    <tag k='ISO3166-2' v='CN-42' />
+    <tag k='ISO3166-2' v='CN-HB' />
     <tag k='name:en' v='Hubei' />
   </way>
   <way id='-100210'>
@@ -57262,7 +57262,7 @@
     <nd ref='-98775' />
     <nd ref='-98777' />
     <nd ref='-98779' />
-    <tag k='ISO3166-2' v='CN-41' />
+    <tag k='ISO3166-2' v='CN-HA' />
     <tag k='name:en' v='Henan' />
   </way>
   <way id='-100399'>
@@ -57320,7 +57320,7 @@
     <nd ref='-11932' />
     <nd ref='-10870' />
     <nd ref='-90624' />
-    <tag k='ISO3166-2' v='CN-37' />
+    <tag k='ISO3166-2' v='CN-SD' />
     <tag k='name:en' v='Shandong' />
   </way>
   <way id='-100491'>
@@ -57442,7 +57442,7 @@
     <nd ref='-99571' />
     <nd ref='-99569' />
     <nd ref='-99567' />
-    <tag k='ISO3166-2' v='CN-36' />
+    <tag k='ISO3166-2' v='CN-JX' />
     <tag k='name:en' v='Jiangxi' />
   </way>
   <way id='-100567'>
@@ -57565,7 +57565,7 @@
     <nd ref='-100573' />
     <nd ref='-100569' />
     <nd ref='-100564' />
-    <tag k='ISO3166-2' v='CN-34' />
+    <tag k='ISO3166-2' v='CN-AH' />
     <tag k='name:en' v='Anhui' />
   </way>
   <way id='-100680'>
@@ -57642,7 +57642,7 @@
     <nd ref='-99521' />
     <nd ref='-99519' />
     <nd ref='-99515' />
-    <tag k='ISO3166-2' v='CN-35' />
+    <tag k='ISO3166-2' v='CN-FJ' />
     <tag k='name:en' v='Fujian' />
   </way>
   <way id='-100973'>
@@ -57715,7 +57715,7 @@
     <nd ref='-100692' />
     <nd ref='-100689' />
     <nd ref='-11942' />
-    <tag k='ISO3166-2' v='CN-33' />
+    <tag k='ISO3166-2' v='CN-ZJ' />
     <tag k='name:en' v='Zhejiang' />
   </way>
   <way id='-101075'>
@@ -57813,7 +57813,7 @@
     <nd ref='-100990' />
     <nd ref='-100988' />
     <nd ref='-100986' />
-    <tag k='ISO3166-2' v='CN-32' />
+    <tag k='ISO3166-2' v='CN-JS' />
     <tag k='name:en' v='Jiangsu' />
   </way>
   <way id='-101242'>
@@ -57850,7 +57850,7 @@
     <nd ref='-101116' />
     <nd ref='-101118' />
     <nd ref='-11942' />
-    <tag k='ISO3166-2' v='CN-31' />
+    <tag k='ISO3166-2' v='CN-SH' />
     <tag k='name:en' v='Shanghai' />
   </way>
   <way id='-101286'>
@@ -57943,7 +57943,7 @@
     <nd ref='-100211' />
     <nd ref='-100209' />
     <nd ref='-98779' />
-    <tag k='ISO3166-2' v='CN-14' />
+    <tag k='ISO3166-2' v='CN-SX' />
     <tag k='name:en' v='Shanxi' />
   </way>
   <way id='-101411'>
@@ -58138,7 +58138,7 @@
     <nd ref='-101378' />
     <nd ref='-101380' />
     <nd ref='-101382' />
-    <tag k='ISO3166-2' v='CN-13' />
+    <tag k='ISO3166-2' v='CN-HE' />
     <tag k='name:en' v='Hebei' />
   </way>
   <way id='-101711'>
@@ -58192,7 +58192,7 @@
     <nd ref='-101437' />
     <nd ref='-101435' />
     <nd ref='-101433' />
-    <tag k='ISO3166-2' v='CN-12' />
+    <tag k='ISO3166-2' v='CN-TJ' />
     <tag k='name:en' v='Tianjin' />
   </way>
   <way id='-101781'>
@@ -58262,7 +58262,7 @@
     <nd ref='-101579' />
     <nd ref='-101581' />
     <nd ref='-101731' />
-    <tag k='ISO3166-2' v='CN-11' />
+    <tag k='ISO3166-2' v='CN-BJ' />
     <tag k='name:en' v='Beijing' />
   </way>
   <relation id='-29600'>
@@ -58715,7 +58715,7 @@
     <member type='way' ref='-99452' role='outer' />
     <member type='way' ref='-29370' role='inner' />
     <member type='way' ref='-29384' role='inner' />
-    <tag k='ISO3166-2' v='CN-44' />
+    <tag k='ISO3166-2' v='CN-GD' />
     <tag k='name:en' v='Guangdong' />
     <tag k='type' v='multipolygon' />
   </relation>

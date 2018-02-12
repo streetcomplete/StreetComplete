@@ -55,7 +55,7 @@ public class AddTactilePavingCrosswalk extends SimpleOverpassQuestType
 		// America
 		"US","CA","AR",
 		// Asia
-		"CN-91","SG","KR","JP",
+		"HK","SG","KR","JP",
 		// Oceania
 		"AU","NZ",
 	});

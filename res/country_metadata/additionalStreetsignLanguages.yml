@@ -7,10 +7,8 @@ AE: [en]
 AM: [en]
 BG: [en]
 BH: [en]
-# Shanghai
-CN-31: [en]
-# Beijing
-CN-11: [en]
+CN-SH: [en]
+CN-BJ: [en]
 EG: [en]
 EE: [ru]
 # can be removed if osmBoundaries is extended to differenciate between Catalunia, Valencia, Basque,...

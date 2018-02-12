@@ -223,8 +223,8 @@ public class AddCycleway implements OsmElementQuestType
 			// East Asia
 			"JP","KR","TW",
 			// some of China (East Coast)
-			"CN-11","CN-12","CN-37","CN-32","CN-31",
-			"CN-33","CN-35","CN-44","CN-50",
+			"CN-BJ","CN-TJ","CN-SD","CN-JS","CN-SH",
+			"CN-ZJ","CN-FJ","CN-GD","CN-CQ",
 			// Australia etc
 			"NZ","AU",
 			// some of Canada
