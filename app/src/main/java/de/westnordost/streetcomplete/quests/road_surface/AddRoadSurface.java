@@ -49,7 +49,16 @@ public class AddRoadSurface extends SimpleOverpassQuestType
 	@Override public int getTitle(@NonNull Map<String, String> tags)
 	{
 		boolean hasName = tags.containsKey("name");
-		if(hasName) return R.string.quest_streetSurface_name_title;
-		else        return R.string.quest_streetSurface_title;
+		boolean isSquare = tags.containsKey("area") && tags.get("area").equals("yes");
+		if(hasName)
+		{
+			if(isSquare) return R.string.quest_streetSurface_square_name_title;
+			else return R.string.quest_streetSurface_name_title;
+		}
+		else
+		{
+			if(isSquare) return R.string.quest_streetSurface_square_title;
+			else return R.string.quest_streetSurface_title;
+		}
 	}
 }
