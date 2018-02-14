@@ -165,7 +165,8 @@ public class AddRoadName implements OsmElementQuestType
 	@Override public int getIcon() { return R.drawable.ic_quest_street_name; }
 	@Override public int getTitle() { return R.string.quest_streetName_title; }
 	@Override public int getTitle(@NonNull Map<String,String> tags) {
-		if (tags.get("highway").equals("pedestrian")) return R.string.quest_streetName_pedestrian_title;
+		boolean isPedestrian = "pedestrian".equals(tags.get("highway"));
+		if (isPedestrian) return R.string.quest_streetName_pedestrian_title;
 		else return R.string.quest_streetName_title;
 	}
 
