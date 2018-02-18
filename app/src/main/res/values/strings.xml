@@ -491,4 +491,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_streetName_pedestrian_title">What is the name of this pedestrian street?</string>
     <string name="quest_streetSurface_square_title">"What surface does this square have?"</string>
     <string name="quest_streetSurface_square_name_title">"What surface does the square \"%s\" have here?"</string>
+    <string name="pref_category_map">Map</string>
+    <string name="pref_title_mapstyle">Select mapstyle</string>
 </resources>

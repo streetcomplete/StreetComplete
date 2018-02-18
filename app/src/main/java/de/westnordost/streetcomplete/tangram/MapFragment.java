@@ -42,6 +42,7 @@ import com.mapzen.tangram.SceneError;
 import com.mapzen.tangram.TouchInput;
 
 import java.io.File;
+import java.util.Calendar;
 
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.streetcomplete.Prefs;
@@ -81,6 +82,8 @@ public class MapFragment extends Fragment implements
 	private boolean zoomedYet;
 	private boolean isCompassMode;
 
+	private SharedPreferences prefs;
+
 	private MapControlsFragment mapControls;
 
 	private String apiKey;
@@ -112,6 +115,8 @@ public class MapFragment extends Fragment implements
 		mapzenLink.setMovementMethod(LinkMovementMethod.getInstance());
 		mapzenLink.setVisibility(View.GONE);
 
+		prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+
 		return view;
 	}
 
@@ -128,7 +133,32 @@ public class MapFragment extends Fragment implements
 
 	public void getMapAsync(String apiKey)
 	{
-		getMapAsync(apiKey, "map_theme/scene.yaml");
+		getMapAsync(apiKey, getSceneFilePath());
+	}
+
+	private String getSceneFilePath()
+	{
+		Prefs.Mapstyle p = Prefs.Mapstyle.valueOf(prefs.getString(Prefs.MAPSTYLE,"LIGHT"));
+		String filename = "streetcomplete-light-style.yaml";
+		switch (p)
+		{
+			case LIGHT:
+				filename = "streetcomplete-light-style.yaml";
+				break;
+			case DARK:
+				filename = "streetcomplete-dark-style.yaml";
+				break;
+			case SATELLITE:
+				filename = "streetcomplete-satellite-style.yaml";
+				break;
+			case AUTO:
+				int hourOfDay = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
+				if (hourOfDay < 6 || hourOfDay > 18) filename = "streetcomplete-dark-style.yaml";
+				else filename = "streetcomplete-light-style.yaml";
+				break;
+		}
+
+		return "map_theme/" + filename;
 	}
 
 	@CallSuper public void getMapAsync(String apiKey, @NonNull final String sceneFilePath)
@@ -603,6 +633,7 @@ public class MapFragment extends Fragment implements
 		super.onResume();
 		compass.onResume();
 		if(mapView != null) mapView.onResume();
+		loadScene(getSceneFilePath());
 	}
 
 	@Override public void onPause()

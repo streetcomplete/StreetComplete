@@ -14,7 +14,8 @@ public class Prefs
 			AUTOSYNC = "autosync",
 			LAST_SOLVED_QUEST_TIME = "changesets.lastQuestSolvedTime",
 			KEEP_SCREEN_ON = "display.keepScreenOn",
-			UNGLUE_HINT_TIMES_SHOWN = "unglueHint.shown";
+			UNGLUE_HINT_TIMES_SHOWN = "unglueHint.shown",
+			MAPSTYLE = "map.mapstyle";
 
 	// not shown anywhere directly
 	public static final String
@@ -27,4 +28,8 @@ public class Prefs
 	{
 		ON, WIFI, OFF
 	}
+	 public enum Mapstyle
+	 {
+	 	LIGHT, DARK, AUTO, SATELLITE
+	 }
 }

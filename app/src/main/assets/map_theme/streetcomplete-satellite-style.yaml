@@ -1,6 +1,7 @@
 import:
     - global.yaml
     - layers/labels.yaml
+    - streetcomplete.yaml
 
 sources:
     mapbox-satellite:

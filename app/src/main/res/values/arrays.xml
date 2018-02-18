@@ -12,4 +12,18 @@
         <item>OFF</item>
     </string-array>
 
+    <string-array name="pref_entries_mapstyle" translatable="false">
+        <item>Light</item>
+        <item>Dark</item>
+        <item>Auto</item>
+        <item>Satellite</item>
+    </string-array>
+
+    <string-array name="pref_entryvalues_mapstyle" translatable="false">
+        <item>LIGHT</item>
+        <item>DARK</item>
+        <item>AUTO</item>
+        <item>SATELLITE</item>
+    </string-array>
+
 </resources>
