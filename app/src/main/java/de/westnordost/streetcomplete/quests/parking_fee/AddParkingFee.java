@@ -16,20 +16,32 @@ import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
-import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment;
 
 public class AddParkingFee extends SimpleOverpassQuestType
 {
 	@Inject public AddParkingFee(OverpassMapDataDao overpassServer) { super(overpassServer); }
 
-	@Override protected String getTagFilters() { return "nodes, ways with amenity=parking and access ~ yes|customers|public and !fee"; }
+	@Override protected String getTagFilters()
+	{
+		return "nodes, ways with amenity=parking and access ~ yes|customers|public and !fee";
+		// TODO add fee:conditional
+	}
 
-	public AbstractQuestAnswerFragment createForm() { return new YesNoQuestAnswerFragment(); }
+	public AbstractQuestAnswerFragment createForm() { return new AddParkingFeeForm(); }
 
 	public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
 	{
-		String yesno = answer.getBoolean(YesNoQuestAnswerFragment.ANSWER) ? "yes" : "no";
-		changes.add("fee", yesno);
+		if(answer.containsKey(AddParkingFeeForm.FEE))
+		{
+			boolean hasFee = answer.getBoolean(AddParkingFeeForm.FEE);
+			changes.add("fee", hasFee ? "yes" : "no");
+		}
+		else
+		{
+			String hours = answer.getString(AddParkingFeeForm.FEE_CONDITONAL_HOURS);
+			changes.add("fee", "conditionally");
+			changes.add("fee:conditional", "yes @ (" + hours + ")");
+		}
 	}
 
 	@Override public String getCommitMessage() { return "Add whether there is a parking fee"; }
