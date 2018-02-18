@@ -28,7 +28,8 @@ public class AddRoadSurfaceForm extends AbstractQuestFormAnswerFragment
 		COMPACTED =		new Item("compacted", R.drawable.surface_compacted, R.string.quest_surface_value_compacted),
 		DIRT =			new Item("dirt", R.drawable.surface_dirt, R.string.quest_surface_value_dirt),
 		SETT =			new Item("sett", R.drawable.surface_sett, R.string.quest_surface_value_sett),
-		COBBLESTONE =	new Item("cobblestone", R.drawable.surface_cobblestone, R.string.quest_surface_value_cobblestone),
+		// https://forum.openstreetmap.org/viewtopic.php?id=61042
+		UNHEWN_COBBLESTONE = new Item("unhewn_cobblestone", R.drawable.surface_cobblestone, R.string.quest_surface_value_unhewn_cobblestone),
 		GRASS_PAVER =	new Item("grass_paver", R.drawable.surface_grass_paver, R.string.quest_surface_value_grass_paver),
 		WOOD =			new Item("wood", R.drawable.surface_wood, R.string.quest_surface_value_wood),
 		METAL =			new Item("metal", R.drawable.surface_metal, R.string.quest_surface_value_metal),
@@ -47,7 +48,7 @@ public class AddRoadSurfaceForm extends AbstractQuestFormAnswerFragment
 	private final Item[] ALL_SURFACES = new Item[] {
 		new Item("paved", R.drawable.panorama_surface_paved, R.string.quest_surface_value_paved, new Item[]{
 				ASPHALT, CONCRETE, PAVING_STONES,
-				SETT, COBBLESTONE, GRASS_PAVER,
+				SETT, UNHEWN_COBBLESTONE, GRASS_PAVER,
 				WOOD, METAL,
 		}),
 		new Item("unpaved", R.drawable.panorama_surface_unpaved, R.string.quest_surface_value_unpaved, new Item[]{
