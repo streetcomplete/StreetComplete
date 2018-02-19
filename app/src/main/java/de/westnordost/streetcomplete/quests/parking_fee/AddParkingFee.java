@@ -23,28 +23,28 @@ public class AddParkingFee extends SimpleOverpassQuestType
 
 	@Override protected String getTagFilters()
 	{
-		return "nodes, ways with amenity=parking and access ~ yes|customers|public and !fee";
-		// TODO add fee:conditional
+		return "nodes, ways with" +
+		       " amenity = parking and !fee and !fee:conditional and" +
+		       " access ~ yes|customers|public";
 	}
 
 	public AbstractQuestAnswerFragment createForm() { return new AddParkingFeeForm(); }
 
 	public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
 	{
-		if(answer.containsKey(AddParkingFeeForm.FEE))
-		{
-			boolean hasFee = answer.getBoolean(AddParkingFeeForm.FEE);
-			changes.add("fee", hasFee ? "yes" : "no");
-		}
-		else
+		boolean hasFee = answer.getBoolean(AddParkingFeeForm.FEE);
+		changes.add("fee", toYesNo(hasFee));
+
+		if(answer.containsKey(AddParkingFeeForm.FEE_CONDITONAL_HOURS))
 		{
 			String hours = answer.getString(AddParkingFeeForm.FEE_CONDITONAL_HOURS);
-			changes.add("fee", "conditionally");
-			changes.add("fee:conditional", "yes @ (" + hours + ")");
+			changes.add("fee:conditional", toYesNo(!hasFee) + " @ (" + hours + ")");
 		}
 	}
 
 	@Override public String getCommitMessage() { return "Add whether there is a parking fee"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_parking_fee; }
 	@Override public int getTitle(@NonNull Map<String, String> tags) { return R.string.quest_parking_fee_title; }
+
+	private static String toYesNo(boolean b) {  return b ? "yes" : "no"; }
 }
