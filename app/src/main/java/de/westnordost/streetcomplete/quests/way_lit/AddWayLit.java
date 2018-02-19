@@ -82,15 +82,9 @@ public class AddWayLit extends SimpleOverpassQuestType
 		boolean hasName = tags.containsKey("name");
 		boolean isRoad = Arrays.asList(LIT_NON_RESIDENTIAL_ROADS).contains(type) ||
 				Arrays.asList(LIT_RESIDENTIAL_ROADS).contains(type);
-		if (isRoad)
-		{
-			if (hasName) return R.string.quest_way_lit_named_road_title;
-			else         return R.string.quest_way_lit_road_title;
-		}
-		else
-		{
-			if (hasName) return R.string.quest_way_lit_named_title;
-			else         return R.string.quest_way_lit_title;
-		}
+
+		if (hasName)      return R.string.quest_way_lit_named_title;
+		else if (isRoad)  return R.string.quest_way_lit_road_title;
+		else              return R.string.quest_way_lit_title;
 	}
 }

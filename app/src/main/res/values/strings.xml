@@ -266,7 +266,6 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="quest_way_lit_title">"Is this stretch of way lit?"</string>
     <string name="quest_way_lit_named_title">"Is \"%s\" lit here?"</string>
     <string name="quest_way_lit_road_title">"Is this stretch of road lit?"</string>
-    <string name="quest_way_lit_named_road_title">"Is \"%s\" road lit here?"</string>
     <string name="quest_way_lit_automatic">"It uses motion detection"</string>
     <string name="quest_way_lit_24_7">"It's lit night and day"</string>
     <string name="quest_tactilePaving_title_bus">"Does this bus stop have tactile pavings?"</string>
