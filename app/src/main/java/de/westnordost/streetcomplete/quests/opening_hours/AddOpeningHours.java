@@ -50,7 +50,8 @@ public class AddOpeningHours extends SimpleOverpassQuestType
 				" tourism ~ " + TextUtils.join("|", tourism) + " or" +
 				" tourism = information and information = office or" +
 				" leisure ~ " + TextUtils.join("|",leisures) + ")" +
-				" and !opening_hours and name";
+				" and !opening_hours and name" +
+				" and (access !~ private|no)"; // exclude ones without access to general public
 	}
 
 	@Override public AbstractQuestAnswerFragment createForm()
