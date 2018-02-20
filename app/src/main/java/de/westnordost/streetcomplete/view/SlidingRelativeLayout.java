@@ -7,8 +7,8 @@ import android.widget.RelativeLayout;
 
 public class SlidingRelativeLayout extends RelativeLayout
 {
-	private float yFraction = 0;
-	private float xFraction = 0;
+	private float yFraction;
+	private float xFraction;
 
 	public SlidingRelativeLayout(Context context)
 	{
@@ -25,41 +25,51 @@ public class SlidingRelativeLayout extends RelativeLayout
 		super(context, attrs, defStyleAttr);
 	}
 
-	private ViewTreeObserver.OnPreDrawListener preDrawListener = null;
-
 	public void setYFraction(float fraction)
 	{
 		this.yFraction = fraction;
-		if (getHeight() == 0) {
-			if (preDrawListener == null) {
-				preDrawListener = ()-> {
-					getViewTreeObserver().removeOnPreDrawListener(preDrawListener);
-					setYFraction(yFraction);
-					return true;
-				};
-				getViewTreeObserver().addOnPreDrawListener(preDrawListener);
-			}
-			return;
-		}
-		float translationY = getHeight() * fraction;
-		setTranslationY(translationY);
+		postAfterViewMeasured(() -> setTranslationY(getHeight() * yFraction));
+	}
+
+	public float getYFraction()
+	{
+		return yFraction;
 	}
 
 	public void setXFraction(float fraction)
 	{
 		this.xFraction = fraction;
-		if (getWidth() == 0) {
-			if (preDrawListener == null) {
-				preDrawListener = ()-> {
-					getViewTreeObserver().removeOnPreDrawListener(preDrawListener);
-					setXFraction(xFraction);
-					return true;
-				};
-				getViewTreeObserver().addOnPreDrawListener(preDrawListener);
-			}
-			return;
+		postAfterViewMeasured(() -> setTranslationX(getWidth() * xFraction));
+	}
+
+	public float getXFraction()
+	{
+		return xFraction;
+	}
+
+	private void postAfterViewMeasured(Runnable runnable)
+	{
+		if (getWidth() != 0 || getHeight() != 0)
+		{
+			runnable.run();
 		}
-		float translationX = getWidth() * fraction;
-		setTranslationX(translationX);
+		else
+		{
+			if(getViewTreeObserver().isAlive())
+			{
+				getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener()
+				{
+					@Override public boolean onPreDraw()
+					{
+						runnable.run();
+						if(getViewTreeObserver().isAlive())
+						{
+							getViewTreeObserver().removeOnPreDrawListener(this);
+						}
+						return true;
+					}
+				});
+			}
+		}
 	}
 }
