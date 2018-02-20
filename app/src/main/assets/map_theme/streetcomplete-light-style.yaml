@@ -1,3 +1,11 @@
+# for online testing (e.g. Tangram Play)
+#import:
+#    - https://raw.githubusercontent.com/ENT8R/streetcomplete-mapstyle/master/global.yaml
+#    - https://raw.githubusercontent.com/ENT8R/streetcomplete-mapstyle/master/layers/land.yaml
+#    - https://raw.githubusercontent.com/ENT8R/streetcomplete-mapstyle/master/layers/labels.yaml
+#    - https://raw.githubusercontent.com/ENT8R/streetcomplete-mapstyle/master/layers/roads.yaml
+
+# for local testing and the final release (e.g. using an emulator)
 import:
     - global.yaml
     - layers/land.yaml
@@ -10,6 +18,8 @@ global:
     road_outline_color: '#cc9999'
     path_color: global.road_color
     path_outline_color: '#e0c9b3'
+    tunnel_color: '#ccdee0'
+    square_color: global.road_color
 
     earth_color: '#f3eacc'
     water_color: '#68d'
