@@ -2,11 +2,14 @@ package de.westnordost.streetcomplete.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.RelativeLayout;
 
 public class SlidingRelativeLayout extends RelativeLayout
 {
+	private float yFraction = 0;
+	private float xFraction = 0;
+
 	public SlidingRelativeLayout(Context context)
 	{
 		super(context);
@@ -22,38 +25,41 @@ public class SlidingRelativeLayout extends RelativeLayout
 		super(context, attrs, defStyleAttr);
 	}
 
+	private ViewTreeObserver.OnPreDrawListener preDrawListener = null;
+
 	public void setYFraction(float fraction)
 	{
-		/* Here we have to tackle two problems:
-		   - the layout may not be measured yet. If it isn't hidden, this will result in an ugly
-		     flicker in the first frame of the animation
-		   - users can turn animations off (i.e. battery saver mode), which results in that all
-		     animations "start" in their final frame immediately. If the view is hidden in the first
-		     frame, it will never appear
-		 solution: hide it only if it was not measured yet AND it should be translated */
-		setVisibility(getHeight() == 0 && fraction != 0 ? View.INVISIBLE : View.VISIBLE);
-
+		this.yFraction = fraction;
+		if (getHeight() == 0) {
+			if (preDrawListener == null) {
+				preDrawListener = ()-> {
+					getViewTreeObserver().removeOnPreDrawListener(preDrawListener);
+					setYFraction(yFraction);
+					return true;
+				};
+				getViewTreeObserver().addOnPreDrawListener(preDrawListener);
+			}
+			return;
+		}
 		float translationY = getHeight() * fraction;
 		setTranslationY(translationY);
 	}
 
-	public float getYFraction()
-	{
-		if(getHeight() == 0) return 0;
-		return getTranslationY() / getHeight();
-	}
-
 	public void setXFraction(float fraction)
 	{
-		setVisibility(getWidth() == 0 && fraction != 0 ? View.INVISIBLE : View.VISIBLE);
-
+		this.xFraction = fraction;
+		if (getWidth() == 0) {
+			if (preDrawListener == null) {
+				preDrawListener = ()-> {
+					getViewTreeObserver().removeOnPreDrawListener(preDrawListener);
+					setXFraction(xFraction);
+					return true;
+				};
+				getViewTreeObserver().addOnPreDrawListener(preDrawListener);
+			}
+			return;
+		}
 		float translationX = getWidth() * fraction;
 		setTranslationX(translationX);
-	}
-
-	public float getXFraction()
-	{
-		if(getWidth() == 0) return 0;
-		return getTranslationX() / getWidth();
 	}
 }
