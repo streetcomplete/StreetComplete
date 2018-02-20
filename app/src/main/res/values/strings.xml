@@ -396,8 +396,8 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_dietType_vegetarian_name_title">Does "%s" have vegetarian meals on the menu?</string>
     <string name="quest_dietType_vegan_name_title">Does "%s" have vegan meals on the menu?</string>
     <string name="quest_hasFeature_only">Only</string>
-    <string name="quest_dietType_explanation_vegan">Vegan meals contain no animal products (no meat, no milk products, no eggs, …).</string>
-    <string name="quest_dietType_explanation_vegetarian">Vegetarian meals contain no meat.</string>
+    <string name="quest_dietType_explanation_vegan">Vegan meals contain no animal products (no meat, fish, poultry, milk products, eggs, …).</string>
+    <string name="quest_dietType_explanation_vegetarian">Vegetarian meals contain no meat, fish or poultry.</string>
     <string name="quest_dietType_explanation">Only answer "yes" if the place provides proper eating options for this diet, ignore starters etc.</string>
     <string name="quest_toiletAvailability_name_title">Does "%s" have a toilet?</string>
     <string name="quest_powerPolesMaterial_title">What is the material of this power pole?</string>
