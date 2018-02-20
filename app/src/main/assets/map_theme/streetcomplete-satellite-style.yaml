@@ -1,6 +1,12 @@
+# for online testing (e.g. Tangram Play)
 import:
-    - global.yaml
-    - layers/labels.yaml
+    - https://raw.githubusercontent.com/ENT8R/streetcomplete-mapstyle/master/global.yaml
+    - https://raw.githubusercontent.com/ENT8R/streetcomplete-mapstyle/master/layers/labels.yaml
+
+# for local testing (e.g. using an emulator)
+#import:
+#    - global.yaml
+#    - layers/labels.yaml
 
 sources:
     mapbox-satellite:

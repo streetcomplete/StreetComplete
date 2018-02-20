@@ -12,6 +12,8 @@ global:
     road_outline_color: '#cc9999'
     path_color: global.road_color
     path_outline_color: '#e0c9b3'
+    tunnel_color: '#ccdee0'
+    square_color: global.road_color
 
     earth_color: '#f3eacc'
     water_color: '#68d'
@@ -55,8 +57,7 @@ lights:
 sources:
     mapzen:
         type: MVT
-        url: https://tiles.map-data.de/vector/v1/all/{z}/{x}/{y}.mvt
-        tile_size: 512
+        url: https://tiles.map-data.de/vector/v1/512/all/{z}/{x}/{y}.mvt
 
 fonts:
     Montserrat:
