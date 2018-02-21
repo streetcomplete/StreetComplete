@@ -88,12 +88,8 @@
     <string name="no_gps_no_quests">"For at skanne efter opgaver tæt på dig skal du tænde Lokation."</string>
     <string name="nothing_more_to_download">"Der er ikke flere opgaver tilgængelige"</string>
     <string name="later">"Senere"</string>
-    <string name="quest_streetName_answer_noProperStreet">"Ikke et korrekt gadenavn"</string>
-    <string name="quest_streetName_answer_noProperStreet_question">"Hvad er det så?"</string>
     <string name="quest_streetName_answer_noProperStreet_link">"det forbinder bare to veje"</string>
-    <string name="quest_streetName_answer_noProperStreet_service">"det er bare en servicevej"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Noget andet (efterlad en note)"</string>
-    <string name="quest_streetName_answer_noProperStreet_track">"det er bare et spor"</string>
     <string name="about_title_privacy_statement">"Privatlivspolitik"</string>
     <string name="about_summary_privacy_statement">"og dataforbrug"</string>
     <string name="quest_openingHours_public_holidays">"Officielle helligdage"</string>
@@ -179,8 +175,6 @@ For at vise kortet er vektorfliser hentet fra &lt;a href=\"https://mapzen.com/pr
     <string name="quest_maxspeed_answer_noSign">"Der er intet skilt"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Hvor er denne vej?"</string>
     <string name="quest_cyclewaySurface_title">"Hvilken overflade har cykelstien?"</string>
-    <string name="quest_cycleway_title2">"Er der en cykelsti til denne vej?"</string>
-    <string name="quest_cycleway_title">"Er der en cykelsti til denne vej?"</string>
     <string name="quest_buildingType_title">"Hvilken slags bygning er dette?"</string>
     <string name="quest_serviceType_title">"Hvilken slags servicevej er dette?"</string>
     <string name="quest_streetLanes_title">"Hvor mange spor har denne vej?"</string>
@@ -265,8 +259,6 @@ Informationerne du skriver sendes direkte til OpenStreetMap i dit navn, uden du 
     <string name="quest_maxspeed_title_short">"Hvad er fartgrænsen på denne vej?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Denne fartgrænse lyder urealistisk."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Er du sikker på at der ikke er specificeret en begrænsning?"</string>
-    <string name="quest_maxspeed_answer_noSign_confirmation">"Undersøgte du enderne af vejen?
-Hvis der ikke er skilte vil standard grænser gælde."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Ja, ingen skilte."</string>
     <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Byveje har en anden standard fartgrænse end landeveje."</string>
     <string name="quest_maxspeed_answer_noSign_urbanOk">"I byen"</string>

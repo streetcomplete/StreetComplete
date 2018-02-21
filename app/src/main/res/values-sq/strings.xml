@@ -86,12 +86,8 @@
     <string name="no_gps_no_quests">"Për të skanuar për gjurmime përreth jush automatikisht, aktivizoni lokacionin"</string>
     <string name="nothing_more_to_download">"Nuk ka më gjurmime"</string>
     <string name="later">"Më vonë"</string>
-    <string name="quest_streetName_answer_noProperStreet">"Nuk është rrugë taman"</string>
-    <string name="quest_streetName_answer_noProperStreet_question">"Çka është atëherë?"</string>
     <string name="quest_streetName_answer_noProperStreet_link">"vetëm lidhë dy rrugë"</string>
-    <string name="quest_streetName_answer_noProperStreet_service">"Është vetëm rrugë shërbyese"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Diçka tjeter (lër shënim)"</string>
-    <string name="quest_streetName_answer_noProperStreet_track">"Është vetëm një vijë"</string>
     <string name="about_title_privacy_statement">"Deklaratë e Privatsisë"</string>
     <string name="about_summary_privacy_statement">"dhe përdorimi i të dhënave"</string>
     <string name="quest_openingHours_public_holidays">"Pushimet e Festave"</string>
@@ -171,8 +167,6 @@ Për të shfaqur hartën, pllakat vektoriale merren nga &lt;a href=\"https://map
     <string name="quest_maxspeed_answer_noSign">"Nuk ka shenjë"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Ku është kjo rrugë?"</string>
     <string name="quest_cyclewaySurface_title">"Çfarë mbulese ka rruga për biçikleta këtu?"</string>
-    <string name="quest_cycleway_title2">"A ka rrugë për biçikleta këtu?"</string>
-    <string name="quest_cycleway_title">"A ka rrugë për biçikleta këtu?"</string>
     <string name="quest_buildingType_title">"Çfarë lloj ndërtese është kjo?"</string>
     <string name="quest_serviceType_title">"Çfarë lloj rruge shëbyese është kjo?"</string>
     <string name="quest_streetLanes_title">"Sa shirita i ka kjo rrugë?"</string>
@@ -256,8 +250,6 @@ Informacioni që futni shtohet direkt në OpenStreetMap në emrin tuaj, pa nevoj
     <string name="quest_maxspeed_title_short">"Cili është kufizimi i shpejtësisë për këtë rrugë?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Ky kufizim i shpejtësisë duket i pamundur."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"A jeni i sigurt që nuk ka kufizim të vendosur?"</string>
-    <string name="quest_maxspeed_answer_noSign_confirmation">"A ke shikuar në fundet e rrugëve?
-Nëse nuk ka shenja, vlen shpejtësia e paracaktuar."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Po, nuk ka shenjë"</string>
     <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Rrugët urbane kanë shpejtësi të paracaktuar nga ato rurale."</string>
     <string name="quest_maxspeed_answer_noSign_urbanOk">"Në qytet"</string>
