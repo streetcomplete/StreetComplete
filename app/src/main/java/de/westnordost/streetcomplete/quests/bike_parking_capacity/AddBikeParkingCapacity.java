@@ -22,7 +22,7 @@ public class AddBikeParkingCapacity extends SimpleOverpassQuestType
 
 	@Override protected String getTagFilters()
 	{
-		return "nodes, ways with amenity=bicycle_parking and !capacity";
+		return "nodes, ways with amenity=bicycle_parking and !capacity and (access !~ private|no)";
 	}
 
 	public AbstractQuestAnswerFragment createForm()
