@@ -20,7 +20,7 @@ public class AddRoofShape extends SimpleOverpassQuestType
 
 	@Override protected String getTagFilters()
 	{
-		return "ways, relations with roof:levels and roof:levels!=0 and !roof:shape";
+		return "ways, relations with roof:levels and roof:levels!=0 and !roof:shape and !3dr:type";
 	}
 
 	public AbstractQuestAnswerFragment createForm()
