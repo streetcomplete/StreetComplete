@@ -33,7 +33,8 @@ public class AddHousenumber implements OsmElementQuestType
 			" building ~ house|residential|apartments|detached|terrace|hotel|dormitory|houseboat|" +
 			            "school|civic|college|university|public|hospital|kindergarten|train_station|" +
 			            "retail|commercial" +
-			" and !addr:housenumber and !addr:housename and !addr:conscriptionnumber and !addr:streetnumber");
+			" and !addr:housenumber and !addr:housename and !addr:conscriptionnumber and !addr:streetnumber" +
+			" and location != underground" ); //excludes for example subway stations tagged as building=train_station
 
 	private static final TagFilterExpression NODES_WITH_HOUSENUMBERS = new FiltersParser().parse(
 			" nodes with addr:housenumber or addr:housename or addr:conscriptionnumber or addr:streetnumber");
