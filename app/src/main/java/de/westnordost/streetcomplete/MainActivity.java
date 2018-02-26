@@ -45,7 +45,6 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -79,6 +78,7 @@ import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 import de.westnordost.streetcomplete.quests.FindQuestSourceComponent;
 import de.westnordost.streetcomplete.quests.OsmQuestAnswerListener;
 import de.westnordost.streetcomplete.quests.QuestAnswerComponent;
+import de.westnordost.streetcomplete.quests.QuestUtil;
 import de.westnordost.streetcomplete.settings.SettingsActivity;
 import de.westnordost.streetcomplete.statistics.UnsyncedChangesCounter;
 import de.westnordost.streetcomplete.statistics.UploadedAnswersCounter;
@@ -316,8 +316,7 @@ public class MainActivity extends AppCompatActivity implements
 		icon.setImageResource(quest.getType().getIcon());
 		TextView text = inner.findViewById(R.id.text);
 
-		String name = element.getTags().get("name");
-		text.setText(getResources().getString(getQuestTitleResId(quest, element.getTags()), name));
+		text.setText(QuestUtil.getHtmlTitle(getResources(), quest.getType(), element));
 
 		new AlertDialogBuilder(this)
 				.setTitle(R.string.undo_confirm_title)
@@ -329,16 +328,6 @@ public class MainActivity extends AppCompatActivity implements
 				})
 				.setNegativeButton(R.string.undo_confirm_negative, null)
 				.show();
-	}
-
-	private int getQuestTitleResId(Quest quest, Map<String,String> tags)
-	{
-		if(quest instanceof OsmQuest)
-		{
-			OsmQuest osmQuest = (OsmQuest) quest;
-			return osmQuest.getOsmElementQuestType().getTitle(tags);
-		}
-		return quest.getType().getTitle();
 	}
 
 	@Override public boolean onOptionsItemSelected(MenuItem item)
