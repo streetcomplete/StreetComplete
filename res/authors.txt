@@ -53,7 +53,7 @@ quest_icons.svg
 	parking_fee					parts taken from EmojiOne 2: U+1F4B8
 	parking_maxstay
 	power
-    	fire_hydrant
+	fire_hydrant
 	pedestrian
 	pedestrian_crossing
 	phone
@@ -80,7 +80,7 @@ quest_icons.svg
 	wifi
 	wheelchair
 	wheelchair_shop
-	
+
 religion_icons.svg
 	hindu						https://commons.wikimedia.org/wiki/File:Om_symbol.svg
 	jain						https://commons.wikimedia.org/wiki/File:Ahimsa.svg
@@ -92,10 +92,10 @@ religion_icons.svg
 	bahai						https://commons.wikimedia.org/wiki/File:Bahai_star.svg
 	confucian
 	shinto						https://commons.wikimedia.org/wiki/File:Shinto_torii_vermillion.svg
-	taoism						
+	taoism
 	chinese						https://commons.wikimedia.org/wiki/File:Chinese_lu_symbol_-_%E7%A6%84.svg
 	caodai
-	
+
 slow_zone.svg
 
 slow_zone_us.svg
@@ -108,7 +108,7 @@ sport_icons.svg
 	badminton					EmojiOne 2: U+1F3F8
 	baseball
 	basketball					EmojiOne 2: U+1F3C0
-	beach_volleyball			by Adrien Pavie, modified from EmojiOne 2: U+1F3D0 
+	beach_volleyball			by Adrien Pavie, modified from EmojiOne 2: U+1F3D0
 	boules
 	bowls
 	canadian_football
