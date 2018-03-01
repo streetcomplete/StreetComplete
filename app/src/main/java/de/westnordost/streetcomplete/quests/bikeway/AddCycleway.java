@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.bikeway;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
 
 import java.util.Map;
@@ -148,7 +149,7 @@ public class AddCycleway implements OsmElementQuestType
 		}
 	}
 
-	@Override public Boolean isApplicableTo(Element element)
+	@Nullable @Override public Boolean isApplicableTo(Element element)
 	{
 		/* Whether this element applies to this quest cannot be determined by looking at that
 		   element alone (see download()), an Overpass query would need to be made to find this out.
@@ -171,7 +172,7 @@ public class AddCycleway implements OsmElementQuestType
 	private static String getOverpassQuery(BoundingBox bbox)
 	{
 		int d = MIN_DIST_TO_CYCLEWAYS;
-		return OverpassQLUtil.getOverpassBBox(bbox) +
+		return OverpassQLUtil.getGlobalOverpassBBox(bbox) +
 			"way[highway ~ \"^(primary|secondary|tertiary|unclassified|residential)$\"]" +
 			   "[area != yes]" +
 				// only without cycleway tags
@@ -183,6 +184,7 @@ public class AddCycleway implements OsmElementQuestType
 			   "[surface !~ \"^("+ TextUtils.join("|", OsmTaggings.ANYTHING_UNPAVED)+")$\"]" +
 			   // not any explicitly tagged as no bicycles
 			   "[bicycle != no]" +
+			   "[access !~ \"^private|no$\"]" +
 			   " -> .streets;" +
 			"(" +
 			   "way[highway=cycleway](around.streets: "+d+");" +
@@ -204,8 +206,10 @@ public class AddCycleway implements OsmElementQuestType
 	@Override public int getTitle() { return R.string.quest_cycleway_title2; }
 
 	@Override public int getDefaultDisabledMessage() { return 0; }
-	@Override public Countries getEnabledForCountries()
+	@NonNull @Override public Countries getEnabledForCountries()
 	{
+		// See overview here: https://ent8r.github.io/blacklistr/?java=bikeway/AddCycleway.java
+
 		// #749. sources:
 		// Google Street View (driving around in virtual car)
 		// https://en.wikivoyage.org/wiki/Cycling
@@ -220,8 +224,8 @@ public class AddCycleway implements OsmElementQuestType
 			// East Asia
 			"JP","KR","TW",
 			// some of China (East Coast)
-			"CN-11","CN-12","CN-37","CN-32","CN-31",
-			"CN-33","CN-35","CN-44","CN-50",
+			"CN-BJ","CN-TJ","CN-SD","CN-JS","CN-SH",
+			"CN-ZJ","CN-FJ","CN-GD","CN-CQ",
 			// Australia etc
 			"NZ","AU",
 			// some of Canada

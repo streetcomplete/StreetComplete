@@ -50,7 +50,7 @@ public class ElementCreatorTestGeometry extends TestCase implements WayGeometryS
 			W2 = new OsmWay(2L,0,Arrays.asList(0L,1L,2L,0L),wayArea),
 			W3 = new OsmWay(3L,0,Arrays.asList(3L,2L), null),
 			W4 = new OsmWay(4L,0,Arrays.asList(0L,1L,1L,2L), null),
-			W5 = new OsmWay(5L,0, Collections.<Long>emptyList(),null);
+			W5 = new OsmWay(5L,0, Collections.emptyList(),null);
 
 	private static final RelationMember
 			RM0 = new OsmRelationMember(0L, "outer", Element.Type.WAY),

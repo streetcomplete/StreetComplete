@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.bike_parking_cover;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 
 import java.util.Map;
 
@@ -32,7 +33,7 @@ public class AddBikeParkingCover extends SimpleOverpassQuestType
 
 	@Override public String getCommitMessage() { return "Add bicycle parkings cover"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_bicycle_parking_cover; }
-	@Override public int getTitle(Map<String,String> tags)
+	@Override public int getTitle(@NonNull Map<String,String> tags)
 	{
 		return R.string.quest_bicycleParkingCoveredStatus_title;
 	}

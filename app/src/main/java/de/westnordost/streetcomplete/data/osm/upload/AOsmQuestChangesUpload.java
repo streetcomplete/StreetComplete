@@ -44,7 +44,7 @@ import de.westnordost.streetcomplete.util.SlippyMapMath;
 
 public abstract class AOsmQuestChangesUpload
 {
-	private static String TAG = "QuestUpload";
+	private final String TAG = getLogTag();
 
 	private final MapDataDao osmDao;
 	private final AOsmQuestDao questDB;
@@ -140,6 +140,8 @@ public abstract class AOsmQuestChangesUpload
 		}
 	}
 
+	protected abstract String getLogTag();
+
 	private void cleanUp()
 	{
 		long yesterday = System.currentTimeMillis() - 24 * 60 * 60 * 1000;
@@ -161,11 +163,11 @@ public abstract class AOsmQuestChangesUpload
 			try
 			{
 				osmDao.closeChangeset(info.changesetId);
-				Log.d(TAG, "Closed changeset #" + info.changesetId + ".");
+				Log.i(TAG, "Closed changeset #" + info.changesetId + ".");
 			}
 			catch (OsmConflictException e)
 			{
-				Log.i(TAG, "Couldn't close changeset #" + info.changesetId + " because it has already been closed.");
+				Log.w(TAG, "Couldn't close changeset #" + info.changesetId + " because it has already been closed.");
 			}
 			finally
 			{
@@ -213,29 +215,36 @@ public abstract class AOsmQuestChangesUpload
 		Element elementWithChangesApplied = changesApplied(element, quest);
 		if(elementWithChangesApplied == null)
 		{
-			closeQuest(quest);
-			invalidateAreaAroundQuest(quest);
+			deleteConflictingQuest(quest);
 			return false;
 		}
 
+		int[] newVersion = {element.getVersion()};
 		try
 		{
-			osmDao.uploadChanges( changesetId, Collections.singleton(elementWithChangesApplied), null);
-			/* A diff handler is not (yet) necessary: The local copy of an OSM element is updated
-			 * automatically on conflict. A diff handler would be necessary if elements could be
-			 * created or deleted through quests because IDs of elements would then change. */
+			osmDao.uploadChanges(changesetId, Collections.singleton(elementWithChangesApplied),	diffElement ->
+			{
+				if(diffElement.clientId == elementWithChangesApplied.getId())
+				{
+					newVersion[0] = diffElement.serverVersion;
+					/* It is not necessary (yet) to handle updating the element's id because
+					   StreetComplete does not add or delete elements */
+				}
+			});
 		}
 		catch(OsmConflictException e)
 		{
 			return handleConflict(changesetId, quest, element, alreadyHandlingElementConflict,
 					alreadyHandlingChangesetConflict, e);
 		}
+		Element updatedElement = copyElement(elementWithChangesApplied, newVersion[0]);
 
 		closeQuest(quest);
-		elementDB.put(elementWithChangesApplied);
+		// save with new version when persisting to DB
+		elementDB.put(updatedElement);
 		statisticsDB.addOne(quest.getType().getClass().getSimpleName());
 
-		unlockedQuests.addAll(questUnlocker.unlockNewQuests(elementWithChangesApplied));
+		unlockedQuests.addAll(questUnlocker.unlockNewQuests(updatedElement));
 
 		return true;
 	}
@@ -244,6 +253,14 @@ public abstract class AOsmQuestChangesUpload
 	{
 		quest.setStatus(QuestStatus.CLOSED);
 		questDB.update(quest);
+	}
+
+	private void deleteConflictingQuest(OsmQuest quest)
+	{
+		// #812 conflicting quests may not reside in the database, otherwise they would wrongfully
+		//      be candidates for an undo - even though nothing was changed
+		questDB.delete(quest.getId());
+		invalidateAreaAroundQuest(quest);
 	}
 
 	private void invalidateAreaAroundQuest(OsmQuest quest)
@@ -260,17 +277,17 @@ public abstract class AOsmQuestChangesUpload
 		// The element can be null if it has been deleted in the meantime (outside this app usually)
 		if(element == null)
 		{
-			Log.v(TAG, "Dropping quest " + getQuestStringForLog(quest) +
+			Log.d(TAG, "Dropping quest " + getQuestStringForLog(quest) +
 					" because the associated element has already been deleted");
 			return null;
 		}
 
-		Element copy = copyElement(element);
+		Element copy = copyElement(element, element.getVersion());
 
 		StringMapChanges changes = quest.getChanges();
 		if(changes.hasConflictsTo(copy.getTags()))
 		{
-			Log.v(TAG, "Dropping quest " + getQuestStringForLog(quest) +
+			Log.d(TAG, "Dropping quest " + getQuestStringForLog(quest) +
 					" because there has been a conflict while applying the changes");
 			return null;
 		}
@@ -332,19 +349,15 @@ public abstract class AOsmQuestChangesUpload
 										  boolean alreadyHandlingChangesetConflict)
 	{
 		Element element = updateElementFromServer(quest.getElementType(), quest.getElementId());
-
 		// if after updating to the new version of the element, the quest is not applicable to the
 		// element anymore, drop it (#720)
 		if(element != null)
 		{
-			Boolean questIsApplicableToElement = quest.getOsmElementQuestType().isApplicableTo(element);
-			if (questIsApplicableToElement != null && !questIsApplicableToElement)
+			if (!questIsApplicableToElement(quest, element))
 			{
-				Log.v(TAG, "Dropping quest " + getQuestStringForLog(quest) +
-						" because the quest is no longer applicable to the element");
-
-				closeQuest(quest);
-				invalidateAreaAroundQuest(quest);
+				Log.d(TAG, "Dropping quest " + getQuestStringForLog(quest) +
+					" because the quest is no longer applicable to the element");
+				deleteConflictingQuest(quest);
 				return false;
 			}
 		}
@@ -352,13 +365,15 @@ public abstract class AOsmQuestChangesUpload
 		return uploadQuestChange(changesetId, quest, element, true, alreadyHandlingChangesetConflict);
 	}
 
+	protected abstract boolean questIsApplicableToElement(OsmQuest quest, Element element);
+
 	private static String getQuestStringForLog(OsmQuest quest)
 	{
 		return quest.getType().getClass().getSimpleName() + " for " +
 				quest.getElementType().name().toLowerCase() + " #" + quest.getElementId();
 	}
 
-	private static Element copyElement(Element e)
+	private static Element copyElement(Element e, int newVersion)
 	{
 		if(e == null) return null;
 		Map<String,String> tagsCopy = new HashMap<>();
@@ -366,16 +381,16 @@ public abstract class AOsmQuestChangesUpload
 
 		if(e instanceof Node)
 		{
-			return new OsmNode(e.getId(), e.getVersion(), ((Node)e).getPosition(), tagsCopy);
+			return new OsmNode(e.getId(), newVersion, ((Node)e).getPosition(), tagsCopy);
 		}
 		if(e instanceof Way)
 		{
-			return new OsmWay(e.getId(), e.getVersion(),
+			return new OsmWay(e.getId(), newVersion,
 					new ArrayList<>(((Way)e).getNodeIds()), tagsCopy);
 		}
 		if(e instanceof Relation)
 		{
-			return new OsmRelation(e.getId(), e.getVersion(),
+			return new OsmRelation(e.getId(), newVersion,
 					new ArrayList<>(((Relation)e).getMembers()), tagsCopy);
 		}
 		return null;

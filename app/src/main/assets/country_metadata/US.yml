@@ -5,5 +5,6 @@ maxspeedLayout: quest_maxspeed_us
 officialLanguages: [en]
 orchardProduces: [grape, almond, tomatoe, apple, walnut, pistachio, peach, blueberry, grapefruit, plum,
   chilli_pepper, sweet_pepper, strawberry, avocado, orange, lemon, lime]
+popularReligions: [christian, jewish]
 popularSports: [baseball, tennis, basketball, soccer, golf, american_football]
 speedUnit: [mph]

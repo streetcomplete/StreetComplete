@@ -1,6 +1,8 @@
 package de.westnordost.streetcomplete.data.osm.persist.test;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import java.util.Map;
 
@@ -27,10 +29,10 @@ public class TestQuestType implements OsmElementQuestType
 	}
 	@Override public int getIcon() { return 0; }
 	@Override public int getTitle() { return 0; }
-	@Override public int getTitle(Map<String,String> tags) { return 0; }
-	@Override public Boolean isApplicableTo(Element element) { return false; }
+	@Override public int getTitle(@NonNull Map<String,String> tags) { return 0; }
+	@Nullable @Override public Boolean isApplicableTo(Element element) { return false; }
 
 	@Override public int getDefaultDisabledMessage() { return 0; }
 
-	@Override public Countries getEnabledForCountries() { return Countries.ALL; }
+	@NonNull @Override public Countries getEnabledForCountries() { return Countries.ALL; }
 }

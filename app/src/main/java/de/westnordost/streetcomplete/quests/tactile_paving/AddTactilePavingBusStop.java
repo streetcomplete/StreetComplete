@@ -1,12 +1,14 @@
 package de.westnordost.streetcomplete.quests.tactile_paving;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 
 import java.util.Map;
 
 import javax.inject.Inject;
 
 import de.westnordost.streetcomplete.R;
+import de.westnordost.streetcomplete.data.osm.Countries;
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
@@ -38,10 +40,17 @@ public class AddTactilePavingBusStop extends SimpleOverpassQuestType
 
 	@Override public String getCommitMessage() { return "Add tactile pavings on bus stops"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_blind_bus; }
-	@Override public int getTitle(Map<String,String> tags)
+	@Override public int getTitle(@NonNull Map<String,String> tags)
 	{
 		boolean hasName = tags.containsKey("name");
 		if(hasName) return R.string.quest_tactilePaving_title_name_bus;
 		else        return R.string.quest_tactilePaving_title_bus;
+	}
+
+	@Override public Countries getEnabledForCountries()
+	{
+		// See overview here: https://ent8r.github.io/blacklistr/?java=tactile_paving/AddTactilePavingCrosswalk.java
+		// #750
+		return AddTactilePavingCrosswalk.ENBABLED_FOR_COUNTRIES;
 	}
 }

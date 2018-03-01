@@ -1,6 +1,8 @@
 package de.westnordost.streetcomplete.quests.road_name;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
 
 import java.util.ArrayList;
@@ -42,13 +44,13 @@ public class AddRoadName implements OsmElementQuestType
 	/** @return overpass query string for creating the quests */
 	private static String getOverpassQuery(BoundingBox bbox)
 	{
-		return OverpassQLUtil.getOverpassBBox(bbox) + ROADS_WITHOUT_NAMES + "; out meta geom;";
+		return OverpassQLUtil.getGlobalOverpassBBox(bbox) + ROADS_WITHOUT_NAMES + "; out meta geom;";
 	}
 
 	/** @return overpass query string to get roads with names near roads that don't have names */
 	private static String getStreetNameSuggestionsOverpassQuery(BoundingBox bbox)
 	{
-		return OverpassQLUtil.getOverpassBBox(bbox) +
+		return OverpassQLUtil.getGlobalOverpassBBox(bbox) +
 				ROADS_WITHOUT_NAMES + " -> .without_names;" +
 				ROADS_WITH_NAMES + " -> .with_names;" +
 				"way.with_names(around.without_names:" +
@@ -154,7 +156,7 @@ public class AddRoadName implements OsmElementQuestType
 		return result;
 	}
 
-	@Override public Boolean isApplicableTo(Element element)
+	@Nullable @Override public Boolean isApplicableTo(Element element)
 	{
 		return ROADS_WITHOUT_NAMES_TFE.matches(element);
 	}
@@ -162,8 +164,12 @@ public class AddRoadName implements OsmElementQuestType
 	@Override public String getCommitMessage() { return "Determine road names and types"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_street_name; }
 	@Override public int getTitle() { return R.string.quest_streetName_title; }
-	@Override public int getTitle(Map<String,String> tags) { return getTitle(); }
+	@Override public int getTitle(@NonNull Map<String,String> tags) {
+		boolean isPedestrian = "pedestrian".equals(tags.get("highway"));
+		if (isPedestrian) return R.string.quest_streetName_pedestrian_title;
+		else return R.string.quest_streetName_title;
+	}
 
 	@Override public int getDefaultDisabledMessage() { return 0; }
-	@Override public Countries getEnabledForCountries() { return Countries.ALL; }
+	@NonNull @Override public Countries getEnabledForCountries() { return Countries.ALL; }
 }

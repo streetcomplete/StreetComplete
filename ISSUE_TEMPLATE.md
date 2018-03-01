@@ -5,7 +5,7 @@ Guidelines for quest suggestions: https://github.com/westnordost/StreetComplete/
 -->
 
 ### General
-Affected key(s) (or tags) to be modified: [](https://wiki.openstreetmap.org/wiki/Key:)
+Affected tag(s) to be modified/added: [](https://wiki.openstreetmap.org/wiki/Key:)
 Question asked: **Is there an example tag on item XY?**
 
 <!-- If the answer is not obvious, please append a short explanation to each item (or, if it is longer, below), explaining the reason. -->

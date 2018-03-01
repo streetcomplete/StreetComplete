@@ -29,7 +29,6 @@ public class CountryInfosTest extends AndroidTestCase
 	private void checkAdditionalValidHousenumberRegexes(Map<String, CountryInfo> infos)
 	{
 		assertTrue("99 bis".matches(infos.get("FR").getAdditionalValidHousenumberRegex()));
-		assertTrue("ev.99".matches(infos.get("CZ").getAdditionalValidHousenumberRegex()));
 		assertTrue("s/n".matches(infos.get("ES").getAdditionalValidHousenumberRegex()));
 	}
 

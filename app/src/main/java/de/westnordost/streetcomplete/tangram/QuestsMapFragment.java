@@ -124,7 +124,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 	@Override protected void loadScene(String sceneFilePath)
 	{
 		List<SceneUpdate> sceneUpdates = spriteSheetCreator.get();
-		sceneUpdates.add(new SceneUpdate("global.ux_language", Locale.getDefault().getLanguage()));
+		sceneUpdates.add(new SceneUpdate("global.language", Locale.getDefault().getLanguage()));
 
 		controller.loadSceneFile(sceneFilePath, sceneUpdates);
 	}
@@ -242,8 +242,8 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 
 	private void onClickedMap(float positionX, float positionY)
 	{
-		final LngLat pos = controller.screenPositionToLngLat(new PointF(positionX, positionY));
-		listener.onClickedMapAt(TangramConst.toLatLon(pos));
+		LngLat pos = controller.screenPositionToLngLat(new PointF(positionX, positionY));
+		if(pos != null) listener.onClickedMapAt(TangramConst.toLatLon(pos));
 	}
 
 	@Override protected boolean shouldCenterCurrentPosition()

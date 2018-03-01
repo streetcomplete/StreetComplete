@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.recycling;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -52,7 +53,7 @@ public class AddRecyclingType extends SimpleOverpassQuestType
 
 	@Override public String getCommitMessage() { return "Add recycling type to recycling amenity"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_recycling; }
-	@Override public int getTitle(Map<String, String> tags)
+	@Override public int getTitle(@NonNull Map<String, String> tags)
 	{
 		return R.string.quest_recycling_type_title;
 	}

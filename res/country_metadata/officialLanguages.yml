@@ -71,16 +71,11 @@ CL: [es]
 CM: [fr, en]
 # zh is the "macro language" of all Chinese languages (Mandarin, Wuu, Cantonese, Xiang, Hakka ,...)
 CN: [zh]
-# Xinjiang
-CN-65: [zh, ug]
-# Tibet
-CN-54: [zh, bo]
-# Inner Mongolia
-CN-15: [zh, mn]
-# Qinghai
-CN-63: [zh, adx]
-# Guangxi
-CN-45: [zh, za]
+CN-XJ: [zh, ug]
+CN-XZ: [zh, bo]
+CN-NM: [zh, mn]
+CN-QH: [zh, adx]
+CN-GX: [zh, za]
 CO: [es]
 CR: [es]
 CU: [es]

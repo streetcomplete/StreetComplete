@@ -8,6 +8,7 @@ import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -81,7 +82,7 @@ public class QuestChangesUploadService extends IntentService
 		{
 			if(isBanned())
 			{
-				throw new VersionBannedException();
+				throw new VersionBannedException(banReason);
 			}
 
 			// let's fail early in case of no authorization
@@ -142,14 +143,23 @@ public class QuestChangesUploadService extends IntentService
 		{
 			URL url = new URL("http://www.westnordost.de/streetcomplete/banned_versions.txt");
 			connection = (HttpURLConnection) url.openConnection();
-			BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-			String line;
-			while ((line = reader.readLine()) != null)
+			try (InputStream is = connection.getInputStream())
 			{
-				if(line.startsWith(ApplicationConstants.USER_AGENT))
+				try(BufferedReader reader = new BufferedReader(new InputStreamReader(is, "UTF-8")))
 				{
-					banned = true;
-					return;
+					String line;
+					while ((line = reader.readLine()) != null)
+					{
+						String[] text = line.split("\t");
+						String userAgent = text[0];
+
+						if (userAgent.equals(ApplicationConstants.USER_AGENT))
+						{
+							banned = true;
+							banReason = text.length > 1 ? text[1] : null;
+							return;
+						}
+					}
 				}
 			}
 		}

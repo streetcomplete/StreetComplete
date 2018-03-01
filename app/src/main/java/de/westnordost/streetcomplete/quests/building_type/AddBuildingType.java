@@ -30,7 +30,7 @@ public class AddBuildingType extends SimpleOverpassQuestType
 		changes.modify("building", answer.getString(AddBuildingTypeForm.BUILDING));
 	}
 
-	@Override public String getCommitMessage() { return "Add building type"; }
+	@Override public String getCommitMessage() { return "Add building types"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_building; }
 	@Override public int getTitle(@NonNull Map<String, String> tags) { return R.string.quest_buildingType_title; }
 }

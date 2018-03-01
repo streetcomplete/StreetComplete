@@ -12,7 +12,7 @@
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:layout_margin="10dp"
-            app:srcCompat="@drawable/ic_quest_wheelchair" />
+            android:src="@drawable/ic_quest_wheelchair" />
 
         <TextView
             android:id="@+id/description"

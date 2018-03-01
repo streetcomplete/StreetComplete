@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.building_levels;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 
 import java.util.Map;
 
@@ -46,7 +47,7 @@ public class AddBuildingLevels extends SimpleOverpassQuestType
 
 	@Override public String getCommitMessage() { return "Add building and roof levels"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_building_levels; }
-	@Override public int getTitle(Map<String,String> tags)
+	@Override public int getTitle(@NonNull Map<String,String> tags)
 	{
 		boolean isBuildingPart = tags.containsKey("building:part");
 		if(isBuildingPart) return R.string.quest_buildingLevels_title_buildingPart;

@@ -14,6 +14,7 @@ contribute to the OpenStreetMap by surveying their neighbourhood (or other place
 
 ## Screenshots
 <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot1.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot2.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot3.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot4.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot5.png" width="170"/>
+<img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot6.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot7.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot8.png" width="170"/> <a href="http://www.youtube.com/watch?v=l6DGcmvtya4"><img src="http://img.youtube.com/vi/l6DGcmvtya4/0.jpg" width="340"/></a>
 
 ## Download
 
