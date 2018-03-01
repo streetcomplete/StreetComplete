@@ -27,11 +27,11 @@ public class AddBuildingTypeForm extends AbstractQuestFormAnswerFragment
 			TERRACE =		new Item("terrace", R.drawable.building_terrace, R.string.quest_buildingType_terrace),
 			HOTEL =			new Item("hotel", R.drawable.building_hotel, R.string.quest_buildingType_hotel),
 			DORMITORY =		new Item("dormitory", R.drawable.building_dormitory, R.string.quest_buildingType_dormitory),
-			FARM =			new Item("farm", R.drawable.building_farm, R.string.quest_buildingType_farm),
 			HOUSEBOAT =		new Item("houseboat", R.drawable.building_houseboat, R.string.quest_buildingType_houseboat),
 			BUNGALOW =		new Item("bungalow", R.drawable.building_bungalow, R.string.quest_buildingType_bungalow),
 			STATIC_CARAVAN = new Item("static_caravan", R.drawable.building_static_caravan, R.string.quest_buildingType_static_caravan),
 
+			COMMERCIAL =	new Item("commercial", R.drawable.building_commercial, R.string.quest_buildingType_commercial),
 			INDUSTRIAL =	new Item("industrial",	R.drawable.building_industrial, R.string.quest_buildingType_industrial),
 			RETAIL =		new Item("retail", R.drawable.building_retail, R.string.quest_buildingType_retail),
 			WAREHOUSE =		new Item("warehouse", R.drawable.building_warehouse, R.string.quest_buildingType_warehouse),
@@ -52,16 +52,15 @@ public class AddBuildingTypeForm extends AbstractQuestFormAnswerFragment
 			MOSQUE =		new Item("mosque", R.drawable.building_mosque,	R.string.quest_buildingType_mosque),
 			TEMPLE =		new Item("temple", R.drawable.building_temple,	R.string.quest_buildingType_temple),
 			SYNAGOGUE =		new Item("synagogue", R.drawable.building_synagogue,	R.string.quest_buildingType_synagogue),
-			SHRINE =		new Item("shrine", R.drawable.building_shrine,	R.string.quest_buildingType_shrine),
 
 			CARPORT =		new Item("carport", R.drawable.building_carport, R.string.quest_buildingType_carport),
 			GARAGE =		new Item("garage",	R.drawable.building_garage, R.string.quest_buildingType_garage),
 			GARAGES =		new Item("garages", R.drawable.building_garages, R.string.quest_buildingType_garages),
 			PARKING = 		new Item("parking", R.drawable.building_parking, R.string.quest_buildingType_parking),
 
+			FARM =			new Item("farm", R.drawable.building_farm, R.string.quest_buildingType_farmhouse),
+			FARM_AUXILIARY = new Item("farm_auxiliary", R.drawable.building_farm_auxiliary, R.string.quest_buildingType_farm_auxiliary),
 			BARN =			new Item("barn", R.drawable.building_barn,	R.string.quest_buildingType_barn),
-			COWSHED =		new Item("cowshed", R.drawable.building_cowshed,	R.string.quest_buildingType_cowshed),
-			STABLE =		new Item("stable", R.drawable.building_stable,	R.string.quest_buildingType_stable),
 
 			SHED =			new Item("shed", R.drawable.building_shed,	R.string.quest_buildingType_shed),
 			HUT =			new Item("hut", R.drawable.building_hut, R.string.quest_buildingType_hut),
@@ -70,13 +69,12 @@ public class AddBuildingTypeForm extends AbstractQuestFormAnswerFragment
 			CABIN =			new Item("cabin", R.drawable.building_cabin, R.string.quest_buildingType_cabin),
 			CONSTRUCTION =	new Item("construction", R.drawable.building_construction, R.string.quest_buildingType_construction),
 			RUINS =			new Item("ruins", R.drawable.building_ruins, R.string.quest_buildingType_ruins),
-			SERVICE =		new Item("service", R.drawable.building_service, R.string.quest_buildingType_service),
-			TRANSFORMER_TOWER = new Item("transformer_tower", R.drawable.building_transformer_tower, R.string.quest_buildingType_transformer_tower);
+			SERVICE =		new Item("service", R.drawable.building_service, R.string.quest_buildingType_service);
 
 	private final Item[] TOP_BUILDINGS = new Item[] {
 			HOUSE, DETACHED, APARTMENTS,
 			GARAGE, GARAGES, HUT,
-			RETAIL, INDUSTRIAL
+			RETAIL, COMMERCIAL, INDUSTRIAL
 	};
 
 	private final Item[] ALL_BUILDINGS = new Item[] {
@@ -84,23 +82,23 @@ public class AddBuildingTypeForm extends AbstractQuestFormAnswerFragment
 					DETACHED, HOUSE, TERRACE, APARTMENTS, BUNGALOW,
 					FARM, HOUSEBOAT, STATIC_CARAVAN, DORMITORY, HOTEL,
 			}),
-			new Item("commercial", R.drawable.panorama_building_commercial, R.string.quest_buildingType_commercial, new Item[]{
-					INDUSTRIAL, RETAIL, KIOSK, WAREHOUSE
+			new Item(null, R.drawable.panorama_building_commercial, R.string.quest_buildingType_commercial, new Item[]{
+					COMMERCIAL, INDUSTRIAL, RETAIL, KIOSK, WAREHOUSE
 			}),
 			new Item("civic", R.drawable.panorama_building_civic, R.string.quest_buildingType_civic, new Item[]{
 					COLLEGE, UNIVERSITY, SCHOOL, PUBLIC, HOSPITAL, STADIUM, TRAIN_STATION, TRANSPORTATION
 			}),
-			new Item(null, R.drawable.panorama_building_religious, R.string.quest_buildingType_religious, new Item[]{
-					CHURCH, CATHEDRAL, CHAPEL, MOSQUE, TEMPLE, SYNAGOGUE, SHRINE
+			new Item("religious", R.drawable.panorama_building_religious, R.string.quest_buildingType_religious, new Item[]{
+					CHURCH, CATHEDRAL, CHAPEL, MOSQUE, TEMPLE, SYNAGOGUE
 			}),
 			new Item(null, R.drawable.panorama_building_cars, R.string.quest_buildingType_cars, new Item[]{
 					CARPORT, GARAGE, GARAGES, PARKING
 			}),
-			new Item("farm_auxiliary", R.drawable.panorama_building_farm_auxiliary, R.string.quest_buildingType_farm_auxiliary, new Item[]{
-					BARN, COWSHED, STABLE
+			new Item(null, R.drawable.panorama_building_farm_auxiliary, R.string.quest_buildingType_farm, new Item[]{
+					FARM, FARM_AUXILIARY, BARN, GREENHOUSE
 			}),
 			new Item(null, R.drawable.panorama_building_other, R.string.quest_buildingType_other, new Item[]{
-					HUT, SHED, CABIN, GREENHOUSE, CONSTRUCTION, RUINS, ROOF, SERVICE, TRANSFORMER_TOWER
+					HUT, SHED, CABIN, CONSTRUCTION, RUINS, ROOF, SERVICE
 			}),
 	};
 

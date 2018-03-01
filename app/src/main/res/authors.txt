@@ -133,11 +133,11 @@ building_terrace.jpg		https://wiki.openstreetmap.org/wiki/File:Treeton_Terrace.j
 building_detached.jpg		https://wiki.openstreetmap.org/wiki/File:House_in_Argentina.JPG
 building_hotel.jpg		https://commons.wikimedia.org/wiki/File:Frankfurt,_Nieder-Eschbach,_BB-Hotel.JPG
 building_dormitory.jpg		https://wiki.openstreetmap.org/wiki/File:Belgrade_Dormitory.jpg
-building_farm.jpg		https://wiki.openstreetmap.org/wiki/File:Studna_p%C5%99ed_%C4%8D.1.,Hola%C5%A1ovice.JPG
 building_houseboat.jpg		https://commons.wikimedia.org/wiki/File:LakeUnionHouseboat.jpg
 building_bungalow.jpg		https://wiki.openstreetmap.org/wiki/File:Bungalow2.jpg
 building_static_caravan.jpg	https://commons.wikimedia.org/wiki/File:Retro_static_caravan_(15068430005).jpg
 
+building_commercial.jpg 	https://commons.wikimedia.org/wiki/File:Akita_Prefectural_Government_Office_Building-2.jpg
 building_industrial.jpg		https://wiki.openstreetmap.org/wiki/File:Eley_Industrial_Estate1.JPG
 building_retail.jpg		https://wiki.openstreetmap.org/wiki/File:Macys_dep_store.JPG
 building_warehouse.jpg		https://wiki.openstreetmap.org/wiki/File:Copenhagen_warehouse.jpg
@@ -165,17 +165,15 @@ building_garage.jpg		https://wiki.openstreetmap.org/wiki/File:Two-Car_Garage.jpg
 building_garages.jpg		https://wiki.openstreetmap.org/wiki/File:Landbouwstraat_garages.jpg
 building_parking.jpg		https://wiki.openstreetmap.org/wiki/File:Gie%C3%9Fen-Uniklinik-Parkhaus.jpg
 
-building_barn.jpg		https://wiki.openstreetmap.org/wiki/File:EJFrykBarn.jpg
-building_cowshed.jpg		https://wiki.openstreetmap.org/wiki/File:Cowhouse_Hrazany2.jpg
+building_farm.jpg		https://wiki.openstreetmap.org/wiki/File:Studna_p%C5%99ed_%C4%8D.1.,Hola%C5%A1ovice.JPG
 building_farm_auxialliary.jpg	https://wiki.openstreetmap.org/wiki/File:Horseshoe_Barn.jpg
-building_stable.jpg		https://commons.wikimedia.org/wiki/File:Horse_stable_-_Middletown.jpg
+building_barn.jpg		https://wiki.openstreetmap.org/wiki/File:EJFrykBarn.jpg
+building_greenhouse.jpg		https://commons.wikimedia.org/wiki/File:Glasshouse_crops_1.jpg
 
 building_cabin.jpg		https://wiki.openstreetmap.org/wiki/File:Koch_Cabin.JPG
 building_construction.jpg	https://wiki.openstreetmap.org/wiki/File:Altitude_Montreal_Under_Construction.jpg
 building_ruins.jpg		https://commons.wikimedia.org/wiki/File:Ruins_of_Roman_Forum.jpg
 building_service.jpg		https://wiki.openstreetmap.org/wiki/File:Service_building.png
-building_transformator_tower.jpg https://wiki.openstreetmap.org/wiki/File:OesterSkovVejHad.jpg
-building_greenhouse.jpg		https://commons.wikimedia.org/wiki/File:Glasshouse_crops_1.jpg
 building_roof.jpg		https://commons.wikimedia.org/wiki/File:Star_Tankstelle.jpg
 building_hut.jpg		https://wiki.openstreetmap.org/wiki/File:Kennedy%27s_hut_edit.jpg
 building_shed.jpg		https://wiki.openstreetmap.org/wiki/File:Schuppen_7235.jpg
