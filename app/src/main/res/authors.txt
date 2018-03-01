@@ -12,12 +12,12 @@ bridge_structure_floating.jpg  CC-BY-SA 3.0      https://commons.wikimedia.org/w
 bridge_structure_simple_sus... CC-BY 2.0         https://commons.wikimedia.org/wiki/File:Carrick-a-Rede_Rope_Bridge_(12298726585).jpg
 
 car_wash_automated.jpg         CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Carwas.jpg
-car_wash_service.jpg           ?                 http://ctproductsandservices.com/2013/10/splash-car-wash/
+car_wash_service.jpg           fair use          http://ctproductsandservices.com/2013/10/splash-car-wash/
 car_wash_self_service.jpg      CC0               https://pixabay.com/en/wash-a-car-the-car-blue-1822415/
 
 crossing_type_signals.jpg      CC0               https://pixabay.com/en/little-green-man-traffic-lights-819851/
 crossing_type_zebra.jpg        CC-BY-SA 1.0      https://commons.wikimedia.org/wiki/File%3AZebra_crossing.jpg
-crossing_type_unmarked.jpg     ?                 http://www.jrlawfirm.com/wp-content/uploads/2016/04/unmarked-crosswalks-texas.jpg
+crossing_type_unmarked.jpg     fair use          http://www.jrlawfirm.com/wp-content/uploads/2016/04/unmarked-crosswalks-texas.jpg on https://www.jrlawfirm.com/blog/unmarked-crosswalks/
 
 fire_hydrant_pillar.jpg        CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:W%C3%ABntreng,_Hydrant.jpg
 fire_hydrant_wall.jpg          CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Guentherscheid_Tunnel_Rescue4.jpg
