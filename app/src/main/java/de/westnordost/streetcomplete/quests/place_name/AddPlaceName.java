@@ -40,7 +40,7 @@ public class AddPlaceName extends SimpleOverpassQuestType
 		put("tourism", new String[]{
 			"attraction", "zoo", "aquarium", "theme_park", "gallery", "museum",                                            // attractions
 			"hotel", "guest_house", "motel", "hostel", "alpine_hut", "apartment", "resort", "camp_site", "caravan_site",    // accomodations
-			// and tourism=info, see below
+			// and tourism=information, see below
 		});
 		put("leisure", new String[]{
 			"park","nature_reserve", "sports_centre","fitness_centre","dance","golf_course",
