@@ -20,6 +20,7 @@ living_street.svg
 roof_shape_icons.svg
 
 quest_icons.svg
+	beer						modified from Twemoji 2: U+1F37A
 	bicycle
 	bicycle_parking
 	blind
