@@ -242,8 +242,8 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 
 	private void onClickedMap(float positionX, float positionY)
 	{
-		final LngLat pos = controller.screenPositionToLngLat(new PointF(positionX, positionY));
-		listener.onClickedMapAt(TangramConst.toLatLon(pos));
+		LngLat pos = controller.screenPositionToLngLat(new PointF(positionX, positionY));
+		if(pos != null) listener.onClickedMapAt(TangramConst.toLatLon(pos));
 	}
 
 	@Override protected boolean shouldCenterCurrentPosition()
