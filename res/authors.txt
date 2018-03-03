@@ -48,7 +48,6 @@ quest_icons.svg
 	max_speed
 	max_weight
 	money						modified from EmojiOne 2: U+1F4B8
-	museum						modified from EmojiOne 2: U+1F3DB
 	notes
 	parking
 	parking_access					parts taken from EmojiOne 2: U+1F511
