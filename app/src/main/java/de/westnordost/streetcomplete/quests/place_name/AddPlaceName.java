@@ -27,7 +27,7 @@ public class AddPlaceName extends SimpleOverpassQuestType
 			"cinema", "theatre", "planetarium", "arts_centre", "studio",                                            // culture
 			"events_venue", "conference_centre", "exhibition_centre", "music_venue",                                // events
 			"townhall", "prison", "courthouse", "embassy", "police", "fire_station", "ranger_station",                // civic
-			"bank", "atm", "bureau_de_change", "money_transfer", "post_office", "library", "marketplace",            // commercial
+			"bank", "bureau_de_change", "money_transfer", "post_office", "library", "marketplace",            // commercial
 			"community_centre", "social_facility", "nursing_home", "childcare", "retirement_home", "social_centre",    // social
 			"car_wash", "car_rental", "boat_rental", "fuel",                                                        // car stuff
 			"dentist", "doctors", "clinic", "pharmacy", "hospital",                                                    // health care
