@@ -21,6 +21,7 @@ import de.westnordost.streetcomplete.settings.QuestSelectionFragment;
 import de.westnordost.streetcomplete.statistics.UploadedAnswersCounter;
 import de.westnordost.streetcomplete.statistics.UnsyncedChangesCounter;
 import de.westnordost.streetcomplete.tangram.MapControlsFragment;
+import de.westnordost.streetcomplete.tangram.MapFragment;
 import de.westnordost.streetcomplete.tangram.QuestsMapFragment;
 import de.westnordost.streetcomplete.util.SerializedSavedState;
 
@@ -51,6 +52,7 @@ public interface ApplicationComponent
 
 	void inject(AbstractQuestAnswerFragment abstractQuestAnswerFragment);
 
+	void inject(MapFragment mapFragment);
 	void inject(QuestsMapFragment questsMapFragment);
 
 	void inject(MapControlsFragment mapControlsFragment);

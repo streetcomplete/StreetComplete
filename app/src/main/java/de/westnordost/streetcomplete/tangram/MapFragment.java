@@ -22,6 +22,7 @@ import android.text.Html;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,9 +45,12 @@ import com.mapzen.tangram.TouchInput;
 import java.io.File;
 import java.util.Calendar;
 
+import javax.inject.Inject;
+
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.R;
+import de.westnordost.streetcomplete.settings.SettingsFragment;
 import de.westnordost.streetcomplete.util.SphericalEarthMath;
 
 import static android.content.Context.SENSOR_SERVICE;
@@ -82,9 +86,9 @@ public class MapFragment extends Fragment implements
 	private boolean zoomedYet;
 	private boolean isCompassMode;
 
-	private SharedPreferences prefs;
-
 	private MapControlsFragment mapControls;
+
+	@Inject SharedPreferences prefs;
 
 	private String apiKey;
 
@@ -115,8 +119,6 @@ public class MapFragment extends Fragment implements
 		mapzenLink.setMovementMethod(LinkMovementMethod.getInstance());
 		mapzenLink.setVisibility(View.GONE);
 
-		prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
-
 		return view;
 	}
 
@@ -138,7 +140,7 @@ public class MapFragment extends Fragment implements
 
 	private String getSceneFilePath()
 	{
-		Prefs.Mapstyle p = Prefs.Mapstyle.valueOf(prefs.getString(Prefs.MAPSTYLE,"LIGHT"));
+		Prefs.Mapstyle p = Prefs.Mapstyle.valueOf(prefs.getString(Prefs.MAPSTYLE, null));
 		String filename = "streetcomplete-light-style.yaml";
 		switch (p)
 		{
@@ -157,7 +159,6 @@ public class MapFragment extends Fragment implements
 				else filename = "streetcomplete-light-style.yaml";
 				break;
 		}
-
 		return "map_theme/" + filename;
 	}
 
@@ -633,7 +634,6 @@ public class MapFragment extends Fragment implements
 		super.onResume();
 		compass.onResume();
 		if(mapView != null) mapView.onResume();
-		loadScene(getSceneFilePath());
 	}
 
 	@Override public void onPause()
