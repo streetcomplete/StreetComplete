@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete;
 import android.animation.ObjectAnimator;
 import android.graphics.Point;
 import android.graphics.PointF;
-import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -46,7 +45,6 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -80,6 +78,7 @@ import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 import de.westnordost.streetcomplete.quests.FindQuestSourceComponent;
 import de.westnordost.streetcomplete.quests.OsmQuestAnswerListener;
 import de.westnordost.streetcomplete.quests.QuestAnswerComponent;
+import de.westnordost.streetcomplete.quests.QuestUtil;
 import de.westnordost.streetcomplete.settings.SettingsActivity;
 import de.westnordost.streetcomplete.statistics.UnsyncedChangesCounter;
 import de.westnordost.streetcomplete.statistics.UploadedAnswersCounter;
@@ -232,8 +231,6 @@ public class MainActivity extends AppCompatActivity implements
 	{
 		super.onStart();
 
-		showUndoFuckupDescriptionOnce();
-
 		uploadedAnswersCounter.update();
 		unsyncedChangesCounter.update();
 
@@ -260,33 +257,6 @@ public class MainActivity extends AppCompatActivity implements
 		else
 		{
 			updateLocationAvailability();
-		}
-	}
-
-	private void showUndoFuckupDescriptionOnce()
-	{
-		boolean hasShown = prefs.getBoolean(Prefs.HAS_SHOWN_UNDO_FUCKUP_WARNING, false);
-		if(!hasShown)
-		{
-			prefs.edit().putBoolean(Prefs.HAS_SHOWN_UNDO_FUCKUP_WARNING, true).apply();
-			// only for users which already authenticated (non-new users)
-			if(prefs.getLong(Prefs.OSM_USER_ID, -1) != -1)
-			{
-				new AlertDialogBuilder(this)
-					.setTitle("Undo feature was broken")
-					.setMessage("Between Jan 7 and Feb 9 (v3.3 to v4.0-beta1) the undo feature was partly broken: Undoing answers that were already uploaded wasn't actually doing anything! (By default, answers are uploaded immediately.)\n\n" +
-						"I am terribly sorry about this. It's fixed now, but if you used the app in that period and undid something on your survey, please check that everything is correct!\n\n" +
-						"If you need assistance, click on \"More info\" or send me an email.")
-					.setCancelable(false)
-					.setNeutralButton("More info", (dialog, which) ->
-					{
-						Intent browserIntent = new Intent(Intent.ACTION_VIEW,
-							Uri.parse("https://github.com/westnordost/StreetComplete/issues/852"));
-						startActivity(browserIntent);
-					})
-					.setPositiveButton("Understood", null)
-					.show();
-			}
 		}
 	}
 
@@ -346,8 +316,7 @@ public class MainActivity extends AppCompatActivity implements
 		icon.setImageResource(quest.getType().getIcon());
 		TextView text = inner.findViewById(R.id.text);
 
-		String name = element.getTags().get("name");
-		text.setText(getResources().getString(getQuestTitleResId(quest, element.getTags()), name));
+		text.setText(QuestUtil.getHtmlTitle(getResources(), quest.getType(), element));
 
 		new AlertDialogBuilder(this)
 				.setTitle(R.string.undo_confirm_title)
@@ -359,16 +328,6 @@ public class MainActivity extends AppCompatActivity implements
 				})
 				.setNegativeButton(R.string.undo_confirm_negative, null)
 				.show();
-	}
-
-	private int getQuestTitleResId(Quest quest, Map<String,String> tags)
-	{
-		if(quest instanceof OsmQuest)
-		{
-			OsmQuest osmQuest = (OsmQuest) quest;
-			return osmQuest.getOsmElementQuestType().getTitle(tags);
-		}
-		return quest.getType().getTitle();
 	}
 
 	@Override public boolean onOptionsItemSelected(MenuItem item)

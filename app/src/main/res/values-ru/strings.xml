@@ -442,4 +442,20 @@
     <string name="quest_housenumber_conscription_number">"Сквозная нумерация"</string>
     <string name="quest_housenumber_conscription_number_required">"Необходимо указать сквозную нумерацию
 "</string>
+    <string name="map_btn_create_note">"Создать новую заметку"</string>
+    <string name="create_new_note_unprecise">"Увеличьте масштаб для создания заметки"</string>
+    <string name="quest_generic_looks_like_this">"Обычно выглядит так:"</string>
+    <string name="quest_internet_access_wlan">"Wi-Fi"</string>
+    <string name="quest_bench_backrest_title">"Есть ли у этой скамейки спинка?"</string>
+    <string name="quest_religion_christian">"Христианство"</string>
+    <string name="quest_religion_muslim">"Ислам"</string>
+    <string name="quest_religion_hindu">"Индуизм"</string>
+    <string name="quest_religion_buddhist">"Буддизм"</string>
+    <string name="quest_religion_shinto">"Синто"</string>
+    <string name="quest_religion_jewish">"Иудаизм"</string>
+    <string name="quest_religion_taoist">"Даосизм"</string>
+    <string name="quest_religion_sikh">"Сикхизм"</string>
+    <string name="quest_religion_caodaist">"Каодай"</string>
+    <string name="quest_parking_access_yes">"Открыта для всех (платная или бесплатная)"</string>
+    <string name="quest_parking_access_customers">"Только для клиентов"</string>
 </resources>

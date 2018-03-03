@@ -35,7 +35,7 @@
     <string name="quest_streetName_answer_noName_confirmation_description">"Néha csak az utca egyik végén van utcanévtábla. Az is lehet, hogy a nagyobb utcákhoz tartozó mellékutcáknak nincs külön utcanévtáblájuk. Általában minden utcának van neve, amelyben házak állnak."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Ha a név leírható rövidítés nélkül, akkor ki kell írni az egész nevét. Gépeléskor sok gyakori rövidítés automatikusan kiegészül, de valószínűleg nem az összes."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Nincs rövidítés"</string>
-    <string name="quest_openingHours_name_title">"Mi a nyitva tartása ennek: %s?"</string>
+    <string name="quest_openingHours_name_title">"Mi a nyitvatartása ennek: %s?"</string>
     <string name="quest_openingHours_start_time">"nyitás"</string>
     <string name="quest_openingHours_end_time">"zárás"</string>
     <string name="quest_openingHours_add_months">"Hónap hozzáadása"</string>
@@ -188,7 +188,7 @@ A megadott adatok közvetlenül az OpenStreetMapre kerülnek a nevedben, ehhez n
     <string name="quest_name_noName_confirmation_positive">"Így van, nincs neve"</string>
 
     <!-- Az új helyesírási szabályzat szerint a nyitvatartás egybeirandó -->
-    <string name="quest_openingHours_add_times">"Nyitvatartás hozzáadása."</string>
+    <string name="quest_openingHours_add_times">"Nyitvatartás hozzáadása"</string>
     <string name="crash_message">"El tudnád küldeni a hibajelentést a fejlesztőnek?"</string>
     <string name="crash_title">"Jaj ne, a StreetComplete legutóbb összeomlott!"</string>
     <string name="crash_compose_email">"E-mail küldése"</string>
@@ -269,14 +269,14 @@ Ha az utcában az egész kijelölt szakaszon nincs jelzőtábla, akkor az alapé
     <string name="quest_wheelchairAccess_railway_station_title">"Akadálymentes-e ez a vasútállomás?"</string>
     <string name="quest_wheelchairAccess_location_title">"Akadálymentes-e ez a hely?"</string>
     <string name="quest_wheelchairAccess_bus_station_name_title">"%s buszmegálló akadálymentes-e?"</string>
-    <string name="quest_wheelchairAccess_subway_entrance_name_title">"“%s” metrólejáró akadálymentes-e?"</string>
-    <string name="quest_wheelchairAccess_railway_station_name_title">"“%s” vasútállomás akadálymentes-e?"</string>
-    <string name="quest_wheelchairAccess_location_name_title">"“%s” akadálymentes-e?"</string>
+    <string name="quest_wheelchairAccess_subway_entrance_name_title">"A(z) %s metrólejáró akadálymentes-e?"</string>
+    <string name="quest_wheelchairAccess_railway_station_name_title">"A(z) %s vasútállomás akadálymentes-e?"</string>
+    <string name="quest_wheelchairAccess_location_name_title">"%s akadálymentes-e?"</string>
     <string name="quest_wheelchairAccess_limited_description_business">"A „részben” azt jelenti, hogy a bejáratnál legfeljebb egy lépcsőfok van, és a legtöbb helyiség használható kerekesszékkel."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"A „részben” azt jelenti, hogy legfeljebb egy lépcsőfokot kell megtenni."</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Van-e rövidítés a(z) “%s” névben?"</string>
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Van-e rövidítés ebben a névben: %s?"</string>
     <string name="quest_baby_changing_table_toilets_title">"Van-e pelenkázóasztal ebben a mosdóban?"</string>
-    <string name="quest_baby_changing_table_title">"Van-e pelenkázóasztal itt: \"%s\"?"</string>
+    <string name="quest_baby_changing_table_title">"Van-e pelenkázóasztal itt: %s?"</string>
     <string name="quest_recycling_type_title">"Ez milyen típusú újrahasznosító létesítmény?"</string>
     <string name="recycling_centre">"Központ"</string>
     <string name="overground_recycling_container">"Konténer"</string>
@@ -355,9 +355,9 @@ Vagy le is tölthetsz egy másik billentyűzetet az áruházból. Népszerű bil
     <string name="produce_walnuts">"Dió"</string>
     <string name="produce_sisal">"Szizálkender"</string>
     <string name="quest_way_lit_title">"Ki van-e világítva ez az útszakasz?"</string>
-    <string name="quest_way_lit_named_title">"\"%s\" ki van-e itt világítva?"</string>
+    <string name="quest_way_lit_named_title">"A(z) %s ki van-e itt világítva?"</string>
     <string name="quest_way_lit_road_title">"Ki van-e világítva ez az útszakasz?"</string>
-    <string name="quest_way_lit_named_road_title">"\"%s\" ki van-e itt világítva?"</string>
+    <string name="quest_way_lit_named_road_title">"Ki van-e itt világítva ez az út: %s?"</string>
     <string name="quest_way_lit_automatic">"Mozgásérzékelővel rendelkezik"</string>
     <string name="quest_way_lit_24_7">"Éjjel-nappal ki van világítva"</string>
     <string name="pref_title_authorized_username_summary">"Hitelesített fiók: %s"</string>
@@ -452,6 +452,7 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="create_new_note_description">"Megjegyzés elhelyezésével tájékoztathatod a többi térképezőt arról, hogy itt egy probléma van. A megjegyzés helyét a térkép mozgatásával lehet beállítani:"</string>
     <string name="pref_title_quests_invalidation">"Kérdések helyi gyorsítótárának érvénytelenítése"</string>
     <string name="pref_title_quests_invalidation_summary">"Akkor hasznos, ha néhány kérdés elavult"</string>
+    <string name="invalidate_confirmation">"Érvénytelenítés"</string>
     <string name="invalidation_dialog_message">"A gyorsítótár érvénytelenítése után a következő letöltésnél frissülnek a kérdések. A kérdések gyorsítótára automatikusan is érvénytelenül egy hét után, illetve azonnal, ha egy általad megválaszolt kérdésről kiderül, hogy már más is megoldotta."</string>
     <string name="quest_generic_looks_like_this">"Általában így néz ki:"</string>
     <string name="quest_surface_value_metal">"Fém"</string>
@@ -465,4 +466,28 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="quest_internet_access_no">"Nincs csatlakozás"</string>
     <string name="quest_busStopShelter_tram_name_title">"Van-e esőbeálló a(z) %s villamosmegállóban?"</string>
     <string name="quest_busStopShelter_tram_title">"Van-e esőbeálló ebben a villamosmegállóban?"</string>
+    <string name="quest_bench_backrest_title">"Van-e támlája ennek a padnak?"</string>
+    <string name="quest_bench_answer_picnic_table">"Ez egy piknikezőasztal"</string>
+    <string name="quest_religion_for_place_of_worship_title">"Milyen vallást gyakorolnak itt: %s?"</string>
+    <string name="quest_religion_christian">"keresztény"</string>
+    <string name="quest_religion_muslim">"iszlám"</string>
+    <string name="quest_religion_hindu">"hindu"</string>
+    <string name="quest_religion_buddhist">"buddhista"</string>
+    <string name="quest_religion_shinto">"sintó"</string>
+    <string name="quest_religion_jewish">"zsidó"</string>
+    <string name="quest_religion_taoist">"taoista"</string>
+    <string name="quest_religion_for_place_of_worship_answer_multi">"több vallás használja"</string>
+    <string name="quest_religion_sikh">"szikh"</string>
+    <string name="quest_religion_jain">"dzsainista"</string>
+    <string name="quest_religion_bahai">"bahái"</string>
+    <string name="quest_religion_caodaist">"kaodaista (vietnami)"</string>
+    <string name="quest_religion_chinese_folk">"kínai népi vallásosság"</string>
+    <string name="quest_religion_for_wayside_shrine_title">"Melyik valláshoz tartozik ez a szentély?"</string>
+    <string name="quest_parking_fee_title">"Van-e itt parkolási díj?"</string>
+    <string name="quest_cycleway_value_lane_soft">"kerékpársáv (szaggatot vonal)"</string>
+    <string name="quest_surface_value_unhewn_cobblestone">"Nagy kavics (nem vágott)"</string>
+    <string name="quest_parking_access_title">"Korlátozva van-e, hogy ki parkolhat itt?"</string>
+    <string name="quest_parking_access_private">"Magántulajdon"</string>
+    <string name="quest_parking_access_yes">"Nyilvános (parkolási díjjal vagy ingyen)"</string>
+    <string name="quest_parking_access_customers">"Csak ügyfeleknek"</string>
 </resources>

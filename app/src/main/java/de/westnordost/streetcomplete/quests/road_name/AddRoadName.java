@@ -44,13 +44,13 @@ public class AddRoadName implements OsmElementQuestType
 	/** @return overpass query string for creating the quests */
 	private static String getOverpassQuery(BoundingBox bbox)
 	{
-		return OverpassQLUtil.getOverpassBBox(bbox) + ROADS_WITHOUT_NAMES + "; out meta geom;";
+		return OverpassQLUtil.getGlobalOverpassBBox(bbox) + ROADS_WITHOUT_NAMES + "; out meta geom;";
 	}
 
 	/** @return overpass query string to get roads with names near roads that don't have names */
 	private static String getStreetNameSuggestionsOverpassQuery(BoundingBox bbox)
 	{
-		return OverpassQLUtil.getOverpassBBox(bbox) +
+		return OverpassQLUtil.getGlobalOverpassBBox(bbox) +
 				ROADS_WITHOUT_NAMES + " -> .without_names;" +
 				ROADS_WITH_NAMES + " -> .with_names;" +
 				"way.with_names(around.without_names:" +

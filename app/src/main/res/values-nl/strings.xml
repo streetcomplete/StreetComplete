@@ -259,6 +259,7 @@ De informatie die je ingeeft wordt meteen toegevoegd aan OpenStreetMap in jouw n
     <string name="quest_maxspeed_title_short">"Wat is de maximum snelheid volgens het bord in deze straat?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Deze maximum snelheid lijkt onwaarschijnlijk."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Weet je zeker dat er geen limiet is aangegeven?"</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation">"Heb je gekeken op het einde van de straat? Als er geen verkeersborden staan die van toepassing zijn op het geselecteerde stuk, dan worden de standaard-snelheidslimieten toegepast."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Ja geen bord"</string>
     <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Stedelijke wegen hebben een andere standaard snelheidslimiet dan landelijke wegen"</string>
     <string name="quest_maxspeed_answer_noSign_urbanOk">"In de stad / dorp"</string>
@@ -449,18 +450,60 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire keybor
     <string name="quest_housenumber_conscription_number_required">"Een districtgetal moet voorzien worden"</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">"Er is ook een fietspad aan de overkant"</string>
     <string name="need_specify_both_sides">"Je moet beide zijden van de weg invullen"</string>
+    <string name="quest_openingHours_emptyAnswer">"Beschrijf de openingsuren die uithangen. Als er geen openingsuren uithangen, ga het dan binnen vragen."</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"Geen, maar fietsers mogen de weg gebruiken in beide richtingen."</string>
     <string name="quest_streetName_answer_noName_question">"Waarom heeft dit geen naam?"</string>
+    <string name="quest_streetName_answer_noProperStreet_service2">"Het is iets dat lijkt op een oprit of parkeerwerg"</string>
     <string name="quest_streetName_answer_noProperStreet_track2">"Het is een agrarisch of een bosweg"</string>
     <string name="quest_streetName_answer_noName_noname">"Geen van bovenstaande, het heft gewoon geen naam"</string>
     <string name="quest_wheelchairAccess_toilets_title">"Zijn deze toiletten toegankelijk voor rolstoelen?"</string>
     <string name="quest_wheelchairAccess_toilets_name_title">"Zijn de toiletten “%s” rolstoeltoegankelijk?"</string>
+    <string name="quest_wheelchairAccess_description_toilets">"Een rolstoel-pictogram zoals deze kan zichtbaar zijn als de toiletten toegankelijk zijn voor rolstoelgebruikers. Gedeeltelijk (partially) betekent dat dat een rolstoel binnen kan rijden en de toilet kan gebruiken, maar dat er geen extra aanpassingen zijn (zoals een rail, verlaagde lavabo, ...)"</string>
+    <string name="map_btn_create_note">"Maak een nieuwe notitie"</string>
+    <string name="create_new_note_unprecise">"Zoom verder in om een notitie te maken"</string>
+    <string name="create_new_note_description">"Je kan een notitie maken om andere mappers op een probleem te wijzen. Door de kaart te bewegen, kan je de notitie positioneren:"</string>
+    <string name="pref_title_quests_invalidation">"Markeer de lokale vragen als verouderd"</string>
+    <string name="pref_title_quests_invalidation_summary">"Handig als je denkt dat sommige vragen verouderd zijn (bijvoorbeeld als je denkt dat een vraag al beantwoord werd, maar toch nog zichtbaar is)"</string>
+    <string name="invalidate_confirmation">"Maak ongeldig"</string>
+    <string name="invalidation_dialog_message">"De lokale vragen als verouderd aanduiden zorgt ervoor dat alle vragen opnieuw gedownload worden wanneer data beschikbaar is. Normaalgezien worden de lokale vragen automatisch eenmaal per week als 'verouderd' aangeduid of indien een je een antwoord uploadt dat al beantwoord werd."</string>
     <string name="quest_generic_looks_like_this">"Ziet er meestal zo uit:"</string>
     <string name="quest_surface_value_metal">"Metaal"</string>
+    <string name="quest_surface_generic_surface_confirmation">"Ben je er zeker van dat je geen specifiekere wegbedekking kunt aanduiden?"</string>
+    <string name="quest_cycleway_title2">"Is er hier een fietspad? Welke soort?"</string>
+    <string name="quest_bridge_structure_title">"Wat voor structuur heeft deze brug?"</string>
+    <string name="quest_internet_access_name_title">"Wat voor internet biedt \"%s\" aan?"</string>
     <string name="quest_internet_access_wlan">"Wi-Fi"</string>
+    <string name="quest_internet_access_wired">"Met kabel (LAN)"</string>
     <string name="quest_internet_access_terminal">"Computer met toegang tot het internet"</string>
     <string name="quest_internet_access_no">"Geen toegang tot internet."</string>
+    <string name="quest_busStopShelter_tram_name_title">"Heeft tramhalte \"%s\" een schuilhokje?"</string>
+    <string name="quest_busStopShelter_tram_title">"Heeft deze tramhalte een schuilhokje?"</string>
     <string name="quest_bench_backrest_title">"Heeft deze bank een rugleuning?"</string>
     <string name="quest_bench_answer_picnic_table">"Het is een picknicktafel."</string>
+    <string name="quest_religion_for_place_of_worship_title">"Welke religie wordt beoefend in \"%s\"?"</string>
+    <string name="quest_religion_christian">"Het Christendom"</string>
+    <string name="quest_religion_muslim">"De Islam"</string>
+    <string name="quest_religion_hindu">"Het Hindoeïsme"</string>
+    <string name="quest_religion_buddhist">"Het Boedhisme"</string>
+    <string name="quest_religion_shinto">"Het Shintoïsme"</string>
+    <string name="quest_religion_jewish">"Het Judaïsme"</string>
+    <string name="quest_religion_taoist">"Het Taoïsme"</string>
+    <string name="quest_religion_for_place_of_worship_answer_multi">"Verschillende religies"</string>
+    <string name="quest_religion_sikh">"Het Sikhisme"</string>
+    <string name="quest_religion_jain">"Het Jaïnisme"</string>
+    <string name="quest_religion_bahai">"Het Bahá'í-geloof"</string>
+    <string name="quest_religion_caodaist">"Het Caodaisme"</string>
+    <string name="quest_religion_chinese_folk">"De Chinese-Volksreligie"</string>
+    <string name="quest_religion_for_wayside_shrine_title">"Welke religie wordt vertegenwoordigt door dit heiligdom of gedenkteken?"</string>
     <string name="quest_parking_fee_title">"Kost het geld om hier te parkeren?"</string>
+
+    <!-- In Belgium, we have a official cyclelane (with lines of ~1m) which are reserved for  cyclists; and 'suggestion strips' which would translate to 'shared_lane'. Which one is the case here? -->
+    <string name="quest_cycleway_value_lane_soft">"fietspad (met onderbroken streep)"</string>
+
+    <!-- What is meant with this? Can you link an image? -->
+    <string name="quest_surface_value_unhewn_cobblestone">"Ongehouwen kasseien"</string>
+    <string name="quest_parking_access_title">"Mag iedereen hier parkeren?"</string>
+    <string name="quest_parking_access_private">"Het is een privéparking"</string>
+    <string name="quest_parking_access_yes">"Het is een publieke parking (met of zonder betaling)"</string>
+    <string name="quest_parking_access_customers">"Enkel klanten mogen parkeren"</string>
 </resources>

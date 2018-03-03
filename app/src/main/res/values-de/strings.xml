@@ -464,7 +464,7 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_surface_value_metal">"Metall"</string>
     <string name="quest_surface_generic_surface_confirmation">"Bist Du sicher dass Du die Oberfläche nicht genauer bestimmen kannst?"</string>
     <string name="quest_cycleway_title2">"Gibt es hier einen Radweg? Was für einen?"</string>
-    <string name="quest_bridge_structure_title">"Wie ist die Konstruktionsform dieser Brücke?"</string>
+    <string name="quest_bridge_structure_title">"Welche Konstruktionsform hat diese Brücke?"</string>
     <string name="quest_internet_access_name_title">"Was für einen Internetanschluss bietet „%s“ an?"</string>
     <string name="quest_internet_access_wlan">"WLAN"</string>
     <string name="quest_internet_access_wired">"per Kabel (LAN)"</string>
@@ -496,4 +496,12 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_parking_access_private">"Es ist ein Privatparkplatz"</string>
     <string name="quest_parking_access_yes">"Es ist ein öffentlicher Parkplatz (mit oder ohne Gebühr)"</string>
     <string name="quest_parking_access_customers">"Es ist ein Kundenparkplatz"</string>
+    <string name="quest_streetName_pedestrian_title">"Wie heißt diese Fußgängerzone"</string>
+    <string name="quest_streetSurface_square_title">"Welche Oberfläche hat dieser Platz?"</string>
+    <string name="quest_streetSurface_square_name_title">"Welche Oberfläche hat der Platz „%s“ hier?"</string>
+    <string name="quest_fee_answer_hours">"Abhängig von Tag und Uhrzeit"</string>
+    <string name="quest_fee_add_times">"➕ Zeiten"</string>
+    <string name="quest_fee_only_at_hours">"Ja, aber nur…"</string>
+    <string name="quest_fee_not_at_hours">"Ja, aber nicht…"</string>
+    <string name="quest_fee_hours_title">"zu den folgenden Zeiten:"</string>
 </resources>

@@ -91,12 +91,8 @@
     <string name="no_gps_no_quests">"برای مرور خودکار جستارهای اطراف، مکان نما را روشن کنید"</string>
     <string name="nothing_more_to_download">"جستار دیگری قابل دسترس نیست"</string>
     <string name="later">"بعداً"</string>
-    <string name="quest_streetName_answer_noProperStreet">"خیابان نامناسب"</string>
-    <string name="quest_streetName_answer_noProperStreet_question">"پس چیست؟"</string>
     <string name="quest_streetName_answer_noProperStreet_link">"صرفاً این دو مسیر را به هم وصل می کند"</string>
-    <string name="quest_streetName_answer_noProperStreet_service">"صرفاً یک جاده خدماتی است"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"چیز دیگری هست(یادداشت بگذارید)"</string>
-    <string name="quest_streetName_answer_noProperStreet_track">"صرفاً یک مسیر است"</string>
     <string name="about_title_privacy_statement">"بیانیه حریم شخصی"</string>
     <string name="about_summary_privacy_statement">"و کاربرد اطلاعات"</string>
     <string name="quest_openingHours_public_holidays">"تعطیلات عمومی"</string>
@@ -177,8 +173,6 @@
     <string name="quest_maxspeed_answer_noSign">"بدون علائم"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"این خیابان کجاست؟"</string>
     <string name="quest_cyclewaySurface_title">"جنس سطح مسیر دوچرخه سواری در اینجا چیست؟"</string>
-    <string name="quest_cycleway_title2">"آیا مسیر دوچرخه در این خیابان وجود دارد؟"</string>
-    <string name="quest_cycleway_title">"آیا مسیر دوچرخه در این خیابان وجود دارد؟"</string>
     <string name="quest_buildingType_title">"نوع این ساختمان چیست؟"</string>
     <string name="quest_serviceType_title">"نوع این جاده خدماتی چیست؟"</string>
     <string name="quest_streetLanes_title">"این راه چند خط عبور دارد؟"</string>
@@ -261,8 +255,6 @@
     <string name="quest_maxspeed_title_short">"علائم محدودیت سرعت برای این خیابان چیست؟"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"این محدودیت سرعت به نظر غیر واقعی است."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"آیا مطمئن هستید که هیچ محدودیتی قرار داده نشده است؟"</string>
-    <string name="quest_maxspeed_answer_noSign_confirmation">"آیا شما انتهای خیابان را بررسی کرده‌اید؟
-اگر علائم وجود نداشته باشد، محدودیت سرعت پیش فرض اعمال می شود."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"بله ، بدون علائم"</string>
     <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"محدودیت سرعت پیش فرض راه‌های شهری با راه‌های روستایی متفاوت می باشد."</string>
     <string name="quest_maxspeed_answer_noSign_urbanOk">"داخل شهرک"</string>

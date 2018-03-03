@@ -413,7 +413,7 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="pref_title_authorized_summary">"Auktoriserad"</string>
     <string name="quest_buildingLevels_answer_multipleLevels">"varierar mellan olika husdelar"</string>
     <string name="quest_buildingLevels_answer_description">"I sådana fall, fyll i värdet för den högsta husdelen"</string>
-    <string name="unglue_hint">"Klicka för att lossa låst vy"</string>
+    <string name="unglue_hint">"Klicka för att lossa fixerad vy"</string>
     <string name="pref_title_not_authorized_summary2">"Logga in med din webbläsare för att auktorisera."</string>
     <string name="about_category_feedback">"Feedback"</string>
     <string name="quest_leave_new_note_photo">"Bifoga foto"</string>
@@ -454,8 +454,12 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_streetName_answer_noName_question">"Varför har den inget namn?"</string>
     <string name="quest_streetName_answer_noProperStreet_track2">"Det är en traktor- eller skogsväg"</string>
     <string name="quest_streetName_answer_noName_noname">"Inget av ovanstående, den har helt enkelt inget namn"</string>
+    <string name="map_btn_create_note">"Skapa en ny anteckning"</string>
+    <string name="create_new_note_unprecise">"Zooma in ytterligare för att skapa en anteckning"</string>
+    <string name="create_new_note_description">"Du har möjlighet att lämna en anteckning för att meddela andra kartläggare om en fråga här. Justera anteckningens position genom att flytta kartan."</string>
     <string name="quest_generic_looks_like_this">"Ser vanligtvis ut så här:"</string>
     <string name="quest_surface_value_metal">"Metall"</string>
+    <string name="quest_cycleway_title2">"Finns det en cykelväg här? Vilken typ?"</string>
     <string name="quest_bridge_structure_title">"Vilken typ av bro är det här?"</string>
     <string name="quest_bench_backrest_title">"Har den här bänken ett ryggstöd?"</string>
     <string name="quest_bench_answer_picnic_table">"Det är ett picnickbord."</string>
@@ -468,7 +472,8 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_religion_jewish">"Judendom"</string>
     <string name="quest_religion_taoist">"Taoism"</string>
     <string name="quest_parking_fee_title">"Är parkeringen avgiftsbelagd?"</string>
-    <string name="quest_parking_access_title">"Är det begränsat vem som får parkera här?"</string>
-    <string name="quest_parking_access_private">"Den är privat"</string>
-    <string name="quest_parking_access_yes">"Den är offentlig (med eller utan avgift)"</string>
+    <string name="quest_parking_access_title">"Är det reglerat vem som får parkera här?"</string>
+    <string name="quest_parking_access_private">"Parkeringen är privat"</string>
+    <string name="quest_parking_access_yes">"Parkeringen är offentlig (med eller utan avgift)"</string>
+    <string name="quest_parking_access_customers">"Parkeringen är enbart för kunder"</string>
 </resources>

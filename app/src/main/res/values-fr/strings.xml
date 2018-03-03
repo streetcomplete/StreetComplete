@@ -543,4 +543,5 @@ Partiellement signifie qu'un fauteuil roulant peut entrer et utiliser les toilet
     <string name="quest_parking_access_private">"Privé"</string>
     <string name="quest_parking_access_yes">"Public (payant ou gratuit)"</string>
     <string name="quest_parking_access_customers">"Réservé aux clients"</string>
+    <string name="quest_streetName_pedestrian_title">"Quel est le nom de cette rue piétonne ?"</string>
 </resources>

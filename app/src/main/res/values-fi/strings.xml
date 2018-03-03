@@ -8,7 +8,7 @@
     <string name="oauth_failed_permissions">"Kirjautuminen epäonnistui: Kaikki listan käyttöoikeudet täytyy myöntää"</string>
     <string name="title_activity_settings">"Asetukset"</string>
     <string name="pref_category_communication">"Yhteydet"</string>
-    <string name="pref_category_display">"Näyttö"</string>
+    <string name="pref_category_display">"Näyttä"</string>
     <string name="pref_title_authorization">"Kirjaudu OSM tiliin"</string>
     <string name="pref_title_not_authorized_summary">"Ei vielä kirjauduttu"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
@@ -29,7 +29,7 @@
     <string name="quest_generic_confirmation_title">"Oletko varma?"</string>
     <string name="quest_generic_confirmation_yes">"Kyllä, olen varma"</string>
     <string name="quest_generic_confirmation_no">"Aion tarkistaa"</string>
-    <string name="quest_generic_error_field_empty">"Jätit tämän kentän tyhjäksi"</string>
+    <string name="quest_generic_error_field_empty">"Jätit kentän tyhjäksi"</string>
     <string name="quest_leave_new_note_title">"Jätä huomautus sen sijaan?"</string>
     <string name="quest_leave_new_note_description">"Voit jättäö julkisen huomautuksen tähän sijaintiin johon muut kartoittajat voivat kommentoida ja toivottavasti ratkaista:"</string>
     <string name="quest_leave_new_note_yes">"OK"</string>
@@ -156,7 +156,7 @@ Näytettäessä karttaa, vektoritiilet haetaan &lt;a href=\"https://mapzen.com/p
     <string name="quest_surface_value_grass">"Ruoho"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_surface_value_grass_paver">"Ruohonleikkuri"</string>
+    <string name="quest_surface_value_grass_paver">"Kivi &amp; ruoho yhdistelmä"</string>
     <string name="quest_surface_value_gravel">"Sora"</string>
     <string name="quest_surface_value_paving_stones">"Kivilaatta"</string>
     <string name="quest_surface_value_pebblestone">"Sileitä kiviä"</string>
@@ -187,11 +187,11 @@ Näytettäessä karttaa, vektoritiilet haetaan &lt;a href=\"https://mapzen.com/p
     <string name="quest_oneway_title">"Onko tämä yksisuuntainen tie?"</string>
     <string name="quest_address_title">"Mikä on tämän rakennuksen numero?"</string>
     <string name="store_listing_short_description">"OpenStreetMap maanmittaussovellus"</string>
-    <string name="store_listing_full_description">"Auta parantamaan OpenStreetMapia StreetCompletella!
+    <string name="store_listing_full_description">"Auta parantamaan OpenStreetMapia StreetCompletella! Voit näin osallistua vapaan kartan kehittämiseen helposti.
 
-Tämä sovellus löytää puuttuvia ja täydennettäviä tietoja lähiympäristössäsi ja näyttää ne kartalla karttamerkkeinä. Jokainen niistä on ratkaistavissa vastaamalla yksinkertaiseen kysymykseen.
+Sovelluksella löydät puuttuvia ja täydennettäviä tietoja lähiympäristöstäsi. Sovellus näyttää puuttuvat tiedot karttamerkkeinä, ja esittää niistä yksinkertaisesti ratkaistavia kysymyksiä.
 
-Tiedot jotka laitat lähetetään suoraan OpenStreetMapiin nimelläsi ilman tarvetta käyttää erillistä editoria."</string>
+Vastauksesi täydentävät OpenStreetMapsiä omalla nimelläsi. Et tarvi sovelluksen lisäksi erillistä OpenStreetMaps editoria."</string>
     <string name="quest_name_answer_noName">"Sillä ei ole nimeä"</string>
     <string name="quest_name_answer_noName_confirmation_title">"Eikö todellakaan nimeä?"</string>
     <string name="quest_name_noName_confirmation_positive">"Kyllä, ei nimeä"</string>
@@ -298,7 +298,7 @@ Tiedot jotka laitat lähetetään suoraan OpenStreetMapiin nimelläsi ilman tarv
     <string name="quest_streetName_cantType_open_store">"Avoin liike"</string>
     <string name="quest_streetName_cantType_description">"Jos käytät vakionäppäimistöä, on mahdollista että voit kytkeä tarvitsemasi kielen syöttömenetelmän asetuksista.
 
-Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppäimistöjä jotka tukevat lukuisia kieliä ovat Google Gboard, SwiftKey Keyboard ja Multiling O Keyboard. "</string>
+Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppäimistöjä jotka tukevat lukuisia kieliä ovat Google Gboard, SwiftKey Keyboard ja Multiling O Keyboard."</string>
     <string name="quest_streetName_menuItem_nolanguage">"(määrittämätön)"</string>
     <string name="quest_fireHydrant_type_title">"Minkälainen vesiposti tämä on?"</string>
     <string name="quest_fireHydrant_type_pillar">"Pylväs"</string>
@@ -362,8 +362,6 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
     <string name="produce_vanilla">"Vanilja"</string>
     <string name="produce_walnuts">"Saksanpähkinät"</string>
     <string name="produce_sisal">"Sisalia"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_way_lit_title">"Onko tämä tieosio valaistu?"</string>
     <string name="quest_way_lit_named_title">"Onko tämä \"%s\" valaistu?"</string>
     <string name="quest_way_lit_road_title">"Onko tämä tieosuus valaistu?"</string>
@@ -458,11 +456,44 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
     <string name="map_btn_create_note">"Luo uusi huomautus"</string>
     <string name="create_new_note_unprecise">"Zoomaa kauemmaksi ja luo huomautus"</string>
     <string name="create_new_note_description">"Voit jättää huomautukset, jotta toiset kartan tekijät huomaavat tehtävää täällä. Siirrä huomautusta kartalla siirtämällä paikkaa."</string>
-    <string name="pref_title_quests_invalidation">"Virheellinen kysymys cache"</string>
+    <string name="pref_title_quests_invalidation">"Viallinen kysymys välimuistissa"</string>
     <string name="pref_title_quests_invalidation_summary">"Hyödyllisiä, jos ajattelet osan kysymyksistä vanhentuneen"</string>
     <string name="invalidate_confirmation">"Mitätöidä"</string>
     <string name="invalidation_dialog_message">"Välimuistin tyhjennys johtaa siihen, että seuraavalla kerralla kysymykset ladataan uudelleen. Kysymysten välimuuisti tyhjennetään automaattisestiviikon välein ja välittömästi, kun valittavissa olevaan kysymykseen on joku toinen jo vastannut. "</string>
     <string name="quest_generic_looks_like_this">"Normaalisti näyttää suunnilleen tältä: "</string>
     <string name="quest_surface_value_metal">"Metalli"</string>
     <string name="quest_surface_generic_surface_confirmation">"Oletko varma, että et voi määritellä pintaa tarkemmin?"</string>
+    <string name="quest_cycleway_title2">"Onko täällä pyörätietä? Minkä tyyppinen?"</string>
+    <string name="quest_bridge_structure_title">"Mikä on tämän silan rakenne?"</string>
+    <string name="quest_internet_access_name_title">"Minkälaisen internetyhteyden \"%s\" tarjoaa?"</string>
+    <string name="quest_internet_access_wlan">"Wi-Fi"</string>
+    <string name="quest_internet_access_wired">"Langallinen yhteys (LAN)"</string>
+    <string name="quest_internet_access_terminal">"Tietokone internetyhteydellä"</string>
+    <string name="quest_internet_access_no">"Ei yhteyttä"</string>
+    <string name="quest_busStopShelter_tram_name_title">"Onko pysäkillä \"%s\" katos?"</string>
+    <string name="quest_busStopShelter_tram_title">"Onko tällä pysäkillä katos?"</string>
+    <string name="quest_bench_backrest_title">"Onko tällä penkillä selkänoja?"</string>
+    <string name="quest_bench_answer_picnic_table">"Se on piknik-pöytä"</string>
+    <string name="quest_religion_for_place_of_worship_title">"Mitä uskontoa tässä “%s” harjoitetaan?"</string>
+    <string name="quest_religion_christian">"Kristinusko"</string>
+    <string name="quest_religion_muslim">"Islam"</string>
+    <string name="quest_religion_hindu">"Hindulaisuus"</string>
+    <string name="quest_religion_buddhist">"Budhalaisuus"</string>
+    <string name="quest_religion_shinto">"šintolaisuus"</string>
+    <string name="quest_religion_jewish">"Juutalaisuus"</string>
+    <string name="quest_religion_taoist">"Taolaisuus"</string>
+    <string name="quest_religion_for_place_of_worship_answer_multi">"mitä tahansa uskontoa"</string>
+    <string name="quest_religion_sikh">"Sikhien"</string>
+    <string name="quest_religion_jain">"Jainin"</string>
+    <string name="quest_religion_bahai">"Bahai-usko"</string>
+    <string name="quest_religion_caodaist">"Cao Đài"</string>
+    <string name="quest_religion_chinese_folk">"Kiinalaista kansanuskoa"</string>
+    <string name="quest_religion_for_wayside_shrine_title">"Mitä uskontoa edustetaan tässä pyhäkössä?"</string>
+    <string name="quest_parking_fee_title">"Maksaako pysäköinti täällä?"</string>
+    <string name="quest_cycleway_value_lane_soft">"Pyöräkaista (katkoviivoilla)"</string>
+    <string name="quest_surface_value_unhewn_cobblestone">"Mukulakivet"</string>
+    <string name="quest_parking_access_title">"Onko rajoitettu kuka voi pysäköidä täällä?"</string>
+    <string name="quest_parking_access_private">"Yksityinen pysäköinti"</string>
+    <string name="quest_parking_access_yes">"Julkinen (maksullinen tai ilmainen)"</string>
+    <string name="quest_parking_access_customers">"Vain asiakkaille"</string>
 </resources>
