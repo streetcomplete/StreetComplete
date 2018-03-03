@@ -13,7 +13,7 @@ Translations: [Check the project on POEditor to see language contributors](https
 
 ## Licenses & Sources
 
-It's [GPL v3](https://www.gnu.org/licenses/gpl.html) for code and mixed Creative Common licenses for assets (of which none is more restrictive than [CC-BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)).
+It's [GPL v3](https://www.gnu.org/licenses/gpl.html) for code and mixed Creative Common licenses for assets (of which none is more restrictive than [CC-BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)) with two images used under fair use.
 
 Check
 * [res/authors.txt](res/authors.txt) and

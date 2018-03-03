@@ -7,6 +7,8 @@ import android.provider.Settings;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
+import android.text.Spanned;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -193,9 +195,9 @@ public class AddRoadNameForm extends AbstractQuestFormAnswerFragment
 
 	private void confirmPossibleAbbreviation(String name, final Runnable onConfirmed)
 	{
-		String title = String.format(
-				getResources().getString(R.string.quest_streetName_nameWithAbbreviations_confirmation_title_name),
-				name);
+		Spanned title = Html.fromHtml(getResources().getString(
+			R.string.quest_streetName_nameWithAbbreviations_confirmation_title_name,
+			"<i>"+ Html.escapeHtml(name)+"</i>"));
 
 		new AlertDialogBuilder(getActivity())
 				.setTitle(title)

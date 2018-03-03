@@ -1,9 +1,11 @@
-package de.westnordost.streetcomplete.quests;
+package de.westnordost.streetcomplete.quests.add_housenumber;
 
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd;
+import de.westnordost.streetcomplete.quests.AOsmElementQuestTypeTest;
 import de.westnordost.streetcomplete.quests.housenumber.AddHousenumber;
 import de.westnordost.streetcomplete.quests.housenumber.AddHousenumberForm;
+
 
 public class AddHousenumberTest extends AOsmElementQuestTypeTest
 {

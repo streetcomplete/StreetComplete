@@ -172,7 +172,7 @@ public class AddCycleway implements OsmElementQuestType
 	private static String getOverpassQuery(BoundingBox bbox)
 	{
 		int d = MIN_DIST_TO_CYCLEWAYS;
-		return OverpassQLUtil.getOverpassBBox(bbox) +
+		return OverpassQLUtil.getGlobalOverpassBBox(bbox) +
 			"way[highway ~ \"^(primary|secondary|tertiary|unclassified|residential)$\"]" +
 			   "[area != yes]" +
 				// only without cycleway tags
@@ -184,6 +184,7 @@ public class AddCycleway implements OsmElementQuestType
 			   "[surface !~ \"^("+ TextUtils.join("|", OsmTaggings.ANYTHING_UNPAVED)+")$\"]" +
 			   // not any explicitly tagged as no bicycles
 			   "[bicycle != no]" +
+			   "[access !~ \"^private|no$\"]" +
 			   " -> .streets;" +
 			"(" +
 			   "way[highway=cycleway](around.streets: "+d+");" +
