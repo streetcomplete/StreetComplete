@@ -22,6 +22,7 @@ roof_shape_icons.svg
 quest_icons.svg
 	apple
 	baby						modified from Twemoji 2: U+1F6BC
+	beer						modified from Twemoji 2: U+1F37A
 	bench
 	bicycle
 	bicycle_parking
