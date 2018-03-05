@@ -18,6 +18,7 @@ import de.westnordost.streetcomplete.quests.bridge_structure.AddBridgeStructure;
 import de.westnordost.streetcomplete.quests.building_levels.AddBuildingLevels;
 import de.westnordost.streetcomplete.quests.bus_stop_shelter.AddBusStopShelter;
 import de.westnordost.streetcomplete.quests.car_wash_type.AddCarWashType;
+import de.westnordost.streetcomplete.quests.collection_times.AddCollectionTimes;
 import de.westnordost.streetcomplete.quests.crossing_type.AddCrossingType;
 import de.westnordost.streetcomplete.quests.diet_type.AddVegan;
 import de.westnordost.streetcomplete.quests.diet_type.AddVegetarian;
@@ -72,6 +73,7 @@ public class QuestModule
 				new AddRoadSurface(o),
 				new AddMaxSpeed(o), // should best be after road surface because it excludes unpaved roads
 				new AddReligionToPlaceOfWorship(o), // icon on maps are different
+				new AddCollectionTimes(o),
 				new AddOpeningHours(o),
 				new AddSport(o),
 				new AddBikeParkingCapacity(o), // cycle map layer on osm.org
