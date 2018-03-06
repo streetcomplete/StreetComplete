@@ -7,11 +7,11 @@ import android.support.v7.widget.PopupMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TimePicker;
 
 import de.westnordost.streetcomplete.R;
+import de.westnordost.streetcomplete.quests.opening_hours.TimeRange;
+import de.westnordost.streetcomplete.quests.opening_hours.Weekdays;
 import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 
 import static android.view.Menu.NONE;

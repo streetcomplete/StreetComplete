@@ -18,6 +18,12 @@ import java.util.List;
 
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.meta.CountryInfo;
+import de.westnordost.streetcomplete.quests.opening_hours.CircularSection;
+import de.westnordost.streetcomplete.quests.opening_hours.NumberSystem;
+import de.westnordost.streetcomplete.quests.opening_hours.OpeningMonths;
+import de.westnordost.streetcomplete.quests.opening_hours.OpeningWeekdays;
+import de.westnordost.streetcomplete.quests.opening_hours.TimeRange;
+import de.westnordost.streetcomplete.quests.opening_hours.Weekdays;
 import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 import de.westnordost.streetcomplete.view.dialogs.RangePickerDialog;
 
@@ -68,9 +74,9 @@ public class AddCollectionTimesAdapter extends RecyclerView.Adapter
 		}
 		else if(holder instanceof WeekdayViewHolder)
 		{
-			OpeningWeekdays ow = om.weekdaysList.get(p[1]);
+			OpeningWeekdays ow = om.getWeekdaysList().get(p[1]);
 			OpeningWeekdays prevOw = null;
-			if(p[1] > 0) prevOw = om.weekdaysList.get(p[1] - 1);
+			if(p[1] > 0) prevOw = om.getWeekdaysList().get(p[1] - 1);
 			((WeekdayViewHolder) holder).update(ow, prevOw, p[1]);
 		}
 	}
@@ -90,9 +96,9 @@ public class AddCollectionTimesAdapter extends RecyclerView.Adapter
 			if(count == position) return new int[]{i};
 			++count;
 
-			for (int j = 0; j < om.weekdaysList.size(); ++j)
+			for (int j = 0; j < om.getWeekdaysList().size(); ++j)
 			{
-				OpeningWeekdays ow = om.weekdaysList.get(j);
+				OpeningWeekdays ow = om.getWeekdaysList().get(j);
 				if(count == position) return new int[]{i,j};
 				++count;
 			}
@@ -105,7 +111,7 @@ public class AddCollectionTimesAdapter extends RecyclerView.Adapter
 		int count = 0;
 		for (OpeningMonths om : data)
 		{
-			count += om.weekdaysList.size();
+			count += om.getWeekdaysList().size();
 		}
 		count += data.size();
 		return count;
@@ -119,11 +125,11 @@ public class AddCollectionTimesAdapter extends RecyclerView.Adapter
 		if(p.length == 1)
 		{
 			OpeningMonths om = data.remove(p[0]);
-			notifyItemRangeRemoved(position, 1 + om.weekdaysList.size());
+			notifyItemRangeRemoved(position, 1 + om.getWeekdaysList().size());
 		}
 		else if(p.length == 2)
 		{
-			ArrayList<OpeningWeekdays> weekdays = data.get(p[0]).weekdaysList;
+			ArrayList<OpeningWeekdays> weekdays = data.get(p[0]).getWeekdaysList();
 			weekdays.remove(p[1]);
 			notifyItemRemoved(position);
 			// if not last weekday removed -> element after this one may need to be updated
@@ -154,7 +160,7 @@ public class AddCollectionTimesAdapter extends RecyclerView.Adapter
 
 	public void addNewWeekdays()
 	{
-		boolean isFirst = data.get(data.size()-1).weekdaysList.isEmpty();
+		boolean isFirst = data.get(data.size()-1).getWeekdaysList().isEmpty();
 		openSetWeekdaysDialog(getWeekdaysSuggestion(isFirst), (weekdays) ->
 		{
 			openSetTimeDialog(getCollectionTimesSuggestion(),
@@ -165,7 +171,7 @@ public class AddCollectionTimesAdapter extends RecyclerView.Adapter
 	private void addWeekdays(Weekdays weekdays, TimeRange time)
 	{
 		int insertIndex = getItemCount();
-		data.get(data.size()-1).weekdaysList.add(new OpeningWeekdays(weekdays, time));
+		data.get(data.size()-1).getWeekdaysList().add(new OpeningWeekdays(weekdays, time));
 		notifyItemInserted(insertIndex);
 	}
 
@@ -184,9 +190,9 @@ public class AddCollectionTimesAdapter extends RecyclerView.Adapter
 	{
 		setDisplayMonths(true);
 		final OpeningMonths om = data.get(0);
-		openSetMonthsRangeDialog(om.months, (startIndex, endIndex) ->
+		openSetMonthsRangeDialog(om.getMonths(), (startIndex, endIndex) ->
 		{
-			om.months = new CircularSection(startIndex, endIndex);
+			om.setMonths( new CircularSection(startIndex, endIndex) );
 			notifyItemChanged(0);
 		});
 	}
@@ -235,9 +241,9 @@ public class AddCollectionTimesAdapter extends RecyclerView.Adapter
 			monthsText.setText(data.getLocalizedMonthsString());
 			monthsText.setOnClickListener(v ->
 			{
-				openSetMonthsRangeDialog(data.months, (startIndex, endIndex) ->
+				openSetMonthsRangeDialog(data.getMonths(), (startIndex, endIndex) ->
 				{
-					data.months = new CircularSection(startIndex, endIndex);
+					data.setMonths( new CircularSection(startIndex, endIndex) );
 					notifyItemChanged(getAdapterPosition());
 				});
 			});
@@ -259,7 +265,7 @@ public class AddCollectionTimesAdapter extends RecyclerView.Adapter
 		List<CircularSection> allTheMonths = new ArrayList<>();
 		for (OpeningMonths om : data)
 		{
-			allTheMonths.add(om.months);
+			allTheMonths.add(om.getMonths());
 		}
 		return new NumberSystem(0,OpeningMonths.MAX_MONTH_INDEX).complemented(allTheMonths);
 	}
@@ -315,12 +321,12 @@ public class AddCollectionTimesAdapter extends RecyclerView.Adapter
 					notifyItemChanged(getAdapterPosition());
 				});
 			});
-			hoursText.setText(data.time.toStringUsing("–"));
+			hoursText.setText(data.timeRange.toStringUsing("–"));
 			hoursText.setOnClickListener(v ->
 			{
-				openSetTimeDialog(data.time, timeRange ->
+				openSetTimeDialog(data.timeRange, timeRange ->
 				{
-					data.time = timeRange;
+					data.timeRange = timeRange;
 					notifyItemChanged(getAdapterPosition());
 				});
 			});
@@ -382,10 +388,10 @@ public class AddCollectionTimesAdapter extends RecyclerView.Adapter
 	// opening hours per country
 	private static final TimeRange TYPICAL_COLLECTION_TIMES = new TimeRange(8 * 60, 18 * 60, false);
 
-	private void openSetTimeDialog(TimeRange time,
+	private void openSetTimeDialog(TimeRange timeRange,
 										TimePickerDialog.OnTimeChangeListener callback)
 	{
-		new TimePickerDialog(context, callback, time).show();
+		new TimePickerDialog(context, callback, timeRange).show();
 	}
 
 	private @NonNull

@@ -17,6 +17,7 @@ import javax.inject.Inject;
 import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
+import de.westnordost.streetcomplete.quests.opening_hours.OpeningMonths;
 import de.westnordost.streetcomplete.util.Serializer;
 import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 
