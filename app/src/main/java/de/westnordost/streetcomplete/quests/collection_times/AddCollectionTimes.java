@@ -51,6 +51,6 @@ public class AddCollectionTimes extends SimpleOverpassQuestType
 	}
 
 	@Override public String getCommitMessage() { return "Add collection times"; }
-	@Override public int getIcon() { return R.drawable.ic_quest_collection_times; }
+	@Override public int getIcon() { return R.drawable.ic_quest_mail; }
 	@Override public int getTitle(@NonNull Map<String, String> tags) { return R.string.quest_collectionTimes_name_title; }
 }
