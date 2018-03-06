@@ -21,11 +21,7 @@ public class AddCollectionTimes extends SimpleOverpassQuestType
 
 	@Override protected String getTagFilters()
 	{
-		String[] amenities = { "post_box" };
-
-		return " nodes, ways, relations with ( amenity ~ "
-				+ TextUtils.join("|", amenities) + ")" +
-				" and !collection_times" + " and (access !~ private|no)"; // exclude ones without access to general public
+		return "nodes with amenity=post_box and !collection_times and (access !~ private|no)"; // exclude ones without access to general public
 	}
 
 	@Override public AbstractQuestAnswerFragment createForm()
