@@ -42,7 +42,7 @@ public class AddHousenumber implements OsmElementQuestType
 			"retail|commercial)$'][location!=underground]" + NO_ADDRESS_FILTER;
 
 	/** Query that returns all areas that are not buildings but have addresses */
-	private static String getNonBuildingAreasWithAddresses(BoundingBox bbox)
+	protected String getNonBuildingAreasWithAddressesQuery(BoundingBox bbox)
 	{
 		return OverpassQLUtil.getGlobalOverpassBBox(bbox) +
 			"(way[!building]"+ANY_ADDRESS_FILTER+";rel[!building]"+ANY_ADDRESS_FILTER+";);" +
@@ -51,7 +51,7 @@ public class AddHousenumber implements OsmElementQuestType
 
 	/** Query that returns all buildings that neither have an address node on their outline, nor
 	 *  on itself */
-	private static String getBuildingsWithoutAddressesOverpassQuery(BoundingBox bbox)
+	protected String getBuildingsWithoutAddressesOverpassQuery(BoundingBox bbox)
 	{
 		String bboxFilter = OverpassQLUtil.getOverpassBboxFilter(bbox);
 		return
@@ -67,7 +67,7 @@ public class AddHousenumber implements OsmElementQuestType
 	}
 
 	/** Query that returns all address nodes that are not part of any building outline */
-	private static String getFreeFloatingAddressesOverpassQuery(BoundingBox bbox)
+	protected String getFreeFloatingAddressesOverpassQuery(BoundingBox bbox)
 	{
 		return OverpassQLUtil.getGlobalOverpassBBox(bbox) +
 			"(" +
@@ -171,7 +171,7 @@ public class AddHousenumber implements OsmElementQuestType
 	private ArrayList<Geometry> downloadAreasWithAddresses(BoundingBox bbox)
 	{
 		final ArrayList<Geometry> areas = new ArrayList<>();
-		String query = getNonBuildingAreasWithAddresses(bbox);
+		String query = getNonBuildingAreasWithAddressesQuery(bbox);
 		boolean success = overpassServer.getAndHandleQuota(query, (element, geometry) ->
 		{
 			if(geometry != null)
