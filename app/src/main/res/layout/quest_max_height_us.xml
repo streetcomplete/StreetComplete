@@ -11,7 +11,7 @@
         android:gravity="center"
         android:orientation="horizontal"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/background_maxheight_sign_us"
+        android:background="@drawable/background_max_height_sign_us"
         android:padding="16dp"
         android:id="@+id/maxHeightInputSign"
         >
