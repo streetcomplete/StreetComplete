@@ -495,4 +495,15 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_fee_only_at_hours">Yes, but only…</string>
     <string name="quest_fee_not_at_hours">Yes, but not…</string>
     <string name="quest_fee_hours_title">at the following times:</string>
+    <string name="quest_maxheight_title">"What is the height limit here?"</string>
+    <string name="quest_maxheight_parking_entrance_title">What is the height limit of this parking entrance?</string>
+    <string name="quest_maxheight_height_restrictor_title">What is the height limit of this height restrictor?</string>
+    <string name="quest_maxheight_tunnel_title">What is the height limit of this tunnel?</string>
+    <string name="quest_maxheight_answer_noSign">There is no sign</string>
+    <string name="quest_maxheight_answer_noSign_confirmation_title">Are you sure there is no sign?</string>
+    <string name="quest_maxheight_answer_noSign_confirmation">Did you check at both ends? If there is no sign, default limits apply.</string>
+    <string name="quest_maxheight_answer_noSign_confirmation_positive">Yes, no sign</string>
+    <string name="quest_maxheight_unusualInput_confirmation_description">This height looks implausible</string>
+    <string name="quest_maxheight_answer_imperial_unit">The unit is imperial</string>
+    <string name="quest_maxheight_answer_metric_unit">The unit is metric</string>
 </resources>

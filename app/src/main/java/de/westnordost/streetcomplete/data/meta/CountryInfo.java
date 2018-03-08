@@ -15,6 +15,7 @@ public class CountryInfo implements Serializable, Cloneable
 
 	// generic properties
 	List<String> speedUnit;
+	List<String> heightUnit;
 	List<String> popularSports;
 	List<String> popularReligions;
 	String firstDayOfWorkweek;
@@ -36,6 +37,11 @@ public class CountryInfo implements Serializable, Cloneable
 	public List<String> getSpeedUnits()
 	{
 		return speedUnit;
+	}
+
+	public List<String> getHeightUnits()
+	{
+		return heightUnit;
 	}
 
 	public List<String> getPopularSports()

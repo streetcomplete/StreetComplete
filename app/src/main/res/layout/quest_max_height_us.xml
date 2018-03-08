@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/background_maxheight_sign_us"
+        android:padding="16dp"
+        android:id="@+id/maxHeightInputSign"
+        >
+
+        <EditText
+            android:id="@+id/maxHeightFeetInput"
+            android:layout_width="100dp"
+            android:layout_height="48dp"
+            android:background="#0fff"
+            android:gravity="center"
+            android:inputType="number"
+            android:maxLength="2"
+            android:nextFocusDown="@+id/maxHeightInchInput"
+            android:focusable="true"
+            android:textSize="38dp"
+            android:textStyle="bold"
+            tools:text="15" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="FT"
+            android:textStyle="bold"
+            android:textSize="30dp"
+            android:gravity="center"
+            android:textColor="#000000"
+            tools:ignore="HardcodedText"/>
+
+        <EditText
+            android:id="@+id/maxHeightInchInput"
+            android:layout_width="97dp"
+            android:layout_height="48dp"
+            android:background="#0fff"
+            android:gravity="center"
+            android:inputType="number"
+            android:nextFocusUp="@+id/maxHeightFeetInput"
+            android:imeOptions="actionDone"
+            android:maxLength="2"
+            android:textSize="38dp"
+            android:textStyle="bold"
+            tools:text="4" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="IN"
+            android:textStyle="bold"
+            android:textSize="30dp"
+            android:gravity="center"
+            android:textColor="#000000"
+            tools:ignore="HardcodedText"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

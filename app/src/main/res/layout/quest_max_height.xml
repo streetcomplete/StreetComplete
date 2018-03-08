@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="112dp"
+        android:layout_height="112dp"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/background_max_height_sign"
+        android:padding="16dp"
+        >
+
+        <EditText
+            android:id="@+id/maxHeightInput"
+            android:layout_width="148dp"
+            android:layout_height="48dp"
+            android:layout_centerInParent="true"
+            android:background="#0fff"
+            android:digits="0123456789.,"
+            android:gravity="center"
+            android:inputType="number"
+            android:maxLength="4"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            tools:text="50" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

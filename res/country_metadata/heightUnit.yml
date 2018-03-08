@@ -1,0 +1,13 @@
+# Sources:
+# https://en.wikipedia.org/wiki/Metrication#Overview
+# https://en.wikipedia.org/wiki/Imperial_units#Current_use
+default: [m]
+CA: [ft, m]
+FM: [ft, m]
+GB: [ft, m]
+LR: [ft, m]
+MH: [ft, m]
+MM: [ft, m]
+PW: [ft, m]
+US: [ft]
+WS: [ft, m]

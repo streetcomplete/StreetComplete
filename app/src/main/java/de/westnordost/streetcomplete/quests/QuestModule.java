@@ -23,6 +23,7 @@ import de.westnordost.streetcomplete.quests.diet_type.AddVegan;
 import de.westnordost.streetcomplete.quests.diet_type.AddVegetarian;
 import de.westnordost.streetcomplete.quests.fire_hydrant.AddFireHydrantType;
 import de.westnordost.streetcomplete.quests.internet_access.AddInternetAccess;
+import de.westnordost.streetcomplete.quests.max_height.AddMaxHeight;
 import de.westnordost.streetcomplete.quests.parking_access.AddParkingAccess;
 import de.westnordost.streetcomplete.quests.parking_fee.AddParkingFee;
 import de.westnordost.streetcomplete.quests.parking_type.AddParkingType;
@@ -71,6 +72,7 @@ public class QuestModule
 				new AddRecyclingType(o),
 				new AddRoadSurface(o),
 				new AddMaxSpeed(o), // should best be after road surface because it excludes unpaved roads
+				new AddMaxHeight(o),
 				new AddReligionToPlaceOfWorship(o), // icon on maps are different
 				new AddOpeningHours(o),
 				new AddSport(o),
