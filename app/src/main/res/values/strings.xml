@@ -495,4 +495,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_fee_only_at_hours">Yes, but only…</string>
     <string name="quest_fee_not_at_hours">Yes, but not…</string>
     <string name="quest_fee_hours_title">at the following times:</string>
+    <string name="pref_category_map">Map</string>
+    <string name="pref_title_mapstyle">Select mapstyle</string>
 </resources>

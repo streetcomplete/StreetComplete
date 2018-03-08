@@ -11,6 +11,7 @@ import:
     - layers/land.yaml
     - layers/labels.yaml
     - layers/roads.yaml
+    - streetcomplete.yaml
 
 global:
     railway_color: '#99a'

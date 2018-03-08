@@ -22,6 +22,7 @@ import android.text.Html;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,10 +43,14 @@ import com.mapzen.tangram.SceneError;
 import com.mapzen.tangram.TouchInput;
 
 import java.io.File;
+import java.util.Calendar;
+
+import javax.inject.Inject;
 
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.R;
+import de.westnordost.streetcomplete.settings.SettingsFragment;
 import de.westnordost.streetcomplete.util.SphericalEarthMath;
 
 import static android.content.Context.SENSOR_SERVICE;
@@ -82,6 +87,8 @@ public class MapFragment extends Fragment implements
 	private boolean isCompassMode;
 
 	private MapControlsFragment mapControls;
+
+	@Inject SharedPreferences prefs;
 
 	private String apiKey;
 
@@ -128,7 +135,31 @@ public class MapFragment extends Fragment implements
 
 	public void getMapAsync(String apiKey)
 	{
-		getMapAsync(apiKey, "map_theme/scene.yaml");
+		getMapAsync(apiKey, getSceneFilePath());
+	}
+
+	private String getSceneFilePath()
+	{
+		Prefs.Mapstyle p = Prefs.Mapstyle.valueOf(prefs.getString(Prefs.MAPSTYLE, null));
+		String filename = "streetcomplete-light-style.yaml";
+		switch (p)
+		{
+			case LIGHT:
+				filename = "streetcomplete-light-style.yaml";
+				break;
+			case DARK:
+				filename = "streetcomplete-dark-style.yaml";
+				break;
+			case SATELLITE:
+				filename = "streetcomplete-satellite-style.yaml";
+				break;
+			case AUTO:
+				int hourOfDay = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
+				if (hourOfDay < 6 || hourOfDay > 18) filename = "streetcomplete-dark-style.yaml";
+				else filename = "streetcomplete-light-style.yaml";
+				break;
+		}
+		return "map_theme/" + filename;
 	}
 
 	@CallSuper public void getMapAsync(String apiKey, @NonNull final String sceneFilePath)
