@@ -18,7 +18,10 @@ public class Prefs
 
 	// not shown anywhere directly
 	public static final String
-			QUEST_ORDER = "quests.order";
+			QUEST_ORDER = "quests.order",
+			QUEST_INVALIDATION = "quests.invalidation";
+
+	public static final String HAS_SHOWN_UNDO_FUCKUP_WARNING = "alert.undo_fuckup_warning";
 
 	public enum Autosync
 	{

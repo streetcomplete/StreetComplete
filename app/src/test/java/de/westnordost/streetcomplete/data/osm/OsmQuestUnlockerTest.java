@@ -38,14 +38,14 @@ public class OsmQuestUnlockerTest extends TestCase
 
 		osmNoteQuestDao = mock(OsmNoteQuestDao.class);
 		when(osmNoteQuestDao.getAllPositions(any(BoundingBox.class)))
-				.thenReturn(Collections.<LatLon>emptyList());
+				.thenReturn(Collections.emptyList());
 
 		osmQuestDao = mock(OsmQuestDao.class);
 		when(osmQuestDao.getAll(null, null, null, Element.Type.NODE, 1L))
-				.thenReturn(Collections.<OsmQuest>emptyList());
+				.thenReturn(Collections.emptyList());
 
 		questType = mock(OsmElementQuestType.class);
-		final List<QuestType> questTypes = Collections.<QuestType>singletonList(questType);
+		final List<QuestType> questTypes = Collections.singletonList(questType);
 		osmQuestUnlocker = new OsmQuestUnlocker(osmNoteQuestDao, osmQuestDao, elementGeometryDao,
 				() -> questTypes);
 	}
@@ -69,14 +69,14 @@ public class OsmQuestUnlockerTest extends TestCase
 
 	public void testQuestDoesNotApplyToElement()
 	{
-		when(questType.appliesTo(NODE)).thenReturn(false);
+		when(questType.isApplicableTo(NODE)).thenReturn(false);
 
 		assertTrue(osmQuestUnlocker.unlockNewQuests(NODE).isEmpty());
 	}
 
 	public void testAddsNewQuest()
 	{
-		when(questType.appliesTo(NODE)).thenReturn(true);
+		when(questType.isApplicableTo(NODE)).thenReturn(true);
 		List<OsmQuest> quests = osmQuestUnlocker.unlockNewQuests(NODE);
 
 		assertEquals(1, quests.size());

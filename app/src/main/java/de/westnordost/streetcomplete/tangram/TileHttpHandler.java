@@ -21,14 +21,8 @@ public class TileHttpHandler extends HttpHandler
 		this.apiKey = apiKey;
 	}
 
-	public boolean onRequest(String url, Callback cb) {
+	public void onRequest(String url, Callback cb, long requestHandle) {
 		if(url != null) url += "?api_key=" + apiKey;
-		return super.onRequest(url, cb);
+		super.onRequest(url, cb, requestHandle);
 	}
-
-	public void onCancel(String url) {
-		if(url != null) url += "?api_key=" + apiKey;
-		super.onCancel(url);
-	}
-
 }

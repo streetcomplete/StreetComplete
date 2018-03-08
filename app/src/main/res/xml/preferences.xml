@@ -76,6 +76,12 @@
             android:widgetLayout="@layout/widget_image_next"
             />
 
+        <Preference
+            android:key="quests.invalidation"
+            android:title="@string/pref_title_quests_invalidation"
+            android:summary="@string/pref_title_quests_invalidation_summary"
+            />
+
     </PreferenceCategory>
 
 </PreferenceScreen>

@@ -1,0 +1,134 @@
+layers:
+
+    earth:
+        data: { source: mapzen}
+        draw:
+            polygons:
+                order: global.sort_rank
+                color: global.earth_color
+
+    boundaries:
+        data: { source: mapzen}
+        filter: { kind: country }
+        draw:
+            boundary_dashes:
+                order: global.sort_rank
+                color: global.boundary_color
+                width: 1px
+
+    water:
+        data: { source: mapzen}
+        filter: {not: {is_tunnel: true}}
+
+        draw:
+            lines:
+                order: global.sort_rank
+                join: round
+                cap: square
+
+        shore_lines:
+            filter: { boundary: true, $zoom: { min: 16 } }
+            draw:
+                lines-coast:
+                    order: 220
+                    width: [[16,20px],[18,10m]] # actually visually 1/3
+                    color: global.water_color
+
+        river_lines:
+            filter: { kind: [river, canal] }
+            draw:
+                lines:
+                    color: global.water_color
+                    width: [[10, 1px], [17, 6px], [18, 12m]]
+
+        stream_lines:
+            filter: { kind: [stream, ditch, drain], $zoom: { min: 15 }}
+            draw:
+                lines:
+                    color: global.water_color
+                    width: [[15, 1px], [17, 2px], [18, 5m]]
+
+        water_areas:
+            draw:
+                polygons:
+                    order: global.sort_rank
+                    color: global.water_color
+
+
+    buildings:
+        data: { source: mapzen}
+        filter: {not: { location: underground }, $zoom: { min: 16 } }
+
+        draw:
+            buildings-style:
+                order: global.sort_rank
+                color: global.building_color
+                extrude: true
+            buildings-outline-style:
+                order: function() { return feature.sort_rank+1; }
+                color: global.building_outline_color
+                width: [[16, 1px], [18,2px], [19,4px]]
+                extrude: true
+
+    landuse:
+        data: { source: mapzen}
+        draw:
+            polygons:
+                order: global.sort_rank
+                color: global.landuse_color
+
+        city_walls:
+            filter: { kind: [city_wall, dam] }
+            draw:
+                buildings-outline-style:
+                    order: global.sort_rank
+                    color: global.building_outline_color
+                    width: [[12, 4px], [18, 8m]]
+        walls:
+            filter: { kind: [wall, retaining_wall, fence] }
+            draw:
+                buildings-outline-style:
+                    order: global.sort_rank
+                    color: global.building_outline_color
+                    width: [[15, 1px], [18, 2m]]
+
+        squares:
+            filter: { kind: [pedestrian], $zoom: { min: 17 } }
+            draw:
+                lines:
+                    color: global.path_outline_color
+                    width: function () { return 1/4 * Math.log($zoom); }
+                    order: 200
+                polygons:
+                    color: global.square_color
+                    order: 360
+
+styles:
+    boundary_dashes:
+        base: lines
+        dash: [1, 2]
+    buildings-style:
+        base: polygons
+        blend: opaque
+    buildings-outline-style:
+        base: lines
+        blend: inlay
+    lines-coast:
+        base: lines
+        texcoords: true
+        blend: inlay
+        shaders:
+            uniforms:
+                u_waves: 1.5
+                u_speed: 0.08
+                u_color: [0.6,0.7,1.,1.]
+            blocks:
+                color: |
+                    float x = (v_texcoord.x - 0.495) * 2.;
+                    if(x > 0.0) {
+                        float opacity = 1.-x;
+                        float waves = fract(u_waves*(1.-x)-u_time*u_speed);
+                        color = mix(color, u_color, opacity * waves);
+                    } else {
+                        color.a = 0.0;
+                    }

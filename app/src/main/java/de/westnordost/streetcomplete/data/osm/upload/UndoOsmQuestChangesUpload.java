@@ -6,7 +6,9 @@ import javax.inject.Inject;
 
 import de.westnordost.osmapi.changesets.ChangesetsDao;
 import de.westnordost.osmapi.map.MapDataDao;
+import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.streetcomplete.data.changesets.OpenChangesetsDao;
+import de.westnordost.streetcomplete.data.osm.OsmQuest;
 import de.westnordost.streetcomplete.data.osm.OsmQuestUnlocker;
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao;
 import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao;
@@ -25,5 +27,18 @@ public class UndoOsmQuestChangesUpload extends AOsmQuestChangesUpload
 	{
 		super(osmDao, questDB, elementDB, elementGeometryDB, statisticsDB, openChangesetsDB,
 				changesetsDao, downloadedTilesDao, prefs, questUnlocker);
+	}
+
+	@Override protected String getLogTag()
+	{
+		return "UndoOsmQuestUpload";
+	}
+
+	@Override protected boolean questIsApplicableToElement(OsmQuest quest, Element element)
+	{
+		// can't ask the quest here if it is applicable to the element or not, because the change
+		// of the revert is exactly the opposite of what the quest would normally change and the
+		// element ergo has the changes already applied that a normal quest would add
+		return true;
 	}
 }

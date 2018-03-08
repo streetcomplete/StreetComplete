@@ -4,7 +4,7 @@
 # 2. spoken trade languages / lingua franca(s) if the official language does not do the job
 # 3. spoken national majority languages in mother tongue by importance 
 # 4. languages spoken by a clear minority only if it spoken by the majority in their region and enjoys some official recognition (i.e. language used on signs) there
-# a good source (which doesn't make a distinction between spoken natively and spoken ingeneral though which this list tries to make though, so additional research is necessary): http://www.unicode.org/cldr/charts/latest/supplemental/territory_language_information.html
+# a good source (which doesn't make a distinction between spoken natively and spoken in general though which this list tries to make, so additional research is necessary): http://www.unicode.org/cldr/charts/latest/supplemental/territory_language_information.html
 default: [en]
 AD: [ca]
 AE: [ar]
@@ -71,16 +71,11 @@ CL: [es]
 CM: [fr, en]
 # zh is the "macro language" of all Chinese languages (Mandarin, Wuu, Cantonese, Xiang, Hakka ,...)
 CN: [zh]
-# Xinjiang
-CN-65: [zh, ug]
-# Tibet
-CN-54: [zh, bo]
-# Inner Mongolia
-CN-15: [zh, mn]
-# Qinghai
-CN-63: [zh, adx]
-# Guangxi
-CN-45: [zh, za]
+CN-XJ: [zh, ug]
+CN-XZ: [zh, bo]
+CN-NM: [zh, mn]
+CN-QH: [zh, adx]
+CN-GX: [zh, za]
 CO: [es]
 CR: [es]
 CU: [es]

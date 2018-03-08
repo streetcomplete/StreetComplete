@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
@@ -74,22 +75,31 @@ public class MultipartUtility {
 		writer.flush();
 	}
 
-	public String finish() throws IOException {
+	public String finish() throws IOException
+	{
 		StringBuilder response = new StringBuilder();
 		writer.append(LINE_FEED).flush();
 		writer.append("--" + boundary + "--").append(LINE_FEED);
 		writer.close();
 
 		int status = httpConnection.getResponseCode();
-		if (status == HttpURLConnection.HTTP_OK) {
-			BufferedReader reader = new BufferedReader(new InputStreamReader(httpConnection.getInputStream()));
-			String line;
-			while ((line = reader.readLine()) != null) {
-				response.append(line);
+		if (status == HttpURLConnection.HTTP_OK)
+		{
+			try(InputStream is = httpConnection.getInputStream())
+			{
+				try(BufferedReader reader = new BufferedReader(new InputStreamReader(is, "UTF-8")))
+				{
+					String line;
+					while ((line = reader.readLine()) != null)
+					{
+						response.append(line);
+					}
+					httpConnection.disconnect();
+				}
 			}
-			reader.close();
-			httpConnection.disconnect();
-		} else {
+		}
+		else
+		{
 			throw new IOException("Server returned non-OK status: " + status);
 		}
 		return response.toString();

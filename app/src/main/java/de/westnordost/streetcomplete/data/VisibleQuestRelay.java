@@ -17,9 +17,9 @@ public class VisibleQuestRelay implements VisibleQuestListener
 		this.listener = listener;
 	}
 
-	@Override public void onQuestCreated(Quest quest, QuestGroup group, Element element)
+	@Override public void onQuestSelected(Quest quest, QuestGroup group, Element element)
 	{
-		if (listener != null) listener.onQuestCreated(quest, group, element);
+		if (listener != null) listener.onQuestSelected(quest, group, element);
 	}
 
 	@Override public void onQuestsRemoved(Collection<Long> questIds, QuestGroup group)

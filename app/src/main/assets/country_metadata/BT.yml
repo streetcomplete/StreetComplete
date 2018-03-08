@@ -3,3 +3,4 @@ isLeftHandTraffic: true
 officialLanguages: [dz]
 orchardProduces: [areca_nut, orange, apple, nutmeg, chilli_pepper, sweet_pepper, pear, peach, tomatoe,
   plum, guava, mango, mangosteen]
+popularReligions: [buddhist, hindu]

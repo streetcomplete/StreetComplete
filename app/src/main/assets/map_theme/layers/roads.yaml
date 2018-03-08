@@ -1,0 +1,118 @@
+layers:
+    railway:
+        filter: { kind: rail, not: { is_tunnel: true } }
+        data: { source: mapzen , layer: roads}
+        draw:
+            lines-railway-style:
+                order: global.sort_rank
+                color: global.railway_color
+                join: round
+                width: [[10, 0.5px], [12, 1.0px], [13, 2px], [18, 3m]]
+
+        tram:
+            filter: { kind_detail: tram }
+            draw:
+                lines-railway-style:
+                    order: function() { return feature.sort_rank+100; }
+
+    roads:
+        data: { source: mapzen}
+        filter:
+            not:
+                - kind: [rail, ferry, aerialway, piste]
+                - kind_detail: [sidewalk]
+                - is_tunnel: true
+        draw:
+            lines:
+                order: global.sort_rank
+                join: round
+                cap: round
+                color: global.road_color
+                width: [[5, 1px], [12, 2px], [16, 5px], [17, 8m]]
+
+        aeroway:
+            filter: { kind: aeroway }
+            draw:
+                lines:
+                    order: global.sort_rank
+                    width: 80m
+
+        highway:
+            filter: { kind: highway, not: { is_link: true } }
+            draw:
+                lines:
+                    width: [[8, 2px], [14, 5px], [15, 30m]]
+
+        major_road:
+            filter: { kind: major_road }
+            draw:
+                lines:
+                    width: [[9, 1px], [14, 2px], [16, 6px], [19, 12m]]
+
+        minor_road:
+            filter: { kind: minor_road, not: { kind_detail: service } }
+            draw:
+                lines:
+                    width: [[11, 0.5px], [12, 0.75px], [13, 1.0px], [14, 1.2px], [15, 2.5px], [16, 8m]]
+
+        tunnel:
+            filter: { is_tunnel: true }
+            draw:
+                lines:
+                    color: global.tunnel_color
+                    cap: round
+
+        service_road:
+            filter: { kind: minor_road, kind_detail: service }
+            draw:
+                lines:
+                    width: [[13, 0.5px], [17, 3px], [18, 4m]]
+
+        path:
+            filter: { kind: [path, portage_way] }
+            draw:
+                lines:
+                    color: global.path_color
+                    width: [[14, 0.5px], [15, 1px], [19, 2m]]
+
+        steps:
+            filter: { kind_detail: steps }
+            draw:
+                step_dashes:
+                    order: function() { return feature.sort_rank+1; }
+                    cap: butt
+                    color: global.path_color
+                    width: [[14, 0.5px], [15, 1px], [19, 2m]]
+
+        road-outline:
+            filter: { $zoom: { min: 15 }, not: { kind: [path, portage_way] } }
+            draw:
+                lines:
+                    outline:
+                        color: global.road_outline_color
+                        width: function () { return 1/4 * Math.log($zoom); }
+                        order: 200
+            bridges:
+                filter: { is_bridge: true }
+                draw:
+                    lines:
+                        outline:
+                            cap: butt
+                            order: 400
+
+        path-outline:
+            filter: { $zoom: { min: 17 }, kind: [path, portage_way] }
+            draw:
+                lines:
+                    outline:
+                        color: global.path_outline_color
+                        width: function () { return 1/4 * Math.log($zoom); }
+                        order: 200
+styles:
+    step_dashes:
+        base: lines
+        dash: [0.6,0.4]
+        dash_background_color: global.path_outline_color
+    lines-railway-style:
+        base: lines
+        blend: opaque

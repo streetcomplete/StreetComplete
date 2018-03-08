@@ -16,6 +16,7 @@ import de.westnordost.streetcomplete.data.QuestGroup;
 import de.westnordost.streetcomplete.data.QuestType;
 import de.westnordost.streetcomplete.data.VisibleQuestListener;
 import de.westnordost.streetcomplete.data.meta.CountryBoundaries;
+import de.westnordost.streetcomplete.data.osm.Countries;
 import de.westnordost.streetcomplete.data.osm.ElementGeometry;
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.OsmQuest;
@@ -58,24 +59,11 @@ public class OsmQuestDownload
 	public boolean download(final OsmElementQuestType questType, BoundingBox bbox,
 						  final Set<LatLon> blacklistedPositions)
 	{
-		String[] disabledCountries = questType.getDisabledForCountries();
-		if(disabledCountries != null && disabledCountries.length > 0)
+		if(!checkIsEnabledFor(questType, bbox))
 		{
-			CountryBoundaries countryBoundaries;
-			try
-			{
-				countryBoundaries = countryBoundariesFuture.get();
-			}
-			catch (Exception e)
-			{
-				throw new RuntimeException(e);
-			}
-			if(countryBoundaries.intersectsWithAny(disabledCountries, bbox))
-			{
-				Log.i(TAG, getQuestTypeName(questType) + ": " +
-						"Skipped because it is disabled for this country");
-				return true;
-			}
+			Log.i(TAG, getQuestTypeName(questType) + ": " +
+					"Skipped because it is disabled for this country");
+			return true;
 		}
 
 		final ArrayList<ElementGeometryDao.Row> geometryRows = new ArrayList<>();
@@ -142,6 +130,41 @@ public class OsmQuestDownload
 				" (Total: " + quests.size() + ")" +
 				" in " + (System.currentTimeMillis() - time) + "ms");
 
+		return true;
+	}
+
+	private boolean checkIsEnabledFor(OsmElementQuestType questType, BoundingBox bbox)
+	{
+		Countries countries = questType.getEnabledForCountries();
+		if(!countries.isAllCountries())
+		{
+			CountryBoundaries countryBoundaries;
+			try
+			{
+				countryBoundaries = countryBoundariesFuture.get();
+			}
+			catch (Exception e)
+			{
+				throw new RuntimeException(e);
+			}
+
+			String[] disabledCountries = countries.getDisabledCountries();
+			if(disabledCountries != null)
+			{
+				if(countryBoundaries.intersectsWithAny(disabledCountries, bbox))
+				{
+					return false;
+				}
+			}
+			String[] enabledCountries = countries.getEnabledCountries();
+			if(enabledCountries != null)
+			{
+				if(!countryBoundaries.isInAny(enabledCountries, bbox))
+				{
+					return false;
+				}
+			}
+		}
 		return true;
 	}
 

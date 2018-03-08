@@ -1,5 +1,5 @@
 # sports that should be shown first before the order defined in the form.
-# no total order required. Just mention the sports that should show within the firs few entries
+# no total order required. Just mention the sports that should show within the first few entries
 default: []
 AE: [tennis, golf]
 AR: [soccer, tennis, basketball, paddle_tennis, field_hockey, rugby]
@@ -10,7 +10,7 @@ BB: [cricket]
 BE: [soccer, tennis, basketball, equestrian, boules]
 BS: [tennis, basketball, baseball]
 BY: [soccer, basketball, tennis, field_hockey, volleyball, ice_hockey]
-CA: [baseball, soccer, tennis, basketball, canadian_football, american_football, ices_hockey, curling]
+CA: [baseball, soccer, tennis, basketball, canadian_football, american_football, ice_hockey, curling]
 CH: [soccer, tennis, basketball, shooting, equestrian]
 CM: [soccer, tennis, basketball, handball]
 CN: [basketball, soccer, badminton]

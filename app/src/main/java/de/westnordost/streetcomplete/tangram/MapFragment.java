@@ -54,7 +54,8 @@ public class MapFragment extends Fragment implements
 		FragmentCompat.OnRequestPermissionsResultCallback, LocationListener,
 		LostApiClient.ConnectionCallbacks, TouchInput.ScaleResponder,
 		TouchInput.ShoveResponder, TouchInput.RotateResponder,
-		TouchInput.PanResponder, TouchInput.DoubleTapResponder, CompassComponent.Listener, MapController.SceneLoadListener
+		TouchInput.PanResponder, TouchInput.DoubleTapResponder,
+		CompassComponent.Listener, MapController.SceneLoadListener
 {
 	private CompassComponent compass = new CompassComponent();
 
@@ -109,6 +110,7 @@ public class MapFragment extends Fragment implements
 				"<a href=\"https://mapzen.com/\">Mapzen</a>"))
 		);
 		mapzenLink.setMovementMethod(LinkMovementMethod.getInstance());
+		mapzenLink.setVisibility(View.GONE);
 
 		return view;
 	}
@@ -126,7 +128,7 @@ public class MapFragment extends Fragment implements
 
 	public void getMapAsync(String apiKey)
 	{
-		getMapAsync(apiKey, "scene.yaml");
+		getMapAsync(apiKey, "map_theme/scene.yaml");
 	}
 
 	@CallSuper public void getMapAsync(String apiKey, @NonNull final String sceneFilePath)
@@ -168,7 +170,7 @@ public class MapFragment extends Fragment implements
 		if(isMapInitialized && mapControls != null)
 		{
 			mapControls.onMapInitialized();
-			mapControls.onMapOrientation(controller.getRotation(), controller.getTilt());
+			onMapOrientation();
 		}
 	}
 
@@ -526,7 +528,7 @@ public class MapFragment extends Fragment implements
 		);
 	}
 
-	private static final String
+	public static final String
 			PREF_ROTATION = "map_rotation",
 			PREF_TILT = "map_tilt",
 			PREF_ZOOM = "map_zoom",
@@ -683,4 +685,10 @@ public class MapFragment extends Fragment implements
 	{
 		return controller != null ? controller.getRotation() : 0;
 	}
+
+	public float getZoom()
+	{
+		return controller.getZoom();
+	}
+
 }

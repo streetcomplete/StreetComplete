@@ -25,10 +25,14 @@ def get_locale_from(dirname):
 		return components[1] + "-" + components[2][1:]
 	return None
 
-for dirname in os.listdir(source_dir):
+for dirname in sorted(os.listdir(source_dir)):
 	locale = get_locale_from(dirname)
 	if not locale:
 		continue
+	
+	stringsfile = source_dir + dirname + "/strings.xml"
+	if not os.path.exists(stringsfile):
+		continue;
 	
 	print(locale)
 	
@@ -36,7 +40,7 @@ for dirname in os.listdir(source_dir):
 	if not os.path.exists(locale_dir):
 		os.makedirs(locale_dir)
 	
-	with open(source_dir + dirname + "/strings.xml", 'r', encoding='utf8') as file:
+	with open(stringsfile, 'r', encoding='utf8') as file:
 		xml = file.read()
 		copy_key_from_strings_xml_to_file(xml, "store_listing_short_description", locale_dir + "/short_description.txt")
 		copy_key_from_strings_xml_to_file(xml, "store_listing_full_description", locale_dir + "/full_description.txt")

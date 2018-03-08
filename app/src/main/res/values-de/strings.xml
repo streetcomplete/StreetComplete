@@ -70,7 +70,7 @@
     <string name="action_about">"Über StreetComplete"</string>
     <string name="about_title_version">"Version"</string>
     <string name="about_title_authors">"Autoren"</string>
-    <string name="about_summary_authors">"© 2016–2017 Tobias Zwick und Mitwirkende"</string>
+    <string name="about_summary_authors">"© 2016–2018 Tobias Zwick und Mitwirkende"</string>
     <string name="about_title_repository">"Quellcode-Repository"</string>
     <string name="about_summary_repository">"auf GitHub"</string>
     <string name="about_title_report_error">"Fehler melden"</string>
@@ -84,12 +84,8 @@
     <string name="no_gps_no_quests">"Um automatisch nach Aufgaben in deiner Nähe zu suchen, schalte Standort an"</string>
     <string name="nothing_more_to_download">"Keine weiteren Aufgaben verfügbar"</string>
     <string name="later">"Später"</string>
-    <string name="quest_streetName_answer_noProperStreet">"Keine ordentliche Straße"</string>
-    <string name="quest_streetName_answer_noProperStreet_question">"Was dann?"</string>
     <string name="quest_streetName_answer_noProperStreet_link">"Sie ist eine Verbindung zwischen zwei Straßen"</string>
-    <string name="quest_streetName_answer_noProperStreet_service">"Es ist nur eine Zufahrt"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Etwas anderes (Notiz hinterlassen)"</string>
-    <string name="quest_streetName_answer_noProperStreet_track">"Es ist nur ein Feld- oder Wirtschaftsweg"</string>
     <string name="about_title_privacy_statement">"Datenschutzerklärung"</string>
     <string name="about_summary_privacy_statement">"und Datennutzung"</string>
     <string name="quest_openingHours_public_holidays">"Feiertage"</string>
@@ -169,7 +165,6 @@ Um die Karte darzustellen, werden Kartendaten vom &lt;a href=\"https://mapzen.co
     <string name="quest_maxspeed_answer_noSign">"Es gibt kein Schild"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Wo befindet sich diese Straße?"</string>
     <string name="quest_cyclewaySurface_title">"Welche Oberfläche hat dieser Radweg?"</string>
-    <string name="quest_cycleway_title">"Hat diese Straße einen Radweg?"</string>
     <string name="quest_buildingType_title">"Welche Art Gebäude ist das?"</string>
     <string name="quest_serviceType_title">"Welche Art von Erschließungsweg ist das?"</string>
     <string name="quest_streetLanes_title">"Wie viele Fahrspuren hat diese Straße?"</string>
@@ -190,7 +185,7 @@ Um die Karte darzustellen, werden Kartendaten vom &lt;a href=\"https://mapzen.co
 Diese App findet unvollständige und erweiterbare Daten in deiner Nähe und zeigt diese als Aufgaben auf einer Karte an. Jede dieser Aufgaben kann vor Ort durch Beantwortung einer einfachen Frage gelöst werden.
 
 Die von dir eingegebenen Informationen werden dann direkt in deinem Namen zu OpenStreetMap hinzugefügt, ohne einen weiteren Editor benutzen zu müssen."</string>
-    <string name="quest_name_answer_noName">"Es hat keinen Namen"</string>
+    <string name="quest_name_answer_noName">"Sie hat keinen Namen"</string>
     <string name="quest_name_answer_noName_confirmation_title">"Wirklich kein Name?"</string>
     <string name="quest_name_noName_confirmation_positive">"Ja, kein Name"</string>
     <string name="quest_openingHours_add_times">"➕ Öffnungszeiten"</string>
@@ -251,9 +246,9 @@ Die von dir eingegebenen Informationen werden dann direkt in deinem Namen zu Ope
     <string name="quest_streetSurface_name_title">"Welche Oberfläche hat die Straße „%s“ hier?"</string>
     <string name="quest_maxspeed_title_short">"Welche Höchstgeschwindigkeit ist hier per Schild vorgeschrieben?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Diese Höchstgeschwindigkeit scheint nicht plausibel."</string>
-    <string name="quest_maxspeed_answer_noSign_confirmation_title">"Bist du sicher, dass keine Höchstgeschwindigkeit angegeben ist?"</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation_title">"Sicher, dass kein Schild vorhanden ist?"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">"Hast Du am anderen Ende der Straße nachgeschaut?
-Wenn dort kein Schild steht, gelten die gesetzlichen Geschwindigkeitsbegrenzungen."</string>
+Wenn es keine Schilder entlang der gesamten Straße gibt, die für den hervorgehobenen Abschnitt gelten, gelten die gesetzlichen Geschwindigkeitsbegrenzungen."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Ja, kein Schild"</string>
     <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Innerorts gelten andere Geschwindigkeitsbegrenzungen als außerorts."</string>
     <string name="quest_maxspeed_answer_noSign_urbanOk">"Innerorts"</string>
@@ -412,11 +407,11 @@ Andernfalls kannst Du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="about_category_feedback">"Feedback"</string>
     <string name="quest_leave_new_note_photo">"Foto anhängen"</string>
     <string name="quest_leave_new_note_photo_delete_title">"Dieses Foto löschen?"</string>
-    <string name="privacy_html_image_upload">"&lt;p&gt;Fotos die an Notizen angehängt werden, werden hochgeladen auf&lt;a href=\"https://lut.im\"&gt;lut.im&lt;/a&gt;, ein anonymer Service ohne Tracking.&lt;/p&gt;"</string>
+    <string name="privacy_html_image_upload">"&lt;p&gt;Fotos die an Notizen angehängt werden, werden hochgeladen auf &lt;a href=\"https://lut.im\"&gt;lut.im&lt;/a&gt;, ein anonymer Service ohne Tracking.&lt;/p&gt;"</string>
     <string name="quest_cycleway_value_track">"Fahrradweg"</string>
     <string name="quest_cycleway_value_lane">"Radfahrstreifen"</string>
     <string name="quest_cycleway_value_none">"kein"</string>
-    <string name="quest_cycleway_value_shared">"gemeinsamer Fahrstreifen mit anderen Verkehrsteilnehmern"</string>
+    <string name="quest_cycleway_value_shared">"explizit gemeinsamer Fahrstreifen mit anderen Verkehrsteilnehmern"</string>
     <string name="quest_cycleway_value_bus_lane">"auf der Busspur"</string>
     <string name="quest_cycleway_value_sidewalk">"explizite Mitbenutzung des Bürgersteigs"</string>
     <string name="quest_leave_new_note_create_image_error">"Datei für Foto kann nicht erstellt werden"</string>
@@ -448,4 +443,65 @@ Andernfalls kannst Du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="quest_housenumber_conscription_number_required">"Eine Konskriptionsnummer muss angegeben werden"</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">"Fahrradweg auch auf anderer Seite"</string>
     <string name="need_specify_both_sides">"Beide Seiten müssen angegeben werden"</string>
+    <string name="quest_openingHours_emptyAnswer">"Du musst schreiben, was auf dem Schild steht. Wenn es kein Schild gibt, solltest Du drinnen nach den Öffnungszeiten fragen."</string>
+    <string name="quest_cycleway_value_none_but_no_oneway">"kein, aber Fahrradfahrer dürfen die Straße in beide Richtungen fahren"</string>
+    <string name="quest_streetName_answer_noName_question">"Warum hat sie keinen Namen?"</string>
+    <string name="quest_streetName_answer_noProperStreet_service2">"Ist bloß soetwas wie eine Zufahrt"</string>
+    <string name="quest_streetName_answer_noProperStreet_track2">"Ist nur ein Feld- oder Waldweg"</string>
+    <string name="quest_streetName_answer_noName_noname">"Nichts davon, sie hat ganz einfach keinen Namen"</string>
+    <string name="quest_wheelchairAccess_toilets_title">"Ist diese Toilette rollstuhlgängig?"</string>
+    <string name="quest_wheelchairAccess_toilets_name_title">"Ist die Toilette „%s“ rollstuhlgängig?"</string>
+    <string name="quest_wheelchairAccess_description_toilets">"Ein Symbol wie dieses ist oft zu sehen, wenn es eine spezielle Toilette für Rollstuhlfahrer gibt.
+Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber sie nicht speziell für Rollstuhlfahrer angepasst ist."</string>
+    <string name="map_btn_create_note">"Neue Notiz erstellen"</string>
+    <string name="create_new_note_unprecise">"Zoome weiter herein um eine Notiz zu erstellen"</string>
+    <string name="create_new_note_description">"Erstelle hier eine Notiz, um anderen Mappern Bescheid zu geben, dass es hier ein Problem gibt. Die Position der Notiz kann durch Bewegen der Karte angepasst werden:"</string>
+    <string name="pref_title_quests_invalidation">"Aufgabencache ungültig machen"</string>
+    <string name="pref_title_quests_invalidation_summary">"Nützlich wenn Du denkst dass einige Aufgaben veraltet sind"</string>
+    <string name="invalidate_confirmation">"Ungültig machen"</string>
+    <string name="invalidation_dialog_message">"Wenn der Cache ungültig gemacht wird, werden die Aufgaben das nächste mal wenn sie jeweils heruntergeladen werden aktualisiert. Der Aufgabencache wird automatisch nach einer Woche ungültig gemacht, und sofort, falls sich herausstellt, dass eine Aufgabe die Du beantwortet hast, schon von jemand anderem beantwortet wurde."</string>
+    <string name="quest_generic_looks_like_this">"Sieht normalerweise so aus:"</string>
+    <string name="quest_surface_value_metal">"Metall"</string>
+    <string name="quest_surface_generic_surface_confirmation">"Bist Du sicher dass Du die Oberfläche nicht genauer bestimmen kannst?"</string>
+    <string name="quest_cycleway_title2">"Gibt es hier einen Radweg? Was für einen?"</string>
+    <string name="quest_bridge_structure_title">"Welche Konstruktionsform hat diese Brücke?"</string>
+    <string name="quest_internet_access_name_title">"Was für einen Internetanschluss bietet „%s“ an?"</string>
+    <string name="quest_internet_access_wlan">"WLAN"</string>
+    <string name="quest_internet_access_wired">"per Kabel (LAN)"</string>
+    <string name="quest_internet_access_terminal">"einen Computer mit Internetanschluss"</string>
+    <string name="quest_internet_access_no">"keinen Internetanschluss"</string>
+    <string name="quest_busStopShelter_tram_name_title">"Hat die Straßenbahnhaltestelle „%s“ einen Unterstand?"</string>
+    <string name="quest_busStopShelter_tram_title">"Hat diese Straßenbahnhaltestelle einen Unterstand?"</string>
+    <string name="quest_bench_backrest_title">"Hat diese Bank eine Rückenlehne?"</string>
+    <string name="quest_bench_answer_picnic_table">"Das ist ein Picknicktisch"</string>
+    <string name="quest_religion_for_place_of_worship_title">"Welcher Religion gehört „%s“ an?"</string>
+    <string name="quest_religion_christian">"Christentum"</string>
+    <string name="quest_religion_muslim">"Islam"</string>
+    <string name="quest_religion_hindu">"Hinduismus"</string>
+    <string name="quest_religion_buddhist">"Buddhismus"</string>
+    <string name="quest_religion_shinto">"Shintoismus"</string>
+    <string name="quest_religion_jewish">"Judaismus"</string>
+    <string name="quest_religion_taoist">"Taoismus"</string>
+    <string name="quest_religion_for_place_of_worship_answer_multi">"kann von jeder Religion genutzt werden"</string>
+    <string name="quest_religion_sikh">"Sikhismus"</string>
+    <string name="quest_religion_jain">"Jainismus"</string>
+    <string name="quest_religion_bahai">"Bahaitum"</string>
+    <string name="quest_religion_caodaist">"Caodaismus"</string>
+    <string name="quest_religion_chinese_folk">"Chinesischer Volksglaube"</string>
+    <string name="quest_religion_for_wayside_shrine_title">"Welcher Religion gehört dieser Schrein an?"</string>
+    <string name="quest_parking_fee_title">"Fallen hier Parkgebühren an?"</string>
+    <string name="quest_cycleway_value_lane_soft">"Schutzstreifen"</string>
+    <string name="quest_surface_value_unhewn_cobblestone">"Steinpflaster aus unbehauenem Stein"</string>
+    <string name="quest_parking_access_title">"Ist wer hier parken darf eingeschränkt?"</string>
+    <string name="quest_parking_access_private">"Es ist ein Privatparkplatz"</string>
+    <string name="quest_parking_access_yes">"Es ist ein öffentlicher Parkplatz (mit oder ohne Gebühr)"</string>
+    <string name="quest_parking_access_customers">"Es ist ein Kundenparkplatz"</string>
+    <string name="quest_streetName_pedestrian_title">"Wie heißt diese Fußgängerzone"</string>
+    <string name="quest_streetSurface_square_title">"Welche Oberfläche hat dieser Platz?"</string>
+    <string name="quest_streetSurface_square_name_title">"Welche Oberfläche hat der Platz „%s“ hier?"</string>
+    <string name="quest_fee_answer_hours">"Abhängig von Tag und Uhrzeit"</string>
+    <string name="quest_fee_add_times">"➕ Zeiten"</string>
+    <string name="quest_fee_only_at_hours">"Ja, aber nur…"</string>
+    <string name="quest_fee_not_at_hours">"Ja, aber nicht…"</string>
+    <string name="quest_fee_hours_title">"zu den folgenden Zeiten:"</string>
 </resources>

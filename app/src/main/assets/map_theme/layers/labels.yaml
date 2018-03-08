@@ -1,0 +1,43 @@
+layers:
+    roads:
+        data: { source: mapzen}
+        roads-labels:
+            filter: { $zoom: { min: 14 } }
+            draw:
+                text:
+                    text_source: global.name_source
+                    buffer: 8px
+                    text_wrap: 25
+                    max_lines: 3
+                    font:
+                        family: global.text_font_family
+                        weight: normal
+                        fill: global.text_fill_color
+                        size: global.text_size
+                        stroke: global.text_stroke
+
+    places:
+        data: { source: mapzen}
+        places-labels:
+            filter: { name: true }
+            draw:
+                text:
+                    text_source: global.name_source
+                    buffer: 12px
+                    font:
+                        fill: global.text_fill_color
+                        family: global.text_font_family
+                        stroke: global.text_places_stroke
+
+    buildings:
+        data: { source: mapzen}
+        address-labels:
+            filter: { $zoom: { min: 19 }, kind: address }
+            draw:
+                text:
+                    text_source: addr_housenumber
+                    font:
+                        fill: global.text_fill_color
+                        family: global.text_font_family
+                        size: global.text_size
+                        stroke: global.text_stroke

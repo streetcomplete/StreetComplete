@@ -106,6 +106,22 @@ public class CountryBoundaries
 		return geometry.intersects(JTSConst.toLinearRing(bbox));
 	}
 
+	public boolean isInAny(String[] isoCodes, BoundingBox bbox)
+	{
+		for (String isoCode : isoCodes)
+		{
+			if(isIn(isoCode, bbox)) return true;
+		}
+		return false;
+	}
+
+	public boolean isIn(String isoCode, BoundingBox bbox)
+	{
+		Geometry geometry = geometriesByIsoCodes.get(isoCode);
+		if (geometry == null) return false;
+		return geometry.contains(JTSConst.toLinearRing(bbox));
+	}
+
 	public boolean isInAny(String[] isoCodes, double longitude, double latitude)
 	{
 		for (String isoCode : isoCodes)

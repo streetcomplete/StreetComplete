@@ -75,6 +75,15 @@ public class AddCyclewayTest extends AOsmElementQuestTypeTest
 		);
 	}
 
+	public void testCyclewaySidewalkAny()
+	{
+		bundle.putString(AddCyclewayForm.CYCLEWAY_RIGHT, Cycleway.SIDEWALK.name());
+		bundle.putString(AddCyclewayForm.CYCLEWAY_LEFT, Cycleway.SIDEWALK_OK.name());
+		verify(
+				new StringMapEntryAdd("sidewalk", "both")
+		);
+	}
+
 	public void testCyclewayDualTrack()
 	{
 		putBothSides(Cycleway.TRACK_DUAL);

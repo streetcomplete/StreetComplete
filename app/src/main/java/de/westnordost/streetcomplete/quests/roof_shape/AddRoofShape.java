@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.roof_shape;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -19,7 +20,7 @@ public class AddRoofShape extends SimpleOverpassQuestType
 
 	@Override protected String getTagFilters()
 	{
-		return "ways, relations with roof:levels and roof:levels!=0 and !roof:shape";
+		return "ways, relations with roof:levels and roof:levels!=0 and !roof:shape and !3dr:type and !3dr:roof";
 	}
 
 	public AbstractQuestAnswerFragment createForm()
@@ -38,7 +39,7 @@ public class AddRoofShape extends SimpleOverpassQuestType
 
 	@Override public String getCommitMessage() { return "Add roof shapes"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_roof_shape; }
-	@Override public int getTitle(Map<String, String> tags)
+	@Override public int getTitle(@NonNull Map<String, String> tags)
 	{
 		return R.string.quest_roofShape_title;
 	}

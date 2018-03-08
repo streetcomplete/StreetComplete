@@ -1,0 +1,45 @@
+# for online testing (e.g. Tangram Play)
+#import:
+#    - https://raw.githubusercontent.com/ENT8R/streetcomplete-mapstyle/master/global.yaml
+#    - https://raw.githubusercontent.com/ENT8R/streetcomplete-mapstyle/master/layers/land.yaml
+#    - https://raw.githubusercontent.com/ENT8R/streetcomplete-mapstyle/master/layers/labels.yaml
+#    - https://raw.githubusercontent.com/ENT8R/streetcomplete-mapstyle/master/layers/roads.yaml
+
+# for local testing (e.g. using an emulator)
+import:
+    - global.yaml
+    - layers/land.yaml
+    - layers/labels.yaml
+    - layers/roads.yaml
+
+global:
+    text_stroke_color: '#20204e'
+    text_fill_color: '#ccf'
+
+    railway_color: '#903'
+    road_color: '#448'
+    road_outline_color: '#99f'
+    path_color: global.road_color
+    path_outline_color: '#96b'
+    tunnel_color: '#686887'
+    square_color: global.road_color
+
+    earth_color: '#20204e'
+    water_color: '#002'
+    landuse_color: '#403066'
+
+    building_color: rgb(68,34,0)
+    building_outline_color: rgb(51,17,0)
+
+    boundary_color: '#e46'
+
+styles:
+    lines-railway-style:
+        base: lines
+        blend: add
+    buildings-style:
+        base: polygons
+        blend: add
+    buildings-outline-style:
+        base: lines
+        blend: add

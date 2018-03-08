@@ -91,7 +91,7 @@ public abstract class AOsmQuestDao extends AQuestDao<OsmQuest>
 		}
 	}
 
-	private void addQuestTypes(List<String> questTypeNames, WhereSelectionBuilder builder)
+	protected final void addQuestTypes(List<String> questTypeNames, WhereSelectionBuilder builder)
 	{
 		if(questTypeNames != null)
 		{
@@ -107,7 +107,7 @@ public abstract class AOsmQuestDao extends AQuestDao<OsmQuest>
 		}
 	}
 
-	private void addElementType(Element.Type elementType, WhereSelectionBuilder builder)
+	protected final void addElementType(Element.Type elementType, WhereSelectionBuilder builder)
 	{
 		if(elementType != null)
 		{
@@ -116,7 +116,7 @@ public abstract class AOsmQuestDao extends AQuestDao<OsmQuest>
 		}
 	}
 
-	private void addElementId(Long elementId, WhereSelectionBuilder builder)
+	protected final void addElementId(Long elementId, WhereSelectionBuilder builder)
 	{
 		if(elementId != null)
 		{
@@ -182,14 +182,9 @@ public abstract class AOsmQuestDao extends AQuestDao<OsmQuest>
 		values.put(Columns.QUEST_STATUS, quest.getStatus().name());
 		values.put(Columns.LAST_UPDATE, new Date().getTime());
 
-		if(quest.getChanges() != null)
-		{
-			values.put(Columns.TAG_CHANGES, serializer.toBytes(quest.getChanges()));
-		}
-		if(quest.getChangesSource() != null)
-		{
-			values.put(Columns.CHANGES_SOURCE, quest.getChangesSource());
-		}
+		StringMapChanges changes = quest.getChanges();
+		values.put(Columns.TAG_CHANGES, changes != null ? serializer.toBytes(changes) : null);
+		values.put(Columns.CHANGES_SOURCE, quest.getChangesSource());
 
 		return values;
 	}

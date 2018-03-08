@@ -1,12 +1,16 @@
 package de.westnordost.streetcomplete.quests.max_speed;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
 
 import java.util.Map;
 
 import javax.inject.Inject;
 
 import de.westnordost.streetcomplete.R;
+import de.westnordost.streetcomplete.data.meta.OsmTaggings;
+import de.westnordost.streetcomplete.data.osm.Countries;
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
@@ -20,11 +24,16 @@ public class AddMaxSpeed extends SimpleOverpassQuestType
 
 	@Override protected String getTagFilters()
 	{
-		return "ways with highway ~ " +
-		       "motorway|trunk|primary|secondary|tertiary|unclassified|residential" +
-		       " and !maxspeed and !maxspeed:forward and !maxspeed:backward" +
-		       " and !source:maxspeed and !zone:maxspeed and !maxspeed:type" + // implicit speed limits
-		       " and (access !~ private|no or (foot and foot !~ private|no))"; // no private roads
+		return
+			"ways with highway ~ motorway|trunk|primary|secondary|tertiary|unclassified|residential" +
+			" and !maxspeed and !maxspeed:forward and !maxspeed:backward" +
+			" and !source:maxspeed and !zone:maxspeed and !maxspeed:type" + // implicit speed limits
+			// not any unpaved as they are unlikely developed enough to have speed limits signposted
+			" and surface !~" + TextUtils.join("|", OsmTaggings.ANYTHING_UNPAVED) +
+			// neither private roads nor roads that are not for cars
+			" and motor_vehicle !~ private|no" +
+			" and vehicle !~ private|no" +
+			" and (access !~ private|no or (foot and foot !~ private|no))";
 	}
 
 	@Override public AbstractQuestAnswerFragment createForm()
@@ -67,8 +76,14 @@ public class AddMaxSpeed extends SimpleOverpassQuestType
 
 	@Override public String getCommitMessage() { return "Add speed limits"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_max_speed; }
-	@Override public int getTitle(Map<String, String> tags)
+	@Override public int getTitle(@NonNull Map<String, String> tags)
 	{
 		return R.string.quest_maxspeed_title_short;
+	}
+
+	@NonNull @Override public Countries getEnabledForCountries()
+	{
+		// see #813: US has different rules for each different state which need to be respected
+		return Countries.allExcept(new String[]{"US"});
 	}
 }

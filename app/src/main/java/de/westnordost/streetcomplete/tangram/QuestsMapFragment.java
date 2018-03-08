@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Point;
 import android.graphics.PointF;
 import android.graphics.Rect;
+import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.UiThread;
@@ -20,6 +21,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
@@ -31,6 +33,7 @@ import de.westnordost.streetcomplete.data.Quest;
 import de.westnordost.streetcomplete.data.QuestGroup;
 import de.westnordost.streetcomplete.data.QuestType;
 import de.westnordost.streetcomplete.data.osm.ElementGeometry;
+import de.westnordost.streetcomplete.quests.bikeway.AddCycleway;
 import de.westnordost.streetcomplete.util.SlippyMapMath;
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.LatLon;
@@ -121,6 +124,8 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 	@Override protected void loadScene(String sceneFilePath)
 	{
 		List<SceneUpdate> sceneUpdates = spriteSheetCreator.get();
+		sceneUpdates.add(new SceneUpdate("global.language", Locale.getDefault().getLanguage()));
+
 		controller.loadSceneFile(sceneFilePath, sceneUpdates);
 	}
 
@@ -237,8 +242,8 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 
 	private void onClickedMap(float positionX, float positionY)
 	{
-		final LngLat pos = controller.screenPositionToLngLat(new PointF(positionX, positionY));
-		listener.onClickedMapAt(TangramConst.toLatLon(pos));
+		LngLat pos = controller.screenPositionToLngLat(new PointF(positionX, positionY));
+		if(pos != null) listener.onClickedMapAt(TangramConst.toLatLon(pos));
 	}
 
 	@Override protected boolean shouldCenterCurrentPosition()
@@ -369,6 +374,13 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		for(Object q : quests)
 		{
 			Quest quest = (Quest) q;
+
+			// hack away cycleway quests for old Android SDK versions (#713)
+			if(quest.getType() instanceof AddCycleway && android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT)
+			{
+				continue;
+			}
+
 			if(first) first = false;
 			else      geoJson.append(",");
 
@@ -444,10 +456,10 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		if(controller.getTilt() > Math.PI / 4f) return null; // 45°
 
 		LatLon[] positions = new LatLon[4];
-		positions[0] = getLatLonAtPos(new PointF(offset.left,          offset.top));
-		positions[1] = getLatLonAtPos(new PointF(offset.left + size.x ,offset.top));
-		positions[2] = getLatLonAtPos(new PointF(offset.left,          offset.top + size.y));
-		positions[3] = getLatLonAtPos(new PointF(offset.left + size.x, offset.top + size.y));
+		positions[0] = getPositionAt(new PointF(offset.left,          offset.top));
+		positions[1] = getPositionAt(new PointF(offset.left + size.x ,offset.top));
+		positions[2] = getPositionAt(new PointF(offset.left,          offset.top + size.y));
+		positions[3] = getPositionAt(new PointF(offset.left + size.x, offset.top + size.y));
 
 		// dealing with rotation: find each the largest latlon and the smallest latlon, that'll
 		// be our bounding box
@@ -467,7 +479,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		return new BoundingBox(latMin, lonMin, latMax, lonMax);
 	}
 
-	private LatLon getLatLonAtPos(PointF pointF)
+	public LatLon getPositionAt(PointF pointF)
 	{
 		return TangramConst.toLatLon(controller.screenPositionToLngLat(pointF));
 	}

@@ -17,6 +17,7 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Provider;
 
+import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.streetcomplete.ApplicationConstants;
 import de.westnordost.streetcomplete.data.changesets.OpenChangesetsDao;
 import de.westnordost.streetcomplete.data.download.QuestDownloadService;
@@ -182,6 +183,18 @@ public class QuestController
 		});
 	}
 
+	public void createNote(final String text, final ArrayList<String> imagePaths, LatLon position)
+	{
+		workerHandler.post(() ->
+		{
+			CreateNote createNote = new CreateNote();
+			createNote.position = position;
+			createNote.text = text;
+			createNote.imagePaths = imagePaths;
+			createNoteDB.add(createNote);
+		});
+	}
+
 	/** Apply the user's answer to the given quest. (The quest will turn invisible.) */
 	public void solveQuest(final long questId, final QuestGroup group, final Bundle answer,
 						   final String source)
@@ -217,6 +230,21 @@ public class QuestController
 	public Element getOsmElement(OsmQuest quest)
 	{
 		return osmElementDB.get(quest.getElementType(), quest.getElementId());
+	}
+
+	public void retrieveNextAt(long questId, QuestGroup group)
+	{
+		workerHandler.post(() ->
+		{
+			if (group == QuestGroup.OSM)
+			{
+				OsmQuest osmQuest = osmQuestDB.getNextNewAt(questId, getQuestTypeNames());
+				if (osmQuest == null) return;
+				Element element = osmElementDB.get(osmQuest.getElementType(), osmQuest.getElementId());
+				if (element == null) return;
+				relay.onQuestSelected(osmQuest, group, element);
+			}
+		});
 	}
 
 	public void undoOsmQuest(final OsmQuest quest)
@@ -347,21 +375,20 @@ public class QuestController
 	{
 		workerHandler.post(() ->
 		{
-			switch (group)
+			if(group == QuestGroup.OSM)
 			{
-				case OSM:
-					// race condition: another thread may have removed the element already (#288)
-					OsmQuest osmQuest = osmQuestDB.get(questId);
-					if(osmQuest == null) return;
-					Element element = osmElementDB.get(osmQuest.getElementType(), osmQuest.getElementId());
-					if(element == null) return;
-					relay.onQuestCreated(osmQuest, group, element);
-					break;
-				case OSM_NOTE:
-					OsmNoteQuest osmNoteQuest = osmNoteQuestDB.get(questId);
-					if(osmNoteQuest == null) return;
-					relay.onQuestCreated(osmNoteQuest, group, null);
-					break;
+				// race condition: another thread may have removed the element already (#288)
+				OsmQuest osmQuest = osmQuestDB.get(questId);
+				if (osmQuest == null) return;
+				Element element = osmElementDB.get(osmQuest.getElementType(), osmQuest.getElementId());
+				if (element == null) return;
+				relay.onQuestSelected(osmQuest, group, element);
+			}
+			else if(group == QuestGroup.OSM_NOTE)
+			{
+				OsmNoteQuest osmNoteQuest = osmNoteQuestDB.get(questId);
+				if(osmNoteQuest == null) return;
+				relay.onQuestSelected(osmNoteQuest, group, null);
 			}
 		});
 	}
@@ -372,13 +399,7 @@ public class QuestController
 	{
 		workerHandler.post(() ->
 		{
-
-			List<QuestType> questTypes = questTypesProvider.get();
-			List<String> questTypeNames = new ArrayList<>(questTypes.size());
-			for (QuestType questType : questTypes)
-			{
-				questTypeNames.add(questType.getClass().getSimpleName());
-			}
+			List<String> questTypeNames = getQuestTypeNames();
 
 			List<OsmQuest> osmQuests = osmQuestDB.getAll(bbox, QuestStatus.NEW, questTypeNames);
 			if(!osmQuests.isEmpty()) relay.onQuestsCreated(osmQuests, QuestGroup.OSM);
@@ -386,6 +407,17 @@ public class QuestController
 			List<OsmNoteQuest> osmNoteQuests = osmNoteQuestDB.getAll(bbox, QuestStatus.NEW);
 			if(!osmNoteQuests.isEmpty()) relay.onQuestsCreated(osmNoteQuests, QuestGroup.OSM_NOTE);
 		});
+	}
+
+	private List<String> getQuestTypeNames()
+	{
+		List<QuestType> questTypes = questTypesProvider.get();
+		List<String> questTypeNames = new ArrayList<>(questTypes.size());
+		for (QuestType questType : questTypes)
+		{
+			questTypeNames.add(questType.getClass().getSimpleName());
+		}
+		return questTypeNames;
 	}
 
 	/** Download quests in at least the given bounding box asynchronously. The next-bigger rectangle

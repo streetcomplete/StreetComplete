@@ -6,7 +6,7 @@ import de.westnordost.osmapi.map.data.Element;
 
 public interface VisibleQuestListener
 {
-	void onQuestCreated(Quest quest, QuestGroup group, Element element);
+	void onQuestSelected(Quest quest, QuestGroup group, Element element);
 	void onQuestsCreated(Collection<? extends Quest> quests, QuestGroup group);
 
 	// after creation, two things can happen to quests. Either they are hidden or they are solved.

@@ -2,3 +2,4 @@
 isLeftHandTraffic: true
 officialLanguages: [en]
 orchardProduces: [banana, tomatoe]
+speedUnit: [mph, km/h]

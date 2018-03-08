@@ -22,14 +22,13 @@ public class CountryInfosTest extends AndroidTestCase
 
 	private void checkSpeedUnitIsEitherKmhOrMph(CountryInfo info)
 	{
-		assertNotNull(info.getSpeedUnit());
-		assertTrue(info.getSpeedUnit().equals("mph") || info.getSpeedUnit().equals("km/h"));
+		assertNotNull(info.getSpeedUnits());
+		assertTrue(info.getSpeedUnits().contains("mph") || info.getSpeedUnits().contains("km/h"));
 	}
 
 	private void checkAdditionalValidHousenumberRegexes(Map<String, CountryInfo> infos)
 	{
 		assertTrue("99 bis".matches(infos.get("FR").getAdditionalValidHousenumberRegex()));
-		assertTrue("ev.99".matches(infos.get("CZ").getAdditionalValidHousenumberRegex()));
 		assertTrue("s/n".matches(infos.get("ES").getAdditionalValidHousenumberRegex()));
 	}
 

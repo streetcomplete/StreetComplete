@@ -16,6 +16,12 @@ public class OsmAreas
 			" landuse or leisure or military or office or place or public_transport or shop or" +
 			" tourism or building:part or" +
 			" aerialway = station or railway = station or" +
+			" man_made ~ " +
+				"beacon|bridge|campanile|dolphin|lighthouse|obelisk|observatory|tower|" +
+				"bunker_silo|chimney|gasometer|kiln|mineshaft|petroleum_well|silo|storage_tank|watermill|windmill|works|" +
+				"communications_tower|monitoring_station|street_cabinet|" +
+				"pumping_station|reservoir_covered|wastewater_plant|water_tank|water_tower|water_well|water_works" +
+			" or" +
 			" power ~ compensator|converter|generator|plant|substation or" +
 			" waterway ~ boatyard|dam|dock|riverbank|fuel" +
 			")"

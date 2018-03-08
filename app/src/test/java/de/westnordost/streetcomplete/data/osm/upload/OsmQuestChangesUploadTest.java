@@ -3,6 +3,8 @@ package de.westnordost.streetcomplete.data.osm.upload;
 import android.content.SharedPreferences;
 import android.graphics.Point;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import junit.framework.TestCase;
 
@@ -26,6 +28,7 @@ import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.data.QuestStatus;
 import de.westnordost.streetcomplete.data.changesets.OpenChangesetKey;
 import de.westnordost.streetcomplete.data.changesets.OpenChangesetsDao;
+import de.westnordost.streetcomplete.data.osm.Countries;
 import de.westnordost.streetcomplete.data.osm.ElementGeometry;
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.OsmQuest;
@@ -93,7 +96,7 @@ public class OsmQuestChangesUploadTest extends TestCase
 		assertFalse(u.uploadQuestChange(-1, quest, null, false, false));
 
 		verify(downloadedTilesDao).remove(any(Point.class));
-		assertEquals(QuestStatus.CLOSED, quest.getStatus());
+		verify(questDb).delete(quest.getId());
 	}
 
 	public void testDropChangeWhenUnresolvableElementChange()
@@ -107,7 +110,7 @@ public class OsmQuestChangesUploadTest extends TestCase
 		OsmQuestChangesUpload u = new OsmQuestChangesUpload(null, questDb, elementDao, null, null, null,
 				null, downloadedTilesDao, null, null);
 		assertFalse(u.uploadQuestChange(123, quest, element, false, false));
-		assertEquals(QuestStatus.CLOSED, quest.getStatus());
+		verify(questDb).delete(quest.getId());
 		verify(downloadedTilesDao).remove(any(Point.class));
 	}
 
@@ -137,7 +140,7 @@ public class OsmQuestChangesUploadTest extends TestCase
 				null, null, changesetsDao, downloadedTilesDao, prefs, null);
 
 		assertFalse(u.uploadQuestChange(changesetId, quest, element, false, false));
-		assertEquals(QuestStatus.CLOSED, quest.getStatus());
+		verify(questDb).delete(quest.getId());
 		verify(elementDb).delete(Element.Type.NODE, A_NODE_ID);
 		verify(downloadedTilesDao).remove(any(Point.class));
 	}
@@ -197,7 +200,7 @@ public class OsmQuestChangesUploadTest extends TestCase
 		assertFalse(u.uploadQuestChange(firstChangesetId, quest, element, false, false));
 
 		verify(manageChangesetsDb).replace(new OpenChangesetKey("TestQuestType","test case"), secondChangesetId);
-		assertEquals(QuestStatus.CLOSED, quest.getStatus());
+		verify(questDb).delete(quest.getId());
 		verify(elementDb).delete(Element.Type.NODE, A_NODE_ID);
 		verify(downloadedTilesDao).remove(any(Point.class));
 	}
@@ -215,7 +218,7 @@ public class OsmQuestChangesUploadTest extends TestCase
 	{
 		MapDataDao mapDataDao = mock(MapDataDao.class);
 		doThrow(OsmConflictException.class).when(mapDataDao)
-				.uploadChanges(any(Long.class), any(Iterable.class), isNull(Handler.class));
+				.uploadChanges(any(Long.class), any(Iterable.class), any(Handler.class));
 		when(mapDataDao.getNode(A_NODE_ID)).thenReturn(null);
 		return mapDataDao;
 	}
@@ -270,10 +273,10 @@ public class OsmQuestChangesUploadTest extends TestCase
 		@Override public AbstractQuestAnswerFragment createForm() { return null; }
 		@Override public int getIcon() { return 0; }
 		@Override public int getTitle() { return 0; }
-		@Override public int getTitle(Map<String,String> tags) { return 0; }
-		@Override public boolean appliesTo(Element element) { return false; }
+		@Override public int getTitle(@NonNull Map<String,String> tags) { return 0; }
+		@Nullable @Override public Boolean isApplicableTo(Element element) { return false; }
 
-		@Override public String[] getDisabledForCountries()	{ return null; }
+		@NonNull @Override public Countries getEnabledForCountries()	{ return Countries.ALL; }
 		@Override public int getDefaultDisabledMessage() { return 0; }
 	}
 
