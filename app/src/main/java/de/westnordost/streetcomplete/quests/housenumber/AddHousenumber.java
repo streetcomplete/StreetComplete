@@ -182,7 +182,7 @@ public class AddHousenumber implements OsmElementQuestType
 		return success ? areas : null;
 	}
 
-	private static int indexOfPointIn(Geometry building, ArrayList<Point> points)
+	public static int indexOfPointIn(Geometry building, ArrayList<Point> points)
 	{
 		for (int i = 0; i < points.size(); i++)
 		{
@@ -260,10 +260,10 @@ public class AddHousenumber implements OsmElementQuestType
 		});
 	}
 
-	private static class ElementWithGeometry
+	public static class ElementWithGeometry
 	{
-		Element element;
-		ElementGeometry elementGeometry;
-		Geometry geometry;
+		public Element element;
+		public ElementGeometry elementGeometry;
+		public Geometry geometry;
 	}
 }
