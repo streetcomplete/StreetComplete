@@ -29,7 +29,7 @@ public abstract class SimpleOverpassQuestType implements OsmElementQuestType
 	/** @return a query string that is accepted by Overpass and does not exceed the given bbox */
 	String getOverpassQuery(BoundingBox bbox)
 	{
-		return filter.toOverpassQLString(bbox);
+		return filter.toOverpassQLString(bbox, true);
 	}
 
 	protected abstract String getTagFilters();

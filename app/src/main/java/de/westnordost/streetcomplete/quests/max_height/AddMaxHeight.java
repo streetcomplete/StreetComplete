@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.max_height;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 
 import java.util.Map;
 
@@ -16,7 +17,9 @@ import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
+import de.westnordost.streetcomplete.data.osm.tql.FiltersParser;
 import de.westnordost.streetcomplete.data.osm.tql.OverpassQLUtil;
+import de.westnordost.streetcomplete.data.osm.tql.TagFilterExpression;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 
 public class AddMaxHeight implements OsmElementQuestType
@@ -29,26 +32,29 @@ public class AddMaxHeight implements OsmElementQuestType
 		this.overpassServer = overpassServer;
 	}
 
-	/*the query does not exclude elements which are not accessible by the public,
-	because a maxheight sign will very probably be visible at the entrance or beginning*/
-	private static final String QUERY_RESTRICTIONS = "['maxheight'!~'.']['maxheight:physical'!~'.']";
+	private static final String QUERY_RESTRICTIONS = "!maxheight and !maxheight:physical";
 
-	private static final String ROADS = "(primary|secondary|tertiary|trunk)(_link)?|motorway|service|residential|unclassified|living_street";
+	private static final String ROADS = "primary|secondary|tertiary|trunk|motorway|service|residential|unclassified|living_street|" +
+		"primary_link|secondary_link|tertiary_link|trunk_link";
+
+	private static final TagFilterExpression nodeFilter = new FiltersParser().parse("nodes with (barrier=height_restrictor" +
+		" or amenity=parking_entrance and parking ~ underground|multi-storey)" +
+		" and " + QUERY_RESTRICTIONS);
+	private static final TagFilterExpression wayFilter = new FiltersParser().parse("ways with highway ~ " + ROADS +
+		" and (covered=yes or tunnel~yes|building_passage|avalanche_protector)" +
+		" and " + QUERY_RESTRICTIONS);
 
 	@Override public boolean download(BoundingBox bbox, MapDataWithGeometryHandler handler)
 	{
+		Log.d("Query", getOverpassQuery(bbox));
 		return overpassServer.getAndHandleQuota(getOverpassQuery(bbox), handler);
 	}
 
 	private static String getOverpassQuery(BoundingBox bbox)
 	{
 		return OverpassQLUtil.getGlobalOverpassBBox(bbox) +
-			"(" +
-			" node['barrier'='height_restrictor']" +  QUERY_RESTRICTIONS + ";" +
-			" node['amenity'='parking_entrance']['parking'~'^(underground|multi-storey)$']" +  QUERY_RESTRICTIONS + ";" +
-			" way['highway'~'^(" + ROADS + ")$']['tunnel'~'^(yes|building_passage)$']" +  QUERY_RESTRICTIONS + ";" +
-			" way['highway'~'^(" + ROADS + ")$']['covered'='yes']" +  QUERY_RESTRICTIONS + ";" +
-			");" +
+			nodeFilter.toOverpassQLString(null, false) +
+			wayFilter.toOverpassQLString(null, false) +
 			"out meta geom;";
 	}
 
@@ -59,25 +65,32 @@ public class AddMaxHeight implements OsmElementQuestType
 
 	@Override public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
 	{
-		boolean hasNoSign = answer.getBoolean(AddMaxHeightForm.NO_SIGN);
-		String maxheight = answer.getString(AddMaxHeightForm.MAX_HEIGHT);
-		if(hasNoSign)
+		String maxHeight = answer.getString(AddMaxHeightForm.MAX_HEIGHT);
+		int noSign = answer.getInt(AddMaxHeightForm.NO_SIGN);
+
+		if(noSign != 0)
 		{
-			/*TODO: maxheight=default or maxheight=no_sign?
-			according to https://taginfo.openstreetmap.org/keys/maxheight#values maxheight=no_sign is only used 14 times,
-			while maxheight=default is used about 10K times*/
-			changes.add("maxheight", "default");
+			if(noSign == AddMaxHeightForm.IS_BELOW_DEFAULT)
+				changes.add("maxheight", "below_default");
+			else if(noSign == AddMaxHeightForm.IS_DEFAULT)
+				changes.add("maxheight", "default");
+			else if(noSign == AddMaxHeightForm.IS_NOT_INDICATED)
+				changes.add("maxheight", "no_indications");
+			return;
 		}
-		else
+
+		if (maxHeight != null)
 		{
-			if (maxheight != null)
-			{
-				changes.add("maxheight", maxheight);
-			}
+			changes.add("maxheight", maxHeight);
 		}
 	}
 
-	@Override public String getCommitMessage() { return "Add maximum height"; }
+	@Nullable @Override public Boolean isApplicableTo(Element element)
+	{
+		return nodeFilter.matches(element) || wayFilter.matches(element);
+	}
+
+	@Override public String getCommitMessage() { return "Add maximum heights"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_max_height; }
 	@Override public int getTitle(@NonNull Map<String, String> tags)
 	{
@@ -94,6 +107,5 @@ public class AddMaxHeight implements OsmElementQuestType
 
 	@Override public int getTitle() { return R.string.quest_maxheight_title; }
 	@Override public int getDefaultDisabledMessage() { return 0; }
-	@Nullable @Override public Boolean isApplicableTo(Element element) { return null; }
 	@NonNull @Override public Countries getEnabledForCountries() { return Countries.ALL; }
 }

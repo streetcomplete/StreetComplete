@@ -1,11 +1,17 @@
 package de.westnordost.streetcomplete.quests.max_height;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
@@ -16,6 +22,7 @@ public class AddMaxHeightForm extends AbstractQuestFormAnswerFragment
 	public static final String
 		MAX_HEIGHT = "max_height",
 		NO_SIGN = "no_sign";
+	public static final int IS_BELOW_DEFAULT = 1, IS_DEFAULT = 2, IS_NOT_INDICATED = 3;
 
 	private EditText heightInput, feetInput, inchInput;
 
@@ -73,16 +80,55 @@ public class AddMaxHeightForm extends AbstractQuestFormAnswerFragment
 
 		addOtherAnswer(R.string.quest_maxheight_answer_noSign, () ->
 		{
-			new AlertDialogBuilder(getActivity())
-				.setTitle(R.string.quest_maxheight_answer_noSign_confirmation_title)
-				.setMessage(R.string.quest_maxheight_answer_noSign_confirmation)
-				.setPositiveButton(R.string.quest_maxheight_answer_noSign_confirmation_positive, (dialog, which) -> {
-					Bundle answer = new Bundle();
-					answer.putBoolean(NO_SIGN, true);
-					applyImmediateAnswer(answer);
-				})
-				.setNegativeButton(R.string.quest_generic_confirmation_no, null)
+			final String
+				restrictsTraffic = getResources().getString(R.string.quest_maxheight_answer_restrictsTraffic),
+				noTrafficRestriction = getResources().getString(R.string.quest_maxheight_answer_noTrafficRestriction),
+				cantEstimate = getResources().getString(R.string.quest_maxheight_answer_cantEstimate);
+
+			final List<String> answers = new ArrayList<>(3);
+			answers.add(restrictsTraffic);
+			answers.add(noTrafficRestriction);
+			answers.add(cantEstimate);
+
+			DialogInterface.OnClickListener onSelect = new DialogInterface.OnClickListener()
+			{
+				Integer selection = null;
+
+				@Override public void onClick(DialogInterface dialog, int which)
+				{
+					if (which >= 0)
+					{
+						selection = which;
+						((AlertDialog)dialog).getButton(DialogInterface.BUTTON_POSITIVE).setEnabled(true);
+					}
+					else if (which == DialogInterface.BUTTON_POSITIVE)
+					{
+						if(selection == null || selection < 0 || selection >= answers.size()) return;
+						onAnswer();
+					}
+				}
+
+				private void onAnswer()
+				{
+					String answer = answers.get(selection);
+					Bundle data = new Bundle();
+					int type = 0;
+					if(answer.equals(restrictsTraffic))	type = IS_BELOW_DEFAULT;
+					if(answer.equals(noTrafficRestriction))	type = IS_DEFAULT;
+					if(answer.equals(cantEstimate))    type = IS_NOT_INDICATED;
+					data.putInt(NO_SIGN, type);
+					applyImmediateAnswer(data);
+				}
+			};
+
+			AlertDialog dlg = new AlertDialogBuilder(getActivity())
+				.setSingleChoiceItems(answers.toArray(new String[0]), -1, onSelect)
+				.setTitle(R.string.quest_maxheight_answer_noSign_question)
+				.setPositiveButton(android.R.string.ok, onSelect)
+				.setNegativeButton(android.R.string.cancel, null)
 				.show();
+
+			dlg.getButton(DialogInterface.BUTTON_POSITIVE).setEnabled(false);
 		});
 	}
 
@@ -108,7 +154,7 @@ public class AddMaxHeightForm extends AbstractQuestFormAnswerFragment
 	{
 		double height = Double.parseDouble(getHeightFromInput());
 		double heightInMeter = isMetric ? height : feetToMeter(height);
-		return heightInMeter > 6;
+		return heightInMeter > 6 || heightInMeter < 2;
 	}
 
 	private static double feetToMeter(double feet)
@@ -138,12 +184,6 @@ public class AddMaxHeightForm extends AbstractQuestFormAnswerFragment
 	{
 		if (isMetric)
 		{
-			/*TODO: should a trailing zero be added or does it even work without?
-			https://taginfo.openstreetmap.org/keys/maxheight#values contains both...*/
-			if (!value.contains("."))
-			{
-				value += ".0";
-			}
 			return value;
 		}
 		else
@@ -161,10 +201,7 @@ public class AddMaxHeightForm extends AbstractQuestFormAnswerFragment
 
 				return heightInput.getText().toString().replace(",", ".");
 			}
-			else
-			{
-				return null;
-			}
+			return "";
 		}
 		else
 		{
@@ -172,10 +209,7 @@ public class AddMaxHeightForm extends AbstractQuestFormAnswerFragment
 			{
 				return feetInput.getText().toString() + "." + inchInput.getText().toString();
 			}
-			else
-			{
-				return null;
-			}
+			return "";
 		}
 	}
 
@@ -191,6 +225,7 @@ public class AddMaxHeightForm extends AbstractQuestFormAnswerFragment
 
 	@Override public boolean hasChanges()
 	{
-		return getHeightFromInput() != null;
+		Log.d("hasChanges", String.valueOf(getHeightFromInput().isEmpty()));
+		return !getHeightFromInput().isEmpty();
 	}
 }
