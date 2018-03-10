@@ -7,6 +7,7 @@ import dagger.Module;
 import dagger.Provides;
 import de.westnordost.osmapi.user.UserDao;
 import de.westnordost.streetcomplete.ApplicationConstants;
+import de.westnordost.streetcomplete.data.osm.download.OverpassOldMapDataDao;
 import de.westnordost.streetcomplete.oauth.OAuthPrefs;
 import de.westnordost.streetcomplete.data.osm.download.ElementGeometryCreator;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
@@ -51,6 +52,14 @@ public class OsmModule
 		OsmConnection overpassConnection = new OsmConnection(
 				OVERPASS_API_URL, ApplicationConstants.USER_AGENT, null);
 		return new OverpassMapDataDao(overpassConnection, parserProvider);
+	}
+
+	@Provides public static OverpassOldMapDataDao overpassOldMapDataDao(
+		Provider<OverpassMapDataParser> parserProvider, String date)
+	{
+		OsmConnection overpassConnection = new OsmConnection(
+			OVERPASS_API_URL, ApplicationConstants.USER_AGENT, null);
+		return new OverpassOldMapDataDao(overpassConnection, parserProvider, date);
 	}
 
 	@Provides public static OverpassMapDataParser overpassMapDataParser()
