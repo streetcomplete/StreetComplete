@@ -37,7 +37,9 @@
     <string name="quest_streetName_answer_noName_confirmation_description">"Cedule se jmény ulic někdy můžou být jen na jednom konci ulice. Pamatujte, že boční ulice, které patří k větší ulici, nemusí mít cedule se jménem. Ulice s domy jsou obvykle pojmenované."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Pokud jde jméno zapsat bez zkratek, tak by se měly rozepsat. Spousta obvyklých zkratek se během jejich psaní automaticky rozepisuje, ale ne všechny."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Žádná zkratka"</string>
-    <string name="quest_openingHours_name_title">"Jaké jsou otevírací hodiny „%s“?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_openingHours_name_title">"Jaké jsou otevírací hodiny %s?"</string>
     <string name="quest_openingHours_start_time">"čas otevření"</string>
     <string name="quest_openingHours_end_time">"čas zavření"</string>
     <string name="quest_openingHours_add_months">"Přidat měsíce"</string>
@@ -240,18 +242,24 @@ Vámi vložené informace jsou potom vaším jménem přímo přidány do OpenSt
     <string name="quest_manySports_confirmation_specific">"Výhradně tyto sporty"</string>
     <string name="quest_manySports_confirmation_generic">"Různé hry"</string>
     <string name="quest_sport_manySports_confirmation_title">"Vybrali jste více sportů"</string>
-    <string name="quest_busStopShelter_name_title">"Má autobusová zastávka  „%s“ střechu?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopShelter_name_title">"Má autobusová zastávka  %s střechu?"</string>
     <string name="quest_toiletsFee_title">"Musí se na těchto toaletách platit?"</string>
     <string name="quest_tactilePaving_title_bus">"Má tato autobusová zastávka hmatovou dlažbu?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"Má tento přechod hmatovou dlažbu?"</string>
     <string name="quest_source_dialog_title">"Opravdu jste to zkontroloval na místě?"</string>
-    <string name="quest_tactilePaving_title_name_bus">"Má autobusová zastávka  „%s“ hmatovou dlažbu?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_tactilePaving_title_name_bus">"Má autobusová zastávka  %s hmatovou dlažbu?"</string>
     <string name="quest_source_dialog_note">"Měly by být přidávány pouze informace zjištěné během průzkumu."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Je toto parkoviště pro kola zakryté (chráněno proti dešti)?"</string>
     <string name="dialog_session_dont_show_again">"V této relaci znovu nezobrazovat"</string>
-    <string name="quest_streetSurface_name_title">"Jaký povrch má cesta „%s“?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_streetSurface_name_title">"Jaký povrch má cesta %s?"</string>
     <string name="quest_maxspeed_title_short">"Jaké je předepsané omezení rychlosti na této cestě?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Toto omezení rychlosti se zdá nepravděpodobné."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Opravdu tu není žádná značka omezující rychlost?"</string>
@@ -268,7 +276,9 @@ Pokud nejsou podél celé cesty žádné značky, které by omezovaly rychlost v
     <string name="quest_sport_paddle_tennis">"Pádlový tenis"</string>
     <string name="quest_sport_gaelic_games">"Galské hry"</string>
     <string name="quest_sport_sepak_takraw">"Sepak takraw"</string>
-    <string name="quest_wheelchairAccess_name_title">"Má „%s“ bezbariérový přístup?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_name_title">"Má %s bezbariérový přístup?"</string>
     <string name="quest_wheelchairAccess_limited">"Částečně"</string>
     <string name="quest_bikeParkingCapacity_hint">"Nezapomeňte, že u většiny normálních stojanů lze použít pro parkování kol obě strany."</string>
     <string name="quest_sport_roller_skating">"Kolečkové bruslení"</string>
@@ -276,15 +286,27 @@ Pokud nejsou podél celé cesty žádné značky, které by omezovaly rychlost v
     <string name="quest_wheelchairAccess_subway_entrance_title">"Má tento vstup do metra bezbariérový přístup?"</string>
     <string name="quest_wheelchairAccess_railway_station_title">"Má tato železniční stanice bezbariérový přístup?"</string>
     <string name="quest_wheelchairAccess_location_title">"Má toto místo bezbariérový přístup?"</string>
-    <string name="quest_wheelchairAccess_bus_station_name_title">"Má autobusová zastávka „%s“ bezbariérový přístup?"</string>
-    <string name="quest_wheelchairAccess_subway_entrance_name_title">"Má vstup do metra „%s“ bezbariérový přístup?"</string>
-    <string name="quest_wheelchairAccess_railway_station_name_title">"Má železniční stanice „%s“ bezbariérový přístup?"</string>
-    <string name="quest_wheelchairAccess_location_name_title">"Má místo „%s“ bezbariérový přístup?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_bus_station_name_title">"Má autobusová zastávka %s bezbariérový přístup?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_subway_entrance_name_title">"Má vstup do metra %s bezbariérový přístup?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_railway_station_name_title">"Má železniční stanice %s bezbariérový přístup?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_location_name_title">"Má místo %s bezbariérový přístup?"</string>
     <string name="quest_wheelchairAccess_limited_description_business">"Částečně znamená, že tu není víc než jeden schod bránící v přístupu a že většina místností v budově je přístupná na kolečkovém křesle."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"Částečně znamená, že tu není víc než jeden schod bránící v přístupu."</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Je v názvu „%s“ zkratka?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Je v názvu %s zkratka?"</string>
     <string name="quest_baby_changing_table_toilets_title">"Má tato toaleta stolek na přebalování dětí?"</string>
-    <string name="quest_baby_changing_table_title">"Má „%s“ stolek na přebalování dětí?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_baby_changing_table_title">"Má %s stolek na přebalování dětí?"</string>
     <string name="quest_recycling_type_title">"Jaký je toto typ recyklačního zařízení?"</string>
     <string name="recycling_centre">"Středisko"</string>
     <string name="overground_recycling_container">"Kontejner"</string>
@@ -366,7 +388,9 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
 
     <!-- Fuzzy -->
     <string name="quest_way_lit_title">"Je tato část cesty osvětlena?"</string>
-    <string name="quest_way_lit_named_title">"Je tady „%s“ osvětlena?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_way_lit_named_title">"Je tady %s osvětlena?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_way_lit_road_title">"Je tato část silnice osvětlena?"</string>
@@ -457,12 +481,14 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_streetName_answer_noProperStreet_track2">"Je to polní nebo lesní cesta"</string>
     <string name="quest_streetName_answer_noName_noname">"Nic z výše uvedeného, prostě nemá jméno"</string>
     <string name="quest_wheelchairAccess_toilets_title">"Mají tyto toalety přístup pro vozíčkáře?"</string>
-    <string name="quest_wheelchairAccess_toilets_name_title">"Mají toalety „%s“ přístup pro vozíčkáře?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_toilets_name_title">"Mají toalety %s přístup pro vozíčkáře?"</string>
     <string name="quest_wheelchairAccess_description_toilets">"Pokud jsou toalety přístupné, můžete na nich vidět podobnou značku vozíčkáře.
 Částečně znamená, že se lze na toaletu dostat a používat ji i na kolečkovém křesle, ale nejsou na ní držáky, nebo upravené umývadlo."</string>
     <string name="map_btn_create_note">"Vytvořit novou poznámku"</string>
     <string name="create_new_note_unprecise">"Přibližte mapu pro vytvoření poznámky"</string>
-    <string name="create_new_note_description">"Můžete k tomuto místu napsat poznámku, aby ostatní uživatelé věděli o zdejším problému. Posunutím mapy upravte umístění poznámky."</string>
+    <string name="create_new_note_description">"K tomuto místu můžete přidat poznámku, aby se ostatní uživatelé dozvěděli o zdejším problému. Posunutím mapy upravte umístění poznámky."</string>
 
     <!-- Could this be translated as "Clear Quest Cache"? -->
     <string name="pref_title_quests_invalidation">"Zrušit platnost mezipaměti úkolů"</string>
@@ -474,16 +500,22 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_surface_generic_surface_confirmation">"Opravdu nemůžete určit materiál povrchu přesněji?"</string>
     <string name="quest_cycleway_title2">"Je tu cyklostezka? Jakého druhu?"</string>
     <string name="quest_bridge_structure_title">"Jakou konstrukci má tento most?"</string>
-    <string name="quest_internet_access_name_title">"Jaká druh připojení k internetu nabízí „%s“?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_internet_access_name_title">"Jaká druh připojení k internetu nabízí %s?"</string>
     <string name="quest_internet_access_wlan">"Wi-Fi"</string>
     <string name="quest_internet_access_wired">"Drátové (LAN)"</string>
     <string name="quest_internet_access_terminal">"Počítač s připojením k internetu"</string>
     <string name="quest_internet_access_no">"Žádné připojení"</string>
-    <string name="quest_busStopShelter_tram_name_title">"Má tramvajová zastávka  „%s“ střechu?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopShelter_tram_name_title">"Má tramvajová zastávka  %s střechu?"</string>
     <string name="quest_busStopShelter_tram_title">"Má tato tramvajová zastávka střechu?"</string>
     <string name="quest_bench_backrest_title">"Má tato lavička opěrák?"</string>
     <string name="quest_bench_answer_picnic_table">"Je to stůl pro piknik"</string>
-    <string name="quest_religion_for_place_of_worship_title">"Jaké náboženství se praktikuje v „%s“?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_religion_for_place_of_worship_title">"Jaké náboženství se praktikuje v %s?"</string>
     <string name="quest_religion_christian">"Křesťanství"</string>
     <string name="quest_religion_muslim">"Islám"</string>
     <string name="quest_religion_hindu">"Hinduismus"</string>
@@ -505,4 +537,14 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_parking_access_private">"Je to soukromé parkoviště"</string>
     <string name="quest_parking_access_yes">"Je to veřejné parkoviště (s nebo bez poplatku)"</string>
     <string name="quest_parking_access_customers">"Je to parkoviště jen pro zákazníky"</string>
+    <string name="quest_streetName_pedestrian_title">"Jaké jméno má tato ulice pro pěší?"</string>
+    <string name="quest_streetSurface_square_title">"Jaký povrch má toto náměstí?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_streetSurface_square_name_title">"Jaký povrch má náměstí %s?"</string>
+    <string name="quest_fee_answer_hours">"Závisí to na času a dni"</string>
+    <string name="quest_fee_add_times">"Přidat časy"</string>
+    <string name="quest_fee_only_at_hours">"Ano, ale jen..."</string>
+    <string name="quest_fee_not_at_hours">"Ano, ale ne..."</string>
+    <string name="quest_fee_hours_title">"v následujících časech:"</string>
 </resources>

@@ -35,7 +35,9 @@
     <string name="quest_streetName_answer_noName_confirmation_description">"Nokre gongar står gateskiltet berre ved starten eller enden av gata. Merk òg at det gjerne ikkje finst gateskilt for sidegater som høyrer inn under ei hovudgate. Vanlegvis har alle gater med hus eit namn."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Viss du kan skriva gatenamnet utan forkortingar, bør du gjera dette. Mange vanlege forkortingar vert automatisk utvida, men det gjeld ikkje alle."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Inga forkorting"</string>
-    <string name="quest_openingHours_name_title">"Når er «%s» open?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_openingHours_name_title">"Når er %s open?"</string>
     <string name="quest_openingHours_start_time">"opningstid"</string>
     <string name="quest_openingHours_end_time">"stengjetid"</string>
     <string name="quest_openingHours_add_months">"Legg til månadar"</string>
@@ -232,16 +234,22 @@ Informasjonen du legg til vert sendt direkte til OpenStreetMap i ditt namn, utan
     <string name="quest_manySports_confirmation_specific">"Nett desse typane"</string>
     <string name="quest_manySports_confirmation_generic">"Generell idrettsbane"</string>
     <string name="quest_sport_manySports_confirmation_title">"Du valde mange idrettsgreiner"</string>
-    <string name="quest_busStopShelter_name_title">"Er det eit busskur på stoppet «%s»?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopShelter_name_title">"Er det eit busskur på stoppet %s?"</string>
     <string name="quest_toiletsFee_title">"Kostar det noko å bruka toaletta?"</string>
     <string name="quest_tactilePaving_title_bus">"Har busstoppet leielinjer for blinde i asfalten?"</string>
     <string name="quest_tactilePaving_title_crosswalk">"Har fotgjengarovergangen leielinjer for blinde på begge sider?"</string>
     <string name="quest_source_dialog_title">"Er du sikker på at du har sjekka dette på staden?"</string>
-    <string name="quest_tactilePaving_title_name_bus">"Har busstoppet «%s» leielinjer for blinde i asfalten?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_tactilePaving_title_name_bus">"Har busstoppet %s leielinjer for blinde i asfalten?"</string>
     <string name="quest_source_dialog_note">"Legg berre inn informasjon som du sjølv har observert på staden."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Er det tak over denne sykkelparkeringa?"</string>
     <string name="dialog_session_dont_show_again">"Vis ikkje fleire gongar i denne økta"</string>
-    <string name="quest_streetSurface_name_title">"Kva vegdekke har vegen «%s» her?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_streetSurface_name_title">"Kva vegdekke har vegen %s her?"</string>
     <string name="quest_maxspeed_title_short">"Kva fartsgrense viser skiltet på denne vegen?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Fartsgrensa verkar usannsynleg."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Er du sikker på at det ikkje finst noko fartsskilt?"</string>
@@ -258,7 +266,9 @@ Viss det ikkje finst noko fartsskilt for heile gata, som òg gjeld for den avmer
     <string name="quest_sport_paddle_tennis">"Paddle-tennis"</string>
     <string name="quest_sport_gaelic_games">"Gæliske leikar"</string>
     <string name="quest_sport_sepak_takraw">"Sepak takraw"</string>
-    <string name="quest_wheelchairAccess_name_title">"Er «%s» tilgjengeleg med rullestol?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_name_title">"Er %s tilgjengeleg med rullestol?"</string>
     <string name="quest_wheelchairAccess_limited">"Delvis"</string>
     <string name="quest_bikeParkingCapacity_hint">"Merk at dei fleste sykkelstativa kan brukast på begge sider, med éin sykkel på kvar side."</string>
     <string name="quest_sport_roller_skating">"Rulleskeiser"</string>
@@ -266,15 +276,27 @@ Viss det ikkje finst noko fartsskilt for heile gata, som òg gjeld for den avmer
     <string name="quest_wheelchairAccess_subway_entrance_title">"Er denne T-banenedgangen tilgjengeleg med rullestol?"</string>
     <string name="quest_wheelchairAccess_railway_station_title">"Er denne jernbanestasjonen tilgjengeleg med rullestol?"</string>
     <string name="quest_wheelchairAccess_location_title">"Er denne staden tilgjengeleg med rullestol?"</string>
-    <string name="quest_wheelchairAccess_bus_station_name_title">"Er busstasjonen «%s» tilgjengeleg med rullestol?"</string>
-    <string name="quest_wheelchairAccess_subway_entrance_name_title">"Er T-banenedgangen «%s» tilgjengeleg med rullestol?"</string>
-    <string name="quest_wheelchairAccess_railway_station_name_title">"Er jernbanestasjonen «%s» tilgjengeleg med rullestol?"</string>
-    <string name="quest_wheelchairAccess_location_name_title">"Er «%s» tilgjengeleg med rullestol?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_bus_station_name_title">"Er busstasjonen %s tilgjengeleg med rullestol?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_subway_entrance_name_title">"Er T-banenedgangen %s tilgjengeleg med rullestol?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_railway_station_name_title">"Er jernbanestasjonen %s tilgjengeleg med rullestol?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_location_name_title">"Er %s tilgjengeleg med rullestol?"</string>
     <string name="quest_wheelchairAccess_limited_description_business">"«Delvis» vil seia at det ikkje er meir enn eitt trappetrinn ved inngangen og at inne er dei fleste romma tilgjengelege med rullestol."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"«Delvis» vil seia at det ikkje er meir enn eitt trappetrinn ved inngangen."</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Er det ei forkorting i namnet «%s»?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Er det ei forkorting i namnet %s?"</string>
     <string name="quest_baby_changing_table_toilets_title">"Finst det stellebord ved dette toalettet?"</string>
-    <string name="quest_baby_changing_table_title">"Finst det stellebord ved «%s»?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_baby_changing_table_title">"Finst det stellebord ved %s?"</string>
     <string name="quest_recycling_type_title">"Kva slags returpunkt er dette?"</string>
     <string name="recycling_centre">"Gjenvinningsstasjon"</string>
     <string name="overground_recycling_container">"Konteinar"</string>
@@ -353,7 +375,9 @@ Elles kan du lasta ned eit anna tastatur i appbutikken. Mykje brukte tastatur so
     <string name="produce_walnuts">"Valnøtter"</string>
     <string name="produce_sisal">"Sisal"</string>
     <string name="quest_way_lit_title">"Har denne strekninga lyssetjing?"</string>
-    <string name="quest_way_lit_named_title">"Har «%s» lyssetjing her?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_way_lit_named_title">"Har %s lyssetjing her?"</string>
     <string name="quest_way_lit_road_title">"Har denne strekninga lyssetjing?"</string>
     <string name="quest_way_lit_named_road_title">"Har «%s» lyssetjing her?"</string>
     <string name="quest_way_lit_automatic">"Lyset brukar rørslesensor"</string>
@@ -440,7 +464,9 @@ Elles kan du lasta ned eit anna tastatur i appbutikken. Mykje brukte tastatur so
     <string name="quest_streetName_answer_noProperStreet_track2">"Det er ein traktor- eller skogsveg"</string>
     <string name="quest_streetName_answer_noName_noname">"Ingen av grunnane – han manglar rett og slett namn"</string>
     <string name="quest_wheelchairAccess_toilets_title">"Er toaletta tilgjengelege for rullestolbrukarar?"</string>
-    <string name="quest_wheelchairAccess_toilets_name_title">"Er toaletta på «%s» tilgjengelege for rullestolbrukarar?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_toilets_name_title">"Er toaletta på %s tilgjengelege for rullestolbrukarar?"</string>
     <string name="quest_wheelchairAccess_description_toilets">"Viss toaletta er tilgjengelege for rullestolbrukarar, står det gjerne eit slikt skilt.
     Delvis tyder at ein rullestolbrukar kan komma seg inn på og bruka toalettet men at det ikkje er tilrettelagt med støttehandtak eller tilpassa handvask."</string>
     <string name="map_btn_create_note">"Legg til ny merknad"</string>
@@ -455,16 +481,22 @@ Elles kan du lasta ned eit anna tastatur i appbutikken. Mykje brukte tastatur so
     <string name="quest_surface_generic_surface_confirmation">"Er du sikker på at du ikkje kan fastsetja vegdekket meir presist?"</string>
     <string name="quest_cycleway_title2">"Finst det ein sykkelveg her? Kva type?"</string>
     <string name="quest_bridge_structure_title">"Kva struktur har denne brua?"</string>
-    <string name="quest_internet_access_name_title">"Kva slags Internett-tilgang tilbyr «%s»?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_internet_access_name_title">"Kva slags Internett-tilgang tilbyr %s?"</string>
     <string name="quest_internet_access_wlan">"Wi-Fi"</string>
     <string name="quest_internet_access_wired">"Kabla tilgang (LAN)"</string>
     <string name="quest_internet_access_terminal">"Datamaskin(er) med Internett-tilgang"</string>
     <string name="quest_internet_access_no">"Ingen Internett-tilgang"</string>
-    <string name="quest_busStopShelter_tram_name_title">"Er det eit trikkeskur på stoppet «%s»?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopShelter_tram_name_title">"Er det eit trikkeskur på stoppet %s?"</string>
     <string name="quest_busStopShelter_tram_title">"Er det eit trikkeskur på dette stoppet?"</string>
     <string name="quest_bench_backrest_title">"Har denne benken ryggstø?"</string>
     <string name="quest_bench_answer_picnic_table">"Det er eit piknikbord"</string>
-    <string name="quest_religion_for_place_of_worship_title">"Kva religion vert praktisert ved «%s»?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_religion_for_place_of_worship_title">"Kva religion vert praktisert ved %s?"</string>
     <string name="quest_religion_christian">"Kristendom"</string>
     <string name="quest_religion_muslim">"Islam"</string>
     <string name="quest_religion_hindu">"Hinduisme"</string>
@@ -488,7 +520,9 @@ Elles kan du lasta ned eit anna tastatur i appbutikken. Mykje brukte tastatur so
     <string name="quest_parking_access_customers">"Kundeparkering"</string>
     <string name="quest_streetName_pedestrian_title">"Kva heiter denne gågata?"</string>
     <string name="quest_streetSurface_square_title">"Kva materiale er brukt på denne plassen?"</string>
-    <string name="quest_streetSurface_square_name_title">"Kva materiale er brukt på plassen «%s» her?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_streetSurface_square_name_title">"Kva materiale er brukt på plassen %s her?"</string>
     <string name="quest_fee_answer_hours">"Kjem an på vekedag og klokkeslett"</string>
     <string name="quest_fee_add_times">"Legg til tider"</string>
     <string name="quest_fee_only_at_hours">"Ja, men berre …"</string>

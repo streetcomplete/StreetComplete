@@ -35,6 +35,8 @@
     <string name="quest_streetName_answer_noName_confirmation_description">"Kartais gatvės pavadinimas būna tik viename gatvės gale. Taip pat pastebėtina, kad gali nebūti ženklų šalutinėms gatvėms, kurios priklauso didesnei gatvei. Paprastai bet kokia gatvė su namais turi pavadinimą."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Jei pavadinimas gali būti parašytas be sutrumpinimo, tai jis taip ir turi būti parašytas (išskyrus „g.“ gatvei)."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Nėra sutrumpinimo"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_name_title">"Koks yra %s darbo laikas?"</string>
     <string name="quest_openingHours_start_time">"atsidaro"</string>
     <string name="quest_openingHours_end_time">"užsidaro"</string>
@@ -234,6 +236,8 @@ Jūsų įvesta informacija tiesiog įkeliama į OpenStreetMap jūsų vardu, be k
     <string name="quest_manySports_confirmation_specific">"Konkrečiai šioms"</string>
     <string name="quest_manySports_confirmation_generic">"Bendros paskirties"</string>
     <string name="quest_sport_manySports_confirmation_title">"Jūs parinkote kelias sporto šakas"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopShelter_name_title">"Ar autobuso stotelė %s turi stogą?"</string>
     <string name="quest_toiletsFee_title">"Ar šis tualetas yra mokamas?"</string>
     <string name="quest_tactilePaving_title_bus">"Ar ši stotelė turi taktilinę dangą?"</string>
@@ -241,11 +245,15 @@ Jūsų įvesta informacija tiesiog įkeliama į OpenStreetMap jūsų vardu, be k
     <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"Ar ši perėja turi taktilinę dangą?"</string>
     <string name="quest_source_dialog_title">"Ar tikrai patikrinote vietoje?"</string>
-    <string name="quest_tactilePaving_title_name_bus">"Ar stotelė „%s“ turi taktilinę dangą?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_tactilePaving_title_name_bus">"Ar stotelė %s turi taktilinę dangą?"</string>
     <string name="quest_source_dialog_note">"Įvesti reikėtų tik informaciją, gautą patikrinus vietoje."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Ar ši dviračių stovėjimo vieta dengta (apsaugota nuo lietaus)?"</string>
     <string name="dialog_session_dont_show_again">"Daugiau nerodyti šioje sesijoje"</string>
-    <string name="quest_streetSurface_name_title">"Kokia yra kelio „%s“ danga šioje vietoje?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_streetSurface_name_title">"Kokia yra kelio %s danga šioje vietoje?"</string>
     <string name="quest_maxspeed_title_short">"Koks yra šios gatvės maksimalus leidžiamas greitis?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Šis greičio apribojimas atrodo neįmanomas."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Ar tikrai čia nėra jokio greičio apribojimo?"</string>
@@ -262,7 +270,9 @@ Jei visoje gatvėje nėra ženklų, kurie galioja pažymėtoje dalyje, taikomas 
     <string name="quest_sport_paddle_tennis">"Paddle Tennis"</string>
     <string name="quest_sport_gaelic_games">"Galų žaidimai"</string>
     <string name="quest_sport_sepak_takraw">"Sepak Takraw"</string>
-    <string name="quest_wheelchairAccess_name_title">"Ar „%s“ prieinamas vežimėliu?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_name_title">"Ar %s prieinamas vežimėliu?"</string>
     <string name="quest_wheelchairAccess_limited">"Dalinai"</string>
     <string name="quest_bikeParkingCapacity_hint">"Atkreipkite dėmesį, kad daugumą stovų gali būti naudojami parkavimui iš abiejų pusių."</string>
     <string name="quest_sport_roller_skating">"Riedučiai"</string>
@@ -270,15 +280,27 @@ Jei visoje gatvėje nėra ženklų, kurie galioja pažymėtoje dalyje, taikomas 
     <string name="quest_wheelchairAccess_subway_entrance_title">"Ar šis įdėjimas į metro pritaikytas neįgaliesiems su vežimėliais?"</string>
     <string name="quest_wheelchairAccess_railway_station_title">"Ar ši geležinkelio stotis pritaikyta neįgaliesiems su vežimėliais?"</string>
     <string name="quest_wheelchairAccess_location_title">"Ar ši vieta pritaikyta neįgaliesiems su vežimėliais?"</string>
-    <string name="quest_wheelchairAccess_bus_station_name_title">"Ar autobusų stotis „%s“ pritaikyta neįgaliesiems su vežimėliais?"</string>
-    <string name="quest_wheelchairAccess_subway_entrance_name_title">"Ar įėjimas į metro „%s“ pritaikytas neįgaliesiems su vežimėliais?"</string>
-    <string name="quest_wheelchairAccess_railway_station_name_title">"Ar geležinkelio stotis „%s“ pritaikyta neįgaliesiems su vežimėliais?"</string>
-    <string name="quest_wheelchairAccess_location_name_title">"Ar vieta „%s“ pritaikyta neįgaliesiems su vežimėliais?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_bus_station_name_title">"Ar autobusų stotis %s pritaikyta neįgaliesiems su vežimėliais?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_subway_entrance_name_title">"Ar įėjimas į metro %s pritaikytas neįgaliesiems su vežimėliais?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_railway_station_name_title">"Ar geležinkelio stotis %s pritaikyta neįgaliesiems su vežimėliais?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_location_name_title">"Ar vieta %s pritaikyta neįgaliesiems su vežimėliais?"</string>
     <string name="quest_wheelchairAccess_limited_description_business">"Dalinai reiškia, kad yra ne daugiau vieno laiptelio patenkant į vietą ir kad dauguma kambarių viduje pasiekiami vežimėlyje."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"Dalinai reiškia, kad yra ne daugiau vieno laiptelio įeinant."</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Sutrumpinimas pavadinime „%s“?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Sutrumpinimas pavadinime %s?"</string>
     <string name="quest_baby_changing_table_toilets_title">"Ar šis tualetas turi sauskelnių keitimo stalą?"</string>
-    <string name="quest_baby_changing_table_title">"Ar „%s“ turi sauskelnių keitimo stalą?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_baby_changing_table_title">"Ar %s turi sauskelnių keitimo stalą?"</string>
     <string name="quest_recycling_type_title">"Koks šio atliekų surinkimo įrenginio tipas?"</string>
     <string name="recycling_centre">"Centras"</string>
     <string name="overground_recycling_container">"Konteineris"</string>
@@ -359,7 +381,9 @@ Priešingu atveju galite atsisiųsti kitą klaviatūrą programėlių parduotuv�
 
     <!-- Fuzzy -->
     <string name="quest_way_lit_title">"Ar ši kelio atkarpa apšviesta?"</string>
-    <string name="quest_way_lit_named_title">"Aš „%s“ čia apšviesta?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_way_lit_named_title">"Aš %s čia apšviesta?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_way_lit_road_title">"Ar ši kelio atkarpa apšviesta?"</string>
@@ -448,7 +472,9 @@ Priešingu atveju galite atsisiųsti kitą klaviatūrą programėlių parduotuv�
     <string name="quest_streetName_answer_noProperStreet_track2">"Tai žemdirbystės ar miškininkystės kelias"</string>
     <string name="quest_streetName_answer_noName_noname">"Niekas iš paminėtų, tiesiog neturi pavadinimo"</string>
     <string name="quest_wheelchairAccess_toilets_title">"Ar tualetai prieinami vežimėliu?"</string>
-    <string name="quest_wheelchairAccess_toilets_name_title">"Ar tualetai „%s“ prieinami vežimėliu?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_toilets_name_title">"Ar tualetai %s prieinami vežimėliu?"</string>
     <string name="quest_wheelchairAccess_description_toilets">"Neįgaliųjų vežimėlio ženklas panašus į šį gali būti matomas, jei tualetai prieinami.
 Dalinai reiškia, kad vežimėlis gali įvažiuoti ir naudotis tualetu, bet nėra turėklų."</string>
     <string name="map_btn_create_note">"Sukurti naują pastabą"</string>
@@ -463,16 +489,22 @@ Dalinai reiškia, kad vežimėlis gali įvažiuoti ir naudotis tualetu, bet nėr
     <string name="quest_surface_generic_surface_confirmation">"Ar tikrai negalite tiksliau nurodyti paviršiaus?"</string>
     <string name="quest_cycleway_title2">"Ar čia yra dviračių takas? Kokio tipo?"</string>
     <string name="quest_bridge_structure_title">"Kokia yra šio tilto struktūra?"</string>
-    <string name="quest_internet_access_name_title">"Kokį interneto ryšį siūlo „%s“?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_internet_access_name_title">"Kokį interneto ryšį siūlo %s?"</string>
     <string name="quest_internet_access_wlan">"Wi-Fi"</string>
     <string name="quest_internet_access_wired">"Laidinis (LAN)"</string>
     <string name="quest_internet_access_terminal">"Kompiuteris su interneto prieiga"</string>
     <string name="quest_internet_access_no">"Nėra jungties"</string>
-    <string name="quest_busStopShelter_tram_name_title">"Ar tramvajaus stotelė „%s“ turi stogelį?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopShelter_tram_name_title">"Ar tramvajaus stotelė %s turi stogelį?"</string>
     <string name="quest_busStopShelter_tram_title">"Ar ši tramvajaus stotelė turi stogelį?"</string>
     <string name="quest_bench_backrest_title">"Ar šis suoliukas turi atlošą?"</string>
     <string name="quest_bench_answer_picnic_table">"Tai pikniko stalas"</string>
-    <string name="quest_religion_for_place_of_worship_title">"Kokia religija praktikuojama „%s“?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_religion_for_place_of_worship_title">"Kokia religija praktikuojama %s?"</string>
     <string name="quest_religion_christian">"Krikščionybė"</string>
     <string name="quest_religion_muslim">"Islamas"</string>
     <string name="quest_religion_hindu">"Hinduizmas"</string>

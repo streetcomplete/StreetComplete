@@ -35,7 +35,9 @@
     <string name="quest_streetName_answer_noName_confirmation_description">"Іноді табличка з назвою знаходиться лише з одного боку вулиці. Також зауважте, що таблички для дотичних вулиць можуть бути відсутні. Зазвичай будь-яка вулиця, на якій є будівлі, має назву."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Якщо назву можна записати без скорочення, робіть саме так. Багато загальних скорочень розгортаються під час набору, але не всі."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Не скорочення"</string>
-    <string name="quest_openingHours_name_title">"Який робочий час для «%s»?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_openingHours_name_title">"Який робочий час для %s?"</string>
     <string name="quest_openingHours_start_time">"початок роботи"</string>
     <string name="quest_openingHours_end_time">"кінець роботи"</string>
     <string name="quest_openingHours_add_months">"Додайте місяці"</string>
@@ -55,7 +57,7 @@
     <string name="confirmation_discard_title">"Очистити поле?"</string>
     <string name="confirmation_discard_positive">"Очистити"</string>
     <string name="confirmation_discard_negative">"Скасувати"</string>
-    <string name="action_download">"Шукати завдання поруч"</string>
+    <string name="action_download">"Знайти завдання поруч"</string>
     <string name="action_upload">"Надіслати відповіді"</string>
     <string name="no_changes">"Ви залишили форму пустою"</string>
     <string name="close">"закрити"</string>
@@ -194,7 +196,7 @@
     <string name="crash_title">"О ні, StreetComplete «крашнувся» останнього разу!"</string>
     <string name="crash_compose_email">"Написати email"</string>
     <string name="no_email_client">"У вас немає встановленного email-клієнту."</string>
-    <string name="pref_title_keep_screen_on">"Не вимикати екран"</string>
+    <string name="pref_title_keep_screen_on">"Не заблоковувати екран"</string>
     <string name="download_server_error">"Помилка з'єднання під час пошуку завдань. Спробуйте пізніше."</string>
     <string name="upload_server_error">"Помилка з'єднання під час завантаження відповідей. Спробуйте пізніше."</string>
     <string name="quest_generic_hasFeature_yes">"Так"</string>
@@ -235,16 +237,22 @@
     <string name="quest_manySports_confirmation_specific">"Для цих видів спорту"</string>
     <string name="quest_manySports_confirmation_generic">"Загального призначення"</string>
     <string name="quest_sport_manySports_confirmation_title">"Ви обрали забагато видів спорту"</string>
-    <string name="quest_busStopShelter_name_title">"Чи має зупинка «%s» навіс?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopShelter_name_title">"Чи має зупинка %s навіс?"</string>
     <string name="quest_toiletsFee_title">"Цей туалет платний?"</string>
     <string name="quest_tactilePaving_title_bus">"Чи має ця зупинка тактильне покриття?"</string>
     <string name="quest_tactilePaving_title_crosswalk">"Чи має цей перехід тактильне покриття?"</string>
     <string name="quest_source_dialog_title">"Ви точно перевірили це на місці?"</string>
-    <string name="quest_tactilePaving_title_name_bus">"Чи має зупинка «%s» тактильне покриття?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_tactilePaving_title_name_bus">"Чи має зупинка %s тактильне покриття?"</string>
     <string name="quest_source_dialog_note">"Потрібно додавати лише ту інформацію, яку ви дізналися та дослідили самі."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Чи має ця велопарковка накриття (захищена від дощу)?"</string>
     <string name="dialog_session_dont_show_again">"Не показувати впродовж цієї сесії"</string>
-    <string name="quest_streetSurface_name_title">"Яке покриття має дорога «%s» тут?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_streetSurface_name_title">"Яке покриття має дорога %s тут?"</string>
     <string name="quest_maxspeed_title_short">"Який знак, що обмежує швидкість, встановлений на цій вулиці?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Це обмеження швидкості виглядає неправдоподібним."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Ви впевнені, що тут немає обмещення швидкості?"</string>
@@ -260,7 +268,9 @@
     <string name="quest_sport_paddle_tennis">"Падл-теніс"</string>
     <string name="quest_sport_gaelic_games">"Гельські ігри"</string>
     <string name="quest_sport_sepak_takraw">"Сепак-такро"</string>
-    <string name="quest_wheelchairAccess_name_title">"Чи доступний заклад «%s» для інвалідних візків?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_name_title">"Чи доступний заклад %s для інвалідних візків?"</string>
     <string name="quest_wheelchairAccess_limited">"Частково"</string>
     <string name="quest_bikeParkingCapacity_hint">"Зверніть увагу, що більшість звичайних стійок для велосипедів можна використовувати з обох боків."</string>
     <string name="quest_sport_roller_skating">"Катання на роликах"</string>
@@ -268,15 +278,27 @@
     <string name="quest_wheelchairAccess_subway_entrance_title">"Чи доступна ця станція метро для інвалідних візків?"</string>
     <string name="quest_wheelchairAccess_railway_station_title">"Чи доступна ця залізнична станція для інвалідних візків?"</string>
     <string name="quest_wheelchairAccess_location_title">"Чи доступне це місце для інвалідних візків?"</string>
-    <string name="quest_wheelchairAccess_bus_station_name_title">"Чи доступна зупинка «%s» для інвалідних візків?"</string>
-    <string name="quest_wheelchairAccess_subway_entrance_name_title">"Чи доступна станція метро «%s» для інвалідних візків?"</string>
-    <string name="quest_wheelchairAccess_railway_station_name_title">"Чи доступна залізнична станція «%s» для інвалідних візків?"</string>
-    <string name="quest_wheelchairAccess_location_name_title">"Чи доступне місце «%s» для інвалідних візків?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_bus_station_name_title">"Чи доступна зупинка %s для інвалідних візків?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_subway_entrance_name_title">"Чи доступна станція метро %s для інвалідних візків?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_railway_station_name_title">"Чи доступна залізнична станція %s для інвалідних візків?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_location_name_title">"Чи доступне місце %s для інвалідних візків?"</string>
     <string name="quest_wheelchairAccess_limited_description_business">"«Частково» значить, що для доступу треба зробити не більше кроку і що більшість кімнат усередині обладнані для інвалідних візків."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"«Частково» значить, що для доступу треба зробити не більше кроку."</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Скорочення в назві «%s»?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Скорочення в назві %s?"</string>
     <string name="quest_baby_changing_table_toilets_title">"Чи є в цьому туалеті дитячий столик?"</string>
-    <string name="quest_baby_changing_table_title">"Чи є дитячий столик у «%s»?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_baby_changing_table_title">"Чи є дитячий столик у %s?"</string>
     <string name="quest_recycling_type_title">"Якого типу цей об'єкт переробки?"</string>
     <string name="recycling_centre">"Центр"</string>
     <string name="overground_recycling_container">"Контейнер"</string>
@@ -355,7 +377,9 @@
     <string name="produce_walnuts">"Волоський горіх"</string>
     <string name="produce_sisal">"Сісал"</string>
     <string name="quest_way_lit_title">"Чи освітлена ця ділянка шляху?"</string>
-    <string name="quest_way_lit_named_title">"Чи освітлюється «%s»?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_way_lit_named_title">"Чи освітлюється %s?"</string>
     <string name="quest_way_lit_road_title">"Чи освітлена ця ділянка дороги?"</string>
     <string name="quest_way_lit_named_road_title">"Чи освітлена тут дорога «%s»?"</string>
     <string name="quest_way_lit_automatic">"Є датчики руху"</string>
@@ -389,7 +413,7 @@
     <string name="quest_address_answer_house_name">"Без номеру, але є назва"</string>
     <string name="quest_address_house_name_label">"Назва дому"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"поверхи у складі даху"</string>
-    <string name="quest_buildingLevels_levelsLabel2">"звичайні поверхи (не рахуючи дах)"</string>
+    <string name="quest_buildingLevels_levelsLabel2">"звичайні поверхи (не враховуючи дах)"</string>
     <string name="pref_title_authorized_summary">"Авторизовано"</string>
     <string name="quest_buildingLevels_answer_multipleLevels">"По-різному для різних частин будівлі"</string>
     <string name="quest_buildingLevels_answer_description">"У цьому випадку просто введіть значення найвищої частини будівлі."</string>
@@ -442,14 +466,16 @@
     <string name="quest_streetName_answer_noProperStreet_track2">"Це сільськогосподарська чи лісогосподарська дорога"</string>
     <string name="quest_streetName_answer_noName_noname">"Нічого з перерахованого, просто немає назви"</string>
     <string name="quest_wheelchairAccess_toilets_title">"Чи доступні ці туалети для інвалідних візків?"</string>
-    <string name="quest_wheelchairAccess_toilets_name_title">"Чи доступні туалети «%s» для інвалідних візків?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_toilets_name_title">"Чи доступні туалети %s для інвалідних візків?"</string>
     <string name="quest_wheelchairAccess_description_toilets">"Знак інвалідного візка, який може бути вказаний, якщо туалети доступні.
     «Частково» означає, що на інвалідному візку можна входити і використовувати туалети, але поручні та адаптований кран відсутні."</string>
     <string name="map_btn_create_note">"Створити нову нотатку"</string>
     <string name="create_new_note_unprecise">"Приблизьте для створення нотатки"</string>
     <string name="create_new_note_description">"Ви можете залишити нотатку, щоб інші учасники дізналися про проблему, яка має тут місце. Налаштуйте позицію примітки, переміщуючи мапу."</string>
     <string name="pref_title_quests_invalidation">"Очистити кеш квестів"</string>
-    <string name="pref_title_quests_invalidation_summary">"Якщо здається, що якість квести застаріли"</string>
+    <string name="pref_title_quests_invalidation_summary">"На випадок, коли здається, що якість квести застаріли"</string>
     <string name="invalidate_confirmation">"Очистити"</string>
     <string name="invalidation_dialog_message">"Очищення кешу призводить до повторного завантаження квестів. Кеш очищується автоматично через тиждень після загрузки квестів та одразу ж після ситуації, коли квест, на який ви відповіли, виявився розв'язаним кимось іншим."</string>
     <string name="quest_generic_looks_like_this">"Зазвичай виглядає так:"</string>
@@ -457,16 +483,22 @@
     <string name="quest_surface_generic_surface_confirmation">"Ви впевнені, що не можете визначити покриття точніше?"</string>
     <string name="quest_cycleway_title2">"Тут велодоріжка? Якого типу?"</string>
     <string name="quest_bridge_structure_title">"Яка структура цього моста?"</string>
-    <string name="quest_internet_access_name_title">"Який тип інтернет-зв'язку пропонує «%s»?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_internet_access_name_title">"Який тип інтернет-зв'язку пропонує %s?"</string>
     <string name="quest_internet_access_wlan">"Wi-Fi"</string>
     <string name="quest_internet_access_wired">"Дротовий (LAN)"</string>
     <string name="quest_internet_access_terminal">"Комп'ютер з інтернет-доступом"</string>
     <string name="quest_internet_access_no">"Без доступу"</string>
-    <string name="quest_busStopShelter_tram_name_title">"Чи має трамвайна зупинка «%s» накриття?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopShelter_tram_name_title">"Чи має трамвайна зупинка %s накриття?"</string>
     <string name="quest_busStopShelter_tram_title">"Чи має ця трамвайна зупинка накриття?"</string>
     <string name="quest_bench_backrest_title">"Чи мая ця лавка спинку?"</string>
     <string name="quest_bench_answer_picnic_table">"Це стіл для пікніка"</string>
-    <string name="quest_religion_for_place_of_worship_title">"Яку релігію сповідують у «%s»?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_religion_for_place_of_worship_title">"Яку релігію сповідують у %s?"</string>
     <string name="quest_religion_christian">"Християнство"</string>
     <string name="quest_religion_muslim">"Іслам"</string>
     <string name="quest_religion_hindu">"Індуїзм"</string>
@@ -490,7 +522,9 @@
     <string name="quest_parking_access_customers">"Тільки для клієнтів"</string>
     <string name="quest_streetName_pedestrian_title">"Як називається ця пішохідна вулиця?"</string>
     <string name="quest_streetSurface_square_title">"Яке покриття в цього скверу?"</string>
-    <string name="quest_streetSurface_square_name_title">"Яке покриття тут має сквер «%s»?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_streetSurface_square_name_title">"Яке покриття тут має сквер %s?"</string>
     <string name="quest_fee_answer_hours">"Залежить від часу та дня"</string>
     <string name="quest_fee_add_times">"Додати час"</string>
     <string name="quest_fee_only_at_hours">"Так, але тільки…"</string>

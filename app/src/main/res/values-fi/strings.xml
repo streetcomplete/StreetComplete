@@ -39,6 +39,8 @@
     <string name="quest_streetName_answer_noName_confirmation_description">"Joskus tienviitta on vain tien päässä. Huomioi myös ettei sivuteillä, jotka alkavat isommasta tiestä, ole välttämättä ylimääräisiä tienviittoja. Yleensä kaikilla teillä joiden varressa on taloja on myös nimi."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Jos nimi pystytään sanomaan ilman lyhennöstä, se myös kirjoitetaan ilman. Monet yleiset lyhenteet laajennetaan automaattisesti kirjoitettaessa, muttei kaikkia."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Ei lyhennettä"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_name_title">"Mitkä ovat paikan %s aukioloajat?"</string>
     <string name="quest_openingHours_start_time">"aukeamisaika"</string>
     <string name="quest_openingHours_end_time">"sulkemisaika"</string>
@@ -241,6 +243,8 @@ Vastauksesi täydentävät OpenStreetMapsiä omalla nimelläsi. Et tarvi sovellu
     <string name="quest_manySports_confirmation_specific">"Tarkalleen nämä"</string>
     <string name="quest_manySports_confirmation_generic">"Yleiskäyttöön"</string>
     <string name="quest_sport_manySports_confirmation_title">"Valitsit monia lajeja"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopShelter_name_title">"Onko bussipusäkillä %s katosta?"</string>
     <string name="quest_toiletsFee_title">"Vaativatko nämä käymälät maksun?"</string>
     <string name="quest_tactilePaving_title_bus">"Onko tällä linja-autopysäkillä kosketuspäällysteitä?"</string>
@@ -248,10 +252,13 @@ Vastauksesi täydentävät OpenStreetMapsiä omalla nimelläsi. Et tarvi sovellu
     <string name="quest_source_dialog_title">"Oletko varma että tarkistit tämän paikan päällä?"</string>
 
     <!-- Vaiko "kohopainettuja päällysteitä" ? -->
-    <string name="quest_tactilePaving_title_name_bus">"Onko linja-autopysäkillä \"%s\" kosketuspäällysteitä?"</string>
+    <!-- Fuzzy -->
+    <string name="quest_tactilePaving_title_name_bus">"Onko linja-autopysäkillä %s kosketuspäällysteitä?"</string>
     <string name="quest_source_dialog_note">"Vain kyselyssä löydetyt tiedot tulisi lisätä."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Onko tämä pyöräpysäkki katoksellinen (suojattu sateelta)?"</string>
     <string name="dialog_session_dont_show_again">"Älä enää näytä tälle istunnolle."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetSurface_name_title">"Millainen tien pinta täällä on? "</string>
     <string name="quest_maxspeed_title_short">"Mikä on nopeusrajoituksen osoittava merkki tällä kadulla?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Tämä nopeusrajoitus vaikuttaa epätodennäköiseltä."</string>
@@ -268,6 +275,8 @@ Vastauksesi täydentävät OpenStreetMapsiä omalla nimelläsi. Et tarvi sovellu
     <string name="quest_sport_paddle_tennis">"Pöytätennis"</string>
     <string name="quest_sport_gaelic_games">"Gaelilaiset urheilulajit"</string>
     <string name="quest_sport_sepak_takraw">"Sepak takraw"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_name_title">"Rullatuolilla kuljettava?"</string>
     <string name="quest_wheelchairAccess_limited">"Osittain"</string>
     <string name="quest_bikeParkingCapacity_hint">"Huomaa että teline on käytettävissä molemmin puolin polkupyörän pysäköimiseksi."</string>
@@ -276,15 +285,27 @@ Vastauksesi täydentävät OpenStreetMapsiä omalla nimelläsi. Et tarvi sovellu
     <string name="quest_wheelchairAccess_subway_entrance_title">"Voiko tästä maanalaisen sisäänkäynnistä mennä rullatuolilla?"</string>
     <string name="quest_wheelchairAccess_railway_station_title">"Onko tämä rautatieasema sopiva rullatuolilla kuljettavaksi?"</string>
     <string name="quest_wheelchairAccess_location_title">"Onko tämä sijainti kuljettavissa rullatuolilla?"</string>
-    <string name="quest_wheelchairAccess_bus_station_name_title">"Onko tämä linja-autoasema “%s” kuljettavissa rullatuolilla?"</string>
-    <string name="quest_wheelchairAccess_subway_entrance_name_title">"Voiko tästä maanalaisen sisäänkäynnistä “%s” mennä rullatuolilla?"</string>
-    <string name="quest_wheelchairAccess_railway_station_name_title">"Onko tämä rautatieasema “%s” sopiva rullatuolilla kuljettavaksi?"</string>
-    <string name="quest_wheelchairAccess_location_name_title">"Onko sijainti “%s” kuljettavissa rullatuolilla?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_bus_station_name_title">"Onko tämä linja-autoasema %s kuljettavissa rullatuolilla?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_subway_entrance_name_title">"Voiko tästä maanalaisen sisäänkäynnistä %s mennä rullatuolilla?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_railway_station_name_title">"Onko tämä rautatieasema %s sopiva rullatuolilla kuljettavaksi?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_location_name_title">"Onko sijainti %s kuljettavissa rullatuolilla?"</string>
     <string name="quest_wheelchairAccess_limited_description_business">"Osittain tarkoittaa että paikassa ei ole enempää kuin yhden askelman verran ylitettävää päästäksesi asioimaan liikkeessä ja että sisällä useimmat huoneet ovat kuljettavissa rullatuolilla. "</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"Osittain tarkoittaa että paikassa on vain yksi askelma päästäksesi sisälle."</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Lyhenne nimessä “%s”?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Lyhenne nimessä %s?"</string>
     <string name="quest_baby_changing_table_toilets_title">"Onko tässä käymälässä vaipanvaihtopöytä?"</string>
-    <string name="quest_baby_changing_table_title">"Löytyykö \"%s\" vaipanvaihtopöytä?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_baby_changing_table_title">"Löytyykö %s vaipanvaihtopöytä?"</string>
     <string name="quest_recycling_type_title">"Minkälainen kierrätyskeskus tämä on?"</string>
     <string name="recycling_centre">"Keskus"</string>
     <string name="overground_recycling_container">"Säiliö"</string>
@@ -363,7 +384,9 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
     <string name="produce_walnuts">"Saksanpähkinät"</string>
     <string name="produce_sisal">"Sisalia"</string>
     <string name="quest_way_lit_title">"Onko tämä tieosio valaistu?"</string>
-    <string name="quest_way_lit_named_title">"Onko tämä \"%s\" valaistu?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_way_lit_named_title">"Onko tämä %s valaistu?"</string>
     <string name="quest_way_lit_road_title">"Onko tämä tieosuus valaistu?"</string>
     <string name="quest_way_lit_named_road_title">"Onko \"%s\" tässä valaistu?"</string>
     <string name="quest_way_lit_automatic">"Käytössä on liiketunnistin"</string>
@@ -450,7 +473,9 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
     <string name="quest_streetName_answer_noProperStreet_track2">"Kyseessä on pelto- tai metsäautotie"</string>
     <string name="quest_streetName_answer_noName_noname">"Ei mikään näistä, sillä ei yksinkertaisesti ole nimeä"</string>
     <string name="quest_wheelchairAccess_toilets_title">"Ovatko vessat sopivia pyörätuolille?"</string>
-    <string name="quest_wheelchairAccess_toilets_name_title">"Ovatko vessat “%s” pyörätuolille sopivia?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_toilets_name_title">"Ovatko vessat %s pyörätuolille sopivia?"</string>
     <string name="quest_wheelchairAccess_description_toilets">"Tämmöinen merkki voi olla näkyvissä, jos vessaan pääsee pyörätuolilla.
      Kyseisessä WC:ssä ei kuitenkaan välttämättä ole apuvälineita, kuten apurautoja, laskettavaa allasta tms."</string>
     <string name="map_btn_create_note">"Luo uusi huomautus"</string>
@@ -465,16 +490,22 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
     <string name="quest_surface_generic_surface_confirmation">"Oletko varma, että et voi määritellä pintaa tarkemmin?"</string>
     <string name="quest_cycleway_title2">"Onko täällä pyörätietä? Minkä tyyppinen?"</string>
     <string name="quest_bridge_structure_title">"Mikä on tämän silan rakenne?"</string>
-    <string name="quest_internet_access_name_title">"Minkälaisen internetyhteyden \"%s\" tarjoaa?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_internet_access_name_title">"Minkälaisen internetyhteyden %s tarjoaa?"</string>
     <string name="quest_internet_access_wlan">"Wi-Fi"</string>
     <string name="quest_internet_access_wired">"Langallinen yhteys (LAN)"</string>
     <string name="quest_internet_access_terminal">"Tietokone internetyhteydellä"</string>
     <string name="quest_internet_access_no">"Ei yhteyttä"</string>
-    <string name="quest_busStopShelter_tram_name_title">"Onko pysäkillä \"%s\" katos?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopShelter_tram_name_title">"Onko pysäkillä %s katos?"</string>
     <string name="quest_busStopShelter_tram_title">"Onko tällä pysäkillä katos?"</string>
     <string name="quest_bench_backrest_title">"Onko tällä penkillä selkänoja?"</string>
     <string name="quest_bench_answer_picnic_table">"Se on piknik-pöytä"</string>
-    <string name="quest_religion_for_place_of_worship_title">"Mitä uskontoa tässä “%s” harjoitetaan?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_religion_for_place_of_worship_title">"Mitä uskontoa tässä %s harjoitetaan?"</string>
     <string name="quest_religion_christian">"Kristinusko"</string>
     <string name="quest_religion_muslim">"Islam"</string>
     <string name="quest_religion_hindu">"Hindulaisuus"</string>

@@ -35,6 +35,8 @@
     <string name="quest_streetName_answer_noName_confirmation_description">"Nganjëherë shenja e rrugës është vetëm në një fund të rrugës. Gjithashtu, vini re se nuk mund të ketë shenja rruge shtesë për rrugët anësore që i përkasin një rruge më të madhe. Zakonisht, çdo rrugë me shtëpi ka një emër."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Nëse emri mund të shkruhet pa shkurtim, atëherë duhet të zgjerohet. Shumë shkurtime të zakonshme zgjerohen automatikisht gjersa shtypni, por ndoshta jo të gjitha."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Nuk ka shkurtesë"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_name_title">"Me çfarë orari punon %s?"</string>
     <string name="quest_openingHours_start_time">"koha e hapjes"</string>
     <string name="quest_openingHours_end_time">"koha e mbylljes"</string>
@@ -234,18 +236,24 @@ Informacioni që futni shtohet direkt në OpenStreetMap në emrin tuaj, pa nevoj
     <string name="quest_manySports_confirmation_specific">"Veçanërisht këto"</string>
     <string name="quest_manySports_confirmation_generic">"Përdorim i Përgjithshëm"</string>
     <string name="quest_sport_manySports_confirmation_title">"Keni zgjedhur shumë sporte"</string>
-    <string name="quest_busStopShelter_name_title">"A ka ndalesa e autobusit \"%s\" mbulesë?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopShelter_name_title">"A ka ndalesa e autobusit %s mbulesë?"</string>
     <string name="quest_toiletsFee_title">"A kërkojnë këto toalete pagesë?"</string>
     <string name="quest_tactilePaving_title_bus">"A ka kjo ndalesë e autobusit shtresë taktile?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"A ka ky kalim këmbësorësh shtresë taktile?"</string>
     <string name="quest_source_dialog_title">"A jeni i sigurt që e keni konfirmuar këtë në vend?"</string>
-    <string name="quest_tactilePaving_title_name_bus">"A ka ndalesa e autobusit \"%s\" shtresë taktile?
+
+    <!-- Fuzzy -->
+    <string name="quest_tactilePaving_title_name_bus">"A ka ndalesa e autobusit %s shtresë taktile?
 "</string>
     <string name="quest_source_dialog_note">"Vetëm informacioni që është gjetur në vështrim duhet të futet."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"A është ky parking për biçikleta i mbuluar (i mbrojtur nga shiu)?"</string>
     <string name="dialog_session_dont_show_again">"Mos e trego më për këtë sesion"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetSurface_name_title">"Çfarë sipërfaqe ka rruga \"%\" këtu?"</string>
     <string name="quest_maxspeed_title_short">"Cili është kufizimi i shpejtësisë për këtë rrugë?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Ky kufizim i shpejtësisë duket i pamundur."</string>
@@ -261,7 +269,9 @@ Informacioni që futni shtohet direkt në OpenStreetMap në emrin tuaj, pa nevoj
     <string name="quest_sport_paddle_tennis">"Pedël tenis"</string>
     <string name="quest_sport_gaelic_games">"Lojra gaelike"</string>
     <string name="quest_sport_sepak_takraw">"Sepak tekraw"</string>
-    <string name="quest_wheelchairAccess_name_title">"A është \"%s\" i qasshëm me karrocë?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_name_title">"A është %s i qasshëm me karrocë?"</string>
     <string name="quest_wheelchairAccess_limited">"Pjesërisht"</string>
     <string name="quest_bikeParkingCapacity_hint">"Vini re se shumica e stendave normale mund të përdoren nga të dyja anët për të parkuar secilën biçikletë."</string>
     <string name="quest_sport_roller_skating">"Roller Skating"</string>
@@ -269,15 +279,27 @@ Informacioni që futni shtohet direkt në OpenStreetMap në emrin tuaj, pa nevoj
     <string name="quest_wheelchairAccess_subway_entrance_title">"A është kjo hyrje e metros e qasshme me karrocë?"</string>
     <string name="quest_wheelchairAccess_railway_station_title">"A është ky stacion hekurudhor i qasshëm me karrocë?"</string>
     <string name="quest_wheelchairAccess_location_title">"A është kjo vendndodhje e qasshme me karrocë?"</string>
-    <string name="quest_wheelchairAccess_bus_station_name_title">"A është stacioni i autobusit \"%s\" e qasshme me karrocë?"</string>
-    <string name="quest_wheelchairAccess_subway_entrance_name_title">"A është hyrja e metros \"%s\" e qasshme me karrocë?"</string>
-    <string name="quest_wheelchairAccess_railway_station_name_title">"A është stacioni hekurudhor \"%s\" e qasshme me karrocë?"</string>
-    <string name="quest_wheelchairAccess_location_name_title">"A është lokacioni \"%s\" i qasshëm me karrocë?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_bus_station_name_title">"A është stacioni i autobusit %s e qasshme me karrocë?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_subway_entrance_name_title">"A është hyrja e metros %s e qasshme me karrocë?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_railway_station_name_title">"A është stacioni hekurudhor %s e qasshme me karrocë?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_location_name_title">"A është lokacioni %s i qasshëm me karrocë?"</string>
     <string name="quest_wheelchairAccess_limited_description_business">"Pjesërisht do të thotë se nuk ka më shumë se një hap të vetëm për të hyrë në biznes dhe se shumica e dhomave brenda janë të qasshme me karrocë."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"Pjesërisht do të thotë se nuk ka më shumë se një hap për të hyrë në të."</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Shkurtim në emër \"%s\"?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Shkurtim në emër %s?"</string>
     <string name="quest_baby_changing_table_toilets_title">"A ka ky tualet një tavolinë për të ndërruar foshnjën?"</string>
-    <string name="quest_baby_changing_table_title">"A ka \"%s\" një tavolinë për të ndërruar foshnjën?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_baby_changing_table_title">"A ka %s një tavolinë për të ndërruar foshnjën?"</string>
     <string name="quest_recycling_type_title">"Çfarë lloji i objektit të riciklimit është ky?"</string>
     <string name="recycling_centre">"Qendër"</string>
     <string name="overground_recycling_container">"Kontejner"</string>
@@ -358,7 +380,9 @@ Përndryshe, mund të shkarkoni një tastierë tjetër në dyqanin e aplikacione
 
     <!-- Fuzzy -->
     <string name="quest_way_lit_title">"A është e ndriçuar kjo pjesë e rrugës?"</string>
-    <string name="quest_way_lit_named_title">"A është \"%s\" i ndriçuar këtu?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_way_lit_named_title">"A është %s i ndriçuar këtu?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_way_lit_road_title">"A është kjo pjesë e rrugës e ndriçuar?"</string>

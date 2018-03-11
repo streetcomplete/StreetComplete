@@ -35,6 +35,8 @@
     <string name="quest_streetName_answer_noName_confirmation_description">"De vegades, el senyal només es troba en un extrem del carrer. També, tingueu present que potser no hi ha senyals addicionals per a costats de carrer que pertanyen a altres carrers més grans. Habitualment, qualsevol carrer amb cases té un nom."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Si el nom es pot escriure sense cap abreviatures, aleshores s'expandirà. Moltes abreviatures comuns s'expandeixen automàticament en escriure, però potser no totes."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Sense abreviatures"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_name_title">"Quin és l'horari d'obertura de: %s?"</string>
     <string name="quest_openingHours_start_time">"hora d'obertura"</string>
     <string name="quest_openingHours_end_time">"hora de tancament"</string>
@@ -234,18 +236,24 @@ Aleshores, la informació que introdueixes s'afegeix directament a l'OpenStreetM
     <string name="quest_manySports_confirmation_specific">"Per a aquests en concret"</string>
     <string name="quest_manySports_confirmation_generic">"Ús general"</string>
     <string name="quest_sport_manySports_confirmation_title">"Heu seleccionat massa esports"</string>
-    <string name="quest_busStopShelter_name_title">"La parada de bus «%s» té marquesina?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopShelter_name_title">"La parada de bus %s té marquesina?"</string>
     <string name="quest_toiletsFee_title">"Cal pagar per l'ús dels serveis?"</string>
     <string name="quest_tactilePaving_title_bus">"Aquesta parada d'autobús té paviment tàctil?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"Aquest pas de vianants té paviment tàctil als dos costats?"</string>
     <string name="quest_source_dialog_title">"Esteu segur que heu comprovat això presencialment?"</string>
-    <string name="quest_tactilePaving_title_name_bus">"Aquesta parada d'autobús «%s» té paviment tàctil?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_tactilePaving_title_name_bus">"Aquesta parada d'autobús %s té paviment tàctil?"</string>
     <string name="quest_source_dialog_note">"Només hauríeu d'entrar la informació recollida en expedició de camp"</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Aquest pàrquing de bicis és cobert (protegit de la pluja)?"</string>
     <string name="dialog_session_dont_show_again">"No ho mostris més durant aquesta sessió"</string>
-    <string name="quest_streetSurface_name_title">"Quina superfície té la carretera \"%s\" aquí?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_streetSurface_name_title">"Quina superfície té la carretera %s aquí?"</string>
     <string name="quest_maxspeed_title_short">"Quin límit de velocitat té aquesta via?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Aquest límit no sembla versemblant."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Esteu segur que no hi ha indicat cap límit?"</string>
@@ -262,7 +270,9 @@ Si no hi ha cap senya en tot el carrer que s'apliqui en l'àrea realçada, s'apl
     <string name="quest_sport_paddle_tennis">"Pàdel"</string>
     <string name="quest_sport_gaelic_games">"Jocs gaèlics"</string>
     <string name="quest_sport_sepak_takraw">"Voleibol de puntada de peu"</string>
-    <string name="quest_wheelchairAccess_name_title">"Es pot accedir a «%s» amb cadira de rodes?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_name_title">"Es pot accedir a %s amb cadira de rodes?"</string>
     <string name="quest_wheelchairAccess_limited">"Parcialment"</string>
     <string name="quest_bikeParkingCapacity_hint">"Tingueu en compte que la majoria dels aparcaments normals es poden utilitzar des dels dos costats per aparcar cada bicicleta."</string>
     <string name="quest_sport_roller_skating">"Patinatge sobre rodes"</string>
@@ -270,14 +280,26 @@ Si no hi ha cap senya en tot el carrer que s'apliqui en l'àrea realçada, s'apl
     <string name="quest_wheelchairAccess_subway_entrance_title">"Es pot accedir en cadira de rodes a aquesta entrada de metro?"</string>
     <string name="quest_wheelchairAccess_railway_station_title">"Es pot accedir en cadira de rodes a aquesta estació de tren?"</string>
     <string name="quest_wheelchairAccess_location_title">"Es pot accedir en cadira de rodes a aquesta ubicació?"</string>
-    <string name="quest_wheelchairAccess_bus_station_name_title">"La estació de bus \"%s\" és accessible amb cadira de rodes?"</string>
-    <string name="quest_wheelchairAccess_subway_entrance_name_title">"La entrada de metro \"%s\" és accessible amb cadira de rodes?"</string>
-    <string name="quest_wheelchairAccess_railway_station_name_title">"La estació de tren \"%s\" és accessible amb cadira de rodes?"</string>
-    <string name="quest_wheelchairAccess_location_name_title">"La ubicació \"%s\" és accessible amb cadira de rodes?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_bus_station_name_title">"La estació de bus %s és accessible amb cadira de rodes?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_subway_entrance_name_title">"La entrada de metro %s és accessible amb cadira de rodes?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_railway_station_name_title">"La estació de tren %s és accessible amb cadira de rodes?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_location_name_title">"La ubicació %s és accessible amb cadira de rodes?"</string>
     <string name="quest_wheelchairAccess_limited_description_business">"Parcialment significa que no hi ha més d'un esglaó per accedir al negoci i que la major part d'estances interiors són accessibles amb cadira de rodes."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"Parcialment significa que no hi ha més d'un esglaó per accedir-hi."</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Abreviatura amb el nom \"%s\"?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Abreviatura amb el nom %s?"</string>
     <string name="quest_baby_changing_table_toilets_title">"Aquest vàter té un canviador per a nens?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_baby_changing_table_title">"Té un canviador per a nens?"</string>
     <string name="quest_recycling_type_title">"Quin tipus de cubell de reciclatge és aquest?"</string>
     <string name="recycling_centre">"Centre"</string>
@@ -357,7 +379,9 @@ En cas contrari, podeu baixar un altre teclat a la botiga d'aplicacions. Els tec
     <string name="produce_walnuts">"Nous"</string>
     <string name="produce_sisal">"Sisal"</string>
     <string name="quest_way_lit_title">"Està il·luminat aquest tram de via?"</string>
-    <string name="quest_way_lit_named_title">"És \"%s\" il·luminat aquí?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_way_lit_named_title">"És %s il·luminat aquí?"</string>
     <string name="quest_way_lit_road_title">"Està il·luminat aquest tram de carretera?"</string>
     <string name="quest_way_lit_named_road_title">"És il·luminada la carretera \"%s\" aquí?"</string>
     <string name="quest_way_lit_automatic">"Utilitza detector de moviment"</string>
@@ -442,7 +466,9 @@ En cas contrari, podeu baixar un altre teclat a la botiga d'aplicacions. Els tec
     <string name="quest_streetName_answer_noName_question">"Per què no té nom?"</string>
     <string name="quest_streetName_answer_noName_noname">"Cap dels anteriors, simplement, no té nom"</string>
     <string name="quest_wheelchairAccess_toilets_title">"Aquests serveis són accessibles amb cadira de rodes?"</string>
-    <string name="quest_wheelchairAccess_toilets_name_title">"Els serveis de «%s» són accessibles amb cadira de rodes?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_toilets_name_title">"Els serveis de %s són accessibles amb cadira de rodes?"</string>
     <string name="map_btn_create_note">"Crea una nota"</string>
     <string name="create_new_note_unprecise">"Apropeu-vos per a crear una nota"</string>
     <string name="create_new_note_description">"Podeu deixar una nota per a ajudar altres col·laboradors a saber d'un afer aquí. Ajusteu la posició de la nota movent-la al mapa:"</string>
@@ -454,15 +480,21 @@ En cas contrari, podeu baixar un altre teclat a la botiga d'aplicacions. Els tec
     <string name="quest_surface_generic_surface_confirmation">"Esteu segur que no podeu concretar el tipus de superfície?"</string>
     <string name="quest_cycleway_title2">"Hi ha cap carril bici aquí? De quin tipus?"</string>
     <string name="quest_bridge_structure_title">"Quin estructura té aquest pont?"</string>
-    <string name="quest_internet_access_name_title">"Quin tipus de connexió a Internet ofereix «%s»?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_internet_access_name_title">"Quin tipus de connexió a Internet ofereix %s?"</string>
     <string name="quest_internet_access_wlan">"Wi-Fi"</string>
     <string name="quest_internet_access_wired">"Cable (LAN)"</string>
     <string name="quest_internet_access_terminal">"Ordinador amb accés a Internet"</string>
     <string name="quest_internet_access_no">"Sense connexió"</string>
-    <string name="quest_busStopShelter_tram_name_title">"La parada de tramvia «%s» té marquesina?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopShelter_tram_name_title">"La parada de tramvia %s té marquesina?"</string>
     <string name="quest_busStopShelter_tram_title">"Aquesta parada de tramvia té marquesina?"</string>
     <string name="quest_bench_answer_picnic_table">"És una taula de pícnic"</string>
-    <string name="quest_religion_for_place_of_worship_title">"Quina religió es practica a «%s»?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_religion_for_place_of_worship_title">"Quina religió es practica a %s?"</string>
     <string name="quest_religion_christian">"cristianisme"</string>
     <string name="quest_religion_muslim">"islamisme"</string>
     <string name="quest_religion_hindu">"hinduisme"</string>

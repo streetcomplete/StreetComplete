@@ -37,6 +37,8 @@
     <string name="quest_streetName_answer_noName_confirmation_description">"Spesso il segnale stradale è solamente ad un'estremità della strada. Inoltre potrebbero esserci segnali stradali aggiuntivi per vie laterali che appartengono a una strada più grande. Di solito, qualsiasi strada con case ha un nome."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Se il nome può essere scritto senza un'abbreviazione, allora dovrebbe essere scritto per intero. Molte abbreviazioni comuni vengono automaticamente rese per esteso durante la digitazione."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Nessuna abbreviazione"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_name_title">"Quali sono gli orari di apertura di %s?"</string>
     <string name="quest_openingHours_start_time">"orario di apertura"</string>
     <string name="quest_openingHours_end_time">"orario di chiusura"</string>
@@ -231,16 +233,22 @@ Le informazioni inserite vengono aggiunte direttamente su OpenStreetMap a tuo no
     <string name="quest_manySports_confirmation_specific">"Nello specifico questi"</string>
     <string name="quest_manySports_confirmation_generic">"Utilizzo generico"</string>
     <string name="quest_sport_manySports_confirmation_title">"Hai selezionato molti sport"</string>
-    <string name="quest_busStopShelter_name_title">"La fermata del autobus \"%s\" ha una pensilina?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopShelter_name_title">"La fermata del autobus %s ha una pensilina?"</string>
     <string name="quest_toiletsFee_title">"Questi servizi igienici sono a pagamento?"</string>
     <string name="quest_tactilePaving_title_bus">"Questa fermata del autobus ha un pavimento tattile?"</string>
     <string name="quest_tactilePaving_title_crosswalk">"Questo attraversamento pedonale ha un'indicazione tattile su entrambi i lati?"</string>
     <string name="quest_source_dialog_title">"Hai controllato questa cosa sul posto?"</string>
-    <string name="quest_tactilePaving_title_name_bus">"La fermata del autobus \"%s\" ha un pavimento tattile?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_tactilePaving_title_name_bus">"La fermata del autobus %s ha un pavimento tattile?"</string>
     <string name="quest_source_dialog_note">"Sarebbe più opportuno inserire dati verficati sul posto."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Questo parcheggio per biciclette é al coperto (protetto dalla pioggia)?"</string>
     <string name="dialog_session_dont_show_again">"Non mostrarlo piú per questa sessione"</string>
-    <string name="quest_streetSurface_name_title">"Che tipo di pavimentazione ha la strada \"%s\"?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_streetSurface_name_title">"Che tipo di pavimentazione ha la strada %s?"</string>
     <string name="quest_maxspeed_title_short">"Cosa indica il cartello del limite di velocità per questa strada?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Questo limite di velocità sembra improbabile"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Si è certi che non vi sia un limite?"</string>
@@ -257,7 +265,9 @@ Se non ci sono segni lungo tutta la strada che si applicano alla sezione evidenz
     <string name="quest_sport_paddle_tennis">"Paddle tennis"</string>
     <string name="quest_sport_gaelic_games">"Giochi irlandesi"</string>
     <string name="quest_sport_sepak_takraw">"Sepak Takraw"</string>
-    <string name="quest_wheelchairAccess_name_title">"“%s” è accessibile con la sedia a rotelle?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_name_title">"%s è accessibile con la sedia a rotelle?"</string>
     <string name="quest_wheelchairAccess_limited">"Parzialmente"</string>
     <string name="quest_bikeParkingCapacity_hint">"Normalmente gli stalli delle bici possono essere usati da entrambi i lati per parcheggiare la propria bicicletta."</string>
     <string name="quest_sport_roller_skating">"Pattinaggio a rotelle"</string>
@@ -265,15 +275,27 @@ Se non ci sono segni lungo tutta la strada che si applicano alla sezione evidenz
     <string name="quest_wheelchairAccess_subway_entrance_title">"Questa entrata della metro è accessibile con la sedia a rotelle?"</string>
     <string name="quest_wheelchairAccess_railway_station_title">"Questa stazione dei treni è accessibile con la sedia a rotelle?"</string>
     <string name="quest_wheelchairAccess_location_title">"Questo luogo è accessibile con la sedia a rotelle?"</string>
-    <string name="quest_wheelchairAccess_bus_station_name_title">"La stazione degli autobus “%s” è accessibile con la sedia a rotelle?"</string>
-    <string name="quest_wheelchairAccess_subway_entrance_name_title">"L'entrata della metro “%s” è accessibile con la sedia a rotelle?"</string>
-    <string name="quest_wheelchairAccess_railway_station_name_title">"La stazione dei treni “%s”è accessibile con la sedia a rotelle?"</string>
-    <string name="quest_wheelchairAccess_location_name_title">"Il luogo “%s” è accessibile con la sedia a rotelle?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_bus_station_name_title">"La stazione degli autobus %s è accessibile con la sedia a rotelle?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_subway_entrance_name_title">"L'entrata della metro %s è accessibile con la sedia a rotelle?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_railway_station_name_title">"La stazione dei treni %sè accessibile con la sedia a rotelle?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_location_name_title">"Il luogo %s è accessibile con la sedia a rotelle?"</string>
     <string name="quest_wheelchairAccess_limited_description_business">"\"Parzialmente\" significa che c'è non più di un gradino per entrare nel negozio e che si può accedere con la sedia a rotelle alla maggior parte delle stanze."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"\"Parzialmente\" significa che c'è al più un gradino per accedervi."</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Il nome \"%s\" contiene un'abbreviazione?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Il nome %s contiene un'abbreviazione?"</string>
     <string name="quest_baby_changing_table_toilets_title">"Questo bagno ha un fasciatoio?"</string>
-    <string name="quest_baby_changing_table_title">"\"%s\" ha un fasciatoio?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_baby_changing_table_title">"%s ha un fasciatoio?"</string>
     <string name="quest_recycling_type_title">"Che tipo di differenziata si applica?"</string>
     <string name="recycling_centre">"Centro"</string>
     <string name="overground_recycling_container">"Contenitore"</string>
@@ -352,7 +374,9 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="produce_walnuts">"Noci"</string>
     <string name="produce_sisal">"Agave sisalana"</string>
     <string name="quest_way_lit_title">"Questo tratto di strada è illuminato?"</string>
-    <string name="quest_way_lit_named_title">"\"%s\" è una strada illuminata?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_way_lit_named_title">"%s è una strada illuminata?"</string>
     <string name="quest_way_lit_road_title">"Questo tratto di strada è illuminato?"</string>
     <string name="quest_way_lit_named_road_title">"La strada \"%s\" è illuminata in questo punto?"</string>
     <string name="quest_way_lit_automatic">"fa uso di sensore di movimento"</string>
@@ -441,7 +465,9 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_streetName_answer_noProperStreet_track2">"È una strada agricola o forestale"</string>
     <string name="quest_streetName_answer_noName_noname">"Nessuna delle precedenti, semplicemente non ha un nome"</string>
     <string name="quest_wheelchairAccess_toilets_title">"Questi servizi igienici sono accessibili con la sedia a rotelle?"</string>
-    <string name="quest_wheelchairAccess_toilets_name_title">"I servizi igienici “%s” sono accessibili con la sedia a rotelle?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_toilets_name_title">"I servizi igienici %s sono accessibili con la sedia a rotelle?"</string>
     <string name="quest_wheelchairAccess_description_toilets">"Se i servizi igienici sono accessibili con la sedia a rotelle potrebbe esserci un simbolo come questo.
     \"Parzialmente\" significa che con la sedia a rotelle si può entrare e utilizzare i servizi igienici, ma non ci sono barre d'appoggio o sanitari per disabili."</string>
     <string name="map_btn_create_note">"Crea una nuova nota"</string>
@@ -456,16 +482,22 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_surface_generic_surface_confirmation">"Sei sicuro di non poter determinare la superficie con precisione?"</string>
     <string name="quest_cycleway_title2">"C'è una pista ciclabile qui? Che tipo?"</string>
     <string name="quest_bridge_structure_title">"Quale è la struttura di questo ponte?"</string>
-    <string name="quest_internet_access_name_title">"Che tipo di connessione internet offre \"%s\""</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_internet_access_name_title">"Che tipo di connessione internet offre %s"</string>
     <string name="quest_internet_access_wlan">"Wi-Fi"</string>
     <string name="quest_internet_access_wired">"Cavo (LAN)"</string>
     <string name="quest_internet_access_terminal">"Computer con accesso ad internet"</string>
     <string name="quest_internet_access_no">"Nessuna connessione"</string>
-    <string name="quest_busStopShelter_tram_name_title">"La fermata del tram \"%s\" ha una pensilina?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopShelter_tram_name_title">"La fermata del tram %s ha una pensilina?"</string>
     <string name="quest_busStopShelter_tram_title">"Questa fermata del tram ha una pensilina?"</string>
     <string name="quest_bench_backrest_title">"Questa panchina ha lo schienale?"</string>
     <string name="quest_bench_answer_picnic_table">"è un tavolo da picnic"</string>
-    <string name="quest_religion_for_place_of_worship_title">"Quale religione è praticata a \"%s\"?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_religion_for_place_of_worship_title">"Quale religione è praticata a %s?"</string>
     <string name="quest_religion_christian">"Cristianesimo"</string>
     <string name="quest_religion_muslim">"Islamismo"</string>
     <string name="quest_religion_hindu">"Induismo"</string>
@@ -491,7 +523,9 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_parking_access_customers">"È solo per i clienti"</string>
     <string name="quest_streetName_pedestrian_title">"Qual è il nome di questa strada pedonale?"</string>
     <string name="quest_streetSurface_square_title">"Che tipo di pavimentazione questa piazza?"</string>
-    <string name="quest_streetSurface_square_name_title">"Che tipo di pavimentazione ha la piazza \"%s\"?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_streetSurface_square_name_title">"Che tipo di pavimentazione ha la piazza %s?"</string>
     <string name="quest_fee_answer_hours">"Dipende da giorno e ora"</string>
     <string name="quest_fee_add_times">"Aggiungi orari"</string>
     <string name="quest_fee_only_at_hours">"Sì, ma solo..."</string>
