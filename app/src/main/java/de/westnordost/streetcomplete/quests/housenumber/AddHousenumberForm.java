@@ -56,11 +56,7 @@ public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 			setLayout(R.layout.quest_housenumber);
 		}
 
-		addOtherAnswer(R.string.quest_address_answer_house_name, () ->
-		{
-			isHousename = true;
-			setLayout(R.layout.quest_housename);
-		});
+		addOtherAnswers();
 
 		return view;
 	}
@@ -78,6 +74,23 @@ public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 		{
 			isHousename = inState.getBoolean(IS_HOUSENAME);
 		}
+	}
+
+	private void addOtherAnswers()
+	{
+		addOtherAnswer(R.string.quest_address_answer_house_name, () ->
+		{
+			isHousename = true;
+			setLayout(R.layout.quest_housename);
+		});
+
+		addOtherAnswer(R.string.quest_housenumber_multiple_numbers, () ->
+		{
+			new AlertDialogBuilder(getActivity())
+				.setMessage(R.string.quest_housenumber_multiple_numbers_description)
+				.setPositiveButton(android.R.string.ok, null)
+				.show();
+		});
 	}
 
 	@Override protected void onClickOk()
