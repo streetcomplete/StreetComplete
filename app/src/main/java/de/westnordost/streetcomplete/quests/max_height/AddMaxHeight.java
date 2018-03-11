@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.quests.max_height;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.util.Log;
 
 import java.util.Map;
 
@@ -46,7 +45,6 @@ public class AddMaxHeight implements OsmElementQuestType
 
 	@Override public boolean download(BoundingBox bbox, MapDataWithGeometryHandler handler)
 	{
-		Log.d("Query", getOverpassQuery(bbox));
 		return overpassServer.getAndHandleQuota(getOverpassQuery(bbox), handler);
 	}
 

@@ -225,6 +225,7 @@ public class AddMaxHeightForm extends AbstractQuestFormAnswerFragment
 
 	@Override public boolean hasChanges()
 	{
+		//TODO: look at the output of this log
 		Log.d("hasChanges", String.valueOf(getHeightFromInput().isEmpty()));
 		return !getHeightFromInput().isEmpty();
 	}
