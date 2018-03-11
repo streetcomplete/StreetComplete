@@ -35,6 +35,8 @@
     <string name="quest_streetName_answer_noName_confirmation_description">"有時候街道標誌只會立在街道的底端。而且注意，屬於大條街道的分支街道也許不會有多餘的標示。路上有房子的街道經常會有名稱。"</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"假如此名稱可以不縮寫拼出，所以它應該要可被展開。許多常見的縮寫，在你輸入的時候會自動被展開，但並非全部。"</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"無縮寫"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_name_title">"%s 的營業時間是？"</string>
     <string name="quest_openingHours_start_time">"開放時間"</string>
     <string name="quest_openingHours_end_time">"關閉時間"</string>
@@ -234,20 +236,24 @@
     <string name="quest_manySports_confirmation_specific">"專屬場地"</string>
     <string name="quest_manySports_confirmation_generic">"通用場地"</string>
     <string name="quest_sport_manySports_confirmation_title">"你選取了多種運動"</string>
-    <string name="quest_busStopShelter_name_title">"巴士站\"%s\"有沒有上蓋？"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopShelter_name_title">"巴士站%s有沒有上蓋？"</string>
     <string name="quest_toiletsFee_title">"使用這間廁所是否需要費用？"</string>
     <string name="quest_tactilePaving_title_bus">"這座公車站是否有盲人磚？"</string>
 
     <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"這個人行穿越道是否有盲人指引？"</string>
     <string name="quest_source_dialog_title">"你確定你在現場探察確認？"</string>
-    <string name="quest_tactilePaving_title_name_bus">"公車站 \"%s\" 是否有盲人磚？"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_tactilePaving_title_name_bus">"公車站 %s 是否有盲人磚？"</string>
     <string name="quest_source_dialog_note">"只有調查發現的資訊才需要輸入。"</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"這座單車停車場是否有遮蔽 (防止淋雨)？"</string>
     <string name="dialog_session_dont_show_again">"這次不再顯示"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetSurface_name_title">"道路 \"%s\" 的鋪面為何？"</string>
+    <string name="quest_streetSurface_name_title">"道路 %s 的鋪面為何？"</string>
     <string name="quest_maxspeed_title_short">"這條街的道路速限牌顯示多少？"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"這個速限看來怪怪的。"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"你確定沒有速限限制嗎？"</string>
@@ -264,7 +270,9 @@
     <string name="quest_sport_paddle_tennis">"槳網球"</string>
     <string name="quest_sport_gaelic_games">"蓋爾式運動"</string>
     <string name="quest_sport_sepak_takraw">"藤球"</string>
-    <string name="quest_wheelchairAccess_name_title">"“%s” 是否是輪椅通行無處？"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_name_title">"%s 是否是輪椅通行無處？"</string>
     <string name="quest_wheelchairAccess_limited">"部分可通行"</string>
     <string name="quest_bikeParkingCapacity_hint">"注意單車架兩邊都能夠停放一台單車。"</string>
     <string name="quest_sport_roller_skating">"滾輪溜冰"</string>
@@ -272,15 +280,27 @@
     <string name="quest_wheelchairAccess_subway_entrance_title">"這個捷運站出口是否輪椅通行無阻？"</string>
     <string name="quest_wheelchairAccess_railway_station_title">"這座車站是否輪椅通行無阻？"</string>
     <string name="quest_wheelchairAccess_location_title">"這個地方是否輪椅通行無阻？"</string>
-    <string name="quest_wheelchairAccess_bus_station_name_title">"“%s” 客運站是否輪椅通行無阻？"</string>
-    <string name="quest_wheelchairAccess_subway_entrance_name_title">"“%s” 捷運出口是否輪椅通行無阻？"</string>
-    <string name="quest_wheelchairAccess_railway_station_name_title">"“%s” 車站是否輪椅通行無阻？"</string>
-    <string name="quest_wheelchairAccess_location_name_title">"“%s”  是否輪椅通行無阻？"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_bus_station_name_title">"%s 客運站是否輪椅通行無阻？"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_subway_entrance_name_title">"%s 捷運出口是否輪椅通行無阻？"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_railway_station_name_title">"%s 車站是否輪椅通行無阻？"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_location_name_title">"%s  是否輪椅通行無阻？"</string>
     <string name="quest_wheelchairAccess_limited_description_business">"部分可通行意味沒有多過一個步驟，就可以進到場所裡，並且裡面的房間是輪椅可通行的狀況。"</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"部分可通行意味沒有多過一個步驟，就可以進到場所裡。"</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"\"%s\" 的簡稱縮寫是？"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"%s 的簡稱縮寫是？"</string>
     <string name="quest_baby_changing_table_toilets_title">"這個洗手間有設置嬰兒用尿布檯嗎？"</string>
-    <string name="quest_baby_changing_table_title">"\"%s\" 有設置嬰兒用尿布檯嗎？"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_baby_changing_table_title">"%s 有設置嬰兒用尿布檯嗎？"</string>
     <string name="quest_recycling_type_title">"這是哪一種資源回收設施？"</string>
     <string name="recycling_centre">"資源回收中心"</string>
     <string name="overground_recycling_container">"資源回收箱"</string>
@@ -365,7 +385,9 @@
 
     <!-- Fuzzy -->
     <string name="quest_way_lit_title">"這段路徑有照明設施嗎？"</string>
-    <string name="quest_way_lit_named_title">"\"%s\" 有照明設施嗎？"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_way_lit_named_title">"%s 有照明設施嗎？"</string>
 
     <!-- Fuzzy -->
     <string name="quest_way_lit_road_title">"這段道路有照明設施嗎？"</string>
@@ -454,6 +476,8 @@
     <string name="quest_streetName_answer_noProperStreet_track2">"這是一條產業道路"</string>
     <string name="quest_streetName_answer_noName_noname">"上述答案都不是，只是沒有名字"</string>
     <string name="quest_wheelchairAccess_toilets_title">"這是無障礙廁所嗎？"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_toilets_name_title">"「%s」是一個無障礙廁所嗎？"</string>
     <string name="quest_wheelchairAccess_description_toilets">"如果有無障礙廁所，則會看到無障礙指示牌。
 通常意味輪椅可以進入並使用該間廁所，但沒有手桿或是改良的洗手台。"</string>
@@ -469,16 +493,22 @@
     <string name="quest_surface_generic_surface_confirmation">"你確定你無法精確描述路面的材質嗎？"</string>
     <string name="quest_cycleway_title2">"這裡有單車道嗎？那種類型？"</string>
     <string name="quest_bridge_structure_title">"這座橋樑的結構是？"</string>
-    <string name="quest_internet_access_name_title">"\"%s\" 提供那種網路連線呢？"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_internet_access_name_title">"%s 提供那種網路連線呢？"</string>
     <string name="quest_internet_access_wlan">"Wi-Fi"</string>
     <string name="quest_internet_access_wired">"有線 (LAN)"</string>
     <string name="quest_internet_access_terminal">"有網路連線的電腦"</string>
     <string name="quest_internet_access_no">"不提供網路"</string>
-    <string name="quest_busStopShelter_tram_name_title">"路面電車站 \"%s\" 是否有遮蔭？"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopShelter_tram_name_title">"路面電車站 %s 是否有遮蔭？"</string>
     <string name="quest_busStopShelter_tram_title">"這座路面電車站是否有遮蔭？"</string>
     <string name="quest_bench_backrest_title">"長椅是否有靠背？"</string>
     <string name="quest_bench_answer_picnic_table">"這是野餐桌"</string>
-    <string name="quest_religion_for_place_of_worship_title">"“%s” 是那個宗教？"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_religion_for_place_of_worship_title">"%s 是那個宗教？"</string>
     <string name="quest_religion_christian">"基督教"</string>
     <string name="quest_religion_muslim">"伊斯蘭教"</string>
     <string name="quest_religion_hindu">"印度教"</string>

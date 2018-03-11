@@ -36,6 +36,8 @@
     <string name="quest_streetName_answer_noName_confirmation_description">"Bazen sokak levhası yalnızca sokağın bir ucundadır. Ayrıca, daha büyük bir sokağa ait yan sokaklar için ilave sokak işaretleri olmayabileceğini unutmayın. Genellikle evlerin bulunduğu sokakların bir adı vardır."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"İsim kısaltma olmaksızın hecele ediliyorsa, genişletilmelidir. Birçok yaygın kısaltma siz yazarken otomatik olarak genişletilir, ancak muhtemelen hepsi değil."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Kısaltma yok"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_name_title">"%s saatinin çalışma saatleri nedir?"</string>
     <string name="quest_openingHours_start_time">"Açılış zamanı"</string>
     <string name="quest_openingHours_end_time">"Kapanış saati"</string>
@@ -236,18 +238,24 @@ Hiçbir e-posta istemcisi kurulu değil."</string>
     <string name="quest_manySports_confirmation_specific">"Özellikle bunlar"</string>
     <string name="quest_manySports_confirmation_generic">"Genel Amaç"</string>
     <string name="quest_sport_manySports_confirmation_title">"Birçok spor seçtiniz"</string>
-    <string name="quest_busStopShelter_name_title">"\"%s\" otobüs durağının üstü kapalı mı?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopShelter_name_title">"%s otobüs durağının üstü kapalı mı?"</string>
     <string name="quest_toiletsFee_title">"Bu tuvaletler ücret istiyor mu?"</string>
     <string name="quest_tactilePaving_title_bus">"Bu otobüs durağında dokunmatik kaplamalar var mı?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"Bu geçit dokunsal kaplamalara sahip mi?"</string>
     <string name="quest_source_dialog_title">"Bunu yerinde kontrol ettiğinden emin misin?"</string>
-    <string name="quest_tactilePaving_title_name_bus">"\"%s\" otobüs durağının dokunsal döşemeleri var mı?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_tactilePaving_title_name_bus">"%s otobüs durağının dokunsal döşemeleri var mı?"</string>
     <string name="quest_source_dialog_note">"Sadece bir inceleme ile bulunan bilgiler girilmelidir."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Bu bisiklet park yeri kapalı mı (yağmur korumalı)?"</string>
     <string name="dialog_session_dont_show_again">"Bu oturum için tekrar gösterme"</string>
-    <string name="quest_streetSurface_name_title">"\"%s\" yolunun yüzeyi nedir?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_streetSurface_name_title">"%s yolunun yüzeyi nedir?"</string>
     <string name="quest_maxspeed_title_short">"Bu sokak için hız limiti tabelasında ne yazıyor?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Bu hız limiti mantıksız gözüküyor."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Hiçbir hız limiti belirtilmediğine emin misiniz?"</string>
@@ -259,7 +267,9 @@ Hiçbir e-posta istemcisi kurulu değil."</string>
     <string name="quest_sport_softball">"Softball"</string>
     <string name="quest_sport_racquet">"Raketbol"</string>
     <string name="quest_sport_ice_skating">"Buz Pateni"</string>
-    <string name="quest_wheelchairAccess_name_title">"\"%s\" tekerlekli sandalye ile erişilebilir mi?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_name_title">"%s tekerlekli sandalye ile erişilebilir mi?"</string>
     <string name="quest_wheelchairAccess_limited">"Kısmen"</string>
     <string name="quest_bikeParkingCapacity_hint">"Çoğu normal standın, her iki taraftan da bisiklet park etmek için kullanılabileceğini unutmayın."</string>
     <string name="quest_sport_roller_skating">"Tekerlekli patenle kayma"</string>
@@ -267,13 +277,25 @@ Hiçbir e-posta istemcisi kurulu değil."</string>
     <string name="quest_wheelchairAccess_subway_entrance_title">"Bu metro girişi, tekerlekli sandalye ile erişilebilir mi?"</string>
     <string name="quest_wheelchairAccess_railway_station_title">"Bu demiryolu istasyonuna tekerlekli sandalyeye erişilebilir mi?"</string>
     <string name="quest_wheelchairAccess_location_title">"Bu yer tekerlekli sandalye ile erişilebilir mi?"</string>
-    <string name="quest_wheelchairAccess_bus_station_name_title">"\"%s\" otobüs durağı, terlekli sandalye ile erişilebilir mi?"</string>
-    <string name="quest_wheelchairAccess_subway_entrance_name_title">"\"%s\" metro girişi, tekerlekli sandalye ile erişilebilir mi?"</string>
-    <string name="quest_wheelchairAccess_railway_station_name_title">"\"%s\" tren istasyonu, tekerlekli sandalye ile erişilebilir mi?"</string>
-    <string name="quest_wheelchairAccess_location_name_title">"\"%s\" tekerlekli sandalye ile erişilebilir mi?"</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"\"%s\" isminin kısaltması nedir?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_bus_station_name_title">"%s otobüs durağı, terlekli sandalye ile erişilebilir mi?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_subway_entrance_name_title">"%s metro girişi, tekerlekli sandalye ile erişilebilir mi?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_railway_station_name_title">"%s tren istasyonu, tekerlekli sandalye ile erişilebilir mi?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_location_name_title">"%s tekerlekli sandalye ile erişilebilir mi?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"%s isminin kısaltması nedir?"</string>
     <string name="quest_baby_changing_table_toilets_title">"Bu tuvalette bebek bezi değiştirilebilir mi?"</string>
-    <string name="quest_baby_changing_table_title">"\"%s\" mekanında bebek bezi değiştirme imkanı var mı?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_baby_changing_table_title">"%s mekanında bebek bezi değiştirme imkanı var mı?"</string>
     <string name="quest_recycling_type_title">"Ne tür bir geridönüşüm tesisi?"</string>
     <string name="recycling_centre">"Merkez"</string>
     <string name="overground_recycling_container">"Konteyner"</string>

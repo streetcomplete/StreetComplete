@@ -37,6 +37,8 @@
     <string name="quest_streetName_answer_noName_confirmation_description">"Nogle gange er vejskiltet kun på den ene side af gaden. Bemærk også at der måske ikke er et ekstra vejskilt for sidegader der tilhører en større gade. For det meste har alle gader med huse et navn."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Hvis navnet kan skrives uden en forkortelse bør den det. Mange typiske forkortelser er udvidede automatisk mens to skriver, men ikke alle."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Ingen forkortelse"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_name_title">"Hvad er åbningstiderne for %s?"</string>
     <string name="quest_openingHours_start_time">"åbningstid"</string>
     <string name="quest_openingHours_end_time">"lukketid"</string>
@@ -242,7 +244,9 @@ Informationerne du skriver sendes direkte til OpenStreetMap i dit navn, uden du 
     <string name="quest_manySports_confirmation_specific">"Specifikt disse"</string>
     <string name="quest_manySports_confirmation_generic">"Generelt brug"</string>
     <string name="quest_sport_manySports_confirmation_title">"Du valgte mange sportsgrene"</string>
-    <string name="quest_busStopShelter_name_title">"Har busstoppestedet \"%s\" tag?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopShelter_name_title">"Har busstoppestedet %s tag?"</string>
     <string name="quest_toiletsFee_title">"Har disse toiletter entré?"</string>
 
     <!-- There may be a better word than "taktil" but it is correct to use. -->
@@ -251,11 +255,15 @@ Informationerne du skriver sendes direkte til OpenStreetMap i dit navn, uden du 
     <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"Har denne fodgængerovergang taktil markering?"</string>
     <string name="quest_source_dialog_title">"Er du sikker på at du har tjekket dette på stedet?"</string>
-    <string name="quest_tactilePaving_title_name_bus">"Har stoppestedet \"%s\" taktil markering?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_tactilePaving_title_name_bus">"Har stoppestedet %s taktil markering?"</string>
     <string name="quest_source_dialog_note">"Udelukkende information som blev fundet ved en undersøgelse bør indtastes."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Er denne cykelparkering dækket (beskyttet imod regn)?"</string>
     <string name="dialog_session_dont_show_again">"Vis ikke igen for denne session"</string>
-    <string name="quest_streetSurface_name_title">"Hvad overflade har vejen \"%s\" her?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_streetSurface_name_title">"Hvad overflade har vejen %s her?"</string>
     <string name="quest_maxspeed_title_short">"Hvad er fartgrænsen på denne vej?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Denne fartgrænse lyder urealistisk."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Er du sikker på at der ikke er specificeret en begrænsning?"</string>
@@ -270,7 +278,9 @@ Informationerne du skriver sendes direkte til OpenStreetMap i dit navn, uden du 
     <string name="quest_sport_paddle_tennis">"Padel tennis"</string>
     <string name="quest_sport_gaelic_games">"Gæliske spil"</string>
     <string name="quest_sport_sepak_takraw">"Sepak Takraw"</string>
-    <string name="quest_wheelchairAccess_name_title">"Er \"%s\" kørestolsvenlig?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_name_title">"Er %s kørestolsvenlig?"</string>
     <string name="quest_wheelchairAccess_limited">"Delvist"</string>
     <string name="quest_bikeParkingCapacity_hint">"Bemærk at de fleste normale stativer kan bruges fra begge sider."</string>
     <string name="quest_sport_roller_skating">"Rulleskøjter"</string>
@@ -278,15 +288,27 @@ Informationerne du skriver sendes direkte til OpenStreetMap i dit navn, uden du 
     <string name="quest_wheelchairAccess_subway_entrance_title">"Er denne undergrundsbane indgang kørestolsvenligt?"</string>
     <string name="quest_wheelchairAccess_railway_station_title">"Er denne togstation kørestolsvenligt?"</string>
     <string name="quest_wheelchairAccess_location_title">"Er denne lokation kørestolsvenligt?"</string>
-    <string name="quest_wheelchairAccess_bus_station_name_title">"Er busstationen \"%s\" kørestolsvenligt?"</string>
-    <string name="quest_wheelchairAccess_subway_entrance_name_title">"Er undergrundsbaneindgangen \"%s\" kørestolsvenligt?"</string>
-    <string name="quest_wheelchairAccess_railway_station_name_title">"Er togstationen \"%s\" kørestolsvenligt?"</string>
-    <string name="quest_wheelchairAccess_location_name_title">"Er lokationen \"%s\" kørestolsvenligt?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_bus_station_name_title">"Er busstationen %s kørestolsvenligt?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_subway_entrance_name_title">"Er undergrundsbaneindgangen %s kørestolsvenligt?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_railway_station_name_title">"Er togstationen %s kørestolsvenligt?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_location_name_title">"Er lokationen %s kørestolsvenligt?"</string>
     <string name="quest_wheelchairAccess_limited_description_business">"Delvist betyder at der er ikke mere end et enkelt trin for at komme til forretningen og at de fleste rum indenfor er kørestolsvenlige."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"Delvist betyder at der ikke er mere end et enkelt trin for at tilgå det."</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Forkortelse i navnet \"%s\"?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Forkortelse i navnet %s?"</string>
     <string name="quest_baby_changing_table_toilets_title">"Har dette toilet baby skiftebord?"</string>
-    <string name="quest_baby_changing_table_title">"Har \"%s\" et skiftebord til babyer?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_baby_changing_table_title">"Har %s et skiftebord til babyer?"</string>
     <string name="quest_recycling_type_title">"Hvilken type genanvendelsesfacilitet er dette?"</string>
     <string name="recycling_centre">"Center"</string>
     <string name="overground_recycling_container">"Container"</string>
@@ -369,7 +391,9 @@ Ellers kan du downloade et andet keyboard i Forretning. Populære keyboards der 
 
     <!-- Fuzzy -->
     <string name="quest_way_lit_title">"Er denne sektion af vejen belyst?"</string>
-    <string name="quest_way_lit_named_title">"Er \"%s\" belyst her?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_way_lit_named_title">"Er %s belyst her?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_way_lit_road_title">"Er denne sektion af vejen belyst?"</string>

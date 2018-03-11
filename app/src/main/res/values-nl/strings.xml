@@ -35,6 +35,8 @@
     <string name="quest_streetName_answer_noName_confirmation_description">"Soms staan straatnaambordjes alleen aan één eind van de straat. Merk ook op dat er soms geen extra bordjes geplaatst zijn bij zijstraten die bij de hoofdstraat behoren. Gewoonlijk heeft iedere straat met huizen een naam."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Zo mogelijk wordt een naam zonder afkortingen geschreven. Veel afkortingen worden automatisch voluit aangevuld terwijl je typt, maar waarschijnlijk niet alle."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Geen afkortingen"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_name_title">"Wat zijn de openingsuren van %s?"</string>
     <string name="quest_openingHours_start_time">"openingsuur"</string>
     <string name="quest_openingHours_end_time">"sluitingstijd"</string>
@@ -242,20 +244,24 @@ De informatie die je ingeeft wordt meteen toegevoegd aan OpenStreetMap in jouw n
     <string name="quest_manySports_confirmation_specific">"Specifiek deze?"</string>
     <string name="quest_manySports_confirmation_generic">"Algemeen gebruik"</string>
     <string name="quest_sport_manySports_confirmation_title">"Je hebt veel sporten geselecteerd."</string>
-    <string name="quest_busStopShelter_name_title">"Heeft de bushalte „%s“ een bushokje?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopShelter_name_title">"Heeft de bushalte %s een bushokje?"</string>
     <string name="quest_toiletsFee_title">"Moet je voor deze toiletten betalen?"</string>
     <string name="quest_tactilePaving_title_bus">"Heeft deze bushalte geleide lijnen / markeringen voor blinden en slechtzienden?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"Heeft deze oversteekplaats geleide lijnen / markeringen voor blinden en slechtzienden?"</string>
     <string name="quest_source_dialog_title">"Heb je dit echt ter plaatse gecontroleerd?"</string>
-    <string name="quest_tactilePaving_title_name_bus">"Heeft de bushalte \"%s\" geleidestrepen / markeringen voor blinden en slechtzienden?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_tactilePaving_title_name_bus">"Heeft de bushalte %s geleidestrepen / markeringen voor blinden en slechtzienden?"</string>
     <string name="quest_source_dialog_note">"Alleen antwoorden op een vraag moeten worden ingevoerd."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Is deze fietsenstalling overdekt?"</string>
     <string name="dialog_session_dont_show_again">"Laat dit niet meer zien voor deze sessie."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetSurface_name_title">"Welk wegdek heeft de weg \"%s\" hier?"</string>
+    <string name="quest_streetSurface_name_title">"Welk wegdek heeft de weg %s hier?"</string>
     <string name="quest_maxspeed_title_short">"Wat is de maximum snelheid volgens het bord in deze straat?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Deze maximum snelheid lijkt onwaarschijnlijk."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Weet je zeker dat er geen limiet is aangegeven?"</string>
@@ -271,7 +277,9 @@ De informatie die je ingeeft wordt meteen toegevoegd aan OpenStreetMap in jouw n
     <string name="quest_sport_paddle_tennis">"Paddle Tennis"</string>
     <string name="quest_sport_gaelic_games">"Gaelic Games"</string>
     <string name="quest_sport_sepak_takraw">"Sepak Takraw"</string>
-    <string name="quest_wheelchairAccess_name_title">"Is “%s” rolstoeltoegankelijk?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_name_title">"Is %s rolstoeltoegankelijk?"</string>
     <string name="quest_wheelchairAccess_limited">"Gedeeltelijk"</string>
     <string name="quest_bikeParkingCapacity_hint">"Let op dat bij dit type fietsenstallingen langs beide kanten fietsen geparkeerd kunnen worden"</string>
     <string name="quest_sport_roller_skating">"Rolschaatsen"</string>
@@ -279,15 +287,27 @@ De informatie die je ingeeft wordt meteen toegevoegd aan OpenStreetMap in jouw n
     <string name="quest_wheelchairAccess_subway_entrance_title">"Is deze metro-ingang rolsteltoegankelijk?"</string>
     <string name="quest_wheelchairAccess_railway_station_title">"Is dit treinstation rolstoel toegankelijk? "</string>
     <string name="quest_wheelchairAccess_location_title">"Is deze locatie rolstoel toegankelijk?"</string>
-    <string name="quest_wheelchairAccess_bus_station_name_title">"Is het busstation “%s” rolstoel toegankelijk?"</string>
-    <string name="quest_wheelchairAccess_subway_entrance_name_title">"Is de metro-ingang “%s” rolstoel toegankelijk?"</string>
-    <string name="quest_wheelchairAccess_railway_station_name_title">"Is het treinstation “%s” rolstoel toegankelijk?"</string>
-    <string name="quest_wheelchairAccess_location_name_title">"Is de locatie “%s” rolstoel toegankelijk?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_bus_station_name_title">"Is het busstation %s rolstoel toegankelijk?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_subway_entrance_name_title">"Is de metro-ingang %s rolstoel toegankelijk?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_railway_station_name_title">"Is het treinstation %s rolstoel toegankelijk?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_location_name_title">"Is de locatie %s rolstoel toegankelijk?"</string>
     <string name="quest_wheelchairAccess_limited_description_business">"\"Gedeeltelijk\" is wanneer er niet meer dan één tree opstap is om het gebouw binnen tegaan en dat de meeste ruimtes binnen rolstoel toegankelijk zijn. "</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"\"Gedeeltelijk\" betekent wanneer er maar 1 stap moet genomen worden om naar binnen te gaan."</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Afkorting in de naam “%s”?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Afkorting in de naam %s?"</string>
     <string name="quest_baby_changing_table_toilets_title">"Heeft dit toilet een baby verschoontafel?"</string>
-    <string name="quest_baby_changing_table_title">"Heeft \"%s\" een baby verschoontafel?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_baby_changing_table_title">"Heeft %s een baby verschoontafel?"</string>
     <string name="quest_recycling_type_title">"Welke soort recyclage is dit?"</string>
     <string name="recycling_centre">"Recyclage inleverpunt"</string>
     <string name="overground_recycling_container">"Container bovengronds"</string>
@@ -368,7 +388,9 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire keybor
 
     <!-- Fuzzy -->
     <string name="quest_way_lit_title">"Is dit deel van de weg verlicht?"</string>
-    <string name="quest_way_lit_named_title">"Is dit deel van de weg \"%s\" verlicht?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_way_lit_named_title">"Is dit deel van de weg %s verlicht?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_way_lit_road_title">"Is dit deel van de straat verlicht?"</string>
@@ -457,7 +479,9 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire keybor
     <string name="quest_streetName_answer_noProperStreet_track2">"Het is een agrarisch of een bosweg"</string>
     <string name="quest_streetName_answer_noName_noname">"Geen van bovenstaande, het heft gewoon geen naam"</string>
     <string name="quest_wheelchairAccess_toilets_title">"Zijn deze toiletten toegankelijk voor rolstoelen?"</string>
-    <string name="quest_wheelchairAccess_toilets_name_title">"Zijn de toiletten “%s” rolstoeltoegankelijk?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_toilets_name_title">"Zijn de toiletten %s rolstoeltoegankelijk?"</string>
     <string name="quest_wheelchairAccess_description_toilets">"Een rolstoel-pictogram zoals deze kan zichtbaar zijn als de toiletten toegankelijk zijn voor rolstoelgebruikers. Gedeeltelijk (partially) betekent dat dat een rolstoel binnen kan rijden en de toilet kan gebruiken, maar dat er geen extra aanpassingen zijn (zoals een rail, verlaagde lavabo, ...)"</string>
     <string name="map_btn_create_note">"Maak een nieuwe notitie"</string>
     <string name="create_new_note_unprecise">"Zoom verder in om een notitie te maken"</string>
@@ -471,16 +495,22 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire keybor
     <string name="quest_surface_generic_surface_confirmation">"Ben je er zeker van dat je geen specifiekere wegbedekking kunt aanduiden?"</string>
     <string name="quest_cycleway_title2">"Is er hier een fietspad? Welke soort?"</string>
     <string name="quest_bridge_structure_title">"Wat voor structuur heeft deze brug?"</string>
-    <string name="quest_internet_access_name_title">"Wat voor internet biedt \"%s\" aan?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_internet_access_name_title">"Wat voor internet biedt %s aan?"</string>
     <string name="quest_internet_access_wlan">"Wi-Fi"</string>
     <string name="quest_internet_access_wired">"Met kabel (LAN)"</string>
     <string name="quest_internet_access_terminal">"Computer met toegang tot het internet"</string>
     <string name="quest_internet_access_no">"Geen toegang tot internet."</string>
-    <string name="quest_busStopShelter_tram_name_title">"Heeft tramhalte \"%s\" een schuilhokje?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopShelter_tram_name_title">"Heeft tramhalte %s een schuilhokje?"</string>
     <string name="quest_busStopShelter_tram_title">"Heeft deze tramhalte een schuilhokje?"</string>
     <string name="quest_bench_backrest_title">"Heeft deze bank een rugleuning?"</string>
     <string name="quest_bench_answer_picnic_table">"Het is een picknicktafel."</string>
-    <string name="quest_religion_for_place_of_worship_title">"Welke religie wordt beoefend in \"%s\"?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_religion_for_place_of_worship_title">"Welke religie wordt beoefend in %s?"</string>
     <string name="quest_religion_christian">"Het Christendom"</string>
     <string name="quest_religion_muslim">"De Islam"</string>
     <string name="quest_religion_hindu">"Het Hindoeïsme"</string>

@@ -44,7 +44,9 @@
     <string name="quest_streetName_answer_noName_confirmation_description">"Parfois le panneau ne se trouve qu'à une seule extrémité de la rue. Les ruelles adjacentes aux grandes rues n'ont souvent pas de panneaux supplémentaires. Habituellement, une rue qui a une maison porte un nom."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Si vous pouvez écrire le nom sans abréviation, faites-le. Les abréviations communes sont développées automatiquement pendant que vous tapez, mais peut-être pas toutes."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Pas d'abréviation"</string>
-    <string name="quest_openingHours_name_title">"Quelles sont les horaires d’ouverture de « %s » ?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_openingHours_name_title">"Quelles sont les horaires d’ouverture de %s ?"</string>
     <string name="quest_openingHours_start_time">"heure d'ouverture"</string>
     <string name="quest_openingHours_end_time">"heure de fermeture"</string>
     <string name="quest_openingHours_add_months">"Ajouter des mois"</string>
@@ -216,9 +218,9 @@ Pour afficher la carte, les tuiles vectorielles sont extraites du &lt;a href=\"h
     <string name="store_listing_short_description">"Application d'arpentage OpenStreetMap"</string>
     <string name="store_listing_full_description">"Aidez à améliorer OpenStreetMap avec StreetComplete !
 
-Cette application aide à trouver des données incomplètes ou améliorables autour de vous et les affiches sur la carte sous forme de marqueurs. Chacune de ces entrées se résout en répondant à des questions simples.
+Cette application trouve des données incomplètes ou à améliorer autour de vous et les affiche sur la carte sous forme de marqueurs. Chacun d'eux peut être résolu en répondant à des questions simples.
 
-L'information que vous entrez est directement ajoutée à OpenStreetMap sous votre nom, sans la nécessité d'utiliser un autre éditeur."</string>
+L'information que vous entrez est ajoutée directement à OpenStreetMap en votre nom, sans devoir utiliser un autre éditeur."</string>
     <string name="quest_name_answer_noName">"Il n'a pas de nom"</string>
     <string name="quest_name_answer_noName_confirmation_title">"Vraiment aucun nom ?"</string>
     <string name="quest_name_noName_confirmation_positive">"Oui, sans nom"</string>
@@ -270,18 +272,22 @@ L'information que vous entrez est directement ajoutée à OpenStreetMap sous vot
     <string name="quest_sport_manySports_confirmation_title">"Vous avez sélectionné plusieurs sports"</string>
 
     <!-- plus simple et plus court : L'arrêt de bus %s est-il abrité ? -->
-    <string name="quest_busStopShelter_name_title">"L’arrêt de bus « %s » a-t-il un abri ?"</string>
+    <!-- Fuzzy -->
+    <string name="quest_busStopShelter_name_title">"L’arrêt de bus %s a-t-il un abri ?"</string>
     <string name="quest_toiletsFee_title">"Ces toilettes sont-elles payantes ?"</string>
     <string name="quest_tactilePaving_title_bus">"Cet arrêt de bus a-t-il une surface podotactile ?"</string>
     <string name="quest_tactilePaving_title_crosswalk">"Ce passage piéton a-t-il une surface podotactile ?"</string>
     <string name="quest_source_dialog_title">"Confirmez-vous avoir vérifié cela sur place ?"</string>
-    <string name="quest_tactilePaving_title_name_bus">"L’arrêt de bus « %s » a-t-il une surface podotactile ?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_tactilePaving_title_name_bus">"L’arrêt de bus %s a-t-il une surface podotactile ?"</string>
     <string name="quest_source_dialog_note">"Seules les informations relevées sur place peuvent être ajoutées."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Ce parking à vélo est-il abrité (protégé de la pluie) ?"</string>
     <string name="dialog_session_dont_show_again">"Ne plus afficher pour cette session"</string>
 
     <!-- Je remets "revêtement" car la "surface d'une route" ça ne veut rien dire. -->
-    <string name="quest_streetSurface_name_title">"Quel est le revêtement de la route « %s » ?"</string>
+    <!-- Fuzzy -->
+    <string name="quest_streetSurface_name_title">"Quel est le revêtement de la route %s ?"</string>
     <string name="quest_maxspeed_title_short">"Quel est le panneau de vitesse maximale pour cette route ?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"La limitation de vitesse paraît étrange."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Êtes-vous sûr(e) de l'absence de panneau de limitation de vitesse ?"</string>
@@ -298,7 +304,9 @@ S'il n'y a aucun panneau tout le long de la route mise en surbrillance, les limi
     <string name="quest_sport_paddle_tennis">"Paddle-tennis"</string>
     <string name="quest_sport_gaelic_games">"Jeux gaéliques"</string>
     <string name="quest_sport_sepak_takraw">"Sepak Takraw"</string>
-    <string name="quest_wheelchairAccess_name_title">"Est-ce que l'élément « %s » est accessible aux personnes à mobilité réduite ?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_name_title">"Est-ce que l’élément %s est accessible aux personnes à mobilité réduite ?"</string>
     <string name="quest_wheelchairAccess_limited">"Partiellement"</string>
     <string name="quest_bikeParkingCapacity_hint">"NB : la plupart des arceaux peuvent accueillir un vélo de chaque côté."</string>
     <string name="quest_sport_roller_skating">"Roller"</string>
@@ -306,15 +314,27 @@ S'il n'y a aucun panneau tout le long de la route mise en surbrillance, les limi
     <string name="quest_wheelchairAccess_subway_entrance_title">"Cette station de métro est-elle accessible en fauteuil roulant ?"</string>
     <string name="quest_wheelchairAccess_railway_station_title">"Cette gare est-elle accessible en fauteuil roulant ?"</string>
     <string name="quest_wheelchairAccess_location_title">"Ce lieu est-il accessible en fauteuil roulant ?"</string>
-    <string name="quest_wheelchairAccess_bus_station_name_title">"L'arrêt de bus « %s » est-il accessible en fauteuil roulant ?"</string>
-    <string name="quest_wheelchairAccess_subway_entrance_name_title">"La station de métro « %s » est-elle accessible en fauteuil roulant ?"</string>
-    <string name="quest_wheelchairAccess_railway_station_name_title">"La gare « %s » est-elle accessible en fauteuil roulant ?"</string>
-    <string name="quest_wheelchairAccess_location_name_title">"Le lieu « %s » est-il accessible en fauteuil roulant ?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_bus_station_name_title">"L’arrêt de bus %s est-il accessible en fauteuil roulant ?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_subway_entrance_name_title">"La station de métro %s est-elle accessible en fauteuil roulant ?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_railway_station_name_title">"La gare %s est-elle accessible en fauteuil roulant ?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_location_name_title">"Le lieu %s est-il accessible en fauteuil roulant ?"</string>
     <string name="quest_wheelchairAccess_limited_description_business">"Partiellement signifie qu'il n'y a pas plus d'une marche d'escalier afin d'accéder au magasin et que la plupart des pièces sont accessibles en fauteuil roulant."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"Partiellement signifie qu'il n'y a pas plus d'une marche d'escalier pour y accéder."</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Abréviation du nom \"%s\" ?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Abréviation du nom %s ?"</string>
     <string name="quest_baby_changing_table_toilets_title">"Est-ce que ces toilettes disposent d'une table à langer ?"</string>
-    <string name="quest_baby_changing_table_title">"Est-ce que \"%s\" possède une table à langer ?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_baby_changing_table_title">"Est-ce que %s possède une table à langer ?"</string>
     <string name="quest_recycling_type_title">"Quel type d'installation de recyclage est-ce ?"</string>
     <string name="recycling_centre">"Déchetterie"</string>
     <string name="overground_recycling_container">"Conteneur de recyclage"</string>
@@ -395,7 +415,9 @@ Sinon, vous pouvez télécharger un autre clavier dans la boutique d'application
 
     <!-- Fuzzy -->
     <string name="quest_way_lit_title">"Cette section de voie est-elle éclairée ?"</string>
-    <string name="quest_way_lit_named_title">"La voie « %s » est-elle éclairée ?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_way_lit_named_title">"La voie %s est-elle éclairée ?"</string>
     <string name="quest_way_lit_road_title">"Cette section de route est-elle éclairée ?"</string>
     <string name="quest_way_lit_named_road_title">"La route « %s » est-elle éclairée ?"</string>
     <string name="quest_way_lit_automatic">"Cela utilise la détection de mouvement"</string>
@@ -489,7 +511,9 @@ Sinon, vous pouvez télécharger un autre clavier dans la boutique d'application
     <string name="quest_streetName_answer_noProperStreet_track2">"C'est un chemin agricole ou forestier"</string>
     <string name="quest_streetName_answer_noName_noname">"C'est une voie qui n'est pas nommée "</string>
     <string name="quest_wheelchairAccess_toilets_title">"Est ce que ces toilettes sont accessible en fauteuil? "</string>
-    <string name="quest_wheelchairAccess_toilets_name_title">"Est ce que les toilettes \"%s\" sont accessibles en fauteuil?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_toilets_name_title">"Est ce que les toilettes %s sont accessibles en fauteuil?"</string>
     <string name="quest_wheelchairAccess_description_toilets">"Un symbole de fauteuil roulant comme celui-ci pourrait être visible si les toilettes sont accessibles.
 Partiellement signifie qu'un fauteuil roulant peut entrer et utiliser les toilettes, mais qu'il n'y a aucune main courante ou bassin à main adapté."</string>
     <string name="map_btn_create_note">"Ajouter une note"</string>
@@ -507,16 +531,22 @@ Partiellement signifie qu'un fauteuil roulant peut entrer et utiliser les toilet
     <!-- ou « type de structure » ? -->
     <!-- Fuzzy -->
     <string name="quest_bridge_structure_title">"Quelle est la structure de ce pont ?"</string>
-    <string name="quest_internet_access_name_title">"Quel type de connexion internet \"%s\" offre-t-il ?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_internet_access_name_title">"Quel type de connexion internet %s offre-t-il ?"</string>
     <string name="quest_internet_access_wlan">"Wi-Fi"</string>
     <string name="quest_internet_access_wired">"Filaire"</string>
     <string name="quest_internet_access_terminal">"Ordinateur avec accès internet"</string>
     <string name="quest_internet_access_no">"Pas de connexion"</string>
-    <string name="quest_busStopShelter_tram_name_title">"L'arrêt de tram \"%s\" a-t-il un abris ?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopShelter_tram_name_title">"L’arrêt de tram %s a-t-il un abris ?"</string>
     <string name="quest_busStopShelter_tram_title">"Cet arrêt de tram a-t-il un abris ?"</string>
     <string name="quest_bench_backrest_title">"Ce banc a-t-il un dossier ?"</string>
     <string name="quest_bench_answer_picnic_table">"C'est une table à pique-nique"</string>
-    <string name="quest_religion_for_place_of_worship_title">"Quelle religion est pratiquée à \"%s\" ?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_religion_for_place_of_worship_title">"Quelle religion est pratiquée à %s ?"</string>
     <string name="quest_religion_christian">"Christianisme"</string>
     <string name="quest_religion_muslim">"Islam"</string>
     <string name="quest_religion_hindu">"Hindouisme"</string>
@@ -537,7 +567,7 @@ Partiellement signifie qu'un fauteuil roulant peut entrer et utiliser les toilet
 
     <!-- Un peu long. -->
     <!-- Fuzzy -->
-    <string name="quest_parking_access_title">"L'utilisation de ce parking est-il restreint à certains usagers ?"</string>
+    <string name="quest_parking_access_title">"L’utilisation de ce parking est-il restreint à certains usagers ?"</string>
 
     <!-- Traduction non littérale. Il faudrait connaître le contexte. -->
     <string name="quest_parking_access_private">"Privé"</string>

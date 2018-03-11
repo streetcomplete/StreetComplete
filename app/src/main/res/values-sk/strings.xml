@@ -35,7 +35,9 @@
     <string name="quest_streetName_answer_noName_confirmation_description">"Ceduľa s názvom ulice niekedy môžu byť iba na jednom konci ulice. Pamätajte, že bočné ulice patriace k väčšej ulici nemusia mať ceduľu s menom. Ulice s domami sú obvykle pomenované."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Ak je možné napísať názov bez skratky, tak by mal byť rozpísany. Veľa bežných skratiek bude rozpísaných počas písania, ale asi nie všetky."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Neobsahuje skratku"</string>
-    <string name="quest_openingHours_name_title">"Aké má \"%s\" otváracie hodiny?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_openingHours_name_title">"Aké má %s otváracie hodiny?"</string>
     <string name="quest_openingHours_start_time">"čas otvorenia"</string>
     <string name="quest_openingHours_end_time">"čas zatvorenia"</string>
     <string name="quest_openingHours_add_months">"Pridať mesiace"</string>
@@ -235,16 +237,22 @@ Zadané informácie sa potom priamo pridávajú do OpenStreetMap vo vašom mene 
     <string name="quest_manySports_confirmation_specific">"Výhradne tieto"</string>
     <string name="quest_manySports_confirmation_generic">"Všeobecné použitie"</string>
     <string name="quest_sport_manySports_confirmation_title">"Vybrali ste viacero športov"</string>
-    <string name="quest_busStopShelter_name_title">"Má autobusová zastávka \"%s\" prístrešok?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopShelter_name_title">"Má autobusová zastávka %s prístrešok?"</string>
     <string name="quest_toiletsFee_title">"Požadujú na tejto toalete poplatok?"</string>
     <string name="quest_tactilePaving_title_bus">"Má táto autobusová zastávka hmatovú dlažbu?"</string>
     <string name="quest_tactilePaving_title_crosswalk">"Má tento prechod hmatovú dlažbu na oboch stranách?"</string>
     <string name="quest_source_dialog_title">"Naozaj ste to overili na mieste?"</string>
-    <string name="quest_tactilePaving_title_name_bus">"Má autobusová zastávka \"%s\" hmatovú dlažbu?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_tactilePaving_title_name_bus">"Má autobusová zastávka %s hmatovú dlažbu?"</string>
     <string name="quest_source_dialog_note">"Mali by byť pridávané iba informácie získané behom prieskumu."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Je toto parkovisko pre bicykle kryté (chránené pred dažďom)?"</string>
     <string name="dialog_session_dont_show_again">"Nezobrazovať znova pre túto reláciu"</string>
-    <string name="quest_streetSurface_name_title">"Aký povrch má v tomto mieste cesta \"%s\"?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_streetSurface_name_title">"Aký povrch má v tomto mieste cesta %s?"</string>
     <string name="quest_maxspeed_title_short">"Aká je maximálna povolená rýchlosť na tejto ceste?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Toto obmedzenie rýchlosti vyzerá nepravdepodobne."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Naozaj tu nie je značka obmedzujúca rýchlosť?"</string>
@@ -258,7 +266,9 @@ Zadané informácie sa potom priamo pridávajú do OpenStreetMap vo vašom mene 
     <string name="quest_sport_paddle_tennis">"Pádlový tenis"</string>
     <string name="quest_sport_gaelic_games">"Galské hry"</string>
     <string name="quest_sport_sepak_takraw">"Sepak Takraw"</string>
-    <string name="quest_wheelchairAccess_name_title">"Má „%s“ bezbariérový prístup?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_name_title">"Má %s bezbariérový prístup?"</string>
     <string name="quest_wheelchairAccess_limited">"Čiastočne"</string>
     <string name="quest_bikeParkingCapacity_hint">"Nezabudnite, že pri väčšine bežných stojanov sa dajú na parkovanie bicyklov použiť obe strany."</string>
     <string name="quest_sport_roller_skating">"Kolieskové korčuľovanie"</string>
@@ -266,15 +276,27 @@ Zadané informácie sa potom priamo pridávajú do OpenStreetMap vo vašom mene 
     <string name="quest_wheelchairAccess_subway_entrance_title">"Má tento vstup do metra bezbariérový prístup?"</string>
     <string name="quest_wheelchairAccess_railway_station_title">"Má táto železničná stanica bezbariérový prístup?"</string>
     <string name="quest_wheelchairAccess_location_title">"Má toto miesto bezbariérový prístup?"</string>
-    <string name="quest_wheelchairAccess_bus_station_name_title">"Má autobusová zastávka „%s“ bezbariérový prístup?"</string>
-    <string name="quest_wheelchairAccess_subway_entrance_name_title">"Má vstup do metra „%s“ bezbariérový prístup?"</string>
-    <string name="quest_wheelchairAccess_railway_station_name_title">"Má železničná stanica „%s“ bezbariérový prístup?"</string>
-    <string name="quest_wheelchairAccess_location_name_title">"Má miesto „%s“ bezbariérový prístup?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_bus_station_name_title">"Má autobusová zastávka %s bezbariérový prístup?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_subway_entrance_name_title">"Má vstup do metra %s bezbariérový prístup?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_railway_station_name_title">"Má železničná stanica %s bezbariérový prístup?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_location_name_title">"Má miesto %s bezbariérový prístup?"</string>
     <string name="quest_wheelchairAccess_limited_description_business">"Čiastočne znamená, že pri vchode nie je viac ako jeden schod a väčšina izieb vo vnútri je bezbariérová."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"Čiastočne znamená, že tu nie je viac ako jeden schod brániaci prístupu."</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Je v názve “%s” skratka?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Je v názve %s skratka?"</string>
     <string name="quest_baby_changing_table_toilets_title">"Má táto toaleta prebaľovací stolík?"</string>
-    <string name="quest_baby_changing_table_title">"Má \"%s\" prebaľovací stolík?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_baby_changing_table_title">"Má %s prebaľovací stolík?"</string>
     <string name="quest_recycling_type_title">"Aký je toto typ recyklačného zariadenia?"</string>
     <string name="recycling_centre">"Zberný dvor"</string>
     <string name="overground_recycling_container">"Kontajner"</string>
@@ -352,7 +374,9 @@ Zadané informácie sa potom priamo pridávajú do OpenStreetMap vo vašom mene 
     <string name="produce_walnuts">"Vlašské orechy"</string>
     <string name="produce_sisal">"Sisal"</string>
     <string name="quest_way_lit_title">"Je tento úsek cesty osvetlený?"</string>
-    <string name="quest_way_lit_named_title">"Je tu \"%s\" osvetlená?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_way_lit_named_title">"Je tu %s osvetlená?"</string>
     <string name="quest_way_lit_road_title">"Je tento úsek cesty osvetlený?"</string>
     <string name="quest_way_lit_named_road_title">"Je cesta \"%s\" v tomto mieste osvetlená?"</string>
     <string name="quest_way_lit_automatic">"Používa detekciu pohybu"</string>
@@ -441,7 +465,9 @@ Zadané informácie sa potom priamo pridávajú do OpenStreetMap vo vašom mene 
     <string name="quest_surface_value_metal">"Kov"</string>
     <string name="quest_surface_generic_surface_confirmation">"Ste si istý, že neviete povrch určiť presnejšie?"</string>
     <string name="quest_cycleway_title2">"Je tu cycklocesta? Aký typ?"</string>
-    <string name="quest_internet_access_name_title">"Aký typ pripojenia k internetu \"%s\" poskytuje?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_internet_access_name_title">"Aký typ pripojenia k internetu %s poskytuje?"</string>
     <string name="quest_internet_access_wlan">"Wi-Fi"</string>
     <string name="quest_internet_access_wired">"Drôtové (LAN)"</string>
     <string name="quest_internet_access_terminal">"Počítač s prístupom na internet"</string>

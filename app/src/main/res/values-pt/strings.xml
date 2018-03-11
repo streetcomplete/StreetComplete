@@ -35,6 +35,8 @@
     <string name="quest_streetName_answer_noName_confirmation_description">"Por vezes, a sinalética de nomes de rua está apenas disponível numa das suas extremidades. Por vezes, nas ruas de maior extensão pode não existir sinalética em todas as suas interseções Normalmente, qualquer rua com casas, possui nome."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Se o nome puder ser pronunciado sem abreviatura, então deve ser expandido. As abreviaturas mais comuns são expandidas automaticamente, mas nem todas."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Sem abreviatura"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_name_title">"Qual o horário de funcionamento de %s?"</string>
     <string name="quest_openingHours_start_time">"Hora de abertura"</string>
     <string name="quest_openingHours_end_time">"Hora de fecho"</string>
@@ -232,15 +234,21 @@ A informação que submeter nesta app é adicionada diretamente ao OpenStreetMap
     <string name="quest_manySports_confirmation_specific">"Especifique"</string>
     <string name="quest_manySports_confirmation_generic">"Utilização genérica"</string>
     <string name="quest_sport_manySports_confirmation_title">"Selecionou demasiadas modalidades"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopShelter_name_title">"A paragem de autocarro %s tem abrigo?"</string>
     <string name="quest_toiletsFee_title">"Esta casa de banho é de acesso pago?"</string>
     <string name="quest_tactilePaving_title_bus">"Esta paragem de autocarro tem pavimento tátil?"</string>
     <string name="quest_tactilePaving_title_crosswalk">"Esta passadeira tem pavimento tátil?"</string>
     <string name="quest_source_dialog_title">"Tem a certeza que verificou isto no local?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_name_bus">"A paragem de autocarro %s tem pavimento tátil?"</string>
     <string name="quest_source_dialog_note">"Apenas deve ser adicionada a informação que foi recolhida durante um levantamento."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Este estacionamento para bicicletas é coberto (protegido da chuva)?"</string>
     <string name="dialog_session_dont_show_again">"Não mostrar de novo para esta sessão"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetSurface_name_title">"Que tipo de pavimento possui a estrada %s aqui?"</string>
     <string name="quest_maxspeed_title_short">"Qual é o limite de velocidade nesta rua?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Este limite de velocidade não é plausível."</string>
@@ -257,6 +265,8 @@ A informação que submeter nesta app é adicionada diretamente ao OpenStreetMap
     <string name="quest_sport_paddle_tennis">"Padel"</string>
     <string name="quest_sport_gaelic_games">"Jogos Gaelic"</string>
     <string name="quest_sport_sepak_takraw">"Voleibol de pontapé ou takraw"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_name_title">"%s é acessível em cadeira de rodas?"</string>
     <string name="quest_wheelchairAccess_limited">"Parcialmente"</string>
     <string name="quest_bikeParkingCapacity_hint">"Tenha em atenção que a maioria dos suportes podem ser utilizados para estacionar uma bicicleta de cada lado."</string>
@@ -265,14 +275,26 @@ A informação que submeter nesta app é adicionada diretamente ao OpenStreetMap
     <string name="quest_wheelchairAccess_subway_entrance_title">"Esta entrada da estação de metro é acessível em cadeira de rodas?"</string>
     <string name="quest_wheelchairAccess_railway_station_title">"Esta entrada da estação de comboios é acessível em cadeira de rodas?"</string>
     <string name="quest_wheelchairAccess_location_title">"Este local é acessível em cadeira de rodas?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_bus_station_name_title">"A paragem de autocarro %s é acessível em cadeira de rodas?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_subway_entrance_name_title">"A entrada da estação de metro %s é acessível em cadeira de rodas?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_railway_station_name_title">"A entrada da estação de comboios %s é acessível em cadeira de rodas?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_location_name_title">"O local %s é acessível em cadeira de rodas?"</string>
     <string name="quest_wheelchairAccess_limited_description_business">"Parcialmente significa que não existe mais do que um degrau para aceder ao local e que a maioria dos quartos interiores, são acessíveis em cadeira de rodas."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"Parcialmente significa que não existe mais do que um degrau para aceder ao local."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Abreviatura do nome %s?"</string>
     <string name="quest_baby_changing_table_toilets_title">"Esta casa de banho possui fraldário (mesa para mudar roupa a bebés)?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_baby_changing_table_title">"%s tem fraldário (mesa para mudar roupa a bebés)?"</string>
     <string name="quest_recycling_type_title">"Que tipo de instalação de reciclagem é esta?"</string>
     <string name="recycling_centre">"Centro"</string>
@@ -352,6 +374,8 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="produce_walnuts">"Nozes"</string>
     <string name="produce_sisal">"Sisal"</string>
     <string name="quest_way_lit_title">"Este troço de caminho tem iluminação?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_way_lit_named_title">"%s tem iluminação aqui?"</string>
     <string name="quest_way_lit_road_title">"Este troço de estrada tem iluminação?"</string>
     <string name="quest_way_lit_named_road_title">"A estrada %s tem iluminação aqui?"</string>
@@ -439,6 +463,8 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="quest_streetName_answer_noProperStreet_track2">"É um caminho agrícola ou florestal"</string>
     <string name="quest_streetName_answer_noName_noname">"Nenhum dos anteriores, simplesmente não tem nome"</string>
     <string name="quest_wheelchairAccess_toilets_title">"As casas de banho são acessíveis a cadeiras de rodas?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_toilets_name_title">"As casas de banho “%s” são acessíveis a cadeiras de rodas?"</string>
     <string name="quest_wheelchairAccess_description_toilets">"O sinal de acessibilidade a cadeira de rodas, como este, é visível. Parcialmente, significa que uma cadeira de rodas pode entrar e usar a casa de banho mas não existe sanitas e lavatório adatados."</string>
     <string name="map_btn_create_note">"Criar nova uma Nota"</string>
@@ -453,15 +479,21 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="quest_surface_generic_surface_confirmation">"Tem a certeza que não consegue especificar o tipo de pavimento?"</string>
     <string name="quest_cycleway_title2">"Há uma ciclovia aqui? De qual tipo?"</string>
     <string name="quest_bridge_structure_title">"Qual é a estrutura desta ponte?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_internet_access_name_title">"Qual o tipo de internet que \"%s\" disponibiliza?"</string>
     <string name="quest_internet_access_wlan">"Wi-Fi"</string>
     <string name="quest_internet_access_wired">"Por fio (LAN)"</string>
     <string name="quest_internet_access_terminal">"Computador com acesso à internet"</string>
     <string name="quest_internet_access_no">"Sem acesso à internet"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopShelter_tram_name_title">"A paragem \"%s\" do elétrico possuí abrigo?"</string>
     <string name="quest_busStopShelter_tram_title">"A paragem do elétrico possuí abrigo?"</string>
     <string name="quest_bench_backrest_title">"Este banco possuí apoio para as costas?"</string>
     <string name="quest_bench_answer_picnic_table">"É uma mesa de piquenique"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_religion_for_place_of_worship_title">"Qual a religião que é praticada em \"%s\""</string>
     <string name="quest_religion_christian">"Cristianismo"</string>
     <string name="quest_religion_muslim">"Islamismo"</string>
@@ -484,4 +516,14 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="quest_parking_access_private">"É privado"</string>
     <string name="quest_parking_access_yes">"É público (com ou sem pagamento)"</string>
     <string name="quest_parking_access_customers">"Apenas para clientes"</string>
+    <string name="quest_streetName_pedestrian_title">"Qual o nome desta rua pedonal?"</string>
+    <string name="quest_streetSurface_square_title">"Qual o tipo de pavimento desta praça?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_streetSurface_square_name_title">"Qual o tipo de pavimento que há aqui na praça \"%s\"?"</string>
+    <string name="quest_fee_answer_hours">"Depende do horário e dia"</string>
+    <string name="quest_fee_add_times">"adicionar horário"</string>
+    <string name="quest_fee_only_at_hours">"Sim, mas apenas..."</string>
+    <string name="quest_fee_not_at_hours">"Sim, excepto..."</string>
+    <string name="quest_fee_hours_title">"No seguinte horário"</string>
 </resources>

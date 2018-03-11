@@ -35,7 +35,9 @@
     <string name="quest_streetName_answer_noName_confirmation_description">"Иногда знаки и таблички могут быть только на одном конце улицы. Иногда их отсутствие означает, что это просто боковая улица, которая принадлежит основной. Обычно, если на улице есть какие-либо строения, то у неё есть и название."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Если название может быть написано без сокращений, то так и следует сделать. Многие распространённые сокращения уже раскрываются в процессе ввода, но не все."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Нет сокращений"</string>
-    <string name="quest_openingHours_name_title">"Какое время работы у «%s»?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_openingHours_name_title">"Какое время работы у %s?"</string>
     <string name="quest_openingHours_start_time">"Время отрытия"</string>
     <string name="quest_openingHours_end_time">"Время закрытия"</string>
     <string name="quest_openingHours_add_months">"Добавить месяцы"</string>
@@ -232,18 +234,24 @@
     <string name="quest_manySports_confirmation_specific">"Именно для этих"</string>
     <string name="quest_manySports_confirmation_generic">"Общего назначения"</string>
     <string name="quest_sport_manySports_confirmation_title">"Вы выбрали несколько видов спорта"</string>
-    <string name="quest_busStopShelter_name_title">"Защищена ли автобусная остановка «%s» от погодных условий?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopShelter_name_title">"Защищена ли автобусная остановка %s от погодных условий?"</string>
     <string name="quest_toiletsFee_title">"Это платные туалеты?"</string>
     <string name="quest_tactilePaving_title_bus">"Есть ли на этой автобусной остановке тактильная разметка?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"Есть ли на этом пешеходном переходе тактильная разметка?"</string>
     <string name="quest_source_dialog_title">"Вы точно проверили это на месте?"</string>
-    <string name="quest_tactilePaving_title_name_bus">"Есть ли на автобусной остановке «%s» тактильная разметка?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_tactilePaving_title_name_bus">"Есть ли на автобусной остановке %s тактильная разметка?"</string>
     <string name="quest_source_dialog_note">"Нужно вводить только то, что вы видели своими глазами."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Эта велосипедная парковка крытая (защищена от дождя)?"</string>
     <string name="dialog_session_dont_show_again">"Не показывать снова в текущей сессии"</string>
-    <string name="quest_streetSurface_name_title">"Какое покрытие у этого участка дороги «%s»?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_streetSurface_name_title">"Какое покрытие у этого участка дороги %s?"</string>
     <string name="quest_maxspeed_title_short">"Какое ограничение скорости на этой улице?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Это ограничение скорости выглядит неправдоподобно."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Ограничение точно не установлено?"</string>
@@ -258,7 +266,9 @@
     <string name="quest_sport_paddle_tennis">"Паддл-теннис"</string>
     <string name="quest_sport_gaelic_games">"Гэльские игры"</string>
     <string name="quest_sport_sepak_takraw">"Сепактакрау"</string>
-    <string name="quest_wheelchairAccess_name_title">"Доступно ли «%s» для инвалидных колясок?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_name_title">"Доступно ли %s для инвалидных колясок?"</string>
     <string name="quest_wheelchairAccess_limited">"Частично"</string>
     <string name="quest_bikeParkingCapacity_hint">"Заметьте, что к большинству обычных стоек можно закрепить по велосипеду с каждой стороны."</string>
     <string name="quest_sport_roller_skating">"Катание на роликах"</string>
@@ -266,15 +276,27 @@
     <string name="quest_wheelchairAccess_subway_entrance_title">"Этот вход в метро оборудован для инвалидных колясок?"</string>
     <string name="quest_wheelchairAccess_railway_station_title">"Доступна ли эта железнодорожная станция для инвалидных колясок?"</string>
     <string name="quest_wheelchairAccess_location_title">"Доступно ли это место для инвалидных колясок?"</string>
-    <string name="quest_wheelchairAccess_bus_station_name_title">"Доступна ли автобусная остановка «%s» для инвалидных колясок?"</string>
-    <string name="quest_wheelchairAccess_subway_entrance_name_title">"Этот вход в метро “%s” оборудован для инвалидных колясок?"</string>
-    <string name="quest_wheelchairAccess_railway_station_name_title">"Доступна ли железнодорожная станция «%s» для инвалидных колясок?"</string>
-    <string name="quest_wheelchairAccess_location_name_title">"Доступно ли место “%s” для инвалидных колясок?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_bus_station_name_title">"Доступна ли автобусная остановка %s для инвалидных колясок?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_subway_entrance_name_title">"Этот вход в метро %s оборудован для инвалидных колясок?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_railway_station_name_title">"Доступна ли железнодорожная станция %s для инвалидных колясок?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_location_name_title">"Доступно ли место %s для инвалидных колясок?"</string>
     <string name="quest_wheelchairAccess_limited_description_business">"«Частично» значит, что нужно преодолеть не более одной ступеньки для доступа в заведение, и что все комнаты внутри доступны для инвалидных колясок."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"«Частично» значит, что нужно преодолеть не более одной ступеньки."</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Сокращение в названии «%s»?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Сокращение в названии %s?"</string>
     <string name="quest_baby_changing_table_toilets_title">"В этом туалете есть столик для смены пелёнок?"</string>
-    <string name="quest_baby_changing_table_title">"В «%s» есть столик для смены пелёнок?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_baby_changing_table_title">"В %s есть столик для смены пелёнок?"</string>
     <string name="quest_recycling_type_title">"Какого типа этот пункт переработки отходов?"</string>
     <string name="recycling_centre">"Центр"</string>
     <string name="overground_recycling_container">"Контейнер"</string>
@@ -355,7 +377,9 @@
 
     <!-- Fuzzy -->
     <string name="quest_way_lit_title">"Освещена ли эта часть пути?"</string>
-    <string name="quest_way_lit_named_title">"Освещается ли \"%s\"?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_way_lit_named_title">"Освещается ли %s?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_way_lit_road_title">"Освещена ли эта часть дороги?"</string>
@@ -445,8 +469,13 @@
     <string name="map_btn_create_note">"Создать новую заметку"</string>
     <string name="create_new_note_unprecise">"Увеличьте масштаб для создания заметки"</string>
     <string name="quest_generic_looks_like_this">"Обычно выглядит так:"</string>
+    <string name="quest_surface_value_metal">"мета́лл"</string>
     <string name="quest_internet_access_wlan">"Wi-Fi"</string>
+    <string name="quest_internet_access_no">"Нет соединения"</string>
     <string name="quest_bench_backrest_title">"Есть ли у этой скамейки спинка?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_bench_answer_picnic_table">"Это стол для пикника"</string>
     <string name="quest_religion_christian">"Христианство"</string>
     <string name="quest_religion_muslim">"Ислам"</string>
     <string name="quest_religion_hindu">"Индуизм"</string>
@@ -455,7 +484,14 @@
     <string name="quest_religion_jewish">"Иудаизм"</string>
     <string name="quest_religion_taoist">"Даосизм"</string>
     <string name="quest_religion_sikh">"Сикхизм"</string>
+    <string name="quest_religion_jain">"Джайнизм"</string>
     <string name="quest_religion_caodaist">"Каодай"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_parking_access_title">"Имеются ли здесь ограничения на паркуовку?"</string>
     <string name="quest_parking_access_yes">"Открыта для всех (платная или бесплатная)"</string>
     <string name="quest_parking_access_customers">"Только для клиентов"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_streetSurface_square_title">"Какой тип покрытия у этой площади?"</string>
 </resources>

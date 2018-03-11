@@ -37,7 +37,9 @@
     <string name="quest_streetName_answer_noName_confirmation_description">"گاهی علائم خیابان تنها در یک سوی خیابان است. همچنین توجه داشته باشید که ممکن است علائم خیابانی تکمیلی برای معابر فرعی که به خیابان اصلی متصل هستند، وجود نداشته باشد. معمولا هر خیابان یا خانه دارای یک نام است."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"اگر نام را بدون اختصار می نویسید، باید آن را توضیح دهید. بسیاری از کلمات اختصاری اغلب در حالی که شما می نویسید، به طور خودکار توسط صفحه کلید هوشمند به کلمه اصلی باز می گردند، البته نه همه آنها."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"بدون اختصار"</string>
-    <string name="quest_openingHours_name_title">"ساعت شروع کار \"%s\" چیست؟"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_openingHours_name_title">"ساعت شروع کار %s چیست؟"</string>
     <string name="quest_openingHours_start_time">"زمان شروع کار"</string>
     <string name="quest_openingHours_end_time">"زمان اتمام کار"</string>
     <string name="quest_openingHours_add_months">"افزودن ماه"</string>
@@ -240,18 +242,24 @@
     <string name="quest_manySports_confirmation_specific">"به ویژه این"</string>
     <string name="quest_manySports_confirmation_generic">"همه منظوره"</string>
     <string name="quest_sport_manySports_confirmation_title">"شما ورزش های زیادی را انتخاب کرده‌اید"</string>
-    <string name="quest_busStopShelter_name_title">"آیا ایستگاه اتوبوس \"%s\" سایبان دارد؟"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopShelter_name_title">"آیا ایستگاه اتوبوس %s سایبان دارد؟"</string>
     <string name="quest_toiletsFee_title">"آیا این سرویس بهداشتی غیر رایگان است؟"</string>
     <string name="quest_tactilePaving_title_bus">"آیا این ایستگاه اتوبوس دارای سنگفرش برجسته نابینایان است؟"</string>
 
     <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"آیا این پیاده رو دارای سنگفرش برجسته نابینایان است؟"</string>
     <string name="quest_source_dialog_title">"آیا مطمئن هستید که این سایت را بررسی کرده اید؟"</string>
-    <string name="quest_tactilePaving_title_name_bus">"آیا ایستگاه اتوبوس \"%s\" دارای سنگفرش برجسته نابینایان است؟"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_tactilePaving_title_name_bus">"آیا ایستگاه اتوبوس %s دارای سنگفرش برجسته نابینایان است؟"</string>
     <string name="quest_source_dialog_note">"فقط اطلاعاتی که روی نقشه یافت می شود باید وارد شود."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"آیا این پارکینگ دوچرخه مسقف می باشد (از باران محافظت شده است)؟"</string>
     <string name="dialog_session_dont_show_again">"دوباره این نشست را نشان ندهید"</string>
-    <string name="quest_streetSurface_name_title">"جنس سطح این بخش از مسیر \"%s\" چیست؟"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_streetSurface_name_title">"جنس سطح این بخش از مسیر %s چیست؟"</string>
     <string name="quest_maxspeed_title_short">"علائم محدودیت سرعت برای این خیابان چیست؟"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"این محدودیت سرعت به نظر غیر واقعی است."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"آیا مطمئن هستید که هیچ محدودیتی قرار داده نشده است؟"</string>
@@ -266,7 +274,9 @@
     <string name="quest_sport_paddle_tennis">"تنیس بادی"</string>
     <string name="quest_sport_gaelic_games">"بازی‌های ایرلندی"</string>
     <string name="quest_sport_sepak_takraw">"سپک تاکرا"</string>
-    <string name="quest_wheelchairAccess_name_title">"صندلی چرخدار در “%s” قابل استفاده است؟"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_name_title">"صندلی چرخدار در %s قابل استفاده است؟"</string>
     <string name="quest_wheelchairAccess_limited">"اندکی"</string>
     <string name="quest_bikeParkingCapacity_hint">"توجه داشته باشید که بیشتر پایه های معمولی پارک دوچرخه از هر دو طرف برای پارک قابل استفاده هستند."</string>
     <string name="quest_sport_roller_skating">"اسکیت"</string>
@@ -274,15 +284,27 @@
     <string name="quest_wheelchairAccess_subway_entrance_title">"آیا در این ورودی مترو صندلی چرخدار قابل استفاده است؟"</string>
     <string name="quest_wheelchairAccess_railway_station_title">"آیا در این ایستگاه راه‌آهن صندلی چرخدار قابل استفاده است؟"</string>
     <string name="quest_wheelchairAccess_location_title">"آیا در این مکان صندلی چرخدار قابل استفاده است؟"</string>
-    <string name="quest_wheelchairAccess_bus_station_name_title">"آیا در ایستگاه اتوبوس “%s” صندلی چرخدار قابل استفاده می باشد؟"</string>
-    <string name="quest_wheelchairAccess_subway_entrance_name_title">"آیا در ورودی مترو “%s” صندلی چرخدار قابل استفاده می باشد؟"</string>
-    <string name="quest_wheelchairAccess_railway_station_name_title">"آیا در ایستگاه راه‌آهن “%s” صندلی چرخدار قابل استفاده می باشد؟"</string>
-    <string name="quest_wheelchairAccess_location_name_title">"آیا در “%s” صندلی چرخدار قابل استفاده می باشد؟"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_bus_station_name_title">"آیا در ایستگاه اتوبوس %s صندلی چرخدار قابل استفاده می باشد؟"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_subway_entrance_name_title">"آیا در ورودی مترو %s صندلی چرخدار قابل استفاده می باشد؟"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_railway_station_name_title">"آیا در ایستگاه راه‌آهن %s صندلی چرخدار قابل استفاده می باشد؟"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_location_name_title">"آیا در %s صندلی چرخدار قابل استفاده می باشد؟"</string>
     <string name="quest_wheelchairAccess_limited_description_business">"معمولاً این بدان معنی است که تنها یک مسیر برای دسترسی به این ساختمان تجاری وجود دارد و مسیر عبور در بیشتر واحدها برای صندلی چرخدار در دسترس می باشد."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"معمولاً این بدان معنی است که برای دسترسی به اینجا بیشتر از یک مسیر وجود دارد."</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"مخفف نام “%s” چیست؟"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"مخفف نام %s چیست؟"</string>
     <string name="quest_baby_changing_table_toilets_title">"آیا این سرویس بهداشتی مجهز به صندلی سیارکودک می باشد؟"</string>
-    <string name="quest_baby_changing_table_title">"آیا \"%s\" مجهز به صندلی سیار کودک می باشد؟"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_baby_changing_table_title">"آیا %s مجهز به صندلی سیار کودک می باشد؟"</string>
     <string name="quest_recycling_type_title">"این تاسیسات بازیافتی از چه نوعی است؟"</string>
     <string name="recycling_centre">"مرکز بازیافت"</string>
     <string name="overground_recycling_container">"سطل بزرگ فلزی"</string>
@@ -363,7 +385,9 @@
 
     <!-- Fuzzy -->
     <string name="quest_way_lit_title">"آیا این بخش از راه روشنایی دارد؟"</string>
-    <string name="quest_way_lit_named_title">"آیا \"%s\" روشنایی دارد؟"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_way_lit_named_title">"آیا %s روشنایی دارد؟"</string>
 
     <!-- Fuzzy -->
     <string name="quest_way_lit_road_title">"آیا این بخش مسیر روشنایی دارد؟"</string>

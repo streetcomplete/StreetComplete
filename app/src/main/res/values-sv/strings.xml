@@ -170,8 +170,6 @@ För att visa på kartan, är vektor brickor hämtas från &lt;a href=\"https://
     <string name="quest_sidewalk_yes">"Ja"</string>
     <string name="quest_maxspeed_answer_noSign">"Det finns inga skyltar"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Var ligger den här gatan?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_cyclewaySurface_title">"Vad har cykelvägen för underlag här?"</string>
     <string name="quest_buildingType_title">"Vilken typ av byggnad är detta?"</string>
 
@@ -250,17 +248,23 @@ Den information du anger sedan direkt till den OpenStreetMap i ditt namn, utan a
     <string name="quest_manySports_confirmation_specific">"Dessa specifikt"</string>
     <string name="quest_manySports_confirmation_generic">"Allmän"</string>
     <string name="quest_sport_manySports_confirmation_title">"Du valde många sporter"</string>
-    <string name="quest_busStopShelter_name_title">"Har hållplatsen \"%s\" en busskur?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopShelter_name_title">"Har hållplatsen %s en busskur?"</string>
     <string name="quest_toiletsFee_title">"Är de här toaletterna avgiftsbelagda?"</string>
     <string name="quest_tactilePaving_title_bus">"Har busshållplatsen taktil beläggning?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"Har övergångsstället taktil beläggning?"</string>
     <string name="quest_source_dialog_title">"Har du kontrollerat detta på plats?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_name_bus">"Har busshållplatsen %s taktil beläggning?"</string>
     <string name="quest_source_dialog_note">"Enbart information som har bekräftats på plats ska skickas in."</string>
-    <string name="quest_bicycleParkingCoveredStatus_title">"Är den här cykelparkeringen skyddad (från regn)"</string>
+    <string name="quest_bicycleParkingCoveredStatus_title">"Är den här cykelparkeringen skyddad (från regn)?"</string>
     <string name="dialog_session_dont_show_again">"Visa inte igen under den här sessionen."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetSurface_name_title">"Vad har %s för underlag här?"</string>
     <string name="quest_maxspeed_title_short">"Vad står det på hastighetskylten?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Den här hastighetsbegränsningen verkar osannolik."</string>
@@ -277,6 +281,8 @@ Den information du anger sedan direkt till den OpenStreetMap i ditt namn, utan a
     <string name="quest_sport_paddle_tennis">"Padeltennis"</string>
     <string name="quest_sport_gaelic_games">"Gaelisk sport"</string>
     <string name="quest_sport_sepak_takraw">"Sepak takraw"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_name_title">"Är %s tillgänglig med rullstol?"</string>
     <string name="quest_wheelchairAccess_limited">"Delvis"</string>
     <string name="quest_bikeParkingCapacity_hint">"Notera att de flesta cykelställ kan användas från två håll för att parkera på vardera sida."</string>
@@ -285,14 +291,26 @@ Den information du anger sedan direkt till den OpenStreetMap i ditt namn, utan a
     <string name="quest_wheelchairAccess_subway_entrance_title">"Är tunnelbaneingången tillgänglig med rullstol?"</string>
     <string name="quest_wheelchairAccess_railway_station_title">"Är tågstationen tillgänglig med rullstol?"</string>
     <string name="quest_wheelchairAccess_location_title">"Är den här platsen tillgänglig med rullstol?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_bus_station_name_title">"Är busstationen %s tillgänglig med rullstol?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_subway_entrance_name_title">"Är tunnelbaneingången %s tillgänglig med rullstol?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_railway_station_name_title">"Är tågstationen %s tillgänglig med rullstol?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_location_name_title">"Är %s tillgänglig med rullstol?"</string>
     <string name="quest_wheelchairAccess_limited_description_business">"Delvis innebär att det inte finns mer än ett enda steg för att komma åt verksamheten och att de flesta rum inuti är rullstolsanpassade."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"Delvis innebär att det inte finns mer än ett enda steg för att komma åt det."</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Förkortning i namnet \"%s\"?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Förkortning i namnet %s?"</string>
     <string name="quest_baby_changing_table_toilets_title">"Har den här toaletten ett skötbord?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_baby_changing_table_title">"Har %s ett skötbord?"</string>
     <string name="quest_recycling_type_title">"Vilken typ av återvinningsstation är det här?"</string>
     <string name="recycling_centre">"Återvinningscentral"</string>
@@ -374,7 +392,9 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
 
     <!-- Fuzzy -->
     <string name="quest_way_lit_title">"Har den här delen av vägen belysning?"</string>
-    <string name="quest_way_lit_named_title">"Har \"%s\" belysning här?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_way_lit_named_title">"Har %s belysning här?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_way_lit_road_title">"Har den här delen av vägen belysning?"</string>
@@ -463,6 +483,8 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_bridge_structure_title">"Vilken typ av bro är det här?"</string>
     <string name="quest_bench_backrest_title">"Har den här bänken ett ryggstöd?"</string>
     <string name="quest_bench_answer_picnic_table">"Det är ett picnickbord."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_religion_for_place_of_worship_title">"Vilken religion praktiseras vid %s?"</string>
     <string name="quest_religion_christian">"Kristendom"</string>
     <string name="quest_religion_muslim">"Islam"</string>
@@ -472,8 +494,15 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_religion_jewish">"Judendom"</string>
     <string name="quest_religion_taoist">"Taoism"</string>
     <string name="quest_parking_fee_title">"Är parkeringen avgiftsbelagd?"</string>
+    <string name="quest_cycleway_value_lane_soft">"cykelfil (streckad markering)"</string>
     <string name="quest_parking_access_title">"Är det reglerat vem som får parkera här?"</string>
     <string name="quest_parking_access_private">"Parkeringen är privat"</string>
     <string name="quest_parking_access_yes">"Parkeringen är offentlig (med eller utan avgift)"</string>
     <string name="quest_parking_access_customers">"Parkeringen är enbart för kunder"</string>
+    <string name="quest_streetName_pedestrian_title">"Vad är namnet på den här gågatan?"</string>
+    <string name="quest_streetSurface_square_title">"Vilket underlag har det här torget?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_streetSurface_square_name_title">"Vilket underlag har torget %s här?"</string>
+    <string name="quest_fee_answer_hours">"Beror på tid och dag"</string>
 </resources>
