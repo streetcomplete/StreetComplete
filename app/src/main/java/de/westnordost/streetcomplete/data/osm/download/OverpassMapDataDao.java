@@ -61,10 +61,14 @@ public class OverpassMapDataDao
 		}
 		catch(OsmApiException e)
 		{
-			if(e.getErrorCode() == 429)
+			if(e.getErrorCode() == 429) {
 				throw new OsmTooManyRequestsException(e.getErrorCode(), e.getErrorTitle(), e.getDescription());
-			else
+			} else if(e.getErrorCode() == 400) {
+				Log.e(TAG, "malformed query, caused Overpass to return error code 400: " + query);
 				throw e;
+			} else {
+				throw e;
+			}
 		}
 	}
 
