@@ -133,7 +133,7 @@ public class AddCycleway implements OsmElementQuestType
 			case SIDEWALK: // explicitly marked (often must be used)
 				// https://wiki.openstreetmap.org/wiki/File:Z240GemeinsamerGehundRadweg.jpeg
 				changes.add(cyclewayKey, "track");
-				changes.add("sidewalk:" + side.value + ":bicycle", "designated");
+				changes.add(cyclewayKey + ":segregated", "no");
 				break;
 			case SIDEWALK_OK: // optional use allowed
 				// https://wiki.openstreetmap.org/wiki/File:Z239Z1022-10GehwegRadfahrerFrei.jpeg
