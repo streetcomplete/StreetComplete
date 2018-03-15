@@ -130,14 +130,15 @@ public class AddCycleway implements OsmElementQuestType
 				changes.add(cyclewayKey, "lane");
 				changes.addOrModify(cyclewayKey + ":oneway", "no");
 				break;
-			case SIDEWALK:
+			case SIDEWALK: // explicitly marked (often must be used)
 				// https://wiki.openstreetmap.org/wiki/File:Z240GemeinsamerGehundRadweg.jpeg
 				changes.add(cyclewayKey, "track");
 				changes.add(cyclewayKey + ":segregated", "no");
 				break;
-			case SIDEWALK_OK:
+			case SIDEWALK_OK: // optional use allowed
 				// https://wiki.openstreetmap.org/wiki/File:Z239Z1022-10GehwegRadfahrerFrei.jpeg
 				changes.add(cyclewayKey, "no");
+				changes.add("cycleway:" + side.value, "track"); // if sidewalk is not already mapped
 				changes.add("sidewalk:" + side.value + ":bicycle", "yes");
 				break;
 			case SHARED:
