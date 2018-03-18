@@ -102,6 +102,7 @@ dependencies {
     implementation 'com.evernote:android-job:1.1.12'
 
     // geometry
+    implementation 'de.westnordost:countryboundaries:1.2'
     implementation 'com.vividsolutions:jts-core:1.14.0'
 
     // talking with OSM Api

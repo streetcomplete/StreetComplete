@@ -18,6 +18,8 @@ import java.util.concurrent.Future;
 
 import javax.inject.Inject;
 
+import de.westnordost.countryboundaries.CountryBoundaries;
+
 public class CountryInfos
 {
 	private static final String BASEPATH = "country_metadata";
@@ -41,7 +43,7 @@ public class CountryInfos
 	{
 		try
 		{
-			List<String> countryCodesIso3166 = countryBoundaries.get().getIsoCodes(longitude, latitude);
+			List<String> countryCodesIso3166 = countryBoundaries.get().getIds(longitude, latitude);
 			return get(countryCodesIso3166);
 		}
 		catch (Exception e)
