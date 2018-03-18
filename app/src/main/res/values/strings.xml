@@ -63,7 +63,7 @@
     <string name="confirmation_discard_negative">"Cancel"</string>
     <string name="action_download">"Scan for Quests here"</string>
     <string name="action_upload">"Upload Answers"</string>
-    <string name="no_changes">"You left the form empty"</string>
+    <string name="no_changes">"You did not give any answer"</string>
     <string name="close">"close"</string>
     <string name="download_error">"Error while scanning for quests"</string>
     <string name="upload_error">"Error while uploading answers"</string>
