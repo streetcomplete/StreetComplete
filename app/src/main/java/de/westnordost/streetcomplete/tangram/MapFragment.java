@@ -439,6 +439,7 @@ public class MapFragment extends Fragment implements
 		lastLocation = location;
 		showLocation();
 		followPosition();
+		CompassComponent.lastLocation = location;
 	}
 
 	private void showLocation()

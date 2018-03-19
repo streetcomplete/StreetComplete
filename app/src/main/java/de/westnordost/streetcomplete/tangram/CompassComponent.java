@@ -1,12 +1,13 @@
 package de.westnordost.streetcomplete.tangram;
 
+import android.hardware.GeomagneticField;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.location.Location;
 import android.support.annotation.AnyThread;
 import android.view.Display;
-import android.view.Surface;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -21,12 +22,18 @@ public class CompassComponent implements SensorEventListener
 	private Sensor accelerometer, magnetometer;
 	private Timer compassTimer;
 	private CompassAnimator compassAnimator;
-	private float[] gravity, geomagnetic;
+	private float[] lastAccels, lastMagFields;
 	/** time the compass needle needs in order to rotate into a new direction (from sensor data).
 	 *  The sensor data is a bit erratic, so this smoothens it out. */
 	private static final int DURATION = 200;
 	// the compass doesn't move that fast, this is more than enough
 	private static final int RotationUpdateFPS = 30;
+
+	public static Location lastLocation;
+	private LowPassFilter filterYaw = new LowPassFilter(0.03f);
+
+	static float rot = (float) 0.0;
+	static float tilt = (float) 0.0;
 
 	private Listener listener;
 	public interface Listener
@@ -45,30 +52,6 @@ public class CompassComponent implements SensorEventListener
 		this.sensorManager = sensorManager;
 		accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 		magnetometer = sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
-	}
-
-	private float getDisplayTilt(float pitch, float roll)
-	{
-		switch (display.getRotation())
-		{
-			case Surface.ROTATION_0: return pitch;
-			case Surface.ROTATION_90: return roll;
-			case Surface.ROTATION_180: return -pitch;
-			case Surface.ROTATION_270: return -roll;
-		}
-		return 0;
-	}
-
-	private int getDisplayRotation()
-	{
-		switch (display.getRotation())
-		{
-			case Surface.ROTATION_0: return 0;
-			case Surface.ROTATION_90: return 90;
-			case Surface.ROTATION_180: return 180;
-			case Surface.ROTATION_270: return 270;
-		}
-		return 0;
 	}
 
 	public void onResume()
@@ -103,32 +86,39 @@ public class CompassComponent implements SensorEventListener
 	{
 		if (event.sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD)
 		{
-			geomagnetic = event.values;
+			lastMagFields = event.values;
 		}
 		else if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER)
 		{
-			gravity = event.values;
+			lastAccels = event.values;
 		}
 
-		if (gravity != null && geomagnetic != null)
+		if (lastAccels != null && lastMagFields != null)
 		{
-			if(compassTimer == null) initializeCompassAnimator();
+			float Declination = 0;
+			if(lastLocation != null) {
+				GeomagneticField geoField = new GeomagneticField(
+					(float) lastLocation.getLatitude(),
+					(float) lastLocation.getLongitude(),
+					(float) lastLocation.getAltitude(), System.currentTimeMillis());
+				Declination = geoField.getDeclination();
+			}
 
-			float R[] = new float[9];
+			if(compassTimer == null) {
+				initializeCompassAnimator();
+			}
+
+			float rotationMatrix[] = new float[9];
 			float I[] = new float[9];
-			boolean success = SensorManager.getRotationMatrix(R, I, gravity, geomagnetic);
-			if (success) {
+			if (SensorManager.getRotationMatrix(rotationMatrix, I, lastAccels, lastMagFields)) {
 				float orientation[] = new float[3];
-				SensorManager.getOrientation(R, orientation);
-				float azimut = orientation[0];
-				float pitch = orientation[1];
-				float roll = orientation[2];
+				SensorManager.getOrientation(rotationMatrix, orientation);
+				float azimut = (float) (Math.toDegrees(orientation[0]) + Declination) ;
 
-				float displayRotation = (float) (Math.PI * getDisplayRotation() / 180);
-				float displayTilt = getDisplayTilt(pitch, roll);
+				rot = filterYaw.lowPass(azimut);
+				compassAnimator.targetRotation = (float) Math.toRadians(rot);
 
-				compassAnimator.targetRotation = azimut + displayRotation;
-				compassAnimator.targetTilt = displayTilt;
+				compassAnimator.targetTilt = 0;
 			}
 		}
 	}
@@ -137,11 +127,18 @@ public class CompassComponent implements SensorEventListener
 	 *  and not directly setting it */
 	private class CompassAnimator extends TimerTask
 	{
-		private float INITIAL = -9999;
+		private final float INITIAL = -9999;
 		private float currentRotation = INITIAL;
 		private float currentTilt = INITIAL;
 		private long lastTime = System.currentTimeMillis();
 
+
+		/**
+		 * 0 = north
+		 * -Pi/2 = west
+		 * Pi, -Pi = south
+		 * Pi/2 = east
+		 */
 		volatile float targetRotation = INITIAL;
 		volatile float targetTilt = INITIAL;
 
@@ -167,6 +164,29 @@ public class CompassComponent implements SensorEventListener
 			while (deltaRotation < -Math.PI) deltaRotation += 2*Math.PI;
 
 			return current + deltaRotation * deltaTime / DURATION;
+		}
+	}
+
+	public class LowPassFilter {
+		/*
+         * time smoothing constant for low-pass filter 0 ≤ alpha ≤ 1 ; a smaller
+         * value basically means more smoothing See:
+         * http://en.wikipedia.org/wiki/Low-pass_filter#Discrete-time_realization
+         */
+		float ALPHA = 0f;
+		float lastOutput = 0;
+
+		LowPassFilter(float ALPHA) {
+			this.ALPHA = ALPHA;
+		}
+
+		float lowPass(float input) {
+			if (Math.abs(input - lastOutput) > 170) {
+				lastOutput = input;
+				return lastOutput;
+			}
+			lastOutput = lastOutput + ALPHA * (input - lastOutput);
+			return lastOutput;
 		}
 	}
 }
