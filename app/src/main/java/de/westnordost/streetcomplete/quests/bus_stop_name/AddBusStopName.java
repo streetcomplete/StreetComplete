@@ -21,7 +21,7 @@ public class AddBusStopName extends SimpleOverpassQuestType
 	@Override protected String getTagFilters()
 	{
 		return " nodes, ways with !name and noname != yes" +
-			   " and ( highway = bus_stop or public_transport = platform )";
+			   " and (public_transport=platform or (highway=bus_stop and public_transport!=stop_position))";
 	}
 
 	@Override public AbstractQuestAnswerFragment createForm()
@@ -42,7 +42,7 @@ public class AddBusStopName extends SimpleOverpassQuestType
 	}
 
 	@Override public String getCommitMessage() { return "Determine bus stop names"; }
-	@Override public int getIcon() { return R.drawable.ic_quest_label; }
+	@Override public int getIcon() { return R.drawable.ic_quest_bus; }
 	@Override public int getTitle(@NonNull Map<String, String> tags)
 	{
 		return R.string.quest_busStopName_title;
