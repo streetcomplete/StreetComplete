@@ -17,6 +17,7 @@ import de.westnordost.streetcomplete.quests.bike_parking_type.AddBikeParkingType
 import de.westnordost.streetcomplete.quests.bikeway.AddCycleway;
 import de.westnordost.streetcomplete.quests.bridge_structure.AddBridgeStructure;
 import de.westnordost.streetcomplete.quests.building_levels.AddBuildingLevels;
+import de.westnordost.streetcomplete.quests.bus_stop_name.AddBusStopName;
 import de.westnordost.streetcomplete.quests.bus_stop_shelter.AddBusStopShelter;
 import de.westnordost.streetcomplete.quests.car_wash_type.AddCarWashType;
 import de.westnordost.streetcomplete.quests.crossing_type.AddCrossingType;
@@ -86,6 +87,7 @@ public class QuestModule
 				new AddInternetAccess(o),
 				new AddParkingAccess(o),
 				new AddParkingFee(o),
+				new AddBusStopName(o),
 
 				// ↓ 4. definitely shown as errors in QA tools
 
