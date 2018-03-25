@@ -42,7 +42,7 @@ public class AddBusStopName extends SimpleOverpassQuestType
 	}
 
 	@Override public String getCommitMessage() { return "Determine bus stop names"; }
-	@Override public int getIcon() { return R.drawable.ic_quest_bus; }
+	@Override public int getIcon() { return R.drawable.ic_quest_bus_stop_name; }
 	@Override public int getTitle(@NonNull Map<String, String> tags)
 	{
 		return R.string.quest_busStopName_title;
