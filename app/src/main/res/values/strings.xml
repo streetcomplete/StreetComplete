@@ -198,6 +198,7 @@ To display the map, vector tiles are retrieved from the &lt;a href=\"https://map
     <string name="quest_surface_value_wood">"Wood"</string>
     <string name="quest_placeName_title">"What is the name of this place?"</string>
     <string name="quest_busStopName_title">"What is the name of this bus stop?"</string>
+    <string name="quest_tramStopName_title">"What is the name of this tram stop?"</string>
     <string name="quest_sidewalk_title">"Is there a sidewalk in this street?"</string>
     <string name="map_orientation_info">"The map is oriented north up."</string>
     <string name="quest_sidewalk_onlyNorth">"Only on northern side"</string>

@@ -2,8 +2,8 @@ package de.westnordost.streetcomplete.quests;
 
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd;
+import de.westnordost.streetcomplete.quests.localized_name.AddNameForm;
 import de.westnordost.streetcomplete.quests.place_name.AddPlaceName;
-import de.westnordost.streetcomplete.quests.place_name.AddPlaceNameForm;
 
 public class AddPlaceNameTest extends AOsmElementQuestTypeTest
 {
@@ -15,14 +15,14 @@ public class AddPlaceNameTest extends AOsmElementQuestTypeTest
 
 	public void testNoName()
 	{
-		bundle.putBoolean(AddPlaceNameForm.NO_NAME, true);
+		bundle.putBoolean(AddNameForm.NO_NAME, true);
 		verify(
 				new StringMapEntryAdd("noname","yes"));
 	}
 
 	public void testName()
 	{
-		bundle.putString(AddPlaceNameForm.NAME, "my name");
+		bundle.putString(AddNameForm.NAME, "my name");
 		verify(
 				new StringMapEntryAdd("name","my name"));
 	}

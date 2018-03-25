@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.road_name;
+package de.westnordost.streetcomplete.quests.localized_name;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -24,8 +24,8 @@ import de.westnordost.streetcomplete.data.osm.tql.OverpassQLUtil;
 import de.westnordost.streetcomplete.data.osm.tql.TagFilterExpression;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
-import de.westnordost.streetcomplete.quests.road_name.data.PutRoadNameSuggestionsHandler;
-import de.westnordost.streetcomplete.quests.road_name.data.RoadNameSuggestionsDao;
+import de.westnordost.streetcomplete.quests.localized_name.data.PutRoadNameSuggestionsHandler;
+import de.westnordost.streetcomplete.quests.localized_name.data.RoadNameSuggestionsDao;
 
 public class AddRoadName implements OsmElementQuestType
 {

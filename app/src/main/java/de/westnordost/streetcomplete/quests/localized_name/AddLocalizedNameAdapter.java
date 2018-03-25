@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.road_name;
+package de.westnordost.streetcomplete.quests.localized_name;
 
 import android.content.Context;
 import android.graphics.Typeface;
@@ -26,30 +26,30 @@ import de.westnordost.streetcomplete.util.DefaultTextWatcher;
 
 import static android.view.Menu.NONE;
 
-public class AddRoadNameAdapter extends RecyclerView.Adapter
+public class AddLocalizedNameAdapter extends RecyclerView.Adapter
 {
-	private ArrayList<RoadName> data;
+	private ArrayList<LocalizedName> data;
 
 	private final Context context;
 	private final List<String> languages;
 	private final AbbreviationsByLocale abbreviationsByLocale;
-	private final List<Map<String, String>> roadNameSuggestions;
+	private final List<Map<String, String>> localizedNameSuggestions;
 	private final Button addLanguageButton;
 
-	public AddRoadNameAdapter(ArrayList<RoadName> data, Context context, List<String> languages,
-							  AbbreviationsByLocale abbreviationsByLocale,
-							  List<Map<String, String>> roadNameSuggestions, Button addLanguageButton)
+	public AddLocalizedNameAdapter(ArrayList<LocalizedName> data, Context context, List<String> languages,
+								   AbbreviationsByLocale abbreviationsByLocale,
+								   List<Map<String, String>> localizedNameSuggestions, Button addLanguageButton)
 	{
 		if(data.isEmpty())
 		{
-			data.add(new RoadName(languages.get(0), ""));
+			data.add(new LocalizedName(languages.get(0), ""));
 		}
 		this.data = data;
 		this.context = context;
 		this.languages = languages;
 		this.abbreviationsByLocale = abbreviationsByLocale;
-		this.roadNameSuggestions = roadNameSuggestions;
-		putDefaultRoadNameSuggestion();
+		this.localizedNameSuggestions = localizedNameSuggestions;
+		putDefaultLocalizedNameSuggestion();
 		this.addLanguageButton = addLanguageButton;
 		this.addLanguageButton.setOnClickListener(v -> {
 			showLanguageSelectMenu(v, getNotAddedLanguages(), this::add);
@@ -58,48 +58,47 @@ public class AddRoadNameAdapter extends RecyclerView.Adapter
 		updateAddLanguageButtonVisibility();
 	}
 
-	/* Road names are usually specified without language information (name=My Street). To provide
+	/* Names are usually specified without language information (name=My Street). To provide
 	 * meaningful name suggestions per language, it must then be determined in which language this
 	 * name tag is. */
-	private void putDefaultRoadNameSuggestion()
+	private void putDefaultLocalizedNameSuggestion()
 	{
 		String defaultLanguage = languages.get(0);
-		for (Map<String, String> roadNames : roadNameSuggestions)
-		{
-			if(roadNames.containsKey(""))
-			{
-				// name=A -> name=A, name:de=A (in Germany)
-				if(!roadNames.containsKey(defaultLanguage))
-				{
-					String defaultName = roadNames.get("");
-					roadNames.put(defaultLanguage, defaultName);
+		if(localizedNameSuggestions != null) {
+			for (Map<String, String> names : localizedNameSuggestions) {
+				if (names.containsKey("")) {
+					// name=A -> name=A, name:de=A (in Germany)
+					if (!names.containsKey(defaultLanguage)) {
+						String defaultName = names.get("");
+						names.put(defaultLanguage, defaultName);
+					}
 				}
 			}
 		}
 	}
 
-	private static ArrayList<RoadName> toRoadNameList(Map<String, String> nameByLanguageMap)
+	private static ArrayList<LocalizedName> toLocalizedNameList(Map<String, String> nameByLanguageMap)
 	{
-		ArrayList<RoadName> result = new ArrayList<>();
+		ArrayList<LocalizedName> result = new ArrayList<>();
 		String defaultName = nameByLanguageMap.get("");
 		for (Map.Entry<String, String> entry : nameByLanguageMap.entrySet())
 		{
 			// put default name first
 			// (i.e. name=A, name:en=B, name:de=A -> name:de goes first and name is not shown)
-			RoadName roadName = new RoadName(entry.getKey(), entry.getValue());
-			if(roadName.name.equals(defaultName))
+			LocalizedName localizedName = new LocalizedName(entry.getKey(), entry.getValue());
+			if(localizedName.name.equals(defaultName))
 			{
-				if(!roadName.languageCode.isEmpty()) result.add(0, roadName);
+				if(!localizedName.languageCode.isEmpty()) result.add(0, localizedName);
 			}
 			else
 			{
-				result.add(roadName);
+				result.add(localizedName);
 			}
 		}
 		// this is for the case: name=A, name:de=B, name:en=C -> name goes first
 		if(!result.get(0).name.equals(defaultName))
 		{
-			result.add(0, new RoadName("",defaultName));
+			result.add(0, new LocalizedName("",defaultName));
 		}
 		return result;
 	}
@@ -107,7 +106,7 @@ public class AddRoadNameAdapter extends RecyclerView.Adapter
 	@Override public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
 	{
 		LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-		return new ViewHolder(inflater.inflate(R.layout.quest_roadname_row, parent, false));
+		return new ViewHolder(inflater.inflate(R.layout.quest_localizedname_row, parent, false));
 	}
 
 	@Override public void onBindViewHolder(RecyclerView.ViewHolder holder, int position)
@@ -137,7 +136,7 @@ public class AddRoadNameAdapter extends RecyclerView.Adapter
 	private void add(@NonNull String languageCode)
 	{
 		int insertIndex = getItemCount();
-		data.add(new RoadName(languageCode, ""));
+		data.add(new LocalizedName(languageCode, ""));
 		notifyItemInserted(insertIndex);
 
 		updateAddLanguageButtonVisibility();
@@ -146,14 +145,14 @@ public class AddRoadNameAdapter extends RecyclerView.Adapter
 	private List<String> getNotAddedLanguages()
 	{
 		List<String> result = new ArrayList<>(languages);
-		for (RoadName roadName : data)
+		for (LocalizedName localizedName : data)
 		{
-			result.remove(roadName.languageCode);
+			result.remove(localizedName.languageCode);
 		}
 		return result;
 	}
 
-	public ArrayList<RoadName> getData()
+	public ArrayList<LocalizedName> getData()
 	{
 		return data;
 	}
@@ -205,55 +204,54 @@ public class AddRoadNameAdapter extends RecyclerView.Adapter
 		}
 	}
 
-	private interface OnRoadNameSuggestionSelected
+	private interface OnLocalizedNameSuggestionSelected
 	{
-		void onRoadNameSuggestionSelected(Map<String, String> selection);
+		void onLocalizedNameSuggestionSelected(Map<String, String> selection);
 	}
 
 	private void showNameSuggestionsMenu(View v,
-										 final Map<String, Map<String, String>> roadNameSuggestionsMap,
-										 final OnRoadNameSuggestionSelected callback)
+										 final Map<String, Map<String, String>> localizedNameSuggestionsMap,
+										 final OnLocalizedNameSuggestionSelected callback)
 	{
 		PopupMenu m = new PopupMenu(context, v);
 
 		int i = 0;
-		for (Map.Entry<String, Map<String, String>> entry : roadNameSuggestionsMap.entrySet())
+		for (Map.Entry<String, Map<String, String>> entry : localizedNameSuggestionsMap.entrySet())
 		{
 			m.getMenu().add(NONE,i++,NONE, entry.getKey());
 		}
 
 		m.setOnMenuItemClickListener(item ->
 		{
-			Map<String, String> selected = roadNameSuggestionsMap.get(item.getTitle().toString());
-			callback.onRoadNameSuggestionSelected(selected);
+			Map<String, String> selected = localizedNameSuggestionsMap.get(item.getTitle().toString());
+			callback.onLocalizedNameSuggestionSelected(selected);
 			return true;
 		});
 		m.show();
 	}
 
-	private Map<String,Map<String,String>> getRoadNameSuggestionsByLanguageCode(String languageCode)
+	private Map<String,Map<String,String>> getLocalizedNameSuggestionsByLanguageCode(String languageCode)
 	{
-		final Map<String,Map<String,String>> roadNameSuggestionsMap = new HashMap<>();
-		for (Map<String,String> roadNameSuggestion : roadNameSuggestions)
-		{
-			String name = roadNameSuggestion.get(languageCode);
-			if(name == null) continue;
+		final Map<String,Map<String,String>> localizedNameSuggestionsMap = new HashMap<>();
+		if(localizedNameSuggestions != null) {
+			for (Map<String, String> localizedNameSuggestion : localizedNameSuggestions) {
+				String name = localizedNameSuggestion.get(languageCode);
+				if (name == null) continue;
 
-			// "unspecified language" suggestions
-			if(languageCode.isEmpty())
-			{
-				int defaultNameOccurances = 0;
-				for(String other : roadNameSuggestion.values())
-				{
-					if (name.equals(other)) defaultNameOccurances++;
+				// "unspecified language" suggestions
+				if (languageCode.isEmpty()) {
+					int defaultNameOccurances = 0;
+					for (String other : localizedNameSuggestion.values()) {
+						if (name.equals(other)) defaultNameOccurances++;
+					}
+					// name=A, name:de=A -> do not consider "A" for "unspecified language" suggestion
+					if (defaultNameOccurances >= 2) continue;
+					// only for name=A, name:de=B, name:en=C,...
 				}
-				// name=A, name:de=A -> do not consider "A" for "unspecified language" suggestion
-				if (defaultNameOccurances >= 2) continue;
-				// only for name=A, name:de=B, name:en=C,...
+				localizedNameSuggestionsMap.put(name, localizedNameSuggestion);
 			}
-			roadNameSuggestionsMap.put(name, roadNameSuggestion);
 		}
-		return roadNameSuggestionsMap;
+		return localizedNameSuggestionsMap;
 	}
 
 	private class ViewHolder extends RecyclerView.ViewHolder
@@ -263,7 +261,7 @@ public class AddRoadNameAdapter extends RecyclerView.Adapter
 		private final TextView deleteButton;
 		private final View nameSuggestionsButton;
 
-		private RoadName roadName;
+		private LocalizedName localizedName;
 
 		public ViewHolder(View itemView)
 		{
@@ -279,10 +277,10 @@ public class AddRoadNameAdapter extends RecyclerView.Adapter
 				@Override public void afterTextChanged(Editable s)
 				{
 					String name = s.toString();
-					roadName.name = name;
+					localizedName.name = name;
 					if(name.isEmpty())
 					{
-						boolean hasSuggestions = !getRoadNameSuggestionsByLanguageCode(roadName.languageCode).isEmpty();
+						boolean hasSuggestions = !getLocalizedNameSuggestionsByLanguageCode(localizedName.languageCode).isEmpty();
 						nameSuggestionsButton.setVisibility(hasSuggestions ? View.VISIBLE : View.GONE);
 					}
 					else
@@ -300,18 +298,18 @@ public class AddRoadNameAdapter extends RecyclerView.Adapter
 			});
 		}
 
-		public void update(final int index, RoadName rn)
+		public void update(final int index, LocalizedName rn)
 		{
-			this.roadName = rn;
+			this.localizedName = rn;
 
 			final boolean isFirst = index == 0;
 
 			deleteButton.setVisibility(isFirst ? View.INVISIBLE : View.VISIBLE);
 			languageButton.setVisibility(languages.size() > 1 ? View.VISIBLE : View.INVISIBLE);
 
-			nameInput.setText(roadName.name);
+			nameInput.setText(localizedName.name);
 			nameInput.requestFocus();
-			languageButton.setText(roadName.languageCode);
+			languageButton.setText(localizedName.languageCode);
 
 			// first entry is bold (the first entry is supposed to be the "default language", I
 			// hope that comes across to the users like this. Otherwise, a text hint is necessary)
@@ -331,7 +329,7 @@ public class AddRoadNameAdapter extends RecyclerView.Adapter
 
 				showLanguageSelectMenu(v, notAddedLanguages, languageCode ->
 				{
-					roadName.languageCode = languageCode;
+					localizedName.languageCode = languageCode;
 					languageButton.setText(languageCode);
 					updateAddLanguageButtonVisibility();
 					updateNameSuggestions();
@@ -345,7 +343,7 @@ public class AddRoadNameAdapter extends RecyclerView.Adapter
 			{
 				@Override protected Abbreviations doInBackground(Void... params)
 				{
-					return abbreviationsByLocale.get(new Locale(roadName.languageCode));
+					return abbreviationsByLocale.get(new Locale(localizedName.languageCode));
 				}
 
 				@Override protected void onPostExecute(Abbreviations abbreviations)
@@ -357,17 +355,17 @@ public class AddRoadNameAdapter extends RecyclerView.Adapter
 
 		private void updateNameSuggestions()
 		{
-			final Map<String, Map<String, String>> roadNameSuggestionsMap =
-					getRoadNameSuggestionsByLanguageCode(roadName.languageCode);
+			final Map<String, Map<String, String>> localizedNameSuggestionsMap =
+					getLocalizedNameSuggestionsByLanguageCode(localizedName.languageCode);
 
 			boolean nameInputNotEmpty = !nameInput.getText().toString().isEmpty();
 			nameSuggestionsButton.setVisibility(
-					roadNameSuggestionsMap.isEmpty() || nameInputNotEmpty ? View.GONE : View.VISIBLE);
+					localizedNameSuggestionsMap.isEmpty() || nameInputNotEmpty ? View.GONE : View.VISIBLE);
 			nameSuggestionsButton.setOnClickListener(v ->
 			{
-				showNameSuggestionsMenu(v, roadNameSuggestionsMap, selection ->
+				showNameSuggestionsMenu(v, localizedNameSuggestionsMap, selection ->
 				{
-					data = toRoadNameList(selection);
+					data = toLocalizedNameList(selection);
 					notifyDataSetChanged();
 					updateAddLanguageButtonVisibility();
 				});

@@ -26,7 +26,7 @@ import de.westnordost.streetcomplete.quests.opening_hours.OpeningMonths;
 import de.westnordost.streetcomplete.quests.opening_hours.OpeningWeekdays;
 import de.westnordost.streetcomplete.quests.opening_hours.TimeRange;
 import de.westnordost.streetcomplete.quests.opening_hours.Weekdays;
-import de.westnordost.streetcomplete.quests.road_name.RoadName;
+import de.westnordost.streetcomplete.quests.localized_name.LocalizedName;
 
 @Singleton
 public class KryoSerializer implements Serializer
@@ -55,7 +55,7 @@ public class KryoSerializer implements Serializer
 			boolean[].class,
 			OpeningMonths.class,
 			OpeningWeekdays.class,
-			RoadName.class
+			LocalizedName.class
 	};
 
 
