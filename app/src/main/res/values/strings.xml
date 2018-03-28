@@ -498,7 +498,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
 
     <string name="quest_buildingType_title">"What kind of building is this?"</string>
     <string name="quest_building_type_generic_building_confirmation">Are you sure that you can not determine the building type more specifically?</string>
-    <string name="quest_building_type_no_value_confirmation">Please select a more specific value! The value you selected is not valid.</string>
+    <string name="quest_building_type_invalid_value">Please select a more specific value! The value you selected is not valid.</string>
 
     <string name="quest_buildingType_house">House</string>
     <string name="quest_buildingType_residential">Residential</string>

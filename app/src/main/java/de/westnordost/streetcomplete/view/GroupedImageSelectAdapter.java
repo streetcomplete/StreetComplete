@@ -16,11 +16,13 @@ import de.westnordost.streetcomplete.R;
 
 public class GroupedImageSelectAdapter extends RecyclerView.Adapter<GroupedImageSelectAdapter.ViewHolder>
 {
-	private final static int GROUP = 0;
+	final static int GROUP = 0;
 	private final static int CELL = 1;
 
-	private ArrayList<Item> items = new ArrayList<>();
-	private Item selectedItem;
+	ArrayList<Item> items = new ArrayList<>();
+	Item selectedItem;
+
+	GroupedImageSelectAdapter() {}
 
 	public GroupedImageSelectAdapter(GridLayoutManager gridLayoutManager)
 	{

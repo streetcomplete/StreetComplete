@@ -4,7 +4,6 @@ package de.westnordost.streetcomplete.quests.building_type;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 
-import java.util.ArrayList;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -14,8 +13,6 @@ import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
-import de.westnordost.streetcomplete.quests.road_surface.AddRoadSurfaceForm;
-import de.westnordost.streetcomplete.quests.roof_shape.AddRoofShapeForm;
 
 public class AddBuildingType extends SimpleOverpassQuestType
 {

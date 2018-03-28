@@ -12,7 +12,7 @@ import java.util.Arrays;
 
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
-import de.westnordost.streetcomplete.view.GroupedImageSelectAdapter;
+import de.westnordost.streetcomplete.view.GroupedImageSelectDescriptionAdapter;
 import de.westnordost.streetcomplete.view.Item;
 import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 
@@ -102,7 +102,7 @@ public class AddBuildingTypeForm extends AbstractQuestFormAnswerFragment
 			}),
 	};
 
-	private GroupedImageSelectAdapter imageSelector;
+	private GroupedImageSelectDescriptionAdapter imageSelector;
 
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
 									   Bundle savedInstanceState)
@@ -111,12 +111,12 @@ public class AddBuildingTypeForm extends AbstractQuestFormAnswerFragment
 
 		View contentView = setContentView(R.layout.quest_image_select);
 
-		RecyclerView buildingSelect = contentView.findViewById(R.id.surfaceSelect);
-		GridLayoutManager lm = new GridLayoutManager(getActivity(), 3);
+		RecyclerView buildingSelect = contentView.findViewById(R.id.imageSelect);
+		GridLayoutManager lm = new GridLayoutManager(getActivity(), 2);
 		buildingSelect.setLayoutManager(lm);
 		buildingSelect.setNestedScrollingEnabled(false);
 
-		imageSelector = new GroupedImageSelectAdapter(lm);
+		imageSelector = new GroupedImageSelectDescriptionAdapter(lm);
 		imageSelector.setItems(Arrays.asList(TOP_BUILDINGS));
 		buildingSelect.setAdapter(imageSelector);
 
@@ -141,7 +141,7 @@ public class AddBuildingTypeForm extends AbstractQuestFormAnswerFragment
 			if(!building.hasValue())
 			{
 				new AlertDialogBuilder(getContext())
-						.setMessage(R.string.quest_building_type_no_value_confirmation)
+						.setMessage(R.string.quest_building_type_invalid_value)
 						.setPositiveButton(R.string.ok, null)
 						.show();
 				return;
