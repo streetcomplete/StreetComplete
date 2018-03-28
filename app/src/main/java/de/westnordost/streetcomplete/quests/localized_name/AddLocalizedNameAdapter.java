@@ -343,7 +343,7 @@ public class AddLocalizedNameAdapter extends RecyclerView.Adapter
 			{
 				@Override protected Abbreviations doInBackground(Void... params)
 				{
-					return abbreviationsByLocale.get(new Locale(localizedName.languageCode));
+					return abbreviationsByLocale != null ? abbreviationsByLocale.get(new Locale(localizedName.languageCode)) : null;
 				}
 
 				@Override protected void onPostExecute(Abbreviations abbreviations)

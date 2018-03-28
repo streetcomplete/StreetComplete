@@ -1,8 +1,6 @@
 package de.westnordost.streetcomplete.quests.localized_name;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,14 +9,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
 
-import de.westnordost.osmapi.map.data.LatLon;
-import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.R;
-import de.westnordost.streetcomplete.data.osm.ElementGeometry;
 import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 
 public class AddBusStopNameForm extends AddLocalizedNameForm
@@ -38,9 +30,14 @@ public class AddBusStopNameForm extends AddLocalizedNameForm
 		return view;
 	}
 
+	@Override
+	protected void onClickOk() {
+		this.applyNameAnswer();
+	}
+
 	protected void addOtherAnswers()
 	{
-		addOtherAnswer(R.string.quest_name_answer_noName, this::confirmNoStreetName);
+		addOtherAnswer(R.string.quest_name_answer_noName, this::confirmNoName);
 		addOtherAnswer(R.string.quest_streetName_answer_cantType, this::showKeyboardInfo);
 	}
 
@@ -61,7 +58,7 @@ public class AddBusStopNameForm extends AddLocalizedNameForm
 
 		adapter = new AddLocalizedNameAdapter(
 			data, getActivity(), getPossibleStreetsignLanguages(),
-			abbreviationsByLocale, null, addLanguageButton);
+			null, null, addLanguageButton);
 		RecyclerView recyclerView = contentView.findViewById(R.id.roadnames);
 		recyclerView.setLayoutManager(
 			new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
@@ -88,7 +85,7 @@ public class AddBusStopNameForm extends AddLocalizedNameForm
 		applyFormAnswer(bundle);
 	}
 
-	private void confirmNoStreetName()
+	private void confirmNoName()
 	{
 		new AlertDialogBuilder(getActivity())
 				.setTitle(R.string.quest_name_answer_noName_confirmation_title)

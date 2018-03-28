@@ -9,10 +9,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -20,6 +23,8 @@ import javax.inject.Inject;
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.R;
+import de.westnordost.streetcomplete.data.meta.Abbreviations;
+import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale;
 import de.westnordost.streetcomplete.data.osm.ElementGeometry;
 import de.westnordost.streetcomplete.quests.localized_name.data.RoadNameSuggestionsDao;
 import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
@@ -34,6 +39,7 @@ public class AddRoadNameForm extends AddLocalizedNameForm
 
 	public static final int IS_SERVICE = 1, IS_LINK = 2, IS_TRACK = 3;
 
+	@Inject AbbreviationsByLocale abbreviationsByLocale;
 	@Inject RoadNameSuggestionsDao roadNameSuggestionsDao;
 
 	@Override
@@ -95,6 +101,31 @@ public class AddRoadNameForm extends AddLocalizedNameForm
 		List<LatLon> onlyFirstAndLast = Arrays.asList(points.get(0), points.get(points.size()-1));
 
 		return roadNameSuggestionsDao.getNames(onlyFirstAndLast, AddRoadName.MAX_DIST_FOR_ROAD_NAME_SUGGESTION);
+	}
+
+	@Override protected void onClickOk()
+	{
+		LinkedList<String> possibleAbbreviations = new LinkedList<>();
+		for (LocalizedName localizedName : adapter.getData())
+		{
+			String name = localizedName.name;
+			if(name.trim().isEmpty())
+			{
+				Toast.makeText(getActivity(), R.string.quest_generic_error_a_field_empty,
+					Toast.LENGTH_LONG).show();
+				return;
+			}
+
+			Abbreviations abbr = abbreviationsByLocale.get(new Locale(localizedName.languageCode));
+			boolean containsAbbreviations = abbr != null && abbr.containsAbbreviations(name);
+
+			if (name.contains(".") || containsAbbreviations)
+			{
+				possibleAbbreviations.add(name);
+			}
+		}
+
+		confirmPossibleAbbreviationsIfAny(possibleAbbreviations, this::applyNameAnswer);
 	}
 
 	@Override

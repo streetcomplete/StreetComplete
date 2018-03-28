@@ -11,21 +11,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Locale;
 import java.util.Queue;
 
 import javax.inject.Inject;
 
 import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.R;
-import de.westnordost.streetcomplete.data.meta.Abbreviations;
-import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale;
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
 import de.westnordost.streetcomplete.util.Serializer;
 import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
@@ -39,7 +34,6 @@ public abstract class AddLocalizedNameForm extends AbstractQuestFormAnswerFragme
 			NAMES = "names",
 			LANGUAGE_CODES = "language_codes";
 
-	@Inject AbbreviationsByLocale abbreviationsByLocale;
 	@Inject Serializer serializer;
 
 	protected AddLocalizedNameAdapter adapter;
@@ -73,7 +67,7 @@ public abstract class AddLocalizedNameForm extends AbstractQuestFormAnswerFragme
 
 		adapter = new AddLocalizedNameAdapter(
 				data, getActivity(), getPossibleStreetsignLanguages(),
-				abbreviationsByLocale, null, addLanguageButton);
+				null, null, addLanguageButton);
 		RecyclerView recyclerView = contentView.findViewById(R.id.roadnames);
 		recyclerView.setLayoutManager(
 				new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
@@ -94,31 +88,6 @@ public abstract class AddLocalizedNameForm extends AbstractQuestFormAnswerFragme
 	{
 		super.onSaveInstanceState(outState);
 		outState.putByteArray(LOCALIZED_NAMES_DATA, serializer.toBytes(adapter.getData()));
-	}
-
-	@Override protected void onClickOk()
-	{
-		LinkedList<String> possibleAbbreviations = new LinkedList<>();
-		for (LocalizedName localizedName : adapter.getData())
-		{
-			String name = localizedName.name;
-			if(name.trim().isEmpty())
-			{
-				Toast.makeText(getActivity(), R.string.quest_generic_error_a_field_empty,
-						Toast.LENGTH_LONG).show();
-				return;
-			}
-
-			Abbreviations abbr = abbreviationsByLocale.get(new Locale(localizedName.languageCode));
-			boolean containsAbbreviations = abbr != null && abbr.containsAbbreviations(name);
-
-			if (name.contains(".") || containsAbbreviations)
-			{
-				possibleAbbreviations.add(name);
-			}
-		}
-
-		confirmPossibleAbbreviationsIfAny(possibleAbbreviations, this::applyNameAnswer);
 	}
 
 	protected void applyNameAnswer()
