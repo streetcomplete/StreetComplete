@@ -503,4 +503,5 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_bicycle_parking_type_locker">Locker</string>
     <string name="quest_bicycle_parking_type_building">Building</string>
     <string name="quest_bicycle_parking_type_title">What is the type of this bicycle parking?</string>
+    <string name="quest_cycleway_value_suggestion_lane">bicycle suggestion lane</string>
 </resources>

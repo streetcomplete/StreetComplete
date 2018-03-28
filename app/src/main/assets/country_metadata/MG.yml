@@ -1,6 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
 isLivingStreetKnown: true
-livingStreetSign: ic_living_street_sadc
 officialLanguages: [mg, fr]
 orchardProduces: [coffee, vanilla, banana, guava, mango, mangosteen, coconut, cashew_nut, pineapple,
   sisal, orange, pepper, cacao, pistachio, tomatoe, apple, tung_nut]

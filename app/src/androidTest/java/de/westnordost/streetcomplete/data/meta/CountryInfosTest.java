@@ -39,16 +39,6 @@ public class CountryInfosTest extends AndroidTestCase
 		assertTrue(info.getRegularShoppingDays() >= 0);
 	}
 
-	private void checkMaxSpeedLayoutExists(CountryInfo info)
-	{
-		if(info.getMaxspeedLayout() != null)
-		{
-			int resId = getContext().getResources().getIdentifier(
-					info.getMaxspeedLayout(), "layout", getContext().getPackageName());
-			assertTrue(resId != 0);
-		}
-	}
-
 	private static List<String> validWeekdays = Arrays.asList("Mo","Tu","We","Th","Fr","Sa","Su");
 	private void checkStartOfWorkweekValid(CountryInfo info)
 	{
@@ -60,7 +50,6 @@ public class CountryInfosTest extends AndroidTestCase
 		checkFirstDayOfWorkweekIsValid(info);
 		checkSpeedUnitIsEitherKmhOrMph(info);
 		checkRegularShoppingDaysIsBetween0And7(info);
-		checkMaxSpeedLayoutExists(info);
 		checkStartOfWorkweekValid(info);
 	}
 
