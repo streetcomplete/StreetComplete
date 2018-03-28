@@ -21,9 +21,6 @@ import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
 import de.westnordost.streetcomplete.data.osm.tql.OverpassQLUtil;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 
-import static de.westnordost.streetcomplete.quests.bikeway.Cycleway.EXCLUSIVE_LANE;
-import static de.westnordost.streetcomplete.quests.bikeway.Cycleway.SHARED_LANE;
-
 public class AddCycleway implements OsmElementQuestType
 {
 	private final OverpassMapDataDao overpassServer;
@@ -111,16 +108,12 @@ public class AddCycleway implements OsmElementQuestType
 			case NONE_NO_ONEWAY:
 				changes.add(cyclewayKey, "no");
 				break;
-			case EXCLUSIVE_LANE:
-			case SHARED_LANE:
-			case LANE_UNSPECIFIED:
+			case LANE:
 				changes.add(cyclewayKey, "lane");
 				if(directionValue != null)
 				{
 					changes.addOrModify(cyclewayKey + ":oneway", directionValue);
 				}
-				if(cycleway == EXCLUSIVE_LANE)  changes.addOrModify(cyclewayKey + ":lane", "exclusive");
-				else if(cycleway == SHARED_LANE) changes.addOrModify(cyclewayKey + ":lane", "shared");
 				break;
 			case TRACK:
 				changes.add(cyclewayKey, "track");
@@ -129,16 +122,15 @@ public class AddCycleway implements OsmElementQuestType
 					changes.addOrModify(cyclewayKey + ":oneway", directionValue);
 				}
 				break;
-			case DUAL_TRACK:
+			case TRACK_DUAL:
 				changes.add(cyclewayKey, "track");
 				changes.addOrModify(cyclewayKey + ":oneway", "no");
 				break;
-			case DUAL_LANE:
+			case LANE_DUAL:
 				changes.add(cyclewayKey, "lane");
 				changes.addOrModify(cyclewayKey + ":oneway", "no");
-				changes.addOrModify(cyclewayKey + ":lane", "exclusive");
 				break;
-			case SIDEWALK_EXPLICIT:
+			case SIDEWALK:
 				// https://wiki.openstreetmap.org/wiki/File:Z240GemeinsamerGehundRadweg.jpeg
 				changes.add(cyclewayKey, "track");
 				changes.add(cyclewayKey + ":segregated", "no");
@@ -148,13 +140,8 @@ public class AddCycleway implements OsmElementQuestType
 				changes.add(cyclewayKey, "no");
 				changes.add("sidewalk:" + side.value + ":bicycle", "yes");
 				break;
-			case PICTOGRAMS:
+			case SHARED:
 				changes.add(cyclewayKey, "shared_lane");
-				changes.add(cyclewayKey + ":lane", "pictograms");
-				break;
-			case SUGGESTION_LANE:
-				changes.add(cyclewayKey, "shared_lane");
-				changes.add(cyclewayKey + ":lane", "shared");
 				break;
 			case BUSWAY:
 				changes.add(cyclewayKey, "share_busway");

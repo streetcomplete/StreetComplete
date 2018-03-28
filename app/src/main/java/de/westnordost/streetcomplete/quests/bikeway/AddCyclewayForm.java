@@ -14,7 +14,6 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -221,12 +220,12 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 
 	private static boolean isSingleTrackOrLane(Cycleway cycleway)
 	{
-		return cycleway == Cycleway.TRACK || cycleway == Cycleway.EXCLUSIVE_LANE;
+		return cycleway == Cycleway.TRACK || cycleway == Cycleway.LANE;
 	}
 
 	private static boolean isDualTrackOrLane(Cycleway cycleway)
 	{
-		return cycleway == Cycleway.DUAL_TRACK || cycleway == Cycleway.DUAL_LANE;
+		return cycleway == Cycleway.TRACK_DUAL || cycleway == Cycleway.LANE_DUAL;
 	}
 
 	@Override public boolean hasChanges()
@@ -268,28 +267,15 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 
 	private List<Cycleway> getCyclewayItems(boolean isRight)
 	{
-		List<Cycleway> values = new ArrayList<>(Arrays.asList(Cycleway.getDisplayValues()));
-		// different wording for a contraflow lane that is marked like a "shared" lane (just bicycle pictogram)
+		List<Cycleway> values = new ArrayList<>(Arrays.asList(Cycleway.values()));
 		if(isOneway() && isReverseSideRight() == isRight)
 		{
-			Collections.replaceAll(values, Cycleway.PICTOGRAMS, Cycleway.NONE_NO_ONEWAY);
+			values.remove(Cycleway.SHARED);
 		}
-		String country = getCountryInfo().getCountryCode();
-		if("BE".equals(country))
+		else
 		{
-			// Belgium does not make a difference between continuous and dashed lanes -> so don't tag that difference
-			// also, in Belgium there is a differentiation between the normal lanes and suggestion lanes
-			values.remove(Cycleway.EXCLUSIVE_LANE);
-			values.remove(Cycleway.SHARED_LANE);
-			values.add(0, Cycleway.LANE_UNSPECIFIED);
-			values.add(1, Cycleway.SUGGESTION_LANE);
+			values.remove(Cycleway.NONE_NO_ONEWAY);
 		}
-		else if("NL".equals(country))
-		{
-			// a differentiation between dashed lanes and suggestion lanes only exist in NL and BE
-			values.add(values.indexOf(Cycleway.SHARED_LANE)+1, Cycleway.SUGGESTION_LANE);
-		}
-
 		return values;
 	}
 
@@ -307,8 +293,7 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 					{
 						ImageView iconView = itemView.findViewById(R.id.imageView);
 						TextView textView = itemView.findViewById(R.id.textView);
-						int resId = item.getIconResId(isLeftHandTraffic());
-						iconView.setImageDrawable(getCurrentCountryEnglishResources().getDrawable(resId));
+						iconView.setImageResource(item.getIconResId(isLeftHandTraffic()));
 						textView.setText(item.nameResId);
 						itemView.setOnClickListener(view -> callback.onCyclewaySelected(item));
 					}

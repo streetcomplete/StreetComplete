@@ -2,11 +2,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                xmlns:tools="http://schemas.android.com/tools"
                 android:layout_margin="4dp"
                 android:padding="4dp"
                 android:background="?attr/selectableItemBackground"
-    >
+                >
 
     <ImageView
         android:id="@+id/imageView"
@@ -17,7 +16,7 @@
         android:scaleType="fitCenter"
         android:adjustViewBounds="true"
         android:background="#ddd"
-        tools:src="@drawable/ic_cycleway_lane"/>
+        android:src="@drawable/ic_cycleway_shared_lane"/>
 
     <TextView
         android:id="@+id/textView"
@@ -30,7 +29,7 @@
         style="@style/ImageSelectLabelBelow"
         android:maxLines="4"
         android:padding="4dp"
-        tools:text="@string/quest_cycleway_value_sidewalk_allowed"
+        android:text="@string/quest_cycleway_value_sidewalk_allowed"
         />
 
 
