@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Queue;
@@ -49,7 +50,10 @@ public abstract class AddLocalizedNameForm extends AbstractQuestFormAnswerFragme
 		return view;
 	}
 
-	protected abstract void addOtherAnswers();
+	protected void addOtherAnswers(Runnable noNameAction) {
+		addOtherAnswer(R.string.quest_name_answer_noName, noNameAction);
+		addOtherAnswer(R.string.quest_streetName_answer_cantType, this::showKeyboardInfo);
+	}
 
 	protected void initLocalizedNameAdapter(View contentView, Bundle savedInstanceState)
 	{
@@ -65,14 +69,18 @@ public abstract class AddLocalizedNameForm extends AbstractQuestFormAnswerFragme
 
 		Button addLanguageButton = contentView.findViewById(R.id.btn_add);
 
-		adapter = new AddLocalizedNameAdapter(
-				data, getActivity(), getPossibleStreetsignLanguages(),
-				null, null, addLanguageButton);
+		adapter = setupNameAdapter(data, addLanguageButton);
 		RecyclerView recyclerView = contentView.findViewById(R.id.roadnames);
 		recyclerView.setLayoutManager(
 				new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
 		recyclerView.setAdapter(adapter);
 		recyclerView.setNestedScrollingEnabled(false);
+	}
+
+	protected AddLocalizedNameAdapter setupNameAdapter(ArrayList<LocalizedName> data, Button addLanguageButton) {
+		return new AddLocalizedNameAdapter(
+			data, getActivity(), getPossibleStreetsignLanguages(),
+			null, null, addLanguageButton);
 	}
 
 	protected List<String> getPossibleStreetsignLanguages()
@@ -92,6 +100,10 @@ public abstract class AddLocalizedNameForm extends AbstractQuestFormAnswerFragme
 
 	protected void applyNameAnswer()
 	{
+		applyFormAnswer(prepareAnswerBundle());
+	}
+
+	protected Bundle prepareAnswerBundle() {
 		Bundle bundle = new Bundle();
 		ArrayList<LocalizedName> data = adapter.getData();
 
@@ -105,7 +117,8 @@ public abstract class AddLocalizedNameForm extends AbstractQuestFormAnswerFragme
 
 		bundle.putStringArray(NAMES, names);
 		bundle.putStringArray(LANGUAGE_CODES, languageCodes);
-		applyFormAnswer(bundle);
+
+		return bundle;
 	}
 
 	protected void confirmPossibleAbbreviationsIfAny(final Queue<String> names, final Runnable onConfirmedAll)
@@ -153,6 +166,26 @@ public abstract class AddLocalizedNameForm extends AbstractQuestFormAnswerFragme
 				})
 				.setNegativeButton(android.R.string.cancel, null)
 				.show();
+	}
+
+	protected static HashMap<String,String> toNameByLanguage(String[] names, String[] languages)
+	{
+		HashMap<String,String> result = new HashMap<>();
+		result.put("", names[0]);
+		// add languages only if there is more than one name specified. If there is more than one
+		// name, the "main" name (name specified in top row) is also added with the language.
+		if(names.length > 1)
+		{
+			for (int i = 0; i < names.length; i++)
+			{
+				// (the first) element may have no specific language
+				if(!languages[i].isEmpty())
+				{
+					result.put(languages[i], names[i]);
+				}
+			}
+		}
+		return result;
 	}
 
 	@Override public boolean hasChanges()

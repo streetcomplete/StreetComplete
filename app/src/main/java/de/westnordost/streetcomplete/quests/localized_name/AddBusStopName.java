@@ -41,10 +41,10 @@ public class AddBusStopName extends SimpleOverpassQuestType
 			return;
 		}
 
-		String[] names = answer.getStringArray(AddRoadNameForm.NAMES);
-		String[] languages = answer.getStringArray(AddRoadNameForm.LANGUAGE_CODES);
+		String[] names = answer.getStringArray(AddLocalizedNameForm.NAMES);
+		String[] languages = answer.getStringArray(AddLocalizedNameForm.LANGUAGE_CODES);
 
-		HashMap<String,String> stopNameByLanguage = toStopNameByLanguage(names, languages);
+		HashMap<String,String> stopNameByLanguage = AddLocalizedNameForm.toNameByLanguage(names, languages);
 		for (Map.Entry<String, String> e : stopNameByLanguage.entrySet())
 		{
 			if(e.getKey().isEmpty())
@@ -56,26 +56,6 @@ public class AddBusStopName extends SimpleOverpassQuestType
 				changes.add("name:" + e.getKey(), e.getValue());
 			}
 		}
-	}
-
-	private static HashMap<String,String> toStopNameByLanguage(String[] names, String[] languages)
-	{
-		HashMap<String,String> result = new HashMap<>();
-		result.put("", names[0]);
-		// add languages only if there is more than one name specified. If there is more than one
-		// name, the "main" name (name specified in top row) is also added with the language.
-		if(names.length > 1)
-		{
-			for (int i = 0; i < names.length; i++)
-			{
-				// (the first) element may have no specific language
-				if(!languages[i].isEmpty())
-				{
-					result.put(languages[i], names[i]);
-				}
-			}
-		}
-		return result;
 	}
 
 	@Override public String getCommitMessage() { return "Determine bus/tram stop names"; }

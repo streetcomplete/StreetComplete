@@ -111,7 +111,7 @@ public class AddRoadName implements OsmElementQuestType
 		String[] names = answer.getStringArray(AddRoadNameForm.NAMES);
 		String[] languages = answer.getStringArray(AddRoadNameForm.LANGUAGE_CODES);
 
-		HashMap<String,String> roadNameByLanguage = toRoadNameByLanguage(names, languages);
+		HashMap<String,String> roadNameByLanguage = AddLocalizedNameForm.toNameByLanguage(names, languages);
 		for (Map.Entry<String, String> e : roadNameByLanguage.entrySet())
 		{
 			if(e.getKey().isEmpty())
@@ -134,26 +134,6 @@ public class AddRoadName implements OsmElementQuestType
 			roadNameSuggestionsDao.putRoad(wayId, roadNameByLanguage,
 					new ArrayList<>(geometry.polylines.get(0)));
 		}
-	}
-
-	private static HashMap<String,String> toRoadNameByLanguage(String[] names, String[] languages)
-	{
-		HashMap<String,String> result = new HashMap<>();
-		result.put("", names[0]);
-		// add languages only if there is more than one name specified. If there is more than one
-		// name, the "main" name (name specified in top row) is also added with the language.
-		if(names.length > 1)
-		{
-			for (int i = 0; i < names.length; i++)
-			{
-				// (the first) element may have no specific language
-				if(!languages[i].isEmpty())
-				{
-					result.put(languages[i], names[i]);
-				}
-			}
-		}
-		return result;
 	}
 
 	@Nullable @Override public Boolean isApplicableTo(Element element)

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
@@ -37,8 +38,8 @@ public class AddLocalizedNameAdapter extends RecyclerView.Adapter
 	private final Button addLanguageButton;
 
 	public AddLocalizedNameAdapter(ArrayList<LocalizedName> data, Context context, List<String> languages,
-								   AbbreviationsByLocale abbreviationsByLocale,
-								   List<Map<String, String>> localizedNameSuggestions, Button addLanguageButton)
+								   @Nullable AbbreviationsByLocale abbreviationsByLocale,
+								   @Nullable List<Map<String, String>> localizedNameSuggestions, Button addLanguageButton)
 	{
 		if(data.isEmpty())
 		{
