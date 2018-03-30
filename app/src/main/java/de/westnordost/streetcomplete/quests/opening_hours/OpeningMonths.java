@@ -10,6 +10,7 @@ public class OpeningMonths
 	public static final int MAX_MONTH_INDEX = 11;
 
 	CircularSection months;
+
 	ArrayList<OpeningWeekdays> weekdaysList;
 
 	public OpeningMonths()
@@ -83,5 +84,17 @@ public class OpeningMonths
 			sb.append(names[months.getEnd()]);
 		}
 		return sb.toString();
+	}
+
+	public CircularSection getMonths() {
+		return months;
+	}
+
+	public void setMonths(CircularSection months) {
+		this.months = months;
+	}
+
+	public ArrayList<OpeningWeekdays> getWeekdaysList() {
+		return weekdaysList;
 	}
 }
