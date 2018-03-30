@@ -13,7 +13,7 @@ import de.westnordost.streetcomplete.oauth.OsmOAuthDialogFragment;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 import de.westnordost.streetcomplete.quests.QuestModule;
 import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHoursForm;
-import de.westnordost.streetcomplete.quests.road_name.AddRoadNameForm;
+import de.westnordost.streetcomplete.quests.localized_name.AddRoadNameForm;
 import de.westnordost.streetcomplete.quests.note_discussion.NoteDiscussionForm;
 import de.westnordost.streetcomplete.settings.SettingsActivity;
 import de.westnordost.streetcomplete.settings.SettingsFragment;

@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.road_name.data;
+package de.westnordost.streetcomplete.quests.localized_name.data;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
