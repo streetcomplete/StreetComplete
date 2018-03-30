@@ -30,8 +30,8 @@ public abstract class AddLocalizedNameForm extends AbstractQuestFormAnswerFragme
 {
 	protected static final String LOCALIZED_NAMES_DATA = "localized_names_data";
 
-	public static final String
-			NO_NAME = "no_name",
+	public static final String NO_NAME = "no_name";
+	private static final String
 			NAMES = "names",
 			LANGUAGE_CODES = "language_codes";
 
@@ -48,11 +48,6 @@ public abstract class AddLocalizedNameForm extends AbstractQuestFormAnswerFragme
 		Injector.instance.getApplicationComponent().inject(this);
 
 		return view;
-	}
-
-	protected void addOtherAnswers(Runnable noNameAction) {
-		addOtherAnswer(R.string.quest_name_answer_noName, noNameAction);
-		addOtherAnswer(R.string.quest_streetName_answer_cantType, this::showKeyboardInfo);
 	}
 
 	protected void initLocalizedNameAdapter(View contentView, Bundle savedInstanceState)
@@ -168,8 +163,11 @@ public abstract class AddLocalizedNameForm extends AbstractQuestFormAnswerFragme
 				.show();
 	}
 
-	protected static HashMap<String,String> toNameByLanguage(String[] names, String[] languages)
+	protected static HashMap<String,String> toNameByLanguage(Bundle answer)
 	{
+		String[] names = answer.getStringArray(NAMES);
+		String[] languages = answer.getStringArray(LANGUAGE_CODES);
+
 		HashMap<String,String> result = new HashMap<>();
 		result.put("", names[0]);
 		// add languages only if there is more than one name specified. If there is more than one

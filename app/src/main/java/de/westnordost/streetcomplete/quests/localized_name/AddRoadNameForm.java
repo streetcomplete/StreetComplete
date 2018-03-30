@@ -52,11 +52,16 @@ public class AddRoadNameForm extends AddLocalizedNameForm
 
 
 		View contentView = setContentView(R.layout.quest_localizedname);
-		addOtherAnswers(this::selectNoStreetNameReason);
+		addOtherAnswers();
 
 		initLocalizedNameAdapter(contentView, savedInstanceState);
 
 		return view;
+	}
+
+	private void addOtherAnswers() {
+		addOtherAnswer(R.string.quest_name_answer_noName, this::selectNoStreetNameReason);
+		addOtherAnswer(R.string.quest_streetName_answer_cantType, this::showKeyboardInfo);
 	}
 
 	@Override

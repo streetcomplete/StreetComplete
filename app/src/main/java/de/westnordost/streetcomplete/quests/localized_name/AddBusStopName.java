@@ -35,16 +35,13 @@ public class AddBusStopName extends SimpleOverpassQuestType
 
 	@Override public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
 	{
-		if(answer.getBoolean(AddBusStopNameForm.NO_NAME))
+		if(answer.getBoolean(AddLocalizedNameForm.NO_NAME))
 		{
 			changes.add("noname", "yes");
 			return;
 		}
 
-		String[] names = answer.getStringArray(AddLocalizedNameForm.NAMES);
-		String[] languages = answer.getStringArray(AddLocalizedNameForm.LANGUAGE_CODES);
-
-		HashMap<String,String> stopNameByLanguage = AddLocalizedNameForm.toNameByLanguage(names, languages);
+		HashMap<String,String> stopNameByLanguage = AddLocalizedNameForm.toNameByLanguage(answer);
 		for (Map.Entry<String, String> e : stopNameByLanguage.entrySet())
 		{
 			if(e.getKey().isEmpty())

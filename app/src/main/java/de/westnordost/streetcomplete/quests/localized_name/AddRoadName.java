@@ -84,7 +84,7 @@ public class AddRoadName implements OsmElementQuestType
 
 	public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
 	{
-		if(answer.getBoolean(AddRoadNameForm.NO_NAME))
+		if(answer.getBoolean(AddLocalizedNameForm.NO_NAME))
 		{
 			changes.add("noname", "yes");
 			return;
@@ -108,10 +108,7 @@ public class AddRoadName implements OsmElementQuestType
 			return;
 		}
 
-		String[] names = answer.getStringArray(AddRoadNameForm.NAMES);
-		String[] languages = answer.getStringArray(AddRoadNameForm.LANGUAGE_CODES);
-
-		HashMap<String,String> roadNameByLanguage = AddLocalizedNameForm.toNameByLanguage(names, languages);
+		HashMap<String,String> roadNameByLanguage = AddLocalizedNameForm.toNameByLanguage(answer);
 		for (Map.Entry<String, String> e : roadNameByLanguage.entrySet())
 		{
 			if(e.getKey().isEmpty())

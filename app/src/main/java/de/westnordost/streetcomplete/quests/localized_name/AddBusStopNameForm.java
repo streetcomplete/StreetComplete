@@ -23,11 +23,16 @@ public class AddBusStopNameForm extends AddLocalizedNameForm
 
 		View contentView = setContentView(R.layout.quest_localizedname);
 
-		addOtherAnswers(this::confirmNoName);
+		addOtherAnswers();
 
 		initLocalizedNameAdapter(contentView, savedInstanceState);
 
 		return view;
+	}
+
+	private void addOtherAnswers() {
+		addOtherAnswer(R.string.quest_name_answer_noName, this::confirmNoName);
+		addOtherAnswer(R.string.quest_streetName_answer_cantType, this::showKeyboardInfo);
 	}
 
 	@Override
