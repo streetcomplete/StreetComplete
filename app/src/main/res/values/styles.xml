@@ -35,7 +35,7 @@
         <item name="android:shadowRadius">0</item>
     </style>
 
-    <style name="OpeningHoursField">
+    <style name="TimesField">
         <item name="android:focusable">true</item>
         <item name="android:clickable">true</item>
         <item name="android:background">?android:attr/selectableItemBackground</item>

@@ -6,20 +6,20 @@
     android:orientation="horizontal">
 
     <TextView
-        android:id="@+id/weekday_from_to"
+        android:id="@+id/weekday"
         android:layout_width="135dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout="@+id/hours_from_to"
-        style="@style/OpeningHoursField"/>
+        android:layout="@+id/hours"
+        style="@style/TimesField"/>
 
     <TextView
-        android:id="@+id/hours_from_to"
+        android:id="@+id/hours"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/weekday_from_to"
+        android:layout_toEndOf="@+id/weekday"
         android:layout_toStartOf="@+id/delete"
-        style="@style/OpeningHoursField"/>
+        style="@style/TimesField"/>
 
     <TextView
         android:id="@+id/delete"
@@ -27,7 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        style="@style/OpeningHoursField"
+        style="@style/TimesField"
         tools:ignore="HardcodedText"/>
 
 </RelativeLayout>
