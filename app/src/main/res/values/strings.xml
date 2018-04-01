@@ -85,7 +85,7 @@
     <string name="about_title_license">"License"</string>
     <string name="about_summary_license">"GNU General Public License"</string>
     <string name="offline">"You are offline"</string>
-    <string name="confirmation_authorize_now">"You need to authorize with your OSM user account to upload your answers. Authorize now?"</string>
+    <string name="confirmation_authorize_now">"You need to authorize with your OSM user account to publish your answers. Authorize now?"</string>
     <string name="not_authorized">"Not authorized"</string>
     <string name="version_banned_message">"This version of StreetComplete is too old. Please update!"</string>
     <string name="no_gps_no_quests">"To scan for quests around you automatically, turn on location"</string>
