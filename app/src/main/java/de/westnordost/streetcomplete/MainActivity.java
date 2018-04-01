@@ -788,6 +788,8 @@ public class MainActivity extends AppCompatActivity implements
 	@UiThread private void showQuestDetails(final Quest quest, final QuestGroup group,
 											final Element element)
 	{
+		if(isQuestDetailsCurrentlyDisplayedFor(quest.getId(), group)) return;
+
 		if(getBottomSheetFragment() != null)
 		{
 			closeBottomSheet();

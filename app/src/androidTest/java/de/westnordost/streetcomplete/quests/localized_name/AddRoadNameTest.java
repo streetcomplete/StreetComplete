@@ -1,11 +1,11 @@
-package de.westnordost.streetcomplete.quests.road_name;
+package de.westnordost.streetcomplete.quests.localized_name;
 
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryModify;
 import de.westnordost.streetcomplete.quests.AOsmElementQuestTypeTest;
-import de.westnordost.streetcomplete.quests.road_name.data.PutRoadNameSuggestionsHandler;
-import de.westnordost.streetcomplete.quests.road_name.data.RoadNameSuggestionsDao;
+import de.westnordost.streetcomplete.quests.localized_name.data.PutRoadNameSuggestionsHandler;
+import de.westnordost.streetcomplete.quests.localized_name.data.RoadNameSuggestionsDao;
 
 import static org.mockito.Mockito.mock;
 

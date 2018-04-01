@@ -1,14 +1,14 @@
-package de.westnordost.streetcomplete.quests.road_name;
+package de.westnordost.streetcomplete.quests.localized_name;
 
 import android.support.annotation.NonNull;
 
 /** Carries the data language code + name in that language */
-public class RoadName
+public class LocalizedName
 {
 	@NonNull public String languageCode;
 	@NonNull public String name;
 
-	public RoadName(@NonNull String languageCode, @NonNull String name)
+	public LocalizedName(@NonNull String languageCode, @NonNull String name)
 	{
 		this.languageCode = languageCode;
 		this.name = name;

@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.road_name;
+package de.westnordost.streetcomplete.quests.localized_name;
 
 import android.content.Context;
 import android.text.Editable;
