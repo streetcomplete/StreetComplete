@@ -25,7 +25,7 @@ import de.westnordost.streetcomplete.data.tiles.DownloadedTilesTable;
 public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 {
 	public static final String DB_NAME = "streetcomplete.db";
-	public static final int DB_VERSION = 9;
+	public static final int DB_VERSION = 10;
 
 	private static final String OSM_QUESTS_CREATE_PARAMS = " (" +
 			OsmQuestTable.Columns.QUEST_ID +		" INTEGER		PRIMARY KEY, " +
@@ -327,7 +327,7 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 			db.execSQL(QUEST_VISIBILITY_TABLE_CREATE);
 		}
 
-		
+
 		// for later changes to the DB
 		// ...
 
