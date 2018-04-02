@@ -33,7 +33,7 @@ You can find a list of [frequently asked questions in the wiki](https://wiki.ope
 
 ## Contributing
 
-You can help by **adjusting the translations** at POEEditor:
+You can help by **translating StreetComplete** at POEEditor:
 
 [<img src="https://poeditor.com/public/images/logo_small.png" alt="POEditor">](https://poeditor.com/join/project/IE4GC127Ki)
 
@@ -49,7 +49,7 @@ You can help with [processing OSM notes opened by StreetComplete users](https://
 
 Finally, using it, testing it and giving constructive feedback is also a valuable contribution.
 
-For more information [have a look at the Contributing guide](CONTRIBUTING.md).
+For more information [have a look at the contributing guide](CONTRIBUTING.md).
 
 ## License
 
