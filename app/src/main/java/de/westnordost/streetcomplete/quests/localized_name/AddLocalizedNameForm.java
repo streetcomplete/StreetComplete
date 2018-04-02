@@ -31,9 +31,9 @@ public abstract class AddLocalizedNameForm extends AbstractQuestFormAnswerFragme
 	protected static final String LOCALIZED_NAMES_DATA = "localized_names_data";
 
 	public static final String NO_NAME = "no_name";
-	private static final String
-			NAMES = "names",
-			LANGUAGE_CODES = "language_codes";
+	static final String
+		NAMES = "names",
+		LANGUAGE_CODES = "language_codes";
 
 	@Inject Serializer serializer;
 

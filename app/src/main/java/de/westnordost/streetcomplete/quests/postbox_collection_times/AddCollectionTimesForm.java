@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.postbox_collection_times;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -16,10 +17,11 @@ import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
 import de.westnordost.streetcomplete.util.Serializer;
+import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 
 public class AddCollectionTimesForm extends AbstractQuestFormAnswerFragment
 {
-	public static final String TIMES = "times";
+	public static final String TIMES = "times", NO_TIMES_SPECIFIED = "no_times_specified";
 
 	private static final String TIMES_DATA = "times_data";
 
@@ -40,6 +42,20 @@ public class AddCollectionTimesForm extends AbstractQuestFormAnswerFragment
 
 		Button addTimes = contentView.findViewById(R.id.btn_add);
 		addTimes.setOnClickListener((v) -> collectionTimesAdapter.addNew());
+
+		addOtherAnswer(R.string.quest_collectionTimes_answer_no_times_specified, () ->
+		{
+			new AlertDialogBuilder(getContext())
+				.setTitle(R.string.quest_generic_confirmation_title)
+				.setPositiveButton(R.string.quest_generic_confirmation_yes, (dialog, which) ->
+				{
+					Bundle answer = new Bundle();
+					answer.putBoolean(NO_TIMES_SPECIFIED, true);
+					applyImmediateAnswer(answer);
+				})
+				.setNegativeButton(R.string.quest_generic_confirmation_no, null)
+				.show();
+		});
 
 		return view;
 	}

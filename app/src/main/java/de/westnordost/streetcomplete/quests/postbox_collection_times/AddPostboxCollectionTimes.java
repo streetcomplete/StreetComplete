@@ -18,7 +18,7 @@ public class AddPostboxCollectionTimes extends SimpleOverpassQuestType
 
 	@Override protected String getTagFilters()
 	{
-		return "nodes with amenity=post_box and !collection_times and (access !~ private|no)";
+		return "nodes with amenity=post_box and !collection_times and !note:collection_times and (access !~ private|no)";
 	}
 
 	@Override public AbstractQuestAnswerFragment createForm()
@@ -28,10 +28,18 @@ public class AddPostboxCollectionTimes extends SimpleOverpassQuestType
 
 	@Override public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
 	{
-		String times = answer.getString(AddCollectionTimesForm.TIMES);
-		if(times != null)
+		boolean noTimes = answer.getBoolean(AddCollectionTimesForm.NO_TIMES_SPECIFIED);
+		if(noTimes)
 		{
-			changes.add("collection_times", times);
+			changes.add("note:collection_times","no times specified on the box");
+		}
+		else
+		{
+			String times = answer.getString(AddCollectionTimesForm.TIMES);
+			if (times != null)
+			{
+				changes.add("collection_times", times);
+			}
 		}
 	}
 
@@ -53,16 +61,19 @@ public class AddPostboxCollectionTimes extends SimpleOverpassQuestType
 		// http://wanderlustexplorers.com/youve-got-mail-23-international-postal-boxes/
 
 		return Countries.noneExcept(new String[]{
+			// definitely, seen pictures:
 			"AU","NZ","VU","MY","SG","TH","VN","LA","MM","IN","BD","NP","LK","BT","PK","TW","HK",
 			"MO","CN","KR","JP","RU","BY","LT","LV","FI","SE","NO","DK","GB","IE","IS","NL","BE",
 			"FR","AD","ES","PT","CH","LI","AT","DE","LU","MC","IT","SM","MT","PL","EE","CA","US",
-			"UA","SK","CZ","HU","RO","MD","BG","SI","HR","IL","ZA","GR","UZ","ME","CY","TR","LB"
+			"UA","SK","CZ","HU","RO","MD","BG","SI","HR","IL","ZA","GR","UZ","ME","CY","TR","LB",
+			// these only maybe/sometimes (Oceania, Cambodia, North Korea):
+			"BN","KH","ID","TL","PG","KP","PH",
+			// unknown but all countries around have it (former Yugoslawia):
+			"RS","RS-KM","BA","MK","AL",
+			// unknown but region around it has it (southern states of former soviet union):
+			"TJ","KG","KZ","MN","GE",
 		});
 
-		// apparently mostly not in Latin America and in Arabic world
-		// maybe/sometimes in Indonesia, Philippines, Papua New Guinea, Timor, Cambodia
-		// unknown in Kazakhstan, Mongolia, Turkmenistan, Kyrgyzstan and countries around that area
-		// unknown in Africa
-		// unknown in former Yugoslawia
+		// apparently mostly not in Latin America and in Arabic world and unknown in Africa
 	}
 }
