@@ -25,14 +25,14 @@ public class AddRoadNameTest extends AOsmElementQuestTypeTest
 
 	public void testOneName()
 	{
-		bundle.putStringArray(AddRoadNameForm.NAMES, new String[]{"my name"});
+		bundle.putStringArray(AddLocalizedNameForm.NAMES, new String[]{"my name"});
 		verify(new StringMapEntryAdd("name","my name"));
 	}
 
 	public void testMultipleNames()
 	{
-		bundle.putStringArray(AddRoadNameForm.NAMES, new String[]{"my name","kröötz"});
-		bundle.putStringArray(AddRoadNameForm.LANGUAGE_CODES, new String[]{"en","de"});
+		bundle.putStringArray(AddLocalizedNameForm.NAMES, new String[]{"my name","kröötz"});
+		bundle.putStringArray(AddLocalizedNameForm.LANGUAGE_CODES, new String[]{"en","de"});
 		verify(
 				new StringMapEntryAdd("name","my name"),
 				new StringMapEntryAdd("name:en","my name"),
@@ -42,8 +42,8 @@ public class AddRoadNameTest extends AOsmElementQuestTypeTest
 
 	public void testMultipleNamesDefaultNameIsOfNoSpecificLanguage()
 	{
-		bundle.putStringArray(AddRoadNameForm.NAMES, new String[]{"my name / kröötz", "my name","kröötz"});
-		bundle.putStringArray(AddRoadNameForm.LANGUAGE_CODES, new String[]{"", "en","de"});
+		bundle.putStringArray(AddLocalizedNameForm.NAMES, new String[]{"my name / kröötz", "my name","kröötz"});
+		bundle.putStringArray(AddLocalizedNameForm.LANGUAGE_CODES, new String[]{"", "en","de"});
 		verify(
 				new StringMapEntryAdd("name","my name / kröötz"),
 				new StringMapEntryAdd("name:en","my name"),
