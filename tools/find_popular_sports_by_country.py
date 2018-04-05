@@ -6,7 +6,7 @@ import sys
 languageCode = sys.argv[1]
 query = "[timeout:3600][out:csv(sport)];(area[\"ISO3166-1\"="+languageCode+"];)->.x;way[leisure=pitch][sport](area.x);out tags;"
 encodedQueryData = str.encode(urllib.parse.urlencode({ "data" : query }))
-response = urllib.request.urlopen("http://overpass-api.de/api/interpreter", encodedQueryData, 3600)
+response = urllib.request.urlopen("https://overpass-api.de/api/interpreter", encodedQueryData, 3600)
 dict = {}
 for line in response:
 	line = line.decode("utf-8").rstrip()
