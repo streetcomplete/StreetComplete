@@ -1,9 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
-advisorySpeedLimitLayout: quest_maxspeed_advisory_blue
 isAdvisorySpeedLimitKnown: true
 isLivingStreetKnown: true
 isSlowZoneKnown: true
-livingStreetSign: ic_living_street_russian
 officialLanguages: [ru]
 orchardProduces: [apple, tomatoe, grape, plum, strawberry, raspberry, cherry, apricot, pear, peach,
   blueberry, tea, hop, orange]

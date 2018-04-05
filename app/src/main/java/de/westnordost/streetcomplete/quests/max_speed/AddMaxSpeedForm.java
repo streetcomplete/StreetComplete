@@ -57,11 +57,11 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 
 		if(isAdvisorySpeedLimit)
 		{
-			setStreetSignLayout(getAdvisorySpeedLimitLayoutResourceId());
+			setStreetSignLayout(R.layout.quest_maxspeed_advisory);
 		}
 		else
 		{
-			setStreetSignLayout(getMaxSpeedLayoutResourceId());
+			setStreetSignLayout(R.layout.quest_maxspeed);
 		}
 
 		addOtherAnswers();
@@ -77,7 +77,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 
 	private void setStreetSignLayout(int resourceId)
 	{
-		View contentView = setContentView(resourceId);
+		View contentView = setContentView(getCurrentCountryEnglishResources().getLayout(resourceId));
 
 		speedInput = contentView.findViewById(R.id.maxSpeedInput);
 
@@ -118,18 +118,6 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 		});
 
 		zoneContainer.findViewById(R.id.zoneImg).setOnClickListener(v -> zoneCheckbox.toggle());
-	}
-
-	private int getMaxSpeedLayoutResourceId()
-	{
-		String layout = getCountryInfo().getMaxspeedLayout();
-		return getResources().getIdentifier(layout,"layout", getActivity().getPackageName());
-	}
-
-	private int getAdvisorySpeedLimitLayoutResourceId()
-	{
-		String layout = getCountryInfo().getAdvisorySpeedLimitLayout();
-		return getResources().getIdentifier(layout,"layout", getActivity().getPackageName());
 	}
 
 	private void addOtherAnswers()
@@ -177,7 +165,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 			addOtherAnswer(R.string.quest_maxspeed_answer_advisory_speed_limit, () ->
 			{
 				isAdvisorySpeedLimit = true;
-				setStreetSignLayout(getAdvisorySpeedLimitLayoutResourceId());
+				setStreetSignLayout(R.layout.quest_maxspeed_advisory);
 			});
 		}
 	}
@@ -199,11 +187,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 		View view = LayoutInflater.from(getActivity()).inflate(R.layout.quest_maxspeed_living_street_confirmation, null, false);
 
 		ImageView img = view.findViewById(R.id.imgLivingStreet);
-		int drawableId = getResources().getIdentifier(
-				getCountryInfo().getLivingStreetSign(),
-				"drawable",
-				getActivity().getPackageName());
-		img.setImageDrawable(getResources().getDrawable(drawableId));
+		img.setImageDrawable(getCurrentCountryEnglishResources().getDrawable(R.drawable.ic_living_street));
 
 		new AlertDialogBuilder(getActivity())
 				.setView(view)

@@ -13,7 +13,6 @@ public class CountryInfo implements Serializable, Cloneable
 	// this value is not defined in the yaml file but it is the file name!
 	String countryCode;
 
-	// generic properties
 	List<String> speedUnit;
 	List<String> popularSports;
 	List<String> popularReligions;
@@ -27,11 +26,6 @@ public class CountryInfo implements Serializable, Cloneable
 	List<String> orchardProduces;
 	Boolean isAdvisorySpeedLimitKnown;
 	Boolean isLeftHandTraffic;
-
-	// streetcomplete specific (layout files etc)
-	String maxspeedLayout;
-	String livingStreetSign;
-	String advisorySpeedLimitLayout;
 
 	public List<String> getSpeedUnits()
 	{
@@ -58,16 +52,6 @@ public class CountryInfo implements Serializable, Cloneable
 	public Integer getRegularShoppingDays()
 	{
 		return regularShoppingDays;
-	}
-
-	public String getMaxspeedLayout()
-	{
-		return maxspeedLayout;
-	}
-
-	public String getAdvisorySpeedLimitLayout()
-	{
-		return advisorySpeedLimitLayout;
 	}
 
 	public boolean isSlowZoneKnown()
@@ -110,11 +94,6 @@ public class CountryInfo implements Serializable, Cloneable
 	public boolean isLivingStreetKnown()
 	{
 		return isLivingStreetKnown;
-	}
-
-	public String getLivingStreetSign()
-	{
-		return livingStreetSign;
 	}
 
 	public List<String> getOrchardProduces()

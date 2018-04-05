@@ -1,6 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [cy, gd]
-advisorySpeedLimitLayout: quest_maxspeed_advisory_white
 isAdvisorySpeedLimitKnown: true
 isLeftHandTraffic: true
 isLivingStreetKnown: true
