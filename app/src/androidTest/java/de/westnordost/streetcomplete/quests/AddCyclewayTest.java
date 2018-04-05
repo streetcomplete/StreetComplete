@@ -117,8 +117,7 @@ public class AddCyclewayTest extends AOsmElementQuestTypeTest
 		putBothSides(Cycleway.DUAL_TRACK);
 		verify(
 			new StringMapEntryAdd("cycleway:both", "track"),
-			new StringMapEntryAdd("cycleway:both:oneway", "no"),
-			new StringMapEntryAdd("cycleway:both:lane", "exclusive")
+			new StringMapEntryAdd("cycleway:both:oneway", "no")
 		);
 	}
 
