@@ -1,18 +1,102 @@
-## Adding quests
+Thanks for your interest in contributing to StreetComplete! 👍 There are many easy tasks you can do, even without programming knowledge, to create a better app for all users of StreetComplete and drive the OpenStreetMap project forward.
 
-[Do you have an idea for a new quest? Read this!](https://github.com/westnordost/StreetComplete/wiki/Adding-new-Quests-to-StreetComplete) (_before_ opening an issue)
+Even if you do not find something to do in this list, using StreetComplete, testing it and giving constructive feedback is always a valuable contribution too.
 
-You want to contribute a quest, but don't have any idea, which? Look [at the existing issues](
-https://github.com/westnordost/StreetComplete/issues?q=is%3Aissue+is%3Aopen+label%3A%22new+quest%22+sort%3Areactions-%2B1-desc). Sorted by :+1: reactions you can also see which are the most requested quests.
+<!-- TODO: table of contents! -->
 
-## Translations
+## Translating the app
 
-Translations are managed at POEditor. Please contribute them there. Manual translations as Pull Requests will not be merged and do not help the project.
+- [x] Requires no programming knowledge!
+- [x] Requires no OpenStreetMap knowledge!
 
-[<img src="https://poeditor.com/public/images/logo_small.png" alt="POEditor">](https://poeditor.com/join/project/IE4GC127Ki)
+You can translate StreetComplete at POEditor. You can add a translation in your own language or improve other translations. Note that manual translations as Pull Requests will not be merged and do not help the project.
+
+Follow [**this link** to improve the translations](https://poeditor.com/join/project/IE4GC127Ki):
+
+[![POEditor](https://poeditor.com/public/images/logo_small.png)](https://poeditor.com/join/project/IE4GC127Ki)
 
 Before each big release, translations are pulled in from POEditor.
 
-## Map style
+## Helping mappers by solving their notes
 
-Map style used by StreetComplete is developed as a [separate project](https://github.com/ENT8R/streetcomplete-mapstyle) and related issues should be reported there.
+- [x] Requires no programming knowledge!
+- [ ] Requires no OpenStreetMap knowledge!
+
+As you propbably noticed, you can choose "Cannot answer" in StreetComplete and thus leave a note by
+
+You can help with [processing OSM notes opened by StreetComplete users](https://ent8r.github.io/NotesReview/?query=StreetComplete&limit=100&start=true). (You can also do it without that special tool, but it helps.) When doing so, you can also find systematic problems or misunderstandings of user's when solving StreetComplete quests.
+
+If you find such user experience problems, please report them back in the [issue tracker of StreetComplete](https://github.com/westnordost/StreetComplete/issues). Do not forget to add links to examples, where you found them.
+
+## Joining discussions
+
+- [x] Requires no programming knowledge!
+- [x] Requires no OpenStreetMap knowledge!
+
+You can always join in discussions in issues for new quests or similar stuff. Often local knowledge or so is required, so we can estimate whether a quest can be asked in different regions.
+OpenStreetMap (and StreetComplete) works, because of a diverse community all over the world.
+
+[Especially look at the issues tagged with "help wanted"](https://github.com/westnordost/StreetComplete/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22).
+
+## Testing and reporting issues
+
+- [x] Requires no programming knowledge!
+- [x] Requires no OpenStreetMap knowledge!
+
+If you experience problems, crashes or a quest is not clear to you, feel free to open an issue for that. Remember to open one issue _for one matter_, so do not open one issue "I have found several problems", but one for each problem.
+
+1. If you have questions, remember to [read the FAQ](https://wiki.openstreetmap.org/wiki/StreetComplete/FAQ) first.
+2. Look [whether your issue has already been reported](https://github.com/westnordost/StreetComplete/issues).
+3. Now you can open a new issue. Give it a meaningful title and describe the problem. Do mention the StreetComplete and Android version, if it is a technical bug.
+
+### Map style issues
+
+Note that the map style used by StreetComplete is developed as a [separate project](https://github.com/ENT8R/streetcomplete-mapstyle), so please report issues related to it there.
+
+### Suggesting new quests
+
+We appreciate all quest ideas, you and others have, but some ideas cannot be added into the app, due to various design decicions and requirements. This is required in order to make a great app for all users of StreetComplete, whose contributions actually help the OpenStreetMap project. A quest, which nobody can solve and where users potentially choose wrong options and add wrong data to OpenStreetMap hurts not only OSM, but also this app.
+
+What you need to do:
+
+1. Search whether the quest you want to suggest is [already implemented in StreetComplete](https://wiki.openstreetmap.org/wiki/StreetComplete/Quests) or [already suggested in the issue tracker](https://github.com/westnordost/StreetComplete/issues).
+2. Please read the full guide on what requirements you need to consider to make the quest a great thing: [Adding new Quests to StreetComplete](https://github.com/westnordost/StreetComplete/wiki/Adding-new-Quests-to-StreetComplete).
+3. Open a new issue and fill out the issue template. Explain, why your quest meets the criteria you need to check, so other users can follow the example.
+4. Wait for input of others, even if you could implement it right away, it is always suggested to _first_ suggest a quest and implement it when it is accepted.
+
+➡️ If you can code, see also how to [develop your own quest](#developing-new-quests).
+
+## Improving documentation
+
+- [x] Requires no programming knowledge!
+- [ ] Requires no OpenStreetMap knowledge!
+
+You can also help to keep the wiki **up-to-date** for StreetComplete. For example:
+* Add missing quests [in the quest list](https://wiki.openstreetmap.org/wiki/StreetComplete/Quests) or check, that they are up to date.
+* [Edit the FAQ](https://wiki.openstreetmap.org/wiki/StreetComplete/FAQ) and add reoccuring questions.
+* Edit the [main StreetComplete page](https://wiki.openstreetmap.org/wiki/StreetComplete).
+
+## Development
+
+- [ ] Requires no programming knowledge!
+- [x] Requires no OpenStreetMap knowledge! (depends on what you do)
+
+If you would like to help and are able to contribute code, you are most welcome.
+
+There are many reasonable feature requests and ideas for new question types in the issue tracker which you could also engage yourself with. If you have own ideas how to improve this app and want to make sure that the Pull Request will be merged, it is strongly suggested to **open an issue first** to discuss the feature.
+
+If you need to find things, where help is appreciated
+
+### Developing new quests
+
+You want to contribute a new quest right away? That's great!
+However, we strongly suggest to [**open an issue** discussing the quest](#suggesting-new-quests), before creating a PR, so we can see if your quest idea meets the criteria and can be included in StreetComplete.
+
+In case you **don't have an idea of a quest?** Look [at the existing issues](https://github.com/westnordost/StreetComplete/issues?q=is%3Aissue+is%3Aopen+label%3A%22new+quest%22+sort%3Areactions-%2B1-desc). Sorted by 👍 reactions you can also see which are the most requested quests.
+
+To start developing you can just download [Android Studio](https://developer.android.com/studio/index.html) and create your quest. It should automatically handle indentation through the [editorconfig file](.editorconfig). If you use another IDE, you may need to [install a plugin](http://editorconfig.org/#download).
+In any case pay attention to [the new quest guide](https://github.com/westnordost/StreetComplete/wiki/Adding-new-Quests-to-StreetComplete) of StreetComplete! It also has tips for implementing a quest.
+
+Beginners can also [use the quest generator](https://ent8r.github.io/StreetCompleteQuestCreator/) for creating simple quests.
+
+You can look at **other quests** to see how they are implemented.

@@ -33,23 +33,18 @@ You can find a list of [frequently asked questions in the wiki](https://wiki.ope
 
 ## Contributing
 
-You can help by **translating StreetComplete** at POEEditor:
+This is an active open-source project, so you **can get involved in it** easily!
+You can help solving notes or
 
-[<img src="https://poeditor.com/public/images/logo_small.png" alt="POEditor">](https://poeditor.com/join/project/IE4GC127Ki)
+Here are a few things you can do:
+<!-- TODO: add Emojis -->
+* [Test the app and report issues!](Contributing.md#testing-and-reporting-issues)
+* [Translate the app in your language!](Contributing.md#translating-the-app)
+* [Help users, who left notes in StreetComplete!](Contributing.md#helping-mappers-by-solving-their-notes)
+* [Suggest new quests](Contributing.md#suggesting-new-quests), or, even better, [implement them](Contributing.md#developing-new-quests).
+* [and more…](Contributing.md)
 
-If you have ideas for new quest types, please read this guide: [Adding new Quests to StreetComplete](https://github.com/westnordost/StreetComplete/wiki/Adding-new-Quests-to-StreetComplete).
-
-If you would like to help and are able to contribute code, you are most welcome.
-I have a few tasks in mind that would be very helpful for the project, some of which do not require knowledge about the current code base. So best get in touch with me.
-
-Otherwise, there are many reasonable feature requests and ideas for new question types in the issue tracker which you could also engage yourself with.
-If you have own ideas how to improve this app and want to make sure that I will merge your Pull Request, I suggest you open an issue first in which the feature can be discussed.
-
-You can help with [processing OSM notes opened by StreetComplete users](https://ent8r.github.io/NotesReview/?query=StreetComplete&limit=100&start=true). With this tool, you can also find systematic problems or misunderstandings introduced through (users of) StreetComplete and report them back here.
-
-Finally, using it, testing it and giving constructive feedback is also a valuable contribution.
-
-For more information [have a look at the contributing guide](CONTRIBUTING.md).
+Also, if you like StreetComplete, **spread the word**! ❤️
 
 ## License
 
