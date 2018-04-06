@@ -22,7 +22,7 @@ Before each big release, translations are pulled in from POEditor.
 - [x] Requires no programming knowledge!
 - [ ] Requires no OpenStreetMap knowledge!
 
-As you propbably noticed, you can choose "Cannot answer" in StreetComplete and thus leave a note by
+As you probably noticed, you can choose "Cannot answer" in StreetComplete and thus leave a note by
 
 You can help with [processing OSM notes opened by StreetComplete users](https://ent8r.github.io/NotesReview/?query=StreetComplete&limit=100&start=true). (You can also do it without that special tool, but it helps.) When doing so, you can also find systematic problems or misunderstandings of user's when solving StreetComplete quests.
 
