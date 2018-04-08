@@ -59,6 +59,8 @@
     <string name="confirmation_discard_negative">"キャンセル"</string>
     <string name="action_download">"スキャンしてここを探索"</string>
     <string name="action_upload">"回答をアップロード"</string>
+
+    <!-- Fuzzy -->
     <string name="no_changes">"フォームを空のままにしました"</string>
     <string name="close">"閉じる"</string>
     <string name="download_error">"探索のスキャン中にエラーが発生しました"</string>
@@ -82,8 +84,12 @@
     <string name="about_title_license">"ライセンス"</string>
     <string name="about_summary_license">"GNU 一般公衆利用許諾"</string>
     <string name="offline">"オフラインです"</string>
+
+    <!-- Fuzzy -->
     <string name="confirmation_authorize_now">"OSM ユーザーアカウントで認証して、正しい回答を適用する必要があります。 今すぐ認証しますか?"</string>
     <string name="not_authorized">"認証されていません"</string>
+
+    <!-- Fuzzy -->
     <string name="version_banned_message">"このバージョンの StreetComplete は、回答のアップロードが禁止されています。 バージョンを更新してください!"</string>
     <string name="no_gps_no_quests">"周囲の探索を自動的にスキャンするには、位置情報をオンにしてください"</string>
     <string name="nothing_more_to_download">"それ以上の探索は利用できません"</string>
@@ -110,6 +116,8 @@
     <string name="pref_title_sync">"自動同期"</string>
     <string name="map_btn_zoom_out">"ズームアウト"</string>
     <string name="map_btn_zoom_in">"ズームイン"</string>
+
+    <!-- Fuzzy -->
     <string name="privacy_html">"&lt;p&gt;プライバシーを気にする人は、素敵です! あなたに良いニュースしかないと思います:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;直接の貢献&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
@@ -128,7 +136,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
 &lt;p&gt;&lt;b&gt;データの使用&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 前述のとおり、このアプリは OSM インフラストラクチャと直接通信します。つまり、探索をダウンロードする &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;オーバーパス API&lt;/a&gt;（これは匿名です）と、変更をアップロードする &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API&lt;/a&gt; です。&lt;br/&gt;
-ただし、変更をアップロードする前に、アプリは私たちのサーバー上で &lt;a href=\"http://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;simple text file&lt;/a&gt; を使用して、アップロードと変更が禁止されているかどうかを確認します。これは、OSM データを壊滅させる可能性のある重大なバグのあるバージョンのアプリを保護するめの予防措置です。
+ただし、変更をアップロードする前に、アプリは私たちのサーバー上で &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;simple text file&lt;/a&gt; を使用して、アップロードと変更が禁止されているかどうかを確認します。これは、OSM データを壊滅させる可能性のある重大なバグのあるバージョンのアプリを保護するめの予防措置です。
 &lt;/p&gt;
 &lt;p&gt;
 マップを表示するために、ベクタータイルが匿名の &lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt;Mapzen ベクタータイルサービス&lt;/a&gt; から取得されます。サービスは、プリキャッシュおよびパフォーマンス向上のため、どの領域が一般的であるかを理解するために、タイルのリクエストをログ記録します。彼らのプラットフォームは IP アドレスも記録し、そのホスティングはすべて Amazon になっているので、彼らが何をするかにかかっています。
@@ -159,6 +167,8 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_surface_value_sett">"敷石"</string>
     <string name="quest_surface_value_wood">"木"</string>
     <string name="quest_placeName_title">"この場所の名前は何ですか?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sidewalk_title">"この通りに歩道がありますか?"</string>
     <string name="map_orientation_info">"マップは北が上に向いています。"</string>
     <string name="quest_sidewalk_onlyNorth">"北側のみ"</string>
@@ -387,7 +397,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
 
     <!-- Fuzzy -->
     <string name="quest_way_lit_road_title">"この道路の箇所は照明が点灯していますか?"</string>
-    <string name="quest_way_lit_named_road_title">"\"%s\" 道路は照明が点灯していますか?"</string>
     <string name="quest_way_lit_automatic">"動き検出を使用します"</string>
     <string name="quest_way_lit_24_7">"昼夜点灯します"</string>
     <string name="pref_title_authorized_username_summary">"認証済アカウント: %s"</string>
@@ -526,4 +535,12 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_parking_access_private">"個人用"</string>
     <string name="quest_parking_access_yes">"公衆用 (有料または無料)"</string>
     <string name="quest_parking_access_customers">"来客用のみ"</string>
+    <string name="quest_streetName_pedestrian_title">"この歩行者用の通りの名前は何ですか?"</string>
+    <string name="quest_streetSurface_square_title">"この広場の路面は何ですか?"</string>
+    <string name="quest_streetSurface_square_name_title">"広場 %s の路面は何ですか?"</string>
+    <string name="quest_fee_answer_hours">"日時によって異なる"</string>
+    <string name="quest_fee_add_times">"時間を追加"</string>
+    <string name="quest_fee_only_at_hours">"はい。しかし次のみ…"</string>
+    <string name="quest_fee_not_at_hours">"はい。しかし次ではなく…"</string>
+    <string name="quest_fee_hours_title">"次の時間に:"</string>
 </resources>

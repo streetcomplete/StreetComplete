@@ -59,6 +59,8 @@
     <string name="confirmation_discard_negative">"Cancel·la"</string>
     <string name="action_download">"Cerca missions aquí"</string>
     <string name="action_upload">"Puja respostes"</string>
+
+    <!-- Fuzzy -->
     <string name="no_changes">"Heu deixat el formulari buit"</string>
     <string name="close">"tanca"</string>
     <string name="download_error">"S'ha produït un error en cercar missions"</string>
@@ -82,8 +84,12 @@
     <string name="about_title_license">"Llicència"</string>
     <string name="about_summary_license">"Llicència pública general GNU"</string>
     <string name="offline">"Sou fora de línia"</string>
+
+    <!-- Fuzzy -->
     <string name="confirmation_authorize_now">"Heu d'autoritzar el vostre compte d'usuari OSM per a poder aplicar qualsevol de les respostes. Voleu autoritzar-lo ara?"</string>
     <string name="not_authorized">"Sense autoritzar"</string>
+
+    <!-- Fuzzy -->
     <string name="version_banned_message">"Aquesta versió de l'StreetComplet està bandejada per a pujar qualsevol resposta! Actualitzeu-ne la versió!"</string>
     <string name="no_gps_no_quests">"Per a cercar automàticament missions prop teu, activa la geolocalització"</string>
     <string name="nothing_more_to_download">"No hi ha més missions disponibles"</string>
@@ -110,6 +116,8 @@
     <string name="pref_title_sync">"Sinc. automàtica"</string>
     <string name="map_btn_zoom_out">"Allunya't"</string>
     <string name="map_btn_zoom_in">"Apropa't"</string>
+
+    <!-- Fuzzy -->
     <string name="privacy_html">"&lt;p&gt; Ah, algú que es preocupa per la privadesa, bé! Crec que només tinc bones notícies per a tu:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Contribucions directes&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
@@ -128,7 +136,7 @@ La vostra ubicació només s'utilitza per a cercar automàticament missions que 
 &lt;p&gt;&lt;b&gt;Ús de dades&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 Com s'ha esmentat, l'aplicació es comunica directament amb la infraestructura de l'OSM. És a dir, amb l'&lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt; &lt;/a&gt;API Overpass&lt;/a&gt; per a baixar les missions (de forma anònima) i amb la &lt;a href = \"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;API de l'OSM&lt;/a&gt; API per a pujar els canvis.&lt;br/&gt;
-No obstant això, abans de pujar els canvis, l'aplicació comprova amb un &lt;a href=\"http://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;fitxer de text pla&lt;/a&gt; en el meu servidor si té prohibit pujar qualsevol canvi. Aquesta és una mesura de precaució per a poder mantenir versions de l'aplicació que tinguin errors crítics i puguin malmetre les dades de l'OSM.&lt;br/&gt;
+No obstant això, abans de pujar els canvis, l'aplicació comprova amb un &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;fitxer de text pla&lt;/a&gt; en el meu servidor si té prohibit pujar qualsevol canvi. Aquesta és una mesura de precaució per a poder mantenir versions de l'aplicació que tinguin errors crítics i puguin malmetre les dades de l'OSM.&lt;br/&gt;
 &lt;/p&gt;
 &lt;p&gt;
 Per a visualitzar el mapa, es recuperen tessel·les vectorials del servei &lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt;Mapzen&lt;/a&gt;, que és anònim. El servei enregistra les sol·licituds de tessel·les per a entendre quines àrees són populars per a la pre-emmagatzematge en memòria cau i millores de rendiment. La seva plataforma també registra les adreces IP i tot l'allotjament és a Amazon pel que estan subjectes al que hi podrien fer.
@@ -159,6 +167,8 @@ Per a visualitzar el mapa, es recuperen tessel·les vectorials del servei &lt;a 
     <string name="quest_surface_value_sett">"Llambordes"</string>
     <string name="quest_surface_value_wood">"Fusta"</string>
     <string name="quest_placeName_title">"Quin nom té aquest lloc?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sidewalk_title">"Aquest carrer té vorera?"</string>
     <string name="map_orientation_info">"El mapa té el nord amunt."</string>
     <string name="quest_sidewalk_onlyNorth">"Només en el costat nort"</string>
@@ -383,7 +393,6 @@ En cas contrari, podeu baixar un altre teclat a la botiga d'aplicacions. Els tec
     <!-- Fuzzy -->
     <string name="quest_way_lit_named_title">"És %s il·luminat aquí?"</string>
     <string name="quest_way_lit_road_title">"Està il·luminat aquest tram de carretera?"</string>
-    <string name="quest_way_lit_named_road_title">"És il·luminada la carretera \"%s\" aquí?"</string>
     <string name="quest_way_lit_automatic">"Utilitza detector de moviment"</string>
     <string name="quest_way_lit_24_7">"Està il·luminat de nit i de dia"</string>
     <string name="pref_title_authorized_username_summary">"Compte autoritzat: %s"</string>

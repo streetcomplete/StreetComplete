@@ -35,8 +35,6 @@
     <string name="quest_streetName_answer_noName_confirmation_description">"Nokre gongar står gateskiltet berre ved starten eller enden av gata. Merk òg at det gjerne ikkje finst gateskilt for sidegater som høyrer inn under ei hovudgate. Vanlegvis har alle gater med hus eit namn."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Viss du kan skriva gatenamnet utan forkortingar, bør du gjera dette. Mange vanlege forkortingar vert automatisk utvida, men det gjeld ikkje alle."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Inga forkorting"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_name_title">"Når er %s open?"</string>
     <string name="quest_openingHours_start_time">"opningstid"</string>
     <string name="quest_openingHours_end_time">"stengjetid"</string>
@@ -59,6 +57,8 @@
     <string name="confirmation_discard_negative">"Avbryt"</string>
     <string name="action_download">"Søk etter oppdrag her"</string>
     <string name="action_upload">"Last opp svar"</string>
+
+    <!-- Fuzzy -->
     <string name="no_changes">"Du har ikkje fylt ut skjemaet"</string>
     <string name="close">"lukk"</string>
     <string name="download_error">"Feil ved søk etter oppdrag"</string>
@@ -80,8 +80,12 @@
     <string name="about_title_license">"Lisensvilkår"</string>
     <string name="about_summary_license">"GNU General Public License"</string>
     <string name="offline">"Du er fråkopla"</string>
+
+    <!-- Fuzzy -->
     <string name="confirmation_authorize_now">"Du må gje programmet løyve til å bruka OpenStreetMap-kontoen din for å kunna senda inn endringane dine. Vil du gje løyve no?"</string>
     <string name="not_authorized">"Ikkje godkjend"</string>
+
+    <!-- Fuzzy -->
     <string name="version_banned_message">"Denne versjonen av StreetComplete er utestengd frå å lasta opp svar. Du må oppdatera til nyaste versjon."</string>
     <string name="no_gps_no_quests">"Du må slå på posisjonsinnhenting for å kunna søkja etter oppdrag i nærleiken"</string>
     <string name="nothing_more_to_download">"Det finst ingen fleire oppdrag her"</string>
@@ -108,32 +112,9 @@
     <string name="pref_title_sync">"Automatisk synkronisering"</string>
     <string name="map_btn_zoom_out">"Zoom ut"</string>
     <string name="map_btn_zoom_in">"Zoom inn"</string>
-    <string name="privacy_html">"&lt;p&gt;Ah, nokon som bryr seg om personvern – flott! Eg trur eg berre har gode nyheiter til deg:&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;Direkte bidrag&lt;/b&gt;&lt;/p&gt;
-&lt;p&gt;
-Merk først at du med denne appen gjev faktiske, direkte bidrag til OpenStreetMap.&lt;br/&gt;
-Alt du som bidreg med vert lagt direkte til kartet; det finst ikkje nokon tredjepart mellom appen og OSM-infrastrukturen, som det for eksempel finst med &lt;a href=\"https://wheelmap.org\"&gt;wheelmap.org&lt;/a&gt; og &lt;a href=\"http://www.kort.ch\"&gt;Kort&lt;/a&gt;.
-&lt;/p&gt;
-&lt;p&gt;
-Det er ikkje mogleg å redigera OpenStreetMap anonymt, så alle endringane dine vert gjorde med OSM-brukarkontoen din. Dette medfører at tidspunktet, innhaldet og (implisitt) staden du var på, vert synleg for alle på OpenStreetMap-nettstaden og vert knytte til brukarkontoen din.
-&lt;/p&gt;
 
-&lt;b&gt;Location&lt;/b&gt;&lt;br/&gt;
-&lt;p&gt;
-Posisjonsdataa dine vert berre brukt til å automatisk søkja opp oppdrag nær deg. Appen held denne informasjonen for seg sjølv.
-&lt;/p&gt;
-
-&lt;p&gt;&lt;b&gt;Databruk&lt;/b&gt;&lt;/p&gt;
-&lt;p&gt;
-Som nemnt kommuniserer appen direkte med OSM-infrastrukturen, nærare bestemt med &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass-API-et&lt;/a&gt; for nedlasting av oppdrag (dette er anonymt) og  med &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM-API-et&lt;/a&gt; for opplasting av endringar.&lt;br/&gt;
-Men før appen lastar opp endringane dine, sjekkar han via &lt;a href=\"http://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;ei enkel tekstfil&lt;/a&gt; på vevtenaren min on han er utestengd for å lasta opp endringar. Dette er ein «føre var»-funksjon for å hindra at versjonar av appen som har kritiske feil kan komma til å øydeleggja OSM-data.&lt;br/&gt;
-&lt;/p&gt;
-&lt;p&gt;
-For å visa kartet, vert vektorbaserte kartfliser lasta ned frå &lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt;Mapzen-tenesta&lt;/a&gt;. Det er òg anonymt. Tenesta loggar førespurnadar om kartfliser for å finna ut kva område som er populære, slik at desse kan gjerast klar på førehand, for at ting skal gå raskare. Ho loggar òg IP-adresser og brukar Amazon som tenesteleverandør, og er underlagt deira reglar og praksis.
-&lt;/p&gt;
-&lt;p&gt;
-(&lt;i&gt;Følgjande er ikkje implementert enno, og er berre tips om kva som er planlagt:&lt;/i&gt;) Dataa vist på poengtavla og profilen vert samanstilt frå offentleg tilgjengeleg informasjon frå OpenStreetMap. Desse dataa kjem ikkje frå denne appen, men frå innsendingshistorikken til OSM-brukarar.
-&lt;/p&gt;"</string>
+    <!-- Fuzzy -->
+    <string name="privacy_html">"&lt;p&gt;Ah, nokon som bryr seg om personvern – flott! Eg trur eg berre har gode nyheiter til deg:&lt;/p&gt;&lt;p&gt;&lt;b&gt;Direkte bidrag&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Merk først at du med denne appen gjev faktiske, direkte bidrag til OpenStreetMap.&lt;br/&gt;Alt du som bidreg med vert lagt direkte til kartet; det finst ikkje nokon tredjepart mellom appen og OSM-infrastrukturen, som det for eksempel finst med &lt;a href=\"https://wheelmap.org\"&gt;wheelmap.org&lt;/a&gt; og &lt;a href=\"http://www.kort.ch\"&gt;Kort&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;Det er ikkje mogleg å redigera OpenStreetMap anonymt, så alle endringane dine vert gjorde med OSM-brukarkontoen din. Dette medfører at tidspunktet, innhaldet og (implisitt) staden du var på, vert synleg for alle på OpenStreetMap-nettstaden og vert knytte til brukarkontoen din.&lt;/p&gt;&lt;b&gt;Posisjon&lt;/b&gt;&lt;br/&gt;&lt;p&gt;Posisjonsdataa dine vert berre brukt til å automatisk søkja opp oppdrag nær deg. Appen held denne informasjonen for seg sjølv.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Databruk&lt;/b&gt;&lt;/p&gt;&lt;p&gt;Som nemnt kommuniserer appen direkte med OSM-infrastrukturen, nærare bestemt med &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass-API-et&lt;/a&gt; for nedlasting av oppdrag (dette er anonymt) og  med &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM-API-et&lt;/a&gt; for opplasting av endringar.&lt;br/&gt;Men før appen lastar opp endringane dine, sjekkar han via &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;ei enkel tekstfil&lt;/a&gt; på vevtenaren min on han er utestengd for å lasta opp endringar. Dette er ein «føre var»-funksjon for å hindra at versjonar av appen som har kritiske feil kan komma til å øydeleggja OSM-data.&lt;br/&gt;&lt;/p&gt;&lt;p&gt;For å visa kartet, vert vektorbaserte kartfliser lasta ned frå &lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt;Mapzen-tenesta&lt;/a&gt;. Det er òg anonymt. Tenesta loggar førespurnadar om kartfliser for å finna ut kva område som er populære, slik at desse kan gjerast klar på førehand, for at ting skal gå raskare. Ho loggar òg IP-adresser og brukar Amazon som tenesteleverandør, og er underlagt deira reglar og praksis.&lt;/p&gt;&lt;p&gt;(&lt;i&gt;Følgjande er ikkje implementert enno, og er berre tips om kva som er planlagt:&lt;/i&gt;) Dataa vist på poengtavla og profilen vert samanstilt frå offentleg tilgjengeleg informasjon frå OpenStreetMap. Desse dataa kjem ikkje frå denne appen, men frå innsendingshistorikken til OSM-brukarar.&lt;/p&gt;"</string>
     <string name="autosync_on">"På"</string>
     <string name="autosync_only_on_wifi">"Berre på Wi-Fi"</string>
     <string name="autosync_off">"Av"</string>
@@ -157,6 +138,8 @@ For å visa kartet, vert vektorbaserte kartfliser lasta ned frå &lt;a href=\"ht
     <string name="quest_surface_value_sett">"Brustein"</string>
     <string name="quest_surface_value_wood">"Tredekke"</string>
     <string name="quest_placeName_title">"Kva heiter denne staden?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sidewalk_title">"Har denne gata fortau?"</string>
     <string name="map_orientation_info">"Kartet vert vist med nord opp."</string>
     <string name="quest_sidewalk_onlyNorth">"Berre på nordsida"</string>
@@ -234,27 +217,20 @@ Informasjonen du legg til vert sendt direkte til OpenStreetMap i ditt namn, utan
     <string name="quest_manySports_confirmation_specific">"Nett desse typane"</string>
     <string name="quest_manySports_confirmation_generic">"Generell idrettsbane"</string>
     <string name="quest_sport_manySports_confirmation_title">"Du valde mange idrettsgreiner"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_busStopShelter_name_title">"Er det eit busskur på stoppet %s?"</string>
     <string name="quest_toiletsFee_title">"Kostar det noko å bruka toaletta?"</string>
     <string name="quest_tactilePaving_title_bus">"Har busstoppet leielinjer for blinde i asfalten?"</string>
     <string name="quest_tactilePaving_title_crosswalk">"Har fotgjengarovergangen leielinjer for blinde på begge sider?"</string>
     <string name="quest_source_dialog_title">"Er du sikker på at du har sjekka dette på staden?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tactilePaving_title_name_bus">"Har busstoppet %s leielinjer for blinde i asfalten?"</string>
+    <string name="quest_tactilePaving_title_name_bus">"Har busstoppet %s leielinjer for blinde på fortauet?"</string>
     <string name="quest_source_dialog_note">"Legg berre inn informasjon som du sjølv har observert på staden."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Er det tak over denne sykkelparkeringa?"</string>
     <string name="dialog_session_dont_show_again">"Vis ikkje fleire gongar i denne økta"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetSurface_name_title">"Kva vegdekke har vegen %s her?"</string>
     <string name="quest_maxspeed_title_short">"Kva fartsgrense viser skiltet på denne vegen?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Fartsgrensa verkar usannsynleg."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Er du sikker på at det ikkje finst noko fartsskilt?"</string>
-    <string name="quest_maxspeed_answer_noSign_confirmation">"Såg du etter ved begge endene av gata?
-Viss det ikkje finst noko fartsskilt for heile gata, som òg gjeld for den avmerkte strekninga, gjeld standardfartsgrensa."</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation">"Såg du etter ved begge endene av gata? Viss det ikkje finst noko fartsskilt for heile gata, som òg gjeld for den avmerkte strekninga, gjeld standardfartsgrensa."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Ja, det finst ikkje noko skilt"</string>
     <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Det er forskjellig standardfartsgrense i tettbygde strøk og på landevegar (50 og 80 km/t i Noreg)."</string>
     <string name="quest_maxspeed_answer_noSign_urbanOk">"Tettbygd strøk"</string>
@@ -266,8 +242,6 @@ Viss det ikkje finst noko fartsskilt for heile gata, som òg gjeld for den avmer
     <string name="quest_sport_paddle_tennis">"Paddle-tennis"</string>
     <string name="quest_sport_gaelic_games">"Gæliske leikar"</string>
     <string name="quest_sport_sepak_takraw">"Sepak takraw"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_name_title">"Er %s tilgjengeleg med rullestol?"</string>
     <string name="quest_wheelchairAccess_limited">"Delvis"</string>
     <string name="quest_bikeParkingCapacity_hint">"Merk at dei fleste sykkelstativa kan brukast på begge sider, med éin sykkel på kvar side."</string>
@@ -276,26 +250,14 @@ Viss det ikkje finst noko fartsskilt for heile gata, som òg gjeld for den avmer
     <string name="quest_wheelchairAccess_subway_entrance_title">"Er denne T-banenedgangen tilgjengeleg med rullestol?"</string>
     <string name="quest_wheelchairAccess_railway_station_title">"Er denne jernbanestasjonen tilgjengeleg med rullestol?"</string>
     <string name="quest_wheelchairAccess_location_title">"Er denne staden tilgjengeleg med rullestol?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_bus_station_name_title">"Er busstasjonen %s tilgjengeleg med rullestol?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_subway_entrance_name_title">"Er T-banenedgangen %s tilgjengeleg med rullestol?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_railway_station_name_title">"Er jernbanestasjonen %s tilgjengeleg med rullestol?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_location_name_title">"Er %s tilgjengeleg med rullestol?"</string>
     <string name="quest_wheelchairAccess_limited_description_business">"«Delvis» vil seia at det ikkje er meir enn eitt trappetrinn ved inngangen og at inne er dei fleste romma tilgjengelege med rullestol."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"«Delvis» vil seia at det ikkje er meir enn eitt trappetrinn ved inngangen."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Er det ei forkorting i namnet %s?"</string>
     <string name="quest_baby_changing_table_toilets_title">"Finst det stellebord ved dette toalettet?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_baby_changing_table_title">"Finst det stellebord ved %s?"</string>
     <string name="quest_recycling_type_title">"Kva slags returpunkt er dette?"</string>
     <string name="recycling_centre">"Gjenvinningsstasjon"</string>
@@ -374,12 +336,9 @@ Elles kan du lasta ned eit anna tastatur i appbutikken. Mykje brukte tastatur so
     <string name="produce_vanilla">"Vanilje"</string>
     <string name="produce_walnuts">"Valnøtter"</string>
     <string name="produce_sisal">"Sisal"</string>
-    <string name="quest_way_lit_title">"Har denne strekninga lyssetjing?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_way_lit_named_title">"Har %s lyssetjing her?"</string>
-    <string name="quest_way_lit_road_title">"Har denne strekninga lyssetjing?"</string>
-    <string name="quest_way_lit_named_road_title">"Har «%s» lyssetjing her?"</string>
+    <string name="quest_way_lit_title">"Er denne strekninga lyssett?"</string>
+    <string name="quest_way_lit_named_title">"Er %s lyssett her?"</string>
+    <string name="quest_way_lit_road_title">"Er denne strekninga lyssett?"</string>
     <string name="quest_way_lit_automatic">"Lyset brukar rørslesensor"</string>
     <string name="quest_way_lit_24_7">"Lyset er på dag og natt"</string>
     <string name="pref_title_authorized_username_summary">"Godkjend konto: %s"</string>
@@ -440,11 +399,11 @@ Elles kan du lasta ned eit anna tastatur i appbutikken. Mykje brukte tastatur so
     <string name="reorder_quest_priority_hint">"Trykk og hald for å endra rekkjefølgja på oppdragstypane. Rekkjefølgja avgjer prioritering for nedlasting og vising på kartet."</string>
     <string name="undo_confirm_positive">"Angra"</string>
     <string name="undo_confirm_negative">"Avbryt"</string>
-    <string name="quest_dietType_vegetarian_name_title">"Har «%s» vegetarmat på menyen?"</string>
-    <string name="quest_dietType_vegan_name_title">"Har «%s» veganmat på menyen?"</string>
+    <string name="quest_dietType_vegetarian_name_title">"Har %s vegetarmat på menyen?"</string>
+    <string name="quest_dietType_vegan_name_title">"Har %s veganmat på menyen?"</string>
     <string name="quest_hasFeature_only">"Berre"</string>
-    <string name="quest_dietType_explanation_vegan">"Veganmat inneheld ingen dyreprodukt (ikkje kjøt, mjølk, fisk, egg, …)."</string>
-    <string name="quest_dietType_explanation_vegetarian">"Vegetarmat inneheld ikkje kjøt eller fisk."</string>
+    <string name="quest_dietType_explanation_vegan">"Veganmat inneheld ingen dyreprodukt (ikkje kjøt, fisk, fjørfe, mjølk, egg, …)."</string>
+    <string name="quest_dietType_explanation_vegetarian">"Vegetarmat inneheld ikkje kjøt, fisk eller fjørfe."</string>
     <string name="quest_dietType_explanation">"Svar berre ja dersom det finst eit fullverdig tilbod for denne dietten – ikkje for eksempel berre forrettar."</string>
     <string name="quest_carWashType_title">"Kva type bilvask vert tilbydd her?"</string>
     <string name="quest_carWashType_automated">"Automatisk"</string>
@@ -464,38 +423,29 @@ Elles kan du lasta ned eit anna tastatur i appbutikken. Mykje brukte tastatur so
     <string name="quest_streetName_answer_noProperStreet_track2">"Det er ein traktor- eller skogsveg"</string>
     <string name="quest_streetName_answer_noName_noname">"Ingen av grunnane – han manglar rett og slett namn"</string>
     <string name="quest_wheelchairAccess_toilets_title">"Er toaletta tilgjengelege for rullestolbrukarar?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_toilets_name_title">"Er toaletta på %s tilgjengelege for rullestolbrukarar?"</string>
-    <string name="quest_wheelchairAccess_description_toilets">"Viss toaletta er tilgjengelege for rullestolbrukarar, står det gjerne eit slikt skilt.
-    Delvis tyder at ein rullestolbrukar kan komma seg inn på og bruka toalettet men at det ikkje er tilrettelagt med støttehandtak eller tilpassa handvask."</string>
+    <string name="quest_wheelchairAccess_toilets_name_title">"Er toaletta %s tilgjengelege for rullestolbrukarar?"</string>
+    <string name="quest_wheelchairAccess_description_toilets">"Viss toaletta er tilgjengelege for rullestolbrukarar, står det gjerne eit slikt skilt. Delvis tyder at ein rullestolbrukar kan komma seg inn på og bruka toalettet men at det ikkje er tilrettelagt med støttehandtak eller tilpassa handvask."</string>
     <string name="map_btn_create_note">"Legg til ny merknad"</string>
     <string name="create_new_note_unprecise">"Zoom lenger inn for å leggja til merknad"</string>
     <string name="create_new_note_description">"Du kan leggja att ein merknad til andre kartleggjarar om eit problem her. Flytt på plasseringa av merknaden ved å flytta kartet:"</string>
     <string name="pref_title_quests_invalidation">"Tøm mellomlager for oppdrag"</string>
     <string name="pref_title_quests_invalidation_summary">"Nyttig viss du mistenkjer at nokre av oppdraga er utdaterte"</string>
     <string name="invalidate_confirmation">"Tøm"</string>
-    <string name="invalidation_dialog_message">"Viss du tømmer mellomlageret for oppdrag, vert oppdraga oppdaterte neste gong du lastar dei ned. Mellomlageret vert automatisk tømt etter éi veke eller viss eit oppdrag du har løyst viser seg å allereie vert løyst av nokon andre."</string>
+    <string name="invalidation_dialog_message">"Viss du tømmer mellomlageret for oppdrag, vert oppdraga oppdaterte neste gong du lastar dei ned. Mellomlageret vert automatisk tømt etter éi veke eller viss eit oppdrag du har løyst viser seg å allereie vera løyst av nokon andre."</string>
     <string name="quest_generic_looks_like_this">"Ser vanlegvis slik ut:"</string>
     <string name="quest_surface_value_metal">"Metall"</string>
     <string name="quest_surface_generic_surface_confirmation">"Er du sikker på at du ikkje kan fastsetja vegdekket meir presist?"</string>
     <string name="quest_cycleway_title2">"Finst det ein sykkelveg her? Kva type?"</string>
     <string name="quest_bridge_structure_title">"Kva struktur har denne brua?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_internet_access_name_title">"Kva slags Internett-tilgang tilbyr %s?"</string>
     <string name="quest_internet_access_wlan">"Wi-Fi"</string>
     <string name="quest_internet_access_wired">"Kabla tilgang (LAN)"</string>
     <string name="quest_internet_access_terminal">"Datamaskin(er) med Internett-tilgang"</string>
     <string name="quest_internet_access_no">"Ingen Internett-tilgang"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_busStopShelter_tram_name_title">"Er det eit trikkeskur på stoppet %s?"</string>
     <string name="quest_busStopShelter_tram_title">"Er det eit trikkeskur på dette stoppet?"</string>
     <string name="quest_bench_backrest_title">"Har denne benken ryggstø?"</string>
     <string name="quest_bench_answer_picnic_table">"Det er eit piknikbord"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_for_place_of_worship_title">"Kva religion vert praktisert ved %s?"</string>
     <string name="quest_religion_christian">"Kristendom"</string>
     <string name="quest_religion_muslim">"Islam"</string>
@@ -520,8 +470,6 @@ Elles kan du lasta ned eit anna tastatur i appbutikken. Mykje brukte tastatur so
     <string name="quest_parking_access_customers">"Kundeparkering"</string>
     <string name="quest_streetName_pedestrian_title">"Kva heiter denne gågata?"</string>
     <string name="quest_streetSurface_square_title">"Kva materiale er brukt på denne plassen?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetSurface_square_name_title">"Kva materiale er brukt på plassen %s her?"</string>
     <string name="quest_fee_answer_hours">"Kjem an på vekedag og klokkeslett"</string>
     <string name="quest_fee_add_times">"Legg til tider"</string>

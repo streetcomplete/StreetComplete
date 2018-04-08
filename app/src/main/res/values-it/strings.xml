@@ -61,6 +61,8 @@
     <string name="confirmation_discard_negative">"Annulla"</string>
     <string name="action_download">"Trova le missioni in zona"</string>
     <string name="action_upload">"Carica risposte"</string>
+
+    <!-- Fuzzy -->
     <string name="no_changes">"Hai lasciato un modulo vuoto"</string>
     <string name="close">"chiudi"</string>
     <string name="download_error">"Errore durante la ricerca di missioni"</string>
@@ -82,8 +84,12 @@
     <string name="about_title_license">"Licenza"</string>
     <string name="about_summary_license">"GNU General Public License"</string>
     <string name="offline">"Sei offline"</string>
+
+    <!-- Fuzzy -->
     <string name="confirmation_authorize_now">"Hai bisogno di autorizzare il tuo account OSM per inviare le tue risposte. Procedo con l'autorizzazione?"</string>
     <string name="not_authorized">"Non autorizzato"</string>
+
+    <!-- Fuzzy -->
     <string name="version_banned_message">"Questa versione di StreetComplete è stata bannata per caricare ogni risposta! È necessario aggiornare la versione!"</string>
     <string name="no_gps_no_quests">"Per individuare le missioni da svolgere in zona è necessario abilitare la localizzazione"</string>
     <string name="nothing_more_to_download">"Non sono disponibili ulteriori missioni"</string>
@@ -110,6 +116,8 @@
     <string name="pref_title_sync">"Auto-Sync"</string>
     <string name="map_btn_zoom_out">"Rimpicciolisci"</string>
     <string name="map_btn_zoom_in">"Ingrandisci"</string>
+
+    <!-- Fuzzy -->
     <string name="privacy_html">"&lt;p&gt;Ah, qualcuno che ha cura per la privacy. Bello! Io penso di avere solo buone notizie per te:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Contributi diretti&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;Prima di tutto, va detto che con questa applicazione, si danno contributi effettivi e diretti a OpenStreetMap.&lt;br/&gt;
@@ -126,7 +134,7 @@ La posizione viene utilizzata solo per la scansione automatica per le missioni c
 &lt;p&gt;&lt;b&gt; Utilizzo dei dati&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 Come accennato, l'applicazione comunica direttamente con l'infrastruttura OSM. Cioè, con &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass API&lt;/a&gt; per il download di missioni (che è anonimo) e con le &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API&lt;/a&gt; per il caricamento di modifiche. &lt;br/&gt;
-Tuttavia, prima di caricare le modifiche, l'app fa una verifica con un &lt;a href=\"http://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;semplice file di testo&lt;/a&gt; sul mio server per controllare se le è stato vietato il caricamento di eventuali modifiche. Si tratta di una misura precauzionale che impedisce ad alcune versioni dell'app contenenti bug critici di danneggiare i dati OSM&lt;br/&gt;
+Tuttavia, prima di caricare le modifiche, l'app fa una verifica con un &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;semplice file di testo&lt;/a&gt; sul mio server per controllare se le è stato vietato il caricamento di eventuali modifiche. Si tratta di una misura precauzionale che impedisce ad alcune versioni dell'app contenenti bug critici di danneggiare i dati OSM&lt;br/&gt;
 &lt;/p&gt;
 &lt;p&gt;
 Per visualizzare la mappa, vengono utilizzati tile vettoriali dal &lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt;servizio di Mapzen&lt;/a&gt; (anche questo anomimo). Il servizio mantiene dei log sulle tile vettoriali richieste allo scopo di identificare le aree più popolari per il pre-caching e il miglioramento delle prestazioni. La loro piattaforma registra anche gli indirizzi IP. Tutto il loro hosting è su Amazon pertanto sono soggetti a quei vincoli&lt;/p&gt;
@@ -156,6 +164,8 @@ Per visualizzare la mappa, vengono utilizzati tile vettoriali dal &lt;a href=\"h
     <string name="quest_surface_value_sett">"Bolognini"</string>
     <string name="quest_surface_value_wood">"Legno"</string>
     <string name="quest_placeName_title">"Qual è il nome di questo luogo?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sidewalk_title">"C'è un marciapiede in questa strada?"</string>
     <string name="map_orientation_info">"La mappa è orientata con il nord in alto"</string>
     <string name="quest_sidewalk_onlyNorth">"Solo sul lato nord"</string>
@@ -378,7 +388,6 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <!-- Fuzzy -->
     <string name="quest_way_lit_named_title">"%s è una strada illuminata?"</string>
     <string name="quest_way_lit_road_title">"Questo tratto di strada è illuminato?"</string>
-    <string name="quest_way_lit_named_road_title">"La strada \"%s\" è illuminata in questo punto?"</string>
     <string name="quest_way_lit_automatic">"fa uso di sensore di movimento"</string>
     <string name="quest_way_lit_24_7">"È illuminato sia di giorno sia di notte"</string>
     <string name="pref_title_authorized_username_summary">"Account autorizzato: %s"</string>

@@ -59,6 +59,8 @@
     <string name="confirmation_discard_negative">"Anulo"</string>
     <string name="action_download">"Skano për Gjurmime këtu"</string>
     <string name="action_upload">"Ngarko Përgjigjet"</string>
+
+    <!-- Fuzzy -->
     <string name="no_changes">"Latë formularin zbarzët"</string>
     <string name="close">"mbylle"</string>
     <string name="download_error">"Gabim gjatë skanimit për gjurmime"</string>
@@ -82,8 +84,12 @@
     <string name="about_title_license">"Licenca"</string>
     <string name="about_summary_license">"GNU General Public License"</string>
     <string name="offline">"Nuk jeni në rrjet"</string>
+
+    <!-- Fuzzy -->
     <string name="confirmation_authorize_now">"Duhet të autorizonin llogarinë tuaj në OSM për të aplikuar përgjigjet tuaja. Autorizoni tash?"</string>
     <string name="not_authorized">"Nuk jeni autorizuar"</string>
+
+    <!-- Fuzzy -->
     <string name="version_banned_message">"Ky version i StreetComplete është ndaluar nga ngarkimi i përgjigjeve! Ju lutem ngarkoni versionin tuaj!"</string>
     <string name="no_gps_no_quests">"Për të skanuar për gjurmime përreth jush automatikisht, aktivizoni lokacionin"</string>
     <string name="nothing_more_to_download">"Nuk ka më gjurmime"</string>
@@ -110,6 +116,8 @@
     <string name="pref_title_sync">"Auto-sinkronizim"</string>
     <string name="map_btn_zoom_out">"Zvogloni"</string>
     <string name="map_btn_zoom_in">"Zmadhoni"</string>
+
+    <!-- Fuzzy -->
     <string name="privacy_html">"&lt;p&gt;Ah, dikush që kujdeset për privatësinë, bukur! Unë mendoj se kam vetëm një lajm të mirë për ju:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt; Kontribute direkte&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
@@ -159,6 +167,8 @@ Për të shfaqur hartën, pllakat vektoriale merren nga &lt;a href=\"https://map
     <string name="quest_surface_value_sett">"Kubëza guri"</string>
     <string name="quest_surface_value_wood">"Dru"</string>
     <string name="quest_placeName_title">"Çfarë është emri i këtij vendi?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sidewalk_title">"A ka trotuar në këtë rrugë?"</string>
     <string name="map_orientation_info">"Harta është e orientuar me veriun lartë."</string>
     <string name="quest_sidewalk_onlyNorth">"Vetëm në anën veriore"</string>
@@ -386,7 +396,6 @@ Përndryshe, mund të shkarkoni një tastierë tjetër në dyqanin e aplikacione
 
     <!-- Fuzzy -->
     <string name="quest_way_lit_road_title">"A është kjo pjesë e rrugës e ndriçuar?"</string>
-    <string name="quest_way_lit_named_road_title">"A është \"%s\" i ndriçuar këtu?"</string>
     <string name="quest_way_lit_automatic">"Përdor detekim të lëvizjes"</string>
     <string name="quest_way_lit_24_7">"Ndriçohet ditën e natën"</string>
     <string name="pref_title_authorized_username_summary">"Llogaria e autorizuar: %s"</string>

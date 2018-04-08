@@ -59,6 +59,8 @@
     <string name="confirmation_discard_negative">"Cancelar"</string>
     <string name="action_download">"Procurar novos Desafios aqui"</string>
     <string name="action_upload">"Fazer upload das respostas"</string>
+
+    <!-- Fuzzy -->
     <string name="no_changes">"Deixou o formulário em branco"</string>
     <string name="close">"Fechar"</string>
     <string name="download_error">"Erro ao procurar novos desafios"</string>
@@ -80,8 +82,12 @@
     <string name="about_title_license">"Licença"</string>
     <string name="about_summary_license">"GNU General Public License"</string>
     <string name="offline">"Desligado"</string>
+
+    <!-- Fuzzy -->
     <string name="confirmation_authorize_now">"É necessário autorizar o acesso á sua conta OSM para aceitar as suas respostas. Aceder agora?"</string>
     <string name="not_authorized">"Não autorizado"</string>
+
+    <!-- Fuzzy -->
     <string name="version_banned_message">"Esta versão do StreetComplete foi impedida de adicionar qualquer resposta! Atualize esta app!"</string>
     <string name="no_gps_no_quests">"Para procurar desafios automaticamente, ative a sua localização"</string>
     <string name="nothing_more_to_download">"Não existem mais desafios disponíveis"</string>
@@ -108,6 +114,8 @@
     <string name="pref_title_sync">"Sincronização automática"</string>
     <string name="map_btn_zoom_out">"Afastar"</string>
     <string name="map_btn_zoom_in">"Aproximar"</string>
+
+    <!-- Fuzzy -->
     <string name="privacy_html">"&lt;p&gt;Ah, alguém que se preocupa com a privacidade, óptimo! Acho que tenho boas notícias para si:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Contribuições diretas&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
@@ -126,7 +134,7 @@ A sua localização é apenas utilizada para a pesquisa dos desafios existentes 
 &lt;p&gt;&lt;b&gt;Utilização de dados&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 Como foi mencionado, a app comunica diretamente com a infraestrutura OSM. Isto é, com &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass API&lt;/a&gt; para descarregar desafios (que é feito de forma anónima) e com &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API&lt;/a&gt; para adicionar as alterações.&lt;br/&gt;
-Contudo, antes de proceder à adição das alterações, a app confirma com &lt;a href=\"http://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;simple text file&lt;/a&gt; no servidor se foi banido de proceder a alterações. Isto é uma medida preventiva, para garantir que a versão contida na app, não cria conflitos e erros críticos que possam corromper os dados OSM.&lt;br/&gt;
+Contudo, antes de proceder à adição das alterações, a app confirma com &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;simple text file&lt;/a&gt; no servidor se foi banido de proceder a alterações. Isto é uma medida preventiva, para garantir que a versão contida na app, não cria conflitos e erros críticos que possam corromper os dados OSM.&lt;br/&gt;
 &lt;/p&gt;
 &lt;p&gt;
 Para a representação do mapa, é utilizado o mosaico de mapas vectoriais&lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt;Mapzen vector tile service&lt;/a&gt;, de forma anónima. O serviço regista os pedidos do mosaico para gerir a cache e melhorar o desempenho. Esta plataforma, também regista os endereços IP e todos os alojamentos encontram-se alojados na Amazon, por isso, estão sujeitos ao que eles possam fazer.
@@ -157,6 +165,8 @@ Para a representação do mapa, é utilizado o mosaico de mapas vectoriais&lt;a 
     <string name="quest_surface_value_sett">"Paralelepípedo"</string>
     <string name="quest_surface_value_wood">"Madeira"</string>
     <string name="quest_placeName_title">"Qual o nome deste lugar?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sidewalk_title">"Há passeio nesta rua?"</string>
     <string name="map_orientation_info">"O mapa está orientado para Norte."</string>
     <string name="quest_sidewalk_onlyNorth">"Apenas na parte Norte"</string>
@@ -378,7 +388,6 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <!-- Fuzzy -->
     <string name="quest_way_lit_named_title">"%s tem iluminação aqui?"</string>
     <string name="quest_way_lit_road_title">"Este troço de estrada tem iluminação?"</string>
-    <string name="quest_way_lit_named_road_title">"A estrada %s tem iluminação aqui?"</string>
     <string name="quest_way_lit_automatic">"Utiliza detetor de movimento"</string>
     <string name="quest_way_lit_24_7">"Está iluminado de dia e de noite"</string>
     <string name="pref_title_authorized_username_summary">"Autorizar conta: %s"</string>

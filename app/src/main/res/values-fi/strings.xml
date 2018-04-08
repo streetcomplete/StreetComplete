@@ -65,6 +65,8 @@
     <string name="confirmation_discard_negative">"Peruuta"</string>
     <string name="action_download">"Etsi puuttuvia tietoja"</string>
     <string name="action_upload">"Lähetä vastaukset"</string>
+
+    <!-- Fuzzy -->
     <string name="no_changes">"Jätit lomakkeen tyhjäksi"</string>
     <string name="close">"sulje"</string>
     <string name="download_error">"Kohteiden etsinnässä tapahtui virhe"</string>
@@ -88,8 +90,12 @@
     <string name="about_title_license">"Lisenssi"</string>
     <string name="about_summary_license">"GNU Yleinen Julkinen Lisenssi"</string>
     <string name="offline">"Olet offline- tilassa"</string>
+
+    <!-- Fuzzy -->
     <string name="confirmation_authorize_now">"Kirjautuminen OSM käyttäjätiliin vaaditaan jotta voit lisätä vastauksiasi. Kirjaudutaanko nyt?"</string>
     <string name="not_authorized">"Ei kirjauduttu"</string>
+
+    <!-- Fuzzy -->
     <string name="version_banned_message">"Tämä versio StreetCompletesta on estetty lähettämästä vastauksia! Päivitä sovellus!"</string>
     <string name="no_gps_no_quests">"Kohteiden automaattiseen hakuun vaaditaan sijaintipalvelut"</string>
     <string name="nothing_more_to_download">"Ei enempää täydennettävää saatavilla"</string>
@@ -116,6 +122,8 @@
     <string name="pref_title_sync">"Auto-Sync"</string>
     <string name="map_btn_zoom_out">"Loitonna"</string>
     <string name="map_btn_zoom_in">"Lähennä"</string>
+
+    <!-- Fuzzy -->
     <string name="privacy_html">"&lt;p&gt;Ah, joku sentään huolehtii yksityisyydestään, kiva! Mielestäni minulla on vain hyviä uutisia:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Suorat työpanokset&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
@@ -133,7 +141,7 @@ Sijaintiasi käytetään vain automaattiseen täydennettävien tietojen hakemise
 
 &lt;p&gt;&lt;b&gt;Datan käyttö&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-Kuten mainittu, sovellus on suoraan yhteydessä OSM järjestelmään. Toimintoon käytetään &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass API- rajapintaa&lt;/a&gt; ladattaessa puuttuvia tietoja (toiminto on anonyymi) ja &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API- rajapintaa&lt;/a&gt; lähetettäessä muutoksia.&lt;br/&gt; Joka tapauksessa, ennen lähettämistä sovellus tarkistaa muutoksesi käyttäen &lt;a href=\"http://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;yksinkertaista tekstitiedostoa&lt;/a&gt; palvelimellani muutoksien lähettäminen eston varalta. Tämä on ennaltaehkäisevä tarkistus jottei mahdolliset virheelliset sovellusversiot korruptoi OpenStreetMap dataa.&lt;br/&gt;
+Kuten mainittu, sovellus on suoraan yhteydessä OSM järjestelmään. Toimintoon käytetään &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass API- rajapintaa&lt;/a&gt; ladattaessa puuttuvia tietoja (toiminto on anonyymi) ja &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API- rajapintaa&lt;/a&gt; lähetettäessä muutoksia.&lt;br/&gt; Joka tapauksessa, ennen lähettämistä sovellus tarkistaa muutoksesi käyttäen &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;yksinkertaista tekstitiedostoa&lt;/a&gt; palvelimellani muutoksien lähettäminen eston varalta. Tämä on ennaltaehkäisevä tarkistus jottei mahdolliset virheelliset sovellusversiot korruptoi OpenStreetMap dataa.&lt;br/&gt;
 &lt;/p&gt;
 &lt;p&gt;
 Näytettäessä karttaa, vektoritiilet haetaan &lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt;Mapzen vektorikarttatiilipalvelusta&lt;/a&gt; joka on anonyymi. Palvelu tallentaa tiedot tiilien latamismääristä, jotta suosituimmat kartta-alueet voidaan pitää palvelimen välimuistissa parempaa suorituskykyä varten. Heidän alustansa tallentaa IP osoitteet ja kaikki heidän ylläpitonsa tapahtuu Amazonin palvelimilla, joten he päättävät mitä tekevät.
@@ -166,6 +174,8 @@ Näytettäessä karttaa, vektoritiilet haetaan &lt;a href=\"https://mapzen.com/p
     <string name="quest_surface_value_sett">"Nupukivi"</string>
     <string name="quest_surface_value_wood">"Puu"</string>
     <string name="quest_placeName_title">"Mikä on tämän paikan nimi?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sidewalk_title">"Onko tällä tiellä jalkakäytävää?"</string>
     <string name="map_orientation_info">"Kartta on suunnattu pohjoiseen."</string>
     <string name="quest_sidewalk_onlyNorth">"Vain pohjoissivulla"</string>
@@ -388,7 +398,6 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
     <!-- Fuzzy -->
     <string name="quest_way_lit_named_title">"Onko tämä %s valaistu?"</string>
     <string name="quest_way_lit_road_title">"Onko tämä tieosuus valaistu?"</string>
-    <string name="quest_way_lit_named_road_title">"Onko \"%s\" tässä valaistu?"</string>
     <string name="quest_way_lit_automatic">"Käytössä on liiketunnistin"</string>
     <string name="quest_way_lit_24_7">"Valaistu yötä päivää"</string>
     <string name="pref_title_authorized_username_summary">"Valtuutettu tili: %s"</string>

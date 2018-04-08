@@ -57,6 +57,8 @@
     <string name="confirmation_discard_negative">"Ångra"</string>
     <string name="action_download">"Sök efter uppdrag här"</string>
     <string name="action_upload">"Ladda upp svar"</string>
+
+    <!-- Fuzzy -->
     <string name="no_changes">"Du lämnade formuläret tomt"</string>
     <string name="close">"stäng"</string>
     <string name="download_error">"Fel vid scanning för uppdrag"</string>
@@ -80,8 +82,12 @@
     <string name="about_title_license">"Licens"</string>
     <string name="about_summary_license">"GNU General Public License"</string>
     <string name="offline">"Du är offline"</string>
+
+    <!-- Fuzzy -->
     <string name="confirmation_authorize_now">"Du måste godkänna din OSM användarkonto för att tillämpa någon av dina svar för gott. Auktorisera nu?"</string>
     <string name="not_authorized">"Inte godkänd"</string>
+
+    <!-- Fuzzy -->
     <string name="version_banned_message">"Denna version av StreetComplete har förbjudits från att överföra några svar! Vänligen uppdatera din version!"</string>
     <string name="no_gps_no_quests">"För att söka efter uppdrag runt omkring dig automatiskt, slå på plats"</string>
     <string name="nothing_more_to_download">"Inga ytterligare uppdrag tillgängliga"</string>
@@ -130,7 +136,7 @@ Din plats används endast för att automatiskt söka efter uppdrag omkring dig. 
 &lt;P&gt; &lt;b&gt; Data Användning &lt;/ b&gt; &lt;/ p&gt;
 &lt;P&gt;
 Som nämnts, appen kommunicerar direkt med OSM infrastruktur. Det vill säga, med &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt; Fart API &lt;/a&gt; för nedladdning uppdrag (som är anonym) och med &lt;a href = \"http: / /wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API &lt;/a&gt; för att ladda upp förändringar. &lt;br/&gt;
-Men innan du laddar upp dina ändringar, App kontrollerar med &lt;a href=\"http://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt; enkel textfil &lt;/a&gt; på min server om det har blivit bannlyst från uppladdning några ändringar. Detta är en försiktighetsåtgärd för att kunna hålla versioner av app som visar sig ha kritiska fel från eventuellt korrumperande OSM data. &lt;br/&gt;
+Men innan du laddar upp dina ändringar, App kontrollerar med &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt; enkel textfil &lt;/a&gt; på min server om det har blivit bannlyst från uppladdning några ändringar. Detta är en försiktighetsåtgärd för att kunna hålla versioner av app som visar sig ha kritiska fel från eventuellt korrumperande OSM data. &lt;br/&gt;
 &lt;/ P&gt;
 &lt;P&gt;
 För att visa på kartan, är vektor brickor hämtas från &lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt; Mapzen vektor kakel &lt;/a&gt;, som är anonym. Tjänsten loggar kakel begär att förstå vilka områden som är populära för pre-caching och prestandaförbättringar. Deras plattform loggar även IP-adresser och alla deras värd är på Amazon så att de är föremål för vad de kan göra.
@@ -153,14 +159,16 @@ För att visa på kartan, är vektor brickor hämtas från &lt;a href=\"https://
     <string name="quest_surface_value_dirt">"Smuts"</string>
     <string name="quest_surface_value_fine_gravel">"Fint grus"</string>
     <string name="quest_surface_value_grass">"Gräs"</string>
-    <string name="quest_surface_value_grass_paver">"Grass asfaltläggare"</string>
+    <string name="quest_surface_value_grass_paver">"Dagvattensuppsamling"</string>
     <string name="quest_surface_value_gravel">"Grus"</string>
     <string name="quest_surface_value_paving_stones">"Gatsten"</string>
-    <string name="quest_surface_value_pebblestone">"Pebbles"</string>
+    <string name="quest_surface_value_pebblestone">"Grus"</string>
     <string name="quest_surface_value_sand">"Sand"</string>
     <string name="quest_surface_value_sett">"Kullersten"</string>
     <string name="quest_surface_value_wood">"Trä"</string>
     <string name="quest_placeName_title">"Vad är namnet på det här stället?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sidewalk_title">"Finns det en trottoar i denna gata?"</string>
     <string name="map_orientation_info">"Kartan är orienterad mot norr upp."</string>
     <string name="quest_sidewalk_onlyNorth">"Endast på norra sidan"</string>
@@ -322,7 +330,7 @@ Den information du anger sedan direkt till den OpenStreetMap i ditt namn, utan a
     <string name="quest_streetName_answer_cantType">"Bokstäverna på skylten kan inte skrivas"</string>
     <string name="quest_streetName_cantType_title">"Om du använder ett standardtangentbord är chansen att du enkelt kan aktivera tangentbordslayouten för det språk du behöver i inställningsmetodinställningarna. Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbord som stöder många språk är Google Gboard, SwiftKey Keyboard och Multiling O Keyboard."</string>
     <string name="quest_streetName_cantType_open_settings">"Öppna inställningar"</string>
-    <string name="quest_streetName_cantType_open_store">"Öppen affär"</string>
+    <string name="quest_streetName_cantType_open_store">"Öppna appbutik"</string>
     <string name="quest_streetName_cantType_description">"Om du använder ett standardtangentbord är chansen att du enkelt kan aktivera tangentbordslayouten för det språk du behöver i inställningarna.
 
 Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbord som stöder många språk är Google Gboard, SwiftKey Keyboard och Multiling O Keyboard."</string>
@@ -398,10 +406,10 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
 
     <!-- Fuzzy -->
     <string name="quest_way_lit_road_title">"Har den här delen av vägen belysning?"</string>
-    <string name="quest_way_lit_named_road_title">"Har %s belysning här?"</string>
     <string name="quest_way_lit_automatic">"Den använder rörelsedetektion"</string>
     <string name="quest_way_lit_24_7">"Det är belyst dygnet runt."</string>
     <string name="pref_title_authorized_username_summary">"Auktoriserat konto: %s"</string>
+    <string name="cannot_find_bbox_or_reduce_tilt">"Kan inte söka här. Försök att zooma in ytterligare eller minska kartans lutning."</string>
     <string name="quest_crossing_type_title">"Vilken typ av övergångsställe är det här?"</string>
     <string name="quest_crossing_type_signals">"Övergångsställe med trafikljus"</string>
     <string name="quest_crossing_type_uncontrolled">"Obevakat övergångsställe"</string>
@@ -472,17 +480,21 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_openingHours_emptyAnswer">"Beskriv vad som står på skylten. Saknas skylt, fråga om öppettiderna."</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"Inga, men cyklister får cykla i båda riktningarna"</string>
     <string name="quest_streetName_answer_noName_question">"Varför har den inget namn?"</string>
+    <string name="quest_streetName_answer_noProperStreet_service2">"Det är en uppfart, parkeringsväg eller liknande"</string>
     <string name="quest_streetName_answer_noProperStreet_track2">"Det är en traktor- eller skogsväg"</string>
     <string name="quest_streetName_answer_noName_noname">"Inget av ovanstående, den har helt enkelt inget namn"</string>
+    <string name="quest_wheelchairAccess_toilets_title">"Är de här toaletterna tillgängliga med rullstol?"</string>
+    <string name="quest_wheelchairAccess_toilets_name_title">"Är toaletterna %s tillgängliga med rullstol?"</string>
     <string name="map_btn_create_note">"Skapa en ny anteckning"</string>
     <string name="create_new_note_unprecise">"Zooma in ytterligare för att skapa en anteckning"</string>
-    <string name="create_new_note_description">"Du har möjlighet att lämna en anteckning för att meddela andra kartläggare om en fråga här. Justera anteckningens position genom att flytta kartan."</string>
+    <string name="create_new_note_description">"Du har möjlighet att lämna en offentlig anteckning på kartpunkten som andra kartläggare kan kommentera och förhoppningsvis avgöra. Justera anteckningens position genom att flytta kartan."</string>
     <string name="quest_generic_looks_like_this">"Ser vanligtvis ut så här:"</string>
     <string name="quest_surface_value_metal">"Metall"</string>
+    <string name="quest_surface_generic_surface_confirmation">"Är du säker på att du inte kan beskriva underlaget mer specifikt?"</string>
     <string name="quest_cycleway_title2">"Finns det en cykelväg här? Vilken typ?"</string>
     <string name="quest_bridge_structure_title">"Vilken typ av bro är det här?"</string>
     <string name="quest_bench_backrest_title">"Har den här bänken ett ryggstöd?"</string>
-    <string name="quest_bench_answer_picnic_table">"Det är ett picnickbord."</string>
+    <string name="quest_bench_answer_picnic_table">"Det är ett picnickbord"</string>
 
     <!-- Fuzzy -->
     <string name="quest_religion_for_place_of_worship_title">"Vilken religion praktiseras vid %s?"</string>
@@ -495,6 +507,7 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_religion_taoist">"Taoism"</string>
     <string name="quest_parking_fee_title">"Är parkeringen avgiftsbelagd?"</string>
     <string name="quest_cycleway_value_lane_soft">"cykelfil (streckad markering)"</string>
+    <string name="quest_surface_value_unhewn_cobblestone">"Ohuggen kullersten "</string>
     <string name="quest_parking_access_title">"Är det reglerat vem som får parkera här?"</string>
     <string name="quest_parking_access_private">"Parkeringen är privat"</string>
     <string name="quest_parking_access_yes">"Parkeringen är offentlig (med eller utan avgift)"</string>

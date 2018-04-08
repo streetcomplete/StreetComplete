@@ -60,6 +60,8 @@
     <string name="confirmation_discard_negative">"İptal etmek"</string>
     <string name="action_download">"Görevleri burada tara"</string>
     <string name="action_upload">"Yanıtları Yükle"</string>
+
+    <!-- Fuzzy -->
     <string name="no_changes">"Formu boş bıraktın"</string>
     <string name="close">"Kapat"</string>
     <string name="download_error">"Görevler için tarama yapılırken hata oluştu"</string>
@@ -83,8 +85,12 @@
     <string name="about_title_license">"Lisans"</string>
     <string name="about_summary_license">"GNU Genel Kamu Lisansı"</string>
     <string name="offline">"Çevrimdışısınız"</string>
+
+    <!-- Fuzzy -->
     <string name="confirmation_authorize_now">"Verdiğiniz cevaplardan herhangi birisini uygulamak için OSM kullanıcı hesabınızla yetkilendirmeniz gerekir. Şimdi yetkilendirilsin mi?"</string>
     <string name="not_authorized">"Yetkili değil"</string>
+
+    <!-- Fuzzy -->
     <string name="version_banned_message">"StreetComplete'in bu sürümü, herhangi bir yanıt yüklemekten yasaklandı! Lütfen sürümünüzü güncelleyin!"</string>
     <string name="no_gps_no_quests">"Çevrenizdeki görevleri otomatik olarak taramak için, konumu açın"</string>
     <string name="nothing_more_to_download">"Başka görev yok"</string>
@@ -111,6 +117,8 @@
     <string name="pref_title_sync">"Otomatik Senkronizasyon"</string>
     <string name="map_btn_zoom_out">"Uzaklaştır"</string>
     <string name="map_btn_zoom_in">"Yakınlaştır"</string>
+
+    <!-- Fuzzy -->
     <string name="privacy_html">"&lt;P&gt; Ah, gizlilikle ilgilenen biri, hoş! Sanırım sana iyi haberlerim var: &lt;/ p&gt;
 &lt;P&gt; &lt;b&gt; Doğrudan Katkılar &lt;/ b&gt; &lt;/ p&gt;
 &lt;P&gt;
@@ -129,7 +137,7 @@ Konumunuz yalnızca etrafınızdaki görevleri otomatik olarak taramak için kul
 &lt;P&gt; &lt;b&gt; Veri Kullanımı &lt;/ b&gt; &lt;/ p&gt;
 &lt;P&gt;
 Bahsedildiği gibi, uygulama OSM altyapısıyla doğrudan iletişim kuruyor. Başka bir deyişle, görevleri (anonim) indirmek için &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt; Üstgeçit API &lt;/a&gt; ile ve &lt;a href = \"http: /wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API &lt;/a&gt; 'nı yükleyin. &lt;br/&gt;
-Bununla birlikte, değişikliklerinizi yüklemeden önce uygulama, sunucudaki &lt;a href=\"http://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt; basit bir metin dosyası &lt;/a&gt; ile yasaklanmış olup olmadığı kontrol eder. Herhangi bir değişiklik yüklüyor. Bu, kritik hataların OSM verilerini muhtemelen bozmasına neden olan uygulamaların sürümlerini muhafaza edebilmek için ihtiyati bir önlemdir. &lt;br/&gt;
+Bununla birlikte, değişikliklerinizi yüklemeden önce uygulama, sunucudaki &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt; basit bir metin dosyası &lt;/a&gt; ile yasaklanmış olup olmadığı kontrol eder. Herhangi bir değişiklik yüklüyor. Bu, kritik hataların OSM verilerini muhtemelen bozmasına neden olan uygulamaların sürümlerini muhafaza edebilmek için ihtiyati bir önlemdir. &lt;br/&gt;
 &lt;/ P&gt;
 &lt;P&gt;
 Haritayı görüntülemek için vektör karoları, anonim olan &lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt; Mapzen vektör döşeme hizmetinden &lt;/a&gt; alınır. Hizmet, hangi alanların ön bellek önbellekleme ve performans iyileştirmeleri için popüler olduğunu anlamak için istekleri karo olarak kaydeder. Platformları ayrıca IP adreslerini günlüğe kaydeder ve tüm barındırma işleri Amazon'da olduğundan, yapabileceklerine tabidirler.
@@ -160,6 +168,8 @@ Haritayı görüntülemek için vektör karoları, anonim olan &lt;a href=\"http
     <string name="quest_surface_value_sett">"Ayarla"</string>
     <string name="quest_surface_value_wood">"Ahşap"</string>
     <string name="quest_placeName_title">"Buranın adı ne?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sidewalk_title">"Bu caddede kaldırım var mı?"</string>
     <string name="map_orientation_info">"Harita kuzeye doğru yönlendirilmiş."</string>
     <string name="quest_sidewalk_onlyNorth">"Sadece kuzey tarafında"</string>

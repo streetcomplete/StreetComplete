@@ -59,6 +59,8 @@
     <string name="confirmation_discard_negative">"取消"</string>
     <string name="action_download">"任务搜寻"</string>
     <string name="action_upload">"数据上传"</string>
+
+    <!-- Fuzzy -->
     <string name="no_changes">"你留下空的表单"</string>
     <string name="close">"关闭"</string>
     <string name="download_error">"寻找任务时出现问题"</string>
@@ -82,8 +84,12 @@
     <string name="about_title_license">"许可证"</string>
     <string name="about_summary_license">"GNU 通用公共许可证"</string>
     <string name="offline">"您离线"</string>
+
+    <!-- Fuzzy -->
     <string name="confirmation_authorize_now">"你需要验证你的开放街图使用者帐号来套用你的回答。现在验证吗？"</string>
     <string name="not_authorized">"未认证"</string>
+
+    <!-- Fuzzy -->
     <string name="version_banned_message">"此版本的StreetComplete已无法上传数据，请更新至最新版本。"</string>
     <string name="no_gps_no_quests">"如果要自动寻找你附近的任务，开启定位"</string>
     <string name="nothing_more_to_download">"没有更多的可用任务"</string>
@@ -110,6 +116,8 @@
     <string name="pref_title_sync">"自动同步"</string>
     <string name="map_btn_zoom_out">"缩小"</string>
     <string name="map_btn_zoom_in">"放大"</string>
+
+    <!-- Fuzzy -->
     <string name="privacy_html">"&lt;p&gt;您很在意隐私？非常好！ 我们只有好消息可以告诉你：&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;数据传输&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
@@ -128,7 +136,7 @@ OpenStreetMap不接受匿名编辑，您需要登录您的OpenStreetMap帐号。
 &lt;p&gt;&lt;b&gt;资料使用&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 以上提到，此APP直接和OpenStreetMap的设施直接沟通，会使用 &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass API&lt;/a&gt; 下载任务(是匿名的)，且使用 &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API&lt;/a&gt; 上传资料。&lt;br/&gt;
-上传你的更变之前，此APP会在我的伺服器上确认 &lt;a href=\"http://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;简单的文字档&lt;/a&gt; 是否被封锁而无法上传任何更变。这是一个防护措施，如果APP的版本更变后有严重的错误出现，OpenStreetMap的资料不会受污染。&lt;br/&gt;
+上传你的更变之前，此APP会在我的伺服器上确认 &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;简单的文字档&lt;/a&gt; 是否被封锁而无法上传任何更变。这是一个防护措施，如果APP的版本更变后有严重的错误出现，OpenStreetMap的资料不会受污染。&lt;br/&gt;
 &lt;/p&gt;
 &lt;p&gt;
 显示地图、向量图砖皆从 &lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt;Mapzen 向量图砖服务&lt;/a&gt; 匿名下载取得。此服务会记录图砖请求，来了解哪个区域是热门的，作为准备快取和改善效能之用。他们的平台同时也纪录IP地址，且他们的所有服务全部託管在Amazon，所以它会观察你的行为再决定动作。
@@ -159,6 +167,8 @@ OpenStreetMap不接受匿名编辑，您需要登录您的OpenStreetMap帐号。
     <string name="quest_surface_value_sett">"小方块岩石"</string>
     <string name="quest_surface_value_wood">"木材"</string>
     <string name="quest_placeName_title">"这个地方的名字是?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sidewalk_title">"这条街道有人行道吗?"</string>
     <string name="map_orientation_info">"地图朝向归北"</string>
     <string name="quest_sidewalk_onlyNorth">"只在道路北面一侧"</string>
@@ -387,7 +397,6 @@ OpenStreetMap不接受匿名编辑，您需要登录您的OpenStreetMap帐号。
 
     <!-- Fuzzy -->
     <string name="quest_way_lit_road_title">"这段道路有照明设施吗？"</string>
-    <string name="quest_way_lit_named_road_title">"\"%s\" 沿路上有照明设施？"</string>
     <string name="quest_way_lit_automatic">"使用动态侦测"</string>
     <string name="quest_way_lit_24_7">"不分日夜照明"</string>
     <string name="pref_title_authorized_username_summary">"认证帐号：%s"</string>

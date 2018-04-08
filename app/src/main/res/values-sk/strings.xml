@@ -58,6 +58,8 @@
     <string name="confirmation_discard_negative">"Zrušiť"</string>
     <string name="action_download">"Hľadať úlohy tu"</string>
     <string name="action_upload">"Nahrať odpovede"</string>
+
+    <!-- Fuzzy -->
     <string name="no_changes">"Nevyplnili ste formulár"</string>
     <string name="close">"zatvoriť"</string>
     <string name="download_error">"Pri vyhľadávní úloh došlo k chybe"</string>
@@ -79,6 +81,8 @@
     <string name="about_title_license">"Licencia"</string>
     <string name="about_summary_license">"GNU General Public License "</string>
     <string name="offline">"Ste offline"</string>
+
+    <!-- Fuzzy -->
     <string name="confirmation_authorize_now">"Aby sa aplikovali vaše odpovede, je treba autorizovať sa OSM účtom. Autorizovať teraz?"</string>
     <string name="not_authorized">"Neautorizované"</string>
 
@@ -108,6 +112,8 @@
     <string name="pref_title_sync">"Auto synchronizácia"</string>
     <string name="map_btn_zoom_out">"Oddialiť"</string>
     <string name="map_btn_zoom_in">"Priblížiť"</string>
+
+    <!-- Fuzzy -->
     <string name="privacy_html">"
 Vlado Jendrol now
 &lt;p&gt;Á, niekto kto sa zaujíma o súkromie, paráda! Myslím, že máme pre Vás iba dobre správy:&lt;/p&gt;
@@ -128,7 +134,7 @@ Vaša poloha sa používa iba pre automatické vyhľadávanie \"úloh\" vo Vaše
 &lt;p&gt;&lt;b&gt;Použitie dát&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 Ako už bolo spomenuté, aplikácia priamo komunikuje s OSM infraštruktúrou. Čiže s &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass API&lt;/a&gt; pre sťahovanie \"úloh\" (ktoré je anonymné) a s &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API&lt;/a&gt; pre nahrávanie zmien.&lt;br/&gt;
-Pred odoslaním zmien však aplikácia skontroluje pomocou &lt;a href=\"http://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;jednoduchého textového súboru&lt;/a&gt; na mojom serveri či jej nebolo zakázané nahrávanie zmien. Toto je preventívne opatrenie zabraňujúce verziám aplikácie, v ktorých sa našli kritické chyby, aby poškodili OSM dáta.&lt;br/&gt;
+Pred odoslaním zmien však aplikácia skontroluje pomocou &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;jednoduchého textového súboru&lt;/a&gt; na mojom serveri či jej nebolo zakázané nahrávanie zmien. Toto je preventívne opatrenie zabraňujúce verziám aplikácie, v ktorých sa našli kritické chyby, aby poškodili OSM dáta.&lt;br/&gt;
 &lt;/p&gt;
 &lt;p&gt;
 Pre zobrazenie mapy sa sťahujú vektorové dlaždice z &lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt;Mapzen vector tile service&lt;/a&gt;, , ktorá je anonymná. Služba zaznamenáva žiadosti o dlaždice aby vedela, ktoré oblasti sú populárne a mohla ich pre zvýšenie výkonu ukladať do medzipamäte. Ich platforma tiež zaznamenáva IP adresy a ako hosting používa Amazon, takže sa na ňu vzťahujú pravidlá Amazonu.
@@ -159,6 +165,8 @@ Pre zobrazenie mapy sa sťahujú vektorové dlaždice z &lt;a href=\"https://map
     <string name="quest_surface_value_sett">"Dlažobné kocky"</string>
     <string name="quest_surface_value_wood">"Drevo"</string>
     <string name="quest_placeName_title">"Aký je názov tohto miesta?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sidewalk_title">"Je pri ceste chodník?"</string>
     <string name="map_orientation_info">"Mapa je orientovaná severom nahor."</string>
     <string name="quest_sidewalk_onlyNorth">"Iba na severnej strane"</string>
@@ -378,7 +386,6 @@ Zadané informácie sa potom priamo pridávajú do OpenStreetMap vo vašom mene 
     <!-- Fuzzy -->
     <string name="quest_way_lit_named_title">"Je tu %s osvetlená?"</string>
     <string name="quest_way_lit_road_title">"Je tento úsek cesty osvetlený?"</string>
-    <string name="quest_way_lit_named_road_title">"Je cesta \"%s\" v tomto mieste osvetlená?"</string>
     <string name="quest_way_lit_automatic">"Používa detekciu pohybu"</string>
     <string name="quest_way_lit_24_7">"Osvetlené deň a noc"</string>
     <string name="pref_title_authorized_username_summary">"Autorizovaný účet: %s"</string>

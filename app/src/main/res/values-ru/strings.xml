@@ -59,6 +59,8 @@
     <string name="confirmation_discard_negative">"Отмена"</string>
     <string name="action_download">"Найти квесты здесь"</string>
     <string name="action_upload">"Отправить ответы"</string>
+
+    <!-- Fuzzy -->
     <string name="no_changes">"Вы оставили поле пустым"</string>
     <string name="close">"закрыть"</string>
     <string name="download_error">"Не удалось найти квесты"</string>
@@ -80,8 +82,12 @@
     <string name="about_title_license">"Лицензия"</string>
     <string name="about_summary_license">"GNU General Public License"</string>
     <string name="offline">"Нет подключения к сети"</string>
+
+    <!-- Fuzzy -->
     <string name="confirmation_authorize_now">"Вам нужно авторизоваться через ваш OSM аккаунт, чтобы применились ваши ответы. Авторизоваться сейчас?"</string>
     <string name="not_authorized">"Не авторизовано"</string>
+
+    <!-- Fuzzy -->
     <string name="version_banned_message">"Этой версии StreetComplete было запрещено отправлять ответы! Обновите StreetComplete!"</string>
     <string name="no_gps_no_quests">"Для автоматического сканирования заданий поблизости включите определение местоположения"</string>
     <string name="nothing_more_to_download">"Больше квестов нет"</string>
@@ -108,6 +114,8 @@
     <string name="pref_title_sync">"Автосинхронизация"</string>
     <string name="map_btn_zoom_out">"Отдалить"</string>
     <string name="map_btn_zoom_in">"Приблизить"</string>
+
+    <!-- Fuzzy -->
     <string name="privacy_html">"&lt;p&gt;Ага, кто-то, кто заботится о конфиденциальности, отлично! Надеюсь, у меня для вас только хорошие новости:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Внесение вклада напрямую&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
@@ -126,7 +134,7 @@
 &lt;p&gt;&lt;b&gt;Использование данных&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 Как уже было сказано, приложение использует инфраструктуру OSM напрямую. А именно, &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass API&lt;/a&gt; для загрузки квестов (анонимно) и &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API&lt;/a&gt; для отправки изменений.&lt;br/&gt;
-Однако перед отправкой изменений приложение проверяет &lt;a href=\"http://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;простой текстовый файл&lt;/a&gt; на моём сервере, чтобы определить, не было ли запрещено этой версии приложения отправлять изменения. Это позволит избежать возможного повреждения данных OSM версиями приложения, которые могут содержать критические ошибки.&lt;br/&gt;
+Однако перед отправкой изменений приложение проверяет &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;простой текстовый файл&lt;/a&gt; на моём сервере, чтобы определить, не было ли запрещено этой версии приложения отправлять изменения. Это позволит избежать возможного повреждения данных OSM версиями приложения, которые могут содержать критические ошибки.&lt;br/&gt;
 &lt;/p&gt;
 &lt;p&gt;
 Векторные изображения для отображения карты анонимно загружаются с &lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt;сервиса векторных карт Mapzen&lt;/a&gt;. Данный сервис запоминает запросы, чтобы оценить популярность определённых районов для кэширования и повышения скорости работы. Платформа Mapzen также запоминает IP-адреса и полностью находится на Amazon, поэтому подчиняется условиям использования хостинга этой компании.
@@ -157,6 +165,8 @@
     <string name="quest_surface_value_sett">"Брусчатка"</string>
     <string name="quest_surface_value_wood">"Дерево"</string>
     <string name="quest_placeName_title">"Как называется этот населенный пункт?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sidewalk_title">"На этой улице есть тротуар?"</string>
     <string name="map_orientation_info">"Север находится вверху карты."</string>
     <string name="quest_sidewalk_onlyNorth">"Только на северной стороне"</string>
@@ -255,6 +265,7 @@
     <string name="quest_maxspeed_title_short">"Какое ограничение скорости на этой улице?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Это ограничение скорости выглядит неправдоподобно."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Ограничение точно не установлено?"</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation">"Вы проверили на концах улицы? Если нет знаков вдоль всей улицы которые применимы для выбранного участка, укажите стандартное ограничение скорости."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Да, знаков нет"</string>
     <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"На дорогах в городе и вне города по умолчанию действуют разные скоростные ограничения."</string>
     <string name="quest_maxspeed_answer_noSign_urbanOk">"В городе"</string>
@@ -383,7 +394,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_way_lit_road_title">"Освещена ли эта часть дороги?"</string>
-    <string name="quest_way_lit_named_road_title">"Освещена ли эта часть дороги «%s»?"</string>
     <string name="quest_way_lit_automatic">"Используется обнаружение присутствия"</string>
     <string name="quest_way_lit_24_7">"Освещается днём и ночью"</string>
     <string name="pref_title_authorized_username_summary">"Авторизованная учётная запись: %s"</string>
@@ -466,10 +476,21 @@
     <string name="quest_housenumber_conscription_number">"Сквозная нумерация"</string>
     <string name="quest_housenumber_conscription_number_required">"Необходимо указать сквозную нумерацию
 "</string>
+    <string name="need_specify_both_sides">"Вам надо указать обе стороны"</string>
+    <string name="quest_openingHours_emptyAnswer">"Вам надо описать, что вывеске. Если нет вывески, вы должны спросить о режиме работы внутри."</string>
+    <string name="quest_cycleway_value_none_but_no_oneway">"никаких, но велосипедисты могут ехать во всех направлениях."</string>
+    <string name="quest_streetName_answer_noName_question">"Почему у этой улицы нет названия?"</string>
+    <string name="quest_streetName_answer_noProperStreet_service2">"Это дворовой проезд или подъезд для парковки"</string>
+    <string name="quest_streetName_answer_noProperStreet_track2">"Это полевая или лесная дорога"</string>
+    <string name="quest_streetName_answer_noName_noname">"Ничего из выше перечисленных, просто у неё нет названия."</string>
+    <string name="quest_wheelchairAccess_toilets_title">"Эти туалеты доступны для инвалидных колясок."</string>
     <string name="map_btn_create_note">"Создать новую заметку"</string>
     <string name="create_new_note_unprecise">"Увеличьте масштаб для создания заметки"</string>
+    <string name="pref_title_quests_invalidation">"Перезаписать кеш квестов"</string>
+    <string name="invalidate_confirmation">"Перезаписать"</string>
     <string name="quest_generic_looks_like_this">"Обычно выглядит так:"</string>
     <string name="quest_surface_value_metal">"мета́лл"</string>
+    <string name="quest_surface_generic_surface_confirmation">"Вы уверены, что не можете определить тип поверхности более конкретно?"</string>
     <string name="quest_internet_access_wlan">"Wi-Fi"</string>
     <string name="quest_internet_access_no">"Нет соединения"</string>
     <string name="quest_bench_backrest_title">"Есть ли у этой скамейки спинка?"</string>
@@ -486,12 +507,19 @@
     <string name="quest_religion_sikh">"Сикхизм"</string>
     <string name="quest_religion_jain">"Джайнизм"</string>
     <string name="quest_religion_caodaist">"Каодай"</string>
+    <string name="quest_parking_fee_title">"Есть плата за парковку?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_parking_access_title">"Имеются ли здесь ограничения на паркуовку?"</string>
+    <string name="quest_parking_access_private">"Это частное"</string>
     <string name="quest_parking_access_yes">"Открыта для всех (платная или бесплатная)"</string>
     <string name="quest_parking_access_customers">"Только для клиентов"</string>
+    <string name="quest_streetName_pedestrian_title">"Какое название этой пешеходной улицы?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_streetSurface_square_title">"Какой тип покрытия у этой площади?"</string>
+    <string name="quest_fee_answer_hours">"Зависит от времени суток и дня"</string>
+    <string name="quest_fee_only_at_hours">"Да, но только если"</string>
+    <string name="quest_fee_not_at_hours">"Да, но нет..."</string>
+    <string name="quest_fee_hours_title">"в такие часы:"</string>
 </resources>

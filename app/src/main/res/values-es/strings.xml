@@ -59,6 +59,8 @@
     <string name="confirmation_discard_negative">"Cancelar"</string>
     <string name="action_download">"Descargar tareas cercanas"</string>
     <string name="action_upload">"Subir respuestas"</string>
+
+    <!-- Fuzzy -->
     <string name="no_changes">"El formulario está vacío"</string>
     <string name="close">"cerrar"</string>
     <string name="download_error">"Hubo un error al buscar tareas"</string>
@@ -80,8 +82,12 @@
     <string name="about_title_license">"Licencia"</string>
     <string name="about_summary_license">"Pública General de GNU (GPL)"</string>
     <string name="offline">"No hay conexión a Internet"</string>
+
+    <!-- Fuzzy -->
     <string name="confirmation_authorize_now">"Necesitas iniciar sesión con tu cuenta de usuario de OSM para enviar tus respuestas. ¿Quieres hacerlo ahora?"</string>
     <string name="not_authorized">"Sin autorización"</string>
+
+    <!-- Fuzzy -->
     <string name="version_banned_message">"Desde esta versión de StreetComplete ya no se pueden subir respuestas, prueba actualizando la aplicación."</string>
     <string name="no_gps_no_quests">"Para buscar tareas a tu alrededor automáticamente activa la ubicación"</string>
     <string name="nothing_more_to_download">"No hay más tareas"</string>
@@ -108,6 +114,8 @@
     <string name="pref_title_sync">"Sincronización automática"</string>
     <string name="map_btn_zoom_out">"Alejar"</string>
     <string name="map_btn_zoom_in">"Acercar"</string>
+
+    <!-- Fuzzy -->
     <string name="privacy_html">"&lt;p&gt;Vaya, por fin alguien que se preocupa por la privacidad. Creo que de aquí en adelante van a ser todo buenas noticias:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Aportaciones directas&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
@@ -126,7 +134,7 @@ Tu posición no se comparte con nadie, sólo se utiliza para buscar tareas dispo
 &lt;p&gt;&lt;b&gt;Uso de datos&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 Continuando con lo de antes, la aplicación se comunica directamente con la infraestructura de OSM. Es decir, con la &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;API de Overpass&lt;/a&gt; para descargar tareas (de forma anónima) y con la &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;API de OSM&lt;/a&gt; para subir los cambios.&lt;br/&gt;
-No obstante, antes de subir cualquier cambio la aplicación comprueba si la versión actual aparece en un &lt;a href=\"http://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;archivo de texto plano&lt;/a&gt; de mi servidor. Esta es una medida preventiva para poder restringir subidas en versiones de la aplicación que tengan errores críticos y puedan corromper los datos en OSM.&lt;br/&gt;
+No obstante, antes de subir cualquier cambio la aplicación comprueba si la versión actual aparece en un &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;archivo de texto plano&lt;/a&gt; de mi servidor. Esta es una medida preventiva para poder restringir subidas en versiones de la aplicación que tengan errores críticos y puedan corromper los datos en OSM.&lt;br/&gt;
 &lt;/p&gt;
 &lt;p&gt;
 Para que puedas ver las últimas secciones del mapa utilizamos el &lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt;servicio anónimo de teselas de Mapzen&lt;/a&gt;. Este servicio registra las solicitudes en distintas partes del globo para medir las zonas más populares y almacenarlas en caché, mejorando su rendimiento. Esta plataforma también registra las direcciones IP y está alojada en Amazon, por lo que dependen del contrato de servicio de un tercero.
@@ -157,6 +165,8 @@ Para que puedas ver las últimas secciones del mapa utilizamos el &lt;a href=\"h
     <string name="quest_surface_value_sett">"Adoquín de piedra natural"</string>
     <string name="quest_surface_value_wood">"Madera"</string>
     <string name="quest_placeName_title">"¿Cuál es el nombre de este lugar?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sidewalk_title">"¿La calle tiene acera?"</string>
     <string name="map_orientation_info">"El mapa está orientado hacia el norte."</string>
     <string name="quest_sidewalk_onlyNorth">"Sólo en el lado norte"</string>
@@ -380,7 +390,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <!-- Fuzzy -->
     <string name="quest_way_lit_named_title">"¿Está alumbrada %s por esta zona?"</string>
     <string name="quest_way_lit_road_title">"¿Está alumbrado este tramo de la calle?"</string>
-    <string name="quest_way_lit_named_road_title">"¿Está alumbrada la calle «%s» por esta zona?"</string>
     <string name="quest_way_lit_automatic">"Con sensores de movimiento"</string>
     <string name="quest_way_lit_24_7">"Está alumbrada de día y de noche"</string>
     <string name="pref_title_authorized_username_summary">"Cuenta autorizada: %s"</string>

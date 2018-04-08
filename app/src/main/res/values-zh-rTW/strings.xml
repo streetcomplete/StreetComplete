@@ -59,6 +59,8 @@
     <string name="confirmation_discard_negative">"取消"</string>
     <string name="action_download">"在這裡搜尋任務"</string>
     <string name="action_upload">"上傳回答"</string>
+
+    <!-- Fuzzy -->
     <string name="no_changes">"你留下空的表單"</string>
     <string name="close">"關閉"</string>
     <string name="download_error">"在搜尋任務時出錯"</string>
@@ -82,8 +84,12 @@
     <string name="about_title_license">"授權"</string>
     <string name="about_summary_license">"GNU 公用授權"</string>
     <string name="offline">"你處於離線狀態"</string>
+
+    <!-- Fuzzy -->
     <string name="confirmation_authorize_now">"你需要驗證你的開放街圖使用者帳號來套用你的回答。現在驗證嗎？"</string>
     <string name="not_authorized">"沒有驗證"</string>
+
+    <!-- Fuzzy -->
     <string name="version_banned_message">"此版本的 StreetComplete 已經被禁止上傳任何回答！ 請更新版本！"</string>
     <string name="no_gps_no_quests">"要自動搜尋你附近的任務的話，開啟定位"</string>
     <string name="nothing_more_to_download">"沒有更多的可用任務"</string>
@@ -110,6 +116,8 @@
     <string name="pref_title_sync">"自動同步"</string>
     <string name="map_btn_zoom_out">"縮近"</string>
     <string name="map_btn_zoom_in">"縮遠"</string>
+
+    <!-- Fuzzy -->
     <string name="privacy_html">"&lt;p&gt;喔，有些人在意隱私，這樣很好！ 我想我只有好消息可告訴你：&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;直接貢獻&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
@@ -128,7 +136,7 @@
 &lt;p&gt;&lt;b&gt;資料使用&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 以上提到，此APP會直接和開放街圖的設施直接溝通，將使用 &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass API&lt;/a&gt; 下載任務(是匿名的)，且使用 &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API&lt;/a&gt; 上傳資料。&lt;br/&gt;
-在上傳你的更變之前，此APP會在我的伺服器上確認 &lt;a href=\"http://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;簡單的文字檔&lt;/a&gt; 來確認APP是否被封鎖而無法上傳任何更變。這是一個防護措施，如果APP的版本更變後有嚴重的錯誤出現，開放街圖的資料不受汙染。&lt;br/&gt;
+在上傳你的更變之前，此APP會在我的伺服器上確認 &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;簡單的文字檔&lt;/a&gt; 來確認APP是否被封鎖而無法上傳任何更變。這是一個防護措施，如果APP的版本更變後有嚴重的錯誤出現，開放街圖的資料不受汙染。&lt;br/&gt;
 &lt;/p&gt;
 &lt;p&gt;
 顯示地圖、向量圖磚皆從 &lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt;Mapzen 向量圖磚服務&lt;/a&gt; 匿名下載取得。此服務會記錄圖磚請求，來了解哪個區域是熱門的，作為準備快取和改善效能之用。他們的平台同時也紀錄IP地址，且他們的所有服務全部託管在Amazon，所以它會觀察你的行為再決定動作。
@@ -159,6 +167,8 @@
     <string name="quest_surface_value_sett">"四方型的鋪路石"</string>
     <string name="quest_surface_value_wood">"木頭"</string>
     <string name="quest_placeName_title">"這個地方叫做?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sidewalk_title">"這條道路有人行道嗎?"</string>
     <string name="map_orientation_info">"地圖是朝向北方"</string>
     <string name="quest_sidewalk_onlyNorth">"只在北邊"</string>
@@ -391,7 +401,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_way_lit_road_title">"這段道路有照明設施嗎？"</string>
-    <string name="quest_way_lit_named_road_title">"\"%s\" 沿路上有照明設施？"</string>
     <string name="quest_way_lit_automatic">"使用動態偵測"</string>
     <string name="quest_way_lit_24_7">"不分日夜照明"</string>
     <string name="pref_title_authorized_username_summary">"認證帳號：%s"</string>
@@ -530,4 +539,27 @@
     <string name="quest_parking_access_private">"這裡是私人停車位"</string>
     <string name="quest_parking_access_yes">"這裡是公共停車位 (有可能需要付費)"</string>
     <string name="quest_parking_access_customers">"這裡只限顧客停車"</string>
+    <string name="quest_streetName_pedestrian_title">"徒步區的名稱是什麼？"</string>
+    <string name="quest_streetSurface_square_title">"廣場的舖面是什麼材質？"</string>
+    <string name="quest_streetSurface_square_name_title">"廣場 %s 的舖面是什麼材質？"</string>
+    <string name="quest_fee_answer_hours">"視時段和那天而定"</string>
+    <string name="quest_fee_add_times">"增加時間"</string>
+    <string name="quest_fee_only_at_hours">"有收費，但只在..."</string>
+    <string name="quest_fee_not_at_hours">"有收費，但有免費時段..."</string>
+    <string name="quest_fee_hours_title">"在下列時間："</string>
+    <string name="quest_busStopName_title">"公車站牌的名稱是什麼？"</string>
+    <string name="quest_tramStopName_title">"街車站的名稱是什麼？"</string>
+    <string name="quest_housenumber_multiple_numbers">"這間有多個門牌號碼"</string>
+    <string name="quest_housenumber_multiple_numbers_description">"你可以輸入用逗號分隔的門牌號碼，或是輸入門牌範圍。
+例如 1,3，或是 2-6"</string>
+    <string name="quest_bicycle_parking_type_stand">"腳踏車架"</string>
+    <string name="quest_bicycle_parking_type_wheelbender">"停車架"</string>
+    <string name="quest_bicycle_parking_type_shed">"立車架"</string>
+    <string name="quest_bicycle_parking_type_locker">"車鎖"</string>
+    <string name="quest_bicycle_parking_type_building">"單車車庫"</string>
+    <string name="quest_bicycle_parking_type_title">"這是那種單車停車場？"</string>
+    <string name="quest_cycleway_value_suggestion_lane">"單車建議車道"</string>
+    <string name="quest_postboxCollectionTimes_title">"這個郵箱的收信時間？"</string>
+    <string name="quest_collectionTimes_add_times">"增加收信時間"</string>
+    <string name="quest_collectionTimes_answer_no_times_specified">"沒有特定的時間"</string>
 </resources>

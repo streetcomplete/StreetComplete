@@ -61,6 +61,8 @@
     <string name="confirmation_discard_negative">"Afbryd"</string>
     <string name="action_download">"Skan efter opgaver her"</string>
     <string name="action_upload">"Upload svar"</string>
+
+    <!-- Fuzzy -->
     <string name="no_changes">"Du efterlod formularen tom"</string>
     <string name="close">"luk"</string>
     <string name="download_error">"Fejl mens der blev skannet for opgaver"</string>
@@ -84,8 +86,12 @@
     <string name="about_title_license">"Licens"</string>
     <string name="about_summary_license">"GNU General Public License"</string>
     <string name="offline">"Du er offline"</string>
+
+    <!-- Fuzzy -->
     <string name="confirmation_authorize_now">"Du er nød til at autentificere med din OSM konto for at faktisk sende dine svar. Autentificer nu?"</string>
     <string name="not_authorized">"Ikke autentificeret"</string>
+
+    <!-- Fuzzy -->
     <string name="version_banned_message">"Denne version af StreetComplete må ikke indsende svar! Opdater din version!"</string>
     <string name="no_gps_no_quests">"For at skanne efter opgaver tæt på dig skal du tænde Lokation."</string>
     <string name="nothing_more_to_download">"Der er ikke flere opgaver tilgængelige"</string>
@@ -114,6 +120,8 @@
     <string name="pref_title_sync">"Auto-synkroniser"</string>
     <string name="map_btn_zoom_out">"Zoom out"</string>
     <string name="map_btn_zoom_in">"Zoom in"</string>
+
+    <!-- Fuzzy -->
     <string name="privacy_html">"&lt;p&gt;Ah, nogen som går op i privatliv, fedt! Jeg tror at jeg kun har gode nyheder til dig:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Direkte bidrag&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
@@ -132,7 +140,7 @@ Din lokation er kun brugt til at automatisk skanne efter opgaver tæt på dig. B
 &lt;p&gt;&lt;b&gt;Databrug&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 Som sagt, denne app kommunikerer direkte med OSM's infrastruktur. Det vil sige &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass API'et&lt;/a&gt; til at downloade opgaver (hvilket sker anonymt) og med &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API'et&lt;/a&gt; for at indsende ændringer.&lt;br/&gt;
-Før ændringer sendes tjekker appen dog en &lt;a href=\"http://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;simpel tekst fil&lt;/a&gt; på min server om denne version er bandlyst fra at sende ændringer. Dette sker som et sikkerhedstjek for at holde versioner af appen med kritiske fejl fra et skade OSM data.&lt;br/&gt;
+Før ændringer sendes tjekker appen dog en &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;simpel tekst fil&lt;/a&gt; på min server om denne version er bandlyst fra at sende ændringer. Dette sker som et sikkerhedstjek for at holde versioner af appen med kritiske fejl fra et skade OSM data.&lt;br/&gt;
 &lt;/p&gt;
 &lt;p&gt;
 For at vise kortet er vektorfliser hentet fra &lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt;Mapzen vector tile service&lt;/a&gt;, hvilket sker anonymt. Servicen logger anmodninger for at forstå hvilke områder er populære så de kan lave performance forbedringer. Deres platform logger også IP adresser og alt deres hosting (hjemmeside udbyder osv.) sker hos Amazon så de er muligvis også underlagt regler der.
@@ -167,6 +175,8 @@ For at vise kortet er vektorfliser hentet fra &lt;a href=\"https://mapzen.com/pr
     <string name="quest_surface_value_sett">"Brosten"</string>
     <string name="quest_surface_value_wood">"Træ"</string>
     <string name="quest_placeName_title">"Hvad hedder dette sted?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sidewalk_title">"Er der et fortov på denne vej?"</string>
     <string name="map_orientation_info">"Kortet er orienteret med nord opad"</string>
     <string name="quest_sidewalk_onlyNorth">"Kun på den nordlige side"</string>
@@ -397,7 +407,6 @@ Ellers kan du downloade et andet keyboard i Forretning. Populære keyboards der 
 
     <!-- Fuzzy -->
     <string name="quest_way_lit_road_title">"Er denne sektion af vejen belyst?"</string>
-    <string name="quest_way_lit_named_road_title">"Er vejen \"%s\" belyst her?"</string>
     <string name="quest_way_lit_automatic">"Der bruges bevægelsessensorer"</string>
     <string name="quest_way_lit_24_7">"Det er oplyst nat og dag"</string>
     <string name="pref_title_authorized_username_summary">"Godkendt konto: %s"</string>

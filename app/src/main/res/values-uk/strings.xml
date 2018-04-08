@@ -59,6 +59,8 @@
     <string name="confirmation_discard_negative">"Скасувати"</string>
     <string name="action_download">"Знайти завдання поруч"</string>
     <string name="action_upload">"Надіслати відповіді"</string>
+
+    <!-- Fuzzy -->
     <string name="no_changes">"Ви залишили форму пустою"</string>
     <string name="close">"закрити"</string>
     <string name="download_error">"Помилка пошуку завдань"</string>
@@ -80,8 +82,12 @@
     <string name="about_title_license">"Ліцензія"</string>
     <string name="about_summary_license">"Загальна публічна ліцензія GNU"</string>
     <string name="offline">"Ви не в мережі"</string>
+
+    <!-- Fuzzy -->
     <string name="confirmation_authorize_now">"Вам потрібно авторизуватися за допомогою вашого облікового запису OSM, щоб надсилати ваші відповіді. Авторизуватись?"</string>
     <string name="not_authorized">"Не авторизовано"</string>
+
+    <!-- Fuzzy -->
     <string name="version_banned_message">"У цій версії StreetComplete була заблокована можливість надсилати відповіді. Оновіть версію!"</string>
     <string name="no_gps_no_quests">"Для автоматичного пошуку завдань поруч із вами увімкніть позиціювання"</string>
     <string name="nothing_more_to_download">"Завдань поруч немає"</string>
@@ -108,6 +114,8 @@
     <string name="pref_title_sync">"Автосинхронізація"</string>
     <string name="map_btn_zoom_out">"Віддалити"</string>
     <string name="map_btn_zoom_in">"Наблизити"</string>
+
+    <!-- Fuzzy -->
     <string name="privacy_html">"&lt;p&gt;Агаа, а от і хтось, кого цікавить конфіденційність, чудово! Думаю, у мене для вас лише хороші новини:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Прямий внесок&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
@@ -126,7 +134,7 @@
 &lt;p&gt;&lt;b&gt;Використання даних&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 Як було вказано вище, додаток взаємодіє безпосередньо з інфраструктурою OSM, а саме з &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass API&lt;/a&gt; для завантаження завдань (анонімно) і з &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API&lt;/a&gt; для відправлення змін.&lt;br/&gt;
-Однак перед відправленням змін на сайт додаток перевіряє &lt;a href=\"http://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;простий текстовий файл&lt;/a&gt; на моєму сервері, щоб переконатися, чи не було заборонено цій версії додатку відправляти буді-які зміни. Це зроблено для того, щоб у крайньому випадку версія з критичними помилками не псувала дані OSM.&lt;br/&gt;
+Однак перед відправленням змін на сайт додаток перевіряє &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;простий текстовий файл&lt;/a&gt; на моєму сервері, щоб переконатися, чи не було заборонено цій версії додатку відправляти буді-які зміни. Це зроблено для того, щоб у крайньому випадку версія з критичними помилками не псувала дані OSM.&lt;br/&gt;
 &lt;/p&gt;
 &lt;p&gt;
 Векторні зображення для показу карти беруться з
@@ -160,6 +168,8 @@
     <string name="quest_surface_value_sett">"Бруківка"</string>
     <string name="quest_surface_value_wood">"Дерево"</string>
     <string name="quest_placeName_title">"Як називається це місце?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sidewalk_title">"Чи є тротуар на цій вулиці?"</string>
     <string name="map_orientation_info">"Мапа орієнтована на північ."</string>
     <string name="quest_sidewalk_onlyNorth">"Тільки на північному боці"</string>
@@ -290,7 +300,7 @@
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_location_name_title">"Чи доступне місце %s для інвалідних візків?"</string>
-    <string name="quest_wheelchairAccess_limited_description_business">"«Частково» значить, що для доступу треба зробити не більше кроку і що більшість кімнат усередині обладнані для інвалідних візків."</string>
+    <string name="quest_wheelchairAccess_limited_description_business">"«Частково» значить, що для доступу треба зробити не більше кроку і що більшість кімнат всередині обладнані для інвалідних візків."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"«Частково» значить, що для доступу треба зробити не більше кроку."</string>
 
     <!-- Fuzzy -->
@@ -381,7 +391,6 @@
     <!-- Fuzzy -->
     <string name="quest_way_lit_named_title">"Чи освітлюється %s?"</string>
     <string name="quest_way_lit_road_title">"Чи освітлена ця ділянка дороги?"</string>
-    <string name="quest_way_lit_named_road_title">"Чи освітлена тут дорога «%s»?"</string>
     <string name="quest_way_lit_automatic">"Є датчики руху"</string>
     <string name="quest_way_lit_24_7">"Освітлена вдень і вночі"</string>
     <string name="pref_title_authorized_username_summary">"Авторизований акаунт: %s"</string>

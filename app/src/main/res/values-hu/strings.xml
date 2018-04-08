@@ -59,6 +59,8 @@
     <string name="confirmation_discard_negative">"Mégse"</string>
     <string name="action_download">"Kérdések beolvasása itt"</string>
     <string name="action_upload">"Válaszok feltöltése"</string>
+
+    <!-- Fuzzy -->
     <string name="no_changes">"Üresen hagytad a mezőt"</string>
     <string name="close">"bezárás"</string>
     <string name="download_error">"Hiba a kérdések beolvasása során"</string>
@@ -80,8 +82,12 @@
     <string name="about_title_license">"Licenc"</string>
     <string name="about_summary_license">"GNU General Public License"</string>
     <string name="offline">"Offline vagy"</string>
+
+    <!-- Fuzzy -->
     <string name="confirmation_authorize_now">"Válaszaid véglegesítéséhez azonosítanod kell magad az OSM-fiókoddal. Hitelesíted most?"</string>
     <string name="not_authorized">"Nem hitelesített"</string>
+
+    <!-- Fuzzy -->
     <string name="version_banned_message">"A StreetComplete ezen verziójával nem lehet válaszokat feltölteni! Kérlek frissítsd az alkalmazást!"</string>
     <string name="no_gps_no_quests">"A környék kérdéseinek automatikus lekéréséhez kapcsold be a helymeghatározást"</string>
     <string name="nothing_more_to_download">"Nem érhető el több kérdés"</string>
@@ -108,6 +114,8 @@
     <string name="pref_title_sync">"Automatikus szinkronizálás"</string>
     <string name="map_btn_zoom_out">"Kicsinyít"</string>
     <string name="map_btn_zoom_in">"Nagyít"</string>
+
+    <!-- Fuzzy -->
     <string name="privacy_html">"&lt;p&gt;Juhú, valaki, akit érdekel az adatvédelem, remek! Szerintem csupa jó híreim vannak számodra:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Közvetlen közreműködések&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
@@ -126,7 +134,7 @@ A helyzetedet kizárólag arra használjuk, hogy automatikusan beolvassuk a kör
 &lt;p&gt;&lt;b&gt;Adathasználat&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 Ahogy említettük, az alkalmazás közvetlenül kommunikál az OSM infrastruktúrával. Az &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass API&lt;/a&gt;-t használjuk a kérdések letöltéséhez (ami névtelen) és az &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API&lt;/a&gt;-t a változtatások feltöltéséhez.&lt;br/&gt;
-Azonban mielőtt az alkalmazás feltölti a változtatásaidat, először leellenőrzi egy &lt;a href=\"http://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;egyszerű szövegfájl&lt;/a&gt; alapján a szerveremen, hogy nincs-e letiltva számára a módosítások feltöltése. Ez egy óvintézkedés, hogy az alkalmazás azon verzióit kiszűrje, amelyekben olyan súlyos programhibák vannak, amelyek tönkretehetnék az OSM adatait.&lt;br/&gt;
+Azonban mielőtt az alkalmazás feltölti a változtatásaidat, először leellenőrzi egy &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;egyszerű szövegfájl&lt;/a&gt; alapján a szerveremen, hogy nincs-e letiltva számára a módosítások feltöltése. Ez egy óvintézkedés, hogy az alkalmazás azon verzióit kiszűrje, amelyekben olyan súlyos programhibák vannak, amelyek tönkretehetnék az OSM adatait.&lt;br/&gt;
 &lt;/p&gt;
 &lt;p&gt;
 A térkép megjelenítéséhez a vektoros térképcsempéket a &lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt;Mapzen vektoros csempeszolgálató&lt;/a&gt;tól szerezzük, ami névtelen. A szolgáltatás rögzíti a csempelekéréseket, hogy megtudja, mely területeket érdemes gyorsítótárazni, valamint teljesítményjavítás céljából. A szolgáltatásuk az IP-címeket is rögzíti és a tárhelyük az Amazonnál van, így ezeknek kezelése az ő hatáskörük.
@@ -157,6 +165,8 @@ A térkép megjelenítéséhez a vektoros térképcsempéket a &lt;a href=\"http
     <string name="quest_surface_value_sett">"Macskakő"</string>
     <string name="quest_surface_value_wood">"Fa"</string>
     <string name="quest_placeName_title">"Mi a neve ennek a helynek?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sidewalk_title">"Van járda ebben az utcában?"</string>
     <string name="map_orientation_info">"A térkép északi irányba tájolt."</string>
     <string name="quest_sidewalk_onlyNorth">"Csak az északi oldalon"</string>
@@ -274,7 +284,7 @@ Ha az utcában az egész kijelölt szakaszon nincs jelzőtábla, akkor az alapé
     <string name="quest_wheelchairAccess_limited">"Részben"</string>
     <string name="quest_bikeParkingCapacity_hint">"Vedd figyelembe, hogy a legtöbb támasznak mindkét oldalán tárolható egy-egy kerékpár."</string>
     <string name="quest_sport_roller_skating">"Görkorcsolya"</string>
-    <string name="quest_wheelchairAccess_bus_station_title">"Akadálymente ez a buszmegálló?"</string>
+    <string name="quest_wheelchairAccess_bus_station_title">"Akadálymentes ez a buszmegálló?"</string>
     <string name="quest_wheelchairAccess_subway_entrance_title">"Akadálymentes ez a metrólejáró?"</string>
     <string name="quest_wheelchairAccess_railway_station_title">"Akadálymentes ez a vasútállomás?"</string>
     <string name="quest_wheelchairAccess_location_title">"Akadálymentes ez a hely?"</string>
@@ -380,8 +390,9 @@ Vagy le is tölthetsz egy másik billentyűzetet az áruházból. Népszerű bil
 
     <!-- Fuzzy -->
     <string name="quest_way_lit_named_title">"A(z) %s ki van itt világítva?"</string>
+
+    <!-- Az edit war-t elkerülendő: én úgy gondolom, és ahogy látom a többi szerkesztőtárs is, hogy az "-e" szócskát csak függőbeszédben használjuk, egy magában alló kérdőmondatban szerintem nagyon magyartalan. -->
     <string name="quest_way_lit_road_title">"Ki van világítva ez az útszakasz?"</string>
-    <string name="quest_way_lit_named_road_title">"Ki van itt világítva ez az út: %s?"</string>
     <string name="quest_way_lit_automatic">"Mozgásérzékelővel rendelkezik"</string>
     <string name="quest_way_lit_24_7">"Éjjel-nappal ki van világítva"</string>
     <string name="pref_title_authorized_username_summary">"Hitelesített fiók: %s"</string>
@@ -442,8 +453,8 @@ Vagy le is tölthetsz egy másik billentyűzetet az áruházból. Népszerű bil
     <string name="reorder_quest_priority_hint">"Nyomd hosszan, majd mozgasd a kérdést, hogy átrendezd a prioritását a letöltéshez és a térképen való megjelenítéshez."</string>
     <string name="undo_confirm_positive">"Visszavonás"</string>
     <string name="undo_confirm_negative">"Mégse"</string>
-    <string name="quest_dietType_vegetarian_name_title">"%s: van-e az étlapon vegetáriánus étel?"</string>
-    <string name="quest_dietType_vegan_name_title">"%s: van-e az étlapon vegán étel?"</string>
+    <string name="quest_dietType_vegetarian_name_title">"%s: van az étlapon vegetáriánus étel?"</string>
+    <string name="quest_dietType_vegan_name_title">"%s: van az étlapon vegán étel?"</string>
     <string name="quest_hasFeature_only">"Kizárólag"</string>
     <string name="quest_dietType_explanation_vegan">"A vegán étel nem tartalmaz állati eredetű terméket (pl. húst, tejterméket, tojást stb.)."</string>
     <string name="quest_dietType_explanation_vegetarian">"Vegetáriánus ételben nem lehet hús."</string>
@@ -467,7 +478,7 @@ Vagy le is tölthetsz egy másik billentyűzetet az áruházból. Népszerű bil
     <string name="quest_streetName_answer_noProperStreet_service2">"Olyan, mint egy kocsibeálló vagy egy parkolón belüli út"</string>
     <string name="quest_streetName_answer_noProperStreet_track2">"Mezőgazdasági vagy erdészeti út"</string>
     <string name="quest_streetName_answer_noName_noname">"A fentiek közül egyik sem; egyszerűen nincs neve"</string>
-    <string name="quest_wheelchairAccess_toilets_title">"Akadálymentesek-e ezek a WC-k?"</string>
+    <string name="quest_wheelchairAccess_toilets_title">"Akadálymentesek ezek a WC-k?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_toilets_name_title">"Akadálymentesek a következő WC-k: %s?"</string>
@@ -483,7 +494,7 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="quest_generic_looks_like_this">"Általában így néz ki:"</string>
     <string name="quest_surface_value_metal">"Fém"</string>
     <string name="quest_surface_generic_surface_confirmation">"Biztos nem tudod pontosabban meghatározni a felszínt?"</string>
-    <string name="quest_cycleway_title2">"Van-e itt kerékpárút? Ha igen, milyen?"</string>
+    <string name="quest_cycleway_title2">"Van itt kerékpárút? Ha igen, milyen?"</string>
     <string name="quest_bridge_structure_title">"Milyen a szerkezete ennek a hídnak?"</string>
 
     <!-- Fuzzy -->
@@ -495,8 +506,8 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
 
     <!-- Fuzzy -->
     <string name="quest_busStopShelter_tram_name_title">"Van esőbeálló a(z) %s villamosmegállóban?"</string>
-    <string name="quest_busStopShelter_tram_title">"Van-e esőbeálló ebben a villamosmegállóban?"</string>
-    <string name="quest_bench_backrest_title">"Van-e támlája ennek a padnak?"</string>
+    <string name="quest_busStopShelter_tram_title">"Van esőbeálló ebben a villamosmegállóban?"</string>
+    <string name="quest_bench_backrest_title">"Van támlája ennek a padnak?"</string>
     <string name="quest_bench_answer_picnic_table">"Ez egy piknikezőasztal"</string>
 
     <!-- Fuzzy -->
@@ -515,10 +526,10 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="quest_religion_caodaist">"kaodaista (vietnami)"</string>
     <string name="quest_religion_chinese_folk">"kínai népi vallásosság"</string>
     <string name="quest_religion_for_wayside_shrine_title">"Melyik valláshoz tartozik ez a szentély?"</string>
-    <string name="quest_parking_fee_title">"Van-e itt parkolási díj?"</string>
+    <string name="quest_parking_fee_title">"Ez a parkoló fizetős?"</string>
     <string name="quest_cycleway_value_lane_soft">"kerékpársáv (szaggatot vonal)"</string>
     <string name="quest_surface_value_unhewn_cobblestone">"Nagy kavics (nem vágott)"</string>
-    <string name="quest_parking_access_title">"Korlátozva van-e, hogy ki parkolhat itt?"</string>
+    <string name="quest_parking_access_title">"Korlátozva van, hogy ki parkolhat itt?"</string>
     <string name="quest_parking_access_private">"Magántulajdon"</string>
     <string name="quest_parking_access_yes">"Nyilvános (parkolási díjjal vagy ingyen)"</string>
     <string name="quest_parking_access_customers">"Csak ügyfeleknek"</string>

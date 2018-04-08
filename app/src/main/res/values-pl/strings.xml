@@ -17,7 +17,7 @@
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Pokaż również notatki, które nie są pytaniami"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Ignoruj notatki, które nie są pytaniami"</string>
     <string name="pref_title_map_cache">"Rozmiar pamięci cache"</string>
-    <string name="map_btn_gps_tracking">"Śledź mnie"</string>
+    <string name="map_btn_gps_tracking">"Podążaj za mną"</string>
     <string name="map_attribution_mapzen">"Wspierane przez %s"</string>
     <string name="map_attribution_osm">"© Współautorzy OpenStreetMap"</string>
     <string name="quest_generic_otherAnswers">"Inne odpowiedzi…"</string>
@@ -59,6 +59,8 @@
     <string name="confirmation_discard_negative">"Anuluj"</string>
     <string name="action_download">"Szukaj tutaj zadań"</string>
     <string name="action_upload">"Wyślij odpowiedzi"</string>
+
+    <!-- Fuzzy -->
     <string name="no_changes">"Formularz jest pusty"</string>
     <string name="close">"zamknij"</string>
     <string name="download_error">"Błąd podczas szukania zadań"</string>
@@ -80,8 +82,12 @@
     <string name="about_title_license">"Licencja"</string>
     <string name="about_summary_license">"GNU General Public License"</string>
     <string name="offline">"Brak połączenia z siecią"</string>
+
+    <!-- Fuzzy -->
     <string name="confirmation_authorize_now">"Musisz się zalogować do swojego konta w OSM, aby wysyłać odpowiedzi. Zalogować się teraz?"</string>
     <string name="not_authorized">"Brak autoryzacji"</string>
+
+    <!-- Fuzzy -->
     <string name="version_banned_message">"Ta wersja StreetComplete nie może już wysyłać odpowiedzi! Zaktualizuj wersję aplikacji."</string>
     <string name="no_gps_no_quests">"Aby automatycznie szukać zadań wokół ciebie, włącz lokalizacje."</string>
     <string name="nothing_more_to_download">"Brak nowych zadań"</string>
@@ -108,6 +114,8 @@
     <string name="pref_title_sync">"Autosynchronizacja"</string>
     <string name="map_btn_zoom_out">"Oddal"</string>
     <string name="map_btn_zoom_in">"Przybliż"</string>
+
+    <!-- Fuzzy -->
     <string name="privacy_html">"&lt;p&gt;O, dbasz o swoją prywatność, fajnie! Mam dla Ciebie tylko dobre wiadomości:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Bezpośrednie zmiany&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
@@ -126,7 +134,7 @@ Informacja o Twoim położeniu jest używana tylko do automatycznego szukania za
 &lt;p&gt;&lt;b&gt;Użycie danych&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 Jak wspomniano, aplikacja komunikuje się bezpośrednio z infrastrukturą OSM. Konkretnie z &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass API&lt;/a&gt; w celu pobrania zadań (anonimowo) oraz z &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API&lt;/a&gt; w celu wysłania odpowiedzi.&lt;br/&gt;
-Niemniej przed każdym wysłaniem zmian aplikacja sprawdza &lt;a href=\"http://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;prosty plik tekstowy&lt;/a&gt; na moim serwerze, czy nie zabroniono jej wysyłania jakichkolwiek zmian. To zabezpieczenie pozwala wyłączać przestarzałe wersje aplikacji, w których znaleziono krytyczne błędy, mogące uszkodzić dane OSM.&lt;br/&gt;
+Niemniej przed każdym wysłaniem zmian aplikacja sprawdza &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;prosty plik tekstowy&lt;/a&gt; na moim serwerze, czy nie zabroniono jej wysyłania jakichkolwiek zmian. To zabezpieczenie pozwala wyłączać przestarzałe wersje aplikacji, w których znaleziono krytyczne błędy, mogące uszkodzić dane OSM.&lt;br/&gt;
 &lt;/p&gt;
 &lt;p&gt;
 Żeby wyświetlać mapę, anonimowo pobierane są wektorowe kafelki z &lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt;serwisu Mapzen&lt;/a&gt;. Serwis ten zapisuje żądania, by usprawnić dostęp do często odpytywanych miejsc poprzez ich wcześniejsze cache'owanie. Ich serwer zapisuje także adres IP, a wszystko to przechowuje Amazon, więc te dane im także podlegają.
@@ -157,6 +165,8 @@ Niemniej przed każdym wysłaniem zmian aplikacja sprawdza &lt;a href=\"http://w
     <string name="quest_surface_value_sett">"kostka"</string>
     <string name="quest_surface_value_wood">"drewniana"</string>
     <string name="quest_placeName_title">"Jak się nazywa to miejsce?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sidewalk_title">"Czy ta ulica ma chodnik?"</string>
     <string name="map_orientation_info">"Mapa jest obrócona kierunkiem północnym w górę."</string>
     <string name="quest_sidewalk_onlyNorth">"Tylko po stronie północnej"</string>
@@ -238,14 +248,14 @@ Udzielone odpowiedzi zostają potem umieszczone na OpenStreetMap w Twoim imieniu
     <!-- Fuzzy -->
     <string name="quest_busStopShelter_name_title">"Czy przystanek %s posiada wiatę?"</string>
     <string name="quest_toiletsFee_title">"Czy te toalety są płatne?"</string>
-    <string name="quest_tactilePaving_title_bus">"Czy na tym przystanku są płyty prowadzące?"</string>
+    <string name="quest_tactilePaving_title_bus">"Czy na tym przystanku są oznaczenia dla niewidomych na chodniku?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_tactilePaving_title_crosswalk">"Czy to przejście ma płyty prowadzące?"</string>
+    <string name="quest_tactilePaving_title_crosswalk">"Czy to przejście ma oznaczenia dla niewidomych na chodniku?"</string>
     <string name="quest_source_dialog_title">"Na pewno sprawdzono to na miejscu?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_tactilePaving_title_name_bus">"Czy przystanek %s ma płyty prowadzące?"</string>
+    <string name="quest_tactilePaving_title_name_bus">"Czy przystanek %s ma oznaczenia dla niewidomych na chodniku?"</string>
     <string name="quest_source_dialog_note">"Należy wprowadzać tylko informacje, które zostały znalezione w terenie."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Czy ten parking dla rowerów jest zakryty (przed deszczem)?"</string>
     <string name="dialog_session_dont_show_again">"Nie pokazuj więcej w tej sesji"</string>
@@ -385,7 +395,6 @@ W przeciwnym wypadku możesz ściągnąć dodatkowe aplikacje klawiatury ze skle
 
     <!-- Fuzzy -->
     <string name="quest_way_lit_road_title">"Czy ta część drogi jest oświetlona?"</string>
-    <string name="quest_way_lit_named_road_title">"Czy droga \"%s\" jest oświetlona?"</string>
     <string name="quest_way_lit_automatic">"Wykrywa ruch"</string>
     <string name="quest_way_lit_24_7">"Jest oświetlona 24 godziny na dobę."</string>
     <string name="pref_title_authorized_username_summary">"Autoryzowane konto: %s"</string>

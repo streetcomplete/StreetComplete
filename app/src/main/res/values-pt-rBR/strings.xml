@@ -35,9 +35,7 @@
     <string name="quest_streetName_answer_noName_confirmation_description">"Às vezes a placa está apenas em uma das extremidades da rua. Além disso, note que pode não haver placas extra para ruas laterais que pertencem a uma rua maior. Normalmente, qualquer rua com casas tem um nome."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Se o nome pode ser escrito sem uma abreviação, então ele deve ser expandido. Muitas abreviaturas comuns são expandidas automaticamente enquanto você digita, mas provavelmente não todas."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Sem abreviação"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_openingHours_name_title">"Qual é o horário de funcionamento de %s?"</string>
+    <string name="quest_openingHours_name_title">"Quais são os horários de funcionamento de %s?"</string>
     <string name="quest_openingHours_start_time">"hora que abre"</string>
     <string name="quest_openingHours_end_time">"hore de encerramento"</string>
     <string name="quest_openingHours_add_months">"Adicionar meses"</string>
@@ -59,6 +57,8 @@
     <string name="confirmation_discard_negative">"Cancelar"</string>
     <string name="action_download">"Procurar por missões aqui"</string>
     <string name="action_upload">"Fazer upload de respostas"</string>
+
+    <!-- Fuzzy -->
     <string name="no_changes">"Você deixou o formulário vazio"</string>
     <string name="close">"fechar"</string>
     <string name="download_error">"Erro ao procurar por missões"</string>
@@ -80,8 +80,12 @@
     <string name="about_title_license">"Licença"</string>
     <string name="about_summary_license">"GNU General Public License"</string>
     <string name="offline">"Você está desconectado"</string>
+
+    <!-- Fuzzy -->
     <string name="confirmation_authorize_now">"Você precisa entrar com sua conta OSM para aplicar suas respostas. Entrar agora?"</string>
     <string name="not_authorized">"Não autorizado"</string>
+
+    <!-- Fuzzy -->
     <string name="version_banned_message">"Esta versão do StreetComplete foi proibida de carregar qualquer resposta! Atualize sua versão!"</string>
     <string name="no_gps_no_quests">"Para escanear por missões em torno de você automaticamente, ative a localização"</string>
     <string name="nothing_more_to_download">"Sem novas missões disponíveis"</string>
@@ -112,6 +116,8 @@
     <string name="pref_title_sync">"Auto-Sincronização"</string>
     <string name="map_btn_zoom_out">"Aumentar"</string>
     <string name="map_btn_zoom_in">"Reduzir"</string>
+
+    <!-- Fuzzy -->
     <string name="privacy_html">"&lt;p&gt;Ah, alguém que se preocupa com a privacidade, ótimo! Acredito que só tenho boas notícias para você: &lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Contribuições diretas&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
@@ -131,7 +137,7 @@ A sua localização só é utilizada para procurar automaticamente missões ao s
 &lt;p&gt;
 P&gt;
 Como mencionado, o aplicativo se comunica diretamente com a infra-estrutura do OSM. Ou seja, com a &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt; Overpass API &lt;/a&gt; para baixar missões (que é anônimo) e com o &lt;a href = \"http: / /wiki.openstreetmap.org/wiki/API_v0.6\"&gt; OSM API &lt;/a&gt; para fazer o upload de alterações. &lt;br/&gt;
-No entanto, antes de carregar suas alterações, o app verifica com um &lt;a href=\"http://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt; arquivo de texto simples &lt;/a&gt; no meu servidor se ele foi banido de carregar quaisquer alterações. Esta é uma medida de precaução para ser capaz de manter versões do aplicativo que acabam por ter bugs críticos de possivelmente corrompendo dados do OSM. &lt;br/&gt;
+No entanto, antes de carregar suas alterações, o app verifica com um &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt; arquivo de texto simples &lt;/a&gt; no meu servidor se ele foi banido de carregar quaisquer alterações. Esta é uma medida de precaução para ser capaz de manter versões do aplicativo que acabam por ter bugs críticos de possivelmente corrompendo dados do OSM. &lt;br/&gt;
 &lt;/p&gt;
 &lt;p&gt;
 Para exibir o mapa, os blocos vetoriais são recuperadas do &lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt; serviço de blocos de vetor Mapzen &lt;/a&gt;, que é anônimo. O serviço registra os pedidos de bloco para entender quais áreas são populares para pré-cache e melhorias de desempenho. Sua plataforma também registra endereços IP e todos os seus hospedagem está na Amazon, então eles estão sujeitos ao que eles podem fazer.
@@ -164,6 +170,8 @@ Para exibir o mapa, os blocos vetoriais são recuperadas do &lt;a href=\"https:/
     <string name="quest_surface_value_sett">"Paralelepipedo"</string>
     <string name="quest_surface_value_wood">"Madeira"</string>
     <string name="quest_placeName_title">"Qual o nome deste lugar?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sidewalk_title">"Há uma calçada nesta rua?"</string>
     <string name="map_orientation_info">"O mapa está orientado para o norte."</string>
     <string name="quest_sidewalk_onlyNorth">"Apenas no lado norte"</string>
@@ -208,9 +216,7 @@ As informações inseridas são adicionadas diretamente ao OpenStreetMap em seu 
     <string name="quest_busStopShelter_title">"Essa parada de ônibus tem abrigo?"</string>
     <string name="quest_bikeParkingCapacity_title">"Quantas bicicletas podem estacionar aqui?"</string>
     <string name="quest_address_unusualHousenumber_confirmation_description">"Esse número de casa parece muito estranho."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_sport_title">"Para que esporte é esse campo?"</string>
+    <string name="quest_sport_title">"Que esporte é praticado aqui?"</string>
     <string name="quest_sport_answer_multi">"Nenhum esporte específico"</string>
     <string name="quest_sport_soccer">"Futebol"</string>
     <string name="quest_sport_tennis">"Tênis"</string>
@@ -243,14 +249,12 @@ As informações inseridas são adicionadas diretamente ao OpenStreetMap em seu 
     <string name="quest_manySports_confirmation_specific">"Especificamente"</string>
     <string name="quest_manySports_confirmation_generic">"Multiúso"</string>
     <string name="quest_sport_manySports_confirmation_title">"Você selecionou muitos esportes"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopShelter_name_title">"O ponto de ônibus %s tem um telhado?"</string>
+    <string name="quest_busStopShelter_name_title">"O ponto de ônibus %s tem abrigo?"</string>
     <string name="quest_toiletsFee_title">"Esses sanitários são pagos?"</string>
     <string name="quest_tactilePaving_title_bus">"Essa parada de ônibus tem pavimentos táteis?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_tactilePaving_title_crosswalk">"Essa faixa de pedestres tem pavimentos táteis?"</string>
+    <string name="quest_tactilePaving_title_crosswalk">"Essa faixa de pedestres tem pavimentos táteis nos dois lados?"</string>
     <string name="quest_source_dialog_title">"Tem a certeza que verificou isto no local?"</string>
 
     <!-- Fuzzy -->
@@ -396,7 +400,6 @@ Caso contrário, pode baixar outro teclado na loja de aplicativos. Alguns dos te
 
     <!-- Fuzzy -->
     <string name="quest_way_lit_road_title">"Este trecho de estrada tem iluminação?"</string>
-    <string name="quest_way_lit_named_road_title">"A estrada %s tem iluminação aqui? "</string>
     <string name="quest_way_lit_automatic">"Usa detector de movimento "</string>
     <string name="quest_way_lit_24_7">"É iluminado dia e noite"</string>
     <string name="pref_title_authorized_username_summary">"Conta autorizada: %s"</string>
@@ -506,8 +509,6 @@ Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas barr
     <!-- Fuzzy -->
     <string name="quest_internet_access_name_title">"Que tipo de conexão à Internet é oferecida por %s?"</string>
     <string name="quest_internet_access_wlan">"Wi-Fi"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_internet_access_wired">"Cabeada (LAN)"</string>
     <string name="quest_internet_access_terminal">"Computador com acesso à Internet"</string>
     <string name="quest_internet_access_no">"Sem conexão"</string>
@@ -517,9 +518,7 @@ Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas barr
     <string name="quest_busStopShelter_tram_title">"Esta parada de bonde tem abrigo?"</string>
     <string name="quest_bench_backrest_title">"Este banco tem encosto?"</string>
     <string name="quest_bench_answer_picnic_table">"É uma mesa de piquenique"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_religion_for_place_of_worship_title">"Qual religião é praticada em %s?"</string>
+    <string name="quest_religion_for_place_of_worship_title">"Que religião é praticada em %s?"</string>
     <string name="quest_religion_christian">"Cristianismo"</string>
     <string name="quest_religion_muslim">"Islamismo"</string>
     <string name="quest_religion_hindu">"Hinduísmo"</string>
@@ -553,4 +552,16 @@ Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas barr
     <string name="quest_parking_access_private">"É privativo"</string>
     <string name="quest_parking_access_yes">"É público (com ou sem taxa)"</string>
     <string name="quest_parking_access_customers">"É apenas para clientes"</string>
+    <string name="quest_streetName_pedestrian_title">"Qual o nome desta via de pedestres?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_streetSurface_square_title">"Qual o pavimento desta quadra?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_streetSurface_square_name_title">"Qual o pavimento da quadra %s aqui?"</string>
+    <string name="quest_fee_answer_hours">"Depende do dia e horário"</string>
+    <string name="quest_fee_add_times">"Adicionar horários"</string>
+    <string name="quest_fee_only_at_hours">"Sim, mas apenas..."</string>
+    <string name="quest_fee_not_at_hours">"Sim, exceto..."</string>
+    <string name="quest_fee_hours_title">"nos seguintes horários:"</string>
 </resources>

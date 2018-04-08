@@ -59,6 +59,8 @@
     <string name="confirmation_discard_negative">"Nutraukti"</string>
     <string name="action_download">"Ieškoti užduočių čia"</string>
     <string name="action_upload">"Nusiųsti atsakymus"</string>
+
+    <!-- Fuzzy -->
     <string name="no_changes">"Jūs palikote formą tuščią"</string>
     <string name="close">"uždaryti"</string>
     <string name="download_error">"Klaida ieškant užduočių"</string>
@@ -82,8 +84,12 @@
     <string name="about_title_license">"Licencija"</string>
     <string name="about_summary_license">"GNU General Public LIcense"</string>
     <string name="offline">"Jūs atsijungę"</string>
+
+    <!-- Fuzzy -->
     <string name="confirmation_authorize_now">"Jūs turite autorizuoti savo OSM naudotojo paskyrą, kad galėtumėte pateikti savo atsakymus. Autorizuoti dabar?"</string>
     <string name="not_authorized">"Neautorizuota"</string>
+
+    <!-- Fuzzy -->
     <string name="version_banned_message">"Šiai StreetComplete versijai buvo uždrausta siųsti atsakymus! Prašome atnaujinti versiją!"</string>
     <string name="no_gps_no_quests">"Kad automatiškai ieškotumėte užduočių apie jus - įjunkite vietos nustatymą"</string>
     <string name="nothing_more_to_download">"Daugiau nėra užduočių"</string>
@@ -110,6 +116,8 @@
     <string name="pref_title_sync">"Automatinė sinchronizacija"</string>
     <string name="map_btn_zoom_out">"Nutolinti"</string>
     <string name="map_btn_zoom_in">"Priartinti"</string>
+
+    <!-- Fuzzy -->
     <string name="privacy_html">"&lt;p&gt;O, kažkam įdomus ir privatumas, puiku! Manau turiu jums tik geras naujienas:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Tiesioginė pagalba&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
@@ -128,7 +136,7 @@ Jūsų vieta naudojama tik automatinei užduočių aplink jus paieškai. Nesijau
 &lt;p&gt;&lt;b&gt;Duomenų naudojimas&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 Kaip minėta anksčiau, aplikacija tiesiogiai bendrauja su OSM infrastruktūra. Per &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass API&lt;/a&gt; atsisiunčiamos užduotys (o tai anonimiška), o per &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API&lt;/a&gt; įkeliami pakeitimai.&lt;br/&gt;
-Bet, prieš įkeliant jūsų pakeitimus, aplikacija patikrina &lt;a href=\"http://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;paprastą tekstinį failą&lt;/a&gt; mano serveryje, kurio pagalba patikrina, ar jai nėra uždrausta įkelti pakeitimus. Tai atsargos priemonė, kad jei paaiškėja, kad kažkuri aplikacijos versija turi kritinių klaidų, jai nebūtų leista gadinti OSM duomenų.&lt;br/&gt;
+Bet, prieš įkeliant jūsų pakeitimus, aplikacija patikrina &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;paprastą tekstinį failą&lt;/a&gt; mano serveryje, kurio pagalba patikrina, ar jai nėra uždrausta įkelti pakeitimus. Tai atsargos priemonė, kad jei paaiškėja, kad kažkuri aplikacijos versija turi kritinių klaidų, jai nebūtų leista gadinti OSM duomenų.&lt;br/&gt;
 &lt;/p&gt;
 &lt;p&gt;
 Žemėlapio rodymui, vektorinės kaladėlės atsiunčiamos iš &lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt;Mapzen vektorinių kaladėlių paslaugos&lt;/a&gt;, kuri yra anoniminė. Užklausos rašomos į žurnalą, kad būtų žinoma, kurios vietovės populiarios išankstiniam sukūrimui ir greitaveikos patobulinimams. Jų platforma taipogi įrašo ir IP adresą bei paslaugas teikia per Amazon, kuri gali nustatyti, kas daroma su šia informacija.
@@ -159,6 +167,8 @@ Bet, prieš įkeliant jūsų pakeitimus, aplikacija patikrina &lt;a href=\"http:
     <string name="quest_surface_value_sett">"Trinkelės"</string>
     <string name="quest_surface_value_wood">"Medis"</string>
     <string name="quest_placeName_title">"Koks yra šios vietos pavadinimas?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sidewalk_title">"Ar ši gatvė turi šaligatvį?"</string>
     <string name="map_orientation_info">"Šiaurė yra žemėlapio viršuje."</string>
     <string name="quest_sidewalk_onlyNorth">"Tik šiaurinėje pusėje"</string>
@@ -387,7 +397,6 @@ Priešingu atveju galite atsisiųsti kitą klaviatūrą programėlių parduotuv�
 
     <!-- Fuzzy -->
     <string name="quest_way_lit_road_title">"Ar ši kelio atkarpa apšviesta?"</string>
-    <string name="quest_way_lit_named_road_title">"Ar „%s“ kelias čia apšviestas?"</string>
     <string name="quest_way_lit_automatic">"Naudoja judesio daviklį"</string>
     <string name="quest_way_lit_24_7">"Apšviesta dieną ir naktį"</string>
     <string name="pref_title_authorized_username_summary">"Autorizuota paskyra: %s"</string>

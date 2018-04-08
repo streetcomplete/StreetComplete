@@ -59,6 +59,8 @@
     <string name="confirmation_discard_negative">"Annuleer"</string>
     <string name="action_download">"Download of ververs vragen in deze omgeving"</string>
     <string name="action_upload">"Antwoord uploaden"</string>
+
+    <!-- Fuzzy -->
     <string name="no_changes">"Je hebt het formulier leeg gelaten"</string>
     <string name="close">"Sluit"</string>
     <string name="download_error">"Error bij het scannen van vragen"</string>
@@ -82,8 +84,12 @@
     <string name="about_title_license">"Licentie"</string>
     <string name="about_summary_license">"GNU General Public License "</string>
     <string name="offline">"Je bent offline"</string>
+
+    <!-- Fuzzy -->
     <string name="confirmation_authorize_now">"Je moet inloggen met je OSM gebruikers account om je antwoorden te kunnnen verwerken, nu inloggen?"</string>
     <string name="not_authorized">"Niet geauthoriseerd"</string>
+
+    <!-- Fuzzy -->
     <string name="version_banned_message">"Deze versie van StreetComplete is geblokkeerd voor het uploaden van antwoorden. Update alstublieft naar een nieuwere versie. "</string>
     <string name="no_gps_no_quests">"Om automatisch te kunnnen scannen voor vragen moet je \"locatie\" aanstaan."</string>
     <string name="nothing_more_to_download">"Verder geen vragen beschikbaar."</string>
@@ -110,6 +116,8 @@
     <string name="pref_title_sync">"Automatisch synchroniseren"</string>
     <string name="map_btn_zoom_out">"Uitzoomen"</string>
     <string name="map_btn_zoom_in">"Inzoomen"</string>
+
+    <!-- Fuzzy -->
     <string name="privacy_html">"&lt;p&gt;Aha, iemand die om zijn privacy geeft, leuk! Ik heb enkel goed nieuws voor jou:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Directe Bijdrages&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
@@ -128,7 +136,7 @@ Je locatie wordt enkel gebruikt om naar quests te scannen rondom jou. Geen zorge
 &lt;p&gt;&lt;b&gt;Data Gebruik&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 Zoals eerder aangehaald zal de app direct met OSM communiceren, meer bepaald de &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass API&lt;/a&gt; om quests te downloaden (anoniem) and met de &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API&lt;/a&gt; om wijzigingen te uploaden.&lt;br/&gt;
-Voor het uploaden van jouw wijzigingen zal de app een &lt;a href=\"http://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;simpel tekst bestand&lt;/a&gt; op mijn server controleren om te bepalen of hij verbannen is om wijzigingen te uploaden. Dit om te voorkomen dat bepaalde versies van de app met kritische bugs mogelijk de OSM data zouden verknoeien.&lt;br/&gt;
+Voor het uploaden van jouw wijzigingen zal de app een &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;simpel tekst bestand&lt;/a&gt; op mijn server controleren om te bepalen of hij verbannen is om wijzigingen te uploaden. Dit om te voorkomen dat bepaalde versies van de app met kritische bugs mogelijk de OSM data zouden verknoeien.&lt;br/&gt;
 &lt;/p&gt;
 &lt;p&gt;
 Om de kaart te tonen worden vector tegels van de &lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt;Mapzen vector tile service&lt;/a&gt; gedownload, welke anoniem is. Deze dienst zal de gemaakte verzoeken naar tegels loggen, om beter te begrijpen welke omgevingen pupulair zijn, voor pre-caching en performantie verbeteringen. Hun platform zal ook IP adressen loggen, en wordt volledig gehost op Amazon. Ze zijn dus ook afhankelijk van Amazon en hun privacy-notice.
@@ -161,6 +169,8 @@ Om de kaart te tonen worden vector tegels van de &lt;a href=\"https://mapzen.com
     <string name="quest_surface_value_sett">"Kassei"</string>
     <string name="quest_surface_value_wood">"Hout"</string>
     <string name="quest_placeName_title">"Wat is de naam van deze plaats?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sidewalk_title">"Is er een voetpad in deze straat?"</string>
     <string name="map_orientation_info">"De kaart is naar het noorden geörienteerd."</string>
     <string name="quest_sidewalk_onlyNorth">"Alleen aan de noordzijde"</string>
@@ -394,7 +404,6 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire keybor
 
     <!-- Fuzzy -->
     <string name="quest_way_lit_road_title">"Is dit deel van de straat verlicht?"</string>
-    <string name="quest_way_lit_named_road_title">"Is dit deel van de straat \"%s\" verlicht?"</string>
     <string name="quest_way_lit_automatic">"Het gebruikt bewegingsdetectie"</string>
     <string name="quest_way_lit_24_7">"Het is dag en nacht vericht"</string>
     <string name="pref_title_authorized_username_summary">"Geautoriseerd Account: %s"</string>
@@ -438,7 +447,7 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire keybor
     <string name="quest_leave_new_note_photo_delete_title">"Wil jij deze foto verwijderen?"</string>
     <string name="privacy_html_image_upload">"&lt;p&gt;Foto's die je toevoegt aan opmerkingen worden geüpload naar &lt;a href=\"https://lut.im\"&gt;lut.im&lt;/a&gt;, een dienst die anoniem is en waarbij je positie niet wordt bijgehouden.&lt;p&gt;"</string>
     <string name="quest_cycleway_value_track">"gescheiden fietspad"</string>
-    <string name="quest_cycleway_value_lane">"fietspad op de weg"</string>
+    <string name="quest_cycleway_value_lane">"fietsstrook"</string>
     <string name="quest_cycleway_value_none">"geen"</string>
     <string name="quest_cycleway_value_shared">"fietssuggestiestrook of expliciet gedeeld met ander verkeer"</string>
     <string name="quest_cycleway_value_bus_lane">"op een busstrook"</string>
@@ -528,7 +537,7 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire keybor
     <string name="quest_parking_fee_title">"Kost het geld om hier te parkeren?"</string>
 
     <!-- In Belgium, we have a official cyclelane (with lines of ~1m) which are reserved for  cyclists; and 'suggestion strips' which would translate to 'shared_lane'. Which one is the case here? -->
-    <string name="quest_cycleway_value_lane_soft">"fietspad (met onderbroken streep)"</string>
+    <string name="quest_cycleway_value_lane_soft">"fietsstrook (met onderbroken streep)"</string>
 
     <!-- What is meant with this? Can you link an image? -->
     <string name="quest_surface_value_unhewn_cobblestone">"Ongehouwen kasseien"</string>
@@ -536,4 +545,12 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire keybor
     <string name="quest_parking_access_private">"Het is een privéparking"</string>
     <string name="quest_parking_access_yes">"Het is een publieke parking (met of zonder betaling)"</string>
     <string name="quest_parking_access_customers">"Enkel klanten mogen parkeren"</string>
+    <string name="quest_streetName_pedestrian_title">"Wat is de naam van dit voetpad?"</string>
+    <string name="quest_streetSurface_square_title">"Welke ondergrond heeft dit plein?"</string>
+    <string name="quest_streetSurface_square_name_title">"Welke ondergrond heeft het plein % hier?"</string>
+    <string name="quest_fee_answer_hours">"Afhankelijk van dag en tijdstip"</string>
+    <string name="quest_fee_add_times">"Voeg de tijden toe"</string>
+    <string name="quest_fee_only_at_hours">"Ja, maar alleen...."</string>
+    <string name="quest_fee_not_at_hours">"Ja, maar niet..."</string>
+    <string name="quest_fee_hours_title">"bij de volgende tijden:"</string>
 </resources>
