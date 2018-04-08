@@ -2,7 +2,16 @@ Thanks for your interest in contributing to StreetComplete! 👍 There are many 
 
 Even if you do not find something to do in this list, using StreetComplete, testing it and giving constructive feedback is always a valuable contribution too.
 
-<!-- TODO: table of contents! -->
+Content:
+* [Translating the app](#translating-the-app)
+* [Helping mappers by solving their notes](#helping-mappers-by-solving-their-notes)
+* [Joining discussions](#joining-discussions)
+* [Testing and reporting issues](#testing-and-reporting-issues)
+   * [Issues of dependencies](#issues-of-dependencies)
+   * [Suggesting new quests](#suggesting-new-quests)
+* [Improving documentation](#improving-documentation)
+* [Development](#development)
+   * [Developing new quests](#developing-new-quests)
 
 ## Translating the app
 
@@ -46,12 +55,18 @@ OpenStreetMap (and StreetComplete) works, because of a diverse community all ove
 If you experience problems, crashes or a quest is not clear to you, feel free to open an issue for that. Remember to open one issue _for one matter_, so do not open one issue "I have found several problems", but one for each problem.
 
 1. If you have questions, remember to [read the FAQ](https://wiki.openstreetmap.org/wiki/StreetComplete/FAQ) first.
-2. Look [whether your issue has already been reported](https://github.com/westnordost/StreetComplete/issues).
-3. Now you can open a new issue. Give it a meaningful title and describe the problem. Do mention the StreetComplete and Android version, if it is a technical bug.
+2. Remember to report map style issues [in the appropriate repository](#issues-of-dependencies).
+3. Look [whether your issue has already been reported](https://github.com/westnordost/StreetComplete/issues).
+4. Now you can open a new issue. Give it a meaningful title and describe the problem. Do mention the StreetComplete and Android version, if it is a technical bug.
 
-### Map style issues
+### Issues of dependencies
 
-Note that the map style used by StreetComplete is developed as a [separate project](https://github.com/ENT8R/streetcomplete-mapstyle), so please report issues related to it there.
+StreetComplete depends on some projects for the app. Try to find the appropriate place for reporting them.
+
+* **Map style issues** should be reported as in a [separate reporistory](https://github.com/ENT8R/streetcomplete-mapstyle).
+Examples of such issues are missing elements on the map, display errors on the map, . As a rule of thumb, you can report everything, which happens "behind" the quest icon markers, there.
+
+Note that technical issues with the map rendering may theoretically be reported at [Tangram-ES](https://github.com/tangrams/tangram-es/), as this is the library used by StreetComplete. Note that this **requires technical knowledge**, so it is often better to report them in the general StreetComplete issue tracker. People will then let you know whether this issue is solvable by StreetComplete or an issue of Tangram-ES.
 
 ### Suggesting new quests
 
