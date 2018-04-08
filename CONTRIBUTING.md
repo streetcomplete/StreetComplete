@@ -22,11 +22,11 @@ Before each big release, translations are pulled in from POEditor.
 - [x] Requires no programming knowledge!
 - [ ] Requires no OpenStreetMap knowledge!
 
-As you probably noticed, you can choose "Cannot answer" in StreetComplete and thus leave a note by
+As you probably noticed, you can choose "Cannot answer" in StreetComplete and thus leave a note on OpenStreetMap.
 
 You can help with [processing OSM notes opened by StreetComplete users](https://ent8r.github.io/NotesReview/?query=StreetComplete&limit=100&start=true). (You can also do it without that special tool, but it helps.) When doing so, you can also find systematic problems or misunderstandings of user's when solving StreetComplete quests.
 
-If you find such user experience problems, please report them back in the [issue tracker of StreetComplete](https://github.com/westnordost/StreetComplete/issues). Do not forget to add links to examples, where you found them.
+If you find such user experience problems, please report them back in the [issue tracker of StreetComplete](https://github.com/westnordost/StreetComplete/issues). Do not forget to add links to examples, e.g. the notes StreetComplete mappers submitted.
 
 ## Joining discussions
 
@@ -36,7 +36,7 @@ If you find such user experience problems, please report them back in the [issue
 You can always join in discussions in issues for new quests or similar stuff. Often local knowledge or so is required, so we can estimate whether a quest can be asked in different regions.
 OpenStreetMap (and StreetComplete) works, because of a diverse community all over the world.
 
-[Especially look at the issues tagged with "help wanted"](https://github.com/westnordost/StreetComplete/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22).
+[Especially look at the issues tagged with "help wanted"](https://github.com/westnordost/StreetComplete/labels/help%20wanted).
 
 ## Testing and reporting issues
 
@@ -55,26 +55,29 @@ Note that the map style used by StreetComplete is developed as a [separate proje
 
 ### Suggesting new quests
 
-We appreciate all quest ideas, you and others have, but some ideas cannot be added into the app, due to various design decicions and requirements. This is required in order to make a great app for all users of StreetComplete, whose contributions actually help the OpenStreetMap project. A quest, which nobody can solve and where users potentially choose wrong options and add wrong data to OpenStreetMap hurts not only OSM, but also this app.
+We appreciate all quest ideas you and others have, but some ideas cannot be added into the app due to various design decisions and requirements. This is required in order to make a great app for all users of StreetComplete, whose contributions actually help the OpenStreetMap project. A quest which nobody can solve and where users potentially choose wrong options adding wrong data to OpenStreetMap hurts not only OSM, but also this app.
 
 What you need to do:
 
 1. Search whether the quest you want to suggest is [already implemented in StreetComplete](https://wiki.openstreetmap.org/wiki/StreetComplete/Quests) or [already suggested in the issue tracker](https://github.com/westnordost/StreetComplete/issues).
 2. Please read the full guide on what requirements you need to consider to make the quest a great thing: [Adding new Quests to StreetComplete](https://github.com/westnordost/StreetComplete/wiki/Adding-new-Quests-to-StreetComplete).
-3. Open a new issue and fill out the issue template. Explain, why your quest meets the criteria you need to check, so other users can follow the example.
-4. Wait for input of others, even if you could implement it right away, it is always suggested to _first_ suggest a quest and implement it when it is accepted.
+3. Open a new issue and fill out the issue template. Explain why your quest meets the criteria you need to check, so other users can follow the example.
+4. Wait for input of others, even if you could implement it right away.  It is always suggested to _first_ suggest a quest and implement it only if it has been accepted there.
 
 ➡️ If you can code, see also how to [develop your own quest](#developing-new-quests).
+
+A quest is officially marked as accepted, when it get's the ["new quest" tag](https://github.com/westnordost/StreetComplete/labels/new%20quest).
+<!-- TODO: introduce a better way/new tag here? ref https://github.com/westnordost/StreetComplete/issues/1006 -->
 
 ## Improving documentation
 
 - [x] Requires no programming knowledge!
 - [ ] Requires no OpenStreetMap knowledge!
 
-You can also help to keep the wiki **up-to-date** for StreetComplete. For example:
-* Add missing quests [in the quest list](https://wiki.openstreetmap.org/wiki/StreetComplete/Quests) or check, that they are up to date.
-* [Edit the FAQ](https://wiki.openstreetmap.org/wiki/StreetComplete/FAQ) and add reoccuring questions.
-* Edit the [main StreetComplete page](https://wiki.openstreetmap.org/wiki/StreetComplete).
+You can also help to keep the OpenStreetMap wiki **up-to-date** for StreetComplete. For example:
+* Add missing quests in [the quest list](https://wiki.openstreetmap.org/wiki/StreetComplete/Quests) or check, that they are up to date.
+* Edit [the FAQ](https://wiki.openstreetmap.org/wiki/StreetComplete/FAQ) and add reoccuring questions.
+* Edit [the main StreetComplete page](https://wiki.openstreetmap.org/wiki/StreetComplete).
 
 ## Development
 
@@ -85,7 +88,7 @@ If you would like to help and are able to contribute code, you are most welcome.
 
 There are many reasonable feature requests and ideas for new question types in the issue tracker which you could also engage yourself with. If you have own ideas how to improve this app and want to make sure that the Pull Request will be merged, it is strongly suggested to **open an issue first** to discuss the feature.
 
-If you need to find things, where help is appreciated
+If you need to find things, where help is appreciated [have a look at the issues tagged with "help wanted"](https://github.com/westnordost/StreetComplete/labels/help%20wanted).
 
 ### Developing new quests
 
