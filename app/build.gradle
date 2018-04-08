@@ -21,8 +21,8 @@ android {
         applicationId "de.westnordost.streetcomplete"
         minSdkVersion 17
         targetSdkVersion 26
-        versionCode 403
-        versionName "4.1"
+        versionCode 500
+        versionName "5.0-beta1"
         testInstrumentationRunner "android.test.InstrumentationTestRunner"
         buildConfigField "String", "MAPZEN_API_KEY", MAPZEN_API_KEY
     }
