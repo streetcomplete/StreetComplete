@@ -61,7 +61,7 @@ public class CountryInfosTest extends AndroidTestCase
 			try
 			{
 				CountryInfo ci = elem.getValue();
-				assertEquals(elem.getKey(), ci.countryCode);
+				assertEquals(elem.getKey().split("-")[0], ci.countryCode);
 				checkForEach(ci);
 			}
 			catch (Throwable e)

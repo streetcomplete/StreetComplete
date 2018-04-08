@@ -10,7 +10,8 @@ public class CountryInfo implements Serializable, Cloneable
 {
 	public static final long serialVersionUID = 1L;
 
-	// this value is not defined in the yaml file but it is the file name!
+	// this value is not defined in the yaml file but it is the ISO language code part of the file name!
+	// i.e. US for US-TX.yml
 	String countryCode;
 
 	List<String> speedUnit;
