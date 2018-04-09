@@ -509,4 +509,9 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_postboxCollectionTimes_title">What are the collection times of this postbox?</string>
     <string name="quest_collectionTimes_add_times">Add collection time</string>
     <string name="quest_collectionTimes_answer_no_times_specified">No times specified</string>
+    <string name="quest_construction_road_title">Is this road completed?</string>
+    <string name="quest_construction_cycleway_title">Is this cycleway completed?</string>
+    <string name="quest_construction_footway_title">Is this footway completed?</string>
+    <string name="quest_construction_generic_title">Is this way completed?</string>
+    <string name="quest_construction_building_title">Is this building completed?</string>
 </resources>
