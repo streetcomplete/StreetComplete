@@ -15,12 +15,5 @@ public class OsmTaggings
 		"service", "track", "road",
 	};
 
-	// listed on https://wiki.openstreetmap.org/wiki/Key:access and used more than 5k times
-	public static final String[] POPULAR_ROAD_ACCESS_TAGS = {
-		"access", "foot", "vehicle", "bicycle", "carriage", "motor_vehicle", "motorcycle",
-		"mofa", "moped", "motorcar", "tourist_bus", "goods", "hgv", "agricultural", "snowmobile",
-		"psv", "hov", "emergency", "hazmat", "horse", "taxi",
-	};
-
 	public static final String SURVEY_MARK_KEY = "check_date";
 }

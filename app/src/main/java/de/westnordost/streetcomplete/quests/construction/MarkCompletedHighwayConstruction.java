@@ -36,33 +36,18 @@ public class MarkCompletedHighwayConstruction extends MarkCompletedConstruction
 	 * - with invalid construction tag
 	 * - with tagged opening date that is in future
 	 * - recently edited (includes adding/updating check_date tags)
-	 * - with fixme (as in some situations this quest may add fixme note as an edit)
 	 * . */
 	private String getOverpassQuery(BoundingBox bbox)
 	{
-		String groupName = ".roads_under_construction";
-		String resultsName = ".roads_for_review";
+		String groupName = ".roads_for_review";
 		return OverpassQLUtil.getGlobalOverpassBBox(bbox) +
 			"way" + getQueryPart("highway", groupName, 14) +
-			"(" +
-			"  way[highway=construction][fixme];" +
-			") -> .with_fixme;" +
-			"(" +
-			groupName + " - .with_fixme;" +
-			") -> " + resultsName + ";" +
-			resultsName + " out meta geom;";
+			groupName + " out meta geom;";
 	}
 
 	public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
 	{
 		if(answer.getBoolean(YesNoQuestAnswerFragment.ANSWER)) {
-			if(isAnyAccessTagPresent(changes)){
-				// there are some access tag present that are likely to be temporary
-				// and valid only during construction - marking construction as finished
-				// would likely cause nonobvious tagging mistake
-				changes.add("fixme", "construction is completed but there are access tags that maybe were true only during construction period");
-				return;
-			}
 			String constructionValue = changes.getPreviousValue("construction");
 			if(constructionValue == null) {
 				constructionValue = "road";
@@ -72,15 +57,6 @@ public class MarkCompletedHighwayConstruction extends MarkCompletedConstruction
 		} else {
 			changes.addOrModify(OsmTaggings.SURVEY_MARK_KEY, DateUtil.getCurrentDateString());
 		}
-	}
-
-	private boolean isAnyAccessTagPresent(StringMapChangesBuilder changes){
-		for(String accessTag : OsmTaggings.POPULAR_ROAD_ACCESS_TAGS){
-			if(changes.getPreviousValue(accessTag) != null) {
-				return true;
-			}
-		}
-		return false;
 	}
 
 	@Override

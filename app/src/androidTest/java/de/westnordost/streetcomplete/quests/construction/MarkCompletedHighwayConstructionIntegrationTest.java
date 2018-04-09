@@ -40,12 +40,6 @@ public class MarkCompletedHighwayConstructionIntegrationTest extends TestCase {
 			"2017-07-01"
 		);
 	}
-	public void test_fixme_tag_blocks_quest() throws ParseException {
-		verifyYieldsNoQuest(
-			new BoundingBox(-38.14833, 145.29011, -38.14813, 145.29157),
-			"2018-03-01"
-		);
-	}
 
 
 	private void verifyYieldsNoQuest(BoundingBox bbox, String date) throws ParseException {
