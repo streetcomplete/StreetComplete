@@ -15,8 +15,8 @@ Content:
 
 ## Translating the app
 
-- [x] requires no programming knowledge
-- [x] requires no OpenStreetMap knowledge
+- ☑️ requires no programming knowledge
+- ☑️ requires no OpenStreetMap knowledge
 
 You can translate StreetComplete at POEditor. You can add a translation in your own language or improve other translations. Note that manual translations as Pull Requests will not be merged and do not help the project.
 
@@ -28,8 +28,8 @@ Before each big release, translations are pulled in from POEditor.
 
 ## Helping mappers by solving their notes
 
-- [x] requires no programming knowledge
-- [ ] requires no OpenStreetMap knowledge
+- ☑️ requires no programming knowledge
+- ⬜️ requires no OpenStreetMap knowledge
 
 As you probably noticed, you can choose "Cannot answer" in StreetComplete and thus leave a note on OpenStreetMap.
 
@@ -39,8 +39,8 @@ If you find such user experience problems, please report them back in the [issue
 
 ## Joining discussions
 
-- [x] requires no programming knowledge
-- [x] requires no OpenStreetMap knowledge
+- ☑️ requires no programming knowledge
+- ☑️ requires no OpenStreetMap knowledge
 
 You can always join in discussions in issues for new quests or similar stuff. Often local knowledge or so is required, so we can estimate whether a quest can be asked in different regions.
 OpenStreetMap (and StreetComplete) works, because of a diverse community all over the world.
@@ -49,8 +49,8 @@ OpenStreetMap (and StreetComplete) works, because of a diverse community all ove
 
 ## Testing and reporting issues
 
-- [x] requires no programming knowledge
-- [x] requires no OpenStreetMap knowledge
+- ☑️ requires no programming knowledge
+- ☑️ requires no OpenStreetMap knowledge
 
 If you experience problems, crashes or a quest is not clear to you, feel free to open an issue for that. Remember to open one issue _for one matter_, so do not open one issue "I have found several problems", but one for each problem.
 
@@ -90,8 +90,8 @@ A quest is officially marked as accepted, when it get's the ["new quest" tag](ht
 
 ## Improving documentation
 
-- [x] requires no programming knowledge
-- [ ] requires no OpenStreetMap knowledge
+- ☑️ requires no programming knowledge
+- ⬜️ requires no OpenStreetMap knowledge
 
 You can also help to keep the OpenStreetMap wiki **up-to-date** for StreetComplete. For example:
 * Add missing quests in [the quest list](https://wiki.openstreetmap.org/wiki/StreetComplete/Quests) or check, that they are up to date.
@@ -100,8 +100,8 @@ You can also help to keep the OpenStreetMap wiki **up-to-date** for StreetComple
 
 ## Development
 
-- [ ] requires no programming knowledge
-- [x] requires no OpenStreetMap knowledge (depends on what you do)
+- ⬜️ requires no programming knowledge
+- ☑️ requires no OpenStreetMap knowledge (depends on what you do)
 
 If you would like to help and are able to contribute code, you are most welcome.
 
