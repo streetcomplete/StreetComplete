@@ -9,21 +9,19 @@ import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
 import de.westnordost.streetcomplete.quests.DateUtil;
 
 public class MarkCompletedHighwayConstructionOldData extends MarkCompletedHighwayConstruction {
-	private Calendar dateCalendar;
+	private Date date;
 	MarkCompletedHighwayConstructionOldData(OverpassMapDataDao overpassServer, String dateString) throws ParseException {
 		super(overpassServer);
-		Date date = DateUtil.basicISO8601().parse(dateString);
-		dateCalendar = Calendar.getInstance();
-		dateCalendar.setTime(date);
+		date = DateUtil.basicISO8601().parse(dateString);
 	}
 
 	@Override
 	protected String getCurrentDateString(){
-		return DateUtil.getOffsetDateStringFromDate(0, dateCalendar) + "T00:00:00Z";
+		return DateUtil.getOffsetDateStringFromDate(0, date) + "T00:00:00Z";
 	}
 
 	@Override
 	protected String getOffsetDateString(int offset){
-		return DateUtil.getOffsetDateStringFromDate(offset, dateCalendar) + "T00:00:00Z";
+		return DateUtil.getOffsetDateStringFromDate(offset, date) + "T00:00:00Z";
 	}
 }
