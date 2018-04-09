@@ -66,7 +66,11 @@ StreetComplete depends on some projects for the app. Try to find the appropriate
 * **Map style issues** should be reported as in a [separate reporistory](https://github.com/ENT8R/streetcomplete-mapstyle).
 Examples of such issues are missing elements on the map, display errors on the map, . As a rule of thumb, you can report everything, which happens "behind" the quest icon markers, there.
 
-Note that technical issues with the map rendering may theoretically be reported at [Tangram-ES](https://github.com/tangrams/tangram-es/), as this is the library used by StreetComplete. Note that this **requires technical knowledge**, so it is often better to report them in the general StreetComplete issue tracker. People will then let you know whether this issue is solvable by StreetComplete or an issue of Tangram-ES.
+Note that this app has other dependencies. For reporting issues, in these, you however have to have some technical knowledge. So if you are **not sure** that the component listed below is responsible for the issue you have, it is often better to report them in the general StreetComplete issue tracker. People will then let you know whether this issue is solvable by StreetComplete or an issue of Tangram-ES.
+
+More dependencies:
+* [Tangram-ES](https://github.com/tangrams/tangram-es/) for technical issues with the map rendering
+* [countryboundaries](https://github.com/westnordost/countryboundaries) for detecting, in which country a quest is (affects quest display, etc.)
 
 ### Suggesting new quests
 
@@ -102,6 +106,8 @@ You can also help to keep the OpenStreetMap wiki **up-to-date** for StreetComple
 If you would like to help and are able to contribute code, you are most welcome.
 
 There are many reasonable feature requests and ideas for new question types in the issue tracker which you could also engage yourself with. If you have own ideas how to improve this app and want to make sure that the Pull Request will be merged, it is strongly suggested to **open an issue first** to discuss the feature.
+
+Note StreetComplete also uses [some dependencies](#issues-of-dependencies), where contributions are likely also accepted and help StreetComplete, too.
 
 If you need to find things, where help is appreciated [have a look at the issues tagged with "help wanted"](https://github.com/westnordost/StreetComplete/labels/help%20wanted).
 
