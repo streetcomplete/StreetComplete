@@ -2,6 +2,7 @@
 isAdvisorySpeedLimitKnown: false
 isLivingStreetKnown: true
 isSlowZoneKnown: true
+mobileCountryCode: 206
 officialLanguages: [nl, fr, de]
 orchardProduces: [pear, apple, strawberry, cherry, tomatoe, walnut, hop, raspberry, chilli_pepper,
   sweet_pepper, plum, grape]

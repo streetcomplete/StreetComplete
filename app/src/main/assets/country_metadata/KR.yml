@@ -1,6 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [en]
 isAdvisorySpeedLimitKnown: true
+mobileCountryCode: 450
 officialLanguages: [ko]
 orchardProduces: [apple, chilli_pepper, sweet_pepper, chestnut, apple, persimmon, chilli_pepper, sweet_pepper,
   peach, orange, grape, peach, pear, tomatoe, strawberry, tomatoe, plum]

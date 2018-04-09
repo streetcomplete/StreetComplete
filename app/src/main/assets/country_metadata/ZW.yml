@@ -1,6 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
 isLeftHandTraffic: true
 isLivingStreetKnown: true
+mobileCountryCode: 648
 officialLanguages: [en, sn, nd]
 orchardProduces: [banana, orange, chilli_pepper, sweet_pepper, tea, tomatoe, lemon, lime, coffee, pepper,
   grapefruit, guava, mango, mangosteen, apple, grape, avocado, peach, pear]

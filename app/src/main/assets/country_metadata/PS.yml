@@ -1,5 +1,6 @@
 # Do not edit. Source files are in /res/country_metadata
 firstDayOfWorkweek: Su
+mobileCountryCode: 425
 officialLanguages: [ar]
 orchardProduces: [olive, grape, almond, tomatoe, date, fig, plum, lemon, lime, chilli_pepper, sweet_pepper,
   apricot, guava, mango, mangosteen, peach, orange, apple, cherry]

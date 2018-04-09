@@ -163,10 +163,11 @@ public abstract class AbstractQuestAnswerFragment extends AbstractBottomSheetFra
 		return localizedContext.getResources();
 	}
 
-	protected final Resources getCurrentCountryEnglishResources()
+	protected final Resources getCurrentCountryResources()
 	{
 		Configuration conf = new Configuration(getResources().getConfiguration());
-		conf.setLocale(new Locale("en", getCountryInfo().getCountryCode()));
+		Integer mcc = getCountryInfo().getMobileCountryCode();
+		conf.mcc = mcc != null ? mcc : 0;
 		return getContext().createConfigurationContext(conf).getResources();
 	}
 

@@ -1,6 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
 isLeftHandTraffic: true
 isLivingStreetKnown: true
+mobileCountryCode: 650
 officialLanguages: [en, ny]
 orchardProduces: [tea, banana, guava, mango, mangosteen, tomatoe, coffee, tung_nut, pepper, chilli_pepper,
   sweet_pepper, sisal, nutmeg, vanilla]

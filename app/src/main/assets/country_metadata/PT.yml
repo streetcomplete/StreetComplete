@@ -1,6 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
 isAdvisorySpeedLimitKnown: true
 isSlowZoneKnown: true
+mobileCountryCode: 268
 officialLanguages: [pt]
 orchardProduces: [olive, grape, fig, chestnut, almond, tomatoe, orange, apple, pear, avocado, peach,
   walnut, kiwi, plum, banana]

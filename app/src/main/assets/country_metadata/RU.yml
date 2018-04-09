@@ -2,6 +2,7 @@
 isAdvisorySpeedLimitKnown: true
 isLivingStreetKnown: true
 isSlowZoneKnown: true
+mobileCountryCode: 250
 officialLanguages: [ru]
 orchardProduces: [apple, tomatoe, grape, plum, strawberry, raspberry, cherry, apricot, pear, peach,
   blueberry, tea, hop, orange]

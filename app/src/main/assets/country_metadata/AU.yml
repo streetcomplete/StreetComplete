@@ -2,6 +2,7 @@
 isAdvisorySpeedLimitKnown: true
 isLeftHandTraffic: true
 isLivingStreetKnown: true
+mobileCountryCode: 505
 officialLanguages: [en]
 orchardProduces: [grape, olive, almond, apple, orange, banana, peach, avocado, guava, mango, mangosteen,
   walnut, apricot, pear, tomatoe, plum, cherry]

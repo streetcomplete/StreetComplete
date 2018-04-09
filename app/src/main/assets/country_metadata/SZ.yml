@@ -1,6 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
 isLeftHandTraffic: true
 isLivingStreetKnown: true
+mobileCountryCode: 653
 officialLanguages: [ss, en]
 orchardProduces: [grapefruit, pineapple, banana, almond, tomatoe, plum, orange, avocado, date, guava,
   mango, mangosteen]

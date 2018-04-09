@@ -2,6 +2,7 @@
 isAdvisorySpeedLimitKnown: true
 isLivingStreetKnown: true
 isSlowZoneKnown: true
+mobileCountryCode: 257
 officialLanguages: [be, ru]
 orchardProduces: [apple, cranberry, strawberry, plum, tomatoe, pear, walnut, grape, hazelnut, cherry]
 popularSports: [soccer, basketball, tennis, field_hockey, volleyball, ice_hockey]

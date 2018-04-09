@@ -2,6 +2,7 @@
 isAdvisorySpeedLimitKnown: true
 isLivingStreetKnown: true
 isSlowZoneKnown: true
+mobileCountryCode: 226
 officialLanguages: [ro]
 orchardProduces: [grape, plum, apple, tomatoe, chilli_pepper, sweet_pepper, cherry, pear, apricot,
   strawberry, peach, walnut, blueberry, hazelnut, hop, cranberry]

@@ -2,5 +2,6 @@
 isAdvisorySpeedLimitKnown: true
 isLivingStreetKnown: true
 isSlowZoneKnown: true
+mobileCountryCode: 242
 officialLanguages: [nb, nn, 'no']
 orchardProduces: [strawberry, apple, plum, raspberry, cherry, pear, tomatoe, blueberry]

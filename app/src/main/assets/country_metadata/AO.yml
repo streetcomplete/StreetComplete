@@ -1,4 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
 isLivingStreetKnown: true
+mobileCountryCode: 631
 officialLanguages: [pt]
 orchardProduces: [banana, coffee, pineapple, palm_oil, tomatoe, cashew_nut, cacao, sisal]

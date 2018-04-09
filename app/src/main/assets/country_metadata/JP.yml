@@ -2,6 +2,7 @@
 additionalStreetsignLanguages: [en]
 isAdvisorySpeedLimitKnown: true
 isLeftHandTraffic: true
+mobileCountryCode: 440
 officialLanguages: [ja]
 orchardProduces: [tea, apple, persimmon, chestnut, grape, apricot, pear, tomatoe, peach, strawberry,
   cherry, chilli_pepper, sweet_pepper, plum, orange, kiwi]

@@ -2,6 +2,7 @@
 isAdvisorySpeedLimitKnown: true
 isLivingStreetKnown: true
 isSlowZoneKnown: true
+mobileCountryCode: 293
 officialLanguages: [sl]
 orchardProduces: [grape, plum, apple, hop, olive, peach, tomatoe, pear, walnut, cherry, chilli_pepper,
   sweet_pepper, strawberry, persimmon, hazelnut, apricot]

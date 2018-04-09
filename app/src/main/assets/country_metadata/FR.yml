@@ -4,6 +4,7 @@ additionalValidHousenumberRegex: \p{N}{1,4}\sbis
 isAdvisorySpeedLimitKnown: true
 isLivingStreetKnown: true
 isSlowZoneKnown: true
+mobileCountryCode: 208
 officialLanguages: [fr]
 orchardProduces: [grape, apple, walnut, plum, olive, apricot, peach, cherry, chestnut, pear, hazelnut,
   kiwi, strawberry, tomatoe, blueberry]

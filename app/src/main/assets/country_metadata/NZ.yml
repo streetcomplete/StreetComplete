@@ -2,6 +2,7 @@
 isAdvisorySpeedLimitKnown: true
 isLeftHandTraffic: true
 isLivingStreetKnown: true
+mobileCountryCode: 530
 officialLanguages: [en]
 orchardProduces: [grape, kiwi, apple, avocado, peach, tomatoe, orange, cherry, blueberry, pear, walnut,
   apricot, lemon, lime, plum, hop]

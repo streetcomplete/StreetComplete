@@ -3,6 +3,7 @@ additionalStreetsignLanguages: [en]
 isAdvisorySpeedLimitKnown: true
 isLivingStreetKnown: true
 isSlowZoneKnown: true
+mobileCountryCode: 202
 officialLanguages: [el]
 orchardProduces: [olive, grape, peach, orange, tomatoe, cherry, apple, almond, walnut, chestnut, kiwi,
   apricot, lemon, lime, pear, pistachio]

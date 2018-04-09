@@ -77,7 +77,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 
 	private void setStreetSignLayout(int resourceId)
 	{
-		View contentView = setContentView(getCurrentCountryEnglishResources().getLayout(resourceId));
+		View contentView = setContentView(getCurrentCountryResources().getLayout(resourceId));
 
 		speedInput = contentView.findViewById(R.id.maxSpeedInput);
 
@@ -187,7 +187,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 		View view = LayoutInflater.from(getActivity()).inflate(R.layout.quest_maxspeed_living_street_confirmation, null, false);
 
 		ImageView img = view.findViewById(R.id.imgLivingStreet);
-		img.setImageDrawable(getCurrentCountryEnglishResources().getDrawable(R.drawable.ic_living_street));
+		img.setImageDrawable(getCurrentCountryResources().getDrawable(R.drawable.ic_living_street));
 
 		new AlertDialogBuilder(getActivity())
 				.setView(view)

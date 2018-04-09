@@ -27,6 +27,7 @@ public class CountryInfo implements Serializable, Cloneable
 	List<String> orchardProduces;
 	Boolean isAdvisorySpeedLimitKnown;
 	Boolean isLeftHandTraffic;
+	Integer mobileCountryCode;
 
 	public List<String> getSpeedUnits()
 	{
@@ -111,5 +112,10 @@ public class CountryInfo implements Serializable, Cloneable
 	public boolean isLeftHandTraffic()
 	{
 		return isLeftHandTraffic;
+	}
+
+	public Integer getMobileCountryCode()
+	{
+		return mobileCountryCode;
 	}
 }

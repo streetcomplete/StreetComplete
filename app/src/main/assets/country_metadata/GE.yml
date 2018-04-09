@@ -1,6 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [en]
 isLivingStreetKnown: true
+mobileCountryCode: 282
 officialLanguages: [ka]
 orchardProduces: [grape, orange, hazelnut, apple, tomatoe, walnut, peach, plum, tea, pear, cherry,
   almond, lemon, lime, apricot, strawberry]

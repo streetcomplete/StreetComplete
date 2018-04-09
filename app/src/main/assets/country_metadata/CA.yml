@@ -1,6 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
 isAdvisorySpeedLimitKnown: true
 isSlowZoneKnown: false
+mobileCountryCode: 302
 officialLanguages: [en, fr]
 orchardProduces: [blueberry, apple, grape, cranberry, tomatoe, strawberry, peach, raspberry, chilli_pepper,
   sweet_pepper, cherry, pear, plum, apricot, kiwi]

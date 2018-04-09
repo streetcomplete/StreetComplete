@@ -2,6 +2,7 @@
 isAdvisorySpeedLimitKnown: true
 isLivingStreetKnown: true
 isSlowZoneKnown: true
+mobileCountryCode: 240
 officialLanguages: [sv]
 orchardProduces: [blueberry, strawberry, apple, cherry, raspberry, pear, plum, tomatoe]
 popularSports: [soccer, tennis, basketball, golf, boules, equestrian, ice_hockey]

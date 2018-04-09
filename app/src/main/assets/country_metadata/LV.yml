@@ -1,6 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
 isLivingStreetKnown: true
 isSlowZoneKnown: true
+mobileCountryCode: 247
 officialLanguages: [lv]
 orchardProduces: [apple, blueberry, strawberry, tomatoe, cranberry, pear, cherry, raspberry, plum,
   chestnut]

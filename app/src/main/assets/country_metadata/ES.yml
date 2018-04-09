@@ -4,6 +4,7 @@ additionalValidHousenumberRegex: s/n
 isAdvisorySpeedLimitKnown: true
 isLivingStreetKnown: true
 isSlowZoneKnown: true
+mobileCountryCode: 214
 officialLanguages: [es]
 orchardProduces: [olive, grape, almond, orange, peach, tomatoe, lemon, lime, chestnut, apple, cherry,
   pear, apricot, plum, hazelnut, fig]

@@ -2,5 +2,6 @@
 isAdvisorySpeedLimitKnown: true
 isLivingStreetKnown: true
 isSlowZoneKnown: true
+mobileCountryCode: 270
 officialLanguages: [fr, de, lb]
 orchardProduces: [grape, apple, plum, pear, walnut, cherry, strawberry, tomatoe, raspberry]

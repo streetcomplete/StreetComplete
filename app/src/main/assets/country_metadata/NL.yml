@@ -1,6 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
 isLivingStreetKnown: true
 isSlowZoneKnown: true
+mobileCountryCode: 204
 officialLanguages: [nl]
 orchardProduces: [pear, apple, strawberry, tomatoe, chilli_pepper, sweet_pepper, cherry, blueberry,
   grape, plum, raspberry]

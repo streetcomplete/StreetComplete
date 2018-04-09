@@ -1,5 +1,6 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [en]
 isLivingStreetKnown: true
+mobileCountryCode: 283
 officialLanguages: [hy]
 orchardProduces: [grape, apple, apricot, tomatoe, peach, pear, plum, cherry, walnut, fig, hazelnut]

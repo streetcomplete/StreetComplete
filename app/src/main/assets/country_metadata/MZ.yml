@@ -1,6 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
 isLeftHandTraffic: true
 isLivingStreetKnown: true
+mobileCountryCode: 643
 officialLanguages: [pt]
 orchardProduces: [cashew_nut, coconut, banana, tea, tomatoe, orange, pineapple, guava, mango, mangosteen,
   papaya, grapefruit, sisal, lemon, lime, coffee]
