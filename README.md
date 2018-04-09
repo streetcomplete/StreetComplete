@@ -33,7 +33,7 @@ You can find a list of [frequently asked questions in the wiki](https://wiki.ope
 
 ## Contributing
 
-You can help by **translating StreetComplete** at POEEditor:
+You can help by **translating StreetComplete** at POEditor:
 
 [<img src="https://poeditor.com/public/images/logo_small.png" alt="POEditor">](https://poeditor.com/join/project/IE4GC127Ki)
 
