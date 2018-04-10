@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.changes;
 
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,6 +10,7 @@ import java.util.Map;
 
 public class StringMapChangesBuilder
 {
+	private static final String TAG = "ChangesBuilder";
 	private final Map<String,String> source;
 	private final Map<String, StringMapEntryChange> changes;
 
@@ -27,6 +29,7 @@ public class StringMapChangesBuilder
 		}
 		checkDuplicate(key);
 		changes.put(key, new StringMapEntryDelete(key, valueBefore));
+		Log.i(TAG, "key '" + key + "' is deleted");
 	}
 
 	public void deleteIfExists(@NonNull String key)
@@ -46,6 +49,7 @@ public class StringMapChangesBuilder
 		}
 		checkDuplicate(key);
 		changes.put(key, new StringMapEntryAdd(key, value));
+		Log.i(TAG, "key '" + key + "' with value '" + value + "' is added");
 	}
 
 	public void modify(@NonNull String key, @NonNull String value)
@@ -57,6 +61,7 @@ public class StringMapChangesBuilder
 		}
 		checkDuplicate(key);
 		changes.put(key, new StringMapEntryModify(key, valueBefore, value));
+		Log.i(TAG, "key '" + key + "' with value '" + valueBefore + "' is changed to value '" + value + "'");
 	}
 
 	public void addOrModify(@NonNull String key, @NonNull String value)
