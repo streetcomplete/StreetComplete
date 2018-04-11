@@ -2,16 +2,13 @@ package de.westnordost.streetcomplete.data.meta;
 
 import android.content.res.AssetManager;
 
-import com.vividsolutions.jts.geom.GeometryCollection;
-
-import java.io.InputStream;
 import java.util.concurrent.FutureTask;
 
 import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import de.westnordost.streetcomplete.util.StreamUtils;
+import de.westnordost.countryboundaries.CountryBoundaries;
 
 @Module
 public class MetadataModule
@@ -28,13 +25,8 @@ public class MetadataModule
 	}
 
 	@Provides @Singleton public static FutureTask<CountryBoundaries> countryBoundariesFuture(
-			final AssetManager assetManager, final GeoJsonReader geoJsonReader)
+			final AssetManager assetManager)
 	{
-		return new FutureTask<>(() ->
-		{
-			InputStream is = assetManager.open("countryBoundaries.json");
-			return new CountryBoundaries(
-					(GeometryCollection) geoJsonReader.read(StreamUtils.readToString(is)));
-		});
+		return new FutureTask<>(() -> CountryBoundaries.load(assetManager.open("boundaries.ser")));
 	}
 }

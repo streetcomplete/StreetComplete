@@ -21,8 +21,8 @@ android {
         applicationId "de.westnordost.streetcomplete"
         minSdkVersion 17
         targetSdkVersion 26
-        versionCode 402
-        versionName "4.0"
+        versionCode 501
+        versionName "5.0-beta2"
         testInstrumentationRunner "android.test.InstrumentationTestRunner"
         buildConfigField "String", "MAPZEN_API_KEY", MAPZEN_API_KEY
     }
@@ -102,6 +102,7 @@ dependencies {
     implementation 'com.evernote:android-job:1.1.12'
 
     // geometry
+    implementation 'de.westnordost:countryboundaries:1.2'
     implementation 'com.vividsolutions:jts-core:1.14.0'
 
     // talking with OSM Api
@@ -122,7 +123,7 @@ dependencies {
     implementation 'com.esotericsoftware:kryo:4.0.1'
 
     // map and location
-    implementation 'com.mapzen.tangram:tangram:0.9.0'
+    implementation 'com.mapzen.tangram:tangram:0.8.1'
     implementation 'com.mapzen.android:lost:3.0.4'
 
     // config files

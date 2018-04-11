@@ -1,6 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [en]
 firstDayOfWorkweek: Su
+mobileCountryCode: 427
 officialLanguages: [ar]
 orchardProduces: [date, tomatoe, chilli_pepper, sweet_pepper, fig, grape]
 popularReligions: [muslim]

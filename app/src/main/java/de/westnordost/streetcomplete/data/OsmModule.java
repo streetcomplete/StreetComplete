@@ -7,6 +7,7 @@ import dagger.Module;
 import dagger.Provides;
 import de.westnordost.osmapi.user.UserDao;
 import de.westnordost.streetcomplete.ApplicationConstants;
+import de.westnordost.streetcomplete.data.osm.download.OverpassOldMapDataDao;
 import de.westnordost.streetcomplete.oauth.OAuthPrefs;
 import de.westnordost.streetcomplete.data.osm.download.ElementGeometryCreator;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
@@ -26,7 +27,7 @@ public class OsmModule
 {
 	public static final String OSM_API_URL = "https://api.openstreetmap.org/api/0.6/";
 
-	public static final String OVERPASS_API_URL = "http://overpass-api.de/api/";
+	public static final String OVERPASS_API_URL = "https://overpass-api.de/api/";
 
 	/** Returns the osm connection singleton used for all daos with the saved oauth consumer */
 	@Provides @Singleton public static OsmConnection osmConnection(OAuthPrefs oAuth)
@@ -51,6 +52,14 @@ public class OsmModule
 		OsmConnection overpassConnection = new OsmConnection(
 				OVERPASS_API_URL, ApplicationConstants.USER_AGENT, null);
 		return new OverpassMapDataDao(overpassConnection, parserProvider);
+	}
+
+	@Provides public static OverpassOldMapDataDao overpassOldMapDataDao(
+		Provider<OverpassMapDataParser> parserProvider, String date)
+	{
+		OsmConnection overpassConnection = new OsmConnection(
+			OVERPASS_API_URL, ApplicationConstants.USER_AGENT, null);
+		return new OverpassOldMapDataDao(overpassConnection, parserProvider, date);
 	}
 
 	@Provides public static OverpassMapDataParser overpassMapDataParser()

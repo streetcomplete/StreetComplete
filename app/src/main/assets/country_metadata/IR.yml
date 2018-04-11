@@ -1,6 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [en]
 firstDayOfWorkweek: Sa
+mobileCountryCode: 432
 officialLanguages: [fa]
 orchardProduces: [pistachio, grape, tomatoe, date, apple, almond, walnut, lemon, lime, fig, olive,
   peach, hazelnut, tea, cherry, orange]

@@ -18,13 +18,21 @@ public class AddBuildingType extends SimpleOverpassQuestType
 {
 	@Inject public AddBuildingType(OverpassMapDataDao overpassServer) { super(overpassServer); }
 
-	@Override protected String getTagFilters() { return "ways, relations with building=yes and !man_made"; }
+	@Override protected String getTagFilters() { return "ways, relations with building=yes and !man_made and !building:description"; }
 
 	public AbstractQuestAnswerFragment createForm() { return new AddBuildingTypeForm(); }
 
 	public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
 	{
-		changes.modify("building", answer.getString(AddBuildingTypeForm.BUILDING));
+		String description = answer.getString(AddBuildingTypeForm.BUILDING_DESCRIPTION);
+		if (description != null)
+		{
+			changes.add("building:description", description);
+		}
+		else
+		{
+			changes.modify("building", answer.getString(AddBuildingTypeForm.BUILDING));
+		}
 	}
 
 	@Override public String getCommitMessage() { return "Add building types"; }

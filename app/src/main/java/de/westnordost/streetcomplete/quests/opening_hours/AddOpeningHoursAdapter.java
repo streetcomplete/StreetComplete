@@ -1,9 +1,7 @@
 package de.westnordost.streetcomplete.quests.opening_hours;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -18,7 +16,6 @@ import java.util.List;
 
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.meta.CountryInfo;
-import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 import de.westnordost.streetcomplete.view.dialogs.RangePickerDialog;
 
 public class AddOpeningHoursAdapter extends RecyclerView.Adapter
@@ -49,10 +46,10 @@ public class AddOpeningHoursAdapter extends RecyclerView.Adapter
 		{
 			case MONTHS:
 				return new MonthsViewHolder(
-						inflater.inflate(R.layout.quest_opening_hours_month_row, parent, false));
+						inflater.inflate(R.layout.quest_times_month_row, parent, false));
 			case WEEKDAYS:
 				return new WeekdayViewHolder(
-						inflater.inflate(R.layout.quest_opening_hours_weekday_row, parent, false));
+						inflater.inflate(R.layout.quest_times_weekday_row, parent, false));
 		}
 		return null;
 	}
@@ -201,7 +198,7 @@ public class AddOpeningHoursAdapter extends RecyclerView.Adapter
 		public MonthsViewHolder(View itemView)
 		{
 			super(itemView);
-			monthsText = itemView.findViewById(R.id.months_from_to);
+			monthsText = itemView.findViewById(R.id.months);
 			delete = itemView.findViewById(R.id.delete);
 			delete.setOnClickListener(v ->
 			{
@@ -284,8 +281,8 @@ public class AddOpeningHoursAdapter extends RecyclerView.Adapter
 		public WeekdayViewHolder(View itemView)
 		{
 			super(itemView);
-			weekdaysText = itemView.findViewById(R.id.weekday_from_to);
-			hoursText = itemView.findViewById(R.id.hours_from_to);
+			weekdaysText = itemView.findViewById(R.id.weekday);
+			hoursText = itemView.findViewById(R.id.hours);
 			delete = itemView.findViewById(R.id.delete);
 			delete.setOnClickListener(v ->
 			{
@@ -342,37 +339,9 @@ public class AddOpeningHoursAdapter extends RecyclerView.Adapter
 		return new Weekdays();
 	}
 
-	private static int modulus(int a, int b)
+	private void openSetWeekdaysDialog(Weekdays weekdays, WeekdaysPickerDialog.OnWeekdaysPickedListener callback)
 	{
-		return (a % b + b) % b;
-	}
-
-	private void openSetWeekdaysDialog(final Weekdays weekdays, final WeekdaysPickedListener callback)
-	{
-		final boolean[] selection = weekdays.getSelection();
-
-		AlertDialog dlg = new AlertDialogBuilder(context)
-				.setTitle(R.string.quest_openingHours_chooseWeekdaysTitle)
-				.setMultiChoiceItems(Weekdays.getNames(context.getResources()), selection,
-						(dialog, which, isChecked) -> updateDialogOkButtonEnablement((AlertDialog) dialog, selection))
-				.setNegativeButton(android.R.string.cancel, null)
-				.setPositiveButton(android.R.string.ok,
-						(dialog, which) -> callback.onWeekdaysPicked(new Weekdays(selection)))
-				.show();
-
-		updateDialogOkButtonEnablement(dlg, selection);
-	}
-
-	private void updateDialogOkButtonEnablement(AlertDialog dlg, boolean[] selection)
-	{
-		boolean isAnyChecked = false;
-		for(boolean b : selection) isAnyChecked |= b;
-		dlg.getButton(DialogInterface.BUTTON_POSITIVE).setEnabled(isAnyChecked);
-	}
-
-	private interface WeekdaysPickedListener
-	{
-		void onWeekdaysPicked(Weekdays selected);
+		WeekdaysPickerDialog.show(context, weekdays, callback);
 	}
 
 	/* ------------------------------------- times select ----------------------------------------*/

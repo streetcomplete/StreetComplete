@@ -20,15 +20,27 @@ living_street.svg
 roof_shape_icons.svg
 
 quest_icons.svg
+	apple
+	baby						modified from Twemoji 2: U+1F6BC
+	beer						modified from Twemoji 2: U+1F37A
+	bench
 	bicycle
 	bicycle_parking
+	bicycle_parking_cover
+	bicycleway
+	bicycleway_width
 	blind
 	blind_bus					parts taken from Twemoji 2: U+1F68D
 	blind_pedestrian_crossing
 	blind_traffic_lights
+	bridge
 	building
+	building_construction
 	building_height
 	building_levels
+	building_underground
+	bus
+	bus_stop_name
 	housenumber
 	housenumber_street
 	bicycleway
@@ -37,6 +49,7 @@ quest_icons.svg
 	car_charger					parts taken from Twemoji 2: U+1F698 and U+1F50C
 	clock
 	ferry						modified from Twemoji 2: U+26F4
+    fire_hydrant
 	fuel
 	label
 	lantern
@@ -47,25 +60,31 @@ quest_icons.svg
 	max_speed
 	max_weight
 	money						modified from EmojiOne 2: U+1F4B8
+	museum
+	note_create
 	notes
 	parking
-	parking_access					parts taken from EmojiOne 2: U+1F511
+	parking_access				parts taken from EmojiOne 2: U+1F511
 	parking_fee					parts taken from EmojiOne 2: U+1F4B8
 	parking_maxstay
-	power
-    	fire_hydrant
 	pedestrian
 	pedestrian_crossing
+	pedestrian_segregated
 	phone
+	power
 	restaurant					modified from Twemoji 2: U+1F37D
-	restaurant_veg					parts taken from Twemoji 2: U+1F37D and U+1F955
+	restaurant_vegan			parts taken from Twemoji 2: U+1F37D and U+1F955
+	restaurant_vegetarian		parts taken from Twemoji 2: U+1F37D and U+1F955
 	oneway
 	quest
 	railway
+	road_construction
 	roof_shape
 	recycling					modified from Twemoji 2: U+267B
+	religion
 	smoke
 	sport						modified from EmojiOne 2: U+26BD
+	steps
 	street
 	street_lanes
 	street_name
@@ -74,9 +93,12 @@ quest_icons.svg
 	street_turn_lanes
 	street_width
 	toilets
+	toilets_fee
+	toilets_wheelchair
 	tractor
 	traffic_lights
 	way_surface
+	way_width
 	wifi
 	wheelchair
 	wheelchair_shop

@@ -1,5 +1,6 @@
 # Do not edit. Source files are in /res/country_metadata
 isLeftHandTraffic: true
+mobileCountryCode: 410
 officialLanguages: [ur, en, pa]
 orchardProduces: [guava, mango, mangosteen, orange, apple, date, chilli_pepper, sweet_pepper, tomatoe,
   apricot, banana, grape, lemon, lime, peach, almond, plum, pear, coconut]

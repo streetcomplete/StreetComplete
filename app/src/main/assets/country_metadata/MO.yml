@@ -1,6 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [en]
 isLeftHandTraffic: true
+mobileCountryCode: 455
 officialLanguages: [zh, pt]
 orchardProduces: [pepper]
 popularReligions: [chinese_folk, taoist, bhuddist]

@@ -27,4 +27,15 @@ public class GroupedImageSelectDescriptionAdapter extends GroupedImageSelectAdap
 		View view = LayoutInflater.from(parent.getContext()).inflate(layoutId, parent, false);
 		return new ViewHolder(view);
 	}
+
+	@Override public void onBindViewHolder(final GroupedImageSelectAdapter.ViewHolder viewHolder, final int position)
+	{
+		Item item = items.get(position);
+		final boolean isSelected = selectedItem != null && items.indexOf(selectedItem) == position;
+
+		viewHolder.imageView.setImageResource(item.drawableId);
+		viewHolder.textView.setText(item.titleId);
+		if(item.descriptionId != -1) viewHolder.description.setText(item.descriptionId);
+		viewHolder.itemView.setSelected(isSelected);
+	}
 }
