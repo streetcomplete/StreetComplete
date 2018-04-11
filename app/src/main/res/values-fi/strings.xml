@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="action_settings">"Asetukset"</string>
-    <string name="oauth_communication_error">"Kirjautumispalvelinta ei voitu saavuttaa"</string>
+    <string name="oauth_communication_error">"Kirjautumispalvelimeen ei saatu yhteyttä"</string>
     <string name="loading">"Ladataan"</string>
     <string name="retry">"Yritä uudelleen"</string>
     <string name="oauth_cancelled">"Kirjautuminen peruutettu"</string>
     <string name="oauth_failed_permissions">"Kirjautuminen epäonnistui: Kaikki listan käyttöoikeudet täytyy myöntää"</string>
     <string name="title_activity_settings">"Asetukset"</string>
     <string name="pref_category_communication">"Yhteydet"</string>
-    <string name="pref_category_display">"Näyttä"</string>
+    <string name="pref_category_display">"Näyttö"</string>
     <string name="pref_title_authorization">"Kirjaudu OSM tiliin"</string>
     <string name="pref_title_not_authorized_summary">"Ei vielä kirjauduttu"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
     <string name="pref_tilecache_size_message">"Ulkoisen tallennustilan määrä megabiteissä varattuna karttatiilien välimuistiksi"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Näytä kaikki huomautukset"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Näytetään huomautukset jotka eivät ole kysymysmuotoisia"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Sivuutetaan huomautukset jotka eivät ole kysymysmuotoisia"</string>
 
@@ -264,7 +262,7 @@ Vastauksesi täydentävät OpenStreetMapsiä omalla nimelläsi. Et tarvi sovellu
     <!-- Vaiko "kohopainettuja päällysteitä" ? -->
     <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_name_bus">"Onko linja-autopysäkillä %s kosketuspäällysteitä?"</string>
-    <string name="quest_source_dialog_note">"Vain kyselyssä löydetyt tiedot tulisi lisätä."</string>
+    <string name="quest_source_dialog_note">"Vain paikanpäällä tarkistetut tiedot tulisi lähettää."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Onko tämä pyöräpysäkki katoksellinen (suojattu sateelta)?"</string>
     <string name="dialog_session_dont_show_again">"Älä enää näytä tälle istunnolle."</string>
 

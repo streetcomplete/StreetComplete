@@ -264,15 +264,15 @@ Wenn es keine Schilder entlang der gesamten Straße gibt, die für den hervorgeh
     <string name="quest_wheelchairAccess_limited">"Teilweise"</string>
     <string name="quest_bikeParkingCapacity_hint">"Beachte, dass die meisten Ständer auf beiden Seiten von einem Fahrrad beparkt werden können."</string>
     <string name="quest_sport_roller_skating">"Rollschuhlaufen"</string>
-    <string name="quest_wheelchairAccess_bus_station_title">"Ist diese Busstation rollstuhlgängig?"</string>
-    <string name="quest_wheelchairAccess_subway_entrance_title">"Ist dieser U-Bahn-Eingang rollstuhlgängig?"</string>
-    <string name="quest_wheelchairAccess_railway_station_title">"Ist diese Bahnstation rollstuhlgängig?"</string>
-    <string name="quest_wheelchairAccess_location_title">"Ist dieser Ort rollstuhlgängig?"</string>
+    <string name="quest_wheelchairAccess_bus_station_title">"Ist diese Busstation zugänglich für Rollstühle?"</string>
+    <string name="quest_wheelchairAccess_subway_entrance_title">"Ist dieser U-Bahn-Eingang zugänglich für Rollstühle?"</string>
+    <string name="quest_wheelchairAccess_railway_station_title">"Ist diese Bahnstation zugänglich für Rollstühle?"</string>
+    <string name="quest_wheelchairAccess_location_title">"Ist dieser Ort zugänglich für Rollstühle?"</string>
     <string name="quest_wheelchairAccess_bus_station_name_title">"Ist die Busstation %s zugänglich für Rollstühle?"</string>
     <string name="quest_wheelchairAccess_subway_entrance_name_title">"Ist der U-Bahn-Eingang %s zugänglich für Rollstühle?"</string>
     <string name="quest_wheelchairAccess_railway_station_name_title">"Ist die Bahnstation %s zugänglich für Rollstühle?"</string>
     <string name="quest_wheelchairAccess_location_name_title">"Ist der Ort %s zugänglich für Rollstühle?"</string>
-    <string name="quest_wheelchairAccess_limited_description_business">"Teilweise bedeutet, dass es nicht mehr als eine Stufe zu überwinden gilt um das Gebäude zu betreten und die meisten Räume darin rollstuhlgängig sind."</string>
+    <string name="quest_wheelchairAccess_limited_description_business">"Teilweise bedeutet, dass es nicht mehr als eine Stufe zu überwinden gilt um das Gebäude zu betreten und die meisten Räume darin zugänglich für Rollstühle sind."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"Teilweise bedeutet, dass es nicht mehr als eine Stufe zu überwinden gilt."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Ist der Name %s abgekürzt?"</string>
     <string name="quest_baby_changing_table_toilets_title">"Gibt es einen Wickeltisch in dieser Toilette?"</string>
@@ -448,7 +448,7 @@ Andernfalls kannst Du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="quest_streetName_answer_noProperStreet_service2">"Ist bloß soetwas wie eine Zufahrt"</string>
     <string name="quest_streetName_answer_noProperStreet_track2">"Ist nur ein Feld- oder Waldweg"</string>
     <string name="quest_streetName_answer_noName_noname">"Nichts davon, sie hat ganz einfach keinen Namen"</string>
-    <string name="quest_wheelchairAccess_toilets_title">"Ist diese Toilette rollstuhlgängig?"</string>
+    <string name="quest_wheelchairAccess_toilets_title">"Ist diese Toilette zugänglich für Rollstühle?"</string>
     <string name="quest_wheelchairAccess_toilets_name_title">"Ist die Toilette %s zugänglich für Rollstühle?"</string>
     <string name="quest_wheelchairAccess_description_toilets">"Ein Symbol wie dieses ist oft zu sehen, wenn es eine spezielle Toilette für Rollstuhlfahrer gibt.
 Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber sie nicht speziell für Rollstuhlfahrer angepasst ist."</string>
@@ -517,4 +517,9 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_postboxCollectionTimes_title">"Wann wird dieser Postkasten geleert?"</string>
     <string name="quest_collectionTimes_add_times">"➕ Leerungszeit"</string>
     <string name="quest_collectionTimes_answer_no_times_specified">"Keine Zeiten angegeben"</string>
+    <string name="quest_construction_road_title">"Ist diese Straße fertig gebaut?"</string>
+    <string name="quest_construction_cycleway_title">"Ist dieser Fahrradweg fertig gebaut?"</string>
+    <string name="quest_construction_footway_title">"Ist dieser Fußgängerweg fertig gebaut?"</string>
+    <string name="quest_construction_generic_title">"Ist dieser Weg fertig gebaut?"</string>
+    <string name="quest_construction_building_title">"Ist dieses Gebäude fertig gebaut?"</string>
 </resources>
