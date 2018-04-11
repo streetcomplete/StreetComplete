@@ -514,4 +514,5 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_construction_footway_title">Is this footway completed?</string>
     <string name="quest_construction_generic_title">Is this way completed?</string>
     <string name="quest_construction_building_title">Is this building completed?</string>
+    <string name="questList_disabled_in_country">Never shown in %s</string>
 </resources>

@@ -260,6 +260,16 @@ public class MainActivity extends AppCompatActivity implements
 		}
 	}
 
+	@Override public void onPause()
+	{
+		super.onPause();
+		LatLon pos = mapFragment.getPosition();
+		prefs.edit()
+			.putLong(Prefs.MAP_LATITUDE, Double.doubleToRawLongBits(pos.getLatitude()))
+			.putLong(Prefs.MAP_LONGITUDE, Double.doubleToRawLongBits(pos.getLongitude()))
+			.apply();
+	}
+
 	@Override public void onStop()
 	{
 		super.onStop();
