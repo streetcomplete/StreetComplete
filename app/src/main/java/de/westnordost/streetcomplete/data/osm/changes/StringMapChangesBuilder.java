@@ -31,11 +31,10 @@ public class StringMapChangesBuilder
 
 	public void deleteIfExists(@NonNull String key)
 	{
-		if(source.get(key) == null)
+		if(source.get(key) != null)
 		{
-			return;
+			delete(key);
 		}
-		delete(key);
 	}
 
 	public void add(@NonNull String key, @NonNull String value)
@@ -69,6 +68,14 @@ public class StringMapChangesBuilder
 		else
 		{
 			modify(key, value);
+		}
+	}
+
+	public void modifyIfExists(@NonNull String key, @NonNull String value)
+	{
+		if(source.get(key) != null)
+		{
+			modify(key,value);
 		}
 	}
 
