@@ -9,7 +9,7 @@ import java.util.concurrent.FutureTask;
 
 import javax.inject.Inject;
 
-import de.westnordost.streetcomplete.data.meta.CountryBoundaries;
+import de.westnordost.countryboundaries.CountryBoundaries;
 import de.westnordost.streetcomplete.jobs.StreetCompleteJobCreator;
 import de.westnordost.streetcomplete.tangram.TangramQuestSpriteSheetCreator;
 

@@ -1,8 +1,8 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [ru]
-advisorySpeedLimitLayout: quest_maxspeed_advisory_blue
 isAdvisorySpeedLimitKnown: true
 isLivingStreetKnown: true
 isSlowZoneKnown: true
+mobileCountryCode: 248
 officialLanguages: [et]
 orchardProduces: [apple, strawberry, plum, raspberry, cherry, tomatoe]

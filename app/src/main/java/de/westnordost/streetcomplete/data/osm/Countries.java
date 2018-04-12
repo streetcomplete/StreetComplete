@@ -1,5 +1,9 @@
 package de.westnordost.streetcomplete.data.osm;
 
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+
 public class Countries
 {
 	public static final Countries ALL = new Countries(true, null);
@@ -29,13 +33,14 @@ public class Countries
 		return defaultAll && (exceptions == null || exceptions.length == 0);
 	}
 
-	public String[] getDisabledCountries()
+	/** @return true if it is all countries except the exceptions, false if it is no countries except the exceptions */
+	public boolean isAllExcept()
 	{
-		return defaultAll ? exceptions : null;
+		return defaultAll;
 	}
 
-	public String[] getEnabledCountries()
+	public Collection<String> getExceptions()
 	{
-		return defaultAll ? null : exceptions;
+		return exceptions != null ? Arrays.asList(exceptions) : Collections.emptyList();
 	}
 }

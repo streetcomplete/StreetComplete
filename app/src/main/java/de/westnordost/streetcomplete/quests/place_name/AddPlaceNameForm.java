@@ -42,15 +42,15 @@ public class AddPlaceNameForm extends AbstractQuestFormAnswerFragment
 	private void confirmNoName()
 	{
 		new AlertDialogBuilder(getActivity())
-				.setTitle(R.string.quest_name_answer_noName_confirmation_title)
-				.setPositiveButton(R.string.quest_name_noName_confirmation_positive, (dialog, which) ->
-				{
-					Bundle data = new Bundle();
-					data.putBoolean(NO_NAME, true);
-					applyImmediateAnswer(data);
-				})
-				.setNegativeButton(R.string.quest_generic_confirmation_no, null)
-				.show();
+			.setTitle(R.string.quest_name_answer_noName_confirmation_title)
+			.setPositiveButton(R.string.quest_name_noName_confirmation_positive, (dialog, which) ->
+			{
+				Bundle data = new Bundle();
+				data.putBoolean(NO_NAME, true);
+				applyImmediateAnswer(data);
+			})
+			.setNegativeButton(R.string.quest_generic_confirmation_no, null)
+			.show();
 	}
 
 	@Override public boolean hasChanges()

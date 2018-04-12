@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/languageButton"
+        style="@style/Base.Widget.AppCompat.Button.Borderless"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:textAllCaps="false"
+        android:layout_width="50dp"
+        android:fontFamily="monospace"
+        android:layout_height="wrap_content"/>
+
+    <me.grantland.widget.AutofitLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:layout_toEndOf="@id/languageButton"
+        android:layout_toStartOf="@+id/deleteButton"
+        android:layout_centerVertical="true"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingStart="14dp"
+        android:paddingEnd="14dp"
+        >
+
+        <de.westnordost.streetcomplete.quests.localized_name.AutoCorrectAbbreviationsEditText
+            android:id="@+id/nameInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textSize="32dp"
+            android:textAlignment="center"
+            android:maxLines="1"
+            android:textColor="#ffffff"
+            android:background="#000000ff"
+            />
+
+    </me.grantland.widget.AutofitLayout>
+
+    <ImageView
+        android:id="@+id/nameSuggestions"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_arrow_drop_down_white_24dp"
+        android:layout_toStartOf="@+id/deleteButton"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="14dp"
+        style="@style/Base.Widget.AppCompat.Button.Borderless"/>
+
+    <TextView
+        android:id="@+id/deleteButton"
+        android:text="❌"
+        android:layout_width="36dp"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true"
+        style="@style/Base.Widget.AppCompat.Button.Borderless"
+        tools:ignore="HardcodedText"/>
+
+</RelativeLayout>

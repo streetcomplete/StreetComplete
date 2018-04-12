@@ -1,5 +1,6 @@
 # Do not edit. Source files are in /res/country_metadata
 isLivingStreetKnown: true
+mobileCountryCode: 286
 officialLanguages: [tr]
 orchardProduces: [olive, hazelnut, grape, tomatoe, pistachio, apple, apricot, chilli_pepper, sweet_pepper,
   tea, walnut, fig, peach, orange, lemon, lime, almond]

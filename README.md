@@ -33,7 +33,7 @@ You can find a list of [frequently asked questions in the wiki](https://wiki.ope
 
 ## Contributing
 
-You can help translate this app over here:
+You can help by **translating StreetComplete** at POEEditor:
 
 [<img src="https://poeditor.com/public/images/logo_small.png" alt="POEditor">](https://poeditor.com/join/project/IE4GC127Ki)
 
@@ -48,6 +48,8 @@ If you have own ideas how to improve this app and want to make sure that I will 
 You can help with [processing OSM notes opened by StreetComplete users](https://ent8r.github.io/NotesReview/?query=StreetComplete&limit=100&start=true). With this tool, you can also find systematic problems or misunderstandings introduced through (users of) StreetComplete and report them back here.
 
 Finally, using it, testing it and giving constructive feedback is also a valuable contribution.
+
+For more information [have a look at the contributing guide](CONTRIBUTING.md).
 
 ## License
 
