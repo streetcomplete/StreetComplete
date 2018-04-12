@@ -11,14 +11,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/ImageSelectLabelBelow"
-        tools:text="@string/quest_surface_value_asphalt"
-        android:maxLines="3"
-        android:padding="8dp" />
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        tools:text="@string/quest_surface_value_asphalt" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
         android:layout_below="@+id/textView"
         android:scaleType="fitCenter"
         tools:src="@drawable/surface_asphalt"
@@ -41,7 +41,9 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/imageView"
         android:layout_toEndOf="@+id/imageView"
-        android:padding="8dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:textStyle="italic"
         tools:text="@string/quest_surface_value_asphalt" />
 
 </RelativeLayout>

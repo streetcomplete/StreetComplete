@@ -36,6 +36,7 @@ public class GroupedImageSelectDescriptionAdapter extends GroupedImageSelectAdap
 		viewHolder.imageView.setImageResource(item.drawableId);
 		viewHolder.textView.setText(item.titleId);
 		if(item.descriptionId != -1) viewHolder.description.setText(item.descriptionId);
+		else if (viewHolder.description != null) viewHolder.description.setText("");
 		viewHolder.itemView.setSelected(isSelected);
 	}
 }
