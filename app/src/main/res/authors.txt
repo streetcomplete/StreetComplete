@@ -117,7 +117,7 @@ tactile_paving_illustration... CC-BY 2.0         https://www.flickr.com/photos/j
                                CC-BY 2.0         https://www.flickr.com/photos/jeanlouis_zimmermann/10473021344/in/album-72157635218804514/
 
 tracktype_grade1	       CC0		 https://pixabay.com/en/away-road-landscape-target-just-1422212/
-tracktype_grade2	       CC0		 https://pixabay.com/en/away-lane-nature-landscape-way-1378960/
+tracktype_grade2	       CC0		 https://pixabay.com/en/lane-away-landscape-nature-456715/
 tracktype_grade3	       CC0		 https://pixabay.com/en/field-away-nature-meadow-lane-406183/
-tracktype_grade4	       CC0		 https://pixabay.com/en/mountains-landscape-trail-way-885342/
+tracktype_grade4	       CC0		 https://pixabay.com/en/away-lane-trail-fence-infinite-2486366/
 tracktype_grade5	       CC-BY-SA 4.0  	 https://commons.wikimedia.org/wiki/File:Zandpad_aan_buitenkant_van_het_gebied._Locatie,_Stuttebosch_in_de_lendevallei._Provincie_Friesland_01.jpg
