@@ -11,6 +11,7 @@ Content:
 * [Improving documentation](#improving-documentation)
 * [Development](#development)
    * [Developing new quests](#developing-new-quests)
+   * [StreetComplete-related projects](#streetcomplete-related-projects).
 
 ## Translating the app
 
@@ -26,7 +27,7 @@ Before each big release, translations are pulled in from POEditor.
 
 As you probably noticed, you can choose "Cannot answer" in StreetComplete and thus leave a note on OpenStreetMap.
 
-You can help with [processing OSM notes opened by StreetComplete users](https://ent8r.github.io/NotesReview/?query=StreetComplete&limit=100&start=true). (You can also do it without that special tool, but it helps.) When doing so, you can also find systematic problems or misunderstandings of user's when solving StreetComplete quests.
+You can help with [processing OSM notes opened by StreetComplete users](https://ent8r.github.io/NotesReview/?query=StreetComplete&limit=100&start=true). (You can also do it without that special tool, but it likely supports you.) When doing so, you can also find systematic problems or misunderstandings of user's when solving StreetComplete quests.
 
 If you find such user experience problems, please report them back in the [issue tracker of StreetComplete](https://github.com/westnordost/StreetComplete/issues). Do not forget to add links to examples, e.g. the notes StreetComplete mappers submitted.
 
@@ -47,11 +48,7 @@ StreetComplete depends on some projects for the app. Try to find the appropriate
 Examples of such issues are missing elements on the map, display errors on the map, etc. As a rule of thumb, you can report everything that happens "behind" the quest icon markers there.
 
 Note that this app has other dependencies. For reporting issues, in these, you however have to have some technical knowledge. So if you are **not sure** that the component listed below is responsible for the issue you have, it is often better to report them in the general StreetComplete issue tracker. People will then let you know whether this issue is solvable by StreetComplete or is an issue of Tangram-ES.
-
-More dependencies:
-* [Tangram-ES](https://github.com/tangrams/tangram-es/) for technical issues with the map rendering
-* [countryboundaries](https://github.com/westnordost/countryboundaries) for detecting, in which country a quest is (affects quest display, etc.)
-* [osmapi](https://github.com/westnordost/osmapi) for communication with the OSM API
+The full list of dependencities and other StreetComplete-related projects is listed [at the end of this file](#streetcomplete-related-projects).
 
 ### Suggesting new quests
 
@@ -61,8 +58,8 @@ What you need to do:
 
 1. Search whether the quest you want to suggest is [already implemented in StreetComplete](https://wiki.openstreetmap.org/wiki/StreetComplete/Quests) or [already suggested in the issue tracker](https://github.com/westnordost/StreetComplete/issues).
 2. Please read the full guide on what requirements you need to consider to make the quest a great thing: [Adding new Quests to StreetComplete](https://github.com/westnordost/StreetComplete/wiki/Adding-new-Quests-to-StreetComplete).
-3. Open a new issue and fill out the issue template. Explain why your quest meets the criteria you need to check, so other users can follow the example.
-4. Wait for input of others, even if you could implement it right away.  It is always suggested to _first_ suggest a quest and implement it only if it has been accepted there.
+3. Open a new issue and fill out the issue template. Explain why your quest meets the criteria you need to check, so other users can follow the example. Keep everything short (i.e. you do not have to write a wall of text there), but precise!
+4. Wait for input of others, even if you could implement it right away. It is always suggested to _first_ suggest a quest and implement it only if it has been accepted there.
 
 ➡️ If you can code, see also how to [develop your own quest](#developing-new-quests).
 
@@ -101,3 +98,20 @@ In case you **don't have an idea of a quest?** Look [at the existing issues](htt
 Always remember to pay attention to [the new quest guide](https://github.com/westnordost/StreetComplete/wiki/Adding-new-Quests-to-StreetComplete) of StreetComplete! It also has tips for implementing a quest.
 
 You can look at **other quests** to see how they are implemented.
+
+### StreetComplete-related projects
+
+#### Dependencies
+
+* [Tangram-ES](https://github.com/tangrams/tangram-es/) for technical issues with the map rendering
+* [countryboundaries](https://github.com/westnordost/countryboundaries) for detecting, in which country a quest is (affects quest display, etc.)
+* [osmapi](https://github.com/westnordost/osmapi) for communication with the OSM API
+
+#### Created for StreetComplete
+
+* [StreetCompleteJSON](https://github.com/goldfndr/StreetCompleteJSON) by [@goldfndr](https://github.com/goldfndr) listing all tags edited by StreetComplete for [taginfo](https://taginfo.openstreetmap.org/projects/streetcomplete)
+* [blacklistr](https://github.com/ENT8R/blacklistr) by [@ENT8R](https://github.com/ENT8R) for visualizing StreetComplete's country exclusion list
+* [NotesReview](https://github.com/ENT8R/NotesReview) by [@ENT8R](https://github.com/ENT8R) for reviewing notes with a specific keyword (here: `StreetComplete`)
+* [streetcomplete-mapstyle](https://github.com/ENT8R/streetcomplete-mapstyle) by [@ENT8R](https://github.com/ENT8R) maintaining the mapstyle of StreetComplete
+* [StreetCompleteQuestCreator](https://github.com/ENT8R/StreetCompleteQuestCreator) by [@ENT8R](https://github.com/ENT8R) for creating simple quests with a web interface
+* [crops-parser](https://github.com/rugk/crops-parser) by [@rugk](https://github.com/rugk) for parsing data for the orchard quest
