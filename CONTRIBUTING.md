@@ -1,11 +1,10 @@
-Thanks for your interest in contributing to StreetComplete! 👍 There are many easy tasks you can do, even without programming knowledge, to create a better app for all users of StreetComplete and drive the OpenStreetMap project forward.
+Thanks for your interest in contributing to StreetComplete! 👍 There are many easy tasks you can do, **even without programming knowledge**, to create a better app for all users of StreetComplete and drive the OpenStreetMap project forward.
 
 Even if you do not find something to do in this list, using StreetComplete, testing it and giving constructive feedback is always a valuable contribution too.
 
 Content:
 * [Translating the app](#translating-the-app)
 * [Helping mappers by solving their notes](#helping-mappers-by-solving-their-notes)
-* [Joining discussions](#joining-discussions)
 * [Testing and reporting issues](#testing-and-reporting-issues)
    * [Issues of dependencies](#issues-of-dependencies)
    * [Suggesting new quests](#suggesting-new-quests)
@@ -14,9 +13,6 @@ Content:
    * [Developing new quests](#developing-new-quests)
 
 ## Translating the app
-
-- Requires **no programming knowledge**!
-- (Often) also requires **no OpenStreetMap knowledge**!
 
 You can translate StreetComplete at POEditor. You can add a translation in your own language or improve other translations. Note that manual translations as Pull Requests will not be merged and do not help the project.
 
@@ -28,28 +24,13 @@ Before each big release, translations are pulled in from POEditor.
 
 ## Helping mappers by solving their notes
 
-- Requires **no programming knowledge**!
-
 As you probably noticed, you can choose "Cannot answer" in StreetComplete and thus leave a note on OpenStreetMap.
 
 You can help with [processing OSM notes opened by StreetComplete users](https://ent8r.github.io/NotesReview/?query=StreetComplete&limit=100&start=true). (You can also do it without that special tool, but it helps.) When doing so, you can also find systematic problems or misunderstandings of user's when solving StreetComplete quests.
 
 If you find such user experience problems, please report them back in the [issue tracker of StreetComplete](https://github.com/westnordost/StreetComplete/issues). Do not forget to add links to examples, e.g. the notes StreetComplete mappers submitted.
 
-## Joining discussions
-
-- Requires **no programming knowledge**!
-- Requires **no OpenStreetMap knowledge**!
-
-You can always join in discussions in issues for new quests or similar stuff. Often local knowledge or so is required, so we can estimate whether a quest can be asked in different regions.
-OpenStreetMap (and StreetComplete) works, because of a diverse community all over the world.
-
-[Especially look at the issues tagged with "help wanted"](https://github.com/westnordost/StreetComplete/labels/help%20wanted).
-
 ## Testing and reporting issues
-
-- Requires **no programming knowledge**!
-- Requires **no OpenStreetMap knowledge**!
 
 If you experience problems, crashes or a quest is not clear to you, feel free to open an issue for that. Remember to open one issue _for one matter_, so do not open one issue "I have found several problems", but one for each problem.
 
@@ -74,9 +55,6 @@ More dependencies:
 
 ### Suggesting new quests
 
-- Requires **no programming knowledge**!
-- May require no OpenStreetMap knowledge!
-
 We appreciate all quest ideas you and others have, but some ideas cannot be added into the app due to various design decisions and requirements. This is required in order to make a great app for all users of StreetComplete, whose contributions actually help the OpenStreetMap project. A quest which nobody can solve and where users potentially choose wrong options adding wrong data to OpenStreetMap hurts not only OSM, but also this app.
 
 What you need to do:
@@ -93,8 +71,6 @@ A quest is officially marked as accepted when it get's [the "new quest" tag](htt
 
 ## Improving documentation
 
-- Requires **no programming knowledge**!
-
 You can also help to keep the OpenStreetMap wiki **up-to-date** for StreetComplete. For example:
 * Add missing quests in [the quest list](https://wiki.openstreetmap.org/wiki/StreetComplete/Quests) or check, that they are up to date.
 * Edit [the FAQ](https://wiki.openstreetmap.org/wiki/StreetComplete/FAQ) and add reoccuring questions.
@@ -102,8 +78,6 @@ You can also help to keep the OpenStreetMap wiki **up-to-date** for StreetComple
 * Edit [the JSON of all tags used by StreetComplete](https://github.com/goldfndr/StreetCompleteJSON) that is displayed on [taginfo](https://taginfo.openstreetmap.org/projects/streetcomplete).
 
 ## Development
-
-- Often **does not require OpenStreetMap knowledge**!
 
 If you would like to help and are able to contribute code, you are most welcome.
 

@@ -34,7 +34,7 @@ You can find a list of [frequently asked questions in the wiki](https://wiki.ope
 ## Contributing
 
 This is an active open-source project, so you **can get involved in it** easily!
-You can help solving notes or
+You can do so **without any programming or OpenStreetMap knowledge**! Just choose a task that you like.
 
 Here are a few things you can do:
 * 🐛 [Test the app and report issues!](CONTRIBUTING.md#testing-and-reporting-issues)
