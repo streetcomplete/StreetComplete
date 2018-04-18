@@ -20,9 +20,9 @@ public class AddToiletAvailability extends SimpleOverpassQuestType
 
 	@Override protected String getTagFilters()
 	{
-		// only for malls and big stores because users should not need to go inside a non-public
+		// only for malls, big stores and rest areas because users should not need to go inside a non-public
 		// place to solve the quest. (Considering malls and department stores public enough)
-		return "nodes, ways with shop ~ mall|department_store and name and !toilets";
+		return "nodes, ways with (shop ~ mall|department_store and name and !toilets) or (highway ~ services|rest_area and !toilets)";
 	}
 
 	public AbstractQuestAnswerFragment createForm()
@@ -40,6 +40,9 @@ public class AddToiletAvailability extends SimpleOverpassQuestType
 	@Override public int getIcon() { return R.drawable.ic_quest_toilets; }
 	@Override public int getTitle(@NonNull Map<String, String> tags)
 	{
-		return R.string.quest_toiletAvailability_name_title;
+		boolean isRestArea = "rest_area".equals(tags.get("highway")) || "services".equals(tags.get("highway"));
+
+		if (isRestArea) return R.string.quest_toiletAvailability_rest_area_title;
+		else return R.string.quest_toiletAvailability_name_title;
 	}
 }
