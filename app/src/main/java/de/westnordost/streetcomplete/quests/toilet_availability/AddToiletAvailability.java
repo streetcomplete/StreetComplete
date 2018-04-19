@@ -22,7 +22,7 @@ public class AddToiletAvailability extends SimpleOverpassQuestType
 	{
 		// only for malls, big stores and rest areas because users should not need to go inside a non-public
 		// place to solve the quest. (Considering malls and department stores public enough)
-		return "nodes, ways with (shop ~ mall|department_store and name and !toilets) or (highway ~ services|rest_area and !toilets)";
+		return "nodes, ways with ( (shop ~ mall|department_store and name) or (highway ~ services|rest_area) ) and !toilets";
 	}
 
 	public AbstractQuestAnswerFragment createForm()
