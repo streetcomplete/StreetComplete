@@ -429,7 +429,7 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="about_category_feedback">"Envie um comentário"</string>
     <string name="quest_leave_new_note_photo">"Anexar fotografia"</string>
     <string name="quest_leave_new_note_photo_delete_title">"Quer apagar esta fotografia?"</string>
-    <string name="privacy_html_image_upload">"&lt;p&gt;As photos que anexar como notas serão carregadas para &lt;a href=\"https://lut.im\"&gt;lut.im&lt;/a&gt;, um serviço que é anónimo e que não rastreia os utilizadores&lt;/p&gt;"</string>
+    <string name="privacy_html_image_upload">"&lt;p&gt;As photos que anexar como notas serão carregadas para &lt;a href=\"https://framapic.org\"&gt;framapic.org&lt;/a&gt;, um serviço que é anónimo e que não rastreia os utilizadores&lt;/p&gt;"</string>
     <string name="quest_cycleway_value_track">"Pista de ciclismo"</string>
     <string name="quest_cycleway_value_lane">"Ciclo via"</string>
     <string name="quest_cycleway_value_none">"Nenhum"</string>

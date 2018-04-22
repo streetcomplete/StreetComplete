@@ -443,7 +443,7 @@
     <string name="about_category_feedback">"بازخورد"</string>
     <string name="quest_leave_new_note_photo">"پیوست کردن تصویر"</string>
     <string name="quest_leave_new_note_photo_delete_title">"آیا می خواهید این تصویر را حذف کنید؟"</string>
-    <string name="privacy_html_image_upload">"&lt;p&gt;تصاویری که به پیوست یادداشت ها بارگذاری کرده اید&lt;a href=\"https://lut.im\"&gt;lut.im&lt;/a&gt;, در سامانه ناشناس و بدون ردیابی می باشد.&lt;/p&gt;"</string>
+    <string name="privacy_html_image_upload">"&lt;p&gt;تصاویری که به پیوست یادداشت ها بارگذاری کرده اید&lt;a href=\"https://framapic.org\"&gt;framapic.org&lt;/a&gt;, در سامانه ناشناس و بدون ردیابی می باشد.&lt;/p&gt;"</string>
     <string name="quest_cycleway_value_track">"مسیر دوچرخه سواری"</string>
     <string name="quest_cycleway_value_lane">"خط دوچرخه سواری"</string>
     <string name="quest_cycleway_value_none">"هیچیک"</string>

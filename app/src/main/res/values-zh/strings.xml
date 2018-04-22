@@ -438,7 +438,7 @@ OpenStreetMap不接受匿名编辑，您需要登录您的OpenStreetMap帐号。
     <string name="about_category_feedback">"回馈"</string>
     <string name="quest_leave_new_note_photo">"附件照片"</string>
     <string name="quest_leave_new_note_photo_delete_title">"你想要删除这张照片吗？"</string>
-    <string name="privacy_html_image_upload">"&lt;p&gt;注记附件的照片已经上传到&lt;a href=\"https://lut.im\"&gt;lut.im&lt;/a&gt;，这个服务是暱名而且不会追踪。&lt;/p&gt;"</string>
+    <string name="privacy_html_image_upload">"&lt;p&gt;注记附件的照片已经上传到&lt;a href=\"https://framapic.org\"&gt;framapic.org&lt;/a&gt;，这个服务是暱名而且不会追踪。&lt;/p&gt;"</string>
     <string name="quest_cycleway_value_track">"单车道"</string>
     <string name="quest_cycleway_value_lane">"单车车道"</string>
     <string name="quest_cycleway_value_none">"无"</string>

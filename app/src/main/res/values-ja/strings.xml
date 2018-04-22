@@ -438,7 +438,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="about_category_feedback">"フィードバック"</string>
     <string name="quest_leave_new_note_photo">"写真を添付"</string>
     <string name="quest_leave_new_note_photo_delete_title">"この写真を削除しますか?"</string>
-    <string name="privacy_html_image_upload">"&lt;p&gt;メモに添付した写真は、匿名で追跡されることがない &lt;a href=\"https://lut.im\"&gt;lut.im&lt;/a&gt; サービスにアップロードされます。&lt;/p&gt;"</string>
+    <string name="privacy_html_image_upload">"&lt;p&gt;メモに添付した写真は、匿名で追跡されることがない &lt;a href=\"https://framapic.org\"&gt;framapic.org&lt;/a&gt; サービスにアップロードされます。&lt;/p&gt;"</string>
     <string name="quest_cycleway_value_track">"自転車道"</string>
     <string name="quest_cycleway_value_lane">"自転車レーン"</string>
     <string name="quest_cycleway_value_none">"なし"</string>

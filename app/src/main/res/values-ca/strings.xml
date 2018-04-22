@@ -396,7 +396,7 @@ En cas contrari, podeu baixar un altre teclat a la botiga d'aplicacions. Els tec
     <string name="about_category_feedback">"Comentaris"</string>
     <string name="quest_leave_new_note_photo">"Adjunta la foto"</string>
     <string name="quest_leave_new_note_photo_delete_title">"Voleu eliminar aquesta foto?"</string>
-    <string name="privacy_html_image_upload">"&lt;p&gt; Les fotos que adjunteu a les notes es carreguen a &lt;a href=\"https://lut.im\"&gt; lut.im &lt;/ a&gt;, un servei anònim i sense rastrejar. &lt;/ p&gt;"</string>
+    <string name="privacy_html_image_upload">"&lt;p&gt; Les fotos que adjunteu a les notes es carreguen a &lt;a href=\"https://framapic.org\"&gt; framapic.org &lt;/ a&gt;, un servei anònim i sense rastrejar. &lt;/ p&gt;"</string>
     <string name="quest_cycleway_value_track">"Via per ciclistes"</string>
     <string name="quest_cycleway_value_lane">"carril bici"</string>
     <string name="quest_cycleway_value_none">"Cap"</string>
