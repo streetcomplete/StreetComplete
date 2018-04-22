@@ -1,6 +1,8 @@
-package de.westnordost.streetcomplete.quests.opening_hours;
+package de.westnordost.streetcomplete.quests.opening_hours.model;
 
 import junit.framework.TestCase;
+
+import de.westnordost.streetcomplete.quests.opening_hours.model.CircularSection;
 
 public class CircularSectionTest extends TestCase
 {
@@ -67,6 +69,14 @@ public class CircularSectionTest extends TestCase
 
 		assertTrue(lowStartButHighEnd.compareTo(highStart) < 0);
 		assertTrue(highStart.compareTo(lowStartButHighEnd) > 0);
+	}
+
+	public void testToStringUsing()
+	{
+		String[] abc = new String[]{"a","b","c","d"};
+		assertEquals("a",new CircularSection(0,0).toStringUsing(abc, "-"));
+		assertEquals("a-d",new CircularSection(0,3).toStringUsing(abc, "-"));
+		assertEquals("a-b",new CircularSection(0,1).toStringUsing(abc, "-"));
 	}
 
 	public void testEquals()
