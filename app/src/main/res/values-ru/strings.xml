@@ -439,7 +439,7 @@
     <string name="about_category_feedback">"Обратная связь"</string>
     <string name="quest_leave_new_note_photo">"Прикрепить фото"</string>
     <string name="quest_leave_new_note_photo_delete_title">"Удалить это изображение?"</string>
-    <string name="privacy_html_image_upload">"&lt;p&gt;Прикреплённые к заметкам фото загружаются на &lt;a href=\"https://lut.im\"&gt;lut.im&lt;/a&gt;, анонимный сервис, не отслеживающий пользователей.&lt;/p&gt;"</string>
+    <string name="privacy_html_image_upload">"&lt;p&gt;Прикреплённые к заметкам фото загружаются на &lt;a href=\"https://framapic.org\"&gt;framapic.org&lt;/a&gt;, анонимный сервис, не отслеживающий пользователей.&lt;/p&gt;"</string>
 
     <!-- Может лучше "выделанная велодорожка"? В нашем ПДД отсуствует термин полоса или дорожка. Всё - велосипедная дорожка. -->
     <string name="quest_cycleway_value_track">"велодорожка"</string>

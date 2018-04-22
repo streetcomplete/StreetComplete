@@ -431,7 +431,7 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <string name="about_category_feedback">"Sugerencias"</string>
     <string name="quest_leave_new_note_photo">"Adjuntar foto"</string>
     <string name="quest_leave_new_note_photo_delete_title">"¿Quieres borrar la imagen?"</string>
-    <string name="privacy_html_image_upload">"&lt;p&gt;Las fotos que añadas a las notas se suben a &lt;a href=\"https://lut.im\"&gt;lut.im&lt;/a&gt;, un servicio anónimo y sin rastreo.&lt;/p&gt;"</string>
+    <string name="privacy_html_image_upload">"&lt;p&gt;Las fotos que añadas a las notas se suben a &lt;a href=\"https://framapic.org\"&gt;framapic.org&lt;/a&gt;, un servicio anónimo y sin rastreo.&lt;/p&gt;"</string>
     <string name="quest_cycleway_value_track">"senda ciclista"</string>
     <string name="quest_cycleway_value_lane">"carril bici"</string>
     <string name="quest_cycleway_value_none">"no hay nada"</string>
