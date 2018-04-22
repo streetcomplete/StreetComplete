@@ -562,4 +562,9 @@
     <string name="quest_postboxCollectionTimes_title">"這個郵箱的收信時間？"</string>
     <string name="quest_collectionTimes_add_times">"增加收信時間"</string>
     <string name="quest_collectionTimes_answer_no_times_specified">"沒有特定的時間"</string>
+    <string name="quest_construction_road_title">"這條道路完工了嗎？"</string>
+    <string name="quest_construction_cycleway_title">"這條單車道完工了嗎？"</string>
+    <string name="quest_construction_footway_title">"這條步道完工了嗎？"</string>
+    <string name="quest_construction_generic_title">"這條路完工了嗎？"</string>
+    <string name="quest_construction_building_title">"這棟建築完工了嗎？"</string>
 </resources>
