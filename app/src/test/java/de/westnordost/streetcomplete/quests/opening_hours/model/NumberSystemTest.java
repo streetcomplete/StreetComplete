@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.opening_hours;
+package de.westnordost.streetcomplete.quests.opening_hours.model;
 
 import junit.framework.TestCase;
 
@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+
+import de.westnordost.streetcomplete.quests.opening_hours.model.CircularSection;
+import de.westnordost.streetcomplete.quests.opening_hours.model.NumberSystem;
 
 public class NumberSystemTest extends TestCase
 {

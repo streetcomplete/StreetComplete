@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.opening_hours;
+package de.westnordost.streetcomplete.quests.opening_hours.model;
 
 import android.content.res.Resources;
 
@@ -93,10 +93,12 @@ public class Weekdays
 			sb.append(names[section.getStart()]);
 			if (section.getStart() != section.getEnd())
 			{
+				// i.e. Mo-We
 				if(WEEKDAY_NUMBER_SYSTEM.getSize(section) > 2)
 				{
 					sb.append(range);
 				}
+				// Mo,Tu
 				else
 				{
 					sb.append(seperator);
@@ -105,6 +107,7 @@ public class Weekdays
 			}
 		}
 
+		// the rest (special days). Currently only "PH"
 		for(int i = 7; i < data.length; ++i)
 		{
 			if(!data[i]) continue;
@@ -144,6 +147,24 @@ public class Weekdays
 		}
 
 		return WEEKDAY_NUMBER_SYSTEM.merged(result);
+	}
+
+	public boolean intersects(Weekdays other)
+	{
+		for (int i = 0; i < data.length; i++)
+		{
+			if(data[i] && other.data[i]) return true;
+		}
+		return false;
+	}
+
+	public boolean isSelectionEmpty()
+	{
+		for (boolean day : data)
+		{
+			if (day) return false;
+		}
+		return true;
 	}
 
 	@Override public boolean equals(Object o)

@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.quests.postbox_collection_times;
 
-import de.westnordost.streetcomplete.quests.opening_hours.Weekdays;
+import de.westnordost.streetcomplete.quests.opening_hours.model.Weekdays;
 
 public class WeekdaysTimes
 {
