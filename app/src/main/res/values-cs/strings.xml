@@ -570,4 +570,9 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_postboxCollectionTimes_title">"Jaké jsou časy výběrů této poštovní schránky?"</string>
     <string name="quest_collectionTimes_add_times">"Přidat čas výběru"</string>
     <string name="quest_collectionTimes_answer_no_times_specified">"Časy nejsou určeny"</string>
+    <string name="quest_construction_road_title">"Je stavba této cesty dokončená?"</string>
+    <string name="quest_construction_cycleway_title">"Je stavba této cyklostezky dokončená?"</string>
+    <string name="quest_construction_footway_title">"Je stavba tohoto chodníku dokončená?"</string>
+    <string name="quest_construction_generic_title">"Je stavba této cesty dokončená?"</string>
+    <string name="quest_construction_building_title">"Je stavba této budovy dokončená?"</string>
 </resources>

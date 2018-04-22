@@ -79,6 +79,7 @@
     <string name="about_summary_license">"Dovoljenje GNU GPL"</string>
     <string name="offline">"Ni povezave s spletom"</string>
     <string name="not_authorized">"Ni pooblastila"</string>
+    <string name="version_banned_message">"Ta verzija programa StreetComplete je zastarela. Posodobite jo!"</string>
     <string name="no_gps_no_quests">"Za samodejno iskanje nalog v vaši okolici vklopite lokacijo"</string>
     <string name="nothing_more_to_download">"Ni več nalog"</string>
     <string name="later">"Kasneje"</string>
@@ -207,6 +208,7 @@ Podatki, ki jih vnesete tu, bodo dodani v OpenStreetMap v vašem imenu, brez pot
     <string name="quest_tactilePaving_title_name_bus">"Ali ima avtobusna postaja %s talne taktilne oznake?"</string>
     <string name="quest_source_dialog_note">"Vnašajte le informacije, ki ste jih našli z opazovanjem."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Ali je to parkirišče za kolesa pokrito (zaščiteno pred dežjem)"</string>
+    <string name="dialog_session_dont_show_again">"Ne prikazuj več v tej seji"</string>
     <string name="quest_streetSurface_name_title">"Kakšno površino ima pot %s tu?"</string>
     <string name="quest_maxspeed_title_short">"Kakšna je omejitev hitrosti na tej cesti?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Ta hitrostna omejitev izgleda neverjetna."</string>
