@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 
 import de.westnordost.streetcomplete.R;
+import de.westnordost.streetcomplete.quests.opening_hours.model.Weekdays;
 import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 
 public class WeekdaysPickerDialog

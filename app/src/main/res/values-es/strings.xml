@@ -431,7 +431,7 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <string name="about_category_feedback">"Sugerencias"</string>
     <string name="quest_leave_new_note_photo">"Adjuntar foto"</string>
     <string name="quest_leave_new_note_photo_delete_title">"¿Quieres borrar la imagen?"</string>
-    <string name="privacy_html_image_upload">"&lt;p&gt;Las fotos que añadas a las notas se suben a &lt;a href=\"https://lut.im\"&gt;lut.im&lt;/a&gt;, un servicio anónimo y sin rastreo.&lt;/p&gt;"</string>
+    <string name="privacy_html_image_upload">"&lt;p&gt;Las fotos que añadas a las notas se suben a &lt;a href=\"https://framapic.org\"&gt;framapic.org&lt;/a&gt;, un servicio anónimo y sin rastreo.&lt;/p&gt;"</string>
     <string name="quest_cycleway_value_track">"senda ciclista"</string>
     <string name="quest_cycleway_value_lane">"carril bici"</string>
     <string name="quest_cycleway_value_none">"no hay nada"</string>
@@ -539,4 +539,24 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <string name="quest_fee_only_at_hours">"Sí, pero solo…"</string>
     <string name="quest_fee_not_at_hours">"Sí, menos…"</string>
     <string name="quest_fee_hours_title">"a estas horas:"</string>
+    <string name="quest_busStopName_title">"¿Cuál es el nombre de esta parada de autobús?"</string>
+    <string name="quest_tramStopName_title">"¿Cuál es el nombre de esta parada de tranvía?"</string>
+    <string name="quest_housenumber_multiple_numbers">"Tiene varios números"</string>
+    <string name="quest_housenumber_multiple_numbers_description">"Simplemente introduce los números separados por comas o rangos.
+Por ejemplo 1,3 o 2-6."</string>
+    <string name="quest_bicycle_parking_type_stand">"Portabicicletas alto (de cuadro)"</string>
+    <string name="quest_bicycle_parking_type_wheelbender">"Portabicicletas de rueda"</string>
+    <string name="quest_bicycle_parking_type_shed">"Cobertizo"</string>
+    <string name="quest_bicycle_parking_type_locker">"Consignas"</string>
+    <string name="quest_bicycle_parking_type_building">"Edificio"</string>
+    <string name="quest_bicycle_parking_type_title">"¿Sabes el tipo de aparcamiento de bicis?"</string>
+    <string name="quest_cycleway_value_suggestion_lane">"carril recomendado para bicis"</string>
+    <string name="quest_postboxCollectionTimes_title">"¿Sabes las horas de recogida de este buzón?"</string>
+    <string name="quest_collectionTimes_add_times">"Añadir hora de recogida"</string>
+    <string name="quest_collectionTimes_answer_no_times_specified">"Sin información"</string>
+    <string name="quest_construction_road_title">"¿Esta carretera está terminada?"</string>
+    <string name="quest_construction_cycleway_title">"¿Este carril bici está terminado?"</string>
+    <string name="quest_construction_footway_title">"¿Este sendero está terminado?"</string>
+    <string name="quest_construction_generic_title">"¿Esta vía está terminada?"</string>
+    <string name="quest_construction_building_title">"¿El edificio está terminado?"</string>
 </resources>

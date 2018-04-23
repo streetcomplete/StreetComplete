@@ -448,7 +448,7 @@ Ellers kan du downloade et andet keyboard i Forretning. Populære keyboards der 
     <string name="about_category_feedback">"Feedback"</string>
     <string name="quest_leave_new_note_photo">"Vedhæft foto"</string>
     <string name="quest_leave_new_note_photo_delete_title">"Ønsker du at slette dette billede?"</string>
-    <string name="privacy_html_image_upload">"&lt;p&gt;De fotos du vedhæfter til noter uploades til &lt;a href=\"https://lut.im\"&gt;lut.im&lt;/a&gt;, en anonym service og uden sporing.&lt;/p&gt;"</string>
+    <string name="privacy_html_image_upload">"&lt;p&gt;De fotos du vedhæfter til noter uploades til &lt;a href=\"https://framapic.org\"&gt;framapic.org&lt;/a&gt;, en anonym service og uden sporing.&lt;/p&gt;"</string>
     <string name="quest_cycleway_value_track">"cykelsti"</string>
     <string name="quest_cycleway_value_lane">"cykelbane"</string>
     <string name="quest_cycleway_value_none">"ingen"</string>

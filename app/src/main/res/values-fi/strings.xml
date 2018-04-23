@@ -437,7 +437,7 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
     <string name="about_category_feedback">"Palaute"</string>
     <string name="quest_leave_new_note_photo">"Liitä valokuva"</string>
     <string name="quest_leave_new_note_photo_delete_title">"Haluatko poistaa tämän kuvan?"</string>
-    <string name="privacy_html_image_upload">"&lt;p&gt;Muistiinpanoihin liittämäsi kuvat ladataan osoitteeseen &lt;a href=\"https://lut.im\"&gt;lut.im&lt;/a&gt;, anonyymi palvelu ilman käyttäjän seurantaa. &lt;/p&gt;"</string>
+    <string name="privacy_html_image_upload">"&lt;p&gt;Muistiinpanoihin liittämäsi kuvat ladataan osoitteeseen &lt;a href=\"https://framapic.org\"&gt;framapic.org&lt;/a&gt;, anonyymi palvelu ilman käyttäjän seurantaa. &lt;/p&gt;"</string>
     <string name="quest_cycleway_value_track">"pyörärata"</string>
     <string name="quest_cycleway_value_lane">"Pyöräilykaista"</string>
     <string name="quest_cycleway_value_none">"ei mitään"</string>

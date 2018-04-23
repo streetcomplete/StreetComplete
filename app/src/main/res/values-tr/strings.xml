@@ -431,7 +431,7 @@ Aksi takdirde, uygulama mağazasında başka bir klavye indirebilirsiniz. Birço
     <string name="about_category_feedback">"Geribildirim"</string>
     <string name="quest_leave_new_note_photo">"Fotoğraf ekle"</string>
     <string name="quest_leave_new_note_photo_delete_title">"Bu resmi silmek istiyor musun?"</string>
-    <string name="privacy_html_image_upload">" &lt;p&gt;Notlara eklediğiniz fotoğraflar, takip etmeyen, anonim bir servis olan &lt;a href=\"https://lut.im\"&gt;lut.im&lt;/a&gt;e yüklenir.&lt;/p&gt; "</string>
+    <string name="privacy_html_image_upload">" &lt;p&gt;Notlara eklediğiniz fotoğraflar, takip etmeyen, anonim bir servis olan &lt;a href=\"https://framapic.org\"&gt;framapic.org&lt;/a&gt;e yüklenir.&lt;/p&gt; "</string>
     <string name="quest_cycleway_value_track">"Bisiklet parkuru"</string>
     <string name="quest_cycleway_value_lane">"bisiklet şeridi"</string>
     <string name="quest_cycleway_value_none">"yok"</string>

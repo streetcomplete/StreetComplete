@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.meta.CountryInfo;
-import de.westnordost.streetcomplete.quests.opening_hours.Weekdays;
+import de.westnordost.streetcomplete.quests.opening_hours.model.Weekdays;
 import de.westnordost.streetcomplete.quests.opening_hours.WeekdaysPickerDialog;
 
 public class CollectionTimesAdapter extends RecyclerView.Adapter<CollectionTimesAdapter.WeekdayViewHolder>

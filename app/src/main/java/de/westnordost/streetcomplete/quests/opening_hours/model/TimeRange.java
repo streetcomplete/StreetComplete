@@ -1,10 +1,17 @@
-package de.westnordost.streetcomplete.quests.opening_hours;
+package de.westnordost.streetcomplete.quests.opening_hours.model;
 
 import android.annotation.SuppressLint;
 
+/** A time range from [start,end).
+ */
 public class TimeRange extends CircularSection
 {
 	public final boolean isOpenEnded;
+
+	public TimeRange(int minutesStart, int minutesEnd)
+	{
+		this(minutesStart, minutesEnd, false);
+	}
 
 	public TimeRange(int minutesStart, int minutesEnd, boolean openEnded)
 	{
@@ -12,18 +19,20 @@ public class TimeRange extends CircularSection
 		isOpenEnded = openEnded;
 	}
 
-	@Override public boolean intersects(CircularSection other)
+	@Override public boolean intersects(CircularSection o)
 	{
-		if(super.intersects(other)) return true;
+		if(!(o instanceof TimeRange)) return false;
+		TimeRange other = (TimeRange) o;
 
 		if(isOpenEnded && other.getStart() >= getStart())
 			return true;
-		if(other instanceof TimeRange)
-		{
-			if(((TimeRange) other).isOpenEnded && getStart() >= other.getStart())
-				return true;
-		}
-		return false;
+		if(other.isOpenEnded && getStart() >= other.getStart())
+			return true;
+		if(loops() && other.loops())
+			return true;
+		if(loops() || other.loops())
+			return other.getEnd() > getStart() || other.getStart() < getEnd();
+		return other.getEnd() > getStart() && other.getStart() < getEnd();
 	}
 
 	@Override public boolean equals(Object other)

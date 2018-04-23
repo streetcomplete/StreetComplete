@@ -380,7 +380,7 @@ Elles kan du lasta ned eit anna tastatur i appbutikken. Mykje brukte tastatur so
     <string name="about_category_feedback">"Tilbakemelding"</string>
     <string name="quest_leave_new_note_photo">"Legg ved bilete"</string>
     <string name="quest_leave_new_note_photo_delete_title">"Ønskjer du å sletta dette biletet?"</string>
-    <string name="privacy_html_image_upload">"&lt;p&gt;Bilete du legg ved merknadar, vert lasta opp til &lt;a href=\"https://lut.im\"&gt;lut.im&lt;/a&gt;, ei anonym teneste utan brukarsporing.&lt;/p&gt;"</string>
+    <string name="privacy_html_image_upload">"&lt;p&gt;Bilete du legg ved merknadar, vert lasta opp til &lt;a href=\"https://framapic.org\"&gt;framapic.org&lt;/a&gt;, ei anonym teneste utan brukarsporing.&lt;/p&gt;"</string>
     <string name="quest_cycleway_value_track">"sykkelveg"</string>
     <string name="quest_cycleway_value_lane">"sykkelfelt"</string>
     <string name="quest_cycleway_value_none">"ingen"</string>

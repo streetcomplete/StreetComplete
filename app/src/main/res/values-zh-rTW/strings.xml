@@ -442,7 +442,7 @@
     <string name="about_category_feedback">"回饋"</string>
     <string name="quest_leave_new_note_photo">"附件照片"</string>
     <string name="quest_leave_new_note_photo_delete_title">"你想要刪除這張照片嗎？"</string>
-    <string name="privacy_html_image_upload">"&lt;p&gt;註記附件的照片已經上傳到&lt;a href=\"https://lut.im\"&gt;lut.im&lt;/a&gt;，這個服務是暱名而且不會追蹤。&lt;/p&gt;"</string>
+    <string name="privacy_html_image_upload">"&lt;p&gt;註記附件的照片已經上傳到&lt;a href=\"https://framapic.org\"&gt;framapic.org&lt;/a&gt;，這個服務是暱名而且不會追蹤。&lt;/p&gt;"</string>
     <string name="quest_cycleway_value_track">"單車道"</string>
     <string name="quest_cycleway_value_lane">"單車車道"</string>
     <string name="quest_cycleway_value_none">"無"</string>
@@ -562,4 +562,9 @@
     <string name="quest_postboxCollectionTimes_title">"這個郵箱的收信時間？"</string>
     <string name="quest_collectionTimes_add_times">"增加收信時間"</string>
     <string name="quest_collectionTimes_answer_no_times_specified">"沒有特定的時間"</string>
+    <string name="quest_construction_road_title">"這條道路完工了嗎？"</string>
+    <string name="quest_construction_cycleway_title">"這條單車道完工了嗎？"</string>
+    <string name="quest_construction_footway_title">"這條步道完工了嗎？"</string>
+    <string name="quest_construction_generic_title">"這條路完工了嗎？"</string>
+    <string name="quest_construction_building_title">"這棟建築完工了嗎？"</string>
 </resources>

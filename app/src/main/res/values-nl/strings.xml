@@ -445,7 +445,7 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire keybor
     <string name="about_category_feedback">"Feedback"</string>
     <string name="quest_leave_new_note_photo">"Maak een foto om toe te voegen"</string>
     <string name="quest_leave_new_note_photo_delete_title">"Wil jij deze foto verwijderen?"</string>
-    <string name="privacy_html_image_upload">"&lt;p&gt;Foto's die je toevoegt aan opmerkingen worden geüpload naar &lt;a href=\"https://lut.im\"&gt;lut.im&lt;/a&gt;, een dienst die anoniem is en waarbij je positie niet wordt bijgehouden.&lt;p&gt;"</string>
+    <string name="privacy_html_image_upload">"&lt;p&gt;Foto's die je toevoegt aan opmerkingen worden geüpload naar &lt;a href=\"https://framapic.org\"&gt;framapic.org&lt;/a&gt;, een dienst die anoniem is en waarbij je positie niet wordt bijgehouden.&lt;p&gt;"</string>
     <string name="quest_cycleway_value_track">"gescheiden fietspad"</string>
     <string name="quest_cycleway_value_lane">"fietsstrook"</string>
     <string name="quest_cycleway_value_none">"geen"</string>
