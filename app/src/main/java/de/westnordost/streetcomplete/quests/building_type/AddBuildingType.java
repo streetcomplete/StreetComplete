@@ -18,7 +18,7 @@ public class AddBuildingType extends SimpleOverpassQuestType
 {
 	@Inject public AddBuildingType(OverpassMapDataDao overpassServer) { super(overpassServer); }
 
-	@Override protected String getTagFilters() { return "ways, relations with building=yes and !man_made and !building:description"; }
+	@Override protected String getTagFilters() { return "ways, relations with building=yes and !location=underground and !man_made and !building:description"; }
 
 	public AbstractQuestAnswerFragment createForm() { return new AddBuildingTypeForm(); }
 

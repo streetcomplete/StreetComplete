@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.building_type;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -21,6 +22,8 @@ public class AddBuildingTypeForm extends AbstractQuestFormAnswerFragment
 {
 	public static final String BUILDING = "building";
 	public static final String BUILDING_DESCRIPTION = "building_description";
+
+	private Context context;
 
 	private final Item
 		HOUSE = new Item("house", R.drawable.building_house, R.string.quest_buildingType_house),
@@ -55,7 +58,7 @@ public class AddBuildingTypeForm extends AbstractQuestFormAnswerFragment
 		TEMPLE = new Item("temple", R.drawable.building_temple, R.string.quest_buildingType_temple),
 		SYNAGOGUE =	new Item("synagogue", R.drawable.building_synagogue, R.string.quest_buildingType_synagogue),
 
-		CARPORT = new Item("carport", R.drawable.building_carport, R.string.quest_buildingType_carport),
+		CARPORT = new Item("carport", R.drawable.building_carport, R.string.quest_buildingType_carport, R.string.quest_buildingType_carport_description),
 		GARAGE = new Item("garage",	R.drawable.building_garage, R.string.quest_buildingType_garage),
 		GARAGES = new Item("garages", R.drawable.building_garages, R.string.quest_buildingType_garages),
 		PARKING = new Item("parking", R.drawable.building_parking, R.string.quest_buildingType_parking),
@@ -128,7 +131,7 @@ public class AddBuildingTypeForm extends AbstractQuestFormAnswerFragment
 			showMoreButton.setVisibility(View.GONE);
 		});
 
-		addOtherAnswer(R.string.quest_buildingType_answer_input_description, this::showInputCommentDialog);
+		addOtherAnswers();
 
 		return view;
 	}
@@ -144,7 +147,7 @@ public class AddBuildingTypeForm extends AbstractQuestFormAnswerFragment
 
 			if(!building.hasValue())
 			{
-				new AlertDialogBuilder(getContext())
+				new AlertDialogBuilder(context)
 						.setMessage(R.string.quest_building_type_invalid_value)
 						.setPositiveButton(R.string.ok, null)
 						.show();
@@ -153,7 +156,7 @@ public class AddBuildingTypeForm extends AbstractQuestFormAnswerFragment
 
 			if(building.isGroup())
 			{
-				new AlertDialogBuilder(getContext())
+				new AlertDialogBuilder(context)
 						.setMessage(R.string.quest_building_type_generic_building_confirmation)
 						.setNegativeButton(R.string.quest_generic_confirmation_no, null)
 						.setPositiveButton(R.string.quest_generic_confirmation_yes,
@@ -166,6 +169,12 @@ public class AddBuildingTypeForm extends AbstractQuestFormAnswerFragment
 		applyFormAnswer(answer);
 	}
 
+	private void addOtherAnswers()
+	{
+		addOtherAnswer(R.string.quest_buildingType_answer_input_description, this::showInputCommentDialog);
+		addOtherAnswer(R.string.quest_buildingType_multiple_types, this::showMultipleTypesHintDialog);
+	}
+
 	@Override public boolean hasChanges() { return getSelectedItem() != null; }
 
 	private Item getSelectedItem() { return imageSelector.getSelectedItem(); }
@@ -175,7 +184,7 @@ public class AddBuildingTypeForm extends AbstractQuestFormAnswerFragment
 		View view = LayoutInflater.from(getActivity()).inflate(R.layout.quest_building_type_comment, null);
 		final EditText editText = view.findViewById(R.id.commentInput);
 
-		new AlertDialogBuilder(getContext())
+		new AlertDialogBuilder(context)
 			.setTitle(R.string.quest_buildingType_comment_title)
 			.setView(view)
 			.setPositiveButton(android.R.string.ok, (dialog, which) ->
@@ -183,7 +192,7 @@ public class AddBuildingTypeForm extends AbstractQuestFormAnswerFragment
 				String txt = editText.getText().toString().replaceAll("\"","").trim();
 				if(txt.isEmpty())
 				{
-					new AlertDialogBuilder(getContext())
+					new AlertDialogBuilder(context)
 						.setMessage(R.string.quest_buildingType_comment_emptyAnswer)
 						.setPositiveButton(R.string.ok, null)
 						.show();
@@ -196,5 +205,19 @@ public class AddBuildingTypeForm extends AbstractQuestFormAnswerFragment
 			})
 			.setNegativeButton(android.R.string.cancel, null)
 			.show();
+	}
+
+	private void showMultipleTypesHintDialog()
+	{
+		new AlertDialogBuilder(context)
+			.setMessage(R.string.quest_buildingType_multiple_types_description)
+			.setPositiveButton(android.R.string.ok, null)
+			.show();
+	}
+
+	@Override public void onAttach(Context context)
+	{
+		super.onAttach(context);
+		this.context = context;
 	}
 }
