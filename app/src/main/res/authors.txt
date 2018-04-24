@@ -112,14 +112,6 @@ surface_sett.jpg               CC-BY-SA 3.0      https://commons.wikimedia.org/w
 surface_wood.jpg               CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Wooden_Bridge_In_Midst_of_Kaziranga_Wild_life_Sanctuary.jpg
 surface_metal.jpg              Public Domain     https://commons.wikimedia.org/wiki/File:Metal_steel_surface.jpg
 
-power_pole_wood.jpg            https://commons.wikimedia.org/wiki/File:Two_armed_power_pole_1.jpg
-power_pole_steel.jpg           https://commons.wikimedia.org/wiki/File:Steel_tube_pylon.JPG
-power_pole_concrete.jpg        https://commons.wikimedia.org/wiki/File:Concrete_utility_pole.jpg
-
-car_wash_automated.jpg    https://commons.wikimedia.org/wiki/File:Carwas.jpg
-car_wash_service.jpg      http://ctproductsandservices.com/2013/10/splash-car-wash/
-car_wash_self_service.jpg https://pixabay.com/en/wash-a-car-the-car-blue-1822415/
-
 tactile_paving_illustration... CC-BY 2.0         https://www.flickr.com/photos/jeanlouis_zimmermann/10072029534/in/album-72157635218804514/
                                CC-BY 2.0         https://www.flickr.com/photos/jeanlouis_zimmermann/10493532264/in/album-72157635218804514/
                                CC-BY 2.0         https://www.flickr.com/photos/jeanlouis_zimmermann/10473021344/in/album-72157635218804514/
