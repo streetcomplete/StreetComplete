@@ -523,7 +523,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingType_answer_input_description">Can not determine more specifically</string>
     <string name="quest_buildingType_comment_title">Describe the building</string>
     <string name="quest_buildingType_comment_description">Be concise and write a short description of what the intention of the building is</string>
-    <string name="quest_buildingType_comment_emptyAnswer">You need to describe what you can see. If you have no idea what the building is used for, you can make a guess</string>
+    <string name="quest_buildingType_comment_emptyAnswer">You need to describe what you can see. If you have no idea what the building is used for, you can make a guess.</string>
 
     <string name="quest_buildingType_residential">Residential</string>
     <string name="quest_buildingType_house">House</string>
