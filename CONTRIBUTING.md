@@ -115,3 +115,7 @@ You can look at **other quests** to see how they are implemented.
 * [streetcomplete-mapstyle](https://github.com/ENT8R/streetcomplete-mapstyle) by [@ENT8R](https://github.com/ENT8R) maintaining the mapstyle of StreetComplete
 * [oneway-data-api](https://github.com/ENT8R/oneway-data-api) by [@ENT8R](https://github.com/ENT8R) for getting oneway data from improveosm.org
 * [crops-parser](https://github.com/rugk/crops-parser) by [@rugk](https://github.com/rugk) for parsing data for the orchard quest
+* [streetcomplete-quest-svgs](https://github.com/rugk/streetcomplete-quest-svgs) by [@rugk](https://github.com/rugk) for having minified versions of all StreetComplete quest icons for the OSM wiki
+* [streetcomplete-ad-34c3](https://github.com/rugk/streetcomplete-ad-34c3) by [@rugk](https://github.com/rugk) as a banner advertisement
+
+You may find more projects unter [the StreetComplete tag](https://github.com/topics/streetcomplete) on GitHub.
