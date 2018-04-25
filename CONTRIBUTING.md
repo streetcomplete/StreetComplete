@@ -48,7 +48,7 @@ StreetComplete depends on some projects for the app. Try to find the appropriate
 Examples of such issues are missing elements on the map, display errors on the map, etc. As a rule of thumb, you can report everything that happens "behind" the quest icon markers there.
 
 Note that this app has other dependencies. For reporting issues, in these, you however have to have some technical knowledge. So if you are **not sure** that the component listed below is responsible for the issue you have, it is often better to report them in the general StreetComplete issue tracker. People will then let you know whether this issue is solvable by StreetComplete or is an issue of Tangram-ES.
-The full list of dependencities and other StreetComplete-related projects is listed [at the end of this file](#streetcomplete-related-projects).
+The full list of dependencies and other StreetComplete-related projects is listed [at the end of this file](#streetcomplete-related-projects).
 
 ### Suggesting new quests
 
@@ -70,7 +70,7 @@ A quest is officially marked as accepted when it get's [the "new quest" tag](htt
 
 You can also help to keep the OpenStreetMap wiki **up-to-date** for StreetComplete. For example:
 * Add missing quests in [the quest list](https://wiki.openstreetmap.org/wiki/StreetComplete/Quests) or check, that they are up to date.
-* Edit [the FAQ](https://wiki.openstreetmap.org/wiki/StreetComplete/FAQ) and add reoccuring questions.
+* Edit [the FAQ](https://wiki.openstreetmap.org/wiki/StreetComplete/FAQ) and add reoccurring questions.
 * Edit [the main StreetComplete page](https://wiki.openstreetmap.org/wiki/StreetComplete).
 * Edit [the JSON of all tags used by StreetComplete](https://github.com/goldfndr/StreetCompleteJSON) that is displayed on [taginfo](https://taginfo.openstreetmap.org/projects/streetcomplete).
 
@@ -118,4 +118,5 @@ You can look at **other quests** to see how they are implemented.
 * [streetcomplete-quest-svgs](https://github.com/rugk/streetcomplete-quest-svgs) by [@rugk](https://github.com/rugk) for having minified versions of all StreetComplete quest icons for the OSM wiki
 * [streetcomplete-ad-34c3](https://github.com/rugk/streetcomplete-ad-34c3) by [@rugk](https://github.com/rugk) as a banner advertisement
 
-You may find more projects unter [the StreetComplete tag](https://github.com/topics/streetcomplete) on GitHub.
+You may find more projects under [the StreetComplete tag](https://github.com/topics/streetcomplete) on GitHub.
+
