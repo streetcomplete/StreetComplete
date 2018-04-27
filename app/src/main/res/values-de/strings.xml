@@ -10,7 +10,10 @@
     <string name="pref_category_communication">"Verbindung"</string>
     <string name="pref_category_display">"Anzeige"</string>
     <string name="pref_title_authorization">"OSM-Zugang autorisieren"</string>
+    <string name="pref_title_authorized_username_summary">"Autorisierter Account: %s"</string>
+    <string name="pref_title_authorized_summary">"Autorisiert"</string>
     <string name="pref_title_not_authorized_summary">"Noch nicht autorisiert"</string>
+    <string name="pref_title_not_authorized_summary2">"Logge dich zur Autorisierung im Webbrowser ein"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
     <string name="pref_tilecache_size_message">"Größe des Caches für die Karte auf dem externen Speicher (in MB)"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Alle Notizen anzeigen"</string>
@@ -30,13 +33,14 @@
     <string name="quest_leave_new_note_description">"Du kannst hier eine öffentliche Notiz hinterlassen, welche von anderen kommentiert und hoffentlich gelöst werden kann:"</string>
     <string name="quest_leave_new_note_yes">"OK"</string>
     <string name="quest_leave_new_note_no">"Nein, verstecken"</string>
+    <string name="quest_leave_new_note_photo">"Foto anhängen"</string>
+    <string name="quest_leave_new_note_photo_delete_title">"Dieses Foto löschen?"</string>
     <string name="quest_streetName_title">"Wie heißt diese Straße?"</string>
     <string name="quest_streetName_description">"Wie es auf dem Straßenschild steht, Abkürzungen bitte ausschreiben:"</string>
     <string name="quest_streetName_answer_noName_confirmation_description">"Manchmal steht nur an einem Ende der Straße ein Straßenschild. Außerdem mag es für Seitenstraßen, die zu einer größeren Straße gehören, keine extra Straßenschilder geben. Normalerweise hat jede Straße, an der Häuser stehen, einen Namen."</string>
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Ist der Name %s abgekürzt?"</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Abkürzungen in Straßennamen sollten immer ausgeschrieben werden. Für übliche Abkürzungen passiert das automatisch beim Schreiben, aber eventuell nicht für alle."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Keine Abkürzung"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_name_title">"Was sind die Öffnungszeiten von %s?"</string>
     <string name="quest_openingHours_start_time">"öffnet um"</string>
     <string name="quest_openingHours_end_time">"schließt um"</string>
@@ -59,10 +63,11 @@
     <string name="confirmation_discard_negative">"Abbrechen"</string>
     <string name="action_download">"Hier nach Aufgaben suchen"</string>
     <string name="action_upload">"Antworten hochladen"</string>
-    <string name="no_changes">"Das Formular wurde leer gelassen"</string>
+    <string name="no_changes">"Die Frage wurde nicht beantwortet"</string>
     <string name="close">"Schließen"</string>
     <string name="download_error">"Fehler beim Suchen nach Aufgaben"</string>
     <string name="upload_error">"Fehler beim Hochladen der Antworten"</string>
+    <string name="cannot_find_bbox_or_reduce_tilt">"Kann hier nicht scannen. Zoome weiter herein oder kippe die Karte weniger"</string>
     <string name="download_area_too_big">"Zoome weiter hinein"</string>
     <string name="confirmation_cancel_prev_download_title">"Aktuelle Suche abbrechen und stattdessen hier suchen?"</string>
     <string name="notification_downloading">"Suche nach Aufgaben…"</string>
@@ -80,14 +85,18 @@
     <string name="about_title_license">"Lizenz"</string>
     <string name="about_summary_license">"GNU General Public License"</string>
     <string name="offline">"Du bist offline"</string>
-    <string name="confirmation_authorize_now">"Du musst dich mit deinem OSM-Konto autorisieren, um deine Antworten übertragen und damit abschließen zu können. Jetzt autorisieren?"</string>
+    <string name="confirmation_authorize_now">"Du musst dich mit deinem OSM-Konto autorisieren, um deine Antworten zu veröffentlichen. Jetzt autorisieren?"</string>
     <string name="not_authorized">"Nicht autorisiert"</string>
-    <string name="version_banned_message">"Diese Version von StreetComplete wurde gebannt, Antworten hochzuladen. Bitte aktualisiere deine Version!"</string>
+    <string name="version_banned_message">"Diese Version von StreetComplete ist zu alt. Bitte aktualisiere deine Version!"</string>
     <string name="no_gps_no_quests">"Um automatisch nach Aufgaben in deiner Nähe zu suchen, schalte Standort an"</string>
     <string name="nothing_more_to_download">"Keine weiteren Aufgaben verfügbar"</string>
     <string name="later">"Später"</string>
+    <string name="quest_streetName_answer_noName_question">"Warum hat sie keinen Namen?"</string>
     <string name="quest_streetName_answer_noProperStreet_link">"Sie ist eine Verbindung zwischen zwei Straßen"</string>
+    <string name="quest_streetName_answer_noProperStreet_service2">"Ist bloß soetwas wie eine Zufahrt"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Etwas anderes (Notiz hinterlassen)"</string>
+    <string name="quest_streetName_answer_noProperStreet_track2">"Ist nur ein Feld- oder Waldweg"</string>
+    <string name="quest_streetName_answer_noName_noname">"Nichts davon, sie hat ganz einfach keinen Namen"</string>
     <string name="about_title_privacy_statement">"Datenschutzerklärung"</string>
     <string name="about_summary_privacy_statement">"und Datennutzung"</string>
     <string name="quest_openingHours_public_holidays">"Feiertage"</string>
@@ -104,40 +113,46 @@
     <string name="quest_roofShape_select_one">"Wähle eine aus:"</string>
     <string name="quest_roofShape_show_more">"Weitere anzeigen…"</string>
     <string name="quest_roofShape_answer_many">"Es hat mehrere unterschiedliche"</string>
+    <string name="quest_sport_title">"Für welchen Sport ist dieses Spielfeld vorgesehen?"</string>
+    <string name="quest_sport_answer_multi">"Für keinen bestimmten"</string>
+    <string name="quest_sport_soccer">"Fußball"</string>
+    <string name="quest_sport_tennis">"Tennis"</string>
+    <string name="quest_sport_baseball">"Baseball"</string>
+    <string name="quest_sport_basketball">"Basketball"</string>
+    <string name="quest_sport_golf">"Golf"</string>
+    <string name="quest_sport_equestrian">"Reitsport"</string>
+    <string name="quest_sport_athletics">"Leichtathletik"</string>
+    <string name="quest_sport_volleyball">"Volleyball"</string>
+    <string name="quest_sport_beachvolleyball">"Beachvolleyball"</string>
+    <string name="quest_sport_american_football">"American Football"</string>
+    <string name="quest_sport_skateboard">"Skateboard"</string>
+    <string name="quest_sport_bowls">"Bowls"</string>
+    <string name="quest_sport_boules">"Boule"</string>
+    <string name="quest_sport_shooting">"Sportschießen"</string>
+    <string name="quest_sport_cricket">"Cricket"</string>
+    <string name="quest_sport_table_tennis">"Tischtennis"</string>
+    <string name="quest_sport_gymnastics">"Gymnastik"</string>
+
+    <string name="quest_sport_archery">"Bogenschießen"</string>
+    <string name="quest_sport_australian_football">"Australian Football"</string>
+    <string name="quest_sport_badminton">"Badminton"</string>
+    <string name="quest_sport_canadian_football">"Canadian Football"</string>
+    <string name="quest_sport_field_hockey">"Feldhockey"</string>
+    <string name="quest_sport_handball">"Handball"</string>
+    <string name="quest_sport_ice_hockey">"Eishockey"</string>
+    <string name="quest_sport_netball">"Netball"</string>
+    <string name="quest_sport_rugby">"Rugby"</string>
     <string name="pref_category_cache">"Cache"</string>
     <string name="pref_title_sync">"Auto-Synchronisierung"</string>
     <string name="map_btn_zoom_out">"Verkleinern"</string>
     <string name="map_btn_zoom_in">"Vergrößern"</string>
-    <string name="privacy_html">"&lt;p&gt;Ah, jemand dem Datenschutz wichtig ist, schön! Ich denke, dass ich nur gute Nachrichten für dich habe:&lt;/p&gt;
-&lt;p&gt;&lt;b&gt;Direkte Mitwirkung&lt;/b&gt;&lt;/p&gt;
-&lt;p&gt;
-Zuallererst solltest du wissen, dass du mit dieser App unmittelbare Beiträge zur OpenStreetMap leistest.&lt;br/&gt;
-Alle Aufgaben, die du mit dieser App löst, werden direkt auf die Karte übertragen. Es gibt keine Instanz zwischen der App und der OSM-Infrastruktur, wie es etwa mit &lt;a href=\"https://wheelmap.org\"&gt;wheelmap.org&lt;/a&gt; oder &lt;a href=\"http://www.kort.ch\"&gt;Kort&lt;/a&gt; der Fall ist.
-&lt;/p&gt;
-&lt;p&gt;
-Es ist nicht möglich, die OpenStreetMap anonym zu bearbeiten, das heißt jede Änderung, die du machst, wird deinem OSM-Benutzerkonto zugeordnet. Das bedeutet, dass die Zeit, der Inhalt und implizit der Ort der Änderungen öffentlich auf der OpenStreetMap-Website sichtbar sind und deinem Benutzerkonto zugeordnet werden können.
-&lt;/p&gt;
-
-&lt;b&gt;Standort&lt;/b&gt;&lt;br/&gt;
-&lt;p&gt;
-Dein Standort wird genutzt, um automatisch nach Aufgaben in deiner Nähe zu suchen. Keine Sorge, die App behält deinen Standort für sich.
-&lt;/p&gt;
-
-&lt;p&gt;&lt;b&gt;Datennutzung&lt;/b&gt;&lt;/p&gt;
-&lt;p&gt;
-Wie schon gesagt, die App kommuniziert direkt mit der OSM-Infrastruktur. Genauer, mit der &lt;a href=\"https://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass-API&lt;/a&gt; zum Herunterladen der Aufgaben (das ist anonym) und direkt mit der &lt;a href=\"https://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM-API&lt;/a&gt; zum Hochladen der Änderungen.&lt;br/&gt;
-Bevor deine Änderungen hochgeladen werden, prüft die App allerdings &lt;a href=\"http://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;eine simple Textdatei&lt;/a&gt; auf meinem Server ab, um zu sehen, ob sie für den Upload gesperrt wurde. Das ist eine Vorsichtsmaßnahme, um Versionen dieser App, die möglicherweise kritische Fehler enthalten, davon abzuhalten, OSM-Daten zu korrumpieren.&lt;br/&gt;
-&lt;/p&gt;
-&lt;p&gt;
-Um die Karte darzustellen, werden Kartendaten vom &lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt;Mapzen Vector Tile Service&lt;/a&gt; heruntergeladen. Das ist anonym. Der Service loggt Anfragen auf Kartendaten, einerseits, um zu sehen welche Gebiete genutzt werden, andererseits zum Pre-Caching und anderen Performanceverbesserungen. Die Platform loggt auch IP-Adressen und ihr Hosting ist bei Amazon und unterliegt so auch dem, was Amazon tut.
-&lt;/p&gt;
-&lt;p&gt;
-(&lt;i&gt;Das ist noch nicht implementiert, ich will dich nur informieren was noch kommt!:&lt;/i&gt;) Die Daten, die in der Bestenliste und im Profil angezeigt werden, werden aus öffentlich zugänglichen Informationen auf der OpenStreetMap zusammengetragen. Die Daten kommen nicht aus dieser App, sondern praktisch aus der Commit-History der OSM-Benutzer.
-&lt;/p&gt;"</string>
+    <string name="privacy_html">"<p>Ah, jemand dem Datenschutz wichtig ist, schön! Ich denke, dass ich nur gute Nachrichten für dich habe:</p> <p><b>Direkte Mitwirkung</b></p> <p> Zuallererst solltest du wissen, dass du mit dieser App unmittelbare Beiträge zur OpenStreetMap leistest.<br/> Alle Aufgaben, die du mit dieser App löst, werden direkt auf die Karte übertragen. Es gibt keine Instanz zwischen der App und der OSM-Infrastruktur, wie es etwa mit <a href="https://wheelmap.org">wheelmap.org</a> oder <a href="http://www.kort.ch">Kort</a> der Fall ist. </p> <p> Es ist nicht möglich, die OpenStreetMap anonym zu bearbeiten, das heißt jede Änderung, die du machst, wird deinem OSM-Benutzerkonto zugeordnet. Das bedeutet, dass die Zeit, der Inhalt und implizit der Ort der Änderungen öffentlich auf der OpenStreetMap-Website sichtbar sind und deinem Benutzerkonto zugeordnet werden können. </p>  <b>Standort</b><br/> <p> Dein Standort wird genutzt, um automatisch nach Aufgaben in deiner Nähe zu suchen. Keine Sorge, die App behält deinen Standort für sich. </p>  <p><b>Datennutzung</b></p> <p> Wie schon gesagt, die App kommuniziert direkt mit der OSM-Infrastruktur. Genauer, mit der <a href="https://wiki.openstreetmap.org/wiki/Overpass_API">Overpass-API</a> zum Herunterladen der Aufgaben (das ist anonym) und direkt mit der <a href="https://wiki.openstreetmap.org/wiki/API_v0.6">OSM-API</a> zum Hochladen der Änderungen.<br/> Bevor deine Änderungen hochgeladen werden, prüft die App allerdings <a href="https://www.westnordost.de/streetcomplete/banned_versions.txt">eine simple Textdatei</a> auf meinem Server ab, um zu sehen, ob sie für den Upload gesperrt wurde. Das ist eine Vorsichtsmaßnahme, um Versionen dieser App, die möglicherweise kritische Fehler enthalten, davon abzuhalten, OSM-Daten zu korrumpieren.<br/> </p> <p> Um die Karte darzustellen, werden Kartendaten vom <a href="https://mapzen.com/projects/vector-tiles/">Mapzen Vector Tile Service</a> heruntergeladen. Das ist anonym. Der Service loggt Anfragen auf Kartendaten, einerseits, um zu sehen welche Gebiete genutzt werden, andererseits zum Pre-Caching und anderen Performanceverbesserungen. Die Platform loggt auch IP-Adressen und ihr Hosting ist bei Amazon und unterliegt so auch dem, was Amazon tut. </p> <p> (<i>Das ist noch nicht implementiert, ich will dich nur informieren was noch kommt!:</i>) Die Daten, die in der Bestenliste und im Profil angezeigt werden, werden aus öffentlich zugänglichen Informationen auf der OpenStreetMap zusammengetragen. Die Daten kommen nicht aus dieser App, sondern praktisch aus der Commit-History der OSM-Benutzer. </p>"</string>
+    <string name="privacy_html_image_upload">"<p>Fotos die an Notizen angehängt werden, werden hochgeladen auf <a href="https://framapic.org">framapic.org</a>, ein anonymer Service ohne Tracking.</p>"</string>
     <string name="autosync_on">"An"</string>
     <string name="autosync_only_on_wifi">"Nur mit WLAN"</string>
     <string name="autosync_off">"Aus"</string>
     <string name="quest_streetSurface_title">"Welche Oberfläche hat dieser Straßenabschnitt?"</string>
+    <string name="quest_streetSurface_name_title">"Welche Oberfläche hat die Straße %s hier?"</string>
     <string name="quest_surface_description">"Wähle die passendste:"</string>
     <string name="quest_surface_value_paved">"Befestigt (allgemein)"</string>
     <string name="quest_surface_value_unpaved">"Unbefestigt (allgemein)"</string>
@@ -158,15 +173,28 @@ Um die Karte darzustellen, werden Kartendaten vom &lt;a href=\"https://mapzen.co
     <string name="quest_surface_value_wood">"Holz"</string>
     <string name="quest_placeName_title">"Wie heißt dieser Ort?"</string>
     <string name="quest_sidewalk_title">"Hat diese Straße einen Bürgersteig?"</string>
+    <string name="quest_busStopName_title">"Wie heißt diese Bushaltestelle?"</string>
+    <string name="quest_tramStopName_title">"Wie heißt diese Straßenbahnhaltestelle?"</string>
     <string name="map_orientation_info">"Die Karte ist eingenordet."</string>
     <string name="quest_sidewalk_onlyNorth">"Nur auf der nördlichen Seite"</string>
     <string name="quest_sidewalk_onlySouth">"Nur auf der südlichen Seite"</string>
     <string name="quest_sidewalk_onlyWest">"Nur auf der westlichen Seite"</string>
     <string name="quest_sidewalk_onlyEast">"Nur auf der östlichen Seite"</string>
     <string name="quest_sidewalk_yes">"Ja"</string>
+    <string name="quest_maxspeed_title_short">"Welche Höchstgeschwindigkeit ist hier per Schild vorgeschrieben?"</string>
+    <string name="quest_maxspeed_unusualInput_confirmation_description">"Diese Höchstgeschwindigkeit scheint nicht plausibel."</string>
     <string name="quest_maxspeed_answer_noSign">"Es gibt kein Schild"</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation_title">"Sicher, dass kein Schild vorhanden ist?"</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation">"Hast Du am anderen Ende der Straße nachgeschaut? Wenn es keine Schilder entlang der gesamten Straße gibt, die für den hervorgehobenen Abschnitt gelten, gelten die gesetzlichen Geschwindigkeitsbegrenzungen."</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Ja, kein Schild"</string>
+
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Wo befindet sich diese Straße?"</string>
+    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Innerorts gelten andere Geschwindigkeitsbegrenzungen als außerorts."</string>
+    <string name="quest_maxspeed_answer_noSign_urbanOk">"Innerorts"</string>
+    <string name="quest_maxspeed_answer_noSign_ruralOk">"Außerorts"</string>
+    <string name="quest_maxspeed_answer_noSign_info_zone">"Wenn es ein Schild wie dieses an der Kreuzung zur Hauptstraße gibt, wirst Du keine weiteren Schilder innerhalb der Zone finden, da die dort angegebene Höchstgeschwindigkeit für die gesamte Zone gilt."</string>
     <string name="quest_cyclewaySurface_title">"Welche Oberfläche hat dieser Radweg?"</string>
+    <string name="quest_cycleway_title2">"Gibt es hier einen Radweg? Was für einen?"</string>
     <string name="quest_buildingType_title">"Welche Art Gebäude ist das?"</string>
     <string name="quest_serviceType_title">"Welche Art von Erschließungsweg ist das?"</string>
     <string name="quest_streetLanes_title">"Wie viele Fahrspuren hat diese Straße?"</string>
@@ -179,14 +207,8 @@ Um die Karte darzustellen, werden Kartendaten vom &lt;a href=\"https://mapzen.co
     <string name="quest_streetLanes_noLanes_estWidth">"Bitte schätze, wie viele Autos auf dieser Straße nebeneinander passen würden."</string>
     <string name="quest_oneway_title">"Ist dies eine Einbahnstraße?"</string>
     <string name="quest_address_title">"Welche Hausnummer hat dieses Gebäude?"</string>
-
-    <!-- Is this intended not to be translated? -->
     <string name="store_listing_short_description">"OpenStreetMap-Surveyor-App"</string>
-    <string name="store_listing_full_description">"Hilf mit, die OpenStreetMap-Karte zu vervollständigen - mit StreetComplete!
-
-Diese App findet unvollständige und erweiterbare Daten in deiner Nähe und zeigt diese als Aufgaben auf einer Karte an. Jede dieser Aufgaben kann vor Ort durch Beantwortung einer einfachen Frage gelöst werden.
-
-Die von dir eingegebenen Informationen werden dann direkt in deinem Namen zu OpenStreetMap hinzugefügt, ohne einen weiteren Editor benutzen zu müssen."</string>
+    <string name="store_listing_full_description">"Hilf mit, die OpenStreetMap-Karte zu vervollständigen - mit StreetComplete!  Diese App findet unvollständige und erweiterbare Daten in deiner Nähe und zeigt diese als Aufgaben auf einer Karte an. Jede dieser Aufgaben kann vor Ort durch Beantwortung einer einfachen Frage gelöst werden.  Die von dir eingegebenen Informationen werden dann direkt in deinem Namen zu OpenStreetMap hinzugefügt, ohne einen weiteren Editor benutzen zu müssen."</string>
     <string name="quest_name_answer_noName">"Sie hat keinen Namen"</string>
     <string name="quest_name_answer_noName_confirmation_title">"Wirklich kein Name?"</string>
     <string name="quest_name_noName_confirmation_positive">"Ja, kein Name"</string>
@@ -202,103 +224,51 @@ Die von dir eingegebenen Informationen werden dann direkt in deinem Namen zu Ope
     <string name="quest_generic_hasFeature_no">"Nein"</string>
     <string name="quest_busStopShelter_title">"Hat diese Bushaltestelle einen Unterstand?"</string>
     <string name="quest_bikeParkingCapacity_title">"Wie viele Räder können hier abgestellt werden?"</string>
+    <string name="quest_bikeParkingCapacity_hint">"Beachte, dass die meisten Ständer auf beiden Seiten von einem Fahrrad beparkt werden können."</string>
     <string name="quest_address_unusualHousenumber_confirmation_description">"Das sieht für eine Hausnummer sehr ungewöhnlich aus."</string>
-    <string name="quest_sport_title">"Für welchen Sport ist dieses Spielfeld vorgesehen?"</string>
-    <string name="quest_sport_answer_multi">"Für keinen bestimmten"</string>
-    <string name="quest_sport_soccer">"Fußball"</string>
-    <string name="quest_sport_tennis">"Tennis"</string>
-    <string name="quest_sport_baseball">"Baseball"</string>
-    <string name="quest_sport_basketball">"Basketball"</string>
-    <string name="quest_sport_golf">"Golf"</string>
-    <string name="quest_sport_equestrian">"Reitsport"</string>
-    <string name="quest_sport_athletics">"Leichtathletik"</string>
-    <string name="quest_sport_volleyball">"Volleyball"</string>
-    <string name="quest_sport_beachvolleyball">"Beachvolleyball"</string>
-    <string name="quest_sport_american_football">"American Football"</string>
-    <string name="quest_sport_skateboard">"Skateboard"</string>
-    <string name="quest_sport_bowls">"Bowls"</string>
-    <string name="quest_sport_boules">"Boule"</string>
-    <string name="quest_sport_shooting">"Sportschießen"</string>
-    <string name="quest_sport_cricket">"Cricket"</string>
-    <string name="quest_sport_table_tennis">"Tischtennis"</string>
-    <string name="quest_sport_gymnastics">"Gymnastik"</string>
-    <string name="quest_sport_archery">"Bogenschießen"</string>
-    <string name="quest_sport_australian_football">"Australian Football"</string>
-    <string name="quest_sport_badminton">"Badminton"</string>
-    <string name="quest_sport_canadian_football">"Canadian Football"</string>
-    <string name="quest_sport_field_hockey">"Feldhockey"</string>
-    <string name="quest_sport_handball">"Handball"</string>
-    <string name="quest_sport_ice_hockey">"Eishockey"</string>
-    <string name="quest_sport_netball">"Netball"</string>
-    <string name="quest_sport_rugby">"Rugby"</string>
     <string name="quest_select_hint">"Wähle:"</string>
     <string name="quest_sport_manySports_confirmation_description">"Ist dieses Spielfeld speziell für genau diese Sportarten vorgesehen oder als Allzweckfeld für alle möglichen Spiele?"</string>
     <string name="quest_manySports_confirmation_specific">"Speziell für diese"</string>
     <string name="quest_manySports_confirmation_generic">"Allzweck"</string>
     <string name="quest_sport_manySports_confirmation_title">"Viele Sportarten ausgewählt"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_busStopShelter_name_title">"Hat die Haltestelle %s einen Unterstand?"</string>
-    <string name="quest_toiletsFee_title">"Kostet die Benutzung dieser Toiletten etwas?"</string>
+	<string name="quest_toiletsFee_title">"Kostet die Benutzung dieser Toiletten etwas?"</string>
+    <string name="quest_baby_changing_table_toilets_title">"Gibt es einen Wickeltisch in dieser Toilette?"</string>
+    <string name="quest_baby_changing_table_title">"Gibt es einen Wickeltisch in %s?"</string>
+    <string name="quest_way_lit_title">"Ist dieser Wegabschnitt beleuchtet?"</string>
+    <string name="quest_way_lit_named_title">"Ist %s hier beleuchtet?"</string>
+    <string name="quest_way_lit_road_title">"Ist dieser Straßenabschnitt beleuchtet?"</string>
+    <string name="quest_way_lit_automatic">"per Bewegungsmelder"</string>
+    <string name="quest_way_lit_24_7">"sogar Tag und Nacht beleuchtet"</string>
     <string name="quest_tactilePaving_title_bus">"Hat diese Haltestelle ein Bodenleitsystem?"</string>
     <string name="quest_tactilePaving_title_crosswalk">"Hat dieser Überweg ein Bodenleitsystem auf beiden Seiten?"</string>
     <string name="quest_source_dialog_title">"Wurde die Information vor Ort überprüft?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tactilePaving_title_name_bus">"Hat die Haltestelle %s ein Bodenleitsystem?"</string>
     <string name="quest_source_dialog_note">"Nur vor Ort erhobene Informationen sollen ergänzt werden."</string>
+    <string name="quest_tactilePaving_title_name_bus">"Hat die Haltestelle %s eine spezielle Pflasterung für Blinde?"</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Ist der Fahrradstellplatz überdacht (Schutz vor Regen)?"</string>
     <string name="dialog_session_dont_show_again">"Für diese Sitzung nicht mehr fragen"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetSurface_name_title">"Welche Oberfläche hat die Straße %s hier?"</string>
-    <string name="quest_maxspeed_title_short">"Welche Höchstgeschwindigkeit ist hier per Schild vorgeschrieben?"</string>
-    <string name="quest_maxspeed_unusualInput_confirmation_description">"Diese Höchstgeschwindigkeit scheint nicht plausibel."</string>
-    <string name="quest_maxspeed_answer_noSign_confirmation_title">"Sicher, dass kein Schild vorhanden ist?"</string>
-    <string name="quest_maxspeed_answer_noSign_confirmation">"Hast Du am anderen Ende der Straße nachgeschaut?
-Wenn es keine Schilder entlang der gesamten Straße gibt, die für den hervorgehobenen Abschnitt gelten, gelten die gesetzlichen Geschwindigkeitsbegrenzungen."</string>
-    <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Ja, kein Schild"</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Innerorts gelten andere Geschwindigkeitsbegrenzungen als außerorts."</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOk">"Innerorts"</string>
-    <string name="quest_maxspeed_answer_noSign_ruralOk">"Außerorts"</string>
-    <string name="quest_maxspeed_answer_noSign_info_zone">"Wenn es ein Schild wie dieses an der Kreuzung zur Hauptstraße gibt, wirst Du keine weiteren Schilder innerhalb der Zone finden, da die dort angegebene Höchstgeschwindigkeit für die gesamte Zone gilt."</string>
     <string name="quest_sport_softball">"Softball"</string>
     <string name="quest_sport_racquet">"Racquetball"</string>
     <string name="quest_sport_ice_skating">"Schlittschuhlaufen"</string>
     <string name="quest_sport_paddle_tennis">"Padel-Tennis"</string>
     <string name="quest_sport_gaelic_games">"Gälische Sportarten"</string>
     <string name="quest_sport_sepak_takraw">"Sepak Takraw"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_name_title">"Ist %s zugänglich für Rollstühle?"</string>
-    <string name="quest_wheelchairAccess_limited">"Teilweise"</string>
-    <string name="quest_bikeParkingCapacity_hint">"Beachte, dass die meisten Ständer auf beiden Seiten von einem Fahrrad beparkt werden können."</string>
     <string name="quest_sport_roller_skating">"Rollschuhlaufen"</string>
-    <string name="quest_wheelchairAccess_bus_station_title">"Ist diese Busstation rollstuhlgängig?"</string>
-    <string name="quest_wheelchairAccess_subway_entrance_title">"Ist dieser U-Bahn-Eingang rollstuhlgängig?"</string>
-    <string name="quest_wheelchairAccess_railway_station_title">"Ist diese Bahnstation rollstuhlgängig?"</string>
-    <string name="quest_wheelchairAccess_location_title">"Ist dieser Ort rollstuhlgängig?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_bus_station_name_title">"Ist die Busstation %s rollstuhlgängig?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_subway_entrance_name_title">"Ist der U-Bahn-Eingang %s rollstuhlgängig?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_railway_station_name_title">"Ist die Bahnstation %s rollstuhlgängig?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_location_name_title">"Ist der Ort %s rollstuhlgängig?"</string>
-    <string name="quest_wheelchairAccess_limited_description_business">"Teilweise bedeutet, dass es nicht mehr als eine Stufe zu überwinden gilt um das Gebäude zu betreten und die meisten Räume darin rollstuhlgängig sind."</string>
+    <string name="quest_wheelchairAccess_name_title">"Ist %s zugänglich für Rollstühle?"</string>
+    <string name="quest_wheelchairAccess_bus_station_title">"Ist diese Busstation zugänglich für Rollstühle?"</string>
+    <string name="quest_wheelchairAccess_toilets_title">"Ist diese Toilette zugänglich für Rollstühle?"</string>
+    <string name="quest_wheelchairAccess_subway_entrance_title">"Ist dieser U-Bahn-Eingang zugänglich für Rollstühle?"</string>
+    <string name="quest_wheelchairAccess_railway_station_title">"Ist diese Bahnstation zugänglich für Rollstühle?"</string>
+    <string name="quest_wheelchairAccess_location_title">"Ist dieser Ort zugänglich für Rollstühle?"</string>
+    <string name="quest_wheelchairAccess_bus_station_name_title">"Ist die Busstation %s zugänglich für Rollstühle?"</string>
+    <string name="quest_wheelchairAccess_toilets_name_title">"Ist die Toilette %s zugänglich für Rollstühle?"</string>
+    <string name="quest_wheelchairAccess_subway_entrance_name_title">"Ist der U-Bahn-Eingang %s zugänglich für Rollstühle?"</string>
+    <string name="quest_wheelchairAccess_railway_station_name_title">"Ist die Bahnstation %s zugänglich für Rollstühle?"</string>
+    <string name="quest_wheelchairAccess_location_name_title">"Ist der Ort %s zugänglich für Rollstühle?"</string>
+    <string name="quest_wheelchairAccess_limited">"Teilweise"</string>
+    <string name="quest_wheelchairAccess_limited_description_business">"Teilweise bedeutet, dass es nicht mehr als eine Stufe zu überwinden gilt um das Gebäude zu betreten und die meisten Räume darin zugänglich für Rollstühle sind."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"Teilweise bedeutet, dass es nicht mehr als eine Stufe zu überwinden gilt."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Ist der Name %s abgekürzt?"</string>
-    <string name="quest_baby_changing_table_toilets_title">"Gibt es einen Wickeltisch in dieser Toilette?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_baby_changing_table_title">"Gibt es einen Wickeltisch in %s?"</string>
+    <string name="quest_wheelchairAccess_description_toilets">"Ein Symbol wie dieses ist oft zu sehen, wenn es eine spezielle Toilette für Rollstuhlfahrer gibt. Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber sie nicht speziell für Rollstuhlfahrer angepasst ist."</string>
     <string name="quest_recycling_type_title">"Was für eine Recycling-Einrichtung ist dies?"</string>
     <string name="recycling_centre">"Wertstoffhof"</string>
     <string name="overground_recycling_container">"Container"</string>
@@ -310,23 +280,29 @@ Wenn es keine Schilder entlang der gesamten Straße gibt, die für den hervorgeh
     <string name="quest_streetName_cantType_title">"Fehlt das Tastaturlayout?"</string>
     <string name="quest_streetName_cantType_open_settings">"Einstellungen öffnen"</string>
     <string name="quest_streetName_cantType_open_store">"Store öffnen"</string>
-    <string name="quest_streetName_cantType_description">"Wenn Du eine Standardtastatur verwendest, kannst Du wahrscheinlich einfach das Tastaturlayout für die benötigte Sprache in den Tastatureinstellungen aktivieren.
-
-Andernfalls kannst Du eine alternative Tastatur im App Store herunterladen. Beliebte Tastaturen, die mehrere Sprachen unterstützen, sind Google Gboard, SwiftKey Keyboard und Multiling O Keyboard."</string>
+    <string name="quest_streetName_cantType_description">"Wenn Du eine Standardtastatur verwendest, kannst Du wahrscheinlich einfach das Tastaturlayout für die benötigte Sprache in den Tastatureinstellungen aktivieren.  Andernfalls kannst Du eine alternative Tastatur im App Store herunterladen. Beliebte Tastaturen, die mehrere Sprachen unterstützen, sind Google Gboard, SwiftKey Keyboard und Multiling O Keyboard."</string>
     <string name="quest_streetName_menuItem_nolanguage">"(unspezifiziert)"</string>
     <string name="quest_fireHydrant_type_title">"Was für eine Art Hydrant ist hier?"</string>
     <string name="quest_fireHydrant_type_pillar">"Überflur"</string>
     <string name="quest_fireHydrant_type_underground">"Unterflur"</string>
     <string name="quest_fireHydrant_type_wall">"Wandanschluss"</string>
     <string name="quest_fireHydrant_type_pond">"Drucklos"</string>
-    <string name="credits_contributors">"Siehe die &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;komplette Liste auf GitHub&lt;/a&gt;."</string>
-    <string name="credits_translations">"Für eine vollständige Liste, siehe das &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;Projekt auf POEditor&lt;/a&gt;."</string>
+    <string name="credits_contributors">"Siehe die <a href="https://github.com/westnordost/StreetComplete/graphs/contributors">komplette Liste auf GitHub</a>."</string>
+    <string name="credits_translations">"Für eine vollständige Liste, siehe das <a href="https://poeditor.com/projects/view?id=97843">Projekt auf POEditor</a>."</string>
     <string name="credits_translations_title">"Übersetzungen"</string>
     <string name="credits_contributors_title">"Programmierbeiträge"</string>
     <string name="credits_author_title">"Hauptentwickler"</string>
     <string name="credits_and_more">"und weitere..."</string>
     <string name="quest_maxspeed_answer_living_street">"Es ist eine Spielstraße"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"Hier ist also so ein Schild wie dieses?"</string>
+    <string name="quest_crossing_type_title">"Welche Art von Kreuzung ist das?"</string>
+    <string name="quest_crossing_type_signals">"Kreuzung mit Ampeln"</string>
+    <string name="quest_crossing_type_uncontrolled">"Unkontrollierter Übergang"</string>
+    <string name="quest_crossing_type_unmarked">"Kreuzung ohne Markierungen"</string>
+    <string name="compass_north_one_letter">"N"</string>
+    <string name="action_undo">"Rückgängig machen"</string>
+    <string name="no_changes_to_undo">"Nichts rückgängig zu machen"</string>
+    <string name="undo_confirm_title">"Die folgende Antwort rückgängig machen?"</string>
     <string name="quest_orchard_produce_title">"Was wird hier angebaut?"</string>
     <string name="produce_grapes">"Trauben"</string>
     <string name="produce_agaves">"Agaven"</string>
@@ -342,13 +318,9 @@ Andernfalls kannst Du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="produce_chestnuts">"Kastanien"</string>
     <string name="produce_coconuts">"Kokosnuss"</string>
     <string name="produce_coffee">"Kaffee"</string>
-
-    <!-- Nein, Preiselbeeren sind doch keine Cranberren: Nach Wikipediart-Artikel bitte "Großfrüchtige Moosbeere", aber sonst werden sie im Deutschen IMHO auch einfach Cranberries genannt. -->
     <string name="produce_cranberries">"Cranberries"</string>
     <string name="produce_dates">"Datteln"</string>
     <string name="produce_figs">"Feigen"</string>
-
-    <!-- Nur umgangssprachlich korreckt. Pampelmuse (Citrus maxima) != Grapefruit (Citrus paradisi) -->
     <string name="produce_grapefruits">"Grapefruit"</string>
     <string name="produce_guavas">"Guaven"</string>
     <string name="produce_hazelnuts">"Haselnüsse"</string>
@@ -357,8 +329,6 @@ Andernfalls kannst Du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="produce_kiwis">"Kiwis"</string>
     <string name="produce_kola_nuts">"Kolanüsse"</string>
     <string name="produce_lemons">"Zitronen"</string>
-
-    <!-- Falsch, "Limonen" sind Zitronen: https://de.wiktionary.org/wiki/Limone -->
     <string name="produce_limes">"Limetten"</string>
     <string name="produce_mangos">"Mangos"</string>
     <string name="produce_mate">"Mate"</string>
@@ -382,26 +352,6 @@ Andernfalls kannst Du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="produce_vanilla">"Vanille"</string>
     <string name="produce_walnuts">"Walnüsse"</string>
     <string name="produce_sisal">"Sisal"</string>
-    <string name="quest_way_lit_title">"Ist dieser Wegabschnitt beleuchtet?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_way_lit_named_title">"Ist %s hier beleuchtet?"</string>
-    <string name="quest_way_lit_road_title">"Ist dieser Straßenabschnitt beleuchtet?"</string>
-    <string name="quest_way_lit_named_road_title">"Ist „%s\" hier beleuchtet?"</string>
-    <string name="quest_way_lit_automatic">"per Bewegungsmelder"</string>
-    <string name="quest_way_lit_24_7">"sogar Tag und Nacht beleuchtet"</string>
-    <string name="pref_title_authorized_username_summary">"Autorisierter Account: %s"</string>
-    <string name="cannot_find_bbox_or_reduce_tilt">"Kann hier nicht scannen. Zoome weiter herein oder kippe die Karte weniger"</string>
-    <string name="quest_crossing_type_title">"Welche Art von Kreuzung ist das?"</string>
-    <string name="quest_crossing_type_signals">"Kreuzung mit Ampeln"</string>
-    <string name="quest_crossing_type_uncontrolled">"Unkontrollierter Übergang"</string>
-    <string name="quest_crossing_type_unmarked">"Kreuzung ohne Markierungen"</string>
-
-    <!-- Shouldn't this be translatable="false"? -->
-    <string name="compass_north_one_letter">"N"</string>
-    <string name="action_undo">"Rückgängig machen"</string>
-    <string name="no_changes_to_undo">"Nichts rückgängig zu machen"</string>
-    <string name="undo_confirm_title">"Die folgende Antwort rückgängig machen?"</string>
     <string name="produce_mangosteen">"Mangostane"</string>
     <string name="produce_tomatoes">"Tomaten"</string>
     <string name="produce_areca_nuts">"Betelnüsse"</string>
@@ -412,6 +362,12 @@ Andernfalls kannst Du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="quest_parkingType_surface">"Ebenerdig"</string>
     <string name="quest_parkingType_underground">"Tiefgarage"</string>
     <string name="quest_parkingType_multiStorage">"Parkhaus"</string>
+    <string name="quest_dietType_vegetarian_name_title">"Hat %s vegetarisches Essen auf der Karte?"</string>
+    <string name="quest_dietType_vegan_name_title">"Hat %s veganes Essen auf der Karte?"</string>
+    <string name="quest_hasFeature_only">"Ausschließlich"</string>
+    <string name="quest_dietType_explanation_vegan">"Veganes Essen enthält keine Tierprodukte (kein Fleisch, keine Milchprodukte, keine Eier, …)."</string>
+    <string name="quest_dietType_explanation_vegetarian">"Vegetarisches Essen enthält kein Fleisch."</string>
+    <string name="quest_dietType_explanation">"Nur mit \"Ja\" antworten, wenn es hier ordentliche Alternativen für diese Ernährung gibt, Vorspeisen usw. zählen nicht."</string>
     <string name="quest_toiletAvailability_name_title">"Hat %s eine Toilette?"</string>
     <string name="quest_powerPolesMaterial_title">"Aus welchem Material ist der Strommast?"</string>
     <string name="quest_powerPolesMaterial_wood">"Holz"</string>
@@ -422,23 +378,23 @@ Andernfalls kannst Du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="quest_address_house_name_label">"Hausname:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"Dachgeschosse"</string>
     <string name="quest_buildingLevels_levelsLabel2">"Stockwerke"</string>
-    <string name="pref_title_authorized_summary">"Autorisiert"</string>
+    <string name="quest_cycleway_value_track">"Fahrradweg"</string>
+    <string name="quest_cycleway_value_lane">"Radfahrstreifen"</string>
+    <string name="quest_cycleway_value_lane_soft">"Radfahrstreifen (gestrichelte Linie)"</string>
+    <string name="quest_cycleway_value_none">"kein"</string>
+    <string name="quest_cycleway_value_shared">"explizit gemeinsamer Fahrstreifen mit anderen Verkehrsteilnehmern"</string>
     <string name="quest_buildingLevels_answer_multipleLevels">"Je nach Gebäudeteil verschieden"</string>
     <string name="quest_buildingLevels_answer_description">"In diesem Fall einfach die Werte für den höchsten Gebäudeteil eingeben."</string>
     <string name="unglue_hint">"Antippen, um Ansicht von Position zu trennen"</string>
-    <string name="pref_title_not_authorized_summary2">"Logge dich zur Autorisierung im Webbrowser ein"</string>
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Sind die Fahrbahnen dieser Straße hier baulich getrennt (z.B. durch eine Leitplanke)? Es gelten unterschiedliche Geschwindigkeitsbegrenzungen, je nachdem ob der Mittelstreifen überfahrbar ist oder nicht."</string>
-    <string name="about_category_feedback">"Feedback"</string>
-    <string name="quest_leave_new_note_photo">"Foto anhängen"</string>
-    <string name="quest_leave_new_note_photo_delete_title">"Dieses Foto löschen?"</string>
-    <string name="privacy_html_image_upload">"&lt;p&gt;Fotos die an Notizen angehängt werden, werden hochgeladen auf &lt;a href=\"https://lut.im\"&gt;lut.im&lt;/a&gt;, ein anonymer Service ohne Tracking.&lt;/p&gt;"</string>
-    <string name="quest_cycleway_value_track">"Fahrradweg"</string>
-    <string name="quest_cycleway_value_lane">"Radfahrstreifen"</string>
-    <string name="quest_cycleway_value_none">"kein"</string>
-    <string name="quest_cycleway_value_shared">"explizit gemeinsamer Fahrstreifen mit anderen Verkehrsteilnehmern"</string>
     <string name="quest_cycleway_value_bus_lane">"auf der Busspur"</string>
+    <string name="about_category_feedback">"Feedback"</string>
     <string name="quest_cycleway_value_sidewalk">"explizite Mitbenutzung des Bürgersteigs"</string>
     <string name="quest_leave_new_note_create_image_error">"Datei für Foto kann nicht erstellt werden"</string>
+    <string name="quest_carWashType_title">"Was für eine Autowaschanlage ist das?"</string>
+    <string name="quest_carWashType_automated">"Automatisiert"</string>
+    <string name="quest_carWashType_selfService">"Selbstbedienung"</string>
+    <string name="quest_carWashType_service">"keine Selbstbedienung"</string>
     <string name="quest_cycleway_value_lane_dual">"Radfahrstreifen, beide Richtungen"</string>
     <string name="quest_cycleway_value_track_dual">"Fahrradweg, beide Richtungen"</string>
     <string name="quest_cycleway_value_sidewalk_allowed">"keiner, aber Fahrradfahrer dürfen auf dem Bürgersteig fahren"</string>
@@ -450,35 +406,14 @@ Andernfalls kannst Du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="reorder_quest_priority_hint">"Halte und bewege eine Aufgabe um ihre Download-Priorität und Anzeige auf der Karte zu verändern."</string>
     <string name="undo_confirm_positive">"Rückgängig machen"</string>
     <string name="undo_confirm_negative">"Abbrechen"</string>
-    <string name="quest_dietType_vegetarian_name_title">"Hat %s vegetarisches Essen auf der Karte?"</string>
-    <string name="quest_dietType_vegan_name_title">"Hat %s veganes Essen auf der Karte?"</string>
-    <string name="quest_hasFeature_only">"Ausschließlich"</string>
-    <string name="quest_dietType_explanation_vegan">"Veganes Essen enthält keine Tierprodukte (kein Fleisch, keine Milchprodukte, keine Eier, …)."</string>
-    <string name="quest_dietType_explanation_vegetarian">"Vegetarisches Essen enthält kein Fleisch."</string>
-    <string name="quest_dietType_explanation">"Nur mit \"Ja\" antworten, wenn es hier ordentliche Alternativen für diese Ernährung gibt, Vorspeisen usw. zählen nicht."</string>
-    <string name="quest_carWashType_title">"Was für eine Autowaschanlage ist das?"</string>
-    <string name="quest_carWashType_automated">"Automatisiert"</string>
-    <string name="quest_carWashType_selfService">"Selbstbedienung"</string>
-    <string name="quest_carWashType_service">"keine Selbstbedienung"</string>
     <string name="enable_quest_confirmation_title">"Diesen Aufgabentyp aktivieren?"</string>
     <string name="default_disabled_msg_go_inside">"Dieser Aufgabentyp ist standardmäßig deaktiviert, weil du hier wahrscheinlich den Ort betreten musst, um die von der Aufgabe gestellte Frage zu beantworten."</string>
     <string name="quest_housenumber_conscription_number">"Konskriptionsnummer"</string>
     <string name="quest_housenumber_street_number_optional">"Orientierungsnummer (optional)"</string>
     <string name="quest_housenumber_conscription_number_required">"Eine Konskriptionsnummer muss angegeben werden"</string>
+    <string name="quest_bridge_structure_title">"Welche Konstruktionsform hat diese Brücke?"</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">"Fahrradweg auch auf anderer Seite"</string>
     <string name="need_specify_both_sides">"Beide Seiten müssen angegeben werden"</string>
-    <string name="quest_openingHours_emptyAnswer">"Du musst schreiben, was auf dem Schild steht. Wenn es kein Schild gibt, solltest Du drinnen nach den Öffnungszeiten fragen."</string>
-    <string name="quest_cycleway_value_none_but_no_oneway">"kein, aber Fahrradfahrer dürfen die Straße in beide Richtungen fahren"</string>
-    <string name="quest_streetName_answer_noName_question">"Warum hat sie keinen Namen?"</string>
-    <string name="quest_streetName_answer_noProperStreet_service2">"Ist bloß soetwas wie eine Zufahrt"</string>
-    <string name="quest_streetName_answer_noProperStreet_track2">"Ist nur ein Feld- oder Waldweg"</string>
-    <string name="quest_streetName_answer_noName_noname">"Nichts davon, sie hat ganz einfach keinen Namen"</string>
-    <string name="quest_wheelchairAccess_toilets_title">"Ist diese Toilette rollstuhlgängig?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_toilets_name_title">"Ist die Toilette %s rollstuhlgängig?"</string>
-    <string name="quest_wheelchairAccess_description_toilets">"Ein Symbol wie dieses ist oft zu sehen, wenn es eine spezielle Toilette für Rollstuhlfahrer gibt.
-Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber sie nicht speziell für Rollstuhlfahrer angepasst ist."</string>
     <string name="map_btn_create_note">"Neue Notiz erstellen"</string>
     <string name="create_new_note_unprecise">"Zoome weiter herein um eine Notiz zu erstellen"</string>
     <string name="create_new_note_description">"Erstelle hier eine Notiz, um anderen Mappern Bescheid zu geben, dass es hier ein Problem gibt. Die Position der Notiz kann durch Bewegen der Karte angepasst werden:"</string>
@@ -486,26 +421,20 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="pref_title_quests_invalidation_summary">"Nützlich wenn Du denkst dass einige Aufgaben veraltet sind"</string>
     <string name="invalidate_confirmation">"Ungültig machen"</string>
     <string name="invalidation_dialog_message">"Wenn der Cache ungültig gemacht wird, werden die Aufgaben das nächste mal wenn sie jeweils heruntergeladen werden aktualisiert. Der Aufgabencache wird automatisch nach einer Woche ungültig gemacht, und sofort, falls sich herausstellt, dass eine Aufgabe die Du beantwortet hast, schon von jemand anderem beantwortet wurde."</string>
+    <string name="quest_openingHours_emptyAnswer">"Du musst schreiben, was auf dem Schild steht. Wenn es kein Schild gibt, solltest Du drinnen nach den Öffnungszeiten fragen."</string>
+    <string name="quest_cycleway_value_none_but_no_oneway">"kein, aber Fahrradfahrer dürfen die Straße in beide Richtungen fahren"</string>
     <string name="quest_generic_looks_like_this">"Sieht normalerweise so aus:"</string>
     <string name="quest_surface_value_metal">"Metall"</string>
     <string name="quest_surface_generic_surface_confirmation">"Bist Du sicher dass Du die Oberfläche nicht genauer bestimmen kannst?"</string>
-    <string name="quest_cycleway_title2">"Gibt es hier einen Radweg? Was für einen?"</string>
-    <string name="quest_bridge_structure_title">"Welche Konstruktionsform hat diese Brücke?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_internet_access_name_title">"Was für einen Internetanschluss bietet %s an?"</string>
     <string name="quest_internet_access_wlan">"WLAN"</string>
     <string name="quest_internet_access_wired">"per Kabel (LAN)"</string>
     <string name="quest_internet_access_terminal">"einen Computer mit Internetanschluss"</string>
     <string name="quest_internet_access_no">"keinen Internetanschluss"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_busStopShelter_tram_name_title">"Hat die Straßenbahnhaltestelle %s einen Unterstand?"</string>
     <string name="quest_busStopShelter_tram_title">"Hat diese Straßenbahnhaltestelle einen Unterstand?"</string>
     <string name="quest_bench_backrest_title">"Hat diese Bank eine Rückenlehne?"</string>
     <string name="quest_bench_answer_picnic_table">"Das ist ein Picknicktisch"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_for_place_of_worship_title">"Welcher Religion gehört %s an?"</string>
     <string name="quest_religion_christian">"Christentum"</string>
     <string name="quest_religion_muslim">"Islam"</string>
@@ -522,7 +451,6 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_religion_chinese_folk">"Chinesischer Volksglaube"</string>
     <string name="quest_religion_for_wayside_shrine_title">"Welcher Religion gehört dieser Schrein an?"</string>
     <string name="quest_parking_fee_title">"Fallen hier Parkgebühren an?"</string>
-    <string name="quest_cycleway_value_lane_soft">"Schutzstreifen"</string>
     <string name="quest_surface_value_unhewn_cobblestone">"Steinpflaster aus unbehauenem Stein"</string>
     <string name="quest_parking_access_title">"Ist es eingeschränkt, wer hier parken darf?"</string>
     <string name="quest_parking_access_private">"Es ist ein Privatparkplatz"</string>
@@ -530,12 +458,30 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_parking_access_customers">"Es ist ein Kundenparkplatz"</string>
     <string name="quest_streetName_pedestrian_title">"Wie heißt diese Fußgängerzone"</string>
     <string name="quest_streetSurface_square_title">"Welche Oberfläche hat dieser Platz?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetSurface_square_name_title">"Welche Oberfläche hat der Platz %s hier?"</string>
     <string name="quest_fee_answer_hours">"Abhängig von Tag und Uhrzeit"</string>
     <string name="quest_fee_add_times">"➕ Zeiten"</string>
     <string name="quest_fee_only_at_hours">"Ja, aber nur…"</string>
     <string name="quest_fee_not_at_hours">"Ja, aber nicht…"</string>
     <string name="quest_fee_hours_title">"zu den folgenden Zeiten:"</string>
+    <string name="quest_housenumber_multiple_numbers">"Hat mehrere Hausnummern"</string>
+    <string name="quest_housenumber_multiple_numbers_description">"Du kannst Hausnummern einfach kommasepariert oder als Spanne angeben. Zum Beispiel 1,3 oder 2-6."</string>
+    <string name="quest_bicycle_parking_type_stand">"Bügel"</string>
+    <string name="quest_bicycle_parking_type_wheelbender">"Felgenkiller"</string>
+    <string name="quest_bicycle_parking_type_shed">"Schuppen"</string>
+    <string name="quest_bicycle_parking_type_locker">"Schließfächer"</string>
+    <string name="quest_bicycle_parking_type_building">"Gebäude"</string>
+    <string name="quest_bicycle_parking_type_title">"Was für eine Art von Fahrradabstellplatz ist das hier?"</string>
+    <string name="quest_cycleway_value_suggestion_lane">"Mehrzweckstreifen"</string>
+    <string name="quest_postboxCollectionTimes_title">"Wann wird dieser Postkasten geleert?"</string>
+    <string name="quest_collectionTimes_add_times">"➕ Leerungszeit"</string>
+    <string name="quest_collectionTimes_answer_no_times_specified">"Keine Zeiten angegeben"</string>
+    <string name="quest_construction_road_title">"Ist diese Straße fertig gebaut?"</string>
+    <string name="quest_construction_cycleway_title">"Ist dieser Fahrradweg fertig gebaut?"</string>
+    <string name="quest_construction_footway_title">"Ist dieser Fußgängerweg fertig gebaut?"</string>
+    <string name="quest_construction_generic_title">"Ist dieser Weg fertig gebaut?"</string>
+    <string name="quest_construction_building_title">"Ist dieses Gebäude fertig gebaut?"</string>
+    <string name="questList_disabled_in_country">Wird in %s nicht angezeigt.</string>
+    <string name="quest_toiletAvailability_rest_area_title">Hat dieser Rastplatz eine Toilette?</string>
+    <string name="quest_maxspeed_name_title">Welches Schild zur Geschwindigkeitsbegrenzung gilt für %s?</string>
 </resources>
