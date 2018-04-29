@@ -33,13 +33,13 @@ You can find a list of [frequently asked questions in the wiki](https://wiki.ope
 
 ## Contributing
 
-This is an active open-source project, so you **can get involved in it** easily!
+This is an active open-source project, so you can get involved in it easily!
 You can do so **without any programming or OpenStreetMap knowledge**! Just choose a task that you like.
 
 Here are a few things you can do:
-* 🐛 [Test the app and report issues!](CONTRIBUTING.md#testing-and-reporting-issues)
-* 📃 [Translate the app in your language!](CONTRIBUTING.md#translating-the-app)
-* ❓ [Help users, who left notes in StreetComplete!](CONTRIBUTING.md#helping-mappers-by-solving-their-notes)
+* 🐛 [Test and report issues](CONTRIBUTING.md#testing-and-reporting-issues)
+* 📃 [Translate the app into your language](CONTRIBUTING.md#translating-the-app)
+* 🕵️ [Solve notes left by StreetComplete users](CONTRIBUTING.md#solving-notes)
 * 💡 [Suggest new quests](CONTRIBUTING.md#suggesting-new-quests), or, even better, [implement them](CONTRIBUTING.md#developing-new-quests).
 * ➕ [and more…](CONTRIBUTING.md)
 

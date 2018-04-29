@@ -4,7 +4,7 @@ Even if you do not find something to do in this list, using StreetComplete, test
 
 Content:
 * [Translating the app](#translating-the-app)
-* [Helping mappers by solving their notes](#helping-mappers-by-solving-their-notes)
+* [Solving notes](#solving-notes)
 * [Testing and reporting issues](#testing-and-reporting-issues)
    * [Issues of dependencies](#issues-of-dependencies)
    * [Suggesting new quests](#suggesting-new-quests)
@@ -21,24 +21,23 @@ Follow [**this link** to improve the translations](https://poeditor.com/join/pro
 
 [![POEditor](https://poeditor.com/public/images/logo_small.png)](https://poeditor.com/join/project/IE4GC127Ki)
 
-Before each big release, translations are pulled in from POEditor.
+Before each release, translations are pulled in from POEditor.
 
-## Helping mappers by solving their notes
+## Solving notes
 
-As you probably noticed, you can choose "Cannot answer" in StreetComplete and thus leave a note on OpenStreetMap.
+As you probably noticed, you can choose *"Cannot answer"* in StreetComplete and thus leave a note on OpenStreetMap.
 
-You can help with [processing OSM notes opened by StreetComplete users](https://ent8r.github.io/NotesReview/?query=StreetComplete&limit=100&start=true). (You can also do it without that special tool, but it likely supports you.) When doing so, you can also find systematic problems or misunderstandings of user's when solving StreetComplete quests.
+You can help with [processing OSM notes opened by StreetComplete users](https://ent8r.github.io/NotesReview/?query=StreetComplete&limit=100&start=true). While processing and solving notes, it may become apparent that there is a systematic problem in that users misunderstand the UI or the wording when solving StreetComplete quests.
 
 If you find such user experience problems, please report them back in the [issue tracker of StreetComplete](https://github.com/westnordost/StreetComplete/issues). Do not forget to add links to examples, e.g. the notes StreetComplete mappers submitted.
 
 ## Testing and reporting issues
 
-If you experience problems, crashes or a quest is not clear to you, feel free to open an issue for that. Remember to open one issue _for one matter_, so do not open one issue "I have found several problems", but one for each problem.
+If you experience problems, crashes or a quest is not clear to you, feel free to open an issue for that. Remember to open one issue _for one matter_, so do not open one issue "I have found several problems", but one for each problem. Before you open an issue, please consider: 
 
 1. If you have questions, remember to [read the FAQ](https://wiki.openstreetmap.org/wiki/StreetComplete/FAQ) first.
 2. Remember to report map style issues [in the appropriate repository](#issues-of-dependencies).
 3. Look [whether your issue has already been reported](https://github.com/westnordost/StreetComplete/issues).
-4. Now you can open a new issue. Give it a meaningful title and describe the problem. Do mention the StreetComplete and Android version, if it is a technical bug.
 
 ### Issues of dependencies
 
@@ -52,19 +51,9 @@ The full list of dependencies and other StreetComplete-related projects is liste
 
 ### Suggesting new quests
 
-We appreciate all quest ideas you and others have, but some ideas cannot be added into the app due to various design decisions and requirements. This is required in order to make a great app for all users of StreetComplete, whose contributions actually help the OpenStreetMap project. A quest which nobody can solve and where users potentially choose wrong options adding wrong data to OpenStreetMap hurts not only OSM, but also this app.
+Not all ideas for quests are actually eligible to be included in this app. So, before you suggest a new quest, it is very important that you read the [Quest Guidelines for StreetComplete](https://github.com/westnordost/StreetComplete/wiki/Adding-new-Quests-to-StreetComplete).
 
-What you need to do:
-
-1. Search whether the quest you want to suggest is [already implemented in StreetComplete](https://wiki.openstreetmap.org/wiki/StreetComplete/Quests) or [already suggested in the issue tracker](https://github.com/westnordost/StreetComplete/issues).
-2. Please read the full guide on what requirements you need to consider to make the quest a great thing: [Adding new Quests to StreetComplete](https://github.com/westnordost/StreetComplete/wiki/Adding-new-Quests-to-StreetComplete).
-3. Open a new issue and fill out the issue template. Explain why your quest meets the criteria you need to check, so other users can follow the example. Keep everything short (i.e. you do not have to write a wall of text there), but precise!
-4. Wait for input of others, even if you could implement it right away. It is always suggested to _first_ suggest a quest and implement it only if it has been accepted there.
-
-➡️ If you can code, see also how to [develop your own quest](#developing-new-quests).
-
-A quest is officially marked as accepted when it get's [the "new quest" tag](https://github.com/westnordost/StreetComplete/labels/new%20quest).
-<!-- TODO: introduce a better way/new tag here? ref https://github.com/westnordost/StreetComplete/issues/1006 -->
+If you can code, see also how to [develop your own quest](#developing-new-quests).
 
 ## Improving documentation
 
@@ -78,15 +67,11 @@ You can also help to keep the OpenStreetMap wiki **up-to-date** for StreetComple
 
 If you would like to help and are able to contribute code, you are most welcome.
 
-There are many reasonable feature requests and ideas for new question types in the issue tracker which you could also engage yourself with. If you have own ideas how to improve this app and want to make sure that the Pull Request will be merged, it is strongly suggested to **open an issue first** to discuss the feature.
+There are many reasonable feature requests and ideas for new question types in the issue tracker which you could also engage yourself with. If you have own ideas how to improve this app and want to make sure that the Pull Request will be merged, it is strongly suggested to **open an issue first** to discuss the feature, especially if you aim to add a new quest, [see below](#developing-new-quests).
 
-Note StreetComplete also uses [some dependencies](#issues-of-dependencies), where contributions are likely also accepted and help StreetComplete, too.
+Note that StreetComplete also uses [some dependencies](#issues-of-dependencies), where contributions are likely also accepted and help StreetComplete, too.
 
 If you need to find things where help is appreciated [have a look at the issues tagged with "help wanted"](https://github.com/westnordost/StreetComplete/labels/help%20wanted).
-
-To start developing you can just download [Android Studio](https://developer.android.com/studio/index.html) and create your quest. It should automatically handle indentation through the [editorconfig file](.editorconfig). If you use another IDE, you may need to [install a plugin](http://editorconfig.org/#download).
-
-<!-- TODO @westnordost: Add coding guidelines -->
 
 ### Developing new quests
 
@@ -95,9 +80,7 @@ However, we strongly suggest to [**open an issue** discussing the quest](#sugges
 
 In case you **don't have an idea of a quest?** Look [at the existing issues](https://github.com/westnordost/StreetComplete/issues?q=is%3Aissue+is%3Aopen+label%3A%22new+quest%22+sort%3Areactions-%2B1-desc). Sorted by 👍 reactions you can also see which are the most requested quests.
 
-Always remember to pay attention to [the new quest guide](https://github.com/westnordost/StreetComplete/wiki/Adding-new-Quests-to-StreetComplete) of StreetComplete! It also has tips for implementing a quest.
-
-You can look at **other quests** to see how they are implemented.
+Always remember to pay attention to [the quest guidelines](https://github.com/westnordost/StreetComplete/wiki/Adding-new-Quests-to-StreetComplete) of StreetComplete! It also has tips for implementing a quest.
 
 ### StreetComplete-related projects
 
