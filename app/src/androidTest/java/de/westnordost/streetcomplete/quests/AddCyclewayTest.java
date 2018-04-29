@@ -11,7 +11,7 @@ public class AddCyclewayTest extends AOsmElementQuestTypeTest
 {
 	public void testCyclewayLeftAndRightDontHaveToBeSpecified1()
 	{
-		bundle.putString(AddCyclewayForm.CYCLEWAY_LEFT, Cycleway.LANE.name());
+		bundle.putString(AddCyclewayForm.CYCLEWAY_LEFT, Cycleway.EXCLUSIVE_LANE.name());
 		StringMapChangesBuilder cb = new StringMapChangesBuilder(tags);
 		createQuestType().applyAnswerTo(bundle, cb);
 		// success if no exception thrown
@@ -19,7 +19,7 @@ public class AddCyclewayTest extends AOsmElementQuestTypeTest
 
 	public void testCyclewayLeftAndRightDontHaveToBeSpecified2()
 	{
-		bundle.putString(AddCyclewayForm.CYCLEWAY_RIGHT, Cycleway.LANE.name());
+		bundle.putString(AddCyclewayForm.CYCLEWAY_RIGHT, Cycleway.EXCLUSIVE_LANE.name());
 		StringMapChangesBuilder cb = new StringMapChangesBuilder(tags);
 		createQuestType().applyAnswerTo(bundle, cb);
 		// success if no exception thrown
@@ -27,7 +27,23 @@ public class AddCyclewayTest extends AOsmElementQuestTypeTest
 
 	public void testCyclewayLane()
 	{
-		putBothSides(Cycleway.LANE);
+		putBothSides(Cycleway.EXCLUSIVE_LANE);
+		verify(
+			new StringMapEntryAdd("cycleway:both", "lane"),
+			new StringMapEntryAdd("cycleway:both:lane", "exclusive"));
+	}
+
+	public void testCyclewayAdvisoryLane()
+	{
+		putBothSides(Cycleway.ADVISORY_LANE);
+		verify(
+			new StringMapEntryAdd("cycleway:both", "lane"),
+			new StringMapEntryAdd("cycleway:both:lane", "advisory"));
+	}
+
+	public void testCyclewayUnspecifiedLane()
+	{
+		putBothSides(Cycleway.LANE_UNSPECIFIED);
 		verify(new StringMapEntryAdd("cycleway:both", "lane"));
 	}
 
@@ -43,10 +59,22 @@ public class AddCyclewayTest extends AOsmElementQuestTypeTest
 		verify(new StringMapEntryAdd("cycleway:both", "share_busway"));
 	}
 
-	public void testCyclewaySharedLane()
+	public void testCyclewayPictogramLane()
 	{
-		putBothSides(Cycleway.SHARED);
-		verify(new StringMapEntryAdd("cycleway:both", "shared_lane"));
+		putBothSides(Cycleway.PICTOGRAMS);
+		verify(
+			new StringMapEntryAdd("cycleway:both", "shared_lane"),
+			new StringMapEntryAdd("cycleway:both:lane", "pictogram")
+		);
+	}
+
+	public void testCyclewaySuggestionLane()
+	{
+		putBothSides(Cycleway.SUGGESTION_LANE);
+		verify(
+			new StringMapEntryAdd("cycleway:both", "shared_lane"),
+			new StringMapEntryAdd("cycleway:both:lane", "advisory")
+		);
 	}
 
 	public void testCyclewayNone()
@@ -57,7 +85,7 @@ public class AddCyclewayTest extends AOsmElementQuestTypeTest
 
 	public void testCyclewayOnSidewalk()
 	{
-		putBothSides(Cycleway.SIDEWALK);
+		putBothSides(Cycleway.SIDEWALK_EXPLICIT);
 		verify(
 				new StringMapEntryAdd("cycleway:both", "track"),
 				new StringMapEntryAdd("sidewalk", "both"),
@@ -77,7 +105,7 @@ public class AddCyclewayTest extends AOsmElementQuestTypeTest
 
 	public void testCyclewaySidewalkAny()
 	{
-		bundle.putString(AddCyclewayForm.CYCLEWAY_RIGHT, Cycleway.SIDEWALK.name());
+		bundle.putString(AddCyclewayForm.CYCLEWAY_RIGHT, Cycleway.SIDEWALK_EXPLICIT.name());
 		bundle.putString(AddCyclewayForm.CYCLEWAY_LEFT, Cycleway.SIDEWALK_OK.name());
 		verify(
 				new StringMapEntryAdd("sidewalk", "both")
@@ -86,16 +114,16 @@ public class AddCyclewayTest extends AOsmElementQuestTypeTest
 
 	public void testCyclewayDualTrack()
 	{
-		putBothSides(Cycleway.TRACK_DUAL);
+		putBothSides(Cycleway.DUAL_TRACK);
 		verify(
-				new StringMapEntryAdd("cycleway:both", "track"),
-				new StringMapEntryAdd("cycleway:both:oneway", "no")
+			new StringMapEntryAdd("cycleway:both", "track"),
+			new StringMapEntryAdd("cycleway:both:oneway", "no")
 		);
 	}
 
 	public void testCyclewayDualLane()
 	{
-		putBothSides(Cycleway.LANE_DUAL);
+		putBothSides(Cycleway.DUAL_LANE);
 		verify(
 				new StringMapEntryAdd("cycleway:both", "lane"),
 				new StringMapEntryAdd("cycleway:both:oneway", "no")
@@ -104,21 +132,23 @@ public class AddCyclewayTest extends AOsmElementQuestTypeTest
 
 	public void testLeftAndRightAreDifferent()
 	{
-		bundle.putString(AddCyclewayForm.CYCLEWAY_RIGHT, Cycleway.LANE.name());
+		bundle.putString(AddCyclewayForm.CYCLEWAY_RIGHT, Cycleway.EXCLUSIVE_LANE.name());
 		bundle.putString(AddCyclewayForm.CYCLEWAY_LEFT, Cycleway.TRACK.name());
 		verify(
 				new StringMapEntryAdd("cycleway:right", "lane"),
+				new StringMapEntryAdd("cycleway:right:lane","exclusive"),
 				new StringMapEntryAdd("cycleway:left", "track")
 		);
 	}
 
 	public void testCyclewayMakesStreetNotOnewayForBicycles()
 	{
-		putBothSides(Cycleway.LANE);
+		putBothSides(Cycleway.EXCLUSIVE_LANE);
 		bundle.putBoolean(AddCyclewayForm.IS_ONEWAY_NOT_FOR_CYCLISTS, true);
 		verify(
 				new StringMapEntryAdd("cycleway:both", "lane"),
-				new StringMapEntryAdd("oneway:bicycle", "no")
+				new StringMapEntryAdd("oneway:bicycle", "no"),
+				new StringMapEntryAdd("cycleway:both:lane", "exclusive")
 		);
 	}
 
@@ -126,12 +156,14 @@ public class AddCyclewayTest extends AOsmElementQuestTypeTest
 	{
 		// this would be a street that has lanes on both sides but is oneway=yes (in countries with
 		// right hand traffic)
-		putBothSides(Cycleway.LANE);
+		putBothSides(Cycleway.EXCLUSIVE_LANE);
 		bundle.putInt(AddCyclewayForm.CYCLEWAY_LEFT_DIR, -1);
 		verify(
 				new StringMapEntryAdd("cycleway:left", "lane"),
 				new StringMapEntryAdd("cycleway:left:oneway", "-1"),
-				new StringMapEntryAdd("cycleway:right", "lane")
+				new StringMapEntryAdd("cycleway:right", "lane"),
+				new StringMapEntryAdd("cycleway:left:lane","exclusive"),
+				new StringMapEntryAdd("cycleway:right:lane","exclusive")
 		);
 	}
 
@@ -139,12 +171,14 @@ public class AddCyclewayTest extends AOsmElementQuestTypeTest
 	{
 		// this would be a street that has lanes on both sides but is oneway=-1 (in countries with
 		// right hand traffic)
-		putBothSides(Cycleway.LANE);
+		putBothSides(Cycleway.EXCLUSIVE_LANE);
 		bundle.putInt(AddCyclewayForm.CYCLEWAY_LEFT_DIR, +1);
 		verify(
 				new StringMapEntryAdd("cycleway:left", "lane"),
 				new StringMapEntryAdd("cycleway:left:oneway", "yes"),
-				new StringMapEntryAdd("cycleway:right", "lane")
+				new StringMapEntryAdd("cycleway:right", "lane"),
+				new StringMapEntryAdd("cycleway:left:lane","exclusive"),
+				new StringMapEntryAdd("cycleway:right:lane","exclusive")
 		);
 	}
 

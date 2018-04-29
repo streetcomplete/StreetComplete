@@ -1,6 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
 isLeftHandTraffic: true
 isSlowZoneKnown: true
+mobileCountryCode: 278
 officialLanguages: [mt, en]
 orchardProduces: [grape, tomatoe, peach, fig, strawberry, lemon, lime, apple, olive, orange, apricot,
   pear, grapefruit]

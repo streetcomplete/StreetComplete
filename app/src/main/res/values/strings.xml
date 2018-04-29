@@ -63,7 +63,7 @@
     <string name="confirmation_discard_negative">"Cancel"</string>
     <string name="action_download">"Scan for Quests here"</string>
     <string name="action_upload">"Upload Answers"</string>
-    <string name="no_changes">"You left the form empty"</string>
+    <string name="no_changes">"You did not give any answer"</string>
     <string name="close">"close"</string>
     <string name="download_error">"Error while scanning for quests"</string>
     <string name="upload_error">"Error while uploading answers"</string>
@@ -85,9 +85,9 @@
     <string name="about_title_license">"License"</string>
     <string name="about_summary_license">"GNU General Public License"</string>
     <string name="offline">"You are offline"</string>
-    <string name="confirmation_authorize_now">"You need to authorize with your OSM user account to apply any of your answers for good. Authorize now?"</string>
+    <string name="confirmation_authorize_now">"You need to authorize with your OSM user account to publish your answers. Authorize now?"</string>
     <string name="not_authorized">"Not authorized"</string>
-    <string name="version_banned_message">"This version of StreetComplete has been banned from uploading any answers! Please update your version!"</string>
+    <string name="version_banned_message">"This version of StreetComplete is too old. Please update!"</string>
     <string name="no_gps_no_quests">"To scan for quests around you automatically, turn on location"</string>
     <string name="nothing_more_to_download">"No further quests available"</string>
     <string name="later">"Later"</string>
@@ -172,7 +172,7 @@ To display the map, vector tiles are retrieved from the &lt;a href=\"https://map
 &lt;p&gt;
 (&lt;i&gt;This is actually not implemented yet, just want to inform you what is to come!:&lt;/i&gt;) The data shown in the leaderboard and profile is aggregated from publicly available information from the OpenStreetMap. The data does not come from this app but basically from the public commit history of OSM users.
 &lt;/p&gt;"</string>
-    <string name="privacy_html_image_upload">&lt;p&gt;Photos you attach to notes are uploaded to &lt;a href=\"https://lut.im\"&gt;lut.im&lt;/a&gt;, a service which is anonymous and without tracking.&lt;/p&gt;</string>
+    <string name="privacy_html_image_upload">&lt;p&gt;Photos you attach to notes are uploaded to &lt;a href=\"https://framapic.org\"&gt;framapic.org&lt;/a&gt;, a service which is anonymous and without tracking.&lt;/p&gt;</string>
     <string name="autosync_on">"On"</string>
     <string name="autosync_only_on_wifi">"Only on Wifi"</string>
     <string name="autosync_off">"Off"</string>
@@ -197,7 +197,9 @@ To display the map, vector tiles are retrieved from the &lt;a href=\"https://map
     <string name="quest_surface_value_sett">"Sett"</string>
     <string name="quest_surface_value_wood">"Wood"</string>
     <string name="quest_placeName_title">"What is the name of this place?"</string>
-    <string name="quest_sidewalk_title">"Is there a sidewalk in this street?"</string>
+    <string name="quest_sidewalk_title">"Does this street have a sidewalk?"</string>
+    <string name="quest_busStopName_title">"What is the name of this bus stop?"</string>
+    <string name="quest_tramStopName_title">"What is the name of this tram stop?"</string>
     <string name="map_orientation_info">"The map is oriented north up."</string>
     <string name="quest_sidewalk_onlyNorth">"Only on northern side"</string>
     <string name="quest_sidewalk_onlySouth">"Only on southern side"</string>
@@ -495,6 +497,26 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_fee_only_at_hours">Yes, but only…</string>
     <string name="quest_fee_not_at_hours">Yes, but not…</string>
     <string name="quest_fee_hours_title">at the following times:</string>
+    <string name="quest_housenumber_multiple_numbers">It has multiple house numbers</string>
+    <string name="quest_housenumber_multiple_numbers_description">"You can simply enter comma-separated house numbers or ranges.\nFor instance 1,3 or 2-6."</string>
+    <string name="quest_bicycle_parking_type_stand">Stand</string>
+    <string name="quest_bicycle_parking_type_wheelbender">Wheelbender</string>
+    <string name="quest_bicycle_parking_type_shed">Shed</string>
+    <string name="quest_bicycle_parking_type_locker">Locker</string>
+    <string name="quest_bicycle_parking_type_building">Building</string>
+    <string name="quest_bicycle_parking_type_title">What is the type of this bicycle parking?</string>
+    <string name="quest_cycleway_value_suggestion_lane">bicycle suggestion lane</string>
+    <string name="quest_postboxCollectionTimes_title">What are the collection times of this postbox?</string>
+    <string name="quest_collectionTimes_add_times">Add collection time</string>
+    <string name="quest_collectionTimes_answer_no_times_specified">No times specified</string>
+    <string name="quest_construction_road_title">Is this road completed?</string>
+    <string name="quest_construction_cycleway_title">Is this cycleway completed?</string>
+    <string name="quest_construction_footway_title">Is this footway completed?</string>
+    <string name="quest_construction_generic_title">Is this way completed?</string>
+    <string name="quest_construction_building_title">Is this building completed?</string>
+    <string name="questList_disabled_in_country">Never shown in %s</string>
+    <string name="quest_toiletAvailability_rest_area_title">Does this rest area have a toilet?</string>
+    <string name="quest_maxspeed_name_title">What is the speed limit sign for %s?</string>
     <string name="quest_atm_deposit_title">Can you deposit cash in this ATM?</string>
-    <string name="quest_atm_deposit_title_operator">"Can you deposit cash in %s ATM?"</string>
+    <string name="quest_atm_deposit_title_operator">"Can you deposit cash in this ATM of %s?"</string>
 </resources>

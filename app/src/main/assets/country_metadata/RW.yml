@@ -1,4 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
+mobileCountryCode: 635
 officialLanguages: [rw, en, fr]
 orchardProduces: [banana, coffee, avocado, tea, guava, mango, mangosteen, tomatoe, orange, lemon, lime,
   pineapple, pepper, papaya, chilli_pepper, sweet_pepper]

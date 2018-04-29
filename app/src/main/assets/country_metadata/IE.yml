@@ -1,6 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
 isAdvisorySpeedLimitKnown: false
 isLeftHandTraffic: true
+mobileCountryCode: 272
 officialLanguages: [en, ga]
 orchardProduces: [apple, strawberry, hop, tomatoe, raspberry]
 popularSports: [gaelic_games, rugby]

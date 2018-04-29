@@ -1,6 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
 firstDayOfWorkweek: Su
 isLeftHandTraffic: true
+mobileCountryCode: 429
 officialLanguages: [ne]
 orchardProduces: [guava, mango, mangosteen, tea, orange, banana, nutmeg, chilli_pepper, sweet_pepper,
   apple, lemon, lime, areca_nut, pear, peach, walnut, coffee, papaya, plum]

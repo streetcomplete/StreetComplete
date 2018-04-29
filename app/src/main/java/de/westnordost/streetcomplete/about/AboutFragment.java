@@ -24,7 +24,7 @@ public class AboutFragment extends PreferenceFragmentCompat
 		findPreference("license").setOnPreferenceClickListener( preference ->
 		{
 			Intent browserIntent = new Intent(Intent.ACTION_VIEW,
-					Uri.parse("http://www.gnu.org/licenses/gpl-3.0.html"));
+					Uri.parse("https://www.gnu.org/licenses/gpl-3.0.html"));
 			startActivity(browserIntent);
 			return true;
 		});
