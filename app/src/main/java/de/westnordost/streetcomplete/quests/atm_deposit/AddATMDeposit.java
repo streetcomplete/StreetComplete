@@ -20,7 +20,7 @@ public class AddATMDeposit extends SimpleOverpassQuestType
 
 	@Override protected String getTagFilters()
 	{
-		return "nodes, ways with amenity=atm and !cash_in";
+		return "nodes with amenity=atm and !cash_in";
 	}
 
 	public AbstractQuestAnswerFragment createForm()
