@@ -126,9 +126,18 @@ public class CompassComponent implements SensorEventListener
 					rotation = smoothenAngle(azimut, rotation, SMOOTHEN_FACTOR);
 					tilt = smoothenAngle(displayTilt, tilt, SMOOTHEN_FACTOR);
 				}
-				listener.onRotationChanged(rotation + displayRotation - declination, tilt);
+				onRotationChanged(rotation + displayRotation - declination, tilt);
 			}
 		}
+	}
+
+	private float lastTilt, lastRotation;
+	private void onRotationChanged(float r, float t)
+	{
+		if(Math.abs(this.lastTilt - t) < 0.005 && Math.abs(this.lastRotation - r) < 0.005) return;
+		listener.onRotationChanged(r,t);
+		this.lastTilt = t;
+		this.lastRotation = r;
 	}
 
 	private static float smoothenAngle(float newValue, float oldValue, float factor)
