@@ -10,28 +10,25 @@ import android.support.annotation.AnyThread;
 import android.view.Display;
 import android.view.Surface;
 
-import java.util.Timer;
-import java.util.TimerTask;
 
 /** Component that gets the sensor data from accelerometer and magnetic field, smoothens it out and
  *  makes callbacks to report a simple rotation to its parent.
  */
 public class CompassComponent implements SensorEventListener
 {
+	private static float SMOOTHEN_FACTOR = 0.1f;
+
 	private SensorManager sensorManager;
 	private Display display;
 	private Sensor accelerometer, magnetometer;
-	private Timer compassTimer;
-	private CompassAnimator compassAnimator;
 	private float[] gravity, geomagnetic;
-	/** time the compass needle needs in order to rotate into a new direction (from sensor data).
-	 *  The sensor data is a bit erratic, so this smoothens it out. */
-	private static final int DURATION = 200;
-	// the compass doesn't move that fast, this is more than enough
-	private static final int RotationUpdateFPS = 30;
+
 	private float declination;
+	private float rotation, tilt;
+	private boolean isRotationSet;
 
 	private Listener listener;
+
 	public interface Listener
 	{
 		@AnyThread void onRotationChanged(float rotation, float tilt);
@@ -82,11 +79,6 @@ public class CompassComponent implements SensorEventListener
 
 	public void onPause()
 	{
-		if(compassTimer != null)
-		{
-			compassTimer.cancel();
-			compassTimer = null;
-		}
 		sensorManager.unregisterListener(this);
 	}
 
@@ -95,15 +87,10 @@ public class CompassComponent implements SensorEventListener
 
 	}
 
-	private void initializeCompassAnimator()
-	{
-		compassTimer = new Timer();
-		compassAnimator = new CompassAnimator();
-		compassTimer.scheduleAtFixedRate(compassAnimator, 0, 1000/RotationUpdateFPS);
-	}
-
 	@Override public void onSensorChanged(SensorEvent event)
 	{
+		if (listener == null) return;
+
 		if (event.sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD)
 		{
 			geomagnetic = event.values;
@@ -115,8 +102,6 @@ public class CompassComponent implements SensorEventListener
 
 		if (gravity != null && geomagnetic != null)
 		{
-			if(compassTimer == null) initializeCompassAnimator();
-
 			float R[] = new float[9];
 			float I[] = new float[9];
 			boolean success = SensorManager.getRotationMatrix(R, I, gravity, geomagnetic);
@@ -130,10 +115,28 @@ public class CompassComponent implements SensorEventListener
 				float displayRotation = (float) (Math.PI * getDisplayRotation() / 180);
 				float displayTilt = getDisplayTilt(pitch, roll);
 
-				compassAnimator.targetRotation = azimut + displayRotation - declination;
-				compassAnimator.targetTilt = displayTilt;
+				if(!isRotationSet)
+				{
+					rotation = azimut;
+					tilt = displayTilt;
+					isRotationSet = true;
+				}
+				else
+				{
+					rotation = smoothenAngle(azimut, rotation, SMOOTHEN_FACTOR);
+					tilt = smoothenAngle(displayTilt, tilt, SMOOTHEN_FACTOR);
+				}
+				listener.onRotationChanged(rotation + displayRotation - declination, tilt);
 			}
 		}
+	}
+
+	private static float smoothenAngle(float newValue, float oldValue, float factor)
+	{
+		float delta = newValue - oldValue;
+		while (delta > +Math.PI) delta -= 2*Math.PI;
+		while (delta < -Math.PI) delta += 2*Math.PI;
+		return oldValue + factor * delta;
 	}
 
 	public void setLocation(Location location)
@@ -144,42 +147,5 @@ public class CompassComponent implements SensorEventListener
 			(float) location.getAltitude(),
 			System.currentTimeMillis());
 		declination = (float) Math.toRadians(geomagneticField.getDeclination());
-	}
-
-	/** dampens the erratic-ness of the sensors by <b>animating towards</b> the calculated rotation
-	 *  and not directly setting it */
-	private class CompassAnimator extends TimerTask
-	{
-		private float INITIAL = -9999;
-		private float currentRotation = INITIAL;
-		private float currentTilt = INITIAL;
-		private long lastTime = System.currentTimeMillis();
-
-		volatile float targetRotation = INITIAL;
-		volatile float targetTilt = INITIAL;
-
-		@Override public void run()
-		{
-			currentRotation = animate(currentRotation, targetRotation);
-			currentTilt = animate(currentTilt, targetTilt);
-
-			if(listener != null) listener.onRotationChanged(currentRotation, currentTilt);
-			lastTime = System.currentTimeMillis();
-		}
-
-		private float animate(float current, float target)
-		{
-			if(target == INITIAL) return current;
-			if(current == INITIAL || current == target) return target;
-
-			long deltaTime = System.currentTimeMillis() - lastTime;
-			if(deltaTime > DURATION) return target;
-
-			float deltaRotation = target - current;
-			while (deltaRotation > +Math.PI) deltaRotation -= 2*Math.PI;
-			while (deltaRotation < -Math.PI) deltaRotation += 2*Math.PI;
-
-			return current + deltaRotation * deltaTime / DURATION;
-		}
 	}
 }
