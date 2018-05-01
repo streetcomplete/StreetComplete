@@ -15,6 +15,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.BounceInterpolator;
 import android.view.animation.TranslateAnimation;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -108,6 +109,13 @@ public class CreateNoteFragment extends AbstractBottomSheetFragment
 		return (AttachPhotoFragment) getChildFragmentManager().findFragmentById(R.id.attachPhotoFragment);
 	}
 
+	private boolean closeKeyboard()
+	{
+		InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+		if(imm == null) return false;
+		return imm.hideSoftInputFromWindow(noteInput.getWindowToken(), 0);
+	}
+
 	private void onClickOk()
 	{
 		String noteText = noteInput.getText().toString().trim();
@@ -117,6 +125,15 @@ public class CreateNoteFragment extends AbstractBottomSheetFragment
 			Toast.makeText(getActivity(), R.string.no_changes, Toast.LENGTH_SHORT).show();
 			return;
 		}
+
+		if(!closeKeyboard())
+		{
+			onClickOkAfterKeyboardClosed();
+		}
+	}
+
+	private void onClickOkAfterKeyboardClosed()
+	{
 		AttachPhotoFragment f = getAttachPhotoFragment();
 
 		int[] point = new int[2];
@@ -124,6 +141,7 @@ public class CreateNoteFragment extends AbstractBottomSheetFragment
 		Point screenPos = new Point(point[0], point[1]);
 		screenPos.offset(marker.getWidth()/2, marker.getHeight()/2);
 
+		String noteText = noteInput.getText().toString().trim();
 		callbackListener.onLeaveNote(noteText, f != null ? f.getImagePaths() : null, screenPos);
 
 		markerLayout.setVisibility(View.INVISIBLE);
