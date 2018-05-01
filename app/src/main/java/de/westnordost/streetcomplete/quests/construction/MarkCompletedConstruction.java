@@ -58,7 +58,7 @@ public abstract class MarkCompletedConstruction implements OsmElementQuestType {
 			"(if:!is_date(t['opening_date']) || date(t['opening_date'])<date('" + getCurrentDateString() + "'))" +
 			" -> .construction_with_unknown_state; " +
 			getRecentlyEditedConstructionsQueryPart(key, reviewIntervalInDays) + " -> .recently_edited_construction;" +
-			"(.construction_with_unknown_state - .recently_edited_construction) -> " + nameOfGeneratedGroup + ";";
+			"(.construction_with_unknown_state; - .recently_edited_construction;) -> " + nameOfGeneratedGroup + ";";
 	}
 
 	private String getRecentlyEditedConstructionsQueryPart(String key, int reviewIntervalInDays){
