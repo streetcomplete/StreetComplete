@@ -1,9 +1,11 @@
 package de.westnordost.streetcomplete.tangram;
 
+import android.hardware.GeomagneticField;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.location.Location;
 import android.support.annotation.AnyThread;
 import android.view.Display;
 import android.view.Surface;
@@ -27,6 +29,7 @@ public class CompassComponent implements SensorEventListener
 	private static final int DURATION = 200;
 	// the compass doesn't move that fast, this is more than enough
 	private static final int RotationUpdateFPS = 30;
+	private float declination;
 
 	private Listener listener;
 	public interface Listener
@@ -127,10 +130,20 @@ public class CompassComponent implements SensorEventListener
 				float displayRotation = (float) (Math.PI * getDisplayRotation() / 180);
 				float displayTilt = getDisplayTilt(pitch, roll);
 
-				compassAnimator.targetRotation = azimut + displayRotation;
+				compassAnimator.targetRotation = azimut + displayRotation - declination;
 				compassAnimator.targetTilt = displayTilt;
 			}
 		}
+	}
+
+	public void setLocation(Location location)
+	{
+		GeomagneticField geomagneticField = new GeomagneticField(
+			(float) location.getLatitude(),
+			(float) location.getLongitude(),
+			(float) location.getAltitude(),
+			System.currentTimeMillis());
+		declination = (float) Math.toRadians(geomagneticField.getDeclination());
 	}
 
 	/** dampens the erratic-ness of the sensors by <b>animating towards</b> the calculated rotation

@@ -437,6 +437,7 @@ public class MapFragment extends Fragment implements
 	@Override public void onLocationChanged(Location location)
 	{
 		lastLocation = location;
+		compass.setLocation(location);
 		showLocation();
 		followPosition();
 	}
