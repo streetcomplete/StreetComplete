@@ -563,4 +563,7 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_construction_footway_title">"Oinezkoen bide hau eraikitzen bukatuta dago?"</string>
     <string name="quest_construction_generic_title">"Errepide hau eraikitzen bukatuta dago?"</string>
     <string name="quest_construction_building_title">"Eraikin hau eraikitzen bukatuta dago?"</string>
+    <string name="questList_disabled_in_country">"Ez erakutsi inoiz %s(e)n"</string>
+    <string name="quest_toiletAvailability_rest_area_title">"Area honek komuna dauka?"</string>
+    <string name="quest_maxspeed_name_title">"Zein da %s(e)ko abiadura-muga seinalea?"</string>
 </resources>

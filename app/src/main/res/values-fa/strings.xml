@@ -563,4 +563,7 @@
     <string name="quest_construction_footway_title">"آیا این پیاده رو ساخته شده است؟"</string>
     <string name="quest_construction_generic_title">"آیا این راه ساخته شده است؟"</string>
     <string name="quest_construction_building_title">"آیا این ساختمان ساخته شده است؟"</string>
+    <string name="questList_disabled_in_country">"اصلا %s موجود نیست."</string>
+    <string name="quest_toiletAvailability_rest_area_title">"آیا این فضای استراحت ، سرویس بهداشتی دارد؟"</string>
+    <string name="quest_maxspeed_name_title">"محدودیت سرعت در %s چقدر است؟"</string>
 </resources>

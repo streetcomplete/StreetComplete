@@ -575,4 +575,9 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_construction_footway_title">"Je stavba tohoto chodníku dokončená?"</string>
     <string name="quest_construction_generic_title">"Je stavba této cesty dokončená?"</string>
     <string name="quest_construction_building_title">"Je stavba této budovy dokončená?"</string>
+    <string name="questList_disabled_in_country">"Nikdy nezobrazovat v %s"</string>
+    <string name="quest_toiletAvailability_rest_area_title">"Má tato odpočívka toaletu?"</string>
+
+    <!-- May I ask how is this sentence used? -->
+    <string name="quest_maxspeed_name_title">"Jaká je značka s omezením rychlosti na ulici %s?"</string>
 </resources>
