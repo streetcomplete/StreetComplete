@@ -1,1 +1,1 @@
-OpenStreetMap surveyor app
+OpenStreetMap veldwerk-app
