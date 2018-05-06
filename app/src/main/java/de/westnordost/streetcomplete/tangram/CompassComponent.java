@@ -6,6 +6,8 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.location.Location;
+import android.os.Handler;
+import android.os.HandlerThread;
 import android.support.annotation.AnyThread;
 import android.view.Display;
 import android.view.Surface;
@@ -16,7 +18,9 @@ import android.view.Surface;
  */
 public class CompassComponent implements SensorEventListener
 {
-	private static float SMOOTHEN_FACTOR = 0.1f;
+	private static final int MAX_DISPATCH_FPS = 30;
+	private static final float SMOOTHEN_FACTOR = 0.1f;
+	private static final float MIN_DIFFERENCE = 0.005f;
 
 	private SensorManager sensorManager;
 	private Display display;
@@ -25,9 +29,12 @@ public class CompassComponent implements SensorEventListener
 
 	private float declination;
 	private float rotation, tilt;
-	private boolean isRotationSet;
 
 	private Listener listener;
+
+	private Handler sensorHandler;
+	private HandlerThread sensorThread;
+	private Thread dispatcherThread;
 
 	public interface Listener
 	{
@@ -45,41 +52,54 @@ public class CompassComponent implements SensorEventListener
 		this.sensorManager = sensorManager;
 		accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 		magnetometer = sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
+		sensorThread = new HandlerThread("Compass Sensor Thread");
+		sensorThread.start();
+		sensorHandler = new Handler(sensorThread.getLooper());
+		dispatcherThread = new Thread(this::dispatchLoop, "Compass Dispatcher Thread");
+		dispatcherThread.start();
 	}
 
-	private float getDisplayTilt(float pitch, float roll)
+	private float[] remapToDisplayRotation(float[] inR)
 	{
-		switch (display.getRotation())
-		{
-			case Surface.ROTATION_0: return pitch;
-			case Surface.ROTATION_90: return roll;
-			case Surface.ROTATION_180: return -pitch;
-			case Surface.ROTATION_270: return -roll;
+		int h, v;
+		float[] outR = new float[9];
+		switch (display.getRotation()) {
+			case Surface.ROTATION_90:
+				h = SensorManager.AXIS_Y;
+				v = SensorManager.AXIS_MINUS_X;
+				break;
+			case Surface.ROTATION_180:
+				h = SensorManager.AXIS_MINUS_X;
+				v = SensorManager.AXIS_MINUS_Y;
+				break;
+			case Surface.ROTATION_270:
+				h = SensorManager.AXIS_MINUS_Y;
+				v = SensorManager.AXIS_X;
+				break;
+			case Surface.ROTATION_0:
+			default:
+				return inR;
 		}
-		return 0;
-	}
-
-	private int getDisplayRotation()
-	{
-		switch (display.getRotation())
-		{
-			case Surface.ROTATION_0: return 0;
-			case Surface.ROTATION_90: return 90;
-			case Surface.ROTATION_180: return 180;
-			case Surface.ROTATION_270: return 270;
-		}
-		return 0;
+		SensorManager.remapCoordinateSystem(inR, h, v, outR);
+		return outR;
 	}
 
 	public void onResume()
 	{
-		sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_UI);
-		sensorManager.registerListener(this, magnetometer, SensorManager.SENSOR_DELAY_UI);
+		sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_UI, sensorHandler);
+		sensorManager.registerListener(this, magnetometer, SensorManager.SENSOR_DELAY_UI, sensorHandler);
 	}
 
 	public void onPause()
 	{
 		sensorManager.unregisterListener(this);
+	}
+
+	public void onDestroy()
+	{
+		listener = null;
+		sensorThread.quit();
+		dispatcherThread.interrupt();
 	}
 
 	@Override public void onAccuracyChanged(Sensor sensor, int accuracy)
@@ -93,11 +113,11 @@ public class CompassComponent implements SensorEventListener
 
 		if (event.sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD)
 		{
-			geomagnetic = event.values;
+			geomagnetic = event.values.clone();
 		}
 		else if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER)
 		{
-			gravity = event.values;
+			gravity = event.values.clone();
 		}
 
 		if (gravity != null && geomagnetic != null)
@@ -106,38 +126,44 @@ public class CompassComponent implements SensorEventListener
 			float I[] = new float[9];
 			boolean success = SensorManager.getRotationMatrix(R, I, gravity, geomagnetic);
 			if (success) {
+				R = remapToDisplayRotation(R);
 				float orientation[] = new float[3];
 				SensorManager.getOrientation(R, orientation);
-				float azimut = orientation[0];
+				float azimut = orientation[0] - declination;
 				float pitch = orientation[1];
 				float roll = orientation[2];
 
-				float displayRotation = (float) (Math.PI * getDisplayRotation() / 180);
-				float displayTilt = getDisplayTilt(pitch, roll);
-
-				if(!isRotationSet)
-				{
-					rotation = azimut;
-					tilt = displayTilt;
-					isRotationSet = true;
-				}
-				else
-				{
-					rotation = smoothenAngle(azimut, rotation, SMOOTHEN_FACTOR);
-					tilt = smoothenAngle(displayTilt, tilt, SMOOTHEN_FACTOR);
-				}
-				onRotationChanged(rotation + displayRotation - declination, tilt);
+				rotation = azimut;
+				tilt = pitch;
 			}
 		}
 	}
 
-	private float lastTilt, lastRotation;
-	private void onRotationChanged(float r, float t)
+	private void dispatchLoop()
 	{
-		if(Math.abs(this.lastTilt - t) < 0.005 && Math.abs(this.lastRotation - r) < 0.005) return;
-		listener.onRotationChanged(r,t);
-		this.lastTilt = t;
-		this.lastRotation = r;
+		boolean first = true;
+		float lastTilt = 0, lastRotation = 0, t = 0, r = 0;
+		while(!Thread.interrupted()) {
+			try	{ Thread.sleep(1000 / MAX_DISPATCH_FPS); } catch (InterruptedException e) { return; }
+
+			if(first && (rotation != 0 || tilt != 0))
+			{
+				r = rotation;
+				t = tilt;
+				first = false;
+			} else
+			{
+				r = smoothenAngle(rotation, r, SMOOTHEN_FACTOR);
+				t = smoothenAngle(tilt, t, SMOOTHEN_FACTOR);
+			}
+
+			if(Math.abs(lastTilt - t) > MIN_DIFFERENCE || Math.abs(lastRotation - r) > MIN_DIFFERENCE)
+			{
+				listener.onRotationChanged(r, t);
+				lastTilt = t;
+				lastRotation = r;
+			}
+		}
 	}
 
 	private static float smoothenAngle(float newValue, float oldValue, float factor)
