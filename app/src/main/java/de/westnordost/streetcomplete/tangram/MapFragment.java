@@ -475,7 +475,7 @@ public class MapFragment extends Fragment implements
 
 		if(directionMarker != null)
 		{
-			directionMarker.setVisible(true);
+			if(!directionMarker.isVisible()) directionMarker.setVisible(true);
 			double r = rotation * 180 / Math.PI;
 			directionMarker.setStylingFromString(
 					"{ style: 'points', color: '#cc536dfe', size: [" +
@@ -486,13 +486,9 @@ public class MapFragment extends Fragment implements
 		if (isCompassMode)
 		{
 			float mapRotation = -rotation;
-
-			// though the rotation and tilt are already smoothened by the CompassComponent, when it
-			// involves rotating the whole view, it feels better for the user if this is smoothened
-			// even further
 			if (controller.getRotation() != mapRotation)
 			{
-				controller.setRotationEased(mapRotation, 50);
+				controller.setRotation(mapRotation);
 			}
 			onMapOrientation(mapRotation, controller.getTilt());
 		}
@@ -641,7 +637,7 @@ public class MapFragment extends Fragment implements
 	@Override public void onDestroy()
 	{
 		super.onDestroy();
-		compass.setListener(null);
+		compass.onDestroy();
 		if(mapView != null) mapView.onDestroy();
 		controller = null;
 		directionMarker = null;
