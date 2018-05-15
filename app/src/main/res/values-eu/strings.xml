@@ -437,7 +437,7 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="about_category_feedback">"Iruzkinak"</string>
     <string name="quest_leave_new_note_photo">"Erantsi argazkia"</string>
     <string name="quest_leave_new_note_photo_delete_title">"Irudi hau ezabatu nahi duzu?"</string>
-    <string name="privacy_html_image_upload">"&lt;p&gt;Oharretara gehitzen dituzun argazkiak &lt;a href=\"https://lut.im\"&gt;lut.im&lt;/a&gt; zertbitzura igoko dira, zerbitzu hau anonimoa da eta ez du jarraipenik egiten.&lt;/p&gt;"</string>
+    <string name="privacy_html_image_upload">"&lt;p&gt;Oharretara gehitzen dituzun argazkiak &lt;a href=\"https://framapic.org\"&gt;framapic.org&lt;/a&gt; zertbitzura igoko dira, zerbitzu hau anonimoa da eta ez du jarraipenik egiten.&lt;/p&gt;"</string>
     <string name="quest_cycleway_value_track">"bidegorria"</string>
     <string name="quest_cycleway_value_lane">"bizikletentzako erraia"</string>
     <string name="quest_cycleway_value_none">"bat ere ez"</string>
@@ -544,4 +544,26 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_fee_only_at_hours">"Bai, baina soilik..."</string>
     <string name="quest_fee_not_at_hours">"Bai, baina ez..."</string>
     <string name="quest_fee_hours_title">"honako orduetan:"</string>
+    <string name="quest_busStopName_title">"Zein da autobus geltoki honen izena?"</string>
+    <string name="quest_tramStopName_title">"Zein da tranbia geltoki honen izena?"</string>
+    <string name="quest_housenumber_multiple_numbers">"Etxe zenbaki bat baino gehiago dauka"</string>
+    <string name="quest_housenumber_multiple_numbers_description">"Zenbakiak komaz bananduta edo barrutia adieraziz sartu ditzakezu. Esaterako 1,3 edo 2-6"</string>
+    <string name="quest_bicycle_parking_type_stand">"Tente"</string>
+    <string name="quest_bicycle_parking_type_wheelbender">"Gurpil-zirrikitua"</string>
+    <string name="quest_bicycle_parking_type_shed">"Estalpea"</string>
+    <string name="quest_bicycle_parking_type_locker">"Armairua"</string>
+    <string name="quest_bicycle_parking_type_building">"Eraikina"</string>
+    <string name="quest_bicycle_parking_type_title">"Ze motako bizikleta aparkalekua da hau?"</string>
+    <string name="quest_cycleway_value_suggestion_lane">"bizikletei proposatutako erraia"</string>
+    <string name="quest_postboxCollectionTimes_title">"Zeintzuk dira postontzi honen bilketa orduak?"</string>
+    <string name="quest_collectionTimes_add_times">"Gehitu bilketaren ordua"</string>
+    <string name="quest_collectionTimes_answer_no_times_specified">"Ez da ordurik zehaztu"</string>
+    <string name="quest_construction_road_title">"Errepide hau eraikitzen bukatuta dago?"</string>
+    <string name="quest_construction_cycleway_title">"Bizikletentzako bide hau eraikitzen bukatuta dago?"</string>
+    <string name="quest_construction_footway_title">"Oinezkoen bide hau eraikitzen bukatuta dago?"</string>
+    <string name="quest_construction_generic_title">"Errepide hau eraikitzen bukatuta dago?"</string>
+    <string name="quest_construction_building_title">"Eraikin hau eraikitzen bukatuta dago?"</string>
+    <string name="questList_disabled_in_country">"Ez erakutsi inoiz %s(e)n"</string>
+    <string name="quest_toiletAvailability_rest_area_title">"Area honek komuna dauka?"</string>
+    <string name="quest_maxspeed_name_title">"Zein da %s(e)ko abiadura-muga seinalea?"</string>
 </resources>

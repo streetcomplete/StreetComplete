@@ -437,7 +437,7 @@ Përndryshe, mund të shkarkoni një tastierë tjetër në dyqanin e aplikacione
     <string name="about_category_feedback">"Përshtypjet"</string>
     <string name="quest_leave_new_note_photo">"Ngjit foto"</string>
     <string name="quest_leave_new_note_photo_delete_title">"Dëshiron ta fshishë këtë foto?"</string>
-    <string name="privacy_html_image_upload">"&lt;p&gt;Fotot që i bashkëngjitni shënimeve janë ngarkuar në &lt;a href=\"https://lut.im\"&gt; lut.im &lt;/a&gt;, një shërbim anonim dhe pa gjurmim.&lt;/ p&gt;"</string>
+    <string name="privacy_html_image_upload">"&lt;p&gt;Fotot që i bashkëngjitni shënimeve janë ngarkuar në &lt;a href=\"https://framapic.org\"&gt;framapic.org&lt;/a&gt;, një shërbim anonim dhe pa gjurmim.&lt;/p&gt;"</string>
     <string name="quest_cycleway_value_track">"shteg i biçikletave"</string>
     <string name="quest_cycleway_value_lane">"shirit i biçikletave"</string>
     <string name="quest_cycleway_value_none">"asnjë"</string>

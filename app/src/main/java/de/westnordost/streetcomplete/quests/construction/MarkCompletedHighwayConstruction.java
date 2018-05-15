@@ -2,9 +2,6 @@ package de.westnordost.streetcomplete.quests.construction;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
-
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
 

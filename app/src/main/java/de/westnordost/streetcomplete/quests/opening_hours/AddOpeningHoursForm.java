@@ -4,19 +4,25 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 
 import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
+import de.westnordost.streetcomplete.quests.opening_hours.adapter.AddOpeningHoursAdapter;
+import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningMonthsRow;
+import de.westnordost.streetcomplete.quests.opening_hours.model.OpeningMonths;
 import de.westnordost.streetcomplete.util.Serializer;
 import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 
@@ -55,20 +61,20 @@ public class AddOpeningHoursForm extends AbstractQuestFormAnswerFragment
 
 	private void initOpeningHoursAdapter(View contentView, Bundle savedInstanceState)
 	{
-		ArrayList<OpeningMonths> data;
+		ArrayList<OpeningMonthsRow> viewData;
 		if(savedInstanceState != null)
 		{
-			data = serializer.toObject(savedInstanceState.getByteArray(OPENING_HOURS_DATA),ArrayList.class);
+			viewData = serializer.toObject(savedInstanceState.getByteArray(OPENING_HOURS_DATA),ArrayList.class);
 			isAlsoAddingMonths = savedInstanceState.getBoolean(IS_ADD_MONTHS_MODE);
 		}
 		else
 		{
-			data = new ArrayList<>();
-			data.add(new OpeningMonths());
+			viewData = new ArrayList<>();
+			viewData.add(new OpeningMonthsRow());
 			isAlsoAddingMonths = false;
 		}
 
-		openingHoursAdapter = new AddOpeningHoursAdapter(data, getActivity(), getCountryInfo());
+		openingHoursAdapter = new AddOpeningHoursAdapter(viewData, getActivity(), getCountryInfo());
 		openingHoursAdapter.setDisplayMonths(isAlsoAddingMonths);
 		RecyclerView openingHoursList = contentView.findViewById(R.id.opening_hours_list);
 		openingHoursList.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
@@ -107,13 +113,17 @@ public class AddOpeningHoursForm extends AbstractQuestFormAnswerFragment
 	@Override public void onSaveInstanceState(Bundle outState)
 	{
 		super.onSaveInstanceState(outState);
-		outState.putByteArray(OPENING_HOURS_DATA, serializer.toBytes(openingHoursAdapter.getData()));
+		outState.putByteArray(OPENING_HOURS_DATA, serializer.toBytes(openingHoursAdapter.getViewData()));
 		outState.putBoolean(IS_ADD_MONTHS_MODE, isAlsoAddingMonths);
 	}
 
 	@Override protected void onClickOk()
 	{
-		applyOpeningHours(openingHoursAdapter.toString());
+		List<OpeningMonths> data = openingHoursAdapter.createData();
+		String openingHours = TextUtils.join(";", data);
+		Bundle answer = new Bundle();
+		answer.putString(OPENING_HOURS, openingHours);
+		applyFormAnswer(answer);
 	}
 
 	private void showInputCommentDialog()
@@ -164,16 +174,9 @@ public class AddOpeningHoursForm extends AbstractQuestFormAnswerFragment
 		openingHoursAdapter.changeToMonthsMode();
 	}
 
-	private void applyOpeningHours(String openingHours)
-	{
-		Bundle answer = new Bundle();
-		answer.putString(OPENING_HOURS, openingHours);
-		applyFormAnswer(answer);
-	}
-
 	@Override public boolean hasChanges()
 	{
-		return !openingHoursAdapter.toString().isEmpty();
+		List<OpeningMonths> data = openingHoursAdapter.createData();
+		return !TextUtils.join(";", data).isEmpty();
 	}
-
 }

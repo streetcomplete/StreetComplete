@@ -84,7 +84,7 @@
     <string name="offline">"Du är offline"</string>
 
     <!-- Fuzzy -->
-    <string name="confirmation_authorize_now">"Du måste godkänna din OSM användarkonto för att tillämpa någon av dina svar för gott. Auktorisera nu?"</string>
+    <string name="confirmation_authorize_now">"Du måste auktorisera med ditt OSM-konto för att publicera dina svar. Auktorisera nu?"</string>
     <string name="not_authorized">"Inte godkänd"</string>
 
     <!-- Fuzzy -->
@@ -100,12 +100,12 @@
 
     <!-- Fuzzy -->
     <string name="quest_openingHours_public_holidays_short">"Allmänna helgdagar"</string>
-    <string name="quest_openingHours_open_end">"öppna ända"</string>
-    <string name="quest_openingHours_answer_247">"Öppen 24/7"</string>
-    <string name="quest_openingHours_answer_seasonal_opening_hours">"Avviker per månad"</string>
+    <string name="quest_openingHours_open_end">"Ingen stängningstid"</string>
+    <string name="quest_openingHours_answer_247">"Öppet dygnet runt"</string>
+    <string name="quest_openingHours_answer_seasonal_opening_hours">"Beror på vilken månad"</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">"Inga regelbundna öppettider"</string>
     <string name="quest_openingHours_comment_title">"Beskriv öppettider"</string>
-    <string name="quest_openingHours_comment_description">"Var kortfattad, helst använda formuleringen från skylten. Ex. \"enligt överenskommelse\". Avsaknaden av en skylt betyder inte nödvändigtvis att det inte finns några ordinarie öppettider."</string>
+    <string name="quest_openingHours_comment_description">"Var kortfattad, använd helst formuleringen från skylten. Ex. \"enligt överenskommelse\". Avsaknaden av en skylt betyder inte nödvändigtvis att det inte finns några ordinarie öppettider."</string>
     <string name="quest_buildingLevels_title">"Hur många våningar har den här byggnaden?"</string>
     <string name="quest_buildingLevels_title_buildingPart">"Hur många våningar har denna byggnad del?"</string>
     <string name="quest_roofShape_title">"Vilken form har byggnadens tak?"</string>
@@ -169,7 +169,7 @@ För att visa på kartan, är vektor brickor hämtas från &lt;a href=\"https://
     <string name="quest_placeName_title">"Vad är namnet på det här stället?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_sidewalk_title">"Finns det en trottoar i denna gata?"</string>
+    <string name="quest_sidewalk_title">"Finns det en trottoar längs den här gatan?"</string>
     <string name="map_orientation_info">"Kartan är orienterad mot norr upp."</string>
     <string name="quest_sidewalk_onlyNorth">"Endast på norra sidan"</string>
     <string name="quest_sidewalk_onlySouth">"Endast på södra sidan"</string>
@@ -196,7 +196,7 @@ För att visa på kartan, är vektor brickor hämtas från &lt;a href=\"https://
     <!-- Fuzzy -->
     <string name="quest_streetLanes_noLanes_estWidth">"Vänligen uppskatta hur många bilar skulle passa bredvid varandra på denna väg."</string>
     <string name="quest_oneway_title">"Är detta en enkelriktad gata?"</string>
-    <string name="quest_address_title">"Vad är husnumret till denna byggnad?"</string>
+    <string name="quest_address_title">"Vad är har den här byggnaden för husnummer?"</string>
 
     <!-- Fuzzy -->
     <string name="store_listing_short_description">"OpenStreetMap besiktningsman app"</string>
@@ -443,16 +443,18 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_buildingLevels_answer_description">"I sådana fall, fyll i värdet för den högsta husdelen"</string>
     <string name="unglue_hint">"Klicka för att lossa fixerad vy"</string>
     <string name="pref_title_not_authorized_summary2">"Logga in med din webbläsare för att auktorisera."</string>
+    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Är körbanorna fysiskt separerade (till exempel genom en barriär)? Bashastigheten beror på om så är fallet eller inte."</string>
     <string name="about_category_feedback">"Feedback"</string>
     <string name="quest_leave_new_note_photo">"Bifoga foto"</string>
     <string name="quest_leave_new_note_photo_delete_title">"Vill du ta bort den här bilden?"</string>
-    <string name="privacy_html_image_upload">"&lt;p&gt;Foton som du bifogar till noteringar laddas upp till &lt;a href=\"https://lut.im\"&gt;lut.im&lt;/a&gt;, en anonym tjänst utan spårning.&lt;/p&gt;"</string>
+    <string name="privacy_html_image_upload">"&lt;p&gt;Foton som du bifogar till noteringar laddas upp till &lt;a href=\"https://framapic.org\"&gt;framapic.org&lt;/a&gt;, en anonym tjänst utan spårning.&lt;/p&gt;"</string>
     <string name="quest_cycleway_value_track">"separat cykelbana"</string>
     <string name="quest_cycleway_value_lane">"cykelfil"</string>
     <string name="quest_cycleway_value_none">"ingen"</string>
     <string name="quest_cycleway_value_shared">"fil uttryckligen delad med annan trafik"</string>
     <string name="quest_cycleway_value_bus_lane">"i bussfil"</string>
     <string name="quest_cycleway_value_sidewalk">"uttryckligen delad trottoar"</string>
+    <string name="quest_leave_new_note_create_image_error">"Fel vid skapandet av foto"</string>
     <string name="quest_cycleway_value_lane_dual">"cykelfil, båda riktningarna"</string>
     <string name="quest_cycleway_value_track_dual">"separat cykelbana, båda riktningarna"</string>
     <string name="quest_cycleway_value_sidewalk_allowed">"ingen, men cyklister är tillåtna på trottoaren"</string>
@@ -469,6 +471,7 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_hasFeature_only">"Enbart"</string>
     <string name="quest_dietType_explanation_vegan">"Veganska rätter innehåller inga animaliska produkter (inget kött, inga mjölkprodukter, inga ägg, ...). "</string>
     <string name="quest_dietType_explanation_vegetarian">"Vegetariska rätter innehåller inget kött."</string>
+    <string name="quest_dietType_explanation">"Svara enbart ja om platsen erbjuder vettiga måltidsalternativ för den här kosten. Ignorera förrätter osv."</string>
     <string name="quest_carWashType_title">"Vilken typ av biltvätt är det här?"</string>
     <string name="quest_carWashType_automated">"Automatisk"</string>
     <string name="quest_carWashType_selfService">"Självservice"</string>
@@ -493,6 +496,13 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_surface_generic_surface_confirmation">"Är du säker på att du inte kan beskriva underlaget mer specifikt?"</string>
     <string name="quest_cycleway_title2">"Finns det en cykelväg här? Vilken typ?"</string>
     <string name="quest_bridge_structure_title">"Vilken typ av bro är det här?"</string>
+    <string name="quest_internet_access_name_title">"Vilken typ av internetuppkoppling erbjuder %s?"</string>
+    <string name="quest_internet_access_wlan">"Wi-Fi"</string>
+    <string name="quest_internet_access_wired">"Kabel (LAN)"</string>
+    <string name="quest_internet_access_terminal">"Dator med tillgång till internet"</string>
+    <string name="quest_internet_access_no">"Ingen uppkoppling"</string>
+    <string name="quest_busStopShelter_tram_name_title">"Har spårvagnshållplatsen %s ett regnskydd?"</string>
+    <string name="quest_busStopShelter_tram_title">"Har den här spårvagnshållplatsen ett regnskydd?"</string>
     <string name="quest_bench_backrest_title">"Har den här bänken ett ryggstöd?"</string>
     <string name="quest_bench_answer_picnic_table">"Det är ett picnickbord"</string>
 
@@ -505,6 +515,13 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_religion_shinto">"Shintoism"</string>
     <string name="quest_religion_jewish">"Judendom"</string>
     <string name="quest_religion_taoist">"Taoism"</string>
+    <string name="quest_religion_for_place_of_worship_answer_multi">"Alla religioner kan praktiseras"</string>
+    <string name="quest_religion_sikh">"Sikhism"</string>
+    <string name="quest_religion_jain">"Jainism"</string>
+    <string name="quest_religion_bahai">"Bahá'í"</string>
+    <string name="quest_religion_caodaist">"Cao Ðài"</string>
+    <string name="quest_religion_chinese_folk">"Kinesisk folkreligion"</string>
+    <string name="quest_religion_for_wayside_shrine_title">"Vilken religion praktiseras vid den här helgedomen?"</string>
     <string name="quest_parking_fee_title">"Är parkeringen avgiftsbelagd?"</string>
     <string name="quest_cycleway_value_lane_soft">"cykelfil (streckad markering)"</string>
     <string name="quest_surface_value_unhewn_cobblestone">"Ohuggen kullersten "</string>
@@ -518,4 +535,29 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <!-- Fuzzy -->
     <string name="quest_streetSurface_square_name_title">"Vilket underlag har torget %s här?"</string>
     <string name="quest_fee_answer_hours">"Beror på tid och dag"</string>
+    <string name="quest_fee_add_times">"Lägg till klockslag"</string>
+    <string name="quest_fee_only_at_hours">"Ja, men enbart..."</string>
+    <string name="quest_fee_not_at_hours">"Ja, men inte..."</string>
+    <string name="quest_fee_hours_title">"följande klockslag:"</string>
+    <string name="quest_busStopName_title">"Vad heter den här busshållplatsen?"</string>
+    <string name="quest_tramStopName_title">"Vad heter den här spårvagnshållplatsen?"</string>
+    <string name="quest_housenumber_multiple_numbers">"Den har flera husnummer"</string>
+    <string name="quest_housenumber_multiple_numbers_description">"Du kan fylla i husnummer separerade med komman eller i serier. Till exempel 1,3 eller 2-6. "</string>
+    <string name="quest_bicycle_parking_type_stand">"Ställ"</string>
+    <string name="quest_bicycle_parking_type_wheelbender">"Framhjulsställ"</string>
+    <string name="quest_bicycle_parking_type_shed">"Skjul"</string>
+    <string name="quest_bicycle_parking_type_locker">"Skåp"</string>
+    <string name="quest_bicycle_parking_type_building">"Byggnad"</string>
+    <string name="quest_bicycle_parking_type_title">"Vilken typ av cykelparkering är det här?"</string>
+    <string name="quest_postboxCollectionTimes_title">"Vad har den här brevlådan för tömningstider?"</string>
+    <string name="quest_collectionTimes_add_times">"Lägg till tömningstid"</string>
+    <string name="quest_collectionTimes_answer_no_times_specified">"Tömningstid är inte specificerad"</string>
+    <string name="quest_construction_road_title">"Är den här vägen färdigställd?"</string>
+    <string name="quest_construction_cycleway_title">"Är den här cykelvägen färdigställd?"</string>
+    <string name="quest_construction_footway_title">"Är den här gångvägen färdigställd?"</string>
+    <string name="quest_construction_generic_title">"Är den här vägen färdigställd?"</string>
+    <string name="quest_construction_building_title">"Är den här byggnaden färdigställd?"</string>
+    <string name="questList_disabled_in_country">"Visas aldrig i %s"</string>
+    <string name="quest_toiletAvailability_rest_area_title">"Har den här rastplatsen en toalett?"</string>
+    <string name="quest_maxspeed_name_title">"Vad står det på hastighetsskylten längs %s?"</string>
 </resources>

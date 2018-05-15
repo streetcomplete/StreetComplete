@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import de.westnordost.streetcomplete.quests.opening_hours.Weekdays;
+import de.westnordost.streetcomplete.quests.opening_hours.model.Weekdays;
 
 public class CountryInfosTest extends AndroidTestCase
 {

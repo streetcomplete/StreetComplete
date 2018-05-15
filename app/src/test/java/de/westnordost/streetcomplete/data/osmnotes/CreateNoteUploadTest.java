@@ -142,7 +142,7 @@ public class CreateNoteUploadTest extends TestCase
 
 		assertNotNull(createNoteUpload.uploadCreateNote(createNote));
 
-		verify(notesDao).create(createNote.position, createNote.text);
+		verify(notesDao).create(createNote.position, createNote.text + "\n\nvia " + ApplicationConstants.USER_AGENT);
 
 		verifyNoteInsertedIntoDb(createNote.id, note);
 	}
@@ -203,7 +203,7 @@ public class CreateNoteUploadTest extends TestCase
 
 		verify(imageUploader).upload(createNote.imagePaths);
 
-		verify(notesDao).create(createNote.position,"jo ho\n\nAttached photo(s):\nhello, too");
+		verify(notesDao).create(createNote.position,"jo ho\n\nvia " + ApplicationConstants.USER_AGENT+"\n\nAttached photo(s):\nhello, too");
 	}
 
 	public void testCommentNoteUploadsImagesAndDisplaysLinks()

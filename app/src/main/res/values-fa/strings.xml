@@ -443,7 +443,7 @@
     <string name="about_category_feedback">"بازخورد"</string>
     <string name="quest_leave_new_note_photo">"پیوست کردن تصویر"</string>
     <string name="quest_leave_new_note_photo_delete_title">"آیا می خواهید این تصویر را حذف کنید؟"</string>
-    <string name="privacy_html_image_upload">"&lt;p&gt;تصاویری که به پیوست یادداشت ها بارگذاری کرده اید&lt;a href=\"https://lut.im\"&gt;lut.im&lt;/a&gt;, در سامانه ناشناس و بدون ردیابی می باشد.&lt;/p&gt;"</string>
+    <string name="privacy_html_image_upload">"&lt;p&gt;تصاویری که به پیوست یادداشت ها بارگذاری کرده اید&lt;a href=\"https://framapic.org\"&gt;framapic.org&lt;/a&gt;, در سامانه ناشناس و بدون ردیابی می باشد.&lt;/p&gt;"</string>
     <string name="quest_cycleway_value_track">"مسیر دوچرخه سواری"</string>
     <string name="quest_cycleway_value_lane">"خط دوچرخه سواری"</string>
     <string name="quest_cycleway_value_none">"هیچیک"</string>
@@ -543,4 +543,27 @@
     <string name="quest_fee_only_at_hours">"بله ، ولی فقط ..."</string>
     <string name="quest_fee_not_at_hours">"بله ، ولی نه ..."</string>
     <string name="quest_fee_hours_title">"در زمان دیگر"</string>
+    <string name="quest_busStopName_title">"نام این ایستگاه اتوبوس چیست؟"</string>
+    <string name="quest_tramStopName_title">"نام این ایستگاه تراموا چیست؟"</string>
+    <string name="quest_housenumber_multiple_numbers">"این ساختمان شماره‌های متعدد دارد"</string>
+    <string name="quest_housenumber_multiple_numbers_description">"شما با یک‌کاما و خط‌فاصله به راحتی می‌توانید شماره یا ردیف‌ها را وارد کنید.
+مانند ۱،۳ یا ۲-۶."</string>
+    <string name="quest_bicycle_parking_type_stand">"ایستگاه"</string>
+    <string name="quest_bicycle_parking_type_wheelbender">"قلاب چرخ"</string>
+    <string name="quest_bicycle_parking_type_shed">"دهنه"</string>
+    <string name="quest_bicycle_parking_type_locker">"قفسه"</string>
+    <string name="quest_bicycle_parking_type_building">"ساختمان"</string>
+    <string name="quest_bicycle_parking_type_title">"نوع پارکینگ را مشخص نمایید؟"</string>
+    <string name="quest_cycleway_value_suggestion_lane">"خط پیشنهادی دوچرخه‌سواری"</string>
+    <string name="quest_postboxCollectionTimes_title">"زمان جمع‌آوری این صندوق پستی را مشخص کنید؟"</string>
+    <string name="quest_collectionTimes_add_times">"افزودن زمان جمع‌آوری"</string>
+    <string name="quest_collectionTimes_answer_no_times_specified">"زمان مشخصی ندارد"</string>
+    <string name="quest_construction_road_title">"آیا این جاده ساخته شده است؟"</string>
+    <string name="quest_construction_cycleway_title">"آیا این خط عبور دوچرخه ساخته شده است؟"</string>
+    <string name="quest_construction_footway_title">"آیا این پیاده رو ساخته شده است؟"</string>
+    <string name="quest_construction_generic_title">"آیا این راه ساخته شده است؟"</string>
+    <string name="quest_construction_building_title">"آیا این ساختمان ساخته شده است؟"</string>
+    <string name="questList_disabled_in_country">"اصلا %s موجود نیست."</string>
+    <string name="quest_toiletAvailability_rest_area_title">"آیا این فضای استراحت ، سرویس بهداشتی دارد؟"</string>
+    <string name="quest_maxspeed_name_title">"محدودیت سرعت در %s چقدر است؟"</string>
 </resources>

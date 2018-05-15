@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.opening_hours;
+package de.westnordost.streetcomplete.quests.opening_hours.model;
 
 import java.util.ArrayList;
 import java.util.Collection;

@@ -426,7 +426,7 @@ Zadané informácie sa potom priamo pridávajú do OpenStreetMap vo vašom mene 
     <string name="about_category_feedback">"Spätná väzba"</string>
     <string name="quest_leave_new_note_photo">"Pridať fotku"</string>
     <string name="quest_leave_new_note_photo_delete_title">"Chcete zmazať tento obrázok?"</string>
-    <string name="privacy_html_image_upload">"&lt;p&gt;Pripojené fotografie sú nahrané do &lt;a href=\"https://lut.im\"&gt;lut.im&lt;/a&gt; anonymného úložiska bez sledovania.&lt;/p&gt;"</string>
+    <string name="privacy_html_image_upload">"&lt;p&gt;Pripojené fotografie sú nahrané do &lt;a href=\"https://framapic.org\"&gt;framapic.org&lt;/a&gt; anonymného úložiska bez sledovania.&lt;/p&gt;"</string>
     <string name="quest_cycleway_value_track">"cyklochodník"</string>
     <string name="quest_cycleway_value_lane">"cyklopruh"</string>
     <string name="quest_cycleway_value_none">"žiadne"</string>

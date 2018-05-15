@@ -431,7 +431,7 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="about_category_feedback">"Feedback"</string>
     <string name="quest_leave_new_note_photo">"Allega una foto"</string>
     <string name="quest_leave_new_note_photo_delete_title">"Vuoi cancellare questa foto?"</string>
-    <string name="privacy_html_image_upload">"&lt;p&gt;Le foto collegate alle note sono caricate al sito  &lt;a href=\"https://lut.im\"&gt;lut.im&lt;/a&gt;, un servizio anonimo e privo di tracciamento.&lt;/p&gt;"</string>
+    <string name="privacy_html_image_upload">"&lt;p&gt;Le foto collegate alle note sono caricate al sito  &lt;a href=\"https://framapic.org\"&gt;framapic.org&lt;/a&gt;, un servizio anonimo e privo di tracciamento.&lt;/p&gt;"</string>
     <string name="quest_cycleway_value_track">"pista ciclabile"</string>
     <string name="quest_cycleway_value_lane">"corsia ciclabile"</string>
     <string name="quest_cycleway_value_none">"nulla"</string>

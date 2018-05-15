@@ -38,7 +38,7 @@ global:
     sort_rank: function() { return feature.sort_rank; }
 
 scene:
-    animated: true
+    animated: false
     background:
         color: global.earth_color
 

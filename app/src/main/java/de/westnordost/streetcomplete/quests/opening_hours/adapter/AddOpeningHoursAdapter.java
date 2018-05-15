@@ -1,9 +1,8 @@
-package de.westnordost.streetcomplete.quests.opening_hours;
+package de.westnordost.streetcomplete.quests.opening_hours.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,27 +15,29 @@ import java.util.List;
 
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.meta.CountryInfo;
+import de.westnordost.streetcomplete.quests.opening_hours.model.CircularSection;
+import de.westnordost.streetcomplete.quests.opening_hours.model.NumberSystem;
+import de.westnordost.streetcomplete.quests.opening_hours.model.OpeningMonths;
+import de.westnordost.streetcomplete.quests.opening_hours.model.TimeRange;
+import de.westnordost.streetcomplete.quests.opening_hours.TimeRangePickerDialog;
+import de.westnordost.streetcomplete.quests.opening_hours.model.Weekdays;
+import de.westnordost.streetcomplete.quests.opening_hours.WeekdaysPickerDialog;
 import de.westnordost.streetcomplete.view.dialogs.RangePickerDialog;
 
 public class AddOpeningHoursAdapter extends RecyclerView.Adapter
 {
 	private final static int MONTHS = 0, WEEKDAYS = 1;
 
-	private ArrayList<OpeningMonths> data;
+	private ArrayList<OpeningMonthsRow> viewData;
 	private final Context context;
 	private final CountryInfo countryInfo;
 	private boolean displayMonths = false;
 
-	public AddOpeningHoursAdapter(ArrayList<OpeningMonths> data, Context context, CountryInfo countryInfo)
+	public AddOpeningHoursAdapter(ArrayList<OpeningMonthsRow> viewData, Context context, CountryInfo countryInfo)
 	{
-		this.data = data;
+		this.viewData = viewData;
 		this.context = context;
 		this.countryInfo = countryInfo;
-	}
-
-	public String toString()
-	{
-		return TextUtils.join(", ", data);
 	}
 
 	@Override public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
@@ -57,7 +58,7 @@ public class AddOpeningHoursAdapter extends RecyclerView.Adapter
 	@Override public void onBindViewHolder(RecyclerView.ViewHolder holder, int position)
 	{
 		int[] p = getHierarchicPosition(position);
-		OpeningMonths om = data.get(p[0]);
+		OpeningMonthsRow om = viewData.get(p[0]);
 
 		if(holder instanceof MonthsViewHolder)
 		{
@@ -65,8 +66,8 @@ public class AddOpeningHoursAdapter extends RecyclerView.Adapter
 		}
 		else if(holder instanceof WeekdayViewHolder)
 		{
-			OpeningWeekdays ow = om.weekdaysList.get(p[1]);
-			OpeningWeekdays prevOw = null;
+			OpeningWeekdaysRow ow = om.weekdaysList.get(p[1]);
+			OpeningWeekdaysRow prevOw = null;
 			if(p[1] > 0) prevOw = om.weekdaysList.get(p[1] - 1);
 			((WeekdayViewHolder) holder).update(ow, prevOw, p[1]);
 		}
@@ -81,15 +82,15 @@ public class AddOpeningHoursAdapter extends RecyclerView.Adapter
 	private int[] getHierarchicPosition(int position)
 	{
 		int count = 0;
-		for (int i = 0; i < data.size(); ++i)
+		for (int i = 0; i < viewData.size(); ++i)
 		{
-			OpeningMonths om = data.get(i);
+			OpeningMonthsRow om = viewData.get(i);
 			if(count == position) return new int[]{i};
 			++count;
 
 			for (int j = 0; j < om.weekdaysList.size(); ++j)
 			{
-				OpeningWeekdays ow = om.weekdaysList.get(j);
+				OpeningWeekdaysRow ow = om.weekdaysList.get(j);
 				if(count == position) return new int[]{i,j};
 				++count;
 			}
@@ -100,11 +101,11 @@ public class AddOpeningHoursAdapter extends RecyclerView.Adapter
 	@Override public int getItemCount()
 	{
 		int count = 0;
-		for (OpeningMonths om : data)
+		for (OpeningMonthsRow om : viewData)
 		{
 			count += om.weekdaysList.size();
 		}
-		count += data.size();
+		count += viewData.size();
 		return count;
 	}
 
@@ -115,12 +116,12 @@ public class AddOpeningHoursAdapter extends RecyclerView.Adapter
 		int[] p = getHierarchicPosition(position);
 		if(p.length == 1)
 		{
-			OpeningMonths om = data.remove(p[0]);
+			OpeningMonthsRow om = viewData.remove(p[0]);
 			notifyItemRangeRemoved(position, 1 + om.weekdaysList.size());
 		}
 		else if(p.length == 2)
 		{
-			ArrayList<OpeningWeekdays> weekdays = data.get(p[0]).weekdaysList;
+			ArrayList<OpeningWeekdaysRow> weekdays = viewData.get(p[0]).weekdaysList;
 			weekdays.remove(p[1]);
 			notifyItemRemoved(position);
 			// if not last weekday removed -> element after this one may need to be updated
@@ -145,13 +146,13 @@ public class AddOpeningHoursAdapter extends RecyclerView.Adapter
 	private void addMonths(CircularSection months, Weekdays weekdays, TimeRange timeRange)
 	{
 		int insertIndex = getItemCount();
-		data.add(new OpeningMonths(months, new OpeningWeekdays(weekdays, timeRange)));
+		viewData.add(new OpeningMonthsRow(months, new OpeningWeekdaysRow(weekdays, timeRange)));
 		notifyItemRangeInserted(insertIndex, 2); // 2 = opening month + opening weekday
 	}
 
 	public void addNewWeekdays()
 	{
-		boolean isFirst = data.get(data.size()-1).weekdaysList.isEmpty();
+		boolean isFirst = viewData.get(viewData.size()-1).weekdaysList.isEmpty();
 		openSetWeekdaysDialog(getWeekdaysSuggestion(isFirst), (weekdays) ->
 		{
 			openSetTimeRangeDialog(getOpeningHoursSuggestion(),
@@ -162,13 +163,18 @@ public class AddOpeningHoursAdapter extends RecyclerView.Adapter
 	private void addWeekdays(Weekdays weekdays, TimeRange timeRange)
 	{
 		int insertIndex = getItemCount();
-		data.get(data.size()-1).weekdaysList.add(new OpeningWeekdays(weekdays, timeRange));
+		viewData.get(viewData.size()-1).weekdaysList.add(new OpeningWeekdaysRow(weekdays, timeRange));
 		notifyItemInserted(insertIndex);
 	}
 
-	public ArrayList<OpeningMonths> getData()
+	public ArrayList<OpeningMonthsRow> getViewData()
 	{
-		return data;
+		return viewData;
+	}
+
+	public List<OpeningMonths> createData()
+	{
+		return OpeningHoursModelCreator.create(viewData);
 	}
 
 	public void setDisplayMonths(boolean displayMonths)
@@ -180,7 +186,7 @@ public class AddOpeningHoursAdapter extends RecyclerView.Adapter
 	public void changeToMonthsMode()
 	{
 		setDisplayMonths(true);
-		final OpeningMonths om = data.get(0);
+		final OpeningMonthsRow om = viewData.get(0);
 		openSetMonthsRangeDialog(om.months, (startIndex, endIndex) ->
 		{
 			om.months = new CircularSection(startIndex, endIndex);
@@ -225,11 +231,11 @@ public class AddOpeningHoursAdapter extends RecyclerView.Adapter
 			itemView.setLayoutParams(param);
 		}
 
-		public void update(final OpeningMonths data, int index)
+		public void update(final OpeningMonthsRow data, int index)
 		{
 			setVisibility(displayMonths);
 			delete.setVisibility(index==0 ? View.GONE : View.VISIBLE);
-			monthsText.setText(data.getLocalizedMonthsString());
+			monthsText.setText(data.months.toStringUsing(DateFormatSymbols.getInstance().getMonths(), "–"));
 			monthsText.setOnClickListener(v ->
 			{
 				openSetMonthsRangeDialog(data.months, (startIndex, endIndex) ->
@@ -246,7 +252,7 @@ public class AddOpeningHoursAdapter extends RecyclerView.Adapter
 		List<CircularSection> months = getUnmentionedMonths();
 		if(months.isEmpty())
 		{
-			return new CircularSection(0,OpeningMonths.MAX_MONTH_INDEX);
+			return new CircularSection(0, OpeningMonths.MAX_MONTH_INDEX);
 		}
 		return months.get(0);
 	}
@@ -254,7 +260,7 @@ public class AddOpeningHoursAdapter extends RecyclerView.Adapter
 	private List<CircularSection> getUnmentionedMonths()
 	{
 		List<CircularSection> allTheMonths = new ArrayList<>();
-		for (OpeningMonths om : data)
+		for (OpeningMonthsRow om : viewData)
 		{
 			allTheMonths.add(om.months);
 		}
@@ -291,7 +297,7 @@ public class AddOpeningHoursAdapter extends RecyclerView.Adapter
 			});
 		}
 
-		public void update(final OpeningWeekdays data, final OpeningWeekdays previousData, int index)
+		public void update(final OpeningWeekdaysRow data, final OpeningWeekdaysRow previousData, int index)
 		{
 			delete.setVisibility(index==0 ? View.GONE : View.VISIBLE);
 

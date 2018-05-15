@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.opening_hours;
+package de.westnordost.streetcomplete.quests.opening_hours.model;
 
 import android.support.annotation.NonNull;
 
@@ -58,6 +58,18 @@ public class CircularSection implements Comparable<CircularSection>
 		if(other == null || !(other instanceof CircularSection)) return false;
 		CircularSection o = (CircularSection) other;
 		return start == o.start && end == o.end;
+	}
+
+	public String toStringUsing(String[] names, String range)
+	{
+		StringBuilder sb = new StringBuilder();
+		sb.append(names[start]);
+		if(start != end)
+		{
+			sb.append(range);
+			sb.append(names[end]);
+		}
+		return sb.toString();
 	}
 
 	@Override public int hashCode()

@@ -406,7 +406,7 @@ Andernfalls kannst Du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="about_category_feedback">"Feedback"</string>
     <string name="quest_leave_new_note_photo">"Foto anhängen"</string>
     <string name="quest_leave_new_note_photo_delete_title">"Dieses Foto löschen?"</string>
-    <string name="privacy_html_image_upload">"&lt;p&gt;Fotos die an Notizen angehängt werden, werden hochgeladen auf &lt;a href=\"https://lut.im\"&gt;lut.im&lt;/a&gt;, ein anonymer Service ohne Tracking.&lt;/p&gt;"</string>
+    <string name="privacy_html_image_upload">"&lt;p&gt;Fotos die an Notizen angehängt werden, werden hochgeladen auf &lt;a href=\"https://framapic.org\"&gt;framapic.org&lt;/a&gt;, ein anonymer Service ohne Tracking.&lt;/p&gt;"</string>
     <string name="quest_cycleway_value_track">"Fahrradweg"</string>
     <string name="quest_cycleway_value_lane">"Radfahrstreifen"</string>
     <string name="quest_cycleway_value_none">"kein"</string>
@@ -522,4 +522,7 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_construction_footway_title">"Ist dieser Fußgängerweg fertig gebaut?"</string>
     <string name="quest_construction_generic_title">"Ist dieser Weg fertig gebaut?"</string>
     <string name="quest_construction_building_title">"Ist dieses Gebäude fertig gebaut?"</string>
+    <string name="questList_disabled_in_country">"Niemals in %s anzeigen"</string>
+    <string name="quest_toiletAvailability_rest_area_title">"Hat dieser Rastplatz eine Toilette?"</string>
+    <string name="quest_maxspeed_name_title">"Was ist das Geschwindigkeitslimit für %s?"</string>
 </resources>
