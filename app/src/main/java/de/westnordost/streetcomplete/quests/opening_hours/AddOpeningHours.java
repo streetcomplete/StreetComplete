@@ -42,6 +42,10 @@ public class AddOpeningHours extends SimpleOverpassQuestType
 				"museum"
 		};
 
+		String[] offices = {
+			"insurance"
+		};
+
 		return " nodes, ways, relations with ( shop and shop !~ no|vacant or" +
 				" amenity ~ " + TextUtils.join("|", amenities) + " or" +
 				" amenity = bicycle_parking and bicycle_parking = building or" +
@@ -49,7 +53,8 @@ public class AddOpeningHours extends SimpleOverpassQuestType
 				" amenity = recycling and recycling_type = centre or" +
 				" tourism ~ " + TextUtils.join("|", tourism) + " or" +
 				" tourism = information and information = office or" +
-				" leisure ~ " + TextUtils.join("|",leisures) + ")" +
+				" leisure ~ " + TextUtils.join("|",leisures) + " or" +
+				" office ~ " + TextUtils.join("|",offices) + ")" +
 				" and !opening_hours and name" +
 				" and (access !~ private|no)"; // exclude ones without access to general public
 	}
