@@ -31,6 +31,7 @@ import static android.view.Menu.NONE;
 public class AddOpeningHoursForm extends AbstractQuestFormAnswerFragment
 {
 	public static final String OPENING_HOURS = "opening_hours";
+	public static final String NO_SIGN = "no_sign";
 
 	private static final String	OPENING_HOURS_DATA = "oh_data",
 								IS_ADD_MONTHS_MODE = "oh_add_months";
@@ -84,6 +85,7 @@ public class AddOpeningHoursForm extends AbstractQuestFormAnswerFragment
 
 	private void addOtherAnswers()
 	{
+		addOtherAnswer(R.string.quest_openingHours_no_sign, this::confirmNoSign);
 		addOtherAnswer(R.string.quest_openingHours_answer_no_regular_opening_hours, this::showInputCommentDialog);
 		addOtherAnswer(R.string.quest_openingHours_answer_247, this::showConfirm24_7Dialog);
 		addOtherAnswer(R.string.quest_openingHours_answer_seasonal_opening_hours, this::changeToMonthsMode);
@@ -166,6 +168,20 @@ public class AddOpeningHoursForm extends AbstractQuestFormAnswerFragment
 				})
 				.setNegativeButton(android.R.string.no, null)
 				.show();
+	}
+
+	private void confirmNoSign()
+	{
+		new AlertDialogBuilder(getActivity())
+			.setTitle(R.string.quest_openingHours_answer_noSign_confirmation_title)
+			.setPositiveButton(R.string.quest_openingHours_noSign_confirmation_positive, (dialog, which) ->
+			{
+				Bundle data = new Bundle();
+				data.putBoolean(NO_SIGN, true);
+				applyImmediateAnswer(data);
+			})
+			.setNegativeButton(R.string.quest_generic_confirmation_no, null)
+			.show();
 	}
 
 	private void changeToMonthsMode()
