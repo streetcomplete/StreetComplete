@@ -287,12 +287,12 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="quest_wheelchairAccess_bus_station_title">Is this bus station wheelchair accessible?</string>
     <string name="quest_wheelchairAccess_toilets_title">Is this toilet wheelchair accessible?</string>
     <string name="quest_wheelchairAccess_subway_entrance_title">Is this underground entrance wheelchair accessible?</string>
-    <string name="quest_wheelchairAccess_railway_station_title">Is this train station wheelchair accessible?</string>
+    <string name="quest_wheelchairAccess_railway_station_title">Is this railway station wheelchair accessible?</string>
     <string name="quest_wheelchairAccess_location_title">Is this location wheelchair accessible?</string>
     <string name="quest_wheelchairAccess_bus_station_name_title">Is the bus station %s wheelchair accessible?</string>
     <string name="quest_wheelchairAccess_toilets_name_title">Is the toilet %s wheelchair accessible?</string>
     <string name="quest_wheelchairAccess_subway_entrance_name_title">Is the underground entrance %s wheelchair accessible?</string>
-    <string name="quest_wheelchairAccess_railway_station_name_title">Is the train station %s wheelchair accessible?</string>
+    <string name="quest_wheelchairAccess_railway_station_name_title">Is the railway station %s wheelchair accessible?</string>
     <string name="quest_wheelchairAccess_location_name_title">Is the location %s wheelchair accessible?</string>
     <string name="quest_wheelchairAccess_limited">Partially</string>
     <string name="quest_wheelchairAccess_limited_description_business">Partially means that there is no more than a single step to access the business and that most rooms inside are wheelchair accessible.</string>
