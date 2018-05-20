@@ -78,7 +78,10 @@ public class AddMaxSpeed extends SimpleOverpassQuestType
 	@Override public int getIcon() { return R.drawable.ic_quest_max_speed; }
 	@Override public int getTitle(@NonNull Map<String, String> tags)
 	{
-		return R.string.quest_maxspeed_title_short;
+		boolean hasName = tags.containsKey("name");
+
+		if(hasName) return R.string.quest_maxspeed_name_title;
+		else return R.string.quest_maxspeed_title_short;
 	}
 
 	@NonNull @Override public Countries getEnabledForCountries()

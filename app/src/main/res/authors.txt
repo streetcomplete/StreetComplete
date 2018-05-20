@@ -11,6 +11,11 @@ bridge_structure_humpback.jpg  CC-BY-SA 1.0      https://commons.wikimedia.org/w
 bridge_structure_floating.jpg  CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Float_bridge.JPG
 bridge_structure_simple_sus... CC-BY 2.0         https://commons.wikimedia.org/wiki/File:Carrick-a-Rede_Rope_Bridge_(12298726585).jpg
 
+bicycle_parking_type_buildi... CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Bike_Storage_(YAUS).jpg
+bicycle_parking_type_shed.jpg  CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Parking_v%C3%A9los_s%C3%A9curis%C3%A9_gare_des_Martres_2015-08-20.JPG
+bicycle_parking_type_stand.jpg CC0               https://commons.wikimedia.org/wiki/File:Bicycle_parking_stand_2.jpg
+bicycle_parking_type_wheel...  CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Bizikletak_lotzekoa.JPG
+
 car_wash_automated.jpg         CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Carwas.jpg
 car_wash_service.jpg           fair use          http://ctproductsandservices.com/2013/10/splash-car-wash/
 car_wash_self_service.jpg      CC0               https://pixabay.com/en/wash-a-car-the-car-blue-1822415/
