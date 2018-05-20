@@ -95,7 +95,7 @@
     <string name="quest_streetName_answer_noProperStreet_link">"It just links two roads"</string>
     <string name="quest_streetName_answer_noProperStreet_service2">"It is something like a driveway or parking aisle"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Something else (leave note)"</string>
-    <string name="quest_streetName_answer_noProperStreet_track2">"It is an agricultural or forestry road"</string>
+    <string name="quest_streetName_answer_noProperStreet_track2">"It is an agricultural or forest road"</string>
     <string name="quest_streetName_answer_noName_noname">None of the above, it simply has no name</string>
     <string name="about_title_privacy_statement">"Privacy statement"</string>
     <string name="about_summary_privacy_statement">"and data usage"</string>
@@ -121,11 +121,11 @@
     <string name="quest_sport_basketball">"Basketball"</string>
     <string name="quest_sport_golf">"Golf"</string>
     <string name="quest_sport_equestrian">"Equestrian sports"</string>
-    <string name="quest_sport_athletics">"Athletics"</string>
+    <string name="quest_sport_athletics">"Track and field"</string>
     <string name="quest_sport_volleyball">"Volleyball"</string>
     <string name="quest_sport_beachvolleyball">"Beach volleyball"</string>
     <string name="quest_sport_american_football">"American football"</string>
-    <string name="quest_sport_skateboard">"Skateboard"</string>
+    <string name="quest_sport_skateboard">"Skateboarding"</string>
     <string name="quest_sport_bowls">"Bowls"</string>
     <string name="quest_sport_boules">"Boules"</string>
     <string name="quest_sport_shooting">"Shooting"</string>
@@ -198,7 +198,7 @@ To display the map, vector tiles are retrieved from the &lt;a href=\"https://map
     <string name="quest_placeName_title">"What is the name of this place?"</string>
     <string name="quest_sidewalk_title">"Does this street have a sidewalk?"</string>
     <string name="quest_busStopName_title">"What is the name of this bus stop?"</string>
-    <string name="quest_tramStopName_title">"What is the name of this tram stop?"</string>
+    <string name="quest_tramStopName_title">"What is the name of this streetcar stop?"</string>
     <string name="map_orientation_info">"The map is oriented north up."</string>
     <string name="quest_sidewalk_onlyNorth">"Only on northern side"</string>
     <string name="quest_sidewalk_onlySouth">"Only on southern side"</string>
@@ -256,7 +256,7 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="quest_bikeParkingCapacity_hint">"Note that most normal stands can be used from both sides to park each one bike."</string>
     <string name="quest_address_unusualHousenumber_confirmation_description">"This house number looks very unusual."</string>
     <string name="quest_select_hint">"Select:"</string>
-    <string name="quest_sport_manySports_confirmation_description">"Is this pitch designed for exactly these sports specifically (markings and equipment are present) or as a general purpose pitch for all kinds of games?"</string>
+    <string name="quest_sport_manySports_confirmation_description">"Is this sports field designed for exactly these sports specifically (markings and equipment are present) or as a general purpose sports field for all kinds of games?"</string>
     <string name="quest_manySports_confirmation_specific">"Specifically these"</string>
     <string name="quest_manySports_confirmation_generic">"General purpose"</string>
     <string name="quest_sport_manySports_confirmation_title">"You selected many sports"</string>
@@ -418,7 +418,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingLevels_answer_multipleLevels">differs per building part</string>
     <string name="quest_buildingLevels_answer_description">In this case, simply input the values of the highest building part.</string>
     <string name="unglue_hint">Tap to unglue view from position</string>
-    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">Are the carriageways of this road here physically separated (i.e. through a barrier)? The default speed limit depends on whether this is the case or not.</string>
+    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">Are the roadways of this road here physically separated (i.e. through a barrier)? The default speed limit depends on whether this is the case or not.</string>
     <string name="quest_cycleway_value_bus_lane">on bus lane</string>
     <string name="about_category_feedback">Feedback</string>
     <string name="quest_cycleway_value_sidewalk">explicitly shared sidewalk</string>
@@ -452,7 +452,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="pref_title_quests_invalidation">Invalidate quest cache</string>
     <string name="pref_title_quests_invalidation_summary">Useful if you think that some quests are outdated</string>
     <string name="invalidate_confirmation">Invalidate</string>
-    <string name="invalidation_dialog_message">Invalidating the cache causes the quests to be updated next time they are downloaded each. The quest cache is invalidated automatically after one week and immediately when a quest you solved turns out to be already answered by someone else.</string>
+    <string name="invalidation_dialog_message">Invalidating the cache causes the quests to be updated next time they are downloaded. The quest cache is invalidated automatically after one week and immediately when a quest you solved turns out to be already answered by someone else.</string>
     <string name="quest_openingHours_emptyAnswer">You need to describe what is on the sign. If there is no sign, you should ask for the opening hours inside.</string>
     <string name="quest_cycleway_value_none_but_no_oneway">none, but cyclists may use road in both directions</string>
     <string name="quest_generic_looks_like_this">Usually looks like this:</string>
@@ -463,8 +463,8 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_internet_access_wired">Wired (LAN)</string>
     <string name="quest_internet_access_terminal">Computer with Internet access</string>
     <string name="quest_internet_access_no">No connection</string>
-    <string name="quest_busStopShelter_tram_name_title">"Does the tram stop %s have a shelter?"</string>
-    <string name="quest_busStopShelter_tram_title">"Does this tram stop have a shelter?"</string>
+    <string name="quest_busStopShelter_tram_name_title">"Does the streetcar stop %s have a shelter?"</string>
+    <string name="quest_busStopShelter_tram_title">"Does this streetcar stop have a shelter?"</string>
     <string name="quest_bench_backrest_title">Does this bench have a backrest?</string>
     <string name="quest_bench_answer_picnic_table">It’s a picnic table</string>
     <string name="quest_religion_for_place_of_worship_title">What religion is practiced at %s?</string>
@@ -503,7 +503,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_bicycle_parking_type_shed">Shed</string>
     <string name="quest_bicycle_parking_type_locker">Locker</string>
     <string name="quest_bicycle_parking_type_building">Building</string>
-    <string name="quest_bicycle_parking_type_title">What is the type of this bicycle parking?</string>
+    <string name="quest_bicycle_parking_type_title">What type of bicycle parking is this?</string>
     <string name="quest_cycleway_value_suggestion_lane">bicycle suggestion lane</string>
     <string name="quest_postboxCollectionTimes_title">What are the collection times of this postbox?</string>
     <string name="quest_collectionTimes_add_times">Add collection time</string>
@@ -514,6 +514,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_construction_generic_title">Is this way completed?</string>
     <string name="quest_construction_building_title">Is this building completed?</string>
     <string name="questList_disabled_in_country">Never shown in %s</string>
-    <string name="quest_toiletAvailability_rest_area_title">Does this rest area have a toilet?</string>
+    <string name="quest_toiletAvailability_rest_area_title">Does this rest area have restroom facilities?</string>
     <string name="quest_maxspeed_name_title">What is the speed limit sign for %s?</string>
 </resources>
