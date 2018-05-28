@@ -198,6 +198,11 @@ public class AddCycleway implements OsmElementQuestType
 			   // not any explicitly tagged as no bicycles
 			   "[bicycle != no]" +
 			   "[access !~ \"^private|no$\"]" +
+				// some roads may be father than MIN_DIST_TO_CYCLEWAYS from cycleways,
+				// not tagged cycleway=separate/sidepath but may have hint that there is
+				// a separately tagged cycleway
+				"[bicycle != use_sidepath][\"bicycle:backward\" != use_sidepath]" +
+				"[\"bicycle:forward\" != use_sidepath]" +
 			   " -> .streets;" +
 			"(" +
 			   "way[highway=cycleway](around.streets: "+d+");" +
