@@ -11,12 +11,12 @@ public class Item
 
 	public Item(String value, int drawableId)
 	{
-		this(value, drawableId, -1, -1, null);
+		this(value, drawableId, 0, 0, null);
 	}
 
 	public Item(String value, int drawableId, int titleId)
 	{
-		this(value, drawableId, titleId, -1, null);
+		this(value, drawableId, titleId, 0, null);
 	}
 
 	public Item(String value, int drawableId, int titleId, int descriptionId)
@@ -26,7 +26,7 @@ public class Item
 
 	public Item(String value, int drawableId, int titleId, Item[] items)
 	{
-		this(value, drawableId, titleId, -1, items);
+		this(value, drawableId, titleId, 0, items);
 	}
 
 	public Item(String value, int drawableId, int titleId, int descriptionId, Item[] items)
