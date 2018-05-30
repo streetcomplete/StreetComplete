@@ -3,10 +3,11 @@ package de.westnordost.streetcomplete.quests;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 public class DateUtil {
 	public static SimpleDateFormat basicISO8601(){
-		return new SimpleDateFormat("yyyy-MM-dd");
+		return new SimpleDateFormat("yyyy-MM-dd", Locale.US);
 
 	}
 	public static String getOffsetDateStringFromDate(final int offsetInDays, final Date date){

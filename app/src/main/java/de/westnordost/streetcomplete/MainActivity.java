@@ -688,6 +688,7 @@ public class MainActivity extends AppCompatActivity implements
 		notePosition.offset(-mapPosition[0], -mapPosition[1]);
 
 		LatLon position = mapFragment.getPositionAt(notePosition);
+		if(position == null) throw new NullPointerException();
 		questController.createNote(note, imagePaths, position);
 
 		unsyncedChangesCounter.increase(null);

@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.view;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.PixelFormat;
 import android.opengl.GLSurfaceView;
@@ -35,12 +36,14 @@ public class CompassView extends GLSurfaceView
 		setZOrderMediaOverlay(true);
 
 		setRenderer(new CompassRenderer());
+		setRenderMode(RENDERMODE_WHEN_DIRTY);
 	}
 
-	@AnyThread public void setOrientation(float rotation, float tilt)
+	@SuppressLint("WrongThread") @AnyThread public void setOrientation(float rotation, float tilt)
 	{
 		this.rotation = rotation;
 		this.tilt = tilt;
+		requestRender();
 	}
 
 	private class CompassRenderer implements Renderer

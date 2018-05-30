@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="action_settings">"Settings"</string>
-    <string name="oauth_communication_error">"Unable to reach the authorization server"</string>
+    <string name="oauth_communication_error">"Unable to reach the authorisation server"</string>
     <string name="loading">"Loading"</string>
     <string name="retry">"Retry"</string>
-    <string name="oauth_cancelled">"Authorization canceled"</string>
-    <string name="oauth_failed_permissions">"Authorization failed: All listed permissions need to be granted"</string>
+    <string name="oauth_cancelled">"Authorisation cancelled"</string>
+    <string name="oauth_failed_permissions">"Authorisation failed: All listed permissions need to be granted"</string>
     <string name="title_activity_settings">"Settings"</string>
     <string name="pref_category_communication">"Communication"</string>
     <string name="pref_category_display">"Display"</string>
-    <string name="pref_title_authorization">"Authorize OSM access"</string>
-    <string name="pref_title_authorized_username_summary">"Authorized account: %s"</string>
-    <string name="pref_title_authorized_summary">"Authorized"</string>
-    <string name="pref_title_not_authorized_summary">"Not yet authorized"</string>
-    <string name="pref_title_not_authorized_summary2">"Log in from your web browser to authorize"</string>
+    <string name="pref_title_authorization">"Authorise OSM access"</string>
+    <string name="pref_title_authorized_username_summary">"Authorised account: %s"</string>
+    <string name="pref_title_authorized_summary">"Authorised"</string>
+    <string name="pref_title_not_authorized_summary">"Not yet authorised"</string>
+    <string name="pref_title_not_authorized_summary2">"Log in from your web browser to authorise"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
     <string name="pref_tilecache_size_message">"Space in megabytes reserved on external storage to cache map tiles"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Show all notes"</string>
@@ -82,18 +82,18 @@
     <string name="about_summary_repository">"on GitHub"</string>
     <string name="about_title_report_error">"Report error"</string>
     <string name="about_title_feedback">"Give Feedback"</string>
-    <string name="about_title_license">"License"</string>
+    <string name="about_title_license">"Licence"</string>
     <string name="about_summary_license">"GNU General Public License"</string>
     <string name="offline">"You are offline"</string>
-    <string name="confirmation_authorize_now">"You need to authorize with your OSM user account to publish your answers. Authorize now?"</string>
-    <string name="not_authorized">"Not authorized"</string>
+    <string name="confirmation_authorize_now">"You need to authorise with your OSM user account to publish your answers. Authorise now?"</string>
+    <string name="not_authorized">"Not authorised"</string>
     <string name="version_banned_message">"This version of StreetComplete is too old. Please update!"</string>
     <string name="no_gps_no_quests">"To scan for quests around you automatically, turn on location"</string>
     <string name="nothing_more_to_download">"No further quests available"</string>
     <string name="later">"Later"</string>
     <string name="quest_streetName_answer_noName_question">"Why does it have no name?"</string>
     <string name="quest_streetName_answer_noProperStreet_link">"It just links two roads"</string>
-    <string name="quest_streetName_answer_noProperStreet_service2">"It is something like a driveway or parking aisle"</string>
+    <string name="quest_streetName_answer_noProperStreet_service2">"It is something like a drive or parking aisle"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Something else (leave note)"</string>
     <string name="quest_streetName_answer_noProperStreet_track2">"It is an agricultural or forest road"</string>
     <string name="quest_streetName_answer_noName_noname">None of the above, it simply has no name</string>
@@ -106,7 +106,7 @@
     <string name="quest_openingHours_answer_seasonal_opening_hours">"Differs by month"</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">"No regular opening hours"</string>
     <string name="quest_openingHours_comment_title">"Describe opening hours"</string>
-    <string name="quest_openingHours_comment_description">"Be concise, ideally use the wording from the sign, e.g. “by appointment”. The absence of a sign does not necessarily mean that there are no regular opening hours."</string>
+    <string name="quest_openingHours_comment_description">"Be concise, ideally use the wording from the sign, e.g. ‘by appointment’. The absence of a sign does not necessarily mean that there are no regular opening hours."</string>
     <string name="quest_buildingLevels_title">"How many levels does this building have?"</string>
     <string name="quest_buildingLevels_title_buildingPart">"How many levels does this building part have?"</string>
     <string name="quest_roofShape_title">"What basic shape does this building’s roof have?"</string>
@@ -121,7 +121,7 @@
     <string name="quest_sport_basketball">"Basketball"</string>
     <string name="quest_sport_golf">"Golf"</string>
     <string name="quest_sport_equestrian">"Equestrian sports"</string>
-    <string name="quest_sport_athletics">"Track and field"</string>
+    <string name="quest_sport_athletics">"Athletics"</string>
     <string name="quest_sport_volleyball">"Volleyball"</string>
     <string name="quest_sport_beachvolleyball">"Beach volleyball"</string>
     <string name="quest_sport_american_football">"American football"</string>
@@ -196,9 +196,9 @@ To display the map, vector tiles are retrieved from the &lt;a href=\"https://map
     <string name="quest_surface_value_sett">"Sett"</string>
     <string name="quest_surface_value_wood">"Wood"</string>
     <string name="quest_placeName_title">"What is the name of this place?"</string>
-    <string name="quest_sidewalk_title">"Does this street have a sidewalk?"</string>
+    <string name="quest_sidewalk_title">"Is there a pavement along this street?"</string>
     <string name="quest_busStopName_title">"What is the name of this bus stop?"</string>
-    <string name="quest_tramStopName_title">"What is the name of this streetcar stop?"</string>
+    <string name="quest_tramStopName_title">"What is the name of this tram stop?"</string>
     <string name="map_orientation_info">"The map is oriented north up."</string>
     <string name="quest_sidewalk_onlyNorth">"Only on northern side"</string>
     <string name="quest_sidewalk_onlySouth">"Only on southern side"</string>
@@ -220,6 +220,7 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_maxspeed_answer_noSign_info_zone">"If there is a sign like this at the main street intersection, you won’t find individual signs within the zone because the speed limit posted there applies to the whole zone."</string>
     <string name="quest_cyclewaySurface_title">"What surface does the cycleway here have?"</string>
     <string name="quest_cycleway_title2">"Is there a cycleway here? What type?"</string>
+    <string name="quest_buildingType_title">"What kind of building is this?"</string>
     <string name="quest_serviceType_title">"What kind of service road is this?"</string>
     <string name="quest_streetLanes_title">"How many lanes does this road have?"</string>
     <string name="quest_streetLanes_description">"If there are no road markings, it has no lanes."</string>
@@ -255,13 +256,13 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="quest_bikeParkingCapacity_hint">"Note that most normal stands can be used from both sides to park each one bike."</string>
     <string name="quest_address_unusualHousenumber_confirmation_description">"This house number looks very unusual."</string>
     <string name="quest_select_hint">"Select:"</string>
-    <string name="quest_sport_manySports_confirmation_description">"Is this sports field designed for exactly these sports specifically (markings and equipment are present) or as a general purpose sports field for all kinds of games?"</string>
+    <string name="quest_sport_manySports_confirmation_description">"Is this pitch designed for exactly these sports specifically (markings and equipment are present) or as a general purpose pitch for all kinds of games?"</string>
     <string name="quest_manySports_confirmation_specific">"Specifically these"</string>
     <string name="quest_manySports_confirmation_generic">"General purpose"</string>
     <string name="quest_sport_manySports_confirmation_title">"You selected many sports"</string>
     <string name="quest_busStopShelter_name_title">"Does the bus stop %s have a shelter?"</string>
-	<string name="quest_toiletsFee_title">"Does this restroom require a fee?"</string>
-    <string name="quest_baby_changing_table_toilets_title">"Does this restroom have a baby changing table?"</string>
+	<string name="quest_toiletsFee_title">"Does this toilet require a fee?"</string>
+    <string name="quest_baby_changing_table_toilets_title">"Does this toilet have a baby changing table?"</string>
     <string name="quest_baby_changing_table_title">"Does %s have a baby changing table?"</string>
     <string name="quest_way_lit_title">"Is this stretch of way lit?"</string>
     <string name="quest_way_lit_named_title">"Is %s lit here?"</string>
@@ -269,7 +270,7 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="quest_way_lit_automatic">"It uses motion detection"</string>
     <string name="quest_way_lit_24_7">"It’s lit night and day"</string>
     <string name="quest_tactilePaving_title_bus">"Does this bus stop have tactile pavings?"</string>
-    <string name="quest_tactilePaving_title_crosswalk">"Does this crosswalk have tactile pavings on both sides?"</string>
+    <string name="quest_tactilePaving_title_crosswalk">"Does this pedestrian crossing have tactile pavings on both sides?"</string>
     <string name="quest_source_dialog_title">Are you sure you checked this on-site?</string>
     <string name="quest_source_dialog_note">Only information that was found on a survey should be entered.</string>
     <string name="quest_tactilePaving_title_name_bus">"Does the bus stop %s have tactile pavings?"</string>
@@ -284,22 +285,22 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="quest_sport_roller_skating">Roller skating</string>
     <string name="quest_wheelchairAccess_name_title">Is %s wheelchair accessible?</string>
     <string name="quest_wheelchairAccess_bus_station_title">Is this bus station wheelchair accessible?</string>
-    <string name="quest_wheelchairAccess_toilets_title">Is this restroom wheelchair accessible?</string>
-    <string name="quest_wheelchairAccess_subway_entrance_title">Is this subway entrance wheelchair accessible?</string>
-    <string name="quest_wheelchairAccess_railway_station_title">Is this train station wheelchair accessible?</string>
+    <string name="quest_wheelchairAccess_toilets_title">Is this toilet wheelchair accessible?</string>
+    <string name="quest_wheelchairAccess_subway_entrance_title">Is this underground entrance wheelchair accessible?</string>
+    <string name="quest_wheelchairAccess_railway_station_title">Is this railway station wheelchair accessible?</string>
     <string name="quest_wheelchairAccess_location_title">Is this location wheelchair accessible?</string>
     <string name="quest_wheelchairAccess_bus_station_name_title">Is the bus station %s wheelchair accessible?</string>
-    <string name="quest_wheelchairAccess_toilets_name_title">Is the restroom %s wheelchair accessible?</string>
-    <string name="quest_wheelchairAccess_subway_entrance_name_title">Is the subway entrance %s wheelchair accessible?</string>
-    <string name="quest_wheelchairAccess_railway_station_name_title">Is the train station %s wheelchair accessible?</string>
+    <string name="quest_wheelchairAccess_toilets_name_title">Is the toilet %s wheelchair accessible?</string>
+    <string name="quest_wheelchairAccess_subway_entrance_name_title">Is the underground entrance %s wheelchair accessible?</string>
+    <string name="quest_wheelchairAccess_railway_station_name_title">Is the railway station %s wheelchair accessible?</string>
     <string name="quest_wheelchairAccess_location_name_title">Is the location %s wheelchair accessible?</string>
     <string name="quest_wheelchairAccess_limited">Partially</string>
     <string name="quest_wheelchairAccess_limited_description_business">Partially means that there is no more than a single step to access the business and that most rooms inside are wheelchair accessible.</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">Partially means that there is no more than a single step to access it.</string>
-    <string name="quest_wheelchairAccess_description_toilets">A wheelchair sign like this might be visible if the restroom is accessible.
-    Partially means that a wheelchair can enter and use the restroom, but no handrail or adapted hand basin is present.</string>
+    <string name="quest_wheelchairAccess_description_toilets">A wheelchair sign like this might be visible if the toilet is accessible.
+    Partially means that a wheelchair can enter and use the toilet, but no handrail or adapted hand basin is present.</string>
     <string name="quest_recycling_type_title">What type of recycling facility is this?</string>
-    <string name="recycling_centre">Center</string>
+    <string name="recycling_centre">Centre</string>
     <string name="overground_recycling_container">Container</string>
     <string name="underground_recycling_container">Underground container</string>
     <string name="quest_generic_error_a_field_empty">You left a field empty</string>
@@ -311,7 +312,7 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="quest_streetName_cantType_open_store">Visit app store</string>
     <string name="quest_streetName_cantType_description">"If you use a default keyboard, chances are that you can simply enable the keyboard layout for the language you need in the input method settings.
 
-Otherwise, you can download another keyboard in the app store. Popular keyboards that support many languages are Google Gboard, SwiftKey Keyboard, and Multiling O Keyboard."</string>
+Otherwise, you can download another keyboard in the app store. Popular keyboards that support many languages are Google Gboard, SwiftKey Keyboard and Multiling O Keyboard."</string>
     <string name="quest_streetName_menuItem_nolanguage">(unspecified)</string>
     <string name="quest_fireHydrant_type_title">What kind of fire hydrant is this?</string>
     <string name="quest_fireHydrant_type_pillar">Pillar</string>
@@ -324,7 +325,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="credits_contributors_title">Code contributors</string>
     <string name="credits_author_title">Author and maintainer</string>
     <string name="credits_and_more">and more…</string>
-    <string name="quest_maxspeed_answer_living_street">It is a living street</string>
+    <string name="quest_maxspeed_answer_living_street">It is a home zone</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">So, there is a sign like this?</string>
     <string name="quest_crossing_type_title">What kind of crossing is this?</string>
     <string name="quest_crossing_type_signals">Crossing with traffic lights</string>
@@ -370,7 +371,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="produce_papayas">Papayas</string>
     <string name="produce_peaches">Peaches</string>
     <string name="produce_pears">Pears</string>
-    <string name="produce_chili">Chili</string>
+    <string name="produce_chili">Chilli</string>
     <string name="produce_persimmons">Persimmons</string>
     <string name="produce_pineapples">Pineapples</string>
     <string name="produce_pepper">Peppers</string>
@@ -390,16 +391,16 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="produce_brazil_nuts">Brazil nuts</string>
     <string name="produce_tung_nuts">Tung nuts</string>
     <string name="quest_parkingType_title">What kind of parking is this?</string>
-    <string name="quest_parkingType_surface">Parking lot</string>
+    <string name="quest_parkingType_surface">Car park</string>
     <string name="quest_parkingType_underground">Underground garage</string>
-    <string name="quest_parkingType_multiStorage">Parking garage</string>
+    <string name="quest_parkingType_multiStorage">Multistorey</string>
     <string name="quest_dietType_vegetarian_name_title">Does %s have vegetarian meals on the menu?</string>
     <string name="quest_dietType_vegan_name_title">Does %s have vegan meals on the menu?</string>
     <string name="quest_hasFeature_only">Only</string>
     <string name="quest_dietType_explanation_vegan">Vegan meals contain no animal products (no meat, fish, poultry, milk products, eggs, …).</string>
-    <string name="quest_dietType_explanation_vegetarian">Vegetarian meals contain no meat, fish, or poultry.</string>
-    <string name="quest_dietType_explanation">Only answer “yes” if the place provides proper eating options for this diet, ignore starters etc.</string>
-    <string name="quest_toiletAvailability_name_title">Does %s have a restroom?</string>
+    <string name="quest_dietType_explanation_vegetarian">Vegetarian meals contain no meat, fish or poultry.</string>
+    <string name="quest_dietType_explanation">Only answer ‘yes’ if the place provides proper eating options for this diet, ignore starters etc.</string>
+    <string name="quest_toiletAvailability_name_title">Does %s have a toilet?</string>
     <string name="quest_powerPolesMaterial_title">What is the material of this power pole?</string>
     <string name="quest_powerPolesMaterial_wood">Wood</string>
     <string name="quest_powerPolesMaterial_metal">Steel</string>
@@ -417,10 +418,10 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingLevels_answer_multipleLevels">differs per building part</string>
     <string name="quest_buildingLevels_answer_description">In this case, simply input the values of the highest building part.</string>
     <string name="unglue_hint">Tap to unglue view from position</string>
-    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">Are the roadways of this road here physically separated (i.e. through a barrier)? The default speed limit depends on whether this is the case or not.</string>
+    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">Are the carriageways of this road here physically separated (i.e. through a barrier)? The default speed limit depends on whether this is the case or not.</string>
     <string name="quest_cycleway_value_bus_lane">on bus lane</string>
     <string name="about_category_feedback">Feedback</string>
-    <string name="quest_cycleway_value_sidewalk">explicitly shared sidewalk</string>
+    <string name="quest_cycleway_value_sidewalk">explicitly shared-use pavement</string>
     <string name="quest_leave_new_note_create_image_error">Unable to create file for photo</string>
     <string name="quest_carWashType_title">What kind of car wash is this?</string>
     <string name="quest_carWashType_automated">Automated</string>
@@ -428,7 +429,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_carWashType_service">Staff cleans car</string>
     <string name="quest_cycleway_value_lane_dual">cycle lane, both directions</string>
     <string name="quest_cycleway_value_track_dual">cycle track, both directions</string>
-    <string name="quest_cycleway_value_sidewalk_allowed">none, but cyclists are allowed on sidewalk</string>
+    <string name="quest_cycleway_value_sidewalk_allowed">none, but cyclists are allowed on pavement</string>
     <string name="pref_category_advanced">Advanced</string>
     <string name="pref_title_quests">Quest selection</string>
     <string name="quest_enabled">Enabled</string>
@@ -462,11 +463,11 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_internet_access_wired">Wired (LAN)</string>
     <string name="quest_internet_access_terminal">Computer with Internet access</string>
     <string name="quest_internet_access_no">No connection</string>
-    <string name="quest_busStopShelter_tram_name_title">"Does the streetcar stop %s have a shelter?"</string>
-    <string name="quest_busStopShelter_tram_title">"Does this streetcar stop have a shelter?"</string>
+    <string name="quest_busStopShelter_tram_name_title">"Does the tram stop %s have a shelter?"</string>
+    <string name="quest_busStopShelter_tram_title">"Does this tram stop have a shelter?"</string>
     <string name="quest_bench_backrest_title">Does this bench have a backrest?</string>
     <string name="quest_bench_answer_picnic_table">It’s a picnic table</string>
-    <string name="quest_religion_for_place_of_worship_title">What religion is practiced at %s?</string>
+    <string name="quest_religion_for_place_of_worship_title">What religion is practised at %s?</string>
     <string name="quest_religion_christian">Christianity</string>
     <string name="quest_religion_muslim">Islam</string>
     <string name="quest_religion_hindu">Hinduism</string>
@@ -513,87 +514,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_construction_generic_title">Is this way completed?</string>
     <string name="quest_construction_building_title">Is this building completed?</string>
     <string name="questList_disabled_in_country">Never shown in %s</string>
-    <string name="quest_toiletAvailability_rest_area_title">Does this rest area have restroom facilities?</string>
+    <string name="quest_toiletAvailability_rest_area_title">Does this rest area have toilet facilities?</string>
     <string name="quest_maxspeed_name_title">What is the speed limit sign for %s?</string>
-
-    <string name="quest_buildingType_title">"What kind of building is this?"</string>
-    <string name="quest_building_type_generic_building_confirmation">Are you sure that you can not determine the building type more specifically?</string>
-    <string name="quest_building_type_invalid_value">Please select a more specific value! The value you selected is not valid.</string>
-    <string name="quest_buildingType_answer_input_description">Can not determine more specifically</string>
-    <string name="quest_buildingType_comment_title">Describe the building</string>
-    <string name="quest_buildingType_comment_description">Be concise and write a short description of what the intention of the building is</string>
-    <string name="quest_buildingType_comment_emptyAnswer">You need to describe what you can see. If you have no idea what was the original purpose of the building, you can make a guess.</string>
-    <string name="quest_buildingType_multiple_types">There are multiple kinds</string>
-    <string name="quest_buildingType_multiple_types_description">You should select the main purpose of this building. If there is e.g. a shop in the ground floor with apartments above it, you should select apartments.</string>
-
-    <string name="quest_buildingType_residential">Residential</string>
-    <string name="quest_buildingType_house">House</string>
-    <string name="quest_buildingType_apartments">Apartments</string>
-    <string name="quest_buildingType_apartments_description">building arranged into individual flats, may have retail outlets on the ground floor, e.g tenements</string>
-    <string name="quest_buildingType_detached">Detached house</string>
-    <string name="quest_buildingType_detached_description">free-standing house</string>
-    <string name="quest_buildingType_terrace">Terraced house</string>
-    <string name="quest_buildingType_terrace_description">row of residential dwellings, each with its own entrance, also known as row-house or townhouse</string>
-    <string name="quest_buildingType_hotel">Hotel</string>
-    <string name="quest_buildingType_dormitory">Dormitory</string>
-    <string name="quest_buildingType_houseboat">Houseboat</string>
-    <string name="quest_buildingType_bungalow">Bungalow</string>
-    <string name="quest_buildingType_bungalow_description">single-storey flat house, holiday cottage</string>
-    <string name="quest_buildingType_static_caravan">Static caravan</string>
-
-    <string name="quest_buildingType_commercial">Commercial</string>
-    <string name="quest_buildingType_commercial_description">building where general commercial activities take place</string>
-    <string name="quest_buildingType_industrial">Industrial</string>
-    <string name="quest_buildingType_industrial_description">building where industrial process takes place, e.g. factory, service buildings on railway stations</string>
-    <string name="quest_buildingType_retail">Shop</string>
-    <string name="quest_buildingType_warehouse">Warehouse</string>
-    <string name="quest_buildingType_warehouse_description">building for storage of goods</string>
-    <string name="quest_buildingType_kiosk">Kiosk</string>
-
-    <string name="quest_buildingType_religious">Religious</string>
-    <string name="quest_buildingType_church">Church</string>
-    <string name="quest_buildingType_chapel">Chapel</string>
-    <string name="quest_buildingType_cathedral">Cathedral</string>
-    <string name="quest_buildingType_mosque">Mosque</string>
-    <string name="quest_buildingType_temple">Temple</string>
-    <string name="quest_buildingType_synagogue">Synagogue</string>
-
-    <string name="quest_buildingType_civic">Civic building</string>
-    <string name="quest_buildingType_school">School</string>
-    <string name="quest_buildingType_college">College</string>
-    <string name="quest_buildingType_hospital">Hospital</string>
-    <string name="quest_buildingType_public">Public building</string>
-    <string name="quest_buildingType_public_description">accessible to general public, e.g. town hall or court house</string>
-    <string name="quest_buildingType_stadium">Stadium</string>
-    <string name="quest_buildingType_train_station">Train station</string>
-    <string name="quest_buildingType_transportation">Public transportation building</string>
-    <string name="quest_buildingType_university">University</string>
-
-    <string name="quest_buildingType_cars">For cars</string>
-    <string name="quest_buildingType_carport">Carport</string>
-    <string name="quest_buildingType_carport_description">covered structure used to protect vehicles from rain and snow, mostly open on two or more sides</string>
-    <string name="quest_buildingType_garage">Single garage</string>
-    <string name="quest_buildingType_garages">Multiple garages</string>
-    <string name="quest_buildingType_parking">Parking</string>
-
-    <string name="quest_buildingType_farm">Farm</string>
-    <string name="quest_buildingType_farmhouse">Farmhouse</string>
-    <string name="quest_buildingType_farmhouse_description">main building of a farm</string>
-    <string name="quest_buildingType_farm_auxiliary">Other farm building</string>
-    <string name="quest_buildingType_farm_auxiliary_description">any building on a farm that is not a residential building</string>
-    <string name="quest_buildingType_barn">Barn</string>
-    <string name="quest_buildingType_greenhouse">Greenhouse</string>
-
-    <string name="quest_buildingType_other">Other</string>
-    <string name="quest_buildingType_shed">Shed</string>
-    <string name="quest_buildingType_hut">Hut</string>
-    <string name="quest_buildingType_hut_description">small and crude shelter</string>
-    <string name="quest_buildingType_roof">Roof</string>
-    <string name="quest_buildingType_roof_description">open on at least two sides, e.g. roof of a petrol station</string>
-    <string name="quest_buildingType_cabin">Cabin</string>
-    <string name="quest_buildingType_cabin_description">small, roughly built house typically found in rural areas</string>
-    <string name="quest_buildingType_construction">Construction</string>
-    <string name="quest_buildingType_ruins">Ruins</string>
-    <string name="quest_buildingType_service">Service building</string>
-    <string name="quest_buildingType_service_description">building with machinery like pumps or transformers</string>
 </resources>

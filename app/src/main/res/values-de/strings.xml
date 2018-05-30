@@ -522,4 +522,7 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_construction_footway_title">"Ist dieser Fußgängerweg fertig gebaut?"</string>
     <string name="quest_construction_generic_title">"Ist dieser Weg fertig gebaut?"</string>
     <string name="quest_construction_building_title">"Ist dieses Gebäude fertig gebaut?"</string>
+    <string name="questList_disabled_in_country">"Niemals in %s anzeigen"</string>
+    <string name="quest_toiletAvailability_rest_area_title">"Hat dieser Rastplatz eine Toilette?"</string>
+    <string name="quest_maxspeed_name_title">"Was ist das Geschwindigkeitslimit für %s?"</string>
 </resources>

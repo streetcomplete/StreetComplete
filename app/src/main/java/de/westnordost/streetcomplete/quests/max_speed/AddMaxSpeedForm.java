@@ -174,7 +174,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 	{
 		if(getCountryInfo().getCountryCode().equals("GB"))
 		{
-			askSingleOrDualCarriageway();
+			determineLit(() -> applyNoSignAnswer("nsl_restricted"), () -> askSingleOrDualCarriageway());
 		}
 		else
 		{
@@ -225,6 +225,23 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 				.setPositiveButton(R.string.quest_maxspeed_answer_noSign_urbanOk, (dialog, which) -> applyNoSignAnswer("urban"))
 				.setNeutralButton(R.string.quest_maxspeed_answer_noSign_ruralOk, (dialog, which) -> applyNoSignAnswer("rural"))
 				.show();
+	}
+
+	private void determineLit(Runnable onYes, Runnable onNo)
+	{
+		String lit = getOsmElement().getTags().get("lit");
+		if("yes".equals(lit)) onYes.run();
+		else if("no".equals(lit)) onNo.run();
+		else askLit(onYes, onNo);
+	}
+
+	private void askLit(Runnable onYes, Runnable onNo)
+	{
+		new AlertDialogBuilder(getActivity())
+			.setMessage(R.string.quest_way_lit_road_title)
+			.setPositiveButton(R.string.quest_generic_hasFeature_yes, (dialog, which) -> onYes.run())
+			.setNegativeButton(R.string.quest_generic_hasFeature_no, (dialog, which) -> onNo.run())
+			.show();
 	}
 
 	private void askSingleOrDualCarriageway()
