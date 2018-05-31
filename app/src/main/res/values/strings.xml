@@ -516,7 +516,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_toiletAvailability_rest_area_title">Does this rest area have restroom facilities?</string>
     <string name="quest_maxspeed_name_title">What is the speed limit sign for %s?</string>
 
-    <string name="quest_buildingType_title">"What kind of building is this?"</string>
+    <string name="quest_buildingType_title2">"What was this building constructed as?"</string>
     <string name="quest_building_type_generic_building_confirmation">Are you sure that you can not determine the building type more specifically?</string>
     <string name="quest_building_type_invalid_value">Please select a more specific value.</string>
     <string name="quest_buildingType_answer_input_description">Can\'t say more specifically</string>
