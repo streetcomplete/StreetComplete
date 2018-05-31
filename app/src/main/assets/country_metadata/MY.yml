@@ -1,6 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [en]
 isLeftHandTraffic: true
+mobileCountryCode: 502
 officialLanguages: [ms]
 orchardProduces: [palm_oil, rubber, coconut, banana, cacao, guava, mango, mangosteen, pepper, pineapple,
   cashew_nut, coffee, orange, chilli_pepper, sweet_pepper, tomatoe, papaya, tea]

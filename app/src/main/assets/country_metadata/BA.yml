@@ -1,6 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
 isLivingStreetKnown: true
 isSlowZoneKnown: true
+mobileCountryCode: 218
 officialLanguages: [bs, hr, sr]
 orchardProduces: [plum, apple, pear, grape, tomatoe, chilli_pepper, sweet_pepper, cherry, peach, walnut,
   chestnut, raspberry, strawberry, apricot, fig, avocado]

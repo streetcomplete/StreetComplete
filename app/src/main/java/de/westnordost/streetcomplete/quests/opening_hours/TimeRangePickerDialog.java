@@ -12,6 +12,7 @@ import android.widget.CheckBox;
 import android.widget.TimePicker;
 
 import de.westnordost.streetcomplete.R;
+import de.westnordost.streetcomplete.quests.opening_hours.model.TimeRange;
 
 public class TimeRangePickerDialog extends AlertDialog implements View.OnClickListener
 {

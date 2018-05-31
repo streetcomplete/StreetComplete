@@ -1,13 +1,10 @@
 # Do not edit. Source files are in /res/country_metadata
-advisorySpeedLimitLayout: quest_maxspeed_advisory_blue
 firstDayOfWorkweek: Mo
 heightUnit: [m]
 isAdvisorySpeedLimitKnown: false
 isLeftHandTraffic: false
 isLivingStreetKnown: false
 isSlowZoneKnown: false
-livingStreetSign: ic_living_street
-maxspeedLayout: quest_maxspeed
 officialLanguages: [en]
 orchardProduces: []
 popularReligions: []

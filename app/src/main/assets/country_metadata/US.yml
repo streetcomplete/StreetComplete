@@ -1,8 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
-advisorySpeedLimitLayout: quest_maxspeed_advisory_yellow
 heightUnit: [ft]
 isAdvisorySpeedLimitKnown: true
-maxspeedLayout: quest_maxspeed_us
+mobileCountryCode: 310
 officialLanguages: [en]
 orchardProduces: [grape, almond, tomatoe, apple, walnut, pistachio, peach, blueberry, grapefruit, plum,
   chilli_pepper, sweet_pepper, strawberry, avocado, orange, lemon, lime]

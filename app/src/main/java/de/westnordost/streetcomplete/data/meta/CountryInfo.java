@@ -10,10 +10,10 @@ public class CountryInfo implements Serializable, Cloneable
 {
 	public static final long serialVersionUID = 1L;
 
-	// this value is not defined in the yaml file but it is the file name!
+	// this value is not defined in the yaml file but it is the ISO language code part of the file name!
+	// i.e. US for US-TX.yml
 	String countryCode;
 
-	// generic properties
 	List<String> speedUnit;
 	List<String> heightUnit;
 	List<String> popularSports;
@@ -28,11 +28,7 @@ public class CountryInfo implements Serializable, Cloneable
 	List<String> orchardProduces;
 	Boolean isAdvisorySpeedLimitKnown;
 	Boolean isLeftHandTraffic;
-
-	// streetcomplete specific (layout files etc)
-	String maxspeedLayout;
-	String livingStreetSign;
-	String advisorySpeedLimitLayout;
+	Integer mobileCountryCode;
 
 	public List<String> getSpeedUnits()
 	{
@@ -64,16 +60,6 @@ public class CountryInfo implements Serializable, Cloneable
 	public Integer getRegularShoppingDays()
 	{
 		return regularShoppingDays;
-	}
-
-	public String getMaxspeedLayout()
-	{
-		return maxspeedLayout;
-	}
-
-	public String getAdvisorySpeedLimitLayout()
-	{
-		return advisorySpeedLimitLayout;
 	}
 
 	public boolean isSlowZoneKnown()
@@ -118,11 +104,6 @@ public class CountryInfo implements Serializable, Cloneable
 		return isLivingStreetKnown;
 	}
 
-	public String getLivingStreetSign()
-	{
-		return livingStreetSign;
-	}
-
 	public List<String> getOrchardProduces()
 	{
 		if(orchardProduces == null) return new ArrayList<>(1);
@@ -137,5 +118,10 @@ public class CountryInfo implements Serializable, Cloneable
 	public boolean isLeftHandTraffic()
 	{
 		return isLeftHandTraffic;
+	}
+
+	public Integer getMobileCountryCode()
+	{
+		return mobileCountryCode;
 	}
 }

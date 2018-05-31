@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.settings;
 
+import android.content.SharedPreferences;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
@@ -11,11 +12,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.Collections;
+import java.util.List;
+import java.util.Locale;
+import java.util.concurrent.FutureTask;
 
 import javax.inject.Inject;
 
+import de.westnordost.countryboundaries.CountryBoundaries;
+import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.QuestType;
+import de.westnordost.streetcomplete.data.osm.Countries;
+import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestType;
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderList;
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeDao;
@@ -31,14 +39,20 @@ public class QuestSelectionAdapter extends ListAdapter<QuestSelectionAdapter.Que
 {
 	private final VisibleQuestTypeDao visibleQuestTypeDao;
 	private final QuestTypeOrderList questTypeOrderList;
-
+	private final String currentCountryCode;
 
 	@Inject public QuestSelectionAdapter(
-			VisibleQuestTypeDao visibleQuestTypeDao, QuestTypeOrderList questTypeOrderList)
+		VisibleQuestTypeDao visibleQuestTypeDao, QuestTypeOrderList questTypeOrderList,
+		FutureTask<CountryBoundaries> countryBoundaries, SharedPreferences prefs)
 	{
 		super();
 		this.visibleQuestTypeDao = visibleQuestTypeDao;
 		this.questTypeOrderList = questTypeOrderList;
+
+		double lat = Double.longBitsToDouble(prefs.getLong(Prefs.MAP_LATITUDE, Double.doubleToLongBits(0)));
+		double lng = Double.longBitsToDouble(prefs.getLong(Prefs.MAP_LONGITUDE, Double.doubleToLongBits(0)));
+		try	{ currentCountryCode = getCountryCode(countryBoundaries.get(), lng, lat); }
+		catch (Exception e)	{ throw new RuntimeException(e);	}
 	}
 
 	@Override public void onAttachedToRecyclerView(RecyclerView recyclerView)
@@ -54,6 +68,13 @@ public class QuestSelectionAdapter extends ListAdapter<QuestSelectionAdapter.Que
 		View layout = LayoutInflater.from(parent.getContext())
 				.inflate(R.layout.row_quest_selection, parent, false);
 		return new QuestVisibilityViewHolder(layout);
+	}
+
+	private static String getCountryCode(CountryBoundaries boundaries, double lng, double lat)
+	{
+		List<String> ids = boundaries.getIds(lng, lat);
+		if(ids.isEmpty()) return null;
+		return ids.get(0).split("-")[0];
 	}
 
 	private class TouchHelperCallback extends ItemTouchHelper.Callback
@@ -132,7 +153,9 @@ public class QuestSelectionAdapter extends ListAdapter<QuestSelectionAdapter.Que
 		private ImageView iconView;
 		private TextView textView;
 		private CheckBox checkBox;
+		private TextView textCountryDisabled;
 		private QuestVisibility item;
+
 
 		public QuestVisibilityViewHolder(View itemView)
 		{
@@ -140,6 +163,7 @@ public class QuestSelectionAdapter extends ListAdapter<QuestSelectionAdapter.Que
 			iconView = itemView.findViewById(R.id.imageView);
 			textView = itemView.findViewById(R.id.textView);
 			checkBox = itemView.findViewById(R.id.checkBox);
+			textCountryDisabled = itemView.findViewById(R.id.textCountryDisabled);
 		}
 
 		@Override protected void onBind(final QuestVisibility item)
@@ -154,7 +178,31 @@ public class QuestSelectionAdapter extends ListAdapter<QuestSelectionAdapter.Que
 			checkBox.setEnabled(item.isInteractionEnabled());
 			checkBox.setOnCheckedChangeListener(this);
 
+			if(!isEnabledInCurrentCountry())
+			{
+				textCountryDisabled.setText(String.format(
+					textCountryDisabled.getResources().getString(R.string.questList_disabled_in_country),
+					new Locale("", currentCountryCode).getDisplayCountry()
+				));
+				textCountryDisabled.setVisibility(View.VISIBLE);
+			}
+			else
+			{
+				textCountryDisabled.setVisibility(View.GONE);
+			}
+
 			updateSelectionStatus();
+		}
+
+		private boolean isEnabledInCurrentCountry()
+		{
+			if(item.questType instanceof OsmElementQuestType && currentCountryCode != null)
+			{
+				OsmElementQuestType questType = (OsmElementQuestType) item.questType;
+				Countries countries = questType.getEnabledForCountries();
+				return countries.isAllExcept() ^ countries.getExceptions().contains(currentCountryCode);
+			}
+			return true;
 		}
 
 		private void updateSelectionStatus()

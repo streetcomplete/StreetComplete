@@ -1,6 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [en]
 isSlowZoneKnown: true
+mobileCountryCode: 294
 officialLanguages: [mk, sq]
 orchardProduces: [grape, apple, plum, walnut, olive, tomatoe, pear, peach, cherry, strawberry, chilli_pepper,
   sweet_pepper, apricot, almond, chestnut, cranberry]

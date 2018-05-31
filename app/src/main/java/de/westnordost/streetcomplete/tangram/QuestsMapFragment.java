@@ -194,7 +194,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		LngLat pos = getCenterWithOffset(g);
 		controller.setZoom(currentZoom);
 
-		controller.setPositionEased(pos, 500);
+		if(pos != null) controller.setPositionEased(pos, 500);
 		controller.setZoomEased(targetZoom, 500);
 
 		updateView();
@@ -210,6 +210,8 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		LngLat offsetCenter = controller.screenPositionToLngLat(new PointF(
 				questOffset.left + (w - questOffset.left - questOffset.right)/2,
 				questOffset.top + (h - questOffset.top - questOffset.bottom)/2));
+
+		if(normalCenter == null || offsetCenter == null) return null;
 
 		LngLat pos = TangramConst.toLngLat(geometry.center);
 		pos.latitude -= offsetCenter.latitude - normalCenter.latitude;
@@ -467,6 +469,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		Double latMin = null, lonMin = null, latMax = null, lonMax = null;
 		for (LatLon position : positions)
 		{
+			if(position == null) return null;
 			double lat = position.getLatitude();
 			double lon = position.getLongitude();
 
@@ -481,7 +484,9 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 
 	public LatLon getPositionAt(PointF pointF)
 	{
-		return TangramConst.toLatLon(controller.screenPositionToLngLat(pointF));
+		LngLat pos = controller.screenPositionToLngLat(pointF);
+		if(pos == null) return null;
+		return TangramConst.toLatLon(pos);
 	}
 
 	public LatLon getPosition()

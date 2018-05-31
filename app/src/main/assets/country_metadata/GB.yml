@@ -1,11 +1,11 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [cy, gd]
-advisorySpeedLimitLayout: quest_maxspeed_advisory_white
 heightUnit: [ft, m]
 isAdvisorySpeedLimitKnown: true
 isLeftHandTraffic: true
 isLivingStreetKnown: true
 isSlowZoneKnown: true
+mobileCountryCode: 234
 officialLanguages: [en]
 orchardProduces: [apple, strawberry, raspberry, pear, plum, cherry, hop, grape, tomatoe, chilli_pepper,
   sweet_pepper]

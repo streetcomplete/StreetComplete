@@ -32,6 +32,12 @@ public class StringMapChangesBuilderTest extends TestCase
 		fail();
 	}
 
+	public void testDeleteIfExistsNonExistingDoesNotFail()
+	{
+		StringMapChangesBuilder builder = new StringMapChangesBuilder(createMap());
+		builder.deleteIfExists("does not exist");
+	}
+
 	public void testAdd()
 	{
 		StringMapChangesBuilder builder = new StringMapChangesBuilder(createMap());
@@ -69,6 +75,12 @@ public class StringMapChangesBuilderTest extends TestCase
 		assertEquals("exists", change.key);
 		assertEquals("like this", change.valueBefore);
 		assertEquals("like that", change.value);
+	}
+
+	public void testModifyIfExistsNonExistingDoesNotFail()
+	{
+		StringMapChangesBuilder builder = new StringMapChangesBuilder(createMap());
+		builder.modifyIfExists("does not exist","bla");
 	}
 
 	public void testDuplicateChange()

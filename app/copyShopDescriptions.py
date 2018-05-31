@@ -2,7 +2,7 @@ import os
 import re
 
 source_dir = "src/main/res/"
-target_dir = "../metadata/"
+target_dir = "../fastlane/metadata/android/"
 
 def copy_key_from_strings_xml_to_file(xml, key, filename):
 	match = re.search("<string name=\"" + key + "\">\"?(.*?)\"?</string>", xml, re.DOTALL)

@@ -1,6 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
 heightUnit: [ft, m]
 isLeftHandTraffic: true
+mobileCountryCode: 549
 officialLanguages: [sm, en]
 popularSports: [cricket]
 speedUnit: [mph, km/h]
