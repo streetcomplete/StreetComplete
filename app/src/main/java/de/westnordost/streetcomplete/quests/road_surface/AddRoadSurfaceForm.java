@@ -67,9 +67,9 @@ public class AddRoadSurfaceForm extends AbstractQuestFormAnswerFragment
 	{
 		View view = super.onCreateView(inflater, container, savedInstanceState);
 
-		View contentView = setContentView(R.layout.quest_street_surface);
+		View contentView = setContentView(R.layout.quest_image_select);
 
-		RecyclerView surfaceSelect = contentView.findViewById(R.id.surfaceSelect);
+		RecyclerView surfaceSelect = contentView.findViewById(R.id.imageSelect);
 		GridLayoutManager lm = new GridLayoutManager(getActivity(), 3);
 		surfaceSelect.setLayoutManager(lm);
 		surfaceSelect.setNestedScrollingEnabled(false);

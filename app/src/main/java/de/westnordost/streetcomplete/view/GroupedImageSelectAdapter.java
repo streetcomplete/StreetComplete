@@ -1,23 +1,25 @@
 package de.westnordost.streetcomplete.view;
 
+import android.support.annotation.NonNull;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import de.westnordost.streetcomplete.R;
 
-
-public class GroupedImageSelectAdapter extends RecyclerView.Adapter<GroupedImageSelectAdapter.ViewHolder>
+/** Select one items from a groupable list of items */
+public class GroupedImageSelectAdapter extends RecyclerView.Adapter<ItemViewHolder>
 {
 	private final static int GROUP = 0;
 	private final static int CELL = 1;
+
+	private int cellLayoutId = R.layout.cell_labeled_image_select;
+	private int groupCellLayoutId = R.layout.cell_panorama_select;
 
 	private ArrayList<Item> items = new ArrayList<>();
 	private Item selectedItem;
@@ -28,9 +30,19 @@ public class GroupedImageSelectAdapter extends RecyclerView.Adapter<GroupedImage
 		{
 			@Override public int getSpanSize(int position)
 			{
-				return items.get(position).isGroup() ? 3 : 1;
+				return items.get(position).isGroup() ? gridLayoutManager.getSpanCount() : 1;
 			}
 		});
+	}
+
+	public void setCellLayout(int cellLayoutId)
+	{
+		this.cellLayoutId = cellLayoutId;
+	}
+
+	public void setGroupCellLayout(int groupCellLayoutId)
+	{
+		this.groupCellLayoutId = groupCellLayoutId;
 	}
 
 	public void setItems(List<Item> items)
@@ -40,30 +52,25 @@ public class GroupedImageSelectAdapter extends RecyclerView.Adapter<GroupedImage
 		notifyDataSetChanged();
 	}
 
-	@Override public GroupedImageSelectAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
+	@NonNull @Override
+	public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
 	{
-		int layoutId = viewType == GROUP ?
-				R.layout.cell_panorama_select : R.layout.cell_labeled_image_select;
+		int layoutId = viewType == GROUP ? groupCellLayoutId : cellLayoutId;
 		View view = LayoutInflater.from(parent.getContext()).inflate(layoutId, parent, false);
-		return new ViewHolder(view);
+		ItemViewHolder holder = new ItemViewHolder(view);
+		holder.setOnClickListener(this::toggle);
+		return holder;
 	}
 
-	@Override public void onBindViewHolder(final GroupedImageSelectAdapter.ViewHolder viewHolder, final int position)
+	@Override public void onBindViewHolder(@NonNull ItemViewHolder holder, int position)
 	{
-		Item item = items.get(position);
-		final boolean isSelected = selectedItem != null && items.indexOf(selectedItem) == position;
-
-		viewHolder.imageView.setImageResource(item.drawableId);
-		viewHolder.textView.setText(item.titleId);
-		viewHolder.itemView.setSelected(isSelected);
+		holder.bind(items.get(position));
+		holder.setSelected(selectedItem != null && items.indexOf(selectedItem) == position);
 	}
 
-	public Item getSelectedItem()
-	{
-		return selectedItem;
-	}
+	public Item getSelectedItem() { return selectedItem; }
 
-	private void onSelect(int index)
+	private void toggle(int index)
 	{
 		Item prevSelectedItem = selectedItem;
 		if(selectedItem == null || prevSelectedItem != items.get(index))
@@ -129,31 +136,10 @@ public class GroupedImageSelectAdapter extends RecyclerView.Adapter<GroupedImage
 		notifyItemRangeRemoved(index + 1, item.items.length);
 	}
 
-	@Override public int getItemCount()
-	{
-		return items.size();
-	}
+	@Override public int getItemCount() { return items.size(); }
 
 	@Override public int getItemViewType(int position)
 	{
 		return items.get(position).isGroup() ? GROUP : CELL;
-	}
-
-	public class ViewHolder extends RecyclerView.ViewHolder
-	{
-		ImageView imageView;
-		TextView textView;
-
-		public ViewHolder(View itemView)
-		{
-			super(itemView);
-			imageView = itemView.findViewById(R.id.imageView);
-			textView = itemView.findViewById(R.id.textView);
-			itemView.setOnClickListener(v ->
-			{
-				int index = getAdapterPosition();
-				if(index != RecyclerView.NO_POSITION) onSelect(getAdapterPosition());
-			});
-		}
 	}
 }

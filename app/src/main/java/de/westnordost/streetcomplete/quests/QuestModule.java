@@ -17,6 +17,7 @@ import de.westnordost.streetcomplete.quests.bike_parking_type.AddBikeParkingType
 import de.westnordost.streetcomplete.quests.bikeway.AddCycleway;
 import de.westnordost.streetcomplete.quests.bridge_structure.AddBridgeStructure;
 import de.westnordost.streetcomplete.quests.building_levels.AddBuildingLevels;
+import de.westnordost.streetcomplete.quests.building_type.AddBuildingType;
 import de.westnordost.streetcomplete.quests.localized_name.AddBusStopName;
 import de.westnordost.streetcomplete.quests.bus_stop_shelter.AddBusStopShelter;
 import de.westnordost.streetcomplete.quests.car_wash_type.AddCarWashType;
@@ -97,6 +98,7 @@ public class QuestModule
 				// ↓ 4. definitely shown as errors in QA tools
 
 				// ↓ 5. may be shown as missing in QA tools
+				new AddBuildingType(o),
 
 				// ↓ 6. may be shown as possibly missing in QA tools
 
