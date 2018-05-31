@@ -34,9 +34,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.7071068"
-     inkscape:cx="946.34718"
-     inkscape:cy="489.20052"
+     inkscape:zoom="0.25000001"
+     inkscape:cx="717.41943"
+     inkscape:cy="337.15383"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -46,11 +46,11 @@
      inkscape:measure-end="0,0"
      inkscape:guide-bbox="true"
      inkscape:lockguides="true"
-     inkscape:window-width="1920"
-     inkscape:window-height="1017"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
-     inkscape:window-maximized="1"
+     inkscape:window-width="741"
+     inkscape:window-height="403"
+     inkscape:window-x="1144"
+     inkscape:window-y="86"
+     inkscape:window-maximized="0"
      units="px">
     <inkscape:grid
        type="xygrid"
@@ -76,7 +76,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -93,7 +93,7 @@
        inkscape:label="#rect4680" />
     <g
        transform="matrix(0.26458333,0,0,0.26458333,195.79787,158.09435)"
-       id="public"
+       id="civic"
        inkscape:export-xdpi="95.983444"
        inkscape:export-ydpi="95.983444"
        inkscape:label="#g8992-4-3">
@@ -726,7 +726,7 @@
     </g>
     <g
        transform="translate(169.33338,-6.3499875)"
-       id="cabin"
+       id="bungalow"
        inkscape:label="#g11145-1">
       <path
          style="fill:#deb486;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -3316,7 +3316,8 @@
     </g>
     <g
        transform="matrix(0.85075406,0,0,-0.85075406,237.80549,159.38521)"
-       id="g10-4-2-9">
+       id="car"
+       inkscape:label="#g10-4-2-9">
       <g
          id="g12-3-2-9">
         <g
