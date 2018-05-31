@@ -44,11 +44,11 @@ public class AddBuildingTypeForm extends AbstractQuestFormAnswerFragment
 		KIOSK =        new Item("kiosk",      R.drawable.ic_building_kiosk,      R.string.quest_buildingType_kiosk),
 		STORAGE_TANK = new Item("man_made=storage_tank", R.drawable.ic_building_storage_tank, R.string.quest_buildingType_storage_tank),
 
-		KINDERGARTEN = new Item("kindergarten", R.drawable.ic_building_school, /* TODO icon */  R.string.quest_buildingType_kindergarten),
+		KINDERGARTEN = new Item("kindergarten", R.drawable.ic_building_kindergarten, R.string.quest_buildingType_kindergarten),
 		SCHOOL =       new Item("school",     R.drawable.ic_building_school,     R.string.quest_buildingType_school),
-		COLLEGE =      new Item("college",    R.drawable.ic_building_school, /* TODO icon? */    R.string.quest_buildingType_college),
+		COLLEGE =      new Item("college",    R.drawable.ic_building_college,    R.string.quest_buildingType_college),
 		HOSPITAL =     new Item("hospital",   R.drawable.ic_building_hospital,   R.string.quest_buildingType_hospital),
-		STADIUM =      new Item("stadium",    R.drawable.ic_building_stadium,    R.string.quest_buildingType_stadium),
+		STADIUM =      new Item("stadium",    R.drawable.ic_sport_volleyball,    R.string.quest_buildingType_stadium),
 		TRAIN_STATION =	new Item("train_station", R.drawable.ic_building_train_station, R.string.quest_buildingType_train_station),
 		TRANSPORTATION = new Item("transportation", R.drawable.ic_building_transportation, R.string.quest_buildingType_transportation),
 		UNIVERSITY =   new Item("university", R.drawable.ic_building_university, R.string.quest_buildingType_university),
@@ -81,7 +81,7 @@ public class AddBuildingTypeForm extends AbstractQuestFormAnswerFragment
 	};
 
 	private final Item[] ALL_BUILDINGS = new Item[] {
-			new Item("residential", R.drawable.ic_building_apartments /* TODO icon */, R.string.quest_buildingType_residential, R.string.quest_buildingType_residential_description, new Item[]{
+			new Item("residential", R.drawable.ic_building_apartments, R.string.quest_buildingType_residential, R.string.quest_buildingType_residential_description, new Item[]{
 					DETACHED, APARTMENTS, SEMI_DETACHED, TERRACE, FARM, HOUSE,
 					HUT, BUNGALOW, HOUSEBOAT, STATIC_CARAVAN, DORMITORY,
 			}),
@@ -101,7 +101,7 @@ public class AddBuildingTypeForm extends AbstractQuestFormAnswerFragment
 			new Item(null, R.drawable.ic_building_farm, R.string.quest_buildingType_farm, new Item[]{
 					FARM, FARM_AUXILIARY, GREENHOUSE
 			}),
-			new Item(null, R.drawable.ic_building_shed /* TODO icon */, R.string.quest_buildingType_other, new Item[]{
+			new Item(null, R.drawable.ic_building_other, R.string.quest_buildingType_other, new Item[]{
 					SHED, ROOF, SERVICE
 			}),
 	};

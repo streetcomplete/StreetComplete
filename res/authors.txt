@@ -20,6 +20,7 @@ building_icons.svg
     car                         modified from Twemoji 2: U+1F698
     carport                     parts taken from Twemoji 2: U+1F698
     civic
+    college
     commercial
     detached
     dormitory
@@ -34,7 +35,9 @@ building_icons.svg
     houseboat                   parts taken from Twemoji 2: U+26F4
     hut
     industrial
+    kindergarten
     kiosk
+    other
     parking                     parts taken from Twemoji 2: U+1F698
     retail
     roof
