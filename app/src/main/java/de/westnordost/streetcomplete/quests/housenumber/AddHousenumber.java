@@ -37,7 +37,7 @@ public class AddHousenumber implements OsmElementQuestType
 		"[!'addr:housenumber'][!'addr:housename'][!'addr:conscriptionnumber'][!'addr:streetnumber']";
 
 	private static final String BUILDINGS_WITHOUT_ADDRESS_FILTER =
-		"['building'~'^(house|residential|apartments|detached|terrace|hotel|dormitory|houseboat|" +
+		"['building'~'^(house|residential|apartments|detached|terrace|hotel|dormitory|semi|semidetached_house|farm|" +
 			"school|civic|college|university|public|hospital|kindergarten|train_station|" +
 			"retail|commercial)$'][location!=underground]" + NO_ADDRESS_FILTER;
 
