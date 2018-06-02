@@ -25,59 +25,57 @@ public class AddBuildingTypeForm extends AbstractQuestFormAnswerFragment
 		BUILDING_DESCRIPTION = "building_description";
 
 	private static final Item
-		HOUSE =        new Item("house",      R.drawable.ic_building_house,      R.string.quest_buildingType_house, R.string.quest_buildingType_house_description),
-		APARTMENTS =   new Item("apartments", R.drawable.ic_building_apartments, R.string.quest_buildingType_apartments, R.string.quest_buildingType_apartments_description),
-		DETACHED =     new Item("detached",   R.drawable.ic_building_detached,   R.string.quest_buildingType_detached, R.string.quest_buildingType_detached_description),
-		SEMI_DETACHED =new Item("semidetached_house", R.drawable.ic_building_semi_detached, R.string.quest_buildingType_semi_detached, R.string.quest_buildingType_semi_detached_description),
-		TERRACE =      new Item("terrace",    R.drawable.ic_building_terrace,    R.string.quest_buildingType_terrace, R.string.quest_buildingType_terrace_description),
-		HOTEL =	       new Item("hotel",      R.drawable.ic_building_hotel,      R.string.quest_buildingType_hotel),
-		DORMITORY =    new Item("dormitory",  R.drawable.ic_building_dormitory,  R.string.quest_buildingType_dormitory),
-		HOUSEBOAT =    new Item("houseboat",  R.drawable.ic_building_houseboat,  R.string.quest_buildingType_houseboat),
-		BUNGALOW =     new Item("bungalow",   R.drawable.ic_building_bungalow,   R.string.quest_buildingType_bungalow, R.string.quest_buildingType_bungalow_description),
-		STATIC_CARAVAN = new Item("static_caravan", R.drawable.ic_building_static_caravan, R.string.quest_buildingType_static_caravan),
-		HUT =          new Item("hut",        R.drawable.ic_building_hut,        R.string.quest_buildingType_hut, R.string.quest_buildingType_hut_description),
+		HOUSE =         new Item("house",      R.drawable.ic_building_house,      R.string.quest_buildingType_house, R.string.quest_buildingType_house_description),
+		APARTMENTS =    new Item("apartments", R.drawable.ic_building_apartments, R.string.quest_buildingType_apartments, R.string.quest_buildingType_apartments_description),
+		DETACHED =      new Item("detached",   R.drawable.ic_building_detached,   R.string.quest_buildingType_detached, R.string.quest_buildingType_detached_description),
+		SEMI_DETACHED = new Item("semidetached_house", R.drawable.ic_building_semi_detached, R.string.quest_buildingType_semi_detached, R.string.quest_buildingType_semi_detached_description),
+		TERRACE =       new Item("terrace",    R.drawable.ic_building_terrace,    R.string.quest_buildingType_terrace, R.string.quest_buildingType_terrace_description),
+		HOTEL =	        new Item("hotel",      R.drawable.ic_building_hotel,      R.string.quest_buildingType_hotel),
+		DORMITORY =     new Item("dormitory",  R.drawable.ic_building_dormitory,  R.string.quest_buildingType_dormitory),
+		HOUSEBOAT =     new Item("houseboat",  R.drawable.ic_building_houseboat,  R.string.quest_buildingType_houseboat),
+		BUNGALOW =      new Item("bungalow",   R.drawable.ic_building_bungalow,   R.string.quest_buildingType_bungalow, R.string.quest_buildingType_bungalow_description),
+		STATIC_CARAVAN =new Item("static_caravan", R.drawable.ic_building_static_caravan, R.string.quest_buildingType_static_caravan),
+		HUT =           new Item("hut",        R.drawable.ic_building_hut,        R.string.quest_buildingType_hut, R.string.quest_buildingType_hut_description),
 
-		COMMERCIAL =   new Item("commercial", R.drawable.ic_building_commercial, R.string.quest_buildingType_commercial, R.string.quest_buildingType_commercial_description),
-		INDUSTRIAL =   new Item("industrial", R.drawable.ic_building_industrial, R.string.quest_buildingType_industrial, R.string.quest_buildingType_industrial_description),
-		RETAIL =       new Item("retail",     R.drawable.ic_building_retail,     R.string.quest_buildingType_retail),
-		WAREHOUSE =    new Item("warehouse",  R.drawable.ic_building_warehouse,  R.string.quest_buildingType_warehouse),
-		KIOSK =        new Item("kiosk",      R.drawable.ic_building_kiosk,      R.string.quest_buildingType_kiosk),
-		STORAGE_TANK = new Item("man_made=storage_tank", R.drawable.ic_building_storage_tank, R.string.quest_buildingType_storage_tank),
+		COMMERCIAL =    new Item("commercial", R.drawable.ic_building_commercial, R.string.quest_buildingType_commercial, R.string.quest_buildingType_commercial_description),
+		INDUSTRIAL =    new Item("industrial", R.drawable.ic_building_industrial, R.string.quest_buildingType_industrial, R.string.quest_buildingType_industrial_description),
+		RETAIL =        new Item("retail",     R.drawable.ic_building_retail,     R.string.quest_buildingType_retail),
+		WAREHOUSE =     new Item("warehouse",  R.drawable.ic_building_warehouse,  R.string.quest_buildingType_warehouse),
+		KIOSK =         new Item("kiosk",      R.drawable.ic_building_kiosk,      R.string.quest_buildingType_kiosk),
+		STORAGE_TANK =  new Item("man_made=storage_tank", R.drawable.ic_building_storage_tank, R.string.quest_buildingType_storage_tank),
 
-		KINDERGARTEN = new Item("kindergarten", R.drawable.ic_building_kindergarten, R.string.quest_buildingType_kindergarten),
-		SCHOOL =       new Item("school",     R.drawable.ic_building_school,     R.string.quest_buildingType_school),
-		COLLEGE =      new Item("college",    R.drawable.ic_building_college,    R.string.quest_buildingType_college),
-		HOSPITAL =     new Item("hospital",   R.drawable.ic_building_hospital,   R.string.quest_buildingType_hospital),
-		STADIUM =      new Item("stadium",    R.drawable.ic_sport_volleyball,    R.string.quest_buildingType_stadium),
+		KINDERGARTEN =  new Item("kindergarten", R.drawable.ic_building_kindergarten, R.string.quest_buildingType_kindergarten),
+		SCHOOL =        new Item("school",     R.drawable.ic_building_school,     R.string.quest_buildingType_school),
+		COLLEGE =       new Item("college",    R.drawable.ic_building_college,    R.string.quest_buildingType_college),
+		HOSPITAL =      new Item("hospital",   R.drawable.ic_building_hospital,   R.string.quest_buildingType_hospital),
+		STADIUM =       new Item("stadium",    R.drawable.ic_sport_volleyball,    R.string.quest_buildingType_stadium),
 		TRAIN_STATION =	new Item("train_station", R.drawable.ic_building_train_station, R.string.quest_buildingType_train_station),
-		TRANSPORTATION = new Item("transportation", R.drawable.ic_building_transportation, R.string.quest_buildingType_transportation),
-		UNIVERSITY =   new Item("university", R.drawable.ic_building_university, R.string.quest_buildingType_university),
+		TRANSPORTATION =new Item("transportation", R.drawable.ic_building_transportation, R.string.quest_buildingType_transportation),
+		UNIVERSITY =    new Item("university", R.drawable.ic_building_university, R.string.quest_buildingType_university),
 
-		CHURCH =       new Item("church",     R.drawable.ic_religion_christian,  R.string.quest_buildingType_church),
-		CHAPEL =       new Item("chapel",     R.drawable.ic_religion_christian,  R.string.quest_buildingType_chapel),
-		CATHEDRAL =    new Item("cathedral",  R.drawable.ic_religion_christian,  R.string.quest_buildingType_cathedral),
-		MOSQUE =       new Item("mosque",     R.drawable.ic_religion_muslim,     R.string.quest_buildingType_mosque),
-		TEMPLE =       new Item("temple",     R.drawable.ic_building_temple,     R.string.quest_buildingType_temple),
-		PAGODA =       new Item("pagoda",     R.drawable.ic_building_temple,     R.string.quest_buildingType_pagoda),
-		SYNAGOGUE =	   new Item("synagogue",  R.drawable.ic_religion_jewish,     R.string.quest_buildingType_synagogue),
+		CHURCH =        new Item("church",     R.drawable.ic_religion_christian,  R.string.quest_buildingType_church),
+		CHAPEL =        new Item("chapel",     R.drawable.ic_religion_christian,  R.string.quest_buildingType_chapel),
+		CATHEDRAL =     new Item("cathedral",  R.drawable.ic_religion_christian,  R.string.quest_buildingType_cathedral),
+		MOSQUE =        new Item("mosque",     R.drawable.ic_religion_muslim,     R.string.quest_buildingType_mosque),
+		TEMPLE =        new Item("temple",     R.drawable.ic_building_temple,     R.string.quest_buildingType_temple),
+		PAGODA =        new Item("pagoda",     R.drawable.ic_building_temple,     R.string.quest_buildingType_pagoda),
+		SYNAGOGUE =	    new Item("synagogue",  R.drawable.ic_religion_jewish,     R.string.quest_buildingType_synagogue),
 
-		CARPORT =      new Item("carport",    R.drawable.ic_building_carport,    R.string.quest_buildingType_carport, R.string.quest_buildingType_carport_description),
-		GARAGE =       new Item("garage",	  R.drawable.ic_building_garage,     R.string.quest_buildingType_garage),
-		GARAGES =      new Item("garages",    R.drawable.ic_building_garages,    R.string.quest_buildingType_garages),
-		PARKING =      new Item("parking",    R.drawable.ic_building_parking,    R.string.quest_buildingType_parking),
+		CARPORT =       new Item("carport",    R.drawable.ic_building_carport,    R.string.quest_buildingType_carport, R.string.quest_buildingType_carport_description),
+		GARAGE =        new Item("garage",     R.drawable.ic_building_garage,     R.string.quest_buildingType_garage),
+		GARAGES =       new Item("garages",    R.drawable.ic_building_garages,    R.string.quest_buildingType_garages),
+		PARKING =       new Item("parking",    R.drawable.ic_building_parking,    R.string.quest_buildingType_parking),
 
-		FARM =         new Item("farm",       R.drawable.ic_building_farm_house, R.string.quest_buildingType_farmhouse, R.string.quest_buildingType_farmhouse_description),
-		FARM_AUXILIARY = new Item("farm_auxiliary", R.drawable.ic_building_barn, R.string.quest_buildingType_farm_auxiliary, R.string.quest_buildingType_farm_auxiliary_description),
-		GREENHOUSE =   new Item("greenhouse", R.drawable.ic_building_greenhouse, R.string.quest_buildingType_greenhouse),
+		FARM =          new Item("farm",       R.drawable.ic_building_farm_house, R.string.quest_buildingType_farmhouse, R.string.quest_buildingType_farmhouse_description),
+		FARM_AUXILIARY =new Item("farm_auxiliary", R.drawable.ic_building_barn,   R.string.quest_buildingType_farm_auxiliary, R.string.quest_buildingType_farm_auxiliary_description),
+		GREENHOUSE =    new Item("greenhouse", R.drawable.ic_building_greenhouse, R.string.quest_buildingType_greenhouse),
 
-		SHED =         new Item("shed",       R.drawable.ic_building_shed,       R.string.quest_buildingType_shed),
-		ROOF =         new Item("roof",       R.drawable.ic_building_roof,       R.string.quest_buildingType_roof, R.string.quest_buildingType_roof_description),
-		SERVICE =      new Item("service",    R.drawable.ic_building_service, R.string.quest_buildingType_service, R.string.quest_buildingType_service_description);
+		SHED =          new Item("shed",       R.drawable.ic_building_shed,       R.string.quest_buildingType_shed),
+		ROOF =          new Item("roof",       R.drawable.ic_building_roof,       R.string.quest_buildingType_roof),
+		SERVICE =       new Item("service",    R.drawable.ic_building_service,    R.string.quest_buildingType_service, R.string.quest_buildingType_service_description);
 
 	private final Item[] TOP_BUILDINGS = new Item[] {
-			DETACHED, GARAGE,
-			APARTMENTS, SEMI_DETACHED,
-			COMMERCIAL, INDUSTRIAL,
+			DETACHED, APARTMENTS, HOUSE, GARAGE, SHED, HUT
 	};
 
 	private final Item[] ALL_BUILDINGS = new Item[] {
@@ -99,10 +97,10 @@ public class AddBuildingTypeForm extends AbstractQuestFormAnswerFragment
 					GARAGE, GARAGES, CARPORT, PARKING
 			}),
 			new Item(null, R.drawable.ic_building_farm, R.string.quest_buildingType_farm, new Item[]{
-					FARM, FARM_AUXILIARY, GREENHOUSE
+					FARM, FARM_AUXILIARY, GREENHOUSE, STORAGE_TANK
 			}),
 			new Item(null, R.drawable.ic_building_other, R.string.quest_buildingType_other, new Item[]{
-					SHED, ROOF, SERVICE
+					SHED, ROOF, SERVICE, HUT
 			}),
 	};
 
@@ -116,12 +114,12 @@ public class AddBuildingTypeForm extends AbstractQuestFormAnswerFragment
 		View contentView = setContentView(R.layout.quest_image_select);
 
 		RecyclerView buildingSelect = contentView.findViewById(R.id.imageSelect);
-		GridLayoutManager lm = new GridLayoutManager(getActivity(), 2);
+		GridLayoutManager lm = new GridLayoutManager(getActivity(), 1);
 		buildingSelect.setLayoutManager(lm);
 		buildingSelect.setNestedScrollingEnabled(false);
 
 		imageSelector = new GroupedImageSelectAdapter(lm);
-		imageSelector.setGroupCellLayout(R.layout.cell_labeled_icon_select_with_description);
+		imageSelector.setGroupCellLayout(R.layout.cell_labeled_icon_select_with_description_group);
 		imageSelector.setCellLayout(R.layout.cell_labeled_icon_select_with_description);
 		imageSelector.setItems(Arrays.asList(TOP_BUILDINGS));
 		buildingSelect.setAdapter(imageSelector);

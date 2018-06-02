@@ -522,18 +522,18 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingType_answer_input_description">Can\'t say more specifically</string>
     <string name="quest_buildingType_comment_title">Describe the building</string>
     <string name="quest_buildingType_comment_description">Be concise and write a short description of what the intention of the building is</string>
-    <string name="quest_buildingType_multiple_types">It has multiple kinds</string>
-    <string name="quest_buildingType_multiple_types_description">You should select the main purpose of this building. If e.g. there is a shop in the ground floor with apartments above it, you should select apartments.</string>
+    <string name="quest_buildingType_multiple_types">It has multiple purposes</string>
+    <string name="quest_buildingType_multiple_types_description">Simply select the main purpose of this building. E.g. if there is a shop on the ground floor with apartments above it, it is still mainly an apartment building.</string>
 
     <string name="quest_buildingType_residential">Residential</string>
     <string name="quest_buildingType_residential_description">building where people live</string>
-    <string name="quest_buildingType_house">Home</string>
+    <string name="quest_buildingType_house">House</string>
     <string name="quest_buildingType_house_description">single-family home</string>
-    <string name="quest_buildingType_apartments">Apartments</string>
     <string name="quest_buildingType_apartments_description">house for multiple families, may have retail outlets on the ground floor</string>
-    <string name="quest_buildingType_detached">Detached home</string>
+    <string name="quest_buildingType_apartments">Apartment building</string>
+    <string name="quest_buildingType_detached">Detached house</string>
     <string name="quest_buildingType_detached_description">free-standing single-family home</string>
-    <string name="quest_buildingType_semi_detached">Semi-detached home</string>
+    <string name="quest_buildingType_semi_detached">Semi-detached house</string>
     <string name="quest_buildingType_semi_detached_description">pair of two single-family homes</string>
     <string name="quest_buildingType_terrace">Row house</string>
     <string name="quest_buildingType_terrace_description">single-family home in a row of similar houses</string>
@@ -541,20 +541,20 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingType_dormitory">Dormitory</string>
     <string name="quest_buildingType_houseboat">Houseboat</string>
     <string name="quest_buildingType_bungalow">Bungalow</string>
-    <string name="quest_buildingType_bungalow_description">small detached house, e.g. a summer house, holiday cottage, dacha, …</string>
+    <string name="quest_buildingType_bungalow_description">small detached house (summer house, holiday cottage, …)</string>
     <string name="quest_buildingType_static_caravan">Static caravan</string>
 
-    <string name="quest_buildingType_commercial">Commercial</string>
-    <string name="quest_buildingType_commercial_generic_description">building where people work or shop</string>
+    <string name="quest_buildingType_commercial">Commercial building</string>
+    <string name="quest_buildingType_commercial_generic_description">building where people work, shop or do business</string>
     <string name="quest_buildingType_commercial_description">building for commercial activities, e.g office buildings</string>
-    <string name="quest_buildingType_industrial">Industrial</string>
-    <string name="quest_buildingType_industrial_description">e.g. a plant, factory, workshop, warehouse, service building</string>
+    <string name="quest_buildingType_industrial">Industrial building</string>
+    <string name="quest_buildingType_industrial_description">e.g. a factory, workshop, car repair garage, …</string>
     <string name="quest_buildingType_retail">Shop</string>
     <string name="quest_buildingType_warehouse">Warehouse</string>
     <string name="quest_buildingType_kiosk">Kiosk</string>
     <string name="quest_buildingType_storage_tank">Storage tank</string>
 
-    <string name="quest_buildingType_religious">Religious</string>
+    <string name="quest_buildingType_religious">Religious building</string>
     <string name="quest_buildingType_church">Church</string>
     <string name="quest_buildingType_chapel">Chapel</string>
     <string name="quest_buildingType_cathedral">Cathedral</string>
@@ -579,22 +579,20 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingType_carport_description">roof for a car</string>
     <string name="quest_buildingType_garage">Single garage</string>
     <string name="quest_buildingType_garages">Multiple garages</string>
-    <string name="quest_buildingType_parking">Parking</string>
+    <string name="quest_buildingType_parking">Parking building</string>
 
-    <string name="quest_buildingType_farm">Farm</string>
+    <string name="quest_buildingType_farm">On a farm</string>
     <string name="quest_buildingType_farmhouse">Farmhouse</string>
-    <string name="quest_buildingType_farmhouse_description">main residential building of a farm</string>
-    <string name="quest_buildingType_farm_auxiliary">Other farm building</string>
+    <string name="quest_buildingType_farmhouse_description">the residential building on a farm</string>
+    <string name="quest_buildingType_farm_auxiliary">Farm building</string>
     <string name="quest_buildingType_farm_auxiliary_description">any building on a farm that is not a residential building</string>
-    <string name="quest_buildingType_barn">Barn</string>
     <string name="quest_buildingType_greenhouse">Greenhouse</string>
 
     <string name="quest_buildingType_other">Other</string>
     <string name="quest_buildingType_shed">Shed</string>
     <string name="quest_buildingType_hut">Hut</string>
-    <string name="quest_buildingType_hut_description">small, crude dwelling or shelter</string>
+    <string name="quest_buildingType_hut_description">small, simple dwelling or shelter</string>
     <string name="quest_buildingType_roof">Roof</string>
-    <string name="quest_buildingType_roof_description">building open on at least two sides, e.g. petrol station roof</string>
     <string name="quest_buildingType_service">Service building</string>
     <string name="quest_buildingType_service_description">building with machinery like pumps or transformers</string>
 </resources>

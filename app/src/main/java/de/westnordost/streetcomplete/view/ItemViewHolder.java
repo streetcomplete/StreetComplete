@@ -33,7 +33,9 @@ public class ItemViewHolder  extends RecyclerView.ViewHolder
 		if(item.titleId != 0) textView.setText(item.titleId);
 		else textView.setText(null);
 
-		if(item.descriptionId != 0) descriptionView.setText(item.descriptionId);
+		boolean hasDescription = item.descriptionId != 0;
+		descriptionView.setVisibility(hasDescription ? View.VISIBLE : View.GONE);
+		if(hasDescription) descriptionView.setText(item.descriptionId);
 		else descriptionView.setText(null);
 	}
 
