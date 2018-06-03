@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 
 import java.util.Arrays;
 
@@ -23,8 +22,6 @@ public class AddBuildingTypeForm extends AbstractQuestFormAnswerFragment
 {
 	public static final String
 		BUILDING = "building",
-		MAN_MADE = "man_made",
-		BUILDING_DESCRIPTION = "building_description";
 		MAN_MADE = "man_made";
 
 	private final Item[] TOP_BUILDINGS = new Item[] {
@@ -129,41 +126,12 @@ public class AddBuildingTypeForm extends AbstractQuestFormAnswerFragment
 
 	private void addOtherAnswers()
 	{
-		addOtherAnswer(R.string.quest_buildingType_answer_input_description, this::showInputCommentDialog);
 		addOtherAnswer(R.string.quest_buildingType_multiple_types, this::showMultipleTypesHintDialog);
 	}
 
 	@Override public boolean hasChanges() { return getSelectedItem() != null; }
 
 	private Item getSelectedItem() { return imageSelector.getSelectedItem(); }
-
-	private void showInputCommentDialog()
-	{
-		View view = LayoutInflater.from(getActivity()).inflate(R.layout.quest_building_type_comment, null);
-		final EditText editText = view.findViewById(R.id.commentInput);
-
-		new AlertDialogBuilder(getContext())
-			.setTitle(R.string.quest_buildingType_comment_title)
-			.setView(view)
-			.setPositiveButton(android.R.string.ok, (dialog, which) ->
-			{
-				String txt = editText.getText().toString().trim();
-				if(txt.isEmpty())
-				{
-					new AlertDialogBuilder(getContext())
-						.setMessage(R.string.quest_generic_error_a_field_empty)
-						.setPositiveButton(R.string.ok, null)
-						.show();
-					return;
-				}
-
-				Bundle answer = new Bundle();
-				answer.putString(BUILDING_DESCRIPTION, txt);
-				applyImmediateAnswer(answer);
-			})
-			.setNegativeButton(android.R.string.cancel, null)
-			.show();
-	}
 
 	private void showMultipleTypesHintDialog()
 	{
