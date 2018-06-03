@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.view;
 
+import android.support.annotation.Nullable;
+import android.support.annotation.StringRes;
+
 public class Item
 {
 	public final String value;
@@ -27,6 +30,11 @@ public class Item
 	public Item(String value, int drawableId, int titleId, Item[] items)
 	{
 		this(value, drawableId, titleId, 0, items);
+	}
+
+	public Item(Item copy, Item[] children)
+	{
+		this(copy.value, copy.drawableId, copy.titleId, copy.descriptionId, children);
 	}
 
 	public Item(String value, int drawableId, int titleId, int descriptionId, Item[] items)

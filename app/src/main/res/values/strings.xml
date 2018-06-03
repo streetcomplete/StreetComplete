@@ -250,6 +250,7 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="upload_server_error">"Connection error while uploading answers. Try again later."</string>
     <string name="quest_generic_hasFeature_yes">"Yes"</string>
     <string name="quest_generic_hasFeature_no">"No"</string>
+    <string name="quest_generic_hasFeature_no_leave_note">"No (leave note)"</string>
     <string name="quest_busStopShelter_title">"Does this bus stop have a shelter?"</string>
     <string name="quest_bikeParkingCapacity_title">"How many bikes can be parked here?"</string>
     <string name="quest_bikeParkingCapacity_hint">"Note that most normal stands can be used from both sides to park each one bike."</string>
@@ -595,4 +596,9 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingType_roof">Roof</string>
     <string name="quest_buildingType_service">Service building</string>
     <string name="quest_buildingType_service_description">building with machinery like pumps or transformers</string>
+
+    <string name="quest_address_answer_no_housenumber">It has no house number</string>
+    <string name="quest_address_answer_no_housenumber_message1">The building was tagged as:</string>
+    <string name="quest_address_answer_no_housenumber_message2">Is this correct and is it not just part of a building?</string>
+
 </resources>

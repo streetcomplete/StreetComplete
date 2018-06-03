@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.view;
 
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
@@ -18,7 +19,7 @@ public class ItemViewHolder  extends RecyclerView.ViewHolder
 		void onClick(int index);
 	}
 
-	public ItemViewHolder(View itemView)
+	public ItemViewHolder(@NonNull View itemView)
 	{
 		super(itemView);
 		imageView = itemView.findViewById(R.id.imageView);
@@ -26,7 +27,7 @@ public class ItemViewHolder  extends RecyclerView.ViewHolder
 		descriptionView = itemView.findViewById(R.id.descriptionView);
 	}
 
-	public void bind(Item item)
+	public void bind(@NonNull Item item)
 	{
 		imageView.setImageResource(item.drawableId);
 
@@ -46,6 +47,7 @@ public class ItemViewHolder  extends RecyclerView.ViewHolder
 
 	public void setOnClickListener(OnClickListener listener)
 	{
+		if(listener == null) itemView.setOnClickListener(null);
 		itemView.setOnClickListener(v -> {
 			int index = getAdapterPosition();
 			if(index != RecyclerView.NO_POSITION) listener.onClick(index);
