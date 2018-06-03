@@ -16,6 +16,8 @@ import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
+import org.xmlpull.v1.XmlPullParser;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -161,6 +163,14 @@ public abstract class AbstractQuestAnswerFragment extends AbstractBottomSheetFra
 		return localizedContext.getResources();
 	}
 
+	protected final Resources getCurrentCountryResources()
+	{
+		Configuration conf = new Configuration(getResources().getConfiguration());
+		Integer mcc = getCountryInfo().getMobileCountryCode();
+		conf.mcc = mcc != null ? mcc : 0;
+		return getContext().createConfigurationContext(conf).getResources();
+	}
+
 	protected final void applyImmediateAnswer(Bundle data)
 	{
 		questAnswerComponent.onAnswerQuest(data);
@@ -178,6 +188,15 @@ public abstract class AbstractQuestAnswerFragment extends AbstractBottomSheetFra
 			content.removeAllViews();
 		}
 		return getActivity().getLayoutInflater().inflate(resourceId, content);
+	}
+
+	protected final View setContentView(XmlPullParser parser)
+	{
+		if(content.getChildCount() > 0)
+		{
+			content.removeAllViews();
+		}
+		return getActivity().getLayoutInflater().inflate(parser, content);
 	}
 
 	protected final View setButtonsView(int resourceId)

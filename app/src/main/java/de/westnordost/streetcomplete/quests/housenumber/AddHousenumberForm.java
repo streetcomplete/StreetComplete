@@ -223,7 +223,7 @@ public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 			regexNum = "((" + regexNum + ")|("+additionalRegex+"))";
 		}
 		// i.e. 95-98 etc.
-		return "^" + regexNum + "(-" + regexNum + ")?";
+		return "^" + regexNum + "([,-]" + regexNum + ")?";
 	}
 
 	private String getInputText(EditText editText)

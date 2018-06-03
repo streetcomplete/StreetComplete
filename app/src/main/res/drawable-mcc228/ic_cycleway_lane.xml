@@ -1,0 +1,22 @@
+<!-- Switzerland CH -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+        android:width="256dp"
+        android:height="256dp"
+        android:viewportWidth="256.0"
+        android:viewportHeight="256.0">
+    <path
+        android:pathData="M0,0h208v256h-208z"
+        android:fillColor="#808080"/>
+    <path
+        android:pathData="M112,-0h16v256h-16z"
+        android:fillColor="#ff4"/>
+    <path
+        android:pathData="m163.98,168.04a7.21,7.18 0,0 1,-7.21 7.18,7.21 7.18,0 0,1 -7.21,-7.18 7.21,7.18 0,0 1,7.21 -7.18,7.21 7.18,0 0,1 7.21,7.18zM187.49,168.04a7.21,7.18 0,0 1,-7.21 7.18,7.21 7.18,0 0,1 -7.21,-7.18 7.21,7.18 0,0 1,7.21 -7.18,7.21 7.18,0 0,1 7.21,7.18zM160.78,156.98 L169.9,168h10.42l-7.16,-11.02h-12.37m9.12,11.02 l3.26,-13.62m0,0 l3.17,-0.01m-19.45,13.62 l5.43,-16.09h5.21"
+        android:strokeLineCap="round"
+        android:strokeColor="#ff4"
+        android:strokeWidth="3"
+        android:strokeLineJoin="round"/>
+    <path
+        android:pathData="m180,128 l-12,-16L156,128h8v8h8v-8z"
+        android:fillColor="#ff4"/>
+</vector>

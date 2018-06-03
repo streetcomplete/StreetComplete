@@ -4,8 +4,8 @@ import junit.framework.TestCase;
 
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.streetcomplete.data.OsmModule;
-import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
+import de.westnordost.streetcomplete.quests.AssertUtil;
 import de.westnordost.streetcomplete.quests.housenumber.AddHousenumber;
 
 
@@ -144,11 +144,6 @@ public class AddHousenumberIntegrationTest extends TestCase
 	{
 		OverpassMapDataDao o = OsmModule.overpassOldMapDataDao(OsmModule::overpassMapDataParser, date);
 		AddHousenumber quest = new AddHousenumber(o);
-		MapDataWithGeometryHandler verifier = (element, geometry) ->
-		{
-			fail("Expected zero elements. Element returned: " +
-				element.getType().name() + "#" + element.getId());
-		};
-		quest.download(bbox, verifier);
+		AssertUtil.verifyYieldsNoQuest(quest, bbox);
 	}
 }

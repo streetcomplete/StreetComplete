@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.data.osm;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 
 public class Countries
 {
@@ -40,6 +41,6 @@ public class Countries
 
 	public Collection<String> getExceptions()
 	{
-		return Arrays.asList(exceptions);
+		return exceptions != null ? Arrays.asList(exceptions) : Collections.emptyList();
 	}
 }

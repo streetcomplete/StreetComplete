@@ -1,5 +1,6 @@
 # Do not edit. Source files are in /res/country_metadata
 isSlowZoneKnown: true
+mobileCountryCode: 259
 officialLanguages: [ro]
 orchardProduces: [grape, apple, plum, walnut, peach, tomatoe, cherry, apricot, chilli_pepper, sweet_pepper,
   pear, strawberry, hazelnut, raspberry, almond]

@@ -1,5 +1,6 @@
 # Do not edit. Source files are in /res/country_metadata
 isLeftHandTraffic: true
+mobileCountryCode: 537
 officialLanguages: [tpi, en, ho]
 orchardProduces: [coconut, palm_oil, cacao, banana, coffee, rubber, tea, vanilla, pineapple, nutmeg,
   tomatoe, chilli_pepper, sweet_pepper]

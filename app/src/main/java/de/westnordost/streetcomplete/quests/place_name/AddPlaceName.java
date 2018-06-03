@@ -47,6 +47,9 @@ public class AddPlaceName extends SimpleOverpassQuestType
 			"water_park","miniature_golf", "stadium","marina","bowling_alley", "amusement_arcade",
 			"adult_gaming_centre", "tanning_salon","horse_riding"
 		});
+		put("office", new String[]{
+			"insurance"
+		});
 	}};
 
 	@Inject public AddPlaceName(OverpassMapDataDao overpassServer) { super(overpassServer); }

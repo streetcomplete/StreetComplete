@@ -1,5 +1,6 @@
 # Do not edit. Source files are in /res/country_metadata
 isLeftHandTraffic: true
+mobileCountryCode: 528
 officialLanguages: [ms, en]
 orchardProduces: [rubber, banana, coconut, pineapple, chilli_pepper, sweet_pepper, pepper, orange,
   lemon, lime, tomatoe]

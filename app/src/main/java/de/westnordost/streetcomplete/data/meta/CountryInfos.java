@@ -122,7 +122,7 @@ public class CountryInfos
 			YamlReader yamlReader = new YamlReader(reader);
 			yamlReader.getConfig().setPrivateFields(true);
 			CountryInfo result = yamlReader.read(CountryInfo.class);
-			result.countryCode = countryCodeIso3166;
+			result.countryCode = countryCodeIso3166.split("-")[0];
 			return result;
 		}
 		finally

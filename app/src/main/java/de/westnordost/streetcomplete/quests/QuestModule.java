@@ -20,6 +20,8 @@ import de.westnordost.streetcomplete.quests.building_levels.AddBuildingLevels;
 import de.westnordost.streetcomplete.quests.localized_name.AddBusStopName;
 import de.westnordost.streetcomplete.quests.bus_stop_shelter.AddBusStopShelter;
 import de.westnordost.streetcomplete.quests.car_wash_type.AddCarWashType;
+import de.westnordost.streetcomplete.quests.construction.MarkCompletedBuildingConstruction;
+import de.westnordost.streetcomplete.quests.construction.MarkCompletedHighwayConstruction;
 import de.westnordost.streetcomplete.quests.crossing_type.AddCrossingType;
 import de.westnordost.streetcomplete.quests.diet_type.AddVegan;
 import de.westnordost.streetcomplete.quests.diet_type.AddVegetarian;
@@ -28,6 +30,7 @@ import de.westnordost.streetcomplete.quests.internet_access.AddInternetAccess;
 import de.westnordost.streetcomplete.quests.parking_access.AddParkingAccess;
 import de.westnordost.streetcomplete.quests.parking_fee.AddParkingFee;
 import de.westnordost.streetcomplete.quests.parking_type.AddParkingType;
+import de.westnordost.streetcomplete.quests.postbox_collection_times.AddPostboxCollectionTimes;
 import de.westnordost.streetcomplete.quests.powerpoles_material.AddPowerPolesMaterial;
 import de.westnordost.streetcomplete.quests.orchard_produce.AddOrchardProduce;
 import de.westnordost.streetcomplete.quests.recycling.AddRecyclingType;
@@ -67,6 +70,7 @@ public class QuestModule
 				// ↓ 2. important data that is used by many data consumers
 				new AddRoadName(o, roadNameSuggestionsDao, putRoadNameSuggestionsHandler),
 				new AddHousenumber(o),
+				new MarkCompletedHighwayConstruction(o),
 				// new AddPlaceName(o), doesn't make sense as long as the app cannot tell the generic name of elements
 
 				// ↓ 3. useful data that is used by some data consumers
@@ -74,6 +78,7 @@ public class QuestModule
 				new AddRoadSurface(o),
 				new AddMaxSpeed(o), // should best be after road surface because it excludes unpaved roads
 				new AddReligionToPlaceOfWorship(o), // icon on maps are different
+				new AddPostboxCollectionTimes(o),
 				new AddOpeningHours(o),
 				new AddSport(o),
 				new AddBikeParkingCapacity(o), // cycle map layer on osm.org
@@ -107,6 +112,7 @@ public class QuestModule
 				new AddWheelChairAccessToilets(o),
 				new AddReligionToWaysideShrine(o),
 				new AddBikeParkingType(o),
+				new MarkCompletedBuildingConstruction(o),
 
 				// ↓ 8. defined in the wiki, but not really used by anyone yet. Just collected for
 				//      the sake of mapping it in case it makes sense later

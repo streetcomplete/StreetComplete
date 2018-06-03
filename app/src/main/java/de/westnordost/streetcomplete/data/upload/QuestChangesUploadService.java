@@ -141,7 +141,7 @@ public class QuestChangesUploadService extends IntentService
 		HttpURLConnection connection = null;
 		try
 		{
-			URL url = new URL("http://www.westnordost.de/streetcomplete/banned_versions.txt");
+			URL url = new URL("https://www.westnordost.de/streetcomplete/banned_versions.txt");
 			connection = (HttpURLConnection) url.openConnection();
 			try (InputStream is = connection.getInputStream())
 			{

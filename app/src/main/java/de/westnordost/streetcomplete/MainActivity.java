@@ -260,6 +260,16 @@ public class MainActivity extends AppCompatActivity implements
 		}
 	}
 
+	@Override public void onPause()
+	{
+		super.onPause();
+		LatLon pos = mapFragment.getPosition();
+		prefs.edit()
+			.putLong(Prefs.MAP_LATITUDE, Double.doubleToRawLongBits(pos.getLatitude()))
+			.putLong(Prefs.MAP_LONGITUDE, Double.doubleToRawLongBits(pos.getLongitude()))
+			.apply();
+	}
+
 	@Override public void onStop()
 	{
 		super.onStop();
@@ -678,6 +688,7 @@ public class MainActivity extends AppCompatActivity implements
 		notePosition.offset(-mapPosition[0], -mapPosition[1]);
 
 		LatLon position = mapFragment.getPositionAt(notePosition);
+		if(position == null) throw new NullPointerException();
 		questController.createNote(note, imagePaths, position);
 
 		unsyncedChangesCounter.increase(null);
