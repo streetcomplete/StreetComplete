@@ -1,8 +1,9 @@
 # Sources:
 # https://en.wikipedia.org/wiki/Metrication#Overview
 # https://en.wikipedia.org/wiki/Imperial_units#Current_use
+# https://en.wikipedia.org/wiki/Comparison_of_MUTCD-influenced_traffic_signs
 default: [m]
-CA: [ft, m]
+CA: [m, ft]
 FM: [ft, m]
 GB: [ft, m]
 LR: [ft, m]

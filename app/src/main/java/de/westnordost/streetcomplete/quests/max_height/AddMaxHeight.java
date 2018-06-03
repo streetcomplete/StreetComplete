@@ -31,16 +31,20 @@ public class AddMaxHeight implements OsmElementQuestType
 		this.overpassServer = overpassServer;
 	}
 
+	private static final String TUNNEL_TYPES = "yes|building_passage|avalanche_protector";
+
 	private static final String QUERY_RESTRICTIONS = "!maxheight and !maxheight:physical";
 
-	private static final String ROADS = "primary|secondary|tertiary|trunk|motorway|service|residential|unclassified|living_street|" +
+	private static final String ROADS = "primary|secondary|tertiary|trunk|motorway|residential|unclassified|living_street|" +
 		"primary_link|secondary_link|tertiary_link|trunk_link";
 
 	private static final TagFilterExpression nodeFilter = new FiltersParser().parse("nodes with (barrier=height_restrictor" +
 		" or amenity=parking_entrance and parking ~ underground|multi-storey)" +
 		" and " + QUERY_RESTRICTIONS);
-	private static final TagFilterExpression wayFilter = new FiltersParser().parse("ways with highway ~ " + ROADS +
-		" and (covered=yes or tunnel~yes|building_passage|avalanche_protector)" +
+	private static final TagFilterExpression wayFilter = new FiltersParser().parse("ways with" +
+		" (highway ~ " + ROADS + " or" +
+		" (highway=service and access!=private))" +
+		" and (covered=yes or tunnel~" + TUNNEL_TYPES + ")" +
 		" and " + QUERY_RESTRICTIONS);
 
 	@Override public boolean download(BoundingBox bbox, MapDataWithGeometryHandler handler)

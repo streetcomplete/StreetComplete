@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.quests.max_height;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +21,11 @@ public class AddMaxHeightForm extends AbstractQuestFormAnswerFragment
 	public static final String
 		MAX_HEIGHT = "max_height",
 		NO_SIGN = "no_sign";
-	public static final int IS_BELOW_DEFAULT = 1, IS_DEFAULT = 2, IS_NOT_INDICATED = 3;
+
+	public static final int
+		IS_BELOW_DEFAULT = 1,
+		IS_DEFAULT = 2,
+		IS_NOT_INDICATED = 3;
 
 	private EditText heightInput, feetInput, inchInput;
 
@@ -35,7 +38,7 @@ public class AddMaxHeightForm extends AbstractQuestFormAnswerFragment
 
 		isMetric = getCountryInfo().getHeightUnits().get(0).equals("m");
 
-		setMaxHeightSignLayout(getMaxHeightLayoutResourceId());
+		setMaxHeightSignLayout(R.layout.quest_max_height);
 		addOtherAnswers();
 
 		return view;
@@ -43,22 +46,17 @@ public class AddMaxHeightForm extends AbstractQuestFormAnswerFragment
 
 	private void setMaxHeightSignLayout(int resourceId)
 	{
-		View contentView = setContentView(resourceId);
+		View contentView = setContentView(getCurrentCountryResources().getLayout(resourceId));
 
 		heightInput = contentView.findViewById(R.id.maxHeightInput);
 		feetInput = contentView.findViewById(R.id.maxHeightFeetInput);
 		inchInput = contentView.findViewById(R.id.maxHeightInchInput);
 	}
 
-	private int getMaxHeightLayoutResourceId()
-	{
-		return isMetric ? R.layout.quest_max_height : R.layout.quest_max_height_us;
-	}
-
 	private void addOtherAnswers()
 	{
-
-		if (getCountryInfo().getHeightUnits().size() == 2)
+		//TODO: use a spinner for this
+		/*if (getCountryInfo().getHeightUnits().size() == 2)
 		{
 			if (isMetric)
 			{
@@ -76,7 +74,7 @@ public class AddMaxHeightForm extends AbstractQuestFormAnswerFragment
 					setMaxHeightSignLayout(getMaxHeightLayoutResourceId());
 				});
 			}
-		}
+		}*/
 
 		addOtherAnswer(R.string.quest_maxheight_answer_noSign, () ->
 		{
@@ -152,7 +150,7 @@ public class AddMaxHeightForm extends AbstractQuestFormAnswerFragment
 
 	private boolean userSelectedUnrealisticHeight()
 	{
-		double height = Double.parseDouble(getHeightFromInput());
+		int height = getHeightFromInput().getIntegerPart();
 		double heightInMeter = isMetric ? height : feetToMeter(height);
 		return heightInMeter > 6 || heightInMeter < 2;
 	}
@@ -164,52 +162,31 @@ public class AddMaxHeightForm extends AbstractQuestFormAnswerFragment
 
 	private void applyMaxHeightFormAnswer()
 	{
+		String height = getHeightFromInput().toString();
+
 		Bundle answer = new Bundle();
-
-		String height = getFinalMaxHeight(getHeightFromInput());
-
-		// metric is the OSM default, does not need to be mentioned
-		if(!isMetric)
-		{
-			//this adds an apostrophe and a double-quote to be in a format like e.g. 6'7"
-			height = height.replace(".", "'");
-			height += "\"";
-		}
 		answer.putString(MAX_HEIGHT, height);
-
 		applyFormAnswer(answer);
 	}
 
-	private String getFinalMaxHeight(String value)
-	{
-		if (isMetric)
-		{
-			return value;
-		}
-		else
-		{
-			return value.replace(".", "'") + "\"";
-		}
-	}
-
-	private String getHeightFromInput()
+	private Height getHeightFromInput()
 	{
 		if (isMetric)
 		{
 			if (!heightInput.getText().toString().isEmpty())
 			{
-
-				return heightInput.getText().toString().replace(",", ".");
+				String[] parts = heightInput.getText().toString().split(".");
+				return new Height(parts[0], parts[1], Height.METRIC);
 			}
-			return "";
+			return new Height();
 		}
 		else
 		{
 			if (!feetInput.getText().toString().isEmpty() && !inchInput.getText().toString().isEmpty())
 			{
-				return feetInput.getText().toString() + "." + inchInput.getText().toString();
+				return new Height(feetInput.getText().toString(), inchInput.getText().toString(), Height.IMPERIAL);
 			}
-			return "";
+			return new Height();
 		}
 	}
 
@@ -225,8 +202,6 @@ public class AddMaxHeightForm extends AbstractQuestFormAnswerFragment
 
 	@Override public boolean hasChanges()
 	{
-		//TODO: look at the output of this log
-		Log.d("hasChanges", String.valueOf(getHeightFromInput().isEmpty()));
 		return !getHeightFromInput().isEmpty();
 	}
 }
