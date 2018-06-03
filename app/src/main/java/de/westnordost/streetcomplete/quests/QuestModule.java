@@ -70,6 +70,7 @@ public class QuestModule
 
 				// ↓ 2. important data that is used by many data consumers
 				new AddRoadName(o, roadNameSuggestionsDao, putRoadNameSuggestionsHandler),
+				new AddBuildingType(o), // because housenumber, building levels etc. depend on it
 				new AddHousenumber(o),
 				new MarkCompletedHighwayConstruction(o),
 				// new AddPlaceName(o), doesn't make sense as long as the app cannot tell the generic name of elements
@@ -98,7 +99,6 @@ public class QuestModule
 				// ↓ 4. definitely shown as errors in QA tools
 
 				// ↓ 5. may be shown as missing in QA tools
-				new AddBuildingType(o),
 
 				// ↓ 6. may be shown as possibly missing in QA tools
 
