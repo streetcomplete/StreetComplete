@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.quests.oneway;
 
-public class TrafficFlowTable
+public class WayTrafficFlowTable
 {
 	public static final String NAME = "direction_of_flow";
 

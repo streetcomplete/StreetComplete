@@ -13,8 +13,8 @@ import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.meta.OsmTaggings;
+import de.westnordost.streetcomplete.data.osm.AOsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.Countries;
-import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
@@ -24,7 +24,7 @@ import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 import static de.westnordost.streetcomplete.quests.bikeway.Cycleway.EXCLUSIVE_LANE;
 import static de.westnordost.streetcomplete.quests.bikeway.Cycleway.ADVISORY_LANE;
 
-public class AddCycleway implements OsmElementQuestType
+public class AddCycleway extends AOsmElementQuestType
 {
 	private final OverpassMapDataDao overpassServer;
 
@@ -220,10 +220,11 @@ public class AddCycleway implements OsmElementQuestType
 	@Override public AbstractQuestAnswerFragment createForm() { return new AddCyclewayForm(); }
 	@Override public String getCommitMessage() { return "Add whether there are cycleways"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_bicycleway; }
-	@Override public int getTitle(@NonNull Map<String, String> tags) { return getTitle(); }
-	@Override public int getTitle() { return R.string.quest_cycleway_title2; }
+	@Override public int getTitle(@NonNull Map<String, String> tags)
+	{
+		return R.string.quest_cycleway_title2;
+	}
 
-	@Override public int getDefaultDisabledMessage() { return 0; }
 	@NonNull @Override public Countries getEnabledForCountries()
 	{
 		// See overview here: https://ent8r.github.io/blacklistr/?java=bikeway/AddCycleway.java

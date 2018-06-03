@@ -19,8 +19,7 @@ import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment;
 
 public class MarkCompletedHighwayConstruction extends MarkCompletedConstruction
 {
-	@Inject
-	public MarkCompletedHighwayConstruction(OverpassMapDataDao overpassServer) {
+	@Inject public MarkCompletedHighwayConstruction(OverpassMapDataDao overpassServer) {
 		super(overpassServer);
 	}
 
@@ -56,15 +55,8 @@ public class MarkCompletedHighwayConstruction extends MarkCompletedConstruction
 		}
 	}
 
-	@Override
-	public int getIcon() {
-		return R.drawable.ic_quest_road_construction;
-	}
-
-	@Override
-	public int getTitle() {
-		return R.string.quest_construction_road_title;
-	}
+	@Override public int getIcon() { return R.drawable.ic_quest_road_construction; }
+	@Override public int getTitle() { return R.string.quest_construction_road_title; }
 
 	@Override public int getTitle(@NonNull Map<String, String> tags) {
 		if (Arrays.asList(OsmTaggings.ALL_ROADS).contains(tags.get("construction"))){

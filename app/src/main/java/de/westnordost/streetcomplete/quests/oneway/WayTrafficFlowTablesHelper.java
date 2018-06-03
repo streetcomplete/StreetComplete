@@ -4,18 +4,18 @@ import android.database.sqlite.SQLiteDatabase;
 
 import de.westnordost.streetcomplete.data.TablesHelper;
 
-public class TrafficFlowTablesHelper implements TablesHelper
+public class WayTrafficFlowTablesHelper implements TablesHelper
 {
-	private static final String CREATE_TRAFFIC_FLOW =
-			"CREATE TABLE " + TrafficFlowTable.NAME +
+	private static final String CREATE_WAY_TRAFFIC_FLOW =
+			"CREATE TABLE " + WayTrafficFlowTable.NAME +
 			" (" +
-				TrafficFlowTable.Columns.WAY_ID +     " int PRIMARY KEY, " +
-				TrafficFlowTable.Columns.IS_FORWARD + " int NOT NULL " +
+				WayTrafficFlowTable.Columns.WAY_ID +     " int PRIMARY KEY, " +
+				WayTrafficFlowTable.Columns.IS_FORWARD + " int NOT NULL " +
 			");";
 
 	@Override public void onCreate(SQLiteDatabase db)
 	{
-		db.execSQL(CREATE_TRAFFIC_FLOW);
+		db.execSQL(CREATE_WAY_TRAFFIC_FLOW);
 	}
 
 	@Override public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
@@ -23,7 +23,7 @@ public class TrafficFlowTablesHelper implements TablesHelper
 		// was introduced in schema version 10
 		if(oldVersion < 10 && newVersion >= 10)
 		{
-			db.execSQL(CREATE_TRAFFIC_FLOW);
+			db.execSQL(CREATE_WAY_TRAFFIC_FLOW);
 		}
 	}
 }
