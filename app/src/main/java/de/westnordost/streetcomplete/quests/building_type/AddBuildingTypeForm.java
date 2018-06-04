@@ -126,7 +126,12 @@ public class AddBuildingTypeForm extends AbstractQuestFormAnswerFragment
 
 	private void addOtherAnswers()
 	{
-		addOtherAnswer(R.string.quest_buildingType_multiple_types, this::showMultipleTypesHintDialog);
+		addOtherAnswer(R.string.quest_buildingType_answer_multiple_types, this::showMultipleTypesHintDialog);
+		addOtherAnswer(R.string.quest_buildingType_answer_construction_site, () -> {
+			Bundle answer = new Bundle();
+			answer.putString(BUILDING, "construction");
+			applyImmediateAnswer(answer);
+		});
 	}
 
 	@Override public boolean hasChanges() { return getSelectedItem() != null; }
@@ -136,7 +141,7 @@ public class AddBuildingTypeForm extends AbstractQuestFormAnswerFragment
 	private void showMultipleTypesHintDialog()
 	{
 		new AlertDialogBuilder(getContext())
-			.setMessage(R.string.quest_buildingType_multiple_types_description)
+			.setMessage(R.string.quest_buildingType_answer_multiple_types_description)
 			.setPositiveButton(android.R.string.ok, null)
 			.show();
 	}
