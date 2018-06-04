@@ -57,7 +57,7 @@ public class AddOneway extends AOsmElementQuestType
 			return false;
 		}
 
-		String overpassQuery = "way(id:" + TextUtils.join(",",trafficDirectionMap.keySet()) + ");";
+		String overpassQuery = "way(id:" + TextUtils.join(",",trafficDirectionMap.keySet()) + "); out meta geom;";
 		overpassMapDataDao.getAndHandleQuota(overpassQuery, (element, geometry) ->
 		{
 			// filter the data as ImproveOSM data may be outdated or catching too much
