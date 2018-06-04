@@ -20,7 +20,7 @@ public class AddBuildingType extends SimpleOverpassQuestType
 
 	@Override protected String getTagFilters()
 	{
-		return "ways, relations with building=yes and location!=underground and !man_made";
+		return "ways, relations with building=yes and !man_made and !historic and location!=underground";
 	}
 
 	public AbstractQuestAnswerFragment createForm() { return new AddBuildingTypeForm(); }
