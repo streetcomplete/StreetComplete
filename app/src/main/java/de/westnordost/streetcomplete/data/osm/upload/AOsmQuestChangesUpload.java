@@ -7,8 +7,10 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import de.westnordost.osmapi.changesets.ChangesetInfo;
@@ -27,6 +29,7 @@ import de.westnordost.streetcomplete.ApplicationConstants;
 import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.data.QuestGroup;
 import de.westnordost.streetcomplete.data.QuestStatus;
+import de.westnordost.streetcomplete.data.QuestType;
 import de.westnordost.streetcomplete.data.VisibleQuestListener;
 import de.westnordost.streetcomplete.data.changesets.OpenChangesetInfo;
 import de.westnordost.streetcomplete.data.changesets.OpenChangesetKey;
@@ -94,6 +97,8 @@ public abstract class AOsmQuestChangesUpload
 		changesetIdsCache = new HashMap<>();
 		unlockedQuests = new ArrayList<>();
 
+		HashSet<OsmElementQuestType> uploadedQuestTypes = new HashSet<>();
+
 		for(OsmQuest quest : questDB.getAll(null, QuestStatus.ANSWERED))
 		{
 			if(cancelState.get()) break; // break so that the unreferenced stuff is deleted still
@@ -103,6 +108,7 @@ public abstract class AOsmQuestChangesUpload
 			long changesetId = getChangesetIdOrCreate(quest.getOsmElementQuestType(), quest.getChangesSource());
 			if (uploadQuestChange(changesetId, quest, element, false, false))
 			{
+				uploadedQuestTypes.add(quest.getOsmElementQuestType());
 				commits++;
 			}
 			else
@@ -111,7 +117,7 @@ public abstract class AOsmQuestChangesUpload
 			}
 		}
 
-		cleanUp();
+		cleanUp(uploadedQuestTypes);
 
 		String logMsg = "Committed " + commits + " changes";
 		if(obsolete > 0)
@@ -142,7 +148,7 @@ public abstract class AOsmQuestChangesUpload
 
 	protected abstract String getLogTag();
 
-	private void cleanUp()
+	private void cleanUp(Set<OsmElementQuestType> questTypes)
 	{
 		long yesterday = System.currentTimeMillis() - 24 * 60 * 60 * 1000;
 		int deletedQuests = questDB.deleteAllClosed(yesterday);
@@ -150,6 +156,11 @@ public abstract class AOsmQuestChangesUpload
 		{
 			elementGeometryDB.deleteUnreferenced();
 			elementDB.deleteUnreferenced();
+			// must be after unreferenced elements have been deleted
+			for (OsmElementQuestType questType : questTypes)
+			{
+				questType.cleanMetadata();
+			}
 		}
 	}
 

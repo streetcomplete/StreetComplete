@@ -18,6 +18,7 @@ import de.westnordost.osmapi.map.MapDataDao;
 import de.westnordost.osmapi.map.MapDataFactory;
 import de.westnordost.osmapi.map.OsmMapDataFactory;
 import de.westnordost.osmapi.notes.NotesDao;
+import de.westnordost.streetcomplete.quests.oneway.TrafficFlowSegmentsDao;
 import de.westnordost.streetcomplete.util.ImageUploader;
 import de.westnordost.streetcomplete.util.LutimImageUploader;
 import oauth.signpost.OAuthConsumer;
@@ -25,9 +26,11 @@ import oauth.signpost.OAuthConsumer;
 @Module
 public class OsmModule
 {
-	public static final String OSM_API_URL = "https://api.openstreetmap.org/api/0.6/";
+	public static final String
+		OSM_API_URL = "https://api.openstreetmap.org/api/0.6/",
+		OVERPASS_API_URL = "https://overpass-api.de/api/",
+		ONEWAY_API_URL = "https://www.westnordost.de/streetcomplete/oneway-data-api/";
 
-	public static final String OVERPASS_API_URL = "https://overpass-api.de/api/";
 
 	/** Returns the osm connection singleton used for all daos with the saved oauth consumer */
 	@Provides @Singleton public static OsmConnection osmConnection(OAuthPrefs oAuth)
@@ -60,6 +63,11 @@ public class OsmModule
 		OsmConnection overpassConnection = new OsmConnection(
 			OVERPASS_API_URL, ApplicationConstants.USER_AGENT, null);
 		return new OverpassOldMapDataDao(overpassConnection, parserProvider, date);
+	}
+
+	@Provides public static TrafficFlowSegmentsDao trafficFlowSegmentsDao()
+	{
+		return new TrafficFlowSegmentsDao(ONEWAY_API_URL);
 	}
 
 	@Provides public static OverpassMapDataParser overpassMapDataParser()
