@@ -196,6 +196,8 @@ public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 				if(focus != null && focus instanceof EditText)
 				{
 					EditText input = (EditText) focus;
+					int start = input.getSelectionStart();
+					int end = input.getSelectionEnd();
 					if ((input.getInputType() & InputType.TYPE_CLASS_NUMBER) != 0)
 					{
 						input.setInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
@@ -206,6 +208,8 @@ public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 						input.setKeyListener(DigitsKeyListener.getInstance("0123456789.,- /"));
 						toggleKeyboardButton.setText("abc");
 					}
+					// for some reason, the cursor position gets lost first time the input type is set (#1093)
+					input.setSelection(start, end);
 
 					InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
 					imm.showSoftInput(input, InputMethodManager.SHOW_IMPLICIT);
