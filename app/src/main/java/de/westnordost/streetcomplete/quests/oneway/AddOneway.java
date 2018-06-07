@@ -56,6 +56,7 @@ public class AddOneway extends AOsmElementQuestType
 			Log.e(TAG, "Unable to download traffic metadata", e);
 			return false;
 		}
+		if(trafficDirectionMap.isEmpty()) return true;
 
 		String overpassQuery = "way(id:" + TextUtils.join(",",trafficDirectionMap.keySet()) + "); out meta geom;";
 		overpassMapDataDao.getAndHandleQuota(overpassQuery, (element, geometry) ->
