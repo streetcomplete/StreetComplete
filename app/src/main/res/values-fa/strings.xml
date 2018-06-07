@@ -154,7 +154,7 @@
     <string name="autosync_only_on_wifi">"فقط با وایفای"</string>
     <string name="autosync_off">"خاموش"</string>
     <string name="quest_streetSurface_title">"جنس سطح این مسیر چیست؟"</string>
-    <string name="quest_surface_description">"بهترین گزینه را انتخاب کنید:"</string>
+    <string name="quest_select_hint_most_specific">"بهترین گزینه را انتخاب کنید:"</string>
     <string name="quest_surface_value_paved">"روسازی‌شده (کلی)"</string>
     <string name="quest_surface_value_unpaved">"روسازی‌نشده (کلی)"</string>
     <string name="quest_surface_value_ground">"زمین (کلی)"</string>
@@ -501,7 +501,7 @@
     <string name="invalidation_dialog_message">"حذف حافظه‌پنهان باعث می شود که جَستار‌های بعدی بار دیگر بارگیری شوند. حافظه‌پنهان جَستارها پس از یک هفته و بلافاصله پس از آنکه یک جَستار پاسخ داده شده توسط شما ، بار دیگر توسط شخص دیگری پاسخ داده شود، به طور خودکار باطل می گردد."</string>
     <string name="quest_generic_looks_like_this">"اغلب اینگونه به نظر می رسد:"</string>
     <string name="quest_surface_value_metal">"فلزی"</string>
-    <string name="quest_surface_generic_surface_confirmation">"آیا مطمئن هستید که نمی‌توانید دقیقا سطح مسیر را مشخص کنید؟"</string>
+    <string name="quest_generic_item_confirmation">"آیا مطمئن هستید که نمی‌توانید دقیقا سطح مسیر را مشخص کنید؟"</string>
     <string name="quest_cycleway_title2">"آیا در اینجا مسیر دوچرخه سواری وجود دارد؟ از چه نوعی است؟"</string>
     <string name="quest_bridge_structure_title">"ساختار این پل چگونه است؟"</string>
     <string name="quest_internet_access_name_title">"چه نوعی از اتصال به شبکه در %s ارائه می دشود؟"</string>

@@ -146,7 +146,7 @@ Niemniej przed każdym wysłaniem zmian aplikacja sprawdza &lt;a href=\"https://
     <string name="autosync_only_on_wifi">"Tylko Wi-Fi"</string>
     <string name="autosync_off">"Wyłącz"</string>
     <string name="quest_streetSurface_title">"Jaką nawierzchnię ma ten kawałek drogi?"</string>
-    <string name="quest_surface_description">"Wybierz najbardziej pasującą:"</string>
+    <string name="quest_select_hint_most_specific">"Wybierz najbardziej pasującą:"</string>
     <string name="quest_surface_value_paved">"utwardzona (ogólnie)"</string>
     <string name="quest_surface_value_unpaved">"nieutwardzona (ogólnie)"</string>
     <string name="quest_surface_value_ground">"gruntowa (ogólnie)"</string>
@@ -493,7 +493,7 @@ Oznacza to, że osoba na wózku jest w stanie z niej skorzystać, ale nie ma por
     <string name="invalidation_dialog_message">"Wyczyszczenie cache'u powoduje, że zadania zostaną zaktualizowane przy następnym ich pobraniu. Cache jest czyszczony automatycznie po tygodniu lub natychmiast, gdy rozwiązane przez Ciebie zadanie okaże się już rozwiązane przez kogoś innego."</string>
     <string name="quest_generic_looks_like_this">"Zwykle wygląda to tak:"</string>
     <string name="quest_surface_value_metal">"metalowa"</string>
-    <string name="quest_surface_generic_surface_confirmation">"Czy jesteś pewien że nie można dokładniej określić nawierzchni?"</string>
+    <string name="quest_generic_item_confirmation">"Czy jesteś pewien że nie można dokładniej określić nawierzchni?"</string>
     <string name="quest_cycleway_title2">"Czy znajduje się tutaj ścieżka rowerowa? Jakiego typu?"</string>
     <string name="quest_bridge_structure_title">"Jaka jest struktura tego mostu?"</string>
 

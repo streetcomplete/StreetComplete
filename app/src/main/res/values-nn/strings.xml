@@ -119,7 +119,7 @@
     <string name="autosync_only_on_wifi">"Berre på Wi-Fi"</string>
     <string name="autosync_off">"Av"</string>
     <string name="quest_streetSurface_title">"Kva vegdekke har denne vegstrekninga?"</string>
-    <string name="quest_surface_description">"Vel det mest spesifikke som passar:"</string>
+    <string name="quest_select_hint_most_specific">"Vel det mest spesifikke som passar:"</string>
     <string name="quest_surface_value_paved">"Fast dekke (generelt)"</string>
     <string name="quest_surface_value_unpaved">"Laust dekke (generelt)"</string>
     <string name="quest_surface_value_ground">"Naturdekke (generelt)"</string>
@@ -434,7 +434,7 @@ Elles kan du lasta ned eit anna tastatur i appbutikken. Mykje brukte tastatur so
     <string name="invalidation_dialog_message">"Viss du tømmer mellomlageret for oppdrag, vert oppdraga oppdaterte neste gong du lastar dei ned. Mellomlageret vert automatisk tømt etter éi veke eller viss eit oppdrag du har løyst viser seg å allereie vera løyst av nokon andre."</string>
     <string name="quest_generic_looks_like_this">"Ser vanlegvis slik ut:"</string>
     <string name="quest_surface_value_metal">"Metall"</string>
-    <string name="quest_surface_generic_surface_confirmation">"Er du sikker på at du ikkje kan fastsetja vegdekket meir presist?"</string>
+    <string name="quest_generic_item_confirmation">"Er du sikker på at du ikkje kan fastsetja vegdekket meir presist?"</string>
     <string name="quest_cycleway_title2">"Finst det ein sykkelveg her? Kva type?"</string>
     <string name="quest_bridge_structure_title">"Kva struktur har denne brua?"</string>
     <string name="quest_internet_access_name_title">"Kva slags Internett-tilgang tilbyr %s?"</string>

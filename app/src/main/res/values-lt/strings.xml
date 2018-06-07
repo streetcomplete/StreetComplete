@@ -148,7 +148,7 @@ Bet, prieš įkeliant jūsų pakeitimus, aplikacija patikrina &lt;a href=\"https
     <string name="autosync_only_on_wifi">"Tik per Wifi"</string>
     <string name="autosync_off">"Išjungta"</string>
     <string name="quest_streetSurface_title">"Kokia yra šio kelio danga?"</string>
-    <string name="quest_surface_description">"Parinkite konkrečiausią iš tinkančių:"</string>
+    <string name="quest_select_hint_most_specific">"Parinkite konkrečiausią iš tinkančių:"</string>
     <string name="quest_surface_value_paved">"Grįsta (bendra)"</string>
     <string name="quest_surface_value_unpaved">"Negrįsta (bendra)"</string>
     <string name="quest_surface_value_ground">"Žemė (bendra)"</string>
@@ -495,7 +495,7 @@ Dalinai reiškia, kad vežimėlis gali įvažiuoti ir naudotis tualetu, bet nėr
     <string name="invalidation_dialog_message">"Temos išjungimas suveikia kitą kartą jas atsisiunčiant. Temų talpos išjungiamos automatiškai po savaitės ir kai jūsų išspręstą temą jau buvo išsprendęs kažkas kitas."</string>
     <string name="quest_generic_looks_like_this">"Paprastai atrodo taip:"</string>
     <string name="quest_surface_value_metal">"Metalinė"</string>
-    <string name="quest_surface_generic_surface_confirmation">"Ar tikrai negalite tiksliau nurodyti paviršiaus?"</string>
+    <string name="quest_generic_item_confirmation">"Ar tikrai negalite tiksliau nurodyti paviršiaus?"</string>
     <string name="quest_cycleway_title2">"Ar čia yra dviračių takas? Kokio tipo?"</string>
     <string name="quest_bridge_structure_title">"Kokia yra šio tilto struktūra?"</string>
 

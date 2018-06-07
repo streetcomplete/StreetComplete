@@ -148,7 +148,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="autosync_only_on_wifi">"Wifi 接続時のみ"</string>
     <string name="autosync_off">"オフ"</string>
     <string name="quest_streetSurface_title">"この路面はどんな表面ですか?"</string>
-    <string name="quest_surface_description">"最も具体的に適合するものを選択してください:"</string>
+    <string name="quest_select_hint_most_specific">"最も具体的に適合するものを選択してください:"</string>
     <string name="quest_surface_value_paved">"舗装 (全般)"</string>
     <string name="quest_surface_value_unpaved">"未舗装 (全般)"</string>
     <string name="quest_surface_value_ground">"地面 (全般)"</string>
@@ -495,7 +495,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="invalidation_dialog_message">"キャッシュを無効にすると、次にダウンロードされる探索が更新されます。 探索キャッシュは1週間後に自動的に無効になります。解決した探索が他の誰かによってすでに回答されていると判明したときにすぐに無効になります。"</string>
     <string name="quest_generic_looks_like_this">"通常はこのように見えます:"</string>
     <string name="quest_surface_value_metal">"金属"</string>
-    <string name="quest_surface_generic_surface_confirmation">"表面をさらに具体的に特定できませんか?"</string>
+    <string name="quest_generic_item_confirmation">"表面をさらに具体的に特定できませんか?"</string>
     <string name="quest_cycleway_title2">"ここに自転車道はありますか? どんな種類ですか?"</string>
     <string name="quest_bridge_structure_title">"この橋の構造は何ですか?"</string>
 

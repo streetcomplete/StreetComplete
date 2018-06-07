@@ -149,7 +149,7 @@ Para exibir o mapa, os blocos vetoriais são recuperadas do &lt;a href=\"https:/
     <string name="autosync_only_on_wifi">"Somente por WiFi"</string>
     <string name="autosync_off">"Desligado"</string>
     <string name="quest_streetSurface_title">"Que superfície tem este pedaço de rua?"</string>
-    <string name="quest_surface_description">"Selecione o mais específico que se encaixa:"</string>
+    <string name="quest_select_hint_most_specific">"Selecione o mais específico que se encaixa:"</string>
     <string name="quest_surface_value_paved">"Pavimentado (genérico)"</string>
     <string name="quest_surface_value_unpaved">"Não-pavimentado (genérico)"</string>
     <string name="quest_surface_value_ground">"Terra (genérico)"</string>
@@ -502,7 +502,7 @@ Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas barr
     <string name="invalidation_dialog_message">"Invalidando o cache as missões elas são atualizadas na próxima vez que ocorrer o download. O cache das missões são invalidados automaticamente depois de uma semana e imediatamente quando uma missão que você completou já tinha sido respondida por outro usuário."</string>
     <string name="quest_generic_looks_like_this">"Normalmente se parece assim:"</string>
     <string name="quest_surface_value_metal">"Metal"</string>
-    <string name="quest_surface_generic_surface_confirmation">"Você está certo que não pode determinar a superfície mais específica?"</string>
+    <string name="quest_generic_item_confirmation">"Você está certo que não pode determinar a superfície mais específica?"</string>
     <string name="quest_cycleway_title2">"Existe um ciclovia aqui? De que tipo?"</string>
     <string name="quest_bridge_structure_title">"Qual a estrutura dessa ponte?"</string>
 

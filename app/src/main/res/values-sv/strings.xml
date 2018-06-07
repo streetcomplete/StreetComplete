@@ -148,7 +148,7 @@ För att visa på kartan, är vektor brickor hämtas från &lt;a href=\"https://
     <string name="autosync_only_on_wifi">"Endast på Wifi"</string>
     <string name="autosync_off">"Av"</string>
     <string name="quest_streetSurface_title">"Vad har den här delen av vägen för underlag?"</string>
-    <string name="quest_surface_description">"Välj det underlag som passar bäst:"</string>
+    <string name="quest_select_hint_most_specific">"Välj det underlag som passar bäst:"</string>
     <string name="quest_surface_value_paved">"Belagd (generiska)"</string>
     <string name="quest_surface_value_unpaved">"Obelagd (generiska)"</string>
     <string name="quest_surface_value_ground">"Mark (generiska)"</string>
@@ -493,7 +493,7 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="create_new_note_description">"Du har möjlighet att lämna en offentlig anteckning på kartpunkten som andra kartläggare kan kommentera och förhoppningsvis avgöra. Justera anteckningens position genom att flytta kartan."</string>
     <string name="quest_generic_looks_like_this">"Ser vanligtvis ut så här:"</string>
     <string name="quest_surface_value_metal">"Metall"</string>
-    <string name="quest_surface_generic_surface_confirmation">"Är du säker på att du inte kan beskriva underlaget mer specifikt?"</string>
+    <string name="quest_generic_item_confirmation">"Är du säker på att du inte kan beskriva underlaget mer specifikt?"</string>
     <string name="quest_cycleway_title2">"Finns det en cykelväg här? Vilken typ?"</string>
     <string name="quest_bridge_structure_title">"Vilken typ av bro är det här?"</string>
     <string name="quest_internet_access_name_title">"Vilken typ av internetuppkoppling erbjuder %s?"</string>
