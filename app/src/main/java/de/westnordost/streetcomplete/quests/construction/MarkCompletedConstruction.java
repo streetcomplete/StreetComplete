@@ -1,19 +1,18 @@
 package de.westnordost.streetcomplete.quests.construction;
 
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.streetcomplete.data.meta.OsmTaggings;
-import de.westnordost.streetcomplete.data.osm.Countries;
-import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
+import de.westnordost.streetcomplete.data.osm.AOsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 import de.westnordost.streetcomplete.quests.DateUtil;
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment;
 
-public abstract class MarkCompletedConstruction implements OsmElementQuestType {
+public abstract class MarkCompletedConstruction extends AOsmElementQuestType
+{
 	protected final OverpassMapDataDao overpassServer;
 
 	MarkCompletedConstruction(OverpassMapDataDao overpassServer)
@@ -40,16 +39,18 @@ public abstract class MarkCompletedConstruction implements OsmElementQuestType {
 		return new YesNoQuestAnswerFragment();
 	}
 
-	protected String getCurrentDateString(){
+	protected String getCurrentDateString()
+	{
 		return DateUtil.getCurrentDateString() + "T00:00:00Z";
 	}
 
-	protected String getOffsetDateString(int offset){
+	protected String getOffsetDateString(int offset)
+	{
 		return DateUtil.getOffsetDateString(offset) + "T00:00:00Z";
 	}
 
-	String getQueryPart(String key, String nameOfGeneratedGroup, int reviewIntervalInDays){
-
+	String getQueryPart(String key, String nameOfGeneratedGroup, int reviewIntervalInDays)
+	{
 		// Note that newer segment will ensure that any edit,
 		// including adding or updating review marker like check_date or survey:date tags
 		// will cause OSM elements to become ineligible for this quest for reviewIntervalInDays days.
@@ -61,14 +62,16 @@ public abstract class MarkCompletedConstruction implements OsmElementQuestType {
 			"(.construction_with_unknown_state; - .recently_edited_construction;) -> " + nameOfGeneratedGroup + ";";
 	}
 
-	private String getRecentlyEditedConstructionsQueryPart(String key, int reviewIntervalInDays){
+	private String getRecentlyEditedConstructionsQueryPart(String key, int reviewIntervalInDays)
+	{
 		return "(" +
 			"way[" + key + "=construction](newer: '" + getOffsetDateString(-reviewIntervalInDays) +"');" +
 			"relation[" + key + "=construction](newer: '" + getOffsetDateString(-reviewIntervalInDays) +"');" +
 			")";
 	}
 
-	void removeTagsDescribingConstruction(StringMapChangesBuilder changes) {
+	void removeTagsDescribingConstruction(StringMapChangesBuilder changes)
+	{
 		changes.deleteIfExists("construction");
 		changes.deleteIfExists("source:construction");
 		changes.deleteIfExists("opening_date");
@@ -78,15 +81,4 @@ public abstract class MarkCompletedConstruction implements OsmElementQuestType {
 	}
 
 	@Override public String getCommitMessage() { return "Determine whether construction is now completed"; }
-
-	@NonNull
-	@Override
-	public Countries getEnabledForCountries() {
-		return Countries.ALL;
-	}
-
-	@Override
-	public int getDefaultDisabledMessage() {
-		return 0;
-	}
 }

@@ -145,7 +145,7 @@ Per visualizzare la mappa, vengono utilizzati tile vettoriali dal &lt;a href=\"h
     <string name="autosync_only_on_wifi">"Solo con WiFi"</string>
     <string name="autosync_off">"Spento"</string>
     <string name="quest_streetSurface_title">"Che tipo di pavimentazione ha questa tratto di strada?"</string>
-    <string name="quest_surface_description">"Seleziona quello che lo indica meglio:"</string>
+    <string name="quest_select_hint_most_specific">"Seleziona quello che lo indica meglio:"</string>
     <string name="quest_surface_value_paved">"Pavimentato (generico)"</string>
     <string name="quest_surface_value_unpaved">"Non pavimentato (generico)"</string>
     <string name="quest_surface_value_ground">"Sterrato (generico)"</string>
@@ -488,7 +488,7 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="invalidation_dialog_message">"Invalidare la cache fa sì che le missioni siano aggiornate al prossimo download. La cache delle missioni viene invalidata automaticamente dopo una settimana oppure immediatamente quando si scoper che una missione che hai risolto ha già ottenuto risposta da qualcun altro."</string>
     <string name="quest_generic_looks_like_this">"Normalmente è qualcosa tipo:"</string>
     <string name="quest_surface_value_metal">"Metallo"</string>
-    <string name="quest_surface_generic_surface_confirmation">"Sei sicuro di non poter determinare la superficie con precisione?"</string>
+    <string name="quest_generic_item_confirmation">"Sei sicuro di non poter determinare la superficie con precisione?"</string>
     <string name="quest_cycleway_title2">"C'è una pista ciclabile qui? Che tipo?"</string>
     <string name="quest_bridge_structure_title">"Quale è la struttura di questo ponte?"</string>
 

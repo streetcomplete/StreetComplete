@@ -147,7 +147,7 @@
     <string name="autosync_only_on_wifi">"Тільки через Wi-Fi"</string>
     <string name="autosync_off">"Вимкнена"</string>
     <string name="quest_streetSurface_title">"Яке покриття має ця ділянка дороги?"</string>
-    <string name="quest_surface_description">"Оберіть те, що найбільше підходить:"</string>
+    <string name="quest_select_hint_most_specific">"Оберіть те, що найбільше підходить:"</string>
     <string name="quest_surface_value_paved">"З покриттям (загальне)"</string>
     <string name="quest_surface_value_unpaved">"Без покриття (загальне)"</string>
 
@@ -489,7 +489,7 @@
     <string name="invalidation_dialog_message">"Очищення кешу призводить до повторного завантаження квестів. Кеш очищується автоматично через тиждень після загрузки квестів та одразу ж після ситуації, коли квест, на який ви відповіли, виявився розв'язаним кимось іншим."</string>
     <string name="quest_generic_looks_like_this">"Зазвичай виглядає так:"</string>
     <string name="quest_surface_value_metal">"Метал"</string>
-    <string name="quest_surface_generic_surface_confirmation">"Ви впевнені, що не можете визначити покриття точніше?"</string>
+    <string name="quest_generic_item_confirmation">"Ви впевнені, що не можете визначити покриття точніше?"</string>
     <string name="quest_cycleway_title2">"Тут велодоріжка? Якого типу?"</string>
     <string name="quest_bridge_structure_title">"Яка структура цього моста?"</string>
 

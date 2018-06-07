@@ -136,7 +136,7 @@ Per a visualitzar el mapa, es recuperen tessel·les vectorials del servei &lt;a 
     <string name="autosync_only_on_wifi">"Només per Wifi"</string>
     <string name="autosync_off">"Desactivat"</string>
     <string name="quest_streetSurface_title">"Quin tipus de superfície té aquesta via?"</string>
-    <string name="quest_surface_description">"Seleccioneu el tipus de superfície que hi encaixi millor:"</string>
+    <string name="quest_select_hint_most_specific">"Seleccioneu el tipus de superfície que hi encaixi millor:"</string>
     <string name="quest_surface_value_paved">"Pavimentat (genèric)"</string>
     <string name="quest_surface_value_unpaved">"Sense pavimentar (genèric)"</string>
     <string name="quest_surface_value_ground">"Natural (genèric)"</string>
@@ -451,7 +451,7 @@ En cas contrari, podeu baixar un altre teclat a la botiga d'aplicacions. Els tec
     <string name="invalidation_dialog_message">"Si netegeu la memòria cau, les missions s'actualitzaran la propera vegada que es baixin. La memòria cau de missions s'invalida automàticament després d'una setmana i de forma immediata si algú altre ja la resolta."</string>
     <string name="quest_generic_looks_like_this">"Habitualment sembla això:"</string>
     <string name="quest_surface_value_metal">"Metall"</string>
-    <string name="quest_surface_generic_surface_confirmation">"Esteu segur que no podeu concretar el tipus de superfície?"</string>
+    <string name="quest_generic_item_confirmation">"Esteu segur que no podeu concretar el tipus de superfície?"</string>
     <string name="quest_cycleway_title2">"Hi ha cap carril bici aquí? De quin tipus?"</string>
     <string name="quest_bridge_structure_title">"Quin estructura té aquest pont?"</string>
     <string name="quest_internet_access_name_title">"Quin tipus de connexió a Internet ofereix %s?"</string>

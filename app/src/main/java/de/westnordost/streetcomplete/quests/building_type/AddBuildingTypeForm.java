@@ -61,9 +61,9 @@ public class AddBuildingTypeForm extends AbstractQuestFormAnswerFragment
 	{
 		View view = super.onCreateView(inflater, container, savedInstanceState);
 
-		View contentView = setContentView(R.layout.quest_image_select);
+		View contentView = setContentView(R.layout.quest_generic_list);
 
-		RecyclerView buildingSelect = contentView.findViewById(R.id.imageSelect);
+		RecyclerView buildingSelect = contentView.findViewById(R.id.listSelect);
 		GridLayoutManager lm = new GridLayoutManager(getActivity(), 1);
 		buildingSelect.setLayoutManager(lm);
 		buildingSelect.setNestedScrollingEnabled(false);

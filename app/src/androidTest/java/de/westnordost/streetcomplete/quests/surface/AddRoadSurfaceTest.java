@@ -1,21 +1,15 @@
-package de.westnordost.streetcomplete.quests;
+package de.westnordost.streetcomplete.quests.surface;
 
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd;
-import de.westnordost.streetcomplete.quests.road_surface.AddRoadSurface;
-import de.westnordost.streetcomplete.quests.road_surface.AddRoadSurfaceForm;
+import de.westnordost.streetcomplete.quests.AOsmElementQuestTypeTest;
+import de.westnordost.streetcomplete.quests.GroupedImageListQuestAnswerFragment;
 
 public class AddRoadSurfaceTest extends AOsmElementQuestTypeTest
 {
-	@Override public void setUp() throws Exception
-	{
-		super.setUp();
-		tags.put("highway","residential");
-	}
-
 	public void testSurface()
 	{
-		bundle.putString(AddRoadSurfaceForm.SURFACE, "cobblestone");
+		bundle.putString(GroupedImageListQuestAnswerFragment.OSM_VALUE, "cobblestone");
 		verify(new StringMapEntryAdd("surface","cobblestone"));
 	}
 

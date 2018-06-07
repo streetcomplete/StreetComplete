@@ -14,9 +14,9 @@ import javax.inject.Inject;
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.streetcomplete.R;
+import de.westnordost.streetcomplete.data.osm.AOsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.Countries;
 import de.westnordost.streetcomplete.data.osm.ElementGeometry;
-import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
@@ -28,7 +28,7 @@ import com.vividsolutions.jts.geom.Envelope;
 import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.geom.Point;
 
-public class AddHousenumber implements OsmElementQuestType
+public class AddHousenumber extends AOsmElementQuestType
 {
 	private static final String ANY_ADDRESS_FILTER =
 		"[~'^addr:(housenumber|housename|conscriptionnumber|streetnumber)$'~'.']";
@@ -247,10 +247,7 @@ public class AddHousenumber implements OsmElementQuestType
 	@Override public AbstractQuestAnswerFragment createForm() { return new AddHousenumberForm(); }
 	@Override public String getCommitMessage() { return "Add housenumbers"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_housenumber; }
-	@Override public int getTitle(@NonNull Map<String,String> tags) { return getTitle(); }
-	@Override public int getTitle() { return R.string.quest_address_title; }
-
-	@Override public int getDefaultDisabledMessage() { return 0; }
+	@Override public int getTitle(@NonNull Map<String,String> tags) { return R.string.quest_address_title; }
 
 	@NonNull @Override public Countries getEnabledForCountries()
 	{

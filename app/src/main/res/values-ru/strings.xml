@@ -146,7 +146,7 @@
     <string name="autosync_only_on_wifi">"Только по Wi-Fi"</string>
     <string name="autosync_off">"Выключена"</string>
     <string name="quest_streetSurface_title">"Какое покрытие у данного участка дороги?"</string>
-    <string name="quest_surface_description">"Выберите наиболее точно подходящее:"</string>
+    <string name="quest_select_hint_most_specific">"Выберите наиболее точно подходящее:"</string>
     <string name="quest_surface_value_paved">"Твердое (generic)"</string>
     <string name="quest_surface_value_unpaved">"Сыпучее (generic)"</string>
     <string name="quest_surface_value_ground">"Нет покрытия (generic)"</string>
@@ -490,7 +490,7 @@
     <string name="invalidate_confirmation">"Перезаписать"</string>
     <string name="quest_generic_looks_like_this">"Обычно выглядит так:"</string>
     <string name="quest_surface_value_metal">"мета́лл"</string>
-    <string name="quest_surface_generic_surface_confirmation">"Вы уверены, что не можете определить тип поверхности более конкретно?"</string>
+    <string name="quest_generic_item_confirmation">"Вы уверены, что не можете определить тип поверхности более конкретно?"</string>
     <string name="quest_internet_access_wlan">"Wi-Fi"</string>
     <string name="quest_internet_access_no">"Нет соединения"</string>
     <string name="quest_bench_backrest_title">"Есть ли у этой скамейки спинка?"</string>

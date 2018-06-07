@@ -24,10 +24,7 @@ public class YesNoQuestAnswerFragment extends AbstractQuestAnswerFragment
 		return view;
 	}
 
-	@Override public boolean hasChanges()
-	{
-		return false;
-	}
+	@Override public boolean hasChanges() {	return false; }
 
 	protected void onClickYesNo(boolean answer)
 	{

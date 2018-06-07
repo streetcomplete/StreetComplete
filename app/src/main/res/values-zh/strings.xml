@@ -148,7 +148,7 @@ OpenStreetMap不接受匿名编辑，您需要登录您的OpenStreetMap帐号。
     <string name="autosync_only_on_wifi">"仅通过Wi-Fi"</string>
     <string name="autosync_off">"关闭"</string>
     <string name="quest_streetSurface_title">"这段道路的铺面材料是？"</string>
-    <string name="quest_surface_description">"选择最合适的一个："</string>
+    <string name="quest_select_hint_most_specific">"选择最合适的一个："</string>
     <string name="quest_surface_value_paved">"有路面"</string>
     <string name="quest_surface_value_unpaved">"简单路面"</string>
     <string name="quest_surface_value_ground">"无路面"</string>
@@ -495,7 +495,7 @@ OpenStreetMap不接受匿名编辑，您需要登录您的OpenStreetMap帐号。
     <string name="invalidation_dialog_message">"暂存档无效导致需要在下载时更新任务。一週之后或是任务已经解决回答，任务暂存自动无效。"</string>
     <string name="quest_generic_looks_like_this">"通常长得像这样子："</string>
     <string name="quest_surface_value_metal">"金属材质表面"</string>
-    <string name="quest_surface_generic_surface_confirmation">"你确定你无法精确描述路面的材质吗？"</string>
+    <string name="quest_generic_item_confirmation">"你确定你无法精确描述路面的材质吗？"</string>
     <string name="quest_cycleway_title2">"这裡有单车道吗？那种类型？"</string>
     <string name="quest_bridge_structure_title">"这座桥樑的结构是？"</string>
 

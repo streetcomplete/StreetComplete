@@ -19,8 +19,7 @@ import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment;
 
 public class MarkCompletedBuildingConstruction extends MarkCompletedConstruction
 {
-	@Inject
-	public MarkCompletedBuildingConstruction(OverpassMapDataDao overpassServer) {
+	@Inject public MarkCompletedBuildingConstruction(OverpassMapDataDao overpassServer) {
 		super(overpassServer);
 	}
 
@@ -58,17 +57,9 @@ public class MarkCompletedBuildingConstruction extends MarkCompletedConstruction
 		}
 	}
 
-	@Override
-	public int getIcon() {
-		return R.drawable.ic_quest_building_construction;
-	}
-
-	@Override
-	public int getTitle() {
-		return R.string.quest_construction_building_title;
-	}
-
-	@Override public int getTitle(@NonNull Map<String, String> tags) {
+	@Override public int getIcon() { return R.drawable.ic_quest_building_construction; }
+	@Override public int getTitle(@NonNull Map<String, String> tags)
+	{
 		return R.string.quest_construction_building_title;
 	}
 }

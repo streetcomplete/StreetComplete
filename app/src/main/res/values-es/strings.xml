@@ -146,7 +146,7 @@ Para que puedas ver las últimas secciones del mapa utilizamos el &lt;a href=\"h
     <string name="autosync_only_on_wifi">"Sólo con WiFi"</string>
     <string name="autosync_off">"Desactivada"</string>
     <string name="quest_streetSurface_title">"¿Qué tipo de superficie tiene este tramo de carretera?"</string>
-    <string name="quest_surface_description">"Selecciona la opción que más se ajuste:"</string>
+    <string name="quest_select_hint_most_specific">"Selecciona la opción que más se ajuste:"</string>
     <string name="quest_surface_value_paved">"Pavimentado (genérico)"</string>
     <string name="quest_surface_value_unpaved">"Sin pavimentar (genérico)"</string>
     <string name="quest_surface_value_ground">"Natural (genérico)"</string>
@@ -489,7 +489,7 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <string name="invalidation_dialog_message">"Al invalidar la caché forzarás a que las tareas se vuelvan a descargar de nuevo y estén al día. Ten en cuenta que esto ya se hace de semana en semana y cuando alguien ya haya respondido a las mismas preguntas."</string>
     <string name="quest_generic_looks_like_this">"Suele parecerse a esto:"</string>
     <string name="quest_surface_value_metal">"Metal"</string>
-    <string name="quest_surface_generic_surface_confirmation">"¿Seguro que no puedes afinar un poco más el tipo de superficie?"</string>
+    <string name="quest_generic_item_confirmation">"¿Seguro que no puedes afinar un poco más el tipo de superficie?"</string>
     <string name="quest_cycleway_title2">"¿Hay una vía ciclista aquí? ¿De qué tipo?"</string>
     <string name="quest_bridge_structure_title">"¿Cómo es la estructura de este puente?"</string>
 

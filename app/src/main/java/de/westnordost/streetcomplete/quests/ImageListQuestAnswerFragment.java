@@ -19,9 +19,8 @@ import de.westnordost.streetcomplete.view.ImageSelectAdapter;
 import de.westnordost.streetcomplete.view.Item;
 
 /**
- * Abstract class for quests with a list of images and one to select.
+ * Abstract class for quests with a list of images and one or several to select.
  */
-
 public abstract class ImageListQuestAnswerFragment extends AbstractQuestFormAnswerFragment {
 
 	public static final String OSM_VALUES = "osm_values";
@@ -46,7 +45,7 @@ public abstract class ImageListQuestAnswerFragment extends AbstractQuestFormAnsw
         valueList.setLayoutManager(lm);
 		valueList.setNestedScrollingEnabled(false);
 
-		showMoreButton = view.findViewById(R.id.buttonShowMore);
+		showMoreButton = contentView.findViewById(R.id.buttonShowMore);
 		showMoreButton.setOnClickListener(v ->
 		{
 			List<Item> all = Arrays.asList(getItems());
@@ -55,7 +54,7 @@ public abstract class ImageListQuestAnswerFragment extends AbstractQuestFormAnsw
 		});
 
 		int selectableItems = getMaxSelectableItems();
-		TextView selectHint = view.findViewById(R.id.selectHint);
+		TextView selectHint = contentView.findViewById(R.id.selectHint);
 		selectHint.setText(selectableItems == 1 ? R.string.quest_roofShape_select_one : R.string.quest_select_hint);
 
 		imageSelector = new ImageSelectAdapter(selectableItems);

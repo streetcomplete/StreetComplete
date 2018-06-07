@@ -146,7 +146,7 @@ Para a representação do mapa, é utilizado o mosaico de mapas vectoriais&lt;a 
     <string name="autosync_only_on_wifi">"Usar somente Wi-Fi"</string>
     <string name="autosync_off">"Desligado"</string>
     <string name="quest_streetSurface_title">"Qual o tipo de pavimento que este trecho de estrada tem?"</string>
-    <string name="quest_surface_description">"Selecione  o mais específico que se encaixa:"</string>
+    <string name="quest_select_hint_most_specific">"Selecione  o mais específico que se encaixa:"</string>
     <string name="quest_surface_value_paved">"Pavimentado (genérico)"</string>
     <string name="quest_surface_value_unpaved">"Não pavimentado (genérico)"</string>
     <string name="quest_surface_value_ground">"Terra (genérico)"</string>
@@ -485,7 +485,7 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="invalidation_dialog_message">"Invalidar a cache faz com que os desafios sejam atualizados da próxima vez que sejam descarregados. A cache de desafios é invalidada automaticamente após uma semana e de forma imediata quando o desafio que resolveu, já foi respondido por outra pessoa."</string>
     <string name="quest_generic_looks_like_this">"Normalmente tem esta aparência"</string>
     <string name="quest_surface_value_metal">"Metal"</string>
-    <string name="quest_surface_generic_surface_confirmation">"Tem a certeza que não consegue especificar o tipo de pavimento?"</string>
+    <string name="quest_generic_item_confirmation">"Tem a certeza que não consegue especificar o tipo de pavimento?"</string>
     <string name="quest_cycleway_title2">"Há uma ciclovia aqui? De qual tipo?"</string>
     <string name="quest_bridge_structure_title">"Qual é a estrutura desta ponte?"</string>
 

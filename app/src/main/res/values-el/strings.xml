@@ -136,7 +136,7 @@
     <string name="autosync_only_on_wifi">"Μόνο στο Wifi"</string>
     <string name="autosync_off">"Κλειστό"</string>
     <string name="quest_streetSurface_title">"Τι επιφάνεια έχει αυτό το κομμάτι του δρόμου;"</string>
-    <string name="quest_surface_description">"Επιλέξτε το πιο συγκεκριμένο που ταιριάζει:"</string>
+    <string name="quest_select_hint_most_specific">"Επιλέξτε το πιο συγκεκριμένο που ταιριάζει:"</string>
     <string name="quest_surface_value_paved">"Στρωμένος (γενικά)"</string>
     <string name="quest_surface_value_unpaved">"Άστρωτος (γενικά)"</string>
     <string name="quest_surface_value_ground">"Έδαφος (γενικά)"</string>
@@ -454,7 +454,7 @@
     <string name="invalidation_dialog_message">"Η ακύρωση της προσωρινής μνήμης προκαλεί την ενημέρωση των αναζητήσεων την επόμενη φορά που θα γίνει η λήψη τους. Η προσωρινή μνήμη αναζητήσεων ακυρώνεται αυτόματα μετά από μία εβδομάδα και αμέσως όταν μια αναζήτηση που λύσατε αποδειχθεί ότι έχει ήδη απαντηθεί από κάποιον άλλο."</string>
     <string name="quest_generic_looks_like_this">"Συνήθως φαίνεται έτσι:"</string>
     <string name="quest_surface_value_metal">"Μέταλο"</string>
-    <string name="quest_surface_generic_surface_confirmation">"Είστε βέβαιοι ότι δεν μπορείτε να προσδιορίσετε την επιφάνεια πιο συγκεκριμένα;"</string>
+    <string name="quest_generic_item_confirmation">"Είστε βέβαιοι ότι δεν μπορείτε να προσδιορίσετε την επιφάνεια πιο συγκεκριμένα;"</string>
     <string name="quest_cycleway_title2">"Υπάρχει ένας ποδηλατόδρομος εδώ; Τι τύπος;"</string>
     <string name="quest_bridge_structure_title">"Ποια είναι η κατασκευή αυτής της γέφυρας;"</string>
     <string name="quest_internet_access_name_title">"Τι είδους σύνδεση στο διαδίκτυο προσφέρει το %s;"</string>
