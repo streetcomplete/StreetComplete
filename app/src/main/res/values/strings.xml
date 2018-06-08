@@ -519,4 +519,5 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="questList_disabled_in_country">Never shown in %s</string>
     <string name="quest_toiletAvailability_rest_area_title">Does this rest area have restroom facilities?</string>
     <string name="quest_maxspeed_name_title">What is the speed limit sign for %s?</string>
+    <string name="pref_quests_reset">Reset both quest enablement and order to the default?</string>
 </resources>

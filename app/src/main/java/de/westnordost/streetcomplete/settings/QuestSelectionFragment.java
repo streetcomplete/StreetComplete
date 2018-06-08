@@ -22,6 +22,7 @@ import de.westnordost.streetcomplete.data.QuestType;
 import de.westnordost.streetcomplete.data.QuestTypeRegistry;
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderList;
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeDao;
+import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 
 public class QuestSelectionFragment extends Fragment
 {
@@ -67,7 +68,11 @@ public class QuestSelectionFragment extends Fragment
 	{
 		switch (item.getItemId()) {
 			case R.id.action_reset:
-				onReset();
+				new AlertDialogBuilder(getContext())
+					.setMessage(R.string.pref_quests_reset)
+					.setPositiveButton(android.R.string.ok, (dialog, which) -> onReset())
+					.setNegativeButton(android.R.string.cancel, null)
+					.show();
 				return true;
 		}
 		return super.onOptionsItemSelected(item);
