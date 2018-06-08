@@ -18,16 +18,12 @@ public class AddParkingType extends SimpleOverpassQuestType
 {
 	@Inject public AddParkingType(OverpassMapDataDao overpassServer) { super(overpassServer); }
 
-	@Override
-	protected String getTagFilters()
+	@Override protected String getTagFilters()
 	{
-		return "nodes, ways with amenity=parking and !parking";
+		return "nodes, ways, relations with amenity=parking and !parking";
 	}
 
-	public AbstractQuestAnswerFragment createForm()
-	{
-		return new AddParkingTypeForm();
-	}
+	public AbstractQuestAnswerFragment createForm() { return new AddParkingTypeForm(); }
 
 	public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
 	{
