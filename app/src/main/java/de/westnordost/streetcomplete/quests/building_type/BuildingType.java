@@ -23,9 +23,10 @@ public class BuildingType
 		STATIC_CARAVAN =new Item("static_caravan", R.drawable.ic_building_static_caravan, R.string.quest_buildingType_static_caravan),
 		HUT =           new Item("hut",        R.drawable.ic_building_hut,        R.string.quest_buildingType_hut, R.string.quest_buildingType_hut_description),
 
-		COMMERCIAL =    new Item("commercial", R.drawable.ic_building_commercial, R.string.quest_buildingType_commercial, R.string.quest_buildingType_commercial_description),
+		COMMERCIAL =    new Item("commercial", R.drawable.ic_building_office,     R.string.quest_buildingType_commercial, R.string.quest_buildingType_commercial_generic_description),
 		INDUSTRIAL =    new Item("industrial", R.drawable.ic_building_industrial, R.string.quest_buildingType_industrial, R.string.quest_buildingType_industrial_description),
 		RETAIL =        new Item("retail",     R.drawable.ic_building_retail,     R.string.quest_buildingType_retail),
+		OFFICE =        new Item("office",     R.drawable.ic_building_office,     R.string.quest_buildingType_office),
 		WAREHOUSE =     new Item("warehouse",  R.drawable.ic_building_warehouse,  R.string.quest_buildingType_warehouse),
 		KIOSK =         new Item("kiosk",      R.drawable.ic_building_kiosk,      R.string.quest_buildingType_kiosk),
 		STORAGE_TANK =  new Item("man_made=storage_tank", R.drawable.ic_building_storage_tank, R.string.quest_buildingType_storage_tank),
@@ -60,7 +61,10 @@ public class BuildingType
 
 		SHED =          new Item("shed",       R.drawable.ic_building_shed,       R.string.quest_buildingType_shed),
 		ROOF =          new Item("roof",       R.drawable.ic_building_roof,       R.string.quest_buildingType_roof),
-		SERVICE =       new Item("service",    R.drawable.ic_building_service,    R.string.quest_buildingType_service, R.string.quest_buildingType_service_description);
+		SERVICE =       new Item("service",    R.drawable.ic_building_service,    R.string.quest_buildingType_service, R.string.quest_buildingType_service_description),
+		HANGAR =        new Item("hangar",     R.drawable.ic_building_hangar,     R.string.quest_buildingType_hangar, R.string.quest_buildingType_hangar_description),
+		BUNKER =        new Item("bunker",     R.drawable.ic_building_bunker,     R.string.quest_buildingType_bunker);
+
 
 	@Nullable public static Item getByTag(String key, String value)
 	{

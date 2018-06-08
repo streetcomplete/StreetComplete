@@ -29,11 +29,11 @@ public class AddBuildingTypeForm extends GroupedImageListQuestAnswerFragment
 				DETACHED, APARTMENTS, SEMI_DETACHED, TERRACE, FARM, HOUSE,
 				HUT, BUNGALOW, HOUSEBOAT, STATIC_CARAVAN, DORMITORY,
 			}),
-			new Item(null, R.drawable.ic_building_commercial, R.string.quest_buildingType_commercial, R.string.quest_buildingType_commercial_generic_description, new Item[]{
-				COMMERCIAL, INDUSTRIAL, RETAIL, WAREHOUSE, KIOSK, STORAGE_TANK
+			new Item(COMMERCIAL, new Item[]{
+				OFFICE, INDUSTRIAL, RETAIL, WAREHOUSE, KIOSK, HOTEL, STORAGE_TANK
 			}),
 			new Item(CIVIC, new Item[]{
-				SCHOOL, UNIVERSITY, HOSPITAL, HOTEL, KINDERGARTEN, TRAIN_STATION, TRANSPORTATION,
+				SCHOOL, UNIVERSITY, HOSPITAL, KINDERGARTEN, TRAIN_STATION, TRANSPORTATION,
 				COLLEGE, STADIUM,
 			}),
 			new Item(RELIGIOUS, new Item[]{
@@ -46,7 +46,7 @@ public class AddBuildingTypeForm extends GroupedImageListQuestAnswerFragment
 				FARM, FARM_AUXILIARY, GREENHOUSE, STORAGE_TANK
 			}),
 			new Item(null, R.drawable.ic_building_other, R.string.quest_buildingType_other, new Item[]{
-				SHED, ROOF, SERVICE, HUT
+				SHED, ROOF, SERVICE, HUT, HANGAR, BUNKER
 			})
 		};
 	}

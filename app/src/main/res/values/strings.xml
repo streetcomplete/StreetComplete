@@ -547,10 +547,10 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingType_static_caravan">Static caravan</string>
 
     <string name="quest_buildingType_commercial">Commercial building</string>
-    <string name="quest_buildingType_commercial_generic_description">building where people work, shop or do business</string>
-    <string name="quest_buildingType_commercial_description">building for commercial activities, e.g office buildings</string>
+    <string name="quest_buildingType_commercial_generic_description">building where people work, shop or do any other commercial activities</string>
     <string name="quest_buildingType_industrial">Industrial building</string>
     <string name="quest_buildingType_industrial_description">e.g. a factory, workshop, car repair garage, …</string>
+    <string name="quest_buildingType_office">Office building</string>
     <string name="quest_buildingType_retail">Shop(s)</string>
     <string name="quest_buildingType_warehouse">Warehouse</string>
     <string name="quest_buildingType_kiosk">Kiosk</string>
@@ -583,6 +583,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingType_garages">Multiple garages</string>
     <string name="quest_buildingType_parking">Parking building</string>
 
+
     <string name="quest_buildingType_farm">On a farm</string>
     <string name="quest_buildingType_farmhouse">Farmhouse</string>
     <string name="quest_buildingType_farmhouse_description">the residential building on a farm</string>
@@ -597,6 +598,10 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingType_roof">Roof</string>
     <string name="quest_buildingType_service">Service building</string>
     <string name="quest_buildingType_service_description">building with machinery like pumps or transformers</string>
+    <string name="quest_buildingType_hangar">Hangar</string>
+    <string name="quest_buildingType_hangar_description">storage for airplanes, helicopters or spacecraft</string>
+    <string name="quest_buildingType_bunker">Bunker</string>
+
 
     <string name="quest_address_answer_no_housenumber">It has no house number</string>
     <string name="quest_address_answer_no_housenumber_message1">The building was tagged as:</string>
