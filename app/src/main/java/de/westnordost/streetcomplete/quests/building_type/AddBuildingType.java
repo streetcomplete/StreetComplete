@@ -20,7 +20,9 @@ public class AddBuildingType extends SimpleOverpassQuestType
 
 	@Override protected String getTagFilters()
 	{
-		return "ways, relations with building=yes and !man_made and !historic and location!=underground";
+		// in the case of man_made, historic, military and power, these tags already contain
+		// information about the purpose of the building, so no need to force asking it
+		return "ways, relations with building=yes and !man_made and !historic and !military and !power and location!=underground";
 	}
 
 	public AbstractQuestAnswerFragment createForm() { return new AddBuildingTypeForm(); }
