@@ -23,7 +23,7 @@ public class AddParkingFee extends SimpleOverpassQuestType
 
 	@Override protected String getTagFilters()
 	{
-		return "nodes, ways with" +
+		return "nodes, ways, relations with" +
 		       " amenity = parking and !fee and !fee:conditional and" +
 		       " access ~ yes|customers|public";
 	}

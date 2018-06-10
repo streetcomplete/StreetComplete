@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.IBinder;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -42,6 +43,8 @@ import static android.content.Context.BIND_AUTO_CREATE;
 
 public class QuestController
 {
+	private static final String TAG = "QuestController";
+
 	private final OsmQuestDao osmQuestDB;
 	private final UndoOsmQuestDao undoOsmQuestDB;
 	private final MergedElementDao osmElementDB;
@@ -332,6 +335,7 @@ public class QuestController
 
 		if(!changes.isEmpty())
 		{
+			Log.d(TAG, "Solved a "+q.getType().getClass().getSimpleName() + " quest: " + changes.toString());
 			q.setChanges(changes, source);
 			q.setStatus(QuestStatus.ANSWERED);
 			osmQuestDB.update(q);

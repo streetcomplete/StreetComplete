@@ -25,7 +25,6 @@ import de.westnordost.streetcomplete.data.osm.tql.FiltersParser;
 import de.westnordost.streetcomplete.data.osm.tql.TagFilterExpression;
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
 import de.westnordost.streetcomplete.util.SphericalEarthMath;
-import de.westnordost.streetcomplete.view.CompassView;
 import de.westnordost.streetcomplete.view.ListAdapter;
 import de.westnordost.streetcomplete.view.StreetSideSelectPuzzle;
 import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
@@ -48,7 +47,7 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 
 
 	private StreetSideSelectPuzzle puzzle;
-	private CompassView compassView;
+	private ImageView compassView;
 	private float wayOrientationAtCenter;
 
 	private boolean isDefiningBothSides;
@@ -149,7 +148,8 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 			}
 			if(compassView != null)
 			{
-				compassView.setOrientation(rotation, tilt);
+				compassView.setRotation((float) (180*rotation/Math.PI));
+				compassView.setRotationX((float) (180*tilt/Math.PI));
 			}
 		});
 	}
