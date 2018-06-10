@@ -136,7 +136,10 @@ public class AddOneway extends AOsmElementQuestType
 	}
 
 	@Override public AbstractQuestAnswerFragment createForm() { return new AddOnewayForm(); }
-	@Override public String getCommitMessage() { return "Add whether this road is a one-way road"; }
+	@Override public String getCommitMessage() {
+		return "Add whether this road is a one-way road," +
+			" this road was marked as likely oneway by improveosm.org";
+	}
 	@Override public int getIcon() { return R.drawable.ic_quest_oneway; }
 	@Override public int getTitle(@NonNull Map<String, String> tags)
 	{
