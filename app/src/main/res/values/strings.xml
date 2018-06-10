@@ -526,6 +526,4 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_maxheight_answer_noTrafficRestriction">The physical height does not restrict the general traffic</string>
     <string name="quest_maxheight_answer_cantEstimate">I can not estimate the height</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">This height looks implausible. Are you sure that it is correct?</string>
-    <string name="quest_maxheight_answer_imperial_unit">The unit is imperial</string>
-    <string name="quest_maxheight_answer_metric_unit">The unit is metric</string>
 </resources>

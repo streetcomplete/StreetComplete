@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/inputSigns">
+
+        <include
+            android:id="@+id/meterInputSign"
+            layout="@layout/quest_maxheight_meter"/>
+
+        <include
+            android:id="@+id/feetInputSign"
+            layout="@layout/quest_maxheight_feet"/>
+
+    </RelativeLayout>
+
+    <Spinner
+        android:id="@+id/heightUnitSelect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@+id/inputSigns"
+        android:background="#0fff"
+        android:visibility="gone" />
+
+</RelativeLayout>

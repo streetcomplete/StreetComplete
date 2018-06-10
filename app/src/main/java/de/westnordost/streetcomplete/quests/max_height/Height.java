@@ -8,7 +8,7 @@ public class Height
 
 	private String unit;
 
-	public static String
+	public final static String
 		METRIC = "metric",
 		IMPERIAL = "imperial";
 
@@ -26,14 +26,9 @@ public class Height
 		this.unit = unit;
 	}
 
-	public int getIntegerPart()
+	public String getUnit()
 	{
-		return integerPart;
-	}
-
-	public int getFractionalPart()
-	{
-		return fractionalPart;
+		return unit;
 	}
 
 	public boolean isEmpty()
@@ -52,5 +47,10 @@ public class Height
 			//this adds an apostrophe and a double-quote to be in a format like e.g. 6'7"
 			return String.valueOf(integerPart) + "'" + String.valueOf(fractionalPart) + "\"";
 		}
+	}
+
+	public double toDouble()
+	{
+		return Double.parseDouble(integerPart + "." + fractionalPart);
 	}
 }

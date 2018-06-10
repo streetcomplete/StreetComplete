@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Sweden SE -->
+<!-- TODO: this and the other two country-dependent files don't work -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/background_maxheight_sign_yellow"/>
+</layer-list>

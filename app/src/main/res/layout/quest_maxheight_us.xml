@@ -11,20 +11,21 @@
         android:gravity="center"
         android:orientation="horizontal"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/background_max_height_sign_us"
+        android:background="@drawable/background_rectangular_sign_yellow"
         android:padding="16dp"
-        android:id="@+id/maxHeightInputSign"
-        >
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="36dp"
+        android:id="@+id/feetInputSign">
 
         <EditText
-            android:id="@+id/maxHeightFeetInput"
+            android:id="@+id/feetInput"
             android:layout_width="100dp"
             android:layout_height="48dp"
             android:background="#0fff"
             android:gravity="center"
             android:inputType="number"
             android:maxLength="2"
-            android:nextFocusDown="@+id/maxHeightInchInput"
+            android:nextFocusDown="@+id/inchInput"
             android:focusable="true"
             android:textSize="38dp"
             android:textStyle="bold"
@@ -41,13 +42,13 @@
             tools:ignore="HardcodedText"/>
 
         <EditText
-            android:id="@+id/maxHeightInchInput"
+            android:id="@+id/inchInput"
             android:layout_width="97dp"
             android:layout_height="48dp"
             android:background="#0fff"
             android:gravity="center"
             android:inputType="number"
-            android:nextFocusUp="@+id/maxHeightFeetInput"
+            android:nextFocusUp="@+id/feetInput"
             android:imeOptions="actionDone"
             android:maxLength="2"
             android:textSize="38dp"
@@ -65,5 +66,15 @@
             tools:ignore="HardcodedText"/>
 
     </LinearLayout>
+
+    <Spinner
+        android:id="@+id/heightUnitSelect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="20dp"
+        android:background="#0fff"
+        android:visibility="visible" />
 
 </RelativeLayout>
