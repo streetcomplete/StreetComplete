@@ -34,7 +34,7 @@ public class AddBuildingTypeForm extends GroupedImageListQuestAnswerFragment
 			}),
 			new Item(CIVIC, new Item[]{
 				SCHOOL, UNIVERSITY, HOSPITAL, KINDERGARTEN, TRAIN_STATION, TRANSPORTATION,
-				COLLEGE, STADIUM,
+				COLLEGE, GOVERNMENT, STADIUM,
 			}),
 			new Item(RELIGIOUS, new Item[]{
 				CHURCH, CATHEDRAL, CHAPEL, MOSQUE, TEMPLE, PAGODA, SYNAGOGUE

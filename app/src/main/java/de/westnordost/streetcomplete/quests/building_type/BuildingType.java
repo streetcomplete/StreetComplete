@@ -40,6 +40,7 @@ public class BuildingType
 		TRAIN_STATION = new Item("train_station", R.drawable.ic_building_train_station, R.string.quest_buildingType_train_station),
 		TRANSPORTATION =new Item("transportation", R.drawable.ic_building_transportation, R.string.quest_buildingType_transportation),
 		UNIVERSITY =    new Item("university", R.drawable.ic_building_university, R.string.quest_buildingType_university),
+		GOVERNMENT =    new Item("government", R.drawable.ic_building_civic,      R.string.quest_buildingType_government),
 
 		RELIGIOUS =     new Item("religious",  R.drawable.ic_building_temple,     R.string.quest_buildingType_religious),
 		CHURCH =        new Item("church",     R.drawable.ic_religion_christian,  R.string.quest_buildingType_church),
