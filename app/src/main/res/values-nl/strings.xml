@@ -148,7 +148,7 @@ Om de kaart te tonen worden vector tegels van de &lt;a href=\"https://mapzen.com
     <string name="autosync_only_on_wifi">"Alleen met wifi"</string>
     <string name="autosync_off">"Uit"</string>
     <string name="quest_streetSurface_title">"Welke wegbeddeking heeft dit stuk weg?"</string>
-    <string name="quest_surface_description">"Selecteer het meest passende:"</string>
+    <string name="quest_select_hint_most_specific">"Selecteer het meest passende:"</string>
     <string name="quest_surface_value_paved">"Geplaveid (algemeen)"</string>
     <string name="quest_surface_value_unpaved">"Ongeplaveid (algemeen)"</string>
     <string name="quest_surface_value_ground">"Grond (algemeen)"</string>
@@ -501,7 +501,7 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
     <string name="invalidation_dialog_message">"De lokale vragen als verouderd aanduiden zorgt ervoor dat alle vragen opnieuw gedownload worden wanneer data beschikbaar is. Normaalgezien worden de lokale vragen automatisch eenmaal per week als 'verouderd' aangeduid of indien een je een antwoord uploadt dat al beantwoord werd."</string>
     <string name="quest_generic_looks_like_this">"Ziet er meestal zo uit:"</string>
     <string name="quest_surface_value_metal">"Metaal"</string>
-    <string name="quest_surface_generic_surface_confirmation">"Ben je er zeker van dat je geen specifiekere wegbedekking kunt aanduiden?"</string>
+    <string name="quest_generic_item_confirmation">"Ben je er zeker van dat je geen specifiekere wegbedekking kunt aanduiden?"</string>
     <string name="quest_cycleway_title2">"Is er hier een fietspad? Welke soort?"</string>
     <string name="quest_bridge_structure_title">"Wat voor structuur heeft deze brug?"</string>
 

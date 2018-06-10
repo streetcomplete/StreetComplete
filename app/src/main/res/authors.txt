@@ -33,6 +33,9 @@ recycling_centre.jpg           Public Domain     http://www.afgsc.af.mil/News/Ar
 recycling_container_undergr... CC0               https://commons.wikimedia.org/wiki/File:San_Fernando_de_Henares_-_reciclaje_de_residuos_urbanos_04.JPG
 recycling_container.jpg        CC0               https://commons.wikimedia.org/wiki/File:Vitoria_-_Contenedores_de_reciclaje_en_la_Avenida_de_Gasteiz.jpg
 
+panorama_path_surface_paved... CC-BY 4.0         https://github.com/westnordost/StreetComplete/issues/133#issuecomment-393650654 (Bjorn Rasmussen)
+panorama_path_surface_unpav... CC-BY 4.0         https://github.com/westnordost/StreetComplete/issues/133#issuecomment-393650654 (Bjorn Rasmussen)
+
 panorama_surface_paved.jpg     CC0               https://www.goodfreephotos.com/united-states/indiana/hoosier-hill/hooiser-hill-road-near-the-top-indiana.jpg.php
 panorama_surface_unpaved.jpg   CC-BY 2.0         https://www.flickr.com/photos/ian_munroe/3633361321
 panorama_surface_ground.jpg    CC-BY 3.0         https://commons.wikimedia.org/wiki/File:Dirt_Road,_Bulacan,_Philippines_-_panoramio.jpg

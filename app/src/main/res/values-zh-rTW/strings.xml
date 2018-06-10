@@ -148,7 +148,7 @@
     <string name="autosync_only_on_wifi">"只在 Wifi 上開啟"</string>
     <string name="autosync_off">"關"</string>
     <string name="quest_streetSurface_title">"此道路路段的鋪面材質是？"</string>
-    <string name="quest_surface_description">"選擇最合適的一個："</string>
+    <string name="quest_select_hint_most_specific">"選擇最合適的一個："</string>
     <string name="quest_surface_value_paved">"鋪面(一般)"</string>
     <string name="quest_surface_value_unpaved">"無鋪面(一般)"</string>
     <string name="quest_surface_value_ground">"地面(一般)"</string>
@@ -499,7 +499,7 @@
     <string name="invalidation_dialog_message">"暫存檔無效導致需要在下載時更新任務。一週之後或是任務已經解決回答，任務暫存自動無效。"</string>
     <string name="quest_generic_looks_like_this">"通常長得像這樣子："</string>
     <string name="quest_surface_value_metal">"金屬材質表面"</string>
-    <string name="quest_surface_generic_surface_confirmation">"你確定你無法精確描述路面的材質嗎？"</string>
+    <string name="quest_generic_item_confirmation">"你確定你無法精確描述路面的材質嗎？"</string>
     <string name="quest_cycleway_title2">"這裡有單車道嗎？那種類型？"</string>
     <string name="quest_bridge_structure_title">"這座橋樑的結構是？"</string>
 

@@ -152,7 +152,7 @@ Pro zobrazení mapy se stahují vektorové dlaždice z projektu &lt;a href=\"htt
     <string name="autosync_only_on_wifi">"Jen přes WiFi"</string>
     <string name="autosync_off">"Vypnuto"</string>
     <string name="quest_streetSurface_title">"Jaký povrch má tato část cesty?"</string>
-    <string name="quest_surface_description">"Vyberte ten, který nejvíce odpovídá:"</string>
+    <string name="quest_select_hint_most_specific">"Vyberte ten, který nejvíce odpovídá:"</string>
     <string name="quest_surface_value_paved">"Zpevněný (blíže neurčeno)"</string>
     <string name="quest_surface_value_unpaved">"Nezpevněný (blíže neurčeno)"</string>
     <string name="quest_surface_value_ground">"Země (blíže neurčeno)"</string>
@@ -506,7 +506,7 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="invalidation_dialog_message">"Zrušením platnosti mezipaměti docílíte toho, že úkoly budou při jejich příštím stažení aktualizovány. Platnost mezipaměti úkolů je automaticky zrušena po uplynutí jednoho týdne a okamžitě zrušena, když vámi vyřešený úkol již vyřešil někdo jiný."</string>
     <string name="quest_generic_looks_like_this">"Obvykle vypadá takhle:"</string>
     <string name="quest_surface_value_metal">"Kov"</string>
-    <string name="quest_surface_generic_surface_confirmation">"Opravdu nemůžete určit materiál povrchu přesněji?"</string>
+    <string name="quest_generic_item_confirmation">"Opravdu nemůžete určit materiál povrchu přesněji?"</string>
     <string name="quest_cycleway_title2">"Je tu cyklostezka? Jakého druhu?"</string>
     <string name="quest_bridge_structure_title">"Jakou konstrukci má tento most?"</string>
 

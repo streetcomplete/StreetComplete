@@ -163,7 +163,7 @@ Pour afficher la carte, les tuiles vectorielles sont extraites du &lt;a href=\"h
 
     <!-- Plus simple et plus court : "Quel est le revêtement de cette rue ?" -->
     <string name="quest_streetSurface_title">"Quel est le revêtement de cette rue ?"</string>
-    <string name="quest_surface_description">"Sélectionner celui qui correspond le plus :"</string>
+    <string name="quest_select_hint_most_specific">"Sélectionner celui qui correspond le plus :"</string>
     <string name="quest_surface_value_paved">"Pavé (générique)"</string>
     <string name="quest_surface_value_unpaved">"Non pavé (générique)"</string>
     <string name="quest_surface_value_ground">"Terre (générique)"</string>
@@ -534,7 +534,7 @@ Partiellement signifie qu’un fauteuil roulant peut entrer et utiliser les toil
     <string name="invalidation_dialog_message">"L’invalidation du cache entraînera la mise à jour des quêtes lors du prochain téléchargement. Le cache des quête est automatiquement invalidé après une semaine et immédiatement lorsqu’une quête que vous avez résolue a déjà été traitée par quelqu’un d’autre."</string>
     <string name="quest_generic_looks_like_this">"Ressemble habituellement à ceci :"</string>
     <string name="quest_surface_value_metal">"Métal"</string>
-    <string name="quest_surface_generic_surface_confirmation">"Êtes-vous sûr de ne pas pouvoir déterminer la surface plus spécifiquement?"</string>
+    <string name="quest_generic_item_confirmation">"Êtes-vous sûr de ne pas pouvoir déterminer la surface plus spécifiquement?"</string>
     <string name="quest_cycleway_title2">"Y a-t-il une piste cyclable ici ? De quel type ?"</string>
 
     <!-- ou « type de structure » ? -->

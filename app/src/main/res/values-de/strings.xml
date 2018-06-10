@@ -136,7 +136,7 @@ Um die Karte darzustellen, werden Kartendaten vom &lt;a href=\"https://mapzen.co
     <string name="autosync_only_on_wifi">"Nur mit WLAN"</string>
     <string name="autosync_off">"Aus"</string>
     <string name="quest_streetSurface_title">"Welche Oberfläche hat dieser Straßenabschnitt?"</string>
-    <string name="quest_surface_description">"Wähle die passendste:"</string>
+    <string name="quest_select_hint_most_specific">"Wähle die passendste:"</string>
     <string name="quest_surface_value_paved">"Befestigt (allgemein)"</string>
     <string name="quest_surface_value_unpaved">"Unbefestigt (allgemein)"</string>
     <string name="quest_surface_value_ground">"Naturbelassen (allgemein)"</string>
@@ -461,7 +461,7 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="invalidation_dialog_message">"Wenn der Cache ungültig gemacht wird, werden die Aufgaben das nächste mal wenn sie jeweils heruntergeladen werden aktualisiert. Der Aufgabencache wird automatisch nach einer Woche ungültig gemacht, und sofort, falls sich herausstellt, dass eine Aufgabe die Du beantwortet hast, schon von jemand anderem beantwortet wurde."</string>
     <string name="quest_generic_looks_like_this">"Sieht normalerweise so aus:"</string>
     <string name="quest_surface_value_metal">"Metall"</string>
-    <string name="quest_surface_generic_surface_confirmation">"Bist Du sicher dass Du die Oberfläche nicht genauer bestimmen kannst?"</string>
+    <string name="quest_generic_item_confirmation">"Bist Du sicher dass Du die Oberfläche nicht genauer bestimmen kannst?"</string>
     <string name="quest_cycleway_title2">"Gibt es hier einen Radweg? Was für einen?"</string>
     <string name="quest_bridge_structure_title">"Welche Konstruktionsform hat diese Brücke?"</string>
     <string name="quest_internet_access_name_title">"Was für einen Internetanschluss bietet %s an?"</string>

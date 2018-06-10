@@ -146,7 +146,7 @@ Sailkapenean eta profilean agertzen den informazioa OpenStreetMap-en publikoki e
     <string name="autosync_only_on_wifi">"Wi-Fi bidez besterik ez"</string>
     <string name="autosync_off">"Ez"</string>
     <string name="quest_streetSurface_title">"Zin da kale honen zoladura?"</string>
-    <string name="quest_surface_description">"Hautatu bat datorren zehatzena:"</string>
+    <string name="quest_select_hint_most_specific">"Hautatu bat datorren zehatzena:"</string>
     <string name="quest_surface_value_paved">"Zoladura (generikoa)"</string>
     <string name="quest_surface_value_unpaved">"Zoladura gabe (generikoa)"</string>
     <string name="quest_surface_value_ground">"Lurra (generikoa)"</string>
@@ -494,7 +494,7 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="invalidation_dialog_message">"Cachea baliogabetzean denak berriro deskargatzen dira eguneratzean. Erronken cachea automatikoki baliogabetzen da astean behin eta berehala zuk erantzundako erronka bat beste inork aurretik erantzun badu."</string>
     <string name="quest_generic_looks_like_this">"Itxura hau izaten du:"</string>
     <string name="quest_surface_value_metal">"Metala"</string>
-    <string name="quest_surface_generic_surface_confirmation">"Ziur ezin duzula azalera mota gehiago zehaztu?"</string>
+    <string name="quest_generic_item_confirmation">"Ziur ezin duzula azalera mota gehiago zehaztu?"</string>
     <string name="quest_cycleway_title2">"Bizikletentzako bidea dago? Zer motakoa?"</string>
     <string name="quest_bridge_structure_title">"Zein da zubi honen estruktura?"</string>
 

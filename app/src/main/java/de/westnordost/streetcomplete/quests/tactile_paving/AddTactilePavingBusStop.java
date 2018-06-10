@@ -47,7 +47,7 @@ public class AddTactilePavingBusStop extends SimpleOverpassQuestType
 		else        return R.string.quest_tactilePaving_title_bus;
 	}
 
-	@Override public Countries getEnabledForCountries()
+	@NonNull @Override public Countries getEnabledForCountries()
 	{
 		// See overview here: https://ent8r.github.io/blacklistr/?java=tactile_paving/AddTactilePavingCrosswalk.java
 		// #750

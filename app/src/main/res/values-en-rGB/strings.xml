@@ -178,7 +178,7 @@ To display the map, vector tiles are retrieved from the &lt;a href=\"https://map
     <string name="autosync_off">"Off"</string>
     <string name="quest_streetSurface_title">"What surface does this piece of road have?"</string>
     <string name="quest_streetSurface_name_title">"What surface does the road %s have here?"</string>
-    <string name="quest_surface_description">"Select the most specific one that fits:"</string>
+    <string name="quest_select_hint_most_specific">"Select the most specific one that fits:"</string>
     <string name="quest_surface_value_paved">"Paved (generic)"</string>
     <string name="quest_surface_value_unpaved">"Unpaved (generic)"</string>
     <string name="quest_surface_value_ground">"Ground (generic)"</string>
@@ -457,7 +457,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_cycleway_value_none_but_no_oneway">none, but cyclists may use road in both directions</string>
     <string name="quest_generic_looks_like_this">Usually looks like this:</string>
     <string name="quest_surface_value_metal">Metal</string>
-    <string name="quest_surface_generic_surface_confirmation">Are you sure that you can not determine the surface more specifically?</string>
+    <string name="quest_generic_item_confirmation">Are you sure that you can not determine the surface more specifically?</string>
     <string name="quest_internet_access_name_title">What kind of Internet connection does %s offer?</string>
     <string name="quest_internet_access_wlan">Wi-Fi</string>
     <string name="quest_internet_access_wired">Wired (LAN)</string>

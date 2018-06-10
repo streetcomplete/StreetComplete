@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import com.github.florent37.viewtooltip.ViewTooltip;
 import com.mapzen.android.lost.api.LocationRequest;
@@ -30,13 +31,12 @@ import de.westnordost.streetcomplete.location.LocationState;
 import de.westnordost.streetcomplete.location.LocationStateButton;
 import de.westnordost.streetcomplete.location.LocationUtil;
 import de.westnordost.streetcomplete.location.SingleLocationRequest;
-import de.westnordost.streetcomplete.view.CompassView;
 
 public class MapControlsFragment extends Fragment
 {
 	private SingleLocationRequest singleLocationRequest;
 	private MapFragment mapFragment;
-	private CompassView compassNeedle;
+	private ImageView compassNeedle;
 	private LocationStateButton trackingButton;
 
 	@Inject SharedPreferences prefs;
@@ -175,7 +175,10 @@ public class MapControlsFragment extends Fragment
 
 	@AnyThread public void onMapOrientation(float rotation, float tilt)
 	{
-		compassNeedle.setOrientation(rotation, tilt);
+		getActivity().runOnUiThread(() -> {
+			compassNeedle.setRotation((float) (180*rotation/Math.PI));
+			compassNeedle.setRotationX((float) (180*tilt/Math.PI));
+		});
 	}
 
 	public void onMapInitialized()

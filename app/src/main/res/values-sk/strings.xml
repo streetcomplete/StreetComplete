@@ -146,7 +146,7 @@ Pre zobrazenie mapy sa sťahujú vektorové dlaždice z &lt;a href=\"https://map
     <string name="autosync_only_on_wifi">"Iba na Wifi"</string>
     <string name="autosync_off">"Vypnuté"</string>
     <string name="quest_streetSurface_title">"Aký povrch má tento kus cesty?"</string>
-    <string name="quest_surface_description">"Vyberte ten, ktorý najlepšie zodpovedá:"</string>
+    <string name="quest_select_hint_most_specific">"Vyberte ten, ktorý najlepšie zodpovedá:"</string>
     <string name="quest_surface_value_paved">"Spevnená (bližšie neurčené)"</string>
     <string name="quest_surface_value_unpaved">"Nespevnená (bližšie neurčené)"</string>
     <string name="quest_surface_value_ground">"Zemina (bližšie neurčené)"</string>
@@ -470,7 +470,7 @@ Zadané informácie sa potom priamo pridávajú do OpenStreetMap vo vašom mene 
     <string name="quest_wheelchairAccess_toilets_title">"Sú tieto toalety bezbariérové?"</string>
     <string name="quest_generic_looks_like_this">"Zvyčajne vyzerá takto:"</string>
     <string name="quest_surface_value_metal">"Kov"</string>
-    <string name="quest_surface_generic_surface_confirmation">"Ste si istý, že neviete povrch určiť presnejšie?"</string>
+    <string name="quest_generic_item_confirmation">"Ste si istý, že neviete povrch určiť presnejšie?"</string>
     <string name="quest_cycleway_title2">"Je tu cycklocesta? Aký typ?"</string>
 
     <!-- Fuzzy -->

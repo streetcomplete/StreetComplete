@@ -28,6 +28,9 @@ import de.westnordost.streetcomplete.quests.diet_type.AddVegetarian;
 import de.westnordost.streetcomplete.quests.fire_hydrant.AddFireHydrantType;
 import de.westnordost.streetcomplete.quests.internet_access.AddInternetAccess;
 import de.westnordost.streetcomplete.quests.max_height.AddMaxHeight;
+import de.westnordost.streetcomplete.quests.oneway.AddOneway;
+import de.westnordost.streetcomplete.quests.oneway.TrafficFlowSegmentsDao;
+import de.westnordost.streetcomplete.quests.oneway.WayTrafficFlowDao;
 import de.westnordost.streetcomplete.quests.parking_access.AddParkingAccess;
 import de.westnordost.streetcomplete.quests.parking_fee.AddParkingFee;
 import de.westnordost.streetcomplete.quests.parking_type.AddParkingType;
@@ -39,6 +42,7 @@ import de.westnordost.streetcomplete.quests.religion.AddReligionToPlaceOfWorship
 import de.westnordost.streetcomplete.quests.religion.AddReligionToWaysideShrine;
 import de.westnordost.streetcomplete.quests.localized_name.data.PutRoadNameSuggestionsHandler;
 import de.westnordost.streetcomplete.quests.localized_name.data.RoadNameSuggestionsDao;
+import de.westnordost.streetcomplete.quests.surface.AddPathSurface;
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingBusStop;
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingCrosswalk;
 import de.westnordost.streetcomplete.quests.toilet_availability.AddToiletAvailability;
@@ -47,7 +51,7 @@ import de.westnordost.streetcomplete.quests.housenumber.AddHousenumber;
 import de.westnordost.streetcomplete.quests.max_speed.AddMaxSpeed;
 import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHours;
 import de.westnordost.streetcomplete.quests.localized_name.AddRoadName;
-import de.westnordost.streetcomplete.quests.road_surface.AddRoadSurface;
+import de.westnordost.streetcomplete.quests.surface.AddRoadSurface;
 import de.westnordost.streetcomplete.quests.roof_shape.AddRoofShape;
 import de.westnordost.streetcomplete.quests.sport.AddSport;
 import de.westnordost.streetcomplete.quests.way_lit.AddWayLit;
@@ -60,9 +64,10 @@ import de.westnordost.streetcomplete.quests.bench_backrest.AddBenchBackrest;
 public class QuestModule
 {
 	@Provides @Singleton public static QuestTypeRegistry questTypeRegistry(
-			OsmNoteQuestType osmNoteQuestType, OverpassMapDataDao o,
-			RoadNameSuggestionsDao roadNameSuggestionsDao,
-			PutRoadNameSuggestionsHandler putRoadNameSuggestionsHandler)
+		OsmNoteQuestType osmNoteQuestType, OverpassMapDataDao o,
+		RoadNameSuggestionsDao roadNameSuggestionsDao,
+		PutRoadNameSuggestionsHandler putRoadNameSuggestionsHandler,
+		TrafficFlowSegmentsDao trafficFlowSegmentsDao, WayTrafficFlowDao trafficFlowDao)
 	{
 		QuestType[] questTypesOrderedByImportance = {
 				// ↓ 1. notes
@@ -70,6 +75,7 @@ public class QuestModule
 
 				// ↓ 2. important data that is used by many data consumers
 				new AddRoadName(o, roadNameSuggestionsDao, putRoadNameSuggestionsHandler),
+				new AddOneway(o, trafficFlowSegmentsDao, trafficFlowDao),
 				new AddHousenumber(o),
 				new MarkCompletedHighwayConstruction(o),
 				// new AddPlaceName(o), doesn't make sense as long as the app cannot tell the generic name of elements
@@ -95,6 +101,7 @@ public class QuestModule
 				new AddParkingAccess(o),
 				new AddParkingFee(o),
 				new AddBusStopName(o),
+				new AddPathSurface(o),
 
 				// ↓ 4. definitely shown as errors in QA tools
 

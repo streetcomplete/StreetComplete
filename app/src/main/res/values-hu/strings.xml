@@ -146,7 +146,7 @@ A térkép megjelenítéséhez a vektoros térképcsempéket a &lt;a href=\"http
     <string name="autosync_only_on_wifi">"Csak wifi használatakor"</string>
     <string name="autosync_off">"Ki"</string>
     <string name="quest_streetSurface_title">"Milyen a burkolata ennek az útszakasznak?"</string>
-    <string name="quest_surface_description">"Jelöld ki a leginkább jellemzőt:"</string>
+    <string name="quest_select_hint_most_specific">"Jelöld ki a leginkább jellemzőt:"</string>
     <string name="quest_surface_value_paved">"Burkolt"</string>
     <string name="quest_surface_value_unpaved">"Burkolatlan"</string>
     <string name="quest_surface_value_ground">"Föld"</string>
@@ -493,7 +493,7 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="invalidation_dialog_message">"A gyorsítótár érvénytelenítése után a következő letöltésnél frissülnek a kérdések. A kérdések gyorsítótára automatikusan is érvénytelenül egy hét után, illetve azonnal, ha egy általad megválaszolt kérdésről kiderül, hogy már más is megoldotta."</string>
     <string name="quest_generic_looks_like_this">"Általában így néz ki:"</string>
     <string name="quest_surface_value_metal">"Fém"</string>
-    <string name="quest_surface_generic_surface_confirmation">"Biztos nem tudod pontosabban meghatározni a felszínt?"</string>
+    <string name="quest_generic_item_confirmation">"Biztos nem tudod pontosabban meghatározni a felszínt?"</string>
     <string name="quest_cycleway_title2">"Van itt kerékpárút? Ha igen, milyen?"</string>
     <string name="quest_bridge_structure_title">"Milyen a szerkezete ennek a hídnak?"</string>
 

@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.road_surface;
+package de.westnordost.streetcomplete.quests.surface;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -13,6 +13,7 @@ import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
+import de.westnordost.streetcomplete.quests.GroupedImageListQuestAnswerFragment;
 
 public class AddRoadSurface extends SimpleOverpassQuestType
 {
@@ -34,14 +35,11 @@ public class AddRoadSurface extends SimpleOverpassQuestType
 			   " !surface and (access !~ private|no or (foot and foot !~ private|no))";
 	}
 
-	public AbstractQuestAnswerFragment createForm()
-	{
-		return new AddRoadSurfaceForm();
-	}
+	public AbstractQuestAnswerFragment createForm() { return new AddRoadSurfaceForm(); }
 
 	public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
 	{
-		changes.add("surface", answer.getString(AddRoadSurfaceForm.SURFACE));
+		changes.add("surface", answer.getString(GroupedImageListQuestAnswerFragment.OSM_VALUE));
 	}
 
 	@Override public String getCommitMessage() { return "Add road surfaces"; }

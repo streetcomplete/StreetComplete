@@ -151,7 +151,7 @@ Näytettäessä karttaa, vektoritiilet haetaan &lt;a href=\"https://mapzen.com/p
     <string name="autosync_only_on_wifi">"Vain Wifi"</string>
     <string name="autosync_off">"Off"</string>
     <string name="quest_streetSurface_title">"Mikä päällyste tässä tiessä on?"</string>
-    <string name="quest_surface_description">"Valitse tarkin vaihtoehto joka sopii:"</string>
+    <string name="quest_select_hint_most_specific">"Valitse tarkin vaihtoehto joka sopii:"</string>
     <string name="quest_surface_value_paved">"Päällystetty (tavallinen)"</string>
     <string name="quest_surface_value_unpaved">"Päällystämätön (tavallinen)"</string>
     <string name="quest_surface_value_ground">"Maa (tavallinen)"</string>
@@ -494,7 +494,7 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
     <string name="invalidation_dialog_message">"Välimuistin tyhjennys johtaa siihen, että seuraavalla kerralla kysymykset ladataan uudelleen. Kysymysten välimuuisti tyhjennetään automaattisestiviikon välein ja välittömästi, kun valittavissa olevaan kysymykseen on joku toinen jo vastannut. "</string>
     <string name="quest_generic_looks_like_this">"Normaalisti näyttää suunnilleen tältä: "</string>
     <string name="quest_surface_value_metal">"Metalli"</string>
-    <string name="quest_surface_generic_surface_confirmation">"Oletko varma, että et voi määritellä pintaa tarkemmin?"</string>
+    <string name="quest_generic_item_confirmation">"Oletko varma, että et voi määritellä pintaa tarkemmin?"</string>
     <string name="quest_cycleway_title2">"Onko täällä pyörätietä? Minkä tyyppinen?"</string>
     <string name="quest_bridge_structure_title">"Mikä on tämän silan rakenne?"</string>
 
