@@ -89,11 +89,11 @@ public class OverpassMapDataDao
 			if(status.availableSlots == 0)
 			{
 				// rather wait 1s longer than required cause we only get the time in seconds
-				int wait = (1 + status.nextAvailableSlotIn) * 1000;
-				Log.i(TAG, "Hit Overpass quota. Waiting " + wait + "ms before continuing");
+				int waitInSeconds = (1 + status.nextAvailableSlotIn);
+				Log.i(TAG, "Hit Overpass quota. Waiting " + waitInSeconds + "s before continuing");
 				try
 				{
-					Thread.sleep(wait);
+					Thread.sleep(waitInSeconds * 1000);
 				}
 				catch (InterruptedException ie)
 				{
