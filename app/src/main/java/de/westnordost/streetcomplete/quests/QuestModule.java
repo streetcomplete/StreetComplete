@@ -76,9 +76,9 @@ public class QuestModule
 				// ↓ 2. important data that is used by many data consumers
 				new AddRoadName(o, roadNameSuggestionsDao, putRoadNameSuggestionsHandler),
 				new AddOneway(o, trafficFlowSegmentsDao, trafficFlowDao),
-				new AddBuildingType(o), // because housenumber, building levels etc. depend on it
 				new AddHousenumber(o),
 				new MarkCompletedHighwayConstruction(o),
+				new AddBuildingType(o), // because housenumber, building levels etc. depend on it
 				// new AddPlaceName(o), doesn't make sense as long as the app cannot tell the generic name of elements
 
 				// ↓ 3. useful data that is used by some data consumers
