@@ -158,21 +158,16 @@ Editing the OpenStreetMap anonymously is not possible, so any changes you make a
 
 &lt;b&gt;Location&lt;/b&gt;&lt;br/&gt;
 &lt;p&gt;
-Your location is only used to automatically scan for quests around you. No worries, the app keeps your location for itself.
+The app does not share your GPS location with anyone. It is used to automatically scan for quests around your area and to focus (and thus download) the map around your location.
 &lt;/p&gt;
 
 &lt;p&gt;&lt;b&gt;Data Usage&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 As mentioned, the app directly communicates with OSM infrastructure. That is, with the &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass API&lt;/a&gt; for downloading quests  (which is anonymous) and with the &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API&lt;/a&gt; for uploading changes.&lt;br/&gt;
-However, before uploading your changes, the app checks with a &lt;a href=\"http://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;simple text file&lt;/a&gt; on my server whether it has been banned from uploading any changes. This is a precautionary measure to be able to keep versions of the app that turn out to have critical bugs from possibly corrupting OSM data.&lt;br/&gt;
-&lt;/p&gt;
-&lt;p&gt;
-To display the map, vector tiles are retrieved from the &lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt;Mapzen vector tile service&lt;/a&gt;, which is anonymous. The service logs tile requests to understand which areas are popular for pre-caching and performance improvements. Their platform also logs IP addresses and all their hosting is at Amazon so they are subject to what they might do.
-&lt;/p&gt;
-&lt;p&gt;
-(&lt;i&gt;This is actually not implemented yet, just want to inform you what is to come!:&lt;/i&gt;) The data shown in the leaderboard and profile is aggregated from publicly available information from the OpenStreetMap. The data does not come from this app but basically from the public commit history of OSM users.
-&lt;/p&gt;"</string>
+However, before uploading your changes, the app checks with a &lt;a href=\"http://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;simple text file&lt;/a&gt; on my server whether it has been banned from uploading any changes. This is a precautionary measure to be able to keep versions of the app that turn out to have critical bugs from possibly corrupting OSM data.&lt;/p&gt;"</string>
+    <string name="privacy_html_tileserver">"&lt;p&gt;To display the map, vector tiles are retrieved from &lt;a href=\"https://tiles.map-data.de\"&gt;map-data.de&lt;/a&gt;. The service logs tile requests for anonymous statistics and for detecting issues but deletes the logs after a few days.&lt;/p&gt;"</string>
     <string name="privacy_html_image_upload">&lt;p&gt;Photos you attach to notes are uploaded to &lt;a href=\"https://framapic.org\"&gt;framapic.org&lt;/a&gt;, a service which is anonymous and without tracking.&lt;/p&gt;</string>
+    <string name="privacy_html_third_party_quest_sources">&lt;p&gt;For some quests, some additional data from third parties is downloaded. In particular, the oneway quest queries an API, also hosted on westnordost.de, about likely candidates for oneways.&lt;/p&gt;</string>
     <string name="autosync_on">"On"</string>
     <string name="autosync_only_on_wifi">"Only on Wi-Fi"</string>
     <string name="autosync_off">"Off"</string>
