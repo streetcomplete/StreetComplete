@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.view;
 
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
@@ -11,8 +12,8 @@ import de.westnordost.streetcomplete.R;
 public class ItemViewHolder  extends RecyclerView.ViewHolder
 {
 	private ImageView imageView;
-	private TextView textView;
-	private TextView descriptionView;
+	@Nullable private TextView textView;
+	@Nullable private TextView descriptionView;
 
 	public interface OnClickListener
 	{
@@ -31,13 +32,19 @@ public class ItemViewHolder  extends RecyclerView.ViewHolder
 	{
 		imageView.setImageResource(item.drawableId);
 
-		if(item.titleId != 0) textView.setText(item.titleId);
-		else textView.setText(null);
+		if(textView != null)
+		{
+			if (item.titleId != 0) textView.setText(item.titleId);
+			else textView.setText(null);
+		}
 
-		boolean hasDescription = item.descriptionId != 0;
-		descriptionView.setVisibility(hasDescription ? View.VISIBLE : View.GONE);
-		if(hasDescription) descriptionView.setText(item.descriptionId);
-		else descriptionView.setText(null);
+		if(descriptionView != null)
+		{
+			boolean hasDescription = item.descriptionId != 0;
+			descriptionView.setVisibility(hasDescription ? View.VISIBLE : View.GONE);
+			if (hasDescription) descriptionView.setText(item.descriptionId);
+			else descriptionView.setText(null);
+		}
 	}
 
 	public void setSelected(boolean selected)
