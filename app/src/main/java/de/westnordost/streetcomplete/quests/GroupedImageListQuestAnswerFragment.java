@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Arrays;
 
@@ -25,8 +27,9 @@ public abstract class GroupedImageListQuestAnswerFragment extends AbstractQuestF
 {
 	public static final String OSM_VALUE = "osm_value";
 
-	private GroupedImageSelectAdapter imageSelector;
+	protected GroupedImageSelectAdapter imageSelector;
 	private Button showMoreButton;
+	private RecyclerView valueList;
 
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
 									   Bundle savedInstanceState)
@@ -35,7 +38,7 @@ public abstract class GroupedImageListQuestAnswerFragment extends AbstractQuestF
 
 		View contentView = setContentView(R.layout.quest_generic_list);
 
-		RecyclerView valueList = contentView.findViewById(R.id.listSelect);
+		valueList = contentView.findViewById(R.id.listSelect);
 		GridLayoutManager lm = new GridLayoutManager(getActivity(), getItemsPerRow());
 		valueList.setLayoutManager(lm);
 		valueList.setNestedScrollingEnabled(false);
@@ -51,39 +54,55 @@ public abstract class GroupedImageListQuestAnswerFragment extends AbstractQuestF
 		selectHint.setText(R.string.quest_select_hint_most_specific);
 
 		imageSelector = new GroupedImageSelectAdapter(lm);
-		imageSelector.setItems(Arrays.asList(getTopItems()));
-
-		valueList.setAdapter(imageSelector);
 
 		return view;
+	}
+
+	@Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState)
+	{
+		super.onViewCreated(view, savedInstanceState);
+		imageSelector.setItems(Arrays.asList(getTopItems()));
+		valueList.setAdapter(imageSelector);
 	}
 
 	@Override protected void onClickOk()
 	{
 		Item item = getSelectedItem();
-		if(item != null && item.isGroup())
+		if(item == null)
 		{
-			new AlertDialogBuilder(getContext())
-				.setMessage(R.string.quest_generic_item_confirmation)
-				.setNegativeButton(R.string.quest_generic_confirmation_no, null)
-				.setPositiveButton(R.string.quest_generic_confirmation_yes,
-					(dialog, which) -> applyAnswer())
-				.show();
+			Toast.makeText(getActivity(), R.string.no_changes, Toast.LENGTH_SHORT).show();
+			return;
+		}
+
+		if(item.isGroup())
+		{
+			if(!item.hasValue())
+			{
+				new AlertDialogBuilder(getContext())
+					.setMessage(R.string.quest_generic_item_invalid_value)
+					.setPositiveButton(R.string.ok, null)
+					.show();
+			}
+			else
+			{
+				new AlertDialogBuilder(getContext())
+					.setMessage(R.string.quest_generic_item_confirmation)
+					.setNegativeButton(R.string.quest_generic_confirmation_no, null)
+					.setPositiveButton(R.string.quest_generic_confirmation_yes,
+						(dialog, which) -> applyAnswer(item.value))
+					.show();
+			}
 		}
 		else
 		{
-			applyAnswer();
+			applyAnswer(item.value);
 		}
 	}
 
-	private void applyAnswer()
+	protected void applyAnswer(String value)
 	{
 		Bundle answer = new Bundle();
-		Item item = getSelectedItem();
-		if(item != null)
-		{
-			answer.putString(OSM_VALUE, item.value);
-		}
+		answer.putString(OSM_VALUE, value);
 		applyFormAnswer(answer);
 	}
 

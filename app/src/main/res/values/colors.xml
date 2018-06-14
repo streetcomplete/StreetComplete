@@ -13,4 +13,6 @@
 
     <color name="colorGreyedOut">#99dddddd</color>
 
+    <color name="colorDivider">#ccc</color>
+
 </resources>

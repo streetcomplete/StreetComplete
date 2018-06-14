@@ -13,6 +13,48 @@ appicon_fancy.svg				elegant themes
 
 appicon_flat.svg				elegant themes
 
+building_icons.svg
+    apartments
+    barn
+    bungalow
+    car                         modified from Twemoji 2: U+1F698
+    carport                     parts taken from Twemoji 2: U+1F698
+    civic
+    college
+    commercial
+    detached
+    dormitory
+    farm
+    farm2
+    garage                      parts taken from Twemoji 2: U+1F698
+    garages                     parts taken from Twemoji 2: U+1F698
+    greenhouse
+    hospital
+    hotel
+    house
+    houseboat                   parts taken from Twemoji 2: U+26F4
+    hut
+    industrial
+    kindergarten
+    kiosk
+    other
+    parking                     parts taken from Twemoji 2: U+1F698
+    retail
+    roof
+    school
+    semi-detached
+    service
+    shed
+    stadium                     EmojiOne 2: U+1F3D0
+    static_caravan
+    storage_tank
+    temple
+    terrace
+    train_station               modified from Twemoji 2: U+1F689
+    transportation              modified from Twemoji 2: U+1F68D
+    university
+    warehouse
+
 building_levels_illustration.svg
 
 living_street.svg
@@ -39,8 +81,8 @@ quest_icons.svg
 	building_height
 	building_levels
 	building_underground
-	bus
-	bus_stop_name
+	bus                        modified from Twemoji 2: U+1F68D
+	bus_stop_name              parts taken from Twemoji 2: U+1F68D
 	housenumber
 	housenumber_street
 	bicycleway
@@ -102,7 +144,7 @@ quest_icons.svg
 	wifi
 	wheelchair
 	wheelchair_shop
-	
+
 religion_icons.svg
 	hindu						https://commons.wikimedia.org/wiki/File:Om_symbol.svg
 	jain						https://commons.wikimedia.org/wiki/File:Ahimsa.svg
@@ -114,10 +156,10 @@ religion_icons.svg
 	bahai						https://commons.wikimedia.org/wiki/File:Bahai_star.svg
 	confucian
 	shinto						https://commons.wikimedia.org/wiki/File:Shinto_torii_vermillion.svg
-	taoism						
+	taoism
 	chinese						https://commons.wikimedia.org/wiki/File:Chinese_lu_symbol_-_%E7%A6%84.svg
 	caodai
-	
+
 slow_zone.svg
 
 slow_zone_us.svg
@@ -130,7 +172,7 @@ sport_icons.svg
 	badminton					EmojiOne 2: U+1F3F8
 	baseball
 	basketball					EmojiOne 2: U+1F3C0
-	beach_volleyball			by Adrien Pavie, modified from EmojiOne 2: U+1F3D0 
+	beach_volleyball			by Adrien Pavie, modified from EmojiOne 2: U+1F3D0
 	boules
 	bowls
 	canadian_football
