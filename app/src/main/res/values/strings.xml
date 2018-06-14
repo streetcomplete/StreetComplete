@@ -535,7 +535,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingType_semi_detached_description">pair of two single-family homes</string>
     <string name="quest_buildingType_terrace">Row house</string>
     <string name="quest_buildingType_terrace_description">a linear row of similar single-family homes</string>
-    <string name="quest_buildingType_hotel">Hotel</string>
+    <string name="quest_buildingType_hotel">Hotel building</string>
     <string name="quest_buildingType_dormitory">Dormitory</string>
     <string name="quest_buildingType_houseboat">Houseboat</string>
     <string name="quest_buildingType_bungalow">Bungalow</string>
@@ -557,21 +557,21 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingType_chapel">Chapel</string>
     <string name="quest_buildingType_cathedral">Cathedral</string>
     <string name="quest_buildingType_mosque">Mosque</string>
-    <string name="quest_buildingType_temple">Temple</string>
+    <string name="quest_buildingType_temple">Temple building</string>
     <string name="quest_buildingType_pagoda">Pagoda</string>
     <string name="quest_buildingType_synagogue">Synagogue</string>
     <string name="quest_buildingType_shrine">Shrine</string>
 
     <string name="quest_buildingType_civic">Civic building</string>
     <string name="quest_buildingType_civic_description">public building usually housing an amenity</string>
-    <string name="quest_buildingType_kindergarten">Kindergarten</string>
-    <string name="quest_buildingType_school">School</string>
-    <string name="quest_buildingType_college">College</string>
-    <string name="quest_buildingType_hospital">Hospital</string>
+    <string name="quest_buildingType_kindergarten">Kindergarten building</string>
+    <string name="quest_buildingType_school">School building</string>
+    <string name="quest_buildingType_college">College building</string>
+    <string name="quest_buildingType_hospital">Hospital building</string>
     <string name="quest_buildingType_stadium">Stadium</string>
     <string name="quest_buildingType_train_station">Train station</string>
     <string name="quest_buildingType_transportation">Public transportation building</string>
-    <string name="quest_buildingType_university">University</string>
+    <string name="quest_buildingType_university">University building</string>
     <string name="quest_buildingType_government">Government building</string>
 
     <string name="quest_buildingType_cars">For cars</string>
