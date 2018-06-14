@@ -534,7 +534,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingType_semi_detached">Semi-detached house</string>
     <string name="quest_buildingType_semi_detached_description">pair of two single-family homes</string>
     <string name="quest_buildingType_terrace">Row house</string>
-    <string name="quest_buildingType_terrace_description">single-family home in a row of similar houses</string>
+    <string name="quest_buildingType_terrace_description">a linear row of similar single-family homes</string>
     <string name="quest_buildingType_hotel">Hotel</string>
     <string name="quest_buildingType_dormitory">Dormitory</string>
     <string name="quest_buildingType_houseboat">Houseboat</string>
