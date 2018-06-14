@@ -37,7 +37,7 @@ public class AddBuildingTypeForm extends GroupedImageListQuestAnswerFragment
 				COLLEGE, GOVERNMENT, STADIUM,
 			}),
 			new Item(RELIGIOUS, new Item[]{
-				CHURCH, CATHEDRAL, CHAPEL, MOSQUE, TEMPLE, PAGODA, SYNAGOGUE
+				CHURCH, CATHEDRAL, CHAPEL, MOSQUE, TEMPLE, PAGODA, SYNAGOGUE, SHRINE
 			}),
 			new Item(null, R.drawable.ic_building_car, R.string.quest_buildingType_cars, new Item[]{
 				GARAGE, GARAGES, CARPORT, PARKING

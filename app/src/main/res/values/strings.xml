@@ -560,6 +560,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingType_temple">Temple</string>
     <string name="quest_buildingType_pagoda">Pagoda</string>
     <string name="quest_buildingType_synagogue">Synagogue</string>
+    <string name="quest_buildingType_shrine">Shrine</string>
 
     <string name="quest_buildingType_civic">Civic building</string>
     <string name="quest_buildingType_civic_description">public building usually housing an amenity</string>

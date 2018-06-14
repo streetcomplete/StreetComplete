@@ -50,6 +50,7 @@ public class BuildingType
 		TEMPLE =        new Item("temple",     R.drawable.ic_building_temple,     R.string.quest_buildingType_temple),
 		PAGODA =        new Item("pagoda",     R.drawable.ic_building_temple,     R.string.quest_buildingType_pagoda),
 		SYNAGOGUE =     new Item("synagogue",  R.drawable.ic_religion_jewish,     R.string.quest_buildingType_synagogue),
+		SHRINE =        new Item("shrine",     R.drawable.ic_building_temple,     R.string.quest_buildingType_shrine),
 
 		CARPORT =       new Item("carport",    R.drawable.ic_building_carport,    R.string.quest_buildingType_carport, R.string.quest_buildingType_carport_description),
 		GARAGE =        new Item("garage",     R.drawable.ic_building_garage,     R.string.quest_buildingType_garage),
