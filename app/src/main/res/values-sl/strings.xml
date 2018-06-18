@@ -109,12 +109,10 @@
     <string name="autosync_only_on_wifi">"Samo na WiFi"</string>
     <string name="autosync_off">"Izklopljeno"</string>
     <string name="quest_streetSurface_title">"Kakšno površino ima ta del ceste?"</string>
-    <string name="quest_select_hint_most_specific">"Izberite najbolj ustrezno:"</string>
     <string name="quest_surface_value_paved">"Tlakovano (splošno)"</string>
     <string name="quest_surface_value_unpaved">"Netlakovano (splošno)"</string>
     <string name="quest_surface_value_ground">"Tla (splošno)"</string>
     <string name="quest_surface_value_asphalt">"Asfalt"</string>
-    <string name="quest_surface_value_cobblestone">"Mačje glave"</string>
     <string name="quest_surface_value_compacted">"Utrjena"</string>
     <string name="quest_surface_value_concrete">"Beton"</string>
     <string name="quest_surface_value_dirt">"Zemlja"</string>
@@ -140,7 +138,6 @@
     <string name="quest_maxspeed_answer_noSign">"Ni znaka za omejitev"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Kje je ta ulica?"</string>
     <string name="quest_cyclewaySurface_title">"Kakšno površino ima kolesarska pot tu?"</string>
-    <string name="quest_buildingType_title">"Kakšne vrste zgradba je to?"</string>
     <string name="quest_streetLanes_north">"proti severu"</string>
     <string name="quest_streetLanes_west">"proti zahodu"</string>
     <string name="quest_streetLanes_east">"proti vzhodu"</string>
@@ -346,7 +343,6 @@ Podatki, ki jih vnesete tu, bodo dodani v OpenStreetMap v vašem imenu, brez pot
     <string name="invalidate_confirmation">"Razveljavi"</string>
     <string name="quest_generic_looks_like_this">"Ponavadi izgleda takole:"</string>
     <string name="quest_surface_value_metal">"Kovina"</string>
-    <string name="quest_generic_item_confirmation">"Ali ste prepričani, da ni mogoče določiti vrste površine bolj natančno?"</string>
     <string name="quest_internet_access_wlan">"Wi-Fi"</string>
     <string name="quest_internet_access_wired">"Žično (LAN)"</string>
     <string name="quest_internet_access_terminal">"Računalnik z dostopom do interneta"</string>

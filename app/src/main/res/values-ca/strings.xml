@@ -106,6 +106,8 @@
     <string name="pref_title_sync">"Sinc. automàtica"</string>
     <string name="map_btn_zoom_out">"Allunya't"</string>
     <string name="map_btn_zoom_in">"Apropa't"</string>
+
+    <!-- Fuzzy -->
     <string name="privacy_html">"&lt;p&gt; Ah, algú que es preocupa per la privadesa, bé! Crec que només us tinc bones notícies:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Contribucions directes&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
@@ -136,12 +138,10 @@ Per a visualitzar el mapa, es recuperen tessel·les vectorials del servei &lt;a 
     <string name="autosync_only_on_wifi">"Només per Wifi"</string>
     <string name="autosync_off">"Desactivat"</string>
     <string name="quest_streetSurface_title">"Quin tipus de superfície té aquesta via?"</string>
-    <string name="quest_select_hint_most_specific">"Seleccioneu el tipus de superfície que hi encaixi millor:"</string>
     <string name="quest_surface_value_paved">"Pavimentat (genèric)"</string>
     <string name="quest_surface_value_unpaved">"Sense pavimentar (genèric)"</string>
     <string name="quest_surface_value_ground">"Natural (genèric)"</string>
     <string name="quest_surface_value_asphalt">"Asfalt"</string>
-    <string name="quest_surface_value_cobblestone">"Empedrat"</string>
     <string name="quest_surface_value_compacted">"Compactat"</string>
     <string name="quest_surface_value_concrete">"Formigó"</string>
     <string name="quest_surface_value_dirt">"Fangós"</string>
@@ -165,7 +165,6 @@ Per a visualitzar el mapa, es recuperen tessel·les vectorials del servei &lt;a 
     <string name="quest_maxspeed_answer_noSign">"No hi ha cap senyal"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"On és aquest carrer?"</string>
     <string name="quest_cyclewaySurface_title">"Quin tipus de superfície té el carril bici aquí?"</string>
-    <string name="quest_buildingType_title">"Quin tipus d'edifici és?"</string>
     <string name="quest_serviceType_title">"Quin tipus de via de servei?"</string>
     <string name="quest_streetLanes_title">"Quants carrils té aquesta via?"</string>
     <string name="quest_streetLanes_description">"Si no hi ha marques, no té carrils."</string>
@@ -451,7 +450,6 @@ En cas contrari, podeu baixar un altre teclat a la botiga d'aplicacions. Els tec
     <string name="invalidation_dialog_message">"Si netegeu la memòria cau, les missions s'actualitzaran la propera vegada que es baixin. La memòria cau de missions s'invalida automàticament després d'una setmana i de forma immediata si algú altre ja la resolta."</string>
     <string name="quest_generic_looks_like_this">"Habitualment sembla això:"</string>
     <string name="quest_surface_value_metal">"Metall"</string>
-    <string name="quest_generic_item_confirmation">"Esteu segur que no podeu concretar el tipus de superfície?"</string>
     <string name="quest_cycleway_title2">"Hi ha cap carril bici aquí? De quin tipus?"</string>
     <string name="quest_bridge_structure_title">"Quin estructura té aquest pont?"</string>
     <string name="quest_internet_access_name_title">"Quin tipus de connexió a Internet ofereix %s?"</string>
@@ -515,4 +513,7 @@ Per example 1,3 o 2-6."</string>
     <string name="quest_construction_footway_title">"Aquest camí de vianants està finalitzat?"</string>
     <string name="quest_construction_generic_title">"Aquesta via està finalitzada?"</string>
     <string name="quest_construction_building_title">"Aquest edifici està finalitzat?"</string>
+    <string name="questList_disabled_in_country">"Mai es mostra a %s"</string>
+    <string name="quest_toiletAvailability_rest_area_title">"Aquesta àrea de descans té lavabo?"</string>
+    <string name="quest_maxspeed_name_title">"Quina és la senyal de límit de velocitat per %s?"</string>
 </resources>

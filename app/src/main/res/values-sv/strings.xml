@@ -57,8 +57,6 @@
     <string name="confirmation_discard_negative">"Ångra"</string>
     <string name="action_download">"Sök efter uppdrag här"</string>
     <string name="action_upload">"Ladda upp svar"</string>
-
-    <!-- Fuzzy -->
     <string name="no_changes">"Du lämnade formuläret tomt"</string>
     <string name="close">"stäng"</string>
     <string name="download_error">"Fel vid scanning för uppdrag"</string>
@@ -86,8 +84,6 @@
     <!-- Fuzzy -->
     <string name="confirmation_authorize_now">"Du måste auktorisera med ditt OSM-konto för att publicera dina svar. Auktorisera nu?"</string>
     <string name="not_authorized">"Inte godkänd"</string>
-
-    <!-- Fuzzy -->
     <string name="version_banned_message">"Denna version av StreetComplete har förbjudits från att överföra några svar! Vänligen uppdatera din version!"</string>
     <string name="no_gps_no_quests">"För att söka efter uppdrag runt omkring dig automatiskt, slå på plats"</string>
     <string name="nothing_more_to_download">"Inga ytterligare uppdrag tillgängliga"</string>
@@ -148,12 +144,10 @@ För att visa på kartan, är vektor brickor hämtas från &lt;a href=\"https://
     <string name="autosync_only_on_wifi">"Endast på Wifi"</string>
     <string name="autosync_off">"Av"</string>
     <string name="quest_streetSurface_title">"Vad har den här delen av vägen för underlag?"</string>
-    <string name="quest_select_hint_most_specific">"Välj det underlag som passar bäst:"</string>
     <string name="quest_surface_value_paved">"Belagd (generiska)"</string>
     <string name="quest_surface_value_unpaved">"Obelagd (generiska)"</string>
     <string name="quest_surface_value_ground">"Mark (generiska)"</string>
     <string name="quest_surface_value_asphalt">"Asfalt"</string>
-    <string name="quest_surface_value_cobblestone">"Kullersten"</string>
     <string name="quest_surface_value_compacted">"Komprimerad"</string>
     <string name="quest_surface_value_concrete">"Betong"</string>
     <string name="quest_surface_value_dirt">"Smuts"</string>
@@ -179,10 +173,9 @@ För att visa på kartan, är vektor brickor hämtas från &lt;a href=\"https://
     <string name="quest_maxspeed_answer_noSign">"Det finns inga skyltar"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Var ligger den här gatan?"</string>
     <string name="quest_cyclewaySurface_title">"Vad har cykelvägen för underlag här?"</string>
-    <string name="quest_buildingType_title">"Vilken typ av byggnad är detta?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_serviceType_title">"Vilken typ av service väg är detta?"</string>
+    <string name="quest_serviceType_title">"Vilken typ av serviceväg är detta?"</string>
     <string name="quest_streetLanes_title">"Hur många banor har denna väg?"</string>
 
     <!-- Fuzzy -->
@@ -192,16 +185,10 @@ För att visa på kartan, är vektor brickor hämtas från &lt;a href=\"https://
     <string name="quest_streetLanes_east">"leder österut"</string>
     <string name="quest_streetLanes_south">"leder söderut"</string>
     <string name="quest_streetLanes_answer_noLanes">"Den har inga markerade körfält"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetLanes_noLanes_estWidth">"Vänligen uppskatta hur många bilar skulle passa bredvid varandra på denna väg."</string>
-    <string name="quest_oneway_title">"Är detta en enkelriktad gata?"</string>
+    <string name="quest_streetLanes_noLanes_estWidth">"Vänligen uppskatta hur många bilar som skulle få plats bredvid varandra på den här vägen."</string>
+    <string name="quest_oneway_title">"Är det här en enkelriktad gata?"</string>
     <string name="quest_address_title">"Vad är har den här byggnaden för husnummer?"</string>
-
-    <!-- Fuzzy -->
     <string name="store_listing_short_description">"OpenStreetMap besiktningsman app"</string>
-
-    <!-- Fuzzy -->
     <string name="store_listing_full_description">"Bidra till att förbättra OpenStreetMap med StreetComplete!
 
 Denna app finner ofullständiga och utdragbara uppgifter i din närhet och visar den på en karta som markörer. Var och en av dessa är lösbar genom att besvara en enkel fråga att slutföra info på plats.
@@ -493,7 +480,6 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="create_new_note_description">"Du har möjlighet att lämna en offentlig anteckning på kartpunkten som andra kartläggare kan kommentera och förhoppningsvis avgöra. Justera anteckningens position genom att flytta kartan."</string>
     <string name="quest_generic_looks_like_this">"Ser vanligtvis ut så här:"</string>
     <string name="quest_surface_value_metal">"Metall"</string>
-    <string name="quest_generic_item_confirmation">"Är du säker på att du inte kan beskriva underlaget mer specifikt?"</string>
     <string name="quest_cycleway_title2">"Finns det en cykelväg här? Vilken typ?"</string>
     <string name="quest_bridge_structure_title">"Vilken typ av bro är det här?"</string>
     <string name="quest_internet_access_name_title">"Vilken typ av internetuppkoppling erbjuder %s?"</string>
@@ -560,4 +546,86 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="questList_disabled_in_country">"Visas aldrig i %s"</string>
     <string name="quest_toiletAvailability_rest_area_title">"Har den här rastplatsen en toalett?"</string>
     <string name="quest_maxspeed_name_title">"Vad står det på hastighetsskylten längs %s?"</string>
+    <string name="quest_pathSurface_title_steps">"Vilket underlag har den här trappan här?"</string>
+    <string name="quest_pathSurface_title_bridleway">"Vilket underlag har den här ridvägen här?"</string>
+    <string name="quest_pathSurface_title">"Vilket underlag har den här stigen här?"</string>
+    <string name="quest_select_hint_most_specific">"Välj den mest specifika som passar:"</string>
+    <string name="quest_generic_item_confirmation">"Är du säker på att du inte kan svara mer specifikt?"</string>
+    <string name="quest_generic_hasFeature_no_leave_note">"Nej (lämna anteckning)"</string>
+    <string name="quest_buildingType_title2">"Vad uppfördes den här byggnaden som?"</string>
+    <string name="quest_generic_item_invalid_value">"Var god lämna ett mer specifikt svar"</string>
+    <string name="quest_buildingType_answer_multiple_types">"Den har flera ändamål"</string>
+    <string name="quest_buildingType_answer_multiple_types_description">"Välj huvudändamålet för den här byggnaden. T.ex om det finns en affär på bottenvåningen med lägenheter ovanför sig är det fortsatt i huvudsak ändå en lägenhetsbyggnad."</string>
+    <string name="quest_buildingType_answer_construction_site">"Den är fortfarande under konstruktion"</string>
+    <string name="quest_buildingType_residential">"Bostad"</string>
+    <string name="quest_buildingType_residential_description">"byggnad där människor bor"</string>
+    <string name="quest_buildingType_house">"Hus"</string>
+    <string name="quest_buildingType_house_description">"enfamiljshus"</string>
+    <string name="quest_buildingType_apartments_description">"flerfamiljshus, kan ha affärer på bottenvåningen"</string>
+    <string name="quest_buildingType_apartments">"Lägenheter"</string>
+    <string name="quest_buildingType_detached">"Fristående hus"</string>
+    <string name="quest_buildingType_detached_description">"fristående enfamiljshus"</string>
+    <string name="quest_buildingType_semi_detached">"Parhus"</string>
+    <string name="quest_buildingType_semi_detached_description">"par av två enfamiljshus"</string>
+    <string name="quest_buildingType_terrace">"Radhus/kedjehus"</string>
+    <string name="quest_buildingType_terrace_description">"en rad av liknande enfamiljshus"</string>
+    <string name="quest_buildingType_hotel">"Hotellbyggnad"</string>
+    <string name="quest_buildingType_dormitory">"Studenthem"</string>
+    <string name="quest_buildingType_houseboat">"Husbåt"</string>
+    <string name="quest_buildingType_bungalow">"Bungalow"</string>
+    <string name="quest_buildingType_bungalow_description">"litet fristående hus, ofta med veranda (sommarstuga eller liknande)"</string>
+    <string name="quest_buildingType_static_caravan">"Stående husvagn"</string>
+    <string name="quest_buildingType_commercial">"Kommersiell byggnad"</string>
+    <string name="quest_buildingType_commercial_generic_description">"byggnad där människor arbetar, handlar eller gör andra kommersiella aktiviteter"</string>
+    <string name="quest_buildingType_industrial">"Industriell byggnad"</string>
+    <string name="quest_buildingType_industrial_description">"t.ex en fabrik, verkstad, bilverkstad, ..."</string>
+    <string name="quest_buildingType_office">"Kontorsbyggnad"</string>
+    <string name="quest_buildingType_retail">"Affär(er)"</string>
+    <string name="quest_buildingType_warehouse">"Lagerbyggnad"</string>
+    <string name="quest_buildingType_kiosk">"Kiosk"</string>
+    <string name="quest_buildingType_storage_tank">"Lagringstank"</string>
+    <string name="quest_buildingType_religious">"Religiös byggnad"</string>
+    <string name="quest_buildingType_church">"Kyrka"</string>
+    <string name="quest_buildingType_chapel">"Kapell"</string>
+    <string name="quest_buildingType_cathedral">"Katedral"</string>
+    <string name="quest_buildingType_mosque">"Moské"</string>
+    <string name="quest_buildingType_temple">"Tempelbyggnad"</string>
+    <string name="quest_buildingType_pagoda">"Pagod"</string>
+    <string name="quest_buildingType_synagogue">"Synagoga"</string>
+    <string name="quest_buildingType_civic">"Offentlig byggnad"</string>
+
+    <!-- Hm. English is not my mother tongue but is 'amenity' really used this way that much outside the OSM community? Hard to translate to Swedish anyway, hehe. -->
+    <string name="quest_buildingType_civic_description">"offentlig byggnad som oftast inrymmer offentlig verksamhet"</string>
+    <string name="quest_buildingType_kindergarten">"Förskolebyggnad"</string>
+    <string name="quest_buildingType_school">"Skolbyggnad"</string>
+    <string name="quest_buildingType_college">"Högskolebyggnad"</string>
+    <string name="quest_buildingType_hospital">"Sjukhusbyggnad"</string>
+    <string name="quest_buildingType_stadium">"Idrottsarena"</string>
+    <string name="quest_buildingType_train_station">"Tågstation"</string>
+    <string name="quest_buildingType_transportation">"Kollektivtrafiksbyggnad"</string>
+    <string name="quest_buildingType_university">"Universitetsbyggnad"</string>
+    <string name="quest_buildingType_government">"Myndighetsbyggnad"</string>
+    <string name="quest_buildingType_cars">"För bilar"</string>
+    <string name="quest_buildingType_carport">"Carport"</string>
+    <string name="quest_buildingType_carport_description">"tak för en bil"</string>
+    <string name="quest_buildingType_garage">"Garage för en bil"</string>
+    <string name="quest_buildingType_garages">"Flera garage"</string>
+    <string name="quest_buildingType_parking">"Parkeringshus"</string>
+    <string name="quest_buildingType_farm">"På en gård"</string>
+    <string name="quest_buildingType_farmhouse">"Manbyggnad"</string>
+    <string name="quest_buildingType_farmhouse_description">"den byggnad man bor i på en gård"</string>
+    <string name="quest_buildingType_farm_auxiliary">"Ekonomibyggnad"</string>
+    <string name="quest_buildingType_farm_auxiliary_description">"byggnad på en bondgård som inte är bostadshus"</string>
+    <string name="quest_buildingType_greenhouse">"Växthus"</string>
+    <string name="quest_buildingType_other">"Annat"</string>
+    <string name="quest_buildingType_shed">"Skjul"</string>
+    <string name="quest_buildingType_hut">"Hydda"</string>
+    <string name="quest_buildingType_hut_description">"liten, enkel bostad eller skydd"</string>
+    <string name="quest_buildingType_roof">"Tak"</string>
+    <string name="quest_buildingType_service">"Servicebyggnad"</string>
+    <string name="quest_buildingType_service_description">"byggnad med pumpar, transformatorer eller liknande maskiner"</string>
+    <string name="quest_buildingType_hangar">"Hangar"</string>
+    <string name="quest_buildingType_hangar_description">"stor byggnad för flygplan, helikoptrar eller rymdfarkoster"</string>
+    <string name="quest_buildingType_bunker">"Bunker"</string>
+    <string name="quest_buildingType_shrine">"Helgedom"</string>
 </resources>

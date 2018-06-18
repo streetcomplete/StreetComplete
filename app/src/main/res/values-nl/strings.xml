@@ -130,12 +130,12 @@ OpenStreetMap anoniem bewerken is niet mogelijk, dus alle aanpassingen die je ma
 
 &lt;b&gt;Locatie&lt;/b&gt;&lt;br/&gt;
 &lt;p&gt;
-Je locatie wordt enkel gebruikt om naar quests te scannen rondom jou. Geen zorgen, de app deelt jouw locatie niet.
+Je locatie wordt enkel gebruikt om naar vragen te scannen rondom jou. Geen zorgen, de app deelt jouw locatie niet.
 &lt;/p&gt;
 
 &lt;p&gt;&lt;b&gt;Data Gebruik&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-Zoals eerder aangehaald zal de app direct met OSM communiceren, meer bepaald de &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass API&lt;/a&gt; om quests te downloaden (anoniem) and met de &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API&lt;/a&gt; om wijzigingen te uploaden.&lt;br/&gt;
+Zoals eerder aangehaald zal de app direct met OSM communiceren, meer bepaald de &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass API&lt;/a&gt; om vragen te downloaden (anoniem) and met de &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API&lt;/a&gt; om wijzigingen te uploaden.&lt;br/&gt;
 Voor het uploaden van jouw wijzigingen zal de app een &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;simpel tekst bestand&lt;/a&gt; op mijn server nagaat om te bepalen of hij verbannen is om wijzigingen te uploaden. Dit om te voorkomen dat bepaalde versies van de app met kritische bugs mogelijk de OSM data zouden verknoeien.&lt;br/&gt;
 &lt;/p&gt;
 &lt;p&gt;
@@ -148,12 +148,10 @@ Om de kaart te tonen worden vector tegels van de &lt;a href=\"https://mapzen.com
     <string name="autosync_only_on_wifi">"Alleen met wifi"</string>
     <string name="autosync_off">"Uit"</string>
     <string name="quest_streetSurface_title">"Welke wegbeddeking heeft dit stuk weg?"</string>
-    <string name="quest_select_hint_most_specific">"Selecteer het meest passende:"</string>
     <string name="quest_surface_value_paved">"Geplaveid (algemeen)"</string>
     <string name="quest_surface_value_unpaved">"Ongeplaveid (algemeen)"</string>
     <string name="quest_surface_value_ground">"Grond (algemeen)"</string>
     <string name="quest_surface_value_asphalt">"Asfalt"</string>
-    <string name="quest_surface_value_cobblestone">"Kasseien"</string>
 
     <!-- This should find an appropriate translation... -->
     <string name="quest_surface_value_compacted">"Verdichte grond"</string>
@@ -181,7 +179,6 @@ Om de kaart te tonen worden vector tegels van de &lt;a href=\"https://mapzen.com
     <string name="quest_maxspeed_answer_noSign">"Er is geen bord"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Waar is deze straat?"</string>
     <string name="quest_cyclewaySurface_title">"Welke wegbeddeking heeft dit fietspad"</string>
-    <string name="quest_buildingType_title">"Wat voor gebouw is dit?"</string>
     <string name="quest_serviceType_title">"Wat voor dienstweg is dit?"</string>
     <string name="quest_streetLanes_title">"Hoeveel banen heeft deze weg?"</string>
     <string name="quest_streetLanes_description">"Als er geen wegmarkeringen zijn, dan heeft het geen banen."</string>
@@ -250,7 +247,7 @@ De informatie die je ingeeft wordt meteen toegevoegd aan OpenStreetMap in jouw n
     <string name="quest_sport_netball">"Netbal"</string>
     <string name="quest_sport_rugby">"Rugby"</string>
     <string name="quest_select_hint">"Selecteer:"</string>
-    <string name="quest_sport_manySports_confirmation_description">"Is deze locatie alleen bedoeld voor deze sport (kijk naar apparatuur en markeringen / lijnen) of voor algemeen gebruik met meerdere sporten / spellen?"</string>
+    <string name="quest_sport_manySports_confirmation_description">"Is deze locatie alleen bedoeld voor deze sport (kijk naar apparatuur en markeringen of lijnen) of voor algemeen gebruik met meerdere sporten / spellen?"</string>
     <string name="quest_manySports_confirmation_specific">"Specifiek deze?"</string>
     <string name="quest_manySports_confirmation_generic">"Algemeen gebruik"</string>
     <string name="quest_sport_manySports_confirmation_title">"Je hebt veel sporten geselecteerd."</string>
@@ -258,14 +255,14 @@ De informatie die je ingeeft wordt meteen toegevoegd aan OpenStreetMap in jouw n
     <!-- Fuzzy -->
     <string name="quest_busStopShelter_name_title">"Heeft de bushalte %s een bushokje?"</string>
     <string name="quest_toiletsFee_title">"Moet je voor deze toiletten betalen?"</string>
-    <string name="quest_tactilePaving_title_bus">"Heeft deze bushalte geleide lijnen / markeringen voor blinden en slechtzienden?"</string>
+    <string name="quest_tactilePaving_title_bus">"Heeft deze bushalte geleide lijnen of markeringen voor blinden en slechtzienden?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_tactilePaving_title_crosswalk">"Heeft deze oversteekplaats geleide lijnen / markeringen voor blinden en slechtzienden?"</string>
+    <string name="quest_tactilePaving_title_crosswalk">"Heeft deze oversteekplaats geleide lijnen of markeringen voor blinden en slechtzienden?"</string>
     <string name="quest_source_dialog_title">"Heb je dit echt ter plaatse nagegaan?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_tactilePaving_title_name_bus">"Heeft de bushalte %s geleidestrepen / markeringen voor blinden en slechtzienden?"</string>
+    <string name="quest_tactilePaving_title_name_bus">"Heeft de bushalte %s geleidestrepen of markeringen voor blinden en slechtzienden?"</string>
     <string name="quest_source_dialog_note">"Alleen antwoorden die tijdens veldwerk zijn gevonden mogen worden ingevoerd."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Is deze fietsenstalling overdekt?"</string>
     <string name="dialog_session_dont_show_again">"Toon dit niet meer voor deze sessie."</string>
@@ -476,7 +473,7 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
     <string name="quest_carWashType_service">"Bemande autowasserette"</string>
     <string name="enable_quest_confirmation_title">"Dit soort vraag aanzetten?"</string>
     <string name="default_disabled_msg_go_inside">"Dit type vraag is standaard uitgeschakeld omdat je voor het antwoord waarschijnlijk de locatie moet binnengaan. "</string>
-    <string name="quest_housenumber_conscription_number">"Districtgetal/conscriptiegetal (voor Tsjechië en Slovakije)"</string>
+    <string name="quest_housenumber_conscription_number">"District- of conscriptiegetal (voor Tsjechië en Slovakije)"</string>
     <string name="quest_housenumber_street_number_optional">"Oriëntatiegetal (voor Tsjechië en Slovakije)"</string>
     <string name="quest_housenumber_conscription_number_required">"Een districtgetal moet voorzien worden"</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">"Er is ook een fietspad aan de overkant"</string>
@@ -501,7 +498,6 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
     <string name="invalidation_dialog_message">"De lokale vragen als verouderd aanduiden zorgt ervoor dat alle vragen opnieuw gedownload worden wanneer data beschikbaar is. Normaalgezien worden de lokale vragen automatisch eenmaal per week als 'verouderd' aangeduid of indien een je een antwoord uploadt dat al beantwoord werd."</string>
     <string name="quest_generic_looks_like_this">"Ziet er meestal zo uit:"</string>
     <string name="quest_surface_value_metal">"Metaal"</string>
-    <string name="quest_generic_item_confirmation">"Ben je er zeker van dat je geen specifiekere wegbedekking kunt aanduiden?"</string>
     <string name="quest_cycleway_title2">"Is er hier een fietspad? Welke soort?"</string>
     <string name="quest_bridge_structure_title">"Wat voor structuur heeft deze brug?"</string>
 
@@ -576,4 +572,90 @@ Bijvoorbeeld 1m3 of 2-6."</string>
     <string name="questList_disabled_in_country">"Nooit getoond in %s"</string>
     <string name="quest_toiletAvailability_rest_area_title">"Heeft dit picknickgebied een toilet?"</string>
     <string name="quest_maxspeed_name_title">"Wat is de snelheidslimiet voor %s?"</string>
+    <string name="quest_pathSurface_title_steps">"Waaruit zijn deze trappen gemaakt?"</string>
+    <string name="quest_pathSurface_title_bridleway">"Welke bedekking heeft dit paardensppor?"</string>
+    <string name="quest_pathSurface_title">"Welke bedekking heeft dit pad?"</string>
+    <string name="quest_select_hint_most_specific">"Selecteer het meest specifieke dat past:"</string>
+    <string name="quest_generic_item_confirmation">"Ben je er zeker van dat je dit niet specifieker kunt benoemen?"</string>
+    <string name="privacy_html_tileserver">"&lt;p&gt;Om de kaart weer te geven, worden er vectortegels gehaald van &lt;a href=\"https://tiles.map-data.de\"&gt;map-data.de&lt;/a&gt;. Deze service logt tile requests voor anomieme statistieken en om problemen te detecteren. Deze logs worden na een paar dagen verwijderd."</string>
+    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Voor sommige vragen wordt er extra informatie van derde partijen gedownload. Dit gaat om de 'eenrichtingsverkeer'-vraag, die op Westnordost.de mogelijke kandidaten gaat ophalen."</string>
+    <string name="quest_generic_hasFeature_no_leave_note">"Nee (laat een nota achter)"</string>
+    <string name="pref_quests_reset">"Zeker dat je zowel keuze van vragen én de volgorde terug wilt instellen?"</string>
+    <string name="quest_buildingType_title2">"Met welke functie werd dit gebouw gebouwd?"</string>
+    <string name="quest_generic_item_invalid_value">"Gelieve iets specifieker te selecteren?"</string>
+    <string name="quest_buildingType_answer_multiple_types">"Het heeft verschillende functies"</string>
+    <string name="quest_buildingType_answer_multiple_types_description">"Selecteer het hoofddoel van het gebouw. Bv, als er op straathoogte een winkel is, met appartementen erboven, dan is het vooral een appartementsgebouw. "</string>
+    <string name="quest_buildingType_answer_construction_site">"Het is nog onder constructie"</string>
+    <string name="quest_buildingType_residential">"Bewoning"</string>
+    <string name="quest_buildingType_residential_description">"Gebouw waar mensen leven"</string>
+    <string name="quest_buildingType_house">"Huis"</string>
+    <string name="quest_buildingType_house_description">"Eensgezinswoning"</string>
+    <string name="quest_buildingType_apartments_description">"Huis met verschillende gezinnen, het kan winkels hebben op straathoogte"</string>
+    <string name="quest_buildingType_apartments">"Appartementsgebouw"</string>
+    <string name="quest_buildingType_detached">"Alleenstaande eensgezinswoning"</string>
+    <string name="quest_buildingType_detached_description">"Een vrijstaande eengezinswoning"</string>
+    <string name="quest_buildingType_semi_detached">"Half-vrijstaand huis"</string>
+    <string name="quest_buildingType_semi_detached_description">"Twee eensgezinswoningen die een gemeenschappelijke muur hebben, maar voor de rest losstaan"</string>
+    <string name="quest_buildingType_terrace">"Rijhuis"</string>
+    <string name="quest_buildingType_terrace_description">"Een rij van gelijkaardige eensgezinswoningen"</string>
+    <string name="quest_buildingType_hotel">"Hotelgebouw"</string>
+    <string name="quest_buildingType_dormitory">"Studentenhome"</string>
+    <string name="quest_buildingType_houseboat">"Woonboot"</string>
+    <string name="quest_buildingType_bungalow">"Bungalow"</string>
+    <string name="quest_buildingType_bungalow_description">"Klein, vrijstaand huis (vakantiehuisje, ...)"</string>
+    <string name="quest_buildingType_static_caravan">"Stacaravan"</string>
+    <string name="quest_buildingType_commercial">"Commercieel gebouw"</string>
+    <string name="quest_buildingType_commercial_generic_description">"Een gebouw waar mensen werken, winkelen of andere commerciele activiteiten uitoefenen"</string>
+    <string name="quest_buildingType_industrial">"Industrieel gebouw"</string>
+    <string name="quest_buildingType_industrial_description">"Bv. een fabriek, werkplaats, autoherstelplaats, ..."</string>
+    <string name="quest_buildingType_office">"Kantoorgebouw"</string>
+    <string name="quest_buildingType_retail">"Winkel"</string>
+    <string name="quest_buildingType_warehouse">"Warenhuis"</string>
+    <string name="quest_buildingType_kiosk">"Kiosk"</string>
+    <string name="quest_buildingType_storage_tank">"Opslagtank"</string>
+    <string name="quest_buildingType_religious">"Religieus gebouw"</string>
+    <string name="quest_buildingType_church">"Kerk"</string>
+    <string name="quest_buildingType_chapel">"Kapel"</string>
+    <string name="quest_buildingType_cathedral">"Kathedraal"</string>
+    <string name="quest_buildingType_mosque">"Moskee"</string>
+    <string name="quest_buildingType_temple">"Tempel"</string>
+    <string name="quest_buildingType_pagoda">"Pagode"</string>
+    <string name="quest_buildingType_synagogue">"Synagoog"</string>
+    <string name="quest_buildingType_civic">"Publiek dienstgebouw"</string>
+    <string name="quest_buildingType_civic_description">"Een publiek gebouw, waar een dienstverlening in zit"</string>
+    <string name="quest_buildingType_kindergarten">"Kleuterschool"</string>
+    <string name="quest_buildingType_school">"Schoolgebouw"</string>
+    <string name="quest_buildingType_college">"Middelbare schoolgebouw"</string>
+    <string name="quest_buildingType_hospital">"Hospitaalgebouw"</string>
+    <string name="quest_buildingType_stadium">"Stadion"</string>
+    <string name="quest_buildingType_train_station">"Treinstation"</string>
+    <string name="quest_buildingType_transportation">"Publiek-transport gebouw"</string>
+    <string name="quest_buildingType_university">"Universiteitgebouw"</string>
+    <string name="quest_buildingType_government">"Overheidsgebouw"</string>
+    <string name="quest_buildingType_cars">"Voor auto's"</string>
+    <string name="quest_buildingType_carport">"Carport"</string>
+    <string name="quest_buildingType_carport_description">"Een dak waar auto's onder gestald kunnen worden"</string>
+    <string name="quest_buildingType_garage">"Garage (voor één auto)"</string>
+    <string name="quest_buildingType_garages">"Meerdere garages"</string>
+    <string name="quest_buildingType_parking">"Parkeergebouw"</string>
+    <string name="quest_buildingType_farm">"Op een boerderij"</string>
+    <string name="quest_buildingType_farmhouse">"Boerderijhuis"</string>
+    <string name="quest_buildingType_farmhouse_description">"Het woonhuis op een boerderij"</string>
+    <string name="quest_buildingType_farm_auxiliary">"Boerderijgebouw"</string>
+    <string name="quest_buildingType_farm_auxiliary_description">"Ieder gebouw op een boerderij wat geen woongebouw is"</string>
+    <string name="quest_buildingType_greenhouse">"Serre"</string>
+    <string name="quest_buildingType_other">"Andere"</string>
+    <string name="quest_buildingType_shed">"Schuur"</string>
+    <string name="quest_buildingType_hut">"Hut"</string>
+    <string name="quest_buildingType_hut_description">"Een klein, simpel huisje of schuilplaats tegen de regen"</string>
+    <string name="quest_buildingType_roof">"Dak"</string>
+    <string name="quest_buildingType_service">"Dienstgbouw"</string>
+    <string name="quest_buildingType_service_description">"Gebouw met machines zoals pompen en transformatoren"</string>
+    <string name="quest_buildingType_hangar">"Hangaar"</string>
+    <string name="quest_buildingType_hangar_description">"Opslag voor vliegtuigen, helicopters en luchtvaartuigen"</string>
+    <string name="quest_buildingType_bunker">"Bunker"</string>
+    <string name="quest_address_answer_no_housenumber">"Het heeft geen huisnummer"</string>
+    <string name="quest_address_answer_no_housenumber_message1">"Het gebouw was aangeduid als:"</string>
+    <string name="quest_address_answer_no_housenumber_message2">"Klopt dit en is het geen deel van een gebouw?"</string>
+    <string name="quest_buildingType_shrine">"Altaar"</string>
 </resources>

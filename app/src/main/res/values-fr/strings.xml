@@ -104,7 +104,7 @@
     <string name="no_gps_no_quests">"Pour rechercher des quêtes autour de vous automatiquement, activer la localisation"</string>
     <string name="nothing_more_to_download">"Pas de nouvelles quêtes disponibles"</string>
     <string name="later">"Plus tard"</string>
-    <string name="quest_streetName_answer_noProperStreet_link">"cela relie juste deux rues"</string>
+    <string name="quest_streetName_answer_noProperStreet_link">"Cela relie juste deux rues"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Autre chose (laisser une note)"</string>
     <string name="about_title_privacy_statement">"Politique de confidentialité"</string>
     <string name="about_summary_privacy_statement">"et utilisation des données"</string>
@@ -163,14 +163,10 @@ Pour afficher la carte, les tuiles vectorielles sont extraites du &lt;a href=\"h
 
     <!-- Plus simple et plus court : "Quel est le revêtement de cette rue ?" -->
     <string name="quest_streetSurface_title">"Quel est le revêtement de cette rue ?"</string>
-    <string name="quest_select_hint_most_specific">"Sélectionner celui qui correspond le plus :"</string>
     <string name="quest_surface_value_paved">"Pavé (générique)"</string>
     <string name="quest_surface_value_unpaved">"Non pavé (générique)"</string>
     <string name="quest_surface_value_ground">"Terre (générique)"</string>
     <string name="quest_surface_value_asphalt">"Asphalte"</string>
-
-    <!-- "Pierre" is not enough specific -->
-    <string name="quest_surface_value_cobblestone">"Pierre"</string>
     <string name="quest_surface_value_compacted">"Compacté"</string>
 
     <!-- en:concrete = fr:béton = de:Beton
@@ -209,7 +205,6 @@ Pour afficher la carte, les tuiles vectorielles sont extraites du &lt;a href=\"h
 
     <!-- Plus simple et plus court : Quel est le revêtement de cette piste cyclable ? -->
     <string name="quest_cyclewaySurface_title">"Quel est le revêtement de cette piste cyclable ?"</string>
-    <string name="quest_buildingType_title">"Quel est le type de cet édifice ?"</string>
     <string name="quest_serviceType_title">"Quel est le type de cette rue de service ?"</string>
     <string name="quest_streetLanes_title">"Combien y’a-t-il de voies sur cette route ?"</string>
     <string name="quest_streetLanes_description">"S’il n’y a pas de marques routières, il n’y a pas de voie."</string>
@@ -516,7 +511,7 @@ Sinon, vous pouvez télécharger un autre clavier dans la boutique d’applicati
     <string name="quest_openingHours_emptyAnswer">"Vous devez décrire ce qui est écrit sur le panonceau. S’il n’y en a pas, vous devriez demander les heures d’ouverture à l’intérieur."</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"aucune, mais les cyclistes peuvent utiliser la route dans les deux sens"</string>
     <string name="quest_streetName_answer_noName_question">"Pourquoi cette voie n’a pas de nom?"</string>
-    <string name="quest_streetName_answer_noProperStreet_service2">"Est ce que c’est une allée de parking ou d’accès au bâtiment"</string>
+    <string name="quest_streetName_answer_noProperStreet_service2">"C’est une allée de parking ou d’accès au bâtiment"</string>
     <string name="quest_streetName_answer_noProperStreet_track2">"C’est un chemin agricole ou forestier"</string>
     <string name="quest_streetName_answer_noName_noname">"C’est une voie qui n’est pas nommée"</string>
     <string name="quest_wheelchairAccess_toilets_title">"Est ce que ces toilettes sont accessible en fauteuil?"</string>
@@ -534,7 +529,6 @@ Partiellement signifie qu’un fauteuil roulant peut entrer et utiliser les toil
     <string name="invalidation_dialog_message">"L’invalidation du cache entraînera la mise à jour des quêtes lors du prochain téléchargement. Le cache des quête est automatiquement invalidé après une semaine et immédiatement lorsqu’une quête que vous avez résolue a déjà été traitée par quelqu’un d’autre."</string>
     <string name="quest_generic_looks_like_this">"Ressemble habituellement à ceci :"</string>
     <string name="quest_surface_value_metal">"Métal"</string>
-    <string name="quest_generic_item_confirmation">"Êtes-vous sûr de ne pas pouvoir déterminer la surface plus spécifiquement?"</string>
     <string name="quest_cycleway_title2">"Y a-t-il une piste cyclable ici ? De quel type ?"</string>
 
     <!-- ou « type de structure » ? -->
@@ -594,12 +588,124 @@ Partiellement signifie qu’un fauteuil roulant peut entrer et utiliser les toil
     <string name="quest_tramStopName_title">"Quel est le nom de cet arrêt de tram ?"</string>
     <string name="quest_housenumber_multiple_numbers">"Il y a plusieurs numéros de maison"</string>
     <string name="quest_housenumber_multiple_numbers_description">"Vous pouvez simplement entrer des numéros séparés par des virgules, ou des intervalles. Par exemple : 1,3 ou 2-6"</string>
+    <string name="quest_bicycle_parking_type_stand">"Arceaux (soutient le cadre du vélo)"</string>
+    <string name="quest_bicycle_parking_type_wheelbender">"Râteliers (ne soutient que la roue)"</string>
+    <string name="quest_bicycle_parking_type_shed">"Cabanon"</string>
+    <string name="quest_bicycle_parking_type_locker">"Casier"</string>
     <string name="quest_bicycle_parking_type_building">"Bâtiment"</string>
     <string name="quest_bicycle_parking_type_title">"Quel est le type de ce parking à vélos ?"</string>
+    <string name="quest_cycleway_value_suggestion_lane">"Bande cyclable suggérée"</string>
     <string name="quest_postboxCollectionTimes_title">"Quels sont les horaires de relevé de courrier pour cette boîte aux lettres ?"</string>
+    <string name="quest_collectionTimes_add_times">"Ajouter une heure de collecte"</string>
     <string name="quest_collectionTimes_answer_no_times_specified">"Pas d'horaires spécifiés"</string>
     <string name="quest_construction_road_title">"Cette route est-elle complète ?"</string>
+    <string name="quest_construction_cycleway_title">"Cette piste cyclable est-elle terminée?"</string>
+    <string name="quest_construction_footway_title">"Ce trottoir est-il terminé ?"</string>
     <string name="quest_construction_generic_title">"Ce chemin est-il complet ?"</string>
     <string name="quest_construction_building_title">"Ce bâtiment est-il complet ?"</string>
+    <string name="questList_disabled_in_country">"Ne jamais afficher en %s"</string>
+    <string name="quest_toiletAvailability_rest_area_title">"Est-ce que cette aire de repos a des toilettes?"</string>
     <string name="quest_maxspeed_name_title">"Quelle est la limitation de vitesse pour %s ?"</string>
+    <string name="quest_pathSurface_title_steps">"Quel revêtement ces marches ont-elles ?"</string>
+    <string name="quest_pathSurface_title_bridleway">"Quelle revêtement ce sentier équestre a-t-il ?"</string>
+    <string name="quest_pathSurface_title">"Quelle surface ce chemin a-t-il ?"</string>
+    <string name="quest_select_hint_most_specific">"Sélectionner le plus spécifique qui convient :"</string>
+    <string name="quest_generic_item_confirmation">"Êtes vous sûr de ne pas pouvoir le déterminer plus spécifiquement ?"</string>
+    <string name="privacy_html_tileserver">"&lt;p&gt;Pour afficher la carte, les tuiles vectorielles sont téléchargées depuis &lt;a href=\"https://tiles.map-data.de\"&gt;map-data.de&lt;/a&gt;. Ce service enregistre les demandes de tuiles à des fins de statistiques anonymes et de détection d'erreurs. Les journaux de demandes sont supprimés après quelques jours.&gt;p&gt;"</string>
+    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt; Pour certaines quêtes, des données de tiers sont téléchargées. En particulier pour les quêtes sur les voies à sens unique, une API tierce est utilisées. NB : cette API tiers est également hébergée sur &lt;a href=\"www.westnordost.de\"&gt;www.westnordost.de&lt;/a&gt;.&lt;p&gt;"</string>
+    <string name="quest_generic_hasFeature_no_leave_note">"Non (laisser une note)"</string>
+    <string name="pref_quests_reset">"Réinitialiser les types quêtes à afficher et leur ordre d'affichage ?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_buildingType_title2">"En tant que quoi ce bâtiment a-t-il été construit ?"</string>
+    <string name="quest_generic_item_invalid_value">"Sélectionnez une valeur plus précise."</string>
+    <string name="quest_buildingType_answer_multiple_types">"Plusieurs usages"</string>
+    <string name="quest_buildingType_answer_multiple_types_description">"Sélectionnez l'usage principal de ce bâtiment. Ex : s'il y a des magasins aux rez-de-chaussée et des appartements au-dessus, ce sont quand même des appartements."</string>
+    <string name="quest_buildingType_answer_construction_site">"En contruction"</string>
+    <string name="quest_buildingType_residential">"Résidentiel"</string>
+    <string name="quest_buildingType_residential_description">"logement"</string>
+    <string name="quest_buildingType_house">"Maison"</string>
+    <string name="quest_buildingType_house_description">"maison unifamiliale"</string>
+    <string name="quest_buildingType_apartments_description">"maison multifamiliale, peut avoir des magasins au rez-de-chaussée"</string>
+    <string name="quest_buildingType_apartments">"Appartements"</string>
+
+    <!-- C'est la traduction dans https://wiki.openstreetmap.org/wiki/Key:building , mais un peu long peut-être. -->
+    <!-- Fuzzy -->
+    <string name="quest_buildingType_detached">"résidence non attenante à une autre"</string>
+    <string name="quest_buildingType_detached_description">"maison unifamiliale non mitoyenne"</string>
+    <string name="quest_buildingType_semi_detached">"Maison jumelée"</string>
+    <string name="quest_buildingType_semi_detached_description">"ensemble de deux maisons unifamiliales"</string>
+    <string name="quest_buildingType_terrace">"Maison en bande"</string>
+    <string name="quest_buildingType_terrace_description">"une ligne de maison unifamiliales similaires"</string>
+    <string name="quest_buildingType_hotel">"Hôtel"</string>
+    <string name="quest_buildingType_dormitory">"Résidence universitaire, foyer"</string>
+    <string name="quest_buildingType_houseboat">"Maison flottante"</string>
+    <string name="quest_buildingType_bungalow">"Bungalow"</string>
+    <string name="quest_buildingType_bungalow_description">"petite maison détachée de plain pied"</string>
+    <string name="quest_buildingType_static_caravan">"Mobilhome"</string>
+    <string name="quest_buildingType_commercial">"Bâtiment commercial"</string>
+    <string name="quest_buildingType_commercial_generic_description">"Bâtiment où des gens travaillent ou ont d'autres activités commerciales"</string>
+    <string name="quest_buildingType_industrial">"Industriel"</string>
+    <string name="quest_buildingType_industrial_description">"ex : usine, atelier, garagiste, ..."</string>
+    <string name="quest_buildingType_office">"Bureaux"</string>
+    <string name="quest_buildingType_retail">"Magasin(s)"</string>
+    <string name="quest_buildingType_warehouse">"Entrepôt"</string>
+    <string name="quest_buildingType_kiosk">"Kiosque"</string>
+    <string name="quest_buildingType_storage_tank">"Réservoir de stockage"</string>
+    <string name="quest_buildingType_religious">"Bâtiment religieux"</string>
+    <string name="quest_buildingType_church">"Église"</string>
+    <string name="quest_buildingType_chapel">"Chapelle"</string>
+    <string name="quest_buildingType_cathedral">"Cathédrale"</string>
+    <string name="quest_buildingType_mosque">"Mosquée"</string>
+    <string name="quest_buildingType_temple">"Temple"</string>
+    <string name="quest_buildingType_pagoda">"Pagode"</string>
+    <string name="quest_buildingType_synagogue">"Synagogue"</string>
+    <string name="quest_buildingType_civic">"Bâtiment public"</string>
+    <string name="quest_buildingType_civic_description">"abrite d'ordinaire un service public (librairie, toilettes publiques, mairie, etc.)"</string>
+    <string name="quest_buildingType_kindergarten">"Jardin d'enfants"</string>
+    <string name="quest_buildingType_school">"École"</string>
+
+    <!-- "college" is a false friend. I'm not sure it is properly translatable in french. -->
+    <string name="quest_buildingType_college">"École supérieure"</string>
+    <string name="quest_buildingType_hospital">"Hôpital"</string>
+    <string name="quest_buildingType_stadium">"Stade"</string>
+    <string name="quest_buildingType_train_station">"Gare"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_buildingType_transportation">"Bâtiment en relation avec les transports publics"</string>
+    <string name="quest_buildingType_university">"Université"</string>
+    <string name="quest_buildingType_government">"Administration"</string>
+    <string name="quest_buildingType_carport">"Auvent pour voitures"</string>
+    <string name="quest_buildingType_carport_description">"abri sans murs comprenant un toit soutenu par des poteaux"</string>
+    <string name="quest_buildingType_garage">"Garage unique"</string>
+    <string name="quest_buildingType_garages">"Garages multiples"</string>
+    <string name="quest_buildingType_parking">"Parking"</string>
+
+    <!-- What is the difference with "farmhouse"? OSM wiki refers to farm as a farmhouse. -->
+    <string name="quest_buildingType_farm">"Dans une ferme"</string>
+    <string name="quest_buildingType_farmhouse">"Ferme"</string>
+    <string name="quest_buildingType_farmhouse_description">"bâtiment d'habitation d'une ferme"</string>
+    <string name="quest_buildingType_farm_auxiliary">"Bâtiment agricole"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_buildingType_farm_auxiliary_description">"un bâtiment non résidentiel dans une ferme"</string>
+    <string name="quest_buildingType_greenhouse">"Serre"</string>
+    <string name="quest_buildingType_other">"Autre"</string>
+    <string name="quest_buildingType_shed">"Abri, cabanon"</string>
+    <string name="quest_buildingType_hut">"Cabane"</string>
+    <string name="quest_buildingType_hut_description">"petite hutte, simple habitation ou abri"</string>
+    <string name="quest_buildingType_roof">"Toit"</string>
+    <string name="quest_buildingType_service">"Bâtiment de service"</string>
+    <string name="quest_buildingType_service_description">"bâtiment avec une machine comme une pompe, un transformateur, etc."</string>
+    <string name="quest_buildingType_hangar">"Hangar (aviation)"</string>
+    <string name="quest_buildingType_hangar_description">"Hangar pour avions, hélicoptères ou fusées."</string>
+
+    <!-- Bâtiment militaire ? -->
+    <string name="quest_buildingType_bunker">"Bunker"</string>
+    <string name="quest_address_answer_no_housenumber">"Pas de numéro"</string>
+    <string name="quest_address_answer_no_housenumber_message1">"Le batiment a été marqué comme :"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_address_answer_no_housenumber_message2">"Est-ce correct et est-ce que ça ne fais pas simplement partie d'un bâtiment ?"</string>
+    <string name="quest_buildingType_shrine">"Sanctuaire"</string>
 </resources>
