@@ -590,7 +590,14 @@ Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas barr
     <string name="quest_pathSurface_title">"Qual o pavimento desse caminho?"</string>
     <string name="quest_select_hint_most_specific">"Selecione o mais específico:"</string>
     <string name="quest_generic_item_confirmation">"Tem certeza que não pode determinar um mais específico?"</string>
+
+    <!-- Fuzzy -->
+    <string name="privacy_html_tileserver">"&lt;p&gt;Para mostrar o mapa, blocos vetoriais são baixados de &lt;a href=\"https://tiles.map-data.de\"&gt;map-data.de&lt;/a&gt;.  O serviço loga as requisições de blocos para estatísticas anônimas e para detectar problemas mas apaga os logs depois de alguns dias.&lt;/p&gt;"</string>
+
+    <!-- Fuzzy -->
+    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Para algumas missões, dados adicionais de terceiros são baixados.  Em especial, para as missões de mão única são baixados dados sobre o potenciais candidatos também do westnordost.de.&lt;/p&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"Não (deixar nota)"</string>
+    <string name="pref_quests_reset">"Restaurar habilitação e ordem das missões para o padrão?"</string>
     <string name="quest_buildingType_title2">"Qual a finalidade desse prédio?"</string>
     <string name="quest_generic_item_invalid_value">"Favor selecionar um valor mais específico."</string>
     <string name="quest_buildingType_answer_multiple_types">"Tem múltiplas finalidades"</string>
@@ -610,6 +617,8 @@ Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas barr
     <!-- Fuzzy -->
     <string name="quest_buildingType_semi_detached">"Casa semi-destacada"</string>
     <string name="quest_buildingType_semi_detached_description">"Par de casas para uma família"</string>
+    <string name="quest_buildingType_terrace">"Casas enfileiradas"</string>
+    <string name="quest_buildingType_terrace_description">"Uma fila linear de casas par uma família"</string>
     <string name="quest_buildingType_hotel">"Prédio de hotel"</string>
     <string name="quest_buildingType_dormitory">"Dormitório"</string>
     <string name="quest_buildingType_houseboat">"Casa-barco"</string>

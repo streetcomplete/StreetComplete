@@ -188,12 +188,12 @@ För att visa på kartan, är vektor brickor hämtas från &lt;a href=\"https://
     <string name="quest_streetLanes_noLanes_estWidth">"Vänligen uppskatta hur många bilar som skulle få plats bredvid varandra på den här vägen."</string>
     <string name="quest_oneway_title">"Är det här en enkelriktad gata?"</string>
     <string name="quest_address_title">"Vad är har den här byggnaden för husnummer?"</string>
-    <string name="store_listing_short_description">"OpenStreetMap besiktningsman app"</string>
+    <string name="store_listing_short_description">"App för komplettering av OpenStreetMap"</string>
     <string name="store_listing_full_description">"Bidra till att förbättra OpenStreetMap med StreetComplete!
 
-Denna app finner ofullständiga och utdragbara uppgifter i din närhet och visar den på en karta som markörer. Var och en av dessa är lösbar genom att besvara en enkel fråga att slutföra info på plats.
+Appen hittar ofullständiga uppgifter i din närhet och visar dem på en karta som markörer. Var och en av dessa går att lösa på plats genom att besvara en enkel fråga.
 
-Den information du anger sedan direkt till den OpenStreetMap i ditt namn, utan att behöva använda en annan editor."</string>
+Den information du anger skickas sedan direkt till OpenStreetMap i ditt namn, utan att du behöver använda en annan redigerare."</string>
     <string name="quest_name_answer_noName">"Den har inget namn"</string>
     <string name="quest_name_answer_noName_confirmation_title">"Verkligen inget namn?"</string>
     <string name="quest_name_noName_confirmation_positive">"Ja, inget namn"</string>

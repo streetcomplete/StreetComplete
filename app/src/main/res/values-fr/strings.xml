@@ -675,6 +675,9 @@ Partiellement signifie qu’un fauteuil roulant peut entrer et utiliser les toil
     <string name="quest_buildingType_transportation">"Bâtiment en relation avec les transports publics"</string>
     <string name="quest_buildingType_university">"Université"</string>
     <string name="quest_buildingType_government">"Administration"</string>
+
+    <!-- To which osm key does this refer to? -->
+    <string name="quest_buildingType_cars">"Pour voitures"</string>
     <string name="quest_buildingType_carport">"Auvent pour voitures"</string>
     <string name="quest_buildingType_carport_description">"abri sans murs comprenant un toit soutenu par des poteaux"</string>
     <string name="quest_buildingType_garage">"Garage unique"</string>
