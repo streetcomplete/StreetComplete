@@ -68,6 +68,7 @@ quest_icons.svg
 	bench
 	bicycle
 	bicycle_parking
+	bicycle_parking_capacity
 	bicycle_parking_cover
 	bicycleway
 	bicycleway_width
@@ -82,17 +83,18 @@ quest_icons.svg
 	building_levels
 	building_underground
 	bus                        modified from Twemoji 2: U+1F68D
+	bus_shelter                parts taken from Twemoji 2: U+1F68D
 	bus_stop_name              parts taken from Twemoji 2: U+1F68D
-	housenumber
-	housenumber_street
-	bicycleway
 	car							modified from Twemoji 2: U+1F698
 	car_wash					modified from Twemoji 2: U+1F698
 	car_charger					parts taken from Twemoji 2: U+1F698 and U+1F50C
 	clock
+	fee
 	ferry						modified from Twemoji 2: U+26F4
-    fire_hydrant
+	fire_hydrant
 	fuel
+	housenumber
+	housenumber_street
 	label
 	lantern
 	leaf
@@ -105,6 +107,7 @@ quest_icons.svg
 	museum
 	note_create
 	notes
+	oneway
 	parking
 	parking_access				parts taken from EmojiOne 2: U+1F511
 	parking_fee					parts taken from EmojiOne 2: U+1F4B8
@@ -114,11 +117,10 @@ quest_icons.svg
 	pedestrian_segregated
 	phone
 	power
+	quest
 	restaurant					modified from Twemoji 2: U+1F37D
 	restaurant_vegan			parts taken from Twemoji 2: U+1F37D and U+1F955
 	restaurant_vegetarian		parts taken from Twemoji 2: U+1F37D and U+1F955
-	oneway
-	quest
 	railway
 	road_construction
 	roof_shape
