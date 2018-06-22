@@ -555,9 +555,9 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_construction_footway_title">"È completato questo passaggio pedonale?"</string>
     <string name="quest_construction_generic_title">"Questa via è completata?"</string>
     <string name="quest_construction_building_title">"Questo edificio è completato?"</string>
-    <string name="questList_disabled_in_country">"Mai mostrato in% s"</string>
+    <string name="questList_disabled_in_country">"Mai mostrato in %s"</string>
     <string name="quest_toiletAvailability_rest_area_title">"Quest' area di servizio ha un bagno?"</string>
-    <string name="quest_maxspeed_name_title">"Qual è il limite di velocità per% s?"</string>
+    <string name="quest_maxspeed_name_title">Qual è il limite di velocità per %s?</string>
     <string name="quest_pathSurface_title_steps">"Che tipo di pavimentazione hanno questi gradini?"</string>
     <string name="quest_pathSurface_title_bridleway">"Che tipo di pavimentazione ha questo percorso equestre?"</string>
     <string name="quest_pathSurface_title">"Che tipo di pavimentazione ha questo sentiero?"</string>
