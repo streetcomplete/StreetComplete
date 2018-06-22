@@ -61,7 +61,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 		}
 		else
 		{
-			setStreetSignLayout(R.layout.quest_maxspeed);
+			setStreetSignLayout(R.layout.quest_maxspeed_sign);
 		}
 
 		addOtherAnswers();

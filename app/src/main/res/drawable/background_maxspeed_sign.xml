@@ -6,17 +6,10 @@
             <solid android:color="#ffffff"/>
         </shape>
     </item>
-    <item android:top="0.5dp" android:left="0.5dp" android:bottom="0.5dp" android:right="0.5dp">
-        <shape android:shape="oval">
-            <solid android:color="#c1121c"/>
-            <stroke
-                android:color="#ffffff"
-                android:width="1.5dp"/>
-        </shape>
-    </item>
-    <item android:top="16dp" android:left="16dp" android:bottom="16dp" android:right="16dp">
-        <shape android:shape="oval">
-            <solid android:color="#ffffff"/>
-        </shape>
-    </item>
+    <item
+        android:drawable="@drawable/background_maxspeed_sign_no_frame"
+        android:top="2dp"
+        android:left="2dp"
+        android:bottom="2dp"
+        android:right="2dp"/>
 </layer-list>
