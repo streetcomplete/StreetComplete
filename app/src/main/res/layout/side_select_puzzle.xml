@@ -34,7 +34,7 @@
                 android:layout_alignParentLeft="true"
                 android:scaleType="fitXY"
                 tools:ignore="RtlHardcoded"
-                tools:src="@drawable/ic_cycleway_sidewalk_ok"
+                tools:src="@drawable/ic_cycleway_sidewalk"
                 tools:rotation="180"/>
 
         </RelativeLayout>
@@ -55,7 +55,7 @@
                 android:layout_alignParentLeft="true"
                 android:scaleType="fitXY"
                 tools:ignore="RtlHardcoded"
-                tools:src="@drawable/ic_cycleway_sidewalk_ok"/>
+                tools:src="@drawable/ic_cycleway_sidewalk"/>
 
         </RelativeLayout>
 
