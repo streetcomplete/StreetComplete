@@ -518,16 +518,17 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_pathSurface_title_steps">"Welche Oberfläche haben diese Stufen?"</string>
     <string name="quest_pathSurface_title_bridleway">"Welche Oberfläche hat dieser Saumweg?"</string>
     <string name="quest_pathSurface_title">"Welche Oberfläche hat dieser Weg?"</string>
-    <string name="quest_select_hint_most_specific">"Wähle die exakteste aus, die zutrifft."</string>
+    <string name="quest_select_hint_most_specific">"Wähle die zutreffendste Art aus:"</string>
     <string name="quest_generic_item_confirmation">"Bist du sicher, dass es nicht genauer bestimmt werden kann?"</string>
-    <string name="privacy_html_tileserver">"&lt;p&gt; Um die Karte anzuzeigen werden Vektorkacheln aus &lt;a href=\"https://tiles.map-data.de\"&gt; map-data.de &lt;/a&gt; abgerufen. Der Dienst protokolliert Kachel Anfragen für anonyme Statistiken und für das Erkennen von Problemen, löscht jedoch die Protokolle nach einigen Tagen. &lt;/ P&gt;"</string>
+    <string name="privacy_html_tileserver">"&lt;p&gt;Um die Karte anzuzeigen
+ werden Vektorkacheln von &lt;a href=\"https://tiles.map-data.de\"&gt;map-data.de&lt;/a&gt; abgerufen. Der Dienst protokolliert Kachelanfragen für anonyme Statistiken und für das Erkennen von Problemen, löscht diese Protokolle jedoch nach einigen Tagen.&lt;/p&gt;"</string>
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt; Bei einigen Quests werden einige zusätzliche Daten von Dritten heruntergeladen. Insbesondere fragt der Oneway-Quest eine API an, die ebenfalls auf westnordost.de gehostet wird, nach möglichen Kandidaten für Oneways. &lt;/ P&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"Nein (Notiz hinterlassen)"</string>
     <string name="pref_quests_reset">"Sowohl die Aktivierung als auch die Priorität zurücksetzen?"</string>
     <string name="quest_buildingType_title2">"Als was wurde dieses Gebäude errichtet?"</string>
-    <string name="quest_generic_item_invalid_value">"Bitte mache eine genauere Auswahl"</string>
+    <string name="quest_generic_item_invalid_value">"Bitte treffe eine genauere Auswahl"</string>
     <string name="quest_buildingType_answer_multiple_types">"Hat mehrere Bestimmungen"</string>
-    <string name="quest_buildingType_answer_multiple_types_description">"Wähle einfach die Hauptbestimmung des Gebäudes. Zum Beispiel wenn es im Erdgeschoss Läden gibt aber darüber Wohnungen sind, ist es trotzdem ein Mehrfamilienhaus."</string>
+    <string name="quest_buildingType_answer_multiple_types_description">"Wähle einfach die Hauptbestimmung des Gebäudes. Wenn sich zum Beispiel im Erdgeschoss Läden befinden, aber darüber Wohnungen sind, ist es trotzdem ein Mehrfamilienhaus."</string>
     <string name="quest_buildingType_answer_construction_site">"Wird noch errichtet"</string>
     <string name="quest_buildingType_residential">"Wohngebäude"</string>
     <string name="quest_buildingType_residential_description">"Gebäude in den Leute wohnen"</string>
@@ -535,7 +536,7 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_buildingType_house_description">"Einfamilienhaus"</string>
     <string name="quest_buildingType_apartments_description">"Haus für mehrere Familien, im Erdgeschoss befinden sich gelegentlich Läden"</string>
     <string name="quest_buildingType_apartments">"Mehrfamilienhaus"</string>
-    <string name="quest_buildingType_detached">"freistehendes Haus"</string>
+    <string name="quest_buildingType_detached">"Freistehendes Haus"</string>
     <string name="quest_buildingType_detached_description">"normalerweise mit Garten rundherum"</string>
     <string name="quest_buildingType_semi_detached">"Doppelhaus"</string>
     <string name="quest_buildingType_semi_detached_description">"zwei aneinandergebaute Einfamilienhäuser"</string>
@@ -545,11 +546,11 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_buildingType_dormitory">"Wohnheim"</string>
     <string name="quest_buildingType_houseboat">"Hausboot"</string>
     <string name="quest_buildingType_bungalow">"Bungalow"</string>
-    <string name="quest_buildingType_bungalow_description">"kleines frei stehendes Haus (Gartenhaus, Ferienhaus)"</string>
+    <string name="quest_buildingType_bungalow_description">"kleines, freistehendes Haus (Gartenhaus, Ferienhaus)"</string>
     <string name="quest_buildingType_static_caravan">"Feststehender Wohnwagen"</string>
     <string name="quest_buildingType_commercial">"Gewerbliches Gebäude"</string>
     <string name="quest_buildingType_commercial_generic_description">"Gebäude in denen Leute arbeiten, einkaufen oder anderen gewerblichen Aktivitäten nachgehen"</string>
-    <string name="quest_buildingType_industrial">"Industrielles Gebäude"</string>
+    <string name="quest_buildingType_industrial">"Industriegebäude"</string>
     <string name="quest_buildingType_industrial_description">"z.B. eine Fabrik, ein Betrieb, eine Autowerkstatt, …"</string>
     <string name="quest_buildingType_office">"Bürogebäude"</string>
     <string name="quest_buildingType_retail">"Laden / Läden"</string>
@@ -577,7 +578,7 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_buildingType_government">"Regierungsgebäude"</string>
     <string name="quest_buildingType_cars">"Für Autos"</string>
     <string name="quest_buildingType_carport">"Carport"</string>
-    <string name="quest_buildingType_carport_description">"ein Dach für ein Auto"</string>
+    <string name="quest_buildingType_carport_description">"ein überdachter Autostellplatz"</string>
     <string name="quest_buildingType_garage">"Garage"</string>
     <string name="quest_buildingType_garages">"Mehrere Garagen"</string>
     <string name="quest_buildingType_parking">"Parkhaus"</string>
@@ -585,7 +586,7 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_buildingType_farmhouse">"Bauernhaus"</string>
     <string name="quest_buildingType_farmhouse_description">"Wohnhaus auf einem Bauernhof"</string>
     <string name="quest_buildingType_farm_auxiliary">"Wirtschaftsgebäude"</string>
-    <string name="quest_buildingType_farm_auxiliary_description">"jedes Gebäude auf einem Bauernhof das kein Bauernhaus ist"</string>
+    <string name="quest_buildingType_farm_auxiliary_description">"jedes Gebäude auf einem Bauernhof, das kein Bauernhaus ist"</string>
     <string name="quest_buildingType_greenhouse">"Gewächshaus"</string>
     <string name="quest_buildingType_other">"Andere"</string>
     <string name="quest_buildingType_shed">"Schuppen"</string>
@@ -593,9 +594,9 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_buildingType_hut_description">"kleine Behausung oder Unterstand"</string>
     <string name="quest_buildingType_roof">"Dach"</string>
     <string name="quest_buildingType_service">"Betriebsgebäude"</string>
-    <string name="quest_buildingType_service_description">"bestimmt für Machinen wie Pumpen oder Transformatoren"</string>
+    <string name="quest_buildingType_service_description">"Gebäude für Maschinen wie Pumpen oder Transformatoren"</string>
     <string name="quest_buildingType_hangar">"Hangar"</string>
-    <string name="quest_buildingType_hangar_description">"Garage für Flugzeuge, Helikopter und Raumfahrzeuge"</string>
+    <string name="quest_buildingType_hangar_description">"Garage für Flugzeuge, Helikopter oder Raumfahrzeuge"</string>
     <string name="quest_buildingType_bunker">"Bunker"</string>
     <string name="quest_address_answer_no_housenumber">"Hat keine Hausnummer"</string>
     <string name="quest_address_answer_no_housenumber_message1">"Das Gebäude wurde bestimmt als:"</string>

@@ -611,11 +611,14 @@ Partiellement signifie qu’un fauteuil roulant peut entrer et utiliser les toil
     <string name="quest_pathSurface_title">"Quelle surface ce chemin a-t-il ?"</string>
     <string name="quest_select_hint_most_specific">"Sélectionner le plus spécifique qui convient :"</string>
     <string name="quest_generic_item_confirmation">"Êtes vous sûr de ne pas pouvoir le déterminer plus spécifiquement ?"</string>
-    <string name="privacy_html_tileserver">"&lt;p&gt;Pour afficher la carte, les tuiles vectorielles sont téléchargées depuis &lt;a href=\"https://tiles.map-data.de\"&gt;map-data.de&lt;/a&gt;. Ce service enregistre les demandes de tuiles à des fins de statistiques anonymes et de détection d'erreurs. Les journaux de demandes sont supprimés après quelques jours.&gt;p&gt;"</string>
+    <string name="privacy_html_tileserver">"&lt;p&gt;Pour afficher la carte, les tuiles vectorielles sont téléchargées depuis &lt;a href=\"https://tiles.map-data.de\"&gt;map-data.de&lt;/a&gt;. Ce service enregistre les demandes de tuiles à des fins de statistiques anonymes et de détection d'erreurs. Les journaux de demandes sont supprimés après quelques jours.&lt;/p&gt;"</string>
+
+    <!-- Fuzzy -->
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt; Pour certaines quêtes, des données de tiers sont téléchargées. En particulier pour les quêtes sur les voies à sens unique, une API tierce est utilisées. NB : cette API tiers est également hébergée sur &lt;a href=\"www.westnordost.de\"&gt;www.westnordost.de&lt;/a&gt;.&lt;p&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"Non (laisser une note)"</string>
     <string name="pref_quests_reset">"Réinitialiser les types quêtes à afficher et leur ordre d'affichage ?"</string>
 
+    <!-- To keep the idea, why not "Quelle était la fonction principale de ce bâtiment ?"? -->
     <!-- Fuzzy -->
     <string name="quest_buildingType_title2">"En tant que quoi ce bâtiment a-t-il été construit ?"</string>
     <string name="quest_generic_item_invalid_value">"Sélectionnez une valeur plus précise."</string>
@@ -641,8 +644,8 @@ Partiellement signifie qu’un fauteuil roulant peut entrer et utiliser les toil
     <string name="quest_buildingType_dormitory">"Résidence universitaire, foyer"</string>
     <string name="quest_buildingType_houseboat">"Maison flottante"</string>
     <string name="quest_buildingType_bungalow">"Bungalow"</string>
-    <string name="quest_buildingType_bungalow_description">"petite maison détachée de plain pied"</string>
-    <string name="quest_buildingType_static_caravan">"Mobilhome"</string>
+    <string name="quest_buildingType_bungalow_description">"petite maison détachée de plain-pied"</string>
+    <string name="quest_buildingType_static_caravan">"mobil-home"</string>
     <string name="quest_buildingType_commercial">"Bâtiment commercial"</string>
     <string name="quest_buildingType_commercial_generic_description">"Bâtiment où des gens travaillent ou ont d'autres activités commerciales"</string>
     <string name="quest_buildingType_industrial">"Industriel"</string>

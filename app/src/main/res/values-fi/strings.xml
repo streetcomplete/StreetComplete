@@ -492,7 +492,7 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
     <string name="quest_generic_looks_like_this">"Normaalisti näyttää suunnilleen tältä: "</string>
     <string name="quest_surface_value_metal">"Metalli"</string>
     <string name="quest_cycleway_title2">"Onko täällä pyörätietä? Minkä tyyppinen?"</string>
-    <string name="quest_bridge_structure_title">"Mikä on tämän silan rakenne?"</string>
+    <string name="quest_bridge_structure_title">"Mikä on tämän sillan rakenne?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_internet_access_name_title">"Minkälaisen internetyhteyden %s tarjoaa?"</string>
@@ -563,7 +563,7 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
     <string name="quest_generic_item_confirmation">"Oletko varma, että et voi määritellä tarkemmin?"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"Ei (jätä "</string>
     <string name="pref_quests_reset">"Resetoi kysymysten aktivoinnit ja palautua järjestys oletukseksi?"</string>
-    <string name="quest_buildingType_title2">"Mihin tämä rakennus on rakennettu?"</string>
+    <string name="quest_buildingType_title2">"Mikä on tämän rakennuksen käyttötarkoitus?"</string>
     <string name="quest_generic_item_invalid_value">"Valitse tarkempi arvo"</string>
     <string name="quest_buildingType_answer_multiple_types">"Sillä on monia tarkoituksia"</string>
     <string name="quest_buildingType_answer_multiple_types_description">"Yksinkertaisesti valitse rakennuksen päätarkoitus. Esim. jos alkerrassa on kauppa ja sen yläpuolella asumiseen tarkoitettu kerrostalo, niin sillon se on pääasiassa asuintalo"</string>
@@ -629,9 +629,9 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
     <string name="quest_buildingType_farm_auxiliary_description">"ei asuinkäyttöön tarkoitetut rakennuksen maatilalla"</string>
     <string name="quest_buildingType_greenhouse">"Kasvihuone"</string>
     <string name="quest_buildingType_other">"Muut"</string>
-    <string name="quest_buildingType_shed">"Vaja"</string>
+    <string name="quest_buildingType_shed">"Vaja tai lato"</string>
     <string name="quest_buildingType_hut">"Maja"</string>
-    <string name="quest_buildingType_hut_description">"pieni, vaatimaton asumus tai majoitus"</string>
+    <string name="quest_buildingType_hut_description">"Pieni vaatimaton rakennus, ei pidempiaikaiseen majoitukseen."</string>
     <string name="quest_buildingType_roof">"Katos"</string>
 
     <!-- Fuzzy -->
