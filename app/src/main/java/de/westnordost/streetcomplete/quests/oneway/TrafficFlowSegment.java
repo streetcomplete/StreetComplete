@@ -1,13 +1,17 @@
 package de.westnordost.streetcomplete.quests.oneway;
 
+import android.support.annotation.NonNull;
+
+import de.westnordost.osmapi.map.data.LatLon;
+
 public class TrafficFlowSegment
 {
-	public final long fromNodeId, toNodeId;
+	@NonNull public final LatLon fromPosition, toPosition;
 
-	public TrafficFlowSegment(long fromNodeId, long toNodeId)
+	public TrafficFlowSegment(@NonNull LatLon fromPosition, @NonNull LatLon toPosition)
 	{
-		this.fromNodeId = fromNodeId;
-		this.toNodeId = toNodeId;
+		this.fromPosition = fromPosition;
+		this.toPosition = toPosition;
 	}
 
 	@Override public boolean equals(Object o)
@@ -15,12 +19,13 @@ public class TrafficFlowSegment
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
 		TrafficFlowSegment that = (TrafficFlowSegment) o;
-		return fromNodeId == that.fromNodeId && toNodeId == that.toNodeId;
+		return fromPosition.equals(that.fromPosition) && toPosition.equals(that.toPosition);
 	}
 
 	@Override public int hashCode()
 	{
-		long hash = 31 * fromNodeId + toNodeId;
-		return (int) (hash ^ (hash >>> 32));
+		int result = fromPosition.hashCode();
+		result = 31 * result + toPosition.hashCode();
+		return result;
 	}
 }

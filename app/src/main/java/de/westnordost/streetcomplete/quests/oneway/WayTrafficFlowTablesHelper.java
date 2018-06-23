@@ -25,5 +25,10 @@ public class WayTrafficFlowTablesHelper implements TablesHelper
 		{
 			db.execSQL(CREATE_WAY_TRAFFIC_FLOW);
 		}
+		// all data was invalidated on version 11
+		if(oldVersion < 11 && newVersion >= 11)
+		{
+			db.delete(WayTrafficFlowTable.NAME, null, null);
+		}
 	}
 }
