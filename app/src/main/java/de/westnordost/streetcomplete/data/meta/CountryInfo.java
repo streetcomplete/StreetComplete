@@ -14,8 +14,7 @@ public class CountryInfo implements Serializable, Cloneable
 	// i.e. US for US-TX.yml
 	String countryCode;
 
-	List<String> speedUnit;
-	List<String> heightUnit;
+	List<String> measurementSystem;
 	List<String> popularSports;
 	List<String> popularReligions;
 	String firstDayOfWorkweek;
@@ -30,14 +29,9 @@ public class CountryInfo implements Serializable, Cloneable
 	Boolean isLeftHandTraffic;
 	Integer mobileCountryCode;
 
-	public List<String> getSpeedUnits()
+	public List<String> getMeasurementSystem()
 	{
-		return speedUnit;
-	}
-
-	public List<String> getHeightUnits()
-	{
-		return heightUnit;
+		return measurementSystem;
 	}
 
 	public List<String> getPopularSports()

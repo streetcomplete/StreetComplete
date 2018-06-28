@@ -11,8 +11,7 @@ import javax.inject.Inject;
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.streetcomplete.R;
-import de.westnordost.streetcomplete.data.osm.Countries;
-import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
+import de.westnordost.streetcomplete.data.osm.AOsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
@@ -21,7 +20,7 @@ import de.westnordost.streetcomplete.data.osm.tql.OverpassQLUtil;
 import de.westnordost.streetcomplete.data.osm.tql.TagFilterExpression;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 
-public class AddMaxHeight implements OsmElementQuestType
+public class AddMaxHeight extends AOsmElementQuestType
 {
 
 	private final OverpassMapDataDao overpassServer;
@@ -106,8 +105,4 @@ public class AddMaxHeight implements OsmElementQuestType
 
 		return R.string.quest_maxheight_title;
 	}
-
-	@Override public int getTitle() { return R.string.quest_maxheight_title; }
-	@Override public int getDefaultDisabledMessage() { return 0; }
-	@NonNull @Override public Countries getEnabledForCountries() { return Countries.ALL; }
 }

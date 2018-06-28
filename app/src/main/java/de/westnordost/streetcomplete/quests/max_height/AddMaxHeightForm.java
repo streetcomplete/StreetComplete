@@ -40,7 +40,7 @@ public class AddMaxHeightForm extends AbstractQuestFormAnswerFragment
 	{
 		View view = super.onCreateView(inflater, container, savedInstanceState);
 
-		String unit = getCountryInfo().getHeightUnits().get(0).equals("m") ? Height.METRIC : Height.IMPERIAL;
+		String unit = getCountryInfo().getMeasurementSystem().get(0).equals("metric") ? Height.METRIC : Height.IMPERIAL;
 		setMaxHeightSignLayout(R.layout.quest_maxheight, unit);
 		addOtherAnswers();
 
@@ -69,18 +69,24 @@ public class AddMaxHeightForm extends AbstractQuestFormAnswerFragment
 		if (unit.equals(Height.METRIC))
 		{
 			meterInputSign.setVisibility(View.VISIBLE);
-			feetInputSign.setVisibility(View.GONE);
+			if (feetInputSign != null)
+			{
+				feetInputSign.setVisibility(View.GONE);
+			}
 		} else {
 			feetInputSign.setVisibility(View.VISIBLE);
-			meterInputSign.setVisibility(View.GONE);
+			if (meterInputSign != null)
+			{
+				meterInputSign.setVisibility(View.GONE);
+			}
 		}
 	}
 
 	private void initHeightUnitSelect()
 	{
-		List<String> heightUnits = getCountryInfo().getHeightUnits();
-		heightUnitSelect.setVisibility(heightUnits.size() == 1 ? View.GONE : View.VISIBLE);
-		heightUnitSelect.setAdapter(new ArrayAdapter<>(getContext(), R.layout.spinner_item_centered, heightUnits));
+		List<String> measurementUnits = getCountryInfo().getMeasurementSystem();
+		heightUnitSelect.setVisibility(measurementUnits.size() == 1 ? View.GONE : View.VISIBLE);
+		heightUnitSelect.setAdapter(new ArrayAdapter<>(getContext(), R.layout.spinner_item_centered, getSpinnerItems(measurementUnits)));
 		heightUnitSelect.setSelection(0);
 
 		heightUnitSelect.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -94,6 +100,23 @@ public class AddMaxHeightForm extends AbstractQuestFormAnswerFragment
 			@Override
 			public void onNothingSelected(AdapterView<?> parentView) {}
 		});
+	}
+
+	private List<String> getSpinnerItems(List<String> units)
+	{
+		List<String> items = new ArrayList<>();
+
+		for (int i = 0; i < units.size(); i++) {
+			String unit = units.get(i);
+			if (unit.equals("metric"))
+			{
+				items.add("m");
+			} else if (unit.equals("imperial"))
+			{
+				items.add("ft");
+			}
+		}
+		return items;
 	}
 
 	private void addOtherAnswers()

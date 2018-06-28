@@ -1,0 +1,32 @@
+# Sources:
+# https://en.wikipedia.org/wiki/Metrication#Overview
+# https://en.wikipedia.org/wiki/Imperial_units#Current_use
+# https://en.wikipedia.org/wiki/Comparison_of_MUTCD-influenced_traffic_signs
+#
+# setting imperial, metric for all those small island states where things may change quickly or gov doesn't act on norms
+default: [metric]
+AG: [imperial, metric] # metric system is introduced but the imperial system remains in common use
+AS: [imperial, metric] # territory of the US
+BS: [imperial, metric] # mainly imperial units used
+BZ: [imperial, metric] # mainly imperial units used
+DM: [imperial, metric] # metric system is introduced but the imperial system remains in common use
+FK: [imperial, metric]
+FM: [imperial, metric] # mainly imperial units used
+GB: [imperial, metric] # changeover to the metric system is in progress
+GD: [metric, imperial] # metric system is introduced but the imperial system remains in common use
+GU: [imperial, metric] # same as Micronesia (FM) because it is part of it
+GY: [metric, imperial] # metric system has been introduced in 1982 but the imperial system is still used sometimes
+KY: [imperial, metric] # mainly imperial units used
+LC: [imperial, metric] # metric system is introduced but the imperial system remains in common use
+LR: [imperial, metric] # imperial units are used officially but some signs are using the metric system
+MH: [imperial, metric] # mainly imperial units used
+MM: [imperial, metric] # Myanmar is converting to the metric system, although very slowly (but with the goal to complete in 2019)
+MP: [imperial, metric] # territory of the US
+PR: [imperial, metric] # territory of the US
+PW: [imperial, metric] # same as Micronesia (FM) because it is part of it
+TC: [imperial, metric] # territory of GB
+US: [imperial]
+VC: [imperial, metric] # mainly imperial units used
+VG: [imperial, metric] # mainly imperial units used
+VI: [imperial, metric] # mainly imperial units used
+WS: [imperial, metric] # Samoa started to convert to the metric system in 2014.
