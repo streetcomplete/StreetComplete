@@ -130,7 +130,7 @@ public class AddRoadNameForm extends AddLocalizedNameForm
 		String highwayValue = getOsmElement().getTags().get("highway");
 		boolean mayBeLink = highwayValue.matches("primary|secondary|tertiary");
 
-		final List<String> answers = new ArrayList<>(3);
+		final List<String> answers = new ArrayList<>(5);
 		if(mayBeLink) answers.add(linkRoad);
 		answers.add(serviceRoad);
 		answers.add(trackRoad);

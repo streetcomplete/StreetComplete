@@ -15,12 +15,13 @@ import java.util.List;
 import java.util.Map;
 
 import de.westnordost.osmapi.map.data.BoundingBox;
+import de.westnordost.osmapi.map.data.LatLon;
+import de.westnordost.osmapi.map.data.OsmLatLon;
 import de.westnordost.streetcomplete.util.StreamUtils;
 
 /** Dao for using this API: https://github.com/ENT8R/oneway-data-api */
 public class TrafficFlowSegmentsDao
 {
-
 	private String apiUrl;
 
 	public TrafficFlowSegmentsDao(String url)
@@ -54,11 +55,17 @@ public class TrafficFlowSegmentsDao
 			{
 				result.put(wayId, new ArrayList<>());
 			}
+			
 			result.get(wayId).add(new TrafficFlowSegment(
-				segment.getLong("fromNodeId"),
-				segment.getLong("toNodeId")
+				parseLatLon(segment.getJSONObject("fromPosition")),
+				parseLatLon(segment.getJSONObject("toPosition"))
 			));
 		}
 		return result;
+	}
+
+	private static LatLon parseLatLon(JSONObject pos) throws JSONException
+	{
+		return new OsmLatLon(pos.getDouble("lat"),pos.getDouble("lon"));
 	}
 }

@@ -20,12 +20,13 @@ import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestTable;
 import de.westnordost.streetcomplete.data.visiblequests.QuestVisibilityTable;
 import de.westnordost.streetcomplete.data.statistics.QuestStatisticsTable;
 import de.westnordost.streetcomplete.data.tiles.DownloadedTilesTable;
+import de.westnordost.streetcomplete.quests.oneway.AddOneway;
 
 @Singleton
 public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 {
 	public static final String DB_NAME = "streetcomplete.db";
-	public static final int DB_VERSION = 10;
+	public static final int DB_VERSION = 11;
 
 	private static final String OSM_QUESTS_CREATE_PARAMS = " (" +
 			OsmQuestTable.Columns.QUEST_ID +		" INTEGER		PRIMARY KEY, " +
@@ -327,6 +328,14 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 			db.execSQL(QUEST_VISIBILITY_TABLE_CREATE);
 		}
 
+		// all oneway quest data was invalidated on version 11
+		if(oldVersion < 11 && newVersion >= 11)
+		{
+			String where = OsmQuestTable.Columns.QUEST_TYPE + " = ?";
+			String[] args = {AddOneway.class.getSimpleName()};
+			db.delete(OsmQuestTable.NAME, where, args);
+			db.delete(OsmQuestTable.NAME_UNDO, where, args);
+		}
 
 		// for later changes to the DB
 		// ...

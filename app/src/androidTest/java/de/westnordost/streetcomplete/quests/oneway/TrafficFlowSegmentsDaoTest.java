@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 import de.westnordost.osmapi.map.data.BoundingBox;
+import de.westnordost.osmapi.map.data.OsmLatLon;
 
 import static de.westnordost.streetcomplete.data.OsmModule.ONEWAY_API_URL;
 import static org.assertj.core.api.Assertions.*;
@@ -27,13 +28,17 @@ public class TrafficFlowSegmentsDaoTest extends TestCase
 	{
 		Map<Long, List<TrafficFlowSegment>> result = TrafficFlowSegmentsDao.parse(
 			"{\"segments\":[" +
-				"{\"wayId\":1,\"fromNodeId\":7,\"toNodeId\":8}," +
-				"{\"wayId\":2,\"fromNodeId\":5,\"toNodeId\":6}," +
-				"]}"
+			"{\"wayId\":1,\"fromPosition\":{\"lon\":1, \"lat\":2},\"toPosition\":{\"lon\":5, \"lat\":6}}," +
+			"{\"wayId\":2,\"fromPosition\":{\"lon\":3, \"lat\":4},\"toPosition\":{\"lon\":7, \"lat\":8}}," +
+			"]}"
 		);
 		Map<Long, List<TrafficFlowSegment>> expected = new HashMap<>();
-		expected.put(1L, Collections.singletonList(new TrafficFlowSegment(7, 8)));
-		expected.put(2L, Collections.singletonList(new TrafficFlowSegment(5, 6)));
+		expected.put(1L, Collections.singletonList(
+			new TrafficFlowSegment(new OsmLatLon(2,1), new OsmLatLon(6,5))
+		));
+		expected.put(2L, Collections.singletonList(new TrafficFlowSegment(
+			new OsmLatLon(4,3), new OsmLatLon(8,7))
+		));
 		assertThat(result).containsAllEntriesOf(expected);
 	}
 
@@ -41,12 +46,15 @@ public class TrafficFlowSegmentsDaoTest extends TestCase
 	{
 		Map<Long, List<TrafficFlowSegment>> result = TrafficFlowSegmentsDao.parse(
 			"{\"segments\":[" +
-			"{\"wayId\":1,\"fromNodeId\":7,\"toNodeId\":8}," +
-			"{\"wayId\":1,\"fromNodeId\":5,\"toNodeId\":6}," +
+			"{\"wayId\":1,\"fromPosition\":{\"lon\":1, \"lat\":2},\"toPosition\":{\"lon\":5, \"lat\":6}}," +
+			"{\"wayId\":1,\"fromPosition\":{\"lon\":3, \"lat\":4},\"toPosition\":{\"lon\":7, \"lat\":8}}," +
 			"]}"
 		);
 		Map<Long, List<TrafficFlowSegment>> expected = new HashMap<>();
-		expected.put(1L, Arrays.asList(new TrafficFlowSegment(7,8), new TrafficFlowSegment(5,6)));
+		expected.put(1L, Arrays.asList(
+			new TrafficFlowSegment(new OsmLatLon(2,1), new OsmLatLon(6,5)),
+			new TrafficFlowSegment(new OsmLatLon(4,3), new OsmLatLon(8,7))
+		));
 		assertThat(result).containsAllEntriesOf(expected);
 	}
 

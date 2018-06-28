@@ -118,30 +118,22 @@ Es ist nicht möglich, die OpenStreetMap anonym zu bearbeiten, das heißt jede �
 
 &lt;b&gt;Standort&lt;/b&gt;&lt;br/&gt;
 &lt;p&gt;
-Dein Standort wird genutzt, um automatisch nach Aufgaben in deiner Nähe zu suchen. Keine Sorge, die App behält deinen Standort für sich.
+Diese App teilt deinen GPS-Standort mit niemandem. Er wird genutzt, um automatisch nach Aufgaben in deiner Nähe zu suchen sowie die Karte um deinen Standort herum anzuzeigen (und herunterzuladen).
 &lt;/p&gt;
 
 &lt;p&gt;&lt;b&gt;Datennutzung&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 Wie schon gesagt, die App kommuniziert direkt mit der OSM-Infrastruktur. Genauer, mit der &lt;a href=\"https://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass-API&lt;/a&gt; zum Herunterladen der Aufgaben (das ist anonym) und direkt mit der &lt;a href=\"https://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM-API&lt;/a&gt; zum Hochladen der Änderungen.&lt;br/&gt;
 Bevor deine Änderungen hochgeladen werden, prüft die App allerdings &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;eine simple Textdatei&lt;/a&gt; auf meinem Server ab, um zu sehen, ob sie für den Upload gesperrt wurde. Das ist eine Vorsichtsmaßnahme, um Versionen dieser App, die möglicherweise kritische Fehler enthalten, davon abzuhalten, OSM-Daten zu korrumpieren.&lt;br/&gt;
-&lt;/p&gt;
-&lt;p&gt;
-Um die Karte darzustellen, werden Kartendaten vom &lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt;Mapzen Vector Tile Service&lt;/a&gt; heruntergeladen. Das ist anonym. Der Service loggt Anfragen auf Kartendaten, einerseits, um zu sehen welche Gebiete genutzt werden, andererseits zum Pre-Caching und anderen Performanceverbesserungen. Die Platform loggt auch IP-Adressen und ihr Hosting ist bei Amazon und unterliegt so auch dem, was Amazon tut.
-&lt;/p&gt;
-&lt;p&gt;
-(&lt;i&gt;Das ist noch nicht implementiert, ich will dich nur informieren was noch kommt!:&lt;/i&gt;) Die Daten, die in der Bestenliste und im Profil angezeigt werden, werden aus öffentlich zugänglichen Informationen auf der OpenStreetMap zusammengetragen. Die Daten kommen nicht aus dieser App, sondern praktisch aus der Commit-History der OSM-Benutzer.
 &lt;/p&gt;"</string>
     <string name="autosync_on">"An"</string>
     <string name="autosync_only_on_wifi">"Nur mit WLAN"</string>
     <string name="autosync_off">"Aus"</string>
     <string name="quest_streetSurface_title">"Welche Oberfläche hat dieser Straßenabschnitt?"</string>
-    <string name="quest_select_hint_most_specific">"Wähle die passendste:"</string>
     <string name="quest_surface_value_paved">"Befestigt (allgemein)"</string>
     <string name="quest_surface_value_unpaved">"Unbefestigt (allgemein)"</string>
     <string name="quest_surface_value_ground">"Naturbelassen (allgemein)"</string>
     <string name="quest_surface_value_asphalt">"Asphalt"</string>
-    <string name="quest_surface_value_cobblestone">"Natursteinpflaster"</string>
     <string name="quest_surface_value_compacted">"Verdichtet"</string>
     <string name="quest_surface_value_concrete">"Beton"</string>
     <string name="quest_surface_value_dirt">"Erdboden"</string>
@@ -165,7 +157,6 @@ Um die Karte darzustellen, werden Kartendaten vom &lt;a href=\"https://mapzen.co
     <string name="quest_maxspeed_answer_noSign">"Es gibt kein Schild"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Wo befindet sich diese Straße?"</string>
     <string name="quest_cyclewaySurface_title">"Welche Oberfläche hat dieser Radweg?"</string>
-    <string name="quest_buildingType_title">"Welche Art Gebäude ist das?"</string>
     <string name="quest_serviceType_title">"Welche Art von Erschließungsweg ist das?"</string>
     <string name="quest_streetLanes_title">"Wie viele Fahrspuren hat diese Straße?"</string>
     <string name="quest_streetLanes_description">"Wenn nichts markiert ist, gibt es nur eine Fahrspur."</string>
@@ -406,7 +397,7 @@ Andernfalls kannst Du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="about_category_feedback">"Feedback"</string>
     <string name="quest_leave_new_note_photo">"Foto anhängen"</string>
     <string name="quest_leave_new_note_photo_delete_title">"Dieses Foto löschen?"</string>
-    <string name="privacy_html_image_upload">"&lt;p&gt;Fotos die an Notizen angehängt werden, werden hochgeladen auf &lt;a href=\"https://framapic.org\"&gt;framapic.org&lt;/a&gt;, ein anonymer Service ohne Tracking.&lt;/p&gt;"</string>
+    <string name="privacy_html_image_upload">"&lt;p&gt;Fotos, die an Notizen angehängt werden, werden auf &lt;a href=\"https://framapic.org\"&gt;framapic.org&lt;/a&gt; hochgeladen, einem anonymen Dienst ohne Tracking.&lt;/p&gt;"</string>
     <string name="quest_cycleway_value_track">"Fahrradweg"</string>
     <string name="quest_cycleway_value_lane">"Radfahrstreifen"</string>
     <string name="quest_cycleway_value_none">"kein"</string>
@@ -453,15 +444,14 @@ Andernfalls kannst Du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="quest_wheelchairAccess_description_toilets">"Ein Symbol wie dieses ist oft zu sehen, wenn es eine spezielle Toilette für Rollstuhlfahrer gibt.
 Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber sie nicht speziell für Rollstuhlfahrer angepasst ist."</string>
     <string name="map_btn_create_note">"Neue Notiz erstellen"</string>
-    <string name="create_new_note_unprecise">"Zoome weiter herein um eine Notiz zu erstellen"</string>
+    <string name="create_new_note_unprecise">"Zoome weiter herein, um eine Notiz zu erstellen"</string>
     <string name="create_new_note_description">"Erstelle hier eine Notiz, um anderen Mappern Bescheid zu geben, dass es hier ein Problem gibt. Die Position der Notiz kann durch Bewegen der Karte angepasst werden:"</string>
     <string name="pref_title_quests_invalidation">"Aufgabencache ungültig machen"</string>
-    <string name="pref_title_quests_invalidation_summary">"Nützlich wenn Du denkst dass einige Aufgaben veraltet sind"</string>
+    <string name="pref_title_quests_invalidation_summary">"Nützlich wenn Du denkst, dass einige Aufgaben veraltet sind"</string>
     <string name="invalidate_confirmation">"Ungültig machen"</string>
     <string name="invalidation_dialog_message">"Wenn der Cache ungültig gemacht wird, werden die Aufgaben das nächste mal wenn sie jeweils heruntergeladen werden aktualisiert. Der Aufgabencache wird automatisch nach einer Woche ungültig gemacht, und sofort, falls sich herausstellt, dass eine Aufgabe die Du beantwortet hast, schon von jemand anderem beantwortet wurde."</string>
     <string name="quest_generic_looks_like_this">"Sieht normalerweise so aus:"</string>
     <string name="quest_surface_value_metal">"Metall"</string>
-    <string name="quest_generic_item_confirmation">"Bist Du sicher dass Du die Oberfläche nicht genauer bestimmen kannst?"</string>
     <string name="quest_cycleway_title2">"Gibt es hier einen Radweg? Was für einen?"</string>
     <string name="quest_bridge_structure_title">"Welche Konstruktionsform hat diese Brücke?"</string>
     <string name="quest_internet_access_name_title">"Was für einen Internetanschluss bietet %s an?"</string>
@@ -490,12 +480,12 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_religion_for_wayside_shrine_title">"Welcher Religion gehört dieser Schrein an?"</string>
     <string name="quest_parking_fee_title">"Fallen hier Parkgebühren an?"</string>
     <string name="quest_cycleway_value_lane_soft">"Radfahrstreifen (gestrichelte Linie)"</string>
-    <string name="quest_surface_value_unhewn_cobblestone">"Steinpflaster aus unbehauenem Stein"</string>
+    <string name="quest_surface_value_unhewn_cobblestone">"Pflaster aus unbehauenem Stein"</string>
     <string name="quest_parking_access_title">"Ist es eingeschränkt, wer hier parken darf?"</string>
     <string name="quest_parking_access_private">"Es ist ein Privatparkplatz"</string>
     <string name="quest_parking_access_yes">"Es ist ein öffentlicher Parkplatz (mit oder ohne Gebühr)"</string>
     <string name="quest_parking_access_customers">"Es ist ein Kundenparkplatz"</string>
-    <string name="quest_streetName_pedestrian_title">"Wie heißt diese Fußgängerzone"</string>
+    <string name="quest_streetName_pedestrian_title">"Wie heißt diese Fußgängerzone?"</string>
     <string name="quest_streetSurface_square_title">"Welche Oberfläche hat dieser Platz?"</string>
     <string name="quest_streetSurface_square_name_title">"Welche Oberfläche hat der Platz %s hier?"</string>
     <string name="quest_fee_answer_hours">"Abhängig von Tag und Uhrzeit"</string>
@@ -522,7 +512,94 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_construction_footway_title">"Ist dieser Fußgängerweg fertig gebaut?"</string>
     <string name="quest_construction_generic_title">"Ist dieser Weg fertig gebaut?"</string>
     <string name="quest_construction_building_title">"Ist dieses Gebäude fertig gebaut?"</string>
-    <string name="questList_disabled_in_country">"Niemals in %s anzeigen"</string>
+    <string name="questList_disabled_in_country">"Niemals in %s gezeigt"</string>
     <string name="quest_toiletAvailability_rest_area_title">"Hat dieser Rastplatz eine Toilette?"</string>
-    <string name="quest_maxspeed_name_title">"Was ist das Geschwindigkeitslimit für %s?"</string>
+    <string name="quest_maxspeed_name_title">"Was ist die Geschwindigkeitsbegrenzung für %s?"</string>
+    <string name="quest_pathSurface_title_steps">"Welche Oberfläche haben diese Stufen?"</string>
+    <string name="quest_pathSurface_title_bridleway">"Welche Oberfläche hat dieser Saumweg?"</string>
+    <string name="quest_pathSurface_title">"Welche Oberfläche hat dieser Weg?"</string>
+    <string name="quest_select_hint_most_specific">"Wähle die zutreffendste Art aus:"</string>
+    <string name="quest_generic_item_confirmation">"Bist du sicher, dass es nicht genauer bestimmt werden kann?"</string>
+    <string name="privacy_html_tileserver">"&lt;p&gt;Um die Karte anzuzeigen
+ werden Vektorkacheln von &lt;a href=\"https://tiles.map-data.de\"&gt;map-data.de&lt;/a&gt; abgerufen. Der Dienst protokolliert Kachelanfragen für anonyme Statistiken und für das Erkennen von Problemen, löscht diese Protokolle jedoch nach einigen Tagen.&lt;/p&gt;"</string>
+    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt; Bei einigen Quests werden einige zusätzliche Daten von Dritten heruntergeladen. Insbesondere fragt der Oneway-Quest eine API an, die ebenfalls auf westnordost.de gehostet wird, nach möglichen Kandidaten für Oneways. &lt;/ P&gt;"</string>
+    <string name="quest_generic_hasFeature_no_leave_note">"Nein (Notiz hinterlassen)"</string>
+    <string name="pref_quests_reset">"Sowohl die Aktivierung als auch die Priorität zurücksetzen?"</string>
+    <string name="quest_buildingType_title2">"Als was wurde dieses Gebäude errichtet?"</string>
+    <string name="quest_generic_item_invalid_value">"Bitte treffe eine genauere Auswahl"</string>
+    <string name="quest_buildingType_answer_multiple_types">"Hat mehrere Bestimmungen"</string>
+    <string name="quest_buildingType_answer_multiple_types_description">"Wähle einfach die Hauptbestimmung des Gebäudes. Wenn sich zum Beispiel im Erdgeschoss Läden befinden, aber darüber Wohnungen sind, ist es trotzdem ein Mehrfamilienhaus."</string>
+    <string name="quest_buildingType_answer_construction_site">"Wird noch errichtet"</string>
+    <string name="quest_buildingType_residential">"Wohngebäude"</string>
+    <string name="quest_buildingType_residential_description">"Gebäude in den Leute wohnen"</string>
+    <string name="quest_buildingType_house">"Haus"</string>
+    <string name="quest_buildingType_house_description">"Einfamilienhaus"</string>
+    <string name="quest_buildingType_apartments_description">"Haus für mehrere Familien, im Erdgeschoss befinden sich gelegentlich Läden"</string>
+    <string name="quest_buildingType_apartments">"Mehrfamilienhaus"</string>
+    <string name="quest_buildingType_detached">"Freistehendes Haus"</string>
+    <string name="quest_buildingType_detached_description">"normalerweise mit Garten rundherum"</string>
+    <string name="quest_buildingType_semi_detached">"Doppelhaus"</string>
+    <string name="quest_buildingType_semi_detached_description">"zwei aneinandergebaute Einfamilienhäuser"</string>
+    <string name="quest_buildingType_terrace">"Reihenhaus"</string>
+    <string name="quest_buildingType_terrace_description">"eine lange Reihe aus gleichen Einfamilienhäusern"</string>
+    <string name="quest_buildingType_hotel">"Hotelgebäude"</string>
+    <string name="quest_buildingType_dormitory">"Wohnheim"</string>
+    <string name="quest_buildingType_houseboat">"Hausboot"</string>
+    <string name="quest_buildingType_bungalow">"Bungalow"</string>
+    <string name="quest_buildingType_bungalow_description">"kleines, freistehendes Haus (Gartenhaus, Ferienhaus)"</string>
+    <string name="quest_buildingType_static_caravan">"Feststehender Wohnwagen"</string>
+    <string name="quest_buildingType_commercial">"Gewerbliches Gebäude"</string>
+    <string name="quest_buildingType_commercial_generic_description">"Gebäude in denen Leute arbeiten, einkaufen oder anderen gewerblichen Aktivitäten nachgehen"</string>
+    <string name="quest_buildingType_industrial">"Industriegebäude"</string>
+    <string name="quest_buildingType_industrial_description">"z.B. eine Fabrik, ein Betrieb, eine Autowerkstatt, …"</string>
+    <string name="quest_buildingType_office">"Bürogebäude"</string>
+    <string name="quest_buildingType_retail">"Laden / Läden"</string>
+    <string name="quest_buildingType_warehouse">"Lagerhaus"</string>
+    <string name="quest_buildingType_kiosk">"Kiosk"</string>
+    <string name="quest_buildingType_storage_tank">"Tank"</string>
+    <string name="quest_buildingType_religious">"Religiöses Gebäude"</string>
+    <string name="quest_buildingType_church">"Kirche"</string>
+    <string name="quest_buildingType_chapel">"Kapelle"</string>
+    <string name="quest_buildingType_cathedral">"Kathedrale"</string>
+    <string name="quest_buildingType_mosque">"Moschee"</string>
+    <string name="quest_buildingType_temple">"Tempel"</string>
+    <string name="quest_buildingType_pagoda">"Pagode"</string>
+    <string name="quest_buildingType_synagogue">"Synagoge"</string>
+    <string name="quest_buildingType_civic">"Öffentliches Gebäude"</string>
+    <string name="quest_buildingType_civic_description">"Gebäude für bürgerliche Einrichtungen"</string>
+    <string name="quest_buildingType_kindergarten">"Gebäude eines Kindergartens"</string>
+    <string name="quest_buildingType_school">"Schulgebäude"</string>
+    <string name="quest_buildingType_college">"Hochschulgebäude"</string>
+    <string name="quest_buildingType_hospital">"Gebäude eines Krankenhauses"</string>
+    <string name="quest_buildingType_stadium">"Stadion"</string>
+    <string name="quest_buildingType_train_station">"Bahnhofsgebäude"</string>
+    <string name="quest_buildingType_transportation">"Gebäude für den öffentlichen Personenverkehr"</string>
+    <string name="quest_buildingType_university">"Universitätsgebäude"</string>
+    <string name="quest_buildingType_government">"Regierungsgebäude"</string>
+    <string name="quest_buildingType_cars">"Für Autos"</string>
+    <string name="quest_buildingType_carport">"Carport"</string>
+    <string name="quest_buildingType_carport_description">"ein überdachter Autostellplatz"</string>
+    <string name="quest_buildingType_garage">"Garage"</string>
+    <string name="quest_buildingType_garages">"Mehrere Garagen"</string>
+    <string name="quest_buildingType_parking">"Parkhaus"</string>
+    <string name="quest_buildingType_farm">"Auf dem Bauernhof"</string>
+    <string name="quest_buildingType_farmhouse">"Bauernhaus"</string>
+    <string name="quest_buildingType_farmhouse_description">"Wohnhaus auf einem Bauernhof"</string>
+    <string name="quest_buildingType_farm_auxiliary">"Wirtschaftsgebäude"</string>
+    <string name="quest_buildingType_farm_auxiliary_description">"jedes Gebäude auf einem Bauernhof, das kein Bauernhaus ist"</string>
+    <string name="quest_buildingType_greenhouse">"Gewächshaus"</string>
+    <string name="quest_buildingType_other">"Andere"</string>
+    <string name="quest_buildingType_shed">"Schuppen"</string>
+    <string name="quest_buildingType_hut">"Hütte"</string>
+    <string name="quest_buildingType_hut_description">"kleine Behausung oder Unterstand"</string>
+    <string name="quest_buildingType_roof">"Dach"</string>
+    <string name="quest_buildingType_service">"Betriebsgebäude"</string>
+    <string name="quest_buildingType_service_description">"Gebäude für Maschinen wie Pumpen oder Transformatoren"</string>
+    <string name="quest_buildingType_hangar">"Hangar"</string>
+    <string name="quest_buildingType_hangar_description">"Garage für Flugzeuge, Helikopter oder Raumfahrzeuge"</string>
+    <string name="quest_buildingType_bunker">"Bunker"</string>
+    <string name="quest_address_answer_no_housenumber">"Hat keine Hausnummer"</string>
+    <string name="quest_address_answer_no_housenumber_message1">"Das Gebäude wurde bestimmt als:"</string>
+    <string name="quest_address_answer_no_housenumber_message2">"Ist das richtig und es ist auch nicht nur Teil eines Gebäudes?"</string>
+    <string name="quest_buildingType_shrine">"Schrein"</string>
 </resources>

@@ -2,7 +2,9 @@ package de.westnordost.streetcomplete.quests.housenumber;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.text.InputType;
 import android.text.method.DigitsKeyListener;
 import android.view.LayoutInflater;
@@ -15,11 +17,15 @@ import android.widget.Toast;
 
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
+import de.westnordost.streetcomplete.quests.building_type.BuildingType;
+import de.westnordost.streetcomplete.view.Item;
+import de.westnordost.streetcomplete.view.ItemViewHolder;
 import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 
 public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 {
 	public static final String
+			NO_ADDRESS = "noaddress",
 			HOUSENUMBER = "housenumber",
 			HOUSENAME = "housename",
 			CONSCRIPTIONNUMBER = "conscriptionnumber",
@@ -61,7 +67,7 @@ public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 		return view;
 	}
 
-	@Override public void onSaveInstanceState(Bundle outState)
+	@Override public void onSaveInstanceState(@NonNull Bundle outState)
 	{
 		super.onSaveInstanceState(outState);
 		outState.putBoolean(IS_HOUSENAME, isHousename);
@@ -78,6 +84,8 @@ public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 
 	private void addOtherAnswers()
 	{
+		addOtherAnswer(R.string.quest_address_answer_no_housenumber, this::onNoHouseNumber);
+
 		addOtherAnswer(R.string.quest_address_answer_house_name, () ->
 		{
 			isHousename = true;
@@ -113,6 +121,35 @@ public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 		{
 			applyHouseNumberAnswer(getInputText(inputHouseNumber));
 		}
+	}
+
+	private void onNoHouseNumber()
+	{
+		String buildingValue = getOsmElement().getTags().get("building");
+		Item item = BuildingType.getByTag("building", buildingValue);
+		if(item != null)
+		{
+			View inner = LayoutInflater.from(getActivity()).inflate(
+				R.layout.dialog_quest_address_no_housenumber, null, false);
+			new ItemViewHolder(inner.findViewById(R.id.item_view)).bind(item);
+
+			new AlertDialogBuilder(getActivity())
+				.setView(inner)
+				.setPositiveButton(R.string.quest_generic_hasFeature_yes, (dialog, which) -> applyNoHouseNumberAnswer())
+				.setNegativeButton(R.string.quest_generic_hasFeature_no_leave_note, (dialog, which) -> onClickCantSay())
+				.show();
+		} else {
+			// fallback in case the type of building is known by Housenumber quest but not by
+			// building type quest
+			onClickCantSay();
+		}
+	}
+
+	private void applyNoHouseNumberAnswer()
+	{
+		Bundle answer = new Bundle();
+		answer.putBoolean(NO_ADDRESS, true);
+		applyImmediateAnswer(answer);
 	}
 
 	private void applyHouseNameAnswer(final String houseName)

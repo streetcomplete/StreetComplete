@@ -35,8 +35,6 @@
     <string name="quest_streetName_answer_noName_confirmation_description">"Kartais gatvės pavadinimas būna tik viename gatvės gale. Taip pat pastebėtina, kad gali nebūti ženklų šalutinėms gatvėms, kurios priklauso didesnei gatvei. Paprastai bet kokia gatvė su namais turi pavadinimą."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Jei pavadinimas gali būti parašytas be sutrumpinimo, tai jis taip ir turi būti parašytas (išskyrus „g.“ gatvei)."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Nėra sutrumpinimo"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_name_title">"Koks yra %s darbo laikas?"</string>
     <string name="quest_openingHours_start_time">"atsidaro"</string>
     <string name="quest_openingHours_end_time">"užsidaro"</string>
@@ -59,8 +57,6 @@
     <string name="confirmation_discard_negative">"Nutraukti"</string>
     <string name="action_download">"Ieškoti užduočių čia"</string>
     <string name="action_upload">"Nusiųsti atsakymus"</string>
-
-    <!-- Fuzzy -->
     <string name="no_changes">"Jūs palikote formą tuščią"</string>
     <string name="close">"uždaryti"</string>
     <string name="download_error">"Klaida ieškant užduočių"</string>
@@ -73,8 +69,6 @@
     <string name="no_location_permission_warning">"Jūsų vietos reikia tam, kad būtų galima ieškoti užduočių šalia jūsų."</string>
     <string name="action_about">"Apie StreetComplete"</string>
     <string name="about_title_version">"Versija"</string>
-
-    <!-- Fuzzy -->
     <string name="about_title_authors">"Autoriai"</string>
     <string name="about_summary_authors">"© 2016–2018 Tobias Zwick ir talkininkai"</string>
     <string name="about_title_repository">"Išeities kodo repozitorija"</string>
@@ -84,13 +78,9 @@
     <string name="about_title_license">"Licencija"</string>
     <string name="about_summary_license">"GNU General Public LIcense"</string>
     <string name="offline">"Jūs atsijungę"</string>
-
-    <!-- Fuzzy -->
     <string name="confirmation_authorize_now">"Jūs turite autorizuoti savo OSM naudotojo paskyrą, kad galėtumėte pateikti savo atsakymus. Autorizuoti dabar?"</string>
     <string name="not_authorized">"Neautorizuota"</string>
-
-    <!-- Fuzzy -->
-    <string name="version_banned_message">"Šiai StreetComplete versijai buvo uždrausta siųsti atsakymus! Prašome atnaujinti versiją!"</string>
+    <string name="version_banned_message">"Ši StreetComplete versija yra per sena. Prašome atnaujinti!"</string>
     <string name="no_gps_no_quests">"Kad automatiškai ieškotumėte užduočių apie jus - įjunkite vietos nustatymą"</string>
     <string name="nothing_more_to_download">"Daugiau nėra užduočių"</string>
     <string name="later">"Vėliau"</string>
@@ -148,12 +138,10 @@ Bet, prieš įkeliant jūsų pakeitimus, aplikacija patikrina &lt;a href=\"https
     <string name="autosync_only_on_wifi">"Tik per Wifi"</string>
     <string name="autosync_off">"Išjungta"</string>
     <string name="quest_streetSurface_title">"Kokia yra šio kelio danga?"</string>
-    <string name="quest_select_hint_most_specific">"Parinkite konkrečiausią iš tinkančių:"</string>
     <string name="quest_surface_value_paved">"Grįsta (bendra)"</string>
     <string name="quest_surface_value_unpaved">"Negrįsta (bendra)"</string>
     <string name="quest_surface_value_ground">"Žemė (bendra)"</string>
     <string name="quest_surface_value_asphalt">"Asfaltas"</string>
-    <string name="quest_surface_value_cobblestone">"Grindinys"</string>
     <string name="quest_surface_value_compacted">"Suspausta"</string>
     <string name="quest_surface_value_concrete">"Betonas"</string>
     <string name="quest_surface_value_dirt">"Purvas"</string>
@@ -167,8 +155,6 @@ Bet, prieš įkeliant jūsų pakeitimus, aplikacija patikrina &lt;a href=\"https
     <string name="quest_surface_value_sett">"Trinkelės"</string>
     <string name="quest_surface_value_wood">"Medis"</string>
     <string name="quest_placeName_title">"Koks yra šios vietos pavadinimas?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sidewalk_title">"Ar ši gatvė turi šaligatvį?"</string>
     <string name="map_orientation_info">"Šiaurė yra žemėlapio viršuje."</string>
     <string name="quest_sidewalk_onlyNorth">"Tik šiaurinėje pusėje"</string>
@@ -179,7 +165,6 @@ Bet, prieš įkeliant jūsų pakeitimus, aplikacija patikrina &lt;a href=\"https
     <string name="quest_maxspeed_answer_noSign">"Nėra ženklo"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Kur yra ši gatvė?"</string>
     <string name="quest_cyclewaySurface_title">"Kokia yra šio dviračių tako danga?"</string>
-    <string name="quest_buildingType_title">"Kokio tipo šis pastatas?"</string>
     <string name="quest_serviceType_title">"Kokio tipo tai privažiavimas?"</string>
     <string name="quest_streetLanes_title">"Kiek juostų turi šis kelias?"</string>
     <string name="quest_streetLanes_description">"Jei nėra horizontalaus žymėjimo, nėra jokių juostų."</string>
@@ -246,23 +231,15 @@ Jūsų įvesta informacija tiesiog įkeliama į OpenStreetMap jūsų vardu, be k
     <string name="quest_manySports_confirmation_specific">"Konkrečiai šioms"</string>
     <string name="quest_manySports_confirmation_generic">"Bendros paskirties"</string>
     <string name="quest_sport_manySports_confirmation_title">"Jūs parinkote kelias sporto šakas"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_busStopShelter_name_title">"Ar autobuso stotelė %s turi stogą?"</string>
     <string name="quest_toiletsFee_title">"Ar šis tualetas yra mokamas?"</string>
     <string name="quest_tactilePaving_title_bus">"Ar ši stotelė turi taktilinę dangą?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"Ar ši perėja turi taktilinę dangą?"</string>
     <string name="quest_source_dialog_title">"Ar tikrai patikrinote vietoje?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_name_bus">"Ar stotelė %s turi taktilinę dangą?"</string>
     <string name="quest_source_dialog_note">"Įvesti reikėtų tik informaciją, gautą patikrinus vietoje."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Ar ši dviračių stovėjimo vieta dengta (apsaugota nuo lietaus)?"</string>
     <string name="dialog_session_dont_show_again">"Daugiau nerodyti šioje sesijoje"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetSurface_name_title">"Kokia yra kelio %s danga šioje vietoje?"</string>
     <string name="quest_maxspeed_title_short">"Koks yra šios gatvės maksimalus leidžiamas greitis?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Šis greičio apribojimas atrodo neįmanomas."</string>
@@ -280,8 +257,6 @@ Jei visoje gatvėje nėra ženklų, kurie galioja pažymėtoje dalyje, taikomas 
     <string name="quest_sport_paddle_tennis">"Paddle Tennis"</string>
     <string name="quest_sport_gaelic_games">"Galų žaidimai"</string>
     <string name="quest_sport_sepak_takraw">"Sepak Takraw"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_name_title">"Ar %s prieinamas vežimėliu?"</string>
     <string name="quest_wheelchairAccess_limited">"Dalinai"</string>
     <string name="quest_bikeParkingCapacity_hint">"Atkreipkite dėmesį, kad daugumą stovų gali būti naudojami parkavimui iš abiejų pusių."</string>
@@ -290,26 +265,14 @@ Jei visoje gatvėje nėra ženklų, kurie galioja pažymėtoje dalyje, taikomas 
     <string name="quest_wheelchairAccess_subway_entrance_title">"Ar šis įdėjimas į metro pritaikytas neįgaliesiems su vežimėliais?"</string>
     <string name="quest_wheelchairAccess_railway_station_title">"Ar ši geležinkelio stotis pritaikyta neįgaliesiems su vežimėliais?"</string>
     <string name="quest_wheelchairAccess_location_title">"Ar ši vieta pritaikyta neįgaliesiems su vežimėliais?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_bus_station_name_title">"Ar autobusų stotis %s pritaikyta neįgaliesiems su vežimėliais?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_subway_entrance_name_title">"Ar įėjimas į metro %s pritaikytas neįgaliesiems su vežimėliais?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_railway_station_name_title">"Ar geležinkelio stotis %s pritaikyta neįgaliesiems su vežimėliais?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_location_name_title">"Ar vieta %s pritaikyta neįgaliesiems su vežimėliais?"</string>
     <string name="quest_wheelchairAccess_limited_description_business">"Dalinai reiškia, kad yra ne daugiau vieno laiptelio patenkant į vietą ir kad dauguma kambarių viduje pasiekiami vežimėlyje."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"Dalinai reiškia, kad yra ne daugiau vieno laiptelio įeinant."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Sutrumpinimas pavadinime %s?"</string>
     <string name="quest_baby_changing_table_toilets_title">"Ar šis tualetas turi sauskelnių keitimo stalą?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_baby_changing_table_title">"Ar %s turi sauskelnių keitimo stalą?"</string>
     <string name="quest_recycling_type_title">"Koks šio atliekų surinkimo įrenginio tipas?"</string>
     <string name="recycling_centre">"Centras"</string>
@@ -388,14 +351,8 @@ Priešingu atveju galite atsisiųsti kitą klaviatūrą programėlių parduotuv�
     <string name="produce_vanilla">"Vanilė"</string>
     <string name="produce_walnuts">"Graikiniai riešutai"</string>
     <string name="produce_sisal">"Sizalis"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_way_lit_title">"Ar ši kelio atkarpa apšviesta?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_way_lit_named_title">"Aš %s čia apšviesta?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_way_lit_road_title">"Ar ši kelio atkarpa apšviesta?"</string>
     <string name="quest_way_lit_automatic">"Naudoja judesio daviklį"</string>
     <string name="quest_way_lit_24_7">"Apšviesta dieną ir naktį"</string>
@@ -481,8 +438,6 @@ Priešingu atveju galite atsisiųsti kitą klaviatūrą programėlių parduotuv�
     <string name="quest_streetName_answer_noProperStreet_track2">"Tai žemdirbystės ar miškininkystės kelias"</string>
     <string name="quest_streetName_answer_noName_noname">"Niekas iš paminėtų, tiesiog neturi pavadinimo"</string>
     <string name="quest_wheelchairAccess_toilets_title">"Ar tualetai prieinami vežimėliu?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_toilets_name_title">"Ar tualetai %s prieinami vežimėliu?"</string>
     <string name="quest_wheelchairAccess_description_toilets">"Neįgaliųjų vežimėlio ženklas panašus į šį gali būti matomas, jei tualetai prieinami.
 Dalinai reiškia, kad vežimėlis gali įvažiuoti ir naudotis tualetu, bet nėra turėklų."</string>
@@ -495,24 +450,17 @@ Dalinai reiškia, kad vežimėlis gali įvažiuoti ir naudotis tualetu, bet nėr
     <string name="invalidation_dialog_message">"Temos išjungimas suveikia kitą kartą jas atsisiunčiant. Temų talpos išjungiamos automatiškai po savaitės ir kai jūsų išspręstą temą jau buvo išsprendęs kažkas kitas."</string>
     <string name="quest_generic_looks_like_this">"Paprastai atrodo taip:"</string>
     <string name="quest_surface_value_metal">"Metalinė"</string>
-    <string name="quest_generic_item_confirmation">"Ar tikrai negalite tiksliau nurodyti paviršiaus?"</string>
     <string name="quest_cycleway_title2">"Ar čia yra dviračių takas? Kokio tipo?"</string>
     <string name="quest_bridge_structure_title">"Kokia yra šio tilto struktūra?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_internet_access_name_title">"Kokį interneto ryšį siūlo %s?"</string>
     <string name="quest_internet_access_wlan">"Wi-Fi"</string>
     <string name="quest_internet_access_wired">"Laidinis (LAN)"</string>
     <string name="quest_internet_access_terminal">"Kompiuteris su interneto prieiga"</string>
     <string name="quest_internet_access_no">"Nėra jungties"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_busStopShelter_tram_name_title">"Ar tramvajaus stotelė %s turi stogelį?"</string>
     <string name="quest_busStopShelter_tram_title">"Ar ši tramvajaus stotelė turi stogelį?"</string>
     <string name="quest_bench_backrest_title">"Ar šis suoliukas turi atlošą?"</string>
     <string name="quest_bench_answer_picnic_table">"Tai pikniko stalas"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_for_place_of_worship_title">"Kokia religija praktikuojama %s?"</string>
     <string name="quest_religion_christian">"Krikščionybė"</string>
     <string name="quest_religion_muslim">"Islamas"</string>
@@ -535,4 +483,121 @@ Dalinai reiškia, kad vežimėlis gali įvažiuoti ir naudotis tualetu, bet nėr
     <string name="quest_parking_access_private">"Privatu"</string>
     <string name="quest_parking_access_yes">"Vieša (su arba be mokesčio)"</string>
     <string name="quest_parking_access_customers">"Tik klientams"</string>
+    <string name="quest_streetName_pedestrian_title">"Koks yra šios pėsčiųjų gatvės pavadinimas?"</string>
+    <string name="quest_streetSurface_square_title">"Koks yra šios aikštės paviršius?"</string>
+    <string name="quest_streetSurface_square_name_title">"Koks yra aikštės „%s“ pavadinimas?"</string>
+    <string name="quest_fee_answer_hours">"Priklauso nuo laiko ir dienos"</string>
+    <string name="quest_fee_add_times">"Pridėti laikus"</string>
+    <string name="quest_fee_only_at_hours">"Taip, bet tik..."</string>
+    <string name="quest_fee_not_at_hours">"Taip, bet ne..."</string>
+    <string name="quest_fee_hours_title">"šiuo laiku:"</string>
+    <string name="quest_busStopName_title">"Koks šios stotelės pavadinimas?"</string>
+    <string name="quest_tramStopName_title">"Koks šios stotelės pavadinimas?"</string>
+    <string name="quest_housenumber_multiple_numbers">"Turi kelis namo numerius"</string>
+    <string name="quest_housenumber_multiple_numbers_description">"Galite tiesiog įvesti kableliais atskirtus namo numerius arba intervalus.
+Pavyzdžiui 1,3 arba 2-6."</string>
+    <string name="quest_bicycle_parking_type_stand">"Stovas (laiko dviračio rėmą)"</string>
+    <string name="quest_bicycle_parking_type_wheelbender">"Rato (laiko tik ratą)"</string>
+    <string name="quest_bicycle_parking_type_shed">"Stoginė"</string>
+    <string name="quest_bicycle_parking_type_locker">"Spintelė"</string>
+    <string name="quest_bicycle_parking_type_building">"Pastatas"</string>
+    <string name="quest_bicycle_parking_type_title">"Kokio tipo ši dviračių stotelė?"</string>
+    <string name="quest_cycleway_value_suggestion_lane">"dviračių siūloma juosta"</string>
+    <string name="quest_postboxCollectionTimes_title">"Kokie yra šios dėžutės laiškų surinkimo laikai?"</string>
+    <string name="quest_collectionTimes_add_times">"Pridėti surinkimo laiką"</string>
+    <string name="quest_collectionTimes_answer_no_times_specified">"Laikai nenurodyti"</string>
+    <string name="quest_construction_road_title">"Ar šio kelio statyba baigta?"</string>
+    <string name="quest_construction_cycleway_title">"Ar šio dviračių tako statyba baigta?"</string>
+    <string name="quest_construction_footway_title">"Ar šio pėsčiųjų tako statyba baigta?"</string>
+    <string name="quest_construction_generic_title">"Ar šio kelio statyba baigta?"</string>
+    <string name="quest_construction_building_title">"Ar šio pastato statyba baigta?"</string>
+    <string name="questList_disabled_in_country">"Niekada nerodoma %s"</string>
+    <string name="quest_toiletAvailability_rest_area_title">"Ar šioje poilsio zonoje yra poilsio kambariai?"</string>
+    <string name="quest_maxspeed_name_title">"Koks yra %s greičio ribojimo ženklas?"</string>
+    <string name="quest_pathSurface_title_steps">"Kokia čia yra šių laiptų danga?"</string>
+    <string name="quest_pathSurface_title_bridleway">"Kokia čia yra šio arklių tako danga?"</string>
+    <string name="quest_pathSurface_title">"Kokia čia yra šio tako danga?"</string>
+    <string name="quest_select_hint_most_specific">"Parinkite tiksliausiai tinkančią:"</string>
+    <string name="quest_generic_item_confirmation">"Ar tikrai negalite tiksliau nustatyti?"</string>
+    <string name="privacy_html_tileserver">"&lt;p&gt;Kad būtų rodomas žemėlapis, vektorinės kaladėlės traukiamos iš &lt;a href=\"https://tiles.map-data.de\"&gt;map-data.de&lt;/a&gt;. Paslauga įrašo užklausas anoniminei statistikai ir problemų aptikimui, bet po kelių dienų tai ištrina.&lt;/p&gt;"</string>
+    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Kai kurioms užduotims, šiek tiek papildomų duomenų atsiunčiama iš trečiųjų šalių. Pavyzdžiui vienpusio eismo užklausų API, taip pat esanti westnordost.de, gauna informaciją apie galimus vienpusius kelius.&lt;/p&gt;"</string>
+    <string name="quest_generic_hasFeature_no_leave_note">"Ne (palikti pastabą)"</string>
+    <string name="pref_quests_reset">"Atstatyti į pradinę būseną užduočių įjungimą ir rikiuotę?"</string>
+    <string name="quest_buildingType_title2">"Kokia buvo pradinė šio pastato paskirtis/forma?"</string>
+    <string name="quest_generic_item_invalid_value">"Prašome parinkti tikslesnę reikšmę."</string>
+    <string name="quest_buildingType_answer_multiple_types">"Turi kelias paskirtis"</string>
+    <string name="quest_buildingType_answer_multiple_types_description">"Paprasčiausiai parinkite pagrindinę pastato paskirtį. Pavyzdžiui jei tai yra parduotuvė pirmame aukšte su butais aukščiau, tai vis tiek yra gyvenamasis pastatas."</string>
+    <string name="quest_buildingType_answer_construction_site">"Jis vis dar statomas"</string>
+    <string name="quest_buildingType_residential">"Gyvenamasis"</string>
+    <string name="quest_buildingType_residential_description">"pastatas, kuriame gyvena žmonės"</string>
+    <string name="quest_buildingType_house">"Namas"</string>
+    <string name="quest_buildingType_house_description">"vienos šeimos namas"</string>
+    <string name="quest_buildingType_apartments_description">"namas kelioms šeimoms, gali turėti prekybos vietas pirmame aukšte"</string>
+    <string name="quest_buildingType_apartments">"Apartamentų pastatas"</string>
+    <string name="quest_buildingType_detached">"Atskirtas namas"</string>
+    <string name="quest_buildingType_detached_description">"atskiras vienos šeimos namas"</string>
+    <string name="quest_buildingType_semi_detached">"Pusiau atskirtas namas"</string>
+    <string name="quest_buildingType_semi_detached_description">"pora vienos šeimos namų"</string>
+    <string name="quest_buildingType_terrace">"Eilės namas"</string>
+    <string name="quest_buildingType_terrace_description">"eilė panašių vienos šeimos namų"</string>
+    <string name="quest_buildingType_hotel">"Viešbučio pastatas"</string>
+    <string name="quest_buildingType_dormitory">"Bendrabutis"</string>
+    <string name="quest_buildingType_houseboat">"Namas ant vandens"</string>
+    <string name="quest_buildingType_bungalow">"Vasarnamis"</string>
+    <string name="quest_buildingType_bungalow_description">"mažas atskiras namas (vasarnamis, atostogų namas, ...)"</string>
+    <string name="quest_buildingType_static_caravan">"Statinis karavanas"</string>
+    <string name="quest_buildingType_commercial">"Komercinis pastatas"</string>
+    <string name="quest_buildingType_commercial_generic_description">"pastatas, kuriame žmonės dirba, prekiauja ar užsiima kita komercine veikla"</string>
+    <string name="quest_buildingType_industrial">"Pramoninis pastatas"</string>
+    <string name="quest_buildingType_industrial_description">"pvz. fabrikas, dirbtuvės, remonto dirbtuvės, ..."</string>
+    <string name="quest_buildingType_office">"Kontorų pastatas"</string>
+    <string name="quest_buildingType_retail">"Parduotuvė(s)"</string>
+    <string name="quest_buildingType_warehouse">"Sandėlys"</string>
+    <string name="quest_buildingType_kiosk">"Kioskas"</string>
+    <string name="quest_buildingType_storage_tank">"Saugykla"</string>
+    <string name="quest_buildingType_religious">"Religinis pastatas"</string>
+    <string name="quest_buildingType_church">"Bažnyčia"</string>
+    <string name="quest_buildingType_chapel">"Koplyčia"</string>
+    <string name="quest_buildingType_cathedral">"Katedra"</string>
+    <string name="quest_buildingType_mosque">"Mečetė"</string>
+    <string name="quest_buildingType_temple">"Šventyklos pastatas"</string>
+    <string name="quest_buildingType_pagoda">"Pagoda"</string>
+    <string name="quest_buildingType_synagogue">"Sinagoga"</string>
+    <string name="quest_buildingType_civic">"Viešas pastatas"</string>
+    <string name="quest_buildingType_civic_description">"viešas pastatas, kuriame paprastai teikiamos paslaugos"</string>
+    <string name="quest_buildingType_kindergarten">"Darželio pastatas"</string>
+    <string name="quest_buildingType_school">"Mokyklos pastatas"</string>
+    <string name="quest_buildingType_college">"Koledžo pastatas"</string>
+    <string name="quest_buildingType_hospital">"Ligoninės pastatas"</string>
+    <string name="quest_buildingType_stadium">"Stadionas"</string>
+    <string name="quest_buildingType_train_station">"Traukinių stotis"</string>
+    <string name="quest_buildingType_transportation">"Viešo transporto pastatas"</string>
+    <string name="quest_buildingType_university">"Universiteto pastatas"</string>
+    <string name="quest_buildingType_government">"Vyriausybės pastatas"</string>
+    <string name="quest_buildingType_cars">"Mašinoms"</string>
+    <string name="quest_buildingType_carport">"Mašinų garažas"</string>
+    <string name="quest_buildingType_carport_description">"stogas mašinai"</string>
+    <string name="quest_buildingType_garage">"Vienas garažas"</string>
+    <string name="quest_buildingType_garages">"Keli garažai"</string>
+    <string name="quest_buildingType_parking">"Stovėjimo aikštelės pastatas"</string>
+    <string name="quest_buildingType_farm">"Fermoje"</string>
+    <string name="quest_buildingType_farmhouse">"Fermos name"</string>
+    <string name="quest_buildingType_farmhouse_description">"gyvenamasis namas fermoje"</string>
+    <string name="quest_buildingType_farm_auxiliary">"Fermos pastatas"</string>
+    <string name="quest_buildingType_farm_auxiliary_description">"bet koks pastatas fermoje, kuris nėra gyvenamasis pastatas"</string>
+    <string name="quest_buildingType_greenhouse">"Šiltnamis"</string>
+    <string name="quest_buildingType_other">"Kita"</string>
+    <string name="quest_buildingType_shed">"Sandėliukas"</string>
+    <string name="quest_buildingType_hut">"Lūšna"</string>
+    <string name="quest_buildingType_hut_description">"mažas, vienas pastatas ar pavėsinė"</string>
+    <string name="quest_buildingType_roof">"Stogas"</string>
+    <string name="quest_buildingType_service">"Aptarnavimo pastatas"</string>
+    <string name="quest_buildingType_service_description">"pastatas su aparatais, tokiais kaip pompomis ar transformatoriais"</string>
+    <string name="quest_buildingType_hangar">"Angaras"</string>
+    <string name="quest_buildingType_hangar_description">"vieta lėktuvams, sraigtasparniams ar orlaiviams"</string>
+    <string name="quest_buildingType_bunker">"Bunkeris"</string>
+    <string name="quest_address_answer_no_housenumber">"Neturi namo numerio"</string>
+    <string name="quest_address_answer_no_housenumber_message1">"Pastatas buvo pažymėtas kaip:"</string>
+    <string name="quest_address_answer_no_housenumber_message2">"Ar tai tiesa ir jis nėra tik pastato dalis?"</string>
+    <string name="quest_buildingType_shrine">"Šventykla"</string>
 </resources>

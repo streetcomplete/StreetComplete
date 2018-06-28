@@ -74,7 +74,7 @@ public abstract class ImageListQuestAnswerFragment extends AbstractQuestFormAnsw
 			showInitialItems(initiallyShow);
 
 			List<Integer> selectedIndices = savedInstanceState.getIntegerArrayList(SELECTED_INDICES);
-			imageSelector.selectIndices(selectedIndices);
+			imageSelector.select(selectedIndices);
 		}
 		else
 		{

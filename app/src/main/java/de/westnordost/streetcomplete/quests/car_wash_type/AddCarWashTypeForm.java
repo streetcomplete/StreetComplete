@@ -39,12 +39,12 @@ public class AddCarWashTypeForm extends ImageListQuestAnswerFragment
 		// service is exclusive with everything else
 		if(index == 2)
 		{
-			imageSelector.deselectIndex(0);
-			imageSelector.deselectIndex(1);
+			imageSelector.deselect(0);
+			imageSelector.deselect(1);
 		}
 		else
 		{
-			imageSelector.deselectIndex(2);
+			imageSelector.deselect(2);
 		}
 	}
 

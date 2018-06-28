@@ -34,11 +34,11 @@ public class AddHousenumber extends AOsmElementQuestType
 		"[~'^addr:(housenumber|housename|conscriptionnumber|streetnumber)$'~'.']";
 
 	private static final String NO_ADDRESS_FILTER =
-		"[!'addr:housenumber'][!'addr:housename'][!'addr:conscriptionnumber'][!'addr:streetnumber']";
+		"[!'addr:housenumber'][!'addr:housename'][!'addr:conscriptionnumber'][!'addr:streetnumber'][!noaddress]";
 
 	private static final String BUILDINGS_WITHOUT_ADDRESS_FILTER =
-		"['building'~'^(house|residential|apartments|detached|terrace|hotel|dormitory|houseboat|" +
-			"school|civic|college|university|public|hospital|kindergarten|train_station|" +
+		"['building'~'^(house|residential|apartments|detached|terrace|dormitory|semi|semidetached_house|farm|" +
+			"school|civic|college|university|public|hospital|kindergarten|train_station|hotel|" +
 			"retail|commercial)$'][location!=underground]" + NO_ADDRESS_FILTER;
 
 	/** Query that returns all areas that are not buildings but have addresses */
@@ -203,12 +203,16 @@ public class AddHousenumber extends AOsmElementQuestType
 
 	@Override public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
 	{
+		boolean noAddress = answer.getBoolean(AddHousenumberForm.NO_ADDRESS);
 		String housenumber = answer.getString(AddHousenumberForm.HOUSENUMBER);
 		String housename = answer.getString(AddHousenumberForm.HOUSENAME);
 		String conscriptionnumber = answer.getString(AddHousenumberForm.CONSCRIPTIONNUMBER);
 		String streetnumber = answer.getString(AddHousenumberForm.STREETNUMBER);
 
-		if(conscriptionnumber != null)
+		if(noAddress) {
+			changes.add("noaddress", "yes");
+		}
+		else if(conscriptionnumber != null)
 		{
 			changes.add("addr:conscriptionnumber", conscriptionnumber);
 			if(!TextUtils.isEmpty(streetnumber)) changes.add("addr:streetnumber", streetnumber);

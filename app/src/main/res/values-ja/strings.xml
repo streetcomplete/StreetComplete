@@ -148,12 +148,10 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="autosync_only_on_wifi">"Wifi 接続時のみ"</string>
     <string name="autosync_off">"オフ"</string>
     <string name="quest_streetSurface_title">"この路面はどんな表面ですか?"</string>
-    <string name="quest_select_hint_most_specific">"最も具体的に適合するものを選択してください:"</string>
     <string name="quest_surface_value_paved">"舗装 (全般)"</string>
     <string name="quest_surface_value_unpaved">"未舗装 (全般)"</string>
     <string name="quest_surface_value_ground">"地面 (全般)"</string>
     <string name="quest_surface_value_asphalt">"アスファルト"</string>
-    <string name="quest_surface_value_cobblestone">"玉石"</string>
     <string name="quest_surface_value_compacted">"整地"</string>
     <string name="quest_surface_value_concrete">"コンクリート"</string>
     <string name="quest_surface_value_dirt">"ダート"</string>
@@ -179,7 +177,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_maxspeed_answer_noSign">"標識なし"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"この通りはどこにありますか?"</string>
     <string name="quest_cyclewaySurface_title">"ここの自転車道はどんな路面ですか?"</string>
-    <string name="quest_buildingType_title">"これはどんな建物ですか?"</string>
     <string name="quest_serviceType_title">"これはどんな側道ですか?"</string>
     <string name="quest_streetLanes_title">"この道路にはいくつの車線がありますか?"</string>
     <string name="quest_streetLanes_description">"道路標示がない場合は、車線がありません。"</string>
@@ -495,7 +492,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="invalidation_dialog_message">"キャッシュを無効にすると、次にダウンロードされる探索が更新されます。 探索キャッシュは1週間後に自動的に無効になります。解決した探索が他の誰かによってすでに回答されていると判明したときにすぐに無効になります。"</string>
     <string name="quest_generic_looks_like_this">"通常はこのように見えます:"</string>
     <string name="quest_surface_value_metal">"金属"</string>
-    <string name="quest_generic_item_confirmation">"表面をさらに具体的に特定できませんか?"</string>
     <string name="quest_cycleway_title2">"ここに自転車道はありますか? どんな種類ですか?"</string>
     <string name="quest_bridge_structure_title">"この橋の構造は何ですか?"</string>
 

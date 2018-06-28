@@ -39,7 +39,9 @@ public class AboutFragment extends PreferenceFragmentCompat
 		{
 			Fragment f = ShowHtmlFragment.create(
 					getResources().getString(R.string.privacy_html) +
-					getResources().getString(R.string.privacy_html_image_upload),
+					getString(R.string.privacy_html_tileserver) +
+					getString(R.string.privacy_html_third_party_quest_sources) +
+					getString(R.string.privacy_html_image_upload),
 					R.string.about_title_privacy_statement);
 			getFragmentActivity().setCurrentFragment(f);
 			return true;
