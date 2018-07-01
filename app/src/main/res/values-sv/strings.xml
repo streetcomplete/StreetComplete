@@ -567,14 +567,14 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_buildingType_title2">"Vad uppfördes den här byggnaden som?"</string>
     <string name="quest_generic_item_invalid_value">"Var god lämna ett mer specifikt svar"</string>
     <string name="quest_buildingType_answer_multiple_types">"Den har flera ändamål"</string>
-    <string name="quest_buildingType_answer_multiple_types_description">"Välj huvudändamålet för den här byggnaden. T.ex om det finns en affär på bottenvåningen med lägenheter ovanför sig är det fortsatt i huvudsak ändå ett flerbostadshus."</string>
+    <string name="quest_buildingType_answer_multiple_types_description">"Välj huvudändamålet för den här byggnaden. T.ex om det finns en affär på bottenvåningen med lägenheter ovanför sig är det fortsatt i huvudsak ändå ett flerfamiljshus."</string>
     <string name="quest_buildingType_answer_construction_site">"Den är fortfarande under konstruktion"</string>
     <string name="quest_buildingType_residential">"Bostad"</string>
     <string name="quest_buildingType_residential_description">"byggnad där människor bor"</string>
     <string name="quest_buildingType_house">"Hus"</string>
     <string name="quest_buildingType_house_description">"enfamiljshus"</string>
     <string name="quest_buildingType_apartments_description">"lägenheter, kan ha affärer på bottenvåningen"</string>
-    <string name="quest_buildingType_apartments">"Flerbostadshus"</string>
+    <string name="quest_buildingType_apartments">"Flerfamiljshus"</string>
     <string name="quest_buildingType_detached">"Villa"</string>
     <string name="quest_buildingType_detached_description">"fristående enfamiljshus"</string>
     <string name="quest_buildingType_semi_detached">"Parhus"</string>
