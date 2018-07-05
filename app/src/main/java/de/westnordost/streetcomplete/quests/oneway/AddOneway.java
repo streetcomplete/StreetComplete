@@ -11,9 +11,11 @@ import java.util.Map;
 
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
+import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.map.data.Way;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.osm.AOsmElementQuestType;
+import de.westnordost.streetcomplete.data.osm.ElementGeometry;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
@@ -61,13 +63,14 @@ public class AddOneway extends AOsmElementQuestType
 		String overpassQuery = "way(id:" + TextUtils.join(",",trafficDirectionMap.keySet()) + "); out meta geom;";
 		overpassMapDataDao.getAndHandleQuota(overpassQuery, (element, geometry) ->
 		{
+			if(geometry == null) return;
 			// filter the data as ImproveOSM data may be outdated or catching too much
 			if(!FILTER.matches(element)) return;
 
 			Way way = (Way) element;
 			List<TrafficFlowSegment> segments = trafficDirectionMap.get(way.getId());
 			if(segments == null) return;
-			Boolean isForward = isForward(way, segments);
+			Boolean isForward = isForward(geometry, segments);
 			// only create quest if direction can be clearly determined and is the same direction
 			// for all segments belonging to one OSM way (because StreetComplete cannot split ways
 			// up)
@@ -80,25 +83,26 @@ public class AddOneway extends AOsmElementQuestType
 		return true;
 	}
 
-	/** @param way the OSM way
+	/** @param geometry the OSM geometry
 	 *  @param trafficFlowSegments list of segments which document a road user flow
 	 *  @return true if all given segments point forward in relation to the direction of the OSM way
 	 *          and false if they all point backward.<br>
 	 *          If the segments point into different directions or their direction cannot be
 	 *          determined. returns null. */
-	@Nullable private static Boolean isForward(@NonNull Way way, @NonNull List<TrafficFlowSegment> trafficFlowSegments)
+	@Nullable private static Boolean isForward(@NonNull ElementGeometry geometry,
+											   @NonNull List<TrafficFlowSegment> trafficFlowSegments)
 	{
 		Boolean result = null;
-		List<Long> nodes = way.getNodeIds();
+		List<LatLon> positions = geometry.polylines.get(0);
 		for (TrafficFlowSegment segment : trafficFlowSegments)
 		{
-			int fromNodeIndex = nodes.indexOf(segment.fromNodeId);
-			int toNodeIndex = nodes.indexOf(segment.toNodeId);
+			int fromPositionIndex = findClosestPositionIndexOf(positions, segment.fromPosition);
+			int toPositionIndex = findClosestPositionIndexOf(positions, segment.toPosition);
 
-			if(fromNodeIndex == -1 || toNodeIndex == -1) return null;
-			if(fromNodeIndex == toNodeIndex) return null;
+			if(fromPositionIndex == -1 || toPositionIndex == -1) return null;
+			if(fromPositionIndex == toPositionIndex) return null;
 
-			boolean forward = fromNodeIndex < toNodeIndex;
+			boolean forward = fromPositionIndex < toPositionIndex;
 			if(result == null)
 			{
 				result = forward;
@@ -108,6 +112,25 @@ public class AddOneway extends AOsmElementQuestType
 				return null;
 			}
 		}
+		return result;
+	}
+
+	private static int findClosestPositionIndexOf(List<LatLon> positions, LatLon latlon)
+	{
+		double shortestDistance = 1;
+		int result = -1, index = 0;
+		for (LatLon pos : positions)
+		{
+			double distance = Math.hypot(
+				pos.getLongitude() - latlon.getLongitude(),
+				pos.getLatitude() - latlon.getLatitude());
+			if(distance < 0.00005 && distance < shortestDistance) {
+				shortestDistance = distance;
+				result = index;
+			}
+			index++;
+		}
+
 		return result;
 	}
 

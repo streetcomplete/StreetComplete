@@ -39,5 +39,4 @@
             android:layout_below="@+id/compassNorth"
             />
     </RelativeLayout>
-
 </RelativeLayout>

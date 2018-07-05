@@ -3,8 +3,6 @@ package de.westnordost.streetcomplete.tangram;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
 import android.graphics.PointF;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -46,6 +44,7 @@ import java.io.File;
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.R;
+import de.westnordost.streetcomplete.util.BitmapUtil;
 import de.westnordost.streetcomplete.util.SphericalEarthMath;
 
 import static android.content.Context.SENSOR_SERVICE;
@@ -211,7 +210,7 @@ public class MapFragment extends Fragment implements
 	private Marker createLocationMarker(int order)
 	{
 		Marker marker = controller.addMarker();
-		BitmapDrawable dot = createBitmapDrawableFrom(R.drawable.location_dot);
+		BitmapDrawable dot = BitmapUtil.createBitmapDrawableFrom(getResources(), R.drawable.location_dot);
 		marker.setStylingFromString("{ style: 'points', color: 'white', size: ["+TextUtils.join(",",sizeInDp(dot))+"], order: 2000, flat: true, collide: false }");
 		marker.setDrawable(dot);
 		marker.setDrawOrder(order);
@@ -220,7 +219,7 @@ public class MapFragment extends Fragment implements
 
 	private Marker createDirectionMarker(int order)
 	{
-		BitmapDrawable directionImg = createBitmapDrawableFrom(R.drawable.location_direction);
+		BitmapDrawable directionImg = BitmapUtil.createBitmapDrawableFrom(getResources(), R.drawable.location_direction);
 		directionMarkerSize = sizeInDp(directionImg);
 
 		Marker marker = controller.addMarker();
@@ -232,7 +231,7 @@ public class MapFragment extends Fragment implements
 	private Marker createAccuracyMarker(int order)
 	{
 		Marker marker = controller.addMarker();
-		marker.setDrawable(createBitmapDrawableFrom(R.drawable.accuracy_circle));
+		marker.setDrawable(BitmapUtil.createBitmapDrawableFrom(getResources(), R.drawable.accuracy_circle));
 		marker.setDrawOrder(order);
 		return marker;
 	}
@@ -245,17 +244,6 @@ public class MapFragment extends Fragment implements
 		return new String[]{
 				drawable.getIntrinsicWidth() / d + "px",
 				drawable.getIntrinsicHeight() / d + "px"};
-	}
-
-	private BitmapDrawable createBitmapDrawableFrom(int resId)
-	{
-		Drawable drawable = getResources().getDrawable(resId);
-		Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(),
-				drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
-		Canvas canvas = new Canvas(bitmap);
-		drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
-		drawable.draw(canvas);
-		return new BitmapDrawable(getResources(), bitmap);
 	}
 
 	private void updateMapTileCacheSize()

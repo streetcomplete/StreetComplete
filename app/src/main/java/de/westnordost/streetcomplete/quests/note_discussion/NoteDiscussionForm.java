@@ -64,7 +64,7 @@ public class NoteDiscussionForm extends AbstractQuestAnswerFragment
 
 		new InlineAsyncTask<Note>()
 		{
-			@Override protected Note doInBackground() throws Exception
+			@Override protected Note doInBackground()
 			{
 				return noteDb.get(getQuestId()).getNote();
 			}
@@ -151,6 +151,7 @@ public class NoteDiscussionForm extends AbstractQuestAnswerFragment
 			case COMMENTED:		return R.string.quest_noteDiscussion_comment;
 			case CLOSED:		return R.string.quest_noteDiscussion_closed;
 			case REOPENED:		return R.string.quest_noteDiscussion_reopen;
+			case HIDDEN:		return R.string.quest_noteDiscussion_hide;
 		}
 		throw new RuntimeException();
 	}

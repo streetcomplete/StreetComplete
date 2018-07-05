@@ -18,13 +18,11 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.streetcomplete.R;
-import de.westnordost.streetcomplete.data.osm.ElementGeometry;
 import de.westnordost.streetcomplete.data.osm.tql.FiltersParser;
 import de.westnordost.streetcomplete.data.osm.tql.TagFilterExpression;
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
-import de.westnordost.streetcomplete.util.SphericalEarthMath;
+import de.westnordost.streetcomplete.quests.StreetSideRotater;
 import de.westnordost.streetcomplete.view.ListAdapter;
 import de.westnordost.streetcomplete.view.StreetSideSelectPuzzle;
 import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
@@ -46,9 +44,8 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 			" (oneway ~ yes|-1 and highway ~ primary|secondary|tertiary or junction=roundabout)");
 
 
-	private StreetSideSelectPuzzle puzzle;
-	private ImageView compassView;
-	private float wayOrientationAtCenter;
+	private StreetSideRotater streetSideRotater;
+	StreetSideSelectPuzzle puzzle;
 
 	private boolean isDefiningBothSides;
 
@@ -59,14 +56,14 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 									   Bundle inState)
 	{
 		View view = super.onCreateView(inflater, container, inState);
-		setContentView(R.layout.quest_cycleway);
+		setContentView(R.layout.quest_street_side_puzzle);
+
+		View compassNeedle = view.findViewById(R.id.compassNeedle);
 
 		puzzle = view.findViewById(R.id.puzzle);
 		puzzle.setListener(this::showCyclewaySelectionDialog);
 
-		compassView = view.findViewById(R.id.compassNeedle);
-
-		wayOrientationAtCenter = getWayOrientationAtCenterLineInDegrees(getElementGeometry());
+		streetSideRotater = new StreetSideRotater(puzzle, compassNeedle, getElementGeometry());
 
 		initPuzzleDisplay(inState);
 		initPuzzleImages(inState);
@@ -139,35 +136,9 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 
 	@AnyThread public void onMapOrientation(final float rotation, final float tilt)
 	{
-		final float rotationInDegrees = (float) (rotation * 180 / Math.PI);
-		getActivity().runOnUiThread(() ->
-		{
-			if(puzzle != null)
-			{
-				puzzle.setStreetRotation(wayOrientationAtCenter + rotationInDegrees);
-			}
-			if(compassView != null)
-			{
-				compassView.setRotation((float) (180*rotation/Math.PI));
-				compassView.setRotationX((float) (180*tilt/Math.PI));
-			}
-		});
-	}
-
-	private static float getWayOrientationAtCenterLineInDegrees(ElementGeometry e)
-	{
-		if(e.polylines == null) return 0;
-
-		List<LatLon> points = e.polylines.get(0);
-		if(points != null && points.size() > 1)
-		{
-			List<LatLon> centerLine = SphericalEarthMath.centerLineOf(points);
-			if(centerLine != null)
-			{
-				return (float) SphericalEarthMath.bearing(centerLine.get(0), centerLine.get(1));
-			}
+		if(streetSideRotater != null) {
+			streetSideRotater.onMapOrientation(rotation, tilt);
 		}
-		return 0;
 	}
 
 	@Override protected void onClickOk()
