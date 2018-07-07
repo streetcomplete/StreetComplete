@@ -33,21 +33,21 @@ public class AddMaxHeightForm extends AbstractQuestFormAnswerFragment
 	private EditText heightInput, feetInput, inchInput;
 	private Spinner heightUnitSelect;
 
-	View meterInputSign, feetInputSign;
+	private View meterInputSign, feetInputSign;
 
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
 									   Bundle savedInstanceState)
 	{
 		View view = super.onCreateView(inflater, container, savedInstanceState);
 
-		String unit = getCountryInfo().getMeasurementSystem().get(0).equals("metric") ? Height.METRIC : Height.IMPERIAL;
+		Height.Unit unit = getCountryInfo().getMeasurementSystem().get(0).equals("metric") ? Height.Unit.METRIC : Height.Unit.IMPERIAL;
 		setMaxHeightSignLayout(R.layout.quest_maxheight, unit);
 		addOtherAnswers();
 
 		return view;
 	}
 
-	private void setMaxHeightSignLayout(int resourceId, String unit)
+	private void setMaxHeightSignLayout(int resourceId, Height.Unit unit)
 	{
 		View contentView = setContentView(getCurrentCountryResources().getLayout(resourceId));
 
@@ -64,22 +64,10 @@ public class AddMaxHeightForm extends AbstractQuestFormAnswerFragment
 		switchLayout(unit);
 	}
 
-	private void switchLayout(String unit)
+	private void switchLayout(Height.Unit unit)
 	{
-		if (unit.equals(Height.METRIC))
-		{
-			meterInputSign.setVisibility(View.VISIBLE);
-			if (feetInputSign != null)
-			{
-				feetInputSign.setVisibility(View.GONE);
-			}
-		} else {
-			feetInputSign.setVisibility(View.VISIBLE);
-			if (meterInputSign != null)
-			{
-				meterInputSign.setVisibility(View.GONE);
-			}
-		}
+		if(meterInputSign != null) meterInputSign.setVisibility(unit.equals(Height.Unit.METRIC) ? View.VISIBLE : View.GONE);
+		if(feetInputSign != null) feetInputSign.setVisibility(unit.equals(Height.Unit.IMPERIAL) ? View.VISIBLE : View.GONE);
 	}
 
 	private void initHeightUnitSelect()
@@ -93,7 +81,7 @@ public class AddMaxHeightForm extends AbstractQuestFormAnswerFragment
 			@Override
 			public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id)
 			{
-				String heightUnit = heightUnitSelect.getSelectedItem().equals("m") ? Height.METRIC : Height.IMPERIAL;
+				Height.Unit heightUnit = heightUnitSelect.getSelectedItem().equals("m") ? Height.Unit.METRIC : Height.Unit.IMPERIAL;
 				switchLayout(heightUnit);
 			}
 
@@ -196,9 +184,9 @@ public class AddMaxHeightForm extends AbstractQuestFormAnswerFragment
 	private boolean userSelectedUnrealisticHeight()
 	{
 		double height = getHeightFromInput().toDouble();
-		String heightUnit = getHeightFromInput().getUnit();
+		Height.Unit heightUnit = getHeightFromInput().getUnit();
 
-		double heightInMeter = heightUnit.equals(Height.METRIC) ? height : feetToMeter(height);
+		double heightInMeter = heightUnit.equals(Height.Unit.METRIC) ? height : feetToMeter(height);
 		return heightInMeter > 6 || heightInMeter < 2;
 	}
 
@@ -228,9 +216,9 @@ public class AddMaxHeightForm extends AbstractQuestFormAnswerFragment
 				if (input.contains("."))
 				{
 					String[] parts = input.split("\\.");
-					return new Height(parts[0], parts[1], Height.METRIC);
+					return new Height(parts[0], parts[1], Height.Unit.METRIC);
 				} else {
-					return new Height(input, "0", Height.METRIC);
+					return new Height(input, "0", Height.Unit.METRIC);
 				}
 			}
 			return new Height();
@@ -239,7 +227,7 @@ public class AddMaxHeightForm extends AbstractQuestFormAnswerFragment
 		{
 			if (!feetInput.getText().toString().isEmpty() && !inchInput.getText().toString().isEmpty())
 			{
-				return new Height(feetInput.getText().toString(), inchInput.getText().toString(), Height.IMPERIAL);
+				return new Height(feetInput.getText().toString(), inchInput.getText().toString(), Height.Unit.IMPERIAL);
 			}
 			return new Height();
 		}

@@ -6,27 +6,28 @@ public class Height
 	private int integerPart;
 	private int fractionalPart;
 
-	private String unit;
+	private Unit unit;
 
-	public final static String
-		METRIC = "metric",
-		IMPERIAL = "imperial";
+	public enum Unit {
+		METRIC,
+		IMPERIAL
+	}
 
 	Height()
 	{
 		this.integerPart = -1;
 		this.fractionalPart = -1;
-		this.unit = METRIC;
+		this.unit = Unit.METRIC;
 	}
 
-	Height(String integerPart, String fractionalPart, String unit)
+	Height(String integerPart, String fractionalPart, Unit unit)
 	{
 		this.integerPart = Integer.parseInt(integerPart);
 		this.fractionalPart = Integer.parseInt(fractionalPart);
 		this.unit = unit;
 	}
 
-	public String getUnit()
+	public Unit getUnit()
 	{
 		return unit;
 	}
@@ -38,7 +39,7 @@ public class Height
 
 	public String toString()
 	{
-		if (unit.equals(METRIC))
+		if (unit.equals(Unit.METRIC))
 		{
 			return String.valueOf(integerPart) + "." + String.valueOf(fractionalPart);
 		}

@@ -2,6 +2,7 @@
 # https://en.wikipedia.org/wiki/Metrication#Overview
 # https://en.wikipedia.org/wiki/Imperial_units#Current_use
 # https://en.wikipedia.org/wiki/Comparison_of_MUTCD-influenced_traffic_signs
+# https://en.wikipedia.org/wiki/Miles_per_hour
 #
 # setting imperial, metric for all those small island states where things may change quickly or gov doesn't act on norms
 default: [metric]
@@ -13,7 +14,7 @@ DM: [imperial, metric] # metric system is introduced but the imperial system rem
 FK: [imperial, metric]
 FM: [imperial, metric] # mainly imperial units used
 GB: [imperial, metric] # changeover to the metric system is in progress
-GD: [metric, imperial] # metric system is introduced but the imperial system remains in common use
+GD: [imperial, metric]
 GU: [imperial, metric] # same as Micronesia (FM) because it is part of it
 GY: [metric, imperial] # metric system has been introduced in 1982 but the imperial system is still used sometimes
 KY: [imperial, metric] # mainly imperial units used
