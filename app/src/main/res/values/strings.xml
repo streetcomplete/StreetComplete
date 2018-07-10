@@ -606,4 +606,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_address_answer_no_housenumber_message1">The building was tagged as:</string>
     <string name="quest_address_answer_no_housenumber_message2">Is this correct and is it not just part of a building?</string>
 
+    <string name="notification_channel_download">"Download"</string>
+
 </resources>
