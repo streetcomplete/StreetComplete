@@ -558,7 +558,7 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_pathSurface_title_steps">"Vilket underlag har den här trappan här?"</string>
     <string name="quest_pathSurface_title_bridleway">"Vilket underlag har den här ridvägen här?"</string>
     <string name="quest_pathSurface_title">"Vilket underlag har den här vägen här?"</string>
-    <string name="quest_select_hint_most_specific">"Välj den mest specifika som passar:"</string>
+    <string name="quest_select_hint_most_specific">"Välj det mest detaljerade svaret som passar:"</string>
     <string name="quest_generic_item_confirmation">"Är du säker på att du inte kan svara mer specifikt?"</string>
     <string name="privacy_html_tileserver">"&lt;p&gt;För att visa kartan hämtas vektorkartor från &lt;a href=\"https://tiles.map-data.de\"&gt;map-data.de&lt;/a&gt;. Tjänsten loggar begäran av kartan för anonym statistik och för att hitta eventuella fel, men tar bort loggarna efter några dagar. &lt;/p&gt;"</string>
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;För några uppdrag kommer tilläggsdata från tredje part att laddas ned. Sökningen efter uppdrag om enkelriktade gator använder ett API på westnordost.de för att hitta kandidater för enkelriktad körning.&lt;/p&gt;"</string>
@@ -643,4 +643,5 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_address_answer_no_housenumber_message1">"Byggnaden är definierad som:"</string>
     <string name="quest_address_answer_no_housenumber_message2">"Är det korrekt och det är inte enbart en del av en byggnad?"</string>
     <string name="quest_buildingType_shrine">"Helgedom"</string>
+    <string name="quest_noteDiscussion_hide">"%1$s gömde anteckningen (%2$s)"</string>
 </resources>

@@ -648,4 +648,5 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_address_answer_no_housenumber_message1">"Eraikina honela etiketatu da:"</string>
     <string name="quest_address_answer_no_housenumber_message2">"Hau zuzena da, hau ez da eraikin baten parte bat?"</string>
     <string name="quest_buildingType_shrine">"Santutegia"</string>
+    <string name="quest_noteDiscussion_hide">"%1$s(e)k oharra ezkutatu du (%2$s)"</string>
 </resources>

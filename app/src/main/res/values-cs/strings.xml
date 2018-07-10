@@ -14,8 +14,8 @@
     <string name="pref_tilecache_size_summary">"%d MB"</string>
     <string name="pref_tilecache_size_message">"Místo v megabytech vyčleněné na externím úložišti sloužící jako mezipaměť pro mapové dlaždice"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Zobrazit všechny poznámky"</string>
-    <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Zobrazit i poznámky neformulované jako otázky"</string>
-    <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Ignorovat poznámky neformulované jako otázky"</string>
+    <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Zobrazují se všechny poznámky z mapy OSM (i takové, které nejsou ve formě úkolu)"</string>
+    <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Poznámky z mapy OSM, které nejsou k dispozici ve formě úkolu, jsou skryté"</string>
     <string name="pref_title_map_cache">"Velikost mezipaměti pro mapu"</string>
     <string name="map_btn_gps_tracking">"Sledovat mě"</string>
     <string name="map_attribution_mapzen">"Powered by %s"</string>
@@ -27,19 +27,19 @@
     <string name="quest_generic_confirmation_no">"Podívám se"</string>
     <string name="quest_generic_error_field_empty">"Toto pole jste nechali prázdné"</string>
     <string name="quest_leave_new_note_title">"Napsat poznámku?"</string>
-    <string name="quest_leave_new_note_description">"Zde můžete nechat veřejnou poznámku, ke které můžou další uživatelé posílat komentáře a doufejme, že i vyřešit:"</string>
+    <string name="quest_leave_new_note_description">"K tomuto úkolu můžete přidat veřejnou poznámku, ke které budou moci další uživatelé posílat komentáře a doufejme, že ji i vyřeší:"</string>
     <string name="quest_leave_new_note_yes">"OK"</string>
 
     <!-- Is this mean somethimg ike "I don't want to write note, just hide quest"? -->
-    <string name="quest_leave_new_note_no">"Ne, jen skrýt"</string>
-    <string name="quest_streetName_title">"Jaké jméno má tato ulice/cesta?"</string>
-    <string name="quest_streetName_description">"tak jak je to napsáno na ceduli se jménem, zkratky se vypisují:"</string>
+    <string name="quest_leave_new_note_no">"Ne, skrýt tento úkol"</string>
+    <string name="quest_streetName_title">"Jak se jmenuje tato ulice?"</string>
+    <string name="quest_streetName_description">"Přesně tak, jak je napsáno na ceduli se jménem, zkratky se vypisují celým slovem:"</string>
     <string name="quest_streetName_answer_noName_confirmation_description">"Cedule se jmény ulic někdy můžou být jen na jednom konci ulice. Pamatujte, že boční ulice, které patří k větší ulici, nemusí mít cedule se jménem. Ulice s domy jsou obvykle pojmenované."</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Pokud jde jméno zapsat bez zkratek, tak by se měly rozepsat. Spousta obvyklých zkratek se během jejich psaní automaticky rozepisuje, ale ne všechny."</string>
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Pokud jde jméno zapsat bez zkratek, tak by se měly rozepsat. Pár obvyklých zkratek se během jejich psaní automaticky rozepisuje, ale ne všechny."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Žádná zkratka"</string>
-    <string name="quest_openingHours_name_title">"Jaké jsou otevírací hodiny %s?"</string>
-    <string name="quest_openingHours_start_time">"čas otevření"</string>
-    <string name="quest_openingHours_end_time">"čas zavření"</string>
+    <string name="quest_openingHours_name_title">"Jaká je otevírací doba %s?"</string>
+    <string name="quest_openingHours_start_time">"Otevírá v"</string>
+    <string name="quest_openingHours_end_time">"Zavírá v"</string>
     <string name="quest_openingHours_add_months">"Přidat měsíce"</string>
     <string name="quest_openingHours_add_hours">"Přidat hodiny"</string>
     <string name="quest_openingHours_add_weekdays">"Přidat dny v týdnu"</string>
@@ -67,8 +67,8 @@
     <string name="upload_error">"Během nahrávání odpovědí došlo k chybě"</string>
     <string name="download_area_too_big">"Přibližte, prosím, více mapu"</string>
     <string name="confirmation_cancel_prev_download_title">"Zrušit aktuální vyhledávání a hledat místo toho zde?"</string>
-    <string name="notification_downloading">"Vyhledávání úkolů…"</string>
-    <string name="now_downloading_toast">"Vyhledávání dalších úkolů…"</string>
+    <string name="notification_downloading">"Vyhledávám úkoly ...."</string>
+    <string name="now_downloading_toast">"Vyhledávám další úkoly .…"</string>
     <string name="turn_on_location_request">"Určování polohy je vypnuté. Chcete přejít na nastavení, abyste ho mohli zapnout?"</string>
     <string name="no_location_permission_warning">"Vaše poloha se používá pro vyhledávání úkolů ve vašem okolí."</string>
     <string name="action_about">"O StreetComplete"</string>
@@ -82,14 +82,14 @@
     <string name="about_title_license">"Licence"</string>
     <string name="about_summary_license">"GNU General Public License"</string>
     <string name="offline">"Nejste připojeni"</string>
-    <string name="confirmation_authorize_now">"Abyste mohli svoje odpovědi posílat přímo (bez schválení), musíte se autorizovat se svým OSM účtem. Chcete se autorizovat nyní?"</string>
+    <string name="confirmation_authorize_now">"Pro odeslání odpovědí je nutné udělit přístup aplikaci StreetComplete k Vašemu účtu na OpenStreetMap. Chcete udělit přístup nyní?"</string>
     <string name="not_authorized">"Neautorizováno"</string>
     <string name="version_banned_message">"Tato verze StreetComplete je příliš stará.  Prosím aktualizujte ji!"</string>
     <string name="no_gps_no_quests">"Pro automatické vyhledávání úkolů ve vašem okolí zapněte určování polohy"</string>
     <string name="nothing_more_to_download">"Nejsou tu žádné další úkoly"</string>
     <string name="later">"Později"</string>
     <string name="quest_streetName_answer_noProperStreet_link">"Jen to spojuje dvě ulice"</string>
-    <string name="quest_streetName_answer_noProperStreet_leaveNote">"Něco jiného (napsat poznámku)"</string>
+    <string name="quest_streetName_answer_noProperStreet_leaveNote">"Něco jiného (Napište do poznámky)"</string>
     <string name="about_title_privacy_statement">"Prohlášení o ochraně soukromí"</string>
     <string name="about_summary_privacy_statement">"a použití dat"</string>
     <string name="quest_openingHours_public_holidays">"Státní svátky"</string>
@@ -99,7 +99,7 @@
 
     <!-- Is this mean "Unknown closing time"? -->
     <string name="quest_openingHours_open_end">"Do odchodu posledního návštěvníka"</string>
-    <string name="quest_openingHours_answer_247">"Otevřeno 24/7"</string>
+    <string name="quest_openingHours_answer_247">"Otevřeno nonstop"</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">"Liší se podle měsíce"</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">"Nepravidelná otevírací doba"</string>
     <string name="quest_openingHours_comment_title">"Popište otevírací dobu"</string>
@@ -173,28 +173,30 @@ Nicméně před nahráním vašich změn aplikace zkontroluje pomocí &lt;a href
 
     <!-- Could someone write an example of use of this line, please? -->
     <string name="quest_streetLanes_north">"vedoucích na sever"</string>
-    <string name="quest_streetLanes_west">"vedoucích na zaápad"</string>
+    <string name="quest_streetLanes_west">"vedoucích na západ"</string>
     <string name="quest_streetLanes_east">"vedoucích na východ"</string>
     <string name="quest_streetLanes_south">"vedoucích na jih"</string>
-    <string name="quest_streetLanes_answer_noLanes">"Není tu označení pruhy"</string>
-    <string name="quest_streetLanes_noLanes_estWidth">"Odhadněte, prosím, kolik aut vedle sebe se může na tuto cestu vejít."</string>
+    <string name="quest_streetLanes_answer_noLanes">"Nejsou tu namalované pruhy"</string>
+    <string name="quest_streetLanes_noLanes_estWidth">"Odhadněte, kolik průběžných jízdních pruhů je na této silnici. (V obou směrech dohromady)"</string>
     <string name="quest_oneway_title">"Je to jednosměrka?"</string>
     <string name="quest_address_title">"Jaké číslo má tato budova?"</string>
-    <string name="store_listing_short_description">"Aplikace pro OpenStreetMap průzkumníky"</string>
-    <string name="store_listing_full_description">"Se StreetComplete můžete pomoci vylepšit OpenStreetMap!
+    <string name="store_listing_short_description">"Aplikace pro OpenStreetMap průzkumníky v češtině"</string>
+    <string name="store_listing_full_description">"Se StreetComplete můžete pomoci vylepšit mapové podklady OpenStreetMap!
 
-Tato aplikace vyhledá data ve vašem okolí, která nejsou kompletní, a která lze rozšířit a zobrazí je na mapě jako „úkoly“. Každý z těchto „úkolů“ lze snadno vyřešit na místě odpovědí na jednoduchou otázku a doplnit tak informace na mapě.
+Tato aplikace vyhledá data ve Vašem okolí, která nejsou kompletní, a která lze rozšířit a zobrazí je na mapě jako „úkoly“. Každý z těchto „úkolů“ lze snadno vyřešit na místě odpovědí na jednoduchou otázku a doplnit tak informace do mapy.
 
-Vámi vložené informace jsou potom vaším jménem přímo přidány do OpenStreetMap, bez toho, abyste museli použít další editor."</string>
-    <string name="quest_name_answer_noName">"Nemá žádné jméno"</string>
-    <string name="quest_name_answer_noName_confirmation_title">"Opravdu nemá jméno?"</string>
-    <string name="quest_name_noName_confirmation_positive">"Opravdu je bez jména"</string>
-    <string name="quest_openingHours_add_times">"Přidat otevírací hodiny"</string>
+Vámi vložené informace jsou potom Vaším jménem přímo přidány do OpenStreetMap bez toho, aniž byste museli použít další editor. ( Pro nahrání Vašich odpovědí na server je nutné mít OpenStreetMap účet )
+
+StreetComplete je plně přeložená do češtiny a je vyvíjena s důrazem na to, aby se jednoduše používala a aby do OSM mohl přispívat opravdu každý."</string>
+    <string name="quest_name_answer_noName">"Nemá žádný název"</string>
+    <string name="quest_name_answer_noName_confirmation_title">"Opravdu nemá název?"</string>
+    <string name="quest_name_noName_confirmation_positive">"Ano, Opravdu je bez názvu"</string>
+    <string name="quest_openingHours_add_times">"Přidat otevírací dobu"</string>
     <string name="crash_message">"Mohli byste, prosím, zaslat vývojáři hlášení o chybě?"</string>
     <string name="crash_title">"Ale ne, aplikace StreetComplete minule spadla!"</string>
     <string name="crash_compose_email">"Napsat email"</string>
     <string name="no_email_client">"Nemáte nainstalovaný poštovní klient."</string>
-    <string name="pref_title_keep_screen_on">"Nevypínat obrazovku"</string>
+    <string name="pref_title_keep_screen_on">"Nezhasínat Displej"</string>
     <string name="download_server_error">"Během vyhledávání úkolů došlo k chybě připojení. Zkuste to znovu později."</string>
     <string name="upload_server_error">"Během nahrávání odpovědí došlo k chybě připojení. Zkuste to znovu později."</string>
     <string name="quest_generic_hasFeature_yes">"Ano"</string>
@@ -237,11 +239,11 @@ Vámi vložené informace jsou potom vaším jménem přímo přidány do OpenSt
     <string name="quest_sport_manySports_confirmation_title">"Vybrali jste více sportů"</string>
     <string name="quest_busStopShelter_name_title">"Má autobusová zastávka %s střechu?"</string>
     <string name="quest_toiletsFee_title">"Musí se na těchto toaletách platit?"</string>
-    <string name="quest_tactilePaving_title_bus">"Má tato autobusová zastávka hmatovou dlažbu?"</string>
+    <string name="quest_tactilePaving_title_bus">"Má tato autobusová zastávka dlažbu pro nevidomé?"</string>
     <string name="quest_tactilePaving_title_crosswalk">"Má tento přechod hmatovou dlažbu na obou stranách?"</string>
-    <string name="quest_source_dialog_title">"Opravdu jste to zkontroloval na místě?"</string>
+    <string name="quest_source_dialog_title">"Opravdu jste to zkontroloval(a) na místě?"</string>
     <string name="quest_tactilePaving_title_name_bus">"Má autobusová zastávka %s hmatovou dlažbu?"</string>
-    <string name="quest_source_dialog_note">"Měly by být přidávány pouze informace zjištěné během průzkumu."</string>
+    <string name="quest_source_dialog_note">"Měly by být přidávány pouze informace zjištěné osobně na místě."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Je toto parkoviště pro kola zakryté (chráněno proti dešti)?"</string>
     <string name="dialog_session_dont_show_again">"V této relaci znovu nezobrazovat"</string>
     <string name="quest_streetSurface_name_title">"Jaký povrch tu má cesta %s?"</string>
@@ -288,10 +290,10 @@ Pokud nejsou podél celé cesty žádné značky, které by omezovaly rychlost v
 
     <!-- Fuzzy -->
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Je v názvu %s zkratka?"</string>
-    <string name="quest_baby_changing_table_toilets_title">"Má tato toaleta stolek na přebalování dětí?"</string>
+    <string name="quest_baby_changing_table_toilets_title">"Má tato toaleta pult na přebalování dětí?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_baby_changing_table_title">"Má %s stolek na přebalování dětí?"</string>
+    <string name="quest_baby_changing_table_title">"Má %s pult na přebalování dětí?"</string>
     <string name="quest_recycling_type_title">"Jaký je toto typ recyklačního zařízení?"</string>
     <string name="recycling_centre">"Středisko"</string>
     <string name="overground_recycling_container">"Kontejner"</string>
@@ -299,10 +301,10 @@ Pokud nejsou podél celé cesty žádné značky, které by omezovaly rychlost v
     <string name="quest_generic_error_a_field_empty">"Nevyplnili jste pole"</string>
     <string name="quest_streetName_menuItem_language_simple">"%1$s - %2$s"</string>
     <string name="quest_streetName_menuItem_language_native">"%1$s - %2$s (%3$s)"</string>
-    <string name="quest_streetName_answer_cantType">"Nemůžu napsat znak na značce"</string>
+    <string name="quest_streetName_answer_cantType">"Nedokáži napsat znak, který je na ceduli"</string>
     <string name="quest_streetName_cantType_title">"Chybí vám na klávesnici znaky?"</string>
     <string name="quest_streetName_cantType_open_settings">"Otevřít nastavení"</string>
-    <string name="quest_streetName_cantType_open_store">"Otevřít obchod"</string>
+    <string name="quest_streetName_cantType_open_store">"Otevřít Google Play obchod"</string>
     <string name="quest_streetName_cantType_description">"Pokud používáte výchozí klávesnici, je možné, že bude stačit v nastavení pouze povolit znakovou sadu jazyka, který potřebujete pro psaní.
 
 Jinak také můžete stáhnout v obchodě s aplikacemi jinou klávesnici.
@@ -320,7 +322,7 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="credits_author_title">"Autor a udržovatel"</string>
     <string name="credits_and_more">"a další…"</string>
     <string name="quest_maxspeed_answer_living_street">"Je to obytná zóna"</string>
-    <string name="quest_maxspeed_answer_living_street_confirmation_title">"Takže tam je taková značka?"</string>
+    <string name="quest_maxspeed_answer_living_street_confirmation_title">"Takže tam je taková značka obytné zóny?"</string>
     <string name="quest_orchard_produce_title">"Co se zde pěstuje?"</string>
     <string name="produce_grapes">"Víno"</string>
     <string name="produce_agaves">"Agáve"</string>
@@ -382,7 +384,7 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_way_lit_automatic">"Používá detektory pohybu"</string>
     <string name="quest_way_lit_24_7">"Je osvětlena nepřetržitě"</string>
     <string name="pref_title_authorized_username_summary">"Autorizovaný účet: %s"</string>
-    <string name="cannot_find_bbox_or_reduce_tilt">"Tady nelze vyhledat zde úkoly. Zkuste ještě přiblížit mapu nebo ji méně naklonit."</string>
+    <string name="cannot_find_bbox_or_reduce_tilt">"Nelze vyhledat úkoly. Zkuste mapu ještě více přiblížit nebo zkuste zmenšit naklonění."</string>
     <string name="quest_crossing_type_title">"Jaký je tento přechod?"</string>
     <string name="quest_crossing_type_signals">"Přechod řízený semaforem"</string>
     <string name="quest_crossing_type_uncontrolled">"Přechod bez semaforu"</string>
@@ -434,11 +436,11 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_cycleway_value_track_dual">"cyklostezka, oba směry"</string>
     <string name="quest_cycleway_value_sidewalk_allowed">"není, ale cyklisté můžou používat chodník"</string>
     <string name="pref_category_advanced">"Pokročilé"</string>
-    <string name="pref_title_quests">"Výběr úkolu"</string>
+    <string name="pref_title_quests">"Podrobný výběr úkolů"</string>
     <string name="quest_enabled">"Povoleno"</string>
     <string name="quest_type">"Druh úkolu"</string>
     <string name="action_reset">"Resetovat"</string>
-    <string name="reorder_quest_priority_hint">"Dlouze stiskněte a přesuňte úkol pro jeho změnu pořadí při stahování a zobrazení na mapě."</string>
+    <string name="reorder_quest_priority_hint">"Dlouhým podržením a přesunutím nahoru/dolů můžete změnit pořadí, v jakém se úkoly budou stahovat a zobrazovat na mapě. Zatržítkem vpravo můžete jednotlivé úkoly povolit nebo zakázat."</string>
     <string name="undo_confirm_positive">"Zpět"</string>
     <string name="undo_confirm_negative">"Zrušit"</string>
     <string name="quest_dietType_vegetarian_name_title">"Má „%s“ na jídelním lístku vegetariánská jídla?"</string>
@@ -452,7 +454,7 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_carWashType_selfService">"Samoobslužná"</string>
     <string name="quest_carWashType_service">"Zaměstnanec myje auta"</string>
     <string name="enable_quest_confirmation_title">"Povolit tento typ úkolů?"</string>
-    <string name="default_disabled_msg_go_inside">"Tento typ úkolů je ve výchozím nastavení zakázán, protože pro získání odpovědi je pravděpodobně nutné navštívit místo úkolu."</string>
+    <string name="default_disabled_msg_go_inside">"Tento typ úkolů je ve výchozím nastavení zakázán, protože pro získání odpovědi bude pravděpodobně nutné vstoupit dovnitř budovy s úkolem."</string>
     <string name="quest_housenumber_conscription_number">"Číslo popisné"</string>
     <string name="quest_housenumber_street_number_optional">"Orientační číslo (volitelné)"</string>
     <string name="quest_housenumber_conscription_number_required">"Číslo popisné musí být určeno"</string>
@@ -485,7 +487,7 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_bridge_structure_title">"Jakou konstrukci má tento most?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_internet_access_name_title">"Jaká druh připojení k internetu nabízí %s?"</string>
+    <string name="quest_internet_access_name_title">"Jaký druh internetového připojení nabízí %s?"</string>
     <string name="quest_internet_access_wlan">"Wi-Fi"</string>
     <string name="quest_internet_access_wired">"Drátové (LAN)"</string>
     <string name="quest_internet_access_terminal">"Počítač s připojením k internetu"</string>
@@ -534,10 +536,12 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_tramStopName_title">"Jaké je jméno této tramvajové zastávky?"</string>
     <string name="quest_housenumber_multiple_numbers">"Má více čísel"</string>
     <string name="quest_housenumber_multiple_numbers_description">"Můžete vložit čárkami oddělená čísla domů, nebo rozsahy. Například 1,3 nebo 2-6."</string>
-    <string name="quest_bicycle_parking_type_stand">"Stojan"</string>
-    <string name="quest_bicycle_parking_type_wheelbender">"Ohýbač kol"</string>
+    <string name="quest_bicycle_parking_type_stand">"Velký stojan"</string>
+
+    <!-- https://wiki.openstreetmap.org/wiki/Key:bicycle_parkingL -->
+    <string name="quest_bicycle_parking_type_wheelbender">"Malý stojánek"</string>
     <string name="quest_bicycle_parking_type_shed">"Přístřešek"</string>
-    <string name="quest_bicycle_parking_type_locker">"Skříňka"</string>
+    <string name="quest_bicycle_parking_type_locker">"Kabinka"</string>
     <string name="quest_bicycle_parking_type_building">"Budova"</string>
     <string name="quest_bicycle_parking_type_title">"Jaký je to druh parkoviště pro kola?"</string>
     <string name="quest_cycleway_value_suggestion_lane">"navržený cyklopruh"</string>
@@ -549,7 +553,7 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_construction_footway_title">"Je stavba tohoto chodníku dokončená?"</string>
     <string name="quest_construction_generic_title">"Je stavba této cesty dokončená?"</string>
     <string name="quest_construction_building_title">"Je stavba této budovy dokončená?"</string>
-    <string name="questList_disabled_in_country">"Nikdy nezobrazovat v %s"</string>
+    <string name="questList_disabled_in_country">"Nezobrazuje se v %s (data jsou načtena z katastru)"</string>
     <string name="quest_toiletAvailability_rest_area_title">"Má tato odpočívka toaletu?"</string>
 
     <!-- May I ask how is this sentence used? -->
@@ -563,7 +567,7 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Pro některé úkoly se stahují i další data ze třetích stran. Např. úkol týkající se jednosměrek se dotazuje rozhraní API, uloženého na westnordost.de, na pravděpodobné kandidáty na jednosměrky.&lt;/p&gt;
 "</string>
     <string name="quest_generic_hasFeature_no_leave_note">"Ne (napsat poznámku)"</string>
-    <string name="pref_quests_reset">"Resetovat povolení úkolů a jejich poradí na výchozí nastavení?"</string>
+    <string name="pref_quests_reset">"Resetovat povolení úkolů a vrátit jejich pořadí na výchozí nastavení?"</string>
     <string name="quest_buildingType_title2">"K jakému účelu byla tato budova postavena?"</string>
     <string name="quest_generic_item_invalid_value">"Vyberte prosím konkrétnější hodnotu."</string>
     <string name="quest_buildingType_answer_multiple_types">"Slouží k několika účelům"</string>
@@ -595,7 +599,7 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_buildingType_retail">"Obchod(y)"</string>
     <string name="quest_buildingType_warehouse">"Sklad"</string>
     <string name="quest_buildingType_kiosk">"Kiosek"</string>
-    <string name="quest_buildingType_storage_tank">"Skladovací tank"</string>
+    <string name="quest_buildingType_storage_tank">"Skladovací nádrž"</string>
     <string name="quest_buildingType_religious">"Náboženská stavba"</string>
     <string name="quest_buildingType_church">"Kostel"</string>
     <string name="quest_buildingType_chapel">"Kaple"</string>
@@ -641,4 +645,5 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_address_answer_no_housenumber_message1">"Budova byla označená jako:"</string>
     <string name="quest_address_answer_no_housenumber_message2">"Je to správně a není to pouze část budovy?"</string>
     <string name="quest_buildingType_shrine">"Svatyně"</string>
+    <string name="quest_noteDiscussion_hide">"%1$s skryl(a) poznámku (%2$s)"</string>
 </resources>

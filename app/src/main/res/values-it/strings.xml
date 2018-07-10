@@ -48,10 +48,10 @@
     <string name="quest_openingHours_24_7_confirmation">"In altre parole, è aperto a qualsiasi ora tutti i giorni?"</string>
     <string name="quest_noteDiscussion_title">"Puoi contribuire a questa nota?"</string>
     <string name="quest_noteDiscussion_no">"No, nascondi"</string>
-    <string name="quest_noteDiscussion_create">"creato da %1$s (%2$s)"</string>
+    <string name="quest_noteDiscussion_create">"creata da %1$s (%2$s)"</string>
     <string name="quest_noteDiscussion_comment">"%1$s (%2$s)"</string>
     <string name="quest_noteDiscussion_closed">"%1$s note chiuse (%2$s)"</string>
-    <string name="quest_noteDiscussion_reopen">"%1$s ha riaperto una nota (%2$s)"</string>
+    <string name="quest_noteDiscussion_reopen">"%1$s ha riaperto la nota (%2$s)"</string>
     <string name="quest_noteDiscussion_anonymous">"Anonimo"</string>
     <string name="quest_noteDiscussion_comments_title">"Risposte"</string>
     <string name="confirmation_discard_title">"Eliminare l'input?"</string>
@@ -137,7 +137,7 @@ Tuttavia, prima di caricare le modifiche, l’app fa una verifica su un &lt;a hr
     <string name="quest_surface_value_asphalt">"Asfalto"</string>
     <string name="quest_surface_value_compacted">"Compatto"</string>
     <string name="quest_surface_value_concrete">"Cementato"</string>
-    <string name="quest_surface_value_dirt">"Sporco"</string>
+    <string name="quest_surface_value_dirt">"Terra"</string>
     <string name="quest_surface_value_fine_gravel">"Ghiaia fine"</string>
     <string name="quest_surface_value_grass">"Erba"</string>
     <string name="quest_surface_value_grass_paver">"Mista erba-cemento"</string>
@@ -398,8 +398,8 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_cycleway_value_bus_lane">"sul percorso dell'autobus"</string>
     <string name="quest_cycleway_value_sidewalk">"esplicitamente condivisa con il marciapiede"</string>
     <string name="quest_leave_new_note_create_image_error">"Impossibile creare un file per la foto"</string>
-    <string name="quest_cycleway_value_lane_dual">"corsia ciclabile, entrambi le direzioni"</string>
-    <string name="quest_cycleway_value_track_dual">"pista ciclabile, entrambi le direzioni"</string>
+    <string name="quest_cycleway_value_lane_dual">"corsia ciclabile, entrambe le direzioni"</string>
+    <string name="quest_cycleway_value_track_dual">"pista ciclabile, entrambe le direzioni"</string>
     <string name="quest_cycleway_value_sidewalk_allowed">"nessuna, ma i ciclisti possono utilizzare il marciapiede"</string>
     <string name="pref_category_advanced">"Avanzate"</string>
     <string name="pref_title_quests">"Seleziona le missioni"</string>
@@ -407,8 +407,10 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_type">"Tipo di ricerca"</string>
     <string name="action_reset">"Reset"</string>
     <string name="reorder_quest_priority_hint">"Premere a lungo e spostare una ricerca per riordinare la sua priorità per il download e visualizzarla sulla mappa."</string>
-    <string name="undo_confirm_positive">"Rifai"</string>
-    <string name="undo_confirm_negative">"Annulla"</string>
+
+    <!-- Ho modificato questa risposta positiva e quella negativa "Cancel" rispettivamente in "Annulla" e "Non annullare" così da essere simili a quelle usate dai traduttori francesi; esse sono le risposte che può dare l’utente alla domanda "Undo the following last answer?" che è stata tradotta in "Annullare quest'ultima riposta?". Vedi la nota in francese alla voce undo_confirm_negative. -->
+    <string name="undo_confirm_positive">"Annulla"</string>
+    <string name="undo_confirm_negative">"Non annullare"</string>
     <string name="quest_dietType_vegetarian_name_title">"%s ha cibo vegetariano nel menu?"</string>
     <string name="quest_dietType_vegan_name_title">"%s offre cibo vegano nel menu?"</string>
     <string name="quest_hasFeature_only">"Soltanto"</string>
@@ -596,4 +598,5 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_address_answer_no_housenumber_message1">"L’edificio era etichettato come:"</string>
     <string name="quest_address_answer_no_housenumber_message2">"È corretto e non si tratta solo di una parte di un edificio?"</string>
     <string name="quest_buildingType_shrine">"Sacello"</string>
+    <string name="quest_noteDiscussion_hide">"%1$s ha nascosto la nota (%2$s)"</string>
 </resources>
