@@ -33,8 +33,8 @@ public class AddBuildingTypeForm extends GroupedImageListQuestAnswerFragment
 				OFFICE, INDUSTRIAL, RETAIL, WAREHOUSE, KIOSK, HOTEL, STORAGE_TANK
 			}),
 			new Item(CIVIC, new Item[]{
-				SCHOOL, UNIVERSITY, HOSPITAL, KINDERGARTEN, TRAIN_STATION, TRANSPORTATION,
-				COLLEGE, GOVERNMENT, STADIUM,
+				SCHOOL, UNIVERSITY, HOSPITAL, KINDERGARTEN, SPORTS_CENTRE, TRAIN_STATION,
+				TRANSPORTATION, COLLEGE, GOVERNMENT, STADIUM,
 			}),
 			new Item(RELIGIOUS, new Item[]{
 				CHURCH, CATHEDRAL, CHAPEL, MOSQUE, TEMPLE, PAGODA, SYNAGOGUE, SHRINE
@@ -46,7 +46,7 @@ public class AddBuildingTypeForm extends GroupedImageListQuestAnswerFragment
 				FARM, FARM_AUXILIARY, GREENHOUSE, STORAGE_TANK
 			}),
 			new Item(null, R.drawable.ic_building_other, R.string.quest_buildingType_other, new Item[]{
-				SHED, ROOF, SERVICE, HUT, HANGAR, BUNKER
+				SHED, ROOF, SERVICE, HUT, TOILETS, HANGAR, BUNKER
 			})
 		};
 	}

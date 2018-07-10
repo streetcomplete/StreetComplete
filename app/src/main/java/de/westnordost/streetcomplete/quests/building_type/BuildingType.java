@@ -35,6 +35,7 @@ public class BuildingType
 		KINDERGARTEN =  new Item("kindergarten", R.drawable.ic_building_kindergarten, R.string.quest_buildingType_kindergarten),
 		SCHOOL =        new Item("school",     R.drawable.ic_building_school,     R.string.quest_buildingType_school),
 		COLLEGE =       new Item("college",    R.drawable.ic_building_college,    R.string.quest_buildingType_college),
+		SPORTS_CENTRE = new Item("sports_centre", R.drawable.ic_sport_volleyball, R.string.quest_buildingType_sports_centre),
 		HOSPITAL =      new Item("hospital",   R.drawable.ic_building_hospital,   R.string.quest_buildingType_hospital),
 		STADIUM =       new Item("stadium",    R.drawable.ic_sport_volleyball,    R.string.quest_buildingType_stadium),
 		TRAIN_STATION = new Item("train_station", R.drawable.ic_building_train_station, R.string.quest_buildingType_train_station),
@@ -63,6 +64,7 @@ public class BuildingType
 
 		SHED =          new Item("shed",       R.drawable.ic_building_shed,       R.string.quest_buildingType_shed),
 		ROOF =          new Item("roof",       R.drawable.ic_building_roof,       R.string.quest_buildingType_roof),
+		TOILETS =       new Item("toilets",    R.drawable.ic_building_toilets,    R.string.quest_buildingType_toilets),
 		SERVICE =       new Item("service",    R.drawable.ic_building_service,    R.string.quest_buildingType_service, R.string.quest_buildingType_service_description),
 		HANGAR =        new Item("hangar",     R.drawable.ic_building_hangar,     R.string.quest_buildingType_hangar, R.string.quest_buildingType_hangar_description),
 		BUNKER =        new Item("bunker",     R.drawable.ic_building_bunker,     R.string.quest_buildingType_bunker);

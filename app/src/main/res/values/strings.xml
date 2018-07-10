@@ -569,6 +569,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingType_school">School building</string>
     <string name="quest_buildingType_college">College building</string>
     <string name="quest_buildingType_hospital">Hospital building</string>
+    <string name="quest_buildingType_sports_centre">Sports centre</string>
     <string name="quest_buildingType_stadium">Stadium</string>
     <string name="quest_buildingType_train_station">Train station</string>
     <string name="quest_buildingType_transportation">Public transportation building</string>
@@ -592,6 +593,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
 
     <string name="quest_buildingType_other">Other</string>
     <string name="quest_buildingType_shed">Shed</string>
+    <string name="quest_buildingType_toilets">Toilets</string>
     <string name="quest_buildingType_hut">Hut</string>
     <string name="quest_buildingType_hut_description">small, simple dwelling or shelter</string>
     <string name="quest_buildingType_roof">Roof</string>
