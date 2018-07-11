@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.data.osm;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import java.util.Map;
 
@@ -18,7 +19,7 @@ public interface OsmElementQuestType extends QuestType
 
 	/** whether a quest of this quest type could be created out of the given element. If the
 	 *  element alone does not suffice to find this out, this should return null */
-	Boolean isApplicableTo(Element element);
+	@Nullable Boolean isApplicableTo(Element element);
 
 	/** @return the commit message to be used for this quest type */
 	String getCommitMessage();
@@ -33,6 +34,12 @@ public interface OsmElementQuestType extends QuestType
 	/** @return title resource for when the element has the specified tags. The tags are unmodifiable */
 	int getTitle(@NonNull Map<String,String> tags);
 
+	// the below could also go up into QuestType interface, but then they should be accounted for
+	// in the respective download/upload classes as well
+
 	/** @return for which countries the quest should be shown */
 	@NonNull Countries getEnabledForCountries();
+
+	/** The quest type can clean it's metadata here, if any */
+	void cleanMetadata();
 }

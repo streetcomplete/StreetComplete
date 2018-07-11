@@ -16,11 +16,11 @@ import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
+import org.xmlpull.v1.XmlPullParser;
+
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -34,7 +34,6 @@ import de.westnordost.streetcomplete.data.QuestTypeRegistry;
 import de.westnordost.streetcomplete.data.meta.CountryInfo;
 import de.westnordost.streetcomplete.data.meta.CountryInfos;
 import de.westnordost.streetcomplete.data.osm.ElementGeometry;
-import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 
 /** Abstract base class for any dialog with which the user answers a specific quest(ion) */
 public abstract class AbstractQuestAnswerFragment extends AbstractBottomSheetFragment
@@ -87,7 +86,7 @@ public abstract class AbstractQuestAnswerFragment extends AbstractBottomSheetFra
 		View view = inflater.inflate(R.layout.fragment_quest_answer, container, false);
 
 		TextView title = view.findViewById(R.id.title);
-		title.setText(getResources().getString(getQuestTitleResId(), getElementName()));
+		title.setText(QuestUtil.getHtmlTitle(getResources(), questType, osmElement));
 
 		buttonPanel = view.findViewById(R.id.buttonPanel);
 		buttonOtherAnswers = buttonPanel.findViewById(R.id.buttonOtherAnswers);
@@ -145,16 +144,12 @@ public abstract class AbstractQuestAnswerFragment extends AbstractBottomSheetFra
 		questAnswerComponent.onAttach((OsmQuestAnswerListener) ctx);
 	}
 
-	private String getElementName()
-	{
-		return osmElement != null && osmElement.getTags() != null ? osmElement.getTags().get("name") : null;
-	}
 
 	protected final void onClickCantSay()
 	{
 		DialogFragment leaveNote = new LeaveNoteDialog();
 		Bundle leaveNoteArgs = questAnswerComponent.getArguments();
-		String questTitle = getEnglishResources().getString(getQuestTitleResId(), getElementName());
+		String questTitle = QuestUtil.getTitle(getEnglishResources(), questType, osmElement);
 		leaveNoteArgs.putString(LeaveNoteDialog.ARG_QUEST_TITLE, questTitle);
 		leaveNote.setArguments(leaveNoteArgs);
 		leaveNote.show(getActivity().getSupportFragmentManager(), null);
@@ -168,6 +163,14 @@ public abstract class AbstractQuestAnswerFragment extends AbstractBottomSheetFra
 		return localizedContext.getResources();
 	}
 
+	protected final Resources getCurrentCountryResources()
+	{
+		Configuration conf = new Configuration(getResources().getConfiguration());
+		Integer mcc = getCountryInfo().getMobileCountryCode();
+		conf.mcc = mcc != null ? mcc : 0;
+		return getContext().createConfigurationContext(conf).getResources();
+	}
+
 	protected final void applyImmediateAnswer(Bundle data)
 	{
 		questAnswerComponent.onAnswerQuest(data);
@@ -178,20 +181,6 @@ public abstract class AbstractQuestAnswerFragment extends AbstractBottomSheetFra
 		questAnswerComponent.onSkippedQuest();
 	}
 
-	protected int getQuestTitleResId()
-	{
-		if(questType instanceof OsmElementQuestType)
-		{
-			Map<String,String> tags = Collections.emptyMap();
-			if(osmElement != null && osmElement.getTags() != null)
-			{
-				tags = osmElement.getTags();
-			}
-			return ((OsmElementQuestType) questType).getTitle(tags);
-		}
-		return questType.getTitle();
-	}
-
 	protected final View setContentView(int resourceId)
 	{
 		if(content.getChildCount() > 0)
@@ -199,6 +188,15 @@ public abstract class AbstractQuestAnswerFragment extends AbstractBottomSheetFra
 			content.removeAllViews();
 		}
 		return getActivity().getLayoutInflater().inflate(resourceId, content);
+	}
+
+	protected final View setContentView(XmlPullParser parser)
+	{
+		if(content.getChildCount() > 0)
+		{
+			content.removeAllViews();
+		}
+		return getActivity().getLayoutInflater().inflate(parser, content);
 	}
 
 	protected final View setButtonsView(int resourceId)

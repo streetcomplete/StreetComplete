@@ -2,6 +2,7 @@
 isAdvisorySpeedLimitKnown: false
 isLivingStreetKnown: true
 isSlowZoneKnown: true
+mobileCountryCode: 260
 officialLanguages: [pl]
 orchardProduces: [apple, strawberry, raspberry, plum, tomatoe, cherry, pear, hazelnut, blueberry, walnut,
   peach, hop, apricot]

@@ -5,7 +5,8 @@
                 android:paddingStart="8dp"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
-                xmlns:tools="http://schemas.android.com/tools">
+                xmlns:tools="http://schemas.android.com/tools"
+                tools:ignore="RtlSymmetry">
 
     <ImageView
         android:id="@+id/imageView"
@@ -15,17 +16,33 @@
         android:layout_centerVertical="true"
         tools:src="@drawable/ic_quest_street"/>
 
-    <TextView
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:layout_toEndOf="@+id/imageView"
         android:layout_toStartOf="@+id/checkboxContainer"
         android:layout_centerVertical="true"
-        tools:text="@string/quest_streetLanes_title"
         android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        android:textAppearance="@android:style/TextAppearance.Theme.Dialog"
-        android:id="@+id/textView"/>
+        android:paddingEnd="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="@string/quest_streetLanes_title"
+            android:textAppearance="@android:style/TextAppearance.Theme.Dialog"
+            android:id="@+id/textView"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:textStyle="italic"
+            tools:text="@string/questList_disabled_in_country"
+            android:background="@drawable/background_quest_disabled_notice"
+            android:id="@+id/textCountryDisabled"/>
+
+    </LinearLayout>
 
     <FrameLayout
         android:id="@+id/checkboxContainer"

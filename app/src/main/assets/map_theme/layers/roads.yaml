@@ -9,6 +9,12 @@ layers:
                 join: round
                 width: [[10, 0.5px], [12, 1.0px], [13, 2px], [18, 3m]]
 
+        tram:
+            filter: { kind_detail: tram }
+            draw:
+                lines-railway-style:
+                    order: function() { return feature.sort_rank+100; }
+
     roads:
         data: { source: mapzen}
         filter:
@@ -49,6 +55,13 @@ layers:
                 lines:
                     width: [[11, 0.5px], [12, 0.75px], [13, 1.0px], [14, 1.2px], [15, 2.5px], [16, 8m]]
 
+        tunnel:
+            filter: { is_tunnel: true }
+            draw:
+                lines:
+                    color: global.tunnel_color
+                    cap: round
+
         service_road:
             filter: { kind: minor_road, kind_detail: service }
             draw:
@@ -66,7 +79,10 @@ layers:
             filter: { kind_detail: steps }
             draw:
                 step_dashes:
+                    order: function() { return feature.sort_rank+1; }
                     cap: butt
+                    color: global.path_color
+                    width: [[14, 0.5px], [15, 1px], [19, 2m]]
 
         road-outline:
             filter: { $zoom: { min: 15 }, not: { kind: [path, portage_way] } }
@@ -76,6 +92,13 @@ layers:
                         color: global.road_outline_color
                         width: function () { return 1/4 * Math.log($zoom); }
                         order: 200
+            bridges:
+                filter: { is_bridge: true }
+                draw:
+                    lines:
+                        outline:
+                            cap: butt
+                            order: 400
 
         path-outline:
             filter: { $zoom: { min: 17 }, kind: [path, portage_way] }

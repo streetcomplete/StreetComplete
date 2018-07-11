@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.opening_hours;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
 import java.util.Map;
@@ -41,6 +42,10 @@ public class AddOpeningHours extends SimpleOverpassQuestType
 				"museum"
 		};
 
+		String[] offices = {
+			"insurance"
+		};
+
 		return " nodes, ways, relations with ( shop and shop !~ no|vacant or" +
 				" amenity ~ " + TextUtils.join("|", amenities) + " or" +
 				" amenity = bicycle_parking and bicycle_parking = building or" +
@@ -48,8 +53,10 @@ public class AddOpeningHours extends SimpleOverpassQuestType
 				" amenity = recycling and recycling_type = centre or" +
 				" tourism ~ " + TextUtils.join("|", tourism) + " or" +
 				" tourism = information and information = office or" +
-				" leisure ~ " + TextUtils.join("|",leisures) + ")" +
-				" and !opening_hours and name";
+				" leisure ~ " + TextUtils.join("|",leisures) + " or" +
+				" office ~ " + TextUtils.join("|",offices) + ")" +
+				" and !opening_hours and name" +
+				" and (access !~ private|no)"; // exclude ones without access to general public
 	}
 
 	@Override public AbstractQuestAnswerFragment createForm()
@@ -68,7 +75,7 @@ public class AddOpeningHours extends SimpleOverpassQuestType
 
 	@Override public String getCommitMessage() { return "Add opening hours"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_opening_hours; }
-	@Override public int getTitle(Map<String, String> tags)
+	@Override public int getTitle(@NonNull Map<String, String> tags)
 	{
 		return R.string.quest_openingHours_name_title;
 	}

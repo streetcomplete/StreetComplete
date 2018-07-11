@@ -35,7 +35,7 @@
         <item name="android:shadowRadius">0</item>
     </style>
 
-    <style name="OpeningHoursField">
+    <style name="TimesField">
         <item name="android:focusable">true</item>
         <item name="android:clickable">true</item>
         <item name="android:background">?android:attr/selectableItemBackground</item>
@@ -89,6 +89,16 @@
         <item name="android:textStyle">normal</item>
         <item name="android:textAlignment">center</item>
         <item name="android:gravity">center_horizontal</item>
+    </style>
+
+    <style name="ImageSelectTitle">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="ImageSelectDescription">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">normal</item>
     </style>
 
     <style name="TableHeaderCell">

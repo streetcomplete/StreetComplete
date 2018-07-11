@@ -54,7 +54,7 @@ public class OverpassMapDataDao
 				@Override public void write(OutputStream out) throws IOException
 				{
 					String request = "data=" + urlEncode(query);
-					out.write(request.getBytes());
+					out.write(request.getBytes("UTF-8"));
 				}
 			};
 			osm.makeRequest("interpreter", "POST", false, writer, parser);
@@ -89,11 +89,11 @@ public class OverpassMapDataDao
 			if(status.availableSlots == 0)
 			{
 				// rather wait 1s longer than required cause we only get the time in seconds
-				int wait = (1 + status.nextAvailableSlotIn) * 1000;
-				Log.i(TAG, "Hit Overpass quota. Waiting " + wait + "ms before continuing");
+				int waitInSeconds = (1 + status.nextAvailableSlotIn);
+				Log.i(TAG, "Hit Overpass quota. Waiting " + waitInSeconds + "s before continuing");
 				try
 				{
-					Thread.sleep(wait);
+					Thread.sleep(waitInSeconds * 1000);
 				}
 				catch (InterruptedException ie)
 				{

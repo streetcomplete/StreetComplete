@@ -50,7 +50,7 @@ public class TagFilterExpression
 		StringBuilder oql = new StringBuilder();
 		if(bbox != null)
 		{
-			oql.append(OverpassQLUtil.getOverpassBBox(bbox));
+			oql.append(OverpassQLUtil.getGlobalOverpassBBox(bbox));
 		}
 
 		BooleanExpression<OQLExpressionValue> expandedExpression = createExpandedExpression();

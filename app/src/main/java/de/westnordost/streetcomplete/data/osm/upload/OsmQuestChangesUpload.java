@@ -1,11 +1,14 @@
 package de.westnordost.streetcomplete.data.osm.upload;
 
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import javax.inject.Inject;
 
 import de.westnordost.osmapi.changesets.ChangesetsDao;
+import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.streetcomplete.data.changesets.OpenChangesetsDao;
+import de.westnordost.streetcomplete.data.osm.OsmQuest;
 import de.westnordost.streetcomplete.data.osm.OsmQuestUnlocker;
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao;
 import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao;
@@ -25,5 +28,16 @@ public class OsmQuestChangesUpload extends AOsmQuestChangesUpload
 	{
 		super(osmDao, questDB, elementDB, elementGeometryDB, statisticsDB, openChangesetsDB,
 				changesetsDao, downloadedTilesDao, prefs, questUnlocker);
+	}
+
+	@Override protected String getLogTag()
+	{
+		return "OsmQuestUpload";
+	}
+
+	@Override protected boolean questIsApplicableToElement(OsmQuest quest, Element element)
+	{
+		Boolean questIsApplicableToElement = quest.getOsmElementQuestType().isApplicableTo(element);
+		return questIsApplicableToElement == null || questIsApplicableToElement;
 	}
 }

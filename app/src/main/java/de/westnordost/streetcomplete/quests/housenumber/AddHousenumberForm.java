@@ -2,7 +2,9 @@ package de.westnordost.streetcomplete.quests.housenumber;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.text.InputType;
 import android.text.method.DigitsKeyListener;
 import android.view.LayoutInflater;
@@ -15,11 +17,15 @@ import android.widget.Toast;
 
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
+import de.westnordost.streetcomplete.quests.building_type.BuildingType;
+import de.westnordost.streetcomplete.view.Item;
+import de.westnordost.streetcomplete.view.ItemViewHolder;
 import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 
 public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 {
 	public static final String
+			NO_ADDRESS = "noaddress",
 			HOUSENUMBER = "housenumber",
 			HOUSENAME = "housename",
 			CONSCRIPTIONNUMBER = "conscriptionnumber",
@@ -56,16 +62,12 @@ public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 			setLayout(R.layout.quest_housenumber);
 		}
 
-		addOtherAnswer(R.string.quest_address_answer_house_name, () ->
-		{
-			isHousename = true;
-			setLayout(R.layout.quest_housename);
-		});
+		addOtherAnswers();
 
 		return view;
 	}
 
-	@Override public void onSaveInstanceState(Bundle outState)
+	@Override public void onSaveInstanceState(@NonNull Bundle outState)
 	{
 		super.onSaveInstanceState(outState);
 		outState.putBoolean(IS_HOUSENAME, isHousename);
@@ -78,6 +80,25 @@ public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 		{
 			isHousename = inState.getBoolean(IS_HOUSENAME);
 		}
+	}
+
+	private void addOtherAnswers()
+	{
+		addOtherAnswer(R.string.quest_address_answer_no_housenumber, this::onNoHouseNumber);
+
+		addOtherAnswer(R.string.quest_address_answer_house_name, () ->
+		{
+			isHousename = true;
+			setLayout(R.layout.quest_housename);
+		});
+
+		addOtherAnswer(R.string.quest_housenumber_multiple_numbers, () ->
+		{
+			new AlertDialogBuilder(getActivity())
+				.setMessage(R.string.quest_housenumber_multiple_numbers_description)
+				.setPositiveButton(android.R.string.ok, null)
+				.show();
+		});
 	}
 
 	@Override protected void onClickOk()
@@ -100,6 +121,35 @@ public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 		{
 			applyHouseNumberAnswer(getInputText(inputHouseNumber));
 		}
+	}
+
+	private void onNoHouseNumber()
+	{
+		String buildingValue = getOsmElement().getTags().get("building");
+		Item item = BuildingType.getByTag("building", buildingValue);
+		if(item != null)
+		{
+			View inner = LayoutInflater.from(getActivity()).inflate(
+				R.layout.dialog_quest_address_no_housenumber, null, false);
+			new ItemViewHolder(inner.findViewById(R.id.item_view)).bind(item);
+
+			new AlertDialogBuilder(getActivity())
+				.setView(inner)
+				.setPositiveButton(R.string.quest_generic_hasFeature_yes, (dialog, which) -> applyNoHouseNumberAnswer())
+				.setNegativeButton(R.string.quest_generic_hasFeature_no_leave_note, (dialog, which) -> onClickCantSay())
+				.show();
+		} else {
+			// fallback in case the type of building is known by Housenumber quest but not by
+			// building type quest
+			onClickCantSay();
+		}
+	}
+
+	private void applyNoHouseNumberAnswer()
+	{
+		Bundle answer = new Bundle();
+		answer.putBoolean(NO_ADDRESS, true);
+		applyImmediateAnswer(answer);
 	}
 
 	private void applyHouseNameAnswer(final String houseName)
@@ -183,6 +233,8 @@ public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 				if(focus != null && focus instanceof EditText)
 				{
 					EditText input = (EditText) focus;
+					int start = input.getSelectionStart();
+					int end = input.getSelectionEnd();
 					if ((input.getInputType() & InputType.TYPE_CLASS_NUMBER) != 0)
 					{
 						input.setInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
@@ -193,6 +245,8 @@ public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 						input.setKeyListener(DigitsKeyListener.getInstance("0123456789.,- /"));
 						toggleKeyboardButton.setText("abc");
 					}
+					// for some reason, the cursor position gets lost first time the input type is set (#1093)
+					input.setSelection(start, end);
 
 					InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
 					imm.showSoftInput(input, InputMethodManager.SHOW_IMPLICIT);
@@ -210,7 +264,7 @@ public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 			regexNum = "((" + regexNum + ")|("+additionalRegex+"))";
 		}
 		// i.e. 95-98 etc.
-		return "^" + regexNum + "(-" + regexNum + ")?";
+		return "^" + regexNum + "([,-]" + regexNum + ")?";
 	}
 
 	private String getInputText(EditText editText)

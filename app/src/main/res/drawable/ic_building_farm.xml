@@ -1,0 +1,43 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+        android:width="48dp"
+        android:height="48dp"
+        android:viewportHeight="128"
+        android:viewportWidth="128">
+    <path
+        android:fillColor="#888888"
+        android:pathData="m35.692,26.923 l-8.923,35.692 58,-0 -8.923,-35.692 -8.923,0 4.462,22.308H40.154l4.462,-22.308z"/>
+    <path
+        android:fillColor="#468e2d"
+        android:pathData="M58,76h35.692v17.846h-35.692z"/>
+    <path
+        android:fillColor="#80d53b"
+        android:pathData="m76.683,52.716 l-36.529,23.284 75.846,8.923 4.462,-13.385c0,-22.308 -18.703,-16.731 -43.779,-18.822z"/>
+    <path
+        android:fillColor="#666666"
+        android:pathData="M95.599,92.128m-19.474,0a19.474,19.474 0,1 1,38.948 0a19.474,19.474 0,1 1,-38.948 0"/>
+    <path
+        android:fillColor="#aaaaaa"
+        android:pathData="M95.599,92.128m-9.737,0a9.737,9.737 0,1 1,19.474 0a9.737,9.737 0,1 1,-19.474 0"/>
+    <path
+        android:fillColor="#80d53b"
+        android:pathData="M35.692,18L75.846,18A4.462,4.462 0,0 1,80.308 22.462L80.308,22.462A4.462,4.462 0,0 1,75.846 26.923L35.692,26.923A4.462,4.462 0,0 1,31.231 22.462L31.231,22.462A4.462,4.462 0,0 1,35.692 18z"/>
+    <path
+        android:pathData="m84.769,60.385 l26.769,0"
+        android:strokeColor="#468e2d"
+        android:strokeLineCap="round"
+        android:strokeWidth="3.34615397"/>
+    <path
+        android:fillColor="#468e2d"
+        android:pathData="M9.221,64.455A33.462,33.462 60,0 1,52.555 56.021,33.462 33.462,60 0,1 66.537,97.895L35.692,84.923Z"/>
+    <path
+        android:pathData="M84.769,67.077H111.538"
+        android:strokeColor="#468e2d"
+        android:strokeLineCap="round"
+        android:strokeWidth="3.34615397"/>
+    <path
+        android:fillColor="#666666"
+        android:pathData="M35.692,84.923m-26.769,0a26.769,26.769 0,1 1,53.538 0a26.769,26.769 0,1 1,-53.538 0"/>
+    <path
+        android:fillColor="#aaaaaa"
+        android:pathData="M35.692,84.923m-13.385,0a13.385,13.385 0,1 1,26.769 0a13.385,13.385 0,1 1,-26.769 0"/>
+</vector>

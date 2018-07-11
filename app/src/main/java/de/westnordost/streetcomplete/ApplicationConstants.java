@@ -28,9 +28,11 @@ public class ApplicationConstants
 	 *  before the time expired */
 	public static final int REFRESH_QUESTS_AFTER = 7*24*60*60*1000; // one week in ms
 
-	public static final String LUTIM_INSTANCE = "https://lut.im/"; // must have trailing /
+	public static final String LUTIM_INSTANCE = "https://framapic.org/"; // must have trailing /
 	public static final Integer LUTIM_DELETE_AFTER_DAYS = 365 / 2; // half a year
 
 	public static final int ATTACH_PHOTO_QUALITY = 60;
 	public static final int ATTACH_PHOTO_MAXWIDTH = 1280; // WXGA
+
+	public static final String NOTIFICATIONS_CHANNEL_DOWNLOAD = "downloading";
 }

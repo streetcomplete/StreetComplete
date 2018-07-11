@@ -25,12 +25,13 @@
             android:layout_alignParentTop="true"
             android:text="@string/compass_north_one_letter"/>
 
-        <de.westnordost.streetcomplete.view.CompassView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="-2dp"
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:id="@+id/compassNeedle"
+            android:src="@drawable/ic_compass_needle_black_24dp"
+            android:tint="#cc3333"
             android:layout_below="@+id/compassNorth"
             />
 

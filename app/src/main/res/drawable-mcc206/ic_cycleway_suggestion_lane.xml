@@ -1,0 +1,13 @@
+<!-- Belgium BE -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+        android:width="256dp"
+        android:height="256dp"
+        android:viewportWidth="256.0"
+        android:viewportHeight="256.0">
+    <path
+        android:pathData="M0,0h208v256h-208z"
+        android:fillColor="#808080"/>
+    <path
+        android:pathData="M144,0h64v256h-64z"
+        android:fillColor="#d88"/>
+</vector>

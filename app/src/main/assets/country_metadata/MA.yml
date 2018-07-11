@@ -1,6 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [fr, es]
 firstDayOfWorkweek: Su
+mobileCountryCode: 604
 officialLanguages: [ar, ber]
 orchardProduces: [olive, almond, date, fig, orange, grape, apple, tomatoe, plum, apricot, banana, walnut,
   peach, sisal, strawberry]

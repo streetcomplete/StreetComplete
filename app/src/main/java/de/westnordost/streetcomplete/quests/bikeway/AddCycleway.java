@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.bikeway;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
 
 import java.util.Map;
@@ -12,15 +13,18 @@ import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.meta.OsmTaggings;
+import de.westnordost.streetcomplete.data.osm.AOsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.Countries;
-import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
 import de.westnordost.streetcomplete.data.osm.tql.OverpassQLUtil;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 
-public class AddCycleway implements OsmElementQuestType
+import static de.westnordost.streetcomplete.quests.bikeway.Cycleway.EXCLUSIVE_LANE;
+import static de.westnordost.streetcomplete.quests.bikeway.Cycleway.ADVISORY_LANE;
+
+public class AddCycleway extends AOsmElementQuestType
 {
 	private final OverpassMapDataDao overpassServer;
 
@@ -107,12 +111,16 @@ public class AddCycleway implements OsmElementQuestType
 			case NONE_NO_ONEWAY:
 				changes.add(cyclewayKey, "no");
 				break;
-			case LANE:
+			case EXCLUSIVE_LANE:
+			case ADVISORY_LANE:
+			case LANE_UNSPECIFIED:
 				changes.add(cyclewayKey, "lane");
 				if(directionValue != null)
 				{
 					changes.addOrModify(cyclewayKey + ":oneway", directionValue);
 				}
+				if(cycleway == EXCLUSIVE_LANE)  changes.addOrModify(cyclewayKey + ":lane", "exclusive");
+				else if(cycleway == ADVISORY_LANE) changes.addOrModify(cyclewayKey + ":lane", "advisory");
 				break;
 			case TRACK:
 				changes.add(cyclewayKey, "track");
@@ -121,15 +129,16 @@ public class AddCycleway implements OsmElementQuestType
 					changes.addOrModify(cyclewayKey + ":oneway", directionValue);
 				}
 				break;
-			case TRACK_DUAL:
+			case DUAL_TRACK:
 				changes.add(cyclewayKey, "track");
 				changes.addOrModify(cyclewayKey + ":oneway", "no");
 				break;
-			case LANE_DUAL:
+			case DUAL_LANE:
 				changes.add(cyclewayKey, "lane");
 				changes.addOrModify(cyclewayKey + ":oneway", "no");
+				changes.addOrModify(cyclewayKey + ":lane", "exclusive");
 				break;
-			case SIDEWALK:
+			case SIDEWALK_EXPLICIT:
 				// https://wiki.openstreetmap.org/wiki/File:Z240GemeinsamerGehundRadweg.jpeg
 				changes.add(cyclewayKey, "track");
 				changes.add(cyclewayKey + ":segregated", "no");
@@ -139,8 +148,13 @@ public class AddCycleway implements OsmElementQuestType
 				changes.add(cyclewayKey, "no");
 				changes.add("sidewalk:" + side.value + ":bicycle", "yes");
 				break;
-			case SHARED:
+			case PICTOGRAMS:
 				changes.add(cyclewayKey, "shared_lane");
+				changes.add(cyclewayKey + ":lane", "pictogram");
+				break;
+			case SUGGESTION_LANE:
+				changes.add(cyclewayKey, "shared_lane");
+				changes.add(cyclewayKey + ":lane", "advisory");
 				break;
 			case BUSWAY:
 				changes.add(cyclewayKey, "share_busway");
@@ -148,7 +162,7 @@ public class AddCycleway implements OsmElementQuestType
 		}
 	}
 
-	@Override public Boolean isApplicableTo(Element element)
+	@Nullable @Override public Boolean isApplicableTo(Element element)
 	{
 		/* Whether this element applies to this quest cannot be determined by looking at that
 		   element alone (see download()), an Overpass query would need to be made to find this out.
@@ -171,18 +185,24 @@ public class AddCycleway implements OsmElementQuestType
 	private static String getOverpassQuery(BoundingBox bbox)
 	{
 		int d = MIN_DIST_TO_CYCLEWAYS;
-		return OverpassQLUtil.getOverpassBBox(bbox) +
-			"way[highway ~ \"^(primary|secondary|tertiary|unclassified|residential)$\"]" +
+		return OverpassQLUtil.getGlobalOverpassBBox(bbox) +
+			"way[highway ~ \"^(primary|secondary|tertiary|unclassified)$\"]" +
 			   "[area != yes]" +
 				// only without cycleway tags
 			   "[!cycleway][!\"cycleway:left\"][!\"cycleway:right\"][!\"cycleway:both\"]" +
 			   "[!\"sidewalk:bicycle\"][!\"sidewalk:both:bicycle\"][!\"sidewalk:left:bicycle\"][!\"sidewalk:right:bicycle\"]" +
 			   // not any with low speed limit because they not very likely to have cycleway infrastructure
-			   "[maxspeed !~ \"^(30|25|20|15|10|8|7|6|5|20 mph|15 mph|10 mph|5 mph|walk)$\"]" +
+			   "[maxspeed !~ \"^(20|15|10|8|7|6|5|10 mph|5 mph|walk)$\"]" +
 			   // not any unpaved because of the same reason
 			   "[surface !~ \"^("+ TextUtils.join("|", OsmTaggings.ANYTHING_UNPAVED)+")$\"]" +
 			   // not any explicitly tagged as no bicycles
 			   "[bicycle != no]" +
+			   "[access !~ \"^private|no$\"]" +
+				// some roads may be father than MIN_DIST_TO_CYCLEWAYS from cycleways,
+				// not tagged cycleway=separate/sidepath but may have hint that there is
+				// a separately tagged cycleway
+				"[bicycle != use_sidepath][\"bicycle:backward\" != use_sidepath]" +
+				"[\"bicycle:forward\" != use_sidepath]" +
 			   " -> .streets;" +
 			"(" +
 			   "way[highway=cycleway](around.streets: "+d+");" +
@@ -200,12 +220,15 @@ public class AddCycleway implements OsmElementQuestType
 	@Override public AbstractQuestAnswerFragment createForm() { return new AddCyclewayForm(); }
 	@Override public String getCommitMessage() { return "Add whether there are cycleways"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_bicycleway; }
-	@Override public int getTitle(@NonNull Map<String, String> tags) { return getTitle(); }
-	@Override public int getTitle() { return R.string.quest_cycleway_title2; }
-
-	@Override public int getDefaultDisabledMessage() { return 0; }
-	@Override public Countries getEnabledForCountries()
+	@Override public int getTitle(@NonNull Map<String, String> tags)
 	{
+		return R.string.quest_cycleway_title2;
+	}
+
+	@NonNull @Override public Countries getEnabledForCountries()
+	{
+		// See overview here: https://ent8r.github.io/blacklistr/?java=bikeway/AddCycleway.java
+
 		// #749. sources:
 		// Google Street View (driving around in virtual car)
 		// https://en.wikivoyage.org/wiki/Cycling
@@ -220,8 +243,8 @@ public class AddCycleway implements OsmElementQuestType
 			// East Asia
 			"JP","KR","TW",
 			// some of China (East Coast)
-			"CN-11","CN-12","CN-37","CN-32","CN-31",
-			"CN-33","CN-35","CN-44","CN-50",
+			"CN-BJ","CN-TJ","CN-SD","CN-JS","CN-SH",
+			"CN-ZJ","CN-FJ","CN-GD","CN-CQ",
 			// Australia etc
 			"NZ","AU",
 			// some of Canada

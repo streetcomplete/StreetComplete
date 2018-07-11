@@ -23,9 +23,12 @@ import android.support.annotation.UiThread;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.LocalBroadcastManager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.preference.PreferenceManager;
 import android.support.v7.widget.Toolbar;
+import android.text.method.LinkMovementMethod;
+import android.text.util.Linkify;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -42,7 +45,6 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -76,6 +78,7 @@ import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 import de.westnordost.streetcomplete.quests.FindQuestSourceComponent;
 import de.westnordost.streetcomplete.quests.OsmQuestAnswerListener;
 import de.westnordost.streetcomplete.quests.QuestAnswerComponent;
+import de.westnordost.streetcomplete.quests.QuestUtil;
 import de.westnordost.streetcomplete.settings.SettingsActivity;
 import de.westnordost.streetcomplete.statistics.UnsyncedChangesCounter;
 import de.westnordost.streetcomplete.statistics.UploadedAnswersCounter;
@@ -257,6 +260,16 @@ public class MainActivity extends AppCompatActivity implements
 		}
 	}
 
+	@Override public void onPause()
+	{
+		super.onPause();
+		LatLon pos = mapFragment.getPosition();
+		prefs.edit()
+			.putLong(Prefs.MAP_LATITUDE, Double.doubleToRawLongBits(pos.getLatitude()))
+			.putLong(Prefs.MAP_LONGITUDE, Double.doubleToRawLongBits(pos.getLongitude()))
+			.apply();
+	}
+
 	@Override public void onStop()
 	{
 		super.onStop();
@@ -313,8 +326,7 @@ public class MainActivity extends AppCompatActivity implements
 		icon.setImageResource(quest.getType().getIcon());
 		TextView text = inner.findViewById(R.id.text);
 
-		String name = element.getTags().get("name");
-		text.setText(getResources().getString(getQuestTitleResId(quest, element.getTags()), name));
+		text.setText(QuestUtil.getHtmlTitle(getResources(), quest.getType(), element));
 
 		new AlertDialogBuilder(this)
 				.setTitle(R.string.undo_confirm_title)
@@ -326,16 +338,6 @@ public class MainActivity extends AppCompatActivity implements
 				})
 				.setNegativeButton(R.string.undo_confirm_negative, null)
 				.show();
-	}
-
-	private int getQuestTitleResId(Quest quest, Map<String,String> tags)
-	{
-		if(quest instanceof OsmQuest)
-		{
-			OsmQuest osmQuest = (OsmQuest) quest;
-			return osmQuest.getOsmElementQuestType().getTitle(tags);
-		}
-		return quest.getType().getTitle();
 	}
 
 	@Override public boolean onOptionsItemSelected(MenuItem item)
@@ -465,10 +467,28 @@ public class MainActivity extends AppCompatActivity implements
 			{
 				if(e instanceof VersionBannedException)
 				{
-					new AlertDialogBuilder(MainActivity.this)
-							.setMessage(R.string.version_banned_message)
+					String message = getString(R.string.version_banned_message);
+					VersionBannedException vbe = (VersionBannedException) e;
+					if(vbe.getBanReason() != null)
+					{
+						message += "\n\n" + vbe.getBanReason();
+					}
+
+					AlertDialog dialog = new AlertDialogBuilder(MainActivity.this)
+							.setMessage(message)
 							.setPositiveButton(android.R.string.ok, null)
-							.show();
+							.create();
+
+					dialog.show();
+
+					// Makes links in the alert dialog clickable
+					View messageView = dialog.findViewById(android.R.id.message);
+					if(messageView != null && messageView instanceof TextView)
+					{
+						TextView messageText = (TextView) messageView;
+						messageText.setMovementMethod(LinkMovementMethod.getInstance());
+						Linkify.addLinks(messageText, Linkify.WEB_URLS);
+					}
 				}
 				else if(e instanceof OsmConnectionException)
 				{
@@ -668,6 +688,7 @@ public class MainActivity extends AppCompatActivity implements
 		notePosition.offset(-mapPosition[0], -mapPosition[1]);
 
 		LatLon position = mapFragment.getPositionAt(notePosition);
+		if(position == null) throw new NullPointerException();
 		questController.createNote(note, imagePaths, position);
 
 		unsyncedChangesCounter.increase(null);
@@ -778,6 +799,8 @@ public class MainActivity extends AppCompatActivity implements
 	@UiThread private void showQuestDetails(final Quest quest, final QuestGroup group,
 											final Element element)
 	{
+		if(isQuestDetailsCurrentlyDisplayedFor(quest.getId(), group)) return;
+
 		if(getBottomSheetFragment() != null)
 		{
 			closeBottomSheet();

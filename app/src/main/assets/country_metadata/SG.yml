@@ -1,5 +1,6 @@
 # Do not edit. Source files are in /res/country_metadata
 isLeftHandTraffic: true
+mobileCountryCode: 525
 officialLanguages: [en, ms, zh, ta]
 orchardProduces: [coconut, tomatoe]
 popularReligions: [buddhist, christian, muslim, chinese_folk, taoist, hindu]

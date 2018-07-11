@@ -35,7 +35,9 @@
     <string name="quest_streetName_answer_noName_confirmation_description">"有时街道标志只会立在街道的底端。并且请注意，属于许多大条街道的分支街道没有标示。通常有房子的街道有街名。"</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"如果标志名称可不缩拼写, 尽量展开拼写。许多常见缩写在输入时自动展开，但并非完整。"</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"没有缩写"</string>
-    <string name="quest_openingHours_name_title">"\"%s\"的营业时间是？"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_openingHours_name_title">"%s的营业时间是？"</string>
     <string name="quest_openingHours_start_time">"开放时间"</string>
     <string name="quest_openingHours_end_time">"关闭时间"</string>
     <string name="quest_openingHours_add_months">"添加月"</string>
@@ -57,6 +59,8 @@
     <string name="confirmation_discard_negative">"取消"</string>
     <string name="action_download">"任务搜寻"</string>
     <string name="action_upload">"数据上传"</string>
+
+    <!-- Fuzzy -->
     <string name="no_changes">"你留下空的表单"</string>
     <string name="close">"关闭"</string>
     <string name="download_error">"寻找任务时出现问题"</string>
@@ -80,18 +84,18 @@
     <string name="about_title_license">"许可证"</string>
     <string name="about_summary_license">"GNU 通用公共许可证"</string>
     <string name="offline">"您离线"</string>
+
+    <!-- Fuzzy -->
     <string name="confirmation_authorize_now">"你需要验证你的开放街图使用者帐号来套用你的回答。现在验证吗？"</string>
     <string name="not_authorized">"未认证"</string>
+
+    <!-- Fuzzy -->
     <string name="version_banned_message">"此版本的StreetComplete已无法上传数据，请更新至最新版本。"</string>
     <string name="no_gps_no_quests">"如果要自动寻找你附近的任务，开启定位"</string>
     <string name="nothing_more_to_download">"没有更多的可用任务"</string>
     <string name="later">"稍后"</string>
-    <string name="quest_streetName_answer_noProperStreet">"不是一条正确的街道"</string>
-    <string name="quest_streetName_answer_noProperStreet_question">"那是什么呢？"</string>
     <string name="quest_streetName_answer_noProperStreet_link">"它只連接兩條道路"</string>
-    <string name="quest_streetName_answer_noProperStreet_service">"这只是一条服务路"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"其他（请留言）"</string>
-    <string name="quest_streetName_answer_noProperStreet_track">"只是产业道路"</string>
     <string name="about_title_privacy_statement">"隐私政策"</string>
     <string name="about_summary_privacy_statement">"和数据使用"</string>
     <string name="quest_openingHours_public_holidays">"公共假期"</string>
@@ -112,6 +116,8 @@
     <string name="pref_title_sync">"自动同步"</string>
     <string name="map_btn_zoom_out">"缩小"</string>
     <string name="map_btn_zoom_in">"放大"</string>
+
+    <!-- Fuzzy -->
     <string name="privacy_html">"&lt;p&gt;您很在意隐私？非常好！ 我们只有好消息可以告诉你：&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;数据传输&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
@@ -130,7 +136,7 @@ OpenStreetMap不接受匿名编辑，您需要登录您的OpenStreetMap帐号。
 &lt;p&gt;&lt;b&gt;资料使用&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 以上提到，此APP直接和OpenStreetMap的设施直接沟通，会使用 &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass API&lt;/a&gt; 下载任务(是匿名的)，且使用 &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API&lt;/a&gt; 上传资料。&lt;br/&gt;
-上传你的更变之前，此APP会在我的伺服器上确认 &lt;a href=\"http://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;简单的文字档&lt;/a&gt; 是否被封锁而无法上传任何更变。这是一个防护措施，如果APP的版本更变后有严重的错误出现，OpenStreetMap的资料不会受污染。&lt;br/&gt;
+上传你的更变之前，此APP会在我的伺服器上确认 &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;简单的文字档&lt;/a&gt; 是否被封锁而无法上传任何更变。这是一个防护措施，如果APP的版本更变后有严重的错误出现，OpenStreetMap的资料不会受污染。&lt;br/&gt;
 &lt;/p&gt;
 &lt;p&gt;
 显示地图、向量图砖皆从 &lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt;Mapzen 向量图砖服务&lt;/a&gt; 匿名下载取得。此服务会记录图砖请求，来了解哪个区域是热门的，作为准备快取和改善效能之用。他们的平台同时也纪录IP地址，且他们的所有服务全部託管在Amazon，所以它会观察你的行为再决定动作。
@@ -142,12 +148,10 @@ OpenStreetMap不接受匿名编辑，您需要登录您的OpenStreetMap帐号。
     <string name="autosync_only_on_wifi">"仅通过Wi-Fi"</string>
     <string name="autosync_off">"关闭"</string>
     <string name="quest_streetSurface_title">"这段道路的铺面材料是？"</string>
-    <string name="quest_surface_description">"选择最合适的一个："</string>
     <string name="quest_surface_value_paved">"有路面"</string>
     <string name="quest_surface_value_unpaved">"简单路面"</string>
     <string name="quest_surface_value_ground">"无路面"</string>
     <string name="quest_surface_value_asphalt">"沥青"</string>
-    <string name="quest_surface_value_cobblestone">"鹅卵石"</string>
     <string name="quest_surface_value_compacted">"紧实"</string>
     <string name="quest_surface_value_concrete">"混凝土"</string>
     <string name="quest_surface_value_dirt">"土地"</string>
@@ -161,6 +165,8 @@ OpenStreetMap不接受匿名编辑，您需要登录您的OpenStreetMap帐号。
     <string name="quest_surface_value_sett">"小方块岩石"</string>
     <string name="quest_surface_value_wood">"木材"</string>
     <string name="quest_placeName_title">"这个地方的名字是?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sidewalk_title">"这条街道有人行道吗?"</string>
     <string name="map_orientation_info">"地图朝向归北"</string>
     <string name="quest_sidewalk_onlyNorth">"只在道路北面一侧"</string>
@@ -171,9 +177,6 @@ OpenStreetMap不接受匿名编辑，您需要登录您的OpenStreetMap帐号。
     <string name="quest_maxspeed_answer_noSign">"这里没有限速标志"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"此条街道位在?"</string>
     <string name="quest_cyclewaySurface_title">"此自行车道的路面材料是?"</string>
-    <string name="quest_cycleway_title2">"这条街道有自行车道吗?"</string>
-    <string name="quest_cycleway_title">"这条街道有自行车道吗?"</string>
-    <string name="quest_buildingType_title">"这栋建筑物的种类是?"</string>
     <string name="quest_serviceType_title">"此条联络道路的种类是?"</string>
     <string name="quest_streetLanes_title">"此条道路有多少车道?"</string>
     <string name="quest_streetLanes_description">"如果这里没有道路标记，它将不会有车道"</string>
@@ -240,23 +243,29 @@ OpenStreetMap不接受匿名编辑，您需要登录您的OpenStreetMap帐号。
     <string name="quest_manySports_confirmation_specific">"专属场地"</string>
     <string name="quest_manySports_confirmation_generic">"通用场地"</string>
     <string name="quest_sport_manySports_confirmation_title">"您选取了多种运动"</string>
-    <string name="quest_busStopShelter_name_title">"公交站\"%s\"有遮挡吗？"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopShelter_name_title">"公交站%s有遮挡吗？"</string>
     <string name="quest_toiletsFee_title">"是付费洗手间吗？"</string>
     <string name="quest_tactilePaving_title_bus">"这个公车站有盲道设施吗？"</string>
 
     <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"这个人行横道有盲道设施吗？"</string>
     <string name="quest_source_dialog_title">"你确定你在现场探察确认？"</string>
-    <string name="quest_tactilePaving_title_name_bus">"公交站\"%s\"有盲道设施吗？"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_tactilePaving_title_name_bus">"公交站%s有盲道设施吗？"</string>
     <string name="quest_source_dialog_note">"只有调查发现的资讯才需要输入。"</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"这个自行车停放设施有遮雨棚吗？"</string>
     <string name="dialog_session_dont_show_again">"请勿在此对话中再次显示"</string>
-    <string name="quest_streetSurface_name_title">"道路 \"%s\" 的铺面为何？"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_streetSurface_name_title">"道路 %s 的铺面为何？"</string>
     <string name="quest_maxspeed_title_short">"这条街的道路速限牌显示多少？"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"这个速限看来怪怪的。"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"你确定没有速限限制吗？"</string>
-    <string name="quest_maxspeed_answer_noSign_confirmation">"你有在街道尽头确认吗？
-不然如果没有速限牌，视为以预设的速限为准。"</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation">"你有到街尾检查吗？
+如果整条路都没有标示的区块，那麽会套用预设限制。"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"对，并没有速限牌"</string>
     <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"市区道路跟乡村的预设速限并不相同。"</string>
     <string name="quest_maxspeed_answer_noSign_urbanOk">"市区"</string>
@@ -268,7 +277,9 @@ OpenStreetMap不接受匿名编辑，您需要登录您的OpenStreetMap帐号。
     <string name="quest_sport_paddle_tennis">"桨网球"</string>
     <string name="quest_sport_gaelic_games">"盖尔式运动"</string>
     <string name="quest_sport_sepak_takraw">"藤球"</string>
-    <string name="quest_wheelchairAccess_name_title">"“%s” 是否是轮椅通行无处？"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_name_title">"%s 是否是轮椅通行无处？"</string>
     <string name="quest_wheelchairAccess_limited">"部分可通行"</string>
     <string name="quest_bikeParkingCapacity_hint">"注意单车架两边都能够停放一台单车。"</string>
     <string name="quest_sport_roller_skating">"滚轮熘冰"</string>
@@ -276,15 +287,27 @@ OpenStreetMap不接受匿名编辑，您需要登录您的OpenStreetMap帐号。
     <string name="quest_wheelchairAccess_subway_entrance_title">"这个捷运站出口是否轮椅通行无阻？"</string>
     <string name="quest_wheelchairAccess_railway_station_title">"这座车站是否轮椅通行无阻？"</string>
     <string name="quest_wheelchairAccess_location_title">"这个地方是否轮椅通行无阻？"</string>
-    <string name="quest_wheelchairAccess_bus_station_name_title">"“%s” 客运站是否轮椅通行无阻？"</string>
-    <string name="quest_wheelchairAccess_subway_entrance_name_title">"“%s” 捷运出口是否轮椅通行无阻？"</string>
-    <string name="quest_wheelchairAccess_railway_station_name_title">"“%s” 车站是否轮椅通行无阻？"</string>
-    <string name="quest_wheelchairAccess_location_name_title">"“%s”  是否轮椅通行无阻？"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_bus_station_name_title">"%s 客运站是否轮椅通行无阻？"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_subway_entrance_name_title">"%s 捷运出口是否轮椅通行无阻？"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_railway_station_name_title">"%s 车站是否轮椅通行无阻？"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_location_name_title">"%s  是否轮椅通行无阻？"</string>
     <string name="quest_wheelchairAccess_limited_description_business">"部分可通行意味没有多过一个步骤，就可以进到场所裡，并且裡面的房间是轮椅可通行的状况。"</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"部分可通行意味没有多过一个步骤，就可以进到场所裡。"</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"\"%s\" 的简称缩写是？"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"%s 的简称缩写是？"</string>
     <string name="quest_baby_changing_table_toilets_title">"这个洗手间有设置婴儿用尿布檯吗？"</string>
-    <string name="quest_baby_changing_table_title">"\"%s\" 有设置婴儿用尿布檯吗？"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_baby_changing_table_title">"%s 有设置婴儿用尿布檯吗？"</string>
     <string name="quest_recycling_type_title">"这是哪一种资源回收设施？"</string>
     <string name="recycling_centre">"资源回收中心"</string>
     <string name="overground_recycling_container">"资源回收箱"</string>
@@ -365,15 +388,24 @@ OpenStreetMap不接受匿名编辑，您需要登录您的OpenStreetMap帐号。
 
     <!-- Fuzzy -->
     <string name="quest_way_lit_title">"这段路径有照明设施吗？"</string>
-    <string name="quest_way_lit_named_title">"\"%s\" 有照明设施吗？"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_way_lit_named_title">"%s 有照明设施吗？"</string>
 
     <!-- Fuzzy -->
     <string name="quest_way_lit_road_title">"这段道路有照明设施吗？"</string>
-    <string name="quest_way_lit_named_road_title">"\"%s\" 沿路上有照明设施？"</string>
     <string name="quest_way_lit_automatic">"使用动态侦测"</string>
     <string name="quest_way_lit_24_7">"不分日夜照明"</string>
+    <string name="pref_title_authorized_username_summary">"认证帐号：%s"</string>
+    <string name="cannot_find_bbox_or_reduce_tilt">"在这裡无法扫描。请进一步放大或是倾斜地图程度小点。"</string>
     <string name="quest_crossing_type_title">"这是哪种交叉口？"</string>
+    <string name="quest_crossing_type_signals">"有交通号志的路口"</string>
+    <string name="quest_crossing_type_uncontrolled">"无交通号志控制的路口"</string>
+    <string name="quest_crossing_type_unmarked">"无道路标记的路口"</string>
     <string name="compass_north_one_letter">"北"</string>
+    <string name="action_undo">"复原"</string>
+    <string name="no_changes_to_undo">"没有可以复原的动作"</string>
+    <string name="undo_confirm_title">"复原上个回答？"</string>
     <string name="produce_mangosteen">"山竹"</string>
     <string name="produce_tomatoes">"西红柿"</string>
     <string name="produce_areca_nuts">"槟榔"</string>
@@ -385,7 +417,235 @@ OpenStreetMap不接受匿名编辑，您需要登录您的OpenStreetMap帐号。
     <string name="quest_parkingType_underground">"地下停车场"</string>
     <string name="quest_parkingType_multiStorage">"停车场"</string>
     <string name="quest_toiletAvailability_name_title">"%s有洗手间吗？"</string>
+    <string name="quest_powerPolesMaterial_title">"电线杆的材质是？"</string>
     <string name="quest_powerPolesMaterial_wood">"木头"</string>
     <string name="quest_powerPolesMaterial_metal">"钢铁"</string>
     <string name="quest_powerPolesMaterial_concrete">"水泥"</string>
+    <string name="quest_maxspeed_answer_advisory_speed_limit">"只是建议速度限制"</string>
+    <string name="quest_address_answer_house_name">"没有门牌号码但有名字"</string>
+    <string name="quest_address_house_name_label">"房屋名称："</string>
+    <string name="quest_buildingLevels_roofLevelsLabel2">"屋顶楼层数"</string>
+    <string name="quest_buildingLevels_levelsLabel2">"一般的楼层数 (不计算屋顶)"</string>
+    <string name="pref_title_authorized_summary">"验证"</string>
+    <string name="quest_buildingLevels_answer_multipleLevels">"建筑部分的不同"</string>
+    <string name="quest_buildingLevels_answer_description">"在这一个例子，简单填写建筑部分最高楼层数值。"</string>
+    <string name="unglue_hint">"从位置点取消界限视图"</string>
+    <string name="pref_title_not_authorized_summary2">"经由你的浏览器登入来认证帐号"</string>
+    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"这条路的车道是否实体分隔(例如有障碍物)？预设速限依照上述设定决定或为否。"</string>
+    <string name="about_category_feedback">"回馈"</string>
+    <string name="quest_leave_new_note_photo">"附件照片"</string>
+    <string name="quest_leave_new_note_photo_delete_title">"你想要删除这张照片吗？"</string>
+    <string name="privacy_html_image_upload">"&lt;p&gt;注记附件的照片已经上传到&lt;a href=\"https://framapic.org\"&gt;framapic.org&lt;/a&gt;，这个服务是暱名而且不会追踪。&lt;/p&gt;"</string>
+    <string name="quest_cycleway_value_track">"单车道"</string>
+    <string name="quest_cycleway_value_lane">"单车车道"</string>
+    <string name="quest_cycleway_value_none">"无"</string>
+    <string name="quest_cycleway_value_shared">"车道应与其他交通工具共享"</string>
+    <string name="quest_cycleway_value_bus_lane">"与公车专用道共用"</string>
+    <string name="quest_cycleway_value_sidewalk">"应与人行道共用"</string>
+    <string name="quest_leave_new_note_create_image_error">"无法为照片产生档桉"</string>
+    <string name="quest_cycleway_value_lane_dual">"单车车道，双向"</string>
+    <string name="quest_cycleway_value_track_dual">"单车道，双向"</string>
+    <string name="quest_cycleway_value_sidewalk_allowed">"无，但允许单车骑士使用人行道"</string>
+    <string name="pref_category_advanced">"进阶"</string>
+    <string name="pref_title_quests">"任务选择"</string>
+    <string name="quest_enabled">"已启用"</string>
+    <string name="quest_type">"任务类型"</string>
+    <string name="action_reset">"重设"</string>
+    <string name="reorder_quest_priority_hint">"重按和移动任务重新设定下载的优先顺序，以及显示在地图上。"</string>
+    <string name="undo_confirm_positive">"复原"</string>
+    <string name="undo_confirm_negative">"取消"</string>
+    <string name="quest_dietType_vegetarian_name_title">"%s 的菜单上有素食料理吗？"</string>
+    <string name="quest_dietType_vegan_name_title">"%s 的菜单上有维根料理吗？"</string>
+    <string name="quest_hasFeature_only">"只有"</string>
+    <string name="quest_dietType_explanation_vegan">"维根料理不含动物产品 (没有肉类、奶类产品，没有蛋...)。"</string>
+    <string name="quest_dietType_explanation_vegetarian">"素食料理不含肉类"</string>
+    <string name="quest_dietType_explanation">"只有这间餐厅的主餐有该选项，忽略前菜等，才回答是。"</string>
+    <string name="quest_carWashType_title">"提供的洗车选项？"</string>
+    <string name="quest_carWashType_automated">"自动"</string>
+    <string name="quest_carWashType_selfService">"自助"</string>
+    <string name="quest_carWashType_service">"人工清洗车辆"</string>
+    <string name="enable_quest_confirmation_title">"启用这一类任务类型？"</string>
+    <string name="default_disabled_msg_go_inside">"这一类任务预设关闭，因为你很可能必须进到该地才能回答这类任务的答桉。"</string>
+    <string name="quest_housenumber_conscription_number">"徵兵号码"</string>
+    <string name="quest_housenumber_street_number_optional">"定位号码 (选填)"</string>
+    <string name="quest_housenumber_conscription_number_required">"徵兵号码必须被指定"</string>
+    <string name="quest_cycleway_answer_contraflow_cycleway">"另一侧也有单车道"</string>
+    <string name="need_specify_both_sides">"你必须注明两侧都有"</string>
+    <string name="quest_openingHours_emptyAnswer">"你必须描述标示状况。如果没有标示，那麽你必须到店裡询问。"</string>
+    <string name="quest_cycleway_value_none_but_no_oneway">"无，但单车骑士可能两个方向都能骑乘"</string>
+    <string name="quest_streetName_answer_noName_question">"为什麽这条路没有名称？"</string>
+    <string name="quest_streetName_answer_noProperStreet_service2">"看起来像是得来速或是停车道道"</string>
+    <string name="quest_streetName_answer_noProperStreet_track2">"这是一条产业道路"</string>
+    <string name="quest_streetName_answer_noName_noname">"上述答桉都不是，只是没有名字"</string>
+    <string name="quest_wheelchairAccess_toilets_title">"这是无障碍厕所吗？"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_wheelchairAccess_toilets_name_title">"「%s」是一个无障碍厕所吗？"</string>
+    <string name="quest_wheelchairAccess_description_toilets">"如果有无障碍厕所，则会看到无障碍指示牌。
+通常意味轮椅可以进入并使用该间厕所，但没有手杆或是改良的洗手台。"</string>
+    <string name="map_btn_create_note">"创建新注解"</string>
+    <string name="create_new_note_unprecise">"再放更大来创建新注解"</string>
+    <string name="create_new_note_description">"你可以留下注解，让其他图客知道这边有问题。移动地图来调整注解标注的位置："</string>
+    <string name="pref_title_quests_invalidation">"无效的任务暂存"</string>
+    <string name="pref_title_quests_invalidation_summary">"如果你认为有些任务过期的话则有用"</string>
+    <string name="invalidate_confirmation">"无效"</string>
+    <string name="invalidation_dialog_message">"暂存档无效导致需要在下载时更新任务。一週之后或是任务已经解决回答，任务暂存自动无效。"</string>
+    <string name="quest_generic_looks_like_this">"通常长得像这样子："</string>
+    <string name="quest_surface_value_metal">"金属材质表面"</string>
+    <string name="quest_cycleway_title2">"这裡有单车道吗？那种类型？"</string>
+    <string name="quest_bridge_structure_title">"这座桥樑的结构是？"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_internet_access_name_title">"%s 提供那种网路连线呢？"</string>
+    <string name="quest_internet_access_wlan">"Wi-Fi"</string>
+    <string name="quest_internet_access_wired">"有线 (LAN)"</string>
+    <string name="quest_internet_access_terminal">"有网路连线的电脑"</string>
+    <string name="quest_internet_access_no">"不提供网路"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_busStopShelter_tram_name_title">"路面电车站 %s 是否有遮荫？"</string>
+    <string name="quest_busStopShelter_tram_title">"这座路面电车站是否有遮荫？"</string>
+    <string name="quest_bench_backrest_title">"长椅是否有靠背？"</string>
+    <string name="quest_bench_answer_picnic_table">"这是野餐桌"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_religion_for_place_of_worship_title">"%s 是那个宗教？"</string>
+    <string name="quest_religion_christian">"基督教"</string>
+    <string name="quest_religion_muslim">"伊斯兰教"</string>
+    <string name="quest_religion_hindu">"印度教"</string>
+    <string name="quest_religion_buddhist">"佛教"</string>
+    <string name="quest_religion_shinto">"神道教"</string>
+    <string name="quest_religion_jewish">"犹太教"</string>
+    <string name="quest_religion_taoist">"道教"</string>
+    <string name="quest_religion_for_place_of_worship_answer_multi">"有多种宗教派别"</string>
+    <string name="quest_religion_sikh">"鍚克教"</string>
+    <string name="quest_religion_jain">"耆那教"</string>
+    <string name="quest_religion_bahai">"巴哈伊信仰"</string>
+    <string name="quest_religion_caodaist">"高台教"</string>
+    <string name="quest_religion_chinese_folk">"中国传统信仰"</string>
+    <string name="quest_religion_for_wayside_shrine_title">"这座小庙是遵循那个宗教呢？"</string>
+    <string name="quest_parking_fee_title">"在这裡停车有费用吗？"</string>
+    <string name="quest_cycleway_value_lane_soft">"单车车道 (虚线标记)"</string>
+    <string name="quest_surface_value_unhewn_cobblestone">"不破的鹅卵石"</string>
+    <string name="quest_parking_access_title">"在这裡停车有资格限制吗？"</string>
+    <string name="quest_parking_access_private">"这裡是私人停车位"</string>
+    <string name="quest_parking_access_yes">"这裡是公共停车位 (有可能需要付费)"</string>
+    <string name="quest_parking_access_customers">"这裡只限顾客停车"</string>
+    <string name="quest_streetName_pedestrian_title">"徒步区的名称是什麽？"</string>
+    <string name="quest_streetSurface_square_title">"广场的舖面是什麽材质？"</string>
+    <string name="quest_streetSurface_square_name_title">"广场 %s 的舖面是什麽材质？"</string>
+    <string name="quest_fee_answer_hours">"视时段和那天而定"</string>
+    <string name="quest_fee_add_times">"增加时间"</string>
+    <string name="quest_fee_only_at_hours">"有收费，但只在..."</string>
+    <string name="quest_fee_not_at_hours">"有收费，但有免费时段..."</string>
+    <string name="quest_fee_hours_title">"在下列时间："</string>
+    <string name="quest_busStopName_title">"公车站牌的名称是什麽？"</string>
+    <string name="quest_tramStopName_title">"街车站的名称是什麽？"</string>
+    <string name="quest_housenumber_multiple_numbers">"这间有多个门牌号码"</string>
+    <string name="quest_housenumber_multiple_numbers_description">"你可以输入用逗号分隔的门牌号码，或是输入门牌范围。
+例如 1,3，或是 2-6"</string>
+    <string name="quest_bicycle_parking_type_stand">"脚踏车架"</string>
+    <string name="quest_bicycle_parking_type_wheelbender">"停车架"</string>
+    <string name="quest_bicycle_parking_type_shed">"立车架"</string>
+    <string name="quest_bicycle_parking_type_locker">"车锁"</string>
+    <string name="quest_bicycle_parking_type_building">"单车车库"</string>
+    <string name="quest_bicycle_parking_type_title">"这是那种单车停车场？"</string>
+    <string name="quest_cycleway_value_suggestion_lane">"单车建议车道"</string>
+    <string name="quest_postboxCollectionTimes_title">"这个邮箱的收信时间？"</string>
+    <string name="quest_collectionTimes_add_times">"增加收信时间"</string>
+    <string name="quest_collectionTimes_answer_no_times_specified">"没有特定的时间"</string>
+    <string name="quest_construction_road_title">"这条道路完工了吗？"</string>
+    <string name="quest_construction_cycleway_title">"这条单车道完工了吗？"</string>
+    <string name="quest_construction_footway_title">"这条步道完工了吗？"</string>
+    <string name="quest_construction_generic_title">"这条路完工了吗？"</string>
+    <string name="quest_construction_building_title">"这栋建筑完工了吗？"</string>
+    <string name="questList_disabled_in_country">"不显示 %s"</string>
+    <string name="quest_toiletAvailability_rest_area_title">"休息区是否有厕所？"</string>
+    <string name="quest_maxspeed_name_title">"%s 的速限？"</string>
+    <string name="quest_pathSurface_title_steps">"阶梯表面是用什麽材质呢？"</string>
+    <string name="quest_pathSurface_title_bridleway">"马道表面是用什麽材质呢？"</string>
+    <string name="quest_pathSurface_title">"这条路径表面是什麽材质呢？"</string>
+    <string name="quest_select_hint_most_specific">"选择最适当的选项："</string>
+    <string name="quest_generic_item_confirmation">"你确定无法更精确描述吗？"</string>
+    <string name="privacy_html_tileserver">"&lt;p&gt;要显示地图，向量图砖由 &lt;a href=\"https://tiles.map-data.de\"&gt;map-data.de&lt;/a&gt; 取得。服务 log 用在暱名统计之用，找出可能的问题，过几天就会删除。&lt;/p&gt;"</string>
+    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;对一些任务来说，需要从第三方下载额外的资料。通常来说，单行道任务需要连线 API，同样放在 westnordost.de，储存可能的单行道。&lt;/p&gt;"</string>
+    <string name="quest_generic_hasFeature_no_leave_note">"无（留下注记）"</string>
+    <string name="pref_quests_reset">"将任务启用和订单重置为预先值吗？"</string>
+    <string name="quest_buildingType_title2">"这栋建筑施工的目的是？"</string>
+    <string name="quest_generic_item_invalid_value">"请选择更精确的数值。"</string>
+    <string name="quest_buildingType_answer_multiple_types">"这栋建筑有多个用途"</string>
+    <string name="quest_buildingType_answer_multiple_types_description">"简单选择这栋建筑的主要用途。例如，如果一楼有店面，楼上是公寓，则这栋是公寓建筑。"</string>
+    <string name="quest_buildingType_answer_construction_site">"仍然在施工中"</string>
+    <string name="quest_buildingType_residential">"住宅建筑"</string>
+    <string name="quest_buildingType_residential_description">"有住人的建筑"</string>
+    <string name="quest_buildingType_house">"房屋"</string>
+    <string name="quest_buildingType_house_description">"单一家庭住的房屋"</string>
+    <string name="quest_buildingType_apartments_description">"有住多个家庭的房屋，也许一楼有零售店面"</string>
+    <string name="quest_buildingType_apartments">"公寓建筑"</string>
+    <string name="quest_buildingType_detached">"附属房屋"</string>
+    <string name="quest_buildingType_detached_description">"独栋房屋"</string>
+    <string name="quest_buildingType_semi_detached">"半独栋房屋"</string>
+    <string name="quest_buildingType_semi_detached_description">"两个单一家庭房屋"</string>
+    <string name="quest_buildingType_terrace">"排屋"</string>
+    <string name="quest_buildingType_terrace_description">"一排单一家庭的房屋"</string>
+    <string name="quest_buildingType_hotel">"旅馆建筑"</string>
+    <string name="quest_buildingType_dormitory">"宿舍"</string>
+    <string name="quest_buildingType_houseboat">"船屋"</string>
+    <string name="quest_buildingType_bungalow">"平房"</string>
+    <string name="quest_buildingType_bungalow_description">"小型附属房屋（夏日房屋、渡假小屋，...）"</string>
+    <string name="quest_buildingType_static_caravan">"静态大篷车"</string>
+    <string name="quest_buildingType_commercial">"商业建筑"</string>
+    <string name="quest_buildingType_commercial_generic_description">"人们工作、购物或是其他商业活动的建筑"</string>
+    <string name="quest_buildingType_industrial">"工业建筑"</string>
+    <string name="quest_buildingType_industrial_description">"例如，一家工厂、工作坊、汽车修护车库，..."</string>
+    <string name="quest_buildingType_office">"办公建筑"</string>
+    <string name="quest_buildingType_retail">"商店"</string>
+    <string name="quest_buildingType_warehouse">"仓库"</string>
+    <string name="quest_buildingType_kiosk">"售货亭"</string>
+    <string name="quest_buildingType_storage_tank">"储存槽"</string>
+    <string name="quest_buildingType_religious">"宗教建筑"</string>
+    <string name="quest_buildingType_church">"教堂"</string>
+    <string name="quest_buildingType_chapel">"礼拜堂"</string>
+    <string name="quest_buildingType_cathedral">"大教堂"</string>
+    <string name="quest_buildingType_mosque">"清真寺"</string>
+    <string name="quest_buildingType_temple">"宫庙建筑"</string>
+    <string name="quest_buildingType_pagoda">"宝塔"</string>
+    <string name="quest_buildingType_synagogue">"犹太教堂"</string>
+    <string name="quest_buildingType_civic">"公共建筑"</string>
+    <string name="quest_buildingType_civic_description">"公共建筑同时也有便利设施"</string>
+    <string name="quest_buildingType_kindergarten">"幼儿园建筑"</string>
+    <string name="quest_buildingType_school">"学校建筑"</string>
+    <string name="quest_buildingType_college">"学院建筑"</string>
+    <string name="quest_buildingType_hospital">"医院建筑"</string>
+    <string name="quest_buildingType_stadium">"体育场"</string>
+    <string name="quest_buildingType_train_station">"火车车站建筑"</string>
+    <string name="quest_buildingType_transportation">"大众运输建筑"</string>
+    <string name="quest_buildingType_university">"大学建筑"</string>
+    <string name="quest_buildingType_government">"政府建筑"</string>
+    <string name="quest_buildingType_cars">"汽车用"</string>
+    <string name="quest_buildingType_carport">"车棚"</string>
+    <string name="quest_buildingType_carport_description">"有屋顶汽车用"</string>
+    <string name="quest_buildingType_garage">"单一车子车库"</string>
+    <string name="quest_buildingType_garages">"多个车子车库"</string>
+    <string name="quest_buildingType_parking">"停车场建筑"</string>
+    <string name="quest_buildingType_farm">"农田裡"</string>
+    <string name="quest_buildingType_farmhouse">"农舍"</string>
+    <string name="quest_buildingType_farmhouse_description">"农田裡的住宅建筑"</string>
+    <string name="quest_buildingType_farm_auxiliary">"农田建筑"</string>
+    <string name="quest_buildingType_farm_auxiliary_description">"农田中任何没有住人的建筑"</string>
+    <string name="quest_buildingType_greenhouse">"温室"</string>
+    <string name="quest_buildingType_other">"其他"</string>
+    <string name="quest_buildingType_shed">"棚"</string>
+    <string name="quest_buildingType_hut">"木屋"</string>
+    <string name="quest_buildingType_hut_description">"小而简单的住宅或庇护所"</string>
+    <string name="quest_buildingType_roof">"屋顶"</string>
+    <string name="quest_buildingType_service">"服务建筑"</string>
+    <string name="quest_buildingType_service_description">"有泵或是变电设施的建筑"</string>
+    <string name="quest_buildingType_hangar">"机库"</string>
+    <string name="quest_buildingType_hangar_description">"直升机和太空梭的地方"</string>
+    <string name="quest_buildingType_bunker">"掩体"</string>
+    <string name="quest_address_answer_no_housenumber">"这裡没有门牌号码"</string>
+    <string name="quest_address_answer_no_housenumber_message1">"这栋建筑被标为："</string>
+    <string name="quest_address_answer_no_housenumber_message2">"正确吗，还是这边不是建筑的一部分？"</string>
+    <string name="quest_buildingType_shrine">"掩体"</string>
 </resources>

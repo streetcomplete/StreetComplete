@@ -44,7 +44,8 @@
             android:textStyle="bold"
             android:textSize="18dp"
             android:gravity="center"
-            android:textColor="#000000"/>
+            android:textColor="#000000"
+            tools:ignore="HardcodedText"/>
 
         <EditText
             android:id="@+id/maxSpeedInput"

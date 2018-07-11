@@ -1,12 +1,14 @@
 package de.westnordost.streetcomplete.quests.tactile_paving;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 
 import java.util.Map;
 
 import javax.inject.Inject;
 
 import de.westnordost.streetcomplete.R;
+import de.westnordost.streetcomplete.data.osm.Countries;
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
@@ -38,8 +40,30 @@ public class AddTactilePavingCrosswalk extends SimpleOverpassQuestType
 
 	@Override public String getCommitMessage() { return "Add tactile pavings on crosswalks"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_blind_pedestrian_crossing; }
-	@Override public int getTitle(Map<String, String> tags)
+	@Override public int getTitle(@NonNull Map<String, String> tags)
 	{
 		return R.string.quest_tactilePaving_title_crosswalk;
 	}
+
+	static final Countries ENBABLED_FOR_COUNTRIES = Countries.noneExcept(new String[]
+	{
+		// Europe
+		"NO","SE",
+		"GB","IE","NL","BE","FR","ES",
+		"DE","PL","CZ","SK","HU","AT","CH",
+		"LV","LT","EE","RU",
+		// America
+		"US","CA","AR",
+		// Asia
+		"HK","SG","KR","JP",
+		// Oceania
+		"AU","NZ",
+	});
+
+    @NonNull @Override public Countries getEnabledForCountries()
+    {
+		// See overview here: https://ent8r.github.io/blacklistr/?java=tactile_paving/AddTactilePavingCrosswalk.java
+		// #750
+		return ENBABLED_FOR_COUNTRIES;
+    }
 }

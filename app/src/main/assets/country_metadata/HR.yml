@@ -2,6 +2,7 @@
 additionalStreetsignLanguages: [sr, it]
 isLivingStreetKnown: true
 isSlowZoneKnown: true
+mobileCountryCode: 219
 officialLanguages: [hr]
 orchardProduces: [grape, olive, apple, plum, walnut, hazelnut, orange, cherry, peach, pear, chilli_pepper,
   sweet_pepper, tomatoe, strawberry, apricot, raspberry]

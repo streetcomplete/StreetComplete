@@ -1,6 +1,8 @@
 package de.westnordost.streetcomplete.data.osm.download;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import junit.framework.TestCase;
 
@@ -13,13 +15,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.FutureTask;
 
+import de.westnordost.countryboundaries.CountryBoundaries;
 import de.westnordost.osmapi.map.data.OsmLatLon;
 import de.westnordost.osmapi.map.data.OsmNode;
 import de.westnordost.streetcomplete.data.QuestGroup;
 import de.westnordost.streetcomplete.data.QuestStatus;
 import de.westnordost.streetcomplete.data.VisibleQuestListener;
-import de.westnordost.streetcomplete.data.meta.CountryBoundaries;
-import de.westnordost.streetcomplete.data.osm.Countries;
+import de.westnordost.streetcomplete.data.osm.AOsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.ElementGeometry;
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.OsmQuest;
@@ -131,7 +133,7 @@ public class OsmQuestDownloadTest extends TestCase
 		when(osmQuestDao.getAll(
 				any(BoundingBox.class), any(QuestStatus.class), anyString(),
 				any(Element.Type.class), anyLong()))
-				.thenReturn(Collections.<OsmQuest>emptyList());
+				.thenReturn(Collections.emptyList());
 	}
 
 	private static class ElementWithGeometry
@@ -140,7 +142,7 @@ public class OsmQuestDownloadTest extends TestCase
 		ElementGeometry geometry;
 	}
 
-	private static class ListBackedQuestType implements OsmElementQuestType
+	private static class ListBackedQuestType extends AOsmElementQuestType
 	{
 		private final List<ElementWithGeometry> list;
 
@@ -151,14 +153,10 @@ public class OsmQuestDownloadTest extends TestCase
 
 		@Override public AbstractQuestAnswerFragment createForm() { return null; }
 		@Override public int getIcon() { return 0; }
-		@Override public int getTitle() { return 0; }
-		@Override public int getTitle(Map<String,String> tags) { return 0; }
+		@Override public int getTitle(@NonNull Map<String,String> tags) { return 0; }
 		@Override public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes) {}
 		@Override public String getCommitMessage() { return null; }
-		@Override public Boolean isApplicableTo(Element element) { return false; }
-
-		@Override public Countries getEnabledForCountries()	{ return Countries.ALL; }
-		@Override public int getDefaultDisabledMessage() { return 0; }
+		@Nullable @Override public Boolean isApplicableTo(Element element) { return false; }
 
 		@Override public boolean download(BoundingBox bbox, MapDataWithGeometryHandler handler)
 		{
