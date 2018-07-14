@@ -31,7 +31,6 @@ public class AddCarWashTypeForm extends ImageListQuestAnswerFragment
 	}
 
 	@Override protected Item[] getItems() { return TYPES; }
-	@Override protected int getItemsPerRow() { return 3; }
 	@Override protected int getMaxSelectableItems() { return 3; }
 
 	@Override public void onIndexSelected(int index)
