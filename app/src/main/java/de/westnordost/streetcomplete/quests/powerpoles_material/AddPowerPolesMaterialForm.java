@@ -13,5 +13,4 @@ public class AddPowerPolesMaterialForm extends ImageListQuestAnswerFragment
 	};
 
 	@Override protected Item[] getItems() { return TYPES; }
-	@Override protected int getItemsPerRow() { return 3; }
 }

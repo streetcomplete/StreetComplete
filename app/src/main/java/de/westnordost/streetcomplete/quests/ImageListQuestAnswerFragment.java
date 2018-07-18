@@ -85,7 +85,7 @@ public abstract class ImageListQuestAnswerFragment extends AbstractQuestFormAnsw
 
 	protected int getItemsPerRow()
 	{
-		return 4;
+		return Math.min(4, getItems().length);
 	}
 	/** return -1 for any number. Default: 1 */
     protected int getMaxSelectableItems()
