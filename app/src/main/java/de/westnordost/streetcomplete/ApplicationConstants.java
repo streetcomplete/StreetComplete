@@ -24,6 +24,9 @@ public class ApplicationConstants
 
 	public final static int NOTE_MIN_ZOOM = 15;
 
+	/** How many quests to download when pressing manually on "download quests" */
+	public final static int MANUAL_DOWNLOAD_QUEST_TYPE_COUNT = 10;
+
 	/** a "best before" duration for quests. Quests will not be downloaded again for any tile
 	 *  before the time expired */
 	public static final int REFRESH_QUESTS_AFTER = 7*24*60*60*1000; // one week in ms
