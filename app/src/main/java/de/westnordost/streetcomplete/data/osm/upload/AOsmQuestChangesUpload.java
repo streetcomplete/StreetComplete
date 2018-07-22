@@ -266,9 +266,9 @@ public abstract class AOsmQuestChangesUpload
 		elementDB.put(updatedElement);
 		statisticsDB.addOne(quest.getType().getClass().getSimpleName());
 
-		OsmQuestGiver.QuestUpdates x = questUnlocker.updateQuests(updatedElement);
-		createdQuests.addAll(x.createdQuests);
-		removedQuestIds.addAll(x.removedQuestIds);
+		OsmQuestGiver.QuestUpdates questUpdates = questUnlocker.updateQuests(updatedElement);
+		createdQuests.addAll(questUpdates.createdQuests);
+		removedQuestIds.addAll(questUpdates.removedQuestIds);
 
 		return true;
 	}
