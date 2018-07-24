@@ -5,32 +5,25 @@
 # - presume-se que é utilizado opcionalmente o ponto final "." no fim de cada abreviatura
 # - se for adicionado "..." (sem aspas) no início do padrão é interpretado como sendo permitida a concatenação
 
-^av\.?[aª]?: avenida
+^av: avenida
 ^al: alameda
-arq\.?[oº]?: arquiteto
-b(\.?º)?: bairro
-^bco?: beco
-^cc: calçada
+^b(\.?º)?: bairro
+capt?: capitão
 cel: coronel
 d: dom
 dr: doutor
-dr\.?[aª]: doutora
-edf?: edifício
 eng\.?[oº]?: engenheiro
-^esc: escadas
 ^estr: estrada
-g(en|al): general
-inf: infante
+gen: general
 ^lr?g: largo
-n\.?[aª]: nossa
-^p[cçr]: praça
-^pct\.?[aª]: praceta
+mal: marcheal
+n\.ª? ?s\.[aª]: nossa senhora
+n\.sr\.?[aª]: nossa senhora
+n\. ?sr\.?[aª]: nossa senhora
+^p[cçr]a?: praça
+pe: padre
 prof: professor
-prof\.?[aª]: professora
 ^r: rua
+s\.?t[oº]: santo
 s\.?t[aª]: santa
-s\.?t[oº]?: santo
-sr: senhor
-s\.?r?\.?[aª]: senhora
-^t(ra?v)?: travessa
-urb: urbanização
+^trv?: travessa
