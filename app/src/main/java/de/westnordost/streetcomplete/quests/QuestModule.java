@@ -103,6 +103,7 @@ public class QuestModule
 				new AddParkingFee(o),
 				new AddBusStopName(o),
 				new AddPathSurface(o),
+				new AddBikeParkingType(o), // used by OsmAnd
 				new AddPlaygroundAccess(o), //late as in many areas all needed access=private is already mapped
 
 				// ↓ 4. definitely shown as errors in QA tools
@@ -122,7 +123,6 @@ public class QuestModule
 				new AddBridgeStructure(o),
 				new AddWheelChairAccessToilets(o),
 				new AddReligionToWaysideShrine(o),
-				new AddBikeParkingType(o),
 				new MarkCompletedBuildingConstruction(o),
 
 				// ↓ 8. defined in the wiki, but not really used by anyone yet. Just collected for
