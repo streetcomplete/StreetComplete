@@ -31,7 +31,7 @@ import de.westnordost.streetcomplete.data.changesets.OpenChangesetsDao;
 import de.westnordost.streetcomplete.data.osm.AOsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.ElementGeometry;
 import de.westnordost.streetcomplete.data.osm.OsmQuest;
-import de.westnordost.streetcomplete.data.osm.OsmQuestUnlocker;
+import de.westnordost.streetcomplete.data.osm.OsmQuestGiver;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChanges;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd;
@@ -252,7 +252,7 @@ public class OsmQuestChangesUploadTest extends TestCase
 		MapDataDao mapDataDao = mock(MapDataDao.class);
 		QuestStatisticsDao statisticsDao = mock(QuestStatisticsDao.class);
 		MergedElementDao elementDb = mock(MergedElementDao.class);
-		OsmQuestUnlocker osmQuestUnlocker = mock(OsmQuestUnlocker.class);
+		OsmQuestGiver osmQuestUnlocker = mock(OsmQuestGiver.class);
 		OsmQuestChangesUpload u = new OsmQuestChangesUpload(mapDataDao, questDb, elementDb, null,
 				statisticsDao, null, null, null, null, osmQuestUnlocker);
 
