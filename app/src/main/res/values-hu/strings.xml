@@ -446,7 +446,7 @@ Vagy le is tölthetsz egy másik billentyűzetet az áruházból. Népszerű bil
     <string name="pref_title_quests">"Kérdések kiválasztása"</string>
     <string name="quest_enabled">"Engedélyezve"</string>
     <string name="quest_type">"Kérdéstípus"</string>
-    <string name="action_reset">"Alaphelyzet"</string>
+    <string name="action_reset">"Alaphelyzetbe állítás"</string>
     <string name="reorder_quest_priority_hint">"Nyomd hosszan, majd mozgasd a kérdést, hogy átrendezd a prioritását a letöltéshez és a térképen való megjelenítéshez."</string>
     <string name="undo_confirm_positive">"Visszavonás"</string>
     <string name="undo_confirm_negative">"Mégse"</string>
@@ -567,6 +567,8 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="privacy_html_tileserver">"&lt;p&gt;A térkép megjelenítéséhez a vektoros csempék a &lt;a href=\"https://tiles.map-data.de\"&gt;map-data.de&lt;/a&gt; oldalról származnak. A szolgáltatás naplózza a csempelekéréseket, hogy névtelen statisztikát készítsen és problémákat észleljen. A naplók pár napon belül töröltetnek.&lt;/p&gt;
 "</string>
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Egyes kérdésekhez más, harmadik felek adatai is le vannak töltve. Különösen az egyirányú utcák lekérése egy (szintén a westnordost.de kiszolgálóján lévő) API-n keresztül zajlik.&lt;/p&gt;"</string>
+    <string name="quest_generic_hasFeature_no_leave_note">"Nincs (megjegyzés írása)"</string>
+    <string name="pref_quests_reset">"Alaphelyzetbe állítod az engedélyezett kérdéstípusokat és a sorrendet is?"</string>
     <string name="quest_buildingType_title2">"Milyen célra épült ez az épület?"</string>
     <string name="quest_generic_item_invalid_value">"Kérjük, válassz konkrétabb értéket."</string>
     <string name="quest_buildingType_answer_multiple_types">"Többcélú"</string>
@@ -587,6 +589,8 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="quest_buildingType_hotel">"Szállodaépület"</string>
     <string name="quest_buildingType_dormitory">"Kollégium"</string>
     <string name="quest_buildingType_houseboat">"Lakóhajó"</string>
+    <string name="quest_buildingType_bungalow">"Bungaló"</string>
+    <string name="quest_buildingType_bungalow_description">"önállóan álló, kis ház (nyári lak, hétvégi ház stb.)"</string>
     <string name="quest_buildingType_static_caravan">"Rögzített lakókocsi"</string>
     <string name="quest_buildingType_commercial">"Üzleti épület"</string>
     <string name="quest_buildingType_commercial_generic_description">"ahol emberek dolgoznak, vásárolnak vagy más üzleti tevékenységet végeznek"</string>
@@ -605,6 +609,8 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="quest_buildingType_temple">"Nem keresztény templom"</string>
     <string name="quest_buildingType_pagoda">"Pagoda"</string>
     <string name="quest_buildingType_synagogue">"Zsinagóga"</string>
+    <string name="quest_buildingType_civic">"Közösségi épület"</string>
+    <string name="quest_buildingType_civic_description">"valamely hasznos vagy fontos létesítménynek otthont adó középület"</string>
     <string name="quest_buildingType_kindergarten">"Óvodaépület"</string>
     <string name="quest_buildingType_school">"Iskolaépület"</string>
     <string name="quest_buildingType_college">"Főiskolai épület"</string>
@@ -614,6 +620,9 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="quest_buildingType_transportation">"Tömegközlekedési épület"</string>
     <string name="quest_buildingType_university">"Egyetemi épület"</string>
     <string name="quest_buildingType_government">"Kormányzati épület"</string>
+    <string name="quest_buildingType_cars">"Autóknak"</string>
+    <string name="quest_buildingType_carport">"Garázstető"</string>
+    <string name="quest_buildingType_carport_description">"tető egy autó fölött"</string>
     <string name="quest_buildingType_garage">"Egy garázs"</string>
     <string name="quest_buildingType_garages">"Több garázs"</string>
     <string name="quest_buildingType_parking">"Parkolóház"</string>
@@ -624,11 +633,17 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="quest_buildingType_farm_auxiliary_description">"a tanyán lévő minden nem lakóépület"</string>
     <string name="quest_buildingType_greenhouse">"Üvegház"</string>
     <string name="quest_buildingType_other">"Egyéb"</string>
+    <string name="quest_buildingType_shed">"Fészer"</string>
+    <string name="quest_buildingType_hut">"Kunyhó"</string>
+    <string name="quest_buildingType_hut_description">"kicsi, egyszerű lakhely vagy menedékhely"</string>
     <string name="quest_buildingType_roof">"Tető"</string>
+    <string name="quest_buildingType_service">"Kiszolgáló épület"</string>
+    <string name="quest_buildingType_service_description">"gépészetet (pl. szivattyú, transzformátor) tartalmazó épület"</string>
     <string name="quest_buildingType_hangar">"Hangár"</string>
     <string name="quest_buildingType_hangar_description">"repülőgép, helikopter, űrhajó tárolására szolgáló épület"</string>
     <string name="quest_buildingType_bunker">"Bunker"</string>
     <string name="quest_address_answer_no_housenumber">"Nincs házszáma"</string>
     <string name="quest_address_answer_no_housenumber_message1">"Az épület címkéje:"</string>
     <string name="quest_address_answer_no_housenumber_message2">"Helyes ez így, és ez nem csak egy épületrész?"</string>
+    <string name="quest_buildingType_shrine">"Szentély"</string>
 </resources>

@@ -80,13 +80,9 @@
     <string name="about_title_license">"Licença"</string>
     <string name="about_summary_license">"GNU General Public License"</string>
     <string name="offline">"Você está desconectado"</string>
-
-    <!-- Fuzzy -->
-    <string name="confirmation_authorize_now">"Você precisa entrar com sua conta OSM para aplicar suas respostas. Entrar agora?"</string>
+    <string name="confirmation_authorize_now">"Você precisa autorizar com sua conta OSM para publicar suas respostas. Autorizar agora?"</string>
     <string name="not_authorized">"Não autorizado"</string>
-
-    <!-- Fuzzy -->
-    <string name="version_banned_message">"Esta versão do StreetComplete foi proibida de carregar qualquer resposta! Atualize sua versão!"</string>
+    <string name="version_banned_message">"Esta versão do StreetComplete é muito antiga. Por favor atualize!"</string>
     <string name="no_gps_no_quests">"Para escanear por missões em torno de você automaticamente, ative a localização"</string>
     <string name="nothing_more_to_download">"Sem novas missões disponíveis"</string>
     <string name="later">"Mais tarde"</string>
@@ -148,7 +144,7 @@ Para exibir o mapa, os blocos vetoriais são recuperadas do &lt;a href=\"https:/
     <string name="autosync_on">"Ligado"</string>
     <string name="autosync_only_on_wifi">"Somente por WiFi"</string>
     <string name="autosync_off">"Desligado"</string>
-    <string name="quest_streetSurface_title">"Que superfície tem este pedaço de rua?"</string>
+    <string name="quest_streetSurface_title">"Que tipo de pavimento tem esse trecho de rua?"</string>
     <string name="quest_surface_value_paved">"Pavimentado (genérico)"</string>
     <string name="quest_surface_value_unpaved">"Não-pavimentado (genérico)"</string>
     <string name="quest_surface_value_ground">"Terra (genérico)"</string>
@@ -166,9 +162,7 @@ Para exibir o mapa, os blocos vetoriais são recuperadas do &lt;a href=\"https:/
     <string name="quest_surface_value_sett">"Paralelepipedo"</string>
     <string name="quest_surface_value_wood">"Madeira"</string>
     <string name="quest_placeName_title">"Qual o nome deste lugar?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_sidewalk_title">"Há uma calçada nesta rua?"</string>
+    <string name="quest_sidewalk_title">"Essa rua tem alguma calçada?"</string>
     <string name="map_orientation_info">"O mapa está orientado para o norte."</string>
     <string name="quest_sidewalk_onlyNorth">"Apenas no lado norte"</string>
     <string name="quest_sidewalk_onlySouth">"Apenas no lado sul"</string>
@@ -177,7 +171,7 @@ Para exibir o mapa, os blocos vetoriais são recuperadas do &lt;a href=\"https:/
     <string name="quest_sidewalk_yes">"Sim"</string>
     <string name="quest_maxspeed_answer_noSign">"Não há placa"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Onde é esta rua?"</string>
-    <string name="quest_cyclewaySurface_title">"Que superfície tem a ciclovia aqui?"</string>
+    <string name="quest_cyclewaySurface_title">"Que tipo de pavimento tem essa ciclovia aqui?"</string>
     <string name="quest_serviceType_title">"Que tipo de rua de serviço é essa?"</string>
     <string name="quest_streetLanes_title">"Quantas pistas tem essa rua?"</string>
     <string name="quest_streetLanes_description">"Se não houver marcações rodoviárias, não há pistas."</string>
@@ -247,19 +241,13 @@ As informações inseridas são adicionadas diretamente ao OpenStreetMap em seu 
     <string name="quest_busStopShelter_name_title">"O ponto de ônibus %s tem abrigo?"</string>
     <string name="quest_toiletsFee_title">"Esses sanitários são pagos?"</string>
     <string name="quest_tactilePaving_title_bus">"Essa parada de ônibus tem pavimentos táteis?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"Essa faixa de pedestres tem pavimentos táteis nos dois lados?"</string>
     <string name="quest_source_dialog_title">"Tem a certeza que verificou isto no local?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_name_bus">"A parada de ônibus \"%S\" tem pavimentos táteis?"</string>
     <string name="quest_source_dialog_note">"Apenas informação que foi feita durante um levantamento deve ser adicionada."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Essa parada de bicicleta é coberta (protegida da chuva)?"</string>
     <string name="dialog_session_dont_show_again">"Não mostrar de novo nesta sessão"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetSurface_name_title">"Que tipo de pavimento possui a estrada %s aqui?"</string>
+    <string name="quest_streetSurface_name_title">"Que tipo de pavimento a estrada %s tem aqui?"</string>
     <string name="quest_maxspeed_title_short">"Qual a placa de limite de velocidade para essa rua?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Esse limite de velocidade parece errado."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Tem certeza de que não há nenhum limite sinalizado?"</string>
@@ -276,8 +264,6 @@ Se não há placas ao longo de toda a rua que corresponda com a parte destacada 
     <string name="quest_sport_paddle_tennis">"Pádel"</string>
     <string name="quest_sport_gaelic_games">"Jogos Gaélicos"</string>
     <string name="quest_sport_sepak_takraw">"Futevôlei"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_name_title">"%s é acessível por cadeiras de rodas?"</string>
     <string name="quest_wheelchairAccess_limited">"Parcial"</string>
     <string name="quest_bikeParkingCapacity_hint">"Note que a maioria dos suportes podem ser utilizados para estacionar uma bicicleta de cada lado."</string>
@@ -286,26 +272,14 @@ Se não há placas ao longo de toda a rua que corresponda com a parte destacada 
     <string name="quest_wheelchairAccess_subway_entrance_title">"Esta entrada de metrô é acessível por cadeiras de rodas?"</string>
     <string name="quest_wheelchairAccess_railway_station_title">"Esta estação de trem é acessível por cadeiras de rodas?"</string>
     <string name="quest_wheelchairAccess_location_title">"Este local é acessível por cadeiras de rodas?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_bus_station_name_title">"A parada de ônibus %s é acessível por cadeiras de rodas?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_subway_entrance_name_title">"A entrada de metrô %s é acessível por cadeiras de rodas?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_railway_station_name_title">"A estação de trem %s é acessível por cadeiras de rodas?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_location_name_title">"O local %s é acessível por cadeiras de rodas?"</string>
     <string name="quest_wheelchairAccess_limited_description_business">"Parcial significa que não mais que uma etapa a necessária para acessar o negócio, e que a maioria das salas internas é acessível para cadeiras de rodas."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"Parcial significa que não mais que uma etapa a necessária para acessar."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Abreviação no nome %s?"</string>
     <string name="quest_baby_changing_table_toilets_title">"Este sanitário tem trocador para bebê?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_baby_changing_table_title">"%s tem trocador para bebê?"</string>
     <string name="quest_recycling_type_title">"Que tipo de instalação de reciclagem é esta?"</string>
     <string name="recycling_centre">"Centro"</string>
@@ -317,9 +291,7 @@ Se não há placas ao longo de toda a rua que corresponda com a parte destacada 
     <string name="quest_streetName_answer_cantType">"Não é possível introduzir os caracteres da placa"</string>
     <string name="quest_streetName_cantType_title">"Falta o layout do teclado?"</string>
     <string name="quest_streetName_cantType_open_settings">"Abrir opções"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetName_cantType_open_store">"Abrir na loja"</string>
+    <string name="quest_streetName_cantType_open_store">"Visitar a loja de aplicativos"</string>
     <string name="quest_streetName_cantType_description">"Se usa o teclado padrão, é provável que simplesmente tenha de configurar o layout do teclado, nas opções de métodos de entrada, para o idioma que necessita.
 
 Caso contrário, pode baixar outro teclado na loja de aplicativos. Alguns dos teclados mais populares e que suportam vários idiomas são o Google Gboard, SwiftKey Keyboard e Multiling O Keyboard."</string>
@@ -386,15 +358,9 @@ Caso contrário, pode baixar outro teclado na loja de aplicativos. Alguns dos te
     <string name="produce_vanilla">"Baunilha"</string>
     <string name="produce_walnuts">"Nozes"</string>
     <string name="produce_sisal">"Sisal"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_way_lit_title">"Este trecho de caminho tem iluminação?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_way_lit_named_title">"%s tem iluminação aqui?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_way_lit_road_title">"Este trecho de estrada tem iluminação?"</string>
+    <string name="quest_way_lit_title">"Este trecho de caminho é iluminado?"</string>
+    <string name="quest_way_lit_named_title">"%s é iluminado aqui?"</string>
+    <string name="quest_way_lit_road_title">"Este trecho de estrada é iluminado?"</string>
     <string name="quest_way_lit_automatic">"Usa detector de movimento "</string>
     <string name="quest_way_lit_24_7">"É iluminado dia e noite"</string>
     <string name="pref_title_authorized_username_summary">"Conta autorizada: %s"</string>
@@ -483,9 +449,7 @@ Caso contrário, pode baixar outro teclado na loja de aplicativos. Alguns dos te
     <string name="quest_streetName_answer_noProperStreet_track2">"É uma estrada agrícola ou florestal"</string>
     <string name="quest_streetName_answer_noName_noname">"Nenhuma das opções, simplesmente não há nome"</string>
     <string name="quest_wheelchairAccess_toilets_title">"São esses banheiros acessíveis por cadeira de rodas?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_toilets_name_title">"Os banheiros %s são acessiveis por cadeira de rodas?"</string>
+    <string name="quest_wheelchairAccess_toilets_name_title">"O banheiro %s é acessível por cadeira de rodas?"</string>
     <string name="quest_wheelchairAccess_description_toilets">"Um simbolo de cadeirante como esse deve estar visível se os banheiros são acessíveis.
 Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas barras ou adaptações não estão presentes."</string>
     <string name="map_btn_create_note">"Criar uma nova nota"</string>
@@ -501,7 +465,7 @@ Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas barr
     <string name="quest_bridge_structure_title">"Qual a estrutura dessa ponte?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_internet_access_name_title">"Que tipo de conexão à Internet é oferecida por %s?"</string>
+    <string name="quest_internet_access_name_title">"Que tipo de conexão à Internet %s oferece?"</string>
     <string name="quest_internet_access_wlan">"Wi-Fi"</string>
     <string name="quest_internet_access_wired">"Cabeada (LAN)"</string>
     <string name="quest_internet_access_terminal">"Computador com acesso à Internet"</string>
@@ -547,12 +511,8 @@ Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas barr
     <string name="quest_parking_access_yes">"É público (com ou sem taxa)"</string>
     <string name="quest_parking_access_customers">"É apenas para clientes"</string>
     <string name="quest_streetName_pedestrian_title">"Qual o nome desta via de pedestres?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetSurface_square_title">"Qual o pavimento desta quadra?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetSurface_square_name_title">"Qual o pavimento da quadra %s aqui?"</string>
+    <string name="quest_streetSurface_square_title">"Que tipo de pavimento tem essa quadra?"</string>
+    <string name="quest_streetSurface_square_name_title">"Que tipo de pavimento tem a quadra %s aqui?"</string>
     <string name="quest_fee_answer_hours">"Depende do dia e horário"</string>
     <string name="quest_fee_add_times">"Adicionar horários"</string>
     <string name="quest_fee_only_at_hours">"Sim, mas apenas..."</string>
@@ -582,12 +542,9 @@ Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas barr
     <string name="questList_disabled_in_country">"Nunca mostrar em %s"</string>
     <string name="quest_toiletAvailability_rest_area_title">"Esta área de descanso tem um toalete?"</string>
     <string name="quest_maxspeed_name_title">"Qual a placa de limite de velocidade para %s?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_pathSurface_title_steps">"Qual o pavimento desses degraus?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_pathSurface_title">"Qual o pavimento desse caminho?"</string>
+    <string name="quest_pathSurface_title_steps">"Que tipo de pavimento têm esses degraus aqui?"</string>
+    <string name="quest_pathSurface_title_bridleway">"Que tipo de pavimento tem essa trilha aqui?"</string>
+    <string name="quest_pathSurface_title">"Que tipo de pavimento tem esse caminho aqui?"</string>
     <string name="quest_select_hint_most_specific">"Selecione o mais específico:"</string>
     <string name="quest_generic_item_confirmation">"Tem certeza que não pode determinar um mais específico?"</string>
 
@@ -623,6 +580,10 @@ Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas barr
     <string name="quest_buildingType_dormitory">"Dormitório"</string>
     <string name="quest_buildingType_houseboat">"Casa-barco"</string>
     <string name="quest_buildingType_bungalow">"Bangalô"</string>
+    <string name="quest_buildingType_bungalow_description">"Casa isolada pequena (casa de verão ou feriado)"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_buildingType_static_caravan">"Trailer estático"</string>
     <string name="quest_buildingType_commercial">"Prédio comercial"</string>
     <string name="quest_buildingType_commercial_generic_description">"prédio onde pessoas trabalham, fazem compras ou outra atividade comercial qualquer"</string>
     <string name="quest_buildingType_industrial">"Prédio industrial"</string>
@@ -667,6 +628,10 @@ Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas barr
     <string name="quest_buildingType_greenhouse">"Estufa"</string>
     <string name="quest_buildingType_other">"Outro"</string>
     <string name="quest_buildingType_shed">"Galpão"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_buildingType_hut">"Cabana"</string>
+    <string name="quest_buildingType_hut_description">"Abrigo ou residência pequena e simples"</string>
     <string name="quest_buildingType_roof">"Telhado"</string>
     <string name="quest_buildingType_service">"Casa de máquinas"</string>
     <string name="quest_buildingType_service_description">"prédio com maquinário como bombas ou transformadores"</string>
@@ -675,8 +640,6 @@ Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas barr
     <string name="quest_buildingType_bunker">"Bunker"</string>
     <string name="quest_address_answer_no_housenumber">"Não tem número"</string>
     <string name="quest_address_answer_no_housenumber_message1">"Esse prédio foi marcado como:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_answer_no_housenumber_message2">"Isso está correto e não é apenas parte de outro prédio?"</string>
 
     <!-- For example this is a shrine: https://wiki.openstreetmap.org/wiki/File:Shinto_shrine_building.jpg

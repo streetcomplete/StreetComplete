@@ -88,7 +88,7 @@
     <string name="not_authorized">"Não autorizado"</string>
 
     <!-- Fuzzy -->
-    <string name="version_banned_message">"Esta versão do StreetComplete foi impedida de adicionar qualquer resposta! Atualize esta app!"</string>
+    <string name="version_banned_message">"Esta versão do StreetComplete é muito antiga. Favor atualizar!"</string>
     <string name="no_gps_no_quests">"Para procurar desafios automaticamente, ative a sua localização"</string>
     <string name="nothing_more_to_download">"Não existem mais desafios disponíveis"</string>
     <string name="later">"Mais tarde"</string>
@@ -555,6 +555,7 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="quest_pathSurface_title">"Qual a superfície deste trilho? "</string>
     <string name="quest_select_hint_most_specific">"Selecione o que mais se ajusta:"</string>
     <string name="quest_generic_item_confirmation">"Tem a certeza que não consegue determinar de forma precisa?"</string>
+    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Para alguns desafios, são descarregados dados de terceiros. Em particular, o desafio de sentido único faz consultas a uma API, também alojada em westnordost.de, sobre candidatos possíveis de sentido único.&lt;/p&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"Não (deixar nota)"</string>
     <string name="quest_buildingType_title2">"Este edifício foi construído com que intuito?"</string>
     <string name="quest_generic_item_invalid_value">"Por favor selecione um valor mais específico"</string>

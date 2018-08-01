@@ -37,8 +37,6 @@
     <string name="quest_streetName_answer_noName_confirmation_description">"Nogle gange er vejskiltet kun på den ene side af gaden. Bemærk også at der måske ikke er et ekstra vejskilt for sidegader der tilhører en større gade. For det meste har alle gader med huse et navn."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Hvis navnet kan skrives uden en forkortelse bør den det. Mange typiske forkortelser er udvidede automatisk mens to skriver, men ikke alle."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Ingen forkortelse"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_name_title">"Hvad er åbningstiderne for %s?"</string>
     <string name="quest_openingHours_start_time">"åbningstid"</string>
     <string name="quest_openingHours_end_time">"lukketid"</string>
@@ -61,9 +59,7 @@
     <string name="confirmation_discard_negative">"Afbryd"</string>
     <string name="action_download">"Skan efter opgaver her"</string>
     <string name="action_upload">"Upload svar"</string>
-
-    <!-- Fuzzy -->
-    <string name="no_changes">"Du efterlod formularen tom"</string>
+    <string name="no_changes">"Du gav ikke noget svar"</string>
     <string name="close">"luk"</string>
     <string name="download_error">"Fejl mens der blev skannet for opgaver"</string>
     <string name="upload_error">"Fejl mens der blev uploadet svar"</string>
@@ -86,13 +82,9 @@
     <string name="about_title_license">"Licens"</string>
     <string name="about_summary_license">"GNU General Public License"</string>
     <string name="offline">"Du er offline"</string>
-
-    <!-- Fuzzy -->
-    <string name="confirmation_authorize_now">"Du er nød til at autentificere med din OSM konto for at faktisk sende dine svar. Autentificer nu?"</string>
+    <string name="confirmation_authorize_now">"Du er nød til at autentificere med din OSM konto for at publicere dine svar. Autentificer nu?"</string>
     <string name="not_authorized">"Ikke autentificeret"</string>
-
-    <!-- Fuzzy -->
-    <string name="version_banned_message">"Denne version af StreetComplete må ikke indsende svar! Opdater din version!"</string>
+    <string name="version_banned_message">"Denne version af StreetComplete er for gammel! Opdater venligst!"</string>
     <string name="no_gps_no_quests">"For at skanne efter opgaver tæt på dig skal du tænde Lokation."</string>
     <string name="nothing_more_to_download">"Der er ikke flere opgaver tilgængelige"</string>
     <string name="later">"Senere"</string>
@@ -553,4 +545,53 @@ F.eks. 1,3 eller 2-6."</string>
     <string name="quest_bicycle_parking_type_locker">"Skab"</string>
     <string name="quest_bicycle_parking_type_building">"Bygning"</string>
     <string name="quest_bicycle_parking_type_title">"Hvilken slags cykelparkering er dette?"</string>
+    <string name="quest_postboxCollectionTimes_title">"Hvad er tømningstiderne for denne postkasse?"</string>
+    <string name="quest_collectionTimes_add_times">"Tilføj tømningstid"</string>
+    <string name="quest_collectionTimes_answer_no_times_specified">"Ingen tider beskrevet"</string>
+    <string name="quest_construction_road_title">"Er denne vej færdiglavet?"</string>
+    <string name="quest_construction_cycleway_title">"Er denne cykelsti færdiglavet?"</string>
+    <string name="quest_construction_footway_title">"Er denne gangsti færdiglavet?"</string>
+    <string name="quest_construction_generic_title">"Er denne vej færdiglavet?"</string>
+    <string name="quest_construction_building_title">"Er denne bygning færdiglavet?"</string>
+    <string name="questList_disabled_in_country">"Aldrig vist i %s"</string>
+    <string name="quest_toiletAvailability_rest_area_title">"Har denne rasteplads toiletter?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_maxspeed_name_title">"Hvad siger hastighedsbegrænsnings skiltet for %s?"</string>
+    <string name="quest_pathSurface_title_steps">"Hvilken overflade har disse trin?"</string>
+    <string name="quest_pathSurface_title_bridleway">"Hvilken overflade har denne ridesti her?"</string>
+    <string name="quest_pathSurface_title">"Hvilket overflade har denne sti her?"</string>
+    <string name="quest_select_hint_most_specific">"Vælg den mest specifikke der passer:"</string>
+    <string name="quest_generic_item_confirmation">"Er du sikker på at du ikke kan bestemme den mere specifikt?"</string>
+    <string name="privacy_html_tileserver">"&lt;p&gt;For at vise kortet hentes vektor fliser fra &lt;a href=\"https://tiles.map-data.de\"&gt;map-data.de&lt;/a&gt;. Servicen logger flise hentninger til anonym statistik og at opdage problemer, men sletter loggen efter et par dage&lt;/p&gt;"</string>
+
+    <!-- Fuzzy -->
+    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Nogle opgaver har brug for at hente ekstra data fra tredjeparter. Specielt bruger envejs opgaven en API, også på westnordost.de, for mulige envejs kandidater.&lt;/p&gt;"</string>
+    <string name="quest_generic_hasFeature_no_leave_note">"Nej (efterlad note)"</string>
+    <string name="pref_quests_reset">"Nulstil både opgaver indstillinger og rækkefølge til standard?"</string>
+    <string name="quest_buildingType_title2">"Hvad blev denne bygning bygget som?"</string>
+    <string name="quest_generic_item_invalid_value">"Vælg venligt en mere specifik værdi."</string>
+    <string name="quest_buildingType_answer_multiple_types">"Den har adskillelige formål"</string>
+    <string name="quest_buildingType_answer_multiple_types_description">"Vælg hovedformålet med bygningen. F.eks. hvis der er en forretning i stueetagen med lejligheder ovenpå, så er det stadig en lejlighedsbygning."</string>
+    <string name="quest_buildingType_answer_construction_site">"Den er stadig ved at bygges"</string>
+    <string name="quest_buildingType_residential">"Bopæl"</string>
+    <string name="quest_buildingType_residential_description">"en bygning hvor folk bor"</string>
+    <string name="quest_buildingType_house">"Hus"</string>
+    <string name="quest_buildingType_house_description">"enkeltfamilies hjem"</string>
+    <string name="quest_buildingType_apartments_description">"hus med flere familier, kan have forretninger i stueetagen"</string>
+    <string name="quest_buildingType_apartments">"Lejlighedsbygning"</string>
+    <string name="quest_buildingType_detached">"Adskilt hus"</string>
+    <string name="quest_buildingType_detached_description">"fritstående enfamiliehus"</string>
+    <string name="quest_buildingType_semi_detached">"Parcelhus"</string>
+    <string name="quest_buildingType_semi_detached_description">"par af enfamiliehuse"</string>
+    <string name="quest_buildingType_terrace">"Rækkehuse"</string>
+    <string name="quest_buildingType_terrace_description">"en lineær række af lignende enfamiliehuse"</string>
+    <string name="quest_buildingType_hotel">"Hotelbygning"</string>
+    <string name="quest_buildingType_dormitory">"Kollegium"</string>
+    <string name="quest_buildingType_houseboat">"Husbåd"</string>
+    <string name="quest_buildingType_bungalow">"Bungalow"</string>
+
+    <!-- I don't think a bungalow needs to be a holiday house (at least not in Denmark), would it be okay to translate it from https://wiki.openstreetmap.org/wiki/Key:building as "A single-storey detached small house, Dacha."? -->
+    <string name="quest_buildingType_bungalow_description">"lille fritstående hus (sommerhus, feriehytte...)"</string>
+    <string name="quest_buildingType_static_caravan">"Campingvogn (semi-permanent)"</string>
 </resources>
