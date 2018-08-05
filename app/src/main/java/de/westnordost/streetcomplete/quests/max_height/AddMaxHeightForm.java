@@ -49,7 +49,7 @@ public class AddMaxHeightForm extends AbstractQuestFormAnswerFragment
 
 	private void setMaxHeightSignLayout(int resourceId, Height.Unit unit)
 	{
-		View contentView = setContentView(getCurrentCountryResources().getLayout(resourceId));
+		View contentView = setContentView(resourceId);
 
 		heightInput = contentView.findViewById(R.id.meterInput);
 		feetInput = contentView.findViewById(R.id.feetInput);
@@ -77,7 +77,8 @@ public class AddMaxHeightForm extends AbstractQuestFormAnswerFragment
 		heightUnitSelect.setAdapter(new ArrayAdapter<>(getContext(), R.layout.spinner_item_centered, getSpinnerItems(measurementUnits)));
 		heightUnitSelect.setSelection(0);
 
-		heightUnitSelect.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+		heightUnitSelect.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+		{
 			@Override
 			public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id)
 			{
@@ -94,15 +95,10 @@ public class AddMaxHeightForm extends AbstractQuestFormAnswerFragment
 	{
 		List<String> items = new ArrayList<>();
 
-		for (int i = 0; i < units.size(); i++) {
-			String unit = units.get(i);
-			if (unit.equals("metric"))
-			{
-				items.add("m");
-			} else if (unit.equals("imperial"))
-			{
-				items.add("ft");
-			}
+		for (String unit : units)
+		{
+			if (unit.equals("metric"))        items.add("m");
+			else if (unit.equals("imperial")) items.add("ft");
 		}
 		return items;
 	}
@@ -235,6 +231,7 @@ public class AddMaxHeightForm extends AbstractQuestFormAnswerFragment
 
 	private void confirmUnusualInput(final Runnable callback)
 	{
+		if(getActivity() == null) return;
 		new AlertDialogBuilder(getActivity())
 			.setTitle(R.string.quest_generic_confirmation_title)
 			.setMessage(R.string.quest_maxheight_unusualInput_confirmation_description)
