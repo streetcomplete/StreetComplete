@@ -150,7 +150,7 @@ public abstract class AbstractQuestAnswerFragment extends AbstractBottomSheetFra
 	@NonNull @Override
 	public LayoutInflater onGetLayoutInflater(@Nullable Bundle savedInstanceState)
 	{
-		// will always a layout inflater for the current country
+		// will always return a layout inflater for the current country
 		return super.onGetLayoutInflater(savedInstanceState).cloneInContext(getContext());
 	}
 

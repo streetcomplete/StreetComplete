@@ -31,18 +31,19 @@
                 android:text="@string/quest_maxspeed_answer_sign" />
 
             <RadioButton
+                android:id="@+id/zone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/quest_maxspeed_answer_zone2" />
+
+            <RadioButton
                 android:id="@+id/no_sign"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/quest_maxspeed_answer_noSign2" />
 
-            <RadioButton
-                android:id="@+id/zone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/quest_maxspeed_answer_zone2" />
         </RadioGroup>
 
     </LinearLayout>

@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -233,6 +234,10 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 	{
 		if(getActivity() == null) return;
 		View view = getLayoutInflater().inflate(R.layout.quest_maxspeed_living_street_confirmation, null, false);
+		// this is necessary because the inflated image view uses the activity context rather than
+		// the fragment / layout inflater context' resources to access it's drawable
+		ImageView img = view.findViewById(R.id.imgLivingStreet);
+		img.setImageDrawable(getResources().getDrawable(R.drawable.ic_living_street));
 		new AlertDialogBuilder(getActivity())
 			.setView(view)
 			.setTitle(R.string.quest_maxspeed_answer_living_street_confirmation_title)
@@ -255,7 +260,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 	private void confirmNoSignSlowZone(Runnable confirm)
 	{
 		if(getActivity() == null) return;
-		View view = LayoutInflater.from(getContext()).inflate(R.layout.quest_maxspeed_no_sign_no_slow_zone_confirmation, null, false);
+		View view = getLayoutInflater().inflate(R.layout.quest_maxspeed_no_sign_no_slow_zone_confirmation, null, false);
 		EditText input = view.findViewById(R.id.maxSpeedInput);
 		input.setText("××");
 		input.setInputType(EditorInfo.TYPE_NULL);
