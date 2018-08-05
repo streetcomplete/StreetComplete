@@ -1,6 +1,8 @@
 package de.westnordost.streetcomplete.quests;
 
+import android.content.ContextWrapper;
 import android.support.annotation.AnyThread;
+import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.content.Context;
 import android.content.res.Configuration;
@@ -16,8 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
-import org.xmlpull.v1.XmlPullParser;
-
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -64,6 +65,9 @@ public abstract class AbstractQuestAnswerFragment extends AbstractBottomSheetFra
 
 	private List<OtherAnswer> otherAnswers;
 
+	private WeakReference<Context> currentContext = new WeakReference<>(null);
+	private ContextWrapper currentCountryContext;
+
 	public AbstractQuestAnswerFragment()
 	{
 		super();
@@ -76,13 +80,6 @@ public abstract class AbstractQuestAnswerFragment extends AbstractBottomSheetFra
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState)
 	{
-		osmElement = (OsmElement) getArguments().getSerializable(ARG_ELEMENT);
-		elementGeometry = (ElementGeometry) getArguments().getSerializable(ARG_GEOMETRY);
-		questType = questTypeRegistry.getByName(getArguments().getString(ARG_QUESTTYPE));
-		countryInfo = null;
-		initialMapRotation = getArguments().getFloat(ARG_MAP_ROTATION);
-		initialMapTilt = getArguments().getFloat(ARG_MAP_TILT);
-
 		View view = inflater.inflate(R.layout.fragment_quest_answer, container, false);
 
 		TextView title = view.findViewById(R.id.title);
@@ -136,6 +133,12 @@ public abstract class AbstractQuestAnswerFragment extends AbstractBottomSheetFra
 	{
 		super.onCreate(inState);
 		questAnswerComponent.onCreate(getArguments());
+		osmElement = (OsmElement) getArguments().getSerializable(ARG_ELEMENT);
+		elementGeometry = (ElementGeometry) getArguments().getSerializable(ARG_GEOMETRY);
+		questType = questTypeRegistry.getByName(getArguments().getString(ARG_QUESTTYPE));
+		countryInfo = null;
+		initialMapRotation = getArguments().getFloat(ARG_MAP_ROTATION);
+		initialMapTilt = getArguments().getFloat(ARG_MAP_TILT);
 	}
 
 	@Override public void onAttach(Context ctx)
@@ -144,6 +147,37 @@ public abstract class AbstractQuestAnswerFragment extends AbstractBottomSheetFra
 		questAnswerComponent.onAttach((OsmQuestAnswerListener) ctx);
 	}
 
+	@NonNull @Override
+	public LayoutInflater onGetLayoutInflater(@Nullable Bundle savedInstanceState)
+	{
+		// will always a layout inflater for the current country
+		return super.onGetLayoutInflater(savedInstanceState).cloneInContext(getContext());
+	}
+
+	@Override @Nullable public Context getContext()
+	{
+		Context context = super.getContext();
+		if(currentContext.get() != context)
+		{
+			currentContext = new WeakReference<>(context);
+			currentCountryContext = context != null ? createCurrentCountryContextWrapper(context) : null;
+		}
+		return currentCountryContext;
+	}
+
+	private ContextWrapper createCurrentCountryContextWrapper(Context context)
+	{
+		Configuration conf = new Configuration(context.getResources().getConfiguration());
+		Integer mcc = getCountryInfo().getMobileCountryCode();
+		conf.mcc = mcc != null ? mcc : 0;
+		Resources res = context.createConfigurationContext(conf).getResources();
+		return new ContextWrapper(context) {
+			@Override public Resources getResources()
+			{
+				return res;
+			}
+		};
+	}
 
 	protected final void onClickCantSay()
 	{
@@ -159,16 +193,8 @@ public abstract class AbstractQuestAnswerFragment extends AbstractBottomSheetFra
 	{
 		Configuration conf = new Configuration(getResources().getConfiguration());
 		conf.setLocale(Locale.ENGLISH);
-		Context localizedContext = getActivity().createConfigurationContext(conf);
+		Context localizedContext = super.getContext().createConfigurationContext(conf);
 		return localizedContext.getResources();
-	}
-
-	protected final Resources getCurrentCountryResources()
-	{
-		Configuration conf = new Configuration(getResources().getConfiguration());
-		Integer mcc = getCountryInfo().getMobileCountryCode();
-		conf.mcc = mcc != null ? mcc : 0;
-		return getContext().createConfigurationContext(conf).getResources();
 	}
 
 	protected final void applyImmediateAnswer(Bundle data)
@@ -187,16 +213,7 @@ public abstract class AbstractQuestAnswerFragment extends AbstractBottomSheetFra
 		{
 			content.removeAllViews();
 		}
-		return getActivity().getLayoutInflater().inflate(resourceId, content);
-	}
-
-	protected final View setContentView(XmlPullParser parser)
-	{
-		if(content.getChildCount() > 0)
-		{
-			content.removeAllViews();
-		}
-		return getActivity().getLayoutInflater().inflate(parser, content);
+		return LayoutInflater.from(getContext()).inflate(resourceId, content);
 	}
 
 	protected final View setButtonsView(int resourceId)

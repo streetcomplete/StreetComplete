@@ -17,7 +17,7 @@
         android:textStyle="bold"
         android:textSize="15dp"
         android:gravity="center"
-        android:textColor="#000000"
+        android:textColor="@color/traffic_black"
         tools:ignore="HardcodedText"/>
 
     <EditText
@@ -25,7 +25,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="#00ffffff"
+        android:background="#0fff"
+        android:textColor="@color/traffic_black"
         android:inputType="number"
         android:gravity="center"
         android:textStyle="bold"
@@ -39,5 +40,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="-6dp"
         android:visibility="gone"
+        tools:visibility="visible"
         />
 </LinearLayout>

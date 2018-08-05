@@ -16,7 +16,7 @@
         android:textStyle="bold"
         android:textSize="18dp"
         android:gravity="center"
-        android:textColor="#000000"
+        android:textColor="@color/traffic_black"
         tools:ignore="HardcodedText"/>
 
     <EditText
@@ -24,12 +24,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="#00ffffff"
+        android:background="#0fff"
         android:inputType="number"
         android:gravity="center"
         android:textStyle="bold"
+        android:textColor="@color/traffic_black"
         android:maxLength="2"
         android:textSize="42dp"
+        android:layout_marginTop="-12dp"
         tools:text="80"/>
 
     <Spinner
@@ -38,5 +40,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="-6dp"
         android:visibility="gone"
+        tools:visibility="visible"
         />
 </LinearLayout>

@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-    <View
-        android:id="@+id/strut"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_centerHorizontal="true"/>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:baselineAligned="false">
 
     <LinearLayout
-        android:layout_alignParentStart="true"
-        android:layout_toStartOf="@id/strut"
         android:layout_width="0dp"
+        android:layout_weight="1"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
@@ -22,6 +19,7 @@
             android:text="@string/quest_maxspeed_sign_question"/>
 
         <RadioGroup
+            android:id="@+id/speedTypeSelect"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
@@ -33,31 +31,29 @@
                 android:text="@string/quest_maxspeed_answer_sign" />
 
             <RadioButton
-                android:id="@+id/zone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/quest_maxspeed_answer_zone" />
-
-            <RadioButton
                 android:id="@+id/no_sign"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/quest_maxspeed_answer_noSign2" />
+
+            <RadioButton
+                android:id="@+id/zone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/quest_maxspeed_answer_zone2" />
         </RadioGroup>
 
     </LinearLayout>
 
     <FrameLayout
-        android:layout_toEndOf="@id/strut"
-        android:layout_alignParentEnd="true"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         >
 
         <FrameLayout
-            android:id="@+id/sign_container"
+            android:id="@+id/right_side"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -67,4 +63,4 @@
 
     </FrameLayout>
 
-</RelativeLayout>
+</LinearLayout>
