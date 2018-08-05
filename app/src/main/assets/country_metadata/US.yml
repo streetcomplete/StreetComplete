@@ -1,7 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
 isAdvisorySpeedLimitKnown: true
-measurementSystem: [imperial]
 isSlowZoneKnown: false
+measurementSystem: [imperial]
 mobileCountryCode: 310
 officialLanguages: [en]
 orchardProduces: [grape, almond, tomatoe, apple, walnut, pistachio, peach, blueberry, grapefruit, plum,
