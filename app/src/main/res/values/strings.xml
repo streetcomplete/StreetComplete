@@ -204,9 +204,11 @@ However, before uploading your changes, the app checks with a &lt;a href=\"https
     <string name="quest_sidewalk_onlyWest">"Only on western side"</string>
     <string name="quest_sidewalk_onlyEast">"Only on eastern side"</string>
     <string name="quest_sidewalk_yes">"Yes"</string>
-    <string name="quest_maxspeed_title_short">"What is the speed limit sign for this street?"</string>
+    <string name="quest_maxspeed_title_short2">"What is the speed limit for this street?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"This speed limit looks implausible."</string>
-    <string name="quest_maxspeed_answer_noSign">"There is no sign"</string>
+    <string name="quest_maxspeed_answer_sign">"A sign"</string>
+    <string name="quest_maxspeed_answer_zone2">"It's within a (slow) zone"</string>
+    <string name="quest_maxspeed_answer_noSign2">"No sign, defaults apply"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Are you sure no limit is posted?"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">"Did you check at the ends of the street?
 If there are no signs along the whole street which apply for the highlighted section, default speed limits apply."</string>
@@ -514,7 +516,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_construction_building_title">Is this building completed?</string>
     <string name="questList_disabled_in_country">Never shown in %s</string>
     <string name="quest_toiletAvailability_rest_area_title">Does this rest area have restroom facilities?</string>
-    <string name="quest_maxspeed_name_title">What is the speed limit sign for %s?</string>
+    <string name="quest_maxspeed_name_title2">What is the speed limit for %s here?</string>
     <string name="pref_quests_reset">Reset both quest enablement and order to the default?</string>
 
     <string name="quest_buildingType_title2">"What was this building constructed as?"</string>
@@ -607,6 +609,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_address_answer_no_housenumber">It has no house number</string>
     <string name="quest_address_answer_no_housenumber_message1">The building was tagged as:</string>
     <string name="quest_address_answer_no_housenumber_message2">Is this correct and is it not just part of a building?</string>
+    <string name="quest_maxspeed_sign_question">What defines the speed limit?</string>
 
     <string name="notification_channel_download">"Download"</string>
     <string name="quest_playground_access_title">Is this playground publicly accessible?</string>

@@ -1,14 +1,17 @@
 package de.westnordost.streetcomplete.quests.max_speed;
 
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.annotation.IdRes;
+import android.support.annotation.LayoutRes;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -23,129 +26,52 @@ import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 {
 	public static final String
-			MAX_SPEED = "maxspeed",
-			ADVISORY_SPEED = "advisory_speed",
-			MAX_SPEED_IMPLICIT_COUNTRY = "maxspeed_country",
-			MAX_SPEED_IMPLICIT_ROADTYPE = "maxspeed_roadtype",
-			LIVING_STREET = "living_street";
-
-	private static final String	IS_ADVISORY_SPEED_LIMIT = "is_advisory_speed_limit";
+		MAX_SPEED_IMPLICIT_COUNTRY = "maxspeed_country",
+		MAX_SPEED_IMPLICIT_ROADTYPE = "maxspeed_roadtype",
+		ADVISORY_SPEED = "advisory_speed",
+		MAX_SPEED = "maxspeed",
+		LIVING_STREET = "living_street";
 
 	private static final Collection<String>
-			URBAN_OR_RURAL_ROADS = Arrays.asList("primary","secondary","tertiary","unclassified",
-					"primary_link","secondary_link","tertiary_link","road"),
-			ROADS_WITH_DEFINITE_SPEED_LIMIT = Arrays.asList("trunk","motorway","living_street"),
-			POSSIBLY_SLOWZONE_ROADS = Arrays.asList("residential","unclassified"),
-			MAYBE_LIVING_STREET = Arrays.asList("residential");
+		POSSIBLY_SLOWZONE_ROADS = Arrays.asList("residential","unclassified","tertiary" /*#1133*/),
+		MAYBE_LIVING_STREET = Arrays.asList("residential","unclassified"),
+		ROADS_WITH_DEFINITE_SPEED_LIMIT = Arrays.asList("trunk","motorway","living_street");
+
+	private RadioGroup speedTypeSelect;
+	private ViewGroup rightSide;
 
 	private EditText speedInput;
-	private CheckBox zoneCheckbox;
 	private Spinner speedUnitSelect;
 
-	private boolean isAdvisorySpeedLimit;
+	private enum SpeedType { SIGN, ZONE, ADVISORY, NO_SIGN }
+	private SpeedType speedType;
 
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
 									   Bundle savedInstanceState)
 	{
 		View view = super.onCreateView(inflater, container, savedInstanceState);
 
-		isAdvisorySpeedLimit = false;
-		if(savedInstanceState != null)
-		{
-			isAdvisorySpeedLimit = savedInstanceState.getBoolean(IS_ADVISORY_SPEED_LIMIT);
-		}
+		View contentView = setContentView(R.layout.quest_maxspeed);
 
-		if(isAdvisorySpeedLimit)
+		boolean couldBeSlowZone = getCountryInfo().isSlowZoneKnown() &&
+			POSSIBLY_SLOWZONE_ROADS.contains(getOsmElement().getTags().get("highway"));
+		RadioButton zoneBtn = contentView.findViewById(R.id.zone);
+		zoneBtn.setVisibility(couldBeSlowZone ? View.VISIBLE : View.GONE);
+
+		rightSide = contentView.findViewById(R.id.right_side);
+		speedTypeSelect = contentView.findViewById(R.id.speedTypeSelect);
+		speedTypeSelect.setOnCheckedChangeListener((group, checkedId) ->
 		{
-			setStreetSignLayout(R.layout.quest_maxspeed_advisory);
-		}
-		else
-		{
-			setStreetSignLayout(R.layout.quest_maxspeed);
-		}
+			setSpeedType(getSpeedType(checkedId));
+		});
 
 		addOtherAnswers();
 
 		return view;
 	}
 
-	@Override public void onSaveInstanceState(Bundle outState)
-	{
-		super.onSaveInstanceState(outState);
-		outState.putBoolean(IS_ADVISORY_SPEED_LIMIT, isAdvisorySpeedLimit);
-	}
-
-	private void setStreetSignLayout(int resourceId)
-	{
-		View contentView = setContentView(getCurrentCountryResources().getLayout(resourceId));
-
-		speedInput = contentView.findViewById(R.id.maxSpeedInput);
-
-		speedUnitSelect = contentView.findViewById(R.id.speedUnitSelect);
-		initSpeedUnitSelect();
-
-		View zoneContainer = contentView.findViewById(R.id.zoneContainer);
-		if(zoneContainer != null)
-		{
-			initZoneCheckbox(zoneContainer);
-		}
-	}
-
-	private void initSpeedUnitSelect()
-	{
-		List<String> speedUnits = getCountryInfo().getSpeedUnits();
-		speedUnitSelect.setVisibility(speedUnits.size() == 1 ? View.GONE : View.VISIBLE);
-		speedUnitSelect.setAdapter(new ArrayAdapter<>(getContext(), R.layout.spinner_item_centered, speedUnits));
-		speedUnitSelect.setSelection(0);
-	}
-
-	private void initZoneCheckbox(View zoneContainer)
-	{
-		boolean isResidential = POSSIBLY_SLOWZONE_ROADS.contains(getOsmElement().getTags().get("highway"));
-		boolean isSlowZoneKnown = getCountryInfo().isSlowZoneKnown();
-		zoneContainer.setVisibility(isSlowZoneKnown && isResidential ? View.VISIBLE : View.GONE);
-
-		zoneCheckbox = zoneContainer.findViewById(R.id.zoneCheckbox);
-		zoneCheckbox.setOnCheckedChangeListener((buttonView, isChecked) ->
-		{
-			if(isChecked && speedInput.getText().toString().isEmpty())
-			{
-				// prefill speed input with normal "slow zone" value
-				String speedUnit = (String) speedUnitSelect.getSelectedItem();
-				boolean isMph = speedUnit.equals("mph");
-				speedInput.setText(isMph ? "20" : "30");
-			}
-		});
-
-		zoneContainer.findViewById(R.id.zoneImg).setOnClickListener(v -> zoneCheckbox.toggle());
-	}
-
 	private void addOtherAnswers()
 	{
-		addOtherAnswer(R.string.quest_maxspeed_answer_noSign, () ->
-		{
-			final String highwayTag = getOsmElement().getTags().get("highway");
-			if(URBAN_OR_RURAL_ROADS.contains(highwayTag))
-			{
-				confirmNoSign(this::determineImplicitMaxspeedType);
-			}
-			else if(POSSIBLY_SLOWZONE_ROADS.contains(highwayTag))
-			{
-				if(getCountryInfo().isSlowZoneKnown())
-				{
-					confirmNoSignSlowZone(this::determineImplicitMaxspeedType);
-				}
-				else
-				{
-					confirmNoSign(this::determineImplicitMaxspeedType);
-				}
-			}
-			else if(ROADS_WITH_DEFINITE_SPEED_LIMIT.contains(highwayTag))
-			{
-				confirmNoSign(() -> applyNoSignAnswer(highwayTag));
-			}
-		});
-
 		final String highwayTag = getOsmElement().getTags().get("highway");
 		if(getCountryInfo().isLivingStreetKnown() && MAYBE_LIVING_STREET.contains(highwayTag))
 		{
@@ -164,112 +90,13 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 		{
 			addOtherAnswer(R.string.quest_maxspeed_answer_advisory_speed_limit, () ->
 			{
-				isAdvisorySpeedLimit = true;
-				setStreetSignLayout(R.layout.quest_maxspeed_advisory);
+				speedTypeSelect.clearCheck();
+				for(int i = 0; i < speedTypeSelect.getChildCount(); i++){
+					speedTypeSelect.getChildAt(i).setEnabled(false);
+				}
+				setSpeedType(SpeedType.ADVISORY);
 			});
 		}
-	}
-
-	private void determineImplicitMaxspeedType()
-	{
-		if(getCountryInfo().getCountryCode().equals("GB"))
-		{
-			determineLit(() -> applyNoSignAnswer("nsl_restricted"), () -> askSingleOrDualCarriageway());
-		}
-		else
-		{
-			askUrbanOrRural();
-		}
-	}
-
-	private void confirmLivingStreet(final Runnable callback)
-	{
-		View view = LayoutInflater.from(getActivity()).inflate(R.layout.quest_maxspeed_living_street_confirmation, null, false);
-
-		ImageView img = view.findViewById(R.id.imgLivingStreet);
-		img.setImageDrawable(getCurrentCountryResources().getDrawable(R.drawable.ic_living_street));
-
-		new AlertDialogBuilder(getActivity())
-				.setView(view)
-				.setTitle(R.string.quest_maxspeed_answer_living_street_confirmation_title)
-				.setPositiveButton(R.string.quest_generic_confirmation_yes, (dialog, which) -> callback.run())
-				.setNegativeButton(R.string.quest_generic_confirmation_no, null)
-				.show();
-	}
-
-	private void confirmNoSignSlowZone(final Runnable callback)
-	{
-		View view = LayoutInflater.from(getActivity()).inflate(R.layout.quest_maxspeed_no_sign_no_slow_zone_confirmation, null, false);
-
-		ImageView imgSlowZone = view.findViewById(R.id.imgSlowZone);
-		ImageView mainLayoutImgSlowZone = getView() != null ? (ImageView) getView().findViewById(R.id.zoneImg) : null;
-		if(mainLayoutImgSlowZone != null)
-		{
-			Drawable slowZoneDrawable = mainLayoutImgSlowZone.getDrawable();
-			imgSlowZone.setImageDrawable(slowZoneDrawable);
-		}
-
-		new AlertDialogBuilder(getActivity())
-				.setView(view)
-				.setTitle(R.string.quest_maxspeed_answer_noSign_confirmation_title)
-				.setPositiveButton(R.string.quest_maxspeed_answer_noSign_confirmation_positive, (dialog, which) -> callback.run())
-				.setNegativeButton(R.string.quest_generic_confirmation_no, null)
-				.show();
-	}
-
-	private void askUrbanOrRural()
-	{
-		new AlertDialogBuilder(getActivity())
-				.setTitle(R.string.quest_maxspeed_answer_noSign_info_urbanOrRural)
-				.setMessage(R.string.quest_maxspeed_answer_noSign_urbanOrRural_description)
-				.setPositiveButton(R.string.quest_maxspeed_answer_noSign_urbanOk, (dialog, which) -> applyNoSignAnswer("urban"))
-				.setNeutralButton(R.string.quest_maxspeed_answer_noSign_ruralOk, (dialog, which) -> applyNoSignAnswer("rural"))
-				.show();
-	}
-
-	private void determineLit(Runnable onYes, Runnable onNo)
-	{
-		String lit = getOsmElement().getTags().get("lit");
-		if("yes".equals(lit)) onYes.run();
-		else if("no".equals(lit)) onNo.run();
-		else askLit(onYes, onNo);
-	}
-
-	private void askLit(Runnable onYes, Runnable onNo)
-	{
-		new AlertDialogBuilder(getActivity())
-			.setMessage(R.string.quest_way_lit_road_title)
-			.setPositiveButton(R.string.quest_generic_hasFeature_yes, (dialog, which) -> onYes.run())
-			.setNegativeButton(R.string.quest_generic_hasFeature_no, (dialog, which) -> onNo.run())
-			.show();
-	}
-
-	private void askSingleOrDualCarriageway()
-	{
-		new AlertDialogBuilder(getActivity())
-				.setMessage(R.string.quest_maxspeed_answer_noSign_singleOrDualCarriageway_description)
-				.setPositiveButton(R.string.quest_generic_hasFeature_yes, (dialog, which) -> applyNoSignAnswer("nsl_dual"))
-				.setNegativeButton(R.string.quest_generic_hasFeature_no, (dialog, which) -> applyNoSignAnswer("nsl_single"))
-				.show();
-	}
-
-	private void confirmNoSign(final Runnable callback)
-	{
-		new AlertDialogBuilder(getActivity())
-				.setTitle(R.string.quest_maxspeed_answer_noSign_confirmation_title)
-				.setMessage(R.string.quest_maxspeed_answer_noSign_confirmation)
-				.setPositiveButton(R.string.quest_maxspeed_answer_noSign_confirmation_positive, (dialog, which) -> callback.run())
-				.setNegativeButton(R.string.quest_generic_confirmation_no, null)
-				.show();
-	}
-
-	private void applyNoSignAnswer(String roadType)
-	{
-		Bundle answer = new Bundle();
-		String countryCode = getCountryInfo().getCountryCode();
-		answer.putString(MAX_SPEED_IMPLICIT_COUNTRY, countryCode);
-		answer.putString(MAX_SPEED_IMPLICIT_ROADTYPE, roadType);
-		applyImmediateAnswer(answer);
 	}
 
 	@Override protected void onClickOk()
@@ -280,17 +107,75 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 			return;
 		}
 
-		if(userSelectedUnrealisticSpeedLimit())
+		if(speedType == SpeedType.NO_SIGN)
 		{
-			confirmUnusualInput(this::applySpeedLimitFormAnswer);
+			boolean couldBeSlowZone = getCountryInfo().isSlowZoneKnown() &&
+				POSSIBLY_SLOWZONE_ROADS.contains(getOsmElement().getTags().get("highway"));
+
+			if(couldBeSlowZone) confirmNoSignSlowZone(this::determineImplicitMaxspeedType);
+			else                confirmNoSign(this::determineImplicitMaxspeedType);
 		}
 		else
 		{
-			applySpeedLimitFormAnswer();
+			if (userSelectedUnusualSpeed()) confirmUnusualInput(this::applySpeedLimitFormAnswer);
+			else applySpeedLimitFormAnswer();
 		}
 	}
 
-	private boolean userSelectedUnrealisticSpeedLimit()
+	@Override public boolean hasChanges()
+	{
+		return speedType == SpeedType.NO_SIGN
+			|| speedInput != null && !speedInput.getText().toString().isEmpty();
+	}
+
+	/* ---------------------------------------- With sign --------------------------------------- */
+
+	private void setSpeedType(SpeedType speedType)
+	{
+		this.speedType = speedType;
+
+		rightSide.removeAllViews();
+		int layoutResId = getLayoutResId(speedType);
+		if(layoutResId != 0)
+		{
+			getLayoutInflater().inflate(layoutResId, rightSide, true);
+		}
+
+		speedInput = rightSide.findViewById(R.id.maxSpeedInput);
+		speedUnitSelect = rightSide.findViewById(R.id.speedUnitSelect);
+		if(speedUnitSelect != null)
+		{
+			List<String> speedUnits = getCountryInfo().getSpeedUnits();
+			speedUnitSelect.setVisibility(speedUnits.size() == 1 ? View.GONE : View.VISIBLE);
+			speedUnitSelect.setAdapter(new ArrayAdapter<>(getContext(), R.layout.spinner_item_centered, speedUnits));
+			speedUnitSelect.setSelection(0);
+		}
+	}
+
+	private SpeedType getSpeedType(@IdRes int checkedId)
+	{
+		switch (checkedId)
+		{
+			case R.id.sign:    return SpeedType.SIGN;
+			case R.id.zone:    return SpeedType.ZONE;
+			case R.id.no_sign: return SpeedType.NO_SIGN;
+		}
+		return null;
+	}
+
+	@LayoutRes private int getLayoutResId(SpeedType speedType)
+	{
+		if(speedType == null) return 0;
+		switch (speedType)
+		{
+			case SIGN:     return R.layout.quest_maxspeed_sign;
+			case ZONE:     return R.layout.quest_maxspeed_zone_sign;
+			case ADVISORY: return R.layout.quest_maxspeed_advisory;
+		}
+		return 0;
+	}
+
+	private boolean userSelectedUnusualSpeed()
 	{
 		int speed = Integer.parseInt(speedInput.getText().toString());
 		String speedUnit = (String) speedUnitSelect.getSelectedItem();
@@ -303,51 +188,163 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 		return 1.60934 * mph;
 	}
 
+	private void confirmUnusualInput(final Runnable callback)
+	{
+		if(getActivity() == null) return;
+		new AlertDialogBuilder(getActivity())
+			.setTitle(R.string.quest_generic_confirmation_title)
+			.setMessage(R.string.quest_maxspeed_unusualInput_confirmation_description)
+			.setPositiveButton(R.string.quest_generic_confirmation_yes, (dialog, which) -> callback.run())
+			.setNegativeButton(R.string.quest_generic_confirmation_no, null)
+			.show();
+	}
+
 	private void applySpeedLimitFormAnswer()
 	{
-		Bundle answer = new Bundle();
-
-		StringBuilder speedStr = new StringBuilder();
 		int speed = Integer.parseInt(speedInput.getText().toString());
-		speedStr.append(speed);
+		String speedStr = String.valueOf(speed);
 
-		// km/h is the OSM default, does not need to be mentioned
+		// km/h is the OSM default, is not mentioned
 		String speedUnit = (String) speedUnitSelect.getSelectedItem();
 		if(!speedUnit.equals("km/h"))
 		{
-			speedStr.append(" " + speedUnit);
+			speedStr += " " + speedUnit;
 		}
 
-		if (isAdvisorySpeedLimit)
+		Bundle answer = new Bundle();
+		if(speedType == SpeedType.ADVISORY)
 		{
-			answer.putString(ADVISORY_SPEED, speedStr.toString());
+			answer.putString(ADVISORY_SPEED, speedStr);
 		}
 		else
 		{
-			answer.putString(MAX_SPEED, speedStr.toString());
-			if (zoneCheckbox != null && zoneCheckbox.isChecked())
+			answer.putString(MAX_SPEED, speedStr);
+			if (speedType == SpeedType.ZONE)
 			{
-				String countryCode = getCountryInfo().getCountryCode();
-				answer.putString(MAX_SPEED_IMPLICIT_COUNTRY, countryCode);
+				answer.putString(MAX_SPEED_IMPLICIT_COUNTRY, getCountryInfo().getCountryCode());
 				answer.putString(MAX_SPEED_IMPLICIT_ROADTYPE, "zone" + speed);
 			}
 		}
-
 		applyFormAnswer(answer);
 	}
 
-	private void confirmUnusualInput(final Runnable callback)
+	/* ----------------------------------------- No sign ---------------------------------------- */
+
+	private void confirmLivingStreet(final Runnable callback)
 	{
+		if(getActivity() == null) return;
+		View view = getLayoutInflater().inflate(R.layout.quest_maxspeed_living_street_confirmation, null, false);
+		// this is necessary because the inflated image view uses the activity context rather than
+		// the fragment / layout inflater context' resources to access it's drawable
+		ImageView img = view.findViewById(R.id.imgLivingStreet);
+		img.setImageDrawable(getResources().getDrawable(R.drawable.ic_living_street));
 		new AlertDialogBuilder(getActivity())
-				.setTitle(R.string.quest_generic_confirmation_title)
-				.setMessage(R.string.quest_maxspeed_unusualInput_confirmation_description)
-				.setPositiveButton(R.string.quest_generic_confirmation_yes, (dialog, which) -> callback.run())
-				.setNegativeButton(R.string.quest_generic_confirmation_no, null)
-				.show();
+			.setView(view)
+			.setTitle(R.string.quest_maxspeed_answer_living_street_confirmation_title)
+			.setPositiveButton(R.string.quest_generic_confirmation_yes, (dialog, which) -> callback.run())
+			.setNegativeButton(R.string.quest_generic_confirmation_no, null)
+			.show();
 	}
 
-	@Override public boolean hasChanges()
+	private void confirmNoSign(Runnable confirm)
 	{
-		return !speedInput.getText().toString().isEmpty();
+		if(getActivity() == null) return;
+		new AlertDialogBuilder(getActivity())
+			.setTitle(R.string.quest_maxspeed_answer_noSign_confirmation_title)
+			.setMessage(R.string.quest_maxspeed_answer_noSign_confirmation)
+			.setPositiveButton(R.string.quest_maxspeed_answer_noSign_confirmation_positive, (dialog, which) -> confirm.run())
+			.setNegativeButton(R.string.quest_generic_confirmation_no, null)
+			.show();
+	}
+
+	private void confirmNoSignSlowZone(Runnable confirm)
+	{
+		if(getActivity() == null) return;
+		View view = getLayoutInflater().inflate(R.layout.quest_maxspeed_no_sign_no_slow_zone_confirmation, null, false);
+		EditText input = view.findViewById(R.id.maxSpeedInput);
+		input.setText("××");
+		input.setInputType(EditorInfo.TYPE_NULL);
+
+		new AlertDialogBuilder(getActivity())
+			.setTitle(R.string.quest_maxspeed_answer_noSign_confirmation_title)
+			.setView(view)
+			.setPositiveButton(R.string.quest_maxspeed_answer_noSign_confirmation_positive, (dialog, which) -> confirm.run())
+			.setNegativeButton(R.string.quest_generic_confirmation_no, null)
+			.show();
+	}
+
+	private void determineImplicitMaxspeedType()
+	{
+		final String highwayTag = getOsmElement().getTags().get("highway");
+		if(ROADS_WITH_DEFINITE_SPEED_LIMIT.contains(highwayTag))
+		{
+			applyNoSignAnswer(highwayTag);
+		}
+		else
+		{
+			if(getCountryInfo().getCountryCode().equals("GB"))
+			{
+				determineLit(
+					() -> applyNoSignAnswer("nsl_restricted"),
+					() -> askIsDualCarriageway(
+						() -> applyNoSignAnswer("nsl_dual"),
+						() -> applyNoSignAnswer("nsl_single"))
+				);
+			}
+			else
+			{
+				askUrbanOrRural(
+					() -> applyNoSignAnswer("urban"),
+					() -> applyNoSignAnswer("rural"));
+			}
+		}
+	}
+
+	private void askUrbanOrRural(Runnable onUrban, Runnable onRural)
+	{
+		if(getActivity() == null) return;
+		new AlertDialogBuilder(getActivity())
+			.setTitle(R.string.quest_maxspeed_answer_noSign_info_urbanOrRural)
+			.setMessage(R.string.quest_maxspeed_answer_noSign_urbanOrRural_description)
+			.setPositiveButton(R.string.quest_maxspeed_answer_noSign_urbanOk, (dialog, which) -> onUrban.run())
+			.setNegativeButton(R.string.quest_maxspeed_answer_noSign_ruralOk, (dialog, which) -> onRural.run())
+			.show();
+	}
+
+	private void determineLit(Runnable onYes, Runnable onNo)
+	{
+		String lit = getOsmElement().getTags().get("lit");
+		if("yes".equals(lit)) onYes.run();
+		else if("no".equals(lit)) onNo.run();
+		else askLit(onYes, onNo);
+	}
+
+	private void askLit(Runnable onYes, Runnable onNo)
+	{
+		if(getActivity() == null) return;
+		new AlertDialogBuilder(getActivity())
+			.setMessage(R.string.quest_way_lit_road_title)
+			.setPositiveButton(R.string.quest_generic_hasFeature_yes, (dialog, which) -> onYes.run())
+			.setNegativeButton(R.string.quest_generic_hasFeature_no, (dialog, which) -> onNo.run())
+			.show();
+	}
+
+	private void askIsDualCarriageway(Runnable onYes, Runnable onNo)
+	{
+		if(getActivity() == null) return;
+		new AlertDialogBuilder(getActivity())
+			.setMessage(R.string.quest_maxspeed_answer_noSign_singleOrDualCarriageway_description)
+			.setPositiveButton(R.string.quest_generic_hasFeature_yes, (dialog, which) -> onYes.run())
+			.setNegativeButton(R.string.quest_generic_hasFeature_no, (dialog, which) -> onNo.run())
+			.show();
+	}
+
+	private void applyNoSignAnswer(String roadType)
+	{
+		Bundle answer = new Bundle();
+		String countryCode = getCountryInfo().getCountryCode();
+		answer.putString(MAX_SPEED_IMPLICIT_COUNTRY, countryCode);
+		answer.putString(MAX_SPEED_IMPLICIT_ROADTYPE, roadType);
+		applyImmediateAnswer(answer);
 	}
 }

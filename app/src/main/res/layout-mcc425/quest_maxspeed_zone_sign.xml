@@ -1,35 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    android:layout_centerInParent="true"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="100dp"
     android:layout_height="100dp"
-    android:background="@drawable/background_rectangular_sign_white"
-    android:gravity="center"
+    android:background="@drawable/background_maxspeed_slow_zone_sign_israel"
+    android:paddingStart="12dp"
+    android:paddingEnd="12dp"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
     android:orientation="vertical"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:gravity="center"
+    >
 
     <EditText
         android:id="@+id/maxSpeedInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:background="#00ffffff"
-        android:textColor="@color/traffic_black"
+        android:background="#0fff"
         android:inputType="number"
         android:gravity="center"
         android:textStyle="bold"
-        android:maxLength="3"
-        android:textSize="48dp"
-        tools:text="50"/>
+        android:textColor="@color/traffic_white"
+        android:textSize="38dp"
+        android:maxLength="2"
+        tools:text="30"/>
 
     <Spinner
         android:id="@+id/speedUnitSelect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="-12dp"
+        android:textColor="@color/traffic_white"
         android:visibility="gone"
         tools:visibility="visible"
         />
 
 </LinearLayout>
-
