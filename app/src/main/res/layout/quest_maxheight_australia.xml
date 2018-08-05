@@ -6,52 +6,51 @@
 
     <RelativeLayout
         android:id="@+id/meterInputSign"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
+        android:layout_centerInParent="true"
         android:layout_alignParentTop="true"
         android:background="@drawable/background_rectangular_sign_white"
         android:gravity="center"
-        android:layout_marginStart="72dp"
-        android:layout_marginEnd="72dp"
         android:orientation="vertical"
-        android:padding="8dp">
+        android:padding="16dp">
 
         <TextView
             android:id="@+id/clearance_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
             android:gravity="center"
             android:text="CLEARANCE"
             android:textColor="#000000"
-            android:textSize="32dp"
+            android:textSize="22dp"
             android:textStyle="bold"
             tools:ignore="HardcodedText" />
 
         <EditText
             android:id="@+id/meterInput"
-            android:layout_width="100dp"
-            android:layout_height="48dp"
+            android:layout_width="96dp"
+            android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/clearance_text"
-            android:layout_marginStart="32dp"
+            android:textColor="@color/traffic_black"
             android:background="#0fff"
             android:gravity="center"
             android:inputType="numberDecimal"
             android:maxLength="4"
-            android:textSize="32dp"
+            android:textSize="38dp"
             android:textStyle="bold"
-            tools:text="1.4" />
+            tools:text="1.55" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toEndOf="@+id/meterInput"
-            android:layout_below="@+id/clearance_text"
+            android:layout_alignBottom="@+id/meterInput"
             android:gravity="center"
             android:text="m"
-            android:textColor="#000000"
-            android:textSize="32dp"
+            android:textColor="@color/traffic_black"
+            android:textSize="36dp"
             android:textStyle="bold"
             tools:ignore="HardcodedText" />
 
@@ -63,8 +62,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
-        android:layout_marginEnd="20dp"
-        android:background="#0fff"
-        android:visibility="visible" />
+        android:layout_marginEnd="16dp"
+        android:visibility="gone"
+        tools:visibility="visible"/>
 
 </RelativeLayout>

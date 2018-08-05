@@ -5,19 +5,21 @@
     android:layout_width="112dp"
     android:layout_height="112dp"
     android:gravity="center"
-    android:layout_centerHorizontal="true"
-    android:background="@drawable/background_maxheight_sign_gb">
+    android:background="@drawable/background_maxheight_sign_gb"
+    android:padding="14dp">
 
     <EditText
         android:id="@+id/feetInput"
-        android:layout_width="32dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:background="#0fff"
         android:gravity="center"
         android:inputType="number"
         android:maxLength="2"
         android:nextFocusDown="@+id/inchInput"
-        android:textSize="28dp"
+        android:textColor="@color/traffic_black"
+        android:textSize="26dp"
         android:textStyle="bold"
         tools:text="15" />
 
@@ -26,31 +28,33 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="´"
-        android:textColor="#000000"
+        android:textColor="@color/traffic_black"
         android:textSize="24dp"
         android:textStyle="bold"
         tools:ignore="HardcodedText" />
 
     <EditText
         android:id="@+id/inchInput"
-        android:layout_width="32dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:background="#0fff"
         android:gravity="center"
         android:imeOptions="actionDone"
         android:inputType="number"
         android:maxLength="2"
         android:nextFocusUp="@+id/feetInput"
-        android:textSize="28dp"
+        android:textColor="@color/traffic_black"
+        android:textSize="26dp"
         android:textStyle="bold"
-        tools:text="12" />
+        tools:text="11" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="´´"
-        android:textColor="#000000"
+        android:textColor="@color/traffic_black"
         android:textSize="24dp"
         android:textStyle="bold"
         tools:ignore="HardcodedText" />

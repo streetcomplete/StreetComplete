@@ -5,29 +5,25 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <RelativeLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
         android:gravity="center"
-        android:orientation="horizontal"
         android:layout_centerHorizontal="true"
         android:background="@drawable/background_rectangular_sign_yellow"
         android:padding="16dp"
-        android:layout_marginStart="112dp"
-        android:layout_marginEnd="112dp"
         android:id="@+id/meterInputSign">
 
         <EditText
             android:id="@+id/meterInput"
-            android:layout_width="82dp"
-            android:layout_height="48dp"
+            android:layout_width="96dp"
+            android:layout_height="wrap_content"
             android:background="#0fff"
             android:gravity="center"
             android:inputType="numberDecimal"
             android:maxLength="4"
             android:textSize="38dp"
             android:textStyle="bold"
-            tools:text="1.40" />
+            tools:text="1.55" />
 
         <TextView
             android:layout_width="32dp"
@@ -36,14 +32,14 @@
             android:layout_toEndOf="@+id/meterInput"
             android:gravity="center"
             android:text="m"
-            android:textColor="#000000"
-            android:textSize="30dp"
+            android:textColor="@color/traffic_black"
+            android:textSize="36dp"
             android:textStyle="bold"
             tools:ignore="HardcodedText" />
 
         <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="32dp"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/meterInput"
             android:layout_centerHorizontal="true"
             android:gravity="center"
@@ -63,8 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
-        android:layout_marginEnd="20dp"
-        android:background="#0fff"
+        android:layout_marginEnd="16dp"
         android:visibility="visible" />
 
 </RelativeLayout>
