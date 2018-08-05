@@ -602,4 +602,5 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_address_answer_no_housenumber_message1">"Das Gebäude wurde bestimmt als:"</string>
     <string name="quest_address_answer_no_housenumber_message2">"Ist das richtig und es ist auch nicht nur Teil eines Gebäudes?"</string>
     <string name="quest_buildingType_shrine">"Schrein"</string>
+    <string name="quest_noteDiscussion_hide">"%1$s hat die Notiz versteckt (%2$s)"</string>
 </resources>

@@ -1,0 +1,25 @@
+<vector android:height="32dp" android:viewportHeight="29.104168"
+    android:viewportWidth="42.333332" android:width="46dp" xmlns:android="http://schemas.android.com/apk/res/android">
+    <path android:fillAlpha="0.53333285" android:fillColor="#ffff5a"
+        android:pathData="M5.8518,7.5882C4.8151,9.7807 4.2333,12.2304 4.2333,14.8167c0,4.1406 1.4883,7.9322 3.9563,10.8743l9.802,-4.5243h6.35l9.802,4.5243c2.468,-2.9421 3.9563,-6.7337 3.9563,-10.8743 0,-2.5863 -0.5818,-5.0359 -1.6185,-7.2285L28.575,8.4667H13.7583Z" android:strokeWidth="0.05291667"/>
+    <path android:fillAlpha="1" android:fillColor="#ffffdf"
+        android:fillType="evenOdd"
+        android:pathData="m14.8167,8.4667 l2.1167,12.7h8.4667L27.5167,8.4667Z"
+        android:strokeAlpha="1" android:strokeColor="#a28941"
+        android:strokeLineCap="butt" android:strokeLineJoin="miter" android:strokeWidth="1.05833328"/>
+    <path android:fillColor="#00000000" android:fillType="evenOdd"
+        android:pathData="M17.9917,8.4667 L19.05,21.1667"
+        android:strokeAlpha="1" android:strokeColor="#a28941"
+        android:strokeLineCap="butt" android:strokeLineJoin="miter" android:strokeWidth="1.05833328"/>
+    <path android:fillColor="#00000000" android:fillType="evenOdd"
+        android:pathData="M24.3417,8.4667 L23.2833,21.1667"
+        android:strokeAlpha="1" android:strokeColor="#a28941"
+        android:strokeLineCap="butt" android:strokeLineJoin="miter" android:strokeWidth="1.05833328"/>
+    <path android:fillAlpha="1" android:fillColor="#333333"
+        android:fillType="evenOdd"
+        android:pathData="M12.7,8.4667H29.6333V6.35c-3.175,0 -5.2917,-4.2333 -8.4667,-5.2917 -3.175,1.0583 -5.2917,5.2917 -8.4667,5.2917z"
+        android:strokeAlpha="1" android:strokeColor="#00000000"
+        android:strokeLineCap="butt" android:strokeLineJoin="miter" android:strokeWidth="0.26458332"/>
+    <path android:fillAlpha="1" android:fillColor="#333333"
+        android:pathData="m16.9333,21.1667v2.1167l2.6458,1.0583v3.4396h3.175v-3.4396l2.6458,-1.0583v-2.1167z" android:strokeWidth="0.05291667"/>
+</vector>

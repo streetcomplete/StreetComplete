@@ -407,7 +407,7 @@
     <string name="quest_enabled">"Ενεργοποιήθηκε"</string>
     <string name="quest_type">"Τύπος αναζήτησης"</string>
     <string name="action_reset">"Επαναφορά"</string>
-    <string name="reorder_quest_priority_hint">"Πατήστε παρατεταμένα και μετακινήστε μια αναζήτηση για επαναίτηση της προτεραιότητας για λήψη και εμφάνιση στο χάρτη."</string>
+    <string name="reorder_quest_priority_hint">"Πατήστε παρατεταμένα και μετακινήστε μια αναζήτηση για επαρύθμιση της προτεραιότητας λήψης και εμφάνιση στο χάρτη."</string>
     <string name="undo_confirm_positive">"
 Αναίρεση"</string>
     <string name="undo_confirm_negative">"Ακύρωση"</string>
@@ -461,7 +461,7 @@
     <string name="quest_busStopShelter_tram_title">"Αυτή η στάση του τραμ έχει σκέπαστρο;"</string>
     <string name="quest_bench_backrest_title">"Ο πάγκος έχει πλάτη;"</string>
     <string name="quest_bench_answer_picnic_table">"Είναι ένα τραπέζι πικνίκ"</string>
-    <string name="quest_religion_for_place_of_worship_title">"Ποια θρησκεία ασκείται στο %s;"</string>
+    <string name="quest_religion_for_place_of_worship_title">"Ποια θρησκεία ασκείται στην %s;"</string>
     <string name="quest_religion_christian">"Χριστιανισμός"</string>
     <string name="quest_religion_muslim">"Ισλαμισμός"</string>
     <string name="quest_religion_hindu">"Ινδουισμός"</string>
@@ -477,10 +477,10 @@
  Caodaism"</string>
     <string name="quest_religion_chinese_folk">"Κινεζική λαϊκή θρησκεία"</string>
     <string name="quest_religion_for_wayside_shrine_title">"Ποια θρησκεία εκπροσωπείται σε αυτό το ιερό;"</string>
-    <string name="quest_parking_fee_title">"Κοστίζει κάποια αμοιβή το παρκάρισμα εδώ;"</string>
+    <string name="quest_parking_fee_title">"Κοστίζει κάποια χρέωση το παρκάρισμα εδώ;"</string>
     <string name="quest_cycleway_value_lane_soft">"λωρίδα ποδηλάτου (διακεκομμένη σήμανση)"</string>
     <string name="quest_surface_value_unhewn_cobblestone">"Αδιαμόρφωτο λιθόστρωτο"</string>
-    <string name="quest_parking_access_title">"Είναι περιορισμένο ποιος μπορεί να σταθμεύσει εδώ;"</string>
+    <string name="quest_parking_access_title">"Υπάρχει περιορισμός στο ποιος μπορεί να σταθμεύσει εδώ;"</string>
     <string name="quest_parking_access_private">"Είναι ιδιωτικό"</string>
     <string name="quest_parking_access_yes">"Είναι δημόσιο (με ή χωρίς χρέωση)"</string>
     <string name="quest_parking_access_customers">"Είναι μόνο για τους πελάτες"</string>
@@ -506,17 +506,17 @@
     <string name="quest_postboxCollectionTimes_title">"Ποιες είναι οι ώρες συλλογής αυτού του γραμματοκιβωτίου;"</string>
     <string name="quest_collectionTimes_add_times">"Προσθέστε ώρα συλλογής"</string>
     <string name="quest_collectionTimes_answer_no_times_specified">"Δεν έχουν οριστεί ώρες"</string>
-    <string name="quest_construction_road_title">"Είναι αυτός ο δρόμος ολοκληρωμένος;"</string>
+    <string name="quest_construction_road_title">"Είναι ολοκληρωμένος αυτός ο δρόμος;"</string>
     <string name="quest_construction_cycleway_title">"Είναι αυτός ο ποδηλατόδρομος ολοκληρωμένος;"</string>
     <string name="quest_construction_footway_title">"Είναι αυτός ο πεζόδρομος ολοκληρωμένος;"</string>
     <string name="quest_construction_generic_title">"Είναι αυτή η διαδρομή ολοκληρωμένη;"</string>
     <string name="quest_construction_building_title">"Είναι αυτό το κτίριο ολοκληρωμένο;"</string>
-    <string name="questList_disabled_in_country">"Δεν εμφανίζεται ποτέ στο %s"</string>
+    <string name="questList_disabled_in_country">"Δεν εμφανίζεται ποτέ στην %s"</string>
     <string name="quest_toiletAvailability_rest_area_title">"Αυτή η περιοχή ξεκούρασης έχει τουαλέτα;"</string>
     <string name="quest_maxspeed_name_title">"Ποιό είναι το ορίο ταχύτητας στην πινακίδα για την %s;"</string>
     <string name="quest_pathSurface_title_steps">"Τι επιφάνεια έχουν αυτά τα σκαλοπάτια εδώ;"</string>
     <string name="quest_pathSurface_title_bridleway">"Τι επιφάνεια έχει αυτή η διαδρομή ιππασίας εδώ;"</string>
-    <string name="quest_pathSurface_title">"Τι επιφάνεια έχοει αυτό το μονοπάτι εδώ;"</string>
+    <string name="quest_pathSurface_title">"Τι επιφάνεια έχει αυτό το μονοπάτι εδώ;"</string>
     <string name="quest_select_hint_most_specific">"Επιλέξτε το πιο συγκεκριμένο που ταιριάζει:"</string>
     <string name="quest_generic_item_confirmation">"Είστε σίγουροι ότι δεν μπορείτε να το προσδιορίσετε πιο συγκεκριμένα;"</string>
     <string name="privacy_html_tileserver">"&lt;p&gt;Για να εμφανιστεί ο χάρτης, τα διανυσματικά πλακίδια ανακτώνται από το &lt;a href=\"https://tiles.map-data.de\"&gt;map-data.de&lt;/a&gt;. Η υπηρεσία καταγράφει τα αιτήματα πλακιδίων για ανώνυμα στατιστικά στοιχεία και για την ανίχνευση ζητημάτων, αλλά διαγράφει τις καταγραφές μετά από μερικές ημέρες.&lt;/p&gt;"</string>

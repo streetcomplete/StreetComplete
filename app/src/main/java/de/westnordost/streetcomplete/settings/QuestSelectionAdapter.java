@@ -11,6 +11,7 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
@@ -39,7 +40,7 @@ public class QuestSelectionAdapter extends ListAdapter<QuestSelectionAdapter.Que
 {
 	private final VisibleQuestTypeDao visibleQuestTypeDao;
 	private final QuestTypeOrderList questTypeOrderList;
-	private final String currentCountryCode;
+	private final List<String> currentCountryCodes;
 
 	@Inject public QuestSelectionAdapter(
 		VisibleQuestTypeDao visibleQuestTypeDao, QuestTypeOrderList questTypeOrderList,
@@ -51,7 +52,7 @@ public class QuestSelectionAdapter extends ListAdapter<QuestSelectionAdapter.Que
 
 		double lat = Double.longBitsToDouble(prefs.getLong(Prefs.MAP_LATITUDE, Double.doubleToLongBits(0)));
 		double lng = Double.longBitsToDouble(prefs.getLong(Prefs.MAP_LONGITUDE, Double.doubleToLongBits(0)));
-		try	{ currentCountryCode = getCountryCode(countryBoundaries.get(), lng, lat); }
+		try	{ currentCountryCodes = countryBoundaries.get().getIds(lng, lat); }
 		catch (Exception e)	{ throw new RuntimeException(e);	}
 	}
 
@@ -68,13 +69,6 @@ public class QuestSelectionAdapter extends ListAdapter<QuestSelectionAdapter.Que
 		View layout = LayoutInflater.from(parent.getContext())
 				.inflate(R.layout.row_quest_selection, parent, false);
 		return new QuestVisibilityViewHolder(layout);
-	}
-
-	private static String getCountryCode(CountryBoundaries boundaries, double lng, double lat)
-	{
-		List<String> ids = boundaries.getIds(lng, lat);
-		if(ids.isEmpty()) return null;
-		return ids.get(0).split("-")[0];
 	}
 
 	private class TouchHelperCallback extends ItemTouchHelper.Callback
@@ -180,9 +174,10 @@ public class QuestSelectionAdapter extends ListAdapter<QuestSelectionAdapter.Que
 
 			if(!isEnabledInCurrentCountry())
 			{
+				String cc = currentCountryCodes.isEmpty() ? "Atlantis" : currentCountryCodes.get(0).split("-")[0];
 				textCountryDisabled.setText(String.format(
 					textCountryDisabled.getResources().getString(R.string.questList_disabled_in_country),
-					new Locale("", currentCountryCode).getDisplayCountry()
+					new Locale("", cc).getDisplayCountry()
 				));
 				textCountryDisabled.setVisibility(View.VISIBLE);
 			}
@@ -196,11 +191,11 @@ public class QuestSelectionAdapter extends ListAdapter<QuestSelectionAdapter.Que
 
 		private boolean isEnabledInCurrentCountry()
 		{
-			if(item.questType instanceof OsmElementQuestType && currentCountryCode != null)
+			if(item.questType instanceof OsmElementQuestType)
 			{
 				OsmElementQuestType questType = (OsmElementQuestType) item.questType;
 				Countries countries = questType.getEnabledForCountries();
-				return countries.isAllExcept() ^ countries.getExceptions().contains(currentCountryCode);
+				return countries.isAllExcept() ^ !Collections.disjoint(countries.getExceptions(), currentCountryCodes);
 			}
 			return true;
 		}

@@ -1,6 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [en]
 firstDayOfWorkweek: Su
+isLivingStreetKnown: true
 isSlowZoneKnown: true
 mobileCountryCode: 425
 officialLanguages: [heb, ar]

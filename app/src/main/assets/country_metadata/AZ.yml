@@ -1,4 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
+isLivingStreetKnown: true
 mobileCountryCode: 400
 officialLanguages: [az]
 orchardProduces: [apple, tomatoe, hazelnut, grape, persimmon, pear, chilli_pepper, sweet_pepper, plum,

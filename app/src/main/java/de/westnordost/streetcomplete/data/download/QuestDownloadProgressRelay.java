@@ -28,7 +28,7 @@ public class QuestDownloadProgressRelay implements QuestDownloadProgressListener
 	private boolean isDownloading;
 	private Float progress;
 
-	public QuestDownloadProgressRelay(Service service, int notificationId)
+	public QuestDownloadProgressRelay(Service service, String notificationChannelId, int notificationId)
 	{
 		this.service = service;
 		this.id = notificationId;
@@ -37,7 +37,16 @@ public class QuestDownloadProgressRelay implements QuestDownloadProgressListener
 		PendingIntent pendingIntent = PendingIntent.getActivity(
 				service, 0, new Intent(service, MainActivity.class), 0);
 
-		notificationBuilder = new Notification.Builder(service)
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+		{
+			notificationBuilder = new Notification.Builder(service, notificationChannelId);
+		}
+		else
+		{
+			notificationBuilder = new Notification.Builder(service);
+		}
+
+		notificationBuilder
 				.setSmallIcon(R.mipmap.ic_dl_notification)
 				.setContentTitle(ApplicationConstants.NAME)
 				.setContentText(service.getResources().getString(R.string.notification_downloading))

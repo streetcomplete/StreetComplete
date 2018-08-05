@@ -144,7 +144,7 @@ Para exibir o mapa, os blocos vetoriais são recuperadas do &lt;a href=\"https:/
     <string name="autosync_on">"Ligado"</string>
     <string name="autosync_only_on_wifi">"Somente por WiFi"</string>
     <string name="autosync_off">"Desligado"</string>
-    <string name="quest_streetSurface_title">"Que superfície tem este pedaço de rua?"</string>
+    <string name="quest_streetSurface_title">"Que tipo de pavimento tem esse trecho de rua?"</string>
     <string name="quest_surface_value_paved">"Pavimentado (genérico)"</string>
     <string name="quest_surface_value_unpaved">"Não-pavimentado (genérico)"</string>
     <string name="quest_surface_value_ground">"Terra (genérico)"</string>
@@ -171,7 +171,7 @@ Para exibir o mapa, os blocos vetoriais são recuperadas do &lt;a href=\"https:/
     <string name="quest_sidewalk_yes">"Sim"</string>
     <string name="quest_maxspeed_answer_noSign">"Não há placa"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Onde é esta rua?"</string>
-    <string name="quest_cyclewaySurface_title">"Que superfície tem a ciclovia aqui?"</string>
+    <string name="quest_cyclewaySurface_title">"Que tipo de pavimento tem essa ciclovia aqui?"</string>
     <string name="quest_serviceType_title">"Que tipo de rua de serviço é essa?"</string>
     <string name="quest_streetLanes_title">"Quantas pistas tem essa rua?"</string>
     <string name="quest_streetLanes_description">"Se não houver marcações rodoviárias, não há pistas."</string>
@@ -511,12 +511,8 @@ Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas barr
     <string name="quest_parking_access_yes">"É público (com ou sem taxa)"</string>
     <string name="quest_parking_access_customers">"É apenas para clientes"</string>
     <string name="quest_streetName_pedestrian_title">"Qual o nome desta via de pedestres?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetSurface_square_title">"Qual o pavimento desta quadra?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetSurface_square_name_title">"Qual o pavimento da quadra %s aqui?"</string>
+    <string name="quest_streetSurface_square_title">"Que tipo de pavimento tem essa quadra?"</string>
+    <string name="quest_streetSurface_square_name_title">"Que tipo de pavimento tem a quadra %s aqui?"</string>
     <string name="quest_fee_answer_hours">"Depende do dia e horário"</string>
     <string name="quest_fee_add_times">"Adicionar horários"</string>
     <string name="quest_fee_only_at_hours">"Sim, mas apenas..."</string>
@@ -546,12 +542,9 @@ Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas barr
     <string name="questList_disabled_in_country">"Nunca mostrar em %s"</string>
     <string name="quest_toiletAvailability_rest_area_title">"Esta área de descanso tem um toalete?"</string>
     <string name="quest_maxspeed_name_title">"Qual a placa de limite de velocidade para %s?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_pathSurface_title_steps">"Qual o pavimento desses degraus?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_pathSurface_title">"Qual o pavimento desse caminho?"</string>
+    <string name="quest_pathSurface_title_steps">"Que tipo de pavimento têm esses degraus aqui?"</string>
+    <string name="quest_pathSurface_title_bridleway">"Que tipo de pavimento tem essa trilha aqui?"</string>
+    <string name="quest_pathSurface_title">"Que tipo de pavimento tem esse caminho aqui?"</string>
     <string name="quest_select_hint_most_specific">"Selecione o mais específico:"</string>
     <string name="quest_generic_item_confirmation">"Tem certeza que não pode determinar um mais específico?"</string>
 
@@ -587,6 +580,10 @@ Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas barr
     <string name="quest_buildingType_dormitory">"Dormitório"</string>
     <string name="quest_buildingType_houseboat">"Casa-barco"</string>
     <string name="quest_buildingType_bungalow">"Bangalô"</string>
+    <string name="quest_buildingType_bungalow_description">"Casa isolada pequena (casa de verão ou feriado)"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_buildingType_static_caravan">"Trailer estático"</string>
     <string name="quest_buildingType_commercial">"Prédio comercial"</string>
     <string name="quest_buildingType_commercial_generic_description">"prédio onde pessoas trabalham, fazem compras ou outra atividade comercial qualquer"</string>
     <string name="quest_buildingType_industrial">"Prédio industrial"</string>
@@ -631,6 +628,10 @@ Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas barr
     <string name="quest_buildingType_greenhouse">"Estufa"</string>
     <string name="quest_buildingType_other">"Outro"</string>
     <string name="quest_buildingType_shed">"Galpão"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_buildingType_hut">"Cabana"</string>
+    <string name="quest_buildingType_hut_description">"Abrigo ou residência pequena e simples"</string>
     <string name="quest_buildingType_roof">"Telhado"</string>
     <string name="quest_buildingType_service">"Casa de máquinas"</string>
     <string name="quest_buildingType_service_description">"prédio com maquinário como bombas ou transformadores"</string>

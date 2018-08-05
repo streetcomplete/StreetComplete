@@ -141,7 +141,7 @@ To display the map, vector tiles are retrieved from the &lt;a href=\"https://map
     <string name="quest_surface_value_paved">"Paved (generic)"</string>
     <string name="quest_surface_value_unpaved">"Unpaved (generic)"</string>
     <string name="quest_surface_value_ground">"Ground (generic)"</string>
-    <string name="quest_surface_value_asphalt">"Asphalt"</string>
+    <string name="quest_surface_value_asphalt">"Tarmac"</string>
     <string name="quest_surface_value_compacted">"Compacted"</string>
     <string name="quest_surface_value_concrete">"Concrete"</string>
     <string name="quest_surface_value_dirt">"Dirt"</string>
@@ -514,4 +514,9 @@ For instance 1,3 or 2-6."</string>
     <string name="questList_disabled_in_country">"Never shown in %s"</string>
     <string name="quest_toiletAvailability_rest_area_title">"Does this rest area have toilet facilities?"</string>
     <string name="quest_maxspeed_name_title">"What is the speed limit sign for %s?"</string>
+    <string name="quest_pathSurface_title_steps">"What surface do these steps have here?"</string>
+    <string name="quest_pathSurface_title_bridleway">"What surface does this bridleway have here?"</string>
+    <string name="quest_pathSurface_title">"What surface does this path have here?"</string>
+    <string name="quest_select_hint_most_specific">"Select the most specific one that fits:"</string>
+    <string name="quest_generic_item_confirmation">"Are you sure that you can not determine it more specifically?"</string>
 </resources>
