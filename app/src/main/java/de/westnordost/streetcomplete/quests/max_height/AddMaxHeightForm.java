@@ -61,7 +61,8 @@ public class AddMaxHeightForm extends AbstractQuestFormAnswerFragment
 		feetInputSign = contentView.findViewById(R.id.feetInputSign);
 
 		heightUnitSelect = contentView.findViewById(R.id.heightUnitSelect);
-		initHeightUnitSelect();
+
+		if (heightUnitSelect != null) initHeightUnitSelect();
 
 		switchLayout(unit);
 	}
@@ -196,7 +197,15 @@ public class AddMaxHeightForm extends AbstractQuestFormAnswerFragment
 
 	private Height getHeightFromInput()
 	{
-		boolean isMetric = heightUnitSelect.getSelectedItem().equals("m");
+		boolean isMetric;
+
+		if (heightUnitSelect != null)
+		{
+			isMetric = heightUnitSelect.getSelectedItem().equals("m");
+		} else {
+			List<String> measurementUnits = getCountryInfo().getMeasurementSystem();
+			isMetric = measurementUnits.get(0).equals("metric");
+		}
 
 		if (isMetric)
 		{

@@ -66,14 +66,4 @@
 
     </LinearLayout>
 
-    <Spinner
-        android:id="@+id/heightUnitSelect"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
-        android:layout_marginEnd="16dp"
-        android:visibility="gone"
-        tools:visibility="visible"/>
-
 </RelativeLayout>
