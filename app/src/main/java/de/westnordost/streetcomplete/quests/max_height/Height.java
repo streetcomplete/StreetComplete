@@ -3,8 +3,10 @@ package de.westnordost.streetcomplete.quests.max_height;
 //if the minimum required API would be 24, we could maybe use https://developer.android.com/reference/android/icu/util/Measure
 public class Height
 {
-	private int integerPart;
-	private int fractionalPart;
+	private double meters;
+
+	private int feet;
+	private int inches;
 
 	private Unit unit;
 
@@ -15,16 +17,21 @@ public class Height
 
 	Height()
 	{
-		this.integerPart = -1;
-		this.fractionalPart = -1;
+		this.meters = -1;
 		this.unit = Unit.METRIC;
 	}
 
-	Height(String integerPart, String fractionalPart, Unit unit)
+	Height(double meters)
 	{
-		this.integerPart = Integer.parseInt(integerPart);
-		this.fractionalPart = Integer.parseInt(fractionalPart);
-		this.unit = unit;
+		this.meters = meters;
+		this.unit = Unit.METRIC;
+	}
+
+	Height(int feet, int inches)
+	{
+		this.feet = feet;
+		this.inches = inches;
+		this.unit = Unit.IMPERIAL;
 	}
 
 	public Unit getUnit()
@@ -34,24 +41,43 @@ public class Height
 
 	public boolean isEmpty()
 	{
-		return integerPart == -1 && fractionalPart == -1;
+		if (unit.equals(Unit.METRIC))
+		{
+			return meters == -1;
+		}
+		else
+		{
+			return feet == -1 && inches == -1;
+		}
 	}
 
 	public String toString()
 	{
 		if (unit.equals(Unit.METRIC))
 		{
-			return String.valueOf(integerPart) + "." + String.valueOf(fractionalPart);
+			return String.valueOf(meters);
 		}
 		else
 		{
 			//this adds an apostrophe and a double-quote to be in a format like e.g. 6'7"
-			return String.valueOf(integerPart) + "'" + String.valueOf(fractionalPart) + "\"";
+			return String.valueOf(feet) + "'" + String.valueOf(inches) + "\"";
 		}
 	}
 
-	public double toDouble()
+	public double getInMeters()
 	{
-		return Double.parseDouble(integerPart + "." + fractionalPart);
+		if (unit.equals(Unit.METRIC))
+		{
+			return meters;
+		}
+		else
+		{
+			return feetToMeter(Double.parseDouble(feet + "." + inches));
+		}
+	}
+
+	private static double feetToMeter(double feet)
+	{
+		return feet / 3.2808;
 	}
 }

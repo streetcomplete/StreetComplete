@@ -12,6 +12,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.text.NumberFormat;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -179,16 +181,8 @@ public class AddMaxHeightForm extends AbstractQuestFormAnswerFragment
 
 	private boolean userSelectedUnrealisticHeight()
 	{
-		double height = getHeightFromInput().toDouble();
-		Height.Unit heightUnit = getHeightFromInput().getUnit();
-
-		double heightInMeter = heightUnit.equals(Height.Unit.METRIC) ? height : feetToMeter(height);
-		return heightInMeter > 6 || heightInMeter < 2;
-	}
-
-	private static double feetToMeter(double feet)
-	{
-		return feet / 3.2808;
+		double height = getHeightFromInput().getInMeters();
+		return height > 6 || height < 2;
 	}
 
 	private void applyMaxHeightFormAnswer()
@@ -209,12 +203,13 @@ public class AddMaxHeightForm extends AbstractQuestFormAnswerFragment
 			String input = heightInput.getText().toString();
 			if (!input.isEmpty())
 			{
-				if (input.contains("."))
+				NumberFormat format = NumberFormat.getInstance();
+				try
 				{
-					String[] parts = input.split("\\.");
-					return new Height(parts[0], parts[1], Height.Unit.METRIC);
-				} else {
-					return new Height(input, "0", Height.Unit.METRIC);
+					Number number = format.parse(input);
+					return new Height(number.doubleValue());
+				} catch (ParseException e) {
+					throw new RuntimeException(e);
 				}
 			}
 			return new Height();
@@ -223,7 +218,10 @@ public class AddMaxHeightForm extends AbstractQuestFormAnswerFragment
 		{
 			if (!feetInput.getText().toString().isEmpty() && !inchInput.getText().toString().isEmpty())
 			{
-				return new Height(feetInput.getText().toString(), inchInput.getText().toString(), Height.Unit.IMPERIAL);
+				return new Height(
+					Integer.parseInt(feetInput.getText().toString()),
+					Integer.parseInt(inchInput.getText().toString())
+				);
 			}
 			return new Height();
 		}
