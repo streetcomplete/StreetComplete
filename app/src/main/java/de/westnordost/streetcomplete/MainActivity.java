@@ -8,6 +8,7 @@ import android.graphics.Point;
 import android.graphics.PointF;
 import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.DrawableRes;
 import android.support.v4.app.Fragment;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -692,7 +693,7 @@ public class MainActivity extends AppCompatActivity implements
 		if(q != null) showQuestSolvedAnimation(q, source);
 	}
 
-	private Animator createQuestSolvedAnimation(View quest, View target)
+	private Animator createMarkerSolvedAnimation(View quest, View target)
 	{
 		int[] targetPos = new int[2];
 		target.getLocationOnScreen(targetPos);
@@ -725,24 +726,29 @@ public class MainActivity extends AppCompatActivity implements
 
 	private void showQuestSolvedAnimation(Quest quest, String source)
 	{
-		soundFx.play(getResources().getIdentifier("plop"+random.nextInt(4), "raw", getPackageName()));
-
 		int size = (int) DpUtil.toPx(42, this);
-
 		int[] offset = new int[2];
 		mapFragment.getView().getLocationOnScreen(offset);
 		PointF startPos = mapFragment.getPointOf(quest.getMarkerLocation());
 		startPos.x += offset[0] - size/2;
 		startPos.y += offset[1] - size*1.5;
+		showMarkerSolvedAnimation(quest.getType().getIcon(), startPos, source);
+	}
+
+	private void showMarkerSolvedAnimation(@DrawableRes int iconResId, PointF startScreenPos, String source)
+	{
+		soundFx.play(getResources().getIdentifier("plop"+random.nextInt(4), "raw", getPackageName()));
+
+		int size = (int) DpUtil.toPx(42, this);
 
 		ViewGroup root = (ViewGroup) getWindow().getDecorView();
 
 		ImageView img = new ImageView(this);
-		img.setImageResource(quest.getType().getIcon());
-		img.setX(startPos.x);
-		img.setY(startPos.y);
+		img.setImageResource(iconResId);
+		img.setX(startScreenPos.x);
+		img.setY(startScreenPos.y);
 
-		Animator anim = createQuestSolvedAnimation(img, answersCounter.getAnswerTarget());
+		Animator anim = createMarkerSolvedAnimation(img, answersCounter.getAnswerTarget());
 		anim.addListener(new AnimatorListenerAdapter()
 		{
 			@Override public void onAnimationEnd(Animator animation)
@@ -792,6 +798,9 @@ public class MainActivity extends AppCompatActivity implements
 
 	@Override public void onLeaveNote(String note, ArrayList<String> imagePaths, Point screenPosition)
 	{
+		showMarkerSolvedAnimation(R.drawable.ic_quest_create_note, new PointF(screenPosition), null);
+		closeBottomSheet();
+
 		int[] mapPosition = new int[2];
 		View mapView = mapFragment.getView();
 		if(mapView == null) return;
@@ -804,10 +813,6 @@ public class MainActivity extends AppCompatActivity implements
 		LatLon position = mapFragment.getPositionAt(notePosition);
 		if(position == null) throw new NullPointerException();
 		questController.createNote(note, imagePaths, position);
-
-		answersCounter.increase(null);
-
-		closeBottomSheet();
 	}
 
 	/* ------------- VisibleQuestListener ------------- */
