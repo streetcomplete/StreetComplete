@@ -495,4 +495,8 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		return TangramConst.toLatLon(controller.getPosition());
 	}
 
+	public PointF getPointOf(LatLon pos)
+	{
+		return controller.lngLatToScreenPosition(TangramConst.toLngLat(pos));
+	}
 }
