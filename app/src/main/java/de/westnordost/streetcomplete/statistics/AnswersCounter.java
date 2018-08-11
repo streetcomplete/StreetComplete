@@ -4,7 +4,6 @@ import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
@@ -12,7 +11,6 @@ import android.widget.TextView;
 
 import javax.inject.Inject;
 
-import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.data.QuestStatus;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
 import de.westnordost.streetcomplete.data.osmnotes.CreateNoteDao;
@@ -31,6 +29,8 @@ public class AnswersCounter
 
 	private TextView uploadedText;
 	private TextView unsyncedText;
+	private View uploadedContainer;
+	private View unsyncedContainer;
 
 	private boolean isFirstUpdateDone;
 	private boolean isAutosync;
@@ -44,16 +44,19 @@ public class AnswersCounter
 		this.questStatisticsDB = questStatisticsDB;
 	}
 
-	public void setTargets(TextView uploadedAnswersTextView, TextView unsyncedAnswersTextView)
+	public void setViews(TextView uploadedAnswersTextView, View uploadedContainer,
+						 TextView unsyncedAnswersTextView, View unsyncedContainer)
 	{
 		this.uploadedText = uploadedAnswersTextView;
 		this.unsyncedText = unsyncedAnswersTextView;
+		this.uploadedContainer = uploadedContainer;
+		this.unsyncedContainer = unsyncedContainer;
 	}
 
 	public void setAutosync(boolean autosync)
 	{
 		isAutosync = autosync;
-		unsyncedText.setVisibility(autosync ? View.GONE : View.VISIBLE);
+		unsyncedContainer.setVisibility(autosync ? View.GONE : View.VISIBLE);
 		updateTexts();
 	}
 
@@ -101,22 +104,22 @@ public class AnswersCounter
 	{
 		if(isAutosync)
 		{
-			updateText(uploadedText, uploaded + unsynced);
+			updateText(uploadedText, uploadedContainer, uploaded + unsynced);
 		}
 		else
 		{
-			updateText(uploadedText, uploaded);
-			updateText(unsyncedText, unsynced);
+			updateText(uploadedText, uploadedContainer, uploaded);
+			updateText(unsyncedText, unsyncedContainer, unsynced);
 		}
 	}
 
-	private void updateText(TextView view, int value)
+	private void updateText(TextView view, View container, int value)
 	{
 		if(isFirstUpdateDone) try
 		{
 			int previous = Integer.parseInt(view.getText().toString());
-			if(previous < value) animateChange(view, 1.6f);
-			else if(previous > value) animateChange(view, 0.6f);
+			if(previous < value) animateChange(container, 1.6f);
+			else if(previous > value) animateChange(container, 0.6f);
 		}
 		catch (NumberFormatException ignore) { }
 		view.setText(String.valueOf(value));
@@ -130,7 +133,7 @@ public class AnswersCounter
 		anim.setRepeatCount(1);
 		anim.setRepeatMode(ValueAnimator.REVERSE);
 		anim.setInterpolator(new DecelerateInterpolator(2f));
-		anim.setDuration(200);
+		anim.setDuration(150);
 		anim.start();
 	}
 
