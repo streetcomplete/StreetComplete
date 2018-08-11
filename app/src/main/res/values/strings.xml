@@ -645,7 +645,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     </string>
     <string name="height_measure_help_tips">
         Make sure that you are holding the camera in the same position and height during the whole process.
-        You are only allowed to tilt the phone. Do not move while measuring the height because this might result in wrong values.
+        You are only allowed to tilt the phone. Stay in the same place while measuring the height because this might result in wrong values.
         It is also important that you can see the whole object while measuring the height.
         If the height is about 4 meter, you should stand at least 30 meter in front of the object.
         You will get the best result if you are standing exactly orthogonal to the object. (orthogonal is the opposite of parallel)
