@@ -66,6 +66,7 @@ public class OsmQuestDownload
 				"Skipped because it is disabled for this country");
 			return true;
 		}
+		Log.i(TAG, getQuestTypeName(questType) + ": Starting");
 
 		final ArrayList<ElementGeometryDao.Row> geometryRows = new ArrayList<>();
 		final Map<OsmElementKey,Element> elements = new HashMap<>();

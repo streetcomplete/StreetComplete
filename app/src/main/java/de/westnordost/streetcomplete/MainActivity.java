@@ -6,6 +6,9 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.graphics.Point;
 import android.graphics.PointF;
+import android.graphics.drawable.Animatable;
+import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.Drawable;
 import android.support.v4.app.Fragment;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -40,7 +43,6 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.AccelerateInterpolator;
-import android.view.animation.DecelerateInterpolator;
 import android.view.animation.OvershootInterpolator;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.CheckBox;
@@ -51,7 +53,6 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Random;
 
 import javax.inject.Inject;
@@ -89,8 +90,7 @@ import de.westnordost.streetcomplete.quests.QuestAnswerComponent;
 import de.westnordost.streetcomplete.quests.QuestUtil;
 import de.westnordost.streetcomplete.settings.SettingsActivity;
 import de.westnordost.streetcomplete.sound.SoundFx;
-import de.westnordost.streetcomplete.statistics.UnsyncedChangesCounter;
-import de.westnordost.streetcomplete.statistics.UploadedAnswersCounter;
+import de.westnordost.streetcomplete.statistics.AnswersCounter;
 import de.westnordost.streetcomplete.tangram.MapControlsFragment;
 import de.westnordost.streetcomplete.tangram.MapFragment;
 import de.westnordost.streetcomplete.tangram.QuestsMapFragment;
@@ -118,12 +118,11 @@ public class MainActivity extends AppCompatActivity implements
 
 	@Inject FindQuestSourceComponent questSource;
 
-	@Inject UploadedAnswersCounter uploadedAnswersCounter;
-	@Inject UnsyncedChangesCounter unsyncedChangesCounter;
+	@Inject AnswersCounter answersCounter;
 
 	@Inject SoundFx soundFx;
 
-	private Random random = new Random();
+	private final Random random = new Random();
 
 	// per application start settings
 	private static boolean hasAskedForLocation = false;
@@ -131,8 +130,6 @@ public class MainActivity extends AppCompatActivity implements
 
 	private QuestsMapFragment mapFragment;
 	private Location lastLocation;
-
-	private TextView uploadedAnswersView;
 
 	private ProgressBar progressBar;
 
@@ -215,19 +212,20 @@ public class MainActivity extends AppCompatActivity implements
 
 		questController.onCreate();
 
-		uploadedAnswersView = toolbar.findViewById(R.id.uploadedAnswersCounter);
-		uploadedAnswersCounter.setTarget(uploadedAnswersView);
-
-		TextView unsyncedChangesView = toolbar.findViewById(R.id.unsyncedAnswersCounter);
-		unsyncedChangesCounter.setTarget(unsyncedChangesView);
-		unsyncedChangesView.setOnClickListener(view -> {
-            if (isConnected()) {
-                uploadChanges();
-            }
-            else {
-                Toast.makeText(MainActivity.this, R.string.offline, Toast.LENGTH_SHORT).show();
-            }
-        });
+		TextView uploadedAnswersView = toolbar.findViewById(R.id.uploadedAnswersCounter);
+		TextView unsyncedChangesView = findViewById(R.id.unsyncedAnswersCounter);
+		answersCounter.setTargets(uploadedAnswersView, unsyncedChangesView);
+		unsyncedChangesView.setOnClickListener(view ->
+		{
+			if (isConnected())
+			{
+				uploadChanges();
+			}
+			else
+			{
+				Toast.makeText(MainActivity.this, R.string.offline, Toast.LENGTH_SHORT).show();
+			}
+		});
 
 		questSource.onCreate(this);
 
@@ -254,8 +252,15 @@ public class MainActivity extends AppCompatActivity implements
 	{
 		super.onStart();
 
-		uploadedAnswersCounter.update();
-		unsyncedChangesCounter.update();
+		answersCounter.setAutosync(Prefs.Autosync.valueOf(prefs.getString(Prefs.AUTOSYNC,"ON")) == Prefs.Autosync.ON);
+		answersCounter.update();
+
+		TextView unsyncedChangesView = findViewById(R.id.unsyncedAnswersCounter);
+		for (Drawable drawable : unsyncedChangesView.getCompoundDrawables())
+		{
+			if(drawable != null && drawable instanceof Animatable)
+				((Animatable) drawable).start();
+		}
 
 		registerReceiver(locationAvailabilityReceiver, LocationUtil.createLocationAvailabilityIntentFilter());
 
@@ -343,8 +348,7 @@ public class MainActivity extends AppCompatActivity implements
 	{
 		Element element = questController.getOsmElement(quest);
 
-		View inner = LayoutInflater.from(this).inflate(
-				R.layout.dialog_undo, null, false);
+		View inner = LayoutInflater.from(this).inflate(R.layout.dialog_undo, null, false);
 		ImageView icon = inner.findViewById(R.id.icon);
 		icon.setImageResource(quest.getType().getIcon());
 		TextView text = inner.findViewById(R.id.text);
@@ -352,16 +356,16 @@ public class MainActivity extends AppCompatActivity implements
 		text.setText(QuestUtil.getHtmlTitle(getResources(), quest.getType(), element));
 
 		new AlertDialogBuilder(this)
-				.setTitle(R.string.undo_confirm_title)
-				.setView(inner)
-				.setPositiveButton(R.string.undo_confirm_positive, (dialog, which) ->
-				{
-					questController.undo(quest);
-					questAutoSyncer.triggerAutoUpload();
-					unsyncedChangesCounter.decrement(quest.getChangesSource());
-				})
-				.setNegativeButton(R.string.undo_confirm_negative, null)
-				.show();
+			.setTitle(R.string.undo_confirm_title)
+			.setView(inner)
+			.setPositiveButton(R.string.undo_confirm_positive, (dialog, which) ->
+			{
+				questController.undo(quest);
+				questAutoSyncer.triggerAutoUpload();
+				answersCounter.decrement(quest.getChangesSource());
+			})
+			.setNegativeButton(R.string.undo_confirm_negative, null)
+			.show();
 	}
 
 	@Override public boolean onOptionsItemSelected(MenuItem item)
@@ -536,10 +540,7 @@ public class MainActivity extends AppCompatActivity implements
 
 		@AnyThread @Override public void onFinished()
 		{
-			runOnUiThread(() -> {
-				uploadedAnswersCounter.update();
-				unsyncedChangesCounter.update();
-			});
+			answersCounter.update();
 		}
 	};
 
@@ -697,17 +698,9 @@ public class MainActivity extends AppCompatActivity implements
 			.with(ObjectAnimator.ofFloat(quest, "alpha", 1f, 0f));
 		vanish.setInterpolator(new AccelerateInterpolator());
 
-		AnimatorSet nom = new AnimatorSet();
-		nom
-			.play(ObjectAnimator.ofFloat(target, "scaleX", 1f, 1.7f, 1f))
-			.with(ObjectAnimator.ofFloat(target, "scaleY", 1f, 1.7f, 1f));
-		nom.setInterpolator(new DecelerateInterpolator(1.5f));
-		nom.setDuration(250);
-
 		AnimatorSet anim = new AnimatorSet();
 		anim.play(pop).before(fling);
-		anim.play(fling).with(vanish).before(nom);
-		anim.play(nom);
+		anim.play(fling).with(vanish);
 		return anim;
 	}
 
@@ -723,8 +716,6 @@ public class MainActivity extends AppCompatActivity implements
 		startPos.x += offset[0] - size/2;
 		startPos.y += offset[1] - size*1.5;
 
-		View target = uploadedAnswersView;
-
 		ViewGroup root = (ViewGroup) getWindow().getDecorView();
 
 		ImageView img = new ImageView(this);
@@ -732,13 +723,13 @@ public class MainActivity extends AppCompatActivity implements
 		img.setX(startPos.x);
 		img.setY(startPos.y);
 
-		Animator anim = createQuestSolvedAnimation(img, target);
+		Animator anim = createQuestSolvedAnimation(img, answersCounter.getAnswerTarget());
 		anim.addListener(new AnimatorListenerAdapter()
 		{
 			@Override public void onAnimationEnd(Animator animation)
 			{
 				root.removeView(img);
-				unsyncedChangesCounter.increase(source);
+				answersCounter.increase(source);
 			}
 		});
 
@@ -795,7 +786,7 @@ public class MainActivity extends AppCompatActivity implements
 		if(position == null) throw new NullPointerException();
 		questController.createNote(note, imagePaths, position);
 
-		unsyncedChangesCounter.increase(null);
+		answersCounter.increase(null);
 
 		closeBottomSheet();
 	}

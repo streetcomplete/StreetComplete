@@ -60,7 +60,6 @@ public class SettingsFragment extends PreferenceFragmentCompat
 						downloadedTilesDao.removeAll();
 					})
 					.setNegativeButton(android.R.string.cancel, null)
-					.create()
 					.show();
 
 			return true;
@@ -120,6 +119,16 @@ public class SettingsFragment extends PreferenceFragmentCompat
 			ApplyNoteVisibilityChangedTask task = applyNoteVisibilityChangedTask.get();
 			task.setPreference(getPreferenceScreen().findPreference(Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS));
 			task.execute();
+		}
+		else if(key.equals(Prefs.AUTOSYNC))
+		{
+			if(Prefs.Autosync.valueOf(prefs.getString(Prefs.AUTOSYNC,"ON")) != Prefs.Autosync.ON)
+			{
+				new AlertDialogBuilder(getContext())
+					.setView(R.layout.dialog_tutorial_upload)
+					.setPositiveButton(android.R.string.ok, null)
+					.show();
+			}
 		}
 	}
 
