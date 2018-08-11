@@ -33,6 +33,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.inputmethod.InputMethodManager;
@@ -86,6 +87,7 @@ import de.westnordost.streetcomplete.tangram.MapControlsFragment;
 import de.westnordost.streetcomplete.tangram.MapFragment;
 import de.westnordost.streetcomplete.tangram.QuestsMapFragment;
 import de.westnordost.streetcomplete.tools.CrashReportExceptionHandler;
+import de.westnordost.streetcomplete.util.DpUtil;
 import de.westnordost.streetcomplete.util.SlippyMapMath;
 import de.westnordost.streetcomplete.util.SphericalEarthMath;
 import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
@@ -335,7 +337,8 @@ public class MainActivity extends AppCompatActivity implements
 				.setView(inner)
 				.setPositiveButton(R.string.undo_confirm_positive, (dialog, which) ->
 				{
-					questController.undoOsmQuest(quest);
+					questController.undo(quest);
+					questAutoSyncer.triggerAutoUpload();
 					unsyncedChangesCounter.decrement(quest.getChangesSource());
 				})
 				.setNegativeButton(R.string.undo_confirm_negative, null)
@@ -521,7 +524,7 @@ public class MainActivity extends AppCompatActivity implements
 		}
 	};
 
-	/* ------------------------------------ Progress bar  --------------------------------------- */
+	/* ----------------------------- Download Progress listener  -------------------------------- */
 
 	private final QuestDownloadProgressListener downloadProgressListener
 			= new QuestDownloadProgressListener()
@@ -632,22 +635,27 @@ public class MainActivity extends AppCompatActivity implements
 		{
 			closeQuestDetailsFor(questId, group);
 			unsyncedChangesCounter.increase(source);
-			questController.solveQuest(questId, group, answer, source);
+			if(questController.solve(questId, group, answer, source)) onSolvedQuest();
 		});
 	}
 
 	@Override public void onLeaveNote(long questId, QuestGroup group, String questTitle, String note, ArrayList<String> imagePaths)
 	{
 		closeQuestDetailsFor(questId, group);
-		questController.createNote(questId, questTitle, note, imagePaths);
-
 		unsyncedChangesCounter.increase(null);
+		if(questController.createNote(questId, questTitle, note, imagePaths)) onSolvedQuest();
+	}
+
+	private void onSolvedQuest()
+	{
+
+		questAutoSyncer.triggerAutoUpload();
 	}
 
 	@Override public void onSkippedQuest(long questId, QuestGroup group)
 	{
 		closeQuestDetailsFor(questId, group);
-		questController.hideQuest(questId, group);
+		questController.hide(questId, group);
 	}
 
 	private void closeQuestDetailsFor(long questId, QuestGroup group)
@@ -711,7 +719,7 @@ public class MainActivity extends AppCompatActivity implements
 			{
 				if (isQuestDetailsCurrentlyDisplayedFor(q.getId(), group))
 				{
-					questController.retrieve(group, q.getId());
+					runOnUiThread(() -> showQuestDetails(q, group));
 					return;
 				}
 			}
@@ -719,36 +727,10 @@ public class MainActivity extends AppCompatActivity implements
 	}
 
 	@AnyThread @Override
-	public synchronized void onQuestSelected(final Quest quest, final QuestGroup group, final Element element)
-	{
-		runOnUiThread(() ->
-		{
-			showQuestDetails(quest, group, element);
-			mapFragment.addQuestGeometry(quest.getGeometry());
-		});
-	}
-
-	@AnyThread @Override
 	public synchronized void onQuestsRemoved(Collection<Long> questIds, QuestGroup group)
 	{
-		removeQuests(questIds, group);
-	}
+		runOnUiThread(() -> mapFragment.removeQuests(questIds, group));
 
-	@AnyThread @Override
-	public synchronized void onQuestSolved(long questId, QuestGroup group)
-	{
-		questAutoSyncer.triggerAutoUpload();
-		removeQuests(Collections.singletonList(questId), group);
-	}
-
-	@AnyThread @Override
-	public void onQuestReverted(long revertQuestId, QuestGroup group)
-	{
-		questAutoSyncer.triggerAutoUpload();
-	}
-
-	private void removeQuests(Collection<Long> questIds, QuestGroup group)
-	{
 		// amount of quests is reduced -> check if redownloding now makes sense
 		questAutoSyncer.triggerAutoDownload();
 
@@ -757,12 +739,14 @@ public class MainActivity extends AppCompatActivity implements
 			if (!isQuestDetailsCurrentlyDisplayedFor(questId, group)) continue;
 
 			runOnUiThread(this::closeBottomSheet);
-			questController.retrieveNextAt(questId, group);
+			Quest quest = questController.getNextAt(questId, group);
+			if(quest != null)
+			{
+				runOnUiThread(() -> showQuestDetails(quest, group));
+			}
 
 			break;
 		}
-
-		mapFragment.removeQuests(questIds, group);
 	}
 
 	@UiThread private void closeBottomSheet()
@@ -798,9 +782,10 @@ public class MainActivity extends AppCompatActivity implements
 				&& currentFragment.getQuestGroup() == group;
 	}
 
-	@UiThread private void showQuestDetails(final Quest quest, final QuestGroup group,
-											final Element element)
+	@UiThread private void showQuestDetails(Quest quest, QuestGroup group)
 	{
+		mapFragment.addQuestGeometry(quest.getGeometry());
+
 		if(isQuestDetailsCurrentlyDisplayedFor(quest.getId(), group)) return;
 
 		if(getBottomSheetFragment() != null)
@@ -815,6 +800,7 @@ public class MainActivity extends AppCompatActivity implements
 		Bundle args = QuestAnswerComponent.createArguments(quest.getId(), group);
 		if (group == QuestGroup.OSM)
 		{
+			Element element = questController.getOsmElement((OsmQuest) quest);
 			args.putSerializable(AbstractQuestAnswerFragment.ARG_ELEMENT, (OsmElement) element);
 		}
 		args.putSerializable(AbstractQuestAnswerFragment.ARG_GEOMETRY, quest.getGeometry());
@@ -873,15 +859,15 @@ public class MainActivity extends AppCompatActivity implements
 	{
 		if (isQuestDetailsCurrentlyDisplayedFor(questId, questGroup)) return;
 
+		Runnable retrieveQuest = () ->
+		{
+			Quest quest = questController.get(questId, questGroup);
+			if(quest != null) showQuestDetails(quest, questGroup);
+		};
+
 		AbstractBottomSheetFragment f = getBottomSheetFragment();
-		if (f != null)
-		{
-			f.onClickClose(() -> questController.retrieve(questGroup, questId));
-		}
-		else
-		{
-			questController.retrieve(questGroup, questId);
-		}
+		if (f != null)  f.onClickClose(retrieveQuest);
+		else            retrieveQuest.run();
 	}
 
 	@Override public void onClickedMapAt(@Nullable LatLon position)
