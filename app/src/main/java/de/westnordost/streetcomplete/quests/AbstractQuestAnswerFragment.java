@@ -213,7 +213,7 @@ public abstract class AbstractQuestAnswerFragment extends AbstractBottomSheetFra
 		{
 			content.removeAllViews();
 		}
-		return LayoutInflater.from(getContext()).inflate(resourceId, content);
+		return getLayoutInflater().inflate(resourceId, content);
 	}
 
 	protected final View setButtonsView(int resourceId)
