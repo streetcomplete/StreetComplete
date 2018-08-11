@@ -45,6 +45,7 @@ import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.util.BitmapUtil;
+import de.westnordost.streetcomplete.util.DpUtil;
 import de.westnordost.streetcomplete.util.SphericalEarthMath;
 
 import static android.content.Context.SENSOR_SERVICE;
@@ -238,12 +239,11 @@ public class MapFragment extends Fragment implements
 
 	private String[] sizeInDp(Drawable drawable)
 	{
-		DisplayMetrics metrics = new DisplayMetrics();
-		getActivity().getWindowManager().getDefaultDisplay().getMetrics(metrics);
-		float d = metrics.density;
+		Context ctx = getContext();
 		return new String[]{
-				drawable.getIntrinsicWidth() / d + "px",
-				drawable.getIntrinsicHeight() / d + "px"};
+			// CSS "px" are in fact density dependent pixels
+			DpUtil.toDp(drawable.getIntrinsicWidth(), ctx) + "px",
+			DpUtil.toDp(drawable.getIntrinsicHeight(),ctx) + "px"};
 	}
 
 	private void updateMapTileCacheSize()
