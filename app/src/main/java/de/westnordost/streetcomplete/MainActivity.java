@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.graphics.Point;
 import android.graphics.PointF;
@@ -36,6 +39,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.DecelerateInterpolator;
+import android.view.animation.OvershootInterpolator;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.CheckBox;
 import android.widget.ImageView;
@@ -46,6 +52,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Random;
 
 import javax.inject.Inject;
 
@@ -81,6 +88,7 @@ import de.westnordost.streetcomplete.quests.OsmQuestAnswerListener;
 import de.westnordost.streetcomplete.quests.QuestAnswerComponent;
 import de.westnordost.streetcomplete.quests.QuestUtil;
 import de.westnordost.streetcomplete.settings.SettingsActivity;
+import de.westnordost.streetcomplete.sound.SoundFx;
 import de.westnordost.streetcomplete.statistics.UnsyncedChangesCounter;
 import de.westnordost.streetcomplete.statistics.UploadedAnswersCounter;
 import de.westnordost.streetcomplete.tangram.MapControlsFragment;
@@ -113,12 +121,18 @@ public class MainActivity extends AppCompatActivity implements
 	@Inject UploadedAnswersCounter uploadedAnswersCounter;
 	@Inject UnsyncedChangesCounter unsyncedChangesCounter;
 
+	@Inject SoundFx soundFx;
+
+	private Random random = new Random();
+
 	// per application start settings
 	private static boolean hasAskedForLocation = false;
 	private static boolean dontShowRequestAuthorizationAgain = false;
 
 	private QuestsMapFragment mapFragment;
 	private Location lastLocation;
+
+	private TextView uploadedAnswersView;
 
 	private ProgressBar progressBar;
 
@@ -182,6 +196,11 @@ public class MainActivity extends AppCompatActivity implements
 
 		crashReportExceptionHandler.askUserToSendCrashReportIfExists(this);
 
+		soundFx.prepare(R.raw.plop0);
+		soundFx.prepare(R.raw.plop1);
+		soundFx.prepare(R.raw.plop2);
+		soundFx.prepare(R.raw.plop3);
+
 		setContentView(R.layout.activity_main);
 		PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
 
@@ -196,7 +215,7 @@ public class MainActivity extends AppCompatActivity implements
 
 		questController.onCreate();
 
-		TextView uploadedAnswersView = toolbar.findViewById(R.id.uploadedAnswersCounter);
+		uploadedAnswersView = toolbar.findViewById(R.id.uploadedAnswersCounter);
 		uploadedAnswersCounter.setTarget(uploadedAnswersView);
 
 		TextView unsyncedChangesView = toolbar.findViewById(R.id.unsyncedAnswersCounter);
@@ -627,29 +646,104 @@ public class MainActivity extends AppCompatActivity implements
 
 	/* ------------- OsmQuestAnswerListener ------------- */
 
-	@Override public void onAnsweredQuest(final long questId, final QuestGroup group, final Bundle answer)
+	@Override public void onAnsweredQuest(long questId, QuestGroup group, Bundle answer)
 	{
 		// line between location now and location when the form was opened
 		Location[] locations = new Location[]{ lastLocation, mapFragment.getDisplayedLocation() };
 		questSource.findSource(questId, group, locations, source ->
 		{
-			closeQuestDetailsFor(questId, group);
-			unsyncedChangesCounter.increase(source);
-			if(questController.solve(questId, group, answer, source)) onSolvedQuest();
+			onSolvedQuest(questId, group, source);
+			questController.solve(questId, group, answer, source);
+			questAutoSyncer.triggerAutoUpload();
 		});
 	}
 
 	@Override public void onLeaveNote(long questId, QuestGroup group, String questTitle, String note, ArrayList<String> imagePaths)
 	{
-		closeQuestDetailsFor(questId, group);
-		unsyncedChangesCounter.increase(null);
-		if(questController.createNote(questId, questTitle, note, imagePaths)) onSolvedQuest();
+		onSolvedQuest(questId, group, null);
+		questController.createNote(questId, questTitle, note, imagePaths);
+		questAutoSyncer.triggerAutoUpload();
 	}
 
-	private void onSolvedQuest()
+	private void onSolvedQuest(long questId, QuestGroup group, String source)
 	{
+		closeQuestDetailsFor(questId, group);
+		Quest q = questController.get(questId, group);
+		if(q != null) showQuestSolvedAnimation(q, source);
+	}
 
-		questAutoSyncer.triggerAutoUpload();
+	private Animator createQuestSolvedAnimation(View quest, View target)
+	{
+		int[] targetPos = new int[2];
+		target.getLocationOnScreen(targetPos);
+
+		AnimatorSet pop = new AnimatorSet();
+		pop
+			.play(ObjectAnimator.ofFloat(quest, "scaleX", 1f, 1.6f))
+			.with(ObjectAnimator.ofFloat(quest, "scaleY", 1f, 1.6f));
+		pop.setInterpolator(new OvershootInterpolator(8f));
+		pop.setDuration(250);
+
+		AnimatorSet fling = new AnimatorSet();
+		fling
+			.play(ObjectAnimator.ofFloat(quest, "x", quest.getX(), targetPos[0]))
+			.with(ObjectAnimator.ofFloat(quest, "y", quest.getY(), targetPos[1]));
+		fling.setDuration(250);
+
+		AnimatorSet vanish = new AnimatorSet();
+		vanish
+			.play(ObjectAnimator.ofFloat(quest, "scaleX", 1.6f, 0.5f))
+			.with(ObjectAnimator.ofFloat(quest, "scaleY", 1.6f, 0.5f))
+			.with(ObjectAnimator.ofFloat(quest, "alpha", 1f, 0f));
+		vanish.setInterpolator(new AccelerateInterpolator());
+
+		AnimatorSet nom = new AnimatorSet();
+		nom
+			.play(ObjectAnimator.ofFloat(target, "scaleX", 1f, 1.7f, 1f))
+			.with(ObjectAnimator.ofFloat(target, "scaleY", 1f, 1.7f, 1f));
+		nom.setInterpolator(new DecelerateInterpolator(1.5f));
+		nom.setDuration(250);
+
+		AnimatorSet anim = new AnimatorSet();
+		anim.play(pop).before(fling);
+		anim.play(fling).with(vanish).before(nom);
+		anim.play(nom);
+		return anim;
+	}
+
+	private void showQuestSolvedAnimation(Quest quest, String source)
+	{
+		soundFx.play(getResources().getIdentifier("plop"+random.nextInt(4), "raw", getPackageName()));
+
+		int size = (int) DpUtil.toPx(42, this);
+
+		int[] offset = new int[2];
+		mapFragment.getView().getLocationOnScreen(offset);
+		PointF startPos = mapFragment.getPointOf(quest.getMarkerLocation());
+		startPos.x += offset[0] - size/2;
+		startPos.y += offset[1] - size*1.5;
+
+		View target = uploadedAnswersView;
+
+		ViewGroup root = (ViewGroup) getWindow().getDecorView();
+
+		ImageView img = new ImageView(this);
+		img.setImageResource(quest.getType().getIcon());
+		img.setX(startPos.x);
+		img.setY(startPos.y);
+
+		Animator anim = createQuestSolvedAnimation(img, target);
+		anim.addListener(new AnimatorListenerAdapter()
+		{
+			@Override public void onAnimationEnd(Animator animation)
+			{
+				root.removeView(img);
+				unsyncedChangesCounter.increase(source);
+			}
+		});
+
+		root.addView(img, size, size);
+		anim.start();
 	}
 
 	@Override public void onSkippedQuest(long questId, QuestGroup group)
@@ -800,8 +894,8 @@ public class MainActivity extends AppCompatActivity implements
 		Bundle args = QuestAnswerComponent.createArguments(quest.getId(), group);
 		if (group == QuestGroup.OSM)
 		{
-			Element element = questController.getOsmElement((OsmQuest) quest);
-			args.putSerializable(AbstractQuestAnswerFragment.ARG_ELEMENT, (OsmElement) element);
+			OsmElement element = questController.getOsmElement((OsmQuest) quest);
+			args.putSerializable(AbstractQuestAnswerFragment.ARG_ELEMENT, element);
 		}
 		args.putSerializable(AbstractQuestAnswerFragment.ARG_GEOMETRY, quest.getGeometry());
 		args.putString(AbstractQuestAnswerFragment.ARG_QUESTTYPE, quest.getType().getClass().getSimpleName());
