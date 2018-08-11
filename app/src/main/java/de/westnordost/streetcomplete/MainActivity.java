@@ -7,7 +7,6 @@ import android.animation.ObjectAnimator;
 import android.graphics.Point;
 import android.graphics.PointF;
 import android.graphics.drawable.Animatable;
-import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.v4.app.Fragment;
 import android.content.BroadcastReceiver;
@@ -131,7 +130,10 @@ public class MainActivity extends AppCompatActivity implements
 	private QuestsMapFragment mapFragment;
 	private Location lastLocation;
 
-	private ProgressBar progressBar;
+	private ProgressBar downloadProgressBar;
+	private ProgressBar uploadProgressBar;
+
+	private View unsyncedChangesContainer;
 
 	private float mapRotation, mapTilt;
 	private boolean isFollowingPosition;
@@ -214,8 +216,10 @@ public class MainActivity extends AppCompatActivity implements
 
 		TextView uploadedAnswersView = toolbar.findViewById(R.id.uploadedAnswersCounter);
 		TextView unsyncedChangesView = findViewById(R.id.unsyncedAnswersCounter);
-		answersCounter.setTargets(uploadedAnswersView, unsyncedChangesView);
-		unsyncedChangesView.setOnClickListener(view ->
+		unsyncedChangesContainer = findViewById(R.id.unsyncedAnswersContainer);
+		uploadProgressBar = findViewById(R.id.unsyncedAnswersProgress);
+		answersCounter.setViews(uploadedAnswersView, uploadedAnswersView, unsyncedChangesView, unsyncedChangesContainer);
+		unsyncedChangesContainer.setOnClickListener(view ->
 		{
 			if (isConnected())
 			{
@@ -233,8 +237,8 @@ public class MainActivity extends AppCompatActivity implements
 				.add(locationRequestFragment, LocationRequestFragment.class.getSimpleName())
 				.commit();
 
-		progressBar = findViewById(R.id.download_progress);
-		progressBar.setMax(1000);
+		downloadProgressBar = findViewById(R.id.download_progress);
+		downloadProgressBar.setMax(1000);
 
 		mapFragment = (QuestsMapFragment) getSupportFragmentManager().findFragmentById(R.id.map_fragment);
 		mapFragment.setQuestOffsets(new Rect(
@@ -272,7 +276,8 @@ public class MainActivity extends AppCompatActivity implements
 		questController.onStart(this);
 		questAutoSyncer.onStart();
 
-		progressBar.setAlpha(0f);
+		uploadProgressBar.setVisibility(View.INVISIBLE);
+		downloadProgressBar.setAlpha(0f);
 		downloadServiceIsBound = bindService(new Intent(this, QuestDownloadService.class),
 				downloadServiceConnection, BIND_AUTO_CREATE);
 		uploadServiceIsBound = bindService(new Intent(this, QuestChangesUploadService.class),
@@ -317,7 +322,7 @@ public class MainActivity extends AppCompatActivity implements
 			downloadService.startForeground();
 			// since we unbound from the service, we won't get the onFinished call. But we will get
 			// the onStarted call when we return to this activity when the service is rebound
-			progressBar.setAlpha(0f);
+			downloadProgressBar.setAlpha(0f);
 		}
 
 		if (uploadServiceIsBound) unbindService(uploadServiceConnection);
@@ -489,6 +494,15 @@ public class MainActivity extends AppCompatActivity implements
 	private final QuestChangesUploadProgressListener uploadProgressListener
 			= new QuestChangesUploadProgressListener()
 	{
+		@AnyThread @Override public void onStarted()
+		{
+			runOnUiThread(() ->
+			{
+				unsyncedChangesContainer.setEnabled(false);
+				uploadProgressBar.setVisibility(View.VISIBLE);
+			});
+		}
+
 		@AnyThread @Override public void onError(final Exception e)
 		{
 			runOnUiThread(() ->
@@ -540,6 +554,11 @@ public class MainActivity extends AppCompatActivity implements
 
 		@AnyThread @Override public void onFinished()
 		{
+			runOnUiThread(() ->
+			{
+				unsyncedChangesContainer.setEnabled(true);
+				uploadProgressBar.setVisibility(View.INVISIBLE);
+			});
 			answersCounter.update();
 		}
 	};
@@ -553,9 +572,9 @@ public class MainActivity extends AppCompatActivity implements
 		{
 			runOnUiThread(() ->
 			{
-				ObjectAnimator fadeInAnimator = ObjectAnimator.ofFloat(progressBar, View.ALPHA, 1f);
+				ObjectAnimator fadeInAnimator = ObjectAnimator.ofFloat(downloadProgressBar, View.ALPHA, 1f);
 				fadeInAnimator.start();
-				progressBar.setProgress(0);
+				downloadProgressBar.setProgress(0);
 
 				Toast.makeText(
 						MainActivity.this,
@@ -569,7 +588,7 @@ public class MainActivity extends AppCompatActivity implements
 			runOnUiThread(() ->
 			{
 				int intProgress = (int) (1000 * progress);
-				ObjectAnimator progressAnimator = ObjectAnimator.ofInt(progressBar, "progress", intProgress);
+				ObjectAnimator progressAnimator = ObjectAnimator.ofInt(downloadProgressBar, "progress", intProgress);
 				progressAnimator.setDuration(1000);
 				progressAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
 				progressAnimator.start();
@@ -605,7 +624,7 @@ public class MainActivity extends AppCompatActivity implements
 		{
 			runOnUiThread(() ->
 			{
-				ObjectAnimator fadeOutAnimator = ObjectAnimator.ofFloat(progressBar, View.ALPHA, 0f);
+				ObjectAnimator fadeOutAnimator = ObjectAnimator.ofFloat(downloadProgressBar, View.ALPHA, 0f);
 				fadeOutAnimator.setDuration(1000);
 				fadeOutAnimator.start();
 			});

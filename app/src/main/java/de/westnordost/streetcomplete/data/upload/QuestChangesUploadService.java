@@ -78,6 +78,11 @@ public class QuestChangesUploadService extends IntentService
 	{
 		if(cancelState.get()) return;
 
+		if(progressListener != null)
+		{
+			progressListener.onStarted();
+		}
+
 		try
 		{
 			if(isBanned())

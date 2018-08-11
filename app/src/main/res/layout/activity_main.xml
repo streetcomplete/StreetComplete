@@ -39,25 +39,47 @@
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:drawableStart="@drawable/ic_star_white_24dp"
-                android:drawablePadding="4dp"
-                android:padding="8dp"
+                android:padding="6dp"
+                android:drawablePadding="8dp"
                 android:minEms="4"
                 tools:text="8888"
                 />
 
-            <TextView
-                android:id="@+id/unsyncedAnswersCounter"
+            <RelativeLayout
+                android:id="@+id/unsyncedAnswersContainer"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:drawablePadding="4dp"
-                android:padding="8dp"
-                android:drawableStart="@drawable/ic_file_upload_24dp"
-                android:gravity="center_vertical"
-                android:background="?android:attr/selectableItemBackground"
-                android:minEms="2"
-                tools:text="88"
-                />
+                android:padding="6dp"
+                android:gravity="center">
 
+                <ProgressBar
+                    android:id="@+id/unsyncedAnswersProgress"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:indeterminate="true"
+                    android:layout_centerVertical="true"
+                    android:visibility="invisible"
+                    tools:visibility="visible"/>
+
+                <ImageView
+                    android:id="@+id/unsyncedAnswersIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_file_upload_24dp"/>
+
+                <TextView
+                    android:id="@+id/unsyncedAnswersCounter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@id/unsyncedAnswersIcon"
+                    android:minEms="1"
+                    tools:text="8"/>
+
+            </RelativeLayout>
 
         </android.support.v7.widget.Toolbar>
 
