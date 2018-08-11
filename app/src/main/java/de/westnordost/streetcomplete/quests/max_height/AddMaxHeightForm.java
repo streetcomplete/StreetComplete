@@ -1,6 +1,8 @@
 package de.westnordost.streetcomplete.quests.max_height;
 
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
@@ -19,18 +21,27 @@ import java.util.List;
 
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
+import de.westnordost.streetcomplete.quests.max_height.measure.MeasureCameraActivity;
+import de.westnordost.streetcomplete.quests.max_height.measure.MeasureCameraFragment;
 import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
+
+import static android.app.Activity.RESULT_OK;
 
 public class AddMaxHeightForm extends AbstractQuestFormAnswerFragment
 {
 	public static final String
 		MAX_HEIGHT = "max_height",
-		NO_SIGN = "no_sign";
+		NO_SIGN = "no_sign",
+		ESTIMATED_HEIGHT = "estimated_height";
 
 	public static final int
 		IS_BELOW_DEFAULT = 1,
 		IS_DEFAULT = 2,
 		IS_NOT_INDICATED = 3;
+
+	private boolean isEstimated = false;
+
+	private static final int HEIGHT_REQUEST_CODE = 1;
 
 	private EditText heightInput, feetInput, inchInput;
 	private Spinner heightUnitSelect;
@@ -108,58 +119,98 @@ public class AddMaxHeightForm extends AbstractQuestFormAnswerFragment
 
 	private void addOtherAnswers()
 	{
-		addOtherAnswer(R.string.quest_maxheight_answer_noSign, () ->
+		//TODO: should this be checked for every quest (may be resource intense) or is there some way to store this as a global constant?
+		boolean hasCamera = getContext().getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA);
+
+		if (hasCamera)
 		{
-			final String
-				restrictsTraffic = getResources().getString(R.string.quest_maxheight_answer_restrictsTraffic),
-				noTrafficRestriction = getResources().getString(R.string.quest_maxheight_answer_noTrafficRestriction),
-				cantEstimate = getResources().getString(R.string.quest_maxheight_answer_cantEstimate);
-
-			final List<String> answers = new ArrayList<>(3);
-			answers.add(restrictsTraffic);
-			answers.add(noTrafficRestriction);
-			answers.add(cantEstimate);
-
-			DialogInterface.OnClickListener onSelect = new DialogInterface.OnClickListener()
+			addOtherAnswer(R.string.quest_maxheight_answer_noSign, () ->
 			{
-				Integer selection = null;
-
-				@Override public void onClick(DialogInterface dialog, int which)
-				{
-					if (which >= 0)
+				new AlertDialogBuilder(getActivity())
+					.setMessage(R.string.quest_maxheight_answer_measure_description)
+					.setPositiveButton(android.R.string.ok, (dialog, which) ->
 					{
-						selection = which;
-						((AlertDialog)dialog).getButton(DialogInterface.BUTTON_POSITIVE).setEnabled(true);
-					}
-					else if (which == DialogInterface.BUTTON_POSITIVE)
-					{
-						if(selection == null || selection < 0 || selection >= answers.size()) return;
-						onAnswer();
-					}
-				}
+						Intent intent = new Intent(getContext(), MeasureCameraActivity.class);
+						intent.putExtra(MeasureCameraActivity.EXTRA_FRAGMENT_CLASS, MeasureCameraFragment.class.getName());
+						intent.putExtra(MeasureCameraFragment.IS_METRIC, isMetric());
+						startActivityForResult(intent, HEIGHT_REQUEST_CODE);
+					})
+					.setNegativeButton(android.R.string.cancel, null)
+					.show();
+			});
+		} else {
+			// TODO: should this method/dialog be removed or are there many users without a camera?
+			addOtherAnswer(R.string.quest_maxheight_answer_noSign, () ->
+			{
+				final String
+					restrictsTraffic = getResources().getString(R.string.quest_maxheight_answer_restrictsTraffic),
+					noTrafficRestriction = getResources().getString(R.string.quest_maxheight_answer_noTrafficRestriction),
+					cantEstimate = getResources().getString(R.string.quest_maxheight_answer_cantEstimate);
 
-				private void onAnswer()
+				final List<String> answers = new ArrayList<>(3);
+				answers.add(restrictsTraffic);
+				answers.add(noTrafficRestriction);
+				answers.add(cantEstimate);
+
+				DialogInterface.OnClickListener onSelect = new DialogInterface.OnClickListener()
 				{
-					String answer = answers.get(selection);
-					Bundle data = new Bundle();
-					int type = 0;
-					if(answer.equals(restrictsTraffic))	type = IS_BELOW_DEFAULT;
-					if(answer.equals(noTrafficRestriction))	type = IS_DEFAULT;
-					if(answer.equals(cantEstimate))    type = IS_NOT_INDICATED;
-					data.putInt(NO_SIGN, type);
-					applyImmediateAnswer(data);
+					Integer selection = null;
+
+					@Override public void onClick(DialogInterface dialog, int which)
+					{
+						if (which >= 0)
+						{
+							selection = which;
+							((AlertDialog)dialog).getButton(DialogInterface.BUTTON_POSITIVE).setEnabled(true);
+						}
+						else if (which == DialogInterface.BUTTON_POSITIVE)
+						{
+							if(selection == null || selection < 0 || selection >= answers.size()) return;
+							onAnswer();
+						}
+					}
+
+					private void onAnswer()
+					{
+						String answer = answers.get(selection);
+						Bundle data = new Bundle();
+						int type = 0;
+						if(answer.equals(restrictsTraffic))	type = IS_BELOW_DEFAULT;
+						if(answer.equals(noTrafficRestriction))	type = IS_DEFAULT;
+						if(answer.equals(cantEstimate))    type = IS_NOT_INDICATED;
+						data.putInt(NO_SIGN, type);
+						applyImmediateAnswer(data);
+					}
+				};
+
+				AlertDialog dlg = new AlertDialogBuilder(getActivity())
+					.setSingleChoiceItems(answers.toArray(new String[0]), -1, onSelect)
+					.setTitle(R.string.quest_maxheight_answer_noSign_question)
+					.setPositiveButton(android.R.string.ok, onSelect)
+					.setNegativeButton(android.R.string.cancel, null)
+					.show();
+
+				dlg.getButton(DialogInterface.BUTTON_POSITIVE).setEnabled(false);
+			});
+		}
+	}
+
+	@Override public void onActivityResult(int requestCode, int resultCode, Intent data)
+	{
+		if (requestCode == HEIGHT_REQUEST_CODE) {
+			if (resultCode == RESULT_OK) {
+				isEstimated = true;
+
+				String unit = data.getStringExtra(MeasureCameraActivity.UNIT);
+				if (unit.equals(MeasureCameraActivity.METERS))
+				{
+					heightInput.setText(data.getStringExtra(MeasureCameraActivity.METERS));
+				} else {
+					feetInput.setText(data.getStringExtra(MeasureCameraActivity.FEET));
+					inchInput.setText(data.getStringExtra(MeasureCameraActivity.INCHES));
 				}
-			};
-
-			AlertDialog dlg = new AlertDialogBuilder(getActivity())
-				.setSingleChoiceItems(answers.toArray(new String[0]), -1, onSelect)
-				.setTitle(R.string.quest_maxheight_answer_noSign_question)
-				.setPositiveButton(android.R.string.ok, onSelect)
-				.setNegativeButton(android.R.string.cancel, null)
-				.show();
-
-			dlg.getButton(DialogInterface.BUTTON_POSITIVE).setEnabled(false);
-		});
+			}
+		}
 	}
 
 	@Override protected void onClickOk()
@@ -192,22 +243,13 @@ public class AddMaxHeightForm extends AbstractQuestFormAnswerFragment
 
 		Bundle answer = new Bundle();
 		answer.putString(MAX_HEIGHT, height);
+		answer.putBoolean(ESTIMATED_HEIGHT, isEstimated);
 		applyFormAnswer(answer);
 	}
 
 	private Height getHeightFromInput()
 	{
-		boolean isMetric;
-
-		if (heightUnitSelect != null)
-		{
-			isMetric = heightUnitSelect.getSelectedItem().equals("m");
-		} else {
-			List<String> measurementUnits = getCountryInfo().getMeasurementSystem();
-			isMetric = measurementUnits.get(0).equals("metric");
-		}
-
-		if (isMetric)
+		if (isMetric())
 		{
 			String input = heightInput.getText().toString();
 			if (!input.isEmpty())
@@ -234,6 +276,20 @@ public class AddMaxHeightForm extends AbstractQuestFormAnswerFragment
 			}
 			return new Height();
 		}
+	}
+
+	private boolean isMetric()
+	{
+		boolean isMetric;
+
+		if (heightUnitSelect != null)
+		{
+			isMetric = heightUnitSelect.getSelectedItem().equals("m");
+		} else {
+			List<String> measurementUnits = getCountryInfo().getMeasurementSystem();
+			isMetric = measurementUnits.get(0).equals("metric");
+		}
+		return isMetric;
 	}
 
 	private void confirmUnusualInput(final Runnable callback)

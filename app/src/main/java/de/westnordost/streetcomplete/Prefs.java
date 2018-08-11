@@ -15,7 +15,11 @@ public class Prefs
 			SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS = "display.nonQuestionNotes",
 			AUTOSYNC = "autosync",
 			KEEP_SCREEN_ON = "display.keepScreenOn",
-			UNGLUE_HINT_TIMES_SHOWN = "unglueHint.shown";
+			UNGLUE_HINT_TIMES_SHOWN = "unglueHint.shown",
+			USER_HEIGHT = "user.height",
+			HEIGHT_MEASURE_HINT_TIMES_SHOWN = "measureHint.shown",
+			MEASURE_HINT_MARK_TOP_TIMES_SHOWN = "measureHint.markTop.shown",
+			MEASURE_HINT_MARK_BOTTOM_TIMES_SHOWN = "measureHint.markBottom.shown";
 
 	// not shown anywhere directly
 	public static final String

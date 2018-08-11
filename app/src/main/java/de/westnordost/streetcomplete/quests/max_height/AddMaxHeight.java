@@ -32,7 +32,7 @@ public class AddMaxHeight extends AOsmElementQuestType
 
 	private static final String TUNNEL_TYPES = "yes|building_passage|avalanche_protector";
 
-	private static final String QUERY_RESTRICTIONS = "!maxheight and !maxheight:physical";
+	private static final String QUERY_RESTRICTIONS = "!maxheight and !maxheight:physical and !maxheight:estimated";
 
 	private static final String ROADS = "primary|secondary|tertiary|trunk|motorway|residential|unclassified|living_street|" +
 		"primary_link|secondary_link|tertiary_link|trunk_link";
@@ -68,6 +68,7 @@ public class AddMaxHeight extends AOsmElementQuestType
 	{
 		String maxHeight = answer.getString(AddMaxHeightForm.MAX_HEIGHT);
 		int noSign = answer.getInt(AddMaxHeightForm.NO_SIGN);
+		boolean isEstimated = answer.getBoolean(AddMaxHeightForm.ESTIMATED_HEIGHT);
 
 		if(noSign != 0)
 		{
@@ -82,7 +83,13 @@ public class AddMaxHeight extends AOsmElementQuestType
 
 		if (maxHeight != null)
 		{
-			changes.add("maxheight", maxHeight);
+			if (isEstimated)
+			{
+				//TODO: should the tag be maxheight:estimated=* or maxheight:triangulated or something completely different?
+				changes.add("maxheight:estimated", maxHeight);
+			} else {
+				changes.add("maxheight", maxHeight);
+			}
 		}
 	}
 

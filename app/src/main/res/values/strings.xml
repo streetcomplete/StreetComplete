@@ -619,6 +619,39 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_maxheight_height_restrictor_title">What is the height limit of this height restrictor?</string>
     <string name="quest_maxheight_tunnel_title">What is the height limit of this tunnel?</string>
     <string name="quest_maxheight_answer_noSign">There is no sign</string>
+    <string name="quest_maxheight_answer_measure_description">If there is no sign you can still help and measure the height using your phone\'s sensors and camera</string>
+    <string name="input_user_height">Please input the height you are holding your phone at (in centimeter)</string>
+    <string name="confirmation_measured_height">Is %s approximately the correct height?</string>
+    <string name="measure_mark_bottom">Mark bottom</string>
+    <string name="measure_mark_top">Mark top</string>
+    <string name="measure_mark_bottom_hint">Adjust the cross hair to the bottom of the object</string>
+    <string name="measure_mark_top_hint">Adjust the cross hair to the top of the object</string>
+    <string name="camera_not_available_error">Can not connect to camera. Either your device does not have one or it is currently in use. Sometimes it helps to restart the phone.</string>
+    <string name="no_camera_found">No camera which could be used was found</string>
+    <string name="action_help">Help</string>
+    <string name="height_measure_help_instruction_title">How to measure the height</string>
+    <string name="height_measure_help_tips_title">Tips for achieving the best results</string>
+    <string name="height_measure_help_introduction">
+        You can measure the height of an object with your camera and some sensors.
+        First of all it is very important that you and the object you want to measure the height of are on the same level.
+        If you are e.g. standing on some stairs it will probably result in a wrong result.
+    </string>
+    <string name="height_measure_help_instruction">
+        Once you entered the height you are holding your phone at, you will be asked to mark the bottom of the object.
+        The cross hair helps you to adjust the angle. Press the button at the bottom and then tilt your phone towards the top of the object.
+        Press again the button at the bottom and the app calculates a result using some trigonometric functions.
+        If the result seems right to you, you can confirm it.
+        If not, you can either measure the height once again or you can edit the value afterwards.
+    </string>
+    <string name="height_measure_help_tips">
+        Make sure that you are holding the camera in the same position and height during the whole process.
+        You are only allowed to tilt the phone. Do not move while measuring the height because this might result in wrong values.
+        It is also important that you can see the whole object while measuring the height.
+        If the height is about 4 meter, you should stand at least 30 meter in front of the object.
+        You will get the best result if you are standing exactly orthogonal to the object. (orthogonal is the opposite of parallel)
+        Another thing which is important is that you are marking the bottom and the top of the object as precise as possible in order to get the best result.
+    </string>
+
     <string name="quest_maxheight_answer_noSign_question">Can you give some more information?</string>
     <string name="quest_maxheight_answer_restrictsTraffic">The physical height restricts the general traffic</string>
     <string name="quest_maxheight_answer_noTrafficRestriction">The physical height does not restrict the general traffic</string>

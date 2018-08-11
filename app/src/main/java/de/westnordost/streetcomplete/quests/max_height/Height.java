@@ -27,7 +27,7 @@ public class Height
 		this.unit = Unit.METRIC;
 	}
 
-	Height(int feet, int inches)
+	public Height(int feet, int inches)
 	{
 		this.feet = feet;
 		this.inches = inches;
@@ -72,12 +72,7 @@ public class Height
 		}
 		else
 		{
-			return feetToMeter(Double.parseDouble(feet + "." + inches));
+			return ((feet * 12 + inches) * 0.0254);
 		}
-	}
-
-	private static double feetToMeter(double feet)
-	{
-		return feet / 3.2808;
 	}
 }

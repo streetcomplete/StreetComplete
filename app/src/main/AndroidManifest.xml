@@ -9,6 +9,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.WAKE_LOCK" android:maxSdkVersion="20" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="18"/>
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <!-- evernote lib adds this permission but we do not use that feature-->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" tools:node="remove" />
@@ -49,6 +50,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".FragmentContainerActivity"/>
+        <activity android:name=".quests.max_height.measure.MeasureCameraActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
         <service android:name=".data.download.QuestDownloadService" />
         <service android:name=".data.upload.QuestChangesUploadService" />
         <provider
