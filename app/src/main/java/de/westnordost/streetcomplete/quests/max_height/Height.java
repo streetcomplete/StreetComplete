@@ -55,7 +55,12 @@ public class Height
 	{
 		if (unit.equals(Unit.METRIC))
 		{
-			return String.valueOf(meters);
+			if (meters % 1 == 0)
+			{
+				return String.valueOf((int) meters);
+			} else {
+				return String.valueOf(meters);
+			}
 		}
 		else
 		{

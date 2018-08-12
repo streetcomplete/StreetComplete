@@ -59,8 +59,6 @@ building_levels_illustration.svg
 
 living_street.svg
 
-measure_height_help.svg			parts taken from Twemoji 2: U+1F6B6
-
 roof_shape_icons.svg
 
 quest_icons.svg
