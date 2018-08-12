@@ -142,6 +142,10 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 		}
 
 		speedInput = rightSide.findViewById(R.id.maxSpeedInput);
+		if(speedInput != null)
+		{
+			speedInput.requestFocus();
+		}
 		speedUnitSelect = rightSide.findViewById(R.id.speedUnitSelect);
 		if(speedUnitSelect != null)
 		{
