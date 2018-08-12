@@ -41,7 +41,7 @@ public class OsmQuestGiver
 		this.questTypesProvider = questTypesProvider;
 	}
 
-	public class QuestUpdates
+	public static class QuestUpdates
 	{
 		public List<OsmQuest> createdQuests = new ArrayList<>();
 		public List<Long> removedQuestIds = new ArrayList<>();

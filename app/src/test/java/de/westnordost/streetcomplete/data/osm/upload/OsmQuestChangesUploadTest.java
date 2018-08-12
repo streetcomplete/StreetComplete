@@ -253,6 +253,7 @@ public class OsmQuestChangesUploadTest extends TestCase
 		QuestStatisticsDao statisticsDao = mock(QuestStatisticsDao.class);
 		MergedElementDao elementDb = mock(MergedElementDao.class);
 		OsmQuestGiver osmQuestUnlocker = mock(OsmQuestGiver.class);
+		when(osmQuestUnlocker.updateQuests(any(Element.class))).thenReturn(new OsmQuestGiver.QuestUpdates());
 		OsmQuestChangesUpload u = new OsmQuestChangesUpload(mapDataDao, questDb, elementDb, null,
 				statisticsDao, null, null, null, null, osmQuestUnlocker);
 
