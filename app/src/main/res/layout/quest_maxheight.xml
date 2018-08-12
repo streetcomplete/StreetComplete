@@ -27,6 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_toEndOf="@+id/inputSigns"
+        android:paddingStart="16dp"
         android:background="#0fff"
         android:visibility="gone"
         tools:visibility="visible"/>

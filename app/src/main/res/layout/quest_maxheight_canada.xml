@@ -48,18 +48,4 @@
 
     </RelativeLayout>
 
-    <include
-        android:id="@+id/feetInputSign"
-        tools:visibility="gone"
-        layout="@layout/quest_maxheight_feet"/>
-
-    <Spinner
-        android:id="@+id/heightUnitSelect"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
-        android:layout_marginEnd="16dp"
-        android:visibility="visible" />
-
 </RelativeLayout>

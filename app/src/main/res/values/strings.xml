@@ -620,6 +620,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_maxheight_height_restrictor_title">What is the height limit of this height restrictor?</string>
     <string name="quest_maxheight_tunnel_title">What is the height limit of this tunnel?</string>
     <string name="quest_maxheight_answer_noSign">There is no sign</string>
-    <string name="quest_maxheight_answer_noSign_question">Is it high enough for big trucks (higher than 4.5 meters) to pass through?</string>
+    <string name="quest_maxheight_answer_noSign_question">Is there easily enough space for even the tallest trucks (at least about 4.5 meters / 15 feet) to pass through?</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">This height looks implausible. Are you sure that it is correct?</string>
 </resources>

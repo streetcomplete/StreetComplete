@@ -5,8 +5,8 @@
     android:layout_width="112dp"
     android:layout_height="112dp"
     android:gravity="center"
-    android:background="@drawable/background_maxheight_sign_gb"
-    android:padding="14dp">
+    android:background="@drawable/background_maxheight_sign"
+    android:padding="18dp">
 
     <EditText
         android:id="@+id/feetInput"
@@ -19,7 +19,7 @@
         android:maxLength="2"
         android:nextFocusDown="@+id/inchInput"
         android:textColor="@color/traffic_black"
-        android:textSize="26dp"
+        android:textSize="24dp"
         android:textStyle="bold"
         tools:text="15" />
 
@@ -27,7 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="´"
+        android:text="′ "
         android:textColor="@color/traffic_black"
         android:textSize="24dp"
         android:textStyle="bold"
@@ -45,7 +45,7 @@
         android:maxLength="2"
         android:nextFocusUp="@+id/feetInput"
         android:textColor="@color/traffic_black"
-        android:textSize="26dp"
+        android:textSize="24dp"
         android:textStyle="bold"
         tools:text="11" />
 
@@ -53,7 +53,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="´´"
+        android:text="″"
         android:textColor="@color/traffic_black"
         android:textSize="24dp"
         android:textStyle="bold"

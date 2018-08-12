@@ -147,6 +147,8 @@ public abstract class AbstractQuestAnswerFragment extends AbstractBottomSheetFra
 		questAnswerComponent.onAttach((OsmQuestAnswerListener) ctx);
 	}
 
+	/** Note: Due to Android architecture limitations, a layout inflater based on this ContextWrapper
+	 *  will not resolve any resources specified in the XML according to MCC */
 	@NonNull @Override
 	public LayoutInflater onGetLayoutInflater(@Nullable Bundle savedInstanceState)
 	{

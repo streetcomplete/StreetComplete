@@ -6,7 +6,7 @@
     android:layout_height="112dp"
     android:gravity="center"
     android:background="@drawable/background_maxheight_sign"
-    android:padding="14dp">
+    android:padding="18dp">
 
     <EditText
         android:id="@+id/meterInput"
@@ -18,7 +18,7 @@
         android:inputType="numberDecimal"
         android:maxLength="4"
         android:textColor="@color/traffic_black"
-        android:textSize="26dp"
+        android:textSize="24dp"
         android:textStyle="bold"
         tools:text="1.44" />
 
@@ -28,7 +28,7 @@
         android:gravity="center"
         android:text="m"
         android:textColor="@color/traffic_black"
-        android:textSize="26dp"
+        android:textSize="24dp"
         android:layout_marginStart="4dp"
         android:textStyle="bold"
         tools:ignore="HardcodedText" />
