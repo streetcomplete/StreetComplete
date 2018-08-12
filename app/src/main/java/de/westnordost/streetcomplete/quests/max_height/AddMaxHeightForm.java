@@ -29,7 +29,7 @@ public class AddMaxHeightForm extends AbstractQuestFormAnswerFragment
 		BELOW_DEFAULT = "below_default",
 		DEFAULT = "default";
 
-	private EditText heightInput, feetInput, inchInput;
+	private EditText meterInput, feetInput, inchInput;
 	private Spinner heightUnitSelect;
 
 	private View meterInputSign, feetInputSign;
@@ -50,7 +50,7 @@ public class AddMaxHeightForm extends AbstractQuestFormAnswerFragment
 	{
 		View contentView = setContentView(resourceId);
 
-		heightInput = contentView.findViewById(R.id.meterInput);
+		meterInput = contentView.findViewById(R.id.meterInput);
 		feetInput = contentView.findViewById(R.id.feetInput);
 		inchInput = contentView.findViewById(R.id.inchInput);
 
@@ -83,8 +83,14 @@ public class AddMaxHeightForm extends AbstractQuestFormAnswerFragment
 
 	private void switchLayout(Height.Unit unit)
 	{
-		if(meterInputSign != null) meterInputSign.setVisibility(unit.equals(Height.Unit.METRIC) ? View.VISIBLE : View.GONE);
-		if(feetInputSign != null) feetInputSign.setVisibility(unit.equals(Height.Unit.IMPERIAL) ? View.VISIBLE : View.GONE);
+		boolean isMetric = unit == Height.Unit.METRIC;
+		boolean isImperial = unit == Height.Unit.IMPERIAL;
+
+		if(meterInputSign != null) meterInputSign.setVisibility(isMetric ? View.VISIBLE : View.GONE);
+		if(feetInputSign != null) feetInputSign.setVisibility(isImperial ? View.VISIBLE : View.GONE);
+
+		if(meterInput != null && isMetric) meterInput.requestFocus();
+		if(feetInput != null && isImperial) feetInput.requestFocus();
 	}
 
 	private void initHeightUnitSelect()
@@ -177,7 +183,7 @@ public class AddMaxHeightForm extends AbstractQuestFormAnswerFragment
 	{
 		if (isMetric())
 		{
-			String input = heightInput.getText().toString();
+			String input = meterInput.getText().toString();
 			if (!input.isEmpty())
 			{
 				NumberFormat format = NumberFormat.getInstance();
