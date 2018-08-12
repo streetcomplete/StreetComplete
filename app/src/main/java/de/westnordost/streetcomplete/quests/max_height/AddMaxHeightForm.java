@@ -1,6 +1,8 @@
 package de.westnordost.streetcomplete.quests.max_height;
 
 import android.os.Bundle;
+import android.text.InputFilter;
+import android.text.Spanned;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,6 +60,23 @@ public class AddMaxHeightForm extends AbstractQuestFormAnswerFragment
 		heightUnitSelect = contentView.findViewById(R.id.heightUnitSelect);
 
 		if (heightUnitSelect != null) initHeightUnitSelect();
+
+		if (inchInput != null)
+		{
+			inchInput.setFilters(new InputFilter[]{(source, start, end, dest, dstart, dend) ->
+			{
+				try
+				{
+					String input = dest.toString().substring(0, dstart) + dest.toString().substring(dend, dest.toString().length());
+					input = input.substring(0, dstart) + source.toString() + input.substring(dstart, input.length());
+
+					if (Integer.parseInt(input) <= 12) return null;
+				} catch (NumberFormatException e) {
+					e.printStackTrace();
+				}
+				return "";
+			}});
+		}
 
 		switchLayout(unit);
 	}
