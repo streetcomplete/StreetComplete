@@ -47,7 +47,7 @@
 
             <RelativeLayout
                 android:id="@+id/unsyncedAnswersContainer"
-                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:background="?android:attr/actionBarItemBackground"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:padding="6dp"
