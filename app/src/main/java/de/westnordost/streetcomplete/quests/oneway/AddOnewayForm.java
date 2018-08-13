@@ -28,6 +28,7 @@ public class AddOnewayForm extends YesNoQuestAnswerFragment
 
 		View view = super.onCreateView(inflater, container, inState);
 		setContentView(R.layout.quest_street_side_puzzle);
+		setNoContentPadding();
 
 		View compassNeedle = view.findViewById(R.id.compassNeedle);
 		StreetSideSelectPuzzle puzzle = view.findViewById(R.id.puzzle);
