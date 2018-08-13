@@ -2,14 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
+              xmlns:tools="http://schemas.android.com/tools"
               android:orientation="vertical">
 
     <TextView
         android:id="@+id/dietType_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text=""
-        android:paddingBottom="@dimen/quest_form_vertical_margin"/>
+        android:paddingBottom="@dimen/quest_form_vertical_margin"
+        tools:text="@string/quest_dietType_explanation_vegan"/>
 
     <TextView
         android:layout_width="match_parent"

@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment;
 
-public class TactilePavingBusStopForm extends YesNoQuestAnswerFragment
+public class TactilePavingForm extends YesNoQuestAnswerFragment
 {
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
