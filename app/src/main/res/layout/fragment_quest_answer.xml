@@ -11,7 +11,7 @@
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/buttonPanel"
+        android:layout_above="@id/buttonPanelContainer"
         android:clipChildren="false"
         android:background="#00000000">
         <!-- If I do not set any background color here, the layout will leave a few pixels free at the
@@ -48,7 +48,7 @@
 
             </LinearLayout>
 
-            <FrameLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -74,31 +74,44 @@
 
                 </de.westnordost.streetcomplete.view.MaskSpeechbubbleCornersFrameLayout>
 
-            </FrameLayout>
+            </LinearLayout>
 
         </LinearLayout>
 
     </android.support.design.widget.CoordinatorLayout>
 
     <LinearLayout
-        android:id="@+id/buttonPanel"
-        android:layout_alignParentBottom="true"
+        android:id="@+id/buttonPanelContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layoutDirection="locale"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
         android:background="@drawable/speech_bubble_end_cut_bottom"
         android:layout_marginStart="4dp"
         android:layout_marginBottom="4dp">
 
-        <Button
-            android:id="@+id/buttonOtherAnswers"
-            android:layout_width="wrap_content"
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorDivider"/>
+
+        <LinearLayout
+            android:id="@+id/buttonPanel"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:text="@string/quest_generic_otherAnswers"
-            style="?android:attr/buttonBarButtonStyle"
-            tools:ignore="InefficientWeight"/>
+            android:orientation="horizontal"
+            android:layoutDirection="locale">
+
+            <Button
+                android:id="@+id/buttonOtherAnswers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="@string/quest_generic_otherAnswers"
+                style="?android:attr/buttonBarButtonStyle"
+                tools:ignore="InefficientWeight"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 
