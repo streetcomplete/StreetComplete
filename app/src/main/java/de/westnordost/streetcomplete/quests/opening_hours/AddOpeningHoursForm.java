@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -173,8 +172,8 @@ public class AddOpeningHoursForm extends AbstractQuestFormAnswerFragment
 	private void confirmNoSign()
 	{
 		new AlertDialogBuilder(getActivity())
-			.setTitle(R.string.quest_openingHours_answer_noSign_confirmation_title)
-			.setPositiveButton(R.string.quest_openingHours_noSign_confirmation_positive, (dialog, which) ->
+			.setTitle(R.string.quest_generic_confirmation_title)
+			.setPositiveButton(R.string.quest_generic_confirmation_yes, (dialog, which) ->
 			{
 				Bundle data = new Bundle();
 				data.putBoolean(NO_SIGN, true);
