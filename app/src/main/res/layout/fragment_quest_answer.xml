@@ -37,12 +37,12 @@
                 style="@style/Widget.AppCompat.Toolbar"
                 android:orientation="horizontal">
 
-                <ImageButton
+                <ImageView
                     android:id="@+id/close_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src = "@drawable/ic_close_white_24dp"
-                    style="@style/Widget.AppCompat.Toolbar.Button.Navigation"
+                    android:background="?android:attr/actionBarItemBackground"
                     android:visibility="gone"
                     android:contentDescription="@string/close"
                     android:adjustViewBounds="true"
@@ -64,7 +64,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <LinearLayout
+                <FrameLayout
                     android:id="@+id/content"
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
@@ -75,7 +75,7 @@
                     android:paddingBottom="8dp"
                     >
 
-                </LinearLayout>
+                </FrameLayout>
 
             </android.support.v4.widget.NestedScrollView>
 

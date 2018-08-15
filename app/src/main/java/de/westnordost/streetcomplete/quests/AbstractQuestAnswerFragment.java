@@ -218,6 +218,11 @@ public abstract class AbstractQuestAnswerFragment extends AbstractBottomSheetFra
 		return getLayoutInflater().inflate(resourceId, content);
 	}
 
+	protected final void setNoContentPadding()
+	{
+		content.setPadding(0, 0, 0, 0);
+	}
+
 	protected final View setButtonsView(int resourceId)
 	{
 		return getActivity().getLayoutInflater().inflate(resourceId, buttonPanel);

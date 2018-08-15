@@ -29,7 +29,7 @@ public class AddTactilePavingCrosswalk extends SimpleOverpassQuestType
 
 	public AbstractQuestAnswerFragment createForm()
 	{
-		return new TactilePavingCrosswalkForm();
+		return new TactilePavingForm();
 	}
 
 	public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)

@@ -57,6 +57,7 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 	{
 		View view = super.onCreateView(inflater, container, inState);
 		setContentView(R.layout.quest_street_side_puzzle);
+		setNoContentPadding();
 
 		View compassNeedle = view.findViewById(R.id.compassNeedle);
 

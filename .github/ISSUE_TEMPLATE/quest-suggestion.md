@@ -1,5 +1,11 @@
+---
+name: Quest suggestion
+about: Suggest a new question to ask the user about
+
+---
+
 <!--
-If you are not suggesting a new quest, ignore this issue template. Otherwise we kindly ask you to fill it out.
+If you are not suggesting a new quest, please choose another issue template. Otherwise we kindly ask you to fill it out.
 
 Guidelines for quest suggestions: https://github.com/westnordost/StreetComplete/wiki/Adding-new-Quests-to-StreetComplete
 -->
@@ -33,5 +39,4 @@ If you are not sure about how one condition applies to your suggestion or you ha
 
 <!-- If you have any idea on how the GUI (the form appearing when the quest is asked) should look like. (i.e. whether a simple yes/no answer is suitable or what else you imagine) You can use any way to propose a UI. Use simple markdown tables (https://help.github.com/articles/organizing-information-with-tables/) or complex image mockups. That's your decision.
 Do include all answer possibilities you consider for that quest. -->
-**Proposed GUI:** 
-
+**Proposed GUI:**
