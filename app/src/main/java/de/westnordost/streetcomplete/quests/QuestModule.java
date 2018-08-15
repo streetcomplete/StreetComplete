@@ -28,12 +28,14 @@ import de.westnordost.streetcomplete.quests.diet_type.AddVegan;
 import de.westnordost.streetcomplete.quests.diet_type.AddVegetarian;
 import de.westnordost.streetcomplete.quests.fire_hydrant.AddFireHydrantType;
 import de.westnordost.streetcomplete.quests.internet_access.AddInternetAccess;
+import de.westnordost.streetcomplete.quests.max_height.AddMaxHeight;
 import de.westnordost.streetcomplete.quests.oneway.AddOneway;
 import de.westnordost.streetcomplete.quests.oneway.TrafficFlowSegmentsDao;
 import de.westnordost.streetcomplete.quests.oneway.WayTrafficFlowDao;
 import de.westnordost.streetcomplete.quests.parking_access.AddParkingAccess;
 import de.westnordost.streetcomplete.quests.parking_fee.AddParkingFee;
 import de.westnordost.streetcomplete.quests.parking_type.AddParkingType;
+import de.westnordost.streetcomplete.quests.playground_access.AddPlaygroundAccess;
 import de.westnordost.streetcomplete.quests.postbox_collection_times.AddPostboxCollectionTimes;
 import de.westnordost.streetcomplete.quests.powerpoles_material.AddPowerPolesMaterial;
 import de.westnordost.streetcomplete.quests.orchard_produce.AddOrchardProduce;
@@ -42,6 +44,7 @@ import de.westnordost.streetcomplete.quests.religion.AddReligionToPlaceOfWorship
 import de.westnordost.streetcomplete.quests.religion.AddReligionToWaysideShrine;
 import de.westnordost.streetcomplete.quests.localized_name.data.PutRoadNameSuggestionsHandler;
 import de.westnordost.streetcomplete.quests.localized_name.data.RoadNameSuggestionsDao;
+import de.westnordost.streetcomplete.quests.segregated.AddCyclewaySegregation;
 import de.westnordost.streetcomplete.quests.surface.AddPathSurface;
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingBusStop;
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingCrosswalk;
@@ -85,6 +88,7 @@ public class QuestModule
 				new AddRecyclingType(o),
 				new AddRoadSurface(o),
 				new AddMaxSpeed(o), // should best be after road surface because it excludes unpaved roads
+				new AddMaxHeight(o),
 				new AddReligionToPlaceOfWorship(o), // icon on maps are different
 				new AddPostboxCollectionTimes(o),
 				new AddOpeningHours(o),
@@ -102,6 +106,8 @@ public class QuestModule
 				new AddParkingFee(o),
 				new AddBusStopName(o),
 				new AddPathSurface(o),
+				new AddBikeParkingType(o), // used by OsmAnd
+				new AddPlaygroundAccess(o), //late as in many areas all needed access=private is already mapped
 
 				// ↓ 4. definitely shown as errors in QA tools
 
@@ -120,7 +126,7 @@ public class QuestModule
 				new AddBridgeStructure(o),
 				new AddWheelChairAccessToilets(o),
 				new AddReligionToWaysideShrine(o),
-				new AddBikeParkingType(o),
+				new AddCyclewaySegregation(o),
 				new MarkCompletedBuildingConstruction(o),
 
 				// ↓ 8. defined in the wiki, but not really used by anyone yet. Just collected for

@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.upload;
 
 import android.content.SharedPreferences;
-import android.util.Log;
 
 import javax.inject.Inject;
 
@@ -9,7 +8,7 @@ import de.westnordost.osmapi.changesets.ChangesetsDao;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.streetcomplete.data.changesets.OpenChangesetsDao;
 import de.westnordost.streetcomplete.data.osm.OsmQuest;
-import de.westnordost.streetcomplete.data.osm.OsmQuestUnlocker;
+import de.westnordost.streetcomplete.data.osm.OsmQuestGiver;
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao;
 import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
@@ -24,7 +23,7 @@ public class OsmQuestChangesUpload extends AOsmQuestChangesUpload
 			ElementGeometryDao elementGeometryDB, QuestStatisticsDao statisticsDB,
 			OpenChangesetsDao openChangesetsDB, ChangesetsDao changesetsDao,
 			DownloadedTilesDao downloadedTilesDao, SharedPreferences prefs,
-			OsmQuestUnlocker questUnlocker)
+			OsmQuestGiver questUnlocker)
 	{
 		super(osmDao, questDB, elementDB, elementGeometryDB, statisticsDB, openChangesetsDB,
 				changesetsDao, downloadedTilesDao, prefs, questUnlocker);

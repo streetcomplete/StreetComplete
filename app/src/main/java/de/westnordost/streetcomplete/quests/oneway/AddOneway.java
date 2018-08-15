@@ -35,7 +35,7 @@ public class AddOneway extends AOsmElementQuestType
 		" ways with highway ~ " +
 			"service|living_street|residential|unclassified|tertiary|secondary|primary|trunk|" +
 			"road|tertiary_link|secondary_link|primary_link|trunk_link" +
-		" and !oneway and access !~ private|no"
+		" and !oneway and access !~ private|no and area != yes"
 	);
 
 	public AddOneway(OverpassMapDataDao overpassMapDataDao,

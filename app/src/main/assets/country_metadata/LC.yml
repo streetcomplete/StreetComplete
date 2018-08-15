@@ -1,7 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
 isLeftHandTraffic: true
+measurementSystem: [imperial, metric]
 mobileCountryCode: 358
 officialLanguages: [en]
 orchardProduces: [coconut, banana, pepper, grapefruit, nutmeg, lemon, lime, orange, guava, mango, mangosteen,
   cacao, avocado, tomatoe, pineapple]
-speedUnit: [mph, km/h]

@@ -217,8 +217,19 @@ public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 		inputHouseName = view.findViewById(R.id.inputHouseName);
 		inputConscriptionNumber = view.findViewById(R.id.inputConscriptionNumber);
 		inputStreetNumber = view.findViewById(R.id.inputStreetNumber);
+		EditText input = getFirstNonNull(inputHouseNumber, inputHouseName, inputConscriptionNumber, inputStreetNumber);
+		if(input != null) input.requestFocus();
 
 		initKeyboardButton(view);
+	}
+
+	private static EditText getFirstNonNull(EditText ...view)
+	{
+		for (EditText editText : view)
+		{
+			if(editText != null) return editText;
+		}
+		return null;
 	}
 
 	private void initKeyboardButton(View view)

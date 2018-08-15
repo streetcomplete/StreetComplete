@@ -1,7 +1,28 @@
-# only add common ones which native speakers would actually use. See default file for syntax
-^av(da?): avenida
-^b: beco
-^cc: calçada
+# Adicionar apenas as abreviaturas mais comuns
+
+# A sintaxe para as abreviaturas é com expressões regulares, no entanto:
+# - as maiúsculas e minúsculas são ignoradas
+# - presume-se que é utilizado opcionalmente o ponto final "." no fim de cada abreviatura
+# - se for adicionado "..." (sem aspas) no início do padrão é interpretado como sendo permitida a concatenação
+
+^av: avenida
+^al: alameda
+^b(\.?º)?: bairro
+capt?: capitão
+cel: coronel
+d: dom
+dr: doutor
+eng\.?[oº]?: engenheiro
 ^estr: estrada
+gen: general
+^lr?g: largo
+mal: marcheal
+n\.ª? ?s\.[aª]: nossa senhora
+n\. ?sr\.?[aª]: nossa senhora
+^p[cçr]a?: praça
+pe: padre
+prof: professor
 ^r: rua
-^t(rav)?: travessa
+s\.?t[oº]: santo
+s\.?t[aª]: santa
+^trv?: travessa

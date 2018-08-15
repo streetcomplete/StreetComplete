@@ -174,8 +174,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 
 	private void zoomAndMoveToContain(ElementGeometry g)
 	{
-		// never zoom back further than 17.5
-		previousZoom = Math.max(17.5f,controller.getZoom());
+		previousZoom = controller.getZoom();
 
 		float targetZoom = getMaxZoomThatContains(g);
 		if(Float.isNaN(targetZoom) || targetZoom > MAX_QUEST_ZOOM)
@@ -495,4 +494,8 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		return TangramConst.toLatLon(controller.getPosition());
 	}
 
+	public PointF getPointOf(LatLon pos)
+	{
+		return controller.lngLatToScreenPosition(TangramConst.toLngLat(pos));
+	}
 }

@@ -31,6 +31,7 @@ MD: true
 ME: true
 MK: true
 MT: true
+MU: true # https://en.wikipedia.org/wiki/Road_signs_in_Mauritius
 NL: true
 'NO': true
 PL: true
@@ -43,11 +44,10 @@ SI: true
 SM: true
 SK: true
 UA: true
-# only in NYC so far
-US-NY: true
 # according to research, there are only "school zones". This is a different concept
-# if this is ever enabled, the quest_maxspeed_ca.xml layout needs to be extended
 CA: false
+US: false
 # according to wikipedia
 MX: true
 PE: true
+NZ: true
