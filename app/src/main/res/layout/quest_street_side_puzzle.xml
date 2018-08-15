@@ -15,7 +15,7 @@
         android:id="@+id/compass"
         android:layout_width="36dp"
         android:layout_height="36dp"
-        android:layout_margin="2dp"
+        android:layout_margin="8dp"
         android:background="@drawable/round_button_selector"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true">

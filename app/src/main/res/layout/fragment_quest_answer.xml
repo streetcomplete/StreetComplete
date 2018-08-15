@@ -2,18 +2,16 @@
 <de.westnordost.streetcomplete.view.SlidingRelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="@dimen/quest_form_width"
     android:layout_height="match_parent"
+    android:background="@drawable/speechbubbles_gradient_background"
     >
 
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/buttonPanel"
-        android:layout_marginStart="-9dp"
-        android:layout_marginEnd="-9dp"
-        android:layout_marginTop="-9dp"
-        android:layout_marginBottom="-9dp"
         android:clipChildren="false"
         android:background="#00000000">
         <!-- If I do not set any background color here, the layout will leave a few pixels free at the
@@ -25,59 +23,58 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_behavior="android.support.design.widget.BottomSheetBehavior"
-            android:background="@android:drawable/dialog_holo_light_frame"
             android:clipChildren="true"
             app:behavior_peekHeight="@dimen/quest_form_peekHeight">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_title"
                 android:gravity="center_vertical"
-                style="@style/Widget.AppCompat.Toolbar"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/close_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src = "@drawable/ic_close_white_24dp"
-                    android:background="?android:attr/actionBarItemBackground"
-                    android:visibility="gone"
-                    android:contentDescription="@string/close"
-                    android:adjustViewBounds="true"
-                    android:padding="12dp"/>
+                android:background="@drawable/speech_bubble_start"
+                android:orientation="vertical"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="4dp">
 
                 <TextView
                     android:id="@+id/title"
-                    style="@style/QuestTitleQuestion"
+                    android:textColor="#000"
+                    android:textSize="18sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingRight="16dp"
                     android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
                     android:paddingTop="8dp"
                     android:paddingBottom="8dp"/>
 
             </LinearLayout>
 
-            <android.support.v4.widget.NestedScrollView
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/speech_bubble_end_cut_top"
+                android:layout_marginStart="4dp">
 
-                <FrameLayout
-                    android:id="@+id/content"
-                    android:layout_height="wrap_content"
+                <de.westnordost.streetcomplete.view.MaskSpeechbubbleCornersFrameLayout
                     android:layout_width="match_parent"
-                    android:orientation="vertical"
-                    android:paddingLeft="16dp"
-                    android:paddingRight="16dp"
-                    android:paddingTop="8dp"
-                    android:paddingBottom="8dp"
-                    >
+                    android:layout_height="wrap_content">
 
-                </FrameLayout>
+                    <android.support.v4.widget.NestedScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-            </android.support.v4.widget.NestedScrollView>
+                        <FrameLayout
+                            android:id="@+id/content"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:orientation="vertical"
+                            android:padding="8dp"/>
+
+                    </android.support.v4.widget.NestedScrollView>
+
+                </de.westnordost.streetcomplete.view.MaskSpeechbubbleCornersFrameLayout>
+
+            </FrameLayout>
 
         </LinearLayout>
 
@@ -90,12 +87,9 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layoutDirection="locale"
-        android:background="@android:drawable/dialog_holo_light_frame"
-        android:layout_marginStart="-9dp"
-        android:layout_marginEnd="-9dp"
-        android:layout_marginTop="-9dp"
-        android:layout_marginBottom="-9dp"
-        style="?android:attr/buttonBarStyle">
+        android:background="@drawable/speech_bubble_end_cut_bottom"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="4dp">
 
         <Button
             android:id="@+id/buttonOtherAnswers"
@@ -103,15 +97,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:text="@string/quest_generic_otherAnswers"
-            style="?android:attr/buttonBarButtonStyle"/>
+            style="?android:attr/buttonBarButtonStyle"
+            tools:ignore="InefficientWeight"/>
 
     </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="16dp"
-        android:background="@drawable/more_gradient"
-        android:layout_above="@+id/buttonPanel" />
 
 </de.westnordost.streetcomplete.view.SlidingRelativeLayout>
 

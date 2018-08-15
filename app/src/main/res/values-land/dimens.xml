@@ -8,7 +8,7 @@
 
     <dimen name="quest_form_peekHeight">320dp</dimen>
 
-    <dimen name="quest_form_width">320dp</dimen>
+    <dimen name="quest_form_width">352dp</dimen>
 
     <!-- Tables -->
     <dimen name="table_icon_size">48dp</dimen>

@@ -27,14 +27,6 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="QuestTitleQuestion">
-        <item name="android:textAlignment">viewStart</item>
-        <item name="android:textColor">#ffffff</item>
-        <item name="android:textSize">20sp</item>
-        <item name="android:fontFamily">sans-serif-medium</item>
-        <item name="android:shadowRadius">0</item>
-    </style>
-
     <style name="TimesField">
         <item name="android:focusable">true</item>
         <item name="android:clickable">true</item>
