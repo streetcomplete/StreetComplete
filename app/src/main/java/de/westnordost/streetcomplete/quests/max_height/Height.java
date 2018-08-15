@@ -15,12 +15,6 @@ public class Height
 		IMPERIAL
 	}
 
-	Height()
-	{
-		this.meters = -1;
-		this.unit = Unit.METRIC;
-	}
-
 	Height(double meters)
 	{
 		this.meters = meters;
@@ -37,18 +31,6 @@ public class Height
 	public Unit getUnit()
 	{
 		return unit;
-	}
-
-	public boolean isEmpty()
-	{
-		if (unit.equals(Unit.METRIC))
-		{
-			return meters == -1;
-		}
-		else
-		{
-			return feet == -1 && inches == -1;
-		}
 	}
 
 	public String toString()
