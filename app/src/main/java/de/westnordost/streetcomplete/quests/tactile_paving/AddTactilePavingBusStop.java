@@ -29,7 +29,7 @@ public class AddTactilePavingBusStop extends SimpleOverpassQuestType
 
 	public AbstractQuestAnswerFragment createForm()
 	{
-		return new TactilePavingBusStopForm();
+		return new TactilePavingForm();
 	}
 
 	public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)

@@ -80,8 +80,8 @@ public class AddMaxSpeed extends SimpleOverpassQuestType
 	{
 		boolean hasName = tags.containsKey("name");
 
-		if(hasName) return R.string.quest_maxspeed_name_title;
-		else return R.string.quest_maxspeed_title_short;
+		if(hasName) return R.string.quest_maxspeed_name_title2;
+		else return R.string.quest_maxspeed_title_short2;
 	}
 
 	@NonNull @Override public Countries getEnabledForCountries()

@@ -251,6 +251,6 @@ public class FiltersParserTest extends TestCase
 	private void check(String input, String output, BoundingBox bbox)
 	{
 		TagFilterExpression expr = new FiltersParser().parse(input);
-		assertEquals(output, expr.toOverpassQLString(bbox));
+		assertEquals(output, expr.toOverpassQLString(bbox, true));
 	}
 }

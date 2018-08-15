@@ -1,7 +1,5 @@
 package de.westnordost.streetcomplete;
 
-import android.content.SharedPreferences;
-
 /** Constant class to have all the identifiers for shared preferences in one place */
 public class Prefs
 {

@@ -18,7 +18,7 @@ import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 public abstract class AbstractBottomSheetFragment extends Fragment
 {
 	private LinearLayout bottomSheet;
-	private ImageButton buttonClose;
+	private View buttonClose;
 
 	@Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState)
 	{

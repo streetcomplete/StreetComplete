@@ -14,7 +14,7 @@
    viewBox="0 0 26.458333 38.629168"
    version="1.1"
    id="svg4540"
-   inkscape:version="0.92.0 r15299"
+   inkscape:version="0.92.1 r15371"
    sodipodi:docname="living_street_russian.svg">
   <defs
      id="defs4534" />
@@ -25,16 +25,16 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.5455844"
-     inkscape:cx="35.203837"
-     inkscape:cy="60.323762"
+     inkscape:zoom="1.2727922"
+     inkscape:cx="-181.91452"
+     inkscape:cy="47.699913"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
      units="px"
      inkscape:window-width="1920"
-     inkscape:window-height="1018"
-     inkscape:window-x="1358"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1">
     <inkscape:grid
@@ -50,7 +50,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -69,7 +69,7 @@
          height="26.458332"
          width="38.629166"
          id="rect6068"
-         style="opacity:1;vector-effect:none;fill:#495aad;fill-opacity:1;stroke:none;stroke-width:0.89958334;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
+         style="opacity:1;vector-effect:none;fill:#2255bb;fill-opacity:1;stroke:none;stroke-width:0.89958334;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
          rx="2.1380277" />
       <rect
          transform="rotate(-90)"
@@ -89,7 +89,7 @@
          height="23.283333"
          width="35.454166"
          id="rect6068-3-8"
-         style="opacity:1;vector-effect:none;fill:#495aad;fill-opacity:1;stroke:none;stroke-width:0.89958334;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
+         style="opacity:1;vector-effect:none;fill:#2255bb;fill-opacity:1;stroke:none;stroke-width:0.89958334;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
          rx="1.0583333" />
       <path
          inkscape:connector-curvature="0"
