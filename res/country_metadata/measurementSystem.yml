@@ -1,0 +1,41 @@
+# Sources:
+# https://en.wikipedia.org/wiki/Metrication#Overview
+# https://en.wikipedia.org/wiki/Imperial_units#Current_use
+# https://en.wikipedia.org/wiki/Comparison_of_MUTCD-influenced_traffic_signs
+# https://en.wikipedia.org/wiki/Miles_per_hour
+#
+# setting imperial, metric for all those small island states where things may change quickly or gov doesn't act on norms
+default: [metric]
+AG: [imperial, metric] # metric system is introduced but the imperial system remains in common use
+AI: [imperial, metric] # British Overseas Territory
+AS: [imperial, metric] # territory of the US
+BM: [imperial, metric] # British Overseas Territory
+BS: [imperial, metric] # mainly imperial units used
+BZ: [imperial, metric] # mainly imperial units used
+DM: [imperial, metric] # metric system is introduced but the imperial system remains in common use
+FK: [imperial, metric] # British Overseas Territory
+FM: [imperial, metric] # mainly imperial units used
+GB: [imperial, metric] # changeover to the metric system is in progress
+GD: [imperial, metric]
+GG: [imperial, metric] # British Crown Dependency
+GI: [imperial, metric] # British Overseas Territory
+GS: [imperial, metric] # British Overseas Territory
+GU: [imperial, metric] # same as Micronesia (FM) because it is part of it
+GY: [metric, imperial] # metric system has been introduced in 1982 but the imperial system is still used sometimes
+IM: [imperial, metric] # British Crown Dependency
+JE: [imperial, metric] # British Crown Dependency
+KY: [imperial, metric] # mainly imperial units used
+LC: [imperial, metric] # metric system is introduced but the imperial system remains in common use
+LR: [imperial, metric] # imperial units are used officially but some signs are using the metric system
+MH: [imperial, metric] # mainly imperial units used
+MM: [imperial, metric] # Myanmar is converting to the metric system, although very slowly (but with the goal to complete in 2019)
+MP: [imperial, metric] # territory of the US
+MS: [imperial, metric] # British Overseas Territory
+PR: [imperial, metric] # territory of the US
+PW: [imperial, metric] # same as Micronesia (FM) because it is part of it
+TC: [imperial, metric] # British Overseas Territory
+US: [imperial]
+VC: [imperial, metric] # mainly imperial units used
+VG: [imperial, metric] # mainly imperial units used
+VI: [imperial, metric] # mainly imperial units used
+WS: [imperial, metric] # Samoa started to convert to the metric system in 2014.

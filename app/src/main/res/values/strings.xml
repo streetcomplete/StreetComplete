@@ -615,4 +615,11 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_playground_access_title">Is this playground publicly accessible?</string>
     <string name="dialog_tutorial_upload">To upload your changes manually, use the button in the toolbar that looks like this.</string>
 
+    <string name="quest_maxheight_title">"What is the height limit here?"</string>
+    <string name="quest_maxheight_parking_entrance_title">What is the height limit of this parking entrance?</string>
+    <string name="quest_maxheight_height_restrictor_title">What is the height limit of this height restrictor?</string>
+    <string name="quest_maxheight_tunnel_title">What is the height limit of this tunnel?</string>
+    <string name="quest_maxheight_answer_noSign">There is no sign</string>
+    <string name="quest_maxheight_answer_noSign_question">Is there easily enough space for even the tallest trucks (at least about 4.5 meters / 15 feet) to pass through?</string>
+    <string name="quest_maxheight_unusualInput_confirmation_description">This height looks implausible. Are you sure that it is correct?</string>
 </resources>

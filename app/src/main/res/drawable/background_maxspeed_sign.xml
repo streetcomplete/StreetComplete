@@ -2,7 +2,6 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
         <shape android:shape="oval">
-            <stroke android:color="#000" android:width="0.5dp"/>
             <solid android:color="@color/traffic_white"/>
         </shape>
     </item>

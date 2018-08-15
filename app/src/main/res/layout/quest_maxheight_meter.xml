@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="112dp"
+    android:layout_height="112dp"
+    android:gravity="center"
+    android:background="@drawable/background_maxheight_sign"
+    android:padding="18dp">
+
+    <EditText
+        android:id="@+id/meterInput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="#0fff"
+        android:gravity="center"
+        android:inputType="numberDecimal"
+        android:maxLength="4"
+        android:textColor="@color/traffic_black"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        tools:text="1.44" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="m"
+        android:textColor="@color/traffic_black"
+        android:textSize="24dp"
+        android:layout_marginStart="4dp"
+        android:textStyle="bold"
+        tools:ignore="HardcodedText" />
+
+</LinearLayout>
