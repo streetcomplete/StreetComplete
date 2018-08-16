@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -56,6 +55,16 @@ public class ImageSelectAdapter extends RecyclerView.Adapter<ItemViewHolder>
 		return new ArrayList<>(selectedIndices);
 	}
 
+	public List<Item> getSelectedItems()
+	{
+		List<Item> result = new ArrayList<>();
+		for (Integer index : selectedIndices)
+		{
+			result.add(items.get(index));
+		}
+		return result;
+	}
+
 	public void select(List<Integer> indices)
 	{
 		for(Integer index : indices)
@@ -68,13 +77,6 @@ public class ImageSelectAdapter extends RecyclerView.Adapter<ItemViewHolder>
 	{
 		this.items = new ArrayList<>(items);
 		notifyDataSetChanged();
-	}
-
-	public void addItems(Collection<Item> items)
-	{
-		int len = this.items.size();
-		this.items.addAll(items);
-		notifyItemRangeInserted(len, items.size());
 	}
 
 	@NonNull @Override

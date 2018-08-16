@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
@@ -12,7 +13,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 
+import javax.inject.Inject;
+
+import de.westnordost.streetcomplete.Injector;
+import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.view.GroupedImageSelectAdapter;
 import de.westnordost.streetcomplete.view.Item;
@@ -31,6 +39,19 @@ public abstract class GroupedImageListQuestAnswerFragment extends AbstractQuestF
 	private Button showMoreButton;
 	private RecyclerView valueList;
 
+	private List<Item> allItems;
+	private List<Item> topItems;
+
+	@Inject SharedPreferences prefs;
+
+	@Override public void onCreate(Bundle inState)
+	{
+		super.onCreate(inState);
+		Injector.instance.getApplicationComponent().inject(this);
+		allItems = Collections.unmodifiableList(Arrays.asList(getAllItems()));
+		topItems = Collections.unmodifiableList(Arrays.asList(getTopItems()));
+	}
+
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
 									   Bundle savedInstanceState)
 	{
@@ -46,7 +67,7 @@ public abstract class GroupedImageListQuestAnswerFragment extends AbstractQuestF
 		showMoreButton = contentView.findViewById(R.id.buttonShowMore);
 		showMoreButton.setOnClickListener(v ->
 		{
-			imageSelector.setItems(Arrays.asList(getAllItems()));
+			imageSelector.setItems(allItems);
 			showMoreButton.setVisibility(View.GONE);
 		});
 
@@ -61,7 +82,7 @@ public abstract class GroupedImageListQuestAnswerFragment extends AbstractQuestF
 	@Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState)
 	{
 		super.onViewCreated(view, savedInstanceState);
-		imageSelector.setItems(Arrays.asList(getTopItems()));
+		imageSelector.setItems(getInitialItems());
 		valueList.setAdapter(imageSelector);
 	}
 
@@ -89,14 +110,20 @@ public abstract class GroupedImageListQuestAnswerFragment extends AbstractQuestF
 					.setMessage(R.string.quest_generic_item_confirmation)
 					.setNegativeButton(R.string.quest_generic_confirmation_no, null)
 					.setPositiveButton(R.string.quest_generic_confirmation_yes,
-						(dialog, which) -> applyAnswer(item.value))
+						(dialog, which) -> applyAnswerAndSave(item.value))
 					.show();
 			}
 		}
 		else
 		{
-			applyAnswer(item.value);
+			applyAnswerAndSave(item.value);
 		}
+	}
+
+	private void applyAnswerAndSave(String value)
+	{
+		prefs.edit().putString(getLastPickedPrefKey(), value).apply();
+		applyAnswer(value);
 	}
 
 	protected void applyAnswer(String value)
@@ -114,4 +141,43 @@ public abstract class GroupedImageListQuestAnswerFragment extends AbstractQuestF
 
 	protected abstract Item[] getTopItems();
 	protected abstract Item[] getAllItems();
+
+	private List<Item> getInitialItems()
+	{
+		LinkedList<Item> items = new LinkedList<>(topItems);
+		String lastPickedValue = prefs.getString(getLastPickedPrefKey(), null);
+		if(lastPickedValue != null)
+		{
+			Item lastPicked = findItem(lastPickedValue, allItems);
+			if(lastPicked != null)
+			{
+				if(!items.remove(lastPicked)) items.removeLast();
+				items.addFirst(lastPicked);
+			}
+		}
+		return items;
+	}
+
+	private static Item findItem(String value, List<Item> items)
+	{
+		for (Item item : items)
+		{
+			if(item.isGroup())
+			{
+				Item subitem = findItem(value, item.getItems());
+				if(subitem != null) return subitem;
+			}
+			// returns only items which are not groups themselves
+			else if(value.equals(item.value))
+			{
+				return item;
+			}
+		}
+		return null;
+	}
+
+	private String getLastPickedPrefKey()
+	{
+		return Prefs.IMAGE_LIST_LAST_PICKED_PREFIX + getClass().getSimpleName();
+	}
 }
