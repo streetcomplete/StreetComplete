@@ -43,7 +43,7 @@ public class FindQuestSourceComponent
 	*    between the user's position when he opened the quest form and the position when he pressed
 	*    "ok", MINUS the current GPS accuracy, so it is a pretty forgiving calculation already
 	* */
-	private static final float MAX_DISTANCE_TO_ELEMENT_FOR_SURVEY = 50; //m
+	private static final float MAX_DISTANCE_TO_ELEMENT_FOR_SURVEY = 80; //m
 
 	private static final String
 			SURVEY = "survey",
