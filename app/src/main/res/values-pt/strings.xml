@@ -613,7 +613,7 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="quest_maxspeed_answer_zone2">"Pertence a uma zona de velocidade reduzida"</string>
     <string name="quest_maxspeed_answer_noSign2">"Sem sinal de limite de velocidade, aplica-se a velocidade padrão"</string>
     <string name="quest_openingHours_no_sign">"Sem sinal de horário de abertura "</string>
-    <string name="quest_maxspeed_name_title2">"Qual o limite de velocidade para %a? "</string>
+    <string name="quest_maxspeed_name_title2">"Qual o limite de velocidade para %s?"</string>
     <string name="quest_buildingType_sports_centre">"Centro desportivo"</string>
     <string name="quest_buildingType_toilets">"Casa de banho "</string>
     <string name="quest_maxspeed_sign_question">"O que define o limite de velocidade? "</string>

@@ -541,7 +541,7 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
     <string name="quest_parking_access_customers">"Enkel klanten mogen parkeren"</string>
     <string name="quest_streetName_pedestrian_title">"Wat is de naam van dit voetpad?"</string>
     <string name="quest_streetSurface_square_title">"Welke ondergrond heeft dit plein?"</string>
-    <string name="quest_streetSurface_square_name_title">"Welke ondergrond heeft het plein % hier?"</string>
+    <string name="quest_streetSurface_square_name_title">"Welke ondergrond heeft het plein %s hier?"</string>
     <string name="quest_fee_answer_hours">"Afhankelijk van dag en tijdstip"</string>
     <string name="quest_fee_add_times">"Voeg de tijden toe"</string>
     <string name="quest_fee_only_at_hours">"Ja, maar alleen...."</string>
