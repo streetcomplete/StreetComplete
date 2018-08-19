@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.quests;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
@@ -20,7 +19,6 @@ import java.util.List;
 import javax.inject.Inject;
 
 import de.westnordost.streetcomplete.Injector;
-import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.view.GroupedImageSelectAdapter;
 import de.westnordost.streetcomplete.view.Item;
@@ -42,7 +40,7 @@ public abstract class GroupedImageListQuestAnswerFragment extends AbstractQuestF
 	private List<Item> allItems;
 	private List<Item> topItems;
 
-	@Inject SharedPreferences prefs;
+	@Inject LastPickedValuesStore favs;
 
 	@Override public void onCreate(Bundle inState)
 	{
@@ -122,7 +120,7 @@ public abstract class GroupedImageListQuestAnswerFragment extends AbstractQuestF
 
 	private void applyAnswerAndSave(String value)
 	{
-		prefs.edit().putString(getLastPickedPrefKey(), value).apply();
+		favs.addLastPicked(getClass().getSimpleName(), value);
 		applyAnswer(value);
 	}
 
@@ -145,39 +143,7 @@ public abstract class GroupedImageListQuestAnswerFragment extends AbstractQuestF
 	private List<Item> getInitialItems()
 	{
 		LinkedList<Item> items = new LinkedList<>(topItems);
-		String lastPickedValue = prefs.getString(getLastPickedPrefKey(), null);
-		if(lastPickedValue != null)
-		{
-			Item lastPicked = findItem(lastPickedValue, allItems);
-			if(lastPicked != null)
-			{
-				if(!items.remove(lastPicked)) items.removeLast();
-				items.addFirst(lastPicked);
-			}
-		}
+		favs.moveLastPickedToFront(getClass().getSimpleName(), items, allItems);
 		return items;
-	}
-
-	private static Item findItem(String value, List<Item> items)
-	{
-		for (Item item : items)
-		{
-			if(item.isGroup())
-			{
-				Item subitem = findItem(value, item.getItems());
-				if(subitem != null) return subitem;
-			}
-			// returns only items which are not groups themselves
-			else if(value.equals(item.value))
-			{
-				return item;
-			}
-		}
-		return null;
-	}
-
-	private String getLastPickedPrefKey()
-	{
-		return Prefs.IMAGE_LIST_LAST_PICKED_PREFIX + getClass().getSimpleName();
 	}
 }

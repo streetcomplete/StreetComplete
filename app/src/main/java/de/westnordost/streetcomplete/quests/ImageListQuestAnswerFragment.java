@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.quests;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
@@ -20,7 +19,6 @@ import java.util.List;
 import javax.inject.Inject;
 
 import de.westnordost.streetcomplete.Injector;
-import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.view.ImageSelectAdapter;
 import de.westnordost.streetcomplete.view.Item;
@@ -42,7 +40,7 @@ public abstract class ImageListQuestAnswerFragment extends AbstractQuestFormAnsw
 
 	private List<Item> allItems;
 
-	@Inject SharedPreferences prefs;
+	@Inject LastPickedValuesStore favs;
 
 	@Override public void onCreate(Bundle inState)
 	{
@@ -132,8 +130,8 @@ public abstract class ImageListQuestAnswerFragment extends AbstractQuestFormAnsw
 		if(!osmValues.isEmpty())
 		{
 			answer.putStringArrayList(OSM_VALUES, osmValues);
-			prefs.edit().putString(getLastPickedPrefKey(), osmValues.get(0)).apply();
 		}
+		favs.addLastPicked(getClass().getSimpleName(), osmValues);
 		applyFormAnswer(answer);
 	}
 
@@ -173,28 +171,8 @@ public abstract class ImageListQuestAnswerFragment extends AbstractQuestFormAnsw
 
 		if(allItems.size() > getItemsPerRow())
 		{
-			String lastPickedValue = prefs.getString(getLastPickedPrefKey(), null);
-			if(lastPickedValue != null)
-			{
-				Item lastPicked = findItem(lastPickedValue, allItems);
-				if (lastPicked != null)
-				{
-					if (!items.remove(lastPicked)) items.removeLast();
-					items.addFirst(lastPicked);
-				}
-			}
+			favs.moveLastPickedToFront(getClass().getSimpleName(), items, allItems);
 		}
 		return items;
-	}
-
-	private static Item findItem(String value, List<Item> items)
-	{
-		for (Item item : items) if(value.equals(item.value)) return item;
-		return null;
-	}
-
-	private String getLastPickedPrefKey()
-	{
-		return Prefs.IMAGE_LIST_LAST_PICKED_PREFIX + getClass().getSimpleName();
 	}
 }
