@@ -172,7 +172,6 @@ A térkép megjelenítéséhez a vektoros térképcsempéket a &lt;a href=\"http
     <string name="quest_sidewalk_onlyWest">"Csak a nyugati oldalon"</string>
     <string name="quest_sidewalk_onlyEast">"Csak a keleti oldalon"</string>
     <string name="quest_sidewalk_yes">"Igen"</string>
-    <string name="quest_maxspeed_answer_noSign">"Nincs tábla"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Hol található ez az utca?"</string>
     <string name="quest_cyclewaySurface_title">"Milyen a burkolata ennek a kerékpárútnak?"</string>
     <string name="quest_serviceType_title">"Ez milyen szervizút?"</string>
@@ -259,7 +258,6 @@ A megadott adatok közvetlenül az OpenStreetMapre kerülnek a nevedben, ehhez n
 
     <!-- Fuzzy -->
     <string name="quest_streetSurface_name_title">"Milyen a burkolata itt ennek az útnak: %s?"</string>
-    <string name="quest_maxspeed_title_short">"Milyen sebességkorlátozó tábla van ebben az utcában?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Ez a sebességkorlátozás valószínűtlennek tűnik."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Biztos, hogy nincs sebességkorlátozó tábla?"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">"Megnézted az utca végein?
@@ -558,22 +556,21 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="quest_construction_building_title">"Ezt az épületet már befejezték?"</string>
     <string name="questList_disabled_in_country">"Soha nem jelenik meg itt: %s"</string>
     <string name="quest_toiletAvailability_rest_area_title">"Van WC ezen a pihenőhelyen?"</string>
-    <string name="quest_maxspeed_name_title">"Milyen sebességkorlátozó tábla van ebben az utcában: %s"</string>
     <string name="quest_pathSurface_title_steps">"Milyen a burkolata ennek a lépcsőnek?"</string>
     <string name="quest_pathSurface_title_bridleway">"Milyen a burkolata ennek a lovaglóútnak?"</string>
     <string name="quest_pathSurface_title">"Milyen a burkolata ennek az ösvénynek?"</string>
     <string name="quest_select_hint_most_specific">"Válaszd ki a leginkább rá jellemzőt:"</string>
     <string name="quest_generic_item_confirmation">"Biztos, hogy nem tudod pontosabban meghatározni?"</string>
-    <string name="privacy_html_tileserver">"&lt;p&gt;A térkép megjelenítéséhez a vektoros csempék a &lt;a href=\"https://tiles.map-data.de\"&gt;map-data.de&lt;/a&gt; oldalról származnak. A szolgáltatás naplózza a csempelekéréseket, hogy névtelen statisztikát készítsen és problémákat észleljen. A naplók pár napon belül töröltetnek.&lt;/p&gt;
+    <string name="privacy_html_tileserver">"&lt;p&gt;A térkép megjelenítéséhez a vektoros csempék a &lt;a href=\"https://tiles.map-data.de\"&gt;map-data.de&lt;/a&gt; oldalról származnak. A szolgáltatás naplózza a csempelekéréseket, hogy névtelen statisztikát készítsen és problémákat észleljen. A naplók pár napon belül törlésre kerülnek.&lt;/p&gt;
 "</string>
-    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Egyes kérdésekhez más, harmadik felek adatai is le vannak töltve. Különösen az egyirányú utcák lekérése egy (szintén a westnordost.de kiszolgálóján lévő) API-n keresztül zajlik.&lt;/p&gt;"</string>
+    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Egyes kérdésekhez más, harmadik feltél származó adatok is letöltésre kerülnek. Különösen az egyirányú utcák lekérése egy (szintén a westnordost.de kiszolgálóján lévő) API-n keresztül zajlik.&lt;/p&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"Nincs (megjegyzés írása)"</string>
     <string name="pref_quests_reset">"Alaphelyzetbe állítod az engedélyezett kérdéstípusokat és a sorrendet is?"</string>
     <string name="quest_buildingType_title2">"Milyen célra épült ez az épület?"</string>
     <string name="quest_generic_item_invalid_value">"Kérjük, válassz konkrétabb értéket."</string>
     <string name="quest_buildingType_answer_multiple_types">"Többcélú"</string>
-    <string name="quest_buildingType_answer_multiple_types_description">"Egyszerűen válaszd ki az épület fő rendeltetését. Például ha a földszinten van egy bolt, fölötte pedig lakások, akkor az inkább társasház."</string>
-    <string name="quest_buildingType_answer_construction_site">"Még épül"</string>
+    <string name="quest_buildingType_answer_multiple_types_description">"Egyszerűen válaszd ki az épület fő rendeltetését. Például ha a földszinten egy bolt található, fölötte pedig lakások, akkor az inkább társasház."</string>
+    <string name="quest_buildingType_answer_construction_site">"Még építés alatt áll"</string>
     <string name="quest_buildingType_residential">"Lakóház"</string>
     <string name="quest_buildingType_residential_description">"olyan épület, amelyben emberek laknak"</string>
     <string name="quest_buildingType_house">"Családi ház"</string>
@@ -646,4 +643,27 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="quest_address_answer_no_housenumber_message1">"Az épület címkéje:"</string>
     <string name="quest_address_answer_no_housenumber_message2">"Helyes ez így, és ez nem csak egy épületrész?"</string>
     <string name="quest_buildingType_shrine">"Szentély"</string>
+    <string name="quest_noteDiscussion_hide">"%1$s elrejtett megjegyzés (%2$s)"</string>
+    <string name="quest_maxspeed_title_short2">"Mekkora a sebességkorlátozás ebben az utcában?"</string>
+    <string name="quest_maxspeed_answer_sign">"Jelzőtábla"</string>
+    <string name="quest_maxspeed_answer_zone2">"(Korlátozott sebességű) zónában van"</string>
+    <string name="quest_maxspeed_answer_noSign2">"Nincs jelzőtábla, a KRESZ érvényes"</string>
+    <string name="quest_openingHours_no_sign">"Nincs kiírva nyitva tartás"</string>
+    <string name="quest_maxspeed_name_title2">"Mekkora sebességkorlátozás vonatkozik itt erre: %s?"</string>
+    <string name="quest_buildingType_sports_centre">"Sportközpont"</string>
+    <string name="quest_buildingType_toilets">"WC"</string>
+    <string name="quest_maxspeed_sign_question">"Mi határozza meg a sebességkorlátozást?"</string>
+    <string name="notification_channel_download">"Letöltés"</string>
+    <string name="quest_playground_access_title">"Nyilvánosan használható-e ez a játszótér?"</string>
+    <string name="quest_segregated_title">"Hogyan néz ki itt a gyalog- és a kerékpárút?"</string>
+    <string name="dialog_tutorial_upload">"Módosításaid kézi feltöltéséhez használd az eszköztárban lévő gombot, amely így néz ki."</string>
+    <string name="quest_segregated_separated">"El vannak választva"</string>
+    <string name="quest_segregated_mixed">"A kerékpárosok és a gyalogosok ugyanazt az utat használják"</string>
+    <string name="quest_maxheight_title">"Mekkora itt a magasságkorlátozás?"</string>
+    <string name="quest_maxheight_parking_entrance_title">"Mekkora a magasságkorlátozás a parkolóház-bejáratnál?"</string>
+    <string name="quest_maxheight_height_restrictor_title">"Milyen magas ezt a magasságkorlátozó?"</string>
+    <string name="quest_maxheight_tunnel_title">"Milyen magas ez az alagút?"</string>
+    <string name="quest_maxheight_answer_noSign">"Nincs jelzőtábla"</string>
+    <string name="quest_maxheight_answer_noSign_question">"Van-e elég hely alatta akár a legmagasabb teherautóknak is (legalább 4,5 m)?"</string>
+    <string name="quest_maxheight_unusualInput_confirmation_description">"Ez a magasság valószínűtlen. Biztosan helyes?"</string>
 </resources>

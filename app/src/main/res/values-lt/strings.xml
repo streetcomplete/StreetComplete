@@ -162,7 +162,6 @@ Bet, prieš įkeliant jūsų pakeitimus, aplikacija patikrina &lt;a href=\"https
     <string name="quest_sidewalk_onlyWest">"Tik vakarinėje pusėje"</string>
     <string name="quest_sidewalk_onlyEast">"Tik rytinėje pusėje"</string>
     <string name="quest_sidewalk_yes">"Taip"</string>
-    <string name="quest_maxspeed_answer_noSign">"Nėra ženklo"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Kur yra ši gatvė?"</string>
     <string name="quest_cyclewaySurface_title">"Kokia yra šio dviračių tako danga?"</string>
     <string name="quest_serviceType_title">"Kokio tipo tai privažiavimas?"</string>
@@ -241,7 +240,6 @@ Jūsų įvesta informacija tiesiog įkeliama į OpenStreetMap jūsų vardu, be k
     <string name="quest_bicycleParkingCoveredStatus_title">"Ar ši dviračių stovėjimo vieta dengta (apsaugota nuo lietaus)?"</string>
     <string name="dialog_session_dont_show_again">"Daugiau nerodyti šioje sesijoje"</string>
     <string name="quest_streetSurface_name_title">"Kokia yra kelio %s danga šioje vietoje?"</string>
-    <string name="quest_maxspeed_title_short">"Koks yra šios gatvės maksimalus leidžiamas greitis?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Šis greičio apribojimas atrodo neįmanomas."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Ar tikrai čia nėra jokio greičio apribojimo?"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">"Ar patikrinote gatvės pradžioje ir pabaigoje?
@@ -513,7 +511,6 @@ Pavyzdžiui 1,3 arba 2-6."</string>
     <string name="quest_construction_building_title">"Ar šio pastato statyba baigta?"</string>
     <string name="questList_disabled_in_country">"Niekada nerodoma %s"</string>
     <string name="quest_toiletAvailability_rest_area_title">"Ar šioje poilsio zonoje yra poilsio kambariai?"</string>
-    <string name="quest_maxspeed_name_title">"Koks yra %s greičio ribojimo ženklas?"</string>
     <string name="quest_pathSurface_title_steps">"Kokia čia yra šių laiptų danga?"</string>
     <string name="quest_pathSurface_title_bridleway">"Kokia čia yra šio arklių tako danga?"</string>
     <string name="quest_pathSurface_title">"Kokia čia yra šio tako danga?"</string>

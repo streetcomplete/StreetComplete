@@ -172,7 +172,6 @@
     <string name="quest_sidewalk_onlyWest">"Только на западной стороне"</string>
     <string name="quest_sidewalk_onlyEast">"Только на восточной стороне"</string>
     <string name="quest_sidewalk_yes">"Да"</string>
-    <string name="quest_maxspeed_answer_noSign">"Знаков нет"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Где находится эта улица?"</string>
     <string name="quest_cyclewaySurface_title">"Какое покрытие у этой велодорожки?"</string>
     <string name="quest_serviceType_title">"Какой тип служебного проезда?"</string>
@@ -259,7 +258,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_streetSurface_name_title">"Какое покрытие у этого участка дороги %s?"</string>
-    <string name="quest_maxspeed_title_short">"Какое ограничение скорости на этой улице?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Это ограничение скорости выглядит неправдоподобно."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Ограничение точно не установлено?"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">"Вы проверили на концах улицы? Если нет знаков вдоль всей улицы которые применимы для выбранного участка, укажите стандартное ограничение скорости."</string>
@@ -553,7 +551,6 @@
     <string name="quest_construction_building_title">"Работы в здании завершены?"</string>
     <string name="questList_disabled_in_country">"Не показывать в %s"</string>
     <string name="quest_toiletAvailability_rest_area_title">"В этой зоне отдыха есть туалеты?"</string>
-    <string name="quest_maxspeed_name_title">"Какое ограничение скорости для %s?"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"Нет (оставьте заметку)"</string>
     <string name="quest_generic_item_invalid_value">"Пожалуйста, выберите более конкретное значение"</string>
     <string name="quest_buildingType_answer_multiple_types">"Многоцелевое здание"</string>

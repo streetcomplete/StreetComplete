@@ -165,8 +165,6 @@ For at vise kortet er vektorfliser hentet fra &lt;a href=\"https://mapzen.com/pr
     <string name="quest_surface_value_sett">"Brosten"</string>
     <string name="quest_surface_value_wood">"Træ"</string>
     <string name="quest_placeName_title">"Hvad hedder dette sted?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sidewalk_title">"Er der et fortov på denne vej?"</string>
     <string name="map_orientation_info">"Kortet er orienteret med nord opad"</string>
     <string name="quest_sidewalk_onlyNorth">"Kun på den nordlige side"</string>
@@ -174,7 +172,6 @@ For at vise kortet er vektorfliser hentet fra &lt;a href=\"https://mapzen.com/pr
     <string name="quest_sidewalk_onlyWest">"Kun på den vestlige side"</string>
     <string name="quest_sidewalk_onlyEast">"Kun på den østlige side"</string>
     <string name="quest_sidewalk_yes">"Ja"</string>
-    <string name="quest_maxspeed_answer_noSign">"Der er intet skilt"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Hvor er denne vej?"</string>
     <string name="quest_cyclewaySurface_title">"Hvilken overflade har cykelstien?"</string>
     <string name="quest_serviceType_title">"Hvilken slags servicevej er dette?"</string>
@@ -243,27 +240,18 @@ Informationerne du skriver sendes direkte til OpenStreetMap i dit navn, uden du 
     <string name="quest_manySports_confirmation_specific">"Specifikt disse"</string>
     <string name="quest_manySports_confirmation_generic">"Generelt brug"</string>
     <string name="quest_sport_manySports_confirmation_title">"Du valgte mange sportsgrene"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_busStopShelter_name_title">"Har busstoppestedet %s tag?"</string>
+    <string name="quest_busStopShelter_name_title">"Har busstoppestedet %s et tag?"</string>
     <string name="quest_toiletsFee_title">"Har disse toiletter entré?"</string>
 
     <!-- There may be a better word than "taktil" but it is correct to use. -->
     <string name="quest_tactilePaving_title_bus">"Har stoppestedet taktil markering?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_tactilePaving_title_crosswalk">"Har denne fodgængerovergang taktil markering?"</string>
+    <string name="quest_tactilePaving_title_crosswalk">"Har denne fodgængerovergang taktil markering på begge sider?"</string>
     <string name="quest_source_dialog_title">"Er du sikker på at du har tjekket dette på stedet?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_name_bus">"Har stoppestedet %s taktil markering?"</string>
     <string name="quest_source_dialog_note">"Udelukkende information som blev fundet ved en undersøgelse bør indtastes."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Er denne cykelparkering dækket (beskyttet imod regn)?"</string>
     <string name="dialog_session_dont_show_again">"Vis ikke igen for denne session"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetSurface_name_title">"Hvad overflade har vejen %s her?"</string>
-    <string name="quest_maxspeed_title_short">"Hvad er fartgrænsen på denne vej?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Denne fartgrænse lyder urealistisk."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Er du sikker på at der ikke er specificeret en begrænsning?"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">"Kiggede du for enden af vejen?
@@ -279,8 +267,6 @@ Hvis der ikke er skilte hen ad vejen som gælder for det opridsede område bruge
     <string name="quest_sport_paddle_tennis">"Padel tennis"</string>
     <string name="quest_sport_gaelic_games">"Gæliske spil"</string>
     <string name="quest_sport_sepak_takraw">"Sepak Takraw"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_name_title">"Er %s kørestolsvenlig?"</string>
     <string name="quest_wheelchairAccess_limited">"Delvist"</string>
     <string name="quest_bikeParkingCapacity_hint">"Bemærk at de fleste normale stativer kan bruges fra begge sider."</string>
@@ -289,26 +275,14 @@ Hvis der ikke er skilte hen ad vejen som gælder for det opridsede område bruge
     <string name="quest_wheelchairAccess_subway_entrance_title">"Er denne undergrundsbane indgang kørestolsvenligt?"</string>
     <string name="quest_wheelchairAccess_railway_station_title">"Er denne togstation kørestolsvenligt?"</string>
     <string name="quest_wheelchairAccess_location_title">"Er denne lokation kørestolsvenligt?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_bus_station_name_title">"Er busstationen %s kørestolsvenligt?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_subway_entrance_name_title">"Er undergrundsbaneindgangen %s kørestolsvenligt?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_railway_station_name_title">"Er togstationen %s kørestolsvenligt?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_location_name_title">"Er lokationen %s kørestolsvenligt?"</string>
     <string name="quest_wheelchairAccess_limited_description_business">"Delvist betyder at der er ikke mere end et enkelt trin for at komme til forretningen og at de fleste rum indenfor er kørestolsvenlige."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"Delvist betyder at der ikke er mere end et enkelt trin for at tilgå det."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Forkortelse i navnet %s?"</string>
     <string name="quest_baby_changing_table_toilets_title">"Har dette toilet baby skiftebord?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_baby_changing_table_title">"Har %s et skiftebord til babyer?"</string>
     <string name="quest_recycling_type_title">"Hvilken type genanvendelsesfacilitet er dette?"</string>
     <string name="recycling_centre">"Center"</string>
@@ -389,14 +363,8 @@ Ellers kan du downloade et andet keyboard i Forretning. Populære keyboards der 
     <string name="produce_vanilla">"Vanilje"</string>
     <string name="produce_walnuts">"Valnøder"</string>
     <string name="produce_sisal">"Sisal"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_way_lit_title">"Er denne sektion af vejen belyst?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_way_lit_named_title">"Er %s belyst her?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_way_lit_road_title">"Er denne sektion af vejen belyst?"</string>
     <string name="quest_way_lit_automatic">"Der bruges bevægelsessensorer"</string>
     <string name="quest_way_lit_24_7">"Det er oplyst nat og dag"</string>
@@ -470,6 +438,15 @@ Ellers kan du downloade et andet keyboard i Forretning. Populære keyboards der 
     <string name="quest_carWashType_service">"Personale vasker bilen"</string>
     <string name="enable_quest_confirmation_title">"Aktiver denne opgavetype?"</string>
     <string name="default_disabled_msg_go_inside">"Denne opgavetype er normalt deaktiveret, da du sandsynligvis skal ind i stedet for at kunne svare på denne opgavetype."</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_housenumber_conscription_number">"Beskrivendenummer"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_housenumber_street_number_optional">"Retningsnummer"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_housenumber_conscription_number_required">"Et beskrivelsesnummer skal specificeres"</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">"Også cykelsti på den anden side"</string>
     <string name="need_specify_both_sides">"Du skal specificere begge sider"</string>
     <string name="quest_openingHours_emptyAnswer">"Du skal beskrive hvad der står på skiltet. Mangler der et skilt bør du spørge om åbningstider indenfor."</string>
@@ -545,6 +522,9 @@ F.eks. 1,3 eller 2-6."</string>
     <string name="quest_bicycle_parking_type_locker">"Skab"</string>
     <string name="quest_bicycle_parking_type_building">"Bygning"</string>
     <string name="quest_bicycle_parking_type_title">"Hvilken slags cykelparkering er dette?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_cycleway_value_suggestion_lane">"cykel henvisningssti"</string>
     <string name="quest_postboxCollectionTimes_title">"Hvad er tømningstiderne for denne postkasse?"</string>
     <string name="quest_collectionTimes_add_times">"Tilføj tømningstid"</string>
     <string name="quest_collectionTimes_answer_no_times_specified">"Ingen tider beskrevet"</string>
@@ -555,9 +535,6 @@ F.eks. 1,3 eller 2-6."</string>
     <string name="quest_construction_building_title">"Er denne bygning færdiglavet?"</string>
     <string name="questList_disabled_in_country">"Aldrig vist i %s"</string>
     <string name="quest_toiletAvailability_rest_area_title">"Har denne rasteplads toiletter?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_maxspeed_name_title">"Hvad siger hastighedsbegrænsnings skiltet for %s?"</string>
     <string name="quest_pathSurface_title_steps">"Hvilken overflade har disse trin?"</string>
     <string name="quest_pathSurface_title_bridleway">"Hvilken overflade har denne ridesti her?"</string>
     <string name="quest_pathSurface_title">"Hvilket overflade har denne sti her?"</string>
@@ -594,4 +571,61 @@ F.eks. 1,3 eller 2-6."</string>
     <!-- I don't think a bungalow needs to be a holiday house (at least not in Denmark), would it be okay to translate it from https://wiki.openstreetmap.org/wiki/Key:building as "A single-storey detached small house, Dacha."? -->
     <string name="quest_buildingType_bungalow_description">"lille fritstående hus (sommerhus, feriehytte...)"</string>
     <string name="quest_buildingType_static_caravan">"Campingvogn (semi-permanent)"</string>
+    <string name="quest_buildingType_commercial">"Kommerciel bygning"</string>
+    <string name="quest_buildingType_commercial_generic_description">"bygning hvor folk arbejder, shop eller udfører andre kommercielle aktiviteter"</string>
+    <string name="quest_buildingType_industrial">"Industri bygning"</string>
+    <string name="quest_buildingType_industrial_description">"f.eks. en fabrik, værksted..."</string>
+    <string name="quest_buildingType_office">"Kontor bygning"</string>
+    <string name="quest_buildingType_retail">"Butik(ker)"</string>
+    <string name="quest_buildingType_warehouse">"Varehus"</string>
+    <string name="quest_buildingType_kiosk">"Kiosk"</string>
+    <string name="quest_buildingType_storage_tank">"Opbevaringstank"</string>
+    <string name="quest_buildingType_religious">"Religiøs bygning"</string>
+    <string name="quest_buildingType_church">"Kirke"</string>
+    <string name="quest_buildingType_chapel">"Kappel"</string>
+    <string name="quest_buildingType_cathedral">"Katedral"</string>
+    <string name="quest_buildingType_mosque">"Moske"</string>
+    <string name="quest_buildingType_temple">"Tempel bygning"</string>
+    <string name="quest_buildingType_pagoda">"Pagode"</string>
+    <string name="quest_buildingType_synagogue">"Synagoge"</string>
+    <string name="quest_buildingType_civic">"Borgerbygning"</string>
+    <string name="quest_buildingType_civic_description">"kommunal bygning der evt. kan tilbyde en borgerydelse"</string>
+    <string name="quest_buildingType_kindergarten">"Børnehavebygning"</string>
+    <string name="quest_buildingType_school">"Skolebygning"</string>
+    <string name="quest_buildingType_college">"Kollegiebygning"</string>
+    <string name="quest_buildingType_hospital">"Hospitalsbygning"</string>
+    <string name="quest_buildingType_stadium">"Stadium"</string>
+    <string name="quest_buildingType_train_station">"Togstation"</string>
+    <string name="quest_buildingType_transportation">"Offentlig transportbygning"</string>
+    <string name="quest_buildingType_university">"Universitetsbygning"</string>
+    <string name="quest_buildingType_government">"Regeringsbygning"</string>
+    <string name="quest_buildingType_cars">"Til biler"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_buildingType_carport">"Carport"</string>
+    <string name="quest_buildingType_carport_description">"tag til en bil"</string>
+    <string name="quest_buildingType_garage">"Enkelt-garage"</string>
+    <string name="quest_buildingType_garages">"Adskillelige garager"</string>
+    <string name="quest_buildingType_parking">"Parkeringsplads"</string>
+    <string name="quest_buildingType_farm">"På en gård"</string>
+    <string name="quest_buildingType_farmhouse">"Stuehus"</string>
+    <string name="quest_buildingType_farmhouse_description">"beboelsesbygningen på en gård"</string>
+    <string name="quest_buildingType_farm_auxiliary">"Gård bygning"</string>
+    <string name="quest_buildingType_farm_auxiliary_description">"hvilken som helst bygning på en gård som ikke er beboelse"</string>
+    <string name="quest_buildingType_greenhouse">"Drivhus"</string>
+    <string name="quest_buildingType_other">"Andet"</string>
+    <string name="quest_buildingType_shed">"Skur"</string>
+    <string name="quest_buildingType_hut">"Hytte"</string>
+    <string name="quest_buildingType_hut_description">"lille simpel bolig eller ly"</string>
+    <string name="quest_buildingType_roof">"Tag"</string>
+    <string name="quest_buildingType_service">"Servicebygning"</string>
+    <string name="quest_buildingType_service_description">"bygning med maskineri som pumper eller transformere"</string>
+    <string name="quest_buildingType_hangar">"Hangar"</string>
+    <string name="quest_buildingType_hangar_description">"Opbevaring til fly, helikoptere eller rumfartøj"</string>
+    <string name="quest_buildingType_bunker">"Bunker"</string>
+    <string name="quest_address_answer_no_housenumber">"Der er intet husnummer"</string>
+    <string name="quest_address_answer_no_housenumber_message1">"Bygningen var markeret som:"</string>
+    <string name="quest_address_answer_no_housenumber_message2">"Er dette korrekt, og er det ikke bare en del af en bygning?"</string>
+    <string name="quest_buildingType_shrine">"Helligdom"</string>
+    <string name="quest_noteDiscussion_hide">"%1$s skjulte note (%2$s)"</string>
 </resources>

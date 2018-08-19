@@ -154,7 +154,6 @@ No obstant això, abans de pujar els canvis, l'aplicació comprova amb un &lt;a 
     <string name="quest_sidewalk_onlyWest">"Només en el costat oest"</string>
     <string name="quest_sidewalk_onlyEast">"Només en el costat est"</string>
     <string name="quest_sidewalk_yes">"Sí"</string>
-    <string name="quest_maxspeed_answer_noSign">"No hi ha cap senyal"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"On és aquest carrer?"</string>
     <string name="quest_cyclewaySurface_title">"Quin tipus de superfície té el carril bici aquí?"</string>
     <string name="quest_serviceType_title">"Quin tipus de via de servei?"</string>
@@ -233,7 +232,6 @@ Aleshores, la informació que introdueixes s'afegeix directament a l'OpenStreetM
     <string name="quest_bicycleParkingCoveredStatus_title">"Aquest pàrquing de bicis és cobert (protegit de la pluja)?"</string>
     <string name="dialog_session_dont_show_again">"No ho mostris més durant aquesta sessió"</string>
     <string name="quest_streetSurface_name_title">"Quin tipus de superfície té la carretera %s aquí?"</string>
-    <string name="quest_maxspeed_title_short">"Quin límit de velocitat té aquesta via?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Aquest límit no sembla versemblant."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Esteu segur que no hi ha indicat cap límit?"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">"Heu comprovat els caps del carrer?
@@ -507,7 +505,6 @@ Per example 1,3 o 2-6."</string>
     <string name="quest_construction_building_title">"Aquest edifici està finalitzat?"</string>
     <string name="questList_disabled_in_country">"Mai es mostra a %s"</string>
     <string name="quest_toiletAvailability_rest_area_title">"Aquesta àrea de descans té lavabo?"</string>
-    <string name="quest_maxspeed_name_title">"Quina és la senyal de límit de velocitat per %s?"</string>
     <string name="quest_pathSurface_title_steps">"Quina superfície tenen aquests graons aquí?"</string>
     <string name="quest_pathSurface_title_bridleway">"Quina superfície té aquesta via eqüestre aquí?"</string>
     <string name="quest_pathSurface_title">"Quina superfície té aquest camí aquí?"</string>
@@ -595,4 +592,27 @@ Per example 1,3 o 2-6."</string>
     <string name="quest_address_answer_no_housenumber_message1">"L'edifici s'ha etiquetat com a:"</string>
     <string name="quest_address_answer_no_housenumber_message2">"Això és correcte, o només és part d'un edifici?"</string>
     <string name="quest_buildingType_shrine">"Santuari"</string>
+    <string name="quest_noteDiscussion_hide">"%1$s amaga la nota (%2$s)"</string>
+    <string name="quest_maxspeed_title_short2">"Com es mostra el límit de velocitat?"</string>
+    <string name="quest_maxspeed_answer_sign">"Un senyal"</string>
+    <string name="quest_maxspeed_answer_zone2">"Zona de velocitat reduïda"</string>
+    <string name="quest_maxspeed_answer_noSign2">"No hi ha senyals"</string>
+    <string name="quest_openingHours_no_sign">"No hi ha horari"</string>
+    <string name="quest_maxspeed_name_title2">"Quin és el límit per a %s aquí?"</string>
+    <string name="quest_buildingType_sports_centre">"Centre d'esports"</string>
+    <string name="quest_buildingType_toilets">"Lavabos"</string>
+    <string name="quest_maxspeed_sign_question">"Què defineix el límit de velocitat?"</string>
+    <string name="notification_channel_download">"Baixar"</string>
+    <string name="quest_playground_access_title">"Aquest parc és d'accés públic?"</string>
+    <string name="quest_segregated_title">"Com estan separats el carril bici i la vorera?"</string>
+    <string name="dialog_tutorial_upload">"Per pujar els teus canvis manualment, usa el botó a la barra d'eines que és així."</string>
+    <string name="quest_segregated_separated">"Segregat l'un de l'altre"</string>
+    <string name="quest_segregated_mixed">"Ciclistes i vianants ocupen el mateix espai"</string>
+    <string name="quest_maxheight_title">"Quin és el límit d'alçada aquí?"</string>
+    <string name="quest_maxheight_parking_entrance_title">"Quin és el límit d'alçada d'aquesta entrada a l'aparcament?"</string>
+    <string name="quest_maxheight_height_restrictor_title">"Quin és el límit d'alçada d'aquest restrictor?"</string>
+    <string name="quest_maxheight_tunnel_title">"Quin és el límit d'alçada d'aquest túnel?"</string>
+    <string name="quest_maxheight_answer_noSign">"No hi ha senyal"</string>
+    <string name="quest_maxheight_answer_noSign_question">"Hi ha espai suficient fins i tot per als tràilers més alts (4.5 metres /15 peus) per passar-hi?"</string>
+    <string name="quest_maxheight_unusualInput_confirmation_description">"Aquesta alçada sembla increible. Estàs segur que és correcta?"</string>
 </resources>

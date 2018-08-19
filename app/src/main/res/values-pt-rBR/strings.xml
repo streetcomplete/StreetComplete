@@ -12,14 +12,14 @@
     <string name="pref_title_authorization">"Autorizar acesso ao OSM"</string>
     <string name="pref_title_not_authorized_summary">"Ainda não autorizado"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
-    <string name="pref_tilecache_size_message">"Espeço em megabytes reservado no armazenamento externo para cachear blocos do mapa"</string>
+    <string name="pref_tilecache_size_message">"Espaço em megabytes reservado no armazenamento externo para cachear blocos do mapa"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Mostrar todas as notas"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Também mostrando notas não formuladas como perguntas"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Ignorando notas não formuladas como perguntas"</string>
     <string name="pref_title_map_cache">"Tamanho do cache do mapa"</string>
     <string name="map_btn_gps_tracking">"Me siga"</string>
-    <string name="map_attribution_mapzen">"Powered by %s"</string>
-    <string name="map_attribution_osm">"© contribuidores OpenStreetMap"</string>
+    <string name="map_attribution_mapzen">"Funciona com %s"</string>
+    <string name="map_attribution_osm">"© contribuidores do OpenStreetMap"</string>
     <string name="quest_generic_otherAnswers">"Outras respostas"</string>
     <string name="quest_generic_answer_notApplicable">"Não sei"</string>
     <string name="quest_generic_confirmation_title">"Você tem certeza?"</string>
@@ -48,8 +48,8 @@
     <string name="quest_noteDiscussion_no">"Não, esconada"</string>
     <string name="quest_noteDiscussion_create">"criado por %1$s (%2$s)"</string>
     <string name="quest_noteDiscussion_comment">"%1$s (%2$s)"</string>
-    <string name="quest_noteDiscussion_closed">"%1$s fechar nota (%2$s)"</string>
-    <string name="quest_noteDiscussion_reopen">"%1$s reabrir nota (%2$s)"</string>
+    <string name="quest_noteDiscussion_closed">"%1$s fechou a nota (%2$s)"</string>
+    <string name="quest_noteDiscussion_reopen">"%1$s reabriu a nota (%2$s)"</string>
     <string name="quest_noteDiscussion_anonymous">"Anônimo"</string>
     <string name="quest_noteDiscussion_comments_title">"Respostas"</string>
     <string name="confirmation_discard_title">"Descartar mudanças?"</string>
@@ -65,11 +65,11 @@
     <string name="upload_error">"Erro ao enviar as respostas"</string>
     <string name="download_area_too_big">"Por favor, aumente o zoom"</string>
     <string name="confirmation_cancel_prev_download_title">"Cancelar a pesquisa atual e escanear aqui em vez disso?"</string>
-    <string name="notification_downloading">"Escaneando por Missões…"</string>
+    <string name="notification_downloading">"Escaneando por missões…"</string>
     <string name="now_downloading_toast">"Escaneando para mais missões…"</string>
     <string name="turn_on_location_request">"A localização está desativada. Ir para as configurações e ligar agora?"</string>
     <string name="no_location_permission_warning">"A sua localização é necessária para escanear por missões nesta área."</string>
-    <string name="action_about">"Sobre StreetComplete"</string>
+    <string name="action_about">"Sobre o StreetComplete"</string>
     <string name="about_title_version">"Versão"</string>
     <string name="about_title_authors">"Créditos"</string>
     <string name="about_summary_authors">"© 2016–2018 Tobias Zwick e contribuidores"</string>
@@ -110,8 +110,8 @@
     <string name="quest_roofShape_answer_many">"Tem várias formas diferentes"</string>
     <string name="pref_category_cache">"Cache"</string>
     <string name="pref_title_sync">"Auto-Sincronização"</string>
-    <string name="map_btn_zoom_out">"Aumentar"</string>
-    <string name="map_btn_zoom_in">"Reduzir"</string>
+    <string name="map_btn_zoom_out">"Afastar"</string>
+    <string name="map_btn_zoom_in">"Aproximar"</string>
 
     <!-- Fuzzy -->
     <string name="privacy_html">"&lt;p&gt;Ah, alguém que se preocupa com a privacidade, ótimo! Acredito que só tenho boas notícias para você: &lt;/p&gt;
@@ -132,7 +132,7 @@ A sua localização só é utilizada para procurar automaticamente missões ao s
 &lt;p&gt;&lt;b&gt;Uso de dados&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 P&gt;
-Como mencionado, o aplicativo se comunica diretamente com a infra-estrutura do OSM. Ou seja, com a &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt; Overpass API &lt;/a&gt; para baixar missões (que é anônimo) e com o &lt;a href = \"http: / /wiki.openstreetmap.org/wiki/API_v0.6\"&gt; OSM API &lt;/a&gt; para fazer o upload de alterações. &lt;br/&gt;
+Como mencionado, o aplicativo se comunica diretamente com a infraestrutura do OSM. Ou seja, com a &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt; Overpass API &lt;/a&gt; para baixar missões (que é anônimo) e com o &lt;a href = \"http: / /wiki.openstreetmap.org/wiki/API_v0.6\"&gt; OSM API &lt;/a&gt; para fazer o upload de alterações. &lt;br/&gt;
 No entanto, antes de carregar suas alterações, o app verifica com um &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt; arquivo de texto simples &lt;/a&gt; no meu servidor se ele foi banido de carregar quaisquer alterações. Esta é uma medida de precaução para ser capaz de manter versões do aplicativo que acabam por ter bugs críticos de possivelmente corrompendo dados do OSM. &lt;br/&gt;
 &lt;/p&gt;
 &lt;p&gt;
@@ -159,7 +159,7 @@ Para exibir o mapa, os blocos vetoriais são recuperadas do &lt;a href=\"https:/
     <string name="quest_surface_value_paving_stones">"Tijolo"</string>
     <string name="quest_surface_value_pebblestone">"Seixos"</string>
     <string name="quest_surface_value_sand">"Areia"</string>
-    <string name="quest_surface_value_sett">"Paralelepipedo"</string>
+    <string name="quest_surface_value_sett">"Paralelepípedos"</string>
     <string name="quest_surface_value_wood">"Madeira"</string>
     <string name="quest_placeName_title">"Qual o nome deste lugar?"</string>
     <string name="quest_sidewalk_title">"Essa rua tem alguma calçada?"</string>
@@ -169,7 +169,6 @@ Para exibir o mapa, os blocos vetoriais são recuperadas do &lt;a href=\"https:/
     <string name="quest_sidewalk_onlyWest">"Apenas no lado ocidental"</string>
     <string name="quest_sidewalk_onlyEast">"Apenas no lado oriental"</string>
     <string name="quest_sidewalk_yes">"Sim"</string>
-    <string name="quest_maxspeed_answer_noSign">"Não há placa"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Onde é esta rua?"</string>
     <string name="quest_cyclewaySurface_title">"Que tipo de pavimento tem essa ciclovia aqui?"</string>
     <string name="quest_serviceType_title">"Que tipo de rua de serviço é essa?"</string>
@@ -248,7 +247,6 @@ As informações inseridas são adicionadas diretamente ao OpenStreetMap em seu 
     <string name="quest_bicycleParkingCoveredStatus_title">"Essa parada de bicicleta é coberta (protegida da chuva)?"</string>
     <string name="dialog_session_dont_show_again">"Não mostrar de novo nesta sessão"</string>
     <string name="quest_streetSurface_name_title">"Que tipo de pavimento a estrada %s tem aqui?"</string>
-    <string name="quest_maxspeed_title_short">"Qual a placa de limite de velocidade para essa rua?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Esse limite de velocidade parece errado."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Tem certeza de que não há nenhum limite sinalizado?"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">"Você checou no final das ruas?
@@ -541,7 +539,6 @@ Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas barr
     <string name="quest_construction_building_title">"Este prédio está completo?"</string>
     <string name="questList_disabled_in_country">"Nunca mostrar em %s"</string>
     <string name="quest_toiletAvailability_rest_area_title">"Esta área de descanso tem um toalete?"</string>
-    <string name="quest_maxspeed_name_title">"Qual a placa de limite de velocidade para %s?"</string>
     <string name="quest_pathSurface_title_steps">"Que tipo de pavimento têm esses degraus aqui?"</string>
     <string name="quest_pathSurface_title_bridleway">"Que tipo de pavimento tem essa trilha aqui?"</string>
     <string name="quest_pathSurface_title">"Que tipo de pavimento tem esse caminho aqui?"</string>
@@ -645,4 +642,29 @@ Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas barr
     <!-- For example this is a shrine: https://wiki.openstreetmap.org/wiki/File:Shinto_shrine_building.jpg
     Is "Altar" really fitting here? It is about a building type after all. -->
     <string name="quest_buildingType_shrine">"Santuário"</string>
+    <string name="quest_noteDiscussion_hide">"%1$s escondeu a nota (%2$s)"</string>
+    <string name="quest_maxspeed_title_short2">"Qual o limite de velocidade para esta rua?"</string>
+    <string name="quest_maxspeed_answer_sign">"Uma placa"</string>
+    <string name="quest_maxspeed_answer_zone2">"Está dentro de uma zona (lenta)"</string>
+    <string name="quest_maxspeed_answer_noSign2">"Sem placa, o padrão se aplica"</string>
+    <string name="quest_openingHours_no_sign">"Sem placa de horário de funcionamento"</string>
+    <string name="quest_maxspeed_name_title2">"Qual o limite de velocidade para %s aqui?"</string>
+    <string name="quest_buildingType_sports_centre">"Centro esportivo"</string>
+    <string name="quest_buildingType_toilets">"Toaletes"</string>
+    <string name="quest_maxspeed_sign_question">"O que define o limite de velocidade?"</string>
+    <string name="notification_channel_download">"Baixar"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_playground_access_title">"Esse parquinho é acessível publicamente?"</string>
+    <string name="quest_segregated_title">"Como estão alocados os caminhos de pedestre e ciclovia aqui?"</string>
+    <string name="dialog_tutorial_upload">"Para enviar suas alterações manualmente, use o botão da barra de ferramentas que se parece com isso."</string>
+    <string name="quest_segregated_separated">"Segregados"</string>
+    <string name="quest_segregated_mixed">"Ciclistas e pedestres compartilham o mesmo espaço"</string>
+    <string name="quest_maxheight_title">"Qual o limite de altura aqui?"</string>
+    <string name="quest_maxheight_parking_entrance_title">"Qual o limite de altura dessa entrada de estacionamento?"</string>
+    <string name="quest_maxheight_height_restrictor_title">"Qual o limite de altura dessa entrada desse restritor de altura?"</string>
+    <string name="quest_maxheight_tunnel_title">"Qual o limite de altura desse túnel?"</string>
+    <string name="quest_maxheight_answer_noSign">"Não há placa"</string>
+    <string name="quest_maxheight_answer_noSign_question">"Há espaço suficiente para que mesmo os caminhões mais altos (pelo menos 4,5 metros) passem?"</string>
+    <string name="quest_maxheight_unusualInput_confirmation_description">"Essa altura parece implausível.  Tem certeza de que está correta?"</string>
 </resources>

@@ -180,7 +180,6 @@
     <string name="quest_sidewalk_onlyWest">"فقط به سمت غرب"</string>
     <string name="quest_sidewalk_onlyEast">"فقط به سمت شرق"</string>
     <string name="quest_sidewalk_yes">"بله"</string>
-    <string name="quest_maxspeed_answer_noSign">"بدون علائم"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"این خیابان کجاست؟"</string>
     <string name="quest_cyclewaySurface_title">"جنس سطح مسیر دوچرخه سواری در اینجا چیست؟"</string>
     <string name="quest_serviceType_title">"نوع این جاده خدماتی چیست؟"</string>
@@ -267,7 +266,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_streetSurface_name_title">"جنس سطح مسیر %s چگونه است؟"</string>
-    <string name="quest_maxspeed_title_short">"حداکثر سرعت در این خیابان چقدر است؟"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"این محدودیت سرعت به نظر غیر واقعی است."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"آیا مطمئن هستید که هیچ محدودیت سرعتی قرار داده نشده است؟"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">"آیا شما انتهای خیابان را بررسی کرده‌اید؟ اگر علائمی در کل خیابان وجود ندارد ، برای تمام بخش انتخاب شده ، محدودیت سرعت پیش فرض اعمال می شود."</string>
@@ -561,7 +559,6 @@
     <string name="quest_construction_building_title">"آیا این ساختمان ساخته شده است؟"</string>
     <string name="questList_disabled_in_country">"اصلا %s موجود نیست."</string>
     <string name="quest_toiletAvailability_rest_area_title">"آیا این فضای استراحت ، سرویس بهداشتی دارد؟"</string>
-    <string name="quest_maxspeed_name_title">"محدودیت سرعت در %s چقدر است؟"</string>
     <string name="quest_pathSurface_title_steps">"درجه سطح این مسیر چیست؟"</string>
     <string name="quest_pathSurface_title_bridleway">"در این مسیر ناشناس چه سطحی وجود دارد؟"</string>
     <string name="quest_pathSurface_title">"سطح این مسیر از چه نوعی است؟"</string>
