@@ -848,11 +848,12 @@ public class MainActivity extends AppCompatActivity implements
 			if (!isQuestDetailsCurrentlyDisplayedFor(questId, group)) continue;
 
 			runOnUiThread(this::closeBottomSheet);
-			Quest quest = questController.getNextAt(questId, group);
+			// disabled this feature (for now), it does not feel good
+			/*Quest quest = questController.getNextAt(questId, group);
 			if(quest != null)
 			{
 				runOnUiThread(() -> showQuestDetails(quest, group));
-			}
+			}*/
 
 			break;
 		}
