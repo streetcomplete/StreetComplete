@@ -290,11 +290,6 @@ public class MapFragment extends Fragment implements
 	public void setIsFollowingPosition(boolean value)
 	{
 		isFollowingPosition = value;
-		if(!isFollowingPosition) {
-			zoomedYet = false;
-			isShowingDirection = false;
-			isCompassMode = false;
-		}
 		followPosition();
 	}
 
@@ -491,7 +486,6 @@ public class MapFragment extends Fragment implements
 
 	public void setCompassMode(boolean isCompassMode)
 	{
-		if(!isFollowingPosition) return;
 		this.isCompassMode = isCompassMode;
 		if(isCompassMode)
 		{

@@ -138,6 +138,7 @@ public class MainActivity extends AppCompatActivity implements
 
 	private float mapRotation, mapTilt;
 	private boolean isFollowingPosition;
+	private boolean isCompassMode;
 
 	private boolean downloadServiceIsBound;
 	private QuestDownloadService.Interface downloadService;
@@ -656,6 +657,7 @@ public class MainActivity extends AppCompatActivity implements
 			{
 				mapFragment.removeQuestGeometry();
 				mapFragment.setIsFollowingPosition(isFollowingPosition);
+				mapFragment.setCompassMode(isCompassMode);
 				MainActivity.super.onBackPressed();
 			});
 		}
@@ -881,6 +883,7 @@ public class MainActivity extends AppCompatActivity implements
 		getSupportFragmentManager().popBackStackImmediate(BOTTOM_SHEET, FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
 		mapFragment.setIsFollowingPosition(isFollowingPosition);
+		mapFragment.setCompassMode(isCompassMode);
 		mapFragment.removeQuestGeometry();
 	}
 
@@ -925,7 +928,9 @@ public class MainActivity extends AppCompatActivity implements
 	private void showInBottomSheet(Fragment f)
 	{
 		isFollowingPosition = mapFragment.isFollowingPosition();
+		isCompassMode = mapFragment.isCompassMode();
 		mapFragment.setIsFollowingPosition(false);
+		mapFragment.setCompassMode(false);
 
 		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 		ft.setCustomAnimations(
