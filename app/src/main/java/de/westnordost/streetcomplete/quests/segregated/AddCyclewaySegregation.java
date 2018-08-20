@@ -30,7 +30,7 @@ public class AddCyclewaySegregation extends SimpleOverpassQuestType {
 				"(" +
 				"(highway = path and bicycle = designated and foot = designated)" +
 				" or (highway = footway and bicycle = designated)" +
-				" or (highway = cycleway and foot = designated)" +
+				" or (highway = cycleway and foot ~ designated|yes)" +
 				")" +
 				" and surface ~" + TextUtils.join("|", OsmTaggings.ANYTHING_PAVED) +
 				" and !segregated";
