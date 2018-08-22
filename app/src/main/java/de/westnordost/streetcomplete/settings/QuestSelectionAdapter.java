@@ -174,7 +174,7 @@ public class QuestSelectionAdapter extends ListAdapter<QuestSelectionAdapter.Que
 
 			if(!isEnabledInCurrentCountry())
 			{
-				String cc = currentCountryCodes.isEmpty() ? "Atlantis" : currentCountryCodes.get(0).split("-")[0];
+				String cc = currentCountryCodes.isEmpty() ? "Atlantis" : currentCountryCodes.get(0);
 				textCountryDisabled.setText(String.format(
 					textCountryDisabled.getResources().getString(R.string.questList_disabled_in_country),
 					new Locale("", cc).getDisplayCountry()
@@ -195,7 +195,14 @@ public class QuestSelectionAdapter extends ListAdapter<QuestSelectionAdapter.Que
 			{
 				OsmElementQuestType questType = (OsmElementQuestType) item.questType;
 				Countries countries = questType.getEnabledForCountries();
-				return countries.isAllExcept() ^ !Collections.disjoint(countries.getExceptions(), currentCountryCodes);
+				for(String currentCountryCode : currentCountryCodes)
+				{
+					if(countries.getExceptions().contains(currentCountryCode))
+					{
+						return !countries.isAllExcept();
+					}
+				}
+				return countries.isAllExcept();
 			}
 			return true;
 		}
