@@ -6,11 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.CheckBox;
 
-import com.vividsolutions.jts.geom.Coordinate;
-import com.vividsolutions.jts.geom.Geometry;
-import com.vividsolutions.jts.geom.GeometryFactory;
-import com.vividsolutions.jts.operation.distance.DistanceOp;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +16,6 @@ import de.westnordost.streetcomplete.data.QuestGroup;
 import de.westnordost.streetcomplete.data.osm.ElementGeometry;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestDao;
-import de.westnordost.streetcomplete.util.JTSConst;
 import de.westnordost.streetcomplete.util.SphericalEarthMath;
 import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 
@@ -151,11 +145,6 @@ public class FindQuestSourceComponent
 			coordinates[i] = createCoordinate(location);
 		}
 		return geometryFactory.createLineString(coordinates);
-	}
-
-	private static Coordinate createCoordinate(Location location)
-	{
-		return new Coordinate(location.getLongitude(), location.getLatitude());
 	}
 
 	private static List<Location> asListWithoutNullsAndDuplicates(Location[] locations)

@@ -19,11 +19,6 @@ public class MetadataModule
 		return new CountryInfos(assetManager, countryBoundaries);
 	}
 
-	@Provides public static GeoJsonReader geoJsonReader()
-	{
-		return new GeoJsonReader();
-	}
-
 	@Provides @Singleton public static FutureTask<CountryBoundaries> countryBoundariesFuture(
 			final AssetManager assetManager)
 	{

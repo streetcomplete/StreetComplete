@@ -1,17 +1,11 @@
 package de.westnordost.streetcomplete.data.osm;
 
-import com.vividsolutions.jts.geom.Geometry;
-import com.vividsolutions.jts.geom.Lineal;
-import com.vividsolutions.jts.geom.Polygonal;
-import com.vividsolutions.jts.linearref.LengthIndexedLine;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.LatLon;
-import de.westnordost.streetcomplete.util.JTSConst;
 
 /** Information on the geometry of a quest */
 public class ElementGeometry implements Serializable
