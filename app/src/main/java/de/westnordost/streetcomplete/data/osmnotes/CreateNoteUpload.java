@@ -18,6 +18,7 @@ import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.notes.Note;
 import de.westnordost.osmapi.notes.NotesDao;
 import de.westnordost.streetcomplete.data.statistics.QuestStatisticsDao;
+import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener;
 import de.westnordost.streetcomplete.util.ImageUploader;
 
 public class CreateNoteUpload
@@ -32,7 +33,7 @@ public class CreateNoteUpload
 	private final OsmNoteQuestType questType;
 	private final QuestStatisticsDao statisticsDB;
 	private final ImageUploader imageUploader;
-
+	private OnUploadedChangeListener uploadedChangeListener;
 
 	@Inject public CreateNoteUpload(
 			CreateNoteDao createNoteDB, NotesDao osmDao, NoteDao noteDB,
@@ -49,7 +50,12 @@ public class CreateNoteUpload
 		this.imageUploader = imageUploader;
 	}
 
-	public void upload(AtomicBoolean cancelState)
+	public synchronized void setProgressListener(OnUploadedChangeListener uploadedChangeListener)
+	{
+		this.uploadedChangeListener = uploadedChangeListener;
+	}
+
+	public synchronized void upload(AtomicBoolean cancelState)
 	{
 		int created = 0, obsolete = 0;
 		for(CreateNote createNote : createNoteDB.getAll(null))
@@ -58,10 +64,12 @@ public class CreateNoteUpload
 
 			if(uploadCreateNote(createNote) != null)
 			{
+				uploadedChangeListener.onUploaded();
 				created++;
 			}
 			else
 			{
+				uploadedChangeListener.onDiscarded();
 				obsolete++;
 			}
 		}

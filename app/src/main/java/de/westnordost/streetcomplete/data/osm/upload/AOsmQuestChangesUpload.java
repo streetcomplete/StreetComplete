@@ -42,6 +42,7 @@ import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao;
 import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao;
 import de.westnordost.streetcomplete.data.statistics.QuestStatisticsDao;
 import de.westnordost.streetcomplete.data.tiles.DownloadedTilesDao;
+import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener;
 import de.westnordost.streetcomplete.util.SlippyMapMath;
 
 public abstract class AOsmQuestChangesUpload
@@ -62,6 +63,7 @@ public abstract class AOsmQuestChangesUpload
 	private List<OsmQuest> createdQuests;
 	private List<Long> removedQuestIds;
 	private VisibleQuestListener visibleQuestListener;
+	private OnUploadedChangeListener uploadedChangeListener;
 
 	// The cache is just here so that uploading 500 quests of same quest type does not result in 500 DB requests.
 	private Map<OpenChangesetKey, Long> changesetIdsCache = new HashMap<>();
@@ -85,6 +87,11 @@ public abstract class AOsmQuestChangesUpload
 		this.questUnlocker = questUnlocker;
 		createdQuests = new ArrayList<>();
 		removedQuestIds = new ArrayList<>();
+	}
+
+	public synchronized void setProgressListener(OnUploadedChangeListener uploadedChangeListener)
+	{
+		this.uploadedChangeListener = uploadedChangeListener;
 	}
 
 	public synchronized void setVisibleQuestListener(VisibleQuestListener visibleQuestListener)
@@ -111,10 +118,12 @@ public abstract class AOsmQuestChangesUpload
 			if (uploadQuestChange(changesetId, quest, element, false, false))
 			{
 				uploadedQuestTypes.add(quest.getOsmElementQuestType());
+				uploadedChangeListener.onUploaded();
 				commits++;
 			}
 			else
 			{
+				uploadedChangeListener.onDiscarded();
 				obsolete++;
 			}
 		}

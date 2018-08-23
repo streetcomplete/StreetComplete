@@ -6,8 +6,6 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.graphics.Point;
 import android.graphics.PointF;
-import android.graphics.drawable.Animatable;
-import android.graphics.drawable.Drawable;
 import android.support.annotation.DrawableRes;
 import android.support.v4.app.Fragment;
 import android.content.BroadcastReceiver;
@@ -216,11 +214,10 @@ public class MainActivity extends AppCompatActivity implements
 
 		questController.onCreate();
 
-		TextView uploadedAnswersView = toolbar.findViewById(R.id.uploadedAnswersCounter);
+		TextView uploadedAnswersView = findViewById(R.id.uploadedAnswersCounter);
 		TextView unsyncedChangesView = findViewById(R.id.unsyncedAnswersCounter);
 		unsyncedChangesContainer = findViewById(R.id.unsyncedAnswersContainer);
-		uploadProgressBar = findViewById(R.id.unsyncedAnswersProgress);
-		answersCounter.setViews(uploadedAnswersView, uploadedAnswersView, unsyncedChangesView, unsyncedChangesContainer);
+		answersCounter.setViews(uploadedAnswersView, unsyncedChangesView, unsyncedChangesContainer);
 		unsyncedChangesContainer.setOnClickListener(view ->
 		{
 			if (isConnected())
@@ -258,15 +255,15 @@ public class MainActivity extends AppCompatActivity implements
 	{
 		super.onStart();
 
-		answersCounter.setAutosync(Prefs.Autosync.valueOf(prefs.getString(Prefs.AUTOSYNC,"ON")) == Prefs.Autosync.ON);
-		answersCounter.update();
+		boolean isAutosync = Prefs.Autosync.valueOf(prefs.getString(Prefs.AUTOSYNC,"ON")) == Prefs.Autosync.ON;
+		ProgressBar uploadedAnswersProgressBar = findViewById(R.id.uploadedAnswersProgress);
+		ProgressBar unsyncedAnswersProgressBar = findViewById(R.id.unsyncedAnswersProgress);
+		uploadedAnswersProgressBar.setVisibility(View.INVISIBLE);
+		unsyncedAnswersProgressBar.setVisibility(View.INVISIBLE);
 
-		TextView unsyncedChangesView = findViewById(R.id.unsyncedAnswersCounter);
-		for (Drawable drawable : unsyncedChangesView.getCompoundDrawables())
-		{
-			if(drawable != null && drawable instanceof Animatable)
-				((Animatable) drawable).start();
-		}
+		uploadProgressBar = isAutosync ? uploadedAnswersProgressBar : unsyncedAnswersProgressBar;
+		answersCounter.setAutosync(isAutosync);
+		answersCounter.update();
 
 		registerReceiver(locationAvailabilityReceiver, LocationUtil.createLocationAvailabilityIntentFilter());
 
@@ -278,7 +275,6 @@ public class MainActivity extends AppCompatActivity implements
 		questController.onStart(this);
 		questAutoSyncer.onStart();
 
-		uploadProgressBar.setVisibility(View.INVISIBLE);
 		downloadProgressBar.setAlpha(0f);
 		downloadServiceIsBound = bindService(new Intent(this, QuestDownloadService.class),
 				downloadServiceConnection, BIND_AUTO_CREATE);
@@ -369,7 +365,7 @@ public class MainActivity extends AppCompatActivity implements
 			{
 				questController.undo(quest);
 				questAutoSyncer.triggerAutoUpload();
-				answersCounter.decrement(quest.getChangesSource());
+				answersCounter.subtractOneUnsynced(quest.getChangesSource());
 			})
 			.setNegativeButton(R.string.undo_confirm_negative, null)
 			.show();
@@ -501,7 +497,16 @@ public class MainActivity extends AppCompatActivity implements
 			runOnUiThread(() ->
 			{
 				unsyncedChangesContainer.setEnabled(false);
-				uploadProgressBar.setVisibility(View.VISIBLE);
+				if(uploadProgressBar != null) uploadProgressBar.setVisibility(View.VISIBLE);
+			});
+		}
+
+		@Override public void onProgress(boolean success)
+		{
+			runOnUiThread(() ->
+			{
+				if(success) answersCounter.uploadedOne();
+				else        answersCounter.discardedOne();
 			});
 		}
 
@@ -559,7 +564,7 @@ public class MainActivity extends AppCompatActivity implements
 			runOnUiThread(() ->
 			{
 				unsyncedChangesContainer.setEnabled(true);
-				uploadProgressBar.setVisibility(View.INVISIBLE);
+				if(uploadProgressBar != null) uploadProgressBar.setVisibility(View.INVISIBLE);
 			});
 			answersCounter.update();
 		}
@@ -756,7 +761,7 @@ public class MainActivity extends AppCompatActivity implements
 			@Override public void onAnimationEnd(Animator animation)
 			{
 				root.removeView(img);
-				answersCounter.increase(source);
+				answersCounter.addOneUnsynced(source);
 			}
 		});
 
