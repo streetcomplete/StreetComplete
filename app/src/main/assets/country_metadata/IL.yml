@@ -5,6 +5,6 @@ isLivingStreetKnown: true
 isSlowZoneKnown: true
 mobileCountryCode: 425
 officialLanguages: [heb, ar]
-orchardProduces: [olive, grape, avocado, tomatoe, orange, chilli_pepper, sweet_pepper, date, peach,
+orchardProduces: [olive, grape, avocado, tomato, orange, chilli_pepper, sweet_pepper, date, peach,
   grapefruit, apple, banana, lemon, lime, guava, mango, mangosteen, plum, persimmon]
 popularReligions: [jewish, christian, muslim]
