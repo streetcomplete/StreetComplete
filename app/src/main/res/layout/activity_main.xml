@@ -39,7 +39,9 @@
                 android:layout_height="match_parent"
                 android:paddingStart="0dp"
                 android:paddingEnd="12dp"
-                android:gravity="center">
+                android:clipChildren="false"
+                android:minWidth="84dp"
+                android:gravity="center_vertical">
 
                 <ProgressBar
                     android:id="@+id/uploadedAnswersProgress"
@@ -64,8 +66,6 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_toEndOf="@id/uploadedAnswersIcon"
-                    android:minWidth="32dp"
-                    android:textAlignment="center"
                     tools:text="8888"
                     />
 
@@ -78,7 +78,9 @@
                 android:layout_height="match_parent"
                 android:paddingStart="0dp"
                 android:paddingEnd="12dp"
-                android:gravity="center">
+                android:clipChildren="false"
+                android:minWidth="68dp"
+                android:gravity="center_vertical">
 
                 <ProgressBar
                     android:id="@+id/unsyncedAnswersProgress"
@@ -104,8 +106,7 @@
                     android:layout_centerVertical="true"
                     android:layout_toEndOf="@id/unsyncedAnswersIcon"
                     android:minWidth="16dp"
-                    android:textAlignment="center"
-                    tools:text="8"/>
+                    tools:text="88"/>
 
             </RelativeLayout>
 

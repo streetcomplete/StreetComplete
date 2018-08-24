@@ -130,7 +130,8 @@ public class AnswersCounter
 		{
 			int previous = Integer.parseInt(view.getText().toString());
 			if(previous < value) animateChange(view, 1.6f);
-			else if(previous > value) animateChange(view, 0.6f);
+			// not important to highlight that and looks better IMO if only the positive changes are animated
+			//else if(previous > value) animateChange(view, 0.6f);
 		}
 		catch (NumberFormatException ignore) { }
 		view.setText(String.valueOf(value));
@@ -139,12 +140,12 @@ public class AnswersCounter
 	private void animateChange(View view, float scale)
 	{
 		ObjectAnimator anim = ObjectAnimator.ofPropertyValuesHolder(view,
-			PropertyValuesHolder.ofFloat(View.SCALE_X, scale),
-			PropertyValuesHolder.ofFloat(View.SCALE_Y, scale));
+			PropertyValuesHolder.ofFloat(View.SCALE_X, 1f, scale),
+			PropertyValuesHolder.ofFloat(View.SCALE_Y, 1f, scale));
 		anim.setRepeatCount(1);
 		anim.setRepeatMode(ValueAnimator.REVERSE);
 		anim.setInterpolator(new DecelerateInterpolator(2f));
-		anim.setDuration(150);
+		anim.setDuration(100);
 		anim.start();
 	}
 
