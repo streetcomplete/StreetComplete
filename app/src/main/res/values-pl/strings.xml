@@ -509,6 +509,7 @@ Na przykład 1,3 lub 2-6."</string>
     <string name="quest_pathSurface_title">"Jaką nawierzchnię ma ten fragment ścieżki?"</string>
     <string name="quest_select_hint_most_specific">"Wybierz najbardziej szczegółowy który pasuje:"</string>
     <string name="quest_generic_item_confirmation">"Czy jesteś pewien, że nie da się określić bardziej szczegółowo?"</string>
+    <string name="privacy_html_tileserver">"&lt;p&gt;Aby wyświetlić mapę kafelki wektorowe są pobierane z serwera &lt;a href=\"https://tiles.map-data.de\"&gt;map-data.de&lt;/a&gt;. Serwis zbiera dane dotyczące pobranych kafelków w celach statystycznych oraz w celu wykrywania błędów ale dane te są usuwane po kilku dniach.&lt;/p&gt;"</string>
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Dla niektórych zadań, pobrane są dodatkowe dane udostępnione przez innych. W szczególności, zadanie sprawdzania jednokierunkowości dróg korzysta z API, również utrzymywane na westnordost.de, by uzyskać informacje które drogi mogą być jednokierunkowe.&lt;/p&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"Nie (pozostaw notatkę)"</string>
     <string name="pref_quests_reset">"Przywrócić początkowy status i kolejność zadań?"</string>
@@ -591,8 +592,25 @@ Na przykład 1,3 lub 2-6."</string>
     <string name="quest_buildingType_shrine">"Kapliczka"</string>
     <string name="quest_noteDiscussion_hide">"%1$s ukrył notatkę (%2$s)"</string>
     <string name="quest_maxspeed_title_short2">"Jakie jest ograniczenie prędkości dla tej ulicy?"</string>
+    <string name="quest_maxspeed_answer_sign">"Znak"</string>
+    <string name="quest_maxspeed_answer_zone2">"To jest strefa (ograniczonej prędkości)"</string>
+    <string name="quest_maxspeed_answer_noSign2">"Brak znaku, zastosuj domyślne"</string>
     <string name="quest_openingHours_no_sign">"Brak informacji o godzinach otwarcia"</string>
+    <string name="quest_maxspeed_name_title2">"Jakie jest tutaj ograniczenie prędkości dla %s?"</string>
     <string name="quest_buildingType_sports_centre">"Centrum sportowe"</string>
     <string name="quest_buildingType_toilets">"Toalety"</string>
+    <string name="quest_maxspeed_sign_question">"Co ogranicza tutaj prędkość?"</string>
+    <string name="notification_channel_download">"Pobieranie"</string>
     <string name="quest_playground_access_title">"Czy ten plac zabaw jest publicznie dostępny?"</string>
+    <string name="quest_segregated_title">"Jaki jest tutaj układ chodnika i ścieżki rowerowej?"</string>
+    <string name="dialog_tutorial_upload">"Aby wysłać Twoje zmiany ręcznie użyj przycisku w pasku narzędzi, który tak wygląda."</string>
+    <string name="quest_segregated_separated">"Ruch jest rozdzielony od siebie"</string>
+    <string name="quest_segregated_mixed">"Rowerzyści i piesi korzystają ze wspólnej przestrzeni"</string>
+    <string name="quest_maxheight_title">"Jakie jest tutaj ograniczenie wysokości?"</string>
+    <string name="quest_maxheight_parking_entrance_title">"Jakie jest ograniczenie wysokości we wjeździe na ten parking?"</string>
+    <string name="quest_maxheight_height_restrictor_title">"Jakie jest ograniczenie wysokości tego ogranicznika?"</string>
+    <string name="quest_maxheight_tunnel_title">"Jakie jest ograniczenie wysokości tego tunelu?"</string>
+    <string name="quest_maxheight_answer_noSign">"Nie ma znaku"</string>
+    <string name="quest_maxheight_answer_noSign_question">"Czy jest tutaj wystarczająco dużo miejsca na przejazd najwyższych ciężarówek (co najmniej 4.5m / 15 stóp)?"</string>
+    <string name="quest_maxheight_unusualInput_confirmation_description">"Ta wysokość wygląda na nieprawdopodobną. Jesteś pewien, że jest poprawna?"</string>
 </resources>

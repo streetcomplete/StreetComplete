@@ -647,4 +647,29 @@
     <string name="quest_address_answer_no_housenumber_message1">"این ساختمان به چه عنوانی برچسب‌گذاری شده :"</string>
     <string name="quest_address_answer_no_housenumber_message2">"آیا این درست است و آیا این فقط بخشی از یک ساختمان نیست؟"</string>
     <string name="quest_buildingType_shrine">"زیارتگاه"</string>
+    <string name="quest_noteDiscussion_hide">"%1$s یاداشت مخفی (%2$s)
+
+"</string>
+    <string name="quest_maxspeed_title_short2">"محدویت سرعت در این خیابان چه مقداری است؟"</string>
+    <string name="quest_maxspeed_answer_sign">"علائم"</string>
+    <string name="quest_maxspeed_answer_zone2">"منطقه رانندگی با سرعت کم"</string>
+    <string name="quest_maxspeed_answer_noSign2">"بدون علامت، پیش فرض اعمال می شود"</string>
+    <string name="quest_openingHours_no_sign">"بدون علائم زمان شروع کار"</string>
+    <string name="quest_maxspeed_name_title2">"محدودیت سرعت‌در %s چه مقداری است؟"</string>
+    <string name="quest_buildingType_sports_centre">"ورزشگاه"</string>
+    <string name="quest_buildingType_toilets">"سرویس بهداشتی"</string>
+    <string name="quest_maxspeed_sign_question">"محدودیت سرعت چگونه مشخص شده است؟"</string>
+    <string name="notification_channel_download">"بارگیری"</string>
+    <string name="quest_playground_access_title">"آیا این زمین بازی عمومی است؟"</string>
+    <string name="quest_segregated_title">"پیاده‌رو و خط دوچرخه چگونه در اینجا ساخته شده است؟"</string>
+    <string name="dialog_tutorial_upload">"برای بارگذاری تغییرات به صورت دستی، از دکمه‌ای که در نوار ابزار مشابه این است استفاده کنید."</string>
+    <string name="quest_segregated_separated">"جداگانه"</string>
+    <string name="quest_segregated_mixed">"دوچرخه سواران و عابرین پیاده در یک مسیر مشترک"</string>
+    <string name="quest_maxheight_title">"محدودیت ارتفاع در اینجا چه مقداری است؟"</string>
+    <string name="quest_maxheight_parking_entrance_title">"برای ورودی پارکینگ محدودیت ارتفاع چه مقداری است؟"</string>
+    <string name="quest_maxheight_height_restrictor_title">"حد ارتفاع این محدود‌کننده ارتفاع چه مقداری است؟"</string>
+    <string name="quest_maxheight_tunnel_title">"محدویت ارتفاع ورود این تونل چه مقداری است؟"</string>
+    <string name="quest_maxheight_answer_noSign">"علائمی وجود ندارد"</string>
+    <string name="quest_maxheight_answer_noSign_question">"آیا به اندازه کافی، فضای مناسب برای عبور بلندترین کامیون‌ها (حداقل حدود ۴/۵ متر / ۱۵ فوت) وجود دارد؟"</string>
+    <string name="quest_maxheight_unusualInput_confirmation_description">"این ارتفاع غیرقابل باور است. مطمئن هستید که درست است؟"</string>
 </resources>
