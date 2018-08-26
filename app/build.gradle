@@ -22,7 +22,7 @@ android {
         minSdkVersion 17
         targetSdkVersion 27
         versionCode 701
-        versionName "7.0-beta2"
+        versionName "7.0"
         testInstrumentationRunner "android.test.InstrumentationTestRunner"
         buildConfigField "String", "MAPZEN_API_KEY", MAPZEN_API_KEY
     }
