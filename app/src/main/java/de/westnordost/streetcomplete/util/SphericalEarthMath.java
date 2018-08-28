@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.util;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import de.westnordost.osmapi.map.data.BoundingBox;
@@ -20,7 +21,8 @@ public class SphericalEarthMath
 
 	/**
 	 * Calculate a bounding box that contains the given circle. In other words, it is a square
-	 * centered at the given position and with a side length of radius*2
+	 * centered at the given position and with a side length of radius*2.
+	 *
 	 * @param center of the circle
 	 * @param radius in meters
 	 * @return The bounding box that contains the area
@@ -36,21 +38,34 @@ public class SphericalEarthMath
 
 	/**
 	 * Calculate a bounding box that contains the given positions.
+	 * @throws IllegalArgumentException if the multipositions list is empty or all lists contained therein are empty
 	 */
-	public static BoundingBox enclosingBoundingBox(List<LatLon> positions)
+	public static BoundingBox enclosingBoundingBox(Iterable<LatLon> positions)
 	{
-		Double minLat = null, minLon = null, maxLat = null, maxLon = null;
-		for(LatLon pos : positions)
-		{
-			double lat = pos.getLatitude();
-			double lon = pos.getLongitude();
+		Iterator<LatLon> it = positions.iterator();
+		if(!it.hasNext()) throw new IllegalArgumentException("positions is empty");
 
-			if(minLat == null || lat < minLat) minLat = lat;
-			if(minLon == null || lon < minLon) minLon = lon;
-			if(maxLat == null || lat > maxLat) maxLat = lat;
-			if(maxLon == null || lon > maxLon) maxLon = lon;
+		LatLon origin = it.next();
+		double minLatOffset = 0, minLonOffset = 0, maxLatOffset = 0, maxLonOffset = 0;
+
+		while(it.hasNext())
+		{
+			LatLon pos = it.next();
+
+			// calculate with offsets here to properly handle 180th meridian
+			double lat = normalizeLongitude(pos.getLatitude() - origin.getLatitude());
+			double lon = pos.getLongitude() - origin.getLongitude();
+
+			if (lat < minLatOffset) minLatOffset = lat;
+			if (lon < minLonOffset) minLonOffset = lon;
+			if (lat > maxLatOffset) maxLatOffset = lat;
+			if (lon > maxLonOffset) maxLonOffset = lon;
 		}
-		return new BoundingBox(minLat, minLon, maxLat, maxLon);
+		return new BoundingBox(
+			origin.getLatitude() + minLatOffset,
+			origin.getLongitude() + minLonOffset,
+			origin.getLatitude() + maxLatOffset,
+			origin.getLongitude() + maxLonOffset);
 	}
 
 	/** @return a new position in the given distance and angle from the original position */
@@ -84,34 +99,6 @@ public class SphericalEarthMath
 		return distance(min, minLatMaxLon) * distance(min, maxLatMinLon);
 	}
 
-	private static LatLon createTranslated(double lat, double lon)
-	{
-		if(lon > 180) lon -= 360;
-		else if(lon < -180) lon += 360;
-
-		boolean crossedPole = false;
-		// north pole
-		if(lat > 90)
-		{
-			lat = 180-lat;
-			crossedPole = true;
-		}
-		// south pole
-		else if(lat < -90)
-		{
-			lat = -180-lat;
-			crossedPole = true;
-		}
-
-		if(crossedPole)
-		{
-			lon += 180;
-			if(lon > 180) lon -= 360;
-		}
-
-		return new OsmLatLon(lat, lon);
-	}
-
 	/**
 	 * @return distance between two points in meters
 	 */
@@ -138,27 +125,6 @@ public class SphericalEarthMath
 			length += distance(p0, p1);
 		}
 		return length;
-	}
-
-	/**
-	 * @return the center line of the given polyline
-	 */
-	public static List<LatLon> centerLineOf(List<LatLon> positions)
-	{
-		double halfDistance = distance(positions) / 2;
-		for(int i = 0; i < positions.size() -1; i++)
-		{
-			LatLon pos0 = positions.get(i);
-			LatLon pos1 = positions.get(i+1);
-			halfDistance -= distance(pos0, pos1);
-			if(halfDistance > 0) continue;
-
-			List<LatLon> result = new ArrayList<>(2);
-			result.add(pos0);
-			result.add(pos1);
-			return result;
-		}
-		return null;
 	}
 
 	/** @return whether any point on line1 is at most the given distance away from any other point
@@ -213,6 +179,165 @@ public class SphericalEarthMath
 		return bearing;
 	}
 
+	/**
+	 * @return the line around the center point of the given polyline
+	 * @throws IllegalArgumentException if positions list has less than two elements
+	 */
+	public static List<LatLon> centerLineOfPolyline(List<LatLon> positions)
+	{
+		if(positions.size() < 2) throw new IllegalArgumentException("positions list must contain at least 2 elements");
+
+		double halfDistance = distance(positions) / 2;
+		for(int i = 0; i < positions.size() -1; i++)
+		{
+			LatLon pos0 = positions.get(i);
+			LatLon pos1 = positions.get(i+1);
+			halfDistance -= distance(pos0, pos1);
+			if(halfDistance > 0) continue;
+
+			List<LatLon> result = new ArrayList<>(2);
+			result.add(pos0);
+			result.add(pos1);
+			return result;
+		}
+		throw new RuntimeException();
+	}
+
+	/**
+	 * @return the center point of the given polyline
+	 * @throws IllegalArgumentException if positions list is empty
+	 */
+	public static LatLon centerPointOfPolyline(List<LatLon> positions)
+	{
+		if(positions.isEmpty()) throw new IllegalArgumentException("positions list is empty");
+
+		double halfDistance = distance(positions) / 2;
+		double distance = 0;
+		for(int i = 0; i < positions.size() -1; i++)
+		{
+			LatLon start = positions.get(i);
+			LatLon end = positions.get(i+1);
+			double segmentDistance = distance(start, end);
+			distance += segmentDistance;
+
+			if(distance > halfDistance)
+			{
+				double ratio = (distance - halfDistance) / segmentDistance;
+				double lat = end.getLatitude() - ratio * (end.getLatitude() - start.getLatitude());
+				double lon = normalizeLongitude(end.getLongitude() - ratio * normalizeLongitude(end.getLongitude() - start.getLongitude()));
+				return new OsmLatLon(lat, lon);
+			}
+		}
+		return positions.get(0);
+	}
+
+	/**
+	 * @return the center point of the given polygon
+	 * @throws IllegalArgumentException if positions list is empty
+	 */
+	public static LatLon centerPointOfPolygon(List<LatLon> polygon)
+	{
+		if(polygon.isEmpty()) throw new IllegalArgumentException("positions list is empty");
+
+		double lon = 0, lat = 0, area = 0;
+		LatLon origin = polygon.get(0);
+		int len = polygon.size();
+
+		for(int i = 0, j = len-1; i<len; j = i, ++i)
+		{
+			LatLon pos0 = polygon.get(j);
+			LatLon pos1 = polygon.get(i);
+
+			// calculating with offsets to avoid rounding imprecision and 180th meridian problem
+			double dx1 = normalizeLongitude(pos0.getLongitude() - origin.getLongitude());
+			double dy1 = pos0.getLatitude() - origin.getLatitude();
+			double dx2 = normalizeLongitude(pos1.getLongitude() - origin.getLongitude());
+			double dy2 = pos1.getLatitude() - origin.getLatitude();
+
+			double f = dx1 * dy2 - dx2 * dy1;
+			lon += (dx1 + dx2) * f;
+			lat += (dy1 + dy2) * f;
+			area += f;
+		}
+		area *= 3;
+
+		if(area == 0) return origin;
+
+		return new OsmLatLon(
+			lat / area + origin.getLatitude(),
+			normalizeLongitude(lon / area + origin.getLongitude()));
+	}
+
+	/**
+	 * @return whether the given position is within the given polygon. Whether the polygon is
+	 *         defined clockwise or counterclockwise does not matter.
+	 * */
+	public static boolean isInPolygon(LatLon position, List<LatLon> polygon)
+	{
+		// this is the counting number algorithm, see http://geomalgorithms.com/a03-_inclusion.html
+		boolean cn = false;
+		for (int i = 0, j = polygon.size()-1; i < polygon.size(); j = i++)
+		{
+			LatLon pos0 = polygon.get(j);
+			LatLon pos1 = polygon.get(i);
+
+			if ( (pos1.getLatitude() > position.getLatitude()) != (pos0.getLatitude() > position.getLatitude()) )
+			{
+				double vt = (position.getLatitude() - pos1.getLatitude()) / (pos0.getLatitude() - pos1.getLatitude());
+				double lon = normalizeLongitude(pos1.getLongitude() + vt * normalizeLongitude(pos0.getLongitude() - pos1.getLongitude()));
+				if (normalizeLongitude(position.getLongitude() - lon) < 0)
+					cn = !cn;
+			}
+		}
+		return cn;
+	}
+
+	/**
+	 * @return whether the given position is within the given multipolygon. Polygons defined
+	 *         counterclockwise count as outer shells, polygons defined clockwise count as holes.
+	 *
+	 * It is assumed that shells do not overlap with other shells and holes do not overlap with other
+	 * holes. (Though, of course a shell can be within a hole within a shell, that's okay)
+	 * */
+	public static boolean isInMultipolygon(LatLon position, List<List<LatLon>> multipolygon)
+	{
+		int containment = 0;
+		for (List<LatLon> polygon : multipolygon)
+		{
+			if(isInPolygon(position, polygon))
+			{
+				if(isRingDefinedClockwise(polygon)) containment--;
+				else containment++;
+			}
+		}
+		return containment > 0;
+	}
+
+	/** @return whether the given ring is defined clockwise
+	 *  @throws IllegalArgumentException if positions list is empty */
+	public static boolean isRingDefinedClockwise(List<LatLon> ring)
+	{
+		if(ring.isEmpty()) throw new IllegalArgumentException("positions list is empty");
+
+		double sum = 0;
+		int len = ring.size();
+		LatLon origin = ring.get(0);
+		for(int i = 0, j = len-1; i<len; j = i, ++i)
+		{
+			LatLon pos0 = ring.get(j);
+			LatLon pos1 = ring.get(i);
+
+			// calculating with offsets to handle 180th meridian
+			double lon0 = normalizeLongitude(pos0.getLongitude() - origin.getLongitude());
+			double lat0 = pos0.getLatitude() - origin.getLatitude();
+			double lon1 = normalizeLongitude(pos1.getLongitude() - origin.getLongitude());
+			double lat1 = pos1.getLatitude() - origin.getLatitude();
+
+			sum += lon0 * lat1 - lon1 * lat0;
+		}
+		return sum > 0;
+	}
+
 	// https://en.wikipedia.org/wiki/Great-circle_navigation#cite_note-2
 	private static double distance(double φ1, double λ1, double φ2, double λ2)
 	{
@@ -237,4 +362,37 @@ public class SphericalEarthMath
 	}
 
 	private static double sqr(double x) { return Math.pow(x, 2); }
+
+	private static LatLon createTranslated(double lat, double lon)
+	{
+		lon = normalizeLongitude(lon);
+
+		boolean crossedPole = false;
+		// north pole
+		if(lat > 90)
+		{
+			lat = 180-lat;
+			crossedPole = true;
+		}
+		// south pole
+		else if(lat < -90)
+		{
+			lat = -180-lat;
+			crossedPole = true;
+		}
+
+		if(crossedPole)
+		{
+			lon += 180;
+			if(lon > 180) lon -= 360;
+		}
+
+		return new OsmLatLon(lat, lon);
+	}
+
+	private static double normalizeLongitude(double lon) {
+		while(lon > 180) lon -= 360;
+		while(lon < -180) lon += 360;
+		return lon;
+	}
 }
