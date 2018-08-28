@@ -628,7 +628,7 @@ Por ejemplo 1,3 o 2-6."</string>
     <string name="quest_buildingType_farm_auxiliary_description">"edificio auxiliar de una granja que no es una vivienda"</string>
     <string name="quest_buildingType_greenhouse">"Invernadero"</string>
     <string name="quest_buildingType_other">"Otro"</string>
-    <string name="quest_buildingType_shed">"Covertizo"</string>
+    <string name="quest_buildingType_shed">"Cobertizo"</string>
     <string name="quest_buildingType_hut">"Choza"</string>
     <string name="quest_buildingType_hut_description">"chozo o choza, refugio pequeño y tosco"</string>
     <string name="quest_buildingType_roof">"Tejado"</string>
@@ -653,6 +653,7 @@ Por ejemplo 1,3 o 2-6."</string>
     <string name="quest_maxspeed_sign_question">"¿Qué define el límite de velocidad?"</string>
     <string name="notification_channel_download">"Descargar"</string>
     <string name="quest_playground_access_title">"¿Esta zona de recreo es accesible al público?"</string>
+    <string name="quest_segregated_title">"¿Como están dispuestos la vereda y el carril de bici aquí?"</string>
     <string name="dialog_tutorial_upload">"Para subir los cambios manualmente, usa el botón en la barra de herramientas similar a este."</string>
     <string name="quest_segregated_separated">"Segregado uno del otro"</string>
     <string name="quest_segregated_mixed">"Ciclistas y peatones comparten el mismo espacio"</string>
