@@ -58,6 +58,7 @@ sources:
     mapzen:
         type: MVT
         url: https://tiles.map-data.de/vector/v1/512/all/{z}/{x}/{y}.mvt
+        max_zoom: 16
 
 fonts:
     Montserrat:

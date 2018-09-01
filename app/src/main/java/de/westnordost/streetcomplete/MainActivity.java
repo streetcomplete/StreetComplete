@@ -244,9 +244,7 @@ public class MainActivity extends AppCompatActivity implements
 				getResources().getDimensionPixelSize(R.dimen.quest_form_rightOffset),
 				getResources().getDimensionPixelSize(R.dimen.quest_form_bottomOffset)));
 
-		mapFragment.getMapAsync(BuildConfig.MAPZEN_API_KEY != null ?
-				BuildConfig.MAPZEN_API_KEY :
-				new String(new char[]{118,101,99,116,111,114,45,116,105,108,101,115,45,102,75,85,99,117,65,74}));
+		mapFragment.getMapAsync(BuildConfig.MAPZEN_API_KEY);
 	}
 
 	@Override public void onStart()

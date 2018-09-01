@@ -642,11 +642,11 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_openingHours_no_sign">"Ingen öppet tider-skylt"</string>
     <string name="quest_maxspeed_name_title2">"Vilken är hastighetsbegränsningen för %s här?"</string>
     <string name="quest_buildingType_sports_centre">"Idrottsanläggning"</string>
-    <string name="quest_buildingType_toilets">"Toaletter"</string>
+    <string name="quest_buildingType_toilets">"Toalett"</string>
     <string name="quest_maxspeed_sign_question">"Vad bestämmer maxhastigheten?"</string>
     <string name="notification_channel_download">"Ladda ner"</string>
     <string name="quest_playground_access_title">"Är den här lekplatsen tillgänglig för allmänheten?"</string>
-    <string name="quest_segregated_title">"Hur är gångbanan och cykelvägen utformad här?"</string>
+    <string name="quest_segregated_title">"Hur är gångbanan och cykelvägen utformade här?"</string>
     <string name="dialog_tutorial_upload">"För att ladda upp ändringarna manuellt, klicka på knappen som ser ut så här"</string>
     <string name="quest_segregated_separated">"Separerade från varandra"</string>
     <string name="quest_segregated_mixed">"Cyklister och gångtrafikanter delar bana"</string>
