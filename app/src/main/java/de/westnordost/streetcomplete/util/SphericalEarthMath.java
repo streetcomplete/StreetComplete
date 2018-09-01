@@ -53,8 +53,8 @@ public class SphericalEarthMath
 			LatLon pos = it.next();
 
 			// calculate with offsets here to properly handle 180th meridian
-			double lat = normalizeLongitude(pos.getLatitude() - origin.getLatitude());
-			double lon = pos.getLongitude() - origin.getLongitude();
+			double lat = pos.getLatitude() - origin.getLatitude();
+			double lon = normalizeLongitude(pos.getLongitude() - origin.getLongitude());
 
 			if (lat < minLatOffset) minLatOffset = lat;
 			if (lon < minLonOffset) minLonOffset = lon;
@@ -63,9 +63,9 @@ public class SphericalEarthMath
 		}
 		return new BoundingBox(
 			origin.getLatitude() + minLatOffset,
-			origin.getLongitude() + minLonOffset,
+			normalizeLongitude(origin.getLongitude() + minLonOffset),
 			origin.getLatitude() + maxLatOffset,
-			origin.getLongitude() + maxLonOffset);
+			normalizeLongitude(origin.getLongitude() + maxLonOffset));
 	}
 
 	/** @return a new position in the given distance and angle from the original position */
@@ -117,12 +117,16 @@ public class SphericalEarthMath
 	 */
 	public static double distance(List<LatLon> positions)
 	{
+		if(positions.isEmpty()) return 0;
+
 		double length = 0;
-		for(int i = 0; i < positions.size() -1; i++)
+		Iterator<LatLon> it = positions.iterator();
+		LatLon p0 = it.next(), p1;
+		while(it.hasNext())
 		{
-			LatLon p0 = positions.get(i);
-			LatLon p1 = positions.get(i+1);
-			length += distance(p0, p1);
+			p1 = it.next();
+			length += distance(p0,p1);
+			p0 = p1;
 		}
 		return length;
 	}
@@ -188,17 +192,20 @@ public class SphericalEarthMath
 		if(positions.size() < 2) throw new IllegalArgumentException("positions list must contain at least 2 elements");
 
 		double halfDistance = distance(positions) / 2;
-		for(int i = 0; i < positions.size() -1; i++)
+		Iterator<LatLon> it = positions.iterator();
+		LatLon p0 = it.next(), p1;
+		while (it.hasNext())
 		{
-			LatLon pos0 = positions.get(i);
-			LatLon pos1 = positions.get(i+1);
-			halfDistance -= distance(pos0, pos1);
-			if(halfDistance > 0) continue;
-
-			List<LatLon> result = new ArrayList<>(2);
-			result.add(pos0);
-			result.add(pos1);
-			return result;
+			p1 = it.next();
+			halfDistance -= distance(p0, p1);
+			if(halfDistance <= 0)
+			{
+				List<LatLon> result = new ArrayList<>(2);
+				result.add(p0);
+				result.add(p1);
+				return result;
+			}
+			p0 = p1;
 		}
 		throw new RuntimeException();
 	}
@@ -213,20 +220,25 @@ public class SphericalEarthMath
 
 		double halfDistance = distance(positions) / 2;
 		double distance = 0;
-		for(int i = 0; i < positions.size() -1; i++)
+		Iterator<LatLon> it = positions.iterator();
+		LatLon p0 = it.next(), p1;
+		while (it.hasNext())
 		{
-			LatLon start = positions.get(i);
-			LatLon end = positions.get(i+1);
-			double segmentDistance = distance(start, end);
-			distance += segmentDistance;
+			p1 = it.next();
 
-			if(distance > halfDistance)
+			double segmentDistance = distance(p0, p1);
+			if(segmentDistance > 0)
 			{
-				double ratio = (distance - halfDistance) / segmentDistance;
-				double lat = end.getLatitude() - ratio * (end.getLatitude() - start.getLatitude());
-				double lon = normalizeLongitude(end.getLongitude() - ratio * normalizeLongitude(end.getLongitude() - start.getLongitude()));
-				return new OsmLatLon(lat, lon);
+				distance += segmentDistance;
+				if (distance >= halfDistance)
+				{
+					double ratio = (distance - halfDistance) / segmentDistance;
+					double lat = p1.getLatitude() - ratio * (p1.getLatitude() - p0.getLatitude());
+					double lon = normalizeLongitude(p1.getLongitude() - ratio * normalizeLongitude(p1.getLongitude() - p0.getLongitude()));
+					return new OsmLatLon(lat, lon);
+				}
 			}
+			p0 = p1;
 		}
 		return positions.get(0);
 	}
@@ -240,24 +252,25 @@ public class SphericalEarthMath
 		if(polygon.isEmpty()) throw new IllegalArgumentException("positions list is empty");
 
 		double lon = 0, lat = 0, area = 0;
-		LatLon origin = polygon.get(0);
-		int len = polygon.size();
-
-		for(int i = 0, j = len-1; i<len; j = i, ++i)
+		Iterator<LatLon> it = polygon.iterator();
+		LatLon origin = it.next();
+		LatLon p0 = origin, p1;
+		while (it.hasNext())
 		{
-			LatLon pos0 = polygon.get(j);
-			LatLon pos1 = polygon.get(i);
+			p1 = it.next();
 
 			// calculating with offsets to avoid rounding imprecision and 180th meridian problem
-			double dx1 = normalizeLongitude(pos0.getLongitude() - origin.getLongitude());
-			double dy1 = pos0.getLatitude() - origin.getLatitude();
-			double dx2 = normalizeLongitude(pos1.getLongitude() - origin.getLongitude());
-			double dy2 = pos1.getLatitude() - origin.getLatitude();
+			double dx1 = normalizeLongitude(p0.getLongitude() - origin.getLongitude());
+			double dy1 = p0.getLatitude() - origin.getLatitude();
+			double dx2 = normalizeLongitude(p1.getLongitude() - origin.getLongitude());
+			double dy2 = p1.getLatitude() - origin.getLatitude();
 
 			double f = dx1 * dy2 - dx2 * dy1;
 			lon += (dx1 + dx2) * f;
 			lat += (dy1 + dy2) * f;
 			area += f;
+
+			p0 = p1;
 		}
 		area *= 3;
 
@@ -270,26 +283,64 @@ public class SphericalEarthMath
 
 	/**
 	 * @return whether the given position is within the given polygon. Whether the polygon is
-	 *         defined clockwise or counterclockwise does not matter.
+	 *         defined clockwise or counterclockwise does not matter. The polygon boundary and its
+	 *         vertices are considered inside the polygon
 	 * */
 	public static boolean isInPolygon(LatLon position, List<LatLon> polygon)
 	{
-		// this is the counting number algorithm, see http://geomalgorithms.com/a03-_inclusion.html
-		boolean cn = false;
-		for (int i = 0, j = polygon.size()-1; i < polygon.size(); j = i++)
-		{
-			LatLon pos0 = polygon.get(j);
-			LatLon pos1 = polygon.get(i);
+		boolean oddNumberOfIntersections = false, lastWasIntersectionAtVertex = false;
+		double lon = position.getLongitude(), lat = position.getLatitude();
 
-			if ( (pos1.getLatitude() > position.getLatitude()) != (pos0.getLatitude() > position.getLatitude()) )
+		Iterator<LatLon> it = polygon.iterator();
+		LatLon p0 = it.next(), p1;
+		while (it.hasNext())
+		{
+			p1 = it.next();
+
+			double lon0 = p0.getLongitude();
+			double lat0 = p0.getLatitude();
+			double lon1 = p1.getLongitude();
+			double lat1 = p1.getLatitude();
+
+			// scanline check, disregard line segments parallel to the cast ray
+			if ( lat0 != lat1 && inside(lat, lat0, lat1) )
 			{
-				double vt = (position.getLatitude() - pos1.getLatitude()) / (pos0.getLatitude() - pos1.getLatitude());
-				double lon = normalizeLongitude(pos1.getLongitude() + vt * normalizeLongitude(pos0.getLongitude() - pos1.getLongitude()));
-				if (normalizeLongitude(position.getLongitude() - lon) < 0)
-					cn = !cn;
+				double vt = (lat - lat1) / (lat0 - lat1);
+				double intersectionLongitude = normalizeLongitude(lon1 + vt * normalizeLongitude(lon0 - lon1));
+				double lonDiff = normalizeLongitude(intersectionLongitude - lon);
+				// position is on polygon boundary
+				if (lonDiff == 0) return true;
+				// ray crosses polygon boundary. ignore if this intersection was already counted
+				// when looking at the last intersection
+				if (lonDiff > 0 && !lastWasIntersectionAtVertex)
+				{
+					oddNumberOfIntersections = !oddNumberOfIntersections;
+					lastWasIntersectionAtVertex = intersectionLongitude == lon1;
+				}
+				else
+				{
+					lastWasIntersectionAtVertex = false;
+				}
 			}
+			p0 = p1;
 		}
-		return cn;
+		return oddNumberOfIntersections;
+	}
+
+	private static boolean inside(double val, double bound0, double bound1)
+	{
+		double min, max;
+		if(bound0 < bound1)
+		{
+			min = bound0;
+			max = bound1;
+		}
+		else
+		{
+			min = bound1;
+			max = bound0;
+		}
+		return val >= min && val <= max;
 	}
 
 	/**
@@ -320,20 +371,21 @@ public class SphericalEarthMath
 		if(ring.isEmpty()) throw new IllegalArgumentException("positions list is empty");
 
 		double sum = 0;
-		int len = ring.size();
-		LatLon origin = ring.get(0);
-		for(int i = 0, j = len-1; i<len; j = i, ++i)
+		Iterator<LatLon> it = ring.iterator();
+		LatLon origin = it.next();
+		LatLon p0 = origin, p1;
+		while (it.hasNext())
 		{
-			LatLon pos0 = ring.get(j);
-			LatLon pos1 = ring.get(i);
+			p1 = it.next();
 
 			// calculating with offsets to handle 180th meridian
-			double lon0 = normalizeLongitude(pos0.getLongitude() - origin.getLongitude());
-			double lat0 = pos0.getLatitude() - origin.getLatitude();
-			double lon1 = normalizeLongitude(pos1.getLongitude() - origin.getLongitude());
-			double lat1 = pos1.getLatitude() - origin.getLatitude();
-
+			double lon0 = normalizeLongitude(p0.getLongitude() - origin.getLongitude());
+			double lat0 = p0.getLatitude() - origin.getLatitude();
+			double lon1 = normalizeLongitude(p1.getLongitude() - origin.getLongitude());
+			double lat1 = p1.getLatitude() - origin.getLatitude();
 			sum += lon0 * lat1 - lon1 * lat0;
+
+			p0 = p1;
 		}
 		return sum > 0;
 	}
