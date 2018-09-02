@@ -93,10 +93,10 @@ public class AddHousenumber extends AOsmElementQuestType
 		// empty result: We are done
 		if(buildings.isEmpty()) return true;
 
-		bbox = getBoundingBoxThatIncludes(buildings.values());
-
 		List<ElementGeometry> addrAreas = downloadAreasWithAddresses(bbox);
 		if(addrAreas == null) return false;
+
+		bbox = getBoundingBoxThatIncludes(buildings.values());
 
 		LatLonRaster addrPositions = downloadFreeFloatingPositionsWithAddresses(bbox);
 		if(addrPositions == null) return false;
