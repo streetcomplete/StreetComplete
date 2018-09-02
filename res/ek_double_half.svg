@@ -10,7 +10,9 @@
    version="1.1"
    id="svg68"
    sodipodi:docname="ek_double_half.svg"
-   inkscape:version="0.92.1 r15371">
+   inkscape:version="0.92.1 r15371"
+   width="100"
+   height="60.5">
   <metadata
      id="metadata74">
     <rdf:RDF>
@@ -55,203 +57,216 @@
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
-     inkscape:current-layer="svg68" />
+     inkscape:current-layer="svg68"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
   <polygon
-     points="37,50 62,50 85,100 15,100"
-     fill="#d7d7d7"
-     id="polygon2" />
+     points="85,100 15,100 37,50 62,50 "
+     id="polygon2"
+     style="fill:#d7d7d7"
+     transform="translate(0,-39.5)" />
   <polygon
-     points="10,55 18,55 0,73 0,62"
-     fill="#e1d9af"
-     id="polygon4" />
+     points="0,73 0,62 10,55 18,55 "
+     id="polygon4"
+     style="fill:#e1d9af"
+     transform="translate(0,-39.5)" />
   <polygon
-     points="25,55 32,55 18,80 7,80"
-     fill="#e1d9af"
-     id="polygon6" />
+     points="18,80 7,80 25,55 32,55 "
+     id="polygon6"
+     style="fill:#e1d9af"
+     transform="translate(0,-39.5)" />
   <polygon
-     points="90,55 82,55 100,73 100,62"
-     fill="#e1d9af"
-     id="polygon8" />
+     points="100,73 100,62 90,55 82,55 "
+     id="polygon8"
+     style="fill:#e1d9af"
+     transform="translate(0,-39.5)" />
   <polygon
-     points="75,55 68,55 82,80 93,80"
-     fill="#e1d9af"
-     id="polygon10" />
+     points="82,80 93,80 75,55 68,55 "
+     id="polygon10"
+     style="fill:#e1d9af"
+     transform="translate(0,-39.5)" />
   <polygon
-     points="0,58 100,58 100,60 0,60"
-     fill="#8c7570"
-     id="polygon12" />
+     points="100,60 0,60 0,58 100,58 "
+     id="polygon12"
+     style="fill:#8c7570"
+     transform="translate(0,-39.5)" />
   <polygon
-     points="0,73 100,73 100,76 0,76"
-     fill="#8c7570"
-     id="polygon14" />
+     points="100,76 0,76 0,73 100,73 "
+     id="polygon14"
+     style="fill:#8c7570"
+     transform="translate(0,-39.5)" />
   <polygon
-     points="85,75 95,75 95,90 85,90"
-     fill="#727272"
-     id="polygon16" />
+     points="95,90 85,90 85,75 95,75 "
+     id="polygon16"
+     style="fill:#727272"
+     transform="translate(0,-39.5)" />
   <circle
      cx="90"
-     cy="75"
+     cy="35.5"
      r="5"
-     fill="#727272"
-     id="circle18" />
+     id="circle18"
+     style="fill:#727272" />
   <circle
      cx="90"
-     cy="75.5"
+     cy="36"
      r="2.5"
-     fill="white"
-     id="circle20" />
+     id="circle20"
+     style="fill:#ffffff" />
   <rect
      x="83"
-     y="73"
+     y="33.5"
      height="5"
      width="7"
-     fill="white"
-     id="rect22" />
+     id="rect22"
+     style="fill:#ffffff" />
   <rect
      x="73"
-     y="73"
+     y="33.5"
      height="5"
      width="10"
-     fill="red"
-     id="rect24" />
+     id="rect24"
+     style="fill:#ff0000" />
   <rect
      x="63"
-     y="73"
+     y="33.5"
      height="5"
      width="10"
-     fill="white"
-     id="rect26" />
+     id="rect26"
+     style="fill:#ffffff" />
   <rect
      x="53"
-     y="73"
+     y="33.5"
      height="5"
      width="10"
-     fill="red"
-     id="rect28" />
+     id="rect28"
+     style="fill:#ff0000" />
   <polygon
-     points="15,75 5,75 5,90 15,90"
-     fill="#727272"
-     id="polygon30" />
+     points="5,90 15,90 15,75 5,75 "
+     id="polygon30"
+     style="fill:#727272"
+     transform="translate(0,-39.5)" />
   <circle
      cx="10"
-     cy="75"
+     cy="35.5"
      r="5"
-     fill="#727272"
-     id="circle32" />
+     id="circle32"
+     style="fill:#727272" />
   <circle
      cx="10"
-     cy="75.5"
+     cy="36"
      r="2.5"
-     fill="white"
-     id="circle34" />
+     id="circle34"
+     style="fill:#ffffff" />
   <rect
      x="10"
-     y="73"
+     y="33.5"
      height="5"
      width="7"
-     fill="white"
-     id="rect36" />
+     id="rect36"
+     style="fill:#ffffff" />
   <rect
      x="17"
-     y="73"
+     y="33.5"
      height="5"
      width="10"
-     fill="red"
-     id="rect38" />
+     id="rect38"
+     style="fill:#ff0000" />
   <rect
      x="27"
-     y="73"
+     y="33.5"
      height="5"
      width="10"
-     fill="white"
-     id="rect40" />
+     id="rect40"
+     style="fill:#ffffff" />
   <rect
      x="37"
-     y="73"
+     y="33.5"
      height="5"
      width="10"
-     fill="red"
-     id="rect42" />
+     id="rect42"
+     style="fill:#ff0000" />
   <rect
      x="29"
-     y="42"
+     y="2.5"
      width="5"
      height="3"
-     fill="#f5f5dc"
-     id="rect44" />
+     id="rect44"
+     style="fill:#f5f5dc" />
   <rect
      x="34"
-     y="42"
+     y="2.5"
      width="5"
      height="3"
-     fill="red"
-     id="rect46" />
+     id="rect46"
+     style="fill:#ff0000" />
   <rect
      x="39"
-     y="42"
+     y="2.5"
      width="5"
      height="3"
-     fill="#f5f5dc"
-     id="rect48" />
+     id="rect48"
+     style="fill:#f5f5dc" />
   <rect
      x="44"
-     y="42"
+     y="2.5"
      width="5"
      height="3"
-     fill="red"
-     id="rect50" />
+     id="rect50"
+     style="fill:#ff0000" />
   <rect
      x="27"
-     y="42"
+     y="2.5"
      height="7"
      width="5"
-     fill="#727272"
-     id="rect52" />
+     id="rect52"
+     style="fill:#727272" />
   <circle
      cx="29.5"
-     cy="42"
+     cy="2.5"
      r="2.5"
-     fill="#727272"
-     id="circle54" />
+     id="circle54"
+     style="fill:#727272" />
   <rect
      x="51"
-     y="42"
+     y="2.5"
      width="5"
      height="3"
-     fill="red"
-     id="rect56" />
+     id="rect56"
+     style="fill:#ff0000" />
   <rect
      x="56"
-     y="42"
+     y="2.5"
      width="5"
      height="3"
-     fill="#f5f5dc"
-     id="rect58" />
+     id="rect58"
+     style="fill:#f5f5dc" />
   <rect
      x="61"
-     y="42"
+     y="2.5"
      width="5"
      height="3"
-     fill="red"
-     id="rect60" />
+     id="rect60"
+     style="fill:#ff0000" />
   <rect
      x="66"
-     y="42"
+     y="2.5"
      width="5"
      height="3"
-     fill="#f5f5dc"
-     id="rect62" />
+     id="rect62"
+     style="fill:#f5f5dc" />
   <rect
      x="68"
-     y="42"
+     y="2.5"
      height="7"
      width="5"
-     fill="#727272"
-     id="rect64" />
+     id="rect64"
+     style="fill:#727272" />
   <circle
      cx="70.5"
-     cy="42"
+     cy="2.5"
      r="2.5"
-     fill="#727272"
-     id="circle66" />
+     id="circle66"
+     style="fill:#727272" />
 </svg>
