@@ -59,7 +59,7 @@ public class MultiIterable<T> implements Iterable<T>
 
 		private boolean moveToNext()
 		{
-			while(it.hasNext())
+			while(currentIt != null || it.hasNext())
 			{
 				if (currentIt == null)
 				{
