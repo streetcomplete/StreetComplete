@@ -47,7 +47,7 @@ public class AddHousenumber extends AOsmElementQuestType
 	{
 		return OverpassQLUtil.getGlobalOverpassBBox(bbox) +
 			"(way[!building]"+ANY_ADDRESS_FILTER+";rel[!building]"+ANY_ADDRESS_FILTER+";);" +
-			"out meta geom;";
+			"out geom;";
 	}
 
 	/** Query that returns all buildings that neither have an address node on their outline, nor
@@ -75,7 +75,7 @@ public class AddHousenumber extends AOsmElementQuestType
 			"  node"+ANY_ADDRESS_FILTER+";" +
 			"  - ((way[building];relation[building];);>;);" +
 			");"+
-			"out meta geom;";
+			"out skel;";
 	}
 
 	private final OverpassMapDataDao overpassServer;

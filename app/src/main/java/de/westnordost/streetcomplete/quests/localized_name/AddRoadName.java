@@ -56,7 +56,7 @@ public class AddRoadName extends AOsmElementQuestType
 				ROADS_WITH_NAMES + " -> .with_names;" +
 				"way.with_names(around.without_names:" +
 				MAX_DIST_FOR_ROAD_NAME_SUGGESTION + ");" +
-				"out meta geom;";
+				"out body geom;";
 	}
 
 	private final RoadNameSuggestionsDao roadNameSuggestionsDao;
