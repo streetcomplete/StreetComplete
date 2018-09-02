@@ -16,7 +16,6 @@ import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.graphics.Rect;
-import android.location.Location;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -127,7 +126,6 @@ public class MainActivity extends AppCompatActivity implements
 	private static boolean dontShowRequestAuthorizationAgain = false;
 
 	private QuestsMapFragment mapFragment;
-	private Location lastLocation;
 
 	private ProgressBar downloadProgressBar;
 	private ProgressBar uploadProgressBar;
@@ -674,9 +672,7 @@ public class MainActivity extends AppCompatActivity implements
 
 	@Override public void onAnsweredQuest(long questId, QuestGroup group, Bundle answer)
 	{
-		// line between location now and location when the form was opened
-		Location[] locations = new Location[]{ lastLocation, mapFragment.getDisplayedLocation() };
-		questSource.findSource(questId, group, locations, source ->
+		questSource.findSource(questId, group, mapFragment.getDisplayedLocation(), source ->
 		{
 			onSolvedQuest(questId, group, source);
 			questController.solve(questId, group, answer, source);
@@ -909,7 +905,6 @@ public class MainActivity extends AppCompatActivity implements
 			closeBottomSheet();
 		}
 
-		lastLocation = mapFragment.getDisplayedLocation();
 		mapFragment.addQuestGeometry(quest.getGeometry());
 
 		AbstractQuestAnswerFragment f = quest.getType().createForm();

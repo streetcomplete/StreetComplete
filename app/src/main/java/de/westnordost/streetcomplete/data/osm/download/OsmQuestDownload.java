@@ -130,7 +130,7 @@ public class OsmQuestDownload
 				"Added " + newQuestsByQuestType + " new and " +
 				"removed " + obsoleteAmount + " already resolved quests." +
 				" (Total: " + quests.size() + ")" +
-				" in " + (System.currentTimeMillis() - time) + "ms");
+				" in " + ((System.currentTimeMillis() - time)/1000) + "s");
 
 		return true;
 	}

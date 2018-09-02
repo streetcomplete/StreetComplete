@@ -54,9 +54,9 @@ public class AddMaxHeight extends AOsmElementQuestType
 	private static String getOverpassQuery(BoundingBox bbox)
 	{
 		return OverpassQLUtil.getGlobalOverpassBBox(bbox) +
-			nodeFilter.toOverpassQLString(null, false) +
-			wayFilter.toOverpassQLString(null, false) +
-			"out meta geom;";
+			nodeFilter.toOverpassQLString(null) +
+			wayFilter.toOverpassQLString(null) +
+			OverpassQLUtil.getQuestPrintStatement();
 	}
 
 	@Override public AbstractQuestAnswerFragment createForm()

@@ -49,7 +49,7 @@ public class StreetSideRotater
 		List<LatLon> points = e.polylines.get(0);
 		if(points != null && points.size() > 1)
 		{
-			List<LatLon> centerLine = SphericalEarthMath.centerLineOf(points);
+			List<LatLon> centerLine = SphericalEarthMath.centerLineOfPolyline(points);
 			if(centerLine != null)
 			{
 				return (float) SphericalEarthMath.bearing(centerLine.get(0), centerLine.get(1));

@@ -14,6 +14,7 @@ import de.westnordost.osmapi.map.data.Node;
 import de.westnordost.osmapi.map.data.Relation;
 import de.westnordost.osmapi.map.data.RelationMember;
 import de.westnordost.osmapi.map.data.Way;
+import de.westnordost.streetcomplete.util.SphericalEarthMath;
 
 public class ElementGeometryCreator
 {
@@ -46,7 +47,7 @@ public class ElementGeometryCreator
 		{
 			// ElementGeometry considers polygons that are defined clockwise holes, so ensure that
 			// it is defined CCW here.
-			if(ElementGeometry.isRingDefinedClockwise(polyline)) {
+			if(SphericalEarthMath.isRingDefinedClockwise(polyline)) {
 				Collections.reverse(polyline);
 			}
 			result = new ElementGeometry(null, polylines);
@@ -159,7 +160,7 @@ public class ElementGeometryCreator
 	{
 		for(List<LatLon> ring : rings)
 		{
-			if(ElementGeometry.isRingDefinedClockwise(ring) != clockwise)
+			if(SphericalEarthMath.isRingDefinedClockwise(ring) != clockwise)
 			{
 				Collections.reverse(ring);
 			}

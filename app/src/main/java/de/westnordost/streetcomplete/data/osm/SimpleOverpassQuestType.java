@@ -1,14 +1,12 @@
 package de.westnordost.streetcomplete.data.osm;
 
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-
-import java.util.Collections;
 
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
 import de.westnordost.streetcomplete.data.osm.tql.FiltersParser;
+import de.westnordost.streetcomplete.data.osm.tql.OverpassQLUtil;
 import de.westnordost.streetcomplete.data.osm.tql.TagFilterExpression;
 import de.westnordost.osmapi.map.data.BoundingBox;
 
@@ -29,7 +27,7 @@ public abstract class SimpleOverpassQuestType extends AOsmElementQuestType
 	/** @return a query string that is accepted by Overpass and does not exceed the given bbox */
 	String getOverpassQuery(BoundingBox bbox)
 	{
-		return filter.toOverpassQLString(bbox, true);
+		return filter.toOverpassQLString(bbox) + OverpassQLUtil.getQuestPrintStatement();
 	}
 
 	protected abstract String getTagFilters();

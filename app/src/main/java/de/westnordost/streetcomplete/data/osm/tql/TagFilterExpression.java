@@ -45,7 +45,7 @@ public class TagFilterExpression
 	}
 
 	/** @return this expression as a Overpass query string (in a short one-liner form) */
-	public String toOverpassQLString(BoundingBox bbox, boolean print)
+	public String toOverpassQLString(BoundingBox bbox)
 	{
 		StringBuilder oql = new StringBuilder();
 		if(bbox != null)
@@ -66,12 +66,6 @@ public class TagFilterExpression
 		}
 		if(useUnion) oql.append(");");
 
-		if (print)
-		{
-			/* "body" print mode (default) does not include version, but "meta" does. "geom" prints out
-		 	 * geometry for every way and relation */
-			oql.append("out meta geom;");
-		}
 		return oql.toString();
 	}
 

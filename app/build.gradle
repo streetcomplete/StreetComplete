@@ -103,11 +103,10 @@ dependencies {
 
     // geometry
     implementation 'de.westnordost:countryboundaries:1.2'
-    implementation 'com.vividsolutions:jts-core:1.14.0'
 
     // talking with OSM Api
     implementation 'oauth.signpost:signpost-core:1.2.1.2'
-    implementation ('de.westnordost:osmapi:1.8') {
+    implementation ('de.westnordost:osmapi:3.0') {
         // it's already included in Android
         exclude group: 'net.sf.kxml', module: 'kxml2'
     }
