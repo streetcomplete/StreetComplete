@@ -40,7 +40,8 @@ public class MarkCompletedBuildingConstruction extends MarkCompletedConstruction
 		return OverpassQLUtil.getGlobalOverpassBBox(bbox) +
 			"way" + getQueryPart("building", wayGroupName, 180) +
 			"relation" + getQueryPart("building", relationGroupName, 180) +
-			"(" + wayGroupName + "; " + relationGroupName + ";); out meta geom;";
+			"(" + wayGroupName + "; " + relationGroupName + ";); " +
+			OverpassQLUtil.getQuestPrintStatement();
 	}
 
 	public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)

@@ -19,4 +19,11 @@ public class OverpassQLUtil
 		return bbox.getMinLatitude() + "," + bbox.getMinLongitude() + "," +
 			bbox.getMaxLatitude() + "," + bbox.getMaxLongitude();
 	}
+
+	public static String getQuestPrintStatement()
+	{
+		// by default we limit the number of quests created to something that does not cause
+		// performance problems
+		return "out meta geom 2000;";
+	}
 }

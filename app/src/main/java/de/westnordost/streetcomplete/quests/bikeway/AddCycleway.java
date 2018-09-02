@@ -214,7 +214,7 @@ public class AddCycleway extends AOsmElementQuestType
 			") -> .cycleways;" +
 		    "way.streets(around.cycleways: "+d+") -> .streets_near_cycleways;" +
 		    "(.streets; - .streets_near_cycleways;);" +
-			"out meta geom;";
+			OverpassQLUtil.getQuestPrintStatement();
 	}
 
 	@Override public AbstractQuestAnswerFragment createForm() { return new AddCyclewayForm(); }
