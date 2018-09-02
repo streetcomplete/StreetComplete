@@ -297,14 +297,15 @@ public class SphericalEarthMath
 		{
 			p1 = it.next();
 
-			double lon0 = p0.getLongitude();
 			double lat0 = p0.getLatitude();
-			double lon1 = p1.getLongitude();
 			double lat1 = p1.getLatitude();
 
 			// scanline check, disregard line segments parallel to the cast ray
 			if ( lat0 != lat1 && inside(lat, lat0, lat1) )
 			{
+				double lon0 = p0.getLongitude();
+				double lon1 = p1.getLongitude();
+
 				double vt = (lat - lat1) / (lat0 - lat1);
 				double intersectionLongitude = normalizeLongitude(lon1 + vt * normalizeLongitude(lon0 - lon1));
 				double lonDiff = normalizeLongitude(intersectionLongitude - lon);
@@ -329,18 +330,8 @@ public class SphericalEarthMath
 
 	private static boolean inside(double val, double bound0, double bound1)
 	{
-		double min, max;
-		if(bound0 < bound1)
-		{
-			min = bound0;
-			max = bound1;
-		}
-		else
-		{
-			min = bound1;
-			max = bound0;
-		}
-		return val >= min && val <= max;
+		if(bound0 < bound1) return val >= bound0 && val <= bound1;
+		else                return val >= bound1 && val <= bound0;
 	}
 
 	/**
@@ -442,7 +433,7 @@ public class SphericalEarthMath
 		return new OsmLatLon(lat, lon);
 	}
 
-	private static double normalizeLongitude(double lon) {
+	public static double normalizeLongitude(double lon) {
 		while(lon > 180) lon -= 360;
 		while(lon < -180) lon += 360;
 		return lon;

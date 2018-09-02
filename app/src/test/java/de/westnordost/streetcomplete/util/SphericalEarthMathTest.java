@@ -692,7 +692,7 @@ public class SphericalEarthMathTest extends TestCase
 
 	private static class ShorthandLatLon implements LatLon
 	{
-		public ShorthandLatLon(double x, double y) { this.x = normalize(x); this.y = y;}
+		public ShorthandLatLon(double x, double y) { this.x = SphericalEarthMath.normalizeLongitude(x); this.y = y;}
 		final double y,x;
 		@Override public double getLatitude() { return y; }
 		@Override public double getLongitude() { return x; }
@@ -704,11 +704,6 @@ public class SphericalEarthMathTest extends TestCase
 				return o.getLatitude() == getLatitude() && o.getLongitude() == getLongitude();
 			}
 			return false;
-		}
-		private static double normalize(double lon) {
-			while(lon > 180) lon -= 360;
-			while(lon < -180) lon += 360;
-			return lon;
 		}
 	}
 }

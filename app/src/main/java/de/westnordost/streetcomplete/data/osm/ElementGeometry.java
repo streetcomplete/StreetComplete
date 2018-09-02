@@ -11,14 +11,18 @@ import de.westnordost.streetcomplete.util.SphericalEarthMath;
 /** Information on the geometry of a quest */
 public class ElementGeometry implements Serializable
 {
-	public LatLon center;
+	public final LatLon center;
 	//* polygons are considered holes if they are defined clockwise */
-	public List<List<LatLon>> polygons = null;
-	public List<List<LatLon>> polylines = null;
+	public final List<List<LatLon>> polygons;
+	public final List<List<LatLon>> polylines;
+
+	private BoundingBox bbox = null;
 
 	public ElementGeometry(LatLon center)
 	{
 		this.center = center;
+		polylines = null;
+		polygons = null;
 	}
 
 	public ElementGeometry(List<List<LatLon>> polylines, List<List<LatLon>> polygons)
@@ -33,6 +37,7 @@ public class ElementGeometry implements Serializable
 		{
 			center = findCenterPointOfPolyLines(polylines);
 		}
+		else throw new IllegalArgumentException("Either polylines or polygons must not be null");
 	}
 
 	public ElementGeometry(List<List<LatLon>> polylines, List<List<LatLon>> polygons, LatLon center)
@@ -60,15 +65,19 @@ public class ElementGeometry implements Serializable
 
 	public BoundingBox getBounds()
 	{
-		List<List<LatLon>> points;
-		if(polygons != null) points = polygons;
-		else if(polylines != null) points = polylines;
-		else return new BoundingBox(
-				center.getLatitude(), center.getLongitude(),
-				center.getLatitude(), center.getLongitude());
-		FlattenIterable<LatLon> itb = new FlattenIterable<>(LatLon.class);
-		itb.add(points);
-		return SphericalEarthMath.enclosingBoundingBox(itb);
+		if(bbox == null)
+		{
+			List<List<LatLon>> points;
+			if (polygons != null) points = polygons;
+			else if (polylines != null) points = polylines;
+			else return new BoundingBox(
+					center.getLatitude(), center.getLongitude(),
+					center.getLatitude(), center.getLongitude());
+			FlattenIterable<LatLon> itb = new FlattenIterable<>(LatLon.class);
+			itb.add(points);
+			bbox = SphericalEarthMath.enclosingBoundingBox(itb);
+		}
+		return bbox;
 	}
 
 	private static LatLon findCenterPointOfPolyLines(List<List<LatLon>> polylines)

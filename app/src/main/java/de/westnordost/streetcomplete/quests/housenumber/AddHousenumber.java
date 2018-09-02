@@ -4,10 +4,10 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import android.util.Log;
 
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -26,6 +26,7 @@ import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
 import de.westnordost.streetcomplete.data.osm.tql.OverpassQLUtil;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 import de.westnordost.streetcomplete.util.FlattenIterable;
+import de.westnordost.streetcomplete.util.LatLonRaster;
 import de.westnordost.streetcomplete.util.SphericalEarthMath;
 
 public class AddHousenumber extends AOsmElementQuestType
@@ -86,52 +87,65 @@ public class AddHousenumber extends AOsmElementQuestType
 
 	@Override public boolean download(BoundingBox bbox, final MapDataWithGeometryHandler handler)
 	{
-		List<ElementWithGeometry> buildings = downloadBuildingsWithoutAddresses(bbox);
+		long ms = System.currentTimeMillis();
+		Map<LatLon, ElementWithGeometry> buildings = downloadBuildingsWithoutAddresses(bbox);
 		if(buildings == null) return false;
 		// empty result: We are done
 		if(buildings.isEmpty()) return true;
 
+		bbox = getBoundingBoxThatIncludes(buildings.values());
+
 		List<ElementGeometry> addrAreas = downloadAreasWithAddresses(bbox);
 		if(addrAreas == null) return false;
 
-		FlattenIterable<LatLon> allThePoints = new FlattenIterable<>(LatLon.class);
-		for (ElementWithGeometry building : buildings)
-		{
-			allThePoints.add(building.geometry.polygons);
-		}
-		// see #885: The area in which the app should search for address nodes (and areas) must be
-		// adjusted to the bounding box of all the buildings found. The found buildings may in parts
-		// not be within the specified bounding box. But in exactly that part, there may be an
-		// address
-		BoundingBox adjustedBbox = SphericalEarthMath.enclosingBoundingBox(allThePoints);
-
-		LinkedList<LatLon> addrPositions = downloadFreeFloatingPositionsWithAddresses(adjustedBbox);
+		LatLonRaster addrPositions = downloadFreeFloatingPositionsWithAddresses(bbox);
 		if(addrPositions == null) return false;
 
-		for (ElementWithGeometry building : buildings)
+		Log.d("AddHousenumber", "Downloaded "+buildings.size()+" buildings with no address, " +
+			addrAreas.size() + " areas with address and " +
+			addrPositions.size() + " address nodes" +
+			" in " + (System.currentTimeMillis()-ms) + "ms");
+		ms = System.currentTimeMillis();
+
+		LatLonRaster buildingPositions = new LatLonRaster(bbox, 0.0005);
+		for (LatLon buildingCenter : buildings.keySet())
 		{
-			// exclude buildings with housenumber-nodes inside them
-			Iterator addrContainedInBuilding = iterToPositionContainedInBuilding(building.geometry, addrPositions);
+			buildingPositions.insert(buildingCenter);
+		}
+
+		// exclude buildings that are contained in an area with a housenumber
+		for (ElementGeometry addrArea : addrAreas)
+		{
+			for (LatLon buildingPos : buildingPositions.getAll(addrArea.getBounds()))
+			{
+				if(SphericalEarthMath.isInMultipolygon(buildingPos, addrArea.polygons))
+				{
+					buildings.remove(buildingPos);
+				}
+			}
+		}
+
+		// only buildings with no housenumber-nodes inside them
+		for (ElementWithGeometry building : buildings.values())
+		{
+			LatLon addrContainedInBuilding = getPositionContainedInBuilding(building.geometry, addrPositions);
 			if(addrContainedInBuilding != null)
 			{
-				// performance improvement: one housenumber-node cannot be covered by multiple
-				// buildings. So, it can be removed to reduce the amount of remaining
-				// point-in-polygon checks.
-				addrContainedInBuilding.remove();
+				addrPositions.remove(addrContainedInBuilding);
 				continue;
 			}
-			// further exclude buildings that are contained in an area with a housenumber
-			if(isBuildingCoveredByAnyArea(building.geometry, addrAreas)) continue;
 
 			handler.handle(building.element, building.geometry);
 		}
 
+		Log.d("AddHousenumber", "Processing data took " + (System.currentTimeMillis()-ms) + "ms");
+
 		return true;
     }
 
-    private List<ElementWithGeometry> downloadBuildingsWithoutAddresses(BoundingBox bbox)
+    private Map<LatLon, ElementWithGeometry> downloadBuildingsWithoutAddresses(BoundingBox bbox)
 	{
-		final List<ElementWithGeometry> list = new ArrayList<>();
+		final Map<LatLon, ElementWithGeometry> buildingsByCenterPoint = new HashMap<>();
 		String buildingsWithoutAddressesQuery = getBuildingsWithoutAddressesOverpassQuery(bbox);
 		boolean success = overpassServer.getAndHandleQuota(buildingsWithoutAddressesQuery, (element, geometry) ->
 		{
@@ -140,21 +154,21 @@ public class AddHousenumber extends AOsmElementQuestType
 				ElementWithGeometry item = new ElementWithGeometry();
 				item.element = element;
 				item.geometry = geometry;
-				list.add(item);
+				buildingsByCenterPoint.put(geometry.center, item);
 			}
 		});
-		return success ? list : null;
+		return success ? buildingsByCenterPoint : null;
 	}
 
-	private LinkedList<LatLon> downloadFreeFloatingPositionsWithAddresses(BoundingBox bbox)
+	private LatLonRaster downloadFreeFloatingPositionsWithAddresses(BoundingBox bbox)
 	{
-		final LinkedList<LatLon> coords = new LinkedList<>();
+		final LatLonRaster grid = new LatLonRaster(bbox, 0.0005);
 		String query = getFreeFloatingAddressesOverpassQuery(bbox);
 		boolean success = overpassServer.getAndHandleQuota(query, (element, geometry) ->
 		{
-			if(geometry != null) coords.add(geometry.center);
+			if(geometry != null) grid.insert(geometry.center);
 		});
-		return success ? coords : null;
+		return success ? grid : null;
 	}
 
 	private ArrayList<ElementGeometry> downloadAreasWithAddresses(BoundingBox bbox)
@@ -163,35 +177,35 @@ public class AddHousenumber extends AOsmElementQuestType
 		String query = getNonBuildingAreasWithAddresses(bbox);
 		boolean success = overpassServer.getAndHandleQuota(query, (element, geometry) ->
 		{
-			if(geometry != null) areas.add(geometry);
+			if(geometry != null && geometry.polygons != null) areas.add(geometry);
 		});
 		return success ? areas : null;
 	}
 
-	private static Iterator<LatLon> iterToPositionContainedInBuilding(ElementGeometry building, LinkedList<LatLon> positions)
+	private BoundingBox getBoundingBoxThatIncludes(Iterable<ElementWithGeometry> buildings)
+	{
+		// see #885: The area in which the app should search for address nodes (and areas) must be
+		// adjusted to the bounding box of all the buildings found. The found buildings may in parts
+		// not be within the specified bounding box. But in exactly that part, there may be an
+		// address
+		FlattenIterable<LatLon> allThePoints = new FlattenIterable<>(LatLon.class);
+		for (ElementWithGeometry building : buildings)
+		{
+			allThePoints.add(building.geometry.polygons);
+		}
+		return SphericalEarthMath.enclosingBoundingBox(allThePoints);
+	}
+
+	private static LatLon getPositionContainedInBuilding(ElementGeometry building, LatLonRaster positions)
 	{
 		List<List<LatLon>> buildingPolygons = building.polygons;
 		if(buildingPolygons == null) return null;
 
-		Iterator<LatLon> it = positions.iterator();
-		while(it.hasNext())
+		for (LatLon pos : positions.getAll(building.getBounds()))
 		{
-			LatLon pos = it.next();
-			if(SphericalEarthMath.isInMultipolygon(pos, buildingPolygons)) return it;
+			if(SphericalEarthMath.isInMultipolygon(pos, buildingPolygons)) return pos;
 		}
 		return null;
-	}
-
-	private static boolean isBuildingCoveredByAnyArea(ElementGeometry building, List<ElementGeometry> areas)
-	{
-		for (ElementGeometry area : areas)
-		{
-			if(area == null) continue;
-			List<List<LatLon>> areaPolygons = area.polygons;
-			if(areaPolygons == null) continue;
-			if(SphericalEarthMath.isInMultipolygon(building.center, areaPolygons)) return true;
-		}
-		return false;
 	}
 
 	@Override public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
