@@ -18,7 +18,7 @@ public class SoundFx
 	{
 		this.context = context;
 		soundIds = new SparseIntArray();
-		sounds = new SoundPool(1, AudioManager.STREAM_NOTIFICATION, 0);
+		sounds = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
 	}
 
 	public void prepare(@RawRes int resId)
