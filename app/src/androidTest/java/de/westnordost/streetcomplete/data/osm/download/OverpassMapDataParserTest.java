@@ -155,6 +155,15 @@ public class OverpassMapDataParserTest extends TestCase
 		assertEquals("d", element.getTags().get("c"));
 	}
 
+	public void testSkelInput()
+	{
+		String xml =
+			"<node id='123' lat='12.345' lon='14.467'/>\n";
+
+		Element element = parseOne(xml, null);
+		assertEquals(-1, element.getVersion());
+	}
+
 	public void testParseSeveral() throws IOException
 	{
 		String xml =
@@ -254,7 +263,7 @@ public class OverpassMapDataParserTest extends TestCase
 		{
 			return new ByteArrayInputStream(str.getBytes("UTF-8"));
 		}
-		catch (UnsupportedEncodingException e) {}
+		catch (UnsupportedEncodingException ignore) {}
 		return null;
 	}
 }
