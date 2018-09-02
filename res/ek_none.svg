@@ -10,7 +10,9 @@
    version="1.1"
    id="svg16"
    sodipodi:docname="ek_none.svg"
-   inkscape:version="0.92.1 r15371">
+   inkscape:version="0.92.1 r15371"
+   width="100"
+   height="60.5">
   <metadata
      id="metadata22">
     <rdf:RDF>
@@ -57,31 +59,38 @@
      inkscape:window-maximized="0"
      inkscape:current-layer="svg16" />
   <polygon
-     points="37,50 62,50 85,100 15,100"
-     fill="#d7d7d7"
-     id="polygon2" />
+     points="85,100 15,100 37,50 62,50 "
+     id="polygon2"
+     style="fill:#d7d7d7"
+     transform="translate(0,-39.5)" />
   <polygon
-     points="10,55 18,55 0,73 0,62"
-     fill="#e1d9af"
-     id="polygon4" />
+     points="0,73 0,62 10,55 18,55 "
+     id="polygon4"
+     style="fill:#e1d9af"
+     transform="translate(0,-39.5)" />
   <polygon
-     points="25,55 32,55 18,80 7,80"
-     fill="#e1d9af"
-     id="polygon6" />
+     points="18,80 7,80 25,55 32,55 "
+     id="polygon6"
+     style="fill:#e1d9af"
+     transform="translate(0,-39.5)" />
   <polygon
-     points="90,55 82,55 100,73 100,62"
-     fill="#e1d9af"
-     id="polygon8" />
+     points="100,73 100,62 90,55 82,55 "
+     id="polygon8"
+     style="fill:#e1d9af"
+     transform="translate(0,-39.5)" />
   <polygon
-     points="75,55 68,55 82,80 93,80"
-     fill="#e1d9af"
-     id="polygon10" />
+     points="82,80 93,80 75,55 68,55 "
+     id="polygon10"
+     style="fill:#e1d9af"
+     transform="translate(0,-39.5)" />
   <polygon
-     points="0,58 100,58 100,60 0,60"
-     fill="#8c7570"
-     id="polygon12" />
+     points="100,60 0,60 0,58 100,58 "
+     id="polygon12"
+     style="fill:#8c7570"
+     transform="translate(0,-39.5)" />
   <polygon
-     points="0,73 100,73 100,76 0,76"
-     fill="#8c7570"
-     id="polygon14" />
+     points="100,76 0,76 0,73 100,73 "
+     id="polygon14"
+     style="fill:#8c7570"
+     transform="translate(0,-39.5)" />
 </svg>
