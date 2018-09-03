@@ -39,6 +39,7 @@ import de.westnordost.streetcomplete.quests.playground_access.AddPlaygroundAcces
 import de.westnordost.streetcomplete.quests.postbox_collection_times.AddPostboxCollectionTimes;
 import de.westnordost.streetcomplete.quests.powerpoles_material.AddPowerPolesMaterial;
 import de.westnordost.streetcomplete.quests.orchard_produce.AddOrchardProduce;
+import de.westnordost.streetcomplete.quests.railway_crossing.AddRailwayCrossingBarrier;
 import de.westnordost.streetcomplete.quests.recycling.AddRecyclingType;
 import de.westnordost.streetcomplete.quests.religion.AddReligionToPlaceOfWorship;
 import de.westnordost.streetcomplete.quests.religion.AddReligionToWaysideShrine;
@@ -81,7 +82,6 @@ public class QuestModule
 				new AddOneway(o, trafficFlowSegmentsDao, trafficFlowDao),
 				new AddHousenumber(o),
 				new MarkCompletedHighwayConstruction(o),
-				new AddBuildingType(o), // because housenumber, building levels etc. depend on it
 				// new AddPlaceName(o), doesn't make sense as long as the app cannot tell the generic name of elements
 
 				// ↓ 3. useful data that is used by some data consumers
@@ -112,6 +112,7 @@ public class QuestModule
 				// ↓ 4. definitely shown as errors in QA tools
 
 				// ↓ 5. may be shown as missing in QA tools
+				new AddBuildingType(o), // because housenumber, building levels etc. depend on it
 
 				// ↓ 6. may be shown as possibly missing in QA tools
 
@@ -128,6 +129,7 @@ public class QuestModule
 				new AddReligionToWaysideShrine(o),
 				new AddCyclewaySegregation(o),
 				new MarkCompletedBuildingConstruction(o),
+				new AddRailwayCrossingBarrier(o),
 
 				// ↓ 8. defined in the wiki, but not really used by anyone yet. Just collected for
 				//      the sake of mapping it in case it makes sense later
