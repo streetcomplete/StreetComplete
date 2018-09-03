@@ -102,7 +102,7 @@ dependencies {
     implementation 'com.evernote:android-job:1.1.12'
 
     // geometry
-    implementation 'de.westnordost:countryboundaries:1.2'
+    implementation 'de.westnordost:countryboundaries:1.3'
 
     // talking with OSM Api
     implementation 'oauth.signpost:signpost-core:1.2.1.2'
