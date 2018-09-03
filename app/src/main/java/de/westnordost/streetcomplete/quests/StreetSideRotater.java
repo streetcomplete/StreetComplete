@@ -14,9 +14,9 @@ import de.westnordost.streetcomplete.view.StreetSideSelectPuzzle;
 
 public class StreetSideRotater
 {
-	private StreetSideSelectPuzzle puzzle;
-	private View compassView;
-	private float wayOrientationAtCenter;
+	private final StreetSideSelectPuzzle puzzle;
+	private final View compassView;
+	private final float wayOrientationAtCenter;
 
 	private final Handler uiThread = new Handler(Looper.getMainLooper());
 

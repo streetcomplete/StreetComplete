@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.data.osm.tql;
 /** Convenience class to make it easier to go step by step through a string */
 public class StringWithCursor
 {
-	private String string;
+	private final String string;
 	private int cursor = 0;
 
 	public StringWithCursor(String string)

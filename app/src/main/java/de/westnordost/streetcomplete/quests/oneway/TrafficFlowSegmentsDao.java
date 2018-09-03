@@ -22,7 +22,7 @@ import de.westnordost.streetcomplete.util.StreamUtils;
 /** Dao for using this API: https://github.com/ENT8R/oneway-data-api */
 public class TrafficFlowSegmentsDao
 {
-	private String apiUrl;
+	private final String apiUrl;
 
 	public TrafficFlowSegmentsDao(String url)
 	{
@@ -55,7 +55,7 @@ public class TrafficFlowSegmentsDao
 			{
 				result.put(wayId, new ArrayList<>());
 			}
-			
+
 			result.get(wayId).add(new TrafficFlowSegment(
 				parseLatLon(segment.getJSONObject("fromPosition")),
 				parseLatLon(segment.getJSONObject("toPosition"))

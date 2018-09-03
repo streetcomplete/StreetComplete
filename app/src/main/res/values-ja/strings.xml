@@ -174,7 +174,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_sidewalk_onlyWest">"西側のみ"</string>
     <string name="quest_sidewalk_onlyEast">"東側のみ"</string>
     <string name="quest_sidewalk_yes">"はい"</string>
-    <string name="quest_maxspeed_answer_noSign">"標識なし"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"この通りはどこにありますか?"</string>
     <string name="quest_cyclewaySurface_title">"ここの自転車道はどんな路面ですか?"</string>
     <string name="quest_serviceType_title">"これはどんな側道ですか?"</string>
@@ -261,7 +260,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
 
     <!-- Fuzzy -->
     <string name="quest_streetSurface_name_title">"道路 %s はどのような路面ですか?"</string>
-    <string name="quest_maxspeed_title_short">"この通りの速度制限標識は何ですか?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"この速度制限は不確かです。"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"何の制限も表示されていませんか?"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">"通りの端で確認しましたか?

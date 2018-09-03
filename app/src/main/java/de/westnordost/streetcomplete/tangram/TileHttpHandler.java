@@ -9,7 +9,6 @@ import java.io.IOException;
 
 import de.westnordost.streetcomplete.ApplicationConstants;
 import okhttp3.CacheControl;
-import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.HttpUrl;
 import okhttp3.Request;

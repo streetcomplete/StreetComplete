@@ -16,7 +16,7 @@ public abstract class SimpleOverpassQuestType extends AOsmElementQuestType
 {
 	private final OverpassMapDataDao overpassServer;
 
-	private TagFilterExpression filter;
+	private final TagFilterExpression filter;
 
 	public SimpleOverpassQuestType(OverpassMapDataDao overpassServer)
 	{

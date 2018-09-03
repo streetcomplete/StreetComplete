@@ -105,7 +105,7 @@ public class AttachPhotoUtils
 			orientation = exifInterface.getAttributeInt(ExifInterface.TAG_ORIENTATION,
 					ExifInterface.ORIENTATION_UNDEFINED);
 		}
-		catch (IOException e)
+		catch (IOException ignore)
 		{
 		}
 

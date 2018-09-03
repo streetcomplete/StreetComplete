@@ -12,7 +12,7 @@ public class SoundFx
 {
 	private final Context context;
 	private final SoundPool sounds;
-	private SparseIntArray soundIds;
+	private final SparseIntArray soundIds;
 
 	@Inject public SoundFx(Context context)
 	{

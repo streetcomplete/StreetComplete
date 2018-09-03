@@ -38,7 +38,7 @@ public class QuestAutoSyncer implements LocationListener, LostApiClient.Connecti
 	private final Context context;
 	private final SharedPreferences prefs;
 
-	private LostApiClient lostApiClient;
+	private final LostApiClient lostApiClient;
 	private LatLon pos;
 
 	private boolean isConnected;

@@ -29,7 +29,7 @@ public class MultiIterable<T> implements Iterable<T>
 
 	public static class MultiIterator<T> implements Iterator<T>
 	{
-		private Iterator<Iterable<T>> it;
+		private final Iterator<Iterable<T>> it;
 		private Iterator<T> currentIt;
 		private T next;
 		private boolean nextValid;

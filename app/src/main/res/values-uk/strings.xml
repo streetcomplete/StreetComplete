@@ -173,7 +173,6 @@
     <string name="quest_sidewalk_onlyWest">"Тільки на західному боці"</string>
     <string name="quest_sidewalk_onlyEast">"Тільки на східному боці"</string>
     <string name="quest_sidewalk_yes">"Так"</string>
-    <string name="quest_maxspeed_answer_noSign">"Знаку немає"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Де знаходиться вулиця?"</string>
     <string name="quest_cyclewaySurface_title">"Яке покриття тут має велосипедна доріжка?"</string>
     <string name="quest_serviceType_title">"Якого типу цей проїзд?"</string>
@@ -258,7 +257,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_streetSurface_name_title">"Яке покриття має дорога %s тут?"</string>
-    <string name="quest_maxspeed_title_short">"Який знак, що обмежує швидкість, встановлений на цій вулиці?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Це обмеження швидкості виглядає неправдоподібним."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Ви впевнені, що тут немає обмещення швидкості?"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">"Ви перевірили до кінця вулиці? Якщо на ній ніде немає знаків цього типу, застосуються стандартні обмеження швидкості."</string>
@@ -555,5 +553,4 @@
     <string name="quest_construction_building_title">"Цей дім добудований?"</string>
     <string name="questList_disabled_in_country">"Не показується в країні %s"</string>
     <string name="quest_toiletAvailability_rest_area_title">"Чи є в зоні відпочинку туалет?"</string>
-    <string name="quest_maxspeed_name_title">"Який знак обмеження швидкості для %s?"</string>
 </resources>
