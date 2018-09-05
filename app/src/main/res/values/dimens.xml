@@ -16,10 +16,13 @@
     <dimen name="quest_form_rightOffset">0dp</dimen>
     <dimen name="quest_form_bottomOffset">@dimen/quest_form_peekHeight</dimen>
 
-    <dimen name="quest_form_peekHeight">232dp</dimen>
+    <dimen name="quest_form_peekHeight">256dp</dimen>
     <dimen name="quest_form_width">@dimen/match_parent</dimen>
+
+    <dimen name="quest_form_speech_bubble_top_margin">-27dp</dimen>
 
     <!-- Tables -->
     <dimen name="table_icon_size">64dp</dimen>
+    <dimen name="horizontal_speechbubble_margin">4dp</dimen>
 
 </resources>

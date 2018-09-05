@@ -80,7 +80,7 @@
                 android:layout_width="wrap_content"
                 android:layout_gravity="start"
                 android:layout_weight="1"
-                style="?android:attr/buttonBarButtonStyle"
+                style="@style/BottomSheetButtonBarItem"
                 android:text="@string/quest_leave_new_note_no"
                 android:layout_height="wrap_content" />
             <Button
@@ -90,7 +90,7 @@
                 android:layout_weight="1"
                 android:layout_gravity="end"
                 android:text="@string/quest_leave_new_note_yes"
-                style="?android:attr/buttonBarButtonStyle"
+                style="@style/BottomSheetButtonBarItem"
                 />
         </LinearLayout>
     </LinearLayout>

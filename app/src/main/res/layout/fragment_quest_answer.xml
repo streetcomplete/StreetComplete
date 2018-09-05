@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/buttonPanelContainer"
+        android:layout_marginTop="@dimen/quest_form_speech_bubble_top_margin"
         android:clipChildren="false"
         android:background="#00000000">
         <!-- If I do not set any background color here, the layout will leave a few pixels free at the
@@ -30,30 +31,45 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
-                android:background="@drawable/speech_bubble_start"
-                android:orientation="vertical"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="4dp">
+                android:background="@drawable/speech_bubble_top"
+                android:orientation="horizontal"
+                android:layoutDirection="locale"
+                android:layout_marginStart="@dimen/horizontal_speechbubble_margin"
+                android:layout_marginEnd="@dimen/horizontal_speechbubble_margin"
+                android:layout_marginBottom="8dp">
 
                 <TextView
                     android:id="@+id/title"
                     android:textColor="#000"
                     android:textSize="18sp"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="16dp"
-                    android:paddingRight="16dp"
-                    android:paddingTop="8dp"
-                    android:paddingBottom="8dp"/>
+                    android:layout_weight="1"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="8dp"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp"/>
+
+                <ImageView
+                    android:id="@+id/close_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src = "@drawable/ic_close_black_24dp"
+                    android:background="?android:attr/actionBarItemBackground"
+                    android:visibility="invisible"
+                    android:contentDescription="@string/close"
+                    android:padding="12dp"/>
 
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/speechbubbleContent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:background="@drawable/speech_bubble_end_cut_top"
-                android:layout_marginStart="4dp">
+                android:layout_marginStart="@dimen/horizontal_speechbubble_margin"
+                android:layout_marginEnd="@dimen/horizontal_speechbubble_margin"
+                android:background="@drawable/speech_bubble_none_cut_top">
 
                 <de.westnordost.streetcomplete.view.MaskSpeechbubbleCornersFrameLayout
                     android:layout_width="match_parent"
@@ -68,7 +84,10 @@
                             android:layout_height="wrap_content"
                             android:layout_width="match_parent"
                             android:orientation="vertical"
-                            android:padding="8dp"/>
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp"
+                            android:paddingTop="12dp"
+                            android:paddingBottom="12dp"/>
 
                     </android.support.v4.widget.NestedScrollView>
 
@@ -86,32 +105,44 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/speech_bubble_end_cut_bottom"
-        android:layout_marginStart="4dp"
+        android:background="@drawable/speech_bubble_none_cut_bottom"
+        android:layout_marginStart="@dimen/horizontal_speechbubble_margin"
+        android:layout_marginEnd="@dimen/horizontal_speechbubble_margin"
         android:layout_marginBottom="4dp">
 
         <View
+            android:id="@+id/buttonPanelDivider"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/colorDivider"/>
 
-        <LinearLayout
-            android:id="@+id/buttonPanel"
+        <de.westnordost.streetcomplete.view.MaskSpeechbubbleCornersFrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layoutDirection="locale">
+            android:layout_height="wrap_content">
 
-            <Button
-                android:id="@+id/buttonOtherAnswers"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:id="@+id/buttonPanel"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:text="@string/quest_generic_otherAnswers"
-                style="?android:attr/buttonBarButtonStyle"
-                tools:ignore="InefficientWeight"/>
+                android:orientation="horizontal"
+                android:layoutDirection="locale"
+                android:showDividers="middle"
+                android:dividerPadding="12dp"
+                android:divider="@drawable/button_bar_divider"
+                >
 
-        </LinearLayout>
+                <Button
+                    android:id="@+id/buttonOtherAnswers"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="@string/quest_generic_otherAnswers"
+                    style="@style/BottomSheetButtonBarItem"
+                    tools:ignore="InefficientWeight"/>
+
+            </LinearLayout>
+
+        </de.westnordost.streetcomplete.view.MaskSpeechbubbleCornersFrameLayout>
 
     </LinearLayout>
 

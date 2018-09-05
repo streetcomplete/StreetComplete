@@ -102,4 +102,11 @@
     <style name="TableHeader">
         <item name="android:padding">8dp</item>
     </style>
+
+    <style name="BottomSheetButtonBarItem">
+        <item name="android:background">?android:attr/selectableItemBackground</item>
+        <item name="android:paddingTop">16dp</item>
+        <item name="android:paddingBottom">16dp</item>
+    </style>
+
 </resources>

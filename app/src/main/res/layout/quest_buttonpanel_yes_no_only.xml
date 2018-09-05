@@ -6,7 +6,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        style="?android:attr/buttonBarButtonStyle"
+        style="@style/BottomSheetButtonBarItem"
         android:text="@string/quest_generic_hasFeature_no" />
 
     <Button
@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        style="?android:attr/buttonBarButtonStyle"
+        style="@style/BottomSheetButtonBarItem"
         android:text="@string/quest_generic_hasFeature_yes" />
 
     <Button
@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        style="?android:attr/buttonBarButtonStyle"
+        style="@style/BottomSheetButtonBarItem"
         android:text="@string/quest_hasFeature_only" />
 
 </merge>

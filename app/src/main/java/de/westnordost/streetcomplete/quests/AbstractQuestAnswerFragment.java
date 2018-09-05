@@ -99,6 +99,15 @@ public abstract class AbstractQuestAnswerFragment extends AbstractBottomSheetFra
 	{
 		super.onViewCreated(view, savedInstanceState);
 
+		// no content? -> hide the content container and make the button bar background appear
+		// as a whole bubble (instead of the bottom-part of a bubble)
+		if(content.getChildCount() == 0)
+		{
+			view.findViewById(R.id.speechbubbleContent).setVisibility(View.GONE);
+			view.findViewById(R.id.buttonPanelContainer).setBackgroundResource(R.drawable.speech_bubble_none);
+			view.findViewById(R.id.buttonPanelDivider).setVisibility(View.GONE);
+		}
+
 		if(otherAnswers.size() == 1)
 		{
 			buttonOtherAnswers.setText(otherAnswers.get(0).titleResourceId);

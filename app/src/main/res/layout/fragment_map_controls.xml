@@ -46,7 +46,7 @@
         android:clipToPadding="false"
         android:showDividers="middle"
         android:padding="4dp"
-        android:divider="@drawable/vertical_button_bar_divider"
+        android:divider="@drawable/space_8dp"
         tools:ignore="RtlHardcoded">
 
         <ImageButton
@@ -79,7 +79,7 @@
         android:clipToPadding="false"
         android:showDividers="middle"
         android:padding="4dp"
-        android:divider="@drawable/vertical_button_bar_divider"
+        android:divider="@drawable/space_8dp"
         tools:ignore="RtlHardcoded">
 
         <ImageButton
