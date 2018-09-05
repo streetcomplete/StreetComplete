@@ -16,7 +16,7 @@ public class ElementGeometry implements Serializable
 	public final List<List<LatLon>> polygons;
 	public final List<List<LatLon>> polylines;
 
-	private BoundingBox bbox = null;
+	private transient BoundingBox bbox = null;
 
 	public ElementGeometry(LatLon center)
 	{
