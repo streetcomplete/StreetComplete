@@ -48,12 +48,10 @@ public class LatLonRaster
 
 	public Iterable<LatLon> getAll(BoundingBox bounds)
 	{
-		int startX = Math.max(0,longitudeToCellX(bounds.getMinLongitude()));
-		int startY = Math.max(0,latitudeToCellY(bounds.getMinLatitude()));
-		checkBounds(startX, startY);
-		int endX = Math.min(rasterWidth-1, longitudeToCellX(bounds.getMaxLongitude()));
-		int endY = Math.min(rasterHeight-1, latitudeToCellY(bounds.getMaxLatitude()));
-		checkBounds(endX, endY);
+		int startX = Math.max(0, Math.min(longitudeToCellX(bounds.getMinLongitude()), rasterWidth-1));
+		int startY = Math.max(0, Math.min(latitudeToCellY(bounds.getMinLatitude()), rasterHeight-1));
+		int endX = Math.max(0, Math.min(longitudeToCellX(bounds.getMaxLongitude()), rasterWidth-1));
+		int endY = Math.max(0, Math.min(latitudeToCellY(bounds.getMaxLatitude()), rasterHeight-1));
 
 		MultiIterable<LatLon> result = new MultiIterable<>();
 		for (int y = startY; y <= endY; y++)
