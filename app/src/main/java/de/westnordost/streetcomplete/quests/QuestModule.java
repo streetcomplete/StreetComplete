@@ -89,6 +89,7 @@ public class QuestModule
 				new AddRoadSurface(o),
 				new AddMaxSpeed(o), // should best be after road surface because it excludes unpaved roads
 				new AddMaxHeight(o),
+				new AddRailwayCrossingBarrier(o), // useful for routing
 				new AddReligionToPlaceOfWorship(o), // icon on maps are different
 				new AddPostboxCollectionTimes(o),
 				new AddOpeningHours(o),
@@ -129,7 +130,6 @@ public class QuestModule
 				new AddReligionToWaysideShrine(o),
 				new AddCyclewaySegregation(o),
 				new MarkCompletedBuildingConstruction(o),
-				new AddRailwayCrossingBarrier(o),
 
 				// ↓ 8. defined in the wiki, but not really used by anyone yet. Just collected for
 				//      the sake of mapping it in case it makes sense later

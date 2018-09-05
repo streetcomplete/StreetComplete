@@ -32,6 +32,6 @@ public class AddRailwayCrossingBarrier extends SimpleOverpassQuestType
 	@Override public int getIcon() { return R.drawable.ic_quest_railway; }
 	@Override public int getTitle(@NonNull Map<String, String> tags)
 	{
-		return R.string.quest_railway_crossing_barrier;
+		return R.string.quest_railway_crossing_barrier_title;
 	}
 }

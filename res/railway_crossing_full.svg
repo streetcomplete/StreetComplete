@@ -11,8 +11,8 @@
    id="svg58"
    sodipodi:docname="railway_crossing_full.svg"
    inkscape:version="0.92.1 r15371"
-   width="100"
-   height="61">
+   width="80"
+   height="64">
   <metadata
      id="metadata64">
     <rdf:RDF>
@@ -47,196 +47,154 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="1347"
-     inkscape:window-height="680"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
      id="namedview60"
      showgrid="false"
-     inkscape:zoom="2.36"
-     inkscape:cx="68.432208"
-     inkscape:cy="50"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
-     inkscape:window-maximized="0"
+     inkscape:zoom="6.675088"
+     inkscape:cx="8.7836433"
+     inkscape:cy="23.557085"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
      inkscape:current-layer="svg58"
      fit-margin-top="0"
      fit-margin-left="0"
      fit-margin-right="0"
-     fit-margin-bottom="0" />
-  <polygon
-     points="37,50 62,50 85,100 15,100 "
-     id="polygon2"
+     fit-margin-bottom="0"
+     inkscape:pagecheckerboard="false">
+    <inkscape:grid
+       type="xygrid"
+       id="grid4517"
+       empspacing="4" />
+  </sodipodi:namedview>
+  <path
+     style="fill:#e1d9af"
+     d="M 75,19 H 69 L 80,37 V 26 Z"
+     id="polygon4-8"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ccccc" />
+  <path
      style="fill:#d7d7d7"
-     transform="translate(0,-39)" />
-  <polygon
-     points="10,55 18,55 0,73 0,62 "
+     d="M 32,0 H 48 L 67,64 H 13 Z"
+     id="polygon2"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ccccc" />
+  <path
+     style="fill:#e1d9af"
+     d="m 5,19 h 6 L 0,37 V 26 Z"
      id="polygon4"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ccccc" />
+  <path
      style="fill:#e1d9af"
-     transform="translate(0,-39)" />
-  <polygon
-     points="25,55 32,55 18,80 7,80 "
+     d="m 16,19 h 6 L 13,42 H 4 Z"
      id="polygon6"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ccccc" />
+  <path
      style="fill:#e1d9af"
-     transform="translate(0,-39)" />
-  <polygon
-     points="90,55 82,55 100,73 100,62 "
-     id="polygon8"
-     style="fill:#e1d9af"
-     transform="translate(0,-39)" />
-  <polygon
-     points="75,55 68,55 82,80 93,80 "
-     id="polygon10"
-     style="fill:#e1d9af"
-     transform="translate(0,-39)" />
-  <polygon
-     points="0,58 100,58 100,60 0,60 "
-     id="polygon12"
-     style="fill:#8c7570"
-     transform="translate(0,-39)" />
-  <polygon
-     points="0,73 100,73 100,76 0,76 "
-     id="polygon14"
-     style="fill:#8c7570"
-     transform="translate(0,-39)" />
-  <polygon
-     points="85,75 95,75 95,90 85,90 "
+     d="m 64,19 h -6 l 9,23 h 9 z"
+     id="polygon6-1"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ccccc" />
+  <path
+     sodipodi:nodetypes="ccccc"
+     inkscape:connector-curvature="0"
      id="polygon16"
-     style="fill:#727272"
-     transform="translate(0,-39)" />
-  <circle
-     cx="90"
-     cy="36"
-     r="5"
-     id="circle18"
+     d="M 68,60 V 39 h 10 v 21 z"
      style="fill:#727272" />
-  <circle
-     cx="90"
-     cy="36.5"
-     r="2.5"
-     id="circle20"
-     style="fill:#ffffff" />
+  <path
+     style="fill:#8c7570"
+     d="m 0,22 h 80 v 2 H 0 Z"
+     id="polygon12"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ccccc" />
+  <path
+     style="fill:#8c7570"
+     d="m 0,35 h 80 v 3 H 0 Z"
+     id="polygon14"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ccccc" />
   <rect
-     x="80"
-     y="34"
-     height="5"
-     width="10"
-     id="rect22"
-     style="fill:#ffffff" />
-  <rect
-     x="70"
-     y="34"
-     height="5"
-     width="10"
-     id="rect24"
-     style="fill:#ff0000" />
-  <rect
-     x="60"
-     y="34"
-     height="5"
-     width="10"
-     id="rect26"
-     style="fill:#ffffff" />
-  <rect
-     x="50"
-     y="34"
-     height="5"
-     width="10"
-     id="rect28"
-     style="fill:#ff0000" />
-  <rect
-     x="40"
-     y="34"
-     height="5"
-     width="10"
-     id="rect30"
-     style="fill:#ffffff" />
-  <rect
-     x="30"
-     y="34"
-     height="5"
-     width="10"
+     x="42"
+     y="42"
+     height="8"
+     width="16"
      id="rect32"
      style="fill:#ff0000" />
   <rect
-     x="20"
-     y="34"
-     height="5"
-     width="10"
-     id="rect34"
-     style="fill:#ffffff" />
+     x="58"
+     y="42"
+     height="8"
+     width="16"
+     id="rect30"
+     style="fill:#ffffff;fill-opacity:1" />
   <rect
+     style="fill:#ff0000"
+     id="rect32-2"
+     width="16"
+     height="8"
+     y="42"
+     x="10" />
+  <rect
+     style="fill:#ffffff;fill-opacity:1"
+     id="rect30-1"
+     width="16"
+     height="8"
+     y="42"
+     x="26" />
+  <rect
+     y="42"
      x="10"
-     y="34"
-     height="5"
-     width="10"
-     id="rect36"
-     style="fill:#ff0000" />
+     height="8"
+     width="64"
+     id="rect4716"
+     style="fill:none;fill-opacity:0.2;stroke:#727272;stroke-width:2;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke" />
   <rect
-     x="30"
-     y="3"
-     width="5"
-     height="3"
-     id="rect38"
-     style="fill:#f5f5dc" />
+     x="-39"
+     y="5"
+     height="4"
+     width="7.9999995"
+     id="rect32-3"
+     style="fill:#ff0000;stroke-width:0.49999997"
+     transform="scale(-1,1)" />
+  <path
+     sodipodi:nodetypes="ccccc"
+     inkscape:connector-curvature="0"
+     id="polygon16-0"
+     d="M 26,14 V 3 h -5 v 11 z"
+     style="fill:#727272;stroke-width:0.4996666" />
   <rect
-     x="35"
-     y="3"
-     width="5"
-     height="3"
-     id="rect40"
-     style="fill:#ff0000" />
+     x="-31"
+     y="5"
+     height="4"
+     width="7.9999995"
+     id="rect30-5"
+     style="fill:#ffffff;fill-opacity:1;stroke-width:0.49999997"
+     transform="scale(-1,1)" />
   <rect
-     x="40"
-     y="3"
-     width="5"
-     height="3"
-     id="rect42"
-     style="fill:#f5f5dc" />
+     style="fill:#ff0000;stroke-width:0.49999997"
+     id="rect32-2-2"
+     width="7.9999995"
+     height="4"
+     y="5"
+     x="-55"
+     transform="scale(-1,1)" />
   <rect
-     x="45"
-     y="3"
-     width="5"
-     height="3"
-     id="rect44"
-     style="fill:#ff0000" />
+     style="fill:#ffffff;fill-opacity:1;stroke-width:0.49999997"
+     id="rect30-1-0"
+     width="7.9999995"
+     height="4"
+     y="5"
+     x="-47"
+     transform="scale(-1,1)" />
   <rect
-     x="50"
-     y="3"
-     width="5"
-     height="3"
-     id="rect46"
-     style="fill:#f5f5dc" />
-  <rect
-     x="55"
-     y="3"
-     width="5"
-     height="3"
-     id="rect48"
-     style="fill:#ff0000" />
-  <rect
-     x="60"
-     y="3"
-     width="5"
-     height="3"
-     id="rect50"
-     style="fill:#f5f5dc" />
-  <rect
-     x="65"
-     y="3"
-     width="5"
-     height="3"
-     id="rect52"
-     style="fill:#ff0000" />
-  <rect
-     x="27"
-     y="3"
-     height="7"
-     width="5"
-     id="rect54"
-     style="fill:#727272" />
-  <circle
-     cx="29.5"
-     cy="3"
-     r="2.5"
-     id="circle56"
-     style="fill:#727272" />
+     y="4.8872986"
+     x="-55.113216"
+     height="4.2254028"
+     width="32.226433"
+     id="rect4716-8"
+     style="fill:none;fill-opacity:0.2;stroke:#727272;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+     transform="scale(-1,1)" />
 </svg>
