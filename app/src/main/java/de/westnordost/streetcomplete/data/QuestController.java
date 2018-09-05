@@ -60,7 +60,7 @@ public class QuestController
 
 	private boolean downloadServiceIsBound;
 	private QuestDownloadService.Interface downloadService;
-	private ServiceConnection downloadServiceConnection = new ServiceConnection()
+	private final ServiceConnection downloadServiceConnection = new ServiceConnection()
 	{
 		public void onServiceConnected(ComponentName className, IBinder service)
 		{
@@ -75,7 +75,7 @@ public class QuestController
 	};
 	private boolean uploadServiceIsBound;
 	private QuestChangesUploadService.Interface uploadService;
-	private ServiceConnection uploadServiceConnection = new ServiceConnection()
+	private final ServiceConnection uploadServiceConnection = new ServiceConnection()
 	{
 		public void onServiceConnected(ComponentName className, IBinder service)
 		{

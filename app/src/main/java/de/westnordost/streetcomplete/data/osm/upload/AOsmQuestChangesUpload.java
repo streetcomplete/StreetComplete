@@ -60,8 +60,8 @@ public abstract class AOsmQuestChangesUpload
 	private final SharedPreferences prefs;
 	private final OsmQuestGiver questUnlocker;
 
-	private List<OsmQuest> createdQuests;
-	private List<Long> removedQuestIds;
+	private final List<OsmQuest> createdQuests;
+	private final List<Long> removedQuestIds;
 	private VisibleQuestListener visibleQuestListener;
 	private OnUploadedChangeListener uploadedChangeListener;
 

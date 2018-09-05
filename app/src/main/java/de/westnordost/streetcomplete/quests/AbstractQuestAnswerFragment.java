@@ -51,7 +51,7 @@ public abstract class AbstractQuestAnswerFragment extends AbstractBottomSheetFra
 
 	private ViewGroup content;
 
-	private QuestAnswerComponent questAnswerComponent;
+	private final QuestAnswerComponent questAnswerComponent;
 
 	private LinearLayout buttonPanel;
 	protected Button buttonOtherAnswers;

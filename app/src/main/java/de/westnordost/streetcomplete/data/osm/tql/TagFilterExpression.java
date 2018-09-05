@@ -11,8 +11,8 @@ import de.westnordost.osmapi.map.data.Element;
  *  <tt>"ways with (highway = residential or highway = tertiary) and !name"</tt> */
 public class TagFilterExpression
 {
-	private List<ElementsTypeFilter> elementsTypeFilters;
-	private BooleanExpression<OQLExpressionValue> tagExprRoot;
+	private final List<ElementsTypeFilter> elementsTypeFilters;
+	private final BooleanExpression<OQLExpressionValue> tagExprRoot;
 
 	public TagFilterExpression(List<ElementsTypeFilter> elementsTypeFilters,
 							   BooleanExpression<OQLExpressionValue> tagExprRoot)

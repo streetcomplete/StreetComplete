@@ -26,10 +26,10 @@ public class CountryInfos
 
 	private final AssetManager assetManager;
 	private final Future<CountryBoundaries> countryBoundaries;
+	private final Map<String, CountryInfo> countryInfoMap;
 
 	private CountryInfo defaultCountryInfo;
 
-	private Map<String, CountryInfo> countryInfoMap;
 
 	@Inject public CountryInfos(AssetManager assetManager, Future<CountryBoundaries> countryBoundaries)
 	{
@@ -131,7 +131,7 @@ public class CountryInfos
 			{
 				is.close();
 			}
-			catch (IOException e) { }
+			catch (IOException ignore) { }
 		}
 	}
 

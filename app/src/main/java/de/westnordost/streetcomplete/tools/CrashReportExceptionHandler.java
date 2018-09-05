@@ -138,7 +138,7 @@ public class CrashReportExceptionHandler implements Thread.UncaughtExceptionHand
 			FileInputStream fis = appCtx.openFileInput(CRASHREPORT);
 			return StreamUtils.readToString(fis);
 		}
-		catch (IOException e) {}
+		catch (IOException ignore) {}
 		return null;
 	}
 

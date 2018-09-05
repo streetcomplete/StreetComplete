@@ -174,7 +174,6 @@ Për të shfaqur hartën, pllakat vektoriale merren nga &lt;a href=\"https://map
     <string name="quest_sidewalk_onlyWest">"Vetëm në anën perëndimore"</string>
     <string name="quest_sidewalk_onlyEast">"Vetëm në anën lindore"</string>
     <string name="quest_sidewalk_yes">"Po"</string>
-    <string name="quest_maxspeed_answer_noSign">"Nuk ka shenjë"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Ku është kjo rrugë?"</string>
     <string name="quest_cyclewaySurface_title">"Çfarë mbulese ka rruga për biçikleta këtu?"</string>
     <string name="quest_serviceType_title">"Çfarë lloj rruge shëbyese është kjo?"</string>
@@ -262,7 +261,6 @@ Informacioni që futni shtohet direkt në OpenStreetMap në emrin tuaj, pa nevoj
 
     <!-- Fuzzy -->
     <string name="quest_streetSurface_name_title">"Çfarë sipërfaqe ka rruga \"%\" këtu?"</string>
-    <string name="quest_maxspeed_title_short">"Cili është kufizimi i shpejtësisë për këtë rrugë?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Ky kufizim i shpejtësisë duket i pamundur."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"A jeni i sigurt që nuk ka kufizim të vendosur?"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Po, nuk ka shenjë"</string>

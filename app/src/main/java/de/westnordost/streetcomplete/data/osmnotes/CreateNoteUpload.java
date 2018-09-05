@@ -237,7 +237,7 @@ public class CreateNoteUpload
 		// before 0.11 - i.e. "way #123"
 		String oldStyleRegex = elementType+"\\s*#"+n.elementId;
 		// i.e. www.openstreetmap.org/way/123
-		String newStyleRegex = "openstreetmap\\.org\\/"+elementType+"\\/"+n.elementId;
+		String newStyleRegex = "(osm|openstreetmap)\\.org\\/"+elementType+"\\/"+n.elementId;
 		// i: turns on case insensitive regex, s: newlines are also captured with "."
 		return "(?is).*(("+oldStyleRegex+")|("+newStyleRegex+")).*";
 	}
@@ -247,6 +247,6 @@ public class CreateNoteUpload
 		if(!n.hasAssociatedElement()) return null;
 
 		String elementName = n.elementType.name().toLowerCase(Locale.UK);
-		return "https://www.openstreetmap.org/" + elementName + "/" + n.elementId;
+		return "https://osm.org/" + elementName + "/" + n.elementId;
 	}
 }

@@ -135,7 +135,6 @@
     <string name="quest_sidewalk_onlyWest">"Samo na zahodni strani"</string>
     <string name="quest_sidewalk_onlyEast">"Samo na vzhodni strani"</string>
     <string name="quest_sidewalk_yes">"Da"</string>
-    <string name="quest_maxspeed_answer_noSign">"Ni znaka za omejitev"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Kje je ta ulica?"</string>
     <string name="quest_cyclewaySurface_title">"Kakšno površino ima kolesarska pot tu?"</string>
     <string name="quest_streetLanes_north">"proti severu"</string>
@@ -207,7 +206,6 @@ Podatki, ki jih vnesete tu, bodo dodani v OpenStreetMap v vašem imenu, brez pot
     <string name="quest_bicycleParkingCoveredStatus_title">"Ali je to parkirišče za kolesa pokrito (zaščiteno pred dežjem)"</string>
     <string name="dialog_session_dont_show_again">"Ne prikazuj več v tej seji"</string>
     <string name="quest_streetSurface_name_title">"Kakšno površino ima pot %s tu?"</string>
-    <string name="quest_maxspeed_title_short">"Kakšna je omejitev hitrosti na tej cesti?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Ta hitrostna omejitev izgleda neverjetna."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Ali ste prepričani da ni omejitve?"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Da, ni znaka"</string>

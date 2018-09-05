@@ -162,7 +162,6 @@ To display the map, vector tiles are retrieved from the &lt;a href=\"https://map
     <string name="quest_sidewalk_onlyWest">"Only on western side"</string>
     <string name="quest_sidewalk_onlyEast">"Only on eastern side"</string>
     <string name="quest_sidewalk_yes">"Yes"</string>
-    <string name="quest_maxspeed_answer_noSign">"There is no sign"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Where is this street?"</string>
     <string name="quest_cyclewaySurface_title">"What surface does the cycleway here have?"</string>
     <string name="quest_serviceType_title">"What kind of service road is this?"</string>
@@ -241,7 +240,6 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="quest_bicycleParkingCoveredStatus_title">"Is this bicycle parking covered (protected from rain)?"</string>
     <string name="dialog_session_dont_show_again">"Don’t show again for this session"</string>
     <string name="quest_streetSurface_name_title">"What surface does the road %s have here?"</string>
-    <string name="quest_maxspeed_title_short">"What is the speed limit sign for this street?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"This speed limit looks implausible."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Are you sure no limit is posted?"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">"Did you check at the ends of the street?
@@ -513,7 +511,6 @@ For instance 1,3 or 2-6."</string>
     <string name="quest_construction_building_title">"Is this building completed?"</string>
     <string name="questList_disabled_in_country">"Never shown in %s"</string>
     <string name="quest_toiletAvailability_rest_area_title">"Does this rest area have toilet facilities?"</string>
-    <string name="quest_maxspeed_name_title">"What is the speed limit sign for %s?"</string>
     <string name="quest_pathSurface_title_steps">"What surface do these steps have here?"</string>
     <string name="quest_pathSurface_title_bridleway">"What surface does this bridleway have here?"</string>
     <string name="quest_pathSurface_title">"What surface does this path have here?"</string>

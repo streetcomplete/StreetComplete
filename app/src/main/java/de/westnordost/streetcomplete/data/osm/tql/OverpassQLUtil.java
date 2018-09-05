@@ -4,6 +4,8 @@ import de.westnordost.osmapi.map.data.BoundingBox;
 
 public class OverpassQLUtil
 {
+	public static final int DEFAULT_MAX_QUESTS = 2000;
+
 	public static String getGlobalOverpassBBox(BoundingBox bbox)
 	{
 		return "[bbox:" + getBboxString(bbox) + "];";
@@ -24,6 +26,6 @@ public class OverpassQLUtil
 	{
 		// by default we limit the number of quests created to something that does not cause
 		// performance problems
-		return "out meta geom 2000;";
+		return "out meta geom "+DEFAULT_MAX_QUESTS+";";
 	}
 }

@@ -263,7 +263,7 @@ public class OsmOAuthDialogFragment extends DialogFragment
 
 	private class PostAuthorizationTask extends InlineAsyncTask<Void> {
 
-		@Override protected Void doInBackground() throws Exception
+		@Override protected Void doInBackground()
 		{
 			UserDetails userDetails = new UserDao(osmConnection).getMine();
 			SharedPreferences.Editor editor = prefs.edit();
