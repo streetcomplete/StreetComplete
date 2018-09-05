@@ -35,8 +35,6 @@
     <string name="quest_streetName_answer_noName_confirmation_description">"有時候街道標誌只會立在街道的底端。而且注意，屬於大條街道的分支街道也許不會有多餘的標示。路上有房子的街道經常會有名稱。"</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"假如此名稱可以不縮寫拼出，所以它應該要可被展開。許多常見的縮寫，在你輸入的時候會自動被展開，但並非全部。"</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"無縮寫"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_name_title">"%s 的營業時間是？"</string>
     <string name="quest_openingHours_start_time">"開放時間"</string>
     <string name="quest_openingHours_end_time">"關閉時間"</string>
@@ -174,7 +172,6 @@
     <string name="quest_sidewalk_onlyWest">"只在西邊"</string>
     <string name="quest_sidewalk_onlyEast">"只在南邊"</string>
     <string name="quest_sidewalk_yes">"是"</string>
-    <string name="quest_maxspeed_answer_noSign">"這裡沒有標誌"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"此條街道位在?"</string>
     <string name="quest_cyclewaySurface_title">"此自行車道的鋪面是?"</string>
     <string name="quest_serviceType_title">"此條聯絡道路的種類是?"</string>
@@ -261,7 +258,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_streetSurface_name_title">"道路 %s 的鋪面為何？"</string>
-    <string name="quest_maxspeed_title_short">"這條街的道路速限牌顯示多少？"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"這個速限看來怪怪的。"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"你確定沒有速限限制嗎？"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">"你有到街尾檢查嗎？
@@ -279,7 +275,7 @@
     <string name="quest_sport_sepak_takraw">"藤球"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_name_title">"%s 是否是輪椅通行無處？"</string>
+    <string name="quest_wheelchairAccess_name_title">"%s 是否輪椅通行無阻？"</string>
     <string name="quest_wheelchairAccess_limited">"部分可通行"</string>
     <string name="quest_bikeParkingCapacity_hint">"注意單車架兩邊都能夠停放一台單車。"</string>
     <string name="quest_sport_roller_skating">"滾輪溜冰"</string>
@@ -320,7 +316,7 @@
     <string name="quest_streetName_cantType_open_settings">"開啟設定"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetName_cantType_open_store">"開啓商店"</string>
+    <string name="quest_streetName_cantType_open_store">"開啓應用程式商店"</string>
 
     <!-- Fuzzy -->
     <string name="quest_streetName_cantType_description">"如果您使用預設鍵盤，您或者可以嘗試在輸入法設置中啓用所需語言的鍵盤佈局。
@@ -565,7 +561,6 @@
     <string name="quest_construction_building_title">"這棟建築完工了嗎？"</string>
     <string name="questList_disabled_in_country">"不顯示 %s"</string>
     <string name="quest_toiletAvailability_rest_area_title">"休息區是否有廁所？"</string>
-    <string name="quest_maxspeed_name_title">"%s 的速限？"</string>
     <string name="quest_pathSurface_title_steps">"階梯表面是用什麼材質呢？"</string>
     <string name="quest_pathSurface_title_bridleway">"馬道表面是用什麼材質呢？"</string>
     <string name="quest_pathSurface_title">"這條路徑表面是什麼材質呢？"</string>
@@ -652,4 +647,27 @@
     <string name="quest_address_answer_no_housenumber_message1">"這棟建築被標為："</string>
     <string name="quest_address_answer_no_housenumber_message2">"正確嗎，還是這邊不是建築的一部分？"</string>
     <string name="quest_buildingType_shrine">"神社"</string>
+    <string name="quest_noteDiscussion_hide">"%1$s隱藏備註（%2$s）"</string>
+    <string name="quest_maxspeed_title_short2">"這條街道速限是多少？"</string>
+    <string name="quest_maxspeed_answer_sign">"道路標識"</string>
+    <string name="quest_maxspeed_answer_zone2">"這裡是在 (慢速) 區域"</string>
+    <string name="quest_maxspeed_answer_noSign2">"無標識, 使用預設值"</string>
+    <string name="quest_openingHours_no_sign">"沒有營業時間告示"</string>
+    <string name="quest_maxspeed_name_title2">"%s 這裡的速限是多少？"</string>
+    <string name="quest_buildingType_sports_centre">"運動中心"</string>
+    <string name="quest_buildingType_toilets">"洗手間"</string>
+    <string name="quest_maxspeed_sign_question">"速度限制是由什麼介定的？"</string>
+    <string name="notification_channel_download">"下載"</string>
+    <string name="quest_playground_access_title">"這個遊樂設施對公衆開放嗎？"</string>
+    <string name="quest_segregated_title">"這裡的人行道和自行車道是如何編排的？"</string>
+    <string name="dialog_tutorial_upload">"要手動上傳的更動，使用位於工具列如圖所示的按鈕"</string>
+    <string name="quest_segregated_separated">"與那一種道路分隔"</string>
+    <string name="quest_segregated_mixed">"自行車與步行者共用空間"</string>
+    <string name="quest_maxheight_title">"這裡的高度限制多少？"</string>
+    <string name="quest_maxheight_parking_entrance_title">"這個停車場的限高多少？"</string>
+    <string name="quest_maxheight_height_restrictor_title">"這個限高裝置的高度限制是？"</string>
+    <string name="quest_maxheight_tunnel_title">"這個隧道的高度限制是？"</string>
+    <string name="quest_maxheight_answer_noSign">"該處並沒有標識"</string>
+    <string name="quest_maxheight_answer_noSign_question">"就算是最高的卡車（至少有4.5公尺 / 15英尺）也可以有非常充裕的空間通過嗎？"</string>
+    <string name="quest_maxheight_unusualInput_confirmation_description">"這個高度聽起來不太合理。您確定這是正確的嗎？"</string>
 </resources>

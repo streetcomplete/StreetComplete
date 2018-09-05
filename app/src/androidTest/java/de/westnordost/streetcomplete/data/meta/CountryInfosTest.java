@@ -20,10 +20,10 @@ public class CountryInfosTest extends AndroidTestCase
 		assertTrue(Weekdays.getWeekdayIndex(info.getFirstDayOfWorkweek()) > -1);
 	}
 
-	private void checkSpeedUnitIsEitherKmhOrMph(CountryInfo info)
+	private void checkMeasurementUnitIsEitherMetricOrImperial(CountryInfo info)
 	{
-		assertNotNull(info.getSpeedUnits());
-		assertTrue(info.getSpeedUnits().contains("mph") || info.getSpeedUnits().contains("km/h"));
+		assertNotNull(info.getMeasurementSystem());
+		assertTrue(info.getMeasurementSystem().contains("metric") || info.getMeasurementSystem().contains("imperial"));
 	}
 
 	private void checkAdditionalValidHousenumberRegexes(Map<String, CountryInfo> infos)
@@ -48,7 +48,7 @@ public class CountryInfosTest extends AndroidTestCase
 	private void checkForEach(CountryInfo info)
 	{
 		checkFirstDayOfWorkweekIsValid(info);
-		checkSpeedUnitIsEitherKmhOrMph(info);
+		checkMeasurementUnitIsEitherMetricOrImperial(info);
 		checkRegularShoppingDaysIsBetween0And7(info);
 		checkStartOfWorkweekValid(info);
 	}

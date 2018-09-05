@@ -101,7 +101,7 @@ produce_agave.jpg              CC-BY-SA 3.0      https://en.wikipedia.org/wiki/F
 produce_kola_nut.jpg           CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Fruits_of_Cola_nitida.JPG
 produce_mate.jpg               CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Yerba_Mate.jpg
 produce_jojoba.jpg             CC-BY 2.0         https://de.wikipedia.org/wiki/Datei:Jojoba_Nut_-_Flickr_-_treegrow.jpg
-produce_tomatoe.jpg            CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Solanum_lycopersicum_%27Cronos%27,_tomaat_%27Cronos%27.jpg
+produce_tomato.jpg             CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Solanum_lycopersicum_%27Cronos%27,_tomaat_%27Cronos%27.jpg
 
 surface_asphalt.jpg            Public Domain     https://commons.wikimedia.org/wiki/File:Ground_frost_damages.JPG
 surface_cobblestone.jpg        CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Bad_Radkersburg_Murgasse_IMG_0583.jpg

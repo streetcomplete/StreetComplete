@@ -3,5 +3,5 @@ isLivingStreetKnown: true
 isSlowZoneKnown: true
 mobileCountryCode: 247
 officialLanguages: [lv]
-orchardProduces: [apple, blueberry, strawberry, tomatoe, cranberry, pear, cherry, raspberry, plum,
+orchardProduces: [apple, blueberry, strawberry, tomato, cranberry, pear, cherry, raspberry, plum,
   chestnut]

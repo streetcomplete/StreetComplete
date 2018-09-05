@@ -43,7 +43,9 @@ public class AddRoadName extends AOsmElementQuestType
 	/** @return overpass query string for creating the quests */
 	private static String getOverpassQuery(BoundingBox bbox)
 	{
-		return OverpassQLUtil.getGlobalOverpassBBox(bbox) + ROADS_WITHOUT_NAMES + "; out meta geom;";
+		return OverpassQLUtil.getGlobalOverpassBBox(bbox) +
+			ROADS_WITHOUT_NAMES + "; " +
+			OverpassQLUtil.getQuestPrintStatement();
 	}
 
 	/** @return overpass query string to get roads with names near roads that don't have names */
@@ -54,7 +56,7 @@ public class AddRoadName extends AOsmElementQuestType
 				ROADS_WITH_NAMES + " -> .with_names;" +
 				"way.with_names(around.without_names:" +
 				MAX_DIST_FOR_ROAD_NAME_SUGGESTION + ");" +
-				"out meta geom;";
+				"out body geom;";
 	}
 
 	private final RoadNameSuggestionsDao roadNameSuggestionsDao;

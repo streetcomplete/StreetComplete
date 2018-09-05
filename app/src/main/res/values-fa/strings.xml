@@ -180,7 +180,6 @@
     <string name="quest_sidewalk_onlyWest">"فقط به سمت غرب"</string>
     <string name="quest_sidewalk_onlyEast">"فقط به سمت شرق"</string>
     <string name="quest_sidewalk_yes">"بله"</string>
-    <string name="quest_maxspeed_answer_noSign">"بدون علائم"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"این خیابان کجاست؟"</string>
     <string name="quest_cyclewaySurface_title">"جنس سطح مسیر دوچرخه سواری در اینجا چیست؟"</string>
     <string name="quest_serviceType_title">"نوع این جاده خدماتی چیست؟"</string>
@@ -267,7 +266,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_streetSurface_name_title">"جنس سطح مسیر %s چگونه است؟"</string>
-    <string name="quest_maxspeed_title_short">"حداکثر سرعت در این خیابان چقدر است؟"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"این محدودیت سرعت به نظر غیر واقعی است."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"آیا مطمئن هستید که هیچ محدودیت سرعتی قرار داده نشده است؟"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">"آیا شما انتهای خیابان را بررسی کرده‌اید؟ اگر علائمی در کل خیابان وجود ندارد ، برای تمام بخش انتخاب شده ، محدودیت سرعت پیش فرض اعمال می شود."</string>
@@ -561,7 +559,6 @@
     <string name="quest_construction_building_title">"آیا این ساختمان ساخته شده است؟"</string>
     <string name="questList_disabled_in_country">"اصلا %s موجود نیست."</string>
     <string name="quest_toiletAvailability_rest_area_title">"آیا این فضای استراحت ، سرویس بهداشتی دارد؟"</string>
-    <string name="quest_maxspeed_name_title">"محدودیت سرعت در %s چقدر است؟"</string>
     <string name="quest_pathSurface_title_steps">"درجه سطح این مسیر چیست؟"</string>
     <string name="quest_pathSurface_title_bridleway">"در این مسیر ناشناس چه سطحی وجود دارد؟"</string>
     <string name="quest_pathSurface_title">"سطح این مسیر از چه نوعی است؟"</string>
@@ -650,4 +647,29 @@
     <string name="quest_address_answer_no_housenumber_message1">"این ساختمان به چه عنوانی برچسب‌گذاری شده :"</string>
     <string name="quest_address_answer_no_housenumber_message2">"آیا این درست است و آیا این فقط بخشی از یک ساختمان نیست؟"</string>
     <string name="quest_buildingType_shrine">"زیارتگاه"</string>
+    <string name="quest_noteDiscussion_hide">"%1$s یاداشت مخفی (%2$s)
+
+"</string>
+    <string name="quest_maxspeed_title_short2">"محدویت سرعت در این خیابان چه مقداری است؟"</string>
+    <string name="quest_maxspeed_answer_sign">"علائم"</string>
+    <string name="quest_maxspeed_answer_zone2">"منطقه رانندگی با سرعت کم"</string>
+    <string name="quest_maxspeed_answer_noSign2">"بدون علامت، پیش فرض اعمال می شود"</string>
+    <string name="quest_openingHours_no_sign">"بدون علائم زمان شروع کار"</string>
+    <string name="quest_maxspeed_name_title2">"محدودیت سرعت‌در %s چه مقداری است؟"</string>
+    <string name="quest_buildingType_sports_centre">"ورزشگاه"</string>
+    <string name="quest_buildingType_toilets">"سرویس بهداشتی"</string>
+    <string name="quest_maxspeed_sign_question">"محدودیت سرعت چگونه مشخص شده است؟"</string>
+    <string name="notification_channel_download">"بارگیری"</string>
+    <string name="quest_playground_access_title">"آیا این زمین بازی عمومی است؟"</string>
+    <string name="quest_segregated_title">"پیاده‌رو و خط دوچرخه چگونه در اینجا ساخته شده است؟"</string>
+    <string name="dialog_tutorial_upload">"برای بارگذاری تغییرات به صورت دستی، از دکمه‌ای که در نوار ابزار مشابه این است استفاده کنید."</string>
+    <string name="quest_segregated_separated">"جداگانه"</string>
+    <string name="quest_segregated_mixed">"دوچرخه سواران و عابرین پیاده در یک مسیر مشترک"</string>
+    <string name="quest_maxheight_title">"محدودیت ارتفاع در اینجا چه مقداری است؟"</string>
+    <string name="quest_maxheight_parking_entrance_title">"برای ورودی پارکینگ محدودیت ارتفاع چه مقداری است؟"</string>
+    <string name="quest_maxheight_height_restrictor_title">"حد ارتفاع این محدود‌کننده ارتفاع چه مقداری است؟"</string>
+    <string name="quest_maxheight_tunnel_title">"محدویت ارتفاع ورود این تونل چه مقداری است؟"</string>
+    <string name="quest_maxheight_answer_noSign">"علائمی وجود ندارد"</string>
+    <string name="quest_maxheight_answer_noSign_question">"آیا به اندازه کافی، فضای مناسب برای عبور بلندترین کامیون‌ها (حداقل حدود ۴/۵ متر / ۱۵ فوت) وجود دارد؟"</string>
+    <string name="quest_maxheight_unusualInput_confirmation_description">"این ارتفاع غیرقابل باور است. مطمئن هستید که درست است؟"</string>
 </resources>

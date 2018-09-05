@@ -174,7 +174,6 @@ Haritayı görüntülemek için vektör karoları, anonim olan &lt;a href=\"http
     <string name="quest_sidewalk_onlyWest">"Sadece batı yakasında"</string>
     <string name="quest_sidewalk_onlyEast">"Sadece doğu tarafında"</string>
     <string name="quest_sidewalk_yes">"Evet"</string>
-    <string name="quest_maxspeed_answer_noSign">"Hiçbir işaret yok"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Bu cadde nerede"</string>
     <string name="quest_cyclewaySurface_title">"Burada bisiklet yolunun yüzeyi nedir?"</string>
     <string name="quest_serviceType_title">"Bu yol nasıl bir hizmet şeklidir?"</string>
@@ -262,7 +261,6 @@ Hiçbir e-posta istemcisi kurulu değil."</string>
 
     <!-- Fuzzy -->
     <string name="quest_streetSurface_name_title">"%s yolunun yüzeyi nedir?"</string>
-    <string name="quest_maxspeed_title_short">"Bu sokak için hız limiti tabelasında ne yazıyor?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Bu hız limiti mantıksız gözüküyor."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Hiçbir hız limiti belirtilmediğine emin misiniz?"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Evet, işaret yok"</string>
@@ -462,4 +460,40 @@ Aksi takdirde, uygulama mağazasında başka bir klavye indirebilirsiniz. Birço
     <string name="quest_housenumber_conscription_number_required">"Kapı numarası girmelisin"</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">"Ayrıca karşı tarafta bisiklet yolu var"</string>
     <string name="need_specify_both_sides">"İki tarafı da belirtmelisin"</string>
+    <string name="quest_streetName_pedestrian_title">"Bu yaya caddesinin adı ne?"</string>
+    <string name="quest_busStopName_title">"Bu otobüs durağının adı nedir?"</string>
+    <string name="quest_tramStopName_title">"Bu tramvay durağının adı nedir?"</string>
+    <string name="quest_housenumber_multiple_numbers_description">"Virgülle ayrılmış ev numaralarını veya aralıklarını girebilirsiniz. Örneğin 1,3 veya 2-6."</string>
+    <string name="quest_collectionTimes_add_times">"Toplama Zamanı Ekle"</string>
+    <string name="quest_construction_road_title">"Bu yol tamamlandımı?"</string>
+    <string name="quest_construction_cycleway_title">"Bu bisiklet yolu tamamlandı mı?"</string>
+    <string name="quest_buildingType_church">"Kilise"</string>
+    <string name="quest_buildingType_mosque">"Camii"</string>
+    <string name="quest_buildingType_synagogue">"Sinagog"</string>
+    <string name="quest_buildingType_kindergarten">"Anaokulu Binası"</string>
+    <string name="quest_buildingType_school">"Okul Binası"</string>
+    <string name="quest_buildingType_college">"Üniversite Binası"</string>
+    <string name="quest_buildingType_hospital">"Hastane Binası"</string>
+    <string name="quest_buildingType_stadium">"Stadyum Binası"</string>
+    <string name="quest_buildingType_parking">"Otopark binası"</string>
+    <string name="quest_buildingType_farmhouse">"Çiftlik Evi"</string>
+    <string name="quest_buildingType_greenhouse">"Yeşil Ev"</string>
+    <string name="quest_buildingType_other">"Diğer"</string>
+    <string name="quest_buildingType_roof">"Çatı"</string>
+    <string name="quest_buildingType_service">"Servis Binası"</string>
+    <string name="quest_buildingType_hangar">"Hangar"</string>
+    <string name="quest_maxspeed_title_short2">"Bu caddenin hız sınırı nedir?"</string>
+    <string name="quest_maxspeed_answer_noSign2">"İmza yok, varsayılanlar geçerlidir"</string>
+    <string name="quest_openingHours_no_sign">"Çalışma saatleri yok"</string>
+    <string name="quest_buildingType_sports_centre">"Spor Merkezi
+"</string>
+    <string name="quest_buildingType_toilets">"Tuvaletler"</string>
+    <string name="notification_channel_download">"İndir"</string>
+    <string name="quest_playground_access_title">"Bu oyun alanı halka açık mı?"</string>
+    <string name="quest_segregated_mixed">"Bisikletçiler ve yayalar aynı alanı paylaşıyor"</string>
+    <string name="quest_maxheight_title">"Burada yükseklik sınırı nedir?"</string>
+    <string name="quest_maxheight_tunnel_title">"Bu tünelin yükseklik sınırı nedir?"</string>
+    <string name="quest_maxheight_answer_noSign">"İşaret Yok"</string>
+    <string name="quest_maxheight_answer_noSign_question">"En yüksek kamyonların bile (en az yaklaşık 4,5 metre / 15 yükseklik) geçmesi için yeterince yer var mı?"</string>
+    <string name="quest_maxheight_unusualInput_confirmation_description">"Bu yükseklik mantıksız görünüyor. Bunun doğru olduğundan emin misin?"</string>
 </resources>

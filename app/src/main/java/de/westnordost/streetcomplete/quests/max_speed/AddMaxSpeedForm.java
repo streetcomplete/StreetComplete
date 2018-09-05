@@ -15,6 +15,7 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -149,11 +150,22 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 		speedUnitSelect = rightSide.findViewById(R.id.speedUnitSelect);
 		if(speedUnitSelect != null)
 		{
-			List<String> speedUnits = getCountryInfo().getSpeedUnits();
-			speedUnitSelect.setVisibility(speedUnits.size() == 1 ? View.GONE : View.VISIBLE);
-			speedUnitSelect.setAdapter(new ArrayAdapter<>(getContext(), R.layout.spinner_item_centered, speedUnits));
+			List<String> measurementUnits = getCountryInfo().getMeasurementSystem();
+			speedUnitSelect.setVisibility(measurementUnits.size() == 1 ? View.GONE : View.VISIBLE);
+			speedUnitSelect.setAdapter(new ArrayAdapter<>(getContext(), R.layout.spinner_item_centered, getSpinnerItems(measurementUnits)));
 			speedUnitSelect.setSelection(0);
 		}
+	}
+
+	private List<String> getSpinnerItems(List<String> units)
+	{
+		List<String> items = new ArrayList<>();
+		for (String unit : units)
+		{
+			if (unit.equals("metric"))        items.add("km/h");
+			else if (unit.equals("imperial")) items.add("mph");
+		}
+		return items;
 	}
 
 	private SpeedType getSpeedType(@IdRes int checkedId)

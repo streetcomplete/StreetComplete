@@ -6,8 +6,6 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.graphics.Point;
 import android.graphics.PointF;
-import android.graphics.drawable.Animatable;
-import android.graphics.drawable.Drawable;
 import android.support.annotation.DrawableRes;
 import android.support.v4.app.Fragment;
 import android.content.BroadcastReceiver;
@@ -18,7 +16,6 @@ import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.graphics.Rect;
-import android.location.Location;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -129,7 +126,6 @@ public class MainActivity extends AppCompatActivity implements
 	private static boolean dontShowRequestAuthorizationAgain = false;
 
 	private QuestsMapFragment mapFragment;
-	private Location lastLocation;
 
 	private ProgressBar downloadProgressBar;
 	private ProgressBar uploadProgressBar;
@@ -138,10 +134,11 @@ public class MainActivity extends AppCompatActivity implements
 
 	private float mapRotation, mapTilt;
 	private boolean isFollowingPosition;
+	private boolean isCompassMode;
 
 	private boolean downloadServiceIsBound;
 	private QuestDownloadService.Interface downloadService;
-	private ServiceConnection downloadServiceConnection = new ServiceConnection()
+	private final ServiceConnection downloadServiceConnection = new ServiceConnection()
 	{
 		public void onServiceConnected(ComponentName className, IBinder service)
 		{
@@ -157,7 +154,7 @@ public class MainActivity extends AppCompatActivity implements
 	};
 	private boolean uploadServiceIsBound;
 	private QuestChangesUploadService.Interface uploadService;
-	private ServiceConnection uploadServiceConnection = new ServiceConnection()
+	private final ServiceConnection uploadServiceConnection = new ServiceConnection()
 	{
 		public void onServiceConnected(ComponentName className, IBinder service)
 		{
@@ -215,11 +212,10 @@ public class MainActivity extends AppCompatActivity implements
 
 		questController.onCreate();
 
-		TextView uploadedAnswersView = toolbar.findViewById(R.id.uploadedAnswersCounter);
+		TextView uploadedAnswersView = findViewById(R.id.uploadedAnswersCounter);
 		TextView unsyncedChangesView = findViewById(R.id.unsyncedAnswersCounter);
 		unsyncedChangesContainer = findViewById(R.id.unsyncedAnswersContainer);
-		uploadProgressBar = findViewById(R.id.unsyncedAnswersProgress);
-		answersCounter.setViews(uploadedAnswersView, uploadedAnswersView, unsyncedChangesView, unsyncedChangesContainer);
+		answersCounter.setViews(uploadedAnswersView, unsyncedChangesView, unsyncedChangesContainer);
 		unsyncedChangesContainer.setOnClickListener(view ->
 		{
 			if (isConnected())
@@ -248,24 +244,22 @@ public class MainActivity extends AppCompatActivity implements
 				getResources().getDimensionPixelSize(R.dimen.quest_form_rightOffset),
 				getResources().getDimensionPixelSize(R.dimen.quest_form_bottomOffset)));
 
-		mapFragment.getMapAsync(BuildConfig.MAPZEN_API_KEY != null ?
-				BuildConfig.MAPZEN_API_KEY :
-				new String(new char[]{118,101,99,116,111,114,45,116,105,108,101,115,45,102,75,85,99,117,65,74}));
+		mapFragment.getMapAsync(BuildConfig.MAPZEN_API_KEY);
 	}
 
 	@Override public void onStart()
 	{
 		super.onStart();
 
-		answersCounter.setAutosync(Prefs.Autosync.valueOf(prefs.getString(Prefs.AUTOSYNC,"ON")) == Prefs.Autosync.ON);
-		answersCounter.update();
+		boolean isAutosync = Prefs.Autosync.valueOf(prefs.getString(Prefs.AUTOSYNC,"ON")) == Prefs.Autosync.ON;
+		ProgressBar uploadedAnswersProgressBar = findViewById(R.id.uploadedAnswersProgress);
+		ProgressBar unsyncedAnswersProgressBar = findViewById(R.id.unsyncedAnswersProgress);
+		uploadedAnswersProgressBar.setVisibility(View.INVISIBLE);
+		unsyncedAnswersProgressBar.setVisibility(View.INVISIBLE);
 
-		TextView unsyncedChangesView = findViewById(R.id.unsyncedAnswersCounter);
-		for (Drawable drawable : unsyncedChangesView.getCompoundDrawables())
-		{
-			if(drawable != null && drawable instanceof Animatable)
-				((Animatable) drawable).start();
-		}
+		uploadProgressBar = isAutosync ? uploadedAnswersProgressBar : unsyncedAnswersProgressBar;
+		answersCounter.setAutosync(isAutosync);
+		answersCounter.update();
 
 		registerReceiver(locationAvailabilityReceiver, LocationUtil.createLocationAvailabilityIntentFilter());
 
@@ -277,7 +271,6 @@ public class MainActivity extends AppCompatActivity implements
 		questController.onStart(this);
 		questAutoSyncer.onStart();
 
-		uploadProgressBar.setVisibility(View.INVISIBLE);
 		downloadProgressBar.setAlpha(0f);
 		downloadServiceIsBound = bindService(new Intent(this, QuestDownloadService.class),
 				downloadServiceConnection, BIND_AUTO_CREATE);
@@ -368,7 +361,7 @@ public class MainActivity extends AppCompatActivity implements
 			{
 				questController.undo(quest);
 				questAutoSyncer.triggerAutoUpload();
-				answersCounter.decrement(quest.getChangesSource());
+				answersCounter.subtractOneUnsynced(quest.getChangesSource());
 			})
 			.setNegativeButton(R.string.undo_confirm_negative, null)
 			.show();
@@ -500,7 +493,16 @@ public class MainActivity extends AppCompatActivity implements
 			runOnUiThread(() ->
 			{
 				unsyncedChangesContainer.setEnabled(false);
-				uploadProgressBar.setVisibility(View.VISIBLE);
+				if(uploadProgressBar != null) uploadProgressBar.setVisibility(View.VISIBLE);
+			});
+		}
+
+		@Override public void onProgress(boolean success)
+		{
+			runOnUiThread(() ->
+			{
+				if(success) answersCounter.uploadedOne();
+				else        answersCounter.discardedOne();
 			});
 		}
 
@@ -558,7 +560,7 @@ public class MainActivity extends AppCompatActivity implements
 			runOnUiThread(() ->
 			{
 				unsyncedChangesContainer.setEnabled(true);
-				uploadProgressBar.setVisibility(View.INVISIBLE);
+				if(uploadProgressBar != null) uploadProgressBar.setVisibility(View.INVISIBLE);
 			});
 			answersCounter.update();
 		}
@@ -656,6 +658,7 @@ public class MainActivity extends AppCompatActivity implements
 			{
 				mapFragment.removeQuestGeometry();
 				mapFragment.setIsFollowingPosition(isFollowingPosition);
+				mapFragment.setCompassMode(isCompassMode);
 				MainActivity.super.onBackPressed();
 			});
 		}
@@ -669,9 +672,7 @@ public class MainActivity extends AppCompatActivity implements
 
 	@Override public void onAnsweredQuest(long questId, QuestGroup group, Bundle answer)
 	{
-		// line between location now and location when the form was opened
-		Location[] locations = new Location[]{ lastLocation, mapFragment.getDisplayedLocation() };
-		questSource.findSource(questId, group, locations, source ->
+		questSource.findSource(questId, group, mapFragment.getDisplayedLocation(), source ->
 		{
 			onSolvedQuest(questId, group, source);
 			questController.solve(questId, group, answer, source);
@@ -754,7 +755,7 @@ public class MainActivity extends AppCompatActivity implements
 			@Override public void onAnimationEnd(Animator animation)
 			{
 				root.removeView(img);
-				answersCounter.increase(source);
+				answersCounter.addOneUnsynced(source);
 			}
 		});
 
@@ -848,11 +849,12 @@ public class MainActivity extends AppCompatActivity implements
 			if (!isQuestDetailsCurrentlyDisplayedFor(questId, group)) continue;
 
 			runOnUiThread(this::closeBottomSheet);
-			Quest quest = questController.getNextAt(questId, group);
+			// disabled this feature (for now), it does not feel good
+			/*Quest quest = questController.getNextAt(questId, group);
 			if(quest != null)
 			{
 				runOnUiThread(() -> showQuestDetails(quest, group));
-			}
+			}*/
 
 			break;
 		}
@@ -880,6 +882,7 @@ public class MainActivity extends AppCompatActivity implements
 		getSupportFragmentManager().popBackStackImmediate(BOTTOM_SHEET, FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
 		mapFragment.setIsFollowingPosition(isFollowingPosition);
+		mapFragment.setCompassMode(isCompassMode);
 		mapFragment.removeQuestGeometry();
 	}
 
@@ -902,7 +905,6 @@ public class MainActivity extends AppCompatActivity implements
 			closeBottomSheet();
 		}
 
-		lastLocation = mapFragment.getDisplayedLocation();
 		mapFragment.addQuestGeometry(quest.getGeometry());
 
 		AbstractQuestAnswerFragment f = quest.getType().createForm();
@@ -924,7 +926,9 @@ public class MainActivity extends AppCompatActivity implements
 	private void showInBottomSheet(Fragment f)
 	{
 		isFollowingPosition = mapFragment.isFollowingPosition();
+		isCompassMode = mapFragment.isCompassMode();
 		mapFragment.setIsFollowingPosition(false);
+		mapFragment.setCompassMode(false);
 
 		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 		ft.setCustomAnimations(

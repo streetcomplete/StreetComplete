@@ -29,7 +29,6 @@ public class AnswersCounter
 
 	private TextView uploadedText;
 	private TextView unsyncedText;
-	private View uploadedContainer;
 	private View unsyncedContainer;
 
 	private boolean isFirstUpdateDone;
@@ -44,12 +43,11 @@ public class AnswersCounter
 		this.questStatisticsDB = questStatisticsDB;
 	}
 
-	public void setViews(TextView uploadedAnswersTextView, View uploadedContainer,
-						 TextView unsyncedAnswersTextView, View unsyncedContainer)
+	public void setViews(TextView uploadedAnswersTextView, TextView unsyncedAnswersTextView,
+						 View unsyncedContainer)
 	{
 		this.uploadedText = uploadedAnswersTextView;
 		this.unsyncedText = unsyncedAnswersTextView;
-		this.uploadedContainer = uploadedContainer;
 		this.unsyncedContainer = unsyncedContainer;
 	}
 
@@ -65,13 +63,26 @@ public class AnswersCounter
 		return isAutosync ? uploadedText : unsyncedText;
 	}
 
-	public void increase(String source)
+	public void addOneUnsynced(String source)
 	{
 		unsynced++;
 		updateTexts();
 	}
 
-	public void decrement(String source)
+	public void subtractOneUnsynced(String source)
+	{
+		unsynced--;
+		updateTexts();
+	}
+
+	public void uploadedOne()
+	{
+		unsynced--;
+		uploaded++;
+		updateTexts();
+	}
+
+	public void discardedOne()
 	{
 		unsynced--;
 		updateTexts();
@@ -104,22 +115,23 @@ public class AnswersCounter
 	{
 		if(isAutosync)
 		{
-			updateText(uploadedText, uploadedContainer, uploaded + unsynced);
+			updateText(uploadedText, uploaded + unsynced);
 		}
 		else
 		{
-			updateText(uploadedText, uploadedContainer, uploaded);
-			updateText(unsyncedText, unsyncedContainer, unsynced);
+			updateText(uploadedText, uploaded);
+			updateText(unsyncedText, unsynced);
 		}
 	}
 
-	private void updateText(TextView view, View container, int value)
+	private void updateText(TextView view, int value)
 	{
 		if(isFirstUpdateDone) try
 		{
 			int previous = Integer.parseInt(view.getText().toString());
-			if(previous < value) animateChange(container, 1.6f);
-			else if(previous > value) animateChange(container, 0.6f);
+			if(previous < value) animateChange(view, 1.6f);
+			// not important to highlight that and looks better IMO if only the positive changes are animated
+			//else if(previous > value) animateChange(view, 0.6f);
 		}
 		catch (NumberFormatException ignore) { }
 		view.setText(String.valueOf(value));
@@ -128,12 +140,12 @@ public class AnswersCounter
 	private void animateChange(View view, float scale)
 	{
 		ObjectAnimator anim = ObjectAnimator.ofPropertyValuesHolder(view,
-			PropertyValuesHolder.ofFloat(View.SCALE_X, scale),
-			PropertyValuesHolder.ofFloat(View.SCALE_Y, scale));
+			PropertyValuesHolder.ofFloat(View.SCALE_X, 1f, scale),
+			PropertyValuesHolder.ofFloat(View.SCALE_Y, 1f, scale));
 		anim.setRepeatCount(1);
 		anim.setRepeatMode(ValueAnimator.REVERSE);
 		anim.setInterpolator(new DecelerateInterpolator(2f));
-		anim.setDuration(150);
+		anim.setDuration(100);
 		anim.start();
 	}
 

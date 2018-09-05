@@ -63,8 +63,7 @@ public class NodeDao extends AOsmElementDao<Node>
 		insert.bindDouble(4, node.getPosition().getLongitude());
 		if(node.getTags() != null)
 		{
-			HashMap<String,String> map = new HashMap<>();
-			map.putAll(node.getTags());
+			HashMap<String, String> map = new HashMap<>(node.getTags());
 			insert.bindBlob(5, serializer.toBytes(map));
 		}
 		else

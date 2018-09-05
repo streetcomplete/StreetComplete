@@ -88,7 +88,10 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 			if(isLeftHandTraffic()) puzzle.showOnlyLeftSide();
 			else                    puzzle.showOnlyRightSide();
 
-			addOtherAnswer(R.string.quest_cycleway_answer_contraflow_cycleway, this::showBothSides);
+			if(!"roundabout".equals(getOsmElement().getTags().get("junction")))
+			{
+				addOtherAnswer(R.string.quest_cycleway_answer_contraflow_cycleway, this::showBothSides);
+			}
 		}
 	}
 

@@ -135,7 +135,6 @@
     <string name="quest_sidewalk_onlyWest">"Berre på vestsida"</string>
     <string name="quest_sidewalk_onlyEast">"Berre på austsida"</string>
     <string name="quest_sidewalk_yes">"Ja"</string>
-    <string name="quest_maxspeed_answer_noSign">"Det finst ikkje noko skilt"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Kor er denne gata?"</string>
     <string name="quest_cyclewaySurface_title">"Kva vegdekke har sykkelvegen her?"</string>
     <string name="quest_serviceType_title">"Kva slags småveg er dette?"</string>
@@ -214,7 +213,6 @@ Informasjonen du legg til vert sendt direkte til OpenStreetMap i ditt namn, utan
     <string name="quest_bicycleParkingCoveredStatus_title">"Er det tak over denne sykkelparkeringa?"</string>
     <string name="dialog_session_dont_show_again">"Vis ikkje fleire gongar i denne økta"</string>
     <string name="quest_streetSurface_name_title">"Kva vegdekke har vegen %s her?"</string>
-    <string name="quest_maxspeed_title_short">"Kva fartsgrense viser skiltet på denne vegen?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Fartsgrensa verkar usannsynleg."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Er du sikker på at det ikkje finst noko fartsskilt?"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">"Såg du etter ved begge endene av gata? Viss det ikkje finst noko fartsskilt for heile gata, som òg gjeld for den avmerkte strekninga, gjeld standardfartsgrensa."</string>
@@ -484,7 +482,6 @@ som intervall skilde med bindestrek: «1,3» eller «2-6»."</string>
     <string name="quest_construction_building_title">"Er denne bygningen no ferdigstilt?"</string>
     <string name="questList_disabled_in_country">"Vis aldri i %s"</string>
     <string name="quest_toiletAvailability_rest_area_title">"Finst det toalett på denne rasteplassen?"</string>
-    <string name="quest_maxspeed_name_title">"Kva fartsgrense viser skiltet på %s?"</string>
     <string name="quest_pathSurface_title_steps">"Kva materiale er desse trappene laga av?"</string>
     <string name="quest_pathSurface_title_bridleway">"Kva vegdekke har denne ridevegen her?"</string>
     <string name="quest_pathSurface_title">"Kva vegdekke har denne stien her?"</string>

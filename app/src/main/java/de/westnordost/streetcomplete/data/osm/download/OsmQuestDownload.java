@@ -130,7 +130,7 @@ public class OsmQuestDownload
 				"Added " + newQuestsByQuestType + " new and " +
 				"removed " + obsoleteAmount + " already resolved quests." +
 				" (Total: " + quests.size() + ")" +
-				" in " + (System.currentTimeMillis() - time) + "ms");
+				" in " + ((System.currentTimeMillis() - time)/1000) + "s");
 
 		return true;
 	}
@@ -158,7 +158,7 @@ public class OsmQuestDownload
 				bbox.getMinLongitude(), bbox.getMinLatitude(),
 				bbox.getMaxLongitude(), bbox.getMaxLatitude());
 
-			if(containsAnyOf(containingCountries, countries.getExceptions())) return false;
+			return !containsAnyOf(containingCountries, countries.getExceptions());
 		}
 		else
 		{
@@ -166,9 +166,8 @@ public class OsmQuestDownload
 				bbox.getMinLongitude(), bbox.getMinLatitude(),
 				bbox.getMaxLongitude(), bbox.getMaxLatitude());
 
-			if(!containsAnyOf(intersectingCountries, countries.getExceptions())) return false;
+			return containsAnyOf(intersectingCountries, countries.getExceptions());
 		}
-		return true;
 	}
 
 	private boolean mayCreateQuestFrom(

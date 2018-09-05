@@ -28,6 +28,7 @@ import de.westnordost.streetcomplete.quests.diet_type.AddVegan;
 import de.westnordost.streetcomplete.quests.diet_type.AddVegetarian;
 import de.westnordost.streetcomplete.quests.fire_hydrant.AddFireHydrantType;
 import de.westnordost.streetcomplete.quests.internet_access.AddInternetAccess;
+import de.westnordost.streetcomplete.quests.max_height.AddMaxHeight;
 import de.westnordost.streetcomplete.quests.oneway.AddOneway;
 import de.westnordost.streetcomplete.quests.oneway.TrafficFlowSegmentsDao;
 import de.westnordost.streetcomplete.quests.oneway.WayTrafficFlowDao;
@@ -43,6 +44,7 @@ import de.westnordost.streetcomplete.quests.religion.AddReligionToPlaceOfWorship
 import de.westnordost.streetcomplete.quests.religion.AddReligionToWaysideShrine;
 import de.westnordost.streetcomplete.quests.localized_name.data.PutRoadNameSuggestionsHandler;
 import de.westnordost.streetcomplete.quests.localized_name.data.RoadNameSuggestionsDao;
+import de.westnordost.streetcomplete.quests.segregated.AddCyclewaySegregation;
 import de.westnordost.streetcomplete.quests.surface.AddPathSurface;
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingBusStop;
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingCrosswalk;
@@ -86,6 +88,7 @@ public class QuestModule
 				new AddRecyclingType(o),
 				new AddRoadSurface(o),
 				new AddMaxSpeed(o), // should best be after road surface because it excludes unpaved roads
+				new AddMaxHeight(o),
 				new AddReligionToPlaceOfWorship(o), // icon on maps are different
 				new AddPostboxCollectionTimes(o),
 				new AddOpeningHours(o),
@@ -123,6 +126,7 @@ public class QuestModule
 				new AddBridgeStructure(o),
 				new AddWheelChairAccessToilets(o),
 				new AddReligionToWaysideShrine(o),
+				new AddCyclewaySegregation(o),
 				new MarkCompletedBuildingConstruction(o),
 
 				// ↓ 8. defined in the wiki, but not really used by anyone yet. Just collected for

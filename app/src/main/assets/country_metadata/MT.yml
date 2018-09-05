@@ -3,5 +3,5 @@ isLeftHandTraffic: true
 isSlowZoneKnown: true
 mobileCountryCode: 278
 officialLanguages: [mt, en]
-orchardProduces: [grape, tomatoe, peach, fig, strawberry, lemon, lime, apple, olive, orange, apricot,
+orchardProduces: [grape, tomato, peach, fig, strawberry, lemon, lime, apple, olive, orange, apricot,
   pear, grapefruit]

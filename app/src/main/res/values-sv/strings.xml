@@ -82,7 +82,7 @@
     <string name="offline">"Du är offline"</string>
 
     <!-- Fuzzy -->
-    <string name="confirmation_authorize_now">"Du måste ge programmet tillåtselse att använda ditt OpenStreetMap-konto för att publicera dina svar. Vill du ge tillåtelse nu?"</string>
+    <string name="confirmation_authorize_now">"Du måste ge programmet tillåtelse att använda ditt OpenStreetMap-konto för att publicera dina svar. Vill du ge tillåtelse nu?"</string>
     <string name="not_authorized">"Inte godkänd"</string>
     <string name="version_banned_message">"Denna version av StreetComplete har förbjudits från att överföra några svar! Vänligen uppdatera din version!"</string>
     <string name="no_gps_no_quests">"För att söka efter uppdrag runt omkring dig automatiskt, slå på plats"</string>
@@ -161,8 +161,6 @@ För att visa på kartan, är vektor brickor hämtas från &lt;a href=\"https://
     <string name="quest_surface_value_sett">"Kullersten"</string>
     <string name="quest_surface_value_wood">"Trä"</string>
     <string name="quest_placeName_title">"Vad är namnet på det här stället?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sidewalk_title">"Finns det en trottoar längs den här gatan?"</string>
     <string name="map_orientation_info">"Kartan är orienterad mot norr upp."</string>
     <string name="quest_sidewalk_onlyNorth">"Endast på norra sidan"</string>
@@ -170,11 +168,8 @@ För att visa på kartan, är vektor brickor hämtas från &lt;a href=\"https://
     <string name="quest_sidewalk_onlyWest">"Endast på västra sidan"</string>
     <string name="quest_sidewalk_onlyEast">"Endast på östra sidan"</string>
     <string name="quest_sidewalk_yes">"Ja"</string>
-    <string name="quest_maxspeed_answer_noSign">"Det finns inga skyltar"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Var ligger den här gatan?"</string>
     <string name="quest_cyclewaySurface_title">"Vad har cykelvägen för underlag här?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_serviceType_title">"Vilken typ av serviceväg är detta?"</string>
     <string name="quest_streetLanes_title">"Hur många körfält har denna väg?"</string>
 
@@ -243,8 +238,6 @@ Den information du anger skickas sedan direkt till OpenStreetMap i ditt namn, ut
     <string name="quest_manySports_confirmation_specific">"Dessa specifikt"</string>
     <string name="quest_manySports_confirmation_generic">"Allmän"</string>
     <string name="quest_sport_manySports_confirmation_title">"Du valde många sporter"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_busStopShelter_name_title">"Har hållplatsen %s en busskur?"</string>
     <string name="quest_toiletsFee_title">"Kostar det något att använda toaletten?"</string>
     <string name="quest_tactilePaving_title_bus">"Har busshållplatsen taktil beläggning?"</string>
@@ -261,7 +254,6 @@ Den information du anger skickas sedan direkt till OpenStreetMap i ditt namn, ut
 
     <!-- Fuzzy -->
     <string name="quest_streetSurface_name_title">"Vad har %s för underlag här?"</string>
-    <string name="quest_maxspeed_title_short">"Vad står det på hastighetskylten?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Hastighetsbegränsningen verkar osannolik."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Är du säker att det inte finns någon skylt?"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">"Kontrollerade du i början och slutet av vägen? Om det inte finns några skyltar längs hela vägen som gäller för den markerade sektionen kommer rekommenderad hastighet att läggas till."</string>
@@ -554,7 +546,6 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_construction_building_title">"Är den här byggnaden färdigställd?"</string>
     <string name="questList_disabled_in_country">"Visas aldrig i %s"</string>
     <string name="quest_toiletAvailability_rest_area_title">"Har den här rastplatsen en toalett?"</string>
-    <string name="quest_maxspeed_name_title">"Vad står det på hastighetsskylten längs %s?"</string>
     <string name="quest_pathSurface_title_steps">"Vilket underlag har den här trappan här?"</string>
     <string name="quest_pathSurface_title_bridleway">"Vilket underlag har den här ridvägen här?"</string>
     <string name="quest_pathSurface_title">"Vilket underlag har den här vägen här?"</string>
@@ -572,15 +563,15 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_buildingType_residential">"Bostad"</string>
     <string name="quest_buildingType_residential_description">"byggnad där människor bor"</string>
     <string name="quest_buildingType_house">"Hus"</string>
-    <string name="quest_buildingType_house_description">"enfamiljshus"</string>
+    <string name="quest_buildingType_house_description">"enfamiljshus, även enskilt radhus"</string>
     <string name="quest_buildingType_apartments_description">"lägenheter, kan ha affärer på bottenvåningen"</string>
     <string name="quest_buildingType_apartments">"Flerfamiljshus"</string>
     <string name="quest_buildingType_detached">"Villa"</string>
     <string name="quest_buildingType_detached_description">"fristående enfamiljshus"</string>
     <string name="quest_buildingType_semi_detached">"Parhus"</string>
     <string name="quest_buildingType_semi_detached_description">"ett hus delat i två, för två familjer"</string>
-    <string name="quest_buildingType_terrace">"Radhus/kedjehus"</string>
-    <string name="quest_buildingType_terrace_description">"en rad av liknande hus tätt inpå varandra"</string>
+    <string name="quest_buildingType_terrace">"Radhuslänga"</string>
+    <string name="quest_buildingType_terrace_description">"flera bredvid varandra liggande enfamiljshus"</string>
     <string name="quest_buildingType_hotel">"Hotellbyggnad"</string>
     <string name="quest_buildingType_dormitory">"Studenthem/internat"</string>
     <string name="quest_buildingType_houseboat">"Husbåt"</string>
@@ -644,4 +635,26 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_address_answer_no_housenumber_message2">"Är det korrekt och det är inte enbart en del av en byggnad?"</string>
     <string name="quest_buildingType_shrine">"Helgedom"</string>
     <string name="quest_noteDiscussion_hide">"%1$s gömde anteckningen (%2$s)"</string>
+    <string name="quest_maxspeed_title_short2">"Vad har den här gatan för hastighetsbegränsning?"</string>
+    <string name="quest_maxspeed_answer_sign">"En skylt"</string>
+    <string name="quest_maxspeed_answer_zone2">"Det är inom ett (gångfarts)område."</string>
+    <string name="quest_maxspeed_answer_noSign2">"Ingen skylt, bashastighet gäller"</string>
+    <string name="quest_openingHours_no_sign">"Ingen öppet tider-skylt"</string>
+    <string name="quest_maxspeed_name_title2">"Vilken är hastighetsbegränsningen för %s här?"</string>
+    <string name="quest_buildingType_sports_centre">"Idrottsanläggning"</string>
+    <string name="quest_buildingType_toilets">"Toalett"</string>
+    <string name="quest_maxspeed_sign_question">"Vad bestämmer maxhastigheten?"</string>
+    <string name="notification_channel_download">"Ladda ner"</string>
+    <string name="quest_playground_access_title">"Är den här lekplatsen tillgänglig för allmänheten?"</string>
+    <string name="quest_segregated_title">"Hur är gångbanan och cykelvägen utformade här?"</string>
+    <string name="dialog_tutorial_upload">"För att ladda upp ändringarna manuellt, klicka på knappen som ser ut så här"</string>
+    <string name="quest_segregated_separated">"Separerade från varandra"</string>
+    <string name="quest_segregated_mixed">"Cyklister och gångtrafikanter delar bana"</string>
+    <string name="quest_maxheight_title">"Vad är höjdgränsen här?"</string>
+    <string name="quest_maxheight_parking_entrance_title">"Vad är höjdbegränsningen vid entrén till garaget?"</string>
+    <string name="quest_maxheight_height_restrictor_title">"Vilken är höjdbegränsningen?"</string>
+    <string name="quest_maxheight_tunnel_title">"Vad är höjdgränsen för denna tunnel?"</string>
+    <string name="quest_maxheight_answer_noSign">"Det finns ingen skylt"</string>
+    <string name="quest_maxheight_answer_noSign_question">"Är det tillräckligt med utrymme för att även de högsta lastbilarna (minst 4.5 meter) enkelt ska ta sig under?"</string>
+    <string name="quest_maxheight_unusualInput_confirmation_description">"Angiven höjd verkar osannolik. Är du säker på att den är korrekt?"</string>
 </resources>

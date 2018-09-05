@@ -11,6 +11,8 @@ import de.westnordost.streetcomplete.data.meta.MetadataModule;
 import de.westnordost.streetcomplete.oauth.OAuthModule;
 import de.westnordost.streetcomplete.oauth.OsmOAuthDialogFragment;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
+import de.westnordost.streetcomplete.quests.GroupedImageListQuestAnswerFragment;
+import de.westnordost.streetcomplete.quests.ImageListQuestAnswerFragment;
 import de.westnordost.streetcomplete.quests.QuestModule;
 import de.westnordost.streetcomplete.quests.localized_name.AddLocalizedNameForm;
 import de.westnordost.streetcomplete.quests.oneway.AddOnewayForm;
@@ -62,5 +64,8 @@ public interface ApplicationComponent
 	void inject(MapControlsFragment mapControlsFragment);
 
 	void inject(QuestSelectionFragment questSelectionFragment);
+
+	void inject(GroupedImageListQuestAnswerFragment fragment);
+	void inject(ImageListQuestAnswerFragment fragment);
 
 }

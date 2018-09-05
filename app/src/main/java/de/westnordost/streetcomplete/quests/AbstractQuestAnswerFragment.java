@@ -51,7 +51,7 @@ public abstract class AbstractQuestAnswerFragment extends AbstractBottomSheetFra
 
 	private ViewGroup content;
 
-	private QuestAnswerComponent questAnswerComponent;
+	private final QuestAnswerComponent questAnswerComponent;
 
 	private LinearLayout buttonPanel;
 	protected Button buttonOtherAnswers;
@@ -147,6 +147,8 @@ public abstract class AbstractQuestAnswerFragment extends AbstractBottomSheetFra
 		questAnswerComponent.onAttach((OsmQuestAnswerListener) ctx);
 	}
 
+	/** Note: Due to Android architecture limitations, a layout inflater based on this ContextWrapper
+	 *  will not resolve any resources specified in the XML according to MCC */
 	@NonNull @Override
 	public LayoutInflater onGetLayoutInflater(@Nullable Bundle savedInstanceState)
 	{
@@ -213,7 +215,7 @@ public abstract class AbstractQuestAnswerFragment extends AbstractBottomSheetFra
 		{
 			content.removeAllViews();
 		}
-		return LayoutInflater.from(getContext()).inflate(resourceId, content);
+		return getLayoutInflater().inflate(resourceId, content);
 	}
 
 	protected final void setNoContentPadding()

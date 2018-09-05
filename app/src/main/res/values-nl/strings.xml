@@ -176,7 +176,6 @@ Om de kaart te tonen worden vector tegels van de &lt;a href=\"https://mapzen.com
     <string name="quest_sidewalk_onlyWest">"Alleen aan de westzijde"</string>
     <string name="quest_sidewalk_onlyEast">"Alleen aan de oostzijde"</string>
     <string name="quest_sidewalk_yes">"Ja"</string>
-    <string name="quest_maxspeed_answer_noSign">"Er is geen bord"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Waar is deze straat?"</string>
     <string name="quest_cyclewaySurface_title">"Welke wegbeddeking heeft dit fietspad"</string>
     <string name="quest_serviceType_title">"Wat voor dienstweg is dit?"</string>
@@ -269,7 +268,6 @@ De informatie die je ingeeft wordt meteen toegevoegd aan OpenStreetMap in jouw n
 
     <!-- Fuzzy -->
     <string name="quest_streetSurface_name_title">"Welk wegdek heeft de weg %s hier?"</string>
-    <string name="quest_maxspeed_title_short">"Wat is de maximum snelheid volgens het bord in deze straat?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Deze maximum snelheid lijkt onwaarschijnlijk."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Weet je zeker dat er geen limiet is aangegeven?"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">"Heb je dit nagegaan op het einde van de straat? Als er geen verkeersborden staan die van toepassing zijn op het geselecteerde stuk, dan worden de standaardsnelheidslimieten toegepast."</string>
@@ -543,7 +541,7 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
     <string name="quest_parking_access_customers">"Enkel klanten mogen parkeren"</string>
     <string name="quest_streetName_pedestrian_title">"Wat is de naam van dit voetpad?"</string>
     <string name="quest_streetSurface_square_title">"Welke ondergrond heeft dit plein?"</string>
-    <string name="quest_streetSurface_square_name_title">"Welke ondergrond heeft het plein % hier?"</string>
+    <string name="quest_streetSurface_square_name_title">"Welke ondergrond heeft het plein %s hier?"</string>
     <string name="quest_fee_answer_hours">"Afhankelijk van dag en tijdstip"</string>
     <string name="quest_fee_add_times">"Voeg de tijden toe"</string>
     <string name="quest_fee_only_at_hours">"Ja, maar alleen...."</string>
@@ -571,7 +569,6 @@ Bijvoorbeeld 1m3 of 2-6."</string>
     <string name="quest_construction_building_title">"Is dit gebouw voltooid?"</string>
     <string name="questList_disabled_in_country">"Nooit getoond in %s"</string>
     <string name="quest_toiletAvailability_rest_area_title">"Heeft dit picknickgebied een toilet?"</string>
-    <string name="quest_maxspeed_name_title">"Wat is de snelheidslimiet voor %s?"</string>
     <string name="quest_pathSurface_title_steps">"Waaruit zijn deze trappen gemaakt?"</string>
     <string name="quest_pathSurface_title_bridleway">"Welke bedekking heeft dit paardensppor?"</string>
     <string name="quest_pathSurface_title">"Welke bedekking heeft dit pad?"</string>
@@ -658,4 +655,29 @@ Bijvoorbeeld 1m3 of 2-6."</string>
     <string name="quest_address_answer_no_housenumber_message1">"Het gebouw was aangeduid als:"</string>
     <string name="quest_address_answer_no_housenumber_message2">"Klopt dit en is het geen deel van een gebouw?"</string>
     <string name="quest_buildingType_shrine">"Altaar"</string>
+    <string name="quest_noteDiscussion_hide">"%1$s verberg notitie (%2$s)"</string>
+    <string name="quest_maxspeed_title_short2">"Wat is de maximum snelheid in deze straat. "</string>
+    <string name="quest_maxspeed_answer_sign">"Een bord"</string>
+    <string name="quest_maxspeed_answer_zone2">"In deze zone is de snelheid beperkt?"</string>
+    <string name="quest_maxspeed_answer_noSign2">"Geen bord, pas de standaard verkeersregels toe.
+"</string>
+    <string name="quest_openingHours_no_sign">"Geen openingstijden zichtbaar. "</string>
+    <string name="quest_maxspeed_name_title2">"Wat is de maximum snelheid voor deze %s?"</string>
+    <string name="quest_buildingType_sports_centre">"Sportcentrum"</string>
+    <string name="quest_buildingType_toilets">"Toiletten"</string>
+    <string name="quest_maxspeed_sign_question">"Wat bepaald de maximum snelheid?"</string>
+    <string name="notification_channel_download">"Download"</string>
+    <string name="quest_playground_access_title">"Is deze speeltuin vrij toegankelijk?"</string>
+    <string name="quest_segregated_title">"Hoe zijn het voetpad en het fietspad aangelegd?
+"</string>
+    <string name="dialog_tutorial_upload">"Gebruik de knop in de werkbalk die op lijkt om je wijzigingen te uploaden."</string>
+    <string name="quest_segregated_separated">"Gescheiden van elkaar."</string>
+    <string name="quest_segregated_mixed">"Fietsers en voetgangers delen dezelfde ruimte. "</string>
+    <string name="quest_maxheight_title">"Wat is hier de maximum hoogte?"</string>
+    <string name="quest_maxheight_parking_entrance_title">"Wat is de maximum hoogte van deze parkeer ingang?"</string>
+    <string name="quest_maxheight_height_restrictor_title">"Wat is de maximum hoogte van deze hoogtebeperking?"</string>
+    <string name="quest_maxheight_tunnel_title">"Wat is de maximum hoogte van deze tunnel?"</string>
+    <string name="quest_maxheight_answer_noSign">"Daar is geen bord"</string>
+    <string name="quest_maxheight_answer_noSign_question">"Is er genoeg ruimte om zelfs de grootste vrachtwagens (ongeveer 4,5 meter /15 feet) doorgang te geven?"</string>
+    <string name="quest_maxheight_unusualInput_confirmation_description">"Deze hoogte lijkt onaannemelijk. Weet je zeker dat dit correct is?"</string>
 </resources>

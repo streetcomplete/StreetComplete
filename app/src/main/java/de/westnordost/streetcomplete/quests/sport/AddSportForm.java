@@ -61,13 +61,11 @@ public class AddSportForm extends ImageListQuestAnswerFragment
 			new Item("sepak_takraw",	R.drawable.ic_sport_sepak_takraw,	R.string.quest_sport_sepak_takraw),
 			};
 
-	private Item[] actualSportsValues;
-
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
 									   Bundle savedInstanceState)
 	{
 		View view = super.onCreateView(inflater, container, savedInstanceState);
-		actualSportsValues = createItems();
+
 		imageSelector.setCellLayout(R.layout.cell_icon_select_with_label_below);
 
 		addOtherAnswer(R.string.quest_sport_answer_multi, this::applyMultiAnswer);
@@ -116,7 +114,7 @@ public class AddSportForm extends ImageListQuestAnswerFragment
 
 	@Override protected Item[] getItems()
 	{
-		return actualSportsValues;
+		return createItems();
 	}
 
 	private void applyMultiAnswer()

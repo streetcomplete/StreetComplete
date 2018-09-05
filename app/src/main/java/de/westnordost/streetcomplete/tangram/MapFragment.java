@@ -13,13 +13,11 @@ import android.support.annotation.AnyThread;
 import android.support.annotation.CallSuper;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v13.app.FragmentCompat;
 import android.support.v4.app.Fragment;
 import android.support.v7.preference.PreferenceManager;
 import android.text.Html;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
-import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,11 +49,9 @@ import de.westnordost.streetcomplete.util.SphericalEarthMath;
 import static android.content.Context.SENSOR_SERVICE;
 
 public class MapFragment extends Fragment implements
-		FragmentCompat.OnRequestPermissionsResultCallback, LocationListener,
-		LostApiClient.ConnectionCallbacks, TouchInput.ScaleResponder,
-		TouchInput.ShoveResponder, TouchInput.RotateResponder,
-		TouchInput.PanResponder, TouchInput.DoubleTapResponder,
-		CompassComponent.Listener, MapController.SceneLoadListener
+	LocationListener, LostApiClient.ConnectionCallbacks, TouchInput.ScaleResponder,
+	TouchInput.ShoveResponder, TouchInput.RotateResponder, TouchInput.PanResponder,
+	TouchInput.DoubleTapResponder, CompassComponent.Listener, MapController.SceneLoadListener
 {
 	private CompassComponent compass = new CompassComponent();
 
@@ -290,11 +286,6 @@ public class MapFragment extends Fragment implements
 	public void setIsFollowingPosition(boolean value)
 	{
 		isFollowingPosition = value;
-		if(!isFollowingPosition) {
-			zoomedYet = false;
-			isShowingDirection = false;
-			isCompassMode = false;
-		}
 		followPosition();
 	}
 
@@ -491,7 +482,6 @@ public class MapFragment extends Fragment implements
 
 	public void setCompassMode(boolean isCompassMode)
 	{
-		if(!isFollowingPosition) return;
 		this.isCompassMode = isCompassMode;
 		if(isCompassMode)
 		{

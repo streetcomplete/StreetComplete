@@ -12,7 +12,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 
+import javax.inject.Inject;
+
+import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.view.GroupedImageSelectAdapter;
 import de.westnordost.streetcomplete.view.Item;
@@ -31,6 +37,19 @@ public abstract class GroupedImageListQuestAnswerFragment extends AbstractQuestF
 	private Button showMoreButton;
 	private RecyclerView valueList;
 
+	private List<Item> allItems;
+	private List<Item> topItems;
+
+	@Inject LastPickedValuesStore favs;
+
+	@Override public void onCreate(Bundle inState)
+	{
+		super.onCreate(inState);
+		Injector.instance.getApplicationComponent().inject(this);
+		allItems = Collections.unmodifiableList(Arrays.asList(getAllItems()));
+		topItems = Collections.unmodifiableList(Arrays.asList(getTopItems()));
+	}
+
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
 									   Bundle savedInstanceState)
 	{
@@ -46,7 +65,7 @@ public abstract class GroupedImageListQuestAnswerFragment extends AbstractQuestF
 		showMoreButton = contentView.findViewById(R.id.buttonShowMore);
 		showMoreButton.setOnClickListener(v ->
 		{
-			imageSelector.setItems(Arrays.asList(getAllItems()));
+			imageSelector.setItems(allItems);
 			showMoreButton.setVisibility(View.GONE);
 		});
 
@@ -61,7 +80,7 @@ public abstract class GroupedImageListQuestAnswerFragment extends AbstractQuestF
 	@Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState)
 	{
 		super.onViewCreated(view, savedInstanceState);
-		imageSelector.setItems(Arrays.asList(getTopItems()));
+		imageSelector.setItems(getInitialItems());
 		valueList.setAdapter(imageSelector);
 	}
 
@@ -89,14 +108,20 @@ public abstract class GroupedImageListQuestAnswerFragment extends AbstractQuestF
 					.setMessage(R.string.quest_generic_item_confirmation)
 					.setNegativeButton(R.string.quest_generic_confirmation_no, null)
 					.setPositiveButton(R.string.quest_generic_confirmation_yes,
-						(dialog, which) -> applyAnswer(item.value))
+						(dialog, which) -> applyAnswerAndSave(item.value))
 					.show();
 			}
 		}
 		else
 		{
-			applyAnswer(item.value);
+			applyAnswerAndSave(item.value);
 		}
+	}
+
+	private void applyAnswerAndSave(String value)
+	{
+		favs.addLastPicked(getClass().getSimpleName(), value);
+		applyAnswer(value);
 	}
 
 	protected void applyAnswer(String value)
@@ -114,4 +139,11 @@ public abstract class GroupedImageListQuestAnswerFragment extends AbstractQuestF
 
 	protected abstract Item[] getTopItems();
 	protected abstract Item[] getAllItems();
+
+	private List<Item> getInitialItems()
+	{
+		LinkedList<Item> items = new LinkedList<>(topItems);
+		favs.moveLastPickedToFront(getClass().getSimpleName(), items, allItems);
+		return items;
+	}
 }

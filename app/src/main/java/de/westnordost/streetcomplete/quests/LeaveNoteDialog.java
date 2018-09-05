@@ -50,7 +50,8 @@ public class LeaveNoteDialog extends DialogFragment
 		super.onViewCreated(view, savedInstanceState);
 		if(savedInstanceState == null)
 		{
-			getChildFragmentManager().beginTransaction().add(R.id.attachPhotoFragment, new AttachPhotoFragment()).commit();
+			// TODO reenable when photos can be uploaded again somewhere #1161
+			//getChildFragmentManager().beginTransaction().add(R.id.attachPhotoFragment, new AttachPhotoFragment()).commit();
 		}
 	}
 

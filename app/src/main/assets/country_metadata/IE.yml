@@ -3,5 +3,5 @@ isAdvisorySpeedLimitKnown: false
 isLeftHandTraffic: true
 mobileCountryCode: 272
 officialLanguages: [en, ga]
-orchardProduces: [apple, strawberry, hop, tomatoe, raspberry]
+orchardProduces: [apple, strawberry, hop, tomato, raspberry]
 popularSports: [gaelic_games, rugby]

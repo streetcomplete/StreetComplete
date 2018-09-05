@@ -11,6 +11,7 @@ import de.westnordost.osmapi.map.data.OsmLatLon;
 import de.westnordost.osmapi.notes.Note;
 import de.westnordost.osmapi.notes.NotesDao;
 import de.westnordost.streetcomplete.data.QuestStatus;
+import de.westnordost.streetcomplete.data.statistics.QuestStatisticsDao;
 import de.westnordost.streetcomplete.util.ImageUploader;
 
 import static org.mockito.Mockito.*;
@@ -20,6 +21,7 @@ public class OsmNoteQuestChangesUploadTest extends TestCase
 	private ImageUploader imageUploader;
 	private NoteDao noteDb;
 	private OsmNoteQuestDao questDb;
+	private QuestStatisticsDao questStatisticsDb;
 	private NotesDao osmDao;
 
 	private OsmNoteQuestChangesUpload osmNoteQuestChangesUpload;
@@ -31,8 +33,9 @@ public class OsmNoteQuestChangesUploadTest extends TestCase
 		noteDb = mock(NoteDao.class);
 		imageUploader = mock(ImageUploader.class);
 		questDb = mock(OsmNoteQuestDao.class);
+		questStatisticsDb = mock(QuestStatisticsDao.class);
 
-		osmNoteQuestChangesUpload = new OsmNoteQuestChangesUpload(osmDao, questDb, noteDb, imageUploader);
+		osmNoteQuestChangesUpload = new OsmNoteQuestChangesUpload(osmDao, questDb, questStatisticsDb, noteDb, imageUploader);
 	}
 
 	public void testCancel() throws InterruptedException
@@ -81,6 +84,7 @@ public class OsmNoteQuestChangesUploadTest extends TestCase
 		assertEquals(QuestStatus.CLOSED, quest.getStatus());
 		verify(questDb).update(quest);
 		verify(noteDb).put(n);
+		verify(questStatisticsDb).addOneNote();
 	}
 
 	public void testUploadsImagesForComment()

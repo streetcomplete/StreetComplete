@@ -4,8 +4,6 @@ package de.westnordost.streetcomplete.data;
 import java.util.Collection;
 import java.util.Collections;
 
-import de.westnordost.osmapi.map.data.Element;
-
 /** Threadsafe relay for VisibleQuestListener
  *  (setting the listener and calling the listener methods can safely be done from different threads) */
 public class VisibleQuestRelay implements VisibleQuestListener

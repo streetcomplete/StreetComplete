@@ -38,7 +38,7 @@ public class MarkCompletedHighwayConstruction extends MarkCompletedConstruction
 		String groupName = ".roads_for_review";
 		return OverpassQLUtil.getGlobalOverpassBBox(bbox) +
 			"way" + getQueryPart("highway", groupName, 14) +
-			groupName + " out meta geom;";
+			groupName + " " + OverpassQLUtil.getQuestPrintStatement();
 	}
 
 	public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)

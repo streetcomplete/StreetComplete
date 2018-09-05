@@ -6,22 +6,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.CheckBox;
 
-import com.vividsolutions.jts.geom.Coordinate;
-import com.vividsolutions.jts.geom.Geometry;
-import com.vividsolutions.jts.geom.GeometryFactory;
-import com.vividsolutions.jts.operation.distance.DistanceOp;
-
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collections;
 
 import javax.inject.Inject;
 
+import de.westnordost.osmapi.map.data.LatLon;
+import de.westnordost.osmapi.map.data.OsmLatLon;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.QuestGroup;
 import de.westnordost.streetcomplete.data.osm.ElementGeometry;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestDao;
-import de.westnordost.streetcomplete.util.JTSConst;
+import de.westnordost.streetcomplete.util.FlattenIterable;
 import de.westnordost.streetcomplete.util.SphericalEarthMath;
 import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 
@@ -43,7 +39,7 @@ public class FindQuestSourceComponent
 	*    between the user's position when he opened the quest form and the position when he pressed
 	*    "ok", MINUS the current GPS accuracy, so it is a pretty forgiving calculation already
 	* */
-	private static final float MAX_DISTANCE_TO_ELEMENT_FOR_SURVEY = 50; //m
+	private static final float MAX_DISTANCE_TO_ELEMENT_FOR_SURVEY = 80; //m
 
 	private static final String
 			SURVEY = "survey",
@@ -54,8 +50,6 @@ public class FindQuestSourceComponent
 	private Activity activity;
 	private final OsmQuestDao osmQuestDB;
 	private final OsmNoteQuestDao osmNoteQuestDao;
-
-	private final GeometryFactory geometryFactory = new GeometryFactory();
 
 	public interface Listener
 	{
@@ -73,11 +67,10 @@ public class FindQuestSourceComponent
 		this.activity = context;
 	}
 
-	public void findSource(final long questId, final QuestGroup group, final Location[] locations,
+	public void findSource(final long questId, final QuestGroup group, final Location location,
 						   final Listener listener)
 	{
-		Double distance = getDistanceToElementInMeters(questId, group, locations);
-		if(dontShowAgain || distance != null && distance < MAX_DISTANCE_TO_ELEMENT_FOR_SURVEY)
+		if(dontShowAgain || isWithinSurveyDistance(questId, group, location))
 		{
 			listener.onFindQuestSourceResult(SURVEY);
 		}
@@ -105,84 +98,24 @@ public class FindQuestSourceComponent
 		}
 	}
 
-	private Double getDistanceToElementInMeters(long questId, QuestGroup group, Location[] locations)
+	private boolean isWithinSurveyDistance(long questId, QuestGroup group, Location location)
 	{
-		try
+		ElementGeometry geometry = getQuestGeometry(questId, group);
+		if(geometry == null) return false;
+
+		LatLon loc = new OsmLatLon(location.getLatitude(), location.getLongitude());
+
+		FlattenIterable<LatLon> itb = new FlattenIterable<>(LatLon.class);
+		if(geometry.polygons != null) itb.add(geometry.polygons);
+		else if(geometry.polylines != null) itb.add(geometry.polylines);
+		else itb.add(Collections.singleton(geometry.center));
+		for (LatLon pos : itb)
 		{
-			List<Location> locationsList = asListWithoutNullsAndDuplicates(locations);
-			Geometry locationGeometry = createLocationsGeometry(locationsList);
-			if(locationGeometry == null) return null;
-			double accuracy = getMeanAccuracy(locationsList);
-
-			Geometry questGeometry = JTSConst.toGeometry(getQuestGeometry(questId, group));
-			return Math.max(0, getDistanceInMeters(locationGeometry, questGeometry) - accuracy);
+			double distance = SphericalEarthMath.distance(loc, pos);
+			if(distance < location.getAccuracy() + MAX_DISTANCE_TO_ELEMENT_FOR_SURVEY) return true;
 		}
-		catch (RuntimeException e)
-		{
-			// if JTS throws any exception, it should not tear down the application. Instead, assume
-			// that the distance can simply not determined (-> null)
-			return null;
-		}
-	}
 
-	private double getMeanAccuracy(List<Location> locations)
-	{
-		double accuracySum = 0;
-
-		for(Location location : locations)
-		{
-			accuracySum += location.getAccuracy();
-		}
-		return locations.isEmpty() ? 0 : accuracySum / locations.size();
-	}
-
-	private Geometry createLocationsGeometry(List<Location> locations)
-	{
-		if(locations == null || locations.isEmpty()) return null;
-		if(locations.size() == 1)
-		{
-			Location location = locations.get(0);
-			return geometryFactory.createPoint(createCoordinate(location));
-		}
-		Coordinate[] coordinates = new Coordinate[locations.size()];
-		for(int i=0; i<locations.size(); ++i)
-		{
-			Location location = locations.get(i);
-			coordinates[i] = createCoordinate(location);
-		}
-		return geometryFactory.createLineString(coordinates);
-	}
-
-	private static Coordinate createCoordinate(Location location)
-	{
-		return new Coordinate(location.getLongitude(), location.getLatitude());
-	}
-
-	private static List<Location> asListWithoutNullsAndDuplicates(Location[] locations)
-	{
-		List<Location> result = new ArrayList<>(locations.length);
-		Location previous = null;
-		for (Location current : locations)
-		{
-			if (current == null) continue;
-			if (previous != null)
-			{
-				if (previous.getLatitude() == current.getLatitude() &&
-						previous.getLongitude() == current.getLongitude()) continue;
-			}
-
-			result.add(current);
-
-			previous = current;
-		}
-		return result;
-	}
-
-	private static double getDistanceInMeters(Geometry one, Geometry two)
-	{
-		Coordinate[] nearest = DistanceOp.nearestPoints(one, two);
-		return SphericalEarthMath.distance(
-				JTSConst.toLatLon(nearest[0]), JTSConst.toLatLon(nearest[1]));
+		return false;
 	}
 
 	private ElementGeometry getQuestGeometry(long questId, QuestGroup group)

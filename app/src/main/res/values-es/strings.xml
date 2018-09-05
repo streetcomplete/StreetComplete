@@ -172,7 +172,6 @@ Para que puedas ver las últimas secciones del mapa utilizamos el &lt;a href=\"h
     <string name="quest_sidewalk_onlyWest">"Sólo en el lado oeste"</string>
     <string name="quest_sidewalk_onlyEast">"Solo en el lado este"</string>
     <string name="quest_sidewalk_yes">"Sí"</string>
-    <string name="quest_maxspeed_answer_noSign">"No hay señal"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"¿Dónde está la calle?"</string>
     <string name="quest_cyclewaySurface_title">"¿Qué tipo de superficie tiene el carril bici?"</string>
     <string name="quest_serviceType_title">"¿Qué tipo de vía de servicio es?"</string>
@@ -257,7 +256,6 @@ La información añadida se incluye directamente en OpenStreetMap con tu nombre 
 
     <!-- Fuzzy -->
     <string name="quest_streetSurface_name_title">"¿Qué tipo de superficie tiene la vía %s?"</string>
-    <string name="quest_maxspeed_title_short">"¿Qué pone en las señales de limitación de velocidad de esta calle?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"El límite de velocidad no parece muy verídico."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"¿Seguro que no tiene límite de velocidad?"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">"¿Has mirado a ambos lados de la calle?
@@ -557,7 +555,6 @@ Por ejemplo 1,3 o 2-6."</string>
     <string name="quest_construction_building_title">"¿El edificio está terminado?"</string>
     <string name="questList_disabled_in_country">"Nunca se muestra en %s"</string>
     <string name="quest_toiletAvailability_rest_area_title">"¿Esta área de descanso tiene lavabo?"</string>
-    <string name="quest_maxspeed_name_title">"¿Cuál es la señal del límite de velocidad para %s?"</string>
     <string name="quest_pathSurface_title_steps">"¿Que tipo de material tienen estas escaleras?"</string>
     <string name="quest_pathSurface_title_bridleway">"¿Que tipo de material tiene este camino?"</string>
     <string name="quest_pathSurface_title">"¿Que tipo de material tiene este camino?"</string>
@@ -631,7 +628,7 @@ Por ejemplo 1,3 o 2-6."</string>
     <string name="quest_buildingType_farm_auxiliary_description">"edificio auxiliar de una granja que no es una vivienda"</string>
     <string name="quest_buildingType_greenhouse">"Invernadero"</string>
     <string name="quest_buildingType_other">"Otro"</string>
-    <string name="quest_buildingType_shed">"Covertizo"</string>
+    <string name="quest_buildingType_shed">"Cobertizo"</string>
     <string name="quest_buildingType_hut">"Choza"</string>
     <string name="quest_buildingType_hut_description">"chozo o choza, refugio pequeño y tosco"</string>
     <string name="quest_buildingType_roof">"Tejado"</string>
@@ -644,4 +641,27 @@ Por ejemplo 1,3 o 2-6."</string>
     <string name="quest_address_answer_no_housenumber_message1">"El edificio fue etiquetado como:"</string>
     <string name="quest_address_answer_no_housenumber_message2">"¿Seguro que esta etiqueta define al edificio entero?"</string>
     <string name="quest_buildingType_shrine">"Santuario"</string>
+    <string name="quest_noteDiscussion_hide">"%1$s nota oculta (%2$s)"</string>
+    <string name="quest_maxspeed_title_short2">"¿Cuál es el límite de velocidad de esta calle?"</string>
+    <string name="quest_maxspeed_answer_sign">"Una señal"</string>
+    <string name="quest_maxspeed_answer_zone2">"Es dentro de una zona (30)"</string>
+    <string name="quest_maxspeed_answer_noSign2">"Sin señal, se aplica predeterminado"</string>
+    <string name="quest_openingHours_no_sign">"No hay letrero con las horas de apertura"</string>
+    <string name="quest_maxspeed_name_title2">"¿Cuál es el límite de velocidad para %s aquí?"</string>
+    <string name="quest_buildingType_sports_centre">"Centro deportivo"</string>
+    <string name="quest_buildingType_toilets">"Baños"</string>
+    <string name="quest_maxspeed_sign_question">"¿Qué define el límite de velocidad?"</string>
+    <string name="notification_channel_download">"Descargar"</string>
+    <string name="quest_playground_access_title">"¿Esta zona de recreo es accesible al público?"</string>
+    <string name="quest_segregated_title">"¿Como están dispuestos la vereda y el carril de bici aquí?"</string>
+    <string name="dialog_tutorial_upload">"Para subir los cambios manualmente, usa el botón en la barra de herramientas similar a este."</string>
+    <string name="quest_segregated_separated">"Segregado uno del otro"</string>
+    <string name="quest_segregated_mixed">"Ciclistas y peatones comparten el mismo espacio"</string>
+    <string name="quest_maxheight_title">"¿Cuál es el límite de altura aquí?"</string>
+    <string name="quest_maxheight_parking_entrance_title">"¿Cuál es el límite de altura para esta entrada de aparcamiento?"</string>
+    <string name="quest_maxheight_height_restrictor_title">"¿Cuál es el límite de altura para esta restricción de altura?"</string>
+    <string name="quest_maxheight_tunnel_title">"¿Cuál es el límite de altura de este túnel?"</string>
+    <string name="quest_maxheight_answer_noSign">"No hay señal"</string>
+    <string name="quest_maxheight_answer_noSign_question">"¿Hay espacio suficiente para que pasen los camiones más altos (por lo menos unos 4,5 metros / 15 pies)?"</string>
+    <string name="quest_maxheight_unusualInput_confirmation_description">"Esta altura parece imposible. ¿Estás seguro de que es correcta?"</string>
 </resources>

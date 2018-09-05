@@ -11,6 +11,8 @@ import de.westnordost.osmapi.common.errors.OsmConflictException;
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.notes.Note;
 import de.westnordost.osmapi.notes.NotesDao;
+import de.westnordost.streetcomplete.data.statistics.QuestStatisticsDao;
+import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener;
 import de.westnordost.streetcomplete.util.ImageUploader;
 
 public class OsmNoteQuestChangesUpload
@@ -19,19 +21,28 @@ public class OsmNoteQuestChangesUpload
 
 	private final NotesDao osmDao;
 	private final OsmNoteQuestDao questDB;
+	private final QuestStatisticsDao statisticsDB;
 	private final NoteDao noteDB;
 	private final ImageUploader imageUploader;
+	private OnUploadedChangeListener uploadedChangeListener;
 
 	@Inject public OsmNoteQuestChangesUpload(
-			NotesDao osmDao, OsmNoteQuestDao questDB, NoteDao noteDB, ImageUploader imageUploader)
+			NotesDao osmDao, OsmNoteQuestDao questDB, QuestStatisticsDao statisticsDB,
+			NoteDao noteDB, ImageUploader imageUploader)
 	{
 		this.osmDao = osmDao;
 		this.questDB = questDB;
+		this.statisticsDB = statisticsDB;
 		this.noteDB = noteDB;
 		this.imageUploader = imageUploader;
 	}
 
-	public void upload(AtomicBoolean cancelState)
+	public synchronized void setProgressListener(OnUploadedChangeListener uploadedChangeListener)
+	{
+		this.uploadedChangeListener = uploadedChangeListener;
+	}
+
+	public synchronized void upload(AtomicBoolean cancelState)
 	{
 		int created = 0, obsolete = 0;
 		for(OsmNoteQuest quest : questDB.getAll(null, QuestStatus.ANSWERED))
@@ -40,10 +51,12 @@ public class OsmNoteQuestChangesUpload
 
 			if(uploadNoteChanges(quest) != null)
 			{
+				uploadedChangeListener.onUploaded();
 				created++;
 			}
 			else
 			{
+				uploadedChangeListener.onDiscarded();
 				obsolete++;
 			}
 		}
@@ -75,6 +88,7 @@ public class OsmNoteQuestChangesUpload
 			quest.setNote(newNote);
 			questDB.update(quest);
 			noteDB.put(newNote);
+			statisticsDB.addOneNote();
 			AttachPhotoUtils.deleteImages(quest.getImagePaths());
 
 			return newNote;

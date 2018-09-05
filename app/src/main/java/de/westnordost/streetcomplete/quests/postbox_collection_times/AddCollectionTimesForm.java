@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.quests.postbox_collection_times;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;

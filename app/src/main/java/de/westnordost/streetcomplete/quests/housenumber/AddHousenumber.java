@@ -4,8 +4,10 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -13,6 +15,7 @@ import javax.inject.Inject;
 
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
+import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.osm.AOsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.Countries;
@@ -22,11 +25,9 @@ import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandle
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
 import de.westnordost.streetcomplete.data.osm.tql.OverpassQLUtil;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
-import de.westnordost.streetcomplete.util.JTSConst;
-
-import com.vividsolutions.jts.geom.Envelope;
-import com.vividsolutions.jts.geom.Geometry;
-import com.vividsolutions.jts.geom.Point;
+import de.westnordost.streetcomplete.util.FlattenIterable;
+import de.westnordost.streetcomplete.util.LatLonRaster;
+import de.westnordost.streetcomplete.util.SphericalEarthMath;
 
 public class AddHousenumber extends AOsmElementQuestType
 {
@@ -46,7 +47,7 @@ public class AddHousenumber extends AOsmElementQuestType
 	{
 		return OverpassQLUtil.getGlobalOverpassBBox(bbox) +
 			"(way[!building]"+ANY_ADDRESS_FILTER+";rel[!building]"+ANY_ADDRESS_FILTER+";);" +
-			"out meta geom;";
+			"out geom;";
 	}
 
 	/** Query that returns all buildings that neither have an address node on their outline, nor
@@ -63,6 +64,7 @@ public class AddHousenumber extends AOsmElementQuestType
 			"node.building_nodes"+ANY_ADDRESS_FILTER+";< -> .buildings_with_addr_nodes;" +
 			// all buildings without housenumber minus ways that contain building nodes with addresses
 			"(.buildings; - .buildings_with_addr_nodes;);" +
+			// not using OverpassQLUtil.getQuestPrintStatement here because buildings will get filtered out further here
 			"out meta geom;";
 	}
 
@@ -74,7 +76,7 @@ public class AddHousenumber extends AOsmElementQuestType
 			"  node"+ANY_ADDRESS_FILTER+";" +
 			"  - ((way[building];relation[building];);>;);" +
 			");"+
-			"out meta geom;";
+			"out skel;";
 	}
 
 	private final OverpassMapDataDao overpassServer;
@@ -86,119 +88,130 @@ public class AddHousenumber extends AOsmElementQuestType
 
 	@Override public boolean download(BoundingBox bbox, final MapDataWithGeometryHandler handler)
 	{
-		List<ElementWithGeometry> items = downloadBuildingsWithoutAddresses(bbox);
-		if(items == null) return false;
+		long ms = System.currentTimeMillis();
+		Map<LatLon, ElementWithGeometry> buildings = downloadBuildingsWithoutAddresses(bbox);
+		if(buildings == null) return false;
 		// empty result: We are done
-		if(items.isEmpty()) return true;
+		if(buildings.isEmpty()) return true;
 
-		List<Geometry> addrAreas = downloadAreasWithAddresses(bbox);
+		List<ElementGeometry> addrAreas = downloadAreasWithAddresses(bbox);
 		if(addrAreas == null) return false;
 
-		Envelope bounds = null;
-		for (ElementWithGeometry item : items)
-		{
-			Envelope addBounds = item.geometry.getEnvelopeInternal();
-			if(bounds == null) bounds = addBounds;
-			else               bounds.expandToInclude(addBounds);
-		}
-		// see #885: The area in which the app should search for address nodes (and areas) must be
-		// adjusted to the bounding box of all the buildings found. The found buildings may in parts
-		// not be within the specified bounding box. But in exactly that part, there may be an
-		// address
-		BoundingBox adjustedBbox = JTSConst.toBoundingBox(bounds);
+		bbox = getBoundingBoxThatIncludes(buildings.values());
 
-		ArrayList<Point> addrPositions = downloadFreeFloatingPositionsWithAddresses(adjustedBbox);
+		LatLonRaster addrPositions = downloadFreeFloatingPositionsWithAddresses(bbox);
 		if(addrPositions == null) return false;
 
-		for (ElementWithGeometry item : items)
+		Log.d("AddHousenumber", "Downloaded "+buildings.size()+" buildings with no address, " +
+			addrAreas.size() + " areas with address and " +
+			addrPositions.size() + " address nodes" +
+			" in " + (System.currentTimeMillis()-ms) + "ms");
+		ms = System.currentTimeMillis();
+
+		LatLonRaster buildingPositions = new LatLonRaster(bbox, 0.0005);
+		for (LatLon buildingCenter : buildings.keySet())
 		{
-			// exclude buildings with housenumber-nodes inside them
-			int index = indexOfPointIn(item.geometry, addrPositions);
-			if(index != -1)
+			buildingPositions.insert(buildingCenter);
+		}
+
+		// exclude buildings that are contained in an area with a housenumber
+		for (ElementGeometry addrArea : addrAreas)
+		{
+			for (LatLon buildingPos : buildingPositions.getAll(addrArea.getBounds()))
 			{
-				// performance improvement: one housenumber-node cannot be covered by multiple
-				// buildings. So, it can be removed to reduce the amount of remaining
-				// point-in-polygon checks
-				addrPositions.remove(index);
+				if(SphericalEarthMath.isInMultipolygon(buildingPos, addrArea.polygons))
+				{
+					buildings.remove(buildingPos);
+				}
+			}
+		}
+
+		int createdQuests = 0;
+		// only buildings with no housenumber-nodes inside them
+		for (ElementWithGeometry building : buildings.values())
+		{
+			// even though we could continue here, limit the max amount of quests created to the
+			// default maximum to avoid performance problems
+			if(createdQuests++ >= OverpassQLUtil.DEFAULT_MAX_QUESTS) break;
+
+			LatLon addrContainedInBuilding = getPositionContainedInBuilding(building.geometry, addrPositions);
+			if(addrContainedInBuilding != null)
+			{
+				addrPositions.remove(addrContainedInBuilding);
 				continue;
 			}
-			// further exclude buildings that are contained in an area with a housenumber
-			if(coveredByAnyArea(item.geometry, addrAreas)) continue;
 
-			handler.handle(item.element, item.elementGeometry);
+			handler.handle(building.element, building.geometry);
 		}
+
+		Log.d("AddHousenumber", "Processing data took " + (System.currentTimeMillis()-ms) + "ms");
 
 		return true;
     }
 
-    private List<ElementWithGeometry> downloadBuildingsWithoutAddresses(BoundingBox bbox)
+    private Map<LatLon, ElementWithGeometry> downloadBuildingsWithoutAddresses(BoundingBox bbox)
 	{
-		final List<ElementWithGeometry> list = new ArrayList<>();
+		final Map<LatLon, ElementWithGeometry> buildingsByCenterPoint = new HashMap<>();
 		String buildingsWithoutAddressesQuery = getBuildingsWithoutAddressesOverpassQuery(bbox);
 		boolean success = overpassServer.getAndHandleQuota(buildingsWithoutAddressesQuery, (element, geometry) ->
 		{
-			if (geometry != null)
+			if (geometry != null && geometry.polygons != null)
 			{
-				Geometry g = JTSConst.toGeometry(geometry);
-				// invalid geometry out of other reasons? (Not sure when this can happen...)
-				if (g.isValid())
-				{
-					ElementWithGeometry item = new ElementWithGeometry();
-					item.element = element;
-					item.geometry = g;
-					item.elementGeometry = geometry;
-					list.add(item);
-				}
+				ElementWithGeometry item = new ElementWithGeometry();
+				item.element = element;
+				item.geometry = geometry;
+				buildingsByCenterPoint.put(geometry.center, item);
 			}
 		});
-		return success ? list : null;
+		return success ? buildingsByCenterPoint : null;
 	}
 
-	private ArrayList<Point> downloadFreeFloatingPositionsWithAddresses(BoundingBox bbox)
+	private LatLonRaster downloadFreeFloatingPositionsWithAddresses(BoundingBox bbox)
 	{
-		final ArrayList<Point> coords = new ArrayList<>();
+		final LatLonRaster grid = new LatLonRaster(bbox, 0.0005);
 		String query = getFreeFloatingAddressesOverpassQuery(bbox);
 		boolean success = overpassServer.getAndHandleQuota(query, (element, geometry) ->
 		{
-			if(geometry != null)
-			{
-				coords.add(JTSConst.toPoint(geometry.center));
-			}
+			if(geometry != null) grid.insert(geometry.center);
 		});
-		return success ? coords : null;
+		return success ? grid : null;
 	}
 
-	private ArrayList<Geometry> downloadAreasWithAddresses(BoundingBox bbox)
+	private ArrayList<ElementGeometry> downloadAreasWithAddresses(BoundingBox bbox)
 	{
-		final ArrayList<Geometry> areas = new ArrayList<>();
+		final ArrayList<ElementGeometry> areas = new ArrayList<>();
 		String query = getNonBuildingAreasWithAddresses(bbox);
 		boolean success = overpassServer.getAndHandleQuota(query, (element, geometry) ->
 		{
-			if(geometry != null)
-			{
-				areas.add(JTSConst.toGeometry(geometry));
-			}
+			if(geometry != null && geometry.polygons != null) areas.add(geometry);
 		});
 		return success ? areas : null;
 	}
 
-	private static int indexOfPointIn(Geometry building, ArrayList<Point> points)
+	private BoundingBox getBoundingBoxThatIncludes(Iterable<ElementWithGeometry> buildings)
 	{
-		for (int i = 0; i < points.size(); i++)
+		// see #885: The area in which the app should search for address nodes (and areas) must be
+		// adjusted to the bounding box of all the buildings found. The found buildings may in parts
+		// not be within the specified bounding box. But in exactly that part, there may be an
+		// address
+		FlattenIterable<LatLon> allThePoints = new FlattenIterable<>(LatLon.class);
+		for (ElementWithGeometry building : buildings)
 		{
-			Point pos = points.get(i);
-			if(building.covers(pos)) return i;
+			allThePoints.add(building.geometry.polygons);
 		}
-		return -1;
+		return SphericalEarthMath.enclosingBoundingBox(allThePoints);
 	}
 
-	private static boolean coveredByAnyArea(Geometry building, List<Geometry> areas)
+	private static LatLon getPositionContainedInBuilding(ElementGeometry building, LatLonRaster positions)
 	{
-		for (Geometry area : areas)
+		List<List<LatLon>> buildingPolygons = building.polygons;
+		if(buildingPolygons == null) return null;
+
+		for (LatLon pos : positions.getAll(building.getBounds()))
 		{
-			if(building.coveredBy(area)) return true;
+			if(SphericalEarthMath.isInMultipolygon(pos, buildingPolygons)) return pos;
 		}
-		return false;
+		return null;
 	}
 
 	@Override public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
@@ -265,7 +278,6 @@ public class AddHousenumber extends AOsmElementQuestType
 	private static class ElementWithGeometry
 	{
 		Element element;
-		ElementGeometry elementGeometry;
-		Geometry geometry;
+		ElementGeometry geometry;
 	}
 }

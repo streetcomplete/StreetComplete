@@ -154,7 +154,6 @@ Bevor deine Änderungen hochgeladen werden, prüft die App allerdings &lt;a href
     <string name="quest_sidewalk_onlyWest">"Nur auf der westlichen Seite"</string>
     <string name="quest_sidewalk_onlyEast">"Nur auf der östlichen Seite"</string>
     <string name="quest_sidewalk_yes">"Ja"</string>
-    <string name="quest_maxspeed_answer_noSign">"Es gibt kein Schild"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Wo befindet sich diese Straße?"</string>
     <string name="quest_cyclewaySurface_title">"Welche Oberfläche hat dieser Radweg?"</string>
     <string name="quest_serviceType_title">"Welche Art von Erschließungsweg ist das?"</string>
@@ -235,7 +234,6 @@ Die von dir eingegebenen Informationen werden dann direkt in deinem Namen zu Ope
     <string name="quest_bicycleParkingCoveredStatus_title">"Ist der Fahrradstellplatz überdacht (Schutz vor Regen)?"</string>
     <string name="dialog_session_dont_show_again">"Für diese Sitzung nicht mehr fragen"</string>
     <string name="quest_streetSurface_name_title">"Welche Oberfläche hat die Straße %s hier?"</string>
-    <string name="quest_maxspeed_title_short">"Welche Höchstgeschwindigkeit ist hier per Schild vorgeschrieben?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Diese Höchstgeschwindigkeit scheint nicht plausibel."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Sicher, dass kein Schild vorhanden ist?"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">"Hast Du am anderen Ende der Straße nachgeschaut?
@@ -514,7 +512,6 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_construction_building_title">"Ist dieses Gebäude fertig gebaut?"</string>
     <string name="questList_disabled_in_country">"Niemals in %s gezeigt"</string>
     <string name="quest_toiletAvailability_rest_area_title">"Hat dieser Rastplatz eine Toilette?"</string>
-    <string name="quest_maxspeed_name_title">"Was ist die Geschwindigkeitsbegrenzung für %s?"</string>
     <string name="quest_pathSurface_title_steps">"Welche Oberfläche haben diese Stufen?"</string>
     <string name="quest_pathSurface_title_bridleway">"Welche Oberfläche hat dieser Saumweg?"</string>
     <string name="quest_pathSurface_title">"Welche Oberfläche hat dieser Weg?"</string>
@@ -603,4 +600,26 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_address_answer_no_housenumber_message2">"Ist das richtig und es ist auch nicht nur Teil eines Gebäudes?"</string>
     <string name="quest_buildingType_shrine">"Schrein"</string>
     <string name="quest_noteDiscussion_hide">"%1$s hat die Notiz versteckt (%2$s)"</string>
+    <string name="quest_maxspeed_title_short2">"Welche Geschwindigkeitsbegrenzung gilt hier?"</string>
+    <string name="quest_maxspeed_answer_sign">"Ein Schild"</string>
+    <string name="quest_maxspeed_answer_zone2">"Ist innerhalb einer Tempo-(30-)Zone"</string>
+    <string name="quest_maxspeed_answer_noSign2">"Kein Schild, es gelten die generellen Begrenzungen"</string>
+    <string name="quest_openingHours_no_sign">"Kein Schild für Öffnungszeiten"</string>
+    <string name="quest_maxspeed_name_title2">"Welche Geschwindigkeitsbegrenzung gilt für %s hier?"</string>
+    <string name="quest_buildingType_sports_centre">"Sportzentrum"</string>
+    <string name="quest_buildingType_toilets">"Toilettenhäuschen"</string>
+    <string name="quest_maxspeed_sign_question">"Durch was ist es festgelegt?"</string>
+    <string name="notification_channel_download">"Download"</string>
+    <string name="quest_playground_access_title">"Ist dies ein öffentlicher Spielplatz?"</string>
+    <string name="quest_segregated_title">"Wie sind der Radweg und Gehweg hier zueinander gelegen?"</string>
+    <string name="dialog_tutorial_upload">"Um deine Änderung manuell hochzuladen, nutze den Knopf in der Werkzeugleiste der so aussieht."</string>
+    <string name="quest_segregated_separated">"Getrennt voneinander"</string>
+    <string name="quest_segregated_mixed">"Der Weg wird gemeinsam genutzt"</string>
+    <string name="quest_maxheight_title">"Was ist die Durchfahrtshöhe hier?"</string>
+    <string name="quest_maxheight_parking_entrance_title">"Was ist die Durchfahrtshöhe dieser Parkplatzeinfahrt?"</string>
+    <string name="quest_maxheight_height_restrictor_title">"Was ist die Durchfahrtshöhe hier?"</string>
+    <string name="quest_maxheight_tunnel_title">"Was ist die Durchfahrtshöhe dieses Tunnels?"</string>
+    <string name="quest_maxheight_answer_noSign">"Es gibt kein Schild"</string>
+    <string name="quest_maxheight_answer_noSign_question">"Ist denn locker für selbst die höchsten Lastwagen genug Platz um drunter durchzufahren? (mindestens etwa 4,5m)"</string>
+    <string name="quest_maxheight_unusualInput_confirmation_description">"Diese Höhe sieht unplausibel aus. Bist du sicher, dass sie korrekt ist?"</string>
 </resources>

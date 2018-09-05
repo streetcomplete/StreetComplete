@@ -174,7 +174,6 @@ OpenStreetMap不接受匿名编辑，您需要登录您的OpenStreetMap帐号。
     <string name="quest_sidewalk_onlyWest">"只在道路西面一侧"</string>
     <string name="quest_sidewalk_onlyEast">"只在道路东面一侧"</string>
     <string name="quest_sidewalk_yes">"好"</string>
-    <string name="quest_maxspeed_answer_noSign">"这里没有限速标志"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"此条街道位在?"</string>
     <string name="quest_cyclewaySurface_title">"此自行车道的路面材料是?"</string>
     <string name="quest_serviceType_title">"此条联络道路的种类是?"</string>
@@ -261,7 +260,6 @@ OpenStreetMap不接受匿名编辑，您需要登录您的OpenStreetMap帐号。
 
     <!-- Fuzzy -->
     <string name="quest_streetSurface_name_title">"道路 %s 的铺面为何？"</string>
-    <string name="quest_maxspeed_title_short">"这条街的道路速限牌显示多少？"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"这个速限看来怪怪的。"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"你确定没有速限限制吗？"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">"你有到街尾检查吗？
@@ -561,7 +559,6 @@ OpenStreetMap不接受匿名编辑，您需要登录您的OpenStreetMap帐号。
     <string name="quest_construction_building_title">"这栋建筑完工了吗？"</string>
     <string name="questList_disabled_in_country">"不显示 %s"</string>
     <string name="quest_toiletAvailability_rest_area_title">"休息区是否有厕所？"</string>
-    <string name="quest_maxspeed_name_title">"%s 的速限？"</string>
     <string name="quest_pathSurface_title_steps">"阶梯表面是用什麽材质呢？"</string>
     <string name="quest_pathSurface_title_bridleway">"马道表面是用什麽材质呢？"</string>
     <string name="quest_pathSurface_title">"这条路径表面是什麽材质呢？"</string>

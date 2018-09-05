@@ -9,7 +9,6 @@ import android.support.annotation.UiThread;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.v4.app.Fragment;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
 import de.westnordost.streetcomplete.R;

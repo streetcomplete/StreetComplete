@@ -1,36 +1,43 @@
 package de.westnordost.streetcomplete.data.osm;
 
-import com.vividsolutions.jts.geom.Geometry;
-import com.vividsolutions.jts.geom.Lineal;
-import com.vividsolutions.jts.geom.Polygonal;
-import com.vividsolutions.jts.linearref.LengthIndexedLine;
-
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.LatLon;
-import de.westnordost.streetcomplete.util.JTSConst;
+import de.westnordost.streetcomplete.util.FlattenIterable;
+import de.westnordost.streetcomplete.util.SphericalEarthMath;
 
 /** Information on the geometry of a quest */
 public class ElementGeometry implements Serializable
 {
-	public LatLon center;
+	public final LatLon center;
 	//* polygons are considered holes if they are defined clockwise */
-	public List<List<LatLon>> polygons = null;
-	public List<List<LatLon>> polylines = null;
+	public final List<List<LatLon>> polygons;
+	public final List<List<LatLon>> polylines;
+
+	private BoundingBox bbox = null;
 
 	public ElementGeometry(LatLon center)
 	{
 		this.center = center;
+		polylines = null;
+		polygons = null;
 	}
 
 	public ElementGeometry(List<List<LatLon>> polylines, List<List<LatLon>> polygons)
 	{
 		this.polygons = polygons;
 		this.polylines = polylines;
-		center = findCenterPoint();
+		if(polygons != null)
+		{
+			center = findCenterPointOfMultiPolygon(polygons);
+		}
+		else if(polylines != null)
+		{
+			center = findCenterPointOfPolyLines(polylines);
+		}
+		else throw new IllegalArgumentException("Either polylines or polygons must not be null");
 	}
 
 	public ElementGeometry(List<List<LatLon>> polylines, List<List<LatLon>> polygons, LatLon center)
@@ -56,88 +63,41 @@ public class ElementGeometry implements Serializable
 		return result;
 	}
 
-	private LatLon findCenterPoint()
-	{
-		try
-		{
-			Geometry geom = JTSConst.toGeometry(this);
-			if(!geom.isValid()) return null;
-
-			if(geom instanceof Polygonal)
-			{
-				return JTSConst.toLatLon(geom.getInteriorPoint());
-			}
-			else if(geom instanceof Lineal)
-			{
-				LengthIndexedLine lil = new LengthIndexedLine(geom);
-				return JTSConst.toLatLon(lil.extractPoint(geom.getLength() / 2.0));
-			}
-		}
-		catch (Exception e)
-		{
-			// unable to create proper geometry...
-			return null;
-		}
-		return null;
-	}
-
-	public static class Polygons { public List<List<LatLon>> outer, inner; }
-	public Polygons getPolygonsOrderedByOrientation()
-	{
-		Polygons result = new Polygons();
-		result.outer = new ArrayList<>();
-		result.inner = new ArrayList<>();
-		for(List<LatLon> polygon : polygons)
-		{
-			boolean isHole = ElementGeometry.isRingDefinedClockwise(polygon);
-			if(!isHole)
-			{
-				result.outer.add(polygon);
-			}
-			else
-			{
-				result.inner.add(polygon);
-			}
-		}
-		return result;
-	}
-
-	public static boolean isRingDefinedClockwise(List<LatLon> ring)
-	{
-		double sum = 0;
-		int len = ring.size();
-		for(int i = 0, j = len-1; i<len; j = i, ++i)
-		{
-			LatLon pos1 = ring.get(j);
-			LatLon pos2 = ring.get(i);
-			sum += pos1.getLongitude() * pos2.getLatitude() - pos2.getLongitude() * pos1.getLatitude();
-		}
-		return sum > 0;
-	}
-
 	public BoundingBox getBounds()
 	{
-		List<List<LatLon>> points;
-		if(polygons != null) points = polygons;
-		else if(polylines != null) points = polylines;
-		else return new BoundingBox(
-				center.getLatitude(), center.getLongitude(),
-				center.getLatitude(), center.getLongitude());
-
-		Double latMin = null, lonMin = null, latMax = null, lonMax = null;
-		for(List<LatLon> ps : points)
+		if(bbox == null)
 		{
-			for(LatLon p : ps)
-			{
-				double lat = p.getLatitude();
-				double lon = p.getLongitude();
-
-				if (latMin == null || latMin > lat) latMin = lat;
-				if (latMax == null || latMax < lat) latMax = lat;
-				if (lonMin == null || lonMin > lon) lonMin = lon;
-				if (lonMax == null || lonMax < lon) lonMax = lon;
-			}
+			List<List<LatLon>> points;
+			if (polygons != null) points = polygons;
+			else if (polylines != null) points = polylines;
+			else return new BoundingBox(
+					center.getLatitude(), center.getLongitude(),
+					center.getLatitude(), center.getLongitude());
+			FlattenIterable<LatLon> itb = new FlattenIterable<>(LatLon.class);
+			itb.add(points);
+			bbox = SphericalEarthMath.enclosingBoundingBox(itb);
 		}
-		return new BoundingBox(latMin, lonMin, latMax, lonMax);
+		return bbox;
+	}
+
+	private static LatLon findCenterPointOfPolyLines(List<List<LatLon>> polylines)
+	{
+		// if there are more than one polylines, these polylines are not connect to each other,
+		// so there is no way to find a reasonable "center point". In most cases however, there
+		// is only one polyline, so let's just take the first one...
+		// This is the same behavior as Leaflet or Tangram
+		return SphericalEarthMath.centerPointOfPolyline(polylines.get(0));
+	}
+
+	private static LatLon findCenterPointOfMultiPolygon(List<List<LatLon>> polygons)
+	{
+		// only use first ring that is not a hole if there are multiple (clockwise == holes)
+		// this is the same behavior as Leaflet or Tangram
+		for(List<LatLon> polygon : polygons)
+		{
+			if(!SphericalEarthMath.isRingDefinedClockwise(polygon))
+				return SphericalEarthMath.centerPointOfPolygon(polygon);
+		}
+		return null;
 	}
 }

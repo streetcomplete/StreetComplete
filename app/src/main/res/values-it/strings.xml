@@ -155,7 +155,6 @@ Tuttavia, prima di caricare le modifiche, l’app fa una verifica su un &lt;a hr
     <string name="quest_sidewalk_onlyWest">"Solo sul lato ovest"</string>
     <string name="quest_sidewalk_onlyEast">"Solo sul lato est"</string>
     <string name="quest_sidewalk_yes">"Sì"</string>
-    <string name="quest_maxspeed_answer_noSign">"Non c'è alcun segnale"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Dov'è questa strada?"</string>
     <string name="quest_cyclewaySurface_title">"Che tipo di pavimentazione ha questa pista ciclabile?"</string>
     <string name="quest_serviceType_title">"Quale tipo di strada di servizio è questa?"</string>
@@ -234,7 +233,6 @@ Le informazioni inserite vengono aggiunte direttamente su OpenStreetMap a tuo no
     <string name="quest_bicycleParkingCoveredStatus_title">"Questo parcheggio per biciclette è al coperto (protetto dalla pioggia)?"</string>
     <string name="dialog_session_dont_show_again">"Non mostrarlo più per questa sessione"</string>
     <string name="quest_streetSurface_name_title">"Che tipo di pavimentazione ha la strada %s in questo punto?"</string>
-    <string name="quest_maxspeed_title_short">"Cosa indica il cartello del limite di velocità per questa strada?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Questo limite di velocità sembra improbabile"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Si è certi che non vi sia un limite?"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">"Hai controllato alle estremità della strada?
@@ -393,7 +391,7 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="privacy_html_image_upload">"&lt;p&gt;Le foto collegate alle note sono caricate al sito  &lt;a href=\"https://framapic.org\"&gt;framapic.org&lt;/a&gt;, un servizio anonimo e privo di tracciamento.&lt;/p&gt;"</string>
     <string name="quest_cycleway_value_track">"pista ciclabile"</string>
     <string name="quest_cycleway_value_lane">"corsia ciclabile"</string>
-    <string name="quest_cycleway_value_none">"nulla"</string>
+    <string name="quest_cycleway_value_none">"nessuna"</string>
     <string name="quest_cycleway_value_shared">"corsia condivisa esplicitamente con altro traffico"</string>
     <string name="quest_cycleway_value_bus_lane">"sul percorso dell'autobus"</string>
     <string name="quest_cycleway_value_sidewalk">"esplicitamente condivisa con il marciapiede"</string>
@@ -429,7 +427,7 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_cycleway_answer_contraflow_cycleway">"Pista ciclabile anche sull'altro lato"</string>
     <string name="need_specify_both_sides">"Devi specificare entrambi i lati"</string>
     <string name="quest_openingHours_emptyAnswer">"Devi descrivere cosa c'è sul cartello. Se non c'è nessun segno, dovresti chiedere gli orari di apertura all'interno."</string>
-    <string name="quest_cycleway_value_none_but_no_oneway">"nessuno, ma i ciclisti possono usare la strada in entrambe le direzioni"</string>
+    <string name="quest_cycleway_value_none_but_no_oneway">"nessuna, ma i ciclisti possono usare la strada in entrambe le direzioni"</string>
     <string name="quest_streetName_answer_noName_question">"Perché non ha un nome?"</string>
     <string name="quest_streetName_answer_noProperStreet_service2">"È una strada tipo un viottolo d'accesso o una corsia di un parcheggio"</string>
     <string name="quest_streetName_answer_noProperStreet_track2">"È una strada agricola o forestale"</string>
@@ -511,7 +509,6 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_construction_building_title">"Questo edificio è completato?"</string>
     <string name="questList_disabled_in_country">"Mai mostrato in %s"</string>
     <string name="quest_toiletAvailability_rest_area_title">"Quest' area di servizio ha un bagno?"</string>
-    <string name="quest_maxspeed_name_title">"Qual è il limite di velocità per %s?"</string>
     <string name="quest_pathSurface_title_steps">"Che tipo di pavimentazione hanno questi gradini?"</string>
     <string name="quest_pathSurface_title_bridleway">"Che tipo di pavimentazione ha questo percorso equestre?"</string>
     <string name="quest_pathSurface_title">"Che tipo di pavimentazione ha questo sentiero?"</string>
@@ -599,4 +596,26 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_address_answer_no_housenumber_message2">"È corretto e non si tratta solo di una parte di un edificio?"</string>
     <string name="quest_buildingType_shrine">"Sacello"</string>
     <string name="quest_noteDiscussion_hide">"%1$s ha nascosto la nota (%2$s)"</string>
+    <string name="quest_maxspeed_title_short2">"Qual è il limite di velocità su questa strada?"</string>
+    <string name="quest_maxspeed_answer_sign">"Un cartello"</string>
+    <string name="quest_maxspeed_answer_zone2">"Si trova in una zona a bassa velocità"</string>
+    <string name="quest_maxspeed_answer_noSign2">"Nessun segnale, è il valore predefinito"</string>
+    <string name="quest_openingHours_no_sign">"Nessun cartello per gli orari di apertura"</string>
+    <string name="quest_maxspeed_name_title2">"Qual è il limite di velocità per %s qui?"</string>
+    <string name="quest_buildingType_sports_centre">"Centro sportivo"</string>
+    <string name="quest_buildingType_toilets">"Servizi igienici"</string>
+    <string name="quest_maxspeed_sign_question">"Cosa indica il limite di velocità?"</string>
+    <string name="notification_channel_download">"Scarica"</string>
+    <string name="quest_playground_access_title">"Il parco giochi è accessibile a tutti?"</string>
+    <string name="quest_segregated_title">"Come sono disposte  le corsie pedonali e ciclabili?"</string>
+    <string name="dialog_tutorial_upload">"Per caricare manualmente le tue modifiche, usa il pulsante simile a questo nella barra degli strumenti."</string>
+    <string name="quest_segregated_separated">"Separati tra loro"</string>
+    <string name="quest_segregated_mixed">"Ciclisti e pedoni condividono lo stesso spazio"</string>
+    <string name="quest_maxheight_title">"Qual è il limite di altezza qui?"</string>
+    <string name="quest_maxheight_parking_entrance_title">"Qual è il limite di altezza per questo ingresso al parcheggio?"</string>
+    <string name="quest_maxheight_height_restrictor_title">"Qual è il limite di altezza per questo limitatore di altezza?"</string>
+    <string name="quest_maxheight_tunnel_title">"Qual è il limite di altezza in questo tunnel?"</string>
+    <string name="quest_maxheight_answer_noSign">"Non c’è alcun cartello"</string>
+    <string name="quest_maxheight_answer_noSign_question">"C’è spazio sufficiente per far passare anche il più alto dei camion (almeno 4,5 metri / 15 piedi)?"</string>
+    <string name="quest_maxheight_unusualInput_confirmation_description">"Questa altezza sembra irreale. Sicuro che sia corretta?"</string>
 </resources>

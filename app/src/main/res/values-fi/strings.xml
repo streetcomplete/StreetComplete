@@ -179,7 +179,6 @@ Näytettäessä karttaa, vektoritiilet haetaan &lt;a href=\"https://mapzen.com/p
     <string name="quest_sidewalk_onlyWest">"Vain länsisivulla"</string>
     <string name="quest_sidewalk_onlyEast">"Vain itäsivulla"</string>
     <string name="quest_sidewalk_yes">"Kyllä"</string>
-    <string name="quest_maxspeed_answer_noSign">"Ei kylttiä"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Missä tämä katu on?"</string>
     <string name="quest_cyclewaySurface_title">"Mikä päällyste tällä pyörätiellä on?"</string>
     <string name="quest_serviceType_title">"Millainen huoltotie tämä on?"</string>
@@ -265,7 +264,6 @@ Vastauksesi täydentävät OpenStreetMapsiä omalla nimelläsi. Et tarvi sovellu
 
     <!-- Fuzzy -->
     <string name="quest_streetSurface_name_title">"Millainen tien pinta täällä on? "</string>
-    <string name="quest_maxspeed_title_short">"Mikä on nopeusrajoituksen osoittava merkki tällä kadulla?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Tämä nopeusrajoitus vaikuttaa epätodennäköiseltä."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Oletko varma että rajoituskylttiä ei ole?"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">"Tarkistitko tien päistä? Jos tien päissä ei ole nopeusrajoitusmerkiä, niin sovelletaan yleistä nopeusrajoitusta"</string>
@@ -542,9 +540,13 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
     <string name="quest_tramStopName_title">"Mikä on tämän raitiovaunupysäkin nimi?"</string>
     <string name="quest_housenumber_multiple_numbers">"Sillä on useampia talonumeroita."</string>
     <string name="quest_housenumber_multiple_numbers_description">"Voit erotella talonnumerot pilkuilla tai välillä. esim. 1,3 tai 2-6"</string>
+    <string name="quest_bicycle_parking_type_stand">"Jalusta (pyörän runkoa tukeva)"</string>
     <string name="quest_bicycle_parking_type_wheelbender">"Perinteinen pyöräteline"</string>
+    <string name="quest_bicycle_parking_type_shed">"Varastohäkki"</string>
+    <string name="quest_bicycle_parking_type_locker">"Lukollinen kaappi"</string>
     <string name="quest_bicycle_parking_type_building">"Rakennus"</string>
     <string name="quest_bicycle_parking_type_title">"Minkälainen tämä pyöräparkki on? "</string>
+    <string name="quest_cycleway_value_suggestion_lane">"Pyöräkaistaviiva"</string>
     <string name="quest_postboxCollectionTimes_title">"Mitkä ovat tämän postilaatikon noutoajat?"</string>
     <string name="quest_collectionTimes_add_times">"Lisää keräysaika"</string>
     <string name="quest_collectionTimes_answer_no_times_specified">"Ei aika määritteinen"</string>
@@ -555,12 +557,14 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
     <string name="quest_construction_building_title">"Onko rakennustyö valmis?"</string>
     <string name="questList_disabled_in_country">"Ei näy koskaan maassa %s"</string>
     <string name="quest_toiletAvailability_rest_area_title">"Onko tällä levähdysalueella vessa?"</string>
-    <string name="quest_maxspeed_name_title">"Mikä on nopeusrajoitus tielle %s?"</string>
     <string name="quest_pathSurface_title_steps">"Mikä päällyste näillä portailla on?"</string>
     <string name="quest_pathSurface_title_bridleway">"Mikä päällyste tällä ratsastustiellä on?"</string>
     <string name="quest_pathSurface_title">"Mikä päällyste tällä polulla on?"</string>
     <string name="quest_select_hint_most_specific">"Valitse tarkin sopiva vaihtoehto näistä:"</string>
     <string name="quest_generic_item_confirmation">"Oletko varma, että et voi määritellä tarkemmin?"</string>
+    <string name="privacy_html_tileserver">"&lt;p&gt;Näyttääkseen kartan vektori laatat haetaan sivulta &lt;a href=\"https://tiles.map-data.de\"&gt;map-data.de&lt;/a&gt;. Palvelu rekisteröi pyynnöt anonyymiksi tilastoksi ja ongelmien havainnoimiseksi, mutta poistaa lokit muutaman päivän sisällä.&lt;/p&gt;"</string>
+    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Osa kysymyksistä lataa tietoa kolmansien osapuolien lähteistä. Erityisesti yhdensuuntaiset kysymysten API:ssa,  jotka myös toimittaa westnordost.de, kuten myös mahdolliset yksisuuntaiset kysymykset.
+&lt;/p&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"Ei (jätä "</string>
     <string name="pref_quests_reset">"Resetoi kysymysten aktivoinnit ja palautua järjestys oletukseksi?"</string>
     <string name="quest_buildingType_title2">"Mikä on tämän rakennuksen käyttötarkoitus?"</string>
@@ -646,4 +650,27 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
     <string name="quest_address_answer_no_housenumber_message1">"Rakennus on merkattu seuraavasti:"</string>
     <string name="quest_address_answer_no_housenumber_message2">"Onko tämä oikein ja eikö kyseessä ole osa rakennusta?"</string>
     <string name="quest_buildingType_shrine">"Pyhäkkö"</string>
+    <string name="quest_noteDiscussion_hide">" %1$s piilota huomautus (%2$s)"</string>
+    <string name="quest_maxspeed_title_short2">"Mikä on tämän tien nopeusrajoitus?"</string>
+    <string name="quest_maxspeed_answer_sign">"Liikennemerkki"</string>
+    <string name="quest_maxspeed_answer_zone2">"Aluenopeusrajoitus"</string>
+    <string name="quest_maxspeed_answer_noSign2">"Ei liikennemerkkiä, yleisnopeusrajoitus"</string>
+    <string name="quest_openingHours_no_sign">"Ei aukioloaika merkintöjä"</string>
+    <string name="quest_maxspeed_name_title2">"Mikä on nopeusrajoitus %s täällä?"</string>
+    <string name="quest_buildingType_sports_centre">"Urheilukeskus"</string>
+    <string name="quest_buildingType_toilets">"WC"</string>
+    <string name="quest_maxspeed_sign_question">"Mikä määrittää nopeusrajoituksen?"</string>
+    <string name="notification_channel_download">"Lataa"</string>
+    <string name="quest_playground_access_title">"Onko tämä leikkikenttä julkisesti käytössä?"</string>
+    <string name="quest_segregated_title">"Miten kevyenliikenteenväylä on jaettu jalankulkijoille ja pyöräilijöille?"</string>
+    <string name="dialog_tutorial_upload">"Tallentaaksesi muutoksesi manuaalisesti, käytä seuraavan näköistä nappia työkalurivillä."</string>
+    <string name="quest_segregated_separated">"Rinnakkain erillään toisista"</string>
+    <string name="quest_segregated_mixed">"Yhdistetty pyörätie ja jalkakäytävä"</string>
+    <string name="quest_maxheight_title">"Mikä on suurin sallittu korkeus täällä?"</string>
+    <string name="quest_maxheight_parking_entrance_title">"Mikä on pysäköintihallin suurin sallittu korkeus?"</string>
+    <string name="quest_maxheight_height_restrictor_title">"Mikä on suurin sallittu korkeus korkeusrajoitteessa?"</string>
+    <string name="quest_maxheight_tunnel_title">"Mikä on suurin sallittu korkeus tässä tunnelissa?"</string>
+    <string name="quest_maxheight_answer_noSign">"Merkki puuttuu"</string>
+    <string name="quest_maxheight_answer_noSign_question">"Onko tässä selkeästi riittävästi tilaa jopa korkeimmille rekoille (vähintään 4,5 metriä) kulkea tästä?"</string>
+    <string name="quest_maxheight_unusualInput_confirmation_description">"Tämä korkeus näyttää epäuskottavalta. Oletko varma, että se on oikein?"</string>
 </resources>

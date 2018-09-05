@@ -4,7 +4,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AlertDialog;
 import android.text.InputType;
 import android.text.method.DigitsKeyListener;
 import android.view.LayoutInflater;
@@ -268,14 +267,14 @@ public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 
 	private String getValidHousenumberRegex()
 	{
-		String regexNum = VALID_HOUSENUMBER_REGEX;
+		String regex = VALID_HOUSENUMBER_REGEX;
 		String additionalRegex = getCountryInfo().getAdditionalValidHousenumberRegex();
 		if(additionalRegex != null)
 		{
-			regexNum = "((" + regexNum + ")|("+additionalRegex+"))";
+			regex = "((" + regex + ")|(" + additionalRegex + "))";
 		}
-		// i.e. 95-98 etc.
-		return "^" + regexNum + "([,-]" + regexNum + ")?";
+		// i.e. "95-98" or "5,5a,6" etc. (but not: "1, 3" or "3 - 5" or "5,6-7")
+		return "^" + regex + "((-" + regex + ")|(," + regex + ")+)?";
 	}
 
 	private String getInputText(EditText editText)

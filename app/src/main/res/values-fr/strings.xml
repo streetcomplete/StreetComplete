@@ -198,7 +198,6 @@ Pour afficher la carte, les tuiles vectorielles sont extraites du &lt;a href=\"h
     <string name="quest_sidewalk_onlyWest">"Seulement le côté ouest"</string>
     <string name="quest_sidewalk_onlyEast">"Seulement le côté est"</string>
     <string name="quest_sidewalk_yes">"Oui"</string>
-    <string name="quest_maxspeed_answer_noSign">"Il n’y a pas de panneau"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Où est cette rue ?"</string>
 
     <!-- Plus simple et plus court : Quel est le revêtement de cette piste cyclable ? -->
@@ -287,7 +286,6 @@ L’information que vous entrez est ajoutée directement à OpenStreetMap en vot
 
     <!-- Je remets "revêtement" car la "surface d'une route" ça ne veut rien dire. -->
     <string name="quest_streetSurface_name_title">"Quel est le revêtement de la route %s ?"</string>
-    <string name="quest_maxspeed_title_short">"Quel est le panneau de vitesse maximale pour cette route ?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"La limitation de vitesse paraît étrange."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Êtes-vous sûr(e) de l’absence de panneau de limitation de vitesse ?"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">"Avez-vous vérifié aux extrémités de la rue?
@@ -588,7 +586,6 @@ Partiellement signifie qu’un fauteuil roulant peut entrer et utiliser les toil
     <string name="quest_construction_building_title">"Ce bâtiment est-il complet ?"</string>
     <string name="questList_disabled_in_country">"Ne jamais afficher en %s"</string>
     <string name="quest_toiletAvailability_rest_area_title">"Est-ce que cette aire de repos a des toilettes?"</string>
-    <string name="quest_maxspeed_name_title">"Quelle est la limitation de vitesse pour %s ?"</string>
     <string name="quest_pathSurface_title_steps">"Quel revêtement ces marches ont-elles ?"</string>
     <string name="quest_pathSurface_title_bridleway">"Quelle revêtement ce sentier équestre a-t-il ?"</string>
     <string name="quest_pathSurface_title">"Quelle surface ce chemin a-t-il ?"</string>
@@ -697,4 +694,31 @@ Partiellement signifie qu’un fauteuil roulant peut entrer et utiliser les toil
     <!-- Fuzzy -->
     <string name="quest_address_answer_no_housenumber_message2">"Est-ce correct et est-ce que ça ne fais pas simplement partie d'un bâtiment ?"</string>
     <string name="quest_buildingType_shrine">"Sanctuaire"</string>
+    <string name="quest_noteDiscussion_hide">"%1$s a masqué la note (%2$s)"</string>
+    <string name="quest_maxspeed_title_short2">"Quelle est la limitation de vitesse dans cette rue ?"</string>
+    <string name="quest_maxspeed_answer_sign">"Un panneau"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_maxspeed_answer_zone2">"Dans une zone"</string>
+    <string name="quest_maxspeed_answer_noSign2">"Pas de panneau, vitesse par défaut"</string>
+    <string name="quest_openingHours_no_sign">"Pas d'heures d'ouverture affichées"</string>
+    <string name="quest_maxspeed_name_title2">"Quelle est la limitation de vitesse de %s à cet endroit ?"</string>
+    <string name="quest_buildingType_sports_centre">"Complexe sportif"</string>
+    <string name="quest_buildingType_toilets">"Toilettes"</string>
+    <string name="quest_maxspeed_sign_question">"Comment est définie la vitesse limite ?"</string>
+
+    <!-- Verbe "Télécharger" ou nom "Téléchargement" ? -->
+    <string name="notification_channel_download">"Téléchargement"</string>
+    <string name="quest_playground_access_title">"L'aire de jeu est-elle accessible au public ?"</string>
+    <string name="quest_segregated_title">"Comment le chemin piéton et la piste cyclable sont-ils aménagés à cet endroit ?"</string>
+    <string name="dialog_tutorial_upload">"Pour charger vos modifications manuellement, utilisez le bouton de la barre d'outils qui ressemble à celui-ci."</string>
+    <string name="quest_segregated_separated">"Séparés l'un de l'autre"</string>
+    <string name="quest_segregated_mixed">"Cyclistes et piétons partagent le même espace"</string>
+    <string name="quest_maxheight_title">"Quelle est la limite de hauteur à cet endroit ?"</string>
+    <string name="quest_maxheight_parking_entrance_title">"Quelle est la limite de hauteur à cette entrée de parking ?"</string>
+    <string name="quest_maxheight_height_restrictor_title">"Quelle est la limite de hauteur de ce portique ?"</string>
+    <string name="quest_maxheight_tunnel_title">"Quelle est la limite de hauteur de ce tunnel ?"</string>
+    <string name="quest_maxheight_answer_noSign">"Il n'y a pas de panneau"</string>
+    <string name="quest_maxheight_answer_noSign_question">"Y a-t-il largement assez d'espace pour laisser passer les camions, même les plus grands (au moins 4,5 mètres / 15 pieds) ?"</string>
+    <string name="quest_maxheight_unusualInput_confirmation_description">"Cette hauteur semble invraisemblable. Êtes-vous sûr que c'est correct ?"</string>
 </resources>

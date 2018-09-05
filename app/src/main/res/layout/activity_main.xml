@@ -33,25 +33,54 @@
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             android:elevation="4dp">
 
-            <TextView
-                android:id="@+id/uploadedAnswersCounter"
+            <RelativeLayout
+                android:id="@+id/uploadedAnswersContainer"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:drawableStart="@drawable/ic_star_white_24dp"
-                android:padding="6dp"
-                android:drawablePadding="8dp"
-                android:minEms="4"
-                tools:text="8888"
-                />
+                android:paddingStart="0dp"
+                android:paddingEnd="12dp"
+                android:clipChildren="false"
+                android:minWidth="84dp"
+                android:gravity="center_vertical">
+
+                <ProgressBar
+                    android:id="@+id/uploadedAnswersProgress"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:indeterminate="true"
+                    android:layout_centerVertical="true"
+                    android:visibility="invisible"
+                    tools:visibility="visible"/>
+
+                <ImageView
+                    android:id="@+id/uploadedAnswersIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_star_white_24dp"/>
+
+                <TextView
+                    android:id="@+id/uploadedAnswersCounter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@id/uploadedAnswersIcon"
+                    tools:text="8888"
+                    />
+
+            </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/unsyncedAnswersContainer"
                 android:background="?android:attr/actionBarItemBackground"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:padding="6dp"
-                android:gravity="center">
+                android:paddingStart="0dp"
+                android:paddingEnd="12dp"
+                android:clipChildren="false"
+                android:minWidth="68dp"
+                android:gravity="center_vertical">
 
                 <ProgressBar
                     android:id="@+id/unsyncedAnswersProgress"
@@ -76,8 +105,8 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_toEndOf="@id/unsyncedAnswersIcon"
-                    android:minEms="1"
-                    tools:text="8"/>
+                    android:minWidth="16dp"
+                    tools:text="88"/>
 
             </RelativeLayout>
 

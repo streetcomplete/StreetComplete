@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:id="@+id/meterInputSign"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/background_rectangular_sign_white"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/clearance_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="CLEARANCE"
+            android:textColor="#000000"
+            android:textSize="22dp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
+
+        <EditText
+            android:id="@+id/meterInput"
+            android:layout_width="96dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/clearance_text"
+            android:textColor="@color/traffic_black"
+            android:background="#0fff"
+            android:gravity="center"
+            android:inputType="numberDecimal"
+            android:maxLength="4"
+            android:textSize="38dp"
+            android:textStyle="bold"
+            tools:text="1.55" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/meterInput"
+            android:layout_alignBottom="@+id/meterInput"
+            android:gravity="center"
+            android:text="m"
+            android:textColor="@color/traffic_black"
+            android:textSize="36dp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

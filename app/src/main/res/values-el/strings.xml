@@ -156,7 +156,6 @@
     <string name="quest_sidewalk_onlyWest">"Μόνο στη δυτική πλευρά"</string>
     <string name="quest_sidewalk_onlyEast">"Μόνο στην ανατολική πλευρά"</string>
     <string name="quest_sidewalk_yes">"Ναι"</string>
-    <string name="quest_maxspeed_answer_noSign">"Δεν υπάρχει κανένα σημάδι"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Που είναι αυτός ο δρόμος;"</string>
     <string name="quest_cyclewaySurface_title">"Τι επιφάνεια έχει ο ποδηλατόδρομος εδώ;"</string>
     <string name="quest_serviceType_title">"Τι είδους δρόμος υπηρεσίας είναι αυτός;"</string>
@@ -235,7 +234,6 @@
     <string name="quest_bicycleParkingCoveredStatus_title">"Αυτό το πάρκινγκ ποδηλάτων είναι σκεπαστό (καλύπτεται από την βροχή);"</string>
     <string name="dialog_session_dont_show_again">"Να μην εμφανιστεί ξανά για αυτή την σύνοδο"</string>
     <string name="quest_streetSurface_name_title">"Τι επιφάνεια έχει ο δρόμος %s εδώ;"</string>
-    <string name="quest_maxspeed_title_short">"Ποιο είναι το όριο ταχύτητας στην πινακίδα για αυτό το δρόμο;"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Αυτό το όριο ταχύτητας φαίνεται παράλογο."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Είστε βέβαιοι ότι δεν έχουν καταχωρηθεί όρια;"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">"Ελέγξατε στις άκρες του δρόμου;
@@ -513,7 +511,6 @@
     <string name="quest_construction_building_title">"Είναι αυτό το κτίριο ολοκληρωμένο;"</string>
     <string name="questList_disabled_in_country">"Δεν εμφανίζεται ποτέ στην %s"</string>
     <string name="quest_toiletAvailability_rest_area_title">"Αυτή η περιοχή ξεκούρασης έχει τουαλέτα;"</string>
-    <string name="quest_maxspeed_name_title">"Ποιό είναι το ορίο ταχύτητας στην πινακίδα για την %s;"</string>
     <string name="quest_pathSurface_title_steps">"Τι επιφάνεια έχουν αυτά τα σκαλοπάτια εδώ;"</string>
     <string name="quest_pathSurface_title_bridleway">"Τι επιφάνεια έχει αυτή η διαδρομή ιππασίας εδώ;"</string>
     <string name="quest_pathSurface_title">"Τι επιφάνεια έχει αυτό το μονοπάτι εδώ;"</string>
@@ -602,4 +599,27 @@
     <string name="quest_address_answer_no_housenumber_message1">"Το κτίριο χαρακτηρίστηκε ως:"</string>
     <string name="quest_address_answer_no_housenumber_message2">"Είναι αυτό σωστό και δεν είναι μόνο τμήμα ενός κτιρίου;"</string>
     <string name="quest_buildingType_shrine">"Ναός"</string>
+    <string name="quest_noteDiscussion_hide">"%1$s κρυμμένη σημείωση (%2$s)"</string>
+    <string name="quest_maxspeed_title_short2">"Ποιό είναι το όριο ταχύτητας για αυτό τον δρόμο;"</string>
+    <string name="quest_maxspeed_answer_sign">"Μία πινακίδα"</string>
+    <string name="quest_maxspeed_answer_zone2">"Βρίσκεται μέσα σε μια (αργή) ζώνη"</string>
+    <string name="quest_maxspeed_answer_noSign2">"Χωρίς πινακίδα, εφαρμογή προεπιλογών"</string>
+    <string name="quest_openingHours_no_sign">"Χωρίς πινακίδα ωρών λειτουργίας"</string>
+    <string name="quest_maxspeed_name_title2">"Ποιό είναι το όριο ταχύτητας για το %s εδώ;"</string>
+    <string name="quest_buildingType_sports_centre">"Αθλητικό κέντρο"</string>
+    <string name="quest_buildingType_toilets">"Τουαλέτες"</string>
+    <string name="quest_maxspeed_sign_question">"Τι καθορίζει το όριο ταχύτητας;"</string>
+    <string name="notification_channel_download">"Λήψη"</string>
+    <string name="quest_playground_access_title">"Αυτή η παιδική χαρά είναι προσιτή στο κοινό;"</string>
+    <string name="quest_segregated_title">"Πώς είναι στρωμένος ο πεζόδρομος και ο ποδηλατόδρομος εδώ;"</string>
+    <string name="dialog_tutorial_upload">"Για να ανεβάσετε τις αλλαγές σας χειροκίνητα, χρησιμοποιήστε το κουμπί στη γραμμή εργαλείων που μοιάζει με αυτό."</string>
+    <string name="quest_segregated_separated">"Διαχωρίζονται το ένα από το άλλο"</string>
+    <string name="quest_segregated_mixed">"Οι ποδηλάτες και οι πεζοί μοιράζονται τον ίδιο χώρο"</string>
+    <string name="quest_maxheight_title">"Ποιό είναι το όριο του ύψους εδώ;"</string>
+    <string name="quest_maxheight_parking_entrance_title">"Ποιο είναι το όριο ύψους αυτής της εισόδου στάθμευσης;"</string>
+    <string name="quest_maxheight_height_restrictor_title">"Ποιο είναι το όριο ύψους αυτού του περιοριστή ύψους;"</string>
+    <string name="quest_maxheight_tunnel_title">"Ποιο είναι το όριο ύψους αυτής της σήραγγας;"</string>
+    <string name="quest_maxheight_answer_noSign">"Δεν υπάρχει πινακίδα"</string>
+    <string name="quest_maxheight_answer_noSign_question">"Υπάρχει αρκετός χώρος για να περάσουν ακόμα και τα ψηλότερα φορτηγά (τουλάχιστον περίπου 4,5 μέτρα / 15 πόδια);"</string>
+    <string name="quest_maxheight_unusualInput_confirmation_description">"Αυτό το ύψος φαίνεται απίθανο. Είστε βέβαιοι ότι είναι σωστό;"</string>
 </resources>
