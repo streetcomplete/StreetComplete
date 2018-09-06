@@ -1,11 +1,13 @@
 package de.westnordost.streetcomplete.data.osm.tql;
 
+import java.util.Locale;
+
 public class TestBooleanExpressionParser
 {
 	public static BooleanExpression<BooleanExpressionValue> parse(String input)
 	{
 		BooleanExpressionBuilder<BooleanExpressionValue> builder = new BooleanExpressionBuilder<>();
-		StringWithCursor reader = new StringWithCursor(input);
+		StringWithCursor reader = new StringWithCursor(input, Locale.US);
 		while(!reader.isAtEnd())
 		{
 			if(reader.nextIsAndAdvance('*')) builder.addAnd();

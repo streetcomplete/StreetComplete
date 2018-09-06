@@ -2,11 +2,13 @@ package de.westnordost.streetcomplete.data.osm.tql;
 
 import junit.framework.TestCase;
 
+import java.util.Locale;
+
 public class StringWithCursorTest extends TestCase
 {
 	public void testAdvance()
 	{
-		StringWithCursor x = new StringWithCursor("ab");
+		StringWithCursor x = new StringWithCursor("ab", Locale.US);
 		assertEquals(0, x.getCursorPos());
 		assertEquals('a', x.advance());
 		assertEquals(1, x.getCursorPos());
@@ -22,7 +24,7 @@ public class StringWithCursorTest extends TestCase
 
 	public void testAdvanceBy()
 	{
-		StringWithCursor x = new StringWithCursor("wundertuete");
+		StringWithCursor x = new StringWithCursor("wundertuete",Locale.US);
 		assertEquals("wunder",x.advanceBy(6));
 		assertEquals("", x.advanceBy(0));
 		try
@@ -35,7 +37,7 @@ public class StringWithCursorTest extends TestCase
 
 	public void testNextIsAndAdvance()
 	{
-		StringWithCursor x = new StringWithCursor("test123");
+		StringWithCursor x = new StringWithCursor("test123",Locale.US);
 		assertTrue(x.nextIsAndAdvance("te"));
 		assertEquals(2, x.getCursorPos());
 		assertFalse(x.nextIsAndAdvance("te"));
@@ -47,7 +49,7 @@ public class StringWithCursorTest extends TestCase
 
 	public void testNextIsAndAdvanceChar()
 	{
-		StringWithCursor x = new StringWithCursor("test123");
+		StringWithCursor x = new StringWithCursor("test123",Locale.US);
 		assertTrue(x.nextIsAndAdvance('t'));
 		assertEquals(1, x.getCursorPos());
 		assertFalse(x.nextIsAndAdvance('t'));
@@ -58,14 +60,14 @@ public class StringWithCursorTest extends TestCase
 
 	public void testNextIsAndAdvanceIgnoreCase()
 	{
-		StringWithCursor x = new StringWithCursor("test123");
+		StringWithCursor x = new StringWithCursor("test123",Locale.US);
 		assertTrue(x.nextIsAndAdvanceIgnoreCase("TE"));
 		assertTrue(x.nextIsAndAdvanceIgnoreCase("st"));
 	}
 
 	public void testFindNext()
 	{
-		StringWithCursor x = new StringWithCursor("abc abc");
+		StringWithCursor x = new StringWithCursor("abc abc",Locale.US);
 		assertEquals("abc abc".length(), x.findNext("wurst"));
 
 		assertEquals(0,x.findNext("abc"));
@@ -75,7 +77,7 @@ public class StringWithCursorTest extends TestCase
 
 	public void testFindNextChar()
 	{
-		StringWithCursor x = new StringWithCursor("abc abc");
+		StringWithCursor x = new StringWithCursor("abc abc",Locale.US);
 		assertEquals("abc abc".length(), x.findNext('x'));
 
 		assertEquals(0,x.findNext('a'));
@@ -85,7 +87,7 @@ public class StringWithCursorTest extends TestCase
 
 	public void testNextIsChar()
 	{
-		StringWithCursor x = new StringWithCursor("abc");
+		StringWithCursor x = new StringWithCursor("abc",Locale.US);
 		assertTrue(x.nextIs('a'));
 		assertFalse(x.nextIs('b'));
 		x.advance();
@@ -98,7 +100,7 @@ public class StringWithCursorTest extends TestCase
 
 	public void testNextIsString()
 	{
-		StringWithCursor x = new StringWithCursor("abc");
+		StringWithCursor x = new StringWithCursor("abc",Locale.US);
 		assertTrue(x.nextIs("abc"));
 		assertTrue(x.nextIs("ab"));
 		assertFalse(x.nextIs("bc"));
@@ -111,7 +113,7 @@ public class StringWithCursorTest extends TestCase
 
 	public void testNextIsStringIgnoreCase()
 	{
-		StringWithCursor x = new StringWithCursor("abc");
+		StringWithCursor x = new StringWithCursor("abc",Locale.US);
 		assertTrue(x.nextIsIgnoreCase("A"));
 		assertTrue(x.nextIsIgnoreCase("a"));
 	}
