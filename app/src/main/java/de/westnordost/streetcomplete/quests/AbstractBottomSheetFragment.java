@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.quests;
 
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
@@ -9,9 +11,16 @@ import android.support.annotation.UiThread;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.v4.app.Fragment;
 import android.view.View;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.DecelerateInterpolator;
+import android.view.animation.OvershootInterpolator;
 import android.widget.LinearLayout;
 
 import de.westnordost.streetcomplete.R;
+import de.westnordost.streetcomplete.util.DpUtil;
 import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 
 public abstract class AbstractBottomSheetFragment extends Fragment
@@ -34,7 +43,9 @@ public abstract class AbstractBottomSheetFragment extends Fragment
 		buttonClose = view.findViewById(R.id.close_btn);
 		buttonClose.setOnClickListener(v -> getActivity().onBackPressed());
 
-		BottomSheetBehavior.from(bottomSheet).setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback()
+		BottomSheetBehavior bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet);
+
+		bottomSheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback()
 		{
 			@Override public void onStateChanged(@NonNull View bottomSheet, int newState) { }
 
@@ -46,8 +57,33 @@ public abstract class AbstractBottomSheetFragment extends Fragment
 
 		if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE)
 		{
-			BottomSheetBehavior.from(bottomSheet).setState(BottomSheetBehavior.STATE_EXPANDED);
+			bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+		} else
+		{
+			ObjectAnimator overshootBottomSheet = ObjectAnimator.ofInt(
+				bottomSheetBehavior, "peekHeight", (int) DpUtil.toPx(296, getContext()));
+			overshootBottomSheet.setInterpolator(new DecelerateInterpolator());
+			overshootBottomSheet.setRepeatMode(ValueAnimator.REVERSE);
+			overshootBottomSheet.setRepeatCount(1);
+			overshootBottomSheet.setStartDelay(200);
+			overshootBottomSheet.setDuration(100);
+			overshootBottomSheet.start();
 		}
+
+		Animation inflateTitleBubble = AnimationUtils.loadAnimation(getContext(), R.anim.inflate_title_bubble);
+		inflateTitleBubble.setInterpolator(new DecelerateInterpolator());
+		inflateTitleBubble.setDuration(300);
+		view.findViewById(R.id.titleSpeechBubble).startAnimation(inflateTitleBubble);
+
+		Animation inflateAnswerBubbleTop = AnimationUtils.loadAnimation(getContext(), R.anim.inflate_answer_bubble_top);
+		inflateAnswerBubbleTop.setInterpolator(new DecelerateInterpolator());
+		inflateAnswerBubbleTop.setDuration(300);
+		view.findViewById(R.id.speechbubbleContent).startAnimation(inflateAnswerBubbleTop);
+
+		Animation inflateAnswerBubbleBottom = AnimationUtils.loadAnimation(getContext(), R.anim.inflate_answer_bubble_bottom);
+		inflateAnswerBubbleBottom.setInterpolator(new DecelerateInterpolator());
+		inflateAnswerBubbleBottom.setDuration(300);
+		view.findViewById(R.id.buttonPanelContainer).startAnimation(inflateAnswerBubbleBottom);
 	}
 
 	private void updateCloseButtonVisibility()
