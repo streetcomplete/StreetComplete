@@ -164,7 +164,7 @@ public class CreateNoteUploadTest extends TestCase
 		assertNotNull(createNoteUpload.uploadCreateNote(createNote));
 
 		verify(notesDao).create(createNote.position,
-				"for https://www.openstreetmap.org/way/5 via "+ ApplicationConstants.USER_AGENT+":\n\njo ho");
+				"for https://osm.org/way/5 via "+ ApplicationConstants.USER_AGENT+":\n\njo ho");
 
 		verifyNoteInsertedIntoDb(createNote.id, note);
 	}
@@ -184,7 +184,7 @@ public class CreateNoteUploadTest extends TestCase
 		assertNotNull(createNoteUpload.uploadCreateNote(createNote));
 
 		verify(notesDao).create(createNote.position,
-				"Unable to answer \"What?\" for https://www.openstreetmap.org/way/5 via "+ ApplicationConstants.USER_AGENT+":\n\njo ho");
+				"Unable to answer \"What?\" for https://osm.org/way/5 via "+ ApplicationConstants.USER_AGENT+":\n\njo ho");
 
 		verifyNoteInsertedIntoDb(createNote.id, note);
 	}
