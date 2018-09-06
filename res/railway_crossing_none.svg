@@ -9,10 +9,10 @@
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    version="1.1"
    id="svg16"
-   sodipodi:docname="ek_none.svg"
+   sodipodi:docname="railway_crossing_none.svg"
    inkscape:version="0.92.1 r15371"
-   width="100"
-   height="60.5">
+   width="80"
+   height="64">
   <metadata
      id="metadata22">
     <rdf:RDF>
@@ -47,50 +47,57 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="640"
-     inkscape:window-height="480"
+     inkscape:window-width="1023"
+     inkscape:window-height="815"
      id="namedview18"
      showgrid="false"
-     inkscape:zoom="2.36"
-     inkscape:cx="50"
-     inkscape:cy="50"
+     inkscape:zoom="3.337544"
+     inkscape:cx="17.076157"
+     inkscape:cy="50.248215"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="0"
      inkscape:current-layer="svg16" />
-  <polygon
-     points="85,100 15,100 37,50 62,50 "
-     id="polygon2"
+  <path
+     style="fill:#e1d9af"
+     d="M 75,19 H 69 L 80,37 V 26 Z"
+     id="polygon4-8"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ccccc" />
+  <path
      style="fill:#d7d7d7"
-     transform="translate(0,-39.5)" />
-  <polygon
-     points="0,73 0,62 10,55 18,55 "
+     d="M 32,0 H 48 L 67,64 H 13 Z"
+     id="polygon2"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ccccc" />
+  <path
+     style="fill:#e1d9af"
+     d="m 5,19 h 6 L 0,37 V 26 Z"
      id="polygon4"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ccccc" />
+  <path
      style="fill:#e1d9af"
-     transform="translate(0,-39.5)" />
-  <polygon
-     points="18,80 7,80 25,55 32,55 "
+     d="m 16,19 h 6 L 13,42 H 4 Z"
      id="polygon6"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ccccc" />
+  <path
      style="fill:#e1d9af"
-     transform="translate(0,-39.5)" />
-  <polygon
-     points="100,73 100,62 90,55 82,55 "
-     id="polygon8"
-     style="fill:#e1d9af"
-     transform="translate(0,-39.5)" />
-  <polygon
-     points="82,80 93,80 75,55 68,55 "
-     id="polygon10"
-     style="fill:#e1d9af"
-     transform="translate(0,-39.5)" />
-  <polygon
-     points="100,60 0,60 0,58 100,58 "
+     d="m 64,19 h -6 l 9,23 h 9 z"
+     id="polygon6-1"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ccccc" />
+  <path
+     style="fill:#8c7570"
+     d="m 0,22 h 80 v 2 H 0 Z"
      id="polygon12"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ccccc" />
+  <path
      style="fill:#8c7570"
-     transform="translate(0,-39.5)" />
-  <polygon
-     points="100,76 0,76 0,73 100,73 "
+     d="m 0,35 h 80 v 3 H 0 Z"
      id="polygon14"
-     style="fill:#8c7570"
-     transform="translate(0,-39.5)" />
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ccccc" />
 </svg>
