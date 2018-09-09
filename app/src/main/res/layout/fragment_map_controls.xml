@@ -3,18 +3,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 xmlns:tools="http://schemas.android.com/tools"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:layout_margin="4dp">
+                xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
         android:id="@+id/compass"
-        android:layout_width="54dp"
-        android:layout_height="54dp"
-        android:layout_margin="4dp"
-        style="@style/RoundMapButton"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        style="@style/RoundButton"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="4dp"
         tools:ignore="RtlHardcoded"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
+        android:theme="@style/MapButton"
         >
 
         <TextView
@@ -38,55 +39,69 @@
     </RelativeLayout>
 
     <LinearLayout
+        android:id="@+id/rightSide"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
+        android:paddingRight="4dp"
         android:orientation="vertical"
         android:clipToPadding="false"
-        android:showDividers="middle"
-        android:padding="4dp"
-        android:divider="@drawable/space_8dp"
-        tools:ignore="RtlHardcoded">
+        tools:ignore="RtlHardcoded,RtlSymmetry">
 
         <ImageButton
             android:id="@+id/zoom_in"
-            style="@style/RoundMapButton"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:scaleType="center"
+            style="@style/RoundButton"
             android:src="@drawable/ic_add_black_24dp"
-            android:contentDescription="@string/map_btn_zoom_in"/>
+            android:contentDescription="@string/map_btn_zoom_in"
+            android:theme="@style/MapButton"/>
 
         <ImageButton
             android:id="@+id/zoom_out"
-            style="@style/RoundMapButton"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:scaleType="center"
+            style="@style/RoundButton"
             android:src="@drawable/ic_remove_black_24dp"
-            android:contentDescription="@string/map_btn_zoom_out"/>
+            android:contentDescription="@string/map_btn_zoom_out"
+            android:theme="@style/MapButton"/>
 
         <de.westnordost.streetcomplete.location.LocationStateButton
             android:id="@+id/gps_tracking"
-            style="@style/RoundMapButton"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:scaleType="center"
+            style="@style/RoundButton"
             android:src="@drawable/ic_location_24dp"
             app:tint="@color/activated_tint"
-            android:contentDescription="@string/map_btn_gps_tracking"/>
+            android:contentDescription="@string/map_btn_gps_tracking"
+            android:theme="@style/MapButton"/>
 
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/leftSide"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:orientation="vertical"
+        android:paddingLeft="4dp"
         android:clipToPadding="false"
-        android:showDividers="middle"
-        android:padding="4dp"
-        android:divider="@drawable/space_8dp"
-        tools:ignore="RtlHardcoded">
+        tools:ignore="RtlHardcoded,RtlSymmetry">
 
         <ImageButton
             android:id="@+id/create_note"
-            style="@style/RoundMapButton"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:scaleType="center"
+            style="@style/RoundButton"
             android:src="@drawable/ic_create_note_black_24dp"
-            android:contentDescription="@string/map_btn_create_note"/>
+            android:contentDescription="@string/map_btn_create_note"
+            android:theme="@style/MapButton"/>
 
     </LinearLayout>
 

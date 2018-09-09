@@ -15,6 +15,7 @@ import javax.inject.Inject;
 import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
+import de.westnordost.streetcomplete.util.AdapterDataChangedWatcher;
 import de.westnordost.streetcomplete.util.Serializer;
 import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 
@@ -50,7 +51,7 @@ public class AddCollectionTimesForm extends AbstractQuestFormAnswerFragment
 				{
 					Bundle answer = new Bundle();
 					answer.putBoolean(NO_TIMES_SPECIFIED, true);
-					applyImmediateAnswer(answer);
+					applyAnswer(answer);
 				})
 				.setNegativeButton(R.string.quest_generic_confirmation_no, null)
 				.show();
@@ -72,10 +73,12 @@ public class AddCollectionTimesForm extends AbstractQuestFormAnswerFragment
 		}
 
 		collectionTimesAdapter = new CollectionTimesAdapter(data, getContext(), getCountryInfo());
+		collectionTimesAdapter.registerAdapterDataObserver(new AdapterDataChangedWatcher(this::checkIsFormComplete));
 		RecyclerView collectionTimesList = contentView.findViewById(R.id.collection_times_list);
 		collectionTimesList.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
 		collectionTimesList.setAdapter(collectionTimesAdapter);
 		collectionTimesList.setNestedScrollingEnabled(false);
+		checkIsFormComplete();
 	}
 
 	@Override public void onSaveInstanceState(Bundle outState)
@@ -88,8 +91,8 @@ public class AddCollectionTimesForm extends AbstractQuestFormAnswerFragment
 	{
 		Bundle answer = new Bundle();
 		answer.putString(TIMES, collectionTimesAdapter.toString());
-		applyFormAnswer(answer);
+		applyAnswer(answer);
 	}
 
-	@Override public boolean hasChanges() { return !collectionTimesAdapter.toString().isEmpty(); }
+	@Override public boolean isFormComplete() { return !collectionTimesAdapter.toString().isEmpty(); }
 }

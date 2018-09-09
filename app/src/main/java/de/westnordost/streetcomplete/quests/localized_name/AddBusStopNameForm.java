@@ -32,7 +32,7 @@ public class AddBusStopNameForm extends AddLocalizedNameForm
 
 	@Override
 	protected void onClickOk() {
-		this.applyNameAnswer();
+		applyNameAnswer();
 	}
 
 	private void confirmNoName()
@@ -43,7 +43,7 @@ public class AddBusStopNameForm extends AddLocalizedNameForm
 				{
 					Bundle data = new Bundle();
 					data.putBoolean(NO_NAME, true);
-					applyImmediateAnswer(data);
+					applyAnswer(data);
 				})
 				.setNegativeButton(R.string.quest_generic_confirmation_no, null)
 				.show();

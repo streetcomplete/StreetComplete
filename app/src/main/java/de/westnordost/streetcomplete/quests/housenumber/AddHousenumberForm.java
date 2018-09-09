@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.InputType;
+import android.text.TextWatcher;
 import android.text.method.DigitsKeyListener;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,11 +13,11 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
 import de.westnordost.streetcomplete.quests.building_type.BuildingType;
+import de.westnordost.streetcomplete.util.TextChangedWatcher;
 import de.westnordost.streetcomplete.view.Item;
 import de.westnordost.streetcomplete.view.ItemViewHolder;
 import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
@@ -46,15 +47,10 @@ public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 	{
 		View view = super.onCreateView(inflater, container, savedInstanceState);
 		restoreInstanceState(savedInstanceState);
-		String code = getCountryInfo().getCountryCode();
 
 		if(isHousename)
 		{
 			setLayout(R.layout.quest_housename);
-		}
-		else if("SK".equals(code))
-		{
-			setLayout(R.layout.quest_housenumber_slovak);
 		}
 		else
 		{
@@ -102,12 +98,6 @@ public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 
 	@Override protected void onClickOk()
 	{
-		if(!hasChanges())
-		{
-			Toast.makeText(getActivity(), R.string.no_changes, Toast.LENGTH_SHORT).show();
-			return;
-		}
-
 		if(inputHouseName != null)
 		{
 			applyHouseNameAnswer(getInputText(inputHouseName));
@@ -148,14 +138,14 @@ public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 	{
 		Bundle answer = new Bundle();
 		answer.putBoolean(NO_ADDRESS, true);
-		applyImmediateAnswer(answer);
+		applyAnswer(answer);
 	}
 
 	private void applyHouseNameAnswer(final String houseName)
 	{
 		Bundle answer = new Bundle();
 		answer.putString(HOUSENAME, houseName);
-		applyFormAnswer(answer);
+		applyAnswer(answer);
 	}
 
 	private void applyHouseNumberAnswer(final String houseNumber)
@@ -166,46 +156,36 @@ public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 		confirmHousenumber(looksInvalid, () ->
 		{
 			answer.putString(HOUSENUMBER, houseNumber);
-			applyFormAnswer(answer);
+			applyAnswer(answer);
 		});
 	}
 
 	private void applyConscriptionNumberAnswer(final String conscriptionNumber, final String streetNumber)
 	{
 		final Bundle answer = new Bundle();
-
-		// only conscription number is required
-		if(conscriptionNumber.isEmpty())
-		{
-			Toast.makeText(getActivity(), R.string.quest_housenumber_conscription_number_required, Toast.LENGTH_SHORT).show();
-			return;
-		}
-
-		boolean looksInvalid = false;
+		boolean looksInvalid = !conscriptionNumber.matches(VALID_CONSCRIPTIONNUMBER_REGEX);
 		if(!streetNumber.isEmpty())
 		{
 			looksInvalid |= !streetNumber.matches(getValidHousenumberRegex());
 		}
-		looksInvalid |= !conscriptionNumber.matches(VALID_CONSCRIPTIONNUMBER_REGEX);
 
 		confirmHousenumber(looksInvalid, () ->
 		{
 			answer.putString(CONSCRIPTIONNUMBER, conscriptionNumber);
-			answer.putString(STREETNUMBER, streetNumber);
-			applyFormAnswer(answer);
+			// streetNumber is optional
+			if(!streetNumber.isEmpty())
+			{
+				answer.putString(STREETNUMBER, streetNumber);
+			}
+			applyAnswer(answer);
 		});
 	}
 
-	@Override public boolean hasChanges()
+	@Override public boolean isFormComplete()
 	{
-		EditText[] possibleInputs = new EditText[]
-				{inputHouseNumber, inputHouseName, inputConscriptionNumber, inputStreetNumber};
-		for (EditText possibleInput : possibleInputs)
-		{
-			if(possibleInput != null && !getInputText(possibleInput).isEmpty())
-				return true;
-		}
-		return false;
+		// streetNumber is always optional
+		EditText input = getFirstNonNull(inputHouseNumber, inputHouseName, inputConscriptionNumber);
+		return input != null && !getInputText(input).isEmpty();
 	}
 
 	private void setLayout(int layoutResourceId)
@@ -216,7 +196,15 @@ public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 		inputHouseName = view.findViewById(R.id.inputHouseName);
 		inputConscriptionNumber = view.findViewById(R.id.inputConscriptionNumber);
 		inputStreetNumber = view.findViewById(R.id.inputStreetNumber);
-		EditText input = getFirstNonNull(inputHouseNumber, inputHouseName, inputConscriptionNumber, inputStreetNumber);
+
+		TextWatcher onChanged = new TextChangedWatcher(this::checkIsFormComplete);
+		if(inputHouseNumber != null) inputHouseNumber.addTextChangedListener(onChanged);
+		if(inputHouseName != null) inputHouseName.addTextChangedListener(onChanged);
+		if(inputConscriptionNumber != null) inputConscriptionNumber.addTextChangedListener(onChanged);
+		if(inputStreetNumber != null) inputStreetNumber.addTextChangedListener(onChanged);
+
+		// streetNumber is always optional
+		EditText input = getFirstNonNull(inputHouseNumber, inputHouseName, inputConscriptionNumber);
 		if(input != null) input.requestFocus();
 
 		initKeyboardButton(view);
@@ -277,7 +265,7 @@ public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 		return "^" + regex + "((-" + regex + ")|(," + regex + ")+)?";
 	}
 
-	private String getInputText(EditText editText)
+	private static String getInputText(EditText editText)
 	{
 		return editText.getText().toString().trim();
 	}

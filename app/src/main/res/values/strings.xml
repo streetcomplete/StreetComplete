@@ -433,10 +433,8 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="default_disabled_msg_go_inside">This quest type is disabled by default because you will likely have to enter the place to be able to answer a quest of this type.</string>
     <string name="quest_housenumber_conscription_number">Conscription number</string>
     <string name="quest_housenumber_street_number_optional">Orientation number (optional)</string>
-    <string name="quest_housenumber_conscription_number_required">A conscription number must be specified</string>
     <string name="quest_bridge_structure_title">What is the structure of this bridge?</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">Also cycleway on other side</string>
-    <string name="need_specify_both_sides">You need to specify both sides</string>
     <string name="map_btn_create_note">Create new note</string>
     <string name="create_new_note_unprecise">Zoom in further to create a note</string>
     <string name="create_new_note_description">You can leave a note to let other mappers know about an issue here. Adjust the note’s position by moving the map:</string>

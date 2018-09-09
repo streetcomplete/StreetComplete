@@ -10,7 +10,6 @@ import de.westnordost.streetcomplete.view.ImageSelectAdapter;
 import de.westnordost.streetcomplete.view.Item;
 
 public class AddCarWashTypeForm extends ImageListQuestAnswerFragment
-		implements ImageSelectAdapter.OnItemSelectionListener
 {
 	public static final String
 			AUTOMATED = "AUTOMATED",
@@ -27,29 +26,27 @@ public class AddCarWashTypeForm extends ImageListQuestAnswerFragment
 	{
 		super.onViewCreated(view, savedInstanceState);
 
-		imageSelector.setOnItemSelectionListener(this);
+		imageSelector.addOnItemSelectionListener(new ImageSelectAdapter.OnItemSelectionListener()
+		{
+			@Override public void onIndexSelected(int index)
+			{
+				// service is exclusive with everything else
+				if(index == 2)
+				{
+					imageSelector.deselect(0);
+					imageSelector.deselect(1);
+				}
+				else
+				{
+					imageSelector.deselect(2);
+				}
+			}
+
+			@Override public void onIndexDeselected(int index) {}
+		});
 	}
 
 	@Override protected Item[] getItems() { return TYPES; }
 	@Override protected int getItemsPerRow() { return 3; }
 	@Override protected int getMaxSelectableItems() { return 3; }
-
-	@Override public void onIndexSelected(int index)
-	{
-		// service is exclusive with everything else
-		if(index == 2)
-		{
-			imageSelector.deselect(0);
-			imageSelector.deselect(1);
-		}
-		else
-		{
-			imageSelector.deselect(2);
-		}
-	}
-
-	@Override public void onIndexDeselected(int index)
-	{
-		// no thanks, we are fine
-	}
 }

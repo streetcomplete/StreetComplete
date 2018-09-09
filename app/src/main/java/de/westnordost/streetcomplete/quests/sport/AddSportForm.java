@@ -123,6 +123,6 @@ public class AddSportForm extends ImageListQuestAnswerFragment
 		ArrayList<String> strings = new ArrayList<>(1);
 		strings.add("multi");
 		answer.putStringArrayList(OSM_VALUES, strings);
-		applyImmediateAnswer(answer);
+		applyAnswer(answer);
 	}
 }

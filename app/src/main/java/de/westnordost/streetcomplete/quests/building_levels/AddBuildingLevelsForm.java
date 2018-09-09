@@ -1,14 +1,15 @@
 package de.westnordost.streetcomplete.quests.building_levels;
 
 import android.os.Bundle;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
+import de.westnordost.streetcomplete.util.TextChangedWatcher;
 import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 
 public class AddBuildingLevelsForm extends AbstractQuestFormAnswerFragment
@@ -25,11 +26,15 @@ public class AddBuildingLevelsForm extends AbstractQuestFormAnswerFragment
 
 		View contentView = setContentView(R.layout.quest_building_levels);
 
+		TextWatcher onTextChangedListener = new TextChangedWatcher(this::checkIsFormComplete);
+
 		levelsInput = contentView.findViewById(R.id.levelsInput);
 		levelsInput.requestFocus();
+		levelsInput.addTextChangedListener(onTextChangedListener);
 		roofLevelsInput = contentView.findViewById(R.id.roofLevelsInput);
+		roofLevelsInput.addTextChangedListener(onTextChangedListener);
 
-		addOtherAnswer(R.string.quest_buildingLevels_answer_multipleLevels,	() ->
+		addOtherAnswer(R.string.quest_buildingLevels_answer_multipleLevels, () ->
 		{
 			new AlertDialogBuilder(getActivity())
 					.setMessage(R.string.quest_buildingLevels_answer_description)
@@ -43,30 +48,16 @@ public class AddBuildingLevelsForm extends AbstractQuestFormAnswerFragment
 	@Override protected void onClickOk()
 	{
 		Bundle answer = new Bundle();
-		String buildingLevelsString = levelsInput.getText().toString();
-		String roofLevelsString  = roofLevelsInput.getText().toString();
-
-		if (buildingLevelsString.isEmpty())
+		answer.putInt(BUILDING_LEVELS, Integer.parseInt(getLevels()));
+		if(!getRoofLevels().isEmpty())
 		{
-			Toast.makeText(getActivity(), R.string.no_changes, Toast.LENGTH_SHORT).show();
+			answer.putInt(ROOF_LEVELS, Integer.parseInt(getRoofLevels()));
 		}
-		else
-		{
-			int buildingLevels = Integer.parseInt(buildingLevelsString);
-			int roofLevels = !roofLevelsString.isEmpty() ? Integer.parseInt(roofLevelsString) : 0;
-
-			answer.putInt(BUILDING_LEVELS, buildingLevels);
-			if(!roofLevelsString.isEmpty())
-			{
-				answer.putInt(ROOF_LEVELS, roofLevels);
-			}
-			applyFormAnswer(answer);
-		}
+		applyAnswer(answer);
 	}
 
-	@Override public boolean hasChanges()
-	{
-		return !levelsInput.getText().toString().isEmpty() ||
-		       !roofLevelsInput.getText().toString().isEmpty();
-	}
+	private String getLevels() { return levelsInput.getText().toString(); }
+	private String getRoofLevels() { return roofLevelsInput.getText().toString(); }
+
+	@Override public boolean isFormComplete() { return !getLevels().isEmpty(); }
 }

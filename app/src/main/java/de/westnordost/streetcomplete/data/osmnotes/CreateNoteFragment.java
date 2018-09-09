@@ -156,7 +156,7 @@ public class CreateNoteFragment extends AbstractBottomSheetFragment
 		markerLayout.setVisibility(View.INVISIBLE);
 	}
 
-	@Override public boolean hasChanges()
+	@Override public boolean isRejectingClose()
 	{
 		return !noteInput.getText().toString().trim().isEmpty();
 	}

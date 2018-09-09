@@ -8,6 +8,7 @@ import android.widget.EditText;
 
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
+import de.westnordost.streetcomplete.util.TextChangedWatcher;
 import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 
 public class AddPlaceNameForm extends AbstractQuestFormAnswerFragment
@@ -25,6 +26,7 @@ public class AddPlaceNameForm extends AbstractQuestFormAnswerFragment
 
 		View contentView = setContentView(R.layout.quest_placename);
 		nameInput = contentView.findViewById(R.id.nameInput);
+		nameInput.addTextChangedListener(new TextChangedWatcher(this::checkIsFormComplete));
 
 		addOtherAnswer(R.string.quest_name_answer_noName, this::confirmNoName);
 
@@ -34,9 +36,8 @@ public class AddPlaceNameForm extends AbstractQuestFormAnswerFragment
 	@Override protected void onClickOk()
 	{
 		Bundle data = new Bundle();
-		String name = nameInput.getText().toString().trim();
-		data.putString(NAME, name);
-		applyFormAnswer(data);
+		data.putString(NAME, getPlaceName());
+		applyAnswer(data);
 	}
 
 	private void confirmNoName()
@@ -47,14 +48,13 @@ public class AddPlaceNameForm extends AbstractQuestFormAnswerFragment
 			{
 				Bundle data = new Bundle();
 				data.putBoolean(NO_NAME, true);
-				applyImmediateAnswer(data);
+				applyAnswer(data);
 			})
 			.setNegativeButton(R.string.quest_generic_confirmation_no, null)
 			.show();
 	}
 
-	@Override public boolean hasChanges()
-	{
-		return !nameInput.getText().toString().trim().isEmpty();
-	}
+	@Override public boolean isFormComplete() { return !getPlaceName().isEmpty(); }
+
+	private String getPlaceName() { return nameInput.getText().toString().trim(); }
 }

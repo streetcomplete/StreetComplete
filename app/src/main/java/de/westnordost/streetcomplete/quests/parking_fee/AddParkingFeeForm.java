@@ -11,7 +11,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,13 +20,13 @@ import javax.inject.Inject;
 
 import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.R;
-import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
+import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.AddOpeningHoursAdapter;
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningMonthsRow;
-import de.westnordost.streetcomplete.quests.opening_hours.model.OpeningMonths;
+import de.westnordost.streetcomplete.util.AdapterDataChangedWatcher;
 import de.westnordost.streetcomplete.util.Serializer;
 
-public class AddParkingFeeForm extends AbstractQuestAnswerFragment
+public class AddParkingFeeForm extends AbstractQuestFormAnswerFragment
 {
 
 	public static final String FEE = "fee",
@@ -53,8 +52,9 @@ public class AddParkingFeeForm extends AbstractQuestAnswerFragment
 
 		Injector.instance.getApplicationComponent().inject(this);
 
-		View buttonPanel = setButtonsView(R.layout.quest_buttonpanel_yes_no_ok);
-		buttonOk = buttonPanel.findViewById(R.id.buttonOk);
+		View buttonPanel = setButtonsView(R.layout.quest_buttonpanel_yes_no);
+
+		buttonOk = view.findViewById(R.id.buttonOk);
 		buttonOk.setOnClickListener(v -> onClickOk());
 
 		buttonYes = buttonPanel.findViewById(R.id.buttonYes);
@@ -69,10 +69,12 @@ public class AddParkingFeeForm extends AbstractQuestAnswerFragment
 
 		ArrayList<OpeningMonthsRow> viewData = loadOpeningHoursData(savedInstanceState);
 		openingHoursAdapter = new AddOpeningHoursAdapter(viewData, getActivity(), getCountryInfo());
+		openingHoursAdapter.registerAdapterDataObserver(new AdapterDataChangedWatcher(this::checkIsFormComplete));
 		RecyclerView openingHoursList = hoursView.findViewById(R.id.hours_list);
 		openingHoursList.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
 		openingHoursList.setAdapter(openingHoursAdapter);
 		openingHoursList.setNestedScrollingEnabled(false);
+		checkIsFormComplete();
 
 		Button addTimes = hoursView.findViewById(R.id.btn_add);
 		addTimes.setOnClickListener((v) -> openingHoursAdapter.addNewWeekdays());
@@ -100,24 +102,23 @@ public class AddParkingFeeForm extends AbstractQuestAnswerFragment
 		return view;
 	}
 
-	private void onClickOk()
+	@Override protected void onClickOk()
 	{
-		if(!hasChanges())
-		{
-			Toast.makeText(getActivity(), R.string.no_changes, Toast.LENGTH_SHORT).show();
-			return;
-		}
 		Bundle bundle = new Bundle();
 		bundle.putBoolean(FEE, !isFeeOnlyAtHours);
-		bundle.putString(FEE_CONDITONAL_HOURS, TextUtils.join(";", openingHoursAdapter.createData()));
-		applyImmediateAnswer(bundle);
+		String oh = getOpeningHoursString();
+		if(!oh.isEmpty())
+		{
+			bundle.putString(FEE_CONDITONAL_HOURS, oh);
+		}
+		applyAnswer(bundle);
 	}
 
 	private void onClickYesNo(boolean answer)
 	{
 		Bundle bundle = new Bundle();
 		bundle.putBoolean(FEE, answer);
-		applyImmediateAnswer(bundle);
+		applyAnswer(bundle);
 	}
 
 	private ArrayList<OpeningMonthsRow> loadOpeningHoursData(Bundle savedInstanceState)
@@ -148,15 +149,18 @@ public class AddParkingFeeForm extends AbstractQuestAnswerFragment
 		this.isDefiningHours = isDefiningHours;
 
 		hoursView.setVisibility(isDefiningHours ? View.VISIBLE : View.GONE);
-		buttonOk.setVisibility(isDefiningHours ? View.VISIBLE : View.GONE);
 		buttonNo.setVisibility(isDefiningHours ? View.GONE : View.VISIBLE);
 		buttonYes.setVisibility(isDefiningHours ? View.GONE : View.VISIBLE);
 	}
 
-	@Override public boolean hasChanges()
+	@Override public boolean isFormComplete()
 	{
 		if(!isDefiningHours) return false;
-		List<OpeningMonths> data = openingHoursAdapter.createData();
-		return !TextUtils.join(";", data).isEmpty();
+		return !getOpeningHoursString().isEmpty();
+	}
+
+	private String getOpeningHoursString()
+	{
+		return TextUtils.join(";", openingHoursAdapter.createData());
 	}
 }

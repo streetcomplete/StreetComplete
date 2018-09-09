@@ -74,7 +74,7 @@ public class AddBuildingTypeForm extends GroupedImageListQuestAnswerFragment
 		{
 			answer.putString(BUILDING, value);
 		}
-		applyFormAnswer(answer);
+		applyAnswer(answer);
 	}
 
 	private void addOtherAnswers()
@@ -83,7 +83,7 @@ public class AddBuildingTypeForm extends GroupedImageListQuestAnswerFragment
 		addOtherAnswer(R.string.quest_buildingType_answer_construction_site, () -> {
 			Bundle answer = new Bundle();
 			answer.putString(BUILDING, "construction");
-			applyImmediateAnswer(answer);
+			applyAnswer(answer);
 		});
 	}
 

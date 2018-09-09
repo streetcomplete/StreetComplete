@@ -659,6 +659,7 @@ public class MainActivity extends AppCompatActivity implements
 				mapFragment.removeQuestGeometry();
 				mapFragment.setIsFollowingPosition(isFollowingPosition);
 				mapFragment.setCompassMode(isCompassMode);
+				mapFragment.showMapControls();
 				MainActivity.super.onBackPressed();
 			});
 		}
@@ -884,6 +885,7 @@ public class MainActivity extends AppCompatActivity implements
 		mapFragment.setIsFollowingPosition(isFollowingPosition);
 		mapFragment.setCompassMode(isCompassMode);
 		mapFragment.removeQuestGeometry();
+		mapFragment.showMapControls();
 	}
 
 	private boolean isQuestDetailsCurrentlyDisplayedFor(long questId, QuestGroup group)
@@ -929,6 +931,7 @@ public class MainActivity extends AppCompatActivity implements
 		isCompassMode = mapFragment.isCompassMode();
 		mapFragment.setIsFollowingPosition(false);
 		mapFragment.setCompassMode(false);
+		mapFragment.hideMapControls();
 
 		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 		ft.setCustomAnimations(

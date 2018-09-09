@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/background_housenumber_frame"
-            app:backgroundTint="@color/housenumber_background"
+            app:backgroundTint="@color/traffic_blue"
             android:imeOptions="actionDone"
             tools:text="12"
             android:digits="0123456789.,- /"

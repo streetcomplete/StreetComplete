@@ -11,7 +11,7 @@ import android.widget.FrameLayout;
 
 import de.westnordost.streetcomplete.util.DpUtil;
 
-/** Mask the speech_bubble_start/end.9.png*/
+/** Mask the speech_bubble_none.9.png*/
 public class MaskSpeechbubbleCornersFrameLayout extends FrameLayout
 {
 	public MaskSpeechbubbleCornersFrameLayout(Context context)
@@ -39,7 +39,7 @@ public class MaskSpeechbubbleCornersFrameLayout extends FrameLayout
 	protected void dispatchDraw(Canvas canvas)
 	{
 		Path path = new Path();
-		int corner = (int) DpUtil.toPx(10, getContext());
+		int corner = (int) DpUtil.toPx(10.5f, getContext());
 		path.addRoundRect(new RectF(0,0,canvas.getWidth(),canvas.getHeight()), corner, corner, Path.Direction.CW);
 		canvas.clipPath(path);
 		super.dispatchDraw(canvas);

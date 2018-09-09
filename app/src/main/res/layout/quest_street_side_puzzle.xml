@@ -13,12 +13,14 @@
 
     <RelativeLayout
         android:id="@+id/compass"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:background="@drawable/background_white_circle"
+        android:padding="4dp"
         android:layout_margin="8dp"
-        android:background="@drawable/round_button_selector"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true">
+        android:layout_alignParentTop="true"
+        android:theme="@style/MapButton">
 
         <TextView
             android:layout_width="wrap_content"

@@ -5,15 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
 
 public class AddParkingAccessForm extends AbstractQuestFormAnswerFragment
 {
-
-	RadioGroup radioGroup;
+	private RadioGroup radioGroup;
 
 	public static final String ACCESS = "access";
 
@@ -23,43 +21,32 @@ public class AddParkingAccessForm extends AbstractQuestFormAnswerFragment
 		PRIVATE = "private";
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-							 Bundle savedInstanceState)
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
 		View view = super.onCreateView(inflater, container, savedInstanceState);
 		View contentView = setContentView(R.layout.quest_parking_access);
 		radioGroup = contentView.findViewById(R.id.radioButtonGroup);
-
+		radioGroup.setOnCheckedChangeListener((group, checkedId) -> checkIsFormComplete());
 		return view;
 	}
 
 	@Override protected void onClickOk()
 	{
 		Bundle answer = new Bundle();
-
-		int checkedButton = radioGroup.getCheckedRadioButtonId();
-		if (checkedButton == -1)
-		{
-			Toast.makeText(getActivity(), R.string.no_changes, Toast.LENGTH_SHORT).show();
-		}
-		else
-		{
-			switch (checkedButton)
-			{
-				case R.id.yes:
-					answer.putString(ACCESS, YES);
-					break;
-				case R.id.customers:
-					answer.putString(ACCESS, CUSTOMERS);
-					break;
-				case R.id.private_access:
-					answer.putString(ACCESS, PRIVATE);
-					break;
-			}
-
-			applyFormAnswer(answer);
-		}
+		answer.putString(ACCESS, getAccessValueByCheckedRadioButtonId());
+		applyAnswer(answer);
 	}
 
-	@Override public boolean hasChanges() { return radioGroup.getCheckedRadioButtonId() != -1; }
+	private String getAccessValueByCheckedRadioButtonId()
+	{
+		switch (radioGroup.getCheckedRadioButtonId())
+		{
+			case R.id.yes:            return YES;
+			case R.id.customers:      return CUSTOMERS;
+			case R.id.private_access: return PRIVATE;
+		}
+		return null;
+	}
+
+	@Override public boolean isFormComplete() { return radioGroup.getCheckedRadioButtonId() != -1; }
 }

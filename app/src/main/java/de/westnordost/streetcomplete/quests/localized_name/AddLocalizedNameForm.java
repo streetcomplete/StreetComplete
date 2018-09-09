@@ -23,6 +23,7 @@ import javax.inject.Inject;
 import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
+import de.westnordost.streetcomplete.util.AdapterDataChangedWatcher;
 import de.westnordost.streetcomplete.util.Serializer;
 import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 
@@ -65,11 +66,14 @@ public abstract class AddLocalizedNameForm extends AbstractQuestFormAnswerFragme
 		Button addLanguageButton = contentView.findViewById(R.id.btn_add);
 
 		adapter = setupNameAdapter(data, addLanguageButton);
+		adapter.addOnNameChangedListener(name -> checkIsFormComplete());
+		adapter.registerAdapterDataObserver(new AdapterDataChangedWatcher(this::checkIsFormComplete));
 		RecyclerView recyclerView = contentView.findViewById(R.id.roadnames);
 		recyclerView.setLayoutManager(
 				new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
 		recyclerView.setAdapter(adapter);
 		recyclerView.setNestedScrollingEnabled(false);
+		checkIsFormComplete();
 	}
 
 	protected AddLocalizedNameAdapter setupNameAdapter(ArrayList<LocalizedName> data, Button addLanguageButton) {
@@ -95,10 +99,10 @@ public abstract class AddLocalizedNameForm extends AbstractQuestFormAnswerFragme
 
 	protected void applyNameAnswer()
 	{
-		applyFormAnswer(prepareAnswerBundle());
+		applyAnswer(createAnswer());
 	}
 
-	protected Bundle prepareAnswerBundle() {
+	protected Bundle createAnswer() {
 		Bundle bundle = new Bundle();
 		ArrayList<LocalizedName> data = adapter.getData();
 
@@ -186,9 +190,13 @@ public abstract class AddLocalizedNameForm extends AbstractQuestFormAnswerFragme
 		return result;
 	}
 
-	@Override public boolean hasChanges()
+	@Override public boolean isFormComplete()
 	{
-		// either the user added a language or typed something for the street name
-		return adapter.getData().size() > 1 || !adapter.getData().get(0).name.trim().isEmpty();
+		// all added name rows are not empty
+		for (LocalizedName localizedName : adapter.getData())
+		{
+			if(localizedName.name.trim().isEmpty()) return false;
+		}
+		return true;
 	}
 }

@@ -1,15 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
-
-    </style>
-
     <style name="MapProgressBar.Horizontal" parent="android:Widget.ProgressBar.Horizontal">
         <item name="android:progressDrawable">@drawable/map_progress</item>
         <item name="android:indeterminateDrawable">@drawable/map_progress</item>
@@ -17,10 +7,7 @@
         <item name="android:maxHeight">4dip</item>
     </style>
 
-    <style name="AppTheme.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
+
 
     <!-- Alert Dialog Styling-->
     <style name="AppTheme.AlertDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
@@ -57,13 +44,11 @@
         <item name="android:background">@drawable/background_housenumber_frame</item>
     </style>
 
-    <style name="RoundMapButton">
-        <item name="android:layout_width">54dp</item>
-        <item name="android:layout_height">54dp</item>
-        <item name="android:background">@drawable/round_button_selector</item>
-        <item name="android:elevation" tools:targetApi="21">4dp</item>
-        <item name="android:scaleType">center</item>
+    <style name="RoundButton">
+        <item name="android:background">@drawable/round_colored_button</item>
+        <item name="android:textColor">#fff</item>
         <item name="android:clickable">true</item>
+        <item name="android:elevation" tools:targetApi="21">4dp</item>
     </style>
 
     <style name="ImageSelectLabel">
@@ -105,8 +90,11 @@
 
     <style name="BottomSheetButtonBarItem">
         <item name="android:background">?android:attr/selectableItemBackground</item>
+        <item name="android:textColor">@color/colorAccent</item>
         <item name="android:paddingTop">16dp</item>
         <item name="android:paddingBottom">16dp</item>
+        <item name="android:paddingLeft">12dp</item>
+        <item name="android:paddingRight">12dp</item>
     </style>
 
 </resources>

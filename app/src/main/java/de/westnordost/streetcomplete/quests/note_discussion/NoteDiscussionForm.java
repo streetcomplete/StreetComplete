@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.quests.note_discussion;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.format.DateUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +10,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.Date;
 import javax.inject.Inject;
@@ -19,16 +17,14 @@ import javax.inject.Inject;
 import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestDao;
-import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
-import de.westnordost.streetcomplete.util.InlineAsyncTask;
+import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
 import de.westnordost.osmapi.notes.Note;
 import de.westnordost.osmapi.notes.NoteComment;
 
 import static android.text.format.DateUtils.MINUTE_IN_MILLIS;
 
-public class NoteDiscussionForm extends AbstractQuestAnswerFragment
+public class NoteDiscussionForm extends AbstractQuestFormAnswerFragment
 {
-	private static final String TAG = "NoteDiscussionForm";
 	public static final String TEXT = "text";
 	public static final String IMAGE_PATHS = "image_paths";
 
@@ -51,7 +47,7 @@ public class NoteDiscussionForm extends AbstractQuestAnswerFragment
 
 		View contentView = setContentView(R.layout.quest_note_discussion);
 
-		View buttonPanel = setButtonsView(R.layout.quest_notediscussion_buttonbar);
+		View buttonPanel = setButtonsView(R.layout.quest_buttonpanel_notediscussion);
 		Button buttonOk = buttonPanel.findViewById(R.id.buttonOk);
 		buttonOk.setOnClickListener(v -> onClickOk());
 		Button buttonNo = buttonPanel.findViewById(R.id.buttonNo);
@@ -62,33 +58,15 @@ public class NoteDiscussionForm extends AbstractQuestAnswerFragment
 
 		buttonOtherAnswers.setVisibility(View.GONE);
 
-		new InlineAsyncTask<Note>()
-		{
-			@Override protected Note doInBackground()
-			{
-				return noteDb.get(getQuestId()).getNote();
-			}
-
-			@Override public void onSuccess(Note result)
-			{
-				if(getActivity() != null && result != null)
-				{
-					inflateNoteDiscussion(result);
-				}
-			}
-
-			@Override public void onError(Exception e)
-			{
-				Log.e(TAG, "Error fetching note quest " + getQuestId() + " from DB.", e);
-			}
-		}.execute();
-
 		return view;
 	}
 
 	@Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState)
 	{
 		super.onViewCreated(view, savedInstanceState);
+
+		inflateNoteDiscussion(noteDb.get(getQuestId()).getNote());
+
 		if(savedInstanceState == null)
 		{
 			// TODO reenable when photos can be uploaded again somewhere #1161
@@ -157,37 +135,29 @@ public class NoteDiscussionForm extends AbstractQuestAnswerFragment
 		throw new RuntimeException();
 	}
 
-	private void onClickOk()
+	protected void onClickOk()
 	{
-		String noteText = noteInput.getText().toString().trim();
-		if(noteText.isEmpty())
-		{
-			Toast.makeText(getActivity(), R.string.no_changes, Toast.LENGTH_SHORT).show();
-			return;
-		}
-
 		AttachPhotoFragment f = getAttachPhotoFragment();
-
 		Bundle answer = new Bundle();
-		answer.putString(TEXT, noteText);
+		answer.putString(TEXT, getNoteInput());
 		answer.putStringArrayList(IMAGE_PATHS, f != null ? f.getImagePaths() : null);
-		applyImmediateAnswer(answer);
+		applyAnswer(answer);
 	}
 
-	@Override
-	public void onDiscard()
+	@Override public void onDiscard()
 	{
 		AttachPhotoFragment f = getAttachPhotoFragment();
 		if(f != null) f.deleteImages();
 	}
 
-	@Override public boolean hasChanges()
+	@Override public boolean isFormComplete() { return !getNoteInput().isEmpty(); }
+
+	private String getNoteInput() { return noteInput.getText().toString().trim(); }
+
+	@Override public boolean isRejectingClose()
 	{
 		AttachPhotoFragment f = getAttachPhotoFragment();
 		boolean hasPhotos = f != null && !f.getImagePaths().isEmpty();
-		boolean hasText = !noteInput.getText().toString().trim().isEmpty();
-
-		return hasPhotos || hasText;
+		return hasPhotos || !getNoteInput().isEmpty();
 	}
-
 }

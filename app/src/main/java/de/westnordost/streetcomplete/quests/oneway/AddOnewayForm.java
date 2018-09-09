@@ -48,7 +48,7 @@ public class AddOnewayForm extends YesNoQuestAnswerFragment
 		bundle.putBoolean(ANSWER, answer);
 		// the quest needs the way ID of the element to find out the direction of the oneway
 		bundle.putLong(WAY_ID, getOsmElement().getId());
-		applyImmediateAnswer(bundle);
+		applyAnswer(bundle);
 	}
 
 	@AnyThread public void onMapOrientation(float rotation, float tilt)

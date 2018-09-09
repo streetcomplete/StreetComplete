@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -21,6 +20,7 @@ import javax.inject.Inject;
 import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.view.GroupedImageSelectAdapter;
+import de.westnordost.streetcomplete.view.ImageSelectAdapter;
 import de.westnordost.streetcomplete.view.Item;
 import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 
@@ -73,6 +73,8 @@ public abstract class GroupedImageListQuestAnswerFragment extends AbstractQuestF
 		selectHint.setText(R.string.quest_select_hint_most_specific);
 
 		imageSelector = new GroupedImageSelectAdapter(lm);
+		imageSelector.addOnItemSelectionListener(item -> checkIsFormComplete());
+		checkIsFormComplete();
 
 		return view;
 	}
@@ -87,12 +89,6 @@ public abstract class GroupedImageListQuestAnswerFragment extends AbstractQuestF
 	@Override protected void onClickOk()
 	{
 		Item item = getSelectedItem();
-		if(item == null)
-		{
-			Toast.makeText(getActivity(), R.string.no_changes, Toast.LENGTH_SHORT).show();
-			return;
-		}
-
 		if(item.isGroup())
 		{
 			if(!item.hasValue())
@@ -128,10 +124,10 @@ public abstract class GroupedImageListQuestAnswerFragment extends AbstractQuestF
 	{
 		Bundle answer = new Bundle();
 		answer.putString(OSM_VALUE, value);
-		applyFormAnswer(answer);
+		applyAnswer(answer);
 	}
 
-	@Override public boolean hasChanges() { return getSelectedItem() != null; }
+	@Override public boolean isFormComplete() { return getSelectedItem() != null; }
 
 	private Item getSelectedItem() { return imageSelector.getSelectedItem(); }
 

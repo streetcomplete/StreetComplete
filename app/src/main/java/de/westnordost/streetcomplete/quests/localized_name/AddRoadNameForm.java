@@ -48,8 +48,8 @@ public class AddRoadNameForm extends AddLocalizedNameForm
 
 		Injector.instance.getApplicationComponent().inject(this);
 
-
 		View contentView = setContentView(R.layout.quest_localizedname);
+
 		addOtherAnswers();
 
 		initLocalizedNameAdapter(contentView, savedInstanceState);
@@ -110,10 +110,10 @@ public class AddRoadNameForm extends AddLocalizedNameForm
 	@Override
 	protected void applyNameAnswer()
 	{
-		Bundle bundle = prepareAnswerBundle();
+		Bundle bundle = createAnswer();
 		bundle.putLong(WAY_ID, getOsmElement().getId());
 		bundle.putSerializable(WAY_GEOMETRY, getElementGeometry());
-		applyFormAnswer(bundle);
+		applyAnswer(bundle);
 	}
 
 	private void selectNoStreetNameReason()
@@ -172,7 +172,7 @@ public class AddRoadNameForm extends AddLocalizedNameForm
 					if(answer.equals(serviceRoad))	type = IS_SERVICE;
 					if(answer.equals(trackRoad))    type = IS_TRACK;
 					data.putInt(NO_PROPER_ROAD, type);
-					applyImmediateAnswer(data);
+					applyAnswer(data);
 				}
 			}
 		};
@@ -196,15 +196,9 @@ public class AddRoadNameForm extends AddLocalizedNameForm
 				{
 					Bundle data = new Bundle();
 					data.putBoolean(NO_NAME, true);
-					applyImmediateAnswer(data);
+					applyAnswer(data);
 				})
 				.setNegativeButton(R.string.quest_generic_confirmation_no, null)
 				.show();
-	}
-
-	@Override public boolean hasChanges()
-	{
-		// either the user added a language or typed something for the street name
-		return adapter.getData().size() > 1 || !adapter.getData().get(0).name.trim().isEmpty();
 	}
 }

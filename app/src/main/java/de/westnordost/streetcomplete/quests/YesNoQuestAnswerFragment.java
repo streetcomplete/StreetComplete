@@ -17,19 +17,17 @@ public class YesNoQuestAnswerFragment extends AbstractQuestAnswerFragment
 							 Bundle savedInstanceState)
 	{
 		View view = super.onCreateView(inflater, container, savedInstanceState);
-		View buttonPanel = setButtonsView(R.layout.quest_buttonpanel_yesno);
+		View buttonPanel = setButtonsView(R.layout.quest_buttonpanel_yes_no);
 
 		buttonPanel.findViewById(R.id.buttonYes).setOnClickListener(v -> onClickYesNo(true));
 		buttonPanel.findViewById(R.id.buttonNo).setOnClickListener(v -> onClickYesNo(false));
 		return view;
 	}
 
-	@Override public boolean hasChanges() {	return false; }
-
 	protected void onClickYesNo(boolean answer)
 	{
 		Bundle bundle = new Bundle();
 		bundle.putBoolean(ANSWER, answer);
-		applyImmediateAnswer(bundle);
+		applyAnswer(bundle);
 	}
 }

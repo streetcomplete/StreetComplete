@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.inject.Inject;
 
@@ -21,7 +20,7 @@ import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.AddOpeningHoursAdapter;
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningMonthsRow;
-import de.westnordost.streetcomplete.quests.opening_hours.model.OpeningMonths;
+import de.westnordost.streetcomplete.util.AdapterDataChangedWatcher;
 import de.westnordost.streetcomplete.util.Serializer;
 import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 
@@ -76,10 +75,12 @@ public class AddOpeningHoursForm extends AbstractQuestFormAnswerFragment
 
 		openingHoursAdapter = new AddOpeningHoursAdapter(viewData, getActivity(), getCountryInfo());
 		openingHoursAdapter.setDisplayMonths(isAlsoAddingMonths);
+		openingHoursAdapter.registerAdapterDataObserver(new AdapterDataChangedWatcher(this::checkIsFormComplete));
 		RecyclerView openingHoursList = contentView.findViewById(R.id.opening_hours_list);
 		openingHoursList.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
 		openingHoursList.setAdapter(openingHoursAdapter);
 		openingHoursList.setNestedScrollingEnabled(false);
+		checkIsFormComplete();
 	}
 
 	private void addOtherAnswers()
@@ -120,11 +121,9 @@ public class AddOpeningHoursForm extends AbstractQuestFormAnswerFragment
 
 	@Override protected void onClickOk()
 	{
-		List<OpeningMonths> data = openingHoursAdapter.createData();
-		String openingHours = TextUtils.join(";", data);
 		Bundle answer = new Bundle();
-		answer.putString(OPENING_HOURS, openingHours);
-		applyFormAnswer(answer);
+		answer.putString(OPENING_HOURS, getOpeningHoursString());
+		applyAnswer(answer);
 	}
 
 	private void showInputCommentDialog()
@@ -149,7 +148,7 @@ public class AddOpeningHoursForm extends AbstractQuestFormAnswerFragment
 
 					Bundle answer = new Bundle();
 					answer.putString(OPENING_HOURS, "\""+txt+"\"");
-					applyImmediateAnswer(answer);
+					applyAnswer(answer);
 				})
 				.setNegativeButton(android.R.string.cancel, null)
 				.show();
@@ -163,7 +162,7 @@ public class AddOpeningHoursForm extends AbstractQuestFormAnswerFragment
 				{
 					Bundle answer = new Bundle();
 					answer.putString(OPENING_HOURS, "24/7");
-					applyImmediateAnswer(answer);
+					applyAnswer(answer);
 				})
 				.setNegativeButton(android.R.string.no, null)
 				.show();
@@ -177,7 +176,7 @@ public class AddOpeningHoursForm extends AbstractQuestFormAnswerFragment
 			{
 				Bundle data = new Bundle();
 				data.putBoolean(NO_SIGN, true);
-				applyImmediateAnswer(data);
+				applyAnswer(data);
 			})
 			.setNegativeButton(R.string.quest_generic_confirmation_no, null)
 			.show();
@@ -189,9 +188,10 @@ public class AddOpeningHoursForm extends AbstractQuestFormAnswerFragment
 		openingHoursAdapter.changeToMonthsMode();
 	}
 
-	@Override public boolean hasChanges()
+	@Override public boolean isFormComplete() { return !getOpeningHoursString().isEmpty(); }
+
+	private String getOpeningHoursString()
 	{
-		List<OpeningMonths> data = openingHoursAdapter.createData();
-		return !TextUtils.join(";", data).isEmpty();
+		return TextUtils.join(";", openingHoursAdapter.createData());
 	}
 }

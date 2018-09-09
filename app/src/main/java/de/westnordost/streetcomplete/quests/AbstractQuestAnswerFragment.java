@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -53,7 +54,7 @@ public abstract class AbstractQuestAnswerFragment extends AbstractBottomSheetFra
 
 	private final QuestAnswerComponent questAnswerComponent;
 
-	private LinearLayout buttonPanel;
+	private ViewGroup buttonPanel;
 	protected Button buttonOtherAnswers;
 
 	private OsmElement osmElement;
@@ -99,13 +100,10 @@ public abstract class AbstractQuestAnswerFragment extends AbstractBottomSheetFra
 	{
 		super.onViewCreated(view, savedInstanceState);
 
-		// no content? -> hide the content container and make the button bar background appear
-		// as a whole bubble (instead of the bottom-part of a bubble)
+		// no content? -> hide the content container
 		if(content.getChildCount() == 0)
 		{
-			view.findViewById(R.id.speechbubbleContent).setVisibility(View.GONE);
-			view.findViewById(R.id.buttonPanelContainer).setBackgroundResource(R.drawable.speech_bubble_none);
-			view.findViewById(R.id.buttonPanelDivider).setVisibility(View.GONE);
+			content.setVisibility(View.GONE);
 		}
 
 		if(otherAnswers.size() == 1)
@@ -208,8 +206,18 @@ public abstract class AbstractQuestAnswerFragment extends AbstractBottomSheetFra
 		return localizedContext.getResources();
 	}
 
-	protected final void applyImmediateAnswer(Bundle data)
+	protected final void applyAnswer(@NonNull Bundle data)
 	{
+		if(data.isEmpty())
+		{
+			Toast.makeText(getActivity(), R.string.no_changes, Toast.LENGTH_SHORT).show();
+			return;
+		}
+		// in case there is a bug that a quest fills the bundle with nulls -> report
+		for(String key : data.keySet())
+		{
+			if(data.get(key) == null) throw new NullPointerException("Key " + key + " is null");
+		}
 		questAnswerComponent.onAnswerQuest(data);
 	}
 
@@ -224,6 +232,7 @@ public abstract class AbstractQuestAnswerFragment extends AbstractBottomSheetFra
 		{
 			content.removeAllViews();
 		}
+		content.setVisibility(View.VISIBLE);
 		return getLayoutInflater().inflate(resourceId, content);
 	}
 
@@ -234,10 +243,12 @@ public abstract class AbstractQuestAnswerFragment extends AbstractBottomSheetFra
 
 	protected final View setButtonsView(int resourceId)
 	{
+		// if other buttons are present, the other answers button should have a weight so that it
+		// can be sqeezed if there is not enough space for everything
+		buttonOtherAnswers.setLayoutParams(new LinearLayout.LayoutParams(
+			ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, 1f));
 		return getActivity().getLayoutInflater().inflate(resourceId, buttonPanel);
 	}
-
-	public abstract boolean hasChanges();
 
 	public final long getQuestId()
 	{

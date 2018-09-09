@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -106,6 +105,7 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 			if(rightSideString != null)
 			{
 				rightSide = Cycleway.valueOf(rightSideString);
+				checkIsFormComplete();
 				puzzle.setRightSideImageResource(rightSide.getIconResId(isLeftHandTraffic()));
 			}
 			else
@@ -116,6 +116,7 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 			if(leftSideString != null)
 			{
 				leftSide = Cycleway.valueOf(leftSideString);
+				checkIsFormComplete();
 				puzzle.setLeftSideImageResource(leftSide.getIconResId(isLeftHandTraffic()));
 			}
 			else
@@ -147,17 +148,6 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 
 	@Override protected void onClickOk()
 	{
-		if(leftSide == null && rightSide == null)
-		{
-			Toast.makeText(getActivity(), R.string.no_changes, Toast.LENGTH_SHORT).show();
-			return;
-		}
-		else if(isDefiningBothSides && (leftSide == null || rightSide == null))
-		{
-			Toast.makeText(getActivity(), R.string.need_specify_both_sides, Toast.LENGTH_SHORT).show();
-			return;
-		}
-
 		boolean isOnewayNotForCyclists = false;
 
 		// a cycleway that goes into opposite direction of a oneway street needs special tagging
@@ -191,7 +181,7 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 		if(leftSide != null)  bundle.putString(CYCLEWAY_LEFT, leftSide.name());
 		if(rightSide != null) bundle.putString(CYCLEWAY_RIGHT, rightSide.name());
 		bundle.putBoolean(IS_ONEWAY_NOT_FOR_CYCLISTS, isOnewayNotForCyclists);
-		applyFormAnswer(bundle);
+		applyAnswer(bundle);
 	}
 
 	private static boolean isSingleTrackOrLane(Cycleway cycleway)
@@ -204,9 +194,10 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 		return cycleway == Cycleway.DUAL_TRACK || cycleway == Cycleway.DUAL_LANE;
 	}
 
-	@Override public boolean hasChanges()
+	@Override public boolean isFormComplete()
 	{
-		return leftSide != null || rightSide != null;
+		if(isDefiningBothSides) return leftSide != null && rightSide != null;
+		else return leftSide != null || rightSide != null;
 	}
 
 	private void showCyclewaySelectionDialog(final boolean isRight)
@@ -237,6 +228,7 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 				puzzle.replaceLeftSideImageResource(iconResId);
 				leftSide = cycleway;
 			}
+			checkIsFormComplete();
 		}));
 		alertDialog.show();
 	}

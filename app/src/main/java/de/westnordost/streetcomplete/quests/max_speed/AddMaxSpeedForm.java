@@ -13,7 +13,6 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -22,6 +21,7 @@ import java.util.List;
 
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
+import de.westnordost.streetcomplete.util.TextChangedWatcher;
 import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 
 public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
@@ -82,7 +82,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 				{
 					Bundle answer = new Bundle();
 					answer.putBoolean(LIVING_STREET, true);
-					applyImmediateAnswer(answer);
+					applyAnswer(answer);
 				});
 			});
 		}
@@ -102,12 +102,6 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 
 	@Override protected void onClickOk()
 	{
-		if(!hasChanges())
-		{
-			Toast.makeText(getActivity(), R.string.no_changes, Toast.LENGTH_SHORT).show();
-			return;
-		}
-
 		if(speedType == SpeedType.NO_SIGN)
 		{
 			boolean couldBeSlowZone = getCountryInfo().isSlowZoneKnown() &&
@@ -123,11 +117,12 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 		}
 	}
 
-	@Override public boolean hasChanges()
+	@Override public boolean isFormComplete()
 	{
-		return speedType == SpeedType.NO_SIGN
-			|| speedInput != null && !speedInput.getText().toString().isEmpty();
+		return speedType != null && (speedInput == null || !getSpeed().isEmpty());
 	}
+
+	private String getSpeed() { return speedInput.getText().toString(); }
 
 	/* ---------------------------------------- With sign --------------------------------------- */
 
@@ -146,6 +141,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 		if(speedInput != null)
 		{
 			speedInput.requestFocus();
+			speedInput.addTextChangedListener(new TextChangedWatcher(this::checkIsFormComplete));
 		}
 		speedUnitSelect = rightSide.findViewById(R.id.speedUnitSelect);
 		if(speedUnitSelect != null)
@@ -155,6 +151,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 			speedUnitSelect.setAdapter(new ArrayAdapter<>(getContext(), R.layout.spinner_item_centered, getSpinnerItems(measurementUnits)));
 			speedUnitSelect.setSelection(0);
 		}
+		checkIsFormComplete();
 	}
 
 	private List<String> getSpinnerItems(List<String> units)
@@ -193,7 +190,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 
 	private boolean userSelectedUnusualSpeed()
 	{
-		int speed = Integer.parseInt(speedInput.getText().toString());
+		int speed = Integer.parseInt(getSpeed());
 		String speedUnit = (String) speedUnitSelect.getSelectedItem();
 		double speedInKmh = speedUnit.equals("mph") ? mphToKmh(speed) : speed;
 		return speedInKmh > 140 || speed > 20 && speed % 5 != 0;
@@ -217,7 +214,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 
 	private void applySpeedLimitFormAnswer()
 	{
-		int speed = Integer.parseInt(speedInput.getText().toString());
+		int speed = Integer.parseInt(getSpeed());
 		String speedStr = String.valueOf(speed);
 
 		// km/h is the OSM default, is not mentioned
@@ -241,7 +238,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 				answer.putString(MAX_SPEED_IMPLICIT_ROADTYPE, "zone" + speed);
 			}
 		}
-		applyFormAnswer(answer);
+		applyAnswer(answer);
 	}
 
 	/* ----------------------------------------- No sign ---------------------------------------- */
@@ -361,6 +358,6 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 		String countryCode = getCountryInfo().getCountryCode();
 		answer.putString(MAX_SPEED_IMPLICIT_COUNTRY, countryCode);
 		answer.putString(MAX_SPEED_IMPLICIT_ROADTYPE, roadType);
-		applyImmediateAnswer(answer);
+		applyAnswer(answer);
 	}
 }

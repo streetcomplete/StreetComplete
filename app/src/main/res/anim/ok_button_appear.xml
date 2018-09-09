@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<set android:duration="300"
+<set android:duration="100"
      android:shareInterpolator="true"
+     android:fillBefore="true"
+     android:fillAfter="true"
      android:interpolator="@android:anim/decelerate_interpolator"
      xmlns:android="http://schemas.android.com/apk/res/android">
     <scale
-        android:fromXScale="0%"
-        android:fromYScale="0%"
+        android:fromXScale="50%"
         android:toXScale="100%"
+        android:fromYScale="50%"
         android:toYScale="100%"
-        android:pivotX="20%"
-        android:pivotY="0%"
+        android:pivotX="50%"
+        android:pivotY="50%"
         />
-    <translate
-        android:fromXDelta="25%"
-        android:toXDelta="0%"
+    <alpha
+        android:fromAlpha="0"
+        android:toAlpha="1"
         />
 </set>
 

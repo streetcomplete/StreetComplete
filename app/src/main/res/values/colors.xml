@@ -5,20 +5,19 @@
     <color name="colorAccent">#ff6600</color>
     <color name="colorAccentTransparent">#66ff6600</color>
 
+    <color name="colorButtonNormal">#536dfe</color>
+
     <color name="colorLocation">#536dfe</color>
     <color name="colorLocationAccuracy">#22536dfe</color>
     <color name="colorLocationAccuracyStroke">#88536dfe</color>
 
     <color name="colorTooltip">#cc4141ba</color>
 
+    <color name="button_white">#fff</color>
+
     <color name="colorGreyedOut">#99dddddd</color>
 
     <color name="colorDivider">#ccc</color>
-
-    <color name="housenumber_background">#495aad</color>
-
-    <color name="streetnumber_background_slovak">#c63a2b</color>
-    <color name="conscriptionnumber_background_slovak">#333</color>
 
     <color name="traffic_red">#C1121C</color>
     <color name="traffic_blue">#2255BB</color>
