@@ -6,7 +6,7 @@
     <dimen name="quest_form_rightOffset">0dp</dimen>
     <dimen name="quest_form_bottomOffset">0dp</dimen>
 
-    <dimen name="quest_form_peekHeight">320dp</dimen>
+    <dimen name="quest_form_peekHeight">540dp</dimen>
 
     <dimen name="quest_form_width">352dp</dimen>
 

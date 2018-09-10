@@ -79,9 +79,10 @@ public abstract class AbstractBottomSheetFragment extends Fragment
 		// method is finally called
 		if(getActivity() == null) return;
 
-		//int toolbarHeight = getActivity().findViewById(R.id.toolbar).getHeight();
-		boolean coversToolbarCompletely = bottomSheet.getTop() < -getResources().getDimension(R.dimen.quest_form_speech_bubble_top_margin);
-		buttonClose.setVisibility(coversToolbarCompletely ? View.VISIBLE : View.INVISIBLE);
+		int toolbarHeight = getActivity().findViewById(R.id.toolbar).getHeight();
+		float speechBubbleTopMargin = getResources().getDimension(R.dimen.quest_form_speech_bubble_top_margin);
+		boolean coversToolbar = bottomSheet.getTop() < speechBubbleTopMargin + toolbarHeight;
+		buttonClose.setVisibility(coversToolbar ? View.VISIBLE : View.INVISIBLE);
 	}
 
 	/** Request to close the form through user interaction (back button, clicked other quest,..),
