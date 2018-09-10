@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.tangram;
 
-import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -18,6 +17,7 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewPropertyAnimator;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.AnimationUtils;
 import android.view.animation.DecelerateInterpolator;
@@ -26,9 +26,6 @@ import android.widget.ImageView;
 
 import com.github.florent37.viewtooltip.ViewTooltip;
 import com.mapzen.android.lost.api.LocationRequest;
-
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -51,7 +48,6 @@ public class MapControlsFragment extends Fragment
 	private LocationStateButton trackingButton;
 
 	private ViewGroup leftSide, rightSide;
-	private final Map<View, Animator> animatingViews = new HashMap<>();
 	private boolean isShowingControls = true;
 
 	@Inject SharedPreferences prefs;
@@ -270,13 +266,9 @@ public class MapControlsFragment extends Fragment
 
 			int duration = minDuration + (maxDuration - minDuration) / Math.max(1, childCount-1) *
 				(in ? childCount-1-i : i );
-			Animator translate = animatingViews.remove(v);
-			if(translate != null) translate.cancel();
-			translate = ObjectAnimator.ofFloat(v, "translationX", w*dir);
-			translate.setDuration(duration);
-			translate.setInterpolator(dir != 0 ? new AccelerateInterpolator() : new DecelerateInterpolator());
-			translate.start();
-			animatingViews.put(v, translate);
+			ViewPropertyAnimator animator = v.animate().translationX(w*dir);
+			animator.setDuration(duration);
+			animator.setInterpolator(dir != 0 ? new AccelerateInterpolator() : new DecelerateInterpolator());
 		}
 	}
 

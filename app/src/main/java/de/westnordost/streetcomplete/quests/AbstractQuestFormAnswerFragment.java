@@ -4,14 +4,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
+import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.Toast;
 
 import de.westnordost.streetcomplete.R;
-import de.westnordost.streetcomplete.util.DefaultAnimationListener;
 
 /** Abstract base class for dialogs in which the user answers a quest with a form he has to fill
  *  out */
@@ -40,25 +38,21 @@ public abstract class AbstractQuestFormAnswerFragment extends AbstractQuestAnswe
 
 	protected void checkIsFormComplete()
 	{
-		if(buttonOk.getVisibility() == View.GONE && isFormComplete())
+		if(isFormComplete())
 		{
-			buttonOk.clearAnimation();
 			buttonOk.setVisibility(View.VISIBLE);
-			Animation appear = AnimationUtils.loadAnimation(getContext(), R.anim.ok_button_appear);
-			buttonOk.startAnimation(appear);
+			buttonOk.animate()
+				.alpha(1).scaleX(1).scaleY(1)
+				.setDuration(100)
+				.setInterpolator(new DecelerateInterpolator());
 		}
-		else if(buttonOk.getVisibility() == View.VISIBLE && !isFormComplete())
+		else
 		{
-			buttonOk.clearAnimation();
-			Animation disappear = AnimationUtils.loadAnimation(getContext(), R.anim.ok_button_disappear);
-			disappear.setAnimationListener(new DefaultAnimationListener()
-			{
-				@Override public void onAnimationEnd(Animation animation)
-				{
-					buttonOk.setVisibility(View.GONE);
-				}
-			});
-			buttonOk.startAnimation(disappear);
+			buttonOk.animate()
+				.alpha(0).scaleX(0.5f).scaleY(0.5f)
+				.setDuration(100)
+				.setInterpolator(new AccelerateInterpolator())
+				.withEndAction(() -> buttonOk.setVisibility(View.GONE));
 		}
 	}
 	protected abstract void onClickOk();

@@ -1,8 +1,5 @@
 package de.westnordost.streetcomplete;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.graphics.Point;
 import android.graphics.PointF;
@@ -575,8 +572,7 @@ public class MainActivity extends AppCompatActivity implements
 		{
 			runOnUiThread(() ->
 			{
-				ObjectAnimator fadeInAnimator = ObjectAnimator.ofFloat(downloadProgressBar, View.ALPHA, 1f);
-				fadeInAnimator.start();
+				downloadProgressBar.animate().alpha(1);
 				downloadProgressBar.setProgress(0);
 
 				Toast.makeText(
@@ -627,9 +623,7 @@ public class MainActivity extends AppCompatActivity implements
 		{
 			runOnUiThread(() ->
 			{
-				ObjectAnimator fadeOutAnimator = ObjectAnimator.ofFloat(downloadProgressBar, View.ALPHA, 0f);
-				fadeOutAnimator.setDuration(1000);
-				fadeOutAnimator.start();
+				downloadProgressBar.animate().alpha(0).setDuration(1000);
 			});
 		}
 
@@ -694,35 +688,24 @@ public class MainActivity extends AppCompatActivity implements
 		questAutoSyncer.triggerAutoUpload();
 	}
 
-	private Animator createMarkerSolvedAnimation(View quest, View target)
+	private void flingQuestMarkerTo(View quest, View target, Runnable onFinished)
 	{
 		int[] targetPos = new int[2];
 		target.getLocationOnScreen(targetPos);
 
-		AnimatorSet pop = new AnimatorSet();
-		pop
-			.play(ObjectAnimator.ofFloat(quest, "scaleX", 1f, 1.6f))
-			.with(ObjectAnimator.ofFloat(quest, "scaleY", 1f, 1.6f));
-		pop.setInterpolator(new OvershootInterpolator(8f));
-		pop.setDuration(250);
-
-		AnimatorSet fling = new AnimatorSet();
-		fling
-			.play(ObjectAnimator.ofFloat(quest, "x", quest.getX(), targetPos[0]))
-			.with(ObjectAnimator.ofFloat(quest, "y", quest.getY(), targetPos[1]));
-		fling.setDuration(250);
-
-		AnimatorSet vanish = new AnimatorSet();
-		vanish
-			.play(ObjectAnimator.ofFloat(quest, "scaleX", 1.6f, 0.5f))
-			.with(ObjectAnimator.ofFloat(quest, "scaleY", 1.6f, 0.5f))
-			.with(ObjectAnimator.ofFloat(quest, "alpha", 1f, 0f));
-		vanish.setInterpolator(new AccelerateInterpolator());
-
-		AnimatorSet anim = new AnimatorSet();
-		anim.play(pop).before(fling);
-		anim.play(fling).with(vanish);
-		return anim;
+		quest.animate()
+			.scaleX(1.6f).scaleY(1.6f)
+			.setInterpolator(new OvershootInterpolator(8f))
+			.setDuration(250)
+			.withEndAction(() -> {
+				quest.animate()
+					.scaleX(0.2f).scaleY(0.2f)
+					.alpha(0.8f)
+					.x(targetPos[0]).y(targetPos[1])
+					.setDuration(250)
+					.setInterpolator(new AccelerateInterpolator())
+					.withEndAction(onFinished);
+		});
 	}
 
 	private void showQuestSolvedAnimation(long questId, QuestGroup group, String source)
@@ -752,18 +735,11 @@ public class MainActivity extends AppCompatActivity implements
 		img.setX(startScreenPos.x);
 		img.setY(startScreenPos.y);
 
-		Animator anim = createMarkerSolvedAnimation(img, answersCounter.getAnswerTarget());
-		anim.addListener(new AnimatorListenerAdapter()
-		{
-			@Override public void onAnimationEnd(Animator animation)
-			{
-				root.removeView(img);
-				answersCounter.addOneUnsynced(source);
-			}
-		});
-
 		root.addView(img, size, size);
-		anim.start();
+		flingQuestMarkerTo(img, answersCounter.getAnswerTarget(), () -> {
+			root.removeView(img);
+			answersCounter.addOneUnsynced(source);
+		});
 	}
 
 	@Override public void onSkippedQuest(long questId, QuestGroup group)
