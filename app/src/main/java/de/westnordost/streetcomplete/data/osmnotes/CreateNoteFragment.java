@@ -19,17 +19,18 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.AbstractBottomSheetFragment;
 import de.westnordost.streetcomplete.quests.note_discussion.AttachPhotoFragment;
+import de.westnordost.streetcomplete.util.TextChangedWatcher;
 
 public class CreateNoteFragment extends AbstractBottomSheetFragment
 {
 	private EditText noteInput;
 	private View markerLayout;
 	private View marker;
+	private View buttonOk;
 
 	private CreateNoteListener callbackListener;
 
@@ -64,9 +65,13 @@ public class CreateNoteFragment extends AbstractBottomSheetFragment
 		inflater.inflate(R.layout.form_create_note, content);
 
 		buttonPanel.findViewById(R.id.buttonCancel).setOnClickListener(v -> getActivity().onBackPressed());
-		buttonPanel.findViewById(R.id.buttonOk).setOnClickListener(v -> onClickOk());
+		buttonOk = buttonPanel.findViewById(R.id.buttonOk);
+		buttonOk.setOnClickListener(v -> onClickOk());
 
 		noteInput = content.findViewById(R.id.noteInput);
+		noteInput.addTextChangedListener(new TextChangedWatcher(this::updateOkButtonEnablement));
+
+		updateOkButtonEnablement();
 
 		return view;
 	}
@@ -119,14 +124,6 @@ public class CreateNoteFragment extends AbstractBottomSheetFragment
 
 	private void onClickOk()
 	{
-		String noteText = noteInput.getText().toString().trim();
-
-		if(noteText.isEmpty())
-		{
-			Toast.makeText(getActivity(), R.string.no_changes, Toast.LENGTH_SHORT).show();
-			return;
-		}
-
 		if(!closeKeyboard())
 		{
 			onClickOkAfterKeyboardClosed();
@@ -142,8 +139,7 @@ public class CreateNoteFragment extends AbstractBottomSheetFragment
 		Point screenPos = new Point(point[0], point[1]);
 		screenPos.offset(marker.getWidth()/2, marker.getHeight()/2);
 
-		String noteText = noteInput.getText().toString().trim();
-		callbackListener.onLeaveNote(noteText, f != null ? f.getImagePaths() : null, screenPos);
+		callbackListener.onLeaveNote(getNoteText(), f != null ? f.getImagePaths() : null, screenPos);
 
 		markerLayout.setVisibility(View.INVISIBLE);
 	}
@@ -158,6 +154,16 @@ public class CreateNoteFragment extends AbstractBottomSheetFragment
 
 	@Override public boolean isRejectingClose()
 	{
-		return !noteInput.getText().toString().trim().isEmpty();
+		return !getNoteText().isEmpty();
+	}
+
+	private String getNoteText()
+	{
+		return noteInput.getText().toString().trim();
+	}
+
+	private void updateOkButtonEnablement()
+	{
+		buttonOk.setEnabled(!getNoteText().isEmpty());
 	}
 }
