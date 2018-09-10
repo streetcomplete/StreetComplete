@@ -675,24 +675,23 @@ public class MainActivity extends AppCompatActivity implements
 	{
 		questSource.findSource(questId, group, mapFragment.getDisplayedLocation(), source ->
 		{
-			onSolvedQuest(questId, group, source);
-			questController.solve(questId, group, answer, source);
+			closeQuestDetailsFor(questId, group);
+			if(questController.solve(questId, group, answer, source))
+			{
+				showQuestSolvedAnimation(questId, group, source);
+			}
 			questAutoSyncer.triggerAutoUpload();
 		});
 	}
 
 	@Override public void onLeaveNote(long questId, QuestGroup group, String questTitle, String note, ArrayList<String> imagePaths)
 	{
-		onSolvedQuest(questId, group, null);
-		questController.createNote(questId, questTitle, note, imagePaths);
-		questAutoSyncer.triggerAutoUpload();
-	}
-
-	private void onSolvedQuest(long questId, QuestGroup group, String source)
-	{
 		closeQuestDetailsFor(questId, group);
-		Quest q = questController.get(questId, group);
-		if(q != null) showQuestSolvedAnimation(q, source);
+		if(questController.createNote(questId, questTitle, note, imagePaths))
+		{
+			showQuestSolvedAnimation(questId, group, null);
+		}
+		questAutoSyncer.triggerAutoUpload();
 	}
 
 	private Animator createMarkerSolvedAnimation(View quest, View target)
@@ -726,8 +725,11 @@ public class MainActivity extends AppCompatActivity implements
 		return anim;
 	}
 
-	private void showQuestSolvedAnimation(Quest quest, String source)
+	private void showQuestSolvedAnimation(long questId, QuestGroup group, String source)
 	{
+		Quest quest = questController.get(questId, group);
+		if(quest == null) return;
+
 		int size = (int) DpUtil.toPx(42, this);
 		int[] offset = new int[2];
 		mapFragment.getView().getLocationOnScreen(offset);
