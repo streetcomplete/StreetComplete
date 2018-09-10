@@ -17,13 +17,14 @@ import javax.inject.Inject;
 import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestDao;
-import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
+import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 import de.westnordost.osmapi.notes.Note;
 import de.westnordost.osmapi.notes.NoteComment;
+import de.westnordost.streetcomplete.util.TextChangedWatcher;
 
 import static android.text.format.DateUtils.MINUTE_IN_MILLIS;
 
-public class NoteDiscussionForm extends AbstractQuestFormAnswerFragment
+public class NoteDiscussionForm extends AbstractQuestAnswerFragment
 {
 	public static final String TEXT = "text";
 	public static final String IMAGE_PATHS = "image_paths";
@@ -32,6 +33,7 @@ public class NoteDiscussionForm extends AbstractQuestFormAnswerFragment
 
 	private EditText noteInput;
 	private LinearLayout noteDiscussion;
+	private View buttonOk;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState)
@@ -48,15 +50,18 @@ public class NoteDiscussionForm extends AbstractQuestFormAnswerFragment
 		View contentView = setContentView(R.layout.quest_note_discussion);
 
 		View buttonPanel = setButtonsView(R.layout.quest_buttonpanel_notediscussion);
-		Button buttonOk = buttonPanel.findViewById(R.id.buttonOk);
+		buttonOk = buttonPanel.findViewById(R.id.buttonOk);
 		buttonOk.setOnClickListener(v -> onClickOk());
 		Button buttonNo = buttonPanel.findViewById(R.id.buttonNo);
 		buttonNo.setOnClickListener(v -> skipQuest());
 
 		noteInput = contentView.findViewById(R.id.noteInput);
+		noteInput.addTextChangedListener(new TextChangedWatcher(this::updateOkButtonEnablement));
 		noteDiscussion = contentView.findViewById(R.id.noteDiscussion);
 
 		buttonOtherAnswers.setVisibility(View.GONE);
+
+		updateOkButtonEnablement();
 
 		return view;
 	}
@@ -135,12 +140,12 @@ public class NoteDiscussionForm extends AbstractQuestFormAnswerFragment
 		throw new RuntimeException();
 	}
 
-	protected void onClickOk()
+	private void onClickOk()
 	{
 		AttachPhotoFragment f = getAttachPhotoFragment();
 		Bundle answer = new Bundle();
-		answer.putString(TEXT, getNoteInput());
-		answer.putStringArrayList(IMAGE_PATHS, f != null ? f.getImagePaths() : null);
+		answer.putString(TEXT, getNoteText());
+		if(f != null) answer.putStringArrayList(IMAGE_PATHS, f.getImagePaths());
 		applyAnswer(answer);
 	}
 
@@ -150,14 +155,17 @@ public class NoteDiscussionForm extends AbstractQuestFormAnswerFragment
 		if(f != null) f.deleteImages();
 	}
 
-	@Override public boolean isFormComplete() { return !getNoteInput().isEmpty(); }
-
-	private String getNoteInput() { return noteInput.getText().toString().trim(); }
+	private String getNoteText() { return noteInput.getText().toString().trim(); }
 
 	@Override public boolean isRejectingClose()
 	{
 		AttachPhotoFragment f = getAttachPhotoFragment();
 		boolean hasPhotos = f != null && !f.getImagePaths().isEmpty();
-		return hasPhotos || !getNoteInput().isEmpty();
+		return hasPhotos || !getNoteText().isEmpty();
+	}
+
+	private void updateOkButtonEnablement()
+	{
+		buttonOk.setEnabled(!getNoteText().isEmpty());
 	}
 }
