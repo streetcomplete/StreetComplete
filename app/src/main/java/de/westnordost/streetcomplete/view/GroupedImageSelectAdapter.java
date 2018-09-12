@@ -95,19 +95,6 @@ public class GroupedImageSelectAdapter extends RecyclerView.Adapter<ItemViewHold
 			selectedItem = null;
 		}
 
-		if(selectedItem != null)
-		{
-			int selectedIndex = items.indexOf(selectedItem);
-			notifyItemChanged(selectedIndex);
-
-			if(selectedItem.isGroup())
-			{
-				if(prevSelectedItem == null || getGroup(items.indexOf(prevSelectedItem)) != selectedIndex )
-				{
-					expandGroup(selectedIndex);
-				}
-			}
-		}
 		if(prevSelectedItem != null)
 		{
 			int prevSelectedIndex = items.indexOf(prevSelectedItem);
@@ -119,6 +106,19 @@ public class GroupedImageSelectAdapter extends RecyclerView.Adapter<ItemViewHold
 				if (selectedItem == null || previousGroupIndex != getGroup(items.indexOf(selectedItem)))
 				{
 					retractGroup(previousGroupIndex);
+				}
+			}
+		}
+		if(selectedItem != null)
+		{
+			int selectedIndex = items.indexOf(selectedItem);
+			notifyItemChanged(selectedIndex);
+
+			if(selectedItem.isGroup())
+			{
+				if(prevSelectedItem == null || getGroup(items.indexOf(prevSelectedItem)) != selectedIndex )
+				{
+					expandGroup(selectedIndex);
 				}
 			}
 		}

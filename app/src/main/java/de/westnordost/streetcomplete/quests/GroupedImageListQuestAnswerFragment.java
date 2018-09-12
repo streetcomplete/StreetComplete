@@ -1,7 +1,10 @@
 package de.westnordost.streetcomplete.quests;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -32,9 +35,13 @@ public abstract class GroupedImageListQuestAnswerFragment extends AbstractQuestF
 {
 	public static final String OSM_VALUE = "osm_value";
 
+	private final Handler uiThread = new Handler(Looper.getMainLooper());
+
 	protected GroupedImageSelectAdapter imageSelector;
 	private Button showMoreButton;
 	private RecyclerView valueList;
+
+	private NestedScrollView scrollView;
 
 	private List<Item> allItems;
 	private List<Item> topItems;
@@ -53,6 +60,8 @@ public abstract class GroupedImageListQuestAnswerFragment extends AbstractQuestF
 									   Bundle savedInstanceState)
 	{
 		View view = super.onCreateView(inflater, container, savedInstanceState);
+
+		scrollView = view.findViewById(R.id.scrollView);
 
 		View contentView = setContentView(R.layout.quest_generic_list);
 
@@ -73,6 +82,27 @@ public abstract class GroupedImageListQuestAnswerFragment extends AbstractQuestF
 
 		imageSelector = new GroupedImageSelectAdapter(lm);
 		imageSelector.addOnItemSelectionListener(item -> checkIsFormComplete());
+		imageSelector.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver()
+		{
+			@Override public void onItemRangeInserted(int positionStart, int itemCount)
+			{
+				super.onItemRangeInserted(positionStart, itemCount);
+
+				View item = lm.getChildAt(Math.max(0,positionStart-1));
+				if(item != null)
+				{
+					int[] itemPos = new int[2];
+					item.getLocationInWindow(itemPos);
+					int[] scrollViewPos = new int[2];
+					scrollView.getLocationInWindow(scrollViewPos);
+
+					uiThread.postDelayed(() ->
+					{
+						scrollView.smoothScrollTo(0,itemPos[1] - scrollViewPos[1]);
+					}, 250);
+				}
+			}
+		});
 		checkIsFormComplete();
 
 		return view;

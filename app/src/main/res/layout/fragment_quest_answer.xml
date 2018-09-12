@@ -63,8 +63,9 @@
             </LinearLayout>
 
             <!-- Necessary because even if the bottom sheet is already expanded, the content might
-                 be still too large to fit onto the screen withot scrolling (it often is) -->
+                 be still too large to fit onto the screen without scrolling (it often is) -->
             <android.support.v4.widget.NestedScrollView
+                android:id="@+id/scrollView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
