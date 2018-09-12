@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.building_levels;
 
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +11,7 @@ import android.widget.EditText;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
 import de.westnordost.streetcomplete.util.TextChangedWatcher;
-import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
+
 
 public class AddBuildingLevelsForm extends AbstractQuestFormAnswerFragment
 {
@@ -36,7 +37,7 @@ public class AddBuildingLevelsForm extends AbstractQuestFormAnswerFragment
 
 		addOtherAnswer(R.string.quest_buildingLevels_answer_multipleLevels, () ->
 		{
-			new AlertDialogBuilder(getActivity())
+			new AlertDialog.Builder(getActivity())
 					.setMessage(R.string.quest_buildingLevels_answer_description)
 					.setPositiveButton(android.R.string.ok, null)
 					.show();

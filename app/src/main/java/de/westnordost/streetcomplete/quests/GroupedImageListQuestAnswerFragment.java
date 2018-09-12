@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -20,9 +21,7 @@ import javax.inject.Inject;
 import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.view.GroupedImageSelectAdapter;
-import de.westnordost.streetcomplete.view.ImageSelectAdapter;
 import de.westnordost.streetcomplete.view.Item;
-import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 
 /**
  * Abstract class for quests with a grouped list of images and one to select.
@@ -93,14 +92,14 @@ public abstract class GroupedImageListQuestAnswerFragment extends AbstractQuestF
 		{
 			if(!item.hasValue())
 			{
-				new AlertDialogBuilder(getContext())
+				new AlertDialog.Builder(getContext())
 					.setMessage(R.string.quest_generic_item_invalid_value)
 					.setPositiveButton(R.string.ok, null)
 					.show();
 			}
 			else
 			{
-				new AlertDialogBuilder(getContext())
+				new AlertDialog.Builder(getContext())
 					.setMessage(R.string.quest_generic_item_confirmation)
 					.setNegativeButton(R.string.quest_generic_confirmation_no, null)
 					.setPositiveButton(R.string.quest_generic_confirmation_yes,

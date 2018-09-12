@@ -6,7 +6,7 @@
        android:insetBottom="@dimen/round_button_inset">
     <shape android:shape="rectangle">
         <corners android:radius="@dimen/round_button_radius" />
-        <solid android:color="@color/colorAccent" />
+        <solid android:color="@color/accent" />
         <padding android:left="@dimen/round_button_padding"
                  android:top="@dimen/round_button_padding"
                  android:right="@dimen/round_button_padding"

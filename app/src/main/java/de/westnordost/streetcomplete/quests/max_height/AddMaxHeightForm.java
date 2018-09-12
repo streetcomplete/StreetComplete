@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.max_height;
 
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.text.InputFilter;
 import android.text.TextWatcher;
 import android.text.method.DigitsKeyListener;
@@ -18,7 +19,7 @@ import java.util.List;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
 import de.westnordost.streetcomplete.util.TextChangedWatcher;
-import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
+
 
 public class AddMaxHeightForm extends AbstractQuestFormAnswerFragment
 {
@@ -147,7 +148,7 @@ public class AddMaxHeightForm extends AbstractQuestFormAnswerFragment
 	{
 		addOtherAnswer(R.string.quest_maxheight_answer_noSign, () ->
 		{
-			new AlertDialogBuilder(getActivity())
+			new AlertDialog.Builder(getActivity())
 				.setMessage(R.string.quest_maxheight_answer_noSign_question)
 				.setPositiveButton(R.string.quest_generic_hasFeature_yes, (d, w) -> {
 					Bundle data = new Bundle();
@@ -237,7 +238,7 @@ public class AddMaxHeightForm extends AbstractQuestFormAnswerFragment
 	private void confirmUnusualInput(final Runnable callback)
 	{
 		if(getActivity() == null) return;
-		new AlertDialogBuilder(getActivity())
+		new AlertDialog.Builder(getActivity())
 			.setTitle(R.string.quest_generic_confirmation_title)
 			.setMessage(R.string.quest_maxheight_unusualInput_confirmation_description)
 			.setPositiveButton(R.string.quest_generic_confirmation_yes, (dialog, which) -> callback.run())

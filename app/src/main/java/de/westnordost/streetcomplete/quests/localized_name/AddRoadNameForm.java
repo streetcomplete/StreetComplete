@@ -25,7 +25,7 @@ import de.westnordost.streetcomplete.data.meta.Abbreviations;
 import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale;
 import de.westnordost.streetcomplete.data.osm.ElementGeometry;
 import de.westnordost.streetcomplete.quests.localized_name.data.RoadNameSuggestionsDao;
-import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
+
 
 public class AddRoadNameForm extends AddLocalizedNameForm
 {
@@ -177,7 +177,7 @@ public class AddRoadNameForm extends AddLocalizedNameForm
 			}
 		};
 
-		AlertDialog dlg = new AlertDialogBuilder(getActivity())
+		AlertDialog dlg = new AlertDialog.Builder(getActivity())
 				.setSingleChoiceItems(answers.toArray(new String[0]), -1, onSelect)
 				.setTitle(R.string.quest_streetName_answer_noName_question)
 				.setPositiveButton(android.R.string.ok, onSelect)
@@ -189,7 +189,7 @@ public class AddRoadNameForm extends AddLocalizedNameForm
 
 	private void confirmNoStreetName()
 	{
-		new AlertDialogBuilder(getActivity())
+		new AlertDialog.Builder(getActivity())
 				.setTitle(R.string.quest_name_answer_noName_confirmation_title)
 				.setMessage(R.string.quest_streetName_answer_noName_confirmation_description)
 				.setPositiveButton(R.string.quest_name_noName_confirmation_positive, (dialog, which) ->

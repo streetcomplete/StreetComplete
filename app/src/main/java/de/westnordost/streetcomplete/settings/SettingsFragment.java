@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceFragmentCompat;
 import android.support.v7.preference.PreferenceManager;
@@ -19,7 +20,7 @@ import de.westnordost.streetcomplete.data.tiles.DownloadedTilesDao;
 import de.westnordost.streetcomplete.oauth.OAuthPrefs;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.oauth.OsmOAuthDialogFragment;
-import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
+
 
 public class SettingsFragment extends PreferenceFragmentCompat
 		implements SharedPreferences.OnSharedPreferenceChangeListener, IntentListener
@@ -54,7 +55,7 @@ public class SettingsFragment extends PreferenceFragmentCompat
 		Preference questsInvalidation = getPreferenceScreen().findPreference("quests.invalidation");
 		questsInvalidation.setOnPreferenceClickListener(preference ->
 		{
-			new AlertDialogBuilder(getContext())
+			new AlertDialog.Builder(getContext())
 					.setMessage(R.string.invalidation_dialog_message)
 					.setPositiveButton(R.string.invalidate_confirmation, (dialog, which) -> {
 						downloadedTilesDao.removeAll();
@@ -124,7 +125,7 @@ public class SettingsFragment extends PreferenceFragmentCompat
 		{
 			if(Prefs.Autosync.valueOf(prefs.getString(Prefs.AUTOSYNC,"ON")) != Prefs.Autosync.ON)
 			{
-				new AlertDialogBuilder(getContext())
+				new AlertDialog.Builder(getContext())
 					.setView(R.layout.dialog_tutorial_upload)
 					.setPositiveButton(android.R.string.ok, null)
 					.show();

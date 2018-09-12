@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.opening_hours;
 
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
@@ -22,7 +23,7 @@ import de.westnordost.streetcomplete.quests.opening_hours.adapter.AddOpeningHour
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningMonthsRow;
 import de.westnordost.streetcomplete.util.AdapterDataChangedWatcher;
 import de.westnordost.streetcomplete.util.Serializer;
-import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
+
 
 import static android.view.Menu.NONE;
 
@@ -131,7 +132,7 @@ public class AddOpeningHoursForm extends AbstractQuestFormAnswerFragment
 		View view = LayoutInflater.from(getActivity()).inflate(R.layout.quest_opening_hours_comment, null);
 		final EditText editText = view.findViewById(R.id.commentInput);
 
-		new AlertDialogBuilder(getContext())
+		new AlertDialog.Builder(getContext())
 				.setTitle(R.string.quest_openingHours_comment_title)
 				.setView(view)
 				.setPositiveButton(android.R.string.ok, (dialog, which) ->
@@ -139,7 +140,7 @@ public class AddOpeningHoursForm extends AbstractQuestFormAnswerFragment
 					String txt = editText.getText().toString().replaceAll("\"","").trim();
 					if(txt.isEmpty())
 					{
-						new AlertDialogBuilder(getContext())
+						new AlertDialog.Builder(getContext())
 								.setMessage(R.string.quest_openingHours_emptyAnswer)
 								.setPositiveButton(R.string.ok, null)
 								.show();
@@ -156,7 +157,7 @@ public class AddOpeningHoursForm extends AbstractQuestFormAnswerFragment
 
 	private void showConfirm24_7Dialog()
 	{
-		new AlertDialogBuilder(getActivity())
+		new AlertDialog.Builder(getActivity())
 				.setMessage(R.string.quest_openingHours_24_7_confirmation)
 				.setPositiveButton(android.R.string.yes, (dialog, which) ->
 				{
@@ -170,7 +171,7 @@ public class AddOpeningHoursForm extends AbstractQuestFormAnswerFragment
 
 	private void confirmNoSign()
 	{
-		new AlertDialogBuilder(getActivity())
+		new AlertDialog.Builder(getActivity())
 			.setTitle(R.string.quest_generic_confirmation_title)
 			.setPositiveButton(R.string.quest_generic_confirmation_yes, (dialog, which) ->
 			{

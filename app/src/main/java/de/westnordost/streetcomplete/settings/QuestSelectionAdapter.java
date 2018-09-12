@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.settings;
 
 import android.content.SharedPreferences;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
@@ -28,7 +29,7 @@ import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestType;
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderList;
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeDao;
 import de.westnordost.streetcomplete.view.ListAdapter;
-import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
+
 
 import static android.support.v7.widget.helper.ItemTouchHelper.ACTION_STATE_DRAG;
 import static android.support.v7.widget.helper.ItemTouchHelper.ACTION_STATE_IDLE;
@@ -162,7 +163,7 @@ public class QuestSelectionAdapter extends ListAdapter<QuestSelectionAdapter.Que
 		@Override protected void onBind(final QuestVisibility item)
 		{
 			this.item = item;
-			int colorResId = item.isInteractionEnabled() ? android.R.color.white : R.color.colorGreyedOut;
+			int colorResId = item.isInteractionEnabled() ? android.R.color.white : R.color.greyed_out;
 			itemView.setBackgroundResource(colorResId);
 			iconView.setImageResource(item.questType.getIcon());
 			textView.setText(textView.getResources().getString(item.questType.getTitle(),"…"));
@@ -210,7 +211,7 @@ public class QuestSelectionAdapter extends ListAdapter<QuestSelectionAdapter.Que
 		{
 			if(!item.visible)
 			{
-				iconView.setColorFilter(itemView.getResources().getColor(R.color.colorGreyedOut));
+				iconView.setColorFilter(itemView.getResources().getColor(R.color.greyed_out));
 			}
 			else
 			{
@@ -226,7 +227,7 @@ public class QuestSelectionAdapter extends ListAdapter<QuestSelectionAdapter.Que
 			visibleQuestTypeDao.setVisible(item.questType, item.visible);
 			if(b && item.questType.getDefaultDisabledMessage() > 0)
 			{
-				new AlertDialogBuilder(compoundButton.getContext())
+				new AlertDialog.Builder(compoundButton.getContext())
 						.setTitle(R.string.enable_quest_confirmation_title)
 						.setMessage(item.questType.getDefaultDisabledMessage())
 						.setPositiveButton(android.R.string.yes, null)

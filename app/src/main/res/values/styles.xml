@@ -1,17 +1,39 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="MapProgressBar.Horizontal" parent="android:Widget.ProgressBar.Horizontal">
+    <style name="MapProgressBar.Horizontal" parent="Widget.AppCompat.ProgressBar.Horizontal">
         <item name="android:progressDrawable">@drawable/map_progress</item>
         <item name="android:indeterminateDrawable">@drawable/map_progress</item>
         <item name="android:minHeight">4dip</item>
         <item name="android:maxHeight">4dip</item>
     </style>
 
+    <style name="DialogWindowTitle.Bubble" parent="android:Widget">
+        <item name="android:textAppearance">@style/TextAppearance.Title</item>
+        <item name="android:paddingBottom">8dp</item>
+    </style>
 
+    <style name="TextAppearance.Title" parent="TextAppearance.AppCompat.Title">
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">sans-serif-condensed</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 
-    <!-- Alert Dialog Styling-->
-    <style name="AppTheme.AlertDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
-        <item name="colorAccent">@color/colorAccent</item>
+    <style name="ButtonBar" parent="Widget.AppCompat.ButtonBar">
+        <item name="android:divider">@drawable/button_bar_divider</item>
+        <item name="android:showDividers">middle</item>
+        <item name="android:dividerPadding">12dp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="ButtonBottomBar">
+        <item name="android:background">?android:attr/selectableItemBackground</item>
+        <item name="android:textColor">@color/accent</item>
+        <item name="android:padding">16dp</item>
+    </style>
+
+    <style name="Animation.Dialog.Bubble" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/inflate_dialog_bubble</item>
+        <item name="android:windowExitAnimation">@anim/deflate_dialog_bubble</item>
     </style>
 
     <style name="TimesField">
@@ -26,7 +48,7 @@
         <item name="android:paddingBottom">6dp</item>
     </style>
 
-    <style name="OpeningHoursButton" parent="android:Widget.DeviceDefault.Button.Borderless">
+    <style name="OpeningHoursButton" parent="Widget.AppCompat.Button.Borderless">
         <item name="android:paddingStart">8dp</item>
         <item name="android:paddingEnd">8dp</item>
         <item name="android:paddingTop">6dp</item>
@@ -81,7 +103,7 @@
     <style name="TableHeaderCell">
         <item name="android:textSize">14sp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textColor">@color/accent</item>
     </style>
 
     <style name="TableHeader">
@@ -90,11 +112,8 @@
 
     <style name="BottomSheetButtonBarItem">
         <item name="android:background">?android:attr/selectableItemBackground</item>
-        <item name="android:textColor">@color/colorAccent</item>
-        <item name="android:paddingTop">16dp</item>
-        <item name="android:paddingBottom">16dp</item>
-        <item name="android:paddingLeft">12dp</item>
-        <item name="android:paddingRight">12dp</item>
+        <item name="android:textColor">@color/accent</item>
+        <item name="android:padding">16dp</item>
     </style>
 
 </resources>

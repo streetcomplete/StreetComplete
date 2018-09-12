@@ -8,12 +8,13 @@ import android.support.annotation.Nullable;
 import android.support.annotation.UiThread;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 
 import de.westnordost.streetcomplete.R;
-import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
+
 
 import static android.support.design.widget.BottomSheetBehavior.STATE_COLLAPSED;
 import static android.support.design.widget.BottomSheetBehavior.STATE_EXPANDED;
@@ -96,7 +97,7 @@ public abstract class AbstractBottomSheetFragment extends Fragment
 		}
 		else
 		{
-			new AlertDialogBuilder(getActivity())
+			new AlertDialog.Builder(getActivity())
 					.setMessage(R.string.confirmation_discard_title)
 					.setPositiveButton(R.string.confirmation_discard_positive, (dialog, which) ->
 					{

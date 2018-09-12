@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.note_discussion;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +15,7 @@ import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.osmnotes.AttachPhotoUtils;
 import de.westnordost.streetcomplete.util.ViewUtils;
 import de.westnordost.streetcomplete.view.ListAdapter;
-import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
+
 
 public class NoteImageAdapter extends ListAdapter<String>
 {
@@ -61,7 +62,7 @@ public class NoteImageAdapter extends ListAdapter<String>
 
 	private void onClickDelete(final int index)
 	{
-		new AlertDialogBuilder(context)
+		new AlertDialog.Builder(context)
 				.setMessage(R.string.quest_leave_new_note_photo_delete_title)
 				.setNegativeButton(android.R.string.cancel, null)
 				.setPositiveButton(android.R.string.ok, (dialog, which) -> delete(index))

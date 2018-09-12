@@ -1,6 +1,8 @@
 package de.westnordost.streetcomplete.quests.building_type;
 
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,7 +10,7 @@ import android.view.ViewGroup;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.GroupedImageListQuestAnswerFragment;
 import de.westnordost.streetcomplete.view.Item;
-import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
+
 
 import static de.westnordost.streetcomplete.quests.building_type.BuildingType.*;
 
@@ -89,7 +91,7 @@ public class AddBuildingTypeForm extends GroupedImageListQuestAnswerFragment
 
 	private void showMultipleTypesHintDialog()
 	{
-		new AlertDialogBuilder(getContext())
+		new AlertDialog.Builder(getActivity())
 			.setMessage(R.string.quest_buildingType_answer_multiple_types_description)
 			.setPositiveButton(android.R.string.ok, null)
 			.show();

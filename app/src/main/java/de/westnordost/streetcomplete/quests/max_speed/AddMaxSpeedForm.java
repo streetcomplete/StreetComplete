@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.max_speed;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +23,7 @@ import java.util.List;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
 import de.westnordost.streetcomplete.util.TextChangedWatcher;
-import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
+
 
 public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 {
@@ -204,7 +205,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 	private void confirmUnusualInput(final Runnable callback)
 	{
 		if(getActivity() == null) return;
-		new AlertDialogBuilder(getActivity())
+		new AlertDialog.Builder(getActivity())
 			.setTitle(R.string.quest_generic_confirmation_title)
 			.setMessage(R.string.quest_maxspeed_unusualInput_confirmation_description)
 			.setPositiveButton(R.string.quest_generic_confirmation_yes, (dialog, which) -> callback.run())
@@ -251,7 +252,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 		// the fragment / layout inflater context' resources to access it's drawable
 		ImageView img = view.findViewById(R.id.imgLivingStreet);
 		img.setImageDrawable(getResources().getDrawable(R.drawable.ic_living_street));
-		new AlertDialogBuilder(getActivity())
+		new AlertDialog.Builder(getActivity())
 			.setView(view)
 			.setTitle(R.string.quest_maxspeed_answer_living_street_confirmation_title)
 			.setPositiveButton(R.string.quest_generic_confirmation_yes, (dialog, which) -> callback.run())
@@ -262,7 +263,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 	private void confirmNoSign(Runnable confirm)
 	{
 		if(getActivity() == null) return;
-		new AlertDialogBuilder(getActivity())
+		new AlertDialog.Builder(getActivity())
 			.setTitle(R.string.quest_maxspeed_answer_noSign_confirmation_title)
 			.setMessage(R.string.quest_maxspeed_answer_noSign_confirmation)
 			.setPositiveButton(R.string.quest_maxspeed_answer_noSign_confirmation_positive, (dialog, which) -> confirm.run())
@@ -278,7 +279,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 		input.setText("××");
 		input.setInputType(EditorInfo.TYPE_NULL);
 
-		new AlertDialogBuilder(getActivity())
+		new AlertDialog.Builder(getActivity())
 			.setTitle(R.string.quest_maxspeed_answer_noSign_confirmation_title)
 			.setView(view)
 			.setPositiveButton(R.string.quest_maxspeed_answer_noSign_confirmation_positive, (dialog, which) -> confirm.run())
@@ -316,7 +317,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 	private void askUrbanOrRural(Runnable onUrban, Runnable onRural)
 	{
 		if(getActivity() == null) return;
-		new AlertDialogBuilder(getActivity())
+		new AlertDialog.Builder(getActivity())
 			.setTitle(R.string.quest_maxspeed_answer_noSign_info_urbanOrRural)
 			.setMessage(R.string.quest_maxspeed_answer_noSign_urbanOrRural_description)
 			.setPositiveButton(R.string.quest_maxspeed_answer_noSign_urbanOk, (dialog, which) -> onUrban.run())
@@ -335,7 +336,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 	private void askLit(Runnable onYes, Runnable onNo)
 	{
 		if(getActivity() == null) return;
-		new AlertDialogBuilder(getActivity())
+		new AlertDialog.Builder(getActivity())
 			.setMessage(R.string.quest_way_lit_road_title)
 			.setPositiveButton(R.string.quest_generic_hasFeature_yes, (dialog, which) -> onYes.run())
 			.setNegativeButton(R.string.quest_generic_hasFeature_no, (dialog, which) -> onNo.run())
@@ -345,7 +346,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 	private void askIsDualCarriageway(Runnable onYes, Runnable onNo)
 	{
 		if(getActivity() == null) return;
-		new AlertDialogBuilder(getActivity())
+		new AlertDialog.Builder(getActivity())
 			.setMessage(R.string.quest_maxspeed_answer_noSign_singleOrDualCarriageway_description)
 			.setPositiveButton(R.string.quest_generic_hasFeature_yes, (dialog, which) -> onYes.run())
 			.setNegativeButton(R.string.quest_generic_hasFeature_no, (dialog, which) -> onNo.run())

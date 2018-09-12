@@ -14,7 +14,7 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AlertDialog;
 
 import de.westnordost.streetcomplete.R;
-import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
+
 
 /** Manages the process to ensure that the app can access the user's location. Two steps:
  *  <ol>
@@ -92,7 +92,7 @@ public class LocationRequestFragment extends Fragment
 		}
 		else
 		{
-			new AlertDialogBuilder(getContext())
+			new AlertDialog.Builder(getContext())
 					.setMessage(R.string.no_location_permission_warning)
 					.setPositiveButton(R.string.retry,	(dialog, which) -> requestLocationPermissions())
 					.setNegativeButton(android.R.string.cancel, (dialog, which) -> deniedlocationPermissions())
@@ -138,7 +138,7 @@ public class LocationRequestFragment extends Fragment
 		}
 		else
 		{
-			final AlertDialog dlg = new AlertDialogBuilder(getContext())
+			final AlertDialog dlg = new AlertDialog.Builder(getContext())
 					.setMessage(R.string.turn_on_location_request)
 					.setPositiveButton(android.R.string.yes, (dialog, which) ->
 					{

@@ -92,7 +92,7 @@ import de.westnordost.streetcomplete.tools.CrashReportExceptionHandler;
 import de.westnordost.streetcomplete.util.DpUtil;
 import de.westnordost.streetcomplete.util.SlippyMapMath;
 import de.westnordost.streetcomplete.util.SphericalEarthMath;
-import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
+
 
 import static de.westnordost.streetcomplete.ApplicationConstants.MANUAL_DOWNLOAD_QUEST_TYPE_COUNT;
 
@@ -351,7 +351,7 @@ public class MainActivity extends AppCompatActivity implements
 
 		text.setText(QuestUtil.getHtmlTitle(getResources(), quest.getType(), element));
 
-		new AlertDialogBuilder(this)
+		new AlertDialog.Builder(this)
 			.setTitle(R.string.undo_confirm_title)
 			.setView(inner)
 			.setPositiveButton(R.string.undo_confirm_positive, (dialog, which) ->
@@ -415,7 +415,7 @@ public class MainActivity extends AppCompatActivity implements
 				R.layout.dialog_authorize_now, null, false);
 		final CheckBox checkBox = inner.findViewById(R.id.checkBoxDontShowAgain);
 
-		new AlertDialogBuilder(this)
+		new AlertDialog.Builder(this)
 				.setView(inner)
 				.setPositiveButton(android.R.string.ok, (dialog, which) ->
 				{
@@ -449,7 +449,7 @@ public class MainActivity extends AppCompatActivity implements
 			{
 				if (questController.isPriorityDownloadRunning())
 				{
-					new AlertDialogBuilder(this)
+					new AlertDialog.Builder(this)
 							.setMessage(R.string.confirmation_cancel_prev_download_title)
 							.setPositiveButton(android.R.string.ok, (dialog, which) -> downloadAreaConfirmed(enclosingBBox))
 							.setNegativeButton(android.R.string.cancel, null)
@@ -516,7 +516,7 @@ public class MainActivity extends AppCompatActivity implements
 						message += "\n\n" + vbe.getBanReason();
 					}
 
-					AlertDialog dialog = new AlertDialogBuilder(MainActivity.this)
+					AlertDialog dialog = new AlertDialog.Builder(MainActivity.this)
 							.setMessage(message)
 							.setPositiveButton(android.R.string.ok, null)
 							.create();

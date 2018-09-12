@@ -40,25 +40,25 @@
 
                 <TextView
                     android:id="@+id/title"
-                    android:textColor="#000"
-                    android:textSize="18sp"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:paddingStart="16dp"
                     android:paddingEnd="8dp"
                     android:paddingTop="12dp"
-                    android:paddingBottom="12dp"/>
+                    android:paddingBottom="12dp"
+                    style="@style/DialogWindowTitle.Bubble"/>
 
                 <ImageView
                     android:id="@+id/close_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:scaleType="center"
                     android:src = "@drawable/ic_close_black_24dp"
                     android:background="?android:attr/actionBarItemBackground"
                     android:visibility="invisible"
                     android:contentDescription="@string/close"
-                    android:padding="12dp"/>
+                    android:padding="16dp"/>
 
             </LinearLayout>
 
@@ -73,8 +73,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/speech_bubble_none"
-                    android:layout_marginStart="@dimen/horizontal_speechbubble_margin"
-                    android:layout_marginEnd="@dimen/horizontal_speechbubble_margin"
+                    android:layout_marginStart="-2.5dp"
+                    android:layout_marginEnd="-2.5dp"
                     android:layout_marginBottom="4dp">
 
                     <de.westnordost.streetcomplete.view.MaskSpeechbubbleCornersFrameLayout
@@ -104,10 +104,7 @@
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal"
                                 android:layoutDirection="locale"
-                                android:gravity="center_vertical"
-                                android:showDividers="middle"
-                                android:dividerPadding="12dp"
-                                android:divider="@drawable/button_bar_divider">
+                                style="@style/ButtonBar">
 
                                 <Button
                                     android:id="@+id/buttonOtherAnswers"

@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.localized_name;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
@@ -25,7 +26,7 @@ import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
 import de.westnordost.streetcomplete.util.AdapterDataChangedWatcher;
 import de.westnordost.streetcomplete.util.Serializer;
-import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
+
 
 public abstract class AddLocalizedNameForm extends AbstractQuestFormAnswerFragment
 {
@@ -142,7 +143,7 @@ public abstract class AddLocalizedNameForm extends AbstractQuestFormAnswerFragme
 			R.string.quest_streetName_nameWithAbbreviations_confirmation_title_name,
 			"<i>"+ Html.escapeHtml(name)+"</i>"));
 
-		new AlertDialogBuilder(getActivity())
+		new AlertDialog.Builder(getActivity())
 				.setTitle(title)
 				.setMessage(R.string.quest_streetName_nameWithAbbreviations_confirmation_description)
 				.setPositiveButton(R.string.quest_streetName_nameWithAbbreviations_confirmation_positive, (dialog, which) -> onConfirmed.run())
@@ -152,7 +153,7 @@ public abstract class AddLocalizedNameForm extends AbstractQuestFormAnswerFragme
 
 	protected void showKeyboardInfo()
 	{
-		new AlertDialogBuilder(getActivity())
+		new AlertDialog.Builder(getActivity())
 				.setTitle(R.string.quest_streetName_cantType_title)
 				.setMessage(R.string.quest_streetName_cantType_description)
 				.setPositiveButton(R.string.quest_streetName_cantType_open_settings,

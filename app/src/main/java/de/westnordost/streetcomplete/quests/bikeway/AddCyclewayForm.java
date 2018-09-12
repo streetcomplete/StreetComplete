@@ -24,7 +24,7 @@ import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
 import de.westnordost.streetcomplete.quests.StreetSideRotater;
 import de.westnordost.streetcomplete.view.ListAdapter;
 import de.westnordost.streetcomplete.view.StreetSideSelectPuzzle;
-import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
+
 
 public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 {
@@ -207,7 +207,7 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 				ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
 		recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
 
-		final AlertDialog alertDialog = new AlertDialogBuilder(getActivity())
+		final AlertDialog alertDialog = new AlertDialog.Builder(getActivity())
 				.setTitle(R.string.quest_select_hint)
 				.setView(recyclerView)
 				.create();

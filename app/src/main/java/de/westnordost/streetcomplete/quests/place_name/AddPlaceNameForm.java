@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.place_name;
 
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +10,7 @@ import android.widget.EditText;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
 import de.westnordost.streetcomplete.util.TextChangedWatcher;
-import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
+
 
 public class AddPlaceNameForm extends AbstractQuestFormAnswerFragment
 {
@@ -42,7 +43,7 @@ public class AddPlaceNameForm extends AbstractQuestFormAnswerFragment
 
 	private void confirmNoName()
 	{
-		new AlertDialogBuilder(getActivity())
+		new AlertDialog.Builder(getActivity())
 			.setTitle(R.string.quest_name_answer_noName_confirmation_title)
 			.setPositiveButton(R.string.quest_name_noName_confirmation_positive, (dialog, which) ->
 			{

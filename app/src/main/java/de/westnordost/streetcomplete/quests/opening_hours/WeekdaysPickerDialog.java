@@ -6,7 +6,7 @@ import android.support.v7.app.AlertDialog;
 
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.opening_hours.model.Weekdays;
-import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
+
 
 public class WeekdaysPickerDialog
 {
@@ -15,7 +15,7 @@ public class WeekdaysPickerDialog
 	{
 		final boolean[] selection = weekdays.getSelection();
 
-		AlertDialog dlg = new AlertDialogBuilder(context)
+		AlertDialog dlg = new AlertDialog.Builder(context)
 			.setTitle(R.string.quest_openingHours_chooseWeekdaysTitle)
 			.setMultiChoiceItems(Weekdays.getNames(context.getResources()), selection,
 				(dialog, which, isChecked) -> updateDialogOkButtonEnablement((AlertDialog) dialog, selection))

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.text.InputType;
 import android.text.TextWatcher;
 import android.text.method.DigitsKeyListener;
@@ -20,7 +21,7 @@ import de.westnordost.streetcomplete.quests.building_type.BuildingType;
 import de.westnordost.streetcomplete.util.TextChangedWatcher;
 import de.westnordost.streetcomplete.view.Item;
 import de.westnordost.streetcomplete.view.ItemViewHolder;
-import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
+
 
 public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 {
@@ -89,7 +90,7 @@ public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 
 		addOtherAnswer(R.string.quest_housenumber_multiple_numbers, () ->
 		{
-			new AlertDialogBuilder(getActivity())
+			new AlertDialog.Builder(getActivity())
 				.setMessage(R.string.quest_housenumber_multiple_numbers_description)
 				.setPositiveButton(android.R.string.ok, null)
 				.show();
@@ -122,7 +123,7 @@ public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 				R.layout.dialog_quest_address_no_housenumber, null, false);
 			new ItemViewHolder(inner.findViewById(R.id.item_view)).bind(item);
 
-			new AlertDialogBuilder(getActivity())
+			new AlertDialog.Builder(getActivity())
 				.setView(inner)
 				.setPositiveButton(R.string.quest_generic_hasFeature_yes, (dialog, which) -> applyNoHouseNumberAnswer())
 				.setNegativeButton(R.string.quest_generic_hasFeature_no_leave_note, (dialog, which) -> onClickCantSay())
@@ -274,7 +275,7 @@ public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 	{
 		if(isUnusual)
 		{
-			new AlertDialogBuilder(getActivity())
+			new AlertDialog.Builder(getActivity())
 					.setTitle(R.string.quest_generic_confirmation_title)
 					.setMessage(R.string.quest_address_unusualHousenumber_confirmation_description)
 					.setPositiveButton(R.string.quest_generic_confirmation_yes, (dialog, which) -> onConfirmed.run())

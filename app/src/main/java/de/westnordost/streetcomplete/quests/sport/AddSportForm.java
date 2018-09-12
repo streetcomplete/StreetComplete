@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.sport;
 
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +14,7 @@ import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.ImageListQuestAnswerFragment;
 import de.westnordost.streetcomplete.quests.PriorityList;
 import de.westnordost.streetcomplete.view.Item;
-import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
+
 
 public class AddSportForm extends ImageListQuestAnswerFragment
 {
@@ -89,7 +90,7 @@ public class AddSportForm extends ImageListQuestAnswerFragment
 	{
 		if(imageSelector.getSelectedIndices().size() > 3)
 		{
-			new AlertDialogBuilder(getActivity())
+			new AlertDialog.Builder(getActivity())
 					.setTitle(R.string.quest_sport_manySports_confirmation_title)
 					.setMessage(R.string.quest_sport_manySports_confirmation_description)
 					.setPositiveButton(R.string.quest_manySports_confirmation_specific, (dialog, which) -> applyAnswer())

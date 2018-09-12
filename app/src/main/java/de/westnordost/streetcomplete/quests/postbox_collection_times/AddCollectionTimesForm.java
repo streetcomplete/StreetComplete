@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.postbox_collection_times;
 
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -17,7 +18,7 @@ import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
 import de.westnordost.streetcomplete.util.AdapterDataChangedWatcher;
 import de.westnordost.streetcomplete.util.Serializer;
-import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
+
 
 public class AddCollectionTimesForm extends AbstractQuestFormAnswerFragment
 {
@@ -45,7 +46,7 @@ public class AddCollectionTimesForm extends AbstractQuestFormAnswerFragment
 
 		addOtherAnswer(R.string.quest_collectionTimes_answer_no_times_specified, () ->
 		{
-			new AlertDialogBuilder(getContext())
+			new AlertDialog.Builder(getContext())
 				.setTitle(R.string.quest_generic_confirmation_title)
 				.setPositiveButton(R.string.quest_generic_confirmation_yes, (dialog, which) ->
 				{

@@ -337,7 +337,7 @@ public class MapControlsFragment extends Fragment
 			ViewTooltip.on(trackingButton)
 					.position(ViewTooltip.Position.LEFT)
 					.text(getResources().getString(R.string.unglue_hint))
-					.color(getResources().getColor(R.color.colorTooltip))
+					.color(getResources().getColor(R.color.tooltip))
 					.duration(3000)
 					.show();
 			//prefs.edit().putInt(Prefs.UNGLUE_HINT_TIMES_SHOWN, timesShown + 1).apply();

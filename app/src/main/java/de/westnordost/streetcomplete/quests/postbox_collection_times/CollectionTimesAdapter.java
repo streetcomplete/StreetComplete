@@ -192,7 +192,7 @@ public class CollectionTimesAdapter extends RecyclerView.Adapter<CollectionTimes
 
 	private void openSetTimeDialog(int minutes, TimePickedListener callback)
 	{
-		new TimePickerDialog(context, R.style.AppTheme_AlertDialog,
+		new TimePickerDialog(context, R.style.Theme_Bubble_Dialog,
 			(view, hourOfDay, minute) -> callback.onTimePicked(hourOfDay * 60 + minute),
 			minutes / 60, minutes % 60,	true).show();
 	}

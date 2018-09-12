@@ -63,7 +63,7 @@ public class LeaveNoteDialog extends DialogFragment
 	@Override public void onCreate(Bundle inState)
 	{
 		super.onCreate(inState);
-		setStyle(STYLE_NO_TITLE,R.style.AppTheme_AlertDialog);
+		setStyle(STYLE_NO_TITLE, R.style.Theme_Bubble_Dialog);
 		questAnswerComponent.onCreate(getArguments());
 		questTitle = getArguments().getString(ARG_QUEST_TITLE);
 	}
