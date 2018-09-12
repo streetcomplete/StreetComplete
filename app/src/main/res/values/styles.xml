@@ -22,7 +22,7 @@
         <item name="android:divider">@drawable/button_bar_divider</item>
         <item name="android:showDividers">middle</item>
         <item name="android:dividerPadding">12dp</item>
-        <item name="android:gravity">center</item>
+        <item name="android:gravity">center_vertical</item>
     </style>
 
     <style name="ButtonBottomBar">
@@ -114,6 +114,18 @@
         <item name="android:background">?android:attr/selectableItemBackground</item>
         <item name="android:textColor">@color/accent</item>
         <item name="android:padding">16dp</item>
+    </style>
+
+    <style name="NoteDiscussion"/>
+
+    <style name="NoteDiscussion.Comment">
+        <item name="android:textColor">#000</item>
+    </style>
+
+    <style name="NoteDiscussion.Info"/>
+
+    <style name="NoteDiscussion.Status">
+        <item name="android:textStyle">italic</item>
     </style>
 
 </resources>

@@ -52,13 +52,11 @@
     <string name="quest_openingHours_24_7_confirmation">"In other words, is it open any time, every day?"</string>
     <string name="quest_noteDiscussion_title">"Can you contribute anything to this note?"</string>
     <string name="quest_noteDiscussion_no">"No, hide"</string>
-    <string name="quest_noteDiscussion_create">"created by %1$s (%2$s)"</string>
-    <string name="quest_noteDiscussion_comment">"%1$s (%2$s)"</string>
-    <string name="quest_noteDiscussion_closed">"%1$s closed note (%2$s)"</string>
-    <string name="quest_noteDiscussion_reopen">"%1$s reopened note (%2$s)"</string>
-    <string name="quest_noteDiscussion_hide">"%1$s hid note (%2$s)"</string>
+    <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
+    <string name="quest_noteDiscussion_closed2">"Closed by %1$s, %2$s"</string>
+    <string name="quest_noteDiscussion_reopen2">"Reopened by %1$s, %2$s"</string>
+    <string name="quest_noteDiscussion_hide2">"Hidden by %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_anonymous">"Anonymous"</string>
-    <string name="quest_noteDiscussion_comments_title">"Answers"</string>
     <string name="confirmation_discard_title">"Discard input?"</string>
     <string name="confirmation_discard_positive">"Discard"</string>
     <string name="confirmation_discard_negative">"Cancel"</string>

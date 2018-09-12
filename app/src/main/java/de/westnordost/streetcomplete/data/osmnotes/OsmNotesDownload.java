@@ -31,14 +31,16 @@ public class OsmNotesDownload
 	private final NoteDao noteDB;
 	private final OsmNoteQuestDao noteQuestDB;
 	private final CreateNoteDao createNoteDB;
+	private final OsmAvatarsDownload avatarsDownload;
 	private final SharedPreferences preferences;
 	private final OsmNoteQuestType questType;
 
 	private VisibleQuestListener listener;
 
 	@Inject public OsmNotesDownload(
-			NotesDao noteServer, NoteDao noteDB, OsmNoteQuestDao noteQuestDB,
-			CreateNoteDao createNoteDB, SharedPreferences preferences, OsmNoteQuestType questType)
+		NotesDao noteServer, NoteDao noteDB, OsmNoteQuestDao noteQuestDB,
+		CreateNoteDao createNoteDB, SharedPreferences preferences, OsmNoteQuestType questType,
+		OsmAvatarsDownload avatarsDownload)
 	{
 		this.noteServer = noteServer;
 		this.noteDB = noteDB;
@@ -46,6 +48,7 @@ public class OsmNotesDownload
 		this.createNoteDB = createNoteDB;
 		this.preferences = preferences;
 		this.questType = questType;
+		this.avatarsDownload = avatarsDownload;
 	}
 
 	public void setQuestListener(VisibleQuestListener listener)
@@ -60,6 +63,7 @@ public class OsmNotesDownload
 		final Collection<Note> notes = new ArrayList<>();
 		final Collection<OsmNoteQuest> quests = new ArrayList<>();
 		final Collection<OsmNoteQuest> hiddenQuests = new ArrayList<>();
+		final Set<Long> noteCommentUserIds = new HashSet<>();
 
 		noteServer.getAll(bbox, note ->
 		{
@@ -79,7 +83,10 @@ public class OsmNotesDownload
 				quests.add(quest);
 				previousQuestsByNoteId.remove(note.id);
 			}
-
+			for (NoteComment comment : note.comments)
+			{
+				if(comment.user != null) noteCommentUserIds.add(comment.user.id);
+			}
 			notes.add(note);
 			positions.add(note.position);
 		}, max, 0);
@@ -130,8 +137,12 @@ public class OsmNotesDownload
 				" closed notes (" + hiddenAmount + " of " + (hiddenAmount + visibleAmount) +
 				" notes are hidden)");
 
+		avatarsDownload.download(noteCommentUserIds);
+
 		return positions;
 	}
+
+
 
 	private HashMap<Long, Long> getPreviousQuestsByNoteId(BoundingBox bbox)
 	{

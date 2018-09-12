@@ -150,7 +150,6 @@ public class QuestSelectionAdapter extends ListAdapter<QuestSelectionAdapter.Que
 		private TextView textCountryDisabled;
 		private QuestVisibility item;
 
-
 		public QuestVisibilityViewHolder(View itemView)
 		{
 			super(itemView);

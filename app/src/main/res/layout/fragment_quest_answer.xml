@@ -69,58 +69,66 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <FrameLayout
-                    android:id="@+id/speechbubbleContent"
+                <LinearLayout
+                    android:id="@+id/scrollViewChild"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/speech_bubble_none"
-                    android:layout_marginStart="-2.5dp"
-                    android:layout_marginEnd="-2.5dp"
-                    android:layout_marginBottom="4dp">
+                    android:orientation="vertical">
 
-                    <de.westnordost.streetcomplete.view.MaskSpeechbubbleCornersFrameLayout
+                    <FrameLayout
+                        android:id="@+id/speechbubbleContent"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/speech_bubble_none"
+                        android:layout_marginStart="-2.5dp"
+                        android:layout_marginEnd="-2.5dp"
+                        android:layout_marginBottom="4dp">
 
-                        <LinearLayout
+                        <de.westnordost.streetcomplete.view.MaskSpeechbubbleCornersFrameLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:showDividers="middle"
-                            android:divider="@drawable/button_bar_divider">
-
-                            <FrameLayout
-                                android:id="@+id/content"
-                                android:layout_height="wrap_content"
-                                android:layout_width="match_parent"
-                                android:orientation="vertical"
-                                android:paddingStart="16dp"
-                                android:paddingEnd="16dp"
-                                android:paddingTop="10dp"
-                                android:paddingBottom="10dp"/>
+                            android:layout_height="wrap_content">
 
                             <LinearLayout
-                                android:id="@+id/buttonPanel"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:layoutDirection="locale"
-                                style="@style/ButtonBar">
+                                android:orientation="vertical"
+                                android:showDividers="middle"
+                                android:divider="@drawable/button_bar_divider">
 
-                                <Button
-                                    android:id="@+id/buttonOtherAnswers"
-                                    android:layout_width="wrap_content"
+                                <FrameLayout
+                                    android:id="@+id/content"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/quest_generic_otherAnswers"
-                                    style="@style/BottomSheetButtonBarItem"/>
+                                    android:layout_width="match_parent"
+                                    android:orientation="vertical"
+                                    android:paddingStart="16dp"
+                                    android:paddingEnd="16dp"
+                                    android:paddingTop="10dp"
+                                    android:paddingBottom="10dp"/>
+
+                                <LinearLayout
+                                    android:id="@+id/buttonPanel"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layoutDirection="locale"
+                                    style="@style/ButtonBar">
+
+                                    <Button
+                                        android:id="@+id/buttonOtherAnswers"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="@string/quest_generic_otherAnswers"
+                                        style="@style/BottomSheetButtonBarItem"/>
+
+                                </LinearLayout>
 
                             </LinearLayout>
 
-                        </LinearLayout>
+                        </de.westnordost.streetcomplete.view.MaskSpeechbubbleCornersFrameLayout>
 
-                    </de.westnordost.streetcomplete.view.MaskSpeechbubbleCornersFrameLayout>
+                    </FrameLayout>
 
-                </FrameLayout>
+                </LinearLayout>
 
             </android.support.v4.widget.NestedScrollView>
 
