@@ -30,4 +30,6 @@
     <dimen name="round_button_padding">6dp</dimen>
     <dimen name="round_button_inset">6dp</dimen>
 
+    <dimen name="rounded_selection_radius">10dp</dimen>
+
 </resources>

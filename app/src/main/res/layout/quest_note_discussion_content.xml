@@ -8,8 +8,7 @@
     <EditText
         android:id="@+id/noteInput"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:inputType="textMultiLine"
         android:scrollbars="vertical"
         android:gravity="top|start"

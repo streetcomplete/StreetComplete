@@ -3,7 +3,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 xmlns:tools="http://schemas.android.com/tools"
-                android:padding="2dp">
+                android:padding="2dp"
+                android:background="?android:attr/selectableItemBackground">
 
     <ImageView
         tools:src="@drawable/panorama_surface_ground"

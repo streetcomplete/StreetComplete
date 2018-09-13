@@ -3,7 +3,9 @@
     <color name="primary">#4141ba</color>
     <color name="primary_dark">#3939a3</color>
     <color name="accent">#ff6600</color>
-    <color name="accent_transparent">#66ff6600</color>
+
+    <color name="selection">#66ff6600</color>
+    <color name="selection_frame">#bbff6600</color>
 
     <color name="location_dot">#536dfe</color>
     <color name="location_accuracy_fill">#22536dfe</color>
@@ -27,5 +29,6 @@
 
     <color name="traffic_gray_a">#8e9291</color>
     <color name="traffic_gray_b">#4f5250</color>
+    <color name="pressed">#ddd</color>
 
 </resources>

@@ -44,7 +44,8 @@ public abstract class AbstractQuestFormAnswerFragment extends AbstractQuestAnswe
 			buttonOk.animate()
 				.alpha(1).scaleX(1).scaleY(1)
 				.setDuration(100)
-				.setInterpolator(new DecelerateInterpolator());
+				.setInterpolator(new DecelerateInterpolator())
+				.withEndAction(null);
 		}
 		else
 		{
