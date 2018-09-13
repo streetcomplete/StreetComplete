@@ -726,16 +726,13 @@ public class MainActivity extends AppCompatActivity implements
 	{
 		soundFx.play(getResources().getIdentifier("plop"+random.nextInt(4), "raw", getPackageName()));
 
-		int size = (int) DpUtil.toPx(42, this);
-
 		ViewGroup root = (ViewGroup) getWindow().getDecorView();
-
-		ImageView img = new ImageView(this);
-		img.setImageResource(iconResId);
+		ImageView img = (ImageView) getLayoutInflater().inflate(R.layout.effect_quest_plop, root, false);
 		img.setX(startScreenPos.x);
 		img.setY(startScreenPos.y);
+		img.setImageResource(iconResId);
+		root.addView(img);
 
-		root.addView(img, size, size);
 		flingQuestMarkerTo(img, answersCounter.getAnswerTarget(), () -> {
 			root.removeView(img);
 			answersCounter.addOneUnsynced(source);
