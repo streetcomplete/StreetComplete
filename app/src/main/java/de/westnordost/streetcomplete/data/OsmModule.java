@@ -25,7 +25,6 @@ import de.westnordost.osmapi.map.OsmMapDataFactory;
 import de.westnordost.osmapi.notes.NotesDao;
 import de.westnordost.streetcomplete.quests.oneway.TrafficFlowSegmentsDao;
 import de.westnordost.streetcomplete.util.ImageUploader;
-import de.westnordost.streetcomplete.util.LutimImageUploader;
 import oauth.signpost.OAuthConsumer;
 
 @Module
@@ -107,9 +106,7 @@ public class OsmModule
 
 	@Provides public static ImageUploader imageUploader()
 	{
-		LutimImageUploader imageUploader = new LutimImageUploader(ApplicationConstants.LUTIM_INSTANCE);
-		imageUploader.setDeleteAfterDays(ApplicationConstants.LUTIM_DELETE_AFTER_DAYS);
-		return imageUploader;
+		return new ImageUploader(ApplicationConstants.SC_PHOTO_SERVICE_URL);
 	}
 
 	public static File getAvatarsCacheDirectory(Context context)

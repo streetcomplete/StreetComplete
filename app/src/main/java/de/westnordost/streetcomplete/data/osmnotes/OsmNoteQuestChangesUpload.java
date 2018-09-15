@@ -76,6 +76,7 @@ public class OsmNoteQuestChangesUpload
 		{
 			text += AttachPhotoUtils.uploadAndGetAttachedPhotosText(imageUploader, quest.getImagePaths());
 			Note newNote = osmDao.comment(quest.getNote().id, text);
+			imageUploader.activate(newNote.id);
 
 			/* Unlike OSM quests, note quests are never deleted when the user contributed to it
 			   but must remain in the database with the status CLOSED as long as they are not

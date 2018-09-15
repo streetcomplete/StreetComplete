@@ -164,7 +164,9 @@ public class CreateNoteUpload
 	{
 		String text = getCreateNoteText(n);
 		text += AttachPhotoUtils.uploadAndGetAttachedPhotosText(imageUploader, n.imagePaths);
-		return osmDao.create(n.position, text);
+		Note result = osmDao.create(n.position, text);
+		imageUploader.activate(result.id);
+		return result;
 	}
 
 	private Note commentNote(Note note, String text, List<String> attachedImagePaths)
@@ -174,7 +176,9 @@ public class CreateNoteUpload
 			try
 			{
 				text += AttachPhotoUtils.uploadAndGetAttachedPhotosText(imageUploader, attachedImagePaths);
-				return osmDao.comment(note.id, text);
+				Note result = osmDao.comment(note.id, text);
+				imageUploader.activate(result.id);
+				return result;
 			}
 			catch (OsmConflictException e)
 			{
