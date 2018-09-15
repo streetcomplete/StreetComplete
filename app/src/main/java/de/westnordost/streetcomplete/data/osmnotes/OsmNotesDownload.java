@@ -68,12 +68,12 @@ public class OsmNotesDownload
 		noteServer.getAll(bbox, note ->
 		{
 			OsmNoteQuest quest = new OsmNoteQuest(note, questType);
-			if(makeNoteClosed(userId, note))
+			if(shouldMakeNoteClosed(userId, note))
 			{
 				quest.setStatus(QuestStatus.CLOSED);
 				hiddenQuests.add(quest);
 			}
-			else if(makeNoteInvisible(quest))
+			else if(shouldMakeNoteInvisible(quest))
 			{
 				quest.setStatus(QuestStatus.INVISIBLE);
 				hiddenQuests.add(quest);
@@ -154,7 +154,7 @@ public class OsmNotesDownload
 		return result;
 	}
 
-	private boolean makeNoteClosed(Long userId, Note note)
+	private boolean shouldMakeNoteClosed(Long userId, Note note)
 	{
 		/* hide a note if he already contributed to it. This can also happen from outside
 		   this application, which is why we need to overwrite its quest status. */
@@ -163,7 +163,7 @@ public class OsmNotesDownload
 
 	// the difference to hidden is that is that invisible quests may turn visible again, dependent
 	// on the user's settings while hidden quests are "dead"
-	private boolean makeNoteInvisible(OsmNoteQuest quest)
+	private boolean shouldMakeNoteInvisible(OsmNoteQuest quest)
 	{
 		/* many notes are created to report problems on the map that cannot be resolved
 		 * through an on-site survey rather than questions from other (armchair) mappers

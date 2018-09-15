@@ -47,7 +47,7 @@
                     android:paddingEnd="8dp"
                     android:paddingTop="12dp"
                     android:paddingBottom="12dp"
-                    style="@style/DialogWindowTitle.Bubble"/>
+                    android:textAppearance="@style/TextAppearance.Title"/>
 
                 <ImageView
                     android:id="@+id/close_btn"

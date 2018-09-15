@@ -2,6 +2,7 @@
 <LinearLayout
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
@@ -9,7 +10,7 @@
         android:id="@+id/description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/create_new_note_description"
+        tools:text="@string/create_new_note_description"
         android:labelFor="@+id/noteInput"/>
 
     <EditText

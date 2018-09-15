@@ -1,11 +1,10 @@
 package de.westnordost.streetcomplete.data.osmnotes;
 
 import android.content.Context;
-import android.content.res.Configuration;
 import android.graphics.Point;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.BottomSheetBehavior;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,33 +16,23 @@ import android.view.animation.BounceInterpolator;
 import android.view.animation.TranslateAnimation;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+
+import java.util.ArrayList;
 
 import de.westnordost.streetcomplete.R;
-import de.westnordost.streetcomplete.quests.AbstractBottomSheetFragment;
-import de.westnordost.streetcomplete.quests.note_discussion.AttachPhotoFragment;
-import de.westnordost.streetcomplete.util.TextChangedWatcher;
 
-public class CreateNoteFragment extends AbstractBottomSheetFragment
+public class CreateNoteFragment extends AbstractCreateNoteFragment
 {
 	private EditText noteInput;
 	private View markerLayout;
 	private View marker;
-	private View buttonOk;
 
 	private CreateNoteListener callbackListener;
 
-	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
-							 Bundle savedInstanceState)
+	@Override public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
+									   Bundle savedInstanceState)
 	{
-		View view = inflater.inflate(R.layout.fragment_create_note, container, false);
-
-		LinearLayout bottomSheet = view.findViewById(R.id.bottomSheet);
-		if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE)
-		{
-			BottomSheetBehavior.from(bottomSheet).setState(BottomSheetBehavior.STATE_EXPANDED);
-		}
+		View view = super.onCreateView(inflater, container, savedInstanceState);
 
 		markerLayout = view.findViewById(R.id.marker_layout_create_note);
 		if(savedInstanceState == null)
@@ -53,25 +42,10 @@ public class CreateNoteFragment extends AbstractBottomSheetFragment
 
 		marker = view.findViewById(R.id.marker_create_note);
 
-		TextView title = view.findViewById(R.id.title);
-		title.setText(R.string.map_btn_create_note);
+		noteInput = view.findViewById(R.id.noteInput);
 
-		ViewGroup buttonPanel = view.findViewById(R.id.buttonPanel);
-		buttonPanel.removeAllViews();
-		inflater.inflate(R.layout.quest_buttonpanel_ok_cancel, buttonPanel);
-
-		ViewGroup content = view.findViewById(R.id.content);
-		content.removeAllViews();
-		inflater.inflate(R.layout.form_create_note, content);
-
-		buttonPanel.findViewById(R.id.buttonCancel).setOnClickListener(v -> getActivity().onBackPressed());
-		buttonOk = buttonPanel.findViewById(R.id.buttonOk);
-		buttonOk.setOnClickListener(v -> onClickOk());
-
-		noteInput = content.findViewById(R.id.noteInput);
-		noteInput.addTextChangedListener(new TextChangedWatcher(this::updateOkButtonEnablement));
-
-		updateOkButtonEnablement();
+		setTitle(R.string.map_btn_create_note);
+		setDescription(R.string.create_new_note_description);
 
 		return view;
 	}
@@ -94,25 +68,29 @@ public class CreateNoteFragment extends AbstractBottomSheetFragment
 		return a;
 	}
 
-	@Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState)
-	{
-		super.onViewCreated(view, savedInstanceState);
-		if(savedInstanceState == null)
-		{
-			// TODO reenable when photos can be uploaded again somewhere #1161
-			//getChildFragmentManager().beginTransaction().add(R.id.attachPhotoFragment, new AttachPhotoFragment()).commit();
-		}
-	}
-
 	@Override public void onAttach(Context ctx)
 	{
 		super.onAttach(ctx);
 		callbackListener = (CreateNoteListener) ctx;
 	}
 
-	private @Nullable AttachPhotoFragment getAttachPhotoFragment()
+	@Override protected void onDiscard()
 	{
-		return (AttachPhotoFragment) getChildFragmentManager().findFragmentById(R.id.attachPhotoFragment);
+		markerLayout.setVisibility(View.INVISIBLE);
+	}
+
+	@Override protected void onLeaveNote(String text, @Nullable ArrayList<String> imagePaths)
+	{
+		if(closeKeyboard()) return;
+
+		int[] point = new int[2];
+		marker.getLocationInWindow(point);
+		Point screenPos = new Point(point[0], point[1]);
+		screenPos.offset(marker.getWidth()/2, marker.getHeight()/2);
+
+		callbackListener.onLeaveNote(text, imagePaths, screenPos);
+
+		markerLayout.setVisibility(View.INVISIBLE);
 	}
 
 	private boolean closeKeyboard()
@@ -122,48 +100,5 @@ public class CreateNoteFragment extends AbstractBottomSheetFragment
 		return imm.hideSoftInputFromWindow(noteInput.getWindowToken(), 0);
 	}
 
-	private void onClickOk()
-	{
-		if(!closeKeyboard())
-		{
-			onClickOkAfterKeyboardClosed();
-		}
-	}
-
-	private void onClickOkAfterKeyboardClosed()
-	{
-		AttachPhotoFragment f = getAttachPhotoFragment();
-
-		int[] point = new int[2];
-		marker.getLocationInWindow(point);
-		Point screenPos = new Point(point[0], point[1]);
-		screenPos.offset(marker.getWidth()/2, marker.getHeight()/2);
-
-		callbackListener.onLeaveNote(getNoteText(), f != null ? f.getImagePaths() : null, screenPos);
-
-		markerLayout.setVisibility(View.INVISIBLE);
-	}
-
-	@Override protected void onDiscard()
-	{
-		AttachPhotoFragment f = getAttachPhotoFragment();
-		if(f != null) f.deleteImages();
-
-		markerLayout.setVisibility(View.INVISIBLE);
-	}
-
-	@Override public boolean isRejectingClose()
-	{
-		return !getNoteText().isEmpty();
-	}
-
-	private String getNoteText()
-	{
-		return noteInput.getText().toString().trim();
-	}
-
-	private void updateOkButtonEnablement()
-	{
-		buttonOk.setEnabled(!getNoteText().isEmpty());
-	}
+	@Override protected int getLayoutResId() { return R.layout.fragment_create_note; }
 }

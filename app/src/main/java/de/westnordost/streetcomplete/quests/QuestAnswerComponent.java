@@ -52,6 +52,11 @@ public class QuestAnswerComponent
 		callbackListener.onAnsweredQuest(questId, questGroup, answer);
 	}
 
+	public void onComposeNote(String questTitle)
+	{
+		callbackListener.onComposeNote(questId, questGroup, questTitle);
+	}
+
 	public void onLeaveNote(String questTitle, String text, ArrayList<String> imagePaths)
 	{
 		callbackListener.onLeaveNote(questId, questGroup, questTitle, text, imagePaths);

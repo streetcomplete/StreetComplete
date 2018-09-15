@@ -79,6 +79,7 @@ import de.westnordost.streetcomplete.oauth.OAuthPrefs;
 import de.westnordost.streetcomplete.quests.AbstractBottomSheetFragment;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 import de.westnordost.streetcomplete.quests.FindQuestSourceComponent;
+import de.westnordost.streetcomplete.quests.LeaveNoteInsteadFragment;
 import de.westnordost.streetcomplete.quests.OsmQuestAnswerListener;
 import de.westnordost.streetcomplete.quests.QuestAnswerComponent;
 import de.westnordost.streetcomplete.quests.QuestUtil;
@@ -670,20 +671,40 @@ public class MainActivity extends AppCompatActivity implements
 		questSource.findSource(questId, group, mapFragment.getDisplayedLocation(), source ->
 		{
 			closeQuestDetailsFor(questId, group);
+			Quest quest = questController.get(questId, group);
 			if(questController.solve(questId, group, answer, source))
 			{
-				showQuestSolvedAnimation(questId, group, source);
+				showQuestSolvedAnimation(quest, source);
 			}
 			questAutoSyncer.triggerAutoUpload();
 		});
 	}
 
+	@Override public void onComposeNote(long questId, QuestGroup group, String questTitle)
+	{
+		LeaveNoteInsteadFragment f = new LeaveNoteInsteadFragment();
+		Bundle args = QuestAnswerComponent.createArguments(questId, group);
+		args.putString(LeaveNoteInsteadFragment.ARG_QUEST_TITLE, questTitle);
+		f.setArguments(args);
+
+		getSupportFragmentManager().popBackStack(BOTTOM_SHEET, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+		ft.setCustomAnimations(
+			0, R.animator.quest_answer_form_disappear,
+			0, R.animator.quest_answer_form_disappear);
+		ft.add(R.id.map_bottom_sheet_container, f, BOTTOM_SHEET);
+		ft.addToBackStack(BOTTOM_SHEET);
+		ft.commit();
+	}
+
 	@Override public void onLeaveNote(long questId, QuestGroup group, String questTitle, String note, ArrayList<String> imagePaths)
 	{
-		closeQuestDetailsFor(questId, group);
+		closeBottomSheet();
+		// the quest is deleted from DB on creating a note, so need to fetch quest before
+		Quest quest = questController.get(questId, group);
 		if(questController.createNote(questId, questTitle, note, imagePaths))
 		{
-			showQuestSolvedAnimation(questId, group, null);
+			showQuestSolvedAnimation(quest, null);
 		}
 		questAutoSyncer.triggerAutoUpload();
 	}
@@ -708,9 +729,8 @@ public class MainActivity extends AppCompatActivity implements
 		});
 	}
 
-	private void showQuestSolvedAnimation(long questId, QuestGroup group, String source)
+	private void showQuestSolvedAnimation(Quest quest, String source)
 	{
-		Quest quest = questController.get(questId, group);
 		if(quest == null) return;
 
 		int size = (int) DpUtil.toPx(42, this);
