@@ -3,12 +3,12 @@ package de.westnordost.streetcomplete.quests;
 import android.content.ContextWrapper;
 import android.support.annotation.AnyThread;
 import android.support.annotation.NonNull;
-import android.support.v4.app.DialogFragment;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -53,7 +54,7 @@ public abstract class AbstractQuestAnswerFragment extends AbstractBottomSheetFra
 
 	private final QuestAnswerComponent questAnswerComponent;
 
-	private LinearLayout buttonPanel;
+	private ViewGroup buttonPanel;
 	protected Button buttonOtherAnswers;
 
 	private OsmElement osmElement;
@@ -80,6 +81,7 @@ public abstract class AbstractQuestAnswerFragment extends AbstractBottomSheetFra
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState)
 	{
+		otherAnswers = new ArrayList<>();
 		View view = inflater.inflate(R.layout.fragment_quest_answer, container, false);
 
 		TextView title = view.findViewById(R.id.title);
@@ -98,6 +100,12 @@ public abstract class AbstractQuestAnswerFragment extends AbstractBottomSheetFra
 	@Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState)
 	{
 		super.onViewCreated(view, savedInstanceState);
+
+		// no content? -> hide the content container
+		if(content.getChildCount() == 0)
+		{
+			content.setVisibility(View.GONE);
+		}
 
 		if(otherAnswers.size() == 1)
 		{
@@ -183,12 +191,19 @@ public abstract class AbstractQuestAnswerFragment extends AbstractBottomSheetFra
 
 	protected final void onClickCantSay()
 	{
-		DialogFragment leaveNote = new LeaveNoteDialog();
-		Bundle leaveNoteArgs = questAnswerComponent.getArguments();
-		String questTitle = QuestUtil.getTitle(getEnglishResources(), questType, osmElement);
-		leaveNoteArgs.putString(LeaveNoteDialog.ARG_QUEST_TITLE, questTitle);
-		leaveNote.setArguments(leaveNoteArgs);
-		leaveNote.show(getActivity().getSupportFragmentManager(), null);
+		new AlertDialog.Builder(getContext())
+			.setTitle(R.string.quest_leave_new_note_title)
+			.setMessage(R.string.quest_leave_new_note_description)
+			.setNegativeButton(R.string.quest_leave_new_note_no, (dialog, which) ->
+			{
+				questAnswerComponent.onSkippedQuest();
+			})
+			.setPositiveButton(R.string.quest_leave_new_note_yes, ((dialog, which) ->
+			{
+				String questTitle = QuestUtil.getTitle(getEnglishResources(), questType, osmElement);
+				questAnswerComponent.onComposeNote(questTitle);
+			}))
+		.show();
 	}
 
 	private Resources getEnglishResources()
@@ -199,8 +214,18 @@ public abstract class AbstractQuestAnswerFragment extends AbstractBottomSheetFra
 		return localizedContext.getResources();
 	}
 
-	protected final void applyImmediateAnswer(Bundle data)
+	protected final void applyAnswer(@NonNull Bundle data)
 	{
+		if(data.isEmpty())
+		{
+			Toast.makeText(getActivity(), R.string.no_changes, Toast.LENGTH_SHORT).show();
+			return;
+		}
+		// in case there is a bug that a quest fills the bundle with nulls -> report
+		for(String key : data.keySet())
+		{
+			if(data.get(key) == null) throw new NullPointerException("Key " + key + " is null");
+		}
 		questAnswerComponent.onAnswerQuest(data);
 	}
 
@@ -215,6 +240,7 @@ public abstract class AbstractQuestAnswerFragment extends AbstractBottomSheetFra
 		{
 			content.removeAllViews();
 		}
+		content.setVisibility(View.VISIBLE);
 		return getLayoutInflater().inflate(resourceId, content);
 	}
 
@@ -225,10 +251,12 @@ public abstract class AbstractQuestAnswerFragment extends AbstractBottomSheetFra
 
 	protected final View setButtonsView(int resourceId)
 	{
+		// if other buttons are present, the other answers button should have a weight so that it
+		// can be sqeezed if there is not enough space for everything
+		buttonOtherAnswers.setLayoutParams(new LinearLayout.LayoutParams(
+			ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, 1f));
 		return getActivity().getLayoutInflater().inflate(resourceId, buttonPanel);
 	}
-
-	public abstract boolean hasChanges();
 
 	public final long getQuestId()
 	{

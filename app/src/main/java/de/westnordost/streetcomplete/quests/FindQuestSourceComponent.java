@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests;
 
 import android.app.Activity;
 import android.location.Location;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.CheckBox;
@@ -19,7 +20,7 @@ import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestDao;
 import de.westnordost.streetcomplete.util.FlattenIterable;
 import de.westnordost.streetcomplete.util.SphericalEarthMath;
-import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
+
 
 /** Finds the source (as in: from survey or from knowledge) of a quest solution, either by looking
  *  at the GPS position or asking the user */
@@ -80,7 +81,7 @@ public class FindQuestSourceComponent
 					R.layout.quest_source_dialog_layout, null, false);
 			final CheckBox checkBox = inner.findViewById(R.id.checkBoxDontShowAgain);
 
-			AlertDialogBuilder alertDialogBuilder = new AlertDialogBuilder(activity);
+			AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(activity);
 			alertDialogBuilder
 					.setTitle(R.string.quest_source_dialog_title)
 					.setView(inner)

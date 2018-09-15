@@ -32,6 +32,7 @@ public class OsmNotesDownloadTest extends TestCase
 	private OsmNoteQuestDao noteQuestDB;
 	private CreateNoteDao createNoteDB;
 	private SharedPreferences preferences;
+	private OsmAvatarsDownload avatarsDownload;
 
 	@Override public void setUp() throws Exception
 	{
@@ -40,6 +41,7 @@ public class OsmNotesDownloadTest extends TestCase
 		noteQuestDB = mock(OsmNoteQuestDao.class);
 		createNoteDB = mock(CreateNoteDao.class);
 		preferences = mock(SharedPreferences.class);
+		avatarsDownload = mock(OsmAvatarsDownload.class);
 	}
 
 	public void testDeleteObsoleteQuests()
@@ -71,7 +73,7 @@ public class OsmNotesDownloadTest extends TestCase
 		NotesDao noteServer = new TestListBasedNotesDao(notes);
 
 		OsmNotesDownload dl = new OsmNotesDownload(
-				noteServer, noteDB, noteQuestDB, createNoteDB, preferences, new OsmNoteQuestType());
+				noteServer, noteDB, noteQuestDB, createNoteDB, preferences, new OsmNoteQuestType(), avatarsDownload);
 
 		VisibleQuestListener listener = mock(VisibleQuestListener.class);
 		dl.setQuestListener(listener);

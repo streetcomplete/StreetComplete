@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.settings;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -22,7 +23,7 @@ import de.westnordost.streetcomplete.data.QuestType;
 import de.westnordost.streetcomplete.data.QuestTypeRegistry;
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderList;
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeDao;
-import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
+
 
 public class QuestSelectionFragment extends Fragment
 {
@@ -68,7 +69,7 @@ public class QuestSelectionFragment extends Fragment
 	{
 		switch (item.getItemId()) {
 			case R.id.action_reset:
-				new AlertDialogBuilder(getContext())
+				new AlertDialog.Builder(getContext())
 					.setMessage(R.string.pref_quests_reset)
 					.setPositiveButton(android.R.string.ok, (dialog, which) -> onReset())
 					.setNegativeButton(android.R.string.cancel, null)

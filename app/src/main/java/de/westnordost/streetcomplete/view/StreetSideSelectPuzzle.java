@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.view;
 
 import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -16,6 +17,8 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.ScaleAnimation;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -181,8 +184,10 @@ public class StreetSideSelectPuzzle extends FrameLayout
 		setStreetDrawable(resId, width, imgView, flip180Degrees);
 
 		((View)imgView.getParent()).bringToFront();
-		ObjectAnimator.ofFloat(imgView, "scaleX", 3, 1).start();
-		ObjectAnimator.ofFloat(imgView, "scaleY", 3, 1).start();
+
+		imgView.setScaleX(3);
+		imgView.setScaleY(3);
+		imgView.animate().scaleX(1).scaleY(1);
 	}
 
 	private void setStreetDrawable(int resId, int width, ImageView imageView, boolean flip180Degrees)

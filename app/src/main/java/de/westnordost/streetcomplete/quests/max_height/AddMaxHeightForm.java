@@ -1,7 +1,9 @@
 package de.westnordost.streetcomplete.quests.max_height;
 
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.text.InputFilter;
+import android.text.TextWatcher;
 import android.text.method.DigitsKeyListener;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,14 +12,14 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
-import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
+import de.westnordost.streetcomplete.util.TextChangedWatcher;
+
 
 public class AddMaxHeightForm extends AbstractQuestFormAnswerFragment
 {
@@ -48,9 +50,15 @@ public class AddMaxHeightForm extends AbstractQuestFormAnswerFragment
 	{
 		View contentView = setContentView(resourceId);
 
+
 		meterInput = contentView.findViewById(R.id.meterInput);
 		feetInput = contentView.findViewById(R.id.feetInput);
 		inchInput = contentView.findViewById(R.id.inchInput);
+
+		TextWatcher onTextChangedListener = new TextChangedWatcher(this::checkIsFormComplete);
+		if(meterInput != null) meterInput.addTextChangedListener(onTextChangedListener);
+		if(feetInput != null) feetInput.addTextChangedListener(onTextChangedListener);
+		if(inchInput != null) inchInput.addTextChangedListener(onTextChangedListener);
 
 		meterInputSign = contentView.findViewById(R.id.meterInputSign);
 		feetInputSign = contentView.findViewById(R.id.feetInputSign);
@@ -140,17 +148,17 @@ public class AddMaxHeightForm extends AbstractQuestFormAnswerFragment
 	{
 		addOtherAnswer(R.string.quest_maxheight_answer_noSign, () ->
 		{
-			new AlertDialogBuilder(getActivity())
+			new AlertDialog.Builder(getActivity())
 				.setMessage(R.string.quest_maxheight_answer_noSign_question)
 				.setPositiveButton(R.string.quest_generic_hasFeature_yes, (d, w) -> {
 					Bundle data = new Bundle();
 					data.putString(NO_SIGN, DEFAULT);
-					applyImmediateAnswer(data);
+					applyAnswer(data);
 				})
 				.setNegativeButton(R.string.quest_generic_hasFeature_no, (d, w) -> {
 					Bundle data = new Bundle();
 					data.putString(NO_SIGN, BELOW_DEFAULT);
-					applyImmediateAnswer(data);
+					applyAnswer(data);
 				})
 				.show();
 		});
@@ -158,12 +166,6 @@ public class AddMaxHeightForm extends AbstractQuestFormAnswerFragment
 
 	@Override protected void onClickOk()
 	{
-		if(!hasChanges())
-		{
-			Toast.makeText(getActivity(), R.string.no_changes, Toast.LENGTH_SHORT).show();
-			return;
-		}
-
 		if(userSelectedUnrealisticHeight())
 		{
 			confirmUnusualInput(this::applyMaxHeightFormAnswer);
@@ -176,17 +178,17 @@ public class AddMaxHeightForm extends AbstractQuestFormAnswerFragment
 
 	private boolean userSelectedUnrealisticHeight()
 	{
-		double height = getHeightFromInput().getInMeters();
-		return height > 6 || height < 2;
+		Height height = getHeightFromInput();
+		if(height == null) return false;
+		double m = height.getInMeters();
+		return m > 6 || m < 2;
 	}
 
 	private void applyMaxHeightFormAnswer()
 	{
-		String height = getHeightFromInput().toString();
-
 		Bundle answer = new Bundle();
-		answer.putString(MAX_HEIGHT, height);
-		applyFormAnswer(answer);
+		answer.putString(MAX_HEIGHT, getHeightFromInput().toString());
+		applyAnswer(answer);
 	}
 
 	private Height getHeightFromInput()
@@ -236,7 +238,7 @@ public class AddMaxHeightForm extends AbstractQuestFormAnswerFragment
 	private void confirmUnusualInput(final Runnable callback)
 	{
 		if(getActivity() == null) return;
-		new AlertDialogBuilder(getActivity())
+		new AlertDialog.Builder(getActivity())
 			.setTitle(R.string.quest_generic_confirmation_title)
 			.setMessage(R.string.quest_maxheight_unusualInput_confirmation_description)
 			.setPositiveButton(R.string.quest_generic_confirmation_yes, (dialog, which) -> callback.run())
@@ -244,8 +246,5 @@ public class AddMaxHeightForm extends AbstractQuestFormAnswerFragment
 			.show();
 	}
 
-	@Override public boolean hasChanges()
-	{
-		return getHeightFromInput() != null;
-	}
+	@Override public boolean isFormComplete() { return getHeightFromInput() != null; }
 }

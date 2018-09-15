@@ -1,11 +1,9 @@
 package de.westnordost.streetcomplete.statistics;
 
-import android.animation.ObjectAnimator;
-import android.animation.PropertyValuesHolder;
-import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
 import android.os.AsyncTask;
 import android.view.View;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.TextView;
 
@@ -139,14 +137,16 @@ public class AnswersCounter
 
 	private void animateChange(View view, float scale)
 	{
-		ObjectAnimator anim = ObjectAnimator.ofPropertyValuesHolder(view,
-			PropertyValuesHolder.ofFloat(View.SCALE_X, 1f, scale),
-			PropertyValuesHolder.ofFloat(View.SCALE_Y, 1f, scale));
-		anim.setRepeatCount(1);
-		anim.setRepeatMode(ValueAnimator.REVERSE);
-		anim.setInterpolator(new DecelerateInterpolator(2f));
-		anim.setDuration(100);
-		anim.start();
+		view.animate()
+			.scaleX(scale).scaleY(scale)
+			.setInterpolator(new DecelerateInterpolator(2f))
+			.setDuration(100)
+			.withEndAction(() ->
+			{
+				view.animate()
+					.scaleX(1).scaleY(1)
+					.setInterpolator(new AccelerateDecelerateInterpolator())
+					.setDuration(100);
+			});
 	}
-
 }

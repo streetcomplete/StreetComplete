@@ -4,7 +4,7 @@
                 android:layout_height="wrap_content"
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_margin="2dp"
-                android:background="@drawable/image_select_cell"
+                android:background="@drawable/image_select_cell_rounded"
     >
 
     <ImageView

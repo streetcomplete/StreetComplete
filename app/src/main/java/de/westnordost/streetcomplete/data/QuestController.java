@@ -149,7 +149,7 @@ public class QuestController
 	{
 		OsmQuest q = osmQuestDB.get(osmQuestId);
 		// race condition: another thread may have removed the element already (#288)
-		if(q == null) return false;
+		if(q == null || q.getStatus() != QuestStatus.NEW) return false;
 
 		CreateNote createNote = new CreateNote();
 		createNote.position = q.getMarkerLocation();
@@ -264,6 +264,7 @@ public class QuestController
 	private boolean solveOsmNoteQuest(long questId, Bundle answer)
 	{
 		OsmNoteQuest q = osmNoteQuestDB.get(questId);
+		if(q == null || q.getStatus() != QuestStatus.NEW) return false;
 		ArrayList<String> imagePaths = answer.getStringArrayList(NoteDiscussionForm.IMAGE_PATHS);
 		String comment = answer.getString(NoteDiscussionForm.TEXT);
 		if(comment != null && !comment.isEmpty())
@@ -286,7 +287,7 @@ public class QuestController
 		// race condition: another thread (i.e. quest download thread) may have removed the
 		// element already (#282). So in this case, just ignore
 		OsmQuest q = osmQuestDB.get(questId);
-		if(q == null) return false;
+		if(q == null || q.getStatus() != QuestStatus.NEW) return false;
 		Element element = osmElementDB.get(q.getElementType(), q.getElementId());
 		if(element == null) return false;
 
@@ -323,13 +324,13 @@ public class QuestController
 		}
 	}
 
-	/** Make the given quest invisible asynchronously (per user interaction). */
+	/** Make the given quest invisible (per user interaction). */
 	public void hide(long questId, QuestGroup group)
 	{
 		if(group == QuestGroup.OSM)
 		{
 			OsmQuest q = osmQuestDB.get(questId);
-			if(q == null) return;
+			if(q == null || q.getStatus() != QuestStatus.NEW) return;
 			q.setStatus(QuestStatus.HIDDEN);
 			osmQuestDB.update(q);
 			workerHandler.post(() -> relay.onQuestRemoved(q.getId(), group));
@@ -337,7 +338,7 @@ public class QuestController
 		else if(group == QuestGroup.OSM_NOTE)
 		{
 			OsmNoteQuest q = osmNoteQuestDB.get(questId);
-			if(q == null) return;
+			if(q == null || q.getStatus() != QuestStatus.NEW) return;
 			q.setStatus(QuestStatus.HIDDEN);
 			osmNoteQuestDB.update(q);
 			workerHandler.post(() -> relay.onQuestRemoved(q.getId(), group));

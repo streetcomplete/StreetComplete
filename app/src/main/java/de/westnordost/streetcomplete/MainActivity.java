@@ -1,8 +1,5 @@
 package de.westnordost.streetcomplete;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.graphics.Point;
 import android.graphics.PointF;
@@ -82,6 +79,7 @@ import de.westnordost.streetcomplete.oauth.OAuthPrefs;
 import de.westnordost.streetcomplete.quests.AbstractBottomSheetFragment;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 import de.westnordost.streetcomplete.quests.FindQuestSourceComponent;
+import de.westnordost.streetcomplete.quests.LeaveNoteInsteadFragment;
 import de.westnordost.streetcomplete.quests.OsmQuestAnswerListener;
 import de.westnordost.streetcomplete.quests.QuestAnswerComponent;
 import de.westnordost.streetcomplete.quests.QuestUtil;
@@ -95,7 +93,7 @@ import de.westnordost.streetcomplete.tools.CrashReportExceptionHandler;
 import de.westnordost.streetcomplete.util.DpUtil;
 import de.westnordost.streetcomplete.util.SlippyMapMath;
 import de.westnordost.streetcomplete.util.SphericalEarthMath;
-import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
+
 
 import static de.westnordost.streetcomplete.ApplicationConstants.MANUAL_DOWNLOAD_QUEST_TYPE_COUNT;
 
@@ -354,7 +352,7 @@ public class MainActivity extends AppCompatActivity implements
 
 		text.setText(QuestUtil.getHtmlTitle(getResources(), quest.getType(), element));
 
-		new AlertDialogBuilder(this)
+		new AlertDialog.Builder(this)
 			.setTitle(R.string.undo_confirm_title)
 			.setView(inner)
 			.setPositiveButton(R.string.undo_confirm_positive, (dialog, which) ->
@@ -418,7 +416,7 @@ public class MainActivity extends AppCompatActivity implements
 				R.layout.dialog_authorize_now, null, false);
 		final CheckBox checkBox = inner.findViewById(R.id.checkBoxDontShowAgain);
 
-		new AlertDialogBuilder(this)
+		new AlertDialog.Builder(this)
 				.setView(inner)
 				.setPositiveButton(android.R.string.ok, (dialog, which) ->
 				{
@@ -452,7 +450,7 @@ public class MainActivity extends AppCompatActivity implements
 			{
 				if (questController.isPriorityDownloadRunning())
 				{
-					new AlertDialogBuilder(this)
+					new AlertDialog.Builder(this)
 							.setMessage(R.string.confirmation_cancel_prev_download_title)
 							.setPositiveButton(android.R.string.ok, (dialog, which) -> downloadAreaConfirmed(enclosingBBox))
 							.setNegativeButton(android.R.string.cancel, null)
@@ -519,7 +517,7 @@ public class MainActivity extends AppCompatActivity implements
 						message += "\n\n" + vbe.getBanReason();
 					}
 
-					AlertDialog dialog = new AlertDialogBuilder(MainActivity.this)
+					AlertDialog dialog = new AlertDialog.Builder(MainActivity.this)
 							.setMessage(message)
 							.setPositiveButton(android.R.string.ok, null)
 							.create();
@@ -575,8 +573,7 @@ public class MainActivity extends AppCompatActivity implements
 		{
 			runOnUiThread(() ->
 			{
-				ObjectAnimator fadeInAnimator = ObjectAnimator.ofFloat(downloadProgressBar, View.ALPHA, 1f);
-				fadeInAnimator.start();
+				downloadProgressBar.animate().alpha(1);
 				downloadProgressBar.setProgress(0);
 
 				Toast.makeText(
@@ -627,9 +624,7 @@ public class MainActivity extends AppCompatActivity implements
 		{
 			runOnUiThread(() ->
 			{
-				ObjectAnimator fadeOutAnimator = ObjectAnimator.ofFloat(downloadProgressBar, View.ALPHA, 0f);
-				fadeOutAnimator.setDuration(1000);
-				fadeOutAnimator.start();
+				downloadProgressBar.animate().alpha(0).setDuration(1000);
 			});
 		}
 
@@ -659,6 +654,7 @@ public class MainActivity extends AppCompatActivity implements
 				mapFragment.removeQuestGeometry();
 				mapFragment.setIsFollowingPosition(isFollowingPosition);
 				mapFragment.setCompassMode(isCompassMode);
+				mapFragment.showMapControls();
 				MainActivity.super.onBackPressed();
 			});
 		}
@@ -674,59 +670,69 @@ public class MainActivity extends AppCompatActivity implements
 	{
 		questSource.findSource(questId, group, mapFragment.getDisplayedLocation(), source ->
 		{
-			onSolvedQuest(questId, group, source);
-			questController.solve(questId, group, answer, source);
+			closeQuestDetailsFor(questId, group);
+			Quest quest = questController.get(questId, group);
+			if(questController.solve(questId, group, answer, source))
+			{
+				showQuestSolvedAnimation(quest, source);
+			}
 			questAutoSyncer.triggerAutoUpload();
 		});
 	}
 
+	@Override public void onComposeNote(long questId, QuestGroup group, String questTitle)
+	{
+		LeaveNoteInsteadFragment f = new LeaveNoteInsteadFragment();
+		Bundle args = QuestAnswerComponent.createArguments(questId, group);
+		args.putString(LeaveNoteInsteadFragment.ARG_QUEST_TITLE, questTitle);
+		f.setArguments(args);
+
+		getSupportFragmentManager().popBackStack(BOTTOM_SHEET, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+		ft.setCustomAnimations(
+			0, R.animator.quest_answer_form_disappear,
+			0, R.animator.quest_answer_form_disappear);
+		ft.add(R.id.map_bottom_sheet_container, f, BOTTOM_SHEET);
+		ft.addToBackStack(BOTTOM_SHEET);
+		ft.commit();
+	}
+
 	@Override public void onLeaveNote(long questId, QuestGroup group, String questTitle, String note, ArrayList<String> imagePaths)
 	{
-		onSolvedQuest(questId, group, null);
-		questController.createNote(questId, questTitle, note, imagePaths);
+		closeBottomSheet();
+		// the quest is deleted from DB on creating a note, so need to fetch quest before
+		Quest quest = questController.get(questId, group);
+		if(questController.createNote(questId, questTitle, note, imagePaths))
+		{
+			showQuestSolvedAnimation(quest, null);
+		}
 		questAutoSyncer.triggerAutoUpload();
 	}
 
-	private void onSolvedQuest(long questId, QuestGroup group, String source)
-	{
-		closeQuestDetailsFor(questId, group);
-		Quest q = questController.get(questId, group);
-		if(q != null) showQuestSolvedAnimation(q, source);
-	}
-
-	private Animator createMarkerSolvedAnimation(View quest, View target)
+	private void flingQuestMarkerTo(View quest, View target, Runnable onFinished)
 	{
 		int[] targetPos = new int[2];
 		target.getLocationOnScreen(targetPos);
 
-		AnimatorSet pop = new AnimatorSet();
-		pop
-			.play(ObjectAnimator.ofFloat(quest, "scaleX", 1f, 1.6f))
-			.with(ObjectAnimator.ofFloat(quest, "scaleY", 1f, 1.6f));
-		pop.setInterpolator(new OvershootInterpolator(8f));
-		pop.setDuration(250);
-
-		AnimatorSet fling = new AnimatorSet();
-		fling
-			.play(ObjectAnimator.ofFloat(quest, "x", quest.getX(), targetPos[0]))
-			.with(ObjectAnimator.ofFloat(quest, "y", quest.getY(), targetPos[1]));
-		fling.setDuration(250);
-
-		AnimatorSet vanish = new AnimatorSet();
-		vanish
-			.play(ObjectAnimator.ofFloat(quest, "scaleX", 1.6f, 0.5f))
-			.with(ObjectAnimator.ofFloat(quest, "scaleY", 1.6f, 0.5f))
-			.with(ObjectAnimator.ofFloat(quest, "alpha", 1f, 0f));
-		vanish.setInterpolator(new AccelerateInterpolator());
-
-		AnimatorSet anim = new AnimatorSet();
-		anim.play(pop).before(fling);
-		anim.play(fling).with(vanish);
-		return anim;
+		quest.animate()
+			.scaleX(1.6f).scaleY(1.6f)
+			.setInterpolator(new OvershootInterpolator(8f))
+			.setDuration(250)
+			.withEndAction(() -> {
+				quest.animate()
+					.scaleX(0.2f).scaleY(0.2f)
+					.alpha(0.8f)
+					.x(targetPos[0]).y(targetPos[1])
+					.setDuration(250)
+					.setInterpolator(new AccelerateInterpolator())
+					.withEndAction(onFinished);
+		});
 	}
 
 	private void showQuestSolvedAnimation(Quest quest, String source)
 	{
+		if(quest == null) return;
+
 		int size = (int) DpUtil.toPx(42, this);
 		int[] offset = new int[2];
 		mapFragment.getView().getLocationOnScreen(offset);
@@ -740,27 +746,17 @@ public class MainActivity extends AppCompatActivity implements
 	{
 		soundFx.play(getResources().getIdentifier("plop"+random.nextInt(4), "raw", getPackageName()));
 
-		int size = (int) DpUtil.toPx(42, this);
-
 		ViewGroup root = (ViewGroup) getWindow().getDecorView();
-
-		ImageView img = new ImageView(this);
-		img.setImageResource(iconResId);
+		ImageView img = (ImageView) getLayoutInflater().inflate(R.layout.effect_quest_plop, root, false);
 		img.setX(startScreenPos.x);
 		img.setY(startScreenPos.y);
+		img.setImageResource(iconResId);
+		root.addView(img);
 
-		Animator anim = createMarkerSolvedAnimation(img, answersCounter.getAnswerTarget());
-		anim.addListener(new AnimatorListenerAdapter()
-		{
-			@Override public void onAnimationEnd(Animator animation)
-			{
-				root.removeView(img);
-				answersCounter.addOneUnsynced(source);
-			}
+		flingQuestMarkerTo(img, answersCounter.getAnswerTarget(), () -> {
+			root.removeView(img);
+			answersCounter.addOneUnsynced(source);
 		});
-
-		root.addView(img, size, size);
-		anim.start();
 	}
 
 	@Override public void onSkippedQuest(long questId, QuestGroup group)
@@ -884,6 +880,7 @@ public class MainActivity extends AppCompatActivity implements
 		mapFragment.setIsFollowingPosition(isFollowingPosition);
 		mapFragment.setCompassMode(isCompassMode);
 		mapFragment.removeQuestGeometry();
+		mapFragment.showMapControls();
 	}
 
 	private boolean isQuestDetailsCurrentlyDisplayedFor(long questId, QuestGroup group)
@@ -929,6 +926,7 @@ public class MainActivity extends AppCompatActivity implements
 		isCompassMode = mapFragment.isCompassMode();
 		mapFragment.setIsFollowingPosition(false);
 		mapFragment.setCompassMode(false);
+		mapFragment.hideMapControls();
 
 		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 		ft.setCustomAnimations(

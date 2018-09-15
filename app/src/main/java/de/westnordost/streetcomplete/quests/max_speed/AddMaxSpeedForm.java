@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.max_speed;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +14,6 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -22,7 +22,8 @@ import java.util.List;
 
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
-import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
+import de.westnordost.streetcomplete.util.TextChangedWatcher;
+
 
 public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 {
@@ -82,7 +83,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 				{
 					Bundle answer = new Bundle();
 					answer.putBoolean(LIVING_STREET, true);
-					applyImmediateAnswer(answer);
+					applyAnswer(answer);
 				});
 			});
 		}
@@ -102,12 +103,6 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 
 	@Override protected void onClickOk()
 	{
-		if(!hasChanges())
-		{
-			Toast.makeText(getActivity(), R.string.no_changes, Toast.LENGTH_SHORT).show();
-			return;
-		}
-
 		if(speedType == SpeedType.NO_SIGN)
 		{
 			boolean couldBeSlowZone = getCountryInfo().isSlowZoneKnown() &&
@@ -123,11 +118,12 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 		}
 	}
 
-	@Override public boolean hasChanges()
+	@Override public boolean isFormComplete()
 	{
-		return speedType == SpeedType.NO_SIGN
-			|| speedInput != null && !speedInput.getText().toString().isEmpty();
+		return speedType != null && (speedInput == null || !getSpeed().isEmpty());
 	}
+
+	private String getSpeed() { return speedInput.getText().toString(); }
 
 	/* ---------------------------------------- With sign --------------------------------------- */
 
@@ -146,6 +142,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 		if(speedInput != null)
 		{
 			speedInput.requestFocus();
+			speedInput.addTextChangedListener(new TextChangedWatcher(this::checkIsFormComplete));
 		}
 		speedUnitSelect = rightSide.findViewById(R.id.speedUnitSelect);
 		if(speedUnitSelect != null)
@@ -155,6 +152,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 			speedUnitSelect.setAdapter(new ArrayAdapter<>(getContext(), R.layout.spinner_item_centered, getSpinnerItems(measurementUnits)));
 			speedUnitSelect.setSelection(0);
 		}
+		checkIsFormComplete();
 	}
 
 	private List<String> getSpinnerItems(List<String> units)
@@ -193,7 +191,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 
 	private boolean userSelectedUnusualSpeed()
 	{
-		int speed = Integer.parseInt(speedInput.getText().toString());
+		int speed = Integer.parseInt(getSpeed());
 		String speedUnit = (String) speedUnitSelect.getSelectedItem();
 		double speedInKmh = speedUnit.equals("mph") ? mphToKmh(speed) : speed;
 		return speedInKmh > 140 || speed > 20 && speed % 5 != 0;
@@ -207,7 +205,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 	private void confirmUnusualInput(final Runnable callback)
 	{
 		if(getActivity() == null) return;
-		new AlertDialogBuilder(getActivity())
+		new AlertDialog.Builder(getActivity())
 			.setTitle(R.string.quest_generic_confirmation_title)
 			.setMessage(R.string.quest_maxspeed_unusualInput_confirmation_description)
 			.setPositiveButton(R.string.quest_generic_confirmation_yes, (dialog, which) -> callback.run())
@@ -217,7 +215,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 
 	private void applySpeedLimitFormAnswer()
 	{
-		int speed = Integer.parseInt(speedInput.getText().toString());
+		int speed = Integer.parseInt(getSpeed());
 		String speedStr = String.valueOf(speed);
 
 		// km/h is the OSM default, is not mentioned
@@ -241,7 +239,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 				answer.putString(MAX_SPEED_IMPLICIT_ROADTYPE, "zone" + speed);
 			}
 		}
-		applyFormAnswer(answer);
+		applyAnswer(answer);
 	}
 
 	/* ----------------------------------------- No sign ---------------------------------------- */
@@ -254,7 +252,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 		// the fragment / layout inflater context' resources to access it's drawable
 		ImageView img = view.findViewById(R.id.imgLivingStreet);
 		img.setImageDrawable(getResources().getDrawable(R.drawable.ic_living_street));
-		new AlertDialogBuilder(getActivity())
+		new AlertDialog.Builder(getActivity())
 			.setView(view)
 			.setTitle(R.string.quest_maxspeed_answer_living_street_confirmation_title)
 			.setPositiveButton(R.string.quest_generic_confirmation_yes, (dialog, which) -> callback.run())
@@ -265,7 +263,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 	private void confirmNoSign(Runnable confirm)
 	{
 		if(getActivity() == null) return;
-		new AlertDialogBuilder(getActivity())
+		new AlertDialog.Builder(getActivity())
 			.setTitle(R.string.quest_maxspeed_answer_noSign_confirmation_title)
 			.setMessage(R.string.quest_maxspeed_answer_noSign_confirmation)
 			.setPositiveButton(R.string.quest_maxspeed_answer_noSign_confirmation_positive, (dialog, which) -> confirm.run())
@@ -281,7 +279,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 		input.setText("××");
 		input.setInputType(EditorInfo.TYPE_NULL);
 
-		new AlertDialogBuilder(getActivity())
+		new AlertDialog.Builder(getActivity())
 			.setTitle(R.string.quest_maxspeed_answer_noSign_confirmation_title)
 			.setView(view)
 			.setPositiveButton(R.string.quest_maxspeed_answer_noSign_confirmation_positive, (dialog, which) -> confirm.run())
@@ -319,7 +317,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 	private void askUrbanOrRural(Runnable onUrban, Runnable onRural)
 	{
 		if(getActivity() == null) return;
-		new AlertDialogBuilder(getActivity())
+		new AlertDialog.Builder(getActivity())
 			.setTitle(R.string.quest_maxspeed_answer_noSign_info_urbanOrRural)
 			.setMessage(R.string.quest_maxspeed_answer_noSign_urbanOrRural_description)
 			.setPositiveButton(R.string.quest_maxspeed_answer_noSign_urbanOk, (dialog, which) -> onUrban.run())
@@ -338,7 +336,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 	private void askLit(Runnable onYes, Runnable onNo)
 	{
 		if(getActivity() == null) return;
-		new AlertDialogBuilder(getActivity())
+		new AlertDialog.Builder(getActivity())
 			.setMessage(R.string.quest_way_lit_road_title)
 			.setPositiveButton(R.string.quest_generic_hasFeature_yes, (dialog, which) -> onYes.run())
 			.setNegativeButton(R.string.quest_generic_hasFeature_no, (dialog, which) -> onNo.run())
@@ -348,7 +346,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 	private void askIsDualCarriageway(Runnable onYes, Runnable onNo)
 	{
 		if(getActivity() == null) return;
-		new AlertDialogBuilder(getActivity())
+		new AlertDialog.Builder(getActivity())
 			.setMessage(R.string.quest_maxspeed_answer_noSign_singleOrDualCarriageway_description)
 			.setPositiveButton(R.string.quest_generic_hasFeature_yes, (dialog, which) -> onYes.run())
 			.setNegativeButton(R.string.quest_generic_hasFeature_no, (dialog, which) -> onNo.run())
@@ -361,6 +359,6 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 		String countryCode = getCountryInfo().getCountryCode();
 		answer.putString(MAX_SPEED_IMPLICIT_COUNTRY, countryCode);
 		answer.putString(MAX_SPEED_IMPLICIT_ROADTYPE, roadType);
-		applyImmediateAnswer(answer);
+		applyAnswer(answer);
 	}
 }

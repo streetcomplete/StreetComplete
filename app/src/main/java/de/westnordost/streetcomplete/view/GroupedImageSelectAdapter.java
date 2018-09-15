@@ -24,6 +24,12 @@ public class GroupedImageSelectAdapter extends RecyclerView.Adapter<ItemViewHold
 	private ArrayList<Item> items = new ArrayList<>();
 	private Item selectedItem;
 
+	public interface OnItemSelectionListener
+	{
+		void onItemSelected(Item item);
+	}
+	private final List<OnItemSelectionListener> listeners = new ArrayList<>();
+
 	public GroupedImageSelectAdapter(GridLayoutManager gridLayoutManager)
 	{
 		gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup()
@@ -33,6 +39,11 @@ public class GroupedImageSelectAdapter extends RecyclerView.Adapter<ItemViewHold
 				return items.get(position).isGroup() ? gridLayoutManager.getSpanCount() : 1;
 			}
 		});
+	}
+
+	public void addOnItemSelectionListener(OnItemSelectionListener listener)
+	{
+		listeners.add(listener);
 	}
 
 	public void setCellLayout(int cellLayoutId)
@@ -49,6 +60,10 @@ public class GroupedImageSelectAdapter extends RecyclerView.Adapter<ItemViewHold
 	{
 		this.items = new ArrayList<>(items);
 		selectedItem = null;
+		for (OnItemSelectionListener listener : listeners)
+		{
+			listener.onItemSelected(selectedItem);
+		}
 		notifyDataSetChanged();
 	}
 
@@ -80,19 +95,6 @@ public class GroupedImageSelectAdapter extends RecyclerView.Adapter<ItemViewHold
 			selectedItem = null;
 		}
 
-		if(selectedItem != null)
-		{
-			int selectedIndex = items.indexOf(selectedItem);
-			notifyItemChanged(selectedIndex);
-
-			if(selectedItem.isGroup())
-			{
-				if(prevSelectedItem == null || getGroup(items.indexOf(prevSelectedItem)) != selectedIndex )
-				{
-					expandGroup(selectedIndex);
-				}
-			}
-		}
 		if(prevSelectedItem != null)
 		{
 			int prevSelectedIndex = items.indexOf(prevSelectedItem);
@@ -106,6 +108,23 @@ public class GroupedImageSelectAdapter extends RecyclerView.Adapter<ItemViewHold
 					retractGroup(previousGroupIndex);
 				}
 			}
+		}
+		if(selectedItem != null)
+		{
+			int selectedIndex = items.indexOf(selectedItem);
+			notifyItemChanged(selectedIndex);
+
+			if(selectedItem.isGroup())
+			{
+				if(prevSelectedItem == null || getGroup(items.indexOf(prevSelectedItem)) != selectedIndex )
+				{
+					expandGroup(selectedIndex);
+				}
+			}
+		}
+		for (OnItemSelectionListener listener : listeners)
+		{
+			listener.onItemSelected(selectedItem);
 		}
 	}
 

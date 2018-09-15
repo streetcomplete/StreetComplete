@@ -26,7 +26,7 @@ public class ImageSelectAdapter extends RecyclerView.Adapter<ItemViewHolder>
 		void onIndexSelected(int index);
 		void onIndexDeselected(int index);
 	}
-	private ImageSelectAdapter.OnItemSelectionListener onItemSelectionListener;
+	private final List<ImageSelectAdapter.OnItemSelectionListener> listeners = new ArrayList<>();
 
 	public ImageSelectAdapter()
 	{
@@ -39,10 +39,9 @@ public class ImageSelectAdapter extends RecyclerView.Adapter<ItemViewHolder>
 		this.maxSelectableIndices = maxSelectableIndices;
 	}
 
-	public void setOnItemSelectionListener(
-			ImageSelectAdapter.OnItemSelectionListener onItemSelectionListener)
+	public void addOnItemSelectionListener(ImageSelectAdapter.OnItemSelectionListener listener)
 	{
-		this.onItemSelectionListener = onItemSelectionListener;
+		listeners.add(listener);
 	}
 
 	public void setCellLayout(int cellLayoutId)
@@ -106,9 +105,9 @@ public class ImageSelectAdapter extends RecyclerView.Adapter<ItemViewHolder>
 		if(!selectedIndices.add(index)) return;
 
 		notifyItemChanged(index);
-		if(onItemSelectionListener != null)
+		for (OnItemSelectionListener listener : listeners)
 		{
-			onItemSelectionListener.onIndexSelected(index);
+			listener.onIndexSelected(index);
 		}
 	}
 
@@ -118,9 +117,9 @@ public class ImageSelectAdapter extends RecyclerView.Adapter<ItemViewHolder>
 		if(!selectedIndices.remove(index)) return;
 
 		notifyItemChanged(index);
-		if(onItemSelectionListener != null)
+		for (OnItemSelectionListener listener : listeners)
 		{
-			onItemSelectionListener.onIndexDeselected(index);
+			listener.onIndexDeselected(index);
 		}
 	}
 

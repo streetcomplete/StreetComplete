@@ -45,6 +45,7 @@ import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.util.BitmapUtil;
 import de.westnordost.streetcomplete.util.DpUtil;
 import de.westnordost.streetcomplete.util.SphericalEarthMath;
+import de.westnordost.streetcomplete.util.ViewUtils;
 
 import static android.content.Context.SENSOR_SERVICE;
 
@@ -177,23 +178,7 @@ public class MapFragment extends Fragment implements
 			initMarkers();
 			followPosition();
 			showLocation();
-			postOnLayout(this::updateView);
-		}
-	}
-
-	private void postOnLayout(final Runnable runnable)
-	{
-		ViewTreeObserver vto = getView().getViewTreeObserver();
-		if(vto.isAlive())
-		{
-			vto.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
-			{
-				@Override public void onGlobalLayout()
-				{
-					getView().getViewTreeObserver().removeOnGlobalLayoutListener(this);
-					runnable.run();
-				}
-			});
+			ViewUtils.postOnLayout(getView(), this::updateView);
 		}
 	}
 
@@ -666,4 +651,13 @@ public class MapFragment extends Fragment implements
 		return controller.getZoom();
 	}
 
+	public void showMapControls()
+	{
+		if(mapControls != null) mapControls.showControls();
+	}
+
+	public void hideMapControls()
+	{
+		if(mapControls != null) mapControls.hideControls();
+	}
 }

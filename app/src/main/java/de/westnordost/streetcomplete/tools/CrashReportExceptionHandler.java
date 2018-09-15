@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
+import android.support.v7.app.AlertDialog;
 import android.widget.Toast;
 
 import java.io.FileInputStream;
@@ -22,7 +23,7 @@ import de.westnordost.streetcomplete.ApplicationConstants;
 import de.westnordost.streetcomplete.BuildConfig;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.util.StreamUtils;
-import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
+
 
 public class CrashReportExceptionHandler implements Thread.UncaughtExceptionHandler
 {
@@ -84,7 +85,7 @@ public class CrashReportExceptionHandler implements Thread.UncaughtExceptionHand
 
 		new Handler(Looper.getMainLooper()).post(() ->
 		{
-			new AlertDialogBuilder(activityCtx)
+			new AlertDialog.Builder(activityCtx)
 					.setTitle(titleResourceId)
 					.setMessage(R.string.crash_message)
 					.setPositiveButton(R.string.crash_compose_email,

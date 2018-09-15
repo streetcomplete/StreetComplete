@@ -73,6 +73,11 @@ public abstract class ImageListQuestAnswerFragment extends AbstractQuestFormAnsw
 		selectHint.setText(selectableItems == 1 ? R.string.quest_roofShape_select_one : R.string.quest_select_hint);
 
 		imageSelector = new ImageSelectAdapter(selectableItems);
+		imageSelector.addOnItemSelectionListener(new ImageSelectAdapter.OnItemSelectionListener()
+		{
+			@Override public void onIndexSelected(int index) { checkIsFormComplete(); }
+			@Override public void onIndexDeselected(int index) { checkIsFormComplete(); }
+		});
 
         return view;
     }
@@ -132,7 +137,7 @@ public abstract class ImageListQuestAnswerFragment extends AbstractQuestFormAnsw
 			answer.putStringArrayList(OSM_VALUES, osmValues);
 		}
 		favs.addLastPicked(getClass().getSimpleName(), osmValues);
-		applyFormAnswer(answer);
+		applyAnswer(answer);
 	}
 
     @Override public void onSaveInstanceState(Bundle outState)
@@ -142,7 +147,7 @@ public abstract class ImageListQuestAnswerFragment extends AbstractQuestFormAnsw
 		outState.putBoolean(EXPANDED, showMoreButton.getVisibility() == View.GONE);
     }
 
-    @Override public boolean hasChanges()
+    @Override public boolean isFormComplete()
     {
         return !imageSelector.getSelectedIndices().isEmpty();
     }

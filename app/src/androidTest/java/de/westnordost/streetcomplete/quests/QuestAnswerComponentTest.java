@@ -49,6 +49,14 @@ public class QuestAnswerComponentTest extends TestCase
 				assertEquals(expectBundle, answer);
 			}
 
+			@Override
+			public void onComposeNote(long questId, QuestGroup group, String questTitle)
+			{
+				assertEquals(expectQuestId, questId);
+				assertEquals(expectGroup, group);
+				assertEquals(expectQuestTitle, questTitle);
+			}
+
 			@Override public void onLeaveNote(long questId, QuestGroup group, String questTitle,
 											  String note, ArrayList<String> imagePaths)
 			{
@@ -67,6 +75,7 @@ public class QuestAnswerComponentTest extends TestCase
 		});
 
 		c1.onCreate(QuestAnswerComponent.createArguments(expectQuestId, expectGroup));
+		c1.onComposeNote(expectQuestTitle);
 		c1.onLeaveNote(expectQuestTitle, expectNote, expectImagePaths);
 		c1.onAnswerQuest(expectBundle);
 		c1.onSkippedQuest();

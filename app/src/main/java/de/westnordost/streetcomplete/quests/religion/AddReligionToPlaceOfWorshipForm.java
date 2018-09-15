@@ -81,6 +81,6 @@ public class AddReligionToPlaceOfWorshipForm extends ImageListQuestAnswerFragmen
 		ArrayList<String> strings = new ArrayList<>(1);
 		strings.add("multifaith");
 		answer.putStringArrayList(OSM_VALUES, strings);
-		applyImmediateAnswer(answer);
+		applyAnswer(answer);
 	}
 }
