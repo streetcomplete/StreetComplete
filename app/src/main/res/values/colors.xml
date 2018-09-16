@@ -6,6 +6,7 @@
 
     <color name="selection">#66ff6600</color>
     <color name="selection_frame">#bbff6600</color>
+    <color name="background">#fff</color>
 
     <color name="location_dot">#536dfe</color>
     <color name="location_accuracy_fill">#22536dfe</color>
