@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests;
 
 import android.app.Activity;
 import android.location.Location;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -68,7 +69,7 @@ public class FindQuestSourceComponent
 		this.activity = context;
 	}
 
-	public void findSource(final long questId, final QuestGroup group, final Location location,
+	public void findSource(final long questId, final QuestGroup group, @Nullable final Location location,
 						   final Listener listener)
 	{
 		if(dontShowAgain || isWithinSurveyDistance(questId, group, location))
@@ -99,10 +100,10 @@ public class FindQuestSourceComponent
 		}
 	}
 
-	private boolean isWithinSurveyDistance(long questId, QuestGroup group, Location location)
+	private boolean isWithinSurveyDistance(long questId, QuestGroup group, @Nullable Location location)
 	{
 		ElementGeometry geometry = getQuestGeometry(questId, group);
-		if(geometry == null) return false;
+		if(geometry == null || location == null) return false;
 
 		LatLon loc = new OsmLatLon(location.getLatitude(), location.getLongitude());
 
