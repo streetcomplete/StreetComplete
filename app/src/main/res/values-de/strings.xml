@@ -610,4 +610,5 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_railway_crossing_barrier_title">"Wie ist dieser Bahnübergang beschrankt?"</string>
     <string name="quest_railway_crossing_barrier_none">"Garnicht"</string>
     <string name="privacy_html_image_upload2">"&lt;p&gt;Fotos, die an Notizen angehängt werden, werden auf meinen Server hochgeladen und einige Tage nachdem die Notiz geschlossen wurde, gelöscht. Ihre Metadaten werden vor dem Hochladen entfernt.&lt;/p&gt;"</string>
+    <string name="action_deselect_all">"Alle abwählen"</string>
 </resources>

@@ -48,12 +48,7 @@
     <string name="quest_openingHours_24_7_confirmation">"Inými slovami, je otvorené kedykoľvek každý deň?"</string>
     <string name="quest_noteDiscussion_title">"Môžete prispieť k tejto poznámke?"</string>
     <string name="quest_noteDiscussion_no">"Nie, schovať"</string>
-    <string name="quest_noteDiscussion_create">"vytvoril(a) %1$s (%2$s)"</string>
-    <string name="quest_noteDiscussion_comment">"%1$s (%2$s)"</string>
-    <string name="quest_noteDiscussion_closed">"%1$s uzavrel(a) poznámku (%2$s)"</string>
-    <string name="quest_noteDiscussion_reopen">"%1$s znovuotvoril poznámky (%2$s)"</string>
     <string name="quest_noteDiscussion_anonymous">"Anonym"</string>
-    <string name="quest_noteDiscussion_comments_title">"Odpovede"</string>
     <string name="confirmation_discard_title">"Zahodiť výber?"</string>
     <string name="confirmation_discard_positive">"Zahodiť"</string>
     <string name="confirmation_discard_negative">"Zrušiť"</string>
@@ -168,21 +163,11 @@ Pre zobrazenie mapy sa sťahujú vektorové dlaždice z &lt;a href=\"https://map
 
     <!-- Fuzzy -->
     <string name="quest_sidewalk_title">"Je pri ceste chodník?"</string>
-    <string name="map_orientation_info">"Mapa je orientovaná severom nahor."</string>
-    <string name="quest_sidewalk_onlyNorth">"Iba na severnej strane"</string>
-    <string name="quest_sidewalk_onlySouth">"Iba na južnej strane"</string>
-    <string name="quest_sidewalk_onlyWest">"Iba na západnej strane"</string>
-    <string name="quest_sidewalk_onlyEast">"Iba na východnej strane"</string>
-    <string name="quest_sidewalk_yes">"Áno"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Kde je táto ulica?"</string>
     <string name="quest_cyclewaySurface_title">"Aký povrch má cyklocesta v tomto mieste?"</string>
     <string name="quest_serviceType_title">"Aký druh servisnej cesty je toto?"</string>
     <string name="quest_streetLanes_title">"Koľko pruhov má táto cesta?"</string>
     <string name="quest_streetLanes_description">"Ak na ceste nie sú žiadne čiary, potom nemá pruhy."</string>
-    <string name="quest_streetLanes_north">"vedúcich na sever"</string>
-    <string name="quest_streetLanes_west">"vedúcich na západ"</string>
-    <string name="quest_streetLanes_east">"vedúcich na východ"</string>
-    <string name="quest_streetLanes_south">"vedúcich na juh"</string>
     <string name="quest_streetLanes_answer_noLanes">"Nemá vyznačené pruhy"</string>
     <string name="quest_streetLanes_noLanes_estWidth">"Prosím odhadnite koľko áut by sa na tejto ceste vošlo vedľa seba."</string>
     <string name="quest_oneway_title">"Je toto jednosmerka?"</string>
@@ -429,7 +414,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="about_category_feedback">"Spätná väzba"</string>
     <string name="quest_leave_new_note_photo">"Pridať fotku"</string>
     <string name="quest_leave_new_note_photo_delete_title">"Chcete zmazať tento obrázok?"</string>
-    <string name="privacy_html_image_upload">"&lt;p&gt;Pripojené fotografie sú nahrané do &lt;a href=\"https://framapic.org\"&gt;framapic.org&lt;/a&gt; anonymného úložiska bez sledovania.&lt;/p&gt;"</string>
     <string name="quest_cycleway_value_track">"cyklochodník"</string>
     <string name="quest_cycleway_value_lane">"cyklopruh"</string>
     <string name="quest_cycleway_value_none">"žiadne"</string>
@@ -463,9 +447,7 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="default_disabled_msg_go_inside">"Tento typ úlohy je v predvolenom nastavení zakázaný, pretože pravdepodobne budete musieť navštíviť miesto, aby ste mohli odpovedať na tento typ úlohy."</string>
     <string name="quest_housenumber_conscription_number">"Súpisné číslo"</string>
     <string name="quest_housenumber_street_number_optional">"Orientačné číslo (voliteľné)"</string>
-    <string name="quest_housenumber_conscription_number_required">"Súpisné číslo musí byť zadané"</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">"Cyklocesta je aj na druhej strane"</string>
-    <string name="need_specify_both_sides">"Musíte určiť obe strany"</string>
     <string name="quest_openingHours_emptyAnswer">"Je potrebné aby ste opísali čo je na označení otváracích hodín. Ak tam nie je označenie, mali by ste sa opýtať vo vnútri."</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"žiadne, ale cyklisti môžu využívať cestu v oboch smeroch"</string>
     <string name="quest_streetName_answer_noName_question">"Prečo nemá názov?"</string>
@@ -635,7 +617,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="quest_address_answer_no_housenumber_message1">"Táto budova bola označená ako:"</string>
     <string name="quest_address_answer_no_housenumber_message2">"Je to pravda a nie je to len časť budovy?"</string>
     <string name="quest_buildingType_shrine">"Svätyňa"</string>
-    <string name="quest_noteDiscussion_hide">"%1$s skryl poznámku (%2$s)"</string>
     <string name="quest_maxspeed_title_short2">"Aký je rýchlostný limit na tejto ceste?"</string>
     <string name="quest_maxspeed_answer_sign">"Značka"</string>
     <string name="quest_maxspeed_answer_zone2">"Je v zóne so zníženou rýchlosťou"</string>
@@ -658,4 +639,5 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="quest_maxheight_answer_noSign">"Nie je tam žiadna značka"</string>
     <string name="quest_maxheight_answer_noSign_question">"Je tam dosť miesta na prejazd aj pre najvyššie kamióny (viac ako 4,5 metra)?"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Táto výška vyzerá nepravdepodobne. Ste si istý, že je správna?"</string>
+    <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
 </resources>

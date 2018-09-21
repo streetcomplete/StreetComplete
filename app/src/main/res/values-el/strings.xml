@@ -46,12 +46,7 @@
     <string name="quest_openingHours_24_7_confirmation">"Με άλλα λόγια, είναι ανοιχτά κάθε ώρα, κάθε μέρα;"</string>
     <string name="quest_noteDiscussion_title">"Μπορείτε να συνεισφέρετε οτιδήποτε σε αυτή την σημείωση;"</string>
     <string name="quest_noteDiscussion_no">"Όχι, κρύψε"</string>
-    <string name="quest_noteDiscussion_create">"δημιουργήθηκε από %1$s (%2$s)"</string>
-    <string name="quest_noteDiscussion_comment">"%1$s (%2$s)"</string>
-    <string name="quest_noteDiscussion_closed">"%1$s κλεισμένη σημείωση (%2$s)"</string>
-    <string name="quest_noteDiscussion_reopen">"%1$s ξανά ανοιγμένη σημείωση (%2$s)"</string>
     <string name="quest_noteDiscussion_anonymous">"Ανώνυμα"</string>
-    <string name="quest_noteDiscussion_comments_title">"Απαντήσεις"</string>
     <string name="confirmation_discard_title">"Απόρριψη εισαγωγής;"</string>
     <string name="confirmation_discard_positive">"Απόρριψη"</string>
     <string name="confirmation_discard_negative">"Ακύρωση"</string>
@@ -150,21 +145,11 @@
     <string name="quest_surface_value_wood">"Ξύλο"</string>
     <string name="quest_placeName_title">"Ποιό είναι το όνομα αυτού του μέρους;"</string>
     <string name="quest_sidewalk_title">"Αυτός ο δρόμος έχει πεζοδρόμιο;"</string>
-    <string name="map_orientation_info">"Ο χάρτης είναι προσανατολισμένος προς τον βορά."</string>
-    <string name="quest_sidewalk_onlyNorth">"Μόνο στη βόρεια πλευρά"</string>
-    <string name="quest_sidewalk_onlySouth">"Μόνο στη νότια πλευρά"</string>
-    <string name="quest_sidewalk_onlyWest">"Μόνο στη δυτική πλευρά"</string>
-    <string name="quest_sidewalk_onlyEast">"Μόνο στην ανατολική πλευρά"</string>
-    <string name="quest_sidewalk_yes">"Ναι"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Που είναι αυτός ο δρόμος;"</string>
     <string name="quest_cyclewaySurface_title">"Τι επιφάνεια έχει ο ποδηλατόδρομος εδώ;"</string>
     <string name="quest_serviceType_title">"Τι είδους δρόμος υπηρεσίας είναι αυτός;"</string>
     <string name="quest_streetLanes_title">"Πόσα λωρίδες έχει αυτός ο δρόμος;"</string>
     <string name="quest_streetLanes_description">"Αν δεν υπάρχουν σημάνσεις δρόμου, δεν υπάρχουν λωρίδες."</string>
-    <string name="quest_streetLanes_north">"οδηγεί βόρεια"</string>
-    <string name="quest_streetLanes_west">"οδηγεί δυτικά"</string>
-    <string name="quest_streetLanes_east">"οδηγεί ανατολικά"</string>
-    <string name="quest_streetLanes_south">"οδηγεί νότια"</string>
     <string name="quest_streetLanes_answer_noLanes">"δεν έχει σημειωμένες λωρίδες"</string>
     <string name="quest_streetLanes_noLanes_estWidth">"Υπολογίστε πόσα αυτοκίνητα θα χωρέσουν το ένα δίπλα στο άλλο σε αυτόν τον δρόμο."</string>
     <string name="quest_oneway_title">"Είναι μονόδρομος αυτός ο δρόμος;"</string>
@@ -389,7 +374,6 @@
     <string name="about_category_feedback">"Αναφορά"</string>
     <string name="quest_leave_new_note_photo">"Επισύναψη φωτογραφίας"</string>
     <string name="quest_leave_new_note_photo_delete_title">"Θέλετε να διαγράψετε αυτή την φωτογραφία;"</string>
-    <string name="privacy_html_image_upload">"&lt;p&gt; Οι φωτογραφίες που επισυνάπτετε στις σημειώσεις μεταφορτώνονται στο &lt;a href=\"https://framapic.org\"&gt; framapic.org &lt;/a&gt;, μία υπηρεσία που είναι ανώνυμη και χωρίς παρακολούθηση. &lt;/ p&gt;"</string>
     <string name="quest_cycleway_value_track">"ποδηλατόδρομος"</string>
     <string name="quest_cycleway_value_lane">"ποδηλατική λωρίδα"</string>
     <string name="quest_cycleway_value_none">"κανείς"</string>
@@ -424,9 +408,7 @@
     <string name="default_disabled_msg_go_inside">"Αυτός ο τύπος αναζήτησης είναι απενεργοποιημένος από προεπιλογή, επειδή πιθανότατα θα πρέπει να εισέλθετε στον χώρο για να μπορέσετε να απαντήσετε σε μια αναζήτηση αυτού του τύπου."</string>
     <string name="quest_housenumber_conscription_number">"Αριθμός συνταγογράφησης"</string>
     <string name="quest_housenumber_street_number_optional">"Αριθμός προσανατολισμού (προαιρετικό)"</string>
-    <string name="quest_housenumber_conscription_number_required">"Ο αριθμός καταχώρησης πρέπει να προσδιοριστεί"</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">"Επίσης, ποδηλατόδρομος από την άλλη πλευρά"</string>
-    <string name="need_specify_both_sides">"Πρέπει να καθορίσετε και τις δύο πλευρές"</string>
     <string name="quest_openingHours_emptyAnswer">"Πρέπει να περιγράψετε τι υπάρχει στην πινακίδα. Εάν δεν υπάρχει καμία πινακίδα, θα πρέπει να ρωτήσετε μέσα για τις ώρες λειτουργίας."</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"κανείς, αλλά οι ποδηλάτες μπορούν να χρησιμοποιούν το δρόμο και προς τις δύο κατευθύνσεις"</string>
     <string name="quest_streetName_answer_noName_question">"Γιατί δεν έχει όνομα;"</string>
@@ -599,7 +581,6 @@
     <string name="quest_address_answer_no_housenumber_message1">"Το κτίριο χαρακτηρίστηκε ως:"</string>
     <string name="quest_address_answer_no_housenumber_message2">"Είναι αυτό σωστό και δεν είναι μόνο τμήμα ενός κτιρίου;"</string>
     <string name="quest_buildingType_shrine">"Ναός"</string>
-    <string name="quest_noteDiscussion_hide">"%1$s κρυμμένη σημείωση (%2$s)"</string>
     <string name="quest_maxspeed_title_short2">"Ποιό είναι το όριο ταχύτητας για αυτό τον δρόμο;"</string>
     <string name="quest_maxspeed_answer_sign">"Μία πινακίδα"</string>
     <string name="quest_maxspeed_answer_zone2">"Βρίσκεται μέσα σε μια (αργή) ζώνη"</string>
@@ -622,4 +603,5 @@
     <string name="quest_maxheight_answer_noSign">"Δεν υπάρχει πινακίδα"</string>
     <string name="quest_maxheight_answer_noSign_question">"Υπάρχει αρκετός χώρος για να περάσουν ακόμα και τα ψηλότερα φορτηγά (τουλάχιστον περίπου 4,5 μέτρα / 15 πόδια);"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Αυτό το ύψος φαίνεται απίθανο. Είστε βέβαιοι ότι είναι σωστό;"</string>
+    <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
 </resources>

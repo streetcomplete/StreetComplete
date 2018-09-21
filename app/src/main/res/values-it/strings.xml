@@ -19,17 +19,17 @@
     <string name="pref_title_map_cache">"Dimensioni della cache per la mappa"</string>
     <string name="map_btn_gps_tracking">"Seguimi"</string>
     <string name="map_attribution_mapzen">"Powered by %s"</string>
-    <string name="map_attribution_osm">"© OpenStreetMap contributori"</string>
+    <string name="map_attribution_osm">"© contributori OpenStreetMap"</string>
     <string name="quest_generic_otherAnswers">"Altre risposte…"</string>
 
     <!-- Potrebbe essere più friendly "Non so dirlo"? -->
     <string name="quest_generic_answer_notApplicable">"Non lo so"</string>
-    <string name="quest_generic_confirmation_title">"Si è sicuri?"</string>
+    <string name="quest_generic_confirmation_title">"Sei sicuro?"</string>
     <string name="quest_generic_confirmation_yes">"Sì. Ne sono certo"</string>
     <string name="quest_generic_confirmation_no">"Farò una verifica"</string>
     <string name="quest_generic_error_field_empty">"Hai lasciato questo campo vuoto"</string>
     <string name="quest_leave_new_note_title">"Preferisci invece lasciare una nota?"</string>
-    <string name="quest_leave_new_note_description">"Puoi lasciare una nota pubblica qui in modo che altri mappatori possano commentare e sperabilmente risolvere:"</string>
+    <string name="quest_leave_new_note_description">"Puoi lasciare una nota pubblica in questo punto in modo che altri mappatori possano commentare e sperabilmente risolvere:"</string>
     <string name="quest_leave_new_note_yes">"OK"</string>
     <string name="quest_leave_new_note_no">"No, lascia nascosto"</string>
     <string name="quest_streetName_title">"Qual è il nome di questa strada?"</string>
@@ -48,12 +48,7 @@
     <string name="quest_openingHours_24_7_confirmation">"In altre parole, è aperto a qualsiasi ora tutti i giorni?"</string>
     <string name="quest_noteDiscussion_title">"Puoi contribuire a questa nota?"</string>
     <string name="quest_noteDiscussion_no">"No, nascondi"</string>
-    <string name="quest_noteDiscussion_create">"creata da %1$s (%2$s)"</string>
-    <string name="quest_noteDiscussion_comment">"%1$s (%2$s)"</string>
-    <string name="quest_noteDiscussion_closed">"%1$s note chiuse (%2$s)"</string>
-    <string name="quest_noteDiscussion_reopen">"%1$s ha riaperto la nota (%2$s)"</string>
     <string name="quest_noteDiscussion_anonymous">"Anonimo"</string>
-    <string name="quest_noteDiscussion_comments_title">"Risposte"</string>
     <string name="confirmation_discard_title">"Eliminare l'input?"</string>
     <string name="confirmation_discard_positive">"Elimina"</string>
     <string name="confirmation_discard_negative">"Annulla"</string>
@@ -65,8 +60,8 @@
     <string name="upload_error">"Errore durante il caricamento delle risposte"</string>
     <string name="download_area_too_big">"È necessario ingrandire ancora di più"</string>
     <string name="confirmation_cancel_prev_download_title">"Annullare l'attuale ricerca per riproporla qui?"</string>
-    <string name="notification_downloading">"Trova missioni…"</string>
-    <string name="now_downloading_toast">"Trova altre missioni…"</string>
+    <string name="notification_downloading">"Cerco missioni…"</string>
+    <string name="now_downloading_toast">"Cerco altre missioni…"</string>
     <string name="turn_on_location_request">"Il sistema di localizzazione è spento. Apro le impostazioni per abilitarlo?"</string>
     <string name="no_location_permission_warning">"La tua posizione è necessaria per capire cosa aggiornare intorno a te"</string>
     <string name="action_about">"Informazioni su StreetComplete"</string>
@@ -149,21 +144,11 @@ Tuttavia, prima di caricare le modifiche, l’app fa una verifica su un &lt;a hr
     <string name="quest_surface_value_wood">"Legno"</string>
     <string name="quest_placeName_title">"Qual è il nome di questo luogo?"</string>
     <string name="quest_sidewalk_title">"Questa strada ha un marciapiede?"</string>
-    <string name="map_orientation_info">"La mappa è orientata con il nord in alto"</string>
-    <string name="quest_sidewalk_onlyNorth">"Solo sul lato nord"</string>
-    <string name="quest_sidewalk_onlySouth">"Solo sul lato sud"</string>
-    <string name="quest_sidewalk_onlyWest">"Solo sul lato ovest"</string>
-    <string name="quest_sidewalk_onlyEast">"Solo sul lato est"</string>
-    <string name="quest_sidewalk_yes">"Sì"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Dov'è questa strada?"</string>
     <string name="quest_cyclewaySurface_title">"Che tipo di pavimentazione ha questa pista ciclabile?"</string>
     <string name="quest_serviceType_title">"Quale tipo di strada di servizio è questa?"</string>
     <string name="quest_streetLanes_title">"Quante corsie ha questa strada?"</string>
     <string name="quest_streetLanes_description">"Se non è presente alcuna striscia sulla strada, allora non ci sono corsie."</string>
-    <string name="quest_streetLanes_north">"a nord"</string>
-    <string name="quest_streetLanes_west">"a ovest"</string>
-    <string name="quest_streetLanes_east">"a est"</string>
-    <string name="quest_streetLanes_south">"a sud"</string>
     <string name="quest_streetLanes_answer_noLanes">"non ci sono corsie marcate"</string>
     <string name="quest_streetLanes_noLanes_estWidth">"Si prega di stimare quante auto possono stare una accanto all'altro su questa strada."</string>
     <string name="quest_oneway_title">"Si tratta di una strada a senso unico?"</string>
@@ -388,7 +373,6 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="about_category_feedback">"Feedback"</string>
     <string name="quest_leave_new_note_photo">"Allega una foto"</string>
     <string name="quest_leave_new_note_photo_delete_title">"Vuoi cancellare questa foto?"</string>
-    <string name="privacy_html_image_upload">"&lt;p&gt;Le foto collegate alle note sono caricate al sito  &lt;a href=\"https://framapic.org\"&gt;framapic.org&lt;/a&gt;, un servizio anonimo e privo di tracciamento.&lt;/p&gt;"</string>
     <string name="quest_cycleway_value_track">"pista ciclabile"</string>
     <string name="quest_cycleway_value_lane">"corsia ciclabile"</string>
     <string name="quest_cycleway_value_none">"nessuna"</string>
@@ -423,9 +407,7 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="default_disabled_msg_go_inside">"Questo tipo di ricerca si presenta disabilitato perché è molto probabile che dovrai entrare nel luogo  "</string>
     <string name="quest_housenumber_conscription_number">"Numero di coscrizione"</string>
     <string name="quest_housenumber_street_number_optional">"Orientamento dei numero (opzionale)"</string>
-    <string name="quest_housenumber_conscription_number_required">"Deve essere specificato un numero di coscrizione"</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">"Pista ciclabile anche sull'altro lato"</string>
-    <string name="need_specify_both_sides">"Devi specificare entrambi i lati"</string>
     <string name="quest_openingHours_emptyAnswer">"Devi descrivere cosa c'è sul cartello. Se non c'è nessun segno, dovresti chiedere gli orari di apertura all'interno."</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"nessuna, ma i ciclisti possono usare la strada in entrambe le direzioni"</string>
     <string name="quest_streetName_answer_noName_question">"Perché non ha un nome?"</string>
@@ -595,7 +577,6 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_address_answer_no_housenumber_message1">"L’edificio era etichettato come:"</string>
     <string name="quest_address_answer_no_housenumber_message2">"È corretto e non si tratta solo di una parte di un edificio?"</string>
     <string name="quest_buildingType_shrine">"Sacello"</string>
-    <string name="quest_noteDiscussion_hide">"%1$s ha nascosto la nota (%2$s)"</string>
     <string name="quest_maxspeed_title_short2">"Qual è il limite di velocità su questa strada?"</string>
     <string name="quest_maxspeed_answer_sign">"Un cartello"</string>
     <string name="quest_maxspeed_answer_zone2">"Si trova in una zona a bassa velocità"</string>
@@ -618,4 +599,12 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_maxheight_answer_noSign">"Non c’è alcun cartello"</string>
     <string name="quest_maxheight_answer_noSign_question">"C’è spazio sufficiente per far passare anche il più alto dei camion (almeno 4,5 metri / 15 piedi)?"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Questa altezza sembra irreale. Sicuro che sia corretta?"</string>
+    <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
+    <string name="quest_noteDiscussion_closed2">"Chiuso da %1$s, %2$s"</string>
+    <string name="quest_noteDiscussion_reopen2">"Riaperto da %1$s, %2$s"</string>
+    <string name="quest_noteDiscussion_hide2">"Nascosto da %1$s, %2$s"</string>
+    <string name="quest_railway_crossing_barrier_title">"Com'è protetto l'attraversamento ferroviario?"</string>
+    <string name="quest_railway_crossing_barrier_none">"Non lo è"</string>
+    <string name="privacy_html_image_upload2">"&lt;p&gt;Le foto che alleghi a una nota sono caricate sul mio server e cancellate alcuni giorni dopo che la nota è stata risolta. I meta-dati vengono eliminati prima del caricamento.&lt;/p&gt;"</string>
+    <string name="action_deselect_all">"Deselezionare tutti"</string>
 </resources>
