@@ -188,6 +188,8 @@ public class AddCycleway extends AOsmElementQuestType
 		return OverpassQLUtil.getGlobalOverpassBBox(bbox) +
 			"way[highway ~ \"^(primary|secondary|tertiary|unclassified)$\"]" +
 			   "[area != yes]" +
+				// not any motorroads
+			   "[motorroad != yes]" +
 				// only without cycleway tags
 			   "[!cycleway][!\"cycleway:left\"][!\"cycleway:right\"][!\"cycleway:both\"]" +
 			   "[!\"sidewalk:bicycle\"][!\"sidewalk:both:bicycle\"][!\"sidewalk:left:bicycle\"][!\"sidewalk:right:bicycle\"]" +
