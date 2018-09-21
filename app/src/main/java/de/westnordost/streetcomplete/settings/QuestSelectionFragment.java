@@ -21,6 +21,7 @@ import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.QuestType;
 import de.westnordost.streetcomplete.data.QuestTypeRegistry;
+import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestType;
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderList;
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeDao;
 
@@ -75,6 +76,9 @@ public class QuestSelectionFragment extends Fragment
 					.setNegativeButton(android.R.string.cancel, null)
 					.show();
 				return true;
+			case R.id.action_deselect_all:
+				onDeselectAll();
+				return true;
 		}
 		return super.onOptionsItemSelected(item);
 	}
@@ -86,6 +90,18 @@ public class QuestSelectionFragment extends Fragment
 		questSelectionAdapter.setList(createQuestTypeVisibilityList());
 	}
 
+	private void onDeselectAll()
+	{
+		List<QuestType> questTypes = new ArrayList<>(questTypeRegistry.getAll());
+		for (QuestType questType : questTypes)
+		{
+			if(!(questType instanceof OsmNoteQuestType))
+			{
+				visibleQuestTypeDao.setVisible(questType, false);
+			}
+		}
+		questSelectionAdapter.setList(createQuestTypeVisibilityList());
+	}
 
 	private List<QuestSelectionAdapter.QuestVisibility> createQuestTypeVisibilityList()
 	{

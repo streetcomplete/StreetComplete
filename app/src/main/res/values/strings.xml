@@ -612,5 +612,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_maxheight_unusualInput_confirmation_description">This height looks implausible. Are you sure that it is correct?</string>
     <string name="quest_railway_crossing_barrier_title">How is this railway crossing protected?</string>
     <string name="quest_railway_crossing_barrier_none">It\'s not</string>
+    <string name="action_deselect_all">Deselect all</string>
 
 </resources>
