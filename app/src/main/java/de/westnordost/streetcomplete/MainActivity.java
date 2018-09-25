@@ -268,6 +268,7 @@ public class MainActivity extends AppCompatActivity implements
 
 		questController.onStart(this);
 		questAutoSyncer.onStart();
+		questAutoSyncer.triggerAutoUpload();
 
 		downloadProgressBar.setAlpha(0f);
 		downloadServiceIsBound = bindService(new Intent(this, QuestDownloadService.class),
@@ -810,6 +811,7 @@ public class MainActivity extends AppCompatActivity implements
 		LatLon position = mapFragment.getPositionAt(notePosition);
 		if(position == null) throw new NullPointerException();
 		questController.createNote(note, imagePaths, position);
+		questAutoSyncer.triggerAutoUpload();
 	}
 
 	/* ------------- VisibleQuestListener ------------- */
