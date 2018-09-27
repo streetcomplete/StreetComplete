@@ -95,8 +95,8 @@ public class LocationRequestFragment extends Fragment
 			new AlertDialog.Builder(getContext())
 					.setMessage(R.string.no_location_permission_warning)
 					.setPositiveButton(R.string.retry,	(dialog, which) -> requestLocationPermissions())
-					.setNegativeButton(android.R.string.cancel, (dialog, which) -> deniedlocationPermissions())
-					.setOnCancelListener(dialog -> deniedlocationPermissions())
+					.setNegativeButton(android.R.string.cancel, (dialog, which) -> deniedLocationPermissions())
+					.setOnCancelListener(dialog -> deniedLocationPermissions())
 					.show();
 		}
 	}
@@ -110,7 +110,7 @@ public class LocationRequestFragment extends Fragment
 		requestLocationSettingsToBeOn();
 	}
 
-	private void deniedlocationPermissions()
+	private void deniedLocationPermissions()
 	{
 		state = LocationState.DENIED;
 		finish();
