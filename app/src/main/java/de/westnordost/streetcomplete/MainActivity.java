@@ -196,7 +196,6 @@ public class MainActivity extends AppCompatActivity implements
 		soundFx.prepare(R.raw.plop2);
 		soundFx.prepare(R.raw.plop3);
 
-		setContentView(R.layout.activity_main);
 		PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
 
 		if(prefs.getBoolean(Prefs.KEEP_SCREEN_ON, false))
@@ -204,11 +203,18 @@ public class MainActivity extends AppCompatActivity implements
 			getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 		}
 
+		questSource.onCreate(this);
+		questController.onCreate();
+
+		getSupportFragmentManager().beginTransaction()
+			.add(locationRequestFragment, LocationRequestFragment.class.getSimpleName())
+			.commit();
+
+		setContentView(R.layout.activity_main);
+
 		Toolbar toolbar = findViewById(R.id.toolbar);
 		toolbar.setTitle("");
 		setSupportActionBar(toolbar);
-
-		questController.onCreate();
 
 		TextView uploadedAnswersView = findViewById(R.id.uploadedAnswersCounter);
 		TextView unsyncedChangesView = findViewById(R.id.unsyncedAnswersCounter);
@@ -225,12 +231,6 @@ public class MainActivity extends AppCompatActivity implements
 				Toast.makeText(MainActivity.this, R.string.offline, Toast.LENGTH_SHORT).show();
 			}
 		});
-
-		questSource.onCreate(this);
-
-		getSupportFragmentManager().beginTransaction()
-				.add(locationRequestFragment, LocationRequestFragment.class.getSimpleName())
-				.commit();
 
 		downloadProgressBar = findViewById(R.id.download_progress);
 		downloadProgressBar.setMax(1000);
