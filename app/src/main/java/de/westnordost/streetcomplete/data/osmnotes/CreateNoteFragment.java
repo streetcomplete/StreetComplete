@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.osmnotes;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -24,7 +25,8 @@ import de.westnordost.streetcomplete.R;
 public class CreateNoteFragment extends AbstractCreateNoteFragment
 {
 	private EditText noteInput;
-	private View markerLayout;
+	private ViewGroup markerLayout;
+	private ViewGroup centeredMarkerLayout;
 	private View marker;
 
 	private CreateNoteListener callbackListener;
@@ -39,6 +41,7 @@ public class CreateNoteFragment extends AbstractCreateNoteFragment
 		{
 			markerLayout.startAnimation(createFallDownAnimation());
 		}
+		centeredMarkerLayout = view.findViewById(R.id.centered_marker_layout_create_note);
 
 		marker = view.findViewById(R.id.marker_create_note);
 
@@ -48,6 +51,17 @@ public class CreateNoteFragment extends AbstractCreateNoteFragment
 		setDescription(R.string.create_new_note_description);
 
 		return view;
+	}
+
+	@Override public void onConfigurationChanged(Configuration newConfig)
+	{
+		super.onConfigurationChanged(newConfig);
+		centeredMarkerLayout.setPadding(
+			getResources().getDimensionPixelSize(R.dimen.quest_form_leftOffset),
+			getResources().getDimensionPixelSize(R.dimen.quest_form_topOffset),
+			getResources().getDimensionPixelSize(R.dimen.quest_form_rightOffset),
+			getResources().getDimensionPixelSize(R.dimen.quest_form_bottomOffset)
+		);
 	}
 
 	private Animation createFallDownAnimation()

@@ -9,7 +9,9 @@ import android.support.annotation.UiThread;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 
@@ -22,6 +24,7 @@ import static android.support.design.widget.BottomSheetBehavior.STATE_EXPANDED;
 public abstract class AbstractBottomSheetFragment extends Fragment
 {
 	private LinearLayout bottomSheet;
+	private BottomSheetBehavior bottomSheetBehavior;
 	private View buttonClose;
 
 	@Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState)
@@ -39,7 +42,7 @@ public abstract class AbstractBottomSheetFragment extends Fragment
 		buttonClose = view.findViewById(R.id.close_btn);
 		buttonClose.setOnClickListener(v -> getActivity().onBackPressed());
 
-		BottomSheetBehavior bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet);
+		bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet);
 
 		View titleSpeechBubble = view.findViewById(R.id.titleSpeechBubble);
 		titleSpeechBubble.setOnClickListener(v -> {
@@ -71,6 +74,24 @@ public abstract class AbstractBottomSheetFragment extends Fragment
 
 			view.findViewById(R.id.speechbubbleContent).startAnimation(
 				AnimationUtils.loadAnimation(getContext(), R.anim.inflate_answer_bubble));
+		}
+	}
+
+	@Override public void onConfigurationChanged(Configuration newConfig)
+	{
+		super.onConfigurationChanged(newConfig);
+		// I need to do everything myself... (AppCompactActivity only does this after calling this
+		// method. Genius!)
+		getResources().updateConfiguration(newConfig, getResources().getDisplayMetrics());
+
+		bottomSheetBehavior.setPeekHeight(
+			getResources().getDimensionPixelSize(R.dimen.quest_form_peekHeight));
+		View root = getView();
+		if(root != null)
+		{
+			ViewGroup.LayoutParams params = root.getLayoutParams();
+			params.width = getResources().getDimensionPixelSize(R.dimen.quest_form_width);
+			root.setLayoutParams(params);
 		}
 	}
 
