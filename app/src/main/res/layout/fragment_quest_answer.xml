@@ -6,6 +6,7 @@
     android:layout_width="@dimen/quest_form_width"
     android:layout_height="match_parent"
     android:background="@drawable/speechbubbles_gradient_background"
+    android:id="@+id/bottomSheetContainer"
     >
 
     <android.support.design.widget.CoordinatorLayout

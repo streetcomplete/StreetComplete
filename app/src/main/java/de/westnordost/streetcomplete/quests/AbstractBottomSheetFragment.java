@@ -84,15 +84,13 @@ public abstract class AbstractBottomSheetFragment extends Fragment
 		// method. Genius!)
 		getResources().updateConfiguration(newConfig, getResources().getDisplayMetrics());
 
-		bottomSheetBehavior.setPeekHeight(
-			getResources().getDimensionPixelSize(R.dimen.quest_form_peekHeight));
-		View root = getView();
-		if(root != null)
-		{
-			ViewGroup.LayoutParams params = root.getLayoutParams();
-			params.width = getResources().getDimensionPixelSize(R.dimen.quest_form_width);
-			root.setLayoutParams(params);
-		}
+		bottomSheetBehavior.setPeekHeight(getResources().getDimensionPixelSize(R.dimen.quest_form_peekHeight));
+
+		View bottomSheetContainer = getView().findViewById(R.id.bottomSheetContainer);
+		bottomSheetContainer.setBackgroundResource(R.drawable.speechbubbles_gradient_background);
+		ViewGroup.LayoutParams params = bottomSheetContainer.getLayoutParams();
+		params.width = getResources().getDimensionPixelSize(R.dimen.quest_form_width);
+		bottomSheetContainer.setLayoutParams(params);
 	}
 
 	private void updateCloseButtonVisibility()
