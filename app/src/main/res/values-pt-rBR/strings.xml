@@ -18,7 +18,7 @@
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Ignorando notas não formuladas como perguntas"</string>
     <string name="pref_title_map_cache">"Tamanho do cache do mapa"</string>
     <string name="map_btn_gps_tracking">"Me siga"</string>
-    <string name="map_attribution_mapzen">"Funciona com %s"</string>
+    <string name="map_attribution_mapzen">"Funciona utilizando %s"</string>
     <string name="map_attribution_osm">"© contribuidores do OpenStreetMap"</string>
     <string name="quest_generic_otherAnswers">"Outras respostas"</string>
     <string name="quest_generic_answer_notApplicable">"Não sei"</string>
@@ -51,14 +51,14 @@
     <string name="confirmation_discard_positive">"Decartar"</string>
     <string name="confirmation_discard_negative">"Cancelar"</string>
     <string name="action_download">"Procurar por missões aqui"</string>
-    <string name="action_upload">"Fazer upload de respostas"</string>
+    <string name="action_upload">"Enviar respostas"</string>
 
     <!-- Fuzzy -->
     <string name="no_changes">"Você deixou o formulário vazio"</string>
     <string name="close">"fechar"</string>
     <string name="download_error">"Erro ao procurar por missões"</string>
     <string name="upload_error">"Erro ao enviar as respostas"</string>
-    <string name="download_area_too_big">"Por favor, aumente o zoom"</string>
+    <string name="download_area_too_big">"Por favor, aproxime o zoom"</string>
     <string name="confirmation_cancel_prev_download_title">"Cancelar a pesquisa atual e escanear aqui em vez disso?"</string>
     <string name="notification_downloading">"Escaneando por missões…"</string>
     <string name="now_downloading_toast">"Escaneando para mais missões…"</string>
@@ -68,7 +68,7 @@
     <string name="about_title_version">"Versão"</string>
     <string name="about_title_authors">"Créditos"</string>
     <string name="about_summary_authors">"© 2016–2018 Tobias Zwick e contribuidores"</string>
-    <string name="about_title_repository">"Repositório fonte"</string>
+    <string name="about_title_repository">"Repositório de código fonte"</string>
     <string name="about_summary_repository">"no GitHub"</string>
     <string name="about_title_report_error">"Reportar erro"</string>
     <string name="about_title_feedback">"Comentar experiência"</string>
@@ -86,8 +86,6 @@
     <string name="about_title_privacy_statement">"Declaração de Privacidade"</string>
     <string name="about_summary_privacy_statement">"e Uso de Dados"</string>
     <string name="quest_openingHours_public_holidays">"Feriados Públicos"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_public_holidays_short">"Feriados"</string>
 
     <!-- Fuzzy -->
@@ -107,13 +105,11 @@
     <string name="pref_title_sync">"Auto-Sincronização"</string>
     <string name="map_btn_zoom_out">"Afastar"</string>
     <string name="map_btn_zoom_in">"Aproximar"</string>
-
-    <!-- Fuzzy -->
     <string name="privacy_html">"&lt;p&gt;Ah, alguém que se preocupa com a privacidade, ótimo! Acredito que só tenho boas notícias para você: &lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Contribuições diretas&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 Primeiramente, compreenda que com este aplicativo, você faz contribuições reais e diretas para o OpenStreetMap.&lt;br/&gt;
-Tudo o que você contribui neste aplicativo é adicionado diretamente ao mapa, não há terceiros entre a infraestrutura do aplicativo e do OSM, como é o caso do &lt;a href=\"https://wheelmap.org\"&gt; wheelmap.org &lt;/a&gt; ou &lt;a href=\"http://www.kort.ch\"&gt; Kort &lt;/a&gt;.
+Tudo o que você contribui neste aplicativo é adicionado diretamente ao mapa, não há terceiros entre o aplicativo e a infraestrutura do OSM, como é o caso do &lt;a href=\"https://wheelmap.org\"&gt; wheelmap.org &lt;/a&gt; ou &lt;a href=\"http://www.kort.ch\"&gt; Kort &lt;/a&gt;.
 &lt;/p&gt;
 &lt;p&gt;
 A edição do OpenStreetMap anonimamente não é possível, portanto quaisquer alterações são feitas com a conta de usuário do OSM. Isso significa que a data, o conteúdo e implicitamente a localização das alterações são visíveis publicamente no site do openstreetmap e são atribuíveis à sua conta.
@@ -121,20 +117,14 @@ A edição do OpenStreetMap anonimamente não é possível, portanto quaisquer a
 
 &lt;b&gt;Localização&lt;/b&gt;&lt;br/&gt;
 &lt;p&gt;
-A sua localização só é utilizada para procurar automaticamente missões ao seu redor. Não se preocupe, o aplicativo mantém sua localização para si mesmo.
+O app não compartilha sua localização GPS com ninguém.  A sua localização só é usada para procurar automaticamente missões na sua área e carregar o mapa ao seu redor.
 &lt;/p&gt;
 
 &lt;p&gt;&lt;b&gt;Uso de dados&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 P&gt;
-Como mencionado, o aplicativo se comunica diretamente com a infraestrutura do OSM. Ou seja, com a &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt; Overpass API &lt;/a&gt; para baixar missões (que é anônimo) e com o &lt;a href = \"http: / /wiki.openstreetmap.org/wiki/API_v0.6\"&gt; OSM API &lt;/a&gt; para fazer o upload de alterações. &lt;br/&gt;
-No entanto, antes de carregar suas alterações, o app verifica com um &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt; arquivo de texto simples &lt;/a&gt; no meu servidor se ele foi banido de carregar quaisquer alterações. Esta é uma medida de precaução para ser capaz de manter versões do aplicativo que acabam por ter bugs críticos de possivelmente corrompendo dados do OSM. &lt;br/&gt;
-&lt;/p&gt;
-&lt;p&gt;
-Para exibir o mapa, os blocos vetoriais são recuperadas do &lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt; serviço de blocos de vetor Mapzen &lt;/a&gt;, que é anônimo. O serviço registra os pedidos de bloco para entender quais áreas são populares para pré-cache e melhorias de desempenho. Sua plataforma também registra endereços IP e todos os seus hospedagem está na Amazon, então eles estão sujeitos ao que eles podem fazer.
-&lt;/p&gt;
-&lt;p&gt;
-(&lt;i&gt;Isto ainda não está implementado, apenas queremos informar o que está por vir!:&lt;/i&gt;) Os dados apresentados no leaderboard e no perfil são agregados a partir das informações publicamente disponíveis do OpenStreetMap. Os dados não vêm deste aplicativo, mas basicamente do histórico de commit público dos usuários do OSM.
+Como mencionado, o aplicativo se comunica diretamente com a infraestrutura do OSM. Ou seja, com a &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass API&lt;/a&gt; para baixar missões (que é anônimo) e com o &lt;a href = \"http: / /wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API&lt;/a&gt; para enviar alterações.&lt;br/&gt;
+No entanto, antes de carregar suas alterações, o app verifica com um &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;arquivo de texto simples&lt;/a&gt; no meu servidor se ele foi banido de enviar alterações. Esta é uma medida de precaução para ser capaz de manter versões do aplicativo que acabam por ter bugs críticos de possivelmente corrompendo dados do OSM.&lt;br/&gt;
 &lt;/p&gt;"</string>
     <string name="autosync_on">"Ligado"</string>
     <string name="autosync_only_on_wifi">"Somente por WiFi"</string>
@@ -425,7 +415,7 @@ Caso contrário, pode baixar outro teclado na loja de aplicativos. Alguns dos te
     <string name="quest_openingHours_emptyAnswer">"Você precisa descrever o que está na placa. Se não houver placa você deveria perguntar pelos horários."</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"nenhum, mas ciclistas podem usar a rua em ambas direções"</string>
     <string name="quest_streetName_answer_noName_question">"Por que não há nome?"</string>
-    <string name="quest_streetName_answer_noProperStreet_service2">"É algo como uma via ou entrada de garagem"</string>
+    <string name="quest_streetName_answer_noProperStreet_service2">"É algo como uma via de acesso ou de estacionamento"</string>
     <string name="quest_streetName_answer_noProperStreet_track2">"É uma estrada agrícola ou florestal"</string>
     <string name="quest_streetName_answer_noName_noname">"Nenhuma das opções, simplesmente não há nome"</string>
     <string name="quest_wheelchairAccess_toilets_title">"São esses banheiros acessíveis por cadeira de rodas?"</string>
@@ -487,7 +477,7 @@ Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas barr
     <!-- Fuzzy -->
     <string name="quest_surface_value_unhewn_cobblestone">"Seixo bruto"</string>
     <string name="quest_parking_access_title">"Existe restrição para estacionar aqui?"</string>
-    <string name="quest_parking_access_private">"É privativo"</string>
+    <string name="quest_parking_access_private">"É privado"</string>
     <string name="quest_parking_access_yes">"É público (com ou sem taxa)"</string>
     <string name="quest_parking_access_customers">"É apenas para clientes"</string>
     <string name="quest_streetName_pedestrian_title">"Qual o nome desta via de pedestres?"</string>
@@ -607,8 +597,6 @@ Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas barr
     <string name="quest_buildingType_greenhouse">"Estufa"</string>
     <string name="quest_buildingType_other">"Outro"</string>
     <string name="quest_buildingType_shed">"Galpão"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_hut">"Cabana"</string>
     <string name="quest_buildingType_hut_description">"Abrigo ou residência pequena e simples"</string>
     <string name="quest_buildingType_roof">"Telhado"</string>
@@ -649,5 +637,12 @@ Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas barr
     <string name="quest_maxheight_answer_noSign_question">"Há espaço suficiente para que mesmo os caminhões mais altos (pelo menos 4,5 metros) passem?"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Essa altura parece implausível.  Tem certeza de que está correta?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
+    <string name="quest_noteDiscussion_closed2">"Fechado por %1$s, %2$s"</string>
+    <string name="quest_noteDiscussion_reopen2">"Aberto por %1$s, %2$s"</string>
+    <string name="quest_noteDiscussion_hide2">"Oculto por %1$s, %2$s"</string>
+    <string name="quest_railway_crossing_barrier_title">"Que barreira tem esta passagem de nível?"</string>
+    <string name="quest_railway_crossing_barrier_none">"Não tem"</string>
+    <string name="privacy_html_image_upload2">"&lt;p&gt;As fotos que você anexar a uma nota são enviadas para o meu servidor e são deletadas após a nota ser resolvida. Os meta-dados são deletados antes do envio.&lt;/p&gt;"</string>
     <string name="action_deselect_all">"Desmarcar todos"</string>
+    <string name="quest_buildingType_retail_description">"incluindo edifícios de restaurantes, cafés…"</string>
 </resources>
