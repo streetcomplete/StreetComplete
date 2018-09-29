@@ -25,7 +25,7 @@ public class BuildingType
 
 		COMMERCIAL =    new Item("commercial", R.drawable.ic_building_office,     R.string.quest_buildingType_commercial, R.string.quest_buildingType_commercial_generic_description),
 		INDUSTRIAL =    new Item("industrial", R.drawable.ic_building_industrial, R.string.quest_buildingType_industrial, R.string.quest_buildingType_industrial_description),
-		RETAIL =        new Item("retail",     R.drawable.ic_building_retail,     R.string.quest_buildingType_retail),
+		RETAIL =        new Item("retail",     R.drawable.ic_building_retail,     R.string.quest_buildingType_retail, R.string.quest_buildingType_retail_description),
 		OFFICE =        new Item("office",     R.drawable.ic_building_office,     R.string.quest_buildingType_office),
 		WAREHOUSE =     new Item("warehouse",  R.drawable.ic_building_warehouse,  R.string.quest_buildingType_warehouse),
 		KIOSK =         new Item("kiosk",      R.drawable.ic_building_kiosk,      R.string.quest_buildingType_kiosk),
