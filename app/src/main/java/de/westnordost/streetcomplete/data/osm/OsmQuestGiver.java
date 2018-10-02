@@ -47,6 +47,13 @@ public class OsmQuestGiver
 		public List<Long> removedQuestIds = new ArrayList<>();
 	}
 
+	public List<Long> removeQuests(Element.Type type, long id)
+	{
+		List<Long> ids = questDB.getAllIds(type, id);
+		questDB.deleteAll(ids);
+		return ids;
+	}
+
 	public QuestUpdates updateQuests(Element element)
 	{
 		ElementGeometry geometry = elementGeometryDB.get(element.getType(), element.getId());

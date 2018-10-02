@@ -58,7 +58,7 @@ public abstract class AOsmQuestChangesUpload
 	private final ChangesetsDao changesetsDao;
 	private final DownloadedTilesDao downloadedTilesDao;
 	private final SharedPreferences prefs;
-	private final OsmQuestGiver questUnlocker;
+	private final OsmQuestGiver questGiver;
 
 	private final List<OsmQuest> createdQuests;
 	private final List<Long> removedQuestIds;
@@ -73,7 +73,7 @@ public abstract class AOsmQuestChangesUpload
 			ElementGeometryDao elementGeometryDB, QuestStatisticsDao statisticsDB,
 			OpenChangesetsDao openChangesetsDB, ChangesetsDao changesetsDao,
 			DownloadedTilesDao downloadedTilesDao, SharedPreferences prefs,
-			OsmQuestGiver questUnlocker)
+			OsmQuestGiver questGiver)
 	{
 		this.osmDao = osmDao;
 		this.questDB = questDB;
@@ -84,7 +84,7 @@ public abstract class AOsmQuestChangesUpload
 		this.changesetsDao = changesetsDao;
 		this.downloadedTilesDao = downloadedTilesDao;
 		this.prefs = prefs;
-		this.questUnlocker = questUnlocker;
+		this.questGiver = questGiver;
 		createdQuests = new ArrayList<>();
 		removedQuestIds = new ArrayList<>();
 	}
@@ -272,12 +272,9 @@ public abstract class AOsmQuestChangesUpload
 
 		closeQuest(quest);
 		// save with new version when persisting to DB
-		elementDB.put(updatedElement);
-		statisticsDB.addOne(quest.getType().getClass().getSimpleName());
+		putUpdatedElement(updatedElement);
 
-		OsmQuestGiver.QuestUpdates questUpdates = questUnlocker.updateQuests(updatedElement);
-		createdQuests.addAll(questUpdates.createdQuests);
-		removedQuestIds.addAll(questUpdates.removedQuestIds);
+		statisticsDB.addOne(quest.getType().getClass().getSimpleName());
 
 		return true;
 	}
@@ -448,14 +445,28 @@ public abstract class AOsmQuestChangesUpload
 
 		if(element != null)
 		{
-			elementDB.put(element);
+			putUpdatedElement(element);
 		}
 		else
 		{
-			elementDB.delete(elementType, id);
+			deleteElement(elementType, id);
 		}
 
 		return element;
+	}
+
+	private void putUpdatedElement(Element element)
+	{
+		elementDB.put(element);
+		OsmQuestGiver.QuestUpdates questUpdates = questGiver.updateQuests(element);
+		createdQuests.addAll(questUpdates.createdQuests);
+		removedQuestIds.addAll(questUpdates.removedQuestIds);
+	}
+
+	private void deleteElement(Element.Type type, long id)
+	{
+		elementDB.delete(type, id);
+		removedQuestIds.addAll(questGiver.removeQuests(type, id));
 	}
 
 	private Map<String,String> createChangesetTags(OsmElementQuestType questType, String source)
