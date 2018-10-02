@@ -36,6 +36,11 @@
         <item name="android:windowExitAnimation">@anim/deflate_dialog_bubble</item>
     </style>
 
+    <style name="Animation.Popup.Bubble" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/inflate_popup_bubble</item>
+        <item name="android:windowExitAnimation">@anim/deflate_popup_bubble</item>
+    </style>
+
     <style name="TimesField">
         <item name="android:focusable">true</item>
         <item name="android:clickable">true</item>
