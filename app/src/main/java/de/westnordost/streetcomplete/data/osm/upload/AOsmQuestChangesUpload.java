@@ -112,6 +112,9 @@ public abstract class AOsmQuestChangesUpload
 		{
 			if(cancelState.get()) break; // break so that the unreferenced stuff is deleted still
 
+			// was deleted while trying to upload another quest
+			if(removedQuestIds.contains(quest.getId())) continue;
+
 			Element element = elementDB.get(quest.getElementType(), quest.getElementId());
 
 			long changesetId = getChangesetIdOrCreate(quest.getOsmElementQuestType(), quest.getChangesSource());

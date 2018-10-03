@@ -142,14 +142,8 @@ public abstract class AQuestDao<T extends Quest>
 	public void update(T quest)
 	{
 		SQLiteDatabase db = dbHelper.getWritableDatabase();
-		int rows = db.update(getTableName(), createNonFinalContentValuesFrom(quest),
+		db.update(getTableName(), createNonFinalContentValuesFrom(quest),
 				getIdColumnName() + " = " + quest.getId(), null);
-
-		if(rows == 0)
-		{
-			throw new NullPointerException(quest.getClass().getSimpleName() + " with the id " +
-					quest.getId() + " does not exist.");
-		}
 	}
 
 	public boolean delete(long id)
