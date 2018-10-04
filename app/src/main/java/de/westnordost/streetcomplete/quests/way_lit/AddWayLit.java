@@ -45,7 +45,7 @@ public class AddWayLit extends SimpleOverpassQuestType
 				"  highway ~ " + TextUtils.join("|", LIT_NON_RESIDENTIAL_ROADS) + " and" +
 				"  (" +
 				"    sidewalk ~ both|left|right|yes|separate" +
-				"    or source:maxspeed ~ .+:urban or maxspeed:type ~ .+:urban or zone:maxspeed ~ .+:urban" +
+				"    or source:maxspeed ~ .+:urban or maxspeed:type ~ .+:urban or zone:maxspeed ~ .+:urban or zone:traffic ~ .+:urban" +
 				"  )" +
 				"  or" +
 				"  highway ~ " + TextUtils.join("|", LIT_WAYS) +
