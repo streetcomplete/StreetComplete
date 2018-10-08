@@ -89,7 +89,10 @@ public class AttachPhotoUtils
 		matrix.postScale(desiredScale, desiredScale);
 		Bitmap result = Bitmap.createBitmap(sampledSrcBitmap, 0, 0, sampledSrcBitmap.getWidth(), sampledSrcBitmap.getHeight(), matrix, true);
 
-		sampledSrcBitmap.recycle();
+		if(result != sampledSrcBitmap)
+		{
+			sampledSrcBitmap.recycle();
+		}
 		return result;
 	}
 
@@ -102,7 +105,7 @@ public class AttachPhotoUtils
 			orientation = exifInterface.getAttributeInt(ExifInterface.TAG_ORIENTATION,
 					ExifInterface.ORIENTATION_UNDEFINED);
 		}
-		catch (IOException e)
+		catch (IOException ignore)
 		{
 		}
 

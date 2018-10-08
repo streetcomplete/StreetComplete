@@ -37,6 +37,12 @@ public class AddLocalizedNameAdapter extends RecyclerView.Adapter
 	private final List<Map<String, String>> localizedNameSuggestions;
 	private final Button addLanguageButton;
 
+	public interface OnNameChangedListener
+	{
+		void onNameChanged(LocalizedName name);
+	}
+	private final List<OnNameChangedListener> listeners = new ArrayList<>();
+
 	public AddLocalizedNameAdapter(ArrayList<LocalizedName> data, Context context, List<String> languages,
 								   @Nullable AbbreviationsByLocale abbreviationsByLocale,
 								   @Nullable List<Map<String, String>> localizedNameSuggestions, Button addLanguageButton)
@@ -57,6 +63,11 @@ public class AddLocalizedNameAdapter extends RecyclerView.Adapter
 		});
 
 		updateAddLanguageButtonVisibility();
+	}
+
+	public void addOnNameChangedListener(OnNameChangedListener listener)
+	{
+		listeners.add(listener);
 	}
 
 	/* Names are usually specified without language information (name=My Street). To provide
@@ -287,6 +298,10 @@ public class AddLocalizedNameAdapter extends RecyclerView.Adapter
 					else
 					{
 						nameSuggestionsButton.setVisibility(View.GONE);
+					}
+					for (OnNameChangedListener listener : listeners)
+					{
+						listener.onNameChanged(localizedName);
 					}
 				}
 			});

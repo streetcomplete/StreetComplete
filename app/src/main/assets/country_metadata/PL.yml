@@ -4,7 +4,7 @@ isLivingStreetKnown: true
 isSlowZoneKnown: true
 mobileCountryCode: 260
 officialLanguages: [pl]
-orchardProduces: [apple, strawberry, raspberry, plum, tomatoe, cherry, pear, hazelnut, blueberry, walnut,
+orchardProduces: [apple, strawberry, raspberry, plum, tomato, cherry, pear, hazelnut, blueberry, walnut,
   peach, hop, apricot]
 popularSports: [soccer, athletics, volleyball, basketball, handball, tennis]
 regularShoppingDays: 5

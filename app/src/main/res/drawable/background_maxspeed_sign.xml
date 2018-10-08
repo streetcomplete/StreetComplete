@@ -2,21 +2,17 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
         <shape android:shape="oval">
-            <stroke android:color="#666666" android:width="0.5dp"/>
-            <solid android:color="#ffffff"/>
+            <solid android:color="@color/traffic_white"/>
         </shape>
     </item>
-    <item android:top="0.5dp" android:left="0.5dp" android:bottom="0.5dp" android:right="0.5dp">
+    <item android:top="2dp" android:left="2dp" android:bottom="2dp" android:right="2dp">
         <shape android:shape="oval">
-            <solid android:color="#c1121c"/>
-            <stroke
-                android:color="#ffffff"
-                android:width="1.5dp"/>
+            <solid android:color="@color/traffic_red"/>
         </shape>
     </item>
     <item android:top="16dp" android:left="16dp" android:bottom="16dp" android:right="16dp">
         <shape android:shape="oval">
-            <solid android:color="#ffffff"/>
+            <solid android:color="@color/traffic_white"/>
         </shape>
     </item>
 </layer-list>

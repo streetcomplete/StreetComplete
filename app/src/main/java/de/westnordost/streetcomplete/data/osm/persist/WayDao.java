@@ -58,8 +58,7 @@ public class WayDao extends AOsmElementDao<Way>
 		insert.bindBlob(3, serializer.toBytes(new ArrayList<>(way.getNodeIds())));
 		if(way.getTags() != null)
 		{
-			HashMap<String,String> map = new HashMap<>();
-			map.putAll(way.getTags());
+			HashMap<String, String> map = new HashMap<>(way.getTags());
 			insert.bindBlob(4, serializer.toBytes(map));
 		}
 		else

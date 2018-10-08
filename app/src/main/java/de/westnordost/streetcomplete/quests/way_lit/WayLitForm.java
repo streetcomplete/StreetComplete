@@ -30,6 +30,6 @@ public class WayLitForm extends YesNoQuestAnswerFragment
 	{
 		Bundle answer = new Bundle();
 		answer.putString(OTHER_ANSWER, value);
-		applyImmediateAnswer(answer);
+		applyAnswer(answer);
 	}
 }

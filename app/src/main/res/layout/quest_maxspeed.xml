@@ -1,66 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                xmlns:tools="http://schemas.android.com/tools">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:baselineAligned="false">
 
     <LinearLayout
-        android:id="@+id/zoneContainer"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
+        android:layout_weight="1"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_alignParentEnd="true"
-        >
+        android:orientation="vertical">
 
-        <CheckBox
-            android:id="@+id/zoneCheckbox"
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checked="false"/>
+            android:text="@string/quest_maxspeed_sign_question"/>
 
-        <ImageView
-            android:id="@+id/zoneImg"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:src="@drawable/ic_slow_zone"
-            />
+        <RadioGroup
+            android:id="@+id/speedTypeSelect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/sign"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/quest_maxspeed_answer_sign" />
+
+            <RadioButton
+                android:id="@+id/zone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/quest_maxspeed_answer_zone2" />
+
+            <RadioButton
+                android:id="@+id/no_sign"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/quest_maxspeed_answer_noSign2" />
+
+        </RadioGroup>
 
     </LinearLayout>
 
-    <RelativeLayout
-        android:layout_width="112dp"
-        android:layout_height="112dp"
-        android:gravity="center"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/background_maxspeed_sign"
-        android:padding="16dp"
+    <FrameLayout
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
         >
 
-        <EditText
-            android:id="@+id/maxSpeedInput"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_centerInParent="true"
-            android:background="#0fff"
-            android:inputType="number"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:textSize="38dp"
-            android:maxLength="3"
-            tools:text="50"/>
-
-        <Spinner
-            android:id="@+id/speedUnitSelect"
+        <FrameLayout
+            android:id="@+id/right_side"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/maxSpeedInput"
-            android:layout_centerHorizontal="true"
-            android:visibility="gone"
-            android:layout_marginTop="-2dp"
-            android:background="#0fff"
-            />
+            android:layout_gravity="center"
+            tools:ignore="UselessParent">
 
-    </RelativeLayout>
+        </FrameLayout>
 
-</RelativeLayout>
+    </FrameLayout>
+
+</LinearLayout>

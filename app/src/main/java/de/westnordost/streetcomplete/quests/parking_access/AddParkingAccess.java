@@ -17,9 +17,9 @@ public class AddParkingAccess extends SimpleOverpassQuestType
 {
 	@Inject public AddParkingAccess(OverpassMapDataDao overpassServer) { super(overpassServer); }
 
-	@Override
-	protected String getTagFilters() {
-		return "nodes, ways with amenity=parking and (!access or access=unknown)";
+	@Override protected String getTagFilters()
+	{
+		return "nodes, ways, relations with amenity=parking and (!access or access=unknown)";
 	}
 
 	public AbstractQuestAnswerFragment createForm() { return new AddParkingAccessForm(); }

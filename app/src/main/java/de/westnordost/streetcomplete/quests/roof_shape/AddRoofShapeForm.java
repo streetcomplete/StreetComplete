@@ -54,7 +54,7 @@ public class AddRoofShapeForm extends ImageListQuestAnswerFragment
 		ArrayList<String> strings = new ArrayList<>(1);
 		strings.add("many");
 		answer.putStringArrayList(OSM_VALUES, strings);
-		applyImmediateAnswer(answer);
+		applyAnswer(answer);
 	}
 
 	@Override protected int getMaxNumberOfInitiallyShownItems() { return MORE_THAN_95_PERCENT_COVERED; }

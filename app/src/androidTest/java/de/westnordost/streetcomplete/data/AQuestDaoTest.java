@@ -103,16 +103,6 @@ public class AQuestDaoTest extends AndroidDbTestCase
 		assertEquals(2, dao.deleteAll(Arrays.asList(1L, 2L)));
 	}
 
-	public void testUpdateException()
-	{
-		try
-		{
-			dao.update(createQuest(0,0,0,QuestStatus.NEW));
-			fail();
-		}
-		catch(NullPointerException ignored) { }
-	}
-
 	public void testUpdate()
 	{
 		dao.add(createQuest(1,0,0, QuestStatus.NEW));

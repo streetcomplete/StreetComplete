@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/listview_background_shape">
-    <stroke android:width="4dp" android:color="@color/colorAccent" />
-    <padding android:left="2dp"
-             android:top="2dp"
-             android:right="2dp"
-             android:bottom="2dp" />
-    <solid android:color="@color/colorAccentTransparent" />
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <stroke android:width="4dp" android:color="@color/selection_frame" />
+    <solid android:color="@color/selection" />
 </shape>

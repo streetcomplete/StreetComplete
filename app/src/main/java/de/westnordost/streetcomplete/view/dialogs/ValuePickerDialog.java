@@ -24,7 +24,7 @@ public class ValuePickerDialog extends AlertDialog implements DialogInterface.On
 							 String[] values, int selectedIndex, int minIndex, int maxIndex,
 							 CharSequence title)
 	{
-		super(context, R.style.AppTheme_AlertDialog);
+		super(context, R.style.Theme_Bubble_Dialog);
 
 		this.listener = listener;
 		this.selectedIndex = selectedIndex;

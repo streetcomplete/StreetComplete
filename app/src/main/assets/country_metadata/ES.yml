@@ -6,6 +6,6 @@ isLivingStreetKnown: true
 isSlowZoneKnown: true
 mobileCountryCode: 214
 officialLanguages: [es]
-orchardProduces: [olive, grape, almond, orange, peach, tomatoe, lemon, lime, chestnut, apple, cherry,
+orchardProduces: [olive, grape, almond, orange, peach, tomato, lemon, lime, chestnut, apple, cherry,
   pear, apricot, plum, hazelnut, fig]
 popularSports: [soccer, tennis, basketball, golf, paddle_tennis, pelota]

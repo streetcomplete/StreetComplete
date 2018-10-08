@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.sport;
 
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +14,7 @@ import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.ImageListQuestAnswerFragment;
 import de.westnordost.streetcomplete.quests.PriorityList;
 import de.westnordost.streetcomplete.view.Item;
-import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
+
 
 public class AddSportForm extends ImageListQuestAnswerFragment
 {
@@ -61,13 +62,11 @@ public class AddSportForm extends ImageListQuestAnswerFragment
 			new Item("sepak_takraw",	R.drawable.ic_sport_sepak_takraw,	R.string.quest_sport_sepak_takraw),
 			};
 
-	private Item[] actualSportsValues;
-
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
 									   Bundle savedInstanceState)
 	{
 		View view = super.onCreateView(inflater, container, savedInstanceState);
-		actualSportsValues = createItems();
+
 		imageSelector.setCellLayout(R.layout.cell_icon_select_with_label_below);
 
 		addOtherAnswer(R.string.quest_sport_answer_multi, this::applyMultiAnswer);
@@ -91,7 +90,7 @@ public class AddSportForm extends ImageListQuestAnswerFragment
 	{
 		if(imageSelector.getSelectedIndices().size() > 3)
 		{
-			new AlertDialogBuilder(getActivity())
+			new AlertDialog.Builder(getActivity())
 					.setTitle(R.string.quest_sport_manySports_confirmation_title)
 					.setMessage(R.string.quest_sport_manySports_confirmation_description)
 					.setPositiveButton(R.string.quest_manySports_confirmation_specific, (dialog, which) -> applyAnswer())
@@ -116,7 +115,7 @@ public class AddSportForm extends ImageListQuestAnswerFragment
 
 	@Override protected Item[] getItems()
 	{
-		return actualSportsValues;
+		return createItems();
 	}
 
 	private void applyMultiAnswer()
@@ -125,6 +124,6 @@ public class AddSportForm extends ImageListQuestAnswerFragment
 		ArrayList<String> strings = new ArrayList<>(1);
 		strings.add("multi");
 		answer.putStringArrayList(OSM_VALUES, strings);
-		applyImmediateAnswer(answer);
+		applyAnswer(answer);
 	}
 }

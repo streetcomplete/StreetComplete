@@ -2,8 +2,11 @@ package de.westnordost.streetcomplete.quests.housenumber;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.text.InputType;
+import android.text.TextWatcher;
 import android.text.method.DigitsKeyListener;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,15 +14,19 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
-import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
+import de.westnordost.streetcomplete.quests.building_type.BuildingType;
+import de.westnordost.streetcomplete.util.TextChangedWatcher;
+import de.westnordost.streetcomplete.view.Item;
+import de.westnordost.streetcomplete.view.ItemViewHolder;
+
 
 public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 {
 	public static final String
+			NO_ADDRESS = "noaddress",
 			HOUSENUMBER = "housenumber",
 			HOUSENAME = "housename",
 			CONSCRIPTIONNUMBER = "conscriptionnumber",
@@ -41,15 +48,10 @@ public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 	{
 		View view = super.onCreateView(inflater, container, savedInstanceState);
 		restoreInstanceState(savedInstanceState);
-		String code = getCountryInfo().getCountryCode();
 
 		if(isHousename)
 		{
 			setLayout(R.layout.quest_housename);
-		}
-		else if("SK".equals(code))
-		{
-			setLayout(R.layout.quest_housenumber_slovak);
 		}
 		else
 		{
@@ -61,7 +63,7 @@ public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 		return view;
 	}
 
-	@Override public void onSaveInstanceState(Bundle outState)
+	@Override public void onSaveInstanceState(@NonNull Bundle outState)
 	{
 		super.onSaveInstanceState(outState);
 		outState.putBoolean(IS_HOUSENAME, isHousename);
@@ -78,6 +80,8 @@ public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 
 	private void addOtherAnswers()
 	{
+		addOtherAnswer(R.string.quest_address_answer_no_housenumber, this::onNoHouseNumber);
+
 		addOtherAnswer(R.string.quest_address_answer_house_name, () ->
 		{
 			isHousename = true;
@@ -86,7 +90,7 @@ public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 
 		addOtherAnswer(R.string.quest_housenumber_multiple_numbers, () ->
 		{
-			new AlertDialogBuilder(getActivity())
+			new AlertDialog.Builder(getActivity())
 				.setMessage(R.string.quest_housenumber_multiple_numbers_description)
 				.setPositiveButton(android.R.string.ok, null)
 				.show();
@@ -95,12 +99,6 @@ public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 
 	@Override protected void onClickOk()
 	{
-		if(!hasChanges())
-		{
-			Toast.makeText(getActivity(), R.string.no_changes, Toast.LENGTH_SHORT).show();
-			return;
-		}
-
 		if(inputHouseName != null)
 		{
 			applyHouseNameAnswer(getInputText(inputHouseName));
@@ -115,11 +113,40 @@ public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 		}
 	}
 
+	private void onNoHouseNumber()
+	{
+		String buildingValue = getOsmElement().getTags().get("building");
+		Item item = BuildingType.getByTag("building", buildingValue);
+		if(item != null)
+		{
+			View inner = LayoutInflater.from(getActivity()).inflate(
+				R.layout.dialog_quest_address_no_housenumber, null, false);
+			new ItemViewHolder(inner.findViewById(R.id.item_view)).bind(item);
+
+			new AlertDialog.Builder(getActivity())
+				.setView(inner)
+				.setPositiveButton(R.string.quest_generic_hasFeature_yes, (dialog, which) -> applyNoHouseNumberAnswer())
+				.setNegativeButton(R.string.quest_generic_hasFeature_no_leave_note, (dialog, which) -> onClickCantSay())
+				.show();
+		} else {
+			// fallback in case the type of building is known by Housenumber quest but not by
+			// building type quest
+			onClickCantSay();
+		}
+	}
+
+	private void applyNoHouseNumberAnswer()
+	{
+		Bundle answer = new Bundle();
+		answer.putBoolean(NO_ADDRESS, true);
+		applyAnswer(answer);
+	}
+
 	private void applyHouseNameAnswer(final String houseName)
 	{
 		Bundle answer = new Bundle();
 		answer.putString(HOUSENAME, houseName);
-		applyFormAnswer(answer);
+		applyAnswer(answer);
 	}
 
 	private void applyHouseNumberAnswer(final String houseNumber)
@@ -130,46 +157,36 @@ public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 		confirmHousenumber(looksInvalid, () ->
 		{
 			answer.putString(HOUSENUMBER, houseNumber);
-			applyFormAnswer(answer);
+			applyAnswer(answer);
 		});
 	}
 
 	private void applyConscriptionNumberAnswer(final String conscriptionNumber, final String streetNumber)
 	{
 		final Bundle answer = new Bundle();
-
-		// only conscription number is required
-		if(conscriptionNumber.isEmpty())
-		{
-			Toast.makeText(getActivity(), R.string.quest_housenumber_conscription_number_required, Toast.LENGTH_SHORT).show();
-			return;
-		}
-
-		boolean looksInvalid = false;
+		boolean looksInvalid = !conscriptionNumber.matches(VALID_CONSCRIPTIONNUMBER_REGEX);
 		if(!streetNumber.isEmpty())
 		{
 			looksInvalid |= !streetNumber.matches(getValidHousenumberRegex());
 		}
-		looksInvalid |= !conscriptionNumber.matches(VALID_CONSCRIPTIONNUMBER_REGEX);
 
 		confirmHousenumber(looksInvalid, () ->
 		{
 			answer.putString(CONSCRIPTIONNUMBER, conscriptionNumber);
-			answer.putString(STREETNUMBER, streetNumber);
-			applyFormAnswer(answer);
+			// streetNumber is optional
+			if(!streetNumber.isEmpty())
+			{
+				answer.putString(STREETNUMBER, streetNumber);
+			}
+			applyAnswer(answer);
 		});
 	}
 
-	@Override public boolean hasChanges()
+	@Override public boolean isFormComplete()
 	{
-		EditText[] possibleInputs = new EditText[]
-				{inputHouseNumber, inputHouseName, inputConscriptionNumber, inputStreetNumber};
-		for (EditText possibleInput : possibleInputs)
-		{
-			if(possibleInput != null && !getInputText(possibleInput).isEmpty())
-				return true;
-		}
-		return false;
+		// streetNumber is always optional
+		EditText input = getFirstNonNull(inputHouseNumber, inputHouseName, inputConscriptionNumber);
+		return input != null && !getInputText(input).isEmpty();
 	}
 
 	private void setLayout(int layoutResourceId)
@@ -181,7 +198,26 @@ public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 		inputConscriptionNumber = view.findViewById(R.id.inputConscriptionNumber);
 		inputStreetNumber = view.findViewById(R.id.inputStreetNumber);
 
+		TextWatcher onChanged = new TextChangedWatcher(this::checkIsFormComplete);
+		if(inputHouseNumber != null) inputHouseNumber.addTextChangedListener(onChanged);
+		if(inputHouseName != null) inputHouseName.addTextChangedListener(onChanged);
+		if(inputConscriptionNumber != null) inputConscriptionNumber.addTextChangedListener(onChanged);
+		if(inputStreetNumber != null) inputStreetNumber.addTextChangedListener(onChanged);
+
+		// streetNumber is always optional
+		EditText input = getFirstNonNull(inputHouseNumber, inputHouseName, inputConscriptionNumber);
+		if(input != null) input.requestFocus();
+
 		initKeyboardButton(view);
+	}
+
+	private static EditText getFirstNonNull(EditText ...view)
+	{
+		for (EditText editText : view)
+		{
+			if(editText != null) return editText;
+		}
+		return null;
 	}
 
 	private void initKeyboardButton(View view)
@@ -196,6 +232,8 @@ public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 				if(focus != null && focus instanceof EditText)
 				{
 					EditText input = (EditText) focus;
+					int start = input.getSelectionStart();
+					int end = input.getSelectionEnd();
 					if ((input.getInputType() & InputType.TYPE_CLASS_NUMBER) != 0)
 					{
 						input.setInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
@@ -206,6 +244,8 @@ public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 						input.setKeyListener(DigitsKeyListener.getInstance("0123456789.,- /"));
 						toggleKeyboardButton.setText("abc");
 					}
+					// for some reason, the cursor position gets lost first time the input type is set (#1093)
+					input.setSelection(start, end);
 
 					InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
 					imm.showSoftInput(input, InputMethodManager.SHOW_IMPLICIT);
@@ -216,17 +256,17 @@ public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 
 	private String getValidHousenumberRegex()
 	{
-		String regexNum = VALID_HOUSENUMBER_REGEX;
+		String regex = VALID_HOUSENUMBER_REGEX;
 		String additionalRegex = getCountryInfo().getAdditionalValidHousenumberRegex();
 		if(additionalRegex != null)
 		{
-			regexNum = "((" + regexNum + ")|("+additionalRegex+"))";
+			regex = "((" + regex + ")|(" + additionalRegex + "))";
 		}
-		// i.e. 95-98 etc.
-		return "^" + regexNum + "([,-]" + regexNum + ")?";
+		// i.e. "95-98" or "5,5a,6" etc. (but not: "1, 3" or "3 - 5" or "5,6-7")
+		return "^" + regex + "((-" + regex + ")|(," + regex + ")+)?";
 	}
 
-	private String getInputText(EditText editText)
+	private static String getInputText(EditText editText)
 	{
 		return editText.getText().toString().trim();
 	}
@@ -235,7 +275,7 @@ public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 	{
 		if(isUnusual)
 		{
-			new AlertDialogBuilder(getActivity())
+			new AlertDialog.Builder(getActivity())
 					.setTitle(R.string.quest_generic_confirmation_title)
 					.setMessage(R.string.quest_address_unusualHousenumber_confirmation_description)
 					.setPositiveButton(R.string.quest_generic_confirmation_yes, (dialog, which) -> onConfirmed.run())

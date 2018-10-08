@@ -3,5 +3,5 @@ isLivingStreetKnown: true
 isSlowZoneKnown: true
 mobileCountryCode: 220
 officialLanguages: [sr]
-orchardProduces: [plum, apple, grape, cherry, chilli_pepper, sweet_pepper, raspberry, tomatoe, peach,
+orchardProduces: [plum, apple, grape, cherry, chilli_pepper, sweet_pepper, raspberry, tomato, peach,
   pear, apricot, strawberry, walnut, hop]

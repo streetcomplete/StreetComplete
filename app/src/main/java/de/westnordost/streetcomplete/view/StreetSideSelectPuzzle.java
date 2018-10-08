@@ -1,14 +1,13 @@
 package de.westnordost.streetcomplete.view;
 
 import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Shader;
 import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.AttrRes;
 import android.support.annotation.NonNull;
@@ -18,11 +17,14 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.ScaleAnimation;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import de.westnordost.streetcomplete.R;
+import de.westnordost.streetcomplete.util.BitmapUtil;
 
 public class StreetSideSelectPuzzle extends FrameLayout
 {
@@ -55,9 +57,8 @@ public class StreetSideSelectPuzzle extends FrameLayout
 
 	private View rotateContainer;
 
-	private ImageView rightSideImage;
-	private ImageView leftSideImage;
-
+	private ImageView leftSideImage, rightSideImage;
+	private View leftSide, rightSide;
 	private View strut;
 
 	private OnClickSideListener listener;
@@ -76,14 +77,11 @@ public class StreetSideSelectPuzzle extends FrameLayout
 		LayoutInflater.from(context).inflate(R.layout.side_select_puzzle, this, true);
 
 		rotateContainer = findViewById(R.id.rotateContainer);
-
 		rightSideImage = findViewById(R.id.rightSideImage);
 		leftSideImage = findViewById(R.id.leftSideImage);
-
 		strut = findViewById(R.id.strut);
-
-		findViewById(R.id.leftSide).setOnClickListener(view -> onClick(false));
-		findViewById(R.id.rightSide).setOnClickListener(view -> onClick(true));
+		leftSide = findViewById(R.id.leftSide);
+		rightSide = findViewById(R.id.rightSide);
 
 		addOnLayoutChangeListener((v, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom) ->
 		{
@@ -119,6 +117,8 @@ public class StreetSideSelectPuzzle extends FrameLayout
 	public void setListener(OnClickSideListener listener)
 	{
 		this.listener = listener;
+		leftSide.setOnClickListener(view -> onClick(false));
+		rightSide.setOnClickListener(view -> onClick(true));
 	}
 
 	public void setStreetRotation(float rotation)
@@ -184,13 +184,15 @@ public class StreetSideSelectPuzzle extends FrameLayout
 		setStreetDrawable(resId, width, imgView, flip180Degrees);
 
 		((View)imgView.getParent()).bringToFront();
-		ObjectAnimator.ofFloat(imgView, "scaleX", 3, 1).start();
-		ObjectAnimator.ofFloat(imgView, "scaleY", 3, 1).start();
+
+		imgView.setScaleX(3);
+		imgView.setScaleY(3);
+		imgView.animate().scaleX(1).scaleY(1);
 	}
 
 	private void setStreetDrawable(int resId, int width, ImageView imageView, boolean flip180Degrees)
 	{
-		BitmapDrawable drawable = scaleToWidth(asBitmapDrawable(resId), width, flip180Degrees);
+		BitmapDrawable drawable = scaleToWidth(BitmapUtil.asBitmapDrawable(getResources(), resId), width, flip180Degrees);
 		drawable.setTileModeY(Shader.TileMode.REPEAT);
 		imageView.setImageDrawable(drawable);
 	}
@@ -203,26 +205,6 @@ public class StreetSideSelectPuzzle extends FrameLayout
 		if(flip180Degrees) m.postRotate(180);
 		Bitmap bitmap = Bitmap.createBitmap(drawable.getBitmap(), 0, 0,
 				drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), m, true);
-		return new BitmapDrawable(getResources(), bitmap);
-	}
-
-	private BitmapDrawable asBitmapDrawable(int resId)
-	{
-		Drawable drawable = getResources().getDrawable(resId);
-		if(drawable instanceof BitmapDrawable)
-		{
-			return (BitmapDrawable) drawable;
-		}
-		return createBitmapDrawableFrom(drawable);
-	}
-
-	private BitmapDrawable createBitmapDrawableFrom(Drawable drawable)
-	{
-		Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(),
-				drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
-		Canvas canvas = new Canvas(bitmap);
-		drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
-		drawable.draw(canvas);
 		return new BitmapDrawable(getResources(), bitmap);
 	}
 }

@@ -4,7 +4,6 @@ import android.util.LongSparseArray;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -84,7 +83,7 @@ public class OverpassMapDataParser extends XmlParser implements ApiResponseReade
 	}
 
 	@Override
-	protected void onStartElement() throws ParseException
+	protected void onStartElement()
 	{
 		String name = getName();
 
@@ -141,7 +140,9 @@ public class OverpassMapDataParser extends XmlParser implements ApiResponseReade
 	private void retrieveIdAndVersion()
 	{
 		id = getLongAttribute("id");
-		version = getIntAttribute("version");
+		// for when output mode "out skel;"
+		Integer version = getIntAttribute("version");
+		this.version = version != null ? version : -1;
 	}
 
 	private void startWayGeometry(long wayId)

@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.IBinder;
+import android.support.annotation.Nullable;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -18,6 +20,7 @@ import javax.inject.Inject;
 import javax.inject.Provider;
 
 import de.westnordost.osmapi.map.data.LatLon;
+import de.westnordost.osmapi.map.data.OsmElement;
 import de.westnordost.streetcomplete.ApplicationConstants;
 import de.westnordost.streetcomplete.data.changesets.OpenChangesetsDao;
 import de.westnordost.streetcomplete.data.download.QuestDownloadService;
@@ -42,6 +45,8 @@ import static android.content.Context.BIND_AUTO_CREATE;
 
 public class QuestController
 {
+	private static final String TAG = "QuestController";
+
 	private final OsmQuestDao osmQuestDB;
 	private final UndoOsmQuestDao undoOsmQuestDB;
 	private final MergedElementDao osmElementDB;
@@ -55,7 +60,7 @@ public class QuestController
 
 	private boolean downloadServiceIsBound;
 	private QuestDownloadService.Interface downloadService;
-	private ServiceConnection downloadServiceConnection = new ServiceConnection()
+	private final ServiceConnection downloadServiceConnection = new ServiceConnection()
 	{
 		public void onServiceConnected(ComponentName className, IBinder service)
 		{
@@ -70,7 +75,7 @@ public class QuestController
 	};
 	private boolean uploadServiceIsBound;
 	private QuestChangesUploadService.Interface uploadService;
-	private ServiceConnection uploadServiceConnection = new ServiceConnection()
+	private final ServiceConnection uploadServiceConnection = new ServiceConnection()
 	{
 		public void onServiceConnected(ComponentName className, IBinder service)
 		{
@@ -138,88 +143,69 @@ public class QuestController
 	}
 
 	/** Create a note for the given OSM Quest instead of answering it. The quest will turn
-	 *  invisible. */
-	public void createNote(final long osmQuestId, final String questTitle, final String text, final ArrayList<String> imagePaths)
+	 *  invisible.
+	 *  @return true if successful */
+	public boolean createNote(long osmQuestId, String questTitle, String text, ArrayList<String> imagePaths)
 	{
-		workerHandler.post(() ->
+		OsmQuest q = osmQuestDB.get(osmQuestId);
+		// race condition: another thread may have removed the element already (#288)
+		if(q == null || q.getStatus() != QuestStatus.NEW) return false;
+
+		CreateNote createNote = new CreateNote();
+		createNote.position = q.getMarkerLocation();
+		createNote.text = text;
+		createNote.questTitle = questTitle;
+		createNote.elementType = q.getElementType();
+		createNote.elementId = q.getElementId();
+		createNote.imagePaths = imagePaths;
+		createNoteDB.add(createNote);
+
+		/* The quests that reference the same element for which the user was not able to
+		   answer the question are removed because the to-be-created note blocks quest
+		   creation for other users, so those quests should be removed from the user's
+		   own display as well. As soon as the note is resolved, the quests will be re-
+		   created next time they are downloaded */
+		List<OsmQuest> questsForThisOsmElement = osmQuestDB.getAll(null, QuestStatus.NEW, null,
+				q.getElementType(), q.getElementId());
+		List<Long> questIdsForThisOsmElement = new ArrayList<>(questsForThisOsmElement.size());
+		for(OsmQuest quest : questsForThisOsmElement)
 		{
-			OsmQuest q = osmQuestDB.get(osmQuestId);
-			// race condition: another thread may have removed the element already (#288)
-			if(q == null) return;
+			questIdsForThisOsmElement.add(quest.getId());
+		}
 
-			CreateNote createNote = new CreateNote();
-			createNote.position = q.getMarkerLocation();
-			createNote.text = text;
-			createNote.questTitle = questTitle;
-			createNote.elementType = q.getElementType();
-			createNote.elementId = q.getElementId();
-			createNote.imagePaths = imagePaths;
-			createNoteDB.add(createNote);
+		osmQuestDB.deleteAll(questIdsForThisOsmElement);
+		workerHandler.post(() -> relay.onQuestsRemoved(questIdsForThisOsmElement, QuestGroup.OSM));
 
-			/* The quests that reference the same element for which the user was not able to
-			   answer the question are removed because the to-be-created note blocks quest
-			   creation for other users, so those quests should be removed from the user's
-			   own display as well. As soon as the note is resolved, the quests will be re-
-			   created next time they are downloaded */
-			List<OsmQuest> questsForThisOsmElement = osmQuestDB.getAll(null, QuestStatus.NEW, null,
-					q.getElementType(), q.getElementId());
-			List<Long> otherQuestIdsForThisOsmElement = new ArrayList<>(questsForThisOsmElement.size());
-			for(OsmQuest quest : questsForThisOsmElement)
-			{
-				if(quest.getId() != osmQuestId) otherQuestIdsForThisOsmElement.add(quest.getId());
-			}
-
-			/* creating a note instead of "really" solving the quest still counts as solving in
-			   regards of the listener because the user answered to the quest and thats something
-			 that needs to be uploaded */
-			osmQuestDB.delete(osmQuestId);
-			relay.onQuestSolved(osmQuestId, QuestGroup.OSM);
-
-			osmQuestDB.deleteAll(otherQuestIdsForThisOsmElement);
-			relay.onQuestsRemoved(otherQuestIdsForThisOsmElement, QuestGroup.OSM);
-
-			osmElementDB.deleteUnreferenced();
-			geometryDB.deleteUnreferenced();
-		});
+		osmElementDB.deleteUnreferenced();
+		geometryDB.deleteUnreferenced();
+		return true;
 	}
 
-	public void createNote(final String text, final ArrayList<String> imagePaths, LatLon position)
+	public void createNote(String text, ArrayList<String> imagePaths, LatLon position)
 	{
-		workerHandler.post(() ->
-		{
-			CreateNote createNote = new CreateNote();
-			createNote.position = position;
-			createNote.text = text;
-			createNote.imagePaths = imagePaths;
-			createNoteDB.add(createNote);
-		});
+		CreateNote createNote = new CreateNote();
+		createNote.position = position;
+		createNote.text = text;
+		createNote.imagePaths = imagePaths;
+		createNoteDB.add(createNote);
 	}
 
-	/** Apply the user's answer to the given quest. (The quest will turn invisible.) */
-	public void solveQuest(final long questId, final QuestGroup group, final Bundle answer,
-						   final String source)
+	/** Apply the user's answer to the given quest. (The quest will turn invisible.)
+	 *  @return true if successful */
+	public boolean solve(long questId, QuestGroup group, Bundle answer, String source)
 	{
-		workerHandler.post(() ->
+		boolean success = false;
+		if (group == QuestGroup.OSM)
 		{
-			boolean success = false;
-			if (group == QuestGroup.OSM)
-			{
-				success = solveOsmQuest(questId, answer, source);
-			}
-			else if (group == QuestGroup.OSM_NOTE)
-			{
-				success = solveOsmNoteQuest(questId, answer);
-			}
+			success = solveOsmQuest(questId, answer, source);
+		}
+		else if (group == QuestGroup.OSM_NOTE)
+		{
+			success = solveOsmNoteQuest(questId, answer);
+		}
 
-			if(success)
-			{
-				relay.onQuestSolved(questId, group);
-			}
-			else
-			{
-				relay.onQuestRemoved(questId, group);
-			}
-		});
+		workerHandler.post(() -> relay.onQuestRemoved(questId, group));
+		return success;
 	}
 
 	public OsmQuest getLastSolvedOsmQuest()
@@ -227,67 +213,58 @@ public class QuestController
 		return osmQuestDB.getLastSolved();
 	}
 
-	public Element getOsmElement(OsmQuest quest)
+	public OsmElement getOsmElement(OsmQuest quest)
 	{
-		return osmElementDB.get(quest.getElementType(), quest.getElementId());
+		return (OsmElement) osmElementDB.get(quest.getElementType(), quest.getElementId());
 	}
 
-	public void retrieveNextAt(long questId, QuestGroup group)
+	@Nullable public Quest getNextAt(long questId, QuestGroup group)
 	{
-		workerHandler.post(() ->
+		if (group == QuestGroup.OSM)
 		{
-			if (group == QuestGroup.OSM)
-			{
-				OsmQuest osmQuest = osmQuestDB.getNextNewAt(questId, getQuestTypeNames());
-				if (osmQuest == null) return;
-				Element element = osmElementDB.get(osmQuest.getElementType(), osmQuest.getElementId());
-				if (element == null) return;
-				relay.onQuestSelected(osmQuest, group, element);
-			}
-		});
+			return osmQuestDB.getNextNewAt(questId, getQuestTypeNames());
+		}
+		return null;
 	}
 
-	public void undoOsmQuest(final OsmQuest quest)
+	public void undo(final OsmQuest quest)
 	{
-		workerHandler.post(() ->
+		if(quest == null) return;
+
+		// not uploaded yet -> simply revert to NEW
+		if(quest.getStatus() == QuestStatus.ANSWERED || quest.getStatus() == QuestStatus.HIDDEN)
 		{
-			if(quest == null) return;
+			quest.setStatus(QuestStatus.NEW);
+			quest.setChanges(null, null);
+			osmQuestDB.update(quest);
+			// inform relay that the quest is visible again
+			workerHandler.post(() -> relay.onQuestsCreated(Collections.singletonList(quest), QuestGroup.OSM));
+		}
+		// already uploaded! -> create change to reverse the previous change
+		else if(quest.getStatus() == QuestStatus.CLOSED)
+		{
+			quest.setStatus(QuestStatus.REVERT);
+			osmQuestDB.update(quest);
 
-			// not uploaded yet -> simply revert to NEW
-			if(quest.getStatus() == QuestStatus.ANSWERED || quest.getStatus() == QuestStatus.HIDDEN)
-			{
-				quest.setStatus(QuestStatus.NEW);
-				quest.setChanges(null, null);
-				osmQuestDB.update(quest);
-				// inform relay that the quest is visible again
-				relay.onQuestsCreated(Collections.singletonList(quest), QuestGroup.OSM);
-			}
-			// already uploaded! -> create change to reverse the previous change
-			else if(quest.getStatus() == QuestStatus.CLOSED)
-			{
-				quest.setStatus(QuestStatus.REVERT);
-				osmQuestDB.update(quest);
-
-				OsmQuest reversedQuest = new OsmQuest(
-						quest.getOsmElementQuestType(),
-						quest.getElementType(),
-						quest.getElementId(),
-						quest.getGeometry());
-				reversedQuest.setChanges(quest.getChanges().reversed(), quest.getChangesSource());
-				reversedQuest.setStatus(QuestStatus.ANSWERED);
-				undoOsmQuestDB.add(reversedQuest);
-				relay.onQuestReverted(quest.getId(), QuestGroup.OSM);
-			}
-			else
-			{
-				throw new IllegalStateException("Tried to undo a quest that hasn't been answered yet");
-			}
-		});
+			OsmQuest reversedQuest = new OsmQuest(
+					quest.getOsmElementQuestType(),
+					quest.getElementType(),
+					quest.getElementId(),
+					quest.getGeometry());
+			reversedQuest.setChanges(quest.getChanges().reversed(), quest.getChangesSource());
+			reversedQuest.setStatus(QuestStatus.ANSWERED);
+			undoOsmQuestDB.add(reversedQuest);
+		}
+		else
+		{
+			throw new IllegalStateException("Tried to undo a quest that hasn't been answered yet");
+		}
 	}
 
 	private boolean solveOsmNoteQuest(long questId, Bundle answer)
 	{
 		OsmNoteQuest q = osmNoteQuestDB.get(questId);
+		if(q == null || q.getStatus() != QuestStatus.NEW) return false;
 		ArrayList<String> imagePaths = answer.getStringArrayList(NoteDiscussionForm.IMAGE_PATHS);
 		String comment = answer.getString(NoteDiscussionForm.TEXT);
 		if(comment != null && !comment.isEmpty())
@@ -310,7 +287,7 @@ public class QuestController
 		// race condition: another thread (i.e. quest download thread) may have removed the
 		// element already (#282). So in this case, just ignore
 		OsmQuest q = osmQuestDB.get(questId);
-		if(q == null) return false;
+		if(q == null || q.getStatus() != QuestStatus.NEW) return false;
 		Element element = osmElementDB.get(q.getElementType(), q.getElementId());
 		if(element == null) return false;
 
@@ -332,6 +309,7 @@ public class QuestController
 
 		if(!changes.isEmpty())
 		{
+			Log.d(TAG, "Solved a "+q.getType().getClass().getSimpleName() + " quest: " + changes.toString());
 			q.setChanges(changes, source);
 			q.setStatus(QuestStatus.ANSWERED);
 			osmQuestDB.update(q);
@@ -346,56 +324,38 @@ public class QuestController
 		}
 	}
 
-	/** Make the given quest invisible asynchronously (per user interaction). */
-	public void hideQuest(final long questId, final QuestGroup group)
+	/** Make the given quest invisible (per user interaction). */
+	public void hide(long questId, QuestGroup group)
 	{
-		workerHandler.post(() ->
+		if(group == QuestGroup.OSM)
 		{
-			if(group == QuestGroup.OSM)
-			{
-				OsmQuest q = osmQuestDB.get(questId);
-				if(q == null) return;
-				q.setStatus(QuestStatus.HIDDEN);
-				osmQuestDB.update(q);
-				relay.onQuestRemoved(q.getId(), group);
-			}
-			else if(group == QuestGroup.OSM_NOTE)
-			{
-				OsmNoteQuest q = osmNoteQuestDB.get(questId);
-				if(q == null) return;
-				q.setStatus(QuestStatus.HIDDEN);
-				osmNoteQuestDB.update(q);
-				relay.onQuestRemoved(q.getId(), group);
-			}
-		});
+			OsmQuest q = osmQuestDB.get(questId);
+			if(q == null || q.getStatus() != QuestStatus.NEW) return;
+			q.setStatus(QuestStatus.HIDDEN);
+			osmQuestDB.update(q);
+			workerHandler.post(() -> relay.onQuestRemoved(q.getId(), group));
+		}
+		else if(group == QuestGroup.OSM_NOTE)
+		{
+			OsmNoteQuest q = osmNoteQuestDB.get(questId);
+			if(q == null || q.getStatus() != QuestStatus.NEW) return;
+			q.setStatus(QuestStatus.HIDDEN);
+			osmNoteQuestDB.update(q);
+			workerHandler.post(() -> relay.onQuestRemoved(q.getId(), group));
+		}
 	}
 
-	/** Retrieve the given quest from local database asynchronously, including the element / note. */
-	public void retrieve(final QuestGroup group, final long questId)
+	/** Retrieve the given quest from local database */
+	@Nullable public Quest get(long questId, QuestGroup group)
 	{
-		workerHandler.post(() ->
-		{
-			if(group == QuestGroup.OSM)
-			{
-				// race condition: another thread may have removed the element already (#288)
-				OsmQuest osmQuest = osmQuestDB.get(questId);
-				if (osmQuest == null) return;
-				Element element = osmElementDB.get(osmQuest.getElementType(), osmQuest.getElementId());
-				if (element == null) return;
-				relay.onQuestSelected(osmQuest, group, element);
-			}
-			else if(group == QuestGroup.OSM_NOTE)
-			{
-				OsmNoteQuest osmNoteQuest = osmNoteQuestDB.get(questId);
-				if(osmNoteQuest == null) return;
-				relay.onQuestSelected(osmNoteQuest, group, null);
-			}
-		});
+		if(group == QuestGroup.OSM)           return osmQuestDB.get(questId);
+		else if(group == QuestGroup.OSM_NOTE) return osmNoteQuestDB.get(questId);
+		return null;
 	}
 
 	/** Retrieve all visible (=new) quests in the given bounding box from local database
 	 *  asynchronously. */
-	public void retrieve(final BoundingBox bbox)
+	public void retrieve(BoundingBox bbox)
 	{
 		workerHandler.post(() ->
 		{

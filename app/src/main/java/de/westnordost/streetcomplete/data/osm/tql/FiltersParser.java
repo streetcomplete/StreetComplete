@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.data.osm.tql;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Compiles a string in filter syntax into a TagFilterExpression. A string in filter syntax is
@@ -30,7 +31,7 @@ public class FiltersParser
 		try
 		{
 			// convert all white-spacey things to whitespaces so we do not have to deal with them later
-			this.input = new StringWithCursor(input.replaceAll("\\s", " "));
+			this.input = new StringWithCursor(input.replaceAll("\\s", " "), Locale.US);
 
 			List<ElementsTypeFilter> elementsTypeFilters = parseElementsDeclaration();
 			BooleanExpression<OQLExpressionValue> tagExprRoot = parseTags();

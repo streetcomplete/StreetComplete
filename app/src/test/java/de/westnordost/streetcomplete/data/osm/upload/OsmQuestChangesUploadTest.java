@@ -28,11 +28,10 @@ import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.data.QuestStatus;
 import de.westnordost.streetcomplete.data.changesets.OpenChangesetKey;
 import de.westnordost.streetcomplete.data.changesets.OpenChangesetsDao;
-import de.westnordost.streetcomplete.data.osm.Countries;
+import de.westnordost.streetcomplete.data.osm.AOsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.ElementGeometry;
-import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.OsmQuest;
-import de.westnordost.streetcomplete.data.osm.OsmQuestUnlocker;
+import de.westnordost.streetcomplete.data.osm.OsmQuestGiver;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChanges;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd;
@@ -253,7 +252,8 @@ public class OsmQuestChangesUploadTest extends TestCase
 		MapDataDao mapDataDao = mock(MapDataDao.class);
 		QuestStatisticsDao statisticsDao = mock(QuestStatisticsDao.class);
 		MergedElementDao elementDb = mock(MergedElementDao.class);
-		OsmQuestUnlocker osmQuestUnlocker = mock(OsmQuestUnlocker.class);
+		OsmQuestGiver osmQuestUnlocker = mock(OsmQuestGiver.class);
+		when(osmQuestUnlocker.updateQuests(any(Element.class))).thenReturn(new OsmQuestGiver.QuestUpdates());
 		OsmQuestChangesUpload u = new OsmQuestChangesUpload(mapDataDao, questDb, elementDb, null,
 				statisticsDao, null, null, null, null, osmQuestUnlocker);
 
@@ -262,7 +262,7 @@ public class OsmQuestChangesUploadTest extends TestCase
 		verify(statisticsDao).addOne("TestQuestType");
 	}
 
-	private static class TestQuestType implements OsmElementQuestType
+	private static class TestQuestType extends AOsmElementQuestType
 	{
 		@Override public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes) { }
 		@Override public String getCommitMessage() { return null; }
@@ -272,12 +272,8 @@ public class OsmQuestChangesUploadTest extends TestCase
 		}
 		@Override public AbstractQuestAnswerFragment createForm() { return null; }
 		@Override public int getIcon() { return 0; }
-		@Override public int getTitle() { return 0; }
 		@Override public int getTitle(@NonNull Map<String,String> tags) { return 0; }
 		@Nullable @Override public Boolean isApplicableTo(Element element) { return false; }
-
-		@NonNull @Override public Countries getEnabledForCountries()	{ return Countries.ALL; }
-		@Override public int getDefaultDisabledMessage() { return 0; }
 	}
 
 	private static OsmQuest createAnsweredQuestWithAppliableChange()

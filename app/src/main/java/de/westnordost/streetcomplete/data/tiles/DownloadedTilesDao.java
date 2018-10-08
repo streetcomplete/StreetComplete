@@ -98,14 +98,12 @@ public class DownloadedTilesDao
 		String groupBy = DownloadedTilesTable.Columns.QUEST_TYPE;
 		String having = "COUNT(*) >= " + tileCount;
 
-		Cursor cursor = db.query(DownloadedTilesTable.NAME,	cols, where, whereArgs, groupBy, having, null);
-
-		if(cursor.getCount() == 0) return Collections.emptyList();
-
-		List<String> result = new ArrayList<>(cursor.getCount());
-
-		try
+		try(Cursor cursor = db.query(DownloadedTilesTable.NAME,	cols, where, whereArgs, groupBy, having, null))
 		{
+			if(cursor.getCount() == 0) return Collections.emptyList();
+
+			List<String> result = new ArrayList<>(cursor.getCount());
+
 			if(cursor.moveToFirst())
 			{
 				while(!cursor.isAfterLast())
@@ -115,12 +113,7 @@ public class DownloadedTilesDao
 					cursor.moveToNext();
 				}
 			}
+			return result;
 		}
-		finally
-		{
-			cursor.close();
-		}
-
-		return result;
 	}
 }

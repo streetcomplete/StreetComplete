@@ -3,8 +3,6 @@ package de.westnordost.streetcomplete.quests.localized_name;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +25,7 @@ import de.westnordost.streetcomplete.data.meta.Abbreviations;
 import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale;
 import de.westnordost.streetcomplete.data.osm.ElementGeometry;
 import de.westnordost.streetcomplete.quests.localized_name.data.RoadNameSuggestionsDao;
-import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
+
 
 public class AddRoadNameForm extends AddLocalizedNameForm
 {
@@ -50,8 +48,8 @@ public class AddRoadNameForm extends AddLocalizedNameForm
 
 		Injector.instance.getApplicationComponent().inject(this);
 
-
 		View contentView = setContentView(R.layout.quest_localizedname);
+
 		addOtherAnswers();
 
 		initLocalizedNameAdapter(contentView, savedInstanceState);
@@ -112,10 +110,10 @@ public class AddRoadNameForm extends AddLocalizedNameForm
 	@Override
 	protected void applyNameAnswer()
 	{
-		Bundle bundle = prepareAnswerBundle();
+		Bundle bundle = createAnswer();
 		bundle.putLong(WAY_ID, getOsmElement().getId());
 		bundle.putSerializable(WAY_GEOMETRY, getElementGeometry());
-		applyFormAnswer(bundle);
+		applyAnswer(bundle);
 	}
 
 	private void selectNoStreetNameReason()
@@ -130,7 +128,7 @@ public class AddRoadNameForm extends AddLocalizedNameForm
 		String highwayValue = getOsmElement().getTags().get("highway");
 		boolean mayBeLink = highwayValue.matches("primary|secondary|tertiary");
 
-		final List<String> answers = new ArrayList<>(3);
+		final List<String> answers = new ArrayList<>(5);
 		if(mayBeLink) answers.add(linkRoad);
 		answers.add(serviceRoad);
 		answers.add(trackRoad);
@@ -174,12 +172,12 @@ public class AddRoadNameForm extends AddLocalizedNameForm
 					if(answer.equals(serviceRoad))	type = IS_SERVICE;
 					if(answer.equals(trackRoad))    type = IS_TRACK;
 					data.putInt(NO_PROPER_ROAD, type);
-					applyImmediateAnswer(data);
+					applyAnswer(data);
 				}
 			}
 		};
 
-		AlertDialog dlg = new AlertDialogBuilder(getActivity())
+		AlertDialog dlg = new AlertDialog.Builder(getActivity())
 				.setSingleChoiceItems(answers.toArray(new String[0]), -1, onSelect)
 				.setTitle(R.string.quest_streetName_answer_noName_question)
 				.setPositiveButton(android.R.string.ok, onSelect)
@@ -191,22 +189,16 @@ public class AddRoadNameForm extends AddLocalizedNameForm
 
 	private void confirmNoStreetName()
 	{
-		new AlertDialogBuilder(getActivity())
+		new AlertDialog.Builder(getActivity())
 				.setTitle(R.string.quest_name_answer_noName_confirmation_title)
 				.setMessage(R.string.quest_streetName_answer_noName_confirmation_description)
 				.setPositiveButton(R.string.quest_name_noName_confirmation_positive, (dialog, which) ->
 				{
 					Bundle data = new Bundle();
 					data.putBoolean(NO_NAME, true);
-					applyImmediateAnswer(data);
+					applyAnswer(data);
 				})
 				.setNegativeButton(R.string.quest_generic_confirmation_no, null)
 				.show();
-	}
-
-	@Override public boolean hasChanges()
-	{
-		// either the user added a language or typed something for the street name
-		return adapter.getData().size() > 1 || !adapter.getData().get(0).name.trim().isEmpty();
 	}
 }

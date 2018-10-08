@@ -1,3 +1,4 @@
 # Do not edit. Source files are in /res/country_metadata
 isLeftHandTraffic: true
+measurementSystem: [imperial, metric]
 officialLanguages: [gv, en]

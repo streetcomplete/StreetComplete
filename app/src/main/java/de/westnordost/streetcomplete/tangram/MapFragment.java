@@ -3,8 +3,6 @@ package de.westnordost.streetcomplete.tangram;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
 import android.graphics.PointF;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -15,13 +13,11 @@ import android.support.annotation.AnyThread;
 import android.support.annotation.CallSuper;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v13.app.FragmentCompat;
 import android.support.v4.app.Fragment;
 import android.support.v7.preference.PreferenceManager;
 import android.text.Html;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
-import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,16 +42,17 @@ import java.io.File;
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.R;
+import de.westnordost.streetcomplete.util.BitmapUtil;
+import de.westnordost.streetcomplete.util.DpUtil;
 import de.westnordost.streetcomplete.util.SphericalEarthMath;
+import de.westnordost.streetcomplete.util.ViewUtils;
 
 import static android.content.Context.SENSOR_SERVICE;
 
 public class MapFragment extends Fragment implements
-		FragmentCompat.OnRequestPermissionsResultCallback, LocationListener,
-		LostApiClient.ConnectionCallbacks, TouchInput.ScaleResponder,
-		TouchInput.ShoveResponder, TouchInput.RotateResponder,
-		TouchInput.PanResponder, TouchInput.DoubleTapResponder,
-		CompassComponent.Listener, MapController.SceneLoadListener
+	LocationListener, LostApiClient.ConnectionCallbacks, TouchInput.ScaleResponder,
+	TouchInput.ShoveResponder, TouchInput.RotateResponder, TouchInput.PanResponder,
+	TouchInput.DoubleTapResponder, CompassComponent.Listener, MapController.SceneLoadListener
 {
 	private CompassComponent compass = new CompassComponent();
 
@@ -181,23 +178,7 @@ public class MapFragment extends Fragment implements
 			initMarkers();
 			followPosition();
 			showLocation();
-			postOnLayout(this::updateView);
-		}
-	}
-
-	private void postOnLayout(final Runnable runnable)
-	{
-		ViewTreeObserver vto = getView().getViewTreeObserver();
-		if(vto.isAlive())
-		{
-			vto.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
-			{
-				@Override public void onGlobalLayout()
-				{
-					getView().getViewTreeObserver().removeOnGlobalLayoutListener(this);
-					runnable.run();
-				}
-			});
+			ViewUtils.postOnLayout(getView(), this::updateView);
 		}
 	}
 
@@ -211,7 +192,7 @@ public class MapFragment extends Fragment implements
 	private Marker createLocationMarker(int order)
 	{
 		Marker marker = controller.addMarker();
-		BitmapDrawable dot = createBitmapDrawableFrom(R.drawable.location_dot);
+		BitmapDrawable dot = BitmapUtil.createBitmapDrawableFrom(getResources(), R.drawable.location_dot);
 		marker.setStylingFromString("{ style: 'points', color: 'white', size: ["+TextUtils.join(",",sizeInDp(dot))+"], order: 2000, flat: true, collide: false }");
 		marker.setDrawable(dot);
 		marker.setDrawOrder(order);
@@ -220,7 +201,7 @@ public class MapFragment extends Fragment implements
 
 	private Marker createDirectionMarker(int order)
 	{
-		BitmapDrawable directionImg = createBitmapDrawableFrom(R.drawable.location_direction);
+		BitmapDrawable directionImg = BitmapUtil.createBitmapDrawableFrom(getResources(), R.drawable.location_direction);
 		directionMarkerSize = sizeInDp(directionImg);
 
 		Marker marker = controller.addMarker();
@@ -232,30 +213,18 @@ public class MapFragment extends Fragment implements
 	private Marker createAccuracyMarker(int order)
 	{
 		Marker marker = controller.addMarker();
-		marker.setDrawable(createBitmapDrawableFrom(R.drawable.accuracy_circle));
+		marker.setDrawable(BitmapUtil.createBitmapDrawableFrom(getResources(), R.drawable.accuracy_circle));
 		marker.setDrawOrder(order);
 		return marker;
 	}
 
 	private String[] sizeInDp(Drawable drawable)
 	{
-		DisplayMetrics metrics = new DisplayMetrics();
-		getActivity().getWindowManager().getDefaultDisplay().getMetrics(metrics);
-		float d = metrics.density;
+		Context ctx = getContext();
 		return new String[]{
-				drawable.getIntrinsicWidth() / d + "px",
-				drawable.getIntrinsicHeight() / d + "px"};
-	}
-
-	private BitmapDrawable createBitmapDrawableFrom(int resId)
-	{
-		Drawable drawable = getResources().getDrawable(resId);
-		Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(),
-				drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
-		Canvas canvas = new Canvas(bitmap);
-		drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
-		drawable.draw(canvas);
-		return new BitmapDrawable(getResources(), bitmap);
+			// CSS "px" are in fact density dependent pixels
+			DpUtil.toDp(drawable.getIntrinsicWidth(), ctx) + "px",
+			DpUtil.toDp(drawable.getIntrinsicHeight(),ctx) + "px"};
 	}
 
 	private void updateMapTileCacheSize()
@@ -302,11 +271,6 @@ public class MapFragment extends Fragment implements
 	public void setIsFollowingPosition(boolean value)
 	{
 		isFollowingPosition = value;
-		if(!isFollowingPosition) {
-			zoomedYet = false;
-			isShowingDirection = false;
-			isCompassMode = false;
-		}
 		followPosition();
 	}
 
@@ -503,7 +467,6 @@ public class MapFragment extends Fragment implements
 
 	public void setCompassMode(boolean isCompassMode)
 	{
-		if(!isFollowingPosition) return;
 		this.isCompassMode = isCompassMode;
 		if(isCompassMode)
 		{
@@ -688,4 +651,13 @@ public class MapFragment extends Fragment implements
 		return controller.getZoom();
 	}
 
+	public void showMapControls()
+	{
+		if(mapControls != null) mapControls.showControls();
+	}
+
+	public void hideMapControls()
+	{
+		if(mapControls != null) mapControls.hideControls();
+	}
 }

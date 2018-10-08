@@ -19,8 +19,7 @@ import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment;
 
 public class MarkCompletedHighwayConstruction extends MarkCompletedConstruction
 {
-	@Inject
-	public MarkCompletedHighwayConstruction(OverpassMapDataDao overpassServer) {
+	@Inject public MarkCompletedHighwayConstruction(OverpassMapDataDao overpassServer) {
 		super(overpassServer);
 	}
 
@@ -39,7 +38,7 @@ public class MarkCompletedHighwayConstruction extends MarkCompletedConstruction
 		String groupName = ".roads_for_review";
 		return OverpassQLUtil.getGlobalOverpassBBox(bbox) +
 			"way" + getQueryPart("highway", groupName, 14) +
-			groupName + " out meta geom;";
+			groupName + " " + OverpassQLUtil.getQuestPrintStatement();
 	}
 
 	public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
@@ -56,22 +55,21 @@ public class MarkCompletedHighwayConstruction extends MarkCompletedConstruction
 		}
 	}
 
-	@Override
-	public int getIcon() {
-		return R.drawable.ic_quest_road_construction;
-	}
+	@Override public int getIcon() { return R.drawable.ic_quest_road_construction; }
+	@Override public int getTitle() { return R.string.quest_construction_road_title; }
 
-	@Override
-	public int getTitle() {
-		return R.string.quest_construction_road_title;
-	}
-
-	@Override public int getTitle(@NonNull Map<String, String> tags) {
-		if (Arrays.asList(OsmTaggings.ALL_ROADS).contains(tags.get("construction"))){
+	@Override public int getTitle(@NonNull Map<String, String> tags)
+	{
+		if (Arrays.asList(OsmTaggings.ALL_ROADS).contains(tags.get("construction")))
+		{
 			return R.string.quest_construction_road_title;
-		} else if (tags.get("construction") == "cycleway") {
+		}
+		else if ("cycleway".equals(tags.get("construction")))
+		{
 			return R.string.quest_construction_cycleway_title;
-		} else if (tags.get("construction") == "footway") {
+		}
+		else if ("footway".equals(tags.get("construction")))
+		{
 			return R.string.quest_construction_footway_title;
 		}
 		return R.string.quest_construction_generic_title;
