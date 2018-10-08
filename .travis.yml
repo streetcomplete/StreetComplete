@@ -61,4 +61,4 @@ before_script:
 
 script:
   - ./gradlew testDebugUnitTest
-  - travis_wait ./gradlew connectedDebugAndroidTest
+  - travis_wait 40 ./gradlew connectedDebugAndroidTest
