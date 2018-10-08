@@ -35,5 +35,7 @@ public class AddTracktype extends SimpleOverpassQuestType
 
     @Override public String getCommitMessage() { return "Add tracktype"; }
     @Override public int getIcon() { return R.drawable.ic_quest_tractor; }
-    @Override public int getTitle(@NonNull Map<String, String> tags) { return R.string.quest_tracktype_title; }
+    @Override public int getTitle(@NonNull Map<String, String> tags) {
+    	return R.string.quest_tracktype_title;
+    }
 }

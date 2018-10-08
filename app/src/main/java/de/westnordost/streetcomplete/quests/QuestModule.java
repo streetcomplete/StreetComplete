@@ -108,11 +108,11 @@ public class QuestModule
 				new AddParkingFee(o),
 				new AddBusStopName(o),
 				new AddPathSurface(o),
+				new AddTracktype(o),
 				new AddBikeParkingType(o), // used by OsmAnd
 				new AddPlaygroundAccess(o), //late as in many areas all needed access=private is already mapped
 
 				// ↓ 4. definitely shown as errors in QA tools
-				new AddTracktype(o),
 
 				// ↓ 5. may be shown as missing in QA tools
 				new AddBuildingType(o), // because housenumber, building levels etc. depend on it
