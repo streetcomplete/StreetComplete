@@ -18,9 +18,9 @@ public class TagFilterValue implements OQLExpressionValue
 		this.value = value;
 	}
 
-	private String key;
-	private String op;
-	private String value;
+	private final String key;
+	private final String op;
+	private final String value;
 
 	public boolean matches(Object obj)
 	{

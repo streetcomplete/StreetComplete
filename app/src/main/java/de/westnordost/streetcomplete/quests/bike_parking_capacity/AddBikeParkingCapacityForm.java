@@ -8,6 +8,7 @@ import android.widget.EditText;
 
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
+import de.westnordost.streetcomplete.util.TextChangedWatcher;
 
 public class AddBikeParkingCapacityForm extends AbstractQuestFormAnswerFragment
 {
@@ -19,10 +20,10 @@ public class AddBikeParkingCapacityForm extends AbstractQuestFormAnswerFragment
 									   Bundle savedInstanceState)
 	{
 		View view = super.onCreateView(inflater, container, savedInstanceState);
-
 		View contentView = setContentView(R.layout.quest_bike_parking_capacity);
 
 		capacityInput = contentView.findViewById(R.id.capacityInput);
+		capacityInput.addTextChangedListener(new TextChangedWatcher(this::checkIsFormComplete));
 
 		return view;
 	}
@@ -30,18 +31,11 @@ public class AddBikeParkingCapacityForm extends AbstractQuestFormAnswerFragment
 	@Override protected void onClickOk()
 	{
 		Bundle answer = new Bundle();
-		String bikeCapacityString = capacityInput.getText().toString();
-
-		if(hasChanges())
-		{
-			int bikeCapacity = Integer.parseInt(bikeCapacityString);
-			answer.putInt(BIKE_PARKING_CAPACITY, bikeCapacity);
-		}
-		applyFormAnswer(answer);
+		answer.putInt(BIKE_PARKING_CAPACITY, Integer.parseInt(getBikeCapacity()));
+		applyAnswer(answer);
 	}
 
-	@Override public boolean hasChanges()
-	{
-		return !capacityInput.getText().toString().isEmpty();
-	}
+	@Override public boolean isFormComplete() { return !getBikeCapacity().isEmpty(); }
+
+	private String getBikeCapacity() { return capacityInput.getText().toString(); }
 }

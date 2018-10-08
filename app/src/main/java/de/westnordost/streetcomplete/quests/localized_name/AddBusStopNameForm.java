@@ -1,17 +1,13 @@
 package de.westnordost.streetcomplete.quests.localized_name;
 
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-
-import java.util.ArrayList;
 
 import de.westnordost.streetcomplete.R;
-import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
+
 
 public class AddBusStopNameForm extends AddLocalizedNameForm
 {
@@ -37,18 +33,18 @@ public class AddBusStopNameForm extends AddLocalizedNameForm
 
 	@Override
 	protected void onClickOk() {
-		this.applyNameAnswer();
+		applyNameAnswer();
 	}
 
 	private void confirmNoName()
 	{
-		new AlertDialogBuilder(getActivity())
+		new AlertDialog.Builder(getActivity())
 				.setTitle(R.string.quest_name_answer_noName_confirmation_title)
 				.setPositiveButton(R.string.quest_name_noName_confirmation_positive, (dialog, which) ->
 				{
 					Bundle data = new Bundle();
 					data.putBoolean(NO_NAME, true);
-					applyImmediateAnswer(data);
+					applyAnswer(data);
 				})
 				.setNegativeButton(R.string.quest_generic_confirmation_no, null)
 				.show();

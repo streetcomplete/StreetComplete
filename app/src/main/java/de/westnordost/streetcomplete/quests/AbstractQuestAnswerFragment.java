@@ -1,12 +1,14 @@
 package de.westnordost.streetcomplete.quests;
 
+import android.content.ContextWrapper;
 import android.support.annotation.AnyThread;
-import android.support.v4.app.DialogFragment;
+import android.support.annotation.NonNull;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
@@ -15,9 +17,9 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import org.xmlpull.v1.XmlPullParser;
-
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -50,9 +52,9 @@ public abstract class AbstractQuestAnswerFragment extends AbstractBottomSheetFra
 
 	private ViewGroup content;
 
-	private QuestAnswerComponent questAnswerComponent;
+	private final QuestAnswerComponent questAnswerComponent;
 
-	private LinearLayout buttonPanel;
+	private ViewGroup buttonPanel;
 	protected Button buttonOtherAnswers;
 
 	private OsmElement osmElement;
@@ -63,6 +65,9 @@ public abstract class AbstractQuestAnswerFragment extends AbstractBottomSheetFra
 	private float initialMapRotation, initialMapTilt;
 
 	private List<OtherAnswer> otherAnswers;
+
+	private WeakReference<Context> currentContext = new WeakReference<>(null);
+	private ContextWrapper currentCountryContext;
 
 	public AbstractQuestAnswerFragment()
 	{
@@ -76,13 +81,7 @@ public abstract class AbstractQuestAnswerFragment extends AbstractBottomSheetFra
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState)
 	{
-		osmElement = (OsmElement) getArguments().getSerializable(ARG_ELEMENT);
-		elementGeometry = (ElementGeometry) getArguments().getSerializable(ARG_GEOMETRY);
-		questType = questTypeRegistry.getByName(getArguments().getString(ARG_QUESTTYPE));
-		countryInfo = null;
-		initialMapRotation = getArguments().getFloat(ARG_MAP_ROTATION);
-		initialMapTilt = getArguments().getFloat(ARG_MAP_TILT);
-
+		otherAnswers = new ArrayList<>();
 		View view = inflater.inflate(R.layout.fragment_quest_answer, container, false);
 
 		TextView title = view.findViewById(R.id.title);
@@ -101,6 +100,12 @@ public abstract class AbstractQuestAnswerFragment extends AbstractBottomSheetFra
 	@Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState)
 	{
 		super.onViewCreated(view, savedInstanceState);
+
+		// no content? -> hide the content container
+		if(content.getChildCount() == 0)
+		{
+			content.setVisibility(View.GONE);
+		}
 
 		if(otherAnswers.size() == 1)
 		{
@@ -136,6 +141,12 @@ public abstract class AbstractQuestAnswerFragment extends AbstractBottomSheetFra
 	{
 		super.onCreate(inState);
 		questAnswerComponent.onCreate(getArguments());
+		osmElement = (OsmElement) getArguments().getSerializable(ARG_ELEMENT);
+		elementGeometry = (ElementGeometry) getArguments().getSerializable(ARG_GEOMETRY);
+		questType = questTypeRegistry.getByName(getArguments().getString(ARG_QUESTTYPE));
+		countryInfo = null;
+		initialMapRotation = getArguments().getFloat(ARG_MAP_ROTATION);
+		initialMapTilt = getArguments().getFloat(ARG_MAP_TILT);
 	}
 
 	@Override public void onAttach(Context ctx)
@@ -144,35 +155,77 @@ public abstract class AbstractQuestAnswerFragment extends AbstractBottomSheetFra
 		questAnswerComponent.onAttach((OsmQuestAnswerListener) ctx);
 	}
 
+	/** Note: Due to Android architecture limitations, a layout inflater based on this ContextWrapper
+	 *  will not resolve any resources specified in the XML according to MCC */
+	@NonNull @Override
+	public LayoutInflater onGetLayoutInflater(@Nullable Bundle savedInstanceState)
+	{
+		// will always return a layout inflater for the current country
+		return super.onGetLayoutInflater(savedInstanceState).cloneInContext(getContext());
+	}
+
+	@Override @Nullable public Context getContext()
+	{
+		Context context = super.getContext();
+		if(currentContext.get() != context)
+		{
+			currentContext = new WeakReference<>(context);
+			currentCountryContext = context != null ? createCurrentCountryContextWrapper(context) : null;
+		}
+		return currentCountryContext;
+	}
+
+	private ContextWrapper createCurrentCountryContextWrapper(Context context)
+	{
+		Configuration conf = new Configuration(context.getResources().getConfiguration());
+		Integer mcc = getCountryInfo().getMobileCountryCode();
+		conf.mcc = mcc != null ? mcc : 0;
+		Resources res = context.createConfigurationContext(conf).getResources();
+		return new ContextWrapper(context) {
+			@Override public Resources getResources()
+			{
+				return res;
+			}
+		};
+	}
 
 	protected final void onClickCantSay()
 	{
-		DialogFragment leaveNote = new LeaveNoteDialog();
-		Bundle leaveNoteArgs = questAnswerComponent.getArguments();
-		String questTitle = QuestUtil.getTitle(getEnglishResources(), questType, osmElement);
-		leaveNoteArgs.putString(LeaveNoteDialog.ARG_QUEST_TITLE, questTitle);
-		leaveNote.setArguments(leaveNoteArgs);
-		leaveNote.show(getActivity().getSupportFragmentManager(), null);
+		new AlertDialog.Builder(getContext())
+			.setTitle(R.string.quest_leave_new_note_title)
+			.setMessage(R.string.quest_leave_new_note_description)
+			.setNegativeButton(R.string.quest_leave_new_note_no, (dialog, which) ->
+			{
+				questAnswerComponent.onSkippedQuest();
+			})
+			.setPositiveButton(R.string.quest_leave_new_note_yes, ((dialog, which) ->
+			{
+				String questTitle = QuestUtil.getTitle(getEnglishResources(), questType, osmElement);
+				questAnswerComponent.onComposeNote(questTitle);
+			}))
+		.show();
 	}
 
 	private Resources getEnglishResources()
 	{
 		Configuration conf = new Configuration(getResources().getConfiguration());
 		conf.setLocale(Locale.ENGLISH);
-		Context localizedContext = getActivity().createConfigurationContext(conf);
+		Context localizedContext = super.getContext().createConfigurationContext(conf);
 		return localizedContext.getResources();
 	}
 
-	protected final Resources getCurrentCountryResources()
+	protected final void applyAnswer(@NonNull Bundle data)
 	{
-		Configuration conf = new Configuration(getResources().getConfiguration());
-		Integer mcc = getCountryInfo().getMobileCountryCode();
-		conf.mcc = mcc != null ? mcc : 0;
-		return getContext().createConfigurationContext(conf).getResources();
-	}
-
-	protected final void applyImmediateAnswer(Bundle data)
-	{
+		if(data.isEmpty())
+		{
+			Toast.makeText(getActivity(), R.string.no_changes, Toast.LENGTH_SHORT).show();
+			return;
+		}
+		// in case there is a bug that a quest fills the bundle with nulls -> report
+		for(String key : data.keySet())
+		{
+			if(data.get(key) == null) throw new NullPointerException("Key " + key + " is null");
+		}
 		questAnswerComponent.onAnswerQuest(data);
 	}
 
@@ -187,24 +240,23 @@ public abstract class AbstractQuestAnswerFragment extends AbstractBottomSheetFra
 		{
 			content.removeAllViews();
 		}
-		return getActivity().getLayoutInflater().inflate(resourceId, content);
+		content.setVisibility(View.VISIBLE);
+		return getLayoutInflater().inflate(resourceId, content);
 	}
 
-	protected final View setContentView(XmlPullParser parser)
+	protected final void setNoContentPadding()
 	{
-		if(content.getChildCount() > 0)
-		{
-			content.removeAllViews();
-		}
-		return getActivity().getLayoutInflater().inflate(parser, content);
+		content.setPadding(0, 0, 0, 0);
 	}
 
 	protected final View setButtonsView(int resourceId)
 	{
+		// if other buttons are present, the other answers button should have a weight so that it
+		// can be sqeezed if there is not enough space for everything
+		buttonOtherAnswers.setLayoutParams(new LinearLayout.LayoutParams(
+			ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, 1f));
 		return getActivity().getLayoutInflater().inflate(resourceId, buttonPanel);
 	}
-
-	public abstract boolean hasChanges();
 
 	public final long getQuestId()
 	{

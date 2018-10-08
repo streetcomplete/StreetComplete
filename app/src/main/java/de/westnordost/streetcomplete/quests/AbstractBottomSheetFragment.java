@@ -8,17 +8,24 @@ import android.support.annotation.Nullable;
 import android.support.annotation.UiThread;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
+import android.util.DisplayMetrics;
 import android.view.View;
-import android.widget.ImageButton;
+import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 
 import de.westnordost.streetcomplete.R;
-import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
+
+
+import static android.support.design.widget.BottomSheetBehavior.STATE_COLLAPSED;
+import static android.support.design.widget.BottomSheetBehavior.STATE_EXPANDED;
 
 public abstract class AbstractBottomSheetFragment extends Fragment
 {
 	private LinearLayout bottomSheet;
-	private ImageButton buttonClose;
+	private BottomSheetBehavior bottomSheetBehavior;
+	private View buttonClose;
 
 	@Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState)
 	{
@@ -35,7 +42,17 @@ public abstract class AbstractBottomSheetFragment extends Fragment
 		buttonClose = view.findViewById(R.id.close_btn);
 		buttonClose.setOnClickListener(v -> getActivity().onBackPressed());
 
-		BottomSheetBehavior.from(bottomSheet).setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback()
+		bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet);
+
+		View titleSpeechBubble = view.findViewById(R.id.titleSpeechBubble);
+		titleSpeechBubble.setOnClickListener(v -> {
+			if(bottomSheetBehavior.getState() == STATE_EXPANDED)
+				bottomSheetBehavior.setState(STATE_COLLAPSED);
+			else if(bottomSheetBehavior.getState() == STATE_COLLAPSED)
+				bottomSheetBehavior.setState(STATE_EXPANDED);
+		});
+
+		bottomSheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback()
 		{
 			@Override public void onStateChanged(@NonNull View bottomSheet, int newState) { }
 
@@ -47,8 +64,33 @@ public abstract class AbstractBottomSheetFragment extends Fragment
 
 		if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE)
 		{
-			BottomSheetBehavior.from(bottomSheet).setState(BottomSheetBehavior.STATE_EXPANDED);
+			bottomSheetBehavior.setState(STATE_EXPANDED);
 		}
+
+		if(savedInstanceState == null)
+		{
+			view.findViewById(R.id.titleSpeechBubble).startAnimation(
+				AnimationUtils.loadAnimation(getContext(), R.anim.inflate_title_bubble));
+
+			view.findViewById(R.id.speechbubbleContent).startAnimation(
+				AnimationUtils.loadAnimation(getContext(), R.anim.inflate_answer_bubble));
+		}
+	}
+
+	@Override public void onConfigurationChanged(Configuration newConfig)
+	{
+		super.onConfigurationChanged(newConfig);
+		// I need to do everything myself... (AppCompactActivity only does this after calling this
+		// method. Genius!)
+		getResources().updateConfiguration(newConfig, getResources().getDisplayMetrics());
+
+		bottomSheetBehavior.setPeekHeight(getResources().getDimensionPixelSize(R.dimen.quest_form_peekHeight));
+
+		View bottomSheetContainer = getView().findViewById(R.id.bottomSheetContainer);
+		bottomSheetContainer.setBackgroundResource(R.drawable.speechbubbles_gradient_background);
+		ViewGroup.LayoutParams params = bottomSheetContainer.getLayoutParams();
+		params.width = getResources().getDimensionPixelSize(R.dimen.quest_form_width);
+		bottomSheetContainer.setLayoutParams(params);
 	}
 
 	private void updateCloseButtonVisibility()
@@ -58,22 +100,23 @@ public abstract class AbstractBottomSheetFragment extends Fragment
 		if(getActivity() == null) return;
 
 		int toolbarHeight = getActivity().findViewById(R.id.toolbar).getHeight();
-		boolean coversToolbar = bottomSheet.getTop() < toolbarHeight;
-		buttonClose.setVisibility(coversToolbar ? View.VISIBLE : View.GONE);
+		float speechBubbleTopMargin = getResources().getDimension(R.dimen.quest_form_speech_bubble_top_margin);
+		boolean coversToolbar = bottomSheet.getTop() < speechBubbleTopMargin + toolbarHeight;
+		buttonClose.setVisibility(coversToolbar ? View.VISIBLE : View.INVISIBLE);
 	}
 
 	/** Request to close the form through user interaction (back button, clicked other quest,..),
 	 *  requires user confirmation if any changes have been made */
 	@UiThread public void onClickClose(final Runnable confirmed)
 	{
-		if (!hasChanges())
+		if (!isRejectingClose())
 		{
 			onDiscard();
 			confirmed.run();
 		}
 		else
 		{
-			new AlertDialogBuilder(getActivity())
+			new AlertDialog.Builder(getActivity())
 					.setMessage(R.string.confirmation_discard_title)
 					.setPositiveButton(R.string.confirmation_discard_positive, (dialog, which) ->
 					{
@@ -87,5 +130,6 @@ public abstract class AbstractBottomSheetFragment extends Fragment
 
 	protected void onDiscard() {}
 
-	public abstract boolean hasChanges();
+	/** @return whether this form should not be closeable without confirmation */
+	public boolean isRejectingClose() { return false; }
 }

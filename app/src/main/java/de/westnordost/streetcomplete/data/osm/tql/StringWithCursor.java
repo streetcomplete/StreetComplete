@@ -1,14 +1,18 @@
 package de.westnordost.streetcomplete.data.osm.tql;
 
+import java.util.Locale;
+
 /** Convenience class to make it easier to go step by step through a string */
 public class StringWithCursor
 {
-	private String string;
+	private final String string;
+	private final Locale locale;
 	private int cursor = 0;
 
-	public StringWithCursor(String string)
+	public StringWithCursor(String string, Locale locale)
 	{
 		this.string = string;
+		this.locale = locale;
 	}
 
 	/** Advances the cursor if str is the next thing at the cursor
@@ -100,7 +104,7 @@ public class StringWithCursor
 
 	public boolean nextIsIgnoreCase(String str)
 	{
-		return nextIs(str.toLowerCase()) || nextIs(str.toUpperCase());
+		return nextIs(str.toLowerCase(locale)) || nextIs(str.toUpperCase(locale));
 	}
 
 	private int toDelta(int index)

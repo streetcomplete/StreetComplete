@@ -2,6 +2,6 @@
 isLivingStreetKnown: true
 mobileCountryCode: 401
 officialLanguages: [kk, ru]
-orchardProduces: [apple, tomatoe, grape, apricot, pear, cherry, strawberry, plum, walnut, peach, chilli_pepper,
+orchardProduces: [apple, tomato, grape, apricot, pear, cherry, strawberry, plum, walnut, peach, chilli_pepper,
   sweet_pepper, almond]
 popularReligions: [muslim]

@@ -1,21 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:paddingTop="8dp"
-    android:paddingBottom="8dp">
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/comment_text"
+    <LinearLayout
+        android:id="@+id/comment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/speech_bubble"/>
+        android:orientation="horizontal"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="4dp">
+
+        <ImageView
+            android:id="@+id/comment_avatar"
+            tools:src="@drawable/ic_osm_anon_avatar"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:scaleType="fitXY"
+            android:background="@drawable/background_white_circle"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/speech_bubble_start">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:orientation="vertical"
+                android:showDividers="middle"
+                android:divider="@drawable/space_4dp">
+
+                <TextView
+                    android:id="@+id/comment_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/NoteDiscussion.Comment"
+                    tools:text="Welcome to OpenStreetMap, the project that creates and distributes free geographic data for the world."/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/divider"/>
+
+                <TextView
+                    android:id="@+id/comment_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/NoteDiscussion.Info"
+                    tools:text="-- wurzel, 20. Apr. 2018"/>
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+    </LinearLayout>
 
     <TextView
-        android:id="@+id/comment_info"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/comment_status_text"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:background="@drawable/speech_bubble_none"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        style="@style/NoteDiscussion.Status"
+        tools:text="Closed by wurzel, 20. Apr. 2018"/>
 
 </LinearLayout>

@@ -17,7 +17,7 @@ public class WheelchairAccessAnswerFragment extends AbstractQuestAnswerFragment
 							 Bundle savedInstanceState)
 	{
 		View view = super.onCreateView(inflater, container, savedInstanceState);
-		View buttonPanel = setButtonsView(R.layout.quest_wheelchair_access);
+		View buttonPanel = setButtonsView(R.layout.quest_buttonpanel_yes_limited_no);
 
 		buttonPanel.findViewById(R.id.buttonYes).setOnClickListener(v -> onClickAnswer("yes"));
 		buttonPanel.findViewById(R.id.buttonLimited).setOnClickListener(v -> onClickAnswer("limited"));
@@ -25,15 +25,10 @@ public class WheelchairAccessAnswerFragment extends AbstractQuestAnswerFragment
 		return view;
 	}
 
-	@Override public boolean hasChanges()
-	{
-		return false;
-	}
-
 	protected void onClickAnswer(String answer)
 	{
 		Bundle bundle = new Bundle();
 		bundle.putString(ANSWER, answer);
-		applyImmediateAnswer(bundle);
+		applyAnswer(bundle);
 	}
 }

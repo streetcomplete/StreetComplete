@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="112dp"
+    android:layout_height="112dp"
+    android:gravity="center"
+    android:background="@drawable/background_maxheight_sign"
+    android:padding="18dp">
+
+    <EditText
+        android:id="@+id/feetInput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="#0fff"
+        android:gravity="center"
+        android:inputType="number"
+        android:maxLength="2"
+        android:nextFocusDown="@+id/inchInput"
+        android:textColor="@color/traffic_black"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        tools:text="15" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="′ "
+        android:textColor="@color/traffic_black"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        tools:ignore="HardcodedText" />
+
+    <EditText
+        android:id="@+id/inchInput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="#0fff"
+        android:gravity="center"
+        android:imeOptions="actionDone"
+        android:inputType="number"
+        android:maxLength="2"
+        android:nextFocusUp="@+id/feetInput"
+        android:textColor="@color/traffic_black"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        tools:text="11" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="″"
+        android:textColor="@color/traffic_black"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        tools:ignore="HardcodedText" />
+
+</LinearLayout>

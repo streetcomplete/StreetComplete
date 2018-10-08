@@ -24,13 +24,19 @@ public class ApplicationConstants
 
 	public final static int NOTE_MIN_ZOOM = 15;
 
+	/** How many quests to download when pressing manually on "download quests" */
+	public final static int MANUAL_DOWNLOAD_QUEST_TYPE_COUNT = 10;
+
 	/** a "best before" duration for quests. Quests will not be downloaded again for any tile
 	 *  before the time expired */
 	public static final int REFRESH_QUESTS_AFTER = 7*24*60*60*1000; // one week in ms
 
-	public static final String LUTIM_INSTANCE = "https://framapic.org/"; // must have trailing /
-	public static final Integer LUTIM_DELETE_AFTER_DAYS = 365 / 2; // half a year
+	public static final String AVATARS_CACHE_DIRECTORY = "osm_user_avatars";
+
+	public static final String SC_PHOTO_SERVICE_URL = "https://westnordost.de/streetcomplete/photo-upload/"; // must have trailing /
 
 	public static final int ATTACH_PHOTO_QUALITY = 60;
 	public static final int ATTACH_PHOTO_MAXWIDTH = 1280; // WXGA
+
+	public static final String NOTIFICATIONS_CHANNEL_DOWNLOAD = "downloading";
 }

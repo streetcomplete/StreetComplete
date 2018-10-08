@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<inset xmlns:android="http://schemas.android.com/apk/res/android"
+       android:insetLeft="@dimen/round_button_inset"
+       android:insetTop="@dimen/round_button_inset"
+       android:insetRight="@dimen/round_button_inset"
+       android:insetBottom="@dimen/round_button_inset">
+    <shape android:shape="rectangle">
+        <corners android:radius="@dimen/round_button_radius" />
+        <solid android:color="@color/accent" />
+        <padding android:left="@dimen/round_button_padding"
+                 android:top="@dimen/round_button_padding"
+                 android:right="@dimen/round_button_padding"
+                 android:bottom="@dimen/round_button_padding" />
+    </shape>
+</inset>

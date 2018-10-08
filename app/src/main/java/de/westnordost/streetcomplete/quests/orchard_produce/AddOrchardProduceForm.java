@@ -67,7 +67,7 @@ public class AddOrchardProduceForm extends ImageListQuestAnswerFragment
 			new Item("rubber",		R.drawable.produce_rubber, R.string.produce_rubber),
 			new Item("strawberry",	R.drawable.produce_strawberry, R.string.produce_strawberries),
 			new Item("tea",			R.drawable.produce_tea, R.string.produce_tea),
-			new Item("tomatoe",		R.drawable.produce_tomatoe, R.string.produce_tomatoes),
+			new Item("tomato",		R.drawable.produce_tomato, R.string.produce_tomatoes),
 			new Item("tung_nut",	R.drawable.produce_tung_nut, R.string.produce_tung_nuts),
 			new Item("vanilla",		R.drawable.produce_vanilla, R.string.produce_vanilla),
 			new Item("walnut",		R.drawable.produce_walnut, R.string.produce_walnuts),

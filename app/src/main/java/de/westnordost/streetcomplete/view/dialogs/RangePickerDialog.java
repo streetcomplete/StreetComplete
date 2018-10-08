@@ -24,7 +24,7 @@ public class RangePickerDialog extends AlertDialog implements DialogInterface.On
 	public RangePickerDialog(Context context, OnRangeChangeListener listener, String[] values,
 							 Integer startIndex, Integer endIndex, CharSequence title)
 	{
-		super(context, R.style.AppTheme_AlertDialog);
+		super(context, R.style.Theme_Bubble_Dialog);
 
 		this.listener = listener;
 

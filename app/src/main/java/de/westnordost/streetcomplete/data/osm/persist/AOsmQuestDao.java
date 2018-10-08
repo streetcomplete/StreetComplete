@@ -73,14 +73,28 @@ public abstract class AOsmQuestDao extends AQuestDao<OsmQuest>
 		return getAllThings(getMergedViewName(), null, qb, this::createObjectFrom);
 	}
 
+	public List<Long> getAllIds(Element.Type type, long id)
+	{
+		WhereSelectionBuilder qb = new WhereSelectionBuilder();
+		addElementType(type, qb);
+		addElementId(id, qb);
+
+		return getAllThings(getMergedViewName(), null, qb, this::getIdFrom);
+	}
+
+	private Long getIdFrom(Cursor cursor)
+	{
+		return cursor.getLong(cursor.getColumnIndexOrThrow(Columns.QUEST_ID));
+	}
+
 	public int deleteAllReverted(Element.Type type, long id)
 	{
 		String query = getQuestStatusColumnName() + " = ? AND " +
 				Columns.ELEMENT_TYPE + " = ? AND " + Columns.ELEMENT_ID + " = ?";
+		String[] params = {QuestStatus.REVERT.name(), type.name(), String.valueOf(id)};
 
 		SQLiteDatabase db = dbHelper.getWritableDatabase();
-		return db.delete(getTableName(), query,
-				new String[] {QuestStatus.REVERT.name(), type.name(), String.valueOf(id)});
+		return db.delete(getTableName(), query, params);
 	}
 
 	private void addQuestType(String questTypeName, WhereSelectionBuilder builder)

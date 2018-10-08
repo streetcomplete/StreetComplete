@@ -42,6 +42,10 @@ public class AddOpeningHours extends SimpleOverpassQuestType
 				"museum"
 		};
 
+		String[] offices = {
+			"insurance"
+		};
+
 		return " nodes, ways, relations with ( shop and shop !~ no|vacant or" +
 				" amenity ~ " + TextUtils.join("|", amenities) + " or" +
 				" amenity = bicycle_parking and bicycle_parking = building or" +
@@ -49,8 +53,9 @@ public class AddOpeningHours extends SimpleOverpassQuestType
 				" amenity = recycling and recycling_type = centre or" +
 				" tourism ~ " + TextUtils.join("|", tourism) + " or" +
 				" tourism = information and information = office or" +
-				" leisure ~ " + TextUtils.join("|",leisures) + ")" +
-				" and !opening_hours and name" +
+				" leisure ~ " + TextUtils.join("|",leisures) + " or" +
+				" office ~ " + TextUtils.join("|",offices) + ")" +
+				" and !opening_hours and name and opening_hours:signed != no" +
 				" and (access !~ private|no)"; // exclude ones without access to general public
 	}
 
@@ -62,6 +67,11 @@ public class AddOpeningHours extends SimpleOverpassQuestType
 	@Override public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
 	{
 		String openingHours = answer.getString(AddOpeningHoursForm.OPENING_HOURS);
+		if(answer.getBoolean(AddOpeningHoursForm.NO_SIGN))
+		{
+			changes.add("opening_hours:signed", "no");
+			return;
+		}
 		if(openingHours != null)
 		{
 			changes.add("opening_hours", openingHours);

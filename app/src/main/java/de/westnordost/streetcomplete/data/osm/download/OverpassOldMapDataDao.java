@@ -14,7 +14,7 @@ public class OverpassOldMapDataDao extends OverpassMapDataDao {
 	}
 
 	private String atticDataRequest(){
-		return "[date:\"" + date + "\"]";
+		return "[date:\"" + date + "T00:00:00Z\"]";
 	}
 
 	private boolean isQueryWithoutSettings(String query){

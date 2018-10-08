@@ -1,1 +1,1 @@
-OpenStreetMap besiktningsman app
+App för komplettering av OpenStreetMap

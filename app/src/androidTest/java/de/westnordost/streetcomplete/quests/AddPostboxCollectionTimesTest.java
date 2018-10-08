@@ -11,7 +11,7 @@ public class AddPostboxCollectionTimesTest extends AOsmElementQuestTypeTest
 	{
 		bundle.putBoolean(AddCollectionTimesForm.NO_TIMES_SPECIFIED, true);
 		verify(
-			new StringMapEntryAdd("note:collection_times","no times specified on the box"));
+			new StringMapEntryAdd("collection_times:signed","no"));
 	}
 
 	public void testTimes()

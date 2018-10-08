@@ -27,7 +27,7 @@ public class AddMaxSpeed extends SimpleOverpassQuestType
 		return
 			"ways with highway ~ motorway|trunk|primary|secondary|tertiary|unclassified|residential" +
 			" and !maxspeed and !maxspeed:forward and !maxspeed:backward" +
-			" and !source:maxspeed and !zone:maxspeed and !maxspeed:type" + // implicit speed limits
+			" and !source:maxspeed and !zone:maxspeed and !maxspeed:type and !zone:traffic" + // implicit speed limits
 			// not any unpaved as they are unlikely developed enough to have speed limits signposted
 			" and surface !~" + TextUtils.join("|", OsmTaggings.ANYTHING_UNPAVED) +
 			// neither private roads nor roads that are not for cars
@@ -80,8 +80,8 @@ public class AddMaxSpeed extends SimpleOverpassQuestType
 	{
 		boolean hasName = tags.containsKey("name");
 
-		if(hasName) return R.string.quest_maxspeed_name_title;
-		else return R.string.quest_maxspeed_title_short;
+		if(hasName) return R.string.quest_maxspeed_name_title2;
+		else return R.string.quest_maxspeed_title_short2;
 	}
 
 	@NonNull @Override public Countries getEnabledForCountries()

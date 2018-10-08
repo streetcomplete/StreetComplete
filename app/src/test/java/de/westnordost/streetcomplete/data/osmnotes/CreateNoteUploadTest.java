@@ -19,6 +19,7 @@ import de.westnordost.osmapi.notes.Note;
 import de.westnordost.osmapi.notes.NoteComment;
 import de.westnordost.osmapi.notes.NotesDao;
 import de.westnordost.streetcomplete.ApplicationConstants;
+import de.westnordost.streetcomplete.data.statistics.QuestStatisticsDao;
 import de.westnordost.streetcomplete.util.ImageUploader;
 
 import static org.mockito.Mockito.*;
@@ -30,6 +31,7 @@ public class CreateNoteUploadTest extends TestCase
 	private NotesDao notesDao;
 	private OsmNoteQuestDao osmNoteQuestDb;
 	private NoteDao noteDb;
+	private QuestStatisticsDao questStatisticsDb;
 	private ImageUploader imageUploader;
 
 	private CreateNoteUpload createNoteUpload;
@@ -43,9 +45,10 @@ public class CreateNoteUploadTest extends TestCase
 		osmNoteQuestDb = mock(OsmNoteQuestDao.class);
 		noteDb = mock(NoteDao.class);
 		imageUploader = mock(ImageUploader.class);
+		questStatisticsDb = mock(QuestStatisticsDao.class);
 
 		createNoteUpload = new CreateNoteUpload(createNoteDb, notesDao, noteDb, osmNoteQuestDb,
-				mapDataDao, new OsmNoteQuestType(), imageUploader);
+				mapDataDao, new OsmNoteQuestType(), questStatisticsDb, imageUploader);
 	}
 
 
@@ -161,7 +164,7 @@ public class CreateNoteUploadTest extends TestCase
 		assertNotNull(createNoteUpload.uploadCreateNote(createNote));
 
 		verify(notesDao).create(createNote.position,
-				"for https://www.openstreetmap.org/way/5 via "+ ApplicationConstants.USER_AGENT+":\n\njo ho");
+				"for https://osm.org/way/5 via "+ ApplicationConstants.USER_AGENT+":\n\njo ho");
 
 		verifyNoteInsertedIntoDb(createNote.id, note);
 	}
@@ -181,7 +184,7 @@ public class CreateNoteUploadTest extends TestCase
 		assertNotNull(createNoteUpload.uploadCreateNote(createNote));
 
 		verify(notesDao).create(createNote.position,
-				"Unable to answer \"What?\" for https://www.openstreetmap.org/way/5 via "+ ApplicationConstants.USER_AGENT+":\n\njo ho");
+				"Unable to answer \"What?\" for https://osm.org/way/5 via "+ ApplicationConstants.USER_AGENT+":\n\njo ho");
 
 		verifyNoteInsertedIntoDb(createNote.id, note);
 	}
@@ -239,6 +242,7 @@ public class CreateNoteUploadTest extends TestCase
 		verify(noteDb).put(note);
 		verify(osmNoteQuestDb).add(any(OsmNoteQuest.class));
 		verify(createNoteDb).delete(createNoteId);
+		verify(questStatisticsDb).addOneNote();
 	}
 
 	private void setUpThereIsANoteFor(CreateNote createNote, final Note note)

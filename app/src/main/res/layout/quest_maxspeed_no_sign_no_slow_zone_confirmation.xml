@@ -32,13 +32,14 @@
                 android:layout_toStartOf="@+id/imgSlowZone"
                 />
 
-            <ImageView
+            <include
                 android:id="@+id/imgSlowZone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_slow_zone"
                 android:layout_centerVertical="true"
-                android:layout_alignParentEnd="true"/>
+                android:layout_alignParentEnd="true"
+                layout="@layout/quest_maxspeed_zone_sign"
+                />
 
         </RelativeLayout>
 

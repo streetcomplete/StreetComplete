@@ -4,5 +4,5 @@ isLivingStreetKnown: true
 isSlowZoneKnown: true
 mobileCountryCode: 231
 officialLanguages: [sk]
-orchardProduces: [grape, apple, plum, tomatoe, peach, strawberry, chilli_pepper, sweet_pepper, apricot,
+orchardProduces: [grape, apple, plum, tomato, peach, strawberry, chilli_pepper, sweet_pepper, apricot,
   hop, cherry, walnut, pear, raspberry, chestnut]

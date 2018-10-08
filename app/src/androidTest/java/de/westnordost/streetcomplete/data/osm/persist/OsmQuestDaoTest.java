@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.persist;
 
+import static org.assertj.core.api.Assertions.*;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -214,6 +216,20 @@ public class OsmQuestDaoTest extends ApplicationDbTestCase
 		addToDaos(quest);
 
 		assertNull(dao.getNextNewAt(1,null));
+	}
+
+	public void testGetAllIds()
+	{
+		ElementGeometry geom = new ElementGeometry(new OsmLatLon(5,5));
+
+		OsmQuest q1 = createNewQuest(new TestQuestType(), 1, Element.Type.NODE, geom);
+		OsmQuest q2 = createNewQuest(new TestQuestType2(), 1, Element.Type.NODE, geom);
+		OsmQuest q3 = createNewQuest(new TestQuestType3(), 3, Element.Type.NODE, geom);
+		OsmQuest q4 = createNewQuest(new TestQuestType4(), 1, Element.Type.WAY, geom);
+		addToDaos(q1,q2,q3,q4);
+
+		List<Long> ids = dao.getAllIds(Element.Type.NODE, 1);
+		assertThat(ids).containsExactlyInAnyOrder(q1.getId(), q2.getId());
 	}
 
 	private void checkEqual(OsmQuest quest, OsmQuest dbQuest)

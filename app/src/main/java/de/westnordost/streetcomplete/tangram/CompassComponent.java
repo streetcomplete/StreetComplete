@@ -55,8 +55,6 @@ public class CompassComponent implements SensorEventListener
 		sensorThread = new HandlerThread("Compass Sensor Thread");
 		sensorThread.start();
 		sensorHandler = new Handler(sensorThread.getLooper());
-		dispatcherThread = new Thread(this::dispatchLoop, "Compass Dispatcher Thread");
-		dispatcherThread.start();
 	}
 
 	private float[] remapToDisplayRotation(float[] inR)
@@ -88,18 +86,21 @@ public class CompassComponent implements SensorEventListener
 	{
 		sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_UI, sensorHandler);
 		sensorManager.registerListener(this, magnetometer, SensorManager.SENSOR_DELAY_UI, sensorHandler);
+		dispatcherThread = new Thread(this::dispatchLoop, "Compass Dispatcher Thread");
+		dispatcherThread.start();
 	}
 
 	public void onPause()
 	{
 		sensorManager.unregisterListener(this);
+		dispatcherThread.interrupt();
+		dispatcherThread = null;
 	}
 
 	public void onDestroy()
 	{
 		listener = null;
 		sensorThread.quit();
-		dispatcherThread.interrupt();
 	}
 
 	@Override public void onAccuracyChanged(Sensor sensor, int accuracy)

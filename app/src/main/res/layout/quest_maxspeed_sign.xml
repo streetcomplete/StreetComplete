@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="112dp"
+    android:layout_height="112dp"
+    android:background="@drawable/background_maxspeed_sign"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    android:paddingTop="12dp"
+    android:paddingBottom="12dp"
+    android:gravity="center"
+    android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/maxSpeedInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#0fff"
+            android:textColor="@color/traffic_black"
+            android:inputType="number"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="40dp"
+            android:maxLength="3"
+            tools:text="120"/>
+
+        <Spinner
+            android:id="@+id/speedUnitSelect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-14dp"
+            android:visibility="gone"
+            tools:visibility="visible"
+            />
+
+</LinearLayout>

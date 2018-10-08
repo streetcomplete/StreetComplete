@@ -18,7 +18,7 @@ public class AddPostboxCollectionTimes extends SimpleOverpassQuestType
 
 	@Override protected String getTagFilters()
 	{
-		return "nodes with amenity=post_box and !collection_times and !note:collection_times and (access !~ private|no)";
+		return "nodes with amenity=post_box and !collection_times and collection_times:signed != no and (access !~ private|no)";
 	}
 
 	@Override public AbstractQuestAnswerFragment createForm()
@@ -31,7 +31,7 @@ public class AddPostboxCollectionTimes extends SimpleOverpassQuestType
 		boolean noTimes = answer.getBoolean(AddCollectionTimesForm.NO_TIMES_SPECIFIED);
 		if(noTimes)
 		{
-			changes.add("note:collection_times","no times specified on the box");
+			changes.add("collection_times:signed","no");
 		}
 		else
 		{

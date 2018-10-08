@@ -14,9 +14,8 @@ import javax.inject.Inject;
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.streetcomplete.R;
-import de.westnordost.streetcomplete.data.osm.Countries;
+import de.westnordost.streetcomplete.data.osm.AOsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.ElementGeometry;
-import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
@@ -27,7 +26,7 @@ import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 import de.westnordost.streetcomplete.quests.localized_name.data.PutRoadNameSuggestionsHandler;
 import de.westnordost.streetcomplete.quests.localized_name.data.RoadNameSuggestionsDao;
 
-public class AddRoadName implements OsmElementQuestType
+public class AddRoadName extends AOsmElementQuestType
 {
 	public static final double MAX_DIST_FOR_ROAD_NAME_SUGGESTION = 30; //m
 
@@ -44,7 +43,9 @@ public class AddRoadName implements OsmElementQuestType
 	/** @return overpass query string for creating the quests */
 	private static String getOverpassQuery(BoundingBox bbox)
 	{
-		return OverpassQLUtil.getGlobalOverpassBBox(bbox) + ROADS_WITHOUT_NAMES + "; out meta geom;";
+		return OverpassQLUtil.getGlobalOverpassBBox(bbox) +
+			ROADS_WITHOUT_NAMES + "; " +
+			OverpassQLUtil.getQuestPrintStatement();
 	}
 
 	/** @return overpass query string to get roads with names near roads that don't have names */
@@ -55,7 +56,7 @@ public class AddRoadName implements OsmElementQuestType
 				ROADS_WITH_NAMES + " -> .with_names;" +
 				"way.with_names(around.without_names:" +
 				MAX_DIST_FOR_ROAD_NAME_SUGGESTION + ");" +
-				"out meta geom;";
+				"out body geom;";
 	}
 
 	private final RoadNameSuggestionsDao roadNameSuggestionsDao;
@@ -140,13 +141,10 @@ public class AddRoadName implements OsmElementQuestType
 
 	@Override public String getCommitMessage() { return "Determine road names and types"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_street_name; }
-	@Override public int getTitle() { return R.string.quest_streetName_title; }
-	@Override public int getTitle(@NonNull Map<String,String> tags) {
+	@Override public int getTitle(@NonNull Map<String,String> tags)
+	{
 		boolean isPedestrian = "pedestrian".equals(tags.get("highway"));
 		if (isPedestrian) return R.string.quest_streetName_pedestrian_title;
 		else return R.string.quest_streetName_title;
 	}
-
-	@Override public int getDefaultDisabledMessage() { return 0; }
-	@NonNull @Override public Countries getEnabledForCountries() { return Countries.ALL; }
 }

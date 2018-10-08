@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/background_rectangular_sign_yellow"
+        android:padding="16dp"
+        android:id="@+id/meterInputSign">
+
+        <EditText
+            android:id="@+id/meterInput"
+            android:layout_width="96dp"
+            android:layout_height="wrap_content"
+            android:background="#0fff"
+            android:gravity="center"
+            android:inputType="numberDecimal"
+            android:maxLength="4"
+            android:textSize="38dp"
+            android:textStyle="bold"
+            tools:text="1.55" />
+
+        <TextView
+            android:layout_width="32dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/meterInput"
+            android:layout_toEndOf="@+id/meterInput"
+            android:gravity="center"
+            android:text="m"
+            android:textColor="@color/traffic_black"
+            android:textSize="36dp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/meterInput"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:src="@drawable/maxheight_canada_arrow"
+            tools:ignore="ContentDescription" />
+
+    </RelativeLayout>
+
+</RelativeLayout>
