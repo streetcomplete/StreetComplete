@@ -94,12 +94,16 @@ public class OsmNoteQuestChangesUploadTest extends TestCase
 		imagePaths.add("Never say");
 		quest.setImagePaths(imagePaths);
 
+		Note someNote = new Note();
+		someNote.id = 123;
 
+		when(osmDao.comment(anyLong(), anyString())).thenReturn(someNote);
 		when(imageUploader.upload(imagePaths)).thenReturn(Collections.singletonList("never"));
 
 		osmNoteQuestChangesUpload.uploadNoteChanges(quest);
 
 		verify(osmDao).comment(1, "blablub\n\nAttached photo(s):\nnever");
+		verify(imageUploader).activate(someNote.id);
 	}
 
 	private static OsmNoteQuest createQuest()

@@ -126,6 +126,7 @@ public class OsmQuestChangesUploadTest extends TestCase
 		MergedElementDao elementDb = mock(MergedElementDao.class);
 		OsmQuestDao questDb = mock(OsmQuestDao.class);
 		DownloadedTilesDao downloadedTilesDao = mock(DownloadedTilesDao.class);
+		OsmQuestGiver questGiver = mock(OsmQuestGiver.class);
 
 		MapDataDao mapDataDao = createMapDataDaoThatReportsConflictOnUploadAndNodeDeleted();
 
@@ -136,7 +137,7 @@ public class OsmQuestChangesUploadTest extends TestCase
 		when(prefs.getLong(Prefs.OSM_USER_ID, -1)).thenReturn(userId);
 
 		OsmQuestChangesUpload u = new OsmQuestChangesUpload(mapDataDao, questDb, elementDb, null,
-				null, null, changesetsDao, downloadedTilesDao, prefs, null);
+				null, null, changesetsDao, downloadedTilesDao, prefs, questGiver);
 
 		assertFalse(u.uploadQuestChange(changesetId, quest, element, false, false));
 		verify(questDb).delete(quest.getId());
@@ -185,6 +186,7 @@ public class OsmQuestChangesUploadTest extends TestCase
 		MergedElementDao elementDb = mock(MergedElementDao.class);
 		OsmQuestDao questDb = mock(OsmQuestDao.class);
 		DownloadedTilesDao downloadedTilesDao = mock(DownloadedTilesDao.class);
+		OsmQuestGiver questGiver = mock(OsmQuestGiver.class);
 
 		OpenChangesetsDao manageChangesetsDb = mock(OpenChangesetsDao.class);
 
@@ -194,7 +196,7 @@ public class OsmQuestChangesUploadTest extends TestCase
 		SharedPreferences prefs = createPreferencesForUser(userId);
 
 		OsmQuestChangesUpload u = new OsmQuestChangesUpload(mapDataDao, questDb, elementDb, null,
-				null, manageChangesetsDb, changesetsDao, downloadedTilesDao, prefs, null);
+				null, manageChangesetsDb, changesetsDao, downloadedTilesDao, prefs, questGiver);
 
 		assertFalse(u.uploadQuestChange(firstChangesetId, quest, element, false, false));
 
