@@ -22,21 +22,22 @@ import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
 import de.westnordost.streetcomplete.data.osm.tql.FiltersParser;
 import de.westnordost.streetcomplete.data.osm.tql.TagFilterExpression;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
+import de.westnordost.streetcomplete.util.Lazy;
 
 public class AddOneway extends AOsmElementQuestType
 {
 	private static final String TAG = "AddOneway";
 
+	private static final Lazy<TagFilterExpression> FILTER = new Lazy<>(() -> new FiltersParser().parse(
+		" ways with highway ~ " +
+		    "trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|" +
+			"unclassified|residential|living_street|pedestrian|track|road" +
+		" and !oneway and access !~ private|no and area != yes"
+	));
+
 	private final OverpassMapDataDao overpassMapDataDao;
 	private final WayTrafficFlowDao db;
 	private final TrafficFlowSegmentsDao trafficFlowSegmentsDao;
-
-	private static final TagFilterExpression FILTER = new FiltersParser().parse(
-		" ways with highway ~ " +
-			"service|living_street|residential|unclassified|tertiary|secondary|primary|trunk|" +
-			"road|tertiary_link|secondary_link|primary_link|trunk_link" +
-		" and !oneway and access !~ private|no and area != yes"
-	);
 
 	public AddOneway(OverpassMapDataDao overpassMapDataDao,
 					 TrafficFlowSegmentsDao trafficFlowSegmentsDao, WayTrafficFlowDao db)
@@ -65,7 +66,7 @@ public class AddOneway extends AOsmElementQuestType
 		{
 			if(geometry == null) return;
 			// filter the data as ImproveOSM data may be outdated or catching too much
-			if(!FILTER.matches(element)) return;
+			if(!FILTER.get().matches(element)) return;
 
 			Way way = (Way) element;
 			List<TrafficFlowSegment> segments = trafficDirectionMap.get(way.getId());
@@ -150,7 +151,7 @@ public class AddOneway extends AOsmElementQuestType
 
 	@Override public Boolean isApplicableTo(Element element)
 	{
-		return FILTER.matches(element) && db.isForward(element.getId()) != null;
+		return FILTER.get().matches(element) && db.isForward(element.getId()) != null;
 	}
 
 	@Override public void cleanMetadata()

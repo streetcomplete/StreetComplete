@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.quests.localized_name;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.text.TextUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,20 +24,21 @@ import de.westnordost.streetcomplete.data.osm.tql.TagFilterExpression;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 import de.westnordost.streetcomplete.quests.localized_name.data.PutRoadNameSuggestionsHandler;
 import de.westnordost.streetcomplete.quests.localized_name.data.RoadNameSuggestionsDao;
+import de.westnordost.streetcomplete.util.Lazy;
 
 public class AddRoadName extends AOsmElementQuestType
 {
 	public static final double MAX_DIST_FOR_ROAD_NAME_SUGGESTION = 30; //m
 
-	private static final String ROADS =	TextUtils.join("|", new String[]{
-			"living_street", "residential", "pedestrian", "primary", "secondary", "tertiary", "unclassified"
-	});
+	private static final String ROADS = "primary|secondary|tertiary|unclassified|residential|living_street|pedestrian";
 	private static final String ROADS_WITH_NAMES = "way[highway~\"^("+ROADS+")$\"][name]";
 	private static final String ROADS_WITHOUT_NAMES =
 			"way[highway~\"^("+ROADS+")$\"][!name][!ref][noname != yes][!junction][!area]";
 	// this must be the same as above but in tag filter expression syntax
-	private static final TagFilterExpression ROADS_WITHOUT_NAMES_TFE = new FiltersParser().parse(
-			"ways with highway~" + ROADS + " and !name and !ref and noname != yes and !junction and !area");
+	private static final Lazy<TagFilterExpression> ROADS_WITHOUT_NAMES_TFE =
+		new Lazy<>(() -> new FiltersParser().parse(
+			"ways with highway~" + ROADS + " and !name and !ref and noname != yes and !junction and !area"
+		));
 
 	/** @return overpass query string for creating the quests */
 	private static String getOverpassQuery(BoundingBox bbox)
@@ -136,7 +136,7 @@ public class AddRoadName extends AOsmElementQuestType
 
 	@Nullable @Override public Boolean isApplicableTo(Element element)
 	{
-		return ROADS_WITHOUT_NAMES_TFE.matches(element);
+		return ROADS_WITHOUT_NAMES_TFE.get().matches(element);
 	}
 
 	@Override public String getCommitMessage() { return "Determine road names and types"; }
