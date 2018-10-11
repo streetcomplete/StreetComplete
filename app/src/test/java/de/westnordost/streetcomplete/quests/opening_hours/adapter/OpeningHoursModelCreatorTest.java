@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.quests.opening_hours.model.OpeningWeekdays;
 import de.westnordost.streetcomplete.quests.opening_hours.model.TimeRange;
 import de.westnordost.streetcomplete.quests.opening_hours.model.Weekdays;
 
+@SuppressWarnings("unchecked")
 public class OpeningHoursModelCreatorTest extends TestCase
 {
 	private static final Weekdays MONDAY = new Weekdays(new boolean[]{true});
@@ -19,128 +20,137 @@ public class OpeningHoursModelCreatorTest extends TestCase
 	private static final Weekdays TUESDAY = new Weekdays(new boolean[]{false, true});
 
 	private static final TimeRange MORNING = new TimeRange(8*60,12*60);
+	private static final TimeRange MIDDAY = new TimeRange(10*60,16*60);
 	private static  TimeRange AFTERNOON = new TimeRange(14*60,18*60);
 
 	private static final OpeningWeekdaysRow MONDAY_MORNING = new OpeningWeekdaysRow(MONDAY, MORNING);
 
+	private static final CircularSection ALL_YEAR = new CircularSection(0,11);
+	private static final CircularSection JAN_JUN = new CircularSection(0,6);
+	private static final CircularSection JUL_DEC = new CircularSection(6,11);
+
 	public void testCopiesOpeningMonths()
 	{
 		List<OpeningMonthsRow> viewData = new ArrayList<>();
-		viewData.add(new OpeningMonthsRow(new CircularSection(0,6), MONDAY_MORNING));
-		viewData.add(new OpeningMonthsRow(new CircularSection(6,11), MONDAY_MORNING));
-		List<OpeningMonths> data = OpeningHoursModelCreator.create(viewData);
-		assertEquals(2, data.size());
-		assertEquals(viewData.get(0).months, data.get(0).months);
-		assertEquals(viewData.get(1).months, data.get(1).months);
-	}
+		viewData.add(new OpeningMonthsRow(JAN_JUN, MONDAY_MORNING));
+		viewData.add(new OpeningMonthsRow(JUL_DEC, MONDAY_MORNING));
+		List<OpeningMonths> actual = OpeningHoursModelCreator.create(viewData);
 
-	public void testCopiesWeekdays()
-	{
-		List<OpeningMonthsRow> viewData = create(
-			new OpeningWeekdaysRow(MONDAY, MORNING),
-			new OpeningWeekdaysRow(MONDAY_TUESDAY, AFTERNOON)
+		List<OpeningMonths> expected = months(
+			new OpeningMonths(JAN_JUN, clusters(weekdays(new OpeningWeekdays(MONDAY, times(MORNING))))),
+			new OpeningMonths(JUL_DEC, clusters(weekdays(new OpeningWeekdays(MONDAY, times(MORNING)))))
 		);
 
-		List<OpeningMonths> data = OpeningHoursModelCreator.create(viewData);
-		List<OpeningWeekdaysRow> owrs = viewData.get(0).weekdaysList;
-		assertEquals(1, data.size());
-		OpeningMonths om = data.get(0);
-		assertEquals(1, om.weekdaysClusters.size());
-		List<OpeningWeekdays> ows = om.weekdaysClusters.get(0);
-		assertEquals(owrs.get(0).weekdays, ows.get(0).weekdays);
-		assertEquals(owrs.get(1).weekdays, ows.get(1).weekdays);
-
-		assertEquals(1, ows.get(0).timeRanges.size());
-		assertEquals(owrs.get(0).timeRange, ows.get(0).timeRanges.get(0));
-		assertEquals(1, ows.get(1).timeRanges.size());
-		assertEquals(owrs.get(1).timeRange, ows.get(1).timeRanges.get(0));
+		assertEquals(expected, actual);
 	}
 
-	public void testMergesOpeningWeekdaysRowsOfSameDays()
+	public void testMergesOpeningWeekdaysRowsOfSameDay()
 	{
-		List<OpeningMonthsRow> viewData = create(
+		List<OpeningMonths> actual = create(
 			new OpeningWeekdaysRow(MONDAY, MORNING),
 			new OpeningWeekdaysRow(MONDAY, AFTERNOON)
 		);
 
-		List<OpeningMonths> oms = OpeningHoursModelCreator.create(viewData);
-		assertEquals(1, oms.size());
-		OpeningMonths om = oms.get(0);
-		assertEquals(1, om.weekdaysClusters.size());
-		List<OpeningWeekdays> weekdays = om.weekdaysClusters.get(0);
-		assertEquals(1, weekdays.size());
-		OpeningWeekdays ow = weekdays.get(0);
-		List<OpeningWeekdaysRow> owrs = viewData.get(0).weekdaysList;
-		assertEquals(owrs.get(0).timeRange, ow.timeRanges.get(0));
-		assertEquals(owrs.get(1).timeRange, ow.timeRanges.get(1));
+		List<OpeningMonths> expected = months(new OpeningMonths(ALL_YEAR, clusters(
+			weekdays(new OpeningWeekdays(MONDAY, times(MORNING, AFTERNOON)))
+		)));
+
+		assertEquals(expected, actual);
 	}
 
 	public void testDoesNotClusterDifferentWeekdays()
 	{
-		List<OpeningMonthsRow> viewData = create(
+		List<OpeningMonths> actual = create(
 			new OpeningWeekdaysRow(MONDAY, MORNING),
 			new OpeningWeekdaysRow(TUESDAY, AFTERNOON)
 		);
 
-		List<OpeningMonths> oms = OpeningHoursModelCreator.create(viewData);
-		assertEquals(1, oms.size());
-		OpeningMonths om = oms.get(0);
-		assertEquals(2, om.weekdaysClusters.size());
+		List<OpeningMonths> expected = months(new OpeningMonths(ALL_YEAR, clusters(
+			weekdays(new OpeningWeekdays(MONDAY, times(MORNING))),
+			weekdays(new OpeningWeekdays(TUESDAY, times(AFTERNOON)))
+		)));
+
+		assertEquals(expected, actual);
 	}
 
 	public void testClustersOverlappingWeekdays()
 	{
-		List<OpeningMonthsRow> viewData = create(
+		List<OpeningMonths> actual = create(
 			new OpeningWeekdaysRow(MONDAY, MORNING),
 			new OpeningWeekdaysRow(MONDAY_TUESDAY, AFTERNOON)
 		);
 
-		List<OpeningMonths> oms = OpeningHoursModelCreator.create(viewData);
-		assertEquals(1, oms.size());
-		OpeningMonths om = oms.get(0);
-		assertEquals(1, om.weekdaysClusters.size());
+		List<OpeningMonths> expected = months(new OpeningMonths(ALL_YEAR, clusters(
+			weekdays(
+				new OpeningWeekdays(MONDAY, times(MORNING)),
+				new OpeningWeekdays(MONDAY_TUESDAY, times(AFTERNOON))
+			)
+		)));
+
+		assertEquals(expected, actual);
 	}
 
 	public void testDoesNotClusterIntersectingTimes()
 	{
-		List<OpeningMonthsRow> viewData = create(
+		List<OpeningMonths> actual = create(
 			new OpeningWeekdaysRow(MONDAY, MORNING),
-			new OpeningWeekdaysRow(MONDAY_TUESDAY, MORNING)
+			new OpeningWeekdaysRow(MONDAY_TUESDAY, MIDDAY)
 		);
 
-		List<OpeningMonths> oms = OpeningHoursModelCreator.create(viewData);
-		assertEquals(1, oms.size());
-		OpeningMonths om = oms.get(0);
-		assertEquals(2, om.weekdaysClusters.size());
+		List<OpeningMonths> expected = months(new OpeningMonths(ALL_YEAR, clusters(
+			weekdays(new OpeningWeekdays(MONDAY, times(MORNING))),
+			weekdays(new OpeningWeekdays(MONDAY_TUESDAY, times(MIDDAY)))
+		)));
+
+		assertEquals(expected, actual);
 	}
 
 	public void testDoesNotClusterIntersectingTimesInCluster()
 	{
-		List<OpeningMonthsRow> viewData = create(
+		List<OpeningMonths> actual = create(
 			new OpeningWeekdaysRow(MONDAY, MORNING),
 			new OpeningWeekdaysRow(MONDAY_TUESDAY, AFTERNOON),
-			new OpeningWeekdaysRow(TUESDAY, AFTERNOON)
+			new OpeningWeekdaysRow(TUESDAY, MIDDAY)
 		);
 
-		List<OpeningMonths> oms = OpeningHoursModelCreator.create(viewData);
-		assertEquals(1, oms.size());
-		OpeningMonths om = oms.get(0);
-		List<List<OpeningWeekdays>> clusters = om.weekdaysClusters;
-		assertEquals(2, clusters.size());
-		assertEquals(2, clusters.get(0).size());
-		assertEquals(MONDAY, clusters.get(0).get(0).weekdays);
-		assertEquals(MONDAY_TUESDAY, clusters.get(0).get(1).weekdays);
-		assertEquals(1, clusters.get(1).size());
-		assertEquals(TUESDAY, clusters.get(1).get(0).weekdays);
+		List<OpeningMonths> expected = months(new OpeningMonths(ALL_YEAR, clusters(
+			weekdays(
+				new OpeningWeekdays(MONDAY, times(MORNING)),
+				new OpeningWeekdays(MONDAY_TUESDAY, times(AFTERNOON))),
+			weekdays(
+				new OpeningWeekdays(TUESDAY, times(MIDDAY)))
+		)));
+
+		assertEquals(expected, actual);
 	}
 
-	private static List<OpeningMonthsRow> create(OpeningWeekdaysRow ... rows)
+	private static List<OpeningMonths> create(OpeningWeekdaysRow ... rows)
 	{
 		List<OpeningMonthsRow> viewData = new ArrayList<>();
 		OpeningMonthsRow omr = new OpeningMonthsRow();
 		List<OpeningWeekdaysRow> owrs = omr.weekdaysList;
 		owrs.addAll(Arrays.asList(rows));
 		viewData.add(omr);
-		return viewData;
+		return OpeningHoursModelCreator.create(viewData);
+	}
+
+	private static List<OpeningMonths> months(OpeningMonths ... ranges)
+	{
+		return Arrays.asList(ranges);
+	}
+
+	private static List<TimeRange> times(TimeRange ... ranges)
+	{
+		return Arrays.asList(ranges);
+	}
+
+	private static List<OpeningWeekdays> weekdays(OpeningWeekdays ... ranges)
+	{
+		return Arrays.asList(ranges);
+	}
+
+	private static List<List<OpeningWeekdays>> clusters(List<OpeningWeekdays> ... ranges)
+	{
+		return Arrays.asList(ranges);
 	}
 }

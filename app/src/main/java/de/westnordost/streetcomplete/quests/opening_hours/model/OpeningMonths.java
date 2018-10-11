@@ -73,4 +73,19 @@ public class OpeningMonths
 		}
 		return false;
 	}
+
+	@Override public boolean equals(Object o)
+	{
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		OpeningMonths that = (OpeningMonths) o;
+
+		return months.equals(that.months) && weekdaysClusters.equals(that.weekdaysClusters);
+	}
+
+	@Override public int hashCode()
+	{
+		return 31 *  months.hashCode() + weekdaysClusters.hashCode();
+	}
 }

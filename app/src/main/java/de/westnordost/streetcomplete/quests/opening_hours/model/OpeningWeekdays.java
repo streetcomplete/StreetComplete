@@ -37,4 +37,18 @@ public class OpeningWeekdays
 		}
 		return false;
 	}
+
+	@Override public boolean equals(Object o)
+	{
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		OpeningWeekdays that = (OpeningWeekdays) o;
+		return weekdays.equals(that.weekdays) && timeRanges.equals(that.timeRanges);
+	}
+
+	@Override public int hashCode()
+	{
+		return 31 * weekdays.hashCode() + timeRanges.hashCode();
+	}
 }
