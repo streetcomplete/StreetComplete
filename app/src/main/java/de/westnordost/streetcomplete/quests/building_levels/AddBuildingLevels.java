@@ -25,8 +25,9 @@ public class AddBuildingLevels extends SimpleOverpassQuestType
 							"school|civic|college|university|public|hospital|kindergarten|transportation|train_station|hotel|"+
 							"retail|commercial|office|warehouse|industrial|manufacture|parking|" +
 							"farm|farm_auxiliary|barn|" +
-		       " and !building:levels and !height and !building:height";
-		// building:height is undocumented, but used the same way as height and currently over 50k times
+			" and !building:levels and !height and !building:height" +
+			// building:height is undocumented, but used the same way as height and currently over 50k times
+			"  and !man_made and location!=underground";
 	}
 
 	public AbstractQuestAnswerFragment createForm()
