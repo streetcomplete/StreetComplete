@@ -21,8 +21,8 @@ android {
         applicationId "de.westnordost.streetcomplete"
         minSdkVersion 17
         targetSdkVersion 27
-        versionCode 802
-        versionName "8.1"
+        versionCode 803
+        versionName "8.2"
         testInstrumentationRunner "android.test.InstrumentationTestRunner"
         buildConfigField "String", "MAPZEN_API_KEY", MAPZEN_API_KEY
     }
