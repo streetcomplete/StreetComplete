@@ -318,13 +318,32 @@ public abstract class AOsmQuestChangesUpload
 		Element copy = copyElement(element, element.getVersion());
 
 		StringMapChanges changes = quest.getChanges();
-		if(changes.hasConflictsTo(copy.getTags()))
+		try
+		{
+			changes.applyTo(copy.getTags());
+		}
+		catch (IllegalStateException e)
 		{
 			Log.d(TAG, "Dropping quest " + getQuestStringForLog(quest) +
-					" because there has been a conflict while applying the changes");
+				" because there has been a conflict while applying the changes");
 			return null;
 		}
-		changes.applyTo(copy.getTags());
+		catch (IllegalArgumentException e)
+		{
+			/* There is a max key/value length limit of 255 characters in OSM. If we reach this
+			   point, it means the UI did permit an input of more than that. So, we have to catch
+			   this here latest.
+			   This is a warning because the UI should prevent this in the first place, at least
+			   for free-text input. For structured input, like opening hours, it is another matter
+			   because it's awkward to explain to a non-technical user this technical limitation
+
+			   See also https://github.com/openstreetmap/openstreetmap-website/issues/2025
+			  */
+			Log.w(TAG, "Dropping quest " + getQuestStringForLog(quest) +
+				" because a key or value is too long for OSM", e);
+			return null;
+		}
+
 		return copy;
 	}
 
