@@ -6,6 +6,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import javax.inject.Inject;
 
+import de.westnordost.osmapi.common.errors.OsmNotFoundException;
 import de.westnordost.streetcomplete.data.QuestStatus;
 import de.westnordost.osmapi.common.errors.OsmConflictException;
 import de.westnordost.osmapi.map.data.LatLon;
@@ -94,7 +95,7 @@ public class OsmNoteQuestChangesUpload
 
 			return newNote;
 		}
-		catch(OsmConflictException e)
+		catch(OsmNotFoundException | OsmConflictException e)
 		{
 			// someone else already closed the note -> our contribution is probably worthless. Delete
 			questDB.delete(quest.getId());
