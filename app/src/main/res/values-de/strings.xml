@@ -601,12 +601,12 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_maxheight_height_restrictor_title">"Was ist die Durchfahrtshöhe hier?"</string>
     <string name="quest_maxheight_tunnel_title">"Was ist die Durchfahrtshöhe dieses Tunnels?"</string>
     <string name="quest_maxheight_answer_noSign">"Es gibt kein Schild"</string>
-    <string name="quest_maxheight_answer_noSign_question">"Ist denn locker für selbst die höchsten Lastwagen genug Platz um drunter durchzufahren? (mindestens etwa 4,5m)"</string>
+    <string name="quest_maxheight_answer_noSign_question">"Ist selbst für die höchsten Lastwagen mehr als genug Platz, um darunter durchzufahren? (mindestens etwa 4,5m)"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Diese Höhe sieht unplausibel aus. Bist du sicher, dass sie korrekt ist?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_closed2">"Geschlossen von %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_reopen2">"Wieder geöffnet von %1$s, %2$s"</string>
-    <string name="quest_noteDiscussion_hide2">"Versteckt von %1$s, %2$s"</string>
+    <string name="quest_noteDiscussion_hide2">"Verborgen von %1$s, %2$s"</string>
     <string name="quest_railway_crossing_barrier_title">"Wie ist dieser Bahnübergang beschrankt?"</string>
     <string name="quest_railway_crossing_barrier_none">"Garnicht"</string>
     <string name="privacy_html_image_upload2">"&lt;p&gt;Fotos, die an Notizen angehängt werden, werden auf meinen Server hochgeladen und einige Tage nachdem die Notiz geschlossen wurde, gelöscht. Ihre Metadaten werden vor dem Hochladen entfernt.&lt;/p&gt;"</string>

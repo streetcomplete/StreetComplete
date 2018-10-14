@@ -604,4 +604,5 @@ Per example 1,3 o 2-6."</string>
     <string name="quest_railway_crossing_barrier_none">"No ho està"</string>
     <string name="privacy_html_image_upload2">"&lt;p&gt;Les fotografies que adjunteu s'envien al meu servidor i se suprimeixen uns dies després que la nota s'ha resolt. Les metadades dels fitxers s'eliminen abans de pujar-los.&lt;/p&gt;"</string>
     <string name="action_deselect_all">"Deseleccionar tot"</string>
+    <string name="quest_buildingType_retail_description">"incloent-hi els edificis de restaurants, cafès..."</string>
 </resources>

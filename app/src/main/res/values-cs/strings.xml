@@ -655,4 +655,5 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_railway_crossing_barrier_none">"Není"</string>
     <string name="privacy_html_image_upload2">"&lt;p&gt;Fotografie připojené k poznámce jsou nahrané na můj server a smazány několik dnů po vyřešení poznámky. Metadata fotografií jsou odstraněna před jejich nahráním.&lt;/p&gt;"</string>
     <string name="action_deselect_all">"Odznačit vše"</string>
+    <string name="quest_buildingType_retail_description">"včetně budov pro restaurace, kavárny, ..."</string>
 </resources>

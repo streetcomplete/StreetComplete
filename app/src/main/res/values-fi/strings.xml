@@ -660,4 +660,5 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
     <string name="quest_railway_crossing_barrier_none">"Ei ole"</string>
     <string name="privacy_html_image_upload2">"&lt;p&gt;Liittämäsi kuvat ladataan palvelimelleni ja poistetaan muutamien päivien sisällä huomatuksen ratkaisusta. Kuvien  metadata poistetaan ennen latausta.&lt;/p&gt;"</string>
     <string name="action_deselect_all">"Poista kaikki valinta"</string>
+    <string name="quest_buildingType_retail_description">"Sisältää ravintolat, kahvilat, yms kaupalliset rakennukset"</string>
 </resources>

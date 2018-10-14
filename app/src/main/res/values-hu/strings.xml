@@ -648,4 +648,12 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="quest_maxheight_answer_noSign_question">"Van-e elég hely alatta akár a legmagasabb teherautóknak is (legalább 4,5 m)?"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Ez a magasság valószínűtlen. Biztosan helyes?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
+    <string name="quest_noteDiscussion_closed2">"Lezárta %1$s, %2$s"</string>
+    <string name="quest_noteDiscussion_reopen2">"Újra megnyitotta %1$s, %2$s"</string>
+    <string name="quest_noteDiscussion_hide2">"Elrejtette %1$s, %2$s"</string>
+    <string name="quest_railway_crossing_barrier_title">"Hogyan van biztosítva ez a vasúti átjáró?"</string>
+    <string name="quest_railway_crossing_barrier_none">"Nincs biztosítva"</string>
+    <string name="privacy_html_image_upload2">"&lt;p&gt;A jegyzethez csatolt fényképek a mi szerverünkre vannak feltöltve; metaadataikat a feltöltés előtt eltávolítjuk. A jegyzet megoldása után pár nappal a fényképek törlődnek.&lt;/p&gt;"</string>
+    <string name="action_deselect_all">"Kijelölés megszüntetése"</string>
+    <string name="quest_buildingType_retail_description">"többek között éttermek, kávéházak stb. épületei"</string>
 </resources>

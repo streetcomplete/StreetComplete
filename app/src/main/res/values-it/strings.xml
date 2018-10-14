@@ -600,11 +600,12 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_maxheight_answer_noSign_question">"C’è spazio sufficiente per far passare anche il più alto dei camion (almeno 4,5 metri / 15 piedi)?"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Questa altezza sembra irreale. Sicuro che sia corretta?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
-    <string name="quest_noteDiscussion_closed2">"Chiuso da %1$s, %2$s"</string>
-    <string name="quest_noteDiscussion_reopen2">"Riaperto da %1$s, %2$s"</string>
+    <string name="quest_noteDiscussion_closed2">"Chiusa da %1$s, %2$s"</string>
+    <string name="quest_noteDiscussion_reopen2">"Riaperta da %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_hide2">"Nascosto da %1$s, %2$s"</string>
     <string name="quest_railway_crossing_barrier_title">"Com'è protetto l'attraversamento ferroviario?"</string>
     <string name="quest_railway_crossing_barrier_none">"Non lo è"</string>
     <string name="privacy_html_image_upload2">"&lt;p&gt;Le foto che alleghi a una nota sono caricate sul mio server e cancellate alcuni giorni dopo che la nota è stata risolta. I meta-dati vengono eliminati prima del caricamento.&lt;/p&gt;"</string>
     <string name="action_deselect_all">"Deselezionare tutti"</string>
+    <string name="quest_buildingType_retail_description">"inclusi edifici per ristoranti, bar, etc."</string>
 </resources>

@@ -607,4 +607,5 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_railway_crossing_barrier_none">"Ez dago babestuta"</string>
     <string name="privacy_html_image_upload2">"&lt;p&gt;Ohar batetara gehitzen dituzun argazkiak nire zerbitzarira igotzen dira eta oharra ebatzi eta egun batzuetara ezabatzen dira. Igo aurretik metadatuak kentzen zaizkie.&lt;/p&gt;"</string>
     <string name="action_deselect_all">"Desautatu guztiak"</string>
+    <string name="quest_buildingType_retail_description">"jatetxe, kafetegi eta abarrentzako eraikinak barne"</string>
 </resources>
