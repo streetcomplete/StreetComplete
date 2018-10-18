@@ -34,8 +34,8 @@ public class AddWheelchairAccessBusiness extends SimpleOverpassQuestType
 				"cinema", "nightclub", "bank",
 				"bureau_de_change",	"money_transfer", "post_office", "library",
 				"courthouse", "embassy", "car_wash", "car_rental",
-				"marketplace", "fuel", "driving_school", "dentist",
-				"doctors", "clinic", "pharmacy", "veterinary",
+				"marketplace", "fuel", "driving_school",
+				"doctors", "clinic", "pharmacy", "veterinary", "dentist",
 				"place_of_worship", "townhall", "theatre", "casino", "internet_cafe"};
 
 		String[] tourism = {
