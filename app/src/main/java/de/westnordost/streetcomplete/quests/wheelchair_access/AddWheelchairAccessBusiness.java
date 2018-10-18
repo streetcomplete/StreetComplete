@@ -31,8 +31,8 @@ public class AddWheelchairAccessBusiness extends SimpleOverpassQuestType
 		String[] amenities = {
 				"restaurant", "cafe", "ice_cream", "fast_food",
 				"bar", "pub", "biergarten", "food_court",
-				"cinema", "nightclub", "bank",
-				"bureau_de_change",	"money_transfer", "post_office", "library",
+				"cinema", "library", "nightclub",
+				"bank", "bureau_de_change",	"money_transfer", "post_office",
 				"courthouse", "embassy", "car_wash", "car_rental",
 				"marketplace", "fuel", "driving_school",
 				"doctors", "clinic", "pharmacy", "veterinary", "dentist",
