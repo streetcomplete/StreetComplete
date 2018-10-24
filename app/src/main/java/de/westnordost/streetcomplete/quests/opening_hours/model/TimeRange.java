@@ -2,6 +2,8 @@ package de.westnordost.streetcomplete.quests.opening_hours.model;
 
 import android.annotation.SuppressLint;
 
+import java.util.Locale;
+
 /** A time range from [start,end).
  */
 public class TimeRange extends CircularSection
@@ -70,8 +72,8 @@ public class TimeRange extends CircularSection
 		return sb.toString();
 	}
 
-	@SuppressLint("DefaultLocale") private static String timeOfDayToString(int minutes)
+	private static String timeOfDayToString(int minutes)
 	{
-		return String.format("%02d:%02d", minutes / 60, minutes % 60);
+		return String.format(Locale.US, "%02d:%02d", minutes / 60, minutes % 60);
 	}
 }
