@@ -24,7 +24,7 @@ public class AddTactilePavingCrosswalk extends SimpleOverpassQuestType
 
 	@Override protected String getTagFilters()
 	{
-		return "nodes with highway=crossing and !tactile_paving";
+		return "nodes with highway=crossing and !tactile_paving and foot!=no";
 	}
 
 	public AbstractQuestAnswerFragment createForm()
