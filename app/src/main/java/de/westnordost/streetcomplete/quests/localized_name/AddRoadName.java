@@ -33,11 +33,11 @@ public class AddRoadName extends AOsmElementQuestType
 	private static final String ROADS = "primary|secondary|tertiary|unclassified|residential|living_street|pedestrian";
 	private static final String ROADS_WITH_NAMES = "way[highway~\"^("+ROADS+")$\"][name]";
 	private static final String ROADS_WITHOUT_NAMES =
-			"way[highway~\"^("+ROADS+")$\"][!name][!ref][noname != yes][!junction][!area]";
+			"way[highway~\"^("+ROADS+")$\"][!name][!ref][noname != yes][!junction][area != yes]";
 	// this must be the same as above but in tag filter expression syntax
 	private static final Lazy<TagFilterExpression> ROADS_WITHOUT_NAMES_TFE =
 		new Lazy<>(() -> new FiltersParser().parse(
-			"ways with highway~" + ROADS + " and !name and !ref and noname != yes and !junction and !area"
+			"ways with highway~" + ROADS + " and !name and !ref and noname != yes and !junction and area != yes"
 		));
 
 	/** @return overpass query string for creating the quests */
