@@ -35,7 +35,6 @@ public class AddOpeningHoursForm extends AbstractQuestFormAnswerFragment
 	private static final String	OPENING_HOURS_DATA = "oh_data",
 								IS_ADD_MONTHS_MODE = "oh_add_months";
 
-	private boolean isAlsoAddingMonths;
 	private AddOpeningHoursAdapter openingHoursAdapter;
 
 	@Inject Serializer serializer;
@@ -62,6 +61,7 @@ public class AddOpeningHoursForm extends AbstractQuestFormAnswerFragment
 	private void initOpeningHoursAdapter(View contentView, Bundle savedInstanceState)
 	{
 		ArrayList<OpeningMonthsRow> viewData;
+		boolean isAlsoAddingMonths;
 		if(savedInstanceState != null)
 		{
 			viewData = serializer.toObject(savedInstanceState.getByteArray(OPENING_HOURS_DATA),ArrayList.class);
@@ -89,12 +89,12 @@ public class AddOpeningHoursForm extends AbstractQuestFormAnswerFragment
 		addOtherAnswer(R.string.quest_openingHours_no_sign, this::confirmNoSign);
 		addOtherAnswer(R.string.quest_openingHours_answer_no_regular_opening_hours, this::showInputCommentDialog);
 		addOtherAnswer(R.string.quest_openingHours_answer_247, this::showConfirm24_7Dialog);
-		addOtherAnswer(R.string.quest_openingHours_answer_seasonal_opening_hours, this::changeToMonthsMode);
+		addOtherAnswer(R.string.quest_openingHours_answer_seasonal_opening_hours, () -> openingHoursAdapter.changeToMonthsMode());
 	}
 
 	private void onClickAddButton(View v)
 	{
-		if(!isAlsoAddingMonths)
+		if(!openingHoursAdapter.isDisplayMonths())
 		{
 			openingHoursAdapter.addNewWeekdays();
 		}
@@ -117,7 +117,7 @@ public class AddOpeningHoursForm extends AbstractQuestFormAnswerFragment
 	{
 		super.onSaveInstanceState(outState);
 		outState.putByteArray(OPENING_HOURS_DATA, serializer.toBytes(openingHoursAdapter.getViewData()));
-		outState.putBoolean(IS_ADD_MONTHS_MODE, isAlsoAddingMonths);
+		outState.putBoolean(IS_ADD_MONTHS_MODE, openingHoursAdapter.isDisplayMonths());
 	}
 
 	@Override protected void onClickOk()
@@ -181,12 +181,6 @@ public class AddOpeningHoursForm extends AbstractQuestFormAnswerFragment
 			})
 			.setNegativeButton(R.string.quest_generic_confirmation_no, null)
 			.show();
-	}
-
-	private void changeToMonthsMode()
-	{
-		isAlsoAddingMonths = true;
-		openingHoursAdapter.changeToMonthsMode();
 	}
 
 	@Override public boolean isFormComplete() { return !getOpeningHoursString().isEmpty(); }
