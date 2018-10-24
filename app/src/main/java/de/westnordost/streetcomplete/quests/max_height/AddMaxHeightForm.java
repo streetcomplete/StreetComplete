@@ -181,7 +181,7 @@ public class AddMaxHeightForm extends AbstractQuestFormAnswerFragment
 		Height height = getHeightFromInput();
 		if(height == null) return false;
 		double m = height.getInMeters();
-		return m > 6 || m < 2;
+		return m > 6 || m < 1.9;
 	}
 
 	private void applyMaxHeightFormAnswer()
