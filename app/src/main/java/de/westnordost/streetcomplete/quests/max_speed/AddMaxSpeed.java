@@ -33,7 +33,8 @@ public class AddMaxSpeed extends SimpleOverpassQuestType
 			// neither private roads nor roads that are not for cars
 			" and motor_vehicle !~ private|no" +
 			" and vehicle !~ private|no" +
-			" and (access !~ private|no or (foot and foot !~ private|no))";
+			" and (access !~ private|no or (foot and foot !~ private|no))" +
+			" and area != yes";
 	}
 
 	@Override public AbstractQuestAnswerFragment createForm()
