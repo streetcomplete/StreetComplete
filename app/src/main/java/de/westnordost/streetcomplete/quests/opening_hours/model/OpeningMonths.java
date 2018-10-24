@@ -48,7 +48,7 @@ public class OpeningMonths
 				{
 					if (!firstHours) result.append(",");
 					else firstHours = false;
-					result.append(timeRange.toStringUsing("-"));
+					result.append(timeRange.toStringUsing(Locale.US, "-"));
 				}
 			}
 		}

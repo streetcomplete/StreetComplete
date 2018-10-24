@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.quests.postbox_collection_times;
 
-import android.annotation.SuppressLint;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -52,7 +51,7 @@ public class CollectionTimesAdapter extends RecyclerView.Adapter<CollectionTimes
 			{
 				result.append(",");
 			}
-			result.append(timeOfDayToString(times.minutes));
+			result.append(timeOfDayToString(Locale.US, times.minutes));
 
 			lastWeekdays = times.weekdays;
 		}
@@ -152,7 +151,7 @@ public class CollectionTimesAdapter extends RecyclerView.Adapter<CollectionTimes
 					notifyItemChanged(getAdapterPosition());
 				});
 			});
-			hoursText.setText(timeOfDayToString(times.minutes));
+			hoursText.setText(timeOfDayToString(Locale.getDefault(), times.minutes));
 			hoursText.setOnClickListener(v ->
 			{
 				openSetTimeDialog(times.minutes, minutes ->
@@ -164,9 +163,9 @@ public class CollectionTimesAdapter extends RecyclerView.Adapter<CollectionTimes
 		}
 	}
 
-	private static String timeOfDayToString(int minutes)
+	private static String timeOfDayToString(Locale locale, int minutes)
 	{
-		return String.format(Locale.US, "%02d:%02d", minutes / 60, minutes % 60);
+		return String.format(locale, "%02d:%02d", minutes / 60, minutes % 60);
 	}
 
 	private @NonNull Weekdays getWeekdaysSuggestion(boolean isFirst)

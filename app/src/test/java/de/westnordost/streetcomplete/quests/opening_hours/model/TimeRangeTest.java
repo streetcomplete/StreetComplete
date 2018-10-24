@@ -2,6 +2,8 @@ package de.westnordost.streetcomplete.quests.opening_hours.model;
 
 import junit.framework.TestCase;
 
+import java.util.Locale;
+
 public class TimeRangeTest extends TestCase
 {
 	public void testIntersect()
@@ -45,7 +47,7 @@ public class TimeRangeTest extends TestCase
 	{
 		TimeRange openEnd = new TimeRange(10,80, true);
 		assertEquals("00:10-01:20+", openEnd.toString());
-		assertEquals("00:10 till 01:20+", openEnd.toStringUsing(" till "));
+		assertEquals("00:10 till 01:20+", openEnd.toStringUsing(Locale.US, " till "));
 		assertEquals("00:00+", new TimeRange(0,0,true).toString());
 	}
 }

@@ -12,6 +12,7 @@ import android.widget.TextView;
 import java.text.DateFormatSymbols;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.meta.CountryInfo;
@@ -344,7 +345,7 @@ public class AddOpeningHoursAdapter extends RecyclerView.Adapter
 					notifyItemChanged(getAdapterPosition());
 				});
 			});
-			hoursText.setText(data.timeRange.toStringUsing("–"));
+			hoursText.setText(data.timeRange.toStringUsing(Locale.getDefault(), "–"));
 			hoursText.setOnClickListener(v ->
 			{
 				openSetTimeRangeDialog(data.timeRange, timeRange ->
