@@ -263,8 +263,6 @@ public class MainActivity extends AppCompatActivity implements
 				new IntentFilter(LocationRequestFragment.ACTION_FINISHED));
 
 		questController.onStart(this);
-		questAutoSyncer.onStart();
-		questAutoSyncer.triggerAutoUpload();
 
 		downloadProgressBar.setAlpha(0f);
 		downloadServiceIsBound = bindService(new Intent(this, QuestDownloadService.class),
@@ -282,9 +280,18 @@ public class MainActivity extends AppCompatActivity implements
 		}
 	}
 
+	@Override protected void onResume()
+	{
+		super.onResume();
+		questAutoSyncer.onResume();
+		questAutoSyncer.triggerAutoUpload();
+	}
+
 	@Override public void onPause()
 	{
 		super.onPause();
+		questAutoSyncer.onPause();
+
 		LatLon pos = mapFragment.getPosition();
 		prefs.edit()
 			.putLong(Prefs.MAP_LATITUDE, Double.doubleToRawLongBits(pos.getLatitude()))
@@ -302,7 +309,6 @@ public class MainActivity extends AppCompatActivity implements
 		unregisterReceiver(locationAvailabilityReceiver);
 
 		questController.onStop();
-		questAutoSyncer.onStop();
 
 		if (downloadServiceIsBound) unbindService(downloadServiceConnection);
 		if (downloadService != null)

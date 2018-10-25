@@ -57,13 +57,13 @@ public class QuestAutoSyncer implements LocationListener, LostApiClient.Connecti
 		lostApiClient = new LostApiClient.Builder(context).addConnectionCallbacks(this).build();
 	}
 
-	public void onStart()
+	public void onResume()
 	{
 		updateConnectionState();
 		context.registerReceiver(connectivityReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
 	}
 
-	public void onStop()
+	public void onPause()
 	{
 		stopPositionTracking();
 		context.unregisterReceiver(connectivityReceiver);
