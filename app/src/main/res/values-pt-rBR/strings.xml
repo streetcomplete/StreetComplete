@@ -172,8 +172,8 @@ As informações inseridas são adicionadas diretamente ao OpenStreetMap em seu 
     <string name="crash_compose_email">"Compor e-mail"</string>
     <string name="no_email_client">"Você não tem nenhum cliente de email instalado."</string>
     <string name="pref_title_keep_screen_on">"Manter a tela ligada"</string>
-    <string name="download_server_error">"Erro de conexão buscando missões.  Tente novamente mais tarde."</string>
-    <string name="upload_server_error">"Erro de conexão subindo respostas.  Tente novamente mais tarde."</string>
+    <string name="download_server_error">"Erro de conexão buscando missões. Tente novamente mais tarde."</string>
+    <string name="upload_server_error">"Erro de conexão subindo respostas. Tente novamente mais tarde."</string>
     <string name="quest_generic_hasFeature_yes">"Sim"</string>
     <string name="quest_generic_hasFeature_no">"Não"</string>
     <string name="quest_busStopShelter_title">"Essa parada de ônibus tem abrigo?"</string>
@@ -274,7 +274,7 @@ Caso contrário, pode baixar outro teclado na loja de aplicativos. Alguns dos te
     <string name="quest_fireHydrant_type_underground">"Subterrâneo"</string>
     <string name="quest_fireHydrant_type_wall">"Parede"</string>
     <string name="quest_fireHydrant_type_pond">"Açude"</string>
-    <string name="credits_contributors">"Veja a lista completa em &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;no GitHub&lt;/a&gt;. "</string>
+    <string name="credits_contributors">"Veja a lista completa &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;no GitHub&lt;/a&gt;. "</string>
     <string name="credits_translations">"Para a lista completa veja o &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;projeto no POEditor&lt;/a&gt;. "</string>
     <string name="credits_translations_title">"Traduções"</string>
     <string name="credits_contributors_title">"Contribuidores de código"</string>
@@ -334,10 +334,10 @@ Caso contrário, pode baixar outro teclado na loja de aplicativos. Alguns dos te
     <string name="quest_way_lit_title">"Este trecho de caminho é iluminado?"</string>
     <string name="quest_way_lit_named_title">"%s é iluminado aqui?"</string>
     <string name="quest_way_lit_road_title">"Este trecho de estrada é iluminado?"</string>
-    <string name="quest_way_lit_automatic">"Usa detector de movimento "</string>
+    <string name="quest_way_lit_automatic">"Usa detector de movimento"</string>
     <string name="quest_way_lit_24_7">"É iluminado dia e noite"</string>
     <string name="pref_title_authorized_username_summary">"Conta autorizada: %s"</string>
-    <string name="cannot_find_bbox_or_reduce_tilt">"Não é possível buscar aqui.  Tente aproximar mais ou inclinar menos o mapa."</string>
+    <string name="cannot_find_bbox_or_reduce_tilt">"Não é possível buscar aqui. Tente aproximar mais ou inclinar menos o mapa."</string>
     <string name="quest_crossing_type_title">"Que tipo de cruzamento é esse?"</string>
     <string name="quest_crossing_type_signals">"Cruzamento com semáforo"</string>
     <string name="quest_crossing_type_uncontrolled">"Cruzamento sem controle"</string>
@@ -363,7 +363,7 @@ Caso contrário, pode baixar outro teclado na loja de aplicativos. Alguns dos te
     <string name="quest_powerPolesMaterial_wood">"Madeira"</string>
     <string name="quest_powerPolesMaterial_metal">"Aço"</string>
     <string name="quest_powerPolesMaterial_concrete">"Concreto"</string>
-    <string name="quest_maxspeed_answer_advisory_speed_limit">"apenas um limite de velocidade indicativo"</string>
+    <string name="quest_maxspeed_answer_advisory_speed_limit">"Apenas um limite de velocidade indicativo"</string>
     <string name="quest_address_answer_house_name">"Sem o número da casa, mas um nome"</string>
     <string name="quest_address_house_name_label">"Nome da casa:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"andares no telhado"</string>
@@ -373,7 +373,7 @@ Caso contrário, pode baixar outro teclado na loja de aplicativos. Alguns dos te
     <string name="quest_buildingLevels_answer_description">"Neste caso é só inserir os valores da parte mais alta da construção."</string>
     <string name="unglue_hint">"Toque para de selecionar a visão da posição"</string>
     <string name="pref_title_not_authorized_summary2">"Autentique no seu navegador para autorizar"</string>
-    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"As linhas desta estrad"</string>
+    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Existe separação física entre as faixas de rolagem (ex: separador central)? A velocidade máxima por defeito, depende se esta situação se verificar ou não."</string>
     <string name="about_category_feedback">"Envie um comentário"</string>
     <string name="quest_leave_new_note_photo">"Anexar foto"</string>
     <string name="quest_leave_new_note_photo_delete_title">"Você quer remover esta foto?"</string>
@@ -420,11 +420,11 @@ Caso contrário, pode baixar outro teclado na loja de aplicativos. Alguns dos te
     <string name="quest_streetName_answer_noName_noname">"Nenhuma das opções, simplesmente não há nome"</string>
     <string name="quest_wheelchairAccess_toilets_title">"São esses banheiros acessíveis por cadeira de rodas?"</string>
     <string name="quest_wheelchairAccess_toilets_name_title">"O banheiro %s é acessível por cadeira de rodas?"</string>
-    <string name="quest_wheelchairAccess_description_toilets">"Um simbolo de cadeirante como esse deve estar visível se os banheiros são acessíveis.
+    <string name="quest_wheelchairAccess_description_toilets">"Um símbolo de cadeirante como esse deve estar visível se os banheiros são acessíveis.
 Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas barras ou adaptações não estão presentes."</string>
     <string name="map_btn_create_note">"Criar uma nova nota"</string>
     <string name="create_new_note_unprecise">"Aproxime o zoom para criar uma nota"</string>
-    <string name="create_new_note_description">"Você pode deixar uma nota para que outros mapeadores saibam sobre um problema aqui. Ajuste "</string>
+    <string name="create_new_note_description">"Você pode deixar uma nota para que outros mapeadores saibam sobre um problema aqui. Ajuste a posição da nota movendo o mapa."</string>
     <string name="pref_title_quests_invalidation">"Invalidar cache de missões"</string>
     <string name="pref_title_quests_invalidation_summary">"Útil se você achar que algumas missões estão desatualizadas"</string>
     <string name="invalidate_confirmation">"Invalidar"</string>
@@ -491,7 +491,7 @@ Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas barr
     <string name="quest_busStopName_title">"Qual o nome desta parada de ônibus?"</string>
     <string name="quest_tramStopName_title">"Qual o nome desta parada de bonde?"</string>
     <string name="quest_housenumber_multiple_numbers">"Tem múltiplos números"</string>
-    <string name="quest_housenumber_multiple_numbers_description">"Você pode digitar os números separados por vírgulas ou faixas.  Por exemplo 1,3 ou 2-6."</string>
+    <string name="quest_housenumber_multiple_numbers_description">"Você pode digitar os números separados por vírgulas ou faixas. Por exemplo 1,3 ou 2-6."</string>
     <string name="quest_bicycle_parking_type_stand">"Suporte (para o quadro)"</string>
     <string name="quest_bicycle_parking_type_wheelbender">"Apenas uma roda"</string>
     <string name="quest_bicycle_parking_type_shed">"Abrigo"</string>
@@ -527,7 +527,7 @@ Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas barr
     <string name="quest_buildingType_title2">"Qual a finalidade desse prédio?"</string>
     <string name="quest_generic_item_invalid_value">"Favor selecionar um valor mais específico."</string>
     <string name="quest_buildingType_answer_multiple_types">"Tem múltiplas finalidades"</string>
-    <string name="quest_buildingType_answer_multiple_types_description">"Selecione o propósito principal desse prédio.  Ex.: se há uma loja no térreo com apartamentos acima, ainda é um prédio de apartamentos."</string>
+    <string name="quest_buildingType_answer_multiple_types_description">"Selecione o propósito principal desse prédio. Ex.: se há uma loja no térreo com apartamentos acima, ainda é um prédio de apartamentos."</string>
     <string name="quest_buildingType_answer_construction_site">"Ainda está em construção"</string>
     <string name="quest_buildingType_residential">"Residencial"</string>
     <string name="quest_buildingType_residential_description">"Prédio onde pessoas moram"</string>
@@ -556,7 +556,7 @@ Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas barr
     <string name="quest_buildingType_commercial">"Prédio comercial"</string>
     <string name="quest_buildingType_commercial_generic_description">"prédio onde pessoas trabalham, fazem compras ou outra atividade comercial qualquer"</string>
     <string name="quest_buildingType_industrial">"Prédio industrial"</string>
-    <string name="quest_buildingType_industrial_description">"Ex.: fábrica, ateliê, oficina mecânica "</string>
+    <string name="quest_buildingType_industrial_description">"Ex.: fábrica, ateliê, oficina mecânica…"</string>
     <string name="quest_buildingType_office">"Prédio de escritórios"</string>
     <string name="quest_buildingType_retail">"Loja(s)"</string>
     <string name="quest_buildingType_warehouse">"Depósito"</string>
@@ -635,7 +635,7 @@ Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas barr
     <string name="quest_maxheight_tunnel_title">"Qual o limite de altura desse túnel?"</string>
     <string name="quest_maxheight_answer_noSign">"Não há placa"</string>
     <string name="quest_maxheight_answer_noSign_question">"Há espaço suficiente para que mesmo os caminhões mais altos (pelo menos 4,5 metros) passem?"</string>
-    <string name="quest_maxheight_unusualInput_confirmation_description">"Essa altura parece implausível.  Tem certeza de que está correta?"</string>
+    <string name="quest_maxheight_unusualInput_confirmation_description">"Essa altura parece implausível. Tem certeza de que está correta?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_closed2">"Fechado por %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_reopen2">"Aberto por %1$s, %2$s"</string>

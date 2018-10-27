@@ -535,5 +535,20 @@
     <string name="quest_construction_building_title">"Цей дім добудований?"</string>
     <string name="questList_disabled_in_country">"Не показується в країні %s"</string>
     <string name="quest_toiletAvailability_rest_area_title">"Чи є в зоні відпочинку туалет?"</string>
+    <string name="quest_pathSurface_title_steps">"Яке покриття в цих сходинок?"</string>
+    <string name="quest_pathSurface_title_bridleway">"Яке покриття в цієї дороги для всадників?"</string>
+    <string name="quest_pathSurface_title">"Яке покриття в цієї доріжки?"</string>
+    <string name="quest_select_hint_most_specific">"Виберіть те, що найбільше підходить:"</string>
+    <string name="quest_generic_item_confirmation">"Ви впевнені, що не можете визначити це більш детально?"</string>
+    <string name="quest_generic_hasFeature_no_leave_note">"Ні (лишити коментар)"</string>
+    <string name="quest_generic_item_invalid_value">"Будь ласка, виберіть найточніше значення."</string>
+    <string name="quest_buildingType_answer_multiple_types">"Має декілька призначень"</string>
+    <string name="quest_buildingType_residential">"Жила оселя"</string>
+    <string name="quest_buildingType_residential_description">"дім, в якому живуть люди"</string>
+    <string name="quest_buildingType_house">"Дім"</string>
+    <string name="quest_buildingType_hotel">"Готель"</string>
+    <string name="quest_buildingType_dormitory">"Гуртожиток"</string>
+    <string name="quest_buildingType_houseboat">"Дім на воді"</string>
+    <string name="quest_buildingType_bungalow">"Бунгало"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
 </resources>

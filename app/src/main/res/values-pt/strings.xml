@@ -269,7 +269,7 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="quest_fireHydrant_type_underground">"Subterrâneo"</string>
     <string name="quest_fireHydrant_type_wall">"De parede"</string>
     <string name="quest_fireHydrant_type_pond">"Boca seca (necessário motor)"</string>
-    <string name="credits_contributors">"Veja a lista completa em &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;no GitHub&lt;/a&gt;."</string>
+    <string name="credits_contributors">"Veja a lista completa &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;no GitHub&lt;/a&gt;."</string>
     <string name="credits_translations">"Para a lista completa veja o &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;projeto no POEditor&lt;/a&gt;."</string>
     <string name="credits_translations_title">"Traduções"</string>
     <string name="credits_contributors_title">"Contribuidores de código"</string>

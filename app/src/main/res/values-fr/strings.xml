@@ -710,4 +710,5 @@ Partiellement signifie qu’un fauteuil roulant peut entrer et utiliser les toil
     <string name="quest_railway_crossing_barrier_none">"Non"</string>
     <string name="privacy_html_image_upload2">"&lt;p&gt;Les photos jointes à une note sont envoyées sur mon serveur, puis supprimées quelques jours après que la note soit résolue. Leurs métadonnées sont retirées avant envoi.&lt;/p&gt;"</string>
     <string name="action_deselect_all">"Désélectionner tout"</string>
+    <string name="quest_buildingType_retail_description">"y compris les bâtiments pour restaurants, cafés, …"</string>
 </resources>
