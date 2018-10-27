@@ -17,11 +17,13 @@ public class OpeningHoursModelCreatorTest extends TestCase
 {
 	private static final Weekdays MONDAY = new Weekdays(new boolean[]{true});
 	private static final Weekdays MONDAY_TUESDAY = new Weekdays(new boolean[]{true, true});
+	private static final Weekdays MONDAY_FRIDAY = new Weekdays(new boolean[]{true, true, true, true, true});
 	private static final Weekdays TUESDAY = new Weekdays(new boolean[]{false, true});
 
 	private static final TimeRange MORNING = new TimeRange(8*60,12*60);
 	private static final TimeRange MIDDAY = new TimeRange(10*60,16*60);
 	private static  TimeRange AFTERNOON = new TimeRange(14*60,18*60);
+	private static  TimeRange LONG_AFTERNOON = new TimeRange(13*60,20*60);
 
 	private static final OpeningWeekdaysRow MONDAY_MORNING = new OpeningWeekdaysRow(MONDAY, MORNING);
 
@@ -119,6 +121,24 @@ public class OpeningHoursModelCreatorTest extends TestCase
 				new OpeningWeekdays(MONDAY_TUESDAY, times(AFTERNOON))),
 			weekdays(
 				new OpeningWeekdays(TUESDAY, times(MIDDAY)))
+		)));
+
+		assertEquals(expected, actual);
+	}
+
+	public void testDoesClusterMultipleOverlappingWeekdaysWithNonIntersectingTimes()
+	{
+		List<OpeningMonths> actual = create(
+			new OpeningWeekdaysRow(MONDAY_FRIDAY, MORNING),
+			new OpeningWeekdaysRow(MONDAY, AFTERNOON),
+			new OpeningWeekdaysRow(TUESDAY, LONG_AFTERNOON)
+		);
+
+		List<OpeningMonths> expected = months(new OpeningMonths(ALL_YEAR, clusters(
+			weekdays(
+				new OpeningWeekdays(MONDAY_FRIDAY, times(MORNING)),
+				new OpeningWeekdays(MONDAY, times(AFTERNOON)),
+				new OpeningWeekdays(TUESDAY, times(LONG_AFTERNOON)))
 		)));
 
 		assertEquals(expected, actual);

@@ -69,14 +69,16 @@ public class OpeningHoursModelCreator
 			while (it.hasNext())
 			{
 				OpeningWeekdays other = it.next();
-				boolean sameCluster = true;
+				boolean anyWeekdaysOverlap = false;
+				boolean anyTimesOverlap = false;
 				for (OpeningWeekdays inThisCluster : cluster)
 				{
 					boolean weekdaysOverlaps = inThisCluster.weekdays.intersects(other.weekdays);
 					boolean anyTimeRangeOverlaps = inThisCluster.intersects(other);
-					sameCluster &= weekdaysOverlaps && !anyTimeRangeOverlaps;
+					anyTimesOverlap |= weekdaysOverlaps && anyTimeRangeOverlaps;
+					anyWeekdaysOverlap |= weekdaysOverlaps;
 				}
-				if (sameCluster)
+				if (anyWeekdaysOverlap && !anyTimesOverlap)
 				{
 					cluster.add(other);
 					it.remove();
