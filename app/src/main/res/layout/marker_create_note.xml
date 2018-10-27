@@ -35,7 +35,7 @@
                 android:layout_width="42dp"
                 android:layout_height="42dp"
                 android:layout_marginTop="5dp"
-                android:layout_marginLeft="19dp"
+                android:layout_centerHorizontal="true"
                 android:src="@drawable/ic_quest_create_note" />
 
         </RelativeLayout>
