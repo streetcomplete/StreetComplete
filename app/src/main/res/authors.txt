@@ -118,3 +118,9 @@ surface_metal.jpg              Public Domain     https://commons.wikimedia.org/w
 tactile_paving_illustration... CC-BY 2.0         https://www.flickr.com/photos/jeanlouis_zimmermann/10072029534/in/album-72157635218804514/
                                CC-BY 2.0         https://www.flickr.com/photos/jeanlouis_zimmermann/10493532264/in/album-72157635218804514/
                                CC-BY 2.0         https://www.flickr.com/photos/jeanlouis_zimmermann/10473021344/in/album-72157635218804514/
+
+tracktype_grade1        	   Public Domain     https://github.com/westnordost/StreetComplete/pull/959#issuecomment-427905219 (Bjorn Rasmussen)
+tracktype_grade2               CC-BY 4.0         https://github.com/westnordost/StreetComplete/issues/133#issuecomment-393650654 (Bjorn Rasmussen)
+tracktype_grade3               CC0		         https://pixabay.com/en/field-away-nature-meadow-lane-406183/
+tracktype_grade4               Public Domain     https://github.com/westnordost/StreetComplete/pull/959#issuecomment-427905219 (Bjorn Rasmussen)
+tracktype_grade5               CC-BY-SA 4.0  	 https://commons.wikimedia.org/wiki/File:Zandpad_aan_buitenkant_van_het_gebied._Locatie,_Stuttebosch_in_de_lendevallei._Provincie_Friesland_01.jpg

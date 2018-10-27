@@ -51,6 +51,7 @@ import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingBusSt
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingCrosswalk;
 import de.westnordost.streetcomplete.quests.toilet_availability.AddToiletAvailability;
 import de.westnordost.streetcomplete.quests.toilets_fee.AddToiletsFee;
+import de.westnordost.streetcomplete.quests.tracktype.AddTracktype;
 import de.westnordost.streetcomplete.quests.housenumber.AddHousenumber;
 import de.westnordost.streetcomplete.quests.max_speed.AddMaxSpeed;
 import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHours;
@@ -107,6 +108,7 @@ public class QuestModule
 				new AddParkingFee(o),
 				new AddBusStopName(o),
 				new AddPathSurface(o),
+				new AddTracktype(o),
 				new AddBikeParkingType(o), // used by OsmAnd
 				new AddPlaygroundAccess(o), //late as in many areas all needed access=private is already mapped
 
