@@ -14,7 +14,7 @@ import android.widget.TimePicker;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.opening_hours.model.TimeRange;
 
-public class TimeRangePickerDialog extends AlertDialog implements View.OnClickListener
+public class TimeRangePickerDialog extends AlertDialog
 {
 	private static final int
 			START_TIME_TAB = 0,
@@ -46,7 +46,7 @@ public class TimeRangePickerDialog extends AlertDialog implements View.OnClickLi
 		final View view = inflater.inflate(R.layout.dialog_time_range_picker, null);
 		setView(view);
 
-		setButton(BUTTON_POSITIVE, context.getString(android.R.string.ok), (OnClickListener) null);
+		setButton(BUTTON_POSITIVE, context.getString(R.string.quest_openingHours_timeSelect_next), (OnClickListener) null);
 		setButton(BUTTON_NEGATIVE, context.getString(android.R.string.cancel), (OnClickListener) null);
 
 		startPicker = (TimePicker) inflater.inflate(R.layout.time_range_picker_start_picker, null);
@@ -76,19 +76,26 @@ public class TimeRangePickerDialog extends AlertDialog implements View.OnClickLi
 		{
 			@Override public void onTabSelected(TabLayout.Tab tab)
 			{
-				viewPager.setCurrentItem(tab.getPosition());
+				setCurrentTab(tab.getPosition());
 			}
 
 			@Override public void onTabUnselected(TabLayout.Tab tab)
 			{
-				viewPager.setCurrentItem(tab.getPosition());
+				setCurrentTab(tab.getPosition());
 			}
 
 			@Override public void onTabReselected(TabLayout.Tab tab)
 			{
-				viewPager.setCurrentItem(tab.getPosition());
+				setCurrentTab(tab.getPosition());
 			}
 		});
+	}
+
+	private void setCurrentTab(int position)
+	{
+		viewPager.setCurrentItem(position);
+		int buttonResId = position == END_TIME_TAB ? android.R.string.ok : R.string.quest_openingHours_timeSelect_next;
+		getButton(BUTTON_POSITIVE).setText(buttonResId);
 	}
 
 	private class CustomAdapter extends PagerAdapter
@@ -135,21 +142,18 @@ public class TimeRangePickerDialog extends AlertDialog implements View.OnClickLi
 	{
 		super.show();
 		// to override the default OK=dismiss() behavior
-		getButton(BUTTON_POSITIVE).setOnClickListener(this);
-	}
+		getButton(BUTTON_POSITIVE).setOnClickListener(v -> {
+			switch(tabLayout.getSelectedTabPosition())
+			{
+				case START_TIME_TAB:
+					setCurrentTab(END_TIME_TAB);
+					break;
 
-	@Override public void onClick(View v)
-	{
-		switch(tabLayout.getSelectedTabPosition())
-		{
-			case START_TIME_TAB:
-				viewPager.setCurrentItem(END_TIME_TAB);
-				break;
-
-			case END_TIME_TAB:
-				applyAndDismiss();
-				break;
-		}
+				case END_TIME_TAB:
+					applyAndDismiss();
+					break;
+			}
+		});
 	}
 
 	private void applyAndDismiss()
