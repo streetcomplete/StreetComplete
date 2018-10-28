@@ -8,6 +8,11 @@ layers:
                 color: global.railway_color
                 join: round
                 width: [[10, 0.5px], [12, 1.0px], [13, 2px], [18, 3m]]
+        service:
+            filter: { service: true }
+            draw:
+                lines-railway-style:
+                    width: [[10, 0.2px], [12, 0.5px], [13, 1px], [18, 1.5m]]
 
         tram:
             filter: { kind_detail: tram }
@@ -108,6 +113,38 @@ layers:
                         color: global.path_outline_color
                         width: function () { return 1/4 * Math.log($zoom); }
                         order: 200
+
+        private:
+            filter: { access: [no, private, destination, customers, delivery] }
+            draw:
+                lines:
+                    outline:
+                        style: private-way
+
+        oneway:
+            filter: { oneway: yes, $zoom: { min: 17 } }
+            draw:
+                oneway-arrow:
+                    flat: true
+                    buffer: 2px
+                    color: global.oneway_arrow_color
+                    size: [[17, [6px, auto]], [20, [24px, auto]]]
+                    placement: spaced
+                    placement_spacing: [[17, 40px], [20, 120px]]
+                    angle: auto
+                    text:
+                        visible: false
+    pois:
+        data: { source: mapzen }
+        barrier:
+            filter: { kind: [gate, bollard, lift_gate, cycle_barrier, stile, block, toll_booth, kissing_gate, swing_gate, chain, cattle_grid, border_control], $zoom: { min: 17 }}
+            draw:
+                points:
+                    buffer: 2px
+                    flat: true
+                    color: global.barrier_color
+                    size: [[17, 2px], [20, 16px]]
+
 styles:
     step_dashes:
         base: lines
@@ -116,3 +153,9 @@ styles:
     lines-railway-style:
         base: lines
         blend: opaque
+    private-way:
+        base: lines
+        dash: [1.0,0.5]
+    oneway-arrow:
+        base: points
+        texture: oneway-arrow

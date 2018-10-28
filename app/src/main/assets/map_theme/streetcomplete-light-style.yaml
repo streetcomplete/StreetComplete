@@ -30,6 +30,9 @@ global:
 
     boundary_color: '#e66'
 
+    oneway_arrow_color: '#444'
+    barrier_color: '#444'
+
 styles:
     buildings-style:
         base: polygons
