@@ -96,7 +96,7 @@ layers:
             filter: { kind: [pedestrian], $zoom: { min: 17 } }
             draw:
                 lines:
-                    color: global.path_outline_color
+                    color: global.square_outline_color
                     width: function () { return 1/4 * Math.log($zoom); }
                     order: 200
                 polygons:
