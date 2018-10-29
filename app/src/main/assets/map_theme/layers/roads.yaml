@@ -13,7 +13,6 @@ layers:
             draw:
                 lines-railway-style:
                     width: [[10, 0.2px], [12, 0.5px], [13, 1px], [18, 1.5m]]
-
         tram:
             filter: { kind_detail: tram }
             draw:
@@ -26,7 +25,6 @@ layers:
             not:
                 - kind: [rail, ferry, aerialway, piste]
                 - kind_detail: [sidewalk]
-                - is_tunnel: true
         draw:
             lines:
                 order: global.sort_rank
@@ -59,13 +57,6 @@ layers:
             draw:
                 lines:
                     width: [[11, 0.5px], [12, 0.75px], [13, 1.0px], [14, 1.2px], [15, 2.5px], [16, 8m]]
-
-        tunnel:
-            filter: { is_tunnel: true }
-            draw:
-                lines:
-                    color: global.tunnel_color
-                    cap: round
 
         service_road:
             filter: { kind: minor_road, kind_detail: service }
@@ -128,12 +119,20 @@ layers:
                     flat: true
                     buffer: 2px
                     color: global.oneway_arrow_color
-                    size: [[17, [6px, auto]], [20, [24px, auto]]]
+                    size: [[17, [6px, auto]], [20, [18px, auto]]]
                     placement: spaced
-                    placement_spacing: [[17, 40px], [20, 120px]]
+                    placement_spacing: [[17, 64px], [20, 256px]]
                     angle: auto
                     text:
                         visible: false
+
+        tunnel:
+            filter: { is_tunnel: true }
+            draw:
+                lines:
+                    style: tunnel-way
+                    color: [1., 1., 1., 0.2]
+
     pois:
         data: { source: mapzen }
         barrier:
@@ -159,3 +158,6 @@ styles:
     oneway-arrow:
         base: points
         texture: oneway-arrow
+    tunnel-way:
+        base: lines
+        blend: translucent
