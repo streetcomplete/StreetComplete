@@ -202,26 +202,26 @@ public class FiltersParserTest extends TestCase
 	public void testBoundingBox()
 	{
 		BoundingBox bbox = new BoundingBox(0,0,5,10);
-		check("nodes", "[bbox:0.0,0.0,5.0,10.0];node;", bbox);
-		check("nodes with highway", "[bbox:0.0,0.0,5.0,10.0];node[\"highway\"];", bbox);
+		check("nodes", "[bbox:0,0,5,10];node;", bbox);
+		check("nodes with highway", "[bbox:0,0,5,10];node[\"highway\"];", bbox);
 		check("nodes with highway or railway",
-				"[bbox:0.0,0.0,5.0,10.0];(node[\"highway\"];node[\"railway\"];);", bbox);
+				"[bbox:0,0,5,10];(node[\"highway\"];node[\"railway\"];);", bbox);
 	}
 
 	public void testBoundingBoxWithMultipleElementTypes()
 	{
 		BoundingBox bbox = new BoundingBox(0,0,5,10);
 
-		check("nodes, ways, relations", "[bbox:0.0,0.0,5.0,10.0];(node;way;rel;);", bbox);
+		check("nodes, ways, relations", "[bbox:0,0,5,10];(node;way;rel;);", bbox);
 		check("nodes, ways, relations with highway",
-				"[bbox:0.0,0.0,5.0,10.0];(" +
+				"[bbox:0,0,5,10];(" +
 				"node[\"highway\"];" +
 				"way[\"highway\"];" +
 				"rel[\"highway\"];" +
 				");", bbox);
 
 		check("nodes, ways, relations with highway or railway",
-				"[bbox:0.0,0.0,5.0,10.0];(" +
+				"[bbox:0,0,5,10];(" +
 				"node[\"highway\"];" +
 				"node[\"railway\"];" +
 				"way[\"highway\"];" +
