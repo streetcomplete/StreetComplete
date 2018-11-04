@@ -35,7 +35,7 @@ public class ApplicationConstants
 
 	public static final String SC_PHOTO_SERVICE_URL = "https://westnordost.de/streetcomplete/photo-upload/"; // must have trailing /
 
-	public static final int ATTACH_PHOTO_QUALITY = 60;
+	public static final int ATTACH_PHOTO_QUALITY = 80;
 	public static final int ATTACH_PHOTO_MAXWIDTH = 1280; // WXGA
 
 	public static final String NOTIFICATIONS_CHANNEL_DOWNLOAD = "downloading";
