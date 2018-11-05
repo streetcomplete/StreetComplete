@@ -23,6 +23,7 @@ import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.data.download.MobileDataAutoDownloadStrategy;
 import de.westnordost.streetcomplete.data.download.QuestAutoDownloadStrategy;
 import de.westnordost.streetcomplete.data.download.WifiAutoDownloadStrategy;
+import de.westnordost.streetcomplete.oauth.OAuthPrefs;
 
 /** Automatically downloads and uploads new quests around the user's location and uploads quests.
  *
@@ -37,6 +38,7 @@ public class QuestAutoSyncer implements LocationListener, LostApiClient.Connecti
 	private final WifiAutoDownloadStrategy wifiDownloadStrategy;
 	private final Context context;
 	private final SharedPreferences prefs;
+	private final OAuthPrefs oAuth;
 
 	private final LostApiClient lostApiClient;
 	private LatLon pos;
@@ -47,13 +49,14 @@ public class QuestAutoSyncer implements LocationListener, LostApiClient.Connecti
 	@Inject public QuestAutoSyncer(QuestController questController,
 								   MobileDataAutoDownloadStrategy mobileDataDownloadStrategy,
 								   WifiAutoDownloadStrategy wifiDownloadStrategy,
-								   Context context, SharedPreferences prefs)
+								   Context context, SharedPreferences prefs, OAuthPrefs oAuth)
 	{
 		this.questController = questController;
 		this.mobileDataDownloadStrategy = mobileDataDownloadStrategy;
 		this.wifiDownloadStrategy = wifiDownloadStrategy;
 		this.context = context;
 		this.prefs = prefs;
+		this.oAuth = oAuth;
 		lostApiClient = new LostApiClient.Builder(context).addConnectionCallbacks(this).build();
 	}
 
@@ -129,6 +132,8 @@ public class QuestAutoSyncer implements LocationListener, LostApiClient.Connecti
 	{
 		if(!isAllowedByPreference()) return;
 		if(!isConnected) return;
+		if(!oAuth.isAuthorized()) return;
+
 		questController.upload();
 	}
 
