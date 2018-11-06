@@ -116,14 +116,14 @@
     <string name="map_btn_zoom_in">"بزرگنمایی"</string>
 
     <!-- Fuzzy -->
-    <string name="privacy_html">"&lt;p&gt; بله، چه خوب است کسی که درباره حریم شخصی آگاهی کامل دارد! من فکر می کنم خبرهای خوبی برای شما دارم: &lt;/p&gt;
+    <string name="privacy_html">"&lt;p&gt; بله، چه خوب است کسی که درباره حریم شخصی آگاهی کامل داشته باشد! من فکر می کنم اطلاعات خوبی برای شما داشته باشم: &lt;/p&gt;
 &lt;p&gt;&lt;b&gt; مشارکت مستقیم &lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 ابتدا، بدانید که با استفاده از این برنامه، شما به صورت مستقیم به OpenStreetMap کمک می کنید. &lt;br/&gt;
 هر اقدامی که شما در این برنامه انجام می دهید به طور مستقیم به نقشه اضافه می شود ، هیچ شخص سومی بین برنامه و زیرساخت OSM وجود ندارد، مانند مورد &lt;a href=\"https://wheelmap.org\"&gt; wheelmap.org &lt;/a&gt; یا &lt;a href=\"http://www.kort.ch\"&gt; کورت &lt;/a&gt;
 &lt;/p&gt;
 &lt;p&gt;
-ویرایش نقشه OpenStreetMap به صورت ناشناس امکان پذیر نیست، بنابراین هر تغییری که ایجاد می کنید با  حساب کاربری OSM شما ذخیره می شود. این به این معنی است که تاریخ، محتوا و به طور کلی مکان تغییرات شما به طور عمومی در وبگاه openstreetmap قابل مشاهده است و به حساب کاربری شما مربوط می شود.
+ویرایش نقشه OpenStreetMap به صورت ناشناس امکان پذیر نیست، بنابراین هر تغییری که ایجاد می کنید با  حساب کاربری OSM شما ذخیره می شود. این بدان معنی است که تاریخ، محتوا و به طور کلی مکان تغییرات شما به طور عمومی در وبگاه openstreetmap قابل مشاهده است و در حساب کاربری شما ذخیره می شود.
 &lt;/p&gt;
 
 &lt;b&gt; موقعیت&lt;/b&gt;&lt;br/&gt;
@@ -135,7 +135,7 @@
 &lt;p&gt;
 همانطور که ذکر شد، برنامه به طور مستقیم برای بارگذاری تغییرات با زیرساخت OSM ارتباط برقرار می کند. یعنی با &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass API&lt;/a&gt; برای&lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API&lt;/a&gt;
 &lt;br/&gt;
-با این حال، قبل از بارگذاری تغییرات شما ، برنامه با یک &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt; سند متنی ساده &lt;/a&gt; در سرور بررسی  می کند، برای بارگذاری هر تغییری آیا این تغییرات مجاز هست یا خیر . این یک اقدام امنیتی است که می تواند ویرایش های برنامه را از خرابکاری های احتمالی حفظ کند و از اشکالات بحرانی در دادههای OSM جلوگیری نماید. &lt;br/&gt;
+با این حال، قبل از بارگذاری تغییرات شما ، برنامه با یک &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt; سند متنی ساده &lt;/a&gt; در سرور بررسی  می کند، برای بارگذاری هر تغییری آیا این تغییرات مجاز هست یا خیر . این یک اقدام امنیتی است که می تواند ویرایش های برنامه را از خرابکاری های احتمالی حفظ کند و از اشکالات بحرانی در داده‌های OSM جلوگیری نماید. &lt;br/&gt;
 &lt;/p&gt;
 &lt;p&gt;
 برای نمایش نقشه، جزئیات بُرداری از منبع &lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt;Mapzen vector tile service&lt;/a&gt; بازیابی می شوند که به صورت ناشناس می باشد. سامانه درخواست جزئیات نقشه برای بازبینی مناطق ، پیش از ذخیره سازی و بهبود عملکرد تغییرات انجام شده فعالیت می کنند. زیرساخت آنها همچنین آدرس های IP را ذخیره می کند و میزبانی آنها در وبگاه آمازون می باشد تا آنها هر اقدامی که صلاح می دانند ، انجام دهند.
@@ -649,4 +649,12 @@
     <string name="quest_maxheight_answer_noSign_question">"آیا به اندازه کافی، فضای مناسب برای عبور بلندترین کامیون‌ها (حداقل حدود ۴/۵ متر / ۱۵ فوت) وجود دارد؟"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"این ارتفاع غیرقابل باور است. مطمئن هستید که درست است؟"</string>
     <string name="quest_noteDiscussion_comment2">"%2$s, %1$s —"</string>
+    <string name="quest_noteDiscussion_closed2">"وارد شده توسط %1$s, %2$s"</string>
+    <string name="quest_noteDiscussion_reopen2">"دوباره فعال شده توسط %1$s, %2$s"</string>
+    <string name="quest_noteDiscussion_hide2">"پنهان شده توسط %1$s, %2$s"</string>
+    <string name="quest_railway_crossing_barrier_title">"ایمنی این تقاطع راه‌آهن چگونه است؟"</string>
+    <string name="quest_railway_crossing_barrier_none">"هیچکدام"</string>
+    <string name="privacy_html_image_upload2">"تصاویری که به یک یادداشت اضافه می‌کنید به سرور من آپلود می‌شوند و چند روز بعد از حل یاداشت حذف می‌شوند . متا داده‌های آنها قبل از آپلود حذف می شوند."</string>
+    <string name="action_deselect_all">"خروج از انتخاب همگی"</string>
+    <string name="quest_buildingType_retail_description">"از جمله ساختمان‌ها برای رستوران ها، کافی نت ها، ..."</string>
 </resources>

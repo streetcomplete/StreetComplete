@@ -670,4 +670,5 @@ Bijvoorbeeld 1m3 of 2-6."</string>
     <string name="quest_railway_crossing_barrier_none">"Niet"</string>
     <string name="privacy_html_image_upload2">"&lt;p&gt;Foto's die u aan een notitie toevoegt, worden naar mijn server geüpload en enkele dagen nadat deze notitie is verwerkt, verwijderd. Hun metagegevens worden verwijderd voordat ze worden geüpload.&lt;/p&gt;"</string>
     <string name="action_deselect_all">"Deselecteer alles"</string>
+    <string name="quest_buildingType_retail_description">"Inclusief gebouwen van restaurants, cafés, ..."</string>
 </resources>
