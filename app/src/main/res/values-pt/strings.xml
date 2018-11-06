@@ -16,7 +16,7 @@
     <string name="pref_title_show_notes_not_phrased_as_questions">"Mostrar todos os erros reportados"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Mostrar também os erros reportados que não são perguntas"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Ignorar erros reportados que não sejam questões"</string>
-    <string name="pref_title_map_cache">"Tamanho da cache do mapa"</string>
+    <string name="pref_title_map_cache">"Tamanho máximo dos ficheiros temporários do mapa"</string>
     <string name="map_btn_gps_tracking">"Siga-me"</string>
     <string name="map_attribution_mapzen">"Funciona com %s"</string>
     <string name="map_attribution_osm">"© Contribuidores do OpenStreetMap"</string>
@@ -26,7 +26,7 @@
     <string name="quest_generic_confirmation_yes">"Sim, tenho a certeza"</string>
     <string name="quest_generic_confirmation_no">"Vou verificar"</string>
     <string name="quest_generic_error_field_empty">"Deixou este campo em branco"</string>
-    <string name="quest_leave_new_note_title">"Prefere reportar o erro?"</string>
+    <string name="quest_leave_new_note_title">"Prefere deixar uma nota/erro para outros utilizadores?"</string>
     <string name="quest_leave_new_note_description">"Pode deixar um erro reportado publicamente nesta localização para que outros contribuidores possam comentar e resolver a questão."</string>
     <string name="quest_leave_new_note_yes">"OK"</string>
     <string name="quest_leave_new_note_no">"Não, apenas ocultar"</string>
@@ -62,16 +62,16 @@
     <string name="confirmation_cancel_prev_download_title">"Anular a pesquisa atual e pesquisar nesta área?"</string>
     <string name="notification_downloading">"A pesquisar desafios…"</string>
     <string name="now_downloading_toast">"A pesquisar mais desafios…"</string>
-    <string name="turn_on_location_request">"A localização está desativada. Quer aceder agora às Opções para ativar?"</string>
-    <string name="no_location_permission_warning">"A sua localização é necessária para pesquisar desafios na sua área favorita."</string>
+    <string name="turn_on_location_request">"A localização por GPS está desativada. Quer aceder agora às Opções do Android para a ativar?"</string>
+    <string name="no_location_permission_warning">"É necessária a sua localização para pesquisar desafios na sua área favorita."</string>
     <string name="action_about">"Sobre o StreetComplete"</string>
     <string name="about_title_version">"Versão"</string>
     <string name="about_title_authors">"Créditos"</string>
     <string name="about_summary_authors">"© 2016–2018 Tobias Zwick e contribuidores"</string>
-    <string name="about_title_repository">"Repositório do Código-Fonte"</string>
-    <string name="about_summary_repository">"no GitHub"</string>
+    <string name="about_title_repository">"Repositório do código-fonte"</string>
+    <string name="about_summary_repository">"No site do GitHub"</string>
     <string name="about_title_report_error">"Reportar erro"</string>
-    <string name="about_title_feedback">"Enviar Opinião"</string>
+    <string name="about_title_feedback">"Enviar opinião"</string>
     <string name="about_title_license">"Licença"</string>
     <string name="about_summary_license">"GNU General Public License"</string>
     <string name="offline">"Está com a internet desligada"</string>
@@ -83,7 +83,7 @@
     <string name="later">"Mais tarde"</string>
     <string name="quest_streetName_answer_noProperStreet_link">"É apenas uma ligação entre 2 estradas"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Outra coisa qualquer (reportar erro)"</string>
-    <string name="about_title_privacy_statement">"Declaração de Privacidade"</string>
+    <string name="about_title_privacy_statement">"Declaração de privacidade"</string>
     <string name="about_summary_privacy_statement">"Sobre a utilização de dados privados"</string>
     <string name="quest_openingHours_public_holidays">"feriados"</string>
     <string name="quest_openingHours_public_holidays_short">"F"</string>
@@ -333,7 +333,7 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="quest_way_lit_road_title">"Esta estrada tem iluminação?"</string>
     <string name="quest_way_lit_automatic">"Sim, com detetor de movimento"</string>
     <string name="quest_way_lit_24_7">"Está iluminado de dia e de noite"</string>
-    <string name="pref_title_authorized_username_summary">"Conta autorizada: %s"</string>
+    <string name="pref_title_authorized_username_summary">"Conta de utilizador: %s"</string>
 
     <!-- What's the context of this message? At least what's the meaning of "tilt" here? Got something to do with a big area to search for challenges? -->
     <!-- Fuzzy -->
@@ -422,10 +422,10 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="map_btn_create_note">"Reportar erro"</string>
     <string name="create_new_note_unprecise">"Aproxime a visualização para reportar um erro"</string>
     <string name="create_new_note_description">"Pode reportar um erro para que outros mapeadores saibam sobre o problema. Ajuste a posição do erro movendo o mapa."</string>
-    <string name="pref_title_quests_invalidation">"Eliminar cache dos desafios"</string>
+    <string name="pref_title_quests_invalidation">"Eliminar ficheiros temporários dos desafios"</string>
     <string name="pref_title_quests_invalidation_summary">"Útil se acha que alguns dos desafios podem estar desatualizados"</string>
-    <string name="invalidate_confirmation">"Invalidar"</string>
-    <string name="invalidation_dialog_message">"Eliminar a cache faz com que os desafios sejam atualizados da próxima vez que sejam descarregados. A cache de desafios é eliminada automaticamente após uma semana e de forma imediata quando o desafio que resolveu, já foi respondido por outra pessoa."</string>
+    <string name="invalidate_confirmation">"Eliminar"</string>
+    <string name="invalidation_dialog_message">"Eliminar os ficheiros temporários dos desafios faz com que os desafios sejam atualizados da próxima vez que forem descarregados. Este ficheiros temporários de desafios são eliminados automaticamente após uma semana ou de forma imediata quando o desafio que resolveu tiver sido respondido por outra pessoa."</string>
     <string name="quest_generic_looks_like_this">"Normalmente tem esta aparência"</string>
     <string name="quest_surface_value_metal">"Metal"</string>
     <string name="quest_cycleway_title2">"Há uma ciclovia aqui? De que tipo?"</string>
@@ -518,7 +518,7 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="quest_buildingType_semi_detached_description">"par de 2 casas unifamiliares (geminadas)"</string>
     <string name="quest_buildingType_terrace">"Casas em banda"</string>
     <string name="quest_buildingType_terrace_description">"uma série de casas similares unifamiliares em fila com paredes partilhadas"</string>
-    <string name="quest_buildingType_hotel">"Edifício de hotel"</string>
+    <string name="quest_buildingType_hotel">"Edifício de um hotel"</string>
     <string name="quest_buildingType_dormitory">"Dormitório"</string>
     <string name="quest_buildingType_houseboat">"Barco-casa"</string>
     <string name="quest_buildingType_bungalow">"Bangalô"</string>
@@ -543,25 +543,25 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="quest_buildingType_synagogue">"Sinagoga"</string>
     <string name="quest_buildingType_civic">"Edifício público"</string>
     <string name="quest_buildingType_civic_description">"edifício público que alberga normalmente um infraestrutura/serviço público"</string>
-    <string name="quest_buildingType_kindergarten">"Edifício de infantário"</string>
-    <string name="quest_buildingType_school">"Edifício de escola"</string>
-    <string name="quest_buildingType_college">"Edifício de colégio"</string>
-    <string name="quest_buildingType_hospital">"Edifício de hospital"</string>
+    <string name="quest_buildingType_kindergarten">"Edifício de um infantário"</string>
+    <string name="quest_buildingType_school">"Edifício de uma escola"</string>
+    <string name="quest_buildingType_college">"Edifício de um colégio"</string>
+    <string name="quest_buildingType_hospital">"Edifício de um hospital"</string>
     <string name="quest_buildingType_stadium">"Estádio"</string>
-    <string name="quest_buildingType_train_station">"Edifício de estação ferroviária"</string>
-    <string name="quest_buildingType_transportation">"Edifício de transporte público"</string>
-    <string name="quest_buildingType_university">"Edifício de universidade"</string>
+    <string name="quest_buildingType_train_station">"Edifício de uma estação ferroviária"</string>
+    <string name="quest_buildingType_transportation">"Edifício de um serviço de transporte público"</string>
+    <string name="quest_buildingType_university">"Edifício de uma universidade"</string>
     <string name="quest_buildingType_government">"Edifício da administração nacional"</string>
     <string name="quest_buildingType_cars">"Para carros"</string>
     <string name="quest_buildingType_carport">"Abrigo para carros"</string>
     <string name="quest_buildingType_carport_description">"pequena estrutura com telhado mas sem paredes para abrigar carros"</string>
     <string name="quest_buildingType_garage">"Uma garagem"</string>
     <string name="quest_buildingType_garages">"Várias garagens"</string>
-    <string name="quest_buildingType_parking">"Edifício de estacionamento de carros"</string>
+    <string name="quest_buildingType_parking">"Edifício para estacionamento de carros (silo)"</string>
     <string name="quest_buildingType_farm">"Numa quinta"</string>
     <string name="quest_buildingType_farmhouse">"Casa de quinta"</string>
     <string name="quest_buildingType_farmhouse_description">"o edifício residencial numa quinta"</string>
-    <string name="quest_buildingType_farm_auxiliary">"Edifício de quinta"</string>
+    <string name="quest_buildingType_farm_auxiliary">"Edifício de uma quinta"</string>
     <string name="quest_buildingType_farm_auxiliary_description">"qualquer edifício numa quinta que não seja um edifício residencial"</string>
     <string name="quest_buildingType_greenhouse">"Estufa"</string>
     <string name="quest_buildingType_other">"Outro"</string>
