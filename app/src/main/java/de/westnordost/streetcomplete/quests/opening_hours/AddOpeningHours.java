@@ -43,7 +43,7 @@ public class AddOpeningHours extends SimpleOverpassQuestType
 		};
 
 		String[] offices = {
-			"insurance"
+			"insurance", "government"
 		};
 
 		return " nodes, ways, relations with ( shop and shop !~ no|vacant or" +
