@@ -44,6 +44,9 @@ public class AddWheelchairAccessBusiness extends SimpleOverpassQuestType
 				"motel", "viewpoint"
 		};
 
+		String[] offices = {
+			"insurance", "government"
+		};
 
 		return " nodes, ways, relations with ( shop and shop !~ no|vacant or" +
 				" amenity ~ " + TextUtils.join("|", amenities) + " or" +
@@ -51,7 +54,8 @@ public class AddWheelchairAccessBusiness extends SimpleOverpassQuestType
 				" amenity = recycling and recycling_type = centre or" +
 				" tourism ~ " + TextUtils.join("|", tourism) + " or" +
 				" tourism = information and information = office or" +
-				" leisure ~ " + TextUtils.join("|",leisures)  +
+				" leisure ~ " + TextUtils.join("|",leisures) + " or" +
+				" office ~ " + TextUtils.join("|",offices) +
 				" ) and !wheelchair and name";
 	}
 
