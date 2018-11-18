@@ -239,6 +239,11 @@ public class MainActivity extends AppCompatActivity implements
 		mapFragment = (QuestsMapFragment) getSupportFragmentManager().findFragmentById(R.id.map_fragment);
 		mapFragment.getMapAsync(BuildConfig.MAPZEN_API_KEY);
 		updateMapQuestOffsets();
+
+		if(savedInstanceState == null)
+		{
+			questController.deleteOld();
+		}
 	}
 
 	@Override public void onStart()

@@ -173,8 +173,8 @@ public abstract class AOsmQuestChangesUpload
 
 	private void cleanUp(Set<OsmElementQuestType> questTypes)
 	{
-		long yesterday = System.currentTimeMillis() - 24 * 60 * 60 * 1000;
-		int deletedQuests = questDB.deleteAllClosed(yesterday);
+		long timestamp = System.currentTimeMillis() - ApplicationConstants.MAX_QUEST_UNDO_HISTORY_AGE;
+		int deletedQuests = questDB.deleteAllClosed(timestamp);
 		if(deletedQuests > 0)
 		{
 			elementGeometryDB.deleteUnreferenced();
