@@ -33,7 +33,7 @@ public class AddMaxHeight extends AOsmElementQuestType
 
 	private static final Lazy<TagFilterExpression> WAY_FILTER = new Lazy<>(() -> new FiltersParser().parse(
 		"ways with" +
-		" (highway ~ motorway|motorway_link|trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|pedestrian|track|road" +
+		" (highway ~ motorway|motorway_link|trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|track|road" +
 		" or (highway=service and access!~private|no and vehicle!~private|no))" +
 		" and (covered=yes or tunnel~yes|building_passage|avalanche_protector)" +
 		" and !maxheight and !maxheight:physical"
