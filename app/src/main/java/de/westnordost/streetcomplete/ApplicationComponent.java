@@ -14,6 +14,7 @@ import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 import de.westnordost.streetcomplete.quests.GroupedImageListQuestAnswerFragment;
 import de.westnordost.streetcomplete.quests.ImageListQuestAnswerFragment;
 import de.westnordost.streetcomplete.quests.QuestModule;
+import de.westnordost.streetcomplete.quests.building_levels.AddBuildingLevelsForm;
 import de.westnordost.streetcomplete.quests.localized_name.AddLocalizedNameForm;
 import de.westnordost.streetcomplete.quests.oneway.AddOnewayForm;
 import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHoursForm;
@@ -67,5 +68,7 @@ public interface ApplicationComponent
 
 	void inject(GroupedImageListQuestAnswerFragment fragment);
 	void inject(ImageListQuestAnswerFragment fragment);
+
+	void inject(AddBuildingLevelsForm fragment);
 
 }
