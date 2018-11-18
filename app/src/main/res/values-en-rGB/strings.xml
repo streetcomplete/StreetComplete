@@ -252,7 +252,7 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_wheelchairAccess_subway_entrance_name_title">"Is the underground entrance %s wheelchair accessible?"</string>
     <string name="quest_wheelchairAccess_railway_station_name_title">"Is the railway station %s wheelchair accessible?"</string>
     <string name="quest_wheelchairAccess_location_name_title">"Is the location %s wheelchair accessible?"</string>
-    <string name="quest_wheelchairAccess_limited_description_business">"Partially means that there is no more than a single step to access the business and that most rooms inside are wheelchair accessible."</string>
+    <string name="quest_wheelchairAccess_limited_description_business">"Partially means that there is no more than a single step to access the place and that most rooms inside are wheelchair accessible."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"Partially means that there is no more than a single step to access it."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Abbreviation in the name %s?"</string>
     <string name="quest_baby_changing_table_toilets_title">"Does this toilet have a baby changing table?"</string>
