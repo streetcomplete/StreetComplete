@@ -20,7 +20,7 @@ public class IsBuildingUnderground extends SimpleOverpassQuestType
 
 	@Override protected String getTagFilters()
 	{
-		return "ways, relations with building and !location and layer~-.*";
+		return "ways, relations with building and !location and layer~-[0-9]+";
 	}
 
 	public AbstractQuestAnswerFragment createForm()
