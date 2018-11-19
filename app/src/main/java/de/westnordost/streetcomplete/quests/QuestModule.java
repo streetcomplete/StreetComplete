@@ -60,6 +60,7 @@ import de.westnordost.streetcomplete.quests.localized_name.AddRoadName;
 import de.westnordost.streetcomplete.quests.surface.AddRoadSurface;
 import de.westnordost.streetcomplete.quests.roof_shape.AddRoofShape;
 import de.westnordost.streetcomplete.quests.sport.AddSport;
+import de.westnordost.streetcomplete.quests.traffic_signals_sound.AddTrafficSignalsSound;
 import de.westnordost.streetcomplete.quests.way_lit.AddWayLit;
 import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelChairAccessPublicTransport;
 import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelChairAccessToilets;
@@ -122,6 +123,7 @@ public class QuestModule
 				// ↓ 6. may be shown as possibly missing in QA tools
 
 				// ↓ 7. data useful for only a specific use case
+				new AddTrafficSignalsSound(o),
 				new AddRoofShape(o),
 				new AddWheelChairAccessPublicTransport(o),
 				new AddTactilePavingBusStop(o),
