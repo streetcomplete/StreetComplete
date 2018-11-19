@@ -37,7 +37,7 @@ public class IsBuildingUnderground extends SimpleOverpassQuestType
 		}
 	}
 
-	@Override public String getCommitMessage() { return "Add whatever building is fully underground"; }
+	@Override public String getCommitMessage() { return "Determine whatever building is fully underground"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_building; }
 	@Override public int getTitle(@NonNull Map<String, String> tags)
 	{
