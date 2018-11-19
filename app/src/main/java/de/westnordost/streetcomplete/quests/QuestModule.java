@@ -64,6 +64,7 @@ import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelChairAcces
 import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelChairAccessToilets;
 import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAccessBusiness;
 import de.westnordost.streetcomplete.quests.bench_backrest.AddBenchBackrest;
+import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAccessDogPark;
 
 @Module
 public class QuestModule
@@ -122,6 +123,7 @@ public class QuestModule
 				// ↓ 7. data useful for only a specific use case
 				new AddRoofShape(o),
 				new AddWheelChairAccessPublicTransport(o),
+				new AddWheelchairAccessDogPark(o),
 				new AddTactilePavingBusStop(o),
 				new AddTactilePavingCrosswalk(o),
 				new AddWayLit(o),
