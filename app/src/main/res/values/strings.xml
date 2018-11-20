@@ -624,5 +624,5 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_tracktype_grade5">Soft</string>
     <string name="quest_building_underground_name_title">Is %s completely underground?</string>
     <string name="quest_building_underground_title">Is this building completely underground?</string>
-    <string name="quest_traffic_signals_sound_title">Are there sound signals for blind here?</string>
+    <string name="quest_traffic_signals_sound_title">Are there sound signals for the blind here?</string>
 </resources>
