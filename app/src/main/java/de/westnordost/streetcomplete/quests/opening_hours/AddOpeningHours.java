@@ -33,7 +33,7 @@ public class AddOpeningHours extends SimpleOverpassQuestType
 				// kind of object this is about
 				"cinema", "nightclub", "bank", // "atm",
 				"bureau_de_change",	"money_transfer", "post_office", "library",
-				"courthouse", "embassy", "car_wash", "car_rental",
+				"townhall", "courthouse", "embassy", "car_wash", "car_rental",
 				"marketplace", "fuel", "driving_school", "dentist",
 				"doctors", "clinic", "pharmacy", "veterinary" };
 
