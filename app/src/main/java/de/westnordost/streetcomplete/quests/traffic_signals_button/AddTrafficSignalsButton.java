@@ -22,21 +22,19 @@ public class AddTrafficSignalsButton extends SimpleOverpassQuestType {
 		return "nodes with highway=crossing and crossing=traffic_signals and !button_operated";
 	}
 
-	public AbstractQuestAnswerFragment createForm()
-	{
-		return new YesNoQuestAnswerFragment();
-	}
+	public AbstractQuestAnswerFragment createForm() { return new YesNoQuestAnswerFragment(); }
 
 	public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
 	{
-		if(answer.getBoolean(YesNoQuestAnswerFragment.ANSWER)){
+		if(answer.getBoolean(YesNoQuestAnswerFragment.ANSWER))
+		{
 			changes.add("button_operated", "yes");
 		} else {
 			changes.add("button_operated", "no");
 		}
 	}
 
-	@Override public String getCommitMessage() { return "add button_operated tag"; }
+	@Override public String getCommitMessage() { return "add whether traffic signals have a button for pedestrians"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_traffic_lights; }
 	@Override public int getTitle(@NonNull Map<String, String> tags)
 	{
