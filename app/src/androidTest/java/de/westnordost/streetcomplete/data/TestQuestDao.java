@@ -56,8 +56,8 @@ public class TestQuestDao extends AQuestDao<Quest>
 
 		insert.bindLong(1, quest.getId());
 		insert.bindString(2, quest.getStatus().name());
-		insert.bindDouble(3, quest.getMarkerLocation().getLatitude());
-		insert.bindDouble(4, quest.getMarkerLocation().getLongitude());
+		insert.bindDouble(3, quest.getCenter().getLatitude());
+		insert.bindDouble(4, quest.getCenter().getLongitude());
 		insert.bindDouble(5, quest.getLastUpdate().getTime());
 
 		return insert.executeInsert();
@@ -75,8 +75,8 @@ public class TestQuestDao extends AQuestDao<Quest>
 	{
 		ContentValues v = new ContentValues();
 		v.put(ID_COL, quest.getId());
-		v.put(LAT_COL, quest.getMarkerLocation().getLatitude());
-		v.put(LON_COL, quest.getMarkerLocation().getLongitude());
+		v.put(LAT_COL, quest.getCenter().getLatitude());
+		v.put(LON_COL, quest.getCenter().getLongitude());
 		return v;
 	}
 
@@ -91,7 +91,7 @@ public class TestQuestDao extends AQuestDao<Quest>
 		Quest quest = mock(Quest.class);
 		when(quest.getStatus()).thenReturn(status);
 		when(quest.getId()).thenReturn(id);
-		when(quest.getMarkerLocation()).thenReturn(new OsmLatLon(lat,lon));
+		when(quest.getCenter()).thenReturn(new OsmLatLon(lat,lon));
 		when(quest.getLastUpdate()).thenReturn(new Date(time));
 		return quest;
 	}

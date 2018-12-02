@@ -256,7 +256,7 @@ public class OsmQuestDaoTest extends ApplicationDbTestCase
 		assertEquals(quest.getChanges(), dbQuest.getChanges());
 		assertEquals(quest.getChangesSource(), dbQuest.getChangesSource());
 		assertEquals(quest.getGeometry(), dbQuest.getGeometry());
-		assertEquals(quest.getMarkerLocation(), dbQuest.getMarkerLocation());
+		assertEquals(quest.getCenter(), dbQuest.getCenter());
 		// is now updated to current time on DB insert
 		// no: assertEquals(quest.getLastUpdate(), dbQuest.getLastUpdate());
 	}
