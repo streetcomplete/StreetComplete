@@ -286,6 +286,7 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="quest_wheelchairAccess_location_name_title">Is the location %s wheelchair accessible?</string>
     <string name="quest_wheelchairAccess_limited">Partially</string>
     <string name="quest_wheelchairAccess_limited_description_business">Partially means that there is no more than a single step to access the place and that most rooms inside are wheelchair accessible.</string>
+    <string name="quest_wheelchairAccess_limited_description_outside">Partially means that there is no more than a single step to access it.</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">Partially means that there is no more than a single step to access it.</string>
     <string name="quest_wheelchairAccess_description_toilets">A wheelchair sign like this might be visible if the restroom is accessible.
     Partially means that a wheelchair can enter and use the restroom, but no handrail or adapted hand basin is present.</string>
@@ -622,6 +623,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_tracktype_grade3">Mixture</string>
     <string name="quest_tracktype_grade4">Mostly soft</string>
     <string name="quest_tracktype_grade5">Soft</string>
+    <string name="quest_wheelchairAccess_outside_title">Is this place wheelchair accessible?</string>
     <string name="quest_building_underground_name_title">Is %s completely underground?</string>
     <string name="quest_building_underground_title">Is this building completely underground?</string>
     <string name="quest_traffic_signals_sound_title">Are there sound signals for the blind here?</string>
