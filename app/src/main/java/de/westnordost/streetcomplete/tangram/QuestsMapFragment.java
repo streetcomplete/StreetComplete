@@ -50,7 +50,8 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 	private MapData questsLayer;
 	private MapData geometryLayer;
 
-	private Float previousZoom = null;
+	private Float zoomBeforeShowingQuest = null;
+	private LngLat positionBeforeShowingQuest = null;
 
 	private LngLat lastPos;
 	private Rect lastDisplayedRect;
@@ -174,7 +175,8 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 
 	private void zoomAndMoveToContain(ElementGeometry g)
 	{
-		previousZoom = controller.getZoom();
+		zoomBeforeShowingQuest = controller.getZoom();
+		positionBeforeShowingQuest = controller.getPosition();
 
 		float targetZoom = getMaxZoomThatContains(g);
 		if(Float.isNaN(targetZoom) || targetZoom > MAX_QUEST_ZOOM)
@@ -250,7 +252,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 	@Override protected boolean shouldCenterCurrentPosition()
 	{
 		// don't center position while displaying a quest
-		return super.shouldCenterCurrentPosition() && previousZoom == null;
+		return super.shouldCenterCurrentPosition() && zoomBeforeShowingQuest == null;
 	}
 
 	protected void updateView()
@@ -338,10 +340,12 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 	public void removeQuestGeometry()
 	{
 		if(geometryLayer != null) geometryLayer.clear();
-		if(controller != null && previousZoom != null)
+		if(controller != null)
 		{
-			controller.setZoomEased(previousZoom, 500);
-			previousZoom = null;
+			if(zoomBeforeShowingQuest != null) controller.setZoomEased(zoomBeforeShowingQuest, 500);
+			if(positionBeforeShowingQuest != null) controller.setPositionEased(positionBeforeShowingQuest, 500);
+			zoomBeforeShowingQuest = null;
+			positionBeforeShowingQuest = null;
 			followPosition();
 		}
 	}
