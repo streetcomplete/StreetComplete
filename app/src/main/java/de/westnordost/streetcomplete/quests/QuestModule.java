@@ -61,6 +61,7 @@ import de.westnordost.streetcomplete.quests.surface.AddRoadSurface;
 import de.westnordost.streetcomplete.quests.roof_shape.AddRoofShape;
 import de.westnordost.streetcomplete.quests.sport.AddSport;
 import de.westnordost.streetcomplete.quests.traffic_signals_sound.AddTrafficSignalsSound;
+import de.westnordost.streetcomplete.quests.traffic_signals_button.AddTrafficSignalsButton;
 import de.westnordost.streetcomplete.quests.way_lit.AddWayLit;
 import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelChairAccessPublicTransport;
 import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelChairAccessToilets;
@@ -147,6 +148,7 @@ public class QuestModule
 				new AddPowerPolesMaterial(o),
 				new AddCarWashType(o),
 				new AddBenchBackrest(o),
+				new AddTrafficSignalsButton(o),
 		};
 
 		return new QuestTypeRegistry(Arrays.asList(questTypesOrderedByImportance));
