@@ -30,6 +30,8 @@ import de.westnordost.streetcomplete.quests.diet_type.AddVegetarian;
 import de.westnordost.streetcomplete.quests.fire_hydrant.AddFireHydrantType;
 import de.westnordost.streetcomplete.quests.internet_access.AddInternetAccess;
 import de.westnordost.streetcomplete.quests.max_height.AddMaxHeight;
+import de.westnordost.streetcomplete.quests.motorcycle_parking_capacity.AddMotorcycleParkingCapacity;
+import de.westnordost.streetcomplete.quests.motorcycle_parking_cover.AddMotorcycleParkingCover;
 import de.westnordost.streetcomplete.quests.oneway.AddOneway;
 import de.westnordost.streetcomplete.quests.oneway.TrafficFlowSegmentsDao;
 import de.westnordost.streetcomplete.quests.oneway.WayTrafficFlowDao;
@@ -111,6 +113,7 @@ public class QuestModule
 				new AddInternetAccess(o),
 				new AddParkingAccess(o),
 				new AddParkingFee(o),
+				new AddMotorcycleParkingCapacity(o),
 				new AddBusStopName(o),
 				new AddPathSurface(o),
 				new AddTracktype(o),
@@ -143,6 +146,7 @@ public class QuestModule
 				// ↓ 8. defined in the wiki, but not really used by anyone yet. Just collected for
 				//      the sake of mapping it in case it makes sense later
 				new AddBikeParkingCover(o),
+				new AddMotorcycleParkingCover(o),
 				new AddToiletsFee(o),
 				new AddBabyChangingTable(o),
 				new AddFireHydrantType(o),
