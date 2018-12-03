@@ -29,14 +29,13 @@ import de.westnordost.streetcomplete.ApplicationConstants;
 import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.data.QuestGroup;
 import de.westnordost.streetcomplete.data.QuestStatus;
-import de.westnordost.streetcomplete.data.QuestType;
 import de.westnordost.streetcomplete.data.VisibleQuestListener;
 import de.westnordost.streetcomplete.data.changesets.OpenChangesetInfo;
 import de.westnordost.streetcomplete.data.changesets.OpenChangesetKey;
 import de.westnordost.streetcomplete.data.changesets.OpenChangesetsDao;
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.OsmQuest;
-import de.westnordost.streetcomplete.data.osm.OsmQuestUnlocker;
+import de.westnordost.streetcomplete.data.osm.OsmQuestGiver;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChanges;
 import de.westnordost.streetcomplete.data.osm.persist.AOsmQuestDao;
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao;
@@ -58,9 +57,10 @@ public abstract class AOsmQuestChangesUpload
 	private final ChangesetsDao changesetsDao;
 	private final DownloadedTilesDao downloadedTilesDao;
 	private final SharedPreferences prefs;
-	private final OsmQuestUnlocker questUnlocker;
+	private final OsmQuestGiver questUnlocker;
 
-	private List<OsmQuest> unlockedQuests;
+	private List<OsmQuest> createdQuests;
+	private List<Long> removedQuestIds;
 	private VisibleQuestListener visibleQuestListener;
 
 	// The cache is just here so that uploading 500 quests of same quest type does not result in 500 DB requests.
@@ -71,7 +71,7 @@ public abstract class AOsmQuestChangesUpload
 			ElementGeometryDao elementGeometryDB, QuestStatisticsDao statisticsDB,
 			OpenChangesetsDao openChangesetsDB, ChangesetsDao changesetsDao,
 			DownloadedTilesDao downloadedTilesDao, SharedPreferences prefs,
-			OsmQuestUnlocker questUnlocker)
+			OsmQuestGiver questUnlocker)
 	{
 		this.osmDao = osmDao;
 		this.questDB = questDB;
@@ -83,7 +83,8 @@ public abstract class AOsmQuestChangesUpload
 		this.downloadedTilesDao = downloadedTilesDao;
 		this.prefs = prefs;
 		this.questUnlocker = questUnlocker;
-		unlockedQuests = new ArrayList<>();
+		createdQuests = new ArrayList<>();
+		removedQuestIds = new ArrayList<>();
 	}
 
 	public synchronized void setVisibleQuestListener(VisibleQuestListener visibleQuestListener)
@@ -95,7 +96,8 @@ public abstract class AOsmQuestChangesUpload
 	{
 		int commits = 0, obsolete = 0;
 		changesetIdsCache = new HashMap<>();
-		unlockedQuests = new ArrayList<>();
+		createdQuests.clear();
+		removedQuestIds.clear();
 
 		HashSet<OsmElementQuestType> uploadedQuestTypes = new HashSet<>();
 
@@ -127,14 +129,23 @@ public abstract class AOsmQuestChangesUpload
 
 		Log.i(TAG, logMsg);
 
-		if(!unlockedQuests.isEmpty())
+		if(!createdQuests.isEmpty())
 		{
-			int unlockedQuestsCount = unlockedQuests.size();
+			int createdQuestsCount = createdQuests.size();
 			if(visibleQuestListener != null)
 			{
-				visibleQuestListener.onQuestsCreated(unlockedQuests, QuestGroup.OSM);
+				visibleQuestListener.onQuestsCreated(createdQuests, QuestGroup.OSM);
 			}
-			Log.i(TAG, "Unlocked " + unlockedQuestsCount + " new quests");
+			Log.i(TAG, "Created " + createdQuestsCount + " new quests");
+		}
+		if(!removedQuestIds.isEmpty())
+		{
+			int removedQuestsCount = removedQuestIds.size();
+			if(visibleQuestListener != null)
+			{
+				visibleQuestListener.onQuestsRemoved(removedQuestIds, QuestGroup.OSM);
+			}
+			Log.i(TAG, "Removed " + removedQuestsCount + " quests which are no longer applicable");
 		}
 
 		closeOpenChangesets();
@@ -255,7 +266,9 @@ public abstract class AOsmQuestChangesUpload
 		elementDB.put(updatedElement);
 		statisticsDB.addOne(quest.getType().getClass().getSimpleName());
 
-		unlockedQuests.addAll(questUnlocker.unlockNewQuests(updatedElement));
+		OsmQuestGiver.QuestUpdates questUpdates = questUnlocker.updateQuests(updatedElement);
+		createdQuests.addAll(questUpdates.createdQuests);
+		removedQuestIds.addAll(questUpdates.removedQuestIds);
 
 		return true;
 	}

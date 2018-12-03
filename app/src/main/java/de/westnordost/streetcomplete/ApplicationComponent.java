@@ -22,8 +22,7 @@ import de.westnordost.streetcomplete.quests.postbox_collection_times.AddCollecti
 import de.westnordost.streetcomplete.settings.SettingsActivity;
 import de.westnordost.streetcomplete.settings.SettingsFragment;
 import de.westnordost.streetcomplete.settings.QuestSelectionFragment;
-import de.westnordost.streetcomplete.statistics.UploadedAnswersCounter;
-import de.westnordost.streetcomplete.statistics.UnsyncedChangesCounter;
+import de.westnordost.streetcomplete.statistics.AnswersCounter;
 import de.westnordost.streetcomplete.tangram.MapControlsFragment;
 import de.westnordost.streetcomplete.tangram.QuestsMapFragment;
 import de.westnordost.streetcomplete.util.SerializedSavedState;
@@ -45,8 +44,7 @@ public interface ApplicationComponent
 	void inject(SettingsFragment settingsFragment);
 	void inject(SettingsActivity settingsActivity);
 
-	void inject(UploadedAnswersCounter uploadedAnswersCounter);
-	void inject(UnsyncedChangesCounter unsyncedChangesCounter);
+	void inject(AnswersCounter answersCounter);
 
 	void inject(AddOpeningHoursForm addOpeningHoursForm);
 	void inject(AddLocalizedNameForm addLocalizedNameForm);

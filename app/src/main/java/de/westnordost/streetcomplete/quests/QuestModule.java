@@ -34,6 +34,7 @@ import de.westnordost.streetcomplete.quests.oneway.WayTrafficFlowDao;
 import de.westnordost.streetcomplete.quests.parking_access.AddParkingAccess;
 import de.westnordost.streetcomplete.quests.parking_fee.AddParkingFee;
 import de.westnordost.streetcomplete.quests.parking_type.AddParkingType;
+import de.westnordost.streetcomplete.quests.playground_access.AddPlaygroundAccess;
 import de.westnordost.streetcomplete.quests.postbox_collection_times.AddPostboxCollectionTimes;
 import de.westnordost.streetcomplete.quests.powerpoles_material.AddPowerPolesMaterial;
 import de.westnordost.streetcomplete.quests.orchard_produce.AddOrchardProduce;
@@ -102,6 +103,8 @@ public class QuestModule
 				new AddParkingFee(o),
 				new AddBusStopName(o),
 				new AddPathSurface(o),
+				new AddBikeParkingType(o), // used by OsmAnd
+				new AddPlaygroundAccess(o), //late as in many areas all needed access=private is already mapped
 
 				// ↓ 4. definitely shown as errors in QA tools
 
@@ -120,7 +123,6 @@ public class QuestModule
 				new AddBridgeStructure(o),
 				new AddWheelChairAccessToilets(o),
 				new AddReligionToWaysideShrine(o),
-				new AddBikeParkingType(o),
 				new MarkCompletedBuildingConstruction(o),
 
 				// ↓ 8. defined in the wiki, but not really used by anyone yet. Just collected for

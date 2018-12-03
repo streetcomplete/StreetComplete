@@ -28,6 +28,7 @@ import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestDao;
 import de.westnordost.streetcomplete.data.tiles.DownloadedTilesDao;
 import de.westnordost.streetcomplete.location.LocationRequestFragment;
 import de.westnordost.streetcomplete.oauth.OsmOAuthDialogFragment;
+import de.westnordost.streetcomplete.sound.SoundFx;
 import de.westnordost.streetcomplete.tools.CrashReportExceptionHandler;
 
 @Module
@@ -103,5 +104,10 @@ public class ApplicationModule
 	@Provides public static OsmOAuthDialogFragment osmOAuthFragment()
 	{
 		return new OsmOAuthDialogFragment();
+	}
+
+	@Provides public SoundFx soundFx()
+	{
+		return new SoundFx(appContext());
 	}
 }

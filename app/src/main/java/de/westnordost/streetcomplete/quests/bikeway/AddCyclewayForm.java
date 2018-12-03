@@ -279,7 +279,7 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 						ImageView iconView = itemView.findViewById(R.id.imageView);
 						TextView textView = itemView.findViewById(R.id.textView);
 						int resId = item.getIconResId(isLeftHandTraffic());
-						iconView.setImageDrawable(getCurrentCountryResources().getDrawable(resId));
+						iconView.setImageDrawable(getResources().getDrawable(resId));
 						textView.setText(item.nameResId);
 						itemView.setOnClickListener(view -> callback.onCyclewaySelected(item));
 					}
