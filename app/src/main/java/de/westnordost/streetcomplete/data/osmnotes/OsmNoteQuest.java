@@ -66,9 +66,9 @@ public class OsmNoteQuest implements Quest
 		return id;
 	}
 
-	@Override public LatLon getMarkerLocation()
+	@Override public LatLon[] getMarkerLocations()
 	{
-		return note.position;
+		return new LatLon[]{note.position};
 	}
 
 	@Override public ElementGeometry getGeometry()
@@ -79,7 +79,12 @@ public class OsmNoteQuest implements Quest
 		// will/should likely not show up for other users of this app
 
 		// no geometry other than the marker location
-		return new ElementGeometry(getMarkerLocation());
+		return new ElementGeometry(getCenter());
+	}
+
+	@Override public LatLon getCenter()
+	{
+		return note.position;
 	}
 
 	public Note getNote()

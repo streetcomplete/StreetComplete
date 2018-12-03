@@ -75,4 +75,6 @@ public class MarkCompletedHighwayConstruction extends MarkCompletedConstruction
 		}
 		return R.string.quest_construction_generic_title;
 	}
+
+	@Override public boolean hasMarkersAtEnds() { return true; }
 }

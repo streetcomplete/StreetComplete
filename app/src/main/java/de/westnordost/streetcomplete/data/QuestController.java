@@ -152,7 +152,7 @@ public class QuestController
 		if(q == null || q.getStatus() != QuestStatus.NEW) return false;
 
 		CreateNote createNote = new CreateNote();
-		createNote.position = q.getMarkerLocation();
+		createNote.position = q.getCenter();
 		createNote.text = text;
 		createNote.questTitle = questTitle;
 		createNote.elementType = q.getElementType();

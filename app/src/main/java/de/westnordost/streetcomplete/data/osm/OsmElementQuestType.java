@@ -42,4 +42,7 @@ public interface OsmElementQuestType extends QuestType
 
 	/** The quest type can clean it's metadata here, if any */
 	void cleanMetadata();
+
+	/** @return whether the markers should be at the ends instead of the center */
+	boolean hasMarkersAtEnds();
 }

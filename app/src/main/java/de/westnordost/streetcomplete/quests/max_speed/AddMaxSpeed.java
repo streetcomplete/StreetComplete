@@ -90,4 +90,6 @@ public class AddMaxSpeed extends SimpleOverpassQuestType
 		// see #813: US has different rules for each different state which need to be respected
 		return Countries.allExcept(new String[]{"US"});
 	}
+
+	@Override public boolean hasMarkersAtEnds() { return true; }
 }

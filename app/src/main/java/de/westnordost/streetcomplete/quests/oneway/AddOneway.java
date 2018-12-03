@@ -169,4 +169,6 @@ public class AddOneway extends AOsmElementQuestType
 	{
 		return R.string.quest_oneway_title;
 	}
+
+	@Override public boolean hasMarkersAtEnds() { return true; }
 }

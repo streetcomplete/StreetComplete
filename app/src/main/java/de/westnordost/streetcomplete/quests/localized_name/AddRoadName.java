@@ -147,4 +147,6 @@ public class AddRoadName extends AOsmElementQuestType
 		if (isPedestrian) return R.string.quest_streetName_pedestrian_title;
 		else return R.string.quest_streetName_title;
 	}
+
+	@Override public boolean hasMarkersAtEnds() { return true; }
 }

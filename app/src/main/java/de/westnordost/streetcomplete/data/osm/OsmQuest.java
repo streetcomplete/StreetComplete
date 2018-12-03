@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.data.osm;
 import android.support.annotation.Nullable;
 
 import java.util.Date;
+import java.util.List;
 
 import de.westnordost.streetcomplete.data.Quest;
 import de.westnordost.streetcomplete.data.QuestStatus;
@@ -10,6 +11,7 @@ import de.westnordost.streetcomplete.data.osm.changes.StringMapChanges;
 import de.westnordost.streetcomplete.data.QuestType;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.map.data.LatLon;
+import de.westnordost.streetcomplete.util.SphericalEarthMath;
 
 /** Represents one task for the user to complete/correct the data based on one OSM element */
 public class OsmQuest implements Quest
@@ -56,7 +58,24 @@ public class OsmQuest implements Quest
 		return id;
 	}
 
-	@Override public LatLon getMarkerLocation()
+	@Override public LatLon[] getMarkerLocations()
+	{
+		if(getOsmElementQuestType().hasMarkersAtEnds() && geometry.polylines != null)
+		{
+			List<LatLon> polyline = geometry.polylines.get(0);
+			double length = SphericalEarthMath.distance(polyline);
+			if(length > 15*4)
+			{
+				return new LatLon[]{
+					SphericalEarthMath.pointOnPolylineFromStart(polyline, 15),
+					SphericalEarthMath.pointOnPolylineFromEnd(polyline, 15),
+				};
+			}
+		}
+		return new LatLon[]{getCenter()};
+	}
+
+	@Override public LatLon getCenter()
 	{
 		return geometry.center;
 	}

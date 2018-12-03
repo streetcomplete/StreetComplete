@@ -111,7 +111,7 @@ public class OsmNoteQuestChangesUpload
 
 	private static String getNoteQuestStringForLog(OsmNoteQuest n)
 	{
-		LatLon pos = n.getMarkerLocation();
+		LatLon pos = n.getCenter();
 		return "\"" + n.getComment() + "\" at " + pos.getLatitude() + ", " + pos.getLongitude();
 	}
 }

@@ -759,7 +759,7 @@ public class MainActivity extends AppCompatActivity implements
 		int size = (int) DpUtil.toPx(42, this);
 		int[] offset = new int[2];
 		mapFragment.getView().getLocationOnScreen(offset);
-		PointF startPos = mapFragment.getPointOf(quest.getMarkerLocation());
+		PointF startPos = mapFragment.getPointOf(quest.getCenter());
 		startPos.x += offset[0] - size/2;
 		startPos.y += offset[1] - size*1.5;
 		showMarkerSolvedAnimation(quest.getType().getIcon(), startPos, source);
