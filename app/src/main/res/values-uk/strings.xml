@@ -278,6 +278,8 @@
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_location_name_title">"Чи доступне місце %s для інвалідних візків?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_business">"«Частково» значить, що для доступу треба зробити не більше кроку і що більшість кімнат всередині обладнані для інвалідних візків."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"«Частково» значить, що для доступу треба зробити не більше кроку."</string>
 

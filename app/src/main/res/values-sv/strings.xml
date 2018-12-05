@@ -275,6 +275,8 @@ Den information du anger skickas sedan direkt till OpenStreetMap i ditt namn, ut
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_location_name_title">"Är %s tillgänglig med rullstol?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_business">"Delvis innebär att det inte finns mer än ett enda steg för att komma åt verksamheten och att de flesta rum inuti är rullstolsanpassade."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"Delvis innebär att det inte finns mer än ett enda steg för att komma åt det."</string>
 

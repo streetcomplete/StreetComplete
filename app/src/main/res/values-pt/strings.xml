@@ -29,9 +29,9 @@
     <string name="quest_leave_new_note_title">"Prefere deixar uma nota/erro para outros utilizadores?"</string>
     <string name="quest_leave_new_note_description">"Pode deixar um erro reportado publicamente nesta localização para que outros contribuidores possam comentar e resolver a questão."</string>
     <string name="quest_leave_new_note_yes">"OK"</string>
-    <string name="quest_leave_new_note_no">"Não, apenas ocultar"</string>
+    <string name="quest_leave_new_note_no">"Apenas não mostrar mais"</string>
     <string name="quest_streetName_title">"Qual o nome desta estrada?"</string>
-    <string name="quest_streetName_description">"Como escrito na sinalética da rua. As abreviaturas são expandidas automaticamente:"</string>
+    <string name="quest_streetName_description">"Digitar tal qual a placa da rua. As abreviaturas são expandidas automaticamente."</string>
     <string name="quest_streetName_answer_noName_confirmation_description">"Por vezes a sinalética com o nome da rua está apenas disponível numa das extremidades. Além disso, em ruas compridas pode não existir sinalética em todos os cruzamentos. Normalmente qualquer rua com casas possui nome."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Se o nome puder ser pronunciado sem abreviatura, então deve ser expandido. As abreviaturas mais comuns são expandidas automaticamente, mas nem todas."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Sem abreviatura"</string>
@@ -244,6 +244,8 @@ A informação que submeter nesta app é adicionada diretamente ao OpenStreetMap
     <string name="quest_wheelchairAccess_subway_entrance_name_title">"A entrada da estação de metro %s é acessível a cadeira de rodas?"</string>
     <string name="quest_wheelchairAccess_railway_station_name_title">"A entrada da estação de comboios %s é acessível a cadeira de rodas?"</string>
     <string name="quest_wheelchairAccess_location_name_title">"O local %s é acessível a cadeira de rodas?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_business">"Parcialmente significa que não existe mais do que um degrau baixo para aceder ao local e que a maioria dos quartos interiores, são acessíveis em cadeira de rodas."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"Parcialmente significa que não existe mais do que um degrau para aceder ao local."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Abreviatura no nome %s?"</string>
@@ -611,4 +613,20 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="privacy_html_image_upload2">"&lt;p&gt;As fotografias que anexar a um erro reportado/nota são enviados para o meu servidor e eliminadas após alguns dias após o erro ser resolvido. Os meta-dados das fotografias são eliminados antes do envio.&lt;/p&gt;"</string>
     <string name="action_deselect_all">"Desmarcar todos"</string>
     <string name="quest_buildingType_retail_description">"incluindo edifícios de restaurantes, cafés…"</string>
+    <string name="quest_openingHours_timeSelect_next">"Próximo"</string>
+    <string name="quest_tracktype_title">"Qual o tipo de firmeza da superfície desta desta trilho?"</string>
+    <string name="quest_tracktype_grade1">"Sólido"</string>
+    <string name="quest_tracktype_grade2">"Praticamente sólido"</string>
+    <string name="quest_tracktype_grade3">"Mistura"</string>
+    <string name="quest_tracktype_grade4">"Praticamente brando"</string>
+    <string name="quest_tracktype_grade5">"Brando"</string>
+    <string name="quest_building_underground_name_title">"%s é completamente abaixo do solo?"</string>
+    <string name="quest_building_underground_title">"Este edifício é totalmente abaixo do solo?"</string>
+    <string name="quest_traffic_signals_sound_title">"Há sinalização sonora para invisuais?"</string>
+    <string name="quest_wheelchairAccess_limited_description_outside">"Parcialmente significa que não há mais que um degrau para aceder."</string>
+    <string name="quest_wheelchairAccess_outside_title">"Este local é acessível a cadeiras de rodas?"</string>
+    <string name="quest_traffic_signals_button_title">"Estes semáforos possuem um botão para solicitar sinal verde?"</string>
+    <string name="quest_motorcycleParkingCapacity_title">"Quantos motociclos podem ser estacionados aqui?"</string>
+    <string name="quest_motorcycleParkingCoveredStatus_title">"Este estacionamento de motociclos é coberto (protegido da chuva)?"</string>
+    <string name="default_disabled_msg_maxspeed">"Este tipo de desafio está desativado por defeito, já que usualmente é necessário que verifique que a totalidade da rua possui sinais de limite de velocidade, não apenas a secção seleccionada. Por vezes, é o que falta para completar um dos desafios."</string>
 </resources>

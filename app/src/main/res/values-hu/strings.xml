@@ -280,6 +280,8 @@ Ha az utcában az egész kijelölt szakaszon nincs jelzőtábla, akkor az alapé
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_location_name_title">"%s akadálymentes?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_business">"A „részben” azt jelenti, hogy a bejáratnál legfeljebb egy lépcsőfok van, és a legtöbb helyiség használható kerekesszékkel."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"A „részben” azt jelenti, hogy legfeljebb egy lépcsőfokot kell megtenni."</string>
 
@@ -656,4 +658,20 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="privacy_html_image_upload2">"&lt;p&gt;A jegyzethez csatolt fényképek a mi szerverünkre vannak feltöltve; metaadataikat a feltöltés előtt eltávolítjuk. A jegyzet megoldása után pár nappal a fényképek törlődnek.&lt;/p&gt;"</string>
     <string name="action_deselect_all">"Kijelölés megszüntetése"</string>
     <string name="quest_buildingType_retail_description">"többek között éttermek, kávéházak stb. épületei"</string>
+    <string name="quest_openingHours_timeSelect_next">"Következő"</string>
+    <string name="quest_tracktype_title">"Mennyire szilárd ennek a pályának a felszíne?"</string>
+    <string name="quest_tracktype_grade1">"Szilárd"</string>
+    <string name="quest_tracktype_grade2">"Viszonylag szilárd"</string>
+    <string name="quest_tracktype_grade3">"Vegyes"</string>
+    <string name="quest_tracktype_grade4">"Viszonylag puha"</string>
+    <string name="quest_tracktype_grade5">"Puha"</string>
+    <string name="quest_building_underground_name_title">"Teljesen a föld alatt van ez: %s?"</string>
+    <string name="quest_building_underground_title">"Teljesen a föld alatt van-e ez az épület?"</string>
+    <string name="quest_traffic_signals_sound_title">"Van-e itt vakoknak szóló hangjelzés?"</string>
+    <string name="quest_wheelchairAccess_limited_description_outside">"A „részben” azt jelenti, hogy legfeljebb egy lépcsőfokkal el lehet érni."</string>
+    <string name="quest_wheelchairAccess_outside_title">"Akadálymentes-e ez a hely?"</string>
+    <string name="quest_traffic_signals_button_title">"Van-e ezen a jelzőlámpán olyan gomb, amellyel zöld jelzést lehet kérni?"</string>
+    <string name="quest_motorcycleParkingCapacity_title">"Hány motorkerékpár parkolhat itt?"</string>
+    <string name="quest_motorcycleParkingCoveredStatus_title">"Fedett (esőtől védett) ez a motorkerékpár-parkoló?"</string>
+    <string name="default_disabled_msg_maxspeed">"Ez a kérdéstípus alapértelmezésben ki van kapcsolva, mert általában nem csak a kiemelt szakaszt, hanem az egész utcát végig kellene nézni a sebességkorlátozások szempontjából. Ez eléggé elnyújthatja ennek az egyetlen kérdésnek a megválaszolását."</string>
 </resources>

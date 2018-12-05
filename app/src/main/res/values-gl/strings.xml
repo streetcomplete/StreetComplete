@@ -250,6 +250,8 @@ Se non hai sinais no treito escollido empregaranse os límites da velocidade xer
     <string name="quest_wheelchairAccess_subway_entrance_name_title">"Pódese circular pola entrada do metro %s cunha cadeira de rodas?"</string>
     <string name="quest_wheelchairAccess_railway_station_name_title">"Pódese acceder á estación de trens %s cunha cadeira de rodas?"</string>
     <string name="quest_wheelchairAccess_location_name_title">"Podes acceder á localización %s nunha cadeira de rodas?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_business">"Significa de xeito parcial que non hai máis dun chanzo en todo o percorrido e que se pode acceder á meirande parte das salas nunha cadeira de rodas."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"Significa de xeito parcial que non hai máis dun chanzo en todo o percorrido."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"%s contén algunha abreviación?"</string>
@@ -608,4 +610,20 @@ Por exemplo 1,3 ou 2-6."</string>
     <string name="privacy_html_image_upload2">"&lt;p&gt;As imaxes que achegues cara unha nota son subidas ó meu servidor e eliminadas algúns días despois de que a nota fora resolta. Os metadatos son eliminados antes da subida.&lt;/p&gt;"</string>
     <string name="action_deselect_all">"Deseleccionar todo"</string>
     <string name="quest_buildingType_retail_description">"incluíndo edificios para restaurantes, cafetarías..."</string>
+    <string name="quest_openingHours_timeSelect_next">"Seguinte"</string>
+    <string name="quest_tracktype_title">"Cal é a solidez da superficie deste camiño?"</string>
+    <string name="quest_tracktype_grade1">"Sólido"</string>
+    <string name="quest_tracktype_grade2">"Moi sólido"</string>
+    <string name="quest_tracktype_grade3">"Mestura"</string>
+    <string name="quest_tracktype_grade4">"Moi brando"</string>
+    <string name="quest_tracktype_grade5">"Brando"</string>
+    <string name="quest_building_underground_name_title">"Está %s embaixo de xeito completo?"</string>
+    <string name="quest_building_underground_title">"Este edificio está embaixo de xeito completo?"</string>
+    <string name="quest_traffic_signals_sound_title">"Hai eiquí sinais con aparellos de son para cegos?"</string>
+    <string name="quest_wheelchairAccess_limited_description_outside">"Significa que de xeito parcial non hai máis que un só chanzo para entrar."</string>
+    <string name="quest_wheelchairAccess_outside_title">"Este lugar é accesíbel nunha cadeira de rodas?"</string>
+    <string name="quest_traffic_signals_button_title">"Estes semáforos teñen un botón para solicitar luz verde?"</string>
+    <string name="quest_motorcycleParkingCapacity_title">"Cantas motos pódense aparcar eiquí?"</string>
+    <string name="quest_motorcycleParkingCoveredStatus_title">"Este aparcadoiro de motos está coberto (protexido da choiva)?"</string>
+    <string name="default_disabled_msg_maxspeed">"Este tipo de procura está deshabilitada de xeito predeterminado porque, polo xeral, precísase que comprobe toda a rúa na procura de sinais de límite da velocidade, non só a escolla resaltada. Ás veces, isto pode ser moi difícil só para resolver unha soa procura."</string>
 </resources>

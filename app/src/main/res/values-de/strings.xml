@@ -612,4 +612,20 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="privacy_html_image_upload2">"&lt;p&gt;Fotos, die an Notizen angehängt werden, werden auf meinen Server hochgeladen und einige Tage nachdem die Notiz geschlossen wurde, gelöscht. Ihre Metadaten werden vor dem Hochladen entfernt.&lt;/p&gt;"</string>
     <string name="action_deselect_all">"Alle abwählen"</string>
     <string name="quest_buildingType_retail_description">"inklusive Gebäude für Restaurants, Cafés, …"</string>
+    <string name="quest_openingHours_timeSelect_next">"Weiter"</string>
+    <string name="quest_tracktype_title">"Wie gut ist dieser Weg befestigt?"</string>
+    <string name="quest_tracktype_grade1">"Befestigt"</string>
+    <string name="quest_tracktype_grade2">"Größtenteils befestigt"</string>
+    <string name="quest_tracktype_grade3">"Gemischt"</string>
+    <string name="quest_tracktype_grade4">"Größtenteils unbefestigt"</string>
+    <string name="quest_tracktype_grade5">"Unbefestigt"</string>
+    <string name="quest_building_underground_name_title">"Ist %s komplett unterirdisch?"</string>
+    <string name="quest_building_underground_title">"Ist dieses Gebäude komplett unterirdisch?"</string>
+    <string name="quest_traffic_signals_sound_title">"Gibt es hier akustische Signale für Sehbehinderte?"</string>
+    <string name="quest_wheelchairAccess_limited_description_outside">"Teilweise bedeutet, dass es nicht mehr als eine Stufe zu überwinden gilt."</string>
+    <string name="quest_wheelchairAccess_outside_title">"Ist dieser Ort zugänglich für Rollstühle?"</string>
+    <string name="quest_traffic_signals_button_title">"Ist dies eine Druckampel?"</string>
+    <string name="quest_motorcycleParkingCapacity_title">"Wie viele Motorräder können hier abgestellt werden?"</string>
+    <string name="quest_motorcycleParkingCoveredStatus_title">"Ist der Motorradstellplatz überdacht (Schutz vor Regen)?"</string>
+    <string name="default_disabled_msg_maxspeed">"Dieser Aufgabentyp ist standardmäßig deaktiviert, weil du normalerweise die ganze Straße nach entsprechenden Schildern absuchen musst, nicht nur den hervorgehobenen Abschnitt. Das kann manchmal eine ganz schöne Strecke sein um bloß eine einzige Aufgabe zu lösen."</string>
 </resources>

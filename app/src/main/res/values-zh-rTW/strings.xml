@@ -280,6 +280,8 @@
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_location_name_title">"%s  是否輪椅通行無阻？"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_business">"部分可通行意味沒有多過一個步驟，就可以進到場所裡，並且裡面的房間是輪椅可通行的狀況。"</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"部分可通行意味沒有多過一個步驟，就可以進到場所裡。"</string>
 
@@ -661,4 +663,16 @@
 "</string>
     <string name="action_deselect_all">"取消選取全部"</string>
     <string name="quest_buildingType_retail_description">"包含有餐廳、咖啡廳等的建築"</string>
+    <string name="quest_openingHours_timeSelect_next">"下一個"</string>
+    <string name="quest_tracktype_grade1">"剛性路面"</string>
+    <string name="quest_tracktype_grade2">"偏剛性路面"</string>
+    <string name="quest_tracktype_grade3">"混合型路面"</string>
+    <string name="quest_tracktype_grade4">"偏柔性路面"</string>
+    <string name="quest_tracktype_grade5">"柔性唔面"</string>
+    <string name="quest_building_underground_name_title">"%s 完全位於地面以下嗎？"</string>
+    <string name="quest_building_underground_title">"這座建物完全在地面以下嗎？"</string>
+    <string name="quest_traffic_signals_sound_title">"這裡有引導視障人士用的輔助聲響信號嗎？"</string>
+    <string name="quest_wheelchairAccess_outside_title">"這個地方輪椅可以進入嗎？"</string>
+    <string name="quest_motorcycleParkingCapacity_title">"這裡可以停泊多少台機車/電單車？"</string>
+    <string name="quest_motorcycleParkingCoveredStatus_title">"這個機車/電單車停車場屬於有蓋式嗎(可遮陽擋雨)？"</string>
 </resources>

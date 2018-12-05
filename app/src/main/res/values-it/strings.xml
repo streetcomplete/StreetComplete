@@ -10,22 +10,22 @@
     <string name="pref_category_communication">"Comunicazione"</string>
     <string name="pref_category_display">"Schermo"</string>
     <string name="pref_title_authorization">"Autorizza accesso ad OSM"</string>
-    <string name="pref_title_not_authorized_summary">"da autorizzare"</string>
+    <string name="pref_title_not_authorized_summary">"Non ancora autorizzata"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
     <string name="pref_tilecache_size_message">"Megabyte di spazio sul supporto esterno per memorizzare le mappe nella cache"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Mostra tutte le note"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Visualizza anche le note non presentate come domande"</string>
-    <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Ignorare le note non presentate come domande"</string>
+    <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Ignora le note non presentate come domande"</string>
     <string name="pref_title_map_cache">"Dimensioni della cache per la mappa"</string>
     <string name="map_btn_gps_tracking">"Seguimi"</string>
     <string name="map_attribution_mapzen">"Powered by %s"</string>
-    <string name="map_attribution_osm">"© contributori OpenStreetMap"</string>
+    <string name="map_attribution_osm">"© OpenStreetMap contributors"</string>
     <string name="quest_generic_otherAnswers">"Altre risposte…"</string>
 
     <!-- Potrebbe essere più friendly "Non so dirlo"? -->
     <string name="quest_generic_answer_notApplicable">"Non lo so"</string>
     <string name="quest_generic_confirmation_title">"Sei sicuro?"</string>
-    <string name="quest_generic_confirmation_yes">"Sì. Ne sono certo"</string>
+    <string name="quest_generic_confirmation_yes">"Sì, sono sicuro"</string>
     <string name="quest_generic_confirmation_no">"Farò una verifica"</string>
     <string name="quest_generic_error_field_empty">"Hai lasciato questo campo vuoto"</string>
     <string name="quest_leave_new_note_title">"Preferisci invece lasciare una nota?"</string>
@@ -49,8 +49,8 @@
     <string name="quest_noteDiscussion_title">"Puoi contribuire a questa nota?"</string>
     <string name="quest_noteDiscussion_no">"No, nascondi"</string>
     <string name="quest_noteDiscussion_anonymous">"Anonimo"</string>
-    <string name="confirmation_discard_title">"Eliminare l'input?"</string>
-    <string name="confirmation_discard_positive">"Elimina"</string>
+    <string name="confirmation_discard_title">"Scartare l'input?"</string>
+    <string name="confirmation_discard_positive">"Scarta"</string>
     <string name="confirmation_discard_negative">"Annulla"</string>
     <string name="action_download">"Trova le missioni in zona"</string>
     <string name="action_upload">"Carica risposte"</string>
@@ -59,7 +59,7 @@
     <string name="download_error">"Errore durante la ricerca di missioni"</string>
     <string name="upload_error">"Errore durante il caricamento delle risposte"</string>
     <string name="download_area_too_big">"È necessario ingrandire ancora di più"</string>
-    <string name="confirmation_cancel_prev_download_title">"Annullare l'attuale ricerca per riproporla qui?"</string>
+    <string name="confirmation_cancel_prev_download_title">"Annullare l'attuale ricerca e invece cercare qui?"</string>
     <string name="notification_downloading">"Cerco missioni…"</string>
     <string name="now_downloading_toast">"Cerco altre missioni…"</string>
     <string name="turn_on_location_request">"Il sistema di localizzazione è spento. Apro le impostazioni per abilitarlo?"</string>
@@ -245,6 +245,8 @@ Se non ci sono segni lungo tutta la strada che si applicano alla sezione evidenz
     <string name="quest_wheelchairAccess_subway_entrance_name_title">"L'entrata della metro %s è accessibile con la sedia a rotelle?"</string>
     <string name="quest_wheelchairAccess_railway_station_name_title">"La stazione dei treni %s è accessibile con la sedia a rotelle?"</string>
     <string name="quest_wheelchairAccess_location_name_title">"Il luogo %s è accessibile con la sedia a rotelle?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_business">"\"Parzialmente\" significa che c'è non più di un gradino per entrare nel negozio e che si può accedere con la sedia a rotelle alla maggior parte delle stanze."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"\"Parzialmente\" significa che esiste almeno un gradino di accesso."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Il nome %s contiene un'abbreviazione?"</string>
@@ -608,4 +610,20 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="privacy_html_image_upload2">"&lt;p&gt;Le foto che alleghi a una nota sono caricate sul mio server e cancellate alcuni giorni dopo che la nota è stata risolta. I meta-dati vengono eliminati prima del caricamento.&lt;/p&gt;"</string>
     <string name="action_deselect_all">"Deselezionare tutti"</string>
     <string name="quest_buildingType_retail_description">"inclusi edifici per ristoranti, bar, etc."</string>
+    <string name="quest_openingHours_timeSelect_next">"Prossimo"</string>
+    <string name="quest_tracktype_title">"Com'è il grado di solidità della superficie di questa strada?"</string>
+    <string name="quest_tracktype_grade1">"Solido"</string>
+    <string name="quest_tracktype_grade2">"Per lo più solido"</string>
+    <string name="quest_tracktype_grade3">"Misto"</string>
+    <string name="quest_tracktype_grade4">"Per lo più soffice"</string>
+    <string name="quest_tracktype_grade5">"Soffice"</string>
+    <string name="quest_building_underground_name_title">"%s è completamente sotterraneo?"</string>
+    <string name="quest_building_underground_title">"Questo edificio è completamente sotterraneo?"</string>
+    <string name="quest_traffic_signals_sound_title">"Ci sono segnali sonori per i non vedenti?"</string>
+    <string name="quest_wheelchairAccess_limited_description_outside">"Parziale significa che per accedere non c'è più di un gradino."</string>
+    <string name="quest_wheelchairAccess_outside_title">"Questo luogo è accessibile in sedia a rotelle?"</string>
+    <string name="quest_traffic_signals_button_title">"Il semaforo ha un pulsante per richiedere il verde?"</string>
+    <string name="quest_motorcycleParkingCapacity_title">"Quanti motocicli si possono parcheggiare qua?"</string>
+    <string name="quest_motorcycleParkingCoveredStatus_title">"Questo parcheggio per motocicli è coperto (protetto dalla pioggia)?"</string>
+    <string name="default_disabled_msg_maxspeed">"Questo tipo di compito è disabilitato perché generalmente è richiesto di controllare tutta la strada per cercare i segnali dei limiti di velocità, non solo la sezione evidenziata. Questo potrebbe richiedere molto tempo solo per risolvere un singolo compito."</string>
 </resources>
