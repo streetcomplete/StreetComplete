@@ -1,22 +1,19 @@
 package de.westnordost.streetcomplete.data.osm.download;
 
-import junit.framework.TestCase;
+import org.junit.Test;
 
 import javax.inject.Provider;
 
 import de.westnordost.osmapi.ApiRequestWriter;
 import de.westnordost.osmapi.OsmConnection;
 
-import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.eq;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 import static org.mockito.internal.verification.VerificationModeFactory.times;
 
-public class OverpassMapDataDaoTest extends TestCase
+public class OverpassMapDataDaoTest
 {
-	public void testHandleOverpassQuota() throws InterruptedException
+	@Test public void handleOverpassQuota() throws InterruptedException
 	{
 		Provider provider = mock(Provider.class);
 		when(provider.get()).thenReturn(mock(OverpassMapDataParser.class));

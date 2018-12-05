@@ -1,40 +1,42 @@
 package de.westnordost.streetcomplete.data.osm.tql;
 
-import junit.framework.TestCase;
+import org.junit.Test;
 
 import de.westnordost.osmapi.map.data.BoundingBox;
+
+import static org.junit.Assert.*;
 
 /** Integration test for the filter parser and the filter expression, the whole way from parsing
  *  the tag filters expression to returning it as a OQL string. More convenient this way since the
  *  easiest way to create a filter expresssion is to parse it from string. */
-public class FiltersParserTest extends TestCase
+public class FiltersParserTest
 {
-	public void testNode()
+	@Test public void node()
 	{
 		check("nodes", "node;");
 		check("NODES", "node;");
 	}
 
-	public void testWay()
+	@Test public void way()
 	{
 		check("ways", "way;");
 		check("WAYS", "way;");
 	}
 
-	public void testRelation()
+	@Test public void relation()
 	{
 		check("relations", "rel;");
 		check("RELATIONS", "rel;");
 	}
 
-	public void testMultipleElementTypes()
+	@Test public void multipleElementTypes()
 	{
 		check("nodes, ways, relations", "(node;way;rel;);");
 		check("nodes ,ways", "(node;way;);");
 		check("nodes , ways", "(node;way;);");
 	}
 
-	public void testAnyQuote()
+	@Test public void anyQuote()
 	{
 		check("nodes with 'shop'", "node['shop'];");
 		check("nodes with \"shop\"", "node[\"shop\"];");
@@ -42,39 +44,39 @@ public class FiltersParserTest extends TestCase
 		check("nodes with '\"shop\"ping'", "node['\"shop\"ping'];");
 	}
 
-	public void testMultipleElementTypesWithTag()
+	@Test public void multipleElementTypesWithTag()
 	{
 		check("nodes, ways, relations with shop",
 				"(node[\"shop\"];way[\"shop\"];rel[\"shop\"];);");
 	}
 
-	public void testWhitespaceInFrontOkay()
+	@Test public void whitespaceInFrontOkay()
 	{
 		check("\t\n nodes", "node;");
 	}
 
-	public void testFailIfNoElementDeclarationInFront()
+	@Test public void failIfNoElementDeclarationInFront()
 	{
 		shouldFail("butter");
 	}
 
-	public void testFailIfElementDeclarationInFrontDuplicate()
+	@Test public void failIfElementDeclarationInFrontDuplicate()
 	{
 		shouldFail("nodes, nodes");
 	}
 
-	public void testFailIfElementDeclarationInFrontAnyInvalid()
+	@Test public void failIfElementDeclarationInFrontAnyInvalid()
 	{
 		shouldFail("nodes, butter");
 	}
 
-	public void testTagNoSeparator()
+	@Test public void tagNoSeparator()
 	{
 		shouldFail("nodeswith");
 		shouldFail("nodes withhighway");
 	}
 
-	public void testTagKeyLikeReservedWord()
+	@Test public void tagKeyLikeReservedWord()
 	{
 		shouldFail("nodes with with");
 		shouldFail("nodes with around");
@@ -82,41 +84,41 @@ public class FiltersParserTest extends TestCase
 		shouldFail("nodes with and");
 	}
 
-	public void testTagKeyLikeReservedWordWithQuotationMarks()
+	@Test public void tagKeyLikeReservedWordWithQuotationMarks()
 	{
 		check("nodes with \"with\"", "node[\"with\"];");
 		check("nodes with \"with\"=\"with\"", "node[\"with\"=\"with\"];");
 	}
 
-	public void testTagKeyWithQuotationMarks()
+	@Test public void tagKeyWithQuotationMarks()
 	{
 		check("nodes with \"highway = residential or bla\"",
 				"node[\"highway = residential or bla\"];");
 	}
 
-	public void testTagValueWithQuotationMarks()
+	@Test public void tagValueWithQuotationMarks()
 	{
 		check("nodes with highway = \"residential or bla\"",
 				"node[\"highway\"=\"residential or bla\"];");
 	}
 
-	public void testTagValueGarbage()
+	@Test public void tagValueGarbage()
 	{
 		check("nodes with highway = §$%&%/??",
 				"node[\"highway\"=\"§$%&%/??\"];");
 	}
 
-	public void testTagKeyQuotationMarksNotClosed()
+	@Test public void tagKeyQuotationMarksNotClosed()
 	{
 		shouldFail("nodes with \"highway = residential or bla");
 	}
 
-	public void testTagValueQuotationMarksNotClosed()
+	@Test public void tagValueQuotationMarksNotClosed()
 	{
 		shouldFail("nodes with highway = \"residential or bla");
 	}
 
-	public void testTagKey()
+	@Test public void tagKey()
 	{
 		String expect = "node[\"highway\"];";
 
@@ -130,38 +132,38 @@ public class FiltersParserTest extends TestCase
 		check("nodes with(highway) ", expect);
 	}
 
-	public void testDanglingOp()
+	@Test public void danglingOp()
 	{
 		shouldFail("nodes with highway=");
 	}
 
-	public void testDanglingBoolOp()
+	@Test public void danglingBoolOp()
 	{
 		shouldFail("nodes with highway and");
 		shouldFail("nodes with highway or ");
 	}
 
-	public void testBracketNotClosed()
+	@Test public void bracketNotClosed()
 	{
 		shouldFail("nodes with (highway");
 	}
 
-	public void testBracketClosedTooOften()
+	@Test public void bracketClosedTooOften()
 	{
 		shouldFail("nodes with highway)");
 	}
 
-	public void testUnknownThingAfterTag()
+	@Test public void unknownThingAfterTag()
 	{
 		shouldFail("nodes with highway what is this");
 	}
 
-	public void testTagNegation()
+	@Test public void tagNegation()
 	{
 		check("nodes with !highway", "node[\"highway\"!~\".\"];");
 	}
 
-	public void testTagOperatorWhitespaces()
+	@Test public void tagOperatorWhitespaces()
 	{
 		String expect = "node[\"highway\"=\"residential\"];";
 
@@ -171,7 +173,7 @@ public class FiltersParserTest extends TestCase
 		check("nodes with highway = residential", expect);
 	}
 
-	public void testTagOperator()
+	@Test public void tagOperator()
 	{
 		check("nodes with highway=residential", "node[\"highway\"=\"residential\"];");
 		check("nodes with highway!=residential", "node[\"highway\"!=\"residential\"];");
@@ -179,7 +181,7 @@ public class FiltersParserTest extends TestCase
 		check("nodes with highway!~residential", "node[\"highway\"!~\"^(residential)$\"];");
 	}
 
-	public void testTagNegationNotCombinableWithOperator()
+	@Test public void tagNegationNotCombinableWithOperator()
 	{
 		shouldFail("nodes with !highway=residential");
 		shouldFail("nodes with !highway!=residential");
@@ -187,19 +189,19 @@ public class FiltersParserTest extends TestCase
 		shouldFail("nodes with !highway!~residential");
 	}
 
-	public void testTwoTags()
+	@Test public void twoTags()
 	{
 		check("nodes with highway and name", "node[\"highway\"][\"name\"];");
 		check("nodes with highway or name", "(node[\"highway\"];node[\"name\"];);");
 	}
 
-	public void testOrInAnd()
+	@Test public void orInAnd()
 	{
 		check("nodes with(highway or railway)and name",
 				"(node[\"highway\"][\"name\"];node[\"railway\"][\"name\"];);");
 	}
 
-	public void testBoundingBox()
+	@Test public void boundingBox()
 	{
 		BoundingBox bbox = new BoundingBox(0,0,5,10);
 		check("nodes", "[bbox:0,0,5,10];node;", bbox);
@@ -208,7 +210,7 @@ public class FiltersParserTest extends TestCase
 				"[bbox:0,0,5,10];(node[\"highway\"];node[\"railway\"];);", bbox);
 	}
 
-	public void testBoundingBoxWithMultipleElementTypes()
+	@Test public void boundingBoxWithMultipleElementTypes()
 	{
 		BoundingBox bbox = new BoundingBox(0,0,5,10);
 

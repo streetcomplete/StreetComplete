@@ -1,28 +1,23 @@
 package de.westnordost.streetcomplete.quests.opening_hours.model;
 
-import junit.framework.TestCase;
+
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import de.westnordost.streetcomplete.quests.opening_hours.model.CircularSection;
-import de.westnordost.streetcomplete.quests.opening_hours.model.NumberSystem;
+import static org.junit.Assert.*;
 
-public class NumberSystemTest extends TestCase
+public class NumberSystemTest
 {
-	public void testIllegal()
+	@Test(expected = IllegalArgumentException.class) public void illegalArguments()
 	{
-		try
-		{
-			new NumberSystem(10,3);
-			fail();
-		}
-		catch(Exception ignored) {}
+		new NumberSystem(10,3);
 	}
 
-	public void testGetSize()
+	@Test public void getSize()
 	{
 		NumberSystem s = new NumberSystem(5,10);
 		assertEquals(5,s.getSize(new CircularSection(2,9)));
@@ -32,7 +27,7 @@ public class NumberSystemTest extends TestCase
 		assertEquals(3,s.getSize(new CircularSection(9,5)));
 	}
 
-	public void testComplementNone()
+	@Test public void complementNone()
 	{
 		NumberSystem s = new NumberSystem(0,10);
 		List<CircularSection> r = s.complemented(new ArrayList<>());
@@ -40,14 +35,14 @@ public class NumberSystemTest extends TestCase
 		assertEquals(new CircularSection(0,10),r.get(0));
 	}
 
-	public void testComplementFull()
+	@Test public void complementFull()
 	{
 		NumberSystem s = new NumberSystem(0,10);
 		List<CircularSection> r = s.complemented(Collections.singletonList(new CircularSection(0,10)));
 		assertTrue(r.isEmpty());
 	}
 
-	public void testComplementOneAtEnd()
+	@Test public void complementOneAtEnd()
 	{
 		NumberSystem s = new NumberSystem(0,10);
 		List<CircularSection> r = s.complemented(Collections.singletonList(new CircularSection(0,8)));
@@ -55,7 +50,7 @@ public class NumberSystemTest extends TestCase
 		assertEquals(new CircularSection(9,10),r.get(0));
 	}
 
-	public void testComplementSqueezeOneAtEnd()
+	@Test public void complementSqueezeOneAtEnd()
 	{
 		NumberSystem s = new NumberSystem(0,10);
 		List<CircularSection> r = s.complemented(Collections.singletonList(new CircularSection(0,9)));
@@ -63,7 +58,7 @@ public class NumberSystemTest extends TestCase
 		assertEquals(new CircularSection(10,10),r.get(0));
 	}
 
-	public void testComplementOneAtStart()
+	@Test public void complementOneAtStart()
 	{
 		NumberSystem s = new NumberSystem(0,10);
 		List<CircularSection> r = s.complemented(Collections.singletonList(new CircularSection(4,10)));
@@ -71,7 +66,7 @@ public class NumberSystemTest extends TestCase
 		assertEquals(new CircularSection(0,3),r.get(0));
 	}
 
-	public void testComplementSqueezeOneAtStart()
+	@Test public void complementSqueezeOneAtStart()
 	{
 		NumberSystem s = new NumberSystem(0,10);
 		List<CircularSection> r = s.complemented(Collections.singletonList(new CircularSection(1,10)));
@@ -79,7 +74,7 @@ public class NumberSystemTest extends TestCase
 		assertEquals(new CircularSection(0,0),r.get(0));
 	}
 
-	public void testComplementOneCenter()
+	@Test public void complementOneCenter()
 	{
 		NumberSystem s = new NumberSystem(0,10);
 		List<CircularSection> r = s.complemented(Arrays.asList(
@@ -88,7 +83,7 @@ public class NumberSystemTest extends TestCase
 		assertEquals(new CircularSection(4,5),r.get(0));
 	}
 
-	public void testComplementBothEnds()
+	@Test public void complementBothEnds()
 	{
 		NumberSystem s = new NumberSystem(0,10);
 		List<CircularSection> r = s.complemented(Collections.singletonList(new CircularSection(3, 8)));
@@ -96,7 +91,7 @@ public class NumberSystemTest extends TestCase
 		assertEquals(new CircularSection(9,2), r.get(0));
 	}
 
-	public void testComplementSwissCheese()
+	@Test public void complementSwissCheese()
 	{
 		NumberSystem s = new NumberSystem(0,10);
 		List<CircularSection> r = s.complemented(Arrays.asList(
@@ -112,7 +107,7 @@ public class NumberSystemTest extends TestCase
 		)));
 	}
 
-	public void testComplementLoop()
+	@Test public void complementLoop()
 	{
 		NumberSystem s = new NumberSystem(0,10);
 		List<CircularSection> r = s.complemented(Collections.singletonList(new CircularSection(8, 5)));
@@ -120,7 +115,7 @@ public class NumberSystemTest extends TestCase
 		assertEquals(new CircularSection(6,7), r.get(0));
 	}
 
-	public void testNoComplementAtEnd()
+	@Test public void noComplementAtEnd()
 	{
 		NumberSystem s = new NumberSystem(0,10);
 		List<CircularSection> r = s.complemented(Arrays.asList(
@@ -130,7 +125,7 @@ public class NumberSystemTest extends TestCase
 		assertTrue(r.isEmpty());
 	}
 
-	public void testMerge()
+	@Test public void merge()
 	{
 		NumberSystem s = new NumberSystem(3,10);
 		List<CircularSection> sections = new ArrayList<>();

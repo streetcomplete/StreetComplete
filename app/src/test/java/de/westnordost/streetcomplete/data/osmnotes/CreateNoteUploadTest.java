@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.osmnotes;
 
-import junit.framework.TestCase;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -23,8 +24,9 @@ import de.westnordost.streetcomplete.data.statistics.QuestStatisticsDao;
 import de.westnordost.streetcomplete.util.ImageUploader;
 
 import static org.mockito.Mockito.*;
+import static org.junit.Assert.*;
 
-public class CreateNoteUploadTest extends TestCase
+public class CreateNoteUploadTest
 {
 	private MapDataDao mapDataDao;
 	private CreateNoteDao createNoteDb;
@@ -36,9 +38,8 @@ public class CreateNoteUploadTest extends TestCase
 
 	private CreateNoteUpload createNoteUpload;
 
-	@Override public void setUp() throws Exception
+	@Before public void setUp() throws Exception
 	{
-		super.setUp();
 		mapDataDao = mock(MapDataDao.class);
 		createNoteDb = mock(CreateNoteDao.class);
 		notesDao = mock(NotesDao.class);
@@ -52,7 +53,7 @@ public class CreateNoteUploadTest extends TestCase
 	}
 
 
-	public void testCancel() throws InterruptedException
+	@Test public void cancel() throws InterruptedException
 	{
 		when(createNoteDb.getAll(any(BoundingBox.class))).thenAnswer(invocation ->
 		{
@@ -74,7 +75,7 @@ public class CreateNoteUploadTest extends TestCase
 		t.join();
 	}
 
-	public void testUploadNoteForDeletedElementWillCancel()
+	@Test public void uploadNoteForDeletedElementWillCancel()
 	{
 		/* the mock for MapDataDao returns null for getNode, getWay, getRelation... by defaiöt */
 		CreateNote createNote = createACreateNote();
@@ -85,7 +86,7 @@ public class CreateNoteUploadTest extends TestCase
 		verifyNoteNotInsertedIntoDb(createNote.id);
 	}
 
-	public void testCreateNoteOnExistingNoteWillCommentOnExistingNote()
+	@Test public void createNoteOnExistingNoteWillCommentOnExistingNote()
 	{
 		CreateNote createNote = createACreateNote();
 		createNote.elementType = Element.Type.WAY;
@@ -101,7 +102,7 @@ public class CreateNoteUploadTest extends TestCase
 		verifyNoteInsertedIntoDb(createNote.id, note);
 	}
 
-	public void testCreateNoteOnExistingClosedNoteWillCancel()
+	@Test public void createNoteOnExistingClosedNoteWillCancel()
 	{
 		CreateNote createNote = createACreateNote();
 		createNote.elementType = Element.Type.WAY;
@@ -118,7 +119,7 @@ public class CreateNoteUploadTest extends TestCase
 		verifyNoteNotInsertedIntoDb(createNote.id);
 	}
 
-	public void testCreateNoteOnExistingNoteWillCancelWhenConflictException()
+	@Test public void createNoteOnExistingNoteWillCancelWhenConflictException()
 	{
 		CreateNote createNote = createACreateNote();
 		createNote.elementType = Element.Type.WAY;
@@ -136,7 +137,7 @@ public class CreateNoteUploadTest extends TestCase
 		verifyNoteNotInsertedIntoDb(createNote.id);
 	}
 
-	public void testCreateNoteWithNoAssociatedElement()
+	@Test public void createNoteWithNoAssociatedElement()
 	{
 		CreateNote createNote = createACreateNote();
 		Note note = createNote(null);
@@ -150,7 +151,7 @@ public class CreateNoteUploadTest extends TestCase
 		verifyNoteInsertedIntoDb(createNote.id, note);
 	}
 
-	public void testCreateNoteWithNoQuestTitleButAssociatedElement()
+	@Test public void createNoteWithNoQuestTitleButAssociatedElement()
 	{
 		CreateNote createNote = createACreateNote();
 		createNote.elementType = Element.Type.WAY;
@@ -169,7 +170,7 @@ public class CreateNoteUploadTest extends TestCase
 		verifyNoteInsertedIntoDb(createNote.id, note);
 	}
 
-	public void testCreateNoteWithAssociatedElementAndNoNoteYet()
+	@Test public void createNoteWithAssociatedElementAndNoNoteYet()
 	{
 		CreateNote createNote = createACreateNote();
 		createNote.elementType = Element.Type.WAY;
@@ -189,7 +190,7 @@ public class CreateNoteUploadTest extends TestCase
 		verifyNoteInsertedIntoDb(createNote.id, note);
 	}
 
-	public void testCreateNoteUploadsImagesAndDisplaysLinks()
+	@Test public void createNoteUploadsImagesAndDisplaysLinks()
 	{
 		CreateNote createNote = createACreateNote();
 		createNote.imagePaths = new ArrayList<>();
@@ -209,7 +210,7 @@ public class CreateNoteUploadTest extends TestCase
 		verify(notesDao).create(createNote.position,"jo ho\n\nvia " + ApplicationConstants.USER_AGENT+"\n\nAttached photo(s):\nhello, too");
 	}
 
-	public void testCommentNoteUploadsImagesAndDisplaysLinks()
+	@Test public void commentNoteUploadsImagesAndDisplaysLinks()
 	{
 		CreateNote createNote = createACreateNote();
 		createNote.elementType = Element.Type.WAY;

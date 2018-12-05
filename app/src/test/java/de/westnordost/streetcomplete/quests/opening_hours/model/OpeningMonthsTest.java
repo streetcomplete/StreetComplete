@@ -1,11 +1,13 @@
 package de.westnordost.streetcomplete.quests.opening_hours.model;
 
-import junit.framework.TestCase;
+import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class OpeningMonthsTest extends TestCase
+import static org.junit.Assert.*;
+
+public class OpeningMonthsTest
 {
 	private static final boolean l = true;
 	private static final boolean o = false;
@@ -17,7 +19,7 @@ public class OpeningMonthsTest extends TestCase
 	private static final CircularSection WHOLE_YEAR = new CircularSection(0,11);
 	private static final CircularSection JUNE_SEPTEMBER = new CircularSection(5,8);
 
-	public void testOmitMonthsIfWholeYear()
+	@Test public void omitMonthsIfWholeYear()
 	{
 		assertEquals("Mo 09:00-17:00",
 			months(WHOLE_YEAR, cluster(days(MONDAY, hours(9,17)))).toString());
@@ -30,7 +32,7 @@ public class OpeningMonthsTest extends TestCase
 			).toString());
 	}
 
-	public void testPrependMonthsBeforeEveryCluster()
+	@Test public void prependMonthsBeforeEveryCluster()
 	{
 		assertEquals("Jun-Sep: Mo 09:00-17:00",
 			months(JUNE_SEPTEMBER, cluster(days(MONDAY, hours(9,17)))).toString());
@@ -43,7 +45,7 @@ public class OpeningMonthsTest extends TestCase
 			).toString());
 	}
 
-	public void testPrependMonthsBeforeEveryWeekdays()
+	@Test public void prependMonthsBeforeEveryWeekdays()
 	{
 		assertEquals("Jun-Sep: Mo-Fr 09:00-17:00, Jun-Sep: Sa,Su 09:00-12:00",
 			months(

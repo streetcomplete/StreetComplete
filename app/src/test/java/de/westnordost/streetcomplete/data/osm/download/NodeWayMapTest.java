@@ -1,14 +1,16 @@
 package de.westnordost.streetcomplete.data.osm.download;
 
-import junit.framework.TestCase;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class NodeWayMapTest extends TestCase
+import static org.junit.Assert.*;
+
+public class NodeWayMapTest
 {
-	public void testAll()
+	@Test public void all()
 	{
 		List<List<Long>> ways = new ArrayList<>();
 		List<Long> way1 = Arrays.asList(1L,2L,3L);

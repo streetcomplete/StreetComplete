@@ -1,34 +1,36 @@
 package de.westnordost.streetcomplete.util;
 
-import junit.framework.TestCase;
+import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.Collections;
 
-public class MultiIterableTest extends TestCase
+import static org.junit.Assert.*;
+
+public class MultiIterableTest
 {
-	public void testEmptyList()
+	@Test public void emptyList()
 	{
 		MultiIterable<String> itb = new MultiIterable<>();
 		itb.add(Collections.emptyList());
 		assertEquals("",concat(itb));
 	}
 
-	public void testOneList()
+	@Test public void oneList()
 	{
 		MultiIterable<String> itb = new MultiIterable<>();
 		itb.add(Arrays.asList("a","b","c"));
 		assertEquals("a b c",concat(itb));
 	}
 
-	public void testListAllowsNulls()
+	@Test public void listAllowsNulls()
 	{
 		MultiIterable<String> itb = new MultiIterable<>();
 		itb.add(Arrays.asList("a",null,"c"));
 		assertEquals("a null c",concat(itb));
 	}
 
-	public void testMultipleLists()
+	@Test public void multipleLists()
 	{
 		MultiIterable<String> itb = new MultiIterable<>();
 		itb.add(Arrays.asList("a","b"));

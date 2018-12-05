@@ -1,13 +1,17 @@
 package de.westnordost.streetcomplete.data.osm.changes;
 
-import junit.framework.TestCase;
+
+
+import org.junit.Test;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class StringMapEntryAddTest extends TestCase
+import static org.junit.Assert.*;
+
+public class StringMapEntryAddTest
 {
-	public void testAdd()
+	@Test public void add()
 	{
 		StringMapEntryAdd c = new StringMapEntryAdd("a","b");
 		Map<String,String> m = new HashMap<>();
@@ -22,7 +26,7 @@ public class StringMapEntryAddTest extends TestCase
 		assertTrue(c.conflictsWith(m));
 	}
 
-	public void testReverse()
+	@Test public void reverse()
 	{
 		Map<String,String> m = new HashMap<>();
 

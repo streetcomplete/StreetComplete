@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.quests.opening_hours.adapter;
 
-import junit.framework.TestCase;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,8 +12,10 @@ import de.westnordost.streetcomplete.quests.opening_hours.model.OpeningWeekdays;
 import de.westnordost.streetcomplete.quests.opening_hours.model.TimeRange;
 import de.westnordost.streetcomplete.quests.opening_hours.model.Weekdays;
 
+import static org.junit.Assert.*;
+
 @SuppressWarnings("unchecked")
-public class OpeningHoursModelCreatorTest extends TestCase
+public class OpeningHoursModelCreatorTest
 {
 	private static final Weekdays MONDAY = new Weekdays(new boolean[]{true});
 	private static final Weekdays MONDAY_TUESDAY = new Weekdays(new boolean[]{true, true});
@@ -31,7 +33,7 @@ public class OpeningHoursModelCreatorTest extends TestCase
 	private static final CircularSection JAN_JUN = new CircularSection(0,6);
 	private static final CircularSection JUL_DEC = new CircularSection(6,11);
 
-	public void testCopiesOpeningMonths()
+	@Test public void copiesOpeningMonths()
 	{
 		List<OpeningMonthsRow> viewData = new ArrayList<>();
 		viewData.add(new OpeningMonthsRow(JAN_JUN, MONDAY_MORNING));
@@ -46,7 +48,7 @@ public class OpeningHoursModelCreatorTest extends TestCase
 		assertEquals(expected, actual);
 	}
 
-	public void testMergesOpeningWeekdaysRowsOfSameDay()
+	@Test public void mergesOpeningWeekdaysRowsOfSameDay()
 	{
 		List<OpeningMonths> actual = create(
 			new OpeningWeekdaysRow(MONDAY, MORNING),
@@ -60,7 +62,7 @@ public class OpeningHoursModelCreatorTest extends TestCase
 		assertEquals(expected, actual);
 	}
 
-	public void testDoesNotClusterDifferentWeekdays()
+	@Test public void doesNotClusterDifferentWeekdays()
 	{
 		List<OpeningMonths> actual = create(
 			new OpeningWeekdaysRow(MONDAY, MORNING),
@@ -75,7 +77,7 @@ public class OpeningHoursModelCreatorTest extends TestCase
 		assertEquals(expected, actual);
 	}
 
-	public void testClustersOverlappingWeekdays()
+	@Test public void clustersOverlappingWeekdays()
 	{
 		List<OpeningMonths> actual = create(
 			new OpeningWeekdaysRow(MONDAY, MORNING),
@@ -92,7 +94,7 @@ public class OpeningHoursModelCreatorTest extends TestCase
 		assertEquals(expected, actual);
 	}
 
-	public void testDoesNotClusterIntersectingTimes()
+	@Test public void doesNotClusterIntersectingTimes()
 	{
 		List<OpeningMonths> actual = create(
 			new OpeningWeekdaysRow(MONDAY, MORNING),
@@ -107,7 +109,7 @@ public class OpeningHoursModelCreatorTest extends TestCase
 		assertEquals(expected, actual);
 	}
 
-	public void testDoesNotClusterIntersectingTimesInCluster()
+	@Test public void doesNotClusterIntersectingTimesInCluster()
 	{
 		List<OpeningMonths> actual = create(
 			new OpeningWeekdaysRow(MONDAY, MORNING),
@@ -126,7 +128,7 @@ public class OpeningHoursModelCreatorTest extends TestCase
 		assertEquals(expected, actual);
 	}
 
-	public void testDoesClusterMultipleOverlappingWeekdaysWithNonIntersectingTimes()
+	@Test public void doesClusterMultipleOverlappingWeekdaysWithNonIntersectingTimes()
 	{
 		List<OpeningMonths> actual = create(
 			new OpeningWeekdaysRow(MONDAY_FRIDAY, MORNING),

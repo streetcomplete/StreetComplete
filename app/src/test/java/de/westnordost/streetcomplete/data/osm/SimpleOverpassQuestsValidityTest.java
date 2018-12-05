@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.osm;
 
-import junit.framework.TestCase;
+import org.junit.Test;
 
 import java.util.List;
 
@@ -8,9 +8,11 @@ import de.westnordost.streetcomplete.data.QuestType;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestType;
 import de.westnordost.streetcomplete.quests.QuestModule;
 
-public class SimpleOverpassQuestsValidityTest extends TestCase
+import static org.junit.Assert.*;
+
+public class SimpleOverpassQuestsValidityTest
 {
-	public void testQueryValid()
+	@Test public void queryValid()
 	{
 		List<QuestType> questTypes = QuestModule.questTypeRegistry(new OsmNoteQuestType(),
 				null,null,null,null,null).getAll();

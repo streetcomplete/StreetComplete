@@ -1,12 +1,14 @@
 package de.westnordost.streetcomplete.util;
 
-import junit.framework.TestCase;
+import org.junit.Test;
 
 import java.util.Arrays;
 
-public class ReverseIteratorTest extends TestCase
+import static org.junit.Assert.*;
+
+public class ReverseIteratorTest
 {
-	public void testReverse()
+	@Test public void reverse()
 	{
 		ReverseIterator<String> it = new ReverseIterator<>(Arrays.asList("a", "b", "c"));
 		assertEquals("c", it.next());

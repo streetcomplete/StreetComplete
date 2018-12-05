@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.tql;
 
-import junit.framework.TestCase;
+import org.junit.Test;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -8,9 +8,11 @@ import java.util.Map;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.map.data.OsmNode;
 
-public class TagFilterValueTest extends TestCase
+import static org.junit.Assert.*;
+
+public class TagFilterValueTest
 {
-	public void testMatchesEqual()
+	@Test public void matchesEqual()
 	{
 		TagFilterValue eq = new TagFilterValue("highway", "=", "residential");
 
@@ -19,7 +21,7 @@ public class TagFilterValueTest extends TestCase
 		assertFalse(eq.matches(new OsmNode(0, 0, 0d, 0d, null)));
 	}
 
-	public void testMatchesNEqual()
+	@Test public void matchesNEqual()
 	{
 		TagFilterValue neq = new TagFilterValue("highway", "!=", "residential");
 
@@ -28,7 +30,7 @@ public class TagFilterValueTest extends TestCase
 		assertTrue(neq.matches(new OsmNode(0, 0, 0d, 0d, null)));
 	}
 
-	public void testMatchesLikeDot()
+	@Test public void matchesLikeDot()
 	{
 		TagFilterValue like = new TagFilterValue("highway", "~", ".esidential");
 
@@ -38,7 +40,7 @@ public class TagFilterValueTest extends TestCase
 		assertFalse(like.matches(new OsmNode(0, 0, 0d, 0d, null)));
 	}
 
-	public void testMatchesLikeOr()
+	@Test public void matchesLikeOr()
 	{
 		TagFilterValue like = new TagFilterValue("highway", "~", "residential|unclassified");
 
@@ -48,7 +50,7 @@ public class TagFilterValueTest extends TestCase
 		assertFalse(like.matches(new OsmNode(0, 0, 0d, 0d, null)));
 	}
 
-	public void testMatchesNotLikeDot()
+	@Test public void matchesNotLikeDot()
 	{
 		TagFilterValue notlike = new TagFilterValue("highway", "!~", ".*");
 
@@ -56,7 +58,7 @@ public class TagFilterValueTest extends TestCase
 		assertTrue(notlike.matches(new OsmNode(0, 0, 0d, 0d, null)));
 	}
 
-	public void testMatchesNotLikeSomething()
+	@Test public void matchesNotLikeSomething()
 	{
 		TagFilterValue notlike = new TagFilterValue("noname", "!~", "yes");
 
@@ -65,7 +67,7 @@ public class TagFilterValueTest extends TestCase
 		assertTrue(notlike.matches(new OsmNode(0, 0, 0d, 0d, null)));
 	}
 
-	public void testMatchesNoValue()
+	@Test public void matchesNoValue()
 	{
 		TagFilterValue key = new TagFilterValue("name", null, null);
 
@@ -74,21 +76,21 @@ public class TagFilterValueTest extends TestCase
 		assertFalse(key.matches(new OsmNode(0, 0, 0d, 0d, null)));
 	}
 
-	public void testToString()
+	@Test public void toStringWorks()
 	{
 		TagFilterValue key = new TagFilterValue("A", "=", "B");
 		assertEquals("\"A\"=\"B\"", key.toString());
 		assertEquals("[\"A\"=\"B\"]", key.toOverpassQLString());
 	}
 
-	public void testToRegexString()
+	@Test public void toRegexString()
 	{
 		TagFilterValue key = new TagFilterValue("A", "~", "B");
 		assertEquals("\"A\"~\"B\"", key.toString());
 		assertEquals("[\"A\"~\"^(B)$\"]", key.toOverpassQLString());
 	}
 
-	public void testToRegexDotToString()
+	@Test public void toRegexDotToString()
 	{
 		TagFilterValue key = new TagFilterValue("A", "!~", ".*");
 		assertEquals("\"A\"!~\".*\"", key.toString());

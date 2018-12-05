@@ -2,7 +2,8 @@ package de.westnordost.streetcomplete.data.osmnotes;
 
 import android.content.SharedPreferences;
 
-import junit.framework.TestCase;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -20,13 +21,10 @@ import de.westnordost.streetcomplete.data.QuestGroup;
 import de.westnordost.streetcomplete.data.QuestStatus;
 import de.westnordost.streetcomplete.data.VisibleQuestListener;
 
-import static org.mockito.Matchers.any;
-import static org.mockito.Mockito.doAnswer;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
-public class OsmNotesDownloadTest extends TestCase
+public class OsmNotesDownloadTest
 {
 	private NoteDao noteDB;
 	private OsmNoteQuestDao noteQuestDB;
@@ -34,9 +32,8 @@ public class OsmNotesDownloadTest extends TestCase
 	private SharedPreferences preferences;
 	private OsmAvatarsDownload avatarsDownload;
 
-	@Override public void setUp() throws Exception
+	@Before public void setUp() throws Exception
 	{
-		super.setUp();
 		noteDB = mock(NoteDao.class);
 		noteQuestDB = mock(OsmNoteQuestDao.class);
 		createNoteDB = mock(CreateNoteDao.class);
@@ -44,7 +41,7 @@ public class OsmNotesDownloadTest extends TestCase
 		avatarsDownload = mock(OsmAvatarsDownload.class);
 	}
 
-	public void testDeleteObsoleteQuests()
+	@Test public void deleteObsoleteQuests()
 	{
 		when(preferences.getBoolean(Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS, false)).thenReturn(true);
 

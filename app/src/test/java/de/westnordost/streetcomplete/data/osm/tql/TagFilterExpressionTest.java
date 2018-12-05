@@ -1,15 +1,16 @@
 package de.westnordost.streetcomplete.data.osm.tql;
 
-import junit.framework.TestCase;
+import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.Collections;
 
 import de.westnordost.osmapi.map.data.Element;
 
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
-public class TagFilterExpressionTest extends TestCase
+public class TagFilterExpressionTest
 {
 	// Tests for toOverpassQLString are in FiltersParserTest
 
@@ -17,7 +18,7 @@ public class TagFilterExpressionTest extends TestCase
 	private Element way = createElement(Element.Type.WAY);
 	private Element relation = createElement(Element.Type.RELATION);
 
-	public void testMatchesNodes()
+	@Test public void matchesNodes()
 	{
 		TagFilterExpression expr = createMatchExpression(ElementsTypeFilter.NODES);
 
@@ -26,7 +27,7 @@ public class TagFilterExpressionTest extends TestCase
 		assertFalse(expr.matches(relation));
 	}
 
-	public void testMatchesWays()
+	@Test public void matchesWays()
 	{
 		TagFilterExpression expr = createMatchExpression(ElementsTypeFilter.WAYS);
 
@@ -35,7 +36,7 @@ public class TagFilterExpressionTest extends TestCase
 		assertFalse(expr.matches(relation));
 	}
 
-	public void testMatchesRelations()
+	@Test public void matchesRelations()
 	{
 		TagFilterExpression expr = createMatchExpression(ElementsTypeFilter.RELATIONS);
 
@@ -44,7 +45,7 @@ public class TagFilterExpressionTest extends TestCase
 		assertTrue(expr.matches(relation));
 	}
 
-	public void testMatchesElements()
+	@Test public void matchesElements()
 	{
 		BooleanExpression booleanExpression = mock(BooleanExpression.class);
 		when(booleanExpression.matches(anyObject())).thenReturn(true);

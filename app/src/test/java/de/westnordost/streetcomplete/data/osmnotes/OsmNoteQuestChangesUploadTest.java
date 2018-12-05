@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.osmnotes;
 
-import junit.framework.TestCase;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -14,9 +15,10 @@ import de.westnordost.streetcomplete.data.QuestStatus;
 import de.westnordost.streetcomplete.data.statistics.QuestStatisticsDao;
 import de.westnordost.streetcomplete.util.ImageUploader;
 
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
-public class OsmNoteQuestChangesUploadTest extends TestCase
+public class OsmNoteQuestChangesUploadTest
 {
 	private ImageUploader imageUploader;
 	private NoteDao noteDb;
@@ -26,9 +28,8 @@ public class OsmNoteQuestChangesUploadTest extends TestCase
 
 	private OsmNoteQuestChangesUpload osmNoteQuestChangesUpload;
 
-	@Override public void setUp() throws Exception
+	@Before public void setUp() throws Exception
 	{
-		super.setUp();
 		osmDao = mock(NotesDao.class);
 		noteDb = mock(NoteDao.class);
 		imageUploader = mock(ImageUploader.class);
@@ -38,7 +39,7 @@ public class OsmNoteQuestChangesUploadTest extends TestCase
 		osmNoteQuestChangesUpload = new OsmNoteQuestChangesUpload(osmDao, questDb, questStatisticsDb, noteDb, imageUploader);
 	}
 
-	public void testCancel() throws InterruptedException
+	@Test public void cancel() throws InterruptedException
 	{
 		when(questDb.getAll(null, QuestStatus.ANSWERED)).thenAnswer( invocation ->
 		{
@@ -60,7 +61,7 @@ public class OsmNoteQuestChangesUploadTest extends TestCase
 		t.join();
 	}
 
-	public void testDropCommentWhenConflict()
+	@Test public void dropCommentWhenConflict()
 	{
 		OsmNoteQuest quest = createQuest();
 
@@ -72,7 +73,7 @@ public class OsmNoteQuestChangesUploadTest extends TestCase
 		verify(noteDb).delete(quest.getNote().id);
 	}
 
-	public void testUploadComment()
+	@Test public void uploadComment()
 	{
 		OsmNoteQuest quest = createQuest();
 
@@ -87,7 +88,7 @@ public class OsmNoteQuestChangesUploadTest extends TestCase
 		verify(questStatisticsDb).addOneNote();
 	}
 
-	public void testUploadsImagesForComment()
+	@Test public void uploadsImagesForComment()
 	{
 		OsmNoteQuest quest = createQuest();
 		ArrayList<String> imagePaths = new ArrayList<>();

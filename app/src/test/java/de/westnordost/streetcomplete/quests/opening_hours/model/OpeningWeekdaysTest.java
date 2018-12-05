@@ -1,15 +1,17 @@
 package de.westnordost.streetcomplete.quests.opening_hours.model;
 
-import junit.framework.TestCase;
+import org.junit.Test;
 
 import java.util.Arrays;
 
-public class OpeningWeekdaysTest extends TestCase
+import static org.junit.Assert.*;
+
+public class OpeningWeekdaysTest
 {
 	private static final Weekdays MONDAY = new Weekdays(new boolean[]{true});
 	private static final Weekdays TUESDAY = new Weekdays(new boolean[]{false, true});
 
-	public void testIntersectionOnSameWeekday()
+	@Test public void intersectionOnSameWeekday()
 	{
 		assertFalse(
 			days(MONDAY,hours(2,6)).intersects(
@@ -17,7 +19,7 @@ public class OpeningWeekdaysTest extends TestCase
 		);
 	}
 
-	public void testNoIntersectionOnSameWeekdays()
+	@Test public void noIntersectionOnSameWeekdays()
 	{
 		assertFalse(
 			days(MONDAY, hours(2,6)).intersects(
@@ -25,7 +27,7 @@ public class OpeningWeekdaysTest extends TestCase
 		));
 	}
 
-	public void testOneIntersection()
+	@Test public void oneIntersection()
 	{
 		assertTrue(
 			days(MONDAY, hours(8,15)).intersects(
@@ -33,7 +35,7 @@ public class OpeningWeekdaysTest extends TestCase
 		));
 	}
 
-	public void testOneOfManyIntersection()
+	@Test public void oneOfManyIntersection()
 	{
 		assertTrue(
 			days(MONDAY, hours(2,8), hours(8,10)).intersects(
@@ -41,12 +43,12 @@ public class OpeningWeekdaysTest extends TestCase
 		));
 	}
 
-	public void testSelfIntersecting()
+	@Test public void selfIntersecting()
 	{
 		assertTrue(days(MONDAY,hours(2,8),hours(6,9)).isSelfIntersecting());
 	}
 
-	public void testNotSelfIntersecting()
+	@Test public void notSelfIntersecting()
 	{
 		assertFalse(days(MONDAY,hours(2,8),hours(8,10)).isSelfIntersecting());
 	}

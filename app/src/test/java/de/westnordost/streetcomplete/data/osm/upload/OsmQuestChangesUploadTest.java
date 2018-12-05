@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-import junit.framework.TestCase;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -45,14 +45,14 @@ import de.westnordost.streetcomplete.data.statistics.QuestStatisticsDao;
 import de.westnordost.streetcomplete.data.tiles.DownloadedTilesDao;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
-public class OsmQuestChangesUploadTest extends TestCase
+public class OsmQuestChangesUploadTest
 {
-
 	private static long A_NODE_ID = 5;
 
-	public void testCancel() throws InterruptedException
+	@Test public void cancel() throws InterruptedException
 	{
 		OsmQuestDao questDb = mock(OsmQuestDao.class);
 		ElementGeometryDao elementGeometryDao = mock(ElementGeometryDao.class);
@@ -84,7 +84,7 @@ public class OsmQuestChangesUploadTest extends TestCase
 		//verify(elementDB).deleteUnreferenced();
 	}
 
-	public void testDropChangeWhenElementDeleted()
+	@Test public void dropChangeWhenElementDeleted()
 	{
 		OsmQuest quest = createAnsweredQuest(null);
 		OsmQuestDao questDb = mock(OsmQuestDao.class);
@@ -98,7 +98,7 @@ public class OsmQuestChangesUploadTest extends TestCase
 		verify(questDb).delete(quest.getId());
 	}
 
-	public void testDropChangeWhenUnresolvableElementChange()
+	@Test public void dropChangeWhenUnresolvableElementChange()
 	{
 		OsmQuest quest = createAnsweredQuestWithNonAppliableChange();
 		Element element = createElement();
@@ -115,7 +115,7 @@ public class OsmQuestChangesUploadTest extends TestCase
 
 	/* Simulates an element conflict while uploading the element, when updating the element from
 	   mock server, it turns out that it has been deleted */
-	public void testHandleElementConflictAndThenDeleted()
+	@Test public void handleElementConflictAndThenDeleted()
 	{
 		final long changesetId = 123;
 		final long userId = 10;
@@ -148,7 +148,7 @@ public class OsmQuestChangesUploadTest extends TestCase
 	/* Simulates the changeset that is about to be used was created by a different user, so a new
 	*  changeset needs to be created. (after that, it runs into the same case above, for simplicity
 	*  sake*/
-	public void testHandleChangesetConflictDifferentUser()
+	@Test public void handleChangesetConflictDifferentUser()
 	{
 		final long userId = 10;
 		final long otherUserId = 15;
@@ -164,7 +164,7 @@ public class OsmQuestChangesUploadTest extends TestCase
 
 	/* Simulates the changeset that is about to be used is already closed, so a new changeset needs
 	to be created. (after that, it runs into the same case above, for simplicity sake*/
-	public void testHandleChangesetConflictAlreadyClosed()
+	@Test public void handleChangesetConflictAlreadyClosed()
 	{
 		final long userId = 10;
 		final long firstChangesetId = 123;
@@ -245,7 +245,7 @@ public class OsmQuestChangesUploadTest extends TestCase
 		return result;
 	}
 
-	public void testUploadNormally()
+	@Test public void uploadNormally()
 	{
 		OsmQuest quest = createAnsweredQuestWithAppliableChange();
 		Element element = createElement();

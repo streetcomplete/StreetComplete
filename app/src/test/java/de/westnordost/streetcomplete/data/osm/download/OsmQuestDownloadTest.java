@@ -4,7 +4,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-import junit.framework.TestCase;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -34,32 +35,27 @@ import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 
+import static org.junit.Assert.*;
 import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.anyLong;
-import static org.mockito.Matchers.anyString;
-import static org.mockito.Mockito.doAnswer;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 import static org.mockito.internal.verification.VerificationModeFactory.times;
 
-public class OsmQuestDownloadTest extends TestCase
+public class OsmQuestDownloadTest
 {
 	private ElementGeometryDao geometryDb;
 	private MergedElementDao elementDb;
 	private OsmQuestDao osmQuestDao;
 	private FutureTask<CountryBoundaries> countryBoundariesFuture;
 
-	@Override public void setUp() throws Exception
+	@Before public void setUp()
 	{
-		super.setUp();
 		geometryDb = mock(ElementGeometryDao.class);
 		elementDb = mock(MergedElementDao.class);
 		osmQuestDao = mock(OsmQuestDao.class);
 		countryBoundariesFuture = mock(FutureTask.class);
 	}
 
-	public void testIgnoreBlacklistedPositionsAndInvalidGeometry()
+	@Test public void ignoreBlacklistedPositionsAndInvalidGeometry()
 	{
 		LatLon blacklistPos = new OsmLatLon(3.0,4.0);
 
@@ -85,7 +81,7 @@ public class OsmQuestDownloadTest extends TestCase
 		verify(listener, times(0)).onQuestsCreated(any(Collection.class), any(QuestGroup.class));
 	}
 
-	public void testDeleteObsoleteQuests()
+	@Test public void deleteObsoleteQuests()
 	{
 		LatLon pos = new OsmLatLon(3.0,4.0);
 
