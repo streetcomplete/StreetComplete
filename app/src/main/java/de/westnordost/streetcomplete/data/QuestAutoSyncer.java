@@ -167,7 +167,7 @@ public class QuestAutoSyncer implements LocationListener, LostApiClient.Connecti
 		}
 	};
 
-	private boolean isAllowedByPreference()
+	public boolean isAllowedByPreference()
 	{
 		Prefs.Autosync p = Prefs.Autosync.valueOf(prefs.getString(Prefs.AUTOSYNC,"ON"));
 		return  p == Prefs.Autosync.ON || p == Prefs.Autosync.WIFI && isWifi;

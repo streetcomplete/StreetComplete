@@ -699,7 +699,7 @@ public class MainActivity extends AppCompatActivity implements
 			{
 				showQuestSolvedAnimation(quest, source);
 			}
-			autoUploadOnAnweredQuest();
+			triggerAutoUploadByUserInteraction();
 		});
 	}
 
@@ -729,7 +729,7 @@ public class MainActivity extends AppCompatActivity implements
 		{
 			showQuestSolvedAnimation(quest, null);
 		}
-		autoUploadOnAnweredQuest();
+		triggerAutoUploadByUserInteraction();
 	}
 
 	private void flingQuestMarkerTo(View quest, View target, Runnable onFinished)
@@ -833,13 +833,16 @@ public class MainActivity extends AppCompatActivity implements
 		LatLon position = mapFragment.getPositionAt(notePosition);
 		if(position == null) throw new NullPointerException();
 		questController.createNote(note, imagePaths, position);
-		autoUploadOnAnweredQuest();
+		triggerAutoUploadByUserInteraction();
 	}
 
-	private void autoUploadOnAnweredQuest()
+	private void triggerAutoUploadByUserInteraction()
 	{
-		if(!oAuth.isAuthorized()) requestOAuthorized();
-		else questAutoSyncer.triggerAutoUpload();
+		if(questAutoSyncer.isAllowedByPreference())
+		{
+			if (!oAuth.isAuthorized()) requestOAuthorized();
+			else questAutoSyncer.triggerAutoUpload();
+		}
 	}
 
 	/* ------------- VisibleQuestListener ------------- */
