@@ -48,7 +48,7 @@ public class TagFilterExpressionTest
 	@Test public void matchesElements()
 	{
 		BooleanExpression booleanExpression = mock(BooleanExpression.class);
-		when(booleanExpression.matches(anyObject())).thenReturn(true);
+		when(booleanExpression.matches(any())).thenReturn(true);
 		TagFilterExpression expr = new TagFilterExpression(
 				Arrays.asList(ElementsTypeFilter.values()),
 				booleanExpression);
@@ -68,7 +68,7 @@ public class TagFilterExpressionTest
 	private TagFilterExpression createMatchExpression(ElementsTypeFilter elementsTypeFilter)
 	{
 		BooleanExpression expr = mock(BooleanExpression.class);
-		when(expr.matches(anyObject())).thenReturn(true);
+		when(expr.matches(any())).thenReturn(true);
 		return new TagFilterExpression(Collections.singletonList(elementsTypeFilter), expr);
 	}
 }

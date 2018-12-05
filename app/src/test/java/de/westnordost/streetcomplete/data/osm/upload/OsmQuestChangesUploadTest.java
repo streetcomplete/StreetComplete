@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.upload;
 
 import android.content.SharedPreferences;
-import android.graphics.Point;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -16,7 +15,6 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import de.westnordost.osmapi.changesets.ChangesetInfo;
 import de.westnordost.osmapi.changesets.ChangesetsDao;
-import de.westnordost.osmapi.common.Handler;
 import de.westnordost.osmapi.common.errors.OsmConflictException;
 import de.westnordost.osmapi.map.MapDataDao;
 import de.westnordost.osmapi.map.data.BoundingBox;
@@ -94,7 +92,7 @@ public class OsmQuestChangesUploadTest
 
 		assertFalse(u.uploadQuestChange(-1, quest, null, false, false));
 
-		verify(downloadedTilesDao).remove(any(Point.class));
+		verify(downloadedTilesDao).remove(any());
 		verify(questDb).delete(quest.getId());
 	}
 
@@ -110,7 +108,7 @@ public class OsmQuestChangesUploadTest
 				null, downloadedTilesDao, null, null);
 		assertFalse(u.uploadQuestChange(123, quest, element, false, false));
 		verify(questDb).delete(quest.getId());
-		verify(downloadedTilesDao).remove(any(Point.class));
+		verify(downloadedTilesDao).remove(any());
 	}
 
 	/* Simulates an element conflict while uploading the element, when updating the element from
@@ -142,7 +140,7 @@ public class OsmQuestChangesUploadTest
 		assertFalse(u.uploadQuestChange(changesetId, quest, element, false, false));
 		verify(questDb).delete(quest.getId());
 		verify(elementDb).delete(Element.Type.NODE, A_NODE_ID);
-		verify(downloadedTilesDao).remove(any(Point.class));
+		verify(downloadedTilesDao).remove(any());
 	}
 
 	/* Simulates the changeset that is about to be used was created by a different user, so a new
@@ -191,7 +189,7 @@ public class OsmQuestChangesUploadTest
 		OpenChangesetsDao manageChangesetsDb = mock(OpenChangesetsDao.class);
 
 		MapDataDao mapDataDao = createMapDataDaoThatReportsConflictOnUploadAndNodeDeleted();
-		when(mapDataDao.openChangeset(any(Map.class))).thenReturn(secondChangesetId);
+		when(mapDataDao.openChangeset(anyMap())).thenReturn(secondChangesetId);
 
 		SharedPreferences prefs = createPreferencesForUser(userId);
 
@@ -203,7 +201,7 @@ public class OsmQuestChangesUploadTest
 		verify(manageChangesetsDb).replace(new OpenChangesetKey("TestQuestType","test case"), secondChangesetId);
 		verify(questDb).delete(quest.getId());
 		verify(elementDb).delete(Element.Type.NODE, A_NODE_ID);
-		verify(downloadedTilesDao).remove(any(Point.class));
+		verify(downloadedTilesDao).remove(any());
 	}
 
 	private static SharedPreferences createPreferencesForUser(long userId)
@@ -219,7 +217,7 @@ public class OsmQuestChangesUploadTest
 	{
 		MapDataDao mapDataDao = mock(MapDataDao.class);
 		doThrow(OsmConflictException.class).when(mapDataDao)
-				.uploadChanges(any(Long.class), any(Iterable.class), any(Handler.class));
+				.uploadChanges(anyLong(), any(), any());
 		when(mapDataDao.getNode(A_NODE_ID)).thenReturn(null);
 		return mapDataDao;
 	}
@@ -255,7 +253,7 @@ public class OsmQuestChangesUploadTest
 		QuestStatisticsDao statisticsDao = mock(QuestStatisticsDao.class);
 		MergedElementDao elementDb = mock(MergedElementDao.class);
 		OsmQuestGiver osmQuestUnlocker = mock(OsmQuestGiver.class);
-		when(osmQuestUnlocker.updateQuests(any(Element.class))).thenReturn(new OsmQuestGiver.QuestUpdates());
+		when(osmQuestUnlocker.updateQuests(any())).thenReturn(new OsmQuestGiver.QuestUpdates());
 		OsmQuestChangesUpload u = new OsmQuestChangesUpload(mapDataDao, questDb, elementDb, null,
 				statisticsDao, null, null, null, null, osmQuestUnlocker);
 

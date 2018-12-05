@@ -32,7 +32,7 @@ public class OsmNotesDownloadTest
 	private SharedPreferences preferences;
 	private OsmAvatarsDownload avatarsDownload;
 
-	@Before public void setUp() throws Exception
+	@Before public void setUp()
 	{
 		noteDB = mock(NoteDao.class);
 		noteQuestDB = mock(OsmNoteQuestDao.class);
@@ -53,7 +53,7 @@ public class OsmNotesDownloadTest
 		Note note2 = createANote();
 		note2.id = 5L;
 		quests.add(new OsmNoteQuest(13L, note2, QuestStatus.NEW, null, new Date(), new OsmNoteQuestType(), null));
-		when(noteQuestDB.getAll(any(BoundingBox.class), any(QuestStatus.class)))
+		when(noteQuestDB.getAll(any(), any()))
 				.thenReturn(quests);
 
 		doAnswer(invocation ->
@@ -62,7 +62,7 @@ public class OsmNotesDownloadTest
 			assertEquals(1, deletedQuests.size());
 			assertEquals(13L, (long) deletedQuests.iterator().next());
 			return 1;
-		}).when(noteQuestDB).deleteAll(any(Collection.class));
+		}).when(noteQuestDB).deleteAll(any());
 
 		// note dao mock will only "find" the note #4
 		List<Note> notes = new ArrayList<>();
@@ -77,8 +77,8 @@ public class OsmNotesDownloadTest
 
 		dl.download(new BoundingBox(0,0,1,1), null, 1000);
 
-		verify(noteQuestDB).deleteAll(any(Collection.class));
-		verify(listener).onQuestsRemoved(any(Collection.class), any(QuestGroup.class));
+		verify(noteQuestDB).deleteAll(any());
+		verify(listener).onQuestsRemoved(any(), any());
 	}
 
 	private Note createANote()

@@ -19,7 +19,6 @@ import java.util.concurrent.FutureTask;
 import de.westnordost.countryboundaries.CountryBoundaries;
 import de.westnordost.osmapi.map.data.OsmLatLon;
 import de.westnordost.osmapi.map.data.OsmNode;
-import de.westnordost.streetcomplete.data.QuestGroup;
 import de.westnordost.streetcomplete.data.QuestStatus;
 import de.westnordost.streetcomplete.data.VisibleQuestListener;
 import de.westnordost.streetcomplete.data.osm.AOsmElementQuestType;
@@ -36,7 +35,6 @@ import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 
 import static org.junit.Assert.*;
-import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.*;
 import static org.mockito.internal.verification.VerificationModeFactory.times;
 
@@ -78,7 +76,7 @@ public class OsmQuestDownloadTest
 
 		dl.download(questType, new BoundingBox(0,0,1,1), Collections.singleton(blacklistPos));
 
-		verify(listener, times(0)).onQuestsCreated(any(Collection.class), any(QuestGroup.class));
+		verify(listener, times(0)).onQuestsCreated(any(), any());
 	}
 
 	@Test public void deleteObsoleteQuests()
@@ -99,17 +97,16 @@ public class OsmQuestDownloadTest
 		quests.add(new OsmQuest(
 				13L, questType, Element.Type.NODE, 5, QuestStatus.NEW, null, null,
 				new Date(), new ElementGeometry(pos)));
-		when(osmQuestDao.getAll(
-				any(BoundingBox.class), any(QuestStatus.class), anyString(),
-				any(Element.Type.class), anyLong()))
-				.thenReturn(quests);
+
+		when(osmQuestDao.getAll(any(), any(), any(), any(), any())).thenReturn(quests);
+
 		doAnswer(invocation ->
 		{
 			Collection<Long> deletedQuests = (Collection<Long>) (invocation.getArguments()[0]);
 			assertEquals(1, deletedQuests.size());
 			assertEquals(13L, (long) deletedQuests.iterator().next());
 			return 1;
-		}).when(osmQuestDao).deleteAll(any(Collection.class));
+		}).when(osmQuestDao).deleteAll(any());
 
 		OsmQuestDownload dl = new OsmQuestDownload(geometryDb, elementDb, osmQuestDao, countryBoundariesFuture);
 
@@ -119,16 +116,14 @@ public class OsmQuestDownloadTest
 		// -> we expect that quest with node #5 is removed
 		dl.download(questType, new BoundingBox(0,0,1,1), null);
 
-		verify(osmQuestDao).deleteAll(any(Collection.class));
-		verify(listener).onQuestsRemoved(any(Collection.class), any(QuestGroup.class));
+		verify(osmQuestDao).deleteAll(any());
+		verify(listener).onQuestsRemoved(any(), any());
 	}
 
 
 	private void setUpOsmQuestDaoMockWithNoPreviousElements()
 	{
-		when(osmQuestDao.getAll(
-				any(BoundingBox.class), any(QuestStatus.class), anyString(),
-				any(Element.Type.class), anyLong()))
+		when(osmQuestDao.getAll(any(), any(), any(),any(), any()))
 				.thenReturn(Collections.emptyList());
 	}
 

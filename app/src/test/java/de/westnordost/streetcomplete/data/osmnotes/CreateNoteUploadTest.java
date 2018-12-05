@@ -11,9 +11,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import de.westnordost.osmapi.common.Handler;
 import de.westnordost.osmapi.common.errors.OsmConflictException;
 import de.westnordost.osmapi.map.MapDataDao;
-import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
-import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.map.data.OsmLatLon;
 import de.westnordost.osmapi.map.data.Way;
 import de.westnordost.osmapi.notes.Note;
@@ -55,7 +53,7 @@ public class CreateNoteUploadTest
 
 	@Test public void cancel() throws InterruptedException
 	{
-		when(createNoteDb.getAll(any(BoundingBox.class))).thenAnswer(invocation ->
+		when(createNoteDb.getAll(any())).thenAnswer(invocation ->
 		{
 			Thread.sleep(1000); // take your time...
 			ArrayList<CreateNote> result = new ArrayList<>();
@@ -114,7 +112,7 @@ public class CreateNoteUploadTest
 
 		assertNull(createNoteUpload.uploadCreateNote(createNote));
 
-		verify(notesDao).getAll(any(BoundingBox.class), any(Handler.class), anyInt(), anyInt());
+		verify(notesDao).getAll(any(), any(), anyInt(), anyInt());
 		verifyNoMoreInteractions(notesDao);
 		verifyNoteNotInsertedIntoDb(createNote.id);
 	}
@@ -142,7 +140,7 @@ public class CreateNoteUploadTest
 		CreateNote createNote = createACreateNote();
 		Note note = createNote(null);
 
-		when(notesDao.create(any(LatLon.class), anyString())).thenReturn(note);
+		when(notesDao.create(any(), anyString())).thenReturn(note);
 
 		assertNotNull(createNoteUpload.uploadCreateNote(createNote));
 
@@ -160,7 +158,7 @@ public class CreateNoteUploadTest
 
 		Note note = createNote(null);
 
-		when(notesDao.create(any(LatLon.class), anyString())).thenReturn(note);
+		when(notesDao.create(any(), anyString())).thenReturn(note);
 
 		assertNotNull(createNoteUpload.uploadCreateNote(createNote));
 
@@ -180,7 +178,7 @@ public class CreateNoteUploadTest
 
 		Note note = createNote(createNote);
 
-		when(notesDao.create(any(LatLon.class), anyString())).thenReturn(note);
+		when(notesDao.create(any(), anyString())).thenReturn(note);
 
 		assertNotNull(createNoteUpload.uploadCreateNote(createNote));
 
@@ -197,7 +195,7 @@ public class CreateNoteUploadTest
 		createNote.imagePaths.add("hello");
 
 		Note note = createNote(null);
-		when(notesDao.create(any(LatLon.class), anyString())).thenReturn(note);
+		when(notesDao.create(any(), anyString())).thenReturn(note);
 
 		when(imageUploader.upload(createNote.imagePaths)).thenReturn(
 				Collections.singletonList("hello, too")
@@ -241,7 +239,7 @@ public class CreateNoteUploadTest
 	private void verifyNoteInsertedIntoDb(long createNoteId, Note note)
 	{
 		verify(noteDb).put(note);
-		verify(osmNoteQuestDb).add(any(OsmNoteQuest.class));
+		verify(osmNoteQuestDb).add(any());
 		verify(createNoteDb).delete(createNoteId);
 		verify(questStatisticsDb).addOneNote();
 	}
@@ -254,7 +252,7 @@ public class CreateNoteUploadTest
 			Handler<Note> handler = (Handler<Note>) invocation.getArguments()[1];
 			handler.handle(note);
 			return null;
-		}).when(notesDao).getAll(any(BoundingBox.class), any(Handler.class), anyInt(), anyInt());
+		}).when(notesDao).getAll(any(), any(), anyInt(), anyInt());
 	}
 
 	private Note createNote(CreateNote fitsTo)

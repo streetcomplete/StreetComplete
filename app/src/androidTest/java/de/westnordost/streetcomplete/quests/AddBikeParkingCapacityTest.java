@@ -15,7 +15,7 @@ public class AddBikeParkingCapacityTest extends AOsmElementQuestTypeTest
 
 	public void testCapacity()
 	{
-		bundle.putInt(AddBikeParkingCapacityForm.BIKE_PARKING_CAPACITY, 10);
+		bundle.putString(AddBikeParkingCapacityForm.INPUT, "10");
 		verify(
 				new StringMapEntryAdd("capacity","10"));
 	}

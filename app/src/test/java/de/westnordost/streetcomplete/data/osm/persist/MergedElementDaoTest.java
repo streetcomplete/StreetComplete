@@ -107,7 +107,7 @@ public class MergedElementDaoTest
 		elements.add(createARelation());
 
 		dao.putAll(elements);
-		verify(relationDao).putAll(anyCollectionOf(Relation.class));
+		verify(relationDao).putAll(anyCollection());
 	}
 
 	@Test public void putAllWays()
@@ -116,7 +116,7 @@ public class MergedElementDaoTest
 		elements.add(createAWay());
 
 		dao.putAll(elements);
-		verify(wayDao).putAll(anyCollectionOf(Way.class));
+		verify(wayDao).putAll(anyCollection());
 	}
 
 	@Test public void putAllNodes()
@@ -125,7 +125,7 @@ public class MergedElementDaoTest
 		elements.add(createANode());
 
 		dao.putAll(elements);
-		verify(nodeDao).putAll(anyCollectionOf(Node.class));
+		verify(nodeDao).putAll(anyCollection());
 	}
 
 	@Test public void putAllElements()
@@ -136,9 +136,9 @@ public class MergedElementDaoTest
 		elements.add(createARelation());
 
 		dao.putAll(elements);
-		verify(nodeDao).putAll(anyCollectionOf(Node.class));
-		verify(wayDao).putAll(anyCollectionOf(Way.class));
-		verify(relationDao).putAll(anyCollectionOf(Relation.class));
+		verify(nodeDao).putAll(anyCollection());
+		verify(wayDao).putAll(anyCollection());
+		verify(relationDao).putAll(anyCollection());
 	}
 
 	private Node createANode()
