@@ -1,10 +1,10 @@
 package de.westnordost.streetcomplete.quests.opening_hours;
 
-import android.app.AlertDialog;
 import android.content.Context;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
