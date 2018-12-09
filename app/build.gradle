@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 
 def MAPZEN_API_KEY = hasProperty('mapzenApiKey') ? '"' + mapzenApiKey + '"' : "null"
 
@@ -126,6 +127,9 @@ dependencies {
 
     // config files
     implementation 'com.esotericsoftware.yamlbeans:yamlbeans:1.13'
+
+    
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 
 task generateMetadata(type: Exec) {
