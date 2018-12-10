@@ -6,7 +6,6 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
-import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
 
 class AddRailwayCrossingBarrier(o: OverpassMapDataDao) : SimpleOverpassQuestType(o) {
 
@@ -21,7 +20,5 @@ class AddRailwayCrossingBarrier(o: OverpassMapDataDao) : SimpleOverpassQuestType
         changes.add("crossing:barrier", values!![0])
     }
 
-    override fun createForm(): AbstractQuestAnswerFragment {
-        return AddRailwayCrossingBarrierForm()
-    }
+    override fun createForm() = AddRailwayCrossingBarrierForm()
 }
