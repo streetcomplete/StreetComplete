@@ -19,24 +19,20 @@ interface OsmElementQuestType : QuestType {
 	/** in which countries the quest should be shown */
 	val enabledForCountries: Countries get() = Countries.ALL
 
-	/** @return whether the markers should be at the ends instead of the center
-	 */
+	/** returns whether the markers should be at the ends instead of the center */
 	val hasMarkersAtEnds: Boolean get() = false
 
-	/** @return title resource for when the element has the specified tags. The tags are unmodifiable */
+	/** returns title resource for when the element has the specified [tags]. The tags are unmodifiable */
 	fun getTitle(tags: Map<String, String>): Int
 
 	override val title: Int get() = getTitle(emptyMap())
 
-	/** Downloads map data for this quest type
-	 *
-	 * @param bbox the area in which it should be downloaded
-	 * @param handler called for each element for which this quest type applies
-	 * @return true if successful (false if interrupted)
+	/** Downloads map data for this quest type for the given [bbox] and puts the received data into
+     *  the [handler]. Returns whether the download was successful
 	 */
 	fun download(bbox: BoundingBox, handler: MapDataWithGeometryHandler): Boolean
 
-	/** @return whether a quest of this quest type could be created out of the given element. If the
+	/** returns whether a quest of this quest type could be created out of the given [element]. If the
 	 * element alone does not suffice to find this out (but e.g. an Overpass query would need to be
      * made to find this out), this should return null.
      *
@@ -45,7 +41,8 @@ interface OsmElementQuestType : QuestType {
      * not immediately pop up again.*/
 	fun isApplicableTo(element: Element): Boolean?
 
-	/** applies the data from answer to the given element  */
+	/** applies the data from [answer] to the given element. The element is not directly modified,
+     *  instead, a map of [changes] is built */
 	fun applyAnswerTo(answer: Bundle, changes: StringMapChangesBuilder)
 
 	/** The quest type can clean it's metadata here, if any  */

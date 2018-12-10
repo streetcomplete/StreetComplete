@@ -10,12 +10,16 @@ import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
 class AddBuildingLevels(o: OverpassMapDataDao) : SimpleOverpassQuestType(o) {
 
 	// building:height is undocumented, but used the same way as height and currently over 50k times
-    override val tagFilters = """
-        ways, relations with
-        building ~ house|residential|apartments|detached|terrace|dormitory|semi|semidetached_house|bungalow|school|civic|college|university|public|hospital|kindergarten|transportation|train_station|hotel|retail|commercial|office|warehouse|industrial|manufacture|parking|farm|farm_auxiliary|barn|cabin
-		and !building:levels and !height and !building:height
-        and !man_made and location!=underground
-	"""
+    override val tagFilters =
+        "ways, relations with " +
+        " building ~ " + arrayOf(
+            "house","residential","apartments","detached","terrace","dormitory","semi",
+            "semidetached_house","bungalow","school","civic","college","university","public",
+            "hospital","kindergarten","transportation","train_station", "hotel","retail",
+            "commercial","office","warehouse","industrial","manufacture","parking","farm",
+            "farm_auxiliary","barn","cabin").joinToString("|") +
+		" and !building:levels and !height and !building:height " +
+        " and !man_made and location!=underground "
     override val commitMessage = "Add building and roof levels"
     override val icon = R.drawable.ic_quest_building_levels
 
