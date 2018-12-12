@@ -235,7 +235,7 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 
 	private List<Cycleway> getCyclewayItems(boolean isRight)
 	{
-		List<Cycleway> values = new ArrayList<>(Arrays.asList(Cycleway.getDisplayValues()));
+		List<Cycleway> values = new ArrayList<>(Arrays.asList(Cycleway.Companion.getDisplayValues()));
 		// different wording for a contraflow lane that is marked like a "shared" lane (just bicycle pictogram)
 		if(isOneway() && isReverseSideRight() == isRight)
 		{
@@ -276,7 +276,7 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 						TextView textView = itemView.findViewById(R.id.textView);
 						int resId = item.getIconResId(isLeftHandTraffic());
 						iconView.setImageDrawable(getResources().getDrawable(resId));
-						textView.setText(item.nameResId);
+						textView.setText(item.getNameResId());
 						itemView.setOnClickListener(view -> callback.onCyclewaySelected(item));
 					}
 				};

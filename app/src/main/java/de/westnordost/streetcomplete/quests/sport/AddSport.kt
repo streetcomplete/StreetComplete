@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.streetcomplete.quests.ImageListQuestAnswerFragment
 
 class AddSport(o: OverpassMapDataDao) : SimpleOverpassQuestType(o) {
 
@@ -23,7 +24,7 @@ class AddSport(o: OverpassMapDataDao) : SimpleOverpassQuestType(o) {
 	override fun createForm() = AddSportForm()
 
     override fun applyAnswerTo(answer: Bundle, changes: StringMapChangesBuilder) {
-        val values = answer.getStringArrayList(AddSportForm.OSM_VALUES)
+        val values = answer.getStringArrayList(ImageListQuestAnswerFragment.OSM_VALUES)
         if (values != null && !values.isEmpty()) {
             val valuesStr = TextUtils.join(";", values)
 

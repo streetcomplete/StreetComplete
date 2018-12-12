@@ -11,7 +11,7 @@ public class AddCyclewayTest extends AOsmElementQuestTypeTest
 {
 	public void testCyclewayLeftAndRightDontHaveToBeSpecified1()
 	{
-		bundle.putString(AddCyclewayForm.CYCLEWAY_LEFT, Cycleway.EXCLUSIVE_LANE.name());
+		bundle.putString(AddCyclewayForm.Companion.getCYCLEWAY_LEFT(), Cycleway.EXCLUSIVE_LANE.name());
 		StringMapChangesBuilder cb = new StringMapChangesBuilder(tags);
 		createQuestType().applyAnswerTo(bundle, cb);
 		// success if no exception thrown
@@ -19,7 +19,7 @@ public class AddCyclewayTest extends AOsmElementQuestTypeTest
 
 	public void testCyclewayLeftAndRightDontHaveToBeSpecified2()
 	{
-		bundle.putString(AddCyclewayForm.CYCLEWAY_RIGHT, Cycleway.EXCLUSIVE_LANE.name());
+		bundle.putString(AddCyclewayForm.Companion.getCYCLEWAY_RIGHT(), Cycleway.EXCLUSIVE_LANE.name());
 		StringMapChangesBuilder cb = new StringMapChangesBuilder(tags);
 		createQuestType().applyAnswerTo(bundle, cb);
 		// success if no exception thrown
@@ -105,8 +105,8 @@ public class AddCyclewayTest extends AOsmElementQuestTypeTest
 
 	public void testCyclewaySidewalkAny()
 	{
-		bundle.putString(AddCyclewayForm.CYCLEWAY_RIGHT, Cycleway.SIDEWALK_EXPLICIT.name());
-		bundle.putString(AddCyclewayForm.CYCLEWAY_LEFT, Cycleway.SIDEWALK_OK.name());
+		bundle.putString(AddCyclewayForm.Companion.getCYCLEWAY_RIGHT(), Cycleway.SIDEWALK_EXPLICIT.name());
+		bundle.putString(AddCyclewayForm.Companion.getCYCLEWAY_LEFT(), Cycleway.SIDEWALK_OK.name());
 		verify(
 				new StringMapEntryAdd("sidewalk", "both")
 		);
@@ -132,8 +132,8 @@ public class AddCyclewayTest extends AOsmElementQuestTypeTest
 
 	public void testLeftAndRightAreDifferent()
 	{
-		bundle.putString(AddCyclewayForm.CYCLEWAY_RIGHT, Cycleway.EXCLUSIVE_LANE.name());
-		bundle.putString(AddCyclewayForm.CYCLEWAY_LEFT, Cycleway.TRACK.name());
+		bundle.putString(AddCyclewayForm.Companion.getCYCLEWAY_RIGHT(), Cycleway.EXCLUSIVE_LANE.name());
+		bundle.putString(AddCyclewayForm.Companion.getCYCLEWAY_LEFT(), Cycleway.TRACK.name());
 		verify(
 				new StringMapEntryAdd("cycleway:right", "lane"),
 				new StringMapEntryAdd("cycleway:right:lane","exclusive"),
@@ -144,7 +144,7 @@ public class AddCyclewayTest extends AOsmElementQuestTypeTest
 	public void testCyclewayMakesStreetNotOnewayForBicycles()
 	{
 		putBothSides(Cycleway.EXCLUSIVE_LANE);
-		bundle.putBoolean(AddCyclewayForm.IS_ONEWAY_NOT_FOR_CYCLISTS, true);
+		bundle.putBoolean(AddCyclewayForm.Companion.getIS_ONEWAY_NOT_FOR_CYCLISTS(), true);
 		verify(
 				new StringMapEntryAdd("cycleway:both", "lane"),
 				new StringMapEntryAdd("oneway:bicycle", "no"),
@@ -157,7 +157,7 @@ public class AddCyclewayTest extends AOsmElementQuestTypeTest
 		// this would be a street that has lanes on both sides but is oneway=yes (in countries with
 		// right hand traffic)
 		putBothSides(Cycleway.EXCLUSIVE_LANE);
-		bundle.putInt(AddCyclewayForm.CYCLEWAY_LEFT_DIR, -1);
+		bundle.putInt(AddCyclewayForm.Companion.getCYCLEWAY_LEFT_DIR(), -1);
 		verify(
 				new StringMapEntryAdd("cycleway:left", "lane"),
 				new StringMapEntryAdd("cycleway:left:oneway", "-1"),
@@ -172,7 +172,7 @@ public class AddCyclewayTest extends AOsmElementQuestTypeTest
 		// this would be a street that has lanes on both sides but is oneway=-1 (in countries with
 		// right hand traffic)
 		putBothSides(Cycleway.EXCLUSIVE_LANE);
-		bundle.putInt(AddCyclewayForm.CYCLEWAY_LEFT_DIR, +1);
+		bundle.putInt(AddCyclewayForm.Companion.getCYCLEWAY_LEFT_DIR(), +1);
 		verify(
 				new StringMapEntryAdd("cycleway:left", "lane"),
 				new StringMapEntryAdd("cycleway:left:oneway", "yes"),
@@ -184,8 +184,8 @@ public class AddCyclewayTest extends AOsmElementQuestTypeTest
 
 	private void putBothSides(Cycleway cycleway)
 	{
-		bundle.putString(AddCyclewayForm.CYCLEWAY_RIGHT, cycleway.name());
-		bundle.putString(AddCyclewayForm.CYCLEWAY_LEFT, cycleway.name());
+		bundle.putString(AddCyclewayForm.Companion.getCYCLEWAY_RIGHT(), cycleway.name());
+		bundle.putString(AddCyclewayForm.Companion.getCYCLEWAY_LEFT(), cycleway.name());
 	}
 
 	@Override protected OsmElementQuestType createQuestType()

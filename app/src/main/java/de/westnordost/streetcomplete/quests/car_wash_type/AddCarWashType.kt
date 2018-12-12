@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.streetcomplete.quests.ImageListQuestAnswerFragment
 
 class AddCarWashType(o: OverpassMapDataDao) : SimpleOverpassQuestType(o) {
 
@@ -18,7 +19,7 @@ class AddCarWashType(o: OverpassMapDataDao) : SimpleOverpassQuestType(o) {
 	override fun createForm() = AddCarWashTypeForm()
 
     override fun applyAnswerTo(answer: Bundle, changes: StringMapChangesBuilder) {
-        val values = answer.getStringArrayList(AddCarWashTypeForm.OSM_VALUES)
+        val values = answer.getStringArrayList(ImageListQuestAnswerFragment.OSM_VALUES)
         if (values != null) {
             val isAutomated = values.contains(AddCarWashTypeForm.AUTOMATED)
             val isSelfService = values.contains(AddCarWashTypeForm.SELF_SERVICE)

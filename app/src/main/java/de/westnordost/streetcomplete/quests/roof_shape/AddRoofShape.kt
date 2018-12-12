@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.streetcomplete.quests.ImageListQuestAnswerFragment
 
 class AddRoofShape(o: OverpassMapDataDao) : SimpleOverpassQuestType(o) {
 
@@ -21,7 +22,7 @@ class AddRoofShape(o: OverpassMapDataDao) : SimpleOverpassQuestType(o) {
 	override fun createForm() = AddRoofShapeForm()
 
     override fun applyAnswerTo(answer: Bundle, changes: StringMapChangesBuilder) {
-        val values = answer.getStringArrayList(AddRoofShapeForm.OSM_VALUES)
+        val values = answer.getStringArrayList(ImageListQuestAnswerFragment.OSM_VALUES)
         if (values != null && values.size == 1) {
             changes.add("roof:shape", values[0])
         }
