@@ -20,13 +20,13 @@ public class TrafficFlowSegmentsDaoTest extends TestCase
 {
 	public void testParseEmptyDoesNotResultInError() throws JSONException
 	{
-		Map<Long, List<TrafficFlowSegment>> result = TrafficFlowSegmentsDao.parse("{\"segments\":[]}");
+		Map<Long, List<TrafficFlowSegment>> result = TrafficFlowSegmentsDao.Companion.parse("{\"segments\":[]}");
 		assertTrue(result.isEmpty());
 	}
 
 	public void testParseTwoOfDifferentWay() throws JSONException
 	{
-		Map<Long, List<TrafficFlowSegment>> result = TrafficFlowSegmentsDao.parse(
+		Map<Long, List<TrafficFlowSegment>> result = TrafficFlowSegmentsDao.Companion.parse(
 			"{\"segments\":[" +
 			"{\"wayId\":1,\"fromPosition\":{\"lon\":1, \"lat\":2},\"toPosition\":{\"lon\":5, \"lat\":6}}," +
 			"{\"wayId\":2,\"fromPosition\":{\"lon\":3, \"lat\":4},\"toPosition\":{\"lon\":7, \"lat\":8}}," +
@@ -44,7 +44,7 @@ public class TrafficFlowSegmentsDaoTest extends TestCase
 
 	public void testParseTwoOfSameWay() throws JSONException
 	{
-		Map<Long, List<TrafficFlowSegment>> result = TrafficFlowSegmentsDao.parse(
+		Map<Long, List<TrafficFlowSegment>> result = TrafficFlowSegmentsDao.Companion.parse(
 			"{\"segments\":[" +
 			"{\"wayId\":1,\"fromPosition\":{\"lon\":1, \"lat\":2},\"toPosition\":{\"lon\":5, \"lat\":6}}," +
 			"{\"wayId\":1,\"fromPosition\":{\"lon\":3, \"lat\":4},\"toPosition\":{\"lon\":7, \"lat\":8}}," +

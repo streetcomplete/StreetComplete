@@ -18,5 +18,5 @@
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:text="@string/quest_wheelchairAccess_description_toilets"
-        android:labelFor="@+id/nameInput"/>
+        android:labelFor="@+id/inputName"/>
 </LinearLayout>

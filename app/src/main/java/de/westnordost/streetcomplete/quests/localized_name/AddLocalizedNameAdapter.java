@@ -279,7 +279,7 @@ public class AddLocalizedNameAdapter extends RecyclerView.Adapter
 		{
 			super(itemView);
 
-			nameInput = itemView.findViewById(R.id.nameInput);
+			nameInput = itemView.findViewById(R.id.inputName);
 			languageButton = itemView.findViewById(R.id.languageButton);
 			deleteButton = itemView.findViewById(R.id.deleteButton);
 			nameSuggestionsButton = itemView.findViewById(R.id.nameSuggestions);

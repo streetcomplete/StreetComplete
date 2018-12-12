@@ -15,19 +15,19 @@ public class AddWheelchairPublicTransportTest extends AOsmElementQuestTypeTest
 
 	public void testPublicTransportYes()
 	{
-		bundle.putString(AddWheelchairAccessPublicTransportForm.ANSWER, "yes");
+		bundle.putString(AddWheelchairAccessPublicTransportForm.Companion.getANSWER(), "yes");
 		verify(new StringMapEntryAdd("wheelchair","yes"));
 	}
 
 	public void testPublicTransportNo()
 	{
-		bundle.putString(AddWheelchairAccessPublicTransportForm.ANSWER, "no");
+		bundle.putString(AddWheelchairAccessPublicTransportForm.Companion.getANSWER(), "no");
 		verify(new StringMapEntryAdd("wheelchair","no"));
 	}
 
 	public void testPublicTransportLimited()
 	{
-		bundle.putString(AddWheelchairAccessPublicTransportForm.ANSWER, "limited");
+		bundle.putString(AddWheelchairAccessPublicTransportForm.Companion.getANSWER(), "limited");
 		verify(new StringMapEntryAdd("wheelchair","limited"));
 	}
 

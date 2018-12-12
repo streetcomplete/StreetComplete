@@ -15,19 +15,19 @@ public class AddWheelchairBusinessTest extends AOsmElementQuestTypeTest
 
 	public void testBusinessYes()
 	{
-		bundle.putString(AddWheelchairAccessBusinessForm.ANSWER, "yes");
+		bundle.putString(AddWheelchairAccessBusinessForm.Companion.getANSWER(), "yes");
 		verify(new StringMapEntryAdd("wheelchair","yes"));
 	}
 
 	public void testBusinessNo()
 	{
-		bundle.putString(AddWheelchairAccessBusinessForm.ANSWER, "no");
+		bundle.putString(AddWheelchairAccessBusinessForm.Companion.getANSWER(), "no");
 		verify(new StringMapEntryAdd("wheelchair","no"));
 	}
 
 	public void testBusinessLimited()
 	{
-		bundle.putString(AddWheelchairAccessBusinessForm.ANSWER, "limited");
+		bundle.putString(AddWheelchairAccessBusinessForm.Companion.getANSWER(), "limited");
 		verify(new StringMapEntryAdd("wheelchair","limited"));
 	}
 

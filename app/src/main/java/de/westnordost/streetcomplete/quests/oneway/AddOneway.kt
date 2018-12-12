@@ -14,6 +14,7 @@ import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
 import de.westnordost.streetcomplete.data.osm.tql.FiltersParser
+import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
 class AddOneway(
     private val overpassMapDataDao: OverpassMapDataDao,
@@ -120,12 +121,12 @@ class AddOneway(
 	override fun createForm() = AddOnewayForm()
 
 	override fun applyAnswerTo(answer: Bundle, changes: StringMapChangesBuilder) {
-        val isOneway = answer.getBoolean(AddOnewayForm.ANSWER)
+        val isOneway = answer.getBoolean(YesNoQuestAnswerFragment.ANSWER)
         if (!isOneway) {
             changes.add("oneway", "no")
         } else {
             val wayId = answer.getLong(AddOnewayForm.WAY_ID)
-            changes.add("oneway", if (db.isForward(wayId)) "yes" else "-1")
+            changes.add("oneway", if (db.isForward(wayId)!!) "yes" else "-1")
         }
     }
 
