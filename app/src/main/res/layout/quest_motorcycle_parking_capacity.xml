@@ -13,7 +13,7 @@
         android:layout_centerVertical="true"
         android:layout_toStartOf="@+id/capacityMultiplier"
         android:minEms="1"
-        android:id="@+id/capacityInput"
+        android:id="@+id/inputCapacity"
         android:inputType="number"
         android:maxLines="1"
         />

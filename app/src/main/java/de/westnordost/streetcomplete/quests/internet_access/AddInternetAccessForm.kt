@@ -4,20 +4,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RadioGroup
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
+import kotlinx.android.synthetic.main.quest_internet_access.*
 
 class AddInternetAccessForm : AbstractQuestFormAnswerFragment() {
-    private lateinit var radioButtonGroup: RadioGroup
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
-        val contentView = setContentView(R.layout.quest_internet_access)
+        setContentView(R.layout.quest_internet_access)
 
-        radioButtonGroup = contentView.findViewById(R.id.radioButtonGroup)
         radioButtonGroup.setOnCheckedChangeListener { _, _ -> checkIsFormComplete() }
 
 	    return view
