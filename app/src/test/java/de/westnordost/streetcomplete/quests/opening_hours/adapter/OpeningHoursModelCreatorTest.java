@@ -26,6 +26,8 @@ public class OpeningHoursModelCreatorTest
 	private static final TimeRange MIDDAY = new TimeRange(10*60,16*60);
 	private static  TimeRange AFTERNOON = new TimeRange(14*60,18*60);
 	private static  TimeRange LONG_AFTERNOON = new TimeRange(13*60,20*60);
+	private static  TimeRange DUSK_TILL_DAWN = new TimeRange(18*60,6*60);
+	private static  TimeRange EARLY_MORNING = new TimeRange(4*60,8*60);
 
 	private static final OpeningWeekdaysRow MONDAY_MORNING = new OpeningWeekdaysRow(MONDAY, MORNING);
 
@@ -141,6 +143,38 @@ public class OpeningHoursModelCreatorTest
 				new OpeningWeekdays(MONDAY_FRIDAY, times(MORNING)),
 				new OpeningWeekdays(MONDAY, times(AFTERNOON)),
 				new OpeningWeekdays(TUESDAY, times(LONG_AFTERNOON)))
+		)));
+
+		assertEquals(expected, actual);
+	}
+
+	@Test public void doesClusterWeekdaysThatOverlapBecauseTimeRangeExtendsToNextDay()
+	{
+		List<OpeningMonths> actual = create(
+			new OpeningWeekdaysRow(MONDAY, DUSK_TILL_DAWN),
+			new OpeningWeekdaysRow(TUESDAY, AFTERNOON)
+		);
+
+		List<OpeningMonths> expected = months(new OpeningMonths(ALL_YEAR, clusters(
+			weekdays(
+				new OpeningWeekdays(MONDAY, times(DUSK_TILL_DAWN)),
+				new OpeningWeekdays(TUESDAY, times(AFTERNOON)))
+		)));
+
+		assertEquals(expected, actual);
+	}
+
+	@Test public void doesNotClusterWeekdaysThatOverlapBecauseTimeRangeExtendsToNextDayWithOverlappingTimes()
+	// nnnnewww function name record!!! 🎉
+	{
+		List<OpeningMonths> actual = create(
+			new OpeningWeekdaysRow(MONDAY, DUSK_TILL_DAWN),
+			new OpeningWeekdaysRow(TUESDAY, EARLY_MORNING)
+		);
+
+		List<OpeningMonths> expected = months(new OpeningMonths(ALL_YEAR, clusters(
+			weekdays(new OpeningWeekdays(MONDAY, times(DUSK_TILL_DAWN))),
+			weekdays(new OpeningWeekdays(TUESDAY, times(EARLY_MORNING)))
 		)));
 
 		assertEquals(expected, actual);

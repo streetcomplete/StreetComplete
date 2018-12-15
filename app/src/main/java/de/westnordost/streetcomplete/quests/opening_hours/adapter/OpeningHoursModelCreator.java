@@ -73,7 +73,7 @@ public class OpeningHoursModelCreator
 				boolean anyTimesOverlap = false;
 				for (OpeningWeekdays inThisCluster : cluster)
 				{
-					boolean weekdaysOverlaps = inThisCluster.weekdays.intersects(other.weekdays);
+					boolean weekdaysOverlaps = inThisCluster.intersectsWeekdays(other);
 					boolean anyTimeRangeOverlaps = inThisCluster.intersects(other);
 					anyTimesOverlap |= weekdaysOverlaps && anyTimeRangeOverlaps;
 					anyWeekdaysOverlap |= weekdaysOverlaps;
