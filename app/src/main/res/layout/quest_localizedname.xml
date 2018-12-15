@@ -21,7 +21,7 @@
         />
 
     <Button
-        android:id="@+id/btn_add"
+        android:id="@+id/buttonAddLanguage"
         android:text="➕"
         android:layout_width="50dp"
         android:layout_height="wrap_content"

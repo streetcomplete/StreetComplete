@@ -53,19 +53,19 @@ public class AddRoadNameTest extends AOsmElementQuestTypeTest
 
 	public void testIsService()
 	{
-		bundle.putInt(AddRoadNameForm.NO_PROPER_ROAD, AddRoadNameForm.IS_SERVICE);
+		bundle.putInt(AddRoadNameForm.Companion.getNO_PROPER_ROAD(), AddRoadNameForm.Companion.getIS_SERVICE());
 		verify(new StringMapEntryModify("highway",tags.get("highway"),"service"));
 	}
 
 	public void testIsTrack()
 	{
-		bundle.putInt(AddRoadNameForm.NO_PROPER_ROAD, AddRoadNameForm.IS_TRACK);
+		bundle.putInt(AddRoadNameForm.Companion.getNO_PROPER_ROAD(), AddRoadNameForm.Companion.getIS_TRACK());
 		verify(new StringMapEntryModify("highway",tags.get("highway"),"track"));
 	}
 
 	public void testIsLink()
 	{
-		bundle.putInt(AddRoadNameForm.NO_PROPER_ROAD, AddRoadNameForm.IS_LINK);
+		bundle.putInt(AddRoadNameForm.Companion.getNO_PROPER_ROAD(), AddRoadNameForm.Companion.getIS_LINK());
 
 		tags.put("highway","primary");
 		verify(new StringMapEntryModify("highway",tags.get("highway"),"primary_link"));

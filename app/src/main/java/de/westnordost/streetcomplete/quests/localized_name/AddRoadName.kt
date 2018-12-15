@@ -79,7 +79,7 @@ class AddRoadName(
 	        return
         }
 
-        val roadNameByLanguage = AddLocalizedNameForm.toNameByLanguage(answer)
+        val roadNameByLanguage = answer.toNameByLanguage()
         for ((key, value) in roadNameByLanguage) {
             if (key.isEmpty()) {
                 changes.add("name", value)
@@ -95,14 +95,14 @@ class AddRoadName(
         val geometry = answer.getSerializable(AddRoadNameForm.WAY_GEOMETRY) as ElementGeometry
         if (geometry.polylines != null && !geometry.polylines.isEmpty()) {
             roadNameSuggestionsDao.putRoad(
-                wayId, roadNameByLanguage,
+                wayId, HashMap(roadNameByLanguage),
                 ArrayList<LatLon>(geometry.polylines[0])
             )
         }
     }
 
     companion object {
-	    private const val MAX_DIST_FOR_ROAD_NAME_SUGGESTION = 30.0 //m
+	    const val MAX_DIST_FOR_ROAD_NAME_SUGGESTION = 30.0 //m
 
         private const val ROADS =
             "primary|secondary|tertiary|unclassified|residential|living_street|pedestrian"

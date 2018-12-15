@@ -64,6 +64,7 @@ public class RoadNameSuggestionsDao
 		db.endTransaction();
 	}
 
+	/** returns something like [{"": "17th Street", "de": "17. Straße", "en": "17th Street" }, ...]*/
 	public List<Map<String,String>> getNames(List<LatLon> points, double maxDistance)
 	{
 		SQLiteDatabase db = dbHelper.getReadableDatabase();

@@ -34,7 +34,7 @@ class AddBusStopName(o: OverpassMapDataDao) : SimpleOverpassQuestType(o) {
             return
         }
 
-        val nameByLanguage = AddLocalizedNameForm.toNameByLanguage(answer)
+        val nameByLanguage = answer.toNameByLanguage()
         for ((key, value) in nameByLanguage) {
             if (key.isEmpty()) {
                 changes.add("name", value)
