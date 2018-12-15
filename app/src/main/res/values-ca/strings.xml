@@ -244,6 +244,8 @@ Si no hi ha cap senya en tot el carrer que s'apliqui en l'àrea realçada, s'apl
     <string name="quest_wheelchairAccess_subway_entrance_name_title">"La entrada de metro %s és accessible amb cadira de rodes?"</string>
     <string name="quest_wheelchairAccess_railway_station_name_title">"La estació de tren %s és accessible amb cadira de rodes?"</string>
     <string name="quest_wheelchairAccess_location_name_title">"La ubicació %s és accessible amb cadira de rodes?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_business">"Parcialment significa que no hi ha més d'un esglaó per accedir al negoci i que la major part d'estances interiors són accessibles amb cadira de rodes."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"Parcialment significa que no hi ha més d'un esglaó per accedir-hi."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Abreviatura amb el nom %s?"</string>
@@ -605,4 +607,18 @@ Per example 1,3 o 2-6."</string>
     <string name="privacy_html_image_upload2">"&lt;p&gt;Les fotografies que adjunteu s'envien al meu servidor i se suprimeixen uns dies després que la nota s'ha resolt. Les metadades dels fitxers s'eliminen abans de pujar-los.&lt;/p&gt;"</string>
     <string name="action_deselect_all">"Deseleccionar tot"</string>
     <string name="quest_buildingType_retail_description">"incloent-hi els edificis de restaurants, cafès..."</string>
+    <string name="quest_openingHours_timeSelect_next">"Endavant"</string>
+    <string name="quest_tracktype_title">"Quin tipus de superfície té aquesta pista?"</string>
+    <string name="quest_tracktype_grade1">"Pavimentada o compactada"</string>
+    <string name="quest_tracktype_grade2">"Graveta, terra o sorra compactada"</string>
+    <string name="quest_tracktype_grade3">"Barreja de materials durs i tous"</string>
+    <string name="quest_tracktype_grade4">"Principalment de tera, amb algunes pedres o materials durs"</string>
+    <string name="quest_tracktype_grade5">"Materials suaus i amb poca agafada"</string>
+    <string name="quest_building_underground_name_title">"És %s completament subterrani?"</string>
+    <string name="quest_building_underground_title">"Aquest edifici és completament subterrani?"</string>
+    <string name="quest_wheelchairAccess_limited_description_outside">"Parcialment significa que no hi ha més que un esglaó per accedir-hi."</string>
+    <string name="quest_wheelchairAccess_outside_title">"Aquest lloc és accessible amb cadira de rodes?"</string>
+    <string name="quest_traffic_signals_button_title">"Aquest semàfor té botó per a demanar llum verda?"</string>
+    <string name="quest_motorcycleParkingCapacity_title">"Quantes motos es poden aparcar aquí?"</string>
+    <string name="quest_motorcycleParkingCoveredStatus_title">"Aquest aparcament de motos és cobert (protegit de la pluja)?"</string>
 </resources>

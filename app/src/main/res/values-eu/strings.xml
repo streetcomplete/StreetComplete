@@ -620,4 +620,10 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_building_underground_name_title">"%s erabat lur azpian dago?"</string>
     <string name="quest_building_underground_title">"Eraikin hau erabat lur azpian dago?"</string>
     <string name="quest_traffic_signals_sound_title">"Itsuentzako soinuzko seinaleak daude hemen?"</string>
+    <string name="quest_wheelchairAccess_limited_description_outside">"'Partziala' esan nahi du ez dagoela urrats bat baino gehiago iristeko."</string>
+    <string name="quest_wheelchairAccess_outside_title">"Gurpildun aulkientzat irisgarria da?"</string>
+    <string name="quest_traffic_signals_button_title">"Semaforo honek botoi bat al du berde jar dadin eskatzeko?"</string>
+    <string name="quest_motorcycleParkingCapacity_title">"Zenbat motor aparkatu daitezke hemen?"</string>
+    <string name="quest_motorcycleParkingCoveredStatus_title">"Motorrentzako aparkaleku honek estalkia al du (euriarengandiko babesa)?"</string>
+    <string name="default_disabled_msg_maxspeed">"Eronka mota hau desgaituta dago orokorrean kale osoa ibiltzea eskatzen zaizulako abiadura mugen bila, eta ez soilik markatutako sekzioa. Hau batzuetan gehiegizkoa izan daiteke erronka bakarrean argitzeko."</string>
 </resources>

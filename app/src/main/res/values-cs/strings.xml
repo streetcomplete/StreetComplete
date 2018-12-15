@@ -668,4 +668,10 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_building_underground_name_title">"Je %s úplně v podzemí?"</string>
     <string name="quest_building_underground_title">"Je celá tato budova v podzemí?"</string>
     <string name="quest_traffic_signals_sound_title">"Jsou tu zvukové signály pro neslyšící?"</string>
+    <string name="quest_wheelchairAccess_limited_description_outside">"Částečně znamená, že v přístupu nebrání více než jeden schod."</string>
+    <string name="quest_wheelchairAccess_outside_title">"Má toto místo bezbariérový přístup?"</string>
+    <string name="quest_traffic_signals_button_title">"Mají tyto semafory tlačítko pro přivolání zelené?"</string>
+    <string name="quest_motorcycleParkingCapacity_title">"Kolik motocyklů zde může parkovat?"</string>
+    <string name="quest_motorcycleParkingCoveredStatus_title">"Má toto parkoviště pro motocykly střechu (ochranu proti dešti)?"</string>
+    <string name="default_disabled_msg_maxspeed">"Tento typ úkolů je ve výchozím nastavení zakázán, protože pro nalezení cedulí s rychlostním omezením je obvykle nutné zkontrolovat celou ulici a ne pouze zvýrazněnou část. To může být náročnější vzhledem k tomu, že jde o vyřešení pouze jednoho úkolu."</string>
 </resources>
