@@ -263,7 +263,7 @@ Vastauksesi täydentävät OpenStreetMapsiä omalla nimelläsi. Et tarvi sovellu
     <string name="quest_sport_sepak_takraw">"Sepak takraw"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_name_title">"Rullatuolilla kuljettava?"</string>
+    <string name="quest_wheelchairAccess_name_title">"Onko %s rullatuolille sopiva?"</string>
     <string name="quest_wheelchairAccess_limited">"Osittain"</string>
     <string name="quest_bikeParkingCapacity_hint">"Huomaa että teline on käytettävissä molemmin puolin polkupyörän pysäköimiseksi."</string>
     <string name="quest_sport_roller_skating">"Rullaluistelu"</string>
@@ -283,6 +283,8 @@ Vastauksesi täydentävät OpenStreetMapsiä omalla nimelläsi. Et tarvi sovellu
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_location_name_title">"Onko sijainti %s kuljettavissa rullatuolilla?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_business">"Osittain tarkoittaa että paikassa ei ole enempää kuin yhden askelman verran ylitettävää päästäksesi asioimaan liikkeessä ja että sisällä useimmat huoneet ovat kuljettavissa rullatuolilla. "</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"Osittain tarkoittaa että paikassa on vain yksi askelma päästäksesi sisälle."</string>
 
@@ -661,4 +663,20 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
     <string name="privacy_html_image_upload2">"&lt;p&gt;Liittämäsi kuvat ladataan palvelimelleni ja poistetaan muutamien päivien sisällä huomatuksen ratkaisusta. Kuvien  metadata poistetaan ennen latausta.&lt;/p&gt;"</string>
     <string name="action_deselect_all">"Poista kaikki valinta"</string>
     <string name="quest_buildingType_retail_description">"Sisältää ravintolat, kahvilat, yms kaupalliset rakennukset"</string>
+    <string name="quest_openingHours_timeSelect_next">"Seuraava"</string>
+    <string name="quest_tracktype_title">"Millainen on tienpinnan kovuus?"</string>
+    <string name="quest_tracktype_grade1">"Kiinteä"</string>
+    <string name="quest_tracktype_grade2">"Enimmäkseen kiinteä"</string>
+    <string name="quest_tracktype_grade3">"Yhdistelmä"</string>
+    <string name="quest_tracktype_grade4">"Enimmäkseen pehmeää"</string>
+    <string name="quest_tracktype_grade5">"Pehmeä"</string>
+    <string name="quest_building_underground_name_title">"Onko % kokonaan maanalainen?"</string>
+    <string name="quest_building_underground_title">"Onko tämä rakennus kokonaan maanalainen?"</string>
+    <string name="quest_traffic_signals_sound_title">"Onko täällä äänimerkkiä sokeille? "</string>
+    <string name="quest_wheelchairAccess_limited_description_outside">"Osittain tarkoittaa että paikassa on vain yksi askelma, jotta paikkaan voi kulkea."</string>
+    <string name="quest_wheelchairAccess_outside_title">"Onko tämä paikka kuljettavissa rullatuolilla?"</string>
+    <string name="quest_traffic_signals_button_title">"Onko näissä liikennevaloissa vihreän valon vaihtopyyntö nappi?"</string>
+    <string name="quest_motorcycleParkingCapacity_title">"Kuinka monta moottoripyörää tänne mahtuu?"</string>
+    <string name="quest_motorcycleParkingCoveredStatus_title">"Onko tämä moottoripyöräpysäkki katoksellinen (suojattu sateelta)?"</string>
+    <string name="default_disabled_msg_maxspeed">"Tämä kysymystyyppi on oletuksena pois käytöstä, koska yleensä pitää"</string>
 </resources>

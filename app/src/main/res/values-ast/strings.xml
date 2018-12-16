@@ -610,5 +610,20 @@ Por exemplu: 1,3 o 2-6."</string>
     <string name="privacy_html_image_upload2">"&lt;p&gt;Les semeyes qu'amiestes a una nota xúbense al mio sirvidor y desaníciense unos díes depués de que la nota se resuelva. Los metadatos esbórrense primero de xubila.&lt;p&gt;"</string>
     <string name="action_deselect_all">"Quitar la seleición a too"</string>
     <string name="quest_buildingType_retail_description">"incluyendo edificios pa restoranes, cafés..."</string>
-
+    <string name="quest_openingHours_timeSelect_next">"Siguiente"</string>
+    <string name="quest_tracktype_title">"¿Cómo ye'l firme d'esta vía?"</string>
+    <string name="quest_tracktype_grade1">"Sólido"</string>
+    <string name="quest_tracktype_grade2">"Sólido abondo"</string>
+    <string name="quest_tracktype_grade3">"Mesto"</string>
+    <string name="quest_tracktype_grade4">"Suave abondo"</string>
+    <string name="quest_tracktype_grade5">"Suave"</string>
+    <string name="quest_building_underground_name_title">"¿Ta %s baxo tierra dafechu?"</string>
+    <string name="quest_building_underground_title">"¿Esti edificiu ta baxo tierra dafechu?"</string>
+    <string name="quest_traffic_signals_sound_title">"¿Tien señales sonores pa persones con discapacidá visual?"</string>
+    <string name="quest_wheelchairAccess_limited_description_outside">"Parcialmente significa que nun hai más d'un pasu pa poder entrar."</string>
+    <string name="quest_wheelchairAccess_outside_title">"¿Esti llugar ye accesible pa persones en siella de ruedes?"</string>
+    <string name="quest_traffic_signals_button_title">"¿Estes lluces de tránsitu tienen botón pa pidir lluz verde?"</string>
+    <string name="quest_motorcycleParkingCapacity_title">"¿Cuántes motos pueden aparcase equí?"</string>
+    <string name="quest_motorcycleParkingCoveredStatus_title">"¿Esti aparcaderu pa motos ta abellugáu?"</string>
+    <string name="default_disabled_msg_maxspeed">"Esti tipu d'entruga ta desactivada de mano porque, pelo xeneral, habría que buscar señales de llende de velocidá en tola cai, non sólo de la seición resaltada. Puede ser demasiáu trabayu pa completar una sola xera."</string>
 </resources>

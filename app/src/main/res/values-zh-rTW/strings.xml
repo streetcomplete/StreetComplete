@@ -664,6 +664,7 @@
     <string name="action_deselect_all">"取消選取全部"</string>
     <string name="quest_buildingType_retail_description">"包含有餐廳、咖啡廳等的建築"</string>
     <string name="quest_openingHours_timeSelect_next">"下一個"</string>
+    <string name="quest_tracktype_title">"這一段路徑的表面硬度為何？"</string>
     <string name="quest_tracktype_grade1">"剛性路面"</string>
     <string name="quest_tracktype_grade2">"偏剛性路面"</string>
     <string name="quest_tracktype_grade3">"混合型路面"</string>
@@ -673,6 +674,7 @@
     <string name="quest_building_underground_title">"這座建物完全在地面以下嗎？"</string>
     <string name="quest_traffic_signals_sound_title">"這裡有引導視障人士用的輔助聲響信號嗎？"</string>
     <string name="quest_wheelchairAccess_outside_title">"這個地方輪椅可以進入嗎？"</string>
+    <string name="quest_traffic_signals_button_title">"這些紅綠燈是否有按鈕切換綠燈？"</string>
     <string name="quest_motorcycleParkingCapacity_title">"這裡可以停泊多少台機車/電單車？"</string>
     <string name="quest_motorcycleParkingCoveredStatus_title">"這個機車/電單車停車場屬於有蓋式嗎(可遮陽擋雨)？"</string>
 </resources>
