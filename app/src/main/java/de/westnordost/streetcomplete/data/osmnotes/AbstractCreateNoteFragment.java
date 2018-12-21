@@ -45,7 +45,7 @@ public abstract class AbstractCreateNoteFragment extends AbstractBottomSheetFrag
 		content.removeAllViews();
 		inflater.inflate(R.layout.form_leave_note, content);
 
-		textDescription = content.findViewById(R.id.description);
+		textDescription = content.findViewById(R.id.descriptionLabel);
 
 		noteInput = content.findViewById(R.id.noteInput);
 		noteInput.addTextChangedListener(new TextChangedWatcher(this::updateOkButtonEnablement));
@@ -54,8 +54,8 @@ public abstract class AbstractCreateNoteFragment extends AbstractBottomSheetFrag
 		buttonPanel.removeAllViews();
 		inflater.inflate(R.layout.quest_buttonpanel_ok_cancel, buttonPanel);
 
-		buttonPanel.findViewById(R.id.buttonCancel).setOnClickListener(v -> getActivity().onBackPressed());
-		buttonOk = buttonPanel.findViewById(R.id.buttonOk);
+		buttonPanel.findViewById(R.id.cancelButton).setOnClickListener(v -> getActivity().onBackPressed());
+		buttonOk = buttonPanel.findViewById(R.id.okButton);
 		buttonOk.setOnClickListener(v -> onClickOk());
 
 		updateOkButtonEnablement();

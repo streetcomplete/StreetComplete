@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.oneway
+package de.westnordost.streetcomplete.quests.oneway.data
 
 object WayTrafficFlowTable {
     const val NAME = "direction_of_flow"

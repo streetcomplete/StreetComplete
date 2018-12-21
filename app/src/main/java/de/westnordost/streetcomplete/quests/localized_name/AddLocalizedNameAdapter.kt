@@ -50,30 +50,30 @@ class AddLocalizedNameAdapter(
         updateAddLanguageButtonVisibility()
     }
 
-	private fun getNotAddedLanguages(): List<String> {
-		val result = languages.toMutableList()
-		for (localizedName in localizedNames) {
-			result.remove(localizedName.languageCode)
-		}
-		return result
-	}
+    private fun getNotAddedLanguages(): List<String> {
+        val result = languages.toMutableList()
+        for (localizedName in localizedNames) {
+            result.remove(localizedName.languageCode)
+        }
+        return result
+    }
 
     fun addOnNameChangedListener(listener: (LocalizedName) -> Unit) {
         listeners.add(listener)
     }
 
     /* Names are usually specified without language information (name=My Street). To provide
-	 * meaningful name suggestions per language, it must then be determined in which language this
-	 * name tag is. */
+     * meaningful name suggestions per language, it must then be determined in which language this
+     * name tag is. */
     private fun putDefaultLocalizedNameSuggestion() {
         val defaultLanguage = languages[0]
         if (localizedNameSuggestions != null) {
             for (names in localizedNameSuggestions) {
-	            val defaultName = names[""]
+                val defaultName = names[""]
                 if (defaultName != null) {
                     // name=A -> name=A, name:de=A (in Germany)
                     if (!names.containsKey(defaultLanguage)) {
-	                    names[defaultLanguage] = defaultName
+                        names[defaultLanguage] = defaultName
                     }
                 }
             }
@@ -81,7 +81,7 @@ class AddLocalizedNameAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-	    val inflater = LayoutInflater.from(parent.context)
+        val inflater = LayoutInflater.from(parent.context)
         return ViewHolder(inflater.inflate(R.layout.quest_localizedname_row, parent, false))
     }
 
@@ -111,17 +111,17 @@ class AddLocalizedNameAdapter(
         updateAddLanguageButtonVisibility()
     }
 
-	/** Show a context menu above the given [view] where the user can select one language from the
-	 * [languageList], which will be passed to the [callback] */
+    /** Show a context menu above the given [view] where the user can select one language from the
+     * [languageList], which will be passed to the [callback] */
     private fun showLanguageSelectMenu(
-		view: View,
-		languageList: List<String>,
-		callback: (String) -> Unit
+        view: View,
+        languageList: List<String>,
+        callback: (String) -> Unit
     ) {
         if (languageList.isEmpty()) return
 
         val popup = PopupMenu(context, view)
-	    for ((i, languageCode) in languageList.withIndex()) {
+        for ((i, languageCode) in languageList.withIndex()) {
             popup.menu.add(NONE, i, NONE, getLanguageMenuItemTitle(languageCode))
         }
 
@@ -152,17 +152,17 @@ class AddLocalizedNameAdapter(
         }
     }
 
-	/** Show a context menu above the given [view] where the user can select one key from the
-	 * [localizedNameSuggestionsMap]. The value of the selected key will be passed to the
-	 * [callback] */
+    /** Show a context menu above the given [view] where the user can select one key from the
+     * [localizedNameSuggestionsMap]. The value of the selected key will be passed to the
+     * [callback] */
     private fun showNameSuggestionsMenu(
-		view: View,
+        view: View,
         localizedNameSuggestionsMap: Map<String, Map<String, String>>,
         callback: (Map<String, String>) -> Unit
     ) {
         val popup = PopupMenu(context, view)
 
-		for ((i, key) in localizedNameSuggestionsMap.keys.withIndex()) {
+        for ((i, key) in localizedNameSuggestionsMap.keys.withIndex()) {
             popup.menu.add(NONE, i, NONE, key)
         }
 
@@ -200,13 +200,13 @@ class AddLocalizedNameAdapter(
 
         private lateinit var localizedName: LocalizedName
 
-	    private val autoCorrectInput : AutoCorrectAbbreviationsEditText = itemView.findViewById(R.id.autoCorrectInput)
-	    private val buttonLanguage : TextView = itemView.findViewById(R.id.buttonLanguage)
-	    private val buttonDelete : TextView = itemView.findViewById(R.id.buttonDelete)
-	    private val buttonNameSuggestions : View = itemView.findViewById(R.id.buttonNameSuggestions)
+        private val autoCorrectInput : AutoCorrectAbbreviationsEditText = itemView.findViewById(R.id.autoCorrectInput)
+        private val buttonLanguage : TextView = itemView.findViewById(R.id.languageButton)
+        private val buttonDelete : TextView = itemView.findViewById(R.id.deleteButton)
+        private val buttonNameSuggestions : View = itemView.findViewById(R.id.nameSuggestionsButton)
 
-	    init {
-		    autoCorrectInput.addTextChangedListener(object : DefaultTextWatcher() {
+        init {
+            autoCorrectInput.addTextChangedListener(object : DefaultTextWatcher() {
                 override fun afterTextChanged(s: Editable) {
                     val name = s.toString()
                     localizedName.name = name
@@ -256,10 +256,10 @@ class AddLocalizedNameAdapter(
                 }
 
                 showLanguageSelectMenu(v, notAddedLanguages) { languageCode ->
-	                localizedName.languageCode = languageCode
-	                buttonLanguage.text = languageCode
-	                updateAddLanguageButtonVisibility()
-	                updateNameSuggestions()
+                    localizedName.languageCode = languageCode
+                    buttonLanguage.text = languageCode
+                    updateAddLanguageButtonVisibility()
+                    updateNameSuggestions()
                 }
             }
 
@@ -281,38 +281,38 @@ class AddLocalizedNameAdapter(
             val localizedNameSuggestionsMap = getLocalizedNameSuggestionsByLanguageCode(localizedName.languageCode)
 
             val nameInputNotEmpty = autoCorrectInput.text.toString().isNotEmpty()
-	        val hasNoNameSuggestions = localizedNameSuggestionsMap.isEmpty()
+            val hasNoNameSuggestions = localizedNameSuggestionsMap.isEmpty()
             buttonNameSuggestions.visibility =
-	            if (hasNoNameSuggestions || nameInputNotEmpty) View.GONE else View.VISIBLE
+                if (hasNoNameSuggestions || nameInputNotEmpty) View.GONE else View.VISIBLE
 
             buttonNameSuggestions.setOnClickListener { v ->
                 showNameSuggestionsMenu(v, localizedNameSuggestionsMap) { selection ->
-	                localizedNames = selection.toLocalizedNameList()
-	                notifyDataSetChanged()
-	                updateAddLanguageButtonVisibility()
+                    localizedNames = selection.toLocalizedNameList()
+                    notifyDataSetChanged()
+                    updateAddLanguageButtonVisibility()
                 }
             }
         }
     }
 
-	/** Turn a map of language code to name into a list of LocalizedName */
-	private fun Map<String, String>.toLocalizedNameList(): MutableList<LocalizedName> {
-		val result = mutableListOf<LocalizedName>()
-		val defaultName = this[""]
-		for ((key, value) in this) {
-			// put default name first
-			// (i.e. name=A, name:en=B, name:de=A -> name:de goes first and name is not shown)
-			val localizedName = LocalizedName(key, value)
-			if (localizedName.name == defaultName) {
-				if (localizedName.languageCode.isNotEmpty()) result.add(0, localizedName)
-			} else {
-				result.add(localizedName)
-			}
-		}
-		// this is for the case: name=A, name:de=B, name:en=C -> name goes first
-		if (result[0].name != defaultName && defaultName != null) {
-			result.add(0, LocalizedName("", defaultName))
-		}
-		return result
-	}
+    /** Turn a map of language code to name into a list of LocalizedName */
+    private fun Map<String, String>.toLocalizedNameList(): MutableList<LocalizedName> {
+        val result = mutableListOf<LocalizedName>()
+        val defaultName = this[""]
+        for ((key, value) in this) {
+            // put default name first
+            // (i.e. name=A, name:en=B, name:de=A -> name:de goes first and name is not shown)
+            val localizedName = LocalizedName(key, value)
+            if (localizedName.name == defaultName) {
+                if (localizedName.languageCode.isNotEmpty()) result.add(0, localizedName)
+            } else {
+                result.add(localizedName)
+            }
+        }
+        // this is for the case: name=A, name:de=B, name:en=C -> name goes first
+        if (result[0].name != defaultName && defaultName != null) {
+            result.add(0, LocalizedName("", defaultName))
+        }
+        return result
+    }
 }

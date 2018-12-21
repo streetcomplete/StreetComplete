@@ -194,7 +194,7 @@ public class AddHousenumberForm extends AbstractQuestFormAnswerFragment
 		View view = setContentView(layoutResourceId);
 
 		inputHouseNumber = view.findViewById(R.id.inputHouseNumber);
-		inputHouseName = view.findViewById(R.id.inputHouseName);
+		inputHouseName = view.findViewById(R.id.houseNameInput);
 		inputConscriptionNumber = view.findViewById(R.id.inputConscriptionNumber);
 		inputStreetNumber = view.findViewById(R.id.inputStreetNumber);
 

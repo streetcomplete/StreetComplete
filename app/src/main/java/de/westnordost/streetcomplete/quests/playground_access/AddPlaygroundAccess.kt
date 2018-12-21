@@ -14,15 +14,12 @@ class AddPlaygroundAccess(o: OverpassMapDataDao) : SimpleOverpassQuestType(o) {
     override val commitMessage = "Add playground access"
     override val icon = R.drawable.ic_quest_playground
 
-	override fun getTitle(tags: Map<String, String>) = R.string.quest_playground_access_title
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_playground_access_title
 
-	override fun createForm() = YesNoQuestAnswerFragment()
+    override fun createForm() = YesNoQuestAnswerFragment()
 
     override fun applyAnswerTo(answer: Bundle, changes: StringMapChangesBuilder) {
-        if (answer.getBoolean(YesNoQuestAnswerFragment.ANSWER)) {
-            changes.add("access", "yes")
-        } else {
-            changes.add("access", "private")
-        }
+        val yesprivate = if (answer.getBoolean(YesNoQuestAnswerFragment.ANSWER)) "yes" else "private"
+        changes.add("access", yesprivate)
     }
 }

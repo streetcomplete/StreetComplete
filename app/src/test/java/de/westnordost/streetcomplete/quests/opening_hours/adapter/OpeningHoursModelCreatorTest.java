@@ -40,7 +40,7 @@ public class OpeningHoursModelCreatorTest
 		List<OpeningMonthsRow> viewData = new ArrayList<>();
 		viewData.add(new OpeningMonthsRow(JAN_JUN, MONDAY_MORNING));
 		viewData.add(new OpeningMonthsRow(JUL_DEC, MONDAY_MORNING));
-		List<OpeningMonths> actual = OpeningHoursModelCreator.create(viewData);
+		List<OpeningMonths> actual = OpeningHoursModelCreator.INSTANCE.toOpeningMonthsList(viewData);
 
 		List<OpeningMonths> expected = months(
 			new OpeningMonths(JAN_JUN, clusters(weekdays(new OpeningWeekdays(MONDAY, times(MORNING))))),
@@ -184,10 +184,10 @@ public class OpeningHoursModelCreatorTest
 	{
 		List<OpeningMonthsRow> viewData = new ArrayList<>();
 		OpeningMonthsRow omr = new OpeningMonthsRow();
-		List<OpeningWeekdaysRow> owrs = omr.weekdaysList;
+		List<OpeningWeekdaysRow> owrs = omr.getWeekdaysList();
 		owrs.addAll(Arrays.asList(rows));
 		viewData.add(omr);
-		return OpeningHoursModelCreator.create(viewData);
+		return OpeningHoursModelCreator.INSTANCE.toOpeningMonthsList(viewData);
 	}
 
 	private static List<OpeningMonths> months(OpeningMonths ... ranges)

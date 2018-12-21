@@ -13,14 +13,11 @@ class AddWheelchairAccessOutside(o: OverpassMapDataDao) : SimpleOverpassQuestTyp
     override val commitMessage = "Add wheelchair access to outside places"
     override val icon = R.drawable.ic_quest_wheelchair_outside
 
-	override fun getTitle(tags: Map<String, String>) = R.string.quest_wheelchairAccess_outside_title
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_wheelchairAccess_outside_title
 
-	override fun createForm() = AddWheelchairAccessOutsideForm()
+    override fun createForm() = AddWheelchairAccessOutsideForm()
 
     override fun applyAnswerTo(answer: Bundle, changes: StringMapChangesBuilder) {
-        val wheelchair = answer.getString(AddWheelchairAccessOutsideForm.ANSWER)
-        if (wheelchair != null) {
-            changes.add("wheelchair", wheelchair)
-        }
+        changes.add("wheelchair", answer.getString(WheelchairAccessAnswerFragment.ANSWER)!!)
     }
 }

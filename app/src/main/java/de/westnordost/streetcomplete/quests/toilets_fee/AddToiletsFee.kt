@@ -14,9 +14,9 @@ class AddToiletsFee(o: OverpassMapDataDao) : SimpleOverpassQuestType(o) {
     override val commitMessage = "Add toilets fee"
     override val icon = R.drawable.ic_quest_toilet_fee
 
-	override fun getTitle(tags: Map<String, String>) = R.string.quest_toiletsFee_title
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_toiletsFee_title
 
-	override fun createForm() = YesNoQuestAnswerFragment()
+    override fun createForm() = YesNoQuestAnswerFragment()
 
     override fun applyAnswerTo(answer: Bundle, changes: StringMapChangesBuilder) {
         val yesno = if (answer.getBoolean(YesNoQuestAnswerFragment.ANSWER)) "yes" else "no"

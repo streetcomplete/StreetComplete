@@ -30,9 +30,9 @@ class AddCarWashTypeForm : ImageListQuestAnswerFragment() {
     }
 
     override fun getItems() = arrayOf(
-	    Item(AUTOMATED, R.drawable.car_wash_automated, R.string.quest_carWashType_automated),
-	    Item(SELF_SERVICE, R.drawable.car_wash_self_service, R.string.quest_carWashType_selfService),
-	    Item(SERVICE, R.drawable.car_wash_service, R.string.quest_carWashType_service)
+        Item(AUTOMATED, R.drawable.car_wash_automated, R.string.quest_carWashType_automated),
+        Item(SELF_SERVICE, R.drawable.car_wash_self_service, R.string.quest_carWashType_selfService),
+        Item(SERVICE, R.drawable.car_wash_service, R.string.quest_carWashType_service)
     )
 
     override fun getItemsPerRow() = 3

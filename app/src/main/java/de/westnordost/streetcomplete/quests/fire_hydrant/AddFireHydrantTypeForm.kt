@@ -7,10 +7,10 @@ import de.westnordost.streetcomplete.view.Item
 class AddFireHydrantTypeForm : ImageListQuestAnswerFragment() {
 
     override fun getItems() = arrayOf(
-	    Item("pillar", R.drawable.fire_hydrant_pillar, R.string.quest_fireHydrant_type_pillar),
-		Item("underground", R.drawable.fire_hydrant_underground, R.string.quest_fireHydrant_type_underground),
-		Item("wall", R.drawable.fire_hydrant_wall, R.string.quest_fireHydrant_type_wall),
-		Item("pond", R.drawable.fire_hydrant_pond, R.string.quest_fireHydrant_type_pond)
+        Item("pillar", R.drawable.fire_hydrant_pillar, R.string.quest_fireHydrant_type_pillar),
+        Item("underground", R.drawable.fire_hydrant_underground, R.string.quest_fireHydrant_type_underground),
+        Item("wall", R.drawable.fire_hydrant_wall, R.string.quest_fireHydrant_type_wall),
+        Item("pond", R.drawable.fire_hydrant_pond, R.string.quest_fireHydrant_type_pond)
     )
 
     override fun getItemsPerRow() = 2

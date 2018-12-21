@@ -18,15 +18,15 @@ class AddTactilePavingBusStop(o: OverpassMapDataDao) : SimpleOverpassQuestType(o
     override val commitMessage = "Add tactile pavings on bus stops"
     override val icon = R.drawable.ic_quest_blind_bus
 
-	// See overview here: https://ent8r.github.io/blacklistr/?java=tactile_paving/AddTactilePavingCrosswalk.kt
-	// #750
+    // See overview here: https://ent8r.github.io/blacklistr/?java=tactile_paving/AddTactilePavingCrosswalk.kt
+    // #750
     override val enabledForCountries = AddTactilePavingCrosswalk.ENBABLED_FOR_COUNTRIES
 
-	override fun getTitle(tags: Map<String, String>) =
-		if (tags.containsKey("name"))
-			R.string.quest_tactilePaving_title_name_bus
-		else
-			R.string.quest_tactilePaving_title_bus
+    override fun getTitle(tags: Map<String, String>) =
+        if (tags.containsKey("name"))
+            R.string.quest_tactilePaving_title_name_bus
+        else
+            R.string.quest_tactilePaving_title_bus
 
     override fun createForm() = TactilePavingForm()
 

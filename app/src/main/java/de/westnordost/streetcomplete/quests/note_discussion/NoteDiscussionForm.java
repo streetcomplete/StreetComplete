@@ -64,9 +64,9 @@ public class NoteDiscussionForm extends AbstractQuestAnswerFragment
 		View contentView = setContentView(R.layout.quest_note_discussion_content);
 
 		View buttonPanel = setButtonsView(R.layout.quest_buttonpanel_notediscussion);
-		buttonOk = buttonPanel.findViewById(R.id.buttonOk);
+		buttonOk = buttonPanel.findViewById(R.id.okButton);
 		buttonOk.setOnClickListener(v -> onClickOk());
-		Button buttonNo = buttonPanel.findViewById(R.id.buttonNo);
+		Button buttonNo = buttonPanel.findViewById(R.id.noButton);
 		buttonNo.setOnClickListener(v -> skipQuest());
 
 		noteInput = contentView.findViewById(R.id.noteInput);
@@ -163,11 +163,11 @@ public class NoteDiscussionForm extends AbstractQuestAnswerFragment
 		public NoteCommentViewHolder(View itemView)
 		{
 			super(itemView);
-			commentContainer = itemView.findViewById(R.id.comment);
-			commentAvatar = itemView.findViewById(R.id.comment_avatar);
-			commentText = itemView.findViewById(R.id.comment_text);
-			commentInfo = itemView.findViewById(R.id.comment_info);
-			commentStatusText = itemView.findViewById(R.id.comment_status_text);
+			commentContainer = itemView.findViewById(R.id.commentView);
+			commentAvatar = itemView.findViewById(R.id.commentAvatarImage);
+			commentText = itemView.findViewById(R.id.commentText);
+			commentInfo = itemView.findViewById(R.id.commentInfoText);
+			commentStatusText = itemView.findViewById(R.id.commentStatusText);
 		}
 
 		@Override protected void onBind(NoteComment comment)

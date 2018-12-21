@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.R
 
 class AddWheelchairAccessBusinessForm : WheelchairAccessAnswerFragment() {
 
-	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
         setContentView(R.layout.quest_wheelchair_business_explanation)
         return view

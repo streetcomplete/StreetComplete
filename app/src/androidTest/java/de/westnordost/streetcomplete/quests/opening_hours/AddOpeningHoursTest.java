@@ -13,7 +13,7 @@ public class AddOpeningHoursTest extends AOsmElementQuestTypeTest
 
 	public void testOpeningHours()
 	{
-		bundle.putString(AddOpeningHoursForm.OPENING_HOURS, "my cool opening hours");
+		bundle.putString(AddOpeningHoursForm.Companion.getOPENING_HOURS(), "my cool opening hours");
 		verify(new StringMapEntryAdd("opening_hours", "my cool opening hours"));
 	}
 }

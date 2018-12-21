@@ -32,6 +32,22 @@ class AddMaxHeight constructor(private val overpassServer: OverpassMapDataDao) :
     override val commitMessage = "Add maximum heights"
     override val icon = R.drawable.ic_quest_max_height
 
+    override fun getTitle(tags: Map<String, String>): Int {
+        val isParkingEntrance = tags["amenity"] == "parking_entrance"
+        val isHeightRestrictor =  tags["barrier"] == "height_restrictor"
+        val isTunnel = tags["tunnel"] == "yes"
+
+        return when {
+            isParkingEntrance  -> R.string.quest_maxheight_parking_entrance_title
+            isHeightRestrictor -> R.string.quest_maxheight_height_restrictor_title
+            isTunnel           -> R.string.quest_maxheight_tunnel_title
+            else               -> R.string.quest_maxheight_title
+        }
+    }
+
+    override fun isApplicableTo(element: Element) =
+        nodeFilter.matches(element) || wayFilter.matches(element)
+
     override fun download(bbox: BoundingBox, handler: MapDataWithGeometryHandler): Boolean {
         return overpassServer.getAndHandleQuota(getOverpassQuery(bbox), handler)
     }
@@ -57,22 +73,6 @@ class AddMaxHeight constructor(private val overpassServer: OverpassMapDataDao) :
                 changes.add("maxheight", "below_default")
             else if (noSign == AddMaxHeightForm.DEFAULT)
                 changes.add("maxheight", "default")
-        }
-    }
-
-    override fun isApplicableTo(element: Element) =
-        nodeFilter.matches(element) || wayFilter.matches(element)
-
-    override fun getTitle(tags: Map<String, String>): Int {
-        val isParkingEntrance = tags["amenity"] == "parking_entrance"
-        val isHeightRestrictor =  tags["barrier"] == "height_restrictor"
-        val isTunnel = tags["tunnel"] == "yes"
-
-        return when {
-            isParkingEntrance -> R.string.quest_maxheight_parking_entrance_title
-            isHeightRestrictor -> R.string.quest_maxheight_height_restrictor_title
-            isTunnel -> R.string.quest_maxheight_tunnel_title
-            else -> R.string.quest_maxheight_title
         }
     }
 }

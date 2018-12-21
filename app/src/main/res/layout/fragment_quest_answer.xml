@@ -138,7 +138,7 @@
     </android.support.design.widget.CoordinatorLayout>
 
     <Button
-        android:id="@+id/buttonOk"
+        android:id="@+id/okButton"
         android:text="@string/ok"
         style="@style/RoundButton"
         android:layout_width="72dp"

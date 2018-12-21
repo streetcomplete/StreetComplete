@@ -10,16 +10,16 @@ import de.westnordost.osmapi.map.data.BoundingBox
 /** Quest type that simply makes a certain overpass query using tag filters and creates quests for
  * every element received  */
 abstract class SimpleOverpassQuestType(
-	private val overpassServer: OverpassMapDataDao) : OsmElementQuestType {
+    private val overpassServer: OverpassMapDataDao) : OsmElementQuestType {
 
-	private val filter by lazy { FiltersParser().parse(tagFilters) }
+    private val filter by lazy { FiltersParser().parse(tagFilters) }
 
-	protected abstract val tagFilters: String
+    protected abstract val tagFilters: String
 
-	override fun download(bbox: BoundingBox, handler: MapDataWithGeometryHandler): Boolean {
-		val query = filter.toOverpassQLString(bbox) + OverpassQLUtil.getQuestPrintStatement()
-		return overpassServer.getAndHandleQuota(query, handler)
-	}
+    override fun download(bbox: BoundingBox, handler: MapDataWithGeometryHandler): Boolean {
+        val query = filter.toOverpassQLString(bbox) + OverpassQLUtil.getQuestPrintStatement()
+        return overpassServer.getAndHandleQuota(query, handler)
+    }
 
-	override fun isApplicableTo(element: Element) = filter.matches(element)
+    override fun isApplicableTo(element: Element) = filter.matches(element)
 }

@@ -14,14 +14,14 @@ import kotlinx.android.synthetic.main.quest_placename.*
 
 class AddPlaceNameForm : AbstractQuestFormAnswerFragment() {
 
-    private val placeName get() = inputName.text.toString().trim()
+    private val placeName get() = nameInput.text.toString().trim()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
 
         setContentView(R.layout.quest_placename)
 
-        inputName.addTextChangedListener(TextChangedWatcher { checkIsFormComplete() })
+        nameInput.addTextChangedListener(TextChangedWatcher { checkIsFormComplete() })
 
         addOtherAnswer(R.string.quest_name_answer_noName) { confirmNoName() }
 

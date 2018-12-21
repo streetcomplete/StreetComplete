@@ -6,19 +6,18 @@ import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
 import de.westnordost.streetcomplete.quests.DateUtil
 
-abstract class AMarkCompletedConstruction(
-	protected val overpassServer: OverpassMapDataDao) : OsmElementQuestType {
+abstract class AMarkCompletedConstruction : OsmElementQuestType {
 
-	protected fun getCurrentDateString() =
-		DateUtil.getCurrentDateString() + "T00:00:00Z"
+    protected fun getCurrentDateString() =
+        DateUtil.getCurrentDateString() + "T00:00:00Z"
 
-	protected open fun getOffsetDateString(offset: Int) =
-		DateUtil.getOffsetDateString(offset) + "T00:00:00Z"
+    protected open fun getOffsetDateString(offset: Int) =
+        DateUtil.getOffsetDateString(offset) + "T00:00:00Z"
 
-	// Note that newer segment will ensure that any edit,
-	// including adding or updating review marker like check_date or survey:date tags
-	// will cause OSM elements to become ineligible for this quest for reviewIntervalInDays days.
-	// It allows supporting check_date and any other survey markers without parsing of any tags.
+    // Note that newer segment will ensure that any edit,
+    // including adding or updating review marker like check_date or survey:date tags
+    // will cause OSM elements to become ineligible for this quest for reviewIntervalInDays days.
+    // It allows supporting check_date and any other survey markers without parsing of any tags.
     protected fun getQueryPart( key: String, nameOfGeneratedGroup: String, reviewIntervalInDays: Int) =
         "[" + key + "=construction]" +
         "(if:!is_date(t['opening_date']) || date(t['opening_date'])<date('" + getCurrentDateString() + "'))" +
@@ -32,7 +31,7 @@ abstract class AMarkCompletedConstruction(
         "relation[" + key + "=construction](newer: '" + getOffsetDateString(-reviewIntervalInDays) + "');" +
         ")"
 
-	protected fun removeTagsDescribingConstruction(changes: StringMapChangesBuilder) {
+    protected fun removeTagsDescribingConstruction(changes: StringMapChangesBuilder) {
         changes.deleteIfExists("construction")
         changes.deleteIfExists("source:construction")
         changes.deleteIfExists("opening_date")

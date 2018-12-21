@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.StreetSideRotater
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.oneway.data.WayTrafficFlowDao
 import kotlinx.android.synthetic.main.quest_street_side_puzzle.*
 
 class AddOnewayForm : YesNoQuestAnswerFragment() {
@@ -27,14 +28,14 @@ class AddOnewayForm : YesNoQuestAnswerFragment() {
         setContentView(R.layout.quest_street_side_puzzle)
         setNoContentPadding()
 
-        puzzle.showOnlyRightSide()
+        puzzleView.showOnlyRightSide()
 
-        puzzle.setRightSideImageResource(
-	        if (db.isForward(osmElement.id)!!) R.drawable.ic_oneway_lane
-	        else R.drawable.ic_oneway_lane_reverse
+        puzzleView.setRightSideImageResource(
+            if (db.isForward(osmElement.id)!!) R.drawable.ic_oneway_lane
+            else R.drawable.ic_oneway_lane_reverse
         )
 
-        streetSideRotater = StreetSideRotater(puzzle, compassNeedle, elementGeometry)
+        streetSideRotater = StreetSideRotater(puzzleView, compassNeedle, elementGeometry)
 
         return view
     }
@@ -49,7 +50,7 @@ class AddOnewayForm : YesNoQuestAnswerFragment() {
 
     @AnyThread
     override fun onMapOrientation(rotation: Float, tilt: Float) {
-	    streetSideRotater?.onMapOrientation(rotation, tilt)
+        streetSideRotater?.onMapOrientation(rotation, tilt)
     }
 
     companion object {

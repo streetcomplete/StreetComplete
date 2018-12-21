@@ -22,7 +22,7 @@ public abstract class AbstractQuestFormAnswerFragment extends AbstractQuestAnswe
 							 Bundle savedInstanceState)
 	{
 		View view = super.onCreateView(inflater, container, savedInstanceState);
-		buttonOk = view.findViewById(R.id.buttonOk);
+		buttonOk = view.findViewById(R.id.okButton);
 		buttonOk.setOnClickListener(v ->
 		{
 			if(!isFormComplete())

@@ -15,13 +15,13 @@ class AddTactilePavingCrosswalk(o: OverpassMapDataDao) : SimpleOverpassQuestType
     override val commitMessage = "Add tactile pavings on crosswalks"
     override val icon = R.drawable.ic_quest_blind_pedestrian_crossing
 
-	// See overview here: https://ent8r.github.io/blacklistr/?java=tactile_paving/AddTactilePavingCrosswalk.kt
-	// #750
+    // See overview here: https://ent8r.github.io/blacklistr/?java=tactile_paving/AddTactilePavingCrosswalk.kt
+    // #750
     override val enabledForCountries: Countries = ENBABLED_FOR_COUNTRIES
 
-	override fun getTitle(tags: Map<String, String>) = R.string.quest_tactilePaving_title_crosswalk
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_tactilePaving_title_crosswalk
 
-	override fun createForm() = TactilePavingForm()
+    override fun createForm() = TactilePavingForm()
 
     override fun applyAnswerTo(answer: Bundle, changes: StringMapChangesBuilder) {
         val yesno = if (answer.getBoolean(YesNoQuestAnswerFragment.ANSWER)) "yes" else "no"

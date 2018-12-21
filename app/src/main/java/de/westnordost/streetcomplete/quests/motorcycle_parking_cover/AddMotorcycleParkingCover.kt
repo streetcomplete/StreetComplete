@@ -18,9 +18,9 @@ class AddMotorcycleParkingCover(o: OverpassMapDataDao) : SimpleOverpassQuestType
     override val commitMessage = "Add motorcycle parkings cover"
     override val icon = R.drawable.ic_quest_motorcycle_parking_cover
 
-	override fun getTitle(tags: Map<String, String>) = R.string.quest_motorcycleParkingCoveredStatus_title
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_motorcycleParkingCoveredStatus_title
 
-	override fun createForm(): AbstractQuestAnswerFragment {
+    override fun createForm(): AbstractQuestAnswerFragment {
         return YesNoQuestAnswerFragment()
     }
 

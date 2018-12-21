@@ -17,14 +17,11 @@ class AddRoofShape(o: OverpassMapDataDao) : SimpleOverpassQuestType(o) {
     override val commitMessage = "Add roof shapes"
     override val icon = R.drawable.ic_quest_roof_shape
 
-	override fun getTitle(tags: Map<String, String>) = R.string.quest_roofShape_title
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_roofShape_title
 
-	override fun createForm() = AddRoofShapeForm()
+    override fun createForm() = AddRoofShapeForm()
 
     override fun applyAnswerTo(answer: Bundle, changes: StringMapChangesBuilder) {
-        val values = answer.getStringArrayList(ImageListQuestAnswerFragment.OSM_VALUES)
-        if (values != null && values.size == 1) {
-            changes.add("roof:shape", values[0])
-        }
+        changes.add("roof:shape", answer.getStringArrayList(ImageListQuestAnswerFragment.OSM_VALUES)!![0])
     }
 }

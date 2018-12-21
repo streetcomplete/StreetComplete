@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import de.westnordost.osmapi.map.data.OsmWay;
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase;
 import de.westnordost.streetcomplete.data.osm.persist.WayDao;
+import de.westnordost.streetcomplete.quests.oneway.data.WayTrafficFlowDao;
 import de.westnordost.streetcomplete.util.Serializer;
 
 public class WayTrafficFlowSegmentsDaoTest extends ApplicationDbTestCase

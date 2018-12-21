@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.streetcomplete.quests.TextInputQuestAnswerFragment
 
 class AddBikeParkingCapacity(o: OverpassMapDataDao) : SimpleOverpassQuestType(o) {
 
@@ -18,6 +19,6 @@ class AddBikeParkingCapacity(o: OverpassMapDataDao) : SimpleOverpassQuestType(o)
     override fun createForm() = AddBikeParkingCapacityForm()
 
     override fun applyAnswerTo(answer: Bundle, changes: StringMapChangesBuilder) {
-        changes.add("capacity", "" + Integer.parseInt(answer.getString(AddBikeParkingCapacityForm.INPUT)))
+        changes.add("capacity", "" + answer.getString(TextInputQuestAnswerFragment.INPUT).toInt())
     }
 }

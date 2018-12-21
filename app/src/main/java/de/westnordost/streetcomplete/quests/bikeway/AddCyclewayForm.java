@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.bikeway;
 
 import android.os.Bundle;
 import android.support.annotation.AnyThread;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -60,7 +61,7 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 
 		View compassNeedle = view.findViewById(R.id.compassNeedle);
 
-		puzzle = view.findViewById(R.id.puzzle);
+		puzzle = view.findViewById(R.id.puzzleView);
 		puzzle.setListener(this::showCyclewaySelectionDialog);
 
 		streetSideRotater = new StreetSideRotater(puzzle, compassNeedle, getElementGeometry());
@@ -131,7 +132,7 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 		}
 	}
 
-	@Override public void onSaveInstanceState(Bundle outState)
+	@Override public void onSaveInstanceState(@NonNull Bundle outState)
 	{
 		super.onSaveInstanceState(outState);
 		if(rightSide != null) outState.putString(CYCLEWAY_RIGHT, rightSide.name());
@@ -265,7 +266,7 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 	{
 		return new ListAdapter<Cycleway>(items)
 		{
-			@Override public ViewHolder<Cycleway> onCreateViewHolder(ViewGroup parent, int viewType)
+			@NonNull @Override public ViewHolder<Cycleway> onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
 			{
 				return new ViewHolder<Cycleway>(LayoutInflater.from(parent.getContext()).inflate(
 						R.layout.labeled_icon_button_cell, parent, false))

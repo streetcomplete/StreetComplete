@@ -6,7 +6,7 @@
               android:weightSum="1">
 
     <TextView
-        android:id="@+id/selectHint"
+        android:id="@+id/selectHintLabel"
         android:text="@string/quest_roofShape_select_one"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
@@ -17,7 +17,7 @@
         android:layout_height="wrap_content" />
 
     <Button
-        android:id="@+id/buttonShowMore"
+        android:id="@+id/showMoreButton"
         android:text="@string/quest_roofShape_show_more"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

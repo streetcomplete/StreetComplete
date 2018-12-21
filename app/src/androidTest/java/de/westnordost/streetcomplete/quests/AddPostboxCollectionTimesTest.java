@@ -9,14 +9,14 @@ public class AddPostboxCollectionTimesTest extends AOsmElementQuestTypeTest
 {
 	public void testNoTimes()
 	{
-		bundle.putBoolean(AddCollectionTimesForm.NO_TIMES_SPECIFIED, true);
+		bundle.putBoolean(AddCollectionTimesForm.Companion.getNO_TIMES_SPECIFIED(), true);
 		verify(
 			new StringMapEntryAdd("collection_times:signed","no"));
 	}
 
 	public void testTimes()
 	{
-		bundle.putString(AddCollectionTimesForm.TIMES, "my times");
+		bundle.putString(AddCollectionTimesForm.Companion.getTIMES(), "my times");
 		verify(
 			new StringMapEntryAdd("collection_times","my times"));
 	}

@@ -70,14 +70,14 @@ public abstract class GroupedImageListQuestAnswerFragment extends AbstractQuestF
 		valueList.setLayoutManager(lm);
 		valueList.setNestedScrollingEnabled(false);
 
-		showMoreButton = contentView.findViewById(R.id.buttonShowMore);
+		showMoreButton = contentView.findViewById(R.id.showMoreButton);
 		showMoreButton.setOnClickListener(v ->
 		{
 			imageSelector.setItems(allItems);
 			showMoreButton.setVisibility(View.GONE);
 		});
 
-		TextView selectHint = contentView.findViewById(R.id.selectHint);
+		TextView selectHint = contentView.findViewById(R.id.selectHintLabel);
 		selectHint.setText(R.string.quest_select_hint_most_specific);
 
 		imageSelector = new GroupedImageSelectAdapter(lm);

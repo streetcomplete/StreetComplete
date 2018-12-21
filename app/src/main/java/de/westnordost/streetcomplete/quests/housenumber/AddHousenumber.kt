@@ -21,29 +21,29 @@ import de.westnordost.streetcomplete.util.SphericalEarthMath
 import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
 
-class AddHousenumber(private val overpassServer: OverpassMapDataDao) : OsmElementQuestType {
+class AddHousenumber(private val overpass: OverpassMapDataDao) : OsmElementQuestType {
 
     override val commitMessage = "Add housenumbers"
     override val icon = R.drawable.ic_quest_housenumber
 
-	// See overview here: https://ent8r.github.io/blacklistr/?java=housenumber/AddHousenumber.java
-	override val enabledForCountries = Countries.allExcept(arrayOf(
-	    "NL", // https://forum.openstreetmap.org/viewtopic.php?id=60356
-	    "DK", // https://lists.openstreetmap.org/pipermail/talk-dk/2017-November/004898.html
-	    "NO", // https://forum.openstreetmap.org/viewtopic.php?id=60357
-	    "CZ", // https://lists.openstreetmap.org/pipermail/talk-cz/2017-November/017901.html
-	    "IT"  // https://lists.openstreetmap.org/pipermail/talk-it/2018-July/063712.html
+    // See overview here: https://ent8r.github.io/blacklistr/?java=housenumber/AddHousenumber.java
+    override val enabledForCountries = Countries.allExcept(arrayOf(
+        "NL", // https://forum.openstreetmap.org/viewtopic.php?id=60356
+        "DK", // https://lists.openstreetmap.org/pipermail/talk-dk/2017-November/004898.html
+        "NO", // https://forum.openstreetmap.org/viewtopic.php?id=60357
+        "CZ", // https://lists.openstreetmap.org/pipermail/talk-cz/2017-November/017901.html
+        "IT"  // https://lists.openstreetmap.org/pipermail/talk-it/2018-July/063712.html
     ))
 
-	override fun getTitle(tags: Map<String, String>) = R.string.quest_address_title
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_address_title
 
-	override fun isApplicableTo(element: Element) = null
+    override fun isApplicableTo(element: Element) = null
 
-	override fun download(bbox: BoundingBox, handler: MapDataWithGeometryHandler): Boolean {
+    override fun download(bbox: BoundingBox, handler: MapDataWithGeometryHandler): Boolean {
         var ms = System.currentTimeMillis()
 
         val buildings = downloadBuildingsWithoutAddresses(bbox) ?: return false
-		// empty result: We are done
+        // empty result: We are done
         if (buildings.isEmpty()) return true
 
         val addrAreas = downloadAreasWithAddresses(bbox) ?: return false
@@ -53,8 +53,8 @@ class AddHousenumber(private val overpassServer: OverpassMapDataDao) : OsmElemen
         val addrPositions = downloadFreeFloatingPositionsWithAddresses(extendedBbox) ?: return false
 
         Log.d("AddHousenumber", "Downloaded ${buildings.size} buildings with no address, " +
-	        "${addrAreas.size} areas with address and ${addrPositions.size} address nodes " +
-	        "in ${System.currentTimeMillis() - ms}ms"
+            "${addrAreas.size} areas with address and ${addrPositions.size} address nodes " +
+            "in ${System.currentTimeMillis() - ms}ms"
         )
         ms = System.currentTimeMillis()
 
@@ -96,10 +96,10 @@ class AddHousenumber(private val overpassServer: OverpassMapDataDao) : OsmElemen
     private fun downloadBuildingsWithoutAddresses(bbox: BoundingBox): MutableMap<LatLon, ElementWithGeometry>? {
         val buildingsByCenterPoint = HashMap<LatLon, ElementWithGeometry>()
         val query = getBuildingsWithoutAddressesOverpassQuery(bbox)
-        val success = overpassServer.getAndHandleQuota(query) { element, geometry ->
-	        if (geometry?.polygons != null && geometry.center != null) {
-		        buildingsByCenterPoint[geometry.center] = ElementWithGeometry(element, geometry)
-	        }
+        val success = overpass.getAndHandleQuota(query) { element, geometry ->
+            if (geometry?.polygons != null && geometry.center != null) {
+                buildingsByCenterPoint[geometry.center] = ElementWithGeometry(element, geometry)
+            }
         }
         return if (success) buildingsByCenterPoint else null
     }
@@ -107,7 +107,7 @@ class AddHousenumber(private val overpassServer: OverpassMapDataDao) : OsmElemen
     private fun downloadFreeFloatingPositionsWithAddresses(bbox: BoundingBox): LatLonRaster? {
         val grid = LatLonRaster(bbox, 0.0005)
         val query = getFreeFloatingAddressesOverpassQuery(bbox)
-        val success = overpassServer.getAndHandleQuota(query) { _, geometry ->
+        val success = overpass.getAndHandleQuota(query) { _, geometry ->
             if (geometry != null) grid.insert(geometry.center)
         }
         return if (success) grid else null
@@ -116,53 +116,53 @@ class AddHousenumber(private val overpassServer: OverpassMapDataDao) : OsmElemen
     private fun downloadAreasWithAddresses(bbox: BoundingBox): List<ElementGeometry>? {
         val areas = ArrayList<ElementGeometry>()
         val query = getNonBuildingAreasWithAddresses(bbox)
-        val success = overpassServer.getAndHandleQuota(query) { _, geometry ->
+        val success = overpass.getAndHandleQuota(query) { _, geometry ->
             if (geometry?.polygons != null) areas.add(geometry)
         }
         return if (success) areas else null
     }
 
-	/** Query that returns all areas that are not buildings but have addresses  */
-	private fun getNonBuildingAreasWithAddresses(bbox: BoundingBox): String {
-		return OverpassQLUtil.getGlobalOverpassBBox(bbox) +
-			"(way[!building]" + ANY_ADDRESS_FILTER + ";rel[!building]" + ANY_ADDRESS_FILTER + ";);" +
-			"out geom;"
-	}
+    /** Query that returns all areas that are not buildings but have addresses  */
+    private fun getNonBuildingAreasWithAddresses(bbox: BoundingBox): String {
+        return OverpassQLUtil.getGlobalOverpassBBox(bbox) +
+            "(way[!building]" + ANY_ADDRESS_FILTER + ";rel[!building]" + ANY_ADDRESS_FILTER + ";);" +
+            "out geom;"
+    }
 
-	/** Query that returns all buildings that neither have an address node on their outline, nor
-	 * on itself  */
-	private fun getBuildingsWithoutAddressesOverpassQuery(bbox: BoundingBox): String {
-		val bboxFilter = OverpassQLUtil.getOverpassBboxFilter(bbox)
-		return "(" +
-			"  way" + BUILDINGS_WITHOUT_ADDRESS_FILTER + bboxFilter + ";" +
-			"  rel" + BUILDINGS_WITHOUT_ADDRESS_FILTER + bboxFilter + ";" +
-			") -> .buildings;" +
-			".buildings > -> .building_nodes;" +
-			"node.building_nodes" + ANY_ADDRESS_FILTER + ";< -> .buildings_with_addr_nodes;" +
-			// all buildings without housenumber minus ways that contain building nodes with addresses
-			"(.buildings; - .buildings_with_addr_nodes;);" +
-			// not using OverpassQLUtil.getQuestPrintStatement here because buildings will get filtered out further here
-			"out meta geom;"
-	}
+    /** Query that returns all buildings that neither have an address node on their outline, nor
+     * on itself  */
+    private fun getBuildingsWithoutAddressesOverpassQuery(bbox: BoundingBox): String {
+        val bboxFilter = OverpassQLUtil.getOverpassBboxFilter(bbox)
+        return "(" +
+            "  way" + BUILDINGS_WITHOUT_ADDRESS_FILTER + bboxFilter + ";" +
+            "  rel" + BUILDINGS_WITHOUT_ADDRESS_FILTER + bboxFilter + ";" +
+            ") -> .buildings;" +
+            ".buildings > -> .building_nodes;" +
+            "node.building_nodes" + ANY_ADDRESS_FILTER + ";< -> .buildings_with_addr_nodes;" +
+            // all buildings without housenumber minus ways that contain building nodes with addresses
+            "(.buildings; - .buildings_with_addr_nodes;);" +
+            // not using OverpassQLUtil.getQuestPrintStatement here because buildings will get filtered out further here
+            "out meta geom;"
+    }
 
-	/** Query that returns all address nodes that are not part of any building outline  */
-	private fun getFreeFloatingAddressesOverpassQuery(bbox: BoundingBox): String {
-		return OverpassQLUtil.getGlobalOverpassBBox(bbox) +
-			"(" +
-			"  node" + ANY_ADDRESS_FILTER + ";" +
-			"  - ((way[building];relation[building];);>;);" +
-			");" +
-			"out skel;"
-	}
+    /** Query that returns all address nodes that are not part of any building outline  */
+    private fun getFreeFloatingAddressesOverpassQuery(bbox: BoundingBox): String {
+        return OverpassQLUtil.getGlobalOverpassBBox(bbox) +
+            "(" +
+            "  node" + ANY_ADDRESS_FILTER + ";" +
+            "  - ((way[building];relation[building];);>;);" +
+            ");" +
+            "out skel;"
+    }
 
-	private fun getPositionContainedInBuilding(building: ElementGeometry, positions: LatLonRaster): LatLon? {
-		val buildingPolygons = building.polygons ?: return null
+    private fun getPositionContainedInBuilding(building: ElementGeometry, positions: LatLonRaster): LatLon? {
+        val buildingPolygons = building.polygons ?: return null
 
-		for (pos in positions.getAll(building.bounds)) {
-			if (SphericalEarthMath.isInMultipolygon(pos, buildingPolygons)) return pos
-		}
-		return null
-	}
+        for (pos in positions.getAll(building.bounds)) {
+            if (SphericalEarthMath.isInMultipolygon(pos, buildingPolygons)) return pos
+        }
+        return null
+    }
 
     private fun getBoundingBoxThatIncludes(buildings: Iterable<ElementWithGeometry>): BoundingBox {
         // see #885: The area in which the app should search for address nodes (and areas) must be
@@ -176,7 +176,7 @@ class AddHousenumber(private val overpassServer: OverpassMapDataDao) : OsmElemen
         return SphericalEarthMath.enclosingBoundingBox(allThePoints)
     }
 
-	override fun createForm() = AddHousenumberForm()
+    override fun createForm() = AddHousenumberForm()
 
     override fun applyAnswerTo(answer: Bundle, changes: StringMapChangesBuilder) {
         val noAddress = answer.getBoolean(AddHousenumberForm.NO_ADDRESS)

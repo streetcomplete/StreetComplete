@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.quests.building_type;
 
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

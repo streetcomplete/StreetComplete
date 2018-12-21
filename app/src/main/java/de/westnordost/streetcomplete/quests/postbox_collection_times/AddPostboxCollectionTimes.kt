@@ -13,16 +13,16 @@ class AddPostboxCollectionTimes(o: OverpassMapDataDao) : SimpleOverpassQuestType
     override val tagFilters = """
         nodes with amenity=post_box and !collection_times
         and collection_times:signed != no and access !~ private|no"
-	"""
+    """
     override val icon = R.drawable.ic_quest_mail
     override val commitMessage = "Add postbox collection times"
 
-	// See overview here: https://ent8r.github.io/blacklistr/?java=postbox_collection_times/AddPostboxCollectionTimes.kt
+    // See overview here: https://ent8r.github.io/blacklistr/?java=postbox_collection_times/AddPostboxCollectionTimes.kt
     // sources:
     // https://www.itinerantspirit.com/home/2016/5/22/post-boxes-from-around-the-world
     // https://commons.wikimedia.org/wiki/Category:Post_boxes_by_country
     // http://wanderlustexplorers.com/youve-got-mail-23-international-postal-boxes/
-	override val enabledForCountries:Countries = Countries.noneExcept(arrayOf(
+    override val enabledForCountries:Countries = Countries.noneExcept(arrayOf(
         // definitely, seen pictures:
         "AU","NZ","VU","MY","SG","TH","VN","LA","MM","IN","BD","NP","LK","BT","PK","TW","HK",
         "MO","CN","KR","JP","RU","BY","LT","LV","FI","SE","NO","DK","GB","IE","IS","NL","BE",
@@ -34,22 +34,19 @@ class AddPostboxCollectionTimes(o: OverpassMapDataDao) : SimpleOverpassQuestType
         "RS","RS-KM","BA","MK","AL",
         // unknown but region around it has it (southern states of former soviet union):
         "TJ","KG","KZ","MN","GE"
-		// apparently mostly not in Latin America and in Arabic world and unknown in Africa
-	))
+        // apparently mostly not in Latin America and in Arabic world and unknown in Africa
+    ))
 
-	override fun getTitle(tags: Map<String, String>) = R.string.quest_postboxCollectionTimes_title
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_postboxCollectionTimes_title
 
-	override fun createForm() = AddCollectionTimesForm()
+    override fun createForm() = AddCollectionTimesForm()
 
     override fun applyAnswerTo(answer: Bundle, changes: StringMapChangesBuilder) {
         val noTimes = answer.getBoolean(AddCollectionTimesForm.NO_TIMES_SPECIFIED)
         if (noTimes) {
             changes.add("collection_times:signed", "no")
         } else {
-            val times = answer.getString(AddCollectionTimesForm.TIMES)
-            if (times != null) {
-                changes.add("collection_times", times)
-            }
+            changes.add("collection_times", answer.getString(AddCollectionTimesForm.TIMES)!!)
         }
     }
 }

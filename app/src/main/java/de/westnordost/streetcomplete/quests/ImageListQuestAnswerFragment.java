@@ -61,7 +61,7 @@ public abstract class ImageListQuestAnswerFragment extends AbstractQuestFormAnsw
         valueList.setLayoutManager(lm);
 		valueList.setNestedScrollingEnabled(false);
 
-		showMoreButton = contentView.findViewById(R.id.buttonShowMore);
+		showMoreButton = contentView.findViewById(R.id.showMoreButton);
 		showMoreButton.setOnClickListener(v ->
 		{
 			imageSelector.setItems(getItems(-1));
@@ -69,7 +69,7 @@ public abstract class ImageListQuestAnswerFragment extends AbstractQuestFormAnsw
 		});
 
 		int selectableItems = getMaxSelectableItems();
-		TextView selectHint = contentView.findViewById(R.id.selectHint);
+		TextView selectHint = contentView.findViewById(R.id.selectHintLabel);
 		selectHint.setText(selectableItems == 1 ? R.string.quest_roofShape_select_one : R.string.quest_select_hint);
 
 		imageSelector = new ImageSelectAdapter(selectableItems);

@@ -17,5 +17,5 @@ class AddBikeParkingCapacityForm : TextInputQuestAnswerFragment() {
         return view
     }
 
-    override fun getEditText() = inputCapacity
+    override fun getEditText() = capacityInput
 }

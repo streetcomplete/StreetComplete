@@ -40,17 +40,17 @@ abstract class AddLocalizedNameForm : AbstractQuestFormAnswerFragment() {
 
     protected fun initLocalizedNameAdapter(contentView: View, savedInstanceState: Bundle?) {
         val data: ArrayList<LocalizedName> = if (savedInstanceState != null) {
-		    serializer.toObject(savedInstanceState.getByteArray(LOCALIZED_NAMES_DATA))
-	    } else {
-		    ArrayList()
-	    }
+            serializer.toObject(savedInstanceState.getByteArray(LOCALIZED_NAMES_DATA))
+        } else {
+            ArrayList()
+        }
 
-	    val buttonAddLanguage = contentView.findViewById<Button>(R.id.buttonAddLanguage)
+        val buttonAddLanguage = contentView.findViewById<Button>(R.id.addLanguageButton)
 
         adapter = setupNameAdapter(data, buttonAddLanguage)
         adapter.addOnNameChangedListener { checkIsFormComplete() }
-	    adapter.registerAdapterDataObserver(AdapterDataChangedWatcher { checkIsFormComplete() })
-        val recyclerView = contentView.findViewById<RecyclerView>(R.id.roadnames)
+        adapter.registerAdapterDataObserver(AdapterDataChangedWatcher { checkIsFormComplete() })
+        val recyclerView = contentView.findViewById<RecyclerView>(R.id.namesList)
         recyclerView.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
         recyclerView.adapter = adapter
         recyclerView.isNestedScrollingEnabled = false
@@ -60,16 +60,16 @@ abstract class AddLocalizedNameForm : AbstractQuestFormAnswerFragment() {
     protected open fun setupNameAdapter(data: List<LocalizedName>, addLanguageButton: Button) =
         AddLocalizedNameAdapter(data, activity!!, getPossibleStreetsignLanguages(), null, null, addLanguageButton)
 
-	protected fun getPossibleStreetsignLanguages(): List<String> {
-		val result = mutableListOf<String>()
-		result.addAll(countryInfo.officialLanguages)
-		result.addAll(countryInfo.additionalStreetsignLanguages)
-		return result.distinct()
-	}
+    protected fun getPossibleStreetsignLanguages(): List<String> {
+        val result = mutableListOf<String>()
+        result.addAll(countryInfo.officialLanguages)
+        result.addAll(countryInfo.additionalStreetsignLanguages)
+        return result.distinct()
+    }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-	    val serializedNames = serializer.toBytes(ArrayList(adapter.localizedNames))
+        val serializedNames = serializer.toBytes(ArrayList(adapter.localizedNames))
         outState.putByteArray(LOCALIZED_NAMES_DATA, serializedNames)
     }
 
@@ -99,7 +99,7 @@ abstract class AddLocalizedNameForm : AbstractQuestFormAnswerFragment() {
             onConfirmedAll()
         } else {
             /* recursively call self on confirm until the list of not-abbreviations to confirm is
-			   through */
+               through */
             val name = names.remove()
             confirmPossibleAbbreviation(name) { confirmPossibleAbbreviationsIfAny(names, onConfirmedAll) }
         }
@@ -126,7 +126,7 @@ abstract class AddLocalizedNameForm : AbstractQuestFormAnswerFragment() {
             .setTitle(R.string.quest_streetName_cantType_title)
             .setMessage(R.string.quest_streetName_cantType_description)
             .setPositiveButton(R.string.quest_streetName_cantType_open_settings) { _, _ ->
-	            startActivity(Intent(Settings.ACTION_SETTINGS))
+                startActivity(Intent(Settings.ACTION_SETTINGS))
             }
             .setNeutralButton(R.string.quest_streetName_cantType_open_store) { _, _ ->
                 val intent = Intent(Intent.ACTION_MAIN)
@@ -137,7 +137,7 @@ abstract class AddLocalizedNameForm : AbstractQuestFormAnswerFragment() {
             .show()
     }
 
-	// all added name rows are not empty
+    // all added name rows are not empty
     override fun isFormComplete() = adapter.localizedNames.all { it.name.trim().isNotEmpty() }
 
     companion object {
@@ -150,20 +150,20 @@ abstract class AddLocalizedNameForm : AbstractQuestFormAnswerFragment() {
 }
 
 internal fun Bundle.toNameByLanguage(): Map<String, String> {
-	val names = getStringArray(AddLocalizedNameForm.NAMES)
-	val languages = getStringArray(AddLocalizedNameForm.LANGUAGE_CODES)
+    val names = getStringArray(AddLocalizedNameForm.NAMES)
+    val languages = getStringArray(AddLocalizedNameForm.LANGUAGE_CODES)
 
-	val result = mutableMapOf<String, String>()
-	result[""] = names[0]
-	// add languages only if there is more than one name specified. If there is more than one
-	// name, the "main" name (name specified in top row) is also added with the language.
-	if (names.size > 1) {
-		for (i in names.indices) {
-			// (the first) element may have no specific language
-			if (!languages[i].isEmpty()) {
-				result[languages[i]] = names[i]
-			}
-		}
-	}
-	return result
+    val result = mutableMapOf<String, String>()
+    result[""] = names[0]
+    // add languages only if there is more than one name specified. If there is more than one
+    // name, the "main" name (name specified in top row) is also added with the language.
+    if (names.size > 1) {
+        for (i in names.indices) {
+            // (the first) element may have no specific language
+            if (!languages[i].isEmpty()) {
+                result[languages[i]] = names[i]
+            }
+        }
+    }
+    return result
 }

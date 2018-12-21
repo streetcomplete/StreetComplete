@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.streetcomplete.quests.ImageListQuestAnswerFragment
 
 class AddCrossingType(o: OverpassMapDataDao) : SimpleOverpassQuestType(o) {
 
@@ -13,14 +14,11 @@ class AddCrossingType(o: OverpassMapDataDao) : SimpleOverpassQuestType(o) {
     override val commitMessage = "Add crossing type"
     override val icon = R.drawable.ic_quest_pedestrian_crossing
 
-	override fun getTitle(tags: Map<String, String>) = R.string.quest_crossing_type_title
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_crossing_type_title
 
-	override fun createForm() = AddCrossingTypeForm()
+    override fun createForm() = AddCrossingTypeForm()
 
     override fun applyAnswerTo(answer: Bundle, changes: StringMapChangesBuilder) {
-        val values = answer.getStringArrayList(AddCrossingTypeForm.OSM_VALUES)
-        if (values != null && values.size == 1) {
-            changes.add("crossing", values[0])
-        }
+        changes.add("crossing", answer.getStringArrayList(ImageListQuestAnswerFragment.OSM_VALUES)!![0])
     }
 }

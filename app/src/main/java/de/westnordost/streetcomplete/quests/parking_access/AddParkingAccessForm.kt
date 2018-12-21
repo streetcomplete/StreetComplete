@@ -21,12 +21,12 @@ class AddParkingAccessForm : AbstractQuestFormAnswerFragment() {
     }
 
     override fun onClickOk() {
-	    val accessValue = when (radioButtonGroup.checkedRadioButtonId) {
-		    R.id.yes            -> "yes"
-		    R.id.customers      -> "customers"
-		    R.id.private_access -> "private"
-		    else -> null
-	    }
+        val accessValue = when (radioButtonGroup.checkedRadioButtonId) {
+            R.id.yes            -> "yes"
+            R.id.customers      -> "customers"
+            R.id.private_access -> "private"
+            else -> null
+        }
 
         val answer = Bundle()
         answer.putString(ACCESS, accessValue)

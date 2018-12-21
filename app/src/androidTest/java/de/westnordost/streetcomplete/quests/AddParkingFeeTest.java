@@ -15,20 +15,20 @@ public class AddParkingFeeTest extends AOsmElementQuestTypeTest
 
 	public void testYes()
 	{
-		bundle.putBoolean(AddParkingFeeForm.FEE, true);
+		bundle.putBoolean(AddParkingFeeForm.Companion.getFEE(), true);
 		verify(new StringMapEntryAdd("fee", "yes"));
 	}
 
 	public void testNo()
 	{
-		bundle.putBoolean(AddParkingFeeForm.FEE, false);
+		bundle.putBoolean(AddParkingFeeForm.Companion.getFEE(), false);
 		verify(new StringMapEntryAdd("fee", "no"));
 	}
 
 	public void testYesButOnlyAt()
 	{
-		bundle.putBoolean(AddParkingFeeForm.FEE, false);
-		bundle.putString(AddParkingFeeForm.FEE_CONDITONAL_HOURS, "xyz");
+		bundle.putBoolean(AddParkingFeeForm.Companion.getFEE(), false);
+		bundle.putString(AddParkingFeeForm.Companion.getFEE_CONDITONAL_HOURS(), "xyz");
 		verify(
 			new StringMapEntryAdd("fee", "no"),
 		    new StringMapEntryAdd("fee:conditional", "yes @ (xyz)"));
@@ -36,8 +36,8 @@ public class AddParkingFeeTest extends AOsmElementQuestTypeTest
 
 	public void testYesButNotAt()
 	{
-		bundle.putBoolean(AddParkingFeeForm.FEE, true);
-		bundle.putString(AddParkingFeeForm.FEE_CONDITONAL_HOURS, "xyz");
+		bundle.putBoolean(AddParkingFeeForm.Companion.getFEE(), true);
+		bundle.putString(AddParkingFeeForm.Companion.getFEE_CONDITONAL_HOURS(), "xyz");
 		verify(
 			new StringMapEntryAdd("fee", "yes"),
 			new StringMapEntryAdd("fee:conditional", "no @ (xyz)"));

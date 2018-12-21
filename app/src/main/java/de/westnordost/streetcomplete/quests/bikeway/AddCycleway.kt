@@ -25,7 +25,7 @@ class AddCycleway(private val overpassServer: OverpassMapDataDao) : OsmElementQu
     // Google Street View (driving around in virtual car)
     // https://en.wikivoyage.org/wiki/Cycling
     // http://peopleforbikes.org/get-local/ (US)
-	override val enabledForCountries = Countries.noneExcept(arrayOf(
+    override val enabledForCountries = Countries.noneExcept(arrayOf(
         // all of Northern and Western Europe, most of Central Europe, some of Southern Europe
         "NO","SE","FI","IS","DK",
         "GB","IE","NL","BE","FR","LU",
@@ -48,65 +48,58 @@ class AddCycleway(private val overpassServer: OverpassMapDataDao) : OsmElementQu
         "US-AZ","US-TX"
     ))
 
-	override fun download(bbox: BoundingBox, handler: MapDataWithGeometryHandler): Boolean {
-		return overpassServer.getAndHandleQuota(getOverpassQuery(bbox), handler)
-	}
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_cycleway_title2
 
-	/** @return overpass query string to get streets without cycleway info not near paths for
-	 * bicycles.
-	 */
-	private fun getOverpassQuery(bbox: BoundingBox): String {
-		val minDistToCycleways = 15 //m
+    override fun isApplicableTo(element: Element) = null
 
-		return OverpassQLUtil.getGlobalOverpassBBox(bbox) +
-			"way[highway ~ \"^(primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified)$\"]" +
-			"[area != yes]" +
-			// not any motorroads
-			"[motorroad != yes]" +
-			// only without cycleway tags
-			"[!cycleway][!\"cycleway:left\"][!\"cycleway:right\"][!\"cycleway:both\"]" +
-			"[!\"sidewalk:bicycle\"][!\"sidewalk:both:bicycle\"][!\"sidewalk:left:bicycle\"][!\"sidewalk:right:bicycle\"]" +
-			// not any with low speed limit because they not very likely to have cycleway infrastructure
-			"[maxspeed !~ \"^(20|15|10|8|7|6|5|10 mph|5 mph|walk)$\"]" +
-			// not any unpaved because of the same reason
-			"[surface !~ \"^(" + OsmTaggings.ANYTHING_UNPAVED.joinToString("|") + ")$\"]" +
-			// not any explicitly tagged as no bicycles
-			"[bicycle != no]" +
-			"[access !~ \"^private|no$\"]" +
-			// some roads may be father than MIN_DIST_TO_CYCLEWAYS from cycleways,
-			// not tagged cycleway=separate/sidepath but may have hint that there is
-			// a separately tagged cycleway
-			"[bicycle != use_sidepath][\"bicycle:backward\" != use_sidepath]" +
-			"[\"bicycle:forward\" != use_sidepath]" +
-			" -> .streets;" +
-			"(" +
-			"way[highway=cycleway](around.streets: " + minDistToCycleways + ");" +
-			// See #718: If a separate way exists, it may be that the user's answer should
-			// correctly be tagged on that separate way and not on the street -> this app would
-			// tag data on the wrong elements. So, don't ask at all for separately mapped ways.
-			// :-(
-			"way[highway ~ \"^(path|footway)$\"](around.streets: " + minDistToCycleways + ");" +
-			") -> .cycleways;" +
-			"way.streets(around.cycleways: " + minDistToCycleways + ") -> .streets_near_cycleways;" +
-			"(.streets; - .streets_near_cycleways;);" +
-			OverpassQLUtil.getQuestPrintStatement()
-	}
+    override fun download(bbox: BoundingBox, handler: MapDataWithGeometryHandler): Boolean {
+        return overpassServer.getAndHandleQuota(getOverpassQuery(bbox), handler)
+    }
 
-	/* Whether this element applies to this quest cannot be determined by looking at that
-       element alone (see download()), an Overpass query would need to be made to find this out.
-       This is too heavy-weight for this method so it always returns false. */
+    /** @return overpass query string to get streets without cycleway info not near paths for
+     * bicycles.
+     */
+    private fun getOverpassQuery(bbox: BoundingBox): String {
+        val minDistToCycleways = 15 //m
 
-	/* The implications of this are that this quest will never be created directly
-       as consequence of solving another quest and also after reverting an input,
-       the quest will not immediately pop up again. Instead, they are downloaded well after an
-       element became fit for this quest. */
-	override fun isApplicableTo(element: Element) = null
+        return OverpassQLUtil.getGlobalOverpassBBox(bbox) +
+            "way[highway ~ \"^(primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified)$\"]" +
+            "[area != yes]" +
+            // not any motorroads
+            "[motorroad != yes]" +
+            // only without cycleway tags
+            "[!cycleway][!\"cycleway:left\"][!\"cycleway:right\"][!\"cycleway:both\"]" +
+            "[!\"sidewalk:bicycle\"][!\"sidewalk:both:bicycle\"][!\"sidewalk:left:bicycle\"][!\"sidewalk:right:bicycle\"]" +
+            // not any with low speed limit because they not very likely to have cycleway infrastructure
+            "[maxspeed !~ \"^(20|15|10|8|7|6|5|10 mph|5 mph|walk)$\"]" +
+            // not any unpaved because of the same reason
+            "[surface !~ \"^(" + OsmTaggings.ANYTHING_UNPAVED.joinToString("|") + ")$\"]" +
+            // not any explicitly tagged as no bicycles
+            "[bicycle != no]" +
+            "[access !~ \"^private|no$\"]" +
+            // some roads may be father than MIN_DIST_TO_CYCLEWAYS from cycleways,
+            // not tagged cycleway=separate/sidepath but may have hint that there is
+            // a separately tagged cycleway
+            "[bicycle != use_sidepath][\"bicycle:backward\" != use_sidepath]" +
+            "[\"bicycle:forward\" != use_sidepath]" +
+            " -> .streets;" +
+            "(" +
+            "way[highway=cycleway](around.streets: " + minDistToCycleways + ");" +
+            // See #718: If a separate way exists, it may be that the user's answer should
+            // correctly be tagged on that separate way and not on the street -> this app would
+            // tag data on the wrong elements. So, don't ask at all for separately mapped ways.
+            // :-(
+            "way[highway ~ \"^(path|footway)$\"](around.streets: " + minDistToCycleways + ");" +
+            ") -> .cycleways;" +
+            "way.streets(around.cycleways: " + minDistToCycleways + ") -> .streets_near_cycleways;" +
+            "(.streets; - .streets_near_cycleways;);" +
+            OverpassQLUtil.getQuestPrintStatement()
+    }
 
-	override fun createForm()= AddCyclewayForm()
 
-	override fun getTitle(tags: Map<String, String>) = R.string.quest_cycleway_title2
+    override fun createForm()= AddCyclewayForm()
 
-	override fun applyAnswerTo(answer: Bundle, changes: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: Bundle, changes: StringMapChangesBuilder) {
         val right = answer.getString(AddCyclewayForm.CYCLEWAY_RIGHT)
         val left = answer.getString(AddCyclewayForm.CYCLEWAY_LEFT)
 
@@ -116,11 +109,11 @@ class AddCycleway(private val overpassServer: OverpassMapDataDao) : OsmElementQu
         val cyclewayRightDir = answer.getInt(AddCyclewayForm.CYCLEWAY_RIGHT_DIR)
         val cyclewayLeftDir = answer.getInt(AddCyclewayForm.CYCLEWAY_LEFT_DIR)
 
-        val bothSidesAreSame = (cyclewayLeft == cyclewayRight
+        val bothSidesAreSame = (cyclewayLeft == cyclewayRight && cyclewayLeft != null
                 && cyclewayRightDir == 0 && cyclewayLeftDir == 0)
 
         if (bothSidesAreSame) {
-            applyCyclewayAnswerTo(cyclewayLeft, Side.BOTH, 0, changes)
+            applyCyclewayAnswerTo(cyclewayLeft!!, Side.BOTH, 0, changes)
         } else {
             if (cyclewayLeft != null) {
                 applyCyclewayAnswerTo(cyclewayLeft, Side.LEFT, cyclewayLeftDir, changes)
@@ -144,33 +137,33 @@ class AddCycleway(private val overpassServer: OverpassMapDataDao) : OsmElementQu
         val hasSidewalkRight = cyclewayRight != null && cyclewayRight.isOnSidewalk
 
         val side = when {
-	        hasSidewalkLeft && hasSidewalkRight -> Side.BOTH
-	        hasSidewalkLeft -> Side.LEFT
-	        hasSidewalkRight -> Side.RIGHT
-	        else -> null
+            hasSidewalkLeft && hasSidewalkRight -> Side.BOTH
+            hasSidewalkLeft -> Side.LEFT
+            hasSidewalkRight -> Side.RIGHT
+            else -> null
         }
 
-	    if (side != null) {
-		    changes.addOrModify("sidewalk", side.value)
-	    }
+        if (side != null) {
+            changes.addOrModify("sidewalk", side.value)
+        }
     }
 
     private enum class Side(val value: String) {
         LEFT("left"), RIGHT("right"), BOTH("both")
     }
 
-    private fun applyCyclewayAnswerTo(cycleway: Cycleway?, side: Side, dir: Int,
+    private fun applyCyclewayAnswerTo(cycleway: Cycleway, side: Side, dir: Int,
                                       changes: StringMapChangesBuilder ) {
         val directionValue = when {
-	        dir > 0 -> "yes"
-	        dir < 0 -> "-1"
-	        else -> null
+            dir > 0 -> "yes"
+            dir < 0 -> "-1"
+            else -> null
         }
 
         val cyclewayKey = "cycleway:" + side.value
         when (cycleway) {
             NONE, NONE_NO_ONEWAY -> {
-	            changes.add(cyclewayKey, "no")
+                changes.add(cyclewayKey, "no")
             }
             EXCLUSIVE_LANE, ADVISORY_LANE, LANE_UNSPECIFIED -> {
                 changes.add(cyclewayKey, "lane")
@@ -179,10 +172,8 @@ class AddCycleway(private val overpassServer: OverpassMapDataDao) : OsmElementQu
                 }
                 if (cycleway == EXCLUSIVE_LANE)
                     changes.addOrModify("$cyclewayKey:lane", "exclusive")
-                else if (cycleway == ADVISORY_LANE) changes.addOrModify(
-                    "$cyclewayKey:lane",
-                    "advisory"
-                )
+                else if (cycleway == ADVISORY_LANE)
+                    changes.addOrModify("$cyclewayKey:lane","advisory")
             }
             TRACK -> {
                 changes.add(cyclewayKey, "track")
@@ -218,7 +209,7 @@ class AddCycleway(private val overpassServer: OverpassMapDataDao) : OsmElementQu
                 changes.add("$cyclewayKey:lane", "advisory")
             }
             BUSWAY -> {
-	            changes.add(cyclewayKey, "share_busway")
+                changes.add(cyclewayKey, "share_busway")
             }
         }
     }

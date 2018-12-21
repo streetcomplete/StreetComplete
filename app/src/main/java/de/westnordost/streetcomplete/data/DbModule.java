@@ -19,7 +19,7 @@ import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderList;
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeDao;
 import de.westnordost.streetcomplete.data.statistics.QuestStatisticsDao;
 import de.westnordost.streetcomplete.quests.localized_name.data.RoadNamesTablesHelper;
-import de.westnordost.streetcomplete.quests.oneway.WayTrafficFlowTablesHelper;
+import de.westnordost.streetcomplete.quests.oneway.data.WayTrafficFlowTablesHelper;
 import de.westnordost.streetcomplete.util.KryoSerializer;
 import de.westnordost.streetcomplete.util.Serializer;
 import de.westnordost.osmapi.changesets.ChangesetsDao;

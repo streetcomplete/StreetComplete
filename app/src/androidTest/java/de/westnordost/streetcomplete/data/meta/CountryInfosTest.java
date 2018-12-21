@@ -17,7 +17,7 @@ public class CountryInfosTest extends AndroidTestCase
 	private void checkFirstDayOfWorkweekIsValid(CountryInfo info)
 	{
 		assertNotNull(info.getFirstDayOfWorkweek());
-		assertTrue(Weekdays.getWeekdayIndex(info.getFirstDayOfWorkweek()) > -1);
+		assertTrue(Weekdays.Companion.getWeekdayIndex(info.getFirstDayOfWorkweek()) > -1);
 	}
 
 	private void checkMeasurementUnitIsEitherMetricOrImperial(CountryInfo info)

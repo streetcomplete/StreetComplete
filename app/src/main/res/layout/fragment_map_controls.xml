@@ -6,7 +6,7 @@
                 xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
-        android:id="@+id/compass"
+        android:id="@+id/compassView"
         android:layout_width="64dp"
         android:layout_height="64dp"
         style="@style/RoundButton"

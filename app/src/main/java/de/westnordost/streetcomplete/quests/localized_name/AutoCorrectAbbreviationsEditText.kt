@@ -12,32 +12,32 @@ import de.westnordost.streetcomplete.util.DefaultTextWatcher
 /** An edit text that expands abbreviations automatically when finishing a word (via space, "-" or
  * ".") and capitalizes the first letter of each word that is longer than 3 letters.  */
 class AutoCorrectAbbreviationsEditText @JvmOverloads constructor(
-	context: Context, attrs: AttributeSet? = null,
-	defStyleAttr: Int = 0
+    context: Context, attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0
 ) : android.support.v7.widget.AppCompatEditText(context, attrs, defStyleAttr) {
 
     var abbreviations: Abbreviations? = null
 
-	init {
-		imeOptions = EditorInfo.IME_ACTION_DONE or imeOptions
+    init {
+        imeOptions = EditorInfo.IME_ACTION_DONE or imeOptions
 
-		inputType =
-			EditorInfo.TYPE_CLASS_TEXT or
-			EditorInfo.TYPE_TEXT_FLAG_NO_SUGGESTIONS or
-			EditorInfo.TYPE_TEXT_FLAG_CAP_SENTENCES
+        inputType =
+            EditorInfo.TYPE_CLASS_TEXT or
+            EditorInfo.TYPE_TEXT_FLAG_NO_SUGGESTIONS or
+            EditorInfo.TYPE_TEXT_FLAG_CAP_SENTENCES
 
-		addTextChangedListener(AbbreviationAutoCorrecter())
+        addTextChangedListener(AbbreviationAutoCorrecter())
 
-		setOnEditorActionListener { _, actionId, _ ->
-			if (actionId == EditorInfo.IME_ACTION_DONE) {
-				autoCorrectTextAt(text, length())
-			}
-			false
-		}
-	}
+        setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                autoCorrectTextAt(text, length())
+            }
+            false
+        }
+    }
 
     private fun autoCorrectTextAt(s: Editable, cursor: Int) {
-	    val abbrs = abbreviations ?: return
+        val abbrs = abbreviations ?: return
 
         val textToCursor = s.subSequence(0, cursor).toString()
         val words = textToCursor.split("[ -]+".toRegex())

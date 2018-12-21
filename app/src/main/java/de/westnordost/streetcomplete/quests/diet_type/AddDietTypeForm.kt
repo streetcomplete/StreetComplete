@@ -18,16 +18,15 @@ class AddDietTypeForm : AbstractQuestAnswerFragment() {
         setContentView(R.layout.quest_diet_type_explanation)
         setButtonsView(R.layout.quest_buttonpanel_yes_no_only)
 
-	    buttonYes.setOnClickListener { onClickAnswer("yes") }
-        buttonNo.setOnClickListener { onClickAnswer("no") }
-        buttonOnly.setOnClickListener { onClickAnswer("only") }
-
+        yesButton.setOnClickListener { onClickAnswer("yes") }
+        noButton.setOnClickListener { onClickAnswer("no") }
+        onlyButton.setOnClickListener { onClickAnswer("only") }
 
         val resId = arguments?.getInt(ARG_DIET) ?: 0
         if (resId > 0) {
-	        textDescription.setText(resId)
+            descriptionLabel.setText(resId)
         } else {
-	        textDescription.visibility = View.GONE
+            descriptionLabel.visibility = View.GONE
         }
 
         return view

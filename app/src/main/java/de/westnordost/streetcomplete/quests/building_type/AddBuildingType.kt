@@ -9,18 +9,18 @@ import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
 
 class AddBuildingType (o: OverpassMapDataDao) : SimpleOverpassQuestType(o) {
 
-	// in the case of man_made, historic, military and power, these tags already contain
-	// information about the purpose of the building, so no need to force asking it
+    // in the case of man_made, historic, military and power, these tags already contain
+    // information about the purpose of the building, so no need to force asking it
     override val tagFilters = """
         ways, relations with building=yes
         and !man_made and !historic and !military and !power and location!=underground"
-	"""
+    """
     override val commitMessage = "Add building types"
     override val icon = R.drawable.ic_quest_building
 
-	override fun getTitle(tags: Map<String, String>) = R.string.quest_buildingType_title2
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_buildingType_title2
 
-	override fun createForm() = AddBuildingTypeForm()
+    override fun createForm() = AddBuildingTypeForm()
 
     override fun applyAnswerTo(answer: Bundle, changes: StringMapChangesBuilder) {
         val building = answer.getString(AddBuildingTypeForm.BUILDING)
@@ -28,8 +28,8 @@ class AddBuildingType (o: OverpassMapDataDao) : SimpleOverpassQuestType(o) {
         if (man_made != null) {
             changes.delete("building")
             changes.add("man_made", man_made)
-        } else if (building != null) {
-            changes.modify("building", building)
+        } else {
+            changes.modify("building", building!!)
         }
     }
 }

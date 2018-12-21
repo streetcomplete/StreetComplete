@@ -17,21 +17,21 @@ class AddRoadSurface(o: OverpassMapDataDao) : SimpleOverpassQuestType(o) {
     override val commitMessage = "Add road surfaces"
     override val icon = R.drawable.ic_quest_street_surface
 
-	override fun getTitle(tags: Map<String, String>): Int {
-		val hasName = tags.containsKey("name")
-		val isSquare = tags["area"] == "yes"
-		return if (hasName) {
-			if (isSquare)
-				R.string.quest_streetSurface_square_name_title
-			else
-				R.string.quest_streetSurface_name_title
-		} else {
-			if (isSquare)
-				R.string.quest_streetSurface_square_title
-			else
-				R.string.quest_streetSurface_title
-		}
-	}
+    override fun getTitle(tags: Map<String, String>): Int {
+        val hasName = tags.containsKey("name")
+        val isSquare = tags["area"] == "yes"
+        return if (hasName) {
+            if (isSquare)
+                R.string.quest_streetSurface_square_name_title
+            else
+                R.string.quest_streetSurface_name_title
+        } else {
+            if (isSquare)
+                R.string.quest_streetSurface_square_title
+            else
+                R.string.quest_streetSurface_title
+        }
+    }
 
     override fun createForm() = AddRoadSurfaceForm()
 

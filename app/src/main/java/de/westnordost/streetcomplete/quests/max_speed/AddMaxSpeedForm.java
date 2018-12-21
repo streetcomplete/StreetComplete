@@ -60,7 +60,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 		RadioButton zoneBtn = contentView.findViewById(R.id.zone);
 		zoneBtn.setVisibility(couldBeSlowZone ? View.VISIBLE : View.GONE);
 
-		rightSide = contentView.findViewById(R.id.right_side);
+		rightSide = contentView.findViewById(R.id.rightSideContainer);
 		speedTypeSelect = contentView.findViewById(R.id.speedTypeSelect);
 		speedTypeSelect.setOnCheckedChangeListener((group, checkedId) ->
 		{
@@ -250,7 +250,7 @@ public class AddMaxSpeedForm extends AbstractQuestFormAnswerFragment
 		View view = getLayoutInflater().inflate(R.layout.quest_maxspeed_living_street_confirmation, null, false);
 		// this is necessary because the inflated image view uses the activity context rather than
 		// the fragment / layout inflater context' resources to access it's drawable
-		ImageView img = view.findViewById(R.id.imgLivingStreet);
+		ImageView img = view.findViewById(R.id.livingStreetImage);
 		img.setImageDrawable(getResources().getDrawable(R.drawable.ic_living_street));
 		new AlertDialog.Builder(getActivity())
 			.setView(view)

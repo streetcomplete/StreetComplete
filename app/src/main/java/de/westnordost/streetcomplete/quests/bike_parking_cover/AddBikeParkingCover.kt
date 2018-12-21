@@ -17,13 +17,13 @@ class AddBikeParkingCover(o: OverpassMapDataDao) : SimpleOverpassQuestType(o) {
     override val commitMessage = "Add bicycle parkings cover"
     override val icon = R.drawable.ic_quest_bicycle_parking_cover
 
+    override fun getTitle(tags: Map<String, String>) =
+        R.string.quest_bicycleParkingCoveredStatus_title
+
     override fun createForm() = YesNoQuestAnswerFragment()
 
     override fun applyAnswerTo(answer: Bundle, changes: StringMapChangesBuilder) {
         val yesno = if (answer.getBoolean(YesNoQuestAnswerFragment.ANSWER)) "yes" else "no"
         changes.add("covered", yesno)
     }
-
-    override fun getTitle(tags: Map<String, String>) =
-	    R.string.quest_bicycleParkingCoveredStatus_title
 }

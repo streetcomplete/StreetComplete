@@ -18,17 +18,17 @@ class AddInternetAccessForm : AbstractQuestFormAnswerFragment() {
 
         radioButtonGroup.setOnCheckedChangeListener { _, _ -> checkIsFormComplete() }
 
-	    return view
+        return view
     }
 
     override fun onClickOk() {
-	    val internetAccessValue = when (radioButtonGroup.checkedRadioButtonId) {
-		    R.id.wlan -> "wlan"
-		    R.id.no -> "no"
-		    R.id.terminal -> "terminal"
-		    R.id.wired -> "wired"
-		    else -> null
-	    }
+        val internetAccessValue = when (radioButtonGroup.checkedRadioButtonId) {
+            R.id.wlan -> "wlan"
+            R.id.no -> "no"
+            R.id.terminal -> "terminal"
+            R.id.wired -> "wired"
+            else -> null
+        }
         val answer = Bundle()
         answer.putString(INTERNET_ACCESS, internetAccessValue)
         applyAnswer(answer)

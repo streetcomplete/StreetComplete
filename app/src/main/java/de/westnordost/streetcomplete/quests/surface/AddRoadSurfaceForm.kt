@@ -29,23 +29,17 @@ class AddRoadSurfaceForm : GroupedImageListQuestAnswerFragment() {
             arrayOf(ASPHALT, CONCRETE, SETT, PAVING_STONES, COMPACTED, DIRT)
 
     override fun getAllItems() = arrayOf(
-	    Item("paved", R.drawable.panorama_surface_paved, R.string.quest_surface_value_paved,
-		    arrayOf(
-	            ASPHALT, CONCRETE, PAVING_STONES,
-	            SETT, UNHEWN_COBBLESTONE, GRASS_PAVER,
-	            WOOD, METAL
-	        )
-	    ),
-        Item("unpaved", R.drawable.panorama_surface_unpaved, R.string.quest_surface_value_unpaved,
-	        arrayOf(
-		        COMPACTED, FINE_GRAVEL, GRAVEL,
-		        PEBBLES
-            )
-        ),
-        Item("ground", R.drawable.panorama_surface_ground, R.string.quest_surface_value_ground,
-	        arrayOf(
-		        DIRT, GRASS, SAND
-            )
-        )
+        Item("paved", R.drawable.panorama_surface_paved, R.string.quest_surface_value_paved, arrayOf(
+            ASPHALT, CONCRETE, PAVING_STONES,
+            SETT, UNHEWN_COBBLESTONE, GRASS_PAVER,
+            WOOD, METAL
+        )),
+        Item("unpaved", R.drawable.panorama_surface_unpaved, R.string.quest_surface_value_unpaved, arrayOf(
+            COMPACTED, FINE_GRAVEL, GRAVEL,
+            PEBBLES
+        )),
+        Item("ground", R.drawable.panorama_surface_ground, R.string.quest_surface_value_ground, arrayOf(
+            DIRT, GRASS, SAND
+        ))
     )
 }

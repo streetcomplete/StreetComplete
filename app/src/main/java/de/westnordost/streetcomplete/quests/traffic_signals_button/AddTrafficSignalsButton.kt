@@ -11,16 +11,16 @@ import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 class AddTrafficSignalsButton(o: OverpassMapDataDao) : SimpleOverpassQuestType(o) {
 
     override val tagFilters =
-	    "nodes with highway = crossing and crossing = traffic_signals and !button_operated"
+        "nodes with highway = crossing and crossing = traffic_signals and !button_operated"
     override val commitMessage = "add whether traffic signals have a button for pedestrians"
     override val icon = R.drawable.ic_quest_traffic_lights
 
-	override fun getTitle(tags: Map<String, String>) = R.string.quest_traffic_signals_button_title
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_traffic_signals_button_title
 
-	override fun createForm() = YesNoQuestAnswerFragment()
+    override fun createForm() = YesNoQuestAnswerFragment()
 
     override fun applyAnswerTo(answer: Bundle, changes: StringMapChangesBuilder) {
-	    val yesno = if (answer.getBoolean(YesNoQuestAnswerFragment.ANSWER)) "yes" else "no"
-	    changes.add("button_operated", yesno)
+        val yesno = if (answer.getBoolean(YesNoQuestAnswerFragment.ANSWER)) "yes" else "no"
+        changes.add("button_operated", yesno)
     }
 }

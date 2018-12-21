@@ -13,14 +13,11 @@ class AddParkingAccess(o: OverpassMapDataDao) : SimpleOverpassQuestType(o) {
     override val commitMessage = "Add type of parking access"
     override val icon = R.drawable.ic_quest_parking_access
 
-	override fun getTitle(tags: Map<String, String>) = R.string.quest_parking_access_title
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_parking_access_title
 
     override fun createForm() = AddParkingAccessForm()
 
     override fun applyAnswerTo(answer: Bundle, changes: StringMapChangesBuilder) {
-        val osmValue = answer.getString(AddParkingAccessForm.ACCESS)
-        if (osmValue != null) {
-            changes.addOrModify("access", osmValue)
-        }
+        changes.addOrModify("access", answer.getString(AddParkingAccessForm.ACCESS)!!)
     }
 }

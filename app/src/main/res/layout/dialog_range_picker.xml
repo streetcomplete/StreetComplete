@@ -7,7 +7,7 @@
     android:gravity="center">
 
     <NumberPicker xmlns:android="http://schemas.android.com/apk/res/android"
-                  android:id="@+id/number_picker_start"
+                  android:id="@+id/startPicker"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content" />
 
@@ -17,7 +17,7 @@
               tools:ignore="HardcodedText"/>
 
     <NumberPicker xmlns:android="http://schemas.android.com/apk/res/android"
-                  android:id="@+id/number_picker_end"
+                  android:id="@+id/endPicker"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content" />
 

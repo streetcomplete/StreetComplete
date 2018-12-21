@@ -1,11 +1,11 @@
-package de.westnordost.streetcomplete.quests.oneway
+package de.westnordost.streetcomplete.quests.oneway.data
 
 import android.database.sqlite.SQLiteDatabase
 
 import de.westnordost.streetcomplete.data.TablesHelper
-import de.westnordost.streetcomplete.quests.oneway.WayTrafficFlowTable.NAME
-import de.westnordost.streetcomplete.quests.oneway.WayTrafficFlowTable.Columns.WAY_ID
-import de.westnordost.streetcomplete.quests.oneway.WayTrafficFlowTable.Columns.IS_FORWARD
+import de.westnordost.streetcomplete.quests.oneway.data.WayTrafficFlowTable.NAME
+import de.westnordost.streetcomplete.quests.oneway.data.WayTrafficFlowTable.Columns.WAY_ID
+import de.westnordost.streetcomplete.quests.oneway.data.WayTrafficFlowTable.Columns.IS_FORWARD
 
 class WayTrafficFlowTablesHelper : TablesHelper {
 
@@ -26,7 +26,7 @@ class WayTrafficFlowTablesHelper : TablesHelper {
 
     companion object {
         private const val CREATE_WAY_TRAFFIC_FLOW =
-	        "CREATE TABLE $NAME ("+
+            "CREATE TABLE $NAME ("+
             "$WAY_ID int PRIMARY KEY,"+
             "$IS_FORWARD int NOT NULL"+
             ");"

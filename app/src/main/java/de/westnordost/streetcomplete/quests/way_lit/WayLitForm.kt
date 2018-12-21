@@ -13,10 +13,10 @@ class WayLitForm : YesNoQuestAnswerFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
 
-	    addOtherAnswer(R.string.quest_way_lit_24_7) { applyAnswer("24/7") }
-	    addOtherAnswer(R.string.quest_way_lit_automatic) { applyAnswer("automatic") }
+        addOtherAnswer(R.string.quest_way_lit_24_7) { applyAnswer("24/7") }
+        addOtherAnswer(R.string.quest_way_lit_automatic) { applyAnswer("automatic") }
 
-	    return view
+        return view
     }
 
     private fun applyAnswer(value: String) {

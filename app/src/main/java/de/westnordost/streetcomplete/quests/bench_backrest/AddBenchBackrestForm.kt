@@ -14,11 +14,11 @@ class AddBenchBackrestForm : YesNoQuestAnswerFragment() {
                               savedInstanceState: Bundle?): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
 
-	    addOtherAnswer(R.string.quest_bench_answer_picnic_table) {
-		    val answer = Bundle()
-		    answer.putBoolean(PICNIC_TABLE, true)
-		    applyAnswer(answer)
-	    }
+        addOtherAnswer(R.string.quest_bench_answer_picnic_table) {
+            val answer = Bundle()
+            answer.putBoolean(PICNIC_TABLE, true)
+            applyAnswer(answer)
+        }
         return view
     }
 

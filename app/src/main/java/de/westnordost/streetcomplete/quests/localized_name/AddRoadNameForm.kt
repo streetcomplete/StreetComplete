@@ -49,13 +49,13 @@ class AddRoadNameForm : AddLocalizedNameForm() {
         )
     }
 
-	private fun getRoadNameSuggestions(): List<MutableMap<String, String>> {
-		val points = elementGeometry?.polylines?.getOrNull(0) ?: return listOf()
-		val onlyFirstAndLast = listOf(points[0], points[points.size - 1])
+    private fun getRoadNameSuggestions(): List<MutableMap<String, String>> {
+        val points = elementGeometry?.polylines?.getOrNull(0) ?: return listOf()
+        val onlyFirstAndLast = listOf(points[0], points[points.size - 1])
 
-		return roadNameSuggestionsDao.getNames(
-			onlyFirstAndLast, AddRoadName.MAX_DIST_FOR_ROAD_NAME_SUGGESTION)
-	}
+        return roadNameSuggestionsDao.getNames(
+            onlyFirstAndLast, AddRoadName.MAX_DIST_FOR_ROAD_NAME_SUGGESTION)
+    }
 
     override fun onClickOk() {
         val possibleAbbreviations = LinkedList<String>()
@@ -108,29 +108,29 @@ class AddRoadNameForm : AddLocalizedNameForm() {
                     selection = which
                     (dialog as AlertDialog).getButton(DialogInterface.BUTTON_POSITIVE).isEnabled = true
                 } else if (which == DialogInterface.BUTTON_POSITIVE) {
-	                selection?.let {
-		                if(it >= 0 && it < answers.size) onAnswer(it)
-	                }
+                    selection?.let {
+                        if(it >= 0 && it < answers.size) onAnswer(it)
+                    }
                 }
             }
 
             private fun onAnswer(selection: Int) {
                 val answer = answers[selection]
-	            when (answer) {
-	                leaveNote -> onClickCantSay()
-	                noName    -> confirmNoStreetName()
-	                else      -> {
-		                val type = when(answer) {
-			                linkRoad    -> IS_LINK
-			                serviceRoad -> IS_SERVICE
-			                trackRoad   -> IS_TRACK
-			                else        -> throw IllegalStateException()
-		                }
-		                val data = Bundle()
-		                data.putInt(NO_PROPER_ROAD, type)
-		                applyAnswer(data)
-	                }
-	            }
+                when (answer) {
+                    leaveNote -> onClickCantSay()
+                    noName    -> confirmNoStreetName()
+                    else      -> {
+                        val type = when(answer) {
+                            linkRoad    -> IS_LINK
+                            serviceRoad -> IS_SERVICE
+                            trackRoad   -> IS_TRACK
+                            else        -> throw IllegalStateException()
+                        }
+                        val data = Bundle()
+                        data.putInt(NO_PROPER_ROAD, type)
+                        applyAnswer(data)
+                    }
+                }
             }
         }
 
