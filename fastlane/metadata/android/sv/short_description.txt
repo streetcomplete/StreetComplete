@@ -1,1 +1,1 @@
-App för komplettering av OpenStreetMap
+Kartläggninsapp för OpenStreetMap

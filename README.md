@@ -24,7 +24,7 @@ You can also simply download the APK from the [Releases](https://github.com/west
 
 ## Quests
 
-Right now, there are very few different question types. More will be added over time.
+There are quite a few different quest types now and more will be added over time.
 You can see a community-managed [list of all quests in the OSM wiki](https://wiki.openstreetmap.org/wiki/StreetComplete/Quests).
 
 ## FAQ

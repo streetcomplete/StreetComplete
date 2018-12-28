@@ -186,7 +186,7 @@ public class AddCycleway extends AOsmElementQuestType
 	{
 		int d = MIN_DIST_TO_CYCLEWAYS;
 		return OverpassQLUtil.getGlobalOverpassBBox(bbox) +
-			"way[highway ~ \"^(primary|secondary|tertiary|unclassified)$\"]" +
+			"way[highway ~ \"^(primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified)$\"]" +
 			   "[area != yes]" +
 				// not any motorroads
 			   "[motorroad != yes]" +

@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.meta;
 
-import junit.framework.TestCase;
+import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -11,9 +11,11 @@ import de.westnordost.osmapi.map.data.OsmRelation;
 import de.westnordost.osmapi.map.data.OsmWay;
 import de.westnordost.osmapi.map.data.Way;
 
-public class OsmAreasTest extends TestCase
+import static org.junit.Assert.*;
+
+public class OsmAreasTest
 {
-	public void testRelation()
+	@Test public void relation()
 	{
 		assertFalse(OsmAreas.isArea(new OsmRelation(0,0, null, null)));
 
@@ -23,13 +25,13 @@ public class OsmAreasTest extends TestCase
 		assertTrue(OsmAreas.isArea(new OsmRelation(0, 0, null, tags)));
 	}
 
-	public void testWayNoTags()
+	@Test public void wayNoTags()
 	{
 		assertFalse(OsmAreas.isArea(createWay(false, null)));
 		assertFalse(OsmAreas.isArea(createWay(true, null)));
 	}
 
-	public void testWaySimple()
+	@Test public void waySimple()
 	{
 		Map<String, String> tags = new HashMap<>();
 		tags.put("area","yes");
@@ -38,7 +40,7 @@ public class OsmAreasTest extends TestCase
 		assertTrue(OsmAreas.isArea(createWay(true, tags)));
 	}
 
-	public void testWayRuleException()
+	@Test public void wayRuleException()
 	{
 		Map<String, String> tags = new HashMap<>();
 		tags.put("railway","something");
@@ -50,7 +52,7 @@ public class OsmAreasTest extends TestCase
 		assertTrue(OsmAreas.isArea(createWay(true, tags)));
 	}
 
-	public void testWayRuleRegex()
+	@Test public void wayRuleRegex()
 	{
 		Map<String, String> tags = new HashMap<>();
 		tags.put("waterway","duck");

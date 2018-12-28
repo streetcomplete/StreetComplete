@@ -1,59 +1,57 @@
 package de.westnordost.streetcomplete.util;
 
-import junit.framework.TestCase;
+import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.Collections;
 
-public class FlattenIterableTest extends TestCase
+import static org.junit.Assert.assertEquals;
+
+public class FlattenIterableTest
 {
-	public void testEmptyList()
+	@Test public void emptyList()
 	{
 		FlattenIterable<String> itb = new FlattenIterable<>(String.class);
 		itb.add(Collections.emptyList());
 		assertEquals("",concat(itb));
 	}
 
-	public void testAlreadyFlatList()
+	@Test public void alreadyFlatList()
 	{
 		FlattenIterable<String> itb = new FlattenIterable<>(String.class);
 		itb.add(Arrays.asList("a","b","c"));
 		assertEquals("a b c",concat(itb));
 	}
 
-	public void testListAllowsNulls()
+	@Test public void listAllowsNulls()
 	{
 		FlattenIterable<String> itb = new FlattenIterable<>(String.class);
 		itb.add(Arrays.asList("a",null,"c"));
 		assertEquals("a null c",concat(itb));
 	}
 
-	public void testListWithDifferentTypesFails()
+	@Test(expected = IllegalArgumentException.class) public void listWithDifferentTypesFails()
 	{
-		try
-		{
-			FlattenIterable<String> itb = new FlattenIterable<>(String.class);
-			itb.add(Arrays.asList("a", 4));
-			concat(itb);
-			fail();
-		} catch (IllegalArgumentException ignore) {}
+		FlattenIterable<String> itb = new FlattenIterable<>(String.class);
+		itb.add(Arrays.asList("a", 4));
+		concat(itb);
 	}
 
-	public void testNestedList()
+	@Test public void nestedList()
 	{
 		FlattenIterable<String> itb = new FlattenIterable<>(String.class);
 		itb.add(Arrays.asList("a",Arrays.asList("b", "c"),"d"));
 		assertEquals("a b c d",concat(itb));
 	}
 
-	public void testDeeperNestedList()
+	@Test public void deeperNestedList()
 	{
 		FlattenIterable<String> itb = new FlattenIterable<>(String.class);
 		itb.add(Arrays.asList("a",Arrays.asList("b", Arrays.asList("c", "d")),"e"));
 		assertEquals("a b c d e",concat(itb));
 	}
 
-	public void testMultipleLists()
+	@Test public void multipleLists()
 	{
 		FlattenIterable<String> itb = new FlattenIterable<>(String.class);
 		itb.add(Arrays.asList("a","b",Arrays.asList("c","d")));

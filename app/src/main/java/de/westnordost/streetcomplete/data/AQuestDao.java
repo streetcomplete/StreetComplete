@@ -177,6 +177,17 @@ public abstract class AQuestDao<T extends Quest>
 				QuestStatus.CLOSED.name(), QuestStatus.REVERT.name(), String.valueOf(olderThan)});
 	}
 
+	public int deleteAllUnsolved(long olderThan)
+	{
+		String statusCol = getQuestStatusColumnName();
+		String query = "(" + statusCol + " = ? OR " + statusCol + " = ?) AND " +
+			getLastChangedColumnName() + " < ?";
+
+		SQLiteDatabase db = dbHelper.getWritableDatabase();
+		return db.delete(getTableName(), query, new String[]{
+			QuestStatus.NEW.name(), QuestStatus.HIDDEN.name(), String.valueOf(olderThan)});
+	}
+
 	public int addAll(Collection<T> quests)
 	{
 		return insertAll(quests, false);

@@ -266,6 +266,8 @@ Pokud nejsou podél celé cesty žádné značky, které by omezovaly rychlost v
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_location_name_title">"Má místo %s bezbariérový přístup?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_business">"Částečně znamená, že tu není víc než jeden schod bránící v přístupu a že většina místností v budově je přístupná na invalidním vozíku."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"Částečně znamená, že tu není víc než jeden schod bránící v přístupu."</string>
 
@@ -655,4 +657,21 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_railway_crossing_barrier_none">"Není"</string>
     <string name="privacy_html_image_upload2">"&lt;p&gt;Fotografie připojené k poznámce jsou nahrané na můj server a smazány několik dnů po vyřešení poznámky. Metadata fotografií jsou odstraněna před jejich nahráním.&lt;/p&gt;"</string>
     <string name="action_deselect_all">"Odznačit vše"</string>
+    <string name="quest_buildingType_retail_description">"včetně budov pro restaurace, kavárny, ..."</string>
+    <string name="quest_openingHours_timeSelect_next">"Další"</string>
+    <string name="quest_tracktype_title">"Jaká je pevnost povrchu této stezky/cesty?"</string>
+    <string name="quest_tracktype_grade1">"Pevný"</string>
+    <string name="quest_tracktype_grade2">"Víceméně pevný"</string>
+    <string name="quest_tracktype_grade3">"Mix tvrdých a měkkých materiálů"</string>
+    <string name="quest_tracktype_grade4">"Spíše měkký"</string>
+    <string name="quest_tracktype_grade5">"Měkký"</string>
+    <string name="quest_building_underground_name_title">"Je %s úplně v podzemí?"</string>
+    <string name="quest_building_underground_title">"Je celá tato budova v podzemí?"</string>
+    <string name="quest_traffic_signals_sound_title">"Jsou tu zvukové signály pro neslyšící?"</string>
+    <string name="quest_wheelchairAccess_limited_description_outside">"Částečně znamená, že v přístupu nebrání více než jeden schod."</string>
+    <string name="quest_wheelchairAccess_outside_title">"Má toto místo bezbariérový přístup?"</string>
+    <string name="quest_traffic_signals_button_title">"Mají tyto semafory tlačítko pro přivolání zelené?"</string>
+    <string name="quest_motorcycleParkingCapacity_title">"Kolik motocyklů zde může parkovat?"</string>
+    <string name="quest_motorcycleParkingCoveredStatus_title">"Má toto parkoviště pro motocykly střechu (ochranu proti dešti)?"</string>
+    <string name="default_disabled_msg_maxspeed">"Tento typ úkolů je ve výchozím nastavení zakázán, protože pro nalezení cedulí s rychlostním omezením je obvykle nutné zkontrolovat celou ulici a ne pouze zvýrazněnou část. To může být náročnější vzhledem k tomu, že jde o vyřešení pouze jednoho úkolu."</string>
 </resources>

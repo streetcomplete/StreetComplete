@@ -33,7 +33,8 @@ public class AddMaxSpeed extends SimpleOverpassQuestType
 			// neither private roads nor roads that are not for cars
 			" and motor_vehicle !~ private|no" +
 			" and vehicle !~ private|no" +
-			" and (access !~ private|no or (foot and foot !~ private|no))";
+			" and (access !~ private|no or (foot and foot !~ private|no))" +
+			" and area != yes";
 	}
 
 	@Override public AbstractQuestAnswerFragment createForm()
@@ -88,5 +89,12 @@ public class AddMaxSpeed extends SimpleOverpassQuestType
 	{
 		// see #813: US has different rules for each different state which need to be respected
 		return Countries.allExcept(new String[]{"US"});
+	}
+
+	@Override public boolean hasMarkersAtEnds() { return true; }
+
+	@Override public int getDefaultDisabledMessage()
+	{
+		return R.string.default_disabled_msg_maxspeed;
 	}
 }

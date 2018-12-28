@@ -2,7 +2,8 @@ package de.westnordost.streetcomplete.data.osmnotes;
 
 import android.content.SharedPreferences;
 
-import junit.framework.TestCase;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -20,13 +21,10 @@ import de.westnordost.streetcomplete.data.QuestGroup;
 import de.westnordost.streetcomplete.data.QuestStatus;
 import de.westnordost.streetcomplete.data.VisibleQuestListener;
 
-import static org.mockito.Matchers.any;
-import static org.mockito.Mockito.doAnswer;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
-public class OsmNotesDownloadTest extends TestCase
+public class OsmNotesDownloadTest
 {
 	private NoteDao noteDB;
 	private OsmNoteQuestDao noteQuestDB;
@@ -34,9 +32,8 @@ public class OsmNotesDownloadTest extends TestCase
 	private SharedPreferences preferences;
 	private OsmAvatarsDownload avatarsDownload;
 
-	@Override public void setUp() throws Exception
+	@Before public void setUp()
 	{
-		super.setUp();
 		noteDB = mock(NoteDao.class);
 		noteQuestDB = mock(OsmNoteQuestDao.class);
 		createNoteDB = mock(CreateNoteDao.class);
@@ -44,7 +41,7 @@ public class OsmNotesDownloadTest extends TestCase
 		avatarsDownload = mock(OsmAvatarsDownload.class);
 	}
 
-	public void testDeleteObsoleteQuests()
+	@Test public void deleteObsoleteQuests()
 	{
 		when(preferences.getBoolean(Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS, false)).thenReturn(true);
 
@@ -56,7 +53,7 @@ public class OsmNotesDownloadTest extends TestCase
 		Note note2 = createANote();
 		note2.id = 5L;
 		quests.add(new OsmNoteQuest(13L, note2, QuestStatus.NEW, null, new Date(), new OsmNoteQuestType(), null));
-		when(noteQuestDB.getAll(any(BoundingBox.class), any(QuestStatus.class)))
+		when(noteQuestDB.getAll(any(), any()))
 				.thenReturn(quests);
 
 		doAnswer(invocation ->
@@ -65,7 +62,7 @@ public class OsmNotesDownloadTest extends TestCase
 			assertEquals(1, deletedQuests.size());
 			assertEquals(13L, (long) deletedQuests.iterator().next());
 			return 1;
-		}).when(noteQuestDB).deleteAll(any(Collection.class));
+		}).when(noteQuestDB).deleteAll(any());
 
 		// note dao mock will only "find" the note #4
 		List<Note> notes = new ArrayList<>();
@@ -80,8 +77,8 @@ public class OsmNotesDownloadTest extends TestCase
 
 		dl.download(new BoundingBox(0,0,1,1), null, 1000);
 
-		verify(noteQuestDB).deleteAll(any(Collection.class));
-		verify(listener).onQuestsRemoved(any(Collection.class), any(QuestGroup.class));
+		verify(noteQuestDB).deleteAll(any());
+		verify(listener).onQuestsRemoved(any(), any());
 	}
 
 	private Note createANote()

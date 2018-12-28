@@ -11,4 +11,5 @@ public abstract class AOsmElementQuestType implements OsmElementQuestType
 	@NonNull @Override public Countries getEnabledForCountries() { return Countries.ALL; }
 	@Override public void cleanMetadata() { }
 	@Override public int getTitle() { return getTitle(Collections.emptyMap()); }
+	@Override public boolean hasMarkersAtEnds() { return false; }
 }

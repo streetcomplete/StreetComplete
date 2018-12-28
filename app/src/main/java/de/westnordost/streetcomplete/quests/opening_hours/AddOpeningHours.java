@@ -20,22 +20,26 @@ public class AddOpeningHours extends SimpleOverpassQuestType
 
     @Override protected String getTagFilters()
 	{
+		/* See also AddWheelchairAccessBusiness, which has a similar list and is/should be ordered
+		*  in the same way for better overview */
+
 		String[] leisures = {
 				"golf_course", "water_park", "miniature_golf", "dance",
 				"bowling_alley", "horse_riding", "sports_centre", "fitness_centre",
-				"amusement_arcade", "adult_gaming_centre", "tanning_salon" };
+				"amusement_arcade", "adult_gaming_centre", "tanning_salon"
+		};
 
 		String[] amenities = {
-				"restaurant", "cafe", "ice_cream", "fast_food",
-				"bar", "pub", "biergarten", "food_court",
+				"restaurant", "cafe", "ice_cream", "fast_food", "bar", "pub", "biergarten", "food_court", "nightclub",
+				"cinema", "library", "casino",
 				// not ATM because too often it's simply 24/7 and too often it is confused with
 				// a bank that might be just next door because the app does not tell the user what
 				// kind of object this is about
-				"cinema", "nightclub", "bank", // "atm",
-				"bureau_de_change",	"money_transfer", "post_office", "library",
-				"courthouse", "embassy", "car_wash", "car_rental",
-				"marketplace", "fuel", "driving_school", "dentist",
-				"doctors", "clinic", "pharmacy", "veterinary" };
+				"bank", "bureau_de_change", "money_transfer", "post_office", "internet_cafe", "marketplace", // "atm",
+				"courthouse", "embassy", "townhall", "community_centre", "youth_centre",
+				"car_wash", "car_rental", "fuel", "driving_school",
+				"doctors", "clinic", "pharmacy", "veterinary", "dentist",
+		};
 
 		String[] tourism = {
 				"zoo", "aquarium", "theme_park", "gallery",
@@ -43,7 +47,7 @@ public class AddOpeningHours extends SimpleOverpassQuestType
 		};
 
 		String[] offices = {
-			"insurance"
+			"insurance", "government", "estate_agent", "travel_agent",
 		};
 
 		return " nodes, ways, relations with ( shop and shop !~ no|vacant or" +

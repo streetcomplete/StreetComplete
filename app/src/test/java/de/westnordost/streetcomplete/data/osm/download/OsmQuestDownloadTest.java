@@ -4,7 +4,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-import junit.framework.TestCase;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,7 +19,6 @@ import java.util.concurrent.FutureTask;
 import de.westnordost.countryboundaries.CountryBoundaries;
 import de.westnordost.osmapi.map.data.OsmLatLon;
 import de.westnordost.osmapi.map.data.OsmNode;
-import de.westnordost.streetcomplete.data.QuestGroup;
 import de.westnordost.streetcomplete.data.QuestStatus;
 import de.westnordost.streetcomplete.data.VisibleQuestListener;
 import de.westnordost.streetcomplete.data.osm.AOsmElementQuestType;
@@ -34,32 +34,26 @@ import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 
-import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.anyLong;
-import static org.mockito.Matchers.anyString;
-import static org.mockito.Mockito.doAnswer;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 import static org.mockito.internal.verification.VerificationModeFactory.times;
 
-public class OsmQuestDownloadTest extends TestCase
+public class OsmQuestDownloadTest
 {
 	private ElementGeometryDao geometryDb;
 	private MergedElementDao elementDb;
 	private OsmQuestDao osmQuestDao;
 	private FutureTask<CountryBoundaries> countryBoundariesFuture;
 
-	@Override public void setUp() throws Exception
+	@Before public void setUp()
 	{
-		super.setUp();
 		geometryDb = mock(ElementGeometryDao.class);
 		elementDb = mock(MergedElementDao.class);
 		osmQuestDao = mock(OsmQuestDao.class);
 		countryBoundariesFuture = mock(FutureTask.class);
 	}
 
-	public void testIgnoreBlacklistedPositionsAndInvalidGeometry()
+	@Test public void ignoreBlacklistedPositionsAndInvalidGeometry()
 	{
 		LatLon blacklistPos = new OsmLatLon(3.0,4.0);
 
@@ -82,10 +76,10 @@ public class OsmQuestDownloadTest extends TestCase
 
 		dl.download(questType, new BoundingBox(0,0,1,1), Collections.singleton(blacklistPos));
 
-		verify(listener, times(0)).onQuestsCreated(any(Collection.class), any(QuestGroup.class));
+		verify(listener, times(0)).onQuestsCreated(any(), any());
 	}
 
-	public void testDeleteObsoleteQuests()
+	@Test public void deleteObsoleteQuests()
 	{
 		LatLon pos = new OsmLatLon(3.0,4.0);
 
@@ -103,17 +97,16 @@ public class OsmQuestDownloadTest extends TestCase
 		quests.add(new OsmQuest(
 				13L, questType, Element.Type.NODE, 5, QuestStatus.NEW, null, null,
 				new Date(), new ElementGeometry(pos)));
-		when(osmQuestDao.getAll(
-				any(BoundingBox.class), any(QuestStatus.class), anyString(),
-				any(Element.Type.class), anyLong()))
-				.thenReturn(quests);
+
+		when(osmQuestDao.getAll(any(), any(), any(), any(), any())).thenReturn(quests);
+
 		doAnswer(invocation ->
 		{
 			Collection<Long> deletedQuests = (Collection<Long>) (invocation.getArguments()[0]);
 			assertEquals(1, deletedQuests.size());
 			assertEquals(13L, (long) deletedQuests.iterator().next());
 			return 1;
-		}).when(osmQuestDao).deleteAll(any(Collection.class));
+		}).when(osmQuestDao).deleteAll(any());
 
 		OsmQuestDownload dl = new OsmQuestDownload(geometryDb, elementDb, osmQuestDao, countryBoundariesFuture);
 
@@ -123,16 +116,14 @@ public class OsmQuestDownloadTest extends TestCase
 		// -> we expect that quest with node #5 is removed
 		dl.download(questType, new BoundingBox(0,0,1,1), null);
 
-		verify(osmQuestDao).deleteAll(any(Collection.class));
-		verify(listener).onQuestsRemoved(any(Collection.class), any(QuestGroup.class));
+		verify(osmQuestDao).deleteAll(any());
+		verify(listener).onQuestsRemoved(any(), any());
 	}
 
 
 	private void setUpOsmQuestDaoMockWithNoPreviousElements()
 	{
-		when(osmQuestDao.getAll(
-				any(BoundingBox.class), any(QuestStatus.class), anyString(),
-				any(Element.Type.class), anyLong()))
+		when(osmQuestDao.getAll(any(), any(), any(),any(), any()))
 				.thenReturn(Collections.emptyList());
 	}
 

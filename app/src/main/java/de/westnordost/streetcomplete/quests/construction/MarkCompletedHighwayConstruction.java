@@ -19,7 +19,8 @@ import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment;
 
 public class MarkCompletedHighwayConstruction extends MarkCompletedConstruction
 {
-	@Inject public MarkCompletedHighwayConstruction(OverpassMapDataDao overpassServer) {
+	@Inject public MarkCompletedHighwayConstruction(OverpassMapDataDao overpassServer)
+	{
 		super(overpassServer);
 	}
 
@@ -74,4 +75,6 @@ public class MarkCompletedHighwayConstruction extends MarkCompletedConstruction
 		}
 		return R.string.quest_construction_generic_title;
 	}
+
+	@Override public boolean hasMarkersAtEnds() { return true; }
 }

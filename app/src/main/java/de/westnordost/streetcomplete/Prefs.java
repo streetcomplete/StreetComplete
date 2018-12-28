@@ -22,7 +22,7 @@ public class Prefs
 			LAST_SOLVED_QUEST_TIME = "changesets.lastQuestSolvedTime",
 			MAP_LATITUDE = "map.latitude",
 			MAP_LONGITUDE = "map.longitude",
-			IMAGE_LIST_LAST_PICKED_PREFIX = "imageListLastPicked.";
+			LAST_PICKED_PREFIX = "imageListLastPicked.";
 
 	public static final String HAS_SHOWN_UNDO_FUCKUP_WARNING = "alert.undo_fuckup_warning";
 

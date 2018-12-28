@@ -128,6 +128,7 @@ public class OsmQuestDownload
 		// turns out to be slow if done for every quest type
 		geometryDB.deleteUnreferenced();
 		elementDB.deleteUnreferenced();
+		questType.cleanMetadata();
 
 		int obsoleteAmount = previousQuests.size();
 		Log.i(TAG, getQuestTypeName(questType) + ": " +

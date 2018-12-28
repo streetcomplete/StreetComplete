@@ -157,6 +157,20 @@ public class OsmQuestDaoTest extends ApplicationDbTestCase
 		assertEquals(2,dao.deleteAllClosed(System.currentTimeMillis() + 10000L));
 	}
 
+	public void testDeleteAllUnsolved()
+	{
+		OsmQuest quest1 = createNewQuest(1, Element.Type.NODE);
+		quest1.setStatus(QuestStatus.NEW);
+		OsmQuest quest2 = createNewQuest(2, Element.Type.NODE);
+		quest2.setStatus(QuestStatus.HIDDEN);
+		OsmQuest quest3 = createNewQuest(3, Element.Type.NODE);
+		quest3.setStatus(QuestStatus.ANSWERED);
+
+		addToDaos(quest1, quest2, quest3);
+
+		assertEquals(2,dao.deleteAllUnsolved(System.currentTimeMillis() + 10000L));
+	}
+
 	public void testDeleteReverted()
 	{
 		ElementGeometry geom = new ElementGeometry(new OsmLatLon(5,5));
@@ -242,7 +256,7 @@ public class OsmQuestDaoTest extends ApplicationDbTestCase
 		assertEquals(quest.getChanges(), dbQuest.getChanges());
 		assertEquals(quest.getChangesSource(), dbQuest.getChangesSource());
 		assertEquals(quest.getGeometry(), dbQuest.getGeometry());
-		assertEquals(quest.getMarkerLocation(), dbQuest.getMarkerLocation());
+		assertEquals(quest.getCenter(), dbQuest.getCenter());
 		// is now updated to current time on DB insert
 		// no: assertEquals(quest.getLastUpdate(), dbQuest.getLastUpdate());
 	}

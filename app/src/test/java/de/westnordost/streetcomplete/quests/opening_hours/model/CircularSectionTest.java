@@ -1,12 +1,12 @@
 package de.westnordost.streetcomplete.quests.opening_hours.model;
 
-import junit.framework.TestCase;
+import org.junit.Test;
 
-import de.westnordost.streetcomplete.quests.opening_hours.model.CircularSection;
+import static org.junit.Assert.*;
 
-public class CircularSectionTest extends TestCase
+public class CircularSectionTest
 {
-	public void testStartEnd()
+	@Test public void startEnd()
 	{
 		CircularSection cs = new CircularSection(0,10);
 		assertEquals(0, cs.getStart());
@@ -14,13 +14,13 @@ public class CircularSectionTest extends TestCase
 		assertFalse(cs.loops());
 	}
 
-	public void testLoops()
+	@Test public void loops()
 	{
 		CircularSection cs = new CircularSection(10,0);
 		assertTrue(cs.loops());
 	}
 
-	public void testIntersect()
+	@Test public void intersect()
 	{
 		CircularSection cs = new CircularSection(0,10);
 		CircularSection tooHigh = new CircularSection(11,12);
@@ -48,7 +48,7 @@ public class CircularSectionTest extends TestCase
 		assertTrue(loopsIntersectsLowerSection.intersects(loopsIntersectsUpperSection));
 	}
 
-	public void testCompare()
+	@Test public void compare()
 	{
 		CircularSection looper = new CircularSection(10,0);
 		CircularSection lowStart = new CircularSection(0,10);
@@ -71,7 +71,7 @@ public class CircularSectionTest extends TestCase
 		assertTrue(highStart.compareTo(lowStartButHighEnd) > 0);
 	}
 
-	public void testToStringUsing()
+	@Test public void toStringUsing()
 	{
 		String[] abc = new String[]{"a","b","c","d"};
 		assertEquals("a",new CircularSection(0,0).toStringUsing(abc, "-"));
@@ -79,23 +79,23 @@ public class CircularSectionTest extends TestCase
 		assertEquals("a-b",new CircularSection(0,1).toStringUsing(abc, "-"));
 	}
 
-	public void testEquals()
+	@Test public void equals()
 	{
 		CircularSection cs = new CircularSection(0,10);
 		assertNotNull(cs);
 		assertEquals(cs, cs);
-		assertFalse(cs.equals(new Object()));
-		assertFalse(cs.equals(new CircularSection(10,0)));
+		assertNotEquals(cs, new Object());
+		assertNotEquals(cs, new CircularSection(10, 0));
 		assertEquals(cs, new CircularSection(0,10));
 	}
 
-	public void testHashCodeIdentity()
+	@Test public void hashCodeIdentity()
 	{
 		assertEquals( new CircularSection(0,10).hashCode(), new CircularSection(0,10).hashCode());
 	}
 
-	public void testHashCodeNotTooSimple()
+	@Test public void hashCodeNotTooSimple()
 	{
-		assertFalse( new CircularSection(0,10).hashCode() == new CircularSection(10,0).hashCode());
+		assertNotEquals(new CircularSection(0, 10).hashCode(), new CircularSection(10, 0).hashCode());
 	}
 }

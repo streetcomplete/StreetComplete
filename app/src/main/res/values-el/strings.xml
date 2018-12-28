@@ -246,6 +246,8 @@
     <string name="quest_wheelchairAccess_subway_entrance_name_title">"Είναι αυτή η είσοδος μετρό %s προσβάσιμη σε αναπηρική πολυθρόνα;"</string>
     <string name="quest_wheelchairAccess_railway_station_name_title">"Είναι αυτός ο σιδηροδρομικός σταθμός %s προσβάσιμος σε αναπηρική πολυθρόνα;"</string>
     <string name="quest_wheelchairAccess_location_name_title">"Είναι αυτή η τοποθεσία %s προσβάσιμη σε αναπηρική πολυθρόνα;"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_business">"Εν μέρει σημαίνει ότι δεν υπάρχει παρά ένα μόνο βήμα για την πρόσβαση στην επιχείρηση και ότι τα περισσότερα δωμάτια στο εσωτερικό είναι προσβάσιμα σε αναπηρικά καροτσάκια."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"Εν μέρει σημαίνει ότι δεν υπάρχει παρά ένα μόνο βήμα για την πρόσβαση εκεί."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Σύντμηση στο όνομα %s;"</string>
@@ -386,7 +388,7 @@
     <string name="quest_cycleway_value_sidewalk_allowed">"κανείς, αλλά οι ποδηλάτες επιτρέπονται στο πεζοδρόμιο"</string>
     <string name="pref_category_advanced">"Προχωρημένο"</string>
     <string name="pref_title_quests">"Επιλογή αναζήτησης"</string>
-    <string name="quest_enabled">"Ενεργοποιήθηκε"</string>
+    <string name="quest_enabled">"Ενεργό"</string>
     <string name="quest_type">"Τύπος αναζήτησης"</string>
     <string name="action_reset">"Επαναφορά"</string>
     <string name="reorder_quest_priority_hint">"Πατήστε παρατεταμένα και μετακινήστε μια αναζήτηση για επαρύθμιση της προτεραιότητας λήψης και εμφάνιση στο χάρτη."</string>
@@ -604,4 +606,26 @@
     <string name="quest_maxheight_answer_noSign_question">"Υπάρχει αρκετός χώρος για να περάσουν ακόμα και τα ψηλότερα φορτηγά (τουλάχιστον περίπου 4,5 μέτρα / 15 πόδια);"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Αυτό το ύψος φαίνεται απίθανο. Είστε βέβαιοι ότι είναι σωστό;"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
+    <string name="quest_noteDiscussion_closed2">"Κλειστό από %1$s, %2$s"</string>
+    <string name="quest_noteDiscussion_reopen2">"Ξανά ανοιγμένο από %1$s, %2$s"</string>
+    <string name="quest_noteDiscussion_hide2">"Κρυμμένο από %1$s, %2$s"</string>
+    <string name="quest_railway_crossing_barrier_title">"Πώς προστατεύεται αυτή η σιδηροδρομική διασταύρωση;"</string>
+    <string name="quest_railway_crossing_barrier_none">"δεν είναι"</string>
+    <string name="privacy_html_image_upload2">"&lt;p&gt;Οι φωτογραφίες που επισυνάπτετε σε μια σημείωση μεταφορτώνονται στον διακομιστή μου και διαγράφονται μερικές ημέρες μετά την επίλυση αυτής της σημείωσης. Τα μεταδεδομένα τους έχουν αφαιρεθεί πριν μεταφορτωθούν.&lt;/p&gt;"</string>
+    <string name="action_deselect_all">"Αποεπιλογή όλων"</string>
+    <string name="quest_buildingType_retail_description">"συμπεριλαμβανομένων κτιρίων για εστιατόρια, καφέ, ..."</string>
+    <string name="quest_openingHours_timeSelect_next">"Επόμενο"</string>
+    <string name="quest_tracktype_grade1">"Στερεό"</string>
+    <string name="quest_tracktype_grade2">"Κυρίως στερεό"</string>
+    <string name="quest_tracktype_grade3">"Μίγμα"</string>
+    <string name="quest_tracktype_grade4">"Κυρίως μαλακό"</string>
+    <string name="quest_tracktype_grade5">"Μαλακό"</string>
+    <string name="quest_building_underground_name_title">"Είναι το %s εντελώς υπόγειο;"</string>
+    <string name="quest_building_underground_title">"Είναι αυτό το κτίριο εντελώς υπόγειο;"</string>
+    <string name="quest_traffic_signals_sound_title">"Υπάρχουν ηχητικά σήματα για τους τυφλούς εδώ;"</string>
+    <string name="quest_wheelchairAccess_limited_description_outside">"Εν μέρει σημαίνει ότι δεν υπάρχει παρά ένα μόνο βήμα για την πρόσβαση σε αυτό"</string>
+    <string name="quest_wheelchairAccess_outside_title">"Είναι αυτό το μέρος προσβάσιμο σε αναπηρικά αμαξίδια;"</string>
+    <string name="quest_traffic_signals_button_title">"Έχουν αυτά τα φανάρια κουμπί για να ανάψει το πράσινο φως;"</string>
+    <string name="quest_motorcycleParkingCapacity_title">"Πόσες μοτοσυκλέτες μπορούν να σταθμεύσουν εδώ;"</string>
+    <string name="quest_motorcycleParkingCoveredStatus_title">"Αυτό το πάρκινγκ μοτοσυκλετών καλύπτεται (προστατεύεται από τη βροχή);"</string>
 </resources>

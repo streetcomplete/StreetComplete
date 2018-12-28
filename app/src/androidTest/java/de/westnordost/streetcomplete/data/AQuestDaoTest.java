@@ -47,7 +47,7 @@ public class AQuestDaoTest extends AndroidDbTestCase
 		Quest q2 = dao.get(id);
 
 		assertEquals(q.getId(), q2.getId());
-		assertEquals(q.getMarkerLocation(), q2.getMarkerLocation());
+		assertEquals(q.getCenter(), q2.getCenter());
 		assertEquals(q.getStatus(), q2.getStatus());
 	}
 
@@ -181,7 +181,7 @@ public class AQuestDaoTest extends AndroidDbTestCase
 		when(quest.getId()).thenReturn(id);
 		when(quest.getStatus()).thenReturn(status);
 		when(quest.getLastUpdate()).thenReturn(new Date(lastUpdate));
-		when(quest.getMarkerLocation()).thenReturn(new OsmLatLon(0,0));
+		when(quest.getCenter()).thenReturn(new OsmLatLon(0,0));
 		return quest;
 	}
 
@@ -190,7 +190,7 @@ public class AQuestDaoTest extends AndroidDbTestCase
 		Quest quest = mock(Quest.class);
 		when(quest.getStatus()).thenReturn(status);
 		when(quest.getId()).thenReturn(id);
-		when(quest.getMarkerLocation()).thenReturn(new OsmLatLon(lat,lon));
+		when(quest.getCenter()).thenReturn(new OsmLatLon(lat,lon));
 		when(quest.getLastUpdate()).thenReturn(new Date());
 		return quest;
 	}

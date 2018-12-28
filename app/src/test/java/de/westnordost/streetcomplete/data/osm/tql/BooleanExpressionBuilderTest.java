@@ -1,93 +1,95 @@
 package de.westnordost.streetcomplete.data.osm.tql;
 
-import junit.framework.TestCase;
+import org.junit.Test;
 
-public class BooleanExpressionBuilderTest extends TestCase
+import static org.junit.Assert.*;
+
+public class BooleanExpressionBuilderTest
 {
-	public void testLeaf() { check("a"); }
-	public void testAnd() { check("a*b"); }
-	public void testOr() { check("a+b"); }
+	@Test public void leaf() { check("a"); }
+	@Test public void and() { check("a*b"); }
+	@Test public void or() { check("a+b"); }
 
-	public void testAnd3() { check("a*b*c"); }
-	public void testOr3() { check("a+b+c"); }
-	public void testAndOr() { check("a*b+c"); }
-	public void testOrAnd() { check("a+b*c"); }
+	@Test public void and3() { check("a*b*c"); }
+	@Test public void or3() { check("a+b+c"); }
+	@Test public void andOr() { check("a*b+c"); }
+	@Test public void orAnd() { check("a+b*c"); }
 
-	public void testAndInOr() { check("a+b*c+d"); }
-	public void testAndInOr2() { check("a*b+c*d"); }
+	@Test public void andInOr() { check("a+b*c+d"); }
+	@Test public void andInOr2() { check("a*b+c*d"); }
 
-	public void testBrackets0() { check("(a)", "a"); }
+	@Test public void brackets0() { check("(a)", "a"); }
 
-	public void testBrackets1() { check("(a*b)", "a*b"); }
-	public void testBrackets2() { check("(a+b)", "a+b"); }
-	public void testBrackets3() { check("((a*b))", "a*b"); }
-	public void testBrackets4() { check("((a+b))", "a+b"); }
+	@Test public void brackets1() { check("(a*b)", "a*b"); }
+	@Test public void brackets2() { check("(a+b)", "a+b"); }
+	@Test public void brackets3() { check("((a*b))", "a*b"); }
+	@Test public void brackets4() { check("((a+b))", "a+b"); }
 
-	public void testBrackets5() { check("(a+b)*c"); }
-	public void testBrackets6() { check("a*(b+c)"); }
-	public void testBrackets7() { check("a*(b+c)*d"); }
+	@Test public void brackets5() { check("(a+b)*c"); }
+	@Test public void brackets6() { check("a*(b+c)"); }
+	@Test public void brackets7() { check("a*(b+c)*d"); }
 
-	public void testBrackets8() { check("(a*b)+c", "a*b+c"); }
-	public void testBrackets9() { check("(a*b)*c", "a*b*c"); }
-	public void testBrackets10() { check("(a+b)+c", "a+b+c"); }
+	@Test public void brackets8() { check("(a*b)+c", "a*b+c"); }
+	@Test public void brackets9() { check("(a*b)*c", "a*b*c"); }
+	@Test public void brackets10() { check("(a+b)+c", "a+b+c"); }
 
-	public void testBrackets11() { check("a+(b*c)", "a+b*c"); }
-	public void testBrackets12() { check("a*(b*c)", "a*b*c"); }
-	public void testBrackets13() { check("a+(b+c)", "a+b+c"); }
+	@Test public void brackets11() { check("a+(b*c)", "a+b*c"); }
+	@Test public void brackets12() { check("a*(b*c)", "a*b*c"); }
+	@Test public void brackets13() { check("a+(b+c)", "a+b+c"); }
 
-	public void testMerge1() { check("a+(b+(c+(d)))", "a+b+c+d"); }
-	public void testMerge2() { check("a*(b*(c*(d)))", "a*b*c*d"); }
-	public void testMerge3() { check("a*(b+(c*(d)))", "a*(b+c*d)"); }
-	public void testMerge4() { check("a+(b*(c+(d)))", "a+b*(c+d)"); }
+	@Test public void merge1() { check("a+(b+(c+(d)))", "a+b+c+d"); }
+	@Test public void merge2() { check("a*(b*(c*(d)))", "a*b*c*d"); }
+	@Test public void merge3() { check("a*(b+(c*(d)))", "a*(b+c*d)"); }
+	@Test public void merge4() { check("a+(b*(c+(d)))", "a+b*(c+d)"); }
 
-	public void testMerge5() { check("(((a)+b)+c)+d", "a+b+c+d"); }
-	public void testMerge6() { check("(((a)*b)*c)*d", "a*b*c*d"); }
-	public void testMerge7() { check("(((a)+b)*c)+d", "(a+b)*c+d"); }
-	public void testMerge8() { check("(((a)*b)+c)*d", "(a*b+c)*d"); }
+	@Test public void merge5() { check("(((a)+b)+c)+d", "a+b+c+d"); }
+	@Test public void merge6() { check("(((a)*b)*c)*d", "a*b*c*d"); }
+	@Test public void merge7() { check("(((a)+b)*c)+d", "(a+b)*c+d"); }
+	@Test public void merge8() { check("(((a)*b)+c)*d", "(a*b+c)*d"); }
 
 
-	public void testClosedTooManyBrackets()
+	@Test public void closedTooManyBrackets()
 	{
 		try
 		{
 			TestBooleanExpressionParser.parse("a+b)");
 			fail();
 		}
-		catch(IllegalStateException e) {}
+		catch(IllegalStateException ignored) {}
 		try
 		{
 			TestBooleanExpressionParser.parse("(a+b))");
 			fail();
 		}
-		catch(IllegalStateException e) {}
+		catch(IllegalStateException ignored) {}
 		try
 		{
 			TestBooleanExpressionParser.parse("((b+c)*a)+d)");
 			fail();
 		}
-		catch(IllegalStateException e) {}
+		catch(IllegalStateException ignored) {}
 	}
 
-	public void testCloseTooLittleBrackets()
+	@Test public void closeTooFewBrackets()
 	{
 		try
 		{
 			TestBooleanExpressionParser.parse("(a+b");
 			fail();
 		}
-		catch(IllegalStateException e) {}
+		catch(IllegalStateException ignored) {}
 		try
 		{
 			TestBooleanExpressionParser.parse("((a+b)");
 			fail();
 		}
-		catch(IllegalStateException e) {}
+		catch(IllegalStateException ignored) {}
 		try
 		{
 			TestBooleanExpressionParser.parse("((a*(b+c))");
 			fail();
 		}
-		catch(IllegalStateException e) {}
+		catch(IllegalStateException ignored) {}
 	}
 
 	private void check(String input)

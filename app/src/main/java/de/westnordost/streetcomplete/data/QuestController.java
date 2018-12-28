@@ -152,7 +152,7 @@ public class QuestController
 		if(q == null || q.getStatus() != QuestStatus.NEW) return false;
 
 		CreateNote createNote = new CreateNote();
-		createNote.position = q.getMarkerLocation();
+		createNote.position = q.getCenter();
 		createNote.text = text;
 		createNote.questTitle = questTitle;
 		createNote.elementType = q.getElementType();
@@ -420,5 +420,23 @@ public class QuestController
 	public void upload()
 	{
 		context.startService(new Intent(context, QuestChangesUploadService.class));
+	}
+
+	public void deleteOld()
+	{
+		workerHandler.post(() ->
+		{
+			long timestamp = System.currentTimeMillis() - ApplicationConstants.DELETE_UNSOLVED_QUESTS_AFTER;
+			int deleted = osmQuestDB.deleteAllUnsolved(timestamp);
+			deleted += osmNoteQuestDB.deleteAllUnsolved(timestamp);
+
+			if(deleted > 0)
+			{
+				Log.d(TAG, "Deleted "+ deleted + " old unsolved quests");
+
+				osmElementDB.deleteUnreferenced();
+				geometryDB.deleteUnreferenced();
+			}
+		});
 	}
 }

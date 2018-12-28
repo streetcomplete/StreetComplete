@@ -50,7 +50,8 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 	private MapData questsLayer;
 	private MapData geometryLayer;
 
-	private Float previousZoom = null;
+	private Float zoomBeforeShowingQuest = null;
+	private LngLat positionBeforeShowingQuest = null;
 
 	private LngLat lastPos;
 	private Rect lastDisplayedRect;
@@ -174,7 +175,8 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 
 	private void zoomAndMoveToContain(ElementGeometry g)
 	{
-		previousZoom = controller.getZoom();
+		zoomBeforeShowingQuest = controller.getZoom();
+		positionBeforeShowingQuest = controller.getPosition();
 
 		float targetZoom = getMaxZoomThatContains(g);
 		if(Float.isNaN(targetZoom) || targetZoom > MAX_QUEST_ZOOM)
@@ -250,7 +252,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 	@Override protected boolean shouldCenterCurrentPosition()
 	{
 		// don't center position while displaying a quest
-		return super.shouldCenterCurrentPosition() && previousZoom == null;
+		return super.shouldCenterCurrentPosition() && zoomBeforeShowingQuest == null;
 	}
 
 	protected void updateView()
@@ -338,10 +340,12 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 	public void removeQuestGeometry()
 	{
 		if(geometryLayer != null) geometryLayer.clear();
-		if(controller != null && previousZoom != null)
+		if(controller != null)
 		{
-			controller.setZoomEased(previousZoom, 500);
-			previousZoom = null;
+			if(zoomBeforeShowingQuest != null) controller.setZoomEased(zoomBeforeShowingQuest, 500);
+			if(positionBeforeShowingQuest != null) controller.setPositionEased(positionBeforeShowingQuest, 500);
+			zoomBeforeShowingQuest = null;
+			positionBeforeShowingQuest = null;
 			followPosition();
 		}
 	}
@@ -382,35 +386,39 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 				continue;
 			}
 
-			if(first) first = false;
-			else      geoJson.append(",");
-
-			LatLon pos = quest.getMarkerLocation();
 			String questIconName = getActivity().getResources().getResourceEntryName(quest.getType().getIcon());
 
 			Integer order = questTypeOrder.get(quest.getType());
 			if(order == null) order = 0;
 
-			geoJson.append("{\"type\":\"Feature\",");
-			geoJson.append("\"geometry\":{\"type\":\"Point\",\"coordinates\": [");
-			geoJson.append(pos.getLongitude());
-			geoJson.append(",");
-			geoJson.append(pos.getLatitude());
-			geoJson.append("]},\"properties\": {\"type\":\"point\", \"kind\":\"");
-			geoJson.append(questIconName);
-			geoJson.append("\",\"");
-			geoJson.append(MARKER_QUEST_GROUP);
-			geoJson.append("\":\"");
-			geoJson.append(group.name());
-			geoJson.append("\",\"");
-			geoJson.append(MARKER_QUEST_ID);
-			geoJson.append("\":\"");
-			geoJson.append(quest.getId());
-			geoJson.append("\",\"");
-			geoJson.append("order");
-			geoJson.append("\":\"");
-			geoJson.append(order);
-			geoJson.append("\"}}");
+			LatLon[] positions = quest.getMarkerLocations();
+
+			for (LatLon pos : positions)
+			{
+				if(first) first = false;
+				else      geoJson.append(",");
+
+				geoJson.append("{\"type\":\"Feature\",");
+				geoJson.append("\"geometry\":{\"type\":\"Point\",\"coordinates\": [");
+				geoJson.append(pos.getLongitude());
+				geoJson.append(",");
+				geoJson.append(pos.getLatitude());
+				geoJson.append("]},\"properties\": {\"type\":\"point\", \"kind\":\"");
+				geoJson.append(questIconName);
+				geoJson.append("\",\"");
+				geoJson.append(MARKER_QUEST_GROUP);
+				geoJson.append("\":\"");
+				geoJson.append(group.name());
+				geoJson.append("\",\"");
+				geoJson.append(MARKER_QUEST_ID);
+				geoJson.append("\":\"");
+				geoJson.append(quest.getId());
+				geoJson.append("\",\"");
+				geoJson.append("order");
+				geoJson.append("\":\"");
+				geoJson.append(order);
+				geoJson.append("\"}}");
+			}
 		}
 		geoJson.append("]}");
 

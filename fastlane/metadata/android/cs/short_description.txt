@@ -1,1 +1,1 @@
-Aplikace pro OpenStreetMap průzkumníky
+Aplikace pro OpenStreetMap průzkumníky v češtině

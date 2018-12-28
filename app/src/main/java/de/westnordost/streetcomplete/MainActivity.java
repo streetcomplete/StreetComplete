@@ -239,6 +239,11 @@ public class MainActivity extends AppCompatActivity implements
 		mapFragment = (QuestsMapFragment) getSupportFragmentManager().findFragmentById(R.id.map_fragment);
 		mapFragment.getMapAsync(BuildConfig.MAPZEN_API_KEY);
 		updateMapQuestOffsets();
+
+		if(savedInstanceState == null)
+		{
+			questController.deleteOld();
+		}
 	}
 
 	@Override public void onStart()
@@ -263,8 +268,6 @@ public class MainActivity extends AppCompatActivity implements
 				new IntentFilter(LocationRequestFragment.ACTION_FINISHED));
 
 		questController.onStart(this);
-		questAutoSyncer.onStart();
-		questAutoSyncer.triggerAutoUpload();
 
 		downloadProgressBar.setAlpha(0f);
 		downloadServiceIsBound = bindService(new Intent(this, QuestDownloadService.class),
@@ -282,9 +285,18 @@ public class MainActivity extends AppCompatActivity implements
 		}
 	}
 
+	@Override protected void onResume()
+	{
+		super.onResume();
+		questAutoSyncer.onResume();
+		questAutoSyncer.triggerAutoUpload();
+	}
+
 	@Override public void onPause()
 	{
 		super.onPause();
+		questAutoSyncer.onPause();
+
 		LatLon pos = mapFragment.getPosition();
 		prefs.edit()
 			.putLong(Prefs.MAP_LATITUDE, Double.doubleToRawLongBits(pos.getLatitude()))
@@ -302,7 +314,6 @@ public class MainActivity extends AppCompatActivity implements
 		unregisterReceiver(locationAvailabilityReceiver);
 
 		questController.onStop();
-		questAutoSyncer.onStop();
 
 		if (downloadServiceIsBound) unbindService(downloadServiceConnection);
 		if (downloadService != null)
@@ -688,7 +699,7 @@ public class MainActivity extends AppCompatActivity implements
 			{
 				showQuestSolvedAnimation(quest, source);
 			}
-			questAutoSyncer.triggerAutoUpload();
+			triggerAutoUploadByUserInteraction();
 		});
 	}
 
@@ -718,7 +729,7 @@ public class MainActivity extends AppCompatActivity implements
 		{
 			showQuestSolvedAnimation(quest, null);
 		}
-		questAutoSyncer.triggerAutoUpload();
+		triggerAutoUploadByUserInteraction();
 	}
 
 	private void flingQuestMarkerTo(View quest, View target, Runnable onFinished)
@@ -748,7 +759,7 @@ public class MainActivity extends AppCompatActivity implements
 		int size = (int) DpUtil.toPx(42, this);
 		int[] offset = new int[2];
 		mapFragment.getView().getLocationOnScreen(offset);
-		PointF startPos = mapFragment.getPointOf(quest.getMarkerLocation());
+		PointF startPos = mapFragment.getPointOf(quest.getCenter());
 		startPos.x += offset[0] - size/2;
 		startPos.y += offset[1] - size*1.5;
 		showMarkerSolvedAnimation(quest.getType().getIcon(), startPos, source);
@@ -822,7 +833,16 @@ public class MainActivity extends AppCompatActivity implements
 		LatLon position = mapFragment.getPositionAt(notePosition);
 		if(position == null) throw new NullPointerException();
 		questController.createNote(note, imagePaths, position);
-		questAutoSyncer.triggerAutoUpload();
+		triggerAutoUploadByUserInteraction();
+	}
+
+	private void triggerAutoUploadByUserInteraction()
+	{
+		if(questAutoSyncer.isAllowedByPreference())
+		{
+			if (!oAuth.isAuthorized()) requestOAuthorized();
+			else questAutoSyncer.triggerAutoUpload();
+		}
 	}
 
 	/* ------------- VisibleQuestListener ------------- */

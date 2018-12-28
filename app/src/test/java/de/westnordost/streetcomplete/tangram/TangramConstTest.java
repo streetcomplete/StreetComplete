@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.tangram;
 
-import junit.framework.TestCase;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,9 +8,11 @@ import java.util.List;
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.map.data.OsmLatLon;
 
-public class TangramConstTest extends TestCase
+import static org.junit.Assert.*;
+
+public class TangramConstTest
 {
-	public void testConvertSingle()
+	@Test public void convertSingle()
 	{
 		double lng = 10;
 		double lat = 5;
@@ -21,7 +23,7 @@ public class TangramConstTest extends TestCase
 		assertEquals(pos, pos2);
 	}
 
-	public void testConvertLists()
+	@Test public void convertLists()
 	{
 		List<List<LatLon>> positionLists = new ArrayList<>();
 		List<LatLon> positions1 = new ArrayList<>();

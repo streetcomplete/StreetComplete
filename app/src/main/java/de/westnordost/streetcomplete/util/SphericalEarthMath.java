@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.util;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.LatLon;
@@ -216,11 +217,38 @@ public class SphericalEarthMath
 	 */
 	public static LatLon centerPointOfPolyline(List<LatLon> positions)
 	{
+		double halfDistance = distance(positions) / 2;
+		LatLon result = pointOnPolylineFromStart(positions, halfDistance);
+		if(result == null) result =  positions.get(0);
+		return result;
+	}
+
+	/**
+	 * @return the point the given amount of meters into the polyline
+	 * @params meters the amount of meters
+	 * @throws IllegalArgumentException if positions list is empty
+	 */
+	public static LatLon pointOnPolylineFromStart(List<LatLon> positions, double meters)
+	{
+		return pointOnPolyline(positions, meters, false);
+	}
+
+	/**
+	 * @return the point the given amount of meters into the polyline, starting from the end
+	 * @params meters the amount of meters
+	 * @throws IllegalArgumentException if positions list is empty
+	 */
+	public static LatLon pointOnPolylineFromEnd(List<LatLon> positions, double meters)
+	{
+		return pointOnPolyline(positions, meters, true);
+	}
+
+	private static LatLon pointOnPolyline(List<LatLon> positions, double meters, boolean fromEnd)
+	{
 		if(positions.isEmpty()) throw new IllegalArgumentException("positions list is empty");
 
-		double halfDistance = distance(positions) / 2;
 		double distance = 0;
-		Iterator<LatLon> it = positions.iterator();
+		Iterator<LatLon> it = fromEnd ? new ReverseIterator<>(positions) : positions.iterator();
 		LatLon p0 = it.next(), p1;
 		while (it.hasNext())
 		{
@@ -230,9 +258,9 @@ public class SphericalEarthMath
 			if(segmentDistance > 0)
 			{
 				distance += segmentDistance;
-				if (distance >= halfDistance)
+				if (distance >= meters)
 				{
-					double ratio = (distance - halfDistance) / segmentDistance;
+					double ratio = (distance - meters) / segmentDistance;
 					double lat = p1.getLatitude() - ratio * (p1.getLatitude() - p0.getLatitude());
 					double lon = normalizeLongitude(p1.getLongitude() - ratio * normalizeLongitude(p1.getLongitude() - p0.getLongitude()));
 					return new OsmLatLon(lat, lon);
@@ -240,7 +268,7 @@ public class SphericalEarthMath
 			}
 			p0 = p1;
 		}
-		return positions.get(0);
+		return null;
 	}
 
 	/**

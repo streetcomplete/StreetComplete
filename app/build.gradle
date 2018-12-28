@@ -21,8 +21,8 @@ android {
         applicationId "de.westnordost.streetcomplete"
         minSdkVersion 17
         targetSdkVersion 27
-        versionCode 802
-        versionName "8.1"
+        versionCode 901
+        versionName "9.0"
         testInstrumentationRunner "android.test.InstrumentationTestRunner"
         buildConfigField "String", "MAPZEN_API_KEY", MAPZEN_API_KEY
     }
@@ -69,14 +69,11 @@ dependencies {
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
     releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
 
-    // tests (perhaps migrate to junit4 later if any features of it seem convenient or necessary)
-    testImplementation 'junit:junit:3.8.1'
-    testImplementation 'org.mockito:mockito-core:1.10.19'
+    // tests
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'org.mockito:mockito-core:2.15.0'
     testImplementation 'org.objenesis:objenesis:2.6'
     testImplementation 'org.assertj:assertj-core:2.8.0'
-    // LutimImageUploaderTest uses org.json which is included in Android but needs library for
-    // non-android test cases
-    testImplementation 'org.eclipse.ecf:org.json:1.0.0.v201011060100'
 
     androidTestImplementation 'org.assertj:assertj-core:2.8.0'
     androidTestImplementation 'com.android.support:support-annotations:27.1.1'
@@ -107,7 +104,7 @@ dependencies {
 
     // talking with OSM Api
     implementation 'oauth.signpost:signpost-core:1.2.1.2'
-    implementation ('de.westnordost:osmapi:3.1') {
+    implementation ('de.westnordost:osmapi:3.3') {
         // it's already included in Android
         exclude group: 'net.sf.kxml', module: 'kxml2'
     }

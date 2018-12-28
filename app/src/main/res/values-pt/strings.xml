@@ -9,14 +9,14 @@
     <string name="title_activity_settings">"Preferências"</string>
     <string name="pref_category_communication">"Comunicação"</string>
     <string name="pref_category_display">"Visualização"</string>
-    <string name="pref_title_authorization">"Autorizar acesso ao OSM"</string>
+    <string name="pref_title_authorization">"Autorizar acesso ao OpenStreetMap"</string>
     <string name="pref_title_not_authorized_summary">"Ainda não está autorizado"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
     <string name="pref_tilecache_size_message">"Espaço reservado em megabytes na unidade de armazenamento para os ficheiros temporários de mosaicos do mapa"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Mostrar todos os erros reportados"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Mostrar também os erros reportados que não são perguntas"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Ignorar erros reportados que não sejam questões"</string>
-    <string name="pref_title_map_cache">"Tamanho da cache do mapa"</string>
+    <string name="pref_title_map_cache">"Tamanho máximo dos ficheiros temporários do mapa"</string>
     <string name="map_btn_gps_tracking">"Siga-me"</string>
     <string name="map_attribution_mapzen">"Funciona com %s"</string>
     <string name="map_attribution_osm">"© Contribuidores do OpenStreetMap"</string>
@@ -26,12 +26,12 @@
     <string name="quest_generic_confirmation_yes">"Sim, tenho a certeza"</string>
     <string name="quest_generic_confirmation_no">"Vou verificar"</string>
     <string name="quest_generic_error_field_empty">"Deixou este campo em branco"</string>
-    <string name="quest_leave_new_note_title">"Prefere reportar o erro?"</string>
+    <string name="quest_leave_new_note_title">"Prefere deixar uma nota/erro para outros utilizadores?"</string>
     <string name="quest_leave_new_note_description">"Pode deixar um erro reportado publicamente nesta localização para que outros contribuidores possam comentar e resolver a questão."</string>
     <string name="quest_leave_new_note_yes">"OK"</string>
-    <string name="quest_leave_new_note_no">"Não, apenas ocultar"</string>
+    <string name="quest_leave_new_note_no">"Apenas não mostrar mais"</string>
     <string name="quest_streetName_title">"Qual o nome desta estrada?"</string>
-    <string name="quest_streetName_description">"Como escrito na sinalética da rua. As abreviaturas são expandidas automaticamente:"</string>
+    <string name="quest_streetName_description">"Digitar tal qual a placa da rua. As abreviaturas são expandidas automaticamente."</string>
     <string name="quest_streetName_answer_noName_confirmation_description">"Por vezes a sinalética com o nome da rua está apenas disponível numa das extremidades. Além disso, em ruas compridas pode não existir sinalética em todos os cruzamentos. Normalmente qualquer rua com casas possui nome."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Se o nome puder ser pronunciado sem abreviatura, então deve ser expandido. As abreviaturas mais comuns são expandidas automaticamente, mas nem todas."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Sem abreviatura"</string>
@@ -62,20 +62,20 @@
     <string name="confirmation_cancel_prev_download_title">"Anular a pesquisa atual e pesquisar nesta área?"</string>
     <string name="notification_downloading">"A pesquisar desafios…"</string>
     <string name="now_downloading_toast">"A pesquisar mais desafios…"</string>
-    <string name="turn_on_location_request">"A localização está desativada. Quer aceder agora às Opções para ativar?"</string>
-    <string name="no_location_permission_warning">"A sua localização é necessária para pesquisar desafios na sua área favorita."</string>
+    <string name="turn_on_location_request">"A localização por GPS está desativada. Quer aceder agora às Opções do Android para a ativar?"</string>
+    <string name="no_location_permission_warning">"É necessária a sua localização para pesquisar desafios na sua área favorita."</string>
     <string name="action_about">"Sobre o StreetComplete"</string>
     <string name="about_title_version">"Versão"</string>
     <string name="about_title_authors">"Créditos"</string>
     <string name="about_summary_authors">"© 2016–2018 Tobias Zwick e contribuidores"</string>
-    <string name="about_title_repository">"Repositório do Código-Fonte"</string>
-    <string name="about_summary_repository">"no GitHub"</string>
+    <string name="about_title_repository">"Repositório do código-fonte"</string>
+    <string name="about_summary_repository">"No site do GitHub"</string>
     <string name="about_title_report_error">"Reportar erro"</string>
-    <string name="about_title_feedback">"Enviar Opinião"</string>
+    <string name="about_title_feedback">"Enviar opinião"</string>
     <string name="about_title_license">"Licença"</string>
     <string name="about_summary_license">"GNU General Public License"</string>
     <string name="offline">"Está com a internet desligada"</string>
-    <string name="confirmation_authorize_now">"É necessário autorizar o acesso à sua conta OSM para aceitar as suas respostas. Autorizar agora?"</string>
+    <string name="confirmation_authorize_now">"É necessário autorizar o acesso à sua conta no OpenStreetMap para enviar as suas alterações. Autorizar agora?"</string>
     <string name="not_authorized">"Não autorizado"</string>
     <string name="version_banned_message">"Esta versão do StreetComplete é muito antiga. Por favor atualize!"</string>
     <string name="no_gps_no_quests">"Para pesquisar desafios automaticamente, ative a localização"</string>
@@ -83,7 +83,7 @@
     <string name="later">"Mais tarde"</string>
     <string name="quest_streetName_answer_noProperStreet_link">"É apenas uma ligação entre 2 estradas"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Outra coisa qualquer (reportar erro)"</string>
-    <string name="about_title_privacy_statement">"Declaração de Privacidade"</string>
+    <string name="about_title_privacy_statement">"Declaração de privacidade"</string>
     <string name="about_summary_privacy_statement">"Sobre a utilização de dados privados"</string>
     <string name="quest_openingHours_public_holidays">"feriados"</string>
     <string name="quest_openingHours_public_holidays_short">"F"</string>
@@ -244,6 +244,8 @@ A informação que submeter nesta app é adicionada diretamente ao OpenStreetMap
     <string name="quest_wheelchairAccess_subway_entrance_name_title">"A entrada da estação de metro %s é acessível a cadeira de rodas?"</string>
     <string name="quest_wheelchairAccess_railway_station_name_title">"A entrada da estação de comboios %s é acessível a cadeira de rodas?"</string>
     <string name="quest_wheelchairAccess_location_name_title">"O local %s é acessível a cadeira de rodas?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_business">"Parcialmente significa que não existe mais do que um degrau baixo para aceder ao local e que a maioria dos quartos interiores, são acessíveis em cadeira de rodas."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"Parcialmente significa que não existe mais do que um degrau para aceder ao local."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Abreviatura no nome %s?"</string>
@@ -269,7 +271,7 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="quest_fireHydrant_type_underground">"Subterrâneo"</string>
     <string name="quest_fireHydrant_type_wall">"De parede"</string>
     <string name="quest_fireHydrant_type_pond">"Boca seca (necessário motor)"</string>
-    <string name="credits_contributors">"Veja a lista completa em &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;no GitHub&lt;/a&gt;."</string>
+    <string name="credits_contributors">"Veja a lista completa &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;no GitHub&lt;/a&gt;."</string>
     <string name="credits_translations">"Para a lista completa veja o &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;projeto no POEditor&lt;/a&gt;."</string>
     <string name="credits_translations_title">"Traduções"</string>
     <string name="credits_contributors_title">"Contribuidores de código"</string>
@@ -333,7 +335,7 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="quest_way_lit_road_title">"Esta estrada tem iluminação?"</string>
     <string name="quest_way_lit_automatic">"Sim, com detetor de movimento"</string>
     <string name="quest_way_lit_24_7">"Está iluminado de dia e de noite"</string>
-    <string name="pref_title_authorized_username_summary">"Conta autorizada: %s"</string>
+    <string name="pref_title_authorized_username_summary">"Conta de utilizador: %s"</string>
 
     <!-- What's the context of this message? At least what's the meaning of "tilt" here? Got something to do with a big area to search for challenges? -->
     <!-- Fuzzy -->
@@ -422,10 +424,10 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="map_btn_create_note">"Reportar erro"</string>
     <string name="create_new_note_unprecise">"Aproxime a visualização para reportar um erro"</string>
     <string name="create_new_note_description">"Pode reportar um erro para que outros mapeadores saibam sobre o problema. Ajuste a posição do erro movendo o mapa."</string>
-    <string name="pref_title_quests_invalidation">"Eliminar cache dos desafios"</string>
+    <string name="pref_title_quests_invalidation">"Eliminar ficheiros temporários dos desafios"</string>
     <string name="pref_title_quests_invalidation_summary">"Útil se acha que alguns dos desafios podem estar desatualizados"</string>
-    <string name="invalidate_confirmation">"Invalidar"</string>
-    <string name="invalidation_dialog_message">"Eliminar a cache faz com que os desafios sejam atualizados da próxima vez que sejam descarregados. A cache de desafios é eliminada automaticamente após uma semana e de forma imediata quando o desafio que resolveu, já foi respondido por outra pessoa."</string>
+    <string name="invalidate_confirmation">"Eliminar"</string>
+    <string name="invalidation_dialog_message">"Eliminar os ficheiros temporários dos desafios faz com que os desafios sejam atualizados da próxima vez que forem descarregados. Este ficheiros temporários de desafios são eliminados automaticamente após uma semana ou de forma imediata quando o desafio que resolveu tiver sido respondido por outra pessoa."</string>
     <string name="quest_generic_looks_like_this">"Normalmente tem esta aparência"</string>
     <string name="quest_surface_value_metal">"Metal"</string>
     <string name="quest_cycleway_title2">"Há uma ciclovia aqui? De que tipo?"</string>
@@ -518,7 +520,7 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="quest_buildingType_semi_detached_description">"par de 2 casas unifamiliares (geminadas)"</string>
     <string name="quest_buildingType_terrace">"Casas em banda"</string>
     <string name="quest_buildingType_terrace_description">"uma série de casas similares unifamiliares em fila com paredes partilhadas"</string>
-    <string name="quest_buildingType_hotel">"Edifício de hotel"</string>
+    <string name="quest_buildingType_hotel">"Edifício de um hotel"</string>
     <string name="quest_buildingType_dormitory">"Dormitório"</string>
     <string name="quest_buildingType_houseboat">"Barco-casa"</string>
     <string name="quest_buildingType_bungalow">"Bangalô"</string>
@@ -543,25 +545,25 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="quest_buildingType_synagogue">"Sinagoga"</string>
     <string name="quest_buildingType_civic">"Edifício público"</string>
     <string name="quest_buildingType_civic_description">"edifício público que alberga normalmente um infraestrutura/serviço público"</string>
-    <string name="quest_buildingType_kindergarten">"Edifício de infantário"</string>
-    <string name="quest_buildingType_school">"Edifício de escola"</string>
-    <string name="quest_buildingType_college">"Edifício de colégio"</string>
-    <string name="quest_buildingType_hospital">"Edifício de hospital"</string>
+    <string name="quest_buildingType_kindergarten">"Edifício de um infantário"</string>
+    <string name="quest_buildingType_school">"Edifício de uma escola"</string>
+    <string name="quest_buildingType_college">"Edifício de um colégio"</string>
+    <string name="quest_buildingType_hospital">"Edifício de um hospital"</string>
     <string name="quest_buildingType_stadium">"Estádio"</string>
-    <string name="quest_buildingType_train_station">"Edifício de estação ferroviária"</string>
-    <string name="quest_buildingType_transportation">"Edifício de transporte público"</string>
-    <string name="quest_buildingType_university">"Edifício de universidade"</string>
+    <string name="quest_buildingType_train_station">"Edifício de uma estação ferroviária"</string>
+    <string name="quest_buildingType_transportation">"Edifício de um serviço de transporte público"</string>
+    <string name="quest_buildingType_university">"Edifício de uma universidade"</string>
     <string name="quest_buildingType_government">"Edifício da administração nacional"</string>
     <string name="quest_buildingType_cars">"Para carros"</string>
     <string name="quest_buildingType_carport">"Abrigo para carros"</string>
     <string name="quest_buildingType_carport_description">"pequena estrutura com telhado mas sem paredes para abrigar carros"</string>
     <string name="quest_buildingType_garage">"Uma garagem"</string>
     <string name="quest_buildingType_garages">"Várias garagens"</string>
-    <string name="quest_buildingType_parking">"Edifício de estacionamento de carros"</string>
+    <string name="quest_buildingType_parking">"Edifício para estacionamento de carros (silo)"</string>
     <string name="quest_buildingType_farm">"Numa quinta"</string>
     <string name="quest_buildingType_farmhouse">"Casa de quinta"</string>
     <string name="quest_buildingType_farmhouse_description">"o edifício residencial numa quinta"</string>
-    <string name="quest_buildingType_farm_auxiliary">"Edifício de quinta"</string>
+    <string name="quest_buildingType_farm_auxiliary">"Edifício de uma quinta"</string>
     <string name="quest_buildingType_farm_auxiliary_description">"qualquer edifício numa quinta que não seja um edifício residencial"</string>
     <string name="quest_buildingType_greenhouse">"Estufa"</string>
     <string name="quest_buildingType_other">"Outro"</string>
@@ -590,7 +592,9 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="notification_channel_download">"Descarregar"</string>
     <string name="quest_playground_access_title">"Este parque infantil é de acesso público?"</string>
     <string name="quest_segregated_title">"Esta ciclovia e via pedonal são separadas?"</string>
-    <string name="dialog_tutorial_upload">"Para enviar as suas alterações de forma manual, utilize o botão na barra de ferramentas com este ícone."</string>
+
+    <!-- Rui, justifique esta tradução. Não é o que é solicitado para traduzir de todo. -->
+    <string name="dialog_tutorial_upload">"Para enviar as suas alterações para o OpenStreetMap de forma manual, toque no botão com este ícone na barra de ferramentas superior. O número que aparece ao lado do ícone é o número de alterações por enviar."</string>
     <string name="quest_segregated_separated">"Sim, são separadas"</string>
     <string name="quest_segregated_mixed">"Não, é uma faixa comum"</string>
     <string name="quest_maxheight_title">"Qual o limite de altura aqui?"</string>
@@ -609,4 +613,20 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="privacy_html_image_upload2">"&lt;p&gt;As fotografias que anexar a um erro reportado/nota são enviados para o meu servidor e eliminadas após alguns dias após o erro ser resolvido. Os meta-dados das fotografias são eliminados antes do envio.&lt;/p&gt;"</string>
     <string name="action_deselect_all">"Desmarcar todos"</string>
     <string name="quest_buildingType_retail_description">"incluindo edifícios de restaurantes, cafés…"</string>
+    <string name="quest_openingHours_timeSelect_next">"Próximo"</string>
+    <string name="quest_tracktype_title">"Qual o tipo de firmeza da superfície desta desta trilho?"</string>
+    <string name="quest_tracktype_grade1">"Sólido"</string>
+    <string name="quest_tracktype_grade2">"Praticamente sólido"</string>
+    <string name="quest_tracktype_grade3">"Mistura"</string>
+    <string name="quest_tracktype_grade4">"Praticamente brando"</string>
+    <string name="quest_tracktype_grade5">"Brando"</string>
+    <string name="quest_building_underground_name_title">"%s é completamente abaixo do solo?"</string>
+    <string name="quest_building_underground_title">"Este edifício é totalmente abaixo do solo?"</string>
+    <string name="quest_traffic_signals_sound_title">"Há sinalização sonora para invisuais?"</string>
+    <string name="quest_wheelchairAccess_limited_description_outside">"Parcialmente significa que não há mais que um degrau para aceder."</string>
+    <string name="quest_wheelchairAccess_outside_title">"Este local é acessível a cadeiras de rodas?"</string>
+    <string name="quest_traffic_signals_button_title">"Estes semáforos possuem um botão para solicitar sinal verde?"</string>
+    <string name="quest_motorcycleParkingCapacity_title">"Quantos motociclos podem ser estacionados aqui?"</string>
+    <string name="quest_motorcycleParkingCoveredStatus_title">"Este estacionamento de motociclos é coberto (protegido da chuva)?"</string>
+    <string name="default_disabled_msg_maxspeed">"Este tipo de desafio está desativado por defeito, já que usualmente é necessário que verifique que a totalidade da rua possui sinais de limite de velocidade, não apenas a secção seleccionada. Por vezes, é o que falta para completar um dos desafios."</string>
 </resources>

@@ -56,10 +56,12 @@ public class OsmQuestGiver
 
 	public QuestUpdates updateQuests(Element element)
 	{
-		ElementGeometry geometry = elementGeometryDB.get(element.getType(), element.getId());
-		boolean hasNote = hasNoteAt(geometry.center);
-
 		QuestUpdates result = new QuestUpdates();
+
+		ElementGeometry geometry = elementGeometryDB.get(element.getType(), element.getId());
+		if(geometry == null) return result;
+		
+		boolean hasNote = hasNoteAt(geometry.center);
 
 		Map<QuestType, OsmQuest> currentQuests = getCurrentQuests(element);
 		List<String> createdQuestsLog = new ArrayList<>();

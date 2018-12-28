@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.util;
 
-import junit.framework.TestCase;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,74 +11,75 @@ import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.LatLon;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.*;
 
-public class SphericalEarthMathTest extends TestCase
+public class SphericalEarthMathTest
 {
 	private static LatLon HH = p(10.0, 53.5);
 
 	/* ++++++++++++++++++++++++++++++++ test distance functions +++++++++++++++++++++++++++++++++ */
 
-	public void testDistanceToBerlin()
+	@Test public void distanceToBerlin()
 	{
 		checkHamburgTo(52.4, 13.4, 259, 117, 110);
 	}
 
-	public void testDistanceToLübeck()
+	@Test public void distanceToLübeck()
 	{
 		checkHamburgTo(53.85, 10.68, 59, 49, 61);
 	}
 
-	public void testDistanceToLosAngeles()
+	@Test public void distanceToLosAngeles()
 	{
 		checkHamburgTo(34, -118, 9075, 319, 206);
 	}
 
-	public void testDistanceToReykjavik()
+	@Test public void distanceToReykjavik()
 	{
 		checkHamburgTo(64.11, -21.98, 2152, 316, 280);
 	}
 
-	public void testDistanceToPortElizabeth()
+	@Test public void distanceToPortElizabeth()
 	{
 		checkHamburgTo(-33.9, -25.6, 10307, 209, 231);
 	}
 
-	public void testDistanceToPoles()
+	@Test public void distanceToPoles()
 	{
 		checkHamburgTo(90.0, 123.0, 4059, 0, null);
 		checkHamburgTo(-90.0, 0.0, 15956, 180, null);
 	}
 
-	public void testDistanceToOtherSideOfEarth()
+	@Test public void distanceToOtherSideOfEarth()
 	{
 		checkHamburgTo(-53.5, -170.0, (int) (Math.PI*6371), 270, 180);
 	}
 
-	public void testShortDistance()
+	@Test public void shortDistance()
 	{
 		LatLon one = p(9.9782365, 53.5712482);
 		LatLon two = p(9.9782517, 53.5712528);
 		assertEquals(1, (int) SphericalEarthMath.distance(one, two));
 	}
 
-	public void testDistanceOfPolylineIsZeroForOnePosition()
+	@Test public void distanceOfPolylineIsZeroForOnePosition()
 	{
 		List<LatLon> positions = new ArrayList<>();
 		positions.add(p(0, 0));
-		assertEquals(0.0, SphericalEarthMath.distance(positions));
+		assertEquals(0.0, SphericalEarthMath.distance(positions), 0);
 	}
 
-	public void testDistanceOfPolylineForTwoPositions()
+	@Test public void distanceOfPolylineForTwoPositions()
 	{
 		List<LatLon> positions = new ArrayList<>();
 		LatLon p0 = p(0, 0);
 		LatLon p1 = p(1, 1);
 		positions.add(p0);
 		positions.add(p1);
-		assertEquals(SphericalEarthMath.distance(p0,p1), SphericalEarthMath.distance(positions));
+		assertEquals(SphericalEarthMath.distance(p0,p1), SphericalEarthMath.distance(positions), 0);
 	}
 
-	public void testDistanceOfPolylineForThreePositions()
+	@Test public void distanceOfPolylineForThreePositions()
 	{
 		LatLon p0 = p(0, 0);
 		LatLon p1 = p(1, 1);
@@ -86,7 +87,8 @@ public class SphericalEarthMathTest extends TestCase
 		List<LatLon> positions = new ArrayList<>(Arrays.asList(p0, p1, p2));
 		assertEquals(
 			SphericalEarthMath.distance(p0,p1) + SphericalEarthMath.distance(p1,p2),
-			SphericalEarthMath.distance(positions)
+			SphericalEarthMath.distance(positions),
+			1e-16
 		);
 	}
 
@@ -105,7 +107,7 @@ public class SphericalEarthMathTest extends TestCase
 
 	/* +++++++++++++++++++++++++++++ test creation of bounding boxes ++++++++++++++++++++++++++++ */
 
-	public void testEnclosingBoundingBox()
+	@Test public void enclosingBoundingBox()
 	{
 		LatLon pos = p(0, 0);
 		BoundingBox bbox = SphericalEarthMath.enclosingBoundingBox(pos, 5000);
@@ -122,7 +124,7 @@ public class SphericalEarthMathTest extends TestCase
 		assertEquals(45, Math.round(SphericalEarthMath.bearing(pos, bbox.getMax())));
 	}
 
-	public void testEnclosingBoundingBoxCrosses180thMeridian()
+	@Test public void enclosingBoundingBoxCrosses180thMeridian()
 	{
 		LatLon pos = p(180, 0);
 		BoundingBox bbox = SphericalEarthMath.enclosingBoundingBox(pos, 5000);
@@ -130,7 +132,7 @@ public class SphericalEarthMathTest extends TestCase
 		assertTrue(bbox.crosses180thMeridian());
 	}
 
-	public void testEnclosingBoundingBoxLineEmptyFails()
+	@Test public void enclosingBoundingBoxLineEmptyFails()
 	{
 		List<LatLon> positions = new ArrayList<>();
 		try
@@ -140,7 +142,7 @@ public class SphericalEarthMathTest extends TestCase
 		} catch (IllegalArgumentException ignore) {}
 	}
 
-	public void testEnclosingBoundingBoxLine()
+	@Test public void enclosingBoundingBoxLine()
 	{
 		List<LatLon> positions = new ArrayList<>();
 		positions.add(p(0, -4));
@@ -149,13 +151,13 @@ public class SphericalEarthMathTest extends TestCase
 		positions.add(p(-6, 0));
 
 		BoundingBox bbox = SphericalEarthMath.enclosingBoundingBox(positions);
-		assertEquals(-4.0, bbox.getMinLatitude());
-		assertEquals(12.0, bbox.getMaxLatitude());
-		assertEquals(16.0, bbox.getMaxLongitude());
-		assertEquals(-6.0, bbox.getMinLongitude());
+		assertEquals(-4.0, bbox.getMinLatitude(),0);
+		assertEquals(12.0, bbox.getMaxLatitude(),0);
+		assertEquals(16.0, bbox.getMaxLongitude(),0);
+		assertEquals(-6.0, bbox.getMinLongitude(),0);
 	}
 
-	public void testEnclosingBoundingBoxLineCrosses180thMeridian()
+	@Test public void enclosingBoundingBoxLineCrosses180thMeridian()
 	{
 		List<LatLon> positions = new ArrayList<>();
 		positions.add(p(160, 10));
@@ -164,55 +166,55 @@ public class SphericalEarthMathTest extends TestCase
 
 		BoundingBox bbox = SphericalEarthMath.enclosingBoundingBox(positions);
 		assertTrue(bbox.crosses180thMeridian());
-		assertEquals(-10.0, bbox.getMinLatitude());
-		assertEquals(10.0, bbox.getMaxLatitude());
-		assertEquals(-150.0, bbox.getMaxLongitude());
-		assertEquals(160.0, bbox.getMinLongitude());
+		assertEquals(-10.0, bbox.getMinLatitude(),0);
+		assertEquals(10.0, bbox.getMaxLatitude(),0);
+		assertEquals(-150.0, bbox.getMaxLongitude(),0);
+		assertEquals(160.0, bbox.getMinLongitude(),0);
 	}
 
 	/* ++++++++++++++++++++++++++++++ test translating of positions +++++++++++++++++++++++++++++ */
 
-	public void testTranslateLatitudeNorth()
+	@Test public void translateLatitudeNorth()
 	{
 		checkTranslate(1000, 0);
 	}
 
-	public void testTranslateLatitudeSouth()
+	@Test public void translateLatitudeSouth()
 	{
 		checkTranslate(1000, 180);
 	}
 
-	public void testTranslateLatitudeWest()
+	@Test public void translateLatitudeWest()
 	{
 		checkTranslate(1000, 270);
 	}
 
-	public void testTranslateLatitudeEast()
+	@Test public void translateLatitudeEast()
 	{
 		checkTranslate(1000, 90);
 	}
 
-	public void testTranslateLatitudeNorthEast()
+	@Test public void translateLatitudeNorthEast()
 	{
 		checkTranslate(1000, 45);
 	}
 
-	public void testTranslateLatitudeSouthEast()
+	@Test public void translateLatitudeSouthEast()
 	{
 		checkTranslate(1000, 135);
 	}
 
-	public void testTranslateLatitudeSouthWest()
+	@Test public void translateLatitudeSouthWest()
 	{
 		checkTranslate(1000, 225);
 	}
 
-	public void testTranslateLatitudeNorthWest()
+	@Test public void translateLatitudeNorthWest()
 	{
 		checkTranslate(1000, 315);
 	}
 
-	public void testTranslateOverBoundaries()
+	@Test public void translateOverBoundaries()
 	{
 		// cross 180th meridian both ways
 		checkTranslate(p(179.9999999, 0), 1000, 90);
@@ -241,7 +243,7 @@ public class SphericalEarthMathTest extends TestCase
 
 	/* +++++++++++++++++++++++++++++ test calculation of center line ++++++++++++++++++++++++++++ */
 
-	public void testCenterLineForPointFails()
+	@Test public void centerLineForPointFails()
 	{
 		List<LatLon> positions = new ArrayList<>();
 		positions.add(p(0, 0));
@@ -252,7 +254,7 @@ public class SphericalEarthMathTest extends TestCase
 		} catch (IllegalArgumentException ignore) {}
 	}
 
-	public void testCenterLineOfPolylineWithZeroLength()
+	@Test public void centerLineOfPolylineWithZeroLength()
 	{
 		LatLon p0 = p(0, 0);
 		LatLon p1 = p(0, 0);
@@ -261,7 +263,7 @@ public class SphericalEarthMathTest extends TestCase
 		assertThat(SphericalEarthMath.centerLineOfPolyline(positions)).containsExactly(p0, p1);
 	}
 
-	public void testCenterLineOfLineIsThatLine()
+	@Test public void centerLineOfLineIsThatLine()
 	{
 		LatLon p0 = p(0, 0);
 		LatLon p1 = p(1, 1);
@@ -269,7 +271,7 @@ public class SphericalEarthMathTest extends TestCase
 		assertThat(SphericalEarthMath.centerLineOfPolyline(positions)).containsExactly(p0, p1);
 	}
 
-	public void testCenterLineOfPolylineIsTheMiddleOne()
+	@Test public void centerLineOfPolylineIsTheMiddleOne()
 	{
 		LatLon p0 = p(0, 0);
 		LatLon p1 = p(1, 1);
@@ -279,7 +281,7 @@ public class SphericalEarthMathTest extends TestCase
 		assertThat(SphericalEarthMath.centerLineOfPolyline(positions)).containsExactly(p1, p2);
 	}
 
-	public void testCenterLineOfPolylineIsNotMiddleOneBecauseItIsSoLong()
+	@Test public void centerLineOfPolylineIsNotMiddleOneBecauseItIsSoLong()
 	{
 		LatLon p0 = p(0, 0);
 		LatLon p1 = p(10, 10);
@@ -291,7 +293,7 @@ public class SphericalEarthMathTest extends TestCase
 
 	/* +++++++++++++++++++++++++ test calculation of center point of line +++++++++++++++++++++++ */
 
-	public void testCenterPointForEmptyPolyListFails()
+	@Test public void centerPointForEmptyPolyListFails()
 	{
 		List<LatLon> positions = new ArrayList<>();
 		try
@@ -301,7 +303,7 @@ public class SphericalEarthMathTest extends TestCase
 		} catch (IllegalArgumentException ignore) {}
 	}
 
-	public void testCenterOfPolylineWithZeroLength()
+	@Test public void centerOfPolylineWithZeroLength()
 	{
 		List<LatLon> polyline = new ArrayList<>();
 		polyline.add(p(20, 20));
@@ -309,7 +311,7 @@ public class SphericalEarthMathTest extends TestCase
 		assertEquals(p(20, 20), SphericalEarthMath.centerPointOfPolyline(polyline));
 	}
 
-	public void testCenterOfLine()
+	@Test public void centerOfLine()
 	{
 		List<LatLon> polyline = new ArrayList<>();
 		LatLon pos0 = p(-20, 80);
@@ -320,7 +322,7 @@ public class SphericalEarthMathTest extends TestCase
 		assertEquals(p(0, 10), SphericalEarthMath.centerPointOfPolyline(polyline));
 	}
 
-	public void testCenterOfLineThatCrosses180thMeridian()
+	@Test public void centerOfLineThatCrosses180thMeridian()
 	{
 		List<LatLon> polyline = new ArrayList<>();
 		LatLon pos0 = p(170, 0);
@@ -341,7 +343,7 @@ public class SphericalEarthMathTest extends TestCase
 
 	/* +++++++++++++++++++++++ test calculation of center point of polygon ++++++++++++++++++++++ */
 
-	public void testCenterPointForEmptyPolygonFails()
+	@Test public void centerPointForEmptyPolygonFails()
 	{
 		List<LatLon> positions = new ArrayList<>();
 		try
@@ -351,7 +353,7 @@ public class SphericalEarthMathTest extends TestCase
 		} catch (IllegalArgumentException ignore) {}
 	}
 
-	public void testCenterOfPolygonWithNoAreaSimplyReturnsFirstPoint()
+	@Test public void centerOfPolygonWithNoAreaSimplyReturnsFirstPoint()
 	{
 		List<LatLon> positions = new ArrayList<>();
 		positions.add(p(10, 10));
@@ -360,13 +362,13 @@ public class SphericalEarthMathTest extends TestCase
 		assertEquals(p(10, 10), SphericalEarthMath.centerPointOfPolygon(positions));
 	}
 
-	public void testCenterOfPolygonAtOrigin()
+	@Test public void centerOfPolygonAtOrigin()
 	{
 		ShorthandLatLon center = p(0, 0);
 		assertEquals(center, SphericalEarthMath.centerPointOfPolygon(createRhombusAround(center, 1)));
 	}
 
-	public void testCenterOfPolygonAt180thMeridian()
+	@Test public void centerOfPolygonAt180thMeridian()
 	{
 		ShorthandLatLon center = p(179.9, 0);
 		assertEquals(center, SphericalEarthMath.centerPointOfPolygon(createRhombusAround(center, 1)));
@@ -374,7 +376,7 @@ public class SphericalEarthMathTest extends TestCase
 
 	/* +++++++++++++++++++++++++++++++ test point in polygon check ++++++++++++++++++++++++++++++ */
 
-	public void testPointAtPolygonVertexIsInPolygon()
+	@Test public void pointAtPolygonVertexIsInPolygon()
 	{
 		List<LatLon> square = createSquareWithPointsAtCenterOfEdgesAround(p(0, 0),10);
 		for(LatLon pos : square)
@@ -383,7 +385,7 @@ public class SphericalEarthMathTest extends TestCase
 		}
 	}
 
-	public void testPointAtPolygonVertexIsInPolygonAt180thMeridian()
+	@Test public void pointAtPolygonVertexIsInPolygonAt180thMeridian()
 	{
 		List<LatLon> square = createSquareWithPointsAtCenterOfEdgesAround(p(180, 0),10);
 		for(LatLon pos : square)
@@ -392,7 +394,7 @@ public class SphericalEarthMathTest extends TestCase
 		}
 	}
 
-	public void testPointAtPolygonEdgeIsInPolygon()
+	@Test public void pointAtPolygonEdgeIsInPolygon()
 	{
 		List<LatLon> square = createSquareAround(p(0, 0),10);
 		assertTrue(SphericalEarthMath.isInPolygon(p(0, 10), square));
@@ -401,7 +403,7 @@ public class SphericalEarthMathTest extends TestCase
 		assertTrue(SphericalEarthMath.isInPolygon(p(0, -10), square));
 	}
 
-	public void testPointAtPolygonEdgeIsInPolygonAt180thMeridian()
+	@Test public void pointAtPolygonEdgeIsInPolygonAt180thMeridian()
 	{
 		List<LatLon> square = createSquareAround(p(180, 0),10);
 		assertTrue(SphericalEarthMath.isInPolygon(p(180, 10), square));
@@ -410,12 +412,12 @@ public class SphericalEarthMathTest extends TestCase
 		assertTrue(SphericalEarthMath.isInPolygon(p(180, -10), square));
 	}
 
-	public void testPointInPolygonIsInPolygon()
+	@Test public void pointInPolygonIsInPolygon()
 	{
 		assertTrue(SphericalEarthMath.isInPolygon(p(0, 0), Arrays.asList(p(1, 1),p(1, -2),p(-2, 1))));
 	}
 
-	public void testPointInPolygonIsInPolygonAt180thMeridian()
+	@Test public void pointInPolygonIsInPolygonAt180thMeridian()
 	{
 		assertTrue(SphericalEarthMath.isInPolygon(p(180, 0), Arrays.asList(p(-179, 1),p(-179, -2),p(178, 1))));
 	}
@@ -423,17 +425,17 @@ public class SphericalEarthMathTest extends TestCase
 	// The counting number algorithm in particular needs to handle a special case where the ray
 	// intersects the polygon in a polygon vertex
 
-	public void testPointInPolygonWhoseRayIntersectAVertexIsInPolygon()
+	@Test public void pointInPolygonWhoseRayIntersectAVertexIsInPolygon()
 	{
 		assertTrue(SphericalEarthMath.isInPolygon(p(0, 0), createRhombusAround(p(0, 0),1)));
 	}
 
-	public void testPointInPolygonWhoseRayIntersectAVertexIsInPolygonAt180thMeridian()
+	@Test public void pointInPolygonWhoseRayIntersectAVertexIsInPolygonAt180thMeridian()
 	{
 		assertTrue(SphericalEarthMath.isInPolygon(p(180, 0), createRhombusAround(p(180, 0),1)));
 	}
 
-	public void testPointOutsidePolygonWhoseRayIntersectAVertexIsOutsidePolygon()
+	@Test public void pointOutsidePolygonWhoseRayIntersectAVertexIsOutsidePolygon()
 	{
 		List<LatLon> rhombus = createRhombusAround(p(0, 0),1);
 		// four checks here because the ray could be cast in any direction
@@ -443,7 +445,7 @@ public class SphericalEarthMathTest extends TestCase
 		assertFalse(SphericalEarthMath.isInPolygon(p(0, -2), rhombus));
 	}
 
-	public void testPointOutsidePolygonWhoseRayIntersectAVertexIsOutsidePolygonAt180thMeridian()
+	@Test public void pointOutsidePolygonWhoseRayIntersectAVertexIsOutsidePolygonAt180thMeridian()
 	{
 		List<LatLon> rhombus = createRhombusAround(p(180, 0),1);
 		// four checks here because the ray could be cast in any direction
@@ -453,19 +455,19 @@ public class SphericalEarthMathTest extends TestCase
 		assertFalse(SphericalEarthMath.isInPolygon(p(180, -2), rhombus));
 	}
 
-	public void testPointInPolygonWhoseRayIntersectsPolygonEdgesIsInsidePolygon()
+	@Test public void pointInPolygonWhoseRayIntersectsPolygonEdgesIsInsidePolygon()
 	{
 		List<LatLon> bonbon = createBonbonAround(p(0, 0));
 		assertTrue(SphericalEarthMath.isInPolygon(p(0, 0), bonbon));
 	}
 
-	public void testPointInPolygonWhoseRayIntersectsPolygonEdgesIsInsidePolygonAt180thMeridian()
+	@Test public void pointInPolygonWhoseRayIntersectsPolygonEdgesIsInsidePolygonAt180thMeridian()
 	{
 		List<LatLon> bonbon = createBonbonAround(p(180, 0));
 		assertTrue(SphericalEarthMath.isInPolygon(p(180, 0), bonbon));
 	}
 
-	public void testPointOutsidePolygonWhoseRayIntersectsPolygonEdgesIsOutsidePolygon()
+	@Test public void pointOutsidePolygonWhoseRayIntersectsPolygonEdgesIsOutsidePolygon()
 	{
 		List<LatLon> bonbon = createBonbonAround(p(0, 0));
 		// four checks here because the ray could be cast in any direction
@@ -475,7 +477,7 @@ public class SphericalEarthMathTest extends TestCase
 		assertFalse(SphericalEarthMath.isInPolygon(p(0, -3), bonbon));
 	}
 
-	public void testPointOutsidePolygonWhoseRayIntersectsPolygonEdgesIsOutsidePolygonAt180thMeridian()
+	@Test public void pointOutsidePolygonWhoseRayIntersectsPolygonEdgesIsOutsidePolygonAt180thMeridian()
 	{
 		List<LatLon> bonbon = createBonbonAround(p(180, 0));
 		// four checks here because the ray could be cast in any direction
@@ -485,52 +487,52 @@ public class SphericalEarthMathTest extends TestCase
 		assertFalse(SphericalEarthMath.isInPolygon(p(180, -3), bonbon));
 	}
 
-	public void testPointOutsidePolygonIsOutsidePolygon()
+	@Test public void pointOutsidePolygonIsOutsidePolygon()
 	{
 		assertFalse(SphericalEarthMath.isInPolygon(p(0, 11), createSquareAround(p(0, 0),10)));
 	}
 
-	public void testPointOutsidePolygonIsOutsidePolygonAt180thMeridian()
+	@Test public void pointOutsidePolygonIsOutsidePolygonAt180thMeridian()
 	{
 		assertFalse(SphericalEarthMath.isInPolygon(p(-169, 0), createSquareAround(p(180, 0),10)));
 	}
 
-	public void testPolygonDirectionDoesNotMatter()
+	@Test public void polygonDirectionDoesNotMatter()
 	{
 		List<LatLon> square = createSquareAround(p(0, 0),10);
 		Collections.reverse(square);
 		assertTrue(SphericalEarthMath.isInPolygon(p(5, 5), square));
 	}
 
-	public void testPolygonDirectionDoesNotMatterAt180thMeridian()
+	@Test public void polygonDirectionDoesNotMatterAt180thMeridian()
 	{
 		List<LatLon> square = createSquareAround(p(180, 0),10);
 		Collections.reverse(square);
 		assertTrue(SphericalEarthMath.isInPolygon(p(-175, 5), square));
 	}
 
-	public void testPointInHoleOfConcavePolygonIsOutsidePolygon()
+	@Test public void pointInHoleOfConcavePolygonIsOutsidePolygon()
 	{
 		List<LatLon> r = createRhombusWithHoleAround(p(0, 0));
 		assertFalse(SphericalEarthMath.isInPolygon(p(0, 0), r));
 		assertFalse(SphericalEarthMath.isInPolygon(p(0, 0.5), r));
 	}
 
-	public void testPointInHoleOfConcavePolygonIsOutsidePolygonAt180thMeridian()
+	@Test public void pointInHoleOfConcavePolygonIsOutsidePolygonAt180thMeridian()
 	{
 		List<LatLon> r = createRhombusWithHoleAround(p(180, 0));
 		assertFalse(SphericalEarthMath.isInPolygon(p(180, 0), r));
 		assertFalse(SphericalEarthMath.isInPolygon(p(180, 0.5), r));
 	}
 
-	public void testPointInShellOfConcavePolygonIsInsidePolygon()
+	@Test public void pointInShellOfConcavePolygonIsInsidePolygon()
 	{
 		List<LatLon> r = createRhombusWithHoleAround(p(0, 0));
 		assertTrue(SphericalEarthMath.isInPolygon(p(0.75, 0.75), r));
 		assertTrue(SphericalEarthMath.isInPolygon(p(1.5, 0), r));
 	}
 
-	public void testPointInShellOfConcavePolygonIsInsidePolygonAt180thMeridian()
+	@Test public void pointInShellOfConcavePolygonIsInsidePolygonAt180thMeridian()
 	{
 		List<LatLon> r = createRhombusWithHoleAround(p(180, 0));
 		assertTrue(SphericalEarthMath.isInPolygon(p(-179.25, 0.75), r));
@@ -539,7 +541,7 @@ public class SphericalEarthMathTest extends TestCase
 
 	/* +++++++++++++++++++++++++++++ test point in multipolygon check +++++++++++++++++++++++++++ */
 
-	public void testEmptyListDefinedClockwiseFails()
+	@Test public void emptyListDefinedClockwiseFails()
 	{
 		try
 		{
@@ -548,7 +550,7 @@ public class SphericalEarthMathTest extends TestCase
 		} catch (IllegalArgumentException ignore) {}
 	}
 
-	public void testListDefinedClockwise()
+	@Test public void listDefinedClockwise()
 	{
 		List<LatLon> polygon = createRhombusAround(p(0, 0), 1);
 		assertFalse(SphericalEarthMath.isRingDefinedClockwise(polygon));
@@ -556,7 +558,7 @@ public class SphericalEarthMathTest extends TestCase
 		assertTrue(SphericalEarthMath.isRingDefinedClockwise(polygon));
 	}
 
-	public void testListDefinedClockwiseOn180thMeridian()
+	@Test public void listDefinedClockwiseOn180thMeridian()
 	{
 		List<LatLon> polygon = createRhombusAround(p(180, 0), 1);
 		assertFalse(SphericalEarthMath.isRingDefinedClockwise(polygon));
@@ -564,7 +566,7 @@ public class SphericalEarthMathTest extends TestCase
 		assertTrue(SphericalEarthMath.isRingDefinedClockwise(polygon));
 	}
 
-	public void testPointInMultipolygon()
+	@Test public void pointInMultipolygon()
 	{
 		ShorthandLatLon origin = p(0, 0);
 

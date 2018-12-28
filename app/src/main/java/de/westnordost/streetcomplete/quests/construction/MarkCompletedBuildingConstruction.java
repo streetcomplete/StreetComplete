@@ -19,7 +19,8 @@ import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment;
 
 public class MarkCompletedBuildingConstruction extends MarkCompletedConstruction
 {
-	@Inject public MarkCompletedBuildingConstruction(OverpassMapDataDao overpassServer) {
+	@Inject public MarkCompletedBuildingConstruction(OverpassMapDataDao overpassServer)
+	{
 		super(overpassServer);
 	}
 

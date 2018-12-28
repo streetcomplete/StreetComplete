@@ -23,25 +23,38 @@ public class LastPickedValuesStore
 		this.prefs = prefs;
 	}
 
-	public void addLastPicked(String key, Iterable<String> newValues)
+	public void addLastPicked(String key, Iterable<String> newValues, int max)
 	{
-		LinkedList<String> values = load(key);
+		LinkedList<String> values = getLastPicked(key);
 		for (String value : newValues)
 		{
 			values.remove(value);
 			values.addFirst(value);
 		}
-		prefs.edit().putString(getKey(key), TextUtils.join(",",values)).apply();
+		final List<String> lastValues;
+		if(max != -1) lastValues = values.subList(0, Math.min(values.size(), max));
+		else lastValues = values;
+		prefs.edit().putString(getKey(key), TextUtils.join(",",lastValues)).apply();
+	}
+
+	public void addLastPicked(String key, String value, int max)
+	{
+		addLastPicked(key, Collections.singleton(value), max);
+	}
+
+	public void addLastPicked(String key, Iterable<String> newValues)
+	{
+		addLastPicked(key, newValues, -1);
 	}
 
 	public void addLastPicked(String key, String value)
 	{
-		addLastPicked(key, Collections.singleton(value));
+		addLastPicked(key, value, -1);
 	}
 
 	public void moveLastPickedToFront(String key, LinkedList<Item> items, List<Item> itemPool)
 	{
-		LinkedList<Item> lastPickedItems = findItems(load(key), itemPool);
+		LinkedList<Item> lastPickedItems = findItems(getLastPicked(key), itemPool);
 		Iterator<Item> reverseIt = lastPickedItems.descendingIterator();
 		while(reverseIt.hasNext())
 		{
@@ -51,7 +64,7 @@ public class LastPickedValuesStore
 		}
 	}
 
-	private LinkedList<String> load(String key)
+	public LinkedList<String> getLastPicked(String key)
 	{
 		LinkedList<String> result = new LinkedList<>();
 		String values = prefs.getString(getKey(key), null);
@@ -61,7 +74,7 @@ public class LastPickedValuesStore
 
 	private String getKey(String key)
 	{
-		return Prefs.IMAGE_LIST_LAST_PICKED_PREFIX + key;
+		return Prefs.LAST_PICKED_PREFIX + key;
 	}
 
 	private static LinkedList<Item> findItems(List<String> values, Iterable<Item> itemPool)

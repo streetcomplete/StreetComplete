@@ -12,8 +12,8 @@ global:
     road_outline_color: '#cc9999'
     path_color: global.road_color
     path_outline_color: '#e0c9b3'
-    tunnel_color: '#ccdee0'
     square_color: global.road_color
+    square_outline_color: global.path_outline_color
 
     earth_color: '#f3eacc'
     water_color: '#68d'
@@ -23,6 +23,9 @@ global:
     building_outline_color: rgb(185,195,217)
 
     boundary_color: '#e66'
+
+    oneway_arrow_color: '#888'
+    barrier_color: '#888'
 
     name_source: |
         function() {
@@ -68,3 +71,10 @@ fonts:
           url: fonts/Montserrat-Medium.woff
         - weight: 700
           url: fonts/Montserrat-Bold.woff
+
+textures:
+    oneway-arrow:
+        url: images/oneway_arrow@2x.png
+        # url: https://raw.githubusercontent.com/ENT8R/streetcomplete-mapstyle/master/images/oneway_arrow@2x.png
+        filtering: mipmap
+        density: 5

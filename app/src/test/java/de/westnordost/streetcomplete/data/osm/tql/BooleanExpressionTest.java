@@ -1,39 +1,41 @@
 package de.westnordost.streetcomplete.data.osm.tql;
 
-import junit.framework.TestCase;
+import org.junit.Test;
 
 import java.util.Iterator;
 
-public class BooleanExpressionTest extends TestCase
+import static org.junit.Assert.*;
+
+public class BooleanExpressionTest
 {
 
-	public void testExpand00() { checkExpand("a", "a"); }
-	public void testExpand01() { checkExpand("a*b*c", "a*b*c"); }
-	public void testExpand02() { checkExpand("a+b+c", "a+b+c"); }
-	public void testExpand03() { checkExpand("a+b*c+d", "a+b*c+d"); }
-	public void testExpand04() { checkExpand("a*b+c*d", "a*b+c*d"); }
+	@Test public void expand00() { checkExpand("a", "a"); }
+	@Test public void expand01() { checkExpand("a*b*c", "a*b*c"); }
+	@Test public void expand02() { checkExpand("a+b+c", "a+b+c"); }
+	@Test public void expand03() { checkExpand("a+b*c+d", "a+b*c+d"); }
+	@Test public void expand04() { checkExpand("a*b+c*d", "a*b+c*d"); }
 
-	public void testExpand10() { checkExpand("(a+b)*c", "a*c+b*c"); }
-	public void testExpand11() { checkExpand("a*(b+c)", "a*b+a*c"); }
-	public void testExpand12() { checkExpand("a*(b+c)*d", "a*b*d+a*c*d"); }
+	@Test public void expand10() { checkExpand("(a+b)*c", "a*c+b*c"); }
+	@Test public void expand11() { checkExpand("a*(b+c)", "a*b+a*c"); }
+	@Test public void expand12() { checkExpand("a*(b+c)*d", "a*b*d+a*c*d"); }
 
-	public void testExpand20() { checkExpand("a*(b+c*d)", "a*b+a*c*d"); }
-	public void testExpand21() { checkExpand("a+b*(c+d)", "a+b*c+b*d"); }
-	public void testExpand22() { checkExpand("(a+b)*c+d", "a*c+b*c+d"); }
+	@Test public void expand20() { checkExpand("a*(b+c*d)", "a*b+a*c*d"); }
+	@Test public void expand21() { checkExpand("a+b*(c+d)", "a+b*c+b*d"); }
+	@Test public void expand22() { checkExpand("(a+b)*c+d", "a*c+b*c+d"); }
 
-	public void testExpand30() { checkExpand("((a+b)*c+d)*e", "a*c*e+b*c*e+d*e"); }
-	public void testExpand31() { checkExpand("a*(b+c*(d+e))", "a*b+a*c*d+a*c*e"); }
-	public void testExpand32() { checkExpand("z*(y+x*(a+b)*c+d)*e", "z*y*e+z*x*a*c*e+z*x*b*c*e+z*d*e"); }
+	@Test public void expand30() { checkExpand("((a+b)*c+d)*e", "a*c*e+b*c*e+d*e"); }
+	@Test public void expand31() { checkExpand("a*(b+c*(d+e))", "a*b+a*c*d+a*c*e"); }
+	@Test public void expand32() { checkExpand("z*(y+x*(a+b)*c+d)*e", "z*y*e+z*x*a*c*e+z*x*b*c*e+z*d*e"); }
 
-	public void testExpand40() { checkExpand("(x+y)*z*(a+b)", "x*z*a+x*z*b+y*z*a+y*z*b"); }
+	@Test public void expand40() { checkExpand("(x+y)*z*(a+b)", "x*z*a+x*z*b+y*z*a+y*z*b"); }
 
-	public void testMatchLeaf()
+	@Test public void matchLeaf()
 	{
 		assertTrue(evalExpression("1"));
 		assertFalse(evalExpression("0"));
 	}
 
-	public void testMatchOr()
+	@Test public void matchOr()
 	{
 		assertTrue(evalExpression("1+1"));
 		assertTrue(evalExpression("1+0"));
@@ -43,7 +45,7 @@ public class BooleanExpressionTest extends TestCase
 		assertTrue(evalExpression("0+0+1"));
 	}
 
-	public void testMatchAnd()
+	@Test public void matchAnd()
 	{
 		assertTrue(evalExpression("1*1"));
 		assertFalse(evalExpression("1*0"));
@@ -54,7 +56,7 @@ public class BooleanExpressionTest extends TestCase
 		assertFalse(evalExpression("1*1*0"));
 	}
 
-	public void testMatchAndInOr()
+	@Test public void matchAndInOr()
 	{
 		assertTrue(evalExpression("(1*0)+1"));
 		assertFalse(evalExpression("(1*0)+0"));
@@ -62,7 +64,7 @@ public class BooleanExpressionTest extends TestCase
 		assertTrue(evalExpression("(1*1)+1"));
 	}
 
-	public void testMatchOrInAnd()
+	@Test public void matchOrInAnd()
 	{
 		assertTrue(evalExpression("(1+0)*1"));
 		assertFalse(evalExpression("(1+0)*0"));
@@ -70,7 +72,7 @@ public class BooleanExpressionTest extends TestCase
 		assertFalse(evalExpression("(0+0)*1"));
 	}
 
-	public void testTypeNotInitiallySet()
+	@Test public void typeNotInitiallySet()
 	{
 		BooleanExpression x = new BooleanExpression();
 		assertFalse(x.isAnd());
@@ -79,25 +81,25 @@ public class BooleanExpressionTest extends TestCase
 		assertFalse(x.isValue());
 	}
 
-	public void testAddAnd()
+	@Test public void addAnd()
 	{
 		BooleanExpression x = new BooleanExpression();
 		assertTrue(x.addAnd().isAnd());
 	}
 
-	public void testAddOr()
+	@Test public void addOr()
 	{
 		BooleanExpression x = new BooleanExpression();
 		assertTrue(x.addOr().isOr());
 	}
 
-	public void testSetAsRoot()
+	@Test public void setAsRoot()
 	{
 		BooleanExpression x = new BooleanExpression(true);
 		assertTrue(x.isRoot());
 	}
 
-	public void testSetAsValue()
+	@Test public void setAsValue()
 	{
 		BooleanExpression<BooleanExpressionValue> x = new BooleanExpression<>();
 		x.addValue(new TestBooleanExpressionValue("jo"));
@@ -105,14 +107,14 @@ public class BooleanExpressionTest extends TestCase
 		assertEquals("jo", ((TestBooleanExpressionValue)x.getFirstChild().getValue()).getValue());
 	}
 
-	public void testGetParent()
+	@Test public void getParent()
 	{
 		BooleanExpression parent = new BooleanExpression();
 		assertNull(parent.getParent());
 		assertEquals(parent, parent.addOpenBracket().getParent());
 	}
 
-	public void testCopyStringEquals()
+	@Test public void copyStringEquals()
 	{
 		BooleanExpression tree = TestBooleanExpressionParser.parse("(a+b)*c");
 		BooleanExpression treeCopy = tree.copy();
@@ -120,7 +122,7 @@ public class BooleanExpressionTest extends TestCase
 		assertEquals(treeCopy.toString(), tree.toString());
 	}
 
-	public void testCopyIsDeep()
+	@Test public void copyIsDeep()
 	{
 		BooleanExpression<BooleanExpressionValue> tree = TestBooleanExpressionParser.parse("(a+b)*c");
 		BooleanExpression<BooleanExpressionValue> treeCopy = tree.copy();

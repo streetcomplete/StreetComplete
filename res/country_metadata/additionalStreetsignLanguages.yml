@@ -12,7 +12,7 @@ CN-BJ: [en]
 EG: [en]
 EE: [ru]
 # can be removed if osmBoundaries is extended to differenciate between Catalunia, Valencia, Basque,...
-ES: [ca, eu, gl]
+ES: [ca, eu, gl, ast]
 # unclear where exactly in France this is also spoken. When it is clear -> osmBoundaries could be extended
 FR: [oc, ca, br]
 # can be removed if osmBoundaries is extended to differenciate between Scotland, Wales,...

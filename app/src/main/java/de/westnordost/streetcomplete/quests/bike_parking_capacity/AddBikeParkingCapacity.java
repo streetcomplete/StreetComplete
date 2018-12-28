@@ -22,7 +22,7 @@ public class AddBikeParkingCapacity extends SimpleOverpassQuestType
 
 	@Override protected String getTagFilters()
 	{
-		return "nodes, ways with amenity=bicycle_parking and !capacity and (access !~ private|no)";
+		return "nodes, ways with amenity=bicycle_parking and !capacity and access !~ private|no";
 	}
 
 	public AbstractQuestAnswerFragment createForm()
@@ -32,7 +32,7 @@ public class AddBikeParkingCapacity extends SimpleOverpassQuestType
 
 	public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes)
 	{
-		changes.add("capacity", ""+answer.getInt(AddBikeParkingCapacityForm.BIKE_PARKING_CAPACITY));
+		changes.add("capacity", ""+Integer.parseInt(answer.getString(AddBikeParkingCapacityForm.INPUT)));
 	}
 
 	@Override public String getCommitMessage() { return "Add bicycle parking capacities"; }

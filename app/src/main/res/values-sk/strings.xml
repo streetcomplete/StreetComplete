@@ -280,6 +280,8 @@ Zadané informácie sa potom priamo pridávajú do OpenStreetMap vo vašom mene 
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_location_name_title">"Má miesto %s bezbariérový prístup?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_business">"Čiastočne znamená, že pri vchode nie je viac ako jeden schod a väčšina izieb vo vnútri je bezbariérová."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"Čiastočne znamená, že tu nie je viac ako jeden schod brániaci prístupu."</string>
 
@@ -640,4 +642,27 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="quest_maxheight_answer_noSign_question">"Je tam dosť miesta na prejazd aj pre najvyššie kamióny (viac ako 4,5 metra)?"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Táto výška vyzerá nepravdepodobne. Ste si istý, že je správna?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
+    <string name="quest_noteDiscussion_closed2">"Zatvoril(a) %1$s, %2$s"</string>
+    <string name="quest_noteDiscussion_reopen2">"Znovu otvoril(a) %1$s, %2$s"</string>
+    <string name="quest_noteDiscussion_hide2">"Schoval(a) %1$s, %2$s"</string>
+    <string name="quest_railway_crossing_barrier_title">"Ako je chránený tento železničný priechod."</string>
+    <string name="quest_railway_crossing_barrier_none">"Nie je"</string>
+    <string name="privacy_html_image_upload2">"&lt;p&gt;Fotky, ktoré priložíte k poznámke sú nahrané na moj server a vymazané pár dní po tom, čo je poznámka označená ako vyriešená. Ich metadáta sú odstránené pre nahraním.&lt;/p&gt;"</string>
+    <string name="action_deselect_all">"Odznačiť všetko"</string>
+    <string name="quest_buildingType_retail_description">"vrátane budov pre reštaurácie, kaviarne, …"</string>
+    <string name="quest_openingHours_timeSelect_next">"Ďalej"</string>
+    <string name="quest_tracktype_title">"Aká je pevnosť povrchu tejto cesty?"</string>
+    <string name="quest_tracktype_grade1">"Pevný"</string>
+    <string name="quest_tracktype_grade2">"Zväčša pevný"</string>
+    <string name="quest_tracktype_grade3">"Zmiešaný"</string>
+    <string name="quest_tracktype_grade4">"Zväčša mäkký"</string>
+    <string name="quest_tracktype_grade5">"Mäkký"</string>
+    <string name="quest_building_underground_name_title">"Je %s úplne pod zemou?"</string>
+    <string name="quest_building_underground_title">"Je táto buda úplne pod zemou?"</string>
+    <string name="quest_traffic_signals_sound_title">"Sú tu zvukové signály pre nevidiacich?"</string>
+    <string name="quest_wheelchairAccess_limited_description_outside">"Čiastočne znamená, že k vstupu vedie najviac jeden schod."</string>
+    <string name="quest_wheelchairAccess_outside_title">"Je toto miesto bezbariérové?"</string>
+    <string name="quest_traffic_signals_button_title">"Má tento semafor tlačidlo na vyžiadanie zelenej?"</string>
+    <string name="quest_motorcycleParkingCapacity_title">"Koľko motoriek tu môže parkovať?"</string>
+    <string name="quest_motorcycleParkingCoveredStatus_title">"Je toto parkovisko pre motorky zastrešené (chránené pred dažďom)?"</string>
 </resources>

@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.data.osm.tql;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 import de.westnordost.osmapi.map.data.BoundingBox;
 
 public class OverpassQLUtil
@@ -18,8 +21,11 @@ public class OverpassQLUtil
 
 	private static String getBboxString(BoundingBox bbox)
 	{
-		return bbox.getMinLatitude() + "," + bbox.getMinLongitude() + "," +
-			bbox.getMaxLatitude() + "," + bbox.getMaxLongitude();
+		NumberFormat df = NumberFormat.getNumberInstance(Locale.US);
+		df.setMaximumFractionDigits(340);
+
+		return df.format(bbox.getMinLatitude()) + "," + df.format(bbox.getMinLongitude()) + "," +
+			df.format(bbox.getMaxLatitude()) + "," + df.format(bbox.getMaxLongitude());
 	}
 
 	public static String getQuestPrintStatement()
