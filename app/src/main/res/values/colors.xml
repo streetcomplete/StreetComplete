@@ -32,4 +32,6 @@
     <color name="traffic_gray_b">#4f5250</color>
     <color name="pressed">#ddd</color>
 
+    <color name="disabled_notice">#eee</color>
+    <color name="attribution_text">#444444</color>
 </resources>

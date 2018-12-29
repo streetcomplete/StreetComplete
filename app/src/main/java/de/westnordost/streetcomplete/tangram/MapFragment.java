@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.tangram;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.graphics.PointF;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -37,7 +38,6 @@ import com.mapzen.tangram.SceneError;
 import com.mapzen.tangram.TouchInput;
 
 import java.io.File;
-import java.util.Calendar;
 
 import javax.inject.Inject;
 
@@ -132,28 +132,15 @@ public class MapFragment extends Fragment implements
 		getMapAsync(apiKey, getSceneFilePath());
 	}
 
-	private String getSceneFilePath()
+	protected String getSceneFilePath()
 	{
-		Prefs.Mapstyle p = Prefs.Mapstyle.valueOf(prefs.getString(Prefs.MAPSTYLE, null));
-		String filename = "streetcomplete-light-style.yaml";
-		switch (p)
+		String style = "streetcomplete-light-style.yaml";
+		int currentNightMode = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+		if (currentNightMode == Configuration.UI_MODE_NIGHT_YES)
 		{
-			case LIGHT:
-				filename = "streetcomplete-light-style.yaml";
-				break;
-			case DARK:
-				filename = "streetcomplete-dark-style.yaml";
-				break;
-			case SATELLITE:
-				filename = "streetcomplete-satellite-style.yaml";
-				break;
-			case AUTO:
-				int hourOfDay = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
-				if (hourOfDay < 6 || hourOfDay > 18) filename = "streetcomplete-dark-style.yaml";
-				else filename = "streetcomplete-light-style.yaml";
-				break;
+			style = "streetcomplete-dark-style.yaml";
 		}
-		return "map_theme/" + filename;
+		return "map_theme/" + style;
 	}
 
 	@CallSuper public void getMapAsync(String apiKey, @NonNull final String sceneFilePath)

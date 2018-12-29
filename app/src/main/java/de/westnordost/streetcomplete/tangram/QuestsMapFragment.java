@@ -68,6 +68,8 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 	@Inject TangramQuestSpriteSheetCreator spriteSheetCreator;
 	private Map<QuestType, Integer> questTypeOrder;
 
+	private String sceneFile;
+
 	public interface Listener
 	{
 		void onClickedQuest(QuestGroup questGroup, Long questId);
@@ -99,6 +101,12 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		}
 	}
 
+	@Override public void onResume()
+	{
+		super.onResume();
+		if (sceneFile != null && !sceneFile.equals(getSceneFilePath())) getActivity().recreate();
+	}
+
 	@Override public void onStop()
 	{
 		super.onStop();
@@ -127,6 +135,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		List<SceneUpdate> sceneUpdates = spriteSheetCreator.get();
 		sceneUpdates.add(new SceneUpdate("global.language", Locale.getDefault().getLanguage()));
 
+		sceneFile = sceneFilePath;
 		controller.loadSceneFile(sceneFilePath, sceneUpdates);
 	}
 

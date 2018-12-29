@@ -14,7 +14,7 @@ public class Prefs
 			AUTOSYNC = "autosync",
 			KEEP_SCREEN_ON = "display.keepScreenOn",
 			UNGLUE_HINT_TIMES_SHOWN = "unglueHint.shown",
-			MAPSTYLE = "map.mapstyle";
+			THEME_SELECT = "theme.select";
 
 	// not shown anywhere directly
 	public static final String
@@ -31,8 +31,8 @@ public class Prefs
 	{
 		ON, WIFI, OFF
 	}
-	 public enum Mapstyle
+	 public enum Theme
 	 {
-	 	LIGHT, DARK, AUTO, SATELLITE
+	 	LIGHT, DARK, AUTO, SYSTEM
 	 }
 }

@@ -66,16 +66,16 @@
     </PreferenceCategory>
 
     <PreferenceCategory
-        android:key="map"
-        android:title="@string/pref_category_map">
+        android:key="theme"
+        android:title="@string/pref_category_theme">
 
         <ListPreference
-            android:key="map.mapstyle"
-            android:title="@string/pref_title_mapstyle"
+            android:key="theme.select"
+            android:title="@string/pref_title_theme_select"
             android:summary="%s"
-            android:defaultValue="LIGHT"
-            android:entries="@array/pref_entries_mapstyle"
-            android:entryValues="@array/pref_entryvalues_mapstyle"
+            android:defaultValue="AUTO"
+            android:entries="@array/pref_entries_theme_select"
+            android:entryValues="@array/pref_entryvalues_theme_select"
             android:persistent="true"
             />
 
