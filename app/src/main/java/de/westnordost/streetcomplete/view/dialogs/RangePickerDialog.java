@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.view.dialogs;
 
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +24,7 @@ public class RangePickerDialog extends AlertDialog implements DialogInterface.On
 	public RangePickerDialog(Context context, OnRangeChangeListener listener, String[] values,
 							 Integer startIndex, Integer endIndex, CharSequence title)
 	{
-		super(context, R.style.AppTheme_AlertDialog);
+		super(context, R.style.Theme_Bubble_Dialog);
 
 		this.listener = listener;
 

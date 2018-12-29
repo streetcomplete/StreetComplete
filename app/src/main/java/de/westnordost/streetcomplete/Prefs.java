@@ -12,7 +12,6 @@ public class Prefs
 			OSM_USER_NAME = "osm.username",
 			SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS = "display.nonQuestionNotes",
 			AUTOSYNC = "autosync",
-			LAST_SOLVED_QUEST_TIME = "changesets.lastQuestSolvedTime",
 			KEEP_SCREEN_ON = "display.keepScreenOn",
 			UNGLUE_HINT_TIMES_SHOWN = "unglueHint.shown",
 			MAPSTYLE = "map.mapstyle";
@@ -20,7 +19,11 @@ public class Prefs
 	// not shown anywhere directly
 	public static final String
 			QUEST_ORDER = "quests.order",
-			QUEST_INVALIDATION = "quests.invalidation";
+			QUEST_INVALIDATION = "quests.invalidation",
+			LAST_SOLVED_QUEST_TIME = "changesets.lastQuestSolvedTime",
+			MAP_LATITUDE = "map.latitude",
+			MAP_LONGITUDE = "map.longitude",
+			LAST_PICKED_PREFIX = "imageListLastPicked.";
 
 	public static final String HAS_SHOWN_UNDO_FUCKUP_WARNING = "alert.undo_fuckup_warning";
 

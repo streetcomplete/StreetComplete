@@ -1,14 +1,16 @@
 package de.westnordost.streetcomplete.data.osm.changes;
 
-import junit.framework.TestCase;
+import org.junit.Test;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class StringMapChangesBuilderTest extends TestCase
+import static org.junit.Assert.*;
+
+public class StringMapChangesBuilderTest
 {
-	public void testDelete()
+	@Test public void delete()
 	{
 		StringMapChangesBuilder builder = new StringMapChangesBuilder(createMap());
 		builder.delete("exists");
@@ -21,18 +23,19 @@ public class StringMapChangesBuilderTest extends TestCase
 		assertEquals("like this", change.valueBefore);
 	}
 
-	public void testDeleteNonExistingFails()
+	@Test(expected = IllegalArgumentException.class) public void deleteNonExistingFails()
 	{
 		StringMapChangesBuilder builder = new StringMapChangesBuilder(createMap());
-		try
-		{
-			builder.delete("does not exist");
-		}
-		catch(IllegalArgumentException e) {	return;	}
-		fail();
+		builder.delete("does not exist");
 	}
 
-	public void testAdd()
+	@Test public void deleteIfExistsNonExistingDoesNotFail()
+	{
+		StringMapChangesBuilder builder = new StringMapChangesBuilder(createMap());
+		builder.deleteIfExists("does not exist");
+	}
+
+	@Test public void add()
 	{
 		StringMapChangesBuilder builder = new StringMapChangesBuilder(createMap());
 		builder.add("does not exist", "but now");
@@ -45,18 +48,13 @@ public class StringMapChangesBuilderTest extends TestCase
 		assertEquals("but now", change.value);
 	}
 
-	public void testAddAlreadyExistingFails()
+	@Test(expected = IllegalArgumentException.class) public void addAlreadyExistingFails()
 	{
 		StringMapChangesBuilder builder = new StringMapChangesBuilder(createMap());
-		try
-		{
-			builder.add("exists", "like that");
-		}
-		catch(IllegalArgumentException e) {	return;	}
-		fail();
+		builder.add("exists", "like that");
 	}
 
-	public void testModify()
+	@Test public void modify()
 	{
 		StringMapChangesBuilder builder = new StringMapChangesBuilder(createMap());
 		builder.modify("exists", "like that");
@@ -71,17 +69,18 @@ public class StringMapChangesBuilderTest extends TestCase
 		assertEquals("like that", change.value);
 	}
 
-	public void testDuplicateChange()
+	@Test public void modifyIfExistsNonExistingDoesNotFail()
+	{
+		StringMapChangesBuilder builder = new StringMapChangesBuilder(createMap());
+		builder.modifyIfExists("does not exist","bla");
+	}
+
+	@Test(expected = IllegalStateException.class) public void duplicateChangeFails()
 	{
 		StringMapChangesBuilder builder = new StringMapChangesBuilder(createMap());
 		builder.modify("exists", "like that");
 
-		try
-		{
-			builder.delete("exists");
-			fail();
-		}
-		catch(IllegalStateException e) { }
+		builder.delete("exists");
 	}
 
 	private Map<String,String> createMap()

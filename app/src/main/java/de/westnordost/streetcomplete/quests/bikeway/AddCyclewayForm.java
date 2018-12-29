@@ -10,24 +10,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.streetcomplete.R;
-import de.westnordost.streetcomplete.data.osm.ElementGeometry;
 import de.westnordost.streetcomplete.data.osm.tql.FiltersParser;
 import de.westnordost.streetcomplete.data.osm.tql.TagFilterExpression;
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
-import de.westnordost.streetcomplete.util.SphericalEarthMath;
-import de.westnordost.streetcomplete.view.CompassView;
+import de.westnordost.streetcomplete.quests.StreetSideRotater;
 import de.westnordost.streetcomplete.view.ListAdapter;
 import de.westnordost.streetcomplete.view.StreetSideSelectPuzzle;
-import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
+
 
 public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 {
@@ -46,9 +43,8 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 			" (oneway ~ yes|-1 and highway ~ primary|secondary|tertiary or junction=roundabout)");
 
 
-	private StreetSideSelectPuzzle puzzle;
-	private CompassView compassView;
-	private float wayOrientationAtCenter;
+	private StreetSideRotater streetSideRotater;
+	StreetSideSelectPuzzle puzzle;
 
 	private boolean isDefiningBothSides;
 
@@ -59,14 +55,15 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 									   Bundle inState)
 	{
 		View view = super.onCreateView(inflater, container, inState);
-		setContentView(R.layout.quest_cycleway);
+		setContentView(R.layout.quest_street_side_puzzle);
+		setNoContentPadding();
+
+		View compassNeedle = view.findViewById(R.id.compassNeedle);
 
 		puzzle = view.findViewById(R.id.puzzle);
 		puzzle.setListener(this::showCyclewaySelectionDialog);
 
-		compassView = view.findViewById(R.id.compassNeedle);
-
-		wayOrientationAtCenter = getWayOrientationAtCenterLineInDegrees(getElementGeometry());
+		streetSideRotater = new StreetSideRotater(puzzle, compassNeedle, getElementGeometry());
 
 		initPuzzleDisplay(inState);
 		initPuzzleImages(inState);
@@ -90,7 +87,10 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 			if(isLeftHandTraffic()) puzzle.showOnlyLeftSide();
 			else                    puzzle.showOnlyRightSide();
 
-			addOtherAnswer(R.string.quest_cycleway_answer_contraflow_cycleway, this::showBothSides);
+			if(!"roundabout".equals(getOsmElement().getTags().get("junction")))
+			{
+				addOtherAnswer(R.string.quest_cycleway_answer_contraflow_cycleway, this::showBothSides);
+			}
 		}
 	}
 
@@ -105,6 +105,7 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 			if(rightSideString != null)
 			{
 				rightSide = Cycleway.valueOf(rightSideString);
+				checkIsFormComplete();
 				puzzle.setRightSideImageResource(rightSide.getIconResId(isLeftHandTraffic()));
 			}
 			else
@@ -115,6 +116,7 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 			if(leftSideString != null)
 			{
 				leftSide = Cycleway.valueOf(leftSideString);
+				checkIsFormComplete();
 				puzzle.setLeftSideImageResource(leftSide.getIconResId(isLeftHandTraffic()));
 			}
 			else
@@ -139,49 +141,13 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 
 	@AnyThread public void onMapOrientation(final float rotation, final float tilt)
 	{
-		final float rotationInDegrees = (float) (rotation * 180 / Math.PI);
-		getActivity().runOnUiThread(() ->
-		{
-			if(puzzle != null)
-			{
-				puzzle.setStreetRotation(wayOrientationAtCenter + rotationInDegrees);
-			}
-			if(compassView != null)
-			{
-				compassView.setOrientation(rotation, tilt);
-			}
-		});
-	}
-
-	private static float getWayOrientationAtCenterLineInDegrees(ElementGeometry e)
-	{
-		if(e.polylines == null) return 0;
-
-		List<LatLon> points = e.polylines.get(0);
-		if(points != null && points.size() > 1)
-		{
-			List<LatLon> centerLine = SphericalEarthMath.centerLineOf(points);
-			if(centerLine != null)
-			{
-				return (float) SphericalEarthMath.bearing(centerLine.get(0), centerLine.get(1));
-			}
+		if(streetSideRotater != null) {
+			streetSideRotater.onMapOrientation(rotation, tilt);
 		}
-		return 0;
 	}
 
 	@Override protected void onClickOk()
 	{
-		if(leftSide == null && rightSide == null)
-		{
-			Toast.makeText(getActivity(), R.string.no_changes, Toast.LENGTH_SHORT).show();
-			return;
-		}
-		else if(isDefiningBothSides && (leftSide == null || rightSide == null))
-		{
-			Toast.makeText(getActivity(), R.string.need_specify_both_sides, Toast.LENGTH_SHORT).show();
-			return;
-		}
-
 		boolean isOnewayNotForCyclists = false;
 
 		// a cycleway that goes into opposite direction of a oneway street needs special tagging
@@ -215,22 +181,23 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 		if(leftSide != null)  bundle.putString(CYCLEWAY_LEFT, leftSide.name());
 		if(rightSide != null) bundle.putString(CYCLEWAY_RIGHT, rightSide.name());
 		bundle.putBoolean(IS_ONEWAY_NOT_FOR_CYCLISTS, isOnewayNotForCyclists);
-		applyFormAnswer(bundle);
+		applyAnswer(bundle);
 	}
 
 	private static boolean isSingleTrackOrLane(Cycleway cycleway)
 	{
-		return cycleway == Cycleway.TRACK || cycleway == Cycleway.LANE;
+		return cycleway == Cycleway.TRACK || cycleway == Cycleway.EXCLUSIVE_LANE;
 	}
 
 	private static boolean isDualTrackOrLane(Cycleway cycleway)
 	{
-		return cycleway == Cycleway.TRACK_DUAL || cycleway == Cycleway.LANE_DUAL;
+		return cycleway == Cycleway.DUAL_TRACK || cycleway == Cycleway.DUAL_LANE;
 	}
 
-	@Override public boolean hasChanges()
+	@Override public boolean isFormComplete()
 	{
-		return leftSide != null || rightSide != null;
+		if(isDefiningBothSides) return leftSide != null && rightSide != null;
+		else return leftSide != null || rightSide != null;
 	}
 
 	private void showCyclewaySelectionDialog(final boolean isRight)
@@ -240,7 +207,7 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 				ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
 		recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
 
-		final AlertDialog alertDialog = new AlertDialogBuilder(getActivity())
+		final AlertDialog alertDialog = new AlertDialog.Builder(getActivity())
 				.setTitle(R.string.quest_select_hint)
 				.setView(recyclerView)
 				.create();
@@ -261,21 +228,35 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 				puzzle.replaceLeftSideImageResource(iconResId);
 				leftSide = cycleway;
 			}
+			checkIsFormComplete();
 		}));
 		alertDialog.show();
 	}
 
 	private List<Cycleway> getCyclewayItems(boolean isRight)
 	{
-		List<Cycleway> values = new ArrayList<>(Arrays.asList(Cycleway.values()));
+		List<Cycleway> values = new ArrayList<>(Arrays.asList(Cycleway.getDisplayValues()));
+		// different wording for a contraflow lane that is marked like a "shared" lane (just bicycle pictogram)
 		if(isOneway() && isReverseSideRight() == isRight)
 		{
-			values.remove(Cycleway.SHARED);
+			Collections.replaceAll(values, Cycleway.PICTOGRAMS, Cycleway.NONE_NO_ONEWAY);
 		}
-		else
+		String country = getCountryInfo().getCountryCode();
+		if("BE".equals(country))
 		{
-			values.remove(Cycleway.NONE_NO_ONEWAY);
+			// Belgium does not make a difference between continuous and dashed lanes -> so don't tag that difference
+			// also, in Belgium there is a differentiation between the normal lanes and suggestion lanes
+			values.remove(Cycleway.EXCLUSIVE_LANE);
+			values.remove(Cycleway.ADVISORY_LANE);
+			values.add(0, Cycleway.LANE_UNSPECIFIED);
+			values.add(1, Cycleway.SUGGESTION_LANE);
 		}
+		else if("NL".equals(country))
+		{
+			// a differentiation between dashed lanes and suggestion lanes only exist in NL and BE
+			values.add(values.indexOf(Cycleway.ADVISORY_LANE)+1, Cycleway.SUGGESTION_LANE);
+		}
+
 		return values;
 	}
 
@@ -293,7 +274,8 @@ public class AddCyclewayForm extends AbstractQuestFormAnswerFragment
 					{
 						ImageView iconView = itemView.findViewById(R.id.imageView);
 						TextView textView = itemView.findViewById(R.id.textView);
-						iconView.setImageResource(item.getIconResId(isLeftHandTraffic()));
+						int resId = item.getIconResId(isLeftHandTraffic());
+						iconView.setImageDrawable(getResources().getDrawable(resId));
 						textView.setText(item.nameResId);
 						itemView.setOnClickListener(view -> callback.onCyclewaySelected(item));
 					}

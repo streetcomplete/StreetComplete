@@ -11,7 +11,8 @@ public interface Quest
 	Long getId();
 	void setId(long id);
 
-	LatLon getMarkerLocation();
+	LatLon getCenter();
+	LatLon[] getMarkerLocations();
 	ElementGeometry getGeometry();
 
 	QuestType getType();

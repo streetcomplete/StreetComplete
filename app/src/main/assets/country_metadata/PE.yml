@@ -1,5 +1,6 @@
 # Do not edit. Source files are in /res/country_metadata
 isSlowZoneKnown: true
+mobileCountryCode: 716
 officialLanguages: [es, qu, ay]
 orchardProduces: [coffee, cacao, palm_oil, guava, mango, mangosteen, avocado, lemon, lime, grape, olive,
   pineapple, orange, chilli_pepper, sweet_pepper, papaya, brazil_nut, apple, banana]

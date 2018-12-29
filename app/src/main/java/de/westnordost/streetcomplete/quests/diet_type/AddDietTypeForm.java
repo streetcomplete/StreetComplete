@@ -11,7 +11,6 @@ import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 
 public class AddDietTypeForm extends AbstractQuestAnswerFragment
 {
-	// osm values
 	private static final String
 			YES = "yes",
 			NO = "no",
@@ -47,19 +46,18 @@ public class AddDietTypeForm extends AbstractQuestAnswerFragment
 		{
 			description.setText(resId);
 		}
+		else
+		{
+			description.setVisibility(View.GONE);
+		}
 
 		return view;
-	}
-
-	@Override public boolean hasChanges()
-	{
-		return false;
 	}
 
 	protected void onClickAnswer(String answer)
 	{
 		Bundle bundle = new Bundle();
 		bundle.putString(OSM_VALUE, answer);
-		applyImmediateAnswer(bundle);
+		applyAnswer(bundle);
 	}
 }

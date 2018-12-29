@@ -1,7 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
 isLivingStreetKnown: true
-livingStreetSign: ic_living_street_russian
+mobileCountryCode: 401
 officialLanguages: [kk, ru]
-orchardProduces: [apple, tomatoe, grape, apricot, pear, cherry, strawberry, plum, walnut, peach, chilli_pepper,
+orchardProduces: [apple, tomato, grape, apricot, pear, cherry, strawberry, plum, walnut, peach, chilli_pepper,
   sweet_pepper, almond]
 popularReligions: [muslim]

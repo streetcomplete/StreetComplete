@@ -1,9 +1,11 @@
 package de.westnordost.streetcomplete.quests.opening_hours;
 
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,19 +19,22 @@ import javax.inject.Inject;
 import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
+import de.westnordost.streetcomplete.quests.opening_hours.adapter.AddOpeningHoursAdapter;
+import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningMonthsRow;
+import de.westnordost.streetcomplete.util.AdapterDataChangedWatcher;
 import de.westnordost.streetcomplete.util.Serializer;
-import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
+
 
 import static android.view.Menu.NONE;
 
 public class AddOpeningHoursForm extends AbstractQuestFormAnswerFragment
 {
 	public static final String OPENING_HOURS = "opening_hours";
+	public static final String NO_SIGN = "no_sign";
 
 	private static final String	OPENING_HOURS_DATA = "oh_data",
 								IS_ADD_MONTHS_MODE = "oh_add_months";
 
-	private boolean isAlsoAddingMonths;
 	private AddOpeningHoursAdapter openingHoursAdapter;
 
 	@Inject Serializer serializer;
@@ -55,37 +60,41 @@ public class AddOpeningHoursForm extends AbstractQuestFormAnswerFragment
 
 	private void initOpeningHoursAdapter(View contentView, Bundle savedInstanceState)
 	{
-		ArrayList<OpeningMonths> data;
+		ArrayList<OpeningMonthsRow> viewData;
+		boolean isAlsoAddingMonths;
 		if(savedInstanceState != null)
 		{
-			data = serializer.toObject(savedInstanceState.getByteArray(OPENING_HOURS_DATA),ArrayList.class);
+			viewData = serializer.toObject(savedInstanceState.getByteArray(OPENING_HOURS_DATA),ArrayList.class);
 			isAlsoAddingMonths = savedInstanceState.getBoolean(IS_ADD_MONTHS_MODE);
 		}
 		else
 		{
-			data = new ArrayList<>();
-			data.add(new OpeningMonths());
+			viewData = new ArrayList<>();
+			viewData.add(new OpeningMonthsRow());
 			isAlsoAddingMonths = false;
 		}
 
-		openingHoursAdapter = new AddOpeningHoursAdapter(data, getActivity(), getCountryInfo());
+		openingHoursAdapter = new AddOpeningHoursAdapter(viewData, getActivity(), getCountryInfo());
 		openingHoursAdapter.setDisplayMonths(isAlsoAddingMonths);
+		openingHoursAdapter.registerAdapterDataObserver(new AdapterDataChangedWatcher(this::checkIsFormComplete));
 		RecyclerView openingHoursList = contentView.findViewById(R.id.opening_hours_list);
 		openingHoursList.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
 		openingHoursList.setAdapter(openingHoursAdapter);
 		openingHoursList.setNestedScrollingEnabled(false);
+		checkIsFormComplete();
 	}
 
 	private void addOtherAnswers()
 	{
+		addOtherAnswer(R.string.quest_openingHours_no_sign, this::confirmNoSign);
 		addOtherAnswer(R.string.quest_openingHours_answer_no_regular_opening_hours, this::showInputCommentDialog);
 		addOtherAnswer(R.string.quest_openingHours_answer_247, this::showConfirm24_7Dialog);
-		addOtherAnswer(R.string.quest_openingHours_answer_seasonal_opening_hours, this::changeToMonthsMode);
+		addOtherAnswer(R.string.quest_openingHours_answer_seasonal_opening_hours, () -> openingHoursAdapter.changeToMonthsMode());
 	}
 
 	private void onClickAddButton(View v)
 	{
-		if(!isAlsoAddingMonths)
+		if(!openingHoursAdapter.isDisplayMonths())
 		{
 			openingHoursAdapter.addNewWeekdays();
 		}
@@ -107,13 +116,15 @@ public class AddOpeningHoursForm extends AbstractQuestFormAnswerFragment
 	@Override public void onSaveInstanceState(Bundle outState)
 	{
 		super.onSaveInstanceState(outState);
-		outState.putByteArray(OPENING_HOURS_DATA, serializer.toBytes(openingHoursAdapter.getData()));
-		outState.putBoolean(IS_ADD_MONTHS_MODE, isAlsoAddingMonths);
+		outState.putByteArray(OPENING_HOURS_DATA, serializer.toBytes(openingHoursAdapter.getViewData()));
+		outState.putBoolean(IS_ADD_MONTHS_MODE, openingHoursAdapter.isDisplayMonths());
 	}
 
 	@Override protected void onClickOk()
 	{
-		applyOpeningHours(openingHoursAdapter.toString());
+		Bundle answer = new Bundle();
+		answer.putString(OPENING_HOURS, getOpeningHoursString());
+		applyAnswer(answer);
 	}
 
 	private void showInputCommentDialog()
@@ -121,7 +132,7 @@ public class AddOpeningHoursForm extends AbstractQuestFormAnswerFragment
 		View view = LayoutInflater.from(getActivity()).inflate(R.layout.quest_opening_hours_comment, null);
 		final EditText editText = view.findViewById(R.id.commentInput);
 
-		new AlertDialogBuilder(getContext())
+		new AlertDialog.Builder(getContext())
 				.setTitle(R.string.quest_openingHours_comment_title)
 				.setView(view)
 				.setPositiveButton(android.R.string.ok, (dialog, which) ->
@@ -129,7 +140,7 @@ public class AddOpeningHoursForm extends AbstractQuestFormAnswerFragment
 					String txt = editText.getText().toString().replaceAll("\"","").trim();
 					if(txt.isEmpty())
 					{
-						new AlertDialogBuilder(getContext())
+						new AlertDialog.Builder(getContext())
 								.setMessage(R.string.quest_openingHours_emptyAnswer)
 								.setPositiveButton(R.string.ok, null)
 								.show();
@@ -138,7 +149,7 @@ public class AddOpeningHoursForm extends AbstractQuestFormAnswerFragment
 
 					Bundle answer = new Bundle();
 					answer.putString(OPENING_HOURS, "\""+txt+"\"");
-					applyImmediateAnswer(answer);
+					applyAnswer(answer);
 				})
 				.setNegativeButton(android.R.string.cancel, null)
 				.show();
@@ -146,34 +157,36 @@ public class AddOpeningHoursForm extends AbstractQuestFormAnswerFragment
 
 	private void showConfirm24_7Dialog()
 	{
-		new AlertDialogBuilder(getActivity())
+		new AlertDialog.Builder(getActivity())
 				.setMessage(R.string.quest_openingHours_24_7_confirmation)
 				.setPositiveButton(android.R.string.yes, (dialog, which) ->
 				{
 					Bundle answer = new Bundle();
 					answer.putString(OPENING_HOURS, "24/7");
-					applyImmediateAnswer(answer);
+					applyAnswer(answer);
 				})
 				.setNegativeButton(android.R.string.no, null)
 				.show();
 	}
 
-	private void changeToMonthsMode()
+	private void confirmNoSign()
 	{
-		isAlsoAddingMonths = true;
-		openingHoursAdapter.changeToMonthsMode();
+		new AlertDialog.Builder(getActivity())
+			.setTitle(R.string.quest_generic_confirmation_title)
+			.setPositiveButton(R.string.quest_generic_confirmation_yes, (dialog, which) ->
+			{
+				Bundle data = new Bundle();
+				data.putBoolean(NO_SIGN, true);
+				applyAnswer(data);
+			})
+			.setNegativeButton(R.string.quest_generic_confirmation_no, null)
+			.show();
 	}
 
-	private void applyOpeningHours(String openingHours)
-	{
-		Bundle answer = new Bundle();
-		answer.putString(OPENING_HOURS, openingHours);
-		applyFormAnswer(answer);
-	}
+	@Override public boolean isFormComplete() { return !getOpeningHoursString().isEmpty(); }
 
-	@Override public boolean hasChanges()
+	private String getOpeningHoursString()
 	{
-		return !openingHoursAdapter.toString().isEmpty();
+		return TextUtils.join(";", openingHoursAdapter.createData());
 	}
-
 }

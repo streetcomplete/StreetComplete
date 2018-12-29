@@ -50,7 +50,8 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 	private MapData questsLayer;
 	private MapData geometryLayer;
 
-	private Float previousZoom = null;
+	private Float zoomBeforeShowingQuest = null;
+	private LngLat positionBeforeShowingQuest = null;
 
 	private LngLat lastPos;
 	private Rect lastDisplayedRect;
@@ -174,8 +175,8 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 
 	private void zoomAndMoveToContain(ElementGeometry g)
 	{
-		// never zoom back further than 17.5
-		previousZoom = Math.max(17.5f,controller.getZoom());
+		zoomBeforeShowingQuest = controller.getZoom();
+		positionBeforeShowingQuest = controller.getPosition();
 
 		float targetZoom = getMaxZoomThatContains(g);
 		if(Float.isNaN(targetZoom) || targetZoom > MAX_QUEST_ZOOM)
@@ -194,7 +195,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		LngLat pos = getCenterWithOffset(g);
 		controller.setZoom(currentZoom);
 
-		controller.setPositionEased(pos, 500);
+		if(pos != null) controller.setPositionEased(pos, 500);
 		controller.setZoomEased(targetZoom, 500);
 
 		updateView();
@@ -210,6 +211,8 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		LngLat offsetCenter = controller.screenPositionToLngLat(new PointF(
 				questOffset.left + (w - questOffset.left - questOffset.right)/2,
 				questOffset.top + (h - questOffset.top - questOffset.bottom)/2));
+
+		if(normalCenter == null || offsetCenter == null) return null;
 
 		LngLat pos = TangramConst.toLngLat(geometry.center);
 		pos.latitude -= offsetCenter.latitude - normalCenter.latitude;
@@ -249,7 +252,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 	@Override protected boolean shouldCenterCurrentPosition()
 	{
 		// don't center position while displaying a quest
-		return super.shouldCenterCurrentPosition() && previousZoom == null;
+		return super.shouldCenterCurrentPosition() && zoomBeforeShowingQuest == null;
 	}
 
 	protected void updateView()
@@ -337,10 +340,12 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 	public void removeQuestGeometry()
 	{
 		if(geometryLayer != null) geometryLayer.clear();
-		if(controller != null && previousZoom != null)
+		if(controller != null)
 		{
-			controller.setZoomEased(previousZoom, 500);
-			previousZoom = null;
+			if(zoomBeforeShowingQuest != null) controller.setZoomEased(zoomBeforeShowingQuest, 500);
+			if(positionBeforeShowingQuest != null) controller.setPositionEased(positionBeforeShowingQuest, 500);
+			zoomBeforeShowingQuest = null;
+			positionBeforeShowingQuest = null;
 			followPosition();
 		}
 	}
@@ -381,35 +386,39 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 				continue;
 			}
 
-			if(first) first = false;
-			else      geoJson.append(",");
-
-			LatLon pos = quest.getMarkerLocation();
 			String questIconName = getActivity().getResources().getResourceEntryName(quest.getType().getIcon());
 
 			Integer order = questTypeOrder.get(quest.getType());
 			if(order == null) order = 0;
 
-			geoJson.append("{\"type\":\"Feature\",");
-			geoJson.append("\"geometry\":{\"type\":\"Point\",\"coordinates\": [");
-			geoJson.append(pos.getLongitude());
-			geoJson.append(",");
-			geoJson.append(pos.getLatitude());
-			geoJson.append("]},\"properties\": {\"type\":\"point\", \"kind\":\"");
-			geoJson.append(questIconName);
-			geoJson.append("\",\"");
-			geoJson.append(MARKER_QUEST_GROUP);
-			geoJson.append("\":\"");
-			geoJson.append(group.name());
-			geoJson.append("\",\"");
-			geoJson.append(MARKER_QUEST_ID);
-			geoJson.append("\":\"");
-			geoJson.append(quest.getId());
-			geoJson.append("\",\"");
-			geoJson.append("order");
-			geoJson.append("\":\"");
-			geoJson.append(order);
-			geoJson.append("\"}}");
+			LatLon[] positions = quest.getMarkerLocations();
+
+			for (LatLon pos : positions)
+			{
+				if(first) first = false;
+				else      geoJson.append(",");
+
+				geoJson.append("{\"type\":\"Feature\",");
+				geoJson.append("\"geometry\":{\"type\":\"Point\",\"coordinates\": [");
+				geoJson.append(pos.getLongitude());
+				geoJson.append(",");
+				geoJson.append(pos.getLatitude());
+				geoJson.append("]},\"properties\": {\"type\":\"point\", \"kind\":\"");
+				geoJson.append(questIconName);
+				geoJson.append("\",\"");
+				geoJson.append(MARKER_QUEST_GROUP);
+				geoJson.append("\":\"");
+				geoJson.append(group.name());
+				geoJson.append("\",\"");
+				geoJson.append(MARKER_QUEST_ID);
+				geoJson.append("\":\"");
+				geoJson.append(quest.getId());
+				geoJson.append("\",\"");
+				geoJson.append("order");
+				geoJson.append("\":\"");
+				geoJson.append(order);
+				geoJson.append("\"}}");
+			}
 		}
 		geoJson.append("]}");
 
@@ -467,6 +476,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		Double latMin = null, lonMin = null, latMax = null, lonMax = null;
 		for (LatLon position : positions)
 		{
+			if(position == null) return null;
 			double lat = position.getLatitude();
 			double lon = position.getLongitude();
 
@@ -481,7 +491,9 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 
 	public LatLon getPositionAt(PointF pointF)
 	{
-		return TangramConst.toLatLon(controller.screenPositionToLngLat(pointF));
+		LngLat pos = controller.screenPositionToLngLat(pointF);
+		if(pos == null) return null;
+		return TangramConst.toLatLon(pos);
 	}
 
 	public LatLon getPosition()
@@ -490,4 +502,8 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		return TangramConst.toLatLon(controller.getPosition());
 	}
 
+	public PointF getPointOf(LatLon pos)
+	{
+		return controller.lngLatToScreenPosition(TangramConst.toLngLat(pos));
+	}
 }

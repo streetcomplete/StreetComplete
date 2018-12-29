@@ -23,6 +23,7 @@ import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.data.download.MobileDataAutoDownloadStrategy;
 import de.westnordost.streetcomplete.data.download.QuestAutoDownloadStrategy;
 import de.westnordost.streetcomplete.data.download.WifiAutoDownloadStrategy;
+import de.westnordost.streetcomplete.oauth.OAuthPrefs;
 
 /** Automatically downloads and uploads new quests around the user's location and uploads quests.
  *
@@ -37,8 +38,9 @@ public class QuestAutoSyncer implements LocationListener, LostApiClient.Connecti
 	private final WifiAutoDownloadStrategy wifiDownloadStrategy;
 	private final Context context;
 	private final SharedPreferences prefs;
+	private final OAuthPrefs oAuth;
 
-	private LostApiClient lostApiClient;
+	private final LostApiClient lostApiClient;
 	private LatLon pos;
 
 	private boolean isConnected;
@@ -47,23 +49,24 @@ public class QuestAutoSyncer implements LocationListener, LostApiClient.Connecti
 	@Inject public QuestAutoSyncer(QuestController questController,
 								   MobileDataAutoDownloadStrategy mobileDataDownloadStrategy,
 								   WifiAutoDownloadStrategy wifiDownloadStrategy,
-								   Context context, SharedPreferences prefs)
+								   Context context, SharedPreferences prefs, OAuthPrefs oAuth)
 	{
 		this.questController = questController;
 		this.mobileDataDownloadStrategy = mobileDataDownloadStrategy;
 		this.wifiDownloadStrategy = wifiDownloadStrategy;
 		this.context = context;
 		this.prefs = prefs;
+		this.oAuth = oAuth;
 		lostApiClient = new LostApiClient.Builder(context).addConnectionCallbacks(this).build();
 	}
 
-	public void onStart()
+	public void onResume()
 	{
 		updateConnectionState();
 		context.registerReceiver(connectivityReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
 	}
 
-	public void onStop()
+	public void onPause()
 	{
 		stopPositionTracking();
 		context.unregisterReceiver(connectivityReceiver);
@@ -129,6 +132,8 @@ public class QuestAutoSyncer implements LocationListener, LostApiClient.Connecti
 	{
 		if(!isAllowedByPreference()) return;
 		if(!isConnected) return;
+		if(!oAuth.isAuthorized()) return;
+
 		questController.upload();
 	}
 
@@ -162,7 +167,7 @@ public class QuestAutoSyncer implements LocationListener, LostApiClient.Connecti
 		}
 	};
 
-	private boolean isAllowedByPreference()
+	public boolean isAllowedByPreference()
 	{
 		Prefs.Autosync p = Prefs.Autosync.valueOf(prefs.getString(Prefs.AUTOSYNC,"ON"));
 		return  p == Prefs.Autosync.ON || p == Prefs.Autosync.WIFI && isWifi;

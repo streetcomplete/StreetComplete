@@ -11,6 +11,11 @@ bridge_structure_humpback.jpg  CC-BY-SA 1.0      https://commons.wikimedia.org/w
 bridge_structure_floating.jpg  CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Float_bridge.JPG
 bridge_structure_simple_sus... CC-BY 2.0         https://commons.wikimedia.org/wiki/File:Carrick-a-Rede_Rope_Bridge_(12298726585).jpg
 
+bicycle_parking_type_buildi... CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Bike_Storage_(YAUS).jpg
+bicycle_parking_type_shed.jpg  CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Parking_v%C3%A9los_s%C3%A9curis%C3%A9_gare_des_Martres_2015-08-20.JPG
+bicycle_parking_type_stand.jpg CC0               https://commons.wikimedia.org/wiki/File:Bicycle_parking_stand_2.jpg
+bicycle_parking_type_wheel...  CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Bizikletak_lotzekoa.JPG
+
 car_wash_automated.jpg         CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Carwas.jpg
 car_wash_service.jpg           fair use          http://ctproductsandservices.com/2013/10/splash-car-wash/
 car_wash_self_service.jpg      CC0               https://pixabay.com/en/wash-a-car-the-car-blue-1822415/
@@ -27,6 +32,9 @@ fire_hydrant_pond.jpg          CC-BY-SA 3.0      https://commons.wikimedia.org/w
 recycling_centre.jpg           Public Domain     http://www.afgsc.af.mil/News/Art/igphoto/2000375277/
 recycling_container_undergr... CC0               https://commons.wikimedia.org/wiki/File:San_Fernando_de_Henares_-_reciclaje_de_residuos_urbanos_04.JPG
 recycling_container.jpg        CC0               https://commons.wikimedia.org/wiki/File:Vitoria_-_Contenedores_de_reciclaje_en_la_Avenida_de_Gasteiz.jpg
+
+panorama_path_surface_paved... CC-BY 4.0         https://github.com/westnordost/StreetComplete/issues/133#issuecomment-393650654 (Bjorn Rasmussen)
+panorama_path_surface_unpav... CC-BY 4.0         https://github.com/westnordost/StreetComplete/issues/133#issuecomment-393650654 (Bjorn Rasmussen)
 
 panorama_surface_paved.jpg     CC0               https://www.goodfreephotos.com/united-states/indiana/hoosier-hill/hooiser-hill-road-near-the-top-indiana.jpg.php
 panorama_surface_unpaved.jpg   CC-BY 2.0         https://www.flickr.com/photos/ian_munroe/3633361321
@@ -93,7 +101,7 @@ produce_agave.jpg              CC-BY-SA 3.0      https://en.wikipedia.org/wiki/F
 produce_kola_nut.jpg           CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Fruits_of_Cola_nitida.JPG
 produce_mate.jpg               CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Yerba_Mate.jpg
 produce_jojoba.jpg             CC-BY 2.0         https://de.wikipedia.org/wiki/Datei:Jojoba_Nut_-_Flickr_-_treegrow.jpg
-produce_tomatoe.jpg            CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Solanum_lycopersicum_%27Cronos%27,_tomaat_%27Cronos%27.jpg
+produce_tomato.jpg             CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Solanum_lycopersicum_%27Cronos%27,_tomaat_%27Cronos%27.jpg
 
 surface_asphalt.jpg            Public Domain     https://commons.wikimedia.org/wiki/File:Ground_frost_damages.JPG
 surface_cobblestone.jpg        CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Bad_Radkersburg_Murgasse_IMG_0583.jpg
@@ -110,3 +118,9 @@ surface_metal.jpg              Public Domain     https://commons.wikimedia.org/w
 tactile_paving_illustration... CC-BY 2.0         https://www.flickr.com/photos/jeanlouis_zimmermann/10072029534/in/album-72157635218804514/
                                CC-BY 2.0         https://www.flickr.com/photos/jeanlouis_zimmermann/10493532264/in/album-72157635218804514/
                                CC-BY 2.0         https://www.flickr.com/photos/jeanlouis_zimmermann/10473021344/in/album-72157635218804514/
+
+tracktype_grade1        	   Public Domain     https://github.com/westnordost/StreetComplete/pull/959#issuecomment-427905219 (Bjorn Rasmussen)
+tracktype_grade2               CC-BY 4.0         https://github.com/westnordost/StreetComplete/issues/133#issuecomment-393650654 (Bjorn Rasmussen)
+tracktype_grade3               CC0		         https://pixabay.com/en/field-away-nature-meadow-lane-406183/
+tracktype_grade4               Public Domain     https://github.com/westnordost/StreetComplete/pull/959#issuecomment-427905219 (Bjorn Rasmussen)
+tracktype_grade5               CC-BY-SA 4.0  	 https://commons.wikimedia.org/wiki/File:Zandpad_aan_buitenkant_van_het_gebied._Locatie,_Stuttebosch_in_de_lendevallei._Provincie_Friesland_01.jpg

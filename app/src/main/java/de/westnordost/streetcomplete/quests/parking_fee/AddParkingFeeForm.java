@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.parking_fee;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +11,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,12 +20,13 @@ import javax.inject.Inject;
 
 import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.R;
-import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
-import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHoursAdapter;
-import de.westnordost.streetcomplete.quests.opening_hours.OpeningMonths;
+import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
+import de.westnordost.streetcomplete.quests.opening_hours.adapter.AddOpeningHoursAdapter;
+import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningMonthsRow;
+import de.westnordost.streetcomplete.util.AdapterDataChangedWatcher;
 import de.westnordost.streetcomplete.util.Serializer;
 
-public class AddParkingFeeForm extends AbstractQuestAnswerFragment
+public class AddParkingFeeForm extends AbstractQuestFormAnswerFragment
 {
 
 	public static final String FEE = "fee",
@@ -51,8 +52,9 @@ public class AddParkingFeeForm extends AbstractQuestAnswerFragment
 
 		Injector.instance.getApplicationComponent().inject(this);
 
-		View buttonPanel = setButtonsView(R.layout.quest_buttonpanel_yes_no_ok);
-		buttonOk = buttonPanel.findViewById(R.id.buttonOk);
+		View buttonPanel = setButtonsView(R.layout.quest_buttonpanel_yes_no);
+
+		buttonOk = view.findViewById(R.id.buttonOk);
 		buttonOk.setOnClickListener(v -> onClickOk());
 
 		buttonYes = buttonPanel.findViewById(R.id.buttonYes);
@@ -65,12 +67,14 @@ public class AddParkingFeeForm extends AbstractQuestAnswerFragment
 
 		hoursView = setContentView(R.layout.quest_fee_hours);
 
-		ArrayList<OpeningMonths> data = loadOpeningHoursData(savedInstanceState);
-		openingHoursAdapter = new AddOpeningHoursAdapter(data, getActivity(), getCountryInfo());
+		ArrayList<OpeningMonthsRow> viewData = loadOpeningHoursData(savedInstanceState);
+		openingHoursAdapter = new AddOpeningHoursAdapter(viewData, getActivity(), getCountryInfo());
+		openingHoursAdapter.registerAdapterDataObserver(new AdapterDataChangedWatcher(this::checkIsFormComplete));
 		RecyclerView openingHoursList = hoursView.findViewById(R.id.hours_list);
 		openingHoursList.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
 		openingHoursList.setAdapter(openingHoursAdapter);
 		openingHoursList.setNestedScrollingEnabled(false);
+		checkIsFormComplete();
 
 		Button addTimes = hoursView.findViewById(R.id.btn_add);
 		addTimes.setOnClickListener((v) -> openingHoursAdapter.addNewWeekdays());
@@ -98,45 +102,44 @@ public class AddParkingFeeForm extends AbstractQuestAnswerFragment
 		return view;
 	}
 
-	private void onClickOk()
+	@Override protected void onClickOk()
 	{
-		if(!hasChanges())
-		{
-			Toast.makeText(getActivity(), R.string.no_changes, Toast.LENGTH_SHORT).show();
-			return;
-		}
 		Bundle bundle = new Bundle();
 		bundle.putBoolean(FEE, !isFeeOnlyAtHours);
-		bundle.putString(FEE_CONDITONAL_HOURS, openingHoursAdapter.toString());
-		applyImmediateAnswer(bundle);
+		String oh = getOpeningHoursString();
+		if(!oh.isEmpty())
+		{
+			bundle.putString(FEE_CONDITONAL_HOURS, oh);
+		}
+		applyAnswer(bundle);
 	}
 
 	private void onClickYesNo(boolean answer)
 	{
 		Bundle bundle = new Bundle();
 		bundle.putBoolean(FEE, answer);
-		applyImmediateAnswer(bundle);
+		applyAnswer(bundle);
 	}
 
-	private ArrayList<OpeningMonths> loadOpeningHoursData(Bundle savedInstanceState)
+	private ArrayList<OpeningMonthsRow> loadOpeningHoursData(Bundle savedInstanceState)
 	{
-		ArrayList<OpeningMonths> data;
+		ArrayList<OpeningMonthsRow> viewData;
 		if(savedInstanceState != null)
 		{
-			data = serializer.toObject(savedInstanceState.getByteArray(OPENING_HOURS_DATA),ArrayList.class);
+			viewData = serializer.toObject(savedInstanceState.getByteArray(OPENING_HOURS_DATA),ArrayList.class);
 		}
 		else
 		{
-			data = new ArrayList<>();
-			data.add(new OpeningMonths());
+			viewData = new ArrayList<>();
+			viewData.add(new OpeningMonthsRow());
 		}
-		return data;
+		return viewData;
 	}
 
 	@Override public void onSaveInstanceState(Bundle outState)
 	{
 		super.onSaveInstanceState(outState);
-		outState.putByteArray(OPENING_HOURS_DATA, serializer.toBytes(openingHoursAdapter.getData()));
+		outState.putByteArray(OPENING_HOURS_DATA, serializer.toBytes(openingHoursAdapter.getViewData()));
 		outState.putBoolean(IS_DEFINING_HOURS, isDefiningHours);
 		outState.putBoolean(IS_FEE_ONLY_AT_HOURS, isFeeOnlyAtHours);
 	}
@@ -146,13 +149,18 @@ public class AddParkingFeeForm extends AbstractQuestAnswerFragment
 		this.isDefiningHours = isDefiningHours;
 
 		hoursView.setVisibility(isDefiningHours ? View.VISIBLE : View.GONE);
-		buttonOk.setVisibility(isDefiningHours ? View.VISIBLE : View.GONE);
 		buttonNo.setVisibility(isDefiningHours ? View.GONE : View.VISIBLE);
 		buttonYes.setVisibility(isDefiningHours ? View.GONE : View.VISIBLE);
 	}
 
-	@Override public boolean hasChanges()
+	@Override public boolean isFormComplete()
 	{
-		return isDefiningHours && !openingHoursAdapter.toString().isEmpty();
+		if(!isDefiningHours) return false;
+		return !getOpeningHoursString().isEmpty();
+	}
+
+	private String getOpeningHoursString()
+	{
+		return TextUtils.join(";", openingHoursAdapter.createData());
 	}
 }

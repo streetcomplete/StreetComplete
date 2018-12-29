@@ -3,8 +3,10 @@ package de.westnordost.streetcomplete.data.osm.download;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.Future;
@@ -12,10 +14,10 @@ import java.util.concurrent.FutureTask;
 
 import javax.inject.Inject;
 
+import de.westnordost.countryboundaries.CountryBoundaries;
 import de.westnordost.streetcomplete.data.QuestGroup;
 import de.westnordost.streetcomplete.data.QuestType;
 import de.westnordost.streetcomplete.data.VisibleQuestListener;
-import de.westnordost.streetcomplete.data.meta.CountryBoundaries;
 import de.westnordost.streetcomplete.data.osm.Countries;
 import de.westnordost.streetcomplete.data.osm.ElementGeometry;
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
@@ -27,9 +29,12 @@ import de.westnordost.streetcomplete.data.osm.persist.OsmElementKey;
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.map.data.LatLon;
+import de.westnordost.streetcomplete.util.SphericalEarthMath;
 
 public class OsmQuestDownload
 {
+	public static final int MAX_GEOMETRY_LENGTH_IN_METERS = 500;
+
 	private static final String TAG = "QuestDownload";
 
 	// injections
@@ -57,14 +62,15 @@ public class OsmQuestDownload
 	}
 
 	public boolean download(final OsmElementQuestType questType, BoundingBox bbox,
-						  final Set<LatLon> blacklistedPositions)
+							final Set<LatLon> blacklistedPositions)
 	{
-		if(!checkIsEnabledFor(questType, bbox))
+		if(!isQuestTypeEnabledForBoundingBox(questType, bbox))
 		{
 			Log.i(TAG, getQuestTypeName(questType) + ": " +
-					"Skipped because it is disabled for this country");
+				"Skipped because it is disabled for this country");
 			return true;
 		}
+		Log.i(TAG, getQuestTypeName(questType) + ": Starting");
 
 		final ArrayList<ElementGeometryDao.Row> geometryRows = new ArrayList<>();
 		final Map<OsmElementKey,Element> elements = new HashMap<>();
@@ -122,49 +128,15 @@ public class OsmQuestDownload
 		// turns out to be slow if done for every quest type
 		geometryDB.deleteUnreferenced();
 		elementDB.deleteUnreferenced();
+		questType.cleanMetadata();
 
 		int obsoleteAmount = previousQuests.size();
 		Log.i(TAG, getQuestTypeName(questType) + ": " +
 				"Added " + newQuestsByQuestType + " new and " +
 				"removed " + obsoleteAmount + " already resolved quests." +
 				" (Total: " + quests.size() + ")" +
-				" in " + (System.currentTimeMillis() - time) + "ms");
+				" in " + ((System.currentTimeMillis() - time)/1000) + "s");
 
-		return true;
-	}
-
-	private boolean checkIsEnabledFor(OsmElementQuestType questType, BoundingBox bbox)
-	{
-		Countries countries = questType.getEnabledForCountries();
-		if(!countries.isAllCountries())
-		{
-			CountryBoundaries countryBoundaries;
-			try
-			{
-				countryBoundaries = countryBoundariesFuture.get();
-			}
-			catch (Exception e)
-			{
-				throw new RuntimeException(e);
-			}
-
-			String[] disabledCountries = countries.getDisabledCountries();
-			if(disabledCountries != null)
-			{
-				if(countryBoundaries.intersectsWithAny(disabledCountries, bbox))
-				{
-					return false;
-				}
-			}
-			String[] enabledCountries = countries.getEnabledCountries();
-			if(enabledCountries != null)
-			{
-				if(!countryBoundaries.isInAny(enabledCountries, bbox))
-				{
-					return false;
-				}
-			}
-		}
 		return true;
 	}
 
@@ -180,8 +152,32 @@ public class OsmQuestDownload
 		return result;
 	}
 
-	private boolean mayCreateQuestFrom(OsmElementQuestType questType, Element element,
-									   ElementGeometry geometry, Set<LatLon> blacklistedPositions)
+	private boolean isQuestTypeEnabledForBoundingBox(OsmElementQuestType questType, BoundingBox bbox)
+	{
+		Countries countries = questType.getEnabledForCountries();
+		if(countries.isAllCountries()) return true;
+
+		if(countries.isAllExcept())
+		{
+			Set<String> containingCountries = getCountryBoundaries().getContainingIds(
+				bbox.getMinLongitude(), bbox.getMinLatitude(),
+				bbox.getMaxLongitude(), bbox.getMaxLatitude());
+
+			return !containsAnyOf(containingCountries, countries.getExceptions());
+		}
+		else
+		{
+			Set<String> intersectingCountries = getCountryBoundaries().getIntersectingIds(
+				bbox.getMinLongitude(), bbox.getMinLatitude(),
+				bbox.getMaxLongitude(), bbox.getMaxLatitude());
+
+			return containsAnyOf(intersectingCountries, countries.getExceptions());
+		}
+	}
+
+	private boolean mayCreateQuestFrom(
+		OsmElementQuestType questType, Element element, ElementGeometry geometry,
+		Set<LatLon> blacklistedPositions)
 	{
 		// invalid geometry -> can't show this quest, so skip it
 		if(geometry == null)
@@ -194,6 +190,18 @@ public class OsmQuestDownload
 			return false;
 		}
 
+		// do not create quests that refer to geometry that is too long for a surveyor to be
+		// expected to survey
+		if(geometry.polylines != null)
+		{
+			double distance = 0;
+			for (List<LatLon> polyline : geometry.polylines)
+			{
+				distance += SphericalEarthMath.distance(polyline);
+			}
+			if(distance > MAX_GEOMETRY_LENGTH_IN_METERS) return false;
+		}
+
 		// do not create quests whose marker is at a blacklisted position
 		if(blacklistedPositions != null && blacklistedPositions.contains(geometry.center))
 		{
@@ -202,7 +210,46 @@ public class OsmQuestDownload
 					" because there is a note at that position");
 			return false;
 		}
+
+		// do not create quests in countries where the quest is not activated
+		Countries countries = questType.getEnabledForCountries();
+		if(!countries.isAllCountries())
+		{
+			LatLon p = geometry.center;
+
+			if(getCountryBoundaries().isInAny(p.getLongitude(), p.getLatitude(), countries.getExceptions())
+				== countries.isAllExcept())
+			{
+				Log.v(TAG, getQuestTypeName(questType) + ": Not adding a quest at " +
+					getPosAsLogString(geometry.center) +
+					" because the quest is disabled in this country");
+				return false;
+			}
+		}
+
 		return true;
+	}
+
+	private CountryBoundaries getCountryBoundaries()
+	{
+		try
+		{
+			return countryBoundariesFuture.get();
+		}
+		catch (Exception e)
+		{
+			throw new RuntimeException(e);
+		}
+	}
+
+	/** @return true if any item of second collection b is contained in first collection a */
+	private static boolean containsAnyOf(Collection a, Collection b)
+	{
+		for (Object o : b)
+		{
+			if(a.contains(o)) return true;
+		}
+		return false;
 	}
 
 	private static String getElementAsLogString(Element element)

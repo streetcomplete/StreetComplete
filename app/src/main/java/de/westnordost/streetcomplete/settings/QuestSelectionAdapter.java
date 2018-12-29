@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.settings;
 
+import android.content.SharedPreferences;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
@@ -11,16 +13,23 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.Collections;
+import java.util.List;
+import java.util.Locale;
+import java.util.concurrent.FutureTask;
 
 import javax.inject.Inject;
 
+import de.westnordost.countryboundaries.CountryBoundaries;
+import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.QuestType;
+import de.westnordost.streetcomplete.data.osm.Countries;
+import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestType;
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderList;
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeDao;
 import de.westnordost.streetcomplete.view.ListAdapter;
-import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
+
 
 import static android.support.v7.widget.helper.ItemTouchHelper.ACTION_STATE_DRAG;
 import static android.support.v7.widget.helper.ItemTouchHelper.ACTION_STATE_IDLE;
@@ -31,14 +40,20 @@ public class QuestSelectionAdapter extends ListAdapter<QuestSelectionAdapter.Que
 {
 	private final VisibleQuestTypeDao visibleQuestTypeDao;
 	private final QuestTypeOrderList questTypeOrderList;
-
+	private final List<String> currentCountryCodes;
 
 	@Inject public QuestSelectionAdapter(
-			VisibleQuestTypeDao visibleQuestTypeDao, QuestTypeOrderList questTypeOrderList)
+		VisibleQuestTypeDao visibleQuestTypeDao, QuestTypeOrderList questTypeOrderList,
+		FutureTask<CountryBoundaries> countryBoundaries, SharedPreferences prefs)
 	{
 		super();
 		this.visibleQuestTypeDao = visibleQuestTypeDao;
 		this.questTypeOrderList = questTypeOrderList;
+
+		double lat = Double.longBitsToDouble(prefs.getLong(Prefs.MAP_LATITUDE, Double.doubleToLongBits(0)));
+		double lng = Double.longBitsToDouble(prefs.getLong(Prefs.MAP_LONGITUDE, Double.doubleToLongBits(0)));
+		try	{ currentCountryCodes = countryBoundaries.get().getIds(lng, lat); }
+		catch (Exception e)	{ throw new RuntimeException(e);	}
 	}
 
 	@Override public void onAttachedToRecyclerView(RecyclerView recyclerView)
@@ -132,6 +147,7 @@ public class QuestSelectionAdapter extends ListAdapter<QuestSelectionAdapter.Que
 		private ImageView iconView;
 		private TextView textView;
 		private CheckBox checkBox;
+		private TextView textCountryDisabled;
 		private QuestVisibility item;
 
 		public QuestVisibilityViewHolder(View itemView)
@@ -140,12 +156,13 @@ public class QuestSelectionAdapter extends ListAdapter<QuestSelectionAdapter.Que
 			iconView = itemView.findViewById(R.id.imageView);
 			textView = itemView.findViewById(R.id.textView);
 			checkBox = itemView.findViewById(R.id.checkBox);
+			textCountryDisabled = itemView.findViewById(R.id.textCountryDisabled);
 		}
 
 		@Override protected void onBind(final QuestVisibility item)
 		{
 			this.item = item;
-			int colorResId = item.isInteractionEnabled() ? android.R.color.white : R.color.colorGreyedOut;
+			int colorResId = item.isInteractionEnabled() ? android.R.color.white : R.color.greyed_out;
 			itemView.setBackgroundResource(colorResId);
 			iconView.setImageResource(item.questType.getIcon());
 			textView.setText(textView.getResources().getString(item.questType.getTitle(),"…"));
@@ -154,14 +171,46 @@ public class QuestSelectionAdapter extends ListAdapter<QuestSelectionAdapter.Que
 			checkBox.setEnabled(item.isInteractionEnabled());
 			checkBox.setOnCheckedChangeListener(this);
 
+			if(!isEnabledInCurrentCountry())
+			{
+				String cc = currentCountryCodes.isEmpty() ? "Atlantis" : currentCountryCodes.get(0);
+				textCountryDisabled.setText(String.format(
+					textCountryDisabled.getResources().getString(R.string.questList_disabled_in_country),
+					new Locale("", cc).getDisplayCountry()
+				));
+				textCountryDisabled.setVisibility(View.VISIBLE);
+			}
+			else
+			{
+				textCountryDisabled.setVisibility(View.GONE);
+			}
+
 			updateSelectionStatus();
+		}
+
+		private boolean isEnabledInCurrentCountry()
+		{
+			if(item.questType instanceof OsmElementQuestType)
+			{
+				OsmElementQuestType questType = (OsmElementQuestType) item.questType;
+				Countries countries = questType.getEnabledForCountries();
+				for(String currentCountryCode : currentCountryCodes)
+				{
+					if(countries.getExceptions().contains(currentCountryCode))
+					{
+						return !countries.isAllExcept();
+					}
+				}
+				return countries.isAllExcept();
+			}
+			return true;
 		}
 
 		private void updateSelectionStatus()
 		{
 			if(!item.visible)
 			{
-				iconView.setColorFilter(itemView.getResources().getColor(R.color.colorGreyedOut));
+				iconView.setColorFilter(itemView.getResources().getColor(R.color.greyed_out));
 			}
 			else
 			{
@@ -177,7 +226,7 @@ public class QuestSelectionAdapter extends ListAdapter<QuestSelectionAdapter.Que
 			visibleQuestTypeDao.setVisible(item.questType, item.visible);
 			if(b && item.questType.getDefaultDisabledMessage() > 0)
 			{
-				new AlertDialogBuilder(compoundButton.getContext())
+				new AlertDialog.Builder(compoundButton.getContext())
 						.setTitle(R.string.enable_quest_confirmation_title)
 						.setMessage(item.questType.getDefaultDisabledMessage())
 						.setPositiveButton(android.R.string.yes, null)

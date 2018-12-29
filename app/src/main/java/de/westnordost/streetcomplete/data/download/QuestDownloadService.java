@@ -1,15 +1,20 @@
 package de.westnordost.streetcomplete.data.download;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Binder;
+import android.os.Build;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.IBinder;
 import android.os.Looper;
 import android.os.Message;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.util.Log;
 
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -18,8 +23,11 @@ import javax.inject.Inject;
 import javax.inject.Provider;
 
 import de.westnordost.streetcomplete.Injector;
+import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.VisibleQuestListener;
 import de.westnordost.streetcomplete.data.VisibleQuestRelay;
+
+import static de.westnordost.streetcomplete.ApplicationConstants.NOTIFICATIONS_CHANNEL_DOWNLOAD;
 
 /** Downloads all quests in a given area asynchronously. To use, start the service with the
  * appropriate parameters. (see #onStartCommand)
@@ -80,8 +88,22 @@ public class QuestDownloadService extends Service
 		thread.start();
 		serviceLooper = thread.getLooper();
 		serviceHandler = new ServiceHandler(serviceLooper);
-		progressListenerRelay = new QuestDownloadProgressRelay(this, 1);
+
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+		{
+			createNotificationChannel();
+		}
+		progressListenerRelay = new QuestDownloadProgressRelay(this, NOTIFICATIONS_CHANNEL_DOWNLOAD, 1);
 		visibleQuestRelay = new VisibleQuestRelay();
+	}
+
+	@RequiresApi(api = Build.VERSION_CODES.O)
+	private void createNotificationChannel()
+	{
+		NotificationManager service = (NotificationManager) getApplication().getSystemService(Context.NOTIFICATION_SERVICE);
+		assert service != null;
+		service.createNotificationChannel(new NotificationChannel(
+			NOTIFICATIONS_CHANNEL_DOWNLOAD, getString(R.string.notification_channel_download), NotificationManager.IMPORTANCE_LOW));
 	}
 
 	@Override public int onStartCommand(@Nullable Intent intent, int flags, int startId)

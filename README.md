@@ -13,8 +13,8 @@ The app is aimed at users who do not know anything about OSM tagging schemes but
 contribute to the OpenStreetMap by surveying their neighbourhood (or other places as well). Because of the target group, only those quests are shown which are answerable very clearly by asking one simple question and only those quests are created which contain very few false positives.
 
 ## Screenshots
-<img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot1.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot2.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot3.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot4.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot5.png" width="170"/>
-<img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot6.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot7.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot8.png" width="170"/> <a href="http://www.youtube.com/watch?v=l6DGcmvtya4"><img src="http://img.youtube.com/vi/l6DGcmvtya4/0.jpg" width="340"/></a>
+<img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot01.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot02.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot03.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot04.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot05.png" width="170"/>
+<img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot06.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot07.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot08.png" width="170"/> <a href="http://www.youtube.com/watch?v=l6DGcmvtya4"><img src="http://img.youtube.com/vi/l6DGcmvtya4/0.jpg" width="340"/></a>
 
 ## Download
 
@@ -24,7 +24,7 @@ You can also simply download the APK from the [Releases](https://github.com/west
 
 ## Quests
 
-Right now, there are very few different question types. More will be added over time.
+There are quite a few different quest types now and more will be added over time.
 You can see a community-managed [list of all quests in the OSM wiki](https://wiki.openstreetmap.org/wiki/StreetComplete/Quests).
 
 ## FAQ
@@ -33,21 +33,17 @@ You can find a list of [frequently asked questions in the wiki](https://wiki.ope
 
 ## Contributing
 
-You can help translate this app over here:
+This is an active open-source project, so you can get involved in it easily!
+You can do so **without any programming or OpenStreetMap knowledge**! Just choose a task that you like.
 
-[<img src="https://poeditor.com/public/images/logo_small.png" alt="POEditor">](https://poeditor.com/join/project/IE4GC127Ki)
+Here are a few things you can do:
+* 🐛 [Test and report issues](CONTRIBUTING.md#testing-and-reporting-issues)
+* 📃 [Translate the app into your language](CONTRIBUTING.md#translating-the-app)
+* 🕵️ [Solve notes left by StreetComplete users](CONTRIBUTING.md#solving-notes)
+* 💡 [Suggest new quests](CONTRIBUTING.md#suggesting-new-quests), or, even better, [implement them](CONTRIBUTING.md#developing-new-quests).
+* ➕ [and more…](CONTRIBUTING.md)
 
-If you have ideas for new quest types, please read this guide: [Adding new Quests to StreetComplete](https://github.com/westnordost/StreetComplete/wiki/Adding-new-Quests-to-StreetComplete).
-
-If you would like to help and are able to contribute code, you are most welcome.
-I have a few tasks in mind that would be very helpful for the project, some of which do not require knowledge about the current code base. So best get in touch with me.
-
-Otherwise, there are many reasonable feature requests and ideas for new question types in the issue tracker which you could also engage yourself with.
-If you have own ideas how to improve this app and want to make sure that I will merge your Pull Request, I suggest you open an issue first in which the feature can be discussed.
-
-You can help with [processing OSM notes opened by StreetComplete users](https://ent8r.github.io/NotesReview/?query=StreetComplete&limit=100&start=true). With this tool, you can also find systematic problems or misunderstandings introduced through (users of) StreetComplete and report them back here.
-
-Finally, using it, testing it and giving constructive feedback is also a valuable contribution.
+Also, if you like StreetComplete, **spread the word**! ❤️
 
 ## License
 

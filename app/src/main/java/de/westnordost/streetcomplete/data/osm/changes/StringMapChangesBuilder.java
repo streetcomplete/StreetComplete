@@ -29,6 +29,14 @@ public class StringMapChangesBuilder
 		changes.put(key, new StringMapEntryDelete(key, valueBefore));
 	}
 
+	public void deleteIfExists(@NonNull String key)
+	{
+		if(source.get(key) != null)
+		{
+			delete(key);
+		}
+	}
+
 	public void add(@NonNull String key, @NonNull String value)
 	{
 		if(source.containsKey(key))
@@ -63,6 +71,14 @@ public class StringMapChangesBuilder
 		}
 	}
 
+	public void modifyIfExists(@NonNull String key, @NonNull String value)
+	{
+		if(source.get(key) != null)
+		{
+			modify(key,value);
+		}
+	}
+
 	public String getPreviousValue(@NonNull String key)
 	{
 		return source.get(key);
@@ -78,8 +94,7 @@ public class StringMapChangesBuilder
 
 	public StringMapChanges create()
 	{
-		List<StringMapEntryChange> list = new ArrayList<>();
-		list.addAll(changes.values());
+		List<StringMapEntryChange> list = new ArrayList<>(changes.values());
 		return new StringMapChanges(list);
 	}
 }

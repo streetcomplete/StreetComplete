@@ -27,13 +27,14 @@ public class AddMaxSpeed extends SimpleOverpassQuestType
 		return
 			"ways with highway ~ motorway|trunk|primary|secondary|tertiary|unclassified|residential" +
 			" and !maxspeed and !maxspeed:forward and !maxspeed:backward" +
-			" and !source:maxspeed and !zone:maxspeed and !maxspeed:type" + // implicit speed limits
+			" and !source:maxspeed and !zone:maxspeed and !maxspeed:type and !zone:traffic" + // implicit speed limits
 			// not any unpaved as they are unlikely developed enough to have speed limits signposted
 			" and surface !~" + TextUtils.join("|", OsmTaggings.ANYTHING_UNPAVED) +
 			// neither private roads nor roads that are not for cars
 			" and motor_vehicle !~ private|no" +
 			" and vehicle !~ private|no" +
-			" and (access !~ private|no or (foot and foot !~ private|no))";
+			" and (access !~ private|no or (foot and foot !~ private|no))" +
+			" and area != yes";
 	}
 
 	@Override public AbstractQuestAnswerFragment createForm()
@@ -78,12 +79,22 @@ public class AddMaxSpeed extends SimpleOverpassQuestType
 	@Override public int getIcon() { return R.drawable.ic_quest_max_speed; }
 	@Override public int getTitle(@NonNull Map<String, String> tags)
 	{
-		return R.string.quest_maxspeed_title_short;
+		boolean hasName = tags.containsKey("name");
+
+		if(hasName) return R.string.quest_maxspeed_name_title2;
+		else return R.string.quest_maxspeed_title_short2;
 	}
 
 	@NonNull @Override public Countries getEnabledForCountries()
 	{
 		// see #813: US has different rules for each different state which need to be respected
 		return Countries.allExcept(new String[]{"US"});
+	}
+
+	@Override public boolean hasMarkersAtEnds() { return true; }
+
+	@Override public int getDefaultDisabledMessage()
+	{
+		return R.string.default_disabled_msg_maxspeed;
 	}
 }

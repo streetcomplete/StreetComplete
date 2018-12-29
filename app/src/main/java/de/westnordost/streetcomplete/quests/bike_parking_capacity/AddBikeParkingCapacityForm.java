@@ -8,40 +8,21 @@ import android.widget.EditText;
 
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment;
+import de.westnordost.streetcomplete.quests.TextInputQuestAnswerFragment;
+import de.westnordost.streetcomplete.util.TextChangedWatcher;
 
-public class AddBikeParkingCapacityForm extends AbstractQuestFormAnswerFragment
+public class AddBikeParkingCapacityForm extends TextInputQuestAnswerFragment
 {
-	public static final String BIKE_PARKING_CAPACITY = "bike_parking_capacity";
-
-	private EditText capacityInput;
-
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
 									   Bundle savedInstanceState)
 	{
 		View view = super.onCreateView(inflater, container, savedInstanceState);
-
-		View contentView = setContentView(R.layout.quest_bike_parking_capacity);
-
-		capacityInput = contentView.findViewById(R.id.capacityInput);
-
+		setContentView(R.layout.quest_bike_parking_capacity);
 		return view;
 	}
 
-	@Override protected void onClickOk()
+	@Override protected EditText getEditText()
 	{
-		Bundle answer = new Bundle();
-		String bikeCapacityString = capacityInput.getText().toString();
-
-		if(hasChanges())
-		{
-			int bikeCapacity = Integer.parseInt(bikeCapacityString);
-			answer.putInt(BIKE_PARKING_CAPACITY, bikeCapacity);
-		}
-		applyFormAnswer(answer);
-	}
-
-	@Override public boolean hasChanges()
-	{
-		return !capacityInput.getText().toString().isEmpty();
+		return getView().findViewById(R.id.capacityInput);
 	}
 }

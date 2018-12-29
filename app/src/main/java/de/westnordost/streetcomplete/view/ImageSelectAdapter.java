@@ -1,23 +1,22 @@
 package de.westnordost.streetcomplete.view;
 
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import de.westnordost.streetcomplete.R;
 
-public class ImageSelectAdapter extends RecyclerView.Adapter<ImageSelectAdapter.ViewHolder>
+/** Select a number of items from a list of items */
+public class ImageSelectAdapter extends RecyclerView.Adapter<ItemViewHolder>
 {
-	private ArrayList<Item> items;
+	private ArrayList<Item> items = new ArrayList<>();
 	private Set<Integer> selectedIndices;
 	private int maxSelectableIndices;
 	private int cellLayoutId = R.layout.cell_labeled_image_select;
@@ -27,12 +26,11 @@ public class ImageSelectAdapter extends RecyclerView.Adapter<ImageSelectAdapter.
 		void onIndexSelected(int index);
 		void onIndexDeselected(int index);
 	}
-	private ImageSelectAdapter.OnItemSelectionListener onItemSelectionListener;
+	private final List<ImageSelectAdapter.OnItemSelectionListener> listeners = new ArrayList<>();
 
 	public ImageSelectAdapter()
 	{
-		selectedIndices = new HashSet<>();
-		this.maxSelectableIndices = -1;
+		this(-1);
 	}
 
 	public ImageSelectAdapter(int maxSelectableIndices)
@@ -41,10 +39,9 @@ public class ImageSelectAdapter extends RecyclerView.Adapter<ImageSelectAdapter.
 		this.maxSelectableIndices = maxSelectableIndices;
 	}
 
-	public void setOnItemSelectionListener(
-			ImageSelectAdapter.OnItemSelectionListener onItemSelectionListener)
+	public void addOnItemSelectionListener(ImageSelectAdapter.OnItemSelectionListener listener)
 	{
-		this.onItemSelectionListener = onItemSelectionListener;
+		listeners.add(listener);
 	}
 
 	public void setCellLayout(int cellLayoutId)
@@ -57,11 +54,21 @@ public class ImageSelectAdapter extends RecyclerView.Adapter<ImageSelectAdapter.
 		return new ArrayList<>(selectedIndices);
 	}
 
-	public void selectIndices(List<Integer> indices)
+	public List<Item> getSelectedItems()
+	{
+		List<Item> result = new ArrayList<>();
+		for (Integer index : selectedIndices)
+		{
+			result.add(items.get(index));
+		}
+		return result;
+	}
+
+	public void select(List<Integer> indices)
 	{
 		for(Integer index : indices)
 		{
-			selectIndex(index);
+			select(index);
 		}
 	}
 
@@ -71,32 +78,24 @@ public class ImageSelectAdapter extends RecyclerView.Adapter<ImageSelectAdapter.
 		notifyDataSetChanged();
 	}
 
-	public void addItems(Collection<Item> items)
+	@NonNull @Override
+	public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
 	{
-		int len = this.items.size();
-		this.items.addAll(items);
-		notifyItemRangeInserted(len, items.size());
+		View view = LayoutInflater.from(parent.getContext()).inflate(cellLayoutId, parent, false);
+		ItemViewHolder holder = new ItemViewHolder(view);
+		holder.setOnClickListener(this::toggle);
+		return holder;
 	}
 
-	@Override public ImageSelectAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
-	{
-		View view = LayoutInflater.from(parent.getContext()).
-				inflate(cellLayoutId, parent, false);
-		return new ImageSelectAdapter.ViewHolder(view);
-	}
+	public boolean isSelected(int index) { return selectedIndices.contains(index); }
 
-	public boolean isIndexSelected(int index)
-	{
-		return selectedIndices.contains(index);
-	}
-
-	public void selectIndex(int index)
+	public void select(int index)
 	{
 		checkIndexRange(index);
 		// special case: toggle-behavior if only one index can be selected
 		if(maxSelectableIndices == 1 && selectedIndices.size() == 1)
 		{
-			deselectIndex(selectedIndices.iterator().next());
+			deselect(selectedIndices.iterator().next());
 		}
 		else if(maxSelectableIndices > -1 && maxSelectableIndices <= selectedIndices.size())
 		{
@@ -106,34 +105,34 @@ public class ImageSelectAdapter extends RecyclerView.Adapter<ImageSelectAdapter.
 		if(!selectedIndices.add(index)) return;
 
 		notifyItemChanged(index);
-		if(onItemSelectionListener != null)
+		for (OnItemSelectionListener listener : listeners)
 		{
-			onItemSelectionListener.onIndexSelected(index);
+			listener.onIndexSelected(index);
 		}
 	}
 
-	public void deselectIndex(int index)
+	public void deselect(int index)
 	{
 		checkIndexRange(index);
 		if(!selectedIndices.remove(index)) return;
 
 		notifyItemChanged(index);
-		if(onItemSelectionListener != null)
+		for (OnItemSelectionListener listener : listeners)
 		{
-			onItemSelectionListener.onIndexDeselected(index);
+			listener.onIndexDeselected(index);
 		}
 	}
 
-	public void toggleIndex(int index)
+	public void toggle(int index)
 	{
 		checkIndexRange(index);
-		if(!isIndexSelected(index))
+		if(!isSelected(index))
 		{
-			selectIndex(index);
+			select(index);
 		}
 		else
 		{
-			deselectIndex(index);
+			deselect(index);
 		}
 	}
 
@@ -143,37 +142,11 @@ public class ImageSelectAdapter extends RecyclerView.Adapter<ImageSelectAdapter.
 			throw new ArrayIndexOutOfBoundsException(index);
 	}
 
-	@Override public void onBindViewHolder(ImageSelectAdapter.ViewHolder holder, int position)
+	@Override public void onBindViewHolder(@NonNull ItemViewHolder holder, int position)
 	{
-		Item item = items.get(position);
-		holder.imageView.setImageResource(item.drawableId);
-		holder.itemView.setSelected(isIndexSelected(position));
-		if(item.titleId > -1) holder.textView.setText(item.titleId);
-		else holder.textView.setText("");
+		holder.bind(items.get(position));
+		holder.setSelected(isSelected(position));
 	}
 
-	@Override public int getItemCount()
-	{
-		if(items == null) return 0;
-		return items.size();
-	}
-
-	class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
-	{
-		ImageView imageView;
-		TextView textView;
-
-		public ViewHolder(View v)
-		{
-			super(v);
-			imageView = itemView.findViewById(R.id.imageView);
-			imageView.setOnClickListener(this);
-			textView = itemView.findViewById(R.id.textView);
-		}
-
-		@Override public void onClick(View v)
-		{
-			toggleIndex(getAdapterPosition());
-		}
-	}
+	@Override public int getItemCount() { return items.size(); }
 }

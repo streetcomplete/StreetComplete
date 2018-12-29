@@ -5,6 +5,7 @@
 package de.westnordost.streetcomplete.quests.bench_backrest;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 
 import java.util.Map;
 
@@ -41,5 +42,5 @@ public class AddBenchBackrest extends SimpleOverpassQuestType
 
 	@Override public String getCommitMessage() { return "Add backrest information to benches"; }
 	@Override public int getIcon() { return R.drawable.ic_quest_bench; }
-	@Override public int getTitle(Map<String, String> tags) { return R.string.quest_bench_backrest_title; }
+	@Override public int getTitle(@NonNull Map<String, String> tags) { return R.string.quest_bench_backrest_title; }
 }

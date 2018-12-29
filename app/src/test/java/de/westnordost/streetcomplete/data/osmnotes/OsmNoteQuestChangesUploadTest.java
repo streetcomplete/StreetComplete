@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.osmnotes;
 
-import junit.framework.TestCase;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -11,31 +12,34 @@ import de.westnordost.osmapi.map.data.OsmLatLon;
 import de.westnordost.osmapi.notes.Note;
 import de.westnordost.osmapi.notes.NotesDao;
 import de.westnordost.streetcomplete.data.QuestStatus;
+import de.westnordost.streetcomplete.data.statistics.QuestStatisticsDao;
 import de.westnordost.streetcomplete.util.ImageUploader;
 
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
-public class OsmNoteQuestChangesUploadTest extends TestCase
+public class OsmNoteQuestChangesUploadTest
 {
 	private ImageUploader imageUploader;
 	private NoteDao noteDb;
 	private OsmNoteQuestDao questDb;
+	private QuestStatisticsDao questStatisticsDb;
 	private NotesDao osmDao;
 
 	private OsmNoteQuestChangesUpload osmNoteQuestChangesUpload;
 
-	@Override public void setUp() throws Exception
+	@Before public void setUp() throws Exception
 	{
-		super.setUp();
 		osmDao = mock(NotesDao.class);
 		noteDb = mock(NoteDao.class);
 		imageUploader = mock(ImageUploader.class);
 		questDb = mock(OsmNoteQuestDao.class);
+		questStatisticsDb = mock(QuestStatisticsDao.class);
 
-		osmNoteQuestChangesUpload = new OsmNoteQuestChangesUpload(osmDao, questDb, noteDb, imageUploader);
+		osmNoteQuestChangesUpload = new OsmNoteQuestChangesUpload(osmDao, questDb, questStatisticsDb, noteDb, imageUploader);
 	}
 
-	public void testCancel() throws InterruptedException
+	@Test public void cancel() throws InterruptedException
 	{
 		when(questDb.getAll(null, QuestStatus.ANSWERED)).thenAnswer( invocation ->
 		{
@@ -57,7 +61,7 @@ public class OsmNoteQuestChangesUploadTest extends TestCase
 		t.join();
 	}
 
-	public void testDropCommentWhenConflict()
+	@Test public void dropCommentWhenConflict()
 	{
 		OsmNoteQuest quest = createQuest();
 
@@ -69,7 +73,7 @@ public class OsmNoteQuestChangesUploadTest extends TestCase
 		verify(noteDb).delete(quest.getNote().id);
 	}
 
-	public void testUploadComment()
+	@Test public void uploadComment()
 	{
 		OsmNoteQuest quest = createQuest();
 
@@ -81,21 +85,26 @@ public class OsmNoteQuestChangesUploadTest extends TestCase
 		assertEquals(QuestStatus.CLOSED, quest.getStatus());
 		verify(questDb).update(quest);
 		verify(noteDb).put(n);
+		verify(questStatisticsDb).addOneNote();
 	}
 
-	public void testUploadsImagesForComment()
+	@Test public void uploadsImagesForComment()
 	{
 		OsmNoteQuest quest = createQuest();
 		ArrayList<String> imagePaths = new ArrayList<>();
 		imagePaths.add("Never say");
 		quest.setImagePaths(imagePaths);
 
+		Note someNote = new Note();
+		someNote.id = 123;
 
+		when(osmDao.comment(anyLong(), anyString())).thenReturn(someNote);
 		when(imageUploader.upload(imagePaths)).thenReturn(Collections.singletonList("never"));
 
 		osmNoteQuestChangesUpload.uploadNoteChanges(quest);
 
 		verify(osmDao).comment(1, "blablub\n\nAttached photo(s):\nnever");
+		verify(imageUploader).activate(someNote.id);
 	}
 
 	private static OsmNoteQuest createQuest()

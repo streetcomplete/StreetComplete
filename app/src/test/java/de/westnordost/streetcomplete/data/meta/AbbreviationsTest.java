@@ -1,87 +1,83 @@
 package de.westnordost.streetcomplete.data.meta;
 
-import junit.framework.TestCase;
+import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.Locale;
 
-public class AbbreviationsTest extends TestCase
+import static org.junit.Assert.*;
+
+public class AbbreviationsTest
 {
-	public void testCapitalizeFirstLetter()
-	{
+	@Test public void capitalizesFirstLetter() {
 		assertEquals("Straße", abbr("str: straße", Locale.GERMANY).getExpansion("str", true, true));
 	}
 
-	public void testWithAbbrDot()
+	@Test public void removesAbbreviationDot()
 	{
 		assertEquals("Straße", abbr("str: straße", Locale.GERMANY).getExpansion("str.", true, true));
 	}
 
-	public void testIgnoreCase()
+	@Test public void ignoresCase()
 	{
 		assertEquals("Straße", abbr("sTr: Straße", Locale.GERMANY).getExpansion("StR", true, true));
 	}
 
-	public void testExpectOwnWordByDefault()
+	@Test public void expectsOwnWordByDefault()
 	{
-		assertEquals(null, abbr("st: street").getExpansion("Hanswurst", true, true));
+		assertNull(abbr("st: street").getExpansion("Hanswurst", true, true));
 	}
 
-	public void testConcatenable()
+	@Test public void concatenable()
 	{
 		assertEquals("Konigstraat", abbr("...str: Straat").getExpansion("Konigstr", true, true));
 	}
 
-	public void testConcatenableEnd()
+	@Test public void concatenableEnd()
 	{
 		assertEquals("Konigstraat", abbr("...str$: Straat").getExpansion("Konigstr", true, true));
 	}
 
-	public void testConcatenableWorksNormallyForNonConcatenation()
+	@Test public void concatenableWorksNormallyForNonConcatenation()
 	{
 		assertEquals("Straat", abbr("...str: Straat").getExpansion("str", true, true));
 	}
 
-	public void testOnlyFirstWord()
+	@Test public void onlyFirstWord()
 	{
 		Abbreviations abbr = abbr("^st: Saint");
-		assertEquals(null, abbr.getExpansion("st.", false, false));
+		assertNull(abbr.getExpansion("st.", false, false));
 		assertEquals("Saint", abbr.getExpansion("st.", true, false));
 	}
 
-	public void testOnlyLastWord()
+	@Test public void onlyLastWord()
 	{
 		Abbreviations abbr = abbr("str$: Straße");
-		assertEquals(null, abbr.getExpansion("str", true, false));
-		assertEquals(null, abbr.getExpansion("str", true, true));
+		assertNull(abbr.getExpansion("str", true, false));
+		assertNull(abbr.getExpansion("str", true, true));
 		assertEquals("Straße", abbr.getExpansion("str", false, true));
 	}
 
-	public void testUnicode()
+	@Test public void unicode()
 	{
 		assertEquals("Блок", abbr("бл: Блок",new Locale("ru","RU")).getExpansion("бл", true, true));
 	}
 
-	public void testLocaleCase()
+	@Test public void localeCase()
 	{
 		assertEquals("Блок", abbr("бл: блок",new Locale("ru","RU")).getExpansion("Бл", true, true));
 	}
 
-	public void testFindAbbreviation()
+	@Test public void findsAbbreviation()
 	{
 		assertFalse(abbr("str: Straße", Locale.GERMANY).containsAbbreviations("stri stra straße"));
 		assertTrue(abbr("str: Straße", Locale.GERMANY).containsAbbreviations("stri str straße"));
 	}
 
-	public void testThrowExceptionOnInvalidInput()
+	@Test(expected = RuntimeException.class) public void throwsExceptionOnInvalidInput()
 	{
-		try
-		{
-			abbr("d:\n  - a\n  b: c\n");
-			fail();
-		}
-		catch (RuntimeException e) { }
+		abbr("d:\n  - a\n  b: c\n");
 	}
 
 	private Abbreviations abbr(String input)

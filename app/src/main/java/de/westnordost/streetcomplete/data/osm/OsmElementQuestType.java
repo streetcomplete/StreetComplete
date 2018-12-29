@@ -34,6 +34,15 @@ public interface OsmElementQuestType extends QuestType
 	/** @return title resource for when the element has the specified tags. The tags are unmodifiable */
 	int getTitle(@NonNull Map<String,String> tags);
 
+	// the below could also go up into QuestType interface, but then they should be accounted for
+	// in the respective download/upload classes as well
+
 	/** @return for which countries the quest should be shown */
 	@NonNull Countries getEnabledForCountries();
+
+	/** The quest type can clean it's metadata here, if any */
+	void cleanMetadata();
+
+	/** @return whether the markers should be at the ends instead of the center */
+	boolean hasMarkersAtEnds();
 }

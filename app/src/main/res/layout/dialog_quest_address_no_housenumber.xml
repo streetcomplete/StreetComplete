@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/dialog_horizontal_margin">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/quest_address_answer_no_housenumber_message1"
+        android:textAppearance="@android:style/TextAppearance.Theme.Dialog"/>
+
+    <include
+        android:id="@+id/item_view"
+        layout="@layout/cell_labeled_icon_select_with_description"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/quest_address_answer_no_housenumber_message2"
+        android:textAppearance="@android:style/TextAppearance.Theme.Dialog"/>
+
+</LinearLayout>

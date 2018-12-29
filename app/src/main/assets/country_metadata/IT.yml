@@ -1,8 +1,9 @@
 # Do not edit. Source files are in /res/country_metadata
-advisorySpeedLimitLayout: quest_maxspeed_advisory_blue
+additionalStreetsignLanguages: [de]
 isAdvisorySpeedLimitKnown: true
 isLivingStreetKnown: true
 isSlowZoneKnown: true
+mobileCountryCode: 222
 officialLanguages: [it]
-orchardProduces: [olive, grape, tomatoe, peach, hazelnut, almond, apple, orange, pear, lemon, lime,
+orchardProduces: [olive, grape, tomato, peach, hazelnut, almond, apple, orange, pear, lemon, lime,
   kiwi, chestnut, apricot, plum, chilli_pepper, sweet_pepper]

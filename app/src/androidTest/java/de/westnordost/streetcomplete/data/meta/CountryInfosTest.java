@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import de.westnordost.streetcomplete.quests.opening_hours.Weekdays;
+import de.westnordost.streetcomplete.quests.opening_hours.model.Weekdays;
 
 public class CountryInfosTest extends AndroidTestCase
 {
@@ -20,10 +20,10 @@ public class CountryInfosTest extends AndroidTestCase
 		assertTrue(Weekdays.getWeekdayIndex(info.getFirstDayOfWorkweek()) > -1);
 	}
 
-	private void checkSpeedUnitIsEitherKmhOrMph(CountryInfo info)
+	private void checkMeasurementUnitIsEitherMetricOrImperial(CountryInfo info)
 	{
-		assertNotNull(info.getSpeedUnits());
-		assertTrue(info.getSpeedUnits().contains("mph") || info.getSpeedUnits().contains("km/h"));
+		assertNotNull(info.getMeasurementSystem());
+		assertTrue(info.getMeasurementSystem().contains("metric") || info.getMeasurementSystem().contains("imperial"));
 	}
 
 	private void checkAdditionalValidHousenumberRegexes(Map<String, CountryInfo> infos)
@@ -39,16 +39,6 @@ public class CountryInfosTest extends AndroidTestCase
 		assertTrue(info.getRegularShoppingDays() >= 0);
 	}
 
-	private void checkMaxSpeedLayoutExists(CountryInfo info)
-	{
-		if(info.getMaxspeedLayout() != null)
-		{
-			int resId = getContext().getResources().getIdentifier(
-					info.getMaxspeedLayout(), "layout", getContext().getPackageName());
-			assertTrue(resId != 0);
-		}
-	}
-
 	private static List<String> validWeekdays = Arrays.asList("Mo","Tu","We","Th","Fr","Sa","Su");
 	private void checkStartOfWorkweekValid(CountryInfo info)
 	{
@@ -58,9 +48,8 @@ public class CountryInfosTest extends AndroidTestCase
 	private void checkForEach(CountryInfo info)
 	{
 		checkFirstDayOfWorkweekIsValid(info);
-		checkSpeedUnitIsEitherKmhOrMph(info);
+		checkMeasurementUnitIsEitherMetricOrImperial(info);
 		checkRegularShoppingDaysIsBetween0And7(info);
-		checkMaxSpeedLayoutExists(info);
 		checkStartOfWorkweekValid(info);
 	}
 
@@ -72,7 +61,7 @@ public class CountryInfosTest extends AndroidTestCase
 			try
 			{
 				CountryInfo ci = elem.getValue();
-				assertEquals(elem.getKey(), ci.countryCode);
+				assertEquals(elem.getKey().split("-")[0], ci.countryCode);
 				checkForEach(ci);
 			}
 			catch (Throwable e)

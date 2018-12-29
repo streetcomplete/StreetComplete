@@ -1,6 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
 isLeftHandTraffic: true
+mobileCountryCode: 542
 officialLanguages: [en, fj, hif]
-orchardProduces: [coconut, pepper, banana, pineapple, papaya, tomatoe, orange, cacao, chilli_pepper,
+orchardProduces: [coconut, pepper, banana, pineapple, papaya, tomato, orange, cacao, chilli_pepper,
   sweet_pepper, coffee, guava, mango, mangosteen]
 popularReligions: [christian, hindu]

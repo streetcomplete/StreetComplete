@@ -1,9 +1,9 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [en]
-advisorySpeedLimitLayout: quest_maxspeed_advisory_white
 isAdvisorySpeedLimitKnown: true
+mobileCountryCode: 450
 officialLanguages: [ko]
 orchardProduces: [apple, chilli_pepper, sweet_pepper, chestnut, apple, persimmon, chilli_pepper, sweet_pepper,
-  peach, orange, grape, peach, pear, tomatoe, strawberry, tomatoe, plum]
+  peach, orange, grape, peach, pear, tomato, strawberry, tomato, plum]
 popularReligions: [christian, buddhist]
 popularSports: [baseball, badminton, archery]

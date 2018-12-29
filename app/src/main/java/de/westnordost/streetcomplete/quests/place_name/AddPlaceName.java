@@ -27,7 +27,7 @@ public class AddPlaceName extends SimpleOverpassQuestType
 			"cinema", "theatre", "planetarium", "arts_centre", "studio",                                            // culture
 			"events_venue", "conference_centre", "exhibition_centre", "music_venue",                                // events
 			"townhall", "prison", "courthouse", "embassy", "police", "fire_station", "ranger_station",                // civic
-			"bank", "atm", "bureau_de_change", "money_transfer", "post_office", "library", "marketplace",            // commercial
+			"bank", "bureau_de_change", "money_transfer", "post_office", "library", "marketplace", "internet_cafe", // commercial
 			"community_centre", "social_facility", "nursing_home", "childcare", "retirement_home", "social_centre",    // social
 			"car_wash", "car_rental", "boat_rental", "fuel",                                                        // car stuff
 			"dentist", "doctors", "clinic", "pharmacy", "hospital",                                                    // health care
@@ -40,12 +40,15 @@ public class AddPlaceName extends SimpleOverpassQuestType
 		put("tourism", new String[]{
 			"attraction", "zoo", "aquarium", "theme_park", "gallery", "museum",                                            // attractions
 			"hotel", "guest_house", "motel", "hostel", "alpine_hut", "apartment", "resort", "camp_site", "caravan_site",    // accomodations
-			// and tourism=info, see below
+			// and tourism=information, see below
 		});
 		put("leisure", new String[]{
 			"park","nature_reserve", "sports_centre","fitness_centre","dance","golf_course",
 			"water_park","miniature_golf", "stadium","marina","bowling_alley", "amusement_arcade",
 			"adult_gaming_centre", "tanning_salon","horse_riding"
+		});
+		put("office", new String[]{
+			"insurance"
 		});
 	}};
 

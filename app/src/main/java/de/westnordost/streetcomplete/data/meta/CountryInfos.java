@@ -18,16 +18,18 @@ import java.util.concurrent.Future;
 
 import javax.inject.Inject;
 
+import de.westnordost.countryboundaries.CountryBoundaries;
+
 public class CountryInfos
 {
 	private static final String BASEPATH = "country_metadata";
 
 	private final AssetManager assetManager;
 	private final Future<CountryBoundaries> countryBoundaries;
+	private final Map<String, CountryInfo> countryInfoMap;
 
 	private CountryInfo defaultCountryInfo;
 
-	private Map<String, CountryInfo> countryInfoMap;
 
 	@Inject public CountryInfos(AssetManager assetManager, Future<CountryBoundaries> countryBoundaries)
 	{
@@ -41,7 +43,7 @@ public class CountryInfos
 	{
 		try
 		{
-			List<String> countryCodesIso3166 = countryBoundaries.get().getIsoCodes(longitude, latitude);
+			List<String> countryCodesIso3166 = countryBoundaries.get().getIds(longitude, latitude);
 			return get(countryCodesIso3166);
 		}
 		catch (Exception e)
@@ -120,7 +122,7 @@ public class CountryInfos
 			YamlReader yamlReader = new YamlReader(reader);
 			yamlReader.getConfig().setPrivateFields(true);
 			CountryInfo result = yamlReader.read(CountryInfo.class);
-			result.countryCode = countryCodeIso3166;
+			result.countryCode = countryCodeIso3166.split("-")[0];
 			return result;
 		}
 		finally
@@ -129,7 +131,7 @@ public class CountryInfos
 			{
 				is.close();
 			}
-			catch (IOException e) { }
+			catch (IOException ignore) { }
 		}
 	}
 

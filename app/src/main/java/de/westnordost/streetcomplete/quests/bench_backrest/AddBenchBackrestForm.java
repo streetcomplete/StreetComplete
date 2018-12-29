@@ -24,7 +24,7 @@ public class AddBenchBackrestForm extends YesNoQuestAnswerFragment {
         addOtherAnswer(R.string.quest_bench_answer_picnic_table, () -> {
             Bundle answer = new Bundle();
             answer.putBoolean(PICNIC_TABLE, true);
-            applyImmediateAnswer(answer);
+            applyAnswer(answer);
         });
     }
 }

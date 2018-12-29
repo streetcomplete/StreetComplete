@@ -1,8 +1,8 @@
 # Do not edit. Source files are in /res/country_metadata
-advisorySpeedLimitLayout: quest_maxspeed_advisory_yellow
 isAdvisorySpeedLimitKnown: true
+mobileCountryCode: 460
 officialLanguages: [zh]
-orchardProduces: [apple, tea, plum, orange, pear, tomatoe, persimmon, grape, peach, rubber, guava,
-  mango, mangosteen, walnut, banana, chestnut, tung_nut]
+orchardProduces: [apple, tea, plum, orange, pear, tomato, persimmon, grape, peach, rubber, guava, mango,
+  mangosteen, walnut, banana, chestnut, tung_nut]
 popularReligions: [chinese_folk, taoist, buddhist, christian, muslim]
 popularSports: [basketball, soccer, badminton]

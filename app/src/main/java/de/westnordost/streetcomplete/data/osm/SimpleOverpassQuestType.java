@@ -1,35 +1,34 @@
 package de.westnordost.streetcomplete.data.osm;
 
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-
-import java.util.Collections;
 
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
 import de.westnordost.streetcomplete.data.osm.tql.FiltersParser;
+import de.westnordost.streetcomplete.data.osm.tql.OverpassQLUtil;
 import de.westnordost.streetcomplete.data.osm.tql.TagFilterExpression;
 import de.westnordost.osmapi.map.data.BoundingBox;
+import de.westnordost.streetcomplete.util.Lazy;
 
 /** Quest type that simply makes a certain overpass query using tag filters and creates quests for
  *  every element received */
-public abstract class SimpleOverpassQuestType implements OsmElementQuestType
+public abstract class SimpleOverpassQuestType extends AOsmElementQuestType
 {
 	private final OverpassMapDataDao overpassServer;
 
-	private TagFilterExpression filter;
+	private final Lazy<TagFilterExpression> filter;
 
 	public SimpleOverpassQuestType(OverpassMapDataDao overpassServer)
 	{
 		this.overpassServer = overpassServer;
-		filter = new FiltersParser().parse(getTagFilters());
+		filter = new Lazy<>(() -> new FiltersParser().parse(getTagFilters()));
 	}
 
 	/** @return a query string that is accepted by Overpass and does not exceed the given bbox */
 	String getOverpassQuery(BoundingBox bbox)
 	{
-		return filter.toOverpassQLString(bbox);
+		return filter.get().toOverpassQLString(bbox) + OverpassQLUtil.getQuestPrintStatement();
 	}
 
 	protected abstract String getTagFilters();
@@ -41,15 +40,6 @@ public abstract class SimpleOverpassQuestType implements OsmElementQuestType
 
 	@Nullable @Override public Boolean isApplicableTo(Element element)
 	{
-		return filter.matches(element);
+		return filter.get().matches(element);
 	}
-
-	@Override public final int getTitle()
-	{
-		return getTitle(Collections.emptyMap());
-	}
-
-	@Override public int getDefaultDisabledMessage() { return 0; }
-
-	@NonNull @Override public Countries getEnabledForCountries()	{ return Countries.ALL; }
 }

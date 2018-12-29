@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.osmnotes;
 
-import junit.framework.TestCase;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -10,48 +11,49 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import de.westnordost.osmapi.common.Handler;
 import de.westnordost.osmapi.common.errors.OsmConflictException;
 import de.westnordost.osmapi.map.MapDataDao;
-import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
-import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.map.data.OsmLatLon;
 import de.westnordost.osmapi.map.data.Way;
 import de.westnordost.osmapi.notes.Note;
 import de.westnordost.osmapi.notes.NoteComment;
 import de.westnordost.osmapi.notes.NotesDao;
 import de.westnordost.streetcomplete.ApplicationConstants;
+import de.westnordost.streetcomplete.data.statistics.QuestStatisticsDao;
 import de.westnordost.streetcomplete.util.ImageUploader;
 
 import static org.mockito.Mockito.*;
+import static org.junit.Assert.*;
 
-public class CreateNoteUploadTest extends TestCase
+public class CreateNoteUploadTest
 {
 	private MapDataDao mapDataDao;
 	private CreateNoteDao createNoteDb;
 	private NotesDao notesDao;
 	private OsmNoteQuestDao osmNoteQuestDb;
 	private NoteDao noteDb;
+	private QuestStatisticsDao questStatisticsDb;
 	private ImageUploader imageUploader;
 
 	private CreateNoteUpload createNoteUpload;
 
-	@Override public void setUp() throws Exception
+	@Before public void setUp() throws Exception
 	{
-		super.setUp();
 		mapDataDao = mock(MapDataDao.class);
 		createNoteDb = mock(CreateNoteDao.class);
 		notesDao = mock(NotesDao.class);
 		osmNoteQuestDb = mock(OsmNoteQuestDao.class);
 		noteDb = mock(NoteDao.class);
 		imageUploader = mock(ImageUploader.class);
+		questStatisticsDb = mock(QuestStatisticsDao.class);
 
 		createNoteUpload = new CreateNoteUpload(createNoteDb, notesDao, noteDb, osmNoteQuestDb,
-				mapDataDao, new OsmNoteQuestType(), imageUploader);
+				mapDataDao, new OsmNoteQuestType(), questStatisticsDb, imageUploader);
 	}
 
 
-	public void testCancel() throws InterruptedException
+	@Test public void cancel() throws InterruptedException
 	{
-		when(createNoteDb.getAll(any(BoundingBox.class))).thenAnswer(invocation ->
+		when(createNoteDb.getAll(any())).thenAnswer(invocation ->
 		{
 			Thread.sleep(1000); // take your time...
 			ArrayList<CreateNote> result = new ArrayList<>();
@@ -71,7 +73,7 @@ public class CreateNoteUploadTest extends TestCase
 		t.join();
 	}
 
-	public void testUploadNoteForDeletedElementWillCancel()
+	@Test public void uploadNoteForDeletedElementWillCancel()
 	{
 		/* the mock for MapDataDao returns null for getNode, getWay, getRelation... by defaiöt */
 		CreateNote createNote = createACreateNote();
@@ -82,7 +84,7 @@ public class CreateNoteUploadTest extends TestCase
 		verifyNoteNotInsertedIntoDb(createNote.id);
 	}
 
-	public void testCreateNoteOnExistingNoteWillCommentOnExistingNote()
+	@Test public void createNoteOnExistingNoteWillCommentOnExistingNote()
 	{
 		CreateNote createNote = createACreateNote();
 		createNote.elementType = Element.Type.WAY;
@@ -98,7 +100,7 @@ public class CreateNoteUploadTest extends TestCase
 		verifyNoteInsertedIntoDb(createNote.id, note);
 	}
 
-	public void testCreateNoteOnExistingClosedNoteWillCancel()
+	@Test public void createNoteOnExistingClosedNoteWillCancel()
 	{
 		CreateNote createNote = createACreateNote();
 		createNote.elementType = Element.Type.WAY;
@@ -110,12 +112,12 @@ public class CreateNoteUploadTest extends TestCase
 
 		assertNull(createNoteUpload.uploadCreateNote(createNote));
 
-		verify(notesDao).getAll(any(BoundingBox.class), any(Handler.class), anyInt(), anyInt());
+		verify(notesDao).getAll(any(), any(), anyInt(), anyInt());
 		verifyNoMoreInteractions(notesDao);
 		verifyNoteNotInsertedIntoDb(createNote.id);
 	}
 
-	public void testCreateNoteOnExistingNoteWillCancelWhenConflictException()
+	@Test public void createNoteOnExistingNoteWillCancelWhenConflictException()
 	{
 		CreateNote createNote = createACreateNote();
 		createNote.elementType = Element.Type.WAY;
@@ -133,21 +135,21 @@ public class CreateNoteUploadTest extends TestCase
 		verifyNoteNotInsertedIntoDb(createNote.id);
 	}
 
-	public void testCreateNoteWithNoAssociatedElement()
+	@Test public void createNoteWithNoAssociatedElement()
 	{
 		CreateNote createNote = createACreateNote();
 		Note note = createNote(null);
 
-		when(notesDao.create(any(LatLon.class), anyString())).thenReturn(note);
+		when(notesDao.create(any(), anyString())).thenReturn(note);
 
 		assertNotNull(createNoteUpload.uploadCreateNote(createNote));
 
-		verify(notesDao).create(createNote.position, createNote.text);
+		verify(notesDao).create(createNote.position, createNote.text + "\n\nvia " + ApplicationConstants.USER_AGENT);
 
 		verifyNoteInsertedIntoDb(createNote.id, note);
 	}
 
-	public void testCreateNoteWithNoQuestTitleButAssociatedElement()
+	@Test public void createNoteWithNoQuestTitleButAssociatedElement()
 	{
 		CreateNote createNote = createACreateNote();
 		createNote.elementType = Element.Type.WAY;
@@ -156,17 +158,17 @@ public class CreateNoteUploadTest extends TestCase
 
 		Note note = createNote(null);
 
-		when(notesDao.create(any(LatLon.class), anyString())).thenReturn(note);
+		when(notesDao.create(any(), anyString())).thenReturn(note);
 
 		assertNotNull(createNoteUpload.uploadCreateNote(createNote));
 
 		verify(notesDao).create(createNote.position,
-				"for https://www.openstreetmap.org/way/5 via "+ ApplicationConstants.USER_AGENT+":\n\njo ho");
+				"for https://osm.org/way/5 via "+ ApplicationConstants.USER_AGENT+":\n\njo ho");
 
 		verifyNoteInsertedIntoDb(createNote.id, note);
 	}
 
-	public void testCreateNoteWithAssociatedElementAndNoNoteYet()
+	@Test public void createNoteWithAssociatedElementAndNoNoteYet()
 	{
 		CreateNote createNote = createACreateNote();
 		createNote.elementType = Element.Type.WAY;
@@ -176,24 +178,24 @@ public class CreateNoteUploadTest extends TestCase
 
 		Note note = createNote(createNote);
 
-		when(notesDao.create(any(LatLon.class), anyString())).thenReturn(note);
+		when(notesDao.create(any(), anyString())).thenReturn(note);
 
 		assertNotNull(createNoteUpload.uploadCreateNote(createNote));
 
 		verify(notesDao).create(createNote.position,
-				"Unable to answer \"What?\" for https://www.openstreetmap.org/way/5 via "+ ApplicationConstants.USER_AGENT+":\n\njo ho");
+				"Unable to answer \"What?\" for https://osm.org/way/5 via "+ ApplicationConstants.USER_AGENT+":\n\njo ho");
 
 		verifyNoteInsertedIntoDb(createNote.id, note);
 	}
 
-	public void testCreateNoteUploadsImagesAndDisplaysLinks()
+	@Test public void createNoteUploadsImagesAndDisplaysLinks()
 	{
 		CreateNote createNote = createACreateNote();
 		createNote.imagePaths = new ArrayList<>();
 		createNote.imagePaths.add("hello");
 
 		Note note = createNote(null);
-		when(notesDao.create(any(LatLon.class), anyString())).thenReturn(note);
+		when(notesDao.create(any(), anyString())).thenReturn(note);
 
 		when(imageUploader.upload(createNote.imagePaths)).thenReturn(
 				Collections.singletonList("hello, too")
@@ -203,10 +205,10 @@ public class CreateNoteUploadTest extends TestCase
 
 		verify(imageUploader).upload(createNote.imagePaths);
 
-		verify(notesDao).create(createNote.position,"jo ho\n\nAttached photo(s):\nhello, too");
+		verify(notesDao).create(createNote.position,"jo ho\n\nvia " + ApplicationConstants.USER_AGENT+"\n\nAttached photo(s):\nhello, too");
 	}
 
-	public void testCommentNoteUploadsImagesAndDisplaysLinks()
+	@Test public void commentNoteUploadsImagesAndDisplaysLinks()
 	{
 		CreateNote createNote = createACreateNote();
 		createNote.elementType = Element.Type.WAY;
@@ -237,8 +239,9 @@ public class CreateNoteUploadTest extends TestCase
 	private void verifyNoteInsertedIntoDb(long createNoteId, Note note)
 	{
 		verify(noteDb).put(note);
-		verify(osmNoteQuestDb).add(any(OsmNoteQuest.class));
+		verify(osmNoteQuestDb).add(any());
 		verify(createNoteDb).delete(createNoteId);
+		verify(questStatisticsDb).addOneNote();
 	}
 
 	private void setUpThereIsANoteFor(CreateNote createNote, final Note note)
@@ -249,7 +252,7 @@ public class CreateNoteUploadTest extends TestCase
 			Handler<Note> handler = (Handler<Note>) invocation.getArguments()[1];
 			handler.handle(note);
 			return null;
-		}).when(notesDao).getAll(any(BoundingBox.class), any(Handler.class), anyInt(), anyInt());
+		}).when(notesDao).getAll(any(), any(), anyInt(), anyInt());
 	}
 
 	private Note createNote(CreateNote fitsTo)

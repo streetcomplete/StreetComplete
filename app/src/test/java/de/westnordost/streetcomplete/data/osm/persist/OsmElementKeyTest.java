@@ -1,26 +1,28 @@
 package de.westnordost.streetcomplete.data.osm.persist;
 
-import junit.framework.TestCase;
+import org.junit.Test;
 
 import de.westnordost.osmapi.map.data.Element;
 
-public class OsmElementKeyTest extends TestCase
+import static org.junit.Assert.*;
+
+public class OsmElementKeyTest
 {
-	public void testAlmostEqual()
+	@Test public void almostEqual()
 	{
 		OsmElementKey
 			a = new OsmElementKey(Element.Type.NODE, 1),
 			b = new OsmElementKey(Element.Type.WAY, 1),
 			c = new OsmElementKey(Element.Type.NODE, 2);
 
-		assertFalse(a.equals(b));
-		assertFalse(a.equals(c));
+		assertNotEquals(a, b);
+		assertNotEquals(a, c);
 
-		assertFalse(a.hashCode() == b.hashCode());
-		assertFalse(a.hashCode() == c.hashCode());
+		assertNotEquals(a.hashCode(), b.hashCode());
+		assertNotEquals(a.hashCode(), c.hashCode());
 	}
 
-	public void testEqual()
+	@Test public void equal()
 	{
 		OsmElementKey
 				a = new OsmElementKey(Element.Type.NODE, 1),
