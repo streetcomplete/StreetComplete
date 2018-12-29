@@ -39,8 +39,6 @@ import com.mapzen.tangram.TouchInput;
 
 import java.io.File;
 
-import javax.inject.Inject;
-
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.R;
@@ -81,8 +79,6 @@ public class MapFragment extends Fragment implements
 	private boolean isCompassMode;
 
 	private MapControlsFragment mapControls;
-
-	@Inject SharedPreferences prefs;
 
 	private String apiKey;
 
