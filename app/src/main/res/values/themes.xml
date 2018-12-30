@@ -22,6 +22,7 @@
         <item name="dividerVertical">@drawable/button_bar_divider</item>
         <item name="dividerHorizontal">@drawable/button_bar_divider</item>
         <item name="android:popupMenuStyle">@style/Theme.Bubble.Popup</item>
+        <item name="android:navigationBarColor" tools:targetApi="21">@color/primary</item>
     </style>
 
     <style name="AppPreferenceThemeOverlay" parent="@style/PreferenceThemeOverlay.v14.Material">

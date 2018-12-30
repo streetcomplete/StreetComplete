@@ -104,7 +104,9 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 	@Override public void onResume()
 	{
 		super.onResume();
-		if (sceneFile != null && !sceneFile.equals(getSceneFilePath())) getActivity().recreate();
+		if (sceneFile != null && !sceneFile.equals(getSceneFilePath())) {
+			getActivity().recreate();
+		}
 	}
 
 	@Override public void onStop()
@@ -267,6 +269,8 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 	protected void updateView()
 	{
 		super.updateView();
+
+		if (controller == null) return;
 
 		if(controller.getZoom() < TILES_ZOOM) return;
 
