@@ -24,7 +24,7 @@ public class AddTactilePavingBusStop extends SimpleOverpassQuestType
 
 	@Override protected String getTagFilters()
 	{
-		return "nodes with (public_transport=platform or (highway=bus_stop and public_transport!=stop_position)) and !tactile_paving";
+		return "nodes, ways with (public_transport=platform or (highway=bus_stop and public_transport!=stop_position)) and !tactile_paving";
 	}
 
 	public AbstractQuestAnswerFragment createForm()
