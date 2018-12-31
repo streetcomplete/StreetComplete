@@ -16,6 +16,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.util.AdapterDataChangedWatcher
 import de.westnordost.streetcomplete.util.Serializer
+import de.westnordost.streetcomplete.xt.toObject
 import kotlinx.android.synthetic.main.quest_collection_times.*
 
 
@@ -85,9 +86,9 @@ class AddCollectionTimesForm : AbstractQuestFormAnswerFragment() {
     override fun isFormComplete() = collectionTimesString.isNotEmpty()
 
     companion object {
-        val TIMES = "times"
-        val NO_TIMES_SPECIFIED = "no_times_specified"
+        const val TIMES = "times"
+        const val NO_TIMES_SPECIFIED = "no_times_specified"
 
-        private val TIMES_DATA = "times_data"
+        private const val TIMES_DATA = "times_data"
     }
 }

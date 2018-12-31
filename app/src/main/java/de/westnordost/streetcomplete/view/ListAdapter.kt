@@ -6,19 +6,17 @@ import android.view.View
 abstract class ListAdapter<T>(list: List<T> = listOf()) :
 	RecyclerView.Adapter<ListAdapter.ViewHolder<T>>() {
 
-    protected var _list: MutableList<T> = list.toMutableList()
-    var list: List<T>
+    var list: MutableList<T> = list.toMutableList()
 	    set(value) {
-			_list = value.toMutableList()
+			field = value
 			notifyDataSetChanged()
 		}
-        get() = _list.toList()
 
     override fun onBindViewHolder(holder: ListAdapter.ViewHolder<T>, position: Int) {
-        holder.onBind(_list[position])
+        holder.onBind(list[position])
     }
 
-    override fun getItemCount() = _list.size
+    override fun getItemCount() = list.size
 
     abstract class ViewHolder<U>(itemView: View) : RecyclerView.ViewHolder(itemView) {
         abstract fun onBind(with: U)

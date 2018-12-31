@@ -18,7 +18,7 @@ import android.view.animation.TranslateAnimation;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import de.westnordost.streetcomplete.R;
 
@@ -93,7 +93,7 @@ public class CreateNoteFragment extends AbstractCreateNoteFragment
 		markerLayout.setVisibility(View.INVISIBLE);
 	}
 
-	@Override protected void onLeaveNote(String text, @Nullable ArrayList<String> imagePaths)
+	@Override protected void onLeaveNote(String text, @Nullable List<String> imagePaths)
 	{
 		if(closeKeyboard()) return;
 

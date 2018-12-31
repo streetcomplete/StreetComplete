@@ -95,7 +95,7 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment() {
     private fun onClickOk() {
         val answer = Bundle()
         answer.putString(TEXT, noteText)
-	    attachPhotoFragment?.let { answer.putStringArrayList(IMAGE_PATHS, it.imagePaths) }
+	    attachPhotoFragment?.let { answer.putStringArrayList(IMAGE_PATHS, ArrayList(it.imagePaths)) }
         applyAnswer(answer)
     }
 
@@ -147,7 +147,7 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment() {
                 commentStatusText.visibility = View.GONE
             }
 
-            if (comment.text != null && !comment.text.isEmpty()) {
+            if (!comment.text.isNullOrEmpty()) {
                 commentContainer.visibility = View.VISIBLE
                 commentText.text = comment.text
                 commentInfo.text = getString(R.string.quest_noteDiscussion_comment2, userName, dateDescription)

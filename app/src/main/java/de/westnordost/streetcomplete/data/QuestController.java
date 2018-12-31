@@ -145,7 +145,7 @@ public class QuestController
 	/** Create a note for the given OSM Quest instead of answering it. The quest will turn
 	 *  invisible.
 	 *  @return true if successful */
-	public boolean createNote(long osmQuestId, String questTitle, String text, ArrayList<String> imagePaths)
+	public boolean createNote(long osmQuestId, String questTitle, String text, @Nullable List<String> imagePaths)
 	{
 		OsmQuest q = osmQuestDB.get(osmQuestId);
 		// race condition: another thread may have removed the element already (#288)
@@ -181,7 +181,7 @@ public class QuestController
 		return true;
 	}
 
-	public void createNote(String text, ArrayList<String> imagePaths, LatLon position)
+	public void createNote(String text, @Nullable List<String> imagePaths, LatLon position)
 	{
 		CreateNote createNote = new CreateNote();
 		createNote.position = position;

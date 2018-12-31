@@ -16,9 +16,11 @@ abstract class SimpleOverpassQuestType(
 
     protected abstract val tagFilters: String
 
+    fun getOverpassQuery(bbox: BoundingBox) =
+        filter.toOverpassQLString(bbox) + OverpassQLUtil.getQuestPrintStatement()
+
     override fun download(bbox: BoundingBox, handler: MapDataWithGeometryHandler): Boolean {
-        val query = filter.toOverpassQLString(bbox) + OverpassQLUtil.getQuestPrintStatement()
-        return overpassServer.getAndHandleQuota(query, handler)
+        return overpassServer.getAndHandleQuota(getOverpassQuery(bbox), handler)
     }
 
     override fun isApplicableTo(element: Element) = filter.matches(element)

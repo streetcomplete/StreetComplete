@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.quests.opening_hours.model.OpeningWeekdays;
 import de.westnordost.streetcomplete.quests.opening_hours.model.TimeRange;
 import de.westnordost.streetcomplete.quests.opening_hours.model.Weekdays;
 
+import static de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningHoursModelCreatorKt.toOpeningMonthsList;
 import static org.junit.Assert.*;
 
 @SuppressWarnings("unchecked")
@@ -22,12 +23,12 @@ public class OpeningHoursModelCreatorTest
 	private static final Weekdays MONDAY_FRIDAY = new Weekdays(new boolean[]{true, true, true, true, true});
 	private static final Weekdays TUESDAY = new Weekdays(new boolean[]{false, true});
 
-	private static final TimeRange MORNING = new TimeRange(8*60,12*60);
-	private static final TimeRange MIDDAY = new TimeRange(10*60,16*60);
-	private static  TimeRange AFTERNOON = new TimeRange(14*60,18*60);
-	private static  TimeRange LONG_AFTERNOON = new TimeRange(13*60,20*60);
-	private static  TimeRange DUSK_TILL_DAWN = new TimeRange(18*60,6*60);
-	private static  TimeRange EARLY_MORNING = new TimeRange(4*60,8*60);
+	private static final TimeRange MORNING = new TimeRange(8*60,12*60,false);
+	private static final TimeRange MIDDAY = new TimeRange(10*60,16*60,false);
+	private static  TimeRange AFTERNOON = new TimeRange(14*60,18*60,false);
+	private static  TimeRange LONG_AFTERNOON = new TimeRange(13*60,20*60,false);
+	private static  TimeRange DUSK_TILL_DAWN = new TimeRange(18*60,6*60,false);
+	private static  TimeRange EARLY_MORNING = new TimeRange(4*60,8*60,false);
 
 	private static final OpeningWeekdaysRow MONDAY_MORNING = new OpeningWeekdaysRow(MONDAY, MORNING);
 
@@ -40,7 +41,7 @@ public class OpeningHoursModelCreatorTest
 		List<OpeningMonthsRow> viewData = new ArrayList<>();
 		viewData.add(new OpeningMonthsRow(JAN_JUN, MONDAY_MORNING));
 		viewData.add(new OpeningMonthsRow(JUL_DEC, MONDAY_MORNING));
-		List<OpeningMonths> actual = OpeningHoursModelCreator.INSTANCE.toOpeningMonthsList(viewData);
+		List<OpeningMonths> actual = toOpeningMonthsList(viewData);
 
 		List<OpeningMonths> expected = months(
 			new OpeningMonths(JAN_JUN, clusters(weekdays(new OpeningWeekdays(MONDAY, times(MORNING))))),
@@ -187,7 +188,7 @@ public class OpeningHoursModelCreatorTest
 		List<OpeningWeekdaysRow> owrs = omr.getWeekdaysList();
 		owrs.addAll(Arrays.asList(rows));
 		viewData.add(omr);
-		return OpeningHoursModelCreator.INSTANCE.toOpeningMonthsList(viewData);
+		return toOpeningMonthsList(viewData);
 	}
 
 	private static List<OpeningMonths> months(OpeningMonths ... ranges)

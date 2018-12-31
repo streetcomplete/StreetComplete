@@ -24,7 +24,7 @@ class Weekdays {
         }
     }
 
-	fun isSelectionEmpty() = data.all { false }
+	fun isSelectionEmpty() = data.all { !it }
 
 	override fun toString() = toStringUsing(OSM_ABBR_WEEKDAYS, ",", "-")
 

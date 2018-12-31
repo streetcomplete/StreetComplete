@@ -36,7 +36,7 @@ class LeaveNoteInsteadFragment : AbstractCreateNoteFragment() {
         questAnswerComponent.onAttach(ctx as OsmQuestAnswerListener?)
     }
 
-    override fun onLeaveNote(text: String, imagePaths: ArrayList<String>?) {
+    override fun onLeaveNote(text: String, imagePaths: List<String>?) {
         questAnswerComponent.onLeaveNote(questTitle, text, imagePaths)
     }
 

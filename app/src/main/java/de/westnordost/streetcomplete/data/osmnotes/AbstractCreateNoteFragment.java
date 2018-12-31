@@ -14,7 +14,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.quests.AbstractBottomSheetFragment;
@@ -107,6 +107,6 @@ public abstract class AbstractCreateNoteFragment extends AbstractBottomSheetFrag
 		buttonOk.setEnabled(!getNoteText().isEmpty());
 	}
 
-	protected abstract void onLeaveNote(String text, @Nullable ArrayList<String> imagePaths);
+	protected abstract void onLeaveNote(String text, @Nullable List<String> imagePaths);
 	@LayoutRes protected abstract int getLayoutResId();
 }

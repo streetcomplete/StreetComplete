@@ -1,10 +1,12 @@
 package de.westnordost.streetcomplete.quests;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 
 import junit.framework.TestCase;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import de.westnordost.streetcomplete.data.QuestGroup;
 
@@ -58,7 +60,7 @@ public class QuestAnswerComponentTest extends TestCase
 			}
 
 			@Override public void onLeaveNote(long questId, QuestGroup group, String questTitle,
-											  String note, ArrayList<String> imagePaths)
+											  String note, @Nullable List<String> imagePaths)
 			{
 				assertEquals(expectQuestId, questId);
 				assertEquals(expectGroup, group);

@@ -74,6 +74,6 @@ public class OpeningMonthsTest
 
 	private static TimeRange hours(int start, int end)
 	{
-		return new TimeRange(start*60, end*60);
+		return new TimeRange(start*60, end*60,false);
 	}
 }

@@ -48,6 +48,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Random;
 
 import javax.inject.Inject;
@@ -720,7 +721,7 @@ public class MainActivity extends AppCompatActivity implements
 		ft.commit();
 	}
 
-	@Override public void onLeaveNote(long questId, QuestGroup group, String questTitle, String note, ArrayList<String> imagePaths)
+	@Override public void onLeaveNote(long questId, QuestGroup group, String questTitle, String note, @Nullable List<String> imagePaths)
 	{
 		closeBottomSheet();
 		// the quest is deleted from DB on creating a note, so need to fetch quest before
@@ -816,7 +817,7 @@ public class MainActivity extends AppCompatActivity implements
 		showInBottomSheet(new CreateNoteFragment());
 	}
 
-	@Override public void onLeaveNote(String note, ArrayList<String> imagePaths, Point screenPosition)
+	@Override public void onLeaveNote(String note, @Nullable List<String> imagePaths, Point screenPosition)
 	{
 		showMarkerSolvedAnimation(R.drawable.ic_quest_create_note, new PointF(screenPosition), null);
 		closeBottomSheet();

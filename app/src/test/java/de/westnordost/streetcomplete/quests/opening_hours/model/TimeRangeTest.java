@@ -10,16 +10,16 @@ public class TimeRangeTest
 {
 	@Test public void intersect()
 	{
-		TimeRange tr = new TimeRange(10,14);
-		TimeRange directlyAfter = new TimeRange(14,16);
-		TimeRange clearlyAfter = new TimeRange(17,18);
-		TimeRange directlyBefore = new TimeRange(8,10);
-		TimeRange clearlyBefore = new TimeRange(4,8);
-		TimeRange within = new TimeRange(11,12);
-		TimeRange intersectsLowerSection = new TimeRange(6,12);
-		TimeRange intersectUpperSection = new TimeRange(12,20);
-		TimeRange loopsOutside = new TimeRange(20,4);
-		TimeRange loopsInside = new TimeRange(20,12);
+		TimeRange tr = new TimeRange(10,14,false);
+		TimeRange directlyAfter = new TimeRange(14,16,false);
+		TimeRange clearlyAfter = new TimeRange(17,18,false);
+		TimeRange directlyBefore = new TimeRange(8,10,false);
+		TimeRange clearlyBefore = new TimeRange(4,8,false);
+		TimeRange within = new TimeRange(11,12,false);
+		TimeRange intersectsLowerSection = new TimeRange(6,12,false);
+		TimeRange intersectUpperSection = new TimeRange(12,20,false);
+		TimeRange loopsOutside = new TimeRange(20,4,false);
+		TimeRange loopsInside = new TimeRange(20,12,false);
 
 		assertTrue(tr.intersects(tr));
 		assertFalse(tr.intersects(directlyAfter));

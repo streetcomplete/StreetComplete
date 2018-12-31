@@ -18,6 +18,7 @@ import de.westnordost.streetcomplete.quests.localized_name.data.RoadNamesTable.C
 import de.westnordost.streetcomplete.quests.localized_name.data.RoadNamesTable.NAME
 import de.westnordost.streetcomplete.util.Serializer
 import de.westnordost.streetcomplete.util.SphericalEarthMath
+import de.westnordost.streetcomplete.xt.toObject
 import de.westnordost.streetcomplete.xt.transaction
 
 class RoadNameSuggestionsDao @Inject constructor(

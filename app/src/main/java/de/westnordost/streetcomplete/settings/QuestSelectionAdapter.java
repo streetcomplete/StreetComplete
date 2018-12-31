@@ -64,7 +64,7 @@ public class QuestSelectionAdapter extends ListAdapter<QuestSelectionAdapter.Que
 		ith.attachToRecyclerView(recyclerView);
 	}
 
-	@Override
+	@NonNull @Override
 	public ListAdapter.ViewHolder<QuestVisibility> onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
 	{
 		View layout = LayoutInflater.from(parent.getContext())

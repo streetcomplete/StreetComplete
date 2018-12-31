@@ -49,7 +49,7 @@ class NoteImageAdapter(list: List<String>, private val context: Context) : ListA
     }
 
     private fun delete(index: Int) {
-        val imagePath = _list.removeAt(index)
+        val imagePath = list.removeAt(index)
         val image = File(imagePath)
         if (image.exists()) {
             image.delete()

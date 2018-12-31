@@ -11,13 +11,13 @@ public class CircularSectionTest
 		CircularSection cs = new CircularSection(0,10);
 		assertEquals(0, cs.getStart());
 		assertEquals(10, cs.getEnd());
-		assertFalse(cs.loops());
+		assertFalse(cs.getLoops());
 	}
 
 	@Test public void loops()
 	{
 		CircularSection cs = new CircularSection(10,0);
-		assertTrue(cs.loops());
+		assertTrue(cs.getLoops());
 	}
 
 	@Test public void intersect()
