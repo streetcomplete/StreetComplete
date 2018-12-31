@@ -8,6 +8,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.FileProvider;
 import android.support.v7.widget.LinearLayoutManager;
@@ -44,7 +45,7 @@ public class AttachPhotoFragment extends Fragment
 	private static final String CURRENT_PHOTO_PATH = "current_photo_path";
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+	public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState)
 	{
 		View view = inflater.inflate(R.layout.fragment_attach_photo, container, false);
@@ -76,7 +77,7 @@ public class AttachPhotoFragment extends Fragment
 		return view;
 	}
 
-	@Override public void onSaveInstanceState(Bundle outState)
+	@Override public void onSaveInstanceState(@NonNull Bundle outState)
 	{
 		super.onSaveInstanceState(outState);
 		outState.putStringArrayList(PHOTO_PATHS, imagePaths);

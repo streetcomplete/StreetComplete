@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.view.Item
 
 class AddBridgeStructureForm : ImageListQuestAnswerFragment() {
     // structures sorted highest to lowest amount of values on taginfo, footbridge-types last
-    override fun getItems() = arrayOf(
+    override val items = listOf(
         Item("beam", R.drawable.bridge_structure_beam),
         Item("suspension", R.drawable.bridge_structure_suspension),
         Item("arch", R.drawable.bridge_structure_arch),
@@ -18,5 +18,5 @@ class AddBridgeStructureForm : ImageListQuestAnswerFragment() {
         Item("floating", R.drawable.bridge_structure_floating)
     )
 
-    override fun getItemsPerRow() = 2
+    override val itemsPerRow = 2
 }

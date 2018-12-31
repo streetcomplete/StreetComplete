@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.quests.bikeway
 
 import de.westnordost.streetcomplete.R
 
-enum class Cycleway(val iconResId: Int, val iconResIdLeft: Int, val nameResId: Int) {
+enum class Cycleway(private val iconResId: Int, private val iconResIdLeft: Int, val nameResId: Int) {
 
     // some kind of cycle lane, not specified if with continuous or dashed lane markings
     LANE_UNSPECIFIED   (R.drawable.ic_cycleway_lane,        R.drawable.ic_cycleway_lane_l,       R.string.quest_cycleway_value_lane),

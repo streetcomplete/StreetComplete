@@ -19,20 +19,20 @@ public class AddSportTest extends AOsmElementQuestTypeTest
 	public void testReplaceHockey()
 	{
 		tags.put("sport","hockey");
-		bundle.putStringArrayList(AddSportForm.OSM_VALUES, getAsStringArray("field_hockey"));
+		bundle.putStringArrayList(AddSportForm.Companion.getOSM_VALUES(), getAsStringArray("field_hockey"));
 		verify(new StringMapEntryModify("sport","hockey","field_hockey"));
 	}
 
 	public void testReplaceTeamHandball()
 	{
 		tags.put("sport","team_handball");
-		bundle.putStringArrayList(AddSportForm.OSM_VALUES, getAsStringArray("handball"));
+		bundle.putStringArrayList(AddSportForm.Companion.getOSM_VALUES(), getAsStringArray("handball"));
 		verify(new StringMapEntryModify("sport","team_handball","handball"));
 	}
 
 	public void testAddSport()
 	{
-		bundle.putStringArrayList(AddSportForm.OSM_VALUES, getAsStringArray("soccer"));
+		bundle.putStringArrayList(AddSportForm.Companion.getOSM_VALUES(), getAsStringArray("soccer"));
 		verify(new StringMapEntryAdd("sport","soccer"));
 	}
 

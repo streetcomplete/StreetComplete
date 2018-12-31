@@ -10,8 +10,7 @@ import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
 class AddBenchBackrestForm : YesNoQuestAnswerFragment() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
 
         addOtherAnswer(R.string.quest_bench_answer_picnic_table) {
@@ -19,6 +18,7 @@ class AddBenchBackrestForm : YesNoQuestAnswerFragment() {
             answer.putBoolean(PICNIC_TABLE, true)
             applyAnswer(answer)
         }
+
         return view
     }
 

@@ -6,11 +6,11 @@ import de.westnordost.streetcomplete.view.Item
 
 class AddRecyclingTypeForm : ImageListQuestAnswerFragment() {
 
-    override fun getItems() = arrayOf(
+    override val items = listOf(
         Item("overground", R.drawable.recycling_container, R.string.overground_recycling_container),
         Item("underground", R.drawable.recycling_container_underground, R.string.underground_recycling_container),
         Item("centre", R.drawable.recycling_centre, R.string.recycling_centre)
     )
 
-    override fun getItemsPerRow() = 3
+    override val itemsPerRow = 3
 }

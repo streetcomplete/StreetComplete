@@ -24,10 +24,10 @@ class AddBuildingType (o: OverpassMapDataDao) : SimpleOverpassQuestType(o) {
 
     override fun applyAnswerTo(answer: Bundle, changes: StringMapChangesBuilder) {
         val building = answer.getString(AddBuildingTypeForm.BUILDING)
-        val man_made = answer.getString(AddBuildingTypeForm.MAN_MADE)
-        if (man_made != null) {
+        val manMade = answer.getString(AddBuildingTypeForm.MAN_MADE)
+        if (manMade != null) {
             changes.delete("building")
-            changes.add("man_made", man_made)
+            changes.add("man_made", manMade)
         } else {
             changes.modify("building", building!!)
         }

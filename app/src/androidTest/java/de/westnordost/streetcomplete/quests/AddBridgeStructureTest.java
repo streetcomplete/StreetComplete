@@ -20,7 +20,7 @@ public class AddBridgeStructureTest extends AOsmElementQuestTypeTest {
 	{
 		ArrayList<String> values = new ArrayList<>();
 		values.add("arch");
-		bundle.putStringArrayList(AddRecyclingTypeForm.OSM_VALUES, values);
+		bundle.putStringArrayList(AddRecyclingTypeForm.Companion.getOSM_VALUES(), values);
         verify(new StringMapEntryAdd("bridge:structure", "arch"));
     }
 

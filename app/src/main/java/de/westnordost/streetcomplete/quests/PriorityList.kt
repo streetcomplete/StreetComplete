@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.quests
 
-import de.westnordost.streetcomplete.view.Item
+import de.westnordost.streetcomplete.view.GroupedItem
 
-fun Array<Item>.sortedBy(names: Iterable<String>): List<Item> {
-    val result = mutableListOf(*this)
+fun Collection<GroupedItem>.sortedBy(names: Iterable<String>): List<GroupedItem> {
+    val result = toMutableList()
     // in reverse because the first element in the list should be first in religionsList
     for (name in names.reversed()) {
         for (i in result.indices) {

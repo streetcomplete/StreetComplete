@@ -17,20 +17,20 @@ public class AddRecyclingTypeTest extends AOsmElementQuestTypeTest
 
 	public void testRecyclingCentre()
 	{
-		bundle.putStringArrayList(AddRecyclingTypeForm.OSM_VALUES, getAsStringArray("centre"));
+		bundle.putStringArrayList(AddRecyclingTypeForm.Companion.getOSM_VALUES(), getAsStringArray("centre"));
 		verify(new StringMapEntryAdd("recycling_type","centre"));
 	}
 
 	public void testRecyclingUndergroundContainer()
 	{
-		bundle.putStringArrayList(AddRecyclingTypeForm.OSM_VALUES, getAsStringArray("underground"));
+		bundle.putStringArrayList(AddRecyclingTypeForm.Companion.getOSM_VALUES(), getAsStringArray("underground"));
 		verify(new StringMapEntryAdd("recycling_type","container"));
 		verify(new StringMapEntryAdd("location","underground"));
 	}
 
 	public void testRecyclingOvergroundContainer()
 	{
-		bundle.putStringArrayList(AddRecyclingTypeForm.OSM_VALUES, getAsStringArray("overground"));
+		bundle.putStringArrayList(AddRecyclingTypeForm.Companion.getOSM_VALUES(), getAsStringArray("overground"));
 		verify(new StringMapEntryAdd("recycling_type","container"));
 	}
 

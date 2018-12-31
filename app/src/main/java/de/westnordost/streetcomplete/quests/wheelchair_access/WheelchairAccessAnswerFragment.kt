@@ -27,6 +27,6 @@ open class WheelchairAccessAnswerFragment : AbstractQuestAnswerFragment() {
     }
 
     companion object {
-        val ANSWER = "answer"
+        const val ANSWER = "answer"
     }
 }

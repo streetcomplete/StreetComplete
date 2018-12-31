@@ -46,7 +46,7 @@ class AddBuildingLevelsForm : AbstractQuestFormAnswerFragment() {
                 .show()
         }
 
-        val lastPicked = favs.getLastPicked(javaClass.simpleName)
+        val lastPicked = favs.get(javaClass.simpleName)
         if (lastPicked.isEmpty()) {
             pickLastButton.visibility = View.GONE
         } else {
@@ -80,7 +80,7 @@ class AddBuildingLevelsForm : AbstractQuestFormAnswerFragment() {
             answer.putInt(ROOF_LEVELS, roofLevels)
             favValues.add(roofLevels)
         }
-        favs.addLastPicked(javaClass.simpleName, favValues.joinToString("#"), MAX_FAVS)
+        favs.add(javaClass.simpleName, favValues.joinToString("#"), MAX_FAVS)
         applyAnswer(answer)
     }
 

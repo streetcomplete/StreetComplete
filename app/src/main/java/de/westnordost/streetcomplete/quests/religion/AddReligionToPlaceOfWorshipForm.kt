@@ -14,20 +14,19 @@ import de.westnordost.streetcomplete.view.Item
 
 class AddReligionToPlaceOfWorshipForm : ImageListQuestAnswerFragment() {
 
+    override val items get() = ALL_RELIGION_VALUES.sortedBy(countryInfo.popularReligions)
+
+    override val maxSelectableItems = 1
+    override val maxNumberOfInitiallyShownItems = 4
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
-        imageSelector.setCellLayout(R.layout.cell_icon_select_with_label_below)
+        imageSelector.cellLayoutId = R.layout.cell_icon_select_with_label_below
 
         addOtherAnswer(R.string.quest_religion_for_place_of_worship_answer_multi) { applyMultiAnswer() }
 
         return view
     }
-
-    override fun getMaxSelectableItems() = 1
-    override fun getMaxNumberOfInitiallyShownItems() = 4
-
-    override fun getItems() =
-        ALL_RELIGION_VALUES.sortedBy(countryInfo.popularReligions).toTypedArray()
 
     private fun applyMultiAnswer() {
         val answer = Bundle()
@@ -38,7 +37,7 @@ class AddReligionToPlaceOfWorshipForm : ImageListQuestAnswerFragment() {
     }
 
     companion object {
-        private val ALL_RELIGION_VALUES = arrayOf(
+        private val ALL_RELIGION_VALUES = listOf(
             // sorted by worldwide usages, *minus* country specific ones
             Item("christian", R.drawable.ic_religion_christian, R.string.quest_religion_christian),
             Item("muslim",    R.drawable.ic_religion_muslim,    R.string.quest_religion_muslim),

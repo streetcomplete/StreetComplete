@@ -6,12 +6,11 @@ import de.westnordost.streetcomplete.view.Item
 
 class AddOrchardProduceForm : ImageListQuestAnswerFragment() {
 
-    override fun getItems() =
     // only include what is given for that country
-        countryInfo.orchardProduces.mapNotNull { PRODUCES_MAP[it] }.toTypedArray()
+    override val items get() = countryInfo.orchardProduces.mapNotNull { PRODUCES_MAP[it] }
 
-    override fun getItemsPerRow() = 3
-    override fun getMaxNumberOfInitiallyShownItems() = -1
+    override val itemsPerRow = 3
+    override val maxNumberOfInitiallyShownItems = -1
 
     companion object {
         private val PRODUCES = arrayOf(

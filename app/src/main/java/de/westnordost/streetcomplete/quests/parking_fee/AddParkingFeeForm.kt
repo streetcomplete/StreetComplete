@@ -56,7 +56,7 @@ class AddParkingFeeForm : AbstractQuestFormAnswerFragment() {
         hoursView = setContentView(R.layout.quest_fee_hours)
 
         val viewData = loadOpeningHoursData(savedInstanceState)
-        openingHoursAdapter = AddOpeningHoursAdapter(viewData, activity, countryInfo)
+        openingHoursAdapter = AddOpeningHoursAdapter(viewData, activity!!, countryInfo)
         openingHoursAdapter.registerAdapterDataObserver( AdapterDataChangedWatcher { checkIsFormComplete() })
 
         openingHoursList.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
@@ -115,10 +115,7 @@ class AddParkingFeeForm : AbstractQuestFormAnswerFragment() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putByteArray(
-            OPENING_HOURS_DATA,
-            serializer.toBytes(openingHoursAdapter.viewData)
-        )
+        outState.putByteArray(OPENING_HOURS_DATA, serializer.toBytes(ArrayList(openingHoursAdapter.monthsRows)))
         outState.putBoolean(IS_DEFINING_HOURS, isDefiningHours)
         outState.putBoolean(IS_FEE_ONLY_AT_HOURS, isFeeOnlyAtHours)
     }
@@ -130,11 +127,11 @@ class AddParkingFeeForm : AbstractQuestFormAnswerFragment() {
 
     companion object {
 
-        val FEE = "fee"
-        val FEE_CONDITONAL_HOURS = "fee_conditional_hours"
+        const val FEE = "fee"
+        const val FEE_CONDITONAL_HOURS = "fee_conditional_hours"
 
-        private val OPENING_HOURS_DATA = "oh_data"
-        private val IS_FEE_ONLY_AT_HOURS = "oh_fee_only_at"
-        private val IS_DEFINING_HOURS = "oh"
+        private const val OPENING_HOURS_DATA = "oh_data"
+        private const val IS_FEE_ONLY_AT_HOURS = "oh_fee_only_at"
+        private const val IS_DEFINING_HOURS = "oh"
     }
 }

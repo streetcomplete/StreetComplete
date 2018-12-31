@@ -17,7 +17,7 @@ public class AddHousenumberTest extends AOsmElementQuestTypeTest
 
 	public void testRegex()
 	{
-		String r = AddHousenumberForm.VALID_HOUSENUMBER_REGEX;
+		String r = AddHousenumberForm.Companion.getVALID_HOUSENUMBER_REGEX();
 		assertTrue("1".matches(r));
 		assertTrue("1234".matches(r));
 
@@ -37,19 +37,19 @@ public class AddHousenumberTest extends AOsmElementQuestTypeTest
 
 	public void testNumber()
 	{
-		bundle.putString(AddHousenumberForm.HOUSENUMBER, "99b");
+		bundle.putString(AddHousenumberForm.Companion.getHOUSENUMBER(), "99b");
 		verify(new StringMapEntryAdd("addr:housenumber","99b"));
 	}
 
 	public void testName()
 	{
-		bundle.putString(AddHousenumberForm.HOUSENAME, "La Escalera");
+		bundle.putString(AddHousenumberForm.Companion.getHOUSENAME(), "La Escalera");
 		verify(new StringMapEntryAdd("addr:housename","La Escalera"));
 	}
 
 	public void testConscriptionNumber()
 	{
-		bundle.putString(AddHousenumberForm.CONSCRIPTIONNUMBER, "I.123");
+		bundle.putString(AddHousenumberForm.Companion.getCONSCRIPTIONNUMBER(), "I.123");
 		verify(
 				new StringMapEntryAdd("addr:conscriptionnumber","I.123"),
 				new StringMapEntryAdd("addr:housenumber","I.123"));
@@ -57,8 +57,8 @@ public class AddHousenumberTest extends AOsmElementQuestTypeTest
 
 	public void testConscriptionNumberAndStreetNumber()
 	{
-		bundle.putString(AddHousenumberForm.CONSCRIPTIONNUMBER, "I.123");
-		bundle.putString(AddHousenumberForm.STREETNUMBER, "12b");
+		bundle.putString(AddHousenumberForm.Companion.getCONSCRIPTIONNUMBER(), "I.123");
+		bundle.putString(AddHousenumberForm.Companion.getSTREETNUMBER(), "12b");
 		verify(
 				new StringMapEntryAdd("addr:conscriptionnumber","I.123"),
 				new StringMapEntryAdd("addr:streetnumber","12b"),

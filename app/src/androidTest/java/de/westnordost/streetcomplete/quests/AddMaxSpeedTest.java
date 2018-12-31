@@ -12,14 +12,14 @@ public class AddMaxSpeedTest extends AOsmElementQuestTypeTest
 
 	public void testNoSign()
 	{
-		bundle.putString(AddMaxSpeedForm.MAX_SPEED_IMPLICIT_ROADTYPE, "flubberway");
-		bundle.putString(AddMaxSpeedForm.MAX_SPEED_IMPLICIT_COUNTRY, "XX");
+		bundle.putString(AddMaxSpeedForm.Companion.getMAX_SPEED_IMPLICIT_ROADTYPE(), "flubberway");
+		bundle.putString(AddMaxSpeedForm.Companion.getMAX_SPEED_IMPLICIT_COUNTRY(), "XX");
 		verify(new StringMapEntryAdd(MAXSPEED_TYPE,"XX:flubberway"));
 	}
 
 	public void testNormalSign()
 	{
-		bundle.putString(AddMaxSpeedForm.MAX_SPEED, "123");
+		bundle.putString(AddMaxSpeedForm.Companion.getMAX_SPEED(), "123");
 		verify(
 				new StringMapEntryAdd("maxspeed","123"),
 				new StringMapEntryAdd(MAXSPEED_TYPE,"sign"));
@@ -27,7 +27,7 @@ public class AddMaxSpeedTest extends AOsmElementQuestTypeTest
 
 	public void testAdvisoryNormalSign()
 	{
-		bundle.putString(AddMaxSpeedForm.ADVISORY_SPEED, "123");
+		bundle.putString(AddMaxSpeedForm.Companion.getADVISORY_SPEED(), "123");
 		verify(
 				new StringMapEntryAdd("maxspeed:advisory","123"),
 				new StringMapEntryAdd(MAXSPEED_TYPE+":advisory","sign"));
@@ -35,9 +35,9 @@ public class AddMaxSpeedTest extends AOsmElementQuestTypeTest
 
 	public void testZoneSign()
 	{
-		bundle.putString(AddMaxSpeedForm.MAX_SPEED, "123");
-		bundle.putString(AddMaxSpeedForm.MAX_SPEED_IMPLICIT_ROADTYPE, "zoneXYZ");
-		bundle.putString(AddMaxSpeedForm.MAX_SPEED_IMPLICIT_COUNTRY, "AA");
+		bundle.putString(AddMaxSpeedForm.Companion.getMAX_SPEED(), "123");
+		bundle.putString(AddMaxSpeedForm.Companion.getMAX_SPEED_IMPLICIT_ROADTYPE(), "zoneXYZ");
+		bundle.putString(AddMaxSpeedForm.Companion.getMAX_SPEED_IMPLICIT_COUNTRY(), "AA");
 		verify(
 				new StringMapEntryAdd("maxspeed","123"),
 				new StringMapEntryAdd(MAXSPEED_TYPE,"AA:zoneXYZ"));
@@ -46,7 +46,7 @@ public class AddMaxSpeedTest extends AOsmElementQuestTypeTest
 	public void testLivingStreet()
 	{
 		tags.put("highway","residential");
-		bundle.putBoolean(AddMaxSpeedForm.LIVING_STREET, true);
+		bundle.putBoolean(AddMaxSpeedForm.Companion.getLIVING_STREET(), true);
 		verify(
 				new StringMapEntryModify("highway","residential","living_street"));
 	}

@@ -11,11 +11,12 @@ import kotlinx.android.synthetic.main.quest_motorcycle_parking_capacity.*
 
 class AddMotorcycleParkingCapacityForm : TextInputQuestAnswerFragment() {
 
+    override val editText = capacityInput!!
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
         setContentView(R.layout.quest_motorcycle_parking_capacity)
         return view
     }
 
-    override fun getEditText() = capacityInput
 }

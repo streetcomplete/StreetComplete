@@ -9,7 +9,7 @@ public class AddPathSurfaceTest extends AOsmElementQuestTypeTest
 {
 	public void testSurface()
 	{
-		bundle.putString(GroupedImageListQuestAnswerFragment.OSM_VALUE, "cobblestone");
+		bundle.putString(GroupedImageListQuestAnswerFragment.Companion.getOSM_VALUE(), "cobblestone");
 		verify(new StringMapEntryAdd("surface","cobblestone"));
 	}
 

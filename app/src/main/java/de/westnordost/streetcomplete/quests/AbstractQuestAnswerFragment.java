@@ -78,7 +78,7 @@ public abstract class AbstractQuestAnswerFragment extends AbstractBottomSheetFra
 	}
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+	public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState)
 	{
 		otherAnswers = new ArrayList<>();
