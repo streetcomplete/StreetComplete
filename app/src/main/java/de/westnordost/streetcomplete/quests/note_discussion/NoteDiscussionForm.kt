@@ -40,7 +40,7 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment() {
     @Inject internal lateinit var noteDb: OsmNoteQuestDao
 
     private val attachPhotoFragment get() =
-	    childFragmentManager.findFragmentById(R.id.attachPhotoFragment) as? AttachPhotoFragment
+        childFragmentManager.findFragmentById(R.id.attachPhotoFragment) as? AttachPhotoFragment
 
     private val noteText: String get() = noteInput.text.toString().trim()
 
@@ -76,8 +76,8 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment() {
 
         if (savedInstanceState == null) {
             childFragmentManager.beginTransaction()
-	            .add(R.id.attachPhotoFragment, AttachPhotoFragment())
-	            .commit()
+                .add(R.id.attachPhotoFragment, AttachPhotoFragment())
+                .commit()
         }
     }
 
@@ -95,12 +95,12 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment() {
     private fun onClickOk() {
         val answer = Bundle()
         answer.putString(TEXT, noteText)
-	    attachPhotoFragment?.let { answer.putStringArrayList(IMAGE_PATHS, ArrayList(it.imagePaths)) }
+        attachPhotoFragment?.let { answer.putStringArrayList(IMAGE_PATHS, ArrayList(it.imagePaths)) }
         applyAnswer(answer)
     }
 
     public override fun onDiscard() {
-	    attachPhotoFragment?.deleteImages()
+        attachPhotoFragment?.deleteImages()
     }
 
     override fun isRejectingClose(): Boolean {
@@ -119,7 +119,7 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment() {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListAdapter.ViewHolder<NoteComment> {
             return NoteCommentViewHolder(
-	            layoutInflater.inflate(R.layout.quest_note_discussion_item, parent, false)
+                layoutInflater.inflate(R.layout.quest_note_discussion_item, parent, false)
             )
         }
     }
@@ -128,13 +128,13 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment() {
         ListAdapter.ViewHolder<NoteComment>(itemView) {
 
         private val commentContainer: ViewGroup = itemView.findViewById(R.id.commentView)
-	    private val commentAvatar: ImageView = itemView.findViewById(R.id.commentAvatarImage)
-	    private val commentText: TextView = itemView.findViewById(R.id.commentText)
-	    private val commentInfo: TextView = itemView.findViewById(R.id.commentInfoText)
-	    private val commentStatusText: TextView = itemView.findViewById(R.id.commentStatusText)
+        private val commentAvatar: ImageView = itemView.findViewById(R.id.commentAvatarImage)
+        private val commentText: TextView = itemView.findViewById(R.id.commentText)
+        private val commentInfo: TextView = itemView.findViewById(R.id.commentInfoText)
+        private val commentStatusText: TextView = itemView.findViewById(R.id.commentStatusText)
 
-	    override fun onBind(with: NoteComment) {
-		    val comment = with
+        override fun onBind(with: NoteComment) {
+            val comment = with
 
             val dateDescription = DateUtils.getRelativeTimeSpanString(comment.date.time, Date().time, MINUTE_IN_MILLIS)
             val userName = if (comment.user != null) comment.user.displayName else getString(R.string.quest_noteDiscussion_anonymous)
@@ -168,10 +168,10 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment() {
         }
 
         private val NoteComment.Action.actionResourceId get() = when (this) {
-	        NoteComment.Action.CLOSED -> R.string.quest_noteDiscussion_closed2
-	        NoteComment.Action.REOPENED -> R.string.quest_noteDiscussion_reopen2
-	        NoteComment.Action.HIDDEN -> R.string.quest_noteDiscussion_hide2
-	        else -> 0
+            NoteComment.Action.CLOSED -> R.string.quest_noteDiscussion_closed2
+            NoteComment.Action.REOPENED -> R.string.quest_noteDiscussion_reopen2
+            NoteComment.Action.HIDDEN -> R.string.quest_noteDiscussion_hide2
+            else -> 0
         }
     }
 

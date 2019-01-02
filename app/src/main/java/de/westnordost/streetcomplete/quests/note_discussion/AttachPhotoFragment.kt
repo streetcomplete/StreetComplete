@@ -47,12 +47,12 @@ class AttachPhotoFragment : Fragment() {
             view.visibility = View.GONE
         }
 
-	    val paths: ArrayList<String>
+        val paths: ArrayList<String>
         if (savedInstanceState != null) {
-	        paths = savedInstanceState.getStringArrayList(PHOTO_PATHS)
+            paths = savedInstanceState.getStringArrayList(PHOTO_PATHS)
             currentImagePath = savedInstanceState.getString(CURRENT_PHOTO_PATH)
         } else {
-	        paths = ArrayList()
+            paths = ArrayList()
             currentImagePath = null
         }
 
@@ -75,11 +75,11 @@ class AttachPhotoFragment : Fragment() {
             try {
                 val photoFile = createImageFile()
                 val photoUri = if (Build.VERSION.SDK_INT > 21) {
-		            //Use FileProvider for getting the content:// URI, see: https://developer.android.com/training/camera/photobasics.html#TaskPath
-		            FileProvider.getUriForFile(activity!!,getString(R.string.fileprovider_authority),photoFile)
-	            } else {
-		            Uri.fromFile(photoFile)
-	            }
+                    //Use FileProvider for getting the content:// URI, see: https://developer.android.com/training/camera/photobasics.html#TaskPath
+                    FileProvider.getUriForFile(activity!!,getString(R.string.fileprovider_authority),photoFile)
+                } else {
+                    Uri.fromFile(photoFile)
+                }
                 currentImagePath = photoFile.path
                 takePhotoIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri)
                 startActivityForResult(takePhotoIntent, REQUEST_TAKE_PHOTO)
@@ -106,12 +106,12 @@ class AttachPhotoFragment : Fragment() {
         if (requestCode == REQUEST_TAKE_PHOTO) {
             if (resultCode == RESULT_OK) {
                 try {
-	                val path = currentImagePath!!
+                    val path = currentImagePath!!
                     val bitmap = AttachPhotoUtils.resize(path, ATTACH_PHOTO_MAXWIDTH) ?: throw IOException()
                     val out = FileOutputStream(path)
                     bitmap.compress(Bitmap.CompressFormat.JPEG, ATTACH_PHOTO_QUALITY, out)
 
-	                noteImageAdapter.list.add(path)
+                    noteImageAdapter.list.add(path)
                     noteImageAdapter.notifyItemInserted(imagePaths.size - 1)
                 } catch (e: IOException) {
                     Log.e(TAG, "Unable to rescale the photo", e)
@@ -127,12 +127,12 @@ class AttachPhotoFragment : Fragment() {
     }
 
     private fun removeCurrentImage() {
-	    currentImagePath?.let {
-		    val photoFile = File(it)
-		    if (photoFile.exists()) {
-			    photoFile.delete()
-		    }
-	    }
+        currentImagePath?.let {
+            val photoFile = File(it)
+            if (photoFile.exists()) {
+                photoFile.delete()
+            }
+        }
     }
 
     private fun createImageFile(): File {

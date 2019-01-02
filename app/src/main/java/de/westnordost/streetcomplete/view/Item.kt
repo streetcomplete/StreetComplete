@@ -8,8 +8,8 @@ interface GroupedItem {
     val titleId: Int get() = 0
     val descriptionId: Int get() = 0
 
-	val isGroup: Boolean get() = !items.isNullOrEmpty()
-	val items: List<GroupedItem>? get() = null
+    val isGroup: Boolean get() = !items.isNullOrEmpty()
+    val items: List<GroupedItem>? get() = null
 }
 
 class Item(

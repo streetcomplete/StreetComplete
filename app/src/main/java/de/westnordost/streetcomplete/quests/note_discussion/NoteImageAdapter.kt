@@ -25,17 +25,17 @@ class NoteImageAdapter(list: List<String>, private val context: Context) : ListA
 
         private val imageView: ImageView = itemView.findViewById(R.id.imageView)
 
-	    init {
-		    imageView.setOnClickListener {
+        init {
+            imageView.setOnClickListener {
                 val index = adapterPosition
                 if (index > -1) onClickDelete(index)
             }
         }
 
         override fun onBind(with: String) {
-	        itemView.postOnLayout {
-	            val bitmap = AttachPhotoUtils.resize(with, imageView.width)
-	            imageView.setImageBitmap(bitmap)
+            itemView.postOnLayout {
+                val bitmap = AttachPhotoUtils.resize(with, imageView.width)
+                imageView.setImageBitmap(bitmap)
             }
         }
     }

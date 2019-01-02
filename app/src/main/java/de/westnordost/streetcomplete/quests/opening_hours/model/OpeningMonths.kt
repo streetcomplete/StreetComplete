@@ -11,19 +11,19 @@ class OpeningMonths(var months: CircularSection, var weekdaysClusters: List<List
             return aYear.complemented(listOf(months)).isEmpty()
         }
 
-	override fun toString(): String {
-		// the US locale is important here as this is the OSM format for dates
-		val monthsSymbols = DateFormatSymbols.getInstance(Locale.US).shortMonths
-		val months = if(isWholeYear) "" else months.toStringUsing(monthsSymbols, "-") + ": "
+    override fun toString(): String {
+        // the US locale is important here as this is the OSM format for dates
+        val monthsSymbols = DateFormatSymbols.getInstance(Locale.US).shortMonths
+        val months = if(isWholeYear) "" else months.toStringUsing(monthsSymbols, "-") + ": "
 
-		return weekdaysClusters.joinToString("; ") { weekdaysCluster ->
-			weekdaysCluster.joinToString(", ") { openingWeekdays ->
-				val weekdays = openingWeekdays.weekdays.toString()
-				val times = openingWeekdays.timeRanges.joinToString(",")
-				months + weekdays + " " + times
-			}
-		}
-	}
+        return weekdaysClusters.joinToString("; ") { weekdaysCluster ->
+            weekdaysCluster.joinToString(", ") { openingWeekdays ->
+                val weekdays = openingWeekdays.weekdays.toString()
+                val times = openingWeekdays.timeRanges.joinToString(",")
+                months + weekdays + " " + times
+            }
+        }
+    }
 
     fun containsSelfIntersectingOpeningWeekdays(): Boolean {
         for (weekdaysCluster in weekdaysClusters) {

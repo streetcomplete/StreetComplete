@@ -10,11 +10,11 @@ import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
 
 open class TestQuestType : OsmElementQuestType {
 
-	override fun getTitle(tags: Map<String, String>) = 0
-	override fun download(bbox: BoundingBox, handler: MapDataWithGeometryHandler) = false
-	override fun isApplicableTo(element: Element):Boolean? = null
-	override fun applyAnswerTo(answer: Bundle, changes: StringMapChangesBuilder) {}
-	override val icon = 0
-	override fun createForm(): AbstractQuestAnswerFragment = object : AbstractQuestAnswerFragment() {}
-	override val commitMessage = ""
+    override fun getTitle(tags: Map<String, String>) = 0
+    override fun download(bbox: BoundingBox, handler: MapDataWithGeometryHandler) = false
+    override fun isApplicableTo(element: Element):Boolean? = null
+    override fun applyAnswerTo(answer: Bundle, changes: StringMapChangesBuilder) {}
+    override val icon = 0
+    override fun createForm(): AbstractQuestAnswerFragment = object : AbstractQuestAnswerFragment() {}
+    override val commitMessage = ""
 }

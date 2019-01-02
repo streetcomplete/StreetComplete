@@ -4,13 +4,13 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 
 abstract class ListAdapter<T>(list: List<T> = listOf()) :
-	RecyclerView.Adapter<ListAdapter.ViewHolder<T>>() {
+    RecyclerView.Adapter<ListAdapter.ViewHolder<T>>() {
 
     var list: MutableList<T> = list.toMutableList()
-	    set(value) {
-			field = value
-			notifyDataSetChanged()
-		}
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
 
     override fun onBindViewHolder(holder: ListAdapter.ViewHolder<T>, position: Int) {
         holder.onBind(list[position])

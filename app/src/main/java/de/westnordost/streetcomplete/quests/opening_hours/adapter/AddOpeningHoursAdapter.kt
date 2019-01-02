@@ -26,15 +26,15 @@ import de.westnordost.streetcomplete.xt.updateLayoutParams
 
 data class OpeningMonthsRow(var months: CircularSection = CircularSection(0, MAX_MONTH_INDEX)) {
 
-	var weekdaysList: MutableList<OpeningWeekdaysRow> = mutableListOf()
+    var weekdaysList: MutableList<OpeningWeekdaysRow> = mutableListOf()
 
-	constructor(months: CircularSection, initialWeekdays: OpeningWeekdaysRow) : this(months) {
-		weekdaysList.add(initialWeekdays)
-	}
+    constructor(months: CircularSection, initialWeekdays: OpeningWeekdaysRow) : this(months) {
+        weekdaysList.add(initialWeekdays)
+    }
 
-	companion object {
-		private val MAX_MONTH_INDEX = 11
-	}
+    companion object {
+        private val MAX_MONTH_INDEX = 11
+    }
 }
 
 data class OpeningWeekdaysRow(var weekdays: Weekdays, var timeRange: TimeRange)
@@ -45,8 +45,8 @@ class AddOpeningHoursAdapter(
     private val countryInfo: CountryInfo
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-	var monthsRows: MutableList<OpeningMonthsRow> = initialMonthsRows.toMutableList()
-		private set
+    var monthsRows: MutableList<OpeningMonthsRow> = initialMonthsRows.toMutableList()
+        private set
 
     var isDisplayMonths = false
         set(displayMonths) {
@@ -56,10 +56,10 @@ class AddOpeningHoursAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-	    return when (viewType) {
+        return when (viewType) {
             MONTHS   -> MonthsViewHolder(inflater.inflate(R.layout.quest_times_month_row, parent, false))
             WEEKDAYS -> WeekdayViewHolder(inflater.inflate(R.layout.quest_times_weekday_row, parent, false))
-		    else     -> throw IllegalArgumentException("Unknown viewType $viewType")
+            else     -> throw IllegalArgumentException("Unknown viewType $viewType")
         }
     }
 
@@ -71,7 +71,7 @@ class AddOpeningHoursAdapter(
             holder.update(om)
         } else if (holder is WeekdayViewHolder) {
             val ow = om.weekdaysList[p[1]]
-	        val prevOw = if (p[1] > 0) om.weekdaysList[p[1] - 1] else null
+            val prevOw = if (p[1] > 0) om.weekdaysList[p[1] - 1] else null
             holder.update(ow, prevOw)
         }
     }
@@ -111,11 +111,11 @@ class AddOpeningHoursAdapter(
         // if no weekdays left in months: remove/reset months
         if (weekdays.isEmpty()) {
             if (monthsRows.size == 1) {
-	            monthsRows[0] = OpeningMonthsRow()
+                monthsRows[0] = OpeningMonthsRow()
                 isDisplayMonths = false
                 notifyItemChanged(0)
             } else {
-	            monthsRows.removeAt(p[0])
+                monthsRows.removeAt(p[0])
                 notifyItemRemoved(position - 1)
             }
         }
@@ -123,32 +123,32 @@ class AddOpeningHoursAdapter(
 
     fun addNewMonths() {
         openSetMonthsRangeDialog(getMonthsRangeSuggestion()) { startIndex, endIndex ->
-	        val months = CircularSection(startIndex, endIndex)
-	        openSetWeekdaysDialog(getWeekdaysSuggestion(true)) { weekdays ->
-		        openSetTimeRangeDialog(getOpeningHoursSuggestion()) { timeRange ->
-			        addMonths(months, weekdays, timeRange)
-		        }
-	        }
+            val months = CircularSection(startIndex, endIndex)
+            openSetWeekdaysDialog(getWeekdaysSuggestion(true)) { weekdays ->
+                openSetTimeRangeDialog(getOpeningHoursSuggestion()) { timeRange ->
+                    addMonths(months, weekdays, timeRange)
+                }
+            }
         }
     }
 
     private fun addMonths(months: CircularSection, weekdays: Weekdays, timeRange: TimeRange) {
         val insertIndex = itemCount
-	    monthsRows.add(OpeningMonthsRow(months, OpeningWeekdaysRow(weekdays, timeRange)))
+        monthsRows.add(OpeningMonthsRow(months, OpeningWeekdaysRow(weekdays, timeRange)))
         notifyItemRangeInserted(insertIndex, 2) // 2 = opening month + opening weekday
     }
 
     fun addNewWeekdays() {
         val isFirst = monthsRows[monthsRows.size - 1].weekdaysList.isEmpty()
         openSetWeekdaysDialog(getWeekdaysSuggestion(isFirst)) { weekdays ->
-	        openSetTimeRangeDialog(getOpeningHoursSuggestion()) { timeRange ->
-		        addWeekdays(weekdays, timeRange) }
+            openSetTimeRangeDialog(getOpeningHoursSuggestion()) { timeRange ->
+                addWeekdays(weekdays, timeRange) }
         }
     }
 
     private fun addWeekdays(weekdays: Weekdays, timeRange: TimeRange) {
         val insertIndex = itemCount
-	    monthsRows[monthsRows.size - 1].weekdaysList.add(OpeningWeekdaysRow(weekdays, timeRange))
+        monthsRows[monthsRows.size - 1].weekdaysList.add(OpeningWeekdaysRow(weekdays, timeRange))
         notifyItemInserted(insertIndex)
     }
 
@@ -157,69 +157,69 @@ class AddOpeningHoursAdapter(
     fun changeToMonthsMode() {
         val om = monthsRows[0]
         openSetMonthsRangeDialog(om.months) { startIndex, endIndex ->
-	        if (om.weekdaysList.isEmpty()) {
-		        openSetWeekdaysDialog(getWeekdaysSuggestion(true)) { weekdays ->
-			        openSetTimeRangeDialog(getOpeningHoursSuggestion()) { timeRange ->
-				        changedToMonthsMode(startIndex, endIndex)
-				        om.weekdaysList.add(OpeningWeekdaysRow(weekdays, timeRange))
-				        notifyItemInserted(1)
-			        }
-		        }
-	        } else {
-		        changedToMonthsMode(startIndex, endIndex)
-	        }
+            if (om.weekdaysList.isEmpty()) {
+                openSetWeekdaysDialog(getWeekdaysSuggestion(true)) { weekdays ->
+                    openSetTimeRangeDialog(getOpeningHoursSuggestion()) { timeRange ->
+                        changedToMonthsMode(startIndex, endIndex)
+                        om.weekdaysList.add(OpeningWeekdaysRow(weekdays, timeRange))
+                        notifyItemInserted(1)
+                    }
+                }
+            } else {
+                changedToMonthsMode(startIndex, endIndex)
+            }
         }
     }
 
     private fun changedToMonthsMode(startIndex: Int, endIndex: Int) {
         isDisplayMonths = true
-	    monthsRows[0].months = CircularSection(startIndex, endIndex)
+        monthsRows[0].months = CircularSection(startIndex, endIndex)
         notifyItemChanged(0)
     }
 
-	private fun getOpeningHoursSuggestion() = TYPICAL_OPENING_TIMES
+    private fun getOpeningHoursSuggestion() = TYPICAL_OPENING_TIMES
 
-	/* -------------------------------------- months select --------------------------------------*/
+    /* -------------------------------------- months select --------------------------------------*/
 
     private inner class MonthsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val monthsLabel: TextView = itemView.findViewById(R.id.monthsLabel)
-	    private val deleteButton: View = itemView.findViewById(R.id.deleteButton)
+        private val deleteButton: View = itemView.findViewById(R.id.deleteButton)
 
-	    init {
-		    deleteButton.visibility = View.GONE
+        init {
+            deleteButton.visibility = View.GONE
         }
 
-	    private fun setVisibility(isVisible: Boolean) {
-		    itemView.visibility = if (isVisible) View.VISIBLE else View.GONE
-		    itemView.updateLayoutParams {
-			    height = if(isVisible) LinearLayout.LayoutParams.WRAP_CONTENT else 0
-			    width = if(isVisible) LinearLayout.LayoutParams.MATCH_PARENT else 0
-		    }
-	    }
+        private fun setVisibility(isVisible: Boolean) {
+            itemView.visibility = if (isVisible) View.VISIBLE else View.GONE
+            itemView.updateLayoutParams {
+                height = if(isVisible) LinearLayout.LayoutParams.WRAP_CONTENT else 0
+                width = if(isVisible) LinearLayout.LayoutParams.MATCH_PARENT else 0
+            }
+        }
 
         fun update(row: OpeningMonthsRow) {
             setVisibility(isDisplayMonths)
             monthsLabel.text = row.months.toStringUsing(DateFormatSymbols.getInstance().months, "–")
             monthsLabel.setOnClickListener {
-	            openSetMonthsRangeDialog(row.months) { startIndex, endIndex ->
-	                row.months = CircularSection(startIndex, endIndex)
-	                notifyItemChanged(adapterPosition)
+                openSetMonthsRangeDialog(row.months) { startIndex, endIndex ->
+                    row.months = CircularSection(startIndex, endIndex)
+                    notifyItemChanged(adapterPosition)
                 }
             }
         }
     }
 
-	private fun getMonthsRangeSuggestion(): CircularSection {
-		val months = getUnmentionedMonths()
-		return if (months.isEmpty()) {
-			CircularSection(0, OpeningMonths.MAX_MONTH_INDEX)
-		} else months[0]
-	}
+    private fun getMonthsRangeSuggestion(): CircularSection {
+        val months = getUnmentionedMonths()
+        return if (months.isEmpty()) {
+            CircularSection(0, OpeningMonths.MAX_MONTH_INDEX)
+        } else months[0]
+    }
 
-	private fun getUnmentionedMonths(): List<CircularSection> {
-		val allTheMonths = monthsRows.map { it.months }
-		return NumberSystem(0, OpeningMonths.MAX_MONTH_INDEX).complemented(allTheMonths)
-	}
+    private fun getUnmentionedMonths(): List<CircularSection> {
+        val allTheMonths = monthsRows.map { it.months }
+        return NumberSystem(0, OpeningMonths.MAX_MONTH_INDEX).complemented(allTheMonths)
+    }
     private fun openSetMonthsRangeDialog(months: CircularSection, callback: RangePickedCallback) {
         val monthNames = DateFormatSymbols.getInstance().months
         val title = context.resources.getString(R.string.quest_openingHours_chooseMonthsTitle)
@@ -230,13 +230,13 @@ class AddOpeningHoursAdapter(
 
     private inner class WeekdayViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val weekdaysLabel: TextView = itemView.findViewById(R.id.weekdaysLabel)
-	    private val hoursLabel: TextView = itemView.findViewById(R.id.hoursLabel)
-	    private val deleteButton: View = itemView.findViewById(R.id.deleteButton)
+        private val hoursLabel: TextView = itemView.findViewById(R.id.hoursLabel)
+        private val deleteButton: View = itemView.findViewById(R.id.deleteButton)
 
-	    init {
-		    deleteButton.setOnClickListener {
-			    val index = adapterPosition
-			    if (index != RecyclerView.NO_POSITION) remove(adapterPosition)
+        init {
+            deleteButton.setOnClickListener {
+                val index = adapterPosition
+                if (index != RecyclerView.NO_POSITION) remove(adapterPosition)
             }
         }
 
@@ -248,16 +248,16 @@ class AddOpeningHoursAdapter(
             }
 
             weekdaysLabel.setOnClickListener {
-	            openSetWeekdaysDialog(row.weekdays) { weekdays ->
-	                row.weekdays = weekdays
-	                notifyItemChanged(adapterPosition)
+                openSetWeekdaysDialog(row.weekdays) { weekdays ->
+                    row.weekdays = weekdays
+                    notifyItemChanged(adapterPosition)
                 }
             }
             hoursLabel.text = row.timeRange.toStringUsing(Locale.getDefault(), "–")
             hoursLabel.setOnClickListener {
-	            openSetTimeRangeDialog(row.timeRange) { timeRange ->
-	                row.timeRange = timeRange
-	                notifyItemChanged(adapterPosition)
+                openSetTimeRangeDialog(row.timeRange) { timeRange ->
+                    row.timeRange = timeRange
+                    notifyItemChanged(adapterPosition)
                 }
             }
         }

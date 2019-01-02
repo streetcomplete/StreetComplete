@@ -7,9 +7,9 @@ package de.westnordost.streetcomplete.quests.opening_hours.model
 open class CircularSection(val start: Int, val end: Int) : Comparable<CircularSection> {
 
     open fun intersects(other: CircularSection) =
-	    loops && other.loops ||
-	    if (loops || other.loops) other.end >= start || other.start <= end
-	    else                      other.end >= start && other.start <= end
+        loops && other.loops ||
+        if (loops || other.loops) other.end >= start || other.start <= end
+        else                      other.end >= start && other.start <= end
 
     val loops get() = end < start
 
@@ -20,7 +20,7 @@ open class CircularSection(val start: Int, val end: Int) : Comparable<CircularSe
         // then by start
         val result = start - other.start
         if (result != 0) return result
-	    // then by end
+        // then by end
         return end - other.end
     }
 
@@ -36,11 +36,11 @@ open class CircularSection(val start: Int, val end: Int) : Comparable<CircularSe
 
     override fun toString() = "$start-$end"
 
-	override fun equals(other: Any?): Boolean {
-		if (this === other) return true
-		if (other !is CircularSection) return false
-		return start == other.start && end == other.end
-	}
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is CircularSection) return false
+        return start == other.start && end == other.end
+    }
 
     override fun hashCode() = 31 * start + end
 }

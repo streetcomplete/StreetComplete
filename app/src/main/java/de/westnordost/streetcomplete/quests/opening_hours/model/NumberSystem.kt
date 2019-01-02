@@ -35,7 +35,7 @@ class NumberSystem(private val min: Int, private val max: Int) {
 
     fun merged(ranges: List<CircularSection>): List<CircularSection> {
         val result = ranges.toMutableList()
-	    result.sort()
+        result.sort()
         mergeFirstAndLastSection(result)
         return result
     }
@@ -54,7 +54,7 @@ class NumberSystem(private val min: Int, private val max: Int) {
     }
 
     private fun mergeAlongBounds(lowerSection: CircularSection, upperSection: CircularSection) =
-	    CircularSection(upperSection.start, lowerSection.end)
+        CircularSection(upperSection.start, lowerSection.end)
 
     private fun splitAlongBounds(range: CircularSection): List<CircularSection> {
         val result = mutableListOf<CircularSection>()
@@ -76,7 +76,7 @@ class NumberSystem(private val min: Int, private val max: Int) {
                 rangeList.add(range)
             }// leave out those which are not in the max range anyway
         }
-	    rangeList.sort()
+        rangeList.sort()
         return rangeList
     }
 }

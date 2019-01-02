@@ -12,8 +12,6 @@ import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.widget.ImageView
 import android.widget.TextView
 
-import java.util.ArrayList
-import java.util.Arrays
 import java.util.Collections
 
 import de.westnordost.streetcomplete.R
@@ -26,9 +24,9 @@ import kotlinx.android.synthetic.main.quest_street_side_puzzle.*
 
 class AddCyclewayForm : AbstractQuestFormAnswerFragment() {
 
-	private val likelyNoBicycleContraflow = FiltersParser().parse("""
+    private val likelyNoBicycleContraflow = FiltersParser().parse("""
             ways with oneway:bicycle != no and
-	        (oneway ~ yes|-1 and highway ~ primary|secondary|tertiary or junction=roundabout)
+            (oneway ~ yes|-1 and highway ~ primary|secondary|tertiary or junction=roundabout)
         """)
 
     private var streetSideRotater: StreetSideRotater? = null
@@ -42,16 +40,16 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment() {
      * one-way is on the right side of the way */
     private val isReverseSideRight get() = isReversedOneway xor isLeftHandTraffic
 
-	private val isOneway get() = isForwardOneway || isReversedOneway
+    private val isOneway get() = isForwardOneway || isReversedOneway
 
-	private val isForwardOneway get() = osmElement.tags["oneway"] == "yes"
+    private val isForwardOneway get() = osmElement.tags["oneway"] == "yes"
     private val isReversedOneway get() = osmElement.tags["oneway"] == "-1"
 
     // just a shortcut
     private val isLeftHandTraffic get() = countryInfo.isLeftHandTraffic
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, inState: Bundle?): View? {
-        val view = super.onCreateView(inflater, container, inState)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val view = super.onCreateView(inflater, container, savedInstanceState)
         setContentView(R.layout.quest_street_side_puzzle)
         setNoContentPadding()
 
@@ -59,18 +57,18 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment() {
 
         streetSideRotater = StreetSideRotater(puzzleView, compassNeedle, elementGeometry)
 
-        initPuzzleDisplay(inState)
-        initPuzzleImages(inState)
+        initPuzzleDisplay(savedInstanceState)
+        initPuzzleImages(savedInstanceState)
 
         return view
     }
 
     private fun initPuzzleDisplay(inState: Bundle?) {
-	    isDefiningBothSides = if (inState != null) {
-		    inState.getBoolean(DEFINE_BOTH_SIDES)
-	    } else {
-		    !likelyNoBicycleContraflow.matches(osmElement)
-	    }
+        isDefiningBothSides = if (inState != null) {
+            inState.getBoolean(DEFINE_BOTH_SIDES)
+        } else {
+            !likelyNoBicycleContraflow.matches(osmElement)
+        }
 
         if (!isDefiningBothSides) {
             if (isLeftHandTraffic) puzzleView.showOnlyLeftSide()
@@ -84,8 +82,8 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment() {
 
     private fun initPuzzleImages(inState: Bundle?) {
         val defaultResId =
-	        if (isLeftHandTraffic) R.drawable.ic_cycleway_unknown_l
-	        else                   R.drawable.ic_cycleway_unknown
+            if (isLeftHandTraffic) R.drawable.ic_cycleway_unknown_l
+            else                   R.drawable.ic_cycleway_unknown
 
         inState?.getString(CYCLEWAY_RIGHT)?.let {
             rightSide = Cycleway.valueOf(it)
@@ -96,20 +94,20 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment() {
             checkIsFormComplete()
         }
 
-	    puzzleView.setLeftSideImageResource(leftSide?.getIconResId(isLeftHandTraffic) ?: defaultResId)
-	    puzzleView.setRightSideImageResource(rightSide?.getIconResId(isLeftHandTraffic) ?: defaultResId)
+        puzzleView.setLeftSideImageResource(leftSide?.getIconResId(isLeftHandTraffic) ?: defaultResId)
+        puzzleView.setRightSideImageResource(rightSide?.getIconResId(isLeftHandTraffic) ?: defaultResId)
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-	    rightSide?.let { outState.putString(CYCLEWAY_RIGHT, it.name) }
+        rightSide?.let { outState.putString(CYCLEWAY_RIGHT, it.name) }
         leftSide?.let { outState.putString(CYCLEWAY_LEFT, it.name) }
         outState.putBoolean(DEFINE_BOTH_SIDES, isDefiningBothSides)
     }
 
     @AnyThread
     override fun onMapOrientation(rotation: Float, tilt: Float) {
-	    streetSideRotater?.onMapOrientation(rotation, tilt)
+        streetSideRotater?.onMapOrientation(rotation, tilt)
     }
 
     override fun onClickOk() {
@@ -117,8 +115,8 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment() {
 
         // a cycleway that goes into opposite direction of a oneway street needs special tagging
         val bundle = Bundle()
-	    val leftSide = leftSide
-	    val rightSide = rightSide
+        val leftSide = leftSide
+        val rightSide = rightSide
         if (isOneway && leftSide != null && rightSide != null) {
             // if the road is oneway=-1, a cycleway that goes opposite to it would be cycleway:oneway=yes
             val reverseDir = if (isReversedOneway) 1 else -1
@@ -145,11 +143,11 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment() {
         applyAnswer(bundle)
     }
 
-	private fun Cycleway.isSingleTrackOrLane() =
-		this === Cycleway.TRACK || this === Cycleway.EXCLUSIVE_LANE
+    private fun Cycleway.isSingleTrackOrLane() =
+        this === Cycleway.TRACK || this === Cycleway.EXCLUSIVE_LANE
 
-	private fun Cycleway.isDualTrackOrLane() =
-		this === Cycleway.DUAL_TRACK || this === Cycleway.DUAL_LANE
+    private fun Cycleway.isDualTrackOrLane() =
+        this === Cycleway.DUAL_TRACK || this === Cycleway.DUAL_LANE
 
     override fun isFormComplete() =
         if (isDefiningBothSides) leftSide != null && rightSide != null
@@ -166,24 +164,24 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment() {
             .create()
 
         recyclerView.adapter = createAdapter(getCyclewayItems(isRight)) { cycleway ->
-	        alertDialog.dismiss()
+            alertDialog.dismiss()
 
-	        val iconResId = cycleway.getIconResId(isLeftHandTraffic)
+            val iconResId = cycleway.getIconResId(isLeftHandTraffic)
 
-	        if (isRight) {
-		        puzzleView.replaceRightSideImageResource(iconResId)
-		        rightSide = cycleway
-	        } else {
-		        puzzleView.replaceLeftSideImageResource(iconResId)
-		        leftSide = cycleway
-	        }
-	        checkIsFormComplete()
+            if (isRight) {
+                puzzleView.replaceRightSideImageResource(iconResId)
+                rightSide = cycleway
+            } else {
+                puzzleView.replaceLeftSideImageResource(iconResId)
+                leftSide = cycleway
+            }
+            checkIsFormComplete()
         }
-	    alertDialog.show()
+        alertDialog.show()
     }
 
     private fun getCyclewayItems(isRight: Boolean): List<Cycleway> {
-        val values = ArrayList(Arrays.asList(*Cycleway.displayValues))
+        val values = Cycleway.displayValues.toMutableList()
         // different wording for a contraflow lane that is marked like a "shared" lane (just bicycle pictogram)
         if (isOneway && isReverseSideRight == isRight) {
             Collections.replaceAll(values, Cycleway.PICTOGRAMS, Cycleway.NONE_NO_ONEWAY)
@@ -208,15 +206,15 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment() {
         object : ListAdapter<Cycleway>(items) {
             override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
                 object : ListAdapter.ViewHolder<Cycleway>(
-	                LayoutInflater.from(parent.context).inflate(R.layout.labeled_icon_button_cell, parent, false)
+                    LayoutInflater.from(parent.context).inflate(R.layout.labeled_icon_button_cell, parent, false)
                 ) {
-                    override fun onBind(item: Cycleway) {
+                    override fun onBind(with: Cycleway) {
                         val imageView = itemView.findViewById<ImageView>(R.id.imageView)
                         val textView = itemView.findViewById<TextView>(R.id.textView)
-                        val resId = item.getIconResId(isLeftHandTraffic)
+                        val resId = with.getIconResId(isLeftHandTraffic)
                         imageView.setImageDrawable(resources.getDrawable(resId))
-                        textView.setText(item.nameResId)
-                        itemView.setOnClickListener { callback(item) }
+                        textView.setText(with.nameResId)
+                        itemView.setOnClickListener { callback(with) }
                     }
                 }
         }
@@ -228,10 +226,10 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment() {
 
     companion object {
         const val CYCLEWAY_LEFT = "cycleway_left"
-	    const val CYCLEWAY_RIGHT = "cycleway_right"
-	    const val CYCLEWAY_LEFT_DIR = "cycleway_left_opposite"
-	    const val CYCLEWAY_RIGHT_DIR = "cycleway_right_opposite"
-	    const val IS_ONEWAY_NOT_FOR_CYCLISTS = "oneway_not_for_cyclists"
+        const val CYCLEWAY_RIGHT = "cycleway_right"
+        const val CYCLEWAY_LEFT_DIR = "cycleway_left_opposite"
+        const val CYCLEWAY_RIGHT_DIR = "cycleway_right_opposite"
+        const val IS_ONEWAY_NOT_FOR_CYCLISTS = "oneway_not_for_cyclists"
 
         private const val DEFINE_BOTH_SIDES = "define_both_sides"
     }

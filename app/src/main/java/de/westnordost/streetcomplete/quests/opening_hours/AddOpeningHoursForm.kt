@@ -33,7 +33,7 @@ class AddOpeningHoursForm : AbstractQuestFormAnswerFragment() {
     @Inject internal lateinit var serializer: Serializer
 
     private val openingHoursString get() =
-		openingHoursAdapter.createOpeningMonths().joinToString(";")
+        openingHoursAdapter.createOpeningMonths().joinToString(";")
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
@@ -87,10 +87,10 @@ class AddOpeningHoursForm : AbstractQuestFormAnswerFragment() {
             popup.menu.add(NONE, 0, NONE, R.string.quest_openingHours_add_weekdays)
             popup.menu.add(NONE, 1, NONE, R.string.quest_openingHours_add_months)
             popup.setOnMenuItemClickListener { item ->
-	            when(item.itemId) {
-		            0 -> openingHoursAdapter.addNewWeekdays()
-		            1 -> openingHoursAdapter.addNewMonths()
-	            }
+                when(item.itemId) {
+                    0 -> openingHoursAdapter.addNewWeekdays()
+                    1 -> openingHoursAdapter.addNewMonths()
+                }
                 true
             }
             popup.show()
@@ -99,7 +99,7 @@ class AddOpeningHoursForm : AbstractQuestFormAnswerFragment() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-	    val serializedTimes = serializer.toBytes(ArrayList(openingHoursAdapter.monthsRows))
+        val serializedTimes = serializer.toBytes(ArrayList(openingHoursAdapter.monthsRows))
         outState.putByteArray(OPENING_HOURS_DATA, serializedTimes)
         outState.putBoolean(IS_ADD_MONTHS_MODE, openingHoursAdapter.isDisplayMonths)
     }
@@ -125,9 +125,9 @@ class AddOpeningHoursForm : AbstractQuestFormAnswerFragment() {
                         .setPositiveButton(R.string.ok, null)
                         .show()
                 } else {
-	                val answer = Bundle()
-	                answer.putString(OPENING_HOURS, "\"" + txt + "\"")
-	                applyAnswer(answer)
+                    val answer = Bundle()
+                    answer.putString(OPENING_HOURS, "\"" + txt + "\"")
+                    applyAnswer(answer)
                 }
             }
             .setNegativeButton(android.R.string.cancel, null)

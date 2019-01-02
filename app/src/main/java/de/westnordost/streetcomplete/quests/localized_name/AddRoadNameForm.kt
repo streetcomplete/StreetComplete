@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 
-import java.util.ArrayList
 import java.util.LinkedList
 import java.util.Locale
 
@@ -93,7 +92,7 @@ class AddRoadNameForm : AddLocalizedNameForm() {
         val highwayValue = osmElement.tags["highway"]
         val mayBeLink = highwayValue?.matches("primary|secondary|tertiary".toRegex()) == true
 
-        val answers = ArrayList<String>(5)
+        val answers = mutableListOf<String>()
         if (mayBeLink) answers.add(linkRoad)
         answers.add(serviceRoad)
         answers.add(trackRoad)

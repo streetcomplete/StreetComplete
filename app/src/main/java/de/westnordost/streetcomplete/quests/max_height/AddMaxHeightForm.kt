@@ -50,7 +50,7 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment() {
         inchInput = contentView.findViewById(R.id.inchInput)
 
         val onTextChangedListener = TextChangedWatcher { checkIsFormComplete() }
-	    meterInput?.addTextChangedListener(onTextChangedListener)
+        meterInput?.addTextChangedListener(onTextChangedListener)
         feetInput?.addTextChangedListener(onTextChangedListener)
         inchInput?.addTextChangedListener(onTextChangedListener)
 
@@ -58,32 +58,32 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment() {
         feetInputSign = contentView.findViewById(R.id.feetInputSign)
 
         heightUnitSelect = contentView.findViewById(R.id.heightUnitSelect)
-	    val measurementUnits = countryInfo.measurementSystem
-	    heightUnitSelect?.visibility = if (measurementUnits.size == 1) View.GONE else View.VISIBLE
-	    heightUnitSelect?.adapter = ArrayAdapter(context!!, R.layout.spinner_item_centered, getSpinnerItems(measurementUnits))
-	    heightUnitSelect?.setSelection(0)
-	    heightUnitSelect?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-		    override fun onItemSelected(parentView: AdapterView<*>, selectedItemView: View, position: Int, id: Long) {
-			    val heightUnit = if (heightUnitSelect?.selectedItem == "m") METRIC else IMPERIAL
-			    switchLayout(heightUnit)
-		    }
+        val measurementUnits = countryInfo.measurementSystem
+        heightUnitSelect?.visibility = if (measurementUnits.size == 1) View.GONE else View.VISIBLE
+        heightUnitSelect?.adapter = ArrayAdapter(context!!, R.layout.spinner_item_centered, getSpinnerItems(measurementUnits))
+        heightUnitSelect?.setSelection(0)
+        heightUnitSelect?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parentView: AdapterView<*>, selectedItemView: View, position: Int, id: Long) {
+                val heightUnit = if (heightUnitSelect?.selectedItem == "m") METRIC else IMPERIAL
+                switchLayout(heightUnit)
+            }
 
-		    override fun onNothingSelected(parentView: AdapterView<*>) {}
-	    }
+            override fun onNothingSelected(parentView: AdapterView<*>) {}
+        }
 
         inchInput?.filters = arrayOf(InputFilter { source, start, end, dest, dstart, dend ->
-	        val destStr = dest.toString()
+            val destStr = dest.toString()
             val input = destStr.substring(0, dstart) + source.toString() + destStr.substring(dend, destStr.length)
             if (input.toInt() <= 12) null else ""
         })
         /* Workaround for an Android bug that it assumes the decimal separator to always be the "."
-		   for EditTexts with inputType "numberDecimal", independent of Locale. See
-		   https://issuetracker.google.com/issues/36907764 .
+           for EditTexts with inputType "numberDecimal", independent of Locale. See
+           https://issuetracker.google.com/issues/36907764 .
 
-		   Affected Android versions are all versions till (exclusive) Android Oreo. */
+           Affected Android versions are all versions till (exclusive) Android Oreo. */
 
         /* actually, let's not care about which separator the user uses, he might be confused
-		   whether he should use the one as displayed on the sign or in his phone's locale */
+           whether he should use the one as displayed on the sign or in his phone's locale */
         //char separator = DecimalFormatSymbols.getInstance(getCountryInfo().getLocale()).getDecimalSeparator();
         meterInput?.keyListener = DigitsKeyListener.getInstance("0123456789,.")
 
@@ -101,31 +101,31 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment() {
         if (isImperial) feetInput?.requestFocus()
     }
 
-	private fun getSpinnerItems(units: List<String>) = units.mapNotNull {
-		when(it) {
-			"metric" -> "m"
-			"imperial" -> "ft"
-			else -> null
-		}
-	}
+    private fun getSpinnerItems(units: List<String>) = units.mapNotNull {
+        when(it) {
+            "metric" -> "m"
+            "imperial" -> "ft"
+            else -> null
+        }
+    }
 
     private fun addOtherAnswers() {
         addOtherAnswer(R.string.quest_maxheight_answer_noSign) {
-	        activity?.let {
-		        AlertDialog.Builder(it)
-			        .setMessage(R.string.quest_maxheight_answer_noSign_question)
-			        .setPositiveButton(R.string.quest_generic_hasFeature_yes) { _, _ ->
-				        val data = Bundle()
-				        data.putString(NO_SIGN, DEFAULT)
-				        applyAnswer(data)
-			        }
-			        .setNegativeButton(R.string.quest_generic_hasFeature_no) { _, _ ->
-				        val data = Bundle()
-				        data.putString(NO_SIGN, BELOW_DEFAULT)
-				        applyAnswer(data)
-			        }
-			        .show()
-	        }
+            activity?.let {
+                AlertDialog.Builder(it)
+                    .setMessage(R.string.quest_maxheight_answer_noSign_question)
+                    .setPositiveButton(R.string.quest_generic_hasFeature_yes) { _, _ ->
+                        val data = Bundle()
+                        data.putString(NO_SIGN, DEFAULT)
+                        applyAnswer(data)
+                    }
+                    .setNegativeButton(R.string.quest_generic_hasFeature_no) { _, _ ->
+                        val data = Bundle()
+                        data.putString(NO_SIGN, BELOW_DEFAULT)
+                        applyAnswer(data)
+                    }
+                    .show()
+            }
         }
     }
 
@@ -149,41 +149,41 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment() {
         applyAnswer(answer)
     }
 
-	private fun getHeightFromInput(): Measure? {
-		if (isMetric()) {
-			val input = meterInput!!.text.toString().replace(",", ".")
-			if (input.isNotEmpty()) return MetricMeasure(input.toDouble())
-		} else {
-			val feetString = feetInput!!.text.toString()
-			val inchString = inchInput!!.text.toString()
+    private fun getHeightFromInput(): Measure? {
+        if (isMetric()) {
+            val input = meterInput!!.text.toString().replace(",", ".")
+            if (input.isNotEmpty()) return MetricMeasure(input.toDouble())
+        } else {
+            val feetString = feetInput!!.text.toString()
+            val inchString = inchInput!!.text.toString()
 
-			if (feetString.isNotEmpty() && inchString.isNotEmpty()) {
-				return ImperialMeasure(feetString.toInt(), inchString.toInt())
-			}
-		}
-		return null
-	}
+            if (feetString.isNotEmpty() && inchString.isNotEmpty()) {
+                return ImperialMeasure(feetString.toInt(), inchString.toInt())
+            }
+        }
+        return null
+    }
 
-	private fun isMetric(): Boolean {
-		return heightUnitSelect?.let { it.selectedItem == "m" }
-			?: countryInfo.measurementSystem[0] == "metric"
-	}
+    private fun isMetric(): Boolean {
+        return heightUnitSelect?.let { it.selectedItem == "m" }
+            ?: countryInfo.measurementSystem[0] == "metric"
+    }
 
     private fun confirmUnusualInput(callback: () -> (Unit)) {
-	    activity?.let {
-		    AlertDialog.Builder(it)
-			    .setTitle(R.string.quest_generic_confirmation_title)
-			    .setMessage(R.string.quest_maxheight_unusualInput_confirmation_description)
-			    .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> callback() }
-			    .setNegativeButton(R.string.quest_generic_confirmation_no, null)
-			    .show()
-	    }
+        activity?.let {
+            AlertDialog.Builder(it)
+                .setTitle(R.string.quest_generic_confirmation_title)
+                .setMessage(R.string.quest_maxheight_unusualInput_confirmation_description)
+                .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> callback() }
+                .setNegativeButton(R.string.quest_generic_confirmation_no, null)
+                .show()
+        }
     }
 
     companion object {
         const val MAX_HEIGHT = "max_height"
-	    const val NO_SIGN = "no_sign"
-	    const val BELOW_DEFAULT = "below_default"
-	    const val DEFAULT = "default"
+        const val NO_SIGN = "no_sign"
+        const val BELOW_DEFAULT = "below_default"
+        const val DEFAULT = "default"
     }
 }

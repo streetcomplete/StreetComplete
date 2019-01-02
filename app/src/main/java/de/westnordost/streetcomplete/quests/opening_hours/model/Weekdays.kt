@@ -3,8 +3,6 @@ package de.westnordost.streetcomplete.quests.opening_hours.model
 import android.content.res.Resources
 
 import java.text.DateFormatSymbols
-import java.util.ArrayList
-import java.util.Arrays
 
 import de.westnordost.streetcomplete.R
 
@@ -12,7 +10,7 @@ class Weekdays {
 
     private val data = BooleanArray(OSM_ABBR_WEEKDAYS.size)
 
-    val selection: BooleanArray get() = Arrays.copyOf(data, data.size)
+    val selection: BooleanArray get() = data.copyOf()
 
     constructor()
 
@@ -24,9 +22,9 @@ class Weekdays {
         }
     }
 
-	fun isSelectionEmpty() = data.all { !it }
+    fun isSelectionEmpty() = data.all { !it }
 
-	override fun toString() = toStringUsing(OSM_ABBR_WEEKDAYS, ",", "-")
+    override fun toString() = toStringUsing(OSM_ABBR_WEEKDAYS, ",", "-")
 
     fun toLocalizedString(r: Resources) = toStringUsing(Weekdays.getShortNames(r), ", ", "–")
 
@@ -63,26 +61,26 @@ class Weekdays {
         return sb.toString()
     }
 
-	// section that goes until the end
-	private fun toCircularSections(): List<CircularSection> {
-		val result = ArrayList<CircularSection>()
-		var currentStart: Int? = null
-		for (i in 0..6) {
-			if (currentStart == null) {
-				if (data[i]) currentStart = i
-			} else {
-				if (!data[i]) {
-					result.add(CircularSection(currentStart, i - 1))
-					currentStart = null
-				}
-			}
-		}
-		if (currentStart != null) {
-			result.add(CircularSection(currentStart, 6))
-		}
+    // section that goes until the end
+    private fun toCircularSections(): List<CircularSection> {
+        val result = mutableListOf<CircularSection>()
+        var currentStart: Int? = null
+        for (i in 0..6) {
+            if (currentStart == null) {
+                if (data[i]) currentStart = i
+            } else {
+                if (!data[i]) {
+                    result.add(CircularSection(currentStart, i - 1))
+                    currentStart = null
+                }
+            }
+        }
+        if (currentStart != null) {
+            result.add(CircularSection(currentStart, 6))
+        }
 
-		return WEEKDAY_NUMBER_SYSTEM.merged(result)
-	}
+        return WEEKDAY_NUMBER_SYSTEM.merged(result)
+    }
 
     fun intersects(other: Weekdays): Boolean {
         for (i in data.indices) {
@@ -93,11 +91,11 @@ class Weekdays {
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
-	    if (other !is Weekdays) return false
-	    return Arrays.equals(data, other.data)
+        if (other !is Weekdays) return false
+        return data.contentEquals(other.data)
     }
 
-    override fun hashCode() = Arrays.hashCode(data)
+    override fun hashCode() = data.contentHashCode()
 
     companion object {
         // in ISO 8601 order

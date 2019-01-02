@@ -16,11 +16,11 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.opening_hours.model.TimeRange
 
 class TimeRangePickerDialog(
-	context: Context,
-	startTimeLabel: CharSequence,
-	endTimeLabel: CharSequence,
-	timeRange: TimeRange?,
-	private val callback: (TimeRange) -> Unit
+    context: Context,
+    startTimeLabel: CharSequence,
+    endTimeLabel: CharSequence,
+    timeRange: TimeRange?,
+    private val callback: (TimeRange) -> Unit
 ) : AlertDialog(context, R.style.Theme_Bubble_Dialog) {
 
     private val startPicker: TimePicker
@@ -91,28 +91,28 @@ class TimeRangePickerDialog(
 
         private val labels: Array<CharSequence> = arrayOf(startTimeLabel, endTimeLabel)
 
-	    override fun getCount() = labels.size
+        override fun getCount() = labels.size
 
         override fun isViewFromObject(view: View, obj: Any) =
-	        when(obj) {
-		        START_TIME_TAB -> view === startPicker
-		        END_TIME_TAB   -> view === endPickerContainer
-		        else           -> false
-	        }
+            when(obj) {
+                START_TIME_TAB -> view === startPicker
+                END_TIME_TAB   -> view === endPickerContainer
+                else           -> false
+            }
 
         override fun destroyItem(container: ViewGroup, position: Int, obj: Any) {
-	        when(position) {
-		        START_TIME_TAB -> container.removeView(startPicker)
-			    END_TIME_TAB -> container.removeView(endPickerContainer)
-	        }
+            when(position) {
+                START_TIME_TAB -> container.removeView(startPicker)
+                END_TIME_TAB -> container.removeView(endPickerContainer)
+            }
         }
 
         override fun instantiateItem(container: ViewGroup, position: Int): Any {
-	        when(position) {
-		        START_TIME_TAB -> container.addView(startPicker)
-		        END_TIME_TAB -> container.addView(endPickerContainer)
-	        }
-	        return position
+            when(position) {
+                START_TIME_TAB -> container.addView(startPicker)
+                END_TIME_TAB -> container.addView(endPickerContainer)
+            }
+            return position
         }
 
         override fun getPageTitle(position: Int) = labels[position]
@@ -122,7 +122,7 @@ class TimeRangePickerDialog(
         super.show()
         // to override the default OK=dismiss() behavior
         getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener {
-	        when (tabLayout.selectedTabPosition) {
+            when (tabLayout.selectedTabPosition) {
                 START_TIME_TAB -> setCurrentTab(END_TIME_TAB)
                 END_TIME_TAB   -> applyAndDismiss()
             }

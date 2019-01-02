@@ -34,7 +34,7 @@ abstract class GroupedImageListQuestAnswerFragment : AbstractQuestFormAnswerFrag
     private lateinit var scrollView: NestedScrollView
 
     protected abstract val allItems: List<GroupedItem>
-	protected abstract val topItems: List<GroupedItem>
+    protected abstract val topItems: List<GroupedItem>
 
     @Inject internal lateinit var favs: LastPickedValuesStore
 
@@ -95,15 +95,15 @@ abstract class GroupedImageListQuestAnswerFragment : AbstractQuestFormAnswerFrag
         list.adapter = imageSelector
     }
 
-	private fun getInitialItems(): List<GroupedItem> {
-		val items = LinkedList(topItems)
-		favs.moveLastPickedToFront(javaClass.simpleName, items, allItems)
-		return items
-	}
+    private fun getInitialItems(): List<GroupedItem> {
+        val items = LinkedList(topItems)
+        favs.moveLastPickedToFront(javaClass.simpleName, items, allItems)
+        return items
+    }
 
     override fun onClickOk() {
         val item = selectedItem!!
-	    val itemValue = item.value
+        val itemValue = item.value
 
         if (itemValue == null) {
             AlertDialog.Builder(context!!)
@@ -112,16 +112,16 @@ abstract class GroupedImageListQuestAnswerFragment : AbstractQuestFormAnswerFrag
                 .show()
         } else {
             if (item.isGroup) {
-	            AlertDialog.Builder(context!!)
-		            .setMessage(R.string.quest_generic_item_confirmation)
-		            .setNegativeButton(R.string.quest_generic_confirmation_no, null)
-		            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ ->
-			            applyAnswerAndSave(itemValue)
-		            }
-		            .show()
+                AlertDialog.Builder(context!!)
+                    .setMessage(R.string.quest_generic_item_confirmation)
+                    .setNegativeButton(R.string.quest_generic_confirmation_no, null)
+                    .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ ->
+                        applyAnswerAndSave(itemValue)
+                    }
+                    .show()
             }
             else {
-	            applyAnswerAndSave(itemValue)
+                applyAnswerAndSave(itemValue)
             }
         }
     }

@@ -26,12 +26,12 @@ class RangePickerDialog(
         setTitle(title)
 
         setButton(BUTTON_POSITIVE, context.getString(android.R.string.ok)) { _, _ ->
-	        callback(startPicker.value, endPicker.value)
-	        dismiss()
+            callback(startPicker.value, endPicker.value)
+            dismiss()
         }
-	    setButton(BUTTON_NEGATIVE, context.getString(android.R.string.cancel)) { _, _ ->
-		    cancel()
-	    }
+        setButton(BUTTON_NEGATIVE, context.getString(android.R.string.cancel)) { _, _ ->
+            cancel()
+        }
 
         startPicker.wrapSelectorWheel = false
         startPicker.displayedValues = values
@@ -46,8 +46,8 @@ class RangePickerDialog(
         endPicker.value = endIndex ?: values.size - 1
 
         // do not allow keyboard input
-	    startPicker.disableEditTextsFocus()
-	    endPicker.disableEditTextsFocus()
+        startPicker.disableEditTextsFocus()
+        endPicker.disableEditTextsFocus()
     }
 
     private fun ViewGroup.disableEditTextsFocus() {
@@ -55,7 +55,7 @@ class RangePickerDialog(
         for (i in 0 until count) {
             val child = getChildAt(i)
             if (child is ViewGroup) {
-	            child.disableEditTextsFocus()
+                child.disableEditTextsFocus()
             } else if (child is EditText) {
                 child.setFocusable(false)
             }

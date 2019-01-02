@@ -10,11 +10,11 @@ import de.westnordost.streetcomplete.R
 class ImageSelectAdapter(private val maxSelectableIndices: Int = -1) :
     RecyclerView.Adapter<ItemViewHolder>() {
 
-	var items = listOf<GroupedItem>()
-	set(value) {
-		field = value
-		notifyDataSetChanged()
-	}
+    var items = listOf<GroupedItem>()
+    set(value) {
+        field = value
+        notifyDataSetChanged()
+    }
 
     private val _selectedIndices = mutableSetOf<Int>()
     val selectedIndices: List<Int> get() = _selectedIndices.toList()

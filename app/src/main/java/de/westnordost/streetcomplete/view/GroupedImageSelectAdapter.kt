@@ -30,7 +30,7 @@ class GroupedImageSelectAdapter(gridLayoutManager: GridLayoutManager) :
     var selectedItem: GroupedItem? = null
         private set
 
-	val listeners = mutableListOf<(GroupedItem?) -> Unit>()
+    val listeners = mutableListOf<(GroupedItem?) -> Unit>()
 
     init {
         gridLayoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
@@ -61,7 +61,7 @@ class GroupedImageSelectAdapter(gridLayoutManager: GridLayoutManager) :
             selectedItem = null
         }
 
-	    val selectedItem = selectedItem
+        val selectedItem = selectedItem
         if (prevSelectedItem != null) {
             val prevSelectedIndex = _items.indexOf(prevSelectedItem)
             notifyItemChanged(prevSelectedIndex)

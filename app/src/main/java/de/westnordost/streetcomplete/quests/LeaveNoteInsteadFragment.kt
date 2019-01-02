@@ -6,17 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
-import java.util.ArrayList
-
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osmnotes.AbstractCreateNoteFragment
 
 class LeaveNoteInsteadFragment : AbstractCreateNoteFragment() {
 
     private val questAnswerComponent: QuestAnswerComponent = QuestAnswerComponent()
-	private var questTitle: String? = null
+    private var questTitle: String? = null
 
-	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
 
         setTitle(R.string.map_btn_create_note)

@@ -48,7 +48,7 @@ abstract class AbstractQuestFormAnswerFragment : AbstractQuestAnswerFragment() {
 
     protected abstract fun onClickOk()
 
-	abstract fun isFormComplete(): Boolean
+    abstract fun isFormComplete(): Boolean
 
-	override fun isRejectingClose() = isFormComplete()
+    override fun isRejectingClose() = isFormComplete()
 }

@@ -38,7 +38,7 @@ class AddCollectionTimesForm : AbstractQuestFormAnswerFragment() {
 
         initCollectionTimesAdapter(savedInstanceState)
 
-	    addTimesButton.setOnClickListener { collectionTimesAdapter.addNew() }
+        addTimesButton.setOnClickListener { collectionTimesAdapter.addNew() }
 
         addOtherAnswer(R.string.quest_collectionTimes_answer_no_times_specified) {
             AlertDialog.Builder(context!!)
@@ -57,12 +57,12 @@ class AddCollectionTimesForm : AbstractQuestFormAnswerFragment() {
 
     private fun initCollectionTimesAdapter(savedInstanceState: Bundle?) {
         val data: ArrayList<WeekdaysTimesRow> = if (savedInstanceState != null) {
-		    serializer.toObject(savedInstanceState.getByteArray(TIMES_DATA))
-	    } else {
-		    ArrayList()
-	    }
+            serializer.toObject(savedInstanceState.getByteArray(TIMES_DATA))
+        } else {
+            ArrayList()
+        }
 
-	    collectionTimesAdapter = CollectionTimesAdapter(data, context!!, countryInfo)
+        collectionTimesAdapter = CollectionTimesAdapter(data, context!!, countryInfo)
         collectionTimesAdapter.registerAdapterDataObserver( AdapterDataChangedWatcher { checkIsFormComplete() })
 
         collectionTimesList.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
@@ -73,7 +73,7 @@ class AddCollectionTimesForm : AbstractQuestFormAnswerFragment() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-	    val serializedTimes = serializer.toBytes(ArrayList(collectionTimesAdapter.collectionTimesRows))
+        val serializedTimes = serializer.toBytes(ArrayList(collectionTimesAdapter.collectionTimesRows))
         outState.putByteArray(TIMES_DATA, serializedTimes)
     }
 

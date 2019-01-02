@@ -20,27 +20,27 @@ class AddBuildingTypeForm : GroupedImageListQuestAnswerFragment() {
 
     override val allItems = listOf(
         Item(RESIDENTIAL, listOf(
-	        DETACHED, APARTMENTS, SEMI_DETACHED, TERRACE, FARM, HOUSE,
-	        HUT, BUNGALOW, HOUSEBOAT, STATIC_CARAVAN, DORMITORY
+            DETACHED, APARTMENTS, SEMI_DETACHED, TERRACE, FARM, HOUSE,
+            HUT, BUNGALOW, HOUSEBOAT, STATIC_CARAVAN, DORMITORY
         )),
         Item(COMMERCIAL, listOf(
-	        OFFICE, INDUSTRIAL, RETAIL, WAREHOUSE, KIOSK, HOTEL, STORAGE_TANK
+            OFFICE, INDUSTRIAL, RETAIL, WAREHOUSE, KIOSK, HOTEL, STORAGE_TANK
         )),
         Item(CIVIC, listOf(
-	        SCHOOL, UNIVERSITY, HOSPITAL, KINDERGARTEN, SPORTS_CENTRE, TRAIN_STATION,
-	        TRANSPORTATION, COLLEGE, GOVERNMENT, STADIUM
+            SCHOOL, UNIVERSITY, HOSPITAL, KINDERGARTEN, SPORTS_CENTRE, TRAIN_STATION,
+            TRANSPORTATION, COLLEGE, GOVERNMENT, STADIUM
         )),
         Item(RELIGIOUS, listOf(
-	        CHURCH, CATHEDRAL, CHAPEL, MOSQUE, TEMPLE, PAGODA, SYNAGOGUE, SHRINE
+            CHURCH, CATHEDRAL, CHAPEL, MOSQUE, TEMPLE, PAGODA, SYNAGOGUE, SHRINE
         )),
         Item(null, R.drawable.ic_building_car, R.string.quest_buildingType_cars, 0, listOf(
-	        GARAGE, GARAGES, CARPORT, PARKING
+            GARAGE, GARAGES, CARPORT, PARKING
         )),
         Item(null, R.drawable.ic_building_farm, R.string.quest_buildingType_farm, 0, listOf(
-	        FARM, FARM_AUXILIARY, GREENHOUSE, STORAGE_TANK
+            FARM, FARM_AUXILIARY, GREENHOUSE, STORAGE_TANK
         )),
         Item(null, R.drawable.ic_building_other, R.string.quest_buildingType_other, 0, listOf(
-	        SHED, ROOF, SERVICE, HUT, TOILETS, HANGAR, BUNKER
+            SHED, ROOF, SERVICE, HUT, TOILETS, HANGAR, BUNKER
         ))
     )
 

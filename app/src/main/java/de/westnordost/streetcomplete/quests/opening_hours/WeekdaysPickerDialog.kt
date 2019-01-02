@@ -19,7 +19,7 @@ object WeekdaysPickerDialog {
             }
             .setNegativeButton(android.R.string.cancel, null)
             .setPositiveButton(android.R.string.ok) { _, _ -> callback(Weekdays(selection)) }
-	        .show()
+            .show()
 
         updateDialogOkButtonEnablement(dlg, selection)
         return dlg

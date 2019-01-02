@@ -29,7 +29,7 @@ enum class Cycleway(private val iconResId: Int, private val iconResIdLeft: Int, 
 
     companion object {
         // some of the values defined above are special values that should not be visible by default
-        val displayValues = arrayOf(
+        val displayValues = listOf(
             EXCLUSIVE_LANE,
             ADVISORY_LANE,
             TRACK,

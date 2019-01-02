@@ -50,9 +50,9 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment() {
         if (countryInfo.isLivingStreetKnown && MAYBE_LIVING_STREET.contains(highwayTag)) {
             addOtherAnswer(R.string.quest_maxspeed_answer_living_street) {
                 confirmLivingStreet {
-	                val answer = Bundle()
-	                answer.putBoolean(LIVING_STREET, true)
-	                applyAnswer(answer)
+                    val answer = Bundle()
+                    answer.putBoolean(LIVING_STREET, true)
+                    applyAnswer(answer)
                 }
             }
         }
@@ -73,14 +73,14 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment() {
             val couldBeSlowZone = countryInfo.isSlowZoneKnown && POSSIBLY_SLOWZONE_ROADS.contains(osmElement.tags["highway"])
 
             if (couldBeSlowZone)
-	            confirmNoSignSlowZone { determineImplicitMaxspeedType() }
+                confirmNoSignSlowZone { determineImplicitMaxspeedType() }
             else
-	            confirmNoSign { determineImplicitMaxspeedType() }
+                confirmNoSign { determineImplicitMaxspeedType() }
         } else {
             if (userSelectedUnusualSpeed())
-	            confirmUnusualInput { applySpeedLimitFormAnswer() }
+                confirmUnusualInput { applySpeedLimitFormAnswer() }
             else
-	            applySpeedLimitFormAnswer()
+                applySpeedLimitFormAnswer()
         }
     }
 
@@ -92,41 +92,41 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment() {
         this.speedType = speedType
 
         rightSideContainer.removeAllViews()
-	    speedType?.layoutResId?.let { layoutInflater.inflate(it, rightSideContainer, true) }
+        speedType?.layoutResId?.let { layoutInflater.inflate(it, rightSideContainer, true) }
 
         speedInput = rightSideContainer.findViewById(R.id.maxSpeedInput)
-	    speedInput?.requestFocus()
-	    speedInput?.addTextChangedListener(TextChangedWatcher { checkIsFormComplete() })
+        speedInput?.requestFocus()
+        speedInput?.addTextChangedListener(TextChangedWatcher { checkIsFormComplete() })
 
         speedUnitSelect = rightSideContainer.findViewById(R.id.speedUnitSelect)
-	    val measurementUnits = countryInfo.measurementSystem
-	    speedUnitSelect?.visibility = if (measurementUnits.size == 1) View.GONE else View.VISIBLE
-	    speedUnitSelect?.adapter = ArrayAdapter(context!!, R.layout.spinner_item_centered, getSpinnerItems(measurementUnits))
-	    speedUnitSelect?.setSelection(0)
+        val measurementUnits = countryInfo.measurementSystem
+        speedUnitSelect?.visibility = if (measurementUnits.size == 1) View.GONE else View.VISIBLE
+        speedUnitSelect?.adapter = ArrayAdapter(context!!, R.layout.spinner_item_centered, getSpinnerItems(measurementUnits))
+        speedUnitSelect?.setSelection(0)
 
         checkIsFormComplete()
     }
 
     private fun getSpinnerItems(units: List<String>) = units.mapNotNull {
-	    when(it) {
-		    "metric" -> "km/h"
-		    "imperial" -> "mph"
-		    else -> null
+        when(it) {
+            "metric" -> "km/h"
+            "imperial" -> "mph"
+            else -> null
         }
     }
 
     private fun getSpeedType(@IdRes checkedId: Int) = when (checkedId) {
-	    R.id.sign -> SpeedType.SIGN
-	    R.id.zone -> SpeedType.ZONE
-	    R.id.no_sign -> SpeedType.NO_SIGN
-	    else -> null
+        R.id.sign -> SpeedType.SIGN
+        R.id.zone -> SpeedType.ZONE
+        R.id.no_sign -> SpeedType.NO_SIGN
+        else -> null
     }
 
     private val SpeedType.layoutResId get() = when (this) {
-	    AddMaxSpeedForm.SpeedType.SIGN -> R.layout.quest_maxspeed_sign
-	    AddMaxSpeedForm.SpeedType.ZONE -> R.layout.quest_maxspeed_zone_sign
-	    AddMaxSpeedForm.SpeedType.ADVISORY -> R.layout.quest_maxspeed_advisory
-	    else -> 0
+        AddMaxSpeedForm.SpeedType.SIGN -> R.layout.quest_maxspeed_sign
+        AddMaxSpeedForm.SpeedType.ZONE -> R.layout.quest_maxspeed_zone_sign
+        AddMaxSpeedForm.SpeedType.ADVISORY -> R.layout.quest_maxspeed_advisory
+        else -> 0
     }
 
     private fun userSelectedUnusualSpeed(): Boolean {
@@ -137,14 +137,14 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment() {
     }
 
     private fun confirmUnusualInput(onConfirmed: () -> Unit) {
-	    activity?.let {
-		    AlertDialog.Builder(it)
-			    .setTitle(R.string.quest_generic_confirmation_title)
-			    .setMessage(R.string.quest_maxspeed_unusualInput_confirmation_description)
-			    .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> onConfirmed() }
-			    .setNegativeButton(R.string.quest_generic_confirmation_no, null)
-			    .show()
-	    }
+        activity?.let {
+            AlertDialog.Builder(it)
+                .setTitle(R.string.quest_generic_confirmation_title)
+                .setMessage(R.string.quest_maxspeed_unusualInput_confirmation_description)
+                .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> onConfirmed() }
+                .setNegativeButton(R.string.quest_generic_confirmation_no, null)
+                .show()
+        }
     }
 
     private fun applySpeedLimitFormAnswer() {
@@ -173,46 +173,46 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment() {
     /* ----------------------------------------- No sign ---------------------------------------- */
 
     private fun confirmLivingStreet(onConfirmed: () -> Unit) {
-	    activity?.let {
-		    val view = layoutInflater.inflate(R.layout.quest_maxspeed_living_street_confirmation, null, false)
-		    // this is necessary because the inflated image view uses the activity context rather than
-		    // the fragment / layout inflater context' resources to access it's drawable
-		    val img = view.findViewById<ImageView>(R.id.livingStreetImage)
-		    img.setImageDrawable(resources.getDrawable(R.drawable.ic_living_street))
-		    AlertDialog.Builder(it)
-			    .setView(view)
-			    .setTitle(R.string.quest_maxspeed_answer_living_street_confirmation_title)
-			    .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> onConfirmed() }
-			    .setNegativeButton(R.string.quest_generic_confirmation_no, null)
-			    .show()
-	    }
+        activity?.let {
+            val view = layoutInflater.inflate(R.layout.quest_maxspeed_living_street_confirmation, null, false)
+            // this is necessary because the inflated image view uses the activity context rather than
+            // the fragment / layout inflater context' resources to access it's drawable
+            val img = view.findViewById<ImageView>(R.id.livingStreetImage)
+            img.setImageDrawable(resources.getDrawable(R.drawable.ic_living_street))
+            AlertDialog.Builder(it)
+                .setView(view)
+                .setTitle(R.string.quest_maxspeed_answer_living_street_confirmation_title)
+                .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> onConfirmed() }
+                .setNegativeButton(R.string.quest_generic_confirmation_no, null)
+                .show()
+        }
     }
 
     private fun confirmNoSign(onConfirmed: () -> Unit) {
-	    activity?.let {
-		    AlertDialog.Builder(it)
-			    .setTitle(R.string.quest_maxspeed_answer_noSign_confirmation_title)
-			    .setMessage(R.string.quest_maxspeed_answer_noSign_confirmation)
-			    .setPositiveButton(R.string.quest_maxspeed_answer_noSign_confirmation_positive) { _, _ -> onConfirmed() }
-			    .setNegativeButton(R.string.quest_generic_confirmation_no, null)
-			    .show()
-	    }
+        activity?.let {
+            AlertDialog.Builder(it)
+                .setTitle(R.string.quest_maxspeed_answer_noSign_confirmation_title)
+                .setMessage(R.string.quest_maxspeed_answer_noSign_confirmation)
+                .setPositiveButton(R.string.quest_maxspeed_answer_noSign_confirmation_positive) { _, _ -> onConfirmed() }
+                .setNegativeButton(R.string.quest_generic_confirmation_no, null)
+                .show()
+        }
     }
 
     private fun confirmNoSignSlowZone(onConfirmed: () -> Unit) {
-	    activity?.let {
-		    val view = layoutInflater.inflate(R.layout.quest_maxspeed_no_sign_no_slow_zone_confirmation, null, false)
-		    val input = view.findViewById<EditText>(R.id.maxSpeedInput)
-		    input.setText("××")
-		    input.inputType = EditorInfo.TYPE_NULL
+        activity?.let {
+            val view = layoutInflater.inflate(R.layout.quest_maxspeed_no_sign_no_slow_zone_confirmation, null, false)
+            val input = view.findViewById<EditText>(R.id.maxSpeedInput)
+            input.setText("××")
+            input.inputType = EditorInfo.TYPE_NULL
 
-		    AlertDialog.Builder(it)
-			    .setTitle(R.string.quest_maxspeed_answer_noSign_confirmation_title)
-			    .setView(view)
-			    .setPositiveButton(R.string.quest_maxspeed_answer_noSign_confirmation_positive) { _, _ -> onConfirmed() }
-			    .setNegativeButton(R.string.quest_generic_confirmation_no, null)
-			    .show()
-	    }
+            AlertDialog.Builder(it)
+                .setTitle(R.string.quest_maxspeed_answer_noSign_confirmation_title)
+                .setView(view)
+                .setPositiveButton(R.string.quest_maxspeed_answer_noSign_confirmation_positive) { _, _ -> onConfirmed() }
+                .setNegativeButton(R.string.quest_generic_confirmation_no, null)
+                .show()
+        }
     }
 
     private fun determineImplicitMaxspeedType() {
@@ -239,41 +239,41 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment() {
 
     private fun askUrbanOrRural(onUrban: () -> Unit, onRural: () -> Unit) {
         activity?.let {
-	        AlertDialog.Builder(it)
-		        .setTitle(R.string.quest_maxspeed_answer_noSign_info_urbanOrRural)
-		        .setMessage(R.string.quest_maxspeed_answer_noSign_urbanOrRural_description)
-		        .setPositiveButton(R.string.quest_maxspeed_answer_noSign_urbanOk) { _, _ -> onUrban() }
-		        .setNegativeButton(R.string.quest_maxspeed_answer_noSign_ruralOk) { _, _ -> onRural() }
-		        .show()
+            AlertDialog.Builder(it)
+                .setTitle(R.string.quest_maxspeed_answer_noSign_info_urbanOrRural)
+                .setMessage(R.string.quest_maxspeed_answer_noSign_urbanOrRural_description)
+                .setPositiveButton(R.string.quest_maxspeed_answer_noSign_urbanOk) { _, _ -> onUrban() }
+                .setNegativeButton(R.string.quest_maxspeed_answer_noSign_ruralOk) { _, _ -> onRural() }
+                .show()
         }
     }
 
     private fun determineLit(onYes: () -> Unit, onNo: () -> Unit) {
         val lit = osmElement.tags["lit"]
-	    when (lit) {
-	        "yes" -> onYes()
-	        "no" -> onNo()
-	        else -> askLit(onYes, onNo)
-	    }
+        when (lit) {
+            "yes" -> onYes()
+            "no" -> onNo()
+            else -> askLit(onYes, onNo)
+        }
     }
 
     private fun askLit(onYes: () -> Unit, onNo: () -> Unit) {
         activity?.let {
-	        AlertDialog.Builder(it)
-		        .setMessage(R.string.quest_way_lit_road_title)
-		        .setPositiveButton(R.string.quest_generic_hasFeature_yes) { _, _ -> onYes() }
-		        .setNegativeButton(R.string.quest_generic_hasFeature_no) { _, _ -> onNo() }
-		        .show()
+            AlertDialog.Builder(it)
+                .setMessage(R.string.quest_way_lit_road_title)
+                .setPositiveButton(R.string.quest_generic_hasFeature_yes) { _, _ -> onYes() }
+                .setNegativeButton(R.string.quest_generic_hasFeature_no) { _, _ -> onNo() }
+                .show()
         }
     }
 
     private fun askIsDualCarriageway(onYes: () -> Unit, onNo: () -> Unit) {
         activity?.let {
-	        AlertDialog.Builder(it)
-		        .setMessage(R.string.quest_maxspeed_answer_noSign_singleOrDualCarriageway_description)
-		        .setPositiveButton(R.string.quest_generic_hasFeature_yes) { _, _ -> onYes() }
-		        .setNegativeButton(R.string.quest_generic_hasFeature_no) { _, _ -> onNo() }
-		        .show()
+            AlertDialog.Builder(it)
+                .setMessage(R.string.quest_maxspeed_answer_noSign_singleOrDualCarriageway_description)
+                .setPositiveButton(R.string.quest_generic_hasFeature_yes) { _, _ -> onYes() }
+                .setNegativeButton(R.string.quest_generic_hasFeature_no) { _, _ -> onNo() }
+                .show()
         }
     }
 
@@ -287,10 +287,10 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment() {
 
     companion object {
         const val MAX_SPEED_IMPLICIT_COUNTRY = "maxspeed_country"
-	    const val MAX_SPEED_IMPLICIT_ROADTYPE = "maxspeed_roadtype"
-	    const val ADVISORY_SPEED = "advisory_speed"
-	    const val MAX_SPEED = "maxspeed"
-	    const val LIVING_STREET = "living_street"
+        const val MAX_SPEED_IMPLICIT_ROADTYPE = "maxspeed_roadtype"
+        const val ADVISORY_SPEED = "advisory_speed"
+        const val MAX_SPEED = "maxspeed"
+        const val LIVING_STREET = "living_street"
 
         private val POSSIBLY_SLOWZONE_ROADS = listOf("residential", "unclassified", "tertiary" /*#1133*/)
         private val MAYBE_LIVING_STREET = listOf("residential", "unclassified")

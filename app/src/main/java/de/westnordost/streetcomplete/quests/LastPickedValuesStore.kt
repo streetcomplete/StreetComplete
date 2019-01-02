@@ -37,8 +37,8 @@ class LastPickedValuesStore @Inject constructor(private val prefs: SharedPrefere
 
     fun get(key: String): LinkedList<String> {
         val result = LinkedList<String>()
-	    val values = prefs.getString(getKey(key), null)
-		if(values != null) result.addAll(values.split(","))
+        val values = prefs.getString(getKey(key), null)
+        if(values != null) result.addAll(values.split(","))
         return result
     }
 
@@ -47,16 +47,16 @@ class LastPickedValuesStore @Inject constructor(private val prefs: SharedPrefere
     private fun find(values: List<String>, itemPool: Iterable<GroupedItem>): LinkedList<GroupedItem> {
         val result = LinkedList<GroupedItem>()
         for (value in values) {
-	        val item = find(value, itemPool)
-	        if(item != null) result.add(item)
+            val item = find(value, itemPool)
+            if(item != null) result.add(item)
         }
         return result
     }
 
     private fun find(value: String, itemPool: Iterable<GroupedItem>): GroupedItem? {
         for (item in itemPool) {
-	        val subItems = item.items
-	        // returns only items which are not groups themselves
+            val subItems = item.items
+            // returns only items which are not groups themselves
             if (subItems != null) {
                 val subItem = find(value, subItems.asIterable())
                 if (subItem != null) return subItem

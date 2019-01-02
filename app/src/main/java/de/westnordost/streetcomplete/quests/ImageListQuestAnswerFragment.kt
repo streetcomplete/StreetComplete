@@ -93,7 +93,7 @@ abstract class ImageListQuestAnswerFragment : AbstractQuestFormAnswerFragment() 
     protected fun applyAnswer() {
         val answer = Bundle()
 
-	    val osmValues = imageSelector.selectedItems.map { it.value!! }
+        val osmValues = imageSelector.selectedItems.map { it.value!! }
         if (osmValues.isNotEmpty()) {
             answer.putStringArrayList(OSM_VALUES, ArrayList(osmValues))
             favs.add(javaClass.simpleName, osmValues)

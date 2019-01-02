@@ -32,7 +32,7 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment() {
         val view = super.onCreateView(inflater, container, savedInstanceState)
         restoreInstanceState(savedInstanceState)
 
-	    setLayout(if(isHousename) R.layout.quest_housename else R.layout.quest_housenumber)
+        setLayout(if(isHousename) R.layout.quest_housename else R.layout.quest_housenumber)
 
         addOtherAnswers()
 
@@ -81,7 +81,7 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment() {
         val buildingValue = osmElement.tags["building"]!!
         val item = BuildingType.getByTag("building", buildingValue)
         if (item != null) {
-	        val inflater = LayoutInflater.from(activity)
+            val inflater = LayoutInflater.from(activity)
             val inner = inflater.inflate(R.layout.dialog_quest_address_no_housenumber, null, false)
             ItemViewHolder(inner.findViewById(R.id.item_view)).bind(item)
 
@@ -114,8 +114,8 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment() {
         val looksInvalid = !houseNumber.matches(getValidHousenumberRegex())
 
         confirmHousenumber(looksInvalid) {
-	        answer.putString(HOUSENUMBER, houseNumber)
-	        applyAnswer(answer)
+            answer.putString(HOUSENUMBER, houseNumber)
+            applyAnswer(answer)
         }
     }
 
@@ -127,24 +127,24 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment() {
         }
 
         confirmHousenumber(looksInvalid) {
-	        answer.putString(CONSCRIPTIONNUMBER, conscriptionNumber)
-	        // streetNumber is optional
-	        if (streetNumber.isNotEmpty()) {
-		        answer.putString(STREETNUMBER, streetNumber)
-	        }
-	        applyAnswer(answer)
+            answer.putString(CONSCRIPTIONNUMBER, conscriptionNumber)
+            // streetNumber is optional
+            if (streetNumber.isNotEmpty()) {
+                answer.putString(STREETNUMBER, streetNumber)
+            }
+            applyAnswer(answer)
         }
     }
 
-	// i.e. "95-98" or "5,5a,6" etc. (but not: "1, 3" or "3 - 5" or "5,6-7")
-	private fun getValidHousenumberRegex(): Regex {
-		var regex = VALID_HOUSENUMBER_REGEX
-		val additionalRegex = countryInfo.additionalValidHousenumberRegex
-		if (additionalRegex != null) {
-			regex = "(($regex)|($additionalRegex))"
-		}
-		return "^$regex((-$regex)|(,$regex)+)?".toRegex()
-	}
+    // i.e. "95-98" or "5,5a,6" etc. (but not: "1, 3" or "3 - 5" or "5,6-7")
+    private fun getValidHousenumberRegex(): Regex {
+        var regex = VALID_HOUSENUMBER_REGEX
+        val additionalRegex = countryInfo.additionalValidHousenumberRegex
+        if (additionalRegex != null) {
+            regex = "(($regex)|($additionalRegex))"
+        }
+        return "^$regex((-$regex)|(,$regex)+)?".toRegex()
+    }
 
     override fun isFormComplete(): Boolean {
         // streetNumber is always optional
@@ -213,7 +213,7 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment() {
         }
     }
 
-	private val EditText.trimmedInput get() = text.toString().trim()
+    private val EditText.trimmedInput get() = text.toString().trim()
 
     companion object {
         const val NO_ADDRESS = "noaddress"

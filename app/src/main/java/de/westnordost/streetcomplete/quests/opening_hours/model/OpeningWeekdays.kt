@@ -36,8 +36,8 @@ class OpeningWeekdays(var weekdays: Weekdays, var timeRanges: MutableList<TimeRa
 
     fun intersectsWeekdays(other: OpeningWeekdays) =
         weekdays.intersects(other.weekdays)
-	        || timeExtendsToNextDay() && createNextDayWeekdays().intersects(other.weekdays)
-	        || other.timeExtendsToNextDay() && other.createNextDayWeekdays().intersects(weekdays)
+            || timeExtendsToNextDay() && createNextDayWeekdays().intersects(other.weekdays)
+            || other.timeExtendsToNextDay() && other.createNextDayWeekdays().intersects(weekdays)
 
     /** for example "20:00-03:00"  */
     private fun timeExtendsToNextDay() = timeRanges.any { it.loops }
@@ -72,7 +72,7 @@ class OpeningWeekdays(var weekdays: Weekdays, var timeRanges: MutableList<TimeRa
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
-	    if (other !is OpeningWeekdays) return false
+        if (other !is OpeningWeekdays) return false
         return weekdays == other.weekdays && timeRanges == other.timeRanges
     }
 
