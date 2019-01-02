@@ -25,7 +25,7 @@ class RoadNameSuggestionsDaoTest : ApplicationDbTestCase() {
 
         val result = dao.getNames(createPosOnRoad(), 1000.0)
 
-        assertEquals(names, result)
+        assertEquals(listOf(names), result)
     }
 
     fun testGetMultipleNames() {

@@ -19,22 +19,22 @@ class AddHousenumberTest : AOsmElementQuestTypeTest() {
     }
 
     fun testRegex() {
-        val r = AddHousenumberForm.VALID_HOUSENUMBER_REGEX
-        assertTrue("1".matches(r.toRegex()))
-        assertTrue("1234".matches(r.toRegex()))
+        val r = AddHousenumberForm.VALID_HOUSENUMBER_REGEX.toRegex()
+        assertTrue("1".matches(r))
+        assertTrue("1234".matches(r))
 
-        assertTrue("1234a".matches(r.toRegex()))
-        assertTrue("1234/a".matches(r.toRegex()))
-        assertTrue("1234 / a".matches(r.toRegex()))
-        assertTrue("1234 / A".matches(r.toRegex()))
-        assertTrue("1234A".matches(r.toRegex()))
-        assertTrue("1234/9".matches(r.toRegex()))
-        assertTrue("1234 / 9".matches(r.toRegex()))
+        assertTrue("1234a".matches(r))
+        assertTrue("1234/a".matches(r))
+        assertTrue("1234 / a".matches(r))
+        assertTrue("1234 / A".matches(r))
+        assertTrue("1234A".matches(r))
+        assertTrue("1234/9".matches(r))
+        assertTrue("1234 / 9".matches(r))
 
-        assertFalse("12345".matches(r.toRegex()))
-        assertFalse("1234 5".matches(r.toRegex()))
-        assertFalse("1234/55".matches(r.toRegex()))
-        assertFalse("1234AB".matches(r.toRegex()))
+        assertFalse("12345".matches(r))
+        assertFalse("1234 5".matches(r))
+        assertFalse("1234/55".matches(r))
+        assertFalse("1234AB".matches(r))
     }
 
     fun testNumber() {
