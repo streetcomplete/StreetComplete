@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.localized_name;
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryModify;
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
 import de.westnordost.streetcomplete.quests.AOsmElementQuestTypeTest;
 import de.westnordost.streetcomplete.quests.localized_name.data.PutRoadNameSuggestionsHandler;
 import de.westnordost.streetcomplete.quests.localized_name.data.RoadNameSuggestionsDao;
@@ -53,19 +54,19 @@ public class AddRoadNameTest extends AOsmElementQuestTypeTest
 
 	public void testIsService()
 	{
-		bundle.putInt(AddRoadNameForm.Companion.getNO_PROPER_ROAD(), AddRoadNameForm.Companion.getIS_SERVICE());
+		bundle.putInt(AddRoadNameForm.NO_PROPER_ROAD, AddRoadNameForm.IS_SERVICE);
 		verify(new StringMapEntryModify("highway",tags.get("highway"),"service"));
 	}
 
 	public void testIsTrack()
 	{
-		bundle.putInt(AddRoadNameForm.Companion.getNO_PROPER_ROAD(), AddRoadNameForm.Companion.getIS_TRACK());
+		bundle.putInt(AddRoadNameForm.NO_PROPER_ROAD, AddRoadNameForm.IS_TRACK);
 		verify(new StringMapEntryModify("highway",tags.get("highway"),"track"));
 	}
 
 	public void testIsLink()
 	{
-		bundle.putInt(AddRoadNameForm.Companion.getNO_PROPER_ROAD(), AddRoadNameForm.Companion.getIS_LINK());
+		bundle.putInt(AddRoadNameForm.NO_PROPER_ROAD, AddRoadNameForm.IS_LINK);
 
 		tags.put("highway","primary");
 		verify(new StringMapEntryModify("highway",tags.get("highway"),"primary_link"));
@@ -79,7 +80,7 @@ public class AddRoadNameTest extends AOsmElementQuestTypeTest
 
 	@Override protected OsmElementQuestType createQuestType()
 	{
-		return new AddRoadName(null,
+		return new AddRoadName(mock(OverpassMapDataDao.class),
 				mock(RoadNameSuggestionsDao.class),
 				mock(PutRoadNameSuggestionsHandler.class));
 	}

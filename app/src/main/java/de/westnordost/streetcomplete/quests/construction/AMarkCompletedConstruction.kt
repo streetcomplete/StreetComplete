@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.quests.DateUtil
 
 abstract class AMarkCompletedConstruction : OsmElementQuestType {
 
-    protected fun getCurrentDateString() =
+    protected open fun getCurrentDateString() =
         DateUtil.getCurrentDateString() + "T00:00:00Z"
 
     protected open fun getOffsetDateString(offset: Int) =

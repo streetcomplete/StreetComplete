@@ -21,8 +21,9 @@ import de.westnordost.streetcomplete.util.SphericalEarthMath
 import de.westnordost.streetcomplete.xt.toObject
 import de.westnordost.streetcomplete.xt.transaction
 
-class RoadNameSuggestionsDao @Inject constructor(
-    protected val dbHelper: SQLiteOpenHelper,
+// TODO only open in order to be able to mock it in tests
+open class RoadNameSuggestionsDao @Inject constructor(
+    private val dbHelper: SQLiteOpenHelper,
     private val serializer: Serializer
 ) {
 

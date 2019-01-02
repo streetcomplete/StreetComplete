@@ -2,8 +2,6 @@ package de.westnordost.streetcomplete.quests.oneway;
 
 import junit.framework.TestCase;
 
-import org.json.JSONException;
-
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
@@ -20,13 +18,13 @@ import static org.assertj.core.api.Assertions.*;
 
 public class TrafficFlowSegmentsDaoTest extends TestCase
 {
-	public void testParseEmptyDoesNotResultInError() throws JSONException
+	public void testParseEmptyDoesNotResultInError()
 	{
 		Map<Long, List<TrafficFlowSegment>> result = TrafficFlowSegmentsDao.Companion.parse("{\"segments\":[]}");
 		assertTrue(result.isEmpty());
 	}
 
-	public void testParseTwoOfDifferentWay() throws JSONException
+	public void testParseTwoOfDifferentWay()
 	{
 		Map<Long, List<TrafficFlowSegment>> result = TrafficFlowSegmentsDao.Companion.parse(
 			"{\"segments\":[" +
@@ -44,7 +42,7 @@ public class TrafficFlowSegmentsDaoTest extends TestCase
 		assertThat(result).containsAllEntriesOf(expected);
 	}
 
-	public void testParseTwoOfSameWay() throws JSONException
+	public void testParseTwoOfSameWay()
 	{
 		Map<Long, List<TrafficFlowSegment>> result = TrafficFlowSegmentsDao.Companion.parse(
 			"{\"segments\":[" +
@@ -60,7 +58,7 @@ public class TrafficFlowSegmentsDaoTest extends TestCase
 		assertThat(result).containsAllEntriesOf(expected);
 	}
 
-	public void testWithSomeRealData() throws Exception
+	public void testWithSomeRealData()
 	{
 		// should just not crash...
 		new TrafficFlowSegmentsDao(ONEWAY_API_URL).get(new BoundingBox(-34,18,-33,19));

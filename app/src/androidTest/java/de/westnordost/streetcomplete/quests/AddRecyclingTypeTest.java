@@ -4,8 +4,11 @@ import java.util.ArrayList;
 
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd;
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
 import de.westnordost.streetcomplete.quests.recycling.AddRecyclingType;
 import de.westnordost.streetcomplete.quests.recycling.AddRecyclingTypeForm;
+
+import static org.mockito.Mockito.mock;
 
 public class AddRecyclingTypeTest extends AOsmElementQuestTypeTest
 {
@@ -17,21 +20,22 @@ public class AddRecyclingTypeTest extends AOsmElementQuestTypeTest
 
 	public void testRecyclingCentre()
 	{
-		bundle.putStringArrayList(AddRecyclingTypeForm.Companion.getOSM_VALUES(), getAsStringArray("centre"));
+		bundle.putStringArrayList(AddRecyclingTypeForm.OSM_VALUES, getAsStringArray("centre"));
 		verify(new StringMapEntryAdd("recycling_type","centre"));
 	}
 
 	public void testRecyclingUndergroundContainer()
 	{
-		bundle.putStringArrayList(AddRecyclingTypeForm.Companion.getOSM_VALUES(), getAsStringArray("underground"));
+		bundle.putStringArrayList(AddRecyclingTypeForm.OSM_VALUES, getAsStringArray("underground"));
 		verify(new StringMapEntryAdd("recycling_type","container"));
 		verify(new StringMapEntryAdd("location","underground"));
 	}
 
 	public void testRecyclingOvergroundContainer()
 	{
-		bundle.putStringArrayList(AddRecyclingTypeForm.Companion.getOSM_VALUES(), getAsStringArray("overground"));
+		bundle.putStringArrayList(AddRecyclingTypeForm.OSM_VALUES, getAsStringArray("overground"));
 		verify(new StringMapEntryAdd("recycling_type","container"));
+		verify(new StringMapEntryAdd("location","overground"));
 	}
 
 	private ArrayList<String> getAsStringArray(String value)
@@ -43,6 +47,6 @@ public class AddRecyclingTypeTest extends AOsmElementQuestTypeTest
 
 	@Override protected OsmElementQuestType createQuestType()
 	{
-		return new AddRecyclingType(null);
+		return new AddRecyclingType(mock(OverpassMapDataDao.class));
 	}
 }

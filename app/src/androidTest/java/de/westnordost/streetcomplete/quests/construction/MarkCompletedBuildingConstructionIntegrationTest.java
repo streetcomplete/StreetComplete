@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
 import de.westnordost.streetcomplete.quests.AssertUtil;
 
 public class MarkCompletedBuildingConstructionIntegrationTest extends TestCase {
-	public void test_matching_candidate_is_accepted() throws ParseException {
+	public void test_matching_candidate_is_accepted() {
 		//https://www.openstreetmap.org/way/494183785#map=19/50.07671/19.94703
 		verifyYieldsQuest(
 			new BoundingBox(50.07664, 19.94671, 50.07672, 19.94700),
@@ -18,7 +18,7 @@ public class MarkCompletedBuildingConstructionIntegrationTest extends TestCase {
 		);
 	}
 
-	public void test_fresh_construction_is_not_accepted() throws ParseException {
+	public void test_fresh_construction_is_not_accepted() {
 		//https://www.openstreetmap.org/way/494183785#map=19/50.07671/19.94703
 		verifyYieldsNoQuest(
 			new BoundingBox(50.07664, 19.94671, 50.07672, 19.94700),
@@ -26,7 +26,7 @@ public class MarkCompletedBuildingConstructionIntegrationTest extends TestCase {
 		);
 	}
 
-	public void test_relations_are_accepted() throws ParseException {
+	public void test_relations_are_accepted() {
 		//https://www.openstreetmap.org/relation/7405013
 		verifyYieldsQuest(
 			new BoundingBox(55.89375, 37.53794, 55.89441, 37.53857),
@@ -34,13 +34,13 @@ public class MarkCompletedBuildingConstructionIntegrationTest extends TestCase {
 		);
 	}
 
-	private void verifyYieldsNoQuest(BoundingBox bbox, String date) throws ParseException {
+	private void verifyYieldsNoQuest(BoundingBox bbox, String date) {
 		OverpassMapDataDao o = OsmModule.overpassOldMapDataDao(OsmModule::overpassMapDataParser, date);
 		MarkCompletedBuildingConstructionOldData quest = new MarkCompletedBuildingConstructionOldData(o, date);
 		AssertUtil.verifyYieldsNoQuest(quest, bbox);
 	}
 
-	private void verifyYieldsQuest(BoundingBox bbox, String date) throws ParseException {
+	private void verifyYieldsQuest(BoundingBox bbox, String date) {
 		OverpassMapDataDao o = OsmModule.overpassOldMapDataDao(OsmModule::overpassMapDataParser, date);
 		MarkCompletedBuildingConstructionOldData quest = new MarkCompletedBuildingConstructionOldData(o, date);
 		new AssertUtil().verifyYieldsQuest(quest, bbox);

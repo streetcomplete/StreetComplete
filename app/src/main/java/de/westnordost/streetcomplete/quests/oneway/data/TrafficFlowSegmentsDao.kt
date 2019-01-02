@@ -18,27 +18,29 @@ class TrafficFlowSegmentsDao(private val apiUrl: String) {
         return parse(json)
     }
 
-    internal fun parse(json: String): Map<Long, List<TrafficFlowSegment>> {
-        val obj = JSONObject(json)
-        val segments = obj.getJSONArray("segments")
+    companion object {
+        fun parse(json: String): Map<Long, List<TrafficFlowSegment>> {
+            val obj = JSONObject(json)
+            val segments = obj.getJSONArray("segments")
 
-        @SuppressLint("UseSparseArrays")
-        val result = mutableMapOf<Long, MutableList<TrafficFlowSegment>>()
-        if (segments == null) return result
+            @SuppressLint("UseSparseArrays")
+            val result = mutableMapOf<Long, MutableList<TrafficFlowSegment>>()
+            if (segments == null) return result
 
-        for (i in 0 until segments.length()) {
-            if (segments.isNull(i)) continue
-            val segment = segments.getJSONObject(i)
-            val wayId = segment.getLong("wayId")
-            result.getOrPut(wayId) { mutableListOf() }.add(
-                TrafficFlowSegment(
-                    parseLatLon(segment.getJSONObject("fromPosition")),
-                    parseLatLon(segment.getJSONObject("toPosition"))
+            for (i in 0 until segments.length()) {
+                if (segments.isNull(i)) continue
+                val segment = segments.getJSONObject(i)
+                val wayId = segment.getLong("wayId")
+                result.getOrPut(wayId) { mutableListOf() }.add(
+                    TrafficFlowSegment(
+                        parseLatLon(segment.getJSONObject("fromPosition")),
+                        parseLatLon(segment.getJSONObject("toPosition"))
+                    )
                 )
-            )
+            }
+            return result
         }
-        return result
-    }
 
-    private fun parseLatLon(pos: JSONObject) = OsmLatLon(pos.getDouble("lat"), pos.getDouble("lon"))
+        private fun parseLatLon(pos: JSONObject) = OsmLatLon(pos.getDouble("lat"), pos.getDouble("lon"))
+    }
 }

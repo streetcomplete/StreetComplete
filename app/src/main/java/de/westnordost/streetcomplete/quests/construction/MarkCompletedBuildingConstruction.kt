@@ -13,7 +13,7 @@ import de.westnordost.streetcomplete.data.osm.tql.OverpassQLUtil
 import de.westnordost.streetcomplete.quests.DateUtil
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
-class MarkCompletedBuildingConstruction(private val overpass: OverpassMapDataDao) : AMarkCompletedConstruction() {
+open class MarkCompletedBuildingConstruction(private val overpass: OverpassMapDataDao) : AMarkCompletedConstruction() {
 
     override val commitMessage = "Determine whether construction is now completed"
     override val icon = R.drawable.ic_quest_building_construction

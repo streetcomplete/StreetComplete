@@ -8,7 +8,8 @@ import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.data.osm.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler
 
-class PutRoadNameSuggestionsHandler @Inject constructor(
+// TODO only open in order to be able to mock it in tests
+open class PutRoadNameSuggestionsHandler @Inject constructor(
     private val roadNameSuggestionsDao: RoadNameSuggestionsDao) :
     MapDataWithGeometryHandler {
 

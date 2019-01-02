@@ -2,27 +2,28 @@ package de.westnordost.streetcomplete.quests;
 
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd;
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
 import de.westnordost.streetcomplete.quests.postbox_collection_times.AddCollectionTimesForm;
 import de.westnordost.streetcomplete.quests.postbox_collection_times.AddPostboxCollectionTimes;
+
+import static org.mockito.Mockito.mock;
 
 public class AddPostboxCollectionTimesTest extends AOsmElementQuestTypeTest
 {
 	public void testNoTimes()
 	{
-		bundle.putBoolean(AddCollectionTimesForm.Companion.getNO_TIMES_SPECIFIED(), true);
-		verify(
-			new StringMapEntryAdd("collection_times:signed","no"));
+		bundle.putBoolean(AddCollectionTimesForm.NO_TIMES_SPECIFIED, true);
+		verify(new StringMapEntryAdd("collection_times:signed","no"));
 	}
 
 	public void testTimes()
 	{
-		bundle.putString(AddCollectionTimesForm.Companion.getTIMES(), "my times");
-		verify(
-			new StringMapEntryAdd("collection_times","my times"));
+		bundle.putString(AddCollectionTimesForm.TIMES, "my times");
+		verify(new StringMapEntryAdd("collection_times","my times"));
 	}
 
 	@Override protected OsmElementQuestType createQuestType()
 	{
-		return new AddPostboxCollectionTimes(null);
+		return new AddPostboxCollectionTimes(mock(OverpassMapDataDao.class));
 	}
 }

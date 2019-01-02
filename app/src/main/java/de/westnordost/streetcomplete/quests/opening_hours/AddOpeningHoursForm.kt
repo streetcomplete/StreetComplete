@@ -161,10 +161,10 @@ class AddOpeningHoursForm : AbstractQuestFormAnswerFragment() {
     override fun isFormComplete() = openingHoursString.isNotEmpty()
 
     companion object {
-        val OPENING_HOURS = "opening_hours"
-        val NO_SIGN = "no_sign"
+        const val OPENING_HOURS = "opening_hours"
+        const val NO_SIGN = "no_sign"
 
-        private val OPENING_HOURS_DATA = "oh_data"
-        private val IS_ADD_MONTHS_MODE = "oh_add_months"
+        private const val OPENING_HOURS_DATA = "oh_data"
+        private const val IS_ADD_MONTHS_MODE = "oh_add_months"
     }
 }

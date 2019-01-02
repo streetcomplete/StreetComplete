@@ -159,12 +159,12 @@ class AddRoadNameForm : AddLocalizedNameForm() {
 
     companion object {
 
-        val NO_PROPER_ROAD = "no_proper_road"
-        val WAY_ID = "way_id"
-        val WAY_GEOMETRY = "way_geometry"
+        const val NO_PROPER_ROAD = "no_proper_road"
+        const val WAY_ID = "way_id"
+        const val WAY_GEOMETRY = "way_geometry"
 
-        val IS_SERVICE = 1
-        val IS_LINK = 2
-        val IS_TRACK = 3
+        const val IS_SERVICE = 1
+        const val IS_LINK = 2
+        const val IS_TRACK = 3
     }
 }

@@ -144,9 +144,9 @@ abstract class AddLocalizedNameForm : AbstractQuestFormAnswerFragment() {
     companion object {
         protected val LOCALIZED_NAMES_DATA = "localized_names_data"
 
-        val NO_NAME = "no_name"
-        internal val NAMES = "names"
-        internal val LANGUAGE_CODES = "language_codes"
+        const val NO_NAME = "no_name"
+        const val NAMES = "names"
+        const val LANGUAGE_CODES = "language_codes"
     }
 }
 

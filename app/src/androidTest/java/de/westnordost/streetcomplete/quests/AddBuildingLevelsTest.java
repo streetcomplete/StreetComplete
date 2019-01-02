@@ -2,8 +2,11 @@ package de.westnordost.streetcomplete.quests;
 
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd;
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
 import de.westnordost.streetcomplete.quests.building_levels.AddBuildingLevels;
 import de.westnordost.streetcomplete.quests.building_levels.AddBuildingLevelsForm;
+
+import static org.mockito.Mockito.mock;
 
 public class AddBuildingLevelsTest extends AOsmElementQuestTypeTest
 {
@@ -15,15 +18,15 @@ public class AddBuildingLevelsTest extends AOsmElementQuestTypeTest
 
 	public void testBuildingLevelsOnly()
 	{
-		bundle.putInt(AddBuildingLevelsForm.Companion.getBUILDING_LEVELS(), 5);
+		bundle.putInt(AddBuildingLevelsForm.BUILDING_LEVELS, 5);
 		verify(
 				new StringMapEntryAdd("building:levels","5"));
 	}
 
 	public void testBuildingLevelsAndZeroRoofLevels()
 	{
-		bundle.putInt(AddBuildingLevelsForm.Companion.getBUILDING_LEVELS(), 5);
-		bundle.putInt(AddBuildingLevelsForm.Companion.getROOF_LEVELS(), 0);
+		bundle.putInt(AddBuildingLevelsForm.BUILDING_LEVELS, 5);
+		bundle.putInt(AddBuildingLevelsForm.ROOF_LEVELS, 0);
 		verify(
 				new StringMapEntryAdd("building:levels","5"),
 				new StringMapEntryAdd("roof:levels","0"));
@@ -31,8 +34,8 @@ public class AddBuildingLevelsTest extends AOsmElementQuestTypeTest
 
 	public void testBuildingLevelsAndRoofLevels()
 	{
-		bundle.putInt(AddBuildingLevelsForm.Companion.getBUILDING_LEVELS(), 5);
-		bundle.putInt(AddBuildingLevelsForm.Companion.getROOF_LEVELS(), 3);
+		bundle.putInt(AddBuildingLevelsForm.BUILDING_LEVELS, 5);
+		bundle.putInt(AddBuildingLevelsForm.ROOF_LEVELS, 3);
 		verify(
 				new StringMapEntryAdd("building:levels","5"),
 				new StringMapEntryAdd("roof:levels","3"));
@@ -40,6 +43,6 @@ public class AddBuildingLevelsTest extends AOsmElementQuestTypeTest
 
 	@Override protected OsmElementQuestType createQuestType()
 	{
-		return new AddBuildingLevels(null);
+		return new AddBuildingLevels(mock(OverpassMapDataDao.class));
 	}
 }

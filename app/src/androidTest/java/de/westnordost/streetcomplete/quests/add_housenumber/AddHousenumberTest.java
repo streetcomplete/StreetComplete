@@ -2,9 +2,12 @@ package de.westnordost.streetcomplete.quests.add_housenumber;
 
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd;
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
 import de.westnordost.streetcomplete.quests.AOsmElementQuestTypeTest;
 import de.westnordost.streetcomplete.quests.housenumber.AddHousenumber;
 import de.westnordost.streetcomplete.quests.housenumber.AddHousenumberForm;
+
+import static org.mockito.Mockito.mock;
 
 
 public class AddHousenumberTest extends AOsmElementQuestTypeTest
@@ -17,7 +20,7 @@ public class AddHousenumberTest extends AOsmElementQuestTypeTest
 
 	public void testRegex()
 	{
-		String r = AddHousenumberForm.Companion.getVALID_HOUSENUMBER_REGEX();
+		String r = AddHousenumberForm.VALID_HOUSENUMBER_REGEX;
 		assertTrue("1".matches(r));
 		assertTrue("1234".matches(r));
 
@@ -37,19 +40,19 @@ public class AddHousenumberTest extends AOsmElementQuestTypeTest
 
 	public void testNumber()
 	{
-		bundle.putString(AddHousenumberForm.Companion.getHOUSENUMBER(), "99b");
+		bundle.putString(AddHousenumberForm.HOUSENUMBER, "99b");
 		verify(new StringMapEntryAdd("addr:housenumber","99b"));
 	}
 
 	public void testName()
 	{
-		bundle.putString(AddHousenumberForm.Companion.getHOUSENAME(), "La Escalera");
+		bundle.putString(AddHousenumberForm.HOUSENAME, "La Escalera");
 		verify(new StringMapEntryAdd("addr:housename","La Escalera"));
 	}
 
 	public void testConscriptionNumber()
 	{
-		bundle.putString(AddHousenumberForm.Companion.getCONSCRIPTIONNUMBER(), "I.123");
+		bundle.putString(AddHousenumberForm.CONSCRIPTIONNUMBER, "I.123");
 		verify(
 				new StringMapEntryAdd("addr:conscriptionnumber","I.123"),
 				new StringMapEntryAdd("addr:housenumber","I.123"));
@@ -57,8 +60,8 @@ public class AddHousenumberTest extends AOsmElementQuestTypeTest
 
 	public void testConscriptionNumberAndStreetNumber()
 	{
-		bundle.putString(AddHousenumberForm.Companion.getCONSCRIPTIONNUMBER(), "I.123");
-		bundle.putString(AddHousenumberForm.Companion.getSTREETNUMBER(), "12b");
+		bundle.putString(AddHousenumberForm.CONSCRIPTIONNUMBER, "I.123");
+		bundle.putString(AddHousenumberForm.STREETNUMBER, "12b");
 		verify(
 				new StringMapEntryAdd("addr:conscriptionnumber","I.123"),
 				new StringMapEntryAdd("addr:streetnumber","12b"),
@@ -67,6 +70,6 @@ public class AddHousenumberTest extends AOsmElementQuestTypeTest
 
 	@Override protected OsmElementQuestType createQuestType()
 	{
-		return new AddHousenumber(null);
+		return new AddHousenumber(mock(OverpassMapDataDao.class));
 	}
 }

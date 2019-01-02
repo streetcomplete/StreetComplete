@@ -89,8 +89,8 @@ class AddRoadName(
         // newly input street names turn up in the suggestions as well
 
         val wayId = answer.getLong(AddRoadNameForm.WAY_ID)
-        val geometry = answer.getSerializable(AddRoadNameForm.WAY_GEOMETRY) as ElementGeometry
-        val points = geometry.polylines?.getOrNull(0)
+        val geometry = answer.getSerializable(AddRoadNameForm.WAY_GEOMETRY) as ElementGeometry?
+        val points = geometry?.polylines?.getOrNull(0)
         if (points != null) {
             roadNameSuggestionsDao.putRoad( wayId, roadNameByLanguage, points)
         }

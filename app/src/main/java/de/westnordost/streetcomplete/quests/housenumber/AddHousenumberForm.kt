@@ -121,7 +121,7 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment() {
 
     private fun applyConscriptionNumberAnswer(conscriptionNumber: String, streetNumber: String) {
         val answer = Bundle()
-        var looksInvalid = !conscriptionNumber.matches(VALID_CONSCRIPTIONNUMBER_REGEX)
+        var looksInvalid = !conscriptionNumber.matches(VALID_CONSCRIPTIONNUMBER_REGEX.toRegex())
         if (streetNumber.isNotEmpty()) {
             looksInvalid = looksInvalid || !streetNumber.matches(getValidHousenumberRegex())
         }
@@ -226,7 +226,7 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment() {
         // i.e. 9999/a, 9/a, 99/9, 99a, 99 a, 9 / a
         const val VALID_HOUSENUMBER_REGEX = "\\p{N}{1,4}((\\s?/\\s?\\p{N})|(\\s?/?\\s?\\p{L}))?"
 
-        val VALID_CONSCRIPTIONNUMBER_REGEX = "\\p{N}{1,6}".toRegex()
+        const val VALID_CONSCRIPTIONNUMBER_REGEX = "\\p{N}{1,6}"
 
         private fun getFirstNonNull(vararg view: EditText?): EditText? {
             for (editText in view) {
