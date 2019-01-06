@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import de.westnordost.streetcomplete.R
 
 /** Select one items from a groupable list of items  */
-class GroupedImageSelectAdapter(gridLayoutManager: GridLayoutManager) :
+class GroupedImageSelectAdapter(val gridLayoutManager: GridLayoutManager) :
     RecyclerView.Adapter<ItemViewHolder>() {
 
     var cellLayoutId = R.layout.cell_labeled_image_select

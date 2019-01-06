@@ -7,11 +7,9 @@ import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.text.format.DateUtils
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
 
 import java.io.File
@@ -30,10 +28,14 @@ import de.westnordost.streetcomplete.util.TextChangedWatcher
 import de.westnordost.streetcomplete.view.ListAdapter
 
 import android.text.format.DateUtils.MINUTE_IN_MILLIS
+import kotlinx.android.synthetic.main.fragment_quest_answer.*
 import kotlinx.android.synthetic.main.quest_buttonpanel_note_discussion.*
 import kotlinx.android.synthetic.main.quest_note_discussion_content.*
 
 class NoteDiscussionForm : AbstractQuestAnswerFragment() {
+
+    override val contentLayoutResId = R.layout.quest_note_discussion_content
+    override val buttonsResId = R.layout.quest_buttonpanel_note_discussion
 
     private lateinit var anonAvatar: Bitmap
 
@@ -44,31 +46,21 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment() {
 
     private val noteText: String get() = noteInput.text.toString().trim()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    init {
         Injector.instance.applicationComponent.inject(this)
-    }
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = super.onCreateView(inflater, container, savedInstanceState)
-
-        setContentView(R.layout.quest_note_discussion_content)
-
-        setButtonsView(R.layout.quest_buttonpanel_note_discussion)
-        okButton.setOnClickListener { onClickOk() }
-        noButton.setOnClickListener { skipQuest() }
-
-        noteInput.addTextChangedListener(TextChangedWatcher(TextChangedWatcher.Listener { this.updateOkButtonEnablement() }))
-
-        buttonOtherAnswers.visibility = View.GONE
-
-        updateOkButtonEnablement()
-
-        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        doneButton.setOnClickListener { onClickOk() }
+        noButton.setOnClickListener { skipQuest() }
+
+        noteInput.addTextChangedListener(TextChangedWatcher { updateDoneButtonEnablement() })
+
+        otherAnswersButton.visibility = View.GONE
+
+        updateDoneButtonEnablement()
 
         anonAvatar = BitmapUtil.createBitmapFrom(resources.getDrawable(R.drawable.ic_osm_anon_avatar))
 
@@ -82,14 +74,13 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment() {
     }
 
     private fun inflateNoteDiscussion(comments: List<NoteComment>) {
-        val layout = view!!.findViewById<LinearLayout>(R.id.scrollViewChild)
-        val discussionView = layoutInflater.inflate(R.layout.quest_note_discussion_items, layout, false) as RecyclerView
+        val discussionView = layoutInflater.inflate(R.layout.quest_note_discussion_items, scrollViewChild, false) as RecyclerView
 
         discussionView.isNestedScrollingEnabled = false
         discussionView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         discussionView.adapter = NoteCommentListAdapter(comments)
 
-        layout.addView(discussionView, 0)
+        scrollViewChild.addView(discussionView, 0)
     }
 
     private fun onClickOk() {
@@ -109,8 +100,8 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment() {
         return hasPhotos || noteText.isNotEmpty()
     }
 
-    private fun updateOkButtonEnablement() {
-        okButton.isEnabled = noteText.isNotEmpty()
+    private fun updateDoneButtonEnablement() {
+        doneButton.isEnabled = noteText.isNotEmpty()
     }
 
 

@@ -14,4 +14,9 @@ class AddOpeningHoursTest : AOsmElementQuestTypeTest() {
         bundle.putString(AddOpeningHoursForm.OPENING_HOURS, "my cool opening hours")
         verify(StringMapEntryAdd("opening_hours", "my cool opening hours"))
     }
+
+    fun testNoOpeningHoursSign() {
+        bundle.putBoolean(AddOpeningHoursForm.NO_SIGN, true)
+        verify(StringMapEntryAdd("opening_hours:signed", "no"))
+    }
 }

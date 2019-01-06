@@ -2,27 +2,23 @@ package de.westnordost.streetcomplete.quests.localized_name
 
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.quests.OtherAnswer
+import kotlinx.android.synthetic.main.quest_localizedname.*
 
 
 class AddBusStopNameForm : AddLocalizedNameForm() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = super.onCreateView(inflater, container, savedInstanceState)
+    override val contentLayoutResId = R.layout.quest_localizedname
 
-        val contentView = setContentView(R.layout.quest_localizedname)
+    override val otherAnswers = listOf(
+        OtherAnswer(R.string.quest_name_answer_noName) { confirmNoName() },
+        OtherAnswer(R.string.quest_streetName_answer_cantType) { showKeyboardInfo() }
+    )
 
-        addOtherAnswer(R.string.quest_name_answer_noName) { confirmNoName() }
-        addOtherAnswer(R.string.quest_streetName_answer_cantType) { showKeyboardInfo() }
-
-        initLocalizedNameAdapter(contentView, savedInstanceState)
-
-        return view
-    }
+    override val addLanguageButton = addButton!!
+    override val namesList = list!!
 
     override fun onClickOk() {
         applyNameAnswer()

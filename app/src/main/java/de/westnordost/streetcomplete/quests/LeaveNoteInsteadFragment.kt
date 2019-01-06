@@ -2,26 +2,19 @@ package de.westnordost.streetcomplete.quests
 
 import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osmnotes.AbstractCreateNoteFragment
+import kotlinx.android.synthetic.main.form_leave_note.*
+import kotlinx.android.synthetic.main.fragment_quest_answer.*
 
 class LeaveNoteInsteadFragment : AbstractCreateNoteFragment() {
 
+    override val layoutResId = R.layout.fragment_quest_answer
+
     private val questAnswerComponent: QuestAnswerComponent = QuestAnswerComponent()
     private var questTitle: String? = null
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = super.onCreateView(inflater, container, savedInstanceState)
-
-        setTitle(R.string.map_btn_create_note)
-        setDescription(R.string.quest_leave_new_note_description)
-
-        return view
-    }
 
     override fun onCreate(inState: Bundle?) {
         super.onCreate(inState)
@@ -29,16 +22,21 @@ class LeaveNoteInsteadFragment : AbstractCreateNoteFragment() {
         questTitle = arguments!!.getString(ARG_QUEST_TITLE)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        titleLabel.text = getString(R.string.map_btn_create_note)
+        descriptionLabel.text = getString(R.string.quest_leave_new_note_description)
+    }
+
     override fun onAttach(ctx: Context?) {
         super.onAttach(ctx)
-        questAnswerComponent.onAttach(ctx as OsmQuestAnswerListener?)
+        questAnswerComponent.onAttach(ctx as OsmQuestAnswerListener)
     }
 
     override fun onLeaveNote(text: String, imagePaths: List<String>?) {
         questAnswerComponent.onLeaveNote(questTitle, text, imagePaths)
     }
-
-    override fun getLayoutResId() = R.layout.fragment_quest_answer
 
     companion object {
         const val ARG_QUEST_TITLE = "questTitle"

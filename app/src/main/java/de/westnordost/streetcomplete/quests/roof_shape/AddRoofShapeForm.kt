@@ -1,17 +1,19 @@
 package de.westnordost.streetcomplete.quests.roof_shape
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 
 import java.util.ArrayList
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.ImageListQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.view.Item
 
 class AddRoofShapeForm : ImageListQuestAnswerFragment() {
+
+    override val otherAnswers = listOf(
+        OtherAnswer(R.string.quest_roofShape_answer_many) { applyManyRoofsAnswer() }
+    )
 
     override val items = listOf(
         Item("gabled", R.drawable.ic_roof_gabled),
@@ -37,13 +39,9 @@ class AddRoofShapeForm : ImageListQuestAnswerFragment() {
 
     override val maxNumberOfInitiallyShownItems = 8
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = super.onCreateView(inflater, container, savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         imageSelector.cellLayoutId = R.layout.cell_labeled_icon_select
-
-        addOtherAnswer(R.string.quest_roofShape_answer_many) { applyManyRoofsAnswer() }
-
-        return view
     }
 
     private fun applyManyRoofsAnswer() {

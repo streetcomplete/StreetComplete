@@ -9,7 +9,7 @@ class AddRoadSurfaceForm : GroupedImageListQuestAnswerFragment() {
 
     override val topItems get() =
         // tracks often have different surfaces than other roads
-        if (osmElement.tags["highway"] == "track")
+        if (osmElement!!.tags["highway"] == "track")
             listOf(DIRT, GRASS, PEBBLES, FINE_GRAVEL, COMPACTED, ASPHALT)
         else
             listOf(ASPHALT, CONCRETE, SETT, PAVING_STONES, COMPACTED, DIRT)

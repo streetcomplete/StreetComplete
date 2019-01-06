@@ -10,7 +10,7 @@
         android:text="@string/quest_noteDiscussion_no" />
 
     <Button
-        android:id="@+id/okButton"
+        android:id="@+id/doneButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"

@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.view.Item
 class AddPathSurfaceForm : GroupedImageListQuestAnswerFragment() {
 
     override val topItems get() =
-        when (val pathType = determinePathType(osmElement.tags)) {
+        when (val pathType = determinePathType(osmElement!!.tags)) {
             "bridleway" -> listOf(
                 DIRT, GRASS, SAND,
                 PEBBLES, FINE_GRAVEL, COMPACTED

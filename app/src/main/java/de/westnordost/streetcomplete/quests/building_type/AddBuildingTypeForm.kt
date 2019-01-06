@@ -8,11 +8,17 @@ import android.view.ViewGroup
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.GroupedImageListQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.view.Item
 
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.*
 
 class AddBuildingTypeForm : GroupedImageListQuestAnswerFragment() {
+
+    override val otherAnswers = listOf(
+        OtherAnswer(R.string.quest_buildingType_answer_multiple_types) { showMultipleTypesHint() },
+        OtherAnswer(R.string.quest_buildingType_answer_construction_site) { applyConstructionSiteAnswer() }
+    )
 
     override val topItems = listOf(
         DETACHED, APARTMENTS, HOUSE, GARAGE, SHED, HUT
@@ -46,12 +52,10 @@ class AddBuildingTypeForm : GroupedImageListQuestAnswerFragment() {
 
     override val itemsPerRow = 1
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = super.onCreateView(inflater, container, savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         imageSelector.groupCellLayoutId = R.layout.cell_labeled_icon_select_with_description_group
         imageSelector.cellLayoutId = R.layout.cell_labeled_icon_select_with_description
-        addOtherAnswers()
-        return view
     }
 
     override fun applyAnswer(value: String) {
@@ -65,20 +69,18 @@ class AddBuildingTypeForm : GroupedImageListQuestAnswerFragment() {
         applyAnswer(answer)
     }
 
-    private fun addOtherAnswers() {
-        addOtherAnswer(R.string.quest_buildingType_answer_multiple_types) { showMultipleTypesHintDialog() }
-        addOtherAnswer(R.string.quest_buildingType_answer_construction_site) {
-            val answer = Bundle()
-            answer.putString(BUILDING, "construction")
-            applyAnswer(answer)
-        }
+    private fun applyConstructionSiteAnswer() {
+        val answer = Bundle()
+        answer.putString(BUILDING, "construction")
+        applyAnswer(answer)
     }
 
-    private fun showMultipleTypesHintDialog() {
-        AlertDialog.Builder(activity!!)
+    private fun showMultipleTypesHint() {
+        activity?.let { AlertDialog.Builder(it)
             .setMessage(R.string.quest_buildingType_answer_multiple_types_description)
             .setPositiveButton(android.R.string.ok, null)
             .show()
+        }
     }
 
     companion object {

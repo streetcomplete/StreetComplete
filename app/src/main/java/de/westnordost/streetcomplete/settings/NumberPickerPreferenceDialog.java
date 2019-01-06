@@ -12,7 +12,7 @@ public class NumberPickerPreferenceDialog extends PreferenceDialogFragmentCompat
 
 	@Override protected void onBindDialogView(View view) {
 		super.onBindDialogView(view);
-		picker = view.findViewById(R.id.number_picker);
+		picker = view.findViewById(R.id.numberPicker);
 		picker.setMinValue(getNumberPickerPreference().getMinValue());
 		picker.setMaxValue(getNumberPickerPreference().getMaxValue());
 		picker.setValue(getNumberPickerPreference().getValue());

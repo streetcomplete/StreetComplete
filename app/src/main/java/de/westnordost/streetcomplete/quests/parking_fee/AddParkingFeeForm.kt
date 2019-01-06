@@ -2,9 +2,7 @@ package de.westnordost.streetcomplete.quests.parking_fee
 
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 
@@ -15,6 +13,7 @@ import javax.inject.Inject
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
+import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.AddOpeningHoursAdapter
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningMonthsRow
 import de.westnordost.streetcomplete.util.AdapterDataChangedWatcher
@@ -26,39 +25,48 @@ import kotlinx.android.synthetic.main.quest_fee_hours.*
 
 class AddParkingFeeForm : AbstractQuestFormAnswerFragment() {
 
-    private lateinit var openingHoursAdapter: AddOpeningHoursAdapter
-    private var hoursView: View? = null
+    override val contentLayoutResId = R.layout.quest_fee_hours
+    override val buttonsResId = R.layout.quest_buttonpanel_yes_no
 
-    @Inject internal lateinit var serializer: Serializer
+    override val otherAnswers = listOf(
+        OtherAnswer(R.string.quest_fee_answer_hours) { isDefiningHours = true }
+    )
+
+    private lateinit var openingHoursAdapter: AddOpeningHoursAdapter
 
     private var isDefiningHours: Boolean = false
     set(value) {
         field = value
 
-        hoursView?.visibility = if (value) View.VISIBLE else View.GONE
+        feeOpeningHoursContainer?.visibility = if (value) View.VISIBLE else View.GONE
         noButton?.visibility = if (value) View.GONE else View.VISIBLE
         yesButton?.visibility = if (value) View.GONE else View.VISIBLE
     }
     private var isFeeOnlyAtHours: Boolean = false
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = super.onCreateView(inflater, container, savedInstanceState)
+    @Inject internal lateinit var serializer: Serializer
 
+    init {
         Injector.instance.applicationComponent.inject(this)
+    }
 
-        setButtonsView(R.layout.quest_buttonpanel_yes_no)
-
-        okButton.setOnClickListener { onClickOk() }
-        yesButton.setOnClickListener { onClickYesNo(true) }
-        noButton.setOnClickListener { onClickYesNo(false) }
-
-        addOtherAnswer(R.string.quest_fee_answer_hours) { isDefiningHours = true }
-
-        hoursView = setContentView(R.layout.quest_fee_hours)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
         val viewData = loadOpeningHoursData(savedInstanceState)
         openingHoursAdapter = AddOpeningHoursAdapter(viewData, activity!!, countryInfo)
         openingHoursAdapter.registerAdapterDataObserver( AdapterDataChangedWatcher { checkIsFormComplete() })
+
+        isFeeOnlyAtHours = savedInstanceState?.getBoolean(IS_FEE_ONLY_AT_HOURS, true) ?: true
+        isDefiningHours = savedInstanceState?.getBoolean(IS_DEFINING_HOURS) ?: false
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        okButton.setOnClickListener { onClickOk() }
+        yesButton.setOnClickListener { onClickYesNo(true) }
+        noButton.setOnClickListener { onClickYesNo(false) }
 
         openingHoursList.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
         openingHoursList.adapter = openingHoursAdapter
@@ -66,9 +74,6 @@ class AddParkingFeeForm : AbstractQuestFormAnswerFragment() {
         checkIsFormComplete()
 
         addTimesButton.setOnClickListener { openingHoursAdapter.addNewWeekdays() }
-
-        isFeeOnlyAtHours = savedInstanceState?.getBoolean(IS_FEE_ONLY_AT_HOURS, true) ?: true
-        isDefiningHours = savedInstanceState?.getBoolean(IS_DEFINING_HOURS) ?: false
 
         val spinnerItems = listOf(
             getString(R.string.quest_fee_only_at_hours),
@@ -83,8 +88,6 @@ class AddParkingFeeForm : AbstractQuestFormAnswerFragment() {
 
             override fun onNothingSelected(parent: AdapterView<*>) {}
         }
-
-        return view
     }
 
     override fun onClickOk() {
@@ -103,16 +106,12 @@ class AddParkingFeeForm : AbstractQuestFormAnswerFragment() {
         applyAnswer(bundle)
     }
 
-    private fun loadOpeningHoursData(savedInstanceState: Bundle?): ArrayList<OpeningMonthsRow> {
-        val viewData: ArrayList<OpeningMonthsRow>
+    private fun loadOpeningHoursData(savedInstanceState: Bundle?): List<OpeningMonthsRow> =
         if (savedInstanceState != null) {
-            viewData = serializer.toObject(savedInstanceState.getByteArray(OPENING_HOURS_DATA))
+            serializer.toObject<ArrayList<OpeningMonthsRow>>(savedInstanceState.getByteArray(OPENING_HOURS_DATA))
         } else {
-            viewData = ArrayList()
-            viewData.add(OpeningMonthsRow())
+            listOf(OpeningMonthsRow())
         }
-        return viewData
-    }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)

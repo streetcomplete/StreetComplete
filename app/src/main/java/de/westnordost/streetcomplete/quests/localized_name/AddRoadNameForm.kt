@@ -3,9 +3,6 @@ package de.westnordost.streetcomplete.quests.localized_name
 import android.content.DialogInterface
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 
@@ -17,28 +14,29 @@ import javax.inject.Inject
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale
+import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.quests.localized_name.data.RoadNameSuggestionsDao
+import kotlinx.android.synthetic.main.quest_localizedname.*
 import java.lang.IllegalStateException
 
 
 class AddRoadNameForm : AddLocalizedNameForm() {
 
+    override val contentLayoutResId = R.layout.quest_localizedname
+
+    override val otherAnswers = listOf(
+        OtherAnswer(R.string.quest_name_answer_noName) { selectNoStreetNameReason() },
+        OtherAnswer(R.string.quest_streetName_answer_cantType) { showKeyboardInfo() }
+    )
+
+    override val addLanguageButton = addButton!!
+    override val namesList = list!!
+
     @Inject internal lateinit var abbreviationsByLocale: AbbreviationsByLocale
     @Inject internal lateinit var roadNameSuggestionsDao: RoadNameSuggestionsDao
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = super.onCreateView(inflater, container, savedInstanceState)
-
+    init {
         Injector.instance.applicationComponent.inject(this)
-
-        val contentView = setContentView(R.layout.quest_localizedname)
-
-        addOtherAnswer(R.string.quest_name_answer_noName) { selectNoStreetNameReason() }
-        addOtherAnswer(R.string.quest_streetName_answer_cantType) { showKeyboardInfo() }
-
-        initLocalizedNameAdapter(contentView, savedInstanceState)
-
-        return view
     }
 
     override fun setupNameAdapter(data: List<LocalizedName>, addLanguageButton: Button): AddLocalizedNameAdapter {
@@ -49,7 +47,7 @@ class AddRoadNameForm : AddLocalizedNameForm() {
     }
 
     private fun getRoadNameSuggestions(): List<MutableMap<String, String>> {
-        val points = elementGeometry?.polylines?.getOrNull(0) ?: return listOf()
+        val points = elementGeometry.polylines?.getOrNull(0) ?: return listOf()
         val onlyFirstAndLast = listOf(points[0], points[points.size - 1])
 
         return roadNameSuggestionsDao.getNames(
@@ -77,7 +75,7 @@ class AddRoadNameForm : AddLocalizedNameForm() {
 
     override fun applyNameAnswer() {
         val bundle = createAnswer()
-        bundle.putLong(WAY_ID, osmElement.id)
+        bundle.putLong(WAY_ID, osmElement!!.id)
         bundle.putSerializable(WAY_GEOMETRY, elementGeometry)
         applyAnswer(bundle)
     }
@@ -89,7 +87,7 @@ class AddRoadNameForm : AddLocalizedNameForm() {
         val noName = resources.getString(R.string.quest_streetName_answer_noName_noname)
         val leaveNote = resources.getString(R.string.quest_streetName_answer_noProperStreet_leaveNote)
 
-        val highwayValue = osmElement.tags["highway"]
+        val highwayValue = osmElement!!.tags["highway"]
         val mayBeLink = highwayValue?.matches("primary|secondary|tertiary".toRegex()) == true
 
         val answers = mutableListOf<String>()

@@ -10,14 +10,12 @@ import kotlinx.android.synthetic.main.quest_buttonpanel_yes_limited_no.*
 
 open class WheelchairAccessAnswerFragment : AbstractQuestAnswerFragment() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = super.onCreateView(inflater, container, savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         yesButton.setOnClickListener { onClickAnswer("yes") }
         limitedButton.setOnClickListener { onClickAnswer("limited") }
         noButton.setOnClickListener { onClickAnswer("no") }
-
-        return view
     }
 
     private fun onClickAnswer(answer: String) {

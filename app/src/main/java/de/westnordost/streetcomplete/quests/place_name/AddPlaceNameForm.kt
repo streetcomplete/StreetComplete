@@ -2,30 +2,29 @@ package de.westnordost.streetcomplete.quests.place_name
 
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
+import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.util.TextChangedWatcher
 import kotlinx.android.synthetic.main.quest_placename.*
 
 
 class AddPlaceNameForm : AbstractQuestFormAnswerFragment() {
 
+    override val contentLayoutResId = R.layout.quest_placename
+
+    override val otherAnswers = listOf(
+        OtherAnswer(R.string.quest_name_answer_noName) { confirmNoName() }
+    )
+
     private val placeName get() = nameInput.text.toString().trim()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = super.onCreateView(inflater, container, savedInstanceState)
-
-        setContentView(R.layout.quest_placename)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         nameInput.addTextChangedListener(TextChangedWatcher { checkIsFormComplete() })
-
-        addOtherAnswer(R.string.quest_name_answer_noName) { confirmNoName() }
-
-        return view
     }
 
     override fun onClickOk() {
@@ -49,7 +48,7 @@ class AddPlaceNameForm : AbstractQuestFormAnswerFragment() {
     override fun isFormComplete() = !placeName.isEmpty()
 
     companion object {
-        val NO_NAME = "no_name"
-        val NAME = "name"
+        const val NO_NAME = "no_name"
+        const val NAME = "name"
     }
 }

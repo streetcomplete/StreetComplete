@@ -6,7 +6,6 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.PopupMenu
 import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.EditText
 
 import java.util.ArrayList
@@ -23,10 +22,20 @@ import de.westnordost.streetcomplete.util.Serializer
 
 
 import android.view.Menu.NONE
+import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.xt.toObject
 import kotlinx.android.synthetic.main.quest_opening_hours.*
 
 class AddOpeningHoursForm : AbstractQuestFormAnswerFragment() {
+
+    override val contentLayoutResId = R.layout.quest_opening_hours
+
+    override val otherAnswers = listOf(
+        OtherAnswer(R.string.quest_openingHours_no_sign) { confirmNoSign() },
+        OtherAnswer(R.string.quest_openingHours_answer_no_regular_opening_hours) { showInputCommentDialog() },
+        OtherAnswer(R.string.quest_openingHours_answer_247) { showConfirm24_7Dialog() },
+        OtherAnswer(R.string.quest_openingHours_answer_seasonal_opening_hours) { openingHoursAdapter.changeToMonthsMode() }
+    )
 
     private lateinit var openingHoursAdapter: AddOpeningHoursAdapter
 
@@ -35,49 +44,38 @@ class AddOpeningHoursForm : AbstractQuestFormAnswerFragment() {
     private val openingHoursString get() =
         openingHoursAdapter.createOpeningMonths().joinToString(";")
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = super.onCreateView(inflater, container, savedInstanceState)
-
+    init {
         Injector.instance.applicationComponent.inject(this)
-
-        addOtherAnswers()
-
-        setContentView(R.layout.quest_opening_hours)
-
-        initOpeningHoursAdapter(savedInstanceState)
-
-        addTimesButton.setOnClickListener { this.onClickAddButton(it) }
-
-        return view
     }
 
-    private fun initOpeningHoursAdapter(savedInstanceState: Bundle?) {
-        val viewData: ArrayList<OpeningMonthsRow>
-        val isAlsoAddingMonths: Boolean
-        if (savedInstanceState != null) {
-            viewData = serializer.toObject(savedInstanceState.getByteArray(OPENING_HOURS_DATA))
-            isAlsoAddingMonths = savedInstanceState.getBoolean(IS_ADD_MONTHS_MODE)
-        } else {
-            viewData = ArrayList()
-            viewData.add(OpeningMonthsRow())
-            isAlsoAddingMonths = false
-        }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        val isAlsoAddingMonths = savedInstanceState?.getBoolean(IS_ADD_MONTHS_MODE) == true
+        val viewData = loadOpeningHoursData(savedInstanceState)
 
         openingHoursAdapter = AddOpeningHoursAdapter(viewData, activity!!, countryInfo)
         openingHoursAdapter.isDisplayMonths = isAlsoAddingMonths
         openingHoursAdapter.registerAdapterDataObserver(AdapterDataChangedWatcher { checkIsFormComplete() })
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         openingHoursList.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
         openingHoursList.adapter = openingHoursAdapter
         openingHoursList.isNestedScrollingEnabled = false
         checkIsFormComplete()
+
+        addTimesButton.setOnClickListener { this.onClickAddButton(it) }
     }
 
-    private fun addOtherAnswers() {
-        addOtherAnswer(R.string.quest_openingHours_no_sign) { this.confirmNoSign() }
-        addOtherAnswer(R.string.quest_openingHours_answer_no_regular_opening_hours) { this.showInputCommentDialog() }
-        addOtherAnswer(R.string.quest_openingHours_answer_247) { this.showConfirm24_7Dialog() }
-        addOtherAnswer(R.string.quest_openingHours_answer_seasonal_opening_hours) { openingHoursAdapter.changeToMonthsMode() }
-    }
+    private fun loadOpeningHoursData(savedInstanceState: Bundle?): List<OpeningMonthsRow> =
+        if (savedInstanceState != null) {
+            serializer.toObject<ArrayList<OpeningMonthsRow>>(savedInstanceState.getByteArray(OPENING_HOURS_DATA))
+        } else {
+            listOf(OpeningMonthsRow())
+        }
 
     private fun onClickAddButton(v: View) {
         if (!openingHoursAdapter.isDisplayMonths) {
@@ -112,13 +110,13 @@ class AddOpeningHoursForm : AbstractQuestFormAnswerFragment() {
 
     private fun showInputCommentDialog() {
         val view = LayoutInflater.from(activity).inflate(R.layout.quest_opening_hours_comment, null)
-        val editText = view.findViewById<EditText>(R.id.commentInput)
+        val commentInput = view.findViewById<EditText>(R.id.commentInput)
 
         AlertDialog.Builder(context!!)
             .setTitle(R.string.quest_openingHours_comment_title)
             .setView(view)
             .setPositiveButton(android.R.string.ok) { _, _ ->
-                val txt = editText.text.toString().replace("\"","").trim()
+                val txt = commentInput.text.toString().replace("\"","").trim()
                 if (txt.isEmpty()) {
                     AlertDialog.Builder(context!!)
                         .setMessage(R.string.quest_openingHours_emptyAnswer)

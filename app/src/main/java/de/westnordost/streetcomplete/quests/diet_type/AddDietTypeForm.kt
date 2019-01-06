@@ -1,9 +1,7 @@
 package de.westnordost.streetcomplete.quests.diet_type
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
@@ -12,11 +10,11 @@ import kotlinx.android.synthetic.main.quest_diet_type_explanation.*
 
 class AddDietTypeForm : AbstractQuestAnswerFragment() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = super.onCreateView(inflater, container, savedInstanceState)
+    override val contentLayoutResId = R.layout.quest_diet_type_explanation
+    override val buttonsResId = R.layout.quest_buttonpanel_yes_no_only
 
-        setContentView(R.layout.quest_diet_type_explanation)
-        setButtonsView(R.layout.quest_buttonpanel_yes_no_only)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         yesButton.setOnClickListener { onClickAnswer("yes") }
         noButton.setOnClickListener { onClickAnswer("no") }
@@ -28,8 +26,6 @@ class AddDietTypeForm : AbstractQuestAnswerFragment() {
         } else {
             descriptionLabel.visibility = View.GONE
         }
-
-        return view
     }
 
     protected fun onClickAnswer(answer: String) {
@@ -39,9 +35,9 @@ class AddDietTypeForm : AbstractQuestAnswerFragment() {
     }
 
     companion object {
-        val OSM_VALUE = "answer"
+        const val OSM_VALUE = "answer"
 
-        private val ARG_DIET = "diet_explanation"
+        private const val ARG_DIET = "diet_explanation"
 
         fun create(dietExplanationResId: Int): AddDietTypeForm {
             val form = AddDietTypeForm()

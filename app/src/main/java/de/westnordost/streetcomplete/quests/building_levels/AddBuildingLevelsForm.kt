@@ -2,9 +2,7 @@ package de.westnordost.streetcomplete.quests.building_levels
 
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 
 import javax.inject.Inject
 
@@ -12,39 +10,36 @@ import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.LastPickedValuesStore
+import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.util.TextChangedWatcher
 
 import kotlinx.android.synthetic.main.quest_building_levels.*
 
 class AddBuildingLevelsForm : AbstractQuestFormAnswerFragment() {
 
-    @Inject internal lateinit var favs: LastPickedValuesStore
+    override val contentLayoutResId = R.layout.quest_building_levels
+
+    override val otherAnswers = listOf(
+        OtherAnswer(R.string.quest_buildingLevels_answer_multipleLevels) { showMultipleLevelsHint() }
+    )
 
     private val levels = levelsInput.text.toString().trim()
     private val roofLevels = roofLevelsInput.text.toString().trim()
 
-    override fun onCreate(inState: Bundle?) {
-        super.onCreate(inState)
+    @Inject internal lateinit var favs: LastPickedValuesStore
+
+    init {
         Injector.instance.applicationComponent.inject(this)
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = super.onCreateView(inflater, container, savedInstanceState)
-
-        setContentView(R.layout.quest_building_levels)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         val onTextChangedListener = TextChangedWatcher { checkIsFormComplete() }
 
         levelsInput.requestFocus()
         levelsInput.addTextChangedListener(onTextChangedListener)
         roofLevelsInput.addTextChangedListener(onTextChangedListener)
-
-        addOtherAnswer(R.string.quest_buildingLevels_answer_multipleLevels) {
-            AlertDialog.Builder(activity!!)
-                .setMessage(R.string.quest_buildingLevels_answer_description)
-                .setPositiveButton(android.R.string.ok, null)
-                .show()
-        }
 
         val lastPicked = favs.get(javaClass.simpleName)
         if (lastPicked.isEmpty()) {
@@ -63,8 +58,6 @@ class AddBuildingLevelsForm : AbstractQuestFormAnswerFragment() {
                 pickLastButton.visibility = View.GONE
             }
         }
-
-        return view
     }
 
     override fun onClickOk() {
@@ -82,6 +75,14 @@ class AddBuildingLevelsForm : AbstractQuestFormAnswerFragment() {
         }
         favs.add(javaClass.simpleName, favValues.joinToString("#"), MAX_FAVS)
         applyAnswer(answer)
+    }
+
+    private fun showMultipleLevelsHint() {
+        activity?.let { AlertDialog.Builder(it)
+            .setMessage(R.string.quest_buildingLevels_answer_description)
+            .setPositiveButton(android.R.string.ok, null)
+            .show()
+        }
     }
 
     override fun isFormComplete() = !levels.isEmpty()

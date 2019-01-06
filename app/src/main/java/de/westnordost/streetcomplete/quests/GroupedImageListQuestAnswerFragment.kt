@@ -27,6 +27,8 @@ import java.util.*
  */
 abstract class GroupedImageListQuestAnswerFragment : AbstractQuestFormAnswerFragment() {
 
+    override val contentLayoutResId = R.layout.quest_generic_list
+
     private val uiThread = Handler(Looper.getMainLooper())
 
     protected lateinit var imageSelector: GroupedImageSelectAdapter
@@ -42,20 +44,27 @@ abstract class GroupedImageListQuestAnswerFragment : AbstractQuestFormAnswerFrag
 
     protected open val itemsPerRow = 3
 
-    override fun onCreate(inState: Bundle?) {
-        super.onCreate(inState)
+    init {
         Injector.instance.applicationComponent.inject(this)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        imageSelector = GroupedImageSelectAdapter(GridLayoutManager(activity, itemsPerRow))
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
 
-        scrollView = view!!.findViewById(R.id.scrollView)
+        scrollView = view!!.findViewById(R.id.scrollView) // TODO...
 
-        setContentView(R.layout.quest_generic_list)
+        return view
+    }
 
-        val lm = GridLayoutManager(activity, itemsPerRow)
-        list.layoutManager = lm
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        list.layoutManager = imageSelector.gridLayoutManager
         list.isNestedScrollingEnabled = false
 
         showMoreButton.setOnClickListener {
@@ -65,13 +74,12 @@ abstract class GroupedImageListQuestAnswerFragment : AbstractQuestFormAnswerFrag
 
         selectHintLabel.setText(R.string.quest_select_hint_most_specific)
 
-        imageSelector = GroupedImageSelectAdapter(lm)
         imageSelector.listeners.add { checkIsFormComplete() }
         imageSelector.registerAdapterDataObserver(object : RecyclerView.AdapterDataObserver() {
             override fun onItemRangeInserted(positionStart: Int, itemCount: Int) {
                 super.onItemRangeInserted(positionStart, itemCount)
 
-                val item = lm.getChildAt(Math.max(0, positionStart - 1))
+                val item = imageSelector.gridLayoutManager.getChildAt(Math.max(0, positionStart - 1))
                 if (item != null) {
                     val itemPos = IntArray(2)
                     item.getLocationInWindow(itemPos)
@@ -86,11 +94,6 @@ abstract class GroupedImageListQuestAnswerFragment : AbstractQuestFormAnswerFrag
         })
         checkIsFormComplete()
 
-        return view
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
         imageSelector.items = getInitialItems()
         list.adapter = imageSelector
     }

@@ -17,12 +17,25 @@ import java.util.Collections
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.tql.FiltersParser
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
+import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.quests.StreetSideRotater
 import de.westnordost.streetcomplete.view.ListAdapter
 import kotlinx.android.synthetic.main.quest_street_side_puzzle.*
 
 
 class AddCyclewayForm : AbstractQuestFormAnswerFragment() {
+
+    override val contentLayoutResId = R.layout.quest_street_side_puzzle
+    override val contentPadding = false
+
+    override val otherAnswers:List<OtherAnswer> get() {
+        val isNoRoundabout = osmElement!!.tags["junction"] != "roundabout"
+        return if (!isDefiningBothSides && isNoRoundabout) {
+            listOf(OtherAnswer(R.string.quest_cycleway_answer_contraflow_cycleway) { showBothSides() })
+        } else {
+            listOf()
+        }
+    }
 
     private val likelyNoBicycleContraflow = FiltersParser().parse("""
             ways with oneway:bicycle != no and
@@ -42,60 +55,42 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment() {
 
     private val isOneway get() = isForwardOneway || isReversedOneway
 
-    private val isForwardOneway get() = osmElement.tags["oneway"] == "yes"
-    private val isReversedOneway get() = osmElement.tags["oneway"] == "-1"
+    private val isForwardOneway get() = osmElement!!.tags["oneway"] == "yes"
+    private val isReversedOneway get() = osmElement!!.tags["oneway"] == "-1"
 
     // just a shortcut
     private val isLeftHandTraffic get() = countryInfo.isLeftHandTraffic
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = super.onCreateView(inflater, container, savedInstanceState)
-        setContentView(R.layout.quest_street_side_puzzle)
-        setNoContentPadding()
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
-        puzzleView.setListener { this.showCyclewaySelectionDialog(it) }
+        isDefiningBothSides = savedInstanceState?.getBoolean(DEFINE_BOTH_SIDES)
+                ?: !likelyNoBicycleContraflow.matches(osmElement)
 
-        streetSideRotater = StreetSideRotater(puzzleView, compassNeedle, elementGeometry)
-
-        initPuzzleDisplay(savedInstanceState)
-        initPuzzleImages(savedInstanceState)
-
-        return view
+        savedInstanceState?.getString(CYCLEWAY_RIGHT)?.let { rightSide = Cycleway.valueOf(it) }
+        savedInstanceState?.getString(CYCLEWAY_LEFT)?.let { leftSide = Cycleway.valueOf(it) }
     }
 
-    private fun initPuzzleDisplay(inState: Bundle?) {
-        isDefiningBothSides = if (inState != null) {
-            inState.getBoolean(DEFINE_BOTH_SIDES)
-        } else {
-            !likelyNoBicycleContraflow.matches(osmElement)
-        }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        puzzleView.listener = { isRight -> showCyclewaySelectionDialog(isRight) }
+
+        streetSideRotater = StreetSideRotater(puzzleView, compassNeedle, elementGeometry)
 
         if (!isDefiningBothSides) {
             if (isLeftHandTraffic) puzzleView.showOnlyLeftSide()
             else                   puzzleView.showOnlyRightSide()
-
-            if (osmElement.tags["junction"] != "roundabout") {
-                addOtherAnswer(R.string.quest_cycleway_answer_contraflow_cycleway) { showBothSides() }
-            }
         }
-    }
 
-    private fun initPuzzleImages(inState: Bundle?) {
         val defaultResId =
             if (isLeftHandTraffic) R.drawable.ic_cycleway_unknown_l
             else                   R.drawable.ic_cycleway_unknown
 
-        inState?.getString(CYCLEWAY_RIGHT)?.let {
-            rightSide = Cycleway.valueOf(it)
-            checkIsFormComplete()
-        }
-        inState?.getString(CYCLEWAY_LEFT)?.let {
-            leftSide = Cycleway.valueOf(it)
-            checkIsFormComplete()
-        }
-
         puzzleView.setLeftSideImageResource(leftSide?.getIconResId(isLeftHandTraffic) ?: defaultResId)
         puzzleView.setRightSideImageResource(rightSide?.getIconResId(isLeftHandTraffic) ?: defaultResId)
+
+        checkIsFormComplete()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {

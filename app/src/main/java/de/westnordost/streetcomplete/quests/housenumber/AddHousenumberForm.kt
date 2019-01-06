@@ -14,12 +14,19 @@ import android.widget.EditText
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
+import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.quests.building_type.BuildingType
 import de.westnordost.streetcomplete.util.TextChangedWatcher
 import de.westnordost.streetcomplete.view.ItemViewHolder
 
 
 class AddHousenumberForm : AbstractQuestFormAnswerFragment() {
+
+    override val otherAnswers = listOf(
+        OtherAnswer(R.string.quest_address_answer_no_housenumber) { onNoHouseNumber() },
+        OtherAnswer(R.string.quest_address_answer_house_name) { switchToHouseName() },
+        OtherAnswer(R.string.quest_housenumber_multiple_numbers) { showMultipleNumbersHint() }
+    )
 
     private var houseNumberInput: EditText? = null
     private var houseNameInput: EditText? = null
@@ -30,11 +37,9 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
-        restoreInstanceState(savedInstanceState)
 
+        isHousename = savedInstanceState?.getBoolean(IS_HOUSENAME) ?: false
         setLayout(if(isHousename) R.layout.quest_housename else R.layout.quest_housenumber)
-
-        addOtherAnswers()
 
         return view
     }
@@ -42,26 +47,6 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment() {
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putBoolean(IS_HOUSENAME, isHousename)
-    }
-
-    private fun restoreInstanceState(inState: Bundle?) {
-        isHousename = inState?.getBoolean(IS_HOUSENAME) ?: false
-    }
-
-    private fun addOtherAnswers() {
-        addOtherAnswer(R.string.quest_address_answer_no_housenumber) { onNoHouseNumber() }
-
-        addOtherAnswer(R.string.quest_address_answer_house_name) {
-            isHousename = true
-            setLayout(R.layout.quest_housename)
-        }
-
-        addOtherAnswer(R.string.quest_housenumber_multiple_numbers) {
-            AlertDialog.Builder(activity!!)
-                .setMessage(R.string.quest_housenumber_multiple_numbers_description)
-                .setPositiveButton(android.R.string.ok, null)
-                .show()
-        }
     }
 
     override fun onClickOk() {
@@ -77,8 +62,21 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment() {
         }
     }
 
+    private fun switchToHouseName() {
+        isHousename = true
+        setLayout(R.layout.quest_housename)
+    }
+
+    private fun showMultipleNumbersHint() {
+        activity?.let { AlertDialog.Builder(it)
+            .setMessage(R.string.quest_housenumber_multiple_numbers_description)
+            .setPositiveButton(android.R.string.ok, null)
+            .show()
+        }
+    }
+
     private fun onNoHouseNumber() {
-        val buildingValue = osmElement.tags["building"]!!
+        val buildingValue = osmElement!!.tags["building"]!!
         val item = BuildingType.getByTag("building", buildingValue)
         if (item != null) {
             val inflater = LayoutInflater.from(activity)
@@ -160,7 +158,7 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment() {
         conscriptionNumberInput = view.findViewById(R.id.conscriptionNumberInput)
         streetNumberInput = view.findViewById(R.id.streetNumberInput)
 
-        val onChanged = TextChangedWatcher(TextChangedWatcher.Listener { checkIsFormComplete() })
+        val onChanged = TextChangedWatcher { checkIsFormComplete() }
         houseNumberInput?.addTextChangedListener(onChanged)
         houseNameInput?.addTextChangedListener(onChanged)
         conscriptionNumberInput?.addTextChangedListener(onChanged)

@@ -2,9 +2,7 @@ package de.westnordost.streetcomplete.quests
 
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 
 import java.util.ArrayList
 import java.util.LinkedList
@@ -22,6 +20,8 @@ import kotlinx.android.synthetic.main.quest_generic_list.*
  */
 abstract class ImageListQuestAnswerFragment : AbstractQuestFormAnswerFragment() {
 
+    override val contentLayoutResId = R.layout.quest_generic_list
+
     protected lateinit var imageSelector: ImageSelectAdapter
 
     @Inject internal lateinit var favs: LastPickedValuesStore
@@ -34,29 +34,23 @@ abstract class ImageListQuestAnswerFragment : AbstractQuestFormAnswerFragment() 
 
     protected abstract val items: List<GroupedItem>
 
-    override fun onCreate(inState: Bundle?) {
-        super.onCreate(inState)
+    init {
         Injector.instance.applicationComponent.inject(this)
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = super.onCreateView(inflater, container, savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        imageSelector = ImageSelectAdapter(maxSelectableItems)
+    }
 
-        setContentView(R.layout.quest_generic_list)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        val lm = GridLayoutManager(activity, itemsPerRow)
-        list.layoutManager = lm
+        list.layoutManager = GridLayoutManager(activity, itemsPerRow)
         list.isNestedScrollingEnabled = false
 
-        showMoreButton.setOnClickListener {
-            imageSelector.items = items.favouritesMovedToFront()
-            showMoreButton.visibility = View.GONE
-        }
+        selectHintLabel.setText(if (maxSelectableItems == 1) R.string.quest_roofShape_select_one else R.string.quest_select_hint)
 
-        val selectableItems = maxSelectableItems
-        selectHintLabel.setText(if (selectableItems == 1) R.string.quest_roofShape_select_one else R.string.quest_select_hint)
-
-        imageSelector = ImageSelectAdapter(selectableItems)
         imageSelector.listeners.add(object : ImageSelectAdapter.OnItemSelectionListener {
             override fun onIndexSelected(index: Int) {
                 checkIsFormComplete()
@@ -67,11 +61,10 @@ abstract class ImageListQuestAnswerFragment : AbstractQuestFormAnswerFragment() 
             }
         })
 
-        return view
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+        showMoreButton.setOnClickListener {
+            imageSelector.items = items.favouritesMovedToFront()
+            showMoreButton.visibility = View.GONE
+        }
 
         var initiallyShow = maxNumberOfInitiallyShownItems
         if (savedInstanceState != null) {

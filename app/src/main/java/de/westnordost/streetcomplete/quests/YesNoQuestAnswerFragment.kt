@@ -1,9 +1,7 @@
 package de.westnordost.streetcomplete.quests
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 
 import de.westnordost.streetcomplete.R
 import kotlinx.android.synthetic.main.quest_buttonpanel_yes_no.*
@@ -11,13 +9,13 @@ import kotlinx.android.synthetic.main.quest_buttonpanel_yes_no.*
 /** Abstract base class for dialogs in which the user answers a yes/no quest  */
 open class YesNoQuestAnswerFragment : AbstractQuestAnswerFragment() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = super.onCreateView(inflater, container, savedInstanceState)
-        setButtonsView(R.layout.quest_buttonpanel_yes_no)
+    override val buttonsResId = R.layout.quest_buttonpanel_yes_no
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         yesButton.setOnClickListener { onClickYesNo(true) }
         noButton.setOnClickListener { onClickYesNo(false) }
-        return view
     }
 
     protected open fun onClickYesNo(answer: Boolean) {

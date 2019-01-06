@@ -7,9 +7,7 @@ import android.support.v7.app.AlertDialog
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.text.Html
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
 
 import java.util.ArrayList
@@ -31,30 +29,31 @@ abstract class AddLocalizedNameForm : AbstractQuestFormAnswerFragment() {
 
     protected lateinit var adapter: AddLocalizedNameAdapter
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = super.onCreateView(inflater, container, savedInstanceState)
+    protected abstract val addLanguageButton:Button
+    protected abstract val namesList:RecyclerView
 
+    init {
         Injector.instance.applicationComponent.inject(this)
-
-        return view
     }
 
-    protected fun initLocalizedNameAdapter(contentView: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initLocalizedNameAdapter(savedInstanceState)
+    }
+
+    private fun initLocalizedNameAdapter(savedInstanceState: Bundle?) {
         val data: ArrayList<LocalizedName> = if (savedInstanceState != null) {
             serializer.toObject(savedInstanceState.getByteArray(LOCALIZED_NAMES_DATA))
         } else {
             ArrayList()
         }
 
-        val buttonAddLanguage = contentView.findViewById<Button>(R.id.addLanguageButton)
-
-        adapter = setupNameAdapter(data, buttonAddLanguage)
+        adapter = setupNameAdapter(data, addLanguageButton)
         adapter.addOnNameChangedListener { checkIsFormComplete() }
         adapter.registerAdapterDataObserver(AdapterDataChangedWatcher { checkIsFormComplete() })
-        val recyclerView = contentView.findViewById<RecyclerView>(R.id.namesList)
-        recyclerView.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
-        recyclerView.adapter = adapter
-        recyclerView.isNestedScrollingEnabled = false
+        namesList.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+        namesList.adapter = adapter
+        namesList.isNestedScrollingEnabled = false
         checkIsFormComplete()
     }
 

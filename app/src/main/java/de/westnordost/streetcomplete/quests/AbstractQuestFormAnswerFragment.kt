@@ -1,24 +1,20 @@
 package de.westnordost.streetcomplete.quests
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
-import android.widget.Button
 import android.widget.Toast
 
 import de.westnordost.streetcomplete.R
+import kotlinx.android.synthetic.main.fragment_quest_answer.*
 
 /** Abstract base class for dialogs in which the user answers a quest with a form he has to fill
  * out  */
 abstract class AbstractQuestFormAnswerFragment : AbstractQuestAnswerFragment() {
-    private lateinit var okButton: Button
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = super.onCreateView(inflater, container, savedInstanceState)
-        okButton = view!!.findViewById(R.id.okButton)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         okButton.setOnClickListener {
             if (!isFormComplete()) {
                 Toast.makeText(activity, R.string.no_changes, Toast.LENGTH_SHORT).show()
@@ -26,7 +22,6 @@ abstract class AbstractQuestFormAnswerFragment : AbstractQuestAnswerFragment() {
                 onClickOk()
             }
         }
-        return view
     }
 
     protected fun checkIsFormComplete() {

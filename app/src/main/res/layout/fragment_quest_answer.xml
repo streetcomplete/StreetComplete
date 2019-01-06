@@ -2,7 +2,6 @@
 <de.westnordost.streetcomplete.view.SlidingRelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="@dimen/quest_form_width"
     android:layout_height="match_parent"
     android:background="@drawable/speechbubbles_gradient_background"
@@ -28,7 +27,7 @@
             app:behavior_peekHeight="@dimen/quest_form_peekHeight">
 
             <LinearLayout
-                android:id="@+id/titleSpeechBubble"
+                android:id="@+id/speechBubbleTitleContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
@@ -40,7 +39,7 @@
                 android:layout_marginBottom="4dp">
 
                 <TextView
-                    android:id="@+id/title"
+                    android:id="@+id/titleLabel"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -51,7 +50,7 @@
                     android:textAppearance="@style/TextAppearance.Title"/>
 
                 <ImageView
-                    android:id="@+id/close_btn"
+                    android:id="@+id/closeButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:scaleType="center"
@@ -77,7 +76,7 @@
                     android:orientation="vertical">
 
                     <FrameLayout
-                        android:id="@+id/speechbubbleContent"
+                        android:id="@+id/speechbubbleContentContainer"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/speech_bubble_none"
@@ -115,7 +114,7 @@
                                     style="@style/ButtonBar">
 
                                     <Button
-                                        android:id="@+id/buttonOtherAnswers"
+                                        android:id="@+id/otherAnswersButton"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:text="@string/quest_generic_otherAnswers"

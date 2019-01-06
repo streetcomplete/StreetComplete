@@ -14,6 +14,7 @@ import android.widget.Spinner
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
+import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.util.TextChangedWatcher
 
 import de.westnordost.streetcomplete.quests.max_height.Measurement.*
@@ -21,6 +22,10 @@ import de.westnordost.streetcomplete.quests.max_height.Measurement.*
 private enum class Measurement { METRIC, IMPERIAL }
 
 class AddMaxHeightForm : AbstractQuestFormAnswerFragment() {
+
+    override val otherAnswers = listOf(
+        OtherAnswer(R.string.quest_maxheight_answer_noSign) { confirmNoSign() }
+    )
 
     private var meterInput: EditText? = null
     private var feetInput: EditText? = null
@@ -37,7 +42,6 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment() {
 
         val unit = if (countryInfo.measurementSystem[0] == "metric") METRIC else IMPERIAL
         setMaxHeightSignLayout(R.layout.quest_maxheight, unit)
-        addOtherAnswers()
 
         return view
     }
@@ -109,24 +113,19 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment() {
         }
     }
 
-    private fun addOtherAnswers() {
-        addOtherAnswer(R.string.quest_maxheight_answer_noSign) {
-            activity?.let {
-                AlertDialog.Builder(it)
-                    .setMessage(R.string.quest_maxheight_answer_noSign_question)
-                    .setPositiveButton(R.string.quest_generic_hasFeature_yes) { _, _ ->
-                        val data = Bundle()
-                        data.putString(NO_SIGN, DEFAULT)
-                        applyAnswer(data)
-                    }
-                    .setNegativeButton(R.string.quest_generic_hasFeature_no) { _, _ ->
-                        val data = Bundle()
-                        data.putString(NO_SIGN, BELOW_DEFAULT)
-                        applyAnswer(data)
-                    }
-                    .show()
-            }
+    private fun confirmNoSign() {
+        activity?.let { AlertDialog.Builder(it)
+            .setMessage(R.string.quest_maxheight_answer_noSign_question)
+            .setPositiveButton(R.string.quest_generic_hasFeature_yes) { _, _ -> applyNoSignAnswer(DEFAULT) }
+            .setNegativeButton(R.string.quest_generic_hasFeature_no) { _, _ -> applyNoSignAnswer(BELOW_DEFAULT) }
+            .show()
         }
+    }
+
+    private fun applyNoSignAnswer(answer: String) {
+        val data = Bundle()
+        data.putString(NO_SIGN, answer)
+        applyAnswer(data)
     }
 
     override fun onClickOk() {
@@ -164,10 +163,9 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment() {
         return null
     }
 
-    private fun isMetric(): Boolean {
-        return heightUnitSelect?.let { it.selectedItem == "m" }
-            ?: countryInfo.measurementSystem[0] == "metric"
-    }
+    private fun isMetric() =
+        heightUnitSelect?.let { it.selectedItem == "m" }
+            ?: (countryInfo.measurementSystem[0] == "metric")
 
     private fun confirmUnusualInput(callback: () -> (Unit)) {
         activity?.let {

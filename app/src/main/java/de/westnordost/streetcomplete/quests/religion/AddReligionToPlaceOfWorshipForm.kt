@@ -1,31 +1,29 @@
 package de.westnordost.streetcomplete.quests.religion
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 
 import java.util.ArrayList
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.ImageListQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.quests.sortedBy
 import de.westnordost.streetcomplete.view.Item
 
 class AddReligionToPlaceOfWorshipForm : ImageListQuestAnswerFragment() {
+
+    override val otherAnswers = listOf(
+        OtherAnswer(R.string.quest_religion_for_place_of_worship_answer_multi) { applyMultiAnswer() }
+    )
 
     override val items get() = ALL_RELIGION_VALUES.sortedBy(countryInfo.popularReligions)
 
     override val maxSelectableItems = 1
     override val maxNumberOfInitiallyShownItems = 4
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = super.onCreateView(inflater, container, savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         imageSelector.cellLayoutId = R.layout.cell_icon_select_with_label_below
-
-        addOtherAnswer(R.string.quest_religion_for_place_of_worship_answer_multi) { applyMultiAnswer() }
-
-        return view
     }
 
     private fun applyMultiAnswer() {

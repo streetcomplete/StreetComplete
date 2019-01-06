@@ -1,9 +1,7 @@
 package de.westnordost.streetcomplete.quests.parking_access
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
@@ -11,13 +9,12 @@ import kotlinx.android.synthetic.main.quest_parking_access.*
 
 class AddParkingAccessForm : AbstractQuestFormAnswerFragment() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = super.onCreateView(inflater, container, savedInstanceState)
-        setContentView(R.layout.quest_parking_access)
+    override val contentLayoutResId = R.layout.quest_parking_access
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         radioButtonGroup.setOnCheckedChangeListener { _, _ -> checkIsFormComplete() }
-
-        return view
     }
 
     override fun onClickOk() {

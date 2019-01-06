@@ -11,14 +11,12 @@ import kotlinx.android.synthetic.main.quest_internet_access.*
 
 class AddInternetAccessForm : AbstractQuestFormAnswerFragment() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        val view = super.onCreateView(inflater, container, savedInstanceState)
-        setContentView(R.layout.quest_internet_access)
+    override val contentLayoutResId = R.layout.quest_internet_access
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         radioButtonGroup.setOnCheckedChangeListener { _, _ -> checkIsFormComplete() }
-
-        return view
     }
 
     override fun onClickOk() {

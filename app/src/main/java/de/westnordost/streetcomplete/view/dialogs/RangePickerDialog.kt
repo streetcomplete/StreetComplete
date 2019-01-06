@@ -5,9 +5,9 @@ import android.support.v7.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.NumberPicker
 
 import de.westnordost.streetcomplete.R
-import kotlinx.android.synthetic.main.dialog_range_picker.*
 
 typealias RangePickedCallback = (startIndex: Int, endIndex: Int) -> Unit
 
@@ -24,6 +24,9 @@ class RangePickerDialog(
         val view = LayoutInflater.from(context).inflate(R.layout.dialog_range_picker, null)
         setView(view)
         setTitle(title)
+
+        val startPicker = view.findViewById<NumberPicker>(R.id.startPicker)
+        val endPicker = view.findViewById<NumberPicker>(R.id.endPicker)
 
         setButton(BUTTON_POSITIVE, context.getString(android.R.string.ok)) { _, _ ->
             callback(startPicker.value, endPicker.value)
@@ -57,7 +60,7 @@ class RangePickerDialog(
             if (child is ViewGroup) {
                 child.disableEditTextsFocus()
             } else if (child is EditText) {
-                child.setFocusable(false)
+                child.isFocusable = false
             }
         }
     }
