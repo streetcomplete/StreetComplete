@@ -631,5 +631,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_motorcycleParkingCapacity_title">How many motorcycles can be parked here?</string>
     <string name="quest_motorcycleParkingCoveredStatus_title">Is this motorcycle parking covered (protected from rain)?</string>
     <string name="default_disabled_msg_maxspeed">This quest type is disabled by default because you are usually required to check the whole street for speed limit signs, not just the highlighted section. This can sometimes be quite the stretch just to solve a single quest.</string>
+    <string name="pref_title_quests_restore_hidden">Restore hidden quests</string>
+    <string name="restore_hidden_success">Restored %d hidden quests</string>
 
 </resources>
