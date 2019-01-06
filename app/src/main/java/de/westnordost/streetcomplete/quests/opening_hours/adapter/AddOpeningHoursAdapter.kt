@@ -22,7 +22,7 @@ import de.westnordost.streetcomplete.quests.opening_hours.model.Weekdays
 import de.westnordost.streetcomplete.quests.opening_hours.WeekdaysPickerDialog
 import de.westnordost.streetcomplete.view.dialogs.RangePickedCallback
 import de.westnordost.streetcomplete.view.dialogs.RangePickerDialog
-import de.westnordost.streetcomplete.xt.updateLayoutParams
+import de.westnordost.streetcomplete.ktx.updateLayoutParams
 
 data class OpeningMonthsRow(var months: CircularSection = CircularSection(0, MAX_MONTH_INDEX)) {
 

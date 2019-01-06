@@ -23,7 +23,7 @@ import de.westnordost.streetcomplete.util.Serializer
 
 import android.view.Menu.NONE
 import de.westnordost.streetcomplete.quests.OtherAnswer
-import de.westnordost.streetcomplete.xt.toObject
+import de.westnordost.streetcomplete.ktx.toObject
 import kotlinx.android.synthetic.main.quest_opening_hours.*
 
 class AddOpeningHoursForm : AbstractQuestFormAnswerFragment() {

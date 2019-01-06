@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.xt
+package de.westnordost.streetcomplete.ktx
 
 import android.view.View
 import android.view.ViewGroup
@@ -10,4 +10,8 @@ fun View.updateLayoutParams(block: ViewGroup.LayoutParams.() -> Unit) {
 
 fun View.postOnLayout(callback:() -> Unit) {
     ViewUtils.postOnLayout(this, callback)
+}
+
+fun View.postOnPreDraw(callback: () -> Unit) {
+    ViewUtils.postOnPreDraw(this, callback)
 }

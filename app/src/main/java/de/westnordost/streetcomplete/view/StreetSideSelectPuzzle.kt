@@ -14,7 +14,6 @@ import android.widget.RelativeLayout
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.util.BitmapUtil
-import de.westnordost.streetcomplete.xt.updateLayoutParams
 import kotlinx.android.synthetic.main.side_select_puzzle.view.*
 
 class StreetSideSelectPuzzle @JvmOverloads constructor(

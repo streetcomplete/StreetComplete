@@ -157,7 +157,7 @@ public class MapControlsFragment extends Fragment
 		return view;
 	}
 
-	@Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState)
+	@Override public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
 	{
 		super.onViewCreated(view, savedInstanceState);
 		ViewUtils.postOnLayout(view, () ->

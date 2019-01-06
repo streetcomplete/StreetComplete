@@ -12,7 +12,7 @@ import java.io.File
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osmnotes.AttachPhotoUtils
 import de.westnordost.streetcomplete.view.ListAdapter
-import de.westnordost.streetcomplete.xt.postOnLayout
+import de.westnordost.streetcomplete.ktx.postOnLayout
 
 class NoteImageAdapter(list: List<String>, private val context: Context) : ListAdapter<String>(list) {
 

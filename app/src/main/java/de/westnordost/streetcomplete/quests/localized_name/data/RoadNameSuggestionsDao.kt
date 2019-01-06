@@ -18,8 +18,8 @@ import de.westnordost.streetcomplete.quests.localized_name.data.RoadNamesTable.C
 import de.westnordost.streetcomplete.quests.localized_name.data.RoadNamesTable.NAME
 import de.westnordost.streetcomplete.util.Serializer
 import de.westnordost.streetcomplete.util.SphericalEarthMath
-import de.westnordost.streetcomplete.xt.toObject
-import de.westnordost.streetcomplete.xt.transaction
+import de.westnordost.streetcomplete.ktx.toObject
+import de.westnordost.streetcomplete.ktx.transaction
 
 // TODO only open in order to be able to mock it in tests
 open class RoadNameSuggestionsDao @Inject constructor(

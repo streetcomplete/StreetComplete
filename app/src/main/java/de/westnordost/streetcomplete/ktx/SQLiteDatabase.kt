@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.xt
+package de.westnordost.streetcomplete.ktx
 
 import android.database.sqlite.SQLiteDatabase
 

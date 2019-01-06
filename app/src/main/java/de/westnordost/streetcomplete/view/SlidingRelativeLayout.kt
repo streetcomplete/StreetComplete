@@ -2,8 +2,8 @@ package de.westnordost.streetcomplete.view
 
 import android.content.Context
 import android.util.AttributeSet
-import android.view.ViewTreeObserver
 import android.widget.RelativeLayout
+import de.westnordost.streetcomplete.ktx.postOnPreDraw
 
 class SlidingRelativeLayout @JvmOverloads constructor(
     context: Context,
@@ -26,17 +26,7 @@ class SlidingRelativeLayout @JvmOverloads constructor(
         if (width != 0 || height != 0) {
             callback()
         } else {
-            if (viewTreeObserver.isAlive) {
-                viewTreeObserver.addOnPreDrawListener(object : ViewTreeObserver.OnPreDrawListener {
-                    override fun onPreDraw(): Boolean {
-                        callback()
-                        if (viewTreeObserver.isAlive) {
-                            viewTreeObserver.removeOnPreDrawListener(this)
-                        }
-                        return true
-                    }
-                })
-            }
+            postOnPreDraw(callback)
         }
     }
 }

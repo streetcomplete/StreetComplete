@@ -15,7 +15,7 @@ import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.util.AdapterDataChangedWatcher
 import de.westnordost.streetcomplete.util.Serializer
-import de.westnordost.streetcomplete.xt.toObject
+import de.westnordost.streetcomplete.ktx.toObject
 import kotlinx.android.synthetic.main.quest_collection_times.*
 
 
