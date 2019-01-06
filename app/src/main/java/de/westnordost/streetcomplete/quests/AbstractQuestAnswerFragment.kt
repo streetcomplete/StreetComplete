@@ -104,8 +104,8 @@ abstract class AbstractQuestAnswerFragment : AbstractBottomSheetFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_quest_answer, container, false)
         content = view.findViewById(R.id.content)
-	    buttonPanel = view.findViewById(R.id.buttonPanel)
-	    otherAnswersButton = buttonPanel.findViewById(R.id.otherAnswersButton)
+        buttonPanel = view.findViewById(R.id.buttonPanel)
+        otherAnswersButton = buttonPanel.findViewById(R.id.otherAnswersButton)
 
         contentLayoutResId?.let { setContentView(it) }
         buttonsResId?.let { setButtonsView(it) }
