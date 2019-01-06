@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 class AddTactilePavingBusStop(o: OverpassMapDataDao) : SimpleOverpassQuestType(o) {
 
     override val tagFilters = """
-        nodes with
+        nodes, ways with
         (public_transport=platform or (highway=bus_stop and public_transport!=stop_position))
         and !tactile_paving
     """
