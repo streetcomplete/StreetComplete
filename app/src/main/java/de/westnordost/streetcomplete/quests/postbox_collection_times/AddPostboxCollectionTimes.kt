@@ -12,7 +12,7 @@ class AddPostboxCollectionTimes(o: OverpassMapDataDao) : SimpleOverpassQuestType
 
     override val tagFilters = """
         nodes with amenity=post_box and !collection_times
-        and collection_times:signed != no and access !~ private|no"
+        and collection_times:signed != no and access !~ private|no
     """
     override val icon = R.drawable.ic_quest_mail
     override val commitMessage = "Add postbox collection times"

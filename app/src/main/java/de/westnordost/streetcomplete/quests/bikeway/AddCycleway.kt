@@ -50,7 +50,7 @@ class AddCycleway(private val overpassServer: OverpassMapDataDao) : OsmElementQu
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_cycleway_title2
 
-    override fun isApplicableTo(element: Element) = null
+    override fun isApplicableTo(element: Element):Boolean? = null
 
     override fun download(bbox: BoundingBox, handler: MapDataWithGeometryHandler): Boolean {
         return overpassServer.getAndHandleQuota(getOverpassQuery(bbox), handler)
@@ -97,7 +97,7 @@ class AddCycleway(private val overpassServer: OverpassMapDataDao) : OsmElementQu
     }
 
 
-    override fun createForm()= AddCyclewayForm()
+    override fun createForm() = AddCyclewayForm()
 
     override fun applyAnswerTo(answer: Bundle, changes: StringMapChangesBuilder) {
         val right = answer.getString(AddCyclewayForm.CYCLEWAY_RIGHT)

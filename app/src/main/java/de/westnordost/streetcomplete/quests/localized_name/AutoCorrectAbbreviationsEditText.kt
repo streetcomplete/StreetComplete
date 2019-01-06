@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.localized_name
 
 import android.content.Context
+import android.support.v7.appcompat.R
 import android.text.Editable
 import android.util.AttributeSet
 import android.view.inputmethod.EditorInfo
@@ -13,8 +14,8 @@ import de.westnordost.streetcomplete.util.DefaultTextWatcher
  * ".") and capitalizes the first letter of each word that is longer than 3 letters.  */
 class AutoCorrectAbbreviationsEditText @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0
-) : android.support.v7.widget.AppCompatEditText(context, attrs, defStyleAttr) {
+    defStyleAttr: Int = R.attr.editTextStyle)
+    : android.support.v7.widget.AppCompatEditText(context, attrs, defStyleAttr) {
 
     var abbreviations: Abbreviations? = null
 
@@ -39,7 +40,7 @@ class AutoCorrectAbbreviationsEditText @JvmOverloads constructor(
     private fun autoCorrectTextAt(s: Editable, cursor: Int) {
         val abbrs = abbreviations ?: return
 
-        val textToCursor = s.subSequence(0, cursor).toString()
+        val textToCursor = s.subSequence(0, cursor).trim().toString()
         val words = textToCursor.split("[ -]+".toRegex())
         // really no idea how the result of split can ever be empty, but it apparently happens sometimes #287
         if (words.isEmpty()) return
@@ -87,7 +88,7 @@ class AutoCorrectAbbreviationsEditText @JvmOverloads constructor(
 
         override fun afterTextChanged(s: Editable) {
             if (addedText) {
-                val endedWord = s.subSequence(0, cursorPos).toString().matches(".+[ -]+$".toRegex())
+                val endedWord = s.subSequence(0, cursorPos).toString().matches(".+[ -.]+$".toRegex())
                 if (endedWord) {
                     autoCorrectTextAt(s, cursorPos)
                 }

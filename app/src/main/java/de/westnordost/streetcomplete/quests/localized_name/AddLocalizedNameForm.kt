@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.provider.Settings
 import android.support.v7.app.AlertDialog
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.text.Html
 import android.view.View
 import android.widget.Button
@@ -21,16 +20,16 @@ import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.util.AdapterDataChangedWatcher
 import de.westnordost.streetcomplete.util.Serializer
 import de.westnordost.streetcomplete.xt.toObject
+import kotlinx.android.synthetic.main.quest_localizedname.*
 
 
 abstract class AddLocalizedNameForm : AbstractQuestFormAnswerFragment() {
 
+    override val contentLayoutResId = R.layout.quest_localizedname
+
     @Inject internal lateinit var serializer: Serializer
 
     protected lateinit var adapter: AddLocalizedNameAdapter
-
-    protected abstract val addLanguageButton:Button
-    protected abstract val namesList:RecyclerView
 
     init {
         Injector.instance.applicationComponent.inject(this)

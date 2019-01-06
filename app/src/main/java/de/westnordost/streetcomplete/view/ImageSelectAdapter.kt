@@ -17,13 +17,13 @@ class ImageSelectAdapter(private val maxSelectableIndices: Int = -1) :
     }
 
     private val _selectedIndices = mutableSetOf<Int>()
-    val selectedIndices: List<Int> get() = _selectedIndices.toList()
+    val selectedIndices get() = _selectedIndices.toList()
 
     var cellLayoutId = R.layout.cell_labeled_image_select
 
     val listeners = mutableListOf<ImageSelectAdapter.OnItemSelectionListener>()
 
-    val selectedItems = _selectedIndices.map { i -> items[i] }
+    val selectedItems get() = _selectedIndices.map { i -> items[i] }
 
     interface OnItemSelectionListener {
         fun onIndexSelected(index: Int)

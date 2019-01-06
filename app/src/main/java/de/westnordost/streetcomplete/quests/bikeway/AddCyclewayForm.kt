@@ -217,6 +217,7 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment() {
     private fun showBothSides() {
         isDefiningBothSides = true
         puzzleView.showBothSides()
+        checkIsFormComplete()
     }
 
     companion object {

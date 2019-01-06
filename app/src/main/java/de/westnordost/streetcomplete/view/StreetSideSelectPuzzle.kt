@@ -40,9 +40,13 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
         LayoutInflater.from(context).inflate(R.layout.side_select_puzzle, this, true)
 
         addOnLayoutChangeListener { v, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom ->
-            rotateContainer.updateLayoutParams {
-                width = Math.min(bottom - top, right - left)
-                height = Math.max(bottom - top, right - left)
+            val width = Math.min(bottom - top, right - left)
+            val height = Math.max(bottom - top, right - left)
+            val params = rotateContainer.layoutParams
+            if(width != params.width || height != params.height) {
+                params.width = width
+                params.height = height
+                rotateContainer.layoutParams = params
             }
 
             val streetWidth = if (onlyShowingOneSide) width else width / 2

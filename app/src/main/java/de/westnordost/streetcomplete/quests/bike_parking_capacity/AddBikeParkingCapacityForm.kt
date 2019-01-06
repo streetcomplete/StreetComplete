@@ -8,5 +8,5 @@ class AddBikeParkingCapacityForm : TextInputQuestAnswerFragment() {
 
     override val contentLayoutResId = R.layout.quest_bike_parking_capacity
 
-    override val editText = capacityInput!!
+    override val editText get() = capacityInput!!
 }

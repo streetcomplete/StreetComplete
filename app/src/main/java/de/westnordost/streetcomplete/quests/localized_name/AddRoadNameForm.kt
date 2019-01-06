@@ -22,15 +22,10 @@ import java.lang.IllegalStateException
 
 class AddRoadNameForm : AddLocalizedNameForm() {
 
-    override val contentLayoutResId = R.layout.quest_localizedname
-
     override val otherAnswers = listOf(
         OtherAnswer(R.string.quest_name_answer_noName) { selectNoStreetNameReason() },
         OtherAnswer(R.string.quest_streetName_answer_cantType) { showKeyboardInfo() }
     )
-
-    override val addLanguageButton = addButton!!
-    override val namesList = list!!
 
     @Inject internal lateinit var abbreviationsByLocale: AbbreviationsByLocale
     @Inject internal lateinit var roadNameSuggestionsDao: RoadNameSuggestionsDao

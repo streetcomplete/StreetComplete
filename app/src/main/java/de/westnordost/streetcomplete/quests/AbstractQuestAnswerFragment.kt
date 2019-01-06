@@ -74,6 +74,8 @@ abstract class AbstractQuestAnswerFragment : AbstractBottomSheetFragment() {
             return localizedContext.resources
         }
 
+    private var startedOnce = false
+
     val questId:Long get() = questAnswerComponent.questId
     val questGroup:QuestGroup get() = questAnswerComponent.questGroup
 
@@ -145,8 +147,15 @@ abstract class AbstractQuestAnswerFragment : AbstractBottomSheetFragment() {
                 }
             }
         }
+    }
 
-        onMapOrientation(initialMapRotation, initialMapTilt)
+
+    override fun onStart() {
+        super.onStart()
+        if(!startedOnce) {
+            onMapOrientation(initialMapRotation, initialMapTilt)
+            startedOnce = true
+        }
     }
 
     override fun onAttach(ctx: Context) {

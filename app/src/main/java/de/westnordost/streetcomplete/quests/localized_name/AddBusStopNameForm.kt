@@ -10,15 +10,10 @@ import kotlinx.android.synthetic.main.quest_localizedname.*
 
 class AddBusStopNameForm : AddLocalizedNameForm() {
 
-    override val contentLayoutResId = R.layout.quest_localizedname
-
     override val otherAnswers = listOf(
         OtherAnswer(R.string.quest_name_answer_noName) { confirmNoName() },
         OtherAnswer(R.string.quest_streetName_answer_cantType) { showKeyboardInfo() }
     )
-
-    override val addLanguageButton = addButton!!
-    override val namesList = list!!
 
     override fun onClickOk() {
         applyNameAnswer()

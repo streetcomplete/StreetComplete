@@ -35,9 +35,9 @@ class AddBusStopName(o: OverpassMapDataDao) : SimpleOverpassQuestType(o) {
             val nameByLanguage = answer.toNameByLanguage()
             for ((key, value) in nameByLanguage) {
                 if (key.isEmpty()) {
-                    changes.add("name", value)
+                    changes.addOrModify("name", value)
                 } else {
-                    changes.add("name:$key", value)
+                    changes.addOrModify("name:$key", value)
                 }
             }
         }

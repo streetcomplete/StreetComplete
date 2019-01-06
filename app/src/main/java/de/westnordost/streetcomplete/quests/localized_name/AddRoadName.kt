@@ -79,9 +79,9 @@ class AddRoadName(
         val roadNameByLanguage = answer.toNameByLanguage()
         for ((key, value) in roadNameByLanguage) {
             if (key.isEmpty()) {
-                changes.add("name", value)
+                changes.addOrModify("name", value)
             } else {
-                changes.add("name:$key", value)
+                changes.addOrModify("name:$key", value)
             }
         }
 

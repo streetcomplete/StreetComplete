@@ -37,9 +37,7 @@ class AddWheelChairAccessPublicTransport(o: OverpassMapDataDao) : SimpleOverpass
         }
     }
 
-    override fun createForm(): WheelchairAccessAnswerFragment {
-        return AddWheelchairAccessPublicTransportForm()
-    }
+    override fun createForm() = AddWheelchairAccessPublicTransportForm()
 
     override fun applyAnswerTo(answer: Bundle, changes: StringMapChangesBuilder) {
         changes.add("wheelchair", answer.getString(WheelchairAccessAnswerFragment.ANSWER)!!)

@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.parking_fee
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
+import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 
@@ -34,11 +35,13 @@ class AddParkingFeeForm : AbstractQuestFormAnswerFragment() {
 
     private lateinit var openingHoursAdapter: AddOpeningHoursAdapter
 
+    private lateinit var content: ViewGroup
+
     private var isDefiningHours: Boolean = false
     set(value) {
         field = value
 
-        feeOpeningHoursContainer?.visibility = if (value) View.VISIBLE else View.GONE
+        content.visibility = if (value) View.VISIBLE else View.GONE
         noButton?.visibility = if (value) View.GONE else View.VISIBLE
         yesButton?.visibility = if (value) View.GONE else View.VISIBLE
     }
@@ -56,13 +59,16 @@ class AddParkingFeeForm : AbstractQuestFormAnswerFragment() {
         val viewData = loadOpeningHoursData(savedInstanceState)
         openingHoursAdapter = AddOpeningHoursAdapter(viewData, activity!!, countryInfo)
         openingHoursAdapter.registerAdapterDataObserver( AdapterDataChangedWatcher { checkIsFormComplete() })
-
-        isFeeOnlyAtHours = savedInstanceState?.getBoolean(IS_FEE_ONLY_AT_HOURS, true) ?: true
-        isDefiningHours = savedInstanceState?.getBoolean(IS_DEFINING_HOURS) ?: false
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        content = view.findViewById(R.id.content)
+
+        // must be read here because setting these values effects the UI
+        isFeeOnlyAtHours = savedInstanceState?.getBoolean(IS_FEE_ONLY_AT_HOURS, true) ?: true
+        isDefiningHours = savedInstanceState?.getBoolean(IS_DEFINING_HOURS) ?: false
 
         okButton.setOnClickListener { onClickOk() }
         yesButton.setOnClickListener { onClickYesNo(true) }
@@ -120,7 +126,7 @@ class AddParkingFeeForm : AbstractQuestFormAnswerFragment() {
         outState.putBoolean(IS_FEE_ONLY_AT_HOURS, isFeeOnlyAtHours)
     }
 
-    override fun isFormComplete() = !isDefiningHours && !getOpeningHoursString().isEmpty()
+    override fun isFormComplete() = isDefiningHours && !getOpeningHoursString().isEmpty()
 
     private fun getOpeningHoursString() = openingHoursAdapter.createOpeningMonths().joinToString(";")
 
