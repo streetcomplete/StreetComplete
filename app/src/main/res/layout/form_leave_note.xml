@@ -7,7 +7,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <TextView
-        android:id="@+id/description"
+        android:id="@+id/descriptionLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:text="@string/create_new_note_description"

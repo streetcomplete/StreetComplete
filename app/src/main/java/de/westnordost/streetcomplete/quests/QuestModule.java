@@ -18,7 +18,7 @@ import de.westnordost.streetcomplete.quests.bikeway.AddCycleway;
 import de.westnordost.streetcomplete.quests.bridge_structure.AddBridgeStructure;
 import de.westnordost.streetcomplete.quests.building_levels.AddBuildingLevels;
 import de.westnordost.streetcomplete.quests.building_type.AddBuildingType;
-import de.westnordost.streetcomplete.quests.building_underground.IsBuildingUnderground;
+import de.westnordost.streetcomplete.quests.building_underground.AddIsBuildingUnderground;
 import de.westnordost.streetcomplete.quests.localized_name.AddBusStopName;
 import de.westnordost.streetcomplete.quests.bus_stop_shelter.AddBusStopShelter;
 import de.westnordost.streetcomplete.quests.car_wash_type.AddCarWashType;
@@ -33,8 +33,8 @@ import de.westnordost.streetcomplete.quests.max_height.AddMaxHeight;
 import de.westnordost.streetcomplete.quests.motorcycle_parking_capacity.AddMotorcycleParkingCapacity;
 import de.westnordost.streetcomplete.quests.motorcycle_parking_cover.AddMotorcycleParkingCover;
 import de.westnordost.streetcomplete.quests.oneway.AddOneway;
-import de.westnordost.streetcomplete.quests.oneway.TrafficFlowSegmentsDao;
-import de.westnordost.streetcomplete.quests.oneway.WayTrafficFlowDao;
+import de.westnordost.streetcomplete.quests.oneway.data.TrafficFlowSegmentsDao;
+import de.westnordost.streetcomplete.quests.oneway.data.WayTrafficFlowDao;
 import de.westnordost.streetcomplete.quests.parking_access.AddParkingAccess;
 import de.westnordost.streetcomplete.quests.parking_fee.AddParkingFee;
 import de.westnordost.streetcomplete.quests.parking_type.AddParkingType;
@@ -87,7 +87,7 @@ public class QuestModule
 				// ↓ 2. important data that is used by many data consumers
 				new AddRoadName(o, roadNameSuggestionsDao, putRoadNameSuggestionsHandler),
 				new AddOneway(o, trafficFlowSegmentsDao, trafficFlowDao),
-				new IsBuildingUnderground(o), //to avoid asking AddHousenumber and other for underground buildings
+				new AddIsBuildingUnderground(o), //to avoid asking AddHousenumber and other for underground buildings
 				new AddHousenumber(o),
 				new MarkCompletedHighwayConstruction(o),
 				// new AddPlaceName(o), doesn't make sense as long as the app cannot tell the generic name of elements

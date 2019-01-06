@@ -5,14 +5,14 @@
     android:layout_height="match_parent">
 
     <de.westnordost.streetcomplete.view.StreetSideSelectPuzzle
-        android:id="@+id/puzzle"
+        android:id="@+id/puzzleView"
         android:layout_width="match_parent"
         android:layout_height="112dp"
         android:clipChildren="false"
         android:clipToPadding="false"/>
 
     <RelativeLayout
-        android:id="@+id/compass"
+        android:id="@+id/compassView"
         android:layout_width="38dp"
         android:layout_height="38dp"
         android:background="@drawable/background_white_circle_1dp_stroke"

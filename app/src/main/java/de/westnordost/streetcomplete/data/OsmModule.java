@@ -23,7 +23,7 @@ import de.westnordost.osmapi.map.MapDataDao;
 import de.westnordost.osmapi.map.MapDataFactory;
 import de.westnordost.osmapi.map.OsmMapDataFactory;
 import de.westnordost.osmapi.notes.NotesDao;
-import de.westnordost.streetcomplete.quests.oneway.TrafficFlowSegmentsDao;
+import de.westnordost.streetcomplete.quests.oneway.data.TrafficFlowSegmentsDao;
 import de.westnordost.streetcomplete.util.ImageUploader;
 import oauth.signpost.OAuthConsumer;
 

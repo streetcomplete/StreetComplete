@@ -7,7 +7,7 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:id="@+id/comment"
+        android:id="@+id/commentView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -15,7 +15,7 @@
         android:layout_marginTop="4dp">
 
         <ImageView
-            android:id="@+id/comment_avatar"
+            android:id="@+id/commentAvatarImage"
             tools:src="@drawable/ic_osm_anon_avatar"
             android:layout_width="64dp"
             android:layout_height="64dp"
@@ -39,7 +39,7 @@
                 android:divider="@drawable/space_4dp">
 
                 <TextView
-                    android:id="@+id/comment_text"
+                    android:id="@+id/commentText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/NoteDiscussion.Comment"
@@ -51,7 +51,7 @@
                     android:background="@color/divider"/>
 
                 <TextView
-                    android:id="@+id/comment_info"
+                    android:id="@+id/commentInfoText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/NoteDiscussion.Info"
@@ -64,9 +64,7 @@
     </LinearLayout>
 
     <TextView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/comment_status_text"
+        android:id="@+id/commentStatusText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/speech_bubble_none"

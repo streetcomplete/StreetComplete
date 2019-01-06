@@ -29,11 +29,11 @@
                 android:paddingEnd="4dp"
                 android:text="@string/quest_maxspeed_answer_noSign_info_zone"
                 android:textAppearance="@android:style/TextAppearance.Theme.Dialog"
-                android:layout_toStartOf="@+id/imgSlowZone"
+                android:layout_toStartOf="@+id/slowZoneImage"
                 />
 
             <include
-                android:id="@+id/imgSlowZone"
+                android:id="@+id/slowZoneImage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"

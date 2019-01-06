@@ -6,7 +6,7 @@
               android:orientation="vertical">
 
     <TextView
-        android:id="@+id/dietType_description"
+        android:id="@+id/descriptionLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="@dimen/quest_form_vertical_margin"

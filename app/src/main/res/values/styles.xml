@@ -91,6 +91,7 @@
 
     <style name="ImageSelectLabelBelow">
         <item name="android:textSize">12sp</item>
+        <item name="android:padding">4dp</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textAlignment">center</item>
         <item name="android:gravity">center_horizontal</item>

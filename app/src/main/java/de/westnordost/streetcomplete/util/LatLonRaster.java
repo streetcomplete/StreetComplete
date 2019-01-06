@@ -78,7 +78,7 @@ public class LatLonRaster
 		return result;
 	}
 
-	public int size()
+	public int getSize()
 	{
 		return size;
 	}

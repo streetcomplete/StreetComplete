@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.settings;
 
 import android.content.SharedPreferences;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
@@ -56,15 +57,15 @@ public class QuestSelectionAdapter extends ListAdapter<QuestSelectionAdapter.Que
 		catch (Exception e)	{ throw new RuntimeException(e);	}
 	}
 
-	@Override public void onAttachedToRecyclerView(RecyclerView recyclerView)
+	@Override public void onAttachedToRecyclerView(@NonNull RecyclerView recyclerView)
 	{
 		super.onAttachedToRecyclerView(recyclerView);
 		ItemTouchHelper ith = new ItemTouchHelper(new TouchHelperCallback());
 		ith.attachToRecyclerView(recyclerView);
 	}
 
-	@Override
-	public ListAdapter.ViewHolder<QuestVisibility> onCreateViewHolder(ViewGroup parent, int viewType)
+	@NonNull @Override
+	public ListAdapter.ViewHolder<QuestVisibility> onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
 	{
 		View layout = LayoutInflater.from(parent.getContext())
 				.inflate(R.layout.row_quest_selection, parent, false);
@@ -159,7 +160,7 @@ public class QuestSelectionAdapter extends ListAdapter<QuestSelectionAdapter.Que
 			textCountryDisabled = itemView.findViewById(R.id.textCountryDisabled);
 		}
 
-		@Override protected void onBind(final QuestVisibility item)
+		@Override public void onBind(final QuestVisibility item)
 		{
 			this.item = item;
 			int colorResId = item.isInteractionEnabled() ? android.R.color.white : R.color.greyed_out;

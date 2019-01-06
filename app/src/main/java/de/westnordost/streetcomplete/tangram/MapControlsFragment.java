@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.tangram;
 
-import android.animation.ObjectAnimator;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -88,7 +87,7 @@ public class MapControlsFragment extends Fragment
 		View view = inflater.inflate(R.layout.fragment_map_controls, container, false);
 		compassNeedle = view.findViewById(R.id.compassNeedle);
 
-		view.findViewById(R.id.compass).setOnClickListener(v ->
+		view.findViewById(R.id.compassView).setOnClickListener(v ->
 		{
 			boolean isFollowing = mapFragment.isFollowingPosition();
 			boolean isCompassMode = mapFragment.isCompassMode();
@@ -158,7 +157,7 @@ public class MapControlsFragment extends Fragment
 		return view;
 	}
 
-	@Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState)
+	@Override public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
 	{
 		super.onViewCreated(view, savedInstanceState);
 		ViewUtils.postOnLayout(view, () ->

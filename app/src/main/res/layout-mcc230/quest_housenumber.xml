@@ -13,7 +13,7 @@
         android:rowCount="2"
         android:columnCount="2"
         android:layout_alignParentStart="true"
-        android:layout_toStartOf="@id/toggleKeyboard"
+        android:layout_toStartOf="@id/toggleKeyboardButton"
         >
 
         <TextView
@@ -32,7 +32,7 @@
             android:layout_gravity="center_horizontal">
 
             <EditText
-                android:id="@+id/inputConscriptionNumber"
+                android:id="@+id/conscriptionNumberInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/traffic_white"
@@ -64,7 +64,7 @@
             android:layout_gravity="center_horizontal">
 
             <EditText
-                android:id="@+id/inputStreetNumber"
+                android:id="@+id/streetNumberInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/traffic_white"
@@ -83,7 +83,7 @@
     </GridLayout>
 
     <Button
-        android:id="@+id/toggleKeyboard"
+        android:id="@+id/toggleKeyboardButton"
         android:layout_width="64dp"
         android:layout_height="56dp"
         android:layout_alignParentTop="true"

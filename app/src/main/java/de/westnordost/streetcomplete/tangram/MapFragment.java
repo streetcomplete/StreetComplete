@@ -21,7 +21,6 @@ import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 import android.widget.TextView;
 
@@ -178,7 +177,8 @@ public class MapFragment extends Fragment implements
 			initMarkers();
 			followPosition();
 			showLocation();
-			ViewUtils.postOnLayout(getView(), this::updateView);
+			View v = getView();
+			if(v != null) ViewUtils.postOnLayout(v, this::updateView);
 		}
 	}
 
