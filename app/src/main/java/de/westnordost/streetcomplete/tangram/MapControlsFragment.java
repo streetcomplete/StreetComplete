@@ -9,13 +9,17 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.AnyThread;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.LocalBroadcastManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewPropertyAnimator;
+import android.view.animation.AccelerateInterpolator;
 import android.view.animation.AnimationUtils;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
@@ -31,13 +35,19 @@ import de.westnordost.streetcomplete.location.LocationState;
 import de.westnordost.streetcomplete.location.LocationStateButton;
 import de.westnordost.streetcomplete.location.LocationUtil;
 import de.westnordost.streetcomplete.location.SingleLocationRequest;
+import de.westnordost.streetcomplete.util.ViewUtils;
 
 public class MapControlsFragment extends Fragment
 {
+	private static final String SHOW_CONTROLS = "ShowControls";
+
 	private SingleLocationRequest singleLocationRequest;
 	private MapFragment mapFragment;
 	private ImageView compassNeedle;
 	private LocationStateButton trackingButton;
+
+	private ViewGroup leftSide, rightSide;
+	private boolean isShowingControls = true;
 
 	@Inject SharedPreferences prefs;
 
@@ -77,7 +87,7 @@ public class MapControlsFragment extends Fragment
 		View view = inflater.inflate(R.layout.fragment_map_controls, container, false);
 		compassNeedle = view.findViewById(R.id.compassNeedle);
 
-		view.findViewById(R.id.compass).setOnClickListener(v ->
+		view.findViewById(R.id.compassView).setOnClickListener(v ->
 		{
 			boolean isFollowing = mapFragment.isFollowingPosition();
 			boolean isCompassMode = mapFragment.isCompassMode();
@@ -134,14 +144,32 @@ public class MapControlsFragment extends Fragment
 			listener.onClickCreateNote();
 		});
 
+		leftSide = view.findViewById(R.id.leftSide);
+		rightSide = view.findViewById(R.id.rightSide);
+
+		if(savedInstanceState != null)
+		{
+			isShowingControls = savedInstanceState.getBoolean(SHOW_CONTROLS);
+		}
+
 		singleLocationRequest = new SingleLocationRequest(getActivity());
 
 		return view;
 	}
 
-	@Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState)
+	@Override public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
 	{
 		super.onViewCreated(view, savedInstanceState);
+		ViewUtils.postOnLayout(view, () ->
+		{
+			if(!isShowingControls)
+			{
+				hideAll(leftSide, -1);
+				hideAll(rightSide, +1);
+			}
+		});
+
+
 		mapFragment.onMapControlsCreated(this);
 	}
 
@@ -171,6 +199,12 @@ public class MapControlsFragment extends Fragment
 		listener = (Listener) context;
 	}
 
+	@Override public void onSaveInstanceState(@NonNull Bundle outState)
+	{
+		super.onSaveInstanceState(outState);
+		outState.putBoolean(SHOW_CONTROLS, isShowingControls);
+	}
+
 	/* ------------------------ Calls from the MapFragment ------------------------ */
 
 	@AnyThread public void onMapOrientation(float rotation, float tilt)
@@ -195,6 +229,46 @@ public class MapControlsFragment extends Fragment
 	public boolean requestUnglueViewFromRotation()
 	{
 		return requestUnglueView();
+	}
+
+	public void hideControls()
+	{
+		isShowingControls = false;
+		animateAll(rightSide, +1, false, 120, 200);
+		animateAll(leftSide, -1, false, 120, 200);
+	}
+
+	public void showControls()
+	{
+		isShowingControls = true;
+		animateAll(rightSide, 0, true, 120, 200);
+		animateAll(leftSide, 0, true, 120, 200);
+	}
+
+	private void hideAll(ViewGroup parent, int dir)
+	{
+		int w = parent.getWidth();
+		for(int i = 0; i < parent.getChildCount(); ++i)
+		{
+			View v = parent.getChildAt(i);
+			v.setTranslationX(w*dir);
+		}
+	}
+
+	private void animateAll(ViewGroup parent, int dir, boolean in, int minDuration, int maxDuration)
+	{
+		int childCount = parent.getChildCount();
+		int w = parent.getWidth();
+		for(int i = 0; i < childCount; ++i)
+		{
+			View v = parent.getChildAt(i);
+
+			int duration = minDuration + (maxDuration - minDuration) / Math.max(1, childCount-1) *
+				(in ? childCount-1-i : i );
+			ViewPropertyAnimator animator = v.animate().translationX(w*dir);
+			animator.setDuration(duration);
+			animator.setInterpolator(dir != 0 ? new AccelerateInterpolator() : new DecelerateInterpolator());
+		}
 	}
 
 	private boolean requestUnglueView()
@@ -262,7 +336,7 @@ public class MapControlsFragment extends Fragment
 			ViewTooltip.on(trackingButton)
 					.position(ViewTooltip.Position.LEFT)
 					.text(getResources().getString(R.string.unglue_hint))
-					.color(getResources().getColor(R.color.colorTooltip))
+					.color(getResources().getColor(R.color.tooltip))
 					.duration(3000)
 					.show();
 			//prefs.edit().putInt(Prefs.UNGLUE_HINT_TIMES_SHOWN, timesShown + 1).apply();
@@ -278,7 +352,7 @@ public class MapControlsFragment extends Fragment
 	private void onLocationRequestFinished(LocationState state)
 	{
 		if(getActivity() == null) return;
-		
+
 		trackingButton.setState(state);
 		if(state.isEnabled())
 		{

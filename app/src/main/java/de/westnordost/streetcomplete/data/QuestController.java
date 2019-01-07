@@ -60,7 +60,7 @@ public class QuestController
 
 	private boolean downloadServiceIsBound;
 	private QuestDownloadService.Interface downloadService;
-	private ServiceConnection downloadServiceConnection = new ServiceConnection()
+	private final ServiceConnection downloadServiceConnection = new ServiceConnection()
 	{
 		public void onServiceConnected(ComponentName className, IBinder service)
 		{
@@ -75,7 +75,7 @@ public class QuestController
 	};
 	private boolean uploadServiceIsBound;
 	private QuestChangesUploadService.Interface uploadService;
-	private ServiceConnection uploadServiceConnection = new ServiceConnection()
+	private final ServiceConnection uploadServiceConnection = new ServiceConnection()
 	{
 		public void onServiceConnected(ComponentName className, IBinder service)
 		{
@@ -145,14 +145,14 @@ public class QuestController
 	/** Create a note for the given OSM Quest instead of answering it. The quest will turn
 	 *  invisible.
 	 *  @return true if successful */
-	public boolean createNote(long osmQuestId, String questTitle, String text, ArrayList<String> imagePaths)
+	public boolean createNote(long osmQuestId, String questTitle, String text, @Nullable List<String> imagePaths)
 	{
 		OsmQuest q = osmQuestDB.get(osmQuestId);
 		// race condition: another thread may have removed the element already (#288)
-		if(q == null) return false;
+		if(q == null || q.getStatus() != QuestStatus.NEW) return false;
 
 		CreateNote createNote = new CreateNote();
-		createNote.position = q.getMarkerLocation();
+		createNote.position = q.getCenter();
 		createNote.text = text;
 		createNote.questTitle = questTitle;
 		createNote.elementType = q.getElementType();
@@ -181,7 +181,7 @@ public class QuestController
 		return true;
 	}
 
-	public void createNote(String text, ArrayList<String> imagePaths, LatLon position)
+	public void createNote(String text, @Nullable List<String> imagePaths, LatLon position)
 	{
 		CreateNote createNote = new CreateNote();
 		createNote.position = position;
@@ -264,6 +264,7 @@ public class QuestController
 	private boolean solveOsmNoteQuest(long questId, Bundle answer)
 	{
 		OsmNoteQuest q = osmNoteQuestDB.get(questId);
+		if(q == null || q.getStatus() != QuestStatus.NEW) return false;
 		ArrayList<String> imagePaths = answer.getStringArrayList(NoteDiscussionForm.IMAGE_PATHS);
 		String comment = answer.getString(NoteDiscussionForm.TEXT);
 		if(comment != null && !comment.isEmpty())
@@ -286,7 +287,7 @@ public class QuestController
 		// race condition: another thread (i.e. quest download thread) may have removed the
 		// element already (#282). So in this case, just ignore
 		OsmQuest q = osmQuestDB.get(questId);
-		if(q == null) return false;
+		if(q == null || q.getStatus() != QuestStatus.NEW) return false;
 		Element element = osmElementDB.get(q.getElementType(), q.getElementId());
 		if(element == null) return false;
 
@@ -323,13 +324,13 @@ public class QuestController
 		}
 	}
 
-	/** Make the given quest invisible asynchronously (per user interaction). */
+	/** Make the given quest invisible (per user interaction). */
 	public void hide(long questId, QuestGroup group)
 	{
 		if(group == QuestGroup.OSM)
 		{
 			OsmQuest q = osmQuestDB.get(questId);
-			if(q == null) return;
+			if(q == null || q.getStatus() != QuestStatus.NEW) return;
 			q.setStatus(QuestStatus.HIDDEN);
 			osmQuestDB.update(q);
 			workerHandler.post(() -> relay.onQuestRemoved(q.getId(), group));
@@ -337,7 +338,7 @@ public class QuestController
 		else if(group == QuestGroup.OSM_NOTE)
 		{
 			OsmNoteQuest q = osmNoteQuestDB.get(questId);
-			if(q == null) return;
+			if(q == null || q.getStatus() != QuestStatus.NEW) return;
 			q.setStatus(QuestStatus.HIDDEN);
 			osmNoteQuestDB.update(q);
 			workerHandler.post(() -> relay.onQuestRemoved(q.getId(), group));
@@ -419,5 +420,23 @@ public class QuestController
 	public void upload()
 	{
 		context.startService(new Intent(context, QuestChangesUploadService.class));
+	}
+
+	public void deleteOld()
+	{
+		workerHandler.post(() ->
+		{
+			long timestamp = System.currentTimeMillis() - ApplicationConstants.DELETE_UNSOLVED_QUESTS_AFTER;
+			int deleted = osmQuestDB.deleteAllUnsolved(timestamp);
+			deleted += osmNoteQuestDB.deleteAllUnsolved(timestamp);
+
+			if(deleted > 0)
+			{
+				Log.d(TAG, "Deleted "+ deleted + " old unsolved quests");
+
+				osmElementDB.deleteUnreferenced();
+				geometryDB.deleteUnreferenced();
+			}
+		});
 	}
 }

@@ -9,18 +9,18 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toLeftOf="@+id/building_illustration"
-        android:layout_alignBottom="@+id/building_illustration"
+        android:layout_toLeftOf="@+id/buildingImage"
+        android:layout_alignBottom="@+id/buildingImage"
         android:layout_alignParentLeft="true"
         android:background="@drawable/building_levels_illustration_bg_left"
         android:scaleType="fitEnd"
         tools:ignore="RtlHardcoded"/>
 
     <ImageView
-        android:id="@+id/building_illustration"
+        android:id="@+id/buildingImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_building_levels_illustration"
+        android:src="@drawable/building_levels_illustration"
         android:scaleType="fitEnd"
         android:layout_centerHorizontal="true"
         />
@@ -28,9 +28,10 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/building_illustration"
-        android:layout_alignBottom="@+id/building_illustration"
+        android:layout_toRightOf="@+id/buildingImage"
+        android:layout_alignBottom="@+id/buildingImage"
         android:layout_alignParentRight="true"
+        android:layout_marginBottom="0.5dp"
         android:background="@drawable/building_levels_illustration_bg_right"
         android:scaleType="fitEnd"
         tools:ignore="RtlHardcoded"/>
@@ -38,9 +39,9 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toLeftOf="@+id/building_illustration"
+        android:layout_toLeftOf="@+id/buildingImage"
         android:layout_marginRight="-28dp"
-        android:layout_alignBottom="@id/building_illustration"
+        android:layout_alignBottom="@id/buildingImage"
         android:layout_marginBottom="20dp"
         tools:ignore="RtlHardcoded">
 
@@ -72,12 +73,12 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_toRightOf="@+id/building_illustration"
-        android:layout_alignTop="@id/building_illustration"
+        android:id="@+id/containerRoofLevelsInput"
+        android:layout_toRightOf="@id/buildingImage"
+        android:layout_alignTop="@id/buildingImage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="-34dp"
-        android:layout_marginTop="8dp"
         android:gravity="center_vertical"
         tools:ignore="RtlHardcoded">
 
@@ -102,6 +103,44 @@
             android:layout_below="@+id/roofLevelsInput"
             android:gravity="left"
             android:layout_marginLeft="4dp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/pickLastButton"
+        android:layout_width="wrap_content"
+        android:layout_height="51dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignBottom="@id/buildingImage"
+        style="@style/Widget.AppCompat.Button.Small"
+        tools:ignore="RtlHardcoded">
+
+        <ImageView
+            android:id="@+id/lastBuildingIllustrationIcon"
+            android:src="@drawable/ic_building_levels_illustration"
+            android:layout_toRightOf="@id/lastLevelsLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:ignore="RtlHardcoded"/>
+
+        <TextView
+            android:id="@+id/lastLevelsLabel"
+            android:layout_alignParentLeft="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:textSize="14sp"
+            tools:text="3"
+            tools:ignore="RtlHardcoded"/>
+
+        <TextView
+            android:id="@+id/lastRoofLevelsLabel"
+            android:layout_toRightOf="@id/lastBuildingIllustrationIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            tools:text="1"
+            tools:ignore="RtlHardcoded"/>
 
     </RelativeLayout>
 

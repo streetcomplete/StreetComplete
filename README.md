@@ -13,8 +13,8 @@ The app is aimed at users who do not know anything about OSM tagging schemes but
 contribute to the OpenStreetMap by surveying their neighbourhood (or other places as well). Because of the target group, only those quests are shown which are answerable very clearly by asking one simple question and only those quests are created which contain very few false positives.
 
 ## Screenshots
-<img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot1.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot2.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot3.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot4.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot5.png" width="170"/>
-<img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot6.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot7.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot8.png" width="170"/> <a href="http://www.youtube.com/watch?v=l6DGcmvtya4"><img src="http://img.youtube.com/vi/l6DGcmvtya4/0.jpg" width="340"/></a>
+<img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot01.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot02.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot03.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot04.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot05.png" width="170"/>
+<img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot06.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot07.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot08.png" width="170"/> <a href="http://www.youtube.com/watch?v=l6DGcmvtya4"><img src="http://img.youtube.com/vi/l6DGcmvtya4/0.jpg" width="340"/></a>
 
 ## Download
 
@@ -24,7 +24,7 @@ You can also simply download the APK from the [Releases](https://github.com/west
 
 ## Quests
 
-Right now, there are very few different question types. More will be added over time.
+There are quite a few different quest types now and more will be added over time.
 You can see a community-managed [list of all quests in the OSM wiki](https://wiki.openstreetmap.org/wiki/StreetComplete/Quests).
 
 ## FAQ

@@ -3,5 +3,5 @@ isLeftHandTraffic: true
 isLivingStreetKnown: true
 mobileCountryCode: 648
 officialLanguages: [en, sn, nd]
-orchardProduces: [banana, orange, chilli_pepper, sweet_pepper, tea, tomatoe, lemon, lime, coffee, pepper,
+orchardProduces: [banana, orange, chilli_pepper, sweet_pepper, tea, tomato, lemon, lime, coffee, pepper,
   grapefruit, guava, mango, mangosteen, apple, grape, avocado, peach, pear]

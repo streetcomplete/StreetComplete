@@ -48,6 +48,18 @@ public class QuestChangesUploadService extends IntentService
 	// listeners
 	private final VisibleQuestRelay visibleQuestRelay  = new VisibleQuestRelay();
 	private QuestChangesUploadProgressListener progressListener;
+	private final OnUploadedChangeListener uploadedChangeRelay = new OnUploadedChangeListener()
+	{
+		@Override public void onUploaded()
+		{
+			if(progressListener != null) progressListener.onProgress(true);
+		}
+
+		@Override public void onDiscarded()
+		{
+			if(progressListener != null) progressListener.onProgress(false);
+		}
+	};
 
 	private AtomicBoolean cancelState;
 
@@ -99,23 +111,27 @@ public class QuestChangesUploadService extends IntentService
 			Log.i(TAG, "Starting upload changes");
 
 			OsmNoteQuestChangesUpload noteQuestUpload = noteQuestUploadProvider.get();
+			noteQuestUpload.setProgressListener(uploadedChangeRelay);
 			noteQuestUpload.upload(cancelState);
 
 			if (cancelState.get()) return;
 
 			UndoOsmQuestChangesUpload undoOsmQuestUpload = undoQuestUploadProvider.get();
+			undoOsmQuestUpload.setProgressListener(uploadedChangeRelay);
 			undoOsmQuestUpload.setVisibleQuestListener(visibleQuestRelay);
 			undoOsmQuestUpload.upload(cancelState);
 
 			if (cancelState.get()) return;
 
 			OsmQuestChangesUpload osmQuestUpload = questUploadProvider.get();
+			osmQuestUpload.setProgressListener(uploadedChangeRelay);
 			osmQuestUpload.setVisibleQuestListener(visibleQuestRelay);
 			osmQuestUpload.upload(cancelState);
 
 			if (cancelState.get()) return;
 
 			CreateNoteUpload createNoteUpload = createNoteUploadProvider.get();
+			createNoteUpload.setProgressListener(uploadedChangeRelay);
 			createNoteUpload.upload(cancelState);
 		}
 		catch (Exception e)

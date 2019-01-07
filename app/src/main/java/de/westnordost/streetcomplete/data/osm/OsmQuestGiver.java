@@ -47,12 +47,21 @@ public class OsmQuestGiver
 		public List<Long> removedQuestIds = new ArrayList<>();
 	}
 
+	public List<Long> removeQuests(Element.Type type, long id)
+	{
+		List<Long> ids = questDB.getAllIds(type, id);
+		questDB.deleteAll(ids);
+		return ids;
+	}
+
 	public QuestUpdates updateQuests(Element element)
 	{
-		ElementGeometry geometry = elementGeometryDB.get(element.getType(), element.getId());
-		boolean hasNote = hasNoteAt(geometry.center);
-
 		QuestUpdates result = new QuestUpdates();
+
+		ElementGeometry geometry = elementGeometryDB.get(element.getType(), element.getId());
+		if(geometry == null) return result;
+		
+		boolean hasNote = hasNoteAt(geometry.center);
 
 		Map<QuestType, OsmQuest> currentQuests = getCurrentQuests(element);
 		List<String> createdQuestsLog = new ArrayList<>();

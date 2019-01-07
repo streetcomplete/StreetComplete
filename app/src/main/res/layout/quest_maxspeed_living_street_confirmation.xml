@@ -8,7 +8,7 @@
     android:padding="@dimen/dialog_horizontal_margin">
 
     <ImageView
-        android:id="@+id/imgLivingStreet"
+        android:id="@+id/livingStreetImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_living_street"/>

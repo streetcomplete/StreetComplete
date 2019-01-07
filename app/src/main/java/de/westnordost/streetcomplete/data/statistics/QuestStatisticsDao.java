@@ -20,6 +20,8 @@ import de.westnordost.osmapi.changesets.ChangesetsDao;
 
 public class QuestStatisticsDao
 {
+	private static final String NOTE = "NOTE";
+
 	private final SQLiteOpenHelper dbHelper;
 	private final ChangesetsDao changesetsDao;
 	private final UserChangesetsDao userChangesetsDao;
@@ -83,6 +85,8 @@ public class QuestStatisticsDao
 		@Override public void handle(Relation relation) { count++; }
 	}
 
+	public void addOneNote() { addOne(NOTE); }
+
 	public void addOne(String questType)
 	{
 		SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -99,6 +103,8 @@ public class QuestStatisticsDao
 				QuestStatisticsTable.Columns.SUCCEEDED + " = " + QuestStatisticsTable.Columns.SUCCEEDED +
 				" + 1 WHERE " + QuestStatisticsTable.Columns.QUEST_TYPE + " = ?", args);
 	}
+
+	public int getNoteAmount() { return getAmount(NOTE); }
 
 	public int getAmount(String questType)
 	{

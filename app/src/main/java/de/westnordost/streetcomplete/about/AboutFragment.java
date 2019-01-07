@@ -41,7 +41,7 @@ public class AboutFragment extends PreferenceFragmentCompat
 					getResources().getString(R.string.privacy_html) +
 					getString(R.string.privacy_html_tileserver) +
 					getString(R.string.privacy_html_third_party_quest_sources) +
-					getString(R.string.privacy_html_image_upload),
+					getString(R.string.privacy_html_image_upload2),
 					R.string.about_title_privacy_statement);
 			getFragmentActivity().setCurrentFragment(f);
 			return true;

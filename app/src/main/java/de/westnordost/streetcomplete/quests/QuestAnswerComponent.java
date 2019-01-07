@@ -1,8 +1,9 @@
 package de.westnordost.streetcomplete.quests;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import de.westnordost.streetcomplete.data.QuestGroup;
 
@@ -52,7 +53,12 @@ public class QuestAnswerComponent
 		callbackListener.onAnsweredQuest(questId, questGroup, answer);
 	}
 
-	public void onLeaveNote(String questTitle, String text, ArrayList<String> imagePaths)
+	public void onComposeNote(String questTitle)
+	{
+		callbackListener.onComposeNote(questId, questGroup, questTitle);
+	}
+
+	public void onLeaveNote(String questTitle, String text, @Nullable List<String> imagePaths)
 	{
 		callbackListener.onLeaveNote(questId, questGroup, questTitle, text, imagePaths);
 	}

@@ -3,5 +3,5 @@ isLeftHandTraffic: true
 isLivingStreetKnown: true
 mobileCountryCode: 645
 officialLanguages: [en, bem, ny]
-orchardProduces: [coffee, tomatoe, orange, tea, chilli_pepper, sweet_pepper, banana, pepper]
+orchardProduces: [coffee, tomato, orange, tea, chilli_pepper, sweet_pepper, banana, pepper]
 popularSports: [soccer, tennis, cricket]

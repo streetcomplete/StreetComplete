@@ -105,7 +105,7 @@ public class OsmNoteQuestDaoTest extends ApplicationDbTestCase
 	{
 		assertEquals(quest.getLastUpdate(), dbQuest.getLastUpdate());
 		assertEquals(quest.getStatus(), dbQuest.getStatus());
-		assertEquals(quest.getMarkerLocation(), dbQuest.getMarkerLocation());
+		assertEquals(quest.getCenter(), dbQuest.getCenter());
 		assertEquals(quest.getComment(), dbQuest.getComment());
 		assertEquals(quest.getId(), dbQuest.getId());
 		assertEquals(quest.getType(), dbQuest.getType());

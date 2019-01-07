@@ -42,6 +42,7 @@ import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao;
 import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao;
 import de.westnordost.streetcomplete.data.statistics.QuestStatisticsDao;
 import de.westnordost.streetcomplete.data.tiles.DownloadedTilesDao;
+import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener;
 import de.westnordost.streetcomplete.util.SlippyMapMath;
 
 public abstract class AOsmQuestChangesUpload
@@ -57,11 +58,12 @@ public abstract class AOsmQuestChangesUpload
 	private final ChangesetsDao changesetsDao;
 	private final DownloadedTilesDao downloadedTilesDao;
 	private final SharedPreferences prefs;
-	private final OsmQuestGiver questUnlocker;
+	private final OsmQuestGiver questGiver;
 
-	private List<OsmQuest> createdQuests;
-	private List<Long> removedQuestIds;
+	private final List<OsmQuest> createdQuests;
+	private final List<Long> removedQuestIds;
 	private VisibleQuestListener visibleQuestListener;
+	private OnUploadedChangeListener uploadedChangeListener;
 
 	// The cache is just here so that uploading 500 quests of same quest type does not result in 500 DB requests.
 	private Map<OpenChangesetKey, Long> changesetIdsCache = new HashMap<>();
@@ -71,7 +73,7 @@ public abstract class AOsmQuestChangesUpload
 			ElementGeometryDao elementGeometryDB, QuestStatisticsDao statisticsDB,
 			OpenChangesetsDao openChangesetsDB, ChangesetsDao changesetsDao,
 			DownloadedTilesDao downloadedTilesDao, SharedPreferences prefs,
-			OsmQuestGiver questUnlocker)
+			OsmQuestGiver questGiver)
 	{
 		this.osmDao = osmDao;
 		this.questDB = questDB;
@@ -82,9 +84,14 @@ public abstract class AOsmQuestChangesUpload
 		this.changesetsDao = changesetsDao;
 		this.downloadedTilesDao = downloadedTilesDao;
 		this.prefs = prefs;
-		this.questUnlocker = questUnlocker;
+		this.questGiver = questGiver;
 		createdQuests = new ArrayList<>();
 		removedQuestIds = new ArrayList<>();
+	}
+
+	public synchronized void setProgressListener(OnUploadedChangeListener uploadedChangeListener)
+	{
+		this.uploadedChangeListener = uploadedChangeListener;
 	}
 
 	public synchronized void setVisibleQuestListener(VisibleQuestListener visibleQuestListener)
@@ -105,16 +112,21 @@ public abstract class AOsmQuestChangesUpload
 		{
 			if(cancelState.get()) break; // break so that the unreferenced stuff is deleted still
 
+			// was deleted while trying to upload another quest
+			if(removedQuestIds.contains(quest.getId())) continue;
+
 			Element element = elementDB.get(quest.getElementType(), quest.getElementId());
 
 			long changesetId = getChangesetIdOrCreate(quest.getOsmElementQuestType(), quest.getChangesSource());
 			if (uploadQuestChange(changesetId, quest, element, false, false))
 			{
 				uploadedQuestTypes.add(quest.getOsmElementQuestType());
+				uploadedChangeListener.onUploaded();
 				commits++;
 			}
 			else
 			{
+				uploadedChangeListener.onDiscarded();
 				obsolete++;
 			}
 		}
@@ -161,8 +173,8 @@ public abstract class AOsmQuestChangesUpload
 
 	private void cleanUp(Set<OsmElementQuestType> questTypes)
 	{
-		long yesterday = System.currentTimeMillis() - 24 * 60 * 60 * 1000;
-		int deletedQuests = questDB.deleteAllClosed(yesterday);
+		long timestamp = System.currentTimeMillis() - ApplicationConstants.MAX_QUEST_UNDO_HISTORY_AGE;
+		int deletedQuests = questDB.deleteAllClosed(timestamp);
 		if(deletedQuests > 0)
 		{
 			elementGeometryDB.deleteUnreferenced();
@@ -263,12 +275,9 @@ public abstract class AOsmQuestChangesUpload
 
 		closeQuest(quest);
 		// save with new version when persisting to DB
-		elementDB.put(updatedElement);
-		statisticsDB.addOne(quest.getType().getClass().getSimpleName());
+		putUpdatedElement(updatedElement);
 
-		OsmQuestGiver.QuestUpdates questUpdates = questUnlocker.updateQuests(updatedElement);
-		createdQuests.addAll(questUpdates.createdQuests);
-		removedQuestIds.addAll(questUpdates.removedQuestIds);
+		statisticsDB.addOne(quest.getType().getClass().getSimpleName());
 
 		return true;
 	}
@@ -309,13 +318,32 @@ public abstract class AOsmQuestChangesUpload
 		Element copy = copyElement(element, element.getVersion());
 
 		StringMapChanges changes = quest.getChanges();
-		if(changes.hasConflictsTo(copy.getTags()))
+		try
+		{
+			changes.applyTo(copy.getTags());
+		}
+		catch (IllegalStateException e)
 		{
 			Log.d(TAG, "Dropping quest " + getQuestStringForLog(quest) +
-					" because there has been a conflict while applying the changes");
+				" because there has been a conflict while applying the changes");
 			return null;
 		}
-		changes.applyTo(copy.getTags());
+		catch (IllegalArgumentException e)
+		{
+			/* There is a max key/value length limit of 255 characters in OSM. If we reach this
+			   point, it means the UI did permit an input of more than that. So, we have to catch
+			   this here latest.
+			   This is a warning because the UI should prevent this in the first place, at least
+			   for free-text input. For structured input, like opening hours, it is another matter
+			   because it's awkward to explain to a non-technical user this technical limitation
+
+			   See also https://github.com/openstreetmap/openstreetmap-website/issues/2025
+			  */
+			Log.w(TAG, "Dropping quest " + getQuestStringForLog(quest) +
+				" because a key or value is too long for OSM", e);
+			return null;
+		}
+
 		return copy;
 	}
 
@@ -439,14 +467,28 @@ public abstract class AOsmQuestChangesUpload
 
 		if(element != null)
 		{
-			elementDB.put(element);
+			putUpdatedElement(element);
 		}
 		else
 		{
-			elementDB.delete(elementType, id);
+			deleteElement(elementType, id);
 		}
 
 		return element;
+	}
+
+	private void putUpdatedElement(Element element)
+	{
+		elementDB.put(element);
+		OsmQuestGiver.QuestUpdates questUpdates = questGiver.updateQuests(element);
+		createdQuests.addAll(questUpdates.createdQuests);
+		removedQuestIds.addAll(questUpdates.removedQuestIds);
+	}
+
+	private void deleteElement(Element.Type type, long id)
+	{
+		elementDB.delete(type, id);
+		removedQuestIds.addAll(questGiver.removeQuests(type, id));
 	}
 
 	private Map<String,String> createChangesetTags(OsmElementQuestType questType, String source)

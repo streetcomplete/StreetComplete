@@ -1,12 +1,16 @@
 package de.westnordost.streetcomplete.data.osm.tql;
 
-import junit.framework.TestCase;
+import org.junit.Test;
 
-public class StringWithCursorTest extends TestCase
+import java.util.Locale;
+
+import static org.junit.Assert.*;
+
+public class StringWithCursorTest
 {
-	public void testAdvance()
+	@Test public void advance()
 	{
-		StringWithCursor x = new StringWithCursor("ab");
+		StringWithCursor x = new StringWithCursor("ab", Locale.US);
 		assertEquals(0, x.getCursorPos());
 		assertEquals('a', x.advance());
 		assertEquals(1, x.getCursorPos());
@@ -17,25 +21,25 @@ public class StringWithCursorTest extends TestCase
 		{
 			x.advance();
 			fail();
-		} catch (IndexOutOfBoundsException e) {  }
+		} catch (IndexOutOfBoundsException ignore) {  }
 	}
 
-	public void testAdvanceBy()
+	@Test public void advanceBy()
 	{
-		StringWithCursor x = new StringWithCursor("wundertuete");
+		StringWithCursor x = new StringWithCursor("wundertuete",Locale.US);
 		assertEquals("wunder",x.advanceBy(6));
 		assertEquals("", x.advanceBy(0));
 		try
 		{
 			x.advanceBy(-1);
 			fail();
-		} catch(IndexOutOfBoundsException e) { }
+		} catch(IndexOutOfBoundsException ignore) { }
 		assertEquals("tuete",x.advanceBy(99999));
 	}
 
-	public void testNextIsAndAdvance()
+	@Test public void nextIsAndAdvance()
 	{
-		StringWithCursor x = new StringWithCursor("test123");
+		StringWithCursor x = new StringWithCursor("test123",Locale.US);
 		assertTrue(x.nextIsAndAdvance("te"));
 		assertEquals(2, x.getCursorPos());
 		assertFalse(x.nextIsAndAdvance("te"));
@@ -45,9 +49,9 @@ public class StringWithCursorTest extends TestCase
 		assertTrue(x.isAtEnd());
 	}
 
-	public void testNextIsAndAdvanceChar()
+	@Test public void nextIsAndAdvanceChar()
 	{
-		StringWithCursor x = new StringWithCursor("test123");
+		StringWithCursor x = new StringWithCursor("test123",Locale.US);
 		assertTrue(x.nextIsAndAdvance('t'));
 		assertEquals(1, x.getCursorPos());
 		assertFalse(x.nextIsAndAdvance('t'));
@@ -56,16 +60,16 @@ public class StringWithCursorTest extends TestCase
 		assertEquals(5, x.getCursorPos());
 	}
 
-	public void testNextIsAndAdvanceIgnoreCase()
+	@Test public void nextIsAndAdvanceIgnoreCase()
 	{
-		StringWithCursor x = new StringWithCursor("test123");
+		StringWithCursor x = new StringWithCursor("test123",Locale.US);
 		assertTrue(x.nextIsAndAdvanceIgnoreCase("TE"));
 		assertTrue(x.nextIsAndAdvanceIgnoreCase("st"));
 	}
 
-	public void testFindNext()
+	@Test public void findNext()
 	{
-		StringWithCursor x = new StringWithCursor("abc abc");
+		StringWithCursor x = new StringWithCursor("abc abc",Locale.US);
 		assertEquals("abc abc".length(), x.findNext("wurst"));
 
 		assertEquals(0,x.findNext("abc"));
@@ -73,9 +77,9 @@ public class StringWithCursorTest extends TestCase
 		assertEquals(3, x.findNext("abc"));
 	}
 
-	public void testFindNextChar()
+	@Test public void findNextChar()
 	{
-		StringWithCursor x = new StringWithCursor("abc abc");
+		StringWithCursor x = new StringWithCursor("abc abc",Locale.US);
 		assertEquals("abc abc".length(), x.findNext('x'));
 
 		assertEquals(0,x.findNext('a'));
@@ -83,9 +87,9 @@ public class StringWithCursorTest extends TestCase
 		assertEquals(3,x.findNext('a'));
 	}
 
-	public void testNextIsChar()
+	@Test public void nextIsChar()
 	{
-		StringWithCursor x = new StringWithCursor("abc");
+		StringWithCursor x = new StringWithCursor("abc",Locale.US);
 		assertTrue(x.nextIs('a'));
 		assertFalse(x.nextIs('b'));
 		x.advance();
@@ -96,9 +100,9 @@ public class StringWithCursorTest extends TestCase
 		assertFalse(x.nextIs('c'));
 	}
 
-	public void testNextIsString()
+	@Test public void nextIsString()
 	{
-		StringWithCursor x = new StringWithCursor("abc");
+		StringWithCursor x = new StringWithCursor("abc",Locale.US);
 		assertTrue(x.nextIs("abc"));
 		assertTrue(x.nextIs("ab"));
 		assertFalse(x.nextIs("bc"));
@@ -109,9 +113,9 @@ public class StringWithCursorTest extends TestCase
 		assertFalse(x.nextIs("c"));
 	}
 
-	public void testNextIsStringIgnoreCase()
+	@Test public void nextIsStringIgnoreCase()
 	{
-		StringWithCursor x = new StringWithCursor("abc");
+		StringWithCursor x = new StringWithCursor("abc",Locale.US);
 		assertTrue(x.nextIsIgnoreCase("A"));
 		assertTrue(x.nextIsIgnoreCase("a"));
 	}

@@ -17,8 +17,6 @@
         android:layout_above="@+id/openstreetmapLink"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:layout_marginRight="4dp"
-        android:layout_marginTop="8dp"
         tools:ignore="RtlHardcoded"/>
 
     <TextView
@@ -29,7 +27,8 @@
         android:textColorLink="#536dfe"
         android:textSize="11sp"
         android:text="@string/map_attribution_mapzen"
-        android:layout_margin="8sp"
+        android:layout_marginBottom="8sp"
+        android:layout_marginStart="8sp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"/>
 
@@ -40,7 +39,8 @@
         android:textColor="#444444"
         android:textSize="11sp"
         android:text="@string/map_attribution_osm"
-        android:layout_margin="8sp"
+        android:layout_marginBottom="8sp"
+        android:layout_marginEnd="8sp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"/>
 

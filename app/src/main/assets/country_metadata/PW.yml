@@ -1,3 +1,4 @@
 # Do not edit. Source files are in /res/country_metadata
+measurementSystem: [imperial, metric]
 mobileCountryCode: 552
 officialLanguages: [en, pau]

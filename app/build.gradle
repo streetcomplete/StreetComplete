@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 def MAPZEN_API_KEY = hasProperty('mapzenApiKey') ? '"' + mapzenApiKey + '"' : "null"
 
@@ -21,8 +23,8 @@ android {
         applicationId "de.westnordost.streetcomplete"
         minSdkVersion 17
         targetSdkVersion 27
-        versionCode 700
-        versionName "7.0-beta1"
+        versionCode 901
+        versionName "9.0"
         testInstrumentationRunner "android.test.InstrumentationTestRunner"
         buildConfigField "String", "MAPZEN_API_KEY", MAPZEN_API_KEY
     }
@@ -41,6 +43,7 @@ android {
     }
 
     lintOptions {
+        disable 'MissingTranslation'
         abortOnError false
     }
 }
@@ -68,14 +71,11 @@ dependencies {
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
     releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
 
-    // tests (perhaps migrate to junit4 later if any features of it seem convenient or necessary)
-    testImplementation 'junit:junit:3.8.1'
-    testImplementation 'org.mockito:mockito-core:1.10.19'
+    // tests
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'org.mockito:mockito-core:2.15.0'
     testImplementation 'org.objenesis:objenesis:2.6'
     testImplementation 'org.assertj:assertj-core:2.8.0'
-    // LutimImageUploaderTest uses org.json which is included in Android but needs library for
-    // non-android test cases
-    testImplementation 'org.eclipse.ecf:org.json:1.0.0.v201011060100'
 
     androidTestImplementation 'org.assertj:assertj-core:2.8.0'
     androidTestImplementation 'com.android.support:support-annotations:27.1.1'
@@ -102,12 +102,11 @@ dependencies {
     implementation 'com.evernote:android-job:1.1.12'
 
     // geometry
-    implementation 'de.westnordost:countryboundaries:1.2'
-    implementation 'com.vividsolutions:jts-core:1.14.0'
+    implementation 'de.westnordost:countryboundaries:1.4'
 
     // talking with OSM Api
     implementation 'oauth.signpost:signpost-core:1.2.1.2'
-    implementation ('de.westnordost:osmapi:1.8') {
+    implementation ('de.westnordost:osmapi:3.3') {
         // it's already included in Android
         exclude group: 'net.sf.kxml', module: 'kxml2'
     }
@@ -124,11 +123,14 @@ dependencies {
     implementation 'org.objenesis:objenesis:2.6'
 
     // map and location
-    implementation 'com.mapzen.tangram:tangram:0.8.1'
+    implementation 'com.mapzen.tangram:tangram:0.9.6'
     implementation 'com.mapzen.android:lost:3.0.4'
 
     // config files
     implementation 'com.esotericsoftware.yamlbeans:yamlbeans:1.13'
+
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 
 task generateMetadata(type: Exec) {

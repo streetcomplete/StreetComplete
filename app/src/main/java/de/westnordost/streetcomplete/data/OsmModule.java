@@ -1,5 +1,9 @@
 package de.westnordost.streetcomplete.data;
 
+import android.content.Context;
+
+import java.io.File;
+
 import javax.inject.Provider;
 import javax.inject.Singleton;
 
@@ -8,6 +12,7 @@ import dagger.Provides;
 import de.westnordost.osmapi.user.UserDao;
 import de.westnordost.streetcomplete.ApplicationConstants;
 import de.westnordost.streetcomplete.data.osm.download.OverpassOldMapDataDao;
+import de.westnordost.streetcomplete.data.osmnotes.OsmAvatarsDownload;
 import de.westnordost.streetcomplete.oauth.OAuthPrefs;
 import de.westnordost.streetcomplete.data.osm.download.ElementGeometryCreator;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
@@ -18,9 +23,8 @@ import de.westnordost.osmapi.map.MapDataDao;
 import de.westnordost.osmapi.map.MapDataFactory;
 import de.westnordost.osmapi.map.OsmMapDataFactory;
 import de.westnordost.osmapi.notes.NotesDao;
-import de.westnordost.streetcomplete.quests.oneway.TrafficFlowSegmentsDao;
+import de.westnordost.streetcomplete.quests.oneway.data.TrafficFlowSegmentsDao;
 import de.westnordost.streetcomplete.util.ImageUploader;
-import de.westnordost.streetcomplete.util.LutimImageUploader;
 import oauth.signpost.OAuthConsumer;
 
 @Module
@@ -95,10 +99,18 @@ public class OsmModule
 		return new MapDataDao(osm);
 	}
 
+	@Provides public static OsmAvatarsDownload avatarsDownload(UserDao userDao, Context context)
+	{
+		return new OsmAvatarsDownload(userDao, getAvatarsCacheDirectory(context));
+	}
+
 	@Provides public static ImageUploader imageUploader()
 	{
-		LutimImageUploader imageUploader = new LutimImageUploader(ApplicationConstants.LUTIM_INSTANCE);
-		imageUploader.setDeleteAfterDays(ApplicationConstants.LUTIM_DELETE_AFTER_DAYS);
-		return imageUploader;
+		return new ImageUploader(ApplicationConstants.SC_PHOTO_SERVICE_URL);
+	}
+
+	public static File getAvatarsCacheDirectory(Context context)
+	{
+		return new File(context.getCacheDir(), ApplicationConstants.AVATARS_CACHE_DIRECTORY);
 	}
 }

@@ -3,5 +3,5 @@ isAdvisorySpeedLimitKnown: true
 isSlowZoneKnown: true
 mobileCountryCode: 268
 officialLanguages: [pt]
-orchardProduces: [olive, grape, fig, chestnut, almond, tomatoe, orange, apple, pear, avocado, peach,
+orchardProduces: [olive, grape, fig, chestnut, almond, tomato, orange, apple, pear, avocado, peach,
   walnut, kiwi, plum, banana]

@@ -4,9 +4,9 @@ isAdvisorySpeedLimitKnown: false
 isLeftHandTraffic: false
 isLivingStreetKnown: false
 isSlowZoneKnown: false
+measurementSystem: [metric]
 officialLanguages: [en]
 orchardProduces: []
 popularReligions: []
 popularSports: []
 regularShoppingDays: 6
-speedUnit: [km/h]

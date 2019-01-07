@@ -5,7 +5,7 @@ isLivingStreetKnown: true
 mobileCountryCode: 505
 officialLanguages: [en]
 orchardProduces: [grape, olive, almond, apple, orange, banana, peach, avocado, guava, mango, mangosteen,
-  walnut, apricot, pear, tomatoe, plum, cherry]
+  walnut, apricot, pear, tomato, plum, cherry]
 popularReligions: [christian, muslim, buddhist]
 popularSports: [tennis, netball, cricket, bowls, basketball, golf, australian_football, baseball,
   field_hockey]

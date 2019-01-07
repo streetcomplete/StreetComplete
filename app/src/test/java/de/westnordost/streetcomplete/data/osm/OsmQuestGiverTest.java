@@ -1,12 +1,12 @@
 package de.westnordost.streetcomplete.data.osm;
 
-import junit.framework.TestCase;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
-import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.map.data.Node;
@@ -18,12 +18,10 @@ import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestDao;
 
-import static org.mockito.Matchers.any;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
-public class OsmQuestGiverTest extends TestCase
+public class OsmQuestGiverTest
 {
 	private static LatLon POS = new OsmLatLon(10,10);
 	private static Node NODE = new OsmNode(1, 0, POS, null, null, null);
@@ -33,19 +31,17 @@ public class OsmQuestGiverTest extends TestCase
 	private OsmQuestGiver osmQuestUnlocker;
 	private OsmElementQuestType questType;
 
-	@Override public void setUp() throws Exception
+	@Before public void setUp() throws Exception
 	{
-		super.setUp();
 		ElementGeometryDao elementGeometryDao = mock(ElementGeometryDao.class);
 		when(elementGeometryDao.get(Element.Type.NODE, 1)).thenReturn(new ElementGeometry(POS));
 
 		osmNoteQuestDao = mock(OsmNoteQuestDao.class);
-		when(osmNoteQuestDao.getAllPositions(any(BoundingBox.class)))
-				.thenReturn(Collections.emptyList());
+		when(osmNoteQuestDao.getAllPositions(any())).thenReturn(Collections.emptyList());
 
 		osmQuestDao = mock(OsmQuestDao.class);
 		when(osmQuestDao.getAll(null, null, null, Element.Type.NODE, 1L))
-				.thenReturn(Collections.emptyList());
+			.thenReturn(Collections.emptyList());
 
 		questType = mock(OsmElementQuestType.class);
 		final List<QuestType> questTypes = Collections.singletonList(questType);
@@ -53,20 +49,19 @@ public class OsmQuestGiverTest extends TestCase
 				() -> questTypes);
 	}
 
-	public void testNoteBlocksNewQuests()
+	@Test public void noteBlocksNewQuests()
 	{
 		when(questType.isApplicableTo(NODE)).thenReturn(true);
-		when(osmNoteQuestDao.getAllPositions(any(BoundingBox.class)))
-				.thenReturn(Collections.singletonList(POS));
+		when(osmNoteQuestDao.getAllPositions(any())).thenReturn(Collections.singletonList(POS));
 
 		assertTrue(osmQuestUnlocker.updateQuests(NODE).createdQuests.isEmpty());
 	}
 
-	public void testPreviousQuestBlocksNewQuest()
+	@Test public void previousQuestBlocksNewQuest()
 	{
 		OsmQuest q = new OsmQuest(questType, Element.Type.NODE, 1, new ElementGeometry(POS));
 		when(osmQuestDao.getAll(null, null, null, Element.Type.NODE, 1L))
-				.thenReturn(Collections.singletonList(q));
+			.thenReturn(Collections.singletonList(q));
 		when(questType.isApplicableTo(NODE)).thenReturn(true);
 
 		OsmQuestGiver.QuestUpdates r = osmQuestUnlocker.updateQuests(NODE);
@@ -74,7 +69,7 @@ public class OsmQuestGiverTest extends TestCase
 		assertTrue(r.removedQuestIds.isEmpty());
 	}
 
-	public void testNotApplicableBlocksNewQuest()
+	@Test public void notApplicableBlocksNewQuest()
 	{
 		when(questType.isApplicableTo(NODE)).thenReturn(false);
 
@@ -83,7 +78,7 @@ public class OsmQuestGiverTest extends TestCase
 		assertTrue(r.removedQuestIds.isEmpty());
 	}
 
-	public void testNotApplicableRemovesPreviousQuest()
+	@Test public void notApplicableRemovesPreviousQuest()
 	{
 		OsmQuest q = new OsmQuest(123L, questType, Element.Type.NODE, 1, QuestStatus.NEW,
 			null, null, new Date(), new ElementGeometry(POS));
@@ -99,7 +94,7 @@ public class OsmQuestGiverTest extends TestCase
 		verify(osmQuestDao).deleteAll(Collections.singletonList(123L));
 	}
 
-	public void testApplicableAddsNewQuest()
+	@Test public void applicableAddsNewQuest()
 	{
 		when(questType.isApplicableTo(NODE)).thenReturn(true);
 		List<OsmQuest> quests = osmQuestUnlocker.updateQuests(NODE).createdQuests;

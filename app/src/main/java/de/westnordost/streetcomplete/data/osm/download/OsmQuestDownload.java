@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.Future;
@@ -28,9 +29,12 @@ import de.westnordost.streetcomplete.data.osm.persist.OsmElementKey;
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.map.data.LatLon;
+import de.westnordost.streetcomplete.util.SphericalEarthMath;
 
 public class OsmQuestDownload
 {
+	public static final int MAX_GEOMETRY_LENGTH_IN_METERS = 500;
+
 	private static final String TAG = "QuestDownload";
 
 	// injections
@@ -124,13 +128,14 @@ public class OsmQuestDownload
 		// turns out to be slow if done for every quest type
 		geometryDB.deleteUnreferenced();
 		elementDB.deleteUnreferenced();
+		questType.cleanMetadata();
 
 		int obsoleteAmount = previousQuests.size();
 		Log.i(TAG, getQuestTypeName(questType) + ": " +
 				"Added " + newQuestsByQuestType + " new and " +
 				"removed " + obsoleteAmount + " already resolved quests." +
 				" (Total: " + quests.size() + ")" +
-				" in " + (System.currentTimeMillis() - time) + "ms");
+				" in " + ((System.currentTimeMillis() - time)/1000) + "s");
 
 		return true;
 	}
@@ -158,7 +163,7 @@ public class OsmQuestDownload
 				bbox.getMinLongitude(), bbox.getMinLatitude(),
 				bbox.getMaxLongitude(), bbox.getMaxLatitude());
 
-			if(containsAnyOf(containingCountries, countries.getExceptions())) return false;
+			return !containsAnyOf(containingCountries, countries.getExceptions());
 		}
 		else
 		{
@@ -166,9 +171,8 @@ public class OsmQuestDownload
 				bbox.getMinLongitude(), bbox.getMinLatitude(),
 				bbox.getMaxLongitude(), bbox.getMaxLatitude());
 
-			if(!containsAnyOf(intersectingCountries, countries.getExceptions())) return false;
+			return containsAnyOf(intersectingCountries, countries.getExceptions());
 		}
-		return true;
 	}
 
 	private boolean mayCreateQuestFrom(
@@ -184,6 +188,18 @@ public class OsmQuestDownload
 					" because the element " + getElementAsLogString(element) +
 					" has no valid geometry");
 			return false;
+		}
+
+		// do not create quests that refer to geometry that is too long for a surveyor to be
+		// expected to survey
+		if(geometry.polylines != null)
+		{
+			double distance = 0;
+			for (List<LatLon> polyline : geometry.polylines)
+			{
+				distance += SphericalEarthMath.distance(polyline);
+			}
+			if(distance > MAX_GEOMETRY_LENGTH_IN_METERS) return false;
 		}
 
 		// do not create quests whose marker is at a blacklisted position

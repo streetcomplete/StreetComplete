@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.changes;
 
-import junit.framework.TestCase;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -8,14 +8,12 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import static org.mockito.Mockito.atLeastOnce;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
-public class StringMapChangesTest extends TestCase
+public class StringMapChangesTest
 {
-	public void testEmpty()
+	@Test public void empty()
 	{
 		List<StringMapEntryChange> list = Collections.emptyList();
 
@@ -30,7 +28,7 @@ public class StringMapChangesTest extends TestCase
 		assertFalse(changes.hasConflictsTo(someMap));
 	}
 
-	public void testOne()
+	@Test public void one()
 	{
 		StringMapEntryChange change1 = mock(StringMapEntryChange.class);
 		when(change1.toString()).thenReturn("a");
@@ -47,7 +45,7 @@ public class StringMapChangesTest extends TestCase
 		verify(change1, atLeastOnce()).conflictsWith(someMap);
 	}
 
-	public void testTwo()
+	@Test public void two()
 	{
 		List<StringMapEntryChange> list = new ArrayList<>();
 
@@ -72,7 +70,7 @@ public class StringMapChangesTest extends TestCase
 		verify(change2, atLeastOnce()).conflictsWith(someMap);
 	}
 
-	public void testApplyToConflict()
+	@Test(expected = IllegalStateException.class) public void applyToConflictFails()
 	{
 		Map<String,String> someMap = Collections.emptyMap();
 
@@ -81,15 +79,10 @@ public class StringMapChangesTest extends TestCase
 
 		StringMapChanges changes = new StringMapChanges(Collections.singletonList(change1));
 
-		try
-		{
-			changes.applyTo(someMap);
-			fail();
-		}
-		catch(IllegalStateException e) { }
+		changes.applyTo(someMap);
 	}
 
-	public void testGetConflicts()
+	@Test public void getConflicts()
 	{
 		List<StringMapEntryChange> list = new ArrayList<>();
 		Map<String,String> someMap = Collections.emptyMap();

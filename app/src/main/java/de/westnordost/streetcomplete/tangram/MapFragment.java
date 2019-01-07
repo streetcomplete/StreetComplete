@@ -13,17 +13,14 @@ import android.support.annotation.AnyThread;
 import android.support.annotation.CallSuper;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v13.app.FragmentCompat;
 import android.support.v4.app.Fragment;
 import android.support.v7.preference.PreferenceManager;
 import android.text.Html;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
-import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 import android.widget.TextView;
 
@@ -47,15 +44,14 @@ import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.util.BitmapUtil;
 import de.westnordost.streetcomplete.util.DpUtil;
 import de.westnordost.streetcomplete.util.SphericalEarthMath;
+import de.westnordost.streetcomplete.util.ViewUtils;
 
 import static android.content.Context.SENSOR_SERVICE;
 
 public class MapFragment extends Fragment implements
-		FragmentCompat.OnRequestPermissionsResultCallback, LocationListener,
-		LostApiClient.ConnectionCallbacks, TouchInput.ScaleResponder,
-		TouchInput.ShoveResponder, TouchInput.RotateResponder,
-		TouchInput.PanResponder, TouchInput.DoubleTapResponder,
-		CompassComponent.Listener, MapController.SceneLoadListener
+	LocationListener, LostApiClient.ConnectionCallbacks, TouchInput.ScaleResponder,
+	TouchInput.ShoveResponder, TouchInput.RotateResponder, TouchInput.PanResponder,
+	TouchInput.DoubleTapResponder, CompassComponent.Listener, MapController.SceneLoadListener
 {
 	private CompassComponent compass = new CompassComponent();
 
@@ -181,23 +177,8 @@ public class MapFragment extends Fragment implements
 			initMarkers();
 			followPosition();
 			showLocation();
-			postOnLayout(this::updateView);
-		}
-	}
-
-	private void postOnLayout(final Runnable runnable)
-	{
-		ViewTreeObserver vto = getView().getViewTreeObserver();
-		if(vto.isAlive())
-		{
-			vto.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
-			{
-				@Override public void onGlobalLayout()
-				{
-					getView().getViewTreeObserver().removeOnGlobalLayoutListener(this);
-					runnable.run();
-				}
-			});
+			View v = getView();
+			if(v != null) ViewUtils.postOnLayout(v, this::updateView);
 		}
 	}
 
@@ -290,11 +271,6 @@ public class MapFragment extends Fragment implements
 	public void setIsFollowingPosition(boolean value)
 	{
 		isFollowingPosition = value;
-		if(!isFollowingPosition) {
-			zoomedYet = false;
-			isShowingDirection = false;
-			isCompassMode = false;
-		}
 		followPosition();
 	}
 
@@ -491,7 +467,6 @@ public class MapFragment extends Fragment implements
 
 	public void setCompassMode(boolean isCompassMode)
 	{
-		if(!isFollowingPosition) return;
 		this.isCompassMode = isCompassMode;
 		if(isCompassMode)
 		{
@@ -676,4 +651,13 @@ public class MapFragment extends Fragment implements
 		return controller.getZoom();
 	}
 
+	public void showMapControls()
+	{
+		if(mapControls != null) mapControls.showControls();
+	}
+
+	public void hideMapControls()
+	{
+		if(mapControls != null) mapControls.hideControls();
+	}
 }

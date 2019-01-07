@@ -1,28 +1,30 @@
 package de.westnordost.streetcomplete.data.osm.download;
 
-import junit.framework.TestCase;
+import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
-public class OverpassStatusParserTest extends TestCase
+import static org.junit.Assert.*;
+
+public class OverpassStatusParserTest
 {
-	public void testParseRateLimit()
+	@Test public void parseRateLimit()
 	{
 		assertEquals(2, parse("Rate limit: 2").maxAvailableSlots);
 	}
 
-	public void testParseAvailableSlots()
+	@Test public void parseAvailableSlots()
 	{
 		assertEquals(33, parse("33 slots available now.").availableSlots);
 	}
 
-	public void testParseNoAvailableSlots()
+	@Test public void parseNoAvailableSlots()
 	{
 		assertEquals(25, (int) parse("Slot available after: 2016-11-20T18:08:05Z, in 25 seconds.").nextAvailableSlotIn);
 	}
 
-	public void testParseNoAvailableSlotsMultiple()
+	@Test public void parseNoAvailableSlotsMultiple()
 	{
 		assertEquals(25, (int) parse(
 				"Slot available after: 2016-11-20T18:08:05Z, in 25 seconds.\n" +

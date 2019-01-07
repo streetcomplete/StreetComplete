@@ -31,14 +31,16 @@ public class OsmNotesDownload
 	private final NoteDao noteDB;
 	private final OsmNoteQuestDao noteQuestDB;
 	private final CreateNoteDao createNoteDB;
+	private final OsmAvatarsDownload avatarsDownload;
 	private final SharedPreferences preferences;
 	private final OsmNoteQuestType questType;
 
 	private VisibleQuestListener listener;
 
 	@Inject public OsmNotesDownload(
-			NotesDao noteServer, NoteDao noteDB, OsmNoteQuestDao noteQuestDB,
-			CreateNoteDao createNoteDB, SharedPreferences preferences, OsmNoteQuestType questType)
+		NotesDao noteServer, NoteDao noteDB, OsmNoteQuestDao noteQuestDB,
+		CreateNoteDao createNoteDB, SharedPreferences preferences, OsmNoteQuestType questType,
+		OsmAvatarsDownload avatarsDownload)
 	{
 		this.noteServer = noteServer;
 		this.noteDB = noteDB;
@@ -46,6 +48,7 @@ public class OsmNotesDownload
 		this.createNoteDB = createNoteDB;
 		this.preferences = preferences;
 		this.questType = questType;
+		this.avatarsDownload = avatarsDownload;
 	}
 
 	public void setQuestListener(VisibleQuestListener listener)
@@ -60,16 +63,17 @@ public class OsmNotesDownload
 		final Collection<Note> notes = new ArrayList<>();
 		final Collection<OsmNoteQuest> quests = new ArrayList<>();
 		final Collection<OsmNoteQuest> hiddenQuests = new ArrayList<>();
+		final Set<Long> noteCommentUserIds = new HashSet<>();
 
 		noteServer.getAll(bbox, note ->
 		{
 			OsmNoteQuest quest = new OsmNoteQuest(note, questType);
-			if(makeNoteClosed(userId, note))
+			if(shouldMakeNoteClosed(userId, note))
 			{
 				quest.setStatus(QuestStatus.CLOSED);
 				hiddenQuests.add(quest);
 			}
-			else if(makeNoteInvisible(quest))
+			else if(shouldMakeNoteInvisible(quest))
 			{
 				quest.setStatus(QuestStatus.INVISIBLE);
 				hiddenQuests.add(quest);
@@ -79,7 +83,10 @@ public class OsmNotesDownload
 				quests.add(quest);
 				previousQuestsByNoteId.remove(note.id);
 			}
-
+			for (NoteComment comment : note.comments)
+			{
+				if(comment.user != null) noteCommentUserIds.add(comment.user.id);
+			}
 			notes.add(note);
 			positions.add(note.position);
 		}, max, 0);
@@ -130,8 +137,12 @@ public class OsmNotesDownload
 				" closed notes (" + hiddenAmount + " of " + (hiddenAmount + visibleAmount) +
 				" notes are hidden)");
 
+		avatarsDownload.download(noteCommentUserIds);
+
 		return positions;
 	}
+
+
 
 	private HashMap<Long, Long> getPreviousQuestsByNoteId(BoundingBox bbox)
 	{
@@ -143,7 +154,7 @@ public class OsmNotesDownload
 		return result;
 	}
 
-	private boolean makeNoteClosed(Long userId, Note note)
+	private boolean shouldMakeNoteClosed(Long userId, Note note)
 	{
 		/* hide a note if he already contributed to it. This can also happen from outside
 		   this application, which is why we need to overwrite its quest status. */
@@ -152,7 +163,7 @@ public class OsmNotesDownload
 
 	// the difference to hidden is that is that invisible quests may turn visible again, dependent
 	// on the user's settings while hidden quests are "dead"
-	private boolean makeNoteInvisible(OsmNoteQuest quest)
+	private boolean shouldMakeNoteInvisible(OsmNoteQuest quest)
 	{
 		/* many notes are created to report problems on the map that cannot be resolved
 		 * through an on-site survey rather than questions from other (armchair) mappers

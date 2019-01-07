@@ -1,4 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
+measurementSystem: [imperial, metric]
 mobileCountryCode: 551
 officialLanguages: [mh, en]
 orchardProduces: [coconut]
