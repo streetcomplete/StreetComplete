@@ -5,5 +5,5 @@ isLivingStreetKnown: true
 isSlowZoneKnown: true
 mobileCountryCode: 202
 officialLanguages: [el]
-orchardProduces: [olive, grape, peach, orange, tomato, cherry, apple, almond, walnut, chestnut, kiwi,
-  apricot, lemon, lime, pear, pistachio]
+orchardProduces: [olive, grape, tomato, peach, apple, kiwi, orange, apricot, lemon, lime, pear, strawberry,
+  chestnut, walnut, almond, plum]

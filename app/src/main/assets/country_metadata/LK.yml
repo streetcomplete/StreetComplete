@@ -3,7 +3,7 @@ additionalStreetsignLanguages: [en]
 isLeftHandTraffic: true
 mobileCountryCode: 413
 officialLanguages: [si, ta]
-orchardProduces: [coconut, tea, rubber, pepper, guava, mango, mangosteen, cashew_nut, areca_nut, chilli_pepper,
-  sweet_pepper, lemon, lime, coffee, tomato, orange, pineapple, cacao, nutmeg]
+orchardProduces: [coconut, tea, rubber, tomato, guava, mango, mangosteen, banana, chilli_pepper, sweet_pepper,
+  areca_nut, pineapple, pepper, avocado, orange, cashew_nut, coffee, lemon, lime]
 popularReligions: [buddhist, hindu, christian, muslim]
 popularSports: [soccer, tennis, cricket]

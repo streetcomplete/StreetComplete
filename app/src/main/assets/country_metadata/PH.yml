@@ -2,6 +2,7 @@
 isAdvisorySpeedLimitKnown: true
 mobileCountryCode: 515
 officialLanguages: [en, fil, es, ceb, ilo, hil]
-orchardProduces: [coconut, banana, rubber, guava, mango, mangosteen, coffee, pineapple, palm_oil, cashew_nut,
-  tomato, cacao, papaya, avocado, grapefruit, chilli_pepper, sweet_pepper, agave]
+orchardProduces: [coconut, banana, pineapple, guava, mango, mangosteen, rubber, cashew_nut, tomato,
+  papaya, coffee, grapefruit, chilli_pepper, sweet_pepper, avocado, orange, cacao,
+  agave]
 popularSports: [basketball, tennis, soccer, volleyball]

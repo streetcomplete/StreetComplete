@@ -2,5 +2,5 @@
 isSlowZoneKnown: true
 mobileCountryCode: 297
 officialLanguages: [sr, bs, sq, hr]
-orchardProduces: [grape, fig, olive, cherry, walnut, orange, chilli_pepper, sweet_pepper, raspberry,
-  apple, tea, tomato, peach, pear, kiwi]
+orchardProduces: [grape, plum, pear, fig, tomato, chilli_pepper, sweet_pepper, orange, cherry, apple,
+  peach, walnut, raspberry, kiwi, olive, tea]

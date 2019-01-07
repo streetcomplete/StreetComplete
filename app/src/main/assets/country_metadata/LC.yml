@@ -3,5 +3,5 @@ isLeftHandTraffic: true
 measurementSystem: [imperial, metric]
 mobileCountryCode: 358
 officialLanguages: [en]
-orchardProduces: [coconut, banana, pepper, grapefruit, nutmeg, lemon, lime, orange, guava, mango, mangosteen,
-  cacao, avocado, tomato, pineapple]
+orchardProduces: [coconut, banana, grapefruit, orange, tomato, lemon, lime, guava, mango, mangosteen,
+  avocado, pepper, cacao, pineapple, nutmeg]

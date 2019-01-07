@@ -1,5 +1,4 @@
 # Do not edit. Source files are in /res/country_metadata
 mobileCountryCode: 627
 officialLanguages: [es, fr, pt, fan]
-orchardProduces: [palm_oil, coconut, palm_oil, cacao, guava, mango, mangosteen, banana, coffee, banana,
-  coffee, pineapple, cacao, coconut, rubber, coffee, rubber]
+orchardProduces: [banana, coconut, coffee, cacao]

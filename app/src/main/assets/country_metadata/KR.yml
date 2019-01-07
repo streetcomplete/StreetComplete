@@ -3,7 +3,7 @@ additionalStreetsignLanguages: [en]
 isAdvisorySpeedLimitKnown: true
 mobileCountryCode: 450
 officialLanguages: [ko]
-orchardProduces: [apple, chilli_pepper, sweet_pepper, chestnut, apple, persimmon, chilli_pepper, sweet_pepper,
-  peach, orange, grape, peach, pear, tomato, strawberry, tomato, plum]
+orchardProduces: [apple, orange, apple, tomato, persimmon, peach, grape, chilli_pepper, sweet_pepper,
+  pear, strawberry, pear, peach, plum, tomato, chilli_pepper, sweet_pepper]
 popularReligions: [christian, buddhist]
 popularSports: [baseball, badminton, archery]

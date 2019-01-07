@@ -3,7 +3,7 @@ additionalStreetsignLanguages: [en]
 isLeftHandTraffic: true
 mobileCountryCode: 502
 officialLanguages: [ms]
-orchardProduces: [palm_oil, rubber, coconut, banana, cacao, guava, mango, mangosteen, pepper, pineapple,
-  cashew_nut, coffee, orange, chilli_pepper, sweet_pepper, tomato, papaya, tea]
+orchardProduces: [rubber, coconut, pineapple, banana, tomato, guava, mango, mangosteen, papaya, pepper,
+  cashew_nut, orange, grapefruit, tea, coffee, lemon, lime, chilli_pepper, sweet_pepper]
 popularReligions: [muslim, buddhist, christian, hindu, chinese_folk, taoist]
 popularSports: [soccer, tennis, basketball, volleyball, badminton, sepak_takraw]

@@ -1,5 +1,6 @@
 # Do not edit. Source files are in /res/country_metadata
 mobileCountryCode: 629
 officialLanguages: [fr, ln, mkw]
-orchardProduces: [palm_oil, banana, coffee, rubber, tea, cacao, guava, mango, mangosteen, papaya, palm_oil,
-  orange, banana, chilli_pepper, sweet_pepper, coffee, avocado, cacao]
+orchardProduces: [banana, guava, mango, mangosteen, papaya, pineapple, orange, banana, avocado, tomato,
+  guava, mango, mangosteen, chilli_pepper, sweet_pepper, coffee, rubber, avocado,
+  grapefruit, lemon, lime]

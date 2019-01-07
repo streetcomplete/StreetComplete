@@ -2,5 +2,5 @@
 isLeftHandTraffic: true
 mobileCountryCode: 641
 officialLanguages: [sw, en]
-orchardProduces: [coffee, banana, cacao, tea, tomato, chilli_pepper, sweet_pepper, pepper, pineapple,
+orchardProduces: [banana, coffee, tea, tomato, cacao, pineapple, chilli_pepper, sweet_pepper, pepper,
   vanilla, sisal]

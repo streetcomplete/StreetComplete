@@ -2,6 +2,6 @@
 firstDayOfWorkweek: Su
 mobileCountryCode: 603
 officialLanguages: [ar, ber, fr]
-orchardProduces: [olive, date, grape, almond, fig, apple, apricot, pear, tomato, chilli_pepper, sweet_pepper,
-  peach, plum, orange, lemon, lime, cherry]
+orchardProduces: [tomato, date, olive, orange, grape, apple, apricot, pear, peach, fig, plum, lemon,
+  lime, almond, chilli_pepper, sweet_pepper, cherry]
 popularReligions: [muslim]

@@ -2,4 +2,4 @@
 isLivingStreetKnown: true
 mobileCountryCode: 631
 officialLanguages: [pt]
-orchardProduces: [banana, coffee, pineapple, palm_oil, tomato, cashew_nut, cacao, sisal]
+orchardProduces: [banana, pineapple, tomato, coffee, cashew_nut, sisal, cacao]
