@@ -12,7 +12,6 @@
         <item name="android:colorPrimaryDark" tools:targetApi="lollipop">@color/primary_dark</item>
         <item name="android:colorAccent" tools:targetApi="lollipop">@color/accent</item>
 
-        <item name="preferenceTheme">@style/AppPreferenceThemeOverlay</item>
         <item name="alertDialogTheme">@style/Theme.Bubble.Dialog.Alert</item>
         <item name="dialogTheme">@style/Theme.Bubble.Dialog</item>
         <item name="titleTextAppearance">@style/TextAppearance.Title</item>
@@ -22,10 +21,6 @@
         <item name="dividerVertical">@drawable/button_bar_divider</item>
         <item name="dividerHorizontal">@drawable/button_bar_divider</item>
         <item name="android:popupMenuStyle">@style/Theme.Bubble.Popup</item>
-    </style>
-
-    <style name="AppPreferenceThemeOverlay" parent="@style/PreferenceThemeOverlay.v14.Material">
-        <item name="android:background">@color/background</item>
     </style>
 
     <style name="Theme.Bubble.Popup" parent="Widget.AppCompat.Light.PopupMenu">

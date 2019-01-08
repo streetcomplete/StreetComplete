@@ -162,8 +162,7 @@ public class SettingsFragment extends PreferenceFragmentCompat
 			bundle.putString("key", preference.getKey());
 			fragment.setArguments(bundle);
 			fragment.setTargetFragment(this, 0);
-			fragment.show(getFragmentManager(),
-					"android.support.v7.preference.PreferenceFragment.DIALOG");
+			fragment.show(getFragmentManager(), "androidx.preference.PreferenceFragment.DIALOG");
 		} else super.onDisplayPreferenceDialog(preference);
 	}
 
