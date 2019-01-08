@@ -96,6 +96,8 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation 'androidx.viewpager:viewpager:1.0.0'
     implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.0.0'
+
+    // photos
     implementation 'androidx.exifinterface:exifinterface:1.0.0'
 
     // Kotlin
@@ -103,8 +105,7 @@ dependencies {
     // TODO add ktx stuff which I use
 
     // scheduling background jobs
-    // TODO can replace with https://developer.android.com/topic/libraries/architecture/workmanager/
-    implementation 'com.evernote:android-job:1.1.12'
+    implementation 'android.arch.work:work-runtime:1.0.0-beta01'
 
     // geometry
     implementation 'de.westnordost:countryboundaries:1.4'

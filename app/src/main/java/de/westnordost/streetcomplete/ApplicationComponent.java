@@ -5,6 +5,7 @@ import javax.inject.Singleton;
 import dagger.Component;
 import de.westnordost.streetcomplete.data.DbModule;
 import de.westnordost.streetcomplete.data.OsmModule;
+import de.westnordost.streetcomplete.data.osm.upload.ChangesetAutoCloserWorker;
 import de.westnordost.streetcomplete.data.upload.QuestChangesUploadService;
 import de.westnordost.streetcomplete.data.download.QuestDownloadService;
 import de.westnordost.streetcomplete.data.meta.MetadataModule;
@@ -70,5 +71,6 @@ public interface ApplicationComponent
 	void inject(ImageListQuestAnswerFragment fragment);
 
 	void inject(AddBuildingLevelsForm fragment);
+	void inject(ChangesetAutoCloserWorker worker);
 
 }
