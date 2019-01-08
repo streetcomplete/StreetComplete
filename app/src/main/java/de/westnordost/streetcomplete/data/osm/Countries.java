@@ -11,12 +11,12 @@ public class Countries
 	public static final Countries ALL = new Countries(true, null);
 	public static final Countries NONE = new Countries(false, null);
 
-	@NonNull public static Countries allExcept(String[] iso3166CountryCodes)
+	@NonNull public static Countries allExcept(String... iso3166CountryCodes)
 	{
 		return new Countries(true, iso3166CountryCodes);
 	}
 
-	@NonNull public static Countries noneExcept(String[] iso3166CountryCodes)
+	@NonNull public static Countries noneExcept(String... iso3166CountryCodes)
 	{
 		return new Countries(false, iso3166CountryCodes);
 	}

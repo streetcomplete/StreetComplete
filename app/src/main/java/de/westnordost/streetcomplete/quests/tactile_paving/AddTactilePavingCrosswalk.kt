@@ -17,7 +17,7 @@ class AddTactilePavingCrosswalk(o: OverpassMapDataDao) : SimpleOverpassQuestType
 
     // See overview here: https://ent8r.github.io/blacklistr/?java=tactile_paving/AddTactilePavingCrosswalk.kt
     // #750
-    override val enabledForCountries: Countries = ENBABLED_FOR_COUNTRIES
+    override val enabledForCountries = ENBABLED_FOR_COUNTRIES
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_tactilePaving_title_crosswalk
 
@@ -29,7 +29,7 @@ class AddTactilePavingCrosswalk(o: OverpassMapDataDao) : SimpleOverpassQuestType
     }
 
     companion object {
-        internal val ENBABLED_FOR_COUNTRIES = Countries.noneExcept(arrayOf(
+        internal val ENBABLED_FOR_COUNTRIES = Countries.noneExcept(
             // Europe
             "NO","SE",
             "GB","IE","NL","BE","FR","ES",
@@ -41,6 +41,6 @@ class AddTactilePavingCrosswalk(o: OverpassMapDataDao) : SimpleOverpassQuestType
             "HK","SG","KR","JP",
             // Oceania
             "AU","NZ"
-        ))
+        )
     }
 }

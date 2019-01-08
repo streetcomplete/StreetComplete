@@ -25,7 +25,7 @@ class AddCycleway(private val overpassServer: OverpassMapDataDao) : OsmElementQu
     // Google Street View (driving around in virtual car)
     // https://en.wikivoyage.org/wiki/Cycling
     // http://peopleforbikes.org/get-local/ (US)
-    override val enabledForCountries = Countries.noneExcept(arrayOf(
+    override val enabledForCountries = Countries.noneExcept(
         // all of Northern and Western Europe, most of Central Europe, some of Southern Europe
         "NO","SE","FI","IS","DK",
         "GB","IE","NL","BE","FR","LU",
@@ -46,7 +46,7 @@ class AddCycleway(private val overpassServer: OverpassMapDataDao) : OsmElementQu
         "US-MA","US-NJ","US-NY","US-DC","US-CT","US-FL",
         "US-MN","US-MI","US-IL","US-WI","US-IN",
         "US-AZ","US-TX"
-    ))
+    )
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_cycleway_title2
 
