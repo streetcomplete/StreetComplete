@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.religion
 
 import android.os.Bundle
+import androidx.core.os.bundleOf
 
 import java.util.ArrayList
 
@@ -27,11 +28,7 @@ class AddReligionToPlaceOfWorshipForm : ImageListQuestAnswerFragment() {
     }
 
     private fun applyMultiAnswer() {
-        val answer = Bundle()
-        val strings = ArrayList<String>(1)
-        strings.add("multifaith")
-        answer.putStringArrayList(ImageListQuestAnswerFragment.OSM_VALUES, strings)
-        applyAnswer(answer)
+        applyAnswer(bundleOf(OSM_VALUES to arrayListOf("multifaith")))
     }
 
     companion object {

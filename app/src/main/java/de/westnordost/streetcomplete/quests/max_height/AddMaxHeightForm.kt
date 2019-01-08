@@ -11,6 +11,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.Spinner
+import androidx.core.os.bundleOf
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
@@ -123,9 +124,7 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment() {
     }
 
     private fun applyNoSignAnswer(answer: String) {
-        val data = Bundle()
-        data.putString(NO_SIGN, answer)
-        applyAnswer(data)
+        applyAnswer(bundleOf(NO_SIGN to answer))
     }
 
     override fun onClickOk() {
@@ -143,9 +142,7 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment() {
     }
 
     private fun applyMaxHeightFormAnswer() {
-        val answer = Bundle()
-        answer.putString(MAX_HEIGHT, getHeightFromInput()!!.toString())
-        applyAnswer(answer)
+        applyAnswer(bundleOf(MAX_HEIGHT to getHeightFromInput()!!.toString()))
     }
 
     private fun getHeightFromInput(): Measure? {

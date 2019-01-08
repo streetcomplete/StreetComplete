@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.RecyclerView
 
 import java.util.ArrayList
@@ -98,8 +99,7 @@ class AddParkingFeeForm : AbstractQuestFormAnswerFragment() {
     }
 
     override fun onClickOk() {
-        val bundle = Bundle()
-        bundle.putBoolean(FEE, !isFeeOnlyAtHours)
+        val bundle = bundleOf(FEE to !isFeeOnlyAtHours)
         val oh = getOpeningHoursString()
         if (!oh.isEmpty()) {
             bundle.putString(FEE_CONDITONAL_HOURS, oh)
@@ -108,9 +108,7 @@ class AddParkingFeeForm : AbstractQuestFormAnswerFragment() {
     }
 
     private fun onClickYesNo(answer: Boolean) {
-        val bundle = Bundle()
-        bundle.putBoolean(FEE, answer)
-        applyAnswer(bundle)
+        applyAnswer(bundleOf(FEE to answer))
     }
 
     private fun loadOpeningHoursData(savedInstanceState: Bundle?): List<OpeningMonthsRow> =

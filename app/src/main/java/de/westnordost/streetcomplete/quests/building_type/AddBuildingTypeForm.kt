@@ -5,6 +5,7 @@ import androidx.appcompat.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.GroupedImageListQuestAnswerFragment
@@ -70,9 +71,7 @@ class AddBuildingTypeForm : GroupedImageListQuestAnswerFragment() {
     }
 
     private fun applyConstructionSiteAnswer() {
-        val answer = Bundle()
-        answer.putString(BUILDING, "construction")
-        applyAnswer(answer)
+        applyAnswer(bundleOf(BUILDING to "construction"))
     }
 
     private fun showMultipleTypesHint() {

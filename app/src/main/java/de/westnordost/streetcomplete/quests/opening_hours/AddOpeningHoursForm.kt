@@ -22,6 +22,7 @@ import de.westnordost.streetcomplete.util.Serializer
 
 
 import android.view.Menu.NONE
+import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.ktx.toObject
@@ -104,9 +105,7 @@ class AddOpeningHoursForm : AbstractQuestFormAnswerFragment() {
     }
 
     override fun onClickOk() {
-        val answer = Bundle()
-        answer.putString(OPENING_HOURS, openingHoursString)
-        applyAnswer(answer)
+        applyAnswer(bundleOf(OPENING_HOURS to openingHoursString))
     }
 
     private fun showInputCommentDialog() {
@@ -124,9 +123,7 @@ class AddOpeningHoursForm : AbstractQuestFormAnswerFragment() {
                         .setPositiveButton(R.string.ok, null)
                         .show()
                 } else {
-                    val answer = Bundle()
-                    answer.putString(OPENING_HOURS, "\"" + txt + "\"")
-                    applyAnswer(answer)
+                    applyAnswer(bundleOf(OPENING_HOURS to "\"$txt\""))
                 }
             }
             .setNegativeButton(android.R.string.cancel, null)
@@ -137,9 +134,7 @@ class AddOpeningHoursForm : AbstractQuestFormAnswerFragment() {
         AlertDialog.Builder(activity!!)
             .setMessage(R.string.quest_openingHours_24_7_confirmation)
             .setPositiveButton(android.R.string.yes) { _, _ ->
-                val answer = Bundle()
-                answer.putString(OPENING_HOURS, "24/7")
-                applyAnswer(answer)
+                applyAnswer(bundleOf(OPENING_HOURS to "24/7"))
             }
             .setNegativeButton(android.R.string.no, null)
             .show()
@@ -149,9 +144,7 @@ class AddOpeningHoursForm : AbstractQuestFormAnswerFragment() {
         AlertDialog.Builder(activity!!)
             .setTitle(R.string.quest_generic_confirmation_title)
             .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ ->
-                val data = Bundle()
-                data.putBoolean(NO_SIGN, true)
-                applyAnswer(data)
+                applyAnswer(bundleOf(NO_SIGN to true))
             }
             .setNegativeButton(R.string.quest_generic_confirmation_no, null)
             .show()

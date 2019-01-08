@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Spinner
+import androidx.core.os.bundleOf
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
@@ -273,17 +274,14 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment() {
     }
 
     private fun applyLivingStreetAnswer() {
-        val answer = Bundle()
-        answer.putBoolean(LIVING_STREET, true)
-        applyAnswer(answer)
+        applyAnswer(bundleOf(LIVING_STREET to true))
     }
 
     private fun applyNoSignAnswer(roadType: String) {
-        val answer = Bundle()
-        val countryCode = countryInfo.countryCode
-        answer.putString(MAX_SPEED_IMPLICIT_COUNTRY, countryCode)
-        answer.putString(MAX_SPEED_IMPLICIT_ROADTYPE, roadType)
-        applyAnswer(answer)
+        applyAnswer(bundleOf(
+            MAX_SPEED_IMPLICIT_COUNTRY to countryInfo.countryCode,
+            MAX_SPEED_IMPLICIT_ROADTYPE to roadType
+        ))
     }
 
     companion object {

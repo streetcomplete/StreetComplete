@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests
 import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
 import android.view.View
+import androidx.core.os.bundleOf
 
 import java.util.ArrayList
 import java.util.LinkedList
@@ -84,13 +85,10 @@ abstract class ImageListQuestAnswerFragment : AbstractQuestFormAnswerFragment() 
     }
 
     protected fun applyAnswer() {
-        val answer = Bundle()
-
         val osmValues = imageSelector.selectedItems.map { it.value!! }
         if (osmValues.isNotEmpty()) {
-            answer.putStringArrayList(OSM_VALUES, ArrayList(osmValues))
             favs.add(javaClass.simpleName, osmValues)
-            applyAnswer(answer)
+            applyAnswer(bundleOf(OSM_VALUES to ArrayList(osmValues)))
         }
     }
 

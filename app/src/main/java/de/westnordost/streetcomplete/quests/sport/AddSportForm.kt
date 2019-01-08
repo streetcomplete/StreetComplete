@@ -2,8 +2,7 @@ package de.westnordost.streetcomplete.quests.sport
 
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
-
-import java.util.ArrayList
+import androidx.core.os.bundleOf
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.ImageListQuestAnswerFragment
@@ -59,10 +58,6 @@ class AddSportForm : ImageListQuestAnswerFragment() {
     }
 
     private fun applyMultiAnswer() {
-        val answer = Bundle()
-        val strings = ArrayList<String>(1)
-        strings.add("multi")
-        answer.putStringArrayList(ImageListQuestAnswerFragment.OSM_VALUES, strings)
-        applyAnswer(answer)
+        applyAnswer(bundleOf(OSM_VALUES to arrayListOf("multi")))
     }
 }

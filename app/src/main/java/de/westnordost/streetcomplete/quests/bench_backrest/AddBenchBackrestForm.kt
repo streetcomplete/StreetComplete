@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.quests.bench_backrest
 
-import android.os.Bundle
+import androidx.core.os.bundleOf
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.OtherAnswer
@@ -13,9 +13,7 @@ class AddBenchBackrestForm : YesNoQuestAnswerFragment() {
     )
 
     private fun applyPicnicTableAnswer() {
-        val answer = Bundle()
-        answer.putBoolean(PICNIC_TABLE, true)
-        applyAnswer(answer)
+        applyAnswer(bundleOf(PICNIC_TABLE to true))
     }
 
     companion object {

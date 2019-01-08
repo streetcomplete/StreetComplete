@@ -2,10 +2,10 @@ package de.westnordost.streetcomplete.quests.localized_name
 
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
+import androidx.core.os.bundleOf
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.OtherAnswer
-import kotlinx.android.synthetic.main.quest_localizedname.*
 
 
 class AddBusStopNameForm : AddLocalizedNameForm() {
@@ -23,9 +23,7 @@ class AddBusStopNameForm : AddLocalizedNameForm() {
         AlertDialog.Builder(activity!!)
             .setTitle(R.string.quest_name_answer_noName_confirmation_title)
             .setPositiveButton(R.string.quest_name_noName_confirmation_positive) { _, _ ->
-                val data = Bundle()
-                data.putBoolean(AddLocalizedNameForm.NO_NAME, true)
-                applyAnswer(data)
+                applyAnswer(bundleOf(NO_NAME to true))
             }
             .setNegativeButton(R.string.quest_generic_confirmation_no, null)
             .show()

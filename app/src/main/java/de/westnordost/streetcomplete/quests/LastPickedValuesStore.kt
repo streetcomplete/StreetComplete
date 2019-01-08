@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests
 
 import android.content.SharedPreferences
+import androidx.core.content.edit
 
 import java.util.LinkedList
 
@@ -18,7 +19,9 @@ class LastPickedValuesStore @Inject constructor(private val prefs: SharedPrefere
             values.addFirst(value)
         }
         val lastValues = if (max != -1) values.subList(0, Math.min(values.size, max)) else values
-        prefs.edit().putString(getKey(key), lastValues.joinToString(",")).apply()
+        prefs.edit {
+            putString(getKey(key), lastValues.joinToString(","))
+        }
     }
 
     fun add(key: String, value: String, max: Int = -1) {

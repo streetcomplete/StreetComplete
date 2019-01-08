@@ -31,6 +31,7 @@ import de.westnordost.streetcomplete.data.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.osm.ElementGeometry
+import de.westnordost.streetcomplete.ktx.toast
 import kotlinx.android.synthetic.main.fragment_quest_answer.*
 
 /** Abstract base class for any dialog with which the user answers a specific quest(ion)  */
@@ -204,7 +205,7 @@ abstract class AbstractQuestAnswerFragment : AbstractBottomSheetFragment() {
 
     protected fun applyAnswer(data: Bundle) {
         if (data.isEmpty) {
-            Toast.makeText(activity, R.string.no_changes, Toast.LENGTH_SHORT).show()
+            activity?.toast(R.string.no_changes)
             return
         }
         // in case there is a bug that a quest fills the bundle with nulls -> report

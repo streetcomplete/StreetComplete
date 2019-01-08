@@ -28,6 +28,7 @@ import de.westnordost.streetcomplete.data.osmnotes.AttachPhotoUtils
 import android.app.Activity.RESULT_OK
 import de.westnordost.streetcomplete.ApplicationConstants.ATTACH_PHOTO_MAXWIDTH
 import de.westnordost.streetcomplete.ApplicationConstants.ATTACH_PHOTO_QUALITY
+import de.westnordost.streetcomplete.ktx.toast
 import kotlinx.android.synthetic.main.fragment_attach_photo.*
 
 class AttachPhotoFragment : Fragment() {
@@ -93,20 +94,11 @@ class AttachPhotoFragment : Fragment() {
                 startActivityForResult(takePhotoIntent, REQUEST_TAKE_PHOTO)
             } catch (e: IOException) {
                 Log.e(TAG, "Unable to create file for photo", e)
-                Toast.makeText(
-                    context,
-                    R.string.quest_leave_new_note_create_image_error,
-                    Toast.LENGTH_SHORT
-                ).show()
+                context?.toast(R.string.quest_leave_new_note_create_image_error)
             } catch (e: IllegalArgumentException) {
                 Log.e(TAG, "Unable to create file for photo", e)
-                Toast.makeText(
-                    context,
-                    R.string.quest_leave_new_note_create_image_error,
-                    Toast.LENGTH_SHORT
-                ).show()
+                context?.toast(R.string.quest_leave_new_note_create_image_error)
             }
-
         }
     }
 
@@ -123,7 +115,7 @@ class AttachPhotoFragment : Fragment() {
                     noteImageAdapter.notifyItemInserted(imagePaths.size - 1)
                 } catch (e: IOException) {
                     Log.e(TAG, "Unable to rescale the photo", e)
-                    Toast.makeText(context, R.string.quest_leave_new_note_create_image_error, Toast.LENGTH_SHORT).show()
+                    context?.toast(R.string.quest_leave_new_note_create_image_error)
                     removeCurrentImage()
                 }
 

@@ -17,7 +17,7 @@ class NumberSystem(private val min: Int, private val max: Int) {
      */
     fun complemented(ranges: Collection<CircularSection>): List<CircularSection> {
         val rangeList = canonicalize(ranges)
-        val complementList = ArrayList<CircularSection>()
+        val complementList = mutableListOf<CircularSection>()
         var start = min
         for (range in rangeList) {
             if (range.start > start) {

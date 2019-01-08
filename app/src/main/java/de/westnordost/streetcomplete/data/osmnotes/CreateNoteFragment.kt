@@ -12,6 +12,7 @@ import android.view.animation.AnimationSet
 import android.view.animation.BounceInterpolator
 import android.view.animation.TranslateAnimation
 import android.view.inputmethod.InputMethodManager
+import androidx.core.content.getSystemService
 
 import de.westnordost.streetcomplete.R
 import kotlinx.android.synthetic.main.form_leave_note.*
@@ -85,7 +86,7 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
     }
 
     private fun closeKeyboard(): Boolean {
-        val imm = context!!.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        return imm.hideSoftInputFromWindow(noteInput.windowToken, 0)
+        val imm = context?.getSystemService<InputMethodManager>()
+        return imm?.hideSoftInputFromWindow(noteInput.windowToken, 0) ?: false
     }
 }

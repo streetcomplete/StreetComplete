@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
@@ -27,9 +28,7 @@ class AddInternetAccessForm : AbstractQuestFormAnswerFragment() {
             R.id.wired -> "wired"
             else -> null
         }
-        val answer = Bundle()
-        answer.putString(INTERNET_ACCESS, internetAccessValue)
-        applyAnswer(answer)
+        applyAnswer(bundleOf(INTERNET_ACCESS to internetAccessValue))
     }
 
     override fun isFormComplete() = radioButtonGroup.checkedRadioButtonId != -1

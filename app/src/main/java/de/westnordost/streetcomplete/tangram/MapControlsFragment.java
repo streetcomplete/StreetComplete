@@ -24,7 +24,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.github.florent37.viewtooltip.ViewTooltip;
-import com.google.android.material.textfield.TextInputEditText;
 import com.mapzen.android.lost.api.LocationRequest;
 
 import javax.inject.Inject;

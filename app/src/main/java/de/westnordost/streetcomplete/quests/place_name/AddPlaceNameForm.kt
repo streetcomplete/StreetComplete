@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.place_name
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import android.view.View
+import androidx.core.os.bundleOf
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
@@ -28,18 +29,14 @@ class AddPlaceNameForm : AbstractQuestFormAnswerFragment() {
     }
 
     override fun onClickOk() {
-        val data = Bundle()
-        data.putString(NAME, placeName)
-        applyAnswer(data)
+        applyAnswer(bundleOf(NAME to placeName))
     }
 
     private fun confirmNoName() {
         AlertDialog.Builder(activity!!)
             .setTitle(R.string.quest_name_answer_noName_confirmation_title)
             .setPositiveButton(R.string.quest_name_noName_confirmation_positive) { _, _ ->
-                val data = Bundle()
-                data.putBoolean(NO_NAME, true)
-                applyAnswer(data)
+                applyAnswer(bundleOf(NO_NAME to true))
             }
             .setNegativeButton(R.string.quest_generic_confirmation_no, null)
             .show()

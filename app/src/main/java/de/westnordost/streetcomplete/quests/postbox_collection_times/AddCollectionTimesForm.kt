@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.RecyclerView
 
 import java.util.ArrayList
@@ -72,9 +73,7 @@ class AddCollectionTimesForm : AbstractQuestFormAnswerFragment() {
     }
 
     override fun onClickOk() {
-        val answer = Bundle()
-        answer.putString(TIMES, collectionTimesString)
-        applyAnswer(answer)
+        applyAnswer(bundleOf(TIMES to collectionTimesString))
     }
 
     private fun confirmNoTimes() {
@@ -86,9 +85,7 @@ class AddCollectionTimesForm : AbstractQuestFormAnswerFragment() {
     }
 
     private fun applyNoTimesAnswer() {
-        val answer = Bundle()
-        answer.putBoolean(NO_TIMES_SPECIFIED, true)
-        applyAnswer(answer)
+        applyAnswer(bundleOf(NO_TIMES_SPECIFIED to true))
     }
 
     override fun isFormComplete() = collectionTimesString.isNotEmpty()

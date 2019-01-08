@@ -7,6 +7,7 @@ import android.view.animation.DecelerateInterpolator
 import android.widget.Toast
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.ktx.toast
 import kotlinx.android.synthetic.main.fragment_quest_answer.*
 
 /** Abstract base class for dialogs in which the user answers a quest with a form he has to fill
@@ -17,7 +18,7 @@ abstract class AbstractQuestFormAnswerFragment : AbstractQuestAnswerFragment() {
         super.onViewCreated(view, savedInstanceState)
         okButton.setOnClickListener {
             if (!isFormComplete()) {
-                Toast.makeText(activity, R.string.no_changes, Toast.LENGTH_SHORT).show()
+                activity?.toast(R.string.no_changes)
             } else {
                 onClickOk()
             }

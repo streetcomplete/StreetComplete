@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
+import androidx.core.view.postDelayed
 
 import javax.inject.Inject
 
@@ -28,8 +30,6 @@ import java.util.*
 abstract class GroupedImageListQuestAnswerFragment : AbstractQuestFormAnswerFragment() {
 
     override val contentLayoutResId = R.layout.quest_generic_list
-
-    private val uiThread = Handler(Looper.getMainLooper())
 
     protected lateinit var imageSelector: GroupedImageSelectAdapter
 
@@ -91,9 +91,9 @@ abstract class GroupedImageListQuestAnswerFragment : AbstractQuestFormAnswerFrag
                     val scrollViewPos = IntArray(2)
                     scrollView.getLocationInWindow(scrollViewPos)
 
-                    uiThread.postDelayed({
+                    scrollView.postDelayed(250) {
                         scrollView.smoothScrollTo(0, itemPos[1] - scrollViewPos[1])
-                    }, 250)
+                    }
                 }
             }
         })
@@ -140,9 +140,7 @@ abstract class GroupedImageListQuestAnswerFragment : AbstractQuestFormAnswerFrag
     }
 
     protected open fun applyAnswer(value: String) {
-        val answer = Bundle()
-        answer.putString(OSM_VALUE, value)
-        applyAnswer(answer)
+        applyAnswer(bundleOf(OSM_VALUE to value))
     }
 
     override fun isFormComplete() = selectedItem != null

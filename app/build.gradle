@@ -102,7 +102,7 @@ dependencies {
 
     // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    // TODO add ktx stuff which I use
+    implementation "androidx.core:core-ktx:1.0.1"
 
     // scheduling background jobs
     implementation 'android.arch.work:work-runtime:1.0.0-beta01'

@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.parking_access
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.os.bundleOf
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
@@ -25,9 +26,7 @@ class AddParkingAccessForm : AbstractQuestFormAnswerFragment() {
             else -> null
         }
 
-        val answer = Bundle()
-        answer.putString(ACCESS, accessValue)
-        applyAnswer(answer)
+        applyAnswer(bundleOf(ACCESS to accessValue))
     }
 
     override fun isFormComplete() = radioButtonGroup.checkedRadioButtonId != -1

@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
+import androidx.core.os.bundleOf
 
 import de.westnordost.streetcomplete.util.TextChangedWatcher
 
@@ -18,9 +19,7 @@ abstract class TextInputQuestAnswerFragment : AbstractQuestFormAnswerFragment() 
     }
 
     override fun onClickOk() {
-        val answer = Bundle()
-        answer.putString(INPUT, inputString)
-        applyAnswer(answer)
+        applyAnswer(bundleOf(INPUT to inputString))
     }
 
     override fun isFormComplete() = inputString.isNotEmpty()

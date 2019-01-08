@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.oneway
 import android.os.Bundle
 import androidx.annotation.AnyThread
 import android.view.View
+import androidx.core.os.bundleOf
 
 import javax.inject.Inject
 
@@ -40,11 +41,11 @@ class AddOnewayForm : YesNoQuestAnswerFragment() {
     }
 
     override fun onClickYesNo(answer: Boolean) {
-        val bundle = Bundle()
-        bundle.putBoolean(YesNoQuestAnswerFragment.ANSWER, answer)
-        // the quest needs the way ID of the element to find out the direction of the oneway
-        bundle.putLong(WAY_ID, osmElement!!.id)
-        applyAnswer(bundle)
+        applyAnswer(bundleOf(
+            ANSWER to answer,
+            // the quest needs the way ID of the element to find out the direction of the oneway
+            WAY_ID to osmElement!!.id
+        ))
     }
 
     @AnyThread

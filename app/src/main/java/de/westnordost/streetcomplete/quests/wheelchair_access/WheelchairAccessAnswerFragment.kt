@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.wheelchair_access
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.os.bundleOf
 import de.westnordost.streetcomplete.R
 
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
@@ -20,9 +21,7 @@ open class WheelchairAccessAnswerFragment : AbstractQuestAnswerFragment() {
     }
 
     private fun onClickAnswer(answer: String) {
-        val bundle = Bundle()
-        bundle.putString(ANSWER, answer)
-        applyAnswer(bundle)
+        applyAnswer(bundleOf(ANSWER to answer))
     }
 
     companion object {

@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.quests.way_lit
 
-import android.os.Bundle
+import androidx.core.os.bundleOf
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.OtherAnswer
@@ -14,9 +14,7 @@ class WayLitForm : YesNoQuestAnswerFragment() {
     )
 
     private fun applyAnswer(value: String) {
-        val answer = Bundle()
-        answer.putString(OTHER_ANSWER, value)
-        applyAnswer(answer)
+        applyAnswer(bundleOf(OTHER_ANSWER to value))
     }
 
     companion object {

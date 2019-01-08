@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.os.bundleOf
 
 import de.westnordost.streetcomplete.R
 import kotlinx.android.synthetic.main.quest_buttonpanel_yes_no.*
@@ -19,9 +20,7 @@ open class YesNoQuestAnswerFragment : AbstractQuestAnswerFragment() {
     }
 
     protected open fun onClickYesNo(answer: Boolean) {
-        val bundle = Bundle()
-        bundle.putBoolean(ANSWER, answer)
-        applyAnswer(bundle)
+        applyAnswer(bundleOf(ANSWER to answer))
     }
 
     companion object {

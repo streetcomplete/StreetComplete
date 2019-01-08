@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.diet_type
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.os.bundleOf
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
@@ -29,9 +30,7 @@ class AddDietTypeForm : AbstractQuestAnswerFragment() {
     }
 
     protected fun onClickAnswer(answer: String) {
-        val bundle = Bundle()
-        bundle.putString(OSM_VALUE, answer)
-        applyAnswer(bundle)
+        applyAnswer(bundleOf(OSM_VALUE to answer))
     }
 
     companion object {
@@ -41,9 +40,7 @@ class AddDietTypeForm : AbstractQuestAnswerFragment() {
 
         fun create(dietExplanationResId: Int): AddDietTypeForm {
             val form = AddDietTypeForm()
-            val args = Bundle()
-            args.putInt(ARG_DIET, dietExplanationResId)
-            form.arguments = args
+            form.arguments = bundleOf(ARG_DIET to dietExplanationResId)
             return form
         }
     }

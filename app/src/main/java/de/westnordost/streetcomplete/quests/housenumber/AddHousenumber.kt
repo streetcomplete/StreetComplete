@@ -18,7 +18,6 @@ import de.westnordost.streetcomplete.data.osm.tql.OverpassQLUtil
 import de.westnordost.streetcomplete.util.FlattenIterable
 import de.westnordost.streetcomplete.util.LatLonRaster
 import de.westnordost.streetcomplete.util.SphericalEarthMath
-import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
 
 class AddHousenumber(private val overpass: OverpassMapDataDao) : OsmElementQuestType {
@@ -94,7 +93,7 @@ class AddHousenumber(private val overpass: OverpassMapDataDao) : OsmElementQuest
     }
 
     private fun downloadBuildingsWithoutAddresses(bbox: BoundingBox): MutableMap<LatLon, ElementWithGeometry>? {
-        val buildingsByCenterPoint = HashMap<LatLon, ElementWithGeometry>()
+        val buildingsByCenterPoint = mutableMapOf<LatLon, ElementWithGeometry>()
         val query = getBuildingsWithoutAddressesOverpassQuery(bbox)
         val success = overpass.getAndHandleQuota(query) { element, geometry ->
             if (geometry?.polygons != null && geometry.center != null) {
@@ -114,7 +113,7 @@ class AddHousenumber(private val overpass: OverpassMapDataDao) : OsmElementQuest
     }
 
     private fun downloadAreasWithAddresses(bbox: BoundingBox): List<ElementGeometry>? {
-        val areas = ArrayList<ElementGeometry>()
+        val areas = mutableListOf<ElementGeometry>()
         val query = getNonBuildingAreasWithAddresses(bbox)
         val success = overpass.getAndHandleQuota(query) { _, geometry ->
             if (geometry?.polygons != null) areas.add(geometry)

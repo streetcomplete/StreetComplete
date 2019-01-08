@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import android.widget.Button
 import android.widget.Toast
+import androidx.core.os.bundleOf
 
 import java.util.LinkedList
 import java.util.Locale
@@ -14,6 +15,7 @@ import javax.inject.Inject
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale
+import de.westnordost.streetcomplete.ktx.toast
 import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.quests.localized_name.data.RoadNameSuggestionsDao
 import kotlinx.android.synthetic.main.quest_localizedname.*
@@ -53,7 +55,7 @@ class AddRoadNameForm : AddLocalizedNameForm() {
         val possibleAbbreviations = LinkedList<String>()
         for ((languageCode, name) in adapter.localizedNames) {
             if (name.trim().isEmpty()) {
-                Toast.makeText(activity, R.string.quest_generic_error_a_field_empty, Toast.LENGTH_LONG).show()
+                activity?.toast(R.string.quest_generic_error_a_field_empty, Toast.LENGTH_LONG)
                 return
             }
 
@@ -118,9 +120,7 @@ class AddRoadNameForm : AddLocalizedNameForm() {
                             trackRoad   -> IS_TRACK
                             else        -> throw IllegalStateException()
                         }
-                        val data = Bundle()
-                        data.putInt(NO_PROPER_ROAD, type)
-                        applyAnswer(data)
+                        applyAnswer(bundleOf(NO_PROPER_ROAD to type))
                     }
                 }
             }
@@ -141,9 +141,7 @@ class AddRoadNameForm : AddLocalizedNameForm() {
             .setTitle(R.string.quest_name_answer_noName_confirmation_title)
             .setMessage(R.string.quest_streetName_answer_noName_confirmation_description)
             .setPositiveButton(R.string.quest_name_noName_confirmation_positive) { _, _ ->
-                val data = Bundle()
-                data.putBoolean(AddLocalizedNameForm.NO_NAME, true)
-                applyAnswer(data)
+                applyAnswer(bundleOf(NO_NAME to true))
             }
             .setNegativeButton(R.string.quest_generic_confirmation_no, null)
             .show()

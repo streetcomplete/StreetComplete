@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import android.text.Html
 import android.view.View
 import android.widget.Button
+import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.RecyclerView
 
 import java.util.ArrayList
@@ -78,7 +79,6 @@ abstract class AddLocalizedNameForm : AbstractQuestFormAnswerFragment() {
     }
 
     protected fun createAnswer(): Bundle {
-        val bundle = Bundle()
         val data = adapter.localizedNames
 
         val names = arrayOfNulls<String>(data.size)
@@ -88,10 +88,10 @@ abstract class AddLocalizedNameForm : AbstractQuestFormAnswerFragment() {
             languageCodes[i] = data[i].languageCode
         }
 
-        bundle.putStringArray(NAMES, names)
-        bundle.putStringArray(LANGUAGE_CODES, languageCodes)
-
-        return bundle
+        return bundleOf(
+            NAMES to names,
+            LANGUAGE_CODES to languageCodes
+        )
     }
 
     protected fun confirmPossibleAbbreviationsIfAny(names: Queue<String>, onConfirmedAll: () -> Unit) {

@@ -1,8 +1,7 @@
 package de.westnordost.streetcomplete.quests.roof_shape
 
 import android.os.Bundle
-
-import java.util.ArrayList
+import androidx.core.os.bundleOf
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.ImageListQuestAnswerFragment
@@ -45,10 +44,6 @@ class AddRoofShapeForm : ImageListQuestAnswerFragment() {
     }
 
     private fun applyManyRoofsAnswer() {
-        val answer = Bundle()
-        val strings = ArrayList<String>(1)
-        strings.add("many")
-        answer.putStringArrayList(ImageListQuestAnswerFragment.OSM_VALUES, strings)
-        applyAnswer(answer)
+        applyAnswer(bundleOf(OSM_VALUES to arrayListOf("many")))
     }
 }

@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.quests.housenumber
 
-import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import android.text.InputType
@@ -11,6 +10,8 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
+import androidx.core.content.getSystemService
+import androidx.core.os.bundleOf
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
@@ -96,35 +97,29 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment() {
     }
 
     private fun applyNoHouseNumberAnswer() {
-        val answer = Bundle()
-        answer.putBoolean(NO_ADDRESS, true)
-        applyAnswer(answer)
+        applyAnswer(bundleOf(NO_ADDRESS to true))
     }
 
     private fun applyHouseNameAnswer(houseName: String) {
-        val answer = Bundle()
-        answer.putString(HOUSENAME, houseName)
-        applyAnswer(answer)
+        applyAnswer(bundleOf(HOUSENAME to houseName))
     }
 
     private fun applyHouseNumberAnswer(houseNumber: String) {
-        val answer = Bundle()
         val looksInvalid = !houseNumber.matches(getValidHousenumberRegex())
 
         confirmHousenumber(looksInvalid) {
-            answer.putString(HOUSENUMBER, houseNumber)
-            applyAnswer(answer)
+            applyAnswer(bundleOf(HOUSENUMBER to houseNumber))
         }
     }
 
     private fun applyConscriptionNumberAnswer(conscriptionNumber: String, streetNumber: String) {
-        val answer = Bundle()
         var looksInvalid = !conscriptionNumber.matches(VALID_CONSCRIPTIONNUMBER_REGEX.toRegex())
         if (streetNumber.isNotEmpty()) {
             looksInvalid = looksInvalid || !streetNumber.matches(getValidHousenumberRegex())
         }
 
         confirmHousenumber(looksInvalid) {
+            val answer = Bundle()
             answer.putString(CONSCRIPTIONNUMBER, conscriptionNumber)
             // streetNumber is optional
             if (streetNumber.isNotEmpty()) {
@@ -191,8 +186,8 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment() {
                     // for some reason, the cursor position gets lost first time the input type is set (#1093)
                     focus.setSelection(start, end)
 
-                    val imm = activity!!.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                    imm.showSoftInput(focus, InputMethodManager.SHOW_IMPLICIT)
+                    val imm = activity?.getSystemService<InputMethodManager>()
+                    imm?.showSoftInput(focus, InputMethodManager.SHOW_IMPLICIT)
                 }
             }
         }
