@@ -22,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_behavior="android.support.design.widget.BottomSheetBehavior"
+            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
             android:clipChildren="true"
             app:behavior_peekHeight="@dimen/quest_form_peekHeight">
 
