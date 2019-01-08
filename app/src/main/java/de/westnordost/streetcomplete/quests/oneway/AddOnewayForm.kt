@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.quests.oneway
 
 import android.os.Bundle
-import android.support.annotation.AnyThread
+import androidx.annotation.AnyThread
 import android.view.View
 
 import javax.inject.Inject

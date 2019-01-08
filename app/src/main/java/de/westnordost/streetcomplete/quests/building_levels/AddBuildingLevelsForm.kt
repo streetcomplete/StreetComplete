@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.quests.building_levels
 
 import android.os.Bundle
-import android.support.v7.app.AlertDialog
+import androidx.appcompat.app.AlertDialog
 import android.view.View
 
 import javax.inject.Inject

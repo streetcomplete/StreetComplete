@@ -1,14 +1,17 @@
 package de.westnordost.streetcomplete.util;
 
 import android.os.Parcel;
-import android.test.InstrumentationTestCase;
 import android.view.View;
+
+import org.junit.Test;
 
 import java.util.HashMap;
 
-public class SerializedSavedStateTest extends InstrumentationTestCase
+import static org.junit.Assert.*;
+
+public class SerializedSavedStateTest
 {
-	public void testWriteRead()
+	@Test public void writeRead()
 	{
 		HashMap<String,String> data = new HashMap<>();
 		data.put("A","B");

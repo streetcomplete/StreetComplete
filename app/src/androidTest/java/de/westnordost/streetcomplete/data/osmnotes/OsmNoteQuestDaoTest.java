@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.data.osmnotes;
 
+import org.junit.Before;
+import org.junit.Test;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -11,21 +14,22 @@ import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.map.data.OsmLatLon;
 import de.westnordost.osmapi.notes.Note;
 
+import static org.junit.Assert.*;
+
 public class OsmNoteQuestDaoTest extends ApplicationDbTestCase
 {
 	private OsmNoteQuestDao dao;
 	private NoteDao noteDao;
 	private OsmNoteQuestType questType;
 
-	@Override public void setUp() throws Exception
+	@Before public void createDao()
 	{
-		super.setUp();
 		questType = new OsmNoteQuestType();
 		dao = new OsmNoteQuestDao(dbHelper, serializer, questType);
 		noteDao = new NoteDao(dbHelper, serializer);
 	}
 
-	public void testAddGetNoChanges()
+	@Test public void addGetNoChanges()
 	{
 		Note note = NoteDaoTest.createNote();
 		OsmNoteQuest quest = new OsmNoteQuest(note, questType);
@@ -36,7 +40,7 @@ public class OsmNoteQuestDaoTest extends ApplicationDbTestCase
 		checkEqual(quest, dbQuest);
 	}
 
-	public void testAddGetWithChanges()
+	@Test public void addGetWithChanges()
 	{
 		Note note = NoteDaoTest.createNote();
 		ArrayList<String> imagePaths = new ArrayList<>();
@@ -50,7 +54,7 @@ public class OsmNoteQuestDaoTest extends ApplicationDbTestCase
 		checkEqual(quest, dbQuest);
 	}
 
-	public void testAddTwice()
+	@Test public void addTwice()
 	{
 		// tests if the "unique" property is set correctly in the table
 
@@ -71,7 +75,7 @@ public class OsmNoteQuestDaoTest extends ApplicationDbTestCase
 		assertNull(questForSameNote.getId());
 	}
 
-	public void testAddReplace()
+	@Test public void addReplace()
 	{
 		Note note = NoteDaoTest.createNote();
 		noteDao.put(note);
@@ -89,7 +93,7 @@ public class OsmNoteQuestDaoTest extends ApplicationDbTestCase
 		assertTrue(result);
 	}
 
-	public void testGetPositions()
+	@Test public void getPositions()
 	{
 		Note note = NoteDaoTest.createNote();
 		note.position = new OsmLatLon(34,35);

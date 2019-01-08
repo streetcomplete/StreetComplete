@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.quests.opening_hours
 
 import android.content.Context
 import android.content.DialogInterface
-import android.support.v7.app.AlertDialog
+import androidx.appcompat.app.AlertDialog
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.opening_hours.model.Weekdays

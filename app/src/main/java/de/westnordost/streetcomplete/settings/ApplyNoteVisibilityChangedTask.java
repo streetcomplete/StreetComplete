@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.settings;
 
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
-import android.support.v7.preference.Preference;
+import androidx.preference.Preference;
 import java.lang.ref.WeakReference;
 
 import javax.inject.Inject;

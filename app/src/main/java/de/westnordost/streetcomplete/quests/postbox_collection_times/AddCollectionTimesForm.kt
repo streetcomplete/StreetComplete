@@ -1,9 +1,10 @@
 package de.westnordost.streetcomplete.quests.postbox_collection_times
 
 import android.os.Bundle
-import android.support.v7.app.AlertDialog
-import android.support.v7.widget.LinearLayoutManager
+import androidx.appcompat.app.AlertDialog
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.View
+import androidx.recyclerview.widget.RecyclerView
 
 import java.util.ArrayList
 
@@ -49,7 +50,7 @@ class AddCollectionTimesForm : AbstractQuestFormAnswerFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        collectionTimesList.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+        collectionTimesList.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
         collectionTimesList.adapter = collectionTimesAdapter
         collectionTimesList.isNestedScrollingEnabled = false
         checkIsFormComplete()

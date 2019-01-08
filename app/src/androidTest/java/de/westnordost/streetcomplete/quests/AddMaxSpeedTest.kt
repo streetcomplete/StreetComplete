@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryModify
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
 import de.westnordost.streetcomplete.quests.max_speed.AddMaxSpeed
 import de.westnordost.streetcomplete.quests.max_speed.AddMaxSpeedForm
+import org.junit.Test
 
 import org.mockito.Mockito.mock
 
@@ -12,13 +13,13 @@ class AddMaxSpeedTest : AOsmElementQuestTypeTest() {
 
     override val questType = AddMaxSpeed(mock(OverpassMapDataDao::class.java))
 
-    fun testNoSign() {
+    @Test fun noSign() {
         bundle.putString(AddMaxSpeedForm.MAX_SPEED_IMPLICIT_ROADTYPE, "flubberway")
         bundle.putString(AddMaxSpeedForm.MAX_SPEED_IMPLICIT_COUNTRY, "XX")
         verify(StringMapEntryAdd(MAXSPEED_TYPE, "XX:flubberway"))
     }
 
-    fun testNormalSign() {
+    @Test fun normalSign() {
         bundle.putString(AddMaxSpeedForm.MAX_SPEED, "123")
         verify(
             StringMapEntryAdd("maxspeed", "123"),
@@ -26,7 +27,7 @@ class AddMaxSpeedTest : AOsmElementQuestTypeTest() {
         )
     }
 
-    fun testAdvisoryNormalSign() {
+    @Test fun advisoryNormalSign() {
         bundle.putString(AddMaxSpeedForm.ADVISORY_SPEED, "123")
         verify(
             StringMapEntryAdd("maxspeed:advisory", "123"),
@@ -34,7 +35,7 @@ class AddMaxSpeedTest : AOsmElementQuestTypeTest() {
         )
     }
 
-    fun testZoneSign() {
+    @Test fun zoneSign() {
         bundle.putString(AddMaxSpeedForm.MAX_SPEED, "123")
         bundle.putString(AddMaxSpeedForm.MAX_SPEED_IMPLICIT_ROADTYPE, "zoneXYZ")
         bundle.putString(AddMaxSpeedForm.MAX_SPEED_IMPLICIT_COUNTRY, "AA")
@@ -44,7 +45,7 @@ class AddMaxSpeedTest : AOsmElementQuestTypeTest() {
         )
     }
 
-    fun testLivingStreet() {
+    @Test fun livingStreet() {
         tags["highway"] = "residential"
         bundle.putBoolean(AddMaxSpeedForm.LIVING_STREET, true)
         verify(StringMapEntryModify("highway", "residential", "living_street"))

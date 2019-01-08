@@ -8,9 +8,9 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
-import android.support.v4.app.Fragment
-import android.support.v4.content.FileProvider
-import android.support.v7.widget.LinearLayoutManager
+import androidx.fragment.app.Fragment
+import androidx.core.content.FileProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -55,7 +55,7 @@ class AttachPhotoFragment : Fragment() {
 
         val paths: ArrayList<String>
         if (savedInstanceState != null) {
-            paths = savedInstanceState.getStringArrayList(PHOTO_PATHS)
+            paths = savedInstanceState.getStringArrayList(PHOTO_PATHS)!!
             currentImagePath = savedInstanceState.getString(CURRENT_PHOTO_PATH)
         } else {
             paths = ArrayList()
@@ -63,7 +63,11 @@ class AttachPhotoFragment : Fragment() {
         }
 
         noteImageAdapter = NoteImageAdapter(paths, context!!)
-        gridView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        gridView.layoutManager = LinearLayoutManager(
+            context,
+            LinearLayoutManager.HORIZONTAL,
+            false
+        )
         gridView.adapter = noteImageAdapter
     }
 

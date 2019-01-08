@@ -1,10 +1,10 @@
 package de.westnordost.streetcomplete.quests.bikeway
 
 import android.os.Bundle
-import android.support.annotation.AnyThread
-import android.support.v7.app.AlertDialog
-import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.annotation.AnyThread
+import androidx.appcompat.app.AlertDialog
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -149,7 +149,7 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment() {
         else                     leftSide != null || rightSide != null
 
     private fun showCyclewaySelectionDialog(isRight: Boolean) {
-        val recyclerView = RecyclerView(activity)
+        val recyclerView = RecyclerView(activity!!)
         recyclerView.layoutParams = RecyclerView.LayoutParams(MATCH_PARENT, MATCH_PARENT)
         recyclerView.layoutManager = GridLayoutManager(activity, 2)
 

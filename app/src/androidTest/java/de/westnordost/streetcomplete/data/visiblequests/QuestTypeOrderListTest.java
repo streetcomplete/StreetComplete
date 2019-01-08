@@ -2,12 +2,15 @@ package de.westnordost.streetcomplete.data.visiblequests;
 
 
 import android.content.Context;
-import android.test.AndroidTestCase;
+
+import org.junit.Before;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import androidx.test.filters.LargeTest;
 import de.westnordost.streetcomplete.data.QuestType;
 import de.westnordost.streetcomplete.data.QuestTypeRegistry;
 import de.westnordost.streetcomplete.data.osm.persist.test.TestQuestType;
@@ -16,39 +19,34 @@ import de.westnordost.streetcomplete.data.osm.persist.test.TestQuestType3;
 import de.westnordost.streetcomplete.data.osm.persist.test.TestQuestType4;
 import de.westnordost.streetcomplete.data.osm.persist.test.TestQuestType5;
 
+import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
 import static org.assertj.core.api.Assertions.*;
+import static org.junit.Assert.assertEquals;
 
-public class QuestTypeOrderListTest extends AndroidTestCase
+public class QuestTypeOrderListTest
 {
-	private QuestType one;
-	private QuestType two;
-	private QuestType three;
-	private QuestType four;
-	private QuestType five;
+	private QuestType one = new TestQuestType();
+	private QuestType two = new TestQuestType2();
+	private QuestType three = new TestQuestType3();
+	private QuestType four = new TestQuestType4();
+	private QuestType five = new TestQuestType5();
 
 	private List<QuestType> list;
 
 	private QuestTypeOrderList questTypeOrderList;
 
-	@Override public void setUp() throws Exception
+	@Before public void setUpList()
 	{
-		super.setUp();
-		one = new TestQuestType();
-		two = new TestQuestType2();
-		three = new TestQuestType3();
-		four = new TestQuestType4();
-		five = new TestQuestType5();
-
 		list = new ArrayList<>();
 		list.addAll(Arrays.asList(one, two, three, four, five));
 
 		questTypeOrderList = new QuestTypeOrderList(
-				getContext().getSharedPreferences("Test", Context.MODE_PRIVATE),
+				getInstrumentation().getContext().getSharedPreferences("Test", Context.MODE_PRIVATE),
 				new QuestTypeRegistry(list));
 		questTypeOrderList.clear();
 	}
 
-	public void testSimpleReorder()
+	@Test public void simpleReorder()
 	{
 		questTypeOrderList.apply(two, one);
 		questTypeOrderList.sort(list);
@@ -56,7 +54,7 @@ public class QuestTypeOrderListTest extends AndroidTestCase
 		assertThat(list).containsSequence(two, one);
 	}
 
-	public void testTwoSeparateOrderLists()
+	@Test public void twoSeparateOrderLists()
 	{
 		questTypeOrderList.apply(two, one);
 		questTypeOrderList.apply(five, four);
@@ -67,7 +65,7 @@ public class QuestTypeOrderListTest extends AndroidTestCase
 		assertThat(list).containsSequence(five, four);
 	}
 
-	public void testExtendOrderList()
+	@Test public void extendOrderList()
 	{
 		questTypeOrderList.apply(three, two);
 		questTypeOrderList.apply(two, one);
@@ -76,7 +74,7 @@ public class QuestTypeOrderListTest extends AndroidTestCase
 		assertThat(list).containsSequence(three, two, one);
 	}
 
-	public void testExtendOrderListInReverse()
+	@Test public void extendOrderListInReverse()
 	{
 		questTypeOrderList.apply(two, one);
 		questTypeOrderList.apply(three, two);
@@ -85,7 +83,7 @@ public class QuestTypeOrderListTest extends AndroidTestCase
 		assertThat(list).containsSequence(three, two, one);
 	}
 
-	public void testClear()
+	@Test public void clear()
 	{
 		questTypeOrderList.apply(two, one);
 		questTypeOrderList.clear();
@@ -94,7 +92,7 @@ public class QuestTypeOrderListTest extends AndroidTestCase
 		assertThat(list).containsSequence(one, two);
 	}
 
-	public void testQuestTypeInOrderListButNotInToBeSortedList()
+	@Test public void questTypeInOrderListButNotInToBeSortedList()
 	{
 		list.remove(three);
 		questTypeOrderList.apply(three, one);
@@ -103,7 +101,7 @@ public class QuestTypeOrderListTest extends AndroidTestCase
 		assertEquals(before, list);
 	}
 
-	public void testQuestTypeInOrderListButNotInToBeSortedListDoesNotInhibitSorting()
+	@Test public void questTypeInOrderListButNotInToBeSortedListDoesNotInhibitSorting()
 	{
 		list.remove(three);
 		questTypeOrderList.apply(three, two);
@@ -113,7 +111,7 @@ public class QuestTypeOrderListTest extends AndroidTestCase
 		assertThat(list).containsSequence(two, one);
 	}
 
-	public void testQuestTypeOrderIsUpdatedCorrectlyMovedDown()
+	@Test public void questTypeOrderIsUpdatedCorrectlyMovedDown()
 	{
 		questTypeOrderList.apply(three, two);
 		questTypeOrderList.apply(two, one);
@@ -125,7 +123,7 @@ public class QuestTypeOrderListTest extends AndroidTestCase
 		assertThat(list).containsSequence(two, one, three);
 	}
 
-	public void testQuestTypeOrderIsUpdatedCorrectlyMovedUp()
+	@Test public void questTypeOrderIsUpdatedCorrectlyMovedUp()
 	{
 		questTypeOrderList.apply(three, two);
 		questTypeOrderList.apply(two, one);
@@ -137,7 +135,7 @@ public class QuestTypeOrderListTest extends AndroidTestCase
 		assertThat(list).containsSequence(three, one, two);
 	}
 
-	public void testPickQuestTypeOrders()
+	@Test public void pickQuestTypeOrders()
 	{
 		questTypeOrderList.apply(four, three);
 		questTypeOrderList.apply(two, one);
@@ -150,7 +148,7 @@ public class QuestTypeOrderListTest extends AndroidTestCase
 		assertThat(list).containsSequence(two, one, three, five);
 	}
 
-	public void testMergeQuestTypeOrders()
+	@Test public void mergeQuestTypeOrders()
 	{
 		questTypeOrderList.apply(four, three);
 		questTypeOrderList.apply(two, one);
@@ -162,7 +160,7 @@ public class QuestTypeOrderListTest extends AndroidTestCase
 		assertThat(list).containsSequence(four, three, two, one);
 	}
 
-	public void testReorderFirstItemToBackOfSameList()
+	@Test public void reorderFirstItemToBackOfSameList()
 	{
 		questTypeOrderList.apply(one, two);
 		questTypeOrderList.apply(two, three);
@@ -174,7 +172,7 @@ public class QuestTypeOrderListTest extends AndroidTestCase
 		assertThat(list).containsSequence(two, three, four, one);
 	}
 
-	public void testReorderAnItemToBackOfSameList()
+	@Test public void reorderAnItemToBackOfSameList()
 	{
 		questTypeOrderList.apply(one, two);
 		questTypeOrderList.apply(two, three);

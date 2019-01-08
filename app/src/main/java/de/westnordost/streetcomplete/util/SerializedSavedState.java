@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.util;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.view.View;
 
 import javax.inject.Inject;

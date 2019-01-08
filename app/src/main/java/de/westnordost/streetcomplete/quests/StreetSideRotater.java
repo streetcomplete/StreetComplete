@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.quests;
 
 import android.os.Handler;
 import android.os.Looper;
-import android.support.annotation.AnyThread;
+import androidx.annotation.AnyThread;
 import android.view.View;
 
 import java.util.List;

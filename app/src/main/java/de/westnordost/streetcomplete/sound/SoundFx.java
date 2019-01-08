@@ -4,7 +4,7 @@ import android.content.Context;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.provider.Settings;
-import android.support.annotation.RawRes;
+import androidx.annotation.RawRes;
 import android.util.SparseIntArray;
 
 import javax.inject.Inject;

@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.quests.localized_name
 
 import android.os.Bundle
-import android.support.v7.app.AlertDialog
+import androidx.appcompat.app.AlertDialog
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.OtherAnswer

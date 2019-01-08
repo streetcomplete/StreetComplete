@@ -3,9 +3,9 @@ package de.westnordost.streetcomplete.quests.note_discussion
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
-import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import android.text.format.DateUtils
 import android.view.View
 import android.view.ViewGroup
@@ -77,7 +77,11 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment() {
         val discussionView = layoutInflater.inflate(R.layout.quest_note_discussion_items, scrollViewChild, false) as RecyclerView
 
         discussionView.isNestedScrollingEnabled = false
-        discussionView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        discussionView.layoutManager = LinearLayoutManager(
+            context,
+            RecyclerView.VERTICAL,
+            false
+        )
         discussionView.adapter = NoteCommentListAdapter(comments)
 
         scrollViewChild.addView(discussionView, 0)

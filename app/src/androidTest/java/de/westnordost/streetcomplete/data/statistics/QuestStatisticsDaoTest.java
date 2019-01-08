@@ -1,15 +1,11 @@
 package de.westnordost.streetcomplete.data.statistics;
 
-import java.util.HashMap;
+import org.junit.Before;
+import org.junit.Test;
 
-import de.westnordost.osmapi.map.changes.MapDataChangesHandler;
-import de.westnordost.osmapi.map.data.Node;
-import de.westnordost.streetcomplete.ApplicationConstants;
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase;
-import de.westnordost.osmapi.changesets.ChangesetInfo;
-import de.westnordost.osmapi.changesets.ChangesetsDao;
-import de.westnordost.osmapi.changesets.QueryChangesetsFilters;
-import de.westnordost.osmapi.common.Handler;
+
+import static org.junit.Assert.*;
 
 public class QuestStatisticsDaoTest extends ApplicationDbTestCase
 {
@@ -18,73 +14,34 @@ public class QuestStatisticsDaoTest extends ApplicationDbTestCase
 	private static final String ONE = "one";
 	private static final String TWO = "two";
 
-	@Override public void setUp() throws Exception
+	@Before public void createDao()
 	{
-		super.setUp();
 		dao = new QuestStatisticsDao(dbHelper, null);
 	}
 
-	private ChangesetInfo createChangeset()
-	{
-		ChangesetInfo result = new ChangesetInfo();
-		result.tags = new HashMap<>();
-		result.tags.put("created_by", ApplicationConstants.USER_AGENT);
-		return result;
-	}
-
-	public void testGetZero()
+	@Test public void getZero()
 	{
 		assertEquals(0,dao.getAmount(ONE));
 	}
 
-	public void testGetOne()
+	@Test public void getOne()
 	{
 		dao.addOne(ONE);
 		assertEquals(1,dao.getAmount(ONE));
 	}
 
-	public void testGetTwo()
+	@Test public void getTwo()
 	{
 		dao.addOne(ONE);
 		dao.addOne(ONE);
 		assertEquals(2,dao.getAmount(ONE));
 	}
 
-	public void testGetTotal()
+	@Test public void getTotal()
 	{
 		dao.addOne(ONE);
 		dao.addOne(ONE);
 		dao.addOne(TWO);
 		assertEquals(3,dao.getTotalAmount());
-	}
-
-	private class TestChangesetsDao extends ChangesetsDao
-	{
-
-		private ChangesetInfo[] toReturn;
-		private int count;
-
-		public TestChangesetsDao(ChangesetInfo[] toReturn, int count)
-		{
-			super(null);
-			this.toReturn = toReturn;
-			this.count = count;
-		}
-
-		@Override public void find(Handler<ChangesetInfo> handler, QueryChangesetsFilters filters)
-		{
-			for (ChangesetInfo aToReturn : toReturn)
-			{
-				handler.handle(aToReturn);
-			}
-		}
-
-		@Override public void getData(long id, MapDataChangesHandler handler)
-		{
-			for (int i = 0; i < count; i++)
-			{
-				handler.handle((Node) null);
-			}
-		}
 	}
 }

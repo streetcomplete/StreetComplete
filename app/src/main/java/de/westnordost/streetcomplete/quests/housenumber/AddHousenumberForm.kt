@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.quests.housenumber
 
 import android.content.Context
 import android.os.Bundle
-import android.support.v7.app.AlertDialog
+import androidx.appcompat.app.AlertDialog
 import android.text.InputType
 import android.text.method.DigitsKeyListener
 import android.view.LayoutInflater

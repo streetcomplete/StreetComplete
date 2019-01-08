@@ -15,7 +15,7 @@ import de.westnordost.streetcomplete.R;
 /**
  * An image button which shows the current location state
  */
-public class LocationStateButton extends android.support.v7.widget.AppCompatImageButton
+public class LocationStateButton extends androidx.appcompat.widget.AppCompatImageButton
 {
 	// must be defined in the same order as the LocationState enum (but minus the first)
 	private static final int[] STATES = {

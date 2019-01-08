@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.osm;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import java.util.Date;
 import java.util.List;

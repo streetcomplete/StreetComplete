@@ -3,11 +3,12 @@ package de.westnordost.streetcomplete.quests.localized_name
 import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
-import android.support.v7.app.AlertDialog
-import android.support.v7.widget.LinearLayoutManager
+import androidx.appcompat.app.AlertDialog
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.text.Html
 import android.view.View
 import android.widget.Button
+import androidx.recyclerview.widget.RecyclerView
 
 import java.util.ArrayList
 import java.util.Queue
@@ -42,7 +43,7 @@ abstract class AddLocalizedNameForm : AbstractQuestFormAnswerFragment() {
 
     private fun initLocalizedNameAdapter(savedInstanceState: Bundle?) {
         val data: ArrayList<LocalizedName> = if (savedInstanceState != null) {
-            serializer.toObject(savedInstanceState.getByteArray(LOCALIZED_NAMES_DATA))
+            serializer.toObject(savedInstanceState.getByteArray(LOCALIZED_NAMES_DATA)!!)
         } else {
             ArrayList()
         }
@@ -50,7 +51,7 @@ abstract class AddLocalizedNameForm : AbstractQuestFormAnswerFragment() {
         adapter = setupNameAdapter(data, addLanguageButton)
         adapter.addOnNameChangedListener { checkIsFormComplete() }
         adapter.registerAdapterDataObserver(AdapterDataChangedWatcher { checkIsFormComplete() })
-        namesList.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+        namesList.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
         namesList.adapter = adapter
         namesList.isNestedScrollingEnabled = false
         checkIsFormComplete()
@@ -149,8 +150,8 @@ abstract class AddLocalizedNameForm : AbstractQuestFormAnswerFragment() {
 }
 
 internal fun Bundle.toNameByLanguage(): Map<String, String> {
-    val names = getStringArray(AddLocalizedNameForm.NAMES)
-    val languages = getStringArray(AddLocalizedNameForm.LANGUAGE_CODES)
+    val names = getStringArray(AddLocalizedNameForm.NAMES)!!
+    val languages = getStringArray(AddLocalizedNameForm.LANGUAGE_CODES)!!
 
     val result = mutableMapOf<String, String>()
     result[""] = names[0]

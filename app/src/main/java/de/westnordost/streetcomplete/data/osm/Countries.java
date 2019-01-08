@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.osm;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import java.util.Arrays;
 import java.util.Collection;

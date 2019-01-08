@@ -6,6 +6,8 @@ import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
 import de.westnordost.streetcomplete.quests.AOsmElementQuestTypeTest
 import de.westnordost.streetcomplete.quests.localized_name.data.PutRoadNameSuggestionsHandler
 import de.westnordost.streetcomplete.quests.localized_name.data.RoadNameSuggestionsDao
+import org.junit.Before
+import org.junit.Test
 
 import org.mockito.Mockito.mock
 
@@ -17,22 +19,22 @@ class AddRoadNameTest : AOsmElementQuestTypeTest() {
         mock(PutRoadNameSuggestionsHandler::class.java)
     )
 
-    override fun setUp() {
-        super.setUp()
+    @Before fun setupTags() {
         tags["highway"] = "residential"
     }
 
-    fun testNoName() {
+    @Test fun noName() {
         bundle.putBoolean(AddLocalizedNameForm.NO_NAME, true)
         verify(StringMapEntryAdd("noname", "yes"))
     }
 
-    fun testOneName() {
+    @Test fun oneName() {
         bundle.putStringArray(AddLocalizedNameForm.NAMES, arrayOf("my name"))
+        bundle.putStringArray(AddLocalizedNameForm.LANGUAGE_CODES, arrayOf(""))
         verify(StringMapEntryAdd("name", "my name"))
     }
 
-    fun testMultipleNames() {
+    @Test fun multipleNames() {
         bundle.putStringArray(AddLocalizedNameForm.NAMES, arrayOf("my name", "kröötz"))
         bundle.putStringArray(AddLocalizedNameForm.LANGUAGE_CODES, arrayOf("en", "de"))
         verify(
@@ -42,7 +44,7 @@ class AddRoadNameTest : AOsmElementQuestTypeTest() {
         )
     }
 
-    fun testMultipleNamesDefaultNameIsOfNoSpecificLanguage() {
+    @Test fun multipleNamesDefaultNameIsOfNoSpecificLanguage() {
         bundle.putStringArray(
             AddLocalizedNameForm.NAMES,
             arrayOf("my name / kröötz", "my name", "kröötz")
@@ -55,17 +57,17 @@ class AddRoadNameTest : AOsmElementQuestTypeTest() {
         )
     }
 
-    fun testIsService() {
+    @Test fun isService() {
         bundle.putInt(AddRoadNameForm.NO_PROPER_ROAD, AddRoadNameForm.IS_SERVICE)
         verify(StringMapEntryModify("highway", tags["highway"], "service"))
     }
 
-    fun testIsTrack() {
+    @Test fun isTrack() {
         bundle.putInt(AddRoadNameForm.NO_PROPER_ROAD, AddRoadNameForm.IS_TRACK)
         verify(StringMapEntryModify("highway", tags["highway"], "track"))
     }
 
-    fun testIsLink() {
+    @Test fun isLink() {
         bundle.putInt(AddRoadNameForm.NO_PROPER_ROAD, AddRoadNameForm.IS_LINK)
 
         tags["highway"] = "primary"

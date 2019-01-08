@@ -2,10 +2,10 @@ package de.westnordost.streetcomplete.quests.opening_hours
 
 import android.content.Context
 import android.content.DialogInterface
-import android.support.design.widget.TabLayout
-import android.support.v4.view.PagerAdapter
-import android.support.v4.view.ViewPager
-import android.support.v7.app.AlertDialog
+import com.google.android.material.tabs.TabLayout
+import androidx.viewpager.widget.PagerAdapter
+import androidx.viewpager.widget.ViewPager
+import androidx.appcompat.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -135,7 +135,7 @@ class TimeRangePickerDialog(
     }
 
     companion object {
-        private val START_TIME_TAB = 0
-        private val END_TIME_TAB = 1
+        private const val START_TIME_TAB = 0
+        private const val END_TIME_TAB = 1
     }
 }

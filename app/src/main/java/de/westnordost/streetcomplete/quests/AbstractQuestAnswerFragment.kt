@@ -1,12 +1,12 @@
 package de.westnordost.streetcomplete.quests
 
 import android.content.ContextWrapper
-import android.support.annotation.AnyThread
+import androidx.annotation.AnyThread
 import android.content.Context
 import android.content.res.Configuration
 import android.content.res.Resources
 import android.os.Bundle
-import android.support.v7.app.AlertDialog
+import androidx.appcompat.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.View

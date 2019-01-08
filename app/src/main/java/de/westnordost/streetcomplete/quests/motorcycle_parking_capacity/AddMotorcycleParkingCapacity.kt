@@ -19,6 +19,6 @@ class AddMotorcycleParkingCapacity(o: OverpassMapDataDao) : SimpleOverpassQuestT
     override fun createForm() = AddMotorcycleParkingCapacityForm()
 
     override fun applyAnswerTo(answer: Bundle, changes: StringMapChangesBuilder) {
-        changes.add("capacity","" + answer.getString(TextInputQuestAnswerFragment.INPUT).toInt())
+        changes.add("capacity","" + answer.getString(TextInputQuestAnswerFragment.INPUT)!!.toInt())
     }
 }

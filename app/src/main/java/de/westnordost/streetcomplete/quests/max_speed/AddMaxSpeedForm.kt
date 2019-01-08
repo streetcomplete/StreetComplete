@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.quests.max_speed
 
 import android.os.Bundle
-import android.support.annotation.IdRes
-import android.support.v7.app.AlertDialog
+import androidx.annotation.IdRes
+import androidx.appcompat.app.AlertDialog
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.ArrayAdapter

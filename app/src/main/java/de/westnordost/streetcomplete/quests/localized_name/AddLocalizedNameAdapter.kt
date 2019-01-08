@@ -3,8 +3,8 @@ package de.westnordost.streetcomplete.quests.localized_name
 import android.content.Context
 import android.graphics.Typeface
 import android.os.AsyncTask
-import android.support.v7.widget.PopupMenu
-import android.support.v7.widget.RecyclerView
+import androidx.appcompat.widget.PopupMenu
+import androidx.recyclerview.widget.RecyclerView
 import android.text.Editable
 import android.view.LayoutInflater
 import android.view.View

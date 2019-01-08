@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.data.osm.download;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import org.jetbrains.annotations.NotNull;
 import org.junit.Before;

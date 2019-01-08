@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.quests.max_height
 
 import android.os.Bundle
-import android.support.v7.app.AlertDialog
+import androidx.appcompat.app.AlertDialog
 import android.text.InputFilter
 import android.text.method.DigitsKeyListener
 import android.view.LayoutInflater

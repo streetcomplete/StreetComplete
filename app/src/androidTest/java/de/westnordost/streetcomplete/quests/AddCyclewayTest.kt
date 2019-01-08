@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
 import de.westnordost.streetcomplete.quests.bikeway.AddCycleway
 import de.westnordost.streetcomplete.quests.bikeway.AddCyclewayForm
 import de.westnordost.streetcomplete.quests.bikeway.Cycleway
+import org.junit.Test
 
 import org.mockito.Mockito.mock
 
@@ -13,21 +14,21 @@ class AddCyclewayTest : AOsmElementQuestTypeTest() {
 
     override val questType = AddCycleway(mock(OverpassMapDataDao::class.java))
 
-    fun testCyclewayLeftAndRightDontHaveToBeSpecified1() {
+    @Test fun cyclewayLeftAndRightDontHaveToBeSpecified1() {
         bundle.putString(AddCyclewayForm.CYCLEWAY_LEFT, Cycleway.EXCLUSIVE_LANE.name)
         val cb = StringMapChangesBuilder(tags)
         questType.applyAnswerTo(bundle, cb)
         // success if no exception thrown
     }
 
-    fun testCyclewayLeftAndRightDontHaveToBeSpecified2() {
+    @Test fun cyclewayLeftAndRightDontHaveToBeSpecified2() {
         bundle.putString(AddCyclewayForm.CYCLEWAY_RIGHT, Cycleway.EXCLUSIVE_LANE.name)
         val cb = StringMapChangesBuilder(tags)
         questType.applyAnswerTo(bundle, cb)
         // success if no exception thrown
     }
 
-    fun testCyclewayLane() {
+    @Test fun cyclewayLane() {
         putBothSides(Cycleway.EXCLUSIVE_LANE)
         verify(
             StringMapEntryAdd("cycleway:both", "lane"),
@@ -35,7 +36,7 @@ class AddCyclewayTest : AOsmElementQuestTypeTest() {
         )
     }
 
-    fun testCyclewayAdvisoryLane() {
+    @Test fun cyclewayAdvisoryLane() {
         putBothSides(Cycleway.ADVISORY_LANE)
         verify(
             StringMapEntryAdd("cycleway:both", "lane"),
@@ -43,22 +44,22 @@ class AddCyclewayTest : AOsmElementQuestTypeTest() {
         )
     }
 
-    fun testCyclewayUnspecifiedLane() {
+    @Test fun cyclewayUnspecifiedLane() {
         putBothSides(Cycleway.LANE_UNSPECIFIED)
         verify(StringMapEntryAdd("cycleway:both", "lane"))
     }
 
-    fun testCyclewayTrack() {
+    @Test fun cyclewayTrack() {
         putBothSides(Cycleway.TRACK)
         verify(StringMapEntryAdd("cycleway:both", "track"))
     }
 
-    fun testCyclewayBusLane() {
+    @Test fun cyclewayBusLane() {
         putBothSides(Cycleway.BUSWAY)
         verify(StringMapEntryAdd("cycleway:both", "share_busway"))
     }
 
-    fun testCyclewayPictogramLane() {
+    @Test fun cyclewayPictogramLane() {
         putBothSides(Cycleway.PICTOGRAMS)
         verify(
             StringMapEntryAdd("cycleway:both", "shared_lane"),
@@ -66,7 +67,7 @@ class AddCyclewayTest : AOsmElementQuestTypeTest() {
         )
     }
 
-    fun testCyclewaySuggestionLane() {
+    @Test fun cyclewaySuggestionLane() {
         putBothSides(Cycleway.SUGGESTION_LANE)
         verify(
             StringMapEntryAdd("cycleway:both", "shared_lane"),
@@ -74,12 +75,12 @@ class AddCyclewayTest : AOsmElementQuestTypeTest() {
         )
     }
 
-    fun testCyclewayNone() {
+    @Test fun cyclewayNone() {
         putBothSides(Cycleway.NONE)
         verify(StringMapEntryAdd("cycleway:both", "no"))
     }
 
-    fun testCyclewayOnSidewalk() {
+    @Test fun cyclewayOnSidewalk() {
         putBothSides(Cycleway.SIDEWALK_EXPLICIT)
         verify(
             StringMapEntryAdd("cycleway:both", "track"),
@@ -88,7 +89,7 @@ class AddCyclewayTest : AOsmElementQuestTypeTest() {
         )
     }
 
-    fun testCyclewaySidewalkOkay() {
+    @Test fun cyclewaySidewalkOkay() {
         putBothSides(Cycleway.SIDEWALK_OK)
         verify(
             StringMapEntryAdd("cycleway:both", "no"),
@@ -97,7 +98,7 @@ class AddCyclewayTest : AOsmElementQuestTypeTest() {
         )
     }
 
-    fun testCyclewaySidewalkAny() {
+    @Test fun cyclewaySidewalkAny() {
         bundle.putString(AddCyclewayForm.CYCLEWAY_RIGHT, Cycleway.SIDEWALK_EXPLICIT.name)
         bundle.putString(AddCyclewayForm.CYCLEWAY_LEFT, Cycleway.SIDEWALK_OK.name)
         verify(
@@ -105,7 +106,7 @@ class AddCyclewayTest : AOsmElementQuestTypeTest() {
         )
     }
 
-    fun testCyclewayDualTrack() {
+    @Test fun cyclewayDualTrack() {
         putBothSides(Cycleway.DUAL_TRACK)
         verify(
             StringMapEntryAdd("cycleway:both", "track"),
@@ -113,7 +114,7 @@ class AddCyclewayTest : AOsmElementQuestTypeTest() {
         )
     }
 
-    fun testCyclewayDualLane() {
+    @Test fun cyclewayDualLane() {
         putBothSides(Cycleway.DUAL_LANE)
         verify(
             StringMapEntryAdd("cycleway:both", "lane"),
@@ -121,7 +122,7 @@ class AddCyclewayTest : AOsmElementQuestTypeTest() {
         )
     }
 
-    fun testLeftAndRightAreDifferent() {
+    @Test fun leftAndRightAreDifferent() {
         bundle.putString(AddCyclewayForm.CYCLEWAY_RIGHT, Cycleway.EXCLUSIVE_LANE.name)
         bundle.putString(AddCyclewayForm.CYCLEWAY_LEFT, Cycleway.TRACK.name)
         verify(
@@ -131,7 +132,7 @@ class AddCyclewayTest : AOsmElementQuestTypeTest() {
         )
     }
 
-    fun testCyclewayMakesStreetNotOnewayForBicycles() {
+    @Test fun cyclewayMakesStreetNotOnewayForBicycles() {
         putBothSides(Cycleway.EXCLUSIVE_LANE)
         bundle.putBoolean(AddCyclewayForm.IS_ONEWAY_NOT_FOR_CYCLISTS, true)
         verify(
@@ -141,7 +142,7 @@ class AddCyclewayTest : AOsmElementQuestTypeTest() {
         )
     }
 
-    fun testCyclewayLaneWithExplicitDirection() {
+    @Test fun cyclewayLaneWithExplicitDirection() {
         // this would be a street that has lanes on both sides but is oneway=yes (in countries with
         // right hand traffic)
         putBothSides(Cycleway.EXCLUSIVE_LANE)
@@ -155,7 +156,7 @@ class AddCyclewayTest : AOsmElementQuestTypeTest() {
         )
     }
 
-    fun testCyclewayLaneWithExplicitOtherDirection() {
+    @Test fun cyclewayLaneWithExplicitOtherDirection() {
         // this would be a street that has lanes on both sides but is oneway=-1 (in countries with
         // right hand traffic)
         putBothSides(Cycleway.EXCLUSIVE_LANE)

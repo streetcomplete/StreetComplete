@@ -5,43 +5,45 @@ import de.westnordost.streetcomplete.data.ApplicationDbTestCase
 import de.westnordost.streetcomplete.data.osm.persist.WayDao
 import de.westnordost.streetcomplete.quests.oneway.data.WayTrafficFlowDao
 import de.westnordost.streetcomplete.util.Serializer
+import org.junit.Assert.*
+import org.junit.Before
+import org.junit.Test
 
 class WayTrafficFlowSegmentsDaoTest : ApplicationDbTestCase() {
 
     private lateinit var dao: WayTrafficFlowDao
 
-    override fun setUp() {
-        super.setUp()
+    @Before fun createDao() {
         dao = WayTrafficFlowDao(dbHelper)
     }
 
-    fun testPutGetTrue() {
+    @Test fun putGetTrue() {
         dao.put(123L, true)
         assertTrue(dao.isForward(123L)!!)
     }
 
-    fun testPutGetFalse() {
+    @Test fun putGetFalse() {
         dao.put(123L, false)
         assertFalse(dao.isForward(123L)!!)
     }
 
-    fun testGetNull() {
+    @Test fun getNull() {
         assertNull(dao.isForward(123L))
     }
 
-    fun testDelete() {
+    @Test fun delete() {
         dao.put(123L, false)
         dao.delete(123L)
         assertNull(dao.isForward(123L))
     }
 
-    fun testOverwrite() {
+    @Test fun overwrite() {
         dao.put(123L, true)
         dao.put(123L, false)
         assertFalse(dao.isForward(123L)!!)
     }
 
-    fun testDeleteUnreferenced() {
+    @Test fun deleteUnreferenced() {
         val mockSerializer = object : Serializer {
             override fun toBytes(`object`: Any) = ByteArray(0)
             override fun <T> toObject(bytes: ByteArray, type: Class<T>) = type.newInstance()

@@ -2,21 +2,23 @@ package de.westnordost.streetcomplete.quests.localized_name.data
 
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
+import org.junit.Assert.*
+import org.junit.Before
+import org.junit.Test
 
 class RoadNameSuggestionsDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: RoadNameSuggestionsDao
 
-    override fun setUp() {
-        super.setUp()
+    @Before fun createDao() {
         dao = RoadNameSuggestionsDao(dbHelper, serializer)
     }
 
-    fun testGetNoNames() {
+    @Test fun getNoNames() {
         val result = dao.getNames(listOf(OsmLatLon(5.0, 5.0)), 0.0)
         assertEquals(0, result.size)
     }
 
-    fun testGetOneNames() {
+    @Test fun getOneNames() {
         val names = mapOf(
             "de" to "Große Straße",
             "en" to "Big Street"
@@ -28,7 +30,7 @@ class RoadNameSuggestionsDaoTest : ApplicationDbTestCase() {
         assertEquals(listOf(names), result)
     }
 
-    fun testGetMultipleNames() {
+    @Test fun getMultipleNames() {
         val names1 = mapOf("en" to "Big Street")
         dao.putRoad(1, names1, createRoadPositions())
 

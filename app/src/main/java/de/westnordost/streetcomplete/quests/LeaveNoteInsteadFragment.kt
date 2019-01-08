@@ -29,9 +29,9 @@ class LeaveNoteInsteadFragment : AbstractCreateNoteFragment() {
         descriptionLabel.text = getString(R.string.quest_leave_new_note_description)
     }
 
-    override fun onAttach(ctx: Context?) {
-        super.onAttach(ctx)
-        questAnswerComponent.onAttach(ctx as OsmQuestAnswerListener)
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        questAnswerComponent.onAttach(context as OsmQuestAnswerListener)
     }
 
     override fun onLeaveNote(text: String, imagePaths: List<String>?) {

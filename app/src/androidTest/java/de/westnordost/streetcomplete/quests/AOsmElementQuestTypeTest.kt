@@ -5,17 +5,17 @@ import android.os.Bundle
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryChange
-import junit.framework.TestCase
+import org.junit.Assert.assertTrue
+import org.junit.Before
 
-abstract class AOsmElementQuestTypeTest : TestCase() {
+abstract class AOsmElementQuestTypeTest {
 
     protected abstract val questType: OsmElementQuestType
 
     protected var bundle = Bundle()
     protected var tags = mutableMapOf<String, String>()
 
-    public override fun setUp() {
-        super.setUp()
+    @Before fun setUpBundleAndTags() {
         bundle = Bundle()
         tags = mutableMapOf()
     }

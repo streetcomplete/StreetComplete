@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.settings;
 
-import android.support.v7.preference.PreferenceDialogFragmentCompat;
+import androidx.preference.PreferenceDialogFragmentCompat;
 import android.view.View;
 import android.widget.NumberPicker;
 

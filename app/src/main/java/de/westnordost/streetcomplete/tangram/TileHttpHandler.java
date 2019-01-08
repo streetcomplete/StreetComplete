@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.tangram;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.mapzen.tangram.HttpHandler;
 

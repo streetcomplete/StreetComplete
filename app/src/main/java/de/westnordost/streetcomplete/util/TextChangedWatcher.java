@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.util;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.text.Editable;
 
 public class TextChangedWatcher extends DefaultTextWatcher

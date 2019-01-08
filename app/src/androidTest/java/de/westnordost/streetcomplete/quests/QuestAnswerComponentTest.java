@@ -1,18 +1,20 @@
 package de.westnordost.streetcomplete.quests;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
-import junit.framework.TestCase;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import de.westnordost.streetcomplete.data.QuestGroup;
 
-public class QuestAnswerComponentTest extends TestCase
+import static org.junit.Assert.assertEquals;
+
+public class QuestAnswerComponentTest
 {
-	public void testGetSet()
+	@Test public void getSet()
 	{
 		QuestAnswerComponent c1 = new QuestAnswerComponent();
 		c1.onCreate(QuestAnswerComponent.createArguments(11, QuestGroup.OSM));
@@ -27,7 +29,7 @@ public class QuestAnswerComponentTest extends TestCase
 		assertEquals(c2.getQuestId(), c1.getQuestId());
 	}
 
-	public void testListener()
+	@Test public void listener()
 	{
 		QuestAnswerComponent c1 = new QuestAnswerComponent();
 

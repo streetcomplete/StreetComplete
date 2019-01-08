@@ -35,7 +35,7 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
         descriptionLabel.text = getString(R.string.create_new_note_description)
     }
 
-    override fun onConfigurationChanged(newConfig: Configuration?) {
+    override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
         centeredMarkerLayout.setPadding(
             resources.getDimensionPixelSize(R.dimen.quest_form_leftOffset),
@@ -62,9 +62,9 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
         return a
     }
 
-    override fun onAttach(ctx: Context?) {
-        super.onAttach(ctx)
-        callbackListener = ctx as CreateNoteListener
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        callbackListener = context as CreateNoteListener
     }
 
     override fun onDiscard() {

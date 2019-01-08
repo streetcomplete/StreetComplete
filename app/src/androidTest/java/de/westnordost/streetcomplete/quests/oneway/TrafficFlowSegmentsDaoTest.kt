@@ -1,7 +1,5 @@
 package de.westnordost.streetcomplete.quests.oneway
 
-import junit.framework.TestCase
-
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.quests.oneway.data.TrafficFlowSegment
@@ -9,15 +7,17 @@ import de.westnordost.streetcomplete.quests.oneway.data.TrafficFlowSegmentsDao
 
 import de.westnordost.streetcomplete.data.OsmModule.ONEWAY_API_URL
 import org.assertj.core.api.Assertions.*
+import org.junit.Assert.assertTrue
+import org.junit.Test
 
-class TrafficFlowSegmentsDaoTest : TestCase() {
+class TrafficFlowSegmentsDaoTest {
 
-    fun testParseEmptyDoesNotResultInError() {
+    @Test fun parseEmptyDoesNotResultInError() {
         val result = TrafficFlowSegmentsDao.parse("{\"segments\":[]}")
         assertTrue(result.isEmpty())
     }
 
-    fun testParseTwoOfDifferentWay() {
+    @Test fun parseTwoOfDifferentWay() {
         val result = TrafficFlowSegmentsDao.parse("""
             {"segments":[
                 {"wayId":1,"fromPosition":{"lon":1, "lat":2},"toPosition":{"lon":5, "lat":6}},
@@ -31,7 +31,7 @@ class TrafficFlowSegmentsDaoTest : TestCase() {
         assertThat(result).containsAllEntriesOf(expected)
     }
 
-    fun testParseTwoOfSameWay() {
+    @Test fun parseTwoOfSameWay() {
         val result = TrafficFlowSegmentsDao.parse("""
             {"segments":[
                 {"wayId":1,"fromPosition":{"lon":1, "lat":2},"toPosition":{"lon":5, "lat":6}},
@@ -45,7 +45,7 @@ class TrafficFlowSegmentsDaoTest : TestCase() {
         assertThat(result).containsAllEntriesOf(expected)
     }
 
-    fun testWithSomeRealData() {
+    @Test fun withSomeRealData() {
         // should just not crash...
         TrafficFlowSegmentsDao(ONEWAY_API_URL).get(BoundingBox(-34.0, 18.0, -33.0, 19.0))
     }

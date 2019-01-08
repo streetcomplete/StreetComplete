@@ -1,11 +1,12 @@
 package de.westnordost.streetcomplete.quests.parking_fee
 
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import androidx.recyclerview.widget.RecyclerView
 
 import java.util.ArrayList
 
@@ -74,7 +75,7 @@ class AddParkingFeeForm : AbstractQuestFormAnswerFragment() {
         yesButton.setOnClickListener { onClickYesNo(true) }
         noButton.setOnClickListener { onClickYesNo(false) }
 
-        openingHoursList.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+        openingHoursList.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
         openingHoursList.adapter = openingHoursAdapter
         openingHoursList.isNestedScrollingEnabled = false
         checkIsFormComplete()
@@ -85,7 +86,7 @@ class AddParkingFeeForm : AbstractQuestFormAnswerFragment() {
             getString(R.string.quest_fee_only_at_hours),
             getString(R.string.quest_fee_not_at_hours)
         )
-        selectFeeOnlyAtHours.adapter = ArrayAdapter(activity, R.layout.spinner_item_centered, spinnerItems)
+        selectFeeOnlyAtHours.adapter = ArrayAdapter(activity!!, R.layout.spinner_item_centered, spinnerItems)
         selectFeeOnlyAtHours.setSelection(if (isFeeOnlyAtHours) 0 else 1)
         selectFeeOnlyAtHours.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
@@ -114,7 +115,7 @@ class AddParkingFeeForm : AbstractQuestFormAnswerFragment() {
 
     private fun loadOpeningHoursData(savedInstanceState: Bundle?): List<OpeningMonthsRow> =
         if (savedInstanceState != null) {
-            serializer.toObject<ArrayList<OpeningMonthsRow>>(savedInstanceState.getByteArray(OPENING_HOURS_DATA))
+            serializer.toObject<ArrayList<OpeningMonthsRow>>(savedInstanceState.getByteArray(OPENING_HOURS_DATA)!!)
         } else {
             listOf(OpeningMonthsRow())
         }

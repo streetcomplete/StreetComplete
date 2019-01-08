@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.view
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 
 abstract class ListAdapter<T>(list: List<T> = listOf()) :

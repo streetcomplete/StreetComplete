@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.quests
 
 import android.os.Bundle
-import android.support.v7.widget.GridLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import android.view.View
 
 import java.util.ArrayList
@@ -71,7 +71,7 @@ abstract class ImageListQuestAnswerFragment : AbstractQuestFormAnswerFragment() 
             if (savedInstanceState.getBoolean(EXPANDED)) initiallyShow = -1
             showItems(initiallyShow)
 
-            val selectedIndices = savedInstanceState.getIntegerArrayList(SELECTED_INDICES)
+            val selectedIndices = savedInstanceState.getIntegerArrayList(SELECTED_INDICES)!!
             imageSelector.select(selectedIndices)
         } else {
             showItems(initiallyShow)

@@ -1,10 +1,12 @@
 package de.westnordost.streetcomplete.quests.localized_name
 
 import android.content.Context
-import android.support.v7.appcompat.R
+import androidx.appcompat.R
 import android.text.Editable
 import android.util.AttributeSet
+import android.view.MotionEvent
 import android.view.inputmethod.EditorInfo
+import androidx.appcompat.widget.AppCompatEditText
 
 
 import de.westnordost.streetcomplete.data.meta.Abbreviations
@@ -15,7 +17,7 @@ import de.westnordost.streetcomplete.util.DefaultTextWatcher
 class AutoCorrectAbbreviationsEditText @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null,
     defStyleAttr: Int = R.attr.editTextStyle)
-    : android.support.v7.widget.AppCompatEditText(context, attrs, defStyleAttr) {
+    : AppCompatEditText(context, attrs, defStyleAttr) {
 
     var abbreviations: Abbreviations? = null
 
@@ -31,10 +33,14 @@ class AutoCorrectAbbreviationsEditText @JvmOverloads constructor(
 
         setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
-                autoCorrectTextAt(text, length())
+                text?.let { autoCorrectTextAt(it, length()) }
             }
             false
         }
+    }
+
+    override fun onTouchEvent(event: MotionEvent?): Boolean {
+        return super.onTouchEvent(event)
     }
 
     private fun autoCorrectTextAt(s: Editable, cursor: Int) {

@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.quests.opening_hours
 
 import android.os.Bundle
-import android.support.v7.app.AlertDialog
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.PopupMenu
+import androidx.appcompat.app.AlertDialog
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.appcompat.widget.PopupMenu
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.EditText
@@ -22,6 +22,7 @@ import de.westnordost.streetcomplete.util.Serializer
 
 
 import android.view.Menu.NONE
+import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.ktx.toObject
 import kotlinx.android.synthetic.main.quest_opening_hours.*
@@ -62,7 +63,7 @@ class AddOpeningHoursForm : AbstractQuestFormAnswerFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        openingHoursList.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+        openingHoursList.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
         openingHoursList.adapter = openingHoursAdapter
         openingHoursList.isNestedScrollingEnabled = false
         checkIsFormComplete()
@@ -72,7 +73,7 @@ class AddOpeningHoursForm : AbstractQuestFormAnswerFragment() {
 
     private fun loadOpeningHoursData(savedInstanceState: Bundle?): List<OpeningMonthsRow> =
         if (savedInstanceState != null) {
-            serializer.toObject<ArrayList<OpeningMonthsRow>>(savedInstanceState.getByteArray(OPENING_HOURS_DATA))
+            serializer.toObject<ArrayList<OpeningMonthsRow>>(savedInstanceState.getByteArray(OPENING_HOURS_DATA)!!)
         } else {
             listOf(OpeningMonthsRow())
         }
