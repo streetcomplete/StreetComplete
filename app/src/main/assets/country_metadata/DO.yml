@@ -1,6 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
 mobileCountryCode: 370
 officialLanguages: [es]
-orchardProduces: [cacao, coffee, coconut, banana, palm_oil, avocado, pineapple, guava, mango, mangosteen,
-  orange, chilli_pepper, sweet_pepper, cashew_nut, lemon, lime, tomato, papaya, grapefruit]
+orchardProduces: [banana, papaya, avocado, coconut, pineapple, tomato, orange, cacao, chilli_pepper,
+  sweet_pepper, lemon, lime, guava, mango, mangosteen, coffee, grapefruit, cashew_nut,
+  rubber]
 popularSports: [baseball, basketball, tennis]

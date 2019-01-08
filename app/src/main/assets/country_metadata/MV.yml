@@ -3,6 +3,6 @@ firstDayOfWorkweek: Su
 isLeftHandTraffic: true
 mobileCountryCode: 472
 officialLanguages: [dv]
-orchardProduces: [coconut, papaya, banana, tomato, guava, mango, mangosteen, chilli_pepper, sweet_pepper,
-  lemon, lime, areca_nut]
+orchardProduces: [banana, papaya, coconut, tomato, chilli_pepper, sweet_pepper, lemon, lime, guava,
+  mango, mangosteen, areca_nut]
 popularReligions: [muslim]

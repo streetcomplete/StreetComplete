@@ -2,6 +2,6 @@
 isSlowZoneKnown: true
 mobileCountryCode: 334
 officialLanguages: [es]
-orchardProduces: [coffee, orange, guava, mango, mangosteen, coconut, lemon, lime, avocado, chilli_pepper,
-  sweet_pepper, tomato, banana, walnut, cacao, apple, palm_oil, peach, grape]
+orchardProduces: [orange, tomato, chilli_pepper, sweet_pepper, lemon, lime, banana, guava, mango, mangosteen,
+  avocado, coconut, papaya, pineapple, apple, strawberry, grapefruit, grape, peach]
 popularSports: [soccer, basketball, baseball, tennis]

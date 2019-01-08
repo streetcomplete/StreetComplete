@@ -4,5 +4,5 @@ isLivingStreetKnown: true
 isSlowZoneKnown: true
 mobileCountryCode: 244
 officialLanguages: [fi, sv]
-orchardProduces: [strawberry, apple, raspberry, tomato, chilli_pepper, sweet_pepper]
+orchardProduces: [tomato, strawberry, apple, raspberry, chilli_pepper, sweet_pepper]
 popularSports: [soccer, tennis, basketball, beachvolleyball, shooting, ice_hockey]

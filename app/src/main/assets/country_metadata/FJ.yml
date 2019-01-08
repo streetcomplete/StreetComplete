@@ -2,6 +2,6 @@
 isLeftHandTraffic: true
 mobileCountryCode: 542
 officialLanguages: [en, fj, hif]
-orchardProduces: [coconut, pepper, banana, pineapple, papaya, tomato, orange, cacao, chilli_pepper,
-  sweet_pepper, coffee, guava, mango, mangosteen]
+orchardProduces: [coconut, pineapple, banana, papaya, tomato, guava, mango, mangosteen, pepper, chilli_pepper,
+  sweet_pepper, orange, coffee, cacao]
 popularReligions: [christian, hindu]

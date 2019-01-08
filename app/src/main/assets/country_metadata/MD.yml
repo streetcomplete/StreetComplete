@@ -2,5 +2,5 @@
 isSlowZoneKnown: true
 mobileCountryCode: 259
 officialLanguages: [ro]
-orchardProduces: [grape, apple, plum, walnut, peach, tomato, cherry, apricot, chilli_pepper, sweet_pepper,
-  pear, strawberry, hazelnut, raspberry, almond]
+orchardProduces: [grape, apple, plum, tomato, apricot, peach, walnut, chilli_pepper, sweet_pepper,
+  strawberry, pear, cherry, raspberry, almond, hazelnut]

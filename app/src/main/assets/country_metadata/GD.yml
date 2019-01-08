@@ -3,6 +3,6 @@ isLeftHandTraffic: true
 measurementSystem: [imperial, metric]
 mobileCountryCode: 352
 officialLanguages: [en]
-orchardProduces: [coconut, cacao, banana, nutmeg, avocado, guava, mango, mangosteen, plum, grapefruit,
-  orange, apple, tomato, lemon, lime, chilli_pepper, sweet_pepper, pineapple]
+orchardProduces: [coconut, banana, nutmeg, grapefruit, guava, mango, mangosteen, avocado, plum, orange,
+  cacao, apple, tomato, lemon, lime, chilli_pepper, sweet_pepper, pineapple]
 popularSports: [cricket]

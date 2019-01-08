@@ -4,7 +4,7 @@ isAdvisorySpeedLimitKnown: true
 isLeftHandTraffic: true
 mobileCountryCode: 440
 officialLanguages: [ja]
-orchardProduces: [tea, apple, persimmon, chestnut, grape, apricot, pear, tomato, peach, strawberry,
-  cherry, chilli_pepper, sweet_pepper, plum, orange, kiwi]
+orchardProduces: [apple, tomato, pear, persimmon, grape, strawberry, chilli_pepper, sweet_pepper, peach,
+  apricot, tea, kiwi, plum, cherry, chestnut, fig]
 popularReligions: [shinto, buddhist]
 popularSports: [tennis, baseball]

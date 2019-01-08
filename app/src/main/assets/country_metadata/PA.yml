@@ -1,6 +1,6 @@
 # Do not edit. Source files are in /res/country_metadata
 mobileCountryCode: 714
 officialLanguages: [es]
-orchardProduces: [coffee, banana, palm_oil, orange, cacao, coconut, pineapple, avocado, guava, mango,
-  mangosteen, tomato, tea, papaya, chilli_pepper, sweet_pepper]
+orchardProduces: [banana, pineapple, orange, tomato, coconut, avocado, papaya, guava, mango, mangosteen,
+  coffee, chilli_pepper, sweet_pepper, cacao]
 popularSports: [soccer, basketball, baseball, tennis]

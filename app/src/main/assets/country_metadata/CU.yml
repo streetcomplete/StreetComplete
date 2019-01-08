@@ -1,6 +1,6 @@
 # Do not edit. Source files are in /res/country_metadata
 mobileCountryCode: 368
 officialLanguages: [es]
-orchardProduces: [tomato, guava, mango, mangosteen, coffee, coconut, banana, orange, agave, pineapple,
-  grapefruit, chilli_pepper, sweet_pepper, papaya, cacao, grape, sisal, lemon, lime]
+orchardProduces: [tomato, guava, mango, mangosteen, banana, papaya, chilli_pepper, sweet_pepper, coconut,
+  pineapple, grapefruit, grape, orange, lemon, lime, coffee, agave, avocado, cacao]
 popularSports: [baseball, basketball]

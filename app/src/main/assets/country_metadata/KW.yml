@@ -3,5 +3,6 @@ additionalStreetsignLanguages: [en]
 firstDayOfWorkweek: Su
 mobileCountryCode: 419
 officialLanguages: [ar]
-orchardProduces: [date, tomato, chilli_pepper, sweet_pepper, grape, lemon, lime, orange, olive, strawberry]
+orchardProduces: [tomato, date, chilli_pepper, sweet_pepper, strawberry, orange, lemon, lime, grape,
+  olive]
 popularReligions: [muslim]

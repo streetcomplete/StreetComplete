@@ -3,5 +3,5 @@ isLeftHandTraffic: true
 isLivingStreetKnown: true
 mobileCountryCode: 653
 officialLanguages: [ss, en]
-orchardProduces: [grapefruit, pineapple, banana, almond, tomato, plum, orange, avocado, date, guava,
+orchardProduces: [grapefruit, orange, pineapple, banana, tomato, plum, almond, avocado, date, guava,
   mango, mangosteen]

@@ -1,5 +1,6 @@
 # Do not edit. Source files are in /res/country_metadata
 mobileCountryCode: 712
 officialLanguages: [es]
-orchardProduces: [coffee, palm_oil, pineapple, banana, orange, guava, mango, mangosteen, avocado, cacao,
-  grapefruit, lemon, lime, coconut, tomato, papaya, chilli_pepper, sweet_pepper, pepper]
+orchardProduces: [pineapple, banana, orange, coffee, papaya, tomato, guava, mango, mangosteen, lemon,
+  lime, grapefruit, coconut, avocado, strawberry, pepper, chilli_pepper, sweet_pepper,
+  cacao]

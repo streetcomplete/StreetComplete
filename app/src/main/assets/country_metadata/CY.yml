@@ -2,5 +2,5 @@
 isLeftHandTraffic: true
 mobileCountryCode: 280
 officialLanguages: [el, tr]
-orchardProduces: [olive, grape, almond, orange, apple, lemon, lime, plum, peach, grapefruit, apricot,
-  cherry, banana, tomato, walnut, fig]
+orchardProduces: [orange, grapefruit, grape, tomato, olive, lemon, lime, banana, apple, fig, peach,
+  chilli_pepper, sweet_pepper, strawberry, plum, apricot, avocado]

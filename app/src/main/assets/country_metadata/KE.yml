@@ -2,6 +2,6 @@
 isLeftHandTraffic: true
 mobileCountryCode: 639
 officialLanguages: [en, sw]
-orchardProduces: [tea, coffee, banana, guava, mango, mangosteen, coconut, sisal, tomato, cashew_nut,
-  avocado, papaya, pineapple, lemon, lime, chilli_pepper, sweet_pepper, orange, date]
+orchardProduces: [banana, guava, mango, mangosteen, tea, tomato, pineapple, avocado, papaya, coconut,
+  coffee, orange, cashew_nut, sisal, lemon, lime, grapefruit, pear]
 popularSports: [golf, soccer, tennis, basketball, cricket]
