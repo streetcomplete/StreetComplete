@@ -1,10 +1,10 @@
 package de.westnordost.streetcomplete.quests.fire_hydrant
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.ImageListQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
 import de.westnordost.streetcomplete.view.Item
 
-class AddFireHydrantTypeForm : ImageListQuestAnswerFragment() {
+class AddFireHydrantTypeForm : AImageListQuestAnswerFragment<String, String>() {
 
     override val items = listOf(
         Item("pillar", R.drawable.fire_hydrant_pillar, R.string.quest_fireHydrant_type_pillar),
@@ -15,4 +15,8 @@ class AddFireHydrantTypeForm : ImageListQuestAnswerFragment() {
 
     override val itemsPerRow = 2
     override val maxNumberOfInitiallyShownItems = 2
+
+    override fun onClickOk(selectedItems: List<String>) {
+        applyAnswer(selectedItems.single())
+    }
 }

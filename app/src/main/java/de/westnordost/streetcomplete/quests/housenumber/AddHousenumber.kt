@@ -1,7 +1,5 @@
 package de.westnordost.streetcomplete.quests.housenumber
 
-import android.os.Bundle
-import android.text.TextUtils
 import android.util.Log
 
 import de.westnordost.osmapi.map.data.BoundingBox
@@ -18,14 +16,13 @@ import de.westnordost.streetcomplete.data.osm.tql.OverpassQLUtil
 import de.westnordost.streetcomplete.util.FlattenIterable
 import de.westnordost.streetcomplete.util.LatLonRaster
 import de.westnordost.streetcomplete.util.SphericalEarthMath
-import kotlin.collections.HashMap
 
-class AddHousenumber(private val overpass: OverpassMapDataDao) : OsmElementQuestType {
+class AddHousenumber(private val overpass: OverpassMapDataDao) : OsmElementQuestType<HousenumberAnswer> {
 
     override val commitMessage = "Add housenumbers"
     override val icon = R.drawable.ic_quest_housenumber
 
-    // See overview here: https://ent8r.github.io/blacklistr/?java=housenumber/AddHousenumber.java
+    // See overview here: https://ent8r.github.io/blacklistr/?streetcomplete=housenumber/AddHousenumber.kt
     override val enabledForCountries = Countries.allExcept(
         "NL", // https://forum.openstreetmap.org/viewtopic.php?id=60356
         "DK", // https://lists.openstreetmap.org/pipermail/talk-dk/2017-November/004898.html
@@ -177,26 +174,20 @@ class AddHousenumber(private val overpass: OverpassMapDataDao) : OsmElementQuest
 
     override fun createForm() = AddHousenumberForm()
 
-    override fun applyAnswerTo(answer: Bundle, changes: StringMapChangesBuilder) {
-        val noAddress = answer.getBoolean(AddHousenumberForm.NO_ADDRESS)
-        var housenumber = answer.getString(AddHousenumberForm.HOUSENUMBER)
-        val housename = answer.getString(AddHousenumberForm.HOUSENAME)
-        val conscriptionnumber = answer.getString(AddHousenumberForm.CONSCRIPTIONNUMBER)
-        val streetnumber = answer.getString(AddHousenumberForm.STREETNUMBER)
-
-        if (noAddress) {
-            changes.add("noaddress", "yes")
-        } else if (conscriptionnumber != null) {
-            changes.add("addr:conscriptionnumber", conscriptionnumber)
-            if (!TextUtils.isEmpty(streetnumber)) changes.add("addr:streetnumber", streetnumber!!)
-
-            housenumber = streetnumber
-            if (TextUtils.isEmpty(housenumber)) housenumber = conscriptionnumber
-            changes.add("addr:housenumber", housenumber!!)
-        } else if (housenumber != null) {
-            changes.add("addr:housenumber", housenumber)
-        } else if (housename != null) {
-            changes.add("addr:housename", housename)
+    override fun applyAnswerTo(answer: HousenumberAnswer, changes: StringMapChangesBuilder) {
+        when(answer) {
+            is NoAddress   -> changes.add("noaddress", "yes")
+            is HouseNumber -> changes.add("addr:housenumber", answer.number)
+            is HouseName   -> changes.add("addr:housename", answer.name)
+            is ConscriptionNumber -> {
+                changes.add("addr:conscriptionnumber", answer.number)
+                if (answer.streetNumber != null) {
+                    changes.add("addr:streetnumber", answer.streetNumber)
+                    changes.add("addr:housenumber", answer.streetNumber)
+                } else {
+                    changes.add("addr:housenumber", answer.number)
+                }
+            }
         }
     }
 

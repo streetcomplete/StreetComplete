@@ -1,14 +1,12 @@
 package de.westnordost.streetcomplete.quests.building_underground
 
-import android.os.Bundle
-
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
-class AddIsBuildingUnderground(o: OverpassMapDataDao) : SimpleOverpassQuestType(o) {
+class AddIsBuildingUnderground(o: OverpassMapDataDao) : SimpleOverpassQuestType<Boolean>(o) {
 
     override val tagFilters = "ways, relations with building and !location and layer~-[0-9]+"
     override val commitMessage = "Determine whatever building is fully underground"
@@ -24,8 +22,7 @@ class AddIsBuildingUnderground(o: OverpassMapDataDao) : SimpleOverpassQuestType(
 
     override fun createForm() = YesNoQuestAnswerFragment()
 
-    override fun applyAnswerTo(answer: Bundle, changes: StringMapChangesBuilder) {
-        val location = if (answer.getBoolean(YesNoQuestAnswerFragment.ANSWER)) "underground" else "surface"
-        changes.add("location", location)
+    override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
+        changes.add("location", if (answer) "underground" else "surface")
     }
 }

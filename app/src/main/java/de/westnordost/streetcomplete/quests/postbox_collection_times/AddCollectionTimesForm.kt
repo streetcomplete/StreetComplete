@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.View
-import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.RecyclerView
 
 import java.util.ArrayList
@@ -21,7 +20,7 @@ import de.westnordost.streetcomplete.ktx.toObject
 import kotlinx.android.synthetic.main.quest_collection_times.*
 
 
-class AddCollectionTimesForm : AbstractQuestFormAnswerFragment() {
+class AddCollectionTimesForm : AbstractQuestFormAnswerFragment<CollectionTimesAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_collection_times
 
@@ -32,9 +31,6 @@ class AddCollectionTimesForm : AbstractQuestFormAnswerFragment() {
     private lateinit var collectionTimesAdapter: CollectionTimesAdapter
 
     @Inject internal lateinit var serializer: Serializer
-
-    private val collectionTimesString get() =
-        collectionTimesAdapter.createCollectionTimes().joinToString(", ")
 
     init {
         Injector.instance.applicationComponent.inject(this)
@@ -61,7 +57,7 @@ class AddCollectionTimesForm : AbstractQuestFormAnswerFragment() {
 
     private fun loadCollectionTimesData(savedInstanceState: Bundle?):List<WeekdaysTimesRow> =
         if (savedInstanceState != null) {
-            serializer.toObject<ArrayList<WeekdaysTimesRow>>(savedInstanceState.getByteArray(TIMES_DATA))
+            serializer.toObject<ArrayList<WeekdaysTimesRow>>(savedInstanceState.getByteArray(TIMES_DATA)!!)
         } else {
             listOf()
         }
@@ -73,27 +69,20 @@ class AddCollectionTimesForm : AbstractQuestFormAnswerFragment() {
     }
 
     override fun onClickOk() {
-        applyAnswer(bundleOf(TIMES to collectionTimesString))
+        applyAnswer(CollectionTimes(collectionTimesAdapter.createCollectionTimes()))
     }
 
     private fun confirmNoTimes() {
         AlertDialog.Builder(context!!)
             .setTitle(R.string.quest_generic_confirmation_title)
-            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> applyNoTimesAnswer() }
+            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> applyAnswer(NoCollectionTimesSign) }
             .setNegativeButton(R.string.quest_generic_confirmation_no, null)
             .show()
     }
 
-    private fun applyNoTimesAnswer() {
-        applyAnswer(bundleOf(NO_TIMES_SPECIFIED to true))
-    }
-
-    override fun isFormComplete() = collectionTimesString.isNotEmpty()
+    override fun isFormComplete() = collectionTimesAdapter.createCollectionTimes().isNotEmpty()
 
     companion object {
-        const val TIMES = "times"
-        const val NO_TIMES_SPECIFIED = "no_times_specified"
-
         private const val TIMES_DATA = "times_data"
     }
 }

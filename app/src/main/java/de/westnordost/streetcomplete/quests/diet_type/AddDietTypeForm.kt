@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
 import kotlinx.android.synthetic.main.quest_buttonpanel_yes_no_only.*
 import kotlinx.android.synthetic.main.quest_diet_type_explanation.*
 
-class AddDietTypeForm : AbstractQuestAnswerFragment() {
+class AddDietTypeForm : AbstractQuestAnswerFragment<String>() {
 
     override val contentLayoutResId = R.layout.quest_diet_type_explanation
     override val buttonsResId = R.layout.quest_buttonpanel_yes_no_only
@@ -17,9 +17,9 @@ class AddDietTypeForm : AbstractQuestAnswerFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        yesButton.setOnClickListener { onClickAnswer("yes") }
-        noButton.setOnClickListener { onClickAnswer("no") }
-        onlyButton.setOnClickListener { onClickAnswer("only") }
+        yesButton.setOnClickListener { applyAnswer("yes") }
+        noButton.setOnClickListener { applyAnswer("no") }
+        onlyButton.setOnClickListener { applyAnswer("only") }
 
         val resId = arguments?.getInt(ARG_DIET) ?: 0
         if (resId > 0) {
@@ -29,13 +29,7 @@ class AddDietTypeForm : AbstractQuestAnswerFragment() {
         }
     }
 
-    protected fun onClickAnswer(answer: String) {
-        applyAnswer(bundleOf(OSM_VALUE to answer))
-    }
-
     companion object {
-        const val OSM_VALUE = "answer"
-
         private const val ARG_DIET = "diet_explanation"
 
         fun create(dietExplanationResId: Int): AddDietTypeForm {

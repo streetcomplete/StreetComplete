@@ -1,13 +1,11 @@
 package de.westnordost.streetcomplete.quests.opening_hours
 
-import android.os.Bundle
-
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 
-class AddOpeningHours (o: OverpassMapDataDao) : SimpleOverpassQuestType(o) {
+class AddOpeningHours (o: OverpassMapDataDao) : SimpleOverpassQuestType<OpeningHoursAnswer>(o) {
 
     /* See also AddWheelchairAccessBusiness and AddPlaceName, which has a similar list and is/should
        be ordered in the same way for better overview */
@@ -54,12 +52,15 @@ class AddOpeningHours (o: OverpassMapDataDao) : SimpleOverpassQuestType(o) {
 
     override fun createForm() = AddOpeningHoursForm()
 
-    override fun applyAnswerTo(answer: Bundle, changes: StringMapChangesBuilder) {
-        val openingHours = answer.getString(AddOpeningHoursForm.OPENING_HOURS)
-        if (answer.getBoolean(AddOpeningHoursForm.NO_SIGN)) {
-            changes.add("opening_hours:signed", "no")
-        } else {
-            changes.add("opening_hours", openingHours!!)
+    override fun applyAnswerTo(answer: OpeningHoursAnswer, changes: StringMapChangesBuilder) {
+        when(answer) {
+            is RegularOpeningHours -> changes.add("opening_hours", answer.times.joinToString(";"))
+            is AlwaysOpen          -> changes.add("opening_hours", "24/7")
+            is NoOpeningHoursSign  -> changes.add("opening_hours:signed", "no")
+            is DescribeOpeningHours -> {
+                val text = answer.text.replace("\"","")
+                changes.add("opening_hours", "\"$text\"")
+            }
         }
     }
 }

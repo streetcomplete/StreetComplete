@@ -15,7 +15,6 @@ import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.PopupMenu
-import android.widget.Toast
 
 import java.lang.ref.WeakReference
 import java.util.Locale
@@ -31,11 +30,10 @@ import de.westnordost.streetcomplete.data.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.osm.ElementGeometry
-import de.westnordost.streetcomplete.ktx.toast
 import kotlinx.android.synthetic.main.fragment_quest_answer.*
 
 /** Abstract base class for any dialog with which the user answers a specific quest(ion)  */
-abstract class AbstractQuestAnswerFragment : AbstractBottomSheetFragment() {
+abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment() {
 
     @Inject internal lateinit var countryInfos: CountryInfos
     @Inject internal lateinit var questTypeRegistry: QuestTypeRegistry
@@ -47,7 +45,7 @@ abstract class AbstractQuestAnswerFragment : AbstractBottomSheetFragment() {
     private lateinit var otherAnswersButton: Button
 
     protected lateinit var elementGeometry: ElementGeometry private set
-    private lateinit var questType: QuestType
+    private lateinit var questType: QuestType<T>
     private var initialMapRotation = 0f
     private var initialMapTilt = 0f
     protected var osmElement: OsmElement? = null
@@ -96,7 +94,7 @@ abstract class AbstractQuestAnswerFragment : AbstractBottomSheetFragment() {
         questAnswerComponent.onCreate(arguments)
         osmElement = arguments!!.getSerializable(ARG_ELEMENT) as OsmElement?
         elementGeometry = arguments!!.getSerializable(ARG_GEOMETRY) as ElementGeometry
-        questType = questTypeRegistry.getByName(arguments!!.getString(ARG_QUESTTYPE))
+        questType = questTypeRegistry.getByName(arguments!!.getString(ARG_QUESTTYPE)) as QuestType<T>
         initialMapRotation = arguments!!.getFloat(ARG_MAP_ROTATION)
         initialMapTilt = arguments!!.getFloat(ARG_MAP_TILT)
         _countryInfo = null // reset lazy field
@@ -203,15 +201,7 @@ abstract class AbstractQuestAnswerFragment : AbstractBottomSheetFragment() {
             .show()
     }
 
-    protected fun applyAnswer(data: Bundle) {
-        if (data.isEmpty) {
-            activity?.toast(R.string.no_changes)
-            return
-        }
-        // in case there is a bug that a quest fills the bundle with nulls -> report
-        for (key in data.keySet()) {
-            if (data.get(key) == null) throw NullPointerException("Key $key is null")
-        }
+    protected fun applyAnswer(data: T) {
         questAnswerComponent.onAnswerQuest(data)
     }
 

@@ -32,7 +32,7 @@ import kotlinx.android.synthetic.main.fragment_quest_answer.*
 import kotlinx.android.synthetic.main.quest_buttonpanel_note_discussion.*
 import kotlinx.android.synthetic.main.quest_note_discussion_content.*
 
-class NoteDiscussionForm : AbstractQuestAnswerFragment() {
+class NoteDiscussionForm : AbstractQuestAnswerFragment<NoteAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_note_discussion_content
     override val buttonsResId = R.layout.quest_buttonpanel_note_discussion
@@ -88,10 +88,7 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment() {
     }
 
     private fun onClickOk() {
-        val answer = Bundle()
-        answer.putString(TEXT, noteText)
-        attachPhotoFragment?.let { answer.putStringArrayList(IMAGE_PATHS, ArrayList(it.imagePaths)) }
-        applyAnswer(answer)
+        applyAnswer(NoteAnswer(noteText, attachPhotoFragment?.imagePaths))
     }
 
     public override fun onDiscard() {
@@ -168,10 +165,5 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment() {
             NoteComment.Action.HIDDEN -> R.string.quest_noteDiscussion_hide2
             else -> 0
         }
-    }
-
-    companion object {
-        const val TEXT = "text"
-        const val IMAGE_PATHS = "image_paths"
     }
 }

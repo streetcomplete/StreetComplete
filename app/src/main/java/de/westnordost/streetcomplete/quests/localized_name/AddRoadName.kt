@@ -1,11 +1,8 @@
 package de.westnordost.streetcomplete.quests.localized_name
 
-import android.os.Bundle
-
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler
@@ -19,7 +16,7 @@ class AddRoadName(
     private val overpassServer: OverpassMapDataDao,
     private val roadNameSuggestionsDao: RoadNameSuggestionsDao,
     private val putRoadNameSuggestionsHandler: PutRoadNameSuggestionsHandler
-) : OsmElementQuestType {
+) : OsmElementQuestType<RoadNameAnswer> {
 
     override val commitMessage = "Determine road names and types"
     override val icon = R.drawable.ic_quest_street_name
@@ -55,44 +52,33 @@ class AddRoadName(
 
     override fun createForm() = AddRoadNameForm()
 
-    override fun applyAnswerTo(answer: Bundle, changes: StringMapChangesBuilder) {
-        if (answer.getBoolean(AddLocalizedNameForm.NO_NAME)) {
-            changes.add("noname", "yes")
-            return
-        }
-
-        val noProperRoad = answer.getInt(AddRoadNameForm.NO_PROPER_ROAD)
-        if (noProperRoad != 0) {
-            when(noProperRoad) {
-                AddRoadNameForm.IS_SERVICE -> changes.modify("highway", "service")
-                AddRoadNameForm.IS_TRACK   -> changes.modify("highway", "track")
-                AddRoadNameForm.IS_LINK    -> {
-                    val prevValue = changes.getPreviousValue("highway")
-                    if (prevValue.matches("primary|secondary|tertiary".toRegex())) {
-                        changes.modify("highway", prevValue + "_link")
-                    }
+    override fun applyAnswerTo(answer: RoadNameAnswer, changes: StringMapChangesBuilder) {
+        when(answer) {
+            is NoRoadName        -> changes.add("noname", "yes")
+            is RoadIsServiceRoad -> changes.modify("highway", "service")
+            is RoadIsTrack       -> changes.modify("highway", "track")
+            is RoadIsLinkRoad    -> {
+                val prevValue = changes.getPreviousValue("highway")
+                if (prevValue.matches("primary|secondary|tertiary".toRegex())) {
+                    changes.modify("highway", prevValue + "_link")
                 }
             }
-            return
-        }
-
-        val roadNameByLanguage = answer.toNameByLanguage()
-        for ((key, value) in roadNameByLanguage) {
-            if (key.isEmpty()) {
-                changes.addOrModify("name", value)
-            } else {
-                changes.addOrModify("name:$key", value)
+            is RoadName -> {
+                for ((languageCode, name) in answer.localizedNames) {
+                    if (languageCode.isEmpty()) {
+                        changes.addOrModify("name", name)
+                    } else {
+                        changes.addOrModify("name:$languageCode", name)
+                    }
+                }
+                // these params are passed from the form only to update the road name suggestions so that
+                // newly input street names turn up in the suggestions as well
+                val points = answer.wayGeometry.polylines?.getOrNull(0)
+                if (points != null) {
+                    val roadNameByLanguage = answer.localizedNames.associate { it.languageCode to it.name }
+                    roadNameSuggestionsDao.putRoad( answer.wayId, roadNameByLanguage, points)
+                }
             }
-        }
-
-        // these params are passed from the form only to update the road name suggestions so that
-        // newly input street names turn up in the suggestions as well
-
-        val wayId = answer.getLong(AddRoadNameForm.WAY_ID)
-        val geometry = answer.getSerializable(AddRoadNameForm.WAY_GEOMETRY) as ElementGeometry?
-        val points = geometry?.polylines?.getOrNull(0)
-        if (points != null) {
-            roadNameSuggestionsDao.putRoad( wayId, roadNameByLanguage, points)
         }
     }
 

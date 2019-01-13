@@ -1,11 +1,11 @@
 package de.westnordost.streetcomplete.quests.surface
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.GroupedImageListQuestAnswerFragment
-import de.westnordost.streetcomplete.quests.surface.Surface.*
+import de.westnordost.streetcomplete.quests.AGroupedImageListQuestAnswerFragment
 import de.westnordost.streetcomplete.view.Item
+import de.westnordost.streetcomplete.quests.surface.Surface.*
 
-class AddPathSurfaceForm : GroupedImageListQuestAnswerFragment() {
+class AddPathSurfaceForm : AGroupedImageListQuestAnswerFragment<String, String>() {
 
     override val topItems get() =
         when (val pathType = determinePathType(osmElement!!.tags)) {
@@ -30,7 +30,7 @@ class AddPathSurfaceForm : GroupedImageListQuestAnswerFragment() {
                 WOOD, SETT, UNHEWN_COBBLESTONE
             )
             else -> throw IllegalStateException("Unexpected path type $pathType")
-        }
+        }.toItems()
 
     override val allItems = listOf(
         // except for different panorama images, should be the same as for the road quest, to avoid confusion
@@ -38,14 +38,14 @@ class AddPathSurfaceForm : GroupedImageListQuestAnswerFragment() {
             ASPHALT, CONCRETE, PAVING_STONES,
             SETT, UNHEWN_COBBLESTONE, GRASS_PAVER,
             WOOD, METAL
-        )),
+        ).toItems()),
         Item("unpaved", R.drawable.panorama_path_surface_unpaved, R.string.quest_surface_value_unpaved, 0, listOf(
             COMPACTED, FINE_GRAVEL, GRAVEL,
             PEBBLES
-        )),
+        ).toItems()),
         Item("ground",R.drawable.panorama_surface_ground, R.string.quest_surface_value_ground, 0, listOf(
             DIRT, GRASS, SAND
-        ))
+        ).toItems())
     )
 
     private fun determinePathType(tags: Map<String, String>): String? {
@@ -57,5 +57,9 @@ class AddPathSurfaceForm : GroupedImageListQuestAnswerFragment() {
             if ("designated" == tags["foot"]) return "footway"
         }
         return pathType
+    }
+
+    override fun onClickOk(value: String) {
+        applyAnswer(value)
     }
 }

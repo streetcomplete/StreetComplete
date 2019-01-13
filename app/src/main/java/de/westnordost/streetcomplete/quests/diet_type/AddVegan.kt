@@ -1,13 +1,11 @@
 package de.westnordost.streetcomplete.quests.diet_type
 
-import android.os.Bundle
-
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
 
-class AddVegan(o: OverpassMapDataDao) : SimpleOverpassQuestType(o) {
+class AddVegan(o: OverpassMapDataDao) : SimpleOverpassQuestType<String>(o) {
 
     override val tagFilters = """
         nodes, ways with amenity ~ restaurant|cafe|fast_food
@@ -21,7 +19,7 @@ class AddVegan(o: OverpassMapDataDao) : SimpleOverpassQuestType(o) {
 
     override fun createForm() = AddDietTypeForm.create(R.string.quest_dietType_explanation_vegan)
 
-    override fun applyAnswerTo(answer: Bundle, changes: StringMapChangesBuilder) {
-        changes.add("diet:vegan", answer.getString(AddDietTypeForm.OSM_VALUE)!!)
+    override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
+        changes.add("diet:vegan", answer)
     }
 }

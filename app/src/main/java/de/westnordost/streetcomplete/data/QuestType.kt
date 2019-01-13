@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.data
 
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
 
-interface QuestType {
+interface QuestType<T> {
 
     /** the icon resource id used to display this quest type on the map */
     val icon: Int
@@ -15,5 +15,5 @@ interface QuestType {
     val defaultDisabledMessage: Int get() = 0
 
     /** returns the dialog in which the user can add the data */
-    fun createForm(): AbstractQuestAnswerFragment
+    fun createForm(): AbstractQuestAnswerFragment<T>
 }

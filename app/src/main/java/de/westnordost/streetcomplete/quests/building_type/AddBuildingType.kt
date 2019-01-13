@@ -1,13 +1,11 @@
 package de.westnordost.streetcomplete.quests.building_type
 
-import android.os.Bundle
-
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
 
-class AddBuildingType (o: OverpassMapDataDao) : SimpleOverpassQuestType(o) {
+class AddBuildingType (o: OverpassMapDataDao) : SimpleOverpassQuestType<String>(o) {
 
     // in the case of man_made, historic, military and power, these tags already contain
     // information about the purpose of the building, so no need to force asking it
@@ -22,14 +20,13 @@ class AddBuildingType (o: OverpassMapDataDao) : SimpleOverpassQuestType(o) {
 
     override fun createForm() = AddBuildingTypeForm()
 
-    override fun applyAnswerTo(answer: Bundle, changes: StringMapChangesBuilder) {
-        val building = answer.getString(AddBuildingTypeForm.BUILDING)
-        val manMade = answer.getString(AddBuildingTypeForm.MAN_MADE)
-        if (manMade != null) {
+    override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
+        if(answer.startsWith("man_made=")) {
+            val manMade = answer.split("=")[1]
             changes.delete("building")
             changes.add("man_made", manMade)
         } else {
-            changes.modify("building", building!!)
+            changes.modify("building", answer)
         }
     }
 }

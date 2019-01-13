@@ -1,17 +1,16 @@
 package de.westnordost.streetcomplete.quests.roof_shape
 
 import android.os.Bundle
-import androidx.core.os.bundleOf
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.ImageListQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.view.Item
 
-class AddRoofShapeForm : ImageListQuestAnswerFragment() {
+class AddRoofShapeForm : AImageListQuestAnswerFragment<String, String>() {
 
     override val otherAnswers = listOf(
-        OtherAnswer(R.string.quest_roofShape_answer_many) { applyManyRoofsAnswer() }
+        OtherAnswer(R.string.quest_roofShape_answer_many) { applyAnswer("many") }
     )
 
     override val items = listOf(
@@ -43,7 +42,7 @@ class AddRoofShapeForm : ImageListQuestAnswerFragment() {
         imageSelector.cellLayoutId = R.layout.cell_labeled_icon_select
     }
 
-    private fun applyManyRoofsAnswer() {
-        applyAnswer(bundleOf(OSM_VALUES to arrayListOf("many")))
+    override fun onClickOk(selectedItems: List<String>) {
+        applyAnswer(selectedItems.single())
     }
 }

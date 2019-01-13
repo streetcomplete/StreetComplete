@@ -11,7 +11,6 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
 import androidx.core.content.getSystemService
-import androidx.core.os.bundleOf
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
@@ -21,7 +20,7 @@ import de.westnordost.streetcomplete.util.TextChangedWatcher
 import de.westnordost.streetcomplete.view.ItemViewHolder
 
 
-class AddHousenumberForm : AbstractQuestFormAnswerFragment() {
+class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() {
 
     override val otherAnswers = listOf(
         OtherAnswer(R.string.quest_address_answer_no_housenumber) { onNoHouseNumber() },
@@ -52,7 +51,7 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment() {
 
     override fun onClickOk() {
         if (houseNameInput != null) {
-            applyHouseNameAnswer(houseNameInput!!.trimmedInput)
+            applyAnswer(HouseName(houseNameInput!!.trimmedInput))
         } else if (conscriptionNumberInput != null && streetNumberInput != null) {
             applyConscriptionNumberAnswer(
                 conscriptionNumberInput!!.trimmedInput,
@@ -78,15 +77,15 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment() {
 
     private fun onNoHouseNumber() {
         val buildingValue = osmElement!!.tags["building"]!!
-        val item = BuildingType.getByTag("building", buildingValue)
-        if (item != null) {
+        val buildingType = BuildingType.getByTag("building", buildingValue)
+        if (buildingType != null) {
             val inflater = LayoutInflater.from(activity)
             val inner = inflater.inflate(R.layout.dialog_quest_address_no_housenumber, null, false)
-            ItemViewHolder(inner.findViewById(R.id.item_view)).bind(item)
+            ItemViewHolder(inner.findViewById(R.id.item_view)).bind(buildingType.item)
 
             AlertDialog.Builder(activity!!)
                 .setView(inner)
-                .setPositiveButton(R.string.quest_generic_hasFeature_yes) { _, _ -> applyNoHouseNumberAnswer() }
+                .setPositiveButton(R.string.quest_generic_hasFeature_yes) { _, _ -> applyAnswer(NoAddress) }
                 .setNegativeButton(R.string.quest_generic_hasFeature_no_leave_note) { _, _ -> onClickCantSay() }
                 .show()
         } else {
@@ -96,19 +95,11 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment() {
         }
     }
 
-    private fun applyNoHouseNumberAnswer() {
-        applyAnswer(bundleOf(NO_ADDRESS to true))
-    }
-
-    private fun applyHouseNameAnswer(houseName: String) {
-        applyAnswer(bundleOf(HOUSENAME to houseName))
-    }
-
     private fun applyHouseNumberAnswer(houseNumber: String) {
         val looksInvalid = !houseNumber.matches(getValidHousenumberRegex())
 
         confirmHousenumber(looksInvalid) {
-            applyAnswer(bundleOf(HOUSENUMBER to houseNumber))
+            applyAnswer(HouseNumber(houseNumber))
         }
     }
 
@@ -119,13 +110,10 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment() {
         }
 
         confirmHousenumber(looksInvalid) {
-            val answer = Bundle()
-            answer.putString(CONSCRIPTIONNUMBER, conscriptionNumber)
-            // streetNumber is optional
-            if (streetNumber.isNotEmpty()) {
-                answer.putString(STREETNUMBER, streetNumber)
-            }
-            applyAnswer(answer)
+            applyAnswer(ConscriptionNumber(
+                conscriptionNumber,
+                // streetNumber is optional
+                streetNumber = if(streetNumber.isNotEmpty()) streetNumber else null))
         }
     }
 
@@ -209,13 +197,7 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment() {
     private val EditText.trimmedInput get() = text.toString().trim()
 
     companion object {
-        const val NO_ADDRESS = "noaddress"
-        const val HOUSENUMBER = "housenumber"
-        const val HOUSENAME = "housename"
-        const val CONSCRIPTIONNUMBER = "conscriptionnumber"
-        const val STREETNUMBER = "streetnumber"
-
-        private val IS_HOUSENAME = "is_housename"
+        private const val IS_HOUSENAME = "is_housename"
         // i.e. 9999/a, 9/a, 99/9, 99a, 99 a, 9 / a
         const val VALID_HOUSENUMBER_REGEX = "\\p{N}{1,4}((\\s?/\\s?\\p{N})|(\\s?/?\\s?\\p{L}))?"
 

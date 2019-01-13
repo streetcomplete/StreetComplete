@@ -8,13 +8,14 @@ import java.util.LinkedList
 import javax.inject.Inject
 
 import de.westnordost.streetcomplete.Prefs
-import de.westnordost.streetcomplete.view.GroupedItem
+import de.westnordost.streetcomplete.view.Item
 
-class LastPickedValuesStore @Inject constructor(private val prefs: SharedPreferences) {
+/** T must be a string or enum - something that distinctly converts toString. */
+class LastPickedValuesStore<T> @Inject constructor(private val prefs: SharedPreferences) {
 
-    fun add(key: String, newValues: Iterable<String>, max: Int = -1) {
+    fun add(key: String, newValues: Iterable<T>, max: Int = -1) {
         val values = get(key)
-        for (value in newValues) {
+        for (value in newValues.map { it.toString() }) {
             values.remove(value)
             values.addFirst(value)
         }
@@ -24,11 +25,11 @@ class LastPickedValuesStore @Inject constructor(private val prefs: SharedPrefere
         }
     }
 
-    fun add(key: String, value: String, max: Int = -1) {
+    fun add(key: String, value: T, max: Int = -1) {
         add(key, listOf(value), max)
     }
 
-    fun moveLastPickedToFront(key: String, items: LinkedList<GroupedItem>, itemPool: List<GroupedItem>) {
+    fun moveLastPickedToFront(key: String, items: LinkedList<Item<T>>, itemPool: List<Item<T>>) {
         val lastPickedItems = find(get(key), itemPool)
         val reverseIt = lastPickedItems.descendingIterator()
         while (reverseIt.hasNext()) {
@@ -47,8 +48,8 @@ class LastPickedValuesStore @Inject constructor(private val prefs: SharedPrefere
 
     private fun getKey(key: String) = Prefs.LAST_PICKED_PREFIX + key
 
-    private fun find(values: List<String>, itemPool: Iterable<GroupedItem>): LinkedList<GroupedItem> {
-        val result = LinkedList<GroupedItem>()
+    private fun find(values: List<String>, itemPool: Iterable<Item<T>>): LinkedList<Item<T>> {
+        val result = LinkedList<Item<T>>()
         for (value in values) {
             val item = find(value, itemPool)
             if(item != null) result.add(item)
@@ -56,14 +57,14 @@ class LastPickedValuesStore @Inject constructor(private val prefs: SharedPrefere
         return result
     }
 
-    private fun find(value: String, itemPool: Iterable<GroupedItem>): GroupedItem? {
+    private fun find(value: String, itemPool: Iterable<Item<T>>): Item<T>? {
         for (item in itemPool) {
             val subItems = item.items
             // returns only items which are not groups themselves
             if (subItems != null) {
                 val subItem = find(value, subItems.asIterable())
                 if (subItem != null) return subItem
-            } else if (value == item.value) {
+            } else if (value == item.value.toString()) {
                 return item
             }
         }

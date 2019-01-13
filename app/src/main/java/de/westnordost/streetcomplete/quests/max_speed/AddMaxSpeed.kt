@@ -1,7 +1,5 @@
 package de.westnordost.streetcomplete.quests.max_speed
 
-import android.os.Bundle
-
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.OsmTaggings
 import de.westnordost.streetcomplete.data.osm.Countries
@@ -9,7 +7,7 @@ import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
 
-class AddMaxSpeed(o: OverpassMapDataDao) : SimpleOverpassQuestType(o) {
+class AddMaxSpeed(o: OverpassMapDataDao) : SimpleOverpassQuestType<MaxSpeedAnswer>(o) {
 
     override val tagFilters = """
         ways with highway ~ motorway|trunk|primary|secondary|tertiary|unclassified|residential
@@ -37,26 +35,25 @@ class AddMaxSpeed(o: OverpassMapDataDao) : SimpleOverpassQuestType(o) {
 
     override fun createForm() = AddMaxSpeedForm()
 
-    override fun applyAnswerTo(answer: Bundle, changes: StringMapChangesBuilder) {
-        val isLivingStreet = answer.getBoolean(AddMaxSpeedForm.LIVING_STREET)
-        val maxspeed = answer.getString(AddMaxSpeedForm.MAX_SPEED)
-        val advisory = answer.getString(AddMaxSpeedForm.ADVISORY_SPEED)
-
-        if (isLivingStreet) {
-            changes.modify("highway", "living_street")
-        } else if (advisory != null) {
-            changes.add("maxspeed:advisory", advisory)
-            changes.add("maxspeed:type:advisory", "sign")
-        } else {
-            if (maxspeed != null) {
-                changes.add("maxspeed", maxspeed)
-            }
-            val country = answer.getString(AddMaxSpeedForm.MAX_SPEED_IMPLICIT_COUNTRY)
-            val roadtype = answer.getString(AddMaxSpeedForm.MAX_SPEED_IMPLICIT_ROADTYPE)
-            if (roadtype != null && country != null) {
-                changes.add("maxspeed:type", "$country:$roadtype")
-            } else if (maxspeed != null) {
+    override fun applyAnswerTo(answer: MaxSpeedAnswer, changes: StringMapChangesBuilder) {
+        when(answer) {
+            is MaxSpeedSign -> {
+                changes.add("maxspeed", answer.value)
                 changes.add("maxspeed:type", "sign")
+            }
+            is MaxSpeedZone -> {
+                changes.add("maxspeed", answer.value)
+                changes.add("maxspeed:type", answer.countryCode + ":" + answer.roadType)
+            }
+            is AdvisorySpeedSign -> {
+                changes.add("maxspeed:advisory", answer.value)
+                changes.add("maxspeed:type:advisory", "sign")
+            }
+            is IsLivingStreet -> {
+                changes.modify("highway", "living_street")
+            }
+            is ImplicitMaxSpeed -> {
+                changes.add("maxspeed:type", answer.countryCode + ":" + answer.roadType)
             }
         }
     }

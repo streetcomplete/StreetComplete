@@ -1,13 +1,11 @@
 package de.westnordost.streetcomplete.quests.building_levels
 
-import android.os.Bundle
-
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
 
-class AddBuildingLevels(o: OverpassMapDataDao) : SimpleOverpassQuestType(o) {
+class AddBuildingLevels(o: OverpassMapDataDao) : SimpleOverpassQuestType<BuildingLevelsAnswer>(o) {
 
     // building:height is undocumented, but used the same way as height and currently over 50k times
     override val tagFilters =
@@ -31,13 +29,8 @@ class AddBuildingLevels(o: OverpassMapDataDao) : SimpleOverpassQuestType(o) {
 
     override fun createForm() = AddBuildingLevelsForm()
 
-    override fun applyAnswerTo(answer: Bundle, changes: StringMapChangesBuilder) {
-        changes.add("building:levels", "" + answer.getInt(AddBuildingLevelsForm.BUILDING_LEVELS))
-
-        // only set the roof levels if the user supplied that in the form
-        val roofLevels = answer.getInt(AddBuildingLevelsForm.ROOF_LEVELS, -1)
-        if (roofLevels != -1) {
-            changes.addOrModify("roof:levels", "" + roofLevels)
-        }
+    override fun applyAnswerTo(answer: BuildingLevelsAnswer, changes: StringMapChangesBuilder) {
+        changes.add("building:levels", answer.levels.toString())
+        answer.roofLevels?.let { changes.addOrModify("roof:levels", it.toString()) }
     }
 }

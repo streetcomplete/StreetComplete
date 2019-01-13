@@ -48,7 +48,7 @@ public class QuestAnswerComponent
 		callbackListener = listener;
 	}
 
-	public void onAnswerQuest(Bundle answer)
+	public void onAnswerQuest(Object answer)
 	{
 		callbackListener.onAnsweredQuest(questId, questGroup, answer);
 	}

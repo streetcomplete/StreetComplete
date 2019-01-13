@@ -11,7 +11,6 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.Spinner
-import androidx.core.os.bundleOf
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
@@ -22,7 +21,7 @@ import de.westnordost.streetcomplete.quests.max_height.Measurement.*
 
 private enum class Measurement { METRIC, IMPERIAL }
 
-class AddMaxHeightForm : AbstractQuestFormAnswerFragment() {
+class AddMaxHeightForm : AbstractQuestFormAnswerFragment<MaxHeightAnswer>() {
 
     override val otherAnswers = listOf(
         OtherAnswer(R.string.quest_maxheight_answer_noSign) { confirmNoSign() }
@@ -117,14 +116,10 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment() {
     private fun confirmNoSign() {
         activity?.let { AlertDialog.Builder(it)
             .setMessage(R.string.quest_maxheight_answer_noSign_question)
-            .setPositiveButton(R.string.quest_generic_hasFeature_yes) { _, _ -> applyNoSignAnswer(DEFAULT) }
-            .setNegativeButton(R.string.quest_generic_hasFeature_no) { _, _ -> applyNoSignAnswer(BELOW_DEFAULT) }
+            .setPositiveButton(R.string.quest_generic_hasFeature_yes) { _, _ ->  applyAnswer(NoMaxHeightSign(true)) }
+            .setNegativeButton(R.string.quest_generic_hasFeature_no) { _, _ -> applyAnswer(NoMaxHeightSign(false)) }
             .show()
         }
-    }
-
-    private fun applyNoSignAnswer(answer: String) {
-        applyAnswer(bundleOf(NO_SIGN to answer))
     }
 
     override fun onClickOk() {
@@ -142,7 +137,7 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment() {
     }
 
     private fun applyMaxHeightFormAnswer() {
-        applyAnswer(bundleOf(MAX_HEIGHT to getHeightFromInput()!!.toString()))
+        applyAnswer(MaxHeight(getHeightFromInput()!!))
     }
 
     private fun getHeightFromInput(): Measure? {
@@ -173,12 +168,5 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment() {
                 .setNegativeButton(R.string.quest_generic_confirmation_no, null)
                 .show()
         }
-    }
-
-    companion object {
-        const val MAX_HEIGHT = "max_height"
-        const val NO_SIGN = "no_sign"
-        const val BELOW_DEFAULT = "below_default"
-        const val DEFAULT = "default"
     }
 }

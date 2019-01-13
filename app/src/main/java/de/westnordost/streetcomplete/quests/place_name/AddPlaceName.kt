@@ -1,13 +1,11 @@
 package de.westnordost.streetcomplete.quests.place_name
 
-import android.os.Bundle
-
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
 
-class AddPlaceName(o: OverpassMapDataDao) : SimpleOverpassQuestType(o) {
+class AddPlaceName(o: OverpassMapDataDao) : SimpleOverpassQuestType<PlaceNameAnswer>(o) {
 
     override val tagFilters =
         "nodes, ways, relations with !name and noname != yes " +
@@ -52,11 +50,10 @@ class AddPlaceName(o: OverpassMapDataDao) : SimpleOverpassQuestType(o) {
 
     override fun createForm() = AddPlaceNameForm()
 
-    override fun applyAnswerTo(answer: Bundle, changes: StringMapChangesBuilder) {
-        if (answer.getBoolean(AddPlaceNameForm.NO_NAME)) {
-            changes.add("noname", "yes")
-        } else {
-            changes.add("name", answer.getString(AddPlaceNameForm.NAME)!!)
+    override fun applyAnswerTo(answer: PlaceNameAnswer, changes: StringMapChangesBuilder) {
+        when(answer) {
+            is NoPlaceNameSign -> changes.add("noname", "yes")
+            is PlaceName -> changes.add("name", answer.name)
         }
     }
 }

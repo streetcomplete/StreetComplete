@@ -1,14 +1,12 @@
 package de.westnordost.streetcomplete.quests.toilets_fee
 
-import android.os.Bundle
-
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
-class AddToiletsFee(o: OverpassMapDataDao) : SimpleOverpassQuestType(o) {
+class AddToiletsFee(o: OverpassMapDataDao) : SimpleOverpassQuestType<Boolean>(o) {
 
     override val tagFilters = "nodes, ways with amenity = toilets and access !~ private|customers and !fee"
     override val commitMessage = "Add toilets fee"
@@ -18,8 +16,7 @@ class AddToiletsFee(o: OverpassMapDataDao) : SimpleOverpassQuestType(o) {
 
     override fun createForm() = YesNoQuestAnswerFragment()
 
-    override fun applyAnswerTo(answer: Bundle, changes: StringMapChangesBuilder) {
-        val yesno = if (answer.getBoolean(YesNoQuestAnswerFragment.ANSWER)) "yes" else "no"
-        changes.add("fee", yesno)
+    override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
+        changes.add("fee", if (answer) "yes" else "no")
     }
 }

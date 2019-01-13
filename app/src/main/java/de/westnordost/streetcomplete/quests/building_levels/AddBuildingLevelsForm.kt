@@ -15,7 +15,7 @@ import de.westnordost.streetcomplete.util.TextChangedWatcher
 
 import kotlinx.android.synthetic.main.quest_building_levels.*
 
-class AddBuildingLevelsForm : AbstractQuestFormAnswerFragment() {
+class AddBuildingLevelsForm : AbstractQuestFormAnswerFragment<BuildingLevelsAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_building_levels
 
@@ -26,7 +26,7 @@ class AddBuildingLevelsForm : AbstractQuestFormAnswerFragment() {
     private val levels get() = levelsInput.text.toString().trim()
     private val roofLevels get() = roofLevelsInput.text.toString().trim()
 
-    @Inject internal lateinit var favs: LastPickedValuesStore
+    @Inject internal lateinit var favs: LastPickedValuesStore<String>
 
     init {
         Injector.instance.applicationComponent.inject(this)
@@ -41,13 +41,13 @@ class AddBuildingLevelsForm : AbstractQuestFormAnswerFragment() {
         levelsInput.addTextChangedListener(onTextChangedListener)
         roofLevelsInput.addTextChangedListener(onTextChangedListener)
 
-        val lastPicked = favs.get(javaClass.simpleName)
-        if (lastPicked.isEmpty()) {
+        val lastPickedStrings = favs.get(javaClass.simpleName)
+        if (lastPickedStrings.isEmpty()) {
             pickLastButton.visibility = View.GONE
         } else {
             pickLastButton.visibility = View.VISIBLE
 
-            val favValues = lastPicked.first.split("#")
+            val favValues = lastPickedStrings.first.split("#")
 
             lastLevelsLabel.text = favValues[0]
             lastRoofLevelsLabel.text = if (favValues.size > 1) favValues[1] else " "
@@ -61,20 +61,12 @@ class AddBuildingLevelsForm : AbstractQuestFormAnswerFragment() {
     }
 
     override fun onClickOk() {
-        val favValues = mutableListOf<Int>()
-        val answer = Bundle()
-
         val buildingLevels = levels.toInt()
-        answer.putInt(BUILDING_LEVELS, buildingLevels)
-        favValues.add(buildingLevels)
+        val roofLevels = if(!roofLevels.isEmpty()) roofLevels.toInt() else null
 
-        if (!roofLevels.isEmpty()) {
-            val roofLevels = roofLevels.toInt()
-            answer.putInt(ROOF_LEVELS, roofLevels)
-            favValues.add(roofLevels)
-        }
-        favs.add(javaClass.simpleName, favValues.joinToString("#"), MAX_FAVS)
-        applyAnswer(answer)
+        favs.add(javaClass.simpleName,
+            listOfNotNull(buildingLevels, roofLevels).joinToString("#"), max = 1)
+        applyAnswer(BuildingLevelsAnswer(buildingLevels, roofLevels))
     }
 
     private fun showMultipleLevelsHint() {
@@ -86,11 +78,4 @@ class AddBuildingLevelsForm : AbstractQuestFormAnswerFragment() {
     }
 
     override fun isFormComplete() = !levels.isEmpty()
-
-    companion object {
-        const val BUILDING_LEVELS = "building_levels"
-        const val ROOF_LEVELS = "roof_levels"
-
-        private const val MAX_FAVS = 1
-    }
 }

@@ -26,22 +26,22 @@ class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             }
         }
 
-    fun bind(item: GroupedItem) {
+    fun bind(item: Item<*>) {
         val drawableId = item.drawableId
-        if (drawableId != 0)
+        if (drawableId != null)
             imageView.setImageResource(drawableId)
         else
             imageView.setImageDrawable(null)
 
         val titleId = item.titleId
-        if (titleId != 0)
+        if (titleId != null)
             textView?.setText(titleId)
         else
             textView?.text = null
 
         val descriptionId = item.descriptionId
-        descriptionView?.visibility = if (descriptionId != 0) View.VISIBLE else View.GONE
-        if (descriptionId != 0)
+        descriptionView?.visibility = if (descriptionId != null) View.VISIBLE else View.GONE
+        if (descriptionId != null)
             descriptionView?.setText(descriptionId)
         else
             descriptionView?.text = null

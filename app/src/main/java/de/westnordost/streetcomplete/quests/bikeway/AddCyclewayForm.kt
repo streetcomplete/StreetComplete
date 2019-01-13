@@ -23,7 +23,7 @@ import de.westnordost.streetcomplete.view.ListAdapter
 import kotlinx.android.synthetic.main.quest_street_side_puzzle.*
 
 
-class AddCyclewayForm : AbstractQuestFormAnswerFragment() {
+class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_street_side_puzzle
     override val contentPadding = false
@@ -106,36 +106,36 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment() {
     }
 
     override fun onClickOk() {
-        var isOnewayNotForCyclists = false
-
-        // a cycleway that goes into opposite direction of a oneway street needs special tagging
-        val bundle = Bundle()
         val leftSide = leftSide
         val rightSide = rightSide
+
+        // a cycleway that goes into opposite direction of a oneway street needs special tagging
+        var leftSideDir = 0
+        var rightSideDir = 0
+        var isOnewayNotForCyclists = false
         if (isOneway && leftSide != null && rightSide != null) {
             // if the road is oneway=-1, a cycleway that goes opposite to it would be cycleway:oneway=yes
             val reverseDir = if (isReversedOneway) 1 else -1
 
             if (isReverseSideRight) {
                 if (rightSide.isSingleTrackOrLane()) {
-                    bundle.putInt(CYCLEWAY_RIGHT_DIR, reverseDir)
+                    rightSideDir = reverseDir
                 }
-                isOnewayNotForCyclists = rightSide !== Cycleway.NONE
             } else {
                 if (leftSide.isSingleTrackOrLane()) {
-                    bundle.putInt(CYCLEWAY_LEFT_DIR, reverseDir)
+                    leftSideDir = reverseDir
                 }
-                isOnewayNotForCyclists = leftSide !== Cycleway.NONE
             }
 
-            isOnewayNotForCyclists = isOnewayNotForCyclists || leftSide.isDualTrackOrLane()
-            isOnewayNotForCyclists = isOnewayNotForCyclists || rightSide.isDualTrackOrLane()
+            isOnewayNotForCyclists = leftSide.isDualTrackOrLane() || rightSide.isDualTrackOrLane()
+                    || (if(isReverseSideRight) rightSide else leftSide) !== Cycleway.NONE
         }
 
-        leftSide?.let { bundle.putString(CYCLEWAY_LEFT, it.name) }
-        rightSide?.let { bundle.putString(CYCLEWAY_RIGHT, it.name) }
-        bundle.putBoolean(IS_ONEWAY_NOT_FOR_CYCLISTS, isOnewayNotForCyclists)
-        applyAnswer(bundle)
+        applyAnswer(CyclewayAnswer(
+            left = leftSide?.let { CyclewaySide(it, leftSideDir) },
+            right = rightSide?.let { CyclewaySide(it, rightSideDir) },
+            isOnewayNotForCyclists = isOnewayNotForCyclists
+        ))
     }
 
     private fun Cycleway.isSingleTrackOrLane() =
@@ -221,12 +221,8 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment() {
     }
 
     companion object {
-        const val CYCLEWAY_LEFT = "cycleway_left"
-        const val CYCLEWAY_RIGHT = "cycleway_right"
-        const val CYCLEWAY_LEFT_DIR = "cycleway_left_opposite"
-        const val CYCLEWAY_RIGHT_DIR = "cycleway_right_opposite"
-        const val IS_ONEWAY_NOT_FOR_CYCLISTS = "oneway_not_for_cyclists"
-
+        private const val CYCLEWAY_LEFT = "cycleway_left"
+        private const val CYCLEWAY_RIGHT = "cycleway_right"
         private const val DEFINE_BOTH_SIDES = "define_both_sides"
     }
 }

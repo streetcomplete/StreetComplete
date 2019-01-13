@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.quests;
 
-import android.os.Bundle;
 import androidx.annotation.Nullable;
 
 import java.util.List;
@@ -11,7 +10,7 @@ public interface OsmQuestAnswerListener
 {
 	/** Called when the user answered the quest with the given id. What is in the bundle, is up to
 	 *  the dialog with which the quest was answered */
-	void onAnsweredQuest(long questId, QuestGroup group, Bundle answer);
+	void onAnsweredQuest(long questId, QuestGroup group, Object answer);
 
 	/** Called when the user chose to leave a note instead */
 	void onComposeNote(long questId, QuestGroup group, String questTitle);

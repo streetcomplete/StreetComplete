@@ -12,11 +12,11 @@ import de.westnordost.streetcomplete.data.meta.MetadataModule;
 import de.westnordost.streetcomplete.oauth.OAuthModule;
 import de.westnordost.streetcomplete.oauth.OsmOAuthDialogFragment;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
-import de.westnordost.streetcomplete.quests.GroupedImageListQuestAnswerFragment;
-import de.westnordost.streetcomplete.quests.ImageListQuestAnswerFragment;
+import de.westnordost.streetcomplete.quests.AGroupedImageListQuestAnswerFragment;
+import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment;
 import de.westnordost.streetcomplete.quests.QuestModule;
 import de.westnordost.streetcomplete.quests.building_levels.AddBuildingLevelsForm;
-import de.westnordost.streetcomplete.quests.localized_name.AddLocalizedNameForm;
+import de.westnordost.streetcomplete.quests.localized_name.AAddLocalizedNameForm;
 import de.westnordost.streetcomplete.quests.oneway.AddOnewayForm;
 import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHoursForm;
 import de.westnordost.streetcomplete.quests.localized_name.AddRoadNameForm;
@@ -51,7 +51,7 @@ public interface ApplicationComponent
 	void inject(AnswersCounter answersCounter);
 
 	void inject(AddOpeningHoursForm addOpeningHoursForm);
-	void inject(AddLocalizedNameForm addLocalizedNameForm);
+	void inject(AAddLocalizedNameForm addLocalizedNameForm);
 	void inject(AddRoadNameForm addRoadNameForm);
 	void inject(AddParkingFeeForm parkingFeeForm);
 	void inject(AddOnewayForm addOnewayForm);
@@ -67,8 +67,8 @@ public interface ApplicationComponent
 
 	void inject(QuestSelectionFragment questSelectionFragment);
 
-	void inject(GroupedImageListQuestAnswerFragment fragment);
-	void inject(ImageListQuestAnswerFragment fragment);
+	void inject(AGroupedImageListQuestAnswerFragment fragment);
+	void inject(AImageListQuestAnswerFragment fragment);
 
 	void inject(AddBuildingLevelsForm fragment);
 	void inject(ChangesetAutoCloserWorker worker);

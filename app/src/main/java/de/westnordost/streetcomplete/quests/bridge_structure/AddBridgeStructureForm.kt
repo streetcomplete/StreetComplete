@@ -1,10 +1,11 @@
 package de.westnordost.streetcomplete.quests.bridge_structure
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.ImageListQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
 import de.westnordost.streetcomplete.view.Item
 
-class AddBridgeStructureForm : ImageListQuestAnswerFragment() {
+class AddBridgeStructureForm : AImageListQuestAnswerFragment<String, String>() {
+
     // structures sorted highest to lowest amount of values on taginfo, footbridge-types last
     override val items = listOf(
         Item("beam", R.drawable.bridge_structure_beam),
@@ -19,4 +20,8 @@ class AddBridgeStructureForm : ImageListQuestAnswerFragment() {
     )
 
     override val itemsPerRow = 2
+
+    override fun onClickOk(selectedItems: List<String>) {
+        applyAnswer(selectedItems.first())
+    }
 }

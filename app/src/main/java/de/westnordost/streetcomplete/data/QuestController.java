@@ -192,7 +192,7 @@ public class QuestController
 
 	/** Apply the user's answer to the given quest. (The quest will turn invisible.)
 	 *  @return true if successful */
-	public boolean solve(long questId, QuestGroup group, Bundle answer, String source)
+	public boolean solve(long questId, QuestGroup group, Object answer, String source)
 	{
 		boolean success = false;
 		if (group == QuestGroup.OSM)
@@ -261,7 +261,7 @@ public class QuestController
 		}
 	}
 
-	private boolean solveOsmNoteQuest(long questId, Bundle answer)
+	private boolean solveOsmNoteQuest(long questId, Object answer)
 	{
 		OsmNoteQuest q = osmNoteQuestDB.get(questId);
 		if(q == null || q.getStatus() != QuestStatus.NEW) return false;
@@ -282,7 +282,7 @@ public class QuestController
 		}
 	}
 
-	private boolean solveOsmQuest(long questId, Bundle answer, String source)
+	private boolean solveOsmQuest(long questId, Object answer, String source)
 	{
 		// race condition: another thread (i.e. quest download thread) may have removed the
 		// element already (#282). So in this case, just ignore

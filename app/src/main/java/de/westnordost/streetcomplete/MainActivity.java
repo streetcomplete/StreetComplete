@@ -689,7 +689,7 @@ public class MainActivity extends AppCompatActivity implements
 
 	/* ------------- OsmQuestAnswerListener ------------- */
 
-	@Override public void onAnsweredQuest(long questId, QuestGroup group, Bundle answer)
+	@Override public void onAnsweredQuest(long questId, QuestGroup group, Object answer)
 	{
 		questSource.findSource(questId, group, mapFragment.getDisplayedLocation(), source ->
 		{

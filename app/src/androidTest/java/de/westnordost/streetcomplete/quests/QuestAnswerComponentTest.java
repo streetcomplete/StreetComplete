@@ -46,7 +46,7 @@ public class QuestAnswerComponentTest
 
 		c1.onAttach(new OsmQuestAnswerListener()
 		{
-			@Override public void onAnsweredQuest(long questId, QuestGroup group, Bundle answer)
+			@Override public void onAnsweredQuest(long questId, QuestGroup group, Object answer)
 			{
 				assertEquals(expectQuestId, questId);
 				assertEquals(expectGroup, group);

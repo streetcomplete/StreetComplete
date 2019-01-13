@@ -20,6 +20,7 @@ import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale
 import de.westnordost.streetcomplete.util.DefaultTextWatcher
 
 import android.view.Menu.NONE
+import de.westnordost.streetcomplete.view.AutoCorrectAbbreviationsEditText
 
 /** Carries the data language code + name in that language  */
 data class LocalizedName(var languageCode: String, var name: String)

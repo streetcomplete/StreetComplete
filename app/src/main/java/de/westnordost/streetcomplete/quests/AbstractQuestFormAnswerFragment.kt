@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
-import android.widget.Toast
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.toast
@@ -12,7 +11,7 @@ import kotlinx.android.synthetic.main.fragment_quest_answer.*
 
 /** Abstract base class for dialogs in which the user answers a quest with a form he has to fill
  * out  */
-abstract class AbstractQuestFormAnswerFragment : AbstractQuestAnswerFragment() {
+abstract class AbstractQuestFormAnswerFragment<T> : AbstractQuestAnswerFragment<T>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

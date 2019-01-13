@@ -1,7 +1,5 @@
 package de.westnordost.streetcomplete.quests.max_height
 
-import android.os.Bundle
-
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
@@ -12,7 +10,7 @@ import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
 import de.westnordost.streetcomplete.data.osm.tql.FiltersParser
 import de.westnordost.streetcomplete.data.osm.tql.OverpassQLUtil
 
-class AddMaxHeight constructor(private val overpassServer: OverpassMapDataDao) : OsmElementQuestType {
+class AddMaxHeight(private val overpassServer: OverpassMapDataDao) : OsmElementQuestType<MaxHeightAnswer> {
 
     private val nodeFilter by lazy { FiltersParser().parse("""
         nodes with
@@ -62,17 +60,14 @@ class AddMaxHeight constructor(private val overpassServer: OverpassMapDataDao) :
 
     override fun createForm() = AddMaxHeightForm()
 
-    override fun applyAnswerTo(answer: Bundle, changes: StringMapChangesBuilder) {
-        val maxHeight = answer.getString(AddMaxHeightForm.MAX_HEIGHT)
-        val noSign = answer.getString(AddMaxHeightForm.NO_SIGN)
-
-        if (maxHeight != null) {
-            changes.add("maxheight", maxHeight)
-        } else if (noSign != null) {
-            if (noSign == AddMaxHeightForm.BELOW_DEFAULT)
-                changes.add("maxheight", "below_default")
-            else if (noSign == AddMaxHeightForm.DEFAULT)
-                changes.add("maxheight", "default")
+    override fun applyAnswerTo(answer: MaxHeightAnswer, changes: StringMapChangesBuilder) {
+        when(answer) {
+            is MaxHeight -> {
+                changes.add("maxheight", answer.value.toString())
+            }
+            is NoMaxHeightSign -> {
+                changes.add("maxheight", if (answer.isTallEnough) "default" else "below_default")
+            }
         }
     }
 }

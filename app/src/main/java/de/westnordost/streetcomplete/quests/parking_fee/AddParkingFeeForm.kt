@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.RecyclerView
 
 import java.util.ArrayList
@@ -26,7 +25,7 @@ import kotlinx.android.synthetic.main.fragment_quest_answer.*
 import kotlinx.android.synthetic.main.quest_buttonpanel_yes_no.*
 import kotlinx.android.synthetic.main.quest_fee_hours.*
 
-class AddParkingFeeForm : AbstractQuestFormAnswerFragment() {
+class AddParkingFeeForm : AbstractQuestFormAnswerFragment<FeeAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_fee_hours
     override val buttonsResId = R.layout.quest_buttonpanel_yes_no
@@ -99,16 +98,20 @@ class AddParkingFeeForm : AbstractQuestFormAnswerFragment() {
     }
 
     override fun onClickOk() {
-        val bundle = bundleOf(FEE to !isFeeOnlyAtHours)
-        val oh = getOpeningHoursString()
-        if (!oh.isEmpty()) {
-            bundle.putString(FEE_CONDITONAL_HOURS, oh)
+        val times = openingHoursAdapter.createOpeningMonths()
+        if (!times.isEmpty()) {
+            if(isFeeOnlyAtHours) {
+                applyAnswer(HasFeeAtHours(times))
+            } else {
+                applyAnswer(HasFeeExceptAtHours(times))
+            }
+        } else {
+            onClickYesNo(!isFeeOnlyAtHours)
         }
-        applyAnswer(bundle)
     }
 
     private fun onClickYesNo(answer: Boolean) {
-        applyAnswer(bundleOf(FEE to answer))
+        applyAnswer(if(answer) HasFee else HasNoFee)
     }
 
     private fun loadOpeningHoursData(savedInstanceState: Bundle?): List<OpeningMonthsRow> =
@@ -125,16 +128,9 @@ class AddParkingFeeForm : AbstractQuestFormAnswerFragment() {
         outState.putBoolean(IS_FEE_ONLY_AT_HOURS, isFeeOnlyAtHours)
     }
 
-    override fun isFormComplete() = isDefiningHours && !getOpeningHoursString().isEmpty()
-
-    private fun getOpeningHoursString() = openingHoursAdapter.createOpeningMonths().joinToString(";")
-
+    override fun isFormComplete() = isDefiningHours && !openingHoursAdapter.createOpeningMonths().isEmpty()
 
     companion object {
-
-        const val FEE = "fee"
-        const val FEE_CONDITONAL_HOURS = "fee_conditional_hours"
-
         private const val OPENING_HOURS_DATA = "oh_data"
         private const val IS_FEE_ONLY_AT_HOURS = "oh_fee_only_at"
         private const val IS_DEFINING_HOURS = "oh"

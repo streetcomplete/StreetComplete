@@ -8,14 +8,14 @@ import android.view.ViewGroup
 import de.westnordost.streetcomplete.R
 
 /** Select one items from a groupable list of items  */
-class GroupedImageSelectAdapter(val gridLayoutManager: GridLayoutManager) :
+class GroupedImageSelectAdapter<T>(val gridLayoutManager: GridLayoutManager) :
     RecyclerView.Adapter<ItemViewHolder>() {
 
     var cellLayoutId = R.layout.cell_labeled_image_select
     var groupCellLayoutId = R.layout.cell_panorama_select
 
-    private var _items = mutableListOf<GroupedItem>()
-    var items: List<GroupedItem>
+    private var _items = mutableListOf<Item<T>>()
+    var items: List<Item<T>>
     set(value) {
         _items.clear()
         _items.addAll(value)
@@ -27,10 +27,10 @@ class GroupedImageSelectAdapter(val gridLayoutManager: GridLayoutManager) :
     }
     get() = _items.toList()
 
-    var selectedItem: GroupedItem? = null
+    var selectedItem: Item<T>? = null
         private set
 
-    val listeners = mutableListOf<(GroupedItem?) -> Unit>()
+    val listeners = mutableListOf<(Item<T>?) -> Unit>()
 
     init {
         gridLayoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {

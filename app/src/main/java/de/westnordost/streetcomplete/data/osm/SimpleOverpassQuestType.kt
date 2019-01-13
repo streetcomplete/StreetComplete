@@ -9,8 +9,8 @@ import de.westnordost.osmapi.map.data.BoundingBox
 
 /** Quest type that simply makes a certain overpass query using tag filters and creates quests for
  * every element received  */
-abstract class SimpleOverpassQuestType(
-    private val overpassServer: OverpassMapDataDao) : OsmElementQuestType {
+abstract class SimpleOverpassQuestType<T>(
+    private val overpassServer: OverpassMapDataDao) : OsmElementQuestType<T> {
 
     private val filter by lazy { FiltersParser().parse(tagFilters) }
 

@@ -9,16 +9,16 @@ import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Spinner
-import androidx.core.os.bundleOf
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.util.TextChangedWatcher
 import kotlinx.android.synthetic.main.quest_maxspeed.*
+import java.lang.IllegalStateException
 
 
-class AddMaxSpeedForm : AbstractQuestFormAnswerFragment() {
+class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_maxspeed
 
@@ -153,17 +153,15 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment() {
             speedStr += " $speedUnit"
         }
 
-        val answer = Bundle()
         if (speedType == SpeedType.ADVISORY) {
-            answer.putString(ADVISORY_SPEED, speedStr)
+            applyAnswer(AdvisorySpeedSign(speedStr))
+        } else if(speedType == SpeedType.ZONE) {
+            applyAnswer(MaxSpeedZone(speedStr, countryInfo.countryCode, "zone$speed"))
+        } else if(speedType == SpeedType.SIGN) {
+            applyAnswer(MaxSpeedSign(speedStr))
         } else {
-            answer.putString(MAX_SPEED, speedStr)
-            if (speedType == SpeedType.ZONE) {
-                answer.putString(MAX_SPEED_IMPLICIT_COUNTRY, countryInfo.countryCode)
-                answer.putString(MAX_SPEED_IMPLICIT_ROADTYPE, "zone$speed")
-            }
+            throw IllegalStateException()
         }
-        applyAnswer(answer)
     }
 
     /* ----------------------------------------- No sign ---------------------------------------- */
@@ -178,7 +176,7 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment() {
             AlertDialog.Builder(it)
                 .setView(view)
                 .setTitle(R.string.quest_maxspeed_answer_living_street_confirmation_title)
-                .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> applyLivingStreetAnswer() }
+                .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> applyAnswer(IsLivingStreet) }
                 .setNegativeButton(R.string.quest_generic_confirmation_no, null)
                 .show()
         }
@@ -273,24 +271,11 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment() {
         }
     }
 
-    private fun applyLivingStreetAnswer() {
-        applyAnswer(bundleOf(LIVING_STREET to true))
-    }
-
     private fun applyNoSignAnswer(roadType: String) {
-        applyAnswer(bundleOf(
-            MAX_SPEED_IMPLICIT_COUNTRY to countryInfo.countryCode,
-            MAX_SPEED_IMPLICIT_ROADTYPE to roadType
-        ))
+        applyAnswer(ImplicitMaxSpeed(countryInfo.countryCode, roadType))
     }
 
     companion object {
-        const val MAX_SPEED_IMPLICIT_COUNTRY = "maxspeed_country"
-        const val MAX_SPEED_IMPLICIT_ROADTYPE = "maxspeed_roadtype"
-        const val ADVISORY_SPEED = "advisory_speed"
-        const val MAX_SPEED = "maxspeed"
-        const val LIVING_STREET = "living_street"
-
         private val POSSIBLY_SLOWZONE_ROADS = listOf("residential", "unclassified", "tertiary" /*#1133*/)
         private val MAYBE_LIVING_STREET = listOf("residential", "unclassified")
         private val ROADS_WITH_DEFINITE_SPEED_LIMIT = listOf("trunk", "motorway", "living_street")

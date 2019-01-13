@@ -22,13 +22,12 @@ import de.westnordost.streetcomplete.util.Serializer
 
 
 import android.view.Menu.NONE
-import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.ktx.toObject
 import kotlinx.android.synthetic.main.quest_opening_hours.*
 
-class AddOpeningHoursForm : AbstractQuestFormAnswerFragment() {
+class AddOpeningHoursForm : AbstractQuestFormAnswerFragment<OpeningHoursAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_opening_hours
 
@@ -42,9 +41,6 @@ class AddOpeningHoursForm : AbstractQuestFormAnswerFragment() {
     private lateinit var openingHoursAdapter: AddOpeningHoursAdapter
 
     @Inject internal lateinit var serializer: Serializer
-
-    private val openingHoursString get() =
-        openingHoursAdapter.createOpeningMonths().joinToString(";")
 
     init {
         Injector.instance.applicationComponent.inject(this)
@@ -105,7 +101,7 @@ class AddOpeningHoursForm : AbstractQuestFormAnswerFragment() {
     }
 
     override fun onClickOk() {
-        applyAnswer(bundleOf(OPENING_HOURS to openingHoursString))
+        applyAnswer(RegularOpeningHours(openingHoursAdapter.createOpeningMonths()))
     }
 
     private fun showInputCommentDialog() {
@@ -123,7 +119,7 @@ class AddOpeningHoursForm : AbstractQuestFormAnswerFragment() {
                         .setPositiveButton(R.string.ok, null)
                         .show()
                 } else {
-                    applyAnswer(bundleOf(OPENING_HOURS to "\"$txt\""))
+                    applyAnswer(DescribeOpeningHours(txt))
                 }
             }
             .setNegativeButton(android.R.string.cancel, null)
@@ -133,9 +129,7 @@ class AddOpeningHoursForm : AbstractQuestFormAnswerFragment() {
     private fun showConfirm24_7Dialog() {
         AlertDialog.Builder(activity!!)
             .setMessage(R.string.quest_openingHours_24_7_confirmation)
-            .setPositiveButton(android.R.string.yes) { _, _ ->
-                applyAnswer(bundleOf(OPENING_HOURS to "24/7"))
-            }
+            .setPositiveButton(android.R.string.yes) { _, _ -> applyAnswer(AlwaysOpen) }
             .setNegativeButton(android.R.string.no, null)
             .show()
     }
@@ -143,19 +137,14 @@ class AddOpeningHoursForm : AbstractQuestFormAnswerFragment() {
     private fun confirmNoSign() {
         AlertDialog.Builder(activity!!)
             .setTitle(R.string.quest_generic_confirmation_title)
-            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ ->
-                applyAnswer(bundleOf(NO_SIGN to true))
-            }
+            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> applyAnswer(NoOpeningHoursSign) }
             .setNegativeButton(R.string.quest_generic_confirmation_no, null)
             .show()
     }
 
-    override fun isFormComplete() = openingHoursString.isNotEmpty()
+    override fun isFormComplete() = openingHoursAdapter.createOpeningMonths().isNotEmpty()
 
     companion object {
-        const val OPENING_HOURS = "opening_hours"
-        const val NO_SIGN = "no_sign"
-
         private const val OPENING_HOURS_DATA = "oh_data"
         private const val IS_ADD_MONTHS_MODE = "oh_add_months"
     }

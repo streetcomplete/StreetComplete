@@ -1,14 +1,12 @@
 package de.westnordost.streetcomplete.quests.traffic_signals_button
 
-import android.os.Bundle
-
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
-class AddTrafficSignalsButton(o: OverpassMapDataDao) : SimpleOverpassQuestType(o) {
+class AddTrafficSignalsButton(o: OverpassMapDataDao) : SimpleOverpassQuestType<Boolean>(o) {
 
     override val tagFilters =
         "nodes with highway = crossing and crossing = traffic_signals and !button_operated"
@@ -19,8 +17,7 @@ class AddTrafficSignalsButton(o: OverpassMapDataDao) : SimpleOverpassQuestType(o
 
     override fun createForm() = YesNoQuestAnswerFragment()
 
-    override fun applyAnswerTo(answer: Bundle, changes: StringMapChangesBuilder) {
-        val yesno = if (answer.getBoolean(YesNoQuestAnswerFragment.ANSWER)) "yes" else "no"
-        changes.add("button_operated", yesno)
+    override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
+        changes.add("button_operated", if (answer) "yes" else "no")
     }
 }

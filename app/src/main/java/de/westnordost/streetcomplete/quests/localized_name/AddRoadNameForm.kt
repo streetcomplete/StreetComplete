@@ -1,11 +1,8 @@
 package de.westnordost.streetcomplete.quests.localized_name
 
 import android.content.DialogInterface
-import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import android.widget.Button
-import android.widget.Toast
-import androidx.core.os.bundleOf
 
 import java.util.LinkedList
 import java.util.Locale
@@ -15,14 +12,12 @@ import javax.inject.Inject
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale
-import de.westnordost.streetcomplete.ktx.toast
 import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.quests.localized_name.data.RoadNameSuggestionsDao
-import kotlinx.android.synthetic.main.quest_localizedname.*
 import java.lang.IllegalStateException
 
 
-class AddRoadNameForm : AddLocalizedNameForm() {
+class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
 
     override val otherAnswers = listOf(
         OtherAnswer(R.string.quest_name_answer_noName) { selectNoStreetNameReason() },
@@ -51,15 +46,12 @@ class AddRoadNameForm : AddLocalizedNameForm() {
             onlyFirstAndLast, AddRoadName.MAX_DIST_FOR_ROAD_NAME_SUGGESTION)
     }
 
-    override fun onClickOk() {
+    override fun onClickOk(names: List<LocalizedName>) {
+
         val possibleAbbreviations = LinkedList<String>()
         for ((languageCode, name) in adapter.localizedNames) {
-            if (name.trim().isEmpty()) {
-                activity?.toast(R.string.quest_generic_error_a_field_empty, Toast.LENGTH_LONG)
-                return
-            }
-
-            val abbr = abbreviationsByLocale.get(Locale(languageCode))
+            val locale = if(languageCode.isEmpty()) countryInfo.locale else Locale(languageCode)
+            val abbr = abbreviationsByLocale.get(locale)
             val containsAbbreviations = abbr?.containsAbbreviations(name) == true
 
             if (name.contains(".") || containsAbbreviations) {
@@ -67,14 +59,9 @@ class AddRoadNameForm : AddLocalizedNameForm() {
             }
         }
 
-        confirmPossibleAbbreviationsIfAny(possibleAbbreviations) { applyNameAnswer() }
-    }
-
-    override fun applyNameAnswer() {
-        val bundle = createAnswer()
-        bundle.putLong(WAY_ID, osmElement!!.id)
-        bundle.putSerializable(WAY_GEOMETRY, elementGeometry)
-        applyAnswer(bundle)
+        confirmPossibleAbbreviationsIfAny(possibleAbbreviations) {
+            applyAnswer(RoadName(names, osmElement!!.id, elementGeometry))
+        }
     }
 
     private fun selectNoStreetNameReason() {
@@ -114,13 +101,12 @@ class AddRoadNameForm : AddLocalizedNameForm() {
                     leaveNote -> onClickCantSay()
                     noName    -> confirmNoStreetName()
                     else      -> {
-                        val type = when(answer) {
-                            linkRoad    -> IS_LINK
-                            serviceRoad -> IS_SERVICE
-                            trackRoad   -> IS_TRACK
+                        applyAnswer(when(answer) {
+                            linkRoad    -> RoadIsLinkRoad
+                            serviceRoad -> RoadIsServiceRoad
+                            trackRoad   -> RoadIsTrack
                             else        -> throw IllegalStateException()
-                        }
-                        applyAnswer(bundleOf(NO_PROPER_ROAD to type))
+                        })
                     }
                 }
             }
@@ -140,21 +126,8 @@ class AddRoadNameForm : AddLocalizedNameForm() {
         AlertDialog.Builder(activity!!)
             .setTitle(R.string.quest_name_answer_noName_confirmation_title)
             .setMessage(R.string.quest_streetName_answer_noName_confirmation_description)
-            .setPositiveButton(R.string.quest_name_noName_confirmation_positive) { _, _ ->
-                applyAnswer(bundleOf(NO_NAME to true))
-            }
+            .setPositiveButton(R.string.quest_name_noName_confirmation_positive) { _, _ -> applyAnswer(NoRoadName) }
             .setNegativeButton(R.string.quest_generic_confirmation_no, null)
             .show()
-    }
-
-    companion object {
-
-        const val NO_PROPER_ROAD = "no_proper_road"
-        const val WAY_ID = "way_id"
-        const val WAY_GEOMETRY = "way_geometry"
-
-        const val IS_SERVICE = 1
-        const val IS_LINK = 2
-        const val IS_TRACK = 3
     }
 }

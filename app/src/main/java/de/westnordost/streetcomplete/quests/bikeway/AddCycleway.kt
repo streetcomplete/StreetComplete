@@ -1,7 +1,5 @@
 package de.westnordost.streetcomplete.quests.bikeway
 
-import android.os.Bundle
-
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
@@ -15,12 +13,12 @@ import de.westnordost.streetcomplete.data.osm.tql.OverpassQLUtil
 
 import de.westnordost.streetcomplete.quests.bikeway.Cycleway.*
 
-class AddCycleway(private val overpassServer: OverpassMapDataDao) : OsmElementQuestType {
+class AddCycleway(private val overpassServer: OverpassMapDataDao) : OsmElementQuestType<CyclewayAnswer> {
 
     override val commitMessage = "Add whether there are cycleways"
     override val icon = R.drawable.ic_quest_bicycleway
 
-    // See overview here: https://ent8r.github.io/blacklistr/?java=bikeway/AddCycleway.java
+    // See overview here: https://ent8r.github.io/blacklistr/?streetcomplete=bikeway/AddCycleway.kt
     // #749. sources:
     // Google Street View (driving around in virtual car)
     // https://en.wikivoyage.org/wiki/Cycling
@@ -99,34 +97,20 @@ class AddCycleway(private val overpassServer: OverpassMapDataDao) : OsmElementQu
 
     override fun createForm() = AddCyclewayForm()
 
-    override fun applyAnswerTo(answer: Bundle, changes: StringMapChangesBuilder) {
-        val right = answer.getString(AddCyclewayForm.CYCLEWAY_RIGHT)
-        val left = answer.getString(AddCyclewayForm.CYCLEWAY_LEFT)
-
-        val cyclewayRight = if (right != null) Cycleway.valueOf(right) else null
-        val cyclewayLeft = if (left != null) Cycleway.valueOf(left) else null
-
-        val cyclewayRightDir = answer.getInt(AddCyclewayForm.CYCLEWAY_RIGHT_DIR)
-        val cyclewayLeftDir = answer.getInt(AddCyclewayForm.CYCLEWAY_LEFT_DIR)
-
-        val bothSidesAreSame = (cyclewayLeft == cyclewayRight && cyclewayLeft != null
-                && cyclewayRightDir == 0 && cyclewayLeftDir == 0)
-
-        if (bothSidesAreSame) {
-            applyCyclewayAnswerTo(cyclewayLeft!!, Side.BOTH, 0, changes)
-        } else {
-            if (cyclewayLeft != null) {
-                applyCyclewayAnswerTo(cyclewayLeft, Side.LEFT, cyclewayLeftDir, changes)
+    override fun applyAnswerTo(answer: CyclewayAnswer, changes: StringMapChangesBuilder) {
+        answer.apply {
+            if (left == right) {
+                left?.let { applyCyclewayAnswerTo(it.cycleway, Side.BOTH, 0, changes) }
+            } else {
+                left?.let { applyCyclewayAnswerTo(it.cycleway, Side.LEFT, it.dirInOneway, changes) }
+                right?.let { applyCyclewayAnswerTo(it.cycleway, Side.RIGHT, it.dirInOneway, changes) }
             }
-            if (cyclewayRight != null) {
-                applyCyclewayAnswerTo(cyclewayRight, Side.RIGHT, cyclewayRightDir, changes)
+
+            applySidewalkAnswerTo(left?.cycleway, right?.cycleway, changes)
+
+            if (isOnewayNotForCyclists) {
+                changes.addOrModify("oneway:bicycle", "no")
             }
-        }
-
-        applySidewalkAnswerTo(cyclewayLeft, cyclewayRight, changes)
-
-        if (answer.getBoolean(AddCyclewayForm.IS_ONEWAY_NOT_FOR_CYCLISTS)) {
-            changes.addOrModify("oneway:bicycle", "no")
         }
     }
 

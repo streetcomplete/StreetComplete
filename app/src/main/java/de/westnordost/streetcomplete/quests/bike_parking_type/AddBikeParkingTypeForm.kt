@@ -1,10 +1,10 @@
 package de.westnordost.streetcomplete.quests.bike_parking_type
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.ImageListQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
 import de.westnordost.streetcomplete.view.Item
 
-class AddBikeParkingTypeForm : ImageListQuestAnswerFragment() {
+class AddBikeParkingTypeForm : AImageListQuestAnswerFragment<String, String>() {
 
     override val items = listOf(
         Item("stands", R.drawable.bicycle_parking_type_stand, R.string.quest_bicycle_parking_type_stand),
@@ -15,4 +15,8 @@ class AddBikeParkingTypeForm : ImageListQuestAnswerFragment() {
     )
 
     override val itemsPerRow = 3
+
+    override fun onClickOk(selectedItems: List<String>) {
+        applyAnswer(selectedItems.single())
+    }
 }

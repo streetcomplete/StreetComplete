@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.quests.oneway
 
-import android.os.Bundle
 import android.util.Log
 
 import de.westnordost.osmapi.map.data.BoundingBox
@@ -14,7 +13,6 @@ import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
 import de.westnordost.streetcomplete.data.osm.tql.FiltersParser
-import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.oneway.data.TrafficFlowSegment
 import de.westnordost.streetcomplete.quests.oneway.data.TrafficFlowSegmentsDao
 import de.westnordost.streetcomplete.quests.oneway.data.WayTrafficFlowDao
@@ -23,7 +21,7 @@ class AddOneway(
     private val overpassMapDataDao: OverpassMapDataDao,
     private val trafficFlowSegmentsDao: TrafficFlowSegmentsDao,
     private val db: WayTrafficFlowDao
-) : OsmElementQuestType {
+) : OsmElementQuestType<OnewayAnswer> {
 
     private val tagFilters =
         " ways with highway ~ " +
@@ -123,13 +121,11 @@ class AddOneway(
 
     override fun createForm() = AddOnewayForm()
 
-    override fun applyAnswerTo(answer: Bundle, changes: StringMapChangesBuilder) {
-        val isOneway = answer.getBoolean(YesNoQuestAnswerFragment.ANSWER)
-        if (!isOneway) {
+    override fun applyAnswerTo(answer: OnewayAnswer, changes: StringMapChangesBuilder) {
+        if (!answer.isOneway) {
             changes.add("oneway", "no")
         } else {
-            val wayId = answer.getLong(AddOnewayForm.WAY_ID)
-            changes.add("oneway", if (db.isForward(wayId)!!) "yes" else "-1")
+            changes.add("oneway", if (db.isForward(answer.wayId)!!) "yes" else "-1")
         }
     }
 
