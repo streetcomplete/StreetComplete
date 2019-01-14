@@ -30,13 +30,14 @@ import de.westnordost.streetcomplete.data.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.osm.ElementGeometry
+import de.westnordost.streetcomplete.util.Serializer
 import kotlinx.android.synthetic.main.fragment_quest_answer.*
 
 /** Abstract base class for any dialog with which the user answers a specific quest(ion)  */
 abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment() {
 
-    @Inject internal lateinit var countryInfos: CountryInfos
-    @Inject internal lateinit var questTypeRegistry: QuestTypeRegistry
+    private val countryInfos: CountryInfos
+    private val questTypeRegistry: QuestTypeRegistry
 
     private val questAnswerComponent = QuestAnswerComponent()
 
@@ -85,7 +86,10 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment() {
     open val contentPadding = true
 
     init {
-        Injector.instance.applicationComponent.inject(this)
+        val fields = InjectedFields()
+        Injector.instance.applicationComponent.inject(fields)
+        countryInfos = fields.countryInfos
+        questTypeRegistry = fields.questTypeRegistry
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -230,6 +234,11 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment() {
 
     @AnyThread open fun onMapOrientation(rotation: Float, tilt: Float) {
         // default empty implementation
+    }
+
+    internal class InjectedFields {
+        @Inject internal lateinit var countryInfos: CountryInfos
+        @Inject internal lateinit var questTypeRegistry: QuestTypeRegistry
     }
 
     companion object {

@@ -23,17 +23,18 @@ import de.westnordost.streetcomplete.util.Serializer
 import de.westnordost.streetcomplete.ktx.toObject
 import kotlinx.android.synthetic.main.quest_localizedname.*
 
-
 abstract class AAddLocalizedNameForm<T> : AbstractQuestFormAnswerFragment<T>() {
 
     override val contentLayoutResId = R.layout.quest_localizedname
 
-    @Inject internal lateinit var serializer: Serializer
+    private val serializer: Serializer
 
     protected lateinit var adapter: AddLocalizedNameAdapter
 
     init {
-        Injector.instance.applicationComponent.inject(this)
+        val fields = InjectedFields()
+        Injector.instance.applicationComponent.inject(fields)
+        serializer = fields.serializer
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -142,6 +143,11 @@ abstract class AAddLocalizedNameForm<T> : AbstractQuestFormAnswerFragment<T>() {
     // all added name rows are not empty
     override fun isFormComplete() = adapter.localizedNames.isNotEmpty()
             && adapter.localizedNames.all { it.name.trim().isNotEmpty() }
+
+
+    internal class InjectedFields {
+        @Inject internal lateinit var serializer: Serializer
+    }
 
     companion object {
         private const val LOCALIZED_NAMES_DATA = "localized_names_data"

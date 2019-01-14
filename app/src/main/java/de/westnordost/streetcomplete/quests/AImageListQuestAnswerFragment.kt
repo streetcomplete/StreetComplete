@@ -1,15 +1,14 @@
 package de.westnordost.streetcomplete.quests
 
+import android.content.Context
 import android.os.Bundle
+import android.preference.PreferenceManager
 import androidx.recyclerview.widget.GridLayoutManager
 import android.view.View
 
 import java.util.ArrayList
 import java.util.LinkedList
 
-import javax.inject.Inject
-
-import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.view.ImageSelectAdapter
 import de.westnordost.streetcomplete.view.Item
@@ -24,7 +23,7 @@ abstract class AImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnswerFragm
 
     protected lateinit var imageSelector: ImageSelectAdapter<I>
 
-    @Inject internal lateinit var favs: LastPickedValuesStore<I>
+    private lateinit var favs: LastPickedValuesStore<I>
 
     protected open val itemsPerRow = 4
     /** return -1 for any number. Default: 1  */
@@ -34,13 +33,14 @@ abstract class AImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnswerFragm
 
     protected abstract val items: List<Item<I>>
 
-    init {
-        Injector.instance.applicationComponent.inject(this)
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         imageSelector = ImageSelectAdapter(maxSelectableItems)
+    }
+
+    override fun onAttach(ctx: Context) {
+        super.onAttach(ctx)
+        favs = LastPickedValuesStore(PreferenceManager.getDefaultSharedPreferences(ctx.applicationContext))
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

@@ -1,6 +1,8 @@
 package de.westnordost.streetcomplete.quests
 
+import android.content.Context
 import android.os.Bundle
+import android.preference.PreferenceManager
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -9,7 +11,6 @@ import androidx.core.view.postDelayed
 
 import javax.inject.Inject
 
-import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.view.GroupedImageSelectAdapter
 import de.westnordost.streetcomplete.view.Item
@@ -37,8 +38,9 @@ abstract class AGroupedImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnsw
 
     protected open val itemsPerRow = 3
 
-    init {
-        Injector.instance.applicationComponent.inject(this)
+    override fun onAttach(ctx: Context) {
+        super.onAttach(ctx)
+        favs = LastPickedValuesStore(PreferenceManager.getDefaultSharedPreferences(ctx.applicationContext))
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
