@@ -75,8 +75,8 @@ class TimeRangePickerDialog(
 
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab)   { setCurrentTab(tab.position) }
-            override fun onTabUnselected(tab: TabLayout.Tab) { setCurrentTab(tab.position) }
-            override fun onTabReselected(tab: TabLayout.Tab) { setCurrentTab(tab.position) }
+            override fun onTabUnselected(tab: TabLayout.Tab) { }
+            override fun onTabReselected(tab: TabLayout.Tab) { }
         })
     }
 
