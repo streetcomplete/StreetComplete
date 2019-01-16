@@ -24,13 +24,13 @@
     <string name="map_attribution_mapzen">"Powered by %s"</string>
     <string name="map_attribution_osm">"© OpenStreetMap contributors"</string>
     <string name="quest_generic_otherAnswers">"Other answers…"</string>
-    <string name="quest_generic_answer_notApplicable">"Can’t say"</string>
+    <string name="quest_generic_answer_notApplicable">"Can’t say…"</string>
     <string name="quest_generic_confirmation_title">"Are you sure?"</string>
     <string name="quest_generic_confirmation_yes">"Yes, I am sure"</string>
     <string name="quest_generic_confirmation_no">"I will check"</string>
     <string name="quest_generic_error_field_empty">"You left this field empty"</string>
     <string name="quest_leave_new_note_title">"Leave a note instead?"</string>
-    <string name="quest_leave_new_note_description">"You can leave a public note at this location which other mappers can comment on and hopefully resolve:"</string>
+    <string name="quest_leave_new_note_description">"You can leave a public note at this location which other mappers can comment on and hopefully resolve or alternatively just hide the quest for yourself only"</string>
     <string name="quest_leave_new_note_yes">"OK"</string>
     <string name="quest_leave_new_note_no">"No, just hide"</string>
     <string name="quest_leave_new_note_photo">Attach photo</string>
