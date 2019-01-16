@@ -262,15 +262,17 @@ public class OsmQuestChangesUploadTest
 		verify(statisticsDao).addOne("TestQuestType");
 	}
 
-	private static class TestQuestType implements OsmElementQuestType
+	private static class TestQuestType implements OsmElementQuestType<String>
 	{
-		@NotNull @Override public String getCommitMessage() { return null; }
+		@NotNull @Override public String getCommitMessage() { return ""; }
 		@Override public int getTitle(@NotNull Map<String, String> tags) { return 0; }
 		@Override public boolean download(@NotNull BoundingBox bbox, @NotNull MapDataWithGeometryHandler handler) { return false; }
 		@Override public Boolean isApplicableTo(@NotNull Element element) { return null; }
-		@Override public void applyAnswerTo(@NotNull Bundle answer, @NotNull StringMapChangesBuilder changes) { }
+		@Override public void applyAnswerTo(@NotNull String answer, @NotNull StringMapChangesBuilder changes) { }
 		@Override public int getIcon() { return 0; }
-		@NotNull @Override public AbstractQuestAnswerFragment createForm() { return null; }
+		@NotNull @Override public AbstractQuestAnswerFragment createForm() {
+			return new AbstractQuestAnswerFragment<String>() {};
+		}
 		@NotNull @Override public Countries getEnabledForCountries() { return Countries.ALL; }
 		@Override public boolean getHasMarkersAtEnds() { return false; }
 		@Override public int getTitle() { return 0; }
