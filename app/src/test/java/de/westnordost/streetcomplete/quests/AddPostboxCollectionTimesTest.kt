@@ -25,7 +25,7 @@ class AddPostboxCollectionTimesTest {
                 WeekdaysTimes(Weekdays(booleanArrayOf(true)), mutableListOf(60)),
                 WeekdaysTimes(Weekdays(booleanArrayOf(false, true)), mutableListOf(120))
             )),
-            StringMapEntryAdd("collection_times", "Mo 1:00, Tu 2:00")
+            StringMapEntryAdd("collection_times", "Mo 01:00, Tu 02:00")
         )
     }
 

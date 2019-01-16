@@ -37,14 +37,6 @@ class AddRoadNameTest {
         )
     }
 
-    @Test fun `apply name answer with one localized name`() {
-        questType.verifyAnswer(
-            tags,
-            roadName(LocalizedName("el", "my name")),
-            StringMapEntryAdd("name", "my name")
-        )
-    }
-
     @Test fun `apply name answer with multiple names`() {
         questType.verifyAnswer(
             tags,

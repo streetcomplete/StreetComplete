@@ -25,13 +25,6 @@ class AddBusStopNameTest {
         )
     }
 
-    @Test fun `apply name answer with one localized name`() {
-        questType.verifyAnswer(
-            BusStopName(listOf(LocalizedName("el", "my name"))),
-            StringMapEntryAdd("name", "my name")
-        )
-    }
-
     @Test fun `apply name answer with multiple names`() {
         questType.verifyAnswer(
             BusStopName(listOf(

@@ -24,7 +24,7 @@ class AddParkingFeeTest {
             ))
         ))
     )
-    private val openingHoursString = "Mo 0:00-12:00; Tu 12:00-24:00"
+    private val openingHoursString = "Mo 00:00-12:00; Tu 12:00-24:00"
 
     @Test fun `apply yes answer`() {
         questType.verifyAnswer(HasFee, StringMapEntryAdd("fee", "yes"))
@@ -44,7 +44,7 @@ class AddParkingFeeTest {
 
     @Test fun `apply yes except at hours answer`() {
         questType.verifyAnswer(
-            HasFeeAtHours(openingHours),
+            HasFeeExceptAtHours(openingHours),
             StringMapEntryAdd("fee", "yes"),
             StringMapEntryAdd("fee:conditional", "no @ ($openingHoursString)")
         )

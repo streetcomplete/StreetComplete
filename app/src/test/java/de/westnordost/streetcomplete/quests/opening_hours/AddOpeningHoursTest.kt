@@ -15,7 +15,7 @@ class AddOpeningHoursTest {
     @Test fun `apply description answer`() {
         questType.verifyAnswer(
             DescribeOpeningHours("my cool \"opening\" hours"),
-            StringMapEntryAdd("opening_hours", "my cool opening hours")
+            StringMapEntryAdd("opening_hours", "\"my cool opening hours\"")
         )
     }
 
@@ -52,7 +52,7 @@ class AddOpeningHoursTest {
                     )
                 )
             ))),
-            StringMapEntryAdd("opening_hours", "Mo 0:00-12:00; Tu 12:00-24:00")
+            StringMapEntryAdd("opening_hours", "Mo 00:00-12:00; Tu 12:00-24:00")
         )
     }
 }

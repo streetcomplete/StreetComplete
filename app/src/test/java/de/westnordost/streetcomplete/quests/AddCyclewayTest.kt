@@ -44,7 +44,7 @@ class AddCyclewayTest {
 
     @Test fun `apply bus lane answer`() {
         questType.verifyAnswer(
-            bothSidesAnswer(TRACK),
+            bothSidesAnswer(BUSWAY),
             StringMapEntryAdd("cycleway:both", "share_busway")
         )
     }
@@ -61,13 +61,13 @@ class AddCyclewayTest {
         questType.verifyAnswer(
             bothSidesAnswer(PICTOGRAMS),
             StringMapEntryAdd("cycleway:both", "shared_lane"),
-            StringMapEntryAdd("cycleway:both:lane", "advisory")
+            StringMapEntryAdd("cycleway:both:lane", "pictogram")
         )
     }
 
     @Test fun `apply no cycleway answer`() {
         questType.verifyAnswer(
-            bothSidesAnswer(PICTOGRAMS),
+            bothSidesAnswer(NONE),
             StringMapEntryAdd("cycleway:both", "no")
         )
     }
@@ -103,7 +103,7 @@ class AddCyclewayTest {
             StringMapEntryAdd("cycleway:left", "no"),
             StringMapEntryAdd("sidewalk:left:bicycle", "yes"),
             StringMapEntryAdd("cycleway:right", "track"),
-            StringMapEntryAdd("sidewalk:right:segregated", "no")
+            StringMapEntryAdd("cycleway:right:segregated", "no")
         )
     }
 
@@ -119,7 +119,8 @@ class AddCyclewayTest {
         questType.verifyAnswer(
             bothSidesAnswer(DUAL_LANE),
             StringMapEntryAdd("cycleway:both", "lane"),
-            StringMapEntryAdd("cycleway:both:oneway", "no")
+            StringMapEntryAdd("cycleway:both:oneway", "no"),
+            StringMapEntryAdd("cycleway:both:lane", "exclusive")
         )
     }
 
@@ -139,7 +140,6 @@ class AddCyclewayTest {
             StringMapEntryAdd("cycleway:left", "track"),
             StringMapEntryAdd("cycleway:left:oneway", "-1"),
             StringMapEntryAdd("cycleway:right", "track"),
-            StringMapEntryAdd("cycleway:right", "track"),
             StringMapEntryAdd("oneway:bicycle", "no")
         )
     }
@@ -151,7 +151,6 @@ class AddCyclewayTest {
             CyclewayAnswer(CyclewaySide(TRACK, +1), CyclewaySide(TRACK), true),
             StringMapEntryAdd("cycleway:left", "track"),
             StringMapEntryAdd("cycleway:left:oneway", "yes"),
-            StringMapEntryAdd("cycleway:right", "track"),
             StringMapEntryAdd("cycleway:right", "track"),
             StringMapEntryAdd("oneway:bicycle", "no")
         )
