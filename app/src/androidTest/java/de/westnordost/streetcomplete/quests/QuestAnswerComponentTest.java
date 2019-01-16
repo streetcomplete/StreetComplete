@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.quests;
 
-import android.os.Bundle;
 import androidx.annotation.Nullable;
 
 import org.junit.Test;
@@ -37,12 +36,10 @@ public class QuestAnswerComponentTest
 		final QuestGroup expectGroup = QuestGroup.OSM_NOTE;
 		final String expectNote = "test";
 		final String expectQuestTitle = "What?";
-		final Bundle expectBundle = new Bundle();
+		final String expectObject = "jo";
 		final ArrayList<String> expectImagePaths = new ArrayList<>();
 		expectImagePaths.add("dings");
 		expectImagePaths.add("dongs");
-
-		expectBundle.putString("A","B");
 
 		c1.onAttach(new OsmQuestAnswerListener()
 		{
@@ -50,7 +47,7 @@ public class QuestAnswerComponentTest
 			{
 				assertEquals(expectQuestId, questId);
 				assertEquals(expectGroup, group);
-				assertEquals(expectBundle, answer);
+				assertEquals(expectObject, answer);
 			}
 
 			@Override
@@ -81,7 +78,7 @@ public class QuestAnswerComponentTest
 		c1.onCreate(QuestAnswerComponent.createArguments(expectQuestId, expectGroup));
 		c1.onComposeNote(expectQuestTitle);
 		c1.onLeaveNote(expectQuestTitle, expectNote, expectImagePaths);
-		c1.onAnswerQuest(expectBundle);
+		c1.onAnswerQuest(expectObject);
 		c1.onSkippedQuest();
 	}
 }
