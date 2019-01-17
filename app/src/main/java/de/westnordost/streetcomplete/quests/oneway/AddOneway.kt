@@ -66,7 +66,8 @@ class AddOneway(
                    from the improveosm data and the quest should stay simple, i.e not require the
                    user to input it in those cases. Additionally, whether a ring-road is a oneway or
                    not is less valuable information (for routing) and many times such a ring will
-                   actually be a roundabout. Oneway information on roundabouts is superfluous. */
+                   actually be a roundabout. Oneway information on roundabouts is superfluous.
+                   See #1320 */
                 if(way.nodeIds.last() == way.nodeIds.first()) return
                 /* only create quest if direction can be clearly determined and is the same
                    direction for all segments belonging to one OSM way (because StreetComplete
