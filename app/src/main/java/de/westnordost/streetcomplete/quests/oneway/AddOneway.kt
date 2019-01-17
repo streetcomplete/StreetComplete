@@ -27,7 +27,8 @@ class AddOneway(
         " ways with highway ~ " +
         "trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|" +
         "unclassified|residential|living_street|pedestrian|track|road" +
-        " and !oneway and (access !~ private|no or (foot and foot !~ private|no)) and area != yes"
+        " and !oneway and junction != roundabout and area != yes" +
+        " and (access !~ private|no or (foot and foot !~ private|no)) "
 
     override val commitMessage =
         "Add whether this road is a one-way road, this road was marked as likely oneway by improveosm.org"
@@ -61,9 +62,15 @@ class AddOneway(
 
                 val way = element as? Way ?: return
                 val segments = trafficDirectionMap[way.id] ?: return
-                // only create quest if direction can be clearly determined and is the same direction
-                // for all segments belonging to one OSM way (because StreetComplete cannot split ways
-                // up)
+                /* exclude rings because the driving direction can then not be determined reliably
+                   from the improveosm data and the quest should stay simple, i.e not require the
+                   user to input it in those cases. Additionally, whether a ring-road is a oneway or
+                   not is less valuable information (for routing) and many times such a ring will
+                   actually be a roundabout. Oneway information on roundabouts is superfluous. */
+                if(way.nodeIds.last() == way.nodeIds.first()) return
+                /* only create quest if direction can be clearly determined and is the same
+                   direction for all segments belonging to one OSM way (because StreetComplete
+                   cannot split ways up) */
                 val isForward = isForward(geometry.polylines[0], segments) ?: return
 
                 db.put(way.id, isForward)
