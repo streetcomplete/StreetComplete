@@ -79,11 +79,10 @@ import de.westnordost.streetcomplete.location.LocationUtil;
 import de.westnordost.streetcomplete.oauth.OAuthPrefs;
 import de.westnordost.streetcomplete.quests.AbstractBottomSheetFragment;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
-import de.westnordost.streetcomplete.quests.FindQuestSourceComponent;
 import de.westnordost.streetcomplete.quests.LeaveNoteInsteadFragment;
 import de.westnordost.streetcomplete.quests.OsmQuestAnswerListener;
 import de.westnordost.streetcomplete.quests.QuestAnswerComponent;
-import de.westnordost.streetcomplete.quests.QuestUtil;
+import de.westnordost.streetcomplete.quests.QuestUtilKt;
 import de.westnordost.streetcomplete.settings.SettingsActivity;
 import de.westnordost.streetcomplete.sound.SoundFx;
 import de.westnordost.streetcomplete.statistics.AnswersCounter;
@@ -373,7 +372,7 @@ public class MainActivity extends AppCompatActivity implements
 		icon.setImageResource(quest.getType().getIcon());
 		TextView text = inner.findViewById(R.id.text);
 
-		text.setText(QuestUtil.getHtmlTitle(getResources(), quest.getType(), element));
+		text.setText(QuestUtilKt.getHtmlQuestTitle(getResources(), quest.getType(), element));
 
 		new AlertDialog.Builder(this)
 			.setTitle(R.string.undo_confirm_title)
@@ -706,7 +705,7 @@ public class MainActivity extends AppCompatActivity implements
 	@Override public void onComposeNote(long questId, QuestGroup group, String questTitle)
 	{
 		LeaveNoteInsteadFragment f = new LeaveNoteInsteadFragment();
-		Bundle args = QuestAnswerComponent.createArguments(questId, group);
+		Bundle args = QuestAnswerComponent.Companion.createArguments(questId, group);
 		args.putString(LeaveNoteInsteadFragment.ARG_QUEST_TITLE, questTitle);
 		f.setArguments(args);
 
@@ -938,7 +937,7 @@ public class MainActivity extends AppCompatActivity implements
 		mapFragment.addQuestGeometry(quest.getGeometry());
 
 		AbstractQuestAnswerFragment f = quest.getType().createForm();
-		Bundle args = QuestAnswerComponent.createArguments(quest.getId(), group);
+		Bundle args = QuestAnswerComponent.Companion.createArguments(quest.getId(), group);
 		if (group == QuestGroup.OSM)
 		{
 			OsmElement element = questController.getOsmElement((OsmQuest) quest);

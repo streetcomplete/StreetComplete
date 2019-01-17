@@ -30,7 +30,6 @@ import de.westnordost.streetcomplete.data.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.osm.ElementGeometry
-import de.westnordost.streetcomplete.util.Serializer
 import kotlinx.android.synthetic.main.fragment_quest_answer.*
 
 /** Abstract base class for any dialog with which the user answers a specific quest(ion)  */
@@ -119,7 +118,7 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        titleLabel.text = QuestUtil.getHtmlTitle(resources, questType, osmElement)
+        titleLabel.text = resources.getHtmlQuestTitle(questType, osmElement)
 
         // no content? -> hide the content container
         if (content.childCount == 0) {
@@ -199,14 +198,14 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment() {
             .setMessage(R.string.quest_leave_new_note_description)
             .setNegativeButton(R.string.quest_leave_new_note_no) { _, _ -> questAnswerComponent.onSkippedQuest() }
             .setPositiveButton(R.string.quest_leave_new_note_yes) { _, _ ->
-                val questTitle = QuestUtil.getTitle(englishResources, questType, osmElement)
+                val questTitle = englishResources.getQuestTitle(questType, osmElement)
                 questAnswerComponent.onComposeNote(questTitle)
             }
             .show()
     }
 
     protected fun applyAnswer(data: T) {
-        questAnswerComponent.onAnswerQuest(data)
+        questAnswerComponent.onAnswerQuest(data as Any)
     }
 
     protected fun skipQuest() {

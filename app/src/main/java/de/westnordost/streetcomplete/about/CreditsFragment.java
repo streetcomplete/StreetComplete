@@ -1,6 +1,8 @@
 package de.westnordost.streetcomplete.about;
 
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
@@ -25,7 +27,7 @@ import de.westnordost.streetcomplete.R;
 public class CreditsFragment extends Fragment
 {
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+	public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState)
 	{
 		View view = inflater.inflate(R.layout.fragment_credits, container, false);

@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests;
+package de.westnordost.streetcomplete;
 
 import android.app.Activity;
 import android.location.Location;
