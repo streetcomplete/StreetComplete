@@ -142,7 +142,7 @@ class AddOpeningHoursForm : AbstractQuestFormAnswerFragment<OpeningHoursAnswer>(
             .show()
     }
 
-    override fun isFormComplete() = openingHoursAdapter.createOpeningMonths().isNotEmpty()
+    override fun isFormComplete() = openingHoursAdapter.createOpeningMonths().joinToString(";").isNotEmpty()
 
     companion object {
         private const val OPENING_HOURS_DATA = "oh_data"
