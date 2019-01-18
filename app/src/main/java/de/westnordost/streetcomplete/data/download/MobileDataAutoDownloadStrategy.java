@@ -20,7 +20,7 @@ public class MobileDataAutoDownloadStrategy extends AActiveRadiusStrategy
 
 	@Override public int getQuestTypeDownloadCount()
 	{
-		return 3;
+		return 4;
 	}
 
 	@Override protected int getMinQuestsInActiveRadiusPerKm2()

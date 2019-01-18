@@ -1,8 +1,9 @@
 # Do not edit. Source files are in /res/country_metadata
+additionalStreetsignLanguages: [de]
 isAdvisorySpeedLimitKnown: true
 isLivingStreetKnown: true
 isSlowZoneKnown: true
 mobileCountryCode: 222
 officialLanguages: [it]
-orchardProduces: [olive, grape, tomatoe, peach, hazelnut, almond, apple, orange, pear, lemon, lime,
-  kiwi, chestnut, apricot, plum, chilli_pepper, sweet_pepper]
+orchardProduces: [grape, tomato, olive, apple, orange, peach, pear, kiwi, lemon, lime, chilli_pepper,
+  sweet_pepper, apricot, plum, strawberry, hazelnut, almond]

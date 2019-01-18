@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.settings;
 
-import android.support.v7.preference.PreferenceDialogFragmentCompat;
+import androidx.preference.PreferenceDialogFragmentCompat;
 import android.view.View;
 import android.widget.NumberPicker;
 
@@ -12,7 +12,7 @@ public class NumberPickerPreferenceDialog extends PreferenceDialogFragmentCompat
 
 	@Override protected void onBindDialogView(View view) {
 		super.onBindDialogView(view);
-		picker = view.findViewById(R.id.number_picker);
+		picker = view.findViewById(R.id.numberPicker);
 		picker.setMinValue(getNumberPickerPreference().getMinValue());
 		picker.setMaxValue(getNumberPickerPreference().getMaxValue());
 		picker.setValue(getNumberPickerPreference().getValue());

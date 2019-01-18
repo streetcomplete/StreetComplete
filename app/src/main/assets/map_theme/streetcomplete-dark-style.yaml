@@ -21,7 +21,6 @@ global:
     road_outline_color: '#99f'
     path_color: global.road_color
     path_outline_color: '#96b'
-    tunnel_color: '#686887'
     square_color: global.road_color
 
     earth_color: '#20204e'
@@ -32,6 +31,9 @@ global:
     building_outline_color: rgb(51,17,0)
 
     boundary_color: '#e46'
+
+    oneway_arrow_color: '#ccf'
+    barrier_color: '#ccf'
 
 styles:
     lines-railway-style:

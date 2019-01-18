@@ -3,8 +3,8 @@ package de.westnordost.streetcomplete.about;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v7.preference.PreferenceFragmentCompat;
+import androidx.fragment.app.Fragment;
+import androidx.preference.PreferenceFragmentCompat;
 
 import de.westnordost.streetcomplete.ApplicationConstants;
 import de.westnordost.streetcomplete.BuildConfig;
@@ -39,7 +39,9 @@ public class AboutFragment extends PreferenceFragmentCompat
 		{
 			Fragment f = ShowHtmlFragment.create(
 					getResources().getString(R.string.privacy_html) +
-					getResources().getString(R.string.privacy_html_image_upload),
+					getString(R.string.privacy_html_tileserver) +
+					getString(R.string.privacy_html_third_party_quest_sources) +
+					getString(R.string.privacy_html_image_upload2),
 					R.string.about_title_privacy_statement);
 			getFragmentActivity().setCurrentFragment(f);
 			return true;

@@ -82,6 +82,11 @@
             android:summary="@string/pref_title_quests_invalidation_summary"
             />
 
+        <Preference
+            android:key="quests.restore.hidden"
+            android:title="@string/pref_title_quests_restore_hidden"
+            />
+
     </PreferenceCategory>
 
 </PreferenceScreen>

@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   id="svg58"
+   sodipodi:docname="railway_crossing_full.svg"
+   inkscape:version="0.92.1 r15371"
+   width="80"
+   height="64">
+  <metadata
+     id="metadata64">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+        <cc:license
+           rdf:resource="http://creativecommons.org/publicdomain/zero/1.0/" />
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/publicdomain/zero/1.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs62" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     id="namedview60"
+     showgrid="false"
+     inkscape:zoom="6.675088"
+     inkscape:cx="8.7836433"
+     inkscape:cy="23.557085"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg58"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:pagecheckerboard="false">
+    <inkscape:grid
+       type="xygrid"
+       id="grid4517"
+       empspacing="4" />
+  </sodipodi:namedview>
+  <path
+     style="fill:#e1d9af"
+     d="M 75,19 H 69 L 80,37 V 26 Z"
+     id="polygon4-8"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ccccc" />
+  <path
+     style="fill:#d7d7d7"
+     d="M 32,0 H 48 L 67,64 H 13 Z"
+     id="polygon2"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ccccc" />
+  <path
+     style="fill:#e1d9af"
+     d="m 5,19 h 6 L 0,37 V 26 Z"
+     id="polygon4"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ccccc" />
+  <path
+     style="fill:#e1d9af"
+     d="m 16,19 h 6 L 13,42 H 4 Z"
+     id="polygon6"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ccccc" />
+  <path
+     style="fill:#e1d9af"
+     d="m 64,19 h -6 l 9,23 h 9 z"
+     id="polygon6-1"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ccccc" />
+  <path
+     sodipodi:nodetypes="ccccc"
+     inkscape:connector-curvature="0"
+     id="polygon16"
+     d="M 68,60 V 39 h 10 v 21 z"
+     style="fill:#727272" />
+  <path
+     style="fill:#8c7570"
+     d="m 0,22 h 80 v 2 H 0 Z"
+     id="polygon12"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ccccc" />
+  <path
+     style="fill:#8c7570"
+     d="m 0,35 h 80 v 3 H 0 Z"
+     id="polygon14"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ccccc" />
+  <rect
+     x="42"
+     y="42"
+     height="8"
+     width="16"
+     id="rect32"
+     style="fill:#ff0000" />
+  <rect
+     x="58"
+     y="42"
+     height="8"
+     width="16"
+     id="rect30"
+     style="fill:#ffffff;fill-opacity:1" />
+  <rect
+     style="fill:#ff0000"
+     id="rect32-2"
+     width="16"
+     height="8"
+     y="42"
+     x="10" />
+  <rect
+     style="fill:#ffffff;fill-opacity:1"
+     id="rect30-1"
+     width="16"
+     height="8"
+     y="42"
+     x="26" />
+  <rect
+     y="42"
+     x="10"
+     height="8"
+     width="64"
+     id="rect4716"
+     style="fill:none;fill-opacity:0.2;stroke:#727272;stroke-width:2;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke" />
+  <rect
+     x="-39"
+     y="5"
+     height="4"
+     width="7.9999995"
+     id="rect32-3"
+     style="fill:#ff0000;stroke-width:0.49999997"
+     transform="scale(-1,1)" />
+  <path
+     sodipodi:nodetypes="ccccc"
+     inkscape:connector-curvature="0"
+     id="polygon16-0"
+     d="M 26,14 V 3 h -5 v 11 z"
+     style="fill:#727272;stroke-width:0.4996666" />
+  <rect
+     x="-31"
+     y="5"
+     height="4"
+     width="7.9999995"
+     id="rect30-5"
+     style="fill:#ffffff;fill-opacity:1;stroke-width:0.49999997"
+     transform="scale(-1,1)" />
+  <rect
+     style="fill:#ff0000;stroke-width:0.49999997"
+     id="rect32-2-2"
+     width="7.9999995"
+     height="4"
+     y="5"
+     x="-55"
+     transform="scale(-1,1)" />
+  <rect
+     style="fill:#ffffff;fill-opacity:1;stroke-width:0.49999997"
+     id="rect30-1-0"
+     width="7.9999995"
+     height="4"
+     y="5"
+     x="-47"
+     transform="scale(-1,1)" />
+  <rect
+     y="4.8872986"
+     x="-55.113216"
+     height="4.2254028"
+     width="32.226433"
+     id="rect4716-8"
+     style="fill:none;fill-opacity:0.2;stroke:#727272;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+     transform="scale(-1,1)" />
+</svg>

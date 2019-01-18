@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.persist;
 
-import junit.framework.TestCase;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -15,28 +16,24 @@ import de.westnordost.osmapi.map.data.Relation;
 import de.westnordost.osmapi.map.data.RelationMember;
 import de.westnordost.osmapi.map.data.Way;
 
-import static org.mockito.Matchers.anyCollectionOf;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
-public class MergedElementDaoTest extends TestCase
+public class MergedElementDaoTest
 {
 	private NodeDao nodeDao;
 	private WayDao wayDao;
 	private RelationDao relationDao;
 	private MergedElementDao dao;
 
-	@Override public void setUp() throws Exception
+	@Before public void setUp()
 	{
-		super.setUp();
 		nodeDao = mock(NodeDao.class);
 		wayDao = mock(WayDao.class);
 		relationDao = mock(RelationDao.class);
 		dao = new MergedElementDao(nodeDao, wayDao, relationDao);
 	}
 
-	public void testPutNode()
+	@Test public void putNode()
 	{
 		Node node = mock(Node.class);
 		when(node.getType()).thenReturn(Element.Type.NODE);
@@ -44,7 +41,7 @@ public class MergedElementDaoTest extends TestCase
 		verify(nodeDao).put(node);
 	}
 
-	public void testGetNode()
+	@Test public void getNode()
 	{
 		Node node = mock(Node.class);
 		when(node.getId()).thenReturn(1L);
@@ -52,13 +49,13 @@ public class MergedElementDaoTest extends TestCase
 		verify(nodeDao).get(1L);
 	}
 
-	public void testDeleteNode()
+	@Test public void deleteNode()
 	{
 		dao.delete(Element.Type.NODE, 1L);
 		verify(nodeDao).delete(1L);
 	}
 
-	public void testPutWay()
+	@Test public void putWay()
 	{
 		Way way = mock(Way.class);
 		when(way.getType()).thenReturn(Element.Type.WAY);
@@ -66,7 +63,7 @@ public class MergedElementDaoTest extends TestCase
 		verify(wayDao).put(way);
 	}
 
-	public void testGetWay()
+	@Test public void getWay()
 	{
 		Way way = mock(Way.class);
 		when(way.getId()).thenReturn(1L);
@@ -75,13 +72,13 @@ public class MergedElementDaoTest extends TestCase
 		verify(wayDao).get(1L);
 	}
 
-	public void testDeleteWay()
+	@Test public void deleteWay()
 	{
 		dao.delete(Element.Type.WAY, 1L);
 		verify(wayDao).delete(1L);
 	}
 
-	public void testPutRelation()
+	@Test public void putRelation()
 	{
 		Relation relation = mock(Relation.class);
 		when(relation.getType()).thenReturn(Element.Type.RELATION);
@@ -89,7 +86,7 @@ public class MergedElementDaoTest extends TestCase
 		verify(relationDao).put(relation);
 	}
 
-	public void testGetRelation()
+	@Test public void getRelation()
 	{
 		Relation relation = mock(Relation.class);
 		when(relation.getId()).thenReturn(1L);
@@ -98,40 +95,40 @@ public class MergedElementDaoTest extends TestCase
 		verify(relationDao).get(1L);
 	}
 
-	public void testDeleteRelation()
+	@Test public void deleteRelation()
 	{
 		dao.delete(Element.Type.RELATION, 1L);
 		verify(relationDao).delete(1L);
 	}
 
-	public void testPutAllRelations()
+	@Test public void putAllRelations()
 	{
 		ArrayList<Element> elements = new ArrayList<>();
 		elements.add(createARelation());
 
 		dao.putAll(elements);
-		verify(relationDao).putAll(anyCollectionOf(Relation.class));
+		verify(relationDao).putAll(anyCollection());
 	}
 
-	public void testPutAllWays()
+	@Test public void putAllWays()
 	{
 		ArrayList<Element> elements = new ArrayList<>();
 		elements.add(createAWay());
 
 		dao.putAll(elements);
-		verify(wayDao).putAll(anyCollectionOf(Way.class));
+		verify(wayDao).putAll(anyCollection());
 	}
 
-	public void testPutAllNodes()
+	@Test public void putAllNodes()
 	{
 		ArrayList<Element> elements = new ArrayList<>();
 		elements.add(createANode());
 
 		dao.putAll(elements);
-		verify(nodeDao).putAll(anyCollectionOf(Node.class));
+		verify(nodeDao).putAll(anyCollection());
 	}
 
-	public void testPutAllElements()
+	@Test public void putAllElements()
 	{
 		ArrayList<Element> elements = new ArrayList<>();
 		elements.add(createANode());
@@ -139,9 +136,9 @@ public class MergedElementDaoTest extends TestCase
 		elements.add(createARelation());
 
 		dao.putAll(elements);
-		verify(nodeDao).putAll(anyCollectionOf(Node.class));
-		verify(wayDao).putAll(anyCollectionOf(Way.class));
-		verify(relationDao).putAll(anyCollectionOf(Relation.class));
+		verify(nodeDao).putAll(anyCollection());
+		verify(wayDao).putAll(anyCollection());
+		verify(relationDao).putAll(anyCollection());
 	}
 
 	private Node createANode()
@@ -160,7 +157,7 @@ public class MergedElementDaoTest extends TestCase
 		return new OsmRelation(0,0, Collections.singletonList(m), null);
 	}
 
-	public void testDeleteUnreferenced()
+	@Test public void deleteUnreferenced()
 	{
 		dao.deleteUnreferenced();
 		verify(nodeDao).deleteUnreferenced();

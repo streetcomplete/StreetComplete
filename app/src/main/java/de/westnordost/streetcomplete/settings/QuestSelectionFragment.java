@@ -1,10 +1,11 @@
 package de.westnordost.streetcomplete.settings;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AlertDialog;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -20,8 +21,10 @@ import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.QuestType;
 import de.westnordost.streetcomplete.data.QuestTypeRegistry;
+import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestType;
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderList;
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeDao;
+
 
 public class QuestSelectionFragment extends Fragment
 {
@@ -67,7 +70,14 @@ public class QuestSelectionFragment extends Fragment
 	{
 		switch (item.getItemId()) {
 			case R.id.action_reset:
-				onReset();
+				new AlertDialog.Builder(getContext())
+					.setMessage(R.string.pref_quests_reset)
+					.setPositiveButton(android.R.string.ok, (dialog, which) -> onReset())
+					.setNegativeButton(android.R.string.cancel, null)
+					.show();
+				return true;
+			case R.id.action_deselect_all:
+				onDeselectAll();
 				return true;
 		}
 		return super.onOptionsItemSelected(item);
@@ -80,6 +90,18 @@ public class QuestSelectionFragment extends Fragment
 		questSelectionAdapter.setList(createQuestTypeVisibilityList());
 	}
 
+	private void onDeselectAll()
+	{
+		List<QuestType> questTypes = new ArrayList<>(questTypeRegistry.getAll());
+		for (QuestType questType : questTypes)
+		{
+			if(!(questType instanceof OsmNoteQuestType))
+			{
+				visibleQuestTypeDao.setVisible(questType, false);
+			}
+		}
+		questSelectionAdapter.setList(createQuestTypeVisibilityList());
+	}
 
 	private List<QuestSelectionAdapter.QuestVisibility> createQuestTypeVisibilityList()
 	{

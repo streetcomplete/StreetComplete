@@ -1,1 +1,1 @@
-OpenStreetMap besiktningsman app
+Kartläggninsapp för OpenStreetMap

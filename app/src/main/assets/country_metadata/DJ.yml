@@ -2,5 +2,6 @@
 firstDayOfWorkweek: Sa
 mobileCountryCode: 638
 officialLanguages: [ar, fr, aa, so]
-orchardProduces: [chilli_pepper, sweet_pepper]
+orchardProduces: [lemon, lime, tomato, guava, mango, mangosteen, date, chilli_pepper, sweet_pepper,
+  pear, orange]
 popularReligions: [muslim]

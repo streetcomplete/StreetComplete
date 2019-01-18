@@ -142,14 +142,8 @@ public abstract class AQuestDao<T extends Quest>
 	public void update(T quest)
 	{
 		SQLiteDatabase db = dbHelper.getWritableDatabase();
-		int rows = db.update(getTableName(), createNonFinalContentValuesFrom(quest),
+		db.update(getTableName(), createNonFinalContentValuesFrom(quest),
 				getIdColumnName() + " = " + quest.getId(), null);
-
-		if(rows == 0)
-		{
-			throw new NullPointerException(quest.getClass().getSimpleName() + " with the id " +
-					quest.getId() + " does not exist.");
-		}
 	}
 
 	public boolean delete(long id)
@@ -181,6 +175,17 @@ public abstract class AQuestDao<T extends Quest>
 		SQLiteDatabase db = dbHelper.getWritableDatabase();
 		return db.delete(getTableName(), query, new String[]{
 				QuestStatus.CLOSED.name(), QuestStatus.REVERT.name(), String.valueOf(olderThan)});
+	}
+
+	public int deleteAllUnsolved(long olderThan)
+	{
+		String statusCol = getQuestStatusColumnName();
+		String query = "(" + statusCol + " = ? OR " + statusCol + " = ?) AND " +
+			getLastChangedColumnName() + " < ?";
+
+		SQLiteDatabase db = dbHelper.getWritableDatabase();
+		return db.delete(getTableName(), query, new String[]{
+			QuestStatus.NEW.name(), QuestStatus.HIDDEN.name(), String.valueOf(olderThan)});
 	}
 
 	public int addAll(Collection<T> quests)

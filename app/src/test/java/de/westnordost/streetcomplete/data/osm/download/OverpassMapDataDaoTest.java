@@ -1,22 +1,18 @@
 package de.westnordost.streetcomplete.data.osm.download;
 
-import junit.framework.TestCase;
+import org.junit.Test;
 
 import javax.inject.Provider;
 
-import de.westnordost.osmapi.ApiRequestWriter;
 import de.westnordost.osmapi.OsmConnection;
 
-import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.eq;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 import static org.mockito.internal.verification.VerificationModeFactory.times;
 
-public class OverpassMapDataDaoTest extends TestCase
+public class OverpassMapDataDaoTest
 {
-	public void testHandleOverpassQuota() throws InterruptedException
+	@Test public void handleOverpassQuota() throws InterruptedException
 	{
 		Provider provider = mock(Provider.class);
 		when(provider.get()).thenReturn(mock(OverpassMapDataParser.class));
@@ -26,8 +22,8 @@ public class OverpassMapDataDaoTest extends TestCase
 		status.nextAvailableSlotIn = 2;
 
 		OsmConnection osm = mock(OsmConnection.class);
-		when(osm.makeRequest(eq("status"), any(OverpassStatusParser.class))).thenReturn(status);
-		when(osm.makeRequest(eq("interpreter"), eq("POST"), eq(false), any(ApiRequestWriter.class), any(OverpassStatusParser.class)))
+		when(osm.makeRequest(eq("status"), any())).thenReturn(status);
+		when(osm.makeRequest(eq("interpreter"), eq("POST"), eq(false), any(), any()))
 				.thenThrow(OsmTooManyRequestsException.class);
 
 		final OverpassMapDataDao dao = new OverpassMapDataDao(osm, provider);
@@ -48,15 +44,15 @@ public class OverpassMapDataDaoTest extends TestCase
 		// sleep the wait time: Downloader should not try to call
 		// overpass again in this time
 		Thread.sleep(status.nextAvailableSlotIn * 1000);
-		verify(osm, times(1)).makeRequest(eq("interpreter"), eq("POST"), eq(false), any(ApiRequestWriter.class), any(OverpassStatusParser.class));
-		verify(osm, times(1)).makeRequest(eq("status"), any(OverpassStatusParser.class));
+		verify(osm, times(1)).makeRequest(eq("interpreter"), eq("POST"), eq(false), any(), any());
+		verify(osm, times(1)).makeRequest(eq("status"), any());
 
 		// now we test if dao will call overpass again after that time. It is not really
 		// defined when the downloader must call overpass again, lets assume 1.5 secs here and
 		// change it when it fails
 		Thread.sleep(1500);
-		verify(osm, times(2)).makeRequest(eq("interpreter"), eq("POST"), eq(false), any(ApiRequestWriter.class), any(OverpassStatusParser.class));
-		verify(osm, times(2)).makeRequest(eq("status"), any(OverpassStatusParser.class));
+		verify(osm, times(2)).makeRequest(eq("interpreter"), eq("POST"), eq(false), any(), any());
+		verify(osm, times(2)).makeRequest(eq("status"), any());
 
 		// we are done here, interrupt thread (still part of the test though...)
 		dlThread.interrupt();

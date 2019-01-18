@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.download;
 
-import junit.framework.TestCase;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -22,7 +22,9 @@ import de.westnordost.osmapi.map.data.Relation;
 import de.westnordost.osmapi.map.data.RelationMember;
 import de.westnordost.osmapi.map.data.Way;
 
-public class ElementCreatorTestGeometry extends TestCase implements WayGeometrySource
+import static org.junit.Assert.*;
+
+public class ElementCreatorTestGeometry implements WayGeometrySource
 {
 	private static final LatLon
 			P0 = new OsmLatLon(0d,2d),
@@ -83,26 +85,26 @@ public class ElementCreatorTestGeometry extends TestCase implements WayGeometryS
 		return creator;
 	}
 
-	public void testCreateForNode()
+	@Test public void createForNode()
 	{
 		ElementGeometry geom = createCreator().create(N0);
 		assertEquals(P0, geom.center);
 	}
 
-	public void testCreateForEmptyWay()
+	@Test public void createForEmptyWay()
 	{
 		ElementGeometry geom = createCreator().create(W5);
 		assertNull(geom);
 	}
 
-	public void testCreateForWayWithDuplicateNodes()
+	@Test public void createForWayWithDuplicateNodes()
 	{
 		ElementGeometry geom = createCreator().create(W4);
 		assertNotNull(geom.polylines);
 		assertNotNull(geom.center);
 	}
 
-	public void testCreateForSimpleAreaWay()
+	@Test public void createForSimpleAreaWay()
 	{
 		ElementGeometry geom = createCreator().create(W2);
 		assertNotNull(geom.polygons);
@@ -116,7 +118,7 @@ public class ElementCreatorTestGeometry extends TestCase implements WayGeometryS
 		}
 	}
 
-	public void testCreateForSimpleNonAreaWay()
+	@Test public void createForSimpleNonAreaWay()
 	{
 		ElementGeometry geom = createCreator().create(W0);
 		assertNotNull(geom.polylines);
@@ -132,7 +134,7 @@ public class ElementCreatorTestGeometry extends TestCase implements WayGeometryS
 		}
 	}
 
-	public void testCreateForMultipolygonRelation()
+	@Test public void createForMultipolygonRelation()
 	{
 		ElementGeometry geom = createCreator().create(R0);
 
@@ -140,7 +142,7 @@ public class ElementCreatorTestGeometry extends TestCase implements WayGeometryS
 		assertEquals(1, geom.polygons.size());
 	}
 
-	public void testCreateForPolylineRelation()
+	@Test public void createForPolylineRelation()
 	{
 		ElementGeometry geom = createCreator().create(R1);
 

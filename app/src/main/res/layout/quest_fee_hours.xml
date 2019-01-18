@@ -9,7 +9,7 @@
         android:layout_height="wrap_content">
 
         <Spinner
-            android:id="@+id/select"
+            android:id="@+id/selectFeeOnlyAtHours"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
             android:layout_width="wrap_content"
@@ -17,7 +17,7 @@
             android:textSize="16sp"/>
 
         <TextView
-            android:layout_toEndOf="@id/select"
+            android:layout_toEndOf="@id/selectFeeOnlyAtHours"
             android:layout_centerVertical="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -27,14 +27,14 @@
 
     </RelativeLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/hours_list"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/openingHoursList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-    </android.support.v7.widget.RecyclerView>
+    </androidx.recyclerview.widget.RecyclerView>
 
     <Button
-        android:id="@+id/btn_add"
+        android:id="@+id/addTimesButton"
         android:text="@string/quest_fee_add_times"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>

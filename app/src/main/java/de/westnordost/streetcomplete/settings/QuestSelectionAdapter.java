@@ -1,8 +1,10 @@
 package de.westnordost.streetcomplete.settings;
 
 import android.content.SharedPreferences;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.helper.ItemTouchHelper;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,18 +30,18 @@ import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestType;
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderList;
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeDao;
 import de.westnordost.streetcomplete.view.ListAdapter;
-import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
 
-import static android.support.v7.widget.helper.ItemTouchHelper.ACTION_STATE_DRAG;
-import static android.support.v7.widget.helper.ItemTouchHelper.ACTION_STATE_IDLE;
-import static android.support.v7.widget.helper.ItemTouchHelper.DOWN;
-import static android.support.v7.widget.helper.ItemTouchHelper.UP;
+
+import static androidx.recyclerview.widget.ItemTouchHelper.ACTION_STATE_DRAG;
+import static androidx.recyclerview.widget.ItemTouchHelper.ACTION_STATE_IDLE;
+import static androidx.recyclerview.widget.ItemTouchHelper.DOWN;
+import static androidx.recyclerview.widget.ItemTouchHelper.UP;
 
 public class QuestSelectionAdapter extends ListAdapter<QuestSelectionAdapter.QuestVisibility>
 {
 	private final VisibleQuestTypeDao visibleQuestTypeDao;
 	private final QuestTypeOrderList questTypeOrderList;
-	private final String currentCountryCode;
+	private final List<String> currentCountryCodes;
 
 	@Inject public QuestSelectionAdapter(
 		VisibleQuestTypeDao visibleQuestTypeDao, QuestTypeOrderList questTypeOrderList,
@@ -51,30 +53,23 @@ public class QuestSelectionAdapter extends ListAdapter<QuestSelectionAdapter.Que
 
 		double lat = Double.longBitsToDouble(prefs.getLong(Prefs.MAP_LATITUDE, Double.doubleToLongBits(0)));
 		double lng = Double.longBitsToDouble(prefs.getLong(Prefs.MAP_LONGITUDE, Double.doubleToLongBits(0)));
-		try	{ currentCountryCode = getCountryCode(countryBoundaries.get(), lng, lat); }
+		try	{ currentCountryCodes = countryBoundaries.get().getIds(lng, lat); }
 		catch (Exception e)	{ throw new RuntimeException(e);	}
 	}
 
-	@Override public void onAttachedToRecyclerView(RecyclerView recyclerView)
+	@Override public void onAttachedToRecyclerView(@NonNull RecyclerView recyclerView)
 	{
 		super.onAttachedToRecyclerView(recyclerView);
 		ItemTouchHelper ith = new ItemTouchHelper(new TouchHelperCallback());
 		ith.attachToRecyclerView(recyclerView);
 	}
 
-	@Override
-	public ListAdapter.ViewHolder<QuestVisibility> onCreateViewHolder(ViewGroup parent, int viewType)
+	@NonNull @Override
+	public ListAdapter.ViewHolder<QuestVisibility> onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
 	{
 		View layout = LayoutInflater.from(parent.getContext())
 				.inflate(R.layout.row_quest_selection, parent, false);
 		return new QuestVisibilityViewHolder(layout);
-	}
-
-	private static String getCountryCode(CountryBoundaries boundaries, double lng, double lat)
-	{
-		List<String> ids = boundaries.getIds(lng, lat);
-		if(ids.isEmpty()) return null;
-		return ids.get(0).split("-")[0];
 	}
 
 	private class TouchHelperCallback extends ItemTouchHelper.Callback
@@ -156,7 +151,6 @@ public class QuestSelectionAdapter extends ListAdapter<QuestSelectionAdapter.Que
 		private TextView textCountryDisabled;
 		private QuestVisibility item;
 
-
 		public QuestVisibilityViewHolder(View itemView)
 		{
 			super(itemView);
@@ -166,10 +160,10 @@ public class QuestSelectionAdapter extends ListAdapter<QuestSelectionAdapter.Que
 			textCountryDisabled = itemView.findViewById(R.id.textCountryDisabled);
 		}
 
-		@Override protected void onBind(final QuestVisibility item)
+		@Override public void onBind(final QuestVisibility item)
 		{
 			this.item = item;
-			int colorResId = item.isInteractionEnabled() ? android.R.color.white : R.color.colorGreyedOut;
+			int colorResId = item.isInteractionEnabled() ? android.R.color.white : R.color.greyed_out;
 			itemView.setBackgroundResource(colorResId);
 			iconView.setImageResource(item.questType.getIcon());
 			textView.setText(textView.getResources().getString(item.questType.getTitle(),"…"));
@@ -180,9 +174,10 @@ public class QuestSelectionAdapter extends ListAdapter<QuestSelectionAdapter.Que
 
 			if(!isEnabledInCurrentCountry())
 			{
+				String cc = currentCountryCodes.isEmpty() ? "Atlantis" : currentCountryCodes.get(0);
 				textCountryDisabled.setText(String.format(
 					textCountryDisabled.getResources().getString(R.string.questList_disabled_in_country),
-					new Locale("", currentCountryCode).getDisplayCountry()
+					new Locale("", cc).getDisplayCountry()
 				));
 				textCountryDisabled.setVisibility(View.VISIBLE);
 			}
@@ -196,11 +191,18 @@ public class QuestSelectionAdapter extends ListAdapter<QuestSelectionAdapter.Que
 
 		private boolean isEnabledInCurrentCountry()
 		{
-			if(item.questType instanceof OsmElementQuestType && currentCountryCode != null)
+			if(item.questType instanceof OsmElementQuestType)
 			{
 				OsmElementQuestType questType = (OsmElementQuestType) item.questType;
 				Countries countries = questType.getEnabledForCountries();
-				return countries.isAllExcept() ^ countries.getExceptions().contains(currentCountryCode);
+				for(String currentCountryCode : currentCountryCodes)
+				{
+					if(countries.getExceptions().contains(currentCountryCode))
+					{
+						return !countries.isAllExcept();
+					}
+				}
+				return countries.isAllExcept();
 			}
 			return true;
 		}
@@ -209,7 +211,7 @@ public class QuestSelectionAdapter extends ListAdapter<QuestSelectionAdapter.Que
 		{
 			if(!item.visible)
 			{
-				iconView.setColorFilter(itemView.getResources().getColor(R.color.colorGreyedOut));
+				iconView.setColorFilter(itemView.getResources().getColor(R.color.greyed_out));
 			}
 			else
 			{
@@ -225,7 +227,7 @@ public class QuestSelectionAdapter extends ListAdapter<QuestSelectionAdapter.Que
 			visibleQuestTypeDao.setVisible(item.questType, item.visible);
 			if(b && item.questType.getDefaultDisabledMessage() > 0)
 			{
-				new AlertDialogBuilder(compoundButton.getContext())
+				new AlertDialog.Builder(compoundButton.getContext())
 						.setTitle(R.string.enable_quest_confirmation_title)
 						.setMessage(item.questType.getDefaultDisabledMessage())
 						.setPositiveButton(android.R.string.yes, null)

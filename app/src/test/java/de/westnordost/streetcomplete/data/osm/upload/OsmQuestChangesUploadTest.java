@@ -1,12 +1,10 @@
 package de.westnordost.streetcomplete.data.osm.upload;
 
 import android.content.SharedPreferences;
-import android.graphics.Point;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 
-import junit.framework.TestCase;
+import org.jetbrains.annotations.NotNull;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -16,7 +14,6 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import de.westnordost.osmapi.changesets.ChangesetInfo;
 import de.westnordost.osmapi.changesets.ChangesetsDao;
-import de.westnordost.osmapi.common.Handler;
 import de.westnordost.osmapi.common.errors.OsmConflictException;
 import de.westnordost.osmapi.map.MapDataDao;
 import de.westnordost.osmapi.map.data.BoundingBox;
@@ -32,7 +29,7 @@ import de.westnordost.streetcomplete.data.osm.Countries;
 import de.westnordost.streetcomplete.data.osm.ElementGeometry;
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.OsmQuest;
-import de.westnordost.streetcomplete.data.osm.OsmQuestUnlocker;
+import de.westnordost.streetcomplete.data.osm.OsmQuestGiver;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChanges;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd;
@@ -46,14 +43,14 @@ import de.westnordost.streetcomplete.data.statistics.QuestStatisticsDao;
 import de.westnordost.streetcomplete.data.tiles.DownloadedTilesDao;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
-public class OsmQuestChangesUploadTest extends TestCase
+public class OsmQuestChangesUploadTest
 {
-
 	private static long A_NODE_ID = 5;
 
-	public void testCancel() throws InterruptedException
+	@Test public void cancel() throws InterruptedException
 	{
 		OsmQuestDao questDb = mock(OsmQuestDao.class);
 		ElementGeometryDao elementGeometryDao = mock(ElementGeometryDao.class);
@@ -85,7 +82,7 @@ public class OsmQuestChangesUploadTest extends TestCase
 		//verify(elementDB).deleteUnreferenced();
 	}
 
-	public void testDropChangeWhenElementDeleted()
+	@Test public void dropChangeWhenElementDeleted()
 	{
 		OsmQuest quest = createAnsweredQuest(null);
 		OsmQuestDao questDb = mock(OsmQuestDao.class);
@@ -95,11 +92,11 @@ public class OsmQuestChangesUploadTest extends TestCase
 
 		assertFalse(u.uploadQuestChange(-1, quest, null, false, false));
 
-		verify(downloadedTilesDao).remove(any(Point.class));
+		verify(downloadedTilesDao).remove(any());
 		verify(questDb).delete(quest.getId());
 	}
 
-	public void testDropChangeWhenUnresolvableElementChange()
+	@Test public void dropChangeWhenUnresolvableElementChange()
 	{
 		OsmQuest quest = createAnsweredQuestWithNonAppliableChange();
 		Element element = createElement();
@@ -111,12 +108,12 @@ public class OsmQuestChangesUploadTest extends TestCase
 				null, downloadedTilesDao, null, null);
 		assertFalse(u.uploadQuestChange(123, quest, element, false, false));
 		verify(questDb).delete(quest.getId());
-		verify(downloadedTilesDao).remove(any(Point.class));
+		verify(downloadedTilesDao).remove(any());
 	}
 
 	/* Simulates an element conflict while uploading the element, when updating the element from
 	   mock server, it turns out that it has been deleted */
-	public void testHandleElementConflictAndThenDeleted()
+	@Test public void handleElementConflictAndThenDeleted()
 	{
 		final long changesetId = 123;
 		final long userId = 10;
@@ -127,6 +124,7 @@ public class OsmQuestChangesUploadTest extends TestCase
 		MergedElementDao elementDb = mock(MergedElementDao.class);
 		OsmQuestDao questDb = mock(OsmQuestDao.class);
 		DownloadedTilesDao downloadedTilesDao = mock(DownloadedTilesDao.class);
+		OsmQuestGiver questGiver = mock(OsmQuestGiver.class);
 
 		MapDataDao mapDataDao = createMapDataDaoThatReportsConflictOnUploadAndNodeDeleted();
 
@@ -137,18 +135,18 @@ public class OsmQuestChangesUploadTest extends TestCase
 		when(prefs.getLong(Prefs.OSM_USER_ID, -1)).thenReturn(userId);
 
 		OsmQuestChangesUpload u = new OsmQuestChangesUpload(mapDataDao, questDb, elementDb, null,
-				null, null, changesetsDao, downloadedTilesDao, prefs, null);
+				null, null, changesetsDao, downloadedTilesDao, prefs, questGiver);
 
 		assertFalse(u.uploadQuestChange(changesetId, quest, element, false, false));
 		verify(questDb).delete(quest.getId());
 		verify(elementDb).delete(Element.Type.NODE, A_NODE_ID);
-		verify(downloadedTilesDao).remove(any(Point.class));
+		verify(downloadedTilesDao).remove(any());
 	}
 
 	/* Simulates the changeset that is about to be used was created by a different user, so a new
 	*  changeset needs to be created. (after that, it runs into the same case above, for simplicity
 	*  sake*/
-	public void testHandleChangesetConflictDifferentUser()
+	@Test public void handleChangesetConflictDifferentUser()
 	{
 		final long userId = 10;
 		final long otherUserId = 15;
@@ -164,7 +162,7 @@ public class OsmQuestChangesUploadTest extends TestCase
 
 	/* Simulates the changeset that is about to be used is already closed, so a new changeset needs
 	to be created. (after that, it runs into the same case above, for simplicity sake*/
-	public void testHandleChangesetConflictAlreadyClosed()
+	@Test public void handleChangesetConflictAlreadyClosed()
 	{
 		final long userId = 10;
 		final long firstChangesetId = 123;
@@ -186,23 +184,24 @@ public class OsmQuestChangesUploadTest extends TestCase
 		MergedElementDao elementDb = mock(MergedElementDao.class);
 		OsmQuestDao questDb = mock(OsmQuestDao.class);
 		DownloadedTilesDao downloadedTilesDao = mock(DownloadedTilesDao.class);
+		OsmQuestGiver questGiver = mock(OsmQuestGiver.class);
 
 		OpenChangesetsDao manageChangesetsDb = mock(OpenChangesetsDao.class);
 
 		MapDataDao mapDataDao = createMapDataDaoThatReportsConflictOnUploadAndNodeDeleted();
-		when(mapDataDao.openChangeset(any(Map.class))).thenReturn(secondChangesetId);
+		when(mapDataDao.openChangeset(anyMap())).thenReturn(secondChangesetId);
 
 		SharedPreferences prefs = createPreferencesForUser(userId);
 
 		OsmQuestChangesUpload u = new OsmQuestChangesUpload(mapDataDao, questDb, elementDb, null,
-				null, manageChangesetsDb, changesetsDao, downloadedTilesDao, prefs, null);
+				null, manageChangesetsDb, changesetsDao, downloadedTilesDao, prefs, questGiver);
 
 		assertFalse(u.uploadQuestChange(firstChangesetId, quest, element, false, false));
 
 		verify(manageChangesetsDb).replace(new OpenChangesetKey("TestQuestType","test case"), secondChangesetId);
 		verify(questDb).delete(quest.getId());
 		verify(elementDb).delete(Element.Type.NODE, A_NODE_ID);
-		verify(downloadedTilesDao).remove(any(Point.class));
+		verify(downloadedTilesDao).remove(any());
 	}
 
 	private static SharedPreferences createPreferencesForUser(long userId)
@@ -218,7 +217,7 @@ public class OsmQuestChangesUploadTest extends TestCase
 	{
 		MapDataDao mapDataDao = mock(MapDataDao.class);
 		doThrow(OsmConflictException.class).when(mapDataDao)
-				.uploadChanges(any(Long.class), any(Iterable.class), any(Handler.class));
+				.uploadChanges(anyLong(), any(), any());
 		when(mapDataDao.getNode(A_NODE_ID)).thenReturn(null);
 		return mapDataDao;
 	}
@@ -244,7 +243,7 @@ public class OsmQuestChangesUploadTest extends TestCase
 		return result;
 	}
 
-	public void testUploadNormally()
+	@Test public void uploadNormally()
 	{
 		OsmQuest quest = createAnsweredQuestWithAppliableChange();
 		Element element = createElement();
@@ -253,7 +252,8 @@ public class OsmQuestChangesUploadTest extends TestCase
 		MapDataDao mapDataDao = mock(MapDataDao.class);
 		QuestStatisticsDao statisticsDao = mock(QuestStatisticsDao.class);
 		MergedElementDao elementDb = mock(MergedElementDao.class);
-		OsmQuestUnlocker osmQuestUnlocker = mock(OsmQuestUnlocker.class);
+		OsmQuestGiver osmQuestUnlocker = mock(OsmQuestGiver.class);
+		when(osmQuestUnlocker.updateQuests(any())).thenReturn(new OsmQuestGiver.QuestUpdates());
 		OsmQuestChangesUpload u = new OsmQuestChangesUpload(mapDataDao, questDb, elementDb, null,
 				statisticsDao, null, null, null, null, osmQuestUnlocker);
 
@@ -262,21 +262,21 @@ public class OsmQuestChangesUploadTest extends TestCase
 		verify(statisticsDao).addOne("TestQuestType");
 	}
 
-	private static class TestQuestType implements OsmElementQuestType
+	private static class TestQuestType implements OsmElementQuestType<String>
 	{
-		@Override public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes) { }
-		@Override public String getCommitMessage() { return null; }
-		@Override public boolean download(BoundingBox bbox, MapDataWithGeometryHandler handler)
-		{
-			return true;
-		}
-		@Override public AbstractQuestAnswerFragment createForm() { return null; }
+		@NotNull @Override public String getCommitMessage() { return ""; }
+		@Override public int getTitle(@NotNull Map<String, String> tags) { return 0; }
+		@Override public boolean download(@NotNull BoundingBox bbox, @NotNull MapDataWithGeometryHandler handler) { return false; }
+		@Override public Boolean isApplicableTo(@NotNull Element element) { return null; }
+		@Override public void applyAnswerTo(@NotNull String answer, @NotNull StringMapChangesBuilder changes) { }
 		@Override public int getIcon() { return 0; }
+		@NotNull @Override public AbstractQuestAnswerFragment createForm() {
+			return new AbstractQuestAnswerFragment<String>() {};
+		}
+		@NotNull @Override public Countries getEnabledForCountries() { return Countries.ALL; }
+		@Override public boolean getHasMarkersAtEnds() { return false; }
 		@Override public int getTitle() { return 0; }
-		@Override public int getTitle(@NonNull Map<String,String> tags) { return 0; }
-		@Nullable @Override public Boolean isApplicableTo(Element element) { return false; }
-
-		@NonNull @Override public Countries getEnabledForCountries()	{ return Countries.ALL; }
+		@Override public void cleanMetadata() {}
 		@Override public int getDefaultDisabledMessage() { return 0; }
 	}
 

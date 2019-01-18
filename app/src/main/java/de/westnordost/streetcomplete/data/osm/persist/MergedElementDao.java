@@ -12,9 +12,9 @@ import de.westnordost.osmapi.map.data.Way;
 
 public class MergedElementDao
 {
-	private NodeDao nodeDao;
-	private WayDao wayDao;
-	private RelationDao relationDao;
+	private final NodeDao nodeDao;
+	private final WayDao wayDao;
+	private final RelationDao relationDao;
 
 	@Inject
 	public MergedElementDao(NodeDao nodeDao, WayDao wayDao, RelationDao relationDao)

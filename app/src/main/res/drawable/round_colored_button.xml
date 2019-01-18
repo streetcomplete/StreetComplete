@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true" android:drawable="@drawable/round_colored_button_pressed" />
+    <item android:state_selected="true" android:drawable="@drawable/round_colored_button_pressed" />
+    <item android:state_focused="true" android:drawable="@drawable/round_colored_button_pressed" />
+    <item>
+        <inset xmlns:android="http://schemas.android.com/apk/res/android"
+               android:insetLeft="@dimen/round_button_inset"
+               android:insetTop="@dimen/round_button_inset"
+               android:insetRight="@dimen/round_button_inset"
+               android:insetBottom="@dimen/round_button_inset">
+            <shape android:shape="rectangle">
+                <corners android:radius="@dimen/round_button_radius" />
+                <solid android:color="@color/accent" />
+                <padding android:left="@dimen/round_button_padding"
+                         android:top="@dimen/round_button_padding"
+                         android:right="@dimen/round_button_padding"
+                         android:bottom="@dimen/round_button_padding" />
+            </shape>
+        </inset>
+    </item>
+</selector>

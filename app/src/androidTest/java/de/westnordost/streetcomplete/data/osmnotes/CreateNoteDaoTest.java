@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.data.osmnotes;
 
+import org.junit.Before;
+import org.junit.Test;
+
 import java.util.ArrayList;
 
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase;
@@ -7,17 +10,18 @@ import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.map.data.OsmLatLon;
 
+import static org.junit.Assert.*;
+
 public class CreateNoteDaoTest extends ApplicationDbTestCase
 {
 	private CreateNoteDao dao;
 
-	@Override public void setUp() throws Exception
+	@Before public void createDao()
 	{
-		super.setUp();
 		dao = new CreateNoteDao(dbHelper, serializer);
 	}
 
-	public void testAddGetDelete()
+	@Test public void addGetDelete()
 	{
 		CreateNote note = new CreateNote();
 		note.text = "text";
@@ -45,7 +49,7 @@ public class CreateNoteDaoTest extends ApplicationDbTestCase
 		assertNull(dao.get(note.id));
 	}
 
-	public void testNullable()
+	@Test public void nullable()
 	{
 		CreateNote note = new CreateNote();
 		note.text = "text";
@@ -60,7 +64,7 @@ public class CreateNoteDaoTest extends ApplicationDbTestCase
 		assertNull(dbNote.imagePaths);
 	}
 
-	public void testGetAll()
+	@Test public void getAll()
 	{
 		CreateNote note1 = new CreateNote();
 		note1.text = "this is in";
@@ -78,12 +82,12 @@ public class CreateNoteDaoTest extends ApplicationDbTestCase
 	}
 
 
-	public void testCountNone()
+	@Test public void countNone()
 	{
 		assertEquals(0, dao.getCount());
 	}
 
-	public void testCountOne()
+	@Test public void countOne()
 	{
 		CreateNote note1 = new CreateNote();
 		note1.position = new OsmLatLon(0.5,0.5);
@@ -93,7 +97,7 @@ public class CreateNoteDaoTest extends ApplicationDbTestCase
 		assertEquals(1, dao.getCount());
 	}
 
-	public void testCountSeveral()
+	@Test public void countSeveral()
 	{
 		CreateNote note1 = new CreateNote();
 		note1.position = new OsmLatLon(0.5,0.5);

@@ -12,6 +12,7 @@ import java.util.HashMap;
 
 import javax.inject.Singleton;
 
+import de.westnordost.osmapi.map.data.Fixed1E7LatLon;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChanges;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryDelete;
@@ -27,7 +28,7 @@ import de.westnordost.osmapi.user.User;
 import de.westnordost.streetcomplete.quests.opening_hours.model.TimeRange;
 import de.westnordost.streetcomplete.quests.opening_hours.model.Weekdays;
 import de.westnordost.streetcomplete.quests.localized_name.LocalizedName;
-import de.westnordost.streetcomplete.quests.postbox_collection_times.WeekdaysTimes;
+import de.westnordost.streetcomplete.quests.postbox_collection_times.WeekdaysTimesRow;
 
 @Singleton
 public class KryoSerializer implements Serializer
@@ -38,7 +39,7 @@ public class KryoSerializer implements Serializer
 	{
 			HashMap.class,
 			ArrayList.class,
-			OsmLatLon.class,
+			Fixed1E7LatLon.class,
 			Element.Type.class,
 			OsmRelationMember.class,
 			StringMapChanges.class,
@@ -56,7 +57,8 @@ public class KryoSerializer implements Serializer
 			OpeningMonthsRow.class,
 			OpeningWeekdaysRow.class,
 			LocalizedName.class,
-			WeekdaysTimes.class
+			WeekdaysTimesRow.class,
+			OsmLatLon.class,
 	};
 
 

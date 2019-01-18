@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.data.osm.persist;
 
+import org.junit.Before;
+import org.junit.Test;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -12,17 +15,18 @@ import de.westnordost.osmapi.map.data.OsmRelationMember;
 import de.westnordost.osmapi.map.data.Relation;
 import de.westnordost.osmapi.map.data.RelationMember;
 
+import static org.junit.Assert.assertEquals;
+
 public class RelationDaoTest extends ApplicationDbTestCase
 {
 	private RelationDao dao;
 
-	@Override public void setUp() throws Exception
+	@Before public void createDao()
 	{
-		super.setUp();
 		dao = new RelationDao(dbHelper, serializer);
 	}
 
-	public void testPutGetNoTags()
+	@Test public void putGetNoTags()
 	{
 		List<RelationMember> members = new ArrayList<>();
 		members.add(new OsmRelationMember(0, "outer", Element.Type.WAY));
@@ -34,7 +38,7 @@ public class RelationDaoTest extends ApplicationDbTestCase
 		checkEqual(relation, dbRelation);
 	}
 
-	public void testPutGetWithTags()
+	@Test public void putGetWithTags()
 	{
 		List<RelationMember> members = new ArrayList<>();
 		members.add(new OsmRelationMember(0, "outer", Element.Type.WAY));

@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.data.osm;
 
+import androidx.annotation.NonNull;
+
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
@@ -9,12 +11,12 @@ public class Countries
 	public static final Countries ALL = new Countries(true, null);
 	public static final Countries NONE = new Countries(false, null);
 
-	public static Countries allExcept(String[] iso3166CountryCodes)
+	@NonNull public static Countries allExcept(String... iso3166CountryCodes)
 	{
 		return new Countries(true, iso3166CountryCodes);
 	}
 
-	public static Countries noneExcept(String[] iso3166CountryCodes)
+	@NonNull public static Countries noneExcept(String... iso3166CountryCodes)
 	{
 		return new Countries(false, iso3166CountryCodes);
 	}
