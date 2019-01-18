@@ -16,7 +16,14 @@ android {
     }
     compileSdkVersion 28
     testOptions {
-        unitTests.returnDefaultValues = true
+        unitTests {
+            returnDefaultValues = true
+            all {
+                useJUnit {
+                    excludeCategories 'de.westnordost.streetcomplete.IntegrationTests'
+                }
+            }
+        }
     }
 
     defaultConfig {

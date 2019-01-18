@@ -1,13 +1,14 @@
 package de.westnordost.streetcomplete.quests.construction
 
-import androidx.test.filters.LargeTest
 import de.westnordost.osmapi.map.data.BoundingBox
+import de.westnordost.streetcomplete.IntegrationTests
 import de.westnordost.streetcomplete.data.OsmModule
 import de.westnordost.streetcomplete.quests.verifyDownloadYieldsNoQuest
 import de.westnordost.streetcomplete.quests.verifyDownloadYieldsQuest
 import org.junit.Test
+import org.junit.experimental.categories.Category
 
-@LargeTest
+@Category(IntegrationTests::class)
 class MarkCompletedBuildingConstructionIntegrationTest {
 
     @Test fun `matching candidate is accepted`() {
