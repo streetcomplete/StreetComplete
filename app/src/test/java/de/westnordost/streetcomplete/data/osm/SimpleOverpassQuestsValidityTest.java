@@ -28,7 +28,7 @@ public class SimpleOverpassQuestsValidityTest
 		WayTrafficFlowDao wayTrafficFlowDao = mock(WayTrafficFlowDao.class);
 
 		BoundingBox bbox = new BoundingBox(0,0,1,1);
-		List<QuestType> questTypes = QuestModule.INSTANCE.questTypeRegistry(
+		List<QuestType> questTypes = QuestModule.questTypeRegistry(
 			new OsmNoteQuestType(),
 			overpassMapDataDao,
 			roadNameSuggestionsDao,
