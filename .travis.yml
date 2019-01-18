@@ -25,8 +25,8 @@ android:
 
 env:
   global:
-    - ANDROID_BUILD_TOOLS=27.0.3
-    - ANDROID_API=27
+    - ANDROID_BUILD_TOOLS=28.0.3
+    - ANDROID_API=28
   matrix:
     - API=android-22 ABI=armeabi-v7a
     - API=android-24 ABI=armeabi-v7a
@@ -61,4 +61,4 @@ before_script:
 
 script:
   - ./gradlew testDebugUnitTest
-  - travis_wait ./gradlew connectedDebugAndroidTest
+  - travis_wait 60 ./gradlew connectedDebugAndroidTest
