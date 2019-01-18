@@ -45,6 +45,10 @@ Here are a few things you can do:
 
 Also, if you like StreetComplete, **spread the word**! ❤️
 
+## Status
+
+[![Build Status](https://travis-ci.org/westnordost/StreetComplete.svg?branch=master)](https://travis-ci.org/westnordost/StreetComplete)
+
 ## License
 
 This software is released under the terms of the [GNU General Public License](http://www.gnu.org/licenses/gpl-3.0.html).
