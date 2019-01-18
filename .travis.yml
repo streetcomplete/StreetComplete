@@ -28,7 +28,7 @@ env:
     - ANDROID_BUILD_TOOLS=28.0.3
     - ANDROID_API=28
   matrix:
-    - API=android-25 ABI=x86
+    - API=android-25 ABI=armeabi-v7a
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
