@@ -28,8 +28,9 @@ env:
     - ANDROID_BUILD_TOOLS=28.0.3
     - ANDROID_API=28
   matrix:
-    - API=android-22 ABI=armeabi-v7a
-    - API=android-24 ABI=armeabi-v7a
+    # test once with min and max supported version
+    - API=android-17 ABI=armeabi-v7a
+    - API=android-28 ABI=armeabi-v7a
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
