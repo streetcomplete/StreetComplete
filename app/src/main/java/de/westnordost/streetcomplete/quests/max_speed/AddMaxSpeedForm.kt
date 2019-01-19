@@ -235,8 +235,8 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
         activity?.let {
             AlertDialog.Builder(it)
                 .setTitle(R.string.quest_maxspeed_answer_noSign_info_urbanOrRural)
-                .setMessage(R.string.quest_maxspeed_answer_noSign_urbanOrRural_description)
-                .setPositiveButton(R.string.quest_maxspeed_answer_noSign_urbanOk) { _, _ -> onUrban() }
+                .setMessage(R.string.quest_maxspeed_answer_noSign_urbanOrRural_description2)
+                .setPositiveButton(R.string.quest_maxspeed_answer_noSign_urbanOk2) { _, _ -> onUrban() }
                 .setNegativeButton(R.string.quest_maxspeed_answer_noSign_ruralOk) { _, _ -> onRural() }
                 .show()
         }
