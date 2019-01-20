@@ -120,6 +120,17 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment() {
 
         titleLabel.text = resources.getHtmlQuestTitle(questType, osmElement)
 
+        /* prefer addr:floor etc. over level as level is rather an index than how the floor is
+           denominated in the building and thus may (sometimes) not coincide with it. E.g.
+           addr:floor may be "M" while level is "2" */
+        val level = osmElement?.tags?.let { it["addr:floor"] ?: it["level:ref"] ?: it["level"] }
+        if (level != null) {
+            levelLabel.visibility = View.VISIBLE
+            levelLabel.text = resources.getString(R.string.on_level, level)
+        } else {
+            levelLabel.visibility = View.GONE
+        }
+
         // no content? -> hide the content container
         if (content.childCount == 0) {
             content.visibility = View.GONE

@@ -38,8 +38,7 @@
                 android:layout_marginEnd="@dimen/horizontal_speechbubble_margin"
                 android:layout_marginBottom="4dp">
 
-                <TextView
-                    android:id="@+id/titleLabel"
+                <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -47,7 +46,21 @@
                     android:paddingEnd="8dp"
                     android:paddingTop="12dp"
                     android:paddingBottom="12dp"
-                    android:textAppearance="@style/TextAppearance.Title"/>
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/levelLabel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"/>
+
+                    <TextView
+                        android:id="@+id/titleLabel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="@style/TextAppearance.Title"/>
+
+                </LinearLayout>
 
                 <ImageView
                     android:id="@+id/closeButton"

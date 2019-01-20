@@ -634,4 +634,9 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="pref_title_quests_restore_hidden">Restore hidden quests</string>
     <string name="restore_hidden_success">Restored %d hidden quests</string>
 
+    <!-- caution: This is not necessarily the floor and level=0 is not necessarily at street level
+    as it may follow the numbering scheme of the building operator. Try to use a generic wording
+    that does not carry an implicit meaning of where it is located in respect to the ground floor.
+    The context is usually shopping centres, train stations or airport terminals -->
+    <string name="on_level">on level %s:</string>
 </resources>
