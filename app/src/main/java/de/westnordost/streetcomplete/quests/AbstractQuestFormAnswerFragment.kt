@@ -37,7 +37,7 @@ abstract class AbstractQuestFormAnswerFragment<T> : AbstractQuestAnswerFragment<
                 .alpha(0f).scaleX(0.5f).scaleY(0.5f)
                 .setDuration(100)
                 .setInterpolator(AccelerateInterpolator())
-                .withEndAction { okButton.visibility = View.GONE }
+                .withEndAction { okButton?.visibility = View.GONE }
         }
     }
 
