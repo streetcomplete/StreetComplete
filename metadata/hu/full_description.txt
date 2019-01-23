@@ -1,0 +1,5 @@
+Segítsd fejleszteni az OpenStreetMapet a StreetComplete-tel!
+
+Ez az alkalmazás hiányos és bővíthető adatokat keres a környékeden és megjeleníti őket térképen. Egy egyszerű kérdésre válaszolva ezeket az adatokat mind meg lehet adni terepen.
+
+A megadott adatok közvetlenül az OpenStreetMapre kerülnek a nevedben, ehhez nincs szükség más szerkesztőprogramra.

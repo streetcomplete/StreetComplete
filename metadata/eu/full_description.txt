@@ -1,0 +1,5 @@
+Lagundu OpenStreetMap osatzen StreetComplete erabilita!
+
+Aplikazio honek zure inguruan osatu gabeko edo hobetu daitezkeen datuak bilatzen ditu eta mapan adierazten ditu. Hauetako bakoitza galdera erraz bati erantzunez bete dezakezun erronka bat da.
+
+Sartzen duzun informazioa zuzenean OpenStreetMap proiektura gehitzen da zure izenean, beste editore baten beharrik gabe.

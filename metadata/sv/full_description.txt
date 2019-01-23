@@ -1,0 +1,5 @@
+Bidra till att förbättra OpenStreetMap med StreetComplete!
+
+Appen hittar ofullständiga uppgifter i din närhet och visar dem på en karta som markörer. Var och en av dessa går att lösa på plats genom att besvara en enkel fråga.
+
+Den information du anger skickas sedan direkt till OpenStreetMap i ditt namn, utan att du behöver använda en annan redigerare.
