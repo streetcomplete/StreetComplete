@@ -21,12 +21,14 @@
     <string name="map_attribution_mapzen">"Driven av %s"</string>
     <string name="map_attribution_osm">"© OpenStreetMap-bidragsytarane"</string>
     <string name="quest_generic_otherAnswers">"Andre svar …"</string>
-    <string name="quest_generic_answer_notApplicable">"Vanskeleg å seia"</string>
+    <string name="quest_generic_answer_notApplicable">"Vanskeleg å seia…"</string>
     <string name="quest_generic_confirmation_title">"Er du sikker?"</string>
     <string name="quest_generic_confirmation_yes">"Ja, eg er sikker"</string>
     <string name="quest_generic_confirmation_no">"Eg skal sjekka"</string>
     <string name="quest_generic_error_field_empty">"Du lét feltet stå tomt"</string>
     <string name="quest_leave_new_note_title">"Vil du heller leggja att ein merknad?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_leave_new_note_description">"Du kan leggja att ein offentleg merknad på denne staden. Andre kartleggjarar kan så kommentera på denne og forhåpentlegvis løysa problemet."</string>
     <string name="quest_leave_new_note_yes">"OK"</string>
     <string name="quest_leave_new_note_no">"Nei, berre gøym"</string>
@@ -65,7 +67,7 @@
     <string name="action_about">"Om StreetComplete"</string>
     <string name="about_title_version">"Versjon"</string>
     <string name="about_title_authors">"Bidragsytarar"</string>
-    <string name="about_summary_authors">"© 2016–2018 Tobias Zwick og andre bidragsytarar"</string>
+    <string name="about_summary_authors">"© 2016–2019 Tobias Zwick og andre bidragsytarar"</string>
     <string name="about_title_repository">"Kjeldekode"</string>
     <string name="about_summary_repository">"på GitHub"</string>
     <string name="about_title_report_error">"Meld frå om feil"</string>
@@ -87,8 +89,8 @@
     <string name="quest_openingHours_public_holidays_short">"OF"</string>
     <string name="quest_openingHours_open_end">"ikkje fast stengjetid"</string>
     <string name="quest_openingHours_answer_247">"Open 24/7"</string>
-    <string name="quest_openingHours_answer_seasonal_opening_hours">"Varierer frå månad til månad"</string>
-    <string name="quest_openingHours_answer_no_regular_opening_hours">"Ingen faste opningstider"</string>
+    <string name="quest_openingHours_answer_seasonal_opening_hours">"Varierer frå månad til månad…"</string>
+    <string name="quest_openingHours_answer_no_regular_opening_hours">"Ingen faste opningstider…"</string>
     <string name="quest_openingHours_comment_title">"Skildra opningstidene"</string>
     <string name="quest_openingHours_comment_description">"Ver kort og konsis. Bruk helst ordlyden frå skiltet, for eksempel «etter avtale». Merk at mangel på skilt med opningstider ikkje nødvendigvis tyder at det ikkje finst faste opningstider."</string>
     <string name="quest_buildingLevels_title">"Kor mange etasjar har denne bygningen?"</string>
@@ -139,7 +141,7 @@
 Denne appen leitar opp ufullstendige kart­opplysningar i nærleiken av deg og viser desse på kartet. Ved å svara på enkle spørsmål om dei, vil du forbetra kart­grunnlaget der du er.
 
 Informasjonen du legg til vert sendt direkte til OpenStreetMap i ditt namn, utan at du treng bruka noko eksternt redigerings­program."</string>
-    <string name="quest_name_answer_noName">"Han har ikkje noko namn"</string>
+    <string name="quest_name_answer_noName">"Han har ikkje noko namn…"</string>
     <string name="quest_name_answer_noName_confirmation_title">"Er du sikker på at han manglar namn?"</string>
     <string name="quest_name_noName_confirmation_positive">"Ja, han manglar namn"</string>
     <string name="quest_openingHours_add_times">"Legg til opningstider"</string>
@@ -202,7 +204,11 @@ Informasjonen du legg til vert sendt direkte til OpenStreetMap i ditt namn, utan
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Er du sikker på at det ikkje finst noko fartsskilt?"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">"Såg du etter ved begge endene av gata? Viss det ikkje finst noko fartsskilt for heile gata, som òg gjeld for den avmerkte strekninga, gjeld standardfartsgrensa."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Ja, det finst ikkje noko skilt"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Det er forskjellig standardfartsgrense i tettbygde strøk og på landevegar (50 og 80 km/t i Noreg)."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_urbanOk">"Tettbygd strøk"</string>
     <string name="quest_maxspeed_answer_noSign_ruralOk">"Landeveg"</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">"Viss det finst eit slikt skilt ved krysset til hovudgata, finn du ikkje eigne fartsskilt innanfor sona, då fartsgrensa gjeld for heile sona."</string>
@@ -224,6 +230,8 @@ Informasjonen du legg til vert sendt direkte til OpenStreetMap i ditt namn, utan
     <string name="quest_wheelchairAccess_subway_entrance_name_title">"Er T-banenedgangen %s tilgjengeleg med rullestol?"</string>
     <string name="quest_wheelchairAccess_railway_station_name_title">"Er jernbanestasjonen %s tilgjengeleg med rullestol?"</string>
     <string name="quest_wheelchairAccess_location_name_title">"Er %s tilgjengeleg med rullestol?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_business">"«Delvis» vil seia at det ikkje er meir enn eitt trappetrinn ved inngangen og at inne er dei fleste romma tilgjengelege med rullestol."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"«Delvis» vil seia at det ikkje er meir enn eitt trappetrinn ved inngangen."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Er det ei forkorting i namnet %s?"</string>
@@ -336,8 +344,8 @@ Elles kan du lasta ned eit anna tastatur i appbutikken. Mykje brukte tastatur so
     <string name="quest_powerPolesMaterial_wood">"Tre"</string>
     <string name="quest_powerPolesMaterial_metal">"Stål"</string>
     <string name="quest_powerPolesMaterial_concrete">"Betong"</string>
-    <string name="quest_maxspeed_answer_advisory_speed_limit">"Berre ei tilrådd fartsgrense"</string>
-    <string name="quest_address_answer_house_name">"Ikkje eit husnummer men eit husnamn"</string>
+    <string name="quest_maxspeed_answer_advisory_speed_limit">"Berre ei tilrådd fartsgrense…"</string>
+    <string name="quest_address_answer_house_name">"Ikkje eit husnummer men eit husnamn…"</string>
     <string name="quest_address_house_name_label">"Husnamn:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"taketasjar"</string>
     <string name="quest_buildingLevels_levelsLabel2">"vanlege etasjar (utanom taketasjar)"</string>
@@ -382,7 +390,7 @@ Elles kan du lasta ned eit anna tastatur i appbutikken. Mykje brukte tastatur so
     <string name="default_disabled_msg_go_inside">"Denne oppdragstypen vert som standard ikkje vist, då du vanlegvis må gå inn på staden for å kunna svara på spørsmålet."</string>
     <string name="quest_housenumber_conscription_number">"Konskripsjonsnummer"</string>
     <string name="quest_housenumber_street_number_optional">"Orienteringsnummer (valfritt)"</string>
-    <string name="quest_cycleway_answer_contraflow_cycleway">"Òg sykkelveg på motsett side"</string>
+    <string name="quest_cycleway_answer_contraflow_cycleway">"Òg sykkelveg på motsett side…"</string>
     <string name="quest_openingHours_emptyAnswer">"Du må skildra kva som står på skiltet. Viss det ikkje finst noko skilt, kan du prøva å spørja om opningstidene inne."</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"ingen, men syklistar kan bruka vegen i begge retningar"</string>
     <string name="quest_streetName_answer_noName_question">"Korfor har han ikkje noko namn?"</string>
@@ -437,7 +445,7 @@ Elles kan du lasta ned eit anna tastatur i appbutikken. Mykje brukte tastatur so
     <string name="quest_streetName_pedestrian_title">"Kva heiter denne gågata?"</string>
     <string name="quest_streetSurface_square_title">"Kva materiale er brukt på denne plassen?"</string>
     <string name="quest_streetSurface_square_name_title">"Kva materiale er brukt på plassen %s her?"</string>
-    <string name="quest_fee_answer_hours">"Kjem an på vekedag og klokkeslett"</string>
+    <string name="quest_fee_answer_hours">"Kjem an på vekedag og klokkeslett…"</string>
     <string name="quest_fee_add_times">"Legg til tider"</string>
     <string name="quest_fee_only_at_hours">"Ja, men berre …"</string>
     <string name="quest_fee_not_at_hours">"Ja, men ikkje …"</string>
@@ -546,7 +554,7 @@ som intervall skilde med bindestrek: «1,3» eller «2-6»."</string>
     <string name="quest_buildingType_hangar">"Hangar"</string>
     <string name="quest_buildingType_hangar_description">"bygning eller hall for lagring av fly og helikopter"</string>
     <string name="quest_buildingType_bunker">"Bunker"</string>
-    <string name="quest_address_answer_no_housenumber">"Det har ikkje noko husnummer"</string>
+    <string name="quest_address_answer_no_housenumber">"Det har ikkje noko husnummer…"</string>
     <string name="quest_address_answer_no_housenumber_message1">"Bygningen vart definert som:"</string>
     <string name="quest_address_answer_no_housenumber_message2">"Er dette rett og er det ikkje berre ein del av ein bygning?"</string>
     <string name="quest_buildingType_shrine">"Heilagstad"</string>

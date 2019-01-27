@@ -21,12 +21,14 @@
     <string name="map_attribution_mapzen">"Usa %s"</string>
     <string name="map_attribution_osm">"© Colaboradores de OpenStreetMap"</string>
     <string name="quest_generic_otherAnswers">"Otras respuestas…"</string>
-    <string name="quest_generic_answer_notApplicable">"No sabría decir"</string>
+    <string name="quest_generic_answer_notApplicable">"No sabría decir…"</string>
     <string name="quest_generic_confirmation_title">"¿Estás seguro/a?"</string>
     <string name="quest_generic_confirmation_yes">"Sí, estoy seguro/a"</string>
     <string name="quest_generic_confirmation_no">"Lo revisaré"</string>
     <string name="quest_generic_error_field_empty">"Has dejado este campo vacío"</string>
     <string name="quest_leave_new_note_title">"¿Dejar una nota en su lugar?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_leave_new_note_description">"Puedes dejar una nota pública en esta ubicación para que la comunidad de mapeadores y mapeadoras la comenten y puedan llegar a resolverla:"</string>
     <string name="quest_leave_new_note_yes">"Vale"</string>
     <string name="quest_leave_new_note_no">"No, paso"</string>
@@ -65,7 +67,7 @@
     <string name="action_about">"Acerca de StreetComplete"</string>
     <string name="about_title_version">"Versión"</string>
     <string name="about_title_authors">"Agradecimientos"</string>
-    <string name="about_summary_authors">"© 2016–2018 Tobias Zwick y demás colaboradores"</string>
+    <string name="about_summary_authors">"© 2016–2019 Tobias Zwick y demás colaboradores"</string>
     <string name="about_title_repository">"Repositorio de código"</string>
     <string name="about_summary_repository">"en GitHub"</string>
     <string name="about_title_report_error">"Notificar errores"</string>
@@ -87,8 +89,8 @@
     <string name="quest_openingHours_public_holidays_short">"Festivos"</string>
     <string name="quest_openingHours_open_end">"Hora de cierre flexible"</string>
     <string name="quest_openingHours_answer_247">"Abierto todo el día"</string>
-    <string name="quest_openingHours_answer_seasonal_opening_hours">"Depende del mes"</string>
-    <string name="quest_openingHours_answer_no_regular_opening_hours">"Sin horario de apertura fijo"</string>
+    <string name="quest_openingHours_answer_seasonal_opening_hours">"Depende del mes…"</string>
+    <string name="quest_openingHours_answer_no_regular_opening_hours">"Sin horario de apertura fijo…"</string>
     <string name="quest_openingHours_comment_title">"Describe los horarios de apertura"</string>
     <string name="quest_openingHours_comment_description">"Sé conciso/a, mejor transcribe las palabras del letrero. Por ejemplo; «con cita previa». La ausencia de letrero no significa necesariamente que no haya un horario de apertura habitual."</string>
     <string name="quest_buildingLevels_title">"¿Cuántos niveles tiene este edificio?"</string>
@@ -166,7 +168,7 @@ Para que puedas ver las últimas secciones del mapa utilizamos el &lt;a href=\"h
 Esta aplicación busca información incompleta y mejorable en tu vecindario y la muestra en un mapa con marcadores. Puedes resolver cada uno de los problemas respondiendo a una simple pregunta in-situ.
 
 La información añadida se incluye directamente en OpenStreetMap con tu nombre sin necesidad de ningún otro editor o editora."</string>
-    <string name="quest_name_answer_noName">"No tiene nombre"</string>
+    <string name="quest_name_answer_noName">"No tiene nombre…"</string>
     <string name="quest_name_answer_noName_confirmation_title">"¿Seguro que no tiene nombre?"</string>
     <string name="quest_name_noName_confirmation_positive">"Estoy seguro/a, no tiene nombre"</string>
     <string name="quest_openingHours_add_times">"Añadir horarios de apertura"</string>
@@ -234,7 +236,11 @@ La información añadida se incluye directamente en OpenStreetMap con tu nombre 
     <string name="quest_maxspeed_answer_noSign_confirmation">"¿Has mirado a ambos lados de la calle?
 Si no hay señales en la parte seleccionada se utilizarán los límites de velocidad generales."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Lo he mirado, no hay señal"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Las vías urbanas tienen un límite de velocidad distinto que las rurales."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_urbanOk">"Dentro de la ciudad"</string>
     <string name="quest_maxspeed_answer_noSign_ruralOk">"Fuera de la ciudad"</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">"Si hay una señal como ésta en la intersección con la calle principal no encontrarás otras señales porque el límite de velocidad es el mismo en toda la zona.
@@ -385,8 +391,8 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <string name="quest_powerPolesMaterial_wood">"Madera"</string>
     <string name="quest_powerPolesMaterial_metal">"Acero"</string>
     <string name="quest_powerPolesMaterial_concrete">"Cemento u hormigón"</string>
-    <string name="quest_maxspeed_answer_advisory_speed_limit">"Sólo señala la velocidad máxima aconsejada"</string>
-    <string name="quest_address_answer_house_name">"Sólo tiene nombre, no hay número"</string>
+    <string name="quest_maxspeed_answer_advisory_speed_limit">"Sólo señala la velocidad máxima aconsejada…"</string>
+    <string name="quest_address_answer_house_name">"Sólo tiene nombre, no hay número…"</string>
     <string name="quest_address_house_name_label">"Nombre de la casa:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"plantas del tejado"</string>
     <string name="quest_buildingLevels_levelsLabel2">"plantas (sin contar el tejado)"</string>
@@ -431,7 +437,7 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <string name="default_disabled_msg_go_inside">"Este tipo de tarea está desactivada de forma predeterminada porque lo lógico es que tengas que entrar dentro para responderla."</string>
     <string name="quest_housenumber_conscription_number">"Número de «conscripción»"</string>
     <string name="quest_housenumber_street_number_optional">"Número de «orientación» (opcional)"</string>
-    <string name="quest_cycleway_answer_contraflow_cycleway">"También carril bici al otro lado"</string>
+    <string name="quest_cycleway_answer_contraflow_cycleway">"También carril bici al otro lado…"</string>
     <string name="quest_openingHours_emptyAnswer">"Describe lo que pone en la rotulación. Si no ves nada puedes preguntar los horarios dentro."</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"no hay nada, pero los ciclistas pueden ir por ambos sentidos de la vía"</string>
     <string name="quest_streetName_answer_noName_question">"¿Por qué no tiene nombre?"</string>
@@ -497,7 +503,7 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <string name="quest_streetName_pedestrian_title">"¿Cuál es el nombre de esta vía peatonal?"</string>
     <string name="quest_streetSurface_square_title">"¿Qué tipo de superficie tiene esta plaza?"</string>
     <string name="quest_streetSurface_square_name_title">"¿Qué tipo de superficie tiene la plaza «%s»?"</string>
-    <string name="quest_fee_answer_hours">"Depende del día y la hora"</string>
+    <string name="quest_fee_answer_hours">"Depende del día y la hora…"</string>
     <string name="quest_fee_add_times">"Añadir horas"</string>
     <string name="quest_fee_only_at_hours">"Sí, pero solo…"</string>
     <string name="quest_fee_not_at_hours">"Sí, menos…"</string>
@@ -606,7 +612,7 @@ Por ejemplo 1,3 o 2-6."</string>
     <string name="quest_buildingType_hangar">"Hangar"</string>
     <string name="quest_buildingType_hangar_description">"edificio usado para guardar aviones, helicópteros o naves espaciales"</string>
     <string name="quest_buildingType_bunker">"Búnker"</string>
-    <string name="quest_address_answer_no_housenumber">"No tiene numero de casa"</string>
+    <string name="quest_address_answer_no_housenumber">"No tiene numero de casa…"</string>
     <string name="quest_address_answer_no_housenumber_message1">"El edificio fue etiquetado como:"</string>
     <string name="quest_address_answer_no_housenumber_message2">"¿Seguro que esta etiqueta define al edificio entero?"</string>
     <string name="quest_buildingType_shrine">"Santuario"</string>
@@ -629,7 +635,7 @@ Por ejemplo 1,3 o 2-6."</string>
     <string name="quest_maxheight_parking_entrance_title">"¿Cuál es el límite de altura para esta entrada de aparcamiento?"</string>
     <string name="quest_maxheight_height_restrictor_title">"¿Cuál es el límite de altura para esta restricción de altura?"</string>
     <string name="quest_maxheight_tunnel_title">"¿Cuál es el límite de altura de este túnel?"</string>
-    <string name="quest_maxheight_answer_noSign">"No hay señal"</string>
+    <string name="quest_maxheight_answer_noSign">"No hay señal…"</string>
     <string name="quest_maxheight_answer_noSign_question">"¿Hay espacio suficiente para que pasen los camiones más altos (por lo menos unos 4,5 metros / 15 pies)?"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Esta altura parece imposible. ¿Estás seguro de que es correcta?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>

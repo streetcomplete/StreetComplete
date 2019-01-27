@@ -21,12 +21,14 @@
     <string name="map_attribution_mapzen">"Su %s pagalba"</string>
     <string name="map_attribution_osm">"© OpenStreetMap talkininkai"</string>
     <string name="quest_generic_otherAnswers">"Kiti atsakymai..."</string>
-    <string name="quest_generic_answer_notApplicable">"Negaliu pasakyti"</string>
+    <string name="quest_generic_answer_notApplicable">"Negaliu pasakyti…"</string>
     <string name="quest_generic_confirmation_title">"Ar tikrai?"</string>
     <string name="quest_generic_confirmation_yes">"Taip, tikrai"</string>
     <string name="quest_generic_confirmation_no">"Aš patikrinsiu"</string>
     <string name="quest_generic_error_field_empty">"Jūs palikote šį lauką tuščią"</string>
     <string name="quest_leave_new_note_title">"Vietoje to palikti pastabą?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_leave_new_note_description">"Jūs galite šioje vietoje palikti viešą pastabą, kurią kiti žymėtojai galės komentuoti ir galbūt išspręsti:"</string>
     <string name="quest_leave_new_note_yes">"Gerai"</string>
     <string name="quest_leave_new_note_no">"Ne, tik paslėpti"</string>
@@ -65,7 +67,7 @@
     <string name="action_about">"Apie StreetComplete"</string>
     <string name="about_title_version">"Versija"</string>
     <string name="about_title_authors">"Autoriai"</string>
-    <string name="about_summary_authors">"© 2016–2018 Tobias Zwick ir talkininkai"</string>
+    <string name="about_summary_authors">"© 2016–2019 Tobias Zwick ir talkininkai"</string>
     <string name="about_title_repository">"Išeities kodo repozitorija"</string>
     <string name="about_summary_repository">"GitHub'e"</string>
     <string name="about_title_report_error">"Pranešti apie klaidą"</string>
@@ -87,8 +89,8 @@
     <string name="quest_openingHours_public_holidays_short">"VŠ"</string>
     <string name="quest_openingHours_open_end">"užsidarymas pagal situaciją"</string>
     <string name="quest_openingHours_answer_247">"Atidaryta 24/7"</string>
-    <string name="quest_openingHours_answer_seasonal_opening_hours">"Skiriasi priklausomai nuo mėnesio"</string>
-    <string name="quest_openingHours_answer_no_regular_opening_hours">"Nėra pastovaus darbo laiko"</string>
+    <string name="quest_openingHours_answer_seasonal_opening_hours">"Skiriasi priklausomai nuo mėnesio…"</string>
+    <string name="quest_openingHours_answer_no_regular_opening_hours">"Nėra pastovaus darbo laiko…"</string>
     <string name="quest_openingHours_comment_title">"Aprašykite darbo laiką"</string>
     <string name="quest_openingHours_comment_description">"Rašykite glaustai. Stenkitės naudoti tekstą iš informacijos, pavyzdžiui „pagal susitarimą“. Jei nėra ženklo, tai nebūtinai reiškia, kad pastovaus darbo laiko nėra."</string>
     <string name="quest_buildingLevels_title">"Kiek aukštų turi šis pastatas?"</string>
@@ -166,7 +168,7 @@ Bet, prieš įkeliant jūsų pakeitimus, aplikacija patikrina &lt;a href=\"https
 Ši aplikacija randa nepilnus, išplečiamus duomenis aplink jus ir parodo juos žemėlapyje kaip ženkliukus. Visus juos galima išspręsti atsakant į paprastą klausimą, padedantį užpildyti trūkstamą informaciją.
 
 Jūsų įvesta informacija tiesiog įkeliama į OpenStreetMap jūsų vardu, be kito žmogaus pagalbos."</string>
-    <string name="quest_name_answer_noName">"Nėra pavadinimo"</string>
+    <string name="quest_name_answer_noName">"Nėra pavadinimo…"</string>
     <string name="quest_name_answer_noName_confirmation_title">"Tikrai nėra pavadinimo?"</string>
     <string name="quest_name_noName_confirmation_positive">"Taip, nėra pavadinimo"</string>
     <string name="quest_openingHours_add_times">"Pridėti darbo laiką"</string>
@@ -230,7 +232,11 @@ Jūsų įvesta informacija tiesiog įkeliama į OpenStreetMap jūsų vardu, be k
     <string name="quest_maxspeed_answer_noSign_confirmation">"Ar patikrinote gatvės pradžioje ir pabaigoje?
 Jei visoje gatvėje nėra ženklų, kurie galioja pažymėtoje dalyje, taikomas numatytasis greičio apribojimas."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Taip, nėra ženklo."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Miesto keliai turi kitokį numatytąjį maksimalų greitį, nei užmiesčio."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_urbanOk">"Mieste"</string>
     <string name="quest_maxspeed_answer_noSign_ruralOk">"Užmiestyje"</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">"Jei tokio ženklo nėra pagrindinės gatvės sankryžoje, nerasite atskirų ženklų ir pačioje zonoje, nes greičio apribojimas taikomas visai zonai."</string>
@@ -366,8 +372,8 @@ Priešingu atveju galite atsisiųsti kitą klaviatūrą programėlių parduotuv�
     <string name="quest_powerPolesMaterial_wood">"Medis"</string>
     <string name="quest_powerPolesMaterial_metal">"Plienas"</string>
     <string name="quest_powerPolesMaterial_concrete">"Betonas"</string>
-    <string name="quest_maxspeed_answer_advisory_speed_limit">"Tik siūlomas greičio apribojimas"</string>
-    <string name="quest_address_answer_house_name">"Nėra namo numerio, tik pavadinimas"</string>
+    <string name="quest_maxspeed_answer_advisory_speed_limit">"Tik siūlomas greičio apribojimas…"</string>
+    <string name="quest_address_answer_house_name">"Nėra namo numerio, tik pavadinimas…"</string>
     <string name="quest_address_house_name_label">"Namo pavadinimas:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"aukštų stoge"</string>
     <string name="quest_buildingLevels_levelsLabel2">"paprasti aukštai (neskaičiuojant stogo)"</string>
@@ -412,7 +418,7 @@ Priešingu atveju galite atsisiųsti kitą klaviatūrą programėlių parduotuv�
     <string name="default_disabled_msg_go_inside">"Šis užduočių tipas išjungtas pagal nutylėjimą, nes jums tikriausiai teks įvesti vietą, kad vykdytumėte tokias užduotis."</string>
     <string name="quest_housenumber_conscription_number">"Užsakymo numeris"</string>
     <string name="quest_housenumber_street_number_optional">"Orientacijos numeris (pasirinktinai)"</string>
-    <string name="quest_cycleway_answer_contraflow_cycleway">"Taip pat dviračių takas kitoje pusėje"</string>
+    <string name="quest_cycleway_answer_contraflow_cycleway">"Taip pat dviračių takas kitoje pusėje…"</string>
     <string name="quest_openingHours_emptyAnswer">"Turite aprašyti, kas yra ženkle. Jei ženklo nėra, darbo laiko turėtumėte paklausti viduje."</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"nėra, bet dviratininkai gali važiuoti į abi puses"</string>
     <string name="quest_streetName_answer_noName_question">"Kodėl neturi pavadinimo?"</string>
@@ -468,7 +474,7 @@ Dalinai reiškia, kad vežimėlis gali įvažiuoti ir naudotis tualetu, bet nėr
     <string name="quest_streetName_pedestrian_title">"Koks yra šios pėsčiųjų gatvės pavadinimas?"</string>
     <string name="quest_streetSurface_square_title">"Koks yra šios aikštės paviršius?"</string>
     <string name="quest_streetSurface_square_name_title">"Koks yra aikštės „%s“ pavadinimas?"</string>
-    <string name="quest_fee_answer_hours">"Priklauso nuo laiko ir dienos"</string>
+    <string name="quest_fee_answer_hours">"Priklauso nuo laiko ir dienos…"</string>
     <string name="quest_fee_add_times">"Pridėti laikus"</string>
     <string name="quest_fee_only_at_hours">"Taip, bet tik..."</string>
     <string name="quest_fee_not_at_hours">"Taip, bet ne..."</string>
@@ -577,7 +583,7 @@ Pavyzdžiui 1,3 arba 2-6."</string>
     <string name="quest_buildingType_hangar">"Angaras"</string>
     <string name="quest_buildingType_hangar_description">"vieta lėktuvams, sraigtasparniams ar orlaiviams"</string>
     <string name="quest_buildingType_bunker">"Bunkeris"</string>
-    <string name="quest_address_answer_no_housenumber">"Neturi namo numerio"</string>
+    <string name="quest_address_answer_no_housenumber">"Neturi namo numerio…"</string>
     <string name="quest_address_answer_no_housenumber_message1">"Pastatas buvo pažymėtas kaip:"</string>
     <string name="quest_address_answer_no_housenumber_message2">"Ar tai tiesa ir jis nėra tik pastato dalis?"</string>
     <string name="quest_buildingType_shrine">"Šventykla"</string>
@@ -600,7 +606,7 @@ Pavyzdžiui 1,3 arba 2-6."</string>
     <string name="quest_maxheight_parking_entrance_title">"Koks yra šio įvažiavimo aukščio apribojimas?"</string>
     <string name="quest_maxheight_height_restrictor_title">"Koks yra šio aukščio ribojimo maksimalus aukštis?"</string>
     <string name="quest_maxheight_tunnel_title">"Koks yra šio tunelio maksimalus aukštis?"</string>
-    <string name="quest_maxheight_answer_noSign">"Nėra ženklo"</string>
+    <string name="quest_maxheight_answer_noSign">"Nėra ženklo…"</string>
     <string name="quest_maxheight_answer_noSign_question">"Ar čia yra pakankamai vietos net aukščiausiems sunkvežimiams (bent 4,5 metrai) pravažiuoti?"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Aukštis atrodo neįmanomas. Ar jūs įsitikinę, kad jis teisingas?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
