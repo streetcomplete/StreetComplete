@@ -113,7 +113,7 @@ dependencies {
     implementation "androidx.core:core-ktx:1.0.1"
 
     // scheduling background jobs
-    implementation 'android.arch.work:work-runtime:1.0.0-beta01'
+    implementation 'android.arch.work:work-runtime:1.0.0-beta03'
 
     // geometry
     implementation 'de.westnordost:countryboundaries:1.4'
