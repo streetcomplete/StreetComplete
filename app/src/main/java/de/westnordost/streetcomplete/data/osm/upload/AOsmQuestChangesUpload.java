@@ -9,6 +9,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
@@ -436,7 +437,7 @@ public abstract class AOsmQuestChangesUpload
 	private static String getQuestStringForLog(OsmQuest quest)
 	{
 		return quest.getType().getClass().getSimpleName() + " for " +
-				quest.getElementType().name().toLowerCase() + " #" + quest.getElementId();
+				quest.getElementType().name().toLowerCase(Locale.US) + " #" + quest.getElementId();
 	}
 
 	private static Element copyElement(Element e, int newVersion)

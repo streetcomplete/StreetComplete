@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.Future;
@@ -274,7 +275,7 @@ public class OsmQuestDownload
 
 	private static String getElementAsLogString(Element element)
 	{
-		return element.getType().name().toLowerCase() + " #" + element.getId();
+		return element.getType().name().toLowerCase(Locale.US) + " #" + element.getId();
 	}
 
 	private static String getQuestTypeName(QuestType q)
