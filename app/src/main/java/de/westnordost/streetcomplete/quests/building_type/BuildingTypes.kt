@@ -74,10 +74,10 @@ enum class BuildingType(val item:Item<String>) {
     FOR_CARS      (Item(null, R.drawable.ic_building_car, R.string.quest_buildingType_cars, null,
         listOf( GARAGE, GARAGES, CARPORT, PARKING ).toItems())),
 
-    FOR_FARMS     (Item(null, R.drawable.ic_building_farm, R.string.quest_buildingType_farm, 0,
+    FOR_FARMS     (Item(null, R.drawable.ic_building_farm, R.string.quest_buildingType_farm, null,
         listOf( FARM, FARM_AUXILIARY, GREENHOUSE, STORAGE_TANK ).toItems())),
 
-    OTHER         (Item(null, R.drawable.ic_building_other, R.string.quest_buildingType_other, 0,
+    OTHER         (Item(null, R.drawable.ic_building_other, R.string.quest_buildingType_other, null,
         listOf( SHED, ROOF, SERVICE, HUT, TOILETS, HANGAR, BUNKER ).toItems()));
 
     companion object {

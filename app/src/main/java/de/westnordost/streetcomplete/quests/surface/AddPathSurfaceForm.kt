@@ -34,16 +34,16 @@ class AddPathSurfaceForm : AGroupedImageListQuestAnswerFragment<String, String>(
 
     override val allItems = listOf(
         // except for different panorama images, should be the same as for the road quest, to avoid confusion
-        Item("paved", R.drawable.panorama_path_surface_paved, R.string.quest_surface_value_paved, 0, listOf(
+        Item("paved", R.drawable.panorama_path_surface_paved, R.string.quest_surface_value_paved, null, listOf(
             ASPHALT, CONCRETE, PAVING_STONES,
             SETT, UNHEWN_COBBLESTONE, GRASS_PAVER,
             WOOD, METAL
         ).toItems()),
-        Item("unpaved", R.drawable.panorama_path_surface_unpaved, R.string.quest_surface_value_unpaved, 0, listOf(
+        Item("unpaved", R.drawable.panorama_path_surface_unpaved, R.string.quest_surface_value_unpaved, null, listOf(
             COMPACTED, FINE_GRAVEL, GRAVEL,
             PEBBLES
         ).toItems()),
-        Item("ground",R.drawable.panorama_surface_ground, R.string.quest_surface_value_ground, 0, listOf(
+        Item("ground",R.drawable.panorama_surface_ground, R.string.quest_surface_value_ground, null, listOf(
             DIRT, GRASS, SAND
         ).toItems())
     )
