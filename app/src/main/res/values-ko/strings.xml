@@ -9,10 +9,10 @@
     <string name="title_activity_settings">"설정"</string>
     <string name="pref_category_communication">"연결"</string>
     <string name="pref_category_display">"화면"</string>
-    <string name="pref_title_authorization">"OSM 접근 인증"</string>
+    <string name="pref_title_authorization">"OSM 접속 인증"</string>
     <string name="pref_title_not_authorized_summary">"아직 인증되지 않았습니다"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
-    <string name="pref_tilecache_size_message">"정한 용량(MB)만큼 지도 타일 캐시용으로 외부 저장소에 할당됩니다"</string>
+    <string name="pref_tilecache_size_message">"지정한 용량(MB)만큼 지도 타일 캐시가 외부 저장소에 할당됩니다"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"모든 참고 띄우기"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"질문 형식이 아닌 참고도 띄웁니다"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"질문 형식이 아닌 참고는 무시합니다"</string>
@@ -20,7 +20,7 @@
     <string name="map_btn_gps_tracking">"나를 따라다니기"</string>
     <string name="map_attribution_mapzen">"%s에서 제공받음"</string>
     <string name="map_attribution_osm">"© OpenStreetMap 기여자"</string>
-    <string name="quest_generic_otherAnswers">"다른 질문..."</string>
+    <string name="quest_generic_otherAnswers">"다른 답변..."</string>
     <string name="quest_generic_answer_notApplicable">"대답할 수 없음…"</string>
     <string name="quest_generic_confirmation_title">"확실합니까?"</string>
     <string name="quest_generic_confirmation_yes">"네, 확실합니다"</string>
@@ -29,13 +29,13 @@
     <string name="quest_leave_new_note_title">"대신 참고를 남기시겠습니까?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_leave_new_note_description">"다른 기여자들이 댓글을 달고 문제를 해결하도록 이 위치에 참고를 남길 수 있습니다:"</string>
+    <string name="quest_leave_new_note_description">"이 위치에 참고를 남기면 다른 기여자들이 참고에 댓글을 달면서 이 지물의 문제를 해결할 수 있습니다."</string>
     <string name="quest_leave_new_note_yes">"예"</string>
-    <string name="quest_leave_new_note_no">"아니오, 가립니다"</string>
+    <string name="quest_leave_new_note_no">"아니오, 숨김 처리만 합니다"</string>
     <string name="quest_streetName_title">"이 도로의 이름이 무엇입니까?"</string>
-    <string name="quest_streetName_description">"도로명 표지판에 써진 대로 약어를 보충합니다:"</string>
+    <string name="quest_streetName_description">"도로명 표지판에 표기된 명칭 그대로 입력해야 합니다."</string>
     <string name="quest_streetName_answer_noName_confirmation_description">"도로명 표지판은 도로의 끝 지점에만 있는 경우가 많이 있습니다. 또한 더 큰 도로에 속한 주변 도로의 경우에는 도로명 표지판이 없을 수도 있다는 점을 상기하세요. 건물이 주변에 있는 도로의 대다수는 이름이 있습니다."</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"만약 이름에 약어가 없다면 넣어 줘야 합니다. 일반적인 약어 대부분은 당신이 입력할 때 자동으로 보충되지만, 전부 그렇지는 않습니다."</string>
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"만약 이름에 약어가 없다면 넣어 줘야 합니다. 일반적인 약어 대부분은 당신이 입력할 때 자동으로 추가되지만, 항상 그렇지는 않습니다."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"약어 없음"</string>
     <string name="quest_openingHours_name_title">"%s의 개점 시간은 언제입니까?"</string>
     <string name="quest_openingHours_start_time">"개점 시각"</string>
@@ -46,24 +46,24 @@
     <string name="quest_openingHours_chooseMonthsTitle">"월 선택"</string>
     <string name="quest_openingHours_chooseWeekdaysTitle">"요일 선택"</string>
     <string name="quest_openingHours_24_7_confirmation">"다른 말로 하자면 매일, 몇 시에든 열려 있습니까?"</string>
-    <string name="quest_noteDiscussion_title">"이 참고에 무언가 기여할 수 있습니까?"</string>
+    <string name="quest_noteDiscussion_title">"이 참고에 기여할 수 있습니까?"</string>
     <string name="quest_noteDiscussion_no">"아니오, 숨깁니다"</string>
     <string name="quest_noteDiscussion_anonymous">"익명"</string>
     <string name="confirmation_discard_title">"입력을 버리시겠습니까?"</string>
     <string name="confirmation_discard_positive">"버리기"</string>
     <string name="confirmation_discard_negative">"취소"</string>
-    <string name="action_download">"이 구역의 퀘스트 스캔"</string>
+    <string name="action_download">"이 구역의 질문 스캔"</string>
     <string name="action_upload">"답변 업로드"</string>
     <string name="no_changes">"어떤 답변도 하지 않았습니다"</string>
     <string name="close">"닫기"</string>
-    <string name="download_error">"퀘스트를 스캔하는 중 오류가 발생했습니다"</string>
+    <string name="download_error">"질문을 찾는 중 오류가 발생했습니다"</string>
     <string name="upload_error">"답변을 업로드하는 중 오류가 발생했습니다"</string>
     <string name="download_area_too_big">"더 확대해 주세요"</string>
     <string name="confirmation_cancel_prev_download_title">"지금 하는 검색을 멈추고 대신 여기를 스캔하시겠습니까?"</string>
-    <string name="notification_downloading">"퀘스트를 스캔하는 중..."</string>
-    <string name="now_downloading_toast">"퀘스트를 더 스캔하는 중..."</string>
+    <string name="notification_downloading">"질문을 찾는 중..."</string>
+    <string name="now_downloading_toast">"질문을 더 찾는 중..."</string>
     <string name="turn_on_location_request">"위치가 꺼져 있습니다. 설정 화면을 여시겠습니까?"</string>
-    <string name="no_location_permission_warning">"당신 주변에 있는 퀘스트를 스캔하려면 당신의 위치가 필요합니다."</string>
+    <string name="no_location_permission_warning">"주변에 있는 질문을 찾으려면 현재 위치가 필요합니다."</string>
     <string name="action_about">"StreetComplete란"</string>
     <string name="about_title_version">"버전"</string>
     <string name="about_title_authors">"제작자들"</string>
@@ -78,8 +78,8 @@
     <string name="confirmation_authorize_now">"답변을 올리려면 OSM 계정으로 인증해야 합니다. 지금 인증하시겠습니까?"</string>
     <string name="not_authorized">"인증되지 않음"</string>
     <string name="version_banned_message">"StreetComplete의 버전이 너무 오래되었습니다. 업데이트해 주세요!"</string>
-    <string name="no_gps_no_quests">"주변에 있는 퀘스트를 자동으로 스캔하도록 하려면 위치를 켜세요"</string>
-    <string name="nothing_more_to_download">"수행할 수 있는 퀘스트가 이제 없습니다"</string>
+    <string name="no_gps_no_quests">"주변에 있는 질문을 자동으로 찾도록 하려면 위치 탐색을 켜세요"</string>
+    <string name="nothing_more_to_download">"이제 답변할 수 있는 질문이 없습니다"</string>
     <string name="later">"나중에"</string>
     <string name="quest_streetName_answer_noProperStreet_link">"이 도로는 두 도로의 연결로일 뿐입니다"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"그 외(참고 남기기)"</string>
@@ -94,7 +94,7 @@
     <string name="quest_openingHours_comment_title">"영업 시간 설명"</string>
     <string name="quest_openingHours_comment_description">"표지판을 보고 정확하고 완벽하게 단어를 사용하세요(예를 들어 \"약속에 따라서\"). 표지판이 없다는 것이 영업 시간이 불규칙적이라는 의미는 아닐 수 있습니다."</string>
     <string name="quest_buildingLevels_title">"건물에 몇 층까지 있습니까?"</string>
-    <string name="quest_buildingLevels_title_buildingPart">"건물의 일부에 몇 층까지 있습니까?"</string>
+    <string name="quest_buildingLevels_title_buildingPart">"이 부분에는 몇 층까지 있습니까?"</string>
     <string name="quest_roofShape_title">"건물의 지붕이 기본적으로 어떤 모양입니까?"</string>
     <string name="quest_roofShape_select_one">"한 개 선택:"</string>
     <string name="quest_roofShape_show_more">"더 보기..."</string>
@@ -111,8 +111,8 @@
     <string name="autosync_on">"켜기"</string>
     <string name="autosync_only_on_wifi">"Wi-Fi에서만"</string>
     <string name="autosync_off">"끄기"</string>
-    <string name="quest_streetSurface_title">"이 도로 조각의 표면이 무엇인가요?"</string>
-    <string name="quest_surface_value_paved">"포장됨(전체적으로)"</string>
+    <string name="quest_streetSurface_title">"이 도로 조각의 포장재가 무엇입니까?"</string>
+    <string name="quest_surface_value_paved">"포장(전체적으로)"</string>
     <string name="quest_surface_value_unpaved">"비포장(전체적으로)"</string>
     <string name="quest_surface_value_ground">"토양(전체적으로)"</string>
     <string name="quest_surface_value_asphalt">"아스팔트"</string>
@@ -138,7 +138,7 @@
     <string name="quest_streetLanes_answer_noLanes">"차선 표시가 없습니다"</string>
     <string name="quest_streetLanes_noLanes_estWidth">"이 도로의 양쪽 가장자리에서 시작해서 몇 대의 차가 들어갈지 추정해 주세요."</string>
     <string name="quest_oneway_title">"일방통행 도로입니까?"</string>
-    <string name="quest_address_title">"이 건물의 번지수가 무엇입니까?"</string>
+    <string name="quest_address_title">"이 건물의 건물번호가 무엇입니까?"</string>
     <string name="store_listing_short_description">"OpenStreetMap 측량사 앱"</string>
     <string name="store_listing_full_description">"StreetComplete로 OpenStreetMap을 개선하는 데 도움을 주세요!
 
@@ -153,14 +153,14 @@
     <string name="crash_title">"마지막에 StreetComplete에서 오류가 발생했습니다!"</string>
     <string name="crash_compose_email">"이메일 보내기"</string>
     <string name="no_email_client">"설치된 이메일 클라이언트가 없습니다."</string>
-    <string name="pref_title_keep_screen_on">"화면 유지"</string>
-    <string name="download_server_error">"퀘스트를 스캔하는 도중 연결 오류가 발생했습니다. 나중에 다시 시도해 주세요."</string>
+    <string name="pref_title_keep_screen_on">"화면 꺼짐 방지"</string>
+    <string name="download_server_error">"질문을 찾는 도중 연결 오류가 발생했습니다. 나중에 다시 시도해 주세요."</string>
     <string name="upload_server_error">"답변을 업로드하는 도중 연결 오류가 발생했습니다. 나중에 다시 시도해 주세요."</string>
     <string name="quest_generic_hasFeature_yes">"예"</string>
     <string name="quest_generic_hasFeature_no">"아니오"</string>
     <string name="quest_busStopShelter_title">"버스 정류장에 지붕이 있습니까?"</string>
     <string name="quest_bikeParkingCapacity_title">"여기에 자전거를 몇 대까지 주차할 수 있습니까?"</string>
-    <string name="quest_address_unusualHousenumber_confirmation_description">"이 번지수는 일반적이지 않습니다."</string>
+    <string name="quest_address_unusualHousenumber_confirmation_description">"이 건물번호는 일반적이지 않습니다."</string>
     <string name="quest_sport_title">"여기서 어떤 스포츠를 합니까?"</string>
     <string name="quest_sport_answer_multi">"특정한 스포츠가 아님"</string>
     <string name="quest_sport_soccer">"축구"</string>
@@ -247,7 +247,7 @@
     <string name="quest_generic_error_a_field_empty">"빈 칸으로 남겨 놓았습니다"</string>
     <string name="quest_streetName_menuItem_language_simple">"%1$s - %2$s"</string>
     <string name="quest_streetName_menuItem_language_native">"%1$s - %2$s (%3$s)"</string>
-    <string name="quest_streetName_answer_cantType">"표지판에 써넣은 문자를 받을 수 없습니다"</string>
+    <string name="quest_streetName_answer_cantType">"표지판에 나와 있는 문자를 입력할 수 없습니다"</string>
     <string name="quest_streetName_cantType_title">"키보드 레이아웃이 없습니까?"</string>
     <string name="quest_streetName_cantType_open_settings">"설정 열기"</string>
     <string name="quest_streetName_cantType_open_store">"앱 스토어로 이동"</string>
@@ -348,8 +348,8 @@
     <string name="quest_powerPolesMaterial_metal">"철"</string>
     <string name="quest_powerPolesMaterial_concrete">"콘크리트"</string>
     <string name="quest_maxspeed_answer_advisory_speed_limit">"권장 속도만 있음…"</string>
-    <string name="quest_address_answer_house_name">"건물 번호 없이 이름만 있음…"</string>
-    <string name="quest_address_house_name_label">"건물 이름:"</string>
+    <string name="quest_address_answer_house_name">"건물번호 없이 이름만 있음…"</string>
+    <string name="quest_address_house_name_label">"건물 명칭:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"지붕의 층수"</string>
     <string name="quest_buildingLevels_levelsLabel2">"기본 층수(지붕 층수를 제외)"</string>
     <string name="pref_title_authorized_summary">"인증됨"</string>
@@ -375,7 +375,7 @@
     <string name="pref_title_quests">"질문 선택"</string>
     <string name="quest_enabled">"활성화됨"</string>
     <string name="quest_type">"질문 유형"</string>
-    <string name="action_reset">"재설정"</string>
+    <string name="action_reset">"초기화"</string>
     <string name="reorder_quest_priority_hint">"다운로드하고 지도에 띄울 항목의 우선순위를 다시 정렬하려면 길게 눌러 질문을 움직이세요."</string>
     <string name="undo_confirm_positive">"되돌리기"</string>
     <string name="undo_confirm_negative">"취소"</string>
@@ -389,28 +389,28 @@
     <string name="quest_carWashType_automated">"자동"</string>
     <string name="quest_carWashType_selfService">"셀프 서비스"</string>
     <string name="quest_carWashType_service">"직원이 세차를 해줌"</string>
-    <string name="enable_quest_confirmation_title">"이 퀘스트 유형을 활성화하시겠습니까?"</string>
-    <string name="default_disabled_msg_go_inside">"이 유형의 퀘스트에 대한 답을 얻으려면 해당 장소에 직접 들어가야 하기 때문에 이 유형의 퀘스트는 기본적으로 비활성화되어 있습니다."</string>
+    <string name="enable_quest_confirmation_title">"이 유형의 질문을 활성화하시겠습니까?"</string>
+    <string name="default_disabled_msg_go_inside">"이 유형의 질문에 대한 답을 얻으려면 해당 장소에 직접 들어가야 하기 때문에 이 유형의 질문은 기본적으로 비활성화되어 있습니다."</string>
     <string name="quest_housenumber_conscription_number">"징병 번호"</string>
     <string name="quest_housenumber_street_number_optional">"방위각(선택)"</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">"반대쪽에도 자전거 도로가 있음…"</string>
     <string name="quest_openingHours_emptyAnswer">"표지판에 적혀 있는 내용을 적어야 합니다. 표지판이 없다면 안에서 개장 시각을 물어보아야 합니다."</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"없음, 그렇지만 자전거 이용자들은 양방향에서 도로를 이용할 수 있음"</string>
-    <string name="quest_streetName_answer_noName_question">"왜 이름을 갖고 있지 않습니까?"</string>
+    <string name="quest_streetName_answer_noName_question">"왜 이름이 없습니까?"</string>
     <string name="quest_streetName_answer_noProperStreet_service2">"진입로거나 주차장 통로이기 때문에"</string>
     <string name="quest_streetName_answer_noProperStreet_track2">"농로거나 임도이기 때문에"</string>
-    <string name="quest_streetName_answer_noName_noname">"위에서 해당하는 것이 없음, 그냥 이름이 없음"</string>
+    <string name="quest_streetName_answer_noName_noname">"위에서 고를 수 없음, 그냥 이름이 없음"</string>
     <string name="quest_wheelchairAccess_toilets_title">"이 화장실에 휠체어가 들어갈 수 있습니까?"</string>
     <string name="quest_wheelchairAccess_toilets_name_title">"화장실 %s에 휠체어가 들어갈 수 있습니까?"</string>
     <string name="quest_wheelchairAccess_description_toilets">"화장실에 휠체어가 들어갈 수 있다면 이렇게 생긴 휠체어 표지판이 있을 수도 있습니다.
     휠체어를 타면서 화장실에 들어가 화장실을 이용할 수 있다는 것을 의미하지만, 세면대 옆에 손잡이는 없을 수도 있습니다."</string>
     <string name="map_btn_create_note">"새 참고 만들기"</string>
     <string name="create_new_note_unprecise">"참고를 만들려면 더 확대하세요"</string>
-    <string name="create_new_note_description">"다른 기여자들이 이곳의 문제를 알 수 있도록 참고를 남길 수 있습니다. 지도를 움직여서 참고의 위치를 조정하세요."</string>
-    <string name="pref_title_quests_invalidation">"퀘스트 캐시 삭제"</string>
-    <string name="pref_title_quests_invalidation_summary">"몇몇 퀘스트가 너무 오래되었다고 생각할 때 사용하세요"</string>
+    <string name="create_new_note_description">"참고를 남기면 이 곳의 문제를 다른 기여자들이 알 수 있습니다. 지도를 움직여서 참고의 위치를 조정하세요."</string>
+    <string name="pref_title_quests_invalidation">"질문 캐시 삭제"</string>
+    <string name="pref_title_quests_invalidation_summary">"몇몇 질문이 너무 오래되었다고 생각할 때 사용하세요"</string>
     <string name="invalidate_confirmation">"삭제"</string>
-    <string name="invalidation_dialog_message">"캐시를 삭제하면 다음 번에 퀘스트를 다운로드할 때 퀘스트가 업데이트됩니다. 퀘스트 캐시는 1주일마다 자동으로 삭제되며, 당신이 해결한 퀘스트가 이미 다른 사람이 해결한 퀘스트라는 응답을 받았을 때에도 삭제됩니다."</string>
+    <string name="invalidation_dialog_message">"캐시를 삭제하면 다음 번에 질문을 다운로드할 때 질문이 업데이트됩니다. 질문 캐시는 1주일마다 자동으로 삭제되며, 당신이 답변한 질문이 이미 다른 사람이 답변한 질문이라는 응답을 받았을 때에도 삭제됩니다."</string>
     <string name="quest_generic_looks_like_this">"주로 다음과 같이 생겼습니다."</string>
     <string name="quest_surface_value_metal">"금속"</string>
     <string name="quest_cycleway_title2">"여기에 자전거 도로가 있습니까? 어떤 유형입니까?"</string>
@@ -447,7 +447,7 @@
     <string name="quest_parking_access_yes">"누구나 가능(요금 유무에 상관 없이)"</string>
     <string name="quest_parking_access_customers">"고객만 가능"</string>
     <string name="quest_streetName_pedestrian_title">"이 보행자 도로의 이름이 무엇입니까?"</string>
-    <string name="quest_streetSurface_square_title">"이 사각형의 포장재가 무엇입니까?"</string>
+    <string name="quest_streetSurface_square_title">"이 광장의 포장재가 무엇입니까?"</string>
     <string name="quest_streetSurface_square_name_title">"사각형 %s의 포장재가 무엇입니까?"</string>
     <string name="quest_fee_answer_hours">"시간과 날짜에 따라 다름…"</string>
     <string name="quest_fee_add_times">"시간 추가"</string>
@@ -456,8 +456,8 @@
     <string name="quest_fee_hours_title">"다음 시간에만:"</string>
     <string name="quest_busStopName_title">"이 버스 정류장의 이름이 무엇입니까?"</string>
     <string name="quest_tramStopName_title">"이 트램 정류장의 이름이 무엇입니까?"</string>
-    <string name="quest_housenumber_multiple_numbers">"번지수가 여러 개 있음"</string>
-    <string name="quest_housenumber_multiple_numbers_description">"쉼표로 번지수를 분리하거나 범위로 표시할 수 있습니다(예를 들어 1,3 또는 2-6)."</string>
+    <string name="quest_housenumber_multiple_numbers">"건물번호가 여러 개 있음"</string>
+    <string name="quest_housenumber_multiple_numbers_description">"쉼표로 건물번호를 분리하거나 범위로 표시할 수 있습니다(예를 들어 1,3 또는 2-6)."</string>
     <string name="quest_bicycle_parking_type_stand">"스탠드(자전거 프레임에 걸침)"</string>
     <string name="quest_bicycle_parking_type_wheelbender">"바퀴 거치대(바퀴만 넣어야 함)"</string>
     <string name="quest_bicycle_parking_type_shed">"보관소"</string>
@@ -481,9 +481,9 @@
     <string name="quest_select_hint_most_specific">"가장 맞는 답변을 선택해 주세요."</string>
     <string name="quest_generic_item_confirmation">"정말 더 구체적으로 결정할 수 없습니까?"</string>
     <string name="privacy_html_tileserver">"&lt;p&gt;지도를 띄우려면 &lt;a href=\"https://tiles.map-data.de\"&gt;map-data.de&lt;/a&gt;에서 벡터 타일을 가져와야 합니다. 이 서비스를 이용하면 타일 요청 로그를 익명으로 남기게 됩니다. 이 로그는 문제 해결에 사용되며, 수일 후에 로그는 삭제됩니다.&lt;/p&gt;"</string>
-    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;일부 퀘스트에서는 제3자 앱에서 추가 데이터를 가져오기도 합니다. 특히 일방통행 퀘스트에서는 westnordost.de의 API를 호출해서 일방통행로 후보를 가져옵니다.&lt;/p&gt;"</string>
+    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;일부 질문에서는 제3자 앱에서 추가 데이터를 가져오기도 합니다. 특히 일방통행 질문에서는 westnordost.de의 API를 호출해서 일방통행로 후보를 가져옵니다.&lt;/p&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"아니오(참고 남기기)"</string>
-    <string name="pref_quests_reset">"활성화된 퀘스트 설정을 초기화하고 기본으로 되돌리시겠습니까?"</string>
+    <string name="pref_quests_reset">"활성화된 질문 설정을 초기화하고 기본으로 되돌리시겠습니까?"</string>
     <string name="quest_buildingType_title2">"이 건물은 어떤 용도로 지어졌습니까?"</string>
     <string name="quest_generic_item_invalid_value">"더 구체적인 값을 선택해 주세요."</string>
     <string name="quest_buildingType_answer_multiple_types">"다용도 건물입니다"</string>
@@ -557,9 +557,9 @@
     <string name="quest_buildingType_hangar">"격납고"</string>
     <string name="quest_buildingType_hangar_description">"비행기, 헬리콥터, 우주선을 두는 창고"</string>
     <string name="quest_buildingType_bunker">"벙커"</string>
-    <string name="quest_address_answer_no_housenumber">"번지수가 없음…"</string>
-    <string name="quest_address_answer_no_housenumber_message1">"이 건물은 다음처럼 태그가 붙었습니다."</string>
-    <string name="quest_address_answer_no_housenumber_message2">"이것이 건물의 일부가 아니라서 이 선택지가 맞습니까?"</string>
+    <string name="quest_address_answer_no_housenumber">"건물번호가 없음…"</string>
+    <string name="quest_address_answer_no_housenumber_message1">"이 건물의 태그는 다음과 같습니다."</string>
+    <string name="quest_address_answer_no_housenumber_message2">"이 지물이 단순히 건물의 일부가 아니라서 건물번호가 없는 것입니까?"</string>
     <string name="quest_buildingType_shrine">"성지"</string>
     <string name="quest_maxspeed_title_short2">"이 거리의 속도 제한이 얼마입니까?"</string>
     <string name="quest_maxspeed_answer_sign">"표지판"</string>
@@ -586,7 +586,7 @@
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_closed2">"%1$s, %2$s에 닫힘"</string>
     <string name="quest_noteDiscussion_reopen2">"%1$s, %2$s에 다시 열림"</string>
-    <string name="quest_noteDiscussion_hide2">"%1$s, %2$s에 숨겨짐"</string>
+    <string name="quest_noteDiscussion_hide2">"%1$s, %2$s가 숨김"</string>
     <string name="quest_railway_crossing_barrier_title">"이 철도 건널목이 어떻게 보호되고 있습니까?"</string>
     <string name="quest_railway_crossing_barrier_none">"보호되지 않음"</string>
     <string name="privacy_html_image_upload2">"&lt;p&gt;참고에 첨부한 사진은 StreetComplete 서버로 업로드되며, 참고가 해결되면 수일 후에 삭제됩니다. 사진의 메타데이터는 업로드하기 전에 삭제됩니다.&lt;/p&gt;"</string>
@@ -607,5 +607,7 @@
     <string name="quest_traffic_signals_button_title">"이 신호등에 녹색 등을 요청하는 버튼이 달려 있습니까?"</string>
     <string name="quest_motorcycleParkingCapacity_title">"여기에 오토바이가 얼마나 주차할 수 있습니까?"</string>
     <string name="quest_motorcycleParkingCoveredStatus_title">"이 오토바이 주차장에 지붕이 있습니까?"</string>
-    <string name="default_disabled_msg_maxspeed">"이 유형의 퀘스트를 해결하려면 속도 제한 표지판을 찾아 도로 전체를 뒤져야 하기 때문에 기본적으로 비활성화되어 있습니다. 이 작업은 보통 많은 노력을 필요로 하는 경우가 많습니다."</string>
+    <string name="default_disabled_msg_maxspeed">"이 유형의 질문을 해결하려면 속도 제한 표지판을 찾아 도로 전체를 뒤져야 하기 때문에 기본적으로 비활성화되어 있습니다. 보통 이 작업을 하려면 많은 노력이 필요합니다."</string>
+    <string name="pref_title_quests_restore_hidden">"숨겨진 질문 새로고침"</string>
+    <string name="restore_hidden_success">"숨겨진 질문 %d개가 새로고침됨"</string>
 </resources>

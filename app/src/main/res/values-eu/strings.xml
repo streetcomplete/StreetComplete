@@ -632,4 +632,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_motorcycleParkingCapacity_title">"Zenbat motor aparkatu daitezke hemen?"</string>
     <string name="quest_motorcycleParkingCoveredStatus_title">"Motorrentzako aparkaleku honek estalkia al du (euriarengandiko babesa)?"</string>
     <string name="default_disabled_msg_maxspeed">"Eronka mota hau desgaituta dago orokorrean kale osoa ibiltzea eskatzen zaizulako abiadura mugen bila, eta ez soilik markatutako sekzioa. Hau batzuetan gehiegizkoa izan daiteke erronka bakarrean argitzeko."</string>
+    <string name="pref_title_quests_restore_hidden">"Berreskuratu ezkutatutako erronkak"</string>
+    <string name="restore_hidden_success">"Ezkutatutako %d erronka berreskuratu dira"</string>
 </resources>

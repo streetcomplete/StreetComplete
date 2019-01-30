@@ -680,4 +680,6 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_motorcycleParkingCapacity_title">"Kolik motocyklů zde může parkovat?"</string>
     <string name="quest_motorcycleParkingCoveredStatus_title">"Má toto parkoviště pro motocykly střechu (ochranu proti dešti)?"</string>
     <string name="default_disabled_msg_maxspeed">"Tento typ úkolů je ve výchozím nastavení zakázán, protože pro nalezení cedulí s rychlostním omezením je obvykle nutné zkontrolovat celou ulici a ne pouze zvýrazněnou část. To může být náročnější vzhledem k tomu, že jde o vyřešení pouze jednoho úkolu."</string>
+    <string name="pref_title_quests_restore_hidden">"Obnovit skryté úkoly"</string>
+    <string name="restore_hidden_success">"Obnoveno %d skrytých úkolů"</string>
 </resources>
