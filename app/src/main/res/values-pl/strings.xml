@@ -631,4 +631,6 @@ Na przykład 1,3 lub 2-6."</string>
     <string name="quest_motorcycleParkingCapacity_title">"Ile motocykli można tutaj zaparkować?"</string>
     <string name="quest_motorcycleParkingCoveredStatus_title">"Czy ten parking dla motocykli jest osłonięty (chroniony przed deszczem)?"</string>
     <string name="default_disabled_msg_maxspeed">"Ten typ zadania jest domyślnie wyłączony, ponieważ zazwyczaj musisz sprawdzić na całej ulicy znaki ograniczenia prędkości, a nie tylko podświetloną sekcję. Czasami może to być więc dość trudna sprawa, aby rozwiązać pojedyncze zadanie."</string>
+    <string name="pref_title_quests_restore_hidden">"Przywróć ukryte zadania"</string>
+    <string name="restore_hidden_success">"Przywrócono %d ukrytych zadań"</string>
 </resources>

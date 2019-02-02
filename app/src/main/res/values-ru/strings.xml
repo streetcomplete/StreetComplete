@@ -450,7 +450,7 @@
     <string name="quest_hasFeature_only">"Только"</string>
     <string name="quest_dietType_explanation_vegan">"Веганские блюда не содержат продуктов животного происхождения (мяса, молочных продуктов, яиц и т.д.)."</string>
     <string name="quest_dietType_explanation_vegetarian">"Вегетарианские блюда не содержат мяса."</string>
-    <string name="quest_dietType_explanation">"Только ответьте «да», если место обеспечивает правильные варианты питания для этой диеты, игнорировать стартеры и т. Д."</string>
+    <string name="quest_dietType_explanation">"Отвечайте «Да» только в том случае, если заведение имеет диетические варианты блюд, отсутствие закусок и т.д."</string>
     <string name="quest_carWashType_title">"Какого типа эта автомойка?"</string>
     <string name="quest_carWashType_automated">"Автоматическая"</string>
     <string name="quest_carWashType_selfService">"Самообслуживания"</string>
@@ -554,11 +554,11 @@
     <string name="quest_pathSurface_title_bridleway">"Какая поверхность у этого уздечка здесь?"</string>
     <string name="quest_pathSurface_title">"Какая поверхность имеет этот путь здесь?"</string>
     <string name="quest_select_hint_most_specific">"Выберите наиболее подходящий вариант:"</string>
-    <string name="quest_generic_item_confirmation">"Вы уверены, что не можете определить его более конкретно?"</string>
+    <string name="quest_generic_item_confirmation">"Вы уверены, что не можете дать более точное описание?"</string>
     <string name="privacy_html_tileserver">"&lt;p&gt; Чтобы отобразить карту, векторные фрагменты извлекаются из &lt;a href=\"https://tiles.map-data.de\"&gt; map-data.de &lt;/a&gt;. Служба регистрирует запросы на черепицу для анонимной статистики и для обнаружения проблем, но удаляет журналы через несколько дней. &lt;/ P&gt;"</string>
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt; Для некоторых квестов загружаются некоторые дополнительные данные от третьих сторон. В частности, квест oneway запрашивает API, также размещенный на westnordost.de, о вероятных кандидатах на oneways. &lt;/ P&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"Нет (оставьте заметку)"</string>
-    <string name="pref_quests_reset">"Сбросить настройки квеста и порядок по умолчанию?"</string>
+    <string name="pref_quests_reset">"Сбросить видимость и последовательность квестов?"</string>
     <string name="quest_buildingType_title2">"Какое это здание было построено?"</string>
     <string name="quest_generic_item_invalid_value">"Пожалуйста, выберите более конкретное значение"</string>
     <string name="quest_buildingType_answer_multiple_types">"Многоцелевое здание"</string>
@@ -641,8 +641,8 @@
     <string name="quest_maxspeed_answer_sign">"Знак"</string>
     <string name="quest_maxspeed_answer_zone2">"Он находится в зоне (медленной)"</string>
     <string name="quest_maxspeed_answer_noSign2">"Нет знака, применяются по умолчанию"</string>
-    <string name="quest_openingHours_no_sign">"Нет знака часов работы"</string>
-    <string name="quest_maxspeed_name_title2">"Что такое ограничение скорости для %s здесь?"</string>
+    <string name="quest_openingHours_no_sign">"Часы работы не обозначены"</string>
+    <string name="quest_maxspeed_name_title2">"Каково ограничение скорости для %s здесь?"</string>
     <string name="quest_buildingType_sports_centre">"Спортивный центр"</string>
     <string name="quest_buildingType_toilets">"Туалеты"</string>
     <string name="quest_maxspeed_sign_question">"Что определяет ограничение скорости?"</string>
@@ -651,13 +651,13 @@
     <string name="quest_segregated_title">"Как здесь выложены дорожка и велосипедная дорожка?"</string>
     <string name="dialog_tutorial_upload">"Чтобы загрузить изменения вручную, используйте кнопку на панели инструментов, которая выглядит так."</string>
     <string name="quest_segregated_separated">"Разделяются друг от друга"</string>
-    <string name="quest_segregated_mixed">"Велосипедисты и пешеходы имеют одинаковое пространство"</string>
+    <string name="quest_segregated_mixed">"Велосипедисты и пешеходы используют общее пространство"</string>
     <string name="quest_maxheight_title">"Какой здесь предел высоты?"</string>
     <string name="quest_maxheight_parking_entrance_title">"Каков максимальный лимит парковки?"</string>
     <string name="quest_maxheight_height_restrictor_title">"Каков предел высоты этого ограничителя высоты?"</string>
     <string name="quest_maxheight_tunnel_title">"Каков предел высоты этого туннеля?"</string>
     <string name="quest_maxheight_answer_noSign">"Нет знака…"</string>
-    <string name="quest_maxheight_answer_noSign_question">"Достаточно ли достаточно пространства для даже самых высоких грузовиков (по крайней мере около 4,5 метров / 15 футов), чтобы пройти?"</string>
+    <string name="quest_maxheight_answer_noSign_question">"Достаточно ли высоты для даже самых больших грузовиков (минимум 4.5 метра)?"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Эта высота выглядит неправдоподобной. Вы уверены, что это правильно?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_closed2">"Закрыл %1$s, %2$s"</string>
