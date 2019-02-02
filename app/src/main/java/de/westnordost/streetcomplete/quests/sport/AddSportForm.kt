@@ -54,8 +54,7 @@ class AddSportForm : AImageListQuestAnswerFragment<String, List<String>>() {
         Item("netball",            R.drawable.ic_sport_netball,         R.string.quest_sport_netball),
         Item("gaelic_games",       R.drawable.ic_sport_gaelic_games,    R.string.quest_sport_gaelic_games),
         Item("sepak_takraw",       R.drawable.ic_sport_sepak_takraw,    R.string.quest_sport_sepak_takraw)
-    // show only first 24 items (6 rows)
-    ).sortedBy(countryInfo.popularSports).subList(0, 24)
+    ).sortedBy(countryInfo.popularSports)
 
     override val maxSelectableItems = -1
     override val maxNumberOfInitiallyShownItems = 8
