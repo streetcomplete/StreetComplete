@@ -355,6 +355,7 @@ public class MapFragment extends Fragment implements
 
 	protected void updateView()
 	{
+		if(controller == null) return;
 		updateAccuracy();
 		if(shouldCenterCurrentPosition())
 		{
