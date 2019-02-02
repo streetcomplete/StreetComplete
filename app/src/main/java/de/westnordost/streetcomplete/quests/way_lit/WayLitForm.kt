@@ -12,6 +12,6 @@ class WayLitForm : AYesNoQuestAnswerFragment<String>() {
     )
 
     override fun onClick(answer: Boolean) {
-        applyAnswer(if(answer) "answer" else "no")
+        applyAnswer(if(answer) "yes" else "no")
     }
 }
