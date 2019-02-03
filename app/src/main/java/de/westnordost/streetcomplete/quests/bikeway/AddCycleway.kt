@@ -54,7 +54,7 @@ class AddCycleway(private val overpassServer: OverpassMapDataDao) : OsmElementQu
         return overpassServer.getAndHandleQuota(getOverpassQuery(bbox), handler)
     }
 
-    /** @return overpass query string to get streets without cycleway info not near paths for
+    /** returns overpass query string to get streets without cycleway info not near paths for
      * bicycles.
      */
     private fun getOverpassQuery(bbox: BoundingBox): String {
@@ -75,9 +75,9 @@ class AddCycleway(private val overpassServer: OverpassMapDataDao) : OsmElementQu
             // not any explicitly tagged as no bicycles
             "[bicycle != no]" +
             "[access !~ \"^private|no$\"]" +
-            // some roads may be father than MIN_DIST_TO_CYCLEWAYS from cycleways,
-            // not tagged cycleway=separate/sidepath but may have hint that there is
-            // a separately tagged cycleway
+            // some roads may be farther than minDistToCycleways from cycleways, not tagged with
+            // cycleway=separate/sidepath but may have a hint that there is a separately tagged
+            // cycleway
             "[bicycle != use_sidepath][\"bicycle:backward\" != use_sidepath]" +
             "[\"bicycle:forward\" != use_sidepath]" +
             " -> .streets;" +

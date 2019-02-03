@@ -49,6 +49,7 @@ import de.westnordost.streetcomplete.quests.religion.AddReligionToWaysideShrine;
 import de.westnordost.streetcomplete.quests.localized_name.data.PutRoadNameSuggestionsHandler;
 import de.westnordost.streetcomplete.quests.localized_name.data.RoadNameSuggestionsDao;
 import de.westnordost.streetcomplete.quests.segregated.AddCyclewaySegregation;
+import de.westnordost.streetcomplete.quests.sidewalk.AddSidewalk;
 import de.westnordost.streetcomplete.quests.surface.AddPathSurface;
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingBusStop;
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingCrosswalk;
@@ -105,6 +106,7 @@ public class QuestModule
 				new AddBikeParkingCapacity(o), // cycle map layer on osm.org
 				new AddOrchardProduce(o),
 				new AddCycleway(o),
+				new AddSidewalk(o),
 				new AddCrossingType(o),
 				new AddBuildingLevels(o),
 				new AddBusStopShelter(o), // at least OsmAnd

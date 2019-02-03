@@ -19,6 +19,7 @@ class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     var onClickListener: ((index: Int) -> Unit)? = null
         set(value) {
+            field = value
             if (value == null) itemView.setOnClickListener(null)
             else itemView.setOnClickListener {
                 val index = adapterPosition
