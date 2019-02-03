@@ -29,7 +29,7 @@ class AddSidewalk(private val overpassServer: OverpassMapDataDao) : OsmElementQu
 
         // note: this query is very similar to the query in AddCycleway
         return OverpassQLUtil.getGlobalOverpassBBox(bbox) +
-            "way[highway ~ \"^(primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified)$\"]" +
+            "way[highway ~ \"^(primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential)$\"]" +
             "[area != yes]" +
             // not any motorroads
             "[motorroad != yes]" +
