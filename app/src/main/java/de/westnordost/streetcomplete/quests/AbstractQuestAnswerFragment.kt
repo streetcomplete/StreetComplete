@@ -120,13 +120,10 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment() {
 
         titleLabel.text = resources.getHtmlQuestTitle(questType, osmElement)
 
-        /* prefer addr:floor etc. over level as level is rather an index than how the floor is
-           denominated in the building and thus may (sometimes) not coincide with it. E.g.
-           addr:floor may be "M" while level is "2" */
-        val level = osmElement?.tags?.let { it["addr:floor"] ?: it["level:ref"] ?: it["level"] }
-        if (level != null) {
+        val levelLabelText = getLevelLabelText()
+        if (levelLabelText != null) {
             levelLabel.visibility = View.VISIBLE
-            levelLabel.text = resources.getString(R.string.on_level, level)
+            levelLabel.text = levelLabelText
         } else {
             levelLabel.visibility = View.GONE
         }
@@ -162,6 +159,21 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment() {
         }
     }
 
+    private fun getLevelLabelText(): String? {
+        val tags = osmElement?.tags ?: return null
+        /* prefer addr:floor etc. over level as level is rather an index than how the floor is
+           denominated in the building and thus may (sometimes) not coincide with it. E.g.
+           addr:floor may be "M" while level is "2" */
+        val level = tags["addr:floor"] ?: tags["level:ref"] ?: tags["level"]
+        if (level != null) {
+            return resources.getString(R.string.on_level, level)
+        }
+        val tunnel = tags["tunnel"]
+        if(tunnel != null && tunnel != "no" || tags["location"] == "underground") {
+            return resources.getString(R.string.underground)
+        }
+        return null
+    }
 
     override fun onStart() {
         super.onStart()
