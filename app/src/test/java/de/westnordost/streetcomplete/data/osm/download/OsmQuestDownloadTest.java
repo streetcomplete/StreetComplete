@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.osm.download;
 
-import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -115,7 +114,7 @@ public class OsmQuestDownloadTest
 		dl.setQuestListener(listener);
 
 		// -> we expect that quest with node #5 is removed
-		dl.download(questType, new BoundingBox(0,0,1,1), null);
+		dl.download(questType, new BoundingBox(0,0,1,1), Collections.emptySet());
 
 		verify(osmQuestDao).deleteAll(any());
 		verify(listener).onQuestsRemoved(any(), any());
