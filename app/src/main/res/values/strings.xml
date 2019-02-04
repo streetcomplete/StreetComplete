@@ -634,12 +634,12 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="pref_title_quests_restore_hidden">Restore hidden quests</string>
     <string name="restore_hidden_success">Restored %d hidden quests</string>
 
-    <!-- caution: This is not necessarily the floor and level=0 is not necessarily at street level
-    as it may follow the numbering scheme of the building operator. Try to use a generic wording
-    that does not carry an implicit meaning of where it is located in respect to the ground floor.
-    The context is usually shopping centres, train stations or airport terminals -->
+    <!-- caution: This is not necessarily the floor and level=0 is not necessarily at street level as it may follow the numbering scheme of the building operator. Try to use a generic wording that does not carry an implicit meaning of where it is located in respect to the ground floor. The context is usually shopping centres, train stations or airport terminals -->
     <string name="on_level">on level %s:</string>
+    <!-- as in: "Where is the metro station?" - "It is underground" -->
     <string name="underground">underground:</string>
     <string name="quest_sidewalk_value_yes">sidewalk</string>
     <string name="quest_sidewalk_value_no">no sidewalk</string>
+    <string name="quest_accessible_for_pedestrians_title">Is this street accessible for pedestrians here?</string>
+    <string name="quest_accessible_for_pedestrians_description">This street was tagged as having no sidewalk on either side. So, the street is only accessible on foot if people may walk on the street itself or there is enough space to walk beside it.</string>
 </resources>

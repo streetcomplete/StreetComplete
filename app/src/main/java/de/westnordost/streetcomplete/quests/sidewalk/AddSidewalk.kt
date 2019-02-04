@@ -13,7 +13,7 @@ import de.westnordost.streetcomplete.data.osm.tql.OverpassQLUtil
 class AddSidewalk(private val overpassServer: OverpassMapDataDao) : OsmElementQuestType<SidewalkAnswer> {
 
     override val commitMessage = "Add whether there are sidewalks"
-    override val icon = R.drawable.ic_quest_pedestrian
+    override val icon = R.drawable.ic_quest_sidewalk
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_sidewalk_title
 
@@ -21,8 +21,8 @@ class AddSidewalk(private val overpassServer: OverpassMapDataDao) : OsmElementQu
         return overpassServer.getAndHandleQuota(getOverpassQuery(bbox), handler)
     }
 
-    /** returns overpass query string to get streets without sidwalk info not near separately mapped
-     *  paths
+    /** returns overpass query string to get streets without sidewalk info not near separately mapped
+     *  sidewalks (and other paths)
      */
     private fun getOverpassQuery(bbox: BoundingBox): String {
         val minDistToWays = 15 //m
