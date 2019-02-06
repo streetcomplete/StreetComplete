@@ -130,13 +130,13 @@ public class MapFragment extends Fragment implements
 
 	protected String getSceneFilePath()
 	{
-		String style = "streetcomplete-light-style.yaml";
+		String scene = "scene-light.yaml";
 		int currentNightMode = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
 		if (currentNightMode == Configuration.UI_MODE_NIGHT_YES)
 		{
-			style = "streetcomplete-dark-style.yaml";
+			scene = "scene-dark.yaml";
 		}
-		return "map_theme/" + style;
+		return "map_theme/" + scene;
 	}
 
 	@CallSuper public void getMapAsync(String apiKey, @NonNull final String sceneFilePath)

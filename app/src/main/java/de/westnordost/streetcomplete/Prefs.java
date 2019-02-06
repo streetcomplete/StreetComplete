@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete;
 
+import androidx.appcompat.app.AppCompatDelegate;
+
 /** Constant class to have all the identifiers for shared preferences in one place */
 public class Prefs
 {
@@ -31,8 +33,15 @@ public class Prefs
 	{
 		ON, WIFI, OFF
 	}
-	 public enum Theme
-	 {
-	 	LIGHT, DARK, AUTO, SYSTEM
-	 }
+
+	public enum Theme
+	{
+		LIGHT(AppCompatDelegate.MODE_NIGHT_NO),
+		DARK(AppCompatDelegate.MODE_NIGHT_YES),
+		AUTO(AppCompatDelegate.MODE_NIGHT_AUTO),
+		SYSTEM(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+
+		public int appCompatNightMode;
+		Theme(int appCompatNightMode) { this.appCompatNightMode = appCompatNightMode; }
+	}
 }

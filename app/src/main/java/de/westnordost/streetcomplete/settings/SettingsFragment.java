@@ -135,21 +135,7 @@ public class SettingsFragment extends PreferenceFragmentCompat
 		else if(key.equals(Prefs.THEME_SELECT))
 		{
 			Prefs.Theme theme = Prefs.Theme.valueOf(prefs.getString(Prefs.THEME_SELECT, "AUTO"));
-			switch (theme)
-			{
-				case LIGHT:
-					AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-					break;
-				case DARK:
-					AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-					break;
-				case AUTO:
-					AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO);
-					break;
-				case SYSTEM:
-					AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
-					break;
-			}
+			AppCompatDelegate.setDefaultNightMode(theme.appCompatNightMode);
 			getActivity().recreate();
 		}
 	}

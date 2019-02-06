@@ -1,0 +1,3 @@
+import:
+    - streetcomplete.yaml
+    - streetcomplete-light-style.yaml
