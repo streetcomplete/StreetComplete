@@ -1,10 +1,10 @@
 package de.westnordost.streetcomplete.data.osm.download;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import android.util.LongSparseArray;
 
-import junit.framework.TestCase;
+import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -24,15 +24,14 @@ import de.westnordost.osmapi.map.data.Relation;
 import de.westnordost.osmapi.map.data.RelationMember;
 import de.westnordost.osmapi.map.data.Way;
 
+import static org.junit.Assert.*;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.isNull;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
-public class OverpassMapDataParserTest extends TestCase
+public class OverpassMapDataParserTest
 {
-	public void testNode()
+	@Test public void node()
 	{
 		LatLon pos = new OsmLatLon(51.7463194, 0.2428181);
 
@@ -50,7 +49,7 @@ public class OverpassMapDataParserTest extends TestCase
 		assertNull(node.getTags());
 	}
 
-	public void testWay()
+	@Test public void way()
 	{
 		OsmLatLon[] p = new OsmLatLon[2];
 		p[0] = new OsmLatLon(1,2);
@@ -78,7 +77,7 @@ public class OverpassMapDataParserTest extends TestCase
 		assertEquals(3, (long) way.getNodeIds().get(1));
 	}
 
-	public void testRelation()
+	@Test public void relation()
 	{
 		OsmLatLon[] p = new OsmLatLon[5];
 		p[0] = new OsmLatLon(1,2);
@@ -138,7 +137,7 @@ public class OverpassMapDataParserTest extends TestCase
 		assertNull(relation.getTags());
 	}
 
-	public void testTags()
+	@Test public void tags()
 	{
 		String xml =
 				"<relation id='1' version='1' >\n" +
@@ -155,7 +154,7 @@ public class OverpassMapDataParserTest extends TestCase
 		assertEquals("d", element.getTags().get("c"));
 	}
 
-	public void testSkelInput()
+	@Test public void skelInput()
 	{
 		String xml =
 			"<node id='123' lat='12.345' lon='14.467'/>\n";
@@ -164,7 +163,7 @@ public class OverpassMapDataParserTest extends TestCase
 		assertEquals(-1, element.getVersion());
 	}
 
-	public void testParseSeveral() throws IOException
+	@Test public void parseSeveral() throws IOException
 	{
 		String xml =
 				"<node id='1' version='1' lat='1' lon='4'/>\n" +
@@ -187,7 +186,7 @@ public class OverpassMapDataParserTest extends TestCase
 		parser.setHandler(mockHandler);
 		parser.parse(asInputStream(xml));
 
-		verify(mockHandler, times(3)).handle(any(Element.class), isNull(ElementGeometry.class));
+		verify(mockHandler, times(3)).handle(any(Element.class), isNull());
 	}
 
 	private Element parseOne(String xml, LongSparseArray<List<LatLon>> expectedGeometry)

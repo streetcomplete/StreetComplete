@@ -4,6 +4,6 @@ isLivingStreetKnown: true
 isSlowZoneKnown: true
 mobileCountryCode: 206
 officialLanguages: [nl, fr, de]
-orchardProduces: [pear, apple, strawberry, cherry, tomato, walnut, hop, raspberry, chilli_pepper, sweet_pepper,
-  plum, grape]
+orchardProduces: [pear, tomato, apple, strawberry, chilli_pepper, sweet_pepper, cherry, raspberry,
+  grape, walnut, hop, plum]
 popularSports: [soccer, tennis, basketball, equestrian, boules]

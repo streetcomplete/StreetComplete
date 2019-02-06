@@ -3,6 +3,6 @@ isLeftHandTraffic: true
 measurementSystem: [imperial, metric]
 mobileCountryCode: 364
 officialLanguages: [en]
-orchardProduces: [grapefruit, banana, coconut, lemon, lime, orange, tomato, guava, mango, mangosteen,
+orchardProduces: [grapefruit, banana, tomato, orange, coconut, guava, mango, mangosteen, lemon, lime,
   avocado, papaya]
 popularSports: [tennis, basketball, baseball]

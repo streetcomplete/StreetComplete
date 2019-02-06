@@ -9,10 +9,16 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+import androidx.work.Constraints;
+import androidx.work.NetworkType;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
 import de.westnordost.osmapi.changesets.ChangesetInfo;
 import de.westnordost.osmapi.changesets.ChangesetsDao;
 import de.westnordost.osmapi.common.errors.OsmConflictException;
@@ -44,6 +50,9 @@ import de.westnordost.streetcomplete.data.statistics.QuestStatisticsDao;
 import de.westnordost.streetcomplete.data.tiles.DownloadedTilesDao;
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener;
 import de.westnordost.streetcomplete.util.SlippyMapMath;
+
+import static androidx.work.ExistingWorkPolicy.REPLACE;
+import static de.westnordost.streetcomplete.data.changesets.OpenChangesetsDao.CLOSE_CHANGESETS_AFTER_INACTIVITY_OF;
 
 public abstract class AOsmQuestChangesUpload
 {
@@ -165,7 +174,13 @@ public abstract class AOsmQuestChangesUpload
 		if(commits > 0)
 		{
 			// changesets are closed delayed after X minutes of inactivity
-			ChangesetAutoCloserJob.scheduleJob();
+			WorkManager.getInstance().enqueueUniqueWork("AutoCloseChangesets", REPLACE,
+				new OneTimeWorkRequest.Builder(ChangesetAutoCloserWorker.class)
+					.setInitialDelay(CLOSE_CHANGESETS_AFTER_INACTIVITY_OF, TimeUnit.MILLISECONDS)
+					.setConstraints(new Constraints.Builder()
+						.setRequiredNetworkType(NetworkType.CONNECTED)
+						.build())
+					.build());
 		}
 	}
 
@@ -190,7 +205,7 @@ public abstract class AOsmQuestChangesUpload
 	public synchronized void closeOpenChangesets()
 	{
 		long timePassed = System.currentTimeMillis() - openChangesetsDB.getLastQuestSolvedTime();
-		if(timePassed < OpenChangesetsDao.CLOSE_CHANGESETS_AFTER_INACTIVITY_OF) return;
+		if(timePassed < CLOSE_CHANGESETS_AFTER_INACTIVITY_OF) return;
 
 		for (OpenChangesetInfo info : openChangesetsDB.getAll())
 		{
@@ -422,7 +437,7 @@ public abstract class AOsmQuestChangesUpload
 	private static String getQuestStringForLog(OsmQuest quest)
 	{
 		return quest.getType().getClass().getSimpleName() + " for " +
-				quest.getElementType().name().toLowerCase() + " #" + quest.getElementId();
+				quest.getElementType().name().toLowerCase(Locale.US) + " #" + quest.getElementId();
 	}
 
 	private static Element copyElement(Element e, int newVersion)

@@ -4,5 +4,5 @@ isLivingStreetKnown: true
 isSlowZoneKnown: true
 mobileCountryCode: 216
 officialLanguages: [hu]
-orchardProduces: [grape, apple, cherry, plum, peach, apricot, walnut, pear, chilli_pepper, sweet_pepper,
-  tomato, strawberry, raspberry, chestnut, almond, hazelnut]
+orchardProduces: [apple, grape, tomato, chilli_pepper, sweet_pepper, plum, peach, pear, apricot, cherry,
+  walnut, strawberry, raspberry, chestnut, almond, hazelnut]

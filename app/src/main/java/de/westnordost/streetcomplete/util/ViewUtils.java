@@ -1,26 +1,41 @@
 package de.westnordost.streetcomplete.util;
 
+import androidx.annotation.NonNull;
 import android.view.View;
 import android.view.ViewTreeObserver;
 
 public class ViewUtils
 {
-	public static void postOnLayout(View view, final Runnable runnable)
+	public static void postOnLayout(@NonNull View view, @NonNull Runnable runnable)
 	{
-		if(view != null)
+		ViewTreeObserver vto = view.getViewTreeObserver();
+		if (vto.isAlive())
 		{
-			ViewTreeObserver vto = view.getViewTreeObserver();
-			if (vto.isAlive())
+			vto.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
 			{
-				vto.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
+				@Override public void onGlobalLayout()
 				{
-					@Override public void onGlobalLayout()
-					{
-						view.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-						runnable.run();
-					}
-				});
-			}
+					if(vto.isAlive()) vto.removeOnGlobalLayoutListener(this);
+					runnable.run();
+				}
+			});
+		}
+	}
+
+	public static void postOnPreDraw(@NonNull View view, @NonNull Runnable runnable)
+	{
+		ViewTreeObserver vto = view.getViewTreeObserver();
+		if (vto.isAlive())
+		{
+			vto.addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener()
+			{
+				@Override public boolean onPreDraw()
+				{
+					if(vto.isAlive()) vto.removeOnPreDrawListener(this);
+					runnable.run();
+					return true;
+				}
+			});
 		}
 	}
 }

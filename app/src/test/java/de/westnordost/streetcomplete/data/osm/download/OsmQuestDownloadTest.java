@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.data.osm.download;
 
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
+import org.jetbrains.annotations.NotNull;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -21,7 +21,7 @@ import de.westnordost.osmapi.map.data.OsmLatLon;
 import de.westnordost.osmapi.map.data.OsmNode;
 import de.westnordost.streetcomplete.data.QuestStatus;
 import de.westnordost.streetcomplete.data.VisibleQuestListener;
-import de.westnordost.streetcomplete.data.osm.AOsmElementQuestType;
+import de.westnordost.streetcomplete.data.osm.Countries;
 import de.westnordost.streetcomplete.data.osm.ElementGeometry;
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.OsmQuest;
@@ -114,7 +114,7 @@ public class OsmQuestDownloadTest
 		dl.setQuestListener(listener);
 
 		// -> we expect that quest with node #5 is removed
-		dl.download(questType, new BoundingBox(0,0,1,1), null);
+		dl.download(questType, new BoundingBox(0,0,1,1), Collections.emptySet());
 
 		verify(osmQuestDao).deleteAll(any());
 		verify(listener).onQuestsRemoved(any(), any());
@@ -133,7 +133,7 @@ public class OsmQuestDownloadTest
 		ElementGeometry geometry;
 	}
 
-	private static class ListBackedQuestType extends AOsmElementQuestType
+	private static class ListBackedQuestType implements OsmElementQuestType<String>
 	{
 		private final List<ElementWithGeometry> list;
 
@@ -142,14 +142,16 @@ public class OsmQuestDownloadTest
 			this.list = list;
 		}
 
-		@Override public AbstractQuestAnswerFragment createForm() { return null; }
+		@NonNull @Override public AbstractQuestAnswerFragment<String> createForm() {
+			return new AbstractQuestAnswerFragment<String>() {}; }
 		@Override public int getIcon() { return 0; }
 		@Override public int getTitle(@NonNull Map<String,String> tags) { return 0; }
-		@Override public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes) {}
-		@Override public String getCommitMessage() { return null; }
-		@Nullable @Override public Boolean isApplicableTo(Element element) { return false; }
+		@Override public void applyAnswerTo(@NonNull String answer, @NonNull StringMapChangesBuilder changes) {}
+		@Override @NonNull public String getCommitMessage() { return ""; }
+		@Nullable @Override public Boolean isApplicableTo(@NonNull Element element) { return false; }
 
-		@Override public boolean download(BoundingBox bbox, MapDataWithGeometryHandler handler)
+		@Override public boolean download(@NonNull BoundingBox bbox, @NonNull
+			MapDataWithGeometryHandler handler)
 		{
 			for (ElementWithGeometry e : list)
 			{
@@ -157,5 +159,11 @@ public class OsmQuestDownloadTest
 			}
 			return true;
 		}
+
+		@NotNull @Override public Countries getEnabledForCountries() { return Countries.ALL; }
+		@Override public boolean getHasMarkersAtEnds() { return false; }
+		@Override public int getTitle() { return 0; }
+		@Override public void cleanMetadata() {}
+		@Override public int getDefaultDisabledMessage() { return 0; }
 	}
 }

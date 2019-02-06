@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.data.osmnotes;
 
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import de.westnordost.streetcomplete.data.Quest;
 import de.westnordost.streetcomplete.data.QuestStatus;
@@ -18,7 +18,7 @@ public class OsmNoteQuest implements Quest
 	}
 
 	public OsmNoteQuest(Long id, Note note, QuestStatus status, String comment, Date lastUpdate,
-						OsmNoteQuestType questType, ArrayList<String> imagePaths)
+						OsmNoteQuestType questType, List<String> imagePaths)
 	{
 		this.id = id;
 		this.note = note;
@@ -36,7 +36,7 @@ public class OsmNoteQuest implements Quest
 
 	private String comment;
 
-	private ArrayList<String> imagePaths;
+	private List<String> imagePaths;
 
 	private final OsmNoteQuestType questType;
 
@@ -117,12 +117,12 @@ public class OsmNoteQuest implements Quest
 		this.id = id;
 	}
 
-	public void setImagePaths(ArrayList<String> imagePaths)
+	public void setImagePaths(List<String> imagePaths)
 	{
 		this.imagePaths = imagePaths;
 	}
 
-	public ArrayList<String> getImagePaths()
+	public List<String> getImagePaths()
 	{
 		return imagePaths;
 	}

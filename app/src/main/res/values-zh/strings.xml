@@ -21,12 +21,14 @@
     <string name="map_attribution_mapzen">"由 %s 提供"</string>
     <string name="map_attribution_osm">"© OpenStreetMap 贡献者"</string>
     <string name="quest_generic_otherAnswers">"更多答案…"</string>
-    <string name="quest_generic_answer_notApplicable">"不好说"</string>
+    <string name="quest_generic_answer_notApplicable">"不好说…"</string>
     <string name="quest_generic_confirmation_title">"您确定吗？"</string>
     <string name="quest_generic_confirmation_yes">"是的，我确定"</string>
     <string name="quest_generic_confirmation_no">"我再看看"</string>
     <string name="quest_generic_error_field_empty">"您未填写此栏"</string>
     <string name="quest_leave_new_note_title">"有话要说？"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_leave_new_note_description">"需要与其他贡献者讨论以解决问题？您可以写在这里："</string>
     <string name="quest_leave_new_note_yes">"好的"</string>
     <string name="quest_leave_new_note_no">"以后再说"</string>
@@ -69,7 +71,7 @@
 
     <!-- Fuzzy -->
     <string name="about_title_authors">"作者"</string>
-    <string name="about_summary_authors">"© 2016–2018 Tobias Zwick 和贡献者们"</string>
+    <string name="about_summary_authors">"© 2016–2019 Tobias Zwick 和贡献者们"</string>
     <string name="about_title_repository">"代码仓库"</string>
     <string name="about_summary_repository">"GitHub"</string>
     <string name="about_title_report_error">"报告错误"</string>
@@ -93,8 +95,8 @@
     <string name="quest_openingHours_public_holidays_short">"假期"</string>
     <string name="quest_openingHours_open_end">"开放/关闭"</string>
     <string name="quest_openingHours_answer_247">"24*7 全天开放"</string>
-    <string name="quest_openingHours_answer_seasonal_opening_hours">"按月份不同"</string>
-    <string name="quest_openingHours_answer_no_regular_opening_hours">"不定期开放"</string>
+    <string name="quest_openingHours_answer_seasonal_opening_hours">"按月份不同…"</string>
+    <string name="quest_openingHours_answer_no_regular_opening_hours">"不定期开放…"</string>
     <string name="quest_openingHours_comment_title">"描述营业时间"</string>
     <string name="quest_openingHours_comment_description">"理想中，在标示上的文字都是言简意赅的，像是\"预约\"。不存在的标示并不需要代表这裡没有规律的营业时间。"</string>
     <string name="quest_buildingLevels_title">"这栋建筑有多少层？"</string>
@@ -174,7 +176,7 @@ OpenStreetMap不接受匿名编辑，您需要登录您的OpenStreetMap帐号。
 本应用会在你的附近找到非完整且可扩充的资料，以标记显示在地图上。每个只要回答简单的问题就可以解决。
 
 你所输入的资料会直接新增至开放街图，而不需要其他的编辑器。"</string>
-    <string name="quest_name_answer_noName">"没有名字"</string>
+    <string name="quest_name_answer_noName">"没有名字…"</string>
     <string name="quest_name_answer_noName_confirmation_title">"确定没有名字吗？"</string>
     <string name="quest_name_noName_confirmation_positive">"是的，没有"</string>
     <string name="quest_openingHours_add_times">"添加营业时间"</string>
@@ -246,7 +248,11 @@ OpenStreetMap不接受匿名编辑，您需要登录您的OpenStreetMap帐号。
     <string name="quest_maxspeed_answer_noSign_confirmation">"你有到街尾检查吗？
 如果整条路都没有标示的区块，那麽会套用预设限制。"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"对，并没有速限牌"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"市区道路跟乡村的预设速限并不相同。"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_urbanOk">"市区"</string>
     <string name="quest_maxspeed_answer_noSign_ruralOk">"市区之外"</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">"如果在干道交汇处有指标，那麽你不会在这一间找到个别的速限牌，因此整区将用同一个预设速度。"</string>
@@ -402,8 +408,8 @@ OpenStreetMap不接受匿名编辑，您需要登录您的OpenStreetMap帐号。
     <string name="quest_powerPolesMaterial_wood">"木头"</string>
     <string name="quest_powerPolesMaterial_metal">"钢铁"</string>
     <string name="quest_powerPolesMaterial_concrete">"水泥"</string>
-    <string name="quest_maxspeed_answer_advisory_speed_limit">"仅为建议的速度限制"</string>
-    <string name="quest_address_answer_house_name">"没有门牌号码但有名字"</string>
+    <string name="quest_maxspeed_answer_advisory_speed_limit">"仅为建议的速度限制…"</string>
+    <string name="quest_address_answer_house_name">"没有门牌号码但有名字…"</string>
     <string name="quest_address_house_name_label">"房屋名称："</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"屋顶楼层数"</string>
     <string name="quest_buildingLevels_levelsLabel2">"一般的楼层数 (不计算屋顶)"</string>
@@ -448,7 +454,7 @@ OpenStreetMap不接受匿名编辑，您需要登录您的OpenStreetMap帐号。
     <string name="default_disabled_msg_go_inside">"这一类问题已默认关闭，因为你很可能必须前往该地才能回答这类任务的答案。"</string>
     <string name="quest_housenumber_conscription_number">"征兵（Conscription）号码"</string>
     <string name="quest_housenumber_street_number_optional">"定位号码 (选填)"</string>
-    <string name="quest_cycleway_answer_contraflow_cycleway">"另一侧也有自行车车道"</string>
+    <string name="quest_cycleway_answer_contraflow_cycleway">"另一侧也有自行车车道…"</string>
     <string name="quest_openingHours_emptyAnswer">"你必须描述标示状况。如果没有标示，那麽你必须到店裡询问。"</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"无，但自行车可以使双向骑行"</string>
     <string name="quest_streetName_answer_noName_question">"这条路为什么没有名称？"</string>
@@ -512,7 +518,7 @@ OpenStreetMap不接受匿名编辑，您需要登录您的OpenStreetMap帐号。
     <string name="quest_streetName_pedestrian_title">"这条步行街叫什么？"</string>
     <string name="quest_streetSurface_square_title">"广场的舖面是什麽材质？"</string>
     <string name="quest_streetSurface_square_name_title">"广场 %s 的舖面是什麽材质？"</string>
-    <string name="quest_fee_answer_hours">"视时段与日期而定"</string>
+    <string name="quest_fee_answer_hours">"视时段与日期而定…"</string>
     <string name="quest_fee_add_times">"增加时间"</string>
     <string name="quest_fee_only_at_hours">"有收费，但只在..."</string>
     <string name="quest_fee_not_at_hours">"有收费，但有免费时段..."</string>
@@ -621,7 +627,7 @@ OpenStreetMap不接受匿名编辑，您需要登录您的OpenStreetMap帐号。
     <string name="quest_buildingType_hangar">"机库"</string>
     <string name="quest_buildingType_hangar_description">"直升机和太空梭的地方"</string>
     <string name="quest_buildingType_bunker">"掩体"</string>
-    <string name="quest_address_answer_no_housenumber">"这裡没有门牌号码"</string>
+    <string name="quest_address_answer_no_housenumber">"这裡没有门牌号码…"</string>
     <string name="quest_address_answer_no_housenumber_message1">"这栋建筑被标为："</string>
     <string name="quest_address_answer_no_housenumber_message2">"正确吗，还是这边不是建筑的一部分？"</string>
     <string name="quest_buildingType_shrine">"掩体"</string>
@@ -644,7 +650,7 @@ OpenStreetMap不接受匿名编辑，您需要登录您的OpenStreetMap帐号。
     <string name="quest_maxheight_parking_entrance_title">"这个停车场的限高多少？"</string>
     <string name="quest_maxheight_height_restrictor_title">"这个限高装置的高度限制是？"</string>
     <string name="quest_maxheight_tunnel_title">"这个隧道的高度限制是？"</string>
-    <string name="quest_maxheight_answer_noSign">"该处并没有标识"</string>
+    <string name="quest_maxheight_answer_noSign">"该处并没有标识…"</string>
     <string name="quest_maxheight_answer_noSign_question">"就算是最高的卡车（至少有4.5公尺 / 15英尺）也可以有非常充裕的空间通过吗？"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"这个高度听起来不太合理。您确定这是正确的吗？"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>

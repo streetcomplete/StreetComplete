@@ -1,7 +1,8 @@
 package de.westnordost.streetcomplete.data.meta;
 
 import android.content.res.AssetManager;
-import android.test.AndroidTestCase;
+
+import org.junit.Test;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -12,12 +13,15 @@ import java.util.Map;
 
 import de.westnordost.streetcomplete.quests.opening_hours.model.Weekdays;
 
-public class CountryInfosTest extends AndroidTestCase
+import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
+import static org.junit.Assert.*;
+
+public class CountryInfosTest
 {
 	private void checkFirstDayOfWorkweekIsValid(CountryInfo info)
 	{
 		assertNotNull(info.getFirstDayOfWorkweek());
-		assertTrue(Weekdays.getWeekdayIndex(info.getFirstDayOfWorkweek()) > -1);
+		assertTrue(Weekdays.Companion.getWeekdayIndex(info.getFirstDayOfWorkweek()) > -1);
 	}
 
 	private void checkMeasurementUnitIsEitherMetricOrImperial(CountryInfo info)
@@ -53,7 +57,7 @@ public class CountryInfosTest extends AndroidTestCase
 		checkStartOfWorkweekValid(info);
 	}
 
-	public void testAll() throws IOException
+	@Test public void all() throws IOException
 	{
 		Map<String, CountryInfo> infos = getAllCountryInfos();
 		for(Map.Entry<String,CountryInfo> elem : infos.entrySet())
@@ -75,8 +79,9 @@ public class CountryInfosTest extends AndroidTestCase
 
 	private Map<String, CountryInfo> getAllCountryInfos() throws IOException
 	{
-		AssetManager am = getContext().getAssets();
+		AssetManager am = getInstrumentation().getTargetContext().getAssets();
 		String[] fileList = am.list("country_metadata");
+		assertNotNull(fileList);
 		CountryInfos cis = new CountryInfos(am, null);
 		Map<String,CountryInfo> all = new HashMap<>();
 		for (String filename : fileList)

@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.osm;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import java.util.Date;
 import java.util.List;
@@ -60,7 +60,7 @@ public class OsmQuest implements Quest
 
 	@Override public LatLon[] getMarkerLocations()
 	{
-		if(getOsmElementQuestType().hasMarkersAtEnds() && geometry.polylines != null)
+		if(getOsmElementQuestType().getHasMarkersAtEnds() && geometry.polylines != null)
 		{
 			List<LatLon> polyline = geometry.polylines.get(0);
 			double length = SphericalEarthMath.distance(polyline);

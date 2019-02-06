@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:textSize="48dp"
         android:layout_centerVertical="true"
-        android:layout_toStartOf="@+id/capacityMultiplier"
+        android:layout_toStartOf="@+id/capacityMultiplierLabel"
         android:minEms="1"
         android:id="@+id/capacityInput"
         android:inputType="number"
@@ -19,7 +19,7 @@
         />
 
     <TextView
-        android:id="@+id/capacityMultiplier"
+        android:id="@+id/capacityMultiplierLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="38dp"
@@ -32,8 +32,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_toEndOf="@+id/capacityMultiplier"
-        android:id="@+id/capacityBike"
+        android:layout_toEndOf="@+id/capacityMultiplierLabel"
+        android:id="@+id/capacityBikeImage"
         android:background="@drawable/ic_motorcycle"/>
 
 </RelativeLayout>

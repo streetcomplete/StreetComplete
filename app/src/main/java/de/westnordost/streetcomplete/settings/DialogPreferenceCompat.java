@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.settings;
 
 import android.content.Context;
-import android.support.v7.preference.DialogPreference;
-import android.support.v7.preference.PreferenceDialogFragmentCompat;
+import androidx.preference.DialogPreference;
+import androidx.preference.PreferenceDialogFragmentCompat;
 import android.util.AttributeSet;
 
 public abstract class DialogPreferenceCompat extends DialogPreference

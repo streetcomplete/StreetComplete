@@ -23,18 +23,20 @@
     <string name="quest_generic_otherAnswers">"Altre risposte…"</string>
 
     <!-- Potrebbe essere più friendly "Non so dirlo"? -->
-    <string name="quest_generic_answer_notApplicable">"Non lo so"</string>
+    <string name="quest_generic_answer_notApplicable">"Non lo so…"</string>
     <string name="quest_generic_confirmation_title">"Sei sicuro?"</string>
     <string name="quest_generic_confirmation_yes">"Sì, sono sicuro"</string>
     <string name="quest_generic_confirmation_no">"Farò una verifica"</string>
     <string name="quest_generic_error_field_empty">"Hai lasciato questo campo vuoto"</string>
     <string name="quest_leave_new_note_title">"Preferisci invece lasciare una nota?"</string>
-    <string name="quest_leave_new_note_description">"Puoi lasciare una nota pubblica in questo punto in modo che altri mappatori possano commentare e sperabilmente risolvere:"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_leave_new_note_description">"Puoi lasciare una nota pubblica in questo punto in modo che altri mappatori possano commentare e sperabilmente risolvere oppure solo nascondi solo per te la ricerca"</string>
     <string name="quest_leave_new_note_yes">"OK"</string>
-    <string name="quest_leave_new_note_no">"No, lascia nascosto"</string>
+    <string name="quest_leave_new_note_no">"No, nascondi solo"</string>
     <string name="quest_streetName_title">"Qual è il nome di questa strada?"</string>
     <string name="quest_streetName_description">"come riportato sul cartello (le abbreviazioni vanno scritte per esteso):"</string>
-    <string name="quest_streetName_answer_noName_confirmation_description">"Spesso il segnale stradale è solamente ad un'estremità della strada. Inoltre potrebbero esserci segnali stradali aggiuntivi per vie laterali che appartengono a una strada più grande. Di solito, qualsiasi strada con case ha un nome."</string>
+    <string name="quest_streetName_answer_noName_confirmation_description">"A volte il segnale stradale è solamente ad un'estremità della strada. Inoltre nota che potrebbero non esserci segnali stradali aggiuntivi per vie laterali che appartengono a una strada più grande. Di solito, qualsiasi strada con case ha un nome."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Se il nome può essere scritto senza un'abbreviazione, allora dovrebbe essere scritto per intero. Molte abbreviazioni comuni vengono automaticamente rese per esteso durante la digitazione."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Nessuna abbreviazione"</string>
     <string name="quest_openingHours_name_title">"Quali sono gli orari di apertura di %s?"</string>
@@ -67,7 +69,7 @@
     <string name="action_about">"Informazioni su StreetComplete"</string>
     <string name="about_title_version">"Versione"</string>
     <string name="about_title_authors">"Ringraziamenti"</string>
-    <string name="about_summary_authors">"© 2016–2018 Tobias Zwick e contributori"</string>
+    <string name="about_summary_authors">"© 2016–2019 Tobias Zwick e contributori"</string>
     <string name="about_title_repository">"Repository codice sorgente"</string>
     <string name="about_summary_repository">"su GitHub"</string>
     <string name="about_title_report_error">"Segnala errore"</string>
@@ -89,8 +91,8 @@
     <string name="quest_openingHours_public_holidays_short">"Giorni festivi"</string>
     <string name="quest_openingHours_open_end">"finale aperto"</string>
     <string name="quest_openingHours_answer_247">"Aperto 24/7"</string>
-    <string name="quest_openingHours_answer_seasonal_opening_hours">"Diverso per mese"</string>
-    <string name="quest_openingHours_answer_no_regular_opening_hours">"Nessuna apertura regolare"</string>
+    <string name="quest_openingHours_answer_seasonal_opening_hours">"Diverso per mese…"</string>
+    <string name="quest_openingHours_answer_no_regular_opening_hours">"Nessuna apertura regolare…"</string>
     <string name="quest_openingHours_comment_title">"Descrivi gli orari di apertura"</string>
     <string name="quest_openingHours_comment_description">"A farla breve: idealmente vanno usate le parole nel cartello. Es.: \"su appuntamento\". L'assenza di un cartello non significa necessariamente che non ci siano orari di apertura regolari."</string>
     <string name="quest_buildingLevels_title">"Quanti piani ha questo edificio?"</string>
@@ -159,7 +161,7 @@ Tuttavia, prima di caricare le modifiche, l’app fa una verifica su un &lt;a hr
 Questa app trova dati da verificare e da estendere vicino a te a li mostra come marcatori su una mappa. Ciascuno di questi dati presenta delle domande a cui rispondere per completare le informazioni sul posto.
 
 Le informazioni inserite vengono aggiunte direttamente su OpenStreetMap a tuo nome senza aver bisogno di utilizzare un altro editor."</string>
-    <string name="quest_name_answer_noName">"Non ha un nome"</string>
+    <string name="quest_name_answer_noName">"Non ha un nome…"</string>
     <string name="quest_name_answer_noName_confirmation_title">"Sei sicuro sia senza nome?"</string>
     <string name="quest_name_noName_confirmation_positive">"Confermo. Nessun nome"</string>
     <string name="quest_openingHours_add_times">"Aggiungi orari di apertura"</string>
@@ -223,8 +225,8 @@ Le informazioni inserite vengono aggiunte direttamente su OpenStreetMap a tuo no
     <string name="quest_maxspeed_answer_noSign_confirmation">"Hai controllato alle estremità della strada?
 Se non ci sono segni lungo tutta la strada che si applicano alla sezione evidenziata, si applicano i limiti di velocità predefiniti."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Sì, nessun cartello"</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Le strade urbane hanno un limite di velocità diverso da quelle di campagna"</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOk">"In città"</string>
+    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Le strade urbane hanno un limite di velocità inferiore da quelle rurali."</string>
+    <string name="quest_maxspeed_answer_noSign_urbanOk">"Area urbana"</string>
     <string name="quest_maxspeed_answer_noSign_ruralOk">"Fuori città"</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">"Se trovi un cartello come questo vicino a un incrocio importante, non troverai altri cartelli individuali a ribadire il limite dato che il cartello di quell'incrocio si applica all'intera zona"</string>
     <string name="quest_sport_softball">"Softball"</string>
@@ -245,9 +247,7 @@ Se non ci sono segni lungo tutta la strada che si applicano alla sezione evidenz
     <string name="quest_wheelchairAccess_subway_entrance_name_title">"L'entrata della metro %s è accessibile con la sedia a rotelle?"</string>
     <string name="quest_wheelchairAccess_railway_station_name_title">"La stazione dei treni %s è accessibile con la sedia a rotelle?"</string>
     <string name="quest_wheelchairAccess_location_name_title">"Il luogo %s è accessibile con la sedia a rotelle?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_limited_description_business">"\"Parzialmente\" significa che c'è non più di un gradino per entrare nel negozio e che si può accedere con la sedia a rotelle alla maggior parte delle stanze."</string>
+    <string name="quest_wheelchairAccess_limited_description_business">"Parzialmente significa che c'è non più di un gradino per entrare nel locale e che si può accedere con la sedia a rotelle alla maggior parte delle stanze."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"\"Parzialmente\" significa che esiste almeno un gradino di accesso."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Il nome %s contiene un'abbreviazione?"</string>
     <string name="quest_baby_changing_table_toilets_title">"Questo bagno ha un fasciatoio?"</string>
@@ -359,8 +359,8 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_powerPolesMaterial_wood">"Legno"</string>
     <string name="quest_powerPolesMaterial_metal">"Acciaio"</string>
     <string name="quest_powerPolesMaterial_concrete">"Cemento"</string>
-    <string name="quest_maxspeed_answer_advisory_speed_limit">"Solo un limite di velocità consigliato"</string>
-    <string name="quest_address_answer_house_name">"Nessun numero di casa ma un nome"</string>
+    <string name="quest_maxspeed_answer_advisory_speed_limit">"Solo un limite di velocità consigliato…"</string>
+    <string name="quest_address_answer_house_name">"Nessun numero di casa ma un nome…"</string>
     <string name="quest_address_house_name_label">"Nome della casa:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"Piani nel tetto"</string>
     <string name="quest_buildingLevels_levelsLabel2">"Piani (senza contare il tetto)"</string>
@@ -409,11 +409,11 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="default_disabled_msg_go_inside">"Questo tipo di ricerca si presenta disabilitato perché è molto probabile che dovrai entrare nel luogo  "</string>
     <string name="quest_housenumber_conscription_number">"Numero di coscrizione"</string>
     <string name="quest_housenumber_street_number_optional">"Orientamento dei numero (opzionale)"</string>
-    <string name="quest_cycleway_answer_contraflow_cycleway">"Pista ciclabile anche sull'altro lato"</string>
+    <string name="quest_cycleway_answer_contraflow_cycleway">"Pista ciclabile anche sull'altro lato…"</string>
     <string name="quest_openingHours_emptyAnswer">"Devi descrivere cosa c'è sul cartello. Se non c'è nessun segno, dovresti chiedere gli orari di apertura all'interno."</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"nessuna, ma i ciclisti possono usare la strada in entrambe le direzioni"</string>
     <string name="quest_streetName_answer_noName_question">"Perché non ha un nome?"</string>
-    <string name="quest_streetName_answer_noProperStreet_service2">"È una strada tipo un viottolo d'accesso o una corsia di un parcheggio"</string>
+    <string name="quest_streetName_answer_noProperStreet_service2">"È qualcosa tipo un viottolo d'accesso o una corsia di un parcheggio"</string>
     <string name="quest_streetName_answer_noProperStreet_track2">"È una strada agricola o forestale"</string>
     <string name="quest_streetName_answer_noName_noname">"Nessuna delle precedenti, semplicemente non ha un nome"</string>
     <string name="quest_wheelchairAccess_toilets_title">"Questi servizi igienici sono accessibili con la sedia a rotelle?"</string>
@@ -467,7 +467,7 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_streetName_pedestrian_title">"Qual è il nome di questa strada pedonale?"</string>
     <string name="quest_streetSurface_square_title">"Che tipo di pavimentazione ha questa piazza?"</string>
     <string name="quest_streetSurface_square_name_title">"Che tipo di pavimentazione ha la piazza %s?"</string>
-    <string name="quest_fee_answer_hours">"Dipende da giorno e ora"</string>
+    <string name="quest_fee_answer_hours">"Dipende da giorno e ora…"</string>
     <string name="quest_fee_add_times">"Aggiungi orari"</string>
     <string name="quest_fee_only_at_hours">"Sì, ma solo..."</string>
     <string name="quest_fee_not_at_hours">"Sì, ma non..."</string>
@@ -477,7 +477,7 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_housenumber_multiple_numbers">"Ha più numeri civici"</string>
     <string name="quest_housenumber_multiple_numbers_description">"Basta inserire i numeri separati da virgole o intervalli. Ad esempio 1,3 o 2-6."</string>
     <string name="quest_bicycle_parking_type_stand">"Porta biciclette alto"</string>
-    <string name="quest_bicycle_parking_type_wheelbender">"Rastrelliera per biciclette"</string>
+    <string name="quest_bicycle_parking_type_wheelbender">"Rastrelliera per biciclette (supporto solo per la ruota)"</string>
     <string name="quest_bicycle_parking_type_shed">"Capannone"</string>
     <string name="quest_bicycle_parking_type_locker">"Armadietti"</string>
     <string name="quest_bicycle_parking_type_building">"Fabbricato"</string>
@@ -575,7 +575,7 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_buildingType_hangar">"Aviorimessa"</string>
     <string name="quest_buildingType_hangar_description">"rimessa per aeroplani, elicotteri e velivoli spaziali"</string>
     <string name="quest_buildingType_bunker">"Bunker"</string>
-    <string name="quest_address_answer_no_housenumber">"Non ha un numero civico"</string>
+    <string name="quest_address_answer_no_housenumber">"Non ha un numero civico…"</string>
     <string name="quest_address_answer_no_housenumber_message1">"L’edificio era etichettato come:"</string>
     <string name="quest_address_answer_no_housenumber_message2">"È corretto e non si tratta solo di una parte di un edificio?"</string>
     <string name="quest_buildingType_shrine">"Sacello"</string>
@@ -598,7 +598,7 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_maxheight_parking_entrance_title">"Qual è il limite di altezza per questo ingresso al parcheggio?"</string>
     <string name="quest_maxheight_height_restrictor_title">"Qual è il limite di altezza per questo limitatore di altezza?"</string>
     <string name="quest_maxheight_tunnel_title">"Qual è il limite di altezza in questo tunnel?"</string>
-    <string name="quest_maxheight_answer_noSign">"Non c’è alcun cartello"</string>
+    <string name="quest_maxheight_answer_noSign">"Non c’è alcun cartello…"</string>
     <string name="quest_maxheight_answer_noSign_question">"C’è spazio sufficiente per far passare anche il più alto dei camion (almeno 4,5 metri / 15 piedi)?"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Questa altezza sembra irreale. Sicuro che sia corretta?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
@@ -626,4 +626,6 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_motorcycleParkingCapacity_title">"Quanti motocicli si possono parcheggiare qua?"</string>
     <string name="quest_motorcycleParkingCoveredStatus_title">"Questo parcheggio per motocicli è coperto (protetto dalla pioggia)?"</string>
     <string name="default_disabled_msg_maxspeed">"Questo tipo di compito è disabilitato perché generalmente è richiesto di controllare tutta la strada per cercare i segnali dei limiti di velocità, non solo la sezione evidenziata. Questo potrebbe richiedere molto tempo solo per risolvere un singolo compito."</string>
+    <string name="pref_title_quests_restore_hidden">"Ripristina le ricerche nascoste"</string>
+    <string name="restore_hidden_success">"Ripristinate %d ricerche nascoste"</string>
 </resources>

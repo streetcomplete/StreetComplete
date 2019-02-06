@@ -2,9 +2,8 @@ package de.westnordost.streetcomplete.data.osm.upload;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 
+import org.jetbrains.annotations.NotNull;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -26,8 +25,9 @@ import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.data.QuestStatus;
 import de.westnordost.streetcomplete.data.changesets.OpenChangesetKey;
 import de.westnordost.streetcomplete.data.changesets.OpenChangesetsDao;
-import de.westnordost.streetcomplete.data.osm.AOsmElementQuestType;
+import de.westnordost.streetcomplete.data.osm.Countries;
 import de.westnordost.streetcomplete.data.osm.ElementGeometry;
+import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.OsmQuest;
 import de.westnordost.streetcomplete.data.osm.OsmQuestGiver;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChanges;
@@ -262,18 +262,22 @@ public class OsmQuestChangesUploadTest
 		verify(statisticsDao).addOne("TestQuestType");
 	}
 
-	private static class TestQuestType extends AOsmElementQuestType
+	private static class TestQuestType implements OsmElementQuestType<String>
 	{
-		@Override public void applyAnswerTo(Bundle answer, StringMapChangesBuilder changes) { }
-		@Override public String getCommitMessage() { return null; }
-		@Override public boolean download(BoundingBox bbox, MapDataWithGeometryHandler handler)
-		{
-			return true;
-		}
-		@Override public AbstractQuestAnswerFragment createForm() { return null; }
+		@NotNull @Override public String getCommitMessage() { return ""; }
+		@Override public int getTitle(@NotNull Map<String, String> tags) { return 0; }
+		@Override public boolean download(@NotNull BoundingBox bbox, @NotNull MapDataWithGeometryHandler handler) { return false; }
+		@Override public Boolean isApplicableTo(@NotNull Element element) { return null; }
+		@Override public void applyAnswerTo(@NotNull String answer, @NotNull StringMapChangesBuilder changes) { }
 		@Override public int getIcon() { return 0; }
-		@Override public int getTitle(@NonNull Map<String,String> tags) { return 0; }
-		@Nullable @Override public Boolean isApplicableTo(Element element) { return false; }
+		@NotNull @Override public AbstractQuestAnswerFragment createForm() {
+			return new AbstractQuestAnswerFragment<String>() {};
+		}
+		@NotNull @Override public Countries getEnabledForCountries() { return Countries.ALL; }
+		@Override public boolean getHasMarkersAtEnds() { return false; }
+		@Override public int getTitle() { return 0; }
+		@Override public void cleanMetadata() {}
+		@Override public int getDefaultDisabledMessage() { return 0; }
 	}
 
 	private static OsmQuest createAnsweredQuestWithAppliableChange()

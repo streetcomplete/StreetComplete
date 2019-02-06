@@ -2,5 +2,5 @@
 isLeftHandTraffic: true
 mobileCountryCode: 537
 officialLanguages: [tpi, en, ho]
-orchardProduces: [coconut, palm_oil, cacao, banana, coffee, rubber, tea, vanilla, pineapple, nutmeg,
-  tomato, chilli_pepper, sweet_pepper]
+orchardProduces: [banana, coconut, coffee, cacao, pineapple, rubber, tea, tomato, vanilla, nutmeg,
+  chilli_pepper, sweet_pepper]

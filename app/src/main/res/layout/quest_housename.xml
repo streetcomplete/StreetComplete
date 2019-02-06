@@ -22,8 +22,8 @@
         android:background="#fff"
         >
 
-        <android.support.v7.widget.AppCompatEditText
-            android:id="@+id/inputHouseName"
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/houseNameInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/background_housenumber_frame"

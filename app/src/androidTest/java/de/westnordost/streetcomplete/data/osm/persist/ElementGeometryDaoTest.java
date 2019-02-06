@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.persist;
 
+import org.junit.Before;
+import org.junit.Test;
 import org.mockito.Mockito;
 
 import java.util.ArrayList;
@@ -13,29 +15,30 @@ import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.map.data.OsmLatLon;
 
+import static org.junit.Assert.*;
+
 public class ElementGeometryDaoTest extends ApplicationDbTestCase
 {
 	private ElementGeometryDao dao;
 
-	@Override public void setUp() throws Exception
+	@Before public void createDao()
 	{
-		super.setUp();
 		dao = new ElementGeometryDao(dbHelper, serializer);
 	}
 
-	public void testGetNull()
+	@Test public void testGetNull()
 	{
 		assertNull(dao.get(Element.Type.NODE, 0));
 	}
 
-	public void testGetNullDifferentPKey()
+	@Test public void getNullDifferentPKey()
 	{
 		dao.put(Element.Type.NODE, 0, createSimpleGeometry());
 		assertNull(dao.get(Element.Type.WAY, 0));
 		assertNull(dao.get(Element.Type.NODE, 1));
 	}
 
-	public void testPutAll()
+	@Test public void putAll()
 	{
 		ElementGeometry geometry = createSimpleGeometry();
 		ArrayList<ElementGeometryDao.Row> rows = new ArrayList<>();
@@ -47,7 +50,7 @@ public class ElementGeometryDaoTest extends ApplicationDbTestCase
 		assertNotNull(dao.get(Element.Type.NODE, 1));
 	}
 
-	public void testSimplePutGet()
+	@Test public void simplePutGet()
 	{
 		ElementGeometry geometry = createSimpleGeometry();
 		dao.put(Element.Type.NODE, 0, geometry);
@@ -56,7 +59,7 @@ public class ElementGeometryDaoTest extends ApplicationDbTestCase
 		assertEquals(geometry, dbGeometry);
 	}
 
-	public void testPolylineGeometryPutGet()
+	@Test public void polylineGeometryPutGet()
 	{
 		List<List<LatLon>> polylines = new ArrayList<>();
 		polylines.add(createSomeLatLons(0));
@@ -68,7 +71,7 @@ public class ElementGeometryDaoTest extends ApplicationDbTestCase
 		assertEquals(geometry, dbGeometry);
 	}
 
-	public void testPolygonGeometryPutGet()
+	@Test public void polygonGeometryPutGet()
 	{
 		List<List<LatLon>> polygons = new ArrayList<>();
 		polygons.add(createSomeLatLons(0));
@@ -81,7 +84,7 @@ public class ElementGeometryDaoTest extends ApplicationDbTestCase
 		assertEquals(geometry, dbGeometry);
 	}
 
-	public void testDeleteUnreferenced()
+	@Test public void deleteUnreferenced()
 	{
 		Element.Type type = Element.Type.WAY;
 		long id = 0;

@@ -2,5 +2,5 @@
 measurementSystem: [imperial, metric]
 mobileCountryCode: 702
 officialLanguages: [en, bzj]
-orchardProduces: [orange, grapefruit, banana, cacao, papaya, coconut, pineapple, cashew_nut, chilli_pepper,
-  sweet_pepper, coffee, tomato, guava, mango, mangosteen]
+orchardProduces: [orange, banana, grapefruit, tomato, chilli_pepper, sweet_pepper, pineapple, papaya,
+  coconut, cacao, coffee, guava, mango, mangosteen]

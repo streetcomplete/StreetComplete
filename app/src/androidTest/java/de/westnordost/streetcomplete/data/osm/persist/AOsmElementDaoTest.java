@@ -6,14 +6,19 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
 
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
 import java.util.ArrayList;
 
-import de.westnordost.streetcomplete.data.AndroidDbTestCase;
 import de.westnordost.osmapi.map.data.Element;
 
+import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
-public class AOsmElementDaoTest extends AndroidDbTestCase
+public class AOsmElementDaoTest
 {
 	private static final String TABLE_NAME = "test";
 	private static final String ID_COL = "id";
@@ -23,33 +28,26 @@ public class AOsmElementDaoTest extends AndroidDbTestCase
 	private TestOsmElementDao dao;
 	private SQLiteOpenHelper dbHelper;
 
-	public AOsmElementDaoTest()
+	@Before public void setUpHelper()
 	{
-		super(TESTDB);
-	}
-
-	@Override public void setUp() throws Exception
-	{
-		super.setUp();
-		dbHelper = new TestDbHelper(getContext());
+		dbHelper = new TestDbHelper(getInstrumentation().getTargetContext());
 		dao = new TestOsmElementDao(dbHelper);
 	}
 
-	@Override public void tearDown() throws Exception
+	@After public void tearDownHelper()
 	{
-		// first close, then call super (= delete database) to avoid warning
 		dbHelper.close();
-		super.tearDown();
+		getInstrumentation().getTargetContext().deleteDatabase(TESTDB);
 	}
 
-	public void testPutGet()
+	@Test public void putGet()
 	{
 		dao.put(createElement(6,1));
 		assertEquals(6,dao.get(6).getId());
 		assertEquals(1,dao.get(6).getVersion());
 	}
 
-	public void testPutAll()
+	@Test public void putAll()
 	{
 		ArrayList<Element> elements = new ArrayList<>();
 		elements.add(createElement(1,2));
@@ -60,19 +58,19 @@ public class AOsmElementDaoTest extends AndroidDbTestCase
 		assertNotNull(dao.get(2));
 	}
 
-	public void testPutOverwrite()
+	@Test public void putOverwrite()
 	{
 		dao.put(createElement(6,0));
 		dao.put(createElement(6,5));
 		assertEquals(5,dao.get(6).getVersion());
 	}
 
-	public void testGetNull()
+	@Test public void getNull()
 	{
 		assertNull(dao.get(6));
 	}
 
-	public void testDelete()
+	@Test public void delete()
 	{
 		dao.put(createElement(6,0));
 		dao.delete(6);

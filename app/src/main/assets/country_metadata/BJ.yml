@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
 mobileCountryCode: 616
 officialLanguages: [fr, fon]
-orchardProduces: [cashew_nut, tomato, palm_oil, chilli_pepper, sweet_pepper, coconut, pineapple, orange,
-  banana, guava, mango, mangosteen, kola_nut, pepper, date, coffee]
+orchardProduces: [tomato, pineapple, cashew_nut, chilli_pepper, sweet_pepper, coconut, banana, guava,
+  mango, mangosteen, orange, date, kola_nut, pepper, coffee]

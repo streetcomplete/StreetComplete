@@ -2,6 +2,10 @@ package de.westnordost.streetcomplete.data;
 
 import android.database.sqlite.SQLiteOpenHelper;
 
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -12,34 +16,29 @@ import java.util.List;
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.OsmLatLon;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
-public class AQuestDaoTest extends AndroidDbTestCase
+
+public class AQuestDaoTest
 {
 	private TestQuestDao dao;
 	private SQLiteOpenHelper dbHelper;
 
-	public AQuestDaoTest()
+	@Before public void setUpHelper()
 	{
-		super(TestQuestDao.TESTDB);
-	}
-
-	@Override public void setUp() throws Exception
-	{
-		super.setUp();
-		dbHelper = new TestQuestDao.TestDbHelper(getContext());
+		dbHelper = new TestQuestDao.TestDbHelper(getInstrumentation().getTargetContext());
 		dao = new TestQuestDao(dbHelper);
 	}
 
-	@Override public void tearDown() throws Exception
+	@After public void tearDownHelper()
 	{
-		// first close, then call super (= delete database) to avoid warning
 		dbHelper.close();
-		super.tearDown();
+		getInstrumentation().getTargetContext().deleteDatabase(TestQuestDao.TESTDB);
 	}
 
-	public void testAddGet()
+	@Test public void addGet()
 	{
 		long id = 3;
 		Quest q = createQuest(id,0,0, QuestStatus.HIDDEN);
@@ -51,7 +50,7 @@ public class AQuestDaoTest extends AndroidDbTestCase
 		assertEquals(q.getStatus(), q2.getStatus());
 	}
 
-	public void testAddAll()
+	@Test public void addAll()
 	{
 		Collection<Quest> quests = new ArrayList<>();
 
@@ -61,7 +60,7 @@ public class AQuestDaoTest extends AndroidDbTestCase
 		assertEquals(2,dao.addAll(quests));
 	}
 
-	public void testAddAllNoOverwrite()
+	@Test public void addAllNoOverwrite()
 	{
 		Collection<Quest> quests = new ArrayList<>();
 
@@ -71,7 +70,7 @@ public class AQuestDaoTest extends AndroidDbTestCase
 		assertEquals(1,dao.addAll(quests));
 	}
 
-	public void testAddNoOverwrite()
+	@Test public void addNoOverwrite()
 	{
 		assertTrue(dao.add(createQuest(3,0,0, QuestStatus.HIDDEN)));
 		assertFalse(dao.add(createQuest(3,0,0, QuestStatus.NEW)));
@@ -79,7 +78,7 @@ public class AQuestDaoTest extends AndroidDbTestCase
 		assertEquals(QuestStatus.HIDDEN, dao.get(3).getStatus());
 	}
 
-	public void testReplace()
+	@Test public void replace()
 	{
 		assertTrue(dao.add(createQuest(3,0,0, QuestStatus.HIDDEN)));
 		assertTrue(dao.replace(createQuest(3,0,0, QuestStatus.NEW)));
@@ -88,14 +87,14 @@ public class AQuestDaoTest extends AndroidDbTestCase
 		assertEquals(1,dao.getAll(null,null).size());
 	}
 
-	public void testDelete()
+	@Test public void delete()
 	{
 		assertFalse(dao.delete(0));
 		dao.add(createQuest(1,0,0, QuestStatus.NEW));
 		assertTrue(dao.delete(1));
 	}
 
-	public void testDeleteAll()
+	@Test public void deleteAll()
 	{
 		dao.add(createQuest(0,0,0, QuestStatus.NEW));
 		dao.add(createQuest(1,0,0, QuestStatus.NEW));
@@ -103,14 +102,14 @@ public class AQuestDaoTest extends AndroidDbTestCase
 		assertEquals(2, dao.deleteAll(Arrays.asList(1L, 2L)));
 	}
 
-	public void testUpdate()
+	@Test public void update()
 	{
 		dao.add(createQuest(1,0,0, QuestStatus.NEW));
 		dao.update(createQuest(1,0,0, QuestStatus.ANSWERED));
 		assertEquals(QuestStatus.ANSWERED, dao.get(1).getStatus());
 	}
 
-	public void testGetAllByBoundingBox()
+	@Test public void getAllByBoundingBox()
 	{
 		BoundingBox bbox = new BoundingBox(50,1,51,2);
 
@@ -132,43 +131,43 @@ public class AQuestDaoTest extends AndroidDbTestCase
 		assertEquals(2, dao.getCount(bbox, QuestStatus.NEW));
 	}
 
-	public void testGetCountWhenEmpty()
+	@Test public void getCountWhenEmpty()
 	{
 		assertEquals(0, dao.getCount(new BoundingBox(50,1,51,2), QuestStatus.NEW));
 	}
 
-	public void testGetLastSolvedContainsOnlySolvedQuests()
+	@Test public void getLastSolvedContainsOnlySolvedQuests()
 	{
 		dao.add(createQuest(0,0, QuestStatus.NEW));
 		dao.add(createQuest(2,0, QuestStatus.INVISIBLE));
 		assertNull(dao.getLastSolved());
 	}
 
-	public void testGetLastSolvedIncludesClosedQuests()
+	@Test public void getLastSolvedIncludesClosedQuests()
 	{
 		dao.add(createQuest(0,0, QuestStatus.CLOSED));
 		assertNotNull(dao.getLastSolved());
 	}
 
-	public void testGetLastSolvedIncludesAnsweredQuests()
+	@Test public void getLastSolvedIncludesAnsweredQuests()
 	{
 		dao.add(createQuest(1,0, QuestStatus.ANSWERED));
 		assertNotNull(dao.getLastSolved());
 	}
 
-	public void testGetLastSolvedIncludesHiddenQuests()
+	@Test public void getLastSolvedIncludesHiddenQuests()
 	{
 		dao.add(createQuest(1,0, QuestStatus.HIDDEN));
 		assertNotNull(dao.getLastSolved());
 	}
 
-	public void testGetLastSolvedDoesNotIncludeRevertedQuests()
+	@Test public void getLastSolvedDoesNotIncludeRevertedQuests()
 	{
 		dao.add(createQuest(0,0, QuestStatus.REVERT));
 		assertNull(dao.getLastSolved());
 	}
 
-	public void testGetLastSolvedSortsByLastUpdate()
+	@Test public void getLastSolvedSortsByLastUpdate()
 	{
 		dao.add(createQuest(0,10000, QuestStatus.ANSWERED));
 		dao.add(createQuest(1,20000, QuestStatus.CLOSED));

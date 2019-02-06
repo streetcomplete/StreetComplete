@@ -21,12 +21,14 @@
     <string name="map_attribution_mapzen">"Λειτουργεί με %s"</string>
     <string name="map_attribution_osm">"Συνεισφέροντες στο © OpenStreetMap"</string>
     <string name="quest_generic_otherAnswers">"Άλλες απαντήσεις..."</string>
-    <string name="quest_generic_answer_notApplicable">"Δεν μπορώ να πω"</string>
+    <string name="quest_generic_answer_notApplicable">"Δεν μπορώ να πω…"</string>
     <string name="quest_generic_confirmation_title">"Είσαι σίγουρος;"</string>
     <string name="quest_generic_confirmation_yes">"Ναι, είμαι σίγουρος"</string>
     <string name="quest_generic_confirmation_no">"Θα το ελέγξω"</string>
     <string name="quest_generic_error_field_empty">"Άφησες αυτό το πεδίο άδειο"</string>
     <string name="quest_leave_new_note_title">"Θα αφήσετε σημείωμα αντ' αυτού;"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_leave_new_note_description">"Μπορείτε να αφήσετε ένα δημόσιο σημείωμα στη θέση αυτή, το οποίο άλλοι χαρτογράφοι μπορούν να σχολιάσουν και ελπίζουμε να επιλύσουν:"</string>
     <string name="quest_leave_new_note_yes">"ΟΚ"</string>
     <string name="quest_leave_new_note_no">"Όχι, απλά κρύψε"</string>
@@ -65,7 +67,7 @@
     <string name="action_about">"Σχετικά με το StreetComplete"</string>
     <string name="about_title_version">"Έκδοση"</string>
     <string name="about_title_authors">"Ευχαριστίες"</string>
-    <string name="about_summary_authors">"2016-2018 Tobias Zwick και συνεργάτες"</string>
+    <string name="about_summary_authors">"2016-2019 Tobias Zwick και συνεργάτες"</string>
     <string name="about_title_repository">"Πηγή αποθήκευσης"</string>
     <string name="about_summary_repository">"στο GitHub"</string>
     <string name="about_title_report_error">"Αναφορά σφάλματος"</string>
@@ -87,8 +89,8 @@
     <string name="quest_openingHours_public_holidays_short">"PH"</string>
     <string name="quest_openingHours_open_end">"ανοιχτό τέλος"</string>
     <string name="quest_openingHours_answer_247">"Ανοιχτά 24/7"</string>
-    <string name="quest_openingHours_answer_seasonal_opening_hours">"Διαφέρει με τον μήνα"</string>
-    <string name="quest_openingHours_answer_no_regular_opening_hours">"Χωρίς κανονικές ώρες λειτουργίας"</string>
+    <string name="quest_openingHours_answer_seasonal_opening_hours">"Διαφέρει με τον μήνα…"</string>
+    <string name="quest_openingHours_answer_no_regular_opening_hours">"Χωρίς κανονικές ώρες λειτουργίας…"</string>
     <string name="quest_openingHours_comment_title">"Περιγράψτε τις ώρες λειτουργίας"</string>
     <string name="quest_openingHours_comment_description">"Να είστε συνοπτικός, ιδανικά χρησιμοποιήστε τη διατύπωση από το σύμβολο. Π.χ. \"με ραντεβού\". Η απουσία ενός συμβόλου δεν σημαίνει απαραίτητα ότι δεν υπάρχουν κανονικές ώρες λειτουργίας."</string>
     <string name="quest_buildingLevels_title">"Πόσα επίπεδα έχει αυτό το κτίριο;"</string>
@@ -160,7 +162,7 @@
 Αυτή η εφαρμογή βρίσκει ημιτελή και επεκτάσιμα δεδομένα στην περιοχή σας και τα εμφανίζει στον χάρτη ως σημάδια. Κάθε ένα από αυτά είναι επιλύσιμα απαντώντας σε μια απλή ερώτηση για να συμπληρώσετε τις πληροφορίες στην τοποθεσία.
 
 Οι πληροφορίες που εισάγετε προστίθενται απευθείας στο OpenStreetMap στο όνομά σας, χωρίς να χρειάζεται η χρήση άλλου επεξεργαστή."</string>
-    <string name="quest_name_answer_noName">"δεν έχει όνομα"</string>
+    <string name="quest_name_answer_noName">"δεν έχει όνομα…"</string>
     <string name="quest_name_answer_noName_confirmation_title">"Πραγματικά χωρίς όνομα;"</string>
     <string name="quest_name_noName_confirmation_positive">"Ναι, χωρίς όνομα"</string>
     <string name="quest_openingHours_add_times">"Προσθήκη χρώνων έναρξης"</string>
@@ -224,7 +226,11 @@
     <string name="quest_maxspeed_answer_noSign_confirmation">"Ελέγξατε στις άκρες του δρόμου;
 Εάν δεν υπάρχουν πινακίδες σε ολόκληρο το δρόμο που ισχύουν για το επισημασμένο τμήμα, ισχύουν όρια προκαθορισμένης ταχύτητας."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Ναι, κανένα σημάδι"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Οι δρόμοι σε αστικές (σε πόλεις ή πυκνοκατοικημένες) περιοχές έχουν διαφορετικό όριο ταχύτητας σε σχέση με τους εξοχικούς δρόμους."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_urbanOk">"Αστικό"</string>
     <string name="quest_maxspeed_answer_noSign_ruralOk">"Εξοχικό"</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">"Εάν υπάρχει μία πινακίδα σαν αυτή στην κεντρική διασταύρωση του δρόμου, δεν θα βρείτε μεμονωμένες πινακίδες μέσα στη περιοχή επειδή το όριο ταχύτητας που δημοσιεύτηκε εκεί ισχύει για ολόκληρη τη περιοχή."</string>
@@ -361,8 +367,8 @@
     <string name="quest_powerPolesMaterial_wood">"Ξύλο"</string>
     <string name="quest_powerPolesMaterial_metal">"Ατσάλι"</string>
     <string name="quest_powerPolesMaterial_concrete">"Τσιμέντο"</string>
-    <string name="quest_maxspeed_answer_advisory_speed_limit">"Απλά ένα συμβουλευτικό όριο ταχύτητας"</string>
-    <string name="quest_address_answer_house_name">"Δεν υπάρχει αριθμός οικίας, αλλά όνομα"</string>
+    <string name="quest_maxspeed_answer_advisory_speed_limit">"Απλά ένα συμβουλευτικό όριο ταχύτητας…"</string>
+    <string name="quest_address_answer_house_name">"Δεν υπάρχει αριθμός οικίας, αλλά όνομα…"</string>
     <string name="quest_address_house_name_label">"Όνομα οικίας:
 "</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"επίπεδα στην οροφή"</string>
@@ -410,7 +416,7 @@
     <string name="default_disabled_msg_go_inside">"Αυτός ο τύπος αναζήτησης είναι απενεργοποιημένος από προεπιλογή, επειδή πιθανότατα θα πρέπει να εισέλθετε στον χώρο για να μπορέσετε να απαντήσετε σε μια αναζήτηση αυτού του τύπου."</string>
     <string name="quest_housenumber_conscription_number">"Αριθμός συνταγογράφησης"</string>
     <string name="quest_housenumber_street_number_optional">"Αριθμός προσανατολισμού (προαιρετικό)"</string>
-    <string name="quest_cycleway_answer_contraflow_cycleway">"Επίσης, ποδηλατόδρομος από την άλλη πλευρά"</string>
+    <string name="quest_cycleway_answer_contraflow_cycleway">"Επίσης, ποδηλατόδρομος από την άλλη πλευρά…"</string>
     <string name="quest_openingHours_emptyAnswer">"Πρέπει να περιγράψετε τι υπάρχει στην πινακίδα. Εάν δεν υπάρχει καμία πινακίδα, θα πρέπει να ρωτήσετε μέσα για τις ώρες λειτουργίας."</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"κανείς, αλλά οι ποδηλάτες μπορούν να χρησιμοποιούν το δρόμο και προς τις δύο κατευθύνσεις"</string>
     <string name="quest_streetName_answer_noName_question">"Γιατί δεν έχει όνομα;"</string>
@@ -469,7 +475,7 @@
     <string name="quest_streetName_pedestrian_title">"Ποιο είναι το όνομα αυτού του πεζόδρομου;"</string>
     <string name="quest_streetSurface_square_title">"Τι επιφάνεια έχει αυτή η πλατεία;"</string>
     <string name="quest_streetSurface_square_name_title">"Τι επιφάνεια έχει αυτή η πλατεία %s εδώ;"</string>
-    <string name="quest_fee_answer_hours">"Εξαρτάται από την ώρα και την ημέρα"</string>
+    <string name="quest_fee_answer_hours">"Εξαρτάται από την ώρα και την ημέρα…"</string>
     <string name="quest_fee_add_times">"Προσθέστε ώρες"</string>
     <string name="quest_fee_only_at_hours">"Ναι, αλλά μόνο..."</string>
     <string name="quest_fee_not_at_hours">"Ναι, αλλά όχι..."</string>
@@ -579,7 +585,7 @@
     <string name="quest_buildingType_hangar">"Υπόστεγο αεροσκαφών "</string>
     <string name="quest_buildingType_hangar_description">"αποθήκη αεροπλάνων, ελικοπτέρων ή διαστημικών οχημάτων"</string>
     <string name="quest_buildingType_bunker">"Οχυρό"</string>
-    <string name="quest_address_answer_no_housenumber">"Δεν έχει αριθμό σπιτιού"</string>
+    <string name="quest_address_answer_no_housenumber">"Δεν έχει αριθμό σπιτιού…"</string>
     <string name="quest_address_answer_no_housenumber_message1">"Το κτίριο χαρακτηρίστηκε ως:"</string>
     <string name="quest_address_answer_no_housenumber_message2">"Είναι αυτό σωστό και δεν είναι μόνο τμήμα ενός κτιρίου;"</string>
     <string name="quest_buildingType_shrine">"Ναός"</string>
@@ -602,7 +608,7 @@
     <string name="quest_maxheight_parking_entrance_title">"Ποιο είναι το όριο ύψους αυτής της εισόδου στάθμευσης;"</string>
     <string name="quest_maxheight_height_restrictor_title">"Ποιο είναι το όριο ύψους αυτού του περιοριστή ύψους;"</string>
     <string name="quest_maxheight_tunnel_title">"Ποιο είναι το όριο ύψους αυτής της σήραγγας;"</string>
-    <string name="quest_maxheight_answer_noSign">"Δεν υπάρχει πινακίδα"</string>
+    <string name="quest_maxheight_answer_noSign">"Δεν υπάρχει πινακίδα…"</string>
     <string name="quest_maxheight_answer_noSign_question">"Υπάρχει αρκετός χώρος για να περάσουν ακόμα και τα ψηλότερα φορτηγά (τουλάχιστον περίπου 4,5 μέτρα / 15 πόδια);"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Αυτό το ύψος φαίνεται απίθανο. Είστε βέβαιοι ότι είναι σωστό;"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>

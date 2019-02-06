@@ -21,12 +21,14 @@
     <string name="map_attribution_mapzen">"%s tarafından desteklenmektedir"</string>
     <string name="map_attribution_osm">"© OpenStreetMap katkıda bulunan kullanıcılar"</string>
     <string name="quest_generic_otherAnswers">"Diğer cevaplar…"</string>
-    <string name="quest_generic_answer_notApplicable">"Söyleyemem"</string>
+    <string name="quest_generic_answer_notApplicable">"Söyleyemem…"</string>
     <string name="quest_generic_confirmation_title">"Emin misiniz?"</string>
     <string name="quest_generic_confirmation_yes">"Evet eminim"</string>
     <string name="quest_generic_confirmation_no">"Kontrol edeceğim"</string>
     <string name="quest_generic_error_field_empty">"Bu alanı boş bıraktın"</string>
     <string name="quest_leave_new_note_title">"Bunun yerine bir not bırakmak mı?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_leave_new_note_description">"Diğer haritacıların yorum yapabileceği ve umarım çözeceği bu konuma ortak bir not bırakabilirsiniz:"</string>
     <string name="quest_leave_new_note_yes">"Tamam"</string>
     <string name="quest_leave_new_note_no">"Hayır, sadece gizle"</string>
@@ -69,7 +71,7 @@
 
     <!-- Fuzzy -->
     <string name="about_title_authors">"Yazarlar"</string>
-    <string name="about_summary_authors">"© 2016–2018 Tobias Zwick ve katkıda bulunan kişiler"</string>
+    <string name="about_summary_authors">"© 2016–2019 Tobias Zwick ve katkıda bulunan kişiler"</string>
     <string name="about_title_repository">"Kaynak havuzu"</string>
     <string name="about_summary_repository">"GitHub'da"</string>
     <string name="about_title_report_error">"Hata bildir"</string>
@@ -95,8 +97,8 @@
     <string name="quest_openingHours_public_holidays_short">"PH"</string>
     <string name="quest_openingHours_open_end">"Açık uç"</string>
     <string name="quest_openingHours_answer_247">"7/24 açık"</string>
-    <string name="quest_openingHours_answer_seasonal_opening_hours">"Aylara göre değişir"</string>
-    <string name="quest_openingHours_answer_no_regular_opening_hours">"Düzenli açılış saatleri yok"</string>
+    <string name="quest_openingHours_answer_seasonal_opening_hours">"Aylara göre değişir…"</string>
+    <string name="quest_openingHours_answer_no_regular_opening_hours">"Düzenli açılış saatleri yok…"</string>
     <string name="quest_openingHours_comment_title">"Açılış saatlerini açıkla"</string>
     <string name="quest_openingHours_comment_description">"Özlü olun, ideal olarak işaretten gelen ifadeyi kullanın. Ben. \"randevu ile\". İşaretin olmaması, mutlaka düzenli bir çalışma saatinin olmadığı anlamına gelmez."</string>
     <string name="quest_buildingLevels_title">"Bu bina kaç katlıdır?"</string>
@@ -176,7 +178,7 @@ Haritayı görüntülemek için vektör karoları, anonim olan &lt;a href=\"http
 Bu uygulama, çevrenizdeki tamamlanmamış ve genişletilebilir verileri bulur ve bir harita üzerinde işaretleyiciler olarak görüntüler. Her biri, sitedeki bilgiyi tamamlamak için basit bir soruyu yanıtlayarak çözülebilir.
 
 Girdiğiniz bilgiler daha sonra başka bir editör kullanmak zorunda kalmadan adınıza doğrudan OpenStreetMap'a eklenir."</string>
-    <string name="quest_name_answer_noName">"Adı yok."</string>
+    <string name="quest_name_answer_noName">"Adı yok.…"</string>
     <string name="quest_name_answer_noName_confirmation_title">"Gerçekten adı yok mu"</string>
     <string name="quest_name_noName_confirmation_positive">"Evet, isim yok"</string>
     <string name="quest_openingHours_add_times">"Açılış saatlerini ekle"</string>
@@ -247,7 +249,11 @@ Hiçbir e-posta istemcisi kurulu değil."</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Bu hız limiti mantıksız gözüküyor."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Hiçbir hız limiti belirtilmediğine emin misiniz?"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Evet, işaret yok"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Şehiriçi yolların hız limiti, şehirdışı yollardan farklıdır."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_urbanOk">"Kasabada"</string>
     <string name="quest_maxspeed_answer_noSign_ruralOk">"Şehir Dışında"</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">"Eğer ana kavşakta bunun gibi bir işaret varsa farklı tabelalara gerek yoktur, bu işaret tüm alandaki hız sınırı için geçerlidir."</string>
@@ -396,8 +402,8 @@ Aksi takdirde, uygulama mağazasında başka bir klavye indirebilirsiniz. Birço
     <string name="quest_powerPolesMaterial_wood">"Ahşap"</string>
     <string name="quest_powerPolesMaterial_metal">"Çelik"</string>
     <string name="quest_powerPolesMaterial_concrete">"Beton"</string>
-    <string name="quest_maxspeed_answer_advisory_speed_limit">"Tavsiye niteliğinde hız limiti"</string>
-    <string name="quest_address_answer_house_name">"Kapı numarası yok ama ismi var"</string>
+    <string name="quest_maxspeed_answer_advisory_speed_limit">"Tavsiye niteliğinde hız limiti…"</string>
+    <string name="quest_address_answer_house_name">"Kapı numarası yok ama ismi var…"</string>
     <string name="quest_address_house_name_label">"Ev ismi:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"Çatı katı sayısı"</string>
     <string name="quest_buildingLevels_levelsLabel2">"Kat sayısı (çatı katı hariç)"</string>
@@ -440,7 +446,7 @@ Aksi takdirde, uygulama mağazasında başka bir klavye indirebilirsiniz. Birço
     <string name="enable_quest_confirmation_title">"Bu görevi aç"</string>
     <string name="default_disabled_msg_go_inside">"Bu görev varsayılan olarak kapalı çünkü tamamlamak için mekan ismi girmeniz gerekir."</string>
     <string name="quest_housenumber_conscription_number">"Kapı numarası"</string>
-    <string name="quest_cycleway_answer_contraflow_cycleway">"Ayrıca karşı tarafta bisiklet yolu var"</string>
+    <string name="quest_cycleway_answer_contraflow_cycleway">"Ayrıca karşı tarafta bisiklet yolu var…"</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"Yok ama bisikletliler bu yolu çift yönlü kullanabilir"</string>
     <string name="quest_streetName_answer_noName_question">"Neden ismi yok?"</string>
     <string name="quest_streetName_answer_noName_noname">"Hiçbiri, sadece ismi yok"</string>
@@ -482,7 +488,7 @@ Aksi takdirde, uygulama mağazasında başka bir klavye indirebilirsiniz. Birço
     <string name="quest_segregated_mixed">"Bisikletçiler ve yayalar aynı alanı paylaşıyor"</string>
     <string name="quest_maxheight_title">"Burada yükseklik sınırı nedir?"</string>
     <string name="quest_maxheight_tunnel_title">"Bu tünelin yükseklik sınırı nedir?"</string>
-    <string name="quest_maxheight_answer_noSign">"İşaret Yok"</string>
+    <string name="quest_maxheight_answer_noSign">"İşaret Yok…"</string>
     <string name="quest_maxheight_answer_noSign_question">"En yüksek kamyonların bile (en az yaklaşık 4,5 metre / 15 yükseklik) geçmesi için yeterince yer var mı?"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Bu yükseklik mantıksız görünüyor. Bunun doğru olduğundan emin misin?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>

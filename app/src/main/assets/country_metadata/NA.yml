@@ -3,4 +3,4 @@ isLeftHandTraffic: true
 isLivingStreetKnown: true
 mobileCountryCode: 649
 officialLanguages: [en, af]
-orchardProduces: [grape, tomato, orange, date, chilli_pepper, sweet_pepper, guava, mango, mangosteen]
+orchardProduces: [grape, tomato, orange, chilli_pepper, sweet_pepper, date, guava, mango, mangosteen]

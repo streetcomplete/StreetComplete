@@ -5,11 +5,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.graphics.Rect;
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.IBinder;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -36,7 +35,7 @@ import de.westnordost.streetcomplete.data.osmnotes.CreateNoteDao;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuest;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestDao;
 import de.westnordost.streetcomplete.data.upload.QuestChangesUploadService;
-import de.westnordost.streetcomplete.quests.note_discussion.NoteDiscussionForm;
+import de.westnordost.streetcomplete.quests.note_discussion.NoteAnswer;
 import de.westnordost.streetcomplete.util.SlippyMapMath;
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
@@ -145,7 +144,7 @@ public class QuestController
 	/** Create a note for the given OSM Quest instead of answering it. The quest will turn
 	 *  invisible.
 	 *  @return true if successful */
-	public boolean createNote(long osmQuestId, String questTitle, String text, ArrayList<String> imagePaths)
+	public boolean createNote(long osmQuestId, String questTitle, String text, @Nullable List<String> imagePaths)
 	{
 		OsmQuest q = osmQuestDB.get(osmQuestId);
 		// race condition: another thread may have removed the element already (#288)
@@ -181,7 +180,7 @@ public class QuestController
 		return true;
 	}
 
-	public void createNote(String text, ArrayList<String> imagePaths, LatLon position)
+	public void createNote(String text, @Nullable List<String> imagePaths, LatLon position)
 	{
 		CreateNote createNote = new CreateNote();
 		createNote.position = position;
@@ -192,7 +191,7 @@ public class QuestController
 
 	/** Apply the user's answer to the given quest. (The quest will turn invisible.)
 	 *  @return true if successful */
-	public boolean solve(long questId, QuestGroup group, Bundle answer, String source)
+	public boolean solve(long questId, QuestGroup group, Object answer, String source)
 	{
 		boolean success = false;
 		if (group == QuestGroup.OSM)
@@ -261,28 +260,27 @@ public class QuestController
 		}
 	}
 
-	private boolean solveOsmNoteQuest(long questId, Bundle answer)
+	private boolean solveOsmNoteQuest(long questId, Object answer)
 	{
 		OsmNoteQuest q = osmNoteQuestDB.get(questId);
 		if(q == null || q.getStatus() != QuestStatus.NEW) return false;
-		ArrayList<String> imagePaths = answer.getStringArrayList(NoteDiscussionForm.IMAGE_PATHS);
-		String comment = answer.getString(NoteDiscussionForm.TEXT);
-		if(comment != null && !comment.isEmpty())
+		NoteAnswer a = (NoteAnswer) answer;
+		String comment = a.getText();
+		if(!comment.isEmpty())
 		{
 			q.setComment(comment);
 			q.setStatus(QuestStatus.ANSWERED);
-			q.setImagePaths(imagePaths);
+			q.setImagePaths(a.getImagePaths());
 			osmNoteQuestDB.update(q);
 			return true;
 		}
 		else
 		{
-			throw new RuntimeException(
-					"NoteQuest has been answered with an empty comment!");
+			throw new RuntimeException("NoteQuest has been answered with an empty comment!");
 		}
 	}
 
-	private boolean solveOsmQuest(long questId, Bundle answer, String source)
+	private boolean solveOsmQuest(long questId, Object answer, String source)
 	{
 		// race condition: another thread (i.e. quest download thread) may have removed the
 		// element already (#282). So in this case, just ignore

@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
 mobileCountryCode: 740
 officialLanguages: [es, qu]
-orchardProduces: [cacao, palm_oil, banana, coffee, guava, mango, mangosteen, orange, rubber, lemon,
-  lime, pineapple, papaya, agave, chilli_pepper, sweet_pepper, coconut, avocado, pear]
+orchardProduces: [banana, cacao, pineapple, orange, guava, mango, mangosteen, tomato, papaya, lemon,
+  lime, rubber, avocado, coconut, plum, chilli_pepper, sweet_pepper, apple, pear]

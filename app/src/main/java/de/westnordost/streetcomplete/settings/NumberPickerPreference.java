@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.settings;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.support.v7.preference.PreferenceDialogFragmentCompat;
+import androidx.preference.PreferenceDialogFragmentCompat;
 import android.util.AttributeSet;
 
 import de.westnordost.streetcomplete.R;

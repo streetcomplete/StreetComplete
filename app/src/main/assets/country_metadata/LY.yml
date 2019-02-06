@@ -2,6 +2,6 @@
 firstDayOfWorkweek: Su
 mobileCountryCode: 606
 officialLanguages: [ar]
-orchardProduces: [olive, almond, date, tomato, plum, grape, orange, apricot, fig, lemon, lime, chilli_pepper,
-  sweet_pepper, peach, apple, pear]
+orchardProduces: [tomato, olive, date, plum, almond, grape, chilli_pepper, sweet_pepper, apricot, lemon,
+  lime, apple, peach, fig, orange, pear]
 popularReligions: [muslim]

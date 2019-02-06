@@ -4,7 +4,7 @@ isLivingStreetKnown: true
 isSlowZoneKnown: true
 mobileCountryCode: 293
 officialLanguages: [sl]
-orchardProduces: [grape, plum, apple, hop, olive, peach, tomato, pear, walnut, cherry, chilli_pepper,
-  sweet_pepper, strawberry, persimmon, hazelnut, apricot]
+orchardProduces: [grape, apple, pear, tomato, walnut, cherry, peach, plum, hop, persimmon, strawberry,
+  olive, chilli_pepper, sweet_pepper, apricot, kiwi]
 popularReligions: [christian, muslim]
 popularSports: [soccer, basketball, tennis, golf, boules, equestrian]

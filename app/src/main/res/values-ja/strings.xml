@@ -21,12 +21,14 @@
     <string name="map_attribution_mapzen">"Powered by %s"</string>
     <string name="map_attribution_osm">"© OpenStreetMap 貢献者"</string>
     <string name="quest_generic_otherAnswers">"他の回答…"</string>
-    <string name="quest_generic_answer_notApplicable">"言えない"</string>
+    <string name="quest_generic_answer_notApplicable">"言えない…"</string>
     <string name="quest_generic_confirmation_title">"よろしいですか?"</string>
     <string name="quest_generic_confirmation_yes">"はい、確かに"</string>
     <string name="quest_generic_confirmation_no">"確認します"</string>
     <string name="quest_generic_error_field_empty">"このフィールドを空のままにしました"</string>
     <string name="quest_leave_new_note_title">"代わりにメモを残しますか?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_leave_new_note_description">"この場所に公開メモを残しておくと、他のマッパーがコメントして、うまくいけば解決できます:"</string>
     <string name="quest_leave_new_note_yes">"OK"</string>
     <string name="quest_leave_new_note_no">"いいえ、非表示にします"</string>
@@ -71,7 +73,7 @@
 
     <!-- Fuzzy -->
     <string name="about_title_authors">"作者"</string>
-    <string name="about_summary_authors">"© 2016–2018 Tobias Zwick と貢献者"</string>
+    <string name="about_summary_authors">"© 2016–2019 Tobias Zwick と貢献者"</string>
     <string name="about_title_repository">"ソースリポジトリ"</string>
     <string name="about_summary_repository">"GitHub で"</string>
     <string name="about_title_report_error">"エラーを報告"</string>
@@ -97,8 +99,8 @@
     <string name="quest_openingHours_public_holidays_short">"祝日"</string>
     <string name="quest_openingHours_open_end">"無期限"</string>
     <string name="quest_openingHours_answer_247">"24時間 週7日"</string>
-    <string name="quest_openingHours_answer_seasonal_opening_hours">"月ごとに異なる"</string>
-    <string name="quest_openingHours_answer_no_regular_opening_hours">"定期営業時間なし"</string>
+    <string name="quest_openingHours_answer_seasonal_opening_hours">"月ごとに異なる…"</string>
+    <string name="quest_openingHours_answer_no_regular_opening_hours">"定期営業時間なし…"</string>
     <string name="quest_openingHours_comment_title">"営業時間の説明"</string>
     <string name="quest_openingHours_comment_description">"簡潔に、理想的には標識からの文言を使用してください。 例えば、\"予約で\"。 標識がない場合も、必ずしも定期的な営業時間がないわけではありません。"</string>
     <string name="quest_buildingLevels_title">"この建物は何階建てですか?"</string>
@@ -178,7 +180,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
 このアプリは、あなたの周辺で不完全で拡張可能なデータを見つけて、それをマーカーとして地図に表示します。 サイトの情報を完成させるための簡単な質問に答えることで、そのそれぞれを解決することができます。
 
 入力した情報は、別のエディターを使わずに、あなたの名前で直接 OpenStreetMap に追加されます。"</string>
-    <string name="quest_name_answer_noName">"名前がありません"</string>
+    <string name="quest_name_answer_noName">"名前がありません…"</string>
     <string name="quest_name_answer_noName_confirmation_title">"本当に名前はありませんか?"</string>
     <string name="quest_name_noName_confirmation_positive">"はい、名前なし"</string>
     <string name="quest_openingHours_add_times">"開店時間を追加"</string>
@@ -250,7 +252,11 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_maxspeed_answer_noSign_confirmation">"通りの端で確認しましたか?
 強調表示されたセクションに適用される道路全体の標識がない場合、デフォルトの速度制限が適用されます。"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"はい。標識はありません"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"都市の道路は、農村の道路とは異なる既定の速度制限があります。"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_urbanOk">"街中"</string>
     <string name="quest_maxspeed_answer_noSign_ruralOk">"街の外"</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">"幹線道路の交差点にこのようなサインがある場合、そこに掲示された速度制限が区域全体に適用されるため、区域内に個別の標識はありません。"</string>
@@ -282,6 +288,8 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_location_name_title">"この場所 %s は車椅子でアクセスできますか?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_business">"部分的とは、アクセスするためにの 2 つ以上の階段がなく、ほとんどの部屋に車椅子でアクセスできることを意味します。"</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"部分的とは、アクセスするためにの 2 つ以上の階段がないことを意味します。"</string>
 
@@ -404,8 +412,8 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_powerPolesMaterial_wood">"木材"</string>
     <string name="quest_powerPolesMaterial_metal">"金属"</string>
     <string name="quest_powerPolesMaterial_concrete">"コンクリート"</string>
-    <string name="quest_maxspeed_answer_advisory_speed_limit">"忠告だけの速度制限"</string>
-    <string name="quest_address_answer_house_name">"住居番号がなく名前"</string>
+    <string name="quest_maxspeed_answer_advisory_speed_limit">"忠告だけの速度制限…"</string>
+    <string name="quest_address_answer_house_name">"住居番号がなく名前…"</string>
     <string name="quest_address_house_name_label">"住居名:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"屋根の階数"</string>
     <string name="quest_buildingLevels_levelsLabel2">"通常の階数 (屋根を数えない)"</string>
@@ -450,7 +458,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="default_disabled_msg_go_inside">"このタイプの探求に答えるためには場所を入力する必要があるため、この探求タイプはデフォルトで無効になっています。"</string>
     <string name="quest_housenumber_conscription_number">"徴収番号"</string>
     <string name="quest_housenumber_street_number_optional">"オリエンテーション番号 (オプション)"</string>
-    <string name="quest_cycleway_answer_contraflow_cycleway">"反対側も自転車道"</string>
+    <string name="quest_cycleway_answer_contraflow_cycleway">"反対側も自転車道…"</string>
     <string name="quest_openingHours_emptyAnswer">"看板に何があるか説明してください。看板がない場合は中で開店時間を訪ねてください。"</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"なし。ただし、サイクリストは両方向を使用する可能性があります"</string>
     <string name="quest_streetName_answer_noName_question">"その名前がない理由は?"</string>
@@ -514,7 +522,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_streetName_pedestrian_title">"この歩行者用の通りの名前は何ですか?"</string>
     <string name="quest_streetSurface_square_title">"この広場の路面は何ですか?"</string>
     <string name="quest_streetSurface_square_name_title">"広場 %s の路面は何ですか?"</string>
-    <string name="quest_fee_answer_hours">"日時によって異なる"</string>
+    <string name="quest_fee_answer_hours">"日時によって異なる…"</string>
     <string name="quest_fee_add_times">"時間を追加"</string>
     <string name="quest_fee_only_at_hours">"はい。しかし次のみ…"</string>
     <string name="quest_fee_not_at_hours">"はい。しかし次ではなく…"</string>

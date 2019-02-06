@@ -21,12 +21,14 @@
     <string name="map_attribution_mapzen">"Fuqizuar nga %s"</string>
     <string name="map_attribution_osm">"© Kontribuesit e OpenStreetMap"</string>
     <string name="quest_generic_otherAnswers">"Përgjigje tjera…"</string>
-    <string name="quest_generic_answer_notApplicable">"Nuk mund të them"</string>
+    <string name="quest_generic_answer_notApplicable">"Nuk mund të them…"</string>
     <string name="quest_generic_confirmation_title">"A jeni i sigurt?"</string>
     <string name="quest_generic_confirmation_yes">"Po, jam i sigurt"</string>
     <string name="quest_generic_confirmation_no">"Do të shikoj"</string>
     <string name="quest_generic_error_field_empty">"Latë këtë fushë zbrazët"</string>
     <string name="quest_leave_new_note_title">"Lëni një shënim "</string>
+
+    <!-- Fuzzy -->
     <string name="quest_leave_new_note_description">"Mund ta leni një shënim publik në këtë vend të cilin hartografuesit tjerë mund ta komentojnë dhe shresojmë zgjidhin:"</string>
     <string name="quest_leave_new_note_yes">"OK"</string>
     <string name="quest_leave_new_note_no">"Jo, vetëm fshihe"</string>
@@ -71,7 +73,7 @@
 
     <!-- Fuzzy -->
     <string name="about_title_authors">"Autorët"</string>
-    <string name="about_summary_authors">"© 2016–2018 Tobias Zwick dhe kontribuesit"</string>
+    <string name="about_summary_authors">"© 2016–2019 Tobias Zwick dhe kontribuesit"</string>
     <string name="about_title_repository">"Repozitori i Burimit"</string>
     <string name="about_summary_repository">"në GitHub"</string>
     <string name="about_title_report_error">"Raporto gabimit"</string>
@@ -97,8 +99,8 @@
     <string name="quest_openingHours_public_holidays_short">"PF"</string>
     <string name="quest_openingHours_open_end">"pa përfundim"</string>
     <string name="quest_openingHours_answer_247">"Hapur 24/7"</string>
-    <string name="quest_openingHours_answer_seasonal_opening_hours">"Ndryshon me muaj"</string>
-    <string name="quest_openingHours_answer_no_regular_opening_hours">"Nuk ka orar të rregulltë"</string>
+    <string name="quest_openingHours_answer_seasonal_opening_hours">"Ndryshon me muaj…"</string>
+    <string name="quest_openingHours_answer_no_regular_opening_hours">"Nuk ka orar të rregulltë…"</string>
     <string name="quest_openingHours_comment_title">"Përshkruaj orarin"</string>
     <string name="quest_openingHours_comment_description">"Jini i shkurt, më së miri duke përdorur fjalë nga shenja. I.e. \"me rezervim\". Mungesa e shenjës nuk do të thotë që nuk ka orar të rregulltë."</string>
     <string name="quest_buildingLevels_title">"Sa katë ka kjo ndërtesë?"</string>
@@ -178,7 +180,7 @@ Për të shfaqur hartën, pllakat vektoriale merren nga &lt;a href=\"https://map
 Kjo aplikacion gjen të dhëna jo të plota në afërsi dhe e shfaq atë në një hartë me shenjues. Secili prej tyre është i zgjidhshëm duke iu përgjigjur një pyetjeje të thjeshtë për të plotësuar informacionin në vend.
 
 Informacioni që futni shtohet direkt në OpenStreetMap në emrin tuaj, pa nevojën e përdorimit të një redaktori tjetër."</string>
-    <string name="quest_name_answer_noName">"Nuk ka emër"</string>
+    <string name="quest_name_answer_noName">"Nuk ka emër…"</string>
     <string name="quest_name_answer_noName_confirmation_title">"Me të vërtetë nuk ka emër?"</string>
     <string name="quest_name_noName_confirmation_positive">"Po, nuk ka emër"</string>
     <string name="quest_openingHours_add_times">"Shto orën e hapjes"</string>
@@ -249,7 +251,11 @@ Informacioni që futni shtohet direkt në OpenStreetMap në emrin tuaj, pa nevoj
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Ky kufizim i shpejtësisë duket i pamundur."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"A jeni i sigurt që nuk ka kufizim të vendosur?"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Po, nuk ka shenjë"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Rrugët urbane kanë shpejtësi të paracaktuar nga ato rurale."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_urbanOk">"Në qytet"</string>
     <string name="quest_maxspeed_answer_noSign_ruralOk">"Jasht qytetit"</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">"Nëse ka një shenjë si kjo në kryqëzimin kryesor të rrugës, nuk do të gjesh shenja individuale brenda zonës sepse kufiri i shpejtësisë i postuar aty aplikohet në të gjithë zonën."</string>
@@ -281,6 +287,8 @@ Informacioni që futni shtohet direkt në OpenStreetMap në emrin tuaj, pa nevoj
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_location_name_title">"A është lokacioni %s i qasshëm me karrocë?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_business">"Pjesërisht do të thotë se nuk ka më shumë se një hap të vetëm për të hyrë në biznes dhe se shumica e dhomave brenda janë të qasshme me karrocë."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"Pjesërisht do të thotë se nuk ka më shumë se një hap për të hyrë në të."</string>
 
@@ -403,8 +411,8 @@ Përndryshe, mund të shkarkoni një tastierë tjetër në dyqanin e aplikacione
     <string name="quest_powerPolesMaterial_wood">"Dru"</string>
     <string name="quest_powerPolesMaterial_metal">"Çelik"</string>
     <string name="quest_powerPolesMaterial_concrete">"Beton"</string>
-    <string name="quest_maxspeed_answer_advisory_speed_limit">"Veç një limitim i shpejtësisë këshillues"</string>
-    <string name="quest_address_answer_house_name">"Nuk ka emër shtëpie por një emër"</string>
+    <string name="quest_maxspeed_answer_advisory_speed_limit">"Veç një limitim i shpejtësisë këshillues…"</string>
+    <string name="quest_address_answer_house_name">"Nuk ka emër shtëpie por një emër…"</string>
     <string name="quest_address_house_name_label">"Emri i shtëpisë:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"nivelet në kulm"</string>
     <string name="quest_buildingLevels_levelsLabel2">"nivelet e rregullta (pa numruar kulmin)"</string>
@@ -449,6 +457,6 @@ Përndryshe, mund të shkarkoni një tastierë tjetër në dyqanin e aplikacione
     <string name="default_disabled_msg_go_inside">"Ky lloj kërkimi është çaktivizuar për shkak se ka të ngjarë që duhet të hyni në vend për të qenë në gjendje t'i përgjigjeni një kërkese të këtij lloji."</string>
     <string name="quest_housenumber_conscription_number">"Numër konskriptimi"</string>
     <string name="quest_housenumber_street_number_optional">"Numër orientimi (opcionale)"</string>
-    <string name="quest_cycleway_answer_contraflow_cycleway">"Poashtu rrugë biçiklete në anën tjetër"</string>
+    <string name="quest_cycleway_answer_contraflow_cycleway">"Poashtu rrugë biçiklete në anën tjetër…"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
 </resources>

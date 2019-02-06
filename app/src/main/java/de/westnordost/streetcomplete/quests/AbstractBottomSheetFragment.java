@@ -3,13 +3,12 @@ package de.westnordost.streetcomplete.quests;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.UiThread;
-import android.support.design.widget.BottomSheetBehavior;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
-import android.util.DisplayMetrics;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.UiThread;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AlertDialog;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
@@ -18,16 +17,16 @@ import android.widget.LinearLayout;
 import de.westnordost.streetcomplete.R;
 
 
-import static android.support.design.widget.BottomSheetBehavior.STATE_COLLAPSED;
-import static android.support.design.widget.BottomSheetBehavior.STATE_EXPANDED;
+import static com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_COLLAPSED;
+import static com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDED;
 
 public abstract class AbstractBottomSheetFragment extends Fragment
 {
 	private LinearLayout bottomSheet;
 	private BottomSheetBehavior bottomSheetBehavior;
-	private View buttonClose;
+	private View closeButton;
 
-	@Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState)
+	@Override public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
 	{
 		super.onViewCreated(view, savedInstanceState);
 
@@ -39,12 +38,12 @@ public abstract class AbstractBottomSheetFragment extends Fragment
 			handler.post(this::updateCloseButtonVisibility);
 		});
 
-		buttonClose = view.findViewById(R.id.close_btn);
-		buttonClose.setOnClickListener(v -> getActivity().onBackPressed());
+		closeButton = view.findViewById(R.id.closeButton);
+		closeButton.setOnClickListener(v -> getActivity().onBackPressed());
 
 		bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet);
 
-		View titleSpeechBubble = view.findViewById(R.id.titleSpeechBubble);
+		View titleSpeechBubble = view.findViewById(R.id.speechBubbleTitleContainer);
 		titleSpeechBubble.setOnClickListener(v -> {
 			if(bottomSheetBehavior.getState() == STATE_EXPANDED)
 				bottomSheetBehavior.setState(STATE_COLLAPSED);
@@ -69,10 +68,10 @@ public abstract class AbstractBottomSheetFragment extends Fragment
 
 		if(savedInstanceState == null)
 		{
-			view.findViewById(R.id.titleSpeechBubble).startAnimation(
+			view.findViewById(R.id.speechBubbleTitleContainer).startAnimation(
 				AnimationUtils.loadAnimation(getContext(), R.anim.inflate_title_bubble));
 
-			view.findViewById(R.id.speechbubbleContent).startAnimation(
+			view.findViewById(R.id.speechbubbleContentContainer).startAnimation(
 				AnimationUtils.loadAnimation(getContext(), R.anim.inflate_answer_bubble));
 		}
 	}
@@ -102,7 +101,7 @@ public abstract class AbstractBottomSheetFragment extends Fragment
 		int toolbarHeight = getActivity().findViewById(R.id.toolbar).getHeight();
 		float speechBubbleTopMargin = getResources().getDimension(R.dimen.quest_form_speech_bubble_top_margin);
 		boolean coversToolbar = bottomSheet.getTop() < speechBubbleTopMargin + toolbarHeight;
-		buttonClose.setVisibility(coversToolbar ? View.VISIBLE : View.INVISIBLE);
+		closeButton.setVisibility(coversToolbar ? View.VISIBLE : View.INVISIBLE);
 	}
 
 	/** Request to close the form through user interaction (back button, clicked other quest,..),

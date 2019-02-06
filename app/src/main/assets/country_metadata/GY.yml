@@ -3,7 +3,7 @@ isLeftHandTraffic: true
 measurementSystem: [metric, imperial]
 mobileCountryCode: 738
 officialLanguages: [en, gyn]
-orchardProduces: [coconut, tomato, chilli_pepper, sweet_pepper, cacao, banana, pepper, orange, pineapple,
-  coffee, guava, mango, mangosteen, grapefruit, lemon, lime, cherry, avocado, papaya]
+orchardProduces: [coconut, papaya, chilli_pepper, sweet_pepper, tomato, pineapple, banana, guava, mango,
+  mangosteen, orange, lemon, lime, cherry, grapefruit, avocado, cacao, coffee, pepper]
 popularReligions: [christian, hindu, muslim]
 popularSports: [cricket]

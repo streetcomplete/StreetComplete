@@ -2,30 +2,40 @@ package de.westnordost.streetcomplete.data;
 
 import android.database.sqlite.SQLiteOpenHelper;
 
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+import de.westnordost.streetcomplete.ApplicationConstants;
+import de.westnordost.streetcomplete.quests.localized_name.data.RoadNamesTablesHelper;
+import de.westnordost.streetcomplete.quests.oneway.data.WayTrafficFlowTablesHelper;
 import de.westnordost.streetcomplete.util.KryoSerializer;
 import de.westnordost.streetcomplete.util.Serializer;
 
-public class ApplicationDbTestCase extends AndroidDbTestCase
+import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
+import static org.junit.Assert.assertNotNull;
+
+public class ApplicationDbTestCase
 {
+	private final static String DATABASE_NAME = "streetcomplete_test.db";
+
 	protected SQLiteOpenHelper dbHelper;
 	protected Serializer serializer;
 
-	public ApplicationDbTestCase()
+	@Before public void setUpHelper()
 	{
-		super(StreetCompleteOpenHelper.DB_NAME);
-	}
-
-	@Override public void setUp() throws Exception
-	{
-		super.setUp();
 		serializer = new KryoSerializer();
-		dbHelper = DbModule.sqliteOpenHelper(getContext());
+		dbHelper = DbModule.sqliteOpenHelper(getInstrumentation().getTargetContext(), DATABASE_NAME);
 	}
 
-	@Override public void tearDown() throws Exception
+	@Test public void databaseAvailable()
 	{
-		// first close, then call super (= delete database) to avoid warning
+		assertNotNull(dbHelper.getReadableDatabase());
+	}
+
+	@After public void tearDownHelper()
+	{
 		dbHelper.close();
-		super.tearDown();
+		getInstrumentation().getTargetContext().deleteDatabase(DATABASE_NAME);
 	}
 }

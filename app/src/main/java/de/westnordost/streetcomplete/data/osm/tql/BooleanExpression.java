@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.ListIterator;
+import java.util.Locale;
 
 /** A boolean expression of values that are connected by ANDs and ORs */
 public class BooleanExpression<T extends BooleanExpressionValue>
@@ -353,7 +354,7 @@ public class BooleanExpression<T extends BooleanExpressionValue>
 			else
 			{
 				builder.append(' ');
-				builder.append(type.toString().toLowerCase());
+				builder.append(type.toString().toLowerCase(Locale.US));
 				builder.append(' ');
 			}
 

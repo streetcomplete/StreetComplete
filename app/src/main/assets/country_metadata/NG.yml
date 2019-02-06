@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
 mobileCountryCode: 621
 officialLanguages: [en]
-orchardProduces: [palm_oil, cacao, tomato, cashew_nut, rubber, kola_nut, pineapple, guava, mango, mangosteen,
-  papaya, coconut, chilli_pepper, sweet_pepper, coffee]
+orchardProduces: [tomato, pineapple, guava, mango, mangosteen, papaya, cacao, coconut, rubber, kola_nut,
+  cashew_nut, chilli_pepper, sweet_pepper, coffee]

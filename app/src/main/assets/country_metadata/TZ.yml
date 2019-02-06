@@ -3,5 +3,5 @@ isLeftHandTraffic: true
 isLivingStreetKnown: true
 mobileCountryCode: 640
 officialLanguages: [sw, en]
-orchardProduces: [coconut, banana, cashew_nut, coffee, tomato, sisal, guava, mango, mangosteen, orange,
-  tea, pineapple, cacao, palm_oil, chilli_pepper, sweet_pepper, lemon, lime, nutmeg]
+orchardProduces: [banana, coconut, tomato, orange, guava, mango, mangosteen, pineapple, cashew_nut,
+  coffee, tea, sisal, lemon, lime, chilli_pepper, sweet_pepper, cacao, pear, grape]

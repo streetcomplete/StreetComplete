@@ -5,17 +5,16 @@ import javax.inject.Singleton;
 import dagger.Component;
 import de.westnordost.streetcomplete.data.DbModule;
 import de.westnordost.streetcomplete.data.OsmModule;
+import de.westnordost.streetcomplete.data.osm.upload.ChangesetAutoCloserWorker;
 import de.westnordost.streetcomplete.data.upload.QuestChangesUploadService;
 import de.westnordost.streetcomplete.data.download.QuestDownloadService;
 import de.westnordost.streetcomplete.data.meta.MetadataModule;
 import de.westnordost.streetcomplete.oauth.OAuthModule;
 import de.westnordost.streetcomplete.oauth.OsmOAuthDialogFragment;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
-import de.westnordost.streetcomplete.quests.GroupedImageListQuestAnswerFragment;
-import de.westnordost.streetcomplete.quests.ImageListQuestAnswerFragment;
 import de.westnordost.streetcomplete.quests.QuestModule;
 import de.westnordost.streetcomplete.quests.building_levels.AddBuildingLevelsForm;
-import de.westnordost.streetcomplete.quests.localized_name.AddLocalizedNameForm;
+import de.westnordost.streetcomplete.quests.localized_name.AAddLocalizedNameForm;
 import de.westnordost.streetcomplete.quests.oneway.AddOnewayForm;
 import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHoursForm;
 import de.westnordost.streetcomplete.quests.localized_name.AddRoadNameForm;
@@ -50,7 +49,6 @@ public interface ApplicationComponent
 	void inject(AnswersCounter answersCounter);
 
 	void inject(AddOpeningHoursForm addOpeningHoursForm);
-	void inject(AddLocalizedNameForm addLocalizedNameForm);
 	void inject(AddRoadNameForm addRoadNameForm);
 	void inject(AddParkingFeeForm parkingFeeForm);
 	void inject(AddOnewayForm addOnewayForm);
@@ -58,7 +56,8 @@ public interface ApplicationComponent
 
 	void inject(OsmOAuthDialogFragment osmOAuthDialogFragment);
 
-	void inject(AbstractQuestAnswerFragment abstractQuestAnswerFragment);
+	void inject(AAddLocalizedNameForm.InjectedFields fields);
+	void inject(AbstractQuestAnswerFragment.InjectedFields fields);
 
 	void inject(QuestsMapFragment questsMapFragment);
 
@@ -66,9 +65,7 @@ public interface ApplicationComponent
 
 	void inject(QuestSelectionFragment questSelectionFragment);
 
-	void inject(GroupedImageListQuestAnswerFragment fragment);
-	void inject(ImageListQuestAnswerFragment fragment);
-
 	void inject(AddBuildingLevelsForm fragment);
+	void inject(ChangesetAutoCloserWorker worker);
 
 }

@@ -21,7 +21,7 @@
     <string name="map_attribution_mapzen">"طراحی شده توسط %s"</string>
     <string name="map_attribution_osm">"© همکاران OpenStreetMap"</string>
     <string name="quest_generic_otherAnswers">"دیگر پاسخ ها ..."</string>
-    <string name="quest_generic_answer_notApplicable">"نمی‌توان اظهار نظر کرد"</string>
+    <string name="quest_generic_answer_notApplicable">"نمی‌توان اظهار نظر کرد…"</string>
     <string name="quest_generic_confirmation_title">"شما مطمئن هستید؟"</string>
     <string name="quest_generic_confirmation_yes">"بله مطمئنم"</string>
     <string name="quest_generic_confirmation_no">"بررسی خواهم کرد"</string>
@@ -29,6 +29,7 @@
     <string name="quest_leave_new_note_title">"در عوض یک یاداشت می‌گذارید؟"</string>
 
     <!-- بهتر نیست به جای نقشه بردار نقشه کش یا یه عبارت دیگه به کار ببریم؟ به نظرم با توجه به معنی اصلی کلمه در اینجا مناسب نباشه -->
+    <!-- Fuzzy -->
     <string name="quest_leave_new_note_description">"شما می‌توانید یک یادداشت عمومی در این مکان بگذارید تا نقشه‌کش‌های دیگر در مورد آن نظر دهند و امیدواریم موضوع حل شود:"</string>
     <string name="quest_leave_new_note_yes">"تایید"</string>
     <string name="quest_leave_new_note_no">"نه، فقط پنهان کن"</string>
@@ -74,7 +75,7 @@
     <string name="action_about">"درباره برنامه"</string>
     <string name="about_title_version">"نسخه"</string>
     <string name="about_title_authors">"اعتبار"</string>
-    <string name="about_summary_authors">"© 2016–2018 Tobias Zwick و همکاران"</string>
+    <string name="about_summary_authors">"© 2016–2019 Tobias Zwick و همکاران"</string>
     <string name="about_title_repository">"منبع برنامه"</string>
     <string name="about_summary_repository">"روی GitHub"</string>
     <string name="about_title_report_error">"گزارش خطا"</string>
@@ -100,8 +101,8 @@
     <string name="quest_openingHours_public_holidays_short">"تعطیلات عمومی"</string>
     <string name="quest_openingHours_open_end">"پایان کار"</string>
     <string name="quest_openingHours_answer_247">"شبانه روزی"</string>
-    <string name="quest_openingHours_answer_seasonal_opening_hours">"ماهیانه یا فصلی"</string>
-    <string name="quest_openingHours_answer_no_regular_opening_hours">"ساعت‌ کاری منظمی ندارد."</string>
+    <string name="quest_openingHours_answer_seasonal_opening_hours">"ماهیانه یا فصلی…"</string>
+    <string name="quest_openingHours_answer_no_regular_opening_hours">"ساعت‌ کاری منظمی ندارد…"</string>
     <string name="quest_openingHours_comment_title">"ساعت‌ کاری را مشخص کنید"</string>
     <string name="quest_openingHours_comment_description">"به صورت مختصر باشد، بهتر است از کلمات روی علائم استفاده کنید. مانند \"با تعیین وقت قبلی\". فقدان علائم لزوماً به این معنی نیست که ساعات کاری نامنظم می باشد."</string>
     <string name="quest_buildingLevels_title">"این ساختمان چند طبقه دارد؟"</string>
@@ -182,7 +183,7 @@
 این برنامه اطلاعات ناقص و قابل ویرایش را در اطراف شما پیدا می کند و آن را بر روی یک نقشه نشان می دهد. هر یک از این ایرادها و نواقص با پاسخ دادن به یک سوال ساده قابل حل است تا اطلاعات را در وبگاه کامل کند.
 
 اطلاعاتی که وارد می کنید به طور مستقیم بدون نیاز به استفاده از ویرایشگر دیگر در OpenStreetMap اضافه می شود ."</string>
-    <string name="quest_name_answer_noName">"بدون نام"</string>
+    <string name="quest_name_answer_noName">"بدون نام…"</string>
     <string name="quest_name_answer_noName_confirmation_title">"واقعا نامی ندارد؟"</string>
     <string name="quest_name_noName_confirmation_positive">"بله ، بدون نام است"</string>
     <string name="quest_openingHours_add_times">"افزودن زمان ساعات کار"</string>
@@ -253,7 +254,11 @@
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"آیا مطمئن هستید که هیچ محدودیت سرعتی قرار داده نشده است؟"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">"آیا شما انتهای خیابان را بررسی کرده‌اید؟ اگر علائمی در کل خیابان وجود ندارد ، برای تمام بخش انتخاب شده ، محدودیت سرعت پیش فرض اعمال می شود."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"بله ، بدون علائم"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"محدودیت سرعت پیش فرض راه‌های شهری با راه‌های روستایی متفاوت می باشد."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_urbanOk">"داخل شهرک"</string>
     <string name="quest_maxspeed_answer_noSign_ruralOk">"بیرون شهرک"</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">"اگر علائمی مانند این در تقاطع اصلی خیابان وجود داشته باشد، علائم ویژه این منطقه را در این محدوده پیدا نخواهید کرد زیرا محدودیت سرعت قرار داده شده در این محدوده به کل منطقه اعمال می شود."</string>
@@ -409,8 +414,8 @@
     <string name="quest_powerPolesMaterial_wood">"چوب"</string>
     <string name="quest_powerPolesMaterial_metal">"فولاد"</string>
     <string name="quest_powerPolesMaterial_concrete">"بتن"</string>
-    <string name="quest_maxspeed_answer_advisory_speed_limit">"محدودیت سرعت تنها با علائم"</string>
-    <string name="quest_address_answer_house_name">"اگر فاقد شماره پلاک‌هست یک نام وارد کنید"</string>
+    <string name="quest_maxspeed_answer_advisory_speed_limit">"محدودیت سرعت تنها با علائم…"</string>
+    <string name="quest_address_answer_house_name">"اگر فاقد شماره پلاک‌هست یک نام وارد کنید…"</string>
     <string name="quest_address_house_name_label">"اسم خانه"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"طبقات دارای پشت بام"</string>
     <string name="quest_buildingLevels_levelsLabel2">"طبقات بدون پشت بام"</string>
@@ -455,7 +460,7 @@
     <string name="default_disabled_msg_go_inside">"این نوع جستار به طور پیش فرض غیر فعال شده است زیرا شما ابتدا باید وارد این مکان شوید تا بتوانید به این جستار پاسخ دهید."</string>
     <string name="quest_housenumber_conscription_number">"شماره اداری (پلاک خانه)"</string>
     <string name="quest_housenumber_street_number_optional">"شماره جهت یابی (اختیاری)"</string>
-    <string name="quest_cycleway_answer_contraflow_cycleway">"مسیر رفت و برگشت دوچرخه سواری مجزا است"</string>
+    <string name="quest_cycleway_answer_contraflow_cycleway">"مسیر رفت و برگشت دوچرخه سواری مجزا است…"</string>
     <string name="quest_openingHours_emptyAnswer">"شما باید آنچه را که بر روی علائم نگاشته‌شده درج کنید. اگر علائمی وجود نداشته باشد، باید زمان‌کاری را از داخل بپرسید."</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"هیچ کدام، اما دوچرخه سواران ممکن است ازهر دو جهت جاده استفاده کنند"</string>
     <string name="quest_streetName_answer_noName_question">"چرا نام آن را ندارید؟"</string>
@@ -513,7 +518,7 @@
     <string name="quest_streetName_pedestrian_title">"نام این خیابان عابر پیاده چیست؟"</string>
     <string name="quest_streetSurface_square_title">"جنس سطح این میدان چیست؟"</string>
     <string name="quest_streetSurface_square_name_title">"این میدان دارای کدام‌یک از این سطوح %s می‌باشد؟"</string>
-    <string name="quest_fee_answer_hours">"بستگی به زمان و روز دارد"</string>
+    <string name="quest_fee_answer_hours">"بستگی به زمان و روز دارد…"</string>
     <string name="quest_fee_add_times">"افزودن زمان"</string>
     <string name="quest_fee_only_at_hours">"بله ، ولی فقط ..."</string>
     <string name="quest_fee_not_at_hours">"بله ، ولی نه ..."</string>
@@ -624,7 +629,7 @@
     <string name="quest_buildingType_hangar">"حیاط"</string>
     <string name="quest_buildingType_hangar_description">"آشیانه برای هواپیما، هلیکوپتر یا فضاپیما"</string>
     <string name="quest_buildingType_bunker">"انباربزرگ"</string>
-    <string name="quest_address_answer_no_housenumber">"این ساختمان شماره ندارد"</string>
+    <string name="quest_address_answer_no_housenumber">"این ساختمان شماره ندارد…"</string>
     <string name="quest_address_answer_no_housenumber_message1">"این ساختمان به چه عنوانی برچسب‌گذاری شده :"</string>
     <string name="quest_address_answer_no_housenumber_message2">"آیا این درست است و آیا این فقط بخشی از یک ساختمان نیست؟"</string>
     <string name="quest_buildingType_shrine">"زیارتگاه"</string>
@@ -647,7 +652,7 @@
     <string name="quest_maxheight_parking_entrance_title">"برای ورودی پارکینگ محدودیت ارتفاع چه مقداری است؟"</string>
     <string name="quest_maxheight_height_restrictor_title">"حد ارتفاع این محدود‌کننده ارتفاع چه مقداری است؟"</string>
     <string name="quest_maxheight_tunnel_title">"محدویت ارتفاع ورود این تونل چه مقداری است؟"</string>
-    <string name="quest_maxheight_answer_noSign">"علائمی وجود ندارد"</string>
+    <string name="quest_maxheight_answer_noSign">"علائمی وجود ندارد…"</string>
     <string name="quest_maxheight_answer_noSign_question">"آیا به اندازه کافی، فضای مناسب برای عبور بلندترین کامیون‌ها (حداقل حدود ۴/۵ متر / ۱۵ فوت) وجود دارد؟"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"این ارتفاع غیرقابل باور است. مطمئن هستید که درست است؟"</string>
     <string name="quest_noteDiscussion_comment2">"%2$s, %1$s —"</string>
@@ -675,4 +680,6 @@
     <string name="quest_motorcycleParkingCapacity_title">"چند موتور سیکلت را می توان در اینجا پارک کرد؟"</string>
     <string name="quest_motorcycleParkingCoveredStatus_title">"آیا پارکینگ موتور سیکلت سرپوشیده است؟ (از باران محافظت شده است)؟"</string>
     <string name="default_disabled_msg_maxspeed">"این نوع جُستار به طور پیش فرض غیر فعال شده است زیرا اغلب شما نیاز به بررسی تمام خیابان‌ها برای تابلو‌های محدودیت سرعت دارید و نه فقط بخش انتخاب شده . این گاهی اوقات می‌تواند یک جاذبه کاربرپسند برای حل یک جُستار باشد."</string>
+    <string name="pref_title_quests_restore_hidden">"بازگرداندن جُستارهای پنهان"</string>
+    <string name="restore_hidden_success">"بازیابی  %d جُستار پنهان"</string>
 </resources>

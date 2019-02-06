@@ -23,12 +23,14 @@
     <string name="map_attribution_mapzen">"Toimeenpanija %s"</string>
     <string name="map_attribution_osm">"© OpenStreetMap tekijät"</string>
     <string name="quest_generic_otherAnswers">"Muut vastaukset..."</string>
-    <string name="quest_generic_answer_notApplicable">"Ei tietoa"</string>
+    <string name="quest_generic_answer_notApplicable">"Ei tietoa…"</string>
     <string name="quest_generic_confirmation_title">"Oletko varma?"</string>
     <string name="quest_generic_confirmation_yes">"Kyllä, olen varma"</string>
     <string name="quest_generic_confirmation_no">"Aion tarkistaa"</string>
     <string name="quest_generic_error_field_empty">"Jätit kentän tyhjäksi"</string>
     <string name="quest_leave_new_note_title">"Jätä huomautus sen sijaan?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_leave_new_note_description">"Voit jättää julkisen huomautuksen tähän sijaintiin johon muut kartoittajat voivat kommentoida ja toivottavasti ratkaista:"</string>
     <string name="quest_leave_new_note_yes">"OK"</string>
     <string name="quest_leave_new_note_no">"Ei, piilota"</string>
@@ -73,7 +75,7 @@
 
     <!-- Fuzzy -->
     <string name="about_title_authors">"Tekijät"</string>
-    <string name="about_summary_authors">"© 2016–2018 Tobias Zwick ja avustajat"</string>
+    <string name="about_summary_authors">"© 2016–2019 Tobias Zwick ja avustajat"</string>
     <string name="about_title_repository">"Lähdekoodin sijainti"</string>
     <string name="about_summary_repository">"GitHubissa"</string>
     <string name="about_title_report_error">"Ilmoita virheestä"</string>
@@ -99,8 +101,8 @@
     <string name="quest_openingHours_public_holidays_short">"Julkisen loman aikana"</string>
     <string name="quest_openingHours_open_end">"suljetaan"</string>
     <string name="quest_openingHours_answer_247">"Auki 24/7"</string>
-    <string name="quest_openingHours_answer_seasonal_opening_hours">"Vaihtelee kuukausittain"</string>
-    <string name="quest_openingHours_answer_no_regular_opening_hours">"Ei säännöllisiä aukioloaikoja"</string>
+    <string name="quest_openingHours_answer_seasonal_opening_hours">"Vaihtelee kuukausittain…"</string>
+    <string name="quest_openingHours_answer_no_regular_opening_hours">"Ei säännöllisiä aukioloaikoja…"</string>
     <string name="quest_openingHours_comment_title">"Kuvaile aukioloaikoja"</string>
     <string name="quest_openingHours_comment_description">"Muotoile lyhyesti, esimerkiksi samoja sanoja käyttäen mitä kyltissä. Kyltin poissaolo ei suoraan kerro etteikö säännöllisiä aukioloaikoja olisi."</string>
     <string name="quest_buildingLevels_title">"Kuinka monta kerrosta tässä rakennuksessa on?"</string>
@@ -181,7 +183,7 @@ Näytettäessä karttaa, vektoritiilet haetaan &lt;a href=\"https://mapzen.com/p
 Sovelluksella löydät puuttuvia ja täydennettäviä tietoja lähiympäristöstäsi. Sovellus näyttää puuttuvat tiedot karttamerkkeinä, ja esittää niistä yksinkertaisesti ratkaistavia kysymyksiä.
 
 Vastauksesi täydentävät OpenStreetMapsiä omalla nimelläsi. Et tarvi sovelluksen lisäksi erillistä OpenStreetMaps editoria."</string>
-    <string name="quest_name_answer_noName">"Sillä ei ole nimeä"</string>
+    <string name="quest_name_answer_noName">"Sillä ei ole nimeä…"</string>
     <string name="quest_name_answer_noName_confirmation_title">"Eikö todellakaan nimeä?"</string>
     <string name="quest_name_noName_confirmation_positive">"Kyllä, ei nimeä"</string>
     <string name="quest_openingHours_add_times">"Lisää aukeamisaika"</string>
@@ -251,7 +253,11 @@ Vastauksesi täydentävät OpenStreetMapsiä omalla nimelläsi. Et tarvi sovellu
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Oletko varma että rajoituskylttiä ei ole?"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">"Tarkistitko tien päistä? Jos tien päissä ei ole nopeusrajoitusmerkiä, niin sovelletaan yleistä nopeusrajoitusta"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Olen varma, ei liikennemerkkiä"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Kaupunkiteillä ovat eroavat vakionopeusrajoitukset kuin maaseututeillä."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_urbanOk">"Kaupungissa"</string>
     <string name="quest_maxspeed_answer_noSign_ruralOk">"Kaupungin ulkopuolella"</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">"Jos risteyksessä on tämänkaltainen merkki, yksilöllisiä ei enää tule koska nopeusrajoitus koskee koko aluetta."</string>
@@ -403,8 +409,8 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
     <string name="quest_powerPolesMaterial_wood">"Puuta"</string>
     <string name="quest_powerPolesMaterial_metal">"Terästä"</string>
     <string name="quest_powerPolesMaterial_concrete">"Betonia"</string>
-    <string name="quest_maxspeed_answer_advisory_speed_limit">"Vain neuvoa antava nopeusrajoitus"</string>
-    <string name="quest_address_answer_house_name">"Ei talonumeroa vaan nimi"</string>
+    <string name="quest_maxspeed_answer_advisory_speed_limit">"Vain neuvoa antava nopeusrajoitus…"</string>
+    <string name="quest_address_answer_house_name">"Ei talonumeroa vaan nimi…"</string>
     <string name="quest_address_house_name_label">"Talon nimi:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"katolla tasoja"</string>
     <string name="quest_buildingLevels_levelsLabel2">"tavallisia tasoja (katto luettuna)"</string>
@@ -449,7 +455,7 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
     <string name="default_disabled_msg_go_inside">"Tämä kyselytyyppi on pois käytöstä vakiollisesti koska sinun pitää todennäköisesti mennä paikkaan sisälle saadaksesi vastauksen tällaiseen kyselytyyppiin."</string>
     <string name="quest_housenumber_conscription_number">"Rekisterinumero"</string>
     <string name="quest_housenumber_street_number_optional">"Suuntausnumero"</string>
-    <string name="quest_cycleway_answer_contraflow_cycleway">"Toisella puolella myös pyörätie"</string>
+    <string name="quest_cycleway_answer_contraflow_cycleway">"Toisella puolella myös pyörätie…"</string>
     <string name="quest_openingHours_emptyAnswer">"Kuvaile millainen merkki tämä on. Jos ei ole merkkiä, niin kysy sisältä aukioloajat. "</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"Ei, mutta pyöräilijät voivat käyttää tietä molempiin suntiin"</string>
     <string name="quest_streetName_answer_noName_question">"Miksi tiellä ei ole nimeä?"</string>
@@ -513,7 +519,7 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
     <string name="quest_streetName_pedestrian_title">"Mikä on tämän kävelykadun nimi?"</string>
     <string name="quest_streetSurface_square_title">"Mikä päällyste tällä aukiolla on?"</string>
     <string name="quest_streetSurface_square_name_title">"Mikä päällyste aukiolla %s on?"</string>
-    <string name="quest_fee_answer_hours">"Riippuu päivästä ja ajasta"</string>
+    <string name="quest_fee_answer_hours">"Riippuu päivästä ja ajasta…"</string>
     <string name="quest_fee_add_times">"Lisää ajat"</string>
     <string name="quest_fee_only_at_hours">"Kyllä, mutta ainoastaa.."</string>
     <string name="quest_fee_not_at_hours">"Kyllä, mutta ei.."</string>
@@ -628,7 +634,7 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
     <string name="quest_buildingType_hangar">"Lentokonehalli"</string>
     <string name="quest_buildingType_hangar_description">"varasto lentokoneille, helikoptereille tai avaruusaluksille"</string>
     <string name="quest_buildingType_bunker">"Bunkkeri"</string>
-    <string name="quest_address_answer_no_housenumber">"Sillä ei ei ole talonumeroa"</string>
+    <string name="quest_address_answer_no_housenumber">"Sillä ei ei ole talonumeroa…"</string>
     <string name="quest_address_answer_no_housenumber_message1">"Rakennus on merkattu seuraavasti:"</string>
     <string name="quest_address_answer_no_housenumber_message2">"Onko tämä oikein ja eikö kyseessä ole osa rakennusta?"</string>
     <string name="quest_buildingType_shrine">"Pyhäkkö"</string>
@@ -651,7 +657,7 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
     <string name="quest_maxheight_parking_entrance_title">"Mikä on pysäköintihallin suurin sallittu korkeus?"</string>
     <string name="quest_maxheight_height_restrictor_title">"Mikä on suurin sallittu korkeus korkeusrajoitteessa?"</string>
     <string name="quest_maxheight_tunnel_title">"Mikä on suurin sallittu korkeus tässä tunnelissa?"</string>
-    <string name="quest_maxheight_answer_noSign">"Merkki puuttuu"</string>
+    <string name="quest_maxheight_answer_noSign">"Merkki puuttuu…"</string>
     <string name="quest_maxheight_answer_noSign_question">"Onko tässä selkeästi riittävästi tilaa jopa korkeimmille rekoille (vähintään 4,5 metriä) kulkea tästä?"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Tämä korkeus näyttää epäuskottavalta. Oletko varma, että se on oikein?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>

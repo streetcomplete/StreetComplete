@@ -99,7 +99,7 @@ Always remember to pay attention to [the quest guidelines](https://github.com/we
 * [oneway-data-api](https://github.com/ENT8R/oneway-data-api) by [@ENT8R](https://github.com/ENT8R) for getting oneway data from improveosm.org
 * [crops-parser](https://github.com/rugk/crops-parser) by [@rugk](https://github.com/rugk) for parsing data for the orchard quest
 * [streetcomplete-quest-svgs](https://github.com/rugk/streetcomplete-quest-svgs) by [@rugk](https://github.com/rugk) for having minified versions of all StreetComplete quest icons for the OSM wiki
-* [streetcomplete-ad-34c3](https://github.com/rugk/streetcomplete-ad-34c3) by [@rugk](https://github.com/rugk) as a banner advertisement
+* [streetcomplete-ad-c3](https://github.com/rugk/streetcomplete-ad-c3) by [@rugk](https://github.com/rugk) as a banner advertisement
 * [sc-photo-service](https://github.com/exploide/sc-photo-service) by [@exploide](https://github.com/exploide) allows StreetComplete to upload photos associated with OSM Notes
 
 You may find more projects under [the StreetComplete tag](https://github.com/topics/streetcomplete) on GitHub.

@@ -20,6 +20,8 @@ public class ApplicationConstants
 
 	public final static double MIN_DOWNLOADABLE_RADIUS_IN_METERS = 1000;
 
+	public final static String DATABASE_NAME = "streetcomplete.db";
+
 	public final static int QUEST_TILE_ZOOM = 14;
 
 	public final static int NOTE_MIN_ZOOM = 15;

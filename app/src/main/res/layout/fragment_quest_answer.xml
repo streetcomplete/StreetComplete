@@ -2,14 +2,13 @@
 <de.westnordost.streetcomplete.view.SlidingRelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="@dimen/quest_form_width"
     android:layout_height="match_parent"
     android:background="@drawable/speechbubbles_gradient_background"
     android:id="@+id/bottomSheetContainer"
     >
 
-    <android.support.design.widget.CoordinatorLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="@dimen/quest_form_speech_bubble_top_margin"
@@ -23,12 +22,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_behavior="android.support.design.widget.BottomSheetBehavior"
+            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
             android:clipChildren="true"
             app:behavior_peekHeight="@dimen/quest_form_peekHeight">
 
             <LinearLayout
-                android:id="@+id/titleSpeechBubble"
+                android:id="@+id/speechBubbleTitleContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
@@ -39,8 +38,7 @@
                 android:layout_marginEnd="@dimen/horizontal_speechbubble_margin"
                 android:layout_marginBottom="4dp">
 
-                <TextView
-                    android:id="@+id/title"
+                <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -48,10 +46,24 @@
                     android:paddingEnd="8dp"
                     android:paddingTop="12dp"
                     android:paddingBottom="12dp"
-                    android:textAppearance="@style/TextAppearance.Title"/>
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/levelLabel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"/>
+
+                    <TextView
+                        android:id="@+id/titleLabel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="@style/TextAppearance.Title"/>
+
+                </LinearLayout>
 
                 <ImageView
-                    android:id="@+id/close_btn"
+                    android:id="@+id/closeButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:scaleType="center"
@@ -65,7 +77,7 @@
 
             <!-- Necessary because even if the bottom sheet is already expanded, the content might
                  be still too large to fit onto the screen without scrolling (it often is) -->
-            <android.support.v4.widget.NestedScrollView
+            <androidx.core.widget.NestedScrollView
                 android:id="@+id/scrollView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -77,7 +89,7 @@
                     android:orientation="vertical">
 
                     <FrameLayout
-                        android:id="@+id/speechbubbleContent"
+                        android:id="@+id/speechbubbleContentContainer"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/speech_bubble_none"
@@ -115,7 +127,7 @@
                                     style="@style/ButtonBar">
 
                                     <Button
-                                        android:id="@+id/buttonOtherAnswers"
+                                        android:id="@+id/otherAnswersButton"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:text="@string/quest_generic_otherAnswers"
@@ -131,14 +143,14 @@
 
                 </LinearLayout>
 
-            </android.support.v4.widget.NestedScrollView>
+            </androidx.core.widget.NestedScrollView>
 
         </LinearLayout>
 
-    </android.support.design.widget.CoordinatorLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <Button
-        android:id="@+id/buttonOk"
+        android:id="@+id/okButton"
         android:text="@string/ok"
         style="@style/RoundButton"
         android:layout_width="72dp"

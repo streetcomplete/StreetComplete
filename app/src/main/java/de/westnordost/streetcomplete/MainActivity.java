@@ -4,8 +4,9 @@ import android.animation.ObjectAnimator;
 import android.content.res.Configuration;
 import android.graphics.Point;
 import android.graphics.PointF;
-import android.support.annotation.DrawableRes;
-import android.support.v4.app.Fragment;
+import androidx.annotation.DrawableRes;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.fragment.app.Fragment;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
@@ -18,17 +19,16 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.support.annotation.AnyThread;
-import android.support.annotation.Nullable;
-import android.support.annotation.UiThread;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.LocalBroadcastManager;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.app.AppCompatDelegate;
-import android.support.v7.preference.PreferenceManager;
-import android.support.v7.widget.Toolbar;
+import androidx.annotation.AnyThread;
+import androidx.annotation.Nullable;
+import androidx.annotation.UiThread;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
+import androidx.appcompat.widget.Toolbar;
 import android.text.method.LinkMovementMethod;
 import android.text.util.Linkify;
 import android.view.LayoutInflater;
@@ -47,8 +47,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Random;
 
 import javax.inject.Inject;
@@ -80,11 +80,10 @@ import de.westnordost.streetcomplete.location.LocationUtil;
 import de.westnordost.streetcomplete.oauth.OAuthPrefs;
 import de.westnordost.streetcomplete.quests.AbstractBottomSheetFragment;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
-import de.westnordost.streetcomplete.quests.FindQuestSourceComponent;
 import de.westnordost.streetcomplete.quests.LeaveNoteInsteadFragment;
 import de.westnordost.streetcomplete.quests.OsmQuestAnswerListener;
 import de.westnordost.streetcomplete.quests.QuestAnswerComponent;
-import de.westnordost.streetcomplete.quests.QuestUtil;
+import de.westnordost.streetcomplete.quests.QuestUtilKt;
 import de.westnordost.streetcomplete.settings.SettingsActivity;
 import de.westnordost.streetcomplete.sound.SoundFx;
 import de.westnordost.streetcomplete.statistics.AnswersCounter;
@@ -206,20 +205,7 @@ public class MainActivity extends AppCompatActivity implements
 		}
 
 		Prefs.Theme theme = Prefs.Theme.valueOf(prefs.getString(Prefs.THEME_SELECT, "LIGHT"));
-		switch (theme)
-		{
-			case LIGHT:
-				AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-				break;
-			case DARK:
-				AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-				break;
-			case AUTO:
-				AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO);
-				break;
-			case SYSTEM:
-				AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
-		}
+		AppCompatDelegate.setDefaultNightMode(theme.appCompatNightMode);
 
 		questSource.onCreate(this);
 		questController.onCreate();
@@ -390,7 +376,7 @@ public class MainActivity extends AppCompatActivity implements
 		icon.setImageResource(quest.getType().getIcon());
 		TextView text = inner.findViewById(R.id.text);
 
-		text.setText(QuestUtil.getHtmlTitle(getResources(), quest.getType(), element));
+		text.setText(QuestUtilKt.getHtmlQuestTitle(getResources(), quest.getType(), element));
 
 		new AlertDialog.Builder(this)
 			.setTitle(R.string.undo_confirm_title)
@@ -706,7 +692,7 @@ public class MainActivity extends AppCompatActivity implements
 
 	/* ------------- OsmQuestAnswerListener ------------- */
 
-	@Override public void onAnsweredQuest(long questId, QuestGroup group, Bundle answer)
+	@Override public void onAnsweredQuest(long questId, QuestGroup group, Object answer)
 	{
 		questSource.findSource(questId, group, mapFragment.getDisplayedLocation(), source ->
 		{
@@ -723,7 +709,7 @@ public class MainActivity extends AppCompatActivity implements
 	@Override public void onComposeNote(long questId, QuestGroup group, String questTitle)
 	{
 		LeaveNoteInsteadFragment f = new LeaveNoteInsteadFragment();
-		Bundle args = QuestAnswerComponent.createArguments(questId, group);
+		Bundle args = QuestAnswerComponent.Companion.createArguments(questId, group);
 		args.putString(LeaveNoteInsteadFragment.ARG_QUEST_TITLE, questTitle);
 		f.setArguments(args);
 
@@ -737,7 +723,7 @@ public class MainActivity extends AppCompatActivity implements
 		ft.commit();
 	}
 
-	@Override public void onLeaveNote(long questId, QuestGroup group, String questTitle, String note, ArrayList<String> imagePaths)
+	@Override public void onLeaveNote(long questId, QuestGroup group, String questTitle, String note, @Nullable List<String> imagePaths)
 	{
 		closeBottomSheet();
 		// the quest is deleted from DB on creating a note, so need to fetch quest before
@@ -833,7 +819,7 @@ public class MainActivity extends AppCompatActivity implements
 		showInBottomSheet(new CreateNoteFragment());
 	}
 
-	@Override public void onLeaveNote(String note, ArrayList<String> imagePaths, Point screenPosition)
+	@Override public void onLeaveNote(String note, @Nullable List<String> imagePaths, Point screenPosition)
 	{
 		showMarkerSolvedAnimation(R.drawable.ic_quest_create_note, new PointF(screenPosition), null);
 		closeBottomSheet();
@@ -955,7 +941,7 @@ public class MainActivity extends AppCompatActivity implements
 		mapFragment.addQuestGeometry(quest.getGeometry());
 
 		AbstractQuestAnswerFragment f = quest.getType().createForm();
-		Bundle args = QuestAnswerComponent.createArguments(quest.getId(), group);
+		Bundle args = QuestAnswerComponent.Companion.createArguments(quest.getId(), group);
 		if (group == QuestGroup.OSM)
 		{
 			OsmElement element = questController.getOsmElement((OsmQuest) quest);

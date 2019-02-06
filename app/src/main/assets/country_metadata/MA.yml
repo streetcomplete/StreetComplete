@@ -3,6 +3,6 @@ additionalStreetsignLanguages: [fr, es]
 firstDayOfWorkweek: Su
 mobileCountryCode: 604
 officialLanguages: [ar, ber]
-orchardProduces: [olive, almond, date, fig, orange, grape, apple, tomato, plum, apricot, banana, walnut,
-  peach, sisal, strawberry]
+orchardProduces: [tomato, olive, orange, apple, grape, banana, chilli_pepper, sweet_pepper, plum, strawberry,
+  date, peach, almond, fig, apricot, avocado]
 popularReligions: [muslim]

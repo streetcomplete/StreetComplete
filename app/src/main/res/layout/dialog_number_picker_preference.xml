@@ -13,7 +13,7 @@
         android:padding="16dp"/>
 
     <NumberPicker
-        android:id="@+id/number_picker"
+        android:id="@+id/numberPicker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"/>

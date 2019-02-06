@@ -1,0 +1,5 @@
+Ajuda a millorar l'OpenStreetMap amb StreetComplete!
+
+Aquesta aplicació cerca dades incompletes i ampliables prop teu i les mostra en una mapa com a marcadors. Cadascun d'aquests marcador es pot resoldre responent una pregunta simple per a completar la informació del lloc.
+
+Aleshores, la informació que introdueixes s'afegeix directament a l'OpenStreetMap en nom teu, sense haver d'usar cap altre editor.

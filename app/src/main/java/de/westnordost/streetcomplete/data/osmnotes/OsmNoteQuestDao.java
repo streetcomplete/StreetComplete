@@ -109,7 +109,7 @@ public class OsmNoteQuestDao extends AQuestDao<OsmNoteQuest>
 
 		if (quest.getImagePaths() != null)
 		{
-			values.put(Columns.IMAGE_PATHS, serializer.toBytes(quest.getImagePaths()));
+			values.put(Columns.IMAGE_PATHS, serializer.toBytes(new ArrayList<>(quest.getImagePaths())));
 		}
 
 		return values;

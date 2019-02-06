@@ -23,7 +23,7 @@
         android:orientation="vertical">
         <!-- the toolbar somehow always wants to be in front in its layout, so let's ban it into
              a sub frame layout -->
-        <android.support.v7.widget.Toolbar
+        <androidx.appcompat.widget.Toolbar
             xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/toolbar"
@@ -111,7 +111,7 @@
 
             </RelativeLayout>
 
-        </android.support.v7.widget.Toolbar>
+        </androidx.appcompat.widget.Toolbar>
 
         <ProgressBar
             android:id="@+id/download_progress"

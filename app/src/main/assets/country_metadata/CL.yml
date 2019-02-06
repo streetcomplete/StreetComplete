@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
 mobileCountryCode: 730
 officialLanguages: [es]
-orchardProduces: [grape, apple, avocado, walnut, olive, peach, plum, cherry, cranberry, tomato, kiwi,
-  hazelnut, almond, pear, lemon, lime]
+orchardProduces: [grape, apple, tomato, peach, pear, plum, kiwi, lemon, lime, avocado, orange, olive,
+  cranberry, walnut, cherry, chilli_pepper, sweet_pepper]

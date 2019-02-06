@@ -21,12 +21,14 @@
     <string name="map_attribution_mapzen">"Funciona amb %s"</string>
     <string name="map_attribution_osm">"© Col·laboradors de l'OpenStreetMap"</string>
     <string name="quest_generic_otherAnswers">"Altres respostes…"</string>
-    <string name="quest_generic_answer_notApplicable">"No ho sé"</string>
+    <string name="quest_generic_answer_notApplicable">"No ho sé…"</string>
     <string name="quest_generic_confirmation_title">"N'esteu segur?"</string>
     <string name="quest_generic_confirmation_yes">"Sí, n'estic segur"</string>
     <string name="quest_generic_confirmation_no">"Ho comprovaré"</string>
     <string name="quest_generic_error_field_empty">"Heu deixat aquest camp en blanc"</string>
     <string name="quest_leave_new_note_title">"Voleu deixar una nota?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_leave_new_note_description">"Podeu deixar una nota pública en aquesta ubicació que altres mapadors podran comentar i eventualment resoldre:"</string>
     <string name="quest_leave_new_note_yes">"D'acord"</string>
     <string name="quest_leave_new_note_no">"No, només amaga-la"</string>
@@ -65,7 +67,7 @@
     <string name="action_about">"Quant a l'StreetComplete"</string>
     <string name="about_title_version">"Versió"</string>
     <string name="about_title_authors">"Crèdits"</string>
-    <string name="about_summary_authors">"© 2016–2018 Tobias Zwick i col·laboradors"</string>
+    <string name="about_summary_authors">"© 2016–2019 Tobias Zwick i col·laboradors"</string>
     <string name="about_title_repository">"Dipòsit font"</string>
     <string name="about_summary_repository">"a GitHub"</string>
     <string name="about_title_report_error">"Informa d'un error"</string>
@@ -87,8 +89,8 @@
     <string name="quest_openingHours_public_holidays_short">"FP"</string>
     <string name="quest_openingHours_open_end">"final de l'obertura"</string>
     <string name="quest_openingHours_answer_247">"Obert 24/7"</string>
-    <string name="quest_openingHours_answer_seasonal_opening_hours">"Depèn del mes"</string>
-    <string name="quest_openingHours_answer_no_regular_opening_hours">"No té horari d'obertura habitual"</string>
+    <string name="quest_openingHours_answer_seasonal_opening_hours">"Depèn del mes…"</string>
+    <string name="quest_openingHours_answer_no_regular_opening_hours">"No té horari d'obertura habitual…"</string>
     <string name="quest_openingHours_comment_title">"Descriu l'horari d'obertura"</string>
     <string name="quest_openingHours_comment_description">"Sigues concís, idealment usa el mateix redactat del cartell. P. e. «amb cita prèvia». L'absència de cartell no implica necessàriament que no hi hagi horari d'obertura habitual."</string>
     <string name="quest_buildingLevels_title">"Quantes plantes té aquest edifici?"</string>
@@ -158,7 +160,7 @@ No obstant això, abans de pujar els canvis, l'aplicació comprova amb un &lt;a 
 Aquesta aplicació cerca dades incompletes i ampliables prop teu i les mostra en una mapa com a marcadors. Cadascun d'aquests marcador es pot resoldre responent una pregunta simple per a completar la informació del lloc.
 
 Aleshores, la informació que introdueixes s'afegeix directament a l'OpenStreetMap en nom teu, sense haver d'usar cap altre editor."</string>
-    <string name="quest_name_answer_noName">"No té nom"</string>
+    <string name="quest_name_answer_noName">"No té nom…"</string>
     <string name="quest_name_answer_noName_confirmation_title">"De veritat no té nom?"</string>
     <string name="quest_name_noName_confirmation_positive">"Sí, no té nom"</string>
     <string name="quest_openingHours_add_times">"Afegir horaris d'apertura"</string>
@@ -222,7 +224,11 @@ Aleshores, la informació que introdueixes s'afegeix directament a l'OpenStreetM
     <string name="quest_maxspeed_answer_noSign_confirmation">"Heu comprovat els caps del carrer?
 Si no hi ha cap senya en tot el carrer que s'apliqui en l'àrea realçada, s'apliquen els límits de velocitat predeterminat."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Sí, no hi ha cap senyal."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Les vies urbanes tenen límits de velocitat diferents que els vies rurals."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_urbanOk">"Dins el nucli urbà"</string>
     <string name="quest_maxspeed_answer_noSign_ruralOk">"Fora del nucli urbà"</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">"Si hi ha un signe d'aquest tipus a la intersecció del carrer principal, no trobareu indicis individuals a la zona perquè el límit de velocitat publicat allà s'aplica a tota la zona."</string>
@@ -358,8 +364,8 @@ En cas contrari, podeu baixar un altre teclat a la botiga d'aplicacions. Els tec
     <string name="quest_powerPolesMaterial_wood">"Fusta"</string>
     <string name="quest_powerPolesMaterial_metal">"Acer"</string>
     <string name="quest_powerPolesMaterial_concrete">"Formigó"</string>
-    <string name="quest_maxspeed_answer_advisory_speed_limit">"Límit de velocitat aconsellable"</string>
-    <string name="quest_address_answer_house_name">"Cap número de casa però un nom"</string>
+    <string name="quest_maxspeed_answer_advisory_speed_limit">"Límit de velocitat aconsellable…"</string>
+    <string name="quest_address_answer_house_name">"Cap número de casa però un nom…"</string>
     <string name="quest_address_house_name_label">"Nom de la casa"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"nivell en la teulada"</string>
     <string name="quest_buildingLevels_levelsLabel2">"nivells normals (sense comptar la teulada)"</string>
@@ -404,7 +410,7 @@ En cas contrari, podeu baixar un altre teclat a la botiga d'aplicacions. Els tec
     <string name="default_disabled_msg_go_inside">"Aquest tipus de cerca està desactivat de manera predeterminada, ja que probablement hauràs d'ingressar al lloc per poder respondre una pregunta d'aquest tipus."</string>
     <string name="quest_housenumber_conscription_number">"Número de circumscripció"</string>
     <string name="quest_housenumber_street_number_optional">"Nombre d'orientació (opcional)"</string>
-    <string name="quest_cycleway_answer_contraflow_cycleway">"També el carril bici en un altre costat"</string>
+    <string name="quest_cycleway_answer_contraflow_cycleway">"També el carril bici en un altre costat…"</string>
     <string name="quest_openingHours_emptyAnswer">"Cal que descriviu què hi ha al cartell. Si no hi ha cap cartell, hauríeu de demanar l'horari d'obertura en l'interior."</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"cap,  però els ciclistes poden usar la via en ambdues direccions"</string>
     <string name="quest_streetName_answer_noName_question">"Per què no té nom?"</string>
@@ -460,7 +466,7 @@ En cas contrari, podeu baixar un altre teclat a la botiga d'aplicacions. Els tec
     <string name="quest_streetName_pedestrian_title">"Quin és el nom d'aquesta via de vianants?"</string>
     <string name="quest_streetSurface_square_title">"Quin tipus de superfície té aquesta plaça?"</string>
     <string name="quest_streetSurface_square_name_title">"Quin tipus de superfície té la plaça %s aquí?"</string>
-    <string name="quest_fee_answer_hours">"Depèn de l'hora i el dia"</string>
+    <string name="quest_fee_answer_hours">"Depèn de l'hora i el dia…"</string>
     <string name="quest_fee_add_times">"Afegeix-hi horari"</string>
     <string name="quest_fee_only_at_hours">"Sí, però només..."</string>
     <string name="quest_fee_not_at_hours">"Sí, però no..."</string>
@@ -572,7 +578,7 @@ Per example 1,3 o 2-6."</string>
     <string name="quest_buildingType_hangar">"Hangar"</string>
     <string name="quest_buildingType_hangar_description">"magatzem per a avions, helicòpters o altres aeronaus"</string>
     <string name="quest_buildingType_bunker">"Búnquer"</string>
-    <string name="quest_address_answer_no_housenumber">"No té número de casa"</string>
+    <string name="quest_address_answer_no_housenumber">"No té número de casa…"</string>
     <string name="quest_address_answer_no_housenumber_message1">"L'edifici s'ha etiquetat com a:"</string>
     <string name="quest_address_answer_no_housenumber_message2">"Això és correcte, o només és part d'un edifici?"</string>
     <string name="quest_buildingType_shrine">"Santuari"</string>
@@ -595,7 +601,7 @@ Per example 1,3 o 2-6."</string>
     <string name="quest_maxheight_parking_entrance_title">"Quin és el límit d'alçada d'aquesta entrada a l'aparcament?"</string>
     <string name="quest_maxheight_height_restrictor_title">"Quin és el límit d'alçada d'aquest restrictor?"</string>
     <string name="quest_maxheight_tunnel_title">"Quin és el límit d'alçada d'aquest túnel?"</string>
-    <string name="quest_maxheight_answer_noSign">"No hi ha senyal"</string>
+    <string name="quest_maxheight_answer_noSign">"No hi ha senyal…"</string>
     <string name="quest_maxheight_answer_noSign_question">"Hi ha espai suficient fins i tot per als tràilers més alts (4.5 metres /15 peus) per passar-hi?"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Aquesta alçada sembla increible. Estàs segur que és correcta?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
@@ -616,9 +622,13 @@ Per example 1,3 o 2-6."</string>
     <string name="quest_tracktype_grade5">"Materials suaus i amb poca agafada"</string>
     <string name="quest_building_underground_name_title">"És %s completament subterrani?"</string>
     <string name="quest_building_underground_title">"Aquest edifici és completament subterrani?"</string>
+    <string name="quest_traffic_signals_sound_title">"Hi ha senyals acústics per a cecs aquí?"</string>
     <string name="quest_wheelchairAccess_limited_description_outside">"Parcialment significa que no hi ha més que un esglaó per accedir-hi."</string>
     <string name="quest_wheelchairAccess_outside_title">"Aquest lloc és accessible amb cadira de rodes?"</string>
     <string name="quest_traffic_signals_button_title">"Aquest semàfor té botó per a demanar llum verda?"</string>
     <string name="quest_motorcycleParkingCapacity_title">"Quantes motos es poden aparcar aquí?"</string>
     <string name="quest_motorcycleParkingCoveredStatus_title">"Aquest aparcament de motos és cobert (protegit de la pluja)?"</string>
+    <string name="default_disabled_msg_maxspeed">"Aquest tipus de missió està desactivat  de forma predeterminada perquè habitualment se us demana de revisar els senyals de límit de velocitat en tot el carrer, no només de la secció ressaltada. De vegades això pot ser massa per a resoldre-ho en una única missió."</string>
+    <string name="pref_title_quests_restore_hidden">"Restaura les missions ocultes"</string>
+    <string name="restore_hidden_success">"S'han restaurat %d missions ocultes"</string>
 </resources>

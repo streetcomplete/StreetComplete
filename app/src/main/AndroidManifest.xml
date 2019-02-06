@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools"
           package="de.westnordost.streetcomplete"
     >
 
@@ -9,9 +8,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.WAKE_LOCK" android:maxSdkVersion="20" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="18"/>
-
-    <!-- evernote lib adds this permission but we do not use that feature-->
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" tools:node="remove" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <uses-feature android:name="android.hardware.camera" android:required="false" />
 
@@ -53,7 +50,7 @@
         <service android:name=".data.download.QuestDownloadService" />
         <service android:name=".data.upload.QuestChangesUploadService" />
         <provider
-            android:name="android.support.v4.content.FileProvider"
+            android:name="androidx.core.content.FileProvider"
             android:authorities="@string/fileprovider_authority"
             android:exported="false"
             android:grantUriPermissions="true">

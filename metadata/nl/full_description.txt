@@ -1,0 +1,5 @@
+Help OpenStreetMap te verbeteren met StreetComplete!
+
+Deze app vindt incomplete data in jouw omgeving, en toont het op de kaart als een marker. Elk van deze is op te lossen door een simpele vraag te beantwoorden, en zo de info op de kaart te vervoledigen.
+
+De informatie die je ingeeft wordt meteen toegevoegd aan OpenStreetMap in jouw naam, zonder een andere editor te hoeven gebruiken.

@@ -21,12 +21,14 @@
     <string name="map_attribution_mapzen">"%s 協力"</string>
     <string name="map_attribution_osm">"© OpenStreetMap 開放街圖貢獻者們"</string>
     <string name="quest_generic_otherAnswers">"其他回答…"</string>
-    <string name="quest_generic_answer_notApplicable">"無法表示"</string>
+    <string name="quest_generic_answer_notApplicable">"無法表示…"</string>
     <string name="quest_generic_confirmation_title">"你確定嗎？"</string>
     <string name="quest_generic_confirmation_yes">"是，我確定"</string>
     <string name="quest_generic_confirmation_no">"我會檢查"</string>
     <string name="quest_generic_error_field_empty">"你留下空的欄位"</string>
     <string name="quest_leave_new_note_title">"以留下註記取代?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_leave_new_note_description">"你可以在這個位置，留下其他圖客可以討論和解決的註記："</string>
     <string name="quest_leave_new_note_yes">"好"</string>
     <string name="quest_leave_new_note_no">"不，僅隱藏"</string>
@@ -69,7 +71,7 @@
 
     <!-- Fuzzy -->
     <string name="about_title_authors">"作者"</string>
-    <string name="about_summary_authors">"© 2016–2018 Tobias Zwick 和貢獻者們"</string>
+    <string name="about_summary_authors">"© 2016–2019 Tobias Zwick 和貢獻者們"</string>
     <string name="about_title_repository">"原始碼倉儲"</string>
     <string name="about_summary_repository">"GitHub 上"</string>
     <string name="about_title_report_error">"回報錯誤"</string>
@@ -95,8 +97,8 @@
     <string name="quest_openingHours_public_holidays_short">"PH"</string>
     <string name="quest_openingHours_open_end">"開放/關閉"</string>
     <string name="quest_openingHours_answer_247">"24小時營業"</string>
-    <string name="quest_openingHours_answer_seasonal_opening_hours">"以月份分別"</string>
-    <string name="quest_openingHours_answer_no_regular_opening_hours">"沒有規律的營業時間"</string>
+    <string name="quest_openingHours_answer_seasonal_opening_hours">"以月份分別…"</string>
+    <string name="quest_openingHours_answer_no_regular_opening_hours">"沒有規律的營業時間…"</string>
     <string name="quest_openingHours_comment_title">"描述營業時間"</string>
     <string name="quest_openingHours_comment_description">"理想中，在標示上的文字都是言簡意賅的，像是\"預約\"。不存在的標示並不需要代表這裡沒有規律的營業時間。"</string>
     <string name="quest_buildingLevels_title">"此棟建築物有多少層樓？"</string>
@@ -176,7 +178,7 @@
 此APP會在你的附近找到非完整且可擴充的資料，以標記顯示在地圖上。每個只要回答簡單的問題就可以解決。
 
 你所輸入的資料會直接新增至開放街圖，而不需要其他的編輯器。"</string>
-    <string name="quest_name_answer_noName">"沒有名稱"</string>
+    <string name="quest_name_answer_noName">"沒有名稱…"</string>
     <string name="quest_name_answer_noName_confirmation_title">"確定沒有名稱?"</string>
     <string name="quest_name_noName_confirmation_positive">"是，沒有名稱"</string>
     <string name="quest_openingHours_add_times">"新增營業時間"</string>
@@ -248,7 +250,11 @@
     <string name="quest_maxspeed_answer_noSign_confirmation">"你有到街尾檢查嗎？
 如果整條路都沒有標示的區塊，那麼會套用預設限制。"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"對，並沒有速限牌"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"市區道路跟鄉村的預設速限並不相同。"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_urbanOk">"市區"</string>
     <string name="quest_maxspeed_answer_noSign_ruralOk">"市區之外"</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">"如果在幹道交匯處有指標，那麼你不會在這一間找到個別的速限牌，因此整區將用同一個預設速度。"</string>
@@ -408,8 +414,8 @@
     <string name="quest_powerPolesMaterial_wood">"木頭"</string>
     <string name="quest_powerPolesMaterial_metal">"鋼鐵"</string>
     <string name="quest_powerPolesMaterial_concrete">"水泥"</string>
-    <string name="quest_maxspeed_answer_advisory_speed_limit">"只是建議速度限制"</string>
-    <string name="quest_address_answer_house_name">"沒有門牌號碼但有名字"</string>
+    <string name="quest_maxspeed_answer_advisory_speed_limit">"只是建議速度限制…"</string>
+    <string name="quest_address_answer_house_name">"沒有門牌號碼但有名字…"</string>
     <string name="quest_address_house_name_label">"房屋名稱："</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"屋頂樓層數"</string>
     <string name="quest_buildingLevels_levelsLabel2">"一般的樓層數 (不計算屋頂)"</string>
@@ -454,7 +460,7 @@
     <string name="default_disabled_msg_go_inside">"這一類任務預設關閉，因為你很可能必須進到該地才能回答這類任務的答案。"</string>
     <string name="quest_housenumber_conscription_number">"徵兵號碼"</string>
     <string name="quest_housenumber_street_number_optional">"定位號碼 (選填)"</string>
-    <string name="quest_cycleway_answer_contraflow_cycleway">"另一側也有單車道"</string>
+    <string name="quest_cycleway_answer_contraflow_cycleway">"另一側也有單車道…"</string>
     <string name="quest_openingHours_emptyAnswer">"你必須描述標示狀況。如果沒有標示，那麼你必須到店裡詢問。"</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"無，但單車騎士可能兩個方向都能騎乘"</string>
     <string name="quest_streetName_answer_noName_question">"為什麼這條路沒有名稱？"</string>
@@ -518,7 +524,7 @@
     <string name="quest_streetName_pedestrian_title">"徒步區的名稱是什麼？"</string>
     <string name="quest_streetSurface_square_title">"廣場的舖面是什麼材質？"</string>
     <string name="quest_streetSurface_square_name_title">"廣場 %s 的舖面是什麼材質？"</string>
-    <string name="quest_fee_answer_hours">"視時段和那天而定"</string>
+    <string name="quest_fee_answer_hours">"視時段和那天而定…"</string>
     <string name="quest_fee_add_times">"增加時間"</string>
     <string name="quest_fee_only_at_hours">"有收費，但只在..."</string>
     <string name="quest_fee_not_at_hours">"有收費，但有免費時段..."</string>
@@ -627,7 +633,7 @@
     <string name="quest_buildingType_hangar">"機庫"</string>
     <string name="quest_buildingType_hangar_description">"存放飛機、直升機和太空梭的地方"</string>
     <string name="quest_buildingType_bunker">"掩體"</string>
-    <string name="quest_address_answer_no_housenumber">"這裡沒有門牌號碼"</string>
+    <string name="quest_address_answer_no_housenumber">"這裡沒有門牌號碼…"</string>
     <string name="quest_address_answer_no_housenumber_message1">"這棟建築被標為："</string>
     <string name="quest_address_answer_no_housenumber_message2">"正確嗎，還是這邊不是建築的一部分？"</string>
     <string name="quest_buildingType_shrine">"神社"</string>
@@ -650,7 +656,7 @@
     <string name="quest_maxheight_parking_entrance_title">"這個停車場的限高多少？"</string>
     <string name="quest_maxheight_height_restrictor_title">"這個限高裝置的高度限制是？"</string>
     <string name="quest_maxheight_tunnel_title">"這個隧道的高度限制是？"</string>
-    <string name="quest_maxheight_answer_noSign">"該處並沒有標識"</string>
+    <string name="quest_maxheight_answer_noSign">"該處並沒有標識…"</string>
     <string name="quest_maxheight_answer_noSign_question">"就算是最高的卡車（至少有4.5公尺 / 15英尺）也可以有非常充裕的空間通過嗎？"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"這個高度聽起來不太合理。您確定這是正確的嗎？"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
@@ -673,8 +679,10 @@
     <string name="quest_building_underground_name_title">"%s 完全位於地面以下嗎？"</string>
     <string name="quest_building_underground_title">"這座建物完全在地面以下嗎？"</string>
     <string name="quest_traffic_signals_sound_title">"這裡有引導視障人士用的輔助聲響信號嗎？"</string>
+    <string name="quest_wheelchairAccess_limited_description_outside">"部分意味無法在一步動作下過去。"</string>
     <string name="quest_wheelchairAccess_outside_title">"這個地方輪椅可以進入嗎？"</string>
     <string name="quest_traffic_signals_button_title">"這些紅綠燈是否有按鈕切換綠燈？"</string>
     <string name="quest_motorcycleParkingCapacity_title">"這裡可以停泊多少台機車/電單車？"</string>
     <string name="quest_motorcycleParkingCoveredStatus_title">"這個機車/電單車停車場屬於有蓋式嗎(可遮陽擋雨)？"</string>
+    <string name="default_disabled_msg_maxspeed">"這項任務類型預設關閉，因為通常得檢查整條道路的速限指標，不只是注意路段。有時候只是要簡單解決的話，會相當累。"</string>
 </resources>

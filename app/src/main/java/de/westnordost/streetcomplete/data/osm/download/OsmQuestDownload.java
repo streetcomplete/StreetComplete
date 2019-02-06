@@ -5,8 +5,10 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.Future;
@@ -15,6 +17,7 @@ import java.util.concurrent.FutureTask;
 import javax.inject.Inject;
 
 import de.westnordost.countryboundaries.CountryBoundaries;
+import de.westnordost.osmapi.map.data.OsmLatLon;
 import de.westnordost.streetcomplete.data.QuestGroup;
 import de.westnordost.streetcomplete.data.QuestType;
 import de.westnordost.streetcomplete.data.VisibleQuestListener;
@@ -77,10 +80,16 @@ public class OsmQuestDownload
 		final ArrayList<OsmQuest> quests = new ArrayList<>();
 		final Map<OsmElementKey, Long> previousQuests = getPreviousQuestsIdsByElementKey(questType, bbox);
 
+		final HashSet<LatLon> truncatedBlacklistedPositions = new HashSet<>();
+		for (LatLon blacklistedPosition : blacklistedPositions)
+		{
+			truncatedBlacklistedPositions.add(truncateTo5Decimals(blacklistedPosition));
+		}
+
 		long time = System.currentTimeMillis();
 		boolean success = questType.download(bbox, (element, geometry) ->
 		{
-			if(mayCreateQuestFrom(questType, element, geometry, blacklistedPositions))
+			if(mayCreateQuestFrom(questType, element, geometry, truncatedBlacklistedPositions))
 			{
 				Element.Type elementType = element.getType();
 				long elementId = element.getId();
@@ -202,8 +211,9 @@ public class OsmQuestDownload
 			if(distance > MAX_GEOMETRY_LENGTH_IN_METERS) return false;
 		}
 
-		// do not create quests whose marker is at a blacklisted position
-		if(blacklistedPositions != null && blacklistedPositions.contains(geometry.center))
+		// do not create quests whose marker is at/near a blacklisted position
+		LatLon truncatedGeometryCenter = truncateTo5Decimals(geometry.center);
+		if(blacklistedPositions != null && blacklistedPositions.contains(truncatedGeometryCenter))
 		{
 			Log.d(TAG, getQuestTypeName(questType) + ": Not adding a quest at " +
 					getPosAsLogString(geometry.center) +
@@ -230,6 +240,17 @@ public class OsmQuestDownload
 		return true;
 	}
 
+	// the resulting precision is about ~1 meter
+	private static LatLon truncateTo5Decimals(LatLon latLon) {
+		return new OsmLatLon(
+			truncateTo5Decimals(latLon.getLatitude()),
+			truncateTo5Decimals(latLon.getLongitude()));
+	}
+
+	private static double truncateTo5Decimals(double val) {
+		return (double)((int)(val * 1e5))/1e5;
+	}
+
 	private CountryBoundaries getCountryBoundaries()
 	{
 		try
@@ -254,7 +275,7 @@ public class OsmQuestDownload
 
 	private static String getElementAsLogString(Element element)
 	{
-		return element.getType().name().toLowerCase() + " #" + element.getId();
+		return element.getType().name().toLowerCase(Locale.US) + " #" + element.getId();
 	}
 
 	private static String getQuestTypeName(QuestType q)

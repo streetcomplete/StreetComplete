@@ -4,5 +4,5 @@ isLivingStreetKnown: true
 isSlowZoneKnown: true
 mobileCountryCode: 284
 officialLanguages: [bg]
-orchardProduces: [grape, plum, apple, cherry, tomato, peach, walnut, apricot, chilli_pepper, sweet_pepper,
-  raspberry, strawberry, almond, hazelnut, pear, chestnut]
+orchardProduces: [grape, tomato, pepper, plum, apple, peach, apricot, raspberry, strawberry, walnut,
+  cherry, pear, chilli_pepper, sweet_pepper, almond, chestnut]

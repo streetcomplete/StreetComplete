@@ -12,6 +12,7 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import de.westnordost.streetcomplete.ApplicationConstants;
 import de.westnordost.streetcomplete.data.changesets.OpenChangesetsDao;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
 import de.westnordost.streetcomplete.data.osm.persist.UndoOsmQuestDao;
@@ -19,7 +20,7 @@ import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderList;
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeDao;
 import de.westnordost.streetcomplete.data.statistics.QuestStatisticsDao;
 import de.westnordost.streetcomplete.quests.localized_name.data.RoadNamesTablesHelper;
-import de.westnordost.streetcomplete.quests.oneway.WayTrafficFlowTablesHelper;
+import de.westnordost.streetcomplete.quests.oneway.data.WayTrafficFlowTablesHelper;
 import de.westnordost.streetcomplete.util.KryoSerializer;
 import de.westnordost.streetcomplete.util.Serializer;
 import de.westnordost.osmapi.changesets.ChangesetsDao;
@@ -29,7 +30,12 @@ public class DbModule
 {
 	@Provides @Singleton public static SQLiteOpenHelper sqliteOpenHelper(Context ctx)
 	{
-		return new StreetCompleteOpenHelper(ctx, new TablesHelper[]{
+		return sqliteOpenHelper(ctx, ApplicationConstants.DATABASE_NAME);
+	}
+
+	public static SQLiteOpenHelper sqliteOpenHelper(Context ctx, String databaseName)
+	{
+		return new StreetCompleteOpenHelper(ctx, databaseName, new TablesHelper[]{
 			new RoadNamesTablesHelper(), new WayTrafficFlowTablesHelper()
 		});
 	}

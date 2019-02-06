@@ -2,7 +2,7 @@
 isLeftHandTraffic: true
 mobileCountryCode: 410
 officialLanguages: [ur, en, pa]
-orchardProduces: [guava, mango, mangosteen, orange, apple, date, chilli_pepper, sweet_pepper, tomato,
-  apricot, banana, grape, lemon, lime, peach, almond, plum, pear, coconut]
+orchardProduces: [guava, mango, mangosteen, orange, tomato, apple, date, apricot, chilli_pepper, sweet_pepper,
+  banana, lemon, lime, peach, grape, plum, almond, pear, walnut]
 popularReligions: [muslim, hindu, christian]
 popularSports: [cricket, soccer, tennis, field_hockey]

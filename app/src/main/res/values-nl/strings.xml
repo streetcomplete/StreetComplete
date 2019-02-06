@@ -21,12 +21,14 @@
     <string name="map_attribution_mapzen">"Mogelijk gemaakt door %s"</string>
     <string name="map_attribution_osm">"© OpenStreetMap-inzenders"</string>
     <string name="quest_generic_otherAnswers">"Andere antwoorden..."</string>
-    <string name="quest_generic_answer_notApplicable">"Weet ik niet"</string>
+    <string name="quest_generic_answer_notApplicable">"Weet ik niet…"</string>
     <string name="quest_generic_confirmation_title">"Weet je het zeker?"</string>
     <string name="quest_generic_confirmation_yes">"Ja, ik ben er zeker van"</string>
     <string name="quest_generic_confirmation_no">"Zal ik nagaan"</string>
     <string name="quest_generic_error_field_empty">"Je hebt dit veld leeg gelaten"</string>
     <string name="quest_leave_new_note_title">"Maak in plaats hiervan een aantekening"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_leave_new_note_description">"Je kan een openbare opmerking maken op deze locatie waar andere mappers op kunnen reageren en hopelijk kunnen oplossen."</string>
     <string name="quest_leave_new_note_yes">"Oké"</string>
     <string name="quest_leave_new_note_no">"Nee, verberg deze vraag gewoon"</string>
@@ -71,7 +73,7 @@
 
     <!-- Fuzzy -->
     <string name="about_title_authors">"Auteurs"</string>
-    <string name="about_summary_authors">"© 2016–2018 Tobias Zwick en medewerkenden"</string>
+    <string name="about_summary_authors">"© 2016–2019 Tobias Zwick en medewerkenden"</string>
     <string name="about_title_repository">"Broncode-repo"</string>
     <string name="about_summary_repository">"op GitHub"</string>
     <string name="about_title_report_error">"Fout rapporteren"</string>
@@ -97,8 +99,8 @@
     <string name="quest_openingHours_public_holidays_short">"Feestdagen"</string>
     <string name="quest_openingHours_open_end">"geen sluitingstijd"</string>
     <string name="quest_openingHours_answer_247">"24/7 geopend"</string>
-    <string name="quest_openingHours_answer_seasonal_opening_hours">"verschilt per maand"</string>
-    <string name="quest_openingHours_answer_no_regular_opening_hours">"Geen vaste openingstijden"</string>
+    <string name="quest_openingHours_answer_seasonal_opening_hours">"verschilt per maand…"</string>
+    <string name="quest_openingHours_answer_no_regular_opening_hours">"Geen vaste openingstijden…"</string>
     <string name="quest_openingHours_comment_title">"Omschrijf openingstijden"</string>
     <string name="quest_openingHours_comment_description">"Wees beknopt. Gebruik zo mogelijk de woorden op het bordje (in Engelse versie). bijv. \"by appointment\" wanneer er staat \"op afspraak\". Als er geen bordje is, wil dat niet zeggen dat er geen vaste openingstijden zijn."</string>
     <string name="quest_buildingLevels_title">"Hoeveel etages heeft dit gebouw?"</string>
@@ -180,7 +182,7 @@ Om de kaart te tonen worden vector tegels van de &lt;a href=\"https://mapzen.com
 Deze app vindt incomplete data in jouw omgeving, en toont het op de kaart als een marker. Elk van deze is op te lossen door een simpele vraag te beantwoorden, en zo de info op de kaart te vervoledigen.
 
 De informatie die je ingeeft wordt meteen toegevoegd aan OpenStreetMap in jouw naam, zonder een andere editor te hoeven gebruiken."</string>
-    <string name="quest_name_answer_noName">"Het heeft geen naam"</string>
+    <string name="quest_name_answer_noName">"Het heeft geen naam…"</string>
     <string name="quest_name_answer_noName_confirmation_title">"Werkelijk geen naam?"</string>
     <string name="quest_name_noName_confirmation_positive">"Ja, geen naam"</string>
     <string name="quest_openingHours_add_times">"Voeg openingstijden toe"</string>
@@ -257,7 +259,11 @@ De informatie die je ingeeft wordt meteen toegevoegd aan OpenStreetMap in jouw n
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Weet je zeker dat er geen limiet is aangegeven?"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">"Heb je dit nagegaan op het einde van de straat? Als er geen verkeersborden staan die van toepassing zijn op het geselecteerde stuk, dan worden de standaardsnelheidslimieten toegepast."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Ja geen bord"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Wegen binnen de bebouwde kom (stedelijke wegen) hebben een andere standaard snelheidslimiet dan wegen buiten de bebouwde kom (landelijke wegen)."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_urbanOk">"In bebouwde kom (in stad of dorp)"</string>
     <string name="quest_maxspeed_answer_noSign_ruralOk">"Buiten bebouwde kom (buiten stad of dorp)"</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">"Als dit bord op het kruispunt van de hoofdstraat staat, vindt je geen andere borden, omdat de snelheid voor de hele omgeving geld."</string>
@@ -414,8 +420,8 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
     <string name="quest_powerPolesMaterial_wood">"Hout"</string>
     <string name="quest_powerPolesMaterial_metal">"Staal"</string>
     <string name="quest_powerPolesMaterial_concrete">"Beton"</string>
-    <string name="quest_maxspeed_answer_advisory_speed_limit">"Enkel een geadviseerde snelheidslimiet"</string>
-    <string name="quest_address_answer_house_name">"Geen huisnummer maar een naam"</string>
+    <string name="quest_maxspeed_answer_advisory_speed_limit">"Enkel een geadviseerde snelheidslimiet…"</string>
+    <string name="quest_address_answer_house_name">"Geen huisnummer maar een naam…"</string>
     <string name="quest_address_house_name_label">"Naam van het gebouw"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"aantal etages in het dak"</string>
     <string name="quest_buildingLevels_levelsLabel2">"aantal etages (in het dak niet mee gerekend)"</string>
@@ -460,7 +466,7 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
     <string name="default_disabled_msg_go_inside">"Dit type vraag is standaard uitgeschakeld omdat je voor het antwoord waarschijnlijk de locatie moet binnengaan. "</string>
     <string name="quest_housenumber_conscription_number">"District- of conscriptiegetal (voor Tsjechië en Slovakije)"</string>
     <string name="quest_housenumber_street_number_optional">"Oriëntatiegetal (voor Tsjechië en Slovakije)"</string>
-    <string name="quest_cycleway_answer_contraflow_cycleway">"Er is ook een fietspad aan de overkant"</string>
+    <string name="quest_cycleway_answer_contraflow_cycleway">"Er is ook een fietspad aan de overkant…"</string>
     <string name="quest_openingHours_emptyAnswer">"Beschrijf de openingsuren die uithangen. Als er geen openingsuren uithangen, ga het dan binnen vragen."</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"Geen, maar fietsers mogen de weg gebruiken in beide richtingen."</string>
     <string name="quest_streetName_answer_noName_question">"Waarom heeft dit geen naam?"</string>
@@ -527,7 +533,7 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
     <string name="quest_streetName_pedestrian_title">"Wat is de naam van dit voetpad?"</string>
     <string name="quest_streetSurface_square_title">"Welke ondergrond heeft dit plein?"</string>
     <string name="quest_streetSurface_square_name_title">"Welke ondergrond heeft het plein %s hier?"</string>
-    <string name="quest_fee_answer_hours">"Afhankelijk van dag en tijdstip"</string>
+    <string name="quest_fee_answer_hours">"Afhankelijk van dag en tijdstip…"</string>
     <string name="quest_fee_add_times">"Voeg de tijden toe"</string>
     <string name="quest_fee_only_at_hours">"Ja, maar alleen...."</string>
     <string name="quest_fee_not_at_hours">"Ja, maar niet..."</string>
@@ -636,7 +642,7 @@ Bijvoorbeeld 1m3 of 2-6."</string>
     <string name="quest_buildingType_hangar">"Hangaar"</string>
     <string name="quest_buildingType_hangar_description">"Opslag voor vliegtuigen, helicopters en luchtvaartuigen"</string>
     <string name="quest_buildingType_bunker">"Bunker"</string>
-    <string name="quest_address_answer_no_housenumber">"Het heeft geen huisnummer"</string>
+    <string name="quest_address_answer_no_housenumber">"Het heeft geen huisnummer…"</string>
     <string name="quest_address_answer_no_housenumber_message1">"Het gebouw was aangeduid als:"</string>
     <string name="quest_address_answer_no_housenumber_message2">"Klopt dit en is het geen deel van een gebouw?"</string>
     <string name="quest_buildingType_shrine">"Altaar"</string>
@@ -661,7 +667,7 @@ Bijvoorbeeld 1m3 of 2-6."</string>
     <string name="quest_maxheight_parking_entrance_title">"Wat is de maximum hoogte van deze parkeer ingang?"</string>
     <string name="quest_maxheight_height_restrictor_title">"Wat is de maximum hoogte van deze hoogtebeperking?"</string>
     <string name="quest_maxheight_tunnel_title">"Wat is de maximum hoogte van deze tunnel?"</string>
-    <string name="quest_maxheight_answer_noSign">"Daar is geen bord"</string>
+    <string name="quest_maxheight_answer_noSign">"Daar is geen bord…"</string>
     <string name="quest_maxheight_answer_noSign_question">"Is er genoeg ruimte om zelfs de grootste vrachtwagens (ongeveer 4,5 meter /15 feet) doorgang te geven?"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Deze hoogte lijkt onaannemelijk. Weet je zeker dat dit correct is?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
@@ -689,4 +695,6 @@ Bijvoorbeeld 1m3 of 2-6."</string>
     <string name="quest_motorcycleParkingCapacity_title">"Hoeveel motorvoertuigen kunnen hier geparkeerd worden?"</string>
     <string name="quest_motorcycleParkingCoveredStatus_title">"Is deze motorvoertuigen parkeerplaats overdekt?"</string>
     <string name="default_disabled_msg_maxspeed">"Dit type vraag is uitgeschakeld, omdat je normaal een hele straat moet checken op maximum snelheid borden/signalen, niet alleen het aangegeven stuk wegdek. Het kan daarom soms veel moeite kosten om één enkele vraag op te lossen. "</string>
+    <string name="pref_title_quests_restore_hidden">"Herstel verborgen vragen"</string>
+    <string name="restore_hidden_success">"% Verborgen vragen hersteld"</string>
 </resources>
