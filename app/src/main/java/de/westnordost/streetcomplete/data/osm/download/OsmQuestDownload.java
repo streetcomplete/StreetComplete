@@ -240,7 +240,7 @@ public class OsmQuestDownload
 		return true;
 	}
 
-	// the resulting precision is about ~1 meter
+	// the resulting precision is about ~1 meter (see #1089)
 	private static LatLon truncateTo5Decimals(LatLon latLon) {
 		return new OsmLatLon(
 			truncateTo5Decimals(latLon.getLatitude()),

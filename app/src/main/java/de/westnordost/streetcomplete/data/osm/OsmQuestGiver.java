@@ -14,11 +14,13 @@ import javax.inject.Provider;
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.map.data.LatLon;
+import de.westnordost.osmapi.map.data.OsmLatLon;
 import de.westnordost.streetcomplete.data.QuestStatus;
 import de.westnordost.streetcomplete.data.QuestType;
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestDao;
+import de.westnordost.streetcomplete.util.SphericalEarthMath;
 
 /** Manages creating new quests and removing quests that are no longer applicable for an OSM
  *  element locally */
@@ -120,10 +122,11 @@ public class OsmQuestGiver
 		return result;
 	}
 
-	// TODO truncate to 5 decimal points, like in download
 	private boolean hasNoteAt(LatLon pos)
 	{
-		BoundingBox bbox = new BoundingBox(pos, pos);
+		// note about one meter around the center of an element still count as at this point as to
+		// deal with imprecision of the center calculation of geometry (see #1089)
+		BoundingBox bbox = SphericalEarthMath.enclosingBoundingBox(pos, 1);
 		return !osmNoteQuestDb.getAllPositions(bbox).isEmpty();
 	}
 
