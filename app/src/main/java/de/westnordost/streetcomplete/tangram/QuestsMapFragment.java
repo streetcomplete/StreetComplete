@@ -60,6 +60,8 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 
 	private static final float MAX_QUEST_ZOOM = 19;
 
+	private String sceneFile;
+
 	private Listener listener;
 
 	private Rect questOffset;
@@ -67,8 +69,6 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 	@Inject Provider<List<QuestType>> questTypesProvider;
 	@Inject TangramQuestSpriteSheetCreator spriteSheetCreator;
 	private Map<QuestType, Integer> questTypeOrder;
-
-	private String sceneFile;
 
 	public interface Listener
 	{
@@ -270,7 +270,6 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 	protected void updateView()
 	{
 		super.updateView();
-		if(controller == null) return;
 
 		if (controller == null) return;
 

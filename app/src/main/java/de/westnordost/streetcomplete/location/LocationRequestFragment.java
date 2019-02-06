@@ -37,8 +37,6 @@ public class LocationRequestFragment extends Fragment
 	private boolean inProgress;
 	private BroadcastReceiver locationProviderChangedReceiver;
 
-	private AlertDialog dlg;
-
 	public LocationRequestFragment()
 	{
 		super();
@@ -94,7 +92,7 @@ public class LocationRequestFragment extends Fragment
 		}
 		else
 		{
-			dlg = new AlertDialog.Builder(getContext())
+			new AlertDialog.Builder(getContext())
 					.setMessage(R.string.no_location_permission_warning)
 					.setPositiveButton(R.string.retry,	(dialog, which) -> requestLocationPermissions())
 					.setNegativeButton(android.R.string.cancel, (dialog, which) -> deniedLocationPermissions())
@@ -140,7 +138,7 @@ public class LocationRequestFragment extends Fragment
 		}
 		else
 		{
-			dlg = new AlertDialog.Builder(getContext())
+			final AlertDialog dlg = new AlertDialog.Builder(getContext())
 					.setMessage(R.string.turn_on_location_request)
 					.setPositiveButton(android.R.string.yes, (dialog, which) ->
 					{
@@ -194,12 +192,6 @@ public class LocationRequestFragment extends Fragment
 	{
 		super.onStop();
 		unregisterForLocationProviderChanges();
-	}
-
-	@Override public void onDestroy()
-	{
-		super.onDestroy();
-		if (dlg != null) dlg.dismiss();
 	}
 
 	public LocationState getState()

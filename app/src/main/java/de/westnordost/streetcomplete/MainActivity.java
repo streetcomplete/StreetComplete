@@ -5,7 +5,6 @@ import android.content.res.Configuration;
 import android.graphics.Point;
 import android.graphics.PointF;
 import androidx.annotation.DrawableRes;
-import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -203,9 +202,6 @@ public class MainActivity extends AppCompatActivity implements
 		{
 			getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 		}
-
-		Prefs.Theme theme = Prefs.Theme.valueOf(prefs.getString(Prefs.THEME_SELECT, "LIGHT"));
-		AppCompatDelegate.setDefaultNightMode(theme.appCompatNightMode);
 
 		questSource.onCreate(this);
 		questController.onCreate();
