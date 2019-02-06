@@ -4,6 +4,7 @@ import android.content.Context;
 
 import java.io.File;
 
+import javax.inject.Named;
 import javax.inject.Provider;
 import javax.inject.Singleton;
 
@@ -11,7 +12,12 @@ import dagger.Module;
 import dagger.Provides;
 import de.westnordost.osmapi.user.UserDao;
 import de.westnordost.streetcomplete.ApplicationConstants;
+import de.westnordost.streetcomplete.data.osm.OsmQuestGiver;
 import de.westnordost.streetcomplete.data.osm.download.OverpassOldMapDataDao;
+import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao;
+import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
+import de.westnordost.streetcomplete.data.osm.persist.UndoOsmQuestDao;
+import de.westnordost.streetcomplete.data.osm.upload.OsmQuestChangeUpload;
 import de.westnordost.streetcomplete.data.osmnotes.OsmAvatarsDownload;
 import de.westnordost.streetcomplete.oauth.OAuthPrefs;
 import de.westnordost.streetcomplete.data.osm.download.ElementGeometryCreator;
@@ -97,6 +103,20 @@ public class OsmModule
 	@Provides public static MapDataDao mapDataDao(OsmConnection osm)
 	{
 		return new MapDataDao(osm);
+	}
+
+	@Provides public static OsmQuestChangeUpload osmQuestChangeUpload(
+		MapDataDao osmDao, OsmQuestDao questDB, MergedElementDao elementDB,
+		OsmQuestGiver questGiver)
+	{
+		return new OsmQuestChangeUpload(osmDao, questDB, elementDB, questGiver);
+	}
+
+	@Provides @Named("undo") public static OsmQuestChangeUpload undoOsmQuestChangeUpload(
+		MapDataDao osmDao, UndoOsmQuestDao questDB, MergedElementDao elementDB,
+		OsmQuestGiver questGiver)
+	{
+		return new OsmQuestChangeUpload(osmDao, questDB, elementDB, questGiver);
 	}
 
 	@Provides public static OsmAvatarsDownload avatarsDownload(UserDao userDao, Context context)

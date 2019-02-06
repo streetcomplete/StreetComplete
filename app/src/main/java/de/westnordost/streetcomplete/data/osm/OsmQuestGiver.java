@@ -43,8 +43,8 @@ public class OsmQuestGiver
 
 	public static class QuestUpdates
 	{
-		public List<OsmQuest> createdQuests = new ArrayList<>();
-		public List<Long> removedQuestIds = new ArrayList<>();
+		public final List<OsmQuest> createdQuests = new ArrayList<>();
+		public final List<Long> removedQuestIds = new ArrayList<>();
 	}
 
 	public List<Long> removeQuests(Element.Type type, long id)
@@ -120,6 +120,7 @@ public class OsmQuestGiver
 		return result;
 	}
 
+	// TODO truncate to 5 decimal points, like in download
 	private boolean hasNoteAt(LatLon pos)
 	{
 		BoundingBox bbox = new BoundingBox(pos, pos);

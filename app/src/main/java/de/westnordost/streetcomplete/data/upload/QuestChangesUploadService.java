@@ -22,8 +22,8 @@ import de.westnordost.streetcomplete.ApplicationConstants;
 import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.data.VisibleQuestListener;
 import de.westnordost.streetcomplete.data.VisibleQuestRelay;
-import de.westnordost.streetcomplete.data.osm.upload.OsmQuestChangesUpload;
-import de.westnordost.streetcomplete.data.osm.upload.UndoOsmQuestChangesUpload;
+import de.westnordost.streetcomplete.data.osm.upload.OsmQuestChangesetsUpload;
+import de.westnordost.streetcomplete.data.osm.upload.UndoOsmQuestChangesetsUpload;
 import de.westnordost.streetcomplete.data.osmnotes.CreateNoteUpload;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestChangesUpload;
 import de.westnordost.streetcomplete.oauth.OAuthPrefs;
@@ -38,8 +38,8 @@ public class QuestChangesUploadService extends IntentService
 	private static String banReason = null;
 
 	@Inject Provider<OsmNoteQuestChangesUpload> noteQuestUploadProvider;
-	@Inject Provider<OsmQuestChangesUpload> questUploadProvider;
-	@Inject Provider<UndoOsmQuestChangesUpload> undoQuestUploadProvider;
+	@Inject Provider<OsmQuestChangesetsUpload> questUploadProvider;
+	@Inject Provider<UndoOsmQuestChangesetsUpload> undoQuestUploadProvider;
 	@Inject Provider<CreateNoteUpload> createNoteUploadProvider;
 	@Inject OAuthPrefs oAuth;
 
@@ -116,14 +116,14 @@ public class QuestChangesUploadService extends IntentService
 
 			if (cancelState.get()) return;
 
-			UndoOsmQuestChangesUpload undoOsmQuestUpload = undoQuestUploadProvider.get();
+			UndoOsmQuestChangesetsUpload undoOsmQuestUpload = undoQuestUploadProvider.get();
 			undoOsmQuestUpload.setProgressListener(uploadedChangeRelay);
 			undoOsmQuestUpload.setVisibleQuestListener(visibleQuestRelay);
 			undoOsmQuestUpload.upload(cancelState);
 
 			if (cancelState.get()) return;
 
-			OsmQuestChangesUpload osmQuestUpload = questUploadProvider.get();
+			OsmQuestChangesetsUpload osmQuestUpload = questUploadProvider.get();
 			osmQuestUpload.setProgressListener(uploadedChangeRelay);
 			osmQuestUpload.setVisibleQuestListener(visibleQuestRelay);
 			osmQuestUpload.upload(cancelState);
