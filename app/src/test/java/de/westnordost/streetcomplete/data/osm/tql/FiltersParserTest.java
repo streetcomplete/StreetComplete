@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 
 /** Integration test for the filter parser and the filter expression, the whole way from parsing
  *  the tag filters expression to returning it as a OQL string. More convenient this way since the
- *  easiest way to create a filter expresssion is to parse it from string. */
+ *  easiest way to create a filter expressions is to parse it from string. */
 public class FiltersParserTest
 {
 	@Test public void node()
