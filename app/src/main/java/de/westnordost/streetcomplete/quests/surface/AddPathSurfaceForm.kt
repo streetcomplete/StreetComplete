@@ -50,7 +50,7 @@ class AddPathSurfaceForm : AGroupedImageListQuestAnswerFragment<String, String>(
 
     private fun determinePathType(tags: Map<String, String>): String? {
         val pathType = tags["highway"]
-        // interpet paths with foot/bicycle/horse=designated as...
+        // interpret paths with foot/bicycle/horse=designated as...
         if ("path" == pathType) {
             if ("designated" == tags["bicycle"]) return "cycleway"
             if ("designated" == tags["horse"]) return "bridleway"
