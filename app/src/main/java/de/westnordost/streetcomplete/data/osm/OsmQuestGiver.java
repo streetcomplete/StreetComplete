@@ -14,7 +14,6 @@ import javax.inject.Provider;
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.map.data.LatLon;
-import de.westnordost.osmapi.map.data.OsmLatLon;
 import de.westnordost.streetcomplete.data.QuestStatus;
 import de.westnordost.streetcomplete.data.QuestType;
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao;
@@ -47,13 +46,6 @@ public class OsmQuestGiver
 	{
 		public final List<OsmQuest> createdQuests = new ArrayList<>();
 		public final List<Long> removedQuestIds = new ArrayList<>();
-	}
-
-	public List<Long> removeQuests(Element.Type type, long id)
-	{
-		List<Long> ids = questDB.getAllIds(type, id);
-		questDB.deleteAll(ids);
-		return ids;
 	}
 
 	public QuestUpdates updateQuests(Element element)
