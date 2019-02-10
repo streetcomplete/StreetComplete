@@ -275,7 +275,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 
 		if(controller.getZoom() < TILES_ZOOM) return;
 
-		// check if anything changed (needs to be extended when I reenable tilt and rotation)
+		// check if anything changed (needs to be extended when I re-enable tilt and rotation)
 		LngLat positionNow = controller.getPosition();
 		if(lastPos != null  && lastPos.equals(positionNow)) return;
 		lastPos = positionNow;

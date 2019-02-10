@@ -629,4 +629,17 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="default_disabled_msg_maxspeed">"Dieser Aufgabentyp ist standardmäßig deaktiviert, weil du normalerweise die ganze Straße nach entsprechenden Schildern absuchen musst, nicht nur den hervorgehobenen Abschnitt. Das kann manchmal eine ganz schöne Strecke sein um bloß eine einzige Aufgabe zu lösen."</string>
     <string name="pref_title_quests_restore_hidden">"Versteckte Aufgaben wiederherstellen"</string>
     <string name="restore_hidden_success">"%d versteckte Aufgaben wiederhergestellt"</string>
+
+    <!-- caution: This is not necessarily the floor and level=0 is not necessarily at street level
+        as it may follow the numbering scheme of the building operator. Try to use a generic wording
+        that does not carry an implicit meaning of where it is located in respect to the ground floor.
+        The context is usually shopping centres, train stations or airport terminals -->
+    <string name="on_level">"auf Ebene %s:"</string>
+
+    <!-- as in: "Where is the metro station?" - "It is underground" -->
+    <string name="underground">"unterirdisch:"</string>
+    <string name="quest_sidewalk_value_yes">"Bürgersteig"</string>
+    <string name="quest_sidewalk_value_no">"kein Bürgersteig"</string>
+    <string name="quest_accessible_for_pedestrians_title">"Ist diese Straße hier für Fußgänger zugänglich?"</string>
+    <string name="quest_accessible_for_pedestrians_description">"Für diese Straße wurde angegeben, dass sie links und rechts keinen Bürgersteig hat. Das heißt, diese Straße ist nur zu Fuß zugänglich, wenn man entweder auf der Straße gehen darf oder genug Platz ist, um nebenher zu gehen."</string>
 </resources>

@@ -30,8 +30,8 @@ android {
         applicationId "de.westnordost.streetcomplete"
         minSdkVersion 17
         targetSdkVersion 28
-        versionCode 1002
-        versionName "10.0-beta3"
+        versionCode 1003
+        versionName "10.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField "String", "MAPZEN_API_KEY", MAPZEN_API_KEY
     }
@@ -113,7 +113,7 @@ dependencies {
     implementation "androidx.core:core-ktx:1.0.1"
 
     // scheduling background jobs
-    implementation 'android.arch.work:work-runtime:1.0.0-beta03'
+    implementation 'android.arch.work:work-runtime:1.0.0-beta05'
 
     // geometry
     implementation 'de.westnordost:countryboundaries:1.4'
