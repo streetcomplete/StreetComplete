@@ -69,7 +69,7 @@
     <string name="action_about">"Sobre o StreetComplete"</string>
     <string name="about_title_version">"Versão"</string>
     <string name="about_title_authors">"Créditos"</string>
-    <string name="about_summary_authors">"© 2016–2019 Tobias Zwick e contribuidores"</string>
+    <string name="about_summary_authors">"© 2016–2019 Tobias Zwick e colaboradores"</string>
     <string name="about_title_repository">"Repositório do código-fonte"</string>
     <string name="about_summary_repository">"No site do GitHub"</string>
     <string name="about_title_report_error">"Reportar erro"</string>
@@ -220,18 +220,14 @@ A informação que submeter nesta app é adicionada diretamente ao OpenStreetMap
     <string name="quest_bicycleParkingCoveredStatus_title">"Este estacionamento para bicicletas é coberto (protegido da chuva)?"</string>
     <string name="dialog_session_dont_show_again">"Não mostrar mais nesta sessão"</string>
     <string name="quest_streetSurface_name_title">"Que tipo de pavimento tem a estrada %s?"</string>
-    <string name="quest_maxspeed_unusualInput_confirmation_description">"Este limite de velocidade não é plausível."</string>
+    <string name="quest_maxspeed_unusualInput_confirmation_description">"Este limite de velocidade parece implausível."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Tem a certeza de que não está fixado um limite?"</string>
-    <string name="quest_maxspeed_answer_noSign_confirmation">"Verificou nas extremidades da rua? Se não há sinalização ao longo da estrada selecionada, por defeito será aplicado o limite geral de velocidade."</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation">"Verificou nas extremidades da rua? Se não há sinalização ao longo da estrada selecionada, por defeito é aplicado o limite geral de velocidade."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Sim, sem sinalização"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Dentro das localidades, os limites de velocidade são diferentes dos de fora das localidades."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_maxspeed_answer_noSign_urbanOk">"Dentro das localidades"</string>
-    <string name="quest_maxspeed_answer_noSign_ruralOk">"Fora das localidades"</string>
-    <string name="quest_maxspeed_answer_noSign_info_zone">"Se existir sinalização como esta nas principais interseções da rua, não encontrará sinalização dentro dessa zona, já que o limite de velocidade aplica-se a toda a zona."</string>
+    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Dentro das localidades, os limites de velocidade são inferiores aos limites de fora das localidades."</string>
+    <string name="quest_maxspeed_answer_noSign_urbanOk">"Dentro de uma localidade"</string>
+    <string name="quest_maxspeed_answer_noSign_ruralOk">"Fora de uma localidade"</string>
+    <string name="quest_maxspeed_answer_noSign_info_zone">"Se existir sinalização como esta nos principais cruzamentos da rua, não encontrará sinalização dentro dessa zona, já que o limite de velocidade aplica-se a toda a zona."</string>
     <string name="quest_sport_softball">"Softbol"</string>
     <string name="quest_sport_racquet">"Raquetebol"</string>
     <string name="quest_sport_ice_skating">"Patinagem no gelo"</string>
@@ -250,9 +246,7 @@ A informação que submeter nesta app é adicionada diretamente ao OpenStreetMap
     <string name="quest_wheelchairAccess_subway_entrance_name_title">"A entrada da estação de metro %s é acessível a cadeira de rodas?"</string>
     <string name="quest_wheelchairAccess_railway_station_name_title">"A entrada da estação de comboios %s é acessível a cadeira de rodas?"</string>
     <string name="quest_wheelchairAccess_location_name_title">"O local %s é acessível a cadeira de rodas?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_limited_description_business">"Parcialmente significa que não existe mais do que um degrau baixo para aceder ao local e que a maioria dos quartos interiores, são acessíveis em cadeira de rodas."</string>
+    <string name="quest_wheelchairAccess_limited_description_business">"Parcialmente significa que não existe mais do que um degrau baixo para aceder ao local e que a maioria das divisões interiores são acessíveis a cadeira de rodas."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"Parcialmente significa que não existe mais do que um degrau para aceder ao local."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Abreviatura no nome %s?"</string>
     <string name="quest_baby_changing_table_toilets_title">"Esta casa de banho possui fraldário (mesa para mudar fraldas a bebés)?"</string>
@@ -283,9 +277,7 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="credits_contributors_title">"Contribuidores de código"</string>
     <string name="credits_author_title">"Autoria e manutenção"</string>
     <string name="credits_and_more">"e mais..."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_maxspeed_answer_living_street">"É uma rua living street (zona residencial)?"</string>
+    <string name="quest_maxspeed_answer_living_street">"É uma zona de coexistência"</string>
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"Então, há um sinal como este?"</string>
     <string name="quest_orchard_produce_title">"O que é cultivado aqui?"</string>
     <string name="produce_grapes">"Uvas"</string>
@@ -594,7 +586,7 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="quest_maxspeed_name_title2">"Qual o limite de velocidade para %s?"</string>
     <string name="quest_buildingType_sports_centre">"Centro desportivo"</string>
     <string name="quest_buildingType_toilets">"Casa de banho"</string>
-    <string name="quest_maxspeed_sign_question">"O que define o limite de velocidade?"</string>
+    <string name="quest_maxspeed_sign_question">"O que define o limite de velocidade aqui?"</string>
     <string name="notification_channel_download">"Descarregar"</string>
     <string name="quest_playground_access_title">"Este parque infantil é de acesso público?"</string>
     <string name="quest_segregated_title">"Esta ciclovia e via pedonal são separadas?"</string>
@@ -634,5 +626,16 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="quest_traffic_signals_button_title">"Estes semáforos possuem um botão para solicitar sinal verde?"</string>
     <string name="quest_motorcycleParkingCapacity_title">"Quantos motociclos podem ser estacionados aqui?"</string>
     <string name="quest_motorcycleParkingCoveredStatus_title">"Este estacionamento de motociclos é coberto (protegido da chuva)?"</string>
-    <string name="default_disabled_msg_maxspeed">"Este tipo de desafio está desativado por defeito, já que usualmente é necessário que verifique que a totalidade da rua possui sinais de limite de velocidade, não apenas a secção selecionada. Por vezes, é o que falta para completar um dos desafios."</string>
+    <string name="default_disabled_msg_maxspeed">"Este desafio está desativado por defeito porque é necessário verificar se a totalidade da rua tem outros sinais de limite de velocidade e não apenas o trecho selecionado. Isto complica a resolução de apenas um desafio destes."</string>
+    <string name="pref_title_quests_restore_hidden">"Restaurar desafios ocultados"</string>
+    <string name="restore_hidden_success">"Restaurados %d desafios ocultados"</string>
+
+    <!-- caution: This is not necessarily the floor and level=0 is not necessarily at street level
+        as it may follow the numbering scheme of the building operator. Try to use a generic wording
+        that does not carry an implicit meaning of where it is located in respect to the ground floor.
+        The context is usually shopping centres, train stations or airport terminals -->
+    <string name="on_level">"no nível %s:"</string>
+
+    <!-- as in: "Where is the metro station?" - "It is underground" -->
+    <string name="underground">"subterrâneo:"</string>
 </resources>

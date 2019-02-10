@@ -27,8 +27,6 @@
     <string name="quest_generic_confirmation_no">"확인해 보겠습니다"</string>
     <string name="quest_generic_error_field_empty">"이 칸이 비었습니다"</string>
     <string name="quest_leave_new_note_title">"대신 참고를 남기시겠습니까?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leave_new_note_description">"이 위치에 참고를 남기면 다른 기여자들이 참고에 댓글을 달면서 이 지물의 문제를 해결할 수 있습니다."</string>
     <string name="quest_leave_new_note_yes">"예"</string>
     <string name="quest_leave_new_note_no">"아니오, 숨김 처리만 합니다"</string>
@@ -203,17 +201,13 @@
     <string name="quest_source_dialog_note">"현장 조사로 얻은 정보만 입력해야 합니다."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"자전거 주차장에 (비를 막아주는) 지붕이 있습니까?"</string>
     <string name="dialog_session_dont_show_again">"다시 켤 때까지 다시 보지 않기"</string>
-    <string name="quest_streetSurface_name_title">"이 도로 %s의 포장재는 무엇입니까?"</string>
+    <string name="quest_streetSurface_name_title">"%s의 포장재는 무엇입니까?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"이 속도 제한은 믿기 어렵습니다."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"정말 속도 제한이 없습니까?"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">"도로의 끝 부분은 확인해 보았습니까?
 강조된 부분에 적용할 표지판이 도로 전체에 없다면 기본 속도 제한이 적용됩니다."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"네, 표지판이 없습니다"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"도시(인구 밀집 지역)에 있는 도로는 시골 도로에 비해 속도 제한이 다양하게 적용됩니다."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_urbanOk">"도시"</string>
     <string name="quest_maxspeed_answer_noSign_ruralOk">"시골"</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">"주요 도로 교차로에 이 같은 표지판이 있다면, 주요 도로에 적용된 속도 제한이 모든 영역에 적용되기 때문에 이 영역에서 개별 표지판을 찾을 수 없을 것입니다."</string>
@@ -324,7 +318,7 @@
     <string name="quest_way_lit_24_7">"24시간 가동됩니다"</string>
     <string name="pref_title_authorized_username_summary">"인증된 계정: %s"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"이 장소를 스캔할 수 없습니다. 더 확대하거나 지도를 똑바로 세워 보세요."</string>
-    <string name="quest_crossing_type_title">"이 횡단보도는 어떻게 생겼습니까?"</string>
+    <string name="quest_crossing_type_title">"이 횡단보도는 다음 중 어떤 횡단보도입니까?"</string>
     <string name="quest_crossing_type_signals">"신호등 있는 횡단보도"</string>
     <string name="quest_crossing_type_uncontrolled">"신호등 없는 횡단보도"</string>
     <string name="quest_crossing_type_unmarked">"도로에 표시가 없는 횡단보도"</string>
@@ -610,4 +604,13 @@
     <string name="default_disabled_msg_maxspeed">"이 유형의 퀘스트를 해결하려면 속도 제한 표지판을 찾아 도로 전체를 뒤져야 하기 때문에 기본적으로 비활성화되어 있습니다. 보통 이 작업을 하려면 많은 노력이 필요합니다."</string>
     <string name="pref_title_quests_restore_hidden">"숨겨진 퀘스트 복원"</string>
     <string name="restore_hidden_success">"숨겨진 퀘스트 %d개가 복원되었습니다"</string>
+
+    <!-- caution: This is not necessarily the floor and level=0 is not necessarily at street level
+        as it may follow the numbering scheme of the building operator. Try to use a generic wording
+        that does not carry an implicit meaning of where it is located in respect to the ground floor.
+        The context is usually shopping centres, train stations or airport terminals -->
+    <string name="on_level">"%s층에 있음:"</string>
+
+    <!-- as in: "Where is the metro station?" - "It is underground" -->
+    <string name="underground">"지하:"</string>
 </resources>
