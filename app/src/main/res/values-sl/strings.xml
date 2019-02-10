@@ -366,6 +366,8 @@ Podatki, ki jih vnesete tu, bodo dodani v OpenStreetMap v vašem imenu, brez pot
     <string name="quest_fee_only_at_hours">"Da, ampak samo..."</string>
     <string name="quest_fee_not_at_hours">"Da, ampak ne..."</string>
     <string name="quest_fee_hours_title">"ob naslednjih urah:"</string>
+    <string name="quest_bicycle_parking_type_stand">"Visoko stojalo (opora okviru kolesa)"</string>
+    <string name="quest_bicycle_parking_type_wheelbender">"Nizko stojalo (opora kolesu kolesa)"</string>
     <string name="quest_collectionTimes_answer_no_times_specified">"Ura ni določena"</string>
     <string name="quest_construction_road_title">"Ali je ta cesta že dokončana?"</string>
     <string name="quest_construction_cycleway_title">"Ali je ta kolesarska steza že dokončana?"</string>
@@ -399,4 +401,6 @@ Podatki, ki jih vnesete tu, bodo dodani v OpenStreetMap v vašem imenu, brez pot
     <string name="quest_buildingType_cars">"Za avtomobile"</string>
     <string name="quest_address_answer_no_housenumber">"Nima hišne številke…"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
+    <string name="quest_railway_crossing_barrier_title">"Kako je zaščiten ta prehod železniške proge?"</string>
+    <string name="quest_railway_crossing_barrier_none">"Ni zaščite"</string>
 </resources>

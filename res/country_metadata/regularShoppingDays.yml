@@ -1,4 +1,4 @@
-# how many days shops usually have regular opening hours per week. Acording to
+# how many days shops usually have regular opening hours per week. According to
 # https://en.wikipedia.org/wiki/Shopping_hours the norm for shopping days is rather MO-SA (=6 days)
 default: 6
 AT: 5

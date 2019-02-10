@@ -166,6 +166,7 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
 
     /* ----------------------------------------- No sign ---------------------------------------- */
 
+    // the living street answer stuff is copied to AddAccessibleForPedestriansForm
     private fun confirmLivingStreet() {
         activity?.let {
             val view = layoutInflater.inflate(R.layout.quest_maxspeed_living_street_confirmation, null, false)

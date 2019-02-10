@@ -288,8 +288,8 @@ Pokud nejsou podél celé cesty žádné značky, které by omezovaly rychlost v
     <string name="overground_recycling_container">"Kontejner"</string>
     <string name="underground_recycling_container">"Podzemní kontejner"</string>
     <string name="quest_generic_error_a_field_empty">"Nevyplnili jste pole"</string>
-    <string name="quest_streetName_menuItem_language_simple">"%1$s - %2$s"</string>
-    <string name="quest_streetName_menuItem_language_native">"%1$s - %2$s (%3$s)"</string>
+    <string name="quest_streetName_menuItem_language_simple">"%1$s – %2$s"</string>
+    <string name="quest_streetName_menuItem_language_native">"%1$s – %2$s (%3$s)"</string>
     <string name="quest_streetName_answer_cantType">"Nedokáži napsat znak, který je na ceduli"</string>
     <string name="quest_streetName_cantType_title">"Chybí vám na klávesnici znaky?"</string>
     <string name="quest_streetName_cantType_open_settings">"Otevřít nastavení"</string>
@@ -682,4 +682,11 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="default_disabled_msg_maxspeed">"Tento typ úkolů je ve výchozím nastavení zakázán, protože pro nalezení cedulí s rychlostním omezením je obvykle nutné zkontrolovat celou ulici a ne pouze zvýrazněnou část. To může být náročnější vzhledem k tomu, že jde o vyřešení pouze jednoho úkolu."</string>
     <string name="pref_title_quests_restore_hidden">"Obnovit skryté úkoly"</string>
     <string name="restore_hidden_success">"Obnoveno %d skrytých úkolů"</string>
+
+    <!-- caution: This is not necessarily the floor and level=0 is not necessarily at street level
+        as it may follow the numbering scheme of the building operator. Try to use a generic wording
+        that does not carry an implicit meaning of where it is located in respect to the ground floor.
+        The context is usually shopping centres, train stations or airport terminals -->
+    <string name="on_level">"na podlaží %s:"</string>
+    <string name="underground">"v podzemí:"</string>
 </resources>
