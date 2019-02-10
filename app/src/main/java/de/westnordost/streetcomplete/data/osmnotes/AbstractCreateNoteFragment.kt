@@ -20,7 +20,7 @@ abstract class AbstractCreateNoteFragment : AbstractBottomSheetFragment() {
     private val attachPhotoFragment: AttachPhotoFragment?
         get() = childFragmentManager.findFragmentById(R.id.attachPhotoFragment) as AttachPhotoFragment
 
-    private val noteText get() = noteInput.text.toString().trim()
+    private val noteText get() = noteInput?.text?.toString()?.trim() ?: ""
 
     protected abstract val layoutResId: Int
 
