@@ -4,8 +4,9 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.streetcomplete.quests.foot.AccessibleForPedestriansAnswer.*
 
-class AddAccessibleForPedestrians(o: OverpassMapDataDao) : SimpleOverpassQuestType<Boolean>(o) {
+class AddAccessibleForPedestrians(o: OverpassMapDataDao) : SimpleOverpassQuestType<AccessibleForPedestriansAnswer>(o) {
 
     override val tagFilters = """
         ways with !foot and (
@@ -22,7 +23,11 @@ class AddAccessibleForPedestrians(o: OverpassMapDataDao) : SimpleOverpassQuestTy
 
     override fun createForm() = AddAccessibleForPedestriansForm()
 
-    override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
-        changes.add("foot", if(answer) "yes" else "no")
+    override fun applyAnswerTo(answer: AccessibleForPedestriansAnswer, changes: StringMapChangesBuilder) {
+        when(answer) {
+            YES -> changes.add("foot", "yes")
+            NO -> changes.add("foot", "no")
+            IS_LIVING_STREET -> changes.modify("highway", "living_street")
+        }
     }
 }
