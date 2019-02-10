@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/westnordost/StreetComplete.svg?branch=master)](https://travis-ci.org/westnordost/StreetComplete)
+
 ![StreetComplete](http://www.westnordost.de/streetcomplete/featureGraphic.png)
 
 An Android app which finds wrong, incomplete or extendable data in the user's vicinity and provides the tools to complete these easily and directly on site without having to use another editor.
@@ -44,10 +46,6 @@ Here are a few things you can do:
 * ➕ [and more…](CONTRIBUTING.md)
 
 Also, if you like StreetComplete, **spread the word**! ❤️
-
-## Status
-
-[![Build Status](https://travis-ci.org/westnordost/StreetComplete.svg?branch=master)](https://travis-ci.org/westnordost/StreetComplete)
 
 ## License
 
