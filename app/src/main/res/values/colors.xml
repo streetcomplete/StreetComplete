@@ -16,7 +16,7 @@
 
     <color name="button_white">#fff</color>
 
-    <color name="greyed_out">#99dddddd</color>
+    <color name="greyed_out">#66999999</color>
 
     <color name="divider">#ccc</color>
 
@@ -32,6 +32,6 @@
     <color name="traffic_gray_b">#4f5250</color>
     <color name="pressed">#ddd</color>
 
-    <color name="disabled_notice">#eee</color>
-    <color name="attribution_text">#444444</color>
+    <color name="disabled_notice">#66999999</color>
+    <color name="attribution_text">#444</color>
 </resources>
