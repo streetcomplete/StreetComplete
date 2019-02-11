@@ -33,7 +33,7 @@ class FlattenIterableTest {
     @Test fun `nested list`() {
         val itb = FlattenIterable(String::class.java)
         itb.add(listOf("a", listOf("b", "c"), "d"))
-        assertEquals("a, b, c, d", itb.joinToString(" "))
+        assertEquals("a b c d", itb.joinToString(" "))
     }
 
     @Test fun `deeper nested list`() {
