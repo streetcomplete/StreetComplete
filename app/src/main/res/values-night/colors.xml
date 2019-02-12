@@ -1,11 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primary">#403066</color>
-    <color name="primary_dark">#20204e</color>
-    <color name="accent">#ff6600</color>
-
-    <color name="background">#000000</color>
-
-    <color name="disabled_notice">#999</color>
-    <color name="attribution_text">#fff</color>
+    <color name="attribution_text">#ccc</color>
 </resources>

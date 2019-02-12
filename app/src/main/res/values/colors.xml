@@ -6,7 +6,6 @@
 
     <color name="selection">#66ff6600</color>
     <color name="selection_frame">#bbff6600</color>
-    <color name="background">#fff</color>
 
     <color name="location_dot">#536dfe</color>
     <color name="location_accuracy_fill">#22536dfe</color>
@@ -16,9 +15,9 @@
 
     <color name="button_white">#fff</color>
 
-    <color name="greyed_out">#99dddddd</color>
+    <color name="greyed_out">#66999999</color>
 
-    <color name="divider">#ccc</color>
+    <color name="divider">#66999999</color>
 
     <color name="traffic_red">#C1121C</color>
     <color name="traffic_blue">#2255BB</color>
@@ -32,6 +31,6 @@
     <color name="traffic_gray_b">#4f5250</color>
     <color name="pressed">#ddd</color>
 
-    <color name="disabled_notice">#eee</color>
-    <color name="attribution_text">#444444</color>
+    <color name="disabled_notice">#66999999</color>
+    <color name="attribution_text">#444</color>
 </resources>
