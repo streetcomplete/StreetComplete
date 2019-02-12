@@ -5,6 +5,8 @@ import android.graphics.Point;
 import android.graphics.PointF;
 import android.graphics.Rect;
 import android.os.Build;
+import android.os.Handler;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.UiThread;
@@ -106,7 +108,9 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		super.onResume();
 		if (sceneFile != null && !sceneFile.equals(getSceneFilePath()))
 		{
-			getActivity().recreate();
+			/* recreation needs to be delayed because otherwise
+			* the activity might not be fully resumed yet before it is destroyed */
+			new Handler().postDelayed(() -> getActivity().recreate(), 1);
 		}
 	}
 
