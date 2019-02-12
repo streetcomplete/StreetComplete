@@ -6,5 +6,6 @@ mobileCountryCode: 262
 officialLanguages: [de]
 orchardProduces: [grape, apple, strawberry, tomato, hop, plum, pear, walnut, cherry, blueberry, chilli_pepper,
   sweet_pepper, raspberry, peach, apricot]
+popularReligions: [christian, muslim, jewish]
 popularSports: [soccer, tennis, equestrian]
 regularShoppingDays: 5

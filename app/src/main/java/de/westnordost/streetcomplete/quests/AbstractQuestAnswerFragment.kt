@@ -169,7 +169,7 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment() {
             return resources.getString(R.string.on_level, level)
         }
         val tunnel = tags["tunnel"]
-        if(tunnel != null && tunnel != "no" || tags["location"] == "underground") {
+        if(tunnel != null && tunnel == "yes" || tags["location"] == "underground") {
             return resources.getString(R.string.underground)
         }
         return null
