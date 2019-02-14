@@ -49,6 +49,8 @@ public class MapControlsFragment extends Fragment
 	private ViewGroup leftSide, rightSide;
 	private boolean isShowingControls = true;
 
+	private final Handler mainHandler = new Handler(Looper.getMainLooper());
+
 	@Inject SharedPreferences prefs;
 
 	private Listener listener;
@@ -140,7 +142,7 @@ public class MapControlsFragment extends Fragment
 		createNoteButton.setOnClickListener(v ->
 		{
 			v.setEnabled(false);
-			new Handler(Looper.getMainLooper()).postDelayed(() -> v.setEnabled(true), 200);
+			mainHandler.postDelayed(() -> v.setEnabled(true), 200);
 			listener.onClickCreateNote();
 		});
 
@@ -203,6 +205,12 @@ public class MapControlsFragment extends Fragment
 	{
 		super.onSaveInstanceState(outState);
 		outState.putBoolean(SHOW_CONTROLS, isShowingControls);
+	}
+
+	@Override public void onDestroy()
+	{
+		super.onDestroy();
+		mainHandler.removeCallbacksAndMessages(null);
 	}
 
 	/* ------------------------ Calls from the MapFragment ------------------------ */

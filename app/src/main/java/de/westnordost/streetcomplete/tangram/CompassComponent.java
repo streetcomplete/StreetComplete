@@ -100,6 +100,7 @@ public class CompassComponent implements SensorEventListener
 	public void onDestroy()
 	{
 		listener = null;
+		sensorHandler.removeCallbacksAndMessages(null);
 		sensorThread.quit();
 	}
 
