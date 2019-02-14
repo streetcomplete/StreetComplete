@@ -31,7 +31,7 @@ import de.westnordost.streetcomplete.oauth.OAuthPrefs;
  * */
 public class QuestAutoSyncer implements LocationListener, LostApiClient.ConnectionCallbacks
 {
-	private static final String TAG_AUTO_DOWNLOAD = "AutoQuestSyncer";
+	private static final String TAG = "AutoQuestSyncer";
 
 	private final QuestController questController;
 	private final MobileDataAutoDownloadStrategy mobileDataDownloadStrategy;
@@ -113,7 +113,7 @@ public class QuestAutoSyncer implements LocationListener, LostApiClient.Connecti
 		if(!isConnected) return;
 		if(questController.isPriorityDownloadRunning()) return;
 
-		Log.i(TAG_AUTO_DOWNLOAD, "Checking whether to automatically download new quests at "
+		Log.i(TAG, "Checking whether to automatically download new quests at "
 				+ pos.getLatitude() + "," + pos.getLongitude());
 
 		final QuestAutoDownloadStrategy downloadStrategy = isWifi ? wifiDownloadStrategy : mobileDataDownloadStrategy;
@@ -122,9 +122,15 @@ public class QuestAutoSyncer implements LocationListener, LostApiClient.Connecti
 
 			if(!downloadStrategy.mayDownloadHere(pos)) return;
 
-			questController.download(
+			try {
+				questController.download(
 					downloadStrategy.getDownloadBoundingBox(pos),
 					downloadStrategy.getQuestTypeDownloadCount(), false);
+			} catch (IllegalStateException e) {
+				// The Android 9 bug described here should not result in a hard crash of the app
+				// https://stackoverflow.com/questions/52013545/android-9-0-not-allowed-to-start-service-app-is-in-background-after-onresume
+				Log.e(TAG, "Cannot start download service", e);
+			}
 		}}.start();
 	}
 
@@ -134,7 +140,13 @@ public class QuestAutoSyncer implements LocationListener, LostApiClient.Connecti
 		if(!isConnected) return;
 		if(!oAuth.isAuthorized()) return;
 
-		questController.upload();
+		try {
+			questController.upload();
+		} catch (IllegalStateException e) {
+			// The Android 9 bug described here should not result in a hard crash of the app
+			// https://stackoverflow.com/questions/52013545/android-9-0-not-allowed-to-start-service-app-is-in-background-after-onresume
+			Log.e(TAG, "Cannot start upload service", e);
+		}
 	}
 
 	private boolean updateConnectionState()
