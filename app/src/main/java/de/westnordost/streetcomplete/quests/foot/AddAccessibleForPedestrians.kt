@@ -14,7 +14,7 @@ class AddAccessibleForPedestrians(o: OverpassMapDataDao) : SimpleOverpassQuestTy
           sidewalk:both ~ none|no or
           (sidewalk:left ~ none|no and sidewalk:right ~ none|no)
         )
-        and highway !~ service|living_street|pedestrian
+        and highway !~ service|living_street|pedestrian|residential
         and access !~ private|no
     """
     override val commitMessage = "Add whether roads are accessible for pedestrians"
