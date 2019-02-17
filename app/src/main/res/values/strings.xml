@@ -640,5 +640,5 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="underground">underground:</string>
     <string name="quest_sidewalk_value_yes">sidewalk</string>
     <string name="quest_sidewalk_value_no">no sidewalk</string>
-    <string name="quest_accessible_for_pedestrians_title_prohibited">Are pedestrians prohibited from walking along this road here?</string>
+    <string name="quest_accessible_for_pedestrians_title_prohibited">Are pedestrians prohibited from walking on this road here?</string>
 </resources>
