@@ -32,7 +32,7 @@
     <string name="quest_leave_new_note_description">"Ohar publiko bat utzi dezakezu eta beste mapagileek iruzkinak egin edo konpondu dezakete:"</string>
     <string name="quest_leave_new_note_yes">"Ados"</string>
     <string name="quest_leave_new_note_no">"Ez, ezkutatu besterik gabe"</string>
-    <string name="quest_streetName_title">"Zien da kale honen izena?"</string>
+    <string name="quest_streetName_title">"Zein da kale honen izena?"</string>
     <string name="quest_streetName_description">"Kaleko errotuluan agertu bezala, laburdurak hedatuta:"</string>
     <string name="quest_streetName_answer_noName_confirmation_description">"Batzuetan kaleen errotuluak kalearen mutur batean besterik ez daude. Bestalde, kale nagusi baten parte diren albo kaleak agian ez dute errotulurik. Orokorrean etxeak dituen kale batek izena izan ohi du."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Izena laburdura gabe adierazi badaiteke, orduan hedatu behar da. Ohiko laburdurak automatikoki hedatuko dira idatzi ahala, baina ez denak."</string>
@@ -634,4 +634,16 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="default_disabled_msg_maxspeed">"Eronka mota hau desgaituta dago orokorrean kale osoa ibiltzea eskatzen zaizulako abiadura mugen bila, eta ez soilik markatutako sekzioa. Hau batzuetan gehiegizkoa izan daiteke erronka bakarrean argitzeko."</string>
     <string name="pref_title_quests_restore_hidden">"Berreskuratu ezkutatutako erronkak"</string>
     <string name="restore_hidden_success">"Ezkutatutako %d erronka berreskuratu dira"</string>
+
+    <!-- caution: This is not necessarily the floor and level=0 is not necessarily at street level
+        as it may follow the numbering scheme of the building operator. Try to use a generic wording
+        that does not carry an implicit meaning of where it is located in respect to the ground floor.
+        The context is usually shopping centres, train stations or airport terminals -->
+    <string name="on_level">"%s. pisuan:"</string>
+
+    <!-- as in: "Where is the metro station?" - "It is underground" -->
+    <string name="underground">"lurrazpian:"</string>
+    <string name="quest_sidewalk_value_yes">"espaloia"</string>
+    <string name="quest_sidewalk_value_no">"espaloirik ez"</string>
+    <string name="quest_accessible_for_pedestrians_title_prohibited">"Oinezkoek debekatuta al dute bide honetan ibiltzea?"</string>
 </resources>
