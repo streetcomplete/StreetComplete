@@ -633,7 +633,7 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
         as it may follow the numbering scheme of the building operator. Try to use a generic wording
         that does not carry an implicit meaning of where it is located in respect to the ground floor.
         The context is usually shopping centres, train stations or airport terminals -->
-    <string name="on_level">"al piano %"</string>
+    <string name="on_level">"al piano %s"</string>
 
     <!-- as in: "Where is the metro station?" - "It is underground" -->
     <string name="underground">"sottoterra"</string>
