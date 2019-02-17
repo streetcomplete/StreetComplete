@@ -26,7 +26,7 @@ class AddAccessibleForPedestrians(o: OverpassMapDataDao) : SimpleOverpassQuestTy
         "and highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|service|road " +
         // road probably not developed enough to issue a prohibition for pedestrians
         "and surface ~ ${OsmTaggings.ANYTHING_PAVED.joinToString("|")} " +
-        // fuzzy filter for above mentioned situations + developed-enough / non-rural roads 
+        // fuzzy filter for above mentioned situations + developed-enough / non-rural roads
         "and ( oneway~yes|-1 or bridge=yes or tunnel=yes or lit=yes )"
 
     override val commitMessage = "Add whether roads are accessible for pedestrians"
