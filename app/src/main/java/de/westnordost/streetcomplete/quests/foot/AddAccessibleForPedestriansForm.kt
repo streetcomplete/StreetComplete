@@ -9,8 +9,6 @@ import de.westnordost.streetcomplete.quests.foot.AccessibleForPedestriansAnswer.
 
 class AddAccessibleForPedestriansForm : AYesNoQuestAnswerFragment<AccessibleForPedestriansAnswer>() {
 
-    override val contentLayoutResId = R.layout.quest_accessible_for_pedestrians_explanation
-
     // the living street answer stuff is copied from AddMaxSpeedForm
     override val otherAnswers: List<OtherAnswer> get() {
         val result = mutableListOf<OtherAnswer>()

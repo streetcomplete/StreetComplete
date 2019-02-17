@@ -20,14 +20,15 @@ class AddAccessibleForPedestrians(o: OverpassMapDataDao) : SimpleOverpassQuestTy
     override val commitMessage = "Add whether roads are accessible for pedestrians"
     override val icon = R.drawable.ic_quest_pedestrian
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_accessible_for_pedestrians_title
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_accessible_for_pedestrians_title_prohibited
 
     override fun createForm() = AddAccessibleForPedestriansForm()
 
     override fun applyAnswerTo(answer: AccessibleForPedestriansAnswer, changes: StringMapChangesBuilder) {
         when(answer) {
-            YES -> changes.add("foot", "yes")
-            NO -> changes.add("foot", "no")
+            // the question is whether it is prohibited, so YES -> foot=no etc
+            YES -> changes.add("foot", "no")
+            NO -> changes.add("foot", "yes")
             IS_LIVING_STREET -> changes.modify("highway", "living_street")
         }
     }
