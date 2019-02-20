@@ -19,7 +19,7 @@ import de.westnordost.streetcomplete.quests.bridge_structure.AddBridgeStructure;
 import de.westnordost.streetcomplete.quests.building_levels.AddBuildingLevels;
 import de.westnordost.streetcomplete.quests.building_type.AddBuildingType;
 import de.westnordost.streetcomplete.quests.building_underground.AddIsBuildingUnderground;
-import de.westnordost.streetcomplete.quests.foot.AddAccessibleForPedestrians;
+import de.westnordost.streetcomplete.quests.foot.AddProhibitedForPedestrians;
 import de.westnordost.streetcomplete.quests.localized_name.AddBusStopName;
 import de.westnordost.streetcomplete.quests.bus_stop_shelter.AddBusStopShelter;
 import de.westnordost.streetcomplete.quests.car_wash_type.AddCarWashType;
@@ -108,7 +108,7 @@ public class QuestModule
 				new AddOrchardProduce(o),
 				new AddCycleway(o),
 				new AddSidewalk(o),
-				new AddAccessibleForPedestrians(o),
+				new AddProhibitedForPedestrians(o),
 				new AddCrossingType(o),
 				new AddBuildingLevels(o),
 				new AddBusStopShelter(o), // at least OsmAnd

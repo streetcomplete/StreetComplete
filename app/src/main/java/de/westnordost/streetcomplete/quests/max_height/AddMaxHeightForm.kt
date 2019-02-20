@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.max_height
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import android.text.InputFilter
+import android.text.Spanned
 import android.text.method.DigitsKeyListener
 import android.view.LayoutInflater
 import android.view.View
@@ -78,7 +79,12 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment<MaxHeightAnswer>() {
         inchInput?.filters = arrayOf(InputFilter { source, start, end, dest, dstart, dend ->
             val destStr = dest.toString()
             val input = destStr.substring(0, dstart) + source.toString() + destStr.substring(dend, destStr.length)
-            if (input.toInt() <= 12) null else ""
+
+            if(input.isEmpty() || input.toIntOrNull() != null && input.toInt() <= 12) {
+                null
+            } else {
+                ""
+            }
         })
         /* Workaround for an Android bug that it assumes the decimal separator to always be the "."
            for EditTexts with inputType "numberDecimal", independent of Locale. See

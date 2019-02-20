@@ -68,7 +68,8 @@ abstract class AbstractCreateNoteFragment : AbstractBottomSheetFragment() {
         attachPhotoFragment?.deleteImages()
     }
 
-    override fun isRejectingClose() = noteText.isNotEmpty()
+    override fun isRejectingClose() =
+        noteText.isNotEmpty() || attachPhotoFragment?.imagePaths?.isNotEmpty() == true
 
     private fun updateDoneButtonEnablement() {
         doneButton.isEnabled = !noteText.isEmpty()

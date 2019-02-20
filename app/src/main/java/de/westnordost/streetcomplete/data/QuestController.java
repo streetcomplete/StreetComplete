@@ -138,6 +138,7 @@ public class QuestController
 
 	public void onDestroy()
 	{
+		workerHandler.removeCallbacksAndMessages(null);
 		worker.quit();
 	}
 

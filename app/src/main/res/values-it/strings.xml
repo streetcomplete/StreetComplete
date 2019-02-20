@@ -31,7 +31,7 @@
     <string name="quest_leave_new_note_title">"Preferisci invece lasciare una nota?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_leave_new_note_description">"Puoi lasciare una nota pubblica in questo punto in modo che altri mappatori possano commentare e sperabilmente risolvere oppure solo nascondi solo per te la ricerca"</string>
+    <string name="quest_leave_new_note_description">"Puoi lasciare una nota pubblica in questo punto in modo che altri mappatori possano commentare e risolvere oppure nascondi solo per te la ricerca"</string>
     <string name="quest_leave_new_note_yes">"OK"</string>
     <string name="quest_leave_new_note_no">"No, nascondi solo"</string>
     <string name="quest_streetName_title">"Qual è il nome di questa strada?"</string>
@@ -628,4 +628,15 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="default_disabled_msg_maxspeed">"Questo tipo di compito è disabilitato perché generalmente è richiesto di controllare tutta la strada per cercare i segnali dei limiti di velocità, non solo la sezione evidenziata. Questo potrebbe richiedere molto tempo solo per risolvere un singolo compito."</string>
     <string name="pref_title_quests_restore_hidden">"Ripristina le ricerche nascoste"</string>
     <string name="restore_hidden_success">"Ripristinate %d ricerche nascoste"</string>
+
+    <!-- caution: This is not necessarily the floor and level=0 is not necessarily at street level
+        as it may follow the numbering scheme of the building operator. Try to use a generic wording
+        that does not carry an implicit meaning of where it is located in respect to the ground floor.
+        The context is usually shopping centres, train stations or airport terminals -->
+    <string name="on_level">"al piano %s"</string>
+
+    <!-- as in: "Where is the metro station?" - "It is underground" -->
+    <string name="underground">"sottoterra"</string>
+    <string name="quest_sidewalk_value_yes">"marciapiede"</string>
+    <string name="quest_sidewalk_value_no">"nessun parciapiede"</string>
 </resources>

@@ -119,7 +119,7 @@
 
     <style name="BottomSheetButtonBarItem">
         <item name="android:background">?android:attr/selectableItemBackground</item>
-        <item name="android:textColor">@color/accent</item>
+        <item name="android:textColor">@color/button_bar_button_text</item>
         <item name="android:padding">16dp</item>
     </style>
 

@@ -26,7 +26,7 @@ class LeaveNoteInsteadFragment : AbstractCreateNoteFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         titleLabel.text = getString(R.string.map_btn_create_note)
-        descriptionLabel.text = getString(R.string.quest_leave_new_note_description)
+        descriptionLabel.text = null
     }
 
     override fun onAttach(context: Context) {

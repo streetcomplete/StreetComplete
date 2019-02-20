@@ -5,11 +5,9 @@ import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AYesNoQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
-import de.westnordost.streetcomplete.quests.foot.AccessibleForPedestriansAnswer.*
+import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.*
 
-class AddAccessibleForPedestriansForm : AYesNoQuestAnswerFragment<AccessibleForPedestriansAnswer>() {
-
-    override val contentLayoutResId = R.layout.quest_accessible_for_pedestrians_explanation
+class AddAccessibleForPedestriansForm : AYesNoQuestAnswerFragment<ProhibitedForPedestriansAnswer>() {
 
     // the living street answer stuff is copied from AddMaxSpeedForm
     override val otherAnswers: List<OtherAnswer> get() {

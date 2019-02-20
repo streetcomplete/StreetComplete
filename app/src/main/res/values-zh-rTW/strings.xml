@@ -685,4 +685,17 @@
     <string name="quest_motorcycleParkingCapacity_title">"這裡可以停泊多少台機車/電單車？"</string>
     <string name="quest_motorcycleParkingCoveredStatus_title">"這個機車/電單車停車場屬於有蓋式嗎(可遮陽擋雨)？"</string>
     <string name="default_disabled_msg_maxspeed">"這項任務類型預設關閉，因為通常得檢查整條道路的速限指標，不只是注意路段。有時候只是要簡單解決的話，會相當累。"</string>
+    <string name="pref_title_quests_restore_hidden">"恢復被隱藏的任務"</string>
+    <string name="restore_hidden_success">"恢復 %d 被藏隱的任務"</string>
+
+    <!-- caution: This is not necessarily the floor and level=0 is not necessarily at street level
+        as it may follow the numbering scheme of the building operator. Try to use a generic wording
+        that does not carry an implicit meaning of where it is located in respect to the ground floor.
+        The context is usually shopping centres, train stations or airport terminals -->
+    <string name="on_level">"位於樓層 %s ："</string>
+
+    <!-- as in: "Where is the metro station?" - "It is underground" -->
+    <string name="underground">"地下"</string>
+    <string name="quest_sidewalk_value_yes">"人行道"</string>
+    <string name="quest_sidewalk_value_no">"沒有人行道"</string>
 </resources>

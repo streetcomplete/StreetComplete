@@ -640,6 +640,5 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="underground">"unterirdisch:"</string>
     <string name="quest_sidewalk_value_yes">"Bürgersteig"</string>
     <string name="quest_sidewalk_value_no">"kein Bürgersteig"</string>
-    <string name="quest_accessible_for_pedestrians_title">"Ist diese Straße hier für Fußgänger zugänglich?"</string>
-    <string name="quest_accessible_for_pedestrians_description">"Für diese Straße wurde angegeben, dass sie links und rechts keinen Bürgersteig hat. Das heißt, diese Straße ist nur zu Fuß zugänglich, wenn man entweder auf der Straße gehen darf oder genug Platz ist, um nebenher zu gehen."</string>
+    <string name="quest_accessible_for_pedestrians_title_prohibited">"Ist es Fußgängern verboten, hier auf dieser Straße zu gehen?"</string>
 </resources>

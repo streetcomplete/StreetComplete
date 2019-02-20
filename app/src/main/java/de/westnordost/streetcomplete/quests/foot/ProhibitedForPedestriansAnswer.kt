@@ -1,5 +1,5 @@
 package de.westnordost.streetcomplete.quests.foot
 
-enum class AccessibleForPedestriansAnswer {
+enum class ProhibitedForPedestriansAnswer {
     YES, NO, IS_LIVING_STREET
 }

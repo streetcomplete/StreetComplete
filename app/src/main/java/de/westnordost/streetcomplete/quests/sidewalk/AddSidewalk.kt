@@ -39,6 +39,7 @@ class AddSidewalk(private val overpassServer: OverpassMapDataDao) : OsmElementQu
             "[maxspeed !~ \"^(8|7|6|5|5 mph|walk)$\"]" +
             // not any unpaved because of the same reason
             "[surface !~ \"^(" + OsmTaggings.ANYTHING_UNPAVED.joinToString("|") + ")$\"]" +
+            "[lit = yes]" +
             // not any explicitly tagged as no pedestrians
             "[foot != no]" +
             "[access !~ \"^private|no$\"]" +
