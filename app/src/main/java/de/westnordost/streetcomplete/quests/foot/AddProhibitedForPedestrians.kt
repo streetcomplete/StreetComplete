@@ -23,11 +23,11 @@ class AddProhibitedForPedestrians(o: OverpassMapDataDao) : SimpleOverpassQuestTy
            forth. See https://lists.openstreetmap.org/pipermail/tagging/2019-February/042852.html */
         // only roads where foot=X is not (almost) implied
         "and motorroad != yes " +
-        "and highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|service|road " +
+        "and highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified| " +
         // road probably not developed enough to issue a prohibition for pedestrians
         "and surface ~ ${OsmTaggings.ANYTHING_PAVED.joinToString("|")} " +
         // fuzzy filter for above mentioned situations + developed-enough / non-rural roads
-        "and ( oneway~yes|-1 or bridge=yes or tunnel=yes or lit=yes )"
+        "and ( oneway~yes|-1 or bridge=yes or tunnel=yes or bicycle~no|use_sidepath or lit=yes )"
 
     override val commitMessage = "Add whether roads are accessible for pedestrians"
     override val icon = R.drawable.ic_quest_pedestrian
