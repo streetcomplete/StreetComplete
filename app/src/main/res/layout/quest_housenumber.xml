@@ -10,7 +10,7 @@
         android:layout_width="112dp"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:background="#fff">
+        android:background="@drawable/background_white_corners">
 
         <EditText
             android:id="@+id/houseNumberInput"
