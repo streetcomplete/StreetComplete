@@ -17,18 +17,18 @@ global:
     text_fill_color: '#ccf'
 
     railway_color: '#903'
-    road_color: '#448'
-    road_outline_color: '#99f'
+    road_color: '#559'
+    road_outline_color: '#88c'
     path_color: global.road_color
-    path_outline_color: '#96b'
+    path_outline_color: '#86a'
     square_color: global.road_color
 
-    earth_color: '#20204e'
+    earth_color: '#303040'
     water_color: '#002'
-    landuse_color: '#403066'
+    landuse_color: '#443e60'
 
-    building_color: rgb(68,34,0)
-    building_outline_color: rgb(51,17,0)
+    building_color: [0.33, 0.38, 0.55, 0.5]
+    building_outline_color: [0.25, 0.33, 0.5, 0.5]
 
     boundary_color: '#e46'
 
@@ -41,7 +41,7 @@ styles:
         blend: add
     buildings-style:
         base: polygons
-        blend: add
+        blend: translucent
     buildings-outline-style:
         base: lines
-        blend: add
+        blend: translucent
