@@ -3,14 +3,14 @@ package de.westnordost.streetcomplete.quests
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryModify
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
-import de.westnordost.streetcomplete.quests.foot.AddAccessibleForPedestrians
-import de.westnordost.streetcomplete.quests.foot.AccessibleForPedestriansAnswer.*
+import de.westnordost.streetcomplete.quests.foot.AddProhibitedForPedestrians
+import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.*
 import org.junit.Test
 import org.mockito.Mockito.mock
 
-class AddAccessibleForPedestriansTest {
+class AddProhibitedForPedestriansTest {
 
-	private val questType = AddAccessibleForPedestrians(mock(OverpassMapDataDao::class.java))
+	private val questType = AddProhibitedForPedestrians(mock(OverpassMapDataDao::class.java))
 
 	@Test fun `apply yes answer`() {
 		questType.verifyAnswer(YES, StringMapEntryAdd("foot", "yes"))

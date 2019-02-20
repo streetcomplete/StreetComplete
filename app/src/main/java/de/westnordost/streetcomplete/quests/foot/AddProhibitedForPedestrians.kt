@@ -5,9 +5,9 @@ import de.westnordost.streetcomplete.data.meta.OsmTaggings
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
-import de.westnordost.streetcomplete.quests.foot.AccessibleForPedestriansAnswer.*
+import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.*
 
-class AddAccessibleForPedestrians(o: OverpassMapDataDao) : SimpleOverpassQuestType<AccessibleForPedestriansAnswer>(o) {
+class AddProhibitedForPedestrians(o: OverpassMapDataDao) : SimpleOverpassQuestType<ProhibitedForPedestriansAnswer>(o) {
 
     override val tagFilters = """
         ways with !foot and (
@@ -36,7 +36,7 @@ class AddAccessibleForPedestrians(o: OverpassMapDataDao) : SimpleOverpassQuestTy
 
     override fun createForm() = AddAccessibleForPedestriansForm()
 
-    override fun applyAnswerTo(answer: AccessibleForPedestriansAnswer, changes: StringMapChangesBuilder) {
+    override fun applyAnswerTo(answer: ProhibitedForPedestriansAnswer, changes: StringMapChangesBuilder) {
         when(answer) {
             // the question is whether it is prohibited, so YES -> foot=no etc
             YES -> changes.add("foot", "no")
