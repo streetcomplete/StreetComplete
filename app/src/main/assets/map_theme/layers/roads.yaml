@@ -131,7 +131,7 @@ layers:
             draw:
                 lines:
                     style: tunnel-way
-                    color: [1., 1., 1., 0.2]
+                    color: global.tunnel_color
 
     pois:
         data: { source: mapzen }
