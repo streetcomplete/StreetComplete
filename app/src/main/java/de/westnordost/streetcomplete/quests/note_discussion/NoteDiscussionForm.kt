@@ -44,7 +44,7 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment<NoteAnswer>() {
     private val attachPhotoFragment get() =
         childFragmentManager.findFragmentById(R.id.attachPhotoFragment) as? AttachPhotoFragment
 
-    private val noteText: String get() = noteInput.text.toString().trim()
+    private val noteText: String get() = noteInput?.text?.toString().orEmpty().trim()
 
     init {
         Injector.instance.applicationComponent.inject(this)

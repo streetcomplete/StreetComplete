@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.quests.max_height
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import android.text.InputFilter
-import android.text.Spanned
 import android.text.method.DigitsKeyListener
 import android.view.LayoutInflater
 import android.view.View
@@ -148,11 +147,11 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment<MaxHeightAnswer>() {
 
     private fun getHeightFromInput(): Measure? {
         if (isMetric()) {
-            val input = meterInput!!.text.toString().replace(",", ".")
+            val input = meterInput?.text?.toString().orEmpty().trim().replace(",", ".")
             if (input.isNotEmpty()) return MetricMeasure(input.toDouble())
         } else {
-            val feetString = feetInput!!.text.toString()
-            val inchString = inchInput!!.text.toString()
+            val feetString = feetInput?.text?.toString().orEmpty().trim()
+            val inchString = inchInput?.text?.toString().orEmpty().trim()
 
             if (feetString.isNotEmpty() && inchString.isNotEmpty()) {
                 return ImperialMeasure(feetString.toInt(), inchString.toInt())

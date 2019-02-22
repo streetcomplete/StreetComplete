@@ -4,7 +4,6 @@ import android.content.Context
 import androidx.appcompat.R
 import android.text.Editable
 import android.util.AttributeSet
-import android.view.MotionEvent
 import android.view.inputmethod.EditorInfo
 import androidx.appcompat.widget.AppCompatEditText
 
@@ -37,10 +36,6 @@ class AutoCorrectAbbreviationsEditText @JvmOverloads constructor(
             }
             false
         }
-    }
-
-    override fun onTouchEvent(event: MotionEvent?): Boolean {
-        return super.onTouchEvent(event)
     }
 
     private fun autoCorrectTextAt(s: Editable, cursor: Int) {
