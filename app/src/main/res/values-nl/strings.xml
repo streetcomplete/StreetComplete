@@ -696,5 +696,5 @@ Bijvoorbeeld 1m3 of 2-6."</string>
     <string name="quest_motorcycleParkingCoveredStatus_title">"Is deze motorvoertuigen parkeerplaats overdekt?"</string>
     <string name="default_disabled_msg_maxspeed">"Dit type vraag is uitgeschakeld, omdat je normaal een hele straat moet checken op maximum snelheid borden/signalen, niet alleen het aangegeven stuk wegdek. Het kan daarom soms veel moeite kosten om één enkele vraag op te lossen. "</string>
     <string name="pref_title_quests_restore_hidden">"Herstel verborgen vragen"</string>
-    <string name="restore_hidden_success">"% Verborgen vragen hersteld"</string>
+    <string name="restore_hidden_success">"%d Verborgen vragen hersteld"</string>
 </resources>

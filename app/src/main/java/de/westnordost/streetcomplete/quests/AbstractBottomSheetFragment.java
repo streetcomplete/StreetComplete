@@ -9,6 +9,8 @@ import androidx.annotation.UiThread;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import androidx.fragment.app.Fragment;
 import androidx.appcompat.app.AlertDialog;
+
+import android.os.Looper;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
@@ -25,6 +27,7 @@ public abstract class AbstractBottomSheetFragment extends Fragment
 	private LinearLayout bottomSheet;
 	private BottomSheetBehavior bottomSheetBehavior;
 	private View closeButton;
+	private final Handler mainHandler = new Handler(Looper.getMainLooper());
 
 	@Override public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
 	{
@@ -34,8 +37,7 @@ public abstract class AbstractBottomSheetFragment extends Fragment
 		bottomSheet.addOnLayoutChangeListener((v, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom) ->
 		{
 			// not immediately because this is called during layout change (view.getTop() == 0)
-			final Handler handler = new Handler();
-			handler.post(this::updateCloseButtonVisibility);
+			mainHandler.post(this::updateCloseButtonVisibility);
 		});
 
 		closeButton = view.findViewById(R.id.closeButton);
@@ -74,6 +76,12 @@ public abstract class AbstractBottomSheetFragment extends Fragment
 			view.findViewById(R.id.speechbubbleContentContainer).startAnimation(
 				AnimationUtils.loadAnimation(getContext(), R.anim.inflate_answer_bubble));
 		}
+	}
+
+	@Override public void onDestroy()
+	{
+		super.onDestroy();
+		mainHandler.removeCallbacksAndMessages(null);
 	}
 
 	@Override public void onConfigurationChanged(Configuration newConfig)

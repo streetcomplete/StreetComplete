@@ -78,7 +78,12 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment<MaxHeightAnswer>() {
         inchInput?.filters = arrayOf(InputFilter { source, start, end, dest, dstart, dend ->
             val destStr = dest.toString()
             val input = destStr.substring(0, dstart) + source.toString() + destStr.substring(dend, destStr.length)
-            if (input.toInt() <= 12) null else ""
+
+            if(input.isEmpty() || input.toIntOrNull() != null && input.toInt() <= 12) {
+                null
+            } else {
+                ""
+            }
         })
         /* Workaround for an Android bug that it assumes the decimal separator to always be the "."
            for EditTexts with inputType "numberDecimal", independent of Locale. See
@@ -142,11 +147,11 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment<MaxHeightAnswer>() {
 
     private fun getHeightFromInput(): Measure? {
         if (isMetric()) {
-            val input = meterInput!!.text.toString().replace(",", ".")
+            val input = meterInput?.text?.toString().orEmpty().trim().replace(",", ".")
             if (input.isNotEmpty()) return MetricMeasure(input.toDouble())
         } else {
-            val feetString = feetInput!!.text.toString()
-            val inchString = inchInput!!.text.toString()
+            val feetString = feetInput?.text?.toString().orEmpty().trim()
+            val inchString = inchInput?.text?.toString().orEmpty().trim()
 
             if (feetString.isNotEmpty() && inchString.isNotEmpty()) {
                 return ImperialMeasure(feetString.toInt(), inchString.toInt())

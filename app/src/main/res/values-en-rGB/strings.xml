@@ -498,5 +498,17 @@ For instance 1,3 or 2-6."</string>
     <string name="quest_pathSurface_title">"What surface does this path have here?"</string>
     <string name="quest_select_hint_most_specific">"Select the most specific one that fits:"</string>
     <string name="quest_generic_item_confirmation">"Are you sure that you can not determine it more specifically?"</string>
+    <string name="quest_generic_hasFeature_no_leave_note">"No (leave note)"</string>
+    <string name="quest_buildingType_title2">"What was this building constructed as?"</string>
+    <string name="quest_generic_item_invalid_value">"Please select a more specific value."</string>
+    <string name="quest_buildingType_answer_multiple_types">"It was multiple purposes"</string>
+    <string name="quest_buildingType_answer_multiple_types_description">"Simply select the main purpose of this building. E.g. if there is a shop on the ground floor with apartments above it, it is still mainly an apartment building."</string>
+    <string name="quest_buildingType_answer_construction_site">"It is still being constructed"</string>
+    <string name="quest_buildingType_residential">"Residential"</string>
+    <string name="quest_buildingType_residential_description">"building where people live"</string>
+    <string name="quest_buildingType_house">"House"</string>
+    <string name="quest_buildingType_house_description">"single-family home"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
+    <string name="quest_sidewalk_value_yes">"pavement"</string>
+    <string name="quest_sidewalk_value_no">"no pavement"</string>
 </resources>

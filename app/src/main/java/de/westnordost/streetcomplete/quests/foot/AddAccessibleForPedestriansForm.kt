@@ -1,15 +1,29 @@
 package de.westnordost.streetcomplete.quests.foot
 
+import android.os.Bundle
+import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AYesNoQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
-import de.westnordost.streetcomplete.quests.foot.AccessibleForPedestriansAnswer.*
+import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.*
+import kotlinx.android.synthetic.main.quest_buttonpanel_yes_no_sidewalk.*
 
-class AddAccessibleForPedestriansForm : AYesNoQuestAnswerFragment<AccessibleForPedestriansAnswer>() {
+class AddAccessibleForPedestriansForm : AbstractQuestAnswerFragment<ProhibitedForPedestriansAnswer>() {
 
-    override val contentLayoutResId = R.layout.quest_accessible_for_pedestrians_explanation
+    override val buttonsResId = R.layout.quest_buttonpanel_yes_no_sidewalk
+
+    override val contentLayoutResId = R.layout.quest_prohibited_for_pedestrians_separate_sidewalk_explanation
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        yesButton.setOnClickListener { applyAnswer(YES) }
+        noButton.setOnClickListener { applyAnswer(NO) }
+        sidewalkButton.setOnClickListener { applyAnswer(HAS_SEPARATE_SIDEWALK) }
+    }
 
     // the living street answer stuff is copied from AddMaxSpeedForm
     override val otherAnswers: List<OtherAnswer> get() {
@@ -21,8 +35,6 @@ class AddAccessibleForPedestriansForm : AYesNoQuestAnswerFragment<AccessibleForP
         }
         return result
     }
-
-    override fun onClick(answer: Boolean) { applyAnswer(if(answer) YES else NO) }
 
     private fun confirmLivingStreet() {
         activity?.let {

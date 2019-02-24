@@ -281,7 +281,7 @@ class AddLocalizedNameAdapter(
         private fun updateNameSuggestions() {
             val localizedNameSuggestionsMap = getLocalizedNameSuggestionsByLanguageCode(localizedName.languageCode)
 
-            val nameInputNotEmpty = autoCorrectInput.text.toString().isNotEmpty()
+            val nameInputNotEmpty = autoCorrectInput.text.toString().trim().isNotEmpty()
             val hasNoNameSuggestions = localizedNameSuggestionsMap.isEmpty()
             buttonNameSuggestions.visibility =
                 if (hasNoNameSuggestions || nameInputNotEmpty) View.GONE else View.VISIBLE

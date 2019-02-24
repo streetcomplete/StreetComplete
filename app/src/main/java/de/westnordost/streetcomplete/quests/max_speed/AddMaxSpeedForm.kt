@@ -39,7 +39,7 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
     private var speedUnitSelect: Spinner? = null
     private var speedType: SpeedType? = null
 
-    private val speed: String get() = speedInput!!.text.toString()
+    private val speed get() = speedInput?.text?.toString().orEmpty().trim()
 
     private enum class SpeedType {
         SIGN, ZONE, ADVISORY, NO_SIGN

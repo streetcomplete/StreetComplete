@@ -39,8 +39,7 @@ public class SingleLocationRequest implements LocationListener, LostApiClient.Co
 
 	public void stopRequest()
 	{
-		Handler h = new Handler(Looper.getMainLooper());
-		h.post(() ->
+		new Handler(Looper.getMainLooper()).post(() ->
 		{
 			if(lostApiClient.isConnected())
 			{

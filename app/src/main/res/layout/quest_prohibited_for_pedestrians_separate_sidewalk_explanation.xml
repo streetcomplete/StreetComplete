@@ -4,4 +4,4 @@
     android:id="@+id/descriptionLabel"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="@string/quest_accessible_for_pedestrians_description"/>
+    android:text="@string/quest_accessible_for_pedestrians_separate_sidewalk_explanation"/>

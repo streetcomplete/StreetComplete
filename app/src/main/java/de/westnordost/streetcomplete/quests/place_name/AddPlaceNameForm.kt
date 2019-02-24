@@ -19,7 +19,7 @@ class AddPlaceNameForm : AbstractQuestFormAnswerFragment<PlaceNameAnswer>() {
         OtherAnswer(R.string.quest_name_answer_noName) { confirmNoName() }
     )
 
-    private val placeName get() = nameInput.text.toString().trim()
+    private val placeName get() = nameInput?.text?.toString().orEmpty().trim()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -39,5 +39,5 @@ class AddPlaceNameForm : AbstractQuestFormAnswerFragment<PlaceNameAnswer>() {
             .show()
     }
 
-    override fun isFormComplete() = !placeName.isEmpty()
+    override fun isFormComplete() = placeName.isNotEmpty()
 }

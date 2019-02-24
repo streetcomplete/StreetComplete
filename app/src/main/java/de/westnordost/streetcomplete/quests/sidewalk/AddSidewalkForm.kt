@@ -87,10 +87,10 @@ class AddSidewalkForm : AbstractQuestFormAnswerFragment<SidewalkAnswer>() {
             alertDialog.dismiss()
 
             if (isRight) {
-                puzzleView.replaceRightSideImageResource(sidewalk.iconResId)
+                puzzleView.replaceRightSideImageResource(sidewalk.puzzleResId)
                 rightSide = sidewalk
             } else {
-                puzzleView.replaceLeftSideImageResource(sidewalk.iconResId)
+                puzzleView.replaceLeftSideImageResource(sidewalk.puzzleResId)
                 leftSide = sidewalk
             }
             checkIsFormComplete()
@@ -114,9 +114,9 @@ class AddSidewalkForm : AbstractQuestFormAnswerFragment<SidewalkAnswer>() {
                 }
         }
 
-    private enum class Sidewalk(val iconResId: Int, val nameResId: Int) {
-        NO(R.drawable.ic_sidewalk_no, R.string.quest_sidewalk_value_no),
-        YES(R.drawable.ic_sidewalk_yes, R.string.quest_sidewalk_value_yes)
+    private enum class Sidewalk(val iconResId: Int, val puzzleResId: Int, val nameResId: Int) {
+        NO(R.drawable.ic_sidewalk_no, R.drawable.ic_sidewalk_puzzle_no, R.string.quest_sidewalk_value_no),
+        YES(R.drawable.ic_sidewalk_yes, R.drawable.ic_sidewalk_puzzle_yes, R.string.quest_sidewalk_value_yes)
     }
 
     companion object {

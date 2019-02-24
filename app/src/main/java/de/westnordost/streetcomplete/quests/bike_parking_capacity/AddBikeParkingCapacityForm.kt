@@ -11,14 +11,16 @@ class AddBikeParkingCapacityForm : AbstractQuestFormAnswerFragment<Int>() {
 
     override val contentLayoutResId = R.layout.quest_bike_parking_capacity
 
+    private val capacity get() = capacityInput?.text?.toString().orEmpty().trim()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         capacityInput.addTextChangedListener(TextChangedWatcher { checkIsFormComplete() })
     }
 
-    override fun isFormComplete() = capacityInput.text.trim().toString().isNotEmpty()
+    override fun isFormComplete() = capacity.isNotEmpty()
 
     override fun onClickOk() {
-        applyAnswer(capacityInput.text.trim().toString().toInt())
+        applyAnswer(capacity.toInt())
     }
 }
