@@ -641,4 +641,5 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_sidewalk_value_yes">sidewalk</string>
     <string name="quest_sidewalk_value_no">no sidewalk</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">Are pedestrians prohibited from walking on this road here?</string>
+    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">This street was tagged as having no sidewalk on either side. In the case that there is a sidewalk after all but it is displayed as a separate way, please answer \"sidewalk\".</string>
 </resources>

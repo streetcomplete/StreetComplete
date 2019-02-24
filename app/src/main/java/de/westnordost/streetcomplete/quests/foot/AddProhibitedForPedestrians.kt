@@ -41,6 +41,10 @@ class AddProhibitedForPedestrians(o: OverpassMapDataDao) : SimpleOverpassQuestTy
             // the question is whether it is prohibited, so YES -> foot=no etc
             YES -> changes.add("foot", "no")
             NO -> changes.add("foot", "yes")
+            HAS_SEPARATE_SIDEWALK -> {
+                changes.add("foot", "use_sidepath")
+                changes.modify("sidewalk", "separate")
+            }
             IS_LIVING_STREET -> changes.modify("highway", "living_street")
         }
     }

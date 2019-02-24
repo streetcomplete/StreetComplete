@@ -20,6 +20,15 @@ class AddProhibitedForPedestriansTest {
         questType.verifyAnswer(NO, StringMapEntryAdd("foot", "yes"))
 	}
 
+    @Test fun `apply separate sidewalk answer`() {
+        questType.verifyAnswer(
+            mapOf("sidewalk" to "no"),
+            HAS_SEPARATE_SIDEWALK,
+            StringMapEntryAdd("foot", "use_sidepath"),
+            StringMapEntryModify("sidewalk", "no", "separate")
+        )
+    }
+
 	@Test fun `apply living street answer`() {
         questType.verifyAnswer(
             mapOf("highway" to "residential"),
