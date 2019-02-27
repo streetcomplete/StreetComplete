@@ -33,9 +33,7 @@
     <string name="quest_generic_confirmation_no">"Je vais vérifier"</string>
     <string name="quest_generic_error_field_empty">"Vous avez laissé ce champ vide"</string>
     <string name="quest_leave_new_note_title">"Laisser une note à la place ?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_leave_new_note_description">"Vous pouvez laisser une note ici, afin que d’autres puissent commenter et peut-être résoudre :"</string>
+    <string name="quest_leave_new_note_description">"Vous pouvez laisser une note ici, d’autres cartographes pourront la commenter et si possible la résoudre. Sinon, vous pouvez simplement cacher la quête de votre vue uniquement"</string>
     <string name="quest_leave_new_note_yes">"OK"</string>
     <string name="quest_leave_new_note_no">"Non, seulement cacher"</string>
     <string name="quest_streetName_title">"Quel est le nom de cette voie ?"</string>
@@ -65,9 +63,7 @@
     <string name="confirmation_discard_negative">"Annuler"</string>
     <string name="action_download">"Rechercher des quêtes ici"</string>
     <string name="action_upload">"Téléverser les réponses"</string>
-
-    <!-- Fuzzy -->
-    <string name="no_changes">"Vous n’avez pas rempli le formulaire"</string>
+    <string name="no_changes">"Vous n'avez pas répondu"</string>
     <string name="close">"fermer"</string>
     <string name="download_error">"Erreur pendant la recherche de quêtes"</string>
     <string name="upload_error">"Erreur pendant le téléversement des réponses"</string>
@@ -90,8 +86,7 @@
     <string name="offline">"Vous êtes hors ligne"</string>
 
     <!-- téléverser est horrible. On tend à préférer uploader et c'est souvent le mot choisi dans les GUI, que se soit dans Transmission ou dans LibreOffice -->
-    <!-- Fuzzy -->
-    <string name="confirmation_authorize_now">"Vous devez lier votre compte OSM pour publier vos réponses. Le faire maintenant ?"</string>
+    <string name="confirmation_authorize_now">"Vous devez autoriser l'application à utiliser votre compte OSM pour publier vos réponses. Voulez-vous autoriser maintenant ?"</string>
     <string name="not_authorized">"Non autorisé"</string>
     <string name="version_banned_message">"Cette version de StreetComplete est trop vielle. Veuillez mettre à jour votre application."</string>
     <string name="no_gps_no_quests">"Pour rechercher des quêtes autour de vous automatiquement, activer la localisation"</string>
@@ -177,9 +172,7 @@ Cependant, avant de sauvegarder vos modifications, l’application vérifie avec
 
     <!-- I think "Place(EN)" means "lieu", an area, instead of "place(FR)", a square -->
     <string name="quest_placeName_title">"Quel est le nom de cet endroit ?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_sidewalk_title">"Est-ce qu’il y a un trottoir dans cette rue ?"</string>
+    <string name="quest_sidewalk_title">"Cette rue a-t-elle un trottoir ?"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Où est cette rue ?"</string>
 
     <!-- Plus simple et plus court : Quel est le revêtement de cette piste cyclable ? -->
@@ -267,11 +260,7 @@ L’information que vous entrez est ajoutée directement à OpenStreetMap en vot
     <string name="quest_maxspeed_answer_noSign_confirmation">"Avez-vous vérifié aux extrémités de la rue ?
 S’il n’y a aucun panneau tout le long de la route mise en surbrillance, les limites de vitesse par défaut s’appliquent."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Oui, aucun panneau"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Les routes en agglomérations ont une limitation de vitesse par défaut différente des routes hors-agglomération."</string>
-
-    <!-- Fuzzy -->
+    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Les routes en agglomérations ont une limitation de vitesse implicite inférieur aux routes de campagne."</string>
     <string name="quest_maxspeed_answer_noSign_urbanOk">"En agglomération"</string>
     <string name="quest_maxspeed_answer_noSign_ruralOk">"Hors-agglomération"</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">"S’il y a un panneau comme celui-ci à une intersection, vous ne trouverez pas des panneaux spécifiques dans cette zone car la limitation de vitesse indiquée ici s’applique sur toute la zone."</string>
@@ -281,9 +270,7 @@ S’il n’y a aucun panneau tout le long de la route mise en surbrillance, les 
     <string name="quest_sport_paddle_tennis">"Paddle-tennis"</string>
     <string name="quest_sport_gaelic_games">"Jeux gaéliques"</string>
     <string name="quest_sport_sepak_takraw">"Sepak Takraw"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_name_title">"Est-ce que l’élément %s est accessible aux personnes en fauteuil roulant ?"</string>
+    <string name="quest_wheelchairAccess_name_title">"Est-ce que %s est accessible en fauteuil roulant ?"</string>
     <string name="quest_wheelchairAccess_limited">"Partiellement"</string>
     <string name="quest_bikeParkingCapacity_hint">"NB : la plupart des arceaux peuvent accueillir un vélo de chaque côté."</string>
     <string name="quest_sport_roller_skating">"Roller"</string>
@@ -300,7 +287,7 @@ S’il n’y a aucun panneau tout le long de la route mise en surbrillance, les 
 
     <!-- Abréviation *dans* le nom ? -->
     <!-- Fuzzy -->
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Abréviation du nom %s ?"</string>
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Abréviation dans le nom %s ?"</string>
     <string name="quest_baby_changing_table_toilets_title">"Est-ce que ces toilettes disposent d’une table à langer ?"</string>
     <string name="quest_baby_changing_table_title">"Est-ce que %s possède une table à langer ?"</string>
     <string name="quest_recycling_type_title">"Quel type d’installation de recyclage est-ce ?"</string>
@@ -486,17 +473,12 @@ Partiellement signifie qu’un fauteuil roulant peut entrer et utiliser les toil
     <string name="quest_cycleway_title2">"Y a-t-il une piste cyclable ici ? De quel type ?"</string>
 
     <!-- ou « type de structure » ? -->
-    <!-- Fuzzy -->
     <string name="quest_bridge_structure_title">"Quelle est la structure de ce pont ?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_internet_access_name_title">"Quel type de connexion internet %s offre-t-il ?"</string>
     <string name="quest_internet_access_wlan">"Wi-Fi"</string>
     <string name="quest_internet_access_wired">"Filaire"</string>
     <string name="quest_internet_access_terminal">"Ordinateur avec accès internet"</string>
     <string name="quest_internet_access_no">"Pas de connexion"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_busStopShelter_tram_name_title">"L’arrêt de tram %s a-t-il un abri ?"</string>
     <string name="quest_busStopShelter_tram_title">"Cet arrêt de tram a-t-il un abri ?"</string>
     <string name="quest_bench_backrest_title">"Ce banc a-t-il un dossier ?"</string>
@@ -522,7 +504,7 @@ Partiellement signifie qu’un fauteuil roulant peut entrer et utiliser les toil
 
     <!-- Un peu long. -->
     <!-- Fuzzy -->
-    <string name="quest_parking_access_title">"L’utilisation de ce parking est-il restreint à certains usagers ?"</string>
+    <string name="quest_parking_access_title">"L'accès à ce parking est-il restreint ?"</string>
 
     <!-- Traduction non littérale. Il faudrait connaître le contexte. -->
     <string name="quest_parking_access_private">"Privé"</string>
@@ -565,12 +547,11 @@ Partiellement signifie qu’un fauteuil roulant peut entrer et utiliser les toil
     <string name="privacy_html_tileserver">"&lt;p&gt;Pour afficher la carte, les tuiles vectorielles sont téléchargées depuis &lt;a href=\"https://tiles.map-data.de\"&gt;map-data.de&lt;/a&gt;. Ce service enregistre les demandes de tuiles à des fins de statistiques anonymes et de détection d’erreurs. Les journaux de demandes sont supprimés après quelques jours.&lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
-    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt; Pour certaines quêtes, des données de tiers sont téléchargées. En particulier pour les quêtes sur les voies à sens unique, une API tierce est utilisées. NB : cette API tiers est également hébergée sur &lt;a href=\"www.westnordost.de\"&gt;www.westnordost.de&lt;/a&gt;.&lt;p&gt;"</string>
+    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Pour certaines quêtes, des données de tiers sont téléchargées. En particulier, la quête de voie à sens unique utilise une API tierce, également hébergée sur westnordost.de, pour trouver des voies probablement à sens unique.&lt;p&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"Non (laisser une note)"</string>
     <string name="pref_quests_reset">"Réinitialiser les types quêtes à afficher et leur ordre d’affichage ?"</string>
 
     <!-- To keep the idea, why not "Quelle était la fonction principale de ce bâtiment ?"? -->
-    <!-- Fuzzy -->
     <string name="quest_buildingType_title2">"En tant que quoi ce bâtiment a-t-il été construit ?"</string>
     <string name="quest_generic_item_invalid_value">"Sélectionnez une valeur plus précise."</string>
     <string name="quest_buildingType_answer_multiple_types">"Plusieurs usages"</string>
@@ -660,9 +641,7 @@ Partiellement signifie qu’un fauteuil roulant peut entrer et utiliser les toil
     <string name="quest_buildingType_shrine">"Sanctuaire"</string>
     <string name="quest_maxspeed_title_short2">"Quelle est la limitation de vitesse dans cette rue ?"</string>
     <string name="quest_maxspeed_answer_sign">"Un panneau"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_maxspeed_answer_zone2">"Dans une zone"</string>
+    <string name="quest_maxspeed_answer_zone2">"Est dans une zone de limitation de vitesse"</string>
     <string name="quest_maxspeed_answer_noSign2">"Pas de panneau, vitesse par défaut"</string>
     <string name="quest_openingHours_no_sign">"Pas d’heures d’ouverture affichées"</string>
     <string name="quest_maxspeed_name_title2">"Quelle est la limitation de vitesse de %s à cet endroit ?"</string>
@@ -709,4 +688,18 @@ Partiellement signifie qu’un fauteuil roulant peut entrer et utiliser les toil
     <string name="quest_motorcycleParkingCapacity_title">"Combien de motos peuvent être garées ici ?"</string>
     <string name="quest_motorcycleParkingCoveredStatus_title">"Ce parking moto est-il couvert (protégé de la pluie) ?"</string>
     <string name="default_disabled_msg_maxspeed">"Ce type de quête est désactivé parce qu’il requiert habituellement de vérifier toute la rue pour trouver des panneaux de limitation de vitesse et pas uniquement la section mise en avant. Cela peut parfois être trop pour simplement résoudre une quête unique.  "</string>
+    <string name="pref_title_quests_restore_hidden">"Restaurer les quêtes cachées"</string>
+    <string name="restore_hidden_success">"%d quêtes cachées ont été restaurées"</string>
+
+    <!-- caution: This is not necessarily the floor and level=0 is not necessarily at street level
+        as it may follow the numbering scheme of the building operator. Try to use a generic wording
+        that does not carry an implicit meaning of where it is located in respect to the ground floor.
+        The context is usually shopping centres, train stations or airport terminals -->
+    <string name="on_level">"à l'étage %s:"</string>
+
+    <!-- as in: "Where is the metro station?" - "It is underground" -->
+    <string name="underground">"en sous-sol:"</string>
+    <string name="quest_sidewalk_value_yes">"trottoir"</string>
+    <string name="quest_sidewalk_value_no">"pas de trottoir"</string>
+    <string name="quest_accessible_for_pedestrians_title_prohibited">"Cette voie est-elle interdite aux piétons ?"</string>
 </resources>

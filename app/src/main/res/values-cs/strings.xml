@@ -688,5 +688,10 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
         that does not carry an implicit meaning of where it is located in respect to the ground floor.
         The context is usually shopping centres, train stations or airport terminals -->
     <string name="on_level">"na podlaží %s:"</string>
+
+    <!-- as in: "Where is the metro station?" - "It is underground" -->
     <string name="underground">"v podzemí:"</string>
+    <string name="quest_sidewalk_value_yes">"chodník"</string>
+    <string name="quest_sidewalk_value_no">"bez chodníku"</string>
+    <string name="quest_accessible_for_pedestrians_title_prohibited">"Mají chodci zakázáno chodit zde po této cestě?"</string>
 </resources>

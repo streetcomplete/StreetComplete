@@ -682,4 +682,16 @@
     <string name="default_disabled_msg_maxspeed">"این نوع جُستار به طور پیش فرض غیر فعال شده است زیرا اغلب شما نیاز به بررسی تمام خیابان‌ها برای تابلو‌های محدودیت سرعت دارید و نه فقط بخش انتخاب شده . این گاهی اوقات می‌تواند یک جاذبه کاربرپسند برای حل یک جُستار باشد."</string>
     <string name="pref_title_quests_restore_hidden">"بازگرداندن جُستارهای پنهان"</string>
     <string name="restore_hidden_success">"بازیابی  %d جُستار پنهان"</string>
+
+    <!-- caution: This is not necessarily the floor and level=0 is not necessarily at street level
+        as it may follow the numbering scheme of the building operator. Try to use a generic wording
+        that does not carry an implicit meaning of where it is located in respect to the ground floor.
+        The context is usually shopping centres, train stations or airport terminals -->
+    <string name="on_level">"در طبقه %s"</string>
+
+    <!-- as in: "Where is the metro station?" - "It is underground" -->
+    <string name="underground">"زیرزمین"</string>
+    <string name="quest_sidewalk_value_yes">"پیاده‌رو"</string>
+    <string name="quest_sidewalk_value_no">"بدون پیاده‌رو"</string>
+    <string name="quest_accessible_for_pedestrians_title_prohibited">"آیا پیاده‌روی عابران در این جاده ممنوع است؟"</string>
 </resources>
