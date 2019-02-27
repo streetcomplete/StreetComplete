@@ -433,7 +433,7 @@ public class SphericalEarthMath
 
 	private static double sqr(double x) { return Math.pow(x, 2); }
 
-	private static LatLon createTranslated(double lat, double lon)
+	public static LatLon createTranslated(double lat, double lon)
 	{
 		lon = normalizeLongitude(lon);
 
