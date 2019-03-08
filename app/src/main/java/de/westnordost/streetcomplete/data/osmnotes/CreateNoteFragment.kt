@@ -29,7 +29,7 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         if (savedInstanceState == null) {
-            markerLayoutContainer.startAnimation(createFallDownAnimation())
+            markerLayoutContainer?.startAnimation(createFallDownAnimation())
         }
 
         titleLabel.text = getString(R.string.map_btn_create_note)
@@ -69,7 +69,8 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
     }
 
     override fun onDiscard() {
-        markerLayoutContainer.visibility = View.INVISIBLE
+        super.onDiscard()
+        markerLayoutContainer?.visibility = View.INVISIBLE
     }
 
     override fun onLeaveNote(text: String, imagePaths: List<String>?) {
@@ -80,7 +81,7 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
         val screenPos = Point(point[0], point[1])
         screenPos.offset(createNoteMarker.width / 2, createNoteMarker.height / 2)
 
-        markerLayoutContainer.visibility = View.INVISIBLE
+        markerLayoutContainer?.visibility = View.INVISIBLE
 
         callbackListener.onLeaveNote(text, imagePaths, screenPos)
     }
