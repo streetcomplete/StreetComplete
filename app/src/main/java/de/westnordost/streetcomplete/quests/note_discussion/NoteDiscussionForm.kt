@@ -91,7 +91,7 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment<NoteAnswer>() {
         applyAnswer(NoteAnswer(noteText, attachPhotoFragment?.imagePaths))
     }
 
-    public override fun onDiscard() {
+    override fun onDiscard() {
         attachPhotoFragment?.deleteImages()
     }
 

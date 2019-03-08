@@ -89,7 +89,7 @@ class AddParkingFeeForm : AbstractQuestFormAnswerFragment<FeeAnswer>() {
         selectFeeOnlyAtHours.adapter = ArrayAdapter(activity!!, R.layout.spinner_item_centered, spinnerItems)
         selectFeeOnlyAtHours.setSelection(if (isFeeOnlyAtHours) 0 else 1)
         selectFeeOnlyAtHours.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
                 isFeeOnlyAtHours = position == 0
             }
 
