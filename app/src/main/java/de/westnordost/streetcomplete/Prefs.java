@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete;
 
+import androidx.appcompat.app.AppCompatDelegate;
+
 /** Constant class to have all the identifiers for shared preferences in one place */
 public class Prefs
 {
@@ -13,7 +15,8 @@ public class Prefs
 			SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS = "display.nonQuestionNotes",
 			AUTOSYNC = "autosync",
 			KEEP_SCREEN_ON = "display.keepScreenOn",
-			UNGLUE_HINT_TIMES_SHOWN = "unglueHint.shown";
+			UNGLUE_HINT_TIMES_SHOWN = "unglueHint.shown",
+			THEME_SELECT = "theme.select";
 
 	// not shown anywhere directly
 	public static final String
@@ -29,5 +32,16 @@ public class Prefs
 	public enum Autosync
 	{
 		ON, WIFI, OFF
+	}
+
+	public enum Theme
+	{
+		LIGHT(AppCompatDelegate.MODE_NIGHT_NO),
+		DARK(AppCompatDelegate.MODE_NIGHT_YES),
+		AUTO(AppCompatDelegate.MODE_NIGHT_AUTO),
+		SYSTEM(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+
+		public int appCompatNightMode;
+		Theme(int appCompatNightMode) { this.appCompatNightMode = appCompatNightMode; }
 	}
 }

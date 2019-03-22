@@ -3,6 +3,8 @@ package de.westnordost.streetcomplete.settings;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.DialogFragment;
 import androidx.appcompat.app.AlertDialog;
 import androidx.preference.Preference;
@@ -150,6 +152,12 @@ public class SettingsFragment extends PreferenceFragmentCompat
 					.setPositiveButton(android.R.string.ok, null)
 					.show();
 			}
+		}
+		else if(key.equals(Prefs.THEME_SELECT))
+		{
+			Prefs.Theme theme = Prefs.Theme.valueOf(prefs.getString(Prefs.THEME_SELECT, "AUTO"));
+			AppCompatDelegate.setDefaultNightMode(theme.appCompatNightMode);
+			getActivity().recreate();
 		}
 	}
 

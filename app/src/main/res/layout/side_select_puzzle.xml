@@ -5,7 +5,7 @@
 
     <RelativeLayout
         android:id="@+id/rotateContainer"
-        android:background="#ddd"
+        android:background="#3666"
         android:layout_width="280dp"
         android:layout_height="280dp"
         android:layout_gravity="center"

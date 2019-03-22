@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete;
 
 import android.app.Application;
+import android.content.SharedPreferences;
 
 import com.squareup.leakcanary.LeakCanary;
 
@@ -8,6 +9,7 @@ import java.util.concurrent.FutureTask;
 
 import javax.inject.Inject;
 
+import androidx.appcompat.app.AppCompatDelegate;
 import de.westnordost.countryboundaries.CountryBoundaries;
 import de.westnordost.streetcomplete.tangram.TangramQuestSpriteSheetCreator;
 
@@ -15,6 +17,7 @@ public class StreetCompleteApplication extends Application
 {
 	@Inject FutureTask<CountryBoundaries> countryBoundariesFuture;
 	@Inject TangramQuestSpriteSheetCreator spriteSheetCreator;
+	@Inject SharedPreferences prefs;
 
 	@Override
 	public void onCreate()
@@ -30,6 +33,9 @@ public class StreetCompleteApplication extends Application
 		Injector.instance.initializeApplicationComponent(this);
 		Injector.instance.getApplicationComponent().inject(this);
 		preload();
+
+		Prefs.Theme theme = Prefs.Theme.valueOf(prefs.getString(Prefs.THEME_SELECT, "LIGHT"));
+		AppCompatDelegate.setDefaultNightMode(theme.appCompatNightMode);
 	}
 
 	/** Load some things in the background that are needed later */

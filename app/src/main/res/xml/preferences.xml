@@ -66,6 +66,22 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+        android:key="theme"
+        android:title="@string/pref_category_theme">
+
+        <ListPreference
+            android:key="theme.select"
+            android:title="@string/pref_title_theme_select"
+            android:summary="%s"
+            android:defaultValue="AUTO"
+            android:entries="@array/pref_entries_theme_select"
+            android:entryValues="@array/pref_entryvalues_theme_select"
+            android:persistent="true"
+            />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:key="advanced"
         android:title="@string/pref_category_advanced"
         >

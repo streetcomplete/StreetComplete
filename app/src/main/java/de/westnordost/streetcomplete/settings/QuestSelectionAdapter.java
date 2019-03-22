@@ -163,7 +163,7 @@ public class QuestSelectionAdapter extends ListAdapter<QuestSelectionAdapter.Que
 		@Override public void onBind(final QuestVisibility item)
 		{
 			this.item = item;
-			int colorResId = item.isInteractionEnabled() ? android.R.color.white : R.color.greyed_out;
+			int colorResId = item.isInteractionEnabled() ? android.R.color.transparent : R.color.greyed_out;
 			itemView.setBackgroundResource(colorResId);
 			iconView.setImageResource(item.questType.getIcon());
 			textView.setText(textView.getResources().getString(item.questType.getTitle(),"…"));

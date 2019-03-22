@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.tangram;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.graphics.PointF;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -124,7 +125,18 @@ public class MapFragment extends Fragment implements
 
 	public void getMapAsync(String apiKey)
 	{
-		getMapAsync(apiKey, "map_theme/scene.yaml");
+		getMapAsync(apiKey, getSceneFilePath());
+	}
+
+	protected String getSceneFilePath()
+	{
+		String scene = "scene-light.yaml";
+		int currentNightMode = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+		if (currentNightMode == Configuration.UI_MODE_NIGHT_YES)
+		{
+			scene = "scene-dark.yaml";
+		}
+		return "map_theme/" + scene;
 	}
 
 	@CallSuper public void getMapAsync(String apiKey, @NonNull final String sceneFilePath)
