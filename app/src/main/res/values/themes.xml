@@ -40,10 +40,4 @@
 
     <style name="Theme.Bubble.Dialog.Alert"/>
 
-    <style name="MapButton" parent="ThemeOverlay.AppCompat">
-        <item name="colorButtonNormal">@color/button_white</item>
-        <item name="android:textColor">#000</item>
-        <item name="colorAccent">@color/button_white</item>
-    </style>
-
 </resources>
