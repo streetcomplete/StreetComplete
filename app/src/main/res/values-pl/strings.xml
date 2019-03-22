@@ -633,4 +633,16 @@ Na przykład 1,3 lub 2-6."</string>
     <string name="default_disabled_msg_maxspeed">"Ten typ zadania jest domyślnie wyłączony, ponieważ zazwyczaj musisz sprawdzić na całej ulicy znaki ograniczenia prędkości, a nie tylko podświetloną sekcję. Czasami może to być więc dość trudna sprawa, aby rozwiązać pojedyncze zadanie."</string>
     <string name="pref_title_quests_restore_hidden">"Przywróć ukryte zadania"</string>
     <string name="restore_hidden_success">"Przywrócono %d ukrytych zadań"</string>
+
+    <!-- caution: This is not necessarily the floor and level=0 is not necessarily at street level
+        as it may follow the numbering scheme of the building operator. Try to use a generic wording
+        that does not carry an implicit meaning of where it is located in respect to the ground floor.
+        The context is usually shopping centres, train stations or airport terminals -->
+    <string name="on_level">"na piętrze %s:"</string>
+
+    <!-- as in: "Where is the metro station?" - "It is underground" -->
+    <string name="underground">"pod ziemią:"</string>
+    <string name="quest_sidewalk_value_yes">"chodnik"</string>
+    <string name="quest_sidewalk_value_no">"brak chodnika"</string>
+    <string name="quest_accessible_for_pedestrians_title_prohibited">"Czy pieszy mają zakaz poruszania się na tej drodze?"</string>
 </resources>

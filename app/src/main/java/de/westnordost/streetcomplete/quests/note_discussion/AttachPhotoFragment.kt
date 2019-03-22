@@ -80,24 +80,26 @@ class AttachPhotoFragment : Fragment() {
 
     private fun takePhoto() {
         val takePhotoIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-        if (takePhotoIntent.resolveActivity(activity!!.packageManager) != null) {
-            try {
-                val photoFile = createImageFile()
-                val photoUri = if (Build.VERSION.SDK_INT > 21) {
-                    //Use FileProvider for getting the content:// URI, see: https://developer.android.com/training/camera/photobasics.html#TaskPath
-                    FileProvider.getUriForFile(activity!!,getString(R.string.fileprovider_authority),photoFile)
-                } else {
-                    Uri.fromFile(photoFile)
+        activity?.packageManager?.let { packageManager ->
+            if (takePhotoIntent.resolveActivity(packageManager) != null) {
+                try {
+                    val photoFile = createImageFile()
+                    val photoUri = if (Build.VERSION.SDK_INT > 21) {
+                        //Use FileProvider for getting the content:// URI, see: https://developer.android.com/training/camera/photobasics.html#TaskPath
+                        FileProvider.getUriForFile(activity!!,getString(R.string.fileprovider_authority),photoFile)
+                    } else {
+                        Uri.fromFile(photoFile)
+                    }
+                    currentImagePath = photoFile.path
+                    takePhotoIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri)
+                    startActivityForResult(takePhotoIntent, REQUEST_TAKE_PHOTO)
+                } catch (e: IOException) {
+                    Log.e(TAG, "Unable to create file for photo", e)
+                    context?.toast(R.string.quest_leave_new_note_create_image_error)
+                } catch (e: IllegalArgumentException) {
+                    Log.e(TAG, "Unable to create file for photo", e)
+                    context?.toast(R.string.quest_leave_new_note_create_image_error)
                 }
-                currentImagePath = photoFile.path
-                takePhotoIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri)
-                startActivityForResult(takePhotoIntent, REQUEST_TAKE_PHOTO)
-            } catch (e: IOException) {
-                Log.e(TAG, "Unable to create file for photo", e)
-                context?.toast(R.string.quest_leave_new_note_create_image_error)
-            } catch (e: IllegalArgumentException) {
-                Log.e(TAG, "Unable to create file for photo", e)
-                context?.toast(R.string.quest_leave_new_note_create_image_error)
             }
         }
     }

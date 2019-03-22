@@ -643,4 +643,7 @@ Por exemplo 1,3 ou 2-6."</string>
 
     <!-- as in: "Where is the metro station?" - "It is underground" -->
     <string name="underground">"subterráneo:"</string>
+    <string name="quest_sidewalk_value_yes">"beirarrúa"</string>
+    <string name="quest_sidewalk_value_no">"sen beirarrúa"</string>
+    <string name="quest_accessible_for_pedestrians_title_prohibited">"Os peóns teñen prohibido camiñar nesta estrada?"</string>
 </resources>

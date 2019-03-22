@@ -13,12 +13,21 @@ class AddProhibitedForPedestriansTest {
 	private val questType = AddProhibitedForPedestrians(mock(OverpassMapDataDao::class.java))
 
 	@Test fun `apply yes answer`() {
-		questType.verifyAnswer(YES, StringMapEntryAdd("foot", "yes"))
+		questType.verifyAnswer(YES, StringMapEntryAdd("foot", "no"))
 	}
 
 	@Test fun `apply no answer`() {
-        questType.verifyAnswer(NO, StringMapEntryAdd("foot", "no"))
+        questType.verifyAnswer(NO, StringMapEntryAdd("foot", "yes"))
 	}
+
+    @Test fun `apply separate sidewalk answer`() {
+        questType.verifyAnswer(
+            mapOf("sidewalk" to "no"),
+            HAS_SEPARATE_SIDEWALK,
+            StringMapEntryAdd("foot", "use_sidepath"),
+            StringMapEntryModify("sidewalk", "no", "separate")
+        )
+    }
 
 	@Test fun `apply living street answer`() {
         questType.verifyAnswer(

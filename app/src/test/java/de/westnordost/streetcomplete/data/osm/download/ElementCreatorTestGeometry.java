@@ -80,9 +80,7 @@ public class ElementCreatorTestGeometry implements WayGeometrySource
 
 	private ElementGeometryCreator createCreator()
 	{
-		ElementGeometryCreator creator = new ElementGeometryCreator();
-		creator.setWayGeometryProvider(this);
-		return creator;
+		return new ElementGeometryCreator(this);
 	}
 
 	@Test public void createForNode()

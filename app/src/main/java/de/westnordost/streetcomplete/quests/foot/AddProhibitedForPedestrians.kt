@@ -23,7 +23,7 @@ class AddProhibitedForPedestrians(o: OverpassMapDataDao) : SimpleOverpassQuestTy
            forth. See https://lists.openstreetmap.org/pipermail/tagging/2019-February/042852.html */
         // only roads where foot=X is not (almost) implied
         "and motorroad != yes " +
-        "and highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified| " +
+        "and highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified " +
         // road probably not developed enough to issue a prohibition for pedestrians
         "and surface ~ ${OsmTaggings.ANYTHING_PAVED.joinToString("|")} " +
         // fuzzy filter for above mentioned situations + developed-enough / non-rural roads
@@ -41,6 +41,10 @@ class AddProhibitedForPedestrians(o: OverpassMapDataDao) : SimpleOverpassQuestTy
             // the question is whether it is prohibited, so YES -> foot=no etc
             YES -> changes.add("foot", "no")
             NO -> changes.add("foot", "yes")
+            HAS_SEPARATE_SIDEWALK -> {
+                changes.add("foot", "use_sidepath")
+                changes.modify("sidewalk", "separate")
+            }
             IS_LIVING_STREET -> changes.modify("highway", "living_street")
         }
     }

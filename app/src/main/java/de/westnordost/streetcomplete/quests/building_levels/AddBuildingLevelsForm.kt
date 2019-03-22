@@ -23,8 +23,8 @@ class AddBuildingLevelsForm : AbstractQuestFormAnswerFragment<BuildingLevelsAnsw
         OtherAnswer(R.string.quest_buildingLevels_answer_multipleLevels) { showMultipleLevelsHint() }
     )
 
-    private val levels get() = levelsInput.text.toString().trim()
-    private val roofLevels get() = roofLevelsInput.text.toString().trim()
+    private val levels get() = levelsInput?.text?.toString().orEmpty().trim()
+    private val roofLevels get() = roofLevelsInput?.text?.toString().orEmpty().trim()
 
     @Inject internal lateinit var favs: LastPickedValuesStore<String>
 

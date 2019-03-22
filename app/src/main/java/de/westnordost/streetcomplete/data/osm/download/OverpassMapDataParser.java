@@ -55,13 +55,10 @@ public class OverpassMapDataParser extends XmlParser implements ApiResponseReade
 
 	private List<LatLon> wayNodes;
 
-	public OverpassMapDataParser(
-			ElementGeometryCreator elementGeometryCreator,
-			MapDataFactory factory)
+	public OverpassMapDataParser(MapDataFactory factory)
 	{
 		this.factory = factory;
-		this.elementGeometryCreator = elementGeometryCreator;
-		this.elementGeometryCreator.setWayGeometryProvider(this);
+		this.elementGeometryCreator = new ElementGeometryCreator(this);
 	}
 
 	void setHandler(MapDataWithGeometryHandler handler)
