@@ -14,7 +14,7 @@ import de.westnordost.streetcomplete.Injector;
 
 public class ChangesetAutoCloserWorker extends Worker
 {
-	@Inject OsmQuestChangesUpload osmQuestChangesUpload;
+	@Inject OsmQuestChangesetsUpload osmQuestChangesUpload;
 
 	public ChangesetAutoCloserWorker(@NonNull Context context, @NonNull WorkerParameters workerParams)
 	{

@@ -84,6 +84,15 @@ public class ElementGeometryDaoTest extends ApplicationDbTestCase
 		assertEquals(geometry, dbGeometry);
 	}
 
+	@Test public void delete()
+	{
+		ElementGeometry geometry = createSimpleGeometry();
+		dao.put(Element.Type.NODE, 0, geometry);
+		dao.delete(Element.Type.NODE, 0);
+
+		assertNull(dao.get(Element.Type.NODE, 0));
+	}
+
 	@Test public void deleteUnreferenced()
 	{
 		Element.Type type = Element.Type.WAY;
