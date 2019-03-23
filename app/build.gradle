@@ -31,7 +31,7 @@ android {
         minSdkVersion 17
         targetSdkVersion 28
         versionCode 1005
-        versionName "10.2"
+        versionName "11.0-beta1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField "String", "MAPZEN_API_KEY", MAPZEN_API_KEY
     }
