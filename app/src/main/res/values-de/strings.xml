@@ -645,4 +645,11 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_sidewalk_value_no">"kein Bürgersteig"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Ist es Fußgängern verboten, hier auf dieser Straße zu gehen?"</string>
     <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Für diese Straße wurde angegeben, dass sie links und rechts keinen Bürgersteig hat. In dem Fall dass es doch einen Bürgersteig gibt, er aber als getrennter Weg angezeigt wird, bitte mit \"Bürgersteig\" antworten."</string>
+    <string name="quest_buildingType_title">"Was für ein Gebäude ist das?"</string>
+    <string name="pref_category_theme">"Design"</string>
+    <string name="pref_title_theme_select">"Design auswählen"</string>
+    <string name="theme_automatic">"Auto"</string>
+    <string name="theme_light">"Hell"</string>
+    <string name="theme_dark">"Dunkel"</string>
+    <string name="theme_system_default">"Systemvorgabe"</string>
 </resources>

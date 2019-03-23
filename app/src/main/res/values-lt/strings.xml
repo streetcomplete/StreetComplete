@@ -634,4 +634,5 @@ Pavyzdžiui 1,3 arba 2-6."</string>
     <string name="quest_motorcycleParkingCapacity_title">"Kiek motociklų gali būti čia priparkuoti?"</string>
     <string name="quest_motorcycleParkingCoveredStatus_title">"Ar ši motociklų stovėjimo vieta dengta (apsaugota nuo lietaus)?"</string>
     <string name="default_disabled_msg_maxspeed">"Šis užduočių tipas išjungtas, nes jūsų paprastai prašoma patikrinti apribojimus visoje gatvėje, ne tik pažymėtoje vietoje. Gali būti labai sunku išspręsti net vieną užduotį."</string>
+    <string name="quest_buildingType_title">"Kokio tipo šis pastatas?"</string>
 </resources>

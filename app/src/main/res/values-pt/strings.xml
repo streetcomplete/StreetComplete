@@ -638,4 +638,9 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
 
     <!-- as in: "Where is the metro station?" - "It is underground" -->
     <string name="underground">"subterrâneo:"</string>
+    <string name="quest_sidewalk_value_yes">"Passeio"</string>
+    <string name="quest_sidewalk_value_no">"Sem passeio"</string>
+    <string name="quest_accessible_for_pedestrians_title_prohibited">"É proibida a circulação pedestre nesta estrada?"</string>
+    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Esta rua foi etiquetada como não tendo passeio em nenhum dos lados. Caso haja passeio, mas a está cartografada como um elemento à parte, responda \"passeio\"."</string>
+    <string name="quest_buildingType_title">"Que tipo de edifício é este?"</string>
 </resources>

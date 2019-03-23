@@ -459,4 +459,5 @@ Përndryshe, mund të shkarkoni një tastierë tjetër në dyqanin e aplikacione
     <string name="quest_housenumber_street_number_optional">"Numër orientimi (opcionale)"</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">"Poashtu rrugë biçiklete në anën tjetër…"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
+    <string name="quest_buildingType_title">"Çfarë lloj ndërtese është kjo?"</string>
 </resources>

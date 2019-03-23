@@ -634,4 +634,9 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
 
     <!-- as in: "Where is the metro station?" - "It is underground" -->
     <string name="underground">"föld alatti:"</string>
+    <string name="quest_sidewalk_value_yes">"járda"</string>
+    <string name="quest_sidewalk_value_no">"nincs járda"</string>
+    <string name="quest_accessible_for_pedestrians_title_prohibited">"A gyalogosok ki vannak tiltva ebből az utcából?"</string>
+    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Ezt azt utat úgy jelölték meg, hogy egyik oldalon sincs járda. Abban az esetben, ha végső soron van járda, csak külön vonalként szerepel a térképen, kérlek a \"járdá\"-t jelöld meg."</string>
+    <string name="quest_buildingType_title">"Ez milyen épület?"</string>
 </resources>

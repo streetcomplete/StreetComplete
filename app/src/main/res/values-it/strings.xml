@@ -640,4 +640,6 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_sidewalk_value_yes">"marciapiede"</string>
     <string name="quest_sidewalk_value_no">"nessun parciapiede"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Ai pedoni è vietato camminare su questa strada?"</string>
+    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"È stato indicato che questa strada non ha un marciapiede su nessuno dei due lati. Nel caso ci sia comunque un marciapiede ma è indicato come percorso separato rispondi \"marciapiede\"."</string>
+    <string name="quest_buildingType_title">"Che tipo di edificio è questo?"</string>
 </resources>

@@ -663,4 +663,5 @@ Por ejemplo 1,3 o 2-6."</string>
     <string name="quest_motorcycleParkingCapacity_title">"¿Cuántas motocicletas se pueden estacionar aquí?"</string>
     <string name="quest_motorcycleParkingCoveredStatus_title">"¿Está este estacionamiento cubierto (protegido de la lluvia)?"</string>
     <string name="default_disabled_msg_maxspeed">"Este tipo de pregunta viene desactivada de serie porque por lo general habría que buscar señales de límite de velocidad en toda la calle, no solo de la sección resaltada. Puede ser demasiado trabajo para completar una sola tarea."</string>
+    <string name="quest_buildingType_title">"¿Qué tipo de edificio es?"</string>
 </resources>

@@ -410,4 +410,5 @@ Podatki, ki jih vnesete tu, bodo dodani v OpenStreetMap v vašem imenu, brez pot
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
     <string name="quest_railway_crossing_barrier_title">"Kako je zaščiten ta prehod železniške proge?"</string>
     <string name="quest_railway_crossing_barrier_none">"Ni zaščite"</string>
+    <string name="quest_buildingType_title">"Kakšne vrste zgradba je to?"</string>
 </resources>

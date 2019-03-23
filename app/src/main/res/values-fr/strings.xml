@@ -702,4 +702,6 @@ Partiellement signifie qu’un fauteuil roulant peut entrer et utiliser les toil
     <string name="quest_sidewalk_value_yes">"trottoir"</string>
     <string name="quest_sidewalk_value_no">"pas de trottoir"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Cette voie est-elle interdite aux piétons ?"</string>
+    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Cette rue a été notée en tant que ne possédant pas de trottoirs sur aucun des cotés. Dans le cas qu’il y aurait un trottoir mais qu’il soit indiqué comme une direction séparée, veuillez répondre ¨trottoir¨."</string>
+    <string name="quest_buildingType_title">"Quel est le type de cet édifice ?"</string>
 </resources>

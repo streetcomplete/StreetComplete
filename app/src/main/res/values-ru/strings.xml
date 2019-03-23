@@ -686,4 +686,5 @@
     <string name="default_disabled_msg_maxspeed">"Это задание выключено по умолчанию, потому что обычно требует проверить всю улицу на знаки ограничения скорости, не только подсвеченный сегмент. Это может быть слишком долгим для одного задания."</string>
     <string name="pref_title_quests_restore_hidden">"Показать скрытые квесты"</string>
     <string name="restore_hidden_success">"Показано %d скрытых квестов"</string>
+    <string name="quest_buildingType_title">"Какого типа это здание?"</string>
 </resources>

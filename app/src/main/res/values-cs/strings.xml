@@ -694,4 +694,6 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_sidewalk_value_yes">"chodník"</string>
     <string name="quest_sidewalk_value_no">"bez chodníku"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Mají chodci zakázáno chodit zde po této cestě?"</string>
+    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Tato ulice/cesta byla označena jako že nemá chodník na žádné straně. Pokud ale chodník má a ten je označen jako samostatná cesta, vyberte prosím odpověď „chodník“."</string>
+    <string name="quest_buildingType_title">"Jakého druhu je tato stavba?"</string>
 </resources>

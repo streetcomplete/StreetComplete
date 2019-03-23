@@ -671,4 +671,5 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="quest_traffic_signals_button_title">"Má tento semafor tlačidlo na vyžiadanie zelenej?"</string>
     <string name="quest_motorcycleParkingCapacity_title">"Koľko motoriek tu môže parkovať?"</string>
     <string name="quest_motorcycleParkingCoveredStatus_title">"Je toto parkovisko pre motorky zastrešené (chránené pred dažďom)?"</string>
+    <string name="quest_buildingType_title">"Aký je to typ budovy?"</string>
 </resources>

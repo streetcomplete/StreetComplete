@@ -662,4 +662,5 @@ OpenStreetMap不接受匿名编辑，您需要登录您的OpenStreetMap帐号。
     <string name="privacy_html_image_upload2">"&lt;p&gt;你附加在注记的照片会上传到我的伺服器，有一天会在注记解决之后删除，meta-data 会在上传前移除。&lt;/p&gt;"</string>
     <string name="action_deselect_all">"取消选取全部"</string>
     <string name="quest_buildingType_retail_description">"包含有餐厅、咖啡厅等的建筑"</string>
+    <string name="quest_buildingType_title">"这栋建筑物的种类是?"</string>
 </resources>

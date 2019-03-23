@@ -492,4 +492,5 @@ Aksi takdirde, uygulama mağazasında başka bir klavye indirebilirsiniz. Birço
     <string name="quest_maxheight_answer_noSign_question">"En yüksek kamyonların bile (en az yaklaşık 4,5 metre / 15 yükseklik) geçmesi için yeterince yer var mı?"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Bu yükseklik mantıksız görünüyor. Bunun doğru olduğundan emin misin?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
+    <string name="quest_buildingType_title">"Bu nasıl bir bina?"</string>
 </resources>

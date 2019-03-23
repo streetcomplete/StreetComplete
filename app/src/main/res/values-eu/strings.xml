@@ -646,4 +646,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_sidewalk_value_yes">"espaloia"</string>
     <string name="quest_sidewalk_value_no">"espaloirik ez"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Oinezkoek debekatuta al dute bide honetan ibiltzea?"</string>
+    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Kale hau alde bietan espaloirik gabeko gisa etiketatu da. Oinezkoen bidea egon badago, baina aparteko bide gisa adierazia, erantzun \"espaloia\"."</string>
+    <string name="quest_buildingType_title">"Ze motako eraikina da hau?"</string>
 </resources>

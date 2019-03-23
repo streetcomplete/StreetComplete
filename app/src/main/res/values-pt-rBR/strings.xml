@@ -683,4 +683,5 @@ Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas barr
     <string name="quest_motorcycleParkingCapacity_title">"Quantas motocicletas podem estacionar aqui?"</string>
     <string name="quest_motorcycleParkingCoveredStatus_title">"O estacionamento de motocicletas é coberto (protegido da chuva)?"</string>
     <string name="default_disabled_msg_maxspeed">"Este tipo de missão está desligado por padrão porque normalmente é necessário verificar toda a rua por placas de limite de velocidade, não apenas o trecho selecionado.  Isso às vezes significa uma longa caminhada para resolver uma única missão."</string>
+    <string name="quest_buildingType_title">"Que tipo de edifício é esse?"</string>
 </resources>
