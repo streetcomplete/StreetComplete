@@ -9,9 +9,12 @@ import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 class AddBikeParkingCover(o: OverpassMapDataDao) : SimpleOverpassQuestType<Boolean>(o) {
 
     override val tagFilters = """
-        nodes, ways with amenity=bicycle_parking and access !~ private|no and !covered
+        nodes, ways with amenity=bicycle_parking and access !~ private|no
         and bicycle_parking !~ shed|lockers|building
     """
+    //maybe use something more generic, rather than assuming that single tag is always added?
+    override val addedKey = "covered"
+    override val addedValues = {true: "yes", false: "no"}
     override val commitMessage = "Add bicycle parkings cover"
     override val icon = R.drawable.ic_quest_bicycle_parking_cover
 
@@ -19,8 +22,5 @@ class AddBikeParkingCover(o: OverpassMapDataDao) : SimpleOverpassQuestType<Boole
         R.string.quest_bicycleParkingCoveredStatus_title
 
     override fun createForm() = YesNoQuestAnswerFragment()
-
-    override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
-        changes.add("covered", if (answer) "yes" else "no")
-    }
+    override fun createRepeatedSurveyForm() = YesNoRepeatedQuestAnswerFragment(addedKey, addedValues)
 }
