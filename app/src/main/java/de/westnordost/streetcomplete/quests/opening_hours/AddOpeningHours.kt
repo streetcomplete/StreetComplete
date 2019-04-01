@@ -38,7 +38,7 @@ class AddOpeningHours (o: OverpassMapDataDao) : SimpleOverpassQuestType<OpeningH
                 "adult_gaming_centre", "tanning_salon"
             ),
             "office" to arrayOf(
-                "insurance", "government", "estate_agent", "travel_agent"
+                "insurance", "government", "estate_agent", "travel_agent", "religion"
             )
         ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString(" or ") +
         " )" +
