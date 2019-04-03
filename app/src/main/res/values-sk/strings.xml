@@ -19,7 +19,7 @@
     <string name="pref_title_map_cache">"Veľkosť vyrovnávacej pamäte"</string>
     <string name="map_btn_gps_tracking">"Sledovať ma"</string>
     <string name="map_attribution_mapzen">"Poháňa %s"</string>
-    <string name="map_attribution_osm">"© OpenStreetMap prispievatelia"</string>
+    <string name="map_attribution_osm">"© Prispievatelia OpenStreetMap"</string>
     <string name="quest_generic_otherAnswers">"Ostatné odpovede..."</string>
     <string name="quest_generic_answer_notApplicable">"Nedá sa povedať…"</string>
     <string name="quest_generic_confirmation_title">"Ste si istý?"</string>
@@ -37,8 +37,6 @@
     <string name="quest_streetName_answer_noName_confirmation_description">"Ceduľa s názvom ulice niekedy môžu byť iba na jednom konci ulice. Pamätajte, že bočné ulice patriace k väčšej ulici nemusia mať ceduľu s menom. Ulice s domami sú obvykle pomenované."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Ak je možné napísať názov bez skratky, tak by mal byť rozpísany. Veľa bežných skratiek bude rozpísaných počas písania, ale asi nie všetky."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Neobsahuje skratku"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_name_title">"Aké má %s otváracie hodiny?"</string>
     <string name="quest_openingHours_start_time">"čas otvorenia"</string>
     <string name="quest_openingHours_end_time">"čas zatvorenia"</string>
@@ -79,13 +77,9 @@
     <string name="about_title_license">"Licencia"</string>
     <string name="about_summary_license">"GNU General Public License "</string>
     <string name="offline">"Ste offline"</string>
-
-    <!-- Fuzzy -->
     <string name="confirmation_authorize_now">"Aby sa aplikovali vaše odpovede, je treba autorizovať sa OSM účtom. Autorizovať teraz?"</string>
     <string name="not_authorized">"Neautorizované"</string>
-
-    <!-- Fuzzy -->
-    <string name="version_banned_message">"Z tejto verzie StreetComplete sa nedajú nahrávať žiadne odpovede! Prosím aktualizujte aplikáciu!"</string>
+    <string name="version_banned_message">"Táto verzia StreetComplete je príliš stará. Prosím aktualizujte aplikáciu!"</string>
     <string name="no_gps_no_quests">"Zapnite lokalizáciu, ak chcete hľadať úlohy okolo vás"</string>
     <string name="nothing_more_to_download">"Žiadne ďalšie úlohy nie sú dostupné"</string>
     <string name="later">"Neskôr"</string>
@@ -111,11 +105,7 @@
     <string name="pref_title_sync">"Auto synchronizácia"</string>
     <string name="map_btn_zoom_out">"Oddialiť"</string>
     <string name="map_btn_zoom_in">"Priblížiť"</string>
-
-    <!-- Fuzzy -->
-    <string name="privacy_html">"
-Vlado Jendrol now
-&lt;p&gt;Á, niekto kto sa zaujíma o súkromie, paráda! Myslím, že máme pre Vás iba dobre správy:&lt;/p&gt;
+    <string name="privacy_html">"&lt;p&gt;Á, niekto kto sa zaujíma o súkromie, paráda! Myslím, že máme pre Vás iba dobre správy:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Priame príspevky&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 Hlavné je uvedomiť si, že pomocou tejto aplikácie skutočne a priamo prispievate do OpenStreetMap.&lt;br/&gt;
@@ -134,12 +124,6 @@ Vaša poloha sa používa iba pre automatické vyhľadávanie \"úloh\" vo Vaše
 &lt;p&gt;
 Ako už bolo spomenuté, aplikácia priamo komunikuje s OSM infraštruktúrou. Čiže s &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass API&lt;/a&gt; pre sťahovanie \"úloh\" (ktoré je anonymné) a s &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API&lt;/a&gt; pre nahrávanie zmien.&lt;br/&gt;
 Pred odoslaním zmien však aplikácia skontroluje pomocou &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;jednoduchého textového súboru&lt;/a&gt; na mojom serveri či jej nebolo zakázané nahrávanie zmien. Toto je preventívne opatrenie zabraňujúce verziám aplikácie, v ktorých sa našli kritické chyby, aby poškodili OSM dáta.&lt;br/&gt;
-&lt;/p&gt;
-&lt;p&gt;
-Pre zobrazenie mapy sa sťahujú vektorové dlaždice z &lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt;Mapzen vector tile service&lt;/a&gt;, , ktorá je anonymná. Služba zaznamenáva žiadosti o dlaždice aby vedela, ktoré oblasti sú populárne a mohla ich pre zvýšenie výkonu ukladať do medzipamäte. Ich platforma tiež zaznamenáva IP adresy a ako hosting používa Amazon, takže sa na ňu vzťahujú pravidlá Amazonu.
-&lt;/p&gt;
-&lt;p&gt;
-(&lt;i&gt;Toto zatiaľ nie je implementované, iba Vás chcem informovať čo sa chystá!:&lt;/i&gt;) Dáta zobrazené v rebríčku najlepších a v profile sú agregované z verejne dostupných informácií na OpenStreetMap. Tieto dáta nepochádzajú z tejto aplikácie, ale v podstate z verejnej histórie OSM používateľov.
 &lt;/p&gt;"</string>
     <string name="autosync_on">"Zapnuté"</string>
     <string name="autosync_only_on_wifi">"Iba na Wifi"</string>
@@ -162,8 +146,6 @@ Pre zobrazenie mapy sa sťahujú vektorové dlaždice z &lt;a href=\"https://map
     <string name="quest_surface_value_sett">"Dlažobné kocky"</string>
     <string name="quest_surface_value_wood">"Drevo"</string>
     <string name="quest_placeName_title">"Aký je názov tohto miesta?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sidewalk_title">"Je pri ceste chodník?"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Kde je táto ulica?"</string>
     <string name="quest_cyclewaySurface_title">"Aký povrch má cyklocesta v tomto mieste?"</string>
@@ -230,31 +212,21 @@ Zadané informácie sa potom priamo pridávajú do OpenStreetMap vo vašom mene 
     <string name="quest_manySports_confirmation_specific">"Výhradne tieto"</string>
     <string name="quest_manySports_confirmation_generic">"Všeobecné použitie"</string>
     <string name="quest_sport_manySports_confirmation_title">"Vybrali ste viacero športov"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_busStopShelter_name_title">"Má autobusová zastávka %s prístrešok?"</string>
     <string name="quest_toiletsFee_title">"Požadujú na tejto toalete poplatok?"</string>
     <string name="quest_tactilePaving_title_bus">"Má táto autobusová zastávka hmatovú dlažbu?"</string>
     <string name="quest_tactilePaving_title_crosswalk">"Má tento prechod hmatovú dlažbu na oboch stranách?"</string>
     <string name="quest_source_dialog_title">"Naozaj ste to overili na mieste?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_name_bus">"Má autobusová zastávka %s hmatovú dlažbu?"</string>
     <string name="quest_source_dialog_note">"Mali by byť pridávané iba informácie získané behom prieskumu."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Je toto parkovisko pre bicykle kryté (chránené pred dažďom)?"</string>
     <string name="dialog_session_dont_show_again">"Nezobrazovať znova pre túto reláciu"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetSurface_name_title">"Aký povrch má v tomto mieste cesta %s?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Toto obmedzenie rýchlosti vyzerá nepravdepodobne."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Naozaj tu nie je značka obmedzujúca rýchlosť?"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">"Pozreli ste sa na oba konce ulice? Ak pozdĺž cesty nie je žiadna značka obmedzujúca rýchlosť na zvýraznenej časti, platí rýchlosť podľa zákona."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Áno, bez značky."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Cesty v obciach (mestá a husto obývané oblasti) majú iné obmedzenia rýchlosti ako cesty mimo obcí."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_urbanOk">"V meste"</string>
     <string name="quest_maxspeed_answer_noSign_ruralOk">"Mimo mesta"</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">"Ak je na križovatke s hlavnou ulicou takáto značka, nenájdete v zóne ďalšie samostatné značky, pretože uvedené obmedzenie rýchlosti na značke sa vzťahuje na celú zónu."</string>
@@ -264,8 +236,6 @@ Zadané informácie sa potom priamo pridávajú do OpenStreetMap vo vašom mene 
     <string name="quest_sport_paddle_tennis">"Pádlový tenis"</string>
     <string name="quest_sport_gaelic_games">"Galské hry"</string>
     <string name="quest_sport_sepak_takraw">"Sepak Takraw"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_name_title">"Má %s bezbariérový prístup?"</string>
     <string name="quest_wheelchairAccess_limited">"Čiastočne"</string>
     <string name="quest_bikeParkingCapacity_hint">"Nezabudnite, že pri väčšine bežných stojanov sa dajú na parkovanie bicyklov použiť obe strany."</string>
@@ -274,24 +244,12 @@ Zadané informácie sa potom priamo pridávajú do OpenStreetMap vo vašom mene 
     <string name="quest_wheelchairAccess_subway_entrance_title">"Má tento vstup do metra bezbariérový prístup?"</string>
     <string name="quest_wheelchairAccess_railway_station_title">"Má táto železničná stanica bezbariérový prístup?"</string>
     <string name="quest_wheelchairAccess_location_title">"Má toto miesto bezbariérový prístup?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_bus_station_name_title">"Má autobusová zastávka %s bezbariérový prístup?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_subway_entrance_name_title">"Má vstup do metra %s bezbariérový prístup?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_railway_station_name_title">"Má železničná stanica %s bezbariérový prístup?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_location_name_title">"Má miesto %s bezbariérový prístup?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_business">"Čiastočne znamená, že pri vchode nie je viac ako jeden schod a väčšina izieb vo vnútri je bezbariérová."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"Čiastočne znamená, že tu nie je viac ako jeden schod brániaci prístupu."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Je v názve %s skratka?"</string>
     <string name="quest_baby_changing_table_toilets_title">"Má táto toaleta prebaľovací stolík?"</string>
 
@@ -302,8 +260,8 @@ Zadané informácie sa potom priamo pridávajú do OpenStreetMap vo vašom mene 
     <string name="overground_recycling_container">"Kontajner"</string>
     <string name="underground_recycling_container">"Podzemný kontajner"</string>
     <string name="quest_generic_error_a_field_empty">"Nevyplnili ste políčko"</string>
-    <string name="quest_streetName_menuItem_language_simple">"%1$s - %2$s"</string>
-    <string name="quest_streetName_menuItem_language_native">"%1$s - %2$s (%3$s)"</string>
+    <string name="quest_streetName_menuItem_language_simple">"%1$s – %2$s"</string>
+    <string name="quest_streetName_menuItem_language_native">"%1$s – %2$s (%3$s)"</string>
     <string name="quest_streetName_answer_cantType">"Nemôžem napísať znak na značke"</string>
 
     <!-- Fuzzy -->

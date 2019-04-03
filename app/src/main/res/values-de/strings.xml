@@ -403,7 +403,7 @@ Andernfalls kannst Du eine alternative Tastatur im App Store herunterladen. Beli
     <string name="quest_hasFeature_only">"Ausschließlich"</string>
     <string name="quest_dietType_explanation_vegan">"Veganes Essen enthält keine Tierprodukte (kein Fleisch, keine Milchprodukte, keine Eier, …)."</string>
     <string name="quest_dietType_explanation_vegetarian">"Vegetarisches Essen enthält kein Fleisch."</string>
-    <string name="quest_dietType_explanation">"Nur mit \"Ja\" antworten, wenn es hier ordentliche Alternativen für diese Ernährung gibt, Vorspeisen usw. zählen nicht."</string>
+    <string name="quest_dietType_explanation">"Nur mit „Ja“ antworten, wenn es hier ordentliche Alternativen für diese Ernährung gibt, Vorspeisen usw. zählen nicht."</string>
     <string name="quest_carWashType_title">"Was für eine Autowaschanlage ist das?"</string>
     <string name="quest_carWashType_automated">"Automatisiert"</string>
     <string name="quest_carWashType_selfService">"Selbstbedienung"</string>
@@ -644,7 +644,7 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_sidewalk_value_yes">"Bürgersteig"</string>
     <string name="quest_sidewalk_value_no">"kein Bürgersteig"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Ist es Fußgängern verboten, hier auf dieser Straße zu gehen?"</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Für diese Straße wurde angegeben, dass sie links und rechts keinen Bürgersteig hat. In dem Fall dass es doch einen Bürgersteig gibt, er aber als getrennter Weg angezeigt wird, bitte mit \"Bürgersteig\" antworten."</string>
+    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Für diese Straße wurde angegeben, dass sie links und rechts keinen Bürgersteig hat. Sollte es doch einen Bürgersteig geben, er aber als separater Weg angezeigt wird, bitte mit „Bürgersteig“ antworten."</string>
     <string name="quest_buildingType_title">"Was für ein Gebäude ist das?"</string>
     <string name="pref_category_theme">"Design"</string>
     <string name="pref_title_theme_select">"Design auswählen"</string>

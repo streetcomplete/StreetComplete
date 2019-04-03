@@ -12,7 +12,7 @@
     <string name="pref_title_authorization">"Kirjaudu OSM tiliin"</string>
     <string name="pref_title_not_authorized_summary">"Ei vielä kirjauduttu"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
-    <string name="pref_tilecache_size_message">"Ulkoisen tallennustilan määrä megabiteissä varattuna karttatiilien välimuistiksi"</string>
+    <string name="pref_tilecache_size_message">"Ulkoisesta tallennustilasta varattava tila karttatiilien välimuistiksi megatavuissa"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Näytä kaikki huomautukset"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Näytetään huomautukset jotka eivät ole kysymysmuotoisia"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Sivuutetaan huomautukset jotka eivät ole kysymysmuotoisia"</string>
@@ -31,13 +31,13 @@
     <string name="quest_leave_new_note_title">"Jätä huomautus sen sijaan?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_leave_new_note_description">"Voit jättää julkisen huomautuksen tähän sijaintiin johon muut kartoittajat voivat kommentoida ja toivottavasti ratkaista:"</string>
+    <string name="quest_leave_new_note_description">"Voit jättää julkisen huomautuksen tähän sijaintiin, jota muut kartoittajat voivat kommentoida ja toivottavasti ratkaista:"</string>
     <string name="quest_leave_new_note_yes">"OK"</string>
     <string name="quest_leave_new_note_no">"Ei, piilota"</string>
     <string name="quest_streetName_title">"Mikä on tämän tien nimi?"</string>
-    <string name="quest_streetName_description">"kuten kirjoitettu tienviitassa, lyhennökset laajennettuna"</string>
+    <string name="quest_streetName_description">"kuten kirjoitettu tienviitassa, lyhennykset laajennettuna:"</string>
     <string name="quest_streetName_answer_noName_confirmation_description">"Joskus tienviitta on vain tien päässä. Huomioi myös ettei sivuteillä, jotka alkavat isommasta tiestä, ole välttämättä ylimääräisiä tienviittoja. Yleensä kaikilla teillä joiden varressa on taloja on myös nimi."</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Jos nimi pystytään sanomaan ilman lyhennöstä, se myös kirjoitetaan ilman. Monet yleiset lyhenteet laajennetaan automaattisesti kirjoitettaessa, muttei kaikkia."</string>
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Jos nimi pystytään sanomaan ilman lyhennystä, se myös kirjoitetaan ilman. Monet yleiset lyhenteet laajennetaan automaattisesti kirjoitettaessa, muttei kaikkia."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Ei lyhennettä"</string>
 
     <!-- Fuzzy -->
@@ -388,8 +388,8 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
     <string name="cannot_find_bbox_or_reduce_tilt">"Tutkaaminen tässä ei onnistu. Kokeile lähentää vielä lisää tai kallista karttaa vähemmän."</string>
     <string name="quest_crossing_type_title">"Minkälainen ylityspaikka tämä on?"</string>
     <string name="quest_crossing_type_signals">"Ylityspaikassa liikennevalot"</string>
-    <string name="quest_crossing_type_uncontrolled">"Kontrolloimaton ylityspaikka"</string>
-    <string name="quest_crossing_type_unmarked">"Ylityspaikassa tiemerkintöjä"</string>
+    <string name="quest_crossing_type_uncontrolled">"Valvomaton ylityspaikka"</string>
+    <string name="quest_crossing_type_unmarked">"Ylityspaikassa ei ole tiemerkintöjä"</string>
     <string name="compass_north_one_letter">"P"</string>
     <string name="action_undo">"Kumoa"</string>
     <string name="no_changes_to_undo">"Ei kumottavaa"</string>
@@ -676,7 +676,7 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
     <string name="quest_tracktype_grade3">"Yhdistelmä"</string>
     <string name="quest_tracktype_grade4">"Enimmäkseen pehmeää"</string>
     <string name="quest_tracktype_grade5">"Pehmeä"</string>
-    <string name="quest_building_underground_name_title">"Onko % kokonaan maanalainen?"</string>
+    <string name="quest_building_underground_name_title">"Onko %s kokonaan maanalainen?"</string>
     <string name="quest_building_underground_title">"Onko tämä rakennus kokonaan maanalainen?"</string>
     <string name="quest_traffic_signals_sound_title">"Onko täällä äänimerkkiä sokeille? "</string>
     <string name="quest_wheelchairAccess_limited_description_outside">"Osittain tarkoittaa että paikassa on vain yksi askelma, jotta paikkaan voi kulkea."</string>
@@ -685,5 +685,26 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
     <string name="quest_motorcycleParkingCapacity_title">"Kuinka monta moottoripyörää tänne mahtuu?"</string>
     <string name="quest_motorcycleParkingCoveredStatus_title">"Onko tämä moottoripyöräpysäkki katoksellinen (suojattu sateelta)?"</string>
     <string name="default_disabled_msg_maxspeed">"Tämä kysymystyyppi on oletuksena pois käytöstä, koska yleensä pitää"</string>
+    <string name="pref_title_quests_restore_hidden">"Palauta piilotetut kyselyt"</string>
+    <string name="restore_hidden_success">"Palautettiin %d piilotettua kyselyä"</string>
+
+    <!-- caution: This is not necessarily the floor and level=0 is not necessarily at street level
+        as it may follow the numbering scheme of the building operator. Try to use a generic wording
+        that does not carry an implicit meaning of where it is located in respect to the ground floor.
+        The context is usually shopping centres, train stations or airport terminals -->
+    <string name="on_level">"kerroksessa %s:"</string>
+
+    <!-- as in: "Where is the metro station?" - "It is underground" -->
+    <string name="underground">"maan alla:"</string>
+    <string name="quest_sidewalk_value_yes">"Jalkakäytävä"</string>
+    <string name="quest_sidewalk_value_no">"Ei jalkakäytävää"</string>
+    <string name="quest_accessible_for_pedestrians_title_prohibited">"Onko jalankulku kielletty tällä kadulla?"</string>
+    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Tämä katu on merkitty kaduksi, jolla ei ole jalkakäytävää kummallakaan puolella. Siinä tapauksessa, että kadulla kuitenkin on jalkakäytävä, mutta se näytetään erillisenä tienä, vastaa \"jalkakäytävä\"."</string>
     <string name="quest_buildingType_title">"Millainen rakennus tämä on?"</string>
+    <string name="pref_category_theme">"Teema"</string>
+    <string name="pref_title_theme_select">"Valitse teema"</string>
+    <string name="theme_automatic">"Automaattinen"</string>
+    <string name="theme_light">"Vaalea"</string>
+    <string name="theme_dark">"Tumma"</string>
+    <string name="theme_system_default">"Järjestelmän oletus"</string>
 </resources>

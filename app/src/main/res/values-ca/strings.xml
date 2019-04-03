@@ -645,4 +645,10 @@ Per example 1,3 o 2-6."</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Els vianants tenen prohibit caminar per aquesta via en aquest punt?"</string>
     <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Aquest carrer es va etiquetar sense vorera en cap costat. En cas que hi hagi una vorera, però es mostri com a una via separada, respongueu «vorera»"</string>
     <string name="quest_buildingType_title">"Quin tipus d'edifici és?"</string>
+    <string name="pref_category_theme">"Tema"</string>
+    <string name="pref_title_theme_select">"Seleccioneu un tema"</string>
+    <string name="theme_automatic">"Automàtic"</string>
+    <string name="theme_light">"Clar"</string>
+    <string name="theme_dark">"Fosc"</string>
+    <string name="theme_system_default">"Predeterminat del sistema"</string>
 </resources>

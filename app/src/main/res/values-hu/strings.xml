@@ -639,4 +639,10 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="quest_accessible_for_pedestrians_title_prohibited">"A gyalogosok ki vannak tiltva ebből az utcából?"</string>
     <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Ezt azt utat úgy jelölték meg, hogy egyik oldalon sincs járda. Abban az esetben, ha végső soron van járda, csak külön vonalként szerepel a térképen, kérlek a \"járdá\"-t jelöld meg."</string>
     <string name="quest_buildingType_title">"Ez milyen épület?"</string>
+    <string name="pref_category_theme">"Téma"</string>
+    <string name="pref_title_theme_select">"Téma kiválasztása"</string>
+    <string name="theme_automatic">"Automatikus"</string>
+    <string name="theme_light">"Világos"</string>
+    <string name="theme_dark">"Sötét"</string>
+    <string name="theme_system_default">"Rendszer alapértelmezett"</string>
 </resources>

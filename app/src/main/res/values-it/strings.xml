@@ -642,4 +642,10 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Ai pedoni è vietato camminare su questa strada?"</string>
     <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"È stato indicato che questa strada non ha un marciapiede su nessuno dei due lati. Nel caso ci sia comunque un marciapiede ma è indicato come percorso separato rispondi \"marciapiede\"."</string>
     <string name="quest_buildingType_title">"Che tipo di edificio è questo?"</string>
+    <string name="pref_category_theme">"Tema"</string>
+    <string name="pref_title_theme_select">"Seleziona tema"</string>
+    <string name="theme_automatic">"Automatico"</string>
+    <string name="theme_light">"Chiaro"</string>
+    <string name="theme_dark">"Scuro"</string>
+    <string name="theme_system_default">"Predefinito di sistema"</string>
 </resources>

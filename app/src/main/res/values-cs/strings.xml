@@ -180,7 +180,7 @@ StreetComplete je plně přeložená do češtiny a je vyvíjena s důrazem na t
     <string name="crash_title">"Ale ne, aplikace StreetComplete minule spadla!"</string>
     <string name="crash_compose_email">"Napsat email"</string>
     <string name="no_email_client">"Nemáte nainstalovaný poštovní klient."</string>
-    <string name="pref_title_keep_screen_on">"Nezhasínat Displej"</string>
+    <string name="pref_title_keep_screen_on">"Nezhasínat displej"</string>
     <string name="download_server_error">"Během vyhledávání úkolů došlo k chybě připojení. Zkuste to znovu později."</string>
     <string name="upload_server_error">"Během nahrávání odpovědí došlo k chybě připojení. Zkuste to znovu později."</string>
     <string name="quest_generic_hasFeature_yes">"Ano"</string>
@@ -696,4 +696,10 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Mají chodci zakázáno chodit zde po této cestě?"</string>
     <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Tato ulice/cesta byla označena jako že nemá chodník na žádné straně. Pokud ale chodník má a ten je označen jako samostatná cesta, vyberte prosím odpověď „chodník“."</string>
     <string name="quest_buildingType_title">"Jakého druhu je tato stavba?"</string>
+    <string name="pref_category_theme">"Vzhled"</string>
+    <string name="pref_title_theme_select">"Vyberte vzhled"</string>
+    <string name="theme_automatic">"Automaticky"</string>
+    <string name="theme_light">"Světlý"</string>
+    <string name="theme_dark">"Tmavý"</string>
+    <string name="theme_system_default">"Výchozí vzhled systému"</string>
 </resources>

@@ -694,5 +694,12 @@
     <string name="quest_sidewalk_value_yes">"پیاده‌رو"</string>
     <string name="quest_sidewalk_value_no">"بدون پیاده‌رو"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"آیا پیاده‌روی عابران در این جاده ممنوع است؟"</string>
+    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"این خیابان برای نداشتن پیاده رو در هر دو طرف برچسب‌گذاری شده است. در صورتی که پیاده رو وجود دارد، ولی به صورت جداگانه نمایش داده شده است، لطفا \"پیاده‌راه\" را مشخص نمایید."</string>
     <string name="quest_buildingType_title">"نوع این ساختمان چیست؟"</string>
+    <string name="pref_category_theme">"زمینه"</string>
+    <string name="pref_title_theme_select">"انتخاب زمینه"</string>
+    <string name="theme_automatic">"خودکار"</string>
+    <string name="theme_light">"روشن"</string>
+    <string name="theme_dark">"تیره"</string>
+    <string name="theme_system_default">"پیشفرض سامانه"</string>
 </resources>
