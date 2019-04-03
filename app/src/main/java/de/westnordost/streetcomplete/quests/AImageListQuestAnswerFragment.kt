@@ -16,6 +16,12 @@ import kotlinx.android.synthetic.main.quest_generic_list.*
 
 /**
  * Abstract class for quests with a list of images and one or several to select.
+ *
+ * I is the type of each item in the image list (a simple model object). In MVC, this would
+ * be the view model.
+ *
+ * T is the type of the answer object (also a simple model object) created by the quest 
+ * form and consumed by the quest type. In MVC, this would be the model.
  */
 abstract class AImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnswerFragment<T>() {
 
