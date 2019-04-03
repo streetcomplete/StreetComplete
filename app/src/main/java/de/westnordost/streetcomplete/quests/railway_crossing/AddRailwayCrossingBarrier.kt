@@ -32,7 +32,6 @@ class AddRailwayCrossingBarrier(private val overpassMapDataDao: OverpassMapDataD
         val bboxFilter = OverpassQLUtil.getGlobalOverpassBBox(bbox)
         return bboxFilter + """
    way["highway"]["access"~"^private|no$"];
-   (._;>;);
    node(w) -> .private;
    node["railway"="level_crossing"][!"crossing:barrier"]->.crossings;
    (.crossings; - .private;)->.public;
