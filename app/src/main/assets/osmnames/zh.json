@@ -1,0 +1,784 @@
+{
+    "presets": {
+        "address": {
+            "name": "\u5730\u5740"
+        },
+        "aeroway": {
+            "name": "\u673a\u573a\u76f8\u5173\u9053\u8def"
+        },
+        "aeroway/aerodrome": {
+            "name": "\u673a\u573a"
+        },
+        "aeroway/apron": {
+            "name": "\u505c\u673a\u576a"
+        },
+        "aeroway/hangar": {
+            "name": "\u673a\u5e93"
+        },
+        "aeroway/helipad": {
+            "name": "\u76f4\u5347\u673a\u573a"
+        },
+        "aeroway/runway": {
+            "name": "\u8dd1\u9053"
+        },
+        "aeroway/taxiway": {
+            "name": "\u6ed1\u884c\u9053"
+        },
+        "amenity": {
+            "name": "\u4fbf\u5229\u8bbe\u65bd"
+        },
+        "amenity/atm": {
+            "name": "\u81ea\u52a8\u67dc\u5458\u673a\uff08ATM\uff09\u3002"
+        },
+        "amenity/bank": {
+            "name": "\u94f6\u884c"
+        },
+        "amenity/bar": {
+            "name": "\u9152\u5427"
+        },
+        "amenity/bench": {
+            "name": "\u957f\u51f3"
+        },
+        "amenity/bicycle_parking": {
+            "name": "\u81ea\u884c\u8f66\u505c\u653e\u5904"
+        },
+        "amenity/bicycle_rental": {
+            "name": "\u81ea\u884c\u8f66\u79df\u8d41\u5904"
+        },
+        "amenity/cafe": {
+            "name": "\u5496\u5561"
+        },
+        "amenity/car_wash": {
+            "name": "\u6d17\u8f66"
+        },
+        "amenity/cinema": {
+            "name": "\u7535\u5f71\u9662"
+        },
+        "amenity/courthouse": {
+            "name": "\u6cd5\u9662"
+        },
+        "amenity/embassy": {
+            "name": "\u4f7f\u9986"
+        },
+        "amenity/fast_food": {
+            "name": "\u5feb\u9910"
+        },
+        "amenity/fire_station": {
+            "name": "\u6d88\u9632\u7ad9"
+        },
+        "amenity/fountain": {
+            "name": "\u55b7\u6cc9"
+        },
+        "amenity/fuel": {
+            "name": "\u52a0\u6cb9\u7ad9"
+        },
+        "amenity/grave_yard": {
+            "name": "\u5893\u5730"
+        },
+        "amenity/library": {
+            "name": "\u56fe\u4e66\u9986"
+        },
+        "amenity/marketplace": {
+            "name": "\u5e02\u573a"
+        },
+        "amenity/place_of_worship": {
+            "name": "\u793c\u62dc\u573a\u6240"
+        },
+        "amenity/police": {
+            "name": "\u8b66\u5bdf\u5c40"
+        },
+        "amenity/post_box": {
+            "name": "\u90ae\u7bb1"
+        },
+        "amenity/post_office": {
+            "name": "\u90ae\u5c40"
+        },
+        "amenity/pub": {
+            "name": "\u9152\u9986"
+        },
+        "amenity/restaurant": {
+            "name": "\u9910\u9986"
+        },
+        "amenity/swimming_pool": {
+            "name": "\u6e38\u6cf3\u6c60"
+        },
+        "amenity/telephone": {
+            "name": "\u7535\u8bdd"
+        },
+        "amenity/theatre": {
+            "name": "\u5267\u9662"
+        },
+        "amenity/toilets": {
+            "name": "\u5395\u6240"
+        },
+        "amenity/townhall": {
+            "name": "\u5e02\u653f\u5e9c"
+        },
+        "amenity/waste_basket": {
+            "name": "\u5783\u573e\u7bb1"
+        },
+        "area": {
+            "name": "\u9762"
+        },
+        "barrier": {
+            "name": "\u5c4f\u969c"
+        },
+        "barrier/block": {
+            "name": "\u969c\u788d\u7269"
+        },
+        "barrier/bollard": {
+            "name": "\u77ed\u67f1"
+        },
+        "barrier/cattle_grid": {
+            "name": "\u5bb6\u755c\u6805\u680f"
+        },
+        "barrier/city_wall": {
+            "name": "\u57ce\u5899"
+        },
+        "barrier/cycle_barrier": {
+            "name": "\u5355\u8f66\u77ee\u680f"
+        },
+        "barrier/entrance": {
+            "name": "\u5165\u53e3"
+        },
+        "barrier/fence": {
+            "name": "\u7bf1\u7b06"
+        },
+        "barrier/gate": {
+            "name": "\u95e8"
+        },
+        "barrier/hedge": {
+            "name": "\u6811\u7bf1"
+        },
+        "barrier/kissing_gate": {
+            "name": "\u5355\u4eba\u8f6c\u95e8"
+        },
+        "barrier/lift_gate": {
+            "name": "\u7535\u68af\u95e8"
+        },
+        "barrier/retaining_wall": {
+            "name": "\u6321\u571f\u5899"
+        },
+        "barrier/stile": {
+            "name": "\u68af\u78f4"
+        },
+        "barrier/toll_booth": {
+            "name": "\u6536\u8d39\u7ad9"
+        },
+        "barrier/wall": {
+            "name": "\u5899"
+        },
+        "boundary/administrative": {
+            "name": "\u884c\u653f\u533a\u57df\u754c\u7ebf"
+        },
+        "building": {
+            "name": "\u5efa\u7b51\u7269"
+        },
+        "building/house": {
+            "name": "\u623f\u5c4b"
+        },
+        "emergency/phone": {
+            "name": "\u7d27\u6025\u7535\u8bdd"
+        },
+        "highway": {
+            "name": "\u516c\u8def"
+        },
+        "highway/bridleway": {
+            "name": "\u9a6c\u9053"
+        },
+        "highway/cycleway": {
+            "name": "\u81ea\u884c\u8f66\u9053"
+        },
+        "highway/footway": {
+            "name": "\u6b65\u884c\u5f84"
+        },
+        "highway/living_street": {
+            "name": "\u751f\u6d3b\u8857\u9053"
+        },
+        "highway/mini_roundabout": {
+            "name": "\u8ff7\u4f60\u73af\u5c9b"
+        },
+        "highway/motorway": {
+            "name": "\u9ad8\u901f\u516c\u8def"
+        },
+        "highway/motorway_link": {
+            "name": "\u9ad8\u901f\u516c\u8def\u531d\u9053"
+        },
+        "highway/path": {
+            "name": "\u8def\u5f84"
+        },
+        "highway/primary": {
+            "name": "\u4e3b\u8981\u9053\u8def"
+        },
+        "highway/primary_link": {
+            "name": "\u4e3b\u8981\u9053\u8def\u531d\u9053"
+        },
+        "highway/residential": {
+            "name": "\u4f4f\u5b85\u533a\u9053\u8def"
+        },
+        "highway/road": {
+            "name": "\u672a\u77e5\u79cd\u7c7b\u9053\u8def"
+        },
+        "highway/secondary": {
+            "name": "\u6b21\u8981\u9053\u8def"
+        },
+        "highway/secondary_link": {
+            "name": "\u6b21\u8981\u9053\u8def\u531d\u9053"
+        },
+        "highway/service": {
+            "name": "\u8f85\u52a9\u9053\u8def"
+        },
+        "highway/service/alley": {
+            "name": "\u80e1\u540c"
+        },
+        "highway/service/drive-through": {
+            "name": "\u9a7e\u9a76\u901a\u8fc7\u4ee5\u83b7\u53d6\u670d\u52a1"
+        },
+        "highway/service/driveway": {
+            "name": "\u8f66\u9053"
+        },
+        "highway/service/emergency_access": {
+            "name": "\u7d27\u6025\u901a\u9053"
+        },
+        "highway/service/parking_aisle": {
+            "name": "\u505c\u8f66\u573a\u901a\u9053"
+        },
+        "highway/steps": {
+            "name": "\u697c\u68af"
+        },
+        "highway/tertiary": {
+            "name": "\u4e09\u7ea7\u9053\u8def"
+        },
+        "highway/tertiary_link": {
+            "name": "\u4e09\u7ea7\u9053\u8def\u531d\u9053"
+        },
+        "highway/traffic_signals": {
+            "name": "\u7ea2\u7eff\u706f"
+        },
+        "highway/trunk": {
+            "name": "\u5e72\u7ebf\u9053\u8def"
+        },
+        "highway/trunk_link": {
+            "name": "\u5e72\u7ebf\u9053\u8def\u531d\u9053"
+        },
+        "highway/turning_circle": {
+            "name": "\u73af\u5c9b"
+        },
+        "historic": {
+            "name": "\u5386\u53f2\u9057\u8ff9"
+        },
+        "historic/archaeological_site": {
+            "name": "\u8003\u53e4\u9057\u5740"
+        },
+        "historic/boundary_stone": {
+            "name": "\u754c\u6869"
+        },
+        "historic/castle": {
+            "name": "\u57ce\u5821"
+        },
+        "historic/memorial": {
+            "name": "\u7eaa\u5ff5\u9986"
+        },
+        "historic/monument": {
+            "name": "\u53e4\u8ff9"
+        },
+        "historic/ruins": {
+            "name": "\u5e9f\u589f"
+        },
+        "historic/wayside_cross": {
+            "name": "\u8def\u8fb9\u5341\u5b57\u67b6"
+        },
+        "historic/wayside_shrine": {
+            "name": "\u8def\u8fb9\u795e\u793e"
+        },
+        "landuse/basin": {
+            "name": "\u6c34\u6c60"
+        },
+        "landuse/cemetery": {
+            "name": "\u5893\u5730"
+        },
+        "landuse/construction": {
+            "name": "\u5efa\u7b51\u7269"
+        },
+        "landuse/farmyard": {
+            "name": "\u519c\u5e84"
+        },
+        "landuse/grass": {
+            "name": "\u8349\u5730"
+        },
+        "landuse/meadow": {
+            "name": "\u7267\u573a"
+        },
+        "landuse/orchard": {
+            "name": "\u679c\u56ed"
+        },
+        "landuse/quarry": {
+            "name": "\u77ff\u573a"
+        },
+        "landuse/vineyard": {
+            "name": "\u9152\u5e84"
+        },
+        "leisure": {
+            "name": "\u4f11\u95f2\u573a\u6240"
+        },
+        "leisure/garden": {
+            "name": "\u82b1\u56ed"
+        },
+        "leisure/golf_course": {
+            "name": "\u9ad8\u5c14\u592b\u7403\u573a"
+        },
+        "leisure/marina": {
+            "name": "\u7801\u5934"
+        },
+        "leisure/park": {
+            "name": "\u516c\u56ed"
+        },
+        "leisure/pitch": {
+            "name": "\u8fd0\u52a8\u573a\u6240"
+        },
+        "leisure/pitch/american_football": {
+            "name": "\u7f8e\u5f0f\u8db3\u7403\u573a"
+        },
+        "leisure/pitch/basketball": {
+            "name": "\u7bee\u7403\u573a"
+        },
+        "leisure/pitch/soccer": {
+            "name": "\u8db3\u7403\u573a"
+        },
+        "leisure/pitch/tennis": {
+            "name": "\u7f51\u7403\u573a"
+        },
+        "leisure/pitch/volleyball": {
+            "name": "\u6392\u7403\u573a"
+        },
+        "leisure/playground": {
+            "name": "\u6e38\u4e50\u573a"
+        },
+        "leisure/slipway": {
+            "name": "\u8239\u67b6\u6ed1\u9053"
+        },
+        "leisure/stadium": {
+            "name": "\u4f53\u80b2\u573a"
+        },
+        "leisure/swimming_pool": {
+            "name": "\u6e38\u6cf3\u6c60"
+        },
+        "line": {
+            "name": "\u7ebf"
+        },
+        "man_made": {
+            "name": "\u4eba\u9020\u7269"
+        },
+        "man_made/breakwater": {
+            "name": "\u9632\u6ce2\u5824"
+        },
+        "man_made/cutline": {
+            "name": "\u5c71\u6797\u5206\u754c\u7ebf"
+        },
+        "man_made/lighthouse": {
+            "name": "\u706f\u5854"
+        },
+        "man_made/pier": {
+            "name": "\u7801\u5934"
+        },
+        "man_made/pipeline": {
+            "name": "\u7ba1\u9053"
+        },
+        "man_made/survey_point": {
+            "name": "\u6d4b\u91cf\u70b9"
+        },
+        "man_made/tower": {
+            "name": "\u5854"
+        },
+        "man_made/wastewater_plant": {
+            "name": "\u5e9f\u6c34\u5904\u7406\u5382"
+        },
+        "man_made/water_tower": {
+            "name": "\u6c34\u5854"
+        },
+        "man_made/water_works": {
+            "name": "\u6c34\u52a1\u8bbe\u65bd"
+        },
+        "natural": {
+            "name": "\u81ea\u7136\u7269\u4ef6"
+        },
+        "natural/bay": {
+            "name": "\u6d77\u6e7e"
+        },
+        "natural/beach": {
+            "name": "\u6d77\u6ee9"
+        },
+        "natural/cliff": {
+            "name": "\u60ac\u5d16"
+        },
+        "natural/coastline": {
+            "name": "\u6d77\u5cb8\u7ebf"
+        },
+        "natural/glacier": {
+            "name": "\u51b0\u5ddd"
+        },
+        "natural/grassland": {
+            "name": "\u8349\u539f"
+        },
+        "natural/heath": {
+            "name": "\u8352\u91ce"
+        },
+        "natural/peak": {
+            "name": "\u5c71\u5cf0"
+        },
+        "natural/scrub": {
+            "name": "\u704c\u6728\u4e1b"
+        },
+        "natural/spring": {
+            "name": "\u6cc9\u6c34"
+        },
+        "natural/tree": {
+            "name": "\u6811"
+        },
+        "natural/water": {
+            "name": "\u6c34"
+        },
+        "natural/water/lake": {
+            "name": "\u6e56\u6cca"
+        },
+        "natural/water/pond": {
+            "name": "\u6c60\u5858"
+        },
+        "natural/water/reservoir": {
+            "name": "\u6c34\u5e93"
+        },
+        "natural/wetland": {
+            "name": "\u6e7f\u5730"
+        },
+        "natural/wood": {
+            "name": "\u6811\u6797"
+        },
+        "office": {
+            "name": "\u529e\u516c\u5ba4"
+        },
+        "place": {
+            "name": "\u5730\u70b9"
+        },
+        "place/city": {
+            "name": "\u57ce\u5e02"
+        },
+        "place/hamlet": {
+            "name": "\u6751\u5e84"
+        },
+        "place/island": {
+            "name": "\u5c9b\u5c7f"
+        },
+        "place/isolated_dwelling": {
+            "name": "\u5b64\u7acb\u7684\u6c11\u623f"
+        },
+        "place/locality": {
+            "name": "\u5730\u70b9\uff08\u65e0\u4eba\u5b9a\u5c45\uff09"
+        },
+        "place/town": {
+            "name": "\u57ce\u9547"
+        },
+        "place/village": {
+            "name": "\u6751\u5e84"
+        },
+        "point": {
+            "name": "\u70b9"
+        },
+        "power": {
+            "name": "\u7535\u529b\u8bbe\u65bd"
+        },
+        "power/line": {
+            "name": "\u7535\u8def\u7ebf"
+        },
+        "power/pole": {
+            "name": "\u7535\u7ebf\u6746"
+        },
+        "power/sub_station": {
+            "name": "\u53d8\u7535\u7ad9"
+        },
+        "power/tower": {
+            "name": "\u9ad8\u538b\u7535\u5854"
+        },
+        "power/transformer": {
+            "name": "\u53d8\u7535\u6240"
+        },
+        "railway": {
+            "name": "\u94c1\u8def"
+        },
+        "railway/abandoned": {
+            "name": "\u5e9f\u5f03\u7684\u94c1\u8def"
+        },
+        "railway/disused": {
+            "name": "\u5e9f\u5f03\u7684\u94c1\u8def"
+        },
+        "railway/monorail": {
+            "name": "\u5355\u8f68\u94c1\u8def"
+        },
+        "railway/rail": {
+            "name": "\u94c1\u8f68"
+        },
+        "railway/subway": {
+            "name": "\u5730\u94c1"
+        },
+        "railway/subway_entrance": {
+            "name": "\u5730\u94c1\u53e3"
+        },
+        "railway/tram": {
+            "name": "\u7535\u8f66"
+        },
+        "relation": {
+            "name": "\u5173\u7cfb"
+        },
+        "route/ferry": {
+            "name": "\u6e21\u8f6e\u822a\u7ebf"
+        },
+        "shop": {
+            "name": "\u5546\u5e97"
+        },
+        "shop/alcohol": {
+            "name": "\u9152\u54c1\u5e97"
+        },
+        "shop/bakery": {
+            "name": "\u9762\u5305\u5e97"
+        },
+        "shop/beauty": {
+            "name": "\u7f8e\u5bb9\u5e97"
+        },
+        "shop/beverages": {
+            "name": "\u996e\u54c1\u5e97"
+        },
+        "shop/bicycle": {
+            "name": "\u81ea\u884c\u8f66\u5e97"
+        },
+        "shop/boutique": {
+            "name": "\u7cbe\u54c1\u5e97"
+        },
+        "shop/butcher": {
+            "name": "\u8089\u8d29"
+        },
+        "shop/car": {
+            "name": "\u8f66\u884c"
+        },
+        "shop/car_parts": {
+            "name": "\u6c7d\u8f66\u914d\u4ef6\u5e97"
+        },
+        "shop/car_repair": {
+            "name": "\u6c7d\u8f66\u4fee\u7406\u5e97"
+        },
+        "shop/clothes": {
+            "name": "\u670d\u88c5\u5e97"
+        },
+        "shop/computer": {
+            "name": "\u7535\u8111\u5e97"
+        },
+        "shop/convenience": {
+            "name": "\u4fbf\u5229\u5e97"
+        },
+        "shop/deli": {
+            "name": "\u719f\u98df\u5e97"
+        },
+        "shop/department_store": {
+            "name": "\u767e\u8d27\u5e97"
+        },
+        "shop/doityourself": {
+            "name": "DIY\u5546\u5e97"
+        },
+        "shop/electronics": {
+            "name": "\u7535\u5668\u5e97"
+        },
+        "shop/fishmonger": {
+            "name": "\u6d77\u4ea7\u5e97"
+        },
+        "shop/florist": {
+            "name": "\u82b1\u5e97"
+        },
+        "shop/furniture": {
+            "name": "\u5bb6\u5177\u5e97"
+        },
+        "shop/garden_centre": {
+            "name": "\u82b1\u5e97"
+        },
+        "shop/gift": {
+            "name": "\u793c\u54c1\u5e97"
+        },
+        "shop/greengrocer": {
+            "name": "\u679c\u852c\u5e97"
+        },
+        "shop/hairdresser": {
+            "name": "\u7406\u53d1\u70b9"
+        },
+        "shop/hardware": {
+            "name": "\u4e94\u91d1\u5e97"
+        },
+        "shop/hifi": {
+            "name": "\u97f3\u54cd\u5e97"
+        },
+        "shop/laundry": {
+            "name": "\u6d17\u8863\u5e97"
+        },
+        "shop/mall": {
+            "name": "\u5546\u573a"
+        },
+        "shop/mobile_phone": {
+            "name": "\u624b\u673a\u5e97"
+        },
+        "shop/motorcycle": {
+            "name": "\u6469\u6258\u8f66\u884c"
+        },
+        "shop/music": {
+            "name": "\u97f3\u4e50\u5e97"
+        },
+        "shop/optician": {
+            "name": "\u773c\u955c\u5e97"
+        },
+        "shop/pet": {
+            "name": "\u5ba0\u7269\u5e97"
+        },
+        "shop/shoes": {
+            "name": "\u978b\u5e97"
+        },
+        "shop/sports": {
+            "name": "\u4f53\u80b2\u7528\u54c1\u5e97"
+        },
+        "shop/stationery": {
+            "name": "\u6587\u5316\u7528\u54c1\u5e97"
+        },
+        "shop/supermarket": {
+            "name": "\u8d85\u7ea7\u5e02\u573a"
+        },
+        "shop/toys": {
+            "name": "\u73a9\u5177\u5e97"
+        },
+        "shop/travel_agency": {
+            "name": "\u65c5\u884c\u793e"
+        },
+        "shop/tyres": {
+            "name": "\u8f6e\u80ce\u5e97"
+        },
+        "shop/vacant": {
+            "name": "\u7a7a\u7f6e\u94fa\u4f4d"
+        },
+        "shop/variety_store": {
+            "name": "\u6742\u8d27\u5e97"
+        },
+        "shop/video": {
+            "name": "\u5f71\u50cf\u5e97"
+        },
+        "tourism": {
+            "name": "\u65c5\u6e38\u8bbe\u65bd"
+        },
+        "tourism/alpine_hut": {
+            "name": "\u9ad8\u5c71\u5c0f\u5c4b"
+        },
+        "tourism/artwork": {
+            "name": "\u827a\u672f\u54c1"
+        },
+        "tourism/attraction": {
+            "name": "\u65c5\u6e38\u666f\u70b9"
+        },
+        "tourism/caravan_site": {
+            "name": "\u623f\u8f66\u8425\u5730"
+        },
+        "tourism/guest_house": {
+            "name": "\u5bbe\u9986"
+        },
+        "tourism/hostel": {
+            "name": "\u62db\u5f85\u6240"
+        },
+        "tourism/hotel": {
+            "name": "\u65c5\u9986"
+        },
+        "tourism/information": {
+            "name": "\u8d44\u8baf"
+        },
+        "tourism/motel": {
+            "name": "\u6c7d\u8f66\u65c5\u9986"
+        },
+        "tourism/museum": {
+            "name": "\u535a\u7269\u9986"
+        },
+        "tourism/picnic_site": {
+            "name": "\u90ca\u6e38\u5730\u70b9"
+        },
+        "tourism/theme_park": {
+            "name": "\u4e3b\u9898\u516c\u56ed"
+        },
+        "tourism/viewpoint": {
+            "name": "\u666f\u70b9"
+        },
+        "tourism/zoo": {
+            "name": "\u52a8\u7269\u56ed"
+        },
+        "type/boundary": {
+            "name": "\u8fb9\u754c"
+        },
+        "type/multipolygon": {
+            "name": "\u590d\u7ebf\u6bb5\u591a\u8fb9\u5f62"
+        },
+        "type/restriction": {
+            "name": "\u9650\u5236"
+        },
+        "type/route": {
+            "name": "\u8def\u7ebf"
+        },
+        "type/route/bicycle": {
+            "name": "\u5355\u8f66\u8def\u7ebf"
+        },
+        "type/route/bus": {
+            "name": "\u516c\u5171\u6c7d\u8f66\u8def\u7ebf"
+        },
+        "type/route/detour": {
+            "name": "\u7ed5\u9053\u8def\u7ebf"
+        },
+        "type/route/ferry": {
+            "name": "\u6e21\u8f6e\u822a\u7ebf"
+        },
+        "type/route/foot": {
+            "name": "\u6b65\u884c\u8def\u7ebf"
+        },
+        "type/route/pipeline": {
+            "name": "\u7ba1\u9053\u8def\u7ebf"
+        },
+        "type/route/power": {
+            "name": "\u4f9b\u7535\u8def\u7ebf"
+        },
+        "type/route/road": {
+            "name": "\u9053\u8def\u8def\u7ebf"
+        },
+        "type/route/train": {
+            "name": "\u94c1\u8def\u8def\u7ebf"
+        },
+        "type/route/tram": {
+            "name": "\u7535\u8f66\u8def\u7ebf"
+        },
+        "vertex": {
+            "name": "\u5176\u4ed6"
+        },
+        "waterway": {
+            "name": "\u822a\u9053"
+        },
+        "waterway/canal": {
+            "name": "\u8fd0\u6cb3"
+        },
+        "waterway/dam": {
+            "name": "\u6c34\u575d"
+        },
+        "waterway/ditch": {
+            "name": "\u6c9f\u6e20"
+        },
+        "waterway/drain": {
+            "name": "\u4e0b\u6c34\u9053"
+        },
+        "waterway/river": {
+            "name": "\u6cb3\u6d41"
+        },
+        "waterway/riverbank": {
+            "name": "\u6cb3\u5824"
+        },
+        "waterway/stream": {
+            "name": "\u6eaa\u6d41"
+        },
+        "waterway/weir": {
+            "name": "\u5824\u575d"
+        }
+    }
+}

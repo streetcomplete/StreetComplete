@@ -1,0 +1,900 @@
+{
+    "presets": {
+        "address": {
+            "name": "\u0bae\u0bc1\u0b95\u0bb5\u0bb0\u0bbf",
+            "terms": "\u0bb5\u0bbf\u0bb2\u0bbe\u0b9a\u0bae\u0bcd"
+        },
+        "advertising/billboard": {
+            "name": "\u0baa\u0bbf\u0bb2\u0bcd\u0baa\u0bc7\u0bbe\u0bb0\u0bcd\u0b9f\u0bcd",
+            "terms": "\u0ba4\u0bc1\u0ba3\u0bcd\u0b9f\u0bc1 \u0bb5\u0bbf\u0bb3\u0bae\u0bcd\u0baa\u0bb0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b92\u0b9f\u0bcd\u0b9f\u0baa\u0bcd\u0baa\u0b9f\u0bc1\u0bae\u0bcd \u0baa\u0bb2\u0b95\u0bc8"
+        },
+        "aerialway/cable_car": {
+            "name": "\u0b95\u0bc7\u0baa\u0bbf\u0bb3\u0bcd  \u0b95\u0bbe\u0bb0\u0bcd "
+        },
+        "aeroway/aerodrome": {
+            "name": "\u0bb5\u0bbf\u0bae\u0bbe\u0ba9\u0ba8\u0bbf\u0bb2\u0bc8\u0baf\u0bae\u0bcd"
+        },
+        "aeroway/apron": {
+            "name": "\u0b95\u0bbe\u0baa\u0bcd\u0baa\u0bc1\u0ba4\u0bcd \u0ba4\u0bb3\u0bae\u0bcd"
+        },
+        "aeroway/gate": {
+            "name": "\u0bb5\u0bbf\u0bae\u0bbe\u0ba9 \u0ba8\u0bbf\u0bb2\u0bc8\u0baf \u0ba8\u0bc1\u0bb4\u0bc8\u0bb5\u0bbe\u0baf\u0bbf\u0bb2\u0bcd"
+        },
+        "aeroway/hangar": {
+            "name": "\u0bb5\u0bbf\u0bae\u0bbe\u0ba9\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0ba8\u0bbf\u0bb1\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1\u0bae\u0bbf\u0b9f\u0bae\u0bcd"
+        },
+        "aeroway/helipad": {
+            "name": "\u0b9a\u0bbf\u0bb1\u0bc1 \u0bb5\u0bbf\u0bae\u0bbe\u0ba9\u0bae\u0bcd \u0b87\u0bb1\u0b99\u0bcd\u0b95\u0bc1\u0bae\u0bcd \u0ba4\u0bb3\u0bae\u0bcd",
+            "terms": "\u0b89\u0bb2\u0b99\u0bcd\u0b95\u0bc1 \u0bb5\u0bbe\u0ba9\u0bc2\u0bb0\u0bcd\u0ba4\u0bbf"
+        },
+        "aeroway/runway": {
+            "name": "\u0b93\u0b9f\u0bc1\u0ba4\u0bb3\u0bae\u0bcd"
+        },
+        "amenity/arts_centre": {
+            "name": "\u0b95\u0bb2\u0bc8\u0baf\u0bb0\u0b99\u0bcd\u0b95\u0bae\u0bcd "
+        },
+        "amenity/atm": {
+            "name": "\u0b8f.\u0b9f\u0bbf.\u0b8e\u0bae\u0bcd"
+        },
+        "amenity/bank": {
+            "name": "\u0bb5\u0b99\u0bcd\u0b95\u0bbf"
+        },
+        "amenity/bar": {
+            "name": "\u0bae\u0ba4\u0bc1\u0baa\u0bbe\u0ba9\u0b95\u0bcd \u0b95\u0b9f\u0bc8 "
+        },
+        "amenity/bench": {
+            "name": "\u0bb5\u0bbf\u0b9a\u0bc1\u0baa\u0bcd\u0baa\u0bb2\u0b95\u0bc8"
+        },
+        "amenity/bicycle_parking": {
+            "name": "\u0b88\u0bb0\u0bc1\u0bb0\u0bc1\u0bb3\u0bc8 \u0ba8\u0bbf\u0bb1\u0bc1\u0ba4\u0bcd\u0ba4\u0b95\u0bae\u0bcd"
+        },
+        "amenity/bicycle_rental": {
+            "name": "\u0b9a\u0bc8\u0b95\u0bcd\u0b95\u0bbf\u0bb3\u0bcd \u0bb5\u0bbe\u0b9f\u0b95\u0bc8"
+        },
+        "amenity/bureau_de_change": {
+            "name": "\u0baa\u0ba3\u0baa\u0bcd \u0baa\u0bb0\u0bbf\u0bae\u0bbe\u0bb1\u0bcd\u0bb1\u0bae\u0bcd"
+        },
+        "amenity/bus_station": {
+            "name": "\u0baa\u0bc7\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bc1 \u0ba8\u0bbf\u0bb2\u0bc8\u0baf\u0bae\u0bcd / \u0bae\u0bc1\u0ba9\u0bc8\u0baf\u0bae\u0bcd"
+        },
+        "amenity/cafe": {
+            "name": "\u0b9f\u0bc0\u0b95\u0bcd\u0b95\u0b9f\u0bc8"
+        },
+        "amenity/cinema": {
+            "name": "\u0b9a\u0bbf\u0ba9\u0bbf\u0bae\u0bbe"
+        },
+        "amenity/clock": {
+            "name": "\u0b95\u0b9f\u0bbf\u0b95\u0bbe\u0bb0\u0bae\u0bcd"
+        },
+        "amenity/crematorium": {
+            "name": "\u0b9a\u0bc1\u0b9f\u0bc1\u0b95\u0bbe\u0b9f\u0bc1",
+            "terms": "\u0b95\u0bb2\u0bcd\u0bb2\u0bb1\u0bc8, \u0b87\u0b9f\u0bc1\u0b95\u0bbe\u0b9f\u0bc1"
+        },
+        "amenity/dentist": {
+            "name": "\u0baa\u0bb2\u0bcd \u0bae\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1\u0bb5\u0bb0\u0bcd ",
+            "terms": "\u0baa\u0bb2\u0bcd, \u0baa\u0bb1\u0bcd\u0b95\u0bb3\u0bcd"
+        },
+        "amenity/doctors": {
+            "name": "\u0bae\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1\u0bb5\u0bb0\u0bcd ",
+            "terms": "\u0bae\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1\u0bb5\u0bb0\u0bcd"
+        },
+        "amenity/dojo": {
+            "terms": "\u0ba4\u0bb1\u0bcd\u0b95\u0bbe\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bcd \u0b95\u0bb2\u0bc8"
+        },
+        "amenity/drinking_water": {
+            "name": "\u0b95\u0bc1\u0b9f\u0bbf\u0ba8\u0bc0\u0bb0\u0bcd ",
+            "terms": "\u0b8a\u0bb1\u0bcd\u0bb1\u0bc1"
+        },
+        "amenity/driving_school": {
+            "name": "\u0b93\u0b9f\u0bcd\u0b9f\u0bc1\u0ba8\u0bb0\u0bcd \u0baa\u0bb3\u0bcd\u0bb3\u0bbf"
+        },
+        "amenity/embassy": {
+            "name": "\u0ba4\u0bc2\u0ba4\u0bb0\u0b95\u0bae\u0bcd"
+        },
+        "amenity/fast_food": {
+            "name": "\u0ba4\u0bc1\u0bb0\u0bbf\u0ba4 \u0b89\u0ba3\u0bb5\u0bc1",
+            "terms": "\u0b89\u0ba3\u0bb5\u0b95\u0bae\u0bcd"
+        },
+        "amenity/fire_station": {
+            "name": "\u0ba4\u0bc0\u0baf\u0ba3\u0bc8\u0baa\u0bcd\u0baa\u0bc1 \u0ba8\u0bbf\u0bb2\u0bc8\u0baf\u0bae\u0bcd"
+        },
+        "amenity/grave_yard": {
+            "name": "\u0b87\u0b9f\u0bc1\u0b95\u0bbe\u0b9f\u0bc1"
+        },
+        "amenity/hospital": {
+            "name": "\u0bae\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1\u0bb5\u0bae\u0ba9\u0bc8 "
+        },
+        "amenity/language_school": {
+            "name": "\u0bae\u0bca\u0bb4\u0bbf\u0baa\u0bcd \u0baa\u0bb3\u0bcd\u0bb3\u0bbf"
+        },
+        "amenity/library": {
+            "name": "\u0baa\u0bc1\u0ba4\u0bcd\u0ba4\u0b95\u0b9a\u0bcd\u0b9a\u0bbe\u0bb2\u0bc8"
+        },
+        "amenity/marketplace": {
+            "name": "\u0baa\u0b9c\u0bbe\u0bb0\u0bcd"
+        },
+        "amenity/motorcycle_parking": {
+            "name": "\u0b88\u0bb0\u0bc1\u0bb0\u0bc1\u0bb3\u0bc8 \u0ba8\u0bbf\u0bb1\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1\u0bae\u0bbf\u0b9f\u0bae\u0bcd"
+        },
+        "amenity/music_school": {
+            "name": "\u0b87\u0b9a\u0bc8\u0baa\u0bcd \u0baa\u0bb3\u0bcd\u0bb3\u0bbf"
+        },
+        "amenity/nightclub": {
+            "name": "\u0b87\u0bb0\u0bb5\u0bc1 \u0bb5\u0bbf\u0b9f\u0bc1\u0ba4\u0bbf",
+            "terms": "\u0b9f\u0bbf\u0bb8\u0bcd\u0b95\u0bcb, \u0b87\u0bb0\u0bb5\u0bc1 \u0bb5\u0bbf\u0b9f\u0bc1\u0ba4\u0bbf, \u0b86\u0b9f\u0bcd\u0b9f\u0bae\u0bcd"
+        },
+        "amenity/place_of_worship": {
+            "name": "\u0bb5\u0bb4\u0bbf\u0baa\u0bbe\u0b9f\u0bcd\u0b9f\u0bc1 \u0b87\u0b9f\u0bae\u0bcd",
+            "terms": "\u0baa\u0bbe\u0b9a\u0bbf\u0bb2\u0bbf\u0b95\u0bbe, \u0b9a\u0bc7\u0baa\u0bcd\u0baa\u0bb2\u0bcd, \u0b95\u0bbf\u0bb1\u0ba4\u0bcd\u0ba4\u0bb5 \u0b86\u0bb2\u0baf\u0bae\u0bcd, \u0b95\u0bcb\u0baf\u0bbf\u0bb2\u0bcd, \u0baa\u0bb3\u0bcd\u0bb3\u0bbf\u0bb5\u0bbe\u0b9a\u0bb2\u0bcd, \u0bb5\u0ba3\u0b95\u0bcd\u0b95\u0ba4\u0bcd\u0ba4\u0bb2\u0bae\u0bcd"
+        },
+        "amenity/place_of_worship/buddhist": {
+            "name": "\u0baa\u0bc1\u0ba4\u0bcd\u0ba4\u0b95\u0bcd \u0b95\u0bcb\u0baf\u0bbf\u0bb2\u0bcd"
+        },
+        "amenity/place_of_worship/hindu": {
+            "name": "\u0b87\u0ba8\u0bcd\u0ba4\u0bc1\u0b95\u0bcd \u0b95\u0bcb\u0baf\u0bbf\u0bb2\u0bcd",
+            "terms": "\u0b95\u0bcb\u0bb5\u0bbf\u0bb2\u0bcd, \u0ba4\u0bc7\u0bb5\u0bb8\u0bcd\u0ba4\u0bbe\u0ba9\u0bae\u0bcd, \u0bae\u0ba8\u0bcd\u0ba4\u0bbf\u0bb0\u0bcd, \u0b9a\u0bc7\u0ba4\u0bcd\u0ba4\u0bbf\u0bb0\u0bae\u0bcd, \u0b86\u0bb2\u0baf\u0bae\u0bcd"
+        },
+        "amenity/place_of_worship/sikh": {
+            "name": "\u0b9a\u0bc0\u0b95\u0bcd\u0b95\u0bbf\u0baf\u0b95\u0bcd \u0b95\u0bcb\u0baf\u0bbf\u0bb2\u0bcd"
+        },
+        "amenity/place_of_worship/taoist": {
+            "name": "\u0ba4\u0bbe\u0bb5\u0bcb\u0baf\u0bbf\u0b9a\u0b95\u0bcd \u0b95\u0bcb\u0baf\u0bbf\u0bb2\u0bcd"
+        },
+        "amenity/planetarium": {
+            "name": "\u0b95\u0bcb\u0bb3\u0bb0\u0b99\u0bcd\u0b95\u0bae\u0bcd "
+        },
+        "amenity/police": {
+            "name": "\u0b95\u0bbe\u0bb5\u0bb2\u0bcd"
+        },
+        "amenity/post_box": {
+            "name": "\u0b85\u0b9e\u0bcd\u0b9a\u0bb2\u0bcd\u0baa\u0bc6\u0b9f\u0bcd\u0b9f\u0bbf"
+        },
+        "amenity/post_office": {
+            "name": "\u0b85\u0b9e\u0bcd\u0b9a\u0bb2\u0b95\u0bae\u0bcd"
+        },
+        "amenity/pub": {
+            "name": "\u0baa\u0baa\u0bcd "
+        },
+        "amenity/register_office": {
+            "name": "\u0baa\u0ba4\u0bbf\u0bb5\u0bc1 \u0b85\u0bb2\u0bc1\u0bb5\u0bb2\u0b95\u0bae\u0bcd"
+        },
+        "amenity/restaurant": {
+            "name": "\u0b89\u0ba3\u0bb5\u0b95\u0bae\u0bcd"
+        },
+        "amenity/school": {
+            "name": "\u0baa\u0bb3\u0bcd\u0bb3\u0bbf \u0bae\u0bc8\u0ba4\u0bbe\u0ba9\u0bae\u0bcd"
+        },
+        "amenity/social_facility/food_bank": {
+            "name": "\u0b89\u0ba3\u0bb5\u0bc1 \u0bb5\u0b99\u0bcd\u0b95\u0bbf"
+        },
+        "amenity/swimming_pool": {
+            "name": "\u0ba8\u0bc0\u0b9a\u0bcd\u0b9a\u0bb2\u0bcd \u0b95\u0bc1\u0bb3\u0bae\u0bcd"
+        },
+        "amenity/telephone": {
+            "name": "\u0ba4\u0bca\u0bb2\u0bc8\u0baa\u0bc7\u0b9a\u0bbf"
+        },
+        "amenity/theatre": {
+            "name": "\u0ba4\u0bbf\u0bb0\u0bc8\u0baf\u0bb0\u0b99\u0bcd\u0b95\u0bae\u0bcd"
+        },
+        "amenity/toilets": {
+            "name": "\u0b95\u0bb4\u0bbf\u0bb5\u0bb1\u0bc8\u0b95\u0bb3\u0bcd"
+        },
+        "amenity/townhall": {
+            "name": "\u0ba8\u0b95\u0bb0\u0bbe\u0b9f\u0bcd\u0b9a\u0bbf\u0bae\u0ba9\u0bcd\u0bb1\u0bae\u0bcd",
+            "terms": "\u0b95\u0bbf\u0bb0\u0bbe\u0bae\u0bae\u0bcd, \u0ba8\u0b95\u0bb0\u0bae\u0bcd, \u0b85\u0bb0\u0b9a\u0bc1, \u0ba8\u0bc0\u0ba4\u0bbf\u0bae\u0ba9\u0bcd\u0bb1\u0bae\u0bcd, \u0baa\u0bc7\u0bb0\u0bc2\u0bb0\u0bbe\u0b9f\u0bcd\u0b9a\u0bbf\u0bae\u0ba9\u0bcd\u0bb1\u0bae\u0bcd"
+        },
+        "amenity/university": {
+            "name": "\u0baa\u0bb2\u0bcd\u0b95\u0bb2\u0bc8\u0b95\u0bcd\u0b95\u0bb4\u0b95\u0ba4\u0bcd \u0ba4\u0bbf\u0b9f\u0bb2\u0bcd"
+        },
+        "amenity/vending_machine/condoms": {
+            "name": "\u0b86\u0ba3\u0bc1\u0bb1\u0bc8 \u0ba4\u0bbe\u0ba9\u0bbf\u0baf\u0b99\u0bcd\u0b95\u0bbf",
+            "terms": "\u0b86\u0ba3\u0bc1\u0bb1\u0bc8"
+        },
+        "amenity/vending_machine/drinks": {
+            "name": "\u0b95\u0bc1\u0b9f\u0bbf\u0ba8\u0bc0\u0bb0\u0bcd \u0ba4\u0bbe\u0ba9\u0bbf\u0baf\u0b99\u0bcd\u0b95\u0bbf",
+            "terms": "\u0b9a\u0bcb\u0b9f\u0bbe, \u0b95\u0bc1\u0b9f\u0bbf\u0ba8\u0bc0\u0bb0\u0bcd, \u0b95\u0bc1\u0bb3\u0bbf\u0bb0\u0bcd\u0baa\u0bbe\u0ba9\u0bae\u0bcd"
+        },
+        "amenity/waste_disposal": {
+            "terms": "\u0b95\u0bc1\u0baa\u0bcd\u0baa\u0bc8, \u0b95\u0bb4\u0bbf\u0bb5\u0bc1"
+        },
+        "area": {
+            "name": "\u0baa\u0bb0\u0baa\u0bcd\u0baa\u0bb3\u0bb5\u0bc1"
+        },
+        "barrier/city_wall": {
+            "name": "\u0ba8\u0b95\u0bb0\u0b9a\u0bcd \u0b9a\u0bc1\u0bb5\u0bb0\u0bcd"
+        },
+        "barrier/entrance": {
+            "name": "\u0ba8\u0bc1\u0bb4\u0bc8\u0bb5\u0bc1\u0bb5\u0bbe\u0baf\u0bbf\u0bb2\u0bcd"
+        },
+        "barrier/fence": {
+            "name": "\u0bb5\u0bc7\u0bb2\u0bbf"
+        },
+        "barrier/gate": {
+            "name": "\u0b95\u0ba4\u0bb5\u0bc1"
+        },
+        "barrier/wall": {
+            "name": "\u0b9a\u0bc1\u0bb5\u0bb0\u0bcd"
+        },
+        "building": {
+            "name": "\u0b95\u0b9f\u0bcd\u0b9f\u0b9f\u0bae\u0bcd"
+        },
+        "building/church": {
+            "name": "\u0ba4\u0bc7\u0bb5\u0bbe\u0bb2\u0baf\u0b95\u0bcd \u0b95\u0b9f\u0bcd\u0b9f\u0bbf\u0b9f\u0bae\u0bcd"
+        },
+        "building/college": {
+            "name": "\u0b95\u0bb2\u0bcd\u0bb2\u0bc2\u0bb0\u0bbf\u0b95\u0bcd \u0b95\u0b9f\u0bcd\u0b9f\u0bbf\u0b9f\u0bae\u0bcd"
+        },
+        "building/commercial": {
+            "name": "\u0bb5\u0bbf\u0baf\u0bbe\u0baa\u0bbe\u0bb0\u0b95\u0bcd \u0b95\u0b9f\u0bcd\u0b9f\u0bbf\u0b9f\u0bae\u0bcd"
+        },
+        "building/construction": {
+            "name": "\u0b95\u0b9f\u0bcd\u0b9f\u0bbf\u0b9f\u0bae\u0bcd \u0b95\u0b9f\u0bcd\u0b9f\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0bc1\u0b95\u0bcd \u0b95\u0bca\u0ba3\u0bcd\u0b9f\u0bbf\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bbf\u0bb1\u0ba4\u0bc1"
+        },
+        "building/entrance": {
+            "name": "\u0ba8\u0bc1\u0bb4\u0bc8\u0bb5\u0bbe\u0baf\u0bbf\u0bb2\u0bcd/\u0bb5\u0bc6\u0bb3\u0bbf\u0baf\u0bc7\u0bb1\u0bb2\u0bcd"
+        },
+        "building/farm": {
+            "name": "\u0baa\u0ba3\u0bcd\u0ba3\u0bc8 \u0bb5\u0bc0\u0b9f\u0bc1"
+        },
+        "building/farm_auxiliary": {
+            "name": "\u0baa\u0ba3\u0bcd\u0ba3\u0bc8\u0b95\u0bcd \u0b95\u0b9f\u0bcd\u0b9f\u0bbf\u0b9f\u0bae\u0bcd"
+        },
+        "building/garage": {
+            "name": "\u0bb5\u0bbe\u0b95\u0ba9\u0baa\u0bcd \u0baa\u0ba3\u0bbf\u0bae\u0ba9\u0bc8"
+        },
+        "building/hospital": {
+            "name": "\u0bae\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1\u0bb5\u0bae\u0ba9\u0bc8\u0b95\u0bcd \u0b95\u0b9f\u0bcd\u0b9f\u0bbf\u0b9f\u0bae\u0bcd"
+        },
+        "building/hotel": {
+            "name": "\u0bb5\u0bbf\u0b9f\u0bc1\u0ba4\u0bbf\u0b95\u0bcd \u0b95\u0b9f\u0bcd\u0b9f\u0bbf\u0b9f\u0bae\u0bcd"
+        },
+        "building/house": {
+            "name": "\u0bb5\u0bc0\u0b9f\u0bc1"
+        },
+        "building/hut": {
+            "name": "\u0b95\u0bc1\u0b9f\u0bbf\u0b9a\u0bc8"
+        },
+        "building/mosque": {
+            "name": "\u0baa\u0bb3\u0bcd\u0bb3\u0bbf\u0bb5\u0bbe\u0b9a\u0bb2\u0bcd \u0b95\u0b9f\u0bcd\u0b9f\u0bbf\u0b9f\u0bae\u0bcd"
+        },
+        "building/public": {
+            "name": "\u0baa\u0bca\u0ba4\u0bc1\u0b95\u0bcd \u0b95\u0b9f\u0bcd\u0b9f\u0bbf\u0b9f\u0bae\u0bcd"
+        },
+        "building/residential": {
+            "name": "\u0b95\u0bc1\u0b9f\u0bbf\u0baf\u0bbf\u0bb0\u0bc1\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bcd \u0b95\u0b9f\u0bcd\u0b9f\u0bbf\u0b9f\u0bae\u0bcd"
+        },
+        "building/school": {
+            "name": "\u0baa\u0bb3\u0bcd\u0bb3\u0bbf\u0b95\u0bcd \u0b95\u0b9f\u0bcd\u0b9f\u0bbf\u0b9f\u0bae\u0bcd"
+        },
+        "building/service": {
+            "name": "\u0b9a\u0bc7\u0bb5\u0bc8\u0b95\u0bcd \u0b95\u0b9f\u0bcd\u0b9f\u0bbf\u0b9f\u0bae\u0bcd"
+        },
+        "building/temple": {
+            "name": "\u0b95\u0bcb\u0baf\u0bbf\u0bb2\u0bcd \u0b95\u0b9f\u0bcd\u0b9f\u0bbf\u0b9f\u0bae\u0bcd"
+        },
+        "building/transportation": {
+            "name": "\u0baa\u0bcb\u0b95\u0bcd\u0b95\u0bc1\u0bb5\u0bb0\u0ba4\u0bcd\u0ba4\u0bc1\u0b95\u0bcd \u0b95\u0b9f\u0bcd\u0b9f\u0bbf\u0b9f\u0bae\u0bcd"
+        },
+        "building/university": {
+            "name": "\u0baa\u0bb2\u0bcd\u0b95\u0bb2\u0bc8\u0b95\u0bcd\u0b95\u0bb4\u0b95 \u0b95\u0b9f\u0bcd\u0b9f\u0bbf\u0b9f\u0bae\u0bcd"
+        },
+        "craft/carpenter": {
+            "name": "\u0ba4\u0b9a\u0bcd\u0b9a\u0bb0\u0bcd"
+        },
+        "craft/jeweler": {
+            "name": "\u0baa\u0ba4\u0bcd\u0ba4\u0bb0\u0bcd"
+        },
+        "craft/painter": {
+            "name": "\u0b93\u0bb5\u0bbf\u0baf\u0bb0\u0bcd"
+        },
+        "craft/plumber": {
+            "name": "\u0b95\u0bc1\u0bb4\u0bbe\u0baf\u0bcd\u0ba8\u0bc1\u0b9f\u0bcd\u0baa\u0bb0\u0bcd"
+        },
+        "craft/sawmill": {
+            "name": "\u0bae\u0bb0\u0bae\u0bcd \u0b85\u0bb1\u0bc1\u0b95\u0bcd\u0b95\u0bc1\u0bae\u0bcd \u0b86\u0bb2\u0bc8"
+        },
+        "craft/scaffolder": {
+            "name": "\u0b9a\u0bbe\u0bb0\u0bae\u0bcd \u0b85\u0b9f\u0bbf\u0baa\u0bcd\u0baa\u0bb5\u0bb0\u0bcd"
+        },
+        "craft/shoemaker": {
+            "name": "\u0b9a\u0bc6\u0bae\u0bcd\u0bae\u0bbe\u0bb0\u0bcd"
+        },
+        "craft/tailor": {
+            "name": "\u0ba4\u0bc8\u0baf\u0bb1\u0bcd\u0b95\u0bbe\u0bb0\u0bb0\u0bcd"
+        },
+        "embankment": {
+            "name": "\u0b95\u0bb0\u0bc8"
+        },
+        "emergency/ambulance_station": {
+            "name": "\u0b85\u0bb5\u0b9a\u0bb0 \u0b8a\u0bb0\u0bcd\u0ba4\u0bbf \u0ba8\u0bbf\u0bb2\u0bc8\u0baf\u0bae\u0bcd"
+        },
+        "emergency/fire_extinguisher": {
+            "name": "\u0ba4\u0bc0\u0baf\u0ba3\u0bc8\u0baa\u0bcd\u0baa\u0bbe\u0ba9\u0bcd"
+        },
+        "emergency/fire_hydrant": {
+            "name": "\u0ba4\u0bc0\u0baf\u0ba3\u0bc8\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bcd \u0b95\u0bc1\u0bb4\u0bbe\u0baf\u0bcd \u0bae\u0bc1\u0ba9\u0bc8"
+        },
+        "emergency/first_aid_kit": {
+            "name": "\u0bae\u0bc1\u0ba4\u0bb2\u0bc1\u0ba4\u0bb5\u0bbf\u0baa\u0bcd \u0baa\u0bc6\u0b9f\u0bcd\u0b9f\u0bbf"
+        },
+        "emergency/lifeguard": {
+            "name": "\u0bae\u0bc6\u0baf\u0bcd\u0b95\u0bcd\u0b95\u0bbe\u0baa\u0bcd\u0baa\u0bbe\u0bb3\u0bb0\u0bcd"
+        },
+        "emergency/phone": {
+            "name": "\u0b85\u0bb5\u0b9a\u0bb0\u0ba4\u0bcd \u0ba4\u0bca\u0bb2\u0bc8\u0baa\u0bc7\u0b9a\u0bbf"
+        },
+        "emergency/water_tank": {
+            "name": "\u0b85\u0bb5\u0b9a\u0bb0 \u0ba8\u0bc0\u0bb0\u0bcd \u0ba4\u0bca\u0b9f\u0bcd\u0b9f\u0bbf"
+        },
+        "entrance": {
+            "name": "\u0ba8\u0bc1\u0bb4\u0bc8\u0bb5\u0bc1 / \u0bb5\u0bc6\u0bb3\u0bbf\u0baf\u0bc7\u0bb1\u0bc1"
+        },
+        "healthcare/alternative": {
+            "name": "\u0bae\u0bbe\u0bb1\u0bcd\u0bb1\u0bc1 \u0bae\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1\u0bb5\u0bae\u0bcd"
+        },
+        "healthcare/hospice": {
+            "name": "\u0b85\u0bb1\u0bb5\u0bc1\u0bb3\u0bbf"
+        },
+        "highway/cycleway": {
+            "name": "\u0bae\u0bbf\u0ba4\u0bbf\u0bb5\u0ba3\u0bcd\u0b9f\u0bbf\u0baa\u0bcd \u0baa\u0bbe\u0ba4\u0bc8"
+        },
+        "highway/elevator": {
+            "name": "\u0bae\u0bbf\u0ba9\u0bcd\u0ba4\u0bc2\u0b95\u0bcd\u0b95\u0bbf"
+        },
+        "highway/footway": {
+            "name": "\u0ba8\u0b9f\u0bc8\u0baa\u0bbe\u0ba4\u0bc8"
+        },
+        "highway/milestone": {
+            "name": "\u0ba8\u0bc6\u0b9f\u0bc1\u0b9e\u0bcd\u0b9a\u0bbe\u0bb2\u0bc8 \u0bae\u0bc8\u0bb2\u0bcd\u0b95\u0bb2\u0bcd"
+        },
+        "highway/path": {
+            "name": "\u0bb5\u0bb4\u0bbf"
+        },
+        "highway/steps": {
+            "name": "\u0baa\u0b9f\u0bbf\u0b95\u0b9f\u0bcd\u0b9f\u0bc1\u0b95\u0bb3\u0bcd"
+        },
+        "highway/street_lamp": {
+            "name": "\u0ba4\u0bc6\u0bb0\u0bc1 \u0bb5\u0bbf\u0bb3\u0b95\u0bcd\u0b95\u0bc1"
+        },
+        "historic/castle": {
+            "name": "\u0b95\u0bcb\u0b9f\u0bcd\u0b9f\u0bc8"
+        },
+        "historic/memorial": {
+            "name": "\u0ba8\u0bbf\u0ba9\u0bc8\u0bb5\u0b95\u0bae\u0bcd"
+        },
+        "historic/monument": {
+            "name": "\u0ba8\u0bbf\u0ba9\u0bc8\u0bb5\u0bc1\u0b9a\u0bcd\u0b9a\u0bbf\u0ba9\u0bcd\u0ba9\u0bae\u0bcd"
+        },
+        "junction": {
+            "name": "\u0b9a\u0ba8\u0bcd\u0ba4\u0bbf\u0baa\u0bcd\u0baa\u0bc1"
+        },
+        "landuse/churchyard": {
+            "name": "\u0b95\u0bcb\u0baf\u0bbf\u0bb2\u0bcd \u0bae\u0bc1\u0bb1\u0bcd\u0bb1\u0bae\u0bcd"
+        },
+        "landuse/construction": {
+            "name": "\u0b95\u0b9f\u0bcd\u0b9f\u0bc1\u0bae\u0bbe\u0ba9\u0bae\u0bcd"
+        },
+        "landuse/farm": {
+            "name": "\u0baa\u0ba3\u0bcd\u0ba3\u0bc8 \u0ba8\u0bbf\u0bb2\u0bae\u0bcd"
+        },
+        "landuse/farmland": {
+            "name": "\u0baa\u0ba3\u0bcd\u0ba3\u0bc8 \u0ba8\u0bbf\u0bb2\u0bae\u0bcd"
+        },
+        "landuse/farmyard": {
+            "name": "\u0baa\u0ba3\u0bcd\u0ba3\u0bc8"
+        },
+        "landuse/grass": {
+            "name": "\u0baa\u0bc1\u0bb2\u0bcd\u0bb5\u0bc6\u0bb3\u0bbf"
+        },
+        "landuse/landfill": {
+            "terms": "\u0b95\u0bb4\u0bbf\u0bb5\u0bc1"
+        },
+        "landuse/military": {
+            "name": "\u0b87\u0bb0\u0bbe\u0ba3\u0bc1\u0bb5\u0baa\u0bcd \u0baa\u0b95\u0bc1\u0ba4\u0bbf"
+        },
+        "landuse/military/office": {
+            "name": "\u0b87\u0bb0\u0bbe\u0ba3\u0bc1\u0bb5 \u0b85\u0bb2\u0bc1\u0bb5\u0bb2\u0b95\u0bae\u0bcd"
+        },
+        "leisure/common": {
+            "name": "\u0baa\u0bc6\u0bbe\u0ba4\u0bc1\u0bb5\u0bbe\u0ba9"
+        },
+        "leisure/dancing_school": {
+            "name": "\u0ba8\u0b9f\u0ba9\u0baa\u0bcd \u0baa\u0bb3\u0bcd\u0bb3\u0bbf"
+        },
+        "leisure/garden": {
+            "name": "\u0ba4\u0bcb\u0b9f\u0bcd\u0b9f\u0bae\u0bcd"
+        },
+        "leisure/golf_course": {
+            "name": "\u0b95\u0bc7\u0bbe\u0bb2\u0bcd\u0b83\u0baa\u0bcd \u0b95\u0bc7\u0bbe\u0bb0\u0bcd\u0bb8\u0bcd"
+        },
+        "leisure/marina": {
+            "name": "\u0bae\u0bb0\u0bbf\u0ba9\u0bbe"
+        },
+        "leisure/park": {
+            "name": "\u0baa\u0bc2\u0b99\u0bcd\u0b95\u0bbe"
+        },
+        "leisure/pitch/soccer": {
+            "name": "\u0b95\u0bbe\u0bb1\u0bcd\u0baa\u0ba8\u0bcd\u0ba4\u0bc1 \u0b85\u0bb0\u0b99\u0bcd\u0b95\u0bae\u0bcd"
+        },
+        "leisure/pitch/tennis": {
+            "name": "\u0b9f\u0bc6\u0ba9\u0bcd\u0ba9\u0bbf\u0b9a\u0bc1 \u0b85\u0bb0\u0b99\u0bcd\u0b95\u0bae\u0bcd"
+        },
+        "leisure/playground": {
+            "name": "\u0bb5\u0bbf\u0bb3\u0bc8\u0baf\u0bbe\u0b9f\u0bcd\u0b9f\u0bc1\u0ba4\u0bcd \u0ba4\u0bbf\u0b9f\u0bb2\u0bcd"
+        },
+        "leisure/stadium": {
+            "name": "\u0bb5\u0bbf\u0bb3\u0bc8\u0baf\u0bbe\u0b9f\u0bcd\u0b9f\u0bc1 \u0b85\u0bb0\u0b99\u0bcd\u0b95\u0bae\u0bcd"
+        },
+        "leisure/swimming_pool": {
+            "name": "\u0ba8\u0bc0\u0b9a\u0bcd\u0b9a\u0bb2\u0bcd \u0b95\u0bc1\u0bb3\u0bae\u0bcd"
+        },
+        "leisure/water_park": {
+            "name": "\u0ba4\u0ba3\u0bcd\u0ba3\u0bc0\u0bb0\u0bcd \u0baa\u0bc2\u0b99\u0bcd\u0b95\u0bbe"
+        },
+        "line": {
+            "name": "\u0b95\u0bcb\u0b9f\u0bc1"
+        },
+        "man_made": {
+            "name": "\u0bae\u0ba9\u0bbf\u0ba4\u0ba9\u0bbe\u0bb2\u0bcd \u0b95\u0b9f\u0bcd\u0b9f\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0ba4\u0bc1"
+        },
+        "man_made/bridge": {
+            "name": "\u0baa\u0bbe\u0bb2\u0bae\u0bcd"
+        },
+        "man_made/chimney": {
+            "name": "\u0baa\u0bc1\u0b95\u0bc8\u0baa\u0bc7\u0bbe\u0b95\u0bcd\u0b95\u0bbf"
+        },
+        "man_made/embankment": {
+            "name": "\u0b95\u0bb0\u0bc8"
+        },
+        "man_made/lighthouse": {
+            "name": "\u0b95\u0bb2\u0b99\u0bcd\u0b95\u0bb0\u0bc8 \u0bb5\u0bbf\u0bb3\u0b95\u0bcd\u0b95\u0bae\u0bcd"
+        },
+        "man_made/petroleum_well": {
+            "name": "\u0b8e\u0ba3\u0bcd\u0ba3\u0bc6\u0baf\u0bcd \u0b95\u0bbf\u0ba3\u0bb1\u0bc1"
+        },
+        "man_made/surveillance": {
+            "name": "\u0b95\u0ba3\u0bcd\u0b95\u0bbe\u0ba3\u0bbf\u0baa\u0bcd\u0baa\u0bc1"
+        },
+        "man_made/tower": {
+            "name": "\u0b95\u0bcb\u0baa\u0bc1\u0bb0\u0bae\u0bcd"
+        },
+        "man_made/wastewater_plant": {
+            "name": "\u0ba8\u0bc0\u0bb0\u0bcd \u0b9a\u0bc1\u0ba4\u0bcd\u0ba4\u0bbf\u0b95\u0bb0\u0bbf\u0baa\u0bcd\u0baa\u0bc1 \u0ba8\u0bbf\u0bb2\u0bc8\u0baf\u0bae\u0bcd"
+        },
+        "man_made/water_tower": {
+            "name": "\u0ba4\u0ba3\u0bcd\u0ba3\u0bc0\u0bb0\u0bcd\u0ba4\u0bcd \u0ba4\u0bca\u0b9f\u0bcd\u0b9f\u0bbf"
+        },
+        "man_made/water_well": {
+            "name": "\u0ba4\u0ba3\u0bcd\u0ba3\u0bc0\u0bb0\u0bcd\u0b95\u0bcd \u0b95\u0bbf\u0ba3\u0bb1\u0bc1"
+        },
+        "man_made/watermill": {
+            "name": "\u0ba4\u0ba3\u0bcd\u0ba3\u0bc0\u0bb0\u0bcd \u0b86\u0bb2\u0bc8"
+        },
+        "man_made/windmill": {
+            "name": "\u0b95\u0bbe\u0bb1\u0bcd\u0bb1\u0bbe\u0bb2\u0bc8"
+        },
+        "man_made/works": {
+            "name": "\u0b86\u0bb2\u0bc8"
+        },
+        "natural": {
+            "name": "\u0b87\u0baf\u0bb1\u0bcd\u0b95\u0bc8\u0baf\u0bbe\u0ba9"
+        },
+        "natural/beach": {
+            "name": "\u0b95\u0b9f\u0bb1\u0bcd\u0b95\u0bb0\u0bc8"
+        },
+        "natural/cave_entrance": {
+            "name": "\u0b95\u0bc1\u0b95\u0bc8 \u0ba8\u0bc1\u0bb4\u0bc8\u0bb5\u0bbe\u0baf\u0bbf\u0bb2\u0bcd"
+        },
+        "natural/coastline": {
+            "name": "\u0b95\u0b9f\u0bb1\u0bcd\u0b95\u0bb0\u0bc8"
+        },
+        "natural/glacier": {
+            "name": "\u0baa\u0ba9\u0bbf\u0baa\u0bcd \u0baa\u0bbe\u0bb1\u0bc8"
+        },
+        "natural/grassland": {
+            "name": "\u0baa\u0bc1\u0bb2\u0bcd\u0bb5\u0bc6\u0bb3\u0bbf\u0b95\u0bb3\u0bcd"
+        },
+        "natural/mud": {
+            "name": "\u0b9a\u0bc7\u0bb1\u0bc1"
+        },
+        "natural/peak": {
+            "name": "\u0bae\u0bb2\u0bc8 \u0b89\u0b9a\u0bcd\u0b9a\u0bbf"
+        },
+        "natural/tree": {
+            "name": "\u0bae\u0bb0\u0bae\u0bcd"
+        },
+        "natural/tree_row": {
+            "name": "\u0bae\u0bb0\u0bae\u0bcd \u0bb5\u0bb0\u0bbf\u0b9a\u0bc8"
+        },
+        "natural/volcano": {
+            "name": "\u0b8e\u0bb0\u0bbf\u0bae\u0bb2\u0bc8"
+        },
+        "natural/water": {
+            "name": "\u0ba4\u0ba3\u0bcd\u0ba3\u0bc0\u0bb0\u0bcd"
+        },
+        "natural/water/lake": {
+            "name": "\u0b8f\u0bb0\u0bbf"
+        },
+        "natural/water/pond": {
+            "name": "\u0b95\u0bc1\u0bb3\u0bae\u0bcd"
+        },
+        "natural/water/reservoir": {
+            "name": "\u0ba8\u0bc0\u0bb0\u0bcd\u0ba4\u0bcd \u0ba4\u0bc7\u0b95\u0bcd\u0b95\u0bae\u0bcd"
+        },
+        "natural/wetland": {
+            "name": "\u0b88\u0bb0\u0ba8\u0bbf\u0bb2\u0bae\u0bcd"
+        },
+        "natural/wood": {
+            "name": "\u0bae\u0bb0\u0bae\u0bcd"
+        },
+        "office": {
+            "name": "\u0b85\u0bb2\u0bc1\u0bb5\u0bb2\u0b95\u0bae\u0bcd"
+        },
+        "office/administrative": {
+            "name": "\u0ba8\u0bbf\u0bb0\u0bc1\u0bb5\u0bbe\u0b95 \u0b85\u0bb2\u0bc1\u0bb5\u0bb2\u0b95\u0bae\u0bcd"
+        },
+        "office/advertising_agency": {
+            "name": "\u0bb5\u0bbf\u0bb3\u0bae\u0bcd\u0baa\u0bb0 \u0bae\u0bc1\u0b95\u0bb5\u0bb0\u0bcd"
+        },
+        "office/employment_agency": {
+            "name": "\u0bb5\u0bc7\u0bb2\u0bc8\u0bb5\u0bbe\u0baf\u0bcd\u0baa\u0bcd\u0baa\u0bc1 \u0bae\u0bc1\u0b95\u0bb5\u0bb0\u0bcd"
+        },
+        "office/government": {
+            "name": "\u0b85\u0bb0\u0b9a\u0bc1 \u0b85\u0bb2\u0bc1\u0bb5\u0bb2\u0b95\u0bae\u0bcd"
+        },
+        "office/government/register_office": {
+            "name": "\u0baa\u0ba4\u0bbf\u0bb5\u0bc1 \u0b85\u0bb2\u0bc1\u0bb5\u0bb2\u0b95\u0bae\u0bcd"
+        },
+        "office/government/tax": {
+            "name": "\u0bb5\u0bb0\u0bbf \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0bb5\u0bb0\u0bc1\u0bb5\u0bbe\u0baf\u0bcd \u0b85\u0bb2\u0bc1\u0bb5\u0bb2\u0b95\u0bae\u0bcd"
+        },
+        "office/lawyer": {
+            "name": "\u0b9a\u0b9f\u0bcd\u0b9f \u0b85\u0bb2\u0bc1\u0bb5\u0bb2\u0b95\u0bae\u0bcd"
+        },
+        "office/lawyer/notary": {
+            "name": "\u0b86\u0baf\u0ba4\u0bcd\u0ba4\u0bc1\u0bb1\u0bc8 \u0b8e\u0bb4\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1\u0baa\u0ba4\u0bbf\u0bb5\u0bbe\u0bb3\u0bb0\u0bcd \u0b85\u0bb2\u0bc1\u0bb5\u0bb2\u0b95\u0bae\u0bcd"
+        },
+        "office/newspaper": {
+            "name": "\u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0ba4\u0bcd\u0ba4\u0bbe\u0bb3\u0bcd \u0b85\u0bb2\u0bc1\u0bb5\u0bb2\u0b95\u0bae\u0bcd"
+        },
+        "office/physician": {
+            "name": "\u0bae\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1\u0bb5\u0bb0\u0bcd"
+        },
+        "office/political_party": {
+            "name": "\u0b85\u0bb0\u0b9a\u0bbf\u0baf\u0bb2\u0bcd \u0b95\u0b9f\u0bcd\u0b9a\u0bbf"
+        },
+        "office/private_investigator": {
+            "name": "\u0ba4\u0ba9\u0bbf\u0baf\u0bbe\u0bb0\u0bcd \u0ba4\u0bc1\u0baa\u0bcd\u0baa\u0bc1 \u0ba4\u0bc1\u0bb2\u0b95\u0bcd\u0b95\u0bc1\u0bae\u0bcd \u0b85\u0bb2\u0bc1\u0bb5\u0bb2\u0b95\u0bae\u0bcd"
+        },
+        "office/research": {
+            "name": "\u0b86\u0bb0\u0bbe\u0baf\u0bcd\u0b9a\u0bcd\u0b9a\u0bbf \u0b85\u0bb2\u0bc1\u0bb5\u0bb2\u0b95\u0bae\u0bcd"
+        },
+        "office/surveyor": {
+            "name": "\u0ba8\u0bbf\u0bb2 \u0b85\u0bb3\u0bb5\u0bbe\u0baf\u0bcd\u0bb5\u0bbe\u0bb3\u0bb0\u0bcd \u0b85\u0bb2\u0bc1\u0bb5\u0bb2\u0b95\u0bae\u0bcd"
+        },
+        "office/telecommunication": {
+            "name": "\u0ba4\u0bca\u0bb2\u0bc8\u0ba4\u0bcd\u0ba4\u0bca\u0b9f\u0bb0\u0bcd\u0baa\u0bc1 \u0b85\u0bb2\u0bc1\u0bb5\u0bb2\u0b95\u0bae\u0bcd"
+        },
+        "office/travel_agent": {
+            "name": "\u0baa\u0baf\u0ba3 \u0bae\u0bc1\u0b95\u0bb5\u0bb0\u0bcd"
+        },
+        "place": {
+            "name": "\u0b87\u0b9f\u0bae\u0bcd"
+        },
+        "place/city": {
+            "name": "\u0bae\u0bbe\u0ba8\u0b95\u0bb0\u0bae\u0bcd"
+        },
+        "place/farm": {
+            "name": "\u0baa\u0ba3\u0bcd\u0ba3\u0bc8"
+        },
+        "place/island": {
+            "name": "\u0ba4\u0bc0\u0bb5\u0bc1"
+        },
+        "place/neighbourhood": {
+            "name": "\u0ba8\u0b95\u0bb0\u0bcd\u0baa\u0bcd\u0baa\u0b95\u0bc1\u0ba4\u0bbf"
+        },
+        "place/square": {
+            "name": "\u0b9a\u0ba4\u0bc1\u0b95\u0bcd\u0b95\u0bae\u0bcd"
+        },
+        "place/town": {
+            "name": "\u0ba8\u0b95\u0bb0\u0bae\u0bcd"
+        },
+        "place/village": {
+            "name": "\u0b95\u0bbf\u0bb0\u0bbe\u0bae\u0bae\u0bcd"
+        },
+        "point": {
+            "name": "\u0baa\u0bc1\u0bb3\u0bcd\u0bb3\u0bbf"
+        },
+        "power/line": {
+            "name": "\u0bae\u0bbf\u0ba9\u0bcd \u0b95\u0bae\u0bcd\u0baa\u0bbf"
+        },
+        "power/sub_station": {
+            "name": "\u0ba4\u0bc1\u0ba3\u0bc8\u0ba8\u0bbf\u0bb2\u0bc8\u0baf\u0bae\u0bcd"
+        },
+        "power/substation": {
+            "name": "\u0ba4\u0bc1\u0ba3\u0bc8\u0ba8\u0bbf\u0bb2\u0bc8\u0baf\u0bae\u0bcd"
+        },
+        "power/tower": {
+            "name": "\u0b85\u0ba4\u0bbf\u0b95-\u0bae\u0bbf\u0ba9\u0bcd\u0ba9\u0bb4\u0bc1\u0ba4\u0bcd\u0ba4\u0b95\u0bcd \u0b95\u0bcb\u0baa\u0bc1\u0bb0\u0bae\u0bcd"
+        },
+        "public_transport/platform_bus": {
+            "name": "\u0baa\u0bc7\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bc1 \u0ba8\u0bbf\u0bb1\u0bc1\u0ba4\u0bcd\u0ba4\u0bae\u0bcd  / \u0ba4\u0b9f\u0bae\u0bcd"
+        },
+        "public_transport/platform_light_rail": {
+            "name": "\u0b87\u0bb2\u0b95\u0bc1 \u0b87\u0bb0\u0baf\u0bbf\u0bb2\u0bcd \u0ba8\u0bbf\u0bb1\u0bc1\u0ba4\u0bcd\u0ba4\u0bae\u0bcd / \u0ba8\u0b9f\u0bc8\u0bae\u0bc7\u0b9f\u0bc8"
+        },
+        "public_transport/platform_train": {
+            "name": "\u0ba4\u0bca\u0b9f\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bc1 \u0ba8\u0bbf\u0bb1\u0bc1\u0ba4\u0bcd\u0ba4\u0bae\u0bcd / \u0ba8\u0b9f\u0bc8\u0bae\u0bc7\u0b9f\u0bc8"
+        },
+        "public_transport/platform_tram": {
+            "name": "\u0b9f\u0bbf\u0bb0\u0bbe\u0bae\u0bcd \u0ba8\u0bbf\u0bb1\u0bc1\u0ba4\u0bcd\u0ba4\u0bae\u0bcd / \u0ba8\u0b9f\u0bc8\u0bae\u0bc7\u0b9f\u0bc8"
+        },
+        "public_transport/station_light_rail": {
+            "name": "\u0b87\u0bb2\u0b95\u0bc1 \u0b87\u0bb0\u0baf\u0bbf\u0bb2\u0bcd \u0ba8\u0bbf\u0bb2\u0bc8\u0baf\u0bae\u0bcd"
+        },
+        "public_transport/station_train": {
+            "name": "\u0ba4\u0bca\u0b9f\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bc1 \u0ba8\u0bbf\u0bb2\u0bc8\u0baf\u0bae\u0bcd"
+        },
+        "public_transport/stop_position_light_rail": {
+            "name": "\u0b87\u0bb2\u0b95\u0bc1 \u0b87\u0bb0\u0baf\u0bbf\u0bb2\u0bcd \u0ba8\u0bbf\u0bb1\u0bc1\u0ba4\u0bcd\u0ba4\u0bae\u0bcd \u0b87\u0b9f\u0bae\u0bcd"
+        },
+        "railway": {
+            "name": "\u0b87\u0bb0\u0baf\u0bbf\u0bb2\u0bcd\u0bb5\u0bc7"
+        },
+        "railway/abandoned": {
+            "name": "\u0baa\u0baf\u0ba9\u0bcd\u0baa\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0baa\u0bcd\u0baa\u0b9f\u0bbe\u0ba4 \u0b87\u0bb0\u0baf\u0bbf\u0bb2\u0bcd\u0bb5\u0bc7"
+        },
+        "railway/disused": {
+            "name": "\u0baa\u0baf\u0ba9\u0bcd\u0baa\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0baa\u0bcd\u0baa\u0b9f\u0bbe\u0ba4 \u0b87\u0bb0\u0baf\u0bbf\u0bb2\u0bcd\u0bb5\u0bc7"
+        },
+        "railway/light_rail": {
+            "name": "\u0b87\u0bb2\u0b95\u0bc1 \u0b87\u0bb0\u0baf\u0bbf\u0bb2\u0bcd"
+        },
+        "railway/milestone": {
+            "name": "\u0b87\u0bb0\u0baf\u0bbf\u0bb2\u0bcd\u0bb5\u0bc7 \u0bae\u0bc8\u0bb2\u0bcd\u0b95\u0bb2\u0bcd"
+        },
+        "railway/monorail": {
+            "name": "\u0bae\u0bcb\u0ba9\u0bcb \u0b87\u0bb0\u0baf\u0bbf\u0bb2\u0bcd"
+        },
+        "railway/rail": {
+            "name": "\u0b87\u0bb0\u0baf\u0bbf\u0bb2\u0bcd"
+        },
+        "railway/station": {
+            "name": "\u0ba4\u0bca\u0b9f\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bc1 \u0ba8\u0bbf\u0bb2\u0bc8\u0baf\u0bae\u0bcd"
+        },
+        "railway/subway": {
+            "name": "\u0b9a\u0bc1\u0bb0\u0b99\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0bbe\u0ba4\u0bc8"
+        },
+        "railway/subway_entrance": {
+            "name": "\u0b9a\u0bc1\u0bb0\u0b99\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0bbe\u0ba4\u0bc8 \u0ba8\u0bc1\u0bb4\u0bc8\u0bb5\u0bc1\u0bb5\u0bbe\u0baf\u0bbf\u0bb2\u0bcd"
+        },
+        "railway/tram": {
+            "name": "\u0b85\u0bae\u0bbf\u0bb4\u0bcd \u0ba4\u0ba3\u0bcd\u0b9f\u0bc2\u0bb0\u0bcd\u0ba4\u0bbf"
+        },
+        "relation": {
+            "name": "\u0ba4\u0bca\u0b9f\u0bb0\u0bcd\u0baa\u0bc1"
+        },
+        "roundabout": {
+            "name": "\u0bb5\u0b9f\u0bcd\u0b9f\u0b9a\u0bcd\u0b9a\u0bc1\u0bb1\u0bcd\u0bb1\u0bc1 \u0bb5\u0bb4\u0bbf"
+        },
+        "seamark/mooring": {
+            "name": "\u0baa\u0bbf\u0ba3\u0bc8\u0baa\u0bcd\u0baa\u0bc1 \u0bae\u0bbf\u0ba4\u0bb5\u0bc8"
+        },
+        "shop": {
+            "name": "\u0b95\u0b9f\u0bc8"
+        },
+        "shop/alcohol": {
+            "name": "\u0bae\u0ba4\u0bc1\u0baa\u0bbe\u0ba9\u0b95\u0bcd \u0b95\u0b9f\u0bc8"
+        },
+        "shop/anime": {
+            "name": "\u0baa\u0b9a\u0bc8\u0b95\u0bcd \u0b95\u0b9f\u0bc8"
+        },
+        "shop/antiques": {
+            "name": "\u0baa\u0bb4\u0bae\u0bcd\u0baa\u0bca\u0bb0\u0bc1\u0bb3\u0bcd \u0b85\u0b99\u0bcd\u0b95\u0bbe\u0b9f\u0bbf"
+        },
+        "shop/art": {
+            "name": "\u0b95\u0bb2\u0bc8 \u0b85\u0b99\u0bcd\u0b95\u0bbe\u0b9f\u0bbf"
+        },
+        "shop/bakery": {
+            "name": "\u0b85\u0b9f\u0bc1\u0bae\u0ba9\u0bc8"
+        },
+        "shop/beauty": {
+            "name": "\u0b85\u0bb4\u0b95\u0bc1\u0b9a\u0bbe\u0ba4\u0ba9\u0b95\u0bcd \u0b95\u0b9f\u0bc8"
+        },
+        "shop/bicycle": {
+            "name": "\u0bae\u0bbf\u0ba4\u0bbf\u0bb5\u0ba3\u0bcd\u0b9f\u0bbf\u0b95\u0bcd \u0b95\u0b9f\u0bc8"
+        },
+        "shop/books": {
+            "name": "\u0baa\u0bc1\u0ba4\u0bcd\u0ba4\u0b95\u0b95\u0bcd \u0b95\u0b9f\u0bc8"
+        },
+        "shop/butcher": {
+            "name": "\u0b87\u0bb1\u0bc8\u0b9a\u0bcd\u0b9a\u0bbf\u0b95\u0bcd \u0b95\u0b9f\u0bc8"
+        },
+        "shop/car": {
+            "name": "\u0bb5\u0bbe\u0b95\u0ba9 \u0bb5\u0bbf\u0bb1\u0bcd\u0baa\u0ba9\u0bc8\u0baf\u0b95\u0bae\u0bcd"
+        },
+        "shop/chemist": {
+            "name": "\u0bae\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0b95\u0bae\u0bcd"
+        },
+        "shop/clothes": {
+            "name": "\u0b9c\u0bb5\u0bc1\u0bb3\u0bbf\u0b95\u0bcd \u0b95\u0b9f\u0bc8"
+        },
+        "shop/computer": {
+            "name": "\u0b95\u0ba3\u0bbf\u0ba9\u0bbf \u0bb5\u0bbf\u0bb1\u0bcd\u0baa\u0ba9\u0bc8\u0baf\u0b95\u0bae\u0bcd"
+        },
+        "shop/florist": {
+            "name": "\u0baa\u0bc2\u0b95\u0bcd\u0b95\u0b9f\u0bc8"
+        },
+        "shop/laundry": {
+            "name": "\u0b9a\u0bb2\u0bb5\u0bc8\u0baf\u0b95\u0bae\u0bcd"
+        },
+        "shop/leather": {
+            "name": "\u0ba4\u0bcb\u0bb2\u0bcd \u0b95\u0b9f\u0bc8"
+        },
+        "shop/mall": {
+            "name": "\u0baa\u0bc7\u0bb0\u0b99\u0bcd\u0b95\u0bbe\u0b9f\u0bbf"
+        },
+        "shop/shoes": {
+            "name": "\u0b95\u0bbe\u0bb2\u0ba3\u0bbf\u0baf\u0b95\u0bae\u0bcd"
+        },
+        "shop/tailor": {
+            "name": "\u0ba4\u0bc8\u0baf\u0bb2\u0bcd\u0b95\u0bbe\u0bb0\u0bb0\u0bcd"
+        },
+        "shop/tea": {
+            "name": "\u0ba4\u0bc7\u0ba8\u0bc0\u0bb0\u0bcd \u0b95\u0b9f\u0bc8"
+        },
+        "shop/tobacco": {
+            "name": "\u0baa\u0bc1\u0b95\u0bc8\u0baf\u0bbf\u0bb2\u0bc8\u0b95\u0bcd \u0b95\u0b9f\u0bc8"
+        },
+        "shop/toys": {
+            "name": "\u0bb5\u0bbf\u0bb3\u0bc8\u0baf\u0bbe\u0b9f\u0bcd\u0b9f\u0bc1\u0baa\u0bcd \u0baa\u0bca\u0bb0\u0bc1\u0b9f\u0bcd \u0b95\u0b9f\u0bc8"
+        },
+        "shop/travel_agency": {
+            "name": "\u0baa\u0baf\u0ba3 \u0bae\u0bc1\u0b95\u0bb5\u0bb0\u0bcd"
+        },
+        "shop/weapons": {
+            "name": "\u0b86\u0baf\u0bc1\u0ba4\u0bb5\u0bbf\u0bb1\u0bcd\u0baa\u0ba9\u0bc8\u0b95\u0bcd \u0b95\u0b9f\u0bc8"
+        },
+        "shop/wholesale": {
+            "name": "\u0bae\u0bca\u0ba4\u0bcd\u0ba4\u0bb5\u0bbf\u0bb2\u0bc8\u0b95\u0bcd \u0b95\u0b9f\u0bc8"
+        },
+        "tourism": {
+            "name": "\u0b9a\u0bc1\u0bb1\u0bcd\u0bb1\u0bc1\u0bb2\u0bbe"
+        },
+        "tourism/aquarium": {
+            "name": "\u0bae\u0bc0\u0ba9\u0bcd \u0b95\u0bbe\u0b9f\u0bcd\u0b9a\u0bbf\u0baf\u0b95\u0bae\u0bcd"
+        },
+        "tourism/artwork": {
+            "name": "\u0b93\u0bb5\u0bbf\u0baf\u0bae\u0bcd"
+        },
+        "tourism/artwork/statue": {
+            "name": "\u0b9a\u0bbf\u0bb2\u0bc8"
+        },
+        "tourism/caravan_site": {
+            "name": "\u0b86\u0bb0\u0bcd\u0bb5\u0bbf \u0baa\u0bc2\u0b99\u0bcd\u0b95\u0bbe"
+        },
+        "tourism/chalet": {
+            "name": "\u0bb5\u0bbf\u0b9f\u0bc1\u0bae\u0bc1\u0bb1\u0bc8 \u0b95\u0bc1\u0b9f\u0bbf\u0bb2\u0bcd"
+        },
+        "tourism/gallery": {
+            "name": "\u0b95\u0bb2\u0bc8\u0b95\u0bcd\u0b95\u0bc2\u0b9f\u0bae\u0bcd"
+        },
+        "tourism/guest_house": {
+            "name": "\u0bb5\u0bbf\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bbf\u0ba9\u0bb0\u0bcd \u0b87\u0bb2\u0bcd\u0bb2\u0bae\u0bcd"
+        },
+        "tourism/hostel": {
+            "name": "\u0bb5\u0bbf\u0b9f\u0bc1\u0ba4\u0bbf"
+        },
+        "tourism/hotel": {
+            "name": "\u0b89\u0ba3\u0bb5\u0b95\u0bae\u0bcd"
+        },
+        "tourism/information": {
+            "name": "\u0ba4\u0b95\u0bb5\u0bb2\u0bcd"
+        },
+        "tourism/information/map": {
+            "name": "\u0bb5\u0bb0\u0bc8\u0baa\u0b9f\u0bae\u0bcd"
+        },
+        "tourism/information/office": {
+            "name": "\u0b9a\u0bc1\u0bb1\u0bcd\u0bb1\u0bc1\u0bb2\u0bbe\u0ba4\u0bcd \u0ba4\u0b95\u0bb5\u0bb2\u0bcd \u0b85\u0bb2\u0bc1\u0bb5\u0bb2\u0b95\u0bae\u0bcd"
+        },
+        "tourism/museum": {
+            "name": "\u0b85\u0bb0\u0bc1\u0b99\u0bcd\u0b95\u0bbe\u0b9f\u0bcd\u0b9a\u0bbf\u0baf\u0b95\u0bae\u0bcd"
+        },
+        "tourism/zoo": {
+            "name": "\u0b89\u0baf\u0bbf\u0bb0\u0bbf\u0baf\u0bb2\u0bcd \u0baa\u0bc2\u0b99\u0bcd\u0b95\u0bbe"
+        },
+        "traffic_calming/hump": {
+            "name": "\u0bb5\u0bc7\u0b95\u0ba4\u0bcd\u0ba4\u0b9f\u0bc8"
+        },
+        "type/boundary": {
+            "name": "\u0b8e\u0bb2\u0bcd\u0bb2\u0bc8"
+        },
+        "type/restriction": {
+            "name": "\u0b95\u0b9f\u0bcd\u0b9f\u0bc1\u0baa\u0bcd\u0baa\u0bbe\u0b9f\u0bc1"
+        },
+        "type/restriction/no_left_turn": {
+            "name": "\u0b87\u0b9f\u0ba4\u0bc1\u0baa\u0bc1\u0bb1\u0bae\u0bcd \u0b9a\u0bc6\u0bb2\u0bcd\u0bb2\u0b95\u0bcd \u0b95\u0bc2\u0b9f\u0bbe\u0ba4\u0bc1"
+        },
+        "type/restriction/no_right_turn": {
+            "name": "\u0bb5\u0bb2\u0ba4\u0bc1 \u0bb5\u0bb3\u0bc8\u0bb5\u0bc1\u0b95\u0bcd \u0b95\u0bc2\u0b9f\u0bbe\u0ba4\u0bc1"
+        },
+        "type/restriction/no_straight_on": {
+            "name": "\u0ba8\u0bc7\u0bb0\u0bbe\u0b95\u0baa\u0bcd \u0baa\u0bcb\u0b95\u0b95\u0bcd \u0b95\u0bc2\u0b9f\u0bbe\u0ba4\u0bc1"
+        },
+        "type/restriction/only_left_turn": {
+            "name": "\u0b87\u0b9f\u0ba4\u0bc1 \u0bb5\u0bb3\u0bc8\u0bb5\u0bc1 \u0bae\u0b9f\u0bcd\u0b9f\u0bc1\u0bae\u0bcd"
+        },
+        "type/route": {
+            "name": "\u0bb5\u0bb4\u0bbf"
+        },
+        "type/route/bicycle": {
+            "name": "\u0bae\u0bbf\u0ba4\u0bbf\u0bb5\u0ba3\u0bcd\u0b9f\u0bbf\u0baa\u0bcd \u0baa\u0bbe\u0ba4\u0bc8"
+        },
+        "type/route/bus": {
+            "name": "\u0baa\u0bc7\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bc1 \u0ba4\u0b9f\u0bae\u0bcd"
+        },
+        "type/route/foot": {
+            "name": "\u0ba8\u0b9f\u0bc8\u0baa\u0bcd \u0baa\u0bbe\u0ba4\u0bc8"
+        },
+        "type/route/light_rail": {
+            "name": "\u0b87\u0bb2\u0b95\u0bc1 \u0b87\u0bb0\u0baf\u0bbf\u0bb2\u0bcd \u0baa\u0bbe\u0ba4\u0bc8"
+        },
+        "type/route/pipeline": {
+            "name": "\u0b95\u0bc1\u0bb4\u0bbe\u0baf\u0bcd \u0ba4\u0bca\u0b9f\u0bb0\u0bcd \u0baa\u0bbe\u0ba4\u0bc8"
+        },
+        "type/route/power": {
+            "name": "\u0bae\u0bbf\u0ba9\u0bcd \u0baa\u0bbe\u0ba4\u0bc8"
+        },
+        "type/route/road": {
+            "name": "\u0b9a\u0bbe\u0bb2\u0bc8 \u0bb5\u0bb4\u0bbf"
+        },
+        "type/route/train": {
+            "name": "\u0ba4\u0bcb\u0b9f\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bc1 \u0bb5\u0bb4\u0bbf\u0ba4\u0bcd\u0ba4\u0b9f\u0bae\u0bcd"
+        },
+        "type/route/tram": {
+            "name": "\u0b9f\u0bbf\u0bb0\u0bbe\u0bae\u0bcd \u0bb5\u0bb4\u0bbf\u0ba4\u0bcd\u0ba4\u0b9f\u0bae\u0bcd"
+        },
+        "type/site": {
+            "name": "\u0ba4\u0bb3\u0bae\u0bcd"
+        },
+        "type/waterway": {
+            "name": "\u0ba8\u0bc0\u0bb0\u0bcd\u0bb5\u0bb4\u0bbf"
+        },
+        "vertex": {
+            "name": "\u0baa\u0bbf\u0bb1"
+        },
+        "waterway": {
+            "name": "\u0ba8\u0bc0\u0bb0\u0bcd\u0bb5\u0bb4\u0bbf"
+        },
+        "waterway/canal": {
+            "name": "\u0b95\u0bbe\u0bb2\u0bcd\u0bb5\u0bbe\u0baf\u0bcd"
+        },
+        "waterway/dam": {
+            "name": "\u0b85\u0ba3\u0bc8"
+        },
+        "waterway/ditch": {
+            "name": "\u0b9a\u0bbe\u0b95\u0bcd\u0b95\u0b9f\u0bc8"
+        },
+        "waterway/drain": {
+            "name": "\u0b95\u0bb4\u0bbf\u0bb5\u0bc1\u0ba8\u0bc0\u0bb0\u0bcd"
+        },
+        "waterway/milestone": {
+            "name": "\u0ba8\u0bc0\u0bb0\u0bcd\u0bb5\u0bb4\u0bbf \u0bae\u0bc8\u0bb2\u0bcd\u0b95\u0bb2\u0bcd"
+        },
+        "waterway/river": {
+            "name": "\u0b86\u0bb1\u0bc1"
+        },
+        "waterway/riverbank": {
+            "name": "\u0b86\u0bb1\u0bcd\u0bb1\u0b99\u0bcd\u0b95\u0bb0\u0bc8"
+        },
+        "waterway/stream": {
+            "name": "\u0b93\u0b9f\u0bc8"
+        },
+        "waterway/waterfall": {
+            "name": "\u0ba8\u0bc0\u0bb0\u0bcd\u0bb5\u0bc0\u0bb4\u0bcd\u0b9a\u0bcd\u0b9a\u0bbf"
+        },
+        "waterway/weir": {
+            "name": "\u0b9a\u0bbf\u0bb1\u0bcd\u0bb1\u0ba3\u0bc8"
+        }
+    }
+}

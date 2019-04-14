@@ -1,0 +1,22 @@
+{
+    "presets": {
+        "amenity/drinking_water": {
+            "name": "\u0db6\u0ddc\u0db1\u0dc0\u0dad\u0dd4\u0dbb"
+        },
+        "man_made/water_tower": {
+            "name": "\u0da2\u0dbd \u0d9a\u0dd4\u0dbd\u0dd4\u0db1"
+        },
+        "man_made/water_well": {
+            "name": "\u0dc5\u0dd2\u0daf"
+        },
+        "natural/water": {
+            "name": "\u0da2\u0dbd\u0dba"
+        },
+        "shop/water_sports": {
+            "name": "\u0da2\u0dbd \u0d9a\u0dca\u200d\u0dbb\u0dd3\u0da9\u0dcf/ \u0db4\u0dd2\u0dc4\u0dd2\u0db1\u0dd4\u0db8\u0dca \u0dad\u0da7\u0dcf\u0d9a\u0dba"
+        },
+        "waterway": {
+            "name": "\u0da2\u0dbd \u0db8\u0dcf\u0dbb\u0dca\u0d9c\u0dba"
+        }
+    }
+}

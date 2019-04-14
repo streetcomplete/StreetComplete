@@ -1,0 +1,3515 @@
+{
+    "presets": {
+        "address": {
+            "name": "Lakc\u00edm",
+            "terms": "c\u00edm, lakc\u00edm, h\u00e1zsz\u00e1m, utca"
+        },
+        "advertising/billboard": {
+            "name": "\u00d3ri\u00e1splak\u00e1t",
+            "terms": "plak\u00e1t,\u00f3ri\u00e1splak\u00e1t,rekl\u00e1mt\u00e1bla,poszter, \u00f3ri\u00e1sposzter"
+        },
+        "advertising/column": {
+            "name": "Hirdet\u0151oszlop"
+        },
+        "aerialway": {
+            "name": "Dr\u00f3tk\u00f6t\u00e9lp\u00e1lya"
+        },
+        "aerialway/cable_car": {
+            "name": "Kabinos felvon\u00f3",
+            "terms": "Nagykabinos lift, s\u00edfelvon\u00f3"
+        },
+        "aerialway/chair_lift": {
+            "name": "\u00dcl\u0151lift",
+            "terms": "libeg\u0151, s\u00edfelvon\u00f3"
+        },
+        "aerialway/drag_lift": {
+            "name": "H\u00faz\u00f3lift",
+            "terms": "s\u00edfelvon\u00f3, cs\u00e1k\u00e1nyos, t\u00e1ny\u00e9ros"
+        },
+        "aerialway/gondola": {
+            "name": "Gondola",
+            "terms": "gondolakabinos felvon\u00f3, kabinos felvon\u00f3"
+        },
+        "aerialway/goods": {
+            "name": "Teherfelvon\u00f3",
+            "terms": "teherlift"
+        },
+        "aerialway/magic_carpet": {
+            "name": "Sz\u00e1ll\u00edt\u00f3szalag-felvon\u00f3",
+            "terms": "var\u00e1zssz\u0151nyeg, rep\u00fcl\u0151sz\u0151nyeg"
+        },
+        "aerialway/mixed_lift": {
+            "name": "Vegyes felvon\u00f3",
+            "terms": "hibrid felvon\u00f3"
+        },
+        "aerialway/platter": {
+            "name": "T\u00e1ny\u00e9ros felvon\u00f3",
+            "terms": "T\u00e1ny\u00e9ros, h\u00faz\u00f3lift"
+        },
+        "aerialway/pylon": {
+            "name": "Dr\u00f3tk\u00f6t\u00e9lp\u00e1lya-oszlop",
+            "terms": "oszlop, libeg\u0151oszlop"
+        },
+        "aerialway/rope_tow": {
+            "name": "Kapaszkod\u00f3lift",
+            "terms": "k\u00f6t\u00e9llift, h\u00faz\u00f3lift, vontat\u00f3lift"
+        },
+        "aerialway/station": {
+            "name": "Felvon\u00f3\u00e1llom\u00e1s"
+        },
+        "aerialway/t-bar": {
+            "name": "Cs\u00e1k\u00e1nyos felvon\u00f3",
+            "terms": "cs\u00e1k\u00e1nyos, h\u00faz\u00f3lift"
+        },
+        "aeroway": {
+            "name": "L\u00e9gi k\u00f6zeled\u00e9s"
+        },
+        "aeroway/aerodrome": {
+            "name": "Rep\u00fcl\u0151t\u00e9r",
+            "terms": "rep\u00fcl\u0151t\u00e9r, rept\u00e9r"
+        },
+        "aeroway/apron": {
+            "name": "Forgalmi el\u0151t\u00e9r",
+            "terms": "rep\u00fcl\u0151 parkol\u00f3, el\u0151t\u00e9r"
+        },
+        "aeroway/gate": {
+            "name": "Rep\u00fcl\u0151t\u00e9ri kapu",
+            "terms": "rept\u00e9rkapu,l\u00e9gikapu"
+        },
+        "aeroway/hangar": {
+            "name": "Hang\u00e1r",
+            "terms": "hang\u00e1r, rep\u00fcl\u0151g\u00e9pgar\u00e1zs, rep\u00fcl\u0151g\u00e9pszerviz"
+        },
+        "aeroway/helipad": {
+            "name": "Helikopter-lesz\u00e1ll\u00f3hely",
+            "terms": "heliport, helikopter lesz\u00e1ll\u00f3, helpad"
+        },
+        "aeroway/runway": {
+            "name": "Kifut\u00f3p\u00e1lya",
+            "terms": "fut\u00f3p\u00e1lya, lesz\u00e1ll\u00f3p\u00e1lya"
+        },
+        "aeroway/taxiway": {
+            "name": "Gurul\u00f3\u00fat",
+            "terms": "taxi\u00fat"
+        },
+        "aeroway/terminal": {
+            "name": "Rep\u00fcl\u0151t\u00e9ri termin\u00e1l",
+            "terms": "termin\u00e1l,rept\u00e9ri termin\u00e1l,l\u00e9gi p\u00e1lyaudvar, utasforgalmi \u00e9p\u00fclet"
+        },
+        "amenity": {
+            "name": "Hasznos \u00e9s fontos szolg\u00e1ltat\u00e1s"
+        },
+        "amenity/animal_boarding": {
+            "name": "\u00c1llatpanzi\u00f3",
+            "terms": "\u00e1llatsz\u00e1ll\u00f3, macska, kutya, l\u00f3, kismacska, h\u00e1zi\u00e1llathotel, h\u00fcll\u0151"
+        },
+        "amenity/animal_breeding": {
+            "name": "\u00c1llatteny\u00e9szt\u0151",
+            "terms": "teny\u00e9szt\u0151, bika, macska, teh\u00e9n, kutya, l\u00f3, h\u00fcll\u0151"
+        },
+        "amenity/animal_shelter": {
+            "name": "\u00c1llatmenhely",
+            "terms": "\u00f6r\u00f6kbefogad\u00e1s, kutya, macska, l\u00f3, \u00e1llatmenhely, h\u00fcll\u0151, menhely"
+        },
+        "amenity/arts_centre": {
+            "name": "M\u0171v\u00e9szeti k\u00f6zpont",
+            "terms": "gal\u00e9ria,ki\u00e1ll\u00edt\u00e1s, ki\u00e1ll\u00edt\u00f3 terem,t\u00e1rlat,k\u00e9pz\u0151m\u0171v\u00e9szet,fest\u00e9szet,k\u00e9pek"
+        },
+        "amenity/atm": {
+            "name": "Bankautomata",
+            "terms": "ATM, P\u00e9nzautomata, P\u00e9nzkiad\u00f3 automata"
+        },
+        "amenity/bank": {
+            "name": "Bank",
+            "terms": "Takar\u00e9ksz\u00f6vetkezet, P\u00e9nzint\u00e9zet, Takar\u00e9k"
+        },
+        "amenity/bar": {
+            "name": "B\u00e1r",
+            "terms": "b\u00e1r, kocsma, \u00e9jszakai sz\u00f3rakoz\u00f3, lok\u00e1l"
+        },
+        "amenity/bbq": {
+            "name": "K\u00f6z\u00f6ss\u00e9gi grillez\u0151 - szallonas\u00fct\u0151",
+            "terms": "t\u00e1bort\u0171z,grill,piknik,t\u0171zrak\u00f3"
+        },
+        "amenity/bench": {
+            "name": "Pad",
+            "terms": "pad, \u00fcl\u00e9s, \u00fcl\u0151alkalmatoss\u00e1g"
+        },
+        "amenity/bicycle_parking": {
+            "name": "Ker\u00e9kp\u00e1rt\u00e1rol\u00f3",
+            "terms": "bicaj, bringa, bicikli, k\u00e9tkerek\u0171 parkol\u00f3"
+        },
+        "amenity/bicycle_rental": {
+            "name": "Ker\u00e9kp\u00e1rk\u00f6lcs\u00f6nz\u0151",
+            "terms": "bicajk\u00f6lcs\u00f6nz\u0151, bringak\u00f6lcs\u00f6nz\u00e9s, biciklik\u00f6lcs\u00f6nz\u00e9s"
+        },
+        "amenity/bicycle_repair_station": {
+            "name": "\u00d6n\u00e1ll\u00f3 ker\u00e9kp\u00e1rszerel\u0151 pont",
+            "terms": "ker\u00e9kp\u00e1rszerel\u00e9s, biciklijav\u00edt\u00e1s, bringajav\u00edt\u00f3"
+        },
+        "amenity/biergarten": {
+            "name": "S\u00f6rkert"
+        },
+        "amenity/boat_rental": {
+            "name": "Haj\u00f3k\u00f6lcs\u00f6nz\u0151",
+            "terms": "cs\u00f3nakk\u00f6lcs\u00f6nz\u0151"
+        },
+        "amenity/bureau_de_change": {
+            "name": "P\u00e9nzv\u00e1lt\u00f3",
+            "terms": "Valutav\u00e1lt\u00e1s, valuta v\u00e1lt\u00f3, p\u00e9nzv\u00e1lt\u00e1s, exchange"
+        },
+        "amenity/bus_station": {
+            "name": "Buszp\u00e1lyaudvar"
+        },
+        "amenity/cafe": {
+            "name": "K\u00e1v\u00e9z\u00f3",
+            "terms": "k\u00e1v\u00e9h\u00e1z, pressz\u00f3, cukr\u00e1szda"
+        },
+        "amenity/car_rental": {
+            "name": "Aut\u00f3k\u00f6lcs\u00f6nz\u0151",
+            "terms": "g\u00e9pkocsi, g\u00e9pj\u00e1rm\u0171, j\u00e1rm\u0171, k\u00f6cs\u00f6nz\u00e9s, b\u00e9rl\u00e9s"
+        },
+        "amenity/car_sharing": {
+            "name": "Aut\u00f3megoszt\u00f3",
+            "terms": "k\u00f6z\u00f6ss\u00e9gi aut\u00f3, k\u00f6z\u00f6ss\u00e9gi g\u00e9pj\u00e1rm\u0171"
+        },
+        "amenity/car_wash": {
+            "name": "Aut\u00f3mos\u00f3",
+            "terms": "kocsimos\u00f3"
+        },
+        "amenity/casino": {
+            "name": "Kaszin\u00f3",
+            "terms": "j\u00e1t\u00e9kkaszin\u00f3, j\u00e1t\u00e9kbarlang"
+        },
+        "amenity/charging_station": {
+            "name": "Elektromos t\u00f6lt\u0151\u00e1llom\u00e1s",
+            "terms": "villanyaut\u00f3 t\u00f6lt\u0151, elektromos aut\u00f3 t\u00f6lt\u0151\u00e1llom\u00e1s, elektromos t\u00f6lt\u0151\u00e1llom\u00e1s, t\u00f6lt\u0151oszlop,"
+        },
+        "amenity/childcare": {
+            "name": "B\u00f6lcs\u0151de",
+            "terms": "Csecsem\u0151otthon"
+        },
+        "amenity/cinema": {
+            "name": "Mozi",
+            "terms": "filmsz\u00ednh\u00e1z"
+        },
+        "amenity/clinic": {
+            "name": "Rendel\u0151int\u00e9zet",
+            "terms": "orvosi rendel\u0151, szakorvosi rendel\u0151, SZTK"
+        },
+        "amenity/clinic/abortion": {
+            "name": "Abortusz klinika",
+            "terms": "abortusz, magzat elhajt\u00e1s, klinika, k\u00f3rh\u00e1z, sz\u00fcl\u00e9szet, magzat,"
+        },
+        "amenity/clinic/fertility": {
+            "name": "Term\u00e9kenys\u00e9gi klinika",
+            "terms": "term\u00e9kenys\u00e9g, szaporod\u00e1s, klinika, k\u00f3rh\u00e1z, sperma, pete, lombik"
+        },
+        "amenity/clock": {
+            "name": "\u00d3ra",
+            "terms": "\u00f3ra"
+        },
+        "amenity/college": {
+            "name": "F\u0151iskola",
+            "terms": "f\u0151iskola, fels\u0151oktat\u00e1s, f\u0151suli"
+        },
+        "amenity/community_centre": {
+            "name": "K\u00f6z\u00f6ss\u00e9gi h\u00e1z",
+            "terms": "m\u0171vel\u0151d\u00e9si h\u00e1z, kult\u00farh\u00e1z, m\u0171vh\u00e1z, faluh\u00e1z"
+        },
+        "amenity/compressed_air": {
+            "name": "S\u0171r\u00edtett leveg\u0151",
+            "terms": "gumi, kompresszor"
+        },
+        "amenity/courthouse": {
+            "name": "B\u00edr\u00f3s\u00e1g",
+            "terms": "T\u00f6rv\u00e9nysz\u00e9k, K\u00faria , \u00cdt\u00e9l\u0151t\u00e1bla, B\u00edr\u00f3s\u00e1gi Hivatal, \u00edt\u00e9l\u0151sz\u00e9k"
+        },
+        "amenity/coworking_space": {
+            "name": "K\u00f6z\u00f6ss\u00e9gi iroda"
+        },
+        "amenity/crematorium": {
+            "name": "Kremat\u00f3rium",
+            "terms": "halotthamvaszt\u00f3"
+        },
+        "amenity/dentist": {
+            "name": "Fogorvos",
+            "terms": "Fog\u00e1sz, Fog\u00e1szat"
+        },
+        "amenity/doctors": {
+            "name": "Orvos",
+            "terms": "doktor, szakorvos, rendel\u0151, h\u00e1ziorvos, gyerekorvos"
+        },
+        "amenity/dojo": {
+            "name": "Harcm\u0171v\u00e9szeti edz\u0151terem / dodzso",
+            "terms": "kick-box,karate, kung fu, aikido, taekwando,  judo, jujitsu, kendo,capoeira,dzsudo,baranta,zenbukan,kempo,boksz,krav maga,csikung,vusu,saolin,kungfu,"
+        },
+        "amenity/drinking_water": {
+            "name": "Iv\u00f3v\u00edz",
+            "terms": "Iv\u00f3k\u00fat, k\u00fat, csap, k\u00f6zkifoly\u00f3, k\u00f6zk\u00fat, nyom\u00f3s k\u00fat, forr\u00e1s, v\u00edz"
+        },
+        "amenity/driving_school": {
+            "name": "Aut\u00f3siskola",
+            "terms": "jogos\u00edtv\u00e1ny, KRESZ"
+        },
+        "amenity/embassy": {
+            "name": "K\u00fclk\u00e9pviselet",
+            "terms": "nagyk\u00f6vets\u00e9g, k\u00f6vets\u00e9g,  konzul\u00e1tus, k\u00fclk\u00e9pviselet"
+        },
+        "amenity/fast_food": {
+            "name": "Gyors\u00e9tterem",
+            "terms": "pizza, gyros, gyorskaj\u00e1lda, l\u00e1ngos , b\u00fcf\u00e9, hamburger, hot dog"
+        },
+        "amenity/fast_food/burger": {
+            "name": "Hamburger gyors\u00e9tterem"
+        },
+        "amenity/fast_food/chicken": {
+            "name": "Csirke gyors\u00e9tterem"
+        },
+        "amenity/fast_food/fish_and_chips": {
+            "name": "Hal \u00e9s krumpli gyors\u00e9tterem"
+        },
+        "amenity/fast_food/kebab": {
+            "name": "Kebab gyors\u00e9tterem"
+        },
+        "amenity/fast_food/pizza": {
+            "name": "Pizza gyors\u00e9tterem"
+        },
+        "amenity/fast_food/sandwich": {
+            "name": "Szendvics gyors\u00e9tterem"
+        },
+        "amenity/ferry_terminal": {
+            "name": "Komp\u00e1llom\u00e1s / Termin\u00e1l"
+        },
+        "amenity/fire_station": {
+            "name": "T\u0171zolt\u00f3s\u00e1g",
+            "terms": "T\u0171zolt\u00f3\u00e1llom\u00e1s, t\u0171zolt\u00f3laktanya"
+        },
+        "amenity/food_court": {
+            "name": "\u00c9tkez\u0151t\u00e9r",
+            "terms": "food court, eb\u00e9dl\u0151"
+        },
+        "amenity/fountain": {
+            "name": "Sz\u00f6k\u0151k\u00fat",
+            "terms": "k\u00fat, d\u00edszk\u00fat"
+        },
+        "amenity/fuel": {
+            "name": "Benzink\u00fat",
+            "terms": "t\u00f6lt\u0151\u00e1llom\u00e1s, shell, agip, lukoil, omv, mol, benzin,g\u00e1zolaj, \u00fczemanyag, aut\u00f3g\u00e1z, d\u00edzel, diesel, bioetanol"
+        },
+        "amenity/grave_yard": {
+            "name": "Templom k\u00f6r\u00fcli temet\u0151",
+            "terms": "temet\u0151, templomkert, s\u00edrkert"
+        },
+        "amenity/grit_bin": {
+            "name": "\u00datsz\u00f3r\u00f3anyagos l\u00e1da",
+            "terms": "sz\u00f3r\u00f3s\u00f3, \u00fatsz\u00f3r\u00f3anyag, s\u00edkoss\u00e1gmentes\u00edt\u00e9s"
+        },
+        "amenity/hospital": {
+            "name": "K\u00f3rh\u00e1z",
+            "terms": "klinika, orvos, szakorvos, m\u0171t\u00e9t"
+        },
+        "amenity/hunting_stand": {
+            "name": "Magasles",
+            "terms": "vad\u00e1szles"
+        },
+        "amenity/ice_cream": {
+            "name": "Fagylaltoz\u00f3",
+            "terms": "fagyibolt, fagyis, fagylaltos, fagylalt\u00fczlet"
+        },
+        "amenity/internet_cafe": {
+            "name": "Internetk\u00e1v\u00e9z\u00f3",
+            "terms": "internetk\u00e1v\u00e9z\u00f3, cybercaf\u00e9, nyilv\u00e1nos internet"
+        },
+        "amenity/kindergarten": {
+            "name": "\u00d3voda",
+            "terms": "ovi"
+        },
+        "amenity/language_school": {
+            "name": "Nyelviskola"
+        },
+        "amenity/library": {
+            "name": "K\u00f6nyvt\u00e1r",
+            "terms": "k\u00f6nyvk\u00f6lcs\u00f6nz\u0151"
+        },
+        "amenity/love_hotel": {
+            "name": "Love hotel"
+        },
+        "amenity/marketplace": {
+            "name": "Piac",
+            "terms": "v\u00e1s\u00e1r"
+        },
+        "amenity/monastery": {
+            "name": "Kolostor"
+        },
+        "amenity/motorcycle_parking": {
+            "name": "Motorker\u00e9kp\u00e1r-parkol\u00f3",
+            "terms": "motoros parkol\u00f3, motor parkol\u00f3"
+        },
+        "amenity/music_school": {
+            "name": "Zeneiskola"
+        },
+        "amenity/nightclub": {
+            "name": "Diszk\u00f3",
+            "terms": "Night Club, \u00c9jszakai b\u00e1r, Diszk\u00f3"
+        },
+        "amenity/nursing_home": {
+            "name": "\u00c1pol\u00f3otthon"
+        },
+        "amenity/parking": {
+            "name": "Parkol\u00f3"
+        },
+        "amenity/parking/multi-storey": {
+            "name": "T\u00f6bbszintes parkol\u00f3h\u00e1z"
+        },
+        "amenity/parking_entrance": {
+            "name": "Parkol\u00f3h\u00e1z be-/kij\u00e1rat",
+            "terms": "gar\u00e1zsbej\u00e1rat, parkol\u00f3h\u00e1z"
+        },
+        "amenity/parking_space": {
+            "name": "Parkol\u00f3hely",
+            "terms": "parkol\u00f3, parkol\u00f3pont, v\u00e1rakoz\u00f3 hely"
+        },
+        "amenity/place_of_worship": {
+            "name": "Istentiszteleti hely",
+            "terms": "templom, k\u00e1polna, vall\u00e1s, felszentelt"
+        },
+        "amenity/place_of_worship/buddhist": {
+            "name": "Buddhista szent\u00e9ly",
+            "terms": "buddhista templom, buddhizmus"
+        },
+        "amenity/place_of_worship/christian": {
+            "name": "Kereszt\u00e9ny templom"
+        },
+        "amenity/place_of_worship/hindu": {
+            "name": "Hindu templom",
+            "terms": "templom, hindu"
+        },
+        "amenity/place_of_worship/jewish": {
+            "name": "Zsid\u00f3 zsinag\u00f3ga"
+        },
+        "amenity/place_of_worship/muslim": {
+            "name": "Muszlim mecset"
+        },
+        "amenity/place_of_worship/shinto": {
+            "name": "Sint\u00f3 szent\u00e9ly",
+            "terms": "sint\u00f3, szent\u00e9ly, jap\u00e1n"
+        },
+        "amenity/place_of_worship/sikh": {
+            "name": "Szik templom",
+            "terms": "templom, szik, india"
+        },
+        "amenity/place_of_worship/taoist": {
+            "name": "Taoista templom",
+            "terms": "templom, tao, k\u00edna"
+        },
+        "amenity/planetarium": {
+            "name": "Planet\u00e1rium",
+            "terms": "csillagvizsg\u00e1l\u00f3, csilagda"
+        },
+        "amenity/police": {
+            "name": "Rend\u0151rs\u00e9g",
+            "terms": "rend\u0151r, csend\u0151r, kapit\u00e1nys\u00e1g, zsand\u00e1r, zsaru, fogda"
+        },
+        "amenity/post_box": {
+            "name": "Postal\u00e1da",
+            "terms": "lev\u00e9lszekr\u00e9ny"
+        },
+        "amenity/post_office": {
+            "name": "Posta",
+            "terms": "postahivatal, postak\u00f6zpont"
+        },
+        "amenity/prison": {
+            "name": "B\u00f6rt\u00f6n",
+            "terms": "b\u00f6rt\u00f6n, fogh\u00e1z, fegyh\u00e1z"
+        },
+        "amenity/pub": {
+            "name": "Kocsma",
+            "terms": "italm\u00e9r\u00e9s, cseh\u00f3, boroz\u00f3, poharaz\u00f3, iv\u00f3, talpon\u00e1ll\u00f3, s\u00f6nt\u00e9s, csapsz\u00e9k, s\u00f6r\u00f6z\u0151, s\u00f6rh\u00e1z"
+        },
+        "amenity/public_bath": {
+            "name": "Nyilv\u00e1nos f\u00fcrd\u0151",
+            "terms": "nyilv\u00e1nos f\u00fcrd\u0151,k\u00f6zf\u00fcrd\u0151,f\u00fcrd\u0151"
+        },
+        "amenity/public_bookcase": {
+            "name": "K\u00f6z\u00f6ss\u00e9gi k\u00f6nyvespolc",
+            "terms": "nyilv\u00e1nos k\u00f6nyvespolc, k\u00f6nyv"
+        },
+        "amenity/ranger_station": {
+            "name": "Nemzeti park l\u00e1togat\u00f3k\u00f6zpontja",
+            "terms": "l\u00e1togat\u00f3k\u00f6zpont, vad\u0151r, vad\u00e1szat, term\u00e9szetj\u00e1r\u00e1s, t\u00e1boroz\u00e1s"
+        },
+        "amenity/recycling": {
+            "name": "Szelekt\u00edv hullad\u00e9kgy\u0171jt\u0151"
+        },
+        "amenity/recycling_centre": {
+            "name": "Hullad\u00e9kudvar",
+            "terms": "hullad\u00e9k, szelekt\u00edv hullad\u00e9k, szem\u00e9ttelep, szem\u00e9tlerak\u00f3, vesz\u00e9lyes hullad\u00e9k"
+        },
+        "amenity/recycling_container": {
+            "name": "Szelekt\u00edv hullad\u00e9kgy\u0171jt\u0151 kont\u00e9ner"
+        },
+        "amenity/register_office": {
+            "name": "Anyak\u00f6nyvi hivatal"
+        },
+        "amenity/restaurant": {
+            "name": "\u00c9tterem",
+            "terms": "kaj\u00e1lda, \u00e9tkezde, vend\u00e9gl\u0151, cs\u00e1rda, fogad\u00f3, eb\u00e9dl\u0151, kisvend\u00e9gl\u0151"
+        },
+        "amenity/restaurant/american": {
+            "name": "Amerikai \u00e9tterem"
+        },
+        "amenity/restaurant/asian": {
+            "name": "\u00c1zsiai \u00e9tterem"
+        },
+        "amenity/restaurant/chinese": {
+            "name": "K\u00ednai \u00e9tterem"
+        },
+        "amenity/restaurant/french": {
+            "name": "Francia \u00e9tterem"
+        },
+        "amenity/restaurant/german": {
+            "name": "N\u00e9met \u00e9tterem"
+        },
+        "amenity/restaurant/greek": {
+            "name": "G\u00f6r\u00f6g \u00e9tterem"
+        },
+        "amenity/restaurant/indian": {
+            "name": "Indiai \u00e9tterem"
+        },
+        "amenity/restaurant/italian": {
+            "name": "Olasz \u00e9tterem"
+        },
+        "amenity/restaurant/japanese": {
+            "name": "Jap\u00e1n \u00e9tterem"
+        },
+        "amenity/restaurant/mexican": {
+            "name": "Mexik\u00f3i \u00e9tterem"
+        },
+        "amenity/restaurant/sushi": {
+            "name": "Sushi \u00e9tterem"
+        },
+        "amenity/restaurant/thai": {
+            "name": "Thai \u00e9tterem"
+        },
+        "amenity/restaurant/turkish": {
+            "name": "T\u00f6r\u00f6k \u00e9tterem"
+        },
+        "amenity/restaurant/vietnamese": {
+            "name": "Vietn\u00e1mi \u00e9tterem"
+        },
+        "amenity/sanitary_dump_station": {
+            "name": "Szaniter\u00fcr\u00edt\u0151 hely (lak\u00f3aut\u00f3knak)",
+            "terms": "lak\u00f3aut\u00f3,lak\u00f3kocsi,v\u00e9c\u00e9,toalett,tisztas\u00e1gi"
+        },
+        "amenity/school": {
+            "name": "Iskola",
+            "terms": "suli, tan\u00edt\u00e1s, oktat\u00e1s, nevel\u00e9s, k\u00f6zoktat\u00e1s, k\u00f6znevel\u00e9s"
+        },
+        "amenity/scrapyard": {
+            "name": "Szem\u00e9ttelep"
+        },
+        "amenity/shelter": {
+            "name": "Es\u0151be\u00e1ll\u00f3",
+            "terms": "fedett, fed\u00e9l, es\u0151h\u00e1z, es\u0151kunyh\u00f3, mened\u00e9kh\u00e1z"
+        },
+        "amenity/shelter/gazebo": {
+            "name": "Pavilon"
+        },
+        "amenity/shower": {
+            "name": "Zuhany",
+            "terms": "zuhanyz\u00f3,tusol\u00f3,f\u00fcrd\u0151"
+        },
+        "amenity/smoking_area": {
+            "name": "Doh\u00e1nyz\u00f3 ter\u00fclet",
+            "terms": "doh\u00e1nyz\u00e1sra kijel\u00f6lt hely"
+        },
+        "amenity/social_facility": {
+            "name": "Szoci\u00e1lis l\u00e9tes\u00edtm\u00e9ny",
+            "terms": "Szoci\u00e1lis int\u00e9zm\u00e9ny"
+        },
+        "amenity/social_facility/food_bank": {
+            "name": "\u00c9lelmiszerbank ",
+            "terms": "\u00c9lelmiszer-adom\u00e1ny eloszt\u00f3, \u00c9lelmiszerseg\u00e9ly begy\u0171jt\u0151 \u00e9s eloszt\u00f3"
+        },
+        "amenity/social_facility/group_home": {
+            "name": "Id\u0151sek otthona",
+            "terms": "Id\u0151sek szoci\u00e1lis gondoz\u00f3ja"
+        },
+        "amenity/social_facility/homeless_shelter": {
+            "name": "\u00c1tmeneti sz\u00e1ll\u00f3",
+            "terms": "Hajl\u00e9ktalan mened\u00e9k, le\u00e1nyanya-otthon"
+        },
+        "amenity/social_facility/nursing_home": {
+            "name": "\u00c1pol\u00f3otthon",
+            "terms": "\u00f6regek otthona, fogyat\u00e9kosok otthona"
+        },
+        "amenity/studio": {
+            "name": "St\u00fadi\u00f3",
+            "terms": "r\u00e1di\u00f3, telev\u00edzi\u00f3, fot\u00f3st\u00fadi\u00f3, m\u0171terem, f\u00e9nyk\u00e9p\u00e9sz"
+        },
+        "amenity/swimming_pool": {
+            "name": "\u00dasz\u00f3medence"
+        },
+        "amenity/taxi": {
+            "name": "Taxi\u00e1llom\u00e1s",
+            "terms": "Taxidroszt, droszt"
+        },
+        "amenity/telephone": {
+            "name": "Telefon",
+            "terms": "Telefonf\u00fclke, telefonk\u00e9sz\u00fcl\u00e9k,telefon,nyilv\u00e1nos telefon, nyilv\u00e1nos \u00e1llom\u00e1s"
+        },
+        "amenity/theatre": {
+            "name": "Sz\u00ednh\u00e1z",
+            "terms": "amfite\u00e1trum, j\u00e1t\u00e9ksz\u00edn, te\u00e1trum, b\u00e1bsz\u00ednh\u00e1z, operah\u00e1z"
+        },
+        "amenity/theatre/type/amphi": {
+            "name": "Amfite\u00e1trum"
+        },
+        "amenity/toilets": {
+            "name": "WC",
+            "terms": "v\u00e9c\u00e9, illemhely, toalett, kloty\u00f3, \u00e1rny\u00e9ksz\u00e9k, budi, pottyant\u00f3s"
+        },
+        "amenity/townhall": {
+            "name": "V\u00e1rosh\u00e1za",
+            "terms": "Polg\u00e1rmesteri hivatal, K\u00f6zs\u00e9gh\u00e1za,"
+        },
+        "amenity/university": {
+            "name": "Egyetem",
+            "terms": "kampusz, campus, fels\u0151oktat\u00e1s"
+        },
+        "amenity/vending_machine": {
+            "name": "\u00c1rus\u00edt\u00f3 automata",
+            "terms": "automata,\u00e1rus\u00edt\u00f3 automata"
+        },
+        "amenity/vending_machine/cigarettes": {
+            "name": "Cigeretta\u00e1rus\u00edt\u00f3 automata",
+            "terms": "cigerettaautomata, cigiautomata, doh\u00e1nyautomata"
+        },
+        "amenity/vending_machine/coffee": {
+            "name": "K\u00e1v\u00e9\u00e1rus\u00edt\u00f3 automata"
+        },
+        "amenity/vending_machine/condoms": {
+            "name": "\u00d3vszer\u00e1rus\u00edt\u00f3 automata",
+            "terms": "kondomautomata, gumi, \u00f3vszer"
+        },
+        "amenity/vending_machine/drinks": {
+            "name": "Ital\u00e1rus\u00edt\u00f3 automata",
+            "terms": "italautomata, italg\u00e9p"
+        },
+        "amenity/vending_machine/feminine_hygiene": {
+            "name": "N\u0151i hig\u00e9ni\u00e1s automata",
+            "terms": "automata, \u00f3vszer, tampon, bet\u00e9t, n\u0151, menstru\u00e1ci\u00f3, higi\u00e9ni\u00e1s eszk\u00f6z\u00f6k, test\u00e1pol\u00e1s"
+        },
+        "amenity/vending_machine/food": {
+            "name": "\u00c9tel\u00e1rus\u00edt\u00f3 automata"
+        },
+        "amenity/vending_machine/fuel": {
+            "name": "Benzink\u00fat"
+        },
+        "amenity/vending_machine/ice_cream": {
+            "name": "J\u00e9gkr\u00e9m \u00e1rus\u00edt\u00f3 automata"
+        },
+        "amenity/vending_machine/news_papers": {
+            "name": "\u00dajs\u00e1g\u00e1rus\u00edt\u00f3 automata"
+        },
+        "amenity/vending_machine/newspapers": {
+            "name": "\u00dajs\u00e1g\u00e1rus\u00edt\u00f3 automata",
+            "terms": "automata,\u00e1rus\u00edt\u00f3,\u00fajs\u00e1g"
+        },
+        "amenity/vending_machine/parking_tickets": {
+            "name": "Parkol\u00f3jegy-automata",
+            "terms": "parkol\u00f3automata"
+        },
+        "amenity/vending_machine/public_transport_tickets": {
+            "name": "T\u00f6megk\u00f6zleked\u00e9si jegyet \u00e1rus\u00edt\u00f3 automata",
+            "terms": "BKK-automata, jegyautomata, villamosjegy, buszjegy, metr\u00f3jegy"
+        },
+        "amenity/vending_machine/sweets": {
+            "name": "\u00c9dess\u00e9get \u00e1rus\u00edt\u00f3 automata",
+            "terms": "csokol\u00e1d\u00e9, cukorka, snack, chips"
+        },
+        "amenity/veterinary": {
+            "name": "\u00c1llatorvos",
+            "terms": "\u00c1llatorvosi rendel\u0151, l\u00f3doktor, kutyadoktor, macskadoktor"
+        },
+        "amenity/waste/dog_excrement": {
+            "name": "Kutya\u00fcr\u00fcl\u00e9k tart\u00e1ly",
+            "terms": "\u00fcr\u00fcl\u00e9k, kutya, kuka"
+        },
+        "amenity/waste_basket": {
+            "name": "Szemeteskos\u00e1r",
+            "terms": "kuka, szem\u00e9tkos\u00e1r"
+        },
+        "amenity/waste_disposal": {
+            "name": "Szemeteskont\u00e9ner",
+            "terms": "szemetes, kuka, szemetes kuka, hullad\u00e9kt\u00e1rol\u00f3"
+        },
+        "amenity/waste_transfer_station": {
+            "name": "Hullad\u00e9k\u00e1trak\u00f3 \u00e1llom\u00e1s",
+            "terms": "hullad\u00e9k \u00e1trak\u00f3 \u00e1llom\u00e1s, hullad\u00e9k \u00e1tad\u00f3\u00e1llom\u00e1s"
+        },
+        "amenity/water_point": {
+            "name": "Iv\u00f3v\u00edz-csatlakoz\u00e1s lak\u00f3aut\u00f3nak",
+            "terms": "lak\u00f3aut\u00f3, lak\u00f3kocsi, v\u00edz, iv\u00f3v\u00edz"
+        },
+        "amenity/watering_place": {
+            "name": "\u00c1llatitat\u00f3 hely",
+            "terms": "\u00e1llatitat\u00f3, itat\u00f3, v\u00e1ly\u00fa"
+        },
+        "area": {
+            "name": "Ter\u00fclet",
+            "terms": "ter\u00fclet"
+        },
+        "area/highway": {
+            "name": "\u00datfel\u00fclet",
+            "terms": "\u00fattest"
+        },
+        "attraction/amusement_ride": {
+            "name": "Mutatv\u00e1nyos berendez\u00e9s",
+            "terms": "k\u00f6rhinta, ringlisp\u00edl, \u00f3ri\u00e1sker\u00e9k, dodzsem, hull\u00e1mvas\u00fat,"
+        },
+        "attraction/animal": {
+            "name": "\u00c1llat",
+            "terms": "\u00e1llat,kutya,macska"
+        },
+        "attraction/big_wheel": {
+            "name": "\u00d3ri\u00e1sker\u00e9k",
+            "terms": "nagy ker\u00e9k,\u00f3ri\u00e1s ker\u00e9k"
+        },
+        "attraction/bumper_car": {
+            "name": "Dodzsem",
+            "terms": "dodzsem,kisaut\u00f3,\u00fctk\u00f6z\u00e9s"
+        },
+        "attraction/bungee_jumping": {
+            "name": "Bungee jumping",
+            "terms": "ugr\u00e1s,k\u00f6t\u00e9l,gumik\u00f6t\u00e9l"
+        },
+        "attraction/carousel": {
+            "name": "K\u00f6rhinta",
+            "terms": "hita,k\u00f6r,forg\u00f3,l\u00f3"
+        },
+        "attraction/dark_ride": {
+            "name": "Szellemvas\u00fat",
+            "terms": "kommunista,szellem,vas\u00fatja"
+        },
+        "attraction/drop_tower": {
+            "name": "Ejt\u0151 torony",
+            "terms": "torony,ejt\u00e9s,leejt"
+        },
+        "attraction/maze": {
+            "name": "Labirintus"
+        },
+        "attraction/pirate_ship": {
+            "name": "Kal\u00f3zhaj\u00f3",
+            "terms": "kal\u00f3z,haj\u00f3"
+        },
+        "attraction/river_rafting": {
+            "name": "Vadv\u00edzi evez\u00e9s",
+            "terms": "evez\u00e9s,cs\u00f3nak,foly\u00f3"
+        },
+        "attraction/roller_coaster": {
+            "name": "Hull\u00e1mvas\u00fat",
+            "terms": "vas\u00fat,hull\u00e1m"
+        },
+        "attraction/summer_toboggan": {
+            "name": "Ny\u00e1ri bob"
+        },
+        "attraction/train": {
+            "name": "Turista vas\u00fat",
+            "terms": "vas\u00fat,turista"
+        },
+        "attraction/water_slide": {
+            "name": "V\u00edzi cs\u00faszda",
+            "terms": "cs\u00faszda,v\u00edz,cs\u00fasz\u00e1s"
+        },
+        "barrier": {
+            "name": "Akad\u00e1ly",
+            "terms": "akad\u00e1ly, torlasz"
+        },
+        "barrier/block": {
+            "name": "T\u00f6mb",
+            "terms": "Torlasz, Akad\u00e1ly"
+        },
+        "barrier/bollard": {
+            "name": "Oszlop",
+            "terms": "terel\u0151oszlop"
+        },
+        "barrier/border_control": {
+            "name": "Hat\u00e1r\u00e1tkel\u0151",
+            "terms": "hat\u00e1rellen\u0151rz\u00e9s, orsz\u00e1ghat\u00e1r, \u00e1llamhat\u00e1r, hat\u00e1r\u00e1llom\u00e1s"
+        },
+        "barrier/cattle_grid": {
+            "name": "Szarvasmarhar\u00e1cs",
+            "terms": "teh\u00e9nr\u00e1cs, marhar\u00e1cs"
+        },
+        "barrier/city_wall": {
+            "name": "V\u00e1rosfal",
+            "terms": "fal, k\u00f6z\u00e9pkor"
+        },
+        "barrier/cycle_barrier": {
+            "name": "Ker\u00e9kp\u00e1ros-akad\u00e1ly",
+            "terms": "bicikliakad\u00e1ly"
+        },
+        "barrier/ditch": {
+            "name": "\u00c1rok",
+            "terms": "\u00e1rok, g\u00f6d\u00f6r"
+        },
+        "barrier/entrance": {
+            "name": "Bej\u00e1rat"
+        },
+        "barrier/fence": {
+            "name": "Ker\u00edt\u00e9s",
+            "terms": "dr\u00f3tker\u00edt\u00e9s, betonker\u00edt\u00e9s, fal"
+        },
+        "barrier/gate": {
+            "name": "Kapu",
+            "terms": "ajt\u00f3"
+        },
+        "barrier/hedge": {
+            "name": "S\u00f6v\u00e9ny",
+            "terms": "boz\u00f3t, bokor, cserje, fasor"
+        },
+        "barrier/kissing_gate": {
+            "name": "Leng\u0151kapu",
+            "terms": "\u00dctk\u00f6z\u0151s csap\u00f3ajt\u00f3"
+        },
+        "barrier/lift_gate": {
+            "name": "Emelked\u0151 soromp\u00f3",
+            "terms": "Soromp\u00f3"
+        },
+        "barrier/retaining_wall": {
+            "name": "T\u00e1mfal",
+            "terms": "t\u00e1maszt\u00f3fal"
+        },
+        "barrier/stile": {
+            "name": "Ker\u00edt\u00e9s\u00e1tj\u00e1r\u00f3",
+            "terms": "L\u00e9tra"
+        },
+        "barrier/toll_booth": {
+            "name": "Fizet\u0151kapu",
+            "terms": "kapu, \u00fatd\u00edj, aut\u00f3p\u00e1lya-matrica, matrica"
+        },
+        "barrier/wall": {
+            "name": "Fal",
+            "terms": "er\u0151d\u00edtm\u00e9ny"
+        },
+        "boundary/administrative": {
+            "name": "K\u00f6zigazgat\u00e1si hat\u00e1r",
+            "terms": "adminisztrat\u00edv hat\u00e1r, telep\u00fcl\u00e9shat\u00e1r, v\u00e1roshat\u00e1r, megyehat\u00e1r, orsz\u00e1ghat\u00e1r"
+        },
+        "bridge/support/pier": {
+            "name": "H\u00eddpill\u00e9r"
+        },
+        "building": {
+            "name": "\u00c9p\u00fclet",
+            "terms": "\u00e9p\u00edtm\u00e9ny, h\u00e1z, lak\u00e1s,"
+        },
+        "building/apartments": {
+            "name": "T\u00e1rsash\u00e1z \u00e9p\u00fclet"
+        },
+        "building/barn": {
+            "name": "Pajta",
+            "terms": "cs\u0171r, mell\u00e9k\u00e9p\u00fclet, mez\u0151gazdas\u00e1gi \u00e9p\u00fclet"
+        },
+        "building/boathouse": {
+            "name": "Cs\u00f3nakh\u00e1z"
+        },
+        "building/bungalow": {
+            "name": "Bungal\u00f3"
+        },
+        "building/bunker": {
+            "name": "Bunker"
+        },
+        "building/cabin": {
+            "name": "Kis fah\u00e1z",
+            "terms": "Fah\u00e1z"
+        },
+        "building/cathedral": {
+            "name": "Sz\u00e9kesegyh\u00e1z",
+            "terms": "katedr\u00e1lis, bazilika, templom, d\u00f3m"
+        },
+        "building/chapel": {
+            "name": "K\u00e1polna",
+            "terms": "imah\u00e1z, templom"
+        },
+        "building/church": {
+            "name": "Templom",
+            "terms": "templom\u00e9p\u00fclet"
+        },
+        "building/civic": {
+            "name": "Polg\u00e1ri \u00c9p\u00fclet"
+        },
+        "building/college": {
+            "name": "F\u0151iskolai \u00e9p\u00fclet",
+            "terms": "fels\u0151oktat\u00e1si int\u00e9zm\u00e9ny, egyetem"
+        },
+        "building/commercial": {
+            "name": "\u00dczleti \u00e9p\u00fclet",
+            "terms": "business, kereskedelem, v\u00e1llalat, c\u00e9g, v\u00e1llalkoz\u00e1s"
+        },
+        "building/construction": {
+            "name": "\u00c9p\u00fcl\u0151 \u00e9p\u00fclet",
+            "terms": "\u00e9p\u00edtkez\u00e9s"
+        },
+        "building/detached": {
+            "name": "Csal\u00e1di h\u00e1z (Egyes\u00fclt Kir\u00e1lys\u00e1g)",
+            "terms": "lak\u00f3h\u00e1z, detached"
+        },
+        "building/dormitory": {
+            "name": "Koll\u00e9gium",
+            "terms": "Koll\u00e9gium, Di\u00e1ksz\u00e1ll\u00f3, Di\u00e1kotthon"
+        },
+        "building/entrance": {
+            "name": "Be-/kij\u00e1rat"
+        },
+        "building/farm": {
+            "name": "Mez\u0151gazdas\u00e1gi \u00e9p\u00fclet"
+        },
+        "building/farm_auxiliary": {
+            "name": "Mez\u0151gazdas\u00e1gi mell\u00e9k\u00e9p\u00fclet"
+        },
+        "building/garage": {
+            "name": "Gar\u00e1zs",
+            "terms": "Gar\u00e1zs,aut\u00f3t\u00e1rol\u00f3"
+        },
+        "building/garages": {
+            "name": "Gar\u00e1zsok",
+            "terms": "Gar\u00e1zsok, aut\u00f3t\u00e1rol\u00f3k, gar\u00e1zssor"
+        },
+        "building/greenhouse": {
+            "name": "\u00dcvegh\u00e1z",
+            "terms": "\u00dcvegh\u00e1z"
+        },
+        "building/hospital": {
+            "name": "K\u00f3rh\u00e1z\u00e9p\u00fclet",
+            "terms": "K\u00f3rh\u00e1zi \u00e9p\u00fclet, Klinika \u00e9p\u00fclet, Gy\u00f3gyint\u00e9zet \u00e9p\u00fclet"
+        },
+        "building/hotel": {
+            "name": "Sz\u00e1lloda\u00e9p\u00fclet",
+            "terms": "Hotel, sz\u00e1lloda"
+        },
+        "building/house": {
+            "name": "Csal\u00e1di h\u00e1z",
+            "terms": "H\u00e1z"
+        },
+        "building/hut": {
+            "name": "Kunyh\u00f3",
+            "terms": "Kunyh\u00f3, kalyiba, visk\u00f3"
+        },
+        "building/industrial": {
+            "name": "Ipari \u00e9p\u00fclet",
+            "terms": "Gy\u00e1r\u00e9p\u00fclet"
+        },
+        "building/kindergarten": {
+            "name": "\u00d3voda\u00e9p\u00fclet",
+            "terms": "Iskolai el\u0151k\u00e9sz\u00edt\u0151 \u00e9p\u00fclet,  ovi \u00e9p\u00fclet, b\u00f6lcs\u0151de \u00e9p\u00fclet, kisded\u00f3v\u00f3 \u00e9p\u00fclet, ded\u00f3 \u00e9p\u00fclet"
+        },
+        "building/mosque": {
+            "name": "Mecset"
+        },
+        "building/public": {
+            "name": "K\u00f6z\u00e9p\u00fclet",
+            "terms": "Nyilv\u00e1nos \u00e9p\u00fclet"
+        },
+        "building/residential": {
+            "name": "Lak\u00f3\u00e9p\u00fclet",
+            "terms": "Lak\u00f3h\u00e1z, lak\u00e1s, h\u00e1z"
+        },
+        "building/retail": {
+            "name": "Kiskereskedelmi \u00e9p\u00fclet",
+            "terms": "Bolt\u00e9p\u00fclet"
+        },
+        "building/roof": {
+            "name": "Tet\u0151",
+            "terms": "Tet\u0151, fed\u00e9l, es\u0151be\u00e1lll\u00f3"
+        },
+        "building/ruins": {
+            "name": "\u00c9p\u00fclet romjai",
+            "terms": "romok,rom"
+        },
+        "building/school": {
+            "name": "Iskola\u00e9p\u00fclet",
+            "terms": "Iskola\u00e9p\u00fclet, \u00e1ltal\u00e1nos iskola, szakk\u00f6z\u00e9piskola, gimn\u00e1zium"
+        },
+        "building/semidetached_house": {
+            "name": "Ikerh\u00e1z",
+            "terms": "ikerh\u00e1z"
+        },
+        "building/service": {
+            "name": "Szolg\u00e1ltat\u00f3 \u00e9p\u00fclet"
+        },
+        "building/shed": {
+            "name": "F\u00e9szer",
+            "terms": "Kunyh\u00f3, F\u00e9szer, Pajta,cs\u0171r,rakt\u00e1r,visk\u00f3, sufni"
+        },
+        "building/stable": {
+            "name": "L\u00f3ist\u00e1ll\u00f3",
+            "terms": "Ist\u00e1ll\u00f3"
+        },
+        "building/stadium": {
+            "name": "Stadion \u00e9p\u00fclet"
+        },
+        "building/static_caravan": {
+            "name": "Telep\u00edtett lak\u00f3kocsi",
+            "terms": "R\u00f6gz\u00edtett lak\u00f3kocsi, telep\u00edtett lak\u00f3kocsi"
+        },
+        "building/temple": {
+            "name": "Templom\u00e9p\u00fclet"
+        },
+        "building/terrace": {
+            "name": "Sorh\u00e1z",
+            "terms": "h\u00e1zsor"
+        },
+        "building/transportation": {
+            "name": "K\u00f6zleked\u00e9si \u00e9p\u00fclet"
+        },
+        "building/university": {
+            "name": "Egyetemi \u00e9p\u00fclet",
+            "terms": "egyetem, f\u0151iskola, fels\u0151oktat\u00e1s"
+        },
+        "building/warehouse": {
+            "name": "Rakt\u00e1r",
+            "terms": "Lerakat"
+        },
+        "camp_site/camp_pitch": {
+            "name": "S\u00e1tor- vagy lak\u00f3kocsihely",
+            "terms": "s\u00e1torhely, t\u00e1borhely, kempinghely"
+        },
+        "circular": {
+            "name": "K\u00f6rforgalom"
+        },
+        "club": {
+            "name": "Klub",
+            "terms": "Club"
+        },
+        "craft": {
+            "name": "M\u0171hely",
+            "terms": "k\u00e9zm\u0171ves, iparos, iparm\u0171v\u00e9sz, mesterember, m\u0171hely"
+        },
+        "craft/basket_maker": {
+            "name": "Kos\u00e1rfon\u00f3",
+            "terms": "Kos\u00e1rfon\u00f3"
+        },
+        "craft/beekeeper": {
+            "name": "M\u00e9h\u00e9sz",
+            "terms": "M\u00e9h\u00e9sz"
+        },
+        "craft/blacksmith": {
+            "name": "Kov\u00e1cs",
+            "terms": "Patkol\u00f3kov\u00e1cs, K\u00e9zi kov\u00e1csol\u00f3"
+        },
+        "craft/boatbuilder": {
+            "name": "Haj\u00f3\u00e1cs",
+            "terms": "cs\u00f3nak\u00e9p\u00edt\u0151, cs\u00f3nakk\u00e9sz\u00edt\u0151"
+        },
+        "craft/bookbinder": {
+            "name": "K\u00f6nyvk\u00f6t\u0151",
+            "terms": "K\u00f6nyvk\u00f6t\u0151"
+        },
+        "craft/brewery": {
+            "name": "S\u00f6rf\u0151zde",
+            "terms": "S\u00f6rf\u0151zde, S\u00f6rf\u0151z\u0151"
+        },
+        "craft/carpenter": {
+            "name": "\u00c1cs",
+            "terms": "Tet\u0151fed\u0151, \u00e9p\u00fcletasztalos"
+        },
+        "craft/carpet_layer": {
+            "name": "Sz\u0151nyegpadl\u00f3-lerak\u00f3",
+            "terms": "sz\u0151nyegpadl\u00f3, padl\u00f3burkolat"
+        },
+        "craft/caterer": {
+            "name": "Partyszerviz",
+            "terms": "Catering, Partyszerviz, Rendezv\u00e9nyszervez\u0151"
+        },
+        "craft/chimney_sweeper": {
+            "name": "K\u00e9m\u00e9nysepr\u0151"
+        },
+        "craft/clockmaker": {
+            "name": "\u00d3r\u00e1s (fali\u00f3ra)",
+            "terms": "\u00d3r\u00e1s"
+        },
+        "craft/confectionery": {
+            "name": "Cukr\u00e1sz"
+        },
+        "craft/distillery": {
+            "name": "P\u00e1rlatf\u0151z\u0151",
+            "terms": "alkohol,ital,p\u00e1linka,szeszf\u0151zde"
+        },
+        "craft/dressmaker": {
+            "name": "N\u0151iruha-k\u00e9sz\u00edt\u0151",
+            "terms": "Ruhak\u00e9sz\u00edt\u0151, szab\u00f3, varr\u00f3n\u0151"
+        },
+        "craft/electrician": {
+            "name": "Villanyszerel\u0151",
+            "terms": "Villanyszerel\u0151"
+        },
+        "craft/electronics_repair": {
+            "name": "Elektronikai szerviz",
+            "terms": "eltronikai,szerviz,jav\u00edt\u00f3,bont\u00f3"
+        },
+        "craft/gardener": {
+            "name": "Kert\u00e9sz",
+            "terms": "Melegh\u00e1zi termel\u0151, bolg\u00e1rkert\u00e9sz"
+        },
+        "craft/glaziery": {
+            "name": "\u00dcvegm\u0171ves",
+            "terms": "\u00fcvegj\u00e1t\u00e9kok,krist\u00e1lypalack,\u00d6bl\u00f6s\u00fcveggy\u00e1rt\u00e1s"
+        },
+        "craft/handicraft": {
+            "name": "K\u00e9zm\u0171vesterm\u00e9k-k\u00e9sz\u00edt\u0151",
+            "terms": "iparm\u0171v\u00e9sz"
+        },
+        "craft/hvac": {
+            "name": "F\u0171t\u00e9s-, szell\u0151ztet\u00e9s- \u00e9s l\u00e9gkondicion\u00e1l\u00e1s-szerel\u0151",
+            "terms": "F\u0171t\u00e9s, szell\u0151z\u00e9s, l\u00e9gkondicion\u00e1l\u00e1s, \u00e9p\u00fcletg\u00e9p\u00e9szet"
+        },
+        "craft/insulator": {
+            "name": "\u00c9p\u00fclet-h\u0151szigetel\u0151",
+            "terms": "Szigetel\u0151"
+        },
+        "craft/jeweler": {
+            "name": "\u00c9kszer\u00e9sz"
+        },
+        "craft/key_cutter": {
+            "name": "Kulcsm\u00e1sol\u00f3",
+            "terms": "Kulcsos, Kulcsk\u00e9sz\u00edt\u0151, Kulcsm\u00e1sol\u00f3"
+        },
+        "craft/locksmith": {
+            "name": "Lakatos"
+        },
+        "craft/metal_construction": {
+            "name": "F\u00e9miparos",
+            "terms": "Huzalterm\u00e9k gy\u00e1rt\u00e1sa,  K\u00f6t\u0151elem, csavar gy\u00e1rt\u00e1sa, Ac\u00e9l t\u00e1rol\u00f3eszk\u00f6z gy\u00e1rt\u00e1sa,  Szersz\u00e1mgy\u00e1rt\u00e1s, F\u00e9mmegmunk\u00e1l\u00e1s"
+        },
+        "craft/optician": {
+            "name": "L\u00e1tszer\u00e9sz"
+        },
+        "craft/painter": {
+            "name": "Szobafest\u0151",
+            "terms": "Fest\u0151, m\u00e1zol\u00f3"
+        },
+        "craft/photographer": {
+            "name": "F\u00e9nyk\u00e9p\u00e9sz",
+            "terms": "Fot\u00f3s, Fotogr\u00e1fus"
+        },
+        "craft/photographic_laboratory": {
+            "name": "Fot\u00f3labor",
+            "terms": "Fot\u00f3labor , Fot\u00f3m\u0171hely , Fot\u00f3laborat\u00f3rium"
+        },
+        "craft/plasterer": {
+            "name": "Gipszm\u0171ves, stukk\u00f3s",
+            "terms": "vakol\u00f3"
+        },
+        "craft/plumber": {
+            "name": "V\u00edzvezet\u00e9k-szerel\u0151",
+            "terms": "V\u00edzvezet\u00e9k szerel\u0151"
+        },
+        "craft/pottery": {
+            "name": "Fazekas",
+            "terms": "ker\u00e1mia,agyag,k\u0151ed\u00e9ny,cser\u00e9p"
+        },
+        "craft/rigger": {
+            "name": "Vitorl\u00e1sfelszerel\u00e9s-k\u00e9sz\u00edt\u0151",
+            "terms": "Haj\u00f3jav\u00edt\u00f3 m\u0171hely"
+        },
+        "craft/roofer": {
+            "name": "Tet\u0151fed\u0151",
+            "terms": "Tet\u0151fed\u0151"
+        },
+        "craft/saddler": {
+            "name": "Nyeregk\u00e9sz\u00edt\u0151",
+            "terms": "L\u00f3szersz\u00e1m"
+        },
+        "craft/sailmaker": {
+            "name": "Vitorlak\u00e9sz\u00edt\u0151",
+            "terms": "Haj\u00f3vitorla, haj\u00f3v\u00e1szon"
+        },
+        "craft/sawmill": {
+            "name": "F\u0171r\u00e9szmalom",
+            "terms": "F\u0171r\u00e9sztelep"
+        },
+        "craft/scaffolder": {
+            "name": "\u00c1llv\u00e1ny\u00e9p\u00edt\u0151",
+            "terms": "\u00e1cs-\u00e1llv\u00e1nyoz\u00f3"
+        },
+        "craft/sculptor": {
+            "name": "Szobr\u00e1sz"
+        },
+        "craft/shoemaker": {
+            "name": "Cip\u00e9sz",
+            "terms": "Cip\u00e9sz, Cip\u0151k\u00e9sz\u00edt\u0151, Cip\u0151jav\u00edt\u00f3, Suszter, Csizmadia, Varga, L\u00e1bbeli k\u00e9sz\u00edt\u0151 \u00e9s jav\u00edt\u00f3 mester"
+        },
+        "craft/stonemason": {
+            "name": "K\u0151farag\u00f3",
+            "terms": "K\u0151farag\u00f3 m\u0171hely"
+        },
+        "craft/tailor": {
+            "name": "Szab\u00f3"
+        },
+        "craft/tiler": {
+            "name": "Burkol\u00f3",
+            "terms": "Burkol\u00f3 mester, csemp\u00e9z\u0151"
+        },
+        "craft/tinsmith": {
+            "name": "B\u00e1dogos",
+            "terms": "\u00dcstfoltoz\u00f3, vizesb\u00e1dogos"
+        },
+        "craft/upholsterer": {
+            "name": "K\u00e1rpitos",
+            "terms": "k\u00e1rpitoz\u00e1s, b\u00fator"
+        },
+        "craft/watchmaker": {
+            "name": "\u00d3r\u00e1s (kar\u00f3ra)",
+            "terms": "\u00d3rak\u00e9sz\u00edt\u0151 \u00e9s jav\u00edt\u00f3 m\u0171hely"
+        },
+        "craft/window_construction": {
+            "name": "Ablakk\u00e9sz\u00edt\u0151",
+            "terms": "ajt\u00f3 \u00e9s ablak k\u00e9sz\u00edt\u00e9s, ablakos, ny\u00edl\u00e1sz\u00e1r\u00f3"
+        },
+        "craft/winery": {
+            "name": "Bor\u00e1szat",
+            "terms": "pinc\u00e9szet"
+        },
+        "embankment": {
+            "name": "T\u00f6lt\u00e9s"
+        },
+        "emergency/ambulance_station": {
+            "name": "Ment\u0151\u00e1llom\u00e1s",
+            "terms": "Ment\u0151aut\u00f3 \u00e1llom\u00e1s"
+        },
+        "emergency/defibrillator": {
+            "name": "Defibrill\u00e1tor",
+            "terms": "Defibrill\u00e1tor"
+        },
+        "emergency/designated": {
+            "name": "Kifejezetten v\u00e9szhelyzeti haszn\u00e1latra"
+        },
+        "emergency/destination": {
+            "name": "Kiv\u00e9ve c\u00e9lforgalom, v\u00e9szhelyzetben"
+        },
+        "emergency/fire_extinguisher": {
+            "name": "T\u0171zolt\u00f3k\u00e9sz\u00fcl\u00e9k"
+        },
+        "emergency/fire_hydrant": {
+            "name": "T\u0171zcsap",
+            "terms": "T\u0171zcsap, v\u00e9szhelyzet, t\u0171zolt\u00f3k, spricni, fecskend\u0151, t\u00f6ml\u0151"
+        },
+        "emergency/first_aid_kit": {
+            "name": "Els\u0151seg\u00e9lyk\u00e9szlet"
+        },
+        "emergency/life_ring": {
+            "name": "Ment\u0151\u00f6v",
+            "terms": "\u00f6v,gy\u0171r\u0171,ment\u00e9s,\u00e9letment\u00e9s"
+        },
+        "emergency/lifeguard": {
+            "name": "Strand\u0151r"
+        },
+        "emergency/no": {
+            "name": "V\u00e9szhelyzeti haszn\u00e1latra tilos"
+        },
+        "emergency/official": {
+            "name": "Hivatalosan v\u00e9szhelyzeti haszn\u00e1latra"
+        },
+        "emergency/phone": {
+            "name": "Seg\u00e9lyh\u00edv\u00f3 telefon",
+            "terms": "V\u00e9szhelyzeti telefon"
+        },
+        "emergency/private": {
+            "name": "V\u00e9szhelyzeti haszn\u00e1lat: mag\u00e1ntulajdon"
+        },
+        "emergency/siren": {
+            "name": "Szir\u00e9na"
+        },
+        "emergency/water_tank": {
+            "name": "V\u00e9szhelyzeti v\u00edztart\u00e1ly"
+        },
+        "emergency/yes": {
+            "name": "V\u00e9szhelyzeti haszn\u00e1lat"
+        },
+        "entrance": {
+            "name": "Bej\u00e1rat/Kij\u00e1rat",
+            "terms": "Bej\u00e1rat/Kij\u00e1rat"
+        },
+        "ford": {
+            "name": "G\u00e1zl\u00f3",
+            "terms": "G\u00e1zl\u00f3"
+        },
+        "golf/bunker": {
+            "name": "Homokcsapda",
+            "terms": "homokakad\u00e1ly,bunker"
+        },
+        "golf/fairway": {
+            "name": "Fairway-sima p\u00e1zsitos r\u00e9sz",
+            "terms": "Fairway-sima p\u00e1zsitos r\u00e9sz"
+        },
+        "golf/green": {
+            "name": "Putting green - lyuk k\u00f6r\u00fcli sima r\u00e9sz",
+            "terms": "Putting green - lyuk k\u00f6r\u00fcli r\u00e9sz"
+        },
+        "golf/hole": {
+            "name": "Golflyuk",
+            "terms": "Golflyuk"
+        },
+        "golf/rough": {
+            "name": "Rough - v\u00e1gatlan f\u0171ves r\u00e9sz",
+            "terms": "Rough -  v\u00e1gatlan f\u0171ves r\u00e9sz"
+        },
+        "golf/tee": {
+            "name": "Tee box - El\u00fct\u0151hely",
+            "terms": "Tee box - El\u00fct\u0151hely"
+        },
+        "healthcare": {
+            "name": "Eg\u00e9szs\u00e9g\u00fcgyi l\u00e9tes\u00edtm\u00e9ny",
+            "terms": "klinika, orvos, betegs\u00e9g, eg\u00e9szs\u00e9g, int\u00e9zet, m\u0171t\u00e9t, wellness"
+        },
+        "healthcare/alternative": {
+            "name": "Alternat\u00edv gy\u00f3gy\u00e1szat",
+            "terms": "akupunkt\u00fara, kineziol\u00f3gia, aromater\u00e1pia, ayurv\u00e9da, homeop\u00e1tia, hidroter\u00e1pia, hipn\u00f3zis, naturop\u00e1tia, oszteop\u00e1tia, refelexol\u00f3gia, hagyom\u00e1nyos"
+        },
+        "healthcare/alternative/chiropractic": {
+            "name": "H\u00e1tmassz\u00e1s",
+            "terms": "h\u00e1t, f\u00e1jdalom, gerinc, massz\u00e1zs"
+        },
+        "healthcare/audiologist": {
+            "name": "Audiol\u00f3gus",
+            "terms": "f\u00fcl, hall\u00e1s, hang"
+        },
+        "healthcare/birthing_center": {
+            "name": "Sz\u00fcl\u00e9szeti k\u00f6zpont",
+            "terms": "baba, sz\u00fclet\u00e9s, labor, terhess\u00e9g"
+        },
+        "healthcare/blood_donation": {
+            "name": "V\u00e9rad\u00f3hely",
+            "terms": "v\u00e9rad\u00e1s, v\u00e9rell\u00e1t\u00e1s, \u0151ssejt, plazma, transzf\u00fazi\u00f3, v\u00e9r\u00e1t\u00f6mleszt\u00e9s"
+        },
+        "healthcare/hospice": {
+            "name": "Szereteth\u00e1z",
+            "terms": "betegs\u00e9g, szeretet, gondoskod\u00e1s"
+        },
+        "healthcare/midwife": {
+            "name": "B\u00e1ba",
+            "terms": "gyermek, sz\u00fclet\u00e9s, terhess\u00e9g"
+        },
+        "healthcare/occupational_therapist": {
+            "name": "Foglalkoz\u00e1si terapeuta",
+            "terms": "terapeuta, ter\u00e1pia, foglalkoz\u00e1s"
+        },
+        "healthcare/optometrist": {
+            "name": "Optometrista",
+            "terms": "szem,szem\u00fcveg,lencse,l\u00e1t\u00e1s"
+        },
+        "healthcare/physiotherapist": {
+            "name": "Gy\u00f3gytorn\u00e1sz",
+            "terms": "fizikai, terapeuta, ter\u00e1pia"
+        },
+        "healthcare/podiatrist": {
+            "name": "L\u00e1bgy\u00f3gy\u00e1sz",
+            "terms": "l\u00e1b, gy\u00f3gy\u00edt\u00e1s"
+        },
+        "healthcare/psychotherapist": {
+            "name": "Pszichoterapeuta",
+            "terms": "szorong\u00e1s, tan\u00e1csad\u00f3, depresszi\u00f3, ment\u00e1lis eg\u00e9szs\u00e9g, elme, \u00f6ngyilkoss\u00e1g, terapeuta, ter\u00e1pia"
+        },
+        "healthcare/rehabilitation": {
+            "name": "Rehabilit\u00e1ci\u00f3s l\u00e9tes\u00edtm\u00e9ny",
+            "terms": "rehab, terapeuta, ter\u00e1pia"
+        },
+        "healthcare/speech_therapist": {
+            "name": "Besz\u00e9dterapeuta",
+            "terms": "besz\u00e9d, terapeuta, ter\u00e1pia, hang"
+        },
+        "highway": {
+            "name": "K\u00f6z\u00fat"
+        },
+        "highway/bridleway": {
+            "name": "Lovagl\u00f3\u00fat",
+            "terms": "Lovas \u00fat"
+        },
+        "highway/bus_guideway": {
+            "name": "Buszs\u00edn"
+        },
+        "highway/bus_stop": {
+            "name": "Buszmeg\u00e1ll\u00f3 peron"
+        },
+        "highway/construction": {
+            "name": "Lez\u00e1rt \u00fat"
+        },
+        "highway/corridor": {
+            "name": "Belt\u00e9ri folyos\u00f3",
+            "terms": "belt\u00e9ri folyos\u00f3"
+        },
+        "highway/crossing/marked": {
+            "name": "Jel\u00f6lt gyalog\u00e1tkel\u0151hely"
+        },
+        "highway/crossing/marked-raised": {
+            "name": "Jel\u00f6lt gyalog\u00e1tkel\u0151hely (kiemelt)"
+        },
+        "highway/crossing/unmarked": {
+            "name": "Jel\u00f6letlen keresztez\u0151d\u00e9s"
+        },
+        "highway/crossing/unmarked-raised": {
+            "name": "Jel\u00f6letlen keresztez\u0151d\u00e9s (kiemelt)"
+        },
+        "highway/crossing/zebra": {
+            "name": "Jel\u00f6lt gyalog\u00e1tkel\u0151hely"
+        },
+        "highway/crossing/zebra-raised": {
+            "name": "Jel\u00f6lt gyalog\u00e1tkel\u0151hely (kiemelt)"
+        },
+        "highway/cycleway": {
+            "name": "Ker\u00e9kp\u00e1r\u00fat",
+            "terms": "Bicikli\u00fat, bringa\u00fat"
+        },
+        "highway/elevator": {
+            "name": "Felvon\u00f3",
+            "terms": "lift"
+        },
+        "highway/footway": {
+            "name": "Gyalog\u00fat",
+            "terms": "J\u00e1rda"
+        },
+        "highway/footway/marked": {
+            "name": "Jel\u00f6lt gyalog\u00e1tkel\u0151hely"
+        },
+        "highway/footway/marked-raised": {
+            "name": "Jel\u00f6lt gyalog\u00e1tkel\u0151hely (kiemelt)"
+        },
+        "highway/footway/sidewalk": {
+            "name": "J\u00e1rda"
+        },
+        "highway/footway/unmarked": {
+            "name": "Jel\u00f6letlen keresztez\u0151d\u00e9s"
+        },
+        "highway/footway/unmarked-raised": {
+            "name": "Jel\u00f6letlen keresztez\u0151d\u00e9s (kiemelt)"
+        },
+        "highway/footway/zebra": {
+            "name": "Jel\u00f6lt gyalog\u00e1tkel\u0151hely"
+        },
+        "highway/footway/zebra-raised": {
+            "name": "Jel\u00f6lt gyalog\u00e1tkel\u0151hely (kiemelt)"
+        },
+        "highway/give_way": {
+            "name": "Els\u0151bbs\u00e9gad\u00e1s k\u00f6telez\u0151 t\u00e1bla",
+            "terms": "els\u0151bbs\u00e9gad\u00e1s"
+        },
+        "highway/living_street": {
+            "name": "Pihen\u0151\u00fat",
+            "terms": "Pihen\u0151-lak\u00f3\u00fat, lak\u00f3\u00fat, pihen\u0151\u00f6vezet, lak\u00f3\u00f6vezet"
+        },
+        "highway/milestone": {
+            "name": "Kilom\u00e9terk\u0151"
+        },
+        "highway/mini_roundabout": {
+            "name": "Mini k\u00f6rforgalom",
+            "terms": "Mini k\u00f6rforgalom"
+        },
+        "highway/motorway": {
+            "name": "Aut\u00f3p\u00e1lya",
+            "terms": "Aut\u00f3p\u00e1lya"
+        },
+        "highway/motorway_junction": {
+            "name": "Aut\u00f3p\u00e1lya-csom\u00f3pont / -kij\u00e1rat",
+            "terms": "aut\u00f3p\u00e1lya lehajt\u00f3, aut\u00f3p\u00e1lya felhajt\u00f3, el\u00e1gaz\u00e1s, le\u00e1gaz\u00e1s, kij\u00e1rat"
+        },
+        "highway/motorway_link": {
+            "name": "Aut\u00f3p\u00e1lya-felhajt\u00f3",
+            "terms": "aut\u00f3p\u00e1lya lehajt\u00f3, aut\u00f3p\u00e1lya le\u00e1gaz\u00e1s"
+        },
+        "highway/passing_place": {
+            "name": "Kit\u00e9r\u0151hely"
+        },
+        "highway/path": {
+            "name": "\u00d6sv\u00e9ny",
+            "terms": "\u00d6sv\u00e9ny"
+        },
+        "highway/pedestrian_area": {
+            "name": "S\u00e9t\u00e1l\u00f3 \u00f6vezet"
+        },
+        "highway/pedestrian_line": {
+            "name": "S\u00e9t\u00e1l\u00f3utca"
+        },
+        "highway/primary": {
+            "name": "F\u0151\u00fat",
+            "terms": "Els\u0151rend\u0171 f\u0151\u00fat"
+        },
+        "highway/primary_link": {
+            "name": "F\u0151\u00fatfelhajt\u00f3",
+            "terms": "Els\u0151rend\u0171 f\u0151\u00fatcsatlakoz\u00e1s"
+        },
+        "highway/raceway": {
+            "name": "Aut\u00f3versenyp\u00e1lya",
+            "terms": "versenyp\u00e1lya, aut\u00f3verseny, motorverseny, forma-1"
+        },
+        "highway/residential": {
+            "name": "Lak\u00f3\u00fat",
+            "terms": "utca"
+        },
+        "highway/rest_area": {
+            "name": "Pihen\u0151hely",
+            "terms": "Pihen\u0151hely"
+        },
+        "highway/road": {
+            "name": "Ismeretlen \u00fat",
+            "terms": "Ismeretlen t\u00edpus\u00fa \u00fat"
+        },
+        "highway/secondary": {
+            "name": "\u00d6sszek\u00f6t\u0151 \u00fat",
+            "terms": "M\u00e1sodrend\u0171 f\u0151\u00fat"
+        },
+        "highway/secondary_link": {
+            "name": "\u00d6sszek\u00f6t\u0151 \u00fat felhajt\u00f3",
+            "terms": "M\u00e1sodrend\u0171 f\u0151\u00fat csatlakoz\u00e1s"
+        },
+        "highway/service": {
+            "name": "Szerviz\u00fat",
+            "terms": "szerviz\u00fat,bek\u00f6t\u0151,\u00fat"
+        },
+        "highway/service/alley": {
+            "name": "Sik\u00e1tor",
+            "terms": "k\u00f6z"
+        },
+        "highway/service/drive-through": {
+            "name": "Aut\u00f3s szolg\u00e1ltat\u00e1shoz vezet\u0151 \u00fat",
+            "terms": "drive-in, aut\u00f3s szolg\u00e1ltat\u00e1s"
+        },
+        "highway/service/driveway": {
+            "name": "Kocsibehajt\u00f3",
+            "terms": "Kocsibej\u00e1r\u00f3"
+        },
+        "highway/service/emergency_access": {
+            "name": "V\u00e9szhelyzeti haszn\u00e1lat",
+            "terms": "V\u00e9szkij\u00e1rat, t\u0171zolt\u00f3bej\u00e1rat, t\u0171zolt\u00e1si felvonul\u00e1si \u00fatvonal, v\u00e9szhelyzeti bej\u00e1rat"
+        },
+        "highway/service/parking_aisle": {
+            "name": "Parkol\u00f3\u00fat",
+            "terms": "Parkol\u00f3\u00fat"
+        },
+        "highway/services": {
+            "name": "Aut\u00f3s pihen\u0151hely",
+            "terms": "aut\u00f3,pihen\u0151,pihen\u0151hely"
+        },
+        "highway/speed_camera": {
+            "name": "Traffipax",
+            "terms": "sebess\u00e9gellen\u0151rz\u0151, sebess\u00e9gm\u00e9r\u0151, kamera"
+        },
+        "highway/steps": {
+            "name": "L\u00e9pcs\u0151",
+            "terms": "L\u00e9pcs\u0151k"
+        },
+        "highway/steps/conveying": {
+            "name": "Mozg\u00f3l\u00e9pcs\u0151 vagy -j\u00e1rda"
+        },
+        "highway/stop": {
+            "name": "Stopt\u00e1bla",
+            "terms": "stop, \u00e1llj! els\u0151bbs\u00e9gad\u00e1s k\u00f6telez\u0151"
+        },
+        "highway/street_lamp": {
+            "name": "Utcai l\u00e1mpa",
+            "terms": "K\u00f6zvil\u00e1g\u00edt\u00e1s, l\u00e1mpa, utcai vil\u00e1g\u00edt\u00e1s"
+        },
+        "highway/tertiary": {
+            "name": "Bek\u00f6t\u0151\u00fat",
+            "terms": "Harmadrend\u0171 f\u0151\u00fat"
+        },
+        "highway/tertiary_link": {
+            "name": "Bek\u00f6t\u0151\u00fat felhajt\u00f3",
+            "terms": "Harmadrend\u0171 f\u0151\u00fat csatlakoz\u00e1s"
+        },
+        "highway/track": {
+            "name": "Nem karbantartott mez\u0151gazdas\u00e1gi/erd\u00e9szeti \u00fat",
+            "terms": "erd\u00e9szeti \u00fat, f\u00f6ld\u00fat, mez\u0151gazdas\u00e1gi \u00fat, tanyasi \u00fat, f\u00f6ld\u00fat"
+        },
+        "highway/traffic_mirror": {
+            "name": "K\u00f6zleked\u00e9si t\u00fck\u00f6r",
+            "terms": "k\u00f6zleked\u00e9si t\u00fck\u00f6r"
+        },
+        "highway/traffic_signals": {
+            "name": "Jelz\u0151l\u00e1mpa",
+            "terms": "l\u00e1mpa,villanyrend\u0151r,jelz\u0151l\u00e1mpa,k\u00f6zleked\u00e9si l\u00e1mpa"
+        },
+        "highway/trunk": {
+            "name": "Aut\u00f3\u00fat",
+            "terms": "Aut\u00f3\u00fat"
+        },
+        "highway/trunk_link": {
+            "name": "Aut\u00f3\u00fatfelhajt\u00f3",
+            "terms": "Aut\u00f3\u00fat csatlakoz\u00e1s"
+        },
+        "highway/turning_circle": {
+            "name": "Fordul\u00f3",
+            "terms": "Fordul\u00f3"
+        },
+        "highway/turning_loop": {
+            "name": "Fordul\u00f3hurok",
+            "terms": "fordul\u00f3hely"
+        },
+        "highway/unclassified": {
+            "name": "Als\u00f3bbrend\u0171 \u00fat",
+            "terms": "als\u00f3bbrend\u0171 \u00fat"
+        },
+        "historic": {
+            "name": "T\u00f6rt\u00e9nelmi hely",
+            "terms": "T\u00f6rt\u00e9nelmi hely"
+        },
+        "historic/archaeological_site": {
+            "name": "R\u00e9g\u00e9szeti lel\u0151hely",
+            "terms": "R\u00e9g\u00e9szeti lel\u0151hely"
+        },
+        "historic/boundary_stone": {
+            "name": "Hat\u00e1rk\u0151",
+            "terms": "Hat\u00e1rk\u0151"
+        },
+        "historic/castle": {
+            "name": "V\u00e1r",
+            "terms": "Kast\u00e9ly, Palota"
+        },
+        "historic/memorial": {
+            "name": "Eml\u00e9km\u0171",
+            "terms": "Eml\u00e9khely"
+        },
+        "historic/monument": {
+            "name": "Monument\u00e1lis, \u00e9p\u00fcletszer\u0171 eml\u00e9km\u0171",
+            "terms": "monument\u00e1lis eml\u00e9km\u0171"
+        },
+        "historic/ruins": {
+            "name": "Romok",
+            "terms": "Romok"
+        },
+        "historic/tomb": {
+            "name": "S\u00edr",
+            "terms": "s\u00edr, temetkez\u00e9si hely, mauz\u00f3leum, kripta"
+        },
+        "historic/wayside_cross": {
+            "name": "\u00datmenti kereszt",
+            "terms": "K\u0151kereszt, fesz\u00fclet, pl\u00e9hkrisztus"
+        },
+        "historic/wayside_shrine": {
+            "name": "\u00datmenti kegyhely",
+            "terms": "\u00datmenti szent\u00e9ly"
+        },
+        "historic/wreck": {
+            "name": "Haj\u00f3roncs"
+        },
+        "junction": {
+            "name": "El\u00e1gaz\u00e1s",
+            "terms": "El\u00e1gaz\u00e1s, \u00fatkeresztez\u0151d\u00e9s, csom\u00f3pont"
+        },
+        "landuse": {
+            "name": "Ter\u00fclethaszn\u00e1lat"
+        },
+        "landuse/allotments": {
+            "name": "K\u00f6z\u00f6ss\u00e9gi kert",
+            "terms": "k\u00f6z\u00f6ss\u00e9gi kert"
+        },
+        "landuse/aquaculture": {
+            "name": "Akvakult\u00fara",
+            "terms": "v\u00edzm\u0171vel\u00e9s, halteny\u00e9szt\u00e9s, kagyl\u00f3teny\u00e9szt\u00e9s, r\u00e1kteny\u00e9szt\u00e9s, sea food"
+        },
+        "landuse/basin": {
+            "name": "V\u00edzgy\u0171jt\u0151 medence"
+        },
+        "landuse/brownfield": {
+            "name": "Barnamez\u0151s ter\u00fclet",
+            "terms": "mez\u0151, barna, sz\u00e1nt\u00f3"
+        },
+        "landuse/cemetery": {
+            "name": "Temet\u0151",
+            "terms": "K\u00f6ztemet\u0151, s\u00edrkert"
+        },
+        "landuse/churchyard": {
+            "name": "Templomkert",
+            "terms": "templomudvar, nartex, kereng\u0151"
+        },
+        "landuse/commercial": {
+            "name": "\u00dczleti ter\u00fclet",
+            "terms": "\u00fczleti park, kereskedelmi ter\u00fclet"
+        },
+        "landuse/construction": {
+            "name": "\u00c9p\u00edtkez\u00e9s",
+            "terms": "\u00e9p\u00edt\u00e9si ter\u00fclet, bont\u00e1s, \u00e9p\u00edtkez\u00e9s"
+        },
+        "landuse/farm": {
+            "name": "Mez\u0151gazdas\u00e1gi ter\u00fclet"
+        },
+        "landuse/farmland": {
+            "name": "Mez\u0151gazdas\u00e1gi ter\u00fclet",
+            "terms": "sz\u00e1nt\u00f3, sz\u00e1nt\u00f3f\u00f6ld, b\u00fazaf\u00f6ld, kukoricaf\u00f6ld, arat\u00e1s, mez\u0151gazdas\u00e1g"
+        },
+        "landuse/farmyard": {
+            "name": "Tanyaudvar",
+            "terms": "farm, tanya, gazdas\u00e1g, mez\u0151gazdas\u00e1gi \u00fczem"
+        },
+        "landuse/grass": {
+            "name": "F\u0171",
+            "terms": "gyep"
+        },
+        "landuse/greenfield": {
+            "name": "Z\u00f6ldmez\u0151s ter\u00fclet",
+            "terms": "mez\u0151, sz\u00e1nt\u00f3, z\u00f6ld"
+        },
+        "landuse/greenhouse_horticulture": {
+            "name": "\u00dcvegh\u00e1zi kert\u00e9szet"
+        },
+        "landuse/harbour": {
+            "name": "Kik\u00f6t\u0151",
+            "terms": "kik\u00f6t\u0151, haj\u00f3"
+        },
+        "landuse/industrial": {
+            "name": "Ipari ter\u00fclet",
+            "terms": "ipar, gy\u00e1rter\u00fclet, gy\u00e1r, ipari park"
+        },
+        "landuse/industrial/scrap_yard": {
+            "name": "Szem\u00e9ttelep"
+        },
+        "landuse/industrial/slaughterhouse": {
+            "name": "V\u00e1g\u00f3h\u00edd"
+        },
+        "landuse/landfill": {
+            "name": "Hullad\u00e9klerak\u00f3",
+            "terms": "Szem\u00e9tlerak\u00f3, szem\u00e9ttelep"
+        },
+        "landuse/meadow": {
+            "name": "R\u00e9t",
+            "terms": "tiszt\u00e1s, legel\u0151"
+        },
+        "landuse/military": {
+            "name": "Katonai ter\u00fclet",
+            "terms": "L\u0151t\u00e9r,  Gyakorl\u00f3 terep"
+        },
+        "landuse/military/airfield": {
+            "name": "Katonai rep\u00fcl\u0151t\u00e9r",
+            "terms": "katonai rept\u00e9r,rep\u00fcl\u0151b\u00e1zis,l\u00e9gib\u00e1zis, l\u00e9git\u00e1maszpont"
+        },
+        "landuse/military/barracks": {
+            "name": "Laktanya",
+            "terms": "kasz\u00e1rnya"
+        },
+        "landuse/military/bunker": {
+            "name": "Bunker",
+            "terms": "bunker,\u00f3v\u00f3hely"
+        },
+        "landuse/military/checkpoint": {
+            "name": "Ellen\u0151rz\u0151pont",
+            "terms": "checkpoint"
+        },
+        "landuse/military/danger_area": {
+            "name": "Vesz\u00e9lyes ter\u00fclet",
+            "terms": "vesz\u00e9ly,vesz\u00e9lyes,ter\u00fclet"
+        },
+        "landuse/military/naval_base": {
+            "name": "Haditenger\u00e9szeti t\u00e1maszpont",
+            "terms": "tenger\u00e9szeti,haditenger\u00e9szeti,b\u00e1zis"
+        },
+        "landuse/military/nuclear_explosion_site": {
+            "name": "Nukle\u00e1ris robbant\u00e1si helysz\u00edn",
+            "terms": "atomrobbant\u00e1s, atombomba, atomk\u00eds\u00e9rlet"
+        },
+        "landuse/military/obstacle_course": {
+            "name": "Akad\u00e1lyp\u00e1lya",
+            "terms": "akad\u00e1lyp\u00e1lya"
+        },
+        "landuse/military/office": {
+            "name": "Katonai hivatal",
+            "terms": "katonai,honv\u00e9ds\u00e9gi hivatal"
+        },
+        "landuse/military/range": {
+            "name": "Katonai l\u0151t\u00e9r",
+            "terms": "katonai,honv\u00e9ds\u00e9gi,l\u0151t\u00e9r"
+        },
+        "landuse/military/training_area": {
+            "name": "Kik\u00e9pz\u00e9si ter\u00fclet",
+            "terms": "katonai,honv\u00e9ds\u00e9gi,kik\u00e9pz\u0151,ter\u00fclet"
+        },
+        "landuse/orchard": {
+            "name": "Gy\u00fcm\u00f6lcs\u00f6s",
+            "terms": "Gy\u00fcm\u00f6lcs\u00f6skert, gy\u00fcm\u00f6lcsf\u00e1s, \u00fcltetv\u00e9ny"
+        },
+        "landuse/plant_nursery": {
+            "name": "N\u00f6v\u00e9nyiskola",
+            "terms": "n\u00f6v\u00e9nyiskola, faiskola"
+        },
+        "landuse/quarry": {
+            "name": "K\u0151fejt\u0151",
+            "terms": "k\u0151b\u00e1nya"
+        },
+        "landuse/railway": {
+            "name": "Vas\u00fati ter\u00fclet",
+            "terms": "vas\u00fati folyos\u00f3, \u0171rszelv\u00e9ny"
+        },
+        "landuse/recreation_ground": {
+            "name": "Szabadid\u0151park",
+            "terms": "park, pihen\u0151hely"
+        },
+        "landuse/religious": {
+            "name": "Vall\u00e1si \u00f6vezet"
+        },
+        "landuse/residential": {
+            "name": "Lak\u00f3\u00f6vezet",
+            "terms": "lak\u00f3telep, lak\u00f3ter\u00fclet"
+        },
+        "landuse/residential/apartments": {
+            "name": "T\u00e1rsash\u00e1z egy\u00fcttes"
+        },
+        "landuse/retail": {
+            "name": "Kiskereskedelmi ter\u00fclet",
+            "terms": "kiskereskedelem, boltok"
+        },
+        "landuse/vineyard": {
+            "name": "Sz\u0151l\u0151",
+            "terms": "sz\u0151l\u0151skert, sz\u0151l\u0151\u00fcltetv\u00e9ny"
+        },
+        "leisure": {
+            "name": "Szabadid\u0151"
+        },
+        "leisure/adult_gaming_centre": {
+            "name": "Feln\u0151tt j\u00e1t\u00e9kk\u00f6zpont",
+            "terms": "j\u00e1t\u00e9kterem"
+        },
+        "leisure/bandstand": {
+            "name": "Zenepavilon"
+        },
+        "leisure/beach_resort": {
+            "name": "F\u00fcrd\u0151hely, v\u00edzparti strand",
+            "terms": "strand, f\u00fcrd\u0151, v\u00edzpart, tengerpart"
+        },
+        "leisure/bird_hide": {
+            "name": "Mad\u00e1rles",
+            "terms": "mad\u00e1rles"
+        },
+        "leisure/bleachers": {
+            "name": "Lel\u00e1t\u00f3"
+        },
+        "leisure/bowling_alley": {
+            "name": "Bowlingp\u00e1lya",
+            "terms": "bowling p\u00e1lya"
+        },
+        "leisure/common": {
+            "name": "Szabadid\u0151s tev\u00e9kenys\u00e9gre haszn\u00e1lhat\u00f3 k\u00f6z\u00f6s ter\u00fclet (Nagy-Britannia)",
+            "terms": "K\u00f6zter\u00fclet"
+        },
+        "leisure/dance": {
+            "name": "T\u00e1ncterem",
+            "terms": "t\u00e1ncterem"
+        },
+        "leisure/dancing_school": {
+            "name": "T\u00e1nciskola"
+        },
+        "leisure/dog_park": {
+            "name": "Kutyafuttat\u00f3",
+            "terms": "Kutyas\u00e9t\u00e1ltat\u00f3"
+        },
+        "leisure/firepit": {
+            "name": "T\u0171zrak\u00f3hely",
+            "terms": "t\u0171zrak\u00f3, t\u00e1bort\u0171z, szalonnas\u00fct\u00e9s"
+        },
+        "leisure/fishing": {
+            "name": "Horg\u00e1szhely"
+        },
+        "leisure/fitness_centre": {
+            "name": "Edz\u0151terem / Fitneszklub",
+            "terms": "konditerem,fitnesz,sport,k\u00f6zpont"
+        },
+        "leisure/fitness_centre/yoga": {
+            "name": "J\u00f3gast\u00fadi\u00f3",
+            "terms": "j\u00f3gak\u00f6zpont, j\u00f3ga,st\u00fadi\u00f3"
+        },
+        "leisure/fitness_station": {
+            "name": "Fitneszpark",
+            "terms": "fitnesz,sport, edz\u0151hely"
+        },
+        "leisure/fitness_station/balance_beam": {
+            "name": "Gyakorlati egyens\u00falyoz\u00f3 gerenda"
+        },
+        "leisure/fitness_station/box": {
+            "name": "Gyakorlai doboz"
+        },
+        "leisure/fitness_station/horizontal_bar": {
+            "name": "Gyakorlati ny\u00fajt\u00f3"
+        },
+        "leisure/fitness_station/stairs": {
+            "name": "Gyakorlati l\u00e9pcs\u0151"
+        },
+        "leisure/garden": {
+            "name": "Kert",
+            "terms": "Kert"
+        },
+        "leisure/golf_course": {
+            "name": "Golfp\u00e1lya",
+            "terms": "Golfp\u00e1lya"
+        },
+        "leisure/hackerspace": {
+            "name": "Alkot\u00f3m\u0171hely",
+            "terms": "alkot\u00f3m\u0171hely, alkot\u00f3labor, alkot\u00f3hely"
+        },
+        "leisure/horse_riding": {
+            "name": "Lovasiskola",
+            "terms": "Lovagl\u00e1s"
+        },
+        "leisure/ice_rink": {
+            "name": "J\u00e9gp\u00e1lya",
+            "terms": "m\u0171j\u00e9gp\u00e1lya"
+        },
+        "leisure/marina": {
+            "name": "Kishaj\u00f3kik\u00f6t\u0151",
+            "terms": "Kik\u00f6t\u0151"
+        },
+        "leisure/miniature_golf": {
+            "name": "Minigolf",
+            "terms": "minigolf, minigolfp\u00e1lya, miniat\u0171r golfp\u00e1lya"
+        },
+        "leisure/nature_reserve": {
+            "name": "Term\u00e9szetv\u00e9delmi ter\u00fclet",
+            "terms": "term\u00e9szetv\u00e9delem,ter\u00fclet,nemzeti,park, t\u00e1jv\u00e9delmi k\u00f6rzet"
+        },
+        "leisure/park": {
+            "name": "Park",
+            "terms": "Park"
+        },
+        "leisure/picnic_table": {
+            "name": "Piknikasztal",
+            "terms": "Piknikasztal"
+        },
+        "leisure/pitch": {
+            "name": "Sportp\u00e1lya",
+            "terms": "Sportp\u00e1lya"
+        },
+        "leisure/pitch/american_football": {
+            "name": "Amerikaifutball-p\u00e1lya",
+            "terms": "Amerikai foci p\u00e1lya"
+        },
+        "leisure/pitch/australian_football": {
+            "name": "Ausztr\u00e1l futball p\u00e1lya"
+        },
+        "leisure/pitch/badminton": {
+            "name": "Tollaslabda p\u00e1lya"
+        },
+        "leisure/pitch/baseball": {
+            "name": "Baseball p\u00e1lya"
+        },
+        "leisure/pitch/basketball": {
+            "name": "Kos\u00e1rlabdap\u00e1lya",
+            "terms": "Kos\u00e1rlabdap\u00e1lya"
+        },
+        "leisure/pitch/beachvolleyball": {
+            "name": "Strandr\u00f6plabdap\u00e1lya",
+            "terms": "strand,r\u00f6plabda,r\u00f6pi,p\u00e1lya"
+        },
+        "leisure/pitch/bowls": {
+            "name": "Gyeptekep\u00e1lya",
+            "terms": "bowling p\u00e1lya"
+        },
+        "leisure/pitch/cricket": {
+            "name": "Krikettp\u00e1lya",
+            "terms": "krikettp\u00e1lya"
+        },
+        "leisure/pitch/equestrian": {
+            "name": "Lovasp\u00e1lya",
+            "terms": "lovarda, lovasiskola"
+        },
+        "leisure/pitch/rugby_league": {
+            "name": "Rugby League-p\u00e1lya",
+            "terms": "r\u00f6gbi,p\u00e1lya"
+        },
+        "leisure/pitch/rugby_union": {
+            "name": "Rugby Union-p\u00e1lya",
+            "terms": "r\u00f6gbi,p\u00e1lya"
+        },
+        "leisure/pitch/skateboard": {
+            "name": "G\u00f6rdeszkapark",
+            "terms": "G\u00f6rdeszkapark"
+        },
+        "leisure/pitch/soccer": {
+            "name": "Futballp\u00e1lya",
+            "terms": "Focip\u00e1lya"
+        },
+        "leisure/pitch/table_tennis": {
+            "name": "Pingpongasztal",
+            "terms": "asztalitenisz,asztal,pingpong"
+        },
+        "leisure/pitch/tennis": {
+            "name": "Teniszp\u00e1lya",
+            "terms": "Teniszp\u00e1lya"
+        },
+        "leisure/pitch/volleyball": {
+            "name": "R\u00f6plabdap\u00e1lya",
+            "terms": "r\u00f6plabda,r\u00f6pi,p\u00e1lya"
+        },
+        "leisure/playground": {
+            "name": "J\u00e1tsz\u00f3t\u00e9r",
+            "terms": "J\u00e1tsz\u00f3t\u00e9r"
+        },
+        "leisure/resort": {
+            "name": "\u00dcd\u00fcl\u0151hely",
+            "terms": "\u00fcd\u00fcl\u0151,\u00fcd\u00fcl\u0151hely"
+        },
+        "leisure/sauna": {
+            "name": "Szauna",
+            "terms": "g\u0151z, meleg, izzad, szauna"
+        },
+        "leisure/slipway": {
+            "name": "S\u00f3lya",
+            "terms": "S\u00f3lya, haj\u00f3cs\u00faszda"
+        },
+        "leisure/sports_centre": {
+            "name": "Sportk\u00f6zpont / komplexum",
+            "terms": "sport,k\u00f6zpont,komplexum"
+        },
+        "leisure/sports_centre/swimming": {
+            "name": "Uszoda",
+            "terms": "\u00dasz\u00f3medence, uszoda"
+        },
+        "leisure/stadium": {
+            "name": "Stadion",
+            "terms": "Stadion"
+        },
+        "leisure/swimming_pool": {
+            "name": "\u00dasz\u00f3medence",
+            "terms": "\u00dasz\u00f3medence, uszoda"
+        },
+        "leisure/track": {
+            "name": "Versenyp\u00e1lya (nem motorsport)",
+            "terms": "versenyp\u00e1lya,"
+        },
+        "leisure/water_park": {
+            "name": "\u00c9lm\u00e9nyf\u00fcrd\u0151",
+            "terms": "strand,akvapark,aquapark,v\u00edzi sz\u00f3rakoztat\u00f3park"
+        },
+        "line": {
+            "name": "Vonal",
+            "terms": "Vonal"
+        },
+        "man_made": {
+            "name": "\u00c9p\u00edtm\u00e9nyek"
+        },
+        "man_made/adit": {
+            "name": "B\u00e1nyat\u00e1rna (v\u00edzszintes)",
+            "terms": "b\u00e1nya, akna, t\u00e1r\u00f3"
+        },
+        "man_made/antenna": {
+            "name": "Antenna"
+        },
+        "man_made/breakwater": {
+            "name": "Hull\u00e1mt\u00f6r\u0151",
+            "terms": "Hull\u00e1mt\u00f6r\u0151"
+        },
+        "man_made/bridge": {
+            "name": "H\u00edd",
+            "terms": "h\u00edd"
+        },
+        "man_made/chimney": {
+            "name": "K\u00e9m\u00e9ny",
+            "terms": "f\u00fcstelvezet\u0151"
+        },
+        "man_made/clearcut": {
+            "name": "Tarv\u00e1g\u00e1s"
+        },
+        "man_made/crane": {
+            "name": "Daru",
+            "terms": "daru,emel\u0151,teher"
+        },
+        "man_made/cutline": {
+            "name": "Nyilad\u00e9k",
+            "terms": "Irt\u00e1s"
+        },
+        "man_made/embankment": {
+            "name": "T\u00f6lt\u00e9s"
+        },
+        "man_made/flagpole": {
+            "name": "Z\u00e1szl\u00f3r\u00fad",
+            "terms": "\u00e1rboc"
+        },
+        "man_made/gasometer": {
+            "name": "G\u00e1ztart\u00e1ly",
+            "terms": "gazom\u00e9ter"
+        },
+        "man_made/groyne": {
+            "name": "Keresztg\u00e1t",
+            "terms": "v\u00e9d\u0151g\u00e1t, hull\u00e1mt\u00f6r\u0151"
+        },
+        "man_made/lighthouse": {
+            "name": "Vil\u00e1g\u00edt\u00f3torony",
+            "terms": "Vil\u00e1g\u00edt\u00f3torony"
+        },
+        "man_made/mast": {
+            "name": "P\u00f3zna",
+            "terms": "p\u00f3zna, mobiltorony, mobilcella, r\u00e1di\u00f3ad\u00f3"
+        },
+        "man_made/monitoring_station": {
+            "name": "Megfigyel\u0151\u00e1llom\u00e1s"
+        },
+        "man_made/observatory": {
+            "name": "Obszervat\u00f3rium"
+        },
+        "man_made/petroleum_well": {
+            "name": "Olajk\u00fat",
+            "terms": "olajk\u00fat"
+        },
+        "man_made/pier": {
+            "name": "M\u00f3l\u00f3",
+            "terms": "M\u00f3l\u00f3"
+        },
+        "man_made/pipeline": {
+            "name": "Cs\u0151vezet\u00e9k",
+            "terms": "Cs\u0151vezet\u00e9k"
+        },
+        "man_made/pumping_station": {
+            "name": "Szivatty\u00fah\u00e1z",
+            "terms": "szivatty\u00fa,pumpa"
+        },
+        "man_made/silo": {
+            "name": "Sil\u00f3",
+            "terms": "sil\u00f3, gabonat\u00e1rol\u00f3"
+        },
+        "man_made/storage_tank": {
+            "name": "T\u00e1rol\u00f3tart\u00e1ly",
+            "terms": "t\u00e1rol\u00f3, tart\u00e1ly"
+        },
+        "man_made/surveillance": {
+            "name": "T\u00e9rfigyel\u0151 kamera",
+            "terms": "biztons\u00e1gi kamera, CCTV, z\u00e1rtl\u00e1nc\u00fa kamera"
+        },
+        "man_made/surveillance/camera": {
+            "name": "T\u00e9rfigyel\u0151 kamera"
+        },
+        "man_made/survey_point": {
+            "name": "F\u00f6ldm\u00e9r\u00e9si alappont",
+            "terms": "Megfigyel\u0151pont"
+        },
+        "man_made/tower": {
+            "name": "Torony",
+            "terms": "magas \u00e9p\u00fclet"
+        },
+        "man_made/tower/communication": {
+            "name": "Kommunik\u00e1ci\u00f3s torony"
+        },
+        "man_made/tower/observation": {
+            "name": "Kil\u00e1t\u00f3torony"
+        },
+        "man_made/wastewater_plant": {
+            "name": "Szennyv\u00edztelep",
+            "terms": "Szennyv\u00edztiszt\u00edt\u00f3 \u00fczem"
+        },
+        "man_made/water_tower": {
+            "name": "V\u00edztorony",
+            "terms": "V\u00edztorony"
+        },
+        "man_made/water_well": {
+            "name": "K\u00fat",
+            "terms": "kerekes k\u00fat, g\u00e9mesk\u00fat"
+        },
+        "man_made/water_works": {
+            "name": "V\u00edzm\u0171",
+            "terms": "V\u00edzm\u0171"
+        },
+        "man_made/watermill": {
+            "name": "V\u00edzimalom",
+            "terms": "malom, v\u00edz"
+        },
+        "man_made/windmill": {
+            "name": "Sz\u00e9lmalom",
+            "terms": "malom, sz\u00e9l"
+        },
+        "man_made/works": {
+            "name": "Gy\u00e1r",
+            "terms": "gy\u00e1r,\u00fczem,kombin\u00e1t,manufakt\u00fara,m\u0171vek"
+        },
+        "manhole": {
+            "name": "B\u00fav\u00f3ny\u00edl\u00e1s",
+            "terms": "akna"
+        },
+        "manhole/drain": {
+            "name": "Viharcsatorna",
+            "terms": "csatorna,cs\u0151"
+        },
+        "manhole/telecom": {
+            "name": "T\u00e1vk\u00f6zl\u00e9si akna",
+            "terms": "akna, szekr\u00e9ny, t\u00e1vk\u00f6zl\u00e9s"
+        },
+        "natural": {
+            "name": "Term\u00e9szet"
+        },
+        "natural/bare_rock": {
+            "name": "Csupasz szikla",
+            "terms": "szikla, k\u0151, k\u0151zet"
+        },
+        "natural/bay": {
+            "name": "\u00d6b\u00f6l",
+            "terms": "\u00d6b\u00f6l"
+        },
+        "natural/beach": {
+            "name": "Term\u00e9szetes strand",
+            "terms": "Strand, v\u00edzpart, tengerpart, f\u00fcrd\u0151hely"
+        },
+        "natural/cave_entrance": {
+            "name": "Barlangbej\u00e1rat",
+            "terms": "Barlang"
+        },
+        "natural/cliff": {
+            "name": "Sziklaszirt",
+            "terms": "Sziklafal, sziklaperem"
+        },
+        "natural/coastline": {
+            "name": "Partvonal",
+            "terms": "Tengerpart"
+        },
+        "natural/fell": {
+            "name": "Fjell",
+            "terms": "kop\u00e1r \u00e9szaki t\u00e1j, tundra"
+        },
+        "natural/glacier": {
+            "name": "Gleccser",
+            "terms": "j\u00e9gfoly\u00f3"
+        },
+        "natural/grassland": {
+            "name": "F\u00fcves puszta",
+            "terms": "r\u00e9t, puszta, mez\u0151"
+        },
+        "natural/heath": {
+            "name": "Feny\u00e9r",
+            "terms": "pusztas\u00e1g, r\u00e9t, hangaf\u0171, t\u00f6rpecserj\u00e9s"
+        },
+        "natural/mud": {
+            "name": "S\u00e1r"
+        },
+        "natural/peak": {
+            "name": "Hegycs\u00facs",
+            "terms": "Hegycs\u00facs, hegytet\u0151, cs\u00facs"
+        },
+        "natural/reef": {
+            "name": "Z\u00e1tony"
+        },
+        "natural/ridge": {
+            "name": "Hegygerinc",
+            "terms": "hegy,gerinc,tet\u0151"
+        },
+        "natural/saddle": {
+            "name": "Nyereg",
+            "terms": "h\u00e1g\u00f3"
+        },
+        "natural/sand": {
+            "name": "Homok",
+            "terms": "homok,f\u00f6veny"
+        },
+        "natural/scree": {
+            "name": "T\u00f6rmel\u00e9klejt\u0151",
+            "terms": "k\u0151t\u00f6rmel\u00e9k, k\u0151foly\u00e1s"
+        },
+        "natural/scrub": {
+            "name": "Boz\u00f3t",
+            "terms": "bokor, cserj\u00e9s"
+        },
+        "natural/spring": {
+            "name": "Forr\u00e1s",
+            "terms": "Forr\u00e1s"
+        },
+        "natural/tree": {
+            "name": "Fa",
+            "terms": "Fa"
+        },
+        "natural/tree_row": {
+            "name": "Fasor"
+        },
+        "natural/volcano": {
+            "name": "Vulk\u00e1n",
+            "terms": "vulk\u00e1n, t\u0171zh\u00e1ny\u00f3"
+        },
+        "natural/water": {
+            "name": "V\u00edz",
+            "terms": "V\u00edz"
+        },
+        "natural/water/lake": {
+            "name": "T\u00f3",
+            "terms": "T\u00f3"
+        },
+        "natural/water/pond": {
+            "name": "Tavacska",
+            "terms": "Tavacska"
+        },
+        "natural/water/reservoir": {
+            "name": "V\u00edzt\u00e1roz\u00f3",
+            "terms": "V\u00edzt\u00e1roz\u00f3"
+        },
+        "natural/wetland": {
+            "name": "Mocsaras ter\u00fclet",
+            "terms": "Mocsaras, vizeny\u0151, n\u00e1das, l\u00e1p, ingov\u00e1ny"
+        },
+        "natural/wood": {
+            "name": "Term\u00e9szetes erd\u0151",
+            "terms": "erd\u0151, \u0151serd\u0151, liget, f\u00e1s ter\u00fclet"
+        },
+        "noexit/yes": {
+            "name": "Zs\u00e1kutca",
+            "terms": "zs\u00e1kutca"
+        },
+        "office": {
+            "name": "Iroda",
+            "terms": "Iroda"
+        },
+        "office/accountant": {
+            "name": "K\u00f6nyvel\u0151 iroda"
+        },
+        "office/administrative": {
+            "name": "K\u00f6zigazgat\u00e1si hivatal"
+        },
+        "office/adoption_agency": {
+            "name": "\u00d6r\u00f6kbefogad\u00e1si \u00fcgyn\u00f6ks\u00e9g"
+        },
+        "office/advertising_agency": {
+            "name": "Rekl\u00e1m\u00fcgyn\u00f6ks\u00e9g"
+        },
+        "office/architect": {
+            "name": "\u00c9p\u00edt\u00e9szi iroda"
+        },
+        "office/association": {
+            "name": "Nonprofit szervezet iroda"
+        },
+        "office/charity": {
+            "name": "J\u00f3t\u00e9konys\u00e1gi iroda"
+        },
+        "office/company": {
+            "name": "V\u00e1llalati iroda"
+        },
+        "office/coworking": {
+            "name": "K\u00f6z\u00f6ss\u00e9gi iroda",
+            "terms": "k\u00f6z\u00f6ss\u00e9gi munkat\u00e9r, coworking"
+        },
+        "office/educational_institution": {
+            "name": "Oktat\u00e1si int\u00e9zm\u00e9ny",
+            "terms": "oktat\u00e1si int\u00e9zm\u00e9ny"
+        },
+        "office/employment_agency": {
+            "name": "Munka\u00fcgyi k\u00f6zpont",
+            "terms": "munka\u00fcgyi hivatal"
+        },
+        "office/energy_supplier": {
+            "name": "Energiaszolg\u00e1ltat\u00f3 hivatal"
+        },
+        "office/estate_agent": {
+            "name": "Ingatlaniroda",
+            "terms": "ingatlank\u00f6zvet\u00edt\u0151"
+        },
+        "office/financial": {
+            "name": "P\u00e9nz\u00fcgyi v\u00e1llalat irod\u00e1ja",
+            "terms": "p\u00e9nz\u00fcgy, hitelez\u00e9s, k\u00f6lcs\u00f6n, befektet\u00e9s, biztos\u00edt\u00e1s"
+        },
+        "office/forestry": {
+            "name": "Erd\u00e9szeti hivatal"
+        },
+        "office/government": {
+            "name": "Korm\u00e1nyzati hivatal",
+            "terms": "Korm\u00e1nyzat, miniszt\u00e9rium, orsz\u00e1gos szerv"
+        },
+        "office/government/register_office": {
+            "name": "Anyak\u00f6nyvi hivatal",
+            "terms": "anyak\u00f6nyvi hivatal, h\u00e1zass\u00e1gk\u00f6t\u00e9si hivatal"
+        },
+        "office/insurance": {
+            "name": "Biztos\u00edt\u00f3",
+            "terms": "Biztos\u00edt\u00f3"
+        },
+        "office/it": {
+            "name": "Informatikai iroda"
+        },
+        "office/lawyer": {
+            "name": "\u00dcgyv\u00e9d",
+            "terms": "\u00fcgyv\u00e9d, b\u00edr\u00f3s\u00e1g, k\u00f6zjegyz\u0151, \u00fcgy\u00e9sz"
+        },
+        "office/lawyer/notary": {
+            "name": "K\u00f6zjegyz\u0151i iroda"
+        },
+        "office/moving_company": {
+            "name": "K\u00f6lt\u00f6z\u0151c\u00e9g iroda"
+        },
+        "office/newspaper": {
+            "name": "\u00dajs\u00e1g\u00edr\u00f3i iroda"
+        },
+        "office/ngo": {
+            "name": "Civil szervezet",
+            "terms": "Nonprofit szervezet, NGO, egyes\u00fclet"
+        },
+        "office/physician": {
+            "name": "Orvosi rendel\u0151"
+        },
+        "office/political_party": {
+            "name": "P\u00e1rtiroda",
+            "terms": "p\u00e1rtsz\u00e9kh\u00e1z, politika, p\u00e1rt"
+        },
+        "office/private_investigator": {
+            "name": "Mag\u00e1nnyomoz\u00f3 iroda"
+        },
+        "office/research": {
+            "name": "Kutat\u00f3int\u00e9zet",
+            "terms": "kutat\u00e1s, fejleszt\u00e9s, alapkutat\u00e1s"
+        },
+        "office/telecommunication": {
+            "name": "T\u00e1vk\u00f6zl\u00e9si c\u00e9g irod\u00e1ja",
+            "terms": "mobilszolg\u00e1ltat\u00f3, telekommunik\u00e1ci\u00f3, telefon, internet"
+        },
+        "office/travel_agent": {
+            "name": "Utaz\u00e1si iroda"
+        },
+        "piste/sleigh": {
+            "name": "Sz\u00e1nk\u00f3p\u00e1lya"
+        },
+        "place": {
+            "name": "Hely"
+        },
+        "place/city": {
+            "name": "Nagyv\u00e1ros",
+            "terms": "v\u00e1ros, megyesz\u00e9khely, megyek\u00f6zpont"
+        },
+        "place/city_block": {
+            "name": "V\u00e1rost\u00f6mb"
+        },
+        "place/farm": {
+            "name": "Tanya"
+        },
+        "place/hamlet": {
+            "name": "Falucska",
+            "terms": "falucska,telep\u00fcl\u00e9sr\u00e9sz, tanyabokor"
+        },
+        "place/island": {
+            "name": "Sziget",
+            "terms": "sziget"
+        },
+        "place/islet": {
+            "name": "Szigetecske"
+        },
+        "place/isolated_dwelling": {
+            "name": "Elszigetelt lak\u00e1s",
+            "terms": "Elszigetelt otthon"
+        },
+        "place/locality": {
+            "name": "Lakatlan hely",
+            "terms": "d\u0171l\u0151, helyn\u00e9v"
+        },
+        "place/neighbourhood": {
+            "name": "K\u00f6rny\u00e9k",
+            "terms": "k\u00f6rny\u00e9k,negyed"
+        },
+        "place/plot": {
+            "name": "Parcella"
+        },
+        "place/quarter": {
+            "name": "Sub-Borough / Quarter",
+            "terms": "sub-borough,quarter"
+        },
+        "place/square": {
+            "name": "T\u00e9r",
+            "terms": "n\u00e9gysz\u00f6gletes t\u00e9r"
+        },
+        "place/suburb": {
+            "name": "V\u00e1rosr\u00e9sz",
+            "terms": "v\u00e1rosr\u00e9sz"
+        },
+        "place/town": {
+            "name": "V\u00e1ros",
+            "terms": "kisv\u00e1ros"
+        },
+        "place/village": {
+            "name": "Falu",
+            "terms": "k\u00f6zs\u00e9g"
+        },
+        "playground/basket_spinner": {
+            "name": "Kos\u00e1r forg\u00f3",
+            "terms": "kos\u00e1r,forog,hinta"
+        },
+        "playground/basket_swing": {
+            "name": "Kos\u00e1rhinta",
+            "terms": "kos\u00e1r,hinta,j\u00e1t\u00e9k"
+        },
+        "playground/climbing_frame": {
+            "name": "M\u00e1sz\u00f3ka",
+            "terms": "m\u00e1sz\u00f3ka,j\u00e1t\u00e9k"
+        },
+        "playground/cushion": {
+            "name": "Ugr\u00e1l\u00f3 p\u00e1rna",
+            "terms": "p\u00e1rna,felf\u00faj,ugr\u00e1l"
+        },
+        "playground/roundabout": {
+            "name": "K\u00f6rforg\u00f3",
+            "terms": "k\u00f6rforg\u00f3,k\u00f6rhinta,j\u00e1t\u00e9k"
+        },
+        "playground/sandpit": {
+            "name": "Homokoz\u00f3",
+            "terms": "homok,j\u00e1t\u00e9k"
+        },
+        "playground/seesaw": {
+            "name": "M\u00e9rleghinta",
+            "terms": "hinta,m\u00e9rleg,libik\u00f3ka"
+        },
+        "playground/slide": {
+            "name": "Cs\u00faszda",
+            "terms": "cs\u00fasz\u00e1s,lejt\u0151"
+        },
+        "playground/structure": {
+            "name": "J\u00e1sz\u00f3v\u00e1r",
+            "terms": "h\u00e1z,v\u00e1r,j\u00e1t\u00e9k"
+        },
+        "playground/swing": {
+            "name": "Hinta",
+            "terms": "hinta"
+        },
+        "playground/zipwire": {
+            "name": "K\u00f6t\u00e9lcs\u00faszda",
+            "terms": "k\u00f6t\u00e9l,cs\u00faszda"
+        },
+        "point": {
+            "name": "Pont",
+            "terms": "Pont"
+        },
+        "power": {
+            "name": "Energia"
+        },
+        "power/generator": {
+            "name": "\u00c1ramfejleszt\u0151",
+            "terms": "gener\u00e1tor, er\u0151m\u0171, villamos energia, \u00e1ram"
+        },
+        "power/generator/method/photovoltaic": {
+            "name": "Napelem"
+        },
+        "power/generator/source/nuclear": {
+            "name": "Atomreaktor"
+        },
+        "power/generator/source/wind": {
+            "name": "Sz\u00e9lturbina"
+        },
+        "power/line": {
+            "name": "T\u00e1vvezet\u00e9k",
+            "terms": "Elektromos vezet\u00e9k"
+        },
+        "power/minor_line": {
+            "name": "K\u00f6z\u00e9pfesz\u00fclts\u00e9g\u0171 vezet\u00e9k",
+            "terms": "t\u00e1vvezet\u00e9k, villanyvezet\u00e9k, kisfeszt\u00fclts\u00e9g\u0171 vezet\u00e9k"
+        },
+        "power/plant": {
+            "name": "Er\u0151m\u0171ter\u00fclet",
+            "terms": "er\u0151m\u0171"
+        },
+        "power/pole": {
+            "name": "Villanyoszlop",
+            "terms": "villanyp\u00f3zna, villanykar\u00f3"
+        },
+        "power/sub_station": {
+            "name": "\u00c1rameloszt\u00f3 al\u00e1llom\u00e1s"
+        },
+        "power/substation": {
+            "name": "Al\u00e1llom\u00e1s",
+            "terms": "Elektromos al\u00e1llom\u00e1s, transzform\u00e1tor\u00e1llom\u00e1s, traf\u00f3\u00e1llom\u00e1s, traf\u00f3h\u00e1z"
+        },
+        "power/switch": {
+            "name": "H\u00e1l\u00f3zati kapcsol\u00f3"
+        },
+        "power/tower": {
+            "name": "T\u00e1vvezet\u00e9koszlop",
+            "terms": "Magasfesz\u00fclts\u00e9g\u0171 oszlop, villanyoszlop"
+        },
+        "power/transformer": {
+            "name": "Transzform\u00e1tor",
+            "terms": "transzform\u00e1tor, traf\u00f3, \u00e1ram\u00e1talak\u00edt\u00f3"
+        },
+        "public_transport/platform_ferry": {
+            "name": "Kompmeg\u00e1llo peron"
+        },
+        "public_transport/platform_light_rail": {
+            "name": "H\u00c9V-meg\u00e1llo peron"
+        },
+        "public_transport/platform_monorail": {
+            "name": "Egys\u00edn\u0171 vas\u00fati meg\u00e1llo peron"
+        },
+        "public_transport/platform_subway": {
+            "name": "Metr\u00f3meg\u00e1ll\u00f3 peron"
+        },
+        "public_transport/platform_train": {
+            "name": "Vas\u00fatmeg\u00e1ll\u00f3 peron"
+        },
+        "public_transport/platform_tram": {
+            "name": "Villamosmeg\u00e1ll\u00f3 peron"
+        },
+        "public_transport/platform_trolleybus": {
+            "name": "Trolibusz meg\u00e1ll\u00f3 peron"
+        },
+        "public_transport/station_aerialway": {
+            "name": "Felvon\u00f3\u00e1llom\u00e1s"
+        },
+        "public_transport/station_bus": {
+            "name": "Busz\u00e1llom\u00e1s / p\u00e1lyaudvar"
+        },
+        "public_transport/station_ferry": {
+            "name": "Komp\u00e1llom\u00e1s / p\u00e1lyaudvar"
+        },
+        "public_transport/station_light_rail": {
+            "name": "H\u00c9V \u00e1llom\u00e1s"
+        },
+        "public_transport/station_monorail": {
+            "name": "Egys\u00edn\u0171 vas\u00fati \u00e1llom\u00e1s"
+        },
+        "public_transport/station_subway": {
+            "name": "Metr\u00f3\u00e1llom\u00e1s"
+        },
+        "public_transport/station_train": {
+            "name": "Vas\u00fat\u00e1llom\u00e1s"
+        },
+        "public_transport/station_train_halt": {
+            "name": "Vas\u00fat\u00e1llom\u00e1s (k\u00e9r\u00e9sre meg\u00e1ll)"
+        },
+        "public_transport/station_tram": {
+            "name": "Villamos\u00e1llom\u00e1s"
+        },
+        "public_transport/station_trolleybus": {
+            "name": "Trolibuszp\u00e1lyaudvar"
+        },
+        "public_transport/stop_area": {
+            "name": "Tranzitmeg\u00e1ll\u00e1si ter\u00fclet"
+        },
+        "public_transport/stop_position_aerialway": {
+            "name": "Felvon\u00f3 meg\u00e1ll\u00e1si pont"
+        },
+        "public_transport/stop_position_bus": {
+            "name": "Busz meg\u00e1ll\u00e1si hely"
+        },
+        "public_transport/stop_position_subway": {
+            "name": "Metr\u00f3 meg\u00e1ll\u00e1si hely"
+        },
+        "public_transport/stop_position_train": {
+            "name": "Vas\u00fat meg\u00e1ll\u00e1si hely"
+        },
+        "public_transport/stop_position_tram": {
+            "name": "Villamos meg\u00e1ll\u00e1si hely"
+        },
+        "public_transport/stop_position_trolleybus": {
+            "name": "Trolibusz meg\u00e1ll\u00e1si hely"
+        },
+        "railway": {
+            "name": "Vas\u00fat"
+        },
+        "railway/abandoned": {
+            "name": "Felszedett vas\u00fatvonal",
+            "terms": "felhagyott vas\u00fatvonal, megsz\u0171nt vas\u00fatvonal"
+        },
+        "railway/buffer_stop": {
+            "name": "\u00dctk\u00f6z\u0151bak",
+            "terms": "\u00fck\u00f6z\u0151, \u00fctk\u00f6z\u0151bak, vas\u00fati \u00fctk\u00f6z\u0151"
+        },
+        "railway/crossing": {
+            "name": "Vas\u00fati \u00e1tj\u00e1r\u00f3 (gyalogos)",
+            "terms": "vas\u00fati keresztez\u0151d\u00e9s,\u00e1tkel\u0151"
+        },
+        "railway/derail": {
+            "name": "Vas\u00fati kit\u00e9r\u0151",
+            "terms": "kit\u00e9r\u0151, vas\u00fat"
+        },
+        "railway/disused": {
+            "name": "Haszn\u00e1laton k\u00edv\u00fcli vas\u00fat",
+            "terms": "megsz\u0171nt vas\u00fatvonal"
+        },
+        "railway/funicular": {
+            "name": "Sikl\u00f3",
+            "terms": "Sikl\u00f3vas\u00fat, k\u00f6t\u00e9lvas\u00fat"
+        },
+        "railway/halt": {
+            "name": "Vas\u00fat\u00e1llom\u00e1s (k\u00e9r\u00e9sre meg\u00e1ll)"
+        },
+        "railway/level_crossing": {
+            "name": "Vas\u00fati \u00e1tj\u00e1r\u00f3 (k\u00f6z\u00fat)",
+            "terms": "vas\u00fati keresztez\u0151d\u00e9s,\u00e1tkel\u0151,\u00e1tj\u00e1r\u00f3"
+        },
+        "railway/light_rail": {
+            "name": "H\u00c9V"
+        },
+        "railway/milestone": {
+            "name": "Vas\u00fati m\u00e9rf\u00f6ldk\u0151",
+            "terms": "m\u00e9rf\u00f6ldk\u0151, vas\u00fat, kilom\u00e9terk\u0151"
+        },
+        "railway/miniature": {
+            "name": "Miniat\u0171rvas\u00fat"
+        },
+        "railway/monorail": {
+            "name": "Egys\u00edn\u0171 vas\u00fat",
+            "terms": "nyeregvas\u00fat, m\u00e1gnesvas\u00fat"
+        },
+        "railway/narrow_gauge": {
+            "name": "Kisvas\u00fat",
+            "terms": "Keskeny nyomt\u00e1v\u00fa vas\u00fat"
+        },
+        "railway/platform": {
+            "name": "Vas\u00fatmeg\u00e1ll\u00f3 peron"
+        },
+        "railway/rail": {
+            "name": "Vas\u00fati p\u00e1lya",
+            "terms": "Vas\u00fatvonal"
+        },
+        "railway/signal": {
+            "name": "Vas\u00fati jelz\u0151",
+            "terms": "jelz\u0151, jelz\u00e9s, vas\u00fat"
+        },
+        "railway/station": {
+            "name": "Vas\u00fat\u00e1llom\u00e1s"
+        },
+        "railway/subway": {
+            "name": "Metr\u00f3",
+            "terms": "f\u00f6ldalatti"
+        },
+        "railway/subway_entrance": {
+            "name": "Metr\u00f3lej\u00e1r\u00f3",
+            "terms": "Metr\u00f3bej\u00e1rat, lej\u00e1rat"
+        },
+        "railway/switch": {
+            "name": "Vas\u00fati v\u00e1lt\u00f3",
+            "terms": "v\u00e1lt\u00f3, vas\u00fat"
+        },
+        "railway/train_wash": {
+            "name": "Mozdony mos\u00f3",
+            "terms": "vas\u00fat, mozdony, vonat, mos\u00f3, kocsimos\u00f3"
+        },
+        "railway/tram": {
+            "name": "Villamos",
+            "terms": "Villamos"
+        },
+        "railway/tram_stop": {
+            "name": "Villamosmeg\u00e1ll\u00e1si pont"
+        },
+        "relation": {
+            "name": "Kapcsolat",
+            "terms": "Kapcsolat"
+        },
+        "roundabout": {
+            "name": "K\u00f6rforgalom"
+        },
+        "route/ferry": {
+            "name": "Komp\u00fatvonal",
+            "terms": "Komp, r\u00e9v"
+        },
+        "shop": {
+            "name": "\u00dczlet",
+            "terms": "bolt, keresked\u00e9s, kiskeresked\u00e9s"
+        },
+        "shop/agrarian": {
+            "name": "Gazdabolt"
+        },
+        "shop/alcohol": {
+            "name": "Alkohol\u00fczlet",
+            "terms": "unikum,p\u00e1linka,baileys,konyak,tokaji,vodka,wiszki,whiskey,kosher szilvap\u00e1linka,zwack"
+        },
+        "shop/anime": {
+            "name": "Anime k\u00e9preg\u00e9nyekkel kapcsolatos bolt",
+            "terms": "k\u00e9preg\u00e9ny,anime"
+        },
+        "shop/antiques": {
+            "name": "R\u00e9gis\u00e9gkeresked\u00e9s",
+            "terms": "antikvit\u00e1s, antikv\u00e1rium, \u00f3szeres"
+        },
+        "shop/appliance": {
+            "name": "H\u00e1ztart\u00e1si g\u00e9p \u00fczlet",
+            "terms": "h\u00e1ztart\u00e1si,g\u00e9p,k\u00e9sz\u00fcl\u00e9k,nagyg\u00e9p,kisg\u00e9p"
+        },
+        "shop/art": {
+            "name": "M\u0171alkot\u00e1sbolt",
+            "terms": "m\u0171v\u00e9szbolt"
+        },
+        "shop/baby_goods": {
+            "name": "Bababolt",
+            "terms": "babruha, babakocsi, baba\u00e1gy, babj\u00e1t\u00e9k"
+        },
+        "shop/bag": {
+            "name": "T\u00e1ska- \u00e9s b\u0151r\u00f6ndbolt",
+            "terms": "b\u0151rd\u00edszm\u0171 \u00e9s t\u00e1skabolt,koffer,utaz\u00f3t\u00e1ska"
+        },
+        "shop/bakery": {
+            "name": "P\u00e9ks\u00e9g",
+            "terms": "pog\u00e1csa,kifli,keny\u00e9r,p\u00e9ks\u00e9g,p\u00e9ks\u00fctem\u00e9ny"
+        },
+        "shop/bathroom_furnishing": {
+            "name": "F\u00fcrd\u0151szobab\u00fator-bolt",
+            "terms": "Szaniter, csaptelep, f\u00fcrd\u0151szoba felszerel\u00e9s"
+        },
+        "shop/beauty": {
+            "name": "Sz\u00e9ps\u00e9gszalon",
+            "terms": "kozmetikus"
+        },
+        "shop/beauty/nails": {
+            "name": "Manik\u0171r",
+            "terms": "manik\u0171r,pedik\u0171r, k\u00f6r\u00f6mszalon, m\u0171k\u00f6r\u00f6m\u00e9p\u00edt\u00e9s"
+        },
+        "shop/beauty/tanning": {
+            "name": "Szol\u00e1rium",
+            "terms": "szol\u00e1rium, szoli"
+        },
+        "shop/bed": {
+            "name": "\u00c1gy- \u00e9s matracbolt",
+            "terms": "H\u00e1l\u00f3szobab\u00fator, \u00e1gy, p\u00e1rna, paplan, takar\u00f3, leped\u0151, \u00e1gynem\u0171"
+        },
+        "shop/beverages": {
+            "name": "Italbolt",
+            "terms": "p\u00e1linka,wiskey,wiski,vodka,bor,konyak"
+        },
+        "shop/bicycle": {
+            "name": "Ker\u00e9kp\u00e1rbolt",
+            "terms": "bicaj, bringa, bicikli"
+        },
+        "shop/bookmaker": {
+            "name": "Fogad\u00f3iroda",
+            "terms": "bukm\u00e9ker"
+        },
+        "shop/books": {
+            "name": "K\u00f6nyvesbolt",
+            "terms": "K\u00f6nyvesbolt"
+        },
+        "shop/boutique": {
+            "name": "Butik",
+            "terms": "Butik"
+        },
+        "shop/butcher": {
+            "name": "Hentes",
+            "terms": "Hentes, M\u00e9sz\u00e1ros, H\u00fasbolt"
+        },
+        "shop/candles": {
+            "name": "Gyertya- \u00e9s m\u00e9csesbolt",
+            "terms": "Gyertya- \u00e9s m\u00e9csesbolt"
+        },
+        "shop/car": {
+            "name": "Aut\u00f3keresked\u00e9s",
+            "terms": "Aut\u00f3szalon, m\u00e1rkakeresked\u00e9s"
+        },
+        "shop/car_parts": {
+            "name": "Aut\u00f3alkatr\u00e9sz-\u00fczlet",
+            "terms": "g\u00e9pkocsi, g\u00e9pj\u00e1rm\u0171, alkatr\u00e9sz"
+        },
+        "shop/car_repair": {
+            "name": "Aut\u00f3szerel\u0151",
+            "terms": "aut\u00f3szerviz, aut\u00f3jav\u00edt\u00f3"
+        },
+        "shop/carpet": {
+            "name": "Sz\u0151nyegbolt",
+            "terms": "Sz\u0151nyegh\u00e1z, Padl\u00f3sz\u0151nyeg \u00e1ruh\u00e1z, Diego"
+        },
+        "shop/charity": {
+            "name": "Adom\u00e1nybolt",
+            "terms": "j\u00f3t\u00e9konys\u00e1gi bolt"
+        },
+        "shop/cheese": {
+            "name": "Sajtbolt",
+            "terms": "Kecskesajtbolt, Francia sajtok boltja"
+        },
+        "shop/chemist": {
+            "name": "Drog\u00e9ria",
+            "terms": "drog\u00e9ria, gy\u00f3gyszert\u00e1r, illatszer, kozmetikum, test\u00e1pol\u00e1s"
+        },
+        "shop/chocolate": {
+            "name": "Csokol\u00e1d\u00e9bolt",
+            "terms": "K\u00e9zm\u0171ves csokol\u00e1d\u00e9bolt, Csokibolt, \u00e9dess\u00e9g"
+        },
+        "shop/clothes": {
+            "name": "Ruh\u00e1zati bolt",
+            "terms": "feh\u00e9rnem\u0171bolt, \u00f6lt\u00f6ny\u00e1ruh\u00e1z, ruhabolt"
+        },
+        "shop/coffee": {
+            "name": "K\u00e1v\u00e9bolt",
+            "terms": "k\u00e1v\u00e9bolt, k\u00e1v\u00e9\u00fczlet, k\u00e1v\u00e9 keresked\u00e9s"
+        },
+        "shop/computer": {
+            "name": "Sz\u00e1m\u00edt\u00f3g\u00e9pbolt",
+            "terms": "Sz\u00e1m\u00edt\u00e1stechnikai \u00fczlet, notebook bolt, laptop bolt, Apple bolt"
+        },
+        "shop/confectionery": {
+            "name": "\u00c9dess\u00e9gbolt",
+            "terms": "s\u00fctem\u00e9nybolt, tortaszak\u00fczlet, cukr\u00e1sz\u00fczlet, cukr\u00e1szat, cukorka, nyal\u00f3ka, csokol\u00e1d\u00e9"
+        },
+        "shop/convenience": {
+            "name": "Kis \u00e9lelmiszerbolt",
+            "terms": "ABC, sarki \u00e9lelmiszer, kisbolt, k\u00f6z\u00e9rt"
+        },
+        "shop/copyshop": {
+            "name": "F\u00e9nym\u00e1sol\u00f3",
+            "terms": "Copyguru, Copy Gener\u00e1l, nyomtat\u00e1s, diplomak\u00f6t\u00e9s, spir\u00e1loz\u00e1s"
+        },
+        "shop/cosmetics": {
+            "name": "Kozmetikai bolt",
+            "terms": "Sz\u00e9ps\u00e9g\u00e1pol\u00e1si szak\u00fczlet,  Sminkbolt,  Parf\u00fcm bolt,"
+        },
+        "shop/craft": {
+            "name": "K\u00e9zm\u0171veskell\u00e9k-bolt",
+            "terms": "hobbym\u0171v\u00e9sz, kreat\u00edv, dekor\u00e1ci\u00f3, m\u0171v\u00e9szell\u00e1t\u00f3, k\u00e9zm\u0171ves"
+        },
+        "shop/curtain": {
+            "name": "F\u00fcgg\u00f6nybolt",
+            "terms": "karnis,f\u00fcgg\u00f6ny,k\u00e1rpit,drap\u00e9ria"
+        },
+        "shop/dairy": {
+            "name": "Tejterm\u00e9kbolt",
+            "terms": "tejterm\u00e9k, Kecsketej, K\u00e9zm\u0171ves tejterm\u00e9kek boltja, teh\u00e9ntej, juhtej, sajt, joghurt, kef\u00edr, tejf\u00f6l"
+        },
+        "shop/deli": {
+            "name": "Csemegebolt",
+            "terms": "Delik\u00e1t, csemege"
+        },
+        "shop/department_store": {
+            "name": "Nagy\u00e1ruh\u00e1z",
+            "terms": "\u00c1ruh\u00e1z, v\u00e1rosi \u00e1ruh\u00e1z, belv\u00e1rosi \u00e1ruh\u00e1z"
+        },
+        "shop/doityourself": {
+            "name": "Bark\u00e1cs\u00e1ruh\u00e1z",
+            "terms": "bark\u00e1cs, ezermester, obi, praktiker, baumax, bark\u00e1csbolt, fel\u00faj\u00edt\u00e1s, szersz\u00e1m"
+        },
+        "shop/dry_cleaning": {
+            "name": "Vegytisztit\u00f3",
+            "terms": "Sz\u00e1raztiszt\u00edt\u00f3, patyolat, ruhatiszt\u00edt\u00e1s"
+        },
+        "shop/e-cigarette": {
+            "name": "E-cigaretta bolt",
+            "terms": "e-cigaretta, elektromos cigaretta"
+        },
+        "shop/electronics": {
+            "name": "Elektronikai bolt",
+            "terms": "h\u00e1ztart\u00e1si g\u00e9p, TV, r\u00e1di\u00f3, h\u0171t\u0151szekr\u00e9ny,"
+        },
+        "shop/erotic": {
+            "name": "Szexbolt",
+            "terms": "erotikus bolt, szexu\u00e1lis seg\u00e9deszk\u00f6z"
+        },
+        "shop/fabric": {
+            "name": "R\u00f6vid\u00e1ru- \u00e9s m\u00e9ter\u00e1rubolt",
+            "terms": "R\u00d6LTEX, lak\u00e1stextil,  r\u0151f\u00f6sbolt"
+        },
+        "shop/farm": {
+            "name": "Termel\u0151i bolt",
+            "terms": "farm bolt, \u00e1rus, kofa, tanyasi term\u00e9k, \u0151stermel\u0151"
+        },
+        "shop/fashion": {
+            "name": "Divat\u00fczlet",
+            "terms": "N\u0151i divat, ruhabolt"
+        },
+        "shop/fishing": {
+            "name": "Horg\u00e1szbolt"
+        },
+        "shop/fishmonger": {
+            "name": "Halbolt"
+        },
+        "shop/florist": {
+            "name": "Vir\u00e1g\u00e1rus",
+            "terms": "vir\u00e1gos, vir\u00e1gbolt, szoban\u00f6v\u00e9ny, d\u00edszn\u00f6v\u00e9ny, bonsai"
+        },
+        "shop/frame": {
+            "name": "K\u00e9pkeretez\u0151",
+            "terms": "K\u00e9pkeretes"
+        },
+        "shop/funeral_directors": {
+            "name": "Temetkez\u00e9si iroda",
+            "terms": "Temetkez\u00e9si \u00fcgyint\u00e9z\u00e9s, temetkez\u00e9si int\u00e9zet,  temetkez\u00e9si \u00e9s hamvaszt\u00e1si \u00fcgyint\u00e9z\u00e9s"
+        },
+        "shop/furnace": {
+            "name": "Kaz\u00e1nbolt (elavult)"
+        },
+        "shop/furniture": {
+            "name": "B\u00fatorbolt",
+            "terms": "b\u00fator, lakberendez\u00e9s"
+        },
+        "shop/garden_centre": {
+            "name": "Kert\u00e9szet",
+            "terms": "Kert\u00e9szet"
+        },
+        "shop/gas": {
+            "name": "Palackozottg\u00e1z-bolt",
+            "terms": "g\u00e1zt\u00f6lt\u0151, PB g\u00e1z, g\u00e1zpalack, palckozott g\u00e1z, cseppfoly\u00f3s g\u00e1z"
+        },
+        "shop/gift": {
+            "name": "Aj\u00e1nd\u00e9kbolt",
+            "terms": "meglepet\u00e9s, aj\u00e1nd\u00e9kt\u00e1rgy, szuven\u00edr"
+        },
+        "shop/greengrocer": {
+            "name": "Z\u00f6lds\u00e9ges",
+            "terms": "z\u00f6lds\u00e9g, gy\u00fcm\u00f6lcs"
+        },
+        "shop/hairdresser": {
+            "name": "Fodr\u00e1sz",
+            "terms": "hajv\u00e1g\u00e1s"
+        },
+        "shop/hardware": {
+            "name": "Vas-m\u0171szaki bolt",
+            "terms": "csavarbolt, villanyszerel\u00e9s, vasbolt, vaskeresked\u00e9s"
+        },
+        "shop/hearing_aids": {
+            "name": "Hall\u00f3k\u00e9sz\u00fcl\u00e9kbolt",
+            "terms": "hall\u00f3k\u00e9sz\u00fcl\u00e9kek"
+        },
+        "shop/herbalist": {
+            "name": "Gy\u00f3gyn\u00f6v\u00e9nybolt",
+            "terms": "Gy\u00f3gyn\u00f6v\u00e9ny, tea, \u00e9trendkieg\u00e9sz\u00edt\u0151, biobolt"
+        },
+        "shop/hifi": {
+            "name": "HiFi-bolt",
+            "terms": "akusztika, extreme audio,hifi,hi-fi,audio,audiophyl,high end,h\u00e1zimozi,er\u0151s\u00edt\u0151,hangfal,"
+        },
+        "shop/houseware": {
+            "name": "H\u00e1ztart\u00e1si bolt",
+            "terms": "ed\u00e9nyek, ev\u0151eszk\u00f6z\u00f6k, konyha, h\u00e1ztart\u00e1si kisg\u00e9pek, kerti eszk\u00f6z\u00f6k,"
+        },
+        "shop/hunting": {
+            "name": "Vad\u00e1szati bolt"
+        },
+        "shop/interior_decoration": {
+            "name": "Lakberendez\u00e9si bolt",
+            "terms": "lak\u00e1stextil, d\u00edszek, b\u00fator"
+        },
+        "shop/kiosk": {
+            "name": "Trafik"
+        },
+        "shop/kitchen": {
+            "name": "Konyhab\u00fatorbolt",
+            "terms": "konyhab\u00fator, konyhatervez\u00e9s, konyhadesign"
+        },
+        "shop/laundry": {
+            "name": "Mosoda",
+            "terms": "ruhatiszt\u00edt\u00f3, vegytiszt\u00edt\u00f3, patyolat"
+        },
+        "shop/leather": {
+            "name": "B\u0151rd\u00edszm\u0171bolt",
+            "terms": "b\u0151rd\u00edszm\u0171ves, b\u0151r\u00f6s, b\u0151rruh\u00e1zat, b\u0151r\u00e9keszer"
+        },
+        "shop/locksmith": {
+            "name": "Lakatos",
+            "terms": "kulcsm\u00e1sol\u00f3, z\u00e1ras, z\u00e1rszerel\u0151"
+        },
+        "shop/lottery": {
+            "name": "Lott\u00f3z\u00f3",
+            "terms": "szerencsej\u00e1t\u00e9k, fogad\u00f3iroda, tot\u00f3"
+        },
+        "shop/mall": {
+            "name": "Bev\u00e1s\u00e1rl\u00f3k\u00f6zpont",
+            "terms": "pl\u00e1za"
+        },
+        "shop/massage": {
+            "name": "Massz\u00e1zsszalon",
+            "terms": "Massz\u0151r, Massz\u00e1zs, Gy\u00f3gymassz\u00e1zs, Sv\u00e9dmassz\u00e1zs, Thai massz\u00e1zs, Keleti massz\u00e1zs, Gy\u00far\u00e1s"
+        },
+        "shop/medical_supply": {
+            "name": "Gy\u00f3gy\u00e1szati seg\u00e9deszk\u00f6z\u00f6k boltja",
+            "terms": "Gy\u00f3gybolt, Eg\u00e9szs\u00e9gbolt, Gy\u00f3gy\u00e1szati eszk\u00f6z\u00f6k boltja"
+        },
+        "shop/mobile_phone": {
+            "name": "Mobiltelefon-szak\u00fczlet",
+            "terms": "android,iphone,nokia, mobiltelefon, okostelefon"
+        },
+        "shop/money_lender": {
+            "name": "P\u00e9nzk\u00f6lcs\u00f6nz\u0151",
+            "terms": "Gyorsk\u00f6lcs\u00f6n p\u00e9nzk\u00f6lcs\u00f6nz\u0151, Hitel centrum, Cofidis Gyorsk\u00f6lcs\u00f6nz\u0151, Gyorshitelez\u0151, Szem\u00e9lyi k\u00f6lcs\u00f6nz\u0151, Provident"
+        },
+        "shop/motorcycle": {
+            "name": "Motorker\u00e9kp\u00e1r-keresked\u00e9s",
+            "terms": "Motorbicikli M\u00e1rkakeresked\u0151, Robog\u00f3 \u00e9s motor m\u00e1rkakeresked\u0151,"
+        },
+        "shop/music": {
+            "name": "Hanglemezbolt",
+            "terms": "Zenebolt, CD \u00e9s DVD bolt, Zenem\u0171bolt, Muzsikabolt, kotta \u00e9s hanglemezbolt"
+        },
+        "shop/musical_instrument": {
+            "name": "Hangszerbolt",
+            "terms": "Hangszer, kotta, Hangszerdiszkont"
+        },
+        "shop/newsagent": {
+            "name": "\u00dajs\u00e1g\u00e1rus",
+            "terms": "\u00dajs\u00e1gos, h\u00edrlap\u00e1rus, trafik"
+        },
+        "shop/nutrition_supplements": {
+            "name": "\u00c9trendkieg\u00e9sz\u00edt\u0151-bolt",
+            "terms": "\u00e9trend-kieg\u00e9sz\u00edt\u0151, t\u00e1pl\u00e1l\u00e9kkieg\u00e9sz\u00edt\u0151"
+        },
+        "shop/optician": {
+            "name": "L\u00e1tszer\u00e9sz",
+            "terms": "Szem\u00fcveg, kontaktlencse"
+        },
+        "shop/organic": {
+            "name": "Biobolt",
+            "terms": "Bio \u00e9s nat\u00far \u00e9lelmiszer bolt, Biomin\u0151s\u00e9g\u0171 \u00e9s eg\u00e9szs\u00e9ges t\u00e1pl\u00e1l\u00e9kok boltja, Natura bolt, Natura Reformt\u00e1pl\u00e1lkoz\u00e1si Szak\u00fczlet, Bio \u00e9s organikus \u00e9telek \u00e9s \u00e1ruk boltja"
+        },
+        "shop/outdoor": {
+            "name": "T\u00farafelszerel\u00e9s-bolt",
+            "terms": "hegym\u00e1sz\u00f3 felszerel\u00e9s, outdoor, sportbolt, hegym\u00e1sz\u00f3bolt, t\u00farabolt"
+        },
+        "shop/paint": {
+            "name": "Fest\u00e9kbolt",
+            "terms": "Falfest\u00e9k bolt, Tikkurila Fest\u00e9kbolt, Sz\u00ednkever\u0151 bolt, Fest\u00e9k- vegyi \u00e1ru szak\u00fczlet"
+        },
+        "shop/pastry": {
+            "name": "Cukr\u00e1szda",
+            "terms": "cukr\u00e1szda,s\u00fctem\u00e9ny,s\u00fcti,torta"
+        },
+        "shop/pawnbroker": {
+            "name": "Z\u00e1logh\u00e1z",
+            "terms": "Z\u00e1logh\u00e1z, zaci, bizom\u00e1nyi"
+        },
+        "shop/perfumery": {
+            "name": "Parf\u00fcm\u00e9ria",
+            "terms": "parf\u00fcmbolt, illatszerbolt"
+        },
+        "shop/pet": {
+            "name": "Kis\u00e1llatkeresked\u00e9s",
+            "terms": "Kis\u00e1llat keresked\u00e9s, Kis\u00e1llat \u00e9s \u00e1llateledelt \u00e1rus\u00edt\u00f3 bolt, \u00c1llateledel"
+        },
+        "shop/photo": {
+            "name": "Fot\u00f3sbolt",
+            "terms": "f\u00e9nyk\u00e9p\u00e9sz, f\u00e9nyk\u00e9pez\u00e9s, filmkidolgoz\u00e1s, el\u0151h\u00edv\u00e1s, igazolv\u00e1nyk\u00e9p"
+        },
+        "shop/pyrotechnics": {
+            "name": "T\u0171zij\u00e1t\u00e9kbolt",
+            "terms": "robban\u00f3szer, t\u0171zij\u00e1t\u00e9k, pet\u00e1rda, csillagsz\u00f3r\u00f3, pirotechnika"
+        },
+        "shop/radiotechnics": {
+            "name": "R\u00e1di\u00f3technikai bolt",
+            "terms": "Elektronikai alkatr\u00e9sz, m\u00e9r\u0151m\u0171szer,"
+        },
+        "shop/religion": {
+            "name": "Kegyt\u00e1rgybolt",
+            "terms": "vall\u00e1si t\u00e1rgyak, imak\u00f6nyv, r\u00f3zsaf\u00fcz\u00e9r"
+        },
+        "shop/scuba_diving": {
+            "name": "B\u00fav\u00e1rfelszerel\u00e9s-bolt",
+            "terms": "B\u00fav\u00e1rfelszerel\u00e9sek boltja, B\u00fav\u00e1rbolt, B\u00fav\u00e1rszak\u00e1ruh\u00e1z"
+        },
+        "shop/seafood": {
+            "name": "Halbolt",
+            "terms": "halkeresked\u00e9s, halas"
+        },
+        "shop/second_hand": {
+            "name": "Haszn\u00e1lt\u00e1ru-bolt",
+            "terms": "Haszn\u00e1ltruha bolt, Turk\u00e1l\u00f3, Turi, Turk\u00e1l\u00f3 butik, b\u00e1l\u00e1s bolt, second hand bolt, haszn\u00e1lt cikk"
+        },
+        "shop/shoes": {
+            "name": "Cip\u0151bolt",
+            "terms": "cip\u0151bolt, cip\u0151 papucs csizma \u00e9s m\u00e1s l\u00e1bbelik boltja, cipobolt"
+        },
+        "shop/sports": {
+            "name": "Sportbolt",
+            "terms": "sportfelszerel\u00e9s, sportszer"
+        },
+        "shop/stationery": {
+            "name": "\u00cdr\u00f3szerbolt",
+            "terms": "pap\u00edr, \u00edr\u00f3szer, nyomtatv\u00e1ny, irodaszer"
+        },
+        "shop/storage_rental": {
+            "name": "T\u00e1rol\u00f3hely b\u00e9rbead\u00e1sa",
+            "terms": "t\u00e1rol\u00e1s, rakt\u00e1rb\u00e9rl\u00e9s, parkol\u00f3helyb\u00e9rl\u00e9s"
+        },
+        "shop/supermarket": {
+            "name": "Szupermarket",
+            "terms": "szupermarket, \u00e9lelmiszerbolt, hipermarket, ABC, CBA, Spar, Aldi, Lidl, Penny, Auchan, Tesco"
+        },
+        "shop/tailor": {
+            "name": "Szab\u00f3\u00fczlet",
+            "terms": "szab\u00f3s\u00e1g,  m\u00e9retre ruh\u00e1t k\u00e9sz\u00edt\u0151 \u00fczlet"
+        },
+        "shop/tattoo": {
+            "name": "Tetov\u00e1l\u00f3 szalon",
+            "terms": "tetov\u00e1l\u00e1s,  piercing, tatoo"
+        },
+        "shop/tea": {
+            "name": "Tea\u00fczlet",
+            "terms": "teabolt, te\u00e1z\u00f3"
+        },
+        "shop/ticket": {
+            "name": "Jegy\u00e1rus",
+            "terms": "koncertjegy,sz\u00ednh\u00e1zjegy,interticket,haj\u00f3jegy"
+        },
+        "shop/tiles": {
+            "name": "Csempebolt"
+        },
+        "shop/tobacco": {
+            "name": "Doh\u00e1nybolt",
+            "terms": "Nemzeti doh\u00e1nybolt, doh\u00e1ny, cigaretta, szivar"
+        },
+        "shop/toys": {
+            "name": "J\u00e1t\u00e9kbolt",
+            "terms": "barbie,lego,hasbro,mattel,bab\u00e1k,fisher price,logikai,bark\u00e1cs,b\u00e9bi,gyermek,kreat\u00edv"
+        },
+        "shop/trade": {
+            "name": "Kereskedelmi \u00fczlet"
+        },
+        "shop/travel_agency": {
+            "name": "Utaz\u00e1si iroda",
+            "terms": "ibusz,vista,neckermann,nyaral\u00e1s,last minute,utaz\u00e1s,travel,karthago tours,tours,tui,reisen,otp travel,voyage"
+        },
+        "shop/tyres": {
+            "name": "Aut\u00f3gumibolt",
+            "terms": "aut\u00f3gumi, gumiabroncs, gumiszerel\u00e9s"
+        },
+        "shop/vacant": {
+            "name": "\u00dcres \u00fczlethelyis\u00e9g"
+        },
+        "shop/vacuum_cleaner": {
+            "name": "Porsz\u00edv\u00f3bolt",
+            "terms": "Porsz\u00edv\u00f3, takar\u00edt\u00f3g\u00e9p"
+        },
+        "shop/variety_store": {
+            "name": "100 forintos bolt",
+            "terms": "olcs\u00f3 \u00e1ruk boltja, 1 eur\u00f3s bolt"
+        },
+        "shop/video": {
+            "name": "Vide\u00f3filmbolt vagy -k\u00f6lcs\u00f6nz\u0151",
+            "terms": "DVD, videokazetta, film"
+        },
+        "shop/video_games": {
+            "name": "Videoj\u00e1t\u00e9kbolt",
+            "terms": "PC-s j\u00e1t\u00e9k, konzolos j\u00e1t\u00e9k, XBOX, Wii"
+        },
+        "shop/watches": {
+            "name": "\u00d3rabolt (kar\u00f3ra)",
+            "terms": "\u00f3rabolt, \u00f3r\u00e1s"
+        },
+        "shop/water_sports": {
+            "name": "V\u00edzisport-bolt",
+            "terms": "kajak,cs\u00f3nak,ment\u0151mell\u00e9ny,f\u00fcrd\u0151ruha,sz\u00f6rf"
+        },
+        "shop/weapons": {
+            "name": "Fegyverbolt",
+            "terms": "K\u00e9s, l\u0151fegyver, riaszt\u00f3fegyver"
+        },
+        "shop/window_blind": {
+            "name": "Red\u0151nybolt",
+            "terms": "red\u0151ny, rol\u00f3, ablaks\u00f6t\u00e9t\u00edt\u0151, \u00e1rny\u00e9kol\u00e1stechnika"
+        },
+        "shop/wine": {
+            "name": "Borszak\u00fczlet",
+            "terms": "bor\u00e1szat, italbolt, borkeresked\u00e9s"
+        },
+        "tourism": {
+            "name": "Turizmus"
+        },
+        "tourism/alpine_hut": {
+            "name": "Mened\u00e9kh\u00e1z",
+            "terms": "Mened\u00e9kh\u00e1z"
+        },
+        "tourism/apartment": {
+            "name": "Apartman",
+            "terms": "vend\u00e9gh\u00e1z"
+        },
+        "tourism/aquarium": {
+            "name": "Akv\u00e1rium",
+            "terms": "akv\u00e1rium"
+        },
+        "tourism/artwork": {
+            "name": "M\u0171alkot\u00e1s",
+            "terms": "M\u0171v\u00e9szeti alkot\u00e1s, szobor, fafarag\u00e1s"
+        },
+        "tourism/artwork/mural": {
+            "name": "Fresk\u00f3"
+        },
+        "tourism/artwork/sculpture": {
+            "name": "Absztrakt szobor"
+        },
+        "tourism/artwork/statue": {
+            "name": "Szobor"
+        },
+        "tourism/attraction": {
+            "name": "Turisztikai l\u00e1tv\u00e1nyoss\u00e1g",
+            "terms": "Turistal\u00e1tv\u00e1nyoss\u00e1g, l\u00e1tv\u00e1nyoss\u00e1g, attrakci\u00f3"
+        },
+        "tourism/camp_site": {
+            "name": "Kemping",
+            "terms": "t\u00e1bor, s\u00e1tort\u00e1bor, kemping"
+        },
+        "tourism/caravan_site": {
+            "name": "Lak\u00f3aut\u00f3 park",
+            "terms": "lak\u00f3aut\u00f3,lak\u00f3kocsi,park"
+        },
+        "tourism/chalet": {
+            "name": "Nyaral\u00f3h\u00e1z"
+        },
+        "tourism/gallery": {
+            "name": "M\u0171v\u00e9szeti gal\u00e9ria",
+            "terms": "gal\u00e9ria, ki\u00e1ll\u00edt\u00e1s, ki\u00e1ll\u00edt\u00f3 terem, k\u00e9pz\u0151m\u0171v\u00e9szet"
+        },
+        "tourism/guest_house": {
+            "name": "Vend\u00e9gh\u00e1z",
+            "terms": "Vend\u00e9gh\u00e1z"
+        },
+        "tourism/hostel": {
+            "name": "Turistasz\u00e1ll\u00f3",
+            "terms": "Hostel, ifj\u00fas\u00e1gi sz\u00e1ll\u00f3"
+        },
+        "tourism/hotel": {
+            "name": "Sz\u00e1lloda",
+            "terms": "Hotel, sz\u00e1lloda"
+        },
+        "tourism/information": {
+            "name": "Inform\u00e1ci\u00f3",
+            "terms": "Inform\u00e1ci\u00f3s iroda"
+        },
+        "tourism/information/board": {
+            "name": "Inform\u00e1ci\u00f3s t\u00e1bla",
+            "terms": "inform\u00e1ci\u00f3s t\u00e1bla"
+        },
+        "tourism/information/guidepost": {
+            "name": "Ir\u00e1nyjelz\u0151 t\u00e1bla",
+            "terms": "\u00fatjelz\u0151 t\u00e1bla"
+        },
+        "tourism/information/map": {
+            "name": "T\u00e9rk\u00e9p",
+            "terms": "t\u00e9rk\u00e9p"
+        },
+        "tourism/information/office": {
+            "name": "Tourinform iroda",
+            "terms": "turistainform\u00e1ci\u00f3, turistairoda, idegenforgalom"
+        },
+        "tourism/motel": {
+            "name": "Motel",
+            "terms": "Motel, fogad\u00f3"
+        },
+        "tourism/museum": {
+            "name": "M\u00fazeum",
+            "terms": "M\u00fazeum"
+        },
+        "tourism/picnic_site": {
+            "name": "Piknikez\u0151hely",
+            "terms": "Piknik ter\u00fclet"
+        },
+        "tourism/theme_park": {
+            "name": "Vid\u00e1mpark",
+            "terms": "vid\u00e1mpark,\u00e9lm\u00e9nypark,vurstli"
+        },
+        "tourism/viewpoint": {
+            "name": "Kil\u00e1t\u00f3hely",
+            "terms": "Kil\u00e1t\u00f3pont"
+        },
+        "tourism/wilderness_hut": {
+            "name": "Mened\u00e9kh\u00e1z (szem\u00e9lyzet n\u00e9lk\u00fcl)"
+        },
+        "tourism/zoo": {
+            "name": "\u00c1llatkert",
+            "terms": "\u00c1llatkert"
+        },
+        "traffic_calming": {
+            "name": "Forgalomcsillap\u00edt\u00f3",
+            "terms": "forgalomcsillap\u00edt\u00f3"
+        },
+        "traffic_calming/bump": {
+            "name": "Fekv\u0151rend\u0151r",
+            "terms": "Forgalomcsillap\u00edt\u00f3 k\u00fcsz\u00f6b, Sebess\u00e9gcs\u00f6kkent\u0151 borda"
+        },
+        "traffic_calming/chicane": {
+            "name": "Forgalmi sik\u00e1n",
+            "terms": "forgalmi sik\u00e1n"
+        },
+        "traffic_calming/choker": {
+            "name": "Sz\u0171k\u00edt\u00e9s",
+            "terms": "sz\u0171k\u00fclet"
+        },
+        "traffic_calming/cushion": {
+            "name": "P\u00e1rna",
+            "terms": "p\u00e1rna"
+        },
+        "traffic_calming/dip": {
+            "name": "Bemar\u00e1s",
+            "terms": "M\u00e9lyed\u00e9s"
+        },
+        "traffic_calming/hump": {
+            "name": "Hossz\u00fa fekv\u0151rend\u0151r",
+            "terms": "Lapos \u00e9s hossz\u00fa fekv\u0151rend\u0151r"
+        },
+        "traffic_calming/island": {
+            "name": "J\u00e1rdasziget",
+            "terms": "sziget, j\u00e1rdasziget"
+        },
+        "traffic_calming/rumble_strip": {
+            "name": "R\u00e1z\u00f3s\u00e1v",
+            "terms": "r\u00e1z\u00f3 felfest\u00e9s"
+        },
+        "traffic_calming/table": {
+            "name": "Megemelt szint\u0171 gyalog\u00e1tj\u00e1r\u00f3",
+            "terms": "sebess\u00e9g, t\u00e1bla, lass\u00edt\u00f3"
+        },
+        "traffic_sign": {
+            "name": "Jelz\u0151t\u00e1bla"
+        },
+        "traffic_sign/city_limit": {
+            "name": "Lakott ter\u00fclet hat\u00e1r\u00e1t jelz\u0151 t\u00e1bla"
+        },
+        "traffic_sign/city_limit_vertex": {
+            "name": "Lakott ter\u00fclet hat\u00e1r\u00e1t jelz\u0151 t\u00e1bla"
+        },
+        "traffic_sign/maxspeed": {
+            "name": "Sebess\u00e9gkorl\u00e1toz\u00e1st jelz\u0151 t\u00e1bla"
+        },
+        "traffic_sign/maxspeed_vertex": {
+            "name": "Sebess\u00e9gkorl\u00e1toz\u00e1st jelz\u0151 t\u00e1bla"
+        },
+        "traffic_sign_vertex": {
+            "name": "Jelz\u0151t\u00e1bla"
+        },
+        "type/boundary": {
+            "name": "Hat\u00e1rvonal",
+            "terms": "Hat\u00e1r"
+        },
+        "type/boundary/administrative": {
+            "name": "K\u00f6zigazgat\u00e1si hat\u00e1r",
+            "terms": "telep\u00fcl\u00e9shat\u00e1r, megyehat\u00e1r, orsz\u00e1ghat\u00e1r, \u00e1llamhat\u00e1r"
+        },
+        "type/multipolygon": {
+            "name": "Multipoligon"
+        },
+        "type/restriction": {
+            "name": "Korl\u00e1toz\u00e1s",
+            "terms": "Korl\u00e1toz\u00e1s, tilalom, KRESZ"
+        },
+        "type/restriction/no_left_turn": {
+            "name": "Balra bekanyarodni tilos",
+            "terms": "Tilos balra kanyarodni, balra menni tilos"
+        },
+        "type/restriction/no_right_turn": {
+            "name": "Jobbra bekanyarodni tilos",
+            "terms": "Tilos jobbra kanyarodni, jobbra menni tilos, jobbra fordulni tilos"
+        },
+        "type/restriction/no_straight_on": {
+            "name": "Egyenesen tov\u00e1bbhaladni tilos",
+            "terms": "Tilos egyenesen menni, tov\u00e1bbmenni tilos"
+        },
+        "type/restriction/no_u_turn": {
+            "name": "Megfordulni tilos",
+            "terms": "Tilos megfordulni"
+        },
+        "type/route": {
+            "name": "\u00datvonal",
+            "terms": "\u00fatvonal, nyomvonal"
+        },
+        "type/route/bicycle": {
+            "name": "Ker\u00e9kp\u00e1ros \u00fatvonal",
+            "terms": "Biciklis \u00fatvonal"
+        },
+        "type/route/bus": {
+            "name": "Busz\u00fatvonal",
+            "terms": "Buszvonal"
+        },
+        "type/route/detour": {
+            "name": "Terel\u0151\u00fat",
+            "terms": "Elker\u00fcl\u0151\u00fat, terel\u00e9s, terel\u0151\u00fat"
+        },
+        "type/route/ferry": {
+            "name": "Komp\u00fatvonal",
+            "terms": "Kompj\u00e1rat \u00fatvonal"
+        },
+        "type/route/foot": {
+            "name": "Gyalogos \u00fatvonal",
+            "terms": "Gyalog \u00fatvonal"
+        },
+        "type/route/hiking": {
+            "name": "Turista\u00fat",
+            "terms": "T\u00fara\u00fat, Gyalogt\u00fara"
+        },
+        "type/route/horse": {
+            "name": "Lovagl\u00f3\u00fat",
+            "terms": "lovagl\u00f3 \u00fat, lovagl\u00f3 \u00fatvonal, lovas \u00fat, lovas \u00fatvonal"
+        },
+        "type/route/light_rail": {
+            "name": "H\u00c9V-vonal"
+        },
+        "type/route/pipeline": {
+            "name": "Cs\u0151vezet\u00e9k nyomvonala",
+            "terms": "Cs\u0151vezet\u00e9k, g\u00e1zvezet\u00e9k, k\u0151olajvezet\u00e9k"
+        },
+        "type/route/piste": {
+            "name": "S\u00edp\u00e1lya/S\u00ed\u00fatvonal"
+        },
+        "type/route/power": {
+            "name": "T\u00e1vvezet\u00e9k nyomvonala",
+            "terms": "Elektromos vezet\u00e9k \u00fatvonala, t\u00e1vvezet\u00e9k, nagyfesz\u00fclts\u00e9g\u0171 vezet\u00e9k"
+        },
+        "type/route/road": {
+            "name": "K\u00f6z\u00fat",
+            "terms": "\u00fat, f\u0151\u00fat, k\u00f6z\u00fat, aut\u00f3\u00fat, aut\u00f3p\u00e1lya"
+        },
+        "type/route/subway": {
+            "name": "Metr\u00f3vonal"
+        },
+        "type/route/train": {
+            "name": "Vas\u00fatvonal",
+            "terms": "Vonat \u00fatvonal"
+        },
+        "type/route/tram": {
+            "name": "Villamosvonal",
+            "terms": "Villamos \u00fatvonal"
+        },
+        "type/route_master": {
+            "name": "Route Master",
+            "terms": "Route Master"
+        },
+        "type/site": {
+            "name": "Helysz\u00edn",
+            "terms": "hely, site"
+        },
+        "type/waterway": {
+            "name": "V\u00edzi \u00fat",
+            "terms": "foly\u00f3, csatorna, v\u00edz, \u00fat, haj\u00f3, cs\u00f3nak"
+        },
+        "vertex": {
+            "name": "Egy\u00e9b",
+            "terms": "Egy\u00e9b"
+        },
+        "waterway": {
+            "name": "V\u00edzfoly\u00e1s"
+        },
+        "waterway/boatyard": {
+            "name": "Haj\u00f3telep",
+            "terms": "cs\u00f3nak,kik\u00f6t\u0151, kishaj\u00f3, vitorl\u00e1s"
+        },
+        "waterway/canal": {
+            "name": "Csatorna",
+            "terms": "kan\u00e1lis"
+        },
+        "waterway/dam": {
+            "name": "V\u00f6lgyz\u00e1r\u00f3 g\u00e1t",
+            "terms": "v\u00edzer\u0151m\u0171, t\u00e1roz\u00f3, v\u00edzt\u00e1roz\u00f3, g\u00e1t"
+        },
+        "waterway/ditch": {
+            "name": "\u00c1rok",
+            "terms": "\u00e1rok, v\u00edzelvezet\u0151"
+        },
+        "waterway/dock": {
+            "name": "Dokk",
+            "terms": "kik\u00f6t\u0151, dokk, \u00fasz\u00f3dokk, sz\u00e1razdokk"
+        },
+        "waterway/drain": {
+            "name": "V\u00edzelvezet\u0151 csatorna",
+            "terms": "\u00c9r"
+        },
+        "waterway/fuel": {
+            "name": "\u00dczemanyag-t\u00f6lt\u0151 \u00e1llom\u00e1s haj\u00f3knak",
+            "terms": "\u00fczemanyag,d\u00edzel,g\u00e1zolaj,cs\u00f3nak,haj\u00f3, haj\u00f3benzink\u00fat, bunkerolaj"
+        },
+        "waterway/milestone": {
+            "name": "V\u00edzi m\u00e9rf\u00f6ldk\u0151"
+        },
+        "waterway/river": {
+            "name": "Foly\u00f3",
+            "terms": "folyam"
+        },
+        "waterway/riverbank": {
+            "name": "Foly\u00f3part"
+        },
+        "waterway/sanitary_dump_station": {
+            "name": "Tengeri WC kezel\u00e9se",
+            "terms": "tisztas\u00e1g, szaniter, \u00fcr\u00edt\u00e9s"
+        },
+        "waterway/stream": {
+            "name": "Patak",
+            "terms": "\u00e9r, v\u00edzfoly\u00e1s"
+        },
+        "waterway/stream_intermittent": {
+            "name": "Id\u0151szakos v\u00edzfoly\u00e1s",
+            "terms": "csermely, patak, \u00e9r, foly\u00f3, folyam, foly\u00e1s, v\u00edz, id\u0151szak, \u00e1rad, \u00e1raszt"
+        },
+        "waterway/water_point": {
+            "name": "Iv\u00f3v\u00edz-csatlakoz\u00e1s haj\u00f3knak",
+            "terms": "iv\u00f3v\u00edz, \u00e9desv\u00edz"
+        },
+        "waterway/waterfall": {
+            "name": "V\u00edzes\u00e9s",
+            "terms": "v\u00edzes\u00e9s,zuhatag,z\u00fag\u00f3"
+        },
+        "waterway/weir": {
+            "name": "Buk\u00f3g\u00e1t",
+            "terms": "Buk\u00f3g\u00e1t"
+        }
+    }
+}

@@ -1,0 +1,3167 @@
+{
+    "presets": {
+        "address": {
+            "name": "Adres",
+            "terms": "Adres"
+        },
+        "advertising/billboard": {
+            "name": "Reklam Panosu",
+            "terms": "Reklam Panosu, Bilbord"
+        },
+        "aerialway": {
+            "name": "Teleferik Yolu"
+        },
+        "aerialway/cable_car": {
+            "name": "Teleferik",
+            "terms": "Teleferik"
+        },
+        "aerialway/chair_lift": {
+            "name": "Sandalye Teleferik",
+            "terms": "Sandalye Teleferik"
+        },
+        "aerialway/drag_lift": {
+            "name": "Kayak Teleferi\u011fi",
+            "terms": "Kayak Teleferi\u011fi"
+        },
+        "aerialway/gondola": {
+            "name": "Gondol Teleferik",
+            "terms": "Gondol Teleferik"
+        },
+        "aerialway/goods": {
+            "name": "Ta\u015f\u0131ma Teleferi\u011fi",
+            "terms": "Ta\u015f\u0131ma Teleferi\u011fi, Mal Teleferi\u011fi"
+        },
+        "aerialway/magic_carpet": {
+            "name": "Sihirli Hal\u0131 Teleferi\u011fi",
+            "terms": "Sihirli Hal\u0131 Teleferi\u011fi"
+        },
+        "aerialway/mixed_lift": {
+            "name": "Oturakl\u0131 Gondol Teleferi\u011fi",
+            "terms": "Oturakl\u0131 Gondol Teleferi\u011fi"
+        },
+        "aerialway/platter": {
+            "name": "Tabakl\u0131 Teleferik",
+            "terms": "Tabakl\u0131 Teleferik"
+        },
+        "aerialway/pylon": {
+            "name": "Teleferik Dire\u011fi",
+            "terms": "Teleferik Dire\u011fi, Teleferik S\u00fctunu"
+        },
+        "aerialway/rope_tow": {
+            "name": "\u00c7ekme Halat Teleferik",
+            "terms": "\u00c7ekme Halat Teleferik"
+        },
+        "aerialway/station": {
+            "name": "Teleferik \u0130stasyonu"
+        },
+        "aerialway/t-bar": {
+            "name": "\u00c7ubuklu Teleferik",
+            "terms": "\u00c7ubuklu Teleferik"
+        },
+        "aeroway": {
+            "name": "Hava Yolu"
+        },
+        "aeroway/aerodrome": {
+            "name": "Havaalan\u0131",
+            "terms": "Havaalan\u0131"
+        },
+        "aeroway/apron": {
+            "name": "U\u00e7ak Park Alan\u0131",
+            "terms": "U\u00e7ak Park Alan\u0131, Hangar \u00d6n\u00fc"
+        },
+        "aeroway/gate": {
+            "name": "Kap\u0131",
+            "terms": "Kap\u0131"
+        },
+        "aeroway/hangar": {
+            "name": "Hangar",
+            "terms": "Hangar"
+        },
+        "aeroway/helipad": {
+            "name": "Helikopter Pisti",
+            "terms": "Helikopter Pisti"
+        },
+        "aeroway/runway": {
+            "name": "U\u00e7ak Pisti",
+            "terms": "U\u00e7ak Pisti, H\u0131zlanma Pisti"
+        },
+        "aeroway/taxiway": {
+            "name": "Taksi Yolu",
+            "terms": "Taksi Yolu"
+        },
+        "aeroway/terminal": {
+            "name": "Terminal",
+            "terms": "Terminal"
+        },
+        "amenity": {
+            "name": "Tesis"
+        },
+        "amenity/animal_boarding": {
+            "name": "Yat\u0131l\u0131 Hayvan Bak\u0131m Yeri",
+            "terms": "Yat\u0131l\u0131 Hayvan Bak\u0131m Yeri"
+        },
+        "amenity/animal_breeding": {
+            "name": "Hayvan Islah Yeri",
+            "terms": "Hayvan Islah Yeri"
+        },
+        "amenity/animal_shelter": {
+            "name": "Hayvan Barina\u011f\u0131",
+            "terms": "Hayvan Bar\u0131na\u011f\u0131"
+        },
+        "amenity/arts_centre": {
+            "name": "Sanat Merkezi",
+            "terms": "Sanat Merkezi"
+        },
+        "amenity/atm": {
+            "name": "ATM",
+            "terms": "ATM, Para \u00c7ekme Makinas\u0131"
+        },
+        "amenity/bank": {
+            "name": "Banka",
+            "terms": "Banka"
+        },
+        "amenity/bar": {
+            "name": "Bar",
+            "terms": "Bar"
+        },
+        "amenity/bbq": {
+            "name": "Mangal Restoran\u0131",
+            "terms": "Mangal Restoran\u0131"
+        },
+        "amenity/bench": {
+            "name": "Bank",
+            "terms": "Bank, Oturak"
+        },
+        "amenity/bicycle_parking": {
+            "name": "Bisiklet Park\u0131",
+            "terms": "Bisiklet Park\u0131"
+        },
+        "amenity/bicycle_rental": {
+            "name": "Bisiklet Kiralama",
+            "terms": "Bisiklet Kiralama"
+        },
+        "amenity/bicycle_repair_station": {
+            "name": "Bisiklet Tamircisi",
+            "terms": "Bisiklet Tamircisi"
+        },
+        "amenity/boat_rental": {
+            "name": "Bot Kiralama",
+            "terms": "Bot Kiralama"
+        },
+        "amenity/bureau_de_change": {
+            "name": "D\u00f6viz B\u00fcrosu",
+            "terms": "D\u00f6viz B\u00fcrosu"
+        },
+        "amenity/bus_station": {
+            "name": "Otob\u00fcs Dura\u011f\u0131 / Terminali"
+        },
+        "amenity/cafe": {
+            "name": "Kafe",
+            "terms": "Kafe, Kafeterya"
+        },
+        "amenity/car_pooling": {
+            "name": "Araba Payla\u015f\u0131m Yeri",
+            "terms": "Ara\u00e7 \u0130mece Yeri"
+        },
+        "amenity/car_rental": {
+            "name": "Ara\u00e7 Kiralama",
+            "terms": "Ara\u00e7 Kiralama, Oto Kiralama"
+        },
+        "amenity/car_sharing": {
+            "name": "Ara\u00e7 Payla\u015f\u0131m",
+            "terms": "Ara\u00e7 Payla\u015f\u0131m"
+        },
+        "amenity/car_wash": {
+            "name": "Ara\u00e7 Y\u0131kama",
+            "terms": "Ara\u00e7 Y\u0131kama, Oto Y\u0131kama"
+        },
+        "amenity/casino": {
+            "name": "Kumarhane",
+            "terms": "Kumarhane, Casino"
+        },
+        "amenity/charging_station": {
+            "name": "\u015earj \u0130stasyonu",
+            "terms": "\u015earj \u0130stasyonu"
+        },
+        "amenity/childcare": {
+            "name": "\u00c7ocuk Bak\u0131m\u0131",
+            "terms": "\u00c7ocuk Bak\u0131m\u0131"
+        },
+        "amenity/cinema": {
+            "name": "Sinema",
+            "terms": "Sinema"
+        },
+        "amenity/clinic": {
+            "name": "Klinik",
+            "terms": "Klinik, T\u0131p Merkezi"
+        },
+        "amenity/clinic/abortion": {
+            "name": "K\u00fcrtaj Klini\u011fi",
+            "terms": "K\u00fcrtaj Klini\u011fi, K\u00fcrtaj Merkezi"
+        },
+        "amenity/clinic/fertility": {
+            "name": "Bebek Merkezi",
+            "terms": "Bebek Merkezi, Do\u011furganl\u0131k Merkezi"
+        },
+        "amenity/clock": {
+            "name": "Saat",
+            "terms": "Saat"
+        },
+        "amenity/college": {
+            "name": "\u00dcniversite Kamp\u00fcs\u00fc",
+            "terms": "\u00dcniversite Kamp\u00fcs\u00fc, \u00dcniversite Bah\u00e7esi"
+        },
+        "amenity/community_centre": {
+            "name": "Toplum Merkezi",
+            "terms": "Toplum Merkezi, Sosyal Merkez"
+        },
+        "amenity/compressed_air": {
+            "name": "Hava Basma \u0130stasyonu",
+            "terms": "Hava Basma \u0130stasyonu, Lastik Hava \u0130stasyonu"
+        },
+        "amenity/courthouse": {
+            "name": "Mahkeme",
+            "terms": "Mahkeme, Adalet Saray\u0131"
+        },
+        "amenity/coworking_space": {
+            "name": "Ortak \u00c7al\u0131\u015fma Alan\u0131"
+        },
+        "amenity/crematorium": {
+            "name": "Cesed Yakma Yeri",
+            "terms": "Cesed Yakma Yeri"
+        },
+        "amenity/dentist": {
+            "name": "Di\u015f\u00e7i",
+            "terms": "Di\u015f\u00e7i"
+        },
+        "amenity/doctors": {
+            "name": "Doktor",
+            "terms": "Doktor"
+        },
+        "amenity/dojo": {
+            "name": "D\u00f6v\u00fc\u015f Sanatlar\u0131 Akademisi",
+            "terms": "D\u00f6v\u00fc\u015f Sanatlar\u0131 Akademisi"
+        },
+        "amenity/drinking_water": {
+            "name": "\u0130\u00e7me Suyu",
+            "terms": "\u0130\u00e7me Suyu, Sebil"
+        },
+        "amenity/driving_school": {
+            "name": "S\u00fcr\u00fcc\u00fc Kursu",
+            "terms": "S\u00fcr\u00fcc\u00fc Okulu"
+        },
+        "amenity/embassy": {
+            "name": "B\u00fcy\u00fckel\u00e7ilik",
+            "terms": "B\u00fcy\u00fckel\u00e7ilik"
+        },
+        "amenity/fast_food": {
+            "name": "Fast Food",
+            "terms": "Fast Food, Haz\u0131r Yiyecek"
+        },
+        "amenity/ferry_terminal": {
+            "name": "Feribot Terminali"
+        },
+        "amenity/fire_station": {
+            "name": "\u0130tfaiye",
+            "terms": "\u0130tfaiye"
+        },
+        "amenity/food_court": {
+            "name": "Yemek Yeri",
+            "terms": "Yemek Yeri, Restoran K\u0131sm\u0131, Yemek Kat\u0131"
+        },
+        "amenity/fountain": {
+            "name": "Su F\u0131skiyesi",
+            "terms": "Su F\u0131skiyesi, F\u0131skiye, \u00c7e\u015fme, Aslana\u011fz\u0131"
+        },
+        "amenity/fuel": {
+            "name": "Benzinci",
+            "terms": "Benzinci, Benzin \u0130stasyonu"
+        },
+        "amenity/grave_yard": {
+            "name": "Mezarl\u0131k",
+            "terms": "Mezarl\u0131k"
+        },
+        "amenity/grit_bin": {
+            "name": "\u00c7ak\u0131l Kutusu",
+            "terms": "\u00c7ak\u0131l Kutusu, \u00c7ak\u0131l Torbas\u0131"
+        },
+        "amenity/hospital": {
+            "name": "Hastane",
+            "terms": "Hastane Bah\u00e7esi"
+        },
+        "amenity/hunting_stand": {
+            "name": "Av Platformu",
+            "terms": "Av Platformu"
+        },
+        "amenity/ice_cream": {
+            "name": "Dondurmac\u0131",
+            "terms": "Dondurmac\u0131"
+        },
+        "amenity/internet_cafe": {
+            "name": "\u0130nternet Kafe",
+            "terms": "\u0130nternet Kafe"
+        },
+        "amenity/kindergarten": {
+            "name": "Anaokulu",
+            "terms": "Anaokulu, Kre\u015f"
+        },
+        "amenity/library": {
+            "name": "K\u00fct\u00fcphane",
+            "terms": "K\u00fct\u00fcphane"
+        },
+        "amenity/love_hotel": {
+            "name": "A\u015fk Oteli",
+            "terms": "Cinsel \u0130li\u015fki Oteli, Sevi\u015fme Oteli"
+        },
+        "amenity/marketplace": {
+            "name": "\u00c7ar\u015f\u0131",
+            "terms": "\u00c7ar\u015f\u0131, Pazar Yeri"
+        },
+        "amenity/motorcycle_parking": {
+            "name": "Motosiklet Park\u0131",
+            "terms": "Motosiklet Park\u0131, Motosiklet Park Yeri"
+        },
+        "amenity/music_school": {
+            "name": "M\u00fczik Okulu",
+            "terms": "M\u00fczik Merkezi"
+        },
+        "amenity/nightclub": {
+            "name": "Gece Kul\u00fcb\u00fc",
+            "terms": "Gece Kul\u00fcb\u00fc"
+        },
+        "amenity/nursing_home": {
+            "name": "Bak\u0131m Evi"
+        },
+        "amenity/parking_entrance": {
+            "name": "Gara\u015f Giri\u015f/\u00c7\u0131k\u0131\u015f\u0131",
+            "terms": "Gara\u015f Giri\u015f/\u00c7\u0131k\u0131\u015f\u0131, Park Yeri Giri\u015f/\u00c7\u0131k\u0131\u015f\u0131"
+        },
+        "amenity/parking_space": {
+            "name": "Park Yeri",
+            "terms": "Park Yeri"
+        },
+        "amenity/place_of_worship": {
+            "name": "\u0130badethane",
+            "terms": "\u0130badethane, \u0130badet Yeri"
+        },
+        "amenity/place_of_worship/buddhist": {
+            "name": "Budist Tap\u0131na\u011f\u0131",
+            "terms": "Budist Tap\u0131na\u011f\u0131"
+        },
+        "amenity/place_of_worship/hindu": {
+            "name": "Hindu Tap\u0131na\u011f\u0131",
+            "terms": "Hindu Tap\u0131na\u011f\u0131"
+        },
+        "amenity/place_of_worship/shinto": {
+            "name": "\u015eintoizm Tap\u0131na\u011f\u0131",
+            "terms": "\u015eintoizm Tap\u0131na\u011f\u0131"
+        },
+        "amenity/place_of_worship/sikh": {
+            "name": "Sih Tap\u0131na\u011f\u0131",
+            "terms": "Sih Tap\u0131na\u011f\u0131"
+        },
+        "amenity/place_of_worship/taoist": {
+            "name": "Taoist Tap\u0131na\u011f\u0131",
+            "terms": "Taoist Tap\u0131na\u011f\u0131"
+        },
+        "amenity/planetarium": {
+            "name": "G\u00f6kevi",
+            "terms": "G\u00f6kevi, Planetaryum"
+        },
+        "amenity/police": {
+            "name": "Emniyet M\u00fcd\u00fcrl\u00fc\u011f\u00fc",
+            "terms": "Emniyet M\u00fcd\u00fcrl\u00fc\u011f\u00fc, Polis Noktas\u0131, Polis Merkezi"
+        },
+        "amenity/post_box": {
+            "name": "Posta Kutusu",
+            "terms": "Posta Kutusu"
+        },
+        "amenity/post_office": {
+            "name": "Postane",
+            "terms": "Postane"
+        },
+        "amenity/prison": {
+            "name": "Cezaevi",
+            "terms": "Cezaevi"
+        },
+        "amenity/pub": {
+            "name": "Bar",
+            "terms": "Bar"
+        },
+        "amenity/public_bath": {
+            "name": "Hamam",
+            "terms": "Hamam, Umuma A\u00e7\u0131k Banyo"
+        },
+        "amenity/public_bookcase": {
+            "name": "Sokak K\u00fct\u00fcphanesi",
+            "terms": "Sokak K\u00fct\u00fcphanesi, Sokak Kitapl\u0131\u011f\u0131"
+        },
+        "amenity/ranger_station": {
+            "name": "Korucu \u0130stasyonu",
+            "terms": "Korucu \u0130stasyonu, Korucu Evi"
+        },
+        "amenity/recycling_centre": {
+            "name": "Geri D\u00f6n\u00fc\u015f\u00fcm Merkezi",
+            "terms": "Geri D\u00f6n\u00fc\u015f\u00fcm Merkezi"
+        },
+        "amenity/register_office": {
+            "name": "N\u00fcfus Dairesi"
+        },
+        "amenity/restaurant": {
+            "name": "Lokanta",
+            "terms": "Lokanta, Restoran"
+        },
+        "amenity/sanitary_dump_station": {
+            "name": "Tuvalet At\u0131k Yeri",
+            "terms": "Tuvalet At\u0131k Yeri"
+        },
+        "amenity/school": {
+            "name": "Okul",
+            "terms": "Okul, Okul Bah\u00e7esi"
+        },
+        "amenity/scrapyard": {
+            "name": "Hurdal\u0131k"
+        },
+        "amenity/shelter": {
+            "name": "Bar\u0131nak",
+            "terms": "Bar\u0131nak"
+        },
+        "amenity/shower": {
+            "name": "Banyo",
+            "terms": "Banyo, Du\u015f"
+        },
+        "amenity/smoking_area": {
+            "name": "Sigara \u0130\u00e7me Alan\u0131",
+            "terms": "Sigara \u0130\u00e7me Alan\u0131"
+        },
+        "amenity/social_facility": {
+            "name": "Okul Tesisleri",
+            "terms": "Okul Tesisleri"
+        },
+        "amenity/social_facility/food_bank": {
+            "name": "A\u015fevi",
+            "terms": "A\u015fevi"
+        },
+        "amenity/social_facility/group_home": {
+            "name": "Huzur Evi",
+            "terms": "Huzur Evi, Ya\u015fl\u0131lar Evi"
+        },
+        "amenity/social_facility/homeless_shelter": {
+            "name": "Evsizler Bar\u0131na\u011f\u0131",
+            "terms": "Evsizler Bar\u0131na\u011f\u0131"
+        },
+        "amenity/social_facility/nursing_home": {
+            "name": "Bak\u0131m Evi",
+            "terms": "Bak\u0131m Evi"
+        },
+        "amenity/studio": {
+            "name": "St\u00fcdyo",
+            "terms": "St\u00fcdyo"
+        },
+        "amenity/swimming_pool": {
+            "name": "Y\u00fczme Havuzu"
+        },
+        "amenity/taxi": {
+            "name": "Taksi Dura\u011f\u0131",
+            "terms": "Taksi Dura\u011f\u0131"
+        },
+        "amenity/telephone": {
+            "name": "Telefon",
+            "terms": "Telefon, Ankes\u00f6rl\u00fc Telefon"
+        },
+        "amenity/theatre": {
+            "name": "Tiyatro",
+            "terms": "Tiyatro"
+        },
+        "amenity/toilets": {
+            "name": "Tuvalet",
+            "terms": "Tuvalet"
+        },
+        "amenity/townhall": {
+            "name": "Belediye Binas\u0131",
+            "terms": "Belediye Binas\u0131"
+        },
+        "amenity/university": {
+            "name": "\u00dcniversite Yerle\u015fkesi",
+            "terms": "\u00dcniversite Yerle\u015fkesi, \u00dcniversite Kamp\u00fcs\u00fc"
+        },
+        "amenity/vending_machine": {
+            "name": "Otomatik Sat\u0131\u015f Makinas\u0131",
+            "terms": "Otomatik Sat\u0131\u015f Makinas\u0131, Otomat"
+        },
+        "amenity/vending_machine/cigarettes": {
+            "name": "Sigara Otomat\u0131",
+            "terms": "Sigara Otomat\u0131"
+        },
+        "amenity/vending_machine/condoms": {
+            "name": "Prezervatif Otomat\u0131",
+            "terms": "Prezervatif Otomat\u0131"
+        },
+        "amenity/vending_machine/drinks": {
+            "name": "\u0130\u00e7ecek Otomat\u0131",
+            "terms": "\u0130\u00e7ecek Otomat\u0131"
+        },
+        "amenity/vending_machine/feminine_hygiene": {
+            "name": "Kad\u0131n Sa\u011fl\u0131k Otomat\u0131",
+            "terms": "Kad\u0131n Sa\u011fl\u0131k Otomatik Sat\u0131\u015f Makinas\u0131"
+        },
+        "amenity/vending_machine/news_papers": {
+            "name": "Gazete Otomat\u0131"
+        },
+        "amenity/vending_machine/newspapers": {
+            "name": "Gazete Sat\u0131\u015f Makinas\u0131",
+            "terms": "Gazete Sat\u0131\u015f Makinas\u0131, Gazete Otomat\u0131"
+        },
+        "amenity/vending_machine/parking_tickets": {
+            "name": "Park Fi\u015fi Otomat\u0131",
+            "terms": "Park Fi\u015fi Otomat\u0131"
+        },
+        "amenity/vending_machine/public_transport_tickets": {
+            "name": "Otob\u00fcs Bileti Otomat\u0131",
+            "terms": "Otob\u00fcs Bileti Otomat\u0131"
+        },
+        "amenity/vending_machine/sweets": {
+            "name": "Yiyecek Otomat\u0131",
+            "terms": "Yiyecek Otomat\u0131"
+        },
+        "amenity/veterinary": {
+            "name": "Veteriner",
+            "terms": "Veteriner"
+        },
+        "amenity/waste/dog_excrement": {
+            "name": "K\u00f6pek D\u0131\u015fk\u0131 \u00c7\u00f6p\u00fc",
+            "terms": "K\u00f6pek D\u0131\u015fk\u0131 Kutusu"
+        },
+        "amenity/waste_basket": {
+            "name": "\u00c7\u00f6p Kutusu",
+            "terms": "\u00c7\u00f6p Kutusu"
+        },
+        "amenity/waste_disposal": {
+            "name": "\u00c7\u00f6p Tenekesi",
+            "terms": "\u00c7\u00f6p Tenekesi"
+        },
+        "amenity/waste_transfer_station": {
+            "name": "\u00c7\u00f6p Transfer \u0130stasyonu",
+            "terms": "\u00c7\u00f6p Transfer \u0130stasyonu"
+        },
+        "amenity/water_point": {
+            "name": "\u0130\u00e7me Suyu",
+            "terms": "\u0130\u00e7me Suyu, Sebil"
+        },
+        "amenity/watering_place": {
+            "name": "Hayvan Y\u0131kama Yeri",
+            "terms": "Hayvan Y\u0131kama Yeri"
+        },
+        "area": {
+            "name": "Alan",
+            "terms": "Alan, B\u00f6lge"
+        },
+        "area/highway": {
+            "name": "Yol Durumu",
+            "terms": "Yol Durumu"
+        },
+        "attraction/amusement_ride": {
+            "name": "E\u011flence Yolculu\u011fu"
+        },
+        "attraction/animal": {
+            "name": "Hayvan",
+            "terms": "Hayvan"
+        },
+        "attraction/big_wheel": {
+            "name": "D\u00f6nme Dolap",
+            "terms": "D\u00f6nme Dolap"
+        },
+        "attraction/bumper_car": {
+            "name": "\u00c7arp\u0131\u015fan Araba",
+            "terms": "\u00c7arp\u0131\u015fan Araba"
+        },
+        "attraction/bungee_jumping": {
+            "name": "Bungee Jumping",
+            "terms": "Bungee Jumping"
+        },
+        "attraction/carousel": {
+            "name": "Atl\u0131 Kar\u0131nca",
+            "terms": "Atl\u0131 Kar\u0131nca"
+        },
+        "attraction/dark_ride": {
+            "name": "Korku T\u00fcneli"
+        },
+        "attraction/pirate_ship": {
+            "name": "Korsan Gemisi",
+            "terms": "Korsan Gemisi"
+        },
+        "attraction/river_rafting": {
+            "name": "Rafting",
+            "terms": "Rafting"
+        },
+        "attraction/roller_coaster": {
+            "name": "Roller Coaster",
+            "terms": "Roller Coaster"
+        },
+        "attraction/train": {
+            "name": "Tren",
+            "terms": "Tren"
+        },
+        "attraction/water_slide": {
+            "name": "Su Kaya\u011f\u0131",
+            "terms": "Su Kaya\u011f\u0131"
+        },
+        "barrier": {
+            "name": "Bariyer",
+            "terms": "Toprak Dolgu, Toprak Set"
+        },
+        "barrier/block": {
+            "name": "Blok",
+            "terms": "Blok, K\u00fctle"
+        },
+        "barrier/bollard": {
+            "name": "Duba",
+            "terms": "Duba, Direk"
+        },
+        "barrier/border_control": {
+            "name": "G\u00fcmr\u00fck Kontrol\u00fc",
+            "terms": "G\u00fcmr\u00fck Kontrol\u00fc"
+        },
+        "barrier/cattle_grid": {
+            "name": "Izgara",
+            "terms": "Izgara"
+        },
+        "barrier/city_wall": {
+            "name": "Sur",
+            "terms": "Sur"
+        },
+        "barrier/cycle_barrier": {
+            "name": "Bisiklet Bariyeri",
+            "terms": "Bisiklet Bariyeri"
+        },
+        "barrier/ditch": {
+            "name": "Hendek",
+            "terms": "Hendek, Suyolu"
+        },
+        "barrier/entrance": {
+            "name": "Giri\u015f"
+        },
+        "barrier/fence": {
+            "name": "\u00c7it",
+            "terms": "\u00c7it"
+        },
+        "barrier/gate": {
+            "name": "Kap\u0131",
+            "terms": "Kap\u0131"
+        },
+        "barrier/hedge": {
+            "name": "Koruma Duvar\u0131",
+            "terms": "Koruma Duvar\u0131"
+        },
+        "barrier/kissing_gate": {
+            "name": "Sadece \u0130nsanlar \u0130\u00e7in Giri\u015f Kap\u0131s\u0131",
+            "terms": "Sadece \u0130nsanlar \u0130\u00e7in Giri\u015f Kap\u0131s\u0131"
+        },
+        "barrier/lift_gate": {
+            "name": "Asans\u00f6r Kap\u0131",
+            "terms": "Asans\u00f6r Kap\u0131"
+        },
+        "barrier/retaining_wall": {
+            "name": "\u0130stinat Duvar\u0131",
+            "terms": "\u0130stinat Duvar\u0131"
+        },
+        "barrier/stile": {
+            "name": "\u00c7it basama\u011f\u0131",
+            "terms": "\u00c7it Merdiveni"
+        },
+        "barrier/toll_booth": {
+            "name": "Gi\u015fe",
+            "terms": "Gi\u015fe"
+        },
+        "barrier/wall": {
+            "name": "Duvar",
+            "terms": "Duvar"
+        },
+        "boundary/administrative": {
+            "name": "\u0130dari S\u0131n\u0131r",
+            "terms": "\u0130dari S\u0131n\u0131r"
+        },
+        "building": {
+            "name": "Bina",
+            "terms": "Yap\u0131"
+        },
+        "building/barn": {
+            "name": "Samanl\u0131k",
+            "terms": "Samanl\u0131k"
+        },
+        "building/boathouse": {
+            "name": "Kay\u0131khane"
+        },
+        "building/bungalow": {
+            "name": "Tek Katl\u0131 M\u00fcstakil Ev",
+            "terms": "Tek Katl\u0131 M\u00fcstakil Ev"
+        },
+        "building/bunker": {
+            "name": "Depo"
+        },
+        "building/cabin": {
+            "name": "Kabin",
+            "terms": "Kabin"
+        },
+        "building/cathedral": {
+            "name": "Katedral",
+            "terms": "B\u00fcy\u00fck Kilisi, Ba\u015fkilise, \u0130badet Yeri"
+        },
+        "building/chapel": {
+            "name": "\u015eapel",
+            "terms": "K\u00fc\u00e7\u00fck Kilise, \u0130badet Yeri"
+        },
+        "building/church": {
+            "name": "Kilise",
+            "terms": "Kilise"
+        },
+        "building/civic": {
+            "name": "Kamu Binas\u0131",
+            "terms": "Kamu Binas\u0131"
+        },
+        "building/college": {
+            "name": "Y\u00fcksekokul",
+            "terms": "Y\u00fcksekokul"
+        },
+        "building/commercial": {
+            "name": "Ticari Bina",
+            "terms": "Al\u0131\u015fveri\u015f Yeri"
+        },
+        "building/construction": {
+            "name": "Bina \u0130n\u015faat\u0131",
+            "terms": "\u0130n\u015faat"
+        },
+        "building/detached": {
+            "name": "M\u00fcstakil Ev",
+            "terms": "M\u00fcstakil Ev"
+        },
+        "building/dormitory": {
+            "name": "Yurt",
+            "terms": "\u00d6\u011frenci Yurdu"
+        },
+        "building/entrance": {
+            "name": "Giri\u015f/\u00c7\u0131k\u0131\u015f"
+        },
+        "building/garage": {
+            "name": "Garaj",
+            "terms": "Garaj"
+        },
+        "building/garages": {
+            "name": "Garajlar",
+            "terms": "Garajlar"
+        },
+        "building/greenhouse": {
+            "name": "Sera",
+            "terms": "Sera"
+        },
+        "building/hospital": {
+            "name": "Hastane",
+            "terms": "Hastane"
+        },
+        "building/hotel": {
+            "name": "Otel",
+            "terms": "Otel"
+        },
+        "building/house": {
+            "name": "Ev",
+            "terms": "Ev"
+        },
+        "building/hut": {
+            "name": "Kul\u00fcbe",
+            "terms": "Baraka"
+        },
+        "building/industrial": {
+            "name": "Sanayi",
+            "terms": "End\u00fcstriyel Bina"
+        },
+        "building/kindergarten": {
+            "name": "Anaokulu",
+            "terms": "Kre\u015f"
+        },
+        "building/mosque": {
+            "name": "Camii",
+            "terms": "Camii"
+        },
+        "building/public": {
+            "name": "Devlet Binas\u0131",
+            "terms": "Devlet Binas\u0131"
+        },
+        "building/residential": {
+            "name": "Konut",
+            "terms": "Konut"
+        },
+        "building/retail": {
+            "name": "Sat\u0131\u015f Ma\u011fazas\u0131",
+            "terms": "Sat\u0131\u015f Ma\u011fazas\u0131"
+        },
+        "building/roof": {
+            "name": "\u00c7at\u0131",
+            "terms": "\u00c7at\u0131"
+        },
+        "building/ruins": {
+            "name": "Bina Kal\u0131nt\u0131s\u0131",
+            "terms": "Bina Kal\u0131nt\u0131s\u0131"
+        },
+        "building/school": {
+            "name": "Okul",
+            "terms": "Okul"
+        },
+        "building/semidetached_house": {
+            "name": "Biti\u015fik Nizam Ev",
+            "terms": "Biti\u015fik Nizam Ev"
+        },
+        "building/service": {
+            "name": "Servis Binas\u0131",
+            "terms": "Servis Binas\u0131"
+        },
+        "building/shed": {
+            "name": "Kul\u00fcbe",
+            "terms": "K\u00fc\u00e7\u00fck Kul\u00fcbe, Baraka"
+        },
+        "building/stable": {
+            "name": "Ah\u0131r",
+            "terms": "Ah\u0131r"
+        },
+        "building/stadium": {
+            "name": "Stadyum",
+            "terms": "Stadyum"
+        },
+        "building/static_caravan": {
+            "name": "Karavan",
+            "terms": "Karavan"
+        },
+        "building/temple": {
+            "name": "Tap\u0131nak",
+            "terms": "Tap\u0131nak"
+        },
+        "building/terrace": {
+            "name": "S\u0131ra Evler",
+            "terms": "S\u0131ra Evler"
+        },
+        "building/transportation": {
+            "name": "Terminal",
+            "terms": "Terminal"
+        },
+        "building/university": {
+            "name": "\u00dcniversite",
+            "terms": "\u00dcniversite"
+        },
+        "building/warehouse": {
+            "name": "Depo",
+            "terms": "Ambar"
+        },
+        "camp_site/camp_pitch": {
+            "name": "Kamp Ate\u015f Alan\u0131",
+            "terms": "Kamp Ate\u015f Alan\u0131"
+        },
+        "circular": {
+            "name": "D\u00f6nel Kav\u015fak"
+        },
+        "club": {
+            "name": "Kl\u00fcb",
+            "terms": "Bar, Kul\u00fcp"
+        },
+        "craft": {
+            "name": "Zanaat",
+            "terms": "Zanaat, Ustal\u0131k"
+        },
+        "craft/basket_maker": {
+            "name": "Sepet\u00e7i",
+            "terms": "Sepet\u00e7i"
+        },
+        "craft/beekeeper": {
+            "name": "Ar\u0131c\u0131",
+            "terms": "Ar\u0131c\u0131"
+        },
+        "craft/blacksmith": {
+            "name": "Nalbant",
+            "terms": "Nalbant, Demirci"
+        },
+        "craft/boatbuilder": {
+            "name": "Tersane",
+            "terms": "Tersane"
+        },
+        "craft/bookbinder": {
+            "name": "Cilt\u00e7i",
+            "terms": "Cilt\u00e7i"
+        },
+        "craft/brewery": {
+            "name": "Bira \u0130\u015fletmesi",
+            "terms": "Bira \u0130\u015fletmesi, Bira Fabrikas\u0131"
+        },
+        "craft/carpenter": {
+            "name": "Marangoz",
+            "terms": "Marangoz, D\u00fclger, Do\u011framac\u0131"
+        },
+        "craft/carpet_layer": {
+            "name": "Hal\u0131c\u0131",
+            "terms": "Hal\u0131c\u0131"
+        },
+        "craft/caterer": {
+            "name": "G\u0131da Da\u011f\u0131t\u0131m \u015eirketi",
+            "terms": "G\u0131da Da\u011f\u0131t\u0131m \u015eirketi"
+        },
+        "craft/chimney_sweeper": {
+            "name": "Baca Temizleyicisi"
+        },
+        "craft/clockmaker": {
+            "name": "Saat\u00e7i",
+            "terms": "Saat\u00e7i"
+        },
+        "craft/confectionery": {
+            "name": "\u015eekerci"
+        },
+        "craft/distillery": {
+            "name": "\u0130\u00e7ki \u0130malathanesi",
+            "terms": "\u0130\u00e7ki \u0130malathanesi, \u0130\u00e7ki Fabrikas\u0131"
+        },
+        "craft/dressmaker": {
+            "name": "Kad\u0131n Terzisi",
+            "terms": "Kad\u0131n Terzisi"
+        },
+        "craft/electrician": {
+            "name": "Elektrik\u00e7i",
+            "terms": "Elektrik\u00e7i"
+        },
+        "craft/electronics_repair": {
+            "name": "Elektronik Tamircisi",
+            "terms": "Elektronik Tamircisi"
+        },
+        "craft/gardener": {
+            "name": "Bah\u00e7\u0131van",
+            "terms": "Bah\u00e7\u0131van"
+        },
+        "craft/glaziery": {
+            "name": "Camc\u0131",
+            "terms": "Camc\u0131"
+        },
+        "craft/handicraft": {
+            "name": "El Sanat\u0131",
+            "terms": "El Sanat\u0131"
+        },
+        "craft/hvac": {
+            "name": "Is\u0131tma - So\u011futma",
+            "terms": "Is\u0131tma - So\u011futma"
+        },
+        "craft/insulator": {
+            "name": "Kaloriferci",
+            "terms": "Kaloriferci"
+        },
+        "craft/jeweler": {
+            "name": "Kuyumcu"
+        },
+        "craft/key_cutter": {
+            "name": "\u00c7ilingir",
+            "terms": "\u00c7ilingir"
+        },
+        "craft/locksmith": {
+            "name": "Anahtarc\u0131"
+        },
+        "craft/metal_construction": {
+            "name": "Metal Yap\u0131",
+            "terms": "Metal Yap\u0131"
+        },
+        "craft/optician": {
+            "name": "G\u00f6zl\u00fck\u00e7\u00fc"
+        },
+        "craft/painter": {
+            "name": "Boyac\u0131",
+            "terms": "Boyac\u0131"
+        },
+        "craft/photographer": {
+            "name": "Foto\u011fraf\u00e7\u0131",
+            "terms": "Foto\u011fraf\u00e7\u0131"
+        },
+        "craft/photographic_laboratory": {
+            "name": "Foto\u011fraf Labovatuar\u0131",
+            "terms": "Foto\u011fraf Labovatuar\u0131"
+        },
+        "craft/plasterer": {
+            "name": "S\u0131vac\u0131",
+            "terms": "S\u0131vac\u0131, Al\u00e7\u0131c\u0131"
+        },
+        "craft/plumber": {
+            "name": "Tesisat\u00e7\u0131",
+            "terms": "Tesisat\u00e7\u0131, Su Tesisat\u00e7\u0131s\u0131, S\u0131hhi Tesisat\u00e7\u0131"
+        },
+        "craft/pottery": {
+            "name": "\u00c7\u00f6mklek\u00e7i",
+            "terms": "\u00c7\u00f6mklek\u00e7i"
+        },
+        "craft/rigger": {
+            "name": "Kablocu",
+            "terms": "Kablocu"
+        },
+        "craft/roofer": {
+            "name": "\u00c7at\u0131 Tamircisi",
+            "terms": "\u00c7at\u0131 Tamircisi, \u00c7at\u0131c\u0131, \u00c7at\u0131 Ustas\u0131"
+        },
+        "craft/saddler": {
+            "name": "Eyerci",
+            "terms": "Eyerci"
+        },
+        "craft/sailmaker": {
+            "name": "Yelkenci",
+            "terms": "Yelkenci"
+        },
+        "craft/sawmill": {
+            "name": "Kereste Fabrikas\u0131",
+            "terms": "Kereste Fabrikas\u0131, B\u0131\u00e7k\u0131evi"
+        },
+        "craft/scaffolder": {
+            "name": "\u0130skeleci",
+            "terms": "\u0130skeleci, Yap\u0131 Kurma Ustas\u0131"
+        },
+        "craft/sculptor": {
+            "name": "Yontucu"
+        },
+        "craft/shoemaker": {
+            "name": "Ayakkab\u0131c\u0131",
+            "terms": "Ayakkab\u0131c\u0131"
+        },
+        "craft/stonemason": {
+            "name": "Duvarc\u0131",
+            "terms": "Duvarc\u0131"
+        },
+        "craft/tailor": {
+            "name": "Terzi"
+        },
+        "craft/tiler": {
+            "name": "Kiremet\u00e7i",
+            "terms": "Kiremet\u00e7i"
+        },
+        "craft/tinsmith": {
+            "name": "Kalayc\u0131",
+            "terms": "Kalayc\u0131, Tenekeci"
+        },
+        "craft/upholsterer": {
+            "name": "D\u00f6\u015femeci",
+            "terms": "D\u00f6\u015femeci, Koltuk\u00e7u"
+        },
+        "craft/watchmaker": {
+            "name": "Saat\u00e7i",
+            "terms": "Saat\u00e7i"
+        },
+        "craft/window_construction": {
+            "name": "Pencereci",
+            "terms": "Pencereci"
+        },
+        "craft/winery": {
+            "name": "\u015earap Fabrikas\u0131",
+            "terms": "\u015earap Fabrikas\u0131"
+        },
+        "embankment": {
+            "name": "Toprak Dolgu"
+        },
+        "emergency/ambulance_station": {
+            "name": "Ambulans \u0130stasyonu",
+            "terms": "Ambulans \u0130stasyonu"
+        },
+        "emergency/defibrillator": {
+            "name": "\u015eok Cihaz\u0131",
+            "terms": "\u015eok Cihaz\u0131"
+        },
+        "emergency/designated": {
+            "name": "Acil Eri\u015fim"
+        },
+        "emergency/destination": {
+            "name": "Acil Eri\u015fim \u0130stikameti"
+        },
+        "emergency/fire_hydrant": {
+            "name": "Yang\u0131n Muslu\u011fu",
+            "terms": "Yang\u0131n Muslu\u011fu"
+        },
+        "emergency/life_ring": {
+            "name": "Can Simidi"
+        },
+        "emergency/no": {
+            "name": "Acil Eri\u015fim Yok"
+        },
+        "emergency/official": {
+            "name": "Yetkililere \u00d6zel Acil Eri\u015fim"
+        },
+        "emergency/phone": {
+            "name": "Acil Durum Telefonu",
+            "terms": "Acil Durum Telefonu"
+        },
+        "emergency/private": {
+            "name": "K\u0131s\u0131tl\u0131 Acil Eri\u015fim"
+        },
+        "emergency/water_tank": {
+            "name": "Acil Su Deposu"
+        },
+        "emergency/yes": {
+            "name": "Acil Eri\u015fim"
+        },
+        "entrance": {
+            "name": "Giri\u015f/\u00c7\u0131k\u0131\u015f",
+            "terms": "Giri\u015f/\u00c7\u0131k\u0131\u015f"
+        },
+        "ford": {
+            "name": "S\u0131\u011f Ge\u00e7it, Akarsu \u00dczerinde Ge\u00e7it Yeri",
+            "terms": "Ge\u00e7it, S\u0131\u011f Yer"
+        },
+        "golf/bunker": {
+            "name": "Kum Kapan\u0131",
+            "terms": "Kum Kapan\u0131"
+        },
+        "golf/fairway": {
+            "name": "Serbest Ge\u00e7i\u015f",
+            "terms": "Serbest Ge\u00e7i\u015f"
+        },
+        "golf/green": {
+            "name": "Saha",
+            "terms": "Saha"
+        },
+        "golf/hole": {
+            "name": "Delik",
+            "terms": "Delik"
+        },
+        "golf/rough": {
+            "name": "Sert",
+            "terms": "Sert"
+        },
+        "golf/tee": {
+            "name": "Ba\u015flama Yeri",
+            "terms": "Ba\u015flama Yeri"
+        },
+        "healthcare": {
+            "name": "Sa\u011fl\u0131k Merkezi",
+            "terms": "Sa\u011fl\u0131k Merkezi"
+        },
+        "healthcare/alternative": {
+            "name": "Alternatif T\u0131p",
+            "terms": "Alternatif T\u0131p"
+        },
+        "healthcare/alternative/chiropractic": {
+            "name": "Mas\u00f6r",
+            "terms": "Masaj Uzman\u0131"
+        },
+        "healthcare/audiologist": {
+            "name": "Ses Uzman\u0131",
+            "terms": "Odyolog"
+        },
+        "healthcare/birthing_center": {
+            "name": "Do\u011fum Merkezi",
+            "terms": "Bebek Merkezi"
+        },
+        "healthcare/blood_donation": {
+            "name": "Kan Ba\u011f\u0131\u015f Merkezi",
+            "terms": "Kan Ba\u011f\u0131\u015f Merkezi"
+        },
+        "healthcare/hospice": {
+            "name": "Dar\u00fclaceze",
+            "terms": "D\u00fc\u015fk\u00fcnlerevi"
+        },
+        "healthcare/midwife": {
+            "name": "Ebe",
+            "terms": "Hem\u015fire"
+        },
+        "healthcare/occupational_therapist": {
+            "name": "Tedavi Uzman\u0131",
+            "terms": "Tedavi Sorumlusu"
+        },
+        "healthcare/optometrist": {
+            "name": "G\u00f6z Doktoru",
+            "terms": "Optometri Uzman\u0131"
+        },
+        "healthcare/physiotherapist": {
+            "name": "Fizik Tedavi Uzman\u0131",
+            "terms": "Fizyoterapist"
+        },
+        "healthcare/podiatrist": {
+            "name": "Ayak Hastal\u0131klar\u0131 Uzman\u0131",
+            "terms": "Podiyatri Uzman\u0131"
+        },
+        "healthcare/psychotherapist": {
+            "name": "Ruh Sa\u011fl\u0131klar\u0131 Uzman\u0131",
+            "terms": "Psikoterapist"
+        },
+        "healthcare/rehabilitation": {
+            "name": "Rehabilitasyon Merkezi, \u0130yile\u015ftirme Merkezi",
+            "terms": "Rehabilitasyon Tesisi"
+        },
+        "healthcare/speech_therapist": {
+            "name": "Konu\u015fma Terapisti",
+            "terms": "Konu\u015fma Uzman\u0131"
+        },
+        "highway": {
+            "name": "Yol"
+        },
+        "highway/bridleway": {
+            "name": "At Yolu",
+            "terms": "At Yolu, At Y\u00fcr\u00fcy\u00fc\u015f Yolu"
+        },
+        "highway/bus_guideway": {
+            "name": "Otob\u00fcs Tercihli Yolu"
+        },
+        "highway/bus_stop": {
+            "name": "Otob\u00fcs Dura\u011f\u0131"
+        },
+        "highway/corridor": {
+            "name": "Koridor",
+            "terms": "Koridor, Ge\u00e7it"
+        },
+        "highway/cycleway": {
+            "name": "Bisiklet Yolu",
+            "terms": "Bisiklet Yolu"
+        },
+        "highway/elevator": {
+            "name": "Asans\u00f6r",
+            "terms": "Asans\u00f6r"
+        },
+        "highway/footway": {
+            "name": "Y\u00fcr\u00fcy\u00fc\u015f Yolu",
+            "terms": "Y\u00fcr\u00fcy\u00fc\u015f Yolu, Yaya Yolu"
+        },
+        "highway/give_way": {
+            "name": "Yol Ver \u0130\u015fareti",
+            "terms": "Yol Ver \u0130\u015fareti, Yol Ver Levhas\u0131"
+        },
+        "highway/living_street": {
+            "name": "Sokak",
+            "terms": "Sokak"
+        },
+        "highway/mini_roundabout": {
+            "name": "K\u00fc\u00e7\u00fck D\u00f6nel Kav\u015fak",
+            "terms": "K\u00fc\u00e7\u00fck D\u00f6nel Kav\u015fak"
+        },
+        "highway/motorway": {
+            "name": "Otoyol",
+            "terms": "Otoyol, Otoban"
+        },
+        "highway/motorway_junction": {
+            "name": "Otoyol Sapa\u011f\u0131",
+            "terms": "Otoyol Sapa\u011f\u0131, Otoyol \u00c7\u0131k\u0131\u015f\u0131, Ara\u00e7 Yolu \u00c7\u0131k\u0131\u015f\u0131"
+        },
+        "highway/motorway_link": {
+            "name": "Otoyol Ba\u011flant\u0131 Yolu",
+            "terms": "Otoyol Ba\u011flant\u0131 Yolu, Otoyola Ba\u011flanan Yol"
+        },
+        "highway/path": {
+            "name": "Patika",
+            "terms": "Patika, Yol"
+        },
+        "highway/pedestrian_area": {
+            "name": "Yaya B\u00f6lgesi"
+        },
+        "highway/pedestrian_line": {
+            "name": "Yaya Yolu"
+        },
+        "highway/primary": {
+            "name": "Anayol",
+            "terms": "Anayol"
+        },
+        "highway/primary_link": {
+            "name": "Anayol Ba\u011flant\u0131 Yolu",
+            "terms": "Anayol Ba\u011flant\u0131 Yolu, Anayola Ba\u011flanan Yol"
+        },
+        "highway/raceway": {
+            "name": "Ara\u00e7 Yar\u0131\u015f Yolu",
+            "terms": "Ara\u00e7 Yar\u0131\u015f Yolu"
+        },
+        "highway/residential": {
+            "name": "Yerle\u015fim Yeri Yolu",
+            "terms": "Yerle\u015fim Yeri Yolu, Mahalle Aras\u0131 Yol"
+        },
+        "highway/rest_area": {
+            "name": "Dinlenme Alan\u0131",
+            "terms": "Dinlenme Alan\u0131"
+        },
+        "highway/road": {
+            "name": "Bilinmeyen Yol",
+            "terms": "Bilinmeyen Yol"
+        },
+        "highway/secondary": {
+            "name": "Yol",
+            "terms": "Yol, \u0130l\u00e7eleri Birbirine Ba\u011flayan Yol"
+        },
+        "highway/secondary_link": {
+            "name": "\u0130kincil Ba\u011flant\u0131 Yolu",
+            "terms": "\u0130kincil Ba\u011flant\u0131 Yolu"
+        },
+        "highway/service": {
+            "name": "Servis Yolu",
+            "terms": "Servis Yolu"
+        },
+        "highway/service/alley": {
+            "name": "Ara Sokak",
+            "terms": "Ara Sokak, Dar Yol"
+        },
+        "highway/service/drive-through": {
+            "name": "Arabaya Servis Yolu",
+            "terms": "Arabaya Servis Yolu"
+        },
+        "highway/service/driveway": {
+            "name": "\u00d6zel Yol",
+            "terms": "\u00d6zel Yol"
+        },
+        "highway/service/emergency_access": {
+            "name": "Acil Eri\u015fim",
+            "terms": "Acil Eri\u015fim"
+        },
+        "highway/service/parking_aisle": {
+            "name": "Park Yolu",
+            "terms": "Park Yolu, Park Yeri, Park Koridoru"
+        },
+        "highway/services": {
+            "name": "Servis Alan\u0131",
+            "terms": "Servis Alan\u0131, Tamir Alan\u0131"
+        },
+        "highway/speed_camera": {
+            "name": "H\u0131z Kontrol Kameras\u0131",
+            "terms": "H\u0131z Kontrol Kameras\u0131, Radar Kameras\u0131"
+        },
+        "highway/steps": {
+            "name": "Merdiven",
+            "terms": "Merdiven, Basamaklar"
+        },
+        "highway/stop": {
+            "name": "Dur \u0130\u015fareti",
+            "terms": "Dur \u0130\u015fareti, Dur Levhas\u0131"
+        },
+        "highway/street_lamp": {
+            "name": "Sokak Lambas\u0131",
+            "terms": "Sokak Lambas\u0131, Sokak I\u015f\u0131\u011f\u0131"
+        },
+        "highway/tertiary": {
+            "name": "K\u00f6y Yolu",
+            "terms": "K\u00f6y Yolu"
+        },
+        "highway/tertiary_link": {
+            "name": "K\u00f6y Ba\u011flant\u0131 Yolu",
+            "terms": "K\u00f6y Ba\u011flant\u0131 Yolu, K\u00f6y Yoluna Ba\u011flanan Yol"
+        },
+        "highway/track": {
+            "name": "Tar\u0131m Yolu",
+            "terms": "Tar\u0131m Yolu, Bak\u0131ms\u0131z Yol, Bak\u0131ms\u0131z Patika, Bak\u0131ms\u0131z Ara\u00e7 Yolu"
+        },
+        "highway/traffic_mirror": {
+            "name": "Trafik Aynas\u0131",
+            "terms": "Trafik Aynas\u0131"
+        },
+        "highway/traffic_signals": {
+            "name": "Trafik \u0130\u015faretleri",
+            "terms": "Trafik \u0130\u015faretleri, Trafik Levhalar\u0131"
+        },
+        "highway/trunk": {
+            "name": "Duble Yol",
+            "terms": "Duble Yol"
+        },
+        "highway/trunk_link": {
+            "name": "Duble Yol Ba\u011flant\u0131 Yolu",
+            "terms": "Duble Yol Ba\u011flant\u0131 Yolu, Duble Yola Ba\u011flant\u0131 Yolu, Duble Yola Ba\u011flanan Yol"
+        },
+        "highway/turning_circle": {
+            "name": "D\u00f6n\u00fc\u015f Alan\u0131",
+            "terms": "D\u00f6n\u00fc\u015f Alan\u0131"
+        },
+        "highway/turning_loop": {
+            "name": "D\u00f6n\u00fc\u015f Yeri",
+            "terms": "D\u00f6n\u00fc\u015f Yeri, D\u00f6n\u00fc\u015f Adas\u0131"
+        },
+        "highway/unclassified": {
+            "name": "Tali Yol",
+            "terms": "Tali Yol, Bilinmeyen Yol, \u00d6nemsiz Yol"
+        },
+        "historic": {
+            "name": "Tarihi Yer",
+            "terms": "Tarihi Yer"
+        },
+        "historic/archaeological_site": {
+            "name": "Arkeolojik Alan",
+            "terms": "Arkeolojik Alan"
+        },
+        "historic/boundary_stone": {
+            "name": "S\u0131n\u0131r \u0130\u015fareti",
+            "terms": "S\u0131n\u0131r \u0130\u015fareti, S\u0131n\u0131r Ta\u015f\u0131"
+        },
+        "historic/castle": {
+            "name": "Kale",
+            "terms": "Kale"
+        },
+        "historic/memorial": {
+            "name": "An\u0131t",
+            "terms": "An\u0131t"
+        },
+        "historic/monument": {
+            "name": "Abide",
+            "terms": "Abide"
+        },
+        "historic/ruins": {
+            "name": "Harabeler",
+            "terms": "Harabeler"
+        },
+        "historic/tomb": {
+            "name": "Mezar",
+            "terms": "T\u00fcrbe, Mezar, Kabir"
+        },
+        "historic/wayside_cross": {
+            "name": "\u00c7arm\u0131h",
+            "terms": "\u00c7arm\u0131h"
+        },
+        "historic/wayside_shrine": {
+            "name": "\u00c7arm\u0131h Ta\u015f\u0131",
+            "terms": "\u00c7arm\u0131h Ta\u015f\u0131"
+        },
+        "junction": {
+            "name": "Kav\u015fak",
+            "terms": "Kav\u015fak, Yol Ayr\u0131m\u0131"
+        },
+        "landuse": {
+            "name": "Arazi Kullan\u0131m\u0131"
+        },
+        "landuse/allotments": {
+            "name": "Hobi Bah\u00e7esi",
+            "terms": "Hobi Bah\u00e7esi"
+        },
+        "landuse/aquaculture": {
+            "name": "Su K\u00fclt\u00fcr\u00fc",
+            "terms": "Su K\u00fclt\u00fcr\u00fc"
+        },
+        "landuse/basin": {
+            "name": "Havza"
+        },
+        "landuse/cemetery": {
+            "name": "Mezarl\u0131k",
+            "terms": "Mezarl\u0131k"
+        },
+        "landuse/churchyard": {
+            "name": "Kilise Bah\u00e7esi",
+            "terms": "Kilise Bah\u00e7esi"
+        },
+        "landuse/commercial": {
+            "name": "Ticari Alan",
+            "terms": "Ticari Alan"
+        },
+        "landuse/construction": {
+            "name": "\u0130n\u015faat Alan\u0131",
+            "terms": "\u0130n\u015faat Alan\u0131"
+        },
+        "landuse/farm": {
+            "name": "Tar\u0131m Alan\u0131"
+        },
+        "landuse/farmland": {
+            "name": "Tar\u0131m Alan\u0131",
+            "terms": "Tar\u0131m Alan\u0131"
+        },
+        "landuse/farmyard": {
+            "name": "\u00c7iftlik",
+            "terms": "\u00c7iftlik"
+        },
+        "landuse/grass": {
+            "name": "\u00c7imenlik",
+            "terms": "\u00c7imenlik, Ye\u015fil Alan"
+        },
+        "landuse/greenfield": {
+            "name": "Ye\u015fil alan"
+        },
+        "landuse/greenhouse_horticulture": {
+            "name": "Sera \u00e7i\u00e7e\u00e7ili\u011fi"
+        },
+        "landuse/harbour": {
+            "name": "Liman",
+            "terms": "Liman"
+        },
+        "landuse/industrial": {
+            "name": "Sanayi B\u00f6lgesi",
+            "terms": "Sanayi B\u00f6lgesi, Sanayi Alan\u0131"
+        },
+        "landuse/industrial/scrap_yard": {
+            "name": "Hurdal\u0131k"
+        },
+        "landuse/industrial/slaughterhouse": {
+            "name": "Kesimevi"
+        },
+        "landuse/landfill": {
+            "name": "\u00c7\u00f6p Sahas\u0131",
+            "terms": "\u00c7\u00f6p Sahas\u0131, \u00c7\u00f6pl\u00fck"
+        },
+        "landuse/meadow": {
+            "name": "\u00c7ay\u0131r",
+            "terms": "\u00c7ay\u0131r, Mera"
+        },
+        "landuse/military": {
+            "name": "Askeri B\u00f6lge",
+            "terms": "Askeri B\u00f6lge, Askeri Alan"
+        },
+        "landuse/military/airfield": {
+            "name": "Askeri Hava Meydan\u0131",
+            "terms": "Askeri Hava Meydan\u0131"
+        },
+        "landuse/military/barracks": {
+            "name": "K\u0131\u015fla",
+            "terms": "K\u0131\u015fla, Tesisler"
+        },
+        "landuse/military/bunker": {
+            "name": "S\u0131\u011f\u0131nak",
+            "terms": "S\u0131\u011f\u0131nak"
+        },
+        "landuse/military/checkpoint": {
+            "name": "Kontrol Noktas\u0131",
+            "terms": "Kontrol Noktas\u0131"
+        },
+        "landuse/military/danger_area": {
+            "name": "Tehlikeli B\u00f6lge",
+            "terms": "Tehlikeli B\u00f6lge"
+        },
+        "landuse/military/naval_base": {
+            "name": "Deniz \u00dcss\u00fc",
+            "terms": "Deniz \u00dcss\u00fc"
+        },
+        "landuse/military/nuclear_explosion_site": {
+            "name": "N\u00fckleer Patlama Sahas\u0131",
+            "terms": "N\u00fckleer Patlama Sahas\u0131"
+        },
+        "landuse/military/obstacle_course": {
+            "name": "Engelli Antreman Sahas\u0131",
+            "terms": "Engelli Antreman Sahas\u0131"
+        },
+        "landuse/military/office": {
+            "name": "Askeri B\u00fcro",
+            "terms": "Askeri B\u00fcro, Askeri Ofsi"
+        },
+        "landuse/military/range": {
+            "name": "At\u0131\u015f Sahas\u0131",
+            "terms": "At\u0131\u015f Sahas\u0131, Poligon"
+        },
+        "landuse/military/training_area": {
+            "name": "Antreman Sahas\u0131",
+            "terms": "Antreman Sahas\u0131"
+        },
+        "landuse/orchard": {
+            "name": "Ba\u011f",
+            "terms": "Ba\u011f, Bah\u00e7e, Bostan, Meyve Bah\u00e7esi"
+        },
+        "landuse/plant_nursery": {
+            "name": "\u00dcretim \u00c7iftli\u011fi",
+            "terms": "\u00dcretim \u00c7iftli\u011fi, Bitki \u00dcretim \u00c7iftli\u011fi"
+        },
+        "landuse/quarry": {
+            "name": "Ta\u015foca\u011f\u0131",
+            "terms": "Ta\u015foca\u011f\u0131, Ocak"
+        },
+        "landuse/railway": {
+            "name": "Demiryolu Koridoru",
+            "terms": "Demiryolu Koridoru, Demiryolu Alan\u0131"
+        },
+        "landuse/recreation_ground": {
+            "name": "Antreman Sahas\u0131",
+            "terms": "Antreman Sahas\u0131"
+        },
+        "landuse/religious": {
+            "name": "Dinsel Alan"
+        },
+        "landuse/residential": {
+            "name": "Yerle\u015fim Alan\u0131",
+            "terms": "Yerle\u015fim Alan\u0131"
+        },
+        "landuse/retail": {
+            "name": "\u00c7ar\u015f\u0131",
+            "terms": "\u00c7ar\u015f\u0131, Esnaf B\u00f6lgesi"
+        },
+        "landuse/vineyard": {
+            "name": "\u00dcz\u00fcm Ba\u011f\u0131",
+            "terms": "\u00dcz\u00fcm Ba\u011f\u0131, Ba\u011f"
+        },
+        "leisure": {
+            "name": "E\u011flence"
+        },
+        "leisure/adult_gaming_centre": {
+            "name": "Yeti\u015fkin Oyun Merkezi",
+            "terms": "Yeti\u015fkin Oyun Merkezi"
+        },
+        "leisure/amusement_arcade": {
+            "name": "Oyun Salonu"
+        },
+        "leisure/bird_hide": {
+            "name": "Vah\u015fi Ya\u015fam G\u00f6zetleme Kulesi",
+            "terms": "Vah\u015fi Ya\u015fam G\u00f6zetleme Kulesi"
+        },
+        "leisure/bowling_alley": {
+            "name": "Bowling Salonu",
+            "terms": "Bowling Salonu"
+        },
+        "leisure/common": {
+            "name": "Piknik Alan\u0131",
+            "terms": "Piknik Alan\u0131, Ortak Kullan\u0131m Alan\u0131"
+        },
+        "leisure/dance": {
+            "name": "Dans Salonu",
+            "terms": "Dans Salonu"
+        },
+        "leisure/dog_park": {
+            "name": "K\u00f6pek Park\u0131",
+            "terms": "K\u00f6pek Park\u0131"
+        },
+        "leisure/firepit": {
+            "name": "Kamp Ate\u015fi",
+            "terms": "Kamp Ate\u015fi"
+        },
+        "leisure/fitness_centre": {
+            "name": "Spor Salonu",
+            "terms": "Spor Salonu"
+        },
+        "leisure/fitness_centre/yoga": {
+            "name": "Yoga St\u00fcdyosu",
+            "terms": "Yoga St\u00fcdyosu"
+        },
+        "leisure/fitness_station": {
+            "name": "A\u00e7\u0131khava Spor Yeri",
+            "terms": "A\u00e7\u0131khava Spor Yeri"
+        },
+        "leisure/garden": {
+            "name": "Bah\u00e7e",
+            "terms": "Bah\u00e7e, Bostan, Park"
+        },
+        "leisure/golf_course": {
+            "name": "Golf Sahas\u0131",
+            "terms": "Golf Sahas\u0131"
+        },
+        "leisure/horse_riding": {
+            "name": "At Binicilik Spor Kul\u00fcb\u00fc",
+            "terms": "At Binicilik Spor Kul\u00fcb\u00fc, Binicilik Spor Kul\u00fcb\u00fc, At Binme Yeri"
+        },
+        "leisure/ice_rink": {
+            "name": "Buz Pateni",
+            "terms": "Buz Pateni"
+        },
+        "leisure/marina": {
+            "name": "Yat Liman\u0131",
+            "terms": "Marina"
+        },
+        "leisure/miniature_golf": {
+            "name": "Mini Golf",
+            "terms": "Mini Golf"
+        },
+        "leisure/nature_reserve": {
+            "name": "Do\u011fal Koruma Alan\u0131",
+            "terms": "Do\u011fal Koruma Alan\u0131, Tabiat Park\u0131"
+        },
+        "leisure/park": {
+            "name": "Park",
+            "terms": "Park"
+        },
+        "leisure/picnic_table": {
+            "name": "Piknik Masas\u0131",
+            "terms": "Piknik Masas\u0131"
+        },
+        "leisure/pitch": {
+            "name": "Spor Sahas\u0131",
+            "terms": "Spor Sahas\u0131, Saha"
+        },
+        "leisure/pitch/american_football": {
+            "name": "Amerikan Futbol Sahas\u0131",
+            "terms": "Amerikan Futbol Sahas\u0131"
+        },
+        "leisure/pitch/basketball": {
+            "name": "Basketbol Sahas\u0131",
+            "terms": "Basketbol Sahas\u0131"
+        },
+        "leisure/pitch/beachvolleyball": {
+            "name": "Sahil Voleybolu Sahas\u0131",
+            "terms": "Sahil Voleybolu Sahas\u0131"
+        },
+        "leisure/pitch/bowls": {
+            "name": "A\u00e7\u0131khava Top Oyun Sahas\u0131",
+            "terms": "A\u00e7\u0131khava Top Oyun Sahas\u0131"
+        },
+        "leisure/pitch/cricket": {
+            "name": "Kriket Sahas\u0131",
+            "terms": "Kriket Sahas\u0131"
+        },
+        "leisure/pitch/equestrian": {
+            "name": "Binicilik Alan\u0131",
+            "terms": "At Binme Alan\u0131"
+        },
+        "leisure/pitch/rugby_league": {
+            "name": "Ragbi Lig Sahas\u0131",
+            "terms": "Ragbi Lig Sahas\u0131"
+        },
+        "leisure/pitch/rugby_union": {
+            "name": "Ragbi Sahas\u0131",
+            "terms": "Ragbi Sahas\u0131"
+        },
+        "leisure/pitch/skateboard": {
+            "name": "Kaykay Park\u0131",
+            "terms": "Kaykay Park\u0131"
+        },
+        "leisure/pitch/soccer": {
+            "name": "Futbol Sahas\u0131",
+            "terms": "Futbol Sahas\u0131"
+        },
+        "leisure/pitch/table_tennis": {
+            "name": "Masa Tennis",
+            "terms": "Masa Tenisi"
+        },
+        "leisure/pitch/tennis": {
+            "name": "Tenis Sahas\u0131",
+            "terms": "Tenis Sahas\u0131"
+        },
+        "leisure/pitch/volleyball": {
+            "name": "Voleybol Sahas\u0131",
+            "terms": "Voleybol Sahas\u0131"
+        },
+        "leisure/playground": {
+            "name": "\u00c7ocuk Park\u0131",
+            "terms": "\u00c7ocuk Park\u0131, Oyun Alan\u0131"
+        },
+        "leisure/resort": {
+            "name": "Tatil Yeri",
+            "terms": "Tatil Yeri"
+        },
+        "leisure/sauna": {
+            "name": "Sauna"
+        },
+        "leisure/slipway": {
+            "name": "Gemi K\u0131za\u011f\u0131",
+            "terms": "Gemi K\u0131za\u011f\u0131"
+        },
+        "leisure/sports_centre": {
+            "name": "Spor Merkezi",
+            "terms": "Spor Merkezi"
+        },
+        "leisure/sports_centre/swimming": {
+            "name": "Y\u00fczme Havuzu Merkezi",
+            "terms": "Y\u00fczme Havuzu Merkezi"
+        },
+        "leisure/stadium": {
+            "name": "Stadyum",
+            "terms": "Stadyum"
+        },
+        "leisure/swimming_pool": {
+            "name": "Y\u00fczme Havuzu",
+            "terms": "Y\u00fczme Havuzu"
+        },
+        "leisure/track": {
+            "name": "Yar\u0131\u015f Pisti (motor spor hari\u00e7)",
+            "terms": "Yar\u0131\u015f Yolu"
+        },
+        "leisure/water_park": {
+            "name": "Su Park\u0131",
+            "terms": "Su Park\u0131"
+        },
+        "line": {
+            "name": "\u00c7izgi",
+            "terms": "\u00c7izgi"
+        },
+        "man_made": {
+            "name": "Yapay"
+        },
+        "man_made/adit": {
+            "name": "T\u00fcnel Giri\u015fi",
+            "terms": "T\u00fcnel Giri\u015fi, Maden Giri\u015fi"
+        },
+        "man_made/breakwater": {
+            "name": "Dalgak\u0131ran",
+            "terms": "Dalgak\u0131ran"
+        },
+        "man_made/bridge": {
+            "name": "K\u00f6pr\u00fc",
+            "terms": "K\u00f6pr\u00fc"
+        },
+        "man_made/chimney": {
+            "name": "Baca",
+            "terms": "Baca"
+        },
+        "man_made/crane": {
+            "name": "Vin\u00e7"
+        },
+        "man_made/cutline": {
+            "name": "Yang\u0131n Durduma Hatt\u0131",
+            "terms": "Yang\u0131n Durduma Hatt\u0131"
+        },
+        "man_made/embankment": {
+            "name": "Toprak Dolgu"
+        },
+        "man_made/flagpole": {
+            "name": "Bayrak Dire\u011fi",
+            "terms": "Bayrak Dire\u011fi"
+        },
+        "man_made/gasometer": {
+            "name": "Gaz\u00f6l\u00e7er",
+            "terms": "Gaz\u00f6l\u00e7er"
+        },
+        "man_made/groyne": {
+            "name": "K\u0131y\u0131 Koruyucu Direk \u015eeridi",
+            "terms": "K\u0131y\u0131 Koruyucu Direk \u015eeridi"
+        },
+        "man_made/lighthouse": {
+            "name": "Deniz Feneri",
+            "terms": "Deniz Feneri, Fener"
+        },
+        "man_made/mast": {
+            "name": "Direk",
+            "terms": "Baz \u0130stasyonu"
+        },
+        "man_made/petroleum_well": {
+            "name": "Petrol Kuyusu",
+            "terms": "Petrol Kuyusu"
+        },
+        "man_made/pier": {
+            "name": "R\u0131ht\u0131m",
+            "terms": "R\u0131ht\u0131m"
+        },
+        "man_made/pipeline": {
+            "name": "Boru Hatt\u0131",
+            "terms": "Boru Hatt\u0131"
+        },
+        "man_made/pumping_station": {
+            "name": "Pompa \u0130stasyonu",
+            "terms": "Pompa \u0130stasyonu"
+        },
+        "man_made/silo": {
+            "name": "Silo",
+            "terms": "Silo, Depo"
+        },
+        "man_made/storage_tank": {
+            "name": "Depo",
+            "terms": "Depo"
+        },
+        "man_made/surveillance": {
+            "name": "G\u00fcvenlik Dire\u011fi",
+            "terms": "G\u00fcvenlik Dire\u011fi"
+        },
+        "man_made/survey_point": {
+            "name": "\u00d6l\u00e7\u00fcm Kontrol Noktas\u0131",
+            "terms": "\u00d6l\u00e7\u00fcm Kontrol Noktas\u0131"
+        },
+        "man_made/tower": {
+            "name": "Kule",
+            "terms": "Kule"
+        },
+        "man_made/wastewater_plant": {
+            "name": "Su Ar\u0131tma Tesisleri",
+            "terms": "Su Ar\u0131tma Tesisleri, At\u0131ksu Santrali"
+        },
+        "man_made/water_tower": {
+            "name": "Su Kulesi",
+            "terms": "Su Kulesi"
+        },
+        "man_made/water_well": {
+            "name": "Su Kuyusu",
+            "terms": "Su Kuyusu"
+        },
+        "man_made/water_works": {
+            "name": "Su \u015eebekesi",
+            "terms": "Su \u015eebekesi, Su Da\u011f\u0131t\u0131m \u0130stasyonu, \u0130\u00e7me Suyu Tesisleri"
+        },
+        "man_made/watermill": {
+            "name": "Su De\u011firmeni",
+            "terms": "Su De\u011firmeni"
+        },
+        "man_made/windmill": {
+            "name": "Yel De\u011firmeni",
+            "terms": "Yel De\u011firmeni"
+        },
+        "man_made/works": {
+            "name": "Fabrika",
+            "terms": "Fabrika, Sanayi"
+        },
+        "manhole": {
+            "name": "Rogar"
+        },
+        "natural": {
+            "name": "Do\u011fal"
+        },
+        "natural/bare_rock": {
+            "name": "Kayal\u0131k B\u00f6lge",
+            "terms": "Kayal\u0131k B\u00f6lge, Kayalar, Kaya Dizisi"
+        },
+        "natural/bay": {
+            "name": "Koy",
+            "terms": "Koy, K\u00f6rfez, K\u00fc\u00e7\u00fck K\u00f6rfez"
+        },
+        "natural/beach": {
+            "name": "Sahil",
+            "terms": "Sahil, Plaj"
+        },
+        "natural/cave_entrance": {
+            "name": "Ma\u011fara Giri\u015fi",
+            "terms": "Ma\u011fara Giri\u015fi"
+        },
+        "natural/cliff": {
+            "name": "U\u00e7urum",
+            "terms": "U\u00e7urum"
+        },
+        "natural/coastline": {
+            "name": "K\u0131y\u0131 \u015eeridi",
+            "terms": "K\u0131y\u0131 \u015eeridi, Sahil Boyu"
+        },
+        "natural/fell": {
+            "name": "K\u0131r",
+            "terms": "K\u0131r, K\u0131rl\u0131k, Otlak"
+        },
+        "natural/glacier": {
+            "name": "Buzul",
+            "terms": "Buzul, Da\u011f Buzulu"
+        },
+        "natural/grassland": {
+            "name": "Otlak",
+            "terms": "Otlak, \u00c7ay\u0131r"
+        },
+        "natural/heath": {
+            "name": "\u00c7al\u0131l\u0131k",
+            "terms": "\u00c7al\u0131l\u0131k, Fundal\u0131k"
+        },
+        "natural/peak": {
+            "name": "Doruk",
+            "terms": "Doruk, Zirve, Tepe"
+        },
+        "natural/ridge": {
+            "name": "Y\u00fckselti",
+            "terms": "Y\u00fckselti, Bay\u0131r, S\u0131rt, Tepe"
+        },
+        "natural/saddle": {
+            "name": "Boyun",
+            "terms": "Boyun, Y\u00fckseltiler Aras\u0131ndaki Vadi"
+        },
+        "natural/sand": {
+            "name": "Kum",
+            "terms": "Kum"
+        },
+        "natural/scree": {
+            "name": "Da\u011f Ete\u011fi",
+            "terms": "Da\u011f Ete\u011fi, Kay\u015fat"
+        },
+        "natural/scrub": {
+            "name": "\u00c7al\u0131l\u0131k",
+            "terms": "\u00c7al\u0131l\u0131k"
+        },
+        "natural/spring": {
+            "name": "Memba",
+            "terms": "Memba, Kaynak"
+        },
+        "natural/tree": {
+            "name": "A\u011fa\u00e7",
+            "terms": "A\u011fa\u00e7"
+        },
+        "natural/volcano": {
+            "name": "Yanarda\u011f",
+            "terms": "Yanarda\u011f, Volkan"
+        },
+        "natural/water": {
+            "name": "Su",
+            "terms": "Su, Su Birikintisi"
+        },
+        "natural/water/lake": {
+            "name": "G\u00f6l",
+            "terms": "G\u00f6l"
+        },
+        "natural/water/pond": {
+            "name": "G\u00f6let",
+            "terms": "G\u00f6let, Su Birikintisi"
+        },
+        "natural/water/reservoir": {
+            "name": "Su Deposu",
+            "terms": "Su Deposu, Su Rezervi"
+        },
+        "natural/wetland": {
+            "name": "Sulak Alan",
+            "terms": "Sulak Alan, Sulak Arazi"
+        },
+        "natural/wood": {
+            "name": "Ormanl\u0131k Alan",
+            "terms": "Ormanl\u0131k Alan, Orman"
+        },
+        "noexit/yes": {
+            "name": "\u00c7\u0131k\u0131\u015f Yok",
+            "terms": "\u00c7\u0131k\u0131\u015f Yok"
+        },
+        "office": {
+            "name": "Ofis",
+            "terms": "B\u00fcro"
+        },
+        "office/accountant": {
+            "name": "Muhasebeci",
+            "terms": "Muhasebe Ofisi"
+        },
+        "office/administrative": {
+            "name": "\u0130dari Ofis"
+        },
+        "office/adoption_agency": {
+            "name": "Evlat Edinme Ajans\u0131",
+            "terms": "Evlat Edinme Ofisi"
+        },
+        "office/advertising_agency": {
+            "name": "Reklam Ajans\u0131",
+            "terms": "Reklam Ofisi"
+        },
+        "office/architect": {
+            "name": "Mimarl\u0131k Ofisi",
+            "terms": "Mimar"
+        },
+        "office/association": {
+            "name": "Yard\u0131m Kurulu\u015fu",
+            "terms": "Yard\u0131m Kurulu\u015fu Merkezi"
+        },
+        "office/charity": {
+            "name": "Hay\u0131r Kurumu",
+            "terms": "Hay\u0131r Kurumu \u015eubesi"
+        },
+        "office/company": {
+            "name": "\u015eirket",
+            "terms": "\u015eirket Ofisi, \u015eirket \u015eubesi"
+        },
+        "office/coworking": {
+            "name": "Ortak \u00c7al\u0131\u015fma Alan\u0131",
+            "terms": "Ortak \u00c7al\u0131\u015fma Yeri"
+        },
+        "office/educational_institution": {
+            "name": "E\u011fitim Kurumu",
+            "terms": "Okul"
+        },
+        "office/employment_agency": {
+            "name": "\u0130\u015f ve \u0130\u015f\u00e7i Bulma Kurumu",
+            "terms": "\u0130\u015f ve \u0130\u015f\u00e7i Bulma \u015eubesi"
+        },
+        "office/energy_supplier": {
+            "name": "Enerji Kurumu \u015eubesi",
+            "terms": "Enerji Kurumu Ofisi"
+        },
+        "office/estate_agent": {
+            "name": "Gayrimenkul Ofisi",
+            "terms": "Emlak Ofisi"
+        },
+        "office/financial": {
+            "name": "Finans Ofisi",
+            "terms": "Finans \u015eubesi"
+        },
+        "office/forestry": {
+            "name": "Ormanc\u0131l\u0131k \u015eubesi",
+            "terms": "Ormanc\u0131l\u0131k Merkezi"
+        },
+        "office/foundation": {
+            "name": "Vak\u0131f",
+            "terms": "Vak\u0131f \u015eubesi"
+        },
+        "office/government": {
+            "name": "Devlet Dairesi",
+            "terms": "Devlet Kurumu"
+        },
+        "office/government/register_office": {
+            "name": "N\u00fcfus Dairesi",
+            "terms": "N\u00fcfus \u0130daresi"
+        },
+        "office/government/tax": {
+            "name": "Vergi Dairesi",
+            "terms": "Vergi \u0130daresi"
+        },
+        "office/guide": {
+            "name": "Tur Rehberi",
+            "terms": "Tur Rehber Merkezi"
+        },
+        "office/insurance": {
+            "name": "Sigorta Acentesi",
+            "terms": "Sigorta \u015eirket \u015eubesi"
+        },
+        "office/it": {
+            "name": "Bili\u015fim Teknoloji Ofisi",
+            "terms": "Bili\u015fim Teknoloji Merkezi"
+        },
+        "office/lawyer": {
+            "name": "Hukuk B\u00fcrosu",
+            "terms": "Hukuk \u015eirketi \u015eubesi"
+        },
+        "office/lawyer/notary": {
+            "name": "Noter"
+        },
+        "office/moving_company": {
+            "name": "Ta\u015f\u0131ma \u015eirketi Ofisi",
+            "terms": "Nakliye \u015eubesi"
+        },
+        "office/newspaper": {
+            "name": "Gazete \u015eubesi",
+            "terms": "Gazete Ofisi"
+        },
+        "office/ngo": {
+            "name": "Sivil Toplum \u00d6rg\u00fct\u00fc",
+            "terms": "Sivil Toplum Kurulu\u015fu"
+        },
+        "office/notary": {
+            "name": "Noter",
+            "terms": "Noter \u015eubesi"
+        },
+        "office/physician": {
+            "name": "Hekim"
+        },
+        "office/political_party": {
+            "name": "Siyasi Parti",
+            "terms": "Parti \u015eubesi"
+        },
+        "office/private_investigator": {
+            "name": "Dedektif",
+            "terms": "Dedektif \u015eubesi"
+        },
+        "office/quango": {
+            "name": "Yar\u0131 \u00d6zel Sivil Toplum \u00d6rg\u00fct\u00fc",
+            "terms": "Yar\u0131 \u00d6zel Sivil Toplum Kurulu\u015fu"
+        },
+        "office/research": {
+            "name": "Ara\u015ft\u0131rma Kurumu",
+            "terms": "Ara\u015ft\u0131rma \u015eubesi"
+        },
+        "office/surveyor": {
+            "name": "Harita M\u00fchendisli\u011fi",
+            "terms": "Harita Et\u00fct M\u00fchendisli\u011fi"
+        },
+        "office/tax_advisor": {
+            "name": "Vergi Dan\u0131\u015fmanl\u0131\u011f\u0131",
+            "terms": "Vergi Dan\u0131\u015fmanl\u0131\u011f\u0131 \u015eubesi"
+        },
+        "office/telecommunication": {
+            "name": "Haberle\u015fme B\u00fcrosu",
+            "terms": "Telekom\u00fcnikasyon B\u00fcrosu, Telekom B\u00fcrosu"
+        },
+        "office/therapist": {
+            "name": "Terapist",
+            "terms": "Terapi Uzman\u0131"
+        },
+        "office/travel_agent": {
+            "name": "Seyahat Acentesi"
+        },
+        "office/water_utility": {
+            "name": "Su M\u00fcd\u00fcrl\u00fc\u011f\u00fc",
+            "terms": "Su ve Kanalizasyon M\u00fcd\u00fcrl\u00fc\u011f\u00fc"
+        },
+        "place": {
+            "name": "Yer"
+        },
+        "place/city": {
+            "name": "\u015eehir",
+            "terms": "\u015eehir"
+        },
+        "place/farm": {
+            "name": "\u00c7iftlik"
+        },
+        "place/hamlet": {
+            "name": "Mezra",
+            "terms": "Mezra, K\u00fc\u00e7\u00fck K\u00f6y"
+        },
+        "place/island": {
+            "name": "Ada",
+            "terms": "Ada"
+        },
+        "place/isolated_dwelling": {
+            "name": "Mesken",
+            "terms": "Mesken"
+        },
+        "place/locality": {
+            "name": "Mevkii",
+            "terms": "Mevkii, Yer"
+        },
+        "place/neighbourhood": {
+            "name": "Mahalle",
+            "terms": "Mahalle"
+        },
+        "place/quarter": {
+            "name": "Semt",
+            "terms": "Mahalle, Muhit"
+        },
+        "place/square": {
+            "name": "Meydan",
+            "terms": "Meydan"
+        },
+        "place/suburb": {
+            "name": "Mahalle",
+            "terms": "Semt"
+        },
+        "place/town": {
+            "name": "Kasaba",
+            "terms": "Kasaba, \u0130l\u00e7e"
+        },
+        "place/village": {
+            "name": "K\u00f6y",
+            "terms": "K\u00f6y"
+        },
+        "point": {
+            "name": "Nokta",
+            "terms": "Nokta, Konum"
+        },
+        "power": {
+            "name": "G\u00fc\u00e7"
+        },
+        "power/generator": {
+            "name": "Jenerator",
+            "terms": "Jenerator, \u00dcretici"
+        },
+        "power/line": {
+            "name": "Y\u00fcksek Elektrik Hatt\u0131",
+            "terms": "Y\u00fcksek Elektrik Hatt\u0131, Y\u00fcksek Enerji Hatt\u0131"
+        },
+        "power/minor_line": {
+            "name": "Elektrik Hatt\u0131",
+            "terms": "Elektrik Hatt\u0131, Enerji Hatt\u0131"
+        },
+        "power/plant": {
+            "name": "Elektrik \u0130stasyonu",
+            "terms": "Elektrik \u0130stasyonu"
+        },
+        "power/pole": {
+            "name": "Elektrik Dire\u011fi",
+            "terms": "Elektrik Dire\u011fi"
+        },
+        "power/sub_station": {
+            "name": "Ara \u0130stasyon"
+        },
+        "power/substation": {
+            "name": "Trafo",
+            "terms": "Trafo"
+        },
+        "power/tower": {
+            "name": "Y\u00fcksek Gerilim Dire\u011fi",
+            "terms": "Y\u00fcksek Gerilim Dire\u011fi"
+        },
+        "power/transformer": {
+            "name": "Transformat\u00f6r",
+            "terms": "Transformat\u00f6r"
+        },
+        "public_transport/platform": {
+            "name": "Toplu Ta\u015f\u0131ma Dura\u011f\u0131",
+            "terms": "Toplu Ta\u015f\u0131ma Yolcu \u0130ndirme/Bindirme Platformu"
+        },
+        "public_transport/platform_aerialway": {
+            "name": "Havayolu Dura\u011f\u0131",
+            "terms": "Havayolu ile Ta\u015f\u0131ma Yolcu \u0130ndirme/Bindirme Platformu"
+        },
+        "public_transport/platform_bus": {
+            "name": "Otob\u00fcs Dura\u011f\u0131",
+            "terms": "Durak, Otob\u00fcs Yolcu \u0130ndirme/Bindirme Platformu"
+        },
+        "public_transport/platform_ferry": {
+            "name": "Feribot Terminali",
+            "terms": "Feribot Yolcu \u0130ndirme/Bindirme Platformu"
+        },
+        "public_transport/platform_light_rail": {
+            "name": "Rayb\u00fcs Dura\u011f\u0131",
+            "terms": "Rayb\u00fcs, Hafif Rayl\u0131 Ta\u015f\u0131t Yolcu \u0130ndirme/Bindirme Platformu"
+        },
+        "public_transport/platform_monorail": {
+            "name": "Tek Rayl\u0131 Tren \u0130stasyonu",
+            "terms": "Tek Rayl\u0131 Tren Yolcu \u0130ndirme/Bindirme Platformu"
+        },
+        "public_transport/platform_subway": {
+            "name": "Metro Dura\u011f\u0131",
+            "terms": "Metro Yolcu \u0130ndirme/Bindirme Platformu"
+        },
+        "public_transport/platform_train": {
+            "name": "Tren Dura\u011f\u0131",
+            "terms": "Tren Yolcu \u0130ndirme/Bindirme Platformu"
+        },
+        "public_transport/platform_tram": {
+            "name": "Tramvay Dura\u011f\u0131",
+            "terms": "Tramvay Yolcu \u0130ndirme/Bindirme Platformu"
+        },
+        "public_transport/platform_trolleybus": {
+            "name": "Troleyb\u00fcs Dura\u011f\u0131",
+            "terms": "Troleyb\u00fcs, Rays\u0131z Tramvay Yolcu \u0130ndirme/Bindirme Platformu"
+        },
+        "public_transport/station": {
+            "name": "Toplu Ta\u015f\u0131ma Terminali",
+            "terms": "Toplu Ta\u015f\u0131ma \u0130stasyonu"
+        },
+        "public_transport/station_aerialway": {
+            "name": "Havayolu \u0130stasyonu",
+            "terms": "Havayolu ile Ta\u015f\u0131ma \u0130stasyonu, Havayolu ile Ta\u015f\u0131ma Terminali"
+        },
+        "public_transport/station_bus": {
+            "name": "Otob\u00fcs Terminali",
+            "terms": "Otob\u00fcs \u0130stasyonu"
+        },
+        "public_transport/station_ferry": {
+            "name": "Feribot Terminali",
+            "terms": "Feribot \u0130stasyonu"
+        },
+        "public_transport/station_light_rail": {
+            "name": "Rayb\u00fcs \u0130stasyonu",
+            "terms": "Rayb\u00fcs Terminali, Hafif Rayl\u0131 Ta\u015f\u0131ma \u0130stasyonu"
+        },
+        "public_transport/station_monorail": {
+            "name": "Tek Rayl\u0131 Tren \u0130stasyonu",
+            "terms": "Tek Rayl\u0131 Tren Terminali"
+        },
+        "public_transport/station_subway": {
+            "name": "Metro \u0130stasyonu",
+            "terms": "Metro Terminali"
+        },
+        "public_transport/station_train": {
+            "name": "Gar",
+            "terms": "Tren \u0130stasyonu"
+        },
+        "public_transport/station_train_halt": {
+            "name": "Tren Durma Yeri (Dur/Kalk)",
+            "terms": "Tren Yolcu \u0130ndirme/Birdirme Yeri (Dur/Kalk)"
+        },
+        "public_transport/station_tram": {
+            "name": "Tramvay \u0130stasyonu",
+            "terms": "Tramvay Terminali"
+        },
+        "public_transport/station_trolleybus": {
+            "name": "Troleyb\u00fcs Terminali",
+            "terms": "Rays\u0131z Tramvay Terminali"
+        },
+        "public_transport/stop_area": {
+            "name": "Toplu Ta\u015f\u0131ma Yolcu \u0130ndirme/Bindirme Yeri",
+            "terms": "Toplu Ta\u015f\u0131ma Yolcu \u0130ndirme/Bindirme Alan\u0131"
+        },
+        "public_transport/stop_position": {
+            "name": "Toplu Ta\u015f\u0131ma Yolcu \u0130ndirme/Bindirme Noktas\u0131",
+            "terms": "Toplu Ta\u015f\u0131ma Yol \u00dcst\u00fc \u0130ndirme/Bindirme Noktas\u0131"
+        },
+        "public_transport/stop_position_aerialway": {
+            "name": "Havayolu Yolcu \u0130ndirme/Bindirme Noktas\u0131",
+            "terms": "Havayolu Yol \u00dcst\u00fc \u0130ndirme/Bindirme Noktas\u0131"
+        },
+        "public_transport/stop_position_bus": {
+            "name": "Otob\u00fcs Yolcu \u0130ndirme/Bindirme Noktas\u0131",
+            "terms": "Otob\u00fcs Yol \u00dcst\u00fc \u0130ndirme/Bindirme Noktas\u0131"
+        },
+        "public_transport/stop_position_ferry": {
+            "name": "Feribot Yolcu \u0130ndirme/Bindirme Noktas\u0131",
+            "terms": "Vapur Yolcu \u0130ndirme/Bindirme Noktas\u0131"
+        },
+        "public_transport/stop_position_light_rail": {
+            "name": "Rayb\u00fcs Yolcu \u0130ndirme/Bindirme Noktas\u0131",
+            "terms": "Rayb\u00fcs, Hafif Rayl\u0131 Yol \u00dcst\u00fc \u0130ndirme/Bindirme Noktas\u0131"
+        },
+        "public_transport/stop_position_monorail": {
+            "name": "Tek Rayl\u0131 Tren Yolcu \u0130ndirme/Bindirme Noktas\u0131",
+            "terms": "Tek Rayl\u0131 Yol \u00dcst\u00fc \u0130ndirme/Bindirme Noktas\u0131"
+        },
+        "public_transport/stop_position_subway": {
+            "name": "Metro Yolcu \u0130ndirme/Bindirme Noktas\u0131",
+            "terms": "Metro Yol \u00dcst\u00fc \u0130ndirme/Bindirme Noktas\u0131"
+        },
+        "public_transport/stop_position_train": {
+            "name": "Tren Yolcu \u0130ndirme/Bindirme Noktas\u0131",
+            "terms": "Tren Yol \u00dcst\u00fc \u0130ndirme/Bindirme Noktas\u0131"
+        },
+        "public_transport/stop_position_tram": {
+            "name": "Tramvay Yolcu \u0130ndirme/Bindirme Noktas\u0131",
+            "terms": "Tramvay Yol \u00dcst\u00fc \u0130ndirme/Bindirme Noktas\u0131"
+        },
+        "public_transport/stop_position_trolleybus": {
+            "name": "Troleyb\u00fcs Yolcu \u0130ndirme/Bindirme Noktas\u0131",
+            "terms": "Rays\u0131z Tramvay Yol \u00dcst\u00fc \u0130ndirme/Bindirme Noktas\u0131"
+        },
+        "railway": {
+            "name": "Demiryolu"
+        },
+        "railway/abandoned": {
+            "name": "Terk Edilmi\u015f Demiryolu",
+            "terms": "Terk Edilmi\u015f Demiryolu"
+        },
+        "railway/crossing": {
+            "name": "Demiryolu Kav\u015fa\u011f\u0131 (Patika ile Kesi\u015fim)",
+            "terms": "Demiryolu Kav\u015fa\u011f\u0131 (Patika ile Kesi\u015fim)"
+        },
+        "railway/disused": {
+            "name": "Kullan\u0131lmayan Demiryolu",
+            "terms": "Kullan\u0131lmayan Demiryolu"
+        },
+        "railway/funicular": {
+            "name": "Kablolu Tren",
+            "terms": "Kablolu Tren, F\u00fcnik\u00fcler"
+        },
+        "railway/level_crossing": {
+            "name": "Hemzemin Ge\u00e7it (Yol ile Kesi\u015fim)",
+            "terms": "Hemzemin Ge\u00e7it (Yol ile Kesi\u015fim)"
+        },
+        "railway/monorail": {
+            "name": "Tekray",
+            "terms": "Tekray, Monoray"
+        },
+        "railway/narrow_gauge": {
+            "name": "Dar Demiryolu Ge\u00e7idi",
+            "terms": "Dar Demiryolu Ge\u00e7idi"
+        },
+        "railway/rail": {
+            "name": "Demiryolu",
+            "terms": "Demiryolu"
+        },
+        "railway/subway": {
+            "name": "Metro",
+            "terms": "Metro"
+        },
+        "railway/subway_entrance": {
+            "name": "Metro Giri\u015fi",
+            "terms": "Metro Giri\u015fi"
+        },
+        "railway/tram": {
+            "name": "Tramvay",
+            "terms": "Tramvay"
+        },
+        "relation": {
+            "name": "\u0130li\u015fki",
+            "terms": "\u0130li\u015fki, Ba\u011flant\u0131"
+        },
+        "roundabout": {
+            "name": "D\u00f6nel Kav\u015fak"
+        },
+        "route/ferry": {
+            "name": "Feribot G\u00fczergah\u0131",
+            "terms": "Feribot G\u00fczergah\u0131"
+        },
+        "shop": {
+            "name": "D\u00fckkan",
+            "terms": "D\u00fckkan, Ma\u011faza"
+        },
+        "shop/alcohol": {
+            "name": "\u0130\u00e7ki D\u00fckkan\u0131",
+            "terms": "\u0130\u00e7ki D\u00fckkan\u0131"
+        },
+        "shop/anime": {
+            "name": "Animasyon Ma\u011fazas\u0131",
+            "terms": "Animasyon Ma\u011fazas\u0131"
+        },
+        "shop/antiques": {
+            "name": "Antika D\u00fckkan\u0131",
+            "terms": "Antika D\u00fckkan\u0131"
+        },
+        "shop/appliance": {
+            "name": "Beyaz E\u015fya Ma\u011fazas\u0131",
+            "terms": "Beyaz E\u015fya Ma\u011fazas\u0131"
+        },
+        "shop/art": {
+            "name": "Sanat Ma\u011fazas\u0131",
+            "terms": "Sanat Ma\u011fazas\u0131"
+        },
+        "shop/baby_goods": {
+            "name": "Bebek Malzemeleri Ma\u011fazas\u0131",
+            "terms": "Bebek Malzemeleri Ma\u011fazas\u0131"
+        },
+        "shop/bag": {
+            "name": "\u00c7anta/Valiz Ma\u011fazas\u0131",
+            "terms": "\u00c7anta/Valiz Ma\u011fazas\u0131"
+        },
+        "shop/bakery": {
+            "name": "F\u0131r\u0131n",
+            "terms": "F\u0131r\u0131n"
+        },
+        "shop/bathroom_furnishing": {
+            "name": "Z\u00fcccaciye",
+            "terms": "Z\u00fcccaciye"
+        },
+        "shop/beauty": {
+            "name": "G\u00fczellik Salonu",
+            "terms": "G\u00fczellik Salonu"
+        },
+        "shop/beauty/nails": {
+            "name": "Manik\u00fcr Pedik\u00fcr Ma\u011fazas\u0131",
+            "terms": "Manik\u00fcr Pedik\u00fcr Ma\u011fazas\u0131"
+        },
+        "shop/beauty/tanning": {
+            "name": "Bronzla\u015fma Ma\u011fazas\u0131",
+            "terms": "Bronzla\u015fma Ma\u011fazas\u0131"
+        },
+        "shop/bed": {
+            "name": "Yatak Ma\u011fazas\u0131",
+            "terms": "Yatak Ma\u011fazas\u0131"
+        },
+        "shop/beverages": {
+            "name": "\u0130\u00e7ecek D\u00fckkan\u0131",
+            "terms": "\u0130\u00e7ecek D\u00fckkan\u0131"
+        },
+        "shop/bicycle": {
+            "name": "Bisiklet Ma\u011fazas\u0131",
+            "terms": "Bisiklet Ma\u011fazas\u0131"
+        },
+        "shop/bookmaker": {
+            "name": "Bahis Merkezi",
+            "terms": "Bahis Merkezi"
+        },
+        "shop/books": {
+            "name": "Kitap\u00e7\u0131",
+            "terms": "Kitap\u00e7\u0131"
+        },
+        "shop/boutique": {
+            "name": "Butik Ma\u011faza",
+            "terms": "Butik"
+        },
+        "shop/butcher": {
+            "name": "Kasap",
+            "terms": "Kasap"
+        },
+        "shop/candles": {
+            "name": "Mum Ma\u011fazas\u0131",
+            "terms": "Mum Ma\u011fazas\u0131"
+        },
+        "shop/car": {
+            "name": "Oto Galeri",
+            "terms": "Oto Galeri"
+        },
+        "shop/car_parts": {
+            "name": "Yedek Par\u00e7a D\u00fckkan\u0131",
+            "terms": "Yedek Par\u00e7a D\u00fckkan\u0131"
+        },
+        "shop/car_repair": {
+            "name": "Tamirci",
+            "terms": "Tamirci"
+        },
+        "shop/carpet": {
+            "name": "Hal\u0131 Ma\u011fazas\u0131",
+            "terms": "Hal\u0131 Ma\u011fazas\u0131"
+        },
+        "shop/charity": {
+            "name": "Yard\u0131m Ma\u011fazas\u0131",
+            "terms": "Yard\u0131m Ma\u011fazas\u0131"
+        },
+        "shop/cheese": {
+            "name": "Peynirci",
+            "terms": "Peynirci, \u015eark\u00fcteri"
+        },
+        "shop/chemist": {
+            "name": "\u0130la\u00e7 D\u00fckkan\u0131",
+            "terms": "\u0130la\u00e7 D\u00fckkan\u0131"
+        },
+        "shop/chocolate": {
+            "name": "\u00c7ikolata D\u00fckkan\u0131",
+            "terms": "\u00c7ikolata D\u00fckkan\u0131"
+        },
+        "shop/clothes": {
+            "name": "Giyim Ma\u011fazas\u0131",
+            "terms": "Giyim Ma\u011fazas\u0131"
+        },
+        "shop/coffee": {
+            "name": "Kahveci",
+            "terms": "Kahveci"
+        },
+        "shop/computer": {
+            "name": "Bilgisayar Ma\u011fazas\u0131",
+            "terms": "Bilgisayar Ma\u011fazas\u0131"
+        },
+        "shop/confectionery": {
+            "name": "\u015eeker Ma\u011fazas\u0131",
+            "terms": "\u015eeker Ma\u011fazas\u0131"
+        },
+        "shop/convenience": {
+            "name": "Market",
+            "terms": "Market, Bakkal"
+        },
+        "shop/copyshop": {
+            "name": "K\u0131rtasiye",
+            "terms": "K\u0131rtasiye"
+        },
+        "shop/cosmetics": {
+            "name": "Kozmetik Ma\u011fazas\u0131",
+            "terms": "Kozmetik Ma\u011fazas\u0131"
+        },
+        "shop/craft": {
+            "name": "Nalbant",
+            "terms": "Nalbant"
+        },
+        "shop/curtain": {
+            "name": "Perde Ma\u011fazas\u0131",
+            "terms": "Perde Ma\u011fazas\u0131"
+        },
+        "shop/dairy": {
+            "name": "S\u00fct Ma\u011fazas\u0131",
+            "terms": "S\u00fct Ma\u011fazas\u0131"
+        },
+        "shop/deli": {
+            "name": "\u015eark\u00fcteri",
+            "terms": "\u015eark\u00fcteri"
+        },
+        "shop/department_store": {
+            "name": "Ma\u011faza",
+            "terms": "Ma\u011faza"
+        },
+        "shop/doityourself": {
+            "name": "Malzeme Ma\u011fazas\u0131",
+            "terms": "Malzeme Ma\u011fazas\u0131"
+        },
+        "shop/dry_cleaning": {
+            "name": "Kuru Temizleme Ma\u011fazas\u0131",
+            "terms": "Kuru Temizleme Ma\u011fazas\u0131"
+        },
+        "shop/e-cigarette": {
+            "name": "Elektronik Sigara Ma\u011fazas\u0131",
+            "terms": "Elektronik Sigara Ma\u011fazas\u0131"
+        },
+        "shop/electronics": {
+            "name": "Elektronik Ma\u011fazas\u0131",
+            "terms": "Elektronik Ma\u011fazas\u0131"
+        },
+        "shop/erotic": {
+            "name": "Erotik \u00dcr\u00fcnler Ma\u011fazas\u0131",
+            "terms": "Erotik \u00dcr\u00fcnler Ma\u011fazas\u0131"
+        },
+        "shop/fabric": {
+            "name": "Kuma\u015f Ma\u011fazas\u0131",
+            "terms": "Kuma\u015f Ma\u011fazas\u0131"
+        },
+        "shop/farm": {
+            "name": "Manav",
+            "terms": "Manav"
+        },
+        "shop/fashion": {
+            "name": "Giyim Ma\u011fazas\u0131",
+            "terms": "Giyim Ma\u011fazas\u0131"
+        },
+        "shop/fishmonger": {
+            "name": "Bal\u0131k\u00e7\u0131"
+        },
+        "shop/florist": {
+            "name": "\u00c7i\u00e7ek\u00e7i",
+            "terms": "\u00c7i\u00e7ek\u00e7i"
+        },
+        "shop/frame": {
+            "name": "\u00c7er\u00e7eve Ma\u011fazas\u0131",
+            "terms": "\u00c7er\u00e7eve Ma\u011fazas\u0131"
+        },
+        "shop/funeral_directors": {
+            "name": "Cenaze Koordinat\u00f6r\u00fc",
+            "terms": "Cenaze Koordinat\u00f6r\u00fc"
+        },
+        "shop/furnace": {
+            "name": "Soba Ma\u011fazas\u0131"
+        },
+        "shop/furniture": {
+            "name": "Mobilya Ma\u011fazas\u0131",
+            "terms": "Mobilya Ma\u011fazas\u0131"
+        },
+        "shop/garden_centre": {
+            "name": "Bah\u00e7e D\u00fczenleme Ma\u011fazas\u0131",
+            "terms": "Bah\u00e7e D\u00fczenleme Ma\u011fazas\u0131"
+        },
+        "shop/gas": {
+            "name": "T\u00fcp\u00e7\u00fc",
+            "terms": "T\u00fcp\u00e7\u00fc"
+        },
+        "shop/gift": {
+            "name": "Hediye Ma\u011fazas\u0131",
+            "terms": "Hediye Ma\u011fazas\u0131"
+        },
+        "shop/greengrocer": {
+            "name": "Manav",
+            "terms": "Manav"
+        },
+        "shop/hairdresser": {
+            "name": "Kuaf\u00f6r",
+            "terms": "Kuaf\u00f6r, Berber"
+        },
+        "shop/hardware": {
+            "name": "Donan\u0131m Ma\u011fazas\u0131",
+            "terms": "Donan\u0131m Ma\u011fazas\u0131"
+        },
+        "shop/hearing_aids": {
+            "name": "\u0130\u015fitme Cihaz\u0131 Ma\u011fazas\u0131 ",
+            "terms": "\u0130\u015fitme Cihaz\u0131 Ma\u011fazas\u0131"
+        },
+        "shop/herbalist": {
+            "name": "\u015eifal\u0131 Bitkiler Ma\u011fazas\u0131",
+            "terms": "\u015eifal\u0131 Bitkiler Ma\u011fazas\u0131"
+        },
+        "shop/hifi": {
+            "name": "Hoparl\u00f6r Ma\u011fazas\u0131",
+            "terms": "Hoparl\u00f6r Ma\u011fazas\u0131"
+        },
+        "shop/houseware": {
+            "name": "Ev E\u015fyalar\u0131 Ma\u011fazas\u0131",
+            "terms": "Ev E\u015fyalar\u0131 Ma\u011fazas\u0131"
+        },
+        "shop/interior_decoration": {
+            "name": "\u0130\u00e7 Dekorasyon Ma\u011fazas\u0131",
+            "terms": "\u0130\u00e7 Dekorasyon Ma\u011fazas\u0131"
+        },
+        "shop/kitchen": {
+            "name": "Mutfak E\u015fyalar\u0131 Ma\u011fazas\u0131",
+            "terms": "Mutfak E\u015fyalar\u0131 Ma\u011fazas\u0131"
+        },
+        "shop/laundry": {
+            "name": "\u00c7ama\u015f\u0131r Y\u0131kama",
+            "terms": "\u00c7ama\u015f\u0131r Y\u0131kama"
+        },
+        "shop/leather": {
+            "name": "Deri D\u00fckkan\u0131",
+            "terms": "Deri D\u00fckkan\u0131"
+        },
+        "shop/locksmith": {
+            "name": "Anahtarc\u0131",
+            "terms": "Anahtarc\u0131"
+        },
+        "shop/lottery": {
+            "name": "Loto Bayi",
+            "terms": "Loto Bayi"
+        },
+        "shop/mall": {
+            "name": "Al\u0131\u015fveri\u015f Merkezi",
+            "terms": "Al\u0131\u015fveri\u015f Merkezi"
+        },
+        "shop/massage": {
+            "name": "Masaj Salonu",
+            "terms": "Masaj Salonu"
+        },
+        "shop/medical_supply": {
+            "name": "Medikal \u00dcr\u00fcnler Ma\u011fazas\u0131",
+            "terms": "Medikal \u00dcr\u00fcnler Ma\u011fazas\u0131"
+        },
+        "shop/mobile_phone": {
+            "name": "Cep Telefonu Ma\u011fazas\u0131",
+            "terms": "Cep Telefonu Ma\u011fazas\u0131"
+        },
+        "shop/money_lender": {
+            "name": "Tefeci",
+            "terms": "Tefeci"
+        },
+        "shop/motorcycle": {
+            "name": "Motosiklet Sat\u0131\u015f Ma\u011fazas\u0131",
+            "terms": "Motosiklet Sat\u0131\u015f Ma\u011fazas\u0131"
+        },
+        "shop/music": {
+            "name": "M\u00fczik Ma\u011fazas\u0131",
+            "terms": "M\u00fczik Ma\u011fazas\u0131"
+        },
+        "shop/musical_instrument": {
+            "name": "M\u00fczik Aletleri Ma\u011fazas\u0131",
+            "terms": "M\u00fczik Aletleri Ma\u011fazas\u0131"
+        },
+        "shop/newsagent": {
+            "name": "Gazete Bayii",
+            "terms": "Gazete Bayii"
+        },
+        "shop/nutrition_supplements": {
+            "name": "G\u0131da Takviye \u00dcr\u00fcnleri Ma\u011fazas\u0131",
+            "terms": "G\u0131da Takviye \u00dcr\u00fcnleri Ma\u011fazas\u0131, Enerji Takviye \u00dcr\u00fcnleri Ma\u011fazas\u0131"
+        },
+        "shop/optician": {
+            "name": "G\u00f6zl\u00fck\u00e7\u00fc",
+            "terms": "G\u00f6zl\u00fck\u00e7\u00fc, Optik"
+        },
+        "shop/organic": {
+            "name": "Organik \u00dcr\u00fcn Ma\u011fazas\u0131",
+            "terms": "Organik \u00dcr\u00fcn Ma\u011fazas\u0131"
+        },
+        "shop/outdoor": {
+            "name": "Kamp Malzemeleri Ma\u011fazas\u0131",
+            "terms": "Kamp Malzemeleri Ma\u011fazas\u0131"
+        },
+        "shop/paint": {
+            "name": "Boyac\u0131",
+            "terms": "Boyac\u0131"
+        },
+        "shop/pastry": {
+            "name": "Pastane",
+            "terms": "Pastane"
+        },
+        "shop/pawnbroker": {
+            "name": "\u0130kinciel Al\u0131m Sat\u0131m Ma\u011fazas\u0131",
+            "terms": "\u0130kinciel Al\u0131m Sat\u0131m Ma\u011fazas\u0131"
+        },
+        "shop/perfumery": {
+            "name": "Parf\u00fcmeri",
+            "terms": "Parf\u00fcm Ma\u011fazas\u0131"
+        },
+        "shop/pet": {
+            "name": "Evcil Hayvan Ma\u011fazas\u0131",
+            "terms": "Evcil Hayvan Ma\u011fazas\u0131, Pet\u015fop"
+        },
+        "shop/photo": {
+            "name": "Foto\u011fraf\u00e7\u0131",
+            "terms": "Foto\u011fraf\u00e7\u0131"
+        },
+        "shop/pyrotechnics": {
+            "name": "Havai Fi\u015fek Ma\u011fazas\u0131",
+            "terms": "Havai Fi\u015fek Ma\u011fazas\u0131"
+        },
+        "shop/radiotechnics": {
+            "name": "Radyocu",
+            "terms": "Radyocu"
+        },
+        "shop/religion": {
+            "name": "Dini \u00dcr\u00fcnler Ma\u011fazas\u0131",
+            "terms": "Dini \u00dcr\u00fcnler Ma\u011fazas\u0131"
+        },
+        "shop/scuba_diving": {
+            "name": "T\u00fcple Dal\u0131\u015f Ma\u011fazas\u0131",
+            "terms": "T\u00fcple Dal\u0131\u015f Ma\u011fazas\u0131"
+        },
+        "shop/seafood": {
+            "name": "Deniz \u00dcr\u00fcnleri Ma\u011fazas\u0131",
+            "terms": "Deniz \u00dcr\u00fcnleri Ma\u011fazas\u0131"
+        },
+        "shop/second_hand": {
+            "name": "Bit Pazar\u0131",
+            "terms": "Bit Pazar\u0131"
+        },
+        "shop/shoes": {
+            "name": "Ayakkab\u0131 Ma\u011fazas\u0131",
+            "terms": "Ayakkab\u0131 Ma\u011fazas\u0131, Ayakkab\u0131c\u0131"
+        },
+        "shop/sports": {
+            "name": "Spor \u00dcr\u00fcnleri Ma\u011fazas\u0131",
+            "terms": "Spor \u00dcr\u00fcnleri Ma\u011fazas\u0131"
+        },
+        "shop/stationery": {
+            "name": "K\u0131rtasiye",
+            "terms": "K\u0131rtasiye"
+        },
+        "shop/storage_rental": {
+            "name": "Depo Kiralama Ma\u011fazas\u0131",
+            "terms": "Depo Kiralama Ma\u011fazas\u0131"
+        },
+        "shop/supermarket": {
+            "name": "S\u00fcpermarket",
+            "terms": "S\u00fcpermarket"
+        },
+        "shop/tailor": {
+            "name": "Terzi",
+            "terms": "Terzi"
+        },
+        "shop/tattoo": {
+            "name": "D\u00f6vmeci",
+            "terms": "D\u00f6vmeci"
+        },
+        "shop/tea": {
+            "name": "\u00c7ayc\u0131",
+            "terms": "\u00c7ayc\u0131"
+        },
+        "shop/ticket": {
+            "name": "Bilet\u00e7i",
+            "terms": "Bilet\u00e7i"
+        },
+        "shop/tobacco": {
+            "name": "T\u00fct\u00fcnc\u00fc",
+            "terms": "T\u00fct\u00fcnc\u00fc"
+        },
+        "shop/toys": {
+            "name": "Oyuncak Ma\u011fazas\u0131",
+            "terms": "Oyuncak Ma\u011fazas\u0131"
+        },
+        "shop/travel_agency": {
+            "name": "Turizm Acentas\u0131",
+            "terms": "Turizm Acentas\u0131"
+        },
+        "shop/tyres": {
+            "name": "Ara\u00e7 Lasti\u011fi Ma\u011fazas\u0131",
+            "terms": "Ara\u00e7 Lasti\u011fi Ma\u011fazas\u0131"
+        },
+        "shop/vacant": {
+            "name": "Bo\u015f D\u00fckkan"
+        },
+        "shop/vacuum_cleaner": {
+            "name": "Elektrikli S\u00fcp\u00fcrge Ma\u011fazas\u0131",
+            "terms": "Elektrikli S\u00fcp\u00fcrge Ma\u011fazas\u0131"
+        },
+        "shop/variety_store": {
+            "name": "Her\u015fey 1 TL Ma\u011fazas\u0131",
+            "terms": "Her\u015fey 1 TL Ma\u011fazas\u0131"
+        },
+        "shop/video": {
+            "name": "Film - Video Ma\u011fazas\u0131",
+            "terms": "Film - Video Ma\u011fazas\u0131"
+        },
+        "shop/video_games": {
+            "name": "Bilgisayar Oyun Ma\u011fazas\u0131",
+            "terms": "Bilgisayar Oyun Ma\u011fazas\u0131"
+        },
+        "shop/watches": {
+            "name": "Saat\u00e7i",
+            "terms": "Saat\u00e7i"
+        },
+        "shop/water_sports": {
+            "name": "Su Sporlar\u0131 Ma\u011fazas\u0131",
+            "terms": "Su Sporlar\u0131 Ma\u011fazas\u0131"
+        },
+        "shop/weapons": {
+            "name": "Silah Ma\u011fazas\u0131",
+            "terms": "Silah Ma\u011fazas\u0131"
+        },
+        "shop/window_blind": {
+            "name": "Jaluzi Ma\u011fazas\u0131",
+            "terms": "Jaluzi Ma\u011fazas\u0131, Perde Ma\u011fazas\u0131"
+        },
+        "shop/wine": {
+            "name": "\u015earap Ma\u011fazas\u0131",
+            "terms": "\u015earap Ma\u011fazas\u0131"
+        },
+        "tourism": {
+            "name": "Turizm"
+        },
+        "tourism/alpine_hut": {
+            "name": "Da\u011f Evi",
+            "terms": "Da\u011f Evi, Da\u011f Kul\u00fcbesi, Baraka"
+        },
+        "tourism/apartment": {
+            "name": "Misafir Apartman\u0131",
+            "terms": "Misafir Apartman\u0131"
+        },
+        "tourism/aquarium": {
+            "name": "Akvaryum",
+            "terms": "Akvaryum"
+        },
+        "tourism/artwork": {
+            "name": "Sanat Eseri",
+            "terms": "Sanat Eseri"
+        },
+        "tourism/attraction": {
+            "name": "Turistik Yer",
+            "terms": "Turistik Yer"
+        },
+        "tourism/camp_site": {
+            "name": "Kamp Yeri",
+            "terms": "Kamp Yeri"
+        },
+        "tourism/caravan_site": {
+            "name": "Karavan Park\u0131",
+            "terms": "Karavan Park\u0131"
+        },
+        "tourism/gallery": {
+            "name": "Sanat Galerisi",
+            "terms": "Sanat Galerisi"
+        },
+        "tourism/guest_house": {
+            "name": "Konuk Evi",
+            "terms": "Konuk Evi, Misafir Evi"
+        },
+        "tourism/hostel": {
+            "name": "Pansiyon",
+            "terms": "Pansiyon, Hostel"
+        },
+        "tourism/hotel": {
+            "name": "Otel",
+            "terms": "Otel"
+        },
+        "tourism/information": {
+            "name": "Bilgi",
+            "terms": "Bilgi"
+        },
+        "tourism/information/board": {
+            "name": "Bilgi Masas\u0131",
+            "terms": "Bilgi Masas\u0131"
+        },
+        "tourism/information/guidepost": {
+            "name": "Bilgi Dire\u011fi",
+            "terms": "Bilgi Dire\u011fi"
+        },
+        "tourism/information/map": {
+            "name": "Harita",
+            "terms": "Harita"
+        },
+        "tourism/information/office": {
+            "name": "Turist Bilgi Ofisi",
+            "terms": "Turist Bilgi Ofisi"
+        },
+        "tourism/motel": {
+            "name": "Motel",
+            "terms": "Motel"
+        },
+        "tourism/museum": {
+            "name": "M\u00fcze",
+            "terms": "M\u00fcze"
+        },
+        "tourism/picnic_site": {
+            "name": "Piknik Alan\u0131",
+            "terms": "Piknik Alan\u0131"
+        },
+        "tourism/theme_park": {
+            "name": "E\u011flence Park\u0131",
+            "terms": "E\u011flence Park\u0131"
+        },
+        "tourism/viewpoint": {
+            "name": "G\u00f6r\u00fc\u015f Noktas\u0131",
+            "terms": "G\u00f6r\u00fc\u015f Noktas\u0131, Bak\u0131\u015f Noktas\u0131"
+        },
+        "tourism/zoo": {
+            "name": "Hayvanat Bah\u00e7esi",
+            "terms": "Hayvanat Bah\u00e7esi"
+        },
+        "traffic_calming": {
+            "name": "Trafi\u011fi Yava\u015flatma",
+            "terms": "Trafi\u011fi Yava\u015flatma"
+        },
+        "traffic_calming/bump": {
+            "name": "Kasis",
+            "terms": "Kasis, H\u0131z T\u00fcmse\u011fi"
+        },
+        "traffic_calming/chicane": {
+            "name": "Yapay Viraj",
+            "terms": "Yapay Viraj"
+        },
+        "traffic_calming/choker": {
+            "name": "Yapay Darbo\u011faz",
+            "terms": "Yapay Darbo\u011faz"
+        },
+        "traffic_calming/cushion": {
+            "name": "H\u0131z Tamponu",
+            "terms": "H\u0131z Tamponu"
+        },
+        "traffic_calming/dip": {
+            "name": "H\u0131z \u00c7ukuru",
+            "terms": "H\u0131z \u00c7ukuru"
+        },
+        "traffic_calming/hump": {
+            "name": "H\u0131z T\u00fcmse\u011fi",
+            "terms": "H\u0131z T\u00fcmse\u011fi"
+        },
+        "traffic_calming/island": {
+            "name": "Ref\u00fcj",
+            "terms": "Ref\u00fcj"
+        },
+        "traffic_calming/rumble_strip": {
+            "name": "H\u0131z \u015eeridi",
+            "terms": "H\u0131z \u015eeridi"
+        },
+        "type/boundary": {
+            "name": "S\u0131n\u0131r",
+            "terms": "S\u0131n\u0131r"
+        },
+        "type/boundary/administrative": {
+            "name": "\u0130dari S\u0131n\u0131r",
+            "terms": "\u0130dari S\u0131n\u0131r"
+        },
+        "type/multipolygon": {
+            "name": "Birden Fazla \u00c7okgen"
+        },
+        "type/restriction": {
+            "name": "K\u0131s\u0131tlama",
+            "terms": "K\u0131s\u0131tlama"
+        },
+        "type/restriction/no_left_turn": {
+            "name": "Sola D\u00f6n\u00fc\u015f Yasak",
+            "terms": "Sola D\u00f6n\u00fc\u015f Yasak"
+        },
+        "type/restriction/no_right_turn": {
+            "name": "Sa\u011fa D\u00f6n\u00fc\u015f Yasak",
+            "terms": "Sa\u011fa D\u00f6n\u00fc\u015f Yasak"
+        },
+        "type/restriction/no_straight_on": {
+            "name": "Devam Etmek Yasak",
+            "terms": "Devam Etmek Yasak"
+        },
+        "type/restriction/no_u_turn": {
+            "name": "U-d\u00f6n\u00fc\u015f\u00fc Yasak",
+            "terms": "U-d\u00f6n\u00fc\u015f\u00fc Yasak"
+        },
+        "type/route": {
+            "name": "G\u00fczergah",
+            "terms": "G\u00fczergah, Rota"
+        },
+        "type/route/bicycle": {
+            "name": "Bisiklet G\u00fczergah\u0131",
+            "terms": "Bisiklet G\u00fczergah\u0131, Bisiklet Rotas\u0131"
+        },
+        "type/route/bus": {
+            "name": "Otob\u00fcs G\u00fczergah\u0131",
+            "terms": "Otob\u00fcs G\u00fczergah\u0131, Otob\u00fcs Rotas\u0131"
+        },
+        "type/route/detour": {
+            "name": "Tali Yol G\u00fczergah\u0131",
+            "terms": "Tali Yol G\u00fczergah\u0131, Tali Yol Rotas\u0131"
+        },
+        "type/route/ferry": {
+            "name": "Feribot G\u00fczergah\u0131",
+            "terms": "Feribot G\u00fczergah\u0131, Feribot Rotas\u0131"
+        },
+        "type/route/foot": {
+            "name": "Y\u00fcr\u00fcy\u00fc\u015f G\u00fczergah\u0131",
+            "terms": "Y\u00fcr\u00fcy\u00fc\u015f G\u00fczergah\u0131, Y\u00fcr\u00fcy\u00fc\u015f Rotas\u0131"
+        },
+        "type/route/hiking": {
+            "name": "Y\u00fcr\u00fcy\u00fc\u015f G\u00fczergah\u0131",
+            "terms": "Y\u00fcr\u00fcy\u00fc\u015f G\u00fczergah\u0131, Y\u00fcr\u00fcy\u00fc\u015f Rotas\u0131"
+        },
+        "type/route/horse": {
+            "name": "At Binme G\u00fczergah\u0131",
+            "terms": "At Binme G\u00fczergah\u0131, At Binme Rotas\u0131"
+        },
+        "type/route/pipeline": {
+            "name": "Boru Hatt\u0131 G\u00fczergah\u0131",
+            "terms": "Boru Hatt\u0131 G\u00fczergah\u0131, Boru Hatt\u0131 Rotas\u0131"
+        },
+        "type/route/power": {
+            "name": "Elektrik Hatt\u0131 G\u00fczergah\u0131",
+            "terms": "Elektrik Hatt\u0131 G\u00fczergah\u0131, Elektrik Hatt\u0131 Rotas\u0131"
+        },
+        "type/route/road": {
+            "name": "Yol G\u00fczergah\u0131",
+            "terms": "Yol G\u00fczergah\u0131"
+        },
+        "type/route/train": {
+            "name": "Demiryolu G\u00fczergah\u0131",
+            "terms": "Demiryolu G\u00fczergah\u0131, Tren Yolu G\u00fczergah\u0131, Demiryolu Rotas\u0131"
+        },
+        "type/route/tram": {
+            "name": "Tramvay G\u00fczergah\u0131",
+            "terms": "Tramvay G\u00fczergah\u0131, Tramvay Rotas\u0131"
+        },
+        "type/route_master": {
+            "name": "G\u00fczergah Ana Kayd\u0131",
+            "terms": "G\u00fczergah, Rota"
+        },
+        "type/site": {
+            "name": "Tesis",
+            "terms": "Tesis, Mekan"
+        },
+        "type/waterway": {
+            "name": "Su Yolu",
+            "terms": "Su Yolu, Akarsu"
+        },
+        "vertex": {
+            "name": "Di\u011fer",
+            "terms": "Nokta"
+        },
+        "waterway": {
+            "name": "Su Yolu"
+        },
+        "waterway/boatyard": {
+            "name": "Kay\u0131k \u0130skelesi",
+            "terms": "Kay\u0131k \u0130skelesi, Bot \u0130skelesi"
+        },
+        "waterway/canal": {
+            "name": "Kanal",
+            "terms": "Kanal, Suyolu"
+        },
+        "waterway/dam": {
+            "name": "Baraj",
+            "terms": "Baraj"
+        },
+        "waterway/ditch": {
+            "name": "Suyolu",
+            "terms": "Suyolu, Kanal"
+        },
+        "waterway/dock": {
+            "name": "R\u0131ht\u0131m",
+            "terms": "R\u0131ht\u0131m"
+        },
+        "waterway/drain": {
+            "name": "At\u0131k Su Kanal\u0131",
+            "terms": "At\u0131k Su Kanal\u0131, Pis Su Kanal\u0131"
+        },
+        "waterway/fuel": {
+            "name": "Deniz Yak\u0131t \u0130stasyonu",
+            "terms": "Deniz Yak\u0131t \u0130stasyonu"
+        },
+        "waterway/river": {
+            "name": "Akarsu",
+            "terms": "Akarsu, Nehir, Irmak"
+        },
+        "waterway/riverbank": {
+            "name": "Akarsu Kenar\u0131"
+        },
+        "waterway/sanitary_dump_station": {
+            "name": "Deniz Tuvalet \u0130mha \u0130stasyonu",
+            "terms": "Deniz Tuvalet \u0130mha \u0130stasyonu"
+        },
+        "waterway/stream": {
+            "name": "Dere",
+            "terms": "Dere"
+        },
+        "waterway/stream_intermittent": {
+            "name": "Aral\u0131kl\u0131 Akan Su Ak\u0131nt\u0131s\u0131",
+            "terms": "Aral\u0131kl\u0131 Akan Su Ak\u0131nt\u0131s\u0131, Sadece Belli D\u00f6nemlerde Akan Su Ak\u0131nt\u0131s\u0131"
+        },
+        "waterway/water_point": {
+            "name": "Deniz \u0130\u00e7me Suyu \u0130stasyonu",
+            "terms": "Deniz \u0130\u00e7me Suyu \u0130stasyonu"
+        },
+        "waterway/waterfall": {
+            "name": "\u015eelale",
+            "terms": "\u015eelale, \u00c7a\u011flayan"
+        },
+        "waterway/weir": {
+            "name": "Su Bendi",
+            "terms": "Su Bendi, Su Seddi"
+        }
+    }
+}

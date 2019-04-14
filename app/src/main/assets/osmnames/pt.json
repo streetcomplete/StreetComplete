@@ -1,0 +1,4219 @@
+{
+    "presets": {
+        "address": {
+            "name": "Morada",
+            "terms": "endere\u00e7o, morada, endere\u00e7amento, c\u00f3digo postal, localiza\u00e7\u00e3o"
+        },
+        "advertising/billboard": {
+            "name": "Outdoor",
+            "terms": "Billboard, publicidade, mupi, pub, an\u00fancio"
+        },
+        "advertising/column": {
+            "name": "Coluna de publicidade",
+            "terms": "publicidade, mupi, pub, an\u00fancio, coluna, coluna Morris"
+        },
+        "aerialway": {
+            "name": "Transporte a\u00e9reo por cabo"
+        },
+        "aerialway/cable_car": {
+            "name": "Telef\u00e9rico",
+            "terms": "Cable Car"
+        },
+        "aerialway/chair_lift": {
+            "name": "Telecadeira",
+            "terms": "Chair Lift, Telef\u00e9rico de cadeira, telecadeira, telecesto"
+        },
+        "aerialway/drag_lift": {
+            "name": "Telesquis",
+            "terms": "telesqui, telef\u00e9rico de superf\u00edcie"
+        },
+        "aerialway/gondola": {
+            "name": "G\u00f4ndola",
+            "terms": "Gondola"
+        },
+        "aerialway/goods": {
+            "name": "Telef\u00e9rico de mercadorias",
+            "terms": "telef\u00e9rico de mercadorias"
+        },
+        "aerialway/magic_carpet": {
+            "name": "Passadeira rolante",
+            "terms": "magic carpet lift, carpete m\u00e1gica, tapete m\u00e1gico, passadeira rolante"
+        },
+        "aerialway/mixed_lift": {
+            "name": "Telef\u00e9rico h\u00edbrido",
+            "terms": "telef\u00e9rico h\u00edbrido"
+        },
+        "aerialway/platter": {
+            "name": "Telesqui",
+            "terms": "Platter Lift, Prato de Eleva\u00e7\u00e3o"
+        },
+        "aerialway/pylon": {
+            "name": "Pilar de suporte de telef\u00e9ricos",
+            "terms": "Aerialway Pylon, pilar"
+        },
+        "aerialway/rope_tow": {
+            "name": "Ascens\u00e3o com corda de reboque ",
+            "terms": "Rope Tow Lift"
+        },
+        "aerialway/station": {
+            "name": "Esta\u00e7\u00e3o de telef\u00e9ricos"
+        },
+        "aerialway/t-bar": {
+            "name": "Telef\u00e9rico de neve",
+            "terms": "T-bar Lift, Subida Mec\u00e2nica"
+        },
+        "aeroway": {
+            "name": "Via a\u00e9rea"
+        },
+        "aeroway/aerodrome": {
+            "name": "Aeroporto / aer\u00f3dromo",
+            "terms": "Avi\u00e3o, aer\u00f3dromo"
+        },
+        "aeroway/apron": {
+            "name": "Plataforma de estacionamento",
+            "terms": "Rampa, P\u00e1tio"
+        },
+        "aeroway/gate": {
+            "name": "Porta",
+            "terms": "porta de embarque, port\u00e3o de embarque, embarque, porta de desembarque, port\u00e3o de desembarque, desembarque"
+        },
+        "aeroway/hangar": {
+            "name": "Hangar",
+            "terms": "Hangar, Abrigo de Avi\u00f5es"
+        },
+        "aeroway/helipad": {
+            "name": "Heliporto / heliponto",
+            "terms": "Helic\u00f3ptero"
+        },
+        "aeroway/runway": {
+            "name": "Pista de aterragem e descolagem",
+            "terms": "Faixa de Aterragem, Pista, Pista de Aeroporto, Pista de Aer\u00f3dromo, Pista de Aterragem, Pista de Descolagem"
+        },
+        "aeroway/taxiway": {
+            "name": "Via de circula\u00e7\u00e3o (taxiway)",
+            "terms": "Rolar, Faixa de Rolagem, Taxiway"
+        },
+        "aeroway/terminal": {
+            "name": "Terminal de aeroporto",
+            "terms": "terminal, \u00e1rea de passageiros, terminal aeroportu\u00e1rio, terminal de passageiros, aerogare de passageiros, aerogare"
+        },
+        "allotments/plot": {
+            "name": "Parcela de jardim comunit\u00e1rio",
+            "terms": "jardim, comunit\u00e1rio, baldio"
+        },
+        "amenity": {
+            "name": "Infraestrutura"
+        },
+        "amenity/animal_boarding": {
+            "name": "Hotel para animais",
+            "terms": "hospedagem, c\u00e3o, c\u00e3es, gato, gatos, hotel para animais, animais de estima\u00e7\u00e3o"
+        },
+        "amenity/animal_breeding": {
+            "name": "Instala\u00e7\u00e3o para reprodu\u00e7\u00e3o de animais ",
+            "terms": "animal breeding, criador de animais, criador, cria\u00e7\u00e3o, reprodu\u00e7\u00e3o, reproduzir, criar, touro, toiro, gato, gatos, c\u00e3o, c\u00e3es, cavalo, cavalos, cachorro, cachorrinho, gatinho, animal dom\u00e9stico, animais dom\u00e9sticos"
+        },
+        "amenity/animal_shelter": {
+            "name": "Abrigo para animais (canil, gatil...)",
+            "terms": "canil, gatil, abandonado, abandonados, abrigo, abandono, animais, animal"
+        },
+        "amenity/arts_centre": {
+            "name": "Centro art\u00edstico",
+            "terms": "galeria, atelier, centro de artes, centro art\u00edstico, artes, arte"
+        },
+        "amenity/atm": {
+            "name": "Terminal banc\u00e1rio",
+            "terms": "multibanco, caixa multibanco, caixa de multibanco, MB, caixa de MB, caixa eletr\u00f4nico, caixa autom\u00e1tico, multicaixa, terminal banc\u00e1rio, terminal, ATM"
+        },
+        "amenity/bank": {
+            "name": "Banco",
+            "terms": "Ag\u00eancia banc\u00e1ria, Ag\u00eancia financeira, Ag\u00eancia de Investimentos, Cofre, Dep\u00f3sito, Levantamentos, Firma de Investimentos, Dinheiro"
+        },
+        "amenity/bar": {
+            "name": "Bar",
+            "terms": "bar, bares, drinqueria"
+        },
+        "amenity/bbq": {
+            "name": "Churrasco",
+            "terms": "Barbacue/Grill, Barbacue, Carne Assada, Churrasqueira"
+        },
+        "amenity/bench": {
+            "name": "Banco de sentar",
+            "terms": "Bench, Banco, Assento, Sentar"
+        },
+        "amenity/bicycle_parking": {
+            "name": "Parque de bicicletas",
+            "terms": "parque de bicicletas, \u00e1rea de bicicletas, zona de bicicletas, paraciclo, biciclet\u00e1rio, estacionamento"
+        },
+        "amenity/bicycle_rental": {
+            "name": "Aluguer de bicicletas",
+            "terms": "Aluguer de Bicicletas, \u00c1rea de Aluguer de Bicicletas, Zona de Aluguer de Bicicletas"
+        },
+        "amenity/bicycle_repair_station": {
+            "name": "Ponto de repara\u00e7\u00e3o de bicicletas auto-servi\u00e7o",
+            "terms": "bicycle repair tool station, self-service, auto-servi\u00e7o, reparar, repara\u00e7\u00e3o de bicicletas, bicicleta"
+        },
+        "amenity/biergarten": {
+            "name": "Jardim da cerveja (biergarten)",
+            "terms": "Jardim da Cerveja, esplanada"
+        },
+        "amenity/boat_rental": {
+            "name": "Aluguer de barcos",
+            "terms": "boat rental, aluguer de barcos, aluguer, loca\u00e7\u00e3o, barco, barcos, aluga, aluga-se"
+        },
+        "amenity/bureau_de_change": {
+            "name": "Ag\u00eancia de c\u00e2mbio",
+            "terms": "currency exchange, troca de dinheiro, c\u00e2mbio, cambiar, cambista, dinheiro"
+        },
+        "amenity/bus_station": {
+            "name": "Esta\u00e7\u00e3o / terminal de autocarros"
+        },
+        "amenity/cafe": {
+            "name": "Caf\u00e9",
+            "terms": "ch\u00e1, caf\u00e9, cafetaria, cafeteria"
+        },
+        "amenity/car_pooling": {
+            "name": "Boleia partilhada",
+            "terms": "boleia, partilha, partilhado"
+        },
+        "amenity/car_rental": {
+            "name": "Aluguer de autom\u00f3veis",
+            "terms": "Aluguer de Autom\u00f3veis, \u00c1rea de Aluguer de Autom\u00f3veis, Zona de Aluguer de Automoveis"
+        },
+        "amenity/car_sharing": {
+            "name": "Partilha de autom\u00f3veis",
+            "terms": "partilha de carros, partilha de ve\u00edculos, partilha, carro de autosservi\u00e7o, carro partilhado, carsharing"
+        },
+        "amenity/car_wash": {
+            "name": "Lavagem de ve\u00edculos",
+            "terms": "lavagem, lavagem autom\u00e1tica, mangueira, limpeza, lavar"
+        },
+        "amenity/casino": {
+            "name": "Casino",
+            "terms": "casino, cassino, cazino, jogo, jogos, roleta, p\u00f3quer, jogar"
+        },
+        "amenity/charging_station": {
+            "name": "Posto de carregamento para ve\u00edculos el\u00e9tricos",
+            "terms": "charging station, esta\u00e7\u00e3o de recarga, energia, bateria, recarregar, recaregar, recarregagem"
+        },
+        "amenity/childcare": {
+            "name": "Ber\u00e7\u00e1rio / creche",
+            "terms": "Nursery/Childcare, cuidados Infantis"
+        },
+        "amenity/cinema": {
+            "name": "Cinema",
+            "terms": "filme, filmes, cinema"
+        },
+        "amenity/clinic": {
+            "name": "Cl\u00ednica  / unidade de sa\u00fade / posto m\u00e9dico",
+            "terms": "Clinic, Cl\u00ednica, Centro de Sa\u00fade, Unidade de Sa\u00fade, Posto M\u00e9dico, Posto de Sa\u00fade, Unidade de Sa\u00fade Familiar, USF, Agrupamento de Centros de Sa\u00fade, ASF, Unidade Local de Sa\u00fade, Unidade B\u00e1sica de Sa\u00fade, UBS"
+        },
+        "amenity/clinic/abortion": {
+            "name": "Cl\u00ednica de interrup\u00e7\u00e3o da gravidez",
+            "terms": "aborto, abortar, interrup\u00e7\u00e3o da gravidez, cl\u00ednica"
+        },
+        "amenity/clinic/fertility": {
+            "name": "Cl\u00ednica de fertiliza\u00e7\u00e3o",
+            "terms": "fertilidade, infertilidade, inf\u00e9rtil, insemina\u00e7\u00e3o, inseminar, incemina\u00e7\u00e3o, inceminar"
+        },
+        "amenity/clock": {
+            "name": "Rel\u00f3gio",
+            "terms": "clock, rel\u00f3gio, horas, tempo"
+        },
+        "amenity/clock/sundial": {
+            "name": "Rel\u00f3gio de sol",
+            "terms": "rel\u00f3gio de sol, rel\u00f3gio, sol, solar, rel\u00f3gio solar, rel\u00f3gios solares"
+        },
+        "amenity/college": {
+            "name": "Col\u00e9gio",
+            "terms": "College Grounds, Col\u00e9gio Interno, Escola Privada, Privada, Externatos, Semiprivado"
+        },
+        "amenity/community_centre": {
+            "name": "Centro comunit\u00e1rio",
+            "terms": "Community Center, Espa\u00e7o Social"
+        },
+        "amenity/compressed_air": {
+            "name": "M\u00e1quina de ar comprimido",
+            "terms": "Compressed Air, Pneum\u00e1tica, Pneus, Encher"
+        },
+        "amenity/courthouse": {
+            "name": "Tribunal",
+            "terms": "Casa da Justi\u00e7a, Justi\u00e7a"
+        },
+        "amenity/coworking_space": {
+            "name": "Espa\u00e7o de trabalho compartilhado"
+        },
+        "amenity/crematorium": {
+            "name": "Cremat\u00f3rio",
+            "terms": "crematorium, crema\u00e7\u00e3o, cremar, cremat\u00f3rio, cremado"
+        },
+        "amenity/dentist": {
+            "name": "Dentista",
+            "terms": "dentist, dentes, dente, ortodontia, dentista, estomatologista, odontologista, odontogeriatrista, odontopediatrista, implantodontista, pr\u00e1tica odontol\u00f3gica, cirurgia dental, cl\u00ednica dent\u00e1ria, cirurgi\u00e3o-dentista, cirurgi\u00e3o-orofacia, m\u00e9dico orofacial, implantodontia, odontologia, odontopediatria, odontogeriatria, estomatologia, m\u00e9dico, m\u00e9dica"
+        },
+        "amenity/dive_centre": {
+            "name": "Centro de mergulho",
+            "terms": "mergulho"
+        },
+        "amenity/doctors": {
+            "name": "Consult\u00f3rio m\u00e9dico",
+            "terms": "Doctor, M\u00e9dico, M\u00e9dicos, Consult\u00f3rio, M\u00e9dico Privado, Doutor"
+        },
+        "amenity/dojo": {
+            "name": "Centro de artes marciais",
+            "terms": "Dojo, Karat\u00e9, Taekwondo, Judo, Jiu-jitsu, Jiu-jitsu Brasileiro, Kung Fu, Capoeira, Eskrima, Escrima, Escryma, Muay Thai, Krav Mag\u00e1, Jeet Kune Do"
+        },
+        "amenity/drinking_water": {
+            "name": "\u00c1gua pot\u00e1vel",
+            "terms": "fonte de \u00e1gua, \u00e1gua pot\u00e1vel, \u00e1gua, bebedouro, bebedoiro, fontan\u00e1rio, fonten\u00e1rio, beber"
+        },
+        "amenity/driving_school": {
+            "name": "Escola de condu\u00e7\u00e3o",
+            "terms": "escolas de condu\u00e7\u00e3o, autoescola, centro de forma\u00e7\u00e3o de condutores, tirar a carta, carta de condu\u00e7\u00e3o, escola, condu\u00e7\u00e3o"
+        },
+        "amenity/embassy": {
+            "name": "Embaixada",
+            "terms": "Consulado"
+        },
+        "amenity/fast_food": {
+            "name": "Comida r\u00e1pida",
+            "terms": "comida instant\u00e2nea, comida de pl\u00e1stico, fast food, fast-food, lanchonete, lancheria, snack-bar, snackbar, snack bar, snak bar, snak-bar, restaurante de fast food, restaurante de comida r\u00e1pida, restaurante de servi\u00e7o r\u00e1pido, restaurante, sandu\u00edche, sanduixe, sanduiche, sande, sandes, casa de sandes, casa das sandes, McDonald's, mac donalds, macdonalds, mc donalds, mcdonalds, Burger King, Subway, rulote, rolote, farturas"
+        },
+        "amenity/fast_food/burger": {
+            "name": "Hamburgueria",
+            "terms": "fast food, burguer, hamburguer, amburguer, amburger, hamburger"
+        },
+        "amenity/fast_food/chicken": {
+            "name": "Comida r\u00e1pida de frango",
+            "terms": "fast food, galinha"
+        },
+        "amenity/fast_food/fish_and_chips": {
+            "name": "Comida r\u00e1pida de peixe e fritos",
+            "terms": "peixe, frito, comida r\u00e1pida, fast food"
+        },
+        "amenity/fast_food/kebab": {
+            "name": "Kebab",
+            "terms": "fast food, kebab"
+        },
+        "amenity/fast_food/mexican": {
+            "name": "Comida r\u00e1pida mexicana",
+            "terms": "mexican fast food, mexican, restaurante mexicano, cozinha mexicana, comida mexicana, mexicano, mexicana, mechicano, mechicana, fast food, taco, burrito, enchilada, fajita, nacho, tortillas, tortilha, salsa, tamales, quesa"
+        },
+        "amenity/fast_food/pizza": {
+            "name": "Pizzaria ",
+            "terms": "fast food, pizza, piza"
+        },
+        "amenity/fast_food/sandwich": {
+            "name": "Sanduicheria",
+            "terms": "sandwich, fast food, sanduiche, sande, sandes, sanduixe, sandu\u00edxe, sandu\u00edche"
+        },
+        "amenity/ferry_terminal": {
+            "name": "Esta\u00e7\u00e3o / terminal de ferry"
+        },
+        "amenity/fire_station": {
+            "name": "Quartel de bombeiros",
+            "terms": "Bombeiros, Quartel, Quartel dos Bombeiros, Quartel de Bombeiros, Bombeiros, Bombeiros Volunt\u00e1rios, BV, Sapadores"
+        },
+        "amenity/food_court": {
+            "name": "Pra\u00e7a de alimenta\u00e7\u00e3o",
+            "terms": "Food Court, comida"
+        },
+        "amenity/fountain": {
+            "name": "Fonte decorativa",
+            "terms": "Fonte, Fonte de \u00c1gua, Jacto de \u00c1gua"
+        },
+        "amenity/fuel": {
+            "name": "Posto de combust\u00edvel",
+            "terms": "Bombas de Abastecimento, Bombas de Gasolina, Bombas de Combust\u00edvel, gasolineira"
+        },
+        "amenity/grave_yard": {
+            "name": "Sepultura (fora de cemit\u00e9rios)",
+            "terms": "Graveyard"
+        },
+        "amenity/grit_bin": {
+            "name": "Caixa de sal de estrada",
+            "terms": "Grit Bin, Sal de Estrada, Sal"
+        },
+        "amenity/hospital": {
+            "name": "Hospital",
+            "terms": "Sala de emerg\u00eancia, Opera\u00e7\u00e3o, Servi\u00e7o de Sa\u00fade, Enfermaria, Cirurgia, Hospital, Hospitais, Centro Hospitalar, Centros Hospitalares"
+        },
+        "amenity/hunting_stand": {
+            "name": "Torre de ca\u00e7a",
+            "terms": "Hunting Stand"
+        },
+        "amenity/ice_cream": {
+            "name": "Geladaria",
+            "terms": "ice cream shop, geladaria, gelataria, sorveteira, sorveteria, loja de sorvete, sorvete, gelado, gelados"
+        },
+        "amenity/internet_cafe": {
+            "name": "Cibercaf\u00e9",
+            "terms": "cyber caf\u00e9, cyber cafe, cyber-caf\u00e9, cyber-cafe, ciber caf\u00e9, ciber cafe, ciber-caf\u00e9, ciber-cafe, cybercafe, cibercafe, cibercaf\u00e9, cybercaf\u00e9, internet caf\u00e9, internet cafe, internet, acesso \u00e0 internet, wi-fi"
+        },
+        "amenity/kindergarten": {
+            "name": "Jardim infantil / infant\u00e1rio",
+            "terms": "preschool, kindergarten, grounds, pr\u00e9-escola, pr\u00e9 escola, creche, jardim de inf\u00e2ncia, jardim-de-inf\u00e2ncia, jardim infantil, pr\u00e9-escola, pr\u00e9-escolar, infant\u00e1rio"
+        },
+        "amenity/language_school": {
+            "name": "Escola de l\u00ednguas",
+            "terms": "escola, idiomas, l\u00ednguas"
+        },
+        "amenity/library": {
+            "name": "Biblioteca",
+            "terms": "Biblioteca, Livros, Consulta, Publica"
+        },
+        "amenity/love_hotel": {
+            "name": "Motel s\u00f3 para casais",
+            "terms": "Motel"
+        },
+        "amenity/marketplace": {
+            "name": "Mercado / feira",
+            "terms": "Bazar, Minimercado"
+        },
+        "amenity/monastery": {
+            "name": "Mosteiro",
+            "terms": "mosteiro, monast\u00e9rio, monge, monges, freira, freiras, congrega\u00e7\u00e3o"
+        },
+        "amenity/money_transfer": {
+            "name": "Esta\u00e7\u00e3o de transfer\u00eancia de dinheiro",
+            "terms": "Esta\u00e7\u00e3o de transfer\u00eancia de dinheiro"
+        },
+        "amenity/motorcycle_parking": {
+            "name": "Parque de motas",
+            "terms": "Estacionamento para motas, estacionamento para motociclos, estacionamento mota"
+        },
+        "amenity/music_school": {
+            "name": "Escola de M\u00fasica",
+            "terms": "conservat\u00f3rio, m\u00fasica, escola"
+        },
+        "amenity/nightclub": {
+            "name": "Discoteca",
+            "terms": "Nightclub, Sal\u00e3o de Dan\u00e7a, disco, clube noturno,"
+        },
+        "amenity/nursing_home": {
+            "name": "Lar de idosos"
+        },
+        "amenity/parking": {
+            "name": "Parque de estacionamento",
+            "terms": "estacionamento, parque, carro, lugar, estacionar, parquear"
+        },
+        "amenity/parking/multi-storey": {
+            "name": "Garagem de estacionamento multi n\u00edvel",
+            "terms": "Garagem de estacionamento de v\u00e1rios n\u00edveis, silo"
+        },
+        "amenity/parking_entrance": {
+            "name": "Entrada / sa\u00edda de estacionamento",
+            "terms": "entrada para estacionamento, entrada, sa\u00edda, estacionamento, estacionar, subterr\u00e2neo, parque de estacionamento"
+        },
+        "amenity/parking_space": {
+            "name": "Lugar de estacionamento",
+            "terms": "Lugar de estacionamento, Estacionamento, Estacionar"
+        },
+        "amenity/payment_centre": {
+            "name": "Centro de pagamento",
+            "terms": "pagamento, pagar"
+        },
+        "amenity/payment_terminal": {
+            "name": "Terminal de pagamento",
+            "terms": "Terminal, pagamento, pagar"
+        },
+        "amenity/pharmacy": {
+            "name": "Farm\u00e1cia",
+            "terms": "farm\u00e1cia, farmac\u00eautico, medicamento"
+        },
+        "amenity/photo_booth": {
+            "name": "Cabine de fotografia instant\u00e2nea",
+            "terms": "Cabine de fotografia instant\u00e2nea"
+        },
+        "amenity/place_of_worship": {
+            "name": "Local de ora\u00e7\u00e3o",
+            "terms": "Abadia, Bas\u00edlica, Casa de Adora\u00e7\u00e3o, Casa de Deus, Catedral, Capela, Capelinha, Centro Espiritual, Santu\u00e1rio, Templo"
+        },
+        "amenity/place_of_worship/buddhist": {
+            "name": "Templo budista",
+            "terms": "Estupa, Vihara, Mosteiro, Templo, Pagode, Zendo, Dojo, Budista, Budistas, Budismo"
+        },
+        "amenity/place_of_worship/christian": {
+            "name": "Igreja crist\u00e3",
+            "terms": "crist\u00e3, crist\u00e3o, cristianismo"
+        },
+        "amenity/place_of_worship/hindu": {
+            "name": "Templo hindu",
+            "terms": "templo, hindu, hindu\u00edsmo, hinduismo, hindu\u00edsta, hinduista"
+        },
+        "amenity/place_of_worship/jewish": {
+            "name": "Sinagoga judaica",
+            "terms": "judaica, judaico, juda\u00edsmo"
+        },
+        "amenity/place_of_worship/muslim": {
+            "name": "Mesquita isl\u00e2mica",
+            "terms": "isl\u00e3o, islamismo, isl\u00e3"
+        },
+        "amenity/place_of_worship/shinto": {
+            "name": "Templo xinto\u00edsta",
+            "terms": "Templo xinto\u00edsta, santu\u00e1rio xinto\u00edsta, xinto\u00edsta, xintoista, xinto\u00edsmo, xintoismo, templo"
+        },
+        "amenity/place_of_worship/sikh": {
+            "name": "Templo sikh",
+            "terms": "gurdwara, sikhismo, siquismo , sikh, templo"
+        },
+        "amenity/place_of_worship/taoist": {
+            "name": "Templo taoista",
+            "terms": "taoismo, tauismo, daoismo, templo"
+        },
+        "amenity/planetarium": {
+            "name": "Planet\u00e1rio",
+            "terms": "Planetarium"
+        },
+        "amenity/police": {
+            "name": "Esquadra",
+            "terms": "Pol\u00edcia, GNR, G.N.R., PSP, P.S.P., Pol\u00edcia de Seguran\u00e7a P\u00fablica, Guarda Nacional Republicana, Judici\u00e1ria, Pol\u00edcia Mar\u00edtima, posto de pol\u00edcia,"
+        },
+        "amenity/post_box": {
+            "name": "Marco de correio",
+            "terms": "Marco de Correio, Caixa Postal, Posto de Correio, caixa de correio, ctt,"
+        },
+        "amenity/post_office": {
+            "name": "Esta\u00e7\u00e3o de correios",
+            "terms": "Central de Correio, CTT, C.T.T., CTTs, Correio de Portugal"
+        },
+        "amenity/prison": {
+            "name": "Pris\u00e3o",
+            "terms": "prison, pris\u00e3o, prisional, presidi\u00e1rio, estabelecimento prisional"
+        },
+        "amenity/pub": {
+            "name": "Taberna / tasca",
+            "terms": "pub, taverna, taberna, petiscos, petisqueira, locanda, tasco, tasca, tasquinha, boteco, buteco, botequim, chopperia, choperia"
+        },
+        "amenity/public_bath": {
+            "name": "Banho p\u00fablico",
+            "terms": "banhos p\u00fablicos"
+        },
+        "amenity/public_bookcase": {
+            "name": "Biblioteca livre",
+            "terms": "Public Bookcase, Estante P\u00fablica, Livros para o P\u00fablico"
+        },
+        "amenity/ranger_station": {
+            "name": "Posto de guarda florestal",
+            "terms": "Ranger Station, Guarda Florestal"
+        },
+        "amenity/recycling": {
+            "name": "Reciclagem"
+        },
+        "amenity/recycling_centre": {
+            "name": "Centro de reciclagem",
+            "terms": "centro de reciclagem, ecocentro, eco-centro, eco centro, reciclagem, reciclar, recicla, centro"
+        },
+        "amenity/recycling_container": {
+            "name": "Contentor de reciclagem",
+            "terms": "Ecoponto, ilhas ecol\u00f3gicas, contentor, reciclar, reciclagem, papel\u00e3o, pilh\u00e3o, ole\u00e3o, vidr\u00e3o, embal\u00e3o"
+        },
+        "amenity/register_office": {
+            "name": "Conservat\u00f3ria do registo civil"
+        },
+        "amenity/restaurant": {
+            "name": "Restaurante",
+            "terms": "cantina, almo\u00e7o, jantar, cozinha, restaurante, culin\u00e1ria, gastronomia, restaura\u00e7\u00e3o"
+        },
+        "amenity/restaurant/american": {
+            "name": "Restaurante americano",
+            "terms": "restaurante de comida americana, restaurante, comida americana, cozinha americana, restaurante americano, americano, americana"
+        },
+        "amenity/restaurant/asian": {
+            "name": "Restaurante asi\u00e1tico",
+            "terms": "restaurante de comida asi\u00e1tica, restaurante, comida asi\u00e1tica, cozinha asi\u00e1tica, restaurante asi\u00e1tico, asi\u00e1tico, asi\u00e1tica, azi\u00e1tica, azi\u00e1tico"
+        },
+        "amenity/restaurant/chinese": {
+            "name": "Restaurante chin\u00eas",
+            "terms": "restaurante de comida chinesa, comida chinesa, comida chineza, chinesa, chineza, xinesa. xineza, restaurante xin\u00eas, restaurante chin\u00eas"
+        },
+        "amenity/restaurant/french": {
+            "name": "Restaurante franc\u00eas",
+            "terms": "restaurante de comida francesa, restaurante, comida francesa, francesa, franc\u00eas, restaurante franc\u00eas, cozinha francesa, franc\u00eas"
+        },
+        "amenity/restaurant/german": {
+            "name": "Restaurante alem\u00e3o",
+            "terms": "restaurante de comida alem\u00e3, restaurante, comida alem\u00e3, alem\u00e3, restaurante alem\u00e3o, cozinha alem\u00e3, ale\u00e3o"
+        },
+        "amenity/restaurant/greek": {
+            "name": "Restaurante grego",
+            "terms": "restaurante de comida grega, restaurante, comida grega, grega, restaurante grego, cozinha grega, grego"
+        },
+        "amenity/restaurant/indian": {
+            "name": "Restaurante indiano",
+            "terms": "restaurante de comida indiana, restaurante, comida indiana, restaurante indiano, indiano, indiana, cozinha indiana"
+        },
+        "amenity/restaurant/italian": {
+            "name": "Restaurante italiano",
+            "terms": "restaurante de comida italiana, restaurante, restaurante italiano, cozinha italiana, italiana, italiano"
+        },
+        "amenity/restaurant/japanese": {
+            "name": "Restaurante japon\u00eas",
+            "terms": "restaurante de comida japonesa, restaurante japon\u00eas, cozinha japonesa, comida japonesa, japon\u00eas, japonesa, japoneza, japonez"
+        },
+        "amenity/restaurant/mexican": {
+            "name": "Restaurante mexicano",
+            "terms": "Restaurante de comida mexicana, comida mexicana, cozinha mexicana, restaurante mexicano, mexicano, mexicana, mechicano, mechicana"
+        },
+        "amenity/restaurant/noodle": {
+            "name": "Restaurante de noodle",
+            "terms": "noodle"
+        },
+        "amenity/restaurant/pizza": {
+            "name": "Pizzaria",
+            "terms": "pizza, piza, pizzas, pizas"
+        },
+        "amenity/restaurant/seafood": {
+            "name": "Restaurante de marisco",
+            "terms": "marisqueira, marisco, peixe, restaurante"
+        },
+        "amenity/restaurant/steakhouse": {
+            "name": "Churrascaria",
+            "terms": "churrasqueira, churrasco, frango"
+        },
+        "amenity/restaurant/sushi": {
+            "name": "Restaurante de sushi",
+            "terms": "restaurante, sushi"
+        },
+        "amenity/restaurant/thai": {
+            "name": "Restaurante tailand\u00eas",
+            "terms": "Restaurante de comida tailandesa, comida tailandesa, restaurante tailand\u00eas, cozinha tailandesa, tailand\u00eas, tailandesa, tailandez, tailandeza"
+        },
+        "amenity/restaurant/turkish": {
+            "name": "Restaurante turco",
+            "terms": "Restaurante de comida turca, comida turca, restaurante turco, cozinha turca, turco, turca"
+        },
+        "amenity/restaurant/vietnamese": {
+            "name": "Restaurante vietnamita",
+            "terms": "Restaurante de comida vietnamita, comida vietnamita, restaurante vietnamita, cozinha vietnamita, vietname, vietnamita"
+        },
+        "amenity/sanitary_dump_station": {
+            "name": "Escoamento sanit\u00e1rio de autocaravana",
+            "terms": "escoamento de \u00e1guas residuais de autocaravanas, dejetos, esta\u00e7\u00e3o de servi\u00e7o para autocaravanas, \u00e1guas residuais, res\u00edduos, esgotos, autocaravana, caravana, trailer, motocasa, auto-caravana, caravanismo, rulote, rolote, motorhome"
+        },
+        "amenity/school": {
+            "name": "Escola",
+            "terms": "Academia, Creche, Col\u00e9gio, Departamento, Externato, Liceu, Semin\u00e1rio"
+        },
+        "amenity/scrapyard": {
+            "name": "Sucata"
+        },
+        "amenity/shelter": {
+            "name": "Abrigo",
+            "terms": "Shelter"
+        },
+        "amenity/shelter/gazebo": {
+            "name": "Gazebo",
+            "terms": "Gazebo"
+        },
+        "amenity/shelter/lean_to": {
+            "name": "Alpendre",
+            "terms": "alpendre, abrigo"
+        },
+        "amenity/shelter/picnic_shelter": {
+            "name": "Abrigo para piquenique",
+            "terms": "Cobertura de piquenique"
+        },
+        "amenity/shelter/public_transport": {
+            "name": "Abrigo de transporte p\u00fablico",
+            "terms": "abrigo, paragem, transporte p\u00fablico"
+        },
+        "amenity/shower": {
+            "name": "Chuveiro",
+            "terms": "Shower, chuveiro p\u00fablico, shuveiro, xuveiro, chubeiro, xubeiro, shubeiro, banho"
+        },
+        "amenity/smoking_area": {
+            "name": "\u00c1rea para fumadores",
+            "terms": "fumadores, fumar"
+        },
+        "amenity/social_facility": {
+            "name": "Centro social",
+            "terms": "Social Facility, Casa do Povo"
+        },
+        "amenity/social_facility/food_bank": {
+            "name": "Banco alimentar",
+            "terms": "Food Bank, Alimento, Comida"
+        },
+        "amenity/social_facility/group_home": {
+            "name": "Lar de idosos",
+            "terms": "Elderly Group Home"
+        },
+        "amenity/social_facility/homeless_shelter": {
+            "name": "Abrigo para os sem-abrigo",
+            "terms": "Homeless Shelter, Casa para os Sem-Abrigo, Casa P\u00fablica, Sem-Abrigo"
+        },
+        "amenity/social_facility/nursing_home": {
+            "name": "Lar de idosos (com cuidado m\u00e9dico)",
+            "terms": "lar de terceira idade, terceira idade, lar"
+        },
+        "amenity/studio": {
+            "name": "Est\u00fadio",
+            "terms": "Studio"
+        },
+        "amenity/swimming_pool": {
+            "name": "Piscina"
+        },
+        "amenity/taxi": {
+            "name": "Pra\u00e7a de t\u00e1xis",
+            "terms": "Paragem de T\u00e1xis, T\u00e1xi, Taxi"
+        },
+        "amenity/telephone": {
+            "name": "Telefone",
+            "terms": "Telefone, Telem\u00f3vel"
+        },
+        "amenity/theatre": {
+            "name": "Teatro",
+            "terms": "Teatro, Performance, Pe\u00e7a, Pe\u00e7a de Teatro, Musical"
+        },
+        "amenity/theatre/type/amphi": {
+            "name": "Anfiteatro",
+            "terms": "anfiteatro, anfiteatros"
+        },
+        "amenity/toilets": {
+            "name": "Casas de banho",
+            "terms": "Casas de Banho, Instala\u00e7\u00f5es Sanit\u00e1rias, Sanit\u00e1rio, Gabinete Sanit\u00e1rio, Toilette, lavabo, WC, W.C."
+        },
+        "amenity/townhall": {
+            "name": "C\u00e2mara municipal / Junta de freguesia",
+            "terms": "Junta, C\u00e2mara, Pa\u00e7os, Centro Administrativo, Capital de Concelho, Capital de Freguesia, Capital de Distrito, Capital de Regi\u00e3o"
+        },
+        "amenity/university": {
+            "name": "Universidade",
+            "terms": "university grounds, universidade, faculdade, escola superior, centro universit\u00e1rio, polit\u00e9cnico, instituto polit\u00e9cnico, instituto, instituto universit\u00e1rio, col\u00e9gio, academia, escola"
+        },
+        "amenity/vehicle_inspection": {
+            "name": "Centro de inspe\u00e7\u00e3o de ve\u00edculos",
+            "terms": "inspe\u00e7\u00e3o, ve\u00edculos, CIV, ITV, IPO, inspecionar, verificar, verifica\u00e7\u00e3o"
+        },
+        "amenity/vending_machine": {
+            "name": "M\u00e1quina de venda autom\u00e1tica",
+            "terms": "m\u00e1quina, tabaco, bebidas, bilhetes, venda autom\u00e1tica"
+        },
+        "amenity/vending_machine/cigarettes": {
+            "name": "M\u00e1quina de tabaco",
+            "terms": "Cigarette Vending Machine, Tabaco, Cigarros"
+        },
+        "amenity/vending_machine/coffee": {
+            "name": "M\u00e1quina de venda de caf\u00e9",
+            "terms": "m\u00e1quina de caf\u00e9 autom\u00e1tica, caf\u00e9"
+        },
+        "amenity/vending_machine/condoms": {
+            "name": "Dispensador de preservativos ",
+            "terms": "Condom Vending Machine, M\u00e1quina de venda de preservativos, preservativo"
+        },
+        "amenity/vending_machine/drinks": {
+            "name": "M\u00e1quina de bebidas",
+            "terms": "Drink Vending Machine, M\u00e1quina de venda de bebidas, bebida, refrigerante, sumo"
+        },
+        "amenity/vending_machine/electronics": {
+            "name": "M\u00e1quina de venda autom\u00e1tica de material eletr\u00f3nico",
+            "terms": "m\u00e1quina, venda autom\u00e1tica, aparelhos eletr\u00f3nicos, eletr\u00f3nica, electr\u00f3nica, electr\u00f3nico, electr\u00f3nicos"
+        },
+        "amenity/vending_machine/elongated_coin": {
+            "name": "M\u00e1quina de venda autom\u00e1tica de moedas alongadas",
+            "terms": "M\u00e1quina, venda autom\u00e1tica, moedas"
+        },
+        "amenity/vending_machine/excrement_bags": {
+            "name": "Distribuidor de sacos de excrementos",
+            "terms": "excrement, excrementos, coc\u00f3, dejetos, saco, sacos"
+        },
+        "amenity/vending_machine/feminine_hygiene": {
+            "name": "M\u00e1quina de venda de produtos de higiene feminina",
+            "terms": "Higiene Feminina"
+        },
+        "amenity/vending_machine/food": {
+            "name": "M\u00e1quina de venda de alimentos",
+            "terms": "m\u00e1quina, venda autom\u00e1tica, comida, alimentos"
+        },
+        "amenity/vending_machine/fuel": {
+            "name": "Bomba de combust\u00edvel",
+            "terms": "bomba, combust\u00edvel, gasolina, diesel, gas\u00f3leo, abastecimento, esta\u00e7\u00e3o"
+        },
+        "amenity/vending_machine/ice_cream": {
+            "name": "M\u00e1quina de venda de gelados",
+            "terms": "m\u00e1quina, venda autom\u00e1tica, gelados"
+        },
+        "amenity/vending_machine/news_papers": {
+            "name": "M\u00e1quina de venda autom\u00e1tica de jornais"
+        },
+        "amenity/vending_machine/newspapers": {
+            "name": "M\u00e1quina de venda autom\u00e1tica de jornais",
+            "terms": "jornais, jornal, revista, revistas, m\u00e1quina de venda"
+        },
+        "amenity/vending_machine/parcel_pickup": {
+            "name": "Arm\u00e1rio para entrega de encomendas",
+            "terms": "parcel pickup locker, arm\u00e1rio de coleta, arm\u00e1rio de recolha, encomenda, encomendas, entrega"
+        },
+        "amenity/vending_machine/parcel_pickup_dropoff": {
+            "name": "Arm\u00e1rio para recolha e entrega de encomendas",
+            "terms": "parcel pickup, dropoff, coleta, arm\u00e1rio, recolha, entrega, encomenda, encomendas"
+        },
+        "amenity/vending_machine/parking_tickets": {
+            "name": "M\u00e1quina de bilhetes de estacionamento",
+            "terms": "M\u00e1quina ticket de estacionamento"
+        },
+        "amenity/vending_machine/public_transport_tickets": {
+            "name": "M\u00e1quina de bilhetes de transporte",
+            "terms": "Transit Ticket Vending Machine, Bilheteira, bilhete"
+        },
+        "amenity/vending_machine/stamps": {
+            "name": "M\u00e1quina de venda autom\u00e1tica de fundos",
+            "terms": "m\u00e1quina de venda autom\u00e1tica de selos, selo, selos, correios, franquia"
+        },
+        "amenity/vending_machine/sweets": {
+            "name": "M\u00e1quina de snacks",
+            "terms": "Snack Vending Machine, sande, sandes"
+        },
+        "amenity/veterinary": {
+            "name": "Veterin\u00e1rio",
+            "terms": "Veterinary, Veterin\u00e1ria, Animais, Veteren\u00e1rio, M\u00e9dico, M\u00e9dicos, M\u00e9dica, M\u00e9dicas"
+        },
+        "amenity/waste/dog_excrement": {
+            "name": "Balde para excrementos de c\u00e3es",
+            "terms": "excrementos, saco, c\u00e3es, c\u00e3o, saqueta, coc\u00f3"
+        },
+        "amenity/waste_basket": {
+            "name": "Caixote do lixo",
+            "terms": "Caixotes, Papeleira, Lixo, Reciclagem, Cesto"
+        },
+        "amenity/waste_disposal": {
+            "name": "Contentor de lixo",
+            "terms": "Garbage Dumpster"
+        },
+        "amenity/waste_transfer_station": {
+            "name": "Esta\u00e7\u00e3o de transfer\u00eancia de lixo",
+            "terms": "Waste Transfer Station"
+        },
+        "amenity/water_point": {
+            "name": "\u00c1gua pot\u00e1vel para autocaravanas",
+            "terms": "rv drinking water, \u00e1gua, caravana, autocaravana, trailer, motocasa, caravana, auto-caravana, caravanismo, rulote, rolote, motorhome"
+        },
+        "amenity/watering_place": {
+            "name": "Bebedouro para animais ",
+            "terms": "\u00e1gua, bebedouro, bebedoiro, pia, tanque, animais, beber"
+        },
+        "area": {
+            "name": "\u00c1rea",
+            "terms": "Espa\u00e7o, Extens\u00e3o, Zona"
+        },
+        "area/highway": {
+            "name": "Superf\u00edcie da estrada",
+            "terms": "tipo de piso, piso, superf\u00edcie estrada, tipo superf\u00edcie,"
+        },
+        "attraction": {
+            "name": "Atra\u00e7\u00e3o tur\u00edstica"
+        },
+        "attraction/amusement_ride": {
+            "name": "Atra\u00e7\u00e3o de parque de divers\u00f5es",
+            "terms": "atra\u00e7\u00e3o, parque de divers\u00f5es, montanha russa, camicase, ranger, kamikase, navio pirata, carrossel, carrosel, carrocel, carroce\u00eds, carros\u00e9is, carross\u00e9is, carrinhos de choque, cestas"
+        },
+        "attraction/animal": {
+            "name": "Animal",
+            "terms": "animal, animais, zool\u00f3gico, le\u00e3o, tigre, urso"
+        },
+        "attraction/big_wheel": {
+            "name": "Roda gigante",
+            "terms": "Ferris wheel, Big Wheel, roda-gigante, roda panor\u00e2mica, roda"
+        },
+        "attraction/bumper_car": {
+            "name": "Carrinhos de choque",
+            "terms": "carro de choque, carros de choque, carrinhos de batida, carrinho de choque, carrinhos de choque, carro de xoque, carros de xoque, carrinho de xoque, carrinhos de xoque"
+        },
+        "attraction/bungee_jumping": {
+            "name": "Bungee Jumping",
+            "terms": "Bungee, Jumping, salto de el\u00e1stico, salto, saltar"
+        },
+        "attraction/carousel": {
+            "name": "Carrossel",
+            "terms": "Carousel, carrosel, carosel, carossel, carros\u00e9is, carross\u00e9is, carroc\u00e9is,  trivoli, maxambomba"
+        },
+        "attraction/dark_ride": {
+            "name": "Comboio fantasma",
+            "terms": "Dark Ride, escuro, susto, sustos, fantasmag\u00f3rico"
+        },
+        "attraction/drop_tower": {
+            "name": "Torre de queda livre",
+            "terms": "Drop Towe, torre de ca\u00edda, cair, ca\u00edda, base jump,"
+        },
+        "attraction/maze": {
+            "name": "Labirinto",
+            "terms": "Labirinto"
+        },
+        "attraction/pirate_ship": {
+            "name": "Barco pirata",
+            "terms": "Pirate Ship, barco, pirata, cors\u00e1rio"
+        },
+        "attraction/river_rafting": {
+            "name": "Rafting",
+            "terms": "canoagem \u00e1guas bravas, \u00e1guas bravas,"
+        },
+        "attraction/roller_coaster": {
+            "name": "Montanha russa ",
+            "terms": "montanhas-russas, montanhas russas, montanha russa"
+        },
+        "attraction/summer_toboggan": {
+            "name": "Montanha russa alpina",
+            "terms": "summer toboggan, montanha russa"
+        },
+        "attraction/train": {
+            "name": "Comboio tur\u00edstico",
+            "terms": "locomotiva tur\u00edstica, comboios tur\u00edsticos, tur\u00edstico, comboio, mini-comboio mini comboio, mini-comboio"
+        },
+        "attraction/water_slide": {
+            "name": "Escorrega de \u00e1gua",
+            "terms": "tobogan, tobo\u00e1gua, escorregador, escorrega"
+        },
+        "barrier": {
+            "name": "Barreira",
+            "terms": "Barreira, Muro"
+        },
+        "barrier/block": {
+            "name": "Bloco de cimento / pedra",
+            "terms": "Bloqueio, Obst\u00e1culo"
+        },
+        "barrier/bollard": {
+            "name": "Pilarete",
+            "terms": "Bolardo, Poste de Amarra\u00e7\u00e3o, pilar"
+        },
+        "barrier/border_control": {
+            "name": "Controlo de fronteira",
+            "terms": "controlo fronteiri\u00e7o"
+        },
+        "barrier/cattle_grid": {
+            "name": "Grelha anti-gado",
+            "terms": "Gado, Vaca, Porco, Boi, Cabra, Ovelha, Cavalo"
+        },
+        "barrier/city_wall": {
+            "name": "Muralha de cidade",
+            "terms": "Muro defensivo, Parede Defensiva, Muro Hist\u00f3rico, Fortifica\u00e7\u00f5es"
+        },
+        "barrier/cycle_barrier": {
+            "name": "Barreira de bicicletas",
+            "terms": "Bicicleta"
+        },
+        "barrier/ditch": {
+            "name": "Fosso / vala / trincheira (seca)",
+            "terms": "Trench"
+        },
+        "barrier/entrance": {
+            "name": "Entrada"
+        },
+        "barrier/fence": {
+            "name": "Veda\u00e7\u00e3o",
+            "terms": "Cerca, Prote\u00e7\u00e3o"
+        },
+        "barrier/fence/railing": {
+            "name": "Corrim\u00e3o",
+            "terms": "Balaustrada"
+        },
+        "barrier/gate": {
+            "name": "Cancela / port\u00e3o",
+            "terms": "Grade"
+        },
+        "barrier/guard_rail": {
+            "name": "Rails",
+            "terms": "guard rail, mureta, defensa met\u00e1lica, rail"
+        },
+        "barrier/hedge": {
+            "name": "Sebe",
+            "terms": "Arbusto, Muro de Flores, Muro de Plantas"
+        },
+        "barrier/kerb": {
+            "name": "Lancil",
+            "terms": "meio-fio, guia, lancil"
+        },
+        "barrier/kerb/flush": {
+            "name": "Lancil de rampa",
+            "terms": "abaixamento da cal\u00e7ada, cal\u00e7ada abaixada, rebordo abaixado, rampa, plano inclinado, carrinho, rebaixamento, afloramento"
+        },
+        "barrier/kerb/lowered": {
+            "name": "Lancil abaixado",
+            "terms": "rebaixamento da cal\u00e7ada, barco, borda rebaixada, rampa, plano inclinado, carrinho"
+        },
+        "barrier/kissing_gate": {
+            "name": "Cancela de encosto anti-gado",
+            "terms": "Grade de Gado"
+        },
+        "barrier/lift_gate": {
+            "name": "Barreira autom\u00e1tica",
+            "terms": "Cancela Elevat\u00f3ria, Barreira de Estacionamento"
+        },
+        "barrier/retaining_wall": {
+            "name": "Muro de conten\u00e7\u00e3o",
+            "terms": "Arrimo, Amparo"
+        },
+        "barrier/stile": {
+            "name": "Passagem anti-gado",
+            "terms": "Escada"
+        },
+        "barrier/toll_booth": {
+            "name": "Portagem",
+            "terms": "Ped\u00e1gio, Tarifa, P\u00f3rtico"
+        },
+        "barrier/wall": {
+            "name": "Muro",
+            "terms": "Parede, Muro"
+        },
+        "boundary": {
+            "name": "Fronteira"
+        },
+        "boundary/administrative": {
+            "name": "Fronteira administrativa",
+            "terms": "Fronteira Administrativa, Concelho, Freguesia, Distrito, Regi\u00e3o, Limite Adminsitrativo"
+        },
+        "bridge/support": {
+            "name": "Suporte da ponte",
+            "terms": "suporte, ponte"
+        },
+        "bridge/support/pier": {
+            "name": "Pilar de ponte",
+            "terms": "pilar, ponte"
+        },
+        "building": {
+            "name": "Edif\u00edcio",
+            "terms": "edif\u00edcio, pr\u00e9dio, moradia, resid\u00eancia, casa, habita\u00e7\u00e3o, edifica\u00e7\u00e3o, edificado, arranha c\u00e9u, arranha-c\u00e9u"
+        },
+        "building/apartments": {
+            "name": "Edif\u00edcio de apartamentos",
+            "terms": "edif\u00edcio, apartamento, pr\u00e9dio, moradia, resid\u00eancia, casa, habita\u00e7\u00e3o, habita\u00e7\u00f5es, edifica\u00e7\u00e3o, edificado, arranha c\u00e9u, arranha-c\u00e9u"
+        },
+        "building/barn": {
+            "name": "Celeiro",
+            "terms": "Barn, Est\u00e1bulo"
+        },
+        "building/boathouse": {
+            "name": "Casa barco",
+            "terms": "casa, barco, casa-barco"
+        },
+        "building/bungalow": {
+            "name": "Bangal\u00f4",
+            "terms": "bungalow, bangal\u00f3, bangal\u00f4, bangalou, bangalu"
+        },
+        "building/bunker": {
+            "name": "B\u00fanquer"
+        },
+        "building/cabin": {
+            "name": "Cabine",
+            "terms": "Cabin, Praia, Campo, Cabana"
+        },
+        "building/carport": {
+            "name": "Abrigo de viatura",
+            "terms": "abrigo de carro, garagem"
+        },
+        "building/cathedral": {
+            "name": "Edif\u00edcio de catedral",
+            "terms": "cathedral, catedral, s\u00e9, templo, crist\u00e3o, concatedral, co-catedral"
+        },
+        "building/chapel": {
+            "name": "Edif\u00edcio de capela",
+            "terms": "chapel, capela, capelinha, ermida"
+        },
+        "building/church": {
+            "name": "Edif\u00edcio de igreja",
+            "terms": "church, igreija, igreja, templo, crist\u00e3o"
+        },
+        "building/civic": {
+            "name": "Edif\u00edcio c\u00edvico",
+            "terms": "civil, edif\u00edcio"
+        },
+        "building/college": {
+            "name": "Edif\u00edco colegial ",
+            "terms": "College Building, Col\u00e9gio"
+        },
+        "building/commercial": {
+            "name": "Edif\u00edcio de comercial",
+            "terms": "pr\u00e9dio comercial, edif\u00edcio comercial, com\u00e9rcio, neg\u00f3cios, escrit\u00f3rios"
+        },
+        "building/construction": {
+            "name": "Edif\u00edcio em constru\u00e7\u00e3o",
+            "terms": "nuilding under construction, edif\u00edcio sob constru\u00e7\u00e3o, em constru\u00e7\u00e3o, constru\u00e7\u00e3o, construir, construindo, edificar"
+        },
+        "building/detached": {
+            "name": "Casa isolada",
+            "terms": "Detached House"
+        },
+        "building/dormitory": {
+            "name": "Dormit\u00f3rio",
+            "terms": "Dormitory, Repousada, Albergue"
+        },
+        "building/entrance": {
+            "name": "Entrada / sa\u00edda"
+        },
+        "building/farm": {
+            "name": "Casa de quinta",
+            "terms": "Casa do campo"
+        },
+        "building/farm_auxiliary": {
+            "name": "Edif\u00edcio agr\u00edcola",
+            "terms": "edif\u00edcio do campo, agr\u00edcola, agricultura, quinta"
+        },
+        "building/garage": {
+            "name": "Garagem",
+            "terms": "Garagem, Abrigo de Automoveis"
+        },
+        "building/garages": {
+            "name": "Garagens",
+            "terms": "Garages"
+        },
+        "building/grandstand": {
+            "name": "Arquibancada",
+            "terms": "arquibancada, estrado, tablado, tribuna de orador"
+        },
+        "building/greenhouse": {
+            "name": "Estufa",
+            "terms": "Greenhouse, Estufas"
+        },
+        "building/hospital": {
+            "name": "Edif\u00edcio hospitalar",
+            "terms": "hospital building, hospital"
+        },
+        "building/hotel": {
+            "name": "Edif\u00edcio hoteleiro",
+            "terms": "hotel, alojamento, complexo hoteleiro, hoteleiro, hot\u00e9is"
+        },
+        "building/house": {
+            "name": "Casa",
+            "terms": "Casa, Domic\u00edlio, Moradia, Mans\u00e3o, Solar, Vivenda"
+        },
+        "building/hut": {
+            "name": "Cabana",
+            "terms": "Barraca"
+        },
+        "building/industrial": {
+            "name": "Edif\u00edcio industrial",
+            "terms": "ind\u00fastria, industria, manufactura, f\u00e1brica, fabrico, indiustrial, fabril, pavilh\u00e3o"
+        },
+        "building/kindergarten": {
+            "name": "Edif\u00edcio de jardim infantil / infant\u00e1rio",
+            "terms": "preschool, kindergarten, grounds, pr\u00e9-escola, pr\u00e9 escola, creche, jardim\n de inf\u00e2ncia, jardim-de-inf\u00e2ncia, jardim infantil, pr\u00e9-escola, \npr\u00e9-escolar, infant\u00e1rio, edif\u00edcio"
+        },
+        "building/mosque": {
+            "name": "Edif\u00edcio mesquita",
+            "terms": "mosque, mesquita, templo, \u00e1rabe"
+        },
+        "building/pavilion": {
+            "name": "Pavilh\u00e3o",
+            "terms": "pavilh\u00e3o, quiosque"
+        },
+        "building/public": {
+            "name": "Edif\u00edcio p\u00fablico",
+            "terms": "Public Building"
+        },
+        "building/residential": {
+            "name": "Edif\u00edcio residencial",
+            "terms": "Pr\u00e9dio Residencial, Habita\u00e7\u00e3o"
+        },
+        "building/retail": {
+            "name": "Edif\u00edcio de retalho",
+            "terms": "Retail Building, Retalho, Varejo"
+        },
+        "building/roof": {
+            "name": "Cobertura",
+            "terms": "Roof, Coberto, Telhado"
+        },
+        "building/ruins": {
+            "name": "Ru\u00ednas de edif\u00edcio",
+            "terms": "Edif\u00edcio em ru\u00ednas"
+        },
+        "building/school": {
+            "name": "Edif\u00edcio escolar",
+            "terms": "School Building, Pavilh\u00e3o Escolar, Escola"
+        },
+        "building/semidetached_house": {
+            "name": "Casa semi-isolada",
+            "terms": "Semi-Detached House"
+        },
+        "building/service": {
+            "name": "Edif\u00edcio de servi\u00e7os",
+            "terms": "edif\u00edcio, servi\u00e7os, anexo, casa das m\u00e1quinas"
+        },
+        "building/shed": {
+            "name": "Barrac\u00e3o",
+            "terms": "Shed, Barraca, Ed\u00edcula"
+        },
+        "building/stable": {
+            "name": "Est\u00e1bulo",
+            "terms": "Stable, Cavalo, Cavalos, Cavalari\u00e7a, Cavalari\u00e7as"
+        },
+        "building/stadium": {
+            "name": "Edif\u00edcio do est\u00e1dio",
+            "terms": "est\u00e1dio, arena"
+        },
+        "building/static_caravan": {
+            "name": "Casa pr\u00e9-fabricada",
+            "terms": "Static Mobile Home, Trailer, Caravana,"
+        },
+        "building/temple": {
+            "name": "Edif\u00edcio de templo",
+            "terms": "edif\u00edcio, templo"
+        },
+        "building/terrace": {
+            "name": "Casas geminadas",
+            "terms": "Row Houses, Terraced house, Terra\u00e7os"
+        },
+        "building/train_station": {
+            "name": "Edif\u00edcio de esta\u00e7\u00e3o de comboios"
+        },
+        "building/transportation": {
+            "name": "Edif\u00edcio de transporte",
+            "terms": "transportation building, transporte, log\u00edstica"
+        },
+        "building/university": {
+            "name": "Edif\u00edcio universit\u00e1rio",
+            "terms": "university building, edif\u00edcio universit\u00e1rio, edif\u00edcio, universidade, faculdade, escola superior, centro universit\u00e1rio, polit\u00e9cnico, instituto polit\u00e9cnico, instituto, instituto universit\u00e1rio, col\u00e9gio, academia, escola"
+        },
+        "building/warehouse": {
+            "name": "Armaz\u00e9m",
+            "terms": "Warehouse, Arrecada\u00e7\u00e3o"
+        },
+        "camp_site/camp_pitch": {
+            "name": "S\u00edtio para acampar",
+            "terms": "acampar, acampar ao ar livre,"
+        },
+        "circular": {
+            "name": "Rotunda"
+        },
+        "club": {
+            "name": "Clube",
+            "terms": "club, clube, aeromodelismo, radioamador, filatelia, xadrez, astronomia, automobilismo, associa\u00e7\u00e3o, f\u00e3-clube, f\u00e3, templo ma\u00e7\u00f4nico, ma\u00e7onaria, ma\u00e7om, ca\u00e7a, motociclismo, moto clube, nudismo, fotografia, escoteiro, escotismo, hobby, futebol, desporto, atletismo, gin\u00e1stica, basquetebol, voleibol, t\u00e9nis, nata\u00e7\u00e3o"
+        },
+        "club/sport": {
+            "name": "Clube desportivo",
+            "terms": "sports club, sporting club, athletics club, sports society, sports association, clube, desportivo, clube de desporto, desporto, futebol, clube de futebol, futebol clube, club, football, esporte"
+        },
+        "craft": {
+            "name": "Artes\u00e3o",
+            "terms": "Craft, Arofiss\u00e3o, Artesanato"
+        },
+        "craft/basket_maker": {
+            "name": "Cesteiro",
+            "terms": "Basket Maker, Fabricante de Cestas, Fabricante de Cestos, Cesto, Cesta"
+        },
+        "craft/beekeeper": {
+            "name": "Apicultor",
+            "terms": "Beekeeper, Mel, Cuidador de Abelhas, Abelha, Abelhas"
+        },
+        "craft/blacksmith": {
+            "name": "Ferreiro",
+            "terms": "Blacksmith, Forjador"
+        },
+        "craft/boatbuilder": {
+            "name": "Fabricante de barcos",
+            "terms": "Boat Builder, Construtor de Barcos, Construtor de Iates, Barcos, Barco, Iate, Iates, Embarca\u00e7\u00e3o, Embarca\u00e7\u00f5es, Pesqueiro"
+        },
+        "craft/bookbinder": {
+            "name": "Encadernador",
+            "terms": "Bookbinder, Plastificador, Livro, Livros"
+        },
+        "craft/brewery": {
+            "name": "Cervejaria artesanal",
+            "terms": "Brewery, Mestre Cervejeiro, Cerveja, Cervejaria, cerveja artesanal"
+        },
+        "craft/carpenter": {
+            "name": "Carpinteiro",
+            "terms": "Carpenter, Carpintaria, Madeira"
+        },
+        "craft/carpet_layer": {
+            "name": "Colocador de tapetes",
+            "terms": "Carpet Layer, Instalador de Carpetes, Carpete, Tapetes"
+        },
+        "craft/caterer": {
+            "name": "Catering",
+            "terms": "Caterer, Catering, Cattering, Comida, comida ao domic\u00edlio"
+        },
+        "craft/chimney_sweeper": {
+            "name": "Limpa-chamin\u00e9s",
+            "terms": "chamin\u00e9, limpador de chamin\u00e9s, limpar chamin\u00e9s"
+        },
+        "craft/clockmaker": {
+            "name": "Relojoeiro",
+            "terms": "Clockmaker, Rel\u00f3gios"
+        },
+        "craft/confectionery": {
+            "name": "Confeitaria",
+            "terms": "Confectionery, Confeitos, Doces, Do\u00e7aria"
+        },
+        "craft/distillery": {
+            "name": "Destilaria",
+            "terms": "Distillery, distilaria, destila\u00e7\u00e3o, distila\u00e7\u00e3o, destilador, distilador, destilar, distilar"
+        },
+        "craft/dressmaker": {
+            "name": "Costureira",
+            "terms": "Dressmaker, Costureiro, Estilista, Alfaiate, Modista"
+        },
+        "craft/electrician": {
+            "name": "Eletricista",
+            "terms": "Electrician, Homem da Luz"
+        },
+        "craft/electronics_repair": {
+            "name": "Loja de repara\u00e7\u00e3o de aparelhos electr\u00f3nicos",
+            "terms": "repara\u00e7\u00f5es, reparador, reparar, avaria, avariado"
+        },
+        "craft/gardener": {
+            "name": "Jardineiro",
+            "terms": "Gardener, Flores, Jardim, Erva"
+        },
+        "craft/glaziery": {
+            "name": "Vidreiro",
+            "terms": "Glaziery, Vidro, Vidraceiro, Vidraria"
+        },
+        "craft/handicraft": {
+            "name": "Artes\u00e3o",
+            "terms": "Handicraft, Artes\u00e3"
+        },
+        "craft/hvac": {
+            "name": "T\u00e9cnico de aquecimento e ventila\u00e7\u00e3o",
+            "terms": "HVAC, Aquecimento, Ventila\u00e7\u00e3o, Ar Condicionado, Aquecedor, Aquecedores, Aquecer"
+        },
+        "craft/insulator": {
+            "name": "Isolador de estruturas",
+            "terms": "Insulator, Isolamento, Insonoriza\u00e7\u00e3o, T\u00e9rmico"
+        },
+        "craft/jeweler": {
+            "name": "Joalheiro"
+        },
+        "craft/key_cutter": {
+            "name": "Chaveiro",
+            "terms": "Key Cutter, Chave, Chaves, Duplicador, C\u00f3pia"
+        },
+        "craft/locksmith": {
+            "name": "Serralheiro"
+        },
+        "craft/metal_construction": {
+            "name": "Constru\u00e7\u00e3o met\u00e1lica",
+            "terms": "constru\u00e7\u00e3o em metal"
+        },
+        "craft/optician": {
+            "name": "Oculista"
+        },
+        "craft/painter": {
+            "name": "Pintor",
+            "terms": "Painter, Tinta"
+        },
+        "craft/photographer": {
+            "name": "Fot\u00f3grafo",
+            "terms": "Photographer, Ag\u00eancia Fotogr\u00e1fica, Fotografia"
+        },
+        "craft/photographic_laboratory": {
+            "name": "Laborat\u00f3rio fotogr\u00e1fico",
+            "terms": "Photographic Laboratory, Loja Fotogr\u00e1fica, Fot\u00f3grafo"
+        },
+        "craft/plasterer": {
+            "name": "Gesseiro",
+            "terms": "Plasterer, Gesso"
+        },
+        "craft/plumber": {
+            "name": "Canalizador",
+            "terms": "Plumber, Picheleiro, Pichelaria, Canaliza\u00e7\u00e3o"
+        },
+        "craft/pottery": {
+            "name": "Oleiro",
+            "terms": "Pottery, Ceramista, Olaria, Barro"
+        },
+        "craft/rigger": {
+            "name": "Armador",
+            "terms": "construtor de barcos, construtor de navios"
+        },
+        "craft/roofer": {
+            "name": "Telhador",
+            "terms": "Roofer, Telha, Telhas, Telhado"
+        },
+        "craft/saddler": {
+            "name": "Seleiro",
+            "terms": "Saddler, Selas, Selins, Arreios"
+        },
+        "craft/sailmaker": {
+            "name": "Veleiro",
+            "terms": "Sailmaker, Mastros, Vergas, Velas, Cordas, Barcos a Vela."
+        },
+        "craft/sawmill": {
+            "name": "Serra\u00e7\u00e3o",
+            "terms": "Sawmill, Serraria, Lenhador, Madeira"
+        },
+        "craft/scaffolder": {
+            "name": "Montador de andaimes",
+            "terms": "Scaffolder, Colocador de Andaimes, Andaimes"
+        },
+        "craft/sculptor": {
+            "name": "Escultor",
+            "terms": "escultora,esculpir,escultura,estatu\u00e1ria"
+        },
+        "craft/shoemaker": {
+            "name": "Sapateiro",
+            "terms": "Shoemaker, Sapato, Sapatos"
+        },
+        "craft/stonemason": {
+            "name": "Pedreiro",
+            "terms": "Stonemason, Rocha, Canteiro, Pedra, Pedras, Pedraria, Rocha, Rochas"
+        },
+        "craft/tailor": {
+            "name": "Alfaiate"
+        },
+        "craft/tiler": {
+            "name": "Colocador de azulejos / pedras",
+            "terms": "Tiler"
+        },
+        "craft/tinsmith": {
+            "name": "Latoeiro",
+            "terms": "Tinsmith, Chapa, Zinco"
+        },
+        "craft/upholsterer": {
+            "name": "Tapeceiro",
+            "terms": "Upholsterer, Tapeceiro, Tape\u00e7aria, Tecido, Tapete, Tapetes"
+        },
+        "craft/watchmaker": {
+            "name": "Relojoeiro",
+            "terms": "Watchmaker, Rel\u00f3gio, Relojoaria"
+        },
+        "craft/window_construction": {
+            "name": "Constru\u00e7\u00e3o de janelas",
+            "terms": "Window Construction, Janela"
+        },
+        "craft/winery": {
+            "name": "Produtor de vinho",
+            "terms": "Winery, Bodega, Vinho, Vinhos, Adega"
+        },
+        "embankment": {
+            "name": "Eleva\u00e7\u00e3o no terreno"
+        },
+        "emergency/ambulance_station": {
+            "name": "Central de ambul\u00e2ncias",
+            "terms": "Ambulance Station, Ambul\u00e2ncia, Ambul\u00e2ncias"
+        },
+        "emergency/defibrillator": {
+            "name": "Desfibrilador",
+            "terms": "Defibrillator"
+        },
+        "emergency/designated": {
+            "name": "Acesso de emerg\u00eancia, designado"
+        },
+        "emergency/destination": {
+            "name": "Acesso de emerg\u00eancia, destino"
+        },
+        "emergency/fire_alarm": {
+            "name": "Caixa de chamada de alarme de inc\u00eandio",
+            "terms": "Alarme, fogo, caixa, fogo, seguran\u00e7a"
+        },
+        "emergency/fire_extinguisher": {
+            "name": "Extintor de inc\u00eandio",
+            "terms": "Extintor de inc\u00eandio, fogo, fogo, p\u00f3, espuma"
+        },
+        "emergency/fire_hydrant": {
+            "name": "Boca de inc\u00eandio",
+            "terms": "Hidrate, Marco de \u00c1gua, Marco de Inc\u00eandio, boca de inc\u00eandio"
+        },
+        "emergency/first_aid_kit": {
+            "name": "Kit de primeiros socorros",
+            "terms": "bandagem, curativo, primeiros socorros, kit m\u00e9dico, kit de emerg\u00eancia, kit de primeiros socorros, kit de emerg\u00eancia"
+        },
+        "emergency/life_ring": {
+            "name": "B\u00f3ia de salvamento",
+            "terms": "b\u00f3ia, salvamento, salva vidas, salva-vidas"
+        },
+        "emergency/lifeguard": {
+            "name": "Nadador-salvador",
+            "terms": "salva-vidas, nadador-salvador, salvador, supervisor, salva-vida, guarda-vida, nadador salvador"
+        },
+        "emergency/no": {
+            "name": "Acesso de emerg\u00eancia, n\u00e3o"
+        },
+        "emergency/official": {
+            "name": "Acesso de emerg\u00eancia, official"
+        },
+        "emergency/phone": {
+            "name": "Telefone de emerg\u00eancia",
+            "terms": "Telefone, Emerg\u00eancia, 112"
+        },
+        "emergency/private": {
+            "name": "Acesso de emerg\u00eancia, privado"
+        },
+        "emergency/siren": {
+            "name": "Sirene",
+            "terms": "ataque a\u00e9reo, tempestade, tornado, aviso, sirene, buzina, busina, campainha"
+        },
+        "emergency/water_tank": {
+            "name": "Tanque de \u00e1gua de emerg\u00eancia",
+            "terms": "Reservat\u00f3rio de \u00e1gua de emerg\u00eancia"
+        },
+        "emergency/yes": {
+            "name": "Acesso de emerg\u00eancia, sim"
+        },
+        "entrance": {
+            "name": "Entrada / Sa\u00edda",
+            "terms": "Entrance/Exit, Entrada, Acesso, Abertura, Porta, P\u00f3rtico, Port\u00e3o"
+        },
+        "ford": {
+            "name": "Vau (ponto de passagem num curso de \u00e1gua baixo)",
+            "terms": "Baixio, Banco, Parel"
+        },
+        "golf/bunker": {
+            "name": "Banco de areia",
+            "terms": "Sand Trap"
+        },
+        "golf/cartpath": {
+            "name": "Caminho para carrinhos de golfe",
+            "terms": "carrinho de golfe, carrinhos de golfe"
+        },
+        "golf/cartpath_service": {
+            "name": "Caminho para carrinhos de golfe / estrada de servi\u00e7o",
+            "terms": "carrinho de golfe, carrinhos de golfe, estrada de servi\u00e7o"
+        },
+        "golf/driving_range": {
+            "name": "Campo de treino",
+            "terms": "driving range, campo de treino de golfe, campo de golfe, golfe, treinar golfe"
+        },
+        "golf/fairway": {
+            "name": "Fairway",
+            "terms": "Fairway"
+        },
+        "golf/green": {
+            "name": "Green",
+            "terms": "Putting Green"
+        },
+        "golf/hole": {
+            "name": "Buraco de golfe",
+            "terms": "Golf Hole"
+        },
+        "golf/lateral_water_hazard": {
+            "name": "Obst\u00e1culo de \u00e1gua lateral",
+            "terms": "lateral water hazard, obst\u00e1culo, golfe"
+        },
+        "golf/path": {
+            "name": "Caminho pedonal de golfe",
+            "terms": "golf walking path, caminho pedonal de golfe, campo de golfe, golfe"
+        },
+        "golf/rough": {
+            "name": "Rough",
+            "terms": "Rough"
+        },
+        "golf/tee": {
+            "name": "Tee",
+            "terms": "Tee Box"
+        },
+        "golf/water_hazard": {
+            "name": "Perigo de \u00e1gua",
+            "terms": "water hazard, campo de golfe, golfe"
+        },
+        "healthcare": {
+            "name": "Instala\u00e7\u00f5es de sa\u00fade",
+            "terms": "sa\u00fade, cuidados m\u00e9dicos, medicina, cuidados de sa\u00fade, cl\u00ednica,"
+        },
+        "healthcare/alternative": {
+            "name": "Medicina alternativa",
+            "terms": "alternativa, terapia alternativa, acupuntura, aromaterapia, auriculoterapia, cromoterapia, fitoterapia, homeopatia, magnetoterapia, quiropraxia"
+        },
+        "healthcare/alternative/chiropractic": {
+            "name": "Quiropraxia",
+            "terms": "chiropractor, chiropractic, quiropraxista, quiropr\u00e1tico"
+        },
+        "healthcare/audiologist": {
+            "name": "Fonoaudiologista",
+            "terms": "fonoaudiologia, fonoaudi\u00f3logo, terapia da fala, audiologia, fono-audiologia, fono-audi\u00f3logo"
+        },
+        "healthcare/birthing_center": {
+            "name": "Centro de nascimentos (n\u00e3o maternidade)",
+            "terms": "nascer, nascimento, obstetra, obstetr\u00edcia"
+        },
+        "healthcare/blood_donation": {
+            "name": "Banco de sangue ",
+            "terms": "Centro de Doa\u00e7\u00e3o de Sangue, doa\u00e7\u00e3o de sangue, transfus\u00e3o de sangue, blood donor center"
+        },
+        "healthcare/hospice": {
+            "name": "Unidade de cuidados paliativos",
+            "terms": "hospice, cuidados paliativos, paliativos"
+        },
+        "healthcare/laboratory": {
+            "name": "Laborat\u00f3rio m\u00e9dico",
+            "terms": "laborat\u00f3rio de biologia m\u00e9dica, laborat\u00f3rio de an\u00e1lises m\u00e9dicas, laborat\u00f3rio, an\u00e1lises cl\u00ednicas, an\u00e1lises"
+        },
+        "healthcare/midwife": {
+            "name": "Obstetra",
+            "terms": "obstetriz, obstetr\u00edcia, parteira, parteiro, ostetra"
+        },
+        "healthcare/occupational_therapist": {
+            "name": "Terapeuta ocupacional",
+            "terms": "Occupational Therapist, terapeuta,  ocupacional"
+        },
+        "healthcare/optometrist": {
+            "name": "Optometrista",
+            "terms": "Optometria, \u00f3culos, vis\u00e3o"
+        },
+        "healthcare/physiotherapist": {
+            "name": "Fisioterapeuta",
+            "terms": "Physiotherapist, fisioterapia, fizioterapeuta, fizioterapia, fisoterapeuta, fizoterapeuta, fisoterapia, fizoterapia"
+        },
+        "healthcare/podiatrist": {
+            "name": "Pod\u00f3logo",
+            "terms": "podiatria, podologista, podologia, p\u00e9s, podolojista, podolojia, p\u00e9"
+        },
+        "healthcare/psychotherapist": {
+            "name": "Psicoterapeuta",
+            "terms": "psicoterapia"
+        },
+        "healthcare/rehabilitation": {
+            "name": "Unidade de reabilita\u00e7\u00e3o",
+            "terms": "reabilita\u00e7\u00e3o, reabilitar"
+        },
+        "healthcare/speech_therapist": {
+            "name": "Terapeuta da fala",
+            "terms": "fonoaudiologia, terapia da fala,  audiologia"
+        },
+        "highway": {
+            "name": "Rodovia"
+        },
+        "highway/bridleway": {
+            "name": "Caminhos exclusivo para cavalos",
+            "terms": "Trilho para Cavalos, Trilho para Cavaleiros, Trilho Equestre, Caminho Equestre, Caminho para Cavalos, Caminho para Cavaleiros"
+        },
+        "highway/bus_guideway": {
+            "name": "Autocarro guiado",
+            "terms": "Autocarro guiado, guia"
+        },
+        "highway/bus_stop": {
+            "name": "Paragem de autocarro / plataforma"
+        },
+        "highway/construction": {
+            "name": "Estrada fechada",
+            "terms": "fechada, interdita, interdito, obras, fechado, encerrada, encerrado"
+        },
+        "highway/corridor": {
+            "name": "Corredor interior",
+            "terms": "Indoor Corridor"
+        },
+        "highway/crossing/marked": {
+            "name": "Faixa de pedestres marcada",
+            "terms": "passadeira, zebra, marca\u00e7\u00f5es, passagem"
+        },
+        "highway/crossing/marked-raised": {
+            "name": "Faixa de pedestres marcada (levantada)",
+            "terms": "passadeira levantada, passadeira elevada"
+        },
+        "highway/crossing/unmarked": {
+            "name": "Atravessamento sem marcas",
+            "terms": "passagem de pedestres n\u00e3o marcada, passadeira n\u00e3o marcada, passadeira sem marcas"
+        },
+        "highway/crossing/unmarked-raised": {
+            "name": "Passadeira n\u00e3o marcada elevada",
+            "terms": "travessia de pedestres n\u00e3o marcada (elevada)"
+        },
+        "highway/crossing/zebra": {
+            "name": "Passadeira com marcas"
+        },
+        "highway/crossing/zebra-raised": {
+            "name": "Passadeira marcada elevada"
+        },
+        "highway/cycleway": {
+            "name": "Ciclovia",
+            "terms": "Bicicleta"
+        },
+        "highway/elevator": {
+            "name": "Elevador",
+            "terms": "Elevador, Ascensor"
+        },
+        "highway/footway": {
+            "name": "Caminho pedonal",
+            "terms": "andar, caminho, estrada, p\u00e9, pedestre, percurso, rua, ruela, traject\u00f3ria, trilha, trilho, via, viela, caminho pedonal, beco, vereda, pedonal"
+        },
+        "highway/footway/conveying": {
+            "name": "Tapete rolante",
+            "terms": "esteira rolante, passadeira rolante, esteira, escadas rolantes, escada rolante"
+        },
+        "highway/footway/marked": {
+            "name": "Passadeira marcada",
+            "terms": "passadeira, zebra, passagem"
+        },
+        "highway/footway/marked-raised": {
+            "name": "Passadeira marcada (levantada)",
+            "terms": "passadeira, lomba, passadeira-lomba, passadeira elevada"
+        },
+        "highway/footway/sidewalk": {
+            "name": "Passeio",
+            "terms": "cal\u00e7ada, passeios, bermas, berma"
+        },
+        "highway/footway/unmarked": {
+            "name": "Atravessamento n\u00e3o marcado",
+            "terms": "passagem de pedestres n\u00e3o marcada, passadeira, passagem"
+        },
+        "highway/footway/unmarked-raised": {
+            "name": "Atravessamento n\u00e3o marcado (levantado)",
+            "terms": "passagem de pedestres n\u00e3o marcada, passagem, atravessamento, passadeira, lomba"
+        },
+        "highway/footway/zebra": {
+            "name": "Passadeira marcada"
+        },
+        "highway/footway/zebra-raised": {
+            "name": "faixa de pedestres marcada, passadeira, atravessamento, passagem"
+        },
+        "highway/give_way": {
+            "name": "Sinal de ced\u00eancia de passagem",
+            "terms": "perda de prioridade, cedencia, ced\u00eancia, prioridade"
+        },
+        "highway/living_street": {
+            "name": "Zona de coexist\u00eancia",
+            "terms": "Zona de Pe\u00f5es"
+        },
+        "highway/milestone": {
+            "name": "Marco quilom\u00e9trico",
+            "terms": "marco, quil\u00f3metro, kil\u00f3metro, kilom\u00e9trico, marca\u00e7\u00e3o, demarca\u00e7\u00e3o, hectom\u00e9trico, hectom\u00e9trica, quilom\u00e9trico, quilom\u00e9trica, miriam\u00e9trica, miriam\u00e9trico"
+        },
+        "highway/mini_roundabout": {
+            "name": "Mini-rotunda",
+            "terms": "mini-rotunda, minirotunda, rotunda rintada, rotunda, rotat\u00f3ria"
+        },
+        "highway/motorway": {
+            "name": "Autoestrada",
+            "terms": "auto-estrada, auto estrada"
+        },
+        "highway/motorway_junction": {
+            "name": "Sa\u00edda de autoestrada",
+            "terms": "jun\u00e7\u00e3o, sa\u00edda, autoestrada, auto-estrada, n\u00f3, entrada, sair, mudan\u00e7a, mudar"
+        },
+        "highway/motorway_link": {
+            "name": "Liga\u00e7\u00e3o a uma autoestrada",
+            "terms": "liga\u00e7\u00e3o a autoestrada, entrada de autoestrada, sa\u00edda de autoestrada, sa\u00edda"
+        },
+        "highway/passing_place": {
+            "name": "Lugar de passagem",
+            "terms": "Local de passagem"
+        },
+        "highway/path": {
+            "name": "Trilho pedestre",
+            "terms": "Trilha, Caminho, vereda (com pavimento em terra), vereda"
+        },
+        "highway/pedestrian_area": {
+            "name": "\u00c1rea pedonal",
+            "terms": "pra\u00e7a, largo, alameda"
+        },
+        "highway/pedestrian_line": {
+            "name": "Rua pedonal",
+            "terms": "pedestre, rua pedonal, rua pedestre, pedonal"
+        },
+        "highway/primary": {
+            "name": "Estrada prim\u00e1ria",
+            "terms": "Primary Road, Estrada Nacional, Rodovia Principal, Estrada Prim\u00e1ria, Rodovia Prim\u00e1ria, Prim\u00e1rio"
+        },
+        "highway/primary_link": {
+            "name": "Liga\u00e7\u00e3o a uma estrada prim\u00e1ria",
+            "terms": "Primary Link, Liga\u00e7\u00e3o Estrada Nacional, Liga\u00e7\u00e3o Rodovia Nacional, Liga\u00e7\u00e3o Nacional,  Liga\u00e7\u00e3o Estrada Principal, Entrada Estrada Nacional, Entrada Rodovia Nacional, Entrada Nacional, Entrada Estrada Nacional, Sa\u00edda Nacional, Sa\u00edda Rodovia Nacional, Sa\u00edda Nacional, Sa\u00edda Estrada Nacional,"
+        },
+        "highway/raceway": {
+            "name": "Pista de corridas (motorizados) ",
+            "terms": "pista, corrida, corridas, f\u00f3rmula 1, carro, kart, pista de kart, kart\u00f3dromo, aut\u00f3dromo, autovelocidade, motovelocidade, velocidade"
+        },
+        "highway/residential": {
+            "name": "Rua residencial",
+            "terms": "Estrada Residencial, Rodovia Residencial, Estrada Urbana, Rodovia Urbana, Estrada Suburbana, Rodovia Suburbana, Estrada dentro de localidades, Rodovia dentro de localidades"
+        },
+        "highway/rest_area": {
+            "name": "\u00c1rea de descanso",
+            "terms": "Rest Area, Posto de Descan\u00e7o"
+        },
+        "highway/road": {
+            "name": "Estrada de tipo indeterminado",
+            "terms": "Estrada Gen\u00e9rica, Rodovia Gen\u00e9rica, Estrada Desconhecida, Rodovia Desconhecida"
+        },
+        "highway/secondary": {
+            "name": "Estrada secund\u00e1ria",
+            "terms": "Secondary Road, Estrada Regional, Rodovia Secund\u00e1ria, Secund\u00e1rio"
+        },
+        "highway/secondary_link": {
+            "name": "Liga\u00e7\u00e3o a uma estrada secund\u00e1ria",
+            "terms": "Secondary Link, Liga\u00e7\u00e3o Estrada Regional, Liga\u00e7\u00e3o Rodovia Regional, Liga\u00e7\u00e3o Regional,  Liga\u00e7\u00e3o Estrada Secund\u00e1ria, Entrada Estrada Regional, Entrada Rodovia Regional, Entrada Regional, Entrada Estrada Secund\u00e1ria, Sa\u00edda Regional, Sa\u00edda Rodovia Regional, Sa\u00edda Regional, Sa\u00edda Estrada Secund\u00e1ria"
+        },
+        "highway/service": {
+            "name": "Estrada de servi\u00e7o",
+            "terms": "Rodovia de Servi\u00e7o"
+        },
+        "highway/service/alley": {
+            "name": "Viela / traseiras",
+            "terms": "Traseiras, beco (com acesso para carros), estrada estreita, caminho estreito, beco estreito, viela,"
+        },
+        "highway/service/drive-through": {
+            "name": "Servi\u00e7o ao volante (sem sair do carro)",
+            "terms": "Drive-in, Servi\u00e7o ao Volante"
+        },
+        "highway/service/driveway": {
+            "name": "Acesso a resid\u00eancia / garagem",
+            "terms": "Rampa de Acesso, Corredor"
+        },
+        "highway/service/emergency_access": {
+            "name": "Acesso de emerg\u00eancia",
+            "terms": "Acesso de Emerg\u00eancia, Entrada de Emerg\u00eancia, Corredor de Emerg\u00eancia, Ambul\u00e2ncias, Ambul\u00e2ncia, Emerg\u00eancia"
+        },
+        "highway/service/parking_aisle": {
+            "name": "Corredor de estacionamento",
+            "terms": "Pista de Estacionamento, Estacionar, Estacionamento, Estrada"
+        },
+        "highway/services": {
+            "name": "\u00c1rea de servi\u00e7o",
+            "terms": "Service Area, Posto de Servi\u00e7o"
+        },
+        "highway/speed_camera": {
+            "name": "Radar de controlo de velocidade",
+            "terms": "radar, controlo de velocidade"
+        },
+        "highway/steps": {
+            "name": "Escadas",
+            "terms": "Escadaria, degraus"
+        },
+        "highway/steps/conveying": {
+            "name": "Escada rolante",
+            "terms": "escada rolante"
+        },
+        "highway/stop": {
+            "name": "Sinal de stop",
+            "terms": "Stop Sign, Sinal de Paragem, Paragem Obrigat\u00f3ria, Sinal de paragem obrigat\u00f3ria no cruzamento ou entroncamento, Stop"
+        },
+        "highway/street_lamp": {
+            "name": "Poste de ilumina\u00e7\u00e3o",
+            "terms": "Poste de Luz, L\u00e2mpada, Luz, Ilumina\u00e7\u00e3o, Candeeiro, luz da rua, ilumina\u00e7\u00e3o publica"
+        },
+        "highway/tertiary": {
+            "name": "Estrada terci\u00e1ria",
+            "terms": "Tertiary Road, Estrada Municipal, Caminho Municipal, Rodovia Terci\u00e1ria, Terci\u00e1rio, Caminho Municipal"
+        },
+        "highway/tertiary_link": {
+            "name": "Liga\u00e7\u00e3o a uma estrada terci\u00e1ria",
+            "terms": "Tertiary Link, Liga\u00e7\u00e3o Estrada Municipal, Liga\u00e7\u00e3o Rodovia Municipal, Liga\u00e7\u00e3o Municipal,  Liga\u00e7\u00e3o Estrada Terci\u00e1ria, Entrada Estrada Municipal, Entrada Rodovia Municipal, Entrada Municipal, Entrada Estrada Terci\u00e1ria, Sa\u00edda Municipal, Sa\u00edda Rodovia Municipal, Sa\u00edda Municipal, Sa\u00edda Estrada Municipal"
+        },
+        "highway/track": {
+            "name": "Estrada florestal / agr\u00edcola",
+            "terms": "Estrada de terra, estrada agr\u00edcola, Track, Estrada Rural, Carreiro, Carreiro Florestal"
+        },
+        "highway/traffic_mirror": {
+            "name": "Espelho rodovi\u00e1rio",
+            "terms": "mirror, espelho, espelho vertical"
+        },
+        "highway/traffic_signals": {
+            "name": "Sem\u00e1foros",
+            "terms": "Sem\u00e1foro, Vermelho, Verde, Amarelo, Sinal, Sinal de Tr\u00e2nsito, sinal luminoso, sinaliza\u00e7\u00e3o vertical,"
+        },
+        "highway/trunk": {
+            "name": "Via r\u00e1pida",
+            "terms": "Via Reservada a Autom\u00f3veis e Motociclos, Estrada Reservada a Autom\u00f3veis e Motociclos, Via Expressa, Via Reservada, Itiner\u00e1rio Principal, Itiner\u00e1rio Complementar, Intener\u00e1rio, Intiner\u00e1rio"
+        },
+        "highway/trunk_link": {
+            "name": "Liga\u00e7\u00e3o a uma via r\u00e1pida",
+            "terms": "Liga\u00e7\u00e3o Via R\u00e1pida, Entrada Via R\u00e1pida, Sa\u00edda Via R\u00e1pida, Liga\u00e7\u00e3o Via Reservada a Autom\u00f3veis e Motociclos, Entrada Via Reservada a Autom\u00f3veis e Motociclos, Sa\u00edda Via Reservada a Autom\u00f3veis e Motociclos, Liga\u00e7\u00e3o Via Expressa, Entrada Expressa, Sa\u00edda Via Expressa, Liga\u00e7\u00e3o Via Reservada, Entrada Via Reservada, Sa\u00edda Via Reservada"
+        },
+        "highway/turning_circle": {
+            "name": "C\u00edrculo de viragem",
+            "terms": "Invers\u00e3o de Marcha"
+        },
+        "highway/turning_loop": {
+            "name": "Anel de viragem",
+            "terms": "invers\u00e3o de marcha numa ilha,"
+        },
+        "highway/unclassified": {
+            "name": "Estrada menor / sem classifica\u00e7\u00e3o",
+            "terms": "Minor Road"
+        },
+        "historic": {
+            "name": "Local hist\u00f3rico",
+            "terms": "Hist\u00f3rico"
+        },
+        "historic/archaeological_site": {
+            "name": "S\u00edtio arqueol\u00f3gico",
+            "terms": "Local Arqueol\u00f3gico, Arqueol\u00f3gico, Arqueologia"
+        },
+        "historic/boundary_stone": {
+            "name": "Marco de fronteira",
+            "terms": "Pilar de Fronteira, Marco, Fronteira, Marco Fronteiri\u00e7o"
+        },
+        "historic/castle": {
+            "name": "Castelo",
+            "terms": "Castelo, Fortaleza, Edifica\u00e7\u00e3o, Medieval, Forte, Fortifica\u00e7\u00e3o"
+        },
+        "historic/memorial": {
+            "name": "Memorial",
+            "terms": "Memorial, Homenagem"
+        },
+        "historic/monument": {
+            "name": "Monumento",
+            "terms": "Monumento, Marco"
+        },
+        "historic/ruins": {
+            "name": "Ru\u00ednas",
+            "terms": "Ruins, Abandonado"
+        },
+        "historic/tomb": {
+            "name": "T\u00famulo",
+            "terms": "t\u00famulo, tumba"
+        },
+        "historic/wayside_cross": {
+            "name": "Cruzeiro",
+            "terms": "Cruz ao Ar Livre, Cruz"
+        },
+        "historic/wayside_shrine": {
+            "name": "Alminhas / nicho / capelinha",
+            "terms": "alminhas, nicho, capelinha"
+        },
+        "historic/wreck": {
+            "name": "Naufr\u00e1gio",
+            "terms": "naufr\u00e1gio, esteira, casco, barco, naufragado, encalhado, encalhada, encalhou"
+        },
+        "internet_access/wlan": {
+            "name": "Ponto de acesso Wi-Fi",
+            "terms": "wi-fi, wifi, hotspot, wlan, terminal, ponto de acesso"
+        },
+        "junction": {
+            "name": "Cruzamento",
+            "terms": "junction, cruzam, cruzar, interse\u00e7\u00e3o, intersec\u00e7\u00e3o"
+        },
+        "landuse": {
+            "name": "Uso do solo"
+        },
+        "landuse/allotments": {
+            "name": "Horta urbana",
+            "terms": "Community Garden, Horta Comunit\u00e1ria, Horta Urbana"
+        },
+        "landuse/aquaculture": {
+            "name": "Aquacultura",
+            "terms": "algicultura, aquicultura, carcinicultura, malacocultura, maricultura, mitilicultura,ostreicultura, pectinicultura,piscicultura, ranicultura, viveiro de peixes"
+        },
+        "landuse/basin": {
+            "name": "Bacia hidrogr\u00e1fica"
+        },
+        "landuse/brownfield": {
+            "name": "Terreno Industrial Abandonado",
+            "terms": "terreto, industrial, abandonado, contaminado"
+        },
+        "landuse/cemetery": {
+            "name": "Cemit\u00e9rio",
+            "terms": "Cemit\u00e9rio, Vala"
+        },
+        "landuse/churchyard": {
+            "name": "Adro de igreja",
+            "terms": "\u00c1rea da Igreja, Zona da Igreja, Pra\u00e7a da Igreja, Adro"
+        },
+        "landuse/commercial": {
+            "name": "Zona de escrit\u00f3rios ",
+            "terms": "\u00c1rea comercial, Baixa Comercial"
+        },
+        "landuse/construction": {
+            "name": "Constru\u00e7\u00e3o",
+            "terms": "Constru\u00e7\u00e3o, Obras, Em Curso, Construir, Obras"
+        },
+        "landuse/farm": {
+            "name": "Campo agr\u00edcola"
+        },
+        "landuse/farmland": {
+            "name": "campo agr\u00edcola, campo, agricultura, cultura, cultivo, cultivar",
+            "terms": "Farm, Pasto, campo"
+        },
+        "landuse/farmyard": {
+            "name": "Edif\u00edcios agr\u00edcolas",
+            "terms": "Fazenda, Casa de Campo, Celeiro, p\u00e1tio"
+        },
+        "landuse/forest": {
+            "name": "Floresta gerida",
+            "terms": "managed forest, floresta gerida, floresta, gerida, gest\u00e3o, gest\u00e3o da floresta, sustentabilidade, sustent\u00e1vel, floresta sustent\u00e1vel"
+        },
+        "landuse/garages": {
+            "name": "Terrenos de garagens",
+            "terms": "terreno, uso do solo, garagem, garagens"
+        },
+        "landuse/grass": {
+            "name": "Relva",
+            "terms": "Relva, Grama"
+        },
+        "landuse/greenfield": {
+            "name": "Terreno com loteamento planeado ",
+            "terms": "loteamento, terreno para obras, terreno para constru\u00e7\u00e3o"
+        },
+        "landuse/greenhouse_horticulture": {
+            "name": "Estufa hort\u00edcola",
+            "terms": "estufa, hort\u00edcola, hort\u00edcula, horticultura, horticoltura, ort\u00edcola, ort\u00edcula, orticultura, orticoltura"
+        },
+        "landuse/harbour": {
+            "name": "Porto mar\u00edtimo",
+            "terms": "porto, abra, ref\u00fagio, abrigo, porto seguro, porto-seguro, porto abrigado, ancoradouro"
+        },
+        "landuse/industrial": {
+            "name": "Zona industrial",
+            "terms": "Industrial"
+        },
+        "landuse/industrial/scrap_yard": {
+            "name": "Sucata",
+            "terms": "sucateiro, ferro-velho, ferro velho"
+        },
+        "landuse/industrial/slaughterhouse": {
+            "name": "Matadouro",
+            "terms": "a\u00e7ougue, abatedouro"
+        },
+        "landuse/landfill": {
+            "name": "Aterro sanit\u00e1rio",
+            "terms": "Landfill, Lixeira, Sucata"
+        },
+        "landuse/meadow": {
+            "name": "Prado",
+            "terms": "Meadow"
+        },
+        "landuse/military": {
+            "name": "\u00c1rea militar",
+            "terms": "Military, Ex\u00e9rcito, Marinha, For\u00e7as Especiais, For\u00e7a A\u00e9rea, For\u00e7as Armadas, Militar, Quartel"
+        },
+        "landuse/military/airfield": {
+            "name": "Base a\u00e9rea militar",
+            "terms": "base a\u00e9rea, aer\u00f3dromo militar, aeroporto militar, base da for\u00e7a a\u00e9rea, for\u00e7a a\u00e9rea, militar"
+        },
+        "landuse/military/barracks": {
+            "name": "Caserna",
+            "terms": "caserna, dormit\u00f3rio militar"
+        },
+        "landuse/military/bunker": {
+            "name": "B\u00fanquer militar",
+            "terms": "casamata, b\u00fanquer, bunker, bunker militar"
+        },
+        "landuse/military/checkpoint": {
+            "name": "Posto de controlo militar",
+            "terms": "ponto de controlo militar, posto de controlo, ponto de controlo"
+        },
+        "landuse/military/danger_area": {
+            "name": "\u00c1rea perigosa",
+            "terms": "\u00e1rea perigosa, perigo, perigosa, perigoso, interdito, interdi\u00e7\u00e3o"
+        },
+        "landuse/military/naval_base": {
+            "name": "Base naval militar",
+            "terms": "base naval, porto militar, porto mar\u00edtimo militar, porto de guerra, esta\u00e7\u00e3o naval, ponto de apoio naval, arsenal"
+        },
+        "landuse/military/nuclear_explosion_site": {
+            "name": "Local de teste de armas nucleares",
+            "terms": "local de teste de arma nuclear, teste nuclear, testes nucleares"
+        },
+        "landuse/military/obstacle_course": {
+            "name": "Percurso militar com obst\u00e1culos",
+            "terms": "percurso militar de obst\u00e1culos, percurso militar, percurso de obst\u00e1culos militar, obst\u00e1culo, militar, treino militar, treino"
+        },
+        "landuse/military/office": {
+            "name": "Escrit\u00f3rio militar",
+            "terms": "escrit\u00f3rios militares, centro de recrutamento militar, centro de inspe\u00e7\u00e3o militar, centro de inspec\u00e7\u00e3o militar, centro de inspe\u00e7\u00e3o, centro de inspec\u00e7\u00e3o"
+        },
+        "landuse/military/range": {
+            "name": "Carreira de tiro militar",
+            "terms": "campo de tiro militar, campo de tiros, carreira de tiros"
+        },
+        "landuse/military/training_area": {
+            "name": "Local de testes militares",
+            "terms": "local de ensaio militar, ensaios militares, local de testes militar, local de treino"
+        },
+        "landuse/orchard": {
+            "name": "Pomar",
+            "terms": "Planta\u00e7\u00e3o, Orchard, \u00c1rvores, \u00c1rvore, Fruto, Frutos, Amendoeira, Amoreira, Castanheiro, Cerejeira, Damasqueiro, Diospireiro, Figueira, Laranjeira, Limoeiro, Macieira, Marmeleiro, Nogueira, Nespereira, Oliveira, Pereira, Pessegueiro"
+        },
+        "landuse/plant_nursery": {
+            "name": "Viveiro de plantas",
+            "terms": "plant nursery, viveiros, viveiro, viveirista, plantas, venda de plantas, \u00e1rvores, arbustos, flores"
+        },
+        "landuse/pond": {
+            "name": "Lagoa"
+        },
+        "landuse/quarry": {
+            "name": "Pedreira (mina a c\u00e9u aberto)",
+            "terms": "Canteira, Quarry"
+        },
+        "landuse/railway": {
+            "name": "\u00c1rea ferrovi\u00e1ria",
+            "terms": "\u00e1rea ferrovi\u00e1ria, zona ferrovi\u00e1ria"
+        },
+        "landuse/recreation_ground": {
+            "name": "Zona de recrea\u00e7\u00e3o",
+            "terms": "Recreation Ground"
+        },
+        "landuse/religious": {
+            "name": "\u00c1rea religiosa",
+            "terms": "\u00e1rea religiosa, religi\u00e3o, igreja"
+        },
+        "landuse/reservoir": {
+            "name": "Reservat\u00f3rio"
+        },
+        "landuse/residential": {
+            "name": "\u00c1rea residencial",
+            "terms": "Residencial, Urbano, Antr\u00f3pico, Residential"
+        },
+        "landuse/residential/apartments": {
+            "name": "Complexo de apartamentos",
+            "terms": "condom\u00ednio, apartamentos"
+        },
+        "landuse/retail": {
+            "name": "Zona de retalho",
+            "terms": "Retalho, Varejo, Compras, Vendas, Retail"
+        },
+        "landuse/vineyard": {
+            "name": "Vinha",
+            "terms": "Vinhas, Vinhedo, Vinh\u00e3o, Vineyard, Uvas, Uva"
+        },
+        "leisure": {
+            "name": "Lazer"
+        },
+        "leisure/adult_gaming_centre": {
+            "name": "Centro de jogos para adultos",
+            "terms": "Adult Gaming Center"
+        },
+        "leisure/amusement_arcade": {
+            "name": "Sal\u00e3o de jogos",
+            "terms": "Sala de jogos"
+        },
+        "leisure/bandstand": {
+            "name": "Coreto",
+            "terms": "Coreto"
+        },
+        "leisure/beach_resort": {
+            "name": "Resort na praia",
+            "terms": "Centro de f\u00e9rias na praia, resort"
+        },
+        "leisure/bird_hide": {
+            "name": "Observat\u00f3rio de aves",
+            "terms": "bird hide, observat\u00f3rio de aves, posto de observa\u00e7\u00e3o, observa\u00e7\u00e3o de aves, observa\u00e7\u00e3o, aves"
+        },
+        "leisure/bleachers": {
+            "name": "Arquibancada",
+            "terms": "arquibancada, estrado, tablado, bancada, tribuna"
+        },
+        "leisure/bowling_alley": {
+            "name": "Pista de b\u00f3lingue",
+            "terms": "Bowling Alley, Bowling, Boulingue, B\u00f3lingue, boliche"
+        },
+        "leisure/common": {
+            "name": "baldio (terrenos de propriedade colectiva utilizados pela comunidade)",
+            "terms": "baldio, propriedade colectiva, terreno sem dono, terreno sem propriet\u00e1rio, terreno sem titular"
+        },
+        "leisure/dance": {
+            "name": "Sal\u00e3o de dan\u00e7a",
+            "terms": "Dance Hall"
+        },
+        "leisure/dancing_school": {
+            "name": "Escola de dan\u00e7a",
+            "terms": "dan\u00e7a, dan\u00e7ar, bailado, bailarina, bailarino"
+        },
+        "leisure/dog_park": {
+            "name": "Parque para c\u00e3es",
+            "terms": "Parque para C\u00e3es, Dog Park"
+        },
+        "leisure/firepit": {
+            "name": "Local para fogueiras",
+            "terms": "Firepit, Fogo controlado, Chama, Brasa, Fogueira"
+        },
+        "leisure/fishing": {
+            "name": "Ponto de pesca",
+            "terms": "local de pesca, \u00e1rea de pesca, pesqueiro"
+        },
+        "leisure/fitness_centre": {
+            "name": "Academia desportiva / gin\u00e1sio",
+            "terms": "Academia Esportiva, Academia Desportiva, Academia, Gin\u00e1sio, Health Club, Fitness, Muscula\u00e7\u00e3o"
+        },
+        "leisure/fitness_centre/yoga": {
+            "name": "Est\u00fadio de ioga",
+            "terms": "casa de ioga, yoga studio, ioga, yoga, sal\u00e3o de ioga, sess\u00e3o de ioga, sess\u00f5es de ioga"
+        },
+        "leisure/fitness_station": {
+            "name": "Equipamento de exerc\u00edcios ao ar livre",
+            "terms": "M\u00e1quinas de exerc\u00edcios, M\u00e1quina de exec\u00edcio, Exerc\u00edcio ao ar livre, Exerc\u00edcios ao ar livre, Gin\u00e1stica, Equipamento de exerc\u00edcios"
+        },
+        "leisure/fitness_station/balance_beam": {
+            "name": "Trave de equil\u00edbrio",
+            "terms": "trave, equil\u00edbrio, barra, balan\u00e7o"
+        },
+        "leisure/fitness_station/box": {
+            "name": "Caixa de exerc\u00edcios",
+            "terms": "exerc\u00edcio, caixa"
+        },
+        "leisure/fitness_station/horizontal_bar": {
+            "name": "Barra fixa horizontal",
+            "terms": "barra, horizontal"
+        },
+        "leisure/fitness_station/horizontal_ladder": {
+            "name": "Escada horizontal",
+            "terms": "exerc\u00edcio, barra"
+        },
+        "leisure/fitness_station/hyperextension": {
+            "name": "Dispositivo de extens\u00f5es",
+            "terms": "Extens\u00f5es"
+        },
+        "leisure/fitness_station/parallel_bars": {
+            "name": "Barras paralelas",
+            "terms": "barras, paralelas"
+        },
+        "leisure/fitness_station/push-up": {
+            "name": "Barra de flex\u00f5es",
+            "terms": "Flex\u00f5es, Flex\u00e3o, Extens\u00e3o"
+        },
+        "leisure/fitness_station/rings": {
+            "name": "Argolas de exerc\u00edcio",
+            "terms": "Argolas"
+        },
+        "leisure/fitness_station/sign": {
+            "name": "Placa de instru\u00e7\u00f5es de exerc\u00edcio",
+            "terms": "exerc\u00edcio, sinal, instru\u00e7\u00f5es"
+        },
+        "leisure/fitness_station/sit-up": {
+            "name": "Dispositivo para abdominais",
+            "terms": "Abdominais"
+        },
+        "leisure/fitness_station/stairs": {
+            "name": "Escadas de exerc\u00edcio",
+            "terms": "Escadas"
+        },
+        "leisure/garden": {
+            "name": "Jardim",
+            "terms": "Jardim, Garden"
+        },
+        "leisure/golf_course": {
+            "name": "Campo de golfe",
+            "terms": "Campo de Golf, Golf, Golf Course"
+        },
+        "leisure/hackerspace": {
+            "name": "Clube de hackers",
+            "terms": "Hacker, Hackers, hackspace"
+        },
+        "leisure/horse_riding": {
+            "name": "Arena de hipismo",
+            "terms": "Horseback Riding Facility, Arena de Equita\u00e7\u00e3o"
+        },
+        "leisure/ice_rink": {
+            "name": "Ringue de patinagem",
+            "terms": "Ice Rink, Ringue de Gelo, Gelo, Pista de Gelo, Pista de Patinagem, Patinagem, Patins"
+        },
+        "leisure/marina": {
+            "name": "Marina",
+            "terms": "Marina, Barco, Atracadouro"
+        },
+        "leisure/miniature_golf": {
+            "name": "Minigolfe",
+            "terms": "miniature golf, golfe, mini-golfe, mini golfe, golfe miniatura"
+        },
+        "leisure/nature_reserve": {
+            "name": "Reserva natural",
+            "terms": "Nature Reserve, Natureza"
+        },
+        "leisure/outdoor_seating": {
+            "name": "\u00c1rea de repouso ao ar livre",
+            "terms": "\u00c1rea de estar ao ar livre"
+        },
+        "leisure/park": {
+            "name": "Parque",
+            "terms": "Bosque, Floresta, Jardim, Relva, Relvado, Jardim P\u00fablico, Parque P\u00fablico"
+        },
+        "leisure/picnic_table": {
+            "name": "Mesa de piquenique",
+            "terms": "Picnic Table, Mesa de Merenda, Convescote, Piquenique pique-nique, Pik-nik, piknik"
+        },
+        "leisure/picnic_table/chess": {
+            "name": "Mesa de xadrez",
+            "terms": "mesa de xadrez, meza de xadrez, tabuleiro de xadrez, xadrez, xadres, chadrez, chadres, xadr\u00eas, jogo de xadrez, jogo de tabuleiro"
+        },
+        "leisure/pitch": {
+            "name": "Campo de desporto",
+            "terms": "Campo de Desportos, Quadra Desportiva, Sport Pitch"
+        },
+        "leisure/pitch/american_football": {
+            "name": "Campo de futebol americano",
+            "terms": "Futebol Americano, Rugby, R\u00e2guebi, American Football"
+        },
+        "leisure/pitch/australian_football": {
+            "name": "Campo de futebol australiano",
+            "terms": "futebol australiano, aussie rules, futebol"
+        },
+        "leisure/pitch/badminton": {
+            "name": "Campo de badminton",
+            "terms": "quadra de badminton, terreno de badminton, badminton, badm\u00ednton"
+        },
+        "leisure/pitch/baseball": {
+            "name": "Campo de beisebol",
+            "terms": "Baisebol, Beisebol, Baizebol, Beizebol, Baseball Diamond"
+        },
+        "leisure/pitch/basketball": {
+            "name": "Campo de basquetebol",
+            "terms": "Basquetebol, Quadra de Basquetebol, Basketball Court"
+        },
+        "leisure/pitch/beachvolleyball": {
+            "name": "Campo de voleibol de praia",
+            "terms": "V\u00f3lei, campo, praia, voleibol, volley"
+        },
+        "leisure/pitch/boules": {
+            "name": "Campo de boules / boccia",
+            "terms": "boules, bocce, bocia, b\u00f3cia, b\u00f3ssia, b\u00f3sia, boles, bossia, bosia"
+        },
+        "leisure/pitch/bowls": {
+            "name": "Campo de boccia",
+            "terms": "Bowling Green"
+        },
+        "leisure/pitch/cricket": {
+            "name": "Campo de cr\u00edquete",
+            "terms": "campo de cr\u00edquete, campo de cricket, campo de jogos de cr\u00edquete, campo de jogos de cricket"
+        },
+        "leisure/pitch/equestrian": {
+            "name": "Pista de equita\u00e7\u00e3o",
+            "terms": "Riding Arena, pista, equita\u00e7\u00e3o, hipismo, cavalos"
+        },
+        "leisure/pitch/netball": {
+            "name": "Campo de netbol",
+            "terms": "netball, terreno de netbol, netbol, netbola, campo"
+        },
+        "leisure/pitch/rugby_league": {
+            "name": "Campo de rugby de 13",
+            "terms": "Rugby League Field"
+        },
+        "leisure/pitch/rugby_union": {
+            "name": "Campo de rugby de 15",
+            "terms": "Rugby Union Field, rugby de 15"
+        },
+        "leisure/pitch/skateboard": {
+            "name": "Parque de skate",
+            "terms": "Skate Park, Skate"
+        },
+        "leisure/pitch/soccer": {
+            "name": "Campo de futebol",
+            "terms": "Futebol, Soccer Field, Est\u00e1dio, campo, relvado"
+        },
+        "leisure/pitch/softball": {
+            "name": "Campo de softbol",
+            "terms": "campo de softbol, softbol, softball"
+        },
+        "leisure/pitch/table_tennis": {
+            "name": "Mesa de pingue-pongue",
+            "terms": "pingue-pongue, pingue pongue, t\u00e9nis de mesa"
+        },
+        "leisure/pitch/tennis": {
+            "name": "Campo de t\u00e9nis",
+            "terms": "T\u00e9nis, Quadra de T\u00e9nis, Tennis Court"
+        },
+        "leisure/pitch/volleyball": {
+            "name": "Campo de voleibol",
+            "terms": "Voleibol, Quadra de Voleibol, Volleyball Court"
+        },
+        "leisure/playground": {
+            "name": "Parque infantil",
+            "terms": "Infantil, Escorrega, Baloi\u00e7o, Escorregas, Baloi\u00e7os"
+        },
+        "leisure/resort": {
+            "name": "Est\u00e2ncia tur\u00edstica / resorte",
+            "terms": "resort, resorte, centro de f\u00e9rias, esta\u00e7\u00e3o tur\u00edstica, est\u00e2ncia tur\u00edstica, hotel de lazer, est\u00e2ncia"
+        },
+        "leisure/sauna": {
+            "name": "Sauna",
+            "terms": "banho finland\u00eas, banho turco, banho de vapor"
+        },
+        "leisure/slipway": {
+            "name": "Rampa para barcos",
+            "terms": "Slipway"
+        },
+        "leisure/sports_centre": {
+            "name": "Centro desportivo / complexo desportivo",
+            "terms": "Centro Desportivo, Complexo Desportivo, Cidade Desportiva, Centro de Desporto, Centro de Desportos"
+        },
+        "leisure/sports_centre/climbing": {
+            "name": "Academia de escalada",
+            "terms": "escalada artificial, escalada, parede de escalada"
+        },
+        "leisure/sports_centre/swimming": {
+            "name": "Academia de nata\u00e7\u00e3o",
+            "terms": "Piscina, Nata\u00e7\u00e3o, Aqu\u00e1tica, Centro Aqu\u00e1tico, Saltos ornamentais, Esportes Aqu\u00e1ticos, Polo aqu\u00e1tico"
+        },
+        "leisure/stadium": {
+            "name": "Est\u00e1dio",
+            "terms": "Est\u00e1dio, Stadium"
+        },
+        "leisure/swimming_pool": {
+            "name": "Piscina",
+            "terms": "piscina, swimming pool, pixinha, pichina, pischina, pisxina, nadar, nata\u00e7\u00e3o"
+        },
+        "leisure/track": {
+            "name": "Pista de corridas (n\u00e3o motorizados) ",
+            "terms": "pista, ciclovia, passadi\u00e7o, pe\u00f5es, pedestre, via, bicicleta, passeio, cal\u00e7ada, correr, caminhar"
+        },
+        "leisure/track/horse_racing": {
+            "name": "Hip\u00f3dromo (corrida de cavalos)",
+            "terms": "pista, corridas de cavalos, corrida de cavalos, pista de corrida de cavalos, cavalo, cavalos"
+        },
+        "leisure/track/running": {
+            "name": "Pista de corrida (corrida a p\u00e9)",
+            "terms": "Pista (corrida)"
+        },
+        "leisure/water_park": {
+            "name": "Parque aqu\u00e1tico",
+            "terms": "Piscina, Parque de divers\u00f5es, Lazer, Divers\u00e3o,"
+        },
+        "line": {
+            "name": "Linha",
+            "terms": "Linha, Line"
+        },
+        "man_made": {
+            "name": "Estrutura artificial"
+        },
+        "man_made/adit": {
+            "name": "Galeria de acesso a mina",
+            "terms": "entrada, acesso, mina, minas, mineiro, mineiros, galeria mineira"
+        },
+        "man_made/antenna": {
+            "name": "Antena",
+            "terms": "parab\u00f3lica, antena, torre de telecomunica\u00e7\u00f5es, torre de retransmiss\u00e3o, torre celular, torre de telem\u00f3veis, torre de tv, torre de televis\u00e3o, torre de r\u00e1dio, retransmiss\u00e3o, retransmitir"
+        },
+        "man_made/breakwater": {
+            "name": "Molhe",
+            "terms": "Breakwater"
+        },
+        "man_made/bridge": {
+            "name": "Ponte",
+            "terms": "Bridge, Viaduto"
+        },
+        "man_made/bunker_silo": {
+            "name": "Silo b\u00fanquer",
+            "terms": "Silo-corredor, funil"
+        },
+        "man_made/chimney": {
+            "name": "Chamin\u00e9",
+            "terms": "Chimney"
+        },
+        "man_made/clearcut": {
+            "name": "Floresta desmatada",
+            "terms": "Floresta desmatada"
+        },
+        "man_made/crane": {
+            "name": "Grua",
+            "terms": "guindaste, gindaste, guindastre, gindastre"
+        },
+        "man_made/cutline": {
+            "name": "Aceiro / linha corta-fogo",
+            "terms": "Cut line, Corta Fogo, inc\u00eandio, inc\u00eandios"
+        },
+        "man_made/embankment": {
+            "name": "Eleva\u00e7\u00e3o no terreno",
+            "terms": "embankment, terrapleno, terraplano, talude"
+        },
+        "man_made/flagpole": {
+            "name": "Mastro de bandeira",
+            "terms": "Estandarte, Bandeira"
+        },
+        "man_made/gasometer": {
+            "name": "Gas\u00f3metro",
+            "terms": "Gasometer, gas\u00f4metro, g\u00e1s, g\u00e1z, gas, gaz, dep\u00f3sito"
+        },
+        "man_made/groyne": {
+            "name": "Espig\u00e3o mar\u00edtimo",
+            "terms": "Groyne"
+        },
+        "man_made/lighthouse": {
+            "name": "Farol",
+            "terms": "Far\u00f3l, Lighthouse, Farolim"
+        },
+        "man_made/mast": {
+            "name": "Poste",
+            "terms": "mastro, poste, torre"
+        },
+        "man_made/mast/communication": {
+            "name": "Mastro de comunica\u00e7\u00e3o",
+            "terms": "antena, parab\u00f3lica, transmissor m\u00f3vel, transmissor de telem\u00f3vel, mastro de transmiss\u00e3o, torre de transmiss\u00e3o, torre de sat\u00e9lite, transmissor de r\u00e1dio, transmissor de televis\u00e3o, torre de tv, torre de televis\u00e3o"
+        },
+        "man_made/mast/communication/mobile_phone": {
+            "name": "Mastro do telefone m\u00f3vel",
+            "terms": "antena, antena celular, antena de telem\u00f3veis, transmissor de telem\u00f3vel, mastro de transmiss\u00e3o, torre de transmiss\u00e3o"
+        },
+        "man_made/mast/communication/radio": {
+            "name": "Mastro de transmiss\u00e3o de r\u00e1dio",
+            "terms": "antena, mastro, r\u00e1dio"
+        },
+        "man_made/mast/communication/television": {
+            "name": "Mastro de transmiss\u00e3o de televis\u00e3o",
+            "terms": "antena, mastro, televis\u00e3o, tv"
+        },
+        "man_made/monitoring_station": {
+            "name": "Esta\u00e7\u00e3o de monitoriza\u00e7\u00e3o",
+            "terms": "esta\u00e7\u00e3o, medi\u00e7\u00e3o, monitorizar,"
+        },
+        "man_made/observatory": {
+            "name": "Observat\u00f3rio",
+            "terms": "Observat\u00f3rio Astron\u00f3mico, Observa\u00e7\u00e3o, Observa\u00e7\u00f5es, Astronomia"
+        },
+        "man_made/petroleum_well": {
+            "name": "Po\u00e7o de petr\u00f3leo",
+            "terms": "Oil Well"
+        },
+        "man_made/pier": {
+            "name": "Pont\u00e3o / atracadouro",
+            "terms": "Pier, Porto, Doca"
+        },
+        "man_made/pipeline": {
+            "name": "Gasoduto / oleoduto",
+            "terms": "tubo, tubos, pipeline, tubagem, gasoduto, oleoduto, canaliza\u00e7\u00e3o"
+        },
+        "man_made/pumping_station": {
+            "name": "Esta\u00e7\u00e3o de bombeamento",
+            "terms": "Pumping Station"
+        },
+        "man_made/silo": {
+            "name": "Silo",
+            "terms": "Silo"
+        },
+        "man_made/storage_tank": {
+            "name": "Dep\u00f3sito de armazenamento",
+            "terms": "storage tank, dep\u00f3sito, armazenagem, tanque"
+        },
+        "man_made/surveillance": {
+            "name": "Vigil\u00e2ncia",
+            "terms": "surveillance, CCTV, vigil\u00e2ncia, c\u00e2mara, c\u00e2mera, filmar"
+        },
+        "man_made/surveillance/camera": {
+            "name": "C\u00e2mara de vigil\u00e2ncia",
+            "terms": "c\u00e2mara, vigil\u00e2ncia, vigil\u00e2ncia por v\u00eddeo, reconhecimento, placa, registo, verbaliza\u00e7\u00e3o, c\u00e2mera, vigil\u00e2ncia, seguran\u00e7a, c\u00e2mara de seguran\u00e7a, CCTV, filmar, filmagem"
+        },
+        "man_made/survey_point": {
+            "name": "V\u00e9rtice geod\u00e9sico / talefe",
+            "terms": "Survey Point"
+        },
+        "man_made/tower": {
+            "name": "Torre",
+            "terms": "Torre, Alto, Tower"
+        },
+        "man_made/tower/bell_tower": {
+            "name": "Torre de sino",
+            "terms": "torre de sino, torre sineira, torre, sino, sinos, sineira, carrilh\u00f5es, carrilh\u00e3o, campan\u00e1rio, torre de igreja"
+        },
+        "man_made/tower/communication": {
+            "name": "Torre de comunica\u00e7\u00e3o",
+            "terms": "torre de telecomunica\u00e7\u00f5es, radiodifus\u00e3o, antena, telefone celular, telefone m\u00f3vel, torre, r\u00e1dio, mastro de transmiss\u00e3o, pil\u00e3o de transmiss\u00e3o"
+        },
+        "man_made/tower/minaret": {
+            "name": "Minarete",
+            "terms": "minarete, minaretes, torre, mesquita, alm\u00e1dena, alminar"
+        },
+        "man_made/tower/observation": {
+            "name": "Torre de observa\u00e7\u00e3o",
+            "terms": "torre de observa\u00e7\u00e3o, torre de vigia"
+        },
+        "man_made/wastewater_plant": {
+            "name": "Esta\u00e7\u00e3o de tratamento de \u00e1guas residuais",
+            "terms": "Wastewater Plant, E.T.A.R., ETAR, Res\u00edduos, Esta\u00e7\u00e3o de Tratamento de Res\u00edduos, Esta\u00e7\u00e3o de Tratamento de \u00c1guas Residuais"
+        },
+        "man_made/water_tower": {
+            "name": "Reservat\u00f3rio elevado",
+            "terms": "Dep\u00f3sito de \u00c1gua, Torre de \u00c1gua, Water Tower"
+        },
+        "man_made/water_well": {
+            "name": "Po\u00e7o de \u00e1gua",
+            "terms": "Water Well, Po\u00e7o, \u00c1gua, Furo"
+        },
+        "man_made/water_works": {
+            "name": "Esta\u00e7\u00e3o de capta\u00e7\u00e3o e tratamento de \u00e1guas",
+            "terms": "Water Works, Capta\u00e7\u00e3o de \u00e1gua"
+        },
+        "man_made/watermill": {
+            "name": "Moinho de \u00e1gua",
+            "terms": "Watermill, moinho, azenha"
+        },
+        "man_made/windmill": {
+            "name": "Moinho de vento",
+            "terms": "Windmill, moinho"
+        },
+        "man_made/works": {
+            "name": "F\u00e1brica",
+            "terms": "ind\u00fastria, manofatura, manofatura\u00e7\u00e3o, fabrico, fabricar, works"
+        },
+        "manhole": {
+            "name": "Po\u00e7o de visita",
+            "terms": "Manhole, bueiro, tampa de saneamento, tampa"
+        },
+        "manhole/drain": {
+            "name": "Drenagem",
+            "terms": "Sumidouro, sarjeta, vala, valeta, tempestade, chuva, inunda\u00e7\u00e3o, pluviais, escoamento, drenagem"
+        },
+        "manhole/telecom": {
+            "name": "Po\u00e7o de visita de telecomunica\u00e7\u00f5es",
+            "terms": "Telecom Manhole, po\u00e7o de visita, telecomunica\u00e7\u00f5es"
+        },
+        "natural": {
+            "name": "Natural"
+        },
+        "natural/bare_rock": {
+            "name": "Zona rochosa",
+            "terms": "zonas rochosas, rocha matriz, rocha-m\u00e3e"
+        },
+        "natural/bay": {
+            "name": "Ba\u00eda",
+            "terms": "Ba\u00eda"
+        },
+        "natural/beach": {
+            "name": "Praia",
+            "terms": "areal"
+        },
+        "natural/cave_entrance": {
+            "name": "Entrada de gruta",
+            "terms": "Cave Entrance, caverna, Gruta"
+        },
+        "natural/cliff": {
+            "name": "Precip\u00edcio",
+            "terms": "escarpa, fal\u00e9sia, arriba"
+        },
+        "natural/coastline": {
+            "name": "Linha costeira",
+            "terms": "Costa, Orla"
+        },
+        "natural/fell": {
+            "name": "Encosta",
+            "terms": "Fell"
+        },
+        "natural/glacier": {
+            "name": "Glaciar",
+            "terms": "Glaciar"
+        },
+        "natural/grassland": {
+            "name": "Pradaria",
+            "terms": "Grassland, Verdes, Terra Verde, Prado, Pastoreio"
+        },
+        "natural/heath": {
+            "name": "Charneca",
+            "terms": "Heath"
+        },
+        "natural/mud": {
+            "name": "Lama",
+            "terms": "Terra molhada"
+        },
+        "natural/peak": {
+            "name": "Pico / cume",
+            "terms": "Peak, Montanha, Pin\u00e1culo"
+        },
+        "natural/reef": {
+            "name": "Arrecife",
+            "terms": "barreira, barreira, coral, oceano, mar profundo, recife, recife, oceano, rocha, coral"
+        },
+        "natural/ridge": {
+            "name": "Cumeeira / cume",
+            "terms": "cumieira, cumeira, cume, cumeada, tergo"
+        },
+        "natural/saddle": {
+            "name": "Passo de montanha",
+            "terms": "Saddle, colo, porto, portela"
+        },
+        "natural/sand": {
+            "name": "Areia",
+            "terms": "areal, sand"
+        },
+        "natural/scree": {
+            "name": "Encosta de rochas soltas",
+            "terms": "Sree, Cascalho, Pedras"
+        },
+        "natural/scrub": {
+            "name": "Matagal",
+            "terms": "matagal, terreno sem uso, terreno com matagal, terreno com mato, matos, terreno abandonado"
+        },
+        "natural/spring": {
+            "name": "Nascente de \u00e1gua",
+            "terms": "Nascente, \u00c1gua, Nasce, Fonte"
+        },
+        "natural/tree": {
+            "name": "\u00c1rvore",
+            "terms": "Tree, Abeto, Ac\u00e1cia, Amendoeira, Amoreira, Carvalho, Castanheiro, Cedro, Cerejeira, Choupo, Cipreste, Damasqueiro, Diospireiro, \u00c9bano, Eucalipto, Eucalito, Figueira, Freixo, Laranjeira, Limoeiro, Loureiro, Macieira, Marmeleiro, Nogueira, Nespereira, Oliveira, Pereira, Pessegueiro, Pinheiro, Pl\u00e1tano, Salgueiro, Sequoia, Sobreiro"
+        },
+        "natural/tree_row": {
+            "name": "Linha de \u00e1rvores",
+            "terms": "Fileira de \u00e1rvores, fila, \u00e1rvores, alameda"
+        },
+        "natural/volcano": {
+            "name": "Vulc\u00e3o",
+            "terms": "Volcano"
+        },
+        "natural/water": {
+            "name": "\u00c1gua",
+            "terms": "Water"
+        },
+        "natural/water/basin": {
+            "name": "Bacia artificial",
+            "terms": "bacia artificial, bacia, bacia de infiltra\u00e7\u00e3o, bacia de deten\u00e7\u00e3o, bacia de retardamento, bacia de reten\u00e7\u00e3o, bacia de drenagem, reservat\u00f3rio"
+        },
+        "natural/water/canal": {
+            "name": "Canal",
+            "terms": "canal, canalete, vala"
+        },
+        "natural/water/lake": {
+            "name": "Lago",
+            "terms": "Jardim de \u00c1gua, Jardim d'\u00c1gua, Lagoa, Lagoinha, Pateira"
+        },
+        "natural/water/pond": {
+            "name": "Lagoa",
+            "terms": "Jardim de \u00c1gua, Jardim d'\u00c1gua, Lagoinha, Pateira"
+        },
+        "natural/water/reservoir": {
+            "name": "Reservat\u00f3rio artificial",
+            "terms": "Reservat\u00f3rio, Reservat\u00f3rio de \u00c1gua"
+        },
+        "natural/water/river": {
+            "name": "Rio",
+            "terms": "river, afluente, barra, barroca, curso de \u00e1gua, delta, estu\u00e1rio, ria, rio"
+        },
+        "natural/water/stream": {
+            "name": "Ribeiro",
+            "terms": "afluente, barra, barroca, canal, corga, corgo, c\u00f3rrego, curso de \u00e1gua, delta, estu\u00e1rio, fio de \u00e1gua, grota, regato, rego, regueira, regueiro, \u202friachinho, riacho, ribeira, ribeiro, ria, sanga, vala, valeiro"
+        },
+        "natural/wetland": {
+            "name": " Zona h\u00famida",
+            "terms": "P\u00e2ntano, Sapal, Paul, Turfeira, Wetland"
+        },
+        "natural/wood": {
+            "name": "Bosque",
+            "terms": "Wood"
+        },
+        "noexit/yes": {
+            "name": "Sem sa\u00edda",
+            "terms": "No Exit"
+        },
+        "office": {
+            "name": "Escrit\u00f3rio",
+            "terms": "Office, Escrit\u00f3rios"
+        },
+        "office/accountant": {
+            "name": "Contabilista",
+            "terms": "Accountant, Contas, Contabilidade, IRS, I.R.S., Contabilista, Contabilistas"
+        },
+        "office/administrative": {
+            "name": "Escrit\u00f3rio da administra\u00e7\u00e3o local"
+        },
+        "office/adoption_agency": {
+            "name": "Ag\u00eancia de ado\u00e7\u00e3o",
+            "terms": "ado\u00e7\u00e3o, adop\u00e7\u00e3o, adotar, adoptar"
+        },
+        "office/advertising_agency": {
+            "name": "Ag\u00eancia de publicidade",
+            "terms": "publicidade, an\u00fancio"
+        },
+        "office/architect": {
+            "name": "Arquiteto",
+            "terms": "arquitecto, arquitecta, arquiteta, arquitectura, arquitetura"
+        },
+        "office/association": {
+            "name": "Organiza\u00e7\u00e3o sem fins lucrativos",
+            "terms": "ONG"
+        },
+        "office/charity": {
+            "name": "Institui\u00e7\u00e3o de caridade",
+            "terms": "Caridade, Filantropia, Solidariedade"
+        },
+        "office/company": {
+            "name": "Empresa",
+            "terms": "escrit\u00f3rio, empresa"
+        },
+        "office/coworking": {
+            "name": "Escrit\u00f3rios cooperativos",
+            "terms": "Escrit\u00f3rios Partilhados, Trabalho Cooperativo, Coworking, Co-working, Espa\u00e7o de Trabalho Compartilhado"
+        },
+        "office/educational_institution": {
+            "name": "Institui\u00e7\u00e3o de ensino",
+            "terms": "Educacional Institution, Escola, Institui\u00e7\u00e3o Educacional, Educa\u00e7\u00e3o, Educacional"
+        },
+        "office/employment_agency": {
+            "name": "Ag\u00eancia de emprego",
+            "terms": "Employment Agency, Ag\u00eancia de Emprego, Emprego"
+        },
+        "office/energy_supplier": {
+            "name": "Fornecedor de energia",
+            "terms": "Eletricidade, G\u00e1s, Botijas de G\u00e1s, Combust\u00edvel"
+        },
+        "office/estate_agent": {
+            "name": "Ag\u00eancia imobili\u00e1ria",
+            "terms": "Real Estate Office, Im\u00f3vel, Im\u00f3veis, Mudan\u00e7as, Compra de Casas, Casa, Casas, habita\u00e7\u00e3o, Habita\u00e7\u00f5es"
+        },
+        "office/financial": {
+            "name": "Finan\u00e7as",
+            "terms": "Financial Office, Posto de Finan\u00e7as, Balc\u00e3o de Finan\u00e7as, Reparti\u00e7\u00e3o. IRS, IRC, impostos, taxas"
+        },
+        "office/forestry": {
+            "name": "Posto florestal",
+            "terms": "Guarda Florestal"
+        },
+        "office/foundation": {
+            "name": "Funda\u00e7\u00e3o",
+            "terms": "foundation, funda\u00e7\u00e3o"
+        },
+        "office/government": {
+            "name": "Escrit\u00f3rio da administra\u00e7\u00e3o nacional",
+            "terms": "Government Office, Governo, Estado, Finan\u00e7as, Seguran\u00e7a Social, DGV, Instituto de Emprego, Centro de Emprego, Direc\u00e7\u00e3o-Geral, Dire\u00e7\u00e3o-Geral, Loja do Cidad\u00e3o"
+        },
+        "office/government/register_office": {
+            "name": "Conservat\u00f3ria do registo civil",
+            "terms": "Register Office, Conservat\u00f3ria, Registo Civil, Registo, Nascimento, Casamento, \u00d3bito, Div\u00f3rcio, Conservat\u00f3ria dos Registos Centrais, estado civil,"
+        },
+        "office/government/tax": {
+            "name": "Finan\u00e7as",
+            "terms": "Dire\u00e7\u00e3o de Finan\u00e7as, Reparti\u00e7\u00e3o de Finan\u00e7as, Dire\u00e7\u00e3o das Finan\u00e7as, Reparti\u00e7\u00e3o das Finan\u00e7as"
+        },
+        "office/guide": {
+            "name": "Guia tur\u00edstico",
+            "terms": "Guia"
+        },
+        "office/insurance": {
+            "name": "Ag\u00eancia de seguros",
+            "terms": "Insurance Office, Seguros, Seguro"
+        },
+        "office/it": {
+            "name": "Escrit\u00f3rio de tecnologia da informa\u00e7\u00e3o",
+            "terms": "IT, tecnologias, software, programa"
+        },
+        "office/lawyer": {
+            "name": "Escrit\u00f3rio de advogados",
+            "terms": "Law Office, Ag\u00eancia de Advocacia, Advogados, Advogado, Advogadas, Advogada, Advocacia"
+        },
+        "office/lawyer/notary": {
+            "name": "Not\u00e1rio"
+        },
+        "office/moving_company": {
+            "name": "Empresa de mudan\u00e7as",
+            "terms": "mudan\u00e7as, transportadora, log\u00edstica"
+        },
+        "office/newspaper": {
+            "name": "Sede / filial de jornal",
+            "terms": "jornal"
+        },
+        "office/ngo": {
+            "name": "Sede de ONG",
+            "terms": "NGO Office, Organiza\u00e7\u00e3o, Organiza\u00e7\u00e3o N\u00e3o Governamental, NGO, ONG, escrit\u00f3rio ONG"
+        },
+        "office/notary": {
+            "name": "Not\u00e1rio",
+            "terms": "Notary Office, Notariado"
+        },
+        "office/physician": {
+            "name": "M\u00e9dico especialista"
+        },
+        "office/political_party": {
+            "name": "Sede / filial de partido pol\u00edtico",
+            "terms": "Political Party, Partido, Partidos, sede partido, sede partid\u00e1ria, pol\u00edtica, sede pol\u00edtica,"
+        },
+        "office/private_investigator": {
+            "name": "Detetive privado",
+            "terms": "Detetive, Detetive Particular"
+        },
+        "office/quango": {
+            "name": "Sede de ONG subsidiada",
+            "terms": "organiza\u00e7\u00e3o n\u00e3o governamental, ONG, NGO, sede ONG, sede organiza\u00e7\u00e3o n\u00e3o governamental, ISPP, ONG subsidiada, ONG subsidiada governo, ONG subsidiada estado,"
+        },
+        "office/religion": {
+            "name": "Escrit\u00f3rio religioso",
+            "terms": "escrit\u00f3rio religioso, administra\u00e7\u00e3o religiosa, secretaria religiosa, mordomia religiosa"
+        },
+        "office/research": {
+            "name": "Centro de investiga\u00e7\u00e3o",
+            "terms": "Research Office, Escrit\u00f3rio de Investiga\u00e7\u00e3o, Centro de Pesquisa"
+        },
+        "office/surveyor": {
+            "name": "Empresa de agrimensura",
+            "terms": "agrimessor, agrimessura, medi\u00e7\u00e3o, medi\u00e7\u00f5es, levantamento, terreno"
+        },
+        "office/tax_advisor": {
+            "name": "Escrit\u00f3rio de assessor fiscal",
+            "terms": "Assessoria Fiscal, Acessoria Fiscal, Acecoria Fiscal, A\u00e7essoria Fiscal, A\u00e7ecoria Fiscal, A\u00e7esoria Fiscal, Acessor Fiscal, Acecor Fiscal, A\u00e7essor Fiscal, A\u00e7ecor Fiscal, A\u00e7esor Fiscal"
+        },
+        "office/telecommunication": {
+            "name": "Empresa de telecomunica\u00e7\u00f5es",
+            "terms": "Telecom Office, Telecomunica\u00e7\u00f5es, Internet, Televis\u00e3o"
+        },
+        "office/therapist": {
+            "name": "Terapista",
+            "terms": "Therapist, Terapista, Terap\u00eautica"
+        },
+        "office/travel_agent": {
+            "name": "Ag\u00eancia de viagens"
+        },
+        "office/water_utility": {
+            "name": "Fornecedor de \u00e1gua",
+            "terms": "\u00c1gua, Companhia de \u00c1gua, Cooperativa de \u00c1gua"
+        },
+        "piste/downhill": {
+            "name": "Pista de descida / pista de esqui",
+            "terms": "esquiar, pista, alpine, descida, snowboard"
+        },
+        "piste/downhill/halfpipe": {
+            "name": "Meio tubo",
+            "terms": "Skate"
+        },
+        "piste/hike": {
+            "name": "Raquetes de neve ou caminhada de inverno",
+            "terms": "esqui, pista, caminhada, caminhadas, raquetes de neve, pedestre"
+        },
+        "piste/ice_skate": {
+            "name": "Pista de patinagem no gelo",
+            "terms": "esqui, pista, skate, gelo"
+        },
+        "piste/nordic": {
+            "name": "Pista / pista de esqui cross-country ou n\u00f3rdica",
+            "terms": "esqui, trilha, plano de fundo, n\u00f3rdico, cl\u00e1ssico, patinagem"
+        },
+        "piste/piste": {
+            "name": "Pistas de desportos de inverno",
+            "terms": "esqui, n\u00f3rdicos, plano de fundo, alpina, descida, snowboard, caminhadas, caminhadas, tren\u00f3, tren\u00f3, husky, cavalo, raquete, pedestre, gelo, patinagem no gelo"
+        },
+        "piste/skitour": {
+            "name": "Pista de esqui-alpinismo",
+            "terms": "esqui, skitour, pista, caminhada, passeio de esqui, caminhadas"
+        },
+        "piste/sled": {
+            "name": "Pista de tren\u00f3",
+            "terms": "esqui, skitour, pista, caminhada, passio de esqui, caminhadas"
+        },
+        "piste/sleigh": {
+            "name": "Tren\u00f3",
+            "terms": "esqui, skitour, pista, caminhada, passio de esqui, caminhadas"
+        },
+        "place": {
+            "name": "Local"
+        },
+        "place/city": {
+            "name": "Capital de distrito",
+            "terms": "City, Cidade, Capital, Distrito"
+        },
+        "place/city_block": {
+            "name": "Quarteir\u00e3o",
+            "terms": "bloco urbano, bloco, quadra"
+        },
+        "place/farm": {
+            "name": "Quinta"
+        },
+        "place/hamlet": {
+            "name": "Aldeia",
+            "terms": "Hamlet, Aldeamento"
+        },
+        "place/island": {
+            "name": "Ilha",
+            "terms": "Arquip\u00e9lago, Atol, Ilha, Ilh\u00e9u, Recife, Restinga"
+        },
+        "place/islet": {
+            "name": "Ilh\u00e9u",
+            "terms": "ilhota, farelh\u00e3o, pequena ilha, ilha pequena, rochedo, banco de areia, roca, cayo"
+        },
+        "place/isolated_dwelling": {
+            "name": "Habita\u00e7\u00e3o isolada",
+            "terms": "Isolated Dwelling, isolado, remoto, remota"
+        },
+        "place/locality": {
+            "name": "S\u00edtio (evitar usar)",
+            "terms": "Localidade"
+        },
+        "place/neighbourhood": {
+            "name": "Bairro",
+            "terms": "Neigborhood, Vizinhan\u00e7a"
+        },
+        "place/plot": {
+            "name": "Lote",
+            "terms": "parcela"
+        },
+        "place/quarter": {
+            "name": "Zona de cidade",
+            "terms": "zona"
+        },
+        "place/square": {
+            "name": "Pra\u00e7a / praceta / largo / terreiro",
+            "terms": "Square, Praceta, Largo, Terreiro"
+        },
+        "place/suburb": {
+            "name": "Sub\u00farbio",
+            "terms": "periferia, sub\u00farbio, bairro, quarteir\u00e3o, margem, limite"
+        },
+        "place/town": {
+            "name": "Cidade / vila",
+            "terms": "Town, Conselho, Concelho, Cidade, Vila"
+        },
+        "place/village": {
+            "name": "Sede de Freguesia",
+            "terms": "Village, Freguesia, Freguezia, Cidade, Vila, Aldeia"
+        },
+        "playground/balance_beam": {
+            "name": "Barra de equil\u00edbrio",
+            "terms": "Equil\u00edbrio, Balan\u00e7o, Equilibrismo, Trave"
+        },
+        "playground/basket_spinner": {
+            "name": "Cesto rotativo",
+            "terms": "Cesto, Rotativo, Cesta"
+        },
+        "playground/basket_swing": {
+            "name": "Baloi\u00e7o de cesto",
+            "terms": "Cesto, Cesta, Baloi\u00e7o"
+        },
+        "playground/climbing_frame": {
+            "name": "Estrutura de trepar",
+            "terms": "trepa-trepa, gaiola g\u00ednica, trepar"
+        },
+        "playground/cushion": {
+            "name": "Colch\u00e3o insufl\u00e1vel",
+            "terms": "Insufl\u00e1vel"
+        },
+        "playground/horizontal_bar": {
+            "name": "Barra fixa horizontal",
+            "terms": "Barra Horizontal"
+        },
+        "playground/rocker": {
+            "name": "Baloi\u00e7o de mola",
+            "terms": "Mola"
+        },
+        "playground/roundabout": {
+            "name": "Gira-gira",
+            "terms": "Girar"
+        },
+        "playground/sandpit": {
+            "name": "Caixa de areia",
+            "terms": "Areia"
+        },
+        "playground/seesaw": {
+            "name": "Balanc\u00e9",
+            "terms": "Gangorra"
+        },
+        "playground/slide": {
+            "name": "Escorrega",
+            "terms": "escorregador, escorreg\u00e3o, escorrego"
+        },
+        "playground/structure": {
+            "name": "Estrutura de divers\u00e3o",
+            "terms": "Estrutura, Jogo, Equipamento"
+        },
+        "playground/swing": {
+            "name": "Baloi\u00e7o",
+            "terms": "balan\u00e7o"
+        },
+        "playground/zipwire": {
+            "name": "Corda suspensa",
+            "terms": "corda, suspenso"
+        },
+        "point": {
+            "name": "Ponto",
+            "terms": "Ponto, N\u00f3, POI"
+        },
+        "power": {
+            "name": "Energia"
+        },
+        "power/cable/underground": {
+            "name": "Cabo de energia subterr\u00e2neo",
+            "terms": "Cabo el\u00e9trico subterr\u00e2neo"
+        },
+        "power/generator": {
+            "name": "Central de gera\u00e7\u00e3o de energia",
+            "terms": "Power Generator, Gerador El\u00e9trico, Energia E\u00f3lica, Energia Solar, Energia Termoel\u00e9ctrica, Energia Nuclear, Central de Energia"
+        },
+        "power/generator/method/photovoltaic": {
+            "name": "Painel solar",
+            "terms": "pain\u00e9is solares, painel solar, esta\u00e7\u00e3o de energia solar, painel fotovoltaico, parque de energia solar, parque de pain\u00e9is solares"
+        },
+        "power/generator/source/nuclear": {
+            "name": "Reator nuclear",
+            "terms": "reator nuclear, usina nuclear"
+        },
+        "power/generator/source/wind": {
+            "name": "Turbina e\u00f3lica",
+            "terms": "usina e\u00f3lica, turbinas e\u00f3licas, torre e\u00f3lica, \u00e9olica, e\u00f3lica, he\u00f3lica, h\u00e9olica, vento, aerogerador"
+        },
+        "power/line": {
+            "name": "Linha de alta tens\u00e3o",
+            "terms": "Linha de Eletricidade, Linha de Transmiss\u00e3o"
+        },
+        "power/minor_line": {
+            "name": "Linha de m\u00e9dia e baixa tens\u00e3o",
+            "terms": "Minor Power Line, Linha de Transmiss\u00e3o Menor, Linha de Energia Menor"
+        },
+        "power/plant": {
+            "name": "\u00c1rea da central de energia",
+            "terms": "solo da central de energia, zona da central, solo da central, \u00e1rea da central"
+        },
+        "power/pole": {
+            "name": "Poste",
+            "terms": "Power Pole, Poste de Eletricidade, Torre de m\u00e9dia e baixa Tens\u00e3o"
+        },
+        "power/sub_station": {
+            "name": "Subesta\u00e7\u00e3o"
+        },
+        "power/substation": {
+            "name": "Subesta\u00e7\u00e3o",
+            "terms": "Substation, energia, Sub-esta\u00e7\u00e3o, Sub esta\u00e7\u00e3o, Distribui\u00e7\u00e3o"
+        },
+        "power/switch": {
+            "name": "Disjuntor el\u00e9trico",
+            "terms": "disjuntor, dijuntor, dejuntor, interruptor, interrutor, interrotor, comutador"
+        },
+        "power/tower": {
+            "name": "Torre de alta tens\u00e3o",
+            "terms": "High-Voltage Tower, Torre de Alta-Tens\u00e3o, Poste de Alta-Tens\u00e3o"
+        },
+        "power/transformer": {
+            "name": "Transformador de distribui\u00e7\u00e3o",
+            "terms": "Transformador"
+        },
+        "public_transport/platform": {
+            "name": "Paragem / plataforma",
+            "terms": "plataforma, paragem, transporte p\u00fablico"
+        },
+        "public_transport/platform_aerialway": {
+            "name": "Paragem a\u00e9rea / plataforma"
+        },
+        "public_transport/platform_bus": {
+            "name": "Paragem de autocarro / plataforma",
+            "terms": "paragem, autocarro, machimbombo, toca-toca, otocarro, microlete, camionete, camioneta, carreira"
+        },
+        "public_transport/platform_ferry": {
+            "name": "Paragem de ferry / plataforma",
+            "terms": "Ferry, Plataforma de Ferry"
+        },
+        "public_transport/platform_light_rail": {
+            "name": "Paragem de comboio ligeiro / plataforma",
+            "terms": "plataforma, paragem, metropolitano ligeiro"
+        },
+        "public_transport/platform_monorail": {
+            "name": "Paragem de monocarril / plataforma",
+            "terms": "plataforma, paragem, monocarril, mono-carril, monorail"
+        },
+        "public_transport/platform_subway": {
+            "name": "Paragem de metro / plataforma",
+            "terms": "paragem de metro, metro, metropolitano, paragem"
+        },
+        "public_transport/platform_train": {
+            "name": "Paragem de comboio / plataforma",
+            "terms": "Paragem de Comboio, Plataforma de Comboio"
+        },
+        "public_transport/platform_tram": {
+            "name": "Paragem de el\u00e9trico / plataforma",
+            "terms": "plataforma, paragem, el\u00e9ctrico, el\u00e9trico"
+        },
+        "public_transport/platform_trolleybus": {
+            "name": "Paragem de tr\u00f3leibus / plataforma",
+            "terms": "paragem, plataforma, trolleybus, tr\u00f3leibus, tr\u00f3lebus, tr\u00f3leicarro, tr\u00f3lei"
+        },
+        "public_transport/station": {
+            "name": "Esta\u00e7\u00e3o de transporte p\u00fablico",
+            "terms": "esta\u00e7\u00e3o, transporte p\u00fablico, autocarro, comboio"
+        },
+        "public_transport/station_aerialway": {
+            "name": "Esta\u00e7\u00e3o a\u00e9rea"
+        },
+        "public_transport/station_bus": {
+            "name": "Esta\u00e7\u00e3o / terminal rodovi\u00e1rio",
+            "terms": "terminal, rodovi\u00e1rio, rodovi\u00e1ria, esta\u00e7\u00e3o, paragem, autocarro, carreira, camionete, camioneta, \u00f4nibus, machimbombo, toca-toca, otocarro, microlete"
+        },
+        "public_transport/station_ferry": {
+            "name": "Esta\u00e7\u00e3o / terminal de ferry",
+            "terms": "ferry, terminal de ferry, esta\u00e7\u00e3o de ferry, esta\u00e7\u00e3o, terminal"
+        },
+        "public_transport/station_light_rail": {
+            "name": "Esta\u00e7\u00e3o de comboio ligeiro"
+        },
+        "public_transport/station_monorail": {
+            "name": "Esta\u00e7\u00e3o de monocarril",
+            "terms": "esta\u00e7\u00e3o, monocarril, mono-carril, monorail"
+        },
+        "public_transport/station_subway": {
+            "name": "Esta\u00e7\u00e3o de metropolitano",
+            "terms": "esta\u00e7\u00e3o de metro, esta\u00e7\u00e3o, ferrovia, ferrovi\u00e1ria, metro, metr\u00f4, metropolitano"
+        },
+        "public_transport/station_train": {
+            "name": "Esta\u00e7\u00e3o de comboios",
+            "terms": "esta\u00e7\u00e3o ferrovi\u00e1ria, esta\u00e7\u00e3o dos caminhos de ferro, esta\u00e7\u00e3o, caminhos de ferro, ferrovia"
+        },
+        "public_transport/station_train_halt": {
+            "name": "Apeadeiro ferrovi\u00e1rio",
+            "terms": "apeadeiro, paragem de comboio, paragem"
+        },
+        "public_transport/station_tram": {
+            "name": "Esta\u00e7\u00e3o de el\u00e9trico",
+            "terms": "esta\u00e7\u00e3o, el\u00e9trico, el\u00e9ctrico"
+        },
+        "public_transport/station_trolleybus": {
+            "name": "Esta\u00e7\u00e3o de tr\u00f3leibus",
+            "terms": "esta\u00e7\u00e3o, terminal, trolleybus, tr\u00f3leibus, tr\u00f3lebus, tr\u00f3leicarro, tr\u00f3lei"
+        },
+        "public_transport/stop_area": {
+            "name": "\u00c1rea de paragem de transporte p\u00fablico",
+            "terms": "\u00e1rea, paragem, transporte p\u00fablico"
+        },
+        "public_transport/stop_position": {
+            "name": "Local de paragem de transporte p\u00fablico",
+            "terms": "paragem, transporte p\u00fablico"
+        },
+        "public_transport/stop_position_aerialway": {
+            "name": "Local de paragem a\u00e9rea"
+        },
+        "public_transport/stop_position_bus": {
+            "name": "Local de paragem de autocarro",
+            "terms": "paragem, autocarro, carreira, camionete, camioneta, \u00f4nibus, machimbombo, toca-toca, otocarro, microlete"
+        },
+        "public_transport/stop_position_ferry": {
+            "name": "Localiza\u00e7\u00e3o de paragem do ferry",
+            "terms": "Ferry, Paragem do Ferry"
+        },
+        "public_transport/stop_position_light_rail": {
+            "name": "Local de paragem de comboio ligeiro"
+        },
+        "public_transport/stop_position_monorail": {
+            "name": "Local de paragem de monocarril",
+            "terms": "paragem, monorail, mono-carril"
+        },
+        "public_transport/stop_position_subway": {
+            "name": "Local de paragem de metro"
+        },
+        "public_transport/stop_position_train": {
+            "name": "Localiza\u00e7\u00e3o de paragem do comboio",
+            "terms": "Comboio, Paragem do Comboio"
+        },
+        "public_transport/stop_position_tram": {
+            "name": "Local de paragem de el\u00e9trico",
+            "terms": "paragem, el\u00e9trico, el\u00e9ctrico"
+        },
+        "public_transport/stop_position_trolleybus": {
+            "name": "Local de paragem de tr\u00f3leibus",
+            "terms": "paragem, trolleybus, tr\u00f3leibus, tr\u00f3lebus, tr\u00f3leicarro, tr\u00f3lei"
+        },
+        "railway": {
+            "name": "Ferrovia"
+        },
+        "railway/abandoned": {
+            "name": "Ferrovia removida",
+            "terms": "Carris Abandonados, Linha de Carris Abandonados"
+        },
+        "railway/buffer_stop": {
+            "name": "P\u00e1ra-choques ferrovi\u00e1rio",
+            "terms": "Buffer Stop, p\u00e1ra-choque, para-choque, Para-choque de via"
+        },
+        "railway/crossing": {
+            "name": "Passagem de n\u00edvel (caminho)",
+            "terms": "Railway Crossing, passagem de n\u00edvel"
+        },
+        "railway/derail": {
+            "name": "Descarrilador ferrovi\u00e1rio",
+            "terms": "Railway Derailer. descarrilador, descarrilar"
+        },
+        "railway/disused": {
+            "name": "Ferrovia n\u00e3o utilizada",
+            "terms": "Carris Fora de Servi\u00e7o"
+        },
+        "railway/funicular": {
+            "name": "Funicular",
+            "terms": "Funicular, Plano Inclinado"
+        },
+        "railway/halt": {
+            "name": "Apeadeiro ferrovi\u00e1rio"
+        },
+        "railway/level_crossing": {
+            "name": "Passagem de n\u00edvel (estrada)",
+            "terms": "Railway Crossing (Road)"
+        },
+        "railway/light_rail": {
+            "name": "Metro ligeiro",
+            "terms": "Metr\u00f4 leve, metro ligeiro, metropolitano de superf\u00edcie, ve\u00edculo leve sobre trilhos, comboio ligeiro"
+        },
+        "railway/milestone": {
+            "name": "Marco quilom\u00e9trico ferrovi\u00e1rio",
+            "terms": "Railway Milestone, marco quilom\u00e9trico"
+        },
+        "railway/miniature": {
+            "name": "Caminho de ferro em miniatura",
+            "terms": "comboio, comboio de miniatura, comboio miniatura, miniatura, mini-comboio. minicomboio, comboio pequeno"
+        },
+        "railway/monorail": {
+            "name": "Monocarril",
+            "terms": "monorail, mono-carril"
+        },
+        "railway/narrow_gauge": {
+            "name": "Via estreita",
+            "terms": "Narrow Gauge Rail, Bitola Estreita, Via M\u00e9trica, Bitola M\u00e9trica"
+        },
+        "railway/platform": {
+            "name": "Paragem de comboio / plataforma"
+        },
+        "railway/rail": {
+            "name": "Ferrovia",
+            "terms": "Rail, Linha F\u00e9rrea, Caminho de ferro, Caminhos de ferro, Carril, Carris, via f\u00e9rrea, estrada-de-ferro, ferrovia"
+        },
+        "railway/signal": {
+            "name": "Sinal ferrovi\u00e1rio",
+            "terms": "Railway Signal, sem\u00e1foro ferrovi\u00e1rio, sem\u00e1foro, sinaliza\u00e7\u00e3o, sinal"
+        },
+        "railway/station": {
+            "name": "Esta\u00e7\u00e3o de comboio"
+        },
+        "railway/subway": {
+            "name": "Metro",
+            "terms": "Metro, Subterr\u00e2neo"
+        },
+        "railway/subway_entrance": {
+            "name": "Entrada de metro",
+            "terms": "Entrada do Metro, Metro, Metropolitano, Subterr\u00e2neo"
+        },
+        "railway/switch": {
+            "name": "Agulha de ferrovia",
+            "terms": "Railway Switch, Switch, aparelho de mudan\u00e7a de via, AMV, agulha, agulheta"
+        },
+        "railway/train_wash": {
+            "name": "Lavagem de comboios",
+            "terms": "Train Wash, lavadora de comboios, lavadora, lavagem"
+        },
+        "railway/tram": {
+            "name": "El\u00e9trico",
+            "terms": "El\u00e9trico, El\u00e9ctrico"
+        },
+        "railway/tram_stop": {
+            "name": "Posi\u00e7\u00e3o de paragem de el\u00e9trico"
+        },
+        "relation": {
+            "name": "Rela\u00e7\u00e3o",
+            "terms": "relation, rela\u00e7\u00e3o, rela\u00e7\u00f5es"
+        },
+        "roundabout": {
+            "name": "Rotunda"
+        },
+        "route/ferry": {
+            "name": "Rota de barca / ferry",
+            "terms": "rota do ferry, rota, ferry, percurso, viagem"
+        },
+        "seamark": {
+            "name": "Marco mar\u00edtimo"
+        },
+        "seamark/beacon_isolated_danger": {
+            "name": "Baliza de perigo",
+            "terms": "marca de perigo isolado, iala"
+        },
+        "seamark/beacon_lateral": {
+            "name": "Baliza de canal",
+            "terms": "tag lateral, cevni, iala, canal"
+        },
+        "seamark/buoy_lateral": {
+            "name": "B\u00f3ia do canal",
+            "terms": "b\u00f3ia lateral, cevni, iala, canal"
+        },
+        "seamark/buoy_lateral/green": {
+            "name": "B\u00f3ia verde",
+            "terms": "b\u00f3ia lateral, b\u00f3ia, cevni, iala, canal"
+        },
+        "seamark/buoy_lateral/red": {
+            "name": "B\u00f3ia vermelha",
+            "terms": "b\u00f3ia lateral, b\u00f3ia, cevni, iala, canal"
+        },
+        "seamark/mooring": {
+            "name": "Amarra\u00e7\u00e3o",
+            "terms": "amarra\u00e7\u00e3o, ancoragem, galo, b\u00f3ia de terminal"
+        },
+        "shop": {
+            "name": "Loja",
+            "terms": "Loja, Venda, Vendedor"
+        },
+        "shop/agrarian": {
+            "name": "Loja de produtos agr\u00edcolas",
+            "terms": "loja, agr\u00edcola, produtos, agr\u00edcolas, pesticidas, fertilizantes, sementes, ferramentas"
+        },
+        "shop/alcohol": {
+            "name": "Loja de bebidas alco\u00f3licas",
+            "terms": "Alcool"
+        },
+        "shop/anime": {
+            "name": "Loja de anime",
+            "terms": "Anime Shop, Loja de material Asi\u00e1tico, Manga, Anime"
+        },
+        "shop/antiques": {
+            "name": "Loja de antiguidades",
+            "terms": "Antiques Shop, Antiguidade, Antiguidades, Antigo, Rel\u00edquia, Rel\u00edquias"
+        },
+        "shop/appliance": {
+            "name": "Loja de eletrodom\u00e9sticos",
+            "terms": "eletrodom\u00e9stico, electrodom\u00e9stico, frigor\u00edfico, m\u00e1quina"
+        },
+        "shop/art": {
+            "name": "Loja de artes",
+            "terms": "Artesanato, Decora\u00e7\u00e3o, Objetos art\u00edsticos, Objetos decorativos, Quadros, Pintura,"
+        },
+        "shop/baby_goods": {
+            "name": "Loja de acess\u00f3rios para beb\u00e9s",
+            "terms": "Baby Goods Store, Loja de Roupa, Carrinho, Brinquedos, B\u00e9b\u00e9, B\u00e9be, Bebe, b\u00e9b\u00e9s"
+        },
+        "shop/bag": {
+            "name": "Loja de malas / bagagem",
+            "terms": "Bag/Luggage Store, Mala, Malas, Bolsa, Bolsas"
+        },
+        "shop/bakery": {
+            "name": "Padaria",
+            "terms": "Bakery, P\u00e3o, P\u00e3es, Padeiro, Padeira"
+        },
+        "shop/bathroom_furnishing": {
+            "name": "Loja de assess\u00f3rios para casas de banho",
+            "terms": "Bathroom Furnishing Store, Casa de Banho, Casas de banho, WC, W.C."
+        },
+        "shop/beauty": {
+            "name": "Centro de est\u00e9tica",
+            "terms": "Beauty Shop, Loja de Beleza, Loja de Produtos de Beleza"
+        },
+        "shop/beauty/nails": {
+            "name": "Estetica de unhas",
+            "terms": "Nail Salon"
+        },
+        "shop/beauty/tanning": {
+            "name": "Sol\u00e1rio",
+            "terms": "Tanning Salon, Bronzeamento"
+        },
+        "shop/bed": {
+            "name": "Loja de camas / colch\u00f5es",
+            "terms": "Bedding/Mattress Store, Cama, Camas, Colch\u00e3o, Colch\u00f5es"
+        },
+        "shop/beverages": {
+            "name": "Loja de bebidas",
+            "terms": "Beverage Store, Bebida, Bebidas"
+        },
+        "shop/bicycle": {
+            "name": "Loja de bicicletas",
+            "terms": "Bicycle, Bicicletas, Bicicleta"
+        },
+        "shop/bookmaker": {
+            "name": "Casa de apostas",
+            "terms": "Bookmaker, Bolsa de apostas, Lotaria, Totoloto, Totobola, Euromilh\u00f5es, Sorte"
+        },
+        "shop/books": {
+            "name": "Livraria",
+            "terms": "Book Store, Loja de Livros, Livro, Livros, Livreiro"
+        },
+        "shop/boutique": {
+            "name": "Boutique",
+            "terms": "Boutique"
+        },
+        "shop/butcher": {
+            "name": "Talho",
+            "terms": "Butcher, Carne, Talhante"
+        },
+        "shop/candles": {
+            "name": "Loja de velas",
+            "terms": "Candle Shop, velas, vela"
+        },
+        "shop/car": {
+            "name": "Loja de autom\u00f3veis",
+            "terms": "Concesson\u00e1ria de Automom\u00f3veis, Stande, Setande, Cetande, Stand, Autom\u00f3veis, Autom\u00f3vel, Auto, Carros, Carro"
+        },
+        "shop/car_parts": {
+            "name": "Loja de acess\u00f3rios para autom\u00f3veis",
+            "terms": "Loja de Pe\u00e7as Autom\u00f3veis, Pe\u00e7a, Pe\u00e7as, Autom\u00f3vel, Autom\u00f3veis"
+        },
+        "shop/car_repair": {
+            "name": "Oficina de autom\u00f3veis",
+            "terms": "Car Repair Shop, Oficina, Repara\u00e7\u00e3o, Repara\u00e7\u00f5es, Autom\u00f3vel, Autom\u00f3veis"
+        },
+        "shop/caravan": {
+            "name": "Vendedor de caravanas",
+            "terms": "trailer, motocasa, caravana, auto-caravana, autocaravana, caravanismo, rulote, rolote, motorhome, concession\u00e1rio, concession\u00e1ria"
+        },
+        "shop/carpet": {
+            "name": "Loja de carpetes / tapetes",
+            "terms": "Carpet Store, Carpetes, Carpete, Tapete, Tapetes, Passadeira, Passadeiras, Pa\u00e7adeira, Pa\u00e7adeiras"
+        },
+        "shop/catalogue": {
+            "name": "Loja de cat\u00e1logo",
+            "terms": "cat\u00e1logo"
+        },
+        "shop/charity": {
+            "name": "Loja solid\u00e1ria",
+            "terms": "Loja de caridade, Charity Store"
+        },
+        "shop/cheese": {
+            "name": "Queijaria",
+            "terms": "Cheese Store, Queijo, Queijos, loja de queijos"
+        },
+        "shop/chemist": {
+            "name": "Parafarm\u00e1cia",
+            "terms": "Drugstore"
+        },
+        "shop/chocolate": {
+            "name": "Loja de chocolates",
+            "terms": "Chocolate Store, Chocolate"
+        },
+        "shop/clothes": {
+            "name": "Loja de roupas",
+            "terms": "Clothing, Roupa, Roupas"
+        },
+        "shop/coffee": {
+            "name": "Loja de caf\u00e9s",
+            "terms": "Coffee Store"
+        },
+        "shop/computer": {
+            "name": "Loja de inform\u00e1tica",
+            "terms": "Computer, Computador, Inform\u00e1tica, Software, Programa"
+        },
+        "shop/confectionery": {
+            "name": "Confeitaria",
+            "terms": "Candy Store, Loja de Gomas, Bolos, Doces"
+        },
+        "shop/convenience": {
+            "name": "Mini-mercado / loja de conveni\u00eancia",
+            "terms": "Pequena loja, Loja de esquina, Compras, Loja, Alimentar, Alimentos, Loja de posto de combust\u00edvel, Minimercado, Mini Mercado"
+        },
+        "shop/copyshop": {
+            "name": "Loja de fotoc\u00f3pias",
+            "terms": "Copy Store, Fotoc\u00f3pias, Fotocopiadora, C\u00f3pia, M\u00e1quina de fotocopiar, Fotocopiar"
+        },
+        "shop/cosmetics": {
+            "name": "Loja de cosm\u00e9tica",
+            "terms": "Cosmetics, Cosm\u00e9tica, Cosm\u00e9ticos, Produtos de Beleza, Beleza, Belesa"
+        },
+        "shop/country_store": {
+            "name": "Country Store",
+            "terms": "campo, ca\u00e7a, pesca, passeios, cavalo, cavalos"
+        },
+        "shop/craft": {
+            "name": "Loja de artesanato",
+            "terms": "Arts and Crafts Store, Artesanato, Artezanato, Artigos locais"
+        },
+        "shop/curtain": {
+            "name": "Loja de cortinas",
+            "terms": "Curtain Store, Cortina, Cortinas, Cortinado, Cortinados"
+        },
+        "shop/dairy": {
+            "name": "Loja de latic\u00ednios",
+            "terms": "Dairy Store, Produtos L\u00e1cteos"
+        },
+        "shop/deli": {
+            "name": "Loja de gourmet / delicacias",
+            "terms": "Deli, Gourmet"
+        },
+        "shop/department_store": {
+            "name": "Grande armaz\u00e9m",
+            "terms": "Department Store"
+        },
+        "shop/doityourself": {
+            "name": "Loja de bricolagem",
+            "terms": "DIY Store, Obras, Bricolage"
+        },
+        "shop/dry_cleaning": {
+            "name": "Limpeza a seco",
+            "terms": "Dry Cleaner, Lavar a seco, Lavar-a-seco, seco"
+        },
+        "shop/e-cigarette": {
+            "name": "Loja de cigarros eletr\u00f3nicos",
+            "terms": "E-Cigarette, E-Cigarro, E-Cig, Cigarro Eletr\u00f3nico, Cigarro Eletr\u00f4nico"
+        },
+        "shop/electronics": {
+            "name": "Loja de eletrodom\u00e9sticos",
+            "terms": "Eletr\u00f3nica de consumo, Aspirador, televis\u00e3o, m\u00e1quina de lavar, frigor\u00edfico, Eletrodom\u00e9stico, Eletro-dom\u00e9stico"
+        },
+        "shop/erotic": {
+            "name": "Sex shop",
+            "terms": "Erotic Store, Artigos Er\u00f3ticos, Er\u00f3tico, Er\u00f3ticos, Sex"
+        },
+        "shop/fabric": {
+            "name": "Loja de tecidos",
+            "terms": "Fabric Store, Tecido, Tecidos"
+        },
+        "shop/farm": {
+            "name": "Loja de frutas e verduras locais",
+            "terms": "Barraca de Fruta, Barraca de Legumes, Barraca de Hortali\u00e7as, Barraca de Batatas, Fruta, Frutas, Verdura, Verduras"
+        },
+        "shop/fashion": {
+            "name": "Loja de moda",
+            "terms": "Fashion Store"
+        },
+        "shop/fireplace": {
+            "name": "Loja de lareiras",
+            "terms": "Lareira, fogo, lenha"
+        },
+        "shop/fishing": {
+            "name": "Loja de pesca",
+            "terms": "Pesca, peixe, pescar"
+        },
+        "shop/fishmonger": {
+            "name": "Peixaria"
+        },
+        "shop/florist": {
+            "name": "Florista",
+            "terms": "Florista, Flor, Flores, Rosas"
+        },
+        "shop/frame": {
+            "name": "Loja de molduras",
+            "terms": "Framing Shop, Moldura, Quadro"
+        },
+        "shop/frozen_food": {
+            "name": "Comida congelada",
+            "terms": "comida congelada, congelado, congelados, congelada, comida, alimento"
+        },
+        "shop/fuel": {
+            "name": "Loja de combust\u00edveis",
+            "terms": "combust\u00edvel,querosene,butano,propano"
+        },
+        "shop/funeral_directors": {
+            "name": "Ag\u00eancia funer\u00e1ria",
+            "terms": "Funeral Home, Casa Funer\u00e1ria, Ag\u00eancia Mortu\u00e1ria, Casa Mortu\u00e1ria"
+        },
+        "shop/furnace": {
+            "name": "Loja de lareiras"
+        },
+        "shop/furniture": {
+            "name": "Loja de mobili\u00e1rio",
+            "terms": "Loja de M\u00f3veis, Mobili\u00e1rio, Mobili\u00e1rios, Mob\u00edlias, Mob\u00edlia, M\u00f3vel, M\u00f3veis, Sof\u00e1, Cama"
+        },
+        "shop/garden_centre": {
+            "name": "Loja de jardinagem",
+            "terms": "Garden Center, Flores, Artigos para jardinagem, Jardinagem, Jardinajem"
+        },
+        "shop/gas": {
+            "name": "Loja de botijas de g\u00e1s",
+            "terms": "g\u00e1s, botija, propano, gpl, bilha, redutor, garrafa, recarga, fog\u00e3o"
+        },
+        "shop/gift": {
+            "name": "Loja de lembran\u00e7as",
+            "terms": "Loja de Recorda\u00e7\u00f5es"
+        },
+        "shop/greengrocer": {
+            "name": "Loja de frutas e verduras",
+            "terms": "Greengrocer, Frutaria, Frutas, Fruta, verduras, Verdura"
+        },
+        "shop/hairdresser": {
+            "name": "Cabeleireiro(a)",
+            "terms": "hairdresser, cabeleireira, cabeleireiro, sal\u00e3o, barbeiro, barbearia, cabelo, corte"
+        },
+        "shop/hairdresser_supply": {
+            "name": "Loja de suprimentos de cabeleireiro",
+            "terms": "suprimentos de cabeleireiro, material de cabeleireiro, material de cabeleireira"
+        },
+        "shop/hardware": {
+            "name": "Loja de ferragens",
+            "terms": "Hardware Store"
+        },
+        "shop/health_food": {
+            "name": "Loja de comida saud\u00e1vel",
+            "terms": "Loja de alimentos naturais"
+        },
+        "shop/hearing_aids": {
+            "name": "Loja de aparelhos auditivos",
+            "terms": "Hearing Aids Store, Auditivos, Audi\u00e7\u00e3o"
+        },
+        "shop/herbalist": {
+            "name": "Herbalista",
+            "terms": "Herbalist"
+        },
+        "shop/hifi": {
+            "name": "Loja de alta fidelidade",
+            "terms": "Hifi Store, Som"
+        },
+        "shop/houseware": {
+            "name": "Loja de utens\u00edlios",
+            "terms": "Houseware Store, Utens\u00edlios Dom\u00e9sticos, Artigos para o Lar, Artigos para Casa, Panelas, Panela, Talheres, Utens\u00edlios, Cozinha"
+        },
+        "shop/hunting": {
+            "name": "Loja de ca\u00e7a",
+            "terms": "ca\u00e7a, ca\u00e7ar"
+        },
+        "shop/interior_decoration": {
+            "name": "Loja de decora\u00e7\u00e3o de interiores",
+            "terms": "Interior Decoration Store, Decora\u00e7\u00e3o"
+        },
+        "shop/jewelry": {
+            "name": "Joalharia",
+            "terms": "joalharia, joalheria, j\u00f3ias, joias, bijuteria, joalheiro, joalheira"
+        },
+        "shop/kiosk": {
+            "name": "Quiosque",
+            "terms": "kiosk, kiosque, kiosqe, quiosque, quiosqe, quioske, qiosque, qiosqe, qioske, jornal, jornais, revista, revistas"
+        },
+        "shop/kitchen": {
+            "name": "Loja de cozinhas",
+            "terms": "Kitchen Design Store, Cozinhas, Cozinha, \u00e0 medida"
+        },
+        "shop/laundry": {
+            "name": "Lavandaria",
+            "terms": "Laundry, Roupa, Secagem, Lavagem, Tecidos, Limpesa, Limpeza"
+        },
+        "shop/leather": {
+            "name": "Loja de peles",
+            "terms": "Leather Store, Loja de Cabedais, Peles, Pele, Cabedais, Cabedal"
+        },
+        "shop/locksmith": {
+            "name": "Serralheiro",
+            "terms": "Locksmith, Fechaduras, Fechadura, Chaves, Chave"
+        },
+        "shop/lottery": {
+            "name": "Loja de lotaria",
+            "terms": "Lottery Shop, Jogos Santa Casa, Euromilh\u00f5es, Totoloto, Totobola, Joker, Raspadinha, P\u00e9-de-Meia, Loja da Sorte"
+        },
+        "shop/mall": {
+            "name": "Centro comercial",
+            "terms": "Mall, Shopping"
+        },
+        "shop/massage": {
+            "name": "Spa de massagens",
+            "terms": "Massage Shop, Massagista, Massagens, Massagem, SPA"
+        },
+        "shop/medical_supply": {
+            "name": "Loja de material m\u00e9dico",
+            "terms": "Medical Supply Store, Artigos Hospitalares, Ortopedia, Ortop\u00e9dico"
+        },
+        "shop/mobile_phone": {
+            "name": "Loja de telem\u00f3veis",
+            "terms": "Mobile Phone Store, Celular, Telem\u00f3veis, Telem\u00f3vel, Smartphone"
+        },
+        "shop/money_lender": {
+            "name": "Loja de empr\u00e9stimos",
+            "terms": "Money Lender"
+        },
+        "shop/motorcycle": {
+            "name": "Loja de motas",
+            "terms": "Loja de Motos, Motos, Moto, Motocicleta, Motorizada"
+        },
+        "shop/motorcycle_repair": {
+            "name": "Oficina de motocicletas",
+            "terms": "Loja de conserto de motocicletas"
+        },
+        "shop/music": {
+            "name": "Loja de m\u00fasica",
+            "terms": "Music Store, M\u00fasica, Disco, Discos, Vinil, Vinis, CD, CDs"
+        },
+        "shop/musical_instrument": {
+            "name": "Loja de instrumentos musicais",
+            "terms": "Musical Instrument Store, Guitarra, Piano, Violino, Bateria, Som, M\u00fasica, Instrumento"
+        },
+        "shop/newsagent": {
+            "name": "Loja de jornais / revistas",
+            "terms": "Newspaper/Magazine Shop, Jornal, Revista"
+        },
+        "shop/nutrition_supplements": {
+            "name": "Loja de suplementos alimentares",
+            "terms": "Nutrition Supplements Store"
+        },
+        "shop/optician": {
+            "name": "Loja de \u00f3tica / \u00f3culos",
+            "terms": "Optician, \u00d3ptica, \u00d3ptico, \u00f2culos de sol, Graduados, Arma\u00e7\u00e3o"
+        },
+        "shop/organic": {
+            "name": "Loja de alimentos org\u00e2nicos",
+            "terms": "Organic Good Store, Comida Org\u00e2nica, Org\u00e2nica, Org\u00e2nico"
+        },
+        "shop/outdoor": {
+            "name": "Loja de artigos para atividades ao ar livre",
+            "terms": "Outdoors Store, Caminhada, Escalada, Passeio"
+        },
+        "shop/paint": {
+            "name": "Loja de tintas",
+            "terms": "Paint Store, Tintas, Tinta, Vernizes, Verniz, Pinc\u00e9is, Pincel, Pintar, Pintura"
+        },
+        "shop/party": {
+            "name": "Loja de materiais para festas",
+            "terms": "materiais para festas, festas, festa"
+        },
+        "shop/pastry": {
+            "name": "Pastelaria",
+            "terms": "Pastelaria, Bolos, Pastel, Past\u00e9is"
+        },
+        "shop/pawnbroker": {
+            "name": "Casa de penhoras",
+            "terms": "Pawn Shop, penhores, penhoras, penhorar"
+        },
+        "shop/perfumery": {
+            "name": "Perfumaria",
+            "terms": "loja de perfumes, perfumes, perfume"
+        },
+        "shop/pet": {
+            "name": "Loja de animais",
+            "terms": "loja de animais, animais, animal, c\u00e3es, gatos, peixes"
+        },
+        "shop/pet_grooming": {
+            "name": "Loja de cuidados com animais de estima\u00e7\u00e3o",
+            "terms": "Loja de cuidados com animais de estima\u00e7\u00e3o, animais, animal, gato, gatos, c\u00e3o, c\u00e3es, peixe, peixes"
+        },
+        "shop/photo": {
+            "name": "Loja de fotografia",
+            "terms": "Photography Store, Fotogr\u00e1fo, M\u00e1quina fotogr\u00e1fica, Material Fotogr\u00e1fico"
+        },
+        "shop/pyrotechnics": {
+            "name": "Loja de pirotecnia",
+            "terms": "Fireworks Store, Fogo de Artif\u00edcio, pirotecnia"
+        },
+        "shop/radiotechnics": {
+            "name": "Loja de componentes eletr\u00f3nicos / r\u00e1dio",
+            "terms": "Radio/Electronic Component Store, Eletr\u00f3nica, Eletr\u00f4nica"
+        },
+        "shop/religion": {
+            "name": "Loja de artigos religiosos",
+            "terms": "Religious Store, Religi\u00e3o"
+        },
+        "shop/scuba_diving": {
+            "name": "Loja de equipamento de mergulho",
+            "terms": "Scuba Diving Shop, Mergulho"
+        },
+        "shop/seafood": {
+            "name": "Peixaria",
+            "terms": "Seafood Shop, Camar\u00e3o, Lagosta, Caranguejo, Ameijoas, Mexilh\u00f5es, Peixe, Peixes"
+        },
+        "shop/second_hand": {
+            "name": "Loja de produtos em segunda m\u00e3o",
+            "terms": "consignment, thrift store, loja de consigna\u00e7\u00e3o, 2\u00aa m\u00e3o, usados, usado, segunda m\u00e3o, consigna\u00e7\u00e3o"
+        },
+        "shop/sewing": {
+            "name": "Retroseria",
+            "terms": "Loja de suplementos de costura, costura, retroseria, retrosaria, retrozeria, retrozaria, retrozeiro, retroseiro, retrozeira, retroseira, linhas,croch\u00e9, agulhas, costurar"
+        },
+        "shop/shoes": {
+            "name": "Sapataria",
+            "terms": "Loja de Sapatos, Sapatos, Sapato, Sapataria"
+        },
+        "shop/sports": {
+            "name": "Loja de artigos de desporto",
+            "terms": "Loja de Desporto, Artigos desportivos, Desporto"
+        },
+        "shop/stationery": {
+            "name": "Papelaria",
+            "terms": "Stationery Store, Loja de Material de Escrit\u00f3rio"
+        },
+        "shop/storage_rental": {
+            "name": "Aluguer de armaz\u00e9ns",
+            "terms": "Estoque, Armazenamento, Dep\u00f3sito, Armaz\u00e9m"
+        },
+        "shop/supermarket": {
+            "name": "Supermercado / hipermercado",
+            "terms": "Hiper-mercado, Hiper mercado, Super-mercado, Super mercado, Compras, Loja, Alimentar, Alimentos"
+        },
+        "shop/tailor": {
+            "name": "Alfaiate",
+            "terms": "Tailor, Vestido, Fato, Roupa"
+        },
+        "shop/tattoo": {
+            "name": "Est\u00fadio de tatuagens ",
+            "terms": "Tattoo Parlor, Tatuagens, Tatuagem, Tatuador, Tatuar"
+        },
+        "shop/tea": {
+            "name": "Loja de ch\u00e1",
+            "terms": "Tea Store, Ch\u00e1"
+        },
+        "shop/ticket": {
+            "name": "Bilheteira",
+            "terms": "Ticket Seller, Bilheteria, Bilhete, Ingresso"
+        },
+        "shop/tiles": {
+            "name": "Loja de tijoleiras",
+            "terms": "Tijoleira, Azulejo, Ladrilho"
+        },
+        "shop/tobacco": {
+            "name": "Tabacaria",
+            "terms": "Tobacco Shop, Loja de Tabaco, Cachimbo, Cigarrilha, Tabaco"
+        },
+        "shop/toys": {
+            "name": "Loja de brinquedos",
+            "terms": "brinquedos, toys, brincar"
+        },
+        "shop/trade": {
+            "name": "Loja de materiais de constru\u00e7\u00e3o civil",
+            "terms": "constru\u00e7\u00e3o, materiais, granel, b2b, cimento, areia, tijolos, brita"
+        },
+        "shop/travel_agency": {
+            "name": "Ag\u00eancia de viagens",
+            "terms": "Ag\u00eancia, Viagens, Viajar"
+        },
+        "shop/tyres": {
+            "name": "Loja de pneus",
+            "terms": "Loja de Pneus, Casa dos Pneus, Pneu"
+        },
+        "shop/vacant": {
+            "name": "Loja desocupada"
+        },
+        "shop/vacuum_cleaner": {
+            "name": "Loja de aspiradores",
+            "terms": "Vacuum Cleaner Store, Aspirador, Aspiradores, Aspirar"
+        },
+        "shop/variety_store": {
+            "name": "Loja dos chineses",
+            "terms": "Variety Store, Loja dos 300, Loja dos Trezentos"
+        },
+        "shop/video": {
+            "name": "Videoclube",
+            "terms": "aluguer de v\u00eddeo, Clube de V\u00eddeo"
+        },
+        "shop/video_games": {
+            "name": "Loja de videojogos",
+            "terms": "Jogos de Computador, Consola"
+        },
+        "shop/watches": {
+            "name": "Loja de rel\u00f3gios",
+            "terms": "relojoaria, Relojoeiro"
+        },
+        "shop/water": {
+            "name": "Loja de \u00e1gua pot\u00e1vel",
+            "terms": "\u00e1gua, fonte"
+        },
+        "shop/water_sports": {
+            "name": "Loja de material de nata\u00e7\u00e3o",
+            "terms": "Material de Banho, tocas nata\u00e7\u00e3o, material nata\u00e7\u00e3o, modalidade nata\u00e7\u00e3o"
+        },
+        "shop/weapons": {
+            "name": "Loja de armas",
+            "terms": "espingardaria, Loja de Armas, Ca\u00e7a"
+        },
+        "shop/wholesale": {
+            "name": "Loja grossista",
+            "terms": "grossista, atacado, revendedor, revenda"
+        },
+        "shop/window_blind": {
+            "name": "Loja de estores",
+            "terms": "Estores, Estor"
+        },
+        "shop/wine": {
+            "name": "Loja de vinhos",
+            "terms": "wine shop, loja de licor, bebidas alcoolicas, bebidas, alcool, \u00e1lcool, vinho, vinhos, garrafeira, branco, tinto, ros\u00e9, champanhe, xampanhe"
+        },
+        "tourism": {
+            "name": "Turismo"
+        },
+        "tourism/alpine_hut": {
+            "name": "Albergue de montanha",
+            "terms": "cabana de montanha"
+        },
+        "tourism/apartment": {
+            "name": "Apartamento de h\u00f3spedes",
+            "terms": "airbnb, alojamento local, time-share"
+        },
+        "tourism/aquarium": {
+            "name": "Aqu\u00e1rio p\u00fablico",
+            "terms": "Aquarium, Ocean\u00e1rio"
+        },
+        "tourism/artwork": {
+            "name": "Obra de arte",
+            "terms": "Arte, Mural"
+        },
+        "tourism/artwork/mural": {
+            "name": "Mural",
+            "terms": "afresco, pintura de parede, pixel art"
+        },
+        "tourism/artwork/sculpture": {
+            "name": "Escultura",
+            "terms": "escultura, est\u00e1tua"
+        },
+        "tourism/artwork/statue": {
+            "name": "Est\u00e1tua",
+            "terms": "escultura, est\u00e1tua"
+        },
+        "tourism/attraction": {
+            "name": "Atra\u00e7\u00e3o tur\u00edstica",
+            "terms": "ponto tur\u00edstico, turismo, atra\u00e7\u00e3o tur\u00edstica, atra\u00e7\u00e3o, atrac\u00e7\u00e3o"
+        },
+        "tourism/camp_site": {
+            "name": "Parque de campismo",
+            "terms": "acampamento, parque, campismo, campistas, acampar"
+        },
+        "tourism/caravan_site": {
+            "name": "Parque de caravanas",
+            "terms": "RV Park, caravanas, caravana"
+        },
+        "tourism/chalet": {
+            "name": "Chal\u00e9 / casa de f\u00e9rias",
+            "terms": "Chalet"
+        },
+        "tourism/gallery": {
+            "name": "Galeria de arte",
+            "terms": "Centro Cultural, Galeria, Exposi\u00e7\u00e3o, Arte"
+        },
+        "tourism/guest_house": {
+            "name": "Hospedagem domiciliar / casa de h\u00f3spedes",
+            "terms": "casa de h\u00f3spedes, Cama e Pequeno Almo\u00e7o, Cama e Peq. Almo\u00e7o, Cama e Almo\u00e7o, albergaria, hospedaria, pens\u00e3o"
+        },
+        "tourism/hostel": {
+            "name": "Pousada / hostel",
+            "terms": "hostel, ostel, hospedaria, ospedaria, pousada, pousadas, pousada da juventude, pousadas da juventude"
+        },
+        "tourism/hotel": {
+            "name": "Hotel",
+            "terms": "Alojamento, hoteleiro, instala\u00e7\u00e3o hoteleira"
+        },
+        "tourism/information": {
+            "name": "Informa\u00e7\u00e3o tur\u00edstica",
+            "terms": "Informa\u00e7\u00e3o, Turismo, guia"
+        },
+        "tourism/information/board": {
+            "name": "Placar de informa\u00e7\u00e3o",
+            "terms": "painel de informa\u00e7\u00e3o, placa de informa\u00e7\u00e3o, informa\u00e7\u00e3o, informa\u00e7\u00f5es, painel, placar, placard, placa, painel informativo"
+        },
+        "tourism/information/guidepost": {
+            "name": "Poste com dire\u00e7\u00f5es",
+            "terms": "poste de dire\u00e7\u00f5es, poste com dire\u00e7\u00f5es, poste com dire\u00e7\u00f5es, dire\u00e7\u00e3o, dire\u00e7\u00e3o, dire\u00e7\u00f5es, dire\u00e7\u00f5es, sinal\u00e9tica, sinal\u00e9tica dire\u00e7\u00f5es,"
+        },
+        "tourism/information/map": {
+            "name": "Mapa",
+            "terms": "Esquema, planta, carta"
+        },
+        "tourism/information/office": {
+            "name": "Posto de turismo",
+            "terms": "Posto de Turismo, Posto Tur\u00edstico, Posto de Informa\u00e7\u00e3o, Posto de Informa\u00e7\u00f5es"
+        },
+        "tourism/motel": {
+            "name": "Motel",
+            "terms": "quartos de motel, albergue, parador, paradores"
+        },
+        "tourism/museum": {
+            "name": "Museu",
+            "terms": "Exposi\u00e7\u00e3o, Funda\u00e7\u00e3o, Galeria, Galeria de Arte, Institui\u00e7\u00e3o, Livraria, Sal\u00e3o"
+        },
+        "tourism/picnic_site": {
+            "name": "Parque de merendas / piqueniques",
+            "terms": "Lugar de Merendas"
+        },
+        "tourism/theme_park": {
+            "name": "Parque de divers\u00f5es / tem\u00e1tico",
+            "terms": "Theme Park, Parque, Divers\u00e3o, Tem\u00e1tico, Parque tem\u00e1tico"
+        },
+        "tourism/trail_riding_station": {
+            "name": "Trilha equestre",
+            "terms": "Trilha equestre"
+        },
+        "tourism/viewpoint": {
+            "name": "Miradouro",
+            "terms": "Vista, ponto de vista, mirante, paisagem,"
+        },
+        "tourism/wilderness_hut": {
+            "name": "Abrigo remoto",
+            "terms": "Cabana, Abrigo de montanha, cabana de montanha"
+        },
+        "tourism/zoo": {
+            "name": "Jardim zool\u00f3gico",
+            "terms": "Zool\u00f3gico, Zoo, Zol\u00f3gico, Animais"
+        },
+        "traffic_calming": {
+            "name": "Acalmia de tr\u00e1fego",
+            "terms": "redutor de velocidade, redu\u00e7\u00e3o de velocidade, redu\u00e7\u00e3o de velocidade, acalmia, baixa velocidade, diminuir velocidade,"
+        },
+        "traffic_calming/bump": {
+            "name": "Lomba pequena",
+            "terms": "pequena lomba"
+        },
+        "traffic_calming/chicane": {
+            "name": "Gincana de tr\u00e1fego",
+            "terms": "gincana, medidas acalmia de tr\u00e1fego, acalmia de tr\u00e1fego"
+        },
+        "traffic_calming/choker": {
+            "name": "Estreitamento da via",
+            "terms": "estreita, estreitamento"
+        },
+        "traffic_calming/cushion": {
+            "name": "Lomba de almofada",
+            "terms": "lomba tipo almofada"
+        },
+        "traffic_calming/dip": {
+            "name": "Depress\u00e3o",
+            "terms": "Lomba invertida, lomba inversa"
+        },
+        "traffic_calming/hump": {
+            "name": "Lomba grande",
+            "terms": "Lomba, grande lomba"
+        },
+        "traffic_calming/island": {
+            "name": "Ilha rodovi\u00e1ria",
+            "terms": "ilha de estrada, ilha na estrada, ilha central"
+        },
+        "traffic_calming/rumble_strip": {
+            "name": "Banda sonora",
+            "terms": "Rumble Strip, banda crom\u00e1tica"
+        },
+        "traffic_calming/table": {
+            "name": "Lomba comprida (+3m)",
+            "terms": "lomba, table, mesa"
+        },
+        "traffic_sign": {
+            "name": "Sinal de tr\u00e2nsito",
+            "terms": "sinais de tr\u00e2nsito, sinal de estrada, sinaliza\u00e7\u00e3o"
+        },
+        "traffic_sign/city_limit": {
+            "name": "Sinal de limite de cidade",
+            "terms": "limite da cidade, cidade, aldeia, borda, fim da cidade, in\u00edcio da cidade"
+        },
+        "traffic_sign/city_limit_vertex": {
+            "name": "Sinal de limite de cidade",
+            "terms": "limite da cidade, cidade, aldeia, borda, fim da cidade, in\u00edcio da cidade"
+        },
+        "traffic_sign/maxspeed": {
+            "name": "Sinal de limite de velocidade",
+            "terms": "velocidade m\u00e1xima, limite de velocidade"
+        },
+        "traffic_sign/maxspeed_vertex": {
+            "name": "Sinal de limite de velocidade",
+            "terms": "velocidade m\u00e1xima, limite de velocidade"
+        },
+        "traffic_sign_vertex": {
+            "name": "Sinal de tr\u00e2nsito",
+            "terms": "sinais de tr\u00e2nsito, sinal de estrada, sinaliza\u00e7\u00e3o"
+        },
+        "type/boundary": {
+            "name": "Fronteira",
+            "terms": "limite"
+        },
+        "type/boundary/administrative": {
+            "name": "Fronteira administrativa",
+            "terms": "Fronteira legal, limite pa\u00eds, fronteira, concelho, freguesia, distrito, limite administrativo, fronteira administrativa,"
+        },
+        "type/enforcement": {
+            "name": "Controlo",
+            "terms": "radar, velocidade, c\u00e2mara, c\u00e2mera"
+        },
+        "type/multipolygon": {
+            "name": "Multipol\u00edgono"
+        },
+        "type/restriction": {
+            "name": "Restri\u00e7\u00e3o",
+            "terms": "Restri\u00e7\u00e3o, Proibi\u00e7\u00e3o"
+        },
+        "type/restriction/no_left_turn": {
+            "name": "Proibi\u00e7\u00e3o de virar \u00e0 esquerda",
+            "terms": "N\u00e3o Virar \u00e0 Esquerda"
+        },
+        "type/restriction/no_right_turn": {
+            "name": "Proibi\u00e7\u00e3o de virar \u00e0 direita",
+            "terms": "N\u00e3o Virar \u00e0 Direita"
+        },
+        "type/restriction/no_straight_on": {
+            "name": "Proibido seguir em frente",
+            "terms": "Proibi\u00e7\u00e3o de Seguir em Frente, Virar para a esquerda ou direita,"
+        },
+        "type/restriction/no_u_turn": {
+            "name": "Proibi\u00e7\u00e3o de invers\u00e3o de marcha",
+            "terms": "N\u00e3o Inverter o Sentido, invers\u00e3o de marcha proibida,  proibida a invers\u00e3o de marcha, n\u00e3o fazer invers\u00e3o de marcha"
+        },
+        "type/restriction/only_left_turn": {
+            "name": "Apenas virar \u00e0 esquerda",
+            "terms": "esquerda, viragem, virar, sentido obrigat\u00f3rio"
+        },
+        "type/restriction/only_right_turn": {
+            "name": "Apenas virar \u00e0 direita",
+            "terms": "direita, viragem, virar, sentido obrigat\u00f3rio"
+        },
+        "type/restriction/only_straight_on": {
+            "name": "Apenas seguir em frente",
+            "terms": "frente, viragem, virar, sentido obrigat\u00f3rio"
+        },
+        "type/restriction/only_u_turn": {
+            "name": "Apenas invers\u00e3o de marcha",
+            "terms": "apenas meia-volta, meia volta, meia-volta, invers\u00e3o, invers\u00e3o do sentido de marcha, invers\u00e3o de marcha"
+        },
+        "type/route": {
+            "name": "Rota",
+            "terms": "Rota, Linha, circuito, percursos, percurso, circuitos"
+        },
+        "type/route/bicycle": {
+            "name": "Rota de bicicleta",
+            "terms": "Rota de Bicicletas, Bicicleta, Ciclismo"
+        },
+        "type/route/bus": {
+            "name": "Rota de autocarro",
+            "terms": "Bus Route, Rota de Autocarros, Linha de Autocarro, autocarro, carreira, camionete, camioneta, \u00f4nibus, machimbombo, toca-toca, otocarro, microlete"
+        },
+        "type/route/detour": {
+            "name": "Rota de desvio",
+            "terms": "Detour Route, Desvio, Desviado"
+        },
+        "type/route/ferry": {
+            "name": "Rota de barca / ferry",
+            "terms": "Rota do Ferry"
+        },
+        "type/route/foot": {
+            "name": "Rota pedestre",
+            "terms": "rota pedonal, percurso pedestre, percurso pedonal, circuito pedonal,"
+        },
+        "type/route/hiking": {
+            "name": "Rota de caminhada",
+            "terms": "Hiking rota, hiking, trekking, Rota de caminhada, circuito pedestre, percurso recomendado, pequena rota, grande rota, rota levada, rota trail, percurso trail, percurso levada,"
+        },
+        "type/route/horse": {
+            "name": "Rota de equita\u00e7\u00e3o",
+            "terms": "Rota equestre, rota a cavalo,"
+        },
+        "type/route/light_rail": {
+            "name": "Metro de superficie",
+            "terms": "electrico, metro porto, metro almada,"
+        },
+        "type/route/pipeline": {
+            "name": "Rota de gasoduto / oleoduto",
+            "terms": "Rota de gasoduto"
+        },
+        "type/route/piste": {
+            "name": "Rota de Esqui ou de outro desporto de inverno",
+            "terms": "esqui, sky, rota sky, trilhos sky, rota esqui, trilhos esqui"
+        },
+        "type/route/power": {
+            "name": "Rota de transmiss\u00e3o de energia",
+            "terms": "Linha de Eletricidade, Linha de Energia, Linha, Linhas, Eletricidade, Trasmiss\u00e3o"
+        },
+        "type/route/road": {
+            "name": "Rota rodovi\u00e1ria",
+            "terms": "Percurso Rodovi\u00e1rio, Trajecto Rodovi\u00e1rio"
+        },
+        "type/route/subway": {
+            "name": "Rota de metro subterr\u00e2neo",
+            "terms": "linha metro, rota metro, rede metro, metro de lisboa, esta\u00e7\u00f5es de metro, linha do metro,"
+        },
+        "type/route/train": {
+            "name": "Rota ferrovi\u00e1ria",
+            "terms": "Train Route, Rota de Comboio, Rota de Metro, Rota de El\u00e9trico, Rota de Caminhos de Ferro"
+        },
+        "type/route/tram": {
+            "name": "Rota de el\u00e9trico",
+            "terms": "Tram Route, El\u00e9trico"
+        },
+        "type/route_master": {
+            "name": "Rede de rotas",
+            "terms": "Route Master, Rota Mestre"
+        },
+        "type/site": {
+            "name": "S\u00edtio",
+            "terms": "Site"
+        },
+        "type/waterway": {
+            "name": "Curso de \u00e1gua",
+            "terms": "Hidrovia, Curso, Rio, Canal, levada, ribeiro, ribeira, c\u00f3rrego, \u00e1rea inund\u00e1vel, inund\u00e1vel, inundada, bacia, hidrologia, h\u00eddrica,"
+        },
+        "vertex": {
+            "name": "Outro",
+            "terms": "Outra op\u00e7\u00e3o, outra"
+        },
+        "waterway": {
+            "name": "Curso de \u00e1gua"
+        },
+        "waterway/boatyard": {
+            "name": "Estaleiro",
+            "terms": "Boatyard, Barcos, Barco, Embarca\u00e7\u00f5es, Embarca\u00e7\u00e3o, Repara\u00e7\u00e3o, Constru\u00e7\u00e3o, varadouro,"
+        },
+        "waterway/canal": {
+            "name": "Canal",
+            "terms": "Canal, Canalete"
+        },
+        "waterway/dam": {
+            "name": "Barragem",
+            "terms": "Dam, Usina, Hidrel\u00e9trica, Hidroel\u00e9trica, Hidro-el\u00e9trica, Hidro el\u00e9trica"
+        },
+        "waterway/ditch": {
+            "name": "Fosso / vala / trincheira",
+            "terms": "Vala, Trincheira, Represa"
+        },
+        "waterway/dock": {
+            "name": "Doca",
+            "terms": "Dock, Barcos, Barco"
+        },
+        "waterway/drain": {
+            "name": "Vala de drenagem",
+            "terms": "Drain"
+        },
+        "waterway/fuel": {
+            "name": "Posto de combust\u00edvel mar\u00edtimo",
+            "terms": "combust\u00edvel para barcos, combust\u00edvel mar\u00edtimo, bomba de gasolina barcos, gas\u00f3leo embarca\u00e7\u00f5es, combust\u00edvel embarca\u00e7\u00f5es, gasolineira barco,"
+        },
+        "waterway/milestone": {
+            "name": "Marco de via naveg\u00e1vel",
+            "terms": "marco da via naveg\u00e1vel, marco"
+        },
+        "waterway/river": {
+            "name": "Rio",
+            "terms": "Afluente, Barra, Barroca, Curso de \u00c1gua, Delta, Estu\u00e1rio, Ria, Rio"
+        },
+        "waterway/riverbank": {
+            "name": "Margem de rio"
+        },
+        "waterway/sanitary_dump_station": {
+            "name": "Escoamento sanit\u00e1rio para embarca\u00e7\u00f5es",
+            "terms": "res\u00edduos barcos, \u00e1guas residuais embarca\u00e7\u00f5es, \u00e1guas residuais barcos, escoamento \u00e1guas residuais embarca\u00e7\u00f5es, escoamento \u00e1guas residuais barcos,"
+        },
+        "waterway/stream": {
+            "name": "Ribeiro",
+            "terms": "Corga, Corgo, C\u00f3rrego, Curso de \u00c1gua, Fio de \u00c1gua, Grota, Regato, Rego, Riacho, Riachinho, Ribeira, Ribeiro"
+        },
+        "waterway/stream_intermittent": {
+            "name": "Ribeiro intermitente",
+            "terms": "Corga, Corgo, C\u00f3rrego, Curso de \u00c1gua, Fio de \u00c1gua, Grota, Regato, Rego, Riacho, Riachinho, Ribeira, Ribeiro, intermitente, sazonal"
+        },
+        "waterway/water_point": {
+            "name": "\u00c1gua pot\u00e1vel para embarca\u00e7\u00f5es",
+            "terms": "\u00e1gua pot\u00e1vel barcos, \u00e1gua embarca\u00e7\u00e3o, \u00e1gua pot\u00e1vel marina,"
+        },
+        "waterway/waterfall": {
+            "name": "Queda de \u00e1gua",
+            "terms": "queda-de-\u00e1guia, queda-d'\u00e1gua, cascata, salto, catarata, cachoeira, catadupa"
+        },
+        "waterway/weir": {
+            "name": "Represa",
+            "terms": "Weir, represa, a\u00e7ude"
+        }
+    }
+}

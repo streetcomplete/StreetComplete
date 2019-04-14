@@ -10,6 +10,8 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 import de.westnordost.countryboundaries.CountryBoundaries;
+import de.westnordost.osmnames.AndroidNamesDictionary;
+import de.westnordost.osmnames.NamesDictionary;
 import de.westnordost.streetcomplete.data.QuestTypeRegistry;
 import de.westnordost.streetcomplete.tangram.TangramQuestSpriteSheetCreator;
 
@@ -26,6 +28,11 @@ public class MetadataModule
 			final AssetManager assetManager)
 	{
 		return new FutureTask<>(() -> CountryBoundaries.load(assetManager.open("boundaries.ser")));
+	}
+
+	@Provides @Singleton public static FutureTask<NamesDictionary> namesDictionaryFuture(AssetManager assetManager)
+	{
+		return new FutureTask<>(() -> AndroidNamesDictionary.create(assetManager, "osmnames"));
 	}
 
 	@Provides @Singleton public static TangramQuestSpriteSheetCreator tangramQuestSpriteSheetCreator(

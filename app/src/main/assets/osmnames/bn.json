@@ -1,0 +1,544 @@
+{
+    "presets": {
+        "address": {
+            "name": "\u09a0\u09bf\u0995\u09be\u09a8\u09be"
+        },
+        "aeroway/aerodrome": {
+            "name": "\u09ac\u09bf\u09ae\u09be\u09a8\u09ac\u09a8\u09cd\u09a6\u09b0"
+        },
+        "aeroway/helipad": {
+            "name": "\u09b9\u09c7\u09b2\u09bf\u09aa\u09cd\u09af\u09be\u09a1"
+        },
+        "amenity": {
+            "name": "\u0986\u09ae\u09c7\u09a8\u09bf\u099f\u09bf"
+        },
+        "amenity/arts_centre": {
+            "name": "\u09b6\u09bf\u09b2\u09cd\u09aa \u0995\u09c7\u09a8\u09cd\u09a6\u09cd\u09b0"
+        },
+        "amenity/atm": {
+            "name": "\u098f\u099f\u09bf\u098f\u09ae"
+        },
+        "amenity/bank": {
+            "name": "\u09ac\u09cd\u09af\u09be\u0982\u0995"
+        },
+        "amenity/bar": {
+            "name": "\u09aa\u09be\u09a8\u09b6\u09be\u09b2\u09be"
+        },
+        "amenity/bench": {
+            "name": "\u09ac\u09c7\u099e\u09cd\u099a"
+        },
+        "amenity/bicycle_parking": {
+            "name": "\u09b8\u09be\u0987\u0995\u09c7\u09b2 \u09aa\u09be\u09b0\u09cd\u0995 \u0995\u09b0\u09be\u09b0 \u099c\u09be\u09df\u0997\u09be"
+        },
+        "amenity/bicycle_rental": {
+            "name": "\u09b8\u09be\u0987\u0995\u09c7\u09b2 \u09ad\u09be\u09dc\u09be \u09a8\u09c7\u09df\u09be"
+        },
+        "amenity/cafe": {
+            "name": "\u0995\u09cd\u09af\u09be\u09ab\u09c7"
+        },
+        "amenity/car_rental": {
+            "name": "\u0997\u09be\u09dc\u09bf \u09ad\u09be\u09dc\u09be"
+        },
+        "amenity/cinema": {
+            "name": "\u09b8\u09bf\u09a8\u09c7\u09ae\u09be"
+        },
+        "amenity/drinking_water": {
+            "name": "\u09aa\u09be\u09a8\u09c0\u09df \u099c\u09b2"
+        },
+        "amenity/embassy": {
+            "name": "\u09a6\u09c1\u09a4\u09be\u09ac\u09be\u09b8"
+        },
+        "amenity/fast_food": {
+            "name": "\u09ab\u09be\u09b8\u09cd\u099f\u09ab\u09c1\u09a1"
+        },
+        "amenity/fire_station": {
+            "name": "\u09a6\u09ae\u0995\u09b2"
+        },
+        "amenity/fountain": {
+            "name": "\u099d\u09b0\u09cd\u09a8\u09be"
+        },
+        "amenity/fuel": {
+            "name": "\u0997\u09cd\u09af\u09be\u09b8 \u09b8\u09cd\u099f\u09c7\u09b6\u09a8"
+        },
+        "amenity/grave_yard": {
+            "name": "\u0995\u09ac\u09b0\u0996\u09be\u09a8\u09be"
+        },
+        "amenity/library": {
+            "name": "\u09aa\u09be\u09a0\u09be\u0997\u09be\u09b0"
+        },
+        "amenity/marketplace": {
+            "name": "\u09ac\u09be\u099c\u09be\u09b0"
+        },
+        "amenity/place_of_worship": {
+            "name": "\u09aa\u09cd\u09b0\u09be\u09b0\u09cd\u09a5\u09a8\u09be\u09b8\u09cd\u09a5\u09b2"
+        },
+        "amenity/place_of_worship/buddhist": {
+            "name": "\u09ac\u09cc\u09a6\u09cd\u09a7 \u09ae\u09a8\u09cd\u09a6\u09bf\u09b0"
+        },
+        "amenity/police": {
+            "name": "\u09aa\u09c1\u09b2\u09bf\u09b6"
+        },
+        "amenity/post_box": {
+            "name": "\u09a1\u09be\u0995\u09ac\u09be\u0995\u09cd\u09b8"
+        },
+        "amenity/post_office": {
+            "name": "\u09a1\u09be\u0995\u0998\u09b0"
+        },
+        "amenity/pub": {
+            "name": "\u09b8\u09b0\u09be\u0987\u0996\u09be\u09a8\u09be"
+        },
+        "amenity/restaurant": {
+            "name": "\u09b0\u09c7\u09b8\u09cd\u09a4\u09cb\u09b0\u09be\u0981"
+        },
+        "amenity/swimming_pool": {
+            "name": "\u09b8\u09be\u0981\u09a4\u09be\u09b0 \u0995\u09be\u099f\u09be\u09b0 \u09aa\u09c1\u0995\u09c1\u09b0"
+        },
+        "amenity/telephone": {
+            "name": "\u099f\u09c7\u09b2\u09bf\u09ab\u09cb\u09a8"
+        },
+        "amenity/theatre": {
+            "name": "\u09a5\u09bf\u09df\u09c7\u099f\u09be\u09b0"
+        },
+        "amenity/toilets": {
+            "name": "\u09b6\u09cc\u099a\u09be\u0997\u09be\u09b0"
+        },
+        "amenity/townhall": {
+            "name": "\u099f\u09be\u0989\u09a8 \u09b9\u09b2"
+        },
+        "area": {
+            "name": "\u098f\u09b2\u09be\u0995\u09be"
+        },
+        "barrier/entrance": {
+            "name": "\u09a6\u09cd\u09ac\u09be\u09b0"
+        },
+        "barrier/fence": {
+            "name": "\u09ac\u09c7\u09dc\u09be"
+        },
+        "barrier/gate": {
+            "name": "\u09ab\u099f\u0995"
+        },
+        "barrier/wall": {
+            "name": "\u09a6\u09c7\u09df\u09be\u09b2"
+        },
+        "boundary/administrative": {
+            "name": "\u09aa\u09cd\u09b0\u09b6\u09be\u09b8\u09a8\u09bf\u0995 \u09b8\u09c0\u09ae\u09be\u09a8\u09be"
+        },
+        "building": {
+            "name": "\u09a6\u09be\u09b2\u09be\u09a8"
+        },
+        "building/commercial": {
+            "name": "\u09ac\u09be\u09a8\u09bf\u099c\u09cd\u09af\u09bf\u0995 \u09ad\u09ac\u09a8"
+        },
+        "building/garage": {
+            "name": "\u0997\u09cd\u09af\u09be\u09b0\u09c7\u099c"
+        },
+        "building/house": {
+            "name": "\u09ac\u09be\u09dc\u09bf"
+        },
+        "building/hut": {
+            "name": "\u0995\u09c1\u09dc\u09c7\u0998\u09b0"
+        },
+        "building/industrial": {
+            "name": "\u09b6\u09bf\u09b2\u09cd\u09aa\u09be\u09df\u09bf\u09a4 \u09ad\u09ac\u09a8"
+        },
+        "building/residential": {
+            "name": "\u0985\u09be\u09ac\u09be\u09b8\u09bf\u0995 \u09ad\u09ac\u09a8"
+        },
+        "emergency/phone": {
+            "name": "\u0985\u09be\u09aa\u09a6\u0995\u09be\u09b2\u09c0\u09a8 \u09a6\u09c1\u09b0\u09ad\u09be\u09b7"
+        },
+        "highway": {
+            "name": "\u09b0\u09be\u099c\u09aa\u09a5"
+        },
+        "highway/cycleway": {
+            "name": "\u09b8\u09be\u0987\u0995\u09c7\u09b2\u09c7\u09b0 \u09b0\u09be\u09b8\u09cd\u09a4\u09be"
+        },
+        "highway/footway": {
+            "name": "\u09ab\u09c1\u099f\u09aa\u09be\u09a4"
+        },
+        "highway/motorway": {
+            "name": "\u09ae\u09cb\u099f\u09b0\u0993\u09df\u09c7"
+        },
+        "highway/path": {
+            "name": "\u09aa\u09a5"
+        },
+        "highway/primary": {
+            "name": "\u09aa\u09cd\u09b0\u09be\u09a5\u09ae\u09bf\u0995 \u09b0\u09be\u09b8\u09cd\u09a4\u09be"
+        },
+        "highway/residential": {
+            "name": "\u0985\u09be\u09ac\u09be\u09b8\u09bf\u0995 \u09b0\u09be\u09b8\u09cd\u09a4\u09be"
+        },
+        "highway/road": {
+            "name": "\u0985\u099c\u09be\u09a8\u09be \u09b0\u09be\u09b8\u09cd\u09a4\u09be"
+        },
+        "highway/secondary": {
+            "name": "\u09a6\u09cd\u09ac\u09bf\u09a4\u09c0\u09df \u09b8\u09cd\u09a4\u09b0\u09c7\u09b0 \u09b0\u09be\u09b8\u09cd\u09a4\u09be"
+        },
+        "highway/service": {
+            "name": "\u09b8\u09be\u09b0\u09cd\u09ad\u09bf\u09b8 \u09b0\u09cb\u09a1"
+        },
+        "highway/service/alley": {
+            "name": "\u0997\u09b2\u09bf"
+        },
+        "highway/steps": {
+            "name": "\u09b8\u09bf\u0981\u09a1\u09bc\u09bf"
+        },
+        "highway/tertiary": {
+            "name": "\u09aa\u09cd\u09b0\u09b6\u09be\u0996\u09be \u09b0\u09be\u09b8\u09cd\u09a4\u09be"
+        },
+        "highway/traffic_signals": {
+            "name": "\u099f\u09cd\u09b0\u09be\u09ab\u09bf\u0995 \u09b8\u0982\u0995\u09c7\u09a4"
+        },
+        "highway/trunk": {
+            "name": "\u099f\u09cd\u09b0\u09be\u0999\u09cd\u0995 \u09b0\u09cb\u09a1"
+        },
+        "historic": {
+            "name": "\u0990\u09a4\u09bf\u09b9\u09be\u09b8\u09bf\u0995 \u099c\u09be\u09df\u0997\u09be"
+        },
+        "historic/castle": {
+            "name": "\u09aa\u09cd\u09b0\u09be\u09b8\u09be\u09a6"
+        },
+        "historic/memorial": {
+            "name": "\u09b8\u09cd\u09ae\u09b0\u09a3\u099a\u09bf\u09b9\u09cd\u09a8"
+        },
+        "historic/monument": {
+            "name": "\u09b8\u09cd\u09ae\u09c3\u09a4\u09bf\u09b8\u09cd\u09a4\u09ae\u09cd\u09ad"
+        },
+        "historic/ruins": {
+            "name": "\u09a7\u09cd\u09ac\u0982\u09b8\u09be\u09ac\u09b6\u09c7\u09b7"
+        },
+        "landuse/cemetery": {
+            "name": "\u0995\u09ac\u09b0\u0996\u09be\u09a8\u09be"
+        },
+        "landuse/construction": {
+            "name": "\u09ae\u09c7\u09b0\u09be\u09ae\u09a4"
+        },
+        "landuse/farmyard": {
+            "name": "\u0996\u09be\u09ae\u09be\u09b0"
+        },
+        "landuse/grass": {
+            "name": "\u0998\u09be\u09b8"
+        },
+        "landuse/meadow": {
+            "name": "\u09a4\u09c3\u09a3\u0995\u09cd\u09b7\u09c7\u09a4\u09cd\u09b0"
+        },
+        "landuse/orchard": {
+            "name": "\u09ab\u09b2\u09c7\u09b0 \u09ac\u09be\u0997\u09be\u09a8"
+        },
+        "landuse/quarry": {
+            "name": "\u0996\u09a8\u09bf"
+        },
+        "landuse/vineyard": {
+            "name": "\u0985\u09be\u0999\u09c1\u09b0\u0996\u09c7\u09a4"
+        },
+        "leisure": {
+            "name": "\u0985\u09ac\u09b8\u09b0"
+        },
+        "leisure/garden": {
+            "name": "\u09ac\u09be\u0997\u09be\u09a8"
+        },
+        "leisure/golf_course": {
+            "name": "\u0997\u09b2\u09cd\u09ab \u09ae\u09be\u09a0"
+        },
+        "leisure/park": {
+            "name": "\u0989\u09a6\u09cd\u09af\u09be\u09a8"
+        },
+        "leisure/pitch/american_football": {
+            "name": "\u0985\u09be\u09ae\u09c7\u09b0\u09bf\u0995\u09be\u09a8 \u09ab\u09c1\u099f\u09ac\u09b2 \u09ae\u09be\u09a0"
+        },
+        "leisure/pitch/basketball": {
+            "name": "\u09ac\u09be\u09b8\u09cd\u0995\u09c7\u099f\u09ac\u09b2 \u0995\u09cb\u09b0\u09cd\u099f"
+        },
+        "leisure/pitch/soccer": {
+            "name": "\u09ab\u09c1\u099f\u09ac\u09b2 \u09ae\u09be\u09a0"
+        },
+        "leisure/pitch/tennis": {
+            "name": "\u099f\u09c7\u09a8\u09bf\u09b8 \u0995\u09cb\u09b0\u09cd\u099f"
+        },
+        "leisure/pitch/volleyball": {
+            "name": "\u09ad\u09b2\u09bf\u09ac\u09b2 \u09ae\u09be\u09a0"
+        },
+        "leisure/playground": {
+            "name": "\u0996\u09c7\u09b2\u09be\u09b0 \u09ae\u09be\u09a0"
+        },
+        "leisure/stadium": {
+            "name": "\u09b8\u09cd\u099f\u09c7\u09a1\u09bf\u09df\u09be\u09ae"
+        },
+        "leisure/swimming_pool": {
+            "name": "\u09b8\u09c1\u0987\u09ae\u09bf\u0982 \u09aa\u09c1\u09b2"
+        },
+        "line": {
+            "name": "\u09b0\u09c7\u0996\u09be"
+        },
+        "man_made": {
+            "name": "\u09ae\u09be\u09a8\u09c1\u09b7 \u09a8\u09bf\u09b0\u09cd\u09ae\u09bf\u09a4"
+        },
+        "man_made/lighthouse": {
+            "name": "\u09ac\u09be\u09a4\u09bf\u0998\u09b0"
+        },
+        "man_made/pier": {
+            "name": "\u099c\u09be\u09b9\u09be\u099c\u0998\u09be\u099f\u09be"
+        },
+        "man_made/pipeline": {
+            "name": "\u09a8\u09b2"
+        },
+        "man_made/tower": {
+            "name": "\u09ae\u09bf\u09a8\u09be\u09b0"
+        },
+        "man_made/water_tower": {
+            "name": "\u099c\u09b2 \u09b8\u09cd\u09a4\u09ae\u09cd\u09ad"
+        },
+        "natural": {
+            "name": "\u09aa\u09cd\u09b0\u09be\u0995\u09c3\u09a4\u09bf\u0995"
+        },
+        "natural/bay": {
+            "name": "\u0989\u09aa\u09b8\u09be\u0997\u09b0"
+        },
+        "natural/beach": {
+            "name": "\u09b8\u09c8\u0995\u09a4"
+        },
+        "natural/coastline": {
+            "name": "\u09a4\u099f\u09b0\u09c7\u0996\u09be"
+        },
+        "natural/glacier": {
+            "name": "\u09b9\u09bf\u09ae\u09ac\u09be\u09b9"
+        },
+        "natural/grassland": {
+            "name": "\u09a4\u09c3\u09a3\u09ad\u09c1\u09ae\u09bf"
+        },
+        "natural/heath": {
+            "name": "\u09b8\u09cd\u09ac\u09be\u09b8\u09cd\u09a5\u09cd\u09af"
+        },
+        "natural/peak": {
+            "name": "\u099a\u09c2\u09dc\u09be"
+        },
+        "natural/spring": {
+            "name": "\u09ac\u09b8\u09a8\u09cd\u09a4"
+        },
+        "natural/tree": {
+            "name": "\u0997\u09be\u099b"
+        },
+        "natural/water": {
+            "name": "\u099c\u09b2"
+        },
+        "natural/water/lake": {
+            "name": "\u09b9\u09cd\u09b0\u09a6"
+        },
+        "natural/water/pond": {
+            "name": "\u09aa\u09c1\u0995\u09c1\u09b0"
+        },
+        "natural/water/reservoir": {
+            "name": "\u099c\u09b2\u09be\u09a7\u09be\u09b0"
+        },
+        "natural/wetland": {
+            "name": "\u099c\u09b2\u09be\u099c\u09ae\u09bf"
+        },
+        "natural/wood": {
+            "name": "\u0985\u09b0\u09a8\u09cd\u09af"
+        },
+        "office": {
+            "name": "\u0995\u09be\u09b0\u09cd\u09af\u09be\u09b2\u09df"
+        },
+        "office/ngo": {
+            "name": "\u098f\u09a8\u099c\u09bf\u0993 \u0985\u09ab\u09bf\u09b8"
+        },
+        "office/physician": {
+            "name": "\u099a\u09bf\u0995\u09bf\u09a4\u09cd\u09b8\u0995"
+        },
+        "office/political_party": {
+            "name": "\u09b0\u09be\u099c\u09a8\u09c8\u09a4\u09bf\u0995 \u09a6\u09b2"
+        },
+        "office/telecommunication": {
+            "name": "\u099f\u09c7\u09b2\u09bf\u0995\u09ae \u0985\u09ab\u09bf\u09b8"
+        },
+        "place": {
+            "name": "\u099c\u09be\u09df\u0997\u09be"
+        },
+        "place/city": {
+            "name": "\u09b6\u09b9\u09b0"
+        },
+        "place/island": {
+            "name": "\u09a6\u09cd\u09ac\u09c0\u09aa"
+        },
+        "place/locality": {
+            "name": "\u0985\u099e\u09cd\u099a\u09b2"
+        },
+        "place/town": {
+            "name": "\u0989\u09aa\u09a8\u0997\u09b0"
+        },
+        "place/village": {
+            "name": "\u0997\u09cd\u09b0\u09be\u09ae"
+        },
+        "point": {
+            "name": "\u09ac\u09bf\u09a8\u09cd\u09a6\u09c1"
+        },
+        "railway": {
+            "name": "\u09b0\u09c7\u09b2\u09aa\u09a5"
+        },
+        "railway/abandoned": {
+            "name": "\u09aa\u09b0\u09bf\u09a4\u09cd\u09af\u0995\u09cd\u09a4 \u09b0\u09c7\u09b2\u09aa\u09a5"
+        },
+        "railway/disused": {
+            "name": "\u0985\u09ac\u09cd\u09af\u09ac\u09b9\u09c3\u09a4 \u09b0\u09c7\u09b2\u09aa\u09a5"
+        },
+        "railway/monorail": {
+            "name": "\u09ae\u09a8\u09cb\u09b0\u09c7\u09b2"
+        },
+        "railway/rail": {
+            "name": "\u09b0\u09c7\u09b2"
+        },
+        "railway/subway": {
+            "name": "\u09ad\u09c2\u09a4\u09b2\u09aa\u09a5"
+        },
+        "railway/subway_entrance": {
+            "name": "\u09ad\u09c2\u09a4\u09b2\u09aa\u09a5 \u09a6\u09cd\u09ac\u09be\u09b0"
+        },
+        "railway/tram": {
+            "name": "\u099f\u09cd\u09b0\u09be\u09ae"
+        },
+        "relation": {
+            "name": "\u09b8\u09ae\u09cd\u09aa\u09b0\u09cd\u0995"
+        },
+        "shop": {
+            "name": "\u09a6\u09cb\u0995\u09be\u09a8"
+        },
+        "shop/bakery": {
+            "name": "\u09ac\u09c7\u0995\u09be\u09b0\u09bf"
+        },
+        "shop/bicycle": {
+            "name": "\u09b8\u09be\u0987\u0995\u09c7\u09b2\u09c7\u09b0 \u09a6\u09cb\u0995\u09be\u09a8"
+        },
+        "shop/boutique": {
+            "name": "\u09ac\u09c1\u099f\u09bf\u0995"
+        },
+        "shop/butcher": {
+            "name": "\u0995\u09b8\u09be\u0987"
+        },
+        "shop/car": {
+            "name": "\u0997\u09be\u09dc\u09bf\u09b0 \u09a1\u09bf\u09b2\u09be\u09b0\u09b6\u09bf\u09aa"
+        },
+        "shop/car_parts": {
+            "name": "\u0997\u09be\u09dc\u09bf\u09b0 \u09af\u09a8\u09cd\u09a4\u09cd\u09b0\u09be\u0982\u09b6\u09c7\u09b0 \u09a6\u09cb\u0995\u09be\u09a8"
+        },
+        "shop/car_repair": {
+            "name": "\u0997\u09be\u09dc\u09bf \u09ae\u09c7\u09b0\u09be\u09ae\u09a4\u09c7\u09b0 \u09a6\u09cb\u0995\u09be\u09a8"
+        },
+        "shop/clothes": {
+            "name": "\u099c\u09be\u09ae\u09be\u0995\u09be\u09aa\u09dc\u09c7\u09b0 \u09a6\u09cb\u0995\u09be\u09a8"
+        },
+        "shop/computer": {
+            "name": "\u0995\u09ae\u09cd\u09aa\u09bf\u0989\u099f\u09be\u09b0\u09c7\u09b0 \u09a6\u09cb\u0995\u09be\u09a8"
+        },
+        "shop/department_store": {
+            "name": "\u09a1\u09bf\u09aa\u09be\u09b0\u09cd\u099f\u09ae\u09c7\u09a8\u09cd\u099f \u09b8\u09cd\u099f\u09cb\u09b0"
+        },
+        "shop/doityourself": {
+            "name": "\u09a8\u09bf\u099c\u09c7 \u0995\u09b0\u09c1\u09a8 \u09b8\u09cd\u099f\u09cb\u09b0"
+        },
+        "shop/electronics": {
+            "name": "\u0987\u09b2\u09c7\u0995\u099f\u09cd\u09b0\u09a8\u09bf\u0995\u09cd\u09b8-\u098f\u09b0 \u09a6\u09cb\u0995\u09be\u09a8"
+        },
+        "shop/fishmonger": {
+            "name": "\u09ae\u09ce\u09b8\u09cd\u09af \u09ac\u09cd\u09af\u09ac\u09b8\u09be\u09df\u09c0"
+        },
+        "shop/florist": {
+            "name": "\u09ab\u09c1\u09b2 \u09ac\u09cd\u09af\u09ac\u09b8\u09be\u09df\u09c0"
+        },
+        "shop/furniture": {
+            "name": "\u0985\u09be\u09b8\u09ac\u09be\u09ac\u09aa\u09a4\u09cd\u09b0\u09c7\u09b0 \u09a6\u09cb\u0995\u09be\u09a8"
+        },
+        "shop/gift": {
+            "name": "\u0989\u09aa\u09b9\u09be\u09b0\u09c7\u09b0 \u09a6\u09cb\u0995\u09be\u09a8"
+        },
+        "shop/mall": {
+            "name": "\u09ae\u09b2"
+        },
+        "shop/mobile_phone": {
+            "name": "\u09ae\u09cb\u09ac\u09be\u0987\u09b2 \u09ab\u09cb\u09a8-\u098f\u09b0 \u09a6\u09cb\u0995\u09be\u09a8"
+        },
+        "shop/music": {
+            "name": "\u09b8\u0999\u09cd\u0997\u09c0\u09a4\u09c7\u09b0 \u09a6\u09cb\u0995\u09be\u09a8"
+        },
+        "shop/optician": {
+            "name": "\u099a\u0995\u09cd\u09b7\u09c1\u09b0\u09c7\u09be\u0997\u09c7\u09b0 \u099a\u09bf\u0995\u09bf\u09a4\u09cd\u09b8\u0995"
+        },
+        "shop/shoes": {
+            "name": "\u099c\u09c1\u09a4\u09cb\u09b0 \u09a6\u09cb\u0995\u09be\u09a8"
+        },
+        "shop/sports": {
+            "name": "\u0996\u09c7\u09b2\u09be\u09b0 \u09b8\u09be\u09ae\u0997\u09cd\u09b0\u09bf\u09b0 \u09a6\u09cb\u0995\u09be\u09a8"
+        },
+        "shop/supermarket": {
+            "name": "\u09b8\u09c1\u09aa\u09be\u09b0\u09ae\u09be\u09b0\u09cd\u0995\u09c7\u099f"
+        },
+        "shop/toys": {
+            "name": "\u0996\u09c7\u09b2\u09a8\u09be\u09b0 \u09a6\u09cb\u0995\u09be\u09a8"
+        },
+        "tourism": {
+            "name": "\u09aa\u09b0\u09cd\u09af\u099f\u09a8"
+        },
+        "tourism/attraction": {
+            "name": "\u09aa\u09b0\u09cd\u09af\u099f\u0995 \u0986\u0995\u09b0\u09cd\u09b7\u09a3"
+        },
+        "tourism/guest_house": {
+            "name": "\u0985\u09a4\u09bf\u09a5\u09bf\u09b6\u09be\u09b2\u09be"
+        },
+        "tourism/hostel": {
+            "name": "\u099b\u09be\u09a4\u09cd\u09b0\u09be\u09ac\u09be\u09b8"
+        },
+        "tourism/hotel": {
+            "name": "\u09b9\u09cb\u099f\u09c7\u09b2"
+        },
+        "tourism/information": {
+            "name": "\u09a4\u09a5\u09cd\u09af"
+        },
+        "tourism/motel": {
+            "name": "\u09ae\u09cb\u099f\u09c7\u09b2"
+        },
+        "tourism/museum": {
+            "name": "\u09aa\u09cd\u09b0\u09a6\u09b0\u09cd\u09b6\u09a8\u09b6\u09be\u09b2\u09be"
+        },
+        "tourism/picnic_site": {
+            "name": "\u09aa\u09bf\u0995\u09a8\u09bf\u0995-\u098f\u09b0 \u099c\u09be\u09df\u0997\u09be"
+        },
+        "tourism/theme_park": {
+            "name": "\u09a5\u09bf\u09ae \u09aa\u09be\u09b0\u09cd\u0995"
+        },
+        "tourism/zoo": {
+            "name": "\u099a\u09bf\u09dc\u09bf\u09df\u09be\u0996\u09be\u09a8\u09be"
+        },
+        "type/boundary": {
+            "name": "\u09b8\u09c0\u09ae\u09be\u09a8\u09be"
+        },
+        "type/boundary/administrative": {
+            "name": "\u09aa\u09cd\u09b0\u09b6\u09be\u09b8\u09a8\u09bf\u0995 \u09b8\u09c0\u09ae\u09be\u09a8\u09be"
+        },
+        "type/route/bicycle": {
+            "name": "\u09b8\u09be\u0987\u0995\u09c7\u09b2\u09c7\u09b0 \u09b0\u09be\u09b8\u09cd\u09a4\u09be"
+        },
+        "vertex": {
+            "name": "\u0985\u09a8\u09cd\u09af\u09be\u09a8\u09cd\u09af"
+        },
+        "waterway": {
+            "name": "\u09aa\u09be\u09a8\u09bf\u09aa\u09a5"
+        },
+        "waterway/canal": {
+            "name": "\u0996\u09be\u09b2"
+        },
+        "waterway/dam": {
+            "name": "\u09ac\u09be\u0981\u09a7"
+        },
+        "waterway/drain": {
+            "name": "\u09a8\u09be\u09b2\u09be"
+        },
+        "waterway/river": {
+            "name": "\u09a8\u09a6\u09c0"
+        },
+        "waterway/riverbank": {
+            "name": "\u09a8\u09a6\u09c0\u09a4\u09c0\u09b0"
+        },
+        "waterway/stream": {
+            "name": "\u09aa\u09be\u09a8\u09bf\u09b8\u09cd\u09b0\u09cb\u09a4"
+        }
+    }
+}

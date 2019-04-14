@@ -1,0 +1,91 @@
+{
+    "presets": {
+        "amenity/bus_station": {
+            "name": "Stacioni i Autobusave"
+        },
+        "building/college": {
+            "name": "Nd\u00ebrtesa e Kollegjit"
+        },
+        "highway": {
+            "name": "Hekurudh\u00eb"
+        },
+        "highway/cycleway": {
+            "name": "Rrug\u00eb bi\u00e7ikletash"
+        },
+        "highway/elevator": {
+            "name": "Ashensor"
+        },
+        "highway/footway": {
+            "name": "Rrug\u00eb k\u00ebmb\u00ebsor\u00ebsh"
+        },
+        "highway/secondary": {
+            "name": "Rrug\u00eb Dyt\u00ebsore"
+        },
+        "place/city": {
+            "name": "Qytet"
+        },
+        "power/transformer": {
+            "name": "Transformator"
+        },
+        "railway": {
+            "name": "Hekurudh\u00eb"
+        },
+        "railway/abandoned": {
+            "name": "Hekurudh\u00eb E Braktisur"
+        },
+        "shop": {
+            "name": "Dyqan"
+        },
+        "shop/bakery": {
+            "name": "Furr\u00eb buke"
+        },
+        "shop/clothes": {
+            "name": "Dyqan Veshjesh"
+        },
+        "shop/copyshop": {
+            "name": "Fotokopje"
+        },
+        "shop/dry_cleaning": {
+            "name": "Pastrim Kimik"
+        },
+        "shop/kiosk": {
+            "name": "Kiosk\u00eb"
+        },
+        "shop/kitchen": {
+            "name": "Dyqan p\u00ebr Aredim t\u00eb Kuzhin\u00ebs"
+        },
+        "shop/laundry": {
+            "name": "Lavanderi"
+        },
+        "shop/optician": {
+            "name": "Okulist"
+        },
+        "shop/supermarket": {
+            "name": "Supermarket"
+        },
+        "tourism": {
+            "name": "Turiz\u00ebm"
+        },
+        "tourism/hotel": {
+            "name": "Hotel"
+        },
+        "tourism/information": {
+            "name": "Informacion"
+        },
+        "tourism/information/map": {
+            "name": "Hart\u00eb"
+        },
+        "type/boundary/administrative": {
+            "name": "Kufi Administrativ"
+        },
+        "waterway/canal": {
+            "name": "Kanal"
+        },
+        "waterway/river": {
+            "name": "Lum\u00eb"
+        },
+        "waterway/waterfall": {
+            "name": "Uj\u00ebvar\u00eb"
+        }
+    }
+}

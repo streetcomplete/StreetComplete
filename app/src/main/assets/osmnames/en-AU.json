@@ -1,0 +1,19 @@
+{
+    "presets": {
+        "amenity/fuel": {
+            "name": "Service Station"
+        },
+        "barrier/kerb": {
+            "name": "Kerb"
+        },
+        "barrier/kerb/flush": {
+            "name": "Flush Kerb"
+        },
+        "barrier/kerb/lowered": {
+            "name": "Lowered Kerb"
+        },
+        "tourism/caravan_site": {
+            "name": "Caravan Site"
+        }
+    }
+}

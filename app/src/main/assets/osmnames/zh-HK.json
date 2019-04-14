@@ -1,0 +1,3178 @@
+{
+    "presets": {
+        "address": {
+            "name": "\u5730\u5740",
+            "terms": "Address,\u5730\u5740,\u5730\u57d7,\u5740"
+        },
+        "advertising/billboard": {
+            "name": "Billboard",
+            "terms": "Billboard, \u5ee3\u544a\u677f"
+        },
+        "aerialway": {
+            "name": "\u7e9c\u8eca\u8def\u7dda"
+        },
+        "aerialway/cable_car": {
+            "name": "\u7e9c\u8eca",
+            "terms": "Cable Car,\u7e9c\u8eca"
+        },
+        "aerialway/chair_lift": {
+            "name": "\u540a\u6905",
+            "terms": "Chair Lift,\u540a\u6905"
+        },
+        "aerialway/drag_lift": {
+            "name": "\u727d\u5f15\u7e9c\u8eca",
+            "terms": "Drag Lift, \u727d\u5f15\u7e9c\u8eca"
+        },
+        "aerialway/gondola": {
+            "name": "\u540a\u8259",
+            "terms": "Gondola,\u540a\u7c43,\u540a\u8239,\u7a7a\u4e2d\u7e9c\u8eca"
+        },
+        "aerialway/goods": {
+            "name": "\u8ca8\u904b\u7e9c\u8eca",
+            "terms": "Goods Aerialway,\u8f09\u8ca8\u7e9c\u8eca"
+        },
+        "aerialway/magic_carpet": {
+            "name": "\u8f38\u9001\u5e36",
+            "terms": "Magic Carpet Lift,\u8f38\u9001\u5e36"
+        },
+        "aerialway/mixed_lift": {
+            "name": "\u6df7\u5408\u5f0f\u7e9c\u8eca",
+            "terms": "Mixed Lift,\u6df7\u5408\u5f0f\u7e9c\u8eca,\u6df7\u5408\u5f0f\u540a\u8eca"
+        },
+        "aerialway/platter": {
+            "name": "\u540a\u76e4",
+            "terms": "\u540a\u76e4"
+        },
+        "aerialway/pylon": {
+            "name": "\u7e9c\u8eca\u7e9c\u5854",
+            "terms": "\u7e9c\u5854,\u7e9c\u8eca\u5854,\u540a\u8eca\u5854"
+        },
+        "aerialway/rope_tow": {
+            "name": "\u727d\u7e69",
+            "terms": "\u727d\u7e69"
+        },
+        "aerialway/station": {
+            "name": "\u7e9c\u8eca\u7ad9"
+        },
+        "aerialway/t-bar": {
+            "name": "T\u578b\u540a\u687f",
+            "terms": "T\u578b\u540a\u687f"
+        },
+        "aeroway": {
+            "name": "\u822a\u7a7a\u8a2d\u65bd"
+        },
+        "aeroway/aerodrome": {
+            "name": "\u6a5f\u5834",
+            "terms": "Airport,\u6a5f\u5834,\u98db\u6a5f,\u98db\u6a5f\u5834"
+        },
+        "aeroway/apron": {
+            "name": "\u505c\u6a5f\u576a",
+            "terms": "Apron,\u505c\u6a5f\u576a"
+        },
+        "aeroway/gate": {
+            "name": "\u767b\u6a5f\u9598",
+            "terms": "Airport Gate,\u767b\u6a5f\u9580,\u767b\u6a5f\u53e3"
+        },
+        "aeroway/hangar": {
+            "name": "\u98db\u6a5f\u5eab",
+            "terms": "Hangar,\u6a5f\u5eab,\u98db\u6a5f\u5eab,\u98db\u6a5f\u68da"
+        },
+        "aeroway/helipad": {
+            "name": "\u76f4\u5347\u6a5f\u576a",
+            "terms": "Helipad,\u76f4\u5347\u6a5f\u576a,\u76f4\u5347\u6a5f\u5834,\u76f4\u6607\u6a5f\u576a,\u76f4\u6607\u6a5f\u5834,\u76f4\u5347\u6a5f\u5347\u964d\u576a"
+        },
+        "aeroway/runway": {
+            "name": "\u8dd1\u9053",
+            "terms": "Runway,\u8dd1\u9053,\u6a5f\u5834\u8dd1\u9053"
+        },
+        "aeroway/taxiway": {
+            "name": "\u6ed1\u884c\u9053",
+            "terms": "Taxiway,\u6ed1\u884c\u9053,\u6a5f\u5834\u6ed1\u884c\u9053,\u505c\u6a5f\u576a\u6ed1\u884c\u9053"
+        },
+        "aeroway/terminal": {
+            "name": "\u6a5f\u5834\u5ba2\u904b\u5927\u6a13",
+            "terms": "Airport Terminal,\u822a\u5ec8"
+        },
+        "amenity": {
+            "name": "\u8a2d\u65bd"
+        },
+        "amenity/animal_boarding": {
+            "name": "\u5bf5\u7269\u9152\u5e97",
+            "terms": "Animal Boarding Facility, Dog hotel, pet hotel,\u5bf5\u7269\u5ea6\u5047\u6751,\u5bf5\u7269\u98ef\u5e97,\u72d7\u9152\u5e97, \u52d5\u7269\u9152\u5e97"
+        },
+        "amenity/animal_breeding": {
+            "name": "\u52d5\u7269\u7e41\u6b96\u5834",
+            "terms": "Animal Breeding Facility, \u5bf5\u7269\u7e41\u6b96\u5834"
+        },
+        "amenity/animal_shelter": {
+            "name": "\u52d5\u7269\u6536\u5bb9\u4e2d\u5fc3",
+            "terms": "Animal Shelter, \u52d5\u7269\u6536\u5bb9\u6240"
+        },
+        "amenity/arts_centre": {
+            "name": "\u7f8e\u8853\u9928",
+            "terms": "Arts Center,\u7f8e\u8853\u4e2d\u5fc3,\u7f8e\u8853\u9928,\u85dd\u8853\u4e2d\u5fc3,\u85dd\u8853\u9928"
+        },
+        "amenity/atm": {
+            "name": "\u63d0\u6b3e\u6a5f",
+            "terms": "ATM,\u63d0\u6b3e\u6a5f,\u6ac3\u54e1\u6a5f,\u81ea\u52d5\u63d0\u6b3e\u6a5f,\u81ea\u52d5\u6ac3\u54e1\u6a5f"
+        },
+        "amenity/bank": {
+            "name": "\u9280\u884c",
+            "terms": "Bank,\u9280\u865f,\u9280\u884c"
+        },
+        "amenity/bar": {
+            "name": "\u9152\u5427",
+            "terms": "Bar,\u5427,\u9152\u5427"
+        },
+        "amenity/bbq": {
+            "name": "\u71d2\u70e4",
+            "terms": "BBQ,\u71d2\u70e4"
+        },
+        "amenity/bench": {
+            "name": "\u9577\u6905",
+            "terms": "Bench,\u9577\u51f3,\u9577\u6905,\u9577\u6ac8"
+        },
+        "amenity/bicycle_parking": {
+            "name": "\u55ae\u8eca\u505c\u653e\u8655",
+            "terms": "Bicycle Parking,\u55ae\u8eca\u505c\u653e,\u55ae\u8eca\u505c\u6cca\u8655,\u6cca\u55ae\u8eca,\u6cca\u55ae\u8eca\u8655,\u81ea\u884c\u8eca\u505c\u653e\u8655"
+        },
+        "amenity/bicycle_rental": {
+            "name": "\u55ae\u8eca\u51fa\u79df",
+            "terms": "Bicycle Rental,\u55ae\u8eca\u79df\u8cc3,\u79df\u55ae\u8eca,\u79df\u55ae\u8eca\u8216,\u79df\u55ae\u8eca\u8655,\u81ea\u884c\u8eca\u79df\u8cc3\u8655"
+        },
+        "amenity/bicycle_repair_station": {
+            "name": "\u55ae\u8eca\u7dad\u4fee\u7ad9",
+            "terms": "\u55ae\u8eca\u7dad\u4fee\u7ad9,\u7dad\u4fee\u55ae\u8eca,\u81ea\u884c\u8eca\u7dad\u4fee\u7ad9,\u7dad\u4fee\u81ea\u884c\u8eca"
+        },
+        "amenity/biergarten": {
+            "name": "\u9732\u5929\u5564\u9152\u5e97",
+            "terms": "\u5564\u9152\u5e97,\u6236\u5916\u5564\u9152\u5e97,\u5564\u9152\u82b1\u5712"
+        },
+        "amenity/boat_rental": {
+            "name": "\u79df\u8247",
+            "terms": "Boat Rental,\u79df\u8247,\u8239\u8236\u79df\u8cc3\u8655"
+        },
+        "amenity/bureau_de_change": {
+            "name": "\u5916\u5e63\u514c\u63db",
+            "terms": "\u9322\u5e63\u514c\u63db,\u63db\u9322"
+        },
+        "amenity/bus_station": {
+            "name": "\u5df4\u58eb\u7e3d\u7ad9"
+        },
+        "amenity/cafe": {
+            "name": "\u8336\u5ea7",
+            "terms": "Cafe,\u35ce\u5561\u5ba4,\u35ce\u5561\u5ef3,\u5496\u5561,\u5496\u5561\u5ba4,\u5496\u5561\u5ef3,\u8336\u5ea7"
+        },
+        "amenity/car_pooling": {
+            "name": "\u6c7d\u8eca\u5171\u4e58",
+            "terms": "Car Pooling, \u6c7d\u8eca\u5171\u4e58"
+        },
+        "amenity/car_rental": {
+            "name": "\u6c7d\u8eca\u79df\u8cc3",
+            "terms": "Car Rental,\u6c7d\u8eca\u79df\u8cc3\u8655,\u79df\u8eca,\u79df\u8eca\u5e97,\u79df\u8eca\u8216"
+        },
+        "amenity/car_sharing": {
+            "name": "\u6c7d\u8eca\u5171\u4eab\u7ad9",
+            "terms": "Car Sharing,\u5171\u7528\u8eca,\u5171\u7528\u8eca\u8655,\u6c7d\u8eca\u5171\u4eab\u7ad9"
+        },
+        "amenity/car_wash": {
+            "name": "\u6d17\u8eca\u5e97",
+            "terms": "Car Wash,\u6d17\u8eca,\u6d17\u8eca\u8216"
+        },
+        "amenity/casino": {
+            "name": "\u8ced\u5834",
+            "terms": "\u8ced\u5834"
+        },
+        "amenity/charging_station": {
+            "name": "\u5145\u96fb\u7ad9",
+            "terms": "\u53c9\u96fb\u7ad9"
+        },
+        "amenity/childcare": {
+            "name": "\u8a17\u5152\u6240/\u5e7c\u5152\u8b77\u7406",
+            "terms": "\u8a17\u5152\u6240,\u5e7c\u5152\u8b77\u7406,\u8a17\u7ba1"
+        },
+        "amenity/cinema": {
+            "name": "\u6232\u9662",
+            "terms": "Cinema,\u96fb\u5f71,\u96fb\u5f71\u6232\u9662,\u96fb\u5f71\u9662"
+        },
+        "amenity/clinic": {
+            "name": "\u8a3a\u6240",
+            "terms": "\u8a3a\u7642\u6240,\u91ab\u52d9\u6240,\u91ab\u52d9\u4e2d\u5fc3"
+        },
+        "amenity/clinic/abortion": {
+            "name": "\u7d42\u6b62\u61f7\u5b55\u8a3a\u6240",
+            "terms": "Abortion Clinic,\u58ae\u80ce\u8a3a\u6240"
+        },
+        "amenity/clinic/fertility": {
+            "name": "\u751f\u80b2\u8a3a\u6240",
+            "terms": "Fertility Clinic,\u751f\u80b2\u4e2d\u5fc3"
+        },
+        "amenity/clock": {
+            "name": "\u6642\u9418",
+            "terms": "\u6642\u9418,\u9418\u5854,\u9418\u6a13"
+        },
+        "amenity/college": {
+            "name": "\u5b78\u9662\u7bc4\u570d",
+            "terms": "\u5b78\u9662,\u5b78\u9662\u7528\u5730,\u6280\u8853\u5b78\u9662,\u5c08\u4e0a\u5b78\u9662,\u5c08\u79d1,\u66f8\u9662"
+        },
+        "amenity/community_centre": {
+            "name": "\u793e\u5340\u4e2d\u5fc3",
+            "terms": "\u6d3b\u52d5\u4e2d\u5fc3"
+        },
+        "amenity/compressed_air": {
+            "name": "\u6253\u6c23\u670d\u52d9",
+            "terms": "\u8f2a\u80ce\u6253\u6c23"
+        },
+        "amenity/courthouse": {
+            "name": "\u6cd5\u5ead",
+            "terms": "Courthouse,\u6cd5\u5ead,\u6cd5\u9662,\u88c1\u5224\u7f72"
+        },
+        "amenity/coworking_space": {
+            "name": "\u5171\u540c\u5de5\u4f5c\u7a7a\u9593"
+        },
+        "amenity/crematorium": {
+            "name": "\u706b\u846c\u5834",
+            "terms": "Crematorium, \u706b\u846c\u5834"
+        },
+        "amenity/dentist": {
+            "name": "\u7259\u91ab",
+            "terms": "\u7259\u91ab\u8a3a\u6240,\u7259\u79d1\u8a3a\u6240,\u9f52\u79d1"
+        },
+        "amenity/dive_centre": {
+            "name": "\u6f5b\u6c34\u4e2d\u5fc3",
+            "terms": "Dive Center,\u6f5b\u6c34\u4e2d\u5fc3"
+        },
+        "amenity/doctors": {
+            "name": "\u91ab\u751f",
+            "terms": "\u91ab\u5e2b"
+        },
+        "amenity/dojo": {
+            "name": "\u9053\u5834/\u6b66\u8853\u5b78\u9662",
+            "terms": "\u6b66\u85dd,\u6b66\u8853"
+        },
+        "amenity/drinking_water": {
+            "name": "\u98f2\u7528\u6c34",
+            "terms": "Drinking Water,\u6c34\u6e90,\u6d3b\u6c34,\u98f2\u6c34,\u98f2\u6c34\u8655,\u98f2\u6c34\u6a5f,\u98f2\u6c34\u5668"
+        },
+        "amenity/driving_school": {
+            "name": "\u99d5\u99db\u5b78\u6821",
+            "terms": "Driving School, \u99d5\u99db\u5b78\u9662"
+        },
+        "amenity/embassy": {
+            "name": "\u5927\u4f7f\u9928",
+            "terms": "Embassy,\u4f7f\u9928,\u5927\u4f7f\u9928,\u9818\u4e8b\u9928"
+        },
+        "amenity/fast_food": {
+            "name": "\u5feb\u9910\u5e97",
+            "terms": "Fast Food,\u5feb\u9910\u5e97,\u901f\u98df\u5e97"
+        },
+        "amenity/fast_food/burger": {
+            "name": "\u6f22\u5821\u5feb\u9910",
+            "terms": "\u6f22\u5821\u9ead\u5feb\u9910,\u6f22\u5821\u5305\u5feb\u9910,\u6f22\u5821\u5305"
+        },
+        "amenity/fast_food/chicken": {
+            "name": "\u96de\u5feb\u9910",
+            "terms": "\u70b8\u96de\u5feb\u9910,\u70b8\u96de"
+        },
+        "amenity/fast_food/fish_and_chips": {
+            "name": "\u70b8\u9b5a\u53ca\u85af\u689d\u5feb\u9910",
+            "terms": "\u70b8\u9b5a,\u85af\u689d"
+        },
+        "amenity/fast_food/kebab": {
+            "name": "\u571f\u8033\u5176\u70e4\u8089\u5feb\u9910",
+            "terms": "\u571f\u8033\u5176\u4e32\u71d2,\u4e32\u71d2\u70e4\u8089,\u70e4\u8089"
+        },
+        "amenity/fast_food/pizza": {
+            "name": "\u8584\u9905\u5feb\u9910",
+            "terms": "Pizza,\u610f\u5f0f\u8584\u9905,\u610f\u5927\u5229\u8584\u9905"
+        },
+        "amenity/fast_food/sandwich": {
+            "name": "\u4e09\u6587\u6cbb\u5feb\u9910",
+            "terms": "\u4e09\u660e\u6cbb"
+        },
+        "amenity/ferry_terminal": {
+            "name": "\u5ba2\u904b\u78bc\u982d"
+        },
+        "amenity/fire_station": {
+            "name": "\u6d88\u9632\u5c40",
+            "terms": "Fire Station,\u6c34\u8eca\u9928,\u6d88\u9632\u5c40,\u6d88\u9632\u7ad9"
+        },
+        "amenity/food_court": {
+            "name": "\u7f8e\u98df\u5ee3\u5834",
+            "terms": "Food Court, \u7f8e\u98df\u8857, \u7f8e\u98df\u4e2d\u5fc3, \u98df\u5802, \u98df\u8857"
+        },
+        "amenity/fountain": {
+            "name": "\u5674\u6c34\u6c60",
+            "terms": "Fountain,\u5674\u6c34\u6c60,\u5674\u6cc9"
+        },
+        "amenity/fuel": {
+            "name": "\u6cb9\u7ad9",
+            "terms": "Gas Station,\u52a0\u6c23\u7ad9,\u52a0\u6c7d\u7ad9,\u52a0\u6cb9\u7ad9,\u6cb9\u7ad9"
+        },
+        "amenity/grave_yard": {
+            "name": "\u5893\u5730",
+            "terms": "Graveyard,\u5893\u5730,\u58b3\u5730,\u58b3\u5834,\u7956\u58b3,\u5c71\u58b3,\u6ce5\u58b3,\u571f\u58b3"
+        },
+        "amenity/grit_bin": {
+            "name": "\u7802\u792b\u6876",
+            "terms": "\u7802\u792b\u7bb1,\u6c99\u792b\u6876,\u6c99\u6876,\u7802\u6876,\u7802\u9e7d\u6df7\u5408\u7269\u6876"
+        },
+        "amenity/hospital": {
+            "name": "\u91ab\u9662\u7bc4\u570d",
+            "terms": "\u91ab\u9662"
+        },
+        "amenity/hunting_stand": {
+            "name": "\u72e9\u7375\u53f0",
+            "terms": "\u72e9\u7375\u7ad9,\u72e9\u7375\u5854"
+        },
+        "amenity/ice_cream": {
+            "name": "\u96ea\u699a\u5e97",
+            "terms": "ice cream, \u96ea\u699a\u5e97, \u51b0\u6dc7\u6dcb\u5e97"
+        },
+        "amenity/internet_cafe": {
+            "name": "\u7db2\u5427",
+            "terms": "Internet Cafe, \u4e92\u806f\u7db2\u9910\u5ef3"
+        },
+        "amenity/kindergarten": {
+            "name": "\u5b78\u524d\u7167\u9867/\u5e7c\u7a1a\u5712\u7bc4\u570d",
+            "terms": "\u5e7c\u5152\u5712,\u5e7c\u7a1a\u5712\u7528\u5730,\u5e7c\u7a1a\u5712"
+        },
+        "amenity/language_school": {
+            "name": "\u8a9e\u8a00\u5b78\u6821",
+            "terms": "\u8a9e\u8a00\u5b78\u6821,\u5916\u6587\u5b78\u6821,\u5916\u8a9e\u5b78\u6821"
+        },
+        "amenity/library": {
+            "name": "\u5716\u66f8\u9928",
+            "terms": "Library,\u5716\u66f8\u9928"
+        },
+        "amenity/love_hotel": {
+            "name": "\u611b\u60c5\u9152\u5e97",
+            "terms": "Love Hotel, \u6642\u9418\u9152\u5e97"
+        },
+        "amenity/marketplace": {
+            "name": "\u8857\u5e02",
+            "terms": "Marketplace,\u5e02\u5834,\u83dc\u5e02\u5834,\u8857\u5e02"
+        },
+        "amenity/monastery": {
+            "name": "\u5bfa\u9662\u7bc4\u570d",
+            "terms": "\u9053\u89c0,\u5bfa\u5edf,\u5edf\u5b87,\u9053\u5bfa"
+        },
+        "amenity/money_transfer": {
+            "name": "\u6ed9\u6b3e\u4e2d\u5fc3",
+            "terms": "\u6ed9\u6b3e\u5e97,\u532f\u6b3e"
+        },
+        "amenity/motorcycle_parking": {
+            "name": "\u96fb\u55ae\u8eca\u505c\u8eca\u4f4d",
+            "terms": "\u6469\u6258\u8eca\u505c\u8eca\u5834,\u96fb\u55ae\u8eca\u505c\u8eca\u5834"
+        },
+        "amenity/music_school": {
+            "name": "\u97f3\u6a02\u5b78\u6821",
+            "terms": "Music School, \u97f3\u6a02\u5b78\u6821"
+        },
+        "amenity/nightclub": {
+            "name": "\u591c\u7e3d\u6703",
+            "terms": "\u591c\u5e97"
+        },
+        "amenity/nursing_home": {
+            "name": "\u8b77\u990a\u9662"
+        },
+        "amenity/parking": {
+            "name": "\u505c\u8eca\u5834",
+            "terms": "Car Parking,\u505c\u8eca\u5834,\u6cca\u8eca\u4f4d,\u6cca\u8eca\u5834,\u505c\u8eca\u4f4d"
+        },
+        "amenity/parking/multi-storey": {
+            "name": "\u591a\u5c64\u505c\u8eca\u5834",
+            "terms": "\u591a\u5c64\u6cca\u8eca\u5834,\u505c\u8eca\u5834,\u6cca\u8eca\u5834"
+        },
+        "amenity/parking_entrance": {
+            "name": "\u505c\u8eca\u5834\u5165\u53e3/\u51fa\u53e3",
+            "terms": "\u505c\u8eca\u5834\u5165\u53e3,\u505c\u8eca\u5834\u51fa\u53e3"
+        },
+        "amenity/parking_space": {
+            "name": "\u6cca\u8eca\u4f4d",
+            "terms": "\u505c\u8eca\u7a7a\u9593,\u6cca\u8eca\u8655,\u505c\u8eca\u4f4d,\u8eca\u4f4d"
+        },
+        "amenity/payment_centre": {
+            "name": "\u7e73\u8cbb\u8655",
+            "terms": "\u4ed8\u6b3e\u8655,\u4ed8\u8cbb\u8655,\u7e73\u8cbb\u4e2d\u5fc3"
+        },
+        "amenity/payment_terminal": {
+            "name": "\u7e73\u8cbb\u7d42\u7aef\u6a5f",
+            "terms": "\u7e73\u8cbb\u6a5f,\u4ed8\u6b3e\u6a5f,\u6536\u8cbb\u6a5f"
+        },
+        "amenity/place_of_worship": {
+            "name": "\u795f\u62dc\u5834\u6240",
+            "terms": "Place of Worship,Worship,\u5b97\u6559\u795f\u62dc\u5834\u6240,\u5b97\u6559\u79ae\u62dc\u8655,\u5d07\u62dc\u8655,\u62dc\u795e\u4e4b\u6240,\u79ae\u62dc\u5834\u6240,\u5edf,\u6559\u5802,\u5bfa\u5edf,\u79ae\u62dc\u5802,\u7336\u592a\u5edf,\u6e05\u771f\u5bfa"
+        },
+        "amenity/place_of_worship/buddhist": {
+            "name": "\u4f5b\u5bfa",
+            "terms": "Buddhist Temple,\u4f5b\u5802,\u4f5b\u5bfa,\u4f5b\u5edf,\u548c\u5c1a\u5bfa,\u5bf6\u6bbf,\u5bfa,\u5bfa\u5edf,\u5c3c\u59d1\u5eb5,\u5c3c\u5eb5,\u5eb5\u5802,\u5edf,\u7cbe\u820d,\u95a3,\u975c\u9662,\u89c0\u97f3\u5edf,\u89c0\u97f3\u5bfa"
+        },
+        "amenity/place_of_worship/hindu": {
+            "name": "\u5370\u5ea6\u5edf",
+            "terms": "Hindu Temple, \u5370\u5ea6\u6559\u5edf"
+        },
+        "amenity/place_of_worship/shinto": {
+            "name": "\u795e\u9053\u5edf",
+            "terms": "Shinto Shrine, \u795e\u9053\u6559\u5edf"
+        },
+        "amenity/place_of_worship/sikh": {
+            "name": "\u932b\u514b\u5edf",
+            "terms": "Sikh Temple, \u932b\u514b\u5edf"
+        },
+        "amenity/place_of_worship/taoist": {
+            "name": "\u9053\u89c0",
+            "terms": "Taoist Temple, \u9053\u6559\u5edf"
+        },
+        "amenity/planetarium": {
+            "name": "\u5929\u8c61\u5ef3",
+            "terms": "Planetarium, \u5929\u8c61\u9928"
+        },
+        "amenity/police": {
+            "name": "\u8b66\u7f72",
+            "terms": "Police,\u5dee\u9928,\u6d3e\u51fa\u6240,\u8b66\u5bdf\u5c40,\u8b66\u5c40,\u8b66\u7f72"
+        },
+        "amenity/post_box": {
+            "name": "\u90f5\u7b52",
+            "terms": "Mailbox,Post,Post Box,\u90f5\u7b52,\u90f5\u7bb1"
+        },
+        "amenity/post_office": {
+            "name": "\u90f5\u653f\u5c40",
+            "terms": "Post Office,\u90f5\u5c40,\u90f5\u653f\u5c40,\u9999\u6e2f\u90f5\u653f"
+        },
+        "amenity/prison": {
+            "name": "\u76e3\u7344\u7bc4\u570d",
+            "terms": "\u76e3\u5009\u7bc4\u570d,\u61f2\u6559\u6240\u7bc4\u570d,\u52de\u6559\u4e2d\u5fc3\u7bc4\u570d"
+        },
+        "amenity/pub": {
+            "name": "\u9152\u9928",
+            "terms": "Pub,\u9152\u9928"
+        },
+        "amenity/public_bath": {
+            "name": "\u516c\u5171\u6d74\u5ba4",
+            "terms": "Public Bath,\u516c\u5171\u6fa1\u5802,\u516c\u5171\u6d74\u6c60,\u9322\u6e6f,\u516c\u5171\u6d74\u5834"
+        },
+        "amenity/public_bookcase": {
+            "name": "\u516c\u773e\u66f8\u67b6",
+            "terms": "\u516c\u5171\u66f8\u67b6"
+        },
+        "amenity/ranger_station": {
+            "name": "\u90ca\u91ce\u516c\u5712\u904a\u5ba2\u4e2d\u5fc3",
+            "terms": "Ranger Station,\u90ca\u91ce\u516c\u5712\u7ba1\u7406\u7ad9,\u90ca\u91ce\u516c\u5712\u8a2a\u5ba2\u4e2d\u5fc3"
+        },
+        "amenity/recycling": {
+            "name": "\u56de\u6536\u8a2d\u65bd"
+        },
+        "amenity/recycling_centre": {
+            "name": "\u56de\u6536\u4e2d\u5fc3",
+            "terms": "Recycling Center, \u5ee2\u7269\u56de\u6536\u4e2d\u5fc3, \u8cc7\u6e90\u56de\u6536\u4e2d\u5fc3"
+        },
+        "amenity/recycling_container": {
+            "name": "\u56de\u6536\u6876",
+            "terms": "\u56de\u6536\u6876,\u4e09\u8272\u6876,\u56de\u6536\u7bb1"
+        },
+        "amenity/register_office": {
+            "name": "\u4eba\u4e8b\u767b\u8a18\u8655"
+        },
+        "amenity/restaurant": {
+            "name": "\u9910\u5ef3",
+            "terms": "Restaurant,\u8336\u6a13,\u9152\u5bb6,\u9152\u6a13,\u98ef\u5e97,\u98ef\u9928,\u9910\u5ef3,\u9910\u9928"
+        },
+        "amenity/restaurant/american": {
+            "name": "\u7f8e\u5f0f\u9910\u5ef3",
+            "terms": "\u7f8e\u570b\u9910\u5ef3"
+        },
+        "amenity/restaurant/asian": {
+            "name": "\u4e9e\u6d32\u9910\u5ef3",
+            "terms": "\u4e9e\u5f0f\u9910\u5ef3"
+        },
+        "amenity/restaurant/chinese": {
+            "name": "\u4e2d\u5f0f\u9910\u5ef3",
+            "terms": "\u4e2d\u570b\u9910\u5ef3"
+        },
+        "amenity/restaurant/french": {
+            "name": "\u6cd5\u5f0f\u9910\u5ef3",
+            "terms": "\u6cd5\u570b\u9910\u5ef3"
+        },
+        "amenity/restaurant/german": {
+            "name": "\u5fb7\u5f0f\u9910\u5ef3",
+            "terms": "\u5fb7\u570b\u9910\u5ef3"
+        },
+        "amenity/restaurant/greek": {
+            "name": "\u5e0c\u81d8\u5f0f\u9910\u5ef3",
+            "terms": "\u5e0c\u81d8\u9910\u5ef3"
+        },
+        "amenity/restaurant/indian": {
+            "name": "\u5370\u5ea6\u5f0f\u9910\u5ef3",
+            "terms": "\u5370\u5ea6\u9910\u5ef3"
+        },
+        "amenity/restaurant/italian": {
+            "name": "\u610f\u5f0f\u9910\u5ef3",
+            "terms": "\u610f\u5927\u5229\u9910\u5ef3"
+        },
+        "amenity/restaurant/japanese": {
+            "name": "\u65e5\u5f0f\u9910\u5ef3",
+            "terms": "\u65e5\u672c\u9910\u5ef3"
+        },
+        "amenity/restaurant/mexican": {
+            "name": "\u58a8\u897f\u54e5\u5f0f\u9910\u5ef3",
+            "terms": "\u58a8\u897f\u54e5\u9910\u5ef3"
+        },
+        "amenity/restaurant/noodle": {
+            "name": "\u9eb5\u98df\u5e97",
+            "terms": "\u9eb5\u98df\u9910\u5ef3,\u9eb5\u5e97"
+        },
+        "amenity/restaurant/pizza": {
+            "name": "\u8584\u9905\u9910\u5ef3",
+            "terms": "\u610f\u5f0f\u8584\u9905\u9910\u5ef3,\u610f\u5927\u5229\u8584\u9905\u9910\u5ef3"
+        },
+        "amenity/restaurant/seafood": {
+            "name": "\u6d77\u9bae\u9910\u5ef3",
+            "terms": "\u6d77\u9bae\u9910\u5ef3"
+        },
+        "amenity/restaurant/steakhouse": {
+            "name": "\u6252\u623f",
+            "terms": "\u92f8\u6252,\u725b\u6252\u5c4b"
+        },
+        "amenity/restaurant/sushi": {
+            "name": "\u58fd\u53f8\u9910\u5ef3",
+            "terms": "\u58fd\u53f8\u5e97,\u5efb\u8f49\u58fd\u53f8"
+        },
+        "amenity/restaurant/thai": {
+            "name": "\u6cf0\u5f0f\u9910\u5ef3",
+            "terms": "\u6cf0\u570b\u9910\u5ef3"
+        },
+        "amenity/restaurant/turkish": {
+            "name": "\u571f\u8033\u5176\u5f0f\u9910\u5ef3",
+            "terms": "\u571f\u8033\u5176\u9910\u5ef3"
+        },
+        "amenity/restaurant/vietnamese": {
+            "name": "\u8d8a\u5f0f\u9910\u5ef3",
+            "terms": "\u8d8a\u5357\u9910\u5ef3"
+        },
+        "amenity/sanitary_dump_station": {
+            "name": "\u9732\u71df\u8eca\u5ec1\u6240\u5ee2\u7269\u6536\u96c6",
+            "terms": "\u9732\u71df\u8eca\u5ec1\u6240\u5ee2\u7269\u6536\u96c6"
+        },
+        "amenity/school": {
+            "name": "\u5b78\u6821\u7bc4\u570d",
+            "terms": "\u5b78\u6821,\u4e2d\u5b78,\u5c0f\u5b78,\u5b78\u6821\u7528\u5730,\u5b78\u6821\u7bc4\u570d,\u570b\u969b\u5b78\u6821"
+        },
+        "amenity/scrapyard": {
+            "name": "\u5ee2\u6599\u5834"
+        },
+        "amenity/shelter": {
+            "name": "\u6dbc\u4ead",
+            "terms": "Shelter,\u4ead,\u84cb,\u907f\u96e3,\u907f\u96e3\u6240,\u907f\u96e8\u4ead"
+        },
+        "amenity/shower": {
+            "name": "\u6dcb\u6d74\u8655",
+            "terms": "Shower,\u6dcb\u6d74\u9593,\u6c96\u6d74\u9593"
+        },
+        "amenity/smoking_area": {
+            "name": "\u5438\u7159\u5340",
+            "terms": "Smoking Area, \u98df\u7159\u5340"
+        },
+        "amenity/social_facility": {
+            "name": "\u793e\u6703\u670d\u52d9\u8a2d\u65bd",
+            "terms": "\u793e\u798f\u8a2d\u65bd"
+        },
+        "amenity/social_facility/food_bank": {
+            "name": "\u98df\u7269\u9280\u884c",
+            "terms": "\u98df\u7269\u9280\u884c"
+        },
+        "amenity/social_facility/group_home": {
+            "name": "\u5b89\u8001\u9662",
+            "terms": "\u8001\u4eba\u9662"
+        },
+        "amenity/social_facility/homeless_shelter": {
+            "name": "\u9732\u5bbf\u8005\u6536\u5bb9\u6240",
+            "terms": "\u9732\u5bbf\u8005\u4e2d\u5fc3,\u9732\u5bbf\u8005\u4e4b\u5bb6"
+        },
+        "amenity/social_facility/nursing_home": {
+            "name": "\u8b77\u990a\u9662",
+            "terms": "Nursing Home,\u7642\u990a\u9662"
+        },
+        "amenity/studio": {
+            "name": "\u5de5\u4f5c\u5ba4",
+            "terms": "\u5f71\u6a13,\u756b\u5ba4,\u653e\u6620\u5ba4,\u7f8e\u8853\u5ba4,\u5de5\u85dd\u5ba4,\u85dd\u8853\u5de5\u4f5c\u5ba4"
+        },
+        "amenity/swimming_pool": {
+            "name": "\u6e38\u6cf3\u6c60"
+        },
+        "amenity/taxi": {
+            "name": "\u7684\u58eb\u7ad9",
+            "terms": "Taxi Stand,\u51fa\u79df\u8eca\u7ad9,\u7684\u58eb\u7ad9,\u8a08\u7a0b\u8eca\u7ad9"
+        },
+        "amenity/telephone": {
+            "name": "\u96fb\u8a71",
+            "terms": "Telephone,\u96fb\u8a71,\u96fb\u8a71\u4ead"
+        },
+        "amenity/theatre": {
+            "name": "\u5287\u9662",
+            "terms": "Theater,\u5287\u5834,\u5287\u9662,\u6232\u9662,\u821e\u81fa\u6232\u9662,\u96fb\u5f71\u9662,\u6232\u68da"
+        },
+        "amenity/toilets": {
+            "name": "\u5ec1\u6240",
+            "terms": "Toilets,\u4fbf\u6240,\u516c\u53a0,\u516c\u5ec1,\u53a0\u6240,\u5ec1\u6240,\u65b9\u4fbf,\u6d17\u624b\u9593,\u76e5\u6d17\u5ba4,\u5316\u7ca7\u9593"
+        },
+        "amenity/townhall": {
+            "name": "\u5927\u6703\u5802",
+            "terms": "Town Hall,\u5927\u6703\u5802,\u5e02\u653f\u5e9c,\u5e02\u653f\u5ef3"
+        },
+        "amenity/university": {
+            "name": "\u5927\u5b78\u7bc4\u570d",
+            "terms": "\u5927\u5b78,\u5927\u5c08,\u5927\u5b78\u7528\u5730"
+        },
+        "amenity/vending_machine": {
+            "name": "\u552e\u8ce3\u6a5f",
+            "terms": "Vending Machine,\u552e\u8ce3\u6a5f,\u81ea\u52d5\u552e\u8ce3\u6a5f,\u81ea\u52d5\u8ca9\u8ce3\u6a5f,\u8ca9\u8ce3\u6a5f"
+        },
+        "amenity/vending_machine/cigarettes": {
+            "name": "\u9999\u7159\u552e\u8ce3\u6a5f",
+            "terms": "\u9999\u7159\u552e\u8ce3\u6a5f"
+        },
+        "amenity/vending_machine/condoms": {
+            "name": "\u907f\u5b55\u5957\u552e\u8ce3\u6a5f",
+            "terms": "\u4fdd\u96aa\u5957\u8ca9\u8ce3\u6a5f,\u5b89\u5168\u5957\u8ca9\u8ce3\u6a5f,\u907f\u5b55\u888b\u552e\u8ce3\u6a5f"
+        },
+        "amenity/vending_machine/drinks": {
+            "name": "\u98f2\u54c1\u552e\u8ce3\u6a5f",
+            "terms": "\u98f2\u6599\u552e\u8ce3\u6a5f"
+        },
+        "amenity/vending_machine/feminine_hygiene": {
+            "name": "\u5973\u6027\u885e\u751f\u7528\u54c1\u552e\u8ce3\u6a5f",
+            "terms": "Feminine Hygiene Vending Machine,\u5973\u6027\u7528\u54c1\u552e\u8ce3\u6a5f"
+        },
+        "amenity/vending_machine/news_papers": {
+            "name": "\u5831\u7d19\u552e\u8ce3\u6a5f"
+        },
+        "amenity/vending_machine/newspapers": {
+            "name": "\u5831\u7d19\u552e\u8ce3\u6a5f",
+            "terms": "Newspaper Vending Machine,\u5831\u7d19\u8ca9\u8ce3\u6a5f"
+        },
+        "amenity/vending_machine/parking_tickets": {
+            "name": "\u6cca\u8eca\u7968\u552e\u8ce3\u6a5f",
+            "terms": "\u505c\u8eca\u7968\u552e\u8ce3\u6a5f"
+        },
+        "amenity/vending_machine/public_transport_tickets": {
+            "name": "\u81ea\u52d5\u552e\u7968\u6a5f",
+            "terms": "\u8eca\u7968\u8ca9\u8ce3\u6a5f,\u8eca\u7968\u552e\u8ce3\u6a5f"
+        },
+        "amenity/vending_machine/sweets": {
+            "name": "\u96f6\u98df\u552e\u8ce3\u6a5f",
+            "terms": "\u96f6\u98df\u8ca9\u8ce3\u6a5f"
+        },
+        "amenity/veterinary": {
+            "name": "\u7378\u91ab",
+            "terms": "\u7378\u91ab, \u52d5\u7269\u91ab\u751f"
+        },
+        "amenity/waste/dog_excrement": {
+            "name": "\u72d7\u7cde\u6536\u96c6\u7bb1",
+            "terms": "Dog Excrement Bin, \u72d7\u5c4e\u6536\u96c6\u7bb1"
+        },
+        "amenity/waste_basket": {
+            "name": "\u5783\u573e\u6876",
+            "terms": "Waste Basket,\u5783\u573e\u6876,\u5783\u573e\u7bb1,\u5ee2\u7269\u7bb1"
+        },
+        "amenity/waste_disposal": {
+            "name": "\u5927\u578b\u5783\u573e\u7bb1",
+            "terms": "\u5927\u578b\u5783\u573e\u7b52,\u5927\u578b\u56de\u6536\u7bb1"
+        },
+        "amenity/waste_transfer_station": {
+            "name": "\u5783\u573e\u8f49\u904b\u7ad9",
+            "terms": "Waste Transfer Station, \u5783\u573e\u7ad9"
+        },
+        "amenity/water_point": {
+            "name": "\u9732\u71df\u8eca\u98f2\u7528\u6c34",
+            "terms": "\u65c5\u884c\u8eca\u98f2\u7528\u6c34"
+        },
+        "amenity/watering_place": {
+            "name": "\u52d5\u7269\u98f2\u6c34\u8655",
+            "terms": "Animal Watering Place, \u52d5\u7269\u98f2\u6c34\u5340"
+        },
+        "area": {
+            "name": "\u7bc4\u570d",
+            "terms": "Area,\u5340\u57df,\u7bc4\u570d"
+        },
+        "area/highway": {
+            "name": "\u8def\u9762\u7269\u8cea",
+            "terms": "\u8def\u9762\u6750\u8cea,\u8def\u9762"
+        },
+        "attraction/amusement_ride": {
+            "name": "\u6a5f\u52d5\u904a\u6232\u6a5f",
+            "terms": "Amusement Ride,\u6a5f\u52d5\u904a\u6232"
+        },
+        "attraction/animal": {
+            "name": "\u52d5\u7269",
+            "terms": "Animal,\u52d5\u7269"
+        },
+        "attraction/big_wheel": {
+            "name": "\u6469\u5929\u8f2a",
+            "terms": "Big Wheel,Ferris wheel"
+        },
+        "attraction/bumper_car": {
+            "name": "\u78b0\u78b0\u8eca",
+            "terms": "Bumper Car,\u78b0\u78b0\u8eca"
+        },
+        "attraction/bungee_jumping": {
+            "name": "\u7b28\u8c6c\u8df3",
+            "terms": "Bungee Jumping,Bungee Jump,\u9ad8\u7a7a\u5f48\u8df3"
+        },
+        "attraction/carousel": {
+            "name": "\u65cb\u8f49\u6728\u99ac",
+            "terms": "Carousel,\u8ff4\u8f49\u6728\u99ac"
+        },
+        "attraction/dark_ride": {
+            "name": "\u9ed1\u6697\u63a2\u96aa",
+            "terms": "Dark Ride"
+        },
+        "attraction/drop_tower": {
+            "name": "\u8df3\u6a13\u6a5f",
+            "terms": "Drop Tower,\u81ea\u7531\u843d\u9ad4"
+        },
+        "attraction/pirate_ship": {
+            "name": "\u6d77\u76dc\u8239",
+            "terms": "Pirate Ship,\u6d77\u76dc\u8239"
+        },
+        "attraction/river_rafting": {
+            "name": "\u6fc0\u6d41",
+            "terms": "River Rafting,\u6fc0\u6d41"
+        },
+        "attraction/roller_coaster": {
+            "name": "\u904e\u5c71\u8eca",
+            "terms": "Roller Coaster,\u96f2\u9704\u98db\u8eca"
+        },
+        "attraction/train": {
+            "name": "\u89c0\u5149\u706b\u8eca",
+            "terms": "Tourist Train,\u904a\u5ba2\u5217\u8eca,\u89c0\u5149\u5217\u8eca"
+        },
+        "attraction/water_slide": {
+            "name": "\u6c34\u4e0a\u6ed1\u68af",
+            "terms": "Water Slide,\u6ed1\u6c34\u9053"
+        },
+        "barrier": {
+            "name": "\u5c4f\u969c",
+            "terms": "Barrier,\u5c4f\u969c,\u963b\u64cb,\u969c\u7919,\u969c\u7919\u7269,\u67f5\u6b04,\u8b77\u6b04"
+        },
+        "barrier/block": {
+            "name": "\u8def\u969c",
+            "terms": "Block,\u8def\u969c,\u969c\u7919\u7269"
+        },
+        "barrier/bollard": {
+            "name": "\u8b77\u67f1",
+            "terms": "Bollard,\u8b77\u67f1,\u6a19\u67f1,\u7e6b\u7e9c\u6a01,\u77ee\u67f1"
+        },
+        "barrier/border_control": {
+            "name": "\u908a\u5883\u7ba1\u5236",
+            "terms": "Border Control, \u908a\u9632"
+        },
+        "barrier/cattle_grid": {
+            "name": "\u6514\u755c\u6e9d\u67f5",
+            "terms": "Cattle Grid,\u5bb6\u755c\u67f5\u6b04,\u6514\u755c\u6e9d\u67f5"
+        },
+        "barrier/city_wall": {
+            "name": "\u57ce\u7246",
+            "terms": "City Wall,\u57ce\u58bb,\u57ce\u7246"
+        },
+        "barrier/cycle_barrier": {
+            "name": "\u55ae\u8eca\u6e1b\u901f\u6b04",
+            "terms": "Cycle Barrier,\u55ae\u8eca\u6e1b\u901f\u6b04,\u55ae\u8eca\u77ee\u6b04"
+        },
+        "barrier/ditch": {
+            "name": "\u6e9d\u6e20",
+            "terms": "Ditch,\u6e9d,\u6e9d\u6e20,\u660e\u6e9d"
+        },
+        "barrier/entrance": {
+            "name": "\u5165\u53e3"
+        },
+        "barrier/fence": {
+            "name": "\u570d\u6b04",
+            "terms": "Fence,\u6b04,\u6b04\u67f5,\u7c6c,\u7c6c\u7b06,\u570d\u7db2,\u67f5\u6b04"
+        },
+        "barrier/gate": {
+            "name": "\u9598\u9580",
+            "terms": "Gate,\u53e3,\u9580,\u9598"
+        },
+        "barrier/hedge": {
+            "name": "\u6a39\u7c6c",
+            "terms": "Hedge,\u6a39\u7c6c"
+        },
+        "barrier/kissing_gate": {
+            "name": "\u55ae\u4eba\u8f49\u9580 ",
+            "terms": "Kissing Gate,\u55ae\u4eba\u8f49\u9580"
+        },
+        "barrier/lift_gate": {
+            "name": "\u9598\u687f",
+            "terms": "Lift Gate,\u64cb\u8eca\u5668,\u9053\u9598"
+        },
+        "barrier/retaining_wall": {
+            "name": "\u8b77\u571f\u7246",
+            "terms": "Retaining Wall,\u64cb\u571f\u58bb,\u8b77\u571f\u7246"
+        },
+        "barrier/stile": {
+            "name": "\u68af\u6883",
+            "terms": "Stile,\u68af\u6883,\u68af\u78f4"
+        },
+        "barrier/toll_booth": {
+            "name": "\u6536\u8cbb\u4ead",
+            "terms": "Toll Booth,\u6536\u8cbb\u4ead,\u6536\u8cbb\u7ad9"
+        },
+        "barrier/wall": {
+            "name": "\u7246",
+            "terms": "Wall,\u58bb,\u7246"
+        },
+        "boundary/administrative": {
+            "name": "\u884c\u653f\u754c",
+            "terms": "Administrative Boundary,\u884c\u653f\u5340\u57df\u754c\u7dda,\u884c\u653f\u5340\u754c,\u884c\u653f\u754c,\u884c\u653f\u754c\u7dda,\u884c\u653f\u908a\u754c"
+        },
+        "building": {
+            "name": "\u5efa\u7bc9\u7269",
+            "terms": "Building,\u5c4b\u5b87,\u5efa\u7bc9\u7269"
+        },
+        "building/barn": {
+            "name": "\u7a40\u5009",
+            "terms": "\u7a40\u5009,\u7ce7\u5009"
+        },
+        "building/boathouse": {
+            "name": "\u8239\u5c4b",
+            "terms": "Boathouse, \u8239\u5c4b"
+        },
+        "building/bungalow": {
+            "name": "\u5e73\u623f",
+            "terms": "Bungalow, \u5e73\u623f, \u5225\u5885"
+        },
+        "building/bunker": {
+            "name": "\u5730\u5821"
+        },
+        "building/cabin": {
+            "name": "\u5c0f\u5c4b",
+            "terms": "\u5c0f\u6728\u5c4b"
+        },
+        "building/cathedral": {
+            "name": "\u5927\u6559\u5802\u5efa\u7bc9\u7269",
+            "terms": "\u5927\u6559\u5802"
+        },
+        "building/chapel": {
+            "name": "\u5c0f\u6559\u5802\u5efa\u7bc9\u7269",
+            "terms": "\u5c0f\u6559\u5802,\u5c0f\u8056\u5802"
+        },
+        "building/church": {
+            "name": "\u6559\u5802\u5efa\u7bc9\u7269",
+            "terms": "\u6559\u5802,\u8056\u5802"
+        },
+        "building/civic": {
+            "name": "\u516c\u6c11\u5efa\u7bc9\u7269",
+            "terms": "Civic Building, \u5e02\u6c11\u5efa\u7bc9\u7269"
+        },
+        "building/college": {
+            "name": "\u5b78\u9662\u6821\u820d",
+            "terms": "\u5b78\u9662\u5efa\u7bc9,\u5b78\u9662\u5efa\u7bc9\u7269,\u6280\u8853\u5b78\u9662\u5efa\u7bc9"
+        },
+        "building/commercial": {
+            "name": "\u5546\u696d\u6a13\u5b87",
+            "terms": "Commercial Building,\u5546\u696d\u5efa\u7bc9\u7269,\u5546\u696d\u6a13\u5b87"
+        },
+        "building/construction": {
+            "name": "\u8208\u5efa\u4e2d\u5efa\u7bc9\u7269",
+            "terms": "\u65bd\u5de5\u4e2d\u5efa\u7bc9\u7269,\u5efa\u9020\u4e2d\u5efa\u7bc9\u7269"
+        },
+        "building/detached": {
+            "name": "\u7368\u7acb\u5c4b",
+            "terms": "\u7368\u7acb\u5f0f\u4f4f\u5b85,\u7368\u7acb\u5f0f\u623f\u5b50,\u7368\u7acb\u5f0f\u623f\u5c4b"
+        },
+        "building/dormitory": {
+            "name": "\u5bbf\u820d",
+            "terms": "\u5b78\u751f\u5bbf\u820d,\u54e1\u5de5\u5bbf\u820d,\u8077\u54e1\u5bbf\u820d"
+        },
+        "building/entrance": {
+            "name": "\u5165\u53e3/\u51fa\u53e3"
+        },
+        "building/farm": {
+            "name": "\u8fb2\u820d",
+            "terms": "Farm House, \u8fb2\u838a"
+        },
+        "building/farm_auxiliary": {
+            "name": "\u8fb2\u5834\u5efa\u7bc9\u7269",
+            "terms": "Farm Building, \u8fb2\u5834\u5efa\u7bc9\u7269"
+        },
+        "building/garage": {
+            "name": "\u8eca\u5eab",
+            "terms": "Garage,\u8eca\u623f"
+        },
+        "building/garages": {
+            "name": "\u8eca\u5eab",
+            "terms": "Garage,\u8eca\u623f"
+        },
+        "building/greenhouse": {
+            "name": "\u6eab\u5ba4",
+            "terms": "\u6eab\u5ba4"
+        },
+        "building/hospital": {
+            "name": "\u91ab\u9662\u5efa\u7bc9\u7269",
+            "terms": "\u91ab\u9662, \u91ab\u9662\u5927\u6a13"
+        },
+        "building/hotel": {
+            "name": "\u9152\u5e97\u5efa\u7bc9\u7269",
+            "terms": "\u65c5\u9928\u5efa\u7bc9\u7269,\u65c5\u5e97\u5efa\u7bc9\u7269,\u8cd3\u9928\u5efa\u7bc9\u7269"
+        },
+        "building/house": {
+            "name": "\u6d0b\u623f",
+            "terms": "House,\u5c4b,\u6d0b\u623f,\u5225\u5885"
+        },
+        "building/hut": {
+            "name": "\u5c4b\u4ed4",
+            "terms": "Hut,\u5c4b\u4ed4,\u68da\u5c4b"
+        },
+        "building/industrial": {
+            "name": "\u5de5\u696d\u6a13\u5b87",
+            "terms": "Industrial Building,\u5de5\u696d\u5efa\u7bc9\u7269,\u5de5\u696d\u6a13\u5b87"
+        },
+        "building/kindergarten": {
+            "name": "\u5b78\u524d\u7167\u9867/\u5e7c\u7a1a\u5712\u5efa\u7bc9\u7269",
+            "terms": "\u5e7c\u5152\u5712\u6821\u820d,\u5e7c\u7a1a\u5712\u6821\u820d"
+        },
+        "building/mosque": {
+            "name": "\u6e05\u771f\u5bfa\u5efa\u7bc9\u7269",
+            "terms": "Mosque Building, \u6e05\u771f\u5bfa\u5efa\u7bc9\u7269"
+        },
+        "building/public": {
+            "name": "\u516c\u5171\u5efa\u7bc9\u7269",
+            "terms": "\u516c\u7528\u5efa\u7bc9\u7269"
+        },
+        "building/residential": {
+            "name": "\u4f4f\u5b85\u6a13\u5b87",
+            "terms": "Residential Building,\u4f4f\u5b85\u5efa\u7bc9\u7269,\u4f4f\u5b85\u6a13\u5b87"
+        },
+        "building/retail": {
+            "name": "\u96f6\u552e\u5efa\u7bc9\u7269",
+            "terms": "\u96f6\u552e\u5efa\u7bc9,\u767e\u8ca8\u516c\u53f8"
+        },
+        "building/roof": {
+            "name": "\u4e0a\u84cb",
+            "terms": "\u5c4b\u9802"
+        },
+        "building/ruins": {
+            "name": "\u5efa\u7bc9\u7269\u907a\u8e5f",
+            "terms": "Building Ruins, \u5efa\u7bc9\u7269\u907a\u5740"
+        },
+        "building/school": {
+            "name": "\u6821\u820d",
+            "terms": "\u5b78\u6821\u5efa\u7bc9\u7269,\u5c0f\u5b78\u5efa\u7bc9\u7269,\u4e2d\u5b78\u5efa\u7bc9\u7269"
+        },
+        "building/semidetached_house": {
+            "name": "\u534a\u7368\u7acb\u5c4b",
+            "terms": "\u534a\u7368\u7acb\u5f0f\u4f4f\u5b85,\u534a\u7368\u7acb\u5f0f\u623f\u5b50,\u534a\u7368\u7acb\u5f0f\u623f\u5c4b"
+        },
+        "building/shed": {
+            "name": "\u5c4b\u68da",
+            "terms": "\u68da\u6abb,\u68da\u5c4b"
+        },
+        "building/stable": {
+            "name": "\u99ac\u5ec4",
+            "terms": "\u99ac\u5ec4,\u99ac\u623f,\u99ac\u820d"
+        },
+        "building/static_caravan": {
+            "name": "\u56fa\u5b9a\u5f0f\u9732\u71df\u8eca",
+            "terms": "\u56fa\u5b9a\u5f0f\u9732\u71df\u8eca,\u9732\u71df\u8eca"
+        },
+        "building/terrace": {
+            "name": "\u6392\u5c4b",
+            "terms": "\u884c\u5217\u5f0f\u623f\u5c4b,\u9023\u68df\u5f0f\u4f4f\u5b85"
+        },
+        "building/university": {
+            "name": "\u5927\u5b78\u5efa\u7bc9\u7269",
+            "terms": "\u5927\u5b78\u6821\u820d"
+        },
+        "building/warehouse": {
+            "name": "\u8ca8\u5009",
+            "terms": "\u5009\u5eab,\u7a05\u5009,\u5009"
+        },
+        "camp_site/camp_pitch": {
+            "name": "\u9732\u71df\u71df\u5730",
+            "terms": "Camp Pitch, \u9732\u71df\u5834\u5730, \u71df\u5730"
+        },
+        "club": {
+            "name": "\u4ff1\u6a02\u90e8",
+            "terms": "Club, \u6703\u6240"
+        },
+        "craft": {
+            "name": "\u5de5\u85dd",
+            "terms": "\u5de5\u85dd,\u6280\u5de5,\u624b\u5de5"
+        },
+        "craft/basket_maker": {
+            "name": "\u7de8\u7e54\u7c43\u7b50",
+            "terms": "\u7de8\u7c43,\u7f16\u7b50,\u7e54\u7c43"
+        },
+        "craft/beekeeper": {
+            "name": "\u990a\u8702",
+            "terms": "\u990a\u871c\u8702"
+        },
+        "craft/blacksmith": {
+            "name": "\u9435\u5320",
+            "terms": "\u9435\u5de5,\u6253\u9435\u5320"
+        },
+        "craft/boatbuilder": {
+            "name": "\u9020\u8239\u5ee0",
+            "terms": "\u9020\u8239\u5ee0"
+        },
+        "craft/bookbinder": {
+            "name": "\u66f8\u7c4d\u91d8\u88dd",
+            "terms": "\u91d8\u88dd"
+        },
+        "craft/brewery": {
+            "name": "\u91c0\u9152\u5ee0",
+            "terms": "\u91c0\u9152\u5ee0,\u5564\u9152\u91c0\u9020,\u5564\u9152\u91c0\u88fd,\u5564\u9152\u91c0\u5236"
+        },
+        "craft/carpenter": {
+            "name": "\u6728\u5320",
+            "terms": "\u6728\u5320,\u6728\u5de5"
+        },
+        "craft/carpet_layer": {
+            "name": "\u5730\u6bef\u5de5\u7a0b",
+            "terms": "\u5730\u6c08\u5de5\u7a0b"
+        },
+        "craft/caterer": {
+            "name": "\u98f2\u98df\u4f9b\u61c9\u5546",
+            "terms": "Caterer,\u81b3\u98df\u4f9b\u61c9\u5546,\u5230\u6703\u4f9b\u61c9"
+        },
+        "craft/clockmaker": {
+            "name": "\u9418\u8868\u5320",
+            "terms": "\u88fd\u9020\u9418\u8868,\u4fee\u7406\u9418\u8868"
+        },
+        "craft/distillery": {
+            "name": "\u84b8\u993e\u9152\u5ee0",
+            "terms": "Distillery, \u84b8\u993e\u6240"
+        },
+        "craft/dressmaker": {
+            "name": "\u5973\u88dd\u88c1\u7e2b",
+            "terms": "\u5973\u88dd\u88c1\u7e2b"
+        },
+        "craft/electrician": {
+            "name": "\u96fb\u5de5",
+            "terms": "\u96fb\u6c23\u5de5\u7a0b,\u96fb\u696d\u5de5\u5320"
+        },
+        "craft/electronics_repair": {
+            "name": "\u96fb\u5b50\u5100\u5668\u7dad\u4fee\u5e97",
+            "terms": "Electronics Repair Shop, \u5bb6\u96fb\u7dad\u4fee\u5e97"
+        },
+        "craft/gardener": {
+            "name": "\u5712\u52d9\u5de5\u4eba",
+            "terms": "\u82b1\u738b"
+        },
+        "craft/glaziery": {
+            "name": "\u73bb\u7483\u5de5\u7a0b",
+            "terms": "\u73bb\u7483\u5de5\u7a0b"
+        },
+        "craft/handicraft": {
+            "name": "\u624b\u5de5\u85dd",
+            "terms": "\u624b\u5de5\u85dd,\u624b\u4f5c"
+        },
+        "craft/hvac": {
+            "name": "\u7a7a\u8abf\u5de5\u7a0b",
+            "terms": "\u51b7\u6c23\u5de5\u7a0b,\u6696\u6c23\u5de5\u7a0b,\u7a7a\u8abf,\u7a7a\u6c23\u8abf\u7bc0"
+        },
+        "craft/insulator": {
+            "name": "\u9694\u71b1\u5de5\u7a0b",
+            "terms": "\u9694\u71b1\u5de5\u7a0b"
+        },
+        "craft/jeweler": {
+            "name": "\u73e0\u5bf6\u5e97"
+        },
+        "craft/key_cutter": {
+            "name": "\u914d\u5319\u5e97",
+            "terms": "\u9470\u5319\u5e97,\u9396\u5319\u5e97"
+        },
+        "craft/locksmith": {
+            "name": "\u9396\u5320"
+        },
+        "craft/metal_construction": {
+            "name": "\u91d1\u5c6c\u5de5\u7a0b",
+            "terms": "\u91d1\u5de5"
+        },
+        "craft/optician": {
+            "name": "\u773c\u93e1\u5e97"
+        },
+        "craft/painter": {
+            "name": "\u9af9\u6f06\u5de5",
+            "terms": "\u6cb9\u6f06\u5de5\u4eba"
+        },
+        "craft/photographer": {
+            "name": "\u7167\u76f8\u9928",
+            "terms": "\u651d\u5f71\u5e2b\u5de5\u4f5c\u5ba4"
+        },
+        "craft/photographic_laboratory": {
+            "name": "\u9ed1\u623f",
+            "terms": "\u6c96\u6652\u76f8\u7247,\u76f8\u7247\u5be6\u9a57\u5ba4,\u6c96\u66ec\u76f8\u7247,\u7167\u7247\u5be6\u9a57\u5ba4,\u6c96\u6652\u7167\u7247,\u6c96\u66ec\u6c96\u66ec\u76f8\u7247\u7247"
+        },
+        "craft/plasterer": {
+            "name": "\u6279\u76ea\u6280\u5de5",
+            "terms": "\u62b9\u7070\u5de5,\u7c89\u5237\u5de5"
+        },
+        "craft/plumber": {
+            "name": "\u6c34\u5589\u5320",
+            "terms": "\u6c34\u7ba1\u5de5"
+        },
+        "craft/pottery": {
+            "name": "\u9676\u5668",
+            "terms": "\u9676\u5668,\u9676\u74f7,\u9676\u85dd"
+        },
+        "craft/rigger": {
+            "name": "\u540a\u904b\u5de5",
+            "terms": "\u7d22\u5177\u5de5,\u540a\u904b,\u53fb\u67b6\u4f6c,\u8d77\u91cd\u5de5,\u7d22\u5177\u88dd\u914d\u5de5"
+        },
+        "craft/roofer": {
+            "name": "\u5c4b\u9802\u5de5\u7a0b",
+            "terms": "\u5c4b\u9802\u5de5,\u84cb\u5c4b\u9802"
+        },
+        "craft/saddler": {
+            "name": "\u8eca\u8239\u5750\u6905",
+            "terms": "\u8eca\u8239\u5750\u6905"
+        },
+        "craft/sailmaker": {
+            "name": "\u88fd\u5e06\u5de5",
+            "terms": "\u7e2b\u5e06\u5de5"
+        },
+        "craft/sawmill": {
+            "name": "\u92f8\u6728\u5ee0",
+            "terms": "\u92f8\u6728\u5ee0"
+        },
+        "craft/scaffolder": {
+            "name": "\u68da\u67b6\u5de5\u7a0b",
+            "terms": "\u642d\u68da"
+        },
+        "craft/sculptor": {
+            "name": "\u96d5\u50cf",
+            "terms": "\u96d5\u5851"
+        },
+        "craft/shoemaker": {
+            "name": "\u978b\u5320",
+            "terms": "\u76ae\u978b\u5320"
+        },
+        "craft/stonemason": {
+            "name": "\u77f3\u5320",
+            "terms": "\u77f3\u5de5"
+        },
+        "craft/tailor": {
+            "name": "\u88c1\u7e2b"
+        },
+        "craft/tiler": {
+            "name": "\u92ea\u74e6\u5de5",
+            "terms": "\u78da\u74e6\u5de5,\u78da\u74e6\u5320,\u5730\u78da\u92ea\u8a2d"
+        },
+        "craft/tinsmith": {
+            "name": "\u932b\u5320",
+            "terms": "\u767d\u9435\u5de5,\u767d\u9435\u5320"
+        },
+        "craft/upholsterer": {
+            "name": "\u5ba4\u5185\u88dd\u4fee",
+            "terms": "\u5ba4\u5167\u88dd\u6f62"
+        },
+        "craft/watchmaker": {
+            "name": "\u9418\u9336\u5320",
+            "terms": "\u9418\u9336\u88fd\u9020\u4eba"
+        },
+        "craft/window_construction": {
+            "name": "\u92c1\u7a97\u5de5\u7a0b",
+            "terms": "\u7a97\u5de5\u7a0b,\u88fd\u7a97"
+        },
+        "craft/winery": {
+            "name": "\u91c0\u9152\u5ee0",
+            "terms": "\u8461\u8404\u9152\u5ee0"
+        },
+        "embankment": {
+            "name": "\u8def\u5824"
+        },
+        "emergency/ambulance_station": {
+            "name": "\u6551\u8b77\u7ad9",
+            "terms": "Ambulance Station,\u5341\u5b57\u8eca,\u6551\u50b7\u8eca,\u6551\u8b77\u7ad9,\u6551\u8b77\u8eca"
+        },
+        "emergency/defibrillator": {
+            "name": "\u81ea\u52d5\u5916\u7f6e\u5f0f\u5fc3\u81df\u53bb\u7e96\u986b\u5668",
+            "terms": "defibrillator,\u81ea\u52d5\u5fc3\u81df\u53bb\u986b\u5668,\u81ea\u52d5\u9ad4\u5916\u5fc3\u81df\u53bb\u986b\u5668"
+        },
+        "emergency/designated": {
+            "name": "\u6307\u5b9a\u7dca\u6025\u901a\u9053"
+        },
+        "emergency/destination": {
+            "name": "\u7dca\u6025\u901a\u9053\u76ee\u7684\u5730"
+        },
+        "emergency/fire_alarm": {
+            "name": "\u706b\u8b66\u53ec\u559a",
+            "terms": "\u706b\u8b66\u53ec\u559a\u7bb1,\u706b\u8b66\u9418"
+        },
+        "emergency/fire_extinguisher": {
+            "name": "\u6ec5\u706b\u7b52",
+            "terms": "\u6ec5\u706b\u5668"
+        },
+        "emergency/fire_hydrant": {
+            "name": "\u6d88\u9632\u6813",
+            "terms": "Fire Hydrant,\u6d88\u9632\u6813,\u6d88\u9632\u9f8d\u982d"
+        },
+        "emergency/first_aid_kit": {
+            "name": "\u6025\u6551\u7bb1",
+            "terms": "First Aid Kit,\u6025\u6551,\u6551\u8b77,\u7e43\u5e36,\u91ab\u7642\u7bb1,medkit"
+        },
+        "emergency/life_ring": {
+            "name": "\u6551\u751f\u5708",
+            "terms": "Life Ring,\u6551\u751f\u6c34\u6ce1"
+        },
+        "emergency/lifeguard": {
+            "name": "\u6551\u751f\u54e1",
+            "terms": "\u6551\u751f\u54e1"
+        },
+        "emergency/no": {
+            "name": "\u975e\u7dca\u6025\u901a\u9053"
+        },
+        "emergency/official": {
+            "name": "\u6b63\u5f0f\u7dca\u6025\u901a\u9053"
+        },
+        "emergency/phone": {
+            "name": "\u7dca\u6025\u96fb\u8a71",
+            "terms": "Emergency Phone,\u6c42\u52a9\u96fb\u8a71,\u7dca\u6025\u96fb\u8a71"
+        },
+        "emergency/private": {
+            "name": "\u79c1\u5bb6\u7dca\u6025\u901a\u9053"
+        },
+        "emergency/yes": {
+            "name": "\u7dca\u6025\u901a\u9053"
+        },
+        "entrance": {
+            "name": "\u5165\u53e3/\u51fa\u53e3",
+            "terms": "\u51fa\u5165\u53e3,\u51fa\u53e3,\u5165\u53e3"
+        },
+        "ford": {
+            "name": "\u6dfa\u7058",
+            "terms": "\u6c34\u7058"
+        },
+        "golf/bunker": {
+            "name": "\u6c99\u5751",
+            "terms": "Sand Trap,\u6c99\u5751"
+        },
+        "golf/fairway": {
+            "name": "\u7403\u9053",
+            "terms": "Fairway,\u7403\u9053"
+        },
+        "golf/green": {
+            "name": "\u64a5\u7403\u5834",
+            "terms": "Putting Green,\u64a5\u7403\u5834"
+        },
+        "golf/hole": {
+            "name": "\u9ad8\u723e\u592b\u7403\u6d1e",
+            "terms": "Golf Hole,\u9ad8\u723e\u592b\u7403\u7403\u6d1e"
+        },
+        "golf/rough": {
+            "name": "\u6df1\u8349\u5340",
+            "terms": "Rough,\u6df1\u8349\u5340"
+        },
+        "golf/tee": {
+            "name": "\u767c\u7403\u5340",
+            "terms": "Tee Box,\u767c\u7403\u5340,\u958b\u7403\u5340"
+        },
+        "healthcare": {
+            "name": "\u91ab\u7642\u8a2d\u65bd",
+            "terms": "Healthcare Facility,\u5065\u5eb7\u4e2d\u5fc3"
+        },
+        "healthcare/alternative": {
+            "name": "\u53e6\u985e\u91ab\u7642",
+            "terms": "Alternative Medicine,\u66ff\u4ee3\u91ab\u7642"
+        },
+        "healthcare/alternative/chiropractic": {
+            "name": "\u810a\u91ab",
+            "terms": "Chiropractor,\u810a\u91ab"
+        },
+        "healthcare/audiologist": {
+            "name": "\u807d\u529b\u5b78\u5bb6",
+            "terms": "Audiologist,\u807d\u529b\u5b78\u5bb6"
+        },
+        "healthcare/birthing_center": {
+            "name": "\u5206\u5a29\u4e2d\u5fc3",
+            "terms": "Birthing Center,\u7559\u7522\u6240"
+        },
+        "healthcare/blood_donation": {
+            "name": "\u8f38\u8840\u4e2d\u5fc3",
+            "terms": "\u6350\u8840\u4e2d\u5fc3,\u737b\u8840\u4e2d\u5fc3"
+        },
+        "healthcare/midwife": {
+            "name": "\u52a9\u7522\u58eb",
+            "terms": "Midwife,\u52a9\u7522\u58eb"
+        },
+        "healthcare/occupational_therapist": {
+            "name": "\u8077\u696d\u6cbb\u7642\u5e2b",
+            "terms": "Occupational Therapist,\u8077\u696d\u6cbb\u7642\u5e2b"
+        },
+        "healthcare/optometrist": {
+            "name": "\u8996\u5149\u5e2b",
+            "terms": "Optometrist,\u8996\u5149\u5e2b"
+        },
+        "healthcare/physiotherapist": {
+            "name": "\u7269\u7406\u6cbb\u7642\u5e2b",
+            "terms": "Physiotherapist,\u7269\u7406\u6cbb\u7642\u5e2b"
+        },
+        "healthcare/podiatrist": {
+            "name": "\u8db3\u75c5\u8a3a\u7642\u5e2b",
+            "terms": "Podiatrist,\u8db3\u75c5\u8a3a\u7642\u5e2b,\u8db3\u7642\u5e2b,\u8db3\u90e8\u8a3a\u7642\u5e2b,\u8db3\u90e8\u6cbb\u7642\u5e2b"
+        },
+        "healthcare/psychotherapist": {
+            "name": "\u5fc3\u7406\u6cbb\u7642\u5e2b",
+            "terms": "Psychotherapist,\u5fc3\u7406\u6cbb\u7642\u5e2b"
+        },
+        "healthcare/rehabilitation": {
+            "name": "\u5fa9\u5eb7\u8a2d\u65bd",
+            "terms": "Rehabilitation Facility,\u5eb7\u5fa9\u8a2d\u65bd"
+        },
+        "healthcare/speech_therapist": {
+            "name": "\u8a00\u8a9e\u6cbb\u7642\u5e2b",
+            "terms": "Speech Therapist,\u8a9e\u8a00\u6cbb\u7642\u5e2b"
+        },
+        "highway": {
+            "name": "\u516c\u8def"
+        },
+        "highway/bridleway": {
+            "name": "\u99ac\u9053",
+            "terms": "Bridle Path,\u99ac\u5f91,\u99ac\u9053,\u7b56\u9a0e\u5f91"
+        },
+        "highway/bus_stop": {
+            "name": "\u5df4\u58eb\u7ad9 / \u6708\u53f0"
+        },
+        "highway/corridor": {
+            "name": "\u5ba4\u5167\u8d70\u5eca",
+            "terms": "\u5ba4\u5167\u901a\u9053"
+        },
+        "highway/cycleway": {
+            "name": "\u55ae\u8eca\u5f91",
+            "terms": "Cycle Path,\u55ae\u8eca\u5f91,\u81ea\u884c\u8eca\u9053"
+        },
+        "highway/elevator": {
+            "name": "\u5347\u964d\u6a5f",
+            "terms": "Elevator, lift, \u5347\u964d\u6a5f"
+        },
+        "highway/footway": {
+            "name": "\u884c\u4eba\u5f91",
+            "terms": "Foot Path,\u6b65\u884c\u5f91,\u884c\u4eba\u5f91"
+        },
+        "highway/footway/sidewalk": {
+            "name": "\u884c\u4eba\u8def"
+        },
+        "highway/give_way": {
+            "name": "\u8b93\u8def\u6a19\u8a8c",
+            "terms": "\u8b93\u8eca\u6a19\u8a8c"
+        },
+        "highway/living_street": {
+            "name": "\u751f\u6d3b\u8857\u9053",
+            "terms": "Living Street,\u5c45\u4f4f\u8857\u9053,\u751f\u6d3b\u8857\u9053"
+        },
+        "highway/mini_roundabout": {
+            "name": "\u5c0f\u578b\u8ff4\u65cb\u8655",
+            "terms": "Mini-Roundabout,\u5c0f\u578b\u74b0\u5cf6,\u5c0f\u578b\u8ff4\u65cb\u8655,\u7d30\u8ff4\u65cb\u8655"
+        },
+        "highway/motorway": {
+            "name": "\u5feb\u901f\u516c\u8def",
+            "terms": "Motorway,\u9ad8\u901f\u516c\u8def"
+        },
+        "highway/motorway_junction": {
+            "name": "\u5feb\u901f\u516c\u8def\u4ea4\u6ed9\u8655/\u51fa\u53e3",
+            "terms": "\u5feb\u901f\u516c\u8def\u4ea4\u6ed9\u8655/\u51fa\u53e3"
+        },
+        "highway/motorway_link": {
+            "name": "\u5feb\u901f\u516c\u8def\u9023\u63a5\u8def",
+            "terms": "Motorway Link,\u9ad8\u901f\u516c\u8def\u531d\u9053,\u9ad8\u901f\u516c\u8def\u5f15\u9053,\u9ad8\u901f\u516c\u8def\u99c1\u8def,\u9ad8\u901f\u516c\u8def\u9023\u63a5\u8def"
+        },
+        "highway/path": {
+            "name": "\u8def\u5f91",
+            "terms": "Path,\u5f91,\u8def\u5f91"
+        },
+        "highway/pedestrian_area": {
+            "name": "\u884c\u4eba\u5c08\u7528\u5340",
+            "terms": "Pedestrian Area,\u5f92\u6b65\u5340"
+        },
+        "highway/pedestrian_line": {
+            "name": "\u884c\u4eba\u5c08\u7528\u8857\u9053",
+            "terms": "Pedestrian Street,\u884c\u4eba\u5c08\u7528\u8857\u9053"
+        },
+        "highway/primary": {
+            "name": "\u5e02\u5340\u5e79\u9053",
+            "terms": "Primary Road,\u4e3b\u8981\u9053\u8def,\u5927\u8def"
+        },
+        "highway/primary_link": {
+            "name": "\u5e02\u5340\u5e79\u9053\u9023\u63a5\u8def",
+            "terms": "Primary Link,\u4e3b\u8981\u9053\u8def\u531d\u9053,\u4e3b\u8981\u9053\u8def\u9023\u63a5\u8def,\u5927\u8def\u99c1\u8def"
+        },
+        "highway/raceway": {
+            "name": "\u8cfd\u9053(\u5c0f\u578b\u8cfd\u8eca)",
+            "terms": "Racetrack (Motorsport), \u8cfd\u9053, \u8cfd\u8eca\u8eca\u9053"
+        },
+        "highway/residential": {
+            "name": "\u4f4f\u5b85\u5340\u9053\u8def",
+            "terms": "Residential Road,\u4f4f\u5b85\u5340\u9053\u8def,\u4f4f\u5b85\u8def"
+        },
+        "highway/rest_area": {
+            "name": "\u516c\u8def\u4f11\u61a9\u5340",
+            "terms": "\u516c\u8def\u4f11\u606f\u7ad9, \u516c\u8def\u4f11\u606f\u5340"
+        },
+        "highway/road": {
+            "name": "\u672a\u77e5\u7a2e\u985e\u9053\u8def",
+            "terms": "Unknown Road,\u4e0d\u660e\u8def,\u4e0d\u77e5\u8def,\u672a\u660e\u8def,\u672a\u77e5\u5605\u8def,\u672a\u77e5\u7a2e\u985e\u7684\u9053\u8def,\u672a\u77e5\u7a2e\u985e\u9053\u8def"
+        },
+        "highway/secondary": {
+            "name": "\u6b21\u8981\u9053\u8def",
+            "terms": "Secondary Road,\u4e2d\u8def,\u6b21\u8981\u9053\u8def"
+        },
+        "highway/secondary_link": {
+            "name": "\u6b21\u8981\u9053\u8def\u9023\u63a5\u8def",
+            "terms": "Secondary Link,\u4e2d\u8def\u99c1\u8def,\u6b21\u7d1a\u9053\u8def\u9023\u63a5\u8def,\u6b21\u8981\u9053\u8def\u531d\u9053"
+        },
+        "highway/service": {
+            "name": "\u8f14\u52a9\u9053\u8def",
+            "terms": "Service Road,\u652f\u8def,\u8f14\u52a9\u9053\u8def,\u516c\u7528\u8a2d\u65bd\u9053\u8def"
+        },
+        "highway/service/alley": {
+            "name": "\u5df7",
+            "terms": "Alley,\u5df7,\u5f8c\u5df7,\u6a6b\u5df7,\u7a84\u5df7,\u80e1\u540c"
+        },
+        "highway/service/drive-through": {
+            "name": "\u514d\u4e0b\u8eca\u670d\u52d9\u8eca\u9053",
+            "terms": "Drive-Through,\u514d\u4e0b\u8eca,\u514d\u4e0b\u8eca\u9280\u884c,\u514d\u4e0b\u8eca\u9910\u9928,\u8eca\u4e0a\u53d6\u9910,\u8eca\u4e0a\u7528\u9910,\u99d5\u99db\u901a\u904e\u4ee5\u7372\u53d6\u670d\u52d9"
+        },
+        "highway/service/driveway": {
+            "name": "\u79c1\u4eba\u8eca\u9053",
+            "terms": "Driveway,\u5b85\u5916\u8eca\u9053,\u8eca\u7dda,\u8eca\u9053"
+        },
+        "highway/service/emergency_access": {
+            "name": "\u7dca\u6025\u901a\u9053",
+            "terms": "Emergency Access,\u7dca\u6025\u901a\u9053"
+        },
+        "highway/service/parking_aisle": {
+            "name": "\u505c\u8eca\u5834\u901a\u9053",
+            "terms": "Parking Aisle,\u505c\u8eca\u5834\u901a\u9053,\u6cca\u8eca\u901a\u9053"
+        },
+        "highway/services": {
+            "name": "\u516c\u8def\u670d\u52d9\u5340",
+            "terms": "\u516c\u8def\u670d\u52d9\u5340"
+        },
+        "highway/speed_camera": {
+            "name": "\u5feb\u76f8\u76f8\u6a5f",
+            "terms": "Speed Camera,\u5feb\u76f8\u6a5f"
+        },
+        "highway/steps": {
+            "name": "\u6a13\u68af",
+            "terms": "Steps,\u68af,\u6a13\u68af,\u77f3\u968e,\u968e\u68af"
+        },
+        "highway/stop": {
+            "name": "\u505c\u8eca\u6a19\u8a8c",
+            "terms": "Stop Sign,\u505c\u5b57\u6a19\u8a8c,\u505c\u8eca\u6a19\u8a8c,\u505c\u8eca\u8def\u724c"
+        },
+        "highway/street_lamp": {
+            "name": "\u8857\u71c8",
+            "terms": "\u8def\u71c8"
+        },
+        "highway/tertiary": {
+            "name": "\u5206\u8def",
+            "terms": "Tertiary Road,\u4e09\u7d1a\u9053\u8def,\u7d30\u8def"
+        },
+        "highway/tertiary_link": {
+            "name": "\u5206\u8def\u9023\u63a5\u8def",
+            "terms": "Tertiary Link,\u4e09\u7d1a\u9053\u8def\u531d\u9053,\u4e09\u7d1a\u9053\u8def\u9023\u63a5\u8def,\u7d30\u8def\u99c1\u8def"
+        },
+        "highway/track": {
+            "name": "\u7121\u4fdd\u990a\u9053\u8def",
+            "terms": "\u672a\u8216\u8a2d\u8def\u9762\u7684\u8def"
+        },
+        "highway/traffic_mirror": {
+            "name": "\u5ee3\u89d2\u93e1",
+            "terms": "Traffic Mirror, \u9b5a\u773c\u93e1"
+        },
+        "highway/traffic_signals": {
+            "name": "\u4ea4\u901a\u71c8",
+            "terms": "Traffic Signals,\u4ea4\u901a\u71c8,\u7d05\u7da0\u71c8"
+        },
+        "highway/trunk": {
+            "name": "\u5e79\u9053",
+            "terms": "Trunk Road,\u5e79\u7dda\u9053\u8def,\u5e79\u8def,\u5e79\u9053"
+        },
+        "highway/trunk_link": {
+            "name": "\u5e79\u7dda\u9023\u63a5\u8def",
+            "terms": "Trunk Link,\u5e79\u7dda\u9053\u8def\u531d\u9053,\u5e79\u9053\u9023\u63a5\u8def,\u5e79\u9053\u99c1\u8def"
+        },
+        "highway/turning_circle": {
+            "name": "\u8ff4\u8eca\u8655",
+            "terms": "Turning Circle,\u56de\u8f49\u5708,\u8ff4\u8eca\u5834,\u8ff4\u8eca\u5713\u74b0,\u8eca\u8f1b\u8ff4\u8f49\u8655,\u8eca\u8f1b\u8ff4\u65cb\u8655"
+        },
+        "highway/turning_loop": {
+            "name": "\u8ff4\u8eca\u8655 (\u5cf6\u5f0f)",
+            "terms": "Turning Loop, \u8ff4\u8eca\u5708"
+        },
+        "highway/unclassified": {
+            "name": "\u6b21\u7d1a/\u672a\u5206\u985e\u9053\u8def",
+            "terms": "\u672a\u5206\u985e\u7684\u9053\u8def,\u5c0f\u8def,\u5c0f\u898f\u6a21\u9053\u8def"
+        },
+        "historic": {
+            "name": "\u6b77\u53f2\u907a\u8de1",
+            "terms": "Historic Site,\u53f2\u8de1,\u53f2\u8e5f,\u6b77\u53f2\u907a\u5740,\u6b77\u53f2\u907a\u8de1,\u6b77\u53f2\u666f\u9ede"
+        },
+        "historic/archaeological_site": {
+            "name": "\u8003\u53e4\u5730\u9ede",
+            "terms": "Archaeological Site,\u8003\u53e4\u5730,\u8003\u53e4\u5730\u9ede,\u8003\u53e4\u907a\u5740"
+        },
+        "historic/boundary_stone": {
+            "name": "\u754c\u77f3",
+            "terms": "Boundary Stone,\u754c\u6a01,\u754c\u77f3"
+        },
+        "historic/castle": {
+            "name": "\u57ce\u5821",
+            "terms": "Castle,\u57ce\u5821"
+        },
+        "historic/memorial": {
+            "name": "\u7d30\u7d00\u5ff5\u7891",
+            "terms": "Memorial,\u7891,\u7d00\u5ff5\u7891,\u7d00\u5ff5\u9928,\u7d30\u7d00\u5ff5\u7891"
+        },
+        "historic/monument": {
+            "name": "\u5927\u7d00\u5ff5\u7891",
+            "terms": "Monument,\u53e4\u8de1,\u53e4\u8e5f,\u5927\u7d00\u5ff5\u7891,\u7891,\u7d00\u5ff5\u7891"
+        },
+        "historic/ruins": {
+            "name": "\u5ee2\u589f",
+            "terms": "Ruins,\u5ee2\u589f"
+        },
+        "historic/tomb": {
+            "name": "\u53e4\u5893",
+            "terms": "Tomb,\u53e4\u5893"
+        },
+        "historic/wayside_cross": {
+            "name": "\u8def\u908a\u5341\u5b57\u67b6",
+            "terms": "Wayside Cross,\u8def\u908a\u5341\u5b57\u67b6"
+        },
+        "historic/wayside_shrine": {
+            "name": "\u8def\u908a\u795e\u7960",
+            "terms": "Wayside Shrine,\u8def\u908a\u795e\u793e,\u8def\u908a\u795e\u7960"
+        },
+        "junction": {
+            "name": "\u8def\u53e3",
+            "terms": "\u5341\u5b57\u8def\u53e3,\u4ea4\u754c\u8655,\u4ea4\u754c"
+        },
+        "landuse": {
+            "name": "\u571f\u5730\u5229\u7528"
+        },
+        "landuse/allotments": {
+            "name": "\u793e\u5340\u5712\u5703",
+            "terms": "\u793e\u5340\u5712\u5703"
+        },
+        "landuse/aquaculture": {
+            "name": "\u6c34\u7522\u990a\u6b96",
+            "terms": "Aquaculture,\u6c34\u7522"
+        },
+        "landuse/basin": {
+            "name": "\u76c6\u5730"
+        },
+        "landuse/brownfield": {
+            "name": "\u68d5\u5730",
+            "terms": "Brownfield,\u68d5\u5730"
+        },
+        "landuse/cemetery": {
+            "name": "\u58b3\u5834",
+            "terms": "Cemetery,\u5893\u5730,\u58b3\u5834"
+        },
+        "landuse/churchyard": {
+            "name": "\u6559\u5802\u5ead\u9662",
+            "terms": "\u6559\u5802\u7528\u5730"
+        },
+        "landuse/commercial": {
+            "name": "\u5546\u696d\u5340",
+            "terms": "\u5546\u696d\u5340"
+        },
+        "landuse/construction": {
+            "name": "\u5730\u76e4",
+            "terms": "Construction,\u5730\u76e4,\u5efa\u7bc9\u5de5\u7a0b,\u5efa\u7bc9\u7269"
+        },
+        "landuse/farm": {
+            "name": "\u8fb2\u5730"
+        },
+        "landuse/farmland": {
+            "name": "\u8fb2\u5730",
+            "terms": "\u8fb2\u7530, \u7a3b\u7530, \u7530, \u8015\u5730"
+        },
+        "landuse/farmyard": {
+            "name": "\u8fb2\u838a",
+            "terms": "Farmyard,\u8fb2\u838a, \u8fb2\u5834"
+        },
+        "landuse/grass": {
+            "name": "\u8349\u5730",
+            "terms": "Grass,\u8349\u5730"
+        },
+        "landuse/greenfield": {
+            "name": "\u672a\u958b\u58be\u571f\u5730",
+            "terms": "Greenfield,\u672a\u958b\u58be\u571f\u5730,\u672a\u958b\u767c\u5730\u5e36"
+        },
+        "landuse/greenhouse_horticulture": {
+            "name": "\u6eab\u5ba4\u5712\u85dd",
+            "terms": "Greenhouse Horticulture,\u6eab\u5ba4\u5712\u85dd"
+        },
+        "landuse/harbour": {
+            "name": "\u6d77\u6e2f",
+            "terms": "Harbor, Harbour, \u6d77\u6e2f, \u6e2f\u7063"
+        },
+        "landuse/industrial": {
+            "name": "\u5de5\u696d\u5340",
+            "terms": "\u5de5\u696d\u5340, \u5de5\u696d\u6751, \u5de5\u696d\u90a8"
+        },
+        "landuse/industrial/scrap_yard": {
+            "name": "\u5ee2\u6599\u5834",
+            "terms": "Scrap Yard, \u5ee2\u8eca\u5834, \u5ee2\u7269\u5834"
+        },
+        "landuse/industrial/slaughterhouse": {
+            "name": "\u5c60\u5834",
+            "terms": "Slaughterhouse,\u5c60\u5bb0\u5834"
+        },
+        "landuse/landfill": {
+            "name": "\u5806\u586b\u5340",
+            "terms": "\u5783\u573e\u5806\u586b\u5340,\u586b\u571f\u5340,\u586b\u7bc9\u5730"
+        },
+        "landuse/meadow": {
+            "name": "\u7267\u5730",
+            "terms": "Meadow,\u7267\u5730,\u7267\u5834"
+        },
+        "landuse/military": {
+            "name": "\u8ecd\u4e8b\u5340",
+            "terms": "\u8ecd\u71df"
+        },
+        "landuse/military/airfield": {
+            "name": "\u8ecd\u7528\u6a5f\u5834",
+            "terms": "Military Airfield,\u8ecd\u4e8b\u6a5f\u5834,\u8ecd\u6a5f\u5834"
+        },
+        "landuse/military/barracks": {
+            "name": "\u8ecd\u71df",
+            "terms": "Barracks,\u5175\u623f,\u5175\u71df,\u71df\u623f,\u8ecd\u71df"
+        },
+        "landuse/military/bunker": {
+            "name": "\u8ecd\u4e8b\u5730\u5821",
+            "terms": "Military Bunker,\u5730\u5821,\u6697\u5821"
+        },
+        "landuse/military/checkpoint": {
+            "name": "\u6aa2\u67e5\u7ad9",
+            "terms": "Checkpoint,\u6aa2\u67e5\u7ad9,\u6aa2\u67e5\u9ede,\u8ecd\u4e8b\u5d17\u54e8,\u54e8\u7ad9"
+        },
+        "landuse/military/danger_area": {
+            "name": "\u5371\u96aa\u5340",
+            "terms": "Danger Area,\u5371\u96aa\u5730\u5340, \u5371\u96aa\u5340\u57df,\u5371\u96aa\u7bc4\u570d"
+        },
+        "landuse/military/naval_base": {
+            "name": "\u6d77\u8ecd\u57fa\u5730",
+            "terms": "Naval Base,\u8ecd\u6e2f,\u6d77\u8ecd\u57fa\u5730"
+        },
+        "landuse/military/nuclear_explosion_site": {
+            "name": "\u6838\u7206\u5834\u5730",
+            "terms": "Nuclear Explosion Site,\u6838\u5b50\u7206\u70b8\u5834\u5740,\u6838\u5b50\u8a66\u7206\u5834"
+        },
+        "landuse/military/obstacle_course": {
+            "name": "\u8d8a\u969c\u8a13\u7df4\u5834",
+            "terms": "Obstacle Course,\u8d8a\u969c\u8a13\u7df4\u5834"
+        },
+        "landuse/military/office": {
+            "name": "\u8ecd\u4e8b\u8fa6\u516c\u5ba4",
+            "terms": "Military Office,\u8ecd\u4e8b\u8fa6\u516c\u5ba4"
+        },
+        "landuse/military/range": {
+            "name": "\u8ecd\u4e8b\u9776\u5834",
+            "terms": "Military Range,\u9776\u5834,\u8ecd\u7528\u9776\u5834,\u5c04\u64ca\u5834"
+        },
+        "landuse/military/training_area": {
+            "name": "\u8a13\u7df4\u5834\u5730",
+            "terms": "Training Area,\u8a13\u7df4\u5834, \u7df4\u7fd2\u5834\u5730, \u7df4\u7fd2\u5834"
+        },
+        "landuse/orchard": {
+            "name": "\u679c\u5712",
+            "terms": "Orchard,\u679c\u5712,\u83d3\u5712"
+        },
+        "landuse/plant_nursery": {
+            "name": "\u690d\u7269\u82d7\u5703",
+            "terms": "\u80b2\u82d7\u5834,\u7a2e\u82d7\u5834"
+        },
+        "landuse/quarry": {
+            "name": "\u77f3\u7926\u5834",
+            "terms": "Quarry,\u77f3\u7926\u5834,\u7926\u5834,\u63a1\u77f3\u5834"
+        },
+        "landuse/railway": {
+            "name": "\u9435\u8def\u8d70\u5eca",
+            "terms": "Railway Corridor, \u9435\u8def\u8d70\u5eca, \u9435\u9053\u8d70\u5eca"
+        },
+        "landuse/recreation_ground": {
+            "name": "\u904a\u6a02\u5834",
+            "terms": "\u904a\u6a02\u5712"
+        },
+        "landuse/religious": {
+            "name": "\u5b97\u6559\u7528\u5730",
+            "terms": "Religious Area,\u5b97\u6559\u8a2d\u65bd\u7528\u5730"
+        },
+        "landuse/residential": {
+            "name": "\u4f4f\u5b85\u5340",
+            "terms": "\u4f4f\u5b85\u7528\u5730, \u4f4f\u5b85\u5730"
+        },
+        "landuse/retail": {
+            "name": "\u96f6\u552e\u5340",
+            "terms": "\u96f6\u552e\u5340\u57df, \u8ca9\u8ce3\u5340, \u92b7\u552e\u5340"
+        },
+        "landuse/vineyard": {
+            "name": "\u8461\u8404\u5712",
+            "terms": "Vineyard,\u8461\u8404\u5712,\u9152\u838a"
+        },
+        "leisure": {
+            "name": "\u6d88\u9592"
+        },
+        "leisure/adult_gaming_centre": {
+            "name": "\u6210\u4eba\u904a\u6232\u4e2d\u5fc3",
+            "terms": "\u6210\u4eba\u904a\u6a02\u5834"
+        },
+        "leisure/bird_hide": {
+            "name": "\u89c0\u9ce5\u5c4b",
+            "terms": "\u89c0\u9ce5\u4ead"
+        },
+        "leisure/bowling_alley": {
+            "name": "\u4fdd\u9f61\u7403\u5834",
+            "terms": "\u4fdd\u9f61\u7403\u5834"
+        },
+        "leisure/common": {
+            "name": "\u516c\u5171\u7528\u5730",
+            "terms": "Common,\u516c\u5171\u7528\u5730,\u516c\u5730"
+        },
+        "leisure/dance": {
+            "name": "\u821e\u5ef3",
+            "terms": "Dance Hall, \u821e\u8e48\u9928, \u8df3\u821e\u5834\u6240, \u821e\u8e48\u5834\u6240"
+        },
+        "leisure/dog_park": {
+            "name": "\u72d7\u516c\u5712",
+            "terms": "Dog Park,\u72d7\u516c\u5712"
+        },
+        "leisure/firepit": {
+            "name": "\u706b\u5751",
+            "terms": "\u71df\u706b\u5751"
+        },
+        "leisure/fitness_centre": {
+            "name": "\u9ad4\u80b2\u9928 / \u5065\u9ad4\u4e2d\u5fc3",
+            "terms": "Gym / Fitness Center, \u5065\u8eab\u623f, \u5065\u9ad4\u4e2d\u5fc3, \u9ad4\u80b2\u9928, \u5065\u8eab\u4e2d\u5fc3"
+        },
+        "leisure/fitness_centre/yoga": {
+            "name": "\u745c\u4f3d\u4e2d\u5fc3",
+            "terms": "Yoga Studio, \u745c\u4f3d\u4e2d\u5fc3, \u745c\u4f3d\u6559\u5ba4"
+        },
+        "leisure/fitness_station": {
+            "name": "\u6236\u5916\u5065\u9ad4\u7ad9",
+            "terms": "Outdoor Fitness Station, \u5065\u9ad4\u7ad9, \u5065\u8eab\u7ad9"
+        },
+        "leisure/fitness_station/balance_beam": {
+            "name": "\u5e73\u8861\u6728",
+            "terms": "Exercise Balance Beam,\u5e73\u8861\u6728"
+        },
+        "leisure/fitness_station/box": {
+            "name": "\u5065\u8eab\u7bb1",
+            "terms": "Exercise Box,\u904b\u52d5\u7bb1"
+        },
+        "leisure/fitness_station/horizontal_bar": {
+            "name": "\u5e73\u8861\u55ae\u69d3",
+            "terms": "Exercise Horizontal Bar,\u5065\u8eab\u5e73\u8861\u55ae\u69d3"
+        },
+        "leisure/fitness_station/horizontal_ladder": {
+            "name": "\u99ac\u9a2e\u67b6",
+            "terms": "Exercise Monkey Bars,\u6a6b\u722c\u67b6"
+        },
+        "leisure/garden": {
+            "name": "\u82b1\u5712",
+            "terms": "Garden,\u516c\u5712,\u679c\u5712,\u690d\u7269\u5712,\u82b1\u5712,\u83dc\u5712"
+        },
+        "leisure/golf_course": {
+            "name": "\u9ad8\u723e\u592b\u7403\u5834",
+            "terms": "Golf Course,\u54e5\u592b\u7403\u5834,\u9ad8\u723e\u592b\u7403\u5834"
+        },
+        "leisure/horse_riding": {
+            "name": "\u9a0e\u99ac\u8a2d\u65bd",
+            "terms": "Horseback Riding Facility,\u9a0e\u99ac\u5834"
+        },
+        "leisure/ice_rink": {
+            "name": "\u6e9c\u51b0\u5834",
+            "terms": "\u6e9c\u51b0\u5834"
+        },
+        "leisure/marina": {
+            "name": "\u904a\u8247\u78bc\u982d",
+            "terms": "Marina,\u78bc\u982d,\u904a\u8247\u78bc\u982d,\u8239\u96bb\u505c\u6cca\u8655,\u904a\u8247\u505c\u6cca\u8655"
+        },
+        "leisure/miniature_golf": {
+            "name": "\u8ff7\u4f60\u54e5\u723e\u592b",
+            "terms": "mini golf, \u8ff7\u4f60\u9ad8\u723e\u592b"
+        },
+        "leisure/nature_reserve": {
+            "name": "\u81ea\u7136\u4fdd\u8b77\u5340",
+            "terms": "\u81ea\u7136\u4fdd\u8b77\u5340,\u81ea\u7136\u8b77\u7406\u5340"
+        },
+        "leisure/park": {
+            "name": "\u516c\u5712",
+            "terms": "Park,\u516c\u5712,\u5712"
+        },
+        "leisure/picnic_table": {
+            "name": "\u91ce\u9910\u684c",
+            "terms": "\u91ce\u9910\u684c"
+        },
+        "leisure/pitch": {
+            "name": "\u904b\u52d5\u5834\u5730",
+            "terms": "Sport Pitch,\u904b\u52d5\u5834,\u904b\u52d5\u5834\u5730,\u904b\u52d5\u5834\u6240"
+        },
+        "leisure/pitch/american_football": {
+            "name": "\u7f8e\u5f0f\u8db3\u7403\u5834",
+            "terms": "American Football Field,\u7f8e\u5f0f\u8db3\u7403\u5834"
+        },
+        "leisure/pitch/basketball": {
+            "name": "\u7c43\u7403\u5834",
+            "terms": "Basketball Court,\u7403\u5834,\u7c43\u7403\u5834"
+        },
+        "leisure/pitch/beachvolleyball": {
+            "name": "\u6c99\u7058\u6392\u7403\u5834",
+            "terms": "Beach Volleyball Court, \u6c99\u7058\u6392\u7403\u5834"
+        },
+        "leisure/pitch/bowls": {
+            "name": "\u8349\u5730\u6efe\u7403",
+            "terms": "Bowling Green, \u8349\u5730\u6efe\u7403"
+        },
+        "leisure/pitch/cricket": {
+            "name": "\u6728\u7403\u5834",
+            "terms": "Cricket Field,\u6728\u7403\u5834"
+        },
+        "leisure/pitch/equestrian": {
+            "name": "\u7b56\u9a0e\u5834\u5730",
+            "terms": "Riding Arena, \u7b56\u9a0e\u5834\u5730"
+        },
+        "leisure/pitch/rugby_league": {
+            "name": "\u806f\u76df\u5f0f\u6b16\u7403\u5834",
+            "terms": "\u806f\u76df\u5f0f\u6b16\u7403\u5834,\u6b16\u7403\u5834"
+        },
+        "leisure/pitch/rugby_union": {
+            "name": "\u806f\u5408\u5f0f\u6b16\u7403\u5834",
+            "terms": "\u806f\u5408\u5f0f\u6b16\u7403\u5834,\u6b16\u7403\u5834"
+        },
+        "leisure/pitch/skateboard": {
+            "name": "\u6ed1\u677f\u5834",
+            "terms": "Skate Park,\u6ed1\u677f\u5834"
+        },
+        "leisure/pitch/soccer": {
+            "name": "\u8db3\u7403\u5834",
+            "terms": "Soccer Field,\u8db3\u7403\u5834"
+        },
+        "leisure/pitch/table_tennis": {
+            "name": "\u4e52\u4e53\u6ce2\u67b1",
+            "terms": "Ping Pong Table,\u4e52\u4e53\u7403\u67b1,\u4e52\u4e53\u67b1"
+        },
+        "leisure/pitch/tennis": {
+            "name": "\u7db2\u7403\u5834",
+            "terms": "Tennis Court,\u7db2\u7403\u5834"
+        },
+        "leisure/pitch/volleyball": {
+            "name": "\u6392\u7403\u5834",
+            "terms": "Volleyball Court,\u6392\u7403\u5834"
+        },
+        "leisure/playground": {
+            "name": "\u904a\u6a02\u5834",
+            "terms": "Playground,\u904a\u6a02\u5834"
+        },
+        "leisure/resort": {
+            "name": "\u5ea6\u5047\u52dd\u5730",
+            "terms": "Resort, \u5ea6\u5047\u6751"
+        },
+        "leisure/slipway": {
+            "name": "\u8239\u53f0",
+            "terms": "Slipway,\u8239\u6392,\u8239\u67b6\u6ed1\u9053,\u8239\u81fa,\u6ed1\u9053,\u6ed1\u53f0"
+        },
+        "leisure/sports_centre": {
+            "name": "\u9ad4\u80b2\u4e2d\u5fc3 / \u9ad4\u80b2\u9928",
+            "terms": "Sports Center / Complex, \u9ad4\u80b2\u4e2d\u5fc3, \u9ad4\u80b2\u9928"
+        },
+        "leisure/sports_centre/swimming": {
+            "name": "\u6e38\u6cf3\u6c60\u8a2d\u65bd",
+            "terms": "\u6e38\u6cf3\u6c60\u8a2d\u65bd,\u6e38\u6c34\u6c60\u8a2d\u65bd"
+        },
+        "leisure/stadium": {
+            "name": "\u9ad4\u80b2\u9928",
+            "terms": "Stadium,\u5927\u9ad4\u80b2\u9928,\u9ad4\u80b2,\u9ad4\u80b2\u5834,\u7403\u5834"
+        },
+        "leisure/swimming_pool": {
+            "name": "\u6e38\u6cf3\u6c60",
+            "terms": "Swimming Pool,\u6e38\u6c34\u6c60,\u6e38\u6cf3\u6c60,\u904a\u6cf3\u6c60"
+        },
+        "leisure/track": {
+            "name": "\u8cfd\u9053(\u975e\u8cfd\u8eca)",
+            "terms": "Racetrack (Non-Motorsport),\u8dd1\u9053"
+        },
+        "leisure/water_park": {
+            "name": "\u6c34\u4e0a\u6a02\u5712",
+            "terms": "\u6c34\u4e0a\u6a02\u5712"
+        },
+        "line": {
+            "name": "\u7dab",
+            "terms": "Line,\u7dab,\u7dda"
+        },
+        "man_made": {
+            "name": "\u4eba\u9020"
+        },
+        "man_made/adit": {
+            "name": "\u7926\u5751\u53e3",
+            "terms": "\u7926\u5751\u53e3, \u7926\u6d1e\u53e3"
+        },
+        "man_made/breakwater": {
+            "name": "\u9632\u6ce2\u5824",
+            "terms": "Breakwater,\u9632\u6ce2\u5824"
+        },
+        "man_made/bridge": {
+            "name": "\u6a4b\u6a11",
+            "terms": "bridge,\u6a4b"
+        },
+        "man_made/chimney": {
+            "name": "\u7159\u56f1",
+            "terms": "\u7159\u56f1,\u7159\u7b52"
+        },
+        "man_made/cutline": {
+            "name": "\u5206\u5272\u7dab",
+            "terms": "Cut line,\u5206\u5272\u7dab,\u5206\u754c\u7dda,\u5c71\u6797\u5206\u754c\u7dda"
+        },
+        "man_made/embankment": {
+            "name": "\u57fa\u5824"
+        },
+        "man_made/flagpole": {
+            "name": "\u65d7\u6746",
+            "terms": "Flagpole,\u65d7\u6746,\u65d7\u7aff"
+        },
+        "man_made/gasometer": {
+            "name": "\u7164\u6c23\u9f13",
+            "terms": "\u6c23\u9f13,\u77f3\u6cb9\u6c23\u9f13"
+        },
+        "man_made/groyne": {
+            "name": "\u9632\u6ce2\u5824",
+            "terms": "\u9632\u6ce2\u5824,\u9632\u6ce2\u677f"
+        },
+        "man_made/lighthouse": {
+            "name": "\u71c8\u5854",
+            "terms": "Lighthouse,\u71c8\u5854"
+        },
+        "man_made/mast": {
+            "name": "\u5929\u7dda\u5854",
+            "terms": "Mast,\u5929\u7dda\u687f"
+        },
+        "man_made/petroleum_well": {
+            "name": "\u6cb9\u4e95",
+            "terms": "\u6cb9\u4e95"
+        },
+        "man_made/pier": {
+            "name": "\u78bc\u982d",
+            "terms": "Pier,\u6e21\u982d,\u78bc\u982d"
+        },
+        "man_made/pipeline": {
+            "name": "\u7ba1\u9053",
+            "terms": "Pipeline,\u6c34\u7ba1,\u7ba1\u9053,\t\u5c0e\u7ba1,\u7ba1\u7dda"
+        },
+        "man_made/pumping_station": {
+            "name": "\u62bd\u6c34\u7ad9",
+            "terms": "Pumping Station, \u62bd\u6c34\u7ad9, \u6cf5\u6c34\u7ad9"
+        },
+        "man_made/silo": {
+            "name": "\u7b52\u5009",
+            "terms": "\u7b52\u5009, \u76f4\u7acb\u5f0f\u5132\u5b58\u5009"
+        },
+        "man_made/storage_tank": {
+            "name": "\u8caf\u5b58\u7bb1",
+            "terms": "\u8caf\u5b58\u7f38, \u5132\u5b58\u7f38, \u8caf\u6cb9\u7f38, \u8caf\u6c34\u7bb1, \u5132\u6cb9\u7f38, \u5132\u6c34\u7bb1"
+        },
+        "man_made/surveillance": {
+            "name": "\u76e3\u8996\u7cfb\u7d71",
+            "terms": "Surveillance, \u76e3\u5bdf\u7cfb\u7d71,\u9589\u8def\u96fb\u8996,\u4fdd\u5b89\u7cfb\u7d71"
+        },
+        "man_made/survey_point": {
+            "name": "\u6e2c\u91cf\u9ede",
+            "terms": "Survey Point,\u6e2c\u91cf\u9ede"
+        },
+        "man_made/tower": {
+            "name": "\u5854",
+            "terms": "Tower,\u5854"
+        },
+        "man_made/wastewater_plant": {
+            "name": "\u6c61\u6c34\u8655\u7406\u5ee0",
+            "terms": "Wastewater Plant,\u5ee2\u6c34\u5ee0,\u6c61\u6c34\u8655\u7406\u5ee0"
+        },
+        "man_made/water_tower": {
+            "name": "\u6c34\u5854",
+            "terms": "Water Tower,\u6c34\u5854"
+        },
+        "man_made/water_well": {
+            "name": "\u6c34\u4e95",
+            "terms": "\u6c34\u4e95, \u4e95"
+        },
+        "man_made/water_works": {
+            "name": "\u6ffe\u6c34\u5ee0",
+            "terms": "Water Works,\u4f9b\u6c34\u5ee0,\u6c34\u52d9\u8a2d\u65bd,\u6de8\u6c34\u5ee0"
+        },
+        "man_made/watermill": {
+            "name": "\u6c34\u8eca",
+            "terms": "Watermill, \u6c34\u78e8"
+        },
+        "man_made/windmill": {
+            "name": "\u98a8\u8eca",
+            "terms": "Windmill, \u98a8\u8eca"
+        },
+        "man_made/works": {
+            "name": "\u5de5\u5ee0",
+            "terms": "Factory, \u5de5\u5834"
+        },
+        "manhole": {
+            "name": "\u6c99\u4e95",
+            "terms": "Manhole,\u4eba\u5b54,\u6e9d\u7cdf"
+        },
+        "manhole/drain": {
+            "name": "\u96e8\u6c34\u6e20",
+            "terms": "Storm Drain,\u6392\u6c34\u9053"
+        },
+        "manhole/telecom": {
+            "name": "\u96fb\u8a0a\u6c99\u4e95",
+            "terms": "Telecom Manhole,\u96fb\u8a0a\u4eba\u5b54,\u96fb\u4fe1\u6c99\u4e95"
+        },
+        "natural": {
+            "name": "\u81ea\u7136\u666f\u89c0"
+        },
+        "natural/bare_rock": {
+            "name": "\u88f8\u5ca9",
+            "terms": "Bare Rock,\u797c\u77f3"
+        },
+        "natural/bay": {
+            "name": "\u6d77\u7063",
+            "terms": "Bay,\u6d77\u7063,\u7063"
+        },
+        "natural/beach": {
+            "name": "\u6c99\u7058",
+            "terms": "Beach,\u6c99\u7058,\u6d77\u7058,\u7058"
+        },
+        "natural/cave_entrance": {
+            "name": "\u6d1e\u7a74\u5165\u53e3",
+            "terms": "\u6d1e\u7a74\u5165\u53e3"
+        },
+        "natural/cliff": {
+            "name": "\u61f8\u5d16",
+            "terms": "Cliff,\u5d16,\u61f8\u5d16"
+        },
+        "natural/coastline": {
+            "name": "\u6d77\u5cb8\u7dab",
+            "terms": "Coastline,\u6d77\u5cb8\u7dab,\u6d77\u5cb8\u7dda"
+        },
+        "natural/fell": {
+            "name": "\u8352\u91ce",
+            "terms": "Fell,\u9ad8\u539f\u8352\u539f,\u9ad8\u539f\u8352\u91ce,\u9ad8\u5730\u8352\u539f"
+        },
+        "natural/glacier": {
+            "name": "\u51b0\u5ddd",
+            "terms": "Glacier,\u51b0\u5ddd,\u51b0\u6cb3"
+        },
+        "natural/grassland": {
+            "name": "\u8349\u539f",
+            "terms": "Grassland,\u8349\u539f,\u8349\u5730"
+        },
+        "natural/heath": {
+            "name": "\u704c\u6728\u8352\u5730",
+            "terms": "Heath,\u8352\u5730,\u8352\u91ce"
+        },
+        "natural/peak": {
+            "name": "\u5c71\u5cef",
+            "terms": "Peak,\u5c71\u5cf0,\u5c71\u9802,\u5cef"
+        },
+        "natural/ridge": {
+            "name": "\u5c71\u810a",
+            "terms": "Ridge,\u5c71\u810a"
+        },
+        "natural/saddle": {
+            "name": "\u5c71\u978d",
+            "terms": "\u5c71\u978d"
+        },
+        "natural/sand": {
+            "name": "\u6c99",
+            "terms": "Sand,\u6c99,\u7802,\u7802\u7c92"
+        },
+        "natural/scree": {
+            "name": "\u5c71\u77f3\u5806",
+            "terms": "Scree,\u788e\u77f3\u5761,\u5ca9\u5c51\u5806"
+        },
+        "natural/scrub": {
+            "name": "\u704c\u6728\u53e2",
+            "terms": "Scrub,\u704c\u6728,\u704c\u6728\u53e2"
+        },
+        "natural/spring": {
+            "name": "\u6c34\u6e90",
+            "terms": "Spring,\u5674\u6cc9,\u6cc9,\u6cc9\u6c34,\u6e67\u6cc9,\u6eab\u6cc9"
+        },
+        "natural/tree": {
+            "name": "\u6a39\u6728",
+            "terms": "Tree,\u6728,\u6a39"
+        },
+        "natural/volcano": {
+            "name": "\u706b\u5c71",
+            "terms": "\u706b\u5c71"
+        },
+        "natural/water": {
+            "name": "\u6c34",
+            "terms": "Water,\u6c34"
+        },
+        "natural/water/lake": {
+            "name": "\u6e56\u6cca",
+            "terms": "Lake,\u6e56,\u6e56\u6cca"
+        },
+        "natural/water/pond": {
+            "name": "\u6c60\u5858",
+            "terms": "Pond,\u5858,\u6c34\u6c60,\u6c60,\u6c60\u5858"
+        },
+        "natural/water/reservoir": {
+            "name": "\u6c34\u5858",
+            "terms": "Reservoir,\u6c34\u5858,\u6c34\u5eab,\u8caf\u6c34\u5eab"
+        },
+        "natural/wetland": {
+            "name": "\u6fd5\u5730",
+            "terms": "Wetland,\u6f6e\u9593\u5e36,\u6fd5\u5730"
+        },
+        "natural/wood": {
+            "name": "\u6a39\u6797",
+            "terms": "Wood,\u6797,\u6a39\u6797"
+        },
+        "noexit/yes": {
+            "name": "\u5014\u982d\u8def",
+            "terms": "No Exit,\u6b7b\u80e1\u540c,\u6398\u982d\u8def"
+        },
+        "office": {
+            "name": "\u8fa6\u516c\u5ba4",
+            "terms": "Office,\u5beb\u5b57\u6a13,\u8fa6\u516c\u5ba4"
+        },
+        "office/administrative": {
+            "name": "\u884c\u653f\u6a13"
+        },
+        "office/coworking": {
+            "name": "\u5171\u540c\u5de5\u4f5c\u7a7a\u9593",
+            "terms": "Coworking Space,\u5171\u7528\u5de5\u4f5c\u7a7a\u9593"
+        },
+        "office/educational_institution": {
+            "name": "\u654e\u80b2\u6a5f\u69cb",
+            "terms": "Educational Institution,\u654e\u80b2\u6a5f\u69cb,\u6559\u80b2\u6a5f\u69cb"
+        },
+        "office/employment_agency": {
+            "name": "\u8077\u696d\u4ecb\u7d39\u6240",
+            "terms": "Employment Agency,\u5c31\u696d\u6a5f\u69cb,\u8077\u696d\u4ecb\u7d39\u6240,\u85a6\u4eba\u9928,\u5c31\u696d\u4e2d\u5fc3"
+        },
+        "office/estate_agent": {
+            "name": "\u5730\u7522",
+            "terms": "Real Estate Office,\u5730\u7522\u4ee3\u7406"
+        },
+        "office/financial": {
+            "name": "\u91d1\u878d\u6a5f\u69cb\u8fa6\u4e8b\u8655",
+            "terms": "Financial Office,\u8ca1\u52d9\u90e8\u5beb\u5b57\u6a13,\u91d1\u878d\u6a5f\u69cb,\u91d1\u878d\u55ae\u4f4d"
+        },
+        "office/government": {
+            "name": "\u653f\u5e9c\u8fa6\u516c\u5ba4",
+            "terms": "Government Office,\u516c\u7f72,\u653f\u5e9c\u5408\u7f72,\u653f\u5e9c\u6a13,\u7f72"
+        },
+        "office/government/register_office": {
+            "name": "\u4eba\u4e8b\u767b\u8a18\u8655",
+            "terms": "register office, \u751f\u6b7b\u767b\u8a18\u8655,\u5a5a\u59fb\u8a3b\u518a\u8655,\u4eba\u4e8b\u767b\u8a18\u8655"
+        },
+        "office/insurance": {
+            "name": "\u4fdd\u96aa\u516c\u53f8\u8fa6\u516c\u5ba4",
+            "terms": "Insurance Office,\u4fdd\u96aa\u516c\u53f8,\u4fdd\u96aa\u516c\u53f8\u5beb\u5b57\u6a13"
+        },
+        "office/lawyer": {
+            "name": "\u5f8b\u5e2b\u4e8b\u52d9\u6240",
+            "terms": "Law Office,\u5f8b\u5e2b\u4e8b\u52d9\u6240"
+        },
+        "office/lawyer/notary": {
+            "name": "\u516c\u8b49\u884c"
+        },
+        "office/ngo": {
+            "name": "\u975e\u653f\u5e9c\u6a5f\u69cb\u8fa6\u516c\u5ba4",
+            "terms": "NGO Office,\u5fd7\u9858\u6a5f\u69cb\u5beb\u5b57\u6a13,\u975e\u653f\u5e9c\u7d44\u7e54,\u5fd7\u9858\u7d44\u7e54"
+        },
+        "office/physician": {
+            "name": "\u91ab\u751f"
+        },
+        "office/political_party": {
+            "name": "\u653f\u9ee8",
+            "terms": "Political Party,\u653f\u9ee8,\u653f\u6cbb"
+        },
+        "office/research": {
+            "name": "\u7814\u7a76\u6240",
+            "terms": "Research Office,\u7814\u7a76\u6240"
+        },
+        "office/telecommunication": {
+            "name": "\u96fb\u8a0a\u516c\u53f8\u8fa6\u516c\u5ba4",
+            "terms": "Telecom Office,\u96fb\u4fe1\u516c\u53f8,\u96fb\u8a71\u516c\u53f8\u5beb\u5b57\u6a13"
+        },
+        "office/therapist": {
+            "name": "\u6cbb\u7642\u5e2b\u8fa6\u516c\u5ba4",
+            "terms": "Therapist,\u6cbb\u7642\u5e2b\u8fa6\u516c\u5ba4,\u91ab\u7642\u5e2b,\u6cbb\u7642\u5e2b"
+        },
+        "office/travel_agent": {
+            "name": "\u65c5\u884c\u793e"
+        },
+        "office/water_utility": {
+            "name": "\u6c34\u4e0a\u8a2d\u65bd\u8fa6\u516c\u5ba4",
+            "terms": "Water Utility Office,\u6ed1\u6c34"
+        },
+        "place": {
+            "name": "\u5730\u65b9"
+        },
+        "place/city": {
+            "name": "\u57ce\u5e02",
+            "terms": "City,\u57ce,\u57ce\u5e02"
+        },
+        "place/farm": {
+            "name": "\u8fb2\u5834"
+        },
+        "place/hamlet": {
+            "name": "\u5c0f\u6751\u838a",
+            "terms": "Hamlet,\u6751\u4ed4,\u6751\u838a"
+        },
+        "place/island": {
+            "name": "\u5cf6\u5dbc",
+            "terms": "Island,\u5cf6,\u5cf6\u5dbc"
+        },
+        "place/isolated_dwelling": {
+            "name": "\u5b64\u7acb\u6c11\u5c45",
+            "terms": "Isolated Dwelling,\u5b64\u7acb\u5c45\u6240,\u5b64\u7acb\u6c11\u5c45,\u5b64\u96e2\u5c45\u6240"
+        },
+        "place/locality": {
+            "name": "\u5730\u5340",
+            "terms": "Locality,\u5730\u65b9,\u5730\u9ede,\u5730\u9ede\uff08\u7121\u4eba\u5b9a\u5c45\uff09"
+        },
+        "place/neighbourhood": {
+            "name": "\u8fd1\u9130",
+            "terms": "\u8fd1\u9130"
+        },
+        "place/quarter": {
+            "name": "\u81ea\u6cbb\u5e02\u5206\u5340 / \u5c0f\u5340",
+            "terms": "Sub-Borough / Quarter, \u81ea\u6cbb\u5e02\u5206\u5340 / \u5c0f\u5340"
+        },
+        "place/square": {
+            "name": "\u5ee3\u5834",
+            "terms": "Square,\u5ee3\u5834"
+        },
+        "place/suburb": {
+            "name": "\u81ea\u6cbb\u5e02 / \u90ca\u5340",
+            "terms": "Borough / Suburb, \u81ea\u6cbb\u93ae, \u81ea\u6cbb\u5e02\u93ae"
+        },
+        "place/town": {
+            "name": "\u93ae",
+            "terms": "Town,\u57ce\u93ae,\u5e02\u93ae,\u93ae"
+        },
+        "place/village": {
+            "name": "\u9109\u6751",
+            "terms": "Village,\u6751,\u6751\u838a,\u6751\u93ae,\u570d\u6751"
+        },
+        "point": {
+            "name": "\u9ede",
+            "terms": "Point,\u9ede"
+        },
+        "power": {
+            "name": "\u767c\u96fb\u5ee0"
+        },
+        "power/generator": {
+            "name": "\u767c\u96fb\u6a5f",
+            "terms": "Power Generator,\u767c\u96fb\u6a5f"
+        },
+        "power/line": {
+            "name": "\u96fb\u7e9c",
+            "terms": "Power Line,\u4f9b\u96fb\u7dab,\u4f9b\u96fb\u7dda,\u96fb\u7dda"
+        },
+        "power/minor_line": {
+            "name": "\u6b21\u8981\u96fb\u7e9c",
+            "terms": "Minor Power Line,\u5c0f\u4f9b\u96fb\u7dda,\u7d30\u4f9b\u96fb\u7dab"
+        },
+        "power/plant": {
+            "name": "\u767c\u96fb\u5ee0\u7bc4\u570d",
+            "terms": "Power Station Grounds,\u767c\u96fb\u5ee0\u7528\u5730"
+        },
+        "power/pole": {
+            "name": "\u96fb\u7dab\u6746",
+            "terms": "Power Pole,\u96fb\u7dab\u6746,\u96fb\u7dda\u687f"
+        },
+        "power/sub_station": {
+            "name": "\u914d\u96fb\u7ad9"
+        },
+        "power/substation": {
+            "name": "\u8b8a\u58d3\u7ad9",
+            "terms": "\u8b8a\u58d3\u7ad9, \u914d\u96fb\u7ad9, \u96fb\u529b\u5206\u7ad9"
+        },
+        "power/tower": {
+            "name": "\u9ad8\u58d3\u96fb\u5854",
+            "terms": "High-Voltage Tower,\u9ad8\u58d3\u8f38\u96fb\u5854,\u9ad8\u58d3\u96fb\u5854"
+        },
+        "power/transformer": {
+            "name": "\u8b8a\u58d3\u5668",
+            "terms": "Transformer,\u706b\u725b\u623f,\u8b8a\u96fb\u6240"
+        },
+        "public_transport/station_tram": {
+            "name": "\u96fb\u8eca\u7ad9",
+            "terms": "Tram Station, \u96fb\u8eca\u5927\u7ad9"
+        },
+        "public_transport/stop_area": {
+            "name": "\u4ea4\u901a\u5de5\u5177\u505c\u7ad9\u7bc4\u570d",
+            "terms": "Transit Stop Area, \u4ea4\u901a\u5de5\u5177\u505c\u7ad9\u7bc4\u570d"
+        },
+        "public_transport/stop_position": {
+            "name": "\u4ea4\u901a\u5de5\u5177\u505c\u6b62\u4f4d\u7f6e",
+            "terms": "Transit Stopping Location, \u4ea4\u901a\u5de5\u5177\u505c\u6b62\u4f4d\u7f6e"
+        },
+        "public_transport/stop_position_aerialway": {
+            "name": "\u7e9c\u8eca\u505c\u6b62\u4f4d\u7f6e",
+            "terms": "Aerialway Stopping Location, \u7e9c\u8eca\u505c\u6b62\u4f4d\u7f6e"
+        },
+        "public_transport/stop_position_bus": {
+            "name": "\u5df4\u58eb\u505c\u6b62\u4f4d\u7f6e",
+            "terms": "Bus Stopping Location, \u5df4\u58eb\u505c\u6b62\u4f4d\u7f6e"
+        },
+        "public_transport/stop_position_ferry": {
+            "name": "\u6e21\u8f2a\u505c\u6b62\u4f4d\u7f6e",
+            "terms": "Ferry Stopping Location, \u5c0f\u8f2a\u505c\u6b62\u4f4d\u7f6e"
+        },
+        "public_transport/stop_position_light_rail": {
+            "name": "\u8f15\u9435\u505c\u6b62\u4f4d\u7f6e",
+            "terms": "Light Rail Stopping Location, \u8f15\u9435\u505c\u6b62\u4f4d\u7f6e"
+        },
+        "public_transport/stop_position_monorail": {
+            "name": "\u55ae\u8ecc\u96fb\u8eca\u505c\u6b62\u4f4d\u7f6e",
+            "terms": "Monorail Stopping Location, \u55ae\u8ecc\u96fb\u8eca\u505c\u6b62\u4f4d\u7f6e"
+        },
+        "railway": {
+            "name": "\u9435\u8def"
+        },
+        "railway/abandoned": {
+            "name": "\u5ee2\u7f6e\u9435\u8def",
+            "terms": "Abandoned Railway,\u5ee2\u68c4\u7684\u9435\u8def,\u5ee2\u9435\u8def,\u9435\u8def\u8def\u7dda\u8de1"
+        },
+        "railway/buffer_stop": {
+            "name": "\u6b62\u885d\u64cb",
+            "terms": "Buffer Stop,\u6b62\u885d\u64cb"
+        },
+        "railway/crossing": {
+            "name": "\u9435\u8def\u4ea4\u6ed9\u8655 (\u8def\u5f91)",
+            "terms": "Railway Crossing (Path), \u9435\u8def\u4ea4\u6ed9\u8655 (\u8def\u5f91)"
+        },
+        "railway/derail": {
+            "name": "\u9435\u9053\u812b\u8ecc\u5668",
+            "terms": "Railway Derailer,\u9435\u8def\u812b\u8ecc\u5668"
+        },
+        "railway/disused": {
+            "name": "\u505c\u7528\u9435\u8def",
+            "terms": "Disused Railway,\u505c\u7528\u9435\u8def,\u5ee2\u68c4\u7684\u9435\u8def"
+        },
+        "railway/funicular": {
+            "name": "\u7e9c\u7d22\u9435\u9053",
+            "terms": "\u7e9c\u7d22\u9435\u9053, \u7d22\u9053, \u7e9c\u8eca"
+        },
+        "railway/level_crossing": {
+            "name": "\u9435\u8def\u4ea4\u6ed9\u8655 (\u9053\u8def)",
+            "terms": "Railway Crossing (Road), \u9435\u8def\u4ea4\u6ed9\u8655 (\u9053\u8def)"
+        },
+        "railway/milestone": {
+            "name": "\u9435\u9053\u91cc\u7a0b\u7891",
+            "terms": "Railway Milestone,\u9435\u9053\u91cc\u7a0b\u7891"
+        },
+        "railway/monorail": {
+            "name": "\u55ae\u8ecc\u9435\u8def",
+            "terms": "Monorail,\u55ae\u8ecc,\u55ae\u8ecc\u9435\u8def,\u55ae\u8ecc\u96fb\u8eca,\u55ae\u8ecc\u706b\u8eca"
+        },
+        "railway/narrow_gauge": {
+            "name": "\u7a84\u8ecc\u9435\u8def",
+            "terms": "\u7a84\u8ecc\u9435\u8def, \u7a84\u8ecc\u9435\u9053"
+        },
+        "railway/rail": {
+            "name": "\u8def\u8ecc",
+            "terms": "Rail,\u706b\u8eca\u8ecc,\u8def\u8ecc,\u8ecc,\u9435\u8ecc"
+        },
+        "railway/signal": {
+            "name": "\u9435\u8def\u8a0a\u865f",
+            "terms": "Railway Signal,\u9435\u9053\u4fe1\u865f,\u9435\u8def\u4fe1\u865f"
+        },
+        "railway/subway": {
+            "name": "\u5730\u4e0b\u9435",
+            "terms": "MTR,Mass Transit Railway,Subway,\u5730\u4e0b\u9435,\u5730\u4e0b\u9435\u8def,\u5730\u9435,\u6377\u904b"
+        },
+        "railway/subway_entrance": {
+            "name": "\u5730\u9435\u5165\u53e3",
+            "terms": "Subway Entrance,\u5730\u4e0b\u9435\u8def\u5165\u53e3,\u5730\u9435\u5165\u53e3,\u5730\u9435\u53e3,\u6377\u904b\u5165\u53e3"
+        },
+        "railway/switch": {
+            "name": "\u9053\u5c94",
+            "terms": "Railway Switch,\u8f49\u8f4d\u5668,\u9435\u8def\u8f49\u8f4d\u5668,\u9435\u9053\u8f49\u8f4d\u5668"
+        },
+        "railway/train_wash": {
+            "name": "\u706b\u8eca\u6d17\u6ecc\u5668",
+            "terms": "Train Wah,\u706b\u8eca\u6e05\u6d17\u8655,\u706b\u8eca\u6d17\u8eca\u6a5f"
+        },
+        "railway/tram": {
+            "name": "\u96fb\u8eca",
+            "terms": "Tram,\u96fb\u8eca"
+        },
+        "relation": {
+            "name": "\u95dc\u4fc2",
+            "terms": "Relation,\u95dc\u4fc2,\u95dc\u7cfb"
+        },
+        "roundabout": {
+            "name": "\u8ff4\u65cb\u8655"
+        },
+        "route/ferry": {
+            "name": "\u6e21\u8f2a\u822a\u7dab",
+            "terms": "Ferry Route,\u6e21\u8f2a\u822a\u7dda,\u822a\u7dab,\u822a\u7dda"
+        },
+        "shop": {
+            "name": "\u5546\u5e97",
+            "terms": "Shop,\u5546\u5e97,\u8216"
+        },
+        "shop/alcohol": {
+            "name": "\u9152\u985e\u5c08\u8ce3\u5e97",
+            "terms": "Liquor Store,\u9152\u5e97,\u9152\u838a,\u9152\u985e\u5546\u5e97"
+        },
+        "shop/anime": {
+            "name": "\u52d5\u6f2b\u5e97",
+            "terms": "\u52d5\u6f2b\u5e97"
+        },
+        "shop/antiques": {
+            "name": "\u53e4\u8463\u5e97",
+            "terms": "\u53e4\u8463\u5e97, \u53e4\u73a9\u5e97"
+        },
+        "shop/appliance": {
+            "name": "\u96fb\u5668\u5e97",
+            "terms": "Appliance Store,\u5bb6\u96fb\u5e97,\u5bb6\u7528\u96fb\u5668\u5e97"
+        },
+        "shop/art": {
+            "name": "\u85dd\u8853\u5546\u5e97",
+            "terms": "\u85dd\u8853\u5e97,\u7f8e\u8853\u5e97,\u7f8e\u8853\u5546\u5e97"
+        },
+        "shop/baby_goods": {
+            "name": "\u5b30\u5152\u7528\u54c1\u5e97",
+            "terms": "\u5b30\u5152\u7528\u54c1\u5e97, BB\u7528\u54c1\u5e97"
+        },
+        "shop/bag": {
+            "name": "\u888b/\u884c\u674e\u7bb1\u5e97",
+            "terms": "\u884c\u674e\u5e97, \u888b\u5e97"
+        },
+        "shop/bakery": {
+            "name": "\u9eb5\u5305\u897f\u9905\u5e97",
+            "terms": "Bakery,\u9905\u5bb6,\u9905\u5e97,\u9905\u8216,\u9eaa\u5305\u8216,\u9eaa\u98fd\u5e97,\u9eaa\u98fd\u8216,\u9eb5\u5305\u5e97,\u9eb5\u5305\u8216,\u9eb5\u98fd\u5e97,\u9762\u5305\u5e97"
+        },
+        "shop/bathroom_furnishing": {
+            "name": "\u6d74\u5ba4\u914d\u4ef6\u5e97",
+            "terms": "\u885b\u6d74\u7528\u54c1\u5e97,\u5ec1\u6240\u7528\u54c1\u5e97,\u6d17\u624b\u9593\u7528\u54c1\u5e97"
+        },
+        "shop/beauty": {
+            "name": "\u7f8e\u5bb9\u9662",
+            "terms": "Beauty Shop,\u6307\u7532\u7f8e\u5bb9,\u7406\u5bb9\u9662,\u7f8e\u599d\u5e97,\u7f8e\u5bb9\u5e97,\u7f8e\u5bb9\u9662,\u8b77\u819a\u4e2d\u5fc3"
+        },
+        "shop/beauty/nails": {
+            "name": "\u7f8e\u7532\u5e97",
+            "terms": "Nail Salon, \u4fee\u7532\u5e97"
+        },
+        "shop/beauty/tanning": {
+            "name": "\u66ec\u71c8\u5e97",
+            "terms": "Tanning Salon, \u65e5\u5149\u6d74\u5e97"
+        },
+        "shop/bed": {
+            "name": "\u5be2\u5177/\u5e8a\u8925\u5e97",
+            "terms": "\u5be2\u5177\u5e97, \u5e8a\u8925\u5e97, \u5e8a\u588a\u5e97, \u5e8a\u5177\u5e97, \u5be2\u5ba4\u7528\u54c1\u5e97, \u5e8a\u4e0a\u7528\u54c1\u5e97, \u7761\u623f\u7528\u54c1\u5e97"
+        },
+        "shop/beverages": {
+            "name": "\u98f2\u54c1\u5e97",
+            "terms": "Beverage Store,\u98f2\u54c1\u5e97,\u98f2\u54c1\u8216,\u98f2\u6599\u5e97"
+        },
+        "shop/bicycle": {
+            "name": "\u55ae\u8eca\u5e97",
+            "terms": "Bicycle Shop,\u55ae\u8eca\u5e97,\u55ae\u8eca\u8216,\u81ea\u884c\u8eca\u5e97,\u8173\u8e0f\u8eca\u5e97"
+        },
+        "shop/bookmaker": {
+            "name": "\u6295\u6ce8\u7ad9",
+            "terms": "\u6295\u6ce8\u7ad9,\u6536\u53d7\u8ced\u6ce8\u8005"
+        },
+        "shop/books": {
+            "name": "\u66f8\u5e97",
+            "terms": "\u66f8\u5c40"
+        },
+        "shop/boutique": {
+            "name": "\u6642\u88dd\u5e97",
+            "terms": "Boutique,\u6642\u88dd\u5e97,\u670d\u98fe\u5e97,\u7cbe\u54c1\u5e97,\u670d\u88dd\u5e97"
+        },
+        "shop/butcher": {
+            "name": "\u8089\u8216",
+            "terms": "Butcher,\u8089\u8216,\u8089\u8ca9,\u8089\u6a94,\u8089\u67b1"
+        },
+        "shop/candles": {
+            "name": "\u881f\u71ed\u5e97",
+            "terms": "\u881f\u71ed\u5e97"
+        },
+        "shop/car": {
+            "name": "\u8eca\u884c",
+            "terms": "Car Dealership,\u8eca\u884c,\u6c7d\u8eca\u5e97"
+        },
+        "shop/car_parts": {
+            "name": "\u6c7d\u8eca\u96f6\u4ef6\u5e97",
+            "terms": "Car Parts Store,\u6c7d\u8eca\u914d\u4ef6\u5e97,\u6c7d\u8eca\u96f6\u4ef6\u5e97,\u6c7d\u8eca\u96f6\u4ef6\u8216"
+        },
+        "shop/car_repair": {
+            "name": "\u8eca\u623f",
+            "terms": "Car Repair Shop,\u6c7d\u8eca\u4fee\u7406\u5e97,\u6c7d\u8eca\u7dad\u4fee\u5e97,\u8eca\u623f"
+        },
+        "shop/carpet": {
+            "name": "\u5730\u6bef\u5e97",
+            "terms": "\u5730\u6c08\u5e97"
+        },
+        "shop/charity": {
+            "name": "\u6148\u5584\u5546\u5e97",
+            "terms": "Charity Store,"
+        },
+        "shop/cheese": {
+            "name": "\u829d\u58eb\u5e97",
+            "terms": "\u829d\u58eb\u5e97, \u8d77\u53f8\u5e97"
+        },
+        "shop/chemist": {
+            "name": "\u85e5\u5e97",
+            "terms": "\u85e5\u599d\u5e97,\u85e5\u623f"
+        },
+        "shop/chocolate": {
+            "name": "\u6731\u53e4\u529b\u5e97",
+            "terms": "\u5de7\u514b\u529b\u5e97"
+        },
+        "shop/clothes": {
+            "name": "\u670d\u98fe\u5e97",
+            "terms": "Clothing Store,\u670d\u88dd\u5e97,\u670d\u98fe\u5e97,\u886b\u8216"
+        },
+        "shop/coffee": {
+            "name": "\u5496\u5561\u5e97",
+            "terms": "\u5496\u5561\u5e97"
+        },
+        "shop/computer": {
+            "name": "\u96fb\u8166\u5e97",
+            "terms": "Computer Store,\u96fb\u8166\u5e97,\u96fb\u8166\u8216"
+        },
+        "shop/confectionery": {
+            "name": "\u7cd6\u679c\u5e97",
+            "terms": "\u7cd6\u5e97"
+        },
+        "shop/convenience": {
+            "name": "\u4fbf\u5229\u5e97",
+            "terms": "Convenience Store,\u4fbf\u5229\u5e97"
+        },
+        "shop/copyshop": {
+            "name": "\u5f71\u5370\u5e97",
+            "terms": "\u5f71\u5370\u5e97"
+        },
+        "shop/cosmetics": {
+            "name": "\u5316\u599d\u54c1\u5e97",
+            "terms": "\u5316\u599d\u54c1\u5e97"
+        },
+        "shop/craft": {
+            "name": "\u5de5\u85dd\u54c1\u5e97",
+            "terms": "\u5de5\u85dd\u54c1\u5e97,\u5de5\u85dd\u54c1\u5546\u5e97,\u624b\u5de5\u85dd\u5e97,\u624b\u4f5c\u574a"
+        },
+        "shop/curtain": {
+            "name": "\u7a97\u7c3e\u5e97",
+            "terms": "\u7a97\u7c3e"
+        },
+        "shop/dairy": {
+            "name": "\u5976\u88fd\u54c1\u5e97",
+            "terms": "\u5976\u54c1\u5e97,\u4e73\u54c1\u5e97,\u4e73\u88fd\u54c1\u5e97"
+        },
+        "shop/deli": {
+            "name": "\u98df\u8086",
+            "terms": "Deli,\u719f\u98df\u5e97,\u7f8e\u98df\u5e97,\u98df\u8086"
+        },
+        "shop/department_store": {
+            "name": "\u767e\u8ca8\u516c\u53f8",
+            "terms": "Department Store,\u767e\u8ca8\u516c\u53f8,\u767e\u8ca8\u5e97"
+        },
+        "shop/doityourself": {
+            "name": "DIY\u5e97",
+            "terms": "DIY Store,DIY\u5546\u5e97,\u81ea\u7d44\u8216,\u81ea\u884c\u5b89\u88dd\u5e97"
+        },
+        "shop/dry_cleaning": {
+            "name": "\u4e7e\u6d17\u5e97",
+            "terms": "\u4e7e\u6d17\u5e97"
+        },
+        "shop/e-cigarette": {
+            "name": "\u96fb\u5b50\u7159\u5e97",
+            "terms": "E-Cigarette Shop, \u96fb\u5b50\u7159\u5e97"
+        },
+        "shop/electronics": {
+            "name": "\u96fb\u5b50\u8216",
+            "terms": "Electronics Store,\u96fb\u5668\u5e97,\u96fb\u5b50\u8216"
+        },
+        "shop/erotic": {
+            "name": "\u60c5\u8da3\u7528\u54c1\u5e97",
+            "terms": "\u6027\u5546\u5e97,\u6210\u4eba\u7528\u54c1\u5e97"
+        },
+        "shop/fabric": {
+            "name": "\u5e03\u6599\u5e97",
+            "terms": "\u5e03\u5339\u5e97,\u758b\u982d\u5e97"
+        },
+        "shop/farm": {
+            "name": "\u8fb2\u7522\u54c1\u6a94\u6524",
+            "terms": "Produce Stand,\u6a94,\u6c34\u679c\u6524,\u8fb2\u5834,\u8fb2\u7522\u54c1\u6524\u6a94"
+        },
+        "shop/fashion": {
+            "name": "\u6642\u88dd\u5e97",
+            "terms": "\u6642\u88dd\u5e97"
+        },
+        "shop/fishmonger": {
+            "name": "\u9b5a\u6a94"
+        },
+        "shop/florist": {
+            "name": "\u82b1\u5e97",
+            "terms": "Florist,\u82b1\u5e97,\u82b1\u8216"
+        },
+        "shop/frame": {
+            "name": "\u8868\u6846\u5e97",
+            "terms": "\u8868\u6846\u5e97, \u88f1\u6846\u5e97,\u908a\u6846\u5e97,\u6846\u67b6\u5e97"
+        },
+        "shop/funeral_directors": {
+            "name": "\u6baf\u5100\u9928",
+            "terms": "\u6baf\u5100\u9928"
+        },
+        "shop/furnace": {
+            "name": "\u6696\u6c23\u7210\u5e97"
+        },
+        "shop/furniture": {
+            "name": "\u50a2\u4fec\u5e97",
+            "terms": "Furniture Store,\u50a2\u4fec\u8216,\u50a2\u5177\u5e97,\u5bb6\u5177\u5e97"
+        },
+        "shop/garden_centre": {
+            "name": "\u5712\u85dd\u4e2d\u5fc3",
+            "terms": "Garden Center,\u5712\u85dd\u4e2d\u5fc3,\u5712\u85dd\u8216,\u82b1\u5e97"
+        },
+        "shop/gas": {
+            "name": "\u74f6\u88dd\u77f3\u6cb9\u6c23\u5e97",
+            "terms": "Bottled Gas Shop, \u6a3d\u88dd\u77f3\u6cb9\u6c23\u5e97"
+        },
+        "shop/gift": {
+            "name": "\u79ae\u54c1\u5e97",
+            "terms": "Gift Shop,\u79ae\u54c1\u5e97,\u79ae\u54c1\u8216,\u79ae\u7269\u5e97"
+        },
+        "shop/greengrocer": {
+            "name": "\u83dc\u6a94",
+            "terms": "Greengrocer,\u679c\u852c\u5e97,\u83dc\u6a94,\u852c\u679c\u5e97,\u751f\u679c,\u83dc\u8ca9"
+        },
+        "shop/hairdresser": {
+            "name": "\u7406\u9aee\u5e97",
+            "terms": "Hairdresser,\u7406\u9aee\u5e97,\u98db\u9aee\u8216"
+        },
+        "shop/hardware": {
+            "name": "\u4e94\u91d1\u5e97",
+            "terms": "Hardware Store,\u4e94\u91d1\u5e97,\u4e94\u91d1\u8216"
+        },
+        "shop/hearing_aids": {
+            "name": "\u52a9\u807d\u5668\u5e97",
+            "terms": "\u52a9\u807d\u5668\u5546\u5e97,\u8033\u807e\u6a5f"
+        },
+        "shop/herbalist": {
+            "name": "\u8349\u85e5\u5e97",
+            "terms": "\u8349\u85e5\u5e97,\u4e2d\u85e5\u5e97"
+        },
+        "shop/hifi": {
+            "name": "\u97f3\u97ff\u5e97",
+            "terms": "Hifi Store,\u97f3\u97ff\u5e97,\u97f3\u97ff\u8216"
+        },
+        "shop/houseware": {
+            "name": "\u5bb6\u5ead\u7528\u54c1\u5e97",
+            "terms": "\u5bb6\u54c1\u5e97,\u5bb6\u5c45\u7528\u54c1\u5e97"
+        },
+        "shop/interior_decoration": {
+            "name": "\u5ba4\u5167\u8a2d\u8a08\u5e97",
+            "terms": "\u5ba4\u5167\u8a2d\u8a08\u5e97"
+        },
+        "shop/kitchen": {
+            "name": "\u5eda\u623f\u8a2d\u8a08\u5e97",
+            "terms": "\u5eda\u623f\u8a2d\u8a08\u5e97"
+        },
+        "shop/laundry": {
+            "name": "\u6d17\u8863\u5e97",
+            "terms": "Laundry,\u6d17\u8863\u5e97,\u6d17\u8863\u8216"
+        },
+        "shop/leather": {
+            "name": "\u76ae\u9769\u5e97",
+            "terms": "\u76ae\u9769\u5e97"
+        },
+        "shop/locksmith": {
+            "name": "\u9396\u5320",
+            "terms": "Locksmith,\u9396\u5320,\u9396\u5320\u92ea,\u958b\u9396\u4f6c"
+        },
+        "shop/lottery": {
+            "name": "\u734e\u5238\u5e97",
+            "terms": "\u6295\u6ce8\u7ad9,\u516d\u5408\u5f69"
+        },
+        "shop/mall": {
+            "name": "\u8cfc\u7269\u4e2d\u5fc3",
+            "terms": "Mall,\u5546\u5834,\u8cfc\u7269\u4e2d\u5fc3"
+        },
+        "shop/massage": {
+            "name": "\u6309\u6469\u5e97",
+            "terms": "\u6309\u6469\u5546\u5e97, \u6309\u6469\u4e2d\u5fc3,\u8173\u5e95\u6309\u6469"
+        },
+        "shop/medical_supply": {
+            "name": "\u91ab\u7642\u5668\u6750\u884c",
+            "terms": "\u91ab\u7642\u7528\u54c1\u4f9b\u61c9"
+        },
+        "shop/mobile_phone": {
+            "name": "\u6d41\u52d5\u96fb\u8a71\u5e97",
+            "terms": "Mobile Phone Store,\u624b\u6a5f\u5e97,\u884c\u52d5\u96fb\u8a71\u5e97,\u96fb\u8a71\u8216"
+        },
+        "shop/money_lender": {
+            "name": "\u653e\u50b5\u4eba",
+            "terms": "\u653e\u6b3e\u4eba,\u501f\u9322,\u8ca1\u52d9\u516c\u53f8"
+        },
+        "shop/motorcycle": {
+            "name": "\u96fb\u55ae\u8eca\u5e97",
+            "terms": "Motorcycle Dealership,\u6469\u6258\u8eca\u884c,\u96fb\u55ae\u8eca\u884c"
+        },
+        "shop/music": {
+            "name": "\u5531\u7247\u5e97",
+            "terms": "Music Store,\u5531\u7247\u8216,\u97f3\u6a02\u5e97"
+        },
+        "shop/musical_instrument": {
+            "name": "\u6a02\u5668\u5e97",
+            "terms": "\u6a02\u5668\u884c,\u6a02\u5668\u5e97"
+        },
+        "shop/newsagent": {
+            "name": "\u5831\u7d19/\u96dc\u8a8c\u5e97",
+            "terms": "\u5831\u520a\u6a94,\u5831\u520a\u5546\u5e97"
+        },
+        "shop/nutrition_supplements": {
+            "name": "\u71df\u990a\u88dc\u5145\u54c1\u5e97",
+            "terms": "\u71df\u990a\u88dc\u5145\u54c1\u5e97"
+        },
+        "shop/optician": {
+            "name": "\u773c\u93e1\u5e97",
+            "terms": "Optician,\u773c\u93e1\u5e97,\u773c\u93e1\u884c,\u773c\u93e1\u8216"
+        },
+        "shop/organic": {
+            "name": "\u6709\u6a5f\u7522\u54c1\u5e97",
+            "terms": "\u6709\u6a5f\u7522\u54c1\u5e97"
+        },
+        "shop/outdoor": {
+            "name": "\u6236\u5916\u7528\u54c1\u5e97",
+            "terms": "\u6236\u5916\u7528\u54c1\u5e97"
+        },
+        "shop/paint": {
+            "name": "\u6cb9\u6f06\u5e97",
+            "terms": "\u6f06\u6cb9\u5e97"
+        },
+        "shop/pastry": {
+            "name": "\u699a\u9ede\u5e97",
+            "terms": "Pastry Shop, \u897f\u9905\u5e97, \u699a\u9905\u5e97, \u699a\u9ede\u5e97"
+        },
+        "shop/pawnbroker": {
+            "name": "\u7576\u8216",
+            "terms": "\u5927\u62bc,\u62bc,\u7576\u62bc"
+        },
+        "shop/perfumery": {
+            "name": "\u9999\u6c34\u5e97",
+            "terms": "Perfume Store,\u9999\u6c34\u5e97"
+        },
+        "shop/pet": {
+            "name": "\u5bf5\u7269\u8216",
+            "terms": "Pet Store,\u5bf5\u7269\u5e97,\u5bf5\u7269\u8216"
+        },
+        "shop/photo": {
+            "name": "\u76f8\u7247\u6c96\u5370\u5e97",
+            "terms": "Photography Store,\u5f71\u76f8\u8216,\u7167\u76f8\u9928,\u6652\u76f8,\u66ec\u76f8"
+        },
+        "shop/pyrotechnics": {
+            "name": "\u7159\u82b1\u5e97",
+            "terms": "\u7206\u7af9,\u7159\u82b1,\u7159\u706b,\u70ae\u7af9"
+        },
+        "shop/radiotechnics": {
+            "name": "\u7121\u7dda\u96fb/\u96fb\u5b50\u96f6\u4ef6\u5e97",
+            "terms": "\u7121\u7dda\u96fb/\u96fb\u5b50\u96f6\u4ef6\u5e97,\u5c0d\u8b1b\u6a5f\u5e97,\u96fb\u5b50\u96f6\u4ef6\u5e97"
+        },
+        "shop/religion": {
+            "name": "\u5b97\u6559\u7528\u54c1\u5e97",
+            "terms": "\u5b97\u6559\u7528\u54c1\u5e97,\u9999\u8216,\u7d19\u7d2e\u8216,\u91d1\u9280\u8863\u7d19\u5e97"
+        },
+        "shop/scuba_diving": {
+            "name": "\u6f5b\u6c34\u7528\u54c1\u5e97",
+            "terms": "\u6c34\u80ba\u5f0f\u6f5b\u6c34,\u6df1\u6d77\u6f5b\u6c34"
+        },
+        "shop/seafood": {
+            "name": "\u6d77\u9bae\u5e97",
+            "terms": "\u6d77\u7522\u5e97"
+        },
+        "shop/second_hand": {
+            "name": "\u5bc4\u8ce3/\u4e8c\u624b\u5e97",
+            "terms": "\u683c\u4ed4\u5e97,\u4e8c\u624b\u5e97"
+        },
+        "shop/shoes": {
+            "name": "\u978b\u8216",
+            "terms": "Shoe Store,\u978b\u5e97,\u978b\u8216"
+        },
+        "shop/sports": {
+            "name": "\u904b\u52d5\u7528\u54c1\u5e97",
+            "terms": "Sporting Goods Store,\u904b\u52d5\u7528\u54c1\u5e97,\u904b\u52d5\u8216,\u9ad4\u80b2,\u9ad4\u80b2\u7528\u54c1\u5e97"
+        },
+        "shop/stationery": {
+            "name": "\u6587\u5177\u5e97",
+            "terms": "Stationery Store,\u6587\u5177\u5e97,\u6587\u5177\u8216"
+        },
+        "shop/storage_rental": {
+            "name": "\u5b58\u5009",
+            "terms": "\u8ff7\u4f60\u5009,\u5132\u5b58\u5009"
+        },
+        "shop/supermarket": {
+            "name": "\u8d85\u7d1a\u5e02\u5834",
+            "terms": "Supermarket,\u8d85\u7d1a\u5e02\u5834"
+        },
+        "shop/tailor": {
+            "name": "\u88c1\u7e2b",
+            "terms": "\u88c1\u7e2b,\u6539\u8863"
+        },
+        "shop/tattoo": {
+            "name": "\u7d0b\u8eab\u5e97",
+            "terms": "\u523a\u9752\u5e97"
+        },
+        "shop/tea": {
+            "name": "\u8336\u838a",
+            "terms": "\u8336\u8449\u5e97,\u8336\u884c"
+        },
+        "shop/ticket": {
+            "name": "\u9580\u7968\u552e\u8ce3",
+            "terms": "\u9580\u7968\u51fa\u552e"
+        },
+        "shop/tobacco": {
+            "name": "\u7159\u8349\u5e97",
+            "terms": "\u7159\u8349\u5e97"
+        },
+        "shop/toys": {
+            "name": "\u73a9\u5177\u5e97",
+            "terms": "Toy Store,\u73a9\u5177\u5e97,\u73a9\u5177\u8216"
+        },
+        "shop/travel_agency": {
+            "name": "\u65c5\u884c\u793e",
+            "terms": "Travel Agency,\u65c5\u884c\u793e"
+        },
+        "shop/tyres": {
+            "name": "\u8f2a\u80ce\u5e97",
+            "terms": "Tire Store,\u8eda\u8216,\u8f2a\u80ce\u5e97"
+        },
+        "shop/vacant": {
+            "name": "\u7a7a\u7f6e\u5546\u8216"
+        },
+        "shop/vacuum_cleaner": {
+            "name": "\u5438\u5875\u6a5f\u5e97",
+            "terms": "\u5438\u5875\u5668\u5e97"
+        },
+        "shop/variety_store": {
+            "name": "\u5341\u868a\u5e97",
+            "terms": "Variety Store,\u96dc\u8ca8\u5e97,\u96dc\u8ca8\u8216"
+        },
+        "shop/video": {
+            "name": "\u5f71\u8996\u5e97",
+            "terms": "Video Store,\u5f71\u50cf\u5e97,\u5f71\u789f\u5e97,\u5f71\u8996\u5e97"
+        },
+        "shop/video_games": {
+            "name": "\u96fb\u5b50\u904a\u6232\u5e97",
+            "terms": "\u96fb\u5b50\u904a\u6232\u5e97,\u96fb\u8996\u904a\u6232\u5e97"
+        },
+        "shop/watches": {
+            "name": "\u624b\u9336\u5e97",
+            "terms": "Watches Shop,\u9336\u5e97,\u624b\u8868\u5e97,\u9336\u884c,\u8868\u884c"
+        },
+        "shop/water_sports": {
+            "name": "\u6c34\u4e0a\u6d3b\u52d5/\u6e38\u6cf3\u7528\u54c1\u5e97",
+            "terms": "\u6cf3\u5177\u5e97"
+        },
+        "shop/weapons": {
+            "name": "\u6b66\u5668\u5e97",
+            "terms": "\u6b66\u5668\u5546\u5e97, \u5b50\u5f48, \u69cd, \u5200"
+        },
+        "shop/window_blind": {
+            "name": "\u767e\u8449\u7c3e\u5e97",
+            "terms": "\u6372\u7c3e,\u906e\u5149\u6372\u7c3e,\u967d\u5149\u6372\u7c3e,\u767e\u8449\u7a97,\u767e\u8449\u7a97\u7c3e"
+        },
+        "shop/wine": {
+            "name": "\u9152\u54c1\u5e97",
+            "terms": "\u7d05\u9152\u5e97,\u767d\u9152\u5e97"
+        },
+        "tourism": {
+            "name": "\u65c5\u904a\u8a2d\u65bd"
+        },
+        "tourism/alpine_hut": {
+            "name": "\u9ad8\u5c71\u5c0f\u5c4b",
+            "terms": "Alpine Hut,\u9ad8\u5c71\u5c0f\u5c4b,\u9ad8\u5c71\u5c4b\u4ed4"
+        },
+        "tourism/apartment": {
+            "name": "\u6c11\u5bbf\u516c\u5bd3 / \u77ed\u79df\u516c\u5bd3",
+            "terms": "Guest Apartment / Condo, \u6c11\u5bbf\u516c\u5bd3, \u77ed\u79df\u516c\u5bd3"
+        },
+        "tourism/aquarium": {
+            "name": "\u6c34\u65cf\u9928",
+            "terms": "Aquarium, \u6c34\u65cf\u9928"
+        },
+        "tourism/artwork": {
+            "name": "\u85dd\u8853\u54c1",
+            "terms": "Artwork,\u85dd\u8853\u54c1"
+        },
+        "tourism/attraction": {
+            "name": "\u89c0\u5149\u540d\u52dd",
+            "terms": "Tourist Attraction,\u65c5\u884c\u540d\u52dd,\u65c5\u904a\u540d\u52dd,\u89c0\u5149\u9ede,\u89c0\u5149\u666f\u9ede"
+        },
+        "tourism/camp_site": {
+            "name": "\u71df\u5730",
+            "terms": "Campground, Camp Site,\u71df\u5730,\u9732\u71df\u5340"
+        },
+        "tourism/caravan_site": {
+            "name": "\u9732\u71df\u8eca\u71df\u5730",
+            "terms": "RV Park,\u623f\u8eca\u71df\u5730,\u9732\u71df\u8eca\u505c\u8eca\u5834,\u9732\u71df\u8eca\u71df\u5730"
+        },
+        "tourism/gallery": {
+            "name": "\u756b\u5eca",
+            "terms": "\u85dd\u5eca,\u85dd\u8853\u5eca"
+        },
+        "tourism/guest_house": {
+            "name": "\u8cd3\u9928",
+            "terms": "Guest House,\u8cd3\u9928,\u62db\u5f85\u6240"
+        },
+        "tourism/hostel": {
+            "name": "\u65c5\u820d",
+            "terms": "Hostel,\u62db\u5f85\u6240,\u65c5\u820d,\u5bbf\u820d"
+        },
+        "tourism/hotel": {
+            "name": "\u9152\u5e97",
+            "terms": "Hotel,\u9152\u5e97,\u65c5\u9928"
+        },
+        "tourism/information": {
+            "name": "\u65c5\u904a\u8cc7\u8a0a",
+            "terms": "Information,\u8cc7\u8a0a,\u8cc7\u8a0a\u8655"
+        },
+        "tourism/information/board": {
+            "name": "\u8cc7\u6599\u986f\u793a\u677f",
+            "terms": "Information Board, \u544a\u793a\u677f, \u8cc7\u8a0a\u7248, \u544a\u793a\u724c"
+        },
+        "tourism/information/guidepost": {
+            "name": "\u6307\u793a\u724c",
+            "terms": "Guidepost, \u65b9\u5411\u6307\u793a\u724c"
+        },
+        "tourism/information/map": {
+            "name": "\u5730\u5716",
+            "terms": "Map, \u5730\u5716"
+        },
+        "tourism/information/office": {
+            "name": "\u904a\u5ba2\u4e2d\u5fc3",
+            "terms": "Tourist Information Office, \u65c5\u5ba2\u4e2d\u5fc3, \u904a\u5ba2\u4e2d\u5fc3, \u65c5\u5ba2\u8aee\u8a62\u4e2d\u5fc3"
+        },
+        "tourism/motel": {
+            "name": "\u6c7d\u8eca\u9152\u5e97",
+            "terms": "Motel,\u6c7d\u8eca\u65c5\u9928,\u6c7d\u8eca\u9152\u5e97,\u6642\u79df\u65c5\u5e97"
+        },
+        "tourism/museum": {
+            "name": "\u535a\u7269\u9928",
+            "terms": "Museum,\u535a\u7269\u9928"
+        },
+        "tourism/picnic_site": {
+            "name": "\u90ca\u904a\u5730\u9ede",
+            "terms": "Picnic Site,\u90ca\u904a\u5730\u9ede,\u91ce\u9910\u5730\u9ede"
+        },
+        "tourism/theme_park": {
+            "name": "\u4e3b\u984c\u516c\u5712",
+            "terms": "Theme Park,\u4e3b\u984c\u516c\u5712"
+        },
+        "tourism/viewpoint": {
+            "name": "\u89c0\u666f\u81fa",
+            "terms": "Viewpoint,\u666f\u9ede,\u773a\u671b,\u77ad\u671b\u53f0,\u77ad\u671b\u81fa,\u89c0\u666f\u53f0,\u89c0\u666f\u81fa,\u89c0\u666f\u9ede"
+        },
+        "tourism/zoo": {
+            "name": "\u52d5\u7269\u5712",
+            "terms": "Zoo,\u52d5\u7269\u5712"
+        },
+        "traffic_calming": {
+            "name": "\u4ea4\u901a\u7d13\u7de9",
+            "terms": "Traffic Calming, \u60a0\u9592\u5f0f\u8857\u9053"
+        },
+        "traffic_calming/bump": {
+            "name": "\u6e1b\u901f\u58c6",
+            "terms": "\u6e1b\u901f\u5e36,\u6e1b\u901f\u5668"
+        },
+        "traffic_calming/chicane": {
+            "name": "\u9023\u7e8c\u5f4e\u9053",
+            "terms": "Traffic Chicane, \u6e1b\u901f\u5f4e\u9053"
+        },
+        "traffic_calming/choker": {
+            "name": "\u9053\u8def\u6536\u7a84",
+            "terms": "Traffic Choker, \u9053\u8def\u6536\u7a84"
+        },
+        "traffic_calming/cushion": {
+            "name": "\u6e1b\u901f\u588a",
+            "terms": "Speed Cushion, \u6e1b\u901f\u8edf\u81a0"
+        },
+        "traffic_calming/dip": {
+            "name": "\u6e1b\u901f\u5751",
+            "terms": "Dip, \u6e1b\u901f\u5761"
+        },
+        "traffic_calming/hump": {
+            "name": "\u7de9\u885d\u8def\u62f1",
+            "terms": "\u6e1b\u901f\u58c6"
+        },
+        "traffic_calming/island": {
+            "name": "\u4ea4\u901a\u5cf6",
+            "terms": "Traffic island, \u5206\u9694\u5cf6, \u5b89\u5168\u5cf6"
+        },
+        "traffic_calming/rumble_strip": {
+            "name": "\u6e1b\u901f\u632f\u52d5\u5e36",
+            "terms": "\u9f52\u7d0b\u6a19\u8a8c\u5e36,\u9686\u8d77\u6a19\u8a8c\u5e36"
+        },
+        "type/boundary": {
+            "name": "\u908a\u754c",
+            "terms": "Boundary,\u754c,\u908a\u754c"
+        },
+        "type/boundary/administrative": {
+            "name": "\u884c\u653f\u908a\u754c",
+            "terms": "Administrative Boundary,\u884c\u653f\u754c\u7dda,\u884c\u653f\u908a\u754c"
+        },
+        "type/multipolygon": {
+            "name": "\u591a\u91cd\u591a\u908a\u5f62"
+        },
+        "type/restriction": {
+            "name": "\u9650\u5236",
+            "terms": "Restriction,\u9650\u5236"
+        },
+        "type/restriction/no_left_turn": {
+            "name": "\u4e0d\u51c6\u5de6\u8f49",
+            "terms": "\u7981\u6b62\u5de6\u8f49,\u4e0d\u53ef\u4ee5\u5de6\u8f49,\u56b4\u7981\u5de6\u8f49"
+        },
+        "type/restriction/no_right_turn": {
+            "name": "\u4e0d\u51c6\u53f3\u8f49",
+            "terms": "\u7981\u6b62\u53f3\u8f49,\u4e0d\u53ef\u4ee5\u53f3\u8f49,\u56b4\u7981\u53f3\u8f49"
+        },
+        "type/restriction/no_straight_on": {
+            "name": "\u4e0d\u51c6\u76f4\u99db",
+            "terms": "\u7981\u6b62\u9032\u5165"
+        },
+        "type/restriction/no_u_turn": {
+            "name": "\u4e0d\u51c6\u6389\u982d",
+            "terms": "\u7981\u6b62\u6389\u982d"
+        },
+        "type/route": {
+            "name": "\u8def\u7dab",
+            "terms": "Route,\u8def\u7dab,\u8def\u7dda"
+        },
+        "type/route/bicycle": {
+            "name": "\u55ae\u8eca\u8def\u7dab",
+            "terms": "Cycle Route,\u55ae\u8eca\u8def\u7dab,\u55ae\u8eca\u8def\u7dda,\u8173\u8e0f\u8eca\u8def\u7dda,\u81ea\u884c\u8eca\u8def\u7dda"
+        },
+        "type/route/bus": {
+            "name": "\u5df4\u58eb\u8def\u7dab",
+            "terms": "Bus Route,\u516c\u5171\u6c7d\u8eca\u8def\u7dda,\u5df4\u58eb\u8def\u7dab"
+        },
+        "type/route/detour": {
+            "name": "\u7e5e\u9053\u8def\u7dab",
+            "terms": "Detour Route,\u7e5e\u9053,\u7e5e\u9053\u8def\u7dab,\u7e5e\u9053\u8def\u7dda"
+        },
+        "type/route/ferry": {
+            "name": "\u6e21\u8f2a\u822a\u7dda",
+            "terms": "Ferry Route,\u6e21\u8f2a\u822a\u7dda,\u822a\u7dab"
+        },
+        "type/route/foot": {
+            "name": "\u6b65\u884c\u8def\u7dab",
+            "terms": "Foot Route,\u6b65\u884c\u8def\u7dda,\u884c\u4eba\u8def\u7dab,\u884c\u4eba\u8def\u7dda"
+        },
+        "type/route/hiking": {
+            "name": "\u9060\u8db3\u8def\u7dab",
+            "terms": "Hiking Route,\u884c\u5c71\u8def\u7dab,\u884c\u5c71\u8def\u7dda,\u9060\u8db3\u8def\u7dda"
+        },
+        "type/route/horse": {
+            "name": "\u7b56\u9a0e\u8def\u7dda",
+            "terms": "\u9a0e\u99ac\u8def\u7dda"
+        },
+        "type/route/light_rail": {
+            "name": "\u8f15\u9435\u8def\u7dab",
+            "terms": "Light Rail Route, \u8f15\u9435\u8def\u7dda"
+        },
+        "type/route/pipeline": {
+            "name": "\u7ba1\u9053\u8def\u7dab",
+            "terms": "Pipeline Route,\u4f9b\u6c34\u8def\u7dab,\u4f9b\u6c34\u8def\u7dda,\u6c34\u7ba1\u8def\u7dab,\u7ba1\u9053\u8def\u7dda"
+        },
+        "type/route/power": {
+            "name": "\u4f9b\u96fb\u8def\u7dab",
+            "terms": "Power Route,\u4f9b\u96fb\u8def\u7dab,\u4f9b\u96fb\u8def\u7dda"
+        },
+        "type/route/road": {
+            "name": "\u9053\u8def\u8def\u7dab",
+            "terms": "Road Route,\u884c\u8eca\u8def\u7dab,\u884c\u8eca\u8def\u7dda,\u9053\u8def\u8def\u7dda"
+        },
+        "type/route/train": {
+            "name": "\u706b\u8eca\u8def\u7dab",
+            "terms": "Train Route,\u706b\u8eca\u7dab,\u706b\u8eca\u7dda,\u706b\u8eca\u8def\u7dab,\u9435\u8def\u7dab,\u9435\u8def\u7dda,\u9435\u8def\u8def\u7dab,\u9435\u8def\u8def\u7dda"
+        },
+        "type/route/tram": {
+            "name": "\u96fb\u8eca\u8def\u7dab",
+            "terms": "Tram Route,\u96fb\u8eca\u8def\u7dab,\u96fb\u8eca\u8def\u7dda"
+        },
+        "type/route_master": {
+            "name": "\u8def\u7dab\u7e3d\u89bd",
+            "terms": "Route Master,\u7dda\u8def\u7e3d\u7ba1,\u8def\u7dab\u7e3d\u7ba1,\u8def\u7dda\u7e3d\u76ee"
+        },
+        "type/site": {
+            "name": "\u5efa\u7bc9\u7fa4",
+            "terms": "\u4e00\u7fa4\u5efa\u7bc9"
+        },
+        "vertex": {
+            "name": "\u5176\u4ed6",
+            "terms": "Other,\u5176\u4ed6,\u5176\u5b83"
+        },
+        "waterway": {
+            "name": "\u6c34\u9053"
+        },
+        "waterway/boatyard": {
+            "name": "\u8239\u5ee0",
+            "terms": "\u8247\u5ee0"
+        },
+        "waterway/canal": {
+            "name": "\u904b\u6cb3",
+            "terms": "Canal,\u6c34\u9053,\u904b\u6cb3"
+        },
+        "waterway/dam": {
+            "name": "\u5824\u58e9",
+            "terms": "Dam,\u5824\u58e9,\u58e9,\u6c34\u58e9"
+        },
+        "waterway/ditch": {
+            "name": "\u6e9d\u6e20",
+            "terms": "Ditch,\u6e9d,\u6e9d\u6e20,\u660e\u6e9d"
+        },
+        "waterway/dock": {
+            "name": "\u6fd5\u8239\u5862/\u4e7e\u8239\u5862",
+            "terms": "\u6fd5\u5f0f\u8239\u5862,\u4e7e\u5f0f\u8239\u5862"
+        },
+        "waterway/drain": {
+            "name": "\u6392\u6c34\u9053",
+            "terms": "Drain,\u4e0b\u6c34\u9053,\u6392\u6c34\u9053,\u6e20,\u6392\u6c34\u6e20,\u6392\u6c34\u7ba1,\u6c61\u6c34\u6e20"
+        },
+        "waterway/fuel": {
+            "name": "\u8239\u8236\u52a0\u6cb9\u7ad9",
+            "terms": "\u8239\u96bb\u52a0\u71c3\u6599\u7ad9,\u8239\u96bb\u52a0\u6cb9\u7ad9,\u8239\u7528\u52a0\u6cb9\u7ad9"
+        },
+        "waterway/river": {
+            "name": "\u6cb3\u6d41",
+            "terms": "River,\u6c5f,\u6c5f\u6cb3,\u6cb3,\u6cb3\u6d41,\u6cb3\u5ddd"
+        },
+        "waterway/riverbank": {
+            "name": "\u6cb3\u5cb8"
+        },
+        "waterway/sanitary_dump_station": {
+            "name": "\u8239\u8236\u6c61\u6c34\u8655\u7406",
+            "terms": "\u8239\u8236\u6c61\u7269\u8655\u7406,\u8239\u96bb\u6c61\u7269\u8655\u7406,\u8239\u8236\u6c61\u6c34\u8655\u7406"
+        },
+        "waterway/stream": {
+            "name": "\u6eaa\u6d41",
+            "terms": "Stream,\u5c0f\u6cb3,\u5c0f\u6eaa,\u6d8c,\u6eaa,\u6eaa\u6d41, \u6cb3\u6eaa,\u6eaa\u6f97"
+        },
+        "waterway/water_point": {
+            "name": "\u8239\u96bb\u98f2\u7528\u6c34",
+            "terms": "\u8239\u8236\u98f2\u7528\u6c34,\u8239\u7528\u98f2\u7528\u6c34"
+        },
+        "waterway/waterfall": {
+            "name": "\u7011\u5e03",
+            "terms": "Waterfall,\u7011\u5e03"
+        },
+        "waterway/weir": {
+            "name": "\u5858\u5830",
+            "terms": "Weir,\u5824\u5830,\u5824\u58e9,\u5830,\u58e9,\u5858\u5830,\u5c0e\u6d41\u58e9"
+        }
+    }
+}

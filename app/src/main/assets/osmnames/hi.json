@@ -1,0 +1,61 @@
+{
+    "presets": {
+        "address": {
+            "name": "\u092a\u0924\u093e"
+        },
+        "amenity/clock": {
+            "name": "\u0918\u0921\u0940"
+        },
+        "amenity/drinking_water": {
+            "name": "\u092a\u0940\u0928\u0947 \u0915\u093e \u092a\u093e\u0928\u0940"
+        },
+        "area": {
+            "name": "\u090f\u0930\u093f\u092f\u093e"
+        },
+        "barrier/wall": {
+            "name": "\u0926\u093f\u0935\u093e\u0930"
+        },
+        "building/house": {
+            "name": "\u092e\u0915\u093e\u0928"
+        },
+        "building/hut": {
+            "name": "\u091d\u094b\u092a\u0921\u093c\u0940"
+        },
+        "craft/tailor": {
+            "name": "\u0926\u0931\u091c\u0940"
+        },
+        "golf/rough": {
+            "name": "\u0916\u0941\u0930\u0926\u0941\u0930\u093e"
+        },
+        "landuse/grass": {
+            "name": "\u0918\u093e\u0938"
+        },
+        "line": {
+            "name": "\u0930\u0947\u0916\u093e"
+        },
+        "natural/tree": {
+            "name": "\u092a\u0947\u0921\u093c"
+        },
+        "natural/water": {
+            "name": "\u092a\u093e\u0928\u0940"
+        },
+        "natural/water/lake": {
+            "name": "\u091d\u0940\u0932"
+        },
+        "natural/water/pond": {
+            "name": "\u0924\u0932\u093e\u092c"
+        },
+        "point": {
+            "name": "\u092c\u093f\u0902\u0926\u0941"
+        },
+        "tourism/zoo": {
+            "name": "\u091a\u093f\u0921\u093c\u093f\u092f\u093e \u0918\u0930"
+        },
+        "waterway/river": {
+            "name": "\u0928\u0926\u0940"
+        },
+        "waterway/waterfall": {
+            "name": "\u091d\u0930\u0928\u093e"
+        }
+    }
+}

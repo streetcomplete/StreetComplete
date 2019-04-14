@@ -1,0 +1,1692 @@
+{
+    "presets": {
+        "address": {
+            "name": "Adrese"
+        },
+        "advertising/billboard": {
+            "name": "Rekl\u0101mas d\u0113lis"
+        },
+        "advertising/column": {
+            "name": "Rekl\u0101mu stabs"
+        },
+        "aerialway/cable_car": {
+            "name": "Trosu Ce\u013c\u0161"
+        },
+        "aeroway": {
+            "name": "Skrejce\u013c\u0161"
+        },
+        "aeroway/aerodrome": {
+            "name": "Lidosta"
+        },
+        "aeroway/gate": {
+            "name": "Lidostas v\u0101rti"
+        },
+        "aeroway/hangar": {
+            "name": "Ang\u0101rs"
+        },
+        "aeroway/helipad": {
+            "name": "Helikopteru nos\u0113\u0161an\u0101s laukums"
+        },
+        "aeroway/runway": {
+            "name": "Skrejce\u013c\u0161"
+        },
+        "aeroway/taxiway": {
+            "name": "Manevr\u0113\u0161anas ce\u013c\u0161"
+        },
+        "aeroway/terminal": {
+            "name": "Lidostas Termin\u0101lis"
+        },
+        "amenity": {
+            "name": "Labier\u012bc\u012bba"
+        },
+        "amenity/animal_shelter": {
+            "name": "Dz\u012bvnieku patversme"
+        },
+        "amenity/arts_centre": {
+            "name": "M\u0101kslas Centrs"
+        },
+        "amenity/atm": {
+            "name": "Bankom\u0101ts"
+        },
+        "amenity/bank": {
+            "name": "Banka"
+        },
+        "amenity/bar": {
+            "name": "B\u0101rs"
+        },
+        "amenity/bbq": {
+            "name": "Barbekj\u016b/Grills"
+        },
+        "amenity/bench": {
+            "name": "Sols"
+        },
+        "amenity/bicycle_parking": {
+            "name": "Velo st\u0101vvieta"
+        },
+        "amenity/bicycle_rental": {
+            "name": "Velonoma",
+            "terms": "velosip\u0113du"
+        },
+        "amenity/bicycle_repair_station": {
+            "name": "Velosip\u0113du Remonta Darbar\u012bku Stends"
+        },
+        "amenity/boat_rental": {
+            "name": "Laivu \u012bre"
+        },
+        "amenity/bureau_de_change": {
+            "name": "Val\u016btas Mai\u0146a"
+        },
+        "amenity/bus_station": {
+            "name": "Autobusu pietura / Termin\u0101lis"
+        },
+        "amenity/cafe": {
+            "name": "Kafejn\u012bca",
+            "terms": "bistro,krogs,kafija,t\u0113ja"
+        },
+        "amenity/car_rental": {
+            "name": "Autonoma"
+        },
+        "amenity/car_wash": {
+            "name": "Automazg\u0101tuve"
+        },
+        "amenity/casino": {
+            "name": "Kazino"
+        },
+        "amenity/charging_station": {
+            "name": "Uzl\u0101des stacija",
+            "terms": "Elektrisk\u0101,Uzl\u0101de,Elektroauto,Superl\u0101de,Zemsprieguma uzl\u0101de"
+        },
+        "amenity/childcare": {
+            "name": "B\u0113rnistaba / B\u0113rnu apr\u016bpe"
+        },
+        "amenity/cinema": {
+            "name": "Kino",
+            "terms": "kinote\u0101tris,filmas,izr\u0101des,lielekr\u0101na"
+        },
+        "amenity/clinic": {
+            "name": "Kl\u012bnika",
+            "terms": "medic\u012bna,neatliekama"
+        },
+        "amenity/clinic/abortion": {
+            "name": "Aborta kl\u012bnika"
+        },
+        "amenity/clinic/fertility": {
+            "name": "Fertilit\u0101tes Kl\u012bnika"
+        },
+        "amenity/clock": {
+            "name": "Pulkstenis"
+        },
+        "amenity/community_centre": {
+            "name": "Kopienas centrs"
+        },
+        "amenity/compressed_air": {
+            "name": "Saspiests Gaiss",
+            "terms": "Augstspiediena, Riepu uzpilde"
+        },
+        "amenity/courthouse": {
+            "name": "Tiesas nams",
+            "terms": "tiesnesis,apgabaltiesa"
+        },
+        "amenity/crematorium": {
+            "name": "Krematorija",
+            "terms": "b\u0113res, kapi"
+        },
+        "amenity/dentist": {
+            "name": "Zob\u0101rsts",
+            "terms": "zobi, \u0101rsts, hig\u0113nists"
+        },
+        "amenity/doctors": {
+            "name": "Dakteris",
+            "terms": "\u0101rsts, medic\u012bna"
+        },
+        "amenity/dojo": {
+            "name": "Dojo / Karat\u0113 apm\u0101c\u012bba",
+            "terms": "karat\u0113, skola"
+        },
+        "amenity/drinking_water": {
+            "name": "Dzeram\u016bdens"
+        },
+        "amenity/driving_school": {
+            "name": "Autoskola",
+            "terms": "brauk\u0161ana,apm\u0101c\u012bba"
+        },
+        "amenity/embassy": {
+            "name": "V\u0113stniec\u012bba"
+        },
+        "amenity/fast_food": {
+            "name": "\u0100tr\u0101s \u0113din\u0101\u0161anas iest\u0101de",
+            "terms": "restor\u0101ns, l\u012bdz\u0146em\u0161ana"
+        },
+        "amenity/ferry_terminal": {
+            "name": "Pr\u0101mju stacija / Termin\u0101lis"
+        },
+        "amenity/fire_station": {
+            "name": "Ugunsdz\u0113s\u0113ju stacija",
+            "terms": "pa\u017earnieki, depo"
+        },
+        "amenity/food_court": {
+            "name": "\u0112dn\u012bca",
+            "terms": "restor\u0101ns,\u0101tr\u0101 uzkoda,\u0113diens"
+        },
+        "amenity/fountain": {
+            "name": "Str\u016bklaka"
+        },
+        "amenity/fuel": {
+            "name": "Degvielas uzpildes stacija",
+            "terms": "degviela,d\u012bzelis,g\u0101ze,98,95,uzpilde"
+        },
+        "amenity/grave_yard": {
+            "name": "Kapi"
+        },
+        "amenity/grit_bin": {
+            "name": "Smil\u0161u tvertne",
+            "terms": "s\u0101ls kaste,smil\u0161u kaste,smiltis,s\u0101ls,grants"
+        },
+        "amenity/hunting_stand": {
+            "name": "Med\u012bbu stends",
+            "terms": "iero\u010du, \u0161au\u0161ana, \u0161autuve"
+        },
+        "amenity/ice_cream": {
+            "name": "Sald\u0113juma Veikals",
+            "terms": "sorbejs, sald\u0113ts"
+        },
+        "amenity/internet_cafe": {
+            "name": "Interneta Kafejn\u012bca"
+        },
+        "amenity/kindergarten": {
+            "terms": "b\u0113\u0157nud\u0101rzs,pirmskola"
+        },
+        "amenity/library": {
+            "name": "Bibliot\u0113ka",
+            "terms": "gr\u0101matas, las\u012btava"
+        },
+        "amenity/marketplace": {
+            "name": "Tirgus"
+        },
+        "amenity/motorcycle_parking": {
+            "name": "Motociklu st\u0101vvieta"
+        },
+        "amenity/music_school": {
+            "name": "M\u016bzikas skola",
+            "terms": "dzied\u0101\u0161anas skola, m\u016bzikas instrumenti"
+        },
+        "amenity/nightclub": {
+            "name": "Naktsklubs",
+            "terms": "klubs,deju klubs,dejo\u0161ana,nakts klubs"
+        },
+        "amenity/parking": {
+            "name": "St\u0101vvieta",
+            "terms": "Auto, Ma\u0161\u012bnas, st\u0101vvieta, st\u0101v\u0113\u0161ana, apst\u0101\u0161an\u0101s, pieturvieta"
+        },
+        "amenity/parking/multi-storey": {
+            "name": "Daudzl\u012bme\u0146u St\u0101vvieta",
+            "terms": "Gar\u0101\u017ea, daudzst\u0101vu, st\u0101vi, \u0113ka, autost\u0101vieta"
+        },
+        "amenity/parking_entrance": {
+            "name": "Daudzl\u012bme\u0146u St\u0101vvietas Ieeja/Izeja",
+            "terms": "daudzst\u0101vu st\u0101vvieta, ieeja, izeja, iebrauktuve, izbrauktuve"
+        },
+        "amenity/place_of_worship": {
+            "name": "Dievnams",
+            "terms": "baziliks, bazn\u012bca, katedr\u0101le, kapella, mo\u0161eja, l\u016bg\u0161anas, bazilika"
+        },
+        "amenity/place_of_worship/buddhist": {
+            "name": "Budistu templis"
+        },
+        "amenity/place_of_worship/hindu": {
+            "name": "Hindu Templis"
+        },
+        "amenity/place_of_worship/shinto": {
+            "name": "Sintoistu sv\u0113tn\u012bca"
+        },
+        "amenity/planetarium": {
+            "name": "Planet\u0101rijs"
+        },
+        "amenity/police": {
+            "name": "Policija",
+            "terms": "Iecirknis,Detekt\u012bvs,Likums,Kru\u0137i,Poli\u010di"
+        },
+        "amenity/post_box": {
+            "name": "Pasta kast\u012bte",
+            "terms": "v\u0113stule, pasts, kaste"
+        },
+        "amenity/post_office": {
+            "name": "Pasta noda\u013ca",
+            "terms": "v\u0113stule, pasts, paci\u0146a"
+        },
+        "amenity/prison": {
+            "terms": "cietums,\u016b\u0137is,aiztur\u0113\u0161ana,kamera"
+        },
+        "amenity/pub": {
+            "name": "Krogs",
+            "terms": "alkohols, dzer\u0161ana, alus"
+        },
+        "amenity/public_bookcase": {
+            "name": "Publisks Gr\u0101matplaukts"
+        },
+        "amenity/recycling_centre": {
+            "name": "\u0160\u0137iro\u0161anas centrs"
+        },
+        "amenity/restaurant": {
+            "name": "Restor\u0101ns"
+        },
+        "amenity/school": {
+            "name": "Skolas Zeme"
+        },
+        "amenity/shelter": {
+            "name": "Pajumte"
+        },
+        "amenity/shower": {
+            "name": "Du\u0161a"
+        },
+        "amenity/smoking_area": {
+            "name": "Sm\u0113\u0137\u0113\u0161anas vieta"
+        },
+        "amenity/social_facility/food_bank": {
+            "name": "P\u0101rtikas banka",
+            "terms": "\u0113diena nodo\u0161ana,\u0113diena banka"
+        },
+        "amenity/social_facility/group_home": {
+            "name": "Pansion\u0101ts",
+            "terms": "vecs, seniors, uzraudz\u012bba"
+        },
+        "amenity/studio": {
+            "name": "Studija"
+        },
+        "amenity/swimming_pool": {
+            "name": "Peldbaseins"
+        },
+        "amenity/telephone": {
+            "name": "Telefons"
+        },
+        "amenity/theatre": {
+            "name": "Te\u0101tris",
+            "terms": "aktieri,uzst\u0101\u0161an\u0101s,uzvedums"
+        },
+        "amenity/toilets": {
+            "name": "Tualete",
+            "terms": "toalete,labier\u012bc\u012bbas,pisu\u0101rs"
+        },
+        "amenity/townhall": {
+            "name": "Pils\u0113tas dome"
+        },
+        "amenity/vending_machine": {
+            "name": "Tirdzniec\u012bbas autom\u0101ts"
+        },
+        "amenity/vending_machine/cigarettes": {
+            "name": "Cigare\u0161u Tirdzniec\u012bbas autom\u0101ts",
+            "terms": "cigrarete, tabaka"
+        },
+        "amenity/vending_machine/coffee": {
+            "name": "Kafijas Tirdzniec\u012bbas autom\u0101ts",
+            "terms": "kafija, kofe\u012bns, ekspresso"
+        },
+        "amenity/vending_machine/condoms": {
+            "name": "Prezervat\u012bvu Tirdzniec\u012bbas autom\u0101ts"
+        },
+        "amenity/vending_machine/drinks": {
+            "name": "Dz\u0113rienu Tirdzniec\u012bbas autom\u0101ts",
+            "terms": "limon\u0101de, sula, dz\u0113riens"
+        },
+        "amenity/vending_machine/electronics": {
+            "name": "Elektronikas Tirdzniec\u012bbas autom\u0101ts",
+            "terms": "kabelis, telefons, plan\u0161ete, dators, austi\u0146as, ska\u013cru\u0146i"
+        },
+        "amenity/vending_machine/elongated_coin": {
+            "name": "Plakanu Mon\u0113tu Tirdzniec\u012bbas autom\u0101ts",
+            "terms": "mon\u0113ta,saspie\u0161ana,suven\u012bri,suven\u012brs,saplacin\u0101t"
+        },
+        "amenity/vending_machine/feminine_hygiene": {
+            "name": "Sievie\u0161u Hig\u0113nas Tirdzniec\u012bbas autom\u0101ts",
+            "terms": "tampons, ieliknis, biks\u012b\u0161u, sieive\u0161u, menstru\u0101ls, person\u0101l\u0101 apkope"
+        },
+        "amenity/vending_machine/food": {
+            "name": "\u0112diena Tirdzniec\u012bbas autom\u0101ts",
+            "terms": "p\u0101rtika"
+        },
+        "amenity/vending_machine/fuel": {
+            "name": "Degvielas s\u016bknis",
+            "terms": "degviela,d\u012bzelis,g\u0101ze,98,95,uzpilde"
+        },
+        "amenity/vending_machine/ice_cream": {
+            "name": "Sald\u0113juma Tirdzniec\u012bbas autom\u0101ts",
+            "terms": "\u0161okol\u0101des,vani\u013cas,sasald\u0113ts,auksts"
+        },
+        "amenity/vending_machine/news_papers": {
+            "name": "Av\u012b\u017eu Tirdzniec\u012bbas autom\u0101ts"
+        },
+        "amenity/vending_machine/newspapers": {
+            "name": "Av\u012b\u017eu Tirdzniec\u012bbas autom\u0101ts",
+            "terms": "av\u012bze,laiksraksts,\u017eurn\u0101ls,iespiests"
+        },
+        "amenity/vending_machine/parking_tickets": {
+            "name": "St\u0101vvietu At\u013cauju Tirdzniec\u012bbas autom\u0101ts",
+            "terms": "bi\u013cete, at\u013cauja"
+        },
+        "amenity/vending_machine/public_transport_tickets": {
+            "name": "Tranz\u012btbi\u013ce\u0161u Tirdzniec\u012bbas autom\u0101ts",
+            "terms": "autobuss, vilciens, e-talons, transports, bi\u013cete, tranvajs, trolejbuss, pr\u0101mis, etalons"
+        },
+        "amenity/vending_machine/stamps": {
+            "name": "Pastmarku Tirdzniec\u012bbas autom\u0101ts",
+            "terms": "pasts, marka, v\u0113stule"
+        },
+        "amenity/vending_machine/sweets": {
+            "name": "Saldumu Tirdzniec\u012bbas autom\u0101ts",
+            "terms": "\u0161okol\u0101des,saldumu,konfek\u0161u,cepumu,batoni\u0146u"
+        },
+        "amenity/veterinary": {
+            "name": "Vetern\u0101r\u0101rsts",
+            "terms": "kl\u012bnika,veterni\u0101r\u0101,dz\u012bvienku,veterin\u0101rais \u0101rsts"
+        },
+        "amenity/waste/dog_excrement": {
+            "name": "Su\u0146u ekskrementu tvertne",
+            "terms": "tvertne,kaste,su\u0146u,kaku,maisi\u0146u,atkritumu"
+        },
+        "amenity/waste_basket": {
+            "name": "Atkritumu grozs",
+            "terms": "miskaste,pap\u012brgrozs,izmestuve,atkritumi"
+        },
+        "amenity/waste_disposal": {
+            "name": "Atkritumu konteiners",
+            "terms": "miskaste,atkritumi,izg\u0101ztuve,tvertne"
+        },
+        "area": {
+            "name": "Apgabals"
+        },
+        "area/highway": {
+            "name": "Ce\u013ca segums"
+        },
+        "attraction/animal": {
+            "name": "Dz\u012bvnieku",
+            "terms": "zoo, dz\u012bvnieku parks, lauva, t\u012b\u0123eris, \u017eirafe, l\u0101cis"
+        },
+        "attraction/big_wheel": {
+            "name": "Panor\u0101mas rats",
+            "terms": "rats,atrakcija,bruciens,lielais rats"
+        },
+        "attraction/bungee_jumping": {
+            "name": "Gumijl\u0113k\u0161ana",
+            "terms": "gumija,augstums,lek\u0161ana,lek\u0161anas platforma"
+        },
+        "attraction/carousel": {
+            "name": "Karuse\u013cu",
+            "terms": "Atrakciju,zirgu"
+        },
+        "attraction/maze": {
+            "name": "Labirints"
+        },
+        "attraction/pirate_ship": {
+            "name": "Pir\u0101tu ku\u0123is"
+        },
+        "attraction/roller_coaster": {
+            "name": "Amerik\u0101\u0146u Kalni\u0146i",
+            "terms": "atrakcija,brauciens,\u0101trs"
+        },
+        "attraction/train": {
+            "name": "T\u016bristu vilcieni\u0146\u0161",
+            "terms": "apskates vilciens,apbrauciena,parka vilciens"
+        },
+        "attraction/water_slide": {
+            "name": "\u016adens Slidkalni\u0146\u0161",
+            "terms": "\u016bdens parks,\u016bdens atrakcija"
+        },
+        "barrier": {
+            "name": "Barjera"
+        },
+        "barrier/block": {
+            "name": "Bloks",
+            "terms": "klucis, gabals"
+        },
+        "barrier/bollard": {
+            "name": "Stabs",
+            "terms": "stabi,stabi\u0146i"
+        },
+        "barrier/border_control": {
+            "name": "Robe\u017eu Kontrole",
+            "terms": "p\u0101rbaude, kontroles punkts, pases, ieeja, robe\u017ekontrole"
+        },
+        "barrier/city_wall": {
+            "name": "Pils\u0113tas m\u016bri"
+        },
+        "barrier/cycle_barrier": {
+            "name": "Veloceli\u0146a barjera"
+        },
+        "barrier/ditch": {
+            "name": "Tran\u0161eja",
+            "terms": "tren\u010da, bedre"
+        },
+        "barrier/entrance": {
+            "name": "Ieeja"
+        },
+        "barrier/fence": {
+            "name": "\u017dogs"
+        },
+        "barrier/gate": {
+            "name": "V\u0101rti",
+            "terms": "\u017eogs"
+        },
+        "barrier/hedge": {
+            "name": "Kr\u016bmi"
+        },
+        "barrier/kissing_gate": {
+            "name": "Dubultveramie v\u0101rti",
+            "terms": "dubultie,abpus\u0113jie,dubultv\u0101rti"
+        },
+        "barrier/lift_gate": {
+            "name": "Lifta ieeja",
+            "terms": "pace\u013camie,bomja,bomis"
+        },
+        "barrier/retaining_wall": {
+            "name": "Stiprin\u0101juma siena"
+        },
+        "barrier/toll_booth": {
+            "name": "Muitas punkts"
+        },
+        "barrier/wall": {
+            "name": "Siena"
+        },
+        "boundary/administrative": {
+            "name": "Administrat\u012bv\u0101 robe\u017ea",
+            "terms": "robe\u017ea,novadu robe\u017ea,administrat\u012bv\u0101 teritorija"
+        },
+        "building": {
+            "name": "\u0112ka"
+        },
+        "building/barn": {
+            "name": "Kl\u0113ts"
+        },
+        "building/boathouse": {
+            "name": "Laivu \u0113ka"
+        },
+        "building/bunker": {
+            "name": "Bunkurs"
+        },
+        "building/cabin": {
+            "name": "B\u016bda"
+        },
+        "building/cathedral": {
+            "name": "Katedr\u0101les \u0112ka"
+        },
+        "building/chapel": {
+            "name": "Kappelas \u0112ka"
+        },
+        "building/church": {
+            "name": "Bazn\u012bcas \u0112ka"
+        },
+        "building/commercial": {
+            "name": "Komerci\u0101la \u0112ka"
+        },
+        "building/dormitory": {
+            "name": "Kopm\u012btnes"
+        },
+        "building/entrance": {
+            "name": "Ieeja/Izeja"
+        },
+        "building/farm_auxiliary": {
+            "name": "Fermas \u0112ka"
+        },
+        "building/garage": {
+            "name": "Gar\u0101\u017ea"
+        },
+        "building/garages": {
+            "name": "Gar\u0101\u017eas"
+        },
+        "building/grandstand": {
+            "name": "Trib\u012bnes"
+        },
+        "building/greenhouse": {
+            "name": "Siltumn\u012bca",
+            "terms": "augi, stikls"
+        },
+        "building/hospital": {
+            "name": "Sl\u012bmn\u012bcas \u0112ka"
+        },
+        "building/hotel": {
+            "name": "Viesn\u012bcas \u0112ka"
+        },
+        "building/house": {
+            "name": "M\u0101ja"
+        },
+        "building/industrial": {
+            "name": "Industijas \u0112ka"
+        },
+        "building/kindergarten": {
+            "name": "B\u0113rnud\u0101rza / Pirmskolas \u0113ka"
+        },
+        "building/mosque": {
+            "name": "Mo\u0161ejas \u0112ka"
+        },
+        "building/public": {
+            "name": "Publiska \u0112ka"
+        },
+        "building/residential": {
+            "name": "Dz\u012bvojam\u0101 \u0112ka"
+        },
+        "building/retail": {
+            "name": "Komerci\u0101la \u0112ka"
+        },
+        "building/roof": {
+            "name": "Jumts"
+        },
+        "building/ruins": {
+            "name": "\u0112kas drupas"
+        },
+        "building/school": {
+            "name": "Skolas \u0112ka",
+            "terms": "s\u0101kumskola,pamatskola,vidusskola,augstskola,koled\u017ea"
+        },
+        "building/shed": {
+            "name": "S\u0137\u016bnis"
+        },
+        "building/stable": {
+            "name": "Stallis",
+            "terms": "zirgu, zirgi, stallis"
+        },
+        "building/stadium": {
+            "name": "Stadiona \u0112ka"
+        },
+        "building/temple": {
+            "name": "Temp\u013ca \u0112ka",
+            "terms": "templis,reli\u0123ija,piemi\u0146a"
+        },
+        "building/terrace": {
+            "name": "Rindum\u0101jas",
+            "terms": "rindu m\u0101jas,m\u0101jas"
+        },
+        "building/university": {
+            "name": "Universit\u0101tes \u0112ka"
+        },
+        "building/warehouse": {
+            "name": "Noliktava"
+        },
+        "club": {
+            "name": "Klubs"
+        },
+        "craft/basket_maker": {
+            "name": "Grozu veidot\u0101js"
+        },
+        "craft/beekeeper": {
+            "name": "Bi\u0161kopis",
+            "terms": "Bi\u0161u kop\u0113js"
+        },
+        "craft/blacksmith": {
+            "name": "Kal\u0113js",
+            "terms": "met\u0101lkalis,kalis"
+        },
+        "craft/boatbuilder": {
+            "name": "Laivu b\u016bv\u0113t\u0101js",
+            "terms": "laivenieks,pi\u0137ot\u0101js"
+        },
+        "craft/brewery": {
+            "name": "Dar\u012btava",
+            "terms": "alkohols,alus,sidrs"
+        },
+        "craft/carpenter": {
+            "name": "Galdnieks"
+        },
+        "craft/chimney_sweeper": {
+            "name": "Skurste\u0146slau\u0137is",
+            "terms": "Skurste\u0146u slauc\u012bt\u0101js"
+        },
+        "craft/clockmaker": {
+            "name": "Pulkste\u0146daris",
+            "terms": "Pulkste\u0146meistars"
+        },
+        "craft/confectionery": {
+            "name": "Saldumu veidot\u0101js",
+            "terms": "Saldumi,Konfektes,Konfekcion\u0101rs"
+        },
+        "craft/electrician": {
+            "name": "Elektri\u0137is"
+        },
+        "craft/electronics_repair": {
+            "name": "Elektronikas remonta darbn\u012bca"
+        },
+        "craft/gardener": {
+            "name": "D\u0101rznieks"
+        },
+        "craft/jeweler": {
+            "name": "Juvelieris"
+        },
+        "craft/key_cutter": {
+            "name": "Atsl\u0113dznieks"
+        },
+        "craft/locksmith": {
+            "name": "Atsl\u0113dznieks"
+        },
+        "craft/optician": {
+            "name": "Opti\u0137is"
+        },
+        "craft/painter": {
+            "name": "Kr\u0101sot\u0101js"
+        },
+        "craft/photographer": {
+            "name": "Fotogr\u0101fs",
+            "terms": "fotogr\u0101f\u0113t"
+        },
+        "craft/photographic_laboratory": {
+            "name": "Fotolabratorija",
+            "terms": "att\u0113lu att\u012bst\u012b\u0161ana,filmas,filmi\u0146as,3.5mm"
+        },
+        "craft/plumber": {
+            "name": "Santehni\u0137is"
+        },
+        "craft/pottery": {
+            "name": "Podnieks"
+        },
+        "craft/roofer": {
+            "name": "Jumi\u0137is"
+        },
+        "craft/sawmill": {
+            "name": "Kokz\u0101\u0123\u0113tava"
+        },
+        "craft/sculptor": {
+            "name": "Skulptors"
+        },
+        "craft/shoemaker": {
+            "name": "Kurpnieks"
+        },
+        "craft/window_construction": {
+            "name": "Logu izgatavo\u0161ana"
+        },
+        "craft/winery": {
+            "name": "V\u012bna dar\u012btava"
+        },
+        "emergency/ambulance_station": {
+            "name": "\u0100tr\u0101s pal\u012bdz\u012bbas stacija",
+            "terms": "ambulances stacija,\u0101tr\u0101 pal\u012bdz\u012bba"
+        },
+        "emergency/defibrillator": {
+            "name": "Defibrilators"
+        },
+        "emergency/fire_extinguisher": {
+            "name": "Ugunsdz\u0113s\u012bbas apar\u0101ts"
+        },
+        "emergency/fire_hydrant": {
+            "name": "Ugunsdz\u0113s\u012bbas Hidrants"
+        },
+        "emergency/first_aid_kit": {
+            "name": "Pirm\u0101s pal\u012bdz\u012bbas aptieci\u0146a",
+            "terms": "aptieci\u0146a,kompleks,medic\u012bnas,\u0101rk\u0101rtas"
+        },
+        "emergency/life_ring": {
+            "name": "Gl\u0101b\u0161anas Rin\u0137is"
+        },
+        "emergency/lifeguard": {
+            "name": "Gl\u0101b\u0113js"
+        },
+        "emergency/phone": {
+            "name": "\u0100rk\u0101rtas telefons"
+        },
+        "emergency/siren": {
+            "name": "Sir\u0113na"
+        },
+        "entrance": {
+            "name": "Ieeja/Izeja"
+        },
+        "golf/hole": {
+            "name": "Golfa bedr\u012bte"
+        },
+        "healthcare/birthing_center": {
+            "name": "Dzemd\u012bbu nams"
+        },
+        "healthcare/blood_donation": {
+            "name": "Asinsdonoru Centrs"
+        },
+        "healthcare/laboratory": {
+            "name": "Medic\u012bnas Labrotorija"
+        },
+        "healthcare/optometrist": {
+            "name": "Optometrists"
+        },
+        "healthcare/speech_therapist": {
+            "name": "Runas Terapiets"
+        },
+        "highway": {
+            "name": "\u0160oseja"
+        },
+        "highway/corridor": {
+            "name": "Iek\u0161telpu koridors"
+        },
+        "highway/cycleway": {
+            "name": "Veloceli\u0146\u0161"
+        },
+        "highway/elevator": {
+            "name": "Lifts"
+        },
+        "highway/footway": {
+            "name": "Ietve",
+            "terms": "taka,g\u0101j\u0113ju,k\u0101j\u0101mg\u0101j\u0113ju,celi\u0146\u0161"
+        },
+        "highway/living_street": {
+            "name": "Dz\u012bvojam\u0101 iela"
+        },
+        "highway/motorway": {
+            "name": "\u0100trgaitas \u0161oseja"
+        },
+        "highway/path": {
+            "name": "Taka"
+        },
+        "highway/pedestrian_line": {
+            "name": "G\u0101j\u0113ju iela"
+        },
+        "highway/primary": {
+            "name": "Galvenais ce\u013c\u0161"
+        },
+        "highway/road": {
+            "name": "Nezin\u0101ms ce\u013c\u0161"
+        },
+        "highway/secondary": {
+            "name": "Otr\u0101s \u0161kiras ce\u013c\u0161"
+        },
+        "highway/service": {
+            "name": "Apkalpo\u0161anas ce\u013c\u0161"
+        },
+        "highway/service/driveway": {
+            "name": "Piebraucamais ce\u013c\u0161"
+        },
+        "highway/speed_camera": {
+            "name": "Fotoradars"
+        },
+        "highway/steps": {
+            "name": "K\u0101pnes"
+        },
+        "highway/stop": {
+            "name": "Stop Z\u012bme"
+        },
+        "highway/street_lamp": {
+            "name": "Ielu Gaisma"
+        },
+        "highway/traffic_signals": {
+            "name": "Luksofors"
+        },
+        "highway/turning_circle": {
+            "name": "Apgrie\u0161an\u0101s ri\u0146\u0137is"
+        },
+        "highway/unclassified": {
+            "name": "Mazs/Neklasific\u0113ts ce\u013c\u0161"
+        },
+        "historic": {
+            "name": "V\u0113sturiska vieta"
+        },
+        "historic/archaeological_site": {
+            "name": "Arheolo\u0123isko izrakumu vieta"
+        },
+        "historic/boundary_stone": {
+            "name": "Robe\u017eakmens"
+        },
+        "historic/castle": {
+            "name": "Pils"
+        },
+        "historic/memorial": {
+            "name": "Memori\u0101ls"
+        },
+        "historic/monument": {
+            "name": "Piemineklis"
+        },
+        "historic/ruins": {
+            "name": "Pilsdrupas"
+        },
+        "landuse": {
+            "name": "Zemes izmantojums"
+        },
+        "landuse/basin": {
+            "name": "Baseins"
+        },
+        "landuse/cemetery": {
+            "name": "Kaps\u0113ta"
+        },
+        "landuse/commercial": {
+            "name": "Komercplat\u012bba",
+            "terms": "Komerci\u0101la plat\u012bba, Komercapgabals"
+        },
+        "landuse/construction": {
+            "name": "B\u016bvlaukums"
+        },
+        "landuse/farmyard": {
+            "name": "Lauku s\u0113ta"
+        },
+        "landuse/garages": {
+            "name": "Gar\u0101\u017eu zeme"
+        },
+        "landuse/grass": {
+            "name": "Z\u0101le"
+        },
+        "landuse/harbour": {
+            "name": "Osta"
+        },
+        "landuse/industrial/slaughterhouse": {
+            "name": "Kautuve"
+        },
+        "landuse/landfill": {
+            "name": "Izg\u0101ztuve"
+        },
+        "landuse/meadow": {
+            "name": "P\u013cava"
+        },
+        "landuse/military": {
+            "name": "Milit\u0101r\u0101 zona"
+        },
+        "landuse/military/airfield": {
+            "name": "Milit\u0101rais Lidlauks"
+        },
+        "landuse/military/barracks": {
+            "name": "Kazarmas"
+        },
+        "landuse/military/bunker": {
+            "name": "Milit\u0101rais Bunkurs"
+        },
+        "landuse/military/naval_base": {
+            "name": "\u016adenssp\u0113ku b\u0101ze"
+        },
+        "landuse/military/nuclear_explosion_site": {
+            "name": "Atomspr\u0101dziena zona"
+        },
+        "landuse/quarry": {
+            "name": "Karjers"
+        },
+        "landuse/residential": {
+            "name": "Dz\u012bvojam\u0101 zona"
+        },
+        "landuse/vineyard": {
+            "name": "V\u012bnogu lauks"
+        },
+        "leisure": {
+            "name": "Br\u012bv\u0101 laika"
+        },
+        "leisure/bowling_alley": {
+            "name": "Boulinga Z\u0101le"
+        },
+        "leisure/dance": {
+            "name": "Deju z\u0101le"
+        },
+        "leisure/dancing_school": {
+            "name": "Deju skola",
+            "terms": "valsis,tango,deju apm\u0101c\u012bbas,dejo\u0161ana,svings"
+        },
+        "leisure/dog_park": {
+            "name": "Su\u0146u parks"
+        },
+        "leisure/firepit": {
+            "name": "Ugunskura vieta"
+        },
+        "leisure/fitness_centre": {
+            "name": "Sportaz\u0101le / Fitnesa centrs"
+        },
+        "leisure/fitness_centre/yoga": {
+            "name": "Jogas studija"
+        },
+        "leisure/fitness_station": {
+            "name": "Br\u012bvdabas fitnesa vieta"
+        },
+        "leisure/garden": {
+            "name": "D\u0101rzs"
+        },
+        "leisure/golf_course": {
+            "name": "Golfa laukums"
+        },
+        "leisure/horse_riding": {
+            "name": "Zirgu j\u0101\u0161anas vieta"
+        },
+        "leisure/ice_rink": {
+            "name": "Ledus halle"
+        },
+        "leisure/park": {
+            "name": "Parks"
+        },
+        "leisure/picnic_table": {
+            "name": "Piknika galds"
+        },
+        "leisure/pitch": {
+            "name": "Sporta laukums"
+        },
+        "leisure/pitch/american_football": {
+            "name": "Amerik\u0101\u0146u futbola laukums"
+        },
+        "leisure/pitch/basketball": {
+            "name": "Basketbola laukums"
+        },
+        "leisure/pitch/beachvolleyball": {
+            "name": "Pl\u016bdmales volejbola laukums"
+        },
+        "leisure/pitch/skateboard": {
+            "name": "Skritu\u013cparks",
+            "terms": "skootei, skritu\u013cd\u0113\u013ci, skritu\u013cslidas, rampas"
+        },
+        "leisure/pitch/soccer": {
+            "name": "Futbola laukums",
+            "terms": "Futbols"
+        },
+        "leisure/pitch/table_tennis": {
+            "name": "Pingponga galds",
+            "terms": "galda teniss, pingpongs"
+        },
+        "leisure/pitch/tennis": {
+            "name": "Tenisa korti"
+        },
+        "leisure/pitch/volleyball": {
+            "name": "Volejbola laukums"
+        },
+        "leisure/playground": {
+            "name": "Sp\u0113\u013claukums"
+        },
+        "leisure/sauna": {
+            "name": "Sauna"
+        },
+        "leisure/sports_centre": {
+            "name": "Sporta Centrs / Komplekss"
+        },
+        "leisure/stadium": {
+            "name": "Stadions"
+        },
+        "leisure/swimming_pool": {
+            "name": "Peldbaseins"
+        },
+        "leisure/water_park": {
+            "name": "Akvaparks"
+        },
+        "line": {
+            "name": "L\u012bnija"
+        },
+        "man_made": {
+            "name": "Cilv\u0113ka rad\u012bts"
+        },
+        "man_made/antenna": {
+            "name": "Ant\u0113na"
+        },
+        "man_made/bridge": {
+            "name": "Tilts"
+        },
+        "man_made/chimney": {
+            "name": "Skurstenis"
+        },
+        "man_made/crane": {
+            "name": "Celtnis"
+        },
+        "man_made/flagpole": {
+            "name": "Karogmasts",
+            "terms": "karogs,masts"
+        },
+        "man_made/lighthouse": {
+            "name": "B\u0101ka"
+        },
+        "man_made/mast": {
+            "name": "Masts"
+        },
+        "man_made/observatory": {
+            "name": "Observatorija"
+        },
+        "man_made/petroleum_well": {
+            "name": "Naftas Raktuve"
+        },
+        "man_made/pipeline": {
+            "name": "Caurule",
+            "terms": "truba"
+        },
+        "man_made/pumping_station": {
+            "name": "Pump\u0113tava"
+        },
+        "man_made/surveillance": {
+            "name": "Apsardze"
+        },
+        "man_made/survey_point": {
+            "name": "Nov\u0113ro\u0161anas punkts"
+        },
+        "man_made/tower": {
+            "name": "Tornis"
+        },
+        "man_made/wastewater_plant": {
+            "name": "Notek\u016bde\u0146u stacija"
+        },
+        "man_made/water_tower": {
+            "name": "\u016adenstornis"
+        },
+        "man_made/water_well": {
+            "name": "\u016adens aka",
+            "terms": "aka,dzeram\u016bdens"
+        },
+        "man_made/watermill": {
+            "name": "\u016adens Dzirnavas"
+        },
+        "man_made/windmill": {
+            "name": "V\u0113jdzirnavas"
+        },
+        "man_made/works": {
+            "name": "R\u016bpn\u012bca"
+        },
+        "manhole": {
+            "name": "Kanaliz\u0101cijas l\u016bka"
+        },
+        "manhole/telecom": {
+            "name": "Telekomunik\u0101ciju l\u016bka"
+        },
+        "natural": {
+            "name": "Dabisks"
+        },
+        "natural/bare_rock": {
+            "name": "Pliks Akmens"
+        },
+        "natural/bay": {
+            "name": "L\u012bcis"
+        },
+        "natural/beach": {
+            "name": "Pludmale"
+        },
+        "natural/cave_entrance": {
+            "name": "Alas Ieeja"
+        },
+        "natural/cliff": {
+            "name": "Klints"
+        },
+        "natural/coastline": {
+            "name": "Krasta l\u012bnija"
+        },
+        "natural/glacier": {
+            "name": "Led\u0101js"
+        },
+        "natural/grassland": {
+            "name": "Neapstr\u0101d\u0101ta zeme"
+        },
+        "natural/heath": {
+            "name": "T\u012brelis",
+            "terms": "virs\u0101js, koki, t\u012brelis, mazs"
+        },
+        "natural/mud": {
+            "name": "Dub\u013ci"
+        },
+        "natural/peak": {
+            "name": "Virsotne"
+        },
+        "natural/reef": {
+            "name": "Rifs"
+        },
+        "natural/sand": {
+            "name": "Smiltis"
+        },
+        "natural/spring": {
+            "name": "Avots"
+        },
+        "natural/tree": {
+            "name": "Koks",
+            "terms": "koki"
+        },
+        "natural/volcano": {
+            "name": "Vulk\u0101ns"
+        },
+        "natural/water": {
+            "name": "\u016adens"
+        },
+        "natural/water/lake": {
+            "name": "Ezers"
+        },
+        "natural/water/pond": {
+            "name": "D\u012b\u0137is"
+        },
+        "natural/water/reservoir": {
+            "name": "\u016adenstilpne"
+        },
+        "natural/wetland": {
+            "name": "Purvs"
+        },
+        "natural/wood": {
+            "name": "Koks"
+        },
+        "noexit/yes": {
+            "name": "Bez izejas"
+        },
+        "office": {
+            "name": "Biroju \u0113ka"
+        },
+        "office/adoption_agency": {
+            "name": "Adopcijas A\u0123ent\u016bra"
+        },
+        "office/architect": {
+            "name": "Arhitekta birojs"
+        },
+        "office/educational_institution": {
+            "name": "Izgl\u012bt\u012bbas Iest\u0101de"
+        },
+        "office/energy_supplier": {
+            "name": "Elektrodev\u0113ja birojs"
+        },
+        "office/forestry": {
+            "name": "Me\u017eniec\u012bbas birojs"
+        },
+        "office/government": {
+            "name": "Vald\u012bbas birojs"
+        },
+        "office/government/tax": {
+            "name": "Ie\u0146\u0113mumu birojs"
+        },
+        "office/insurance": {
+            "name": "Apdro\u0161in\u0101\u0161anas birojs"
+        },
+        "office/lawyer/notary": {
+            "name": "Not\u0101ru birojs"
+        },
+        "office/notary": {
+            "name": "Not\u0101ru birojs"
+        },
+        "office/private_investigator": {
+            "name": "Priv\u0101tizmekl\u0113t\u0113ja birojs"
+        },
+        "office/telecommunication": {
+            "name": "Telekomunik\u0101ciju birojs"
+        },
+        "office/therapist": {
+            "name": "Terapieta birojs"
+        },
+        "place": {
+            "name": "Vieta"
+        },
+        "place/city": {
+            "name": "Lielpils\u0113ta"
+        },
+        "place/farm": {
+            "name": "Zemnieku saimniec\u012bba"
+        },
+        "place/island": {
+            "name": "Sala"
+        },
+        "place/square": {
+            "name": "Skv\u0113rs"
+        },
+        "place/town": {
+            "name": "Pils\u0113ta"
+        },
+        "place/village": {
+            "name": "Ciems"
+        },
+        "playground/sandpit": {
+            "name": "Smil\u0161ukaste"
+        },
+        "playground/slide": {
+            "name": "Slidkalni\u0146\u0161"
+        },
+        "playground/swing": {
+            "name": "\u0160\u016bpoles"
+        },
+        "power": {
+            "name": "Ener\u0123ija"
+        },
+        "power/generator": {
+            "name": "Elektroener\u0123ijas \u0123ener\u0101tors",
+            "terms": "elektro\u0123enr\u0101tors,turb\u012bna,v\u0113js"
+        },
+        "power/line": {
+            "name": "Elektrol\u012bnija"
+        },
+        "power/pole": {
+            "name": "Elektr\u012bbas stabs",
+            "terms": "elektrostabs"
+        },
+        "power/sub_station": {
+            "name": "Metro stacija"
+        },
+        "power/substation": {
+            "name": "Apak\u0161stacija"
+        },
+        "power/tower": {
+            "name": "Augstsprieguma tornis"
+        },
+        "power/transformer": {
+            "name": "Transformators"
+        },
+        "public_transport/platform_bus": {
+            "name": "Autobusu pietura / platforma"
+        },
+        "public_transport/platform_ferry": {
+            "name": "Pr\u0101mja pietura / Platforma"
+        },
+        "public_transport/platform_subway": {
+            "name": "Metro pietura / platforma"
+        },
+        "public_transport/platform_train": {
+            "name": "Vilciena Pietura / Platforma"
+        },
+        "public_transport/platform_trolleybus": {
+            "name": "Trolejbusu pietura / platforma"
+        },
+        "public_transport/station_bus": {
+            "name": "Autobusu stacija / Termin\u0101lis"
+        },
+        "public_transport/station_train": {
+            "name": "Stacija"
+        },
+        "public_transport/station_trolleybus": {
+            "name": "Trolejbusu stacija / Termin\u0101lis"
+        },
+        "railway": {
+            "name": "Vilciens"
+        },
+        "railway/abandoned": {
+            "name": "Pamests dzelzce\u013c\u0161"
+        },
+        "railway/disused": {
+            "name": "Nelietots dzelzce\u013c\u0161"
+        },
+        "railway/miniature": {
+            "name": "Mini\u0101tura dzelzce\u013c\u0161"
+        },
+        "railway/monorail": {
+            "name": "Vienslie\u017eu vilciens"
+        },
+        "railway/narrow_gauge": {
+            "name": "\u0160aurslie\u017eu dzelzce\u013c\u0161"
+        },
+        "railway/rail": {
+            "name": "Sliedes"
+        },
+        "railway/station": {
+            "name": "Vilcienu Stacija"
+        },
+        "railway/subway": {
+            "name": "Metro"
+        },
+        "railway/subway_entrance": {
+            "name": "Metro ieeja"
+        },
+        "railway/switch": {
+            "name": "P\u0101rmiju p\u0101rsl\u0113g\u0161ana",
+            "terms": "p\u0101rmijas"
+        },
+        "railway/train_wash": {
+            "name": "Vilcienu mazg\u0101tuve"
+        },
+        "railway/tram": {
+            "name": "Tramvajs"
+        },
+        "relation": {
+            "name": "Rel\u0101cija"
+        },
+        "roundabout": {
+            "name": "Aplis"
+        },
+        "shop": {
+            "name": "Veikals"
+        },
+        "shop/alcohol": {
+            "name": "Alkoholisko dz\u0113rienu veikals"
+        },
+        "shop/antiques": {
+            "name": "Antikvari\u0101ts"
+        },
+        "shop/art": {
+            "name": "M\u0101kslas veikals"
+        },
+        "shop/bag": {
+            "name": "Somu / \u010cemod\u0101nu veikals"
+        },
+        "shop/bakery": {
+            "name": "Konditoreja"
+        },
+        "shop/beauty": {
+            "name": "Skaistumveikals"
+        },
+        "shop/beauty/nails": {
+            "name": "Manik\u012bra/Nagu salons"
+        },
+        "shop/beauty/tanning": {
+            "name": "Sol\u0101rija Salons",
+            "terms": "Sol\u0101rija, Sol\u0101rijs"
+        },
+        "shop/bed": {
+            "name": "Gultasve\u013cas / Matra\u010du veikals",
+            "terms": "gultas preces, gulta"
+        },
+        "shop/beverages": {
+            "name": "Dz\u0113rienu veikals"
+        },
+        "shop/bicycle": {
+            "name": "Velo veikals",
+            "terms": "velosip\u0113du, remonts, remonta"
+        },
+        "shop/books": {
+            "name": "Gr\u0101matu veikals"
+        },
+        "shop/boutique": {
+            "name": "Veikals"
+        },
+        "shop/butcher": {
+            "name": "Miesnieks"
+        },
+        "shop/candles": {
+            "name": "Sve\u010du veikals"
+        },
+        "shop/car": {
+            "name": "Auto d\u012bleris",
+            "terms": "auto, ma\u0161\u012bnu, p\u0101rdo\u0161ana"
+        },
+        "shop/car_parts": {
+            "name": "Auto rezerves da\u013cu veikals"
+        },
+        "shop/car_repair": {
+            "name": "Auto remontdarbn\u012bca",
+            "terms": "remonts, serviss, gar\u0101\u017ea"
+        },
+        "shop/carpet": {
+            "name": "Pakl\u0101ju veikals"
+        },
+        "shop/cheese": {
+            "name": "Siera veikals"
+        },
+        "shop/chemist": {
+            "name": "Aptieka"
+        },
+        "shop/chocolate": {
+            "name": "\u0160okol\u0101des veikals"
+        },
+        "shop/clothes": {
+            "name": "Ap\u0123\u0113rba veikals"
+        },
+        "shop/coffee": {
+            "name": "Kafijas veikals"
+        },
+        "shop/computer": {
+            "name": "Datorveikals",
+            "terms": "elektronika, datori, datortehnika"
+        },
+        "shop/confectionery": {
+            "name": "Saldumu veikals"
+        },
+        "shop/convenience": {
+            "name": "Veikals"
+        },
+        "shop/copyshop": {
+            "name": "Print\u0113\u0161anas veikals"
+        },
+        "shop/cosmetics": {
+            "name": "Kosm\u0113tikas veikals"
+        },
+        "shop/craft": {
+            "name": "M\u0101kslas piederumu veikals",
+            "terms": "m\u0101ksla, resursi, kr\u0101sas, r\u0101mji, z\u012bm\u0113t"
+        },
+        "shop/curtain": {
+            "name": "Aizkaru veikals"
+        },
+        "shop/dairy": {
+            "name": "Piena veikals"
+        },
+        "shop/deli": {
+            "name": "Delikateses"
+        },
+        "shop/department_store": {
+            "name": "Lielveikals"
+        },
+        "shop/dry_cleaning": {
+            "name": "\u0136\u012bmisk\u0101 t\u012br\u012btava"
+        },
+        "shop/e-cigarette": {
+            "name": "E-Cigare\u0161u veikals"
+        },
+        "shop/electronics": {
+            "name": "Elektronikas veikals"
+        },
+        "shop/erotic": {
+            "name": "Erotiskais veikals"
+        },
+        "shop/fabric": {
+            "name": "Audumu veikals"
+        },
+        "shop/fashion": {
+            "name": "Modes veikals"
+        },
+        "shop/florist": {
+            "name": "Florists"
+        },
+        "shop/funeral_directors": {
+            "name": "Apbed\u012b\u0161anas birojs"
+        },
+        "shop/furniture": {
+            "name": "M\u0113be\u013cu veikals"
+        },
+        "shop/garden_centre": {
+            "name": "D\u0101rzkop\u012bbas veikals"
+        },
+        "shop/gas": {
+            "name": "G\u0101zes balonu veikals",
+            "terms": "lpg,prop\u0101ns,balons,uzpilde,g\u0101ze"
+        },
+        "shop/gift": {
+            "name": "D\u0101vanu veikals"
+        },
+        "shop/hairdresser": {
+            "name": "Frizieris"
+        },
+        "shop/hardware": {
+            "name": "Celtniec\u012bbas veikals"
+        },
+        "shop/kiosk": {
+            "name": "Kiosks"
+        },
+        "shop/kitchen": {
+            "name": "Virtuves dizaina veikals"
+        },
+        "shop/laundry": {
+            "name": "Ve\u013cas mazg\u0101tuve"
+        },
+        "shop/leather": {
+            "name": "\u0100das veikals"
+        },
+        "shop/locksmith": {
+            "name": "Atsl\u0113dznieks"
+        },
+        "shop/lottery": {
+            "name": "Loterijas veikals"
+        },
+        "shop/mall": {
+            "name": "Iepirk\u0161an\u0101s centrs"
+        },
+        "shop/massage": {
+            "name": "Mas\u0101\u017eu veikals"
+        },
+        "shop/medical_supply": {
+            "name": "Medic\u012bnisko piederumu veikals"
+        },
+        "shop/mobile_phone": {
+            "name": "Mobilo telefonu veikals"
+        },
+        "shop/money_lender": {
+            "name": "Naudas Aizdev\u0113js"
+        },
+        "shop/motorcycle": {
+            "name": "Motociklu veikals"
+        },
+        "shop/motorcycle_repair": {
+            "name": "Motociklu remonta darbn\u012bca"
+        },
+        "shop/music": {
+            "name": "M\u016bzikas veikals"
+        },
+        "shop/musical_instrument": {
+            "name": "M\u016bzikas instrumentu veikals"
+        },
+        "shop/newsagent": {
+            "name": "Av\u012b\u017eu / \u017durn\u0101lu veikals"
+        },
+        "shop/optician": {
+            "name": "Optometrists"
+        },
+        "shop/paint": {
+            "name": "Kr\u0101su veikals"
+        },
+        "shop/pawnbroker": {
+            "name": "Lombards"
+        },
+        "shop/pet": {
+            "name": "Dz\u012bvnieku veikals"
+        },
+        "shop/photo": {
+            "name": "Fotogr\u0101fijas veikals"
+        },
+        "shop/radiotechnics": {
+            "name": "Radio / Elektronisko komponen\u0161u veikals"
+        },
+        "shop/shoes": {
+            "name": "Apavu veikals"
+        },
+        "shop/sports": {
+            "name": "Sporta veikals"
+        },
+        "shop/stationery": {
+            "name": "Rakst\u0101mlietu veikals"
+        },
+        "shop/supermarket": {
+            "name": "Lielveikals"
+        },
+        "shop/tattoo": {
+            "name": "Tetov\u0113jumu veikals"
+        },
+        "shop/tea": {
+            "name": "T\u0113jas veikals"
+        },
+        "shop/ticket": {
+            "name": "Bi\u013ce\u0161u kase"
+        },
+        "shop/tiles": {
+            "name": "Fl\u012b\u017eu veikals"
+        },
+        "shop/tobacco": {
+            "name": "Tabakas veikals"
+        },
+        "shop/toys": {
+            "name": "Rota\u013clietu veikals"
+        },
+        "shop/travel_agency": {
+            "name": "Ce\u013cojumu a\u0123ent\u016bra"
+        },
+        "shop/tyres": {
+            "name": "Riepu veikals"
+        },
+        "shop/vacuum_cleaner": {
+            "name": "Putek\u013cus\u016bc\u0113ju veikals"
+        },
+        "shop/video": {
+            "name": "Video veikals"
+        },
+        "shop/video_games": {
+            "name": "Videosp\u0113\u013cu veikals"
+        },
+        "shop/watches": {
+            "name": "Pulkste\u0146u Veikals"
+        },
+        "shop/weapons": {
+            "name": "Iero\u010du Veikals"
+        },
+        "shop/window_blind": {
+            "name": "Logu \u017eal\u016bziju veikals",
+            "terms": "logi, aizkari, \u017eal\u016bzijas"
+        },
+        "shop/wine": {
+            "name": "V\u012bna veikals"
+        },
+        "tourism": {
+            "name": "T\u016brisms"
+        },
+        "tourism/aquarium": {
+            "name": "Akv\u0101rijs"
+        },
+        "tourism/artwork": {
+            "name": "M\u0101kslas darbs"
+        },
+        "tourism/attraction": {
+            "name": "T\u016brisma objekts"
+        },
+        "tourism/camp_site": {
+            "name": "Kempinga vieta"
+        },
+        "tourism/gallery": {
+            "name": "M\u0101kslas galerija"
+        },
+        "tourism/guest_house": {
+            "name": "Viesu nams"
+        },
+        "tourism/hostel": {
+            "name": "Hostelis"
+        },
+        "tourism/hotel": {
+            "name": "Viesn\u012bca"
+        },
+        "tourism/information": {
+            "name": "Inform\u0101cija"
+        },
+        "tourism/information/board": {
+            "name": "Inform\u0101cijas stends"
+        },
+        "tourism/information/map": {
+            "name": "Karte"
+        },
+        "tourism/information/office": {
+            "name": "T\u016brisma inform\u0101cijas birojs"
+        },
+        "tourism/motel": {
+            "name": "Motelis"
+        },
+        "tourism/museum": {
+            "name": "Muzejs"
+        },
+        "tourism/picnic_site": {
+            "name": "Piknika vieta"
+        },
+        "tourism/theme_park": {
+            "name": "Tematiskais parks"
+        },
+        "tourism/viewpoint": {
+            "name": "Skatu punkts"
+        },
+        "tourism/zoo": {
+            "name": "Zoolo\u0123iskais d\u0101rzs",
+            "terms": "zood\u0101rzs,zoo,dz\u012bvnieku d\u0101rzs,dz\u012bvnieki"
+        },
+        "traffic_calming/bump": {
+            "name": "Gu\u013co\u0161ais Policists"
+        },
+        "traffic_calming/hump": {
+            "name": "Gu\u013co\u0161ais Policists"
+        },
+        "traffic_calming/island": {
+            "name": "Ce\u013ca sali\u0146a"
+        },
+        "type/boundary": {
+            "name": "Robe\u017ea"
+        },
+        "type/boundary/administrative": {
+            "name": "Administrat\u012bv\u0101 robe\u017ea"
+        },
+        "type/restriction": {
+            "name": "Aizliegums"
+        },
+        "vertex": {
+            "name": "Cits"
+        },
+        "waterway": {
+            "name": "\u016adensce\u013c\u0161"
+        },
+        "waterway/canal": {
+            "name": "Kan\u0101ls"
+        },
+        "waterway/dam": {
+            "name": "Dambis"
+        },
+        "waterway/ditch": {
+            "name": "Gr\u0101vis"
+        },
+        "waterway/drain": {
+            "name": "Notekgr\u0101vis"
+        },
+        "waterway/river": {
+            "name": "Upe"
+        },
+        "waterway/riverbank": {
+            "name": "Upes krasts"
+        },
+        "waterway/stream": {
+            "name": "Strauts"
+        },
+        "waterway/waterfall": {
+            "name": "\u016adenskritums"
+        }
+    }
+}

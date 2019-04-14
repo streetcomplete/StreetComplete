@@ -1,0 +1,268 @@
+{
+    "presets": {
+        "address": {
+            "name": "Cinwaanka"
+        },
+        "aeroway/runway": {
+            "name": "Gegada diyaaradaha"
+        },
+        "aeroway/terminal": {
+            "name": "Gagida Dayaaradeed"
+        },
+        "amenity/bank": {
+            "name": "Bangi"
+        },
+        "amenity/bar": {
+            "name": "Makhaayad"
+        },
+        "amenity/cafe": {
+            "name": "Kafateeriya"
+        },
+        "amenity/cinema": {
+            "name": "Shaneemo"
+        },
+        "amenity/fast_food": {
+            "name": "Cuntooyinka Fudud"
+        },
+        "amenity/hospital": {
+            "name": "Goob Isbitaal"
+        },
+        "amenity/library": {
+            "name": "Maktabad"
+        },
+        "amenity/place_of_worship": {
+            "name": "Goobta Cibaadada"
+        },
+        "amenity/restaurant": {
+            "name": "Maqaayad"
+        },
+        "amenity/school": {
+            "name": "Goobaha Dugsiyada"
+        },
+        "amenity/toilets": {
+            "name": "Musqulo"
+        },
+        "area/highway": {
+            "name": "Sagxada"
+        },
+        "barrier": {
+            "name": "Xannibaadaha"
+        },
+        "building": {
+            "name": "Dhismo"
+        },
+        "building/commercial": {
+            "name": "Dhismaha Ganacsiga"
+        },
+        "building/house": {
+            "name": "Guri"
+        },
+        "building/industrial": {
+            "name": "Dhismaha Warshadaha"
+        },
+        "building/mosque": {
+            "name": "Dhismaha Masaajid"
+        },
+        "building/public": {
+            "name": "Dhismaha Dadweynaha"
+        },
+        "building/residential": {
+            "name": "Dhismo Degaan"
+        },
+        "building/retail": {
+            "name": "Dhismo Tafaariiqda"
+        },
+        "building/school": {
+            "name": "Dhismo Dugsiyada"
+        },
+        "building/stadium": {
+            "name": "Dhismo Garoon"
+        },
+        "ford": {
+            "name": "Tog"
+        },
+        "highway": {
+            "name": "Wadada Halboowlaha"
+        },
+        "highway/bus_stop": {
+            "name": "Boostaajo"
+        },
+        "highway/path": {
+            "name": "Waddo"
+        },
+        "highway/primary": {
+            "name": "Wadada Koowaad"
+        },
+        "highway/residential": {
+            "name": "Waddada Guryaha"
+        },
+        "highway/service": {
+            "name": "Jidka Shaqaalaha"
+        },
+        "highway/tertiary": {
+            "name": "Waddada Sarre"
+        },
+        "highway/track": {
+            "name": "Jidka Jayga aan la Dayactirin"
+        },
+        "highway/unclassified": {
+            "name": "Waddo Yar/La cayimin"
+        },
+        "landuse": {
+            "name": "Isticmaalka Dhulka"
+        },
+        "landuse/aquaculture": {
+            "name": "Xarumaha biyo-ku-noolka"
+        },
+        "landuse/cemetery": {
+            "name": "Xabaalaha"
+        },
+        "landuse/commercial": {
+            "name": "Aagga Ganacsiga"
+        },
+        "landuse/farm": {
+            "name": "Dhul beereed"
+        },
+        "landuse/farmland": {
+            "name": "Dhul beereed"
+        },
+        "landuse/grass": {
+            "name": "Aag cagaaran"
+        },
+        "landuse/industrial": {
+            "name": "Aagga Warshadaha"
+        },
+        "landuse/landfill": {
+            "name": "Qashin-qub"
+        },
+        "landuse/military": {
+            "name": "Goob Ciidan"
+        },
+        "landuse/residential": {
+            "name": "Aag Degaan"
+        },
+        "landuse/retail": {
+            "name": "Goobta Tafaariiqda"
+        },
+        "leisure/marina": {
+            "name": "Deked"
+        },
+        "leisure/park": {
+            "name": "Jardiino"
+        },
+        "leisure/pitch/american_football": {
+            "name": "Garoonka Kubbada Cagta"
+        },
+        "leisure/pitch/cricket": {
+            "name": "Garoon Kiriket"
+        },
+        "leisure/sports_centre": {
+            "name": "Xarunta Cayaaraha"
+        },
+        "leisure/stadium": {
+            "name": "Garoon"
+        },
+        "line": {
+            "name": "Khad"
+        },
+        "man_made/bridge": {
+            "name": "Buundo"
+        },
+        "man_made/pier": {
+            "name": "Dekedyaro"
+        },
+        "natural": {
+            "name": "Dabiiciga"
+        },
+        "natural/bare_rock": {
+            "name": "Dhagax Weyn"
+        },
+        "natural/beach": {
+            "name": "Xeeb"
+        },
+        "natural/coastline": {
+            "name": "Xeeb"
+        },
+        "natural/water": {
+            "name": "Biyaha"
+        },
+        "natural/water/lake": {
+            "name": "Haro"
+        },
+        "natural/water/pond": {
+            "name": "Balli"
+        },
+        "natural/wetland": {
+            "name": "Dhul biyo-fadhiyaan"
+        },
+        "natural/wood": {
+            "name": "Duur"
+        },
+        "office/government": {
+            "name": "Xafiis Dowladeed"
+        },
+        "office/travel_agent": {
+            "name": "Wakaalad Socdaal"
+        },
+        "place": {
+            "name": "Goob"
+        },
+        "place/city": {
+            "name": "Magaalo"
+        },
+        "place/island": {
+            "name": "Jasiirad"
+        },
+        "place/locality": {
+            "name": "Deegaanka"
+        },
+        "place/town": {
+            "name": "Magaalo"
+        },
+        "power/line": {
+            "name": "Khadka Korantada"
+        },
+        "public_transport/platform_bus": {
+            "name": "Boostaajo"
+        },
+        "route/ferry": {
+            "name": "Wadada Doonta"
+        },
+        "shop": {
+            "name": "Dukaan"
+        },
+        "shop/car_repair": {
+            "name": "Garaash"
+        },
+        "shop/hardware": {
+            "name": "Dukaanka Qalabka"
+        },
+        "shop/mobile_phone": {
+            "name": "Dukaanka Taleefoonka Gacanta"
+        },
+        "shop/supermarket": {
+            "name": "Suuq-weyne"
+        },
+        "shop/travel_agency": {
+            "name": "Wakaalad Socdaal"
+        },
+        "tourism/hotel": {
+            "name": "Huteel"
+        },
+        "type/route/ferry": {
+            "name": "Wadada Doonta"
+        },
+        "type/waterway": {
+            "name": "Biyo Mareen"
+        },
+        "waterway": {
+            "name": "Biyo Mareen"
+        },
+        "waterway/canal": {
+            "name": "Kanaal"
+        },
+        "waterway/dock": {
+            "name": "Kaabi qoyan / Kaabi qallalan"
+        }
+    }
+}

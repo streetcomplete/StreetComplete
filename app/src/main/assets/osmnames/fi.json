@@ -1,0 +1,3182 @@
+{
+    "presets": {
+        "address": {
+            "name": "Osoite",
+            "terms": "asuinpaikka, viittauskohde"
+        },
+        "advertising/billboard": {
+            "name": "Tienvarsimainos",
+            "terms": "mainos, mainostaminen, mainostus, mainostaulu, valomainos, mainosn\u00e4ytt\u00f6, taulu, juliste, n\u00e4ytt\u00f6"
+        },
+        "advertising/column": {
+            "name": "Mainoslieri\u00f6",
+            "terms": "mainos, mainonta, tolppa, teline, kyltti, mainoskyltti, s\u00e4ili\u00f6, py\u00f6riv\u00e4"
+        },
+        "aerialway": {
+            "name": "Ilmarata"
+        },
+        "aerialway/cable_car": {
+            "name": "K\u00f6ysirata"
+        },
+        "aerialway/chair_lift": {
+            "name": "Tuolihissi",
+            "terms": "hissi, hiihtohissi, lasketteluhissi, laskettelu, penkki, tuoli, istuin"
+        },
+        "aerialway/drag_lift": {
+            "name": "Vetohissi"
+        },
+        "aerialway/gondola": {
+            "name": "Gondolihissi",
+            "terms": "hissi, hiihtohissi, lasketteluhissi, laskettelu, gondoli, koppi, koppihissi"
+        },
+        "aerialway/goods": {
+            "name": "Rahti-ilmarata",
+            "terms": "tavara, rahti, hissi, gondoli, ilmarata, k\u00f6ysirata, rata"
+        },
+        "aerialway/magic_carpet": {
+            "name": "Mattohissi",
+            "terms": "hissi, hiihtohissi, lasketteluhissi, laskettelu, liukuhihna, hihna, hihnahissi, liukuhihnahissi"
+        },
+        "aerialway/mixed_lift": {
+            "name": "Gondoli-tuoli-hissi"
+        },
+        "aerialway/platter": {
+            "name": "Sompahissi",
+            "terms": "hissi, hiihtohissi, lasketteluhissi, laskettelu, sompa, tutti, tuttihissi"
+        },
+        "aerialway/pylon": {
+            "name": "Ilmaradan pylv\u00e4s"
+        },
+        "aerialway/rope_tow": {
+            "name": "Naruhissi",
+            "terms": "hissi, hiihtohissi, lasketteluhissi, laskettelu, naru, k\u00f6ysi, k\u00f6ysihissi"
+        },
+        "aerialway/station": {
+            "name": "Ilmarata-asema"
+        },
+        "aerialway/t-bar": {
+            "name": "Ankkurihissi",
+            "terms": "hissi, hiihtohissi, lasketteluhissi, laskettelu, ankkuri, parihissi"
+        },
+        "aeroway": {
+            "name": "Rullaustie"
+        },
+        "aeroway/aerodrome": {
+            "name": "Lentokentt\u00e4",
+            "terms": "lentokentt\u00e4, lentoasema, terminaali, lentokone, lentoterminaali"
+        },
+        "aeroway/apron": {
+            "name": "Asemataso",
+            "terms": "asemataso, lentoterminaali, lentokentt\u00e4, lentokone, lentoasema"
+        },
+        "aeroway/gate": {
+            "name": "L\u00e4ht\u00f6portti",
+            "terms": "lentokentt\u00e4, lento, lentokone, portti, silta"
+        },
+        "aeroway/hangar": {
+            "name": "Lentokonehalli",
+            "terms": "hangaari, lentokonehalli, lentohalli, lentosuoja, lentokonesuoja, lentoasema, lentokentt\u00e4, lentokone"
+        },
+        "aeroway/helipad": {
+            "name": "Helikopterikentt\u00e4",
+            "terms": "helikopterikentt\u00e4, helikopteri"
+        },
+        "aeroway/runway": {
+            "name": "Kiitorata",
+            "terms": "kiitorata, kiitotie, lentokone, lentoonl\u00e4ht\u00f6rata, lentoonl\u00e4ht\u00f6tie"
+        },
+        "aeroway/taxiway": {
+            "name": "Rullaustie",
+            "terms": "rullaustie, lentokone, lentokentt\u00e4, lentoasema, siirtym\u00e4tie"
+        },
+        "aeroway/terminal": {
+            "name": "Lentokentt\u00e4terminaali",
+            "terms": "terminaali, lentoasema, lentokentt\u00e4, lentoterminaali, lentokone, lento, lent\u00e4minen"
+        },
+        "allotments/plot": {
+            "name": "Viljelypalsta"
+        },
+        "amenity": {
+            "name": "Palvelu"
+        },
+        "amenity/animal_boarding": {
+            "name": "Lemmikkihoitola",
+            "terms": "lemmikki, el\u00e4in, hoitola, p\u00e4iv\u00e4koti, hoitopaikka"
+        },
+        "amenity/animal_breeding": {
+            "name": "El\u00e4inten ruokintapaikka"
+        },
+        "amenity/animal_shelter": {
+            "name": "El\u00e4inkatos"
+        },
+        "amenity/arts_centre": {
+            "name": "Taidekeskus",
+            "terms": "taidekeskus, taidetalo, taidekoulu, kulttuurikeskus, kulttuuritalo, esityspaikka, esiintymispaikka, n\u00e4yt\u00f6spaikka, poikkitaiteellinen, teatteri, live, stand-up, konsertti, galleria, n\u00e4yttely, nykytaide"
+        },
+        "amenity/atm": {
+            "name": "Pankkiautomaatti",
+            "terms": "otto, pankkiautomaatti, rahannostoautomaatti, pankki"
+        },
+        "amenity/bank": {
+            "name": "Pankki",
+            "terms": "pankki, pankkikonttori, pankkitoimisto, pankkitoimipiste"
+        },
+        "amenity/bar": {
+            "name": "Baari"
+        },
+        "amenity/bbq": {
+            "name": "Grilli",
+            "terms": "grilli, grillaus, grillauspiste, grillauspaikka, grillipiste, grillauspaikka"
+        },
+        "amenity/bench": {
+            "name": "Penkki",
+            "terms": "penkki, tuoli, istuin"
+        },
+        "amenity/bicycle_parking": {
+            "name": "Py\u00f6r\u00e4pys\u00e4k\u00f6inti",
+            "terms": "py\u00f6r\u00e4pys\u00e4k\u00f6inti, py\u00f6r\u00e4parkki, py\u00f6r\u00e4paikka, py\u00f6r\u00e4teline, polkupy\u00f6r\u00e4pys\u00e4k\u00f6inti, polkupy\u00f6r\u00e4parkki, polkupy\u00f6r\u00e4paikka, polkupy\u00f6r\u00e4teline, lukkopaikka, polkupy\u00f6r\u00e4, py\u00f6r\u00e4"
+        },
+        "amenity/bicycle_rental": {
+            "name": "Py\u00f6r\u00e4vuokraamo",
+            "terms": "py\u00f6r\u00e4vuokraamo, kaupunkipy\u00f6r\u00e4, py\u00f6r\u00e4nvuokraus, py\u00f6r\u00e4n vuokraus, polkupy\u00f6r\u00e4vuokraamo, polkupy\u00f6r\u00e4n vuokraus, polkupy\u00f6r\u00e4nvuokraus, polkupy\u00f6r\u00e4, py\u00f6r\u00e4"
+        },
+        "amenity/bicycle_repair_station": {
+            "name": "Polkupy\u00f6r\u00e4n huoltoteline",
+            "terms": "teline, pidike, huolto, py\u00f6r\u00e4, polkupy\u00f6r\u00e4, py\u00f6r\u00e4n, polkupy\u00f6r\u00e4n"
+        },
+        "amenity/boat_rental": {
+            "name": "Venevuokraamo",
+            "terms": "vene, laiva, paatti, jolla, veneenvuokraus, venevuokra, vuokra, venevuokraus, venevuokraamo, veneenvuokraamo"
+        },
+        "amenity/bureau_de_change": {
+            "name": "Valuutanvaihtopiste",
+            "terms": "valuutta, raha, vaihto, vaihtaminen, valuutanvaihto, valuutanvaihtaminen, rahanvaihto, rahanvaihtaminen, Forex"
+        },
+        "amenity/bus_station": {
+            "name": "Linja-autoasema/-terminaali"
+        },
+        "amenity/cafe": {
+            "name": "Kahvila",
+            "terms": "Kahvila, Kahvitupa, Teehuone"
+        },
+        "amenity/car_pooling": {
+            "name": "Kimppakyyti",
+            "terms": "yhteisk\u00e4ytt\u00f6, jako, jakaminen, jakamis, auto, jakoauto, yhteisauto, vuokra, vuokra-auto, vuokraaminen, vuokraus, ajoneuvo, kimppa"
+        },
+        "amenity/car_rental": {
+            "name": "Autonvuokraus",
+            "terms": "autovuokraamo, autonvuokraus, auton vuokraus, auto, vuokra-auto, auton vuokraaminen, vuokraaminen"
+        },
+        "amenity/car_sharing": {
+            "name": "Yhteisk\u00e4ytt\u00f6auto",
+            "terms": "yhteisk\u00e4ytt\u00f6, jako, jakaminen, jakamis, auto, jakoauto, yhteisauto, vuokra, vuokra-auto, vuokraaminen, vuokraus, ajoneuvo, sunfleet, drivenow"
+        },
+        "amenity/car_wash": {
+            "name": "Autopesula",
+            "terms": "autopesu, automaattipesu, pesula, pesukone, pesuhalli, auto, autot"
+        },
+        "amenity/casino": {
+            "name": "Kasino"
+        },
+        "amenity/charging_station": {
+            "name": "Latauspiste",
+            "terms": "s\u00e4hk\u00f6auto, s\u00e4hk\u00f6nlataus, s\u00e4hk\u00f6piste, latauspiste, lataaminen, lataus"
+        },
+        "amenity/childcare": {
+            "name": "P\u00e4iv\u00e4koti",
+            "terms": "p\u00e4iv\u00e4hoito, perhep\u00e4iv\u00e4hoito, p\u00e4iv\u00e4koti, lapset, lapsi, lastenhoito, lastenvahti, lapsenvahti, lapsenhoito, vahtiminen"
+        },
+        "amenity/cinema": {
+            "name": "Elokuvateatteri",
+            "terms": "leffa, leffateatteri, elokuva, elokuvateatteri"
+        },
+        "amenity/clinic": {
+            "name": "Klinikka",
+            "terms": "l\u00e4\u00e4k\u00e4riasema, l\u00e4\u00e4k\u00e4rikeskus, klinikka"
+        },
+        "amenity/clinic/abortion": {
+            "name": "Raskaudenkeskeytysklinikka",
+            "terms": "abortti, raskaus, raskauden, keskeytys, raskaudenkesketys, sairaala, terveyskeskus, klinikka"
+        },
+        "amenity/clinic/fertility": {
+            "name": "Hedelm\u00e4llisyysklinikka"
+        },
+        "amenity/clock": {
+            "name": "Kello"
+        },
+        "amenity/college": {
+            "name": "Korkeakoulualue (college)"
+        },
+        "amenity/community_centre": {
+            "name": "Yhteis\u00f6keskus",
+            "terms": "yhteis\u00f6keskus, yhdistys, j\u00e4rjest\u00f6, kyl\u00e4talo, kyl\u00e4keskus, seurantalo, seurojentalo, ty\u00f6v\u00e4entalo, kerhotalo, kerhohuoneisto, kerhokeskus, klubi, monitoimitalo, nuorisotila, nuorisotalo, kokoontumispaikka, kokouspaikka, kokoustila, konferenssi, palaveri, neuvottelu, tapahtumapaikka, juhlatila, h\u00e4\u00e4paikka, sosiaalitila, avoin, julkinen"
+        },
+        "amenity/compressed_air": {
+            "name": "Ilmanpainepiste",
+            "terms": "renkaat, auto, autoilu, rengas, t\u00e4ytt\u00f6, paineilma, ilmant\u00e4ytt\u00f6, kompressori"
+        },
+        "amenity/courthouse": {
+            "name": "K\u00e4r\u00e4j\u00e4oikeus",
+            "terms": "oikeustalo, k\u00e4r\u00e4j\u00e4talo, alioikeus, kihlakunnanoikeus, syytt\u00e4j\u00e4ntalo, raastupa, k\u00e4r\u00e4j\u00e4tuomari, syytt\u00e4j\u00e4, lautamies, k\u00e4r\u00e4j\u00e4oikeus"
+        },
+        "amenity/coworking_space": {
+            "name": "Yhteisty\u00f6skentelytila"
+        },
+        "amenity/crematorium": {
+            "name": "Krematorio",
+            "terms": "tuhka, tuhkaamo, tuhkaus, ruumishuone, ruumis, ruumiita, hautajaiset, arkku"
+        },
+        "amenity/dentist": {
+            "name": "Hammasl\u00e4\u00e4k\u00e4riasema",
+            "terms": "hammasl\u00e4\u00e4k\u00e4ri, klinikka, hammasklinikka, hammas, hampaat, hammashoito, suuhygienia, suuhygienisti, sairaala, terveyskeskus, terveys, l\u00e4\u00e4k\u00e4ri, sairaus, suuterveys, suu"
+        },
+        "amenity/dive_centre": {
+            "name": "Sukelluskeskus",
+            "terms": "sukellus, laitesukellus, sukeltaminen"
+        },
+        "amenity/doctors": {
+            "name": "Yksityinen l\u00e4\u00e4k\u00e4ri"
+        },
+        "amenity/dojo": {
+            "name": "Itsepuolustuslajien harjoittelupaikka",
+            "terms": "taistelulaji, taistelu, itsepuolustus, laji, lajit, urheilu, kamppailu, kamppailulaji, itsepuolustuslaji, taekwondo, taekwon-do, judo, karate, taiji, jujutsu, aikido, kravmaga, krav maga, hapkido"
+        },
+        "amenity/drinking_water": {
+            "name": "Juomavesipiste",
+            "terms": "juomavesi, juoma-automaatti, juomapaikka, vesipiste, vesiautomaatti, vedenjakelu, hana, kaivo"
+        },
+        "amenity/driving_school": {
+            "name": "Autokoulu",
+            "terms": "auto, ajaminen, ajokortti, koulu, ajolupa, autoilu, liikenne"
+        },
+        "amenity/embassy": {
+            "name": "Suurl\u00e4hetyst\u00f6"
+        },
+        "amenity/fast_food": {
+            "name": "Pikaruokaravintola",
+            "terms": "Hesburger, m\u00e4kk\u00e4ri, McDonald's, McDonalds, subi, subway, hamppari, hampurilainen, hampurilais, hampurilaisravintola, roska, roskaruoka, ruoka, ravintola, m\u00e4tt\u00f6, ranskalaiset, ranskikset"
+        },
+        "amenity/fast_food/burger": {
+            "name": "Hampurilaispikaruokaravintola"
+        },
+        "amenity/fast_food/chicken": {
+            "name": "Kanapikaruokaravintola"
+        },
+        "amenity/fast_food/fish_and_chips": {
+            "name": "Fish & Chips -pikaruokaravintola"
+        },
+        "amenity/fast_food/kebab": {
+            "name": "Kebabpikaruokaravintola"
+        },
+        "amenity/fast_food/pizza": {
+            "name": "Pitseria-pikaruokaravintola"
+        },
+        "amenity/fast_food/sandwich": {
+            "name": "Kerrosvoileip\u00e4pikaruokaravintola"
+        },
+        "amenity/ferry_terminal": {
+            "name": "Laivaterminaali"
+        },
+        "amenity/fire_station": {
+            "name": "Paloasema",
+            "terms": "paloasema, palokeskus, vpk, vapaapalokunta"
+        },
+        "amenity/food_court": {
+            "name": "Ravintolamaailma"
+        },
+        "amenity/fountain": {
+            "name": "Suihkul\u00e4hde"
+        },
+        "amenity/fuel": {
+            "name": "Huoltoasema",
+            "terms": "huoltoasema, bensa-asema, liikennemyym\u00e4l\u00e4, huoltamo, bensis, tankkausasema, bensapiste, tankkauspiste, kylm\u00e4asema"
+        },
+        "amenity/grave_yard": {
+            "name": "Hautausmaa",
+            "terms": "hautausmaa, kalmisto, luutarha"
+        },
+        "amenity/grit_bin": {
+            "name": "Hiekoitushiekkalaatikko",
+            "terms": "hiekoitus, hiekoitushiekka, hiekka, sora, hiekoitussora, hiekotus, sandi"
+        },
+        "amenity/hospital": {
+            "name": "Sairaala-alue",
+            "terms": "sairaala, hoito, ensiapu, apu, sairas, klinikka, terveys, terveyskeskus, kipu, l\u00e4\u00e4k\u00e4ri, sairaanhoitaja, sairaanhoito"
+        },
+        "amenity/hunting_stand": {
+            "name": "Mets\u00e4styspaikka"
+        },
+        "amenity/ice_cream": {
+            "name": "J\u00e4\u00e4tel\u00f6n myyntipiste",
+            "terms": "j\u00e4\u00e4tel\u00f6, pehmis, j\u00e4\u00e4tel\u00f6n, pehmiksen, j\u00e4\u00e4tel\u00f6kioski, j\u00e4tskikioski, j\u00e4\u00e4tel\u00f6baari, kioski, puoti, kauppa, liike, myym\u00e4l\u00e4, putiikki, baari"
+        },
+        "amenity/internet_cafe": {
+            "name": "Internetkahvila",
+            "terms": "nettikahvila, wlan, wifi"
+        },
+        "amenity/kindergarten": {
+            "name": "Esikoulu",
+            "terms": "eskari, leikkikoulu, koulu, nollaluokka, 0. luokka, 0 luokka, 0-luokka"
+        },
+        "amenity/language_school": {
+            "name": "Kielikoulu"
+        },
+        "amenity/library": {
+            "name": "Kirjasto",
+            "terms": "kirjasto, kirjalainaamo, kirjanlainaus, kirjan lainaus, kirja, kirjan lainaaminen"
+        },
+        "amenity/love_hotel": {
+            "name": "Tuntihotelli",
+            "terms": "ilotalo, seksi, prostituutio"
+        },
+        "amenity/marketplace": {
+            "name": "Tori"
+        },
+        "amenity/monastery": {
+            "name": "Luostari"
+        },
+        "amenity/money_transfer": {
+            "name": "Rahansiirtopiste"
+        },
+        "amenity/motorcycle_parking": {
+            "name": "Moottoripy\u00f6r\u00e4pys\u00e4k\u00f6inti"
+        },
+        "amenity/music_school": {
+            "name": "Musiikkikoulu",
+            "terms": "musiikkikoulu, musiikkileikkikoulu, musiikkiopetus, musiikkiopettaja, musiikkioppilaitos, musiikkiopisto, muskari, soitonopetus, laulunopetus, konservatorio, taideakatemia, kuoro, yhtye, b\u00e4ndi, orkesteri, kitara, piano"
+        },
+        "amenity/nightclub": {
+            "name": "Y\u00f6kerho"
+        },
+        "amenity/nursing_home": {
+            "name": "Hoitokoti"
+        },
+        "amenity/parking": {
+            "name": "Pys\u00e4k\u00f6intialue",
+            "terms": "auto, parkki, parkkihalli, pys\u00e4k\u00f6intialue, pys\u00e4k\u00f6inti, parkki, parkkipaikka, pys\u00e4k\u00f6intialue, parkkialue"
+        },
+        "amenity/parking/multi-storey": {
+            "name": "Pys\u00e4k\u00f6intitalo",
+            "terms": "auto, parkki, parkkihalli, pys\u00e4k\u00f6intialue, pys\u00e4k\u00f6inti, parkki, parkkipaikka, pys\u00e4k\u00f6intialue, parkkialue"
+        },
+        "amenity/parking_entrance": {
+            "name": "Pys\u00e4k\u00f6intihallin ajoramppi",
+            "terms": "pys\u00e4k\u00f6inti, parkkipaikka, pys\u00e4k\u00f6intipaikka, parkki, pys\u00e4k\u00f6intitalo, parkkitalo, ulosajo, sis\u00e4\u00e4najo, ajo, ulos, sis\u00e4\u00e4n, ramppi"
+        },
+        "amenity/parking_space": {
+            "name": "Pys\u00e4k\u00f6intitila",
+            "terms": "pys\u00e4k\u00f6inti, pys\u00e4k\u00f6intipaikka, pys\u00e4k\u00f6intiruutu, parkkipaikka, parkkeeraus, autopys\u00e4k\u00f6inti, autopaikka"
+        },
+        "amenity/payment_centre": {
+            "name": "Maksupalvelu"
+        },
+        "amenity/payment_terminal": {
+            "name": "Maksup\u00e4\u00e4te"
+        },
+        "amenity/place_of_worship": {
+            "name": "Rukoilupaikka",
+            "terms": "Uskonnollinen rakennus, Kirkkorakennus, seurakuntatalo, temppeli, luostari, munkki, nunna, katedraali, kappeli, uhrauspaikka, uhripaikka, kulttipaikka, pyh\u00e4kk\u00f6, pyh\u00e4tt\u00f6, pyh\u00e4, jumalanpalvelus, rukoushuone, valtakunnansali, loosi, seita, keskus"
+        },
+        "amenity/place_of_worship/buddhist": {
+            "name": "Buddhalaistemppeli",
+            "terms": "buddhalainen, stupa, pagoda, luostari, zendo, dojo, meditaatio"
+        },
+        "amenity/place_of_worship/christian": {
+            "name": "Kristinusko, kirkko"
+        },
+        "amenity/place_of_worship/hindu": {
+            "name": "Hindutemppeli",
+            "terms": "hindulaisuus, hindut, hindu, temppeli, uskonto, uskonnollinen, rukoilu, intia, jooga"
+        },
+        "amenity/place_of_worship/jewish": {
+            "name": "Juutalaisuus, synagoga"
+        },
+        "amenity/place_of_worship/muslim": {
+            "name": "Islam, moskeija"
+        },
+        "amenity/place_of_worship/shinto": {
+            "name": "\u0160intolainen pyh\u00e4kk\u00f6",
+            "terms": "\u0160intopyh\u00e4kk\u00f6, pyh\u00e4tt\u00f6, shintolainen, japanilainen, kami, asuinpaikka, jumala, henki, torii, honden, shinden, haiden, heiden, seremonia, uhrihalli"
+        },
+        "amenity/place_of_worship/sikh": {
+            "name": "Sikhitemppeli",
+            "terms": "sikhil\u00e4inen, gurdwara, gurudwara"
+        },
+        "amenity/place_of_worship/taoist": {
+            "name": "Taolainen temppeli",
+            "terms": "taolaistemppeli, kungfutselainen, kiinalainen, luostari"
+        },
+        "amenity/planetarium": {
+            "name": "Planetaario"
+        },
+        "amenity/police": {
+            "name": "Poliisiasema",
+            "terms": "Poliisi, Poliisiasema"
+        },
+        "amenity/post_box": {
+            "name": "Postilaatikko",
+            "terms": "postilaatikko, postinl\u00e4hetys, oranssi laatikko, kirjeenl\u00e4hetys, posti, kirje, itella"
+        },
+        "amenity/post_office": {
+            "name": "Postitoimisto",
+            "terms": "postitoimisto, postikonttori, posti, kirje, paketti, postipiste"
+        },
+        "amenity/prison": {
+            "name": "Vankila-alue"
+        },
+        "amenity/pub": {
+            "name": "Pubi",
+            "terms": "pubi, pub, kapakka, saluuna, kievari, taverna, krouvi, y\u00f6ravintola, olutravintola, oluttupa, kaljaravintola, alkoholi, baari"
+        },
+        "amenity/public_bath": {
+            "name": "Kylpylaitos"
+        },
+        "amenity/public_bookcase": {
+            "name": "Julkinen kirjahylly",
+            "terms": "avoin, kirja, kirjoja, kirjat, vapaa, kirjan, kirjanjakelupiste, kirjapiste, jako, jakaa, jakelu, ilmainen, k\u00e4dest\u00e4 k\u00e4teen, kirjanvaihto"
+        },
+        "amenity/ranger_station": {
+            "name": "Mets\u00e4vartiosto"
+        },
+        "amenity/recycling": {
+            "name": "Kierr\u00e4tys"
+        },
+        "amenity/recycling_centre": {
+            "name": "Kierr\u00e4tyskeskus"
+        },
+        "amenity/recycling_container": {
+            "name": "Kierr\u00e4tyspiste"
+        },
+        "amenity/register_office": {
+            "name": "Maistraatti"
+        },
+        "amenity/restaurant": {
+            "name": "Ravintola",
+            "terms": "Ravintola, Ruokaravintola, Bistro, Krouvi, Pizzeria, Pitseria, Ruokala"
+        },
+        "amenity/restaurant/american": {
+            "name": "Amerikkalainen ravintola"
+        },
+        "amenity/restaurant/asian": {
+            "name": "Aasialainen ravintola"
+        },
+        "amenity/restaurant/chinese": {
+            "name": "Kiinalainen ravintola"
+        },
+        "amenity/restaurant/french": {
+            "name": "Ranskalainen ravintola"
+        },
+        "amenity/restaurant/german": {
+            "name": "Saksalainen ravintola"
+        },
+        "amenity/restaurant/greek": {
+            "name": "Kreikkalainen ravintola"
+        },
+        "amenity/restaurant/indian": {
+            "name": "Intialainen ravintola"
+        },
+        "amenity/restaurant/italian": {
+            "name": "Italialainen ravintola"
+        },
+        "amenity/restaurant/japanese": {
+            "name": "Japanilainen ravintola"
+        },
+        "amenity/restaurant/mexican": {
+            "name": "Meksikolainen ravintola"
+        },
+        "amenity/restaurant/noodle": {
+            "name": "Nuudeliravintola"
+        },
+        "amenity/restaurant/pizza": {
+            "name": "Pitseria"
+        },
+        "amenity/restaurant/seafood": {
+            "name": "Meriruokaravintola"
+        },
+        "amenity/restaurant/steakhouse": {
+            "name": "Pihviravintola"
+        },
+        "amenity/restaurant/sushi": {
+            "name": "Sushiravintola"
+        },
+        "amenity/restaurant/thai": {
+            "name": "Thaimaalainen ravintola"
+        },
+        "amenity/restaurant/turkish": {
+            "name": "Turkkilainen ravintola"
+        },
+        "amenity/restaurant/vietnamese": {
+            "name": "Vietnamilainen ravintola"
+        },
+        "amenity/sanitary_dump_station": {
+            "name": "Asuntoautojen j\u00e4teveden tyhjennyspiste"
+        },
+        "amenity/school": {
+            "name": "Koulualue (peruskoulu/lukio/ammattikoulu)",
+            "terms": "koulu, koulutus, ala-aste, koulualue, alue, koulupiha, piha, v\u00e4litunti, v\u00e4lituntialue, yl\u00e4aste, yl\u00e4koulu, lukio, ammatti, ammattioppilaitos, ammattiopisto, oppilaitos, ammattikoulu, amis, yhten\u00e4iskoulu, yhten\u00e4islukio, yhteislukio"
+        },
+        "amenity/scrapyard": {
+            "name": "Autonromuttamo"
+        },
+        "amenity/shelter": {
+            "name": "Katos",
+            "terms": "katos, katettu, kota, kotus, korsu, laavu, maja, koppi, suoja, tauko, taukopaikka, taukokatos, piknik, picnic, retki, lepo, lep\u00e4\u00e4minen, pukukoppi, pukeutuminen, bussi, linja-auto, kalliolippa"
+        },
+        "amenity/shelter/gazebo": {
+            "name": "huvimaja"
+        },
+        "amenity/shelter/lean_to": {
+            "name": "S\u00e4\u00e4suoja",
+            "terms": "katos, kate, s\u00e4\u00e4, suojus, suoja, keli, sade, sateen"
+        },
+        "amenity/shelter/picnic_shelter": {
+            "name": "Piknikkatos"
+        },
+        "amenity/shelter/public_transport": {
+            "name": "pys\u00e4kkikatos"
+        },
+        "amenity/shower": {
+            "name": "Suihku"
+        },
+        "amenity/smoking_area": {
+            "name": "Tupakointialue",
+            "terms": "tupakkapaikka"
+        },
+        "amenity/social_facility": {
+            "name": "Sosiaalipalvelu"
+        },
+        "amenity/social_facility/food_bank": {
+            "name": "Ruokapankki",
+            "terms": "ruokajako, ruokajakelu, leip\u00e4jono"
+        },
+        "amenity/social_facility/group_home": {
+            "name": "Vanhainkoti",
+            "terms": "vanhus, el\u00e4kel\u00e4inen, palvelu, palvelutalo, palvelukoti, talo, koti, sosiaalipalvelu, sosiaalipalvelut, vanhukset, el\u00e4kel\u00e4iset"
+        },
+        "amenity/social_facility/homeless_shelter": {
+            "name": "Kodittomien turvakoti",
+            "terms": "koditon, kodittomia, turvatalo, kodittomien, turvakoti, kodittomat, kodittoman, asunnoton, asunnottomat, asunnottomien"
+        },
+        "amenity/social_facility/nursing_home": {
+            "name": "Hoitokoti"
+        },
+        "amenity/studio": {
+            "name": "Studio"
+        },
+        "amenity/swimming_pool": {
+            "name": "Uima-allas"
+        },
+        "amenity/taxi": {
+            "name": "Taksitolppa",
+            "terms": "taksitolppa, taksiasema, taksipiste, taksi, taksikyltti, taxi"
+        },
+        "amenity/telephone": {
+            "name": "Yleinen puhelin",
+            "terms": "puhelinkoppi, puhelin, puhelinkioski, julkinen puhelin"
+        },
+        "amenity/theatre": {
+            "name": "Teatteri",
+            "terms": "Teatteri, Kaupunginteatteri, Kansallisteatteri"
+        },
+        "amenity/theatre/type/amphi": {
+            "name": "Amfiteatteri",
+            "terms": "ulkoilmateatteri, ulkoteatteri, ulko, ulkona, ympyr\u00e4, kaari, puoliympyr\u00e4, puolikaari, muotoinen"
+        },
+        "amenity/toilets": {
+            "name": "WC",
+            "terms": "vessa, k\u00e4ym\u00e4l\u00e4, saniteetti, saniteettitila, sanitaatio, pisuaari, p\u00f6ntt\u00f6, wc-istuin, wc-p\u00f6ntt\u00f6, pesuhuone, pesuallas, tarpeet, uloste, ulostaminen, virtsa, virtsaaminen"
+        },
+        "amenity/townhall": {
+            "name": "Kunnantalo",
+            "terms": "kunnantalo, kaupungintalo, valtuusto,"
+        },
+        "amenity/university": {
+            "name": "Yliopistoalue"
+        },
+        "amenity/vehicle_inspection": {
+            "name": "Katsastusasema"
+        },
+        "amenity/vending_machine": {
+            "name": "Myyntiautomaatti",
+            "terms": "automaatti, myyntiautomaatti, jakeluautomaatti, palautusautomaatti, pullonpalautus"
+        },
+        "amenity/vending_machine/cigarettes": {
+            "name": "Tupakka-automaatti",
+            "terms": "tupakka, tupakointi, savu, polttaminen, polttaa, r\u00f6\u00f6ki, automaatti"
+        },
+        "amenity/vending_machine/coffee": {
+            "name": "Kahviautomaatti"
+        },
+        "amenity/vending_machine/condoms": {
+            "name": "Kondomiautomaatti",
+            "terms": "ehk\u00e4isy, kondomi, automaatti"
+        },
+        "amenity/vending_machine/drinks": {
+            "name": "Juoma-automaatti"
+        },
+        "amenity/vending_machine/electronics": {
+            "name": "Elektroniikka-automaatti"
+        },
+        "amenity/vending_machine/feminine_hygiene": {
+            "name": "Naishygienia-automaatti",
+            "terms": "tamponi, tamppooni, kuukautissuoja, pikkuhousunsuoja, terveysside"
+        },
+        "amenity/vending_machine/food": {
+            "name": "Ruoka-automaatti"
+        },
+        "amenity/vending_machine/fuel": {
+            "name": "Polttoainepumppu"
+        },
+        "amenity/vending_machine/ice_cream": {
+            "name": "J\u00e4\u00e4tel\u00f6automaatti"
+        },
+        "amenity/vending_machine/news_papers": {
+            "name": "Lehtiautomaatti"
+        },
+        "amenity/vending_machine/newspapers": {
+            "name": "Lehtiautomaatti"
+        },
+        "amenity/vending_machine/parcel_pickup": {
+            "name": "Postin noutoautomaatti"
+        },
+        "amenity/vending_machine/parcel_pickup_dropoff": {
+            "name": "Postin nouto/j\u00e4tt\u00f6automaatti"
+        },
+        "amenity/vending_machine/parking_tickets": {
+            "name": "Pys\u00e4k\u00f6intimaksuautomaatti",
+            "terms": "parkkiautomaatti, automaatti, maksu, maksaa, maksaminen, pys\u00e4k\u00f6inti, parkki, parkkimaksu, pys\u00e4k\u00f6intimaksu"
+        },
+        "amenity/vending_machine/public_transport_tickets": {
+            "name": "Joukkoliikenteen lippuautomaatti",
+            "terms": "lippu, automaatti, bussilippu, junalippu, metrolippu, myynti, myyntiautomaatti, joukkoliikenne, julkinen, liikenne"
+        },
+        "amenity/vending_machine/stamps": {
+            "name": "Postimerkkiautomaatti"
+        },
+        "amenity/vending_machine/sweets": {
+            "name": "V\u00e4lipala-automaatti",
+            "terms": "snack, v\u00e4lipala, patukka, karkki, automaatti, sy\u00f6t\u00e4v\u00e4\u00e4, sy\u00f6mist\u00e4"
+        },
+        "amenity/veterinary": {
+            "name": "El\u00e4inl\u00e4\u00e4k\u00e4ri"
+        },
+        "amenity/waste/dog_excrement": {
+            "name": "Koiranj\u00e4t\u00f6sastia",
+            "terms": "koira, koirankakka, kakka, kakkaroskis, roskis"
+        },
+        "amenity/waste_basket": {
+            "name": "Roskakori",
+            "terms": "roska-astia, roskis, roskap\u00f6ntt\u00f6, j\u00e4te-astia, kierr\u00e4tyspiste, kierr\u00e4tyslaatikko, roska, kierr\u00e4tys, j\u00e4te, j\u00e4tteet"
+        },
+        "amenity/waste_disposal": {
+            "name": "J\u00e4teastia"
+        },
+        "amenity/waste_transfer_station": {
+            "name": "J\u00e4tteiden putkiker\u00e4ysasema",
+            "terms": "j\u00e4te, roskat, j\u00e4tteet, putki, putkiker\u00e4ys, j\u00e4teasema, piste"
+        },
+        "amenity/water_point": {
+            "name": "Asuntoauton vesipiste",
+            "terms": "vesi, vett\u00e4, veden, vedent\u00e4ytt\u00f6, t\u00e4ytt\u00f6, t\u00e4ytt\u00e4minen, asuntoauto, asuntovaunu, karavaanari, otto, vedenotto"
+        },
+        "amenity/watering_place": {
+            "name": "El\u00e4inten juomapaikka"
+        },
+        "area": {
+            "name": "Alue"
+        },
+        "area/highway": {
+            "name": "Tien p\u00e4\u00e4llyste",
+            "terms": "pinnoite, pinta"
+        },
+        "attraction": {
+            "name": "N\u00e4ht\u00e4vyys"
+        },
+        "attraction/amusement_ride": {
+            "name": "Huvipuistolaite",
+            "terms": "huvipuisto, el\u00e4myspuisto, laite, h\u00e4rveli, vuoristorata, karuselli, vimpain, vitkutin, huvilaite"
+        },
+        "attraction/animal": {
+            "name": "El\u00e4in",
+            "terms": "el\u00e4intarha, el\u00e4inpuisto, teemapuisto, leijona, tiikeri, karhu"
+        },
+        "attraction/big_wheel": {
+            "name": "Maailmanpy\u00f6r\u00e4",
+            "terms": "huvipuisto, el\u00e4myspuisto, laite, h\u00e4rveli, vimpain, vitkutin, huvilaite, py\u00f6r\u00e4"
+        },
+        "attraction/bumper_car": {
+            "name": "T\u00f6rm\u00e4ilyautot",
+            "terms": "huvipuisto, el\u00e4myspuisto, laite, h\u00e4rveli, vimpain, vitkutin, huvilaite, t\u00f6rm\u00e4ilyauto, rata, autorata, t\u00f6rm\u00e4t\u00e4, t\u00f6rm\u00e4ily"
+        },
+        "attraction/bungee_jumping": {
+            "name": "Benji-hyppypaikka"
+        },
+        "attraction/carousel": {
+            "name": "Karuselli",
+            "terms": "huvipuisto, el\u00e4myspuisto, laite, h\u00e4rveli, karuselli, vimpain, vitkutin, huvilaite"
+        },
+        "attraction/dark_ride": {
+            "name": "Kauhulaite",
+            "terms": "huvipuisto, el\u00e4myspuisto, laite, h\u00e4rveli, vimpain, vitkutin, huvilaite, kummitus, kummitusjuna, juna, kauhu"
+        },
+        "attraction/drop_tower": {
+            "name": "Vapaapudotuslaite",
+            "terms": "huvipuisto, el\u00e4myspuisto, laite, h\u00e4rveli, vimpain, vitkutin, huvilaite, raketti, vapaa, pudotus, torni"
+        },
+        "attraction/maze": {
+            "name": "Labyrintti"
+        },
+        "attraction/pirate_ship": {
+            "name": "Viikinkilaiva",
+            "terms": "huvipuisto, el\u00e4myspuisto, laite, h\u00e4rveli, viikinki, merirosvo, laiva, vene, vimpain, vitkutin, huvilaite"
+        },
+        "attraction/river_rafting": {
+            "name": "Vesilaite (huvipuisto)",
+            "terms": "tukkijoki, koski, vesilaite, kastuminen, kastua, huvipuisto, huvilaite, el\u00e4myspuisto, joki, kanava, tukki"
+        },
+        "attraction/roller_coaster": {
+            "name": "Vuoristorata",
+            "terms": "huvipuisto, el\u00e4myspuisto, laite, h\u00e4rveli, vuoristorata, vimpain, vitkutin, huvilaite"
+        },
+        "attraction/train": {
+            "name": "Turistijuna",
+            "terms": "turismi, turisti, matkailu, matkailija, juna"
+        },
+        "attraction/water_slide": {
+            "name": "Vesiliukum\u00e4ki",
+            "terms": "vesipuisto, uima-allas, allas, liukum\u00e4ki, liuku, vesi, huvipuisto, huvilaite, el\u00e4myspuisto"
+        },
+        "barrier": {
+            "name": "Muuri"
+        },
+        "barrier/block": {
+            "name": "Este",
+            "terms": "betoniporsas"
+        },
+        "barrier/bollard": {
+            "name": "Sulkutolppa",
+            "terms": "pollari, tolppa, pylv\u00e4s"
+        },
+        "barrier/border_control": {
+            "name": "Rajatarkastus"
+        },
+        "barrier/cattle_grid": {
+            "name": "Karjaeste"
+        },
+        "barrier/city_wall": {
+            "name": "Kaupunginmuuri"
+        },
+        "barrier/cycle_barrier": {
+            "name": "Py\u00f6r\u00e4ilyeste"
+        },
+        "barrier/ditch": {
+            "name": "Kaivanto",
+            "terms": "oja, juoksuhauta, syv\u00e4, vajoama, kanjoni"
+        },
+        "barrier/entrance": {
+            "name": "Sis\u00e4\u00e4nk\u00e4ynti"
+        },
+        "barrier/fence": {
+            "name": "Aita"
+        },
+        "barrier/fence/railing": {
+            "name": "Kaide"
+        },
+        "barrier/gate": {
+            "name": "Portti",
+            "terms": "puomi, ovi"
+        },
+        "barrier/hedge": {
+            "name": "Pensasaita"
+        },
+        "barrier/kerb": {
+            "name": "Reunakivi"
+        },
+        "barrier/kerb/lowered": {
+            "name": "Madallettu reunakivi"
+        },
+        "barrier/kissing_gate": {
+            "name": "Karjarajoitin"
+        },
+        "barrier/lift_gate": {
+            "name": "Nostopuomi",
+            "terms": "puomi, portti, nosto, nousu, nouseva, yl\u00f6snouseva"
+        },
+        "barrier/retaining_wall": {
+            "name": "Tukimuuri"
+        },
+        "barrier/stile": {
+            "name": "Jalkaporras"
+        },
+        "barrier/toll_booth": {
+            "name": "Tietullipiste"
+        },
+        "barrier/wall": {
+            "name": "Sein\u00e4"
+        },
+        "boundary/administrative": {
+            "name": "Hallinnollinen raja"
+        },
+        "building": {
+            "name": "Rakennus",
+            "terms": "talo"
+        },
+        "building/apartments": {
+            "name": "Kerrostalo"
+        },
+        "building/barn": {
+            "name": "Lato"
+        },
+        "building/bungalow": {
+            "name": "Bungalow"
+        },
+        "building/bunker": {
+            "name": "Bunkkeri"
+        },
+        "building/cathedral": {
+            "name": "Katedraalirakennus"
+        },
+        "building/chapel": {
+            "name": "Kappelirakennus"
+        },
+        "building/church": {
+            "name": "Kirkkorakennus"
+        },
+        "building/civic": {
+            "name": "Kunnallinen rakennus"
+        },
+        "building/college": {
+            "name": "Korkeakoulurakennus (college)"
+        },
+        "building/commercial": {
+            "name": "Kaupallinen rakennus"
+        },
+        "building/construction": {
+            "name": "Keskener\u00e4inen rakennus",
+            "terms": "rakennus, rakennusty\u00f6maa, rakenteilla"
+        },
+        "building/detached": {
+            "name": "Omakotitalo"
+        },
+        "building/dormitory": {
+            "name": "Asuntola"
+        },
+        "building/entrance": {
+            "name": "Sis\u00e4\u00e4n- tai ulosk\u00e4ynti"
+        },
+        "building/farm": {
+            "name": "Maatilan asuinrakennus"
+        },
+        "building/farm_auxiliary": {
+            "name": "Maatilarakennus"
+        },
+        "building/garage": {
+            "name": "Autotalli",
+            "terms": "autotalli, autons\u00e4ilytys, autohalli, autovarasto, auto"
+        },
+        "building/garages": {
+            "name": "Suuri autotalli",
+            "terms": "ryhm\u00e4autotalli, joukkoautotalli, joukkotalli, ryhm\u00e4talli, autotalli"
+        },
+        "building/grandstand": {
+            "name": "Suuri katsomokatos"
+        },
+        "building/greenhouse": {
+            "name": "Kasvihuone"
+        },
+        "building/hospital": {
+            "name": "Sairaalarakennus",
+            "terms": "sairaala, hoito, ensiapu, apu, sairas, klinikka, terveys, terveyskeskus, kipu, l\u00e4\u00e4k\u00e4ri, sairaanhoitaja, sairaanhoito"
+        },
+        "building/hotel": {
+            "name": "Hotellirakennus"
+        },
+        "building/house": {
+            "name": "Omakotitalo",
+            "terms": "omakotitalo, omakoti, yksityisasunto, yksityistalo, talo, asunto"
+        },
+        "building/hut": {
+            "name": "M\u00f6kki",
+            "terms": "maja, m\u00f6kki, kes\u00e4m\u00f6kki, t\u00f6n\u00f6, pikkutalo, pieni rakennus"
+        },
+        "building/industrial": {
+            "name": "Teollisuusrakennus"
+        },
+        "building/kindergarten": {
+            "name": "Esikoulurakennus"
+        },
+        "building/mosque": {
+            "name": "Moskeijarakennus",
+            "terms": "islamilainen, muslimi"
+        },
+        "building/pavilion": {
+            "name": "Paviljonki"
+        },
+        "building/public": {
+            "name": "Julkinen rakennus"
+        },
+        "building/residential": {
+            "name": "Asuinrakennus",
+            "terms": "asuintalo"
+        },
+        "building/retail": {
+            "name": "Liikerakennus"
+        },
+        "building/roof": {
+            "name": "Sein\u00e4t\u00f6n rakennus",
+            "terms": "katos, katettu, sein\u00e4t\u00f6n, rakennus"
+        },
+        "building/ruins": {
+            "name": "Rakennuksen rauniot"
+        },
+        "building/school": {
+            "name": "Koulurakennus"
+        },
+        "building/semidetached_house": {
+            "name": "Paritalo"
+        },
+        "building/service": {
+            "name": "Palvelurakennus"
+        },
+        "building/shed": {
+            "name": "Vaja",
+            "terms": "vaja, m\u00f6kki, liiteri"
+        },
+        "building/stable": {
+            "name": "Talli",
+            "terms": "hevonen, hevostalli, hevoset, ratsastus, ratsastaminen, hevoskoti"
+        },
+        "building/stadium": {
+            "name": "Stadionrakennus"
+        },
+        "building/temple": {
+            "name": "Temppelirakennus"
+        },
+        "building/terrace": {
+            "name": "Rivitalo"
+        },
+        "building/transportation": {
+            "name": "Terminaalirakennus"
+        },
+        "building/university": {
+            "name": "Yliopistorakennus",
+            "terms": "yliopisto, yliopiston, rakennus, korkeakoulu"
+        },
+        "building/warehouse": {
+            "name": "Varasto"
+        },
+        "circular": {
+            "name": "Liikenneympyr\u00e4"
+        },
+        "club": {
+            "name": "Klubi"
+        },
+        "craft": {
+            "name": "K\u00e4dentaitoja vaativa kohde"
+        },
+        "craft/basket_maker": {
+            "name": "Koripaja",
+            "terms": "kori, paju, pajukori, korivalmistaja, koripaja"
+        },
+        "craft/beekeeper": {
+            "name": "Mehil\u00e4istarha"
+        },
+        "craft/blacksmith": {
+            "name": "Rautasepp\u00e4"
+        },
+        "craft/boatbuilder": {
+            "name": "Venevalmistaja"
+        },
+        "craft/bookbinder": {
+            "name": "Kirjasitomo"
+        },
+        "craft/brewery": {
+            "name": "Olutpanimo",
+            "terms": "panimo, olut, viina, viini, alkoholi, alko"
+        },
+        "craft/carpenter": {
+            "name": "Puusepp\u00e4"
+        },
+        "craft/carpet_layer": {
+            "name": "Mattosuunnittelutoimisto",
+            "terms": "matto, maton, kokolattia, lattia, tekij\u00e4, matto, kauppa, liike, myym\u00e4l\u00e4"
+        },
+        "craft/caterer": {
+            "name": "Pitopalvelu"
+        },
+        "craft/chimney_sweeper": {
+            "name": "Nuohooja"
+        },
+        "craft/clockmaker": {
+            "name": "Kellosepp\u00e4"
+        },
+        "craft/confectionery": {
+            "name": "Makeiskonditoria",
+            "terms": "karkkitehdas, karkki, karamelli"
+        },
+        "craft/distillery": {
+            "name": "Tislaamo",
+            "terms": "viina, viini, alkoholi, polttaa, poltto, polttamo, tynnyri, juoma"
+        },
+        "craft/dressmaker": {
+            "name": "Ompelupalvelu",
+            "terms": "ompelimo"
+        },
+        "craft/electrician": {
+            "name": "S\u00e4hk\u00f6asentaja"
+        },
+        "craft/electronics_repair": {
+            "name": "Elektroniikkakorjaamo"
+        },
+        "craft/gardener": {
+            "name": "Puutarhuri",
+            "terms": "puutarhan hoitaja, puutarha, hoitaja"
+        },
+        "craft/glaziery": {
+            "name": "Lasinpuhallus"
+        },
+        "craft/handicraft": {
+            "name": "K\u00e4sity\u00f6t",
+            "terms": "k\u00e4sity\u00f6, k\u00e4sity\u00f6l\u00e4inen"
+        },
+        "craft/hvac": {
+            "name": "LVI"
+        },
+        "craft/insulator": {
+            "name": "Eristeliike",
+            "terms": "eriste, eristeet, eristesuunnittelija, eristesuunnittelu, eristeliike"
+        },
+        "craft/jeweler": {
+            "name": "Kultasepp\u00e4"
+        },
+        "craft/key_cutter": {
+            "name": "Lukkosepp\u00e4",
+            "terms": "avain, lukko, avaimet, lukot, lukkosepp\u00e4, lukkoliike, avainliike, avainsepp\u00e4"
+        },
+        "craft/locksmith": {
+            "name": "Lukkosepp\u00e4"
+        },
+        "craft/metal_construction": {
+            "name": "Metallirakennustelinemyym\u00e4l\u00e4",
+            "terms": "rakennusteline, rakennus, rakentaminen, ty\u00f6maa, rakennusty\u00f6, ty\u00f6mies, metalli, teline, ty\u00f6teline, ty\u00f6alusta, tikkaat, metalli, metallinen, metalliset, rautainen, rauta, rautaiset"
+        },
+        "craft/optician": {
+            "name": "optikko"
+        },
+        "craft/painter": {
+            "name": "Maalari",
+            "terms": "maalaaja"
+        },
+        "craft/photographer": {
+            "name": "Valokuvaaja"
+        },
+        "craft/photographic_laboratory": {
+            "name": "Valokuvakehitt\u00e4m\u00f6",
+            "terms": "valokuva, valokuvaaminen, valokuvaus, kuvaaminen, kuvaus, kehitt\u00e4m\u00f6, kuvankehitt\u00e4m\u00f6, kuvankehitys, kuvakehitys"
+        },
+        "craft/plasterer": {
+            "name": "Rappaaja"
+        },
+        "craft/plumber": {
+            "name": "Putkimies"
+        },
+        "craft/pottery": {
+            "name": "Savenvalamo"
+        },
+        "craft/rigger": {
+            "name": "Nosturi"
+        },
+        "craft/roofer": {
+            "name": "Kattosepp\u00e4"
+        },
+        "craft/saddler": {
+            "name": "Satulasepp\u00e4"
+        },
+        "craft/sailmaker": {
+            "name": "Purjeompelimo",
+            "terms": "purje, purjeet, purjevene, vene, laiva, purjelaiva"
+        },
+        "craft/sawmill": {
+            "name": "Saha",
+            "terms": "saha, sahaamo, lauta, puu"
+        },
+        "craft/scaffolder": {
+            "name": "Rakennustelineliike"
+        },
+        "craft/sculptor": {
+            "name": "Veist\u00e4m\u00f6",
+            "terms": "veist\u00e4j\u00e4, kuvanveist\u00e4j\u00e4, taide"
+        },
+        "craft/shoemaker": {
+            "name": "Suutari"
+        },
+        "craft/stonemason": {
+            "name": "Kivenhakkaamo"
+        },
+        "craft/tailor": {
+            "name": "R\u00e4\u00e4t\u00e4li"
+        },
+        "craft/tiler": {
+            "name": "Laattaliike"
+        },
+        "craft/tinsmith": {
+            "name": "Peltisepp\u00e4"
+        },
+        "craft/upholsterer": {
+            "name": "Verhoiluliike",
+            "terms": "verhoilija, kangasverhoilu, verhoilu, kangasverhoilija, kangas, kankaat, ompelu, ompelija"
+        },
+        "craft/watchmaker": {
+            "name": "Rannekellosepp\u00e4"
+        },
+        "craft/window_construction": {
+            "name": "Ikkunankorjaus"
+        },
+        "craft/winery": {
+            "name": "Viinitila",
+            "terms": "viini, viinipanimo, viinit, alkoholi, juoma, juominen, panimo, viininvalmistamo, viininpanimo, viinivalmistamo, viinitalo"
+        },
+        "embankment": {
+            "name": "Penger"
+        },
+        "emergency/ambulance_station": {
+            "name": "Ambulanssiasema",
+            "terms": "ambulanssi, ambulanssit, h\u00e4lytysajoneuvo, ambulanssihalli, ambulanssivarasto, ambulanssitalli, h\u00e4lytysajoneuvohalli, h\u00e4lytysajoneuvotalli, h\u00e4lytysajoneuvovarasto"
+        },
+        "emergency/defibrillator": {
+            "name": "Defibrillaattori",
+            "terms": "elvytys, syd\u00e4nhieronta, syd\u00e4nkohtaus, syd\u00e4n, elvytt\u00e4minen, defi, ensiapu, h\u00e4t\u00e4, h\u00e4t\u00e4tilanne"
+        },
+        "emergency/designated": {
+            "name": "Merkitty pelastustie"
+        },
+        "emergency/destination": {
+            "name": "Pelastustie ilman l\u00e4piajoa"
+        },
+        "emergency/fire_alarm": {
+            "name": "Paloilmoituspainike"
+        },
+        "emergency/fire_extinguisher": {
+            "name": "Ensisammutusv\u00e4line",
+            "terms": "palosammutin, vaahtosammutin, sammutin, palo, palonsammutus, sammutus, tulipalo"
+        },
+        "emergency/fire_hydrant": {
+            "name": "Paloposti",
+            "terms": "paloposti, vedensy\u00f6tt\u00f6, vesisy\u00f6tt\u00f6, palokunta, vesiposti"
+        },
+        "emergency/first_aid_kit": {
+            "name": "Ensiapupiste"
+        },
+        "emergency/life_ring": {
+            "name": "Pelastusrengas"
+        },
+        "emergency/lifeguard": {
+            "name": "Hengenpelastaja"
+        },
+        "emergency/no": {
+            "name": "Ei pelastusajoa"
+        },
+        "emergency/official": {
+            "name": "Virallinen pelastustie"
+        },
+        "emergency/phone": {
+            "name": "H\u00e4t\u00e4puhelin",
+            "terms": "h\u00e4t\u00e4numero, h\u00e4t\u00e4puhelin, h\u00e4t\u00e4tilanne, poikkeuspuhelin, h\u00e4t\u00e4keskus, h\u00e4t\u00e4ilmoitus"
+        },
+        "emergency/private": {
+            "name": "Yksityinen pelastustie"
+        },
+        "emergency/siren": {
+            "name": "Sireeni",
+            "terms": "h\u00e4lytin, h\u00e4lytys, kova\u00e4\u00e4ninen, yleis\u00f6h\u00e4lytin"
+        },
+        "emergency/water_tank": {
+            "name": "Varavesis\u00e4ili\u00f6"
+        },
+        "emergency/yes": {
+            "name": "Pelastusajo sallittu"
+        },
+        "entrance": {
+            "name": "Sis\u00e4\u00e4n- tai ulosk\u00e4ynti",
+            "terms": "ovi, portti, sis\u00e4\u00e4n, ulos, sis\u00e4\u00e4nk\u00e4ynti, ulosk\u00e4ynti"
+        },
+        "ford": {
+            "name": "Kahlauspaikka"
+        },
+        "golf/bunker": {
+            "name": "Hiekkaeste",
+            "terms": "bunker, bunkkeri, hiekkabunkkeri, hiekkakuoppa, golf"
+        },
+        "golf/fairway": {
+            "name": "Golf-v\u00e4yl\u00e4",
+            "terms": "golf-v\u00e4yl\u00e4, v\u00e4yl\u00e4, peliv\u00e4yl\u00e4, golf"
+        },
+        "golf/green": {
+            "name": "Viheri\u00f6",
+            "terms": "puttigreeni, puttigriini, viheri\u00f6alue, golf, maali, maalipaikka, golf-reik\u00e4, puttausalue, putti"
+        },
+        "golf/hole": {
+            "name": "Golf-reik\u00e4"
+        },
+        "golf/rough": {
+            "name": "Karheikko",
+            "terms": "karheikko, raffi, golf"
+        },
+        "golf/tee": {
+            "name": "Tiiauspaikka",
+            "terms": "tiiauspaikka, golf, ly\u00f6ntipaikka, l\u00e4ht\u00f6alue, ly\u00f6ntialue, tiiausalue"
+        },
+        "healthcare": {
+            "name": "Terveyspalvelu"
+        },
+        "healthcare/alternative": {
+            "name": "Vaihtoehtol\u00e4\u00e4ketiede",
+            "terms": "n\u00e4enn\u00e4ishoito, vaihtoehto, vaihtoehtoinen, l\u00e4\u00e4ketiede, hoito"
+        },
+        "healthcare/alternative/chiropractic": {
+            "name": "Kiropraktikko"
+        },
+        "healthcare/audiologist": {
+            "name": "Audiologisti"
+        },
+        "healthcare/birthing_center": {
+            "name": "Synnytysklinikka",
+            "terms": "synnytys, synnytt\u00e4\u00e4, raskaus, raskaana, sairaala"
+        },
+        "healthcare/blood_donation": {
+            "name": "Verenluovutus",
+            "terms": "veri, veripalvelu, verenluovutus, luovuttaa, luovutus, luovuttaminen, verta, veritoimisto"
+        },
+        "healthcare/hospice": {
+            "name": "Saattokoti",
+            "terms": "saattohoito, terminaalihoito, hoito, sairaala, kuolema, eutanasia"
+        },
+        "healthcare/laboratory": {
+            "name": "L\u00e4\u00e4kelaboratorio"
+        },
+        "healthcare/midwife": {
+            "name": "K\u00e4til\u00f6"
+        },
+        "healthcare/occupational_therapist": {
+            "name": "Toimintaterapeutti"
+        },
+        "healthcare/optometrist": {
+            "name": "Optometri"
+        },
+        "healthcare/physiotherapist": {
+            "name": "Fysioterapeutti",
+            "terms": "fysioterapia"
+        },
+        "healthcare/podiatrist": {
+            "name": "Jalkaterapeutti"
+        },
+        "healthcare/psychotherapist": {
+            "name": "Psykoterapeutti"
+        },
+        "healthcare/rehabilitation": {
+            "name": "Kuntoutusklinikka"
+        },
+        "healthcare/speech_therapist": {
+            "name": "Puheterapeutti"
+        },
+        "highway": {
+            "name": "Tie"
+        },
+        "highway/bridleway": {
+            "name": "Ratsastuspolku"
+        },
+        "highway/bus_stop": {
+            "name": "Linja-autopys\u00e4kki/-laituri"
+        },
+        "highway/construction": {
+            "name": "Suljettu v\u00e4yl\u00e4",
+            "terms": "tie, v\u00e4yl\u00e4, katu, polku, reitti, py\u00f6r\u00e4tie, jalkak\u00e4yt\u00e4v\u00e4, suljettu, ty\u00f6maa, kiinni, rakennusty\u00f6maa, rakenteilla, kesken, suunnitteilla"
+        },
+        "highway/corridor": {
+            "name": "Sis\u00e4k\u00e4yt\u00e4v\u00e4",
+            "terms": "katettu, katos, k\u00e4yt\u00e4v\u00e4, sis\u00e4ll\u00e4, sis\u00e4tila, sis\u00e4tiloissa"
+        },
+        "highway/crossing/marked": {
+            "name": "Merkitty suojatie"
+        },
+        "highway/crossing/marked-raised": {
+            "name": "Korotettu suojatiealue"
+        },
+        "highway/crossing/unmarked": {
+            "name": "Merkitsem\u00e4t\u00f6n suojatie"
+        },
+        "highway/cycleway": {
+            "name": "Py\u00f6r\u00e4tie"
+        },
+        "highway/elevator": {
+            "name": "Hissi"
+        },
+        "highway/footway": {
+            "name": "K\u00e4velytie",
+            "terms": "jalankulkija, k\u00e4velij\u00e4, k\u00e4vely, jalankulku, polku, reitti, v\u00e4yl\u00e4, tie"
+        },
+        "highway/footway/sidewalk": {
+            "name": "Jalkak\u00e4yt\u00e4v\u00e4"
+        },
+        "highway/give_way": {
+            "name": "V\u00e4ist\u00e4misvelvollisuus",
+            "terms": "kolmio"
+        },
+        "highway/living_street": {
+            "name": "Pihakatu"
+        },
+        "highway/mini_roundabout": {
+            "name": "Pieni liikenneympyr\u00e4",
+            "terms": "pienliikenneympyr\u00e4, pieni liikenneympyr\u00e4, liikenneympyr\u00e4, ympyr\u00e4"
+        },
+        "highway/motorway": {
+            "name": "Moottoritie"
+        },
+        "highway/motorway_junction": {
+            "name": "Moottoritien liittym\u00e4",
+            "terms": "ramppi, eritasoliittym\u00e4, monitasoliittym\u00e4, moottoritie, poistumisliittym\u00e4, poistumisramppi"
+        },
+        "highway/motorway_link": {
+            "name": "Moottoritien ramppi"
+        },
+        "highway/path": {
+            "name": "Polku"
+        },
+        "highway/pedestrian_area": {
+            "name": "K\u00e4velyvy\u00f6hyke",
+            "terms": "k\u00e4velykatu, jalankulku, k\u00e4vely, katu, tori, aukio"
+        },
+        "highway/pedestrian_line": {
+            "name": "K\u00e4velykatu",
+            "terms": "jalankulku, k\u00e4vely, katu, tori, aukio"
+        },
+        "highway/primary": {
+            "name": "Kantatie"
+        },
+        "highway/primary_link": {
+            "name": "Kantatien ramppi"
+        },
+        "highway/raceway": {
+            "name": "Kilparata (vain moottoriurheilu)"
+        },
+        "highway/residential": {
+            "name": "Asuinaluekatu"
+        },
+        "highway/rest_area": {
+            "name": "Lepoalue"
+        },
+        "highway/road": {
+            "name": "Tuntematon tie"
+        },
+        "highway/secondary": {
+            "name": "Seututie"
+        },
+        "highway/secondary_link": {
+            "name": "Seututien ramppi"
+        },
+        "highway/service": {
+            "name": "Huoltotie"
+        },
+        "highway/service/alley": {
+            "name": "Kuja"
+        },
+        "highway/service/drive-through": {
+            "name": "Autokaista"
+        },
+        "highway/service/driveway": {
+            "name": "Ajov\u00e4yl\u00e4"
+        },
+        "highway/service/emergency_access": {
+            "name": "Pelastustie"
+        },
+        "highway/service/parking_aisle": {
+            "name": "Pys\u00e4k\u00f6intiv\u00e4yl\u00e4"
+        },
+        "highway/services": {
+            "name": "Huoltoalue"
+        },
+        "highway/speed_camera": {
+            "name": "Nopeuskamera",
+            "terms": "nopeusvalvonta, nopeudenvalvonta, liikenne, kamera, valvonta"
+        },
+        "highway/steps": {
+            "name": "Portaat",
+            "terms": "Portaat, Rappuset, Portaikko, Kierreportaat, Tikapuut"
+        },
+        "highway/stop": {
+            "name": "Pakollinen pys\u00e4htyminen",
+            "terms": "stop, stop-merkki, stop merkki, liikennemerkki, kieltomerkki, kieltomerkit, pys\u00e4htyminen, pys\u00e4hdys, liikennes\u00e4\u00e4nt\u00f6, liikennes\u00e4\u00e4nn\u00f6t, pakollisuus, pakollinen"
+        },
+        "highway/street_lamp": {
+            "name": "Katuvalaisin",
+            "terms": "valo, valaisin, valotolppa, valopylv\u00e4s, valaisintolppa, valaisinpylv\u00e4s, katupylv\u00e4s, katuvalo, valaisintolppa"
+        },
+        "highway/tertiary": {
+            "name": "Yhdystie"
+        },
+        "highway/tertiary_link": {
+            "name": "Yhdystien ramppi"
+        },
+        "highway/track": {
+            "name": "Huoltamaton pikkutie",
+            "terms": "pikkutie, hiekkatie, mets\u00e4tie, mets\u00e4konetie, mets\u00e4, mets\u00e4kone, ura, ajov\u00e4yl\u00e4"
+        },
+        "highway/traffic_mirror": {
+            "name": "Tiepeili",
+            "terms": "peili, liikenne, liikennepeili, kupera"
+        },
+        "highway/traffic_signals": {
+            "name": "Liikennevalot"
+        },
+        "highway/trunk": {
+            "name": "Valtatie"
+        },
+        "highway/trunk_link": {
+            "name": "Valtatien ramppi"
+        },
+        "highway/turning_circle": {
+            "name": "K\u00e4\u00e4ntymispaikka",
+            "terms": "k\u00e4\u00e4ntymispaikka, k\u00e4\u00e4nt\u00f6paikka, U-k\u00e4\u00e4nn\u00f6s, k\u00e4\u00e4nt\u00f6ympyr\u00e4, k\u00e4\u00e4ntymisympyr\u00e4, U-k\u00e4\u00e4nn\u00f6ksen tekopaikka"
+        },
+        "highway/turning_loop": {
+            "name": "Saarekkeellinen k\u00e4\u00e4nt\u00f6paikka"
+        },
+        "highway/unclassified": {
+            "name": "Syrj\u00e4tie/luokittelematon tie"
+        },
+        "historic": {
+            "name": "Historiallinen paikka",
+            "terms": "historia, historiallinen, muinainen, arkeologinen, vanha, raunio, rauniot, raunioitunut, hauta, hautapaikka, muinaishauta, asuinpaikka, l\u00f6yt\u00f6paikka, rajakivi, kartano, tienvarsiristi, hylky, maanmittaus, monumentti, muistomerkki, kivikautinen, pronssikautinen, rautakautinen, keskiaikainen"
+        },
+        "historic/archaeological_site": {
+            "name": "Arkeologinen paikka"
+        },
+        "historic/boundary_stone": {
+            "name": "Rajamerkki"
+        },
+        "historic/castle": {
+            "name": "Linna"
+        },
+        "historic/memorial": {
+            "name": "Pieni muistomerkki"
+        },
+        "historic/monument": {
+            "name": "Iso muistomerkki"
+        },
+        "historic/ruins": {
+            "name": "Rauniot",
+            "terms": "raunio, raunioitunut, k\u00e4ytt\u00e4m\u00e4t\u00f6n, historiallinen"
+        },
+        "historic/tomb": {
+            "name": "Hautakammio"
+        },
+        "historic/wayside_cross": {
+            "name": "Tienvarsiristi",
+            "terms": "tienvarren risti, tienvarren, risti, tienvarsi, piennar, kristillinen"
+        },
+        "historic/wayside_shrine": {
+            "name": "Tienvarsialttari",
+            "terms": "tienvarsi, kadunvarsi, varsi, tie, katu, rukoilupaikka, pyh\u00e4tt\u00f6, uskonnot, uskonto, kirkko, pyh\u00e4, uhripaikka, uhrauspaikka, uhrilahja, alttari"
+        },
+        "internet_access/wlan": {
+            "name": "Langaton WLAN-yhteyspiste",
+            "terms": "wifi, wi-fi, wlan, w-lan, langaton, netti, internet, hotspot, hot, spot, yhteys, yhteyspiste, jakaminen, jako"
+        },
+        "junction": {
+            "name": "Risteys"
+        },
+        "landuse": {
+            "name": "Maank\u00e4ytt\u00f6"
+        },
+        "landuse/allotments": {
+            "name": "Yhteis\u00f6puutarha",
+            "terms": "siirtolapuutarha"
+        },
+        "landuse/aquaculture": {
+            "name": "Vesiviljely",
+            "terms": "akvakulttuuri"
+        },
+        "landuse/basin": {
+            "name": "Vesiallas"
+        },
+        "landuse/cemetery": {
+            "name": "Hautausmaa"
+        },
+        "landuse/churchyard": {
+            "name": "Hautausmaa",
+            "terms": "hautaaminen, vainaja, kuollut, ruumis, hautuumaa, hautaus, hauta, haudat"
+        },
+        "landuse/commercial": {
+            "name": "Liiketoiminta-alue"
+        },
+        "landuse/construction": {
+            "name": "Rakennusty\u00f6maa",
+            "terms": "rakennusty\u00f6, ty\u00f6maa, ty\u00f6, raksa, tiety\u00f6, tiety\u00f6maa"
+        },
+        "landuse/farm": {
+            "name": "Maatila"
+        },
+        "landuse/farmland": {
+            "name": "Viljelymaa",
+            "terms": "viljelysmaa, laidunmaa, pelto"
+        },
+        "landuse/farmyard": {
+            "name": "Maatilan pihamaa"
+        },
+        "landuse/grass": {
+            "name": "Ruohokentt\u00e4",
+            "terms": "ruoho, ruohikko, nurmikko, kentt\u00e4, ruohoalue, alue, kentt\u00e4"
+        },
+        "landuse/greenfield": {
+            "name": "Viheralue"
+        },
+        "landuse/greenhouse_horticulture": {
+            "name": "Kasvihuonealue"
+        },
+        "landuse/harbour": {
+            "name": "Satama"
+        },
+        "landuse/industrial": {
+            "name": "Teollisuusalue"
+        },
+        "landuse/industrial/scrap_yard": {
+            "name": "Romuttamoalue",
+            "terms": "romuttaa, romutus, romuttua, romuttamo"
+        },
+        "landuse/industrial/slaughterhouse": {
+            "name": "Teurastamo"
+        },
+        "landuse/landfill": {
+            "name": "Kaatopaikka"
+        },
+        "landuse/meadow": {
+            "name": "Niitty",
+            "terms": "hein\u00e4maa, aukio, keto, aho, kesanto, kukka, luonto, luonnon, luonnollinen"
+        },
+        "landuse/military": {
+            "name": "Sotilasalue"
+        },
+        "landuse/military/airfield": {
+            "name": "Lentotukikohta"
+        },
+        "landuse/military/barracks": {
+            "name": "Kasarmi"
+        },
+        "landuse/military/bunker": {
+            "name": "Sotilasbunkkeri"
+        },
+        "landuse/military/checkpoint": {
+            "name": "Sotilasalueen tarkastuspiste"
+        },
+        "landuse/military/danger_area": {
+            "name": "Vaara-alue"
+        },
+        "landuse/military/naval_base": {
+            "name": "Laivastotukikohta",
+            "terms": "sotilaallinen, sotilas, armeija, maanpuolustus, puolustus, puolustusvoimat, sodank\u00e4ynti, sota, merivoimat, meri, rannikko, laivasto, laivat, laiva, sotalaiva, sotalaivat"
+        },
+        "landuse/military/nuclear_explosion_site": {
+            "name": "Ydinr\u00e4j\u00e4ytyspaikka",
+            "terms": "sotilaallinen, sotilas, armeija, maanpuolustus, puolustus, puolustusvoimat, sodank\u00e4ynti, sota"
+        },
+        "landuse/military/obstacle_course": {
+            "name": "Esterata",
+            "terms": "sotilaallinen, sotilas, armeija, maanpuolustus, puolustus, puolustusvoimat, sodank\u00e4ynti, sota, este, hyppy, kiipeily"
+        },
+        "landuse/military/office": {
+            "name": "Sotilastoimisto",
+            "terms": "sotilaallinen, sotilas, armeija, maanpuolustus, puolustus, puolustusvoimat, sodank\u00e4ynti, sota, esikunta, toimisto, p\u00e4\u00e4maja, tukikohta, p\u00e4\u00e4tukikohta, p\u00e4\u00e4esikunta, hallinnollinen, hallinto"
+        },
+        "landuse/military/range": {
+            "name": "Sotilasampumarata",
+            "terms": "ampumarata, rata, radat, ampumaradat, ampuminen, ase, harjoittelu, sotilaallinen, sotilas, armeija, maanpuolustus, puolustus, puolustusvoimat, sodank\u00e4ynti, sota"
+        },
+        "landuse/military/training_area": {
+            "name": "Sotilaskoulutusalue",
+            "terms": "koulutus, harjoittelu, sotilaallinen, sotilas, armeija, maanpuolustus, puolustus, puolustusvoimat, sodank\u00e4ynti, sota"
+        },
+        "landuse/orchard": {
+            "name": "Hedelm\u00e4tarha"
+        },
+        "landuse/plant_nursery": {
+            "name": "Taimitarha"
+        },
+        "landuse/quarry": {
+            "name": "Louhos"
+        },
+        "landuse/railway": {
+            "name": "Rautatiek\u00e4yt\u00e4v\u00e4"
+        },
+        "landuse/recreation_ground": {
+            "name": "Virkistysalue",
+            "terms": "ulkoilu, virkistys, ulkoileminen, virkistyminen, puisto, mets\u00e4, rentoutuminen"
+        },
+        "landuse/religious": {
+            "name": "Uskonnollinen alue"
+        },
+        "landuse/residential": {
+            "name": "Asuinalue"
+        },
+        "landuse/retail": {
+            "name": "V\u00e4hitt\u00e4iskauppa-alue"
+        },
+        "landuse/vineyard": {
+            "name": "Viinitarha"
+        },
+        "leisure": {
+            "name": "Vapaa-aika"
+        },
+        "leisure/adult_gaming_centre": {
+            "name": "Uhkapelipelaamo"
+        },
+        "leisure/amusement_arcade": {
+            "name": "Pelihalli",
+            "terms": "kolikko, peli, pelikone, peliautomaatti, automaatti"
+        },
+        "leisure/beach_resort": {
+            "name": "Rantalomakohde"
+        },
+        "leisure/bird_hide": {
+            "name": "Lintutorni"
+        },
+        "leisure/bowling_alley": {
+            "name": "Keilahalli",
+            "terms": "keila, keilaaminen, keilaus, keilarata, halli, keskus, keilailu"
+        },
+        "leisure/common": {
+            "name": "Yleinen"
+        },
+        "leisure/dance": {
+            "name": "Tanssipaikka",
+            "terms": "tanssilava, tanssilavat, lavatanssi, lavatanssiminen, tanssi, tanssit, tanssiminen"
+        },
+        "leisure/dancing_school": {
+            "name": "Tanssikoulu",
+            "terms": "tanssiopisto"
+        },
+        "leisure/dog_park": {
+            "name": "Koirapuisto",
+            "terms": "koira, koirat, koira-alue, koiranulkoilutusalue, koirah\u00e4kki, koirapuisto"
+        },
+        "leisure/firepit": {
+            "name": "Nuotiopaikka",
+            "terms": "nuotio, ruoanlaitto, ruoka, piste, grilli, grillaus, tulipiste, tulipes\u00e4, tuli"
+        },
+        "leisure/fitness_centre": {
+            "name": "Kuntosali / fitness-keskus",
+            "terms": "fitness, kuntosali, kuntoilu, urheilu, liikunta, keskus"
+        },
+        "leisure/fitness_centre/yoga": {
+            "name": "Joogasali",
+            "terms": "jooga, joogaaminen, sali, huone, paikka"
+        },
+        "leisure/fitness_station": {
+            "name": "Ulkokuntosali",
+            "terms": "ulko, ulkona, liikunta, urheilu, kuntoilu, kuntolaite, kuntoilulaite, lihaskunto, sali"
+        },
+        "leisure/garden": {
+            "name": "Puutarha"
+        },
+        "leisure/golf_course": {
+            "name": "Golfkentt\u00e4"
+        },
+        "leisure/hackerspace": {
+            "name": "Koodausnurkkaus",
+            "terms": "hackerspace, hackspace, makerspace, hacklab, h\u00e4ckl\u00e4b, ohjelmointi, ohjelmoija, koodaus, koodaaja, teknologia, rakentelu, v\u00e4rkk\u00e4ys, v\u00e4rkk\u00e4ily, paja, ty\u00f6paja, tila, julkinen, labra, verstas, kaupunkiverstas"
+        },
+        "leisure/horse_riding": {
+            "name": "Ratsastusalue",
+            "terms": "hevonen, hevoset, ratsastus, kentt\u00e4, alue, harjoittelu"
+        },
+        "leisure/ice_rink": {
+            "name": "Luistelukentt\u00e4",
+            "terms": "j\u00e4\u00e4, j\u00e4\u00e4kentt\u00e4, j\u00e4\u00e4alue, kaukalo, j\u00e4\u00e4kiekko, luistelu, j\u00e4\u00e4kiekkokaukalo, luistimet, luistinrata, luistelurata"
+        },
+        "leisure/marina": {
+            "name": "Venesatama"
+        },
+        "leisure/miniature_golf": {
+            "name": "Minigolf",
+            "terms": "mini, mini-golf, golf, minigolffaus, minigolfaus, mini-golfaus, mini-golffaus"
+        },
+        "leisure/nature_reserve": {
+            "name": "Luonnonsuojelualue"
+        },
+        "leisure/outdoor_seating": {
+            "name": "Ulkoterass"
+        },
+        "leisure/park": {
+            "name": "Puisto",
+            "terms": "Puisto, Viheralue, Puistikko"
+        },
+        "leisure/picnic_table": {
+            "name": "Piknikp\u00f6yt\u00e4",
+            "terms": "piknik, ev\u00e4sretki, ulkoilu, ulkop\u00f6yt\u00e4, p\u00f6yt\u00e4, puup\u00f6yt\u00e4, penkki, ruokailu, ulkoruokailu, ulkoruokailup\u00f6yt\u00e4, ulkoruokap\u00f6yt\u00e4"
+        },
+        "leisure/pitch": {
+            "name": "Urheilukentt\u00e4",
+            "terms": "pallokentt\u00e4, palloilukentt\u00e4, hiekkakentt\u00e4, nurmikentt\u00e4"
+        },
+        "leisure/pitch/american_football": {
+            "name": "Amerikkalainen jalkapallo -kentt\u00e4"
+        },
+        "leisure/pitch/baseball": {
+            "name": "Pes\u00e4pallokentt\u00e4"
+        },
+        "leisure/pitch/basketball": {
+            "name": "Koripallokentt\u00e4"
+        },
+        "leisure/pitch/beachvolleyball": {
+            "name": "Rantalentopallokentt\u00e4",
+            "terms": "lentopallo, rantalentopallo, beach, volley, beachvolley, kentt\u00e4, hiekka, pallo, peli, hiekkakentt\u00e4"
+        },
+        "leisure/pitch/bowls": {
+            "name": "Mailapeliviheri\u00f6"
+        },
+        "leisure/pitch/cricket": {
+            "name": "Krikettikentt\u00e4"
+        },
+        "leisure/pitch/equestrian": {
+            "name": "Ratsastusareena"
+        },
+        "leisure/pitch/rugby_league": {
+            "name": "Rubgy League -kentt\u00e4"
+        },
+        "leisure/pitch/rugby_union": {
+            "name": "Rubgy Union -kentt\u00e4"
+        },
+        "leisure/pitch/skateboard": {
+            "name": "Rullalautailupuisto",
+            "terms": "skeittipuisto, skeittaus, skeitti, rullalautailu, rullalauta, rullalautailupuisto, parkit, parkki, skeittiparkki, skeittiparkit"
+        },
+        "leisure/pitch/soccer": {
+            "name": "Jalkapallokentt\u00e4",
+            "terms": "jalkapallo, urheilu, liikunta, kentt\u00e4, areena, futis, futiskentt\u00e4"
+        },
+        "leisure/pitch/table_tennis": {
+            "name": "Pingisp\u00f6yt\u00e4",
+            "terms": "pingis, p\u00f6yt\u00e4tennis, p\u00f6yt\u00e4, peli, pelipaikka, maila, pallo"
+        },
+        "leisure/pitch/tennis": {
+            "name": "Tenniskentt\u00e4"
+        },
+        "leisure/pitch/volleyball": {
+            "name": "Lentopallokentt\u00e4"
+        },
+        "leisure/playground": {
+            "name": "Leikkipuisto",
+            "terms": "leikkipuisto, leikkipaikka, leikki, leikki\u00e4, lapsipuisto, leikkipiste"
+        },
+        "leisure/resort": {
+            "name": "Lomakohde",
+            "terms": "turismi, loma, lomat, lomailu, turismi, matkailu"
+        },
+        "leisure/sauna": {
+            "name": "Sauna"
+        },
+        "leisure/slipway": {
+            "name": "Veneramppi",
+            "terms": "veneramppi, vesillelaskupaikka, veneenlaskupaikka, vene, j\u00e4rveenlaskupaikka, j\u00e4rviramppi"
+        },
+        "leisure/sports_centre": {
+            "name": "Liikuntakeskus",
+            "terms": "kuntokeskus, urheilukeskus, urheiluhalli, halli, kompleksi, kokonaisuus, monilajinen"
+        },
+        "leisure/sports_centre/swimming": {
+            "name": "Uimahalli",
+            "terms": "uimahalli, kylpyl\u00e4, uima-allas, uintikeskus, uinti, uiminen, vesi, vesiurheilu, urheilu, vesiurheilukeskus, vesiurheiluhalli"
+        },
+        "leisure/stadium": {
+            "name": "Stadion"
+        },
+        "leisure/swimming_pool": {
+            "name": "Uimahalli tai -allas",
+            "terms": "uimahalli, uintikeskus, uimastadion, uima-allas, uinti, uiminen, maauimala, julkinen, ulkoilma, ulkoilma-allas, ulkoallas"
+        },
+        "leisure/track": {
+            "name": "Kilparata (ei moottoriurheilu)"
+        },
+        "leisure/water_park": {
+            "name": "Vesipuisto",
+            "terms": "uinti, kylpyl\u00e4"
+        },
+        "line": {
+            "name": "Viiva"
+        },
+        "man_made": {
+            "name": "Ihmisen tekem\u00e4"
+        },
+        "man_made/adit": {
+            "name": "Vaakasuoran tunnelin suuaukko"
+        },
+        "man_made/antenna": {
+            "name": "Antenni"
+        },
+        "man_made/breakwater": {
+            "name": "Aallonmurtaja"
+        },
+        "man_made/bridge": {
+            "name": "Silta"
+        },
+        "man_made/chimney": {
+            "name": "Savupiippu"
+        },
+        "man_made/clearcut": {
+            "name": "Avohakattu mets\u00e4"
+        },
+        "man_made/crane": {
+            "name": "Nosturi"
+        },
+        "man_made/cutline": {
+            "name": "Mets\u00e4nraja",
+            "terms": "hakkuuraja"
+        },
+        "man_made/embankment": {
+            "name": "Penkere"
+        },
+        "man_made/flagpole": {
+            "name": "Lipputanko",
+            "terms": "lippu, liputus, salko, lippusalko, tanko, tolppa, lipputolppa, liputusp\u00e4iv\u00e4, liputtaa"
+        },
+        "man_made/gasometer": {
+            "name": "Kaasus\u00e4ili\u00f6"
+        },
+        "man_made/groyne": {
+            "name": "Rantavalli",
+            "terms": "suojapato"
+        },
+        "man_made/lighthouse": {
+            "name": "Majakka"
+        },
+        "man_made/mast": {
+            "name": "Masto"
+        },
+        "man_made/mast/communication": {
+            "name": "Viestint\u00e4masto"
+        },
+        "man_made/mast/communication/mobile_phone": {
+            "name": "Matkapuhelinverkkomasto"
+        },
+        "man_made/mast/communication/radio": {
+            "name": "Radiomasto"
+        },
+        "man_made/mast/communication/television": {
+            "name": "Televisiomasto"
+        },
+        "man_made/monitoring_station": {
+            "name": "Havaintoasema"
+        },
+        "man_made/petroleum_well": {
+            "name": "\u00d6ljyl\u00e4hde"
+        },
+        "man_made/pier": {
+            "name": "Laituri"
+        },
+        "man_made/pipeline": {
+            "name": "Putki"
+        },
+        "man_made/pumping_station": {
+            "name": "Pumppaamo"
+        },
+        "man_made/silo": {
+            "name": "Siilo"
+        },
+        "man_made/storage_tank": {
+            "name": "Varastos\u00e4ili\u00f6"
+        },
+        "man_made/surveillance": {
+            "name": "Valvontakamera",
+            "terms": "kamera, valvonta, poliisi, turva, turvallisuus, turvakamera, nauhoittava, tallentava, kameravalvonta"
+        },
+        "man_made/survey_point": {
+            "name": "Mittauspiste"
+        },
+        "man_made/tower": {
+            "name": "Torni"
+        },
+        "man_made/wastewater_plant": {
+            "name": "J\u00e4tevedenpuhdistamo"
+        },
+        "man_made/water_tower": {
+            "name": "Vesitorni"
+        },
+        "man_made/water_well": {
+            "name": "Vesikaivo"
+        },
+        "man_made/water_works": {
+            "name": "Vesilaitos"
+        },
+        "man_made/watermill": {
+            "name": "Vesimylly"
+        },
+        "man_made/windmill": {
+            "name": "Tuulimylly"
+        },
+        "man_made/works": {
+            "name": "Tehdas"
+        },
+        "manhole": {
+            "name": "Katukaivo",
+            "terms": "viem\u00e4ri, katu, katuviem\u00e4ri, kaivo"
+        },
+        "manhole/drain": {
+            "name": "Sadevesikaivo"
+        },
+        "natural": {
+            "name": "Luonto"
+        },
+        "natural/bare_rock": {
+            "name": "Paljas kallio"
+        },
+        "natural/bay": {
+            "name": "Lahti"
+        },
+        "natural/beach": {
+            "name": "Ranta",
+            "terms": "uimaranta, hiekkaranta, uiminen, uima, uinti"
+        },
+        "natural/cave_entrance": {
+            "name": "Luolan suuaukko"
+        },
+        "natural/cliff": {
+            "name": "Kallionjyrk\u00e4nne",
+            "terms": "kallio, jyrk\u00e4nne, kalliosein\u00e4m\u00e4, sein\u00e4m\u00e4, pystysein\u00e4m\u00e4, jyrkk\u00e4 rinne, rinne, pudotus, m\u00e4ki, penger, t\u00f6rm\u00e4, t\u00f6yr\u00e4s"
+        },
+        "natural/coastline": {
+            "name": "Rannikko",
+            "terms": "Rantaviiva"
+        },
+        "natural/fell": {
+            "name": "Tunturi"
+        },
+        "natural/glacier": {
+            "name": "J\u00e4\u00e4tikk\u00f6"
+        },
+        "natural/grassland": {
+            "name": "Preeria/ruohokentt\u00e4"
+        },
+        "natural/heath": {
+            "name": "Nummi"
+        },
+        "natural/peak": {
+            "name": "Vuorenhuippu",
+            "terms": "Huippu, Vuorenhuippu, Korkein kohta, Vuoren huippu"
+        },
+        "natural/reef": {
+            "name": "Riutta"
+        },
+        "natural/ridge": {
+            "name": "Harju",
+            "terms": "harju, reunamuodostuma, salpausselk\u00e4, harjanne, sel\u00e4nne, m\u00e4ki"
+        },
+        "natural/saddle": {
+            "name": "Sola",
+            "terms": "kanjoni, rinne"
+        },
+        "natural/sand": {
+            "name": "Hiekka"
+        },
+        "natural/scree": {
+            "name": "Louhikko",
+            "terms": "kivikko, rakka, kivikasa, kasa, kivikumpu, maakasa, vy\u00f6rylohkareikko, lohkareikko"
+        },
+        "natural/scrub": {
+            "name": "Pensaikko"
+        },
+        "natural/spring": {
+            "name": "L\u00e4hde"
+        },
+        "natural/tree": {
+            "name": "Puu"
+        },
+        "natural/tree_row": {
+            "name": "Puurivi"
+        },
+        "natural/volcano": {
+            "name": "Tulivuori"
+        },
+        "natural/water": {
+            "name": "Vesi"
+        },
+        "natural/water/lake": {
+            "name": "J\u00e4rvi",
+            "terms": "J\u00e4rvi, Vesist\u00f6"
+        },
+        "natural/water/pond": {
+            "name": "Lampi",
+            "terms": "Lampi, Lammikko, Lampare, Luoma"
+        },
+        "natural/water/reservoir": {
+            "name": "Tekoj\u00e4rvi"
+        },
+        "natural/wetland": {
+            "name": "Suo"
+        },
+        "natural/wood": {
+            "name": "Luonnonvarainen mets\u00e4/puu"
+        },
+        "noexit/yes": {
+            "name": "Ei ulosk\u00e4ynti\u00e4"
+        },
+        "office": {
+            "name": "Toimisto",
+            "terms": "konttori, toimipaikka, liikehuoneisto, virasto"
+        },
+        "office/accountant": {
+            "name": "Tilintarkastustoimisto",
+            "terms": "kirjanpito, kirjanpit\u00e4j\u00e4, talous, toimisto, tilintarkastus, tilintarkastaja, tili, tilit, talous, raha"
+        },
+        "office/administrative": {
+            "name": "Kunnallishallinnon toimisto"
+        },
+        "office/adoption_agency": {
+            "name": "Adoptiotoimisto",
+            "terms": "lapsi, lapsen, lasten, adoptio, adoptointi, toimisto, konttori, viranomainen"
+        },
+        "office/advertising_agency": {
+            "name": "Mainostoimisto",
+            "terms": "markkinointi, mainonta, mainos, toimisto, konttori"
+        },
+        "office/architect": {
+            "name": "Arkkitehtitoimisto",
+            "terms": "arkkitehti, arkkitehtuuri, toimisto, konttori"
+        },
+        "office/association": {
+            "name": "Voittoa tavoittelematon j\u00e4rjest\u00f6"
+        },
+        "office/charity": {
+            "name": "Hyv\u00e4ntekev\u00e4isyysj\u00e4rjest\u00f6"
+        },
+        "office/company": {
+            "name": "Yritystoimisto",
+            "terms": "yritys, yritt\u00e4j\u00e4, yhti\u00f6, firma, oy, osakeyhti\u00f6, kommandiittiyhti\u00f6, tmi, toiminimi, analyytikko, edustusliike, finanssipalvelu, holdingyhti\u00f6, henkil\u00f6st\u00f6yhti\u00f6, is\u00e4nn\u00f6inti, is\u00e4nn\u00f6ij\u00e4, j\u00e4tehuoltoyhti\u00f6, kahvipaahtamo, konsultti, konsultointi, koulutusyritys, kultasepp\u00e4, k\u00e4\u00e4nn\u00f6stoimisto, liikenneyhti\u00f6, taksiyritys, markkinatutkimus, meklari, muotoilu, musiikkistudio, p\u00f6rssi, p\u00f6rssiyhti\u00f6, rakennusliike, rakentaja, treidaaja, yritysrahoitus, sijoitusyhti\u00f6, sijoittaja, teollisuusyritys, uutistoimisto, vartiointiliike, viestint\u00e4, yritysviestint\u00e4, v\u00e4litt\u00e4j\u00e4"
+        },
+        "office/coworking": {
+            "name": "Yhteisty\u00f6skentelytila"
+        },
+        "office/educational_institution": {
+            "name": "Koulutushallinnon toimisto",
+            "terms": "opetus, koulutus, hallinto, toimisto, konttori, koulu, oppilaitos"
+        },
+        "office/employment_agency": {
+            "name": "Ty\u00f6nv\u00e4litystoimisto",
+            "terms": "ty\u00f6, ty\u00f6voimatoimisto, ty\u00f6nv\u00e4litys, ty\u00f6nv\u00e4litt\u00e4j\u00e4, ty\u00f6paikka, ty\u00f6paikat"
+        },
+        "office/energy_supplier": {
+            "name": "Energiayhti\u00f6"
+        },
+        "office/estate_agent": {
+            "name": "Kiinteist\u00f6nv\u00e4litystoimisto",
+            "terms": "kiinteist\u00f6, kiinteist\u00f6nv\u00e4litt\u00e4j\u00e4, v\u00e4litt\u00e4j\u00e4, v\u00e4litt\u00e4minen, v\u00e4litys, asunto, asuminen, talo, talokauppa, myynti, vuokraus, vuokrata, vuokraaminen, toimisto"
+        },
+        "office/financial": {
+            "name": "Taloustoimisto"
+        },
+        "office/forestry": {
+            "name": "Mets\u00e4talousvirasto"
+        },
+        "office/foundation": {
+            "name": "S\u00e4\u00e4ti\u00f6"
+        },
+        "office/government": {
+            "name": "Valtionhallinnon toimisto",
+            "terms": "valtio, valtion, osavaltio, osavaltion, l\u00e4\u00e4ni, l\u00e4\u00e4nin, seutu, seudullinen, valtiollinen, l\u00e4\u00e4nillinen, kunnan, toimisto, hallinto, hallitus"
+        },
+        "office/government/register_office": {
+            "name": "Maistraatti"
+        },
+        "office/government/tax": {
+            "name": "Verovirasto"
+        },
+        "office/guide": {
+            "name": "Turistiopastoimisto"
+        },
+        "office/insurance": {
+            "name": "Vakuutustoimisto",
+            "terms": "vakuutus, vakuutusyhti\u00f6, vakuutukset, vakuutuksia"
+        },
+        "office/it": {
+            "name": "Informaatioteknologian toimisto"
+        },
+        "office/lawyer": {
+            "name": "Lakitoimisto",
+            "terms": "asianajotoimisto, asianajajatoimisto, asianajo, asianajaja, lakimies, juristi, toimisto, lakiasia, lakiasiaintoimisto"
+        },
+        "office/lawyer/notary": {
+            "name": "Asianajotoimisto"
+        },
+        "office/moving_company": {
+            "name": "Muuttoyhti\u00f6",
+            "terms": "muutto, muuttaa, muuttofirma, firma, yhti\u00f6, yritys"
+        },
+        "office/newspaper": {
+            "name": "Toimitus"
+        },
+        "office/ngo": {
+            "name": "Kansalaisj\u00e4rjest\u00f6",
+            "terms": "kansalaisj\u00e4rjest\u00f6, j\u00e4rjest\u00f6, kansanliike, kansanj\u00e4rjest\u00f6, kansalaisj\u00e4rjest\u00f6toimisto, toimisto, kolmas sektori, kolmannen sektorin, vapaaehtois"
+        },
+        "office/notary": {
+            "name": "Notaari"
+        },
+        "office/physician": {
+            "name": "L\u00e4\u00e4k\u00e4ri"
+        },
+        "office/political_party": {
+            "name": "Puoluetoimisto",
+            "terms": "politiikka, politiikko, poliittinen, puolue, hallinto, toimisto"
+        },
+        "office/private_investigator": {
+            "name": "Yksityisetsiv\u00e4"
+        },
+        "office/quango": {
+            "name": "Kansalaisj\u00e4rjest\u00f6n toimisto"
+        },
+        "office/religion": {
+            "name": "Uskonnollinen toimisto"
+        },
+        "office/research": {
+            "name": "Tutkimustoimisto"
+        },
+        "office/surveyor": {
+            "name": "Maanmittaustoimisto"
+        },
+        "office/tax_advisor": {
+            "name": "Veroneuvonta"
+        },
+        "office/telecommunication": {
+            "name": "Tietoliikennetoimisto"
+        },
+        "office/therapist": {
+            "name": "Terapia"
+        },
+        "office/travel_agent": {
+            "name": "Matkatoimisto"
+        },
+        "office/water_utility": {
+            "name": "Vesilaitos",
+            "terms": "vesipalvelu, vesihuoltolaitos, vesihuolto, vedenjakelu, vesiosuuskunta, vesikunta, viem\u00e4r\u00f6intilaitos, vesi, toimisto"
+        },
+        "piste/downhill": {
+            "name": "Laskettelurinne/hiihtolatu",
+            "terms": "hiihto, laskettelu, latu, rinne, hiiht\u00e4minen, alppi, alppilajit, talvi, talviurheilu, lumetus, lumetettu, sukset, suksi, lauta, lumilauta"
+        },
+        "place": {
+            "name": "Paikka"
+        },
+        "place/city": {
+            "name": "Kaupunki",
+            "terms": "kaupunki, suurkaupunki, p\u00e4\u00e4kaupunki"
+        },
+        "place/farm": {
+            "name": "Maatila"
+        },
+        "place/hamlet": {
+            "name": "Pikkukyl\u00e4",
+            "terms": "kulmakunta, pieni kyl\u00e4, sivukyl\u00e4, kyl\u00e4, paikkakunta, paikannimi, takamaa, seutu, naapurusto, taloryhm\u00e4, taajama, haja-asutus"
+        },
+        "place/island": {
+            "name": "Saari",
+            "terms": "Saari, Saareke, Luoto"
+        },
+        "place/islet": {
+            "name": "Luoto",
+            "terms": "pieni, saari, pieni saari, kari"
+        },
+        "place/isolated_dwelling": {
+            "name": "Yksitt\u00e4inen asunto"
+        },
+        "place/locality": {
+            "name": "Paikkakunta"
+        },
+        "place/neighbourhood": {
+            "name": "Naapurusto"
+        },
+        "place/quarter": {
+            "name": "Alakeskus"
+        },
+        "place/square": {
+            "name": "Tori"
+        },
+        "place/suburb": {
+            "name": "Esikaupunkikeskus"
+        },
+        "place/town": {
+            "name": "Pieni kaupunki",
+            "terms": "kunta, pienkaupunki, pieni kaupunki, keskikokoinen kaupunki"
+        },
+        "place/village": {
+            "name": "Kyl\u00e4"
+        },
+        "playground/balance_beam": {
+            "name": "Nuorallak\u00e4vely"
+        },
+        "playground/basket_swing": {
+            "name": "Korikeinu"
+        },
+        "playground/climbing_frame": {
+            "name": "Kiipeilyteline"
+        },
+        "playground/rocker": {
+            "name": "Keinuhevonen"
+        },
+        "playground/roundabout": {
+            "name": "Karuselli"
+        },
+        "playground/sandpit": {
+            "name": "Hiekkalaatikko"
+        },
+        "playground/seesaw": {
+            "name": "Keinulauta"
+        },
+        "playground/slide": {
+            "name": "Liukum\u00e4ki"
+        },
+        "playground/structure": {
+            "name": "Kiipeilyteline"
+        },
+        "playground/swing": {
+            "name": "Keinu"
+        },
+        "playground/zipwire": {
+            "name": "Vaijerirata"
+        },
+        "point": {
+            "name": "Paikkapiste"
+        },
+        "power": {
+            "name": "S\u00e4hk\u00f6"
+        },
+        "power/cable/underground": {
+            "name": "Maanalainen virtakaapeli",
+            "terms": "maan alla, pinnan, pinta, alla, alapuolinen, voima, virta, s\u00e4hk\u00f6, johto, kaapeli"
+        },
+        "power/generator": {
+            "name": "Generaattori"
+        },
+        "power/generator/method/photovoltaic": {
+            "name": "Aurinkopaneeli"
+        },
+        "power/generator/source/nuclear": {
+            "name": "Ydinreaktori"
+        },
+        "power/generator/source/wind": {
+            "name": "Tuulivoimala"
+        },
+        "power/line": {
+            "name": "Voimalinja"
+        },
+        "power/minor_line": {
+            "name": "Matalaj\u00e4nnitelinja",
+            "terms": "s\u00e4hk\u00f6johto, s\u00e4hk\u00f6linja, s\u00e4hk\u00f6, ilmajohto, j\u00e4nnite, hengenvaara, matalaj\u00e4nnite"
+        },
+        "power/plant": {
+            "name": "Voimalaitosalue"
+        },
+        "power/pole": {
+            "name": "Voimalinjapylv\u00e4s"
+        },
+        "power/sub_station": {
+            "name": "S\u00e4hk\u00f6asema"
+        },
+        "power/substation": {
+            "name": "S\u00e4hk\u00f6asema"
+        },
+        "power/tower": {
+            "name": "Korkeaj\u00e4nnitetorni"
+        },
+        "power/transformer": {
+            "name": "Muuntaja"
+        },
+        "public_transport/platform": {
+            "name": "Joukkoliikennepys\u00e4kki/-laituri"
+        },
+        "public_transport/platform_aerialway": {
+            "name": "Ilmaradan pys\u00e4kki/laituri",
+            "terms": "ilmarata, gondoli, hissi, laituri, pys\u00e4kki, alue"
+        },
+        "public_transport/platform_bus": {
+            "name": "Linja-autopys\u00e4kki/-laituri",
+            "terms": "linja-autopys\u00e4kki, bussipys\u00e4kki, pys\u00e4kki, pys\u00e4hdyspaikka, odotuspaikka, linja-auto, bussi, d\u00f6sis, d\u00f6s\u00e4ri, levennys, pys\u00e4kkimerkki, katos, pikavuoro, linja-autolaituri, bussilaituri, laituri, joukkoliikenne"
+        },
+        "public_transport/platform_ferry": {
+            "name": "Laivapaikka/-matkustajalaituri"
+        },
+        "public_transport/platform_light_rail": {
+            "name": "Pikaraitiotiepys\u00e4kki/-laituri"
+        },
+        "public_transport/platform_monorail": {
+            "name": "Monorailpys\u00e4kki/-laituri"
+        },
+        "public_transport/platform_subway": {
+            "name": "Metrolaituri"
+        },
+        "public_transport/platform_train": {
+            "name": "Rautatielaituri",
+            "terms": "juna, rautatie, laituri, rata, raide, asema, pys\u00e4kki"
+        },
+        "public_transport/platform_tram": {
+            "name": "Katuraitiotiepys\u00e4kki/-laituri"
+        },
+        "public_transport/platform_trolleybus": {
+            "name": "Johdinautopys\u00e4kki/-laituri"
+        },
+        "public_transport/station_aerialway": {
+            "name": "Ilmaradan asema",
+            "terms": "ilmarata, k\u00f6ysirata, gondoli, hissi, asema, pys\u00e4kki, yl\u00e4asema, ala-asema"
+        },
+        "public_transport/station_bus": {
+            "name": "Linja-autoasema/-terminaali"
+        },
+        "public_transport/station_ferry": {
+            "name": "Laivaterminaali"
+        },
+        "public_transport/station_light_rail": {
+            "name": "Pikaraitiotieasema"
+        },
+        "public_transport/station_monorail": {
+            "name": "Monorailasema"
+        },
+        "public_transport/station_subway": {
+            "name": "Metroasema"
+        },
+        "public_transport/station_train": {
+            "name": "Rautatieasema",
+            "terms": "juna, rautatie, rata, raide, asema, pys\u00e4kki"
+        },
+        "public_transport/station_train_halt": {
+            "name": "Pieni rautatieseisake (pys\u00e4htyy pyynn\u00f6st\u00e4)",
+            "terms": "juna, rautatie, rata, raide, asema, pys\u00e4kki"
+        },
+        "public_transport/station_tram": {
+            "name": "Katuraitiotieasema"
+        },
+        "public_transport/station_trolleybus": {
+            "name": "Johdinautoasema/-terminaali"
+        },
+        "public_transport/stop_area": {
+            "name": "Joukkoliikennealue"
+        },
+        "public_transport/stop_position": {
+            "name": "Joukkoliikenteen pys\u00e4htymiskohta"
+        },
+        "public_transport/stop_position_aerialway": {
+            "name": "Ilmaradan vaunun pys\u00e4htymiskohta",
+            "terms": "ilmarata, k\u00f6ysirata, gondoli, hissi, asema, pys\u00e4kki, yl\u00e4asema, ala-asema"
+        },
+        "public_transport/stop_position_bus": {
+            "name": "Linja-auton pys\u00e4htymiskohta"
+        },
+        "public_transport/stop_position_ferry": {
+            "name": "Laivan pys\u00e4htymiskohta"
+        },
+        "public_transport/stop_position_light_rail": {
+            "name": "Pikaraitiovaunun pys\u00e4htymiskohta"
+        },
+        "public_transport/stop_position_monorail": {
+            "name": "Monorailin pys\u00e4htymiskohta"
+        },
+        "public_transport/stop_position_subway": {
+            "name": "Metrojunan pys\u00e4htymiskohta"
+        },
+        "public_transport/stop_position_train": {
+            "name": "Junan pys\u00e4htymiskohta",
+            "terms": "juna, rautatie, rata, raide, asema, pys\u00e4kki"
+        },
+        "public_transport/stop_position_tram": {
+            "name": "Katuraitiovaunun pys\u00e4htymiskohta"
+        },
+        "public_transport/stop_position_trolleybus": {
+            "name": "Johdinauton pys\u00e4htymiskohta"
+        },
+        "railway": {
+            "name": "Rautatie"
+        },
+        "railway/abandoned": {
+            "name": "Hyl\u00e4tty rautatie"
+        },
+        "railway/buffer_stop": {
+            "name": "Pys\u00e4ytyspuskuri"
+        },
+        "railway/crossing": {
+            "name": "K\u00e4velyn ja py\u00f6r\u00e4ilyn tasoristeys",
+            "terms": "tasoristeys, ylityspaikka, rautatie, radanylitys, jalankulku, py\u00f6r\u00e4ily, jalan, py\u00f6r\u00e4ll\u00e4, py\u00f6r\u00e4, polkupy\u00f6r\u00e4, polkupy\u00f6rien, polkupy\u00f6r\u00e4n, py\u00f6rien, py\u00f6r\u00e4n, suojatie"
+        },
+        "railway/disused": {
+            "name": "K\u00e4ytt\u00e4m\u00e4t\u00f6n rautatie"
+        },
+        "railway/funicular": {
+            "name": "Kiskok\u00f6ysirata",
+            "terms": "funikulaari, k\u00f6ysihissi, gondoli, gondolihissi, hissi, rata, hissirata, k\u00f6ysirata"
+        },
+        "railway/halt": {
+            "name": "Pieni rautatieseisake (pys\u00e4htyy pyynn\u00f6st\u00e4)"
+        },
+        "railway/level_crossing": {
+            "name": "Moottoriajoneuvoliikenteen tasoristeys",
+            "terms": "tasoristeys, ylityspaikka, rautatie, radanylitys, ajoneuvo, tie, katu, moottoriajoneuvo, ajoneuvo, auto"
+        },
+        "railway/light_rail": {
+            "name": "Pikaraitiotie"
+        },
+        "railway/miniature": {
+            "name": "Pienoisrautatie"
+        },
+        "railway/monorail": {
+            "name": "Monorail"
+        },
+        "railway/narrow_gauge": {
+            "name": "Kapearaiteinen rautatie"
+        },
+        "railway/platform": {
+            "name": "Rautatielaituri"
+        },
+        "railway/rail": {
+            "name": "Rata"
+        },
+        "railway/signal": {
+            "name": "Rautatieopastin",
+            "terms": "rautatie, juna, opastin, liikennevalo, signaali"
+        },
+        "railway/station": {
+            "name": "Rautatieasema"
+        },
+        "railway/subway": {
+            "name": "Metrorata"
+        },
+        "railway/subway_entrance": {
+            "name": "Metron sis\u00e4\u00e4nk\u00e4ynti"
+        },
+        "railway/switch": {
+            "name": "Rautatievaihde"
+        },
+        "railway/train_wash": {
+            "name": "Junapesula",
+            "terms": "veturi, vaunu, juna, pesu, pesukone, pesula"
+        },
+        "railway/tram": {
+            "name": "Katuraitiotie"
+        },
+        "railway/tram_stop": {
+            "name": "Katuraitiovaunun pys\u00e4htymiskohta"
+        },
+        "relation": {
+            "name": "Relaatio"
+        },
+        "roundabout": {
+            "name": "Liikenneympyr\u00e4"
+        },
+        "route/ferry": {
+            "name": "Lauttareitti"
+        },
+        "seamark": {
+            "name": "Merimerkint\u00e4"
+        },
+        "seamark/mooring": {
+            "name": "Veneenkiinnityspaikka"
+        },
+        "shop": {
+            "name": "Kauppa",
+            "terms": "myym\u00e4l\u00e4, liike, market, marketti, puoti, putiikki, tavaratalo"
+        },
+        "shop/agrarian": {
+            "name": "Maataloustarvikeliike",
+            "terms": "maatila, maatalous, maa, myym\u00e4l\u00e4, liike, kauppa, putiikki,"
+        },
+        "shop/alcohol": {
+            "name": "Alkoholimyym\u00e4l\u00e4",
+            "terms": "viina, olut, viini, viinikellari, juoma"
+        },
+        "shop/anime": {
+            "name": "Anime-myym\u00e4l\u00e4",
+            "terms": "cosplay, anime, manga, pukeutuminen"
+        },
+        "shop/antiques": {
+            "name": "Antiikkiliike"
+        },
+        "shop/appliance": {
+            "name": "Kodinkonemyym\u00e4l\u00e4",
+            "terms": "j\u00e4\u00e4kaappi, pesukone, keitti\u00f6, liesi, pakastin, kuivausrumpu, kodinkone, kodinkoneet, myym\u00e4l\u00e4, kauppa, liike"
+        },
+        "shop/art": {
+            "name": "Taideliike"
+        },
+        "shop/baby_goods": {
+            "name": "Vauvatarvikeliike",
+            "terms": "vauva, lapsi, vastasyntynyt, vauvatalo, lastenhoito, lapset, vauvat, vauvanhoito, hoito, lapsenhoito"
+        },
+        "shop/bag": {
+            "name": "Matkalaukkumyym\u00e4l\u00e4",
+            "terms": "matkalaukku, matkatavara, laukku, kassi, s\u00e4kki, kaps\u00e4kki, laukut, kassit, s\u00e4kit, kaps\u00e4kit"
+        },
+        "shop/bakery": {
+            "name": "Leipomo"
+        },
+        "shop/bathroom_furnishing": {
+            "name": "Kylpyhuoneliike",
+            "terms": "kylpyhuone, kylpy, suihku, amme, sisustus, sisustaminen, pesuhuone, sauna"
+        },
+        "shop/beauty": {
+            "name": "Kauneushoitola"
+        },
+        "shop/beauty/nails": {
+            "name": "Manikyyri",
+            "terms": "kynsisalonki, kynsi, kynnet, kynsienhoito, kynnenhoito"
+        },
+        "shop/beauty/tanning": {
+            "name": "Rusketussalonki",
+            "terms": "solarium, rusketus, ruskettuminen, keinorusketus, tekorusketus"
+        },
+        "shop/bed": {
+            "name": "Vuodetarvikeliike",
+            "terms": "uni, peti, s\u00e4nky, s\u00e4ngyn, s\u00e4ngyt, pedin, petivaatteet, lakana, peitto, tyyny, patja, nukkuminen, t\u00e4kki, vuode, vuoteen, myym\u00e4l\u00e4, kauppa, liike, puoti"
+        },
+        "shop/beverages": {
+            "name": "Viinakauppa"
+        },
+        "shop/bicycle": {
+            "name": "Py\u00f6r\u00e4liike",
+            "terms": "py\u00f6r\u00e4kauppa, py\u00f6r\u00e4liike, py\u00f6r\u00e4n varaosa, py\u00f6r\u00e4myym\u00e4l\u00e4, polkupy\u00f6r\u00e4kauppa, polkupy\u00f6r\u00e4liike, polkupy\u00f6r\u00e4n varaosa, polkupy\u00f6r\u00e4myym\u00e4l\u00e4, polkupy\u00f6r\u00e4, py\u00f6r\u00e4"
+        },
+        "shop/bookmaker": {
+            "name": "Kirjapaino"
+        },
+        "shop/books": {
+            "name": "Kirjakauppa"
+        },
+        "shop/boutique": {
+            "name": "Muotiliike",
+            "terms": "vaate, asuste"
+        },
+        "shop/butcher": {
+            "name": "Lihakauppa"
+        },
+        "shop/candles": {
+            "name": "Kynttil\u00e4kauppa"
+        },
+        "shop/car": {
+            "name": "Autokauppa"
+        },
+        "shop/car_parts": {
+            "name": "Varaosamyym\u00e4l\u00e4",
+            "terms": "varaosa, korjaamo, auto, autot, autonkorjaus, autoliike"
+        },
+        "shop/car_repair": {
+            "name": "Autokorjaamo",
+            "terms": "autokorjaamo, korjaamo, autohuolto, huolto, katsastus, autokatsastus, auto, autot, autoliike"
+        },
+        "shop/carpet": {
+            "name": "Mattokauppa"
+        },
+        "shop/charity": {
+            "name": "Hyv\u00e4ntekev\u00e4isyyskauppa"
+        },
+        "shop/cheese": {
+            "name": "Juustopuoti"
+        },
+        "shop/chemist": {
+            "name": "Apteekki-luontaistuotemyym\u00e4l\u00e4",
+            "terms": "l\u00e4\u00e4ke, luontaisl\u00e4\u00e4kint\u00e4, terveys"
+        },
+        "shop/chocolate": {
+            "name": "Suklaapuoti"
+        },
+        "shop/clothes": {
+            "name": "Vaatekauppa",
+            "terms": "vaate, muoti, vaatetus, vaatteet, pukeutuminen, pukea, pukeutua, hm, h&m, hennes, mauritz, dressmann, lindex, kappahl, carlings, bikbok, bik bok, sepp\u00e4l\u00e4, aleksi13, aleksi 13,  cubus, ginatricot, gina, tricot, halonen, mango, zara, kauppa, liike, yritys, putiikki, myym\u00e4l\u00e4, vaateliike, vaateyritys, vaatemyym\u00e4l\u00e4"
+        },
+        "shop/coffee": {
+            "name": "Kahvikauppa"
+        },
+        "shop/computer": {
+            "name": "Tietokoneliike"
+        },
+        "shop/confectionery": {
+            "name": "Karkkipuoti"
+        },
+        "shop/convenience": {
+            "name": "L\u00e4hikauppa"
+        },
+        "shop/copyshop": {
+            "name": "Kopiointiliike",
+            "terms": "kopiokone, kopio, kopiointi, kopioida"
+        },
+        "shop/cosmetics": {
+            "name": "Kosmetiikkamyym\u00e4l\u00e4"
+        },
+        "shop/craft": {
+            "name": "K\u00e4sity\u00f6liike"
+        },
+        "shop/curtain": {
+            "name": "Verhomyym\u00e4l\u00e4",
+            "terms": "verho, kaihdin, verhot, kaihtimet, rullaverho, liukuverho, verhokauppa, verholiike"
+        },
+        "shop/dairy": {
+            "name": "Maitotuotemyym\u00e4l\u00e4",
+            "terms": "maito, meijeri, maitotuote, maitoa, juusto, jogurtti, viili, piim\u00e4, j\u00e4\u00e4tel\u00f6, lehm\u00e4"
+        },
+        "shop/deli": {
+            "name": "Deli"
+        },
+        "shop/department_store": {
+            "name": "Tavaratalo"
+        },
+        "shop/doityourself": {
+            "name": "Askartelukauppa"
+        },
+        "shop/dry_cleaning": {
+            "name": "Kuivapesula"
+        },
+        "shop/e-cigarette": {
+            "name": "S\u00e4hk\u00f6savukemyym\u00e4l\u00e4",
+            "terms": "s\u00e4hk\u00f6tupakka, s\u00e4hk\u00f6tupakointi, etupakka, s\u00e4hk\u00f6r\u00f6\u00f6ki, kauppa, liike, myym\u00e4l\u00e4, puoti, putiikki"
+        },
+        "shop/electronics": {
+            "name": "Elektroniikkamyym\u00e4l\u00e4"
+        },
+        "shop/erotic": {
+            "name": "Erotiikkamyym\u00e4l\u00e4",
+            "terms": "seksi, seksilelu, lelu, aikuinen, aikuisten, K18, porno, erotiikka, eroottinen, kauppa, liike, myym\u00e4l\u00e4, putiikki"
+        },
+        "shop/fabric": {
+            "name": "Rakennusliike"
+        },
+        "shop/farm": {
+            "name": "Tuotteen esittelypiste",
+            "terms": "tuotestandi, standi, st\u00e4ndi, esittely, tuote-esittely, tuote, tavara, esittelypiste, esittelyst\u00e4ndi, esittelystandi"
+        },
+        "shop/fashion": {
+            "name": "Muotiliike"
+        },
+        "shop/fishmonger": {
+            "name": "Kalakauppa"
+        },
+        "shop/florist": {
+            "name": "Kukkakauppa"
+        },
+        "shop/frame": {
+            "name": "Kehyst\u00e4m\u00f6",
+            "terms": "kehys, kehykset, taulunkehys, taulunkehykset"
+        },
+        "shop/funeral_directors": {
+            "name": "Hautaustoimisto",
+            "terms": "hautajaiset, hautajaistoimisto, toimisto, vainaja"
+        },
+        "shop/furnace": {
+            "name": "Uunimyym\u00e4l\u00e4"
+        },
+        "shop/furniture": {
+            "name": "Huonekaluliike"
+        },
+        "shop/garden_centre": {
+            "name": "Puutarhamyym\u00e4l\u00e4"
+        },
+        "shop/gas": {
+            "name": "Kaasupulloliike",
+            "terms": "kaasu, grilli, grillaus, kaasupullo, kauppa, myym\u00e4l\u00e4, liike, j\u00e4lleenmyynti, j\u00e4lleenmyyj\u00e4, t\u00e4ytt\u00f6, kaasupullont\u00e4ytt\u00f6"
+        },
+        "shop/gift": {
+            "name": "Lahjamyym\u00e4l\u00e4"
+        },
+        "shop/greengrocer": {
+            "name": "Kasviskauppa",
+            "terms": "vihanneskauppias, vihannes, vihannekset, juures, juurekset, hedelm\u00e4, hedelm\u00e4t, marja, marjat, kasvis, kasvikset"
+        },
+        "shop/hairdresser": {
+            "name": "Parturi-kampaamo",
+            "terms": "parturi, kampaaja, kampaamo, parturi-kampaamo, hiustenleikkuu, hiukset, hiusliike, hiusmyym\u00e4l\u00e4, hiustenv\u00e4rj\u00e4ys, parranajo, parta"
+        },
+        "shop/hairdresser_supply": {
+            "name": "Hiustarvikemyym\u00e4l\u00e4",
+            "terms": "parturi, kampaaja, kampaamo, parturi-kampaamo, hiustenleikkuu, hiukset, hiusliike, hiusmyym\u00e4l\u00e4, hiustenv\u00e4rj\u00e4ys, parranajo, parta"
+        },
+        "shop/hardware": {
+            "name": "Rautakauppa"
+        },
+        "shop/health_food": {
+            "name": "Terveysravinnemyym\u00e4l\u00e4"
+        },
+        "shop/hearing_aids": {
+            "name": "Kuuloapumyym\u00e4l\u00e4",
+            "terms": "kuulo, kuuleminen, kuulovamma, kuulovammaisuus, vamma, vammaisuus, kuulokoje, huono kuulo"
+        },
+        "shop/herbalist": {
+            "name": "Luontaistuotemyym\u00e4l\u00e4"
+        },
+        "shop/hifi": {
+            "name": "Hifi-myym\u00e4l\u00e4"
+        },
+        "shop/interior_decoration": {
+            "name": "Sisustusmyym\u00e4l\u00e4",
+            "terms": "huonekalu, kalustus, kaluste, koriste, esine, kauppa, liike"
+        },
+        "shop/kiosk": {
+            "name": "Kioski"
+        },
+        "shop/kitchen": {
+            "name": "Keitti\u00f6liike"
+        },
+        "shop/laundry": {
+            "name": "Pesula"
+        },
+        "shop/leather": {
+            "name": "Nahkaliike"
+        },
+        "shop/locksmith": {
+            "name": "Lukkoliike",
+            "terms": "lukkosepp\u00e4, lukko, lukot, h\u00e4lytys, valvonta, h\u00e4lytin, h\u00e4lyttimet, lukonavaus"
+        },
+        "shop/lottery": {
+            "name": "Veikkauspiste",
+            "terms": "lotto, veikkaus, vedonly\u00f6nti, ly\u00f6d\u00e4 vetoa, jokeri"
+        },
+        "shop/mall": {
+            "name": "Kauppakeskus",
+            "terms": "kauppakeskus, ostoskeskus, kauppakeskittym\u00e4"
+        },
+        "shop/massage": {
+            "name": "Hierontayritys"
+        },
+        "shop/medical_supply": {
+            "name": "L\u00e4\u00e4ketarvikemyym\u00e4l\u00e4"
+        },
+        "shop/mobile_phone": {
+            "name": "Matkapuhelinmyym\u00e4l\u00e4"
+        },
+        "shop/money_lender": {
+            "name": "Rahanlainausliike"
+        },
+        "shop/motorcycle": {
+            "name": "Moottoripy\u00f6r\u00e4liike"
+        },
+        "shop/motorcycle_repair": {
+            "name": "Moottoripy\u00f6r\u00e4korjaamo"
+        },
+        "shop/music": {
+            "name": "Musiikkiliike"
+        },
+        "shop/musical_instrument": {
+            "name": "Instrumenttimyym\u00e4l\u00e4",
+            "terms": "musiikki, soitin, soittimet, instrumentti, soittaminen, soitto"
+        },
+        "shop/newsagent": {
+            "name": "Lehtikoju"
+        },
+        "shop/nutrition_supplements": {
+            "name": "Lis\u00e4ravinnemyym\u00e4l\u00e4"
+        },
+        "shop/optician": {
+            "name": "Optikko",
+            "terms": "optikko, optiikko, optometristi, optometri, optometria, silm\u00e4lasi, silm\u00e4lasit, aurinkolasi, aurinkolasit, silm\u00e4lasiliike"
+        },
+        "shop/organic": {
+            "name": "Luomumyym\u00e4l\u00e4",
+            "terms": "luomu, luomuruoka, ymp\u00e4rist\u00f6, ymp\u00e4rist\u00f6yst\u00e4v\u00e4llisyys, ruoka, ruokakauppa, luonnonmukainen"
+        },
+        "shop/outdoor": {
+            "name": "Ulkoilmamyym\u00e4l\u00e4"
+        },
+        "shop/paint": {
+            "name": "Maalikauppa",
+            "terms": "maalaaminen, maali, maalit, maalaus, rautakauppa, maalimyym\u00e4l\u00e4, maaliliike"
+        },
+        "shop/pastry": {
+            "name": "Leipomokonditoria"
+        },
+        "shop/pawnbroker": {
+            "name": "Panttilainaamo"
+        },
+        "shop/perfumery": {
+            "name": "Hajusteliike",
+            "terms": "tuoksu, hajuste, hajuvesi, kauppa, myym\u00e4l\u00e4, liike"
+        },
+        "shop/pet": {
+            "name": "Lemmikkiliike"
+        },
+        "shop/photo": {
+            "name": "Valokuvausliike"
+        },
+        "shop/pyrotechnics": {
+            "name": "Ilotulitemyym\u00e4l\u00e4",
+            "terms": "ilotulite, ilotulitus, raketti, kauppa, liike, myym\u00e4l\u00e4, puoti, myyntipiste, uusi, vuosi, uusivuosi, raketin, raketinammunta"
+        },
+        "shop/radiotechnics": {
+            "name": "Elektroniikkakomponenttimyym\u00e4l\u00e4",
+            "terms": "radio, elektroniikka, komponentti, tekninen, tekniikka, osa, osat, varaosa"
+        },
+        "shop/religion": {
+            "name": "Uskonnollinen myym\u00e4l\u00e4",
+            "terms": "kristillinen, kauppa, hengellinen, henkinen"
+        },
+        "shop/scuba_diving": {
+            "name": "Sukellusliike",
+            "terms": "laitesukellus, sukellus, sukeltaminen, laitesukeltaminen, sukelluskauppa, sukellusliike"
+        },
+        "shop/seafood": {
+            "name": "Meriruokakauppa"
+        },
+        "shop/second_hand": {
+            "name": "K\u00e4ytetyn tavaran kauppa",
+            "terms": "kirpputori, myym\u00e4l\u00e4, liike, kauppa, second hand, k\u00e4ytetty, k\u00e4ytetty\u00e4, k\u00e4ytetyn, tavara, j\u00e4lleenmyynti, vertaiskauppa, osto- ja myyntiliike"
+        },
+        "shop/shoes": {
+            "name": "Kenk\u00e4kauppa"
+        },
+        "shop/sports": {
+            "name": "Urheiluliike",
+            "terms": "urheilu, kauppa, liike, putiikki, myym\u00e4l\u00e4, urheilukauppa, urheilumyym\u00e4l\u00e4, liikunta"
+        },
+        "shop/stationery": {
+            "name": "Toimistotarvikekauppa"
+        },
+        "shop/storage_rental": {
+            "name": "Varastonvuokrauspalvelu"
+        },
+        "shop/supermarket": {
+            "name": "Supermarket"
+        },
+        "shop/tailor": {
+            "name": "R\u00e4\u00e4t\u00e4liliike"
+        },
+        "shop/tattoo": {
+            "name": "Tatuointisalonki"
+        },
+        "shop/tea": {
+            "name": "Teekauppa"
+        },
+        "shop/ticket": {
+            "name": "Lipunmyyntipiste",
+            "terms": "lippupalvelu, lippu, liput, lippupiste, matkalippu, konserttilippu, tapahtumalippu, p\u00e4\u00e4sylippu, p\u00e4\u00e4syliput"
+        },
+        "shop/tiles": {
+            "name": "Tiilimyym\u00e4l\u00e4"
+        },
+        "shop/tobacco": {
+            "name": "Tupakkapuoti"
+        },
+        "shop/toys": {
+            "name": "Lelukauppa"
+        },
+        "shop/travel_agency": {
+            "name": "Matkatoimisto"
+        },
+        "shop/tyres": {
+            "name": "Rengasliike"
+        },
+        "shop/vacant": {
+            "name": "Tyhj\u00e4 liikehuoneisto"
+        },
+        "shop/vacuum_cleaner": {
+            "name": "P\u00f6lynimuriliike",
+            "terms": "p\u00f6lynimuri, siivoaminen, siivous, imuri, p\u00f6lynimuri, imurointi"
+        },
+        "shop/variety_store": {
+            "name": "Halpahalli",
+            "terms": "tokmanni, hintamyym\u00e4l\u00e4, halpa, halpatalo, halpamyym\u00e4l\u00e4, s\u00e4\u00e4st\u00f6myym\u00e4l\u00e4, s\u00e4\u00e4st\u00f6, kauppa, myym\u00e4l\u00e4, putiikki, liike"
+        },
+        "shop/video": {
+            "name": "Videovuokraamo"
+        },
+        "shop/video_games": {
+            "name": "Videopeliliike",
+            "terms": "konsoli, konsolipeli, pelikonsoli, xbox, playstation, nintendo, peli, pelaaminen, videopeli, pc, tietokone, tietotekniikka"
+        },
+        "shop/watches": {
+            "name": "Kellokauppa",
+            "terms": "kello, rannekello, myym\u00e4l\u00e4, liike, kauppa, putiikki"
+        },
+        "shop/water_sports": {
+            "name": "Vesiurheiluliike",
+            "terms": "uinti, uiminen, sukellus, sukeltaminen, laitesukellus, laitesukeltaminen, vesi, vesiurheilu, kauppa, liike, myym\u00e4l\u00e4"
+        },
+        "shop/weapons": {
+            "name": "Aseliike",
+            "terms": "ase, pyssy, ampuma-ase, ampuminen, ammunta, starttipistooli, pistooli"
+        },
+        "shop/window_blind": {
+            "name": "Kaihdinmyym\u00e4l\u00e4",
+            "terms": "verho, ikkuna, ikkunaverho, ikkunakaihdin, kaihdin, verhot, kaihtimet, rullaverho, rullakaihdin, rullakaihtimet, rullaverhot"
+        },
+        "shop/wine": {
+            "name": "Viinikauppa"
+        },
+        "tourism": {
+            "name": "Turismi"
+        },
+        "tourism/alpine_hut": {
+            "name": "Alppimaja",
+            "terms": "alppimaja, alppim\u00f6kki, alppitalo, vuorimaja, vuoritalo, vuorim\u00f6kki, vuoristomaja, vuoristom\u00f6kki, vuoristotalo"
+        },
+        "tourism/apartment": {
+            "name": "Vierasmajoitus"
+        },
+        "tourism/aquarium": {
+            "name": "Akvaario"
+        },
+        "tourism/artwork": {
+            "name": "Taideteos",
+            "terms": "taideteos, patsas, veistos, taide, taiteellinen, teos, installaatio"
+        },
+        "tourism/artwork/mural": {
+            "name": "Sein\u00e4maalaus"
+        },
+        "tourism/artwork/sculpture": {
+            "name": "Veistos"
+        },
+        "tourism/artwork/statue": {
+            "name": "Patsas"
+        },
+        "tourism/attraction": {
+            "name": "Turistikohde"
+        },
+        "tourism/camp_site": {
+            "name": "Leirint\u00e4alue",
+            "terms": "leiripaikka, karavaanialue, caravan park, matkailuvaunualue, telttailualue, camping"
+        },
+        "tourism/caravan_site": {
+            "name": "Asuntoautopys\u00e4k\u00f6inti"
+        },
+        "tourism/chalet": {
+            "name": "Loma-asunto",
+            "terms": "kes\u00e4m\u00f6kki, lomam\u00f6kki, m\u00f6kki, asunto, talo, kes\u00e4, vapaa-ajan, vapaa-aika"
+        },
+        "tourism/gallery": {
+            "name": "Taidegalleria",
+            "terms": "taiden\u00e4yttely, taide, n\u00e4yttely, n\u00e4yttelytila, galleria, galleriatila, kokoelma, maalaus, valokuva"
+        },
+        "tourism/guest_house": {
+            "name": "Majatalo"
+        },
+        "tourism/hostel": {
+            "name": "Hostelli"
+        },
+        "tourism/hotel": {
+            "name": "Hotelli"
+        },
+        "tourism/information": {
+            "name": "Infopiste"
+        },
+        "tourism/information/board": {
+            "name": "Opastaulu",
+            "terms": "opastaulu, opaskartta, opaste, kartta, ilmoitustaulu, kiinteist\u00f6taulu, nimikilpi, aikataulu, bussi, juna, historia, luonto, kuulutukset"
+        },
+        "tourism/information/guidepost": {
+            "name": "Tienviitta"
+        },
+        "tourism/information/map": {
+            "name": "Kartta",
+            "terms": "opaskartta, maastokartta, topografia, katukartta, karttataulu, pohjapiirros, opastaulu, reittiohje, havainnekuva, kuva, grafiikka, taulu"
+        },
+        "tourism/information/office": {
+            "name": "Matkailuneuvonta",
+            "terms": "info, turismi, matkailu, turisti, neuvonta"
+        },
+        "tourism/motel": {
+            "name": "Motelli"
+        },
+        "tourism/museum": {
+            "name": "Museo"
+        },
+        "tourism/picnic_site": {
+            "name": "Piknikpuisto"
+        },
+        "tourism/theme_park": {
+            "name": "Huvipuisto",
+            "terms": "teemapuisto, huvipuisto, el\u00e4myspuisto, huvilaite"
+        },
+        "tourism/viewpoint": {
+            "name": "N\u00e4k\u00f6alapaikka"
+        },
+        "tourism/wilderness_hut": {
+            "name": "Autiotupa",
+            "terms": "tupa, kota, m\u00f6kki, maja, k\u00e4mpp\u00e4, kammi, pirtti, autiotupa, vuokra, vuokraus, varaus, kota, er\u00e4, er\u00e4maa, er\u00e4k\u00e4mpp\u00e4, y\u00f6, y\u00f6paikka, y\u00f6pymispaikka, leiripaikka, retki, vaellus, luonto, mets\u00e4"
+        },
+        "tourism/zoo": {
+            "name": "El\u00e4intarha",
+            "terms": "el\u00e4inpuisto, kotiel\u00e4inpiha"
+        },
+        "traffic_calming": {
+            "name": "Hidaste",
+            "terms": "hidastet\u00f6yssy, t\u00f6yssy, kumpare, kumpu, raita, hidastus, hidaste, korotettu, korotus"
+        },
+        "traffic_calming/bump": {
+            "name": "Voimakas hidastust\u00f6yssy"
+        },
+        "traffic_calming/chicane": {
+            "name": "Hidasteshikaani"
+        },
+        "traffic_calming/choker": {
+            "name": "Kavennettu tie"
+        },
+        "traffic_calming/cushion": {
+            "name": "Hidastetyyny"
+        },
+        "traffic_calming/dip": {
+            "name": "Hidastekuoppa"
+        },
+        "traffic_calming/hump": {
+            "name": "Liev\u00e4 hidastust\u00f6yssy"
+        },
+        "traffic_calming/island": {
+            "name": "Saareke"
+        },
+        "traffic_calming/rumble_strip": {
+            "name": "V\u00e4ristysviivahidaste"
+        },
+        "traffic_calming/table": {
+            "name": "Korotettu risteys"
+        },
+        "traffic_sign": {
+            "name": "Liikennemerkki"
+        },
+        "traffic_sign_vertex": {
+            "name": "Liikennemerkk"
+        },
+        "type/boundary": {
+            "name": "Raja"
+        },
+        "type/boundary/administrative": {
+            "name": "Hallinnollinen raja"
+        },
+        "type/multipolygon": {
+            "name": "Monikulmiot"
+        },
+        "type/restriction": {
+            "name": "Rajoitus"
+        },
+        "type/restriction/no_left_turn": {
+            "name": "Ei saa k\u00e4\u00e4nty\u00e4 vasemmalle"
+        },
+        "type/restriction/no_right_turn": {
+            "name": "Ei saa k\u00e4\u00e4nty\u00e4 oikealle"
+        },
+        "type/restriction/no_straight_on": {
+            "name": "Ei saa ajaa suoraan"
+        },
+        "type/restriction/no_u_turn": {
+            "name": "Ei saa tehd\u00e4 U-k\u00e4\u00e4nn\u00f6st\u00e4"
+        },
+        "type/restriction/only_left_turn": {
+            "name": "K\u00e4\u00e4ntyminen vain vasemmalle"
+        },
+        "type/restriction/only_right_turn": {
+            "name": "K\u00e4\u00e4ntyminen vain oikealle"
+        },
+        "type/restriction/only_straight_on": {
+            "name": "Pakollinen ajosuunta suoraan"
+        },
+        "type/route": {
+            "name": "Reitti",
+            "terms": "matkareitti, rengasreitti, lenkki, kulkuohjeet, ohjaus, reititys, navigointi, kurssi, traili"
+        },
+        "type/route/bicycle": {
+            "name": "Py\u00f6r\u00e4ilyreitti"
+        },
+        "type/route/bus": {
+            "name": "Linja-autolinja",
+            "terms": "linja-autolinja, linja-autoreitti, bussireitti, bussilinja"
+        },
+        "type/route/detour": {
+            "name": "Kiertotie"
+        },
+        "type/route/ferry": {
+            "name": "Lauttareitti"
+        },
+        "type/route/foot": {
+            "name": "K\u00e4velyreitti"
+        },
+        "type/route/hiking": {
+            "name": "Vaellusreitti",
+            "terms": "vaellus, patikointi, patikka, maasto, retkeily, samoilu, reitti"
+        },
+        "type/route/horse": {
+            "name": "Ratsastusreitti"
+        },
+        "type/route/light_rail": {
+            "name": "Pikaraitiotielinja"
+        },
+        "type/route/pipeline": {
+            "name": "Putkilinja"
+        },
+        "type/route/piste": {
+            "name": "Hiihtoreitti",
+            "terms": "latu, latureitti, talviurheilu, reitist\u00f6, hiihtolenkki, hiiht\u00e4minen"
+        },
+        "type/route/power": {
+            "name": "Voimalinja"
+        },
+        "type/route/road": {
+            "name": "Tiereitti"
+        },
+        "type/route/subway": {
+            "name": "Metroreitti"
+        },
+        "type/route/train": {
+            "name": "Junareitti"
+        },
+        "type/route/tram": {
+            "name": "Katuraitiolinja"
+        },
+        "type/route_master": {
+            "name": "P\u00e4\u00e4reitti"
+        },
+        "type/waterway": {
+            "name": "Vesireitti"
+        },
+        "vertex": {
+            "name": "Muu"
+        },
+        "waterway": {
+            "name": "Vesiv\u00e4yl\u00e4"
+        },
+        "waterway/boatyard": {
+            "name": "Telakka"
+        },
+        "waterway/canal": {
+            "name": "Kanava"
+        },
+        "waterway/dam": {
+            "name": "Pato"
+        },
+        "waterway/ditch": {
+            "name": "Oja"
+        },
+        "waterway/dock": {
+            "name": "Telakka",
+            "terms": "laiva, laivanrakennus, laivateollisuus, teollisuus, rakentaminen, kuivatelakka, laivatelakka"
+        },
+        "waterway/drain": {
+            "name": "Viem\u00e4ri"
+        },
+        "waterway/fuel": {
+            "name": "Venehuoltoasema",
+            "terms": "veneily, vene, laiva, polttoaine, polttoneste, bensiini, diesel, tankkaus, tankkaaminen, vesi, j\u00e4rvi, meri, alus"
+        },
+        "waterway/river": {
+            "name": "Joki"
+        },
+        "waterway/riverbank": {
+            "name": "Joent\u00f6rm\u00e4"
+        },
+        "waterway/sanitary_dump_station": {
+            "name": "Veneiden j\u00e4teveden tyhjennyspiste",
+            "terms": "j\u00e4tevesi, WC, satama, vene, veneily, lika, likavesi, vesi, viem\u00e4ri, viem\u00e4rivesi, j\u00e4te, j\u00e4tteet, tyhjent\u00e4\u00e4, tyhjennys, poisto, poistaa, tyhjent\u00e4minen"
+        },
+        "waterway/stream": {
+            "name": "Puro"
+        },
+        "waterway/stream_intermittent": {
+            "name": "Ajoittainen virta"
+        },
+        "waterway/water_point": {
+            "name": "Veneen vesipiste",
+            "terms": "vesi, vett\u00e4, veden, vedent\u00e4ytt\u00f6, t\u00e4ytt\u00f6, t\u00e4ytt\u00e4minen, vene, laiva, veneily, purjevene, moottorivene"
+        },
+        "waterway/waterfall": {
+            "name": "Vesiputous"
+        },
+        "waterway/weir": {
+            "name": "Pato"
+        }
+    }
+}

@@ -194,6 +194,7 @@ However, before uploading your changes, the app checks with a &lt;a href=\"https
     <string name="quest_surface_value_sett">"Sett"</string>
     <string name="quest_surface_value_wood">"Wood"</string>
     <string name="quest_placeName_title">"What is the name of this place?"</string>
+    <string name="quest_placeName_title_name">"What is the name of this place? (%s)"</string>
     <string name="quest_sidewalk_title">"Does this street have a sidewalk?"</string>
     <string name="quest_busStopName_title">"What is the name of this bus stop?"</string>
     <string name="quest_tramStopName_title">"What is the name of this streetcar stop?"</string>

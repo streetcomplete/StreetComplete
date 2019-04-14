@@ -1,0 +1,2416 @@
+{
+    "presets": {
+        "address": {
+            "name": "Adresa",
+            "terms": "adresa,\u0160PZ,SPZ,ulica"
+        },
+        "advertising/billboard": {
+            "name": "Bilboard",
+            "terms": "bilbord,bilboardy,billboardy,reklama,p\u00fata\u010d,putac"
+        },
+        "aerialway": {
+            "name": "Vzdu\u0161n\u00e1 doprava"
+        },
+        "aerialway/cable_car": {
+            "name": "Kab\u00ednkov\u00e1 lanovka",
+            "terms": "kyvadlova lanovka,kyvadlo,lanovka,kab\u00ednka,kabinka"
+        },
+        "aerialway/chair_lift": {
+            "name": "Kab\u00ednkov\u00e1 lanovka",
+            "terms": "kabinkova lanovka,lanovka,kabinky,kab\u00ednky"
+        },
+        "aerialway/drag_lift": {
+            "name": "Vlek",
+            "terms": "ly\u017eiarsky vlek, lyziarsky vlek"
+        },
+        "aerialway/gondola": {
+            "name": "Kyvadlov\u00e1 lanovka",
+            "terms": "kyvadlova lanovka,kyvadlo,lanovka,kab\u00ednka,kabinka"
+        },
+        "aerialway/goods": {
+            "name": "Z\u00e1sobovacia lanovka",
+            "terms": "zasobovacia lanovka"
+        },
+        "aerialway/magic_carpet": {
+            "name": "P\u00e1sov\u00fd vlek",
+            "terms": "pasovy vlek"
+        },
+        "aerialway/mixed_lift": {
+            "name": "Kombinovan\u00e1 lanovka",
+            "terms": "kobinovana lanovka"
+        },
+        "aerialway/platter": {
+            "name": "Kotvov\u00fd vlek",
+            "terms": "kotvovy vlek,kotva"
+        },
+        "aerialway/pylon": {
+            "name": "Sto\u017eiar lanovky",
+            "terms": "stoziar lanovky,stoziar"
+        },
+        "aerialway/rope_tow": {
+            "name": "Lanov\u00fd vlek",
+            "terms": "lanovy vlek"
+        },
+        "aerialway/station": {
+            "name": "Stanica lanovky"
+        },
+        "aerialway/t-bar": {
+            "name": "Vlek s dvojmiestnou kotvou",
+            "terms": "T kotva,teckova kotva,t\u00e9\u010dkov\u00e1 kotva"
+        },
+        "aeroway": {
+            "name": "Letectvo"
+        },
+        "aeroway/aerodrome": {
+            "name": "Letisko",
+            "terms": "Letisko,prist\u00e1vacia plocha,termin\u00e1l,pr\u00edletov\u00e1 hala,odbavovacia plocha"
+        },
+        "aeroway/apron": {
+            "name": "Odbavovacia plocha",
+            "terms": "Letisko,prist\u00e1vacia plocha,termin\u00e1l,pr\u00edletov\u00e1 hala,odbavovacia plocha"
+        },
+        "aeroway/gate": {
+            "name": "Letiskov\u00e1 br\u00e1na",
+            "terms": "letiskova brana,br\u00e1na,brana"
+        },
+        "aeroway/hangar": {
+            "name": "Hang\u00e1r",
+            "terms": "hangar,hang\u00e1r,letisko"
+        },
+        "aeroway/helipad": {
+            "name": "Heliport",
+            "terms": "vrtu\u013en\u00edk,helikopt\u00e9ra,prist\u00e1vacia plocha,heliport,helipad,vrtulnik,helikoptera,pristavacia plocha"
+        },
+        "aeroway/runway": {
+            "name": "Vzletov\u00e1 dr\u00e1ha",
+            "terms": "prist\u00e1vacia dr\u00e1ha, vzletov\u00e1 dr\u00e1ha, prist\u00e1vac\u00ed pruh,pristavacia draha,vzletova draha, pristavaci pruh"
+        },
+        "aeroway/taxiway": {
+            "name": "Rolovacia dr\u00e1ha",
+            "terms": "rolovanie,rolovacia draha,rolovacia dr\u00e1ha,pojazdova draha,pojazdov\u00e1 dr\u00e1ha"
+        },
+        "aeroway/terminal": {
+            "name": "Letiskov\u00fd termn\u00e1l",
+            "terms": "letiskovy terminal,terminal,termin\u00e1l"
+        },
+        "amenity": {
+            "name": "Ob\u010dianska vybavenos\u0165"
+        },
+        "amenity/animal_boarding": {
+            "name": "Opatrovanie zvierat",
+            "terms": "opatera zvierat,starostlivost,starostlivos\u0165"
+        },
+        "amenity/animal_breeding": {
+            "name": "Chovate\u013esk\u00e1 stanica",
+            "terms": "chovatelska stanica,\u0161lachtenie,slachtenie"
+        },
+        "amenity/animal_shelter": {
+            "name": "\u00datulok pre zvierat\u00e1",
+            "terms": "utulok pre zvierata,utulok"
+        },
+        "amenity/arts_centre": {
+            "name": "Gal\u00e9ria umenia",
+            "terms": "galeria,centrum umenia,umenie,obrazy,sochy,malby,ma\u013eby"
+        },
+        "amenity/atm": {
+            "name": "Bankomat",
+            "terms": "bankomat,pe\u0148a\u017en\u00fd automat"
+        },
+        "amenity/bank": {
+            "name": "Banka",
+            "terms": "banka,pobo\u010dka,sporite\u013ena"
+        },
+        "amenity/bar": {
+            "name": "Bar",
+            "terms": "bar,klub"
+        },
+        "amenity/bbq": {
+            "name": "Stanovi\u0161te pre gril",
+            "terms": "stanoviste pre girl,bbq,barbicue,opekanie,grilovanie,grilova\u010dka,grilovacka"
+        },
+        "amenity/bench": {
+            "name": "Lavi\u010dka",
+            "terms": "lavi\u010dka,lavicka"
+        },
+        "amenity/bicycle_parking": {
+            "name": "Stojan pre bicykle",
+            "terms": "stojan,stojan na bicykle,odstavna plocha, odstavn\u00e1 plocha"
+        },
+        "amenity/bicycle_rental": {
+            "name": "Pren\u00e1jom bicyklov",
+            "terms": "po\u017ei\u010dov\u0148a bicyklov, pozicovna bicyklov,cyklopo\u017ei\u010dov\u0148a,cyklopozicovna"
+        },
+        "amenity/bicycle_repair_station": {
+            "name": "Stojan s n\u00e1rad\u00edm na opravu bicyklov",
+            "terms": "stojan s naradim na opravu bicyklov,bicykel,oprava,naradie,n\u00e1radie"
+        },
+        "amenity/boat_rental": {
+            "name": "Pren\u00e1jom lod\u00ed",
+            "terms": "prenajom lodi,po\u017ei\u010dov\u0148a lod\u00ed,pozicovna lodi,pren\u00e1jom \u010dlnov,prenajom clnov,pozivocna clnov,po\u017ei\u010dov\u0148a \u010dlnov, \u010dln,cln,\u010dlny,clny,lode,sk\u00fatre,skutre,vodn\u00e9 sk\u00fatre,vodne skutre"
+        },
+        "amenity/bureau_de_change": {
+            "name": "Zmen\u00e1re\u0148",
+            "terms": "zmenaren,valuty,cudzia mena, v\u00fdmena pe\u0148az\u00ed,vymena penazi"
+        },
+        "amenity/cafe": {
+            "name": "Kaviare\u0148",
+            "terms": "kaviare\u0148,kaviaren"
+        },
+        "amenity/car_rental": {
+            "name": "Autopo\u017ei\u010dov\u0148a",
+            "terms": "po\u017ei\u010dov\u0148a \u00e1ut,autopo\u017ei\u010dov\u0148a,pozicovna aut,autopozicovna,pren\u00e1jom \u00e1ut,prenajom aut"
+        },
+        "amenity/car_sharing": {
+            "name": "Zdie\u013eanie \u00e1ut",
+            "terms": "zdie\u013eanie \u00e1ut,zdielanie aut,car sharing,car-sharing,carsharing"
+        },
+        "amenity/car_wash": {
+            "name": "Autoumyv\u00e1re\u0148",
+            "terms": "umyv\u00e1re\u0148 automobilov,umyv\u00e1re\u0148 \u00e1ut,autoumyv\u00e1re\u0148,autoumyv\u00e1rka,umyvaren utomobilov,umyvaren aut,autoumyvaren,autoumyvarka"
+        },
+        "amenity/casino": {
+            "name": "Kas\u00edno",
+            "terms": "kasino,automaty,ruleta,poker,stavky,st\u00e1vky"
+        },
+        "amenity/charging_station": {
+            "name": "Nab\u00edjacia stanica",
+            "terms": "nabijacia stanica,elektromobil,nab\u00edja\u010dka,nabijacka,"
+        },
+        "amenity/childcare": {
+            "name": "Detsk\u00e1 starostlivos\u0165",
+            "terms": "detska starostlivost,skolka,\u0161k\u00f4lka,jasle,jasli\u010dky,jaslicky"
+        },
+        "amenity/cinema": {
+            "name": "Kino",
+            "terms": "ve\u013ek\u00e9 pl\u00e1tno,film,pohybliv\u00e9 obr\u00e1zky,filmov\u00fd dom,filmov\u00e9 divadlo,najbli\u017e\u0161ie kino,premietanie,multiplex,kult\u00farny dom,dom kut\u00fary,3D kino,velke platno,pohybliv\u00e9 obrazky,filmovy dom,filmove divadlo,najblizsie kino,kulturny dom,dom kultury"
+        },
+        "amenity/clinic": {
+            "name": "Klinika",
+            "terms": "doktor,ambulancia"
+        },
+        "amenity/clock": {
+            "name": "Hodiny",
+            "terms": "hodiny,\u010das,cas"
+        },
+        "amenity/college": {
+            "name": "Vysok\u00e1 \u0161kola",
+            "terms": "vysoka skola"
+        },
+        "amenity/community_centre": {
+            "name": "Komunitn\u00e9 centrum",
+            "terms": "komunitne centrum,centrum vo\u013en\u00e9ho \u010dasu,centrum volneho casu,cvc,cv\u010d,kr\u00fa\u017eky,kruzky,vzdelavanie,vzdel\u00e1vanie,v\u00fdchova,vychova"
+        },
+        "amenity/compressed_air": {
+            "name": "Stla\u010den\u00fd vzduch",
+            "terms": "stlaceny vzduch,kompresor"
+        },
+        "amenity/courthouse": {
+            "name": "S\u00fad",
+            "terms": "sud,s\u00fadna sie\u0148,sudna sien,s\u00fadny dvor,sudny dvor"
+        },
+        "amenity/coworking_space": {
+            "name": "Priestory pre coworking"
+        },
+        "amenity/crematorium": {
+            "name": "Kremat\u00f3rium",
+            "terms": "krematorium,spalovanie"
+        },
+        "amenity/dentist": {
+            "name": "Zub\u00e1r",
+            "terms": "zubar,stomatol\u00f3gia,stomatologia"
+        },
+        "amenity/doctors": {
+            "name": "Doktor",
+            "terms": "lekar,lek\u00e1r"
+        },
+        "amenity/dojo": {
+            "name": "\u0160kola bojov\u00fdch umen\u00ed",
+            "terms": "skola bojovych umeni,dojo,karate,kugfu,aikido"
+        },
+        "amenity/drinking_water": {
+            "name": "Pitn\u00e1 voda",
+            "terms": "font\u00e1nka na pitie, voda na pitie,pitna voda,pitn\u00e1 voda,fontanka na pitie,voda na pitie"
+        },
+        "amenity/driving_school": {
+            "name": "Auto\u0161kola",
+            "terms": "autoskola,vodi\u010dsk\u00fd preukaz,vodicsky preukaz,vodi\u010d\u00e1k,vodicak"
+        },
+        "amenity/embassy": {
+            "name": "Ve\u013evyslanectvo",
+            "terms": "ambas\u00e1da,ambasada,zastupite\u013estvo,zastupitelstvo,ve\u013evyslanectvo,velvyslanectvo"
+        },
+        "amenity/fast_food": {
+            "name": "R\u00fdchle ob\u010derstvenie",
+            "terms": "rychle obcerstvenie,r\u00fdchle ob\u010derstvenie,fastfood, fast food"
+        },
+        "amenity/fire_station": {
+            "name": "Po\u017eiarna stanica",
+            "terms": "hasici,poziarnici,hasicska zbrojnica,hasi\u010di,po\u017eiarnici,hasi\u010dsk\u00e1 zbrojnica"
+        },
+        "amenity/food_court": {
+            "name": "Stravovacia z\u00f3na",
+            "terms": "stravovacia zona,restauracie,re\u0161taur\u00e1cie,fast food,fastfood"
+        },
+        "amenity/fountain": {
+            "name": "Font\u00e1na",
+            "terms": "fontana,font\u00e1na,font\u00e1nka,fontanka"
+        },
+        "amenity/fuel": {
+            "name": "\u010cerpacia stanica",
+            "terms": "Pumpa,\u010derpacia stanica,cerpacia stanica,benzinka,benz\u00ednka"
+        },
+        "amenity/grave_yard": {
+            "name": "Pohrebisko",
+            "terms": "cintorin,cintor\u00edn,pohrebn\u017a \u00fastav,pohrebny ustav,pohreb"
+        },
+        "amenity/grit_bin": {
+            "name": "N\u00e1doba s posypom",
+            "terms": "nadoba s posypom,posyp,strk,\u0161trk,posypov\u00fd materi\u00e1l,posypovy material"
+        },
+        "amenity/hospital": {
+            "name": "Nemocni\u010dn\u00fd are\u00e1l",
+            "terms": "nemocnicny areal,nemocnica,poliklinika"
+        },
+        "amenity/hunting_stand": {
+            "name": "Po\u013eovn\u00edcka postrie\u017eka",
+            "terms": "polovnicka postriezka,\u00fakryt,ukryt,skr\u00fd\u0161a,skrysa"
+        },
+        "amenity/ice_cream": {
+            "name": "Obchod so zmrzlinou",
+            "terms": "zmrzlinare\u0148,zmrzlinaren,cukraren,cukr\u00e1re\u0148,zmrzlina"
+        },
+        "amenity/internet_cafe": {
+            "name": "Internetov\u00e1 kaviare\u0148",
+            "terms": "internetova kaviaren,internetkafe,internet kafe"
+        },
+        "amenity/kindergarten": {
+            "name": "Detsk\u00e1 \u0161k\u00f4lka",
+            "terms": "detska skolka,\u0161k\u00f4lka,skolka"
+        },
+        "amenity/library": {
+            "name": "Kni\u017enica",
+            "terms": "Kniznica,biblioteka,bibliot\u00e9ka,skript\u00e1ren,skriptaren"
+        },
+        "amenity/marketplace": {
+            "name": "Tr\u017enica",
+            "terms": "trznica,trhovisko,burza,baz\u00e1r,bazar,trhy,trh"
+        },
+        "amenity/motorcycle_parking": {
+            "name": "Parkovanie pre motocykle",
+            "terms": "parkovisko,motorky,stojan,stojan pre motorky,moped,babeta,parkovanie pre motorky"
+        },
+        "amenity/nightclub": {
+            "name": "No\u010dn\u00fd klub",
+            "terms": "nocny klub"
+        },
+        "amenity/nursing_home": {
+            "name": "O\u0161etrovate\u013esk\u00e9 centum"
+        },
+        "amenity/parking_entrance": {
+            "name": "Vhod/v\u00fdchod do gar\u00e1\u017ee",
+            "terms": "vchod/vychod do garaze,vchod,vychod,gar\u00e1\u017e,garaz,parkovanie"
+        },
+        "amenity/parking_space": {
+            "name": "Parkovacie miesto",
+            "terms": "parkovisko,miesto na parkovanie"
+        },
+        "amenity/place_of_worship": {
+            "name": "N\u00e1bo\u017eensk\u00e9 miesto",
+            "terms": "kostol,kaplnka,chr\u00e1m,katedr\u00e1la,bazilika,dom Bo\u017e\u00ed,dom modlitieb,misia,me\u0161ita,minaret,synag\u00f3ga,d\u00f3m,sv\u00e4tost\u00e1nok, orat\u00f3rium,fara,diec\u00e9za,stupa,chram,dom bozi,mesita,synagoga,dom,svatostanok,oratorium,dieceza"
+        },
+        "amenity/place_of_worship/buddhist": {
+            "name": "Budhistick\u00fd chr\u00e1m",
+            "terms": "stupa,vihara,kl\u00e1\u0161tor,pagoda,zendo,dojo,chr\u00e1m,klastor,chram"
+        },
+        "amenity/place_of_worship/hindu": {
+            "name": "Hinduistick\u00fd chr\u00e1m",
+            "terms": "hinduisticky chram"
+        },
+        "amenity/place_of_worship/shinto": {
+            "name": "\u0160intoistick\u00e1 sv\u00e4ty\u0148a ",
+            "terms": "sintoisticka svatyna"
+        },
+        "amenity/place_of_worship/sikh": {
+            "name": "Sikhsk\u00fd chr\u00e1m",
+            "terms": "sikhsky chram"
+        },
+        "amenity/place_of_worship/taoist": {
+            "name": "Taoistick\u00fd chr\u00e1m",
+            "terms": "taoisticky chram"
+        },
+        "amenity/planetarium": {
+            "name": "Planet\u00e1rium",
+            "terms": "planetarium"
+        },
+        "amenity/police": {
+            "name": "Pol\u00edcia",
+            "terms": "pol\u00edcia,mestsk\u00e1 pol\u00edcia,verejn\u00e1 bezpe\u010dnos\u0165,f\u00edzli,poli\u0161i,z\u00e1kon,policia,mestska policia,verejna bezpecnost,fizli,polisi,zakon"
+        },
+        "amenity/post_box": {
+            "name": "Po\u0161tov\u00e1 schr\u00e1nka",
+            "terms": "schr\u00e1nka,list,z\u00e1sielka,v\u00fdber z\u00e1sielok,schranka,zasielka,vyber zasielok"
+        },
+        "amenity/post_office": {
+            "name": "Po\u0161ta",
+            "terms": "posta,Po\u0161tov\u00fd \u00farad,postovy urad,slovensk\u00e1 po\u0161ta,slovenska posta"
+        },
+        "amenity/prison": {
+            "name": "Are\u00e1l v\u00e4znice",
+            "terms": "v\u00e4znica,v\u00e4zenie,vaznica,vazenie,basa"
+        },
+        "amenity/pub": {
+            "name": "Kr\u010dma",
+            "terms": "krcma,hostinec,hospoda,\u0161enk,senk,piv\u00e1re\u0148,pivaren"
+        },
+        "amenity/public_bath": {
+            "name": "Verejn\u00e9 sprchy",
+            "terms": "verejne sprchy"
+        },
+        "amenity/public_bookcase": {
+            "name": "Verejn\u00e1 knihovni\u010dka",
+            "terms": "verejna knihovnicka,policka na knihy,poli\u010dka na knihy,verejn\u00e1 po\u017ei\u010dov\u0148a kn\u00edh,verejna pozicovna knih"
+        },
+        "amenity/ranger_station": {
+            "name": "Stanica horskej slu\u017eby",
+            "terms": "stanica horskej sluzby,sprava narodneho parku, spr\u00e1va n\u00e1rodn\u00e9ho parku,narodny park,n\u00e1rodn\u00fd park"
+        },
+        "amenity/recycling_centre": {
+            "name": "Recykla\u010dn\u00e9 centrum",
+            "terms": "recyklacne centrum"
+        },
+        "amenity/register_office": {
+            "name": "Matri\u010dn\u00fd \u00farad"
+        },
+        "amenity/restaurant": {
+            "name": "Re\u0161taur\u00e1cia",
+            "terms": "bar,kafet\u00e9ria,kant\u00fdna,jed\u00e1le\u0148,pizzeria,jedlo,r\u00fdchloob\u010derstvenie,fastfood,ve\u010dera,re\u0161taur\u00e1cia,re\u0161tika,jedenie,kantyna,jedalen,rychloobcerstvenie,vecera,restauracia,restika"
+        },
+        "amenity/sanitary_dump_station": {
+            "name": "Vypr\u00e1zd\u0148ovanie karav\u00e1nov\u00fdch toaliet",
+            "terms": "vyprazdnovanie karavanovych toaliet"
+        },
+        "amenity/school": {
+            "name": "\u0160kolsk\u00fd are\u00e1l",
+            "terms": "Skolsky areal,skola,druzina"
+        },
+        "amenity/scrapyard": {
+            "name": "Vrakovisko"
+        },
+        "amenity/shelter": {
+            "name": "Pr\u00edstre\u0161ok",
+            "terms": "pristresok,\u00fatul\u0148a,utulna"
+        },
+        "amenity/shower": {
+            "name": "Sprcha",
+            "terms": "sprcha,sprchy"
+        },
+        "amenity/social_facility": {
+            "name": "Soci\u00e1lne zariadenie",
+            "terms": "socialne zariadenie"
+        },
+        "amenity/social_facility/food_bank": {
+            "name": "Potravinov\u00e1 banka",
+            "terms": "potravinova banka,vydaj jedla,v\u00fddaj jedla,jedlo,strava"
+        },
+        "amenity/social_facility/group_home": {
+            "name": "Domov d\u00f4chodcov",
+            "terms": "domov dochodcov"
+        },
+        "amenity/social_facility/homeless_shelter": {
+            "name": "Ubytov\u0148a pre bezdomovcov",
+            "terms": "ubytovna pre bezdomovcov,\u00fatulok,utulok"
+        },
+        "amenity/social_facility/nursing_home": {
+            "name": "O\u0161etrovate\u013esk\u00e9 centrum",
+            "terms": "osetrovatelske centum,centrum pre seniorov,opatrovenie,seniori"
+        },
+        "amenity/studio": {
+            "name": "\u0160t\u00fadio",
+            "terms": "Studio"
+        },
+        "amenity/swimming_pool": {
+            "name": "Plav\u00e1re\u0148"
+        },
+        "amenity/taxi": {
+            "name": "Stanovisko tax\u00edkov",
+            "terms": "tax\u00edk, taxislu\u017eba, taxi,taxik,taxisluzba,odvoz"
+        },
+        "amenity/telephone": {
+            "name": "Telef\u00f3n",
+            "terms": "telefon,telef\u00f3nna b\u00fadka,telefonna budka,automat"
+        },
+        "amenity/theatre": {
+            "name": "Divadlo",
+            "terms": "divadlo,predstavenie,muzik\u00e1l,hra,sc\u00e9na,muzikal,scena,\u010dinohra,cinohra,balet"
+        },
+        "amenity/theatre/type/amphi": {
+            "name": "Amfite\u00e1ter"
+        },
+        "amenity/toilets": {
+            "name": "Toalety",
+            "terms": "z\u00e1chod, z\u00e1chody, toaleta, toalety, WC,zachod,zachody"
+        },
+        "amenity/townhall": {
+            "name": "Mestsk\u00fd \u00farad",
+            "terms": "radnica,obecn\u00fd \u00farad,mestsk\u00fd \u00farad,spr\u00e1va,obecny urad,mestsky urad,sprava,prim\u00e1tor,primater,starosta"
+        },
+        "amenity/university": {
+            "name": "Univerzita",
+            "terms": "Univerzita,vysoka skola, vysok\u00e1 \u0161kola"
+        },
+        "amenity/vending_machine": {
+            "name": "V\u00fddajn\u00fd automat",
+            "terms": "vydajny automat"
+        },
+        "amenity/vending_machine/cigarettes": {
+            "name": "Automat na cigarety",
+            "terms": "cigarety"
+        },
+        "amenity/vending_machine/condoms": {
+            "name": "Automat na kond\u00f3my",
+            "terms": "automat na kondomy,kond\u00f3m,kondom"
+        },
+        "amenity/vending_machine/drinks": {
+            "name": "Automat na n\u00e1poje",
+            "terms": "automat na napoje,napoj,n\u00e1poj"
+        },
+        "amenity/vending_machine/feminine_hygiene": {
+            "name": "Automat na \u017eenk\u00e9 hygienick\u00e9 produkty",
+            "terms": "Automat na zenske produkty,vlozky,vlo\u017eky,kondomy,kond\u00f3my,prezervat\u00edv,prezervativ,tampon,tamp\u00f3n"
+        },
+        "amenity/vending_machine/news_papers": {
+            "name": "Automat na noviny"
+        },
+        "amenity/vending_machine/newspapers": {
+            "name": "Automat na noviny",
+            "terms": "noviny,casopisy"
+        },
+        "amenity/vending_machine/parking_tickets": {
+            "name": "Automat na parkovacie l\u00edstky",
+            "terms": "automat na parkovacie listky"
+        },
+        "amenity/vending_machine/public_transport_tickets": {
+            "name": "Automat na l\u00edstky pre tranzitn\u00fa dopravu",
+            "terms": "automat na listky pre tranzitnu dopravu"
+        },
+        "amenity/vending_machine/sweets": {
+            "name": "Automat na sladkosti",
+            "terms": "jedlo,ty\u010dinky,tycinky"
+        },
+        "amenity/veterinary": {
+            "name": "Veterin\u00e1r",
+            "terms": "veterinar"
+        },
+        "amenity/waste/dog_excrement": {
+            "name": "K\u00f4\u0161 na psie v\u00fdkaly",
+            "terms": "kos na psie vykaly,smetiak,odpadkovy kos,odpadkov\u00fd k\u00f4\u0161,pes,psy"
+        },
+        "amenity/waste_basket": {
+            "name": "Odpadov\u00fd k\u00f4\u0161",
+            "terms": "kontajner,k\u00f4\u0161,smeti,kos,odpad,odpadkovy kos, odpadkov\u00fd k\u00f4\u0161"
+        },
+        "amenity/water_point": {
+            "name": "Pitn\u00e1 voda pre karavany",
+            "terms": "pitna voda pre karavany"
+        },
+        "area": {
+            "name": "Plocha",
+            "terms": "\u00fazemie,uzemie"
+        },
+        "area/highway": {
+            "name": "Plocha cesty",
+            "terms": "plocha cesty,"
+        },
+        "barrier": {
+            "name": "Bari\u00e9ra",
+            "terms": "bariera,plot,z\u00e1tarasa,zatarasa,blokada,blok\u00e1da,m\u00far,mur,br\u00e1na,brana,stena,rampa"
+        },
+        "barrier/block": {
+            "name": "Bet\u00f3nov\u00fd blok",
+            "terms": "betonovy blok,beton,zatarasa,kvetin\u00e1\u010d,kvetinac"
+        },
+        "barrier/bollard": {
+            "name": "St\u013apik",
+            "terms": "stlpik,st\u013ap,stlpty\u010d,tyc"
+        },
+        "barrier/cattle_grid": {
+            "name": "Mre\u017ea proti pohybu dobytka",
+            "terms": "Mreza proti pohybu dobytka,mreza,priekopa,kravy"
+        },
+        "barrier/city_wall": {
+            "name": "Mestsk\u00e9 opevnenie",
+            "terms": "Mestske opevnenie,hradby,hradba,fortifik\u00e1cia,fortifikacia,m\u00far,mur"
+        },
+        "barrier/cycle_barrier": {
+            "name": "Z\u00e1brana pre cyklistov",
+            "terms": "Zabrana pre cyklistov,bicykel,bicykle,zatarasa,z\u00e1tarasa"
+        },
+        "barrier/ditch": {
+            "name": "Priekopa",
+            "terms": "z\u00e1kop,zakop,jarok,ryha,priekopa"
+        },
+        "barrier/entrance": {
+            "name": "Priechod"
+        },
+        "barrier/fence": {
+            "name": "Plot",
+            "terms": "ohrada,pletivo,p\u00f4tik,plotik"
+        },
+        "barrier/gate": {
+            "name": "Br\u00e1na",
+            "terms": "brana,vrata,dvere,vstupn\u00e1 br\u00e1na,vstupna brana,vstup"
+        },
+        "barrier/hedge": {
+            "name": "\u017div\u00fd plot",
+            "terms": "zivy plot,kr\u00edky,kriky,okrasn\u00fd plot,okrasny plot"
+        },
+        "barrier/kissing_gate": {
+            "name": "Z\u00e1brana pre dobytok",
+            "terms": "Zabrana pre dobytok,kravy"
+        },
+        "barrier/lift_gate": {
+            "name": "Rampa",
+            "terms": "tyc,ty\u010d,zdvihajuca brana,zdv\u00edhaj\u00faca br\u00e1na,z\u00e1vora,zavora"
+        },
+        "barrier/retaining_wall": {
+            "name": "Podporn\u00e1 stena",
+            "terms": "Podporna stena,m\u00far,mur,vyrovn\u00e1vacia stena,vyrovnavacia stena"
+        },
+        "barrier/stile": {
+            "name": "Prielez",
+            "terms": "prielaz,rebr\u00edk,rebrik,stupa\u010dky,stupacky"
+        },
+        "barrier/toll_booth": {
+            "name": "V\u00fdber m\u00fdta",
+            "terms": "Budka pre vyber myta,mytnica,vyber myta,B\u00fadka pre v\u00fdber m\u00fdta,m\u00fdto,myto,poplatok,vstupn\u00e9,vstupne,kasa,pokladna,poklad\u0148a"
+        },
+        "barrier/wall": {
+            "name": "M\u00far",
+            "terms": "mur,stena"
+        },
+        "boundary/administrative": {
+            "name": "Hranica administrat\u00edvneho \u00fazemia",
+            "terms": "Hranica administrativneho uzemia,okres,kraj,\u017eupa,mesto,dedina,zupa"
+        },
+        "building": {
+            "name": "Budova",
+            "terms": "dom,stavba,ve\u017eiak,\u010din\u017eiak,veziak,cinziak,panel\u00e1k,panelak,drevenica,chy\u017ea,chyza,chajda,chat\u017e,chatrc,b\u00fada,buda"
+        },
+        "building/barn": {
+            "name": "Stodola",
+            "terms": "stodola,staj\u0148a,stajna"
+        },
+        "building/bunker": {
+            "name": "Bunker"
+        },
+        "building/cabin": {
+            "name": "Chata",
+            "terms": "zrub,drevenica"
+        },
+        "building/cathedral": {
+            "name": "Budova katedr\u00e1ly",
+            "terms": "budova katedraly,katedrala,kostol,dom,d\u00f3m,katedr\u00e1la"
+        },
+        "building/chapel": {
+            "name": "Budova kaplnky",
+            "terms": "kaplnka,kostol"
+        },
+        "building/church": {
+            "name": "Budova kostola",
+            "terms": "kostol,kaplnka,chram,chr\u00e1m"
+        },
+        "building/college": {
+            "name": "Budova vysokej \u0161koly",
+            "terms": "budova vysokej skoly,vysoka skola,vysok\u00e1 \u0161kola"
+        },
+        "building/commercial": {
+            "name": "Komer\u010dn\u00e1 budova",
+            "terms": "Obchody,firmy,firma,predaj,podnik,podniky,kancelarie,kancel\u00e1rie"
+        },
+        "building/construction": {
+            "name": "Budova vo v\u00fdstavbe",
+            "terms": "budova vo vystavbe,stavba,stavenisko"
+        },
+        "building/detached": {
+            "name": "Samostantn\u00fd dom",
+            "terms": "samostatny dom"
+        },
+        "building/dormitory": {
+            "name": "Intern\u00e1t",
+            "terms": "internat,intrak,intr\u00e1k"
+        },
+        "building/entrance": {
+            "name": "Vchod/v\u00fdchod"
+        },
+        "building/garage": {
+            "name": "Gar\u00e1\u017e",
+            "terms": "garaz,gar\u00e1\u017ee,garaze,parkovanie,kryt\u00e9 parkovanie,kryte parkovanie"
+        },
+        "building/garages": {
+            "name": "Gar\u00e1\u017ee",
+            "terms": "garaze,garaz,gar\u00e1\u017e"
+        },
+        "building/greenhouse": {
+            "name": "Sklenn\u00edk",
+            "terms": "sklennik,foliovn\u00edk,foliovnik"
+        },
+        "building/hospital": {
+            "name": "Nemocni\u010dn\u00e1 budova",
+            "terms": "nemocnicna budova,nemocnica,poliklinika"
+        },
+        "building/hotel": {
+            "name": "Budova hotelu",
+            "terms": "budova hotelu"
+        },
+        "building/house": {
+            "name": "Dom",
+            "terms": "dom,vila,villa,rodinn\u00fd dom,rodinny dom"
+        },
+        "building/hut": {
+            "name": "Chata",
+            "terms": "chatka,drevenica"
+        },
+        "building/industrial": {
+            "name": "Priemyseln\u00e1 budova",
+            "terms": "premyselna budova,industrialna,industri\u00e1lna,v\u00fdroba,vyroba"
+        },
+        "building/kindergarten": {
+            "name": "Budova \u0161k\u00f4lky",
+            "terms": "budova skolky,skolka,\u0161k\u00f4lka"
+        },
+        "building/public": {
+            "name": "Verejn\u00e1 budova",
+            "terms": "verejna budova"
+        },
+        "building/residential": {
+            "name": "Obytn\u00e1 budova",
+            "terms": "obytna budova,ubytovanie,b\u00fdvanie,byvanie"
+        },
+        "building/retail": {
+            "name": "Budova predajne",
+            "terms": "predajna,obchod"
+        },
+        "building/roof": {
+            "name": "Strecha",
+            "terms": "\u010derpacia stanica,cerpacia stanica,benzinka,benz\u00ednka"
+        },
+        "building/school": {
+            "name": "\u0160kolsk\u00e1 budova",
+            "terms": "skolska budova,skola,\u0161kola"
+        },
+        "building/semidetached_house": {
+            "name": "Dvojdom",
+            "terms": "polovica dvojdomu"
+        },
+        "building/shed": {
+            "name": "\u0160opa",
+            "terms": "sopa,pristresok,pr\u00edstre\u0161ok,k\u00f4l\u0148a,kolna"
+        },
+        "building/stable": {
+            "name": "Staj\u0148a",
+            "terms": "stajna"
+        },
+        "building/static_caravan": {
+            "name": "Statick\u00fd karavan",
+            "terms": "staticky karavan"
+        },
+        "building/terrace": {
+            "name": "Radov\u00e1 z\u00e1stavba",
+            "terms": "radova zastavba,radovka"
+        },
+        "building/university": {
+            "name": "Univerzitn\u00e1 budova",
+            "terms": "univerzitna budova,univerzita"
+        },
+        "building/warehouse": {
+            "name": "Sklad",
+            "terms": "velkosklad,malosklad,skladisko"
+        },
+        "club": {
+            "name": "Klub",
+            "terms": "bar,tane\u010dn\u00fd klub,tanecny klub"
+        },
+        "craft": {
+            "name": "Remeslo",
+            "terms": "zru\u010dnos\u0165,remeseln\u00edctvo,cech"
+        },
+        "craft/basket_maker": {
+            "name": "Ko\u0161ik\u00e1rstvo",
+            "terms": "kosikarstvo,vyroba kosikov,v\u00fdroba ko\u0161\u00edkov"
+        },
+        "craft/beekeeper": {
+            "name": "V\u010del\u00e1rstvo",
+            "terms": "vcelar,vcelarstvo,v\u010del\u00e1r"
+        },
+        "craft/blacksmith": {
+            "name": "Kov\u00e1\u010dstvo",
+            "terms": "kovac,kov\u00e1\u010d,kovacstvo"
+        },
+        "craft/boatbuilder": {
+            "name": "V\u00fdroba lod\u00ed",
+            "terms": "vyroba lod\u00ed,lodenica,lodiare\u0148,lodiaren"
+        },
+        "craft/bookbinder": {
+            "name": "Knihviaza\u010dstvo",
+            "terms": "knihviazacstvo,knihviaza\u010d,knihviazac,knihy,viazacstvo,viaza\u010dstvo"
+        },
+        "craft/brewery": {
+            "name": "Pivovar",
+            "terms": "pivo,piv\u00e1re\u0148,pivaren"
+        },
+        "craft/carpenter": {
+            "name": "Stol\u00e1rstvo",
+            "terms": "stolarstvo,tesarstvo,tes\u00e1rstvo,tes\u00e1r,tesar,stol\u00e1r,stolar"
+        },
+        "craft/carpet_layer": {
+            "name": "Pokladanie kobercov",
+            "terms": "pokladanie kobercov,pokladanie podlahov\u00fdch kryt\u00edn,pokladani podlahovych krytin"
+        },
+        "craft/caterer": {
+            "name": "Catering",
+            "terms": "z\u00e1sobovanie,zasobovanie"
+        },
+        "craft/clockmaker": {
+            "name": "V\u00fdroba hod\u00edn",
+            "terms": "vyroba hodin"
+        },
+        "craft/distillery": {
+            "name": "Liehovar",
+            "terms": "palenica,p\u00e1lenica"
+        },
+        "craft/dressmaker": {
+            "name": "Kraj\u010d\u00edrstvo",
+            "terms": "krajcirstvo,kraj\u010d\u00edr,krajcir,kraj\u010d\u00edrka,krajcirka"
+        },
+        "craft/electrician": {
+            "name": "Elektroin\u0161talat\u00e9r",
+            "terms": "elektroinstalater,elektrik\u00e1r,elektrikar,elektrotechnik"
+        },
+        "craft/gardener": {
+            "name": "Z\u00e1hradn\u00edk",
+            "terms": "zahradnik"
+        },
+        "craft/glaziery": {
+            "name": "Sklen\u00e1rstvo",
+            "terms": "sklenarstvo"
+        },
+        "craft/handicraft": {
+            "name": "Remeseln\u00edctvo",
+            "terms": "remeselnictvo"
+        },
+        "craft/hvac": {
+            "name": "K\u00faren\u00e1rstvo",
+            "terms": "kurenarstvo"
+        },
+        "craft/insulator": {
+            "name": "Zateplovanie",
+            "terms": "zateplova\u010d,zateplovac"
+        },
+        "craft/jeweler": {
+            "name": "Klenotn\u00edk"
+        },
+        "craft/key_cutter": {
+            "name": "V\u00fdroba k\u013e\u00fa\u010dov",
+            "terms": "vyroba klucov"
+        },
+        "craft/locksmith": {
+            "name": "Z\u00e1mo\u010dn\u00edctvo"
+        },
+        "craft/metal_construction": {
+            "name": "V\u00fdroba kovov\u00fdch plotov",
+            "terms": "vyroba kovovych plotov,kovanie,okrasn\u00e1 br\u00e1na,br\u00e1ny"
+        },
+        "craft/optician": {
+            "name": "Optika"
+        },
+        "craft/painter": {
+            "name": "Natiera\u010d",
+            "terms": "natierac,maliar"
+        },
+        "craft/photographer": {
+            "name": "Fotograf",
+            "terms": "fotografia,fotografovanie,fotka,fotky"
+        },
+        "craft/photographic_laboratory": {
+            "name": "Fotografick\u00e9 laborat\u00f3rium",
+            "terms": "fotograficke laboratorium,fotolab"
+        },
+        "craft/plasterer": {
+            "name": "Fas\u00e1dnik",
+            "terms": "fasadnik,\u0161tukat\u00e9r,stukater,omietk\u00e1r,omietkar"
+        },
+        "craft/plumber": {
+            "name": "In\u0161talat\u00e9r",
+            "terms": "instalater,klampiar"
+        },
+        "craft/pottery": {
+            "name": "Hrn\u010diarstvo",
+            "terms": "rnciarstvo,v\u00fdroba keramiky,vyroba keramiky,keramika"
+        },
+        "craft/rigger": {
+            "name": "Lodiarsky \u0161pecialista",
+            "terms": "lodiarsky specialista"
+        },
+        "craft/roofer": {
+            "name": "Pokr\u00fdva\u010d striech",
+            "terms": "pokryvac striech"
+        },
+        "craft/saddler": {
+            "name": "V\u00fdroba sedadiel",
+            "terms": "vyroba sedadiel"
+        },
+        "craft/sailmaker": {
+            "name": "Lodn\u00e9 plachty",
+            "terms": "lodne plachty"
+        },
+        "craft/sawmill": {
+            "name": "P\u00edla",
+            "terms": "pila"
+        },
+        "craft/scaffolder": {
+            "name": "Le\u0161en\u00e1rstvo",
+            "terms": "lesenarstvo,le\u0161enie,lesenie"
+        },
+        "craft/shoemaker": {
+            "name": "Obuvn\u00edk",
+            "terms": "buvnik"
+        },
+        "craft/stonemason": {
+            "name": "Kamen\u00e1rstvo",
+            "terms": "kamenarstvo,kamen\u00e1r,kamenar"
+        },
+        "craft/tailor": {
+            "name": "Kraj\u010d\u00edr"
+        },
+        "craft/tiler": {
+            "name": "Obklada\u010d",
+            "terms": "obkladac,kachli\u010dky,kachlicky,obklada\u010dky,obkladacky"
+        },
+        "craft/tinsmith": {
+            "name": "Klampiar",
+            "terms": "klampiarstvo"
+        },
+        "craft/upholsterer": {
+            "name": "\u010calun\u00edctvo",
+            "terms": "calunictvo"
+        },
+        "craft/watchmaker": {
+            "name": "Hodin\u00e1r",
+            "terms": "oprava hodin,oprava hodin,hodinar,hodiny,hodinky"
+        },
+        "craft/window_construction": {
+            "name": "V\u00fdroba okien",
+            "terms": "vyroba okien"
+        },
+        "craft/winery": {
+            "name": "V\u00fdroba v\u00edn",
+            "terms": "vyroba vin,vino,v\u00edno,v\u00edna,vina,vinaren,vin\u00e1re\u0148,vinica,v\u00ednna pivnica,vinna pivnica,pivnica"
+        },
+        "embankment": {
+            "name": "N\u00e1syp"
+        },
+        "emergency/ambulance_station": {
+            "name": "Stanovi\u0161te sanitiek",
+            "terms": "stanoviste sanitiek,garaze,gar\u00e1\u017ee,sanitky,sanitka,garaz,gar\u00e1\u017e"
+        },
+        "emergency/defibrillator": {
+            "name": "Defibril\u00e1tor",
+            "terms": "defibrilator,defibril\u00e1tor,kardio"
+        },
+        "emergency/designated": {
+            "name": "N\u00fadzov\u00fd vstup vyzna\u010den\u00fd"
+        },
+        "emergency/destination": {
+            "name": "N\u00fadzov\u00fd vstup z\u00e1sobovanie"
+        },
+        "emergency/fire_hydrant": {
+            "name": "Po\u017eiarny hydrant",
+            "terms": "poziarny hydrant,hydrant, zdroj vody,hadica,uz\u00e1ver vod,uzaver vody"
+        },
+        "emergency/no": {
+            "name": "N\u00fadzov\u00fd vstup nie"
+        },
+        "emergency/official": {
+            "name": "N\u00fadzov\u00fd vstup ofici\u00e1lny"
+        },
+        "emergency/phone": {
+            "name": "N\u00fadzov\u00fd telef\u00f3n",
+            "terms": "nudzovy telefon,SOS,ties\u0148ov\u00e1 linka,tiesnova linka,n\u00fadzov\u00fd telef\u00f3n.nudzovy telefon"
+        },
+        "emergency/private": {
+            "name": "N\u00fadzov\u00fd vstup s\u00fakromn\u00fd"
+        },
+        "emergency/yes": {
+            "name": "N\u00fadzov\u00fd vstup \u00e1no"
+        },
+        "entrance": {
+            "name": "Vchod/v\u00fdchod",
+            "terms": "vchod/vychod,vchod,vychod,v\u00fdchod,vstup,v\u00fdstup,vchodov\u00e9 dvere,vchodove dvere"
+        },
+        "ford": {
+            "name": "Brod",
+            "terms": "brod rieky,rieka,prechod cez rieku"
+        },
+        "golf/bunker": {
+            "name": "Pieskov\u00e1 jama",
+            "terms": "pieskova jama, bunker, piesok, sand trap"
+        },
+        "golf/fairway": {
+            "name": "Dr\u00e1ha jamky",
+            "terms": "draha jamky, fairway"
+        },
+        "golf/green": {
+            "name": "Jamkovisko",
+            "terms": "green, putting green"
+        },
+        "golf/hole": {
+            "name": "Golfov\u00e1 jamka",
+            "terms": "golfova jamka"
+        },
+        "golf/rough": {
+            "name": "Vysok\u00e1 tr\u00e1va",
+            "terms": "vysoka trava, rough"
+        },
+        "golf/tee": {
+            "name": "Za\u010diatok odpaliska",
+            "terms": "zaciatok odpaliska,tee,tee box"
+        },
+        "highway": {
+            "name": "Cesta"
+        },
+        "highway/bridleway": {
+            "name": "Jazdeck\u00e1 tra\u0165",
+            "terms": "jazdeck\u00e1 cesta, chodn\u00edk pre kone,jazdeck\u00e1 trasa,jazdecka cesta,chodnik pre kone,jazdecka trasa,jazdecka trat"
+        },
+        "highway/corridor": {
+            "name": "Chodba v budove",
+            "terms": "chodba,hala"
+        },
+        "highway/cycleway": {
+            "name": "Cyklocesta",
+            "terms": "cesta pre bicykle,cesti\u010dka,cesticka,cyklopruh,cyklocesta"
+        },
+        "highway/footway": {
+            "name": "Chodn\u00edk",
+            "terms": "cesta,cesti\u010dka,chodn\u00edk,turistick\u00fd chodn\u00edk,horsk\u00e1 cesta,chodn\u00ed\u010dek,cesta pre pe\u0161\u00edch,cesticka,chodnik,horska cesta,chodnicek,cesta pre pesich"
+        },
+        "highway/give_way": {
+            "name": "Zna\u010dka daj prednos\u0165",
+            "terms": "daj prednos\u0165,daj prednost"
+        },
+        "highway/living_street": {
+            "name": "Obytn\u00e1 z\u00f3na",
+            "terms": "obytna zona,obytna ulica,obytn\u00e1 ulica"
+        },
+        "highway/mini_roundabout": {
+            "name": "Mal\u00fd kruhov\u00fd objazd",
+            "terms": "Maly kruhovy objazd,kruh\u00e1\u010d,kruhac,mini"
+        },
+        "highway/motorway": {
+            "name": "Dia\u013enica",
+            "terms": "dialnica,r\u00fdchlocesta,rychlocesta"
+        },
+        "highway/motorway_junction": {
+            "name": "Dialni\u010dn\u00e1 kri\u017eovatka / v\u00fdjazd",
+            "terms": "dialnicna krizovatka,vyjazd,exit"
+        },
+        "highway/motorway_link": {
+            "name": "Dia\u013eni\u010dn\u00fd priv\u00e1dza\u010d",
+            "terms": "Dialnicny privadzac,privadzac,priv\u00e1dza\u010d,zjazd,vyjazd,v\u00fdjazd,n\u00e1jazd,najazd,pripojovac\u00ed pruh,pripojovaci pruh"
+        },
+        "highway/path": {
+            "name": "Cesti\u010dka",
+            "terms": "cesticka,chodnik,chodn\u00edk,pe\u0161ina,pesina"
+        },
+        "highway/primary": {
+            "name": "Cesta 1. triedy",
+            "terms": "cesta prvej triedy,hlavn\u00e1 cesta,hlavna cesta"
+        },
+        "highway/primary_link": {
+            "name": "Priv\u00e1dza\u010d na cestu 1. triedy",
+            "terms": "Privadzac na cestu 1. triedy,privadzac,priv\u00e1dza\u010d,zjazd,vyjazd,v\u00fdjazd,n\u00e1jazd,najazd,pripojovac\u00ed pruh,pripojovaci pruh"
+        },
+        "highway/residential": {
+            "name": "Obytn\u00e1 ulica",
+            "terms": "obytna ulica,reziden\u010dn\u00e1 ulica,rezidencna ulica"
+        },
+        "highway/rest_area": {
+            "name": "Odpo\u010d\u00edvadlo",
+            "terms": "odpocivadlo,dialnicne odpocivadlo,dialni\u010dn\u00e9 odpo\u010d\u00edvadlo"
+        },
+        "highway/road": {
+            "name": "Cesta bez ozna\u010denia",
+            "terms": "cesta bez oznacenia,bez kateg\u00f3rie,bez kategorie,neozna\u010den\u00e1 cesta,neoznacena cesta"
+        },
+        "highway/secondary": {
+            "name": "Cesta 2. triedy",
+            "terms": "cesta druhej triedy,hlavn\u00e1 cesta,hlavna cesta"
+        },
+        "highway/secondary_link": {
+            "name": "Priv\u00e1dza\u010d na cestu 2. triedy",
+            "terms": "Privadzac na cestu 2. triedy,Priv\u00e1dza\u010d na cestu druhej triedy,Privadzac na cestu druhej triedy,zjazd,vyjazd,v\u00fdjazd,n\u00e1jazd,najazd,pripojovac\u00ed pruh,pripojovaci pruh"
+        },
+        "highway/service": {
+            "name": "Servisn\u00e1 cesta",
+            "terms": "servisna cesta,dopravn\u00e1 obsluha,dopravna obsluha,obslu\u017en\u00e1 cesta,obsluzna cesta"
+        },
+        "highway/service/alley": {
+            "name": "Uli\u010dka medzi domami",
+            "terms": "Ulicka medzi domami,ulicka,priechod"
+        },
+        "highway/service/drive-through": {
+            "name": "Obsl\u00fa\u017eenie z auta",
+            "terms": "Obsluzenie z auta,obsl\u00fa\u017eenie v aute,obsluzenie v aute,vjazd"
+        },
+        "highway/service/driveway": {
+            "name": "Pr\u00edjazdov\u00e1 cesta",
+            "terms": "prijazdova cesta,vjazd,pr\u00edstupov\u00e1 cesta,pristupova cesta"
+        },
+        "highway/service/emergency_access": {
+            "name": "N\u00fadzov\u00fd vstup",
+            "terms": "Nudzovy pristup,naliehav\u00fd,naliehavy,stav n\u00fazde,stav nudze,Nudzovy vstup"
+        },
+        "highway/service/parking_aisle": {
+            "name": "Parkovacia uli\u010dka",
+            "terms": "parkovacia ulicka,parkovanie"
+        },
+        "highway/services": {
+            "name": "Odpo\u010d\u00edvadlo s obsluhou",
+            "terms": "odpocivadlo s obsluhou"
+        },
+        "highway/steps": {
+            "name": "Schody",
+            "terms": "schodisko,eskal\u00e1tor,eskalator"
+        },
+        "highway/stop": {
+            "name": "Zna\u010dka STOP",
+            "terms": "znacka stop,stopka"
+        },
+        "highway/street_lamp": {
+            "name": "Pouli\u010dn\u00e1 lampa",
+            "terms": "poulicna lampa,nocne osvetlenie,no\u010dn\u00e9 osvetlenie"
+        },
+        "highway/tertiary": {
+            "name": "Cesta 3. triedy",
+            "terms": "Cesta tretej triedy,hlavn\u00e1 cesta,hlavna cesta"
+        },
+        "highway/tertiary_link": {
+            "name": "Priv\u00e1dza\u010d na cestu 3. triedy",
+            "terms": "privadzac na cestu tretej triedy,privadzac,priv\u00e1dza\u010d,zjazd,vyjazd,v\u00fdjazd,n\u00e1jazd,najazd,pripojovac\u00ed pruh,pripojovaci pruh"
+        },
+        "highway/track": {
+            "name": "Neudr\u017eiavan\u00e1 lesn\u00e1 cesta",
+            "terms": "lesn\u00e1 cesta, lesna cesta,"
+        },
+        "highway/traffic_signals": {
+            "name": "Semafory",
+            "terms": "semafor,sveteln\u00e1 kri\u017eovatka,sveteln\u00e9 dopravn\u00e9 zna\u010denie,svetelna krizovatka,svetelne znacenie,svetelne dopravne znacenie"
+        },
+        "highway/trunk": {
+            "name": "R\u00fdchlostn\u00e1 cesta",
+            "terms": "rychlostna cesta, dialnica,dia\u013enica,hlavn\u00e1 cesta,hlavna cesta"
+        },
+        "highway/trunk_link": {
+            "name": "Priv\u00e1dza\u010d r\u00fdchlostnej cesty",
+            "terms": "privadzac na rychlostnu cestu,privadzac,priv\u00e1dza\u010d,zjazd,vyjazd,v\u00fdjazd,n\u00e1jazd,najazd,pripojovac\u00ed pruh,pripojovaci pruh"
+        },
+        "highway/turning_circle": {
+            "name": "Ot\u00e1\u010dac\u00ed kruh",
+            "terms": "otacaci kruh,kruh,otoc,oto\u010d"
+        },
+        "highway/unclassified": {
+            "name": "Ved\u013eaj\u0161ia/neklasifikovan\u00e1 cesta",
+            "terms": "ved\u013eaj\u0161ia,vedlajsia,neklasifikovan\u00e1,neklasifikovana"
+        },
+        "historic": {
+            "name": "Historick\u00e9 miesto",
+            "terms": "historicke miesto,hrad,pevnos\u0165,pevnost,ka\u0161tie\u013e,kastiel,z\u00e1mok,zamok,rujna,hradisko,archeologick\u00e9 miesto,archeologicke miesto"
+        },
+        "historic/archaeological_site": {
+            "name": "Archeologick\u00e9 n\u00e1lezisko",
+            "terms": "archeologicke nalezisko,vykopavky,archeologicky prieskum,archeologick\u00fd prieskum,vykop\u00e1vky"
+        },
+        "historic/boundary_stone": {
+            "name": "Hrani\u010dn\u00fd kame\u0148",
+            "terms": "hranicny kamen,hranica,znacka,zna\u010dka"
+        },
+        "historic/castle": {
+            "name": "Hrad",
+            "terms": "hradisko,z\u00e1mok,kr\u00e1\u013e,kral,s\u00fddlo,sydlo,rujna,zr\u00facanina,zrucanina"
+        },
+        "historic/memorial": {
+            "name": "Pam\u00e4tn\u00edk",
+            "terms": "Pam\u00e4tihodnos\u0165,pamatihodnost,pamatnik,pomnik,pam\u00e4tn\u00edk,pomn\u00edk,snp,hrdina"
+        },
+        "historic/monument": {
+            "name": "Pam\u00e4tihodnos\u0165",
+            "terms": "Pam\u00e4tihodnos\u0165,pamatihodnost,pamatnik,pomnik,pam\u00e4tn\u00edk,pomn\u00edk,snp,hrdina"
+        },
+        "historic/ruins": {
+            "name": "Ruiny",
+            "terms": "zr\u00facaniny,zrucaniny,zr\u00facanina,zrucanina"
+        },
+        "historic/wayside_cross": {
+            "name": "Pr\u00edcestn\u00fd kr\u00ed\u017e",
+            "terms": "Kres\u0165ansk\u00fd,kr\u00ed\u017e pri ceste,krestansky,kriz pri ceste,kriz,Pricestny kriz,krucifix"
+        },
+        "historic/wayside_shrine": {
+            "name": "Pr\u00edcestn\u00fd sv\u00e4tost\u00e1nok",
+            "terms": "pricestny svatostanok,svatyna,sv\u00e4ty\u0148a,svatostanok,sv\u00e4tost\u00e1nok"
+        },
+        "junction": {
+            "name": "Kri\u017eovatka",
+            "terms": "krizovatka"
+        },
+        "landuse": {
+            "name": "Vyu\u017eitie \u00fazemia"
+        },
+        "landuse/allotments": {
+            "name": "Komunitn\u00e1 z\u00e1hrada",
+            "terms": "komunitna zahrada,pestovatelska plocha,poestvate\u013esk\u00e1 plocha"
+        },
+        "landuse/basin": {
+            "name": "Zadr\u017eiavacia n\u00e1dr\u017e"
+        },
+        "landuse/cemetery": {
+            "name": "Cintor\u00edn",
+            "terms": "cintorin,hroby,pohrebisko,hrobky,cmiter"
+        },
+        "landuse/churchyard": {
+            "name": "Kostoln\u00fd pozemok",
+            "terms": "kostolny pozemok,kostol"
+        },
+        "landuse/commercial": {
+            "name": "Komer\u010dn\u00e1 z\u00f3na",
+            "terms": "komercna zona,business park,kancel\u00e1rie,kancelarie,plocha"
+        },
+        "landuse/construction": {
+            "name": "Stavenisko",
+            "terms": "stavba,konstrukcia,kon\u0161trukcia,v\u00fdstavba,vystavba"
+        },
+        "landuse/farm": {
+            "name": "Pestovate\u013esk\u00e1 plocha"
+        },
+        "landuse/farmland": {
+            "name": "Pestovate\u013esk\u00e1 plocha",
+            "terms": "pole,farma,dobytok,polia,z\u00e1hrady,zahrady,pestovatelska plocha"
+        },
+        "landuse/farmyard": {
+            "name": "Farma",
+            "terms": "Dru\u017estvo,druztvo,jrd,jzd,krav\u00edn,kravin,statok,gazdovstvo"
+        },
+        "landuse/grass": {
+            "name": "Tr\u00e1va",
+            "terms": "trava,tr\u00e1vnik,travnik,tr\u00e1vnata plocha,travnata plocha,park"
+        },
+        "landuse/industrial": {
+            "name": "Priemyseln\u00e1 z\u00f3na",
+            "terms": "priemyselna plocha,tov\u00e1re\u0148,tovaren,z\u00e1vod,zavod,priemyselna zona"
+        },
+        "landuse/landfill": {
+            "name": "Skl\u00e1dka",
+            "terms": "skladka,odpad,smeti,skladka odpadov,skl\u00e1dka odpadov"
+        },
+        "landuse/meadow": {
+            "name": "L\u00faka",
+            "terms": "luka,pastviny,trava,tr\u00e1va,pa\u0161a,pasa"
+        },
+        "landuse/military": {
+            "name": "Vojensk\u00fd obvod",
+            "terms": "vojensky obvod,vojensk\u00e9 cvi\u010disko,vojenske cvicisko,tankodrom,arm\u00e1dna z\u00f3na,zrmadna zona"
+        },
+        "landuse/military/naval_base": {
+            "name": "N\u00e1morn\u00e1 z\u00e1klad\u0148a",
+            "terms": "namorna zakladna"
+        },
+        "landuse/military/nuclear_explosion_site": {
+            "name": "Miesto nukle\u00e1rnej expl\u00f3zie",
+            "terms": "miesto nuklearnej expl\u00f3zie, jadrov\u00fd v\u00fdbuch,jadrovy vybuch,jadrov\u00e1 bonba,jadrova bomba"
+        },
+        "landuse/orchard": {
+            "name": "Sad",
+            "terms": "sad,stromy,ovocie,ovocn\u00e9 stromy,ovocne stromy,ovocn\u00fd sad,ovocny sad"
+        },
+        "landuse/plant_nursery": {
+            "name": "Lesn\u00e1 \u0161k\u00f4lka",
+            "terms": "lesna skolka,stromy,strom\u010deky,stromceky,skolka,\u0161k\u00f4lka"
+        },
+        "landuse/quarry": {
+            "name": "Kame\u0148olom",
+            "terms": "kamenolom,lom,kamene,strk,kame\u0148e,\u0161trk"
+        },
+        "landuse/residential": {
+            "name": "Reziden\u010dn\u00e1 z\u00f3na",
+            "terms": "obytna oblast,mesto,dedina,rezidencna oblast,reziden\u010dn\u00e1 oblast,obytna zona,rezidencna zona"
+        },
+        "landuse/retail": {
+            "name": "Maloobchodn\u00e1 z\u00f3na",
+            "terms": "maloobchodna zona,maloobchod,predajna,predaj\u0148a,predaj,obchod,obchodn\u00e1 z\u00f3na"
+        },
+        "landuse/vineyard": {
+            "name": "Vinica",
+            "terms": "vinice,vinohrad,hrozno,v\u00edno,vino"
+        },
+        "leisure": {
+            "name": "Oddych"
+        },
+        "leisure/adult_gaming_centre": {
+            "name": "V\u00fdhern\u00e9 automaty",
+            "terms": "vyherne automaty,hracie automaty"
+        },
+        "leisure/bowling_alley": {
+            "name": "Bowlingov\u00e1 hala",
+            "terms": "bowlinkova hala,bowling,k\u00fa\u017eelky,kuzelky,bouling"
+        },
+        "leisure/common": {
+            "name": "Verejn\u00e9 priestranstvo",
+            "terms": "verejne priestranstvo"
+        },
+        "leisure/dog_park": {
+            "name": "Ps\u00ed park",
+            "terms": "psi park,park pre psy"
+        },
+        "leisure/firepit": {
+            "name": "Ohnisko",
+            "terms": "pahreba,vatra,opekanie,ohen,miesto pre ohen"
+        },
+        "leisure/garden": {
+            "name": "Z\u00e1hrada",
+            "terms": "zahrada,sad,haj,h\u00e1j"
+        },
+        "leisure/golf_course": {
+            "name": "Golfov\u00e9 ihrisko",
+            "terms": "golfove ihrisko,golf"
+        },
+        "leisure/ice_rink": {
+            "name": "Klzisko",
+            "terms": "\u013eadov\u00e1 plocha,ladova plocha,kor\u010dulovanie,korculovanie,\u013ead,lad"
+        },
+        "leisure/marina": {
+            "name": "Lodenica",
+            "terms": "pristav,pr\u00edstav,jachta,jachty,lo\u010f,lod"
+        },
+        "leisure/nature_reserve": {
+            "name": "Pr\u00edrodn\u00e1 rezerv\u00e1cia",
+            "terms": "prirodna rezervacia,park,chko,narodn\u00fd park,narodny park"
+        },
+        "leisure/park": {
+            "name": "Park",
+            "terms": "park,z\u00e1hrada,tr\u00e1vnik,tr\u00e1va,les,lesopark,l\u00faka,ihrisko,hora,les,oddych,oddychov\u00e1 z\u00f3na,zahrada,travnik,trava,luka,odychova zona"
+        },
+        "leisure/picnic_table": {
+            "name": "Piknikov\u00fd st\u00f4l",
+            "terms": "piknikovy stol"
+        },
+        "leisure/pitch": {
+            "name": "\u0160portov\u00fd kurt",
+            "terms": "sportovy kurt,ihrisko,dvorec,kurt,stadion"
+        },
+        "leisure/pitch/american_football": {
+            "name": "Ihrisko pre americk\u00fd futbal",
+            "terms": "Ihrisko americkeho futbalu,americky futbal,americk\u00fd futbal,rugby"
+        },
+        "leisure/pitch/basketball": {
+            "name": "Basketbalov\u00e9 ihrisko",
+            "terms": "basketbalove ihrisko,basketbal,basket,streetbal"
+        },
+        "leisure/pitch/rugby_league": {
+            "name": "Ihrisko ragby league",
+            "terms": "rugby league"
+        },
+        "leisure/pitch/rugby_union": {
+            "name": "Ihrisko ragby union",
+            "terms": "rugby union"
+        },
+        "leisure/pitch/skateboard": {
+            "name": "Skateboardov\u00fd park",
+            "terms": "skateboadovy park,skejtbordovy,skatebordovy,park"
+        },
+        "leisure/pitch/soccer": {
+            "name": "Futbalov\u00e9 ihrisko",
+            "terms": "futbalove ihrisko,futbal"
+        },
+        "leisure/pitch/table_tennis": {
+            "name": "Pingpongov\u00fd st\u00f4l",
+            "terms": "poingpongovy stol,stoln\u00fd tenis,stolny tenis"
+        },
+        "leisure/pitch/tennis": {
+            "name": "Tenisov\u00fd kurt",
+            "terms": "tenisove ihrisko,tenis,kurt,dvorec"
+        },
+        "leisure/pitch/volleyball": {
+            "name": "Volejbalov\u00fd kurt",
+            "terms": "volejbalove ihrisko,volejbal"
+        },
+        "leisure/playground": {
+            "name": "Ihrisko pre deti",
+            "terms": "ihrisko,prelieza\u010dky,pieskovisko,pre deti,preliezacky,detske ihrisko,detsk\u00e9 ihrisko"
+        },
+        "leisure/slipway": {
+            "name": "Sp\u00fa\u0161\u0165anie lod\u00ed",
+            "terms": "Spustanie lodi,dok,lodenica,klzacka,k\u013aza\u010dka"
+        },
+        "leisure/sports_centre/swimming": {
+            "name": "Zariadenie s plav\u00e1r\u0148ou",
+            "terms": "plav\u00e1re\u0148,plavaren"
+        },
+        "leisure/stadium": {
+            "name": "\u0160tadi\u00f3n",
+            "terms": "stadion,futbal,futbalovy stadion,futbalov\u00fd \u0161tadi\u00f3n,ihrisko"
+        },
+        "leisure/swimming_pool": {
+            "name": "Plav\u00e1re\u0148",
+            "terms": "Plavaren,k\u00fapalisko,kupalisko"
+        },
+        "leisure/water_park": {
+            "name": "Vodn\u00fd park",
+            "terms": "vodn\u00fd park,vodny park,"
+        },
+        "line": {
+            "name": "\u010ciara",
+            "terms": "ciara,cesta,trat,kanal,trasa,tra\u0165,trat"
+        },
+        "man_made": {
+            "name": "\u013dudsk\u00fd v\u00fdtvor"
+        },
+        "man_made/adit": {
+            "name": "\u0160t\u00f4l\u0148a",
+            "terms": "stolna,\u0161t\u00f3la,stola,vchod,vchod do bane"
+        },
+        "man_made/breakwater": {
+            "name": "Vlnolam",
+            "terms": "nasym,kamene,kame\u0148e,m\u00f3lo,zabrana,z\u00e1brana"
+        },
+        "man_made/bridge": {
+            "name": "Most",
+            "terms": "most,l\u00e1vka"
+        },
+        "man_made/chimney": {
+            "name": "Kom\u00edn"
+        },
+        "man_made/cutline": {
+            "name": "Lesn\u00fd priesek",
+            "terms": "lesny priesek,\u010distina,cistina,r\u00faba\u0148,ruban,r\u00fabanisko,rubanisko,holina"
+        },
+        "man_made/embankment": {
+            "name": "N\u00e1syp"
+        },
+        "man_made/flagpole": {
+            "name": "Vlajkov\u00e1 \u017er\u010f",
+            "terms": "vlajkova zrd,sto\u017eiar,stoziar,rahno"
+        },
+        "man_made/gasometer": {
+            "name": "Plynomer"
+        },
+        "man_made/lighthouse": {
+            "name": "Maj\u00e1k",
+            "terms": "majak,v\u00fdstraha,vystraha"
+        },
+        "man_made/petroleum_well": {
+            "name": "Ropn\u00fd vrt",
+            "terms": "ropny vrt,ropa"
+        },
+        "man_made/pier": {
+            "name": "M\u00f3lo",
+            "terms": "molo,st\u013apy,stlpy,kotva,kotvenie,ukotvenie,lode,promen\u00e1da,promenada,l\u00e1vka,lavka"
+        },
+        "man_made/pipeline": {
+            "name": "Potrubie",
+            "terms": "r\u00fara,rura,r\u00fary,rury,transport,vodovod,ropovod,plynovod,kan\u00e1l,kanal,rozvod"
+        },
+        "man_made/silo": {
+            "name": "Silo",
+            "terms": "sil\u00e1\u017e,silaz,silazna veza,sil\u00e1\u017ena ve\u017ea"
+        },
+        "man_made/storage_tank": {
+            "name": "Z\u00e1sobn\u00edk",
+            "terms": "zasobnik,rezervo\u00e1r,rezervoar,cisterna,n\u00e1dr\u017e,nadrz"
+        },
+        "man_made/survey_point": {
+            "name": "Triangula\u010dn\u00fd bod",
+            "terms": "triangulacny bod,nivelizacny bod,niveliza\u010dn\u00fd bod,nivel\u00e1cia,nivelacia,referencny bod,referen\u010dn\u00fd bod"
+        },
+        "man_made/tower": {
+            "name": "Ve\u017ea",
+            "terms": "veza,st\u013ap,stlp,stoziar,sto\u017eiar"
+        },
+        "man_made/tower/observation": {
+            "name": "Vyhliadkova ve\u017ea"
+        },
+        "man_made/wastewater_plant": {
+            "name": "\u010cisti\u010dka odpadov\u00fdch v\u00f4d",
+            "terms": "cisticka odpadovych vod,cisticka,\u010disti\u010dka"
+        },
+        "man_made/water_tower": {
+            "name": "Ve\u017ea s vodojemom",
+            "terms": "vodojem,veza s vodojemom,veza,ve\u017ea,vod\u00e1rensk\u00e1 ve\u017ea,vodarenska veza"
+        },
+        "man_made/water_well": {
+            "name": "Stud\u0148a",
+            "terms": "studna,voda"
+        },
+        "man_made/water_works": {
+            "name": "Vodojem",
+            "terms": "vod\u00e1re\u0148,vodaren,vodn\u00fd zdroj,vodny zdroj,prame\u0148,pramen"
+        },
+        "man_made/windmill": {
+            "name": "Vetern\u00fd mlyn",
+            "terms": "veterny mlyn,mlyn"
+        },
+        "man_made/works": {
+            "name": "Fabrika",
+            "terms": "z\u00e1vod,zavod,tov\u00e1re\u0148,tovaren"
+        },
+        "natural": {
+            "name": "Pr\u00edrodn\u00e9"
+        },
+        "natural/bay": {
+            "name": "Z\u00e1toka",
+            "terms": "zatoka,z\u00e1liv,zaliv,more,pl\u00e1\u017e,plaz"
+        },
+        "natural/beach": {
+            "name": "Pl\u00e1\u017e",
+            "terms": "plaz,k\u00fapalisko,kupalisko,piesok,pobre\u017eie,pobrezie,more"
+        },
+        "natural/cave_entrance": {
+            "name": "Vstup do jaskyne",
+            "terms": "jasky\u0148a,jaskyna"
+        },
+        "natural/cliff": {
+            "name": "\u00dates",
+            "terms": "utes,bralo"
+        },
+        "natural/coastline": {
+            "name": "Pobre\u017eie",
+            "terms": "pobre\u017eie,pl\u00e1\u017e,plaz,breh"
+        },
+        "natural/fell": {
+            "name": "Ho\u013ea",
+            "terms": "hola,hole,vysokohorsk\u00e1 l\u00faka,vysokohorka luka"
+        },
+        "natural/glacier": {
+            "name": "\u013dadovec",
+            "terms": "ladovec,lad,\u013ead"
+        },
+        "natural/grassland": {
+            "name": "Tr\u00e1vnat\u00e9 porasty",
+            "terms": "travnate porasty,trava"
+        },
+        "natural/heath": {
+            "name": "Vresovisko",
+            "terms": "vres,vresovec"
+        },
+        "natural/peak": {
+            "name": "Vrchol",
+            "terms": "kopec,vrchol,vrch,\u0161t\u00edt,stit,hora"
+        },
+        "natural/ridge": {
+            "name": "Horsk\u00fd hrebe\u0148",
+            "terms": "horsky hreben,hrebe\u0148,hreben,chrb\u00e1t,chrbat"
+        },
+        "natural/saddle": {
+            "name": "Sedlo",
+            "terms": "sedlo,horsk\u00e9 sedlo,horske sedlo"
+        },
+        "natural/sand": {
+            "name": "Piesok",
+            "terms": "prirodny piesok,pr\u00edrodn\u00fd piesok"
+        },
+        "natural/scree": {
+            "name": "Su\u0165",
+            "terms": "sut,sutina,kame\u0148,kamen"
+        },
+        "natural/scrub": {
+            "name": "Kosodrevina",
+            "terms": "borovica,p\u00e1smo kosodreviny,pasmo kosodreviny"
+        },
+        "natural/spring": {
+            "name": "Prame\u0148",
+            "terms": "pramen,\u017eriedlo,zriedlo,vyviera\u010dka.vyvieracka,zdroj,studnicka,studni\u010dka"
+        },
+        "natural/tree": {
+            "name": "Strom",
+            "terms": "listnat\u00fd strom,listnaty strom,ihli\u010dnat\u00fd strom,ihlicnaty strom"
+        },
+        "natural/volcano": {
+            "name": "Sopka",
+            "terms": "sopka,vulk\u00e1n,vulkan"
+        },
+        "natural/water": {
+            "name": "Voda",
+            "terms": "voda,potok,vodn\u00e1 plocha,vodna plocha"
+        },
+        "natural/water/lake": {
+            "name": "Jazero",
+            "terms": "pleso,laguna,lag\u00fana"
+        },
+        "natural/water/pond": {
+            "name": "Rybn\u00edk",
+            "terms": "rybnik,n\u00e1dr\u017e,nadrz,\u0161trkovisko,strkovisko,tajch"
+        },
+        "natural/water/reservoir": {
+            "name": "N\u00e1dr\u017e",
+            "terms": "nadrz,priehrada"
+        },
+        "natural/wetland": {
+            "name": "Mokrina",
+            "terms": "mokra\u010f,mokrad,ba\u017eina"
+        },
+        "natural/wood": {
+            "name": "Prirodzen\u00fd les",
+            "terms": "prirodzeny les,prales,d\u017eun\u013ea,dzungla"
+        },
+        "office": {
+            "name": "\u00darad",
+            "terms": "urad"
+        },
+        "office/administrative": {
+            "name": "Administrat\u00edvny \u00farad"
+        },
+        "office/educational_institution": {
+            "name": "Vzdel\u00e1vac\u00ed in\u0161tit\u00fat",
+            "terms": "vzdelavaci institut,univerzita,skola,vzdelavanie,\u0161kola,vzdel\u00e1vanie"
+        },
+        "office/employment_agency": {
+            "name": "Zamestn\u00e1vate\u013esk\u00e1 agent\u00fara",
+            "terms": "zamestnavatelska agentura"
+        },
+        "office/estate_agent": {
+            "name": "Realitn\u00e1 agent\u00fara",
+            "terms": "realitna agentura,realitka"
+        },
+        "office/financial": {
+            "name": "Finan\u010dn\u00fd \u00farad",
+            "terms": "financny urad"
+        },
+        "office/government": {
+            "name": "Vl\u00e1dny \u00farad",
+            "terms": "vladny urad"
+        },
+        "office/insurance": {
+            "name": "Poistenie",
+            "terms": "poistenie"
+        },
+        "office/lawyer": {
+            "name": "Pr\u00e1vna kancel\u00e1ria",
+            "terms": "pravna kancelaria"
+        },
+        "office/ngo": {
+            "name": "Neziskov\u00e1 organiz\u00e1cia",
+            "terms": "neziskova organizacia,neziskovka"
+        },
+        "office/physician": {
+            "name": "Doktor"
+        },
+        "office/political_party": {
+            "name": "Politick\u00e1 strana",
+            "terms": "politicka strana"
+        },
+        "office/research": {
+            "name": "V\u00fdskum",
+            "terms": "vyskum"
+        },
+        "office/telecommunication": {
+            "name": "Telekomunik\u00e1cie",
+            "terms": "telekomunikacie,mobilny operator,mobiln\u00fd oper\u00e1tor,operator,oper\u00e1tor"
+        },
+        "office/travel_agent": {
+            "name": "Cestovn\u00e1 agent\u00fara"
+        },
+        "place": {
+            "name": "Obec"
+        },
+        "place/city": {
+            "name": "Ve\u013ekomesto",
+            "terms": "velkomesto,mesto"
+        },
+        "place/farm": {
+            "name": "Farma"
+        },
+        "place/hamlet": {
+            "name": "Osada",
+            "terms": "laz,kopanice,kopanica,samota,kol\u00f3nia,kolonia"
+        },
+        "place/island": {
+            "name": "Ostrov",
+            "terms": "ostrov,atol,\u00fates,ostrov\u010dek,archipel\u00e1go,utes,ostrovcek,archipelago"
+        },
+        "place/isolated_dwelling": {
+            "name": "Samota",
+            "terms": "osamoteny dom,chata,drevenica"
+        },
+        "place/locality": {
+            "name": "Lokalita",
+            "terms": "oblast,oblas\u0165,miestny n\u00e1zov,miestny nazov,nazov"
+        },
+        "place/neighbourhood": {
+            "name": "Susedstvo",
+            "terms": "okrsok,oblast,oblas\u0165,\u0161tvr\u0165,stvrt"
+        },
+        "place/town": {
+            "name": "Mesto",
+            "terms": "mestecko,meste\u010dko"
+        },
+        "place/village": {
+            "name": "Dedina",
+            "terms": "dedina,obec,dedinka"
+        },
+        "point": {
+            "name": "Bod",
+            "terms": "bod,POI,bod z\u00e1ujmu,bod zaujmu,zaujmovy bod,z\u00e1ujmov\u00fd bod"
+        },
+        "power": {
+            "name": "Elektrick\u00e1 energia"
+        },
+        "power/generator": {
+            "name": "Elektr\u00e1re\u0148",
+            "terms": "elektraren,veterna elektraren,vetern\u00e1 elektr\u00e1re\u0148,at\u00f3mka,atomka,vodn\u00e1,vodna,tepelna,tepelna"
+        },
+        "power/line": {
+            "name": "Elektrick\u00e9 vedenie",
+            "terms": "elektricke vedenie,vedenie,kable,k\u00e1ble"
+        },
+        "power/minor_line": {
+            "name": "Ved\u013eaj\u0161ie elektrick\u00e9 vedenie",
+            "terms": "vedlajsie elektricke vedenie,rozvod, elektrika"
+        },
+        "power/pole": {
+            "name": "Elektrick\u00fd st\u013ap",
+            "terms": "stlp elektrickeho vedenia,sto\u017eiar,stoziar,elektrick\u00fd st\u013ap,elektricky stlp,St\u013ap elektrick\u00e9ho vedenia"
+        },
+        "power/sub_station": {
+            "name": "Rozvodn\u00e1 stanica"
+        },
+        "power/substation": {
+            "name": "Elektrick\u00e1 rozvod\u0148a",
+            "terms": "elektricka rozvodna,transformator,transform\u00e1tor"
+        },
+        "power/tower": {
+            "name": "St\u013ap vysok\u00e9ho nap\u00e4tia",
+            "terms": "stlp vysokeho napatia,vysok\u00e9 nap\u00e4tie,vysoke napatie"
+        },
+        "power/transformer": {
+            "name": "Transform\u00e1tor",
+            "terms": "Rozvodna stanica,Rozvodn\u00e1 stanica,transformator,trasform\u00e1tor"
+        },
+        "railway": {
+            "name": "\u017deleznica"
+        },
+        "railway/abandoned": {
+            "name": "Nepou\u017e\u00edvan\u00e1 tra\u0165",
+            "terms": "nepouzivana trat,opustena trat,opusten\u00e1 tra\u0165"
+        },
+        "railway/disused": {
+            "name": "\u017deleznica mimo prev\u00e1dzky",
+            "terms": "zeleznica mimo prevadzky,mimo prevadzky"
+        },
+        "railway/funicular": {
+            "name": "Lanov\u00e1 dr\u00e1ha",
+            "terms": "lanova zeleznica,lanova draha"
+        },
+        "railway/monorail": {
+            "name": "Jednoko\u013eajnicov\u00e1 dr\u00e1ha",
+            "terms": "jednokolajnicova draha,jednokolajka,monorail"
+        },
+        "railway/narrow_gauge": {
+            "name": "\u00dazkorozchodn\u00e1 \u017eeleznica",
+            "terms": "uzkorozchodna zeleznica,uzkokolajka,\u00fazko\u013eajka"
+        },
+        "railway/rail": {
+            "name": "\u017delezni\u010dn\u00e1 tra\u0165",
+            "terms": "zeleznicna trat,trat,tra\u0165,\u017eeleznica,zeleznica"
+        },
+        "railway/station": {
+            "name": "Vlakov\u00e1 stanica"
+        },
+        "railway/subway": {
+            "name": "Metro",
+            "terms": "metro,podzemna draha,podzemn\u00e1 dr\u00e1ha"
+        },
+        "railway/subway_entrance": {
+            "name": "Vstup do metra",
+            "terms": "vstup,metro,podchod,stanica metra"
+        },
+        "railway/tram": {
+            "name": "Elektri\u010dka",
+            "terms": "elektricka,tramvaj"
+        },
+        "relation": {
+            "name": "Rel\u00e1cia",
+            "terms": "relacia,linka,trasa"
+        },
+        "roundabout": {
+            "name": "Kruhov\u00fd objazd"
+        },
+        "route/ferry": {
+            "name": "Trajektov\u00e1 trasa",
+            "terms": "trajektova trasa,trasa trajektu,trajekt,linka,trasa kompy,kompa"
+        },
+        "shop": {
+            "name": "Obchod",
+            "terms": "potraviny,obchody,n\u00e1kup,nakup,odevy,obuv"
+        },
+        "shop/alcohol": {
+            "name": "Obchod s alkoholom",
+            "terms": "alkohol"
+        },
+        "shop/anime": {
+            "name": "Obchod s anime",
+            "terms": "anime"
+        },
+        "shop/antiques": {
+            "name": "Obchod so taro\u017eitnos\u0165ami",
+            "terms": "obchod so starozitnostami,starozitnosti,staro\u017eitnosti,star\u00fd n\u00e1bytok,stary nabytok"
+        },
+        "shop/art": {
+            "name": "Umeleck\u00fd obchod"
+        },
+        "shop/baby_goods": {
+            "name": "Obchod s detsk\u00fdmi potrebami",
+            "terms": "obchod s detskymi potrebami"
+        },
+        "shop/bag": {
+            "name": "Obchod s kuframi",
+            "terms": "kufre,kufor,batoh,bato\u017eina,batozina"
+        },
+        "shop/bakery": {
+            "name": "Pek\u00e1re\u0148",
+            "terms": "pekaren,pek\u00e1rstvo,pekarstvo,chlieb,pecivo,pe\u010divo"
+        },
+        "shop/bathroom_furnishing": {
+            "name": "Obchod s k\u00fapel\u0148ami",
+            "terms": "obchod s kuplenami,kupelka,k\u00fapelka,k\u00fapel\u0148a,kupelna"
+        },
+        "shop/beauty": {
+            "name": "Bi\u017eut\u00e9ria",
+            "terms": "bizuteria,\u0161perky,sperky,naramky,n\u00e1ramnky,nausnice,n\u00e1u\u0161nice,prstene,nahrdelniky,n\u00e1hrdelniky"
+        },
+        "shop/bed": {
+            "name": "Obchod s poste\u013eami/matracmi",
+            "terms": "matrac,matrace,poste\u013e,postel,postele,sp\u00e1l\u0148a,spalna"
+        },
+        "shop/beverages": {
+            "name": "Obchod s n\u00e1pojmi",
+            "terms": "obchod s napojmi,napoje,n\u00e1poje,malinovka,kofola,ob\u010derstvenie,obcerstvenie"
+        },
+        "shop/bicycle": {
+            "name": "Cykloobchod",
+            "terms": "obchod s bicyklami,bicykle,horsk\u00e9 bicykle,horske bicykle"
+        },
+        "shop/bookmaker": {
+            "name": "St\u00e1vkov\u00e1 kancel\u00e1ria",
+            "terms": "stavkova kancelaria,stavky,tipos,sportka,bingo,stavka,st\u00e1vka,kurz"
+        },
+        "shop/books": {
+            "name": "Kn\u00edhkupectvo",
+            "terms": "knihkupectvo,knihy,kniha,obchod s knihami"
+        },
+        "shop/boutique": {
+            "name": "Butik",
+            "terms": "oblecenie,oble\u010denie,\u0161aty,saty,odev,odevy"
+        },
+        "shop/butcher": {
+            "name": "M\u00e4siarstvo",
+            "terms": "masiarstvo,maso,m\u00e4so,predaj\u0148a m\u00e4sa,predajna masa"
+        },
+        "shop/candles": {
+            "name": "Obchod so svi\u010dkami",
+            "terms": "obchod so svieckami,sviecka,svie\u010dka,svie\u010dky,sviecky"
+        },
+        "shop/car": {
+            "name": "Predaj\u0148a \u00e1ut",
+            "terms": "predajna aut,diler,d\u00edler,autosal\u00f3n,autosalon,autobaz\u00e1r,autobazar"
+        },
+        "shop/car_parts": {
+            "name": "Predaj\u0148a autodielov",
+            "terms": "predajna autodielov,autodiely"
+        },
+        "shop/car_repair": {
+            "name": "Autoservis",
+            "terms": "autoservis,oprava a\u00fat,oprava aut,servis"
+        },
+        "shop/carpet": {
+            "name": "Obchod s kobercami",
+            "terms": "koberec,koberce,pokrovec,roko\u017eka,rohozka"
+        },
+        "shop/cheese": {
+            "name": "Obchod so syrmi",
+            "terms": "syr,syry,korb\u00e1\u010diki,korbaciky,o\u0161tiepok,ostiepok,o\u0161tiepky,ostiepky"
+        },
+        "shop/chemist": {
+            "name": "Drog\u00e9ria"
+        },
+        "shop/chocolate": {
+            "name": "Obchod s \u010dokol\u00e1dou",
+            "terms": "obchod s cokoladou,cokolada,\u010dokol\u00e1da,pralinky"
+        },
+        "shop/clothes": {
+            "name": "Obchod s odevami",
+            "terms": "odevy,odev,\u0161aty,saty,oble\u010denie,obchod s oble\u010den\u00edm,oblecienie,obchod s oblecenim"
+        },
+        "shop/coffee": {
+            "name": "Kaviare\u0148"
+        },
+        "shop/computer": {
+            "name": "Obchod s v\u00fdpo\u010dtovou technikou",
+            "terms": "obchod s vypoctovou technikou,pocitace,po\u010dita\u010de,elektro,elektronika,vypoctova technika,v\u00fdpo\u010dtov\u00e1 technika"
+        },
+        "shop/confectionery": {
+            "name": "Obchod so sladkos\u0165ami",
+            "terms": "obchod so sladkostami,sladkosti,cukrovinky"
+        },
+        "shop/convenience": {
+            "name": "Samoobsluha",
+            "terms": "cukraren,cukrovinky,cukr\u00e1rstvo,cukrarstvo,obchod s cukrovinkami"
+        },
+        "shop/copyshop": {
+            "name": "Fotokop\u00edrovanie",
+            "terms": "fotokopirovanie,fotokop\u00edrka,fotokopirka"
+        },
+        "shop/cosmetics": {
+            "name": "Obchod s kozmetikou",
+            "terms": "kozmetika,drogeria"
+        },
+        "shop/craft": {
+            "name": "Obchod s umeleck\u00fdmi potrebami",
+            "terms": "Obchod s umeleckymi potrebami,umeleck\u00e9 potreby,umelecke potreby"
+        },
+        "shop/curtain": {
+            "name": "Obchod so z\u00e1clonami",
+            "terms": "obchod so zaclonami,z\u00e1clony,zaclony,z\u00e1clona,zaclona,z\u00e1ves,zaves,z\u00e1vesy,zavesy"
+        },
+        "shop/dairy": {
+            "name": "Obchod s mlie\u010dnymi v\u00fdrobkami",
+            "terms": "obchod s mliecnymi vyrobkami,mlieko,jogurt,jogurty,smotana,syr,syry"
+        },
+        "shop/deli": {
+            "name": "Delikatesy",
+            "terms": "deli"
+        },
+        "shop/department_store": {
+            "name": "Obchodn\u00fd dom",
+            "terms": "obchodny dom,n\u00e1kupne centrum,nakupne centrum"
+        },
+        "shop/doityourself": {
+            "name": "Obchod pre kutilov",
+            "terms": "stavebn\u00fd materi\u00e1l,stavebny material,hornbach,baumax"
+        },
+        "shop/dry_cleaning": {
+            "name": "\u010cistiare\u0148 odevov",
+            "terms": "cistiaren odevov,such\u00e9 \u010distenie,suche cistenie"
+        },
+        "shop/electronics": {
+            "name": "Elektro obchod",
+            "terms": "elektro,elektronika"
+        },
+        "shop/erotic": {
+            "name": "Ochod s erotick\u00fdmi potrebami",
+            "terms": "obchod s erotickymi potrebami,sexshop,sex shop"
+        },
+        "shop/fabric": {
+            "name": "Obchod s l\u00e1tkami",
+            "terms": "obchod s latkami,textil"
+        },
+        "shop/farm": {
+            "name": "Vo\u013en\u00fd predaj ovocia",
+            "terms": "Volny predaj ovocia,ovocie"
+        },
+        "shop/fashion": {
+            "name": "Obchod s m\u00f3dnymi doplnkami",
+            "terms": "obchod s modmymi doplnkami"
+        },
+        "shop/fishmonger": {
+            "name": "Predaj r\u00fdb"
+        },
+        "shop/florist": {
+            "name": "Kvetin\u00e1rstvo",
+            "terms": "kvetinarstvo,kvety,kytice"
+        },
+        "shop/frame": {
+            "name": "Obchod s r\u00e1mami",
+            "terms": "obchod s ramami,obrazy,r\u00e1m,ram"
+        },
+        "shop/funeral_directors": {
+            "name": "Pohrebn\u00fd \u00fastav",
+            "terms": "pohrebny ustav,pohreb,pohreb,pohrebn\u00edctvo,pohrebnictvo"
+        },
+        "shop/furnace": {
+            "name": "Obchod so kotlami"
+        },
+        "shop/furniture": {
+            "name": "Obchod s n\u00e1bytkom",
+            "terms": "obchod s nabytkom,nabytok"
+        },
+        "shop/garden_centre": {
+            "name": "Z\u00e1hradn\u00e9 centrum",
+            "terms": "zahradne centrum,z\u00e1hradkarske centrum,zahradkarske centrum"
+        },
+        "shop/gift": {
+            "name": "Dar\u010dekov\u00fd obchod",
+            "terms": "darcekovy obchod,obchod s darcekmi,obchod s dar\u010dekmi,suven\u00edry,suveniry"
+        },
+        "shop/greengrocer": {
+            "name": "Predaj\u0148a zeleniny",
+            "terms": "predajna zeleniny,zelovoc,ovocie,zelenina,ovocie zelenina,ovocie a zelenina"
+        },
+        "shop/hairdresser": {
+            "name": "Kadern\u00edctvo",
+            "terms": "kadernik,holi\u010d,holic,vizazista,viz\u00e1\u017eista,kadern\u00edctvo,kadernictvo,kadern\u00edk"
+        },
+        "shop/hardware": {
+            "name": "\u017deleziarstvo",
+            "terms": "zeleziarstvo,baumax,hornbach,n\u00e1radie,naradie,predajna n\u00e1rradia,predajna naradia"
+        },
+        "shop/hearing_aids": {
+            "name": "Obchod s na\u010d\u00favac\u00edmi pr\u00edstrojmi",
+            "terms": "obchod s nacuvacimi pristrojmi,nacuvaci pristroj,na\u010d\u00favac\u00ed pr\u00edstroj"
+        },
+        "shop/herbalist": {
+            "name": "Bylink\u00e1rstvo",
+            "terms": "bylinkarstvo,bylinky"
+        },
+        "shop/hifi": {
+            "name": "Obchod s ozvu\u010den\u00edm",
+            "terms": "Obchod so zvukovymi systemami,hifi,hi-fi,zvuk,ozvu\u010denie,ozvucenie,obchod s ozvucenim,Obchod so zvukov\u00fdmi syst\u00e9mami"
+        },
+        "shop/houseware": {
+            "name": "Dom\u00e1ce potreby",
+            "terms": "domace potreby,zeleziarstvo,\u017eeleziarstvo"
+        },
+        "shop/interior_decoration": {
+            "name": "Obchod s bytov\u00fdmi dekor\u00e1ciami",
+            "terms": "obchod s bytovami dekoraciami,intri\u00e9rov\u00e9 dekor\u00e1cie,intrierove dekoracie"
+        },
+        "shop/kitchen": {
+            "name": "Kuchynsk\u00e9 \u0161t\u00fadio",
+            "terms": "kuchynske studio,kuchyna,uchy\u0148a,kuchyne,kuchy\u0148e,kuchynsk\u00fd k\u00fat,kuchynsky kut,kuchynsk\u00e9 k\u00faty,kuchynske kuty"
+        },
+        "shop/laundry": {
+            "name": "\u010cistiare\u0148",
+            "terms": "cistiaren,\u010cistiare\u0148 odevov,Pr\u00e1\u010dov\u0148a,cistiaren odevov,pracovna"
+        },
+        "shop/leather": {
+            "name": "Obchod s ko\u017eenn\u00fdmi v\u00fdrobkami",
+            "terms": "obchod s kozennymi vyrobkami,koza,ko\u017ea"
+        },
+        "shop/locksmith": {
+            "name": "Z\u00e1mo\u010dn\u00edctvo",
+            "terms": "zamocnictvo,z\u00e1mo\u010dn\u00edk,zamocnik,k\u013e\u00fa\u010de,kluce,z\u00e1mok,z\u00e1mky,zamok,zamky"
+        },
+        "shop/lottery": {
+            "name": "Lot\u00e9ria",
+            "terms": "loteria"
+        },
+        "shop/mall": {
+            "name": "N\u00e1kupn\u00e9 centrum",
+            "terms": "nakupne centrum,obchodne cenrum,obchodn\u00e9 centrum,obchody"
+        },
+        "shop/massage": {
+            "name": "Mas\u00e9rstvo",
+            "terms": "maserstvo,mas\u00e1\u017ee,masaze,mas\u00e1\u017e,masaz"
+        },
+        "shop/medical_supply": {
+            "name": "Obchod so zdravotn\u00edckymi pom\u00f4ckami",
+            "terms": "obchod so zdravonickymi pomockami"
+        },
+        "shop/mobile_phone": {
+            "name": "Obchod s mobiln\u00fdmi telef\u00f3nmi",
+            "terms": "obchod s mobilnymi telefonmi,mobilne telefony,mobily,telefony,mobiln\u00e9 telef\u00f3ny,telef\u00f3ny"
+        },
+        "shop/money_lender": {
+            "name": "Po\u017ei\u010dov\u0148a pe\u0148az\u00ed",
+            "terms": "pozicovna penazi,peniaze,p\u00f4\u017eicky,pozicky"
+        },
+        "shop/motorcycle": {
+            "name": "Predaj\u0148a motocyklov",
+            "terms": "predajna motocyklov,motorky,motocykle,predaj\u0148a motoriek,predajna motoriek"
+        },
+        "shop/music": {
+            "name": "Obchod s hudbou",
+            "terms": "hudba,hudobn\u00fd obchod,hudobny obchod,CD,mp3"
+        },
+        "shop/musical_instrument": {
+            "name": "Obchod s hudobn\u00fdmi n\u00e1strojmi",
+            "terms": "obchod s hudobnymi nastrojmi, hudobne nastroje,hudobn\u00e9 n\u00e1stroje"
+        },
+        "shop/newsagent": {
+            "name": "Obchod s novinami/\u010dasopismi",
+            "terms": "obchod s novinami/casopismi,noviny,casopisy,\u010dasopisy"
+        },
+        "shop/nutrition_supplements": {
+            "name": "Obchod s v\u00fd\u017eivov\u00fdmi doplnkami"
+        },
+        "shop/optician": {
+            "name": "Optika",
+            "terms": "okuliare,zrak,"
+        },
+        "shop/organic": {
+            "name": "Obchod s eko potravinami",
+            "terms": "eko potraviny"
+        },
+        "shop/outdoor": {
+            "name": "Outdoorov\u00fd obchod",
+            "terms": "outdoorovy obchod,trekov\u00fd obchod,trekovy ochod,outdoor"
+        },
+        "shop/paint": {
+            "name": "Obchod s n\u00e1termi",
+            "terms": "obchod s natermi,farby,laky,n\u00e1tery,natery"
+        },
+        "shop/pawnbroker": {
+            "name": "Z\u00e1lo\u017e\u0148a",
+            "terms": "zalozna"
+        },
+        "shop/pet": {
+            "name": "Chovprodukt",
+            "terms": "dom\u00e1ci mil\u00e1\u010dik,domaci milacik,domace zvierata,dom\u00e1ce zvierata,potrava"
+        },
+        "shop/photo": {
+            "name": "Obchod s fototechnikou",
+            "terms": "Fotoateli\u00e9r,fotoatelier,fotostudio,foto\u0161t\u00fadio,fotografia"
+        },
+        "shop/pyrotechnics": {
+            "name": "Obchod s pyrotechnikov",
+            "terms": "pyrotechnika,oh\u0148ostroj,ohnostroj,prskavky,rakety,delobuchy"
+        },
+        "shop/radiotechnics": {
+            "name": "Obchod s elektronikou",
+            "terms": "elektronika"
+        },
+        "shop/religion": {
+            "name": "Obchod s n\u00e1bo\u017eenk\u00fdmi pom\u00f4ckami",
+            "terms": "obchod s nabozenskymi pomockami"
+        },
+        "shop/scuba_diving": {
+            "name": "Obchod s pot\u00e1pa\u010dsk\u00fdm vybaven\u00edm",
+            "terms": "obchod s potapacskym vybavemin,potapacske vybavenie,potapa\u010dsk\u00e9 vybanie,"
+        },
+        "shop/seafood": {
+            "name": "Obchod s morsk\u00fdmi \u0161pecialitami",
+            "terms": "obchod s morskymi specialitami,plody mora,ryby,morsk\u00e9 ryby,morske ryby,kreverty,treska,tuniak"
+        },
+        "shop/second_hand": {
+            "name": "Second hand",
+            "terms": "z druhej ruky"
+        },
+        "shop/shoes": {
+            "name": "Obchod s obuvov",
+            "terms": "obuv,top\u00e1nky,topanky"
+        },
+        "shop/sports": {
+            "name": "Obchod so \u0161portov\u00fdmi potrebami",
+            "terms": "obchod so sportovymi potrebami,sportove potreby,\u0161portov\u00e9 potreby,\u0161portov\u00e9 vybavenie,sportove vybavenie"
+        },
+        "shop/stationery": {
+            "name": "Papiern\u00edctvo",
+            "terms": "papiernictvo,papier"
+        },
+        "shop/storage_rental": {
+            "name": "Pren\u00e1jom skladov\u00fdch priestorov",
+            "terms": "pren\u00e1jom skladu,sklad.gar\u00e1\u017e"
+        },
+        "shop/supermarket": {
+            "name": "Supermarket",
+            "terms": "potraviny,obchod,samo\u0161ka,samoska,samoobsluha"
+        },
+        "shop/tailor": {
+            "name": "Kraj\u010d\u00edrstvo",
+            "terms": "krajcirstvo,krajcir,kraj\u010dir"
+        },
+        "shop/tattoo": {
+            "name": "Tetovac\u00ed sal\u00f3n",
+            "terms": "tetovaci salon,tetovania,tetovanie"
+        },
+        "shop/tea": {
+            "name": "Obchod s \u010dajom",
+            "terms": "obchod s cajom,cajovy obchod,\u010dajov\u00fd ochod"
+        },
+        "shop/ticket": {
+            "name": "Predaj\u0148a vstupeniek",
+            "terms": "predajna listkov,vstupenky,predajna vstupeniek,vstupenka,listok,l\u00edstok"
+        },
+        "shop/tobacco": {
+            "name": "Obchod s tabakom",
+            "terms": "tabak,trafika"
+        },
+        "shop/toys": {
+            "name": "Hra\u010dk\u00e1rstvo",
+            "terms": "hrackarstvo,hracky,hry,hra\u010dky"
+        },
+        "shop/travel_agency": {
+            "name": "Cestovn\u00e1 agent\u00fara",
+            "terms": "cestovna agentura,cestovanie,cestovka,dovolenka"
+        },
+        "shop/tyres": {
+            "name": "Predaj\u0148a pneumat\u00edk",
+            "terms": "predajna pneumatik,pneumatiky,pneuservis,kolesa,koles\u00e1"
+        },
+        "shop/vacant": {
+            "name": "Pr\u00e1zdny obchod"
+        },
+        "shop/vacuum_cleaner": {
+            "name": "Obchod s vysava\u010dmi",
+            "terms": "bchod s vysavacmi,vysava\u010de,vysavace,vysava\u010d,vysavac"
+        },
+        "shop/variety_store": {
+            "name": "Obchod so zmie\u0161an\u00fdm tovarom",
+            "terms": "obchod so zmiesanym tovarom,rozlicny tovar,rozli\u010dn\u00fd tovar"
+        },
+        "shop/video": {
+            "name": "Videopo\u017ei\u010dov\u0148a",
+            "terms": "videopozicovna,DVD,CD,VHS,blue-ray,blueray,blue ray,video"
+        },
+        "shop/video_games": {
+            "name": "Obchod s videohrami",
+            "terms": "videohry,po\u010d\u00edta\u010dov\u00e9 hry,pocitacove hry"
+        },
+        "shop/watches": {
+            "name": "Obchod s hodinkami",
+            "terms": "hodinky,n\u00e1ramkov\u00e9 hodinky,naramkove hodinky"
+        },
+        "shop/water_sports": {
+            "name": "Ochod s plaveck\u00fdm vybaven\u00edm",
+            "terms": "ochod s plaveckym vybavenim"
+        },
+        "shop/weapons": {
+            "name": "Ochod so zbra\u0148ami",
+            "terms": "obchod so zbranami,zbra\u0148e,zbrane,no\u017ee,noze"
+        },
+        "shop/window_blind": {
+            "name": "Obchod so \u017eal\u00faziami",
+            "terms": "obchod so zaluziami,zaluzie,\u017eal\u00fazie"
+        },
+        "shop/wine": {
+            "name": "Vin\u00e1re\u0148",
+            "terms": "vinaren,vinoteka,v\u00ednot\u00e9ka,vino,v\u00edno"
+        },
+        "tourism": {
+            "name": "Turizmus"
+        },
+        "tourism/alpine_hut": {
+            "name": "Vysokohorsk\u00e1 chata",
+            "terms": "vysokohorska chata,horska chata,horsk\u00e1 chata,chata,\u00fatul\u0148a,utulna,buda,b\u00fada,noc\u013eah,noclah,prenocovanie"
+        },
+        "tourism/aquarium": {
+            "name": "Akv\u00e1rium",
+            "terms": "akvarium"
+        },
+        "tourism/artwork": {
+            "name": "Umeleck\u00e9 dielo",
+            "terms": "umelecke dielo,dielo,socha,vytvor,v\u00fdtvor,umenie"
+        },
+        "tourism/attraction": {
+            "name": "Turistick\u00e1 atrakcia",
+            "terms": "turisticka atrakcia,atrakcia,turistick\u00e9 miesto,turisticke miesto"
+        },
+        "tourism/camp_site": {
+            "name": "Kemp",
+            "terms": "autokemp,miesto na kempovanie"
+        },
+        "tourism/caravan_site": {
+            "name": "Parkovisko pre karavany",
+            "terms": "parkovisko pre karavany,karavany,parkovisko,tabor,t\u00e1bor"
+        },
+        "tourism/gallery": {
+            "name": "Umeleck\u00e1 gal\u00e9ria"
+        },
+        "tourism/guest_house": {
+            "name": "Penzi\u00f3n",
+            "terms": "penzion,ubytovanie,hostel,hotel,ubytov\u0148a,ubytovna"
+        },
+        "tourism/hostel": {
+            "name": "Hostel",
+            "terms": "hostel,hotel,ubytovna,ubytov\u0148a,ubytovanie,\u0161tudentsk\u00fd hostel,studentsky hostel"
+        },
+        "tourism/hotel": {
+            "name": "Hotel",
+            "terms": "hostel,hotel,ubytovna,ubytov\u0148a,ubytovanie"
+        },
+        "tourism/information": {
+            "name": "Inform\u00e1cie",
+            "terms": "informacie,turisticke informacie,turistick\u00e9 inform\u00e1cie"
+        },
+        "tourism/information/board": {
+            "name": "Informa\u010dn\u00e1 tabu\u013ea"
+        },
+        "tourism/information/map": {
+            "name": "Mapa"
+        },
+        "tourism/motel": {
+            "name": "Motel",
+            "terms": "hostel,hotel,ubytovna,ubytov\u0148a,ubytovanie"
+        },
+        "tourism/museum": {
+            "name": "M\u00fazeum",
+            "terms": "muzeum,zbierka,v\u00fdstava,vystava"
+        },
+        "tourism/picnic_site": {
+            "name": "Miesto pre piknik",
+            "terms": "piknik,opekanie,opeka\u010dka,BBQ,grilovanie"
+        },
+        "tourism/theme_park": {
+            "name": "Z\u00e1bavn\u00fd park",
+            "terms": "zabavny park,h\u00fasenkov\u00e1 dr\u00e1ha,husenkova draha"
+        },
+        "tourism/viewpoint": {
+            "name": "Vyhliadka",
+            "terms": "v\u00fdh\u013ead,vyhlad,rozh\u013ead,rozhlad,rozh\u013ead\u0148a,rozhladna"
+        },
+        "tourism/zoo": {
+            "name": "Zoo",
+            "terms": "zoologick\u00e1 z\u00e1hrada,zoologicka zahrada,zvierat\u00e1,zvierata"
+        },
+        "traffic_calming/bump": {
+            "name": "Spomalovc\u00ed prah",
+            "terms": "spomalovaci prah,retard\u00e9r,retarder"
+        },
+        "traffic_calming/hump": {
+            "name": "Spomalovac\u00ed hrb",
+            "terms": "spomalovaci hrb"
+        },
+        "traffic_calming/rumble_strip": {
+            "name": "N\u00edzky spoma\u013eovac\u00ed prah",
+            "terms": "nizky spomalovaci prah"
+        },
+        "type/boundary": {
+            "name": "Hranica",
+            "terms": "hranica,\u0161t\u00e1tna hranica,statna hranica,kraj,okres"
+        },
+        "type/boundary/administrative": {
+            "name": "Administrat\u00edvna hranica",
+            "terms": "administrativna hranica,stat,\u0161t\u00e1t,kraj,okres"
+        },
+        "type/multipolygon": {
+            "name": "Multipolyg\u00f3n"
+        },
+        "type/restriction": {
+            "name": "Obmedzenie",
+            "terms": "dopravne obmedzenie,dopravn\u00e9 obmedzenie"
+        },
+        "type/restriction/no_left_turn": {
+            "name": "Z\u00e1kaz odbo\u010denia v\u013eavo",
+            "terms": "zakaz odbocenia vlavo"
+        },
+        "type/restriction/no_right_turn": {
+            "name": "Z\u00e1kaz odbo\u010denia vpravo",
+            "terms": "zakaz odbocenia vpravo"
+        },
+        "type/restriction/no_straight_on": {
+            "name": "Prik\u00e1zan\u00fd smer jazdy vpravo a vlavo",
+            "terms": "prikazany smer jazdy vpravo a vlavo"
+        },
+        "type/restriction/no_u_turn": {
+            "name": "Z\u00e1kaz ot\u00e1\u010dania",
+            "terms": "zakaz otacania"
+        },
+        "type/route": {
+            "name": "Trasa",
+            "terms": "trasa,linka,trat,tra\u0165"
+        },
+        "type/route/bicycle": {
+            "name": "Bicyklov\u00e1 trasa",
+            "terms": "cyklisticka trasa,bicyklova trasa,bicyklov\u00e1 trasa"
+        },
+        "type/route/bus": {
+            "name": "Autobusov\u00e1 trasa",
+            "terms": "Autobusova trasa,linka,spoj,trat,tra\u0165"
+        },
+        "type/route/detour": {
+            "name": "Obch\u00e1dzkov\u00e1 trasa",
+            "terms": "obchadzkova trasa,obchadzka,obch\u00e1dzka"
+        },
+        "type/route/ferry": {
+            "name": "Trajektov\u00e1 trasa",
+            "terms": "Trajektova trasa,trajekt,linka,linka trajektu,trasa kompy"
+        },
+        "type/route/foot": {
+            "name": "Turistick\u00e1 trasa",
+            "terms": "turisticka trasa,pesia trasa,pe\u0161ia trasa"
+        },
+        "type/route/hiking": {
+            "name": "Turistick\u00e1 trasa",
+            "terms": "turisticka trasa,hiking,trekking,trasa,trek,tura,t\u00fara,turistika"
+        },
+        "type/route/pipeline": {
+            "name": "Potrubn\u00e1 trasa",
+            "terms": "potrubna trasa,potrubie"
+        },
+        "type/route/power": {
+            "name": "Elektrick\u00e1 trasa",
+            "terms": "elektricka trasa,elektricke vedenie,elektrick\u00e9 vedienie,prud,pr\u00fad"
+        },
+        "type/route/road": {
+            "name": "Cestn\u00e1 trasa",
+            "terms": "cestna trasa,cesta,cesta eur\u00f3pskeho v\u00fdznamu,cesta europskeho vyznamu"
+        },
+        "type/route/train": {
+            "name": "Vlakov\u00e1 trasa",
+            "terms": "vlakova trasa,linka,vlakova linka,vlakov\u00e1 linka"
+        },
+        "type/route/tram": {
+            "name": "Elektri\u010dkov\u00e1 trasa",
+            "terms": "elektrickova trasa,elektricka,linka,elektrickova linka,elektri\u010dkov\u00e1 linka"
+        },
+        "type/route_master": {
+            "name": "Hlavn\u00e1 trasa",
+            "terms": "hlavna trasa,nadraden\u00e1 trasa,nadradena trasa"
+        },
+        "vertex": {
+            "name": "In\u00e9",
+            "terms": "ostatn\u00e9,ostatne,ine,zvy\u0161n\u00e9zvysne"
+        },
+        "waterway": {
+            "name": "Vodn\u00e1 cesta"
+        },
+        "waterway/boatyard": {
+            "name": "Lodenica",
+            "terms": "lodenica,oprava lod\u00ed,oprava lodi"
+        },
+        "waterway/canal": {
+            "name": "Kan\u00e1l",
+            "terms": "kanal"
+        },
+        "waterway/dam": {
+            "name": "Priehrada",
+            "terms": "priehrada,n\u00e1dr\u017e,nadrz"
+        },
+        "waterway/ditch": {
+            "name": "Priekopa",
+            "terms": "priekopa,jarok,jama,garat,kan\u00e1l,kanal,stoka"
+        },
+        "waterway/drain": {
+            "name": "Odvod\u0148ovac\u00ed kan\u00e1l",
+            "terms": "odvodnovaci kanal,kanal,jarok"
+        },
+        "waterway/fuel": {
+            "name": "\u010cerpacia stanica pre lode",
+            "terms": "cerpacia stanica pre lode,benz\u00edn,benzin,nafta,palivo"
+        },
+        "waterway/river": {
+            "name": "Rieka",
+            "terms": "rie\u010dka,potok,pot\u00fa\u010dik,potocik,bystrina"
+        },
+        "waterway/riverbank": {
+            "name": "Breh rieky"
+        },
+        "waterway/sanitary_dump_station": {
+            "name": "Vypr\u00e1zdnovanie lodn\u00fdch toaliet",
+            "terms": "vyprazdnovanie lodnych toaliet"
+        },
+        "waterway/stream": {
+            "name": "Potok",
+            "terms": "potok,pot\u00f4\u010dik,bystrina,rie\u010dka,kan\u00e1l,potocik,riecka,kanal,pstruha"
+        },
+        "waterway/water_point": {
+            "name": "Pitn\u00e1 voda pre lode",
+            "terms": "pitna voda pre lode"
+        },
+        "waterway/waterfall": {
+            "name": "Vodop\u00e1d",
+            "terms": "vodopad,voda,pereje,rieka"
+        },
+        "waterway/weir": {
+            "name": "Hr\u00e1dza",
+            "terms": "hat,ha\u0165,hr\u00e1dza,hradza,jez"
+        }
+    }
+}

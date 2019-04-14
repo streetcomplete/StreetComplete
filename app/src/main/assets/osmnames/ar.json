@@ -1,0 +1,2998 @@
+{
+    "presets": {
+        "address": {
+            "name": "\u0627\u0644\u0639\u0646\u0648\u0627\u0646",
+            "terms": "\u0639\u0646\u0648\u0627\u0646"
+        },
+        "advertising/column": {
+            "name": "\u0639\u0645\u0648\u062f \u0625\u0639\u0644\u0627\u0646\u064a"
+        },
+        "aerialway": {
+            "name": "\u0643\u0627\u0628\u0644\u0627\u062a \u0645\u0639\u0644\u0642\u0629 \u0641\u064a \u0627\u0644\u0647\u0648\u0627\u0621"
+        },
+        "aerialway/cable_car": {
+            "name": "\u062a\u0644\u0641\u0631\u064a\u0643",
+            "terms": "\u062a\u0644\u0641\u0631\u064a\u0643\u060c \u0645\u0639\u0628\u0631 \u0647\u0648\u0627\u0626\u064a\u060c \u0645\u0635\u0639\u062f \u0647\u0648\u0627\u0626\u064a"
+        },
+        "aerialway/chair_lift": {
+            "name": "\u0645\u0635\u0639\u062f \u062a\u0632\u0644\u062c",
+            "terms": "\u0645\u0635\u0639\u062f \u062a\u0632\u0644\u062c\u060c \u062a\u0644\u0633\u064a\u0627\u062c"
+        },
+        "aerialway/goods": {
+            "name": "\u0646\u0642\u0644 \u0627\u0644\u0628\u0636\u0627\u0626\u0639 \u0628\u0627\u0644\u0643\u0627\u0628\u0644\u0627\u062a ",
+            "terms": "\u0646\u0642\u0644 \u0627\u0644\u0628\u0636\u0627\u0626\u0639 \u0628\u0627\u0644\u0643\u0627\u0628\u0644\u0627\u062a"
+        },
+        "aerialway/pylon": {
+            "name": "\u0628\u0631\u062c \u0627\u0644\u062a\u0644\u0641\u0631\u064a\u0643 / \u0627\u0644\u0645\u0635\u0639\u062f \u0627\u0644\u062a\u0632\u0644\u062c",
+            "terms": "\u0628\u0631\u062c \u0627\u0644\u062a\u0644\u0641\u0631\u064a\u0643 ; \u0627\u0644\u0645\u0635\u0639\u062f \u0627\u0644\u062a\u0632\u0644\u062c"
+        },
+        "aerialway/station": {
+            "name": "\u0645\u062d\u0637\u0629 \u0627\u0644\u0646\u0642\u0644 \u0628\u0627\u0644\u0643\u0627\u0628\u0644\u0627\u062a"
+        },
+        "aeroway": {
+            "name": "\u062c\u0648\u064a"
+        },
+        "aeroway/aerodrome": {
+            "name": "\u0645\u0637\u0627\u0631",
+            "terms": "\u0645\u0637\u0627\u0631"
+        },
+        "aeroway/apron": {
+            "name": "\u0633\u0627\u062d\u0629 \u0627\u0644\u0645\u0637\u0627\u0631",
+            "terms": "\u0633\u0627\u062d\u0629 \u0627\u0644\u0645\u0637\u0627\u0631"
+        },
+        "aeroway/gate": {
+            "name": "\u0628\u0648\u0627\u0628\u0629 \u0627\u0644\u0645\u0637\u0627\u0631",
+            "terms": "\u0628\u0648\u0627\u0628\u0629 \u0627\u0644\u0645\u0637\u0627\u0631"
+        },
+        "aeroway/hangar": {
+            "name": "\u062d\u0638\u064a\u0631\u0629 \u0627\u0644\u0637\u0627\u0626\u0631\u0627\u062a",
+            "terms": "\u062d\u0638\u0627\u0626\u0631 \u0627\u0644\u0637\u0627\u0626\u0631\u0627\u062a"
+        },
+        "aeroway/helipad": {
+            "name": "\u0645\u0647\u0628\u0637 \u0627\u0644\u0647\u0644\u064a\u0643\u0648\u0628\u062a\u0631",
+            "terms": "\u0645\u0647\u0628\u0637 \u0644\u0644\u0637\u0627\u0626\u0631\u0627\u062a \u0627\u0644\u0639\u0645\u0648\u062f\u064a\u0629"
+        },
+        "aeroway/runway": {
+            "name": "\u0645\u062f\u0631\u062c \u0627\u0644\u0637\u0627\u0626\u0631",
+            "terms": "\u0645\u062f\u0631\u062c \u0625\u0642\u0644\u0627\u0639 \u0648\u0647\u0628\u0648\u0637,\u0645\u062f\u0631\u062c \u0627\u0644\u0645\u0637\u0627\u0631"
+        },
+        "aeroway/taxiway": {
+            "name": "\u0637\u0631\u064a\u0642 \u0644\u0644\u0645\u062f\u0631\u062c",
+            "terms": "\u0637\u0631\u064a\u0642 \u0644\u0644\u0645\u062f\u0631\u062c, \u0637\u0631\u064a\u0642 \u062a\u062f\u0631\u064a\u062c \u0627\u0644\u0637\u0627\u0626\u0631\u0627\u062a"
+        },
+        "aeroway/terminal": {
+            "name": "\u0645\u062d\u0637\u0629 \u0627\u0644\u0645\u0637\u0627\u0631",
+            "terms": "\u0645\u062d\u0637\u0629 \u0627\u0644\u0645\u0637\u0627\u0631"
+        },
+        "amenity": {
+            "name": "\u0645\u0631\u0641\u0642"
+        },
+        "amenity/animal_boarding": {
+            "name": "\u0645\u0646\u0634\u0623\u0629 \u0631\u0639\u0627\u064a\u0629 \u062d\u064a\u0648\u0627\u0646\u0627\u062a"
+        },
+        "amenity/animal_breeding": {
+            "name": "\u0645\u0646\u0634\u0623\u0629 \u062a\u0631\u0628\u064a\u0629 \u0648\u0628\u064a\u0639 \u062d\u064a\u0648\u0627\u0646\u0627\u062a"
+        },
+        "amenity/animal_shelter": {
+            "name": "\u0645\u0623\u0648\u0649 \u062d\u064a\u0648\u0627\u0646\u0627\u062a",
+            "terms": "\u0645\u0623\u0648\u0649 \u062d\u064a\u0648\u0627\u0646\u0627\u062a; \u0645\u0644\u062c\u0623"
+        },
+        "amenity/arts_centre": {
+            "name": "\u0645\u0631\u0643\u0632 \u0641\u0646\u0648\u0646",
+            "terms": "\u0645\u0631\u0643\u0632 \u0627\u0644\u0641\u0646\u0648\u0646\u060c \u0645\u0639\u0631\u0636 \u0627\u0644\u0641\u0646\u060c \u0633\u0627\u062d\u0629 \u0639\u0631\u0636\u060c \u0645\u0644\u062a\u0642\u0649 \u0641\u0646\u064a"
+        },
+        "amenity/atm": {
+            "name": "\u0635\u0631\u0627\u0641 \u0622\u0644\u064a",
+            "terms": "\u0635\u0631\u0627\u0641 \u0622\u0644\u064a,\u0645\u0627\u0643\u064a\u0646\u0629 \u0633\u062d\u0628"
+        },
+        "amenity/bank": {
+            "name": "\u0628\u0646\u0643",
+            "terms": "\u0628\u0646\u0643,\u0645\u0635\u0631\u0641"
+        },
+        "amenity/bar": {
+            "name": "\u062d\u0627\u0646\u0629",
+            "terms": "\u0628\u0627\u0631 , \u062d\u0627\u0646\u0629 , \u062e\u0645\u0651\u064e\u0627\u0631\u064e\u0629 ,\u0645\u064e\u0634\u0652\u0631\u064e\u0628"
+        },
+        "amenity/bbq": {
+            "name": "\u0645\u0643\u0627\u0646 \u0645\u062e\u0635\u0635 \u0644\u0644\u0634\u0648\u0627\u0621",
+            "terms": "\u0634\u0648\u0627\u0621\u060c \u0628\u0627\u0631\u0628\u064a\u0643\u064a\u0648"
+        },
+        "amenity/bench": {
+            "name": "\u0645\u0642\u0639\u062f",
+            "terms": "\u0645\u0642\u0639\u062f, \u0645\u0642\u0639\u062f \u0637\u0648\u064a\u0644"
+        },
+        "amenity/bicycle_parking": {
+            "name": "\u0645\u0648\u0642\u0641 \u062f\u0631\u0627\u062c\u0627\u062a \u0647\u0648\u0627\u0626\u064a\u0629",
+            "terms": "\u0645\u0648\u0642\u0641 \u062f\u0631\u0627\u062c\u0627\u062a \u0647\u0648\u0627\u0626\u064a\u0629; \u0645\u0648\u0642\u0641; \u062f\u0631\u0627\u062c\u0629; \u062f\u0631\u0627\u062c\u0627\u062a"
+        },
+        "amenity/bicycle_rental": {
+            "name": "\u062a\u0623\u062c\u064a\u0631 \u062f\u0631\u0627\u062c\u0627\u062a",
+            "terms": "\u062a\u0623\u062c\u064a\u0631 \u062f\u0631\u0627\u062c\u0627\u062a \u0647\u0648\u0627\u0626\u064a\u0629; \u062a\u0623\u062c\u064a\u0631; \u062f\u0631\u0627\u062c\u0629; \u062f\u0631\u0627\u062c\u0627\u062a; \u0647\u0648\u0627\u0626\u064a; \u0647\u0648\u0627\u0626\u064a\u0629"
+        },
+        "amenity/bicycle_repair_station": {
+            "name": "\u0648\u0631\u0634\u0629 \u0625\u0635\u0644\u0627\u062d \u062f\u0631\u0627\u062c\u0627\u062a \u0647\u0648\u0627\u0626\u064a\u0629",
+            "terms": "\u062f\u0631\u0627\u062c\u0627\u062a \u0647\u0648\u0627\u0626\u064a\u0629; \u062f\u0631\u0627\u062c\u0629; \u0627\u0635\u0644\u0627\u062d; \u062a\u0635\u0644\u064a\u062d \u062f\u0631\u0627\u062c\u0627\u062a; \u062a\u0635\u0644\u064a\u062d"
+        },
+        "amenity/boat_rental": {
+            "name": "\u0645\u062d\u0644 \u0627\u0633\u062a\u0626\u062c\u0627\u0631 \u0642\u0648\u0627\u0631\u0628",
+            "terms": "\u062a\u0623\u062c\u064a\u0631 \u0627\u0644\u0642\u0648\u0627\u0631\u0628\u060c \u0633\u0627\u062d\u0629 \u0627\u0644\u0632\u0648\u0627\u0631\u0642\u060c \u062a\u0623\u062c\u064a\u0631 \u0632\u0648\u0627\u0631\u0642"
+        },
+        "amenity/bureau_de_change": {
+            "name": "\u062a\u062d\u0648\u064a\u0644 \u0623\u0645\u0648\u0627\u0644"
+        },
+        "amenity/bus_station": {
+            "name": "\u0645\u062d\u0637\u0629 \u062d\u0627\u0641\u0644\u0627\u062a"
+        },
+        "amenity/cafe": {
+            "name": "\u0645\u0642\u0647\u0649",
+            "terms": "\u0645\u0642\u0647\u0649, \u0645\u0637\u0639\u0645, \u0646\u0627\u062f \u0644\u064a\u0644\u064a"
+        },
+        "amenity/car_rental": {
+            "name": "\u0645\u062d\u0644 \u0625\u064a\u062c\u0627\u0631 \u0633\u064a\u0627\u0631\u0627\u062a",
+            "terms": "\u0645\u062d\u0644 \u0627\u0633\u062a\u0626\u062c\u0627\u0631 \u0627\u0644\u0633\u064a\u0627\u0631\u0627\u062a"
+        },
+        "amenity/car_sharing": {
+            "name": "\u0645\u062d\u0644 \u0645\u0634\u0627\u0631\u0643\u0629 \u0633\u064a\u0627\u0631\u0629",
+            "terms": "\u0645\u062d\u0644 \u0645\u0634\u0627\u0631\u0643\u0629 \u0627\u0644\u0633\u064a\u0627\u0631\u0627\u062a"
+        },
+        "amenity/car_wash": {
+            "name": "\u063a\u0633\u064a\u0644 \u0633\u064a\u0627\u0631\u0627\u062a",
+            "terms": "\u063a\u0633\u064a\u0644 \u0627\u0644\u0633\u064a\u0627\u0631\u0627\u062a"
+        },
+        "amenity/casino": {
+            "name": "\u0643\u0627\u0632\u064a\u0646\u0648",
+            "terms": "\u0643\u0627\u0632\u064a\u0646\u0648"
+        },
+        "amenity/charging_station": {
+            "name": "\u0645\u062d\u0637\u0629 \u0634\u062d\u0646",
+            "terms": "\u0645\u062d\u0637\u0629 \u0634\u062d\u0646"
+        },
+        "amenity/childcare": {
+            "name": "\u0631\u0639\u0627\u064a\u0629 \u0627\u0644\u0623\u0637\u0641\u0627\u0644",
+            "terms": "\u0631\u0639\u0627\u064a\u0629 \u0627\u0644\u0623\u0637\u0641\u0627\u0644; \u062d\u0636\u0627\u0646\u0629"
+        },
+        "amenity/cinema": {
+            "name": "\u0633\u064a\u0646\u0645\u0627",
+            "terms": "\u0633\u064a\u0646\u0645\u0627,\u0635\u0627\u0644\u0629 \u0633\u064a\u0646\u0645\u0627, \u062f\u0627\u0631 \u0627\u0644\u0633\u064a\u0646\u0645\u0627"
+        },
+        "amenity/clinic": {
+            "name": "\u0639\u064a\u0627\u062f\u0629",
+            "terms": "\u0639\u064a\u0627\u062f\u0629; \u0645\u0633\u062a\u0648\u0635\u0641"
+        },
+        "amenity/clinic/abortion": {
+            "name": "\u0639\u064a\u0627\u062f\u0629 \u0627\u0644\u0625\u062c\u0647\u0627\u0636",
+            "terms": "\u0639\u064a\u0627\u062f\u0629 \u0627\u0644\u0625\u062c\u0647\u0627\u0636"
+        },
+        "amenity/clinic/fertility": {
+            "name": "\u0639\u064a\u0627\u062f\u0629 \u0627\u0644\u062e\u0635\u0648\u0628\u0629",
+            "terms": "\u0639\u064a\u0627\u062f\u0629 \u0627\u0644\u062e\u0635\u0648\u0628\u0629"
+        },
+        "amenity/clock": {
+            "name": "\u0633\u0627\u0639\u0629",
+            "terms": "\u0633\u0627\u0639\u0629"
+        },
+        "amenity/college": {
+            "name": "\u0623\u0631\u0636 \u0643\u0644\u064a\u0629",
+            "terms": "\u0623\u0631\u0636 \u0643\u0644\u064a\u0629"
+        },
+        "amenity/community_centre": {
+            "name": "\u0645\u0631\u0643\u0632 \u0627\u062c\u062a\u0645\u0627\u0639\u064a",
+            "terms": "\u0645\u0631\u0643\u0632 \u0627\u062c\u062a\u0645\u0627\u0639\u064a"
+        },
+        "amenity/compressed_air": {
+            "name": "\u0647\u0648\u0627\u0621 \u0645\u0636\u063a\u0648\u0637",
+            "terms": "\u0647\u0648\u0627\u0621 \u0645\u0636\u063a\u0648\u0637"
+        },
+        "amenity/courthouse": {
+            "name": "\u0645\u062d\u0643\u0645\u0629",
+            "terms": "\u0645\u062c\u0645\u0639 \u0645\u062d\u0627\u0643\u0645, \u062f\u0627\u0631 \u0639\u062f\u0644, \u062f\u0627\u0631 \u0642\u0636\u0627\u0621"
+        },
+        "amenity/coworking_space": {
+            "name": "\u0645\u0633\u0627\u062d\u0629 \u0639\u0645\u0644 \u0645\u0634\u062a\u0631\u0643\u0629"
+        },
+        "amenity/dentist": {
+            "name": "\u0637\u0628\u064a\u0628 \u0623\u0633\u0646\u0627\u0646",
+            "terms": "\u0637\u0628\u064a\u0628 \u0623\u0633\u0646\u0627\u0646"
+        },
+        "amenity/dive_centre": {
+            "name": "\u0645\u0631\u0643\u0632 \u0627\u0644\u063a\u0648\u0635"
+        },
+        "amenity/doctors": {
+            "name": "\u0637\u0628\u064a\u0628",
+            "terms": "\u0637\u0628\u064a\u0628"
+        },
+        "amenity/dojo": {
+            "name": "\u062f\u0648\u062c\u0648 /  \u0623\u0643\u0627\u062f\u064a\u0645\u064a\u0629 \u0627\u0644\u0641\u0646\u0648\u0646 \u0627\u0644\u0642\u062a\u0627\u0644\u064a\u0629",
+            "terms": "\u062f\u0648\u062c\u0648; \u0623\u0643\u0627\u062f\u064a\u0645\u064a\u0629 \u0627\u0644\u0641\u0646\u0648\u0646 \u0627\u0644\u0642\u062a\u0627\u0644\u064a\u0629"
+        },
+        "amenity/drinking_water": {
+            "name": "\u0645\u064a\u0627\u0647 \u0634\u0631\u0628",
+            "terms": "\u0645\u0627\u0621 \u0627\u0644\u0634\u0631\u0628"
+        },
+        "amenity/driving_school": {
+            "name": "\u0645\u062f\u0631\u0633\u0629 \u062a\u0639\u0644\u064a\u0645 \u0627\u0644\u0642\u064a\u0627\u062f\u0629"
+        },
+        "amenity/embassy": {
+            "name": "\u0633\u0641\u0627\u0631\u0629",
+            "terms": "\u0633\u0641\u0627\u0631\u0629"
+        },
+        "amenity/fast_food": {
+            "name": "\u0648\u062c\u0628\u0627\u062a \u0633\u0631\u064a\u0639\u0629",
+            "terms": "\u0645\u0623\u0643\u0648\u0644\u0627\u062a \u0627\u0644\u0633\u0631\u064a\u0639\u0629"
+        },
+        "amenity/fast_food/burger": {
+            "name": "\u0628\u0631\u062c\u0631 \u0648\u062c\u0628\u0627\u062a \u0633\u0631\u064a\u0639\u0629",
+            "terms": "\u0625\u0641\u0637\u0627\u0631,\u0639\u0634\u0627\u0621,\u0637\u0639\u0627\u0645,"
+        },
+        "amenity/fast_food/chicken": {
+            "name": "\u062f\u062c\u0627\u062c \u0648\u062c\u0628\u0627\u062a \u0633\u0631\u064a\u0639\u0629",
+            "terms": "\u0625\u0641\u0637\u0627\u0631,\u0645\u0642\u0635\u0641,\u0639\u0634\u0627\u0621,\u0637\u0639\u0627\u0645"
+        },
+        "amenity/fast_food/fish_and_chips": {
+            "name": "\u0633\u0645\u0643 \u0648\u0631\u0642\u0627\u0626\u0642 \u0627\u0644\u0628\u0637\u0627\u0637\u0633 \u0648\u062c\u0628\u0627\u062a \u0633\u0631\u064a\u0639\u0629",
+            "terms": "\u0625\u0641\u0637\u0627\u0631,\u0642\u0647\u0648\u0629,\u0639\u0634\u0627\u0621,\u0637\u0639\u0627\u0645"
+        },
+        "amenity/fast_food/kebab": {
+            "name": "\u0643\u0628\u0627\u0628 \u0648\u062c\u0628\u0627\u062a \u0633\u0631\u064a\u0639\u0629",
+            "terms": "\u0625\u0641\u0637\u0627\u0631,\u0645\u0642\u0635\u0641,\u0639\u0634\u0627\u0621,\u0637\u0639\u0627\u0645"
+        },
+        "amenity/fast_food/pizza": {
+            "name": "\u0628\u064a\u062a\u0632\u0627 \u0648\u062c\u0628\u0627\u062a \u0633\u0631\u064a\u0639\u0629",
+            "terms": "\u0625\u0641\u0637\u0627\u0631,\u0645\u0642\u0635\u0641,\u0639\u0634\u0627\u0621,\u0637\u0639\u0627\u0645"
+        },
+        "amenity/fast_food/sandwich": {
+            "name": "\u0634\u0637\u064a\u0631\u0629 \u0648\u062c\u0628\u0627\u062a \u0633\u0631\u064a\u0639\u0629",
+            "terms": "\u0625\u0641\u0637\u0627\u0631,\u0645\u0642\u0635\u0641,\u0639\u0634\u0627\u0621,\u0637\u0639\u0627\u0645"
+        },
+        "amenity/ferry_terminal": {
+            "name": "\u0627\u0644\u0645\u062d\u0637\u0629 \u0627\u0644\u0628\u062d\u0631\u064a\u0629"
+        },
+        "amenity/fire_station": {
+            "name": "\u0645\u062d\u0637\u0629 \u0625\u0637\u0641\u0627\u0621 \u062d\u0631\u064a\u0642",
+            "terms": "\u0645\u062d\u0637\u0629 \u0625\u0637\u0641\u0627\u0621"
+        },
+        "amenity/food_court": {
+            "name": "\u0642\u0627\u0639\u0629 \u0637\u0639\u0627\u0645",
+            "terms": "\u0648\u062c\u0628\u0627\u062a \u0633\u0631\u064a\u0639\u0629,\u0645\u0637\u0639\u0645,\u0637\u0639\u0627\u0645"
+        },
+        "amenity/fountain": {
+            "name": "\u0646\u0627\u0641\u0648\u0631\u0629",
+            "terms": "\u0646\u0627\u0641\u0648\u0631\u0629"
+        },
+        "amenity/fuel": {
+            "name": "\u0645\u062d\u0637\u0629 \u0648\u0642\u0648\u062f",
+            "terms": "\u0645\u062d\u0637\u0629 \u0628\u062a\u0631\u0648\u0644, \u0645\u062d\u0637\u0629 \u063a\u0627\u0632"
+        },
+        "amenity/grave_yard": {
+            "name": "\u0645\u0642\u0628\u0631\u0629",
+            "terms": "\u0645\u0642\u0628\u0631\u0629, \u0645\u062f\u0641\u0646"
+        },
+        "amenity/hospital": {
+            "name": "\u0623\u0631\u0636 \u0645\u0633\u062a\u0634\u0641\u0649",
+            "terms": "\u0623\u0631\u0636 \u0645\u0633\u062a\u0634\u0641\u0649; \u0645\u0633\u062a\u0634\u0641\u0649"
+        },
+        "amenity/ice_cream": {
+            "name": "\u0645\u062d\u0644 \u0628\u064a\u0639 \u0627\u0644\u0645\u062b\u0644\u062c\u0627\u062a",
+            "terms": "\u0645\u062b\u0644\u062c\u0627\u062a"
+        },
+        "amenity/internet_cafe": {
+            "name": "\u0645\u0642\u0647\u0649 \u0625\u0646\u062a\u0631\u0646\u062a",
+            "terms": "\u0645\u0642\u0647\u0649 \u0625\u0646\u062a\u0631\u0646\u062a"
+        },
+        "amenity/kindergarten": {
+            "name": "\u0631\u0648\u0636\u0629 \u0623\u0637\u0641\u0627\u0644",
+            "terms": "\u0631\u0648\u0636\u0629 \u0623\u0637\u0641\u0627\u0644"
+        },
+        "amenity/language_school": {
+            "name": "\u0645\u062f\u0631\u0633\u0629 \u0644\u063a\u0627\u062a"
+        },
+        "amenity/library": {
+            "name": "\u0645\u0643\u062a\u0628\u0629",
+            "terms": "\u0645\u0643\u062a\u0628\u0629"
+        },
+        "amenity/marketplace": {
+            "name": "\u0645\u062d\u0644 \u062a\u0633\u0648\u0642",
+            "terms": "\u0633\u0648\u0642 ,\u0633\u0648\u0642 \u062a\u062c\u0627\u0631\u064a\u0629, \u0633\u0627\u062d\u0629 \u0627\u0644\u0633\u0648\u0642"
+        },
+        "amenity/motorcycle_parking": {
+            "name": "\u0645\u0648\u0642\u0641 \u062f\u0631\u0627\u062c\u0627\u062a \u0646\u0627\u0631\u064a\u0629",
+            "terms": "\u062f\u0631\u0627\u062c\u0629 \u0646\u0627\u0631\u064a\u0629, \u062f\u0631\u0627\u062c\u0629 \u0628\u062e\u0627\u0631\u064a\u0629; \u0645\u0648\u0642\u0641; \u0645\u0648\u0627\u0642\u0641; \u0631\u0643\u0646"
+        },
+        "amenity/music_school": {
+            "name": "\u0645\u062f\u0631\u0633\u0629 \u0645\u0648\u0633\u064a\u0642\u0649",
+            "terms": "\u0645\u062f\u0631\u0633\u0629 \u0645\u0648\u0633\u064a\u0642\u0649"
+        },
+        "amenity/nightclub": {
+            "name": "\u0645\u0644\u0647\u0649 \u0644\u064a\u0644\u064a"
+        },
+        "amenity/nursing_home": {
+            "name": "\u062f\u0627\u0631 \u0627\u0644\u062a\u0645\u0631\u064a\u0636"
+        },
+        "amenity/parking": {
+            "name": "\u0633\u0627\u062d\u0629 \u0627\u0646\u062a\u0638\u0627\u0631 \u0633\u064a\u0627\u0631\u0627\u062a"
+        },
+        "amenity/parking_entrance": {
+            "name": "\u0645\u062f\u062e\u0644 \u0648\u0645\u062e\u0631\u062c \u062c\u0631\u0627\u062c \u0648\u0642\u0648\u0641",
+            "terms": "\u0645\u062f\u062e\u0644, \u0645\u062e\u0631\u062c"
+        },
+        "amenity/parking_space": {
+            "name": "\u0645\u0648\u0642\u0641 \u0633\u064a\u0627\u0631\u0627\u062a"
+        },
+        "amenity/payment_centre": {
+            "name": "\u0645\u0631\u0643\u0632 \u062f\u0641\u0639 \u0646\u0642\u0648\u062f"
+        },
+        "amenity/payment_terminal": {
+            "name": "\u0645\u062d\u0637\u0629 \u062f\u0641\u0639 \u0646\u0642\u0648\u062f"
+        },
+        "amenity/place_of_worship": {
+            "name": "\u0645\u0643\u0627\u0646 \u0639\u0628\u0627\u062f\u0629",
+            "terms": "\u0645\u062d\u0644 \u0639\u0628\u0627\u062f\u0629"
+        },
+        "amenity/place_of_worship/buddhist": {
+            "name": "\u0645\u0639\u0628\u062f \u0628\u0648\u0630\u064a",
+            "terms": "\u0645\u0639\u0628\u062f \u0628\u0648\u0630\u064a"
+        },
+        "amenity/place_of_worship/christian": {
+            "name": "\u0643\u0646\u064a\u0633\u064a\u0629 \u0645\u0633\u064a\u062d\u064a\u0629"
+        },
+        "amenity/place_of_worship/hindu": {
+            "name": "\u0645\u0639\u0628\u062f \u0647\u0646\u062f\u0648\u0633\u064a"
+        },
+        "amenity/place_of_worship/jewish": {
+            "name": "\u0643\u0646\u064a\u0633 \u064a\u0647\u0648\u062f\u064a"
+        },
+        "amenity/place_of_worship/muslim": {
+            "name": "\u0645\u0633\u062c\u062f",
+            "terms": "\u0645\u0633\u062c\u062f,\u062c\u0627\u0645\u0639,\u0645\u0635\u0644\u0649,\u0635\u0644\u0627\u0629,\u0645\u0633\u0644\u0645,\u0645\u0633\u0644\u0645\u064a\u0646"
+        },
+        "amenity/place_of_worship/shinto": {
+            "name": "\u0636\u0631\u064a\u062d \u0634\u0646\u062a\u0648"
+        },
+        "amenity/place_of_worship/sikh": {
+            "name": "\u0645\u0639\u0628\u062f \u0627\u0644\u0633\u064a\u062e"
+        },
+        "amenity/place_of_worship/taoist": {
+            "name": "\u0645\u0639\u0628\u062f \u0637\u0627\u0648\u064a"
+        },
+        "amenity/planetarium": {
+            "name": "\u0642\u0628\u0629 \u0641\u0644\u0643\u064a\u0629",
+            "terms": "\u0642\u0628\u0629 \u0641\u0644\u0643\u064a\u0629\u060c \u0642\u0628\u0629 \u0633\u0645\u0627\u0648\u064a\u0629\u060c \u0628\u0644\u0627\u0646\u062a\u0627\u0631\u064a\u0648\u0645"
+        },
+        "amenity/police": {
+            "name": "\u0634\u0631\u0637\u0629",
+            "terms": "\u0645\u0631\u0643\u0632 \u0627\u0644\u0634\u0631\u0637\u0629, \u0627\u0644\u0634\u0631\u0637\u0629"
+        },
+        "amenity/post_box": {
+            "name": "\u0635\u0646\u062f\u0648\u0642 \u0627\u0644\u0628\u0631\u064a\u062f",
+            "terms": "\u0635\u0646\u062f\u0648\u0642 \u0627\u0644\u0628\u0631\u064a\u062f"
+        },
+        "amenity/post_office": {
+            "name": "\u0645\u0643\u062a\u0628 \u0627\u0644\u0628\u0631\u064a\u062f",
+            "terms": "\u062f\u0627\u0626\u0631\u0629 \u0627\u0644\u0628\u0631\u064a\u062f, \u0645\u0643\u062a\u0628 \u0627\u0644\u0628\u0631\u064a\u062f, \u0645\u0643\u062a\u0628 \u0628\u0631\u064a\u062f"
+        },
+        "amenity/prison": {
+            "name": "\u0633\u062c\u0646",
+            "terms": "\u0633\u062c\u0646"
+        },
+        "amenity/pub": {
+            "name": "\u062d\u0627\u0646\u0629",
+            "terms": "\u0645\u0634\u0631\u0628, \u062d\u0627\u0646\u0629, \u062e\u0645\u0627\u0631\u0629"
+        },
+        "amenity/public_bath": {
+            "name": "\u062d\u0645\u0627\u0645 \u0639\u0627\u0645"
+        },
+        "amenity/public_bookcase": {
+            "name": "\u062e\u0632\u0627\u0646\u0629 \u0643\u062a\u0628 \u0639\u0627\u0645\u0629"
+        },
+        "amenity/ranger_station": {
+            "name": "\u0645\u062d\u0637\u0629 \u0627\u0644\u062d\u0631\u0627\u0633\u0629",
+            "terms": "\u0645\u062d\u0637\u0629 \u0627\u0644\u062d\u0631\u0627\u0633\u0629"
+        },
+        "amenity/recycling": {
+            "name": "\u0625\u0639\u0627\u062f\u0629 \u0627\u0644\u062a\u062f\u0648\u064a\u0631"
+        },
+        "amenity/recycling_centre": {
+            "name": "\u0645\u0631\u0643\u0632 \u0625\u0639\u0627\u062f\u0629 \u062a\u062f\u0648\u064a\u0631",
+            "terms": "\u0645\u0631\u0643\u0632 \u0625\u0639\u0627\u062f\u0629 \u062a\u062f\u0648\u064a\u0631"
+        },
+        "amenity/recycling_container": {
+            "name": "\u062d\u0627\u0648\u064a\u0629 \u0625\u0639\u0627\u062f\u0629 \u0627\u0644\u062a\u062f\u0648\u064a\u0631"
+        },
+        "amenity/register_office": {
+            "name": "\u0645\u0643\u062a\u0628 \u0627\u0644\u0633\u062c\u0644 \u0627\u0644\u0645\u062f\u0646\u064a"
+        },
+        "amenity/restaurant": {
+            "name": "\u0645\u0637\u0639\u0645",
+            "terms": "\u0645\u0637\u0639\u0645"
+        },
+        "amenity/restaurant/american": {
+            "name": "\u0645\u0637\u0639\u0645 \u0627\u0645\u0631\u064a\u0643\u064a"
+        },
+        "amenity/restaurant/asian": {
+            "name": "\u0645\u0637\u0639\u0645 \u0622\u0633\u064a\u0648\u064a"
+        },
+        "amenity/restaurant/chinese": {
+            "name": "\u0645\u0637\u0639\u0645 \u0635\u064a\u0646\u064a"
+        },
+        "amenity/restaurant/french": {
+            "name": "\u0645\u0637\u0639\u0645 \u0641\u0631\u0646\u0633\u064a"
+        },
+        "amenity/restaurant/german": {
+            "name": "\u0645\u0637\u0639\u0645 \u0623\u0644\u0645\u0627\u0646\u064a"
+        },
+        "amenity/restaurant/greek": {
+            "name": "\u0645\u0637\u0639\u0645 \u064a\u0648\u0646\u0627\u0646\u064a"
+        },
+        "amenity/restaurant/indian": {
+            "name": "\u0645\u0637\u0639\u0645 \u0647\u0646\u062f\u064a"
+        },
+        "amenity/restaurant/italian": {
+            "name": "\u0645\u0637\u0639\u0645 \u0625\u064a\u0637\u0627\u0644\u064a"
+        },
+        "amenity/restaurant/japanese": {
+            "name": "\u0645\u0637\u0639\u0645 \u064a\u0627\u0628\u0627\u0646\u064a"
+        },
+        "amenity/restaurant/mexican": {
+            "name": "\u0645\u0637\u0639\u0645 \u0645\u0643\u0633\u064a\u0643\u064a"
+        },
+        "amenity/restaurant/noodle": {
+            "name": "\u0645\u0637\u0639\u0645 \u0645\u0643\u0631\u0648\u0646\u0629"
+        },
+        "amenity/restaurant/pizza": {
+            "name": "\u0645\u0637\u0639\u0645 \u0628\u064a\u062a\u0632\u0627"
+        },
+        "amenity/restaurant/seafood": {
+            "name": "\u0645\u0637\u0639\u0645 \u0645\u0623\u0643\u0648\u0644\u0627\u062a \u0628\u062d\u0631\u064a\u0629"
+        },
+        "amenity/restaurant/steakhouse": {
+            "name": "\u0628\u064a\u062a \u0634\u0631\u0627\u0626\u062d \u0627\u0644\u0644\u062d\u0645"
+        },
+        "amenity/restaurant/sushi": {
+            "name": "\u0645\u0637\u0639\u0645 \u0633\u0648\u0634\u064a"
+        },
+        "amenity/restaurant/thai": {
+            "name": "\u0645\u0637\u0639\u0645 \u062a\u0627\u064a\u0644\u0627\u0646\u062f\u064a"
+        },
+        "amenity/restaurant/turkish": {
+            "name": "\u0645\u0637\u0639\u0645 \u062a\u0631\u0643\u064a"
+        },
+        "amenity/restaurant/vietnamese": {
+            "name": "\u0645\u0637\u0639\u0645 \u0641\u064a\u062a\u0646\u0627\u0645\u064a"
+        },
+        "amenity/school": {
+            "name": "\u0623\u0631\u0636 \u0645\u062f\u0631\u0633\u0629",
+            "terms": "\u0645\u062f\u0631\u0633\u0629"
+        },
+        "amenity/scrapyard": {
+            "name": "\u0645\u0642\u0628\u0631\u0629 \u0627\u0644\u0633\u064a\u0627\u0631\u0627\u062a"
+        },
+        "amenity/shelter": {
+            "name": "\u0645\u0623\u0648\u0649",
+            "terms": "\u0645\u0623\u0648\u0649, \u0645\u0644\u062c\u0623, \u0645\u0644\u0627\u0630, \u0633\u0642\u064a\u0641\u0629, \u0648\u0642\u0627\u0621"
+        },
+        "amenity/shower": {
+            "name": "\u062f\u0634 \u0627\u0633\u062a\u062d\u0645\u0627\u0645"
+        },
+        "amenity/smoking_area": {
+            "name": "\u0645\u0646\u0637\u0642\u0629 \u0645\u062e\u0635\u0635\u0629 \u0644\u0644\u062a\u062f\u062e\u064a\u0646"
+        },
+        "amenity/social_facility": {
+            "name": "\u0645\u0624\u0633\u0633\u0629 \u0627\u062c\u062a\u0645\u0627\u0639\u064a\u0629",
+            "terms": "\u0645\u0624\u0633\u0633\u0629 \u0627\u062c\u062a\u0645\u0627\u0639\u064a\u0629"
+        },
+        "amenity/social_facility/food_bank": {
+            "name": "\u0628\u0646\u0643 \u0627\u0644\u0637\u0639\u0627\u0645",
+            "terms": "\u0628\u0646\u0643 \u0627\u0644\u0637\u0639\u0627\u0645"
+        },
+        "amenity/social_facility/group_home": {
+            "name": "\u062f\u0627\u0631 \u0627\u0644\u0645\u0633\u0646\u064a\u0646",
+            "terms": "\u062f\u0627\u0631 \u0627\u0644\u0645\u0633\u0646\u064a\u0646"
+        },
+        "amenity/social_facility/homeless_shelter": {
+            "name": "\u0645\u0644\u062c\u0623 \u0645\u0634\u0631\u062f\u064a\u0646",
+            "terms": "\u0645\u0644\u062c\u0623 \u0645\u0634\u0631\u062f\u064a\u0646\u060c \u0645\u0623\u0648\u0649"
+        },
+        "amenity/social_facility/nursing_home": {
+            "name": "\u062f\u0627\u0631 \u0627\u0644\u062a\u0645\u0631\u064a\u0636",
+            "terms": "\u062f\u0627\u0631 \u0627\u0644\u062a\u0645\u0631\u064a\u0636"
+        },
+        "amenity/studio": {
+            "name": "\u0623\u0633\u062a\u0648\u062f\u064a\u0648",
+            "terms": "\u0623\u0633\u062a\u0648\u062f\u064a\u0648; \u0625\u0630\u0627\u0639\u0629; \u0631\u0627\u062f\u064a\u0648; \u062a\u0644\u0641\u0632\u064a\u0648\u0646"
+        },
+        "amenity/swimming_pool": {
+            "name": "\u062d\u0648\u0636 \u0633\u0628\u0627\u062d\u0629"
+        },
+        "amenity/taxi": {
+            "name": "\u0645\u0648\u0642\u0641 \u062a\u0627\u0643\u0633\u064a",
+            "terms": "\u0645\u0648\u0642\u0641 \u0623\u062c\u0631\u0629"
+        },
+        "amenity/telephone": {
+            "name": "\u0647\u0627\u062a\u0641",
+            "terms": "\u0647\u0627\u062a\u0641"
+        },
+        "amenity/theatre": {
+            "name": "\u0645\u0633\u0631\u062d",
+            "terms": "\u0645\u0633\u0631\u062d"
+        },
+        "amenity/theatre/type/amphi": {
+            "name": "\u0645\u0633\u0631\u062d \u0631\u0648\u0645\u0627\u0646\u064a"
+        },
+        "amenity/toilets": {
+            "name": "\u062f\u0648\u0631\u0627\u062a \u0645\u064a\u0627\u0647",
+            "terms": "\u062f\u0648\u0631\u0627\u062a \u0645\u064a\u0627\u0647, \u0645\u0631\u0627\u062d\u064a\u0636"
+        },
+        "amenity/townhall": {
+            "name": "\u0645\u0628\u0646\u0649 \u0627\u0644\u0628\u0644\u062f\u064a\u0629",
+            "terms": "\u0627\u0644\u0628\u0644\u062f\u064a\u0629"
+        },
+        "amenity/university": {
+            "name": "\u0623\u0631\u0636 \u062c\u0627\u0645\u0639\u0629",
+            "terms": "\u0623\u0631\u0636 \u062c\u0627\u0645\u0639\u0629, \u062d\u0631\u0645 \u062c\u0627\u0645\u0639\u064a"
+        },
+        "amenity/vehicle_inspection": {
+            "name": "\u0641\u062d\u0635 \u0645\u0631\u0643\u0628\u0627\u062a"
+        },
+        "amenity/vending_machine": {
+            "name": "\u0622\u0644\u0629 \u0628\u064a\u0639",
+            "terms": "\u0622\u0644\u0629 \u0628\u064a\u0639"
+        },
+        "amenity/vending_machine/cigarettes": {
+            "name": "\u0622\u0644\u0629 \u0628\u064a\u0639 \u0633\u062c\u0627\u0626\u0631",
+            "terms": "\u0633\u062c\u0627\u0626\u0631"
+        },
+        "amenity/vending_machine/coffee": {
+            "name": "\u0622\u0644\u0629 \u0628\u064a\u0639 \u0642\u0647\u0648\u0629",
+            "terms": "\u0642\u0647\u0648\u0629"
+        },
+        "amenity/vending_machine/condoms": {
+            "name": "\u0622\u0644\u0629 \u0628\u064a\u0639 \u0648\u0627\u0642\u064a \u0630\u0643\u0631\u064a"
+        },
+        "amenity/vending_machine/drinks": {
+            "name": "\u0622\u0644\u0629 \u0628\u064a\u0639 \u0645\u0634\u0631\u0648\u0628\u0627\u062a",
+            "terms": "\u0645\u0634\u0631\u0648\u0628\u0627\u062a"
+        },
+        "amenity/vending_machine/electronics": {
+            "name": "\u0622\u0644\u0629 \u0628\u064a\u0639 \u0625\u0644\u0643\u062a\u0631\u0648\u0646\u064a\u0627\u062a"
+        },
+        "amenity/vending_machine/food": {
+            "name": "\u0622\u0644\u0629 \u0628\u064a\u0639 \u0645\u0648\u0627\u062f \u063a\u0630\u0627\u0626\u064a\u0629"
+        },
+        "amenity/vending_machine/fuel": {
+            "name": "\u0645\u0636\u062e\u0629 \u0648\u0642\u0648\u062f",
+            "terms": "\u0648\u0642\u0648\u062f,\u063a\u0627\u0632,\u0628\u062a\u0631\u0648\u0644,\u062c\u0627\u0632,\u0633\u0648\u0644\u0627\u0631"
+        },
+        "amenity/vending_machine/ice_cream": {
+            "name": "\u0622\u0644\u0629 \u0628\u064a\u0639 \u0622\u064a\u0633 \u0643\u0631\u064a\u0645"
+        },
+        "amenity/vending_machine/news_papers": {
+            "name": "\u0622\u0644\u0629 \u0628\u064a\u0639 \u062c\u0631\u0627\u0626\u062f"
+        },
+        "amenity/vending_machine/newspapers": {
+            "name": "\u0622\u0644\u0629 \u0628\u064a\u0639 \u062c\u0631\u0627\u0626\u062f",
+            "terms": "\u062c\u0631\u0627\u0626\u062f"
+        },
+        "amenity/vending_machine/parking_tickets": {
+            "name": "\u0645\u0627\u0643\u064a\u0646\u0629 \u0628\u064a\u0639 \u062a\u0630\u0627\u0643\u0631 \u0648\u0642\u0648\u0641",
+            "terms": "\u0645\u0627\u0643\u064a\u0646\u0629 \u062a\u0630\u0627\u0643\u0631"
+        },
+        "amenity/veterinary": {
+            "name": "\u0637\u0628\u064a\u0628 \u0628\u064a\u0637\u0631\u064a",
+            "terms": "\u0628\u064a\u0637\u0631\u064a\u060c \u0637\u0628\u064a\u0628 \u062d\u064a\u0648\u0627\u0646\u0627\u062a"
+        },
+        "amenity/waste_basket": {
+            "name": "\u0633\u0644\u0629 \u0645\u0647\u0645\u0644\u0627\u062a",
+            "terms": "\u0633\u0644\u0629 \u0627\u0644\u0645\u0647\u0645\u0644\u0627\u062a,\u0633\u0644\u0629 \u0627\u0644\u0642\u0645\u0627\u0645\u0629,\u0642\u0645\u0627\u0645\u0629,\u0645\u0647\u0645\u0644\u0627\u062a"
+        },
+        "amenity/waste_disposal": {
+            "name": "\u0635\u0646\u062f\u0648\u0642 \u0642\u0645\u0627\u0645\u0629 \u0642\u0627\u0628\u0644 \u0644\u0644\u0646\u0642\u0644"
+        },
+        "amenity/waste_transfer_station": {
+            "name": "\u0645\u062d\u0637\u0629 \u0646\u0642\u0644 \u0627\u0644\u0646\u0641\u0627\u064a\u0627\u062a",
+            "terms": "\u0646\u0641\u0627\u064a\u0627\u062a,\u0642\u0645\u0627\u0645\u0629,\u0645\u0647\u0645\u0644\u0627\u062a"
+        },
+        "amenity/watering_place": {
+            "name": "\u0645\u0643\u0627\u0646 \u0634\u0631\u0628 \u0644\u0644\u062d\u064a\u0648\u0627\u0646\u0627\u062a"
+        },
+        "area": {
+            "name": "\u0645\u0646\u0637\u0642\u0629",
+            "terms": "\u0627\u0644\u0645\u0633\u0627\u062d\u0629; \u0645\u0633\u0627\u062d\u0629; \u0645\u0646\u0637\u0642\u0629; \u0627\u0644\u0645\u0646\u0637\u0642\u0629"
+        },
+        "area/highway": {
+            "name": "\u0633\u0637\u062d \u0627\u0644\u0637\u0631\u064a\u0642"
+        },
+        "attraction/animal": {
+            "name": "\u062d\u064a\u0648\u0627\u0646",
+            "terms": "\u062d\u064a\u0648\u0627\u0646"
+        },
+        "attraction/big_wheel": {
+            "name": "\u062f\u0648\u0644\u0627\u0628 \u0647\u0648\u0627\u0621",
+            "terms": "\u062f\u0648\u0644\u0627\u0628 \u0647\u0648\u0627\u0621; \u0627\u0644\u0639\u062c\u0644\u0629 \u0627\u0644\u0643\u0628\u064a\u0631\u0629"
+        },
+        "attraction/bumper_car": {
+            "name": "\u0633\u064a\u0627\u0631\u0629 \u0627\u0635\u0637\u062f\u0627\u0645\u064a\u0629",
+            "terms": "\u0633\u064a\u0627\u0631\u0629 \u0627\u0635\u0637\u062f\u0627\u0645\u064a\u0629"
+        },
+        "attraction/carousel": {
+            "name": "\u062f\u0648\u0627\u0645\u0629 \u062e\u064a\u0644",
+            "terms": "\u062f\u0648\u0627\u0645\u0629 \u062e\u064a\u0644"
+        },
+        "attraction/maze": {
+            "name": "\u0645\u062a\u0627\u0647\u0629",
+            "terms": "\u0645\u062a\u0627\u0647\u0629"
+        },
+        "attraction/pirate_ship": {
+            "name": "\u0633\u0641\u064a\u0646\u0629 \u0642\u0631\u0627\u0635\u0646\u0629",
+            "terms": "\u0633\u0641\u064a\u0646\u0629 \u0642\u0631\u0627\u0635\u0646\u0629"
+        },
+        "attraction/roller_coaster": {
+            "name": "\u0627\u0644\u0633\u0641\u064a\u0646\u0629 \u0627\u0644\u062f\u0648\u0627\u0631\u0629",
+            "terms": "\u0633\u0641\u064a\u0646\u0629 \u062f\u0648\u0627\u0631\u0629"
+        },
+        "barrier": {
+            "name": "\u062d\u0627\u062c\u0632",
+            "terms": "\u062d\u0627\u062c\u0632, \u0639\u0627\u0626\u0642, \u062a\u062e\u0645, \u0642\u0644\u0639\u0629 \u0645\u062d\u0635\u0646\u0629, \u0645\u062f\u064a\u0646\u0629 \u0645\u062d\u0635\u0646\u0629, \u0645\u0632\u0644\u0642\u0627\u0646"
+        },
+        "barrier/block": {
+            "name": "\u0643\u062a\u0644\u0629",
+            "terms": "\u0643\u062a\u0644\u0629, \u0643\u062a\u0644\u0629 \u062d\u062c\u0631\u064a\u0629, \u0639\u0627\u0626\u0642"
+        },
+        "barrier/bollard": {
+            "name": "\u0639\u0645\u0648\u062f \u0635\u0644\u0628",
+            "terms": "\u0639\u0645\u0648\u062f \u0635\u0644\u0628"
+        },
+        "barrier/border_control": {
+            "name": "\u0645\u0639\u0628\u0631 \u062d\u062f\u0648\u062f\u064a",
+            "terms": "\u0645\u0639\u0628\u0631 \u062d\u062f\u0648\u062f\u064a"
+        },
+        "barrier/cattle_grid": {
+            "name": "\u0634\u0628\u0643\u0629 \u0627\u0644\u0645\u0627\u0634\u064a\u0629",
+            "terms": "\u0634\u0628\u0643\u0629 \u0627\u0644\u0645\u0627\u0634\u064a\u0629,\u0634\u0628\u0643\u0629 \u0644\u0645\u0646\u0639 \u0627\u0644\u0645\u0627\u0634\u064a\u0629"
+        },
+        "barrier/city_wall": {
+            "name": "\u062c\u062f\u0627\u0631 \u0627\u0644\u0645\u062f\u064a\u0646\u0629",
+            "terms": "\u062c\u062f\u0627\u0631 \u0627\u0644\u0645\u062f\u064a\u0646\u0629; \u0633\u0648\u0631"
+        },
+        "barrier/cycle_barrier": {
+            "name": "\u062d\u0627\u062c\u0632 \u062f\u0631\u0627\u062c\u0627\u062a \u0647\u0648\u0627\u0626\u064a\u0629",
+            "terms": "\u062d\u0627\u062c\u0632 \u062f\u0631\u0627\u062c\u0627\u062a \u0647\u0648\u0627\u0626\u064a\u0629; \u062d\u0627\u062c\u0632; \u0645\u0645\u0631; \u062d\u0627\u062c\u0632 \u0645\u0631\u0648\u0631; \u062d\u0627\u062c\u0632 \u062f\u0631\u0627\u062c\u0627\u062a"
+        },
+        "barrier/ditch": {
+            "name": "\u062e\u0646\u062f\u0642",
+            "terms": "\u062e\u0646\u062f\u0642"
+        },
+        "barrier/entrance": {
+            "name": "\u0645\u062f\u062e\u0644"
+        },
+        "barrier/fence": {
+            "name": "\u0633\u064a\u0627\u062c",
+            "terms": "\u0633\u064a\u0627\u062c"
+        },
+        "barrier/gate": {
+            "name": "\u0628\u0648\u0627\u0628\u0629",
+            "terms": "\u0628\u0648\u0627\u0628\u0629"
+        },
+        "barrier/hedge": {
+            "name": "\u0633\u064a\u0627\u062c \u0646\u0628\u0627\u062a\u064a",
+            "terms": "\u0633\u064a\u0627\u062c \u0646\u0628\u0627\u062a\u064a"
+        },
+        "barrier/kissing_gate": {
+            "name": "\u0628\u0648\u0627\u0628\u0629 \u0645\u0646\u0639 \u0627\u0644\u0645\u0627\u0634\u064a\u0629",
+            "terms": "\u0628\u0648\u0627\u0628\u0629 \u0645\u0646\u0639 \u0627\u0644\u0645\u0627\u0634\u064a\u0629"
+        },
+        "barrier/lift_gate": {
+            "name": "\u0628\u0648\u0627\u0628\u0629 \u0627\u0644\u0631\u0627\u0641\u0639\u0629",
+            "terms": "\u0628\u0648\u0627\u0628\u0629 \u0627\u0644\u0631\u0627\u0641\u0639\u0629"
+        },
+        "barrier/retaining_wall": {
+            "name": "\u062c\u062f\u0627\u0631 \u062a\u062b\u0628\u064a\u062a",
+            "terms": "\u062c\u062f\u0627\u0631 \u062a\u062b\u0628\u064a\u062a"
+        },
+        "barrier/stile": {
+            "name": "\u0645\u0631\u0642\u0649 \u0639\u0628\u0648\u0631",
+            "terms": "\u0645\u0631\u0642\u0649 \u0639\u0628\u0648\u0631, \u0639\u0636\u0627\u062f\u0629"
+        },
+        "barrier/toll_booth": {
+            "name": "\u0643\u0634\u0643 \u0627\u0644\u062a\u062d\u0635\u064a\u0644",
+            "terms": "\u0643\u0634\u0643 \u0627\u0644\u062a\u062d\u0635\u064a\u0644 , \u0645\u0643\u062a\u0628 \u0631\u0633\u0648\u0645 \u0627\u0644\u0639\u0628\u0648\u0631"
+        },
+        "barrier/wall": {
+            "name": "\u062c\u062f\u0627\u0631",
+            "terms": "\u062c\u062f\u0627\u0631"
+        },
+        "boundary/administrative": {
+            "name": "\u062d\u062f\u0648\u062f \u0625\u062f\u0627\u0631\u064a\u0629",
+            "terms": "\u062d\u062f\u0648\u062f \u0625\u062f\u0627\u0631\u064a\u0629"
+        },
+        "building": {
+            "name": "\u0645\u0628\u0646\u0649",
+            "terms": "\u0645\u0628\u0646\u0649"
+        },
+        "building/barn": {
+            "name": "\u062d\u0638\u064a\u0631\u0629",
+            "terms": "\u0645\u062e\u0632\u0646; \u0627\u0633\u0637\u0628\u0644"
+        },
+        "building/bunker": {
+            "name": "\u0645\u0644\u062c\u0623 \u0645\u062d\u0635\u0651\u0646"
+        },
+        "building/cabin": {
+            "name": "\u0643\u0648\u062e"
+        },
+        "building/cathedral": {
+            "name": "\u0645\u0628\u0646\u0649 \u0643\u0627\u062a\u062f\u0631\u0627\u0626\u064a\u0629"
+        },
+        "building/chapel": {
+            "name": "\u0645\u0628\u0646\u0649 \u0645\u0639\u0628\u062f"
+        },
+        "building/church": {
+            "name": "\u0645\u0628\u0646\u0649 \u0643\u0646\u064a\u0633\u0629",
+            "terms": "\u0643\u0646\u064a\u0633\u0629,\u0645\u0639\u0628\u062f"
+        },
+        "building/college": {
+            "name": "\u0645\u0628\u0646\u0649 \u0643\u0644\u064a\u0629",
+            "terms": "\u0643\u0644\u064a\u0629,\u062c\u0627\u0645\u0639\u0629"
+        },
+        "building/commercial": {
+            "name": "\u0645\u0628\u0646\u064a \u062a\u062c\u0627\u0631\u064a",
+            "terms": "\u0645\u0628\u0646\u0649 \u062a\u062c\u0627\u0631\u064a"
+        },
+        "building/construction": {
+            "name": "\u0645\u0628\u0646\u0649 \u062a\u062d\u062a \u0627\u0644\u0625\u0646\u0634\u0627\u0621",
+            "terms": "\u062a\u062d\u062a \u0627\u0644\u0627\u0646\u0634\u0627\u0621,"
+        },
+        "building/detached": {
+            "name": "\u0645\u0646\u0632\u0644 \u0645\u0646\u0641\u0635\u0644",
+            "terms": "\u0645\u0633\u062a\u0642\u0644; \u0645\u0646\u0641\u0635\u0644"
+        },
+        "building/dormitory": {
+            "name": "\u0633\u0643\u0646 \u0645\u062c\u0645\u0639",
+            "terms": "\u0645\u0647\u062c\u0639; \u0633\u0643\u0646; \u0633\u0643\u0646 \u062c\u0627\u0645\u0639\u064a"
+        },
+        "building/entrance": {
+            "name": "\u0645\u062f\u062e\u0644 \u0648\u0645\u062e\u0631\u062c"
+        },
+        "building/farm": {
+            "name": "\u0628\u064a\u062a \u0631\u064a\u0641\u064a",
+            "terms": "\u0631\u064a\u0641,\u0645\u0632\u0631\u0639\u0629,\u0632\u0631\u0639"
+        },
+        "building/farm_auxiliary": {
+            "name": "\u0645\u0628\u0646\u0649 \u0645\u0632\u0631\u0639\u0629",
+            "terms": "\u0645\u0632\u0631\u0639\u0629,\u0631\u064a\u0641,"
+        },
+        "building/garage": {
+            "name": "\u062c\u0631\u0627\u062c",
+            "terms": "\u0645\u064e\u0631\u0652\u0623\u0628 , \u0643\u0631\u0627\u062c, \u062a\u0635\u0644\u064a\u062d \u0633\u064a\u0627\u0631\u0627\u062a"
+        },
+        "building/garages": {
+            "name": "\u062c\u0631\u0627\u062c\u0627\u062a",
+            "terms": "\u062c\u0631\u0627\u062c; \u062c\u0631\u0627\u062c \u0633\u064a\u0627\u0631\u0627\u062a; \u0645\u0648\u0642\u0641; \u0645\u0648\u0642\u0641 \u0633\u064a\u0627\u0631\u0627\u062a; \u0631\u0643\u0646; \u0631\u0643\u0646\u0629"
+        },
+        "building/greenhouse": {
+            "name": "\u062f\u0641\u064a\u0626\u0629 \u0632\u0631\u0627\u0639\u064a\u0629",
+            "terms": "\u062f\u0641\u064a\u0626\u0629 \u0632\u0631\u0627\u0639\u064a\u0629; \u0628\u064a\u062a \u0628\u0644\u0627\u0633\u062a\u064a\u0643\u064a; \u0628\u064a\u062a \u0632\u062c\u0627\u062c\u064a"
+        },
+        "building/hospital": {
+            "name": "\u0645\u0628\u0646\u0649 \u0645\u0633\u062a\u0634\u0641\u0649",
+            "terms": "\u0645\u0633\u062a\u0634\u0641\u0649; \u0645\u0628\u0646\u0649 \u0645\u0633\u062a\u0634\u0641\u0649"
+        },
+        "building/hotel": {
+            "name": "\u0645\u0628\u0646\u0649 \u0641\u0646\u062f\u0642",
+            "terms": "\u0641\u0646\u062f\u0642"
+        },
+        "building/house": {
+            "name": "\u0645\u0646\u0632\u0644",
+            "terms": "\u0645\u0646\u0632\u0644, \u0628\u064a\u062a"
+        },
+        "building/hut": {
+            "name": "\u0643\u0648\u062e",
+            "terms": "\u0643\u0648\u062e; \u0642\u0634"
+        },
+        "building/industrial": {
+            "name": "\u0645\u0628\u0646\u0649 \u0635\u0646\u0627\u0639\u064a",
+            "terms": "\u0645\u0628\u0646\u0649 \u0635\u0646\u0627\u0639\u064a"
+        },
+        "building/kindergarten": {
+            "name": "\u0645\u0628\u0646\u0649 \u0631\u0648\u0636\u0629 \u0623\u0637\u0641\u0627\u0644",
+            "terms": "\u0631\u0648\u0636\u0629; \u0623\u0637\u0641\u0627\u0644"
+        },
+        "building/mosque": {
+            "name": "\u0645\u0628\u0646\u0649 \u0627\u0644\u0645\u0633\u062c\u062f",
+            "terms": "\u0645\u0628\u0646\u0649 \u0627\u0644\u0645\u0633\u062c\u062f"
+        },
+        "building/public": {
+            "name": "\u0645\u0628\u0646\u0649 \u0639\u0645\u0648\u0645\u064a",
+            "terms": "\u0639\u0627\u0645; \u0639\u0645\u0648\u0645\u064a"
+        },
+        "building/residential": {
+            "name": "\u0645\u0628\u0646\u0649 \u0633\u0643\u0646\u064a",
+            "terms": "\u0645\u0628\u0646\u0649 \u0633\u0643\u0646\u064a"
+        },
+        "building/retail": {
+            "name": "\u0645\u0628\u0646\u0649 \u0628\u064a\u0639 \u0628\u0627\u0644\u062a\u062c\u0632\u0626\u0629",
+            "terms": "\u062a\u062c\u0632\u0626\u0629"
+        },
+        "building/roof": {
+            "name": "\u0633\u0642\u0641",
+            "terms": "\u063a\u0637\u0627\u0621"
+        },
+        "building/school": {
+            "name": "\u0645\u0628\u0646\u0649 \u0645\u062f\u0631\u0633\u0629"
+        },
+        "building/semidetached_house": {
+            "name": "\u0645\u0628\u0646\u0649 \u0634\u0628\u0647 \u0645\u0646\u0641\u0635\u0644"
+        },
+        "building/shed": {
+            "name": "\u0633\u0642\u064a\u0641\u0629",
+            "terms": "\u0633\u0642\u064a\u0641\u0629; \u0628\u064a\u062a"
+        },
+        "building/stable": {
+            "name": "\u0625\u0633\u0637\u0628\u0644",
+            "terms": "\u0625\u0633\u0637\u0628\u0644"
+        },
+        "building/stadium": {
+            "name": "\u0645\u0628\u0646\u0649 \u0627\u0644\u0645\u0644\u0639\u0628",
+            "terms": "\u0645\u0628\u0646\u0649 \u0627\u0644\u0645\u0644\u0639\u0628"
+        },
+        "building/temple": {
+            "name": "\u0645\u0628\u0646\u0649 \u0627\u0644\u0645\u0639\u0628\u062f",
+            "terms": "\u0645\u0628\u0646\u0649 \u0627\u0644\u0645\u0639\u0628\u062f"
+        },
+        "building/terrace": {
+            "name": "\u0635\u0641 \u0645\u0646\u0627\u0632\u0644",
+            "terms": "\u0635\u0641 \u0645\u0646\u0627\u0632\u0644"
+        },
+        "building/transportation": {
+            "name": "\u0645\u0628\u0646\u0649 \u0644\u0644\u0646\u0642\u0644 \u0627\u0644\u0639\u0627\u0645",
+            "terms": "\u0645\u0628\u0646\u0649 \u0644\u0644\u0646\u0642\u0644 \u0627\u0644\u0639\u0627\u0645"
+        },
+        "building/university": {
+            "name": "\u0645\u0628\u0646\u0649 \u062c\u0627\u0645\u0639\u064a",
+            "terms": "\u062c\u0627\u0645\u0639\u0629; \u0643\u0644\u064a\u0629"
+        },
+        "building/warehouse": {
+            "name": "\u0645\u0633\u062a\u0648\u062f\u0639",
+            "terms": "\u0645\u0633\u062a\u0648\u062f\u0639; \u0645\u062e\u0632\u0646"
+        },
+        "club": {
+            "name": "\u0646\u0627\u062f\u064a",
+            "terms": "\u0646\u0627\u062f\u064a"
+        },
+        "craft": {
+            "name": "\u062d\u0631\u0641\u0629",
+            "terms": "\u062d\u0631\u0641\u0629"
+        },
+        "craft/basket_maker": {
+            "name": "\u0635\u0627\u0646\u0639 \u0627\u0644\u0633\u0644\u0627\u0644",
+            "terms": "\u0635\u0627\u0646\u0639 \u0627\u0644\u0633\u0644\u0627\u0644"
+        },
+        "craft/beekeeper": {
+            "name": "\u0645\u0631\u0628\u064a \u0627\u0644\u0646\u062d\u0644",
+            "terms": "\u0645\u0631\u0628\u064a \u0627\u0644\u0646\u062d\u0644, \u0646\u062d\u0627\u0644"
+        },
+        "craft/blacksmith": {
+            "name": "\u062d\u062f\u0651\u0627\u062f",
+            "terms": "\u062d\u062f\u0651\u0627\u062f"
+        },
+        "craft/boatbuilder": {
+            "name": "\u0628\u0646\u0651\u0627\u0621 \u0627\u0644\u0633\u0641\u0646",
+            "terms": "\u0628\u0646\u0651\u0627\u0621 \u0627\u0644\u0633\u0641\u0646"
+        },
+        "craft/bookbinder": {
+            "name": "\u0645\u062c\u0644\u062f \u0627\u0644\u0643\u062a\u0628",
+            "terms": "\u0645\u062c\u0644\u062f \u0627\u0644\u0643\u062a\u0628"
+        },
+        "craft/brewery": {
+            "name": "\u0645\u0635\u0646\u0639 \u0628\u064a\u0631\u0629",
+            "terms": "\u0628\u064a\u0631\u0629; \u062c\u0639\u0629"
+        },
+        "craft/carpenter": {
+            "name": "\u0646\u062c\u0627\u0631",
+            "terms": "\u0646\u062c\u0627\u0631"
+        },
+        "craft/caterer": {
+            "name": "\u0645\u0646\u0638\u0645 \u062d\u0641\u0644\u0627\u062a",
+            "terms": "\u0645\u0646\u0638\u0645 \u062d\u0641\u0644\u0627\u062a; \u0645\u062a\u0639\u0647\u062f \u062d\u0641\u0644\u0627\u062a;\u062d\u0641\u0644\u0629;\u062d\u0641\u0644\u0627\u062a"
+        },
+        "craft/clockmaker": {
+            "name": "\u0633\u0627\u0639\u0627\u062a\u064a",
+            "terms": "\u0633\u0627\u0639\u0627\u062a\u064a"
+        },
+        "craft/confectionery": {
+            "name": "\u062d\u0644\u0648\u0627\u0646\u064a",
+            "terms": "\u062d\u0644\u0648\u0627\u0646\u064a"
+        },
+        "craft/electrician": {
+            "name": "\u0643\u0647\u0631\u0628\u0627\u0626\u064a",
+            "terms": "\u0643\u0647\u0631\u0628\u0627\u0626\u064a"
+        },
+        "craft/electronics_repair": {
+            "name": "\u062e\u062f\u0645\u0629 \u062a\u0635\u0644\u064a\u062d \u0627\u0644\u0623\u062c\u0647\u0632\u0629 \u0627\u0644\u0625\u0644\u0643\u062a\u0631\u0648\u0646\u064a\u0629",
+            "terms": "\u062e\u062f\u0645\u0629 \u062a\u0635\u0644\u064a\u062d \u0627\u0644\u0623\u062c\u0647\u0632\u0629 \u0627\u0644\u0625\u0644\u0643\u062a\u0631\u0648\u0646\u064a\u0629"
+        },
+        "craft/gardener": {
+            "name": "\u0628\u0633\u062a\u0627\u0646\u064a",
+            "terms": "\u0628\u0633\u062a\u0627\u0646\u064a"
+        },
+        "craft/handicraft": {
+            "name": "\u062d\u0631\u0641\u064a",
+            "terms": "\u062d\u0631\u0641\u064a"
+        },
+        "craft/jeweler": {
+            "name": "\u0628\u0627\u0626\u0639 \u0645\u062c\u0648\u0647\u0631\u0627\u062a"
+        },
+        "craft/locksmith": {
+            "name": "\u0642\u0641\u0627\u0644 - \u0635\u0627\u0646\u0639 \u0623\u0642\u0641\u0627\u0644"
+        },
+        "craft/metal_construction": {
+            "name": "\u0627\u0644\u0628\u0646\u0627\u0621 \u0627\u0644\u0645\u0639\u062f\u0646\u064a",
+            "terms": "\u0627\u0644\u0628\u0646\u0627\u0621 \u0627\u0644\u0645\u0639\u062f\u0646\u064a"
+        },
+        "craft/painter": {
+            "name": "\u062f\u0647\u0651\u0627\u0646",
+            "terms": "\u062f\u0647\u0651\u0627\u0646"
+        },
+        "craft/photographer": {
+            "name": "\u0645\u0635\u0648\u0631",
+            "terms": "\u0645\u0635\u0648\u0631"
+        },
+        "craft/photographic_laboratory": {
+            "name": "\u0645\u062e\u062a\u0628\u0631 \u0627\u0644\u062a\u0635\u0648\u064a\u0631",
+            "terms": "\u0645\u062e\u062a\u0628\u0631 \u0627\u0644\u062a\u0635\u0648\u064a\u0631"
+        },
+        "craft/plumber": {
+            "name": "\u0633\u0628\u0627\u0643",
+            "terms": "\u0633\u0628\u0627\u0643; \u0633\u0645\u0643\u0631\u064a"
+        },
+        "craft/pottery": {
+            "name": "\u0645\u0635\u0646\u0639 \u0641\u062e\u0627\u0631 \u0648\u062e\u0632\u0641",
+            "terms": "\u0641\u062e\u0627\u0631; \u062e\u0632\u0641; \u0628\u0648\u0631\u0633\u0644\u064a\u0646"
+        },
+        "craft/roofer": {
+            "name": "\u0628\u0646\u0651\u0627\u0621 \u0627\u0644\u0633\u0642\u0641",
+            "terms": "\u0628\u0646\u0651\u0627\u0621 \u0627\u0644\u0633\u0642\u0641"
+        },
+        "craft/saddler": {
+            "name": "\u0635\u0627\u0646\u0639 \u0633\u0631\u0627\u062c",
+            "terms": "\u0635\u0627\u0646\u0639 \u0633\u0631\u0627\u062c"
+        },
+        "craft/sailmaker": {
+            "name": "\u0635\u0627\u0646\u0639 \u0623\u0634\u0631\u0639\u0629",
+            "terms": "\u0635\u0627\u0646\u0639 \u0623\u0634\u0631\u0639\u0629"
+        },
+        "craft/sawmill": {
+            "name": "\u0645\u0646\u0634\u0631\u0629",
+            "terms": "\u0645\u0646\u0634\u0631\u0629"
+        },
+        "craft/scaffolder": {
+            "name": "\u0645\u0631\u0643\u0628 \u0627\u0644\u0633\u0642\u0627\u0644\u0629",
+            "terms": "\u0645\u0631\u0643\u0628 \u0627\u0644\u0633\u0642\u0627\u0644\u0629"
+        },
+        "craft/sculptor": {
+            "name": "\u0646\u062d\u0651\u0627\u062a",
+            "terms": "\u0646\u062d\u0651\u0627\u062a"
+        },
+        "craft/shoemaker": {
+            "name": "\u0625\u0633\u0643\u0627\u0641\u064a",
+            "terms": "\u0625\u0633\u0643\u0627\u0641\u064a"
+        },
+        "craft/tailor": {
+            "name": "\u062e\u064a\u0627\u0637"
+        },
+        "craft/tiler": {
+            "name": "\u0645\u0631\u0643\u0651\u0650\u0628 \u0627\u0644\u0628\u0644\u0627\u0637",
+            "terms": "\u0645\u0631\u0643\u0651\u0650\u0628 \u0627\u0644\u0628\u0644\u0627\u0637"
+        },
+        "craft/upholsterer": {
+            "name": "\u0645\u0646\u062c\u062f",
+            "terms": "\u0645\u0646\u062c\u062f; \u062a\u0646\u062c\u064a\u062f; \u0623\u062b\u0627\u062b"
+        },
+        "craft/watchmaker": {
+            "name": "\u0633\u0627\u0639\u0627\u062a\u064a (\u0633\u0627\u0639\u0627\u062a \u064a\u062f\u0648\u064a\u0629)",
+            "terms": "\u0633\u0627\u0639\u0627\u062a\u064a"
+        },
+        "emergency/ambulance_station": {
+            "name": "\u0645\u062d\u0637\u0629 \u0625\u0633\u0639\u0627\u0641",
+            "terms": "\u0645\u062d\u0637\u0629 \u0625\u0633\u0639\u0627\u0641, \u0645\u062d\u0637\u0629 \u0627\u0633\u0639\u0627\u0641"
+        },
+        "emergency/defibrillator": {
+            "name": "\u0645\u0632\u064a\u0644 \u0627\u0644\u0631\u062c\u0641\u0627\u0646",
+            "terms": "\u0645\u0632\u064a\u0644 \u0627\u0644\u0631\u062c\u0641\u0627\u0646"
+        },
+        "emergency/fire_hydrant": {
+            "name": "\u062e\u0631\u0637\u0648\u0645 \u0625\u0637\u0641\u0627\u0621",
+            "terms": "\u062e\u0631\u0637\u0648\u0645; \u0645\u0637\u0627\u0641\u0626; \u0625\u0637\u0641\u0627\u0621; \u0627\u0637\u0641\u0627\u0621"
+        },
+        "emergency/phone": {
+            "name": "\u0647\u0627\u062a\u0641 \u0637\u0648\u0627\u0631\u0626",
+            "terms": "\u0647\u0627\u062a\u0641 \u0637\u0648\u0627\u0631\u0626"
+        },
+        "entrance": {
+            "name": "\u0645\u062f\u062e\u0644 \u0648\u0645\u062e\u0631\u062c",
+            "terms": "\u062f\u062e\u0648\u0644; \u062e\u0631\u0648\u062c; \u0645\u062f\u062e\u0644; \u0645\u062e\u0631\u062c"
+        },
+        "ford": {
+            "name": "\u0645\u0645\u0631 \u0645\u0627\u0626\u064a",
+            "terms": "\u0645\u0645\u0631 \u0645\u0627\u0626\u064a; \u0645\u0645\u0631; \u0645\u0627\u0626\u064a; \u0645\u0627\u0621"
+        },
+        "healthcare": {
+            "name": "\u0645\u0631\u0641\u0642 \u0627\u0644\u0631\u0639\u0627\u064a\u0629 \u0627\u0644\u0635\u062d\u064a\u0629",
+            "terms": "\u0645\u0631\u0641\u0642 \u0627\u0644\u0631\u0639\u0627\u064a\u0629 \u0627\u0644\u0635\u062d\u064a\u0629"
+        },
+        "healthcare/alternative": {
+            "name": "\u0645\u062a\u062e\u0635\u0635 \u0641\u064a \u0627\u0644\u0637\u0628 \u0627\u0644\u0628\u062f\u064a\u0644",
+            "terms": "\u0645\u062a\u062e\u0635\u0635 \u0641\u064a \u0627\u0644\u0637\u0628 \u0627\u0644\u0628\u062f\u064a\u0644"
+        },
+        "healthcare/alternative/chiropractic": {
+            "name": "\u0627\u0644\u0645\u0639\u0627\u0644\u062c \u0644\u0644\u0623\u0645\u0631\u0627\u0636 \u064a\u062f\u0648\u064a\u0627",
+            "terms": "\u0627\u0644\u0645\u0639\u0627\u0644\u062c \u0644\u0644\u0623\u0645\u0631\u0627\u0636 \u064a\u062f\u0648\u064a\u0627; \u0645\u0642\u0648\u0645 \u0627\u0644\u0639\u0638\u0627\u0645"
+        },
+        "healthcare/audiologist": {
+            "name": "\u0623\u062e\u0635\u0627\u0626\u064a \u0627\u0644\u0633\u0645\u0639",
+            "terms": "\u0623\u062e\u0635\u0627\u0626\u064a \u0627\u0644\u0633\u0645\u0639"
+        },
+        "healthcare/blood_donation": {
+            "name": "\u0645\u0631\u0643\u0632 \u0627\u0644\u062a\u0628\u0631\u0639 \u0628\u0627\u0644\u062f\u0645",
+            "terms": "\u062a\u0628\u0631\u0639 \u0628\u0627\u0644\u062f\u0645"
+        },
+        "healthcare/laboratory": {
+            "name": "\u0645\u062e\u062a\u0628\u0631 \u0637\u0628\u064a",
+            "terms": "\u0645\u062e\u062a\u0628\u0631 \u0637\u0628\u064a; \u0645\u062e\u0628\u0631 \u0627\u0644\u062a\u062d\u0627\u0644\u064a\u0644 \u0627\u0644\u0637\u0628\u064a\u0629"
+        },
+        "healthcare/occupational_therapist": {
+            "name": "\u0623\u062e\u0635\u0627\u0626\u064a \u0627\u0644\u0639\u0644\u0627\u062c \u0627\u0644\u0648\u0638\u064a\u0641\u064a",
+            "terms": "\u0623\u062e\u0635\u0627\u0626\u064a \u0627\u0644\u0639\u0644\u0627\u062c \u0627\u0644\u0648\u0638\u064a\u0641\u064a"
+        },
+        "healthcare/optometrist": {
+            "name": "\u0623\u062e\u0635\u0627\u0626\u064a \u0627\u0644\u0628\u0635\u0631\u064a\u0627\u062a",
+            "terms": "\u0623\u062e\u0635\u0627\u0626\u064a \u0627\u0644\u0628\u0635\u0631\u064a\u0627\u062a"
+        },
+        "healthcare/physiotherapist": {
+            "name": "\u0623\u062e\u0635\u0627\u0626\u064a \u0627\u0644\u0639\u0644\u0627\u062c \u0627\u0644\u0637\u0628\u064a\u0639\u064a",
+            "terms": "\u0623\u062e\u0635\u0627\u0626\u064a \u0627\u0644\u0639\u0644\u0627\u062c \u0627\u0644\u0637\u0628\u064a\u0639\u064a"
+        },
+        "healthcare/podiatrist": {
+            "name": "\u0637\u0628\u064a\u0628 \u0627\u0644\u0623\u0642\u062f\u0627\u0645",
+            "terms": "\u0637\u0628\u064a\u0628 \u0627\u0644\u0623\u0642\u062f\u0627\u0645; \u0627\u0644\u0623\u0631\u062c\u0644"
+        },
+        "healthcare/psychotherapist": {
+            "name": "\u0645\u0639\u0627\u0644\u062c \u0646\u0641\u0633\u064a",
+            "terms": "\u0645\u0639\u0627\u0644\u062c \u0646\u0641\u0633\u064a"
+        },
+        "healthcare/rehabilitation": {
+            "name": "\u0645\u0631\u0643\u0632 \u0625\u0639\u0627\u062f\u0629 \u0627\u0644\u062a\u0623\u0647\u064a\u0644",
+            "terms": "\u0645\u0631\u0643\u0632 \u0625\u0639\u0627\u062f\u0629 \u0627\u0644\u062a\u0623\u0647\u064a\u0644"
+        },
+        "healthcare/speech_therapist": {
+            "name": "\u0645\u0639\u0627\u0644\u062c \u0627\u0644\u0646\u0637\u0642",
+            "terms": "\u0645\u0639\u0627\u0644\u062c \u0627\u0644\u0646\u0637\u0642\u060c \u0646\u0637\u0642"
+        },
+        "highway": {
+            "name": "\u0637\u0631\u064a\u0642 \u0633\u0631\u064a\u0639"
+        },
+        "highway/bridleway": {
+            "name": "\u0637\u0631\u064a\u0642 \u0627\u0644\u062e\u064a\u0648\u0644",
+            "terms": "\u0637\u0631\u064a\u0642 \u0627\u0644\u062e\u064a\u0648\u0644, \u0645\u0645\u0631 \u0644\u0644\u062e\u064a\u0648\u0644"
+        },
+        "highway/bus_stop": {
+            "name": "\u0645\u0648\u0642\u0641 \u062d\u0627\u0641\u0644\u0627\u062a"
+        },
+        "highway/corridor": {
+            "name": "\u0645\u0645\u0631 \u062f\u0627\u062e\u0644\u064a",
+            "terms": "\u0645\u0645\u0631 \u062f\u0627\u062e\u0644\u064a; \u0631\u0648\u0627\u0642"
+        },
+        "highway/cycleway": {
+            "name": "\u0645\u0633\u0627\u0631 \u062f\u0631\u0627\u062c\u0627\u062a",
+            "terms": "\u0637\u0631\u064a\u0642 \u062f\u0631\u0627\u062c\u0627\u062a; \u0645\u0633\u0627\u0631 \u062f\u0631\u0627\u062c\u0627\u062a"
+        },
+        "highway/elevator": {
+            "name": "\u0645\u0635\u0639\u062f",
+            "terms": "\u0645\u0635\u0639\u062f"
+        },
+        "highway/footway": {
+            "name": "\u0637\u0631\u064a\u0642 \u0645\u0634\u064a \u0628\u0627\u0644\u0623\u0642\u062f\u0627\u0645",
+            "terms": "\u0645\u0645\u0634\u0649 \u0628\u0627\u0644\u0623\u0642\u062f\u0627\u0645"
+        },
+        "highway/give_way": {
+            "name": "\u0625\u0634\u0627\u0631\u0629 \"\u0623\u0641\u0633\u062d \u0627\u0644\u0637\u0631\u064a\u0642\"",
+            "terms": "\u0623\u0641\u0633\u062d \u0627\u0644\u0637\u0631\u064a\u0642"
+        },
+        "highway/living_street": {
+            "name": "\u0634\u0627\u0631\u0639 \u0633\u0643\u0646\u064a",
+            "terms": "\u0634\u0627\u0631\u0639 \u0633\u0643\u0646\u064a"
+        },
+        "highway/mini_roundabout": {
+            "name": "\u062f\u0648\u0627\u0631 \u0635\u063a\u064a\u0631",
+            "terms": "\u062f\u0648\u0627\u0631 \u0635\u063a\u064a\u0631"
+        },
+        "highway/motorway": {
+            "name": "\u0637\u0631\u064a\u0642 \u0633\u0631\u064a\u0639",
+            "terms": "\u0637\u0631\u064a\u0642 \u0633\u0631\u064a\u0639"
+        },
+        "highway/motorway_junction": {
+            "name": "\u0645\u062d\u0648\u0644 \u0637\u0631\u064a\u0642 \u0633\u064a\u0627\u0631 / \u0645\u062e\u0631\u062c"
+        },
+        "highway/motorway_link": {
+            "name": "\u0631\u0627\u0628\u0637 \u0644\u0637\u0631\u064a\u0642 \u0633\u0631\u064a\u0639",
+            "terms": "\u0631\u0627\u0628\u0637 \u0644\u0637\u0631\u064a\u0642 \u0633\u0631\u064a\u0639"
+        },
+        "highway/path": {
+            "name": "\u0637\u0631\u064a\u0642",
+            "terms": "\u0637\u0631\u064a\u0642 , \u0645\u0645\u0631 , \u0645\u0633\u0644\u0643 , \u062f\u0631\u0628"
+        },
+        "highway/pedestrian_area": {
+            "name": "\u0645\u0646\u0637\u0642\u0629 \u0644\u0644\u0645\u0634\u0627\u0629",
+            "terms": "\u0645\u0646\u0637\u0642\u0629 \u0644\u0644\u0645\u0634\u0627\u0629"
+        },
+        "highway/pedestrian_line": {
+            "name": "\u0634\u0627\u0631\u0639 \u0644\u0644\u0645\u0634\u0627\u0629",
+            "terms": "\u0634\u0627\u0631\u0639 \u0644\u0644\u0645\u0634\u0627\u0629"
+        },
+        "highway/primary": {
+            "name": "\u0637\u0631\u064a\u0642 \u0631\u0626\u064a\u0633\u064a",
+            "terms": "\u0634\u0627\u0631\u0639 \u0631\u0626\u064a\u0633\u064a"
+        },
+        "highway/primary_link": {
+            "name": "\u0631\u0627\u0628\u0637 \u0644\u0637\u0631\u064a\u0642 \u0631\u0626\u064a\u0633\u064a",
+            "terms": "\u0631\u0627\u0628\u0637 \u0644\u0637\u0631\u064a\u0642 \u0631\u0626\u064a\u0633\u064a"
+        },
+        "highway/raceway": {
+            "name": "\u0645\u0636\u0645\u0627\u0631 \u0633\u0628\u0627\u0642 \u0627\u0644\u0633\u064a\u0627\u0631\u0627\u062a \u0648\u0627\u0644\u062f\u0631\u0627\u062c\u0627\u062a \u0627\u0644\u0646\u0627\u0631\u064a\u0629",
+            "terms": "\u0645\u0636\u0645\u0627\u0631 \u0633\u0628\u0627\u0642\u060c \u0633\u064a\u0627\u0631\u0627\u062a\u060c \u062f\u0631\u0627\u062c\u0627\u062a \u0646\u0627\u0631\u064a\u0629"
+        },
+        "highway/residential": {
+            "name": "\u0637\u0631\u064a\u0642 \u0633\u0643\u0646\u064a",
+            "terms": "\u0634\u0627\u0631\u0639 \u0633\u0643\u0646\u064a"
+        },
+        "highway/rest_area": {
+            "name": "\u0645\u0646\u0637\u0642\u0629 \u0627\u0633\u062a\u0631\u0627\u062d\u0629",
+            "terms": "\u0631\u0627\u062d\u0629; \u0646\u0648\u0645; \u0627\u0633\u062a\u0631\u064a\u062d"
+        },
+        "highway/road": {
+            "name": "\u0637\u0631\u064a\u0642 \u063a\u064a\u0631 \u0645\u0639\u0631\u0648\u0641",
+            "terms": "\u0637\u0631\u064a\u0642 \u063a\u064a\u0631 \u0645\u0639\u0631\u0648\u0641"
+        },
+        "highway/secondary": {
+            "name": "\u0637\u0631\u064a\u0642 \u062b\u0627\u0646\u0648\u064a",
+            "terms": "\u0634\u0627\u0631\u0639 \u062b\u0627\u0646\u0648\u064a"
+        },
+        "highway/secondary_link": {
+            "name": "\u0631\u0627\u0628\u0637 \u0644\u0637\u0631\u064a\u0642 \u062b\u0627\u0646\u0648\u064a",
+            "terms": "\u0631\u0627\u0628\u0637 \u0644\u0634\u0627\u0631\u0639 \u062b\u0627\u0646\u0648\u064a"
+        },
+        "highway/service": {
+            "name": "\u0637\u0631\u064a\u0642 \u062e\u062f\u0645\u0629",
+            "terms": "\u0634\u0627\u0631\u0639 \u062e\u062f\u0645\u064a; \u0637\u0631\u064a\u0642 \u062e\u062f\u0645\u0629"
+        },
+        "highway/service/alley": {
+            "name": "\u0632\u0642\u0627\u0642",
+            "terms": "\u0632\u0642\u0627\u0642"
+        },
+        "highway/service/drive-through": {
+            "name": "\u0645\u0645\u0631 \u0627\u0644\u0637\u0644\u0628 \u0628\u0627\u0644\u0633\u064a\u0627\u0631\u0629",
+            "terms": "\u0645\u0645\u0631 \u0627\u0644\u0637\u0644\u0628 \u0628\u0627\u0644\u0633\u064a\u0627\u0631\u0629"
+        },
+        "highway/service/driveway": {
+            "name": "\u0645\u0645\u0631 \u0627\u0644\u0633\u0643\u0646",
+            "terms": "\u0645\u0645\u0631 \u0627\u0644\u0633\u0643\u0646"
+        },
+        "highway/service/emergency_access": {
+            "name": "\u0645\u0645\u0631 \u0627\u0644\u0637\u0648\u0627\u0631\u0626",
+            "terms": "\u0645\u0645\u0631 \u0627\u0644\u0637\u0648\u0627\u0631\u0626"
+        },
+        "highway/service/parking_aisle": {
+            "name": "\u0645\u0645\u0631 \u0648\u0642\u0648\u0641 \u0627\u0644\u0633\u064a\u0627\u0631\u0627\u062a",
+            "terms": "\u0645\u0645\u0631 \u0648\u0642\u0648\u0641 \u0627\u0644\u0633\u064a\u0627\u0631\u0627\u062a"
+        },
+        "highway/services": {
+            "name": "\u0645\u0646\u0637\u0642\u0629 \u062e\u062f\u0645\u0629",
+            "terms": "\u062e\u062f\u0645\u0629 \u0633\u064a\u0627\u0631\u0627\u062a; \u0645\u0646\u0637\u0642\u0629 \u062e\u062f\u0645\u0629 \u0633\u064a\u0627\u0631\u0627\u062a; \u0645\u0646\u0637\u0642\u0629 \u062e\u062f\u0645\u064a\u0629"
+        },
+        "highway/speed_camera": {
+            "name": "\u0643\u0627\u0645\u064a\u0631\u0627 \u0645\u0631\u0627\u0642\u0628\u0629 \u0627\u0644\u0633\u0631\u0639\u0629",
+            "terms": "\u0643\u0627\u0645\u064a\u0631\u0627 \u0645\u0631\u0627\u0642\u0628\u0629 \u0627\u0644\u0633\u0631\u0639\u0629"
+        },
+        "highway/steps": {
+            "name": "\u062f\u0631\u062c",
+            "terms": "\u062f\u0631\u062c"
+        },
+        "highway/stop": {
+            "name": "\u0625\u0634\u0627\u0631\u0629 \u062a\u0648\u0642\u0641",
+            "terms": "\u0625\u0634\u0627\u0631\u0629 \u062a\u0648\u0642\u0641\u060c \u0645\u0645\u0646\u0648\u0639 \u0627\u0644\u0648\u0642\u0648\u0641\u060c \u0642\u0641"
+        },
+        "highway/street_lamp": {
+            "name": "\u0645\u0635\u0628\u0627\u062d \u0627\u0644\u0634\u0627\u0631\u0639",
+            "terms": "\u0645\u0635\u0628\u0627\u062d \u0627\u0644\u0634\u0627\u0631\u0639"
+        },
+        "highway/tertiary": {
+            "name": "\u0637\u0631\u064a\u0642 \u062b\u0627\u0644\u062b\u064a",
+            "terms": "\u0634\u0627\u0631\u0639 \u062b\u0627\u0644\u062b\u064a"
+        },
+        "highway/tertiary_link": {
+            "name": "\u0631\u0627\u0628\u0637 \u0644\u0637\u0631\u064a\u0642 \u062b\u0627\u0644\u062b\u064a",
+            "terms": "\u0631\u0627\u0628\u0637 \u0644\u0634\u0627\u0631\u0639 \u062b\u0627\u0644\u062b\u064a"
+        },
+        "highway/track": {
+            "name": "\u0645\u0633\u0627\u0631 \u0637\u0631\u064a\u0642 \u063a\u064a\u0631 \u0645\u0645\u0647\u062f",
+            "terms": "\u0637\u0631\u064a\u0642 \u063a\u064a\u0631 \u0645\u0645\u0647\u062f ; \u063a\u064a\u0631 \u0645\u0645\u0647\u062f"
+        },
+        "highway/traffic_mirror": {
+            "name": "\u0645\u0631\u0622\u0629 \u0645\u0631\u0648\u0631",
+            "terms": "\u0645\u0631\u0622\u0629; \u0645\u0631\u0648\u0631; \u0645\u0631\u0627\u064a\u0629"
+        },
+        "highway/traffic_signals": {
+            "name": "\u0625\u0634\u0627\u0631\u0627\u062a \u0645\u0631\u0648\u0631",
+            "terms": "\u0627\u0634\u0627\u0631\u0629; \u0627\u0634\u0627\u0631\u0627\u062a; \u0627\u0634\u0627\u0631\u0629 \u0645\u0631\u0648\u0631"
+        },
+        "highway/trunk": {
+            "name": "\u0637\u0631\u064a\u0642 \u0623\u0633\u0627\u0633\u064a",
+            "terms": "\u0634\u0627\u0631\u0639 \u0623\u0633\u0627\u0633\u064a"
+        },
+        "highway/trunk_link": {
+            "name": "\u0631\u0627\u0628\u0637 \u0644\u0637\u0631\u064a\u0642 \u0623\u0633\u0627\u0633\u064a",
+            "terms": "\u0631\u0627\u0628\u0637 \u0644\u0634\u0627\u0631\u0639 \u0623\u0633\u0627\u0633\u064a"
+        },
+        "highway/turning_circle": {
+            "name": "\u062f\u0627\u0626\u0631\u0629 \u0631\u062c\u0648\u0639",
+            "terms": "\u062f\u0627\u0626\u0631\u0629 \u0631\u062c\u0648\u0639"
+        },
+        "highway/unclassified": {
+            "name": "\u0637\u0631\u064a\u0642 \u063a\u064a\u0631 \u0645\u0635\u0646\u0641",
+            "terms": "\u0637\u0631\u064a\u0642 \u063a\u064a\u0631 \u0645\u0635\u0646\u0641"
+        },
+        "historic": {
+            "name": "\u0645\u0648\u0642\u0639 \u062a\u0627\u0631\u064a\u062e\u064a",
+            "terms": "\u0645\u0648\u0642\u0639 \u062a\u0623\u0631\u064a\u062e\u064a"
+        },
+        "historic/archaeological_site": {
+            "name": "\u0645\u0648\u0642\u0639 \u0623\u062b\u0631\u064a",
+            "terms": "\u0645\u0648\u0642\u0639 \u0623\u062b\u0631\u064a"
+        },
+        "historic/boundary_stone": {
+            "name": "\u0635\u062e\u0631\u0629 \u062d\u062f\u0648\u062f\u064a\u0629",
+            "terms": "\u0635\u062e\u0631\u0629 \u062d\u062f\u0648\u062f\u064a\u0629"
+        },
+        "historic/castle": {
+            "name": "\u062d\u0635\u0646 / \u0642\u0644\u0639\u0629",
+            "terms": "\u062d\u0635\u0646; \u0642\u0644\u0639\u0629; \u0642\u0635\u0631"
+        },
+        "historic/memorial": {
+            "name": "\u0646\u0635\u0628 \u062a\u0630\u0643\u0627\u0631\u064a",
+            "terms": "\u0646\u0635\u0628 \u062a\u0630\u0643\u0627\u0631\u064a"
+        },
+        "historic/monument": {
+            "name": "\u0646\u0635\u0628 \u062a\u0630\u0643\u0627\u0631\u064a",
+            "terms": "\u0646\u0635\u0628 \u062a\u0630\u0643\u0627\u0631\u064a, \u0645\u0628\u0646\u0649 \u062a\u0630\u0643\u0627\u0631\u064a"
+        },
+        "historic/ruins": {
+            "name": "\u0622\u062b\u0627\u0631",
+            "terms": "\u0623\u0637\u0644\u0627\u0644"
+        },
+        "historic/tomb": {
+            "name": "\u0642\u0628\u0631 / \u0636\u0631\u064a\u062d",
+            "terms": "\u0642\u0628\u0631\u060c \u0636\u0631\u064a\u062d"
+        },
+        "historic/wayside_shrine": {
+            "name": "\u0645\u0642\u0627\u0645 \u0646\u0635\u0631\u0627\u0646\u064a \u0639\u0644\u0649 \u0627\u0644\u0637\u0631\u064a\u0642",
+            "terms": "\u0645\u0642\u0627\u0645 \u0646\u0635\u0631\u0627\u0646\u064a \u0639\u0644\u0649 \u0627\u0644\u0637\u0631\u064a\u0642"
+        },
+        "junction": {
+            "name": "\u0645\u0641\u062a\u0631\u0642 \u0637\u0631\u0642",
+            "terms": "\u0645\u0641\u062a\u0631\u0642 \u0637\u0631\u0642"
+        },
+        "landuse": {
+            "name": "\u0623\u0631\u0636"
+        },
+        "landuse/aquaculture": {
+            "name": "\u0645\u0632\u0631\u0639\u0629 \u0633\u0645\u0643\u064a\u0629",
+            "terms": "\u0645\u0632\u0631\u0639\u0629 \u0633\u0645\u0643\u064a\u0629"
+        },
+        "landuse/basin": {
+            "name": "\u062d\u0648\u0636"
+        },
+        "landuse/cemetery": {
+            "name": "\u0645\u0642\u0628\u0631\u0629",
+            "terms": "\u0645\u0642\u0628\u0631\u0629, \u0645\u062f\u0641\u0646, \u062c\u0628\u0627\u0646\u0629"
+        },
+        "landuse/commercial": {
+            "name": "\u0645\u0646\u0637\u0642\u0629 \u062a\u062c\u0627\u0631\u064a\u0629",
+            "terms": "\u062a\u062c\u0627\u0631\u064a\u0629; \u062a\u062c\u0627\u0631\u064a; \u0645\u0646\u0637\u0642\u0629 \u062a\u062c\u0627\u0631\u0629"
+        },
+        "landuse/construction": {
+            "name": "\u0625\u0646\u0634\u0627\u0621\u0627\u062a",
+            "terms": "\u0625\u0646\u0634\u0627\u0621\u0627\u062a, \u062a\u0634\u064a\u064a\u062f, \u062a\u0639\u0645\u064a\u0631"
+        },
+        "landuse/farm": {
+            "name": "\u0623\u0631\u0636 \u0632\u0631\u0627\u0639\u064a\u0629"
+        },
+        "landuse/farmland": {
+            "name": "\u0623\u0631\u0636 \u0632\u0631\u0627\u0639\u064a\u0629",
+            "terms": "\u0623\u0631\u0636 \u0632\u0631\u0627\u0639\u064a\u0629\u060c \u0641\u0644\u0627\u062d\u0629"
+        },
+        "landuse/farmyard": {
+            "name": "\u0641\u0646\u0627\u0621 \u0627\u0644\u0645\u0632\u0631\u0639\u0629",
+            "terms": "\u0641\u0646\u0627\u0621 \u0627\u0644\u0645\u0632\u0631\u0639\u0629"
+        },
+        "landuse/grass": {
+            "name": "\u0639\u0634\u0628",
+            "terms": "\u0639\u0634\u0628, \u063a\u0637\u0627\u0621 \u0623\u062e\u0636\u0631"
+        },
+        "landuse/greenhouse_horticulture": {
+            "name": "\u0627\u0644\u062f\u0641\u064a\u0626\u0627\u062a \u0627\u0644\u0632\u0631\u0627\u0639\u064a\u0629",
+            "terms": "\u0627\u0644\u062f\u0641\u064a\u0626\u0627\u062a \u0627\u0644\u0632\u0631\u0627\u0639\u064a\u0629"
+        },
+        "landuse/harbour": {
+            "name": "\u0645\u0631\u0641\u0623",
+            "terms": "\u0645\u0631\u0641\u0623\u060c \u0645\u064a\u0646\u0627\u0621"
+        },
+        "landuse/industrial": {
+            "name": "\u0645\u0646\u0637\u0642\u0629 \u0635\u0646\u0627\u0639\u064a\u0629",
+            "terms": "\u0635\u0646\u0627\u0639\u064a\u0629; \u0635\u0646\u0627\u0639\u064a; \u0635\u0646\u0627\u0639\u0627\u062a; \u0645\u0646\u0637\u0642\u0629 \u0635\u0646\u0627\u0639\u0627\u062a; \u0645\u0646\u0637\u0642\u0629 \u0635\u0646\u0627\u0639\u0629; \u0635\u0646\u0627\u0639\u0629; \u0635\u0646\u0639"
+        },
+        "landuse/industrial/scrap_yard": {
+            "name": "\u0645\u0642\u0628\u0631\u0629 \u0627\u0644\u0633\u064a\u0627\u0631\u0627\u062a",
+            "terms": "\u0645\u0642\u0628\u0631\u0629 \u0627\u0644\u0633\u064a\u0627\u0631\u0627\u062a"
+        },
+        "landuse/industrial/slaughterhouse": {
+            "name": "\u0645\u0633\u0644\u062e",
+            "terms": "\u0645\u0633\u0644\u062e"
+        },
+        "landuse/landfill": {
+            "name": "\u0645\u0643\u0628 \u0646\u0641\u0627\u064a\u0627\u062a",
+            "terms": "\u0645\u0643\u0628 \u0646\u0641\u0627\u064a\u0627\u062a"
+        },
+        "landuse/meadow": {
+            "name": "\u0645\u0631\u062c",
+            "terms": "\u0645\u0631\u062c, \u0631\u0648\u0636\u0629, \u0645\u062e\u0636\u0631\u0629"
+        },
+        "landuse/military": {
+            "name": "\u0645\u0646\u0637\u0642\u0629 \u0639\u0633\u0643\u0631\u064a\u0629",
+            "terms": "\u062c\u064a\u0634, \u0642\u0648\u0627\u062a \u0645\u0633\u0644\u062d\u0629, \u0639\u0633\u0643\u0631\u064a\u0629"
+        },
+        "landuse/military/airfield": {
+            "name": "\u0642\u0627\u0639\u062f\u0629 \u062c\u0648\u064a\u0629",
+            "terms": "\u0642\u0627\u0639\u062f\u0629 \u062c\u0648\u064a\u0629\u060c \u0645\u0637\u0627\u0631 \u0639\u0633\u0643\u0631\u064a"
+        },
+        "landuse/military/barracks": {
+            "name": "\u062b\u0643\u0646\u0629 \u0639\u0633\u0643\u0631\u064a\u0629",
+            "terms": "\u062b\u0643\u0646\u0629 \u0639\u0633\u0643\u0631\u064a\u0629"
+        },
+        "landuse/military/bunker": {
+            "name": "\u0645\u0644\u062c\u0623 \u0639\u0633\u0643\u0631\u064a",
+            "terms": "\u0645\u0644\u062c\u0623 \u0639\u0633\u0643\u0631\u064a"
+        },
+        "landuse/military/checkpoint": {
+            "name": "\u0646\u0642\u0637\u0629 \u062a\u0641\u062a\u064a\u0634 \u0639\u0633\u0643\u0631\u064a\u0629",
+            "terms": "\u0646\u0642\u0637\u0629 \u062a\u0641\u062a\u064a\u0634 \u0639\u0633\u0643\u0631\u064a\u0629"
+        },
+        "landuse/military/danger_area": {
+            "name": "\u0645\u0646\u0637\u0642\u0629 \u062e\u0637\u0631\u0629",
+            "terms": "\u0645\u0646\u0637\u0642\u0629 \u062e\u0637\u0631; \u062e\u0637\u0631"
+        },
+        "landuse/military/naval_base": {
+            "name": "\u0642\u0627\u0639\u062f\u0629 \u0628\u062d\u0631\u064a\u0629",
+            "terms": "\u0628\u062d\u0631\u064a\u0629; \u0628\u062d\u0631\u064a; \u0628\u062d\u0631; \u0642\u0627\u0639\u062f\u0629"
+        },
+        "landuse/military/nuclear_explosion_site": {
+            "name": "\u0645\u0648\u0642\u0639 \u0627\u0644\u0627\u0646\u0641\u062c\u0627\u0631 \u0627\u0644\u0646\u0648\u0648\u064a",
+            "terms": "\u0645\u0648\u0642\u0639 \u0627\u0644\u0627\u0646\u0641\u062c\u0627\u0631 \u0627\u0644\u0646\u0648\u0648\u064a"
+        },
+        "landuse/military/office": {
+            "name": "\u0645\u0643\u062a\u0628 \u0639\u0633\u0643\u0631\u064a"
+        },
+        "landuse/military/range": {
+            "name": "\u0645\u064a\u062f\u0627\u0646 \u0627\u0644\u0631\u0645\u0627\u064a\u0629 \u0627\u0644\u0639\u0633\u0643\u0631\u064a\u0629",
+            "terms": "\u0645\u064a\u062f\u0627\u0646 \u0627\u0644\u0631\u0645\u0627\u064a\u0629 \u0627\u0644\u0639\u0633\u0643\u0631\u064a\u0629"
+        },
+        "landuse/military/training_area": {
+            "name": "\u0645\u0646\u0637\u0642\u0629 \u062a\u062f\u0631\u064a\u0628",
+            "terms": "\u0645\u0646\u0637\u0642\u0629 \u062a\u0645\u0631\u064a\u0646; \u062a\u062f\u0631\u064a\u0628; \u062a\u0645\u0631\u064a\u0646"
+        },
+        "landuse/orchard": {
+            "name": "\u0628\u0633\u062a\u0627\u0646",
+            "terms": "\u0628\u0633\u062a\u0627\u0646, \u0628\u064a\u0627\u0631\u0629, \u0623\u0634\u062c\u0627\u0631 \u0627\u0644\u0628\u0633\u062a\u0627\u0646"
+        },
+        "landuse/plant_nursery": {
+            "name": "\u0645\u0634\u062a\u0644",
+            "terms": "\u0645\u0634\u062a\u0644"
+        },
+        "landuse/quarry": {
+            "name": "\u0645\u062d\u062c\u0631",
+            "terms": "\u0645\u062d\u062c\u0631"
+        },
+        "landuse/railway": {
+            "name": "\u0645\u0646\u0637\u0642\u0629 \u0627\u0644\u0633\u0643\u0643 \u0627\u0644\u062d\u062f\u064a\u062f\u064a\u0629",
+            "terms": "\u0645\u0646\u0637\u0642\u0629 \u0627\u0644\u0633\u0643\u0643 \u0627\u0644\u062d\u062f\u064a\u062f\u064a\u0629"
+        },
+        "landuse/recreation_ground": {
+            "name": "\u0645\u064a\u062f\u0627\u0646 \u0627\u0644\u0623\u0644\u0639\u0627\u0628",
+            "terms": "\u0645\u064a\u062f\u0627\u0646 \u0627\u0644\u0623\u0644\u0639\u0627\u0628"
+        },
+        "landuse/residential": {
+            "name": "\u0645\u0646\u0637\u0642\u0629 \u0633\u0643\u0646\u064a\u0629",
+            "terms": "\u0645\u0646\u0637\u0642\u0629 \u0633\u0643\u0627\u0646\u064a\u0629; \u0633\u0643\u0627\u0646; \u0633\u0643\u0646\u064a\u0629; \u0633\u0643\u0646; \u0645\u0646\u0637\u0642\u0629 \u0633\u0643\u0646"
+        },
+        "landuse/retail": {
+            "name": "\u0645\u0646\u0637\u0642\u0629 \u0628\u064a\u0639 \u0628\u0627\u0644\u062a\u062c\u0632\u0626\u0629",
+            "terms": "\u0628\u064a\u0639 \u0642\u0637\u0627\u0639\u064a, \u0628\u064a\u0639 \u0628\u0627\u0644\u062a\u062c\u0632\u0626\u0629"
+        },
+        "landuse/vineyard": {
+            "name": "\u0645\u0632\u0631\u0639\u0629 \u0627\u0644\u0639\u0646\u0628",
+            "terms": "\u0645\u0632\u0631\u0639\u0629 \u0639\u0646\u0628"
+        },
+        "leisure": {
+            "name": "\u0627\u0644\u062a\u0631\u0641\u064a\u0647"
+        },
+        "leisure/beach_resort": {
+            "name": "\u0645\u0646\u062a\u062c\u0639 \u0627\u0644\u0634\u0627\u0637\u0626",
+            "terms": "\u0645\u0646\u062a\u062c\u0639 \u0627\u0644\u0634\u0627\u0637\u0626"
+        },
+        "leisure/bowling_alley": {
+            "name": "\u0628\u0648\u0644\u064a\u0646\u063a",
+            "terms": "\u0628\u0648\u0644\u064a\u0646\u063a\u060c \u0628\u0648\u0644\u064a\u0646\u062c"
+        },
+        "leisure/common": {
+            "name": "\u0623\u0631\u0636 \u0645\u0634\u062a\u0631\u0643 ",
+            "terms": "\u0645\u0634\u0651\u0627\u0639\u060c \u0645\u062a\u0639\u0627\u0631\u0641 \u0639\u0644\u064a\u0647\u060c \u0634\u0639\u0628\u064a\u060c \u0634\u0627\u0626\u0639"
+        },
+        "leisure/dance": {
+            "name": "\u0642\u0627\u0639\u0629 \u0627\u0644\u0631\u0642\u0635",
+            "terms": "\u0642\u0627\u0639\u0629 \u0627\u0644\u0631\u0642\u0635"
+        },
+        "leisure/dancing_school": {
+            "name": "\u0645\u062f\u0631\u0633\u0629 \u0627\u0644\u0631\u0642\u0635",
+            "terms": "\u0645\u062f\u0631\u0633\u0629 \u0627\u0644\u0631\u0642\u0635"
+        },
+        "leisure/dog_park": {
+            "name": "\u062d\u062f\u064a\u0642\u0629 \u0643\u0644\u0627\u0628",
+            "terms": "\u062d\u062f\u064a\u0642\u0629 \u0643\u0644\u0627\u0628"
+        },
+        "leisure/firepit": {
+            "name": "\u0645\u0648\u0642\u062f \u0646\u0627\u0631",
+            "terms": "\u0645\u0648\u0642\u062f"
+        },
+        "leisure/fitness_centre": {
+            "name": "\u0645\u0631\u0643\u0632 \u0627\u0644\u0644\u064a\u0627\u0642\u0629 \u0627\u0644\u0628\u062f\u0646\u064a\u0629",
+            "terms": "\u0645\u0631\u0643\u0632 \u0627\u0644\u0644\u064a\u0627\u0642\u0629 \u0627\u0644\u0628\u062f\u0646\u064a\u0629\u060c \u0646\u0627\u062f\u064a \u0635\u062d\u064a"
+        },
+        "leisure/garden": {
+            "name": "\u062d\u062f\u064a\u0642\u0629",
+            "terms": "\u062d\u062f\u064a\u0642\u0629"
+        },
+        "leisure/golf_course": {
+            "name": "\u0645\u0639\u0644\u0628 \u062c\u0648\u0644\u0641",
+            "terms": "\u0645\u0639\u0644\u0628 \u062c\u0648\u0644\u0641\u060c \u063a\u0648\u0644\u0641"
+        },
+        "leisure/horse_riding": {
+            "name": "\u0645\u0646\u0634\u0623\u0629 \u0631\u0643\u0648\u0628 \u062e\u064a\u0644",
+            "terms": "\u0645\u0646\u0634\u0623\u0629 \u0631\u0643\u0648\u0628 \u062e\u064a\u0644; \u062e\u064a\u0644; \u0631\u0643\u0648\u0628 \u062e\u064a\u0644; \u0627\u0645\u062a\u0637\u0627\u0621; \u0627\u0645\u062a\u0637\u0627\u0621 \u062e\u064a\u0644; \u0645\u0646\u0634\u0623\u0629"
+        },
+        "leisure/ice_rink": {
+            "name": "\u062d\u0644\u0628\u0629 \u062a\u0632\u0644\u062c",
+            "terms": "\u062c\u0644\u064a\u062f, \u062a\u0632\u0644\u062c, \u062d\u0644\u0628\u0629"
+        },
+        "leisure/marina": {
+            "name": "\u0645\u0631\u0633\u0649 \u0627\u0644\u0633\u0641\u0646",
+            "terms": "\u062d\u0648\u0636 \u0633\u0641\u0646, \u0631\u0635\u064a\u0641 \u0633\u0641\u0646, \u0645\u0631\u0633\u0649 \u0633\u0641\u0646"
+        },
+        "leisure/miniature_golf": {
+            "name": "\u0645\u0644\u0639\u0628 \u0627\u0644\u062c\u0648\u0644\u0641 \u0627\u0644\u0645\u0635\u063a\u0631\u0629",
+            "terms": "\u0645\u0644\u0639\u0628 \u0627\u0644\u062c\u0648\u0644\u0641 \u0627\u0644\u0645\u0635\u063a\u0631\u0629\u060c \u063a\u0648\u0644\u0641"
+        },
+        "leisure/nature_reserve": {
+            "name": "\u0645\u062d\u0645\u064a\u0629 \u0637\u0628\u064a\u0639\u064a\u0629",
+            "terms": "\u0645\u062d\u0645\u064a\u0629 \u0637\u0628\u064a\u0639\u064a\u0629"
+        },
+        "leisure/park": {
+            "name": "\u0645\u0646\u062a\u0632\u0647",
+            "terms": "\u0645\u0646\u062a\u0632\u0647\u060c \u062d\u062f\u064a\u0642\u0629"
+        },
+        "leisure/pitch": {
+            "name": "\u0645\u0644\u0639\u0628 \u0631\u064a\u0627\u0636\u064a",
+            "terms": "\u0645\u0644\u0639\u0628 \u0631\u064a\u0627\u0636\u064a"
+        },
+        "leisure/pitch/american_football": {
+            "name": "\u0645\u0644\u0639\u0628 \u0643\u0631\u0629 \u0642\u062f\u0645 \u0623\u0645\u0631\u064a\u0643\u064a\u0629",
+            "terms": "\u0645\u0644\u0639\u0628 \u0643\u0631\u0629 \u0642\u062f\u0645 \u0623\u0645\u0631\u064a\u0643\u064a\u0629"
+        },
+        "leisure/pitch/badminton": {
+            "name": "\u062a\u0646\u0633 \u0627\u0644\u0631\u064a\u0634\u0629",
+            "terms": "\u062a\u0646\u0633,\u0643\u0631\u0629,\u0631\u064a\u0634\u0629"
+        },
+        "leisure/pitch/basketball": {
+            "name": "\u0645\u0644\u0639\u0628 \u0643\u0631\u0629 \u0627\u0644\u0633\u0644\u0629",
+            "terms": "\u0645\u0644\u0639\u0628 \u0643\u0631\u0629 \u0627\u0644\u0633\u0644\u0629"
+        },
+        "leisure/pitch/beachvolleyball": {
+            "name": "\u0645\u0644\u0639\u0628 \u0643\u0631\u0629 \u0627\u0644\u0637\u0627\u0626\u0631\u0629 \u0627\u0644\u0634\u0627\u0637\u0626\u064a\u0629",
+            "terms": "\u0645\u0644\u0639\u0628"
+        },
+        "leisure/pitch/boules": {
+            "name": "\u0645\u0644\u0639\u0628 \u0643\u0631\u0629 \u062d\u062f\u064a\u062f\u064a\u0629",
+            "terms": "\u0645\u0644\u0639\u0628 \u0643\u0631\u0629 \u062d\u062f\u064a\u062f\u064a\u0629"
+        },
+        "leisure/pitch/cricket": {
+            "name": "\u0645\u0644\u0639\u0628 \u0643\u0631\u064a\u0643\u062a",
+            "terms": "\u0645\u0644\u0639\u0628 \u0643\u0631\u064a\u0643\u062a"
+        },
+        "leisure/pitch/equestrian": {
+            "name": "\u062d\u0644\u0628\u0629 \u0631\u0643\u0648\u0628 \u062e\u064a\u0644",
+            "terms": "\u062d\u0644\u0628\u0629; \u0633\u0627\u062d\u0629; \u062d\u0644\u0628\u0629 \u0631\u0643\u0648\u0628; \u0633\u0627\u062d\u0629 \u0631\u0643\u0648\u0628; \u062e\u064a\u0644; \u0631\u0643\u0648\u0628 \u062e\u064a\u0644"
+        },
+        "leisure/pitch/netball": {
+            "name": "\u0643\u0631\u0629 \u0627\u0644\u0633\u0644\u0629",
+            "terms": "\u062a\u0646\u0633,\u0643\u0631\u0629,\u0633\u0644\u0629,\u0634\u0628\u0643\u0629"
+        },
+        "leisure/pitch/rugby_league": {
+            "name": "\u0645\u0644\u0639\u0628 \u0627\u062a\u062d\u0627\u062f \u0627\u0644\u0631\u063a\u0628\u064a",
+            "terms": "\u0645\u0644\u0639\u0628 \u0627\u062a\u062d\u0627\u062f \u0627\u0644\u0631\u063a\u0628\u064a\u060c \u0631\u062c\u0628\u064a"
+        },
+        "leisure/pitch/rugby_union": {
+            "name": "\u0645\u0644\u0639\u0628 \u062f\u0648\u0631\u064a \u0627\u0644\u0631\u063a\u0628\u064a",
+            "terms": "\u0645\u0644\u0639\u0628 \u062f\u0648\u0631\u064a \u0627\u0644\u0631\u063a\u0628\u064a\u060c \u0631\u062c\u0628\u064a"
+        },
+        "leisure/pitch/skateboard": {
+            "name": "\u062d\u062f\u064a\u0642\u0629 \u062a\u0632\u0644\u062c",
+            "terms": "\u062d\u062f\u064a\u0642\u0629 \u062a\u0632\u0644\u062c\u060c \u0633\u0627\u062d\u0629 \u062a\u0632\u0644\u062c"
+        },
+        "leisure/pitch/soccer": {
+            "name": "\u0645\u0644\u0639\u0628 \u0643\u0631\u0629 \u0627\u0644\u0642\u062f\u0645",
+            "terms": "\u0645\u0644\u0639\u0628 \u0643\u0631\u0629 \u0627\u0644\u0642\u062f\u0645"
+        },
+        "leisure/pitch/table_tennis": {
+            "name": "\u0637\u0627\u0648\u0644\u0629 \u0643\u0631\u0629 \u0627\u0644\u0645\u0636\u0631\u0628",
+            "terms": "\u0637\u0627\u0648\u0644\u0629 \u0643\u0631\u0629 \u0627\u0644\u0645\u0636\u0631\u0628"
+        },
+        "leisure/pitch/tennis": {
+            "name": "\u0645\u0644\u0639\u0628 \u062a\u0646\u0633",
+            "terms": "\u0645\u0639\u0644\u0628 \u0643\u0631\u0629 \u0627\u0644\u062a\u0646\u0633"
+        },
+        "leisure/pitch/volleyball": {
+            "name": "\u0645\u0644\u0639\u0628 \u0643\u0631\u0629 \u0627\u0644\u0637\u0627\u0626\u0631\u0629",
+            "terms": "\u0645\u0644\u0639\u0628"
+        },
+        "leisure/playground": {
+            "name": "\u0633\u0627\u062d\u0629 \u0623\u0644\u0639\u0627\u0628 \u0644\u0644\u0623\u0637\u0641\u0627\u0644",
+            "terms": "\u0633\u0627\u062d\u0629 \u0623\u0644\u0639\u0627\u0628 \u0644\u0644\u0623\u0637\u0641\u0627\u0644"
+        },
+        "leisure/resort": {
+            "name": "\u0645\u0646\u062a\u062c\u0639",
+            "terms": "\u0645\u0646\u062a\u062c\u0639"
+        },
+        "leisure/sauna": {
+            "name": "\u0633\u0648\u0646\u0627",
+            "terms": "\u0633\u0648\u0646\u0627"
+        },
+        "leisure/slipway": {
+            "name": "\u0645\u0632\u0644\u0642\u0629 \u0633\u0641\u0646",
+            "terms": "\u0645\u0632\u0644\u0642\u0629 \u0633\u0641\u0646"
+        },
+        "leisure/sports_centre": {
+            "name": "\u0645\u0631\u0643\u0632 \u0631\u064a\u0627\u0636\u064a",
+            "terms": "\u0645\u0631\u0643\u0632 \u0631\u064a\u0627\u0636\u064a; \u0646\u0627\u062f\u064a \u0631\u064a\u0627\u0636\u064a; \u0645\u062c\u0645\u0639 \u0631\u064a\u0627\u0636\u064a"
+        },
+        "leisure/sports_centre/swimming": {
+            "name": "\u0645\u0628\u0646\u0649 \u062d\u0648\u0636 \u0633\u0628\u0627\u062d\u0629",
+            "terms": "\u062d\u0645\u0627\u0645 \u0633\u0628\u0627\u062d\u0629; \u062d\u0648\u0636 \u0633\u0628\u0627\u062d\u0629; \u062d\u0645\u0627\u0645; \u062d\u0648\u0636; \u0633\u0628\u0627\u062d\u0629; \u0645\u0633\u0628\u062d"
+        },
+        "leisure/stadium": {
+            "name": "\u0627\u0633\u062a\u0627\u062f \u0631\u064a\u0627\u0636\u064a",
+            "terms": "\u0645\u062f\u0631\u062c; \u0645\u062f\u0631\u062c \u0644\u0644\u0623\u0644\u0639\u0627\u0628 \u0627\u0644\u0631\u064a\u0627\u0636\u064a\u0629; \u0627\u0633\u062a\u0627\u062f \u0631\u064a\u0627\u0636\u064a; \u0627\u0633\u062a\u0627\u062f"
+        },
+        "leisure/swimming_pool": {
+            "name": "\u062d\u0648\u0636 \u0633\u0628\u0627\u062d\u0629",
+            "terms": "\u062d\u0645\u0627\u0645 \u0633\u0628\u0627\u062d\u0629; \u062d\u0648\u0636 \u0633\u0628\u0627\u062d\u0629; \u062d\u0645\u0627\u0645; \u062d\u0648\u0636; \u0633\u0628\u0627\u062d\u0629; \u0645\u0633\u0628\u062d"
+        },
+        "leisure/track": {
+            "name": "\u0645\u0636\u0645\u0627\u0631 \u0633\u0628\u0627\u0642",
+            "terms": "\u0645\u0636\u0645\u0627\u0631 \u0633\u0628\u0627\u0642"
+        },
+        "leisure/water_park": {
+            "name": "\u0645\u0644\u0627\u0647\u064a \u0645\u0627\u0626\u064a\u0629",
+            "terms": "\u0645\u0644\u0627\u0647\u064a \u0645\u0627\u0626\u064a\u0629; \u062d\u062f\u064a\u0642\u0629 \u0645\u0627\u0626\u064a\u0629; \u0645\u0646\u062a\u0632\u0647 \u0645\u0627\u0626\u064a"
+        },
+        "line": {
+            "name": "\u0637\u0631\u064a\u0642",
+            "terms": "\u0637\u0631\u064a\u0642"
+        },
+        "man_made": {
+            "name": "\u0645\u0628\u0627\u0646\u064a \u0635\u0646\u0627\u0639\u064a\u0629"
+        },
+        "man_made/adit": {
+            "name": "\u0645\u062f\u062e\u0644 \u0645\u0646\u062c\u0645",
+            "terms": "\u0645\u062f\u062e\u0644; \u0645\u0646\u062c\u0645; \u0643\u0647\u0641;"
+        },
+        "man_made/breakwater": {
+            "name": "\u0643\u0627\u0633\u0631 \u0627\u0644\u0623\u0645\u0648\u0627\u062c",
+            "terms": "\u0643\u0627\u0633\u0631 \u0627\u0644\u0623\u0645\u0648\u0627\u062c"
+        },
+        "man_made/bridge": {
+            "name": "\u062c\u0633\u0631",
+            "terms": "\u062c\u0633\u0631"
+        },
+        "man_made/chimney": {
+            "name": "\u0645\u062f\u062e\u0646\u0629",
+            "terms": "\u0645\u062f\u062e\u0646\u0629"
+        },
+        "man_made/crane": {
+            "name": "\u0631\u0627\u0641\u0639\u0629",
+            "terms": "\u0631\u0627\u0641\u0639\u0629"
+        },
+        "man_made/cutline": {
+            "name": "\u062e\u0637 \u0627\u0644\u0641\u0635\u0644",
+            "terms": "\u062e\u0637 \u0627\u0644\u0641\u0635\u0644"
+        },
+        "man_made/flagpole": {
+            "name": "\u0633\u0627\u0631\u064a\u0629 \u0627\u0644\u0639\u0644\u0645",
+            "terms": "\u0633\u0627\u0631\u064a\u0629 \u0627\u0644\u0639\u0644\u0645"
+        },
+        "man_made/lighthouse": {
+            "name": "\u0645\u0646\u0627\u0631\u0629",
+            "terms": "\u0645\u0646\u0627\u0631\u0629 , \u0641\u0646\u0627\u0631\u0629"
+        },
+        "man_made/monitoring_station": {
+            "name": "\u0645\u062d\u0637\u0629 \u0627\u0644\u0631\u0635\u062f",
+            "terms": "\u0645\u062d\u0637\u0629 \u0627\u0644\u0631\u0635\u062f"
+        },
+        "man_made/observatory": {
+            "name": "\u0645\u0631\u0635\u062f",
+            "terms": "\u0645\u0631\u0635\u062f"
+        },
+        "man_made/petroleum_well": {
+            "name": "\u0628\u0626\u0631 \u0646\u0641\u0637",
+            "terms": "\u0628\u0626\u0631 \u0646\u0641\u0637\u060c \u0628\u062a\u0631\u0648\u0644"
+        },
+        "man_made/pier": {
+            "name": "\u0631\u0635\u064a\u0641 \u0628\u062d\u0631\u064a",
+            "terms": "\u0631\u0635\u064a\u0641 \u0628\u062d\u0631\u064a"
+        },
+        "man_made/pipeline": {
+            "name": "\u062e\u0637 \u0623\u0646\u0627\u0628\u064a\u0628",
+            "terms": "\u062e\u0637 \u0623\u0646\u0627\u0628\u064a\u0628"
+        },
+        "man_made/pumping_station": {
+            "name": "\u0645\u062d\u0637\u0629 \u0636\u062e",
+            "terms": "\u0645\u062d\u0637\u0629 \u0636\u062e"
+        },
+        "man_made/silo": {
+            "name": "\u0635\u0648\u0645\u0639\u0629",
+            "terms": "\u0635\u0648\u0645\u0639\u0629; \u0635\u0648\u0645\u0639\u0629 \u063a\u0644\u0627\u0644"
+        },
+        "man_made/storage_tank": {
+            "name": "\u062e\u0632\u0627\u0646",
+            "terms": "\u062e\u0632\u0627\u0646"
+        },
+        "man_made/surveillance": {
+            "name": "\u0645\u0631\u0627\u0642\u0628\u0629",
+            "terms": "\u0645\u0631\u0627\u0642\u0628\u0629"
+        },
+        "man_made/survey_point": {
+            "name": "\u0646\u0642\u0637\u0629 \u0645\u0633\u062d",
+            "terms": "\u0646\u0642\u0637\u0629 \u0645\u0633\u062d"
+        },
+        "man_made/tower": {
+            "name": "\u0628\u0631\u062c",
+            "terms": "\u0628\u0631\u062c"
+        },
+        "man_made/wastewater_plant": {
+            "name": "\u0645\u062d\u0637\u0629 \u0635\u0631\u0641 \u0635\u062d\u064a",
+            "terms": "\u0645\u062d\u0637\u0629 \u0635\u0631\u0641 \u0635\u062d\u064a"
+        },
+        "man_made/water_tower": {
+            "name": "\u062e\u0632\u0627\u0646 \u0645\u0627\u0626\u064a",
+            "terms": "\u062e\u0632\u0627\u0646 \u0645\u0627\u0626\u064a"
+        },
+        "man_made/water_well": {
+            "name": "\u0628\u0626\u0631 \u0645\u0627\u0621",
+            "terms": "\u0628\u0626\u0631 \u0645\u0627\u0621"
+        },
+        "man_made/water_works": {
+            "name": "\u0645\u062d\u0637\u0629 \u0645\u064a\u0627\u0647",
+            "terms": "\u0645\u062d\u0637\u0629 \u0645\u064a\u0627\u0647"
+        },
+        "man_made/watermill": {
+            "name": "\u0637\u0627\u062d\u0648\u0646\u0629 \u0645\u0627\u0626\u064a\u0629",
+            "terms": "\u0637\u0627\u062d\u0648\u0646\u0629 \u0645\u0627\u0626\u064a\u0629"
+        },
+        "man_made/windmill": {
+            "name": "\u0637\u0627\u062d\u0648\u0646\u0629 \u0647\u0648\u0627\u0626\u064a\u0629",
+            "terms": "\u0637\u0627\u062d\u0648\u0646\u0629 \u0647\u0648\u0627\u0626\u064a\u0629"
+        },
+        "man_made/works": {
+            "name": "\u0645\u0635\u0646\u0639",
+            "terms": "\u0645\u0635\u0646\u0639"
+        },
+        "natural": {
+            "name": "\u0637\u0628\u064a\u0639\u064a"
+        },
+        "natural/bare_rock": {
+            "name": "\u0635\u062e\u0648\u0631 \u0639\u0627\u0631\u064a\u0629",
+            "terms": "\u0635\u062e\u0631; \u0635\u062e\u0648\u0631; \u0635\u062e\u0631 \u0639\u0627\u0631\u064a"
+        },
+        "natural/bay": {
+            "name": "\u062e\u0644\u064a\u062c",
+            "terms": "\u062e\u0644\u064a\u062c"
+        },
+        "natural/beach": {
+            "name": "\u0634\u0627\u0637\u0626",
+            "terms": "\u0634\u0627\u0637\u0626"
+        },
+        "natural/cave_entrance": {
+            "name": "\u0645\u062f\u062e\u0644 \u0643\u0647\u0641",
+            "terms": "\u0645\u062f\u062e\u0644 \u0643\u0647\u0641\u064a; \u0643\u0647\u0641"
+        },
+        "natural/cliff": {
+            "name": "\u062c\u0631\u0641 \u0635\u062e\u0631\u064a",
+            "terms": "\u062c\u0631\u0641 \u0635\u062e\u0631\u064a"
+        },
+        "natural/coastline": {
+            "name": "\u0633\u0627\u062d\u0644",
+            "terms": "\u0633\u0627\u062d\u0644"
+        },
+        "natural/fell": {
+            "name": "\u0647\u0636\u0628\u0629",
+            "terms": "\u0647\u0636\u0628\u0629\u060c \u062a\u0644\u0629\u060c \u0645\u0631\u062a\u0641\u0639"
+        },
+        "natural/glacier": {
+            "name": "\u0643\u062a\u0644\u0629 \u062c\u0644\u064a\u062f\u064a\u0629",
+            "terms": "\u0643\u062a\u0644\u0629 \u062c\u0644\u064a\u062f\u064a\u0629"
+        },
+        "natural/grassland": {
+            "name": "\u0623\u0631\u0636 \u0639\u0634\u0628\u064a\u0629",
+            "terms": "\u0645\u0631\u0639\u0649, \u0645\u0631\u062c, \u0623\u0631\u0636 \u0645\u0639\u0634\u0648\u0634\u0628\u0629"
+        },
+        "natural/heath": {
+            "name": "\u0645\u0631\u062c",
+            "terms": "\u0645\u0631\u062c"
+        },
+        "natural/mud": {
+            "name": "\u0648\u062d\u0644",
+            "terms": "\u0648\u062d\u0644\u060c \u0637\u064a\u0646"
+        },
+        "natural/peak": {
+            "name": "\u0642\u0645\u0629",
+            "terms": "\u0642\u0645\u0629, \u0630\u0631\u0648\u0629"
+        },
+        "natural/reef": {
+            "name": "\u0634\u0639\u0627\u0628",
+            "terms": "\u0634\u0639\u0627\u0628"
+        },
+        "natural/ridge": {
+            "name": "\u0646\u062a\u0648\u0621 \u062c\u0628\u0644\u064a",
+            "terms": "\u0646\u062a\u0648\u0621 \u062c\u0628\u0644\u064a\u060c \u0642\u0645\u0629 \u062c\u0628\u0644"
+        },
+        "natural/saddle": {
+            "name": "\u0645\u0645\u0631 \u062c\u0628\u0644\u064a",
+            "terms": "\u0645\u0645\u0631 \u062c\u0628\u0644\u064a"
+        },
+        "natural/sand": {
+            "name": "\u0631\u0645\u0644",
+            "terms": "\u0631\u0645\u0644"
+        },
+        "natural/scree": {
+            "name": "\u0631\u0643\u0627\u0645 \u062d\u062c\u0627\u0631\u0629",
+            "terms": "\u0631\u0643\u0627\u0645 \u062d\u062c\u0627\u0631\u0629\u060c \u062a\u0644\u0629\u060c \u0645\u062c\u0645\u0648\u0639\u0629 \u0635\u062e\u0648\u0631\u060c \u062a\u0644\u0629 \u062d\u0635\u0627\u0629"
+        },
+        "natural/scrub": {
+            "name": "\u0623\u0631\u0627\u0636\u064a \u0627\u0644\u0623\u0634\u062c\u0627\u0631 \u0627\u0644\u0642\u0645\u0626\u064a\u0629",
+            "terms": "\u062f\u063a\u0644; \u0623\u062f\u063a\u0627\u0644; \u0623\u0631\u0627\u0636\u064a \u0627\u0644\u0623\u0634\u062c\u0627\u0631 \u0627\u0644\u0642\u0645\u0626\u064a\u0629"
+        },
+        "natural/spring": {
+            "name": "\u0646\u0628\u0639",
+            "terms": "\u0646\u0628\u0639; \u0645\u0646\u0628\u0639"
+        },
+        "natural/tree": {
+            "name": "\u0634\u062c\u0631\u0629",
+            "terms": "\u0634\u062c\u0631\u0629"
+        },
+        "natural/volcano": {
+            "name": "\u0628\u0631\u0643\u0627\u0646",
+            "terms": "\u0628\u0631\u0643\u0627\u0646"
+        },
+        "natural/water": {
+            "name": "\u0645\u064a\u0627\u0647",
+            "terms": "\u0645\u0627\u0621"
+        },
+        "natural/water/lake": {
+            "name": "\u0628\u062d\u064a\u0631\u0629",
+            "terms": "\u0628\u062d\u064a\u0631\u0629"
+        },
+        "natural/water/pond": {
+            "name": "\u0628\u0631\u0643\u0629",
+            "terms": "\u0628\u0631\u0643\u0629"
+        },
+        "natural/water/reservoir": {
+            "name": "\u0628\u062d\u064a\u0631\u0629 \u062a\u062e\u0632\u064a\u0646 \u0645\u064a\u0627\u0647 \u0635\u0646\u0627\u0639\u064a\u0629",
+            "terms": "\u0628\u062d\u064a\u0631\u0629 \u0627\u0635\u0637\u0646\u0627\u0639\u064a\u0629, \u062e\u0632\u0627\u0646 \u0645\u064a\u0627\u0647"
+        },
+        "natural/wetland": {
+            "name": "\u0623\u0631\u0636 \u0631\u0637\u0628\u0629",
+            "terms": "\u0623\u0631\u0636 \u0631\u0637\u0628\u0629; \u0645\u0633\u062a\u0646\u0642\u0639; \u0647\u0648\u0631"
+        },
+        "natural/wood": {
+            "name": "\u063a\u0627\u0628\u0629 \u0623\u062e\u0634\u0627\u0628",
+            "terms": "\u063a\u0627\u0628\u0629 \u0623\u062e\u0634\u0627\u0628"
+        },
+        "noexit/yes": {
+            "name": "\u0644\u0627 \u064a\u0648\u062c\u062f \u0645\u062e\u0631\u062c",
+            "terms": "\u0644\u0627 \u064a\u0648\u062c\u062f \u0645\u062e\u0631\u062c"
+        },
+        "office": {
+            "name": "\u0645\u0643\u062a\u0628",
+            "terms": "\u0645\u0643\u062a\u0628"
+        },
+        "office/accountant": {
+            "name": " \u0627\u0644\u0645\u062d\u0627\u0633\u0628 ",
+            "terms": "\u0627\u0644\u0645\u062d\u0627\u0633\u0628 \u0627\u0644\u0642\u0627\u0646\u0648\u0646\u064a\u060c \u0627\u0644\u0645\u062f\u0642\u0642\u060c \u0627\u0644\u062d\u0633\u0627\u0628\u0627\u062a"
+        },
+        "office/administrative": {
+            "name": "\u0645\u0643\u062a\u0628 \u0627\u0644\u0625\u062f\u0627\u0631\u064a "
+        },
+        "office/advertising_agency": {
+            "name": "\u0648\u0643\u0627\u0644\u0629 \u0625\u0639\u0644\u0627\u0646\u064a\u0629",
+            "terms": "\u0648\u0643\u0627\u0644\u0629 \u0627\u0644\u0625\u0634\u0647\u0627\u0631\u060c \u0648\u0643\u0627\u0644\u0629 \u0625\u0639\u0644\u0627\u0646\u064a\u0629"
+        },
+        "office/architect": {
+            "name": " \u0645\u0647\u0646\u062f\u0633 \u0645\u0639\u0645\u0627\u0631\u064a ",
+            "terms": "\u0628\u0646\u0627\u0621\u060c \u0645\u0628\u0627\u0646\u064a\u060c \u0645\u062f\u064a\u0646\u0629\u060c \u062a\u0639\u0645\u064a\u0631"
+        },
+        "office/association": {
+            "name": "\u062c\u0645\u0639\u064a\u0629 ",
+            "terms": "\u062c\u0645\u0639\u064a\u0629\u060c \u0645\u0646\u0638\u0645\u0629 \u063a\u064a\u0631 \u0631\u0628\u062d\u064a\u0629"
+        },
+        "office/charity": {
+            "name": "\u0645\u0646\u0638\u0645\u0629 \u062e\u064a\u0631\u064a\u0629",
+            "terms": "\u0645\u0646\u0638\u0645\u0629 \u062e\u064a\u0631\u064a\u0629"
+        },
+        "office/company": {
+            "name": "\u0645\u0643\u062a\u0628 \u0634\u0631\u0643\u0629",
+            "terms": "\u0625\u062f\u0627\u0631\u0629 \u0634\u0631\u0643\u0629\u060c \u0625\u062f\u0627\u0631\u0629 \u0645\u0624\u0633\u0633\u0629\u060c \u0625\u062f\u0627\u0631\u0629 \u0639\u0627\u0645\u0629"
+        },
+        "office/coworking": {
+            "name": "\u0645\u0633\u0627\u062d\u0629 \u0639\u0645\u0644 \u0645\u0634\u062a\u0631\u0643\u0629",
+            "terms": "\u0645\u0633\u0627\u062d\u0629 \u0639\u0645\u0644 \u0645\u0634\u062a\u0631\u0643\u0629"
+        },
+        "office/educational_institution": {
+            "name": "\u0645\u0624\u0633\u0633\u0629 \u062a\u0639\u0644\u064a\u0645\u064a\u0629 ",
+            "terms": "\u0645\u0624\u0633\u0633\u0629 \u062a\u0639\u0644\u064a\u0645\u064a\u0629\u060c \u062c\u0627\u0645\u0639\u0629\u060c \u0643\u0644\u064a\u0629\u060c \u0645\u062f\u0631\u0633\u0629"
+        },
+        "office/employment_agency": {
+            "name": "\u0645\u0643\u062a\u0628 \u0627\u0644\u062a\u0648\u0638\u064a\u0641 ",
+            "terms": "\u0625\u062f\u0627\u0631\u0629 \u0634\u0624\u0648\u0646 \u0627\u0644\u0645\u0648\u0638\u0641\u064a\u0646\u060c \u0645\u0643\u062a\u0628 \u0627\u0644\u0639\u0645\u0644"
+        },
+        "office/energy_supplier": {
+            "name": "\u0634\u0631\u0643\u0629 \u0645\u0631\u0627\u0641\u0642 \u0627\u0644\u0643\u0647\u0631\u0628\u0627\u0621",
+            "terms": "\u0634\u0631\u0643\u0629 \u0645\u0631\u0627\u0641\u0642 \u0627\u0644\u0643\u0647\u0631\u0628\u0627\u0621"
+        },
+        "office/estate_agent": {
+            "name": "\u0645\u0643\u062a\u0628 \u0639\u0642\u0627\u0631\u064a",
+            "terms": "\u0627\u0644\u0637\u0627\u0628\u0648\u060c \u062f\u0627\u0626\u0631\u0629 \u0627\u0644\u0633\u062c\u0644 \u0627\u0644\u0639\u0642\u0627\u0631\u064a\u060c \u0625\u062f\u0627\u0631\u0629 \u062a\u0633\u062c\u064a\u0644 \u0627\u0644\u0645\u0645\u062a\u0644\u0643\u0627\u062a"
+        },
+        "office/financial": {
+            "name": "\u0645\u0643\u062a\u0628 \u0645\u0627\u0644\u064a",
+            "terms": "\u0648\u0632\u0627\u0631\u0629 \u0627\u0644\u0645\u0627\u0644\u064a\u0629\u060c \u0627\u0644\u0645\u0643\u062a\u0628 \u0627\u0644\u0645\u0627\u0644\u064a \u0648\u0627\u0644\u0636\u0631\u064a\u0628\u064a\u060c"
+        },
+        "office/forestry": {
+            "name": "\u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u063a\u0627\u0628\u0627\u062a",
+            "terms": "\u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u063a\u0627\u0628\u0627\u062a"
+        },
+        "office/foundation": {
+            "name": "\u0645\u0624\u0633\u0633\u0629",
+            "terms": "\u0645\u0624\u0633\u0633\u0629"
+        },
+        "office/government": {
+            "name": "\u0645\u0643\u062a\u0628 \u062d\u0643\u0648\u0645\u064a",
+            "terms": "\u0631\u0626\u0627\u0633\u0629 \u0627\u0644\u0648\u0632\u0631\u0627\u0621\u060c \u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u062f\u0648\u0644\u0629\u060c \u0627\u0644\u0645\u0643\u062a\u0628 \u0627\u0644\u0639\u0627\u0645\u060c"
+        },
+        "office/government/register_office": {
+            "name": "\u0645\u0643\u062a\u0628 \u0627\u0644\u0633\u062c\u0644 \u0627\u0644\u0645\u062f\u0646\u064a",
+            "terms": "\u0645\u0643\u062a\u0628 \u0627\u0644\u0633\u062c\u0644 \u0627\u0644\u0645\u062f\u0646\u064a"
+        },
+        "office/government/tax": {
+            "name": "\u0645\u0643\u062a\u0628 \u0627\u0644\u0636\u0631\u0627\u0626\u0628",
+            "terms": "\u0645\u0643\u062a\u0628 \u0627\u0644\u0636\u0631\u0627\u0626\u0628"
+        },
+        "office/guide": {
+            "name": "\u0645\u0643\u062a\u0628 \u0627\u0644\u062f\u0644\u064a\u0644 \u0627\u0644\u0633\u064a\u0627\u062d\u064a",
+            "terms": "\u0645\u0643\u062a\u0628 \u0627\u0644\u062f\u0644\u064a\u0644 \u0627\u0644\u0633\u064a\u0627\u062d\u064a; \u0645\u0643\u062a\u0628 \u0627\u0644\u0645\u0631\u0634\u062f \u0627\u0644\u0633\u064a\u0627\u062d\u064a"
+        },
+        "office/insurance": {
+            "name": "\u0645\u0643\u062a\u0628 \u062a\u0623\u0645\u064a\u0646\u0627\u062a",
+            "terms": "\u0645\u062f\u064a\u0631\u064a\u0629 \u0627\u0644\u0645\u0639\u0627\u0634\u0627\u062a\u060c \u062f\u0627\u0626\u0631\u0629 \u0627\u0644\u062a\u0623\u0645\u064a\u0646\u0627\u062a \u0627\u0644\u0627\u062c\u062a\u0645\u0627\u0639\u064a\u0629\u060c \u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u062a\u0623\u0645\u064a\u0646"
+        },
+        "office/it": {
+            "name": "\u0645\u062a\u062e\u0635\u0635 \u0641\u064a \u062a\u0643\u0646\u0648\u0644\u0648\u062c\u064a\u0627 \u0627\u0644\u0645\u0639\u0644\u0648\u0645\u0627\u062a",
+            "terms": "\u0645\u062a\u062e\u0635\u0635 \u0641\u064a \u062a\u0643\u0646\u0648\u0644\u0648\u062c\u064a\u0627 \u0627\u0644\u0645\u0639\u0644\u0648\u0645\u0627\u062a; \u0645\u0639\u0644\u0648\u0645\u0627\u062a\u064a\u0629"
+        },
+        "office/lawyer": {
+            "name": "\u0645\u0643\u062a\u0628 \u0642\u0627\u0646\u0648\u0646\u064a ",
+            "terms": "\u0645\u0643\u062a\u0628 \u0645\u062d\u0627\u0645\u0627\u0629\u060c \u0627\ufef9\u062f\u0627\u0631\u0629 \u0627\u0644\u0642\u0627\u0646\u0648\u0646\u064a\u0629\u060c \u0627\u0644\u0645\u062d\u0643\u0645\u0629\u060c"
+        },
+        "office/lawyer/notary": {
+            "name": "\u0643\u0627\u062a\u0628 \u0639\u062f\u0644 / \u0645\u0648\u062b\u0642"
+        },
+        "office/newspaper": {
+            "name": "\u0635\u062d\u064a\u0641\u0629",
+            "terms": "\u062c\u0631\u064a\u062f\u0629\u060c \u0635\u0641\u062d\u0629 \u0623\u062e\u0628\u0627\u0631\u060c \u064a\u0648\u0645\u064a\u0629"
+        },
+        "office/ngo": {
+            "name": "\u0645\u0643\u062a\u0628 \u0627\u0644\u0645\u0646\u0638\u0645\u0627\u062a \u0627\u0644\u063a\u064a\u0631 \u062d\u0643\u0648\u0645\u064a\u0629",
+            "terms": "\u0645\u0643\u062a\u0628 \u0627\u0644\u062c\u0645\u0639\u064a\u0627\u062a \u0627\u0644\u062e\u064a\u0631\u064a\u0629\u060c \u0647\u064a\u0626\u0627\u062a \u0627\u0644\u0639\u0645\u0644 \u0627\ufef9\u063a\u0627\u0626\u064a\u060c"
+        },
+        "office/notary": {
+            "name": "\u0643\u0627\u062a\u0628 \u0639\u062f\u0644 / \u0645\u0648\u062b\u0642",
+            "terms": "\u0643\u0627\u062a\u0628 \u0639\u062f\u0644\u060c \u0645\u0648\u062b\u0642"
+        },
+        "office/physician": {
+            "name": "\u0637\u0628\u064a\u0628"
+        },
+        "office/political_party": {
+            "name": "\u0627\u0644\u062d\u0632\u0628 \u0627\u0644\u0633\u064a\u0627\u0633\u064a ",
+            "terms": "\u062d\u0632\u0628 \u0633\u064a\u0627\u0633\u064a\u060c \u0627\u0644\u062d\u0632\u0628 \u0627\u0644\u0633\u064a\u0627\u0633\u064a\u060c \u0627\u0644\u0645\u0643\u062a\u0628 \u0627\u0644\u0633\u064a\u0627\u0633\u064a\u060c \u0645\u0643\u062a\u0628 \u0633\u064a\u0627\u0633\u064a"
+        },
+        "office/private_investigator": {
+            "name": "\u0645\u0643\u062a\u0628 \u0645\u062d\u0642\u0642",
+            "terms": "\u0645\u0643\u062a\u0628 \u0645\u062d\u0642\u0642"
+        },
+        "office/quango": {
+            "name": "\u0627\u0644\u0633\u0644\u0637\u0629 \u0627\u0644\u0625\u062f\u0627\u0631\u064a\u0629 \u0627\u0644\u0645\u0633\u062a\u0642\u0644\u0629",
+            "terms": "\u0627\u0644\u0633\u0644\u0637\u0629 \u0627\u0644\u0625\u062f\u0627\u0631\u064a\u0629 \u0627\u0644\u0645\u0633\u062a\u0642\u0644\u0629"
+        },
+        "office/research": {
+            "name": "\u0645\u0643\u062a\u0628 \u0628\u062d\u0648\u062b",
+            "terms": "\u0645\u0643\u062a\u0628 \u0627\u0644\u0628\u062d\u0648\u062b\u060c \u0645\u0643\u062a\u0628 \u0627\ufef7\u0628\u062d\u0627\u062b\u060c \u0647\u064a\u0626\u0629 \u0627\ufef7\u0628\u062d\u0627\u062b"
+        },
+        "office/surveyor": {
+            "name": "\u0645\u0633\u0627\u062d",
+            "terms": "\u0645\u0633\u0627\u062d"
+        },
+        "office/tax_advisor": {
+            "name": "\u0645\u0633\u062a\u0634\u0627\u0631 \u0627\u0644\u0636\u0631\u0627\u0626\u0628",
+            "terms": "\u0645\u0633\u062a\u0634\u0627\u0631 \u0627\u0644\u0636\u0631\u0627\u0626\u0628"
+        },
+        "office/telecommunication": {
+            "name": "\u0645\u0643\u062a\u0628 \u0627\u062a\u0635\u0627\u0644\u0627\u062a",
+            "terms": "\u0645\u0643\u062a\u0628 \u0627\u0644\u0627\u062a\u0635\u0627\u0644\u0627\u062a\u060c \u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u0627\u062a\u0635\u0627\u0644\u060c \u0647\u064a\u0626\u0629 \u0627\u0644\u0627\u062a\u0635\u0627\u0644\u0627\u062a \u0627\u0644\u0639\u0627\u0645\u0629"
+        },
+        "office/therapist": {
+            "name": "\u0627\u0644\u0645\u0639\u0627\u0644\u062c",
+            "terms": "\u0645\u0639\u0627\u0644\u062c\u060c \u0645\u0639\u0627\u0644\u062c \u0641\u064a\u0632\u064a\u0627\u0626\u064a\u060c \u0637\u0628\u064a\u0628\u060c \u0645\u064f\u0645\u0631\u0636"
+        },
+        "office/travel_agent": {
+            "name": "\u0648\u0643\u0627\u0644\u0629 \u0627\u0644\u0633\u0641\u0631"
+        },
+        "office/water_utility": {
+            "name": "\u0634\u0631\u0643\u0629 \u0627\u0644\u0645\u064a\u0627\u0647",
+            "terms": "\u0634\u0631\u0643\u0629 \u0627\u0644\u0645\u064a\u0627\u0647"
+        },
+        "place": {
+            "name": "\u0642\u0635\u0631"
+        },
+        "place/city": {
+            "name": "\u0645\u062f\u064a\u0646\u0629",
+            "terms": "\u0645\u062f\u064a\u0646\u0629"
+        },
+        "place/farm": {
+            "name": "\u0645\u0632\u0631\u0639\u0629"
+        },
+        "place/hamlet": {
+            "name": "\u0642\u0631\u064a\u0629 \u0635\u063a\u064a\u0631\u0629",
+            "terms": "\u0642\u0631\u064a\u0629 \u0635\u063a\u064a\u0631\u0629"
+        },
+        "place/island": {
+            "name": "\u062c\u0632\u064a\u0631\u0629",
+            "terms": "\u062c\u0632\u064a\u0631\u0629"
+        },
+        "place/islet": {
+            "name": "\u062c\u0632\u064a\u0631\u0629 \u0635\u063a\u064a\u0631\u0629",
+            "terms": "\u062c\u0632\u064a\u0631\u0629 \u0635\u063a\u064a\u0631\u0629"
+        },
+        "place/isolated_dwelling": {
+            "name": "\u0645\u0633\u0627\u0643\u0646 \u0645\u062a\u0641\u0631\u0642\u0629",
+            "terms": "\u0645\u0633\u0627\u0643\u0646 \u0645\u062a\u0641\u0631\u0642\u0629"
+        },
+        "place/locality": {
+            "name": "\u0645\u0648\u0642\u0639",
+            "terms": "\u0645\u0648\u0642\u0639"
+        },
+        "place/neighbourhood": {
+            "name": "\u062d\u064a \u0633\u0643\u0646\u064a",
+            "terms": "\u062d\u064a \u0633\u0643\u0646\u064a"
+        },
+        "place/plot": {
+            "name": "\u0642\u0637\u0639\u0629 \u0627\u0644\u0623\u0631\u0636",
+            "terms": "\u0642\u0637\u0639\u0629 \u0627\u0644\u0623\u0631\u0636"
+        },
+        "place/square": {
+            "name": "\u0633\u0627\u062d\u0629",
+            "terms": "\u0633\u0627\u062d\u0629; \u0628\u0627\u062d\u0629; \u0645\u0645\u0634\u0649"
+        },
+        "place/suburb": {
+            "name": "\u0636\u0627\u062d\u064a\u0629",
+            "terms": "\u0636\u0627\u062d\u064a\u0629"
+        },
+        "place/town": {
+            "name": "\u0628\u0644\u062f\u0629",
+            "terms": "\u0628\u0644\u062f\u0629"
+        },
+        "place/village": {
+            "name": "\u0642\u0631\u064a\u0629",
+            "terms": "\u0642\u0631\u064a\u0629"
+        },
+        "point": {
+            "name": "\u0646\u0642\u0637\u0629",
+            "terms": "\u0646\u0642\u0637\u0629"
+        },
+        "power": {
+            "name": "\u0627\u0644\u0637\u0627\u0642\u0629"
+        },
+        "power/cable/underground": {
+            "name": "\u0643\u0627\u0628\u0644 \u0643\u0647\u0631\u0628\u0627\u0621 \u062a\u062d\u062a \u0627\u0644\u0623\u0631\u0636"
+        },
+        "power/generator": {
+            "name": "\u0645\u0648\u0644\u062f \u0637\u0627\u0642\u0629",
+            "terms": "\u0645\u0648\u0644\u062f \u0627\u0644\u0637\u0627\u0642\u0629,\u0637\u0627\u0642\u0629,\u0643\u0647\u0631\u0628\u0627\u0621,\u0645\u0648\u0644\u062f \u0643\u0647\u0631\u0628\u0627\u0621"
+        },
+        "power/generator/method/photovoltaic": {
+            "name": "\u0644\u0648\u062d\u0629 \u0634\u0645\u0633\u064a\u0629",
+            "terms": "\u0644\u0648\u062d\u0627\u062a \u0634\u0645\u0633\u064a\u0629,\u0637\u0627\u0642\u0629 \u0634\u0645\u0633\u064a\u0629,\u0637\u0627\u0642\u0629,\u0634\u0645\u0633"
+        },
+        "power/generator/source/nuclear": {
+            "name": "\u0645\u0641\u0627\u0639\u0644 \u0646\u0648\u0648\u064a",
+            "terms": "\u0646\u0648\u0648\u064a,\u0645\u0641\u0627\u0639\u0644,\u0637\u0627\u0642\u0629,\u0643\u0647\u0631\u0628\u0627\u0621"
+        },
+        "power/generator/source/wind": {
+            "name": "\u062a\u0648\u0631\u0628\u064a\u0646\u0629 \u0631\u064a\u0627\u062d",
+            "terms": "\u0631\u064a\u0627\u062d,\u062a\u0648\u0644\u064a\u062f \u0643\u0647\u0631\u0628\u0627\u0621,\u0643\u0647\u0631\u0628\u0627\u0621,\u062a\u0648\u0631\u0628\u064a\u0646\u0627\u062a,\u062a\u0648\u0631\u0628\u064a\u0646\u0629,\u062a\u0648\u0631\u0628\u064a\u0646,\u0637\u0627\u0642\u0629"
+        },
+        "power/line": {
+            "name": "\u062e\u0637 \u0627\u0644\u0637\u0627\u0642\u0629",
+            "terms": "\u062e\u0637 \u0627\u0644\u0643\u0647\u0631\u0628\u0627\u0621 , \u062e\u0637 \u0627\u0644\u0637\u0627\u0642\u0629"
+        },
+        "power/minor_line": {
+            "name": "\u062e\u0637 \u0643\u0647\u0631\u0628\u0627\u0626\u064a \u062b\u0627\u0646\u0648\u064a",
+            "terms": "\u062e\u0637 \u0643\u0647\u0631\u0628\u0627\u0626\u064a \u0635\u063a\u064a\u0631\u060c \u062e\u0637 \u0637\u0627\u0642\u0629 \u0635\u063a\u064a\u0631"
+        },
+        "power/plant": {
+            "name": "\u0645\u062d\u0637\u0629 \u062a\u0648\u0644\u064a\u062f \u0627\u0644\u0643\u0647\u0631\u0628\u0627\u0621",
+            "terms": "\u0645\u062d\u0637\u0629 \u062a\u0648\u0644\u064a\u062f \u0627\u0644\u0643\u0647\u0631\u0628\u0627\u0621\u060c \u0627\u0644\u0637\u0627\u0642\u0629 \u0627\u0644\u0643\u0647\u0631\u0628\u0627\u0626\u064a\u0629"
+        },
+        "power/pole": {
+            "name": "\u0628\u0631\u062c \u0643\u0647\u0631\u0628\u0627\u0621",
+            "terms": "\u0628\u0631\u062c \u0643\u0647\u0631\u0628\u0627\u0621"
+        },
+        "power/sub_station": {
+            "name": "\u0645\u062d\u0637\u0629 \u0641\u0631\u0639\u064a\u0629"
+        },
+        "power/substation": {
+            "name": "\u0645\u062d\u0637\u0629 \u0641\u0631\u0639\u064a\u0629",
+            "terms": "\u0645\u062d\u0637\u0629 \u0641\u0631\u0639\u064a\u0629"
+        },
+        "power/switch": {
+            "name": "\u0645\u0641\u062a\u0627\u062d \u0648\u0635\u0644 \u0648\u0641\u0635\u0644",
+            "terms": "\u0645\u0639\u062f\u0629 \u0648\u0635\u0644 \u0648\u0641\u0635\u0644,\u0645\u0641\u062a\u0627\u062d,\u0641\u0635\u0644,\u0648\u0635\u0644"
+        },
+        "power/tower": {
+            "name": "\u0628\u0631\u062c \u0639\u0627\u0644\u064a \u0627\u0644\u062c\u0647\u062f",
+            "terms": "\u0628\u0631\u062c \u0639\u0627\u0644\u064a \u0627\u0644\u062c\u0647\u062f, \u0628\u0631\u062c \u062a\u064a\u0627\u0631 \u0639\u0627\u0644\u064a \u0627\u0644\u062c\u0647\u062f, \u062a\u064a\u0627\u0631 \u0639\u0627\u0644\u064a \u0627\u0644\u062c\u0647\u062f"
+        },
+        "power/transformer": {
+            "name": "\u0645\u062d\u0648\u0644 \u0643\u0647\u0631\u0628\u0627\u0626\u064a",
+            "terms": "\u0645\u062d\u0648\u0644 \u0627\u0644\u0643\u0647\u0631\u0628\u0627\u0626\u064a"
+        },
+        "public_transport/platform": {
+            "name": "\u0645\u062d\u0637\u0629/\u0645\u0648\u0642\u0641 \u0639\u0628\u0648\u0631"
+        },
+        "public_transport/platform_aerialway": {
+            "name": "\u0645\u062d\u0637\u0629/\u0645\u0648\u0642\u0641 \u0637\u0631\u064a\u0642 \u062c\u0648\u064a"
+        },
+        "public_transport/platform_bus": {
+            "name": "\u0645\u062d\u0637\u0629/\u0645\u0648\u0642\u0641 \u062d\u0627\u0641\u0644\u0629"
+        },
+        "public_transport/platform_ferry": {
+            "name": "\u0645\u062d\u0637\u0629/\u0645\u0648\u0642\u0641 \u0639\u0628\u0651\u0627\u0631\u0629"
+        },
+        "public_transport/platform_light_rail": {
+            "name": "\u0645\u062d\u0637\u0629/\u0645\u0648\u0642\u0641 \u0633\u0643\u0629 \u062d\u062f\u064a\u062f \u062e\u0641\u064a\u0641\u0629"
+        },
+        "public_transport/platform_monorail": {
+            "name": "\u0645\u062d\u0637\u0629/\u0645\u0648\u0642\u0641 \u0633\u0643\u0629 \u062d\u062f\u064a\u062f \u0623\u062d\u0627\u062f\u064a\u0629"
+        },
+        "public_transport/platform_subway": {
+            "name": "\u0645\u062d\u0637\u0629/\u0645\u0648\u0642\u0641 \u0645\u062a\u0631\u0648 \u0623\u0646\u0641\u0627\u0642"
+        },
+        "public_transport/platform_train": {
+            "name": "\u0645\u062d\u0637\u0629/\u0645\u0648\u0642\u0641 \u0642\u0637\u0627\u0631",
+            "terms": "\u0631\u0635\u064a\u0641 \u0633\u0643\u0629 \u062d\u062f\u064a\u062f,\u0642\u0637\u0627\u0631"
+        },
+        "public_transport/platform_tram": {
+            "name": "\u0645\u062d\u0637\u0629/\u0645\u0648\u0642\u0641 \u062a\u0631\u0627\u0645"
+        },
+        "public_transport/platform_trolleybus": {
+            "name": "\u0645\u062d\u0637\u0629/\u0645\u0648\u0642\u0641 \u062d\u0627\u0641\u0644\u0629 \u0643\u0647\u0631\u0628\u0627\u0626\u064a\u0629"
+        },
+        "public_transport/station": {
+            "name": "\u0645\u062d\u0637\u0629 \u0639\u0628\u0648\u0631 (\u062a\u0631\u0627\u0646\u0632\u064a\u062a)"
+        },
+        "public_transport/station_aerialway": {
+            "name": "\u0645\u062d\u0637\u0629 \u0627\u0644\u0646\u0642\u0644 \u0628\u0627\u0644\u0643\u0627\u0628\u0644\u0627\u062a",
+            "terms": "\u0645\u062d\u0637\u0629 \u0627\u0644\u0646\u0642\u0644 \u0628\u0627\u0644\u0643\u0627\u0628\u0644\u0627\u062a; \u0645\u062d\u0637\u0629 \u062a\u0644\u0641\u0631\u064a\u0643"
+        },
+        "public_transport/station_bus": {
+            "name": "\u0645\u062d\u0637\u0629 \u0627\u0644\u062d\u0627\u0641\u0644\u0627\u062a",
+            "terms": "\u0645\u062d\u0637\u0629 \u0627\u0644\u062d\u0627\u0641\u0644\u0627\u062a"
+        },
+        "public_transport/station_ferry": {
+            "name": "\u0645\u062d\u0637\u0629 \u0639\u0628\u0651\u0627\u0631\u0629"
+        },
+        "public_transport/station_light_rail": {
+            "name": "\u0645\u062d\u0637\u0629 \u0633\u0643\u0629 \u062d\u062f\u064a\u062f \u062e\u0641\u064a\u0641\u0629"
+        },
+        "public_transport/station_monorail": {
+            "name": "\u0645\u062d\u0637\u0629 \u0633\u0643\u0629 \u062d\u062f\u064a\u062f \u0623\u062d\u0627\u062f\u064a\u0629"
+        },
+        "public_transport/station_subway": {
+            "name": "\u0645\u062d\u0637\u0629 \u0645\u062a\u0631\u0648",
+            "terms": "\u0645\u062d\u0637\u0629 \u0645\u062a\u0631\u0648"
+        },
+        "public_transport/station_train": {
+            "name": "\u0645\u062d\u0637\u0629 \u0642\u0637\u0627\u0631",
+            "terms": "\u0645\u062d\u0637\u0629 \u0627\u0644\u0642\u0637\u0627\u0631"
+        },
+        "public_transport/station_tram": {
+            "name": "\u0645\u062d\u0637\u0629 \u062a\u0631\u0627\u0645"
+        },
+        "public_transport/station_trolleybus": {
+            "name": "\u0645\u062d\u0637\u0629 \u062d\u0627\u0641\u0644\u0629 \u0643\u0647\u0631\u0628\u0627\u0626\u064a\u0629"
+        },
+        "public_transport/stop_area": {
+            "name": "\u0645\u0646\u0637\u0642\u0629 \u0645\u0648\u0642\u0641 \u0639\u0628\u0648\u0631 (\u062a\u0631\u0627\u0646\u0632\u064a\u062a)"
+        },
+        "public_transport/stop_position": {
+            "name": "\u0645\u0648\u0642\u0639 \u0645\u0648\u0642\u0641 \u0627\u0644\u0639\u0628\u0648\u0631"
+        },
+        "public_transport/stop_position_aerialway": {
+            "name": "\u0645\u0648\u0642\u0639 \u0648\u0642\u0648\u0641 \u0637\u0631\u064a\u0642 \u062c\u0648\u064a"
+        },
+        "public_transport/stop_position_bus": {
+            "name": "\u0645\u0648\u0642\u0639 \u0648\u0642\u0648\u0641 \u062d\u0627\u0641\u0644\u0627\u062a"
+        },
+        "public_transport/stop_position_ferry": {
+            "name": "\u0645\u0648\u0642\u0639 \u0648\u0642\u0648\u0641 \u0639\u0628\u0651\u0627\u0631\u0627\u062a"
+        },
+        "public_transport/stop_position_light_rail": {
+            "name": "\u0645\u0648\u0642\u0639 \u0648\u0642\u0648\u0641 \u0633\u0643\u0643 \u062d\u062f\u064a\u062f \u062e\u0641\u064a\u0641\u0629"
+        },
+        "public_transport/stop_position_monorail": {
+            "name": "\u0645\u0648\u0642\u0639 \u0648\u0642\u0648\u0641 \u0633\u0643\u0643 \u062d\u062f\u064a\u062f \u0623\u062d\u0627\u062f\u064a\u0629"
+        },
+        "public_transport/stop_position_subway": {
+            "name": "\u0645\u0648\u0642\u0639 \u0648\u0642\u0648\u0641 \u0645\u062a\u0631\u0648 \u0623\u0646\u0641\u0627\u0642"
+        },
+        "public_transport/stop_position_train": {
+            "name": "\u0645\u0648\u0642\u0641 \u0648\u0642\u0648\u0641 \u0642\u0637\u0627\u0631\u0627\u062a"
+        },
+        "public_transport/stop_position_tram": {
+            "name": "\u0645\u0648\u0642\u0639 \u0648\u0642\u0648\u0641 \u062a\u0631\u0627\u0645"
+        },
+        "public_transport/stop_position_trolleybus": {
+            "name": "\u0645\u0648\u0642\u0639 \u0648\u0642\u0648\u0641 \u062d\u0627\u0641\u0644\u0627\u062a \u0643\u0647\u0631\u0628\u0627\u0626\u064a\u0629"
+        },
+        "railway": {
+            "name": "\u0633\u0643\u0629 \u062d\u062f\u064a\u062f"
+        },
+        "railway/abandoned": {
+            "name": "\u0633\u0643\u0629 \u062d\u062f\u064a\u062f\u064a\u0629 \u0645\u0647\u062c\u0648\u0631\u0629",
+            "terms": "\u0633\u0643\u0629 \u062d\u062f\u064a\u062f \u0645\u0647\u062c\u0648\u0631\u0629"
+        },
+        "railway/buffer_stop": {
+            "name": "\u0645\u0635\u062f \u0642\u0637\u0627\u0631\u0627\u062a",
+            "terms": "\u0645\u0635\u062f,\u0642\u0637\u0627\u0631"
+        },
+        "railway/crossing": {
+            "name": "\u0645\u0639\u0628\u0631 \u0633\u0643\u0629 \u062d\u062f\u064a\u062f (\u0645\u0633\u0627\u0631)",
+            "terms": "\u0645\u0639\u0628\u0631 \u0633\u0643\u0629 \u062d\u062f\u064a\u062f; \u0645\u0639\u0628\u0631,\u0645\u0632\u0644\u0642\u0627\u0646"
+        },
+        "railway/disused": {
+            "name": "\u0633\u0643\u0629 \u062d\u062f\u064a\u062f\u0629 \u0645\u0647\u062c\u0648\u0631\u0629",
+            "terms": "\u0633\u0643\u0629 \u062d\u062f\u064a\u062f \u063a\u064a\u0631 \u0645\u0633\u062a\u0639\u0645\u0644\u0629"
+        },
+        "railway/funicular": {
+            "name": "\u0642\u0637\u0627\u0631 \u062c\u0628\u0644\u064a \u0645\u0627\u0626\u0644",
+            "terms": "\u0642\u0637\u0627\u0631 \u062c\u0628\u0644\u064a \u0645\u0627\u0626\u0644"
+        },
+        "railway/halt": {
+            "name": "\u0645\u0648\u0642\u0641 \u0627\u0644\u0642\u0637\u0627\u0631"
+        },
+        "railway/level_crossing": {
+            "name": "\u0645\u0639\u0628\u0631 \u0633\u0643\u0629 \u062d\u062f\u064a\u062f (\u0637\u0631\u064a\u0642)",
+            "terms": "\u0645\u0639\u0628\u0631 \u0633\u0643\u0629 \u062d\u062f\u064a\u062f; \u0645\u0639\u0628\u0631"
+        },
+        "railway/light_rail": {
+            "name": "\u0642\u0637\u0627\u0631 \u062e\u0641\u064a\u0641",
+            "terms": "\u0642\u0637\u0627\u0631 \u062e\u0641\u064a\u0641"
+        },
+        "railway/monorail": {
+            "name": "\u0633\u0643\u0629 \u062d\u062f\u064a\u062f\u0629 \u0645\u0641\u0631\u062f\u0629",
+            "terms": "\u0633\u0643\u0629 \u062d\u062f\u064a\u062f\u0629 \u0645\u0641\u0631\u062f\u0629"
+        },
+        "railway/platform": {
+            "name": "\u0631\u0635\u064a\u0641 \u0633\u0643\u0629 \u062d\u062f\u064a\u062f"
+        },
+        "railway/rail": {
+            "name": "\u0642\u0637\u0627\u0631",
+            "terms": "\u0642\u0637\u0627\u0631"
+        },
+        "railway/signal": {
+            "name": "\u0625\u0634\u0627\u0631\u0627\u062a \u0627\u0644\u0645\u0631\u0648\u0631 ( \u0627\u0644\u0633\u0643\u0643 \u0627\u0644\u062d\u062f\u064a\u062f\u064a\u0629 )",
+            "terms": "\u0625\u0634\u0627\u0631\u0629 \u0627\u0644\u0645\u0631\u0648\u0631"
+        },
+        "railway/station": {
+            "name": "\u0645\u062d\u0637\u0629 \u0633\u0643\u0629 \u062d\u062f\u064a\u062f"
+        },
+        "railway/subway": {
+            "name": "\u0645\u062a\u0631\u0648 \u0627\u0644\u0623\u0646\u0641\u0627\u0642",
+            "terms": "\u0645\u062a\u0631\u0648 \u0627\u0644\u0623\u0646\u0641\u0627\u0642"
+        },
+        "railway/subway_entrance": {
+            "name": "\u0645\u062f\u062e\u0644 \u0645\u062a\u0631\u0648 \u0627\u0644\u0623\u0646\u0641\u0627\u0642",
+            "terms": "\u0645\u062f\u062e\u0644 \u0645\u062a\u0631\u0648 \u0627\u0644\u0623\u0646\u0641\u0627\u0642"
+        },
+        "railway/switch": {
+            "name": "\u0645\u0641\u062a\u0627\u062d \u062a\u062d\u0648\u064a\u0644 \u0633\u0643\u0643 \u062d\u062f\u064a\u062f"
+        },
+        "railway/train_wash": {
+            "name": "\u063a\u0633\u064a\u0644 \u0642\u0637\u0627\u0631\u0627\u062a"
+        },
+        "railway/tram": {
+            "name": "\u062a\u0631\u0627\u0645",
+            "terms": "\u062a\u0631\u0627\u0645,\u0642\u0637\u0627\u0631,\u0645\u062a\u0631\u0648,\u0633\u0643\u0643 \u062d\u062f\u064a\u062f"
+        },
+        "railway/tram_stop": {
+            "name": "\u0645\u0648\u0642\u0641 \u062a\u0631\u0627\u0645"
+        },
+        "relation": {
+            "name": "\u0639\u0644\u0627\u0642\u0629",
+            "terms": "\u0639\u0644\u0627\u0642\u0629"
+        },
+        "roundabout": {
+            "name": "\u062f\u0648\u0627\u0631 \u0645\u0631\u0648\u0631\u064a"
+        },
+        "route/ferry": {
+            "name": "\u0645\u0633\u0627\u0631 \u0639\u0628\u0651\u0627\u0631\u0629",
+            "terms": "\u0645\u0633\u0627\u0631 \u0639\u0628\u0651\u0627\u0631\u0629, \u0645\u0633\u0627\u0631 \u0633\u0641\u0646"
+        },
+        "seamark": {
+            "name": "\u0639\u0644\u0627\u0645\u0629 \u0628\u062d\u0631\u064a\u0629"
+        },
+        "shop": {
+            "name": "\u0645\u062a\u062c\u0631",
+            "terms": "\u0645\u062d\u0644. \u0645\u062a\u062c\u0631, \u062f\u0643\u0627\u0646"
+        },
+        "shop/agrarian": {
+            "name": "\u0645\u062a\u062c\u0631 \u0645\u0633\u062a\u0644\u0632\u0645\u0627\u062a \u0645\u0632\u0627\u0631\u0639"
+        },
+        "shop/alcohol": {
+            "name": "\u0645\u062a\u062c\u0631 \u062e\u0645\u0648\u0631",
+            "terms": "\u0645\u062d\u0644 \u062e\u0645\u0648\u0631,\u062e\u0645\u0648\u0631,\u0645\u062a\u062c\u0631 \u062e\u0645\u0648\u0631"
+        },
+        "shop/anime": {
+            "name": "\u0645\u062a\u062c\u0631 \u0623\u0641\u0644\u0627\u0645 \u0631\u0633\u0648\u0645 \u0645\u062a\u062d\u0631\u0643\u0629"
+        },
+        "shop/antiques": {
+            "name": "\u0645\u062a\u062c\u0631 \u062a\u062d\u0641 \u0648\u0623\u0646\u062a\u064a\u0643\u0627\u062a"
+        },
+        "shop/appliance": {
+            "name": "\u0645\u062a\u062c\u0631 \u0627\u0644\u0623\u062c\u0647\u0632\u0629 \u0627\u0644\u0645\u0646\u0632\u0644\u064a\u0629",
+            "terms": "\u0645\u062a\u062c\u0631 \u0627\u0644\u0623\u062c\u0647\u0632\u0629 \u0627\u0644\u0645\u0646\u0632\u0644\u064a\u0629"
+        },
+        "shop/art": {
+            "name": "\u0645\u062a\u062c\u0631 \u0627\u0644\u0641\u0646\u0648\u0646",
+            "terms": "\u0645\u062a\u062c\u0631 \u0641\u0646\u0648\u0646"
+        },
+        "shop/baby_goods": {
+            "name": "\u0645\u062a\u062c\u0631 \u0633\u0644\u0639 \u0623\u0637\u0641\u0627\u0644"
+        },
+        "shop/bag": {
+            "name": "\u0645\u062a\u062c\u0631 \u062d\u0642\u0627\u0626\u0628 \u0648\u0623\u0645\u062a\u0639\u0629",
+            "terms": "\u0634\u0646\u0637\u0629, \u062d\u0642\u064a\u0628\u0629"
+        },
+        "shop/bakery": {
+            "name": "\u0645\u062e\u0628\u0632",
+            "terms": "\u0645\u062e\u0628\u0632"
+        },
+        "shop/bathroom_furnishing": {
+            "name": "\u0645\u062a\u062c\u0631 \u0623\u062b\u0627\u062b \u0627\u0644\u062d\u0645\u0627\u0645"
+        },
+        "shop/beauty": {
+            "name": "\u0645\u062d\u0644 \u062a\u062c\u0645\u064a\u0644",
+            "terms": "\u0645\u062d\u0644 \u062a\u062c\u0645\u064a\u0644"
+        },
+        "shop/beauty/nails": {
+            "name": "\u0635\u0627\u0644\u0648\u0646 \u0623\u0638\u0627\u0641\u0631"
+        },
+        "shop/beauty/tanning": {
+            "name": "\u0635\u0627\u0644\u0648\u0646 \u062a\u0633\u0645\u064a\u0631"
+        },
+        "shop/bed": {
+            "name": "\u0645\u062a\u062c\u0631 \u0645\u0631\u0627\u062a\u0628 \u0648\u0644\u0648\u0627\u0632\u0645 \u0627\u0644\u0641\u0631\u0627\u0634"
+        },
+        "shop/beverages": {
+            "name": "\u0645\u062d\u0644 \u0645\u0634\u0631\u0648\u0628\u0627\u062a",
+            "terms": "\u0645\u062d\u0644 \u0645\u0634\u0631\u0648\u0628\u0627\u062a"
+        },
+        "shop/bicycle": {
+            "name": "\u0645\u062a\u062c\u0631 \u062f\u0631\u0627\u062c\u0627\u062a \u0647\u0648\u0627\u0626\u064a\u0629",
+            "terms": "\u0645\u062d\u0644 \u062f\u0631\u0627\u062c\u0627\u062a \u0647\u0648\u0627\u0626\u064a\u0629; \u0645\u062a\u062c\u0631 \u062f\u0631\u0627\u062c\u0627\u062a; \u0645\u062d\u0644 \u062f\u0631\u0627\u062c\u0627\u062a; \u0628\u0627\u0626\u0639 \u062f\u0631\u0627\u062c\u0627\u062a"
+        },
+        "shop/bookmaker": {
+            "name": "\u0645\u0643\u062a\u0628 \u0631\u0647\u0627\u0646\u0627\u062a"
+        },
+        "shop/books": {
+            "name": "\u0645\u062a\u062c\u0631 \u0643\u062a\u0628",
+            "terms": "\u0645\u0643\u062a\u0628\u0629\u060c \u0643\u062a\u0628"
+        },
+        "shop/boutique": {
+            "name": "\u0628\u0648\u062a\u064a\u0643",
+            "terms": "\u0628\u0648\u062a\u064a\u0643"
+        },
+        "shop/butcher": {
+            "name": "\u062c\u0632\u0627\u0631",
+            "terms": "\u062c\u0632\u0627\u0631, \u0645\u062d\u0644 \u0628\u064a\u0639 \u0644\u062d\u0648\u0645. \u0645\u062d\u0644 \u062c\u0632\u0627\u0631\u0629, \u0644\u062d\u0648\u0645"
+        },
+        "shop/candles": {
+            "name": "\u0645\u062a\u062c\u0631 \u0627\u0644\u0634\u0645\u0648\u0639",
+            "terms": "\u0645\u062a\u062c\u0631 \u0627\u0644\u0634\u0645\u0648\u0639"
+        },
+        "shop/car": {
+            "name": "\u0648\u0643\u0627\u0644\u0629 \u0633\u064a\u0627\u0631\u0627\u062a",
+            "terms": "\u0648\u0643\u0627\u0644\u0629 \u0633\u064a\u0627\u0631\u0627\u062a"
+        },
+        "shop/car_parts": {
+            "name": "\u0645\u062d\u0644 \u0628\u064a\u0639 \u0623\u062c\u0632\u0627\u0621 \u0627\u0644\u0633\u064a\u0627\u0631\u0629",
+            "terms": "\u0645\u062d\u0644 \u0628\u064a\u0639 \u0642\u0637\u0639 \u0627\u0644\u0633\u064a\u0627\u0631\u0627\u062a"
+        },
+        "shop/car_repair": {
+            "name": "\u0648\u0631\u0634\u0629 \u0625\u0635\u0644\u0627\u062d \u0633\u064a\u0627\u0631\u0627\u062a",
+            "terms": "\u0645\u062d\u0644 \u062a\u0635\u0644\u064a\u062d \u0633\u064a\u0627\u0631\u0627\u062a; \u0648\u0631\u0634\u0629 \u062a\u0635\u0644\u064a\u062d; \u0648\u0631\u0634\u0629; \u0645\u064a\u0643\u0627\u0646\u064a\u0643\u064a"
+        },
+        "shop/carpet": {
+            "name": "\u0645\u062a\u062c\u0631 \u0633\u062c\u0627\u062f",
+            "terms": "\u0645\u062a\u062c\u0631 \u0633\u062c\u0627\u062f; \u0632\u0631\u0627\u0628\u064a"
+        },
+        "shop/charity": {
+            "name": "\u0645\u062a\u062c\u0631 \u062e\u064a\u0631\u064a"
+        },
+        "shop/cheese": {
+            "name": "\u0645\u062a\u062c\u0631 \u0623\u062c\u0628\u0627\u0646",
+            "terms": "\u0645\u062a\u062c\u0631 \u0623\u062c\u0628\u0627\u0646"
+        },
+        "shop/chemist": {
+            "name": "\u0645\u062a\u062c\u0631 \u0623\u062f\u0648\u0627\u062a \u062a\u062c\u0645\u064a\u0644 \u0645\u0633\u062a\u062d\u0636\u0631\u0627\u062a \u0646\u0638\u0627\u0641\u0629"
+        },
+        "shop/chocolate": {
+            "name": "\u0645\u062a\u062c\u0631 \u0634\u0648\u0643\u0648\u0644\u0627\u062a\u0629"
+        },
+        "shop/clothes": {
+            "name": "\u0645\u062d\u0644 \u0645\u0644\u0627\u0628\u0633",
+            "terms": "\u0645\u062d\u0644 \u0628\u064a\u0639 \u0645\u0644\u0627\u0628\u0633"
+        },
+        "shop/coffee": {
+            "name": "\u0645\u062a\u062c\u0631 \u0627\u0644\u0642\u0647\u0648\u0629",
+            "terms": "\u0645\u062a\u062c\u0631 \u0627\u0644\u0642\u0647\u0648\u0629"
+        },
+        "shop/computer": {
+            "name": "\u0645\u062d\u0644 \u062d\u0627\u0633\u0648\u0628",
+            "terms": "\u0645\u062d\u0644 \u062d\u0627\u0633\u0648\u0628"
+        },
+        "shop/confectionery": {
+            "name": "\u0645\u062a\u062c\u0631 \u0633\u0643\u0627\u0643\u0631",
+            "terms": "\u062d\u0644\u0648\u064a\u0627\u062a, \u062d\u0644\u0648\u0649"
+        },
+        "shop/convenience": {
+            "name": "\u0628\u0642\u0627\u0644\u0629",
+            "terms": "\u0628\u0642\u0627\u0644\u0629"
+        },
+        "shop/copyshop": {
+            "name": "\u0645\u062a\u062c\u0631 \u0646\u0633\u062e \u0648\u062a\u0635\u0648\u064a\u0631"
+        },
+        "shop/cosmetics": {
+            "name": "\u0645\u062a\u062c\u0631 \u0645\u0633\u062a\u062d\u0636\u0631\u0627\u062a \u0627\u0644\u062a\u062c\u0645\u064a\u0644",
+            "terms": "\u0645\u062a\u062c\u0631 \u0645\u0633\u062a\u062d\u0636\u0631\u0627\u062a \u0627\u0644\u062a\u062c\u0645\u064a\u0644"
+        },
+        "shop/craft": {
+            "name": "\u0645\u062a\u062c\u0631 \u0627\u0644\u0641\u0646\u0648\u0646 \u0648\u0627\u0644\u062d\u0631\u0641",
+            "terms": "\u0645\u062a\u062c\u0631 \u0627\u0644\u0641\u0646\u0648\u0646 \u0648\u0627\u0644\u062d\u0631\u0641"
+        },
+        "shop/curtain": {
+            "name": "\u0645\u062d\u0644 \u0628\u064a\u0639 \u0627\u0644\u0633\u062a\u0627\u0626\u0631",
+            "terms": "\u0633\u062a\u0627\u0626\u0631"
+        },
+        "shop/dairy": {
+            "name": "\u0645\u062a\u062c\u0631 \u0627\u0644\u0623\u0644\u0628\u0627\u0646",
+            "terms": "\u0645\u062a\u062c\u0631 \u0627\u0644\u0623\u0644\u0628\u0627\u0646\u060c \u0627\u0644\u0623\u0644\u0628\u0627\u0646"
+        },
+        "shop/deli": {
+            "name": "\u0645\u062d\u0644 \u0623\u0637\u0639\u0645\u0629 \u0644\u0630\u064a\u0630\u0629",
+            "terms": "\u0645\u062d\u0644 \u0623\u0637\u0639\u0645\u0629 \u0644\u0630\u064a\u0630\u0629, \u062f\u064a\u0644\u064a"
+        },
+        "shop/department_store": {
+            "name": "\u0645\u062d\u0644 \u0645\u062a\u0639\u062f\u062f \u0627\u0644\u0623\u0642\u0633\u0627\u0645",
+            "terms": "\u0645\u062d\u0644 \u0645\u062a\u0639\u062f\u062f \u0627\u0644\u0623\u0642\u0633\u0627\u0645"
+        },
+        "shop/doityourself": {
+            "name": "\u0645\u062d\u0644 \u0627\u0641\u0639\u0644\u0647\u0627 \u0628\u0646\u0641\u0633\u0643",
+            "terms": "\u0645\u062d\u0644 \u0627\u0641\u0639\u0644\u0647\u0627 \u0628\u0646\u0641\u0633\u0643"
+        },
+        "shop/dry_cleaning": {
+            "name": "\u062a\u0646\u0638\u064a\u0641 \u062c\u0627\u0641"
+        },
+        "shop/e-cigarette": {
+            "name": "\u0645\u062a\u062c\u0631 \u0633\u062c\u0627\u0626\u0631 \u0625\u0644\u0643\u062a\u0631\u0648\u0646\u064a\u0629"
+        },
+        "shop/electronics": {
+            "name": "\u0645\u062d\u0644 \u0625\u0644\u0643\u062a\u0631\u0648\u0646\u064a\u0627\u062a",
+            "terms": "\u0645\u062d\u0644 \u0625\u0644\u0643\u062a\u0631\u0648\u0646\u064a\u0627\u062a"
+        },
+        "shop/fabric": {
+            "name": "\u0645\u062d\u0644 \u0628\u064a\u0639 \u0627\u0644\u0623\u0642\u0645\u0634\u0629",
+            "terms": "\u0627\u0644\u0623\u0642\u0645\u0634\u0629"
+        },
+        "shop/farm": {
+            "name": "\u0627\u0644\u0645\u0646\u062a\u062c",
+            "terms": "\u0627\u0644\u0645\u0646\u062a\u062c"
+        },
+        "shop/fashion": {
+            "name": "\u0645\u062a\u062c\u0631 \u0645\u0648\u0636\u0629"
+        },
+        "shop/fishmonger": {
+            "name": "\u0645\u062d\u0644 \u0628\u064a\u0639 \u0623\u0633\u0645\u0627\u0643"
+        },
+        "shop/florist": {
+            "name": "\u0645\u062d\u0644 \u0628\u064a\u0639 \u0627\u0644\u0648\u0631\u0648\u062f",
+            "terms": "\u0645\u062d\u0644 \u0628\u064a\u0639 \u0632\u0647\u0648\u0631, \u0645\u062d\u0644 \u0628\u064a\u0639 \u0648\u0631\u0648\u062f"
+        },
+        "shop/furniture": {
+            "name": "\u0645\u062d\u0644 \u0623\u062b\u0627\u062b",
+            "terms": "\u0645\u062d\u0644 \u0623\u062b\u0627\u062b"
+        },
+        "shop/garden_centre": {
+            "name": "\u0645\u0634\u062a\u0644",
+            "terms": "\u0645\u0634\u062a\u0644"
+        },
+        "shop/gift": {
+            "name": "\u0645\u062d\u0644 \u0627\u0644\u0647\u062f\u0627\u064a\u0627",
+            "terms": "\u0645\u062d\u0644 \u0628\u064a\u0639 \u0647\u062f\u0627\u064a\u0627"
+        },
+        "shop/greengrocer": {
+            "name": "\u0628\u0642\u0627\u0644\u0629",
+            "terms": "\u0628\u0642\u0627\u0644\u0629"
+        },
+        "shop/hairdresser": {
+            "name": "\u062d\u0644\u0627\u0642",
+            "terms": "\u062d\u0644\u0627\u0642, \u0645\u0635\u0641\u0641 \u0627\u0644\u0634\u0639\u0631"
+        },
+        "shop/hairdresser_supply": {
+            "name": "\u0645\u062a\u062c\u0631 \u0645\u0633\u062a\u0644\u0632\u0645\u0627\u062a \u062d\u0644\u0627\u0642\u064a\u0646"
+        },
+        "shop/hardware": {
+            "name": "\u0645\u062d\u0644 \u0623\u062c\u0647\u0632\u0629",
+            "terms": "\u0645\u062d\u0644 \u0628\u064a\u0639 \u0639\u062a\u0627\u062f"
+        },
+        "shop/health_food": {
+            "name": "\u0645\u062a\u062c\u0631 \u0623\u063a\u0630\u064a\u0629 \u0635\u062d\u064a\u0629"
+        },
+        "shop/hearing_aids": {
+            "name": "\u0645\u062a\u062c\u0631 \u0633\u0645\u0627\u0639\u0627\u062a \u0627\u0644\u0623\u0630\u0646 \u0627\u0644\u0637\u0628\u064a\u0629",
+            "terms": "\u0633\u0645\u0627\u0639\u0627\u062a \u0627\u0644\u0623\u0630\u0646 \u0627\u0644\u0637\u0628\u064a\u0629; \u0645\u0639\u064a\u0646\u0627\u062a \u0633\u0645\u0639\u064a\u0629; \u0623\u062c\u0647\u0632\u0629 \u062a\u0642\u0648\u064a\u0629 \u0627\u0644\u0633\u0645\u0639; \u0645\u0633\u0627\u0639\u062f\u0627\u062a \u0627\u0644\u0633\u0645\u0639"
+        },
+        "shop/herbalist": {
+            "name": "\u0645\u062d\u0644 \u0628\u064a\u0639 \u0627\u0644\u0623\u0639\u0634\u0627\u0628 \u0627\u0644\u0637\u0628\u064a\u0629",
+            "terms": "\u0645\u062d\u0644 \u0628\u064a\u0639 \u0627\u0644\u0623\u0639\u0634\u0627\u0628 \u0627\u0644\u0637\u0628\u064a\u0629"
+        },
+        "shop/hifi": {
+            "name": "\u0645\u062d\u0644 \u0628\u064a\u0639 \u0623\u062c\u0647\u0632\u0629 \u0639\u0627\u0644\u064a\u0629 \u0627\u0644\u062f\u0642\u0629",
+            "terms": "\u0645\u062d\u0644 \u0628\u064a\u0639 \u0623\u062c\u0647\u0632\u0629 \u0639\u0627\u0644\u064a\u0629 \u0627\u0644\u062f\u0642\u0629"
+        },
+        "shop/houseware": {
+            "name": "\u0645\u062a\u062c\u0631 \u0627\u0644\u0623\u062f\u0648\u0627\u062a \u0627\u0644\u0645\u0646\u0632\u0644\u064a\u0629",
+            "terms": "\u0645\u062a\u062c\u0631 \u0627\u0644\u0623\u062f\u0648\u0627\u062a \u0627\u0644\u0645\u0646\u0632\u0644\u064a\u0629"
+        },
+        "shop/interior_decoration": {
+            "name": "\u0645\u062a\u062c\u0631 \u0627\u0644\u062f\u064a\u0643\u0648\u0631 \u0627\u0644\u062f\u0627\u062e\u0644\u064a",
+            "terms": "\u0645\u062a\u062c\u0631 \u0627\u0644\u062f\u064a\u0643\u0648\u0631 \u0627\u0644\u062f\u0627\u062e\u0644\u064a"
+        },
+        "shop/kiosk": {
+            "name": "\u0643\u0634\u0643",
+            "terms": "\u0643\u0634\u0643"
+        },
+        "shop/kitchen": {
+            "name": "\u0645\u062a\u062c\u0631 \u062a\u0635\u0645\u064a\u0645 \u0645\u0637\u0627\u0628\u062e"
+        },
+        "shop/laundry": {
+            "name": "\u0645\u062d\u0644 \u063a\u0633\u064a\u0644 \u0645\u0644\u0627\u0628\u0633",
+            "terms": "\u063a\u0633\u064a\u0644 \u0645\u0644\u0627\u0628\u0633"
+        },
+        "shop/leather": {
+            "name": "\u0645\u062a\u062c\u0631 \u0627\u0644\u0645\u0646\u062a\u062c\u0627\u062a \u0627\u0644\u062c\u0644\u062f\u064a\u0629",
+            "terms": "\u0645\u062a\u062c\u0631 \u0627\u0644\u0645\u0646\u062a\u062c\u0627\u062a \u0627\u0644\u062c\u0644\u062f\u064a\u0629"
+        },
+        "shop/locksmith": {
+            "name": "\u0645\u062d\u0644 \u0623\u0642\u0641\u0627\u0644",
+            "terms": "\u0635\u0627\u0646\u0639 \u0627\ufef7\u0642\u0641\u0627\u0644\u060c \u0623\u0642\u0641\u0627\u0644\u060c \u062d\u062f\u0627\u062f\u060c"
+        },
+        "shop/lottery": {
+            "name": "\u0645\u062a\u062c\u0631 \u0627\u0644\u064a\u0627\u0646\u0635\u064a\u0628"
+        },
+        "shop/mall": {
+            "name": "\u0645\u0631\u0643\u0632 \u062a\u0633\u0648\u0642 \u0645\u0648\u0644",
+            "terms": "\u0645\u0631\u0643\u0632 \u062a\u0633\u0648\u0642, \u0645\u0648\u0644"
+        },
+        "shop/massage": {
+            "name": "\u0635\u0627\u0644\u0648\u0646 \u0627\u0644\u062a\u062f\u0644\u064a\u0643",
+            "terms": "\u0635\u0627\u0644\u0648\u0646 \u0627\u0644\u062a\u062f\u0644\u064a\u0643"
+        },
+        "shop/medical_supply": {
+            "name": "\u0645\u062a\u062c\u0631 \u0645\u0633\u062a\u0644\u0632\u0645\u0627\u062a \u0637\u0628\u064a\u0629",
+            "terms": "\u0645\u062a\u062c\u0631 \u0645\u0633\u062a\u0644\u0632\u0645\u0627\u062a \u0637\u0628\u064a\u0629"
+        },
+        "shop/mobile_phone": {
+            "name": "\u0645\u062d\u0644 \u0628\u064a\u0639 \u0647\u0648\u0627\u062a\u0641",
+            "terms": "\u0645\u062d\u0644 \u0628\u064a\u0639 \u0647\u0648\u0627\u062a\u0641"
+        },
+        "shop/money_lender": {
+            "name": "\u0645\u0642\u0631\u0636 \u0627\u0644\u0645\u0627\u0644"
+        },
+        "shop/motorcycle": {
+            "name": "\u0628\u0627\u0626\u0639 \u062f\u0631\u0627\u062c\u0627\u062a \u0646\u0627\u0631\u064a\u0629",
+            "terms": "\u0648\u0643\u0627\u0644\u0629 \u062f\u0631\u0627\u062c\u0627\u062a \u0647\u0648\u0627\u0626\u064a\u0629; \u062a\u0648\u0643\u064a\u0644; \u0628\u0627\u0626\u0639; \u062a\u0648\u0643\u064a\u0644 \u062f\u0631\u0627\u062c\u0627\u062a; \u0628\u0627\u0626\u0639 \u062f\u0631\u0627\u062c\u0627\u062a; \u0628\u064a\u0639 \u062f\u0631\u0627\u062c\u0627\u062a; \u0628\u064a\u0639"
+        },
+        "shop/motorcycle_repair": {
+            "name": "\u0648\u0631\u0634\u0629 \u062a\u0635\u0644\u064a\u062d \u0627\u0644\u062f\u0631\u0627\u062c\u0627\u062a \u0627\u0644\u0646\u0627\u0631\u064a\u0629"
+        },
+        "shop/music": {
+            "name": "\u0645\u062a\u062c\u0631 \u0628\u064a\u0639 \u0645\u0648\u0633\u064a\u0642\u0649",
+            "terms": "\u0645\u062d\u0644 \u0628\u064a\u0639 \u0627\u0644\u0645\u0648\u0633\u064a\u0642\u0649"
+        },
+        "shop/musical_instrument": {
+            "name": "\u0645\u062a\u062c\u0631 \u0622\u0644\u0627\u062a \u0645\u0648\u0633\u064a\u0642\u064a\u0629",
+            "terms": "\u0645\u062d\u0644 \u0628\u064a\u0639 \u0627\u0644\u0622\u0644\u0627\u062a \u0627\u0644\u0645\u0648\u0633\u064a\u0642\u064a\u0629"
+        },
+        "shop/newsagent": {
+            "name": "\u0645\u062d\u0644 \u0628\u064a\u0639 \u0627\u0644\u062c\u0631\u0627\u0626\u062f",
+            "terms": "\u062c\u0631\u0627\u0626\u062f"
+        },
+        "shop/nutrition_supplements": {
+            "name": "\u0645\u062a\u062c\u0631 \u0627\u0644\u0645\u0643\u0645\u0644\u0627\u062a \u0627\u0644\u063a\u0630\u0627\u0626\u064a\u0629",
+            "terms": "\u0645\u062a\u062c\u0631 \u0627\u0644\u0645\u0643\u0645\u0644\u0627\u062a \u0627\u0644\u063a\u0630\u0627\u0626\u064a\u0629\u060c \u0645\u0643\u0645\u0644\u0627\u062a \u063a\u0630\u0627\u0626\u064a\u0629"
+        },
+        "shop/optician": {
+            "name": "\u0645\u062a\u062c\u0631 \u0646\u0638\u0627\u0631\u0627\u062a",
+            "terms": "\u0645\u062d\u0644 \u0628\u064a\u0639 \u0646\u0638\u0627\u0631\u0627\u062a"
+        },
+        "shop/organic": {
+            "name": "\u0645\u062a\u062c\u0631 \u0627\u0644\u0645\u0646\u062a\u062c\u0627\u062a \u0627\u0644\u0639\u0636\u0648\u064a\u0629",
+            "terms": "\u0645\u0646\u062a\u062c\u0627\u062a \u0639\u0636\u0648\u064a\u0629"
+        },
+        "shop/outdoor": {
+            "name": "\u0645\u062a\u062c\u0631 \u0645\u0644\u0627\u0628\u0633 \u0648\u0645\u0639\u062f\u0627\u062a \u0627\u0644\u0623\u0646\u0634\u0637\u0629 \u0641\u064a \u0627\u0644\u0647\u0648\u0627\u0621 \u0627\u0644\u0637\u0644\u0642",
+            "terms": "\u0645\u062a\u062c\u0631 \u0645\u0644\u0627\u0628\u0633 \u0648\u0645\u0639\u062f\u0627\u062a \u0627\u0644\u0623\u0646\u0634\u0637\u0629 \u0641\u064a \u0627\u0644\u0647\u0648\u0627\u0621 \u0627\u0644\u0637\u0644\u0642"
+        },
+        "shop/paint": {
+            "name": "\u0645\u062a\u062c\u0631 \u062f\u0647\u0627\u0646\u0627\u062a \u0648\u0637\u0644\u0627\u0621",
+            "terms": "\u0637\u0644\u0627\u0621"
+        },
+        "shop/party": {
+            "name": "\u0645\u062a\u062c\u0631 \u0645\u0633\u062a\u0644\u0632\u0645\u0627\u062a \u062d\u0641\u0644\u0627\u062a"
+        },
+        "shop/pastry": {
+            "name": "\u0645\u062a\u062c\u0631 \u062d\u0644\u0648\u064a\u0627\u062a",
+            "terms": "\u0645\u062a\u062c\u0631 \u0627\u0644\u062d\u0644\u0648\u064a\u0627\u062a"
+        },
+        "shop/pawnbroker": {
+            "name": "\u0645\u062a\u062c\u0631 \u0631\u0647\u0646"
+        },
+        "shop/perfumery": {
+            "name": "\u0645\u062a\u062c\u0631 \u0627\u0644\u0639\u0637\u0648\u0631",
+            "terms": "\u0639\u0637\u0648\u0631"
+        },
+        "shop/pet": {
+            "name": "\u0645\u062d\u0644 \u062d\u064a\u0648\u0627\u0646\u0627\u062a \u0623\u0644\u064a\u0641\u0629",
+            "terms": "\u0645\u062d\u0644 \u062d\u064a\u0648\u0627\u0646\u0627\u062a \u0623\u0644\u064a\u0641\u0629"
+        },
+        "shop/photo": {
+            "name": "\u0645\u062d\u0644 \u062a\u0635\u0648\u064a\u0631",
+            "terms": "\u0645\u062a\u062c\u0631 \u062a\u0638\u0651\u0647\u064a\u0631 \u0627\u0644\u0635\u0648\u0631\u060c \u0645\u062d\u0644 \u062a\u0635\u0648\u064a\u0631\u060c \u0645\u0635\u0648\u0631"
+        },
+        "shop/pyrotechnics": {
+            "name": "\u0645\u062a\u062c\u0631 \u0623\u0644\u0639\u0627\u0628 \u0646\u0627\u0631\u064a\u0629",
+            "terms": "\u0623\u0644\u0639\u0627\u0628 \u0646\u0627\u0631\u064a\u0629"
+        },
+        "shop/radiotechnics": {
+            "name": "\u0645\u062a\u062c\u0631 \u0627\u0644\u0645\u0643\u0648\u0646\u0627\u062a \u0627\u0644\u0625\u0644\u0643\u062a\u0631\u0648\u0646\u064a\u0629",
+            "terms": "\u0645\u062a\u062c\u0631 \u0627\u0644\u0645\u0643\u0648\u0646\u0627\u062a \u0627\u0644\u0625\u0644\u0643\u062a\u0631\u0648\u0646\u064a\u0629"
+        },
+        "shop/religion": {
+            "name": "\u0645\u062a\u062c\u0631 \u062f\u064a\u0646\u064a",
+            "terms": "\u062f\u064a\u0646,\u0645\u062a\u062c\u0631,"
+        },
+        "shop/scuba_diving": {
+            "name": "\u0645\u062a\u062c\u0631 \u063a\u0648\u0635 \u062a\u062d\u062a \u0627\u0644\u0645\u0627\u0621"
+        },
+        "shop/seafood": {
+            "name": "\u0645\u062a\u062c\u0631 \u0645\u0623\u0643\u0648\u0644\u0627\u062a \u0628\u062d\u0631\u064a\u0629",
+            "terms": "\u0645\u0623\u0643\u0648\u0644\u0627\u062a \u0628\u062d\u0631\u064a\u0629, \u0645\u0633\u0645\u0643\u0629, \u0633\u0645\u0643"
+        },
+        "shop/second_hand": {
+            "name": "\u0645\u062d\u0644 \u0644\u0628\u064a\u0639 \u0627\u0644\u0628\u0636\u0627\u0626\u0639 \u0627\u0644\u0645\u0633\u062a\u0639\u0645\u0644\u0629",
+            "terms": "\u0645\u062d\u0644 \u0644\u0628\u064a\u0639 \u0627\u0644\u0628\u0636\u0627\u0626\u0639 \u0627\u0644\u0645\u0633\u062a\u0639\u0645\u0644\u0629"
+        },
+        "shop/sewing": {
+            "name": "\u0645\u062a\u062c\u0631 \u0645\u0633\u062a\u0644\u0632\u0645\u0627\u062a \u062e\u064a\u0627\u0637\u0629",
+            "terms": "\u062e\u064a\u0627\u0637\u0629,\u062a\u0631\u0632\u064a,\u062e\u064a\u0627\u0637,"
+        },
+        "shop/shoes": {
+            "name": "\u0645\u062a\u062c\u0631 \u0623\u062d\u0630\u064a\u0629",
+            "terms": "\u0645\u062d\u0644 \u0628\u064a\u0639 \u0623\u062d\u0630\u064a\u0629,\u062d\u0630\u0627\u0621,\u0627\u062d\u0630\u064a\u0629"
+        },
+        "shop/sports": {
+            "name": "\u0645\u062a\u062c\u0631 \u0623\u062f\u0648\u0627\u062a \u0631\u064a\u0627\u0636\u064a\u0629",
+            "terms": "\u0645\u062d\u0644 \u0628\u064a\u0639 \u0623\u062f\u0648\u0627\u062a \u0631\u064a\u0627\u0636\u064a\u0629"
+        },
+        "shop/stationery": {
+            "name": "\u0645\u062a\u062c\u0631 \u0623\u062f\u0648\u0627\u062a \u0645\u0643\u062a\u0628\u064a\u0629",
+            "terms": "\u0645\u062d\u0644 \u0628\u064a\u0639 \u0623\u062f\u0648\u0627\u062a \u0645\u0643\u062a\u0628\u064a\u0629,\u0642\u0631\u0637\u0627\u0633\u064a\u0629,\u0645\u0643\u062a\u0628\u0629"
+        },
+        "shop/supermarket": {
+            "name": "\u0633\u0648\u0628\u0631 \u0645\u0627\u0631\u0643\u062a",
+            "terms": "\u0633\u0648\u0628\u0631\u0645\u0627\u0631\u0643\u062a, \u0645\u062a\u062c\u0631 \u0643\u0628\u064a\u0631"
+        },
+        "shop/tailor": {
+            "name": "\u062e\u064a\u0627\u0637",
+            "terms": "\u062e\u064a\u0627\u0637,\u062a\u0631\u0632\u064a"
+        },
+        "shop/tea": {
+            "name": "\u0645\u062d\u0644 \u0628\u064a\u0639 \u0627\u0644\u0634\u0627\u064a",
+            "terms": "\u0645\u062d\u0644 \u0628\u064a\u0639 \u0627\u0644\u0634\u0627\u064a\u060c  \u0634\u0627\u064a"
+        },
+        "shop/ticket": {
+            "name": "\u0628\u0627\u0626\u0639 \u0627\u0644\u062a\u0630\u0627\u0643\u0631",
+            "terms": "\u0628\u0627\u0626\u0639 \u0627\u0644\u062a\u0630\u0627\u0643\u0631; \u062a\u0630\u0627\u0643\u0631"
+        },
+        "shop/tiles": {
+            "name": "\u0645\u062d\u0644 \u0628\u064a\u0639 \u0627\u0644\u0628\u0644\u0627\u0637",
+            "terms": "\u0645\u062d\u0644 \u0628\u064a\u0639 \u0627\u0644\u0628\u0644\u0627\u0637\u060c \u0628\u0644\u0627\u0637\u060c \u062e\u0632\u0641"
+        },
+        "shop/tobacco": {
+            "name": "\u0645\u062d\u0644 \u0628\u064a\u0639 \u0627\u0644\u062a\u0628\u063a",
+            "terms": "\u062a\u0628\u063a\u060c \u0633\u064a\u062c\u0627\u0631\u0629"
+        },
+        "shop/toys": {
+            "name": "\u0645\u062d\u0644 \u0623\u0644\u0639\u0627\u0628",
+            "terms": "\u0645\u062d\u0644 \u0623\u0644\u0639\u0627\u0628"
+        },
+        "shop/travel_agency": {
+            "name": "\u0648\u0643\u0627\u0644\u0629 \u0633\u0641\u0631",
+            "terms": "\u0648\u0643\u0627\u0644\u0629 \u0633\u0641\u0631"
+        },
+        "shop/tyres": {
+            "name": "\u0645\u062d\u0644 \u0628\u064a\u0639 \u0625\u0637\u0627\u0631\u0627\u062a",
+            "terms": "\u0645\u062d\u0644 \u0628\u064a\u0639 \u0625\u0637\u0627\u0631\u0627\u062a"
+        },
+        "shop/vacant": {
+            "name": "\u0645\u062d\u0644 \u0634\u0627\u063a\u0631"
+        },
+        "shop/vacuum_cleaner": {
+            "name": "\u0645\u062a\u062c\u0631 \u0627\u0644\u0645\u0643\u0646\u0633\u0627\u062a \u0627\u0644\u0643\u0647\u0631\u0628\u0627\u0626\u064a\u0629",
+            "terms": "\u0645\u062a\u062c\u0631 \u0627\u0644\u0645\u0643\u0646\u0633\u0627\u062a \u0627\u0644\u0643\u0647\u0631\u0628\u0627\u0626\u064a\u0629; \u0645\u0643\u0646\u0633\u0627\u062a \u0643\u0647\u0631\u0628\u0627\u0626\u064a\u0629"
+        },
+        "shop/variety_store": {
+            "name": "\u0645\u062d\u0644 \u0643\u0644 \u0634\u064a\u0621 ",
+            "terms": "\u0645\u062d\u0644 \u0643\u0644 \u0634\u064a\u0621, \u0645\u062d\u0644 \u0628\u0627\u0644\u062c\u0645\u0644\u0629"
+        },
+        "shop/video": {
+            "name": "\u0645\u062d\u0644 \u0628\u064a\u0639 \u0648\u062a\u0623\u062c\u064a\u0631 \u0627\u0644\u0623\u0641\u0644\u0627\u0645",
+            "terms": "\u0645\u062d\u0644 \u0628\u064a\u0639 \u0648\u062a\u0623\u062c\u064a\u0631 \u0627\u0644\u0623\u0641\u0644\u0627\u0645"
+        },
+        "shop/video_games": {
+            "name": "\u0645\u062a\u062c\u0631 \u0627\u0644\u0639\u0627\u0628 \u0627\u0644\u0641\u064a\u062f\u064a\u0648",
+            "terms": "\u0645\u062a\u062c\u0631 \u0627\u0644\u0639\u0627\u0628 \u0627\u0644\u0641\u064a\u062f\u064a\u0648"
+        },
+        "shop/watches": {
+            "name": "\u0645\u062a\u062c\u0631 \u0627\u0644\u0633\u0627\u0639\u0627\u062a \u0627\u0644\u064a\u062f\u0648\u064a\u0629",
+            "terms": "\u0645\u062a\u062c\u0631 \u0627\u0644\u0633\u0627\u0639\u0627\u062a \u0627\u0644\u064a\u062f\u0648\u064a\u0629"
+        },
+        "shop/weapons": {
+            "name": "\u0645\u062a\u062c\u0631 \u0623\u0633\u0644\u062d\u0629"
+        },
+        "shop/wholesale": {
+            "name": "\u0645\u062d\u0644 \u0628\u064a\u0639 \u0628\u0627\u0644\u062c\u0645\u0644\u0629",
+            "terms": "\u0645\u062d\u0644 \u0628\u064a\u0639 \u0628\u0627\u0644\u062c\u0645\u0644\u0629"
+        },
+        "shop/wine": {
+            "name": "\u0645\u062a\u062c\u0631 \u0646\u0628\u064a\u0630"
+        },
+        "tourism": {
+            "name": "\u0633\u064a\u0627\u062d\u064a"
+        },
+        "tourism/alpine_hut": {
+            "name": "\u0643\u0648\u062e \u062c\u0628\u0644\u064a",
+            "terms": "\u062f\u0627\u0631 \u0627\u0633\u062a\u0631\u0627\u062d\u0629"
+        },
+        "tourism/apartment": {
+            "name": "\u0634\u0642\u0629 \u0633\u064a\u0627\u062d\u064a\u0629",
+            "terms": "\u0634\u0642\u0629 \u0633\u064a\u0627\u062d\u064a\u0629"
+        },
+        "tourism/aquarium": {
+            "name": "\u062d\u0648\u0636 \u0633\u0645\u0643",
+            "terms": "\u062d\u0648\u0636 \u0633\u0645\u0643"
+        },
+        "tourism/artwork": {
+            "name": "\u0639\u0645\u0644 \u0641\u0646\u064a",
+            "terms": "\u0639\u0645\u0644 \u0641\u0646\u064a"
+        },
+        "tourism/attraction": {
+            "name": "\u0645\u0639\u0644\u0645 \u0633\u064a\u0627\u062d\u064a",
+            "terms": "\u0645\u0639\u0644\u0645 \u0633\u064a\u0627\u062d\u064a, \u0645\u0643\u0627\u0646 \u0633\u064a\u0627\u062d\u064a"
+        },
+        "tourism/camp_site": {
+            "name": "\u0645\u0643\u0627\u0646 \u0627\u0644\u062a\u062e\u064a\u064a\u0645",
+            "terms": "\u0645\u0643\u0627\u0646 \u0627\u0644\u062a\u062e\u064a\u064a\u0645"
+        },
+        "tourism/caravan_site": {
+            "name": "\u0645\u0648\u0642\u0641 \u0639\u0631\u0628\u0627\u062a \u0643\u0628\u064a\u0631\u0629",
+            "terms": "\u0645\u0648\u0642\u0641 \u0639\u0631\u0628\u0627\u062a \u0643\u0628\u064a\u0631\u0629"
+        },
+        "tourism/chalet": {
+            "name": "\u0643\u0648\u062e \u0644\u0642\u0636\u0627\u0621 \u0627\u0644\u0639\u0637\u0644\u0629",
+            "terms": "\u0643\u0648\u062e \u0644\u0642\u0636\u0627\u0621 \u0627\u0644\u0639\u0637\u0644\u0629"
+        },
+        "tourism/gallery": {
+            "name": "\u0631\u0648\u0627\u0642 \u0627\u0644\u0641\u0646\u0648\u0646",
+            "terms": "\u0631\u0648\u0627\u0642 \u0627\u0644\u0641\u0646\u0648\u0646\u060c \u0645\u062a\u062d\u0641 \u0627\u0644\u0641\u0646\u0648\u0646"
+        },
+        "tourism/guest_house": {
+            "name": "\u062f\u0627\u0631 \u0627\u0644\u0636\u064a\u0627\u0641\u0629",
+            "terms": "\u062f\u0627\u0631 \u0627\u0644\u0636\u064a\u0627\u0641\u0629"
+        },
+        "tourism/hostel": {
+            "name": "\u0646\u0632\u0644",
+            "terms": "\u0646\u0632\u0644"
+        },
+        "tourism/hotel": {
+            "name": "\u0641\u0646\u062f\u0642",
+            "terms": "\u0641\u0646\u062f\u0642"
+        },
+        "tourism/information": {
+            "name": "\u0645\u0639\u0644\u0648\u0645\u0627\u062a \u0633\u064a\u0627\u062d\u064a\u0629",
+            "terms": "\u0645\u0639\u0644\u0648\u0645\u0627\u062a \u0633\u064a\u0627\u062d\u064a\u0629"
+        },
+        "tourism/information/board": {
+            "name": "\u0644\u0648\u062d\u0629 \u0627\u0644\u0645\u0639\u0644\u0648\u0645\u0627\u062a",
+            "terms": "\u0644\u0648\u062d\u0629 \u0627\u0644\u0645\u0639\u0644\u0648\u0645\u0627\u062a"
+        },
+        "tourism/information/map": {
+            "name": "\u062e\u0631\u064a\u0637\u0629",
+            "terms": "\u062e\u0631\u064a\u0637\u0629"
+        },
+        "tourism/information/office": {
+            "name": "\u0645\u0643\u062a\u0628 \u0627\u0644\u0645\u0639\u0644\u0648\u0645\u0627\u062a \u0627\u0644\u0633\u064a\u0627\u062d\u064a\u0629",
+            "terms": "\u0645\u0643\u062a\u0628 \u0627\u0644\u0645\u0639\u0644\u0648\u0645\u0627\u062a \u0627\u0644\u0633\u064a\u0627\u062d\u064a\u0629"
+        },
+        "tourism/motel": {
+            "name": "\u0641\u0646\u062f\u0642 \u0631\u062e\u064a\u0635",
+            "terms": "\u0641\u0646\u062f\u0642 \u0631\u062e\u064a\u0635"
+        },
+        "tourism/museum": {
+            "name": "\u0645\u062a\u062d\u0641",
+            "terms": "\u0645\u062a\u062d\u0641, \u0645\u0639\u0631\u0636"
+        },
+        "tourism/picnic_site": {
+            "name": "\u0645\u0648\u0642\u0639 \u0646\u0632\u0647\u0629",
+            "terms": "\u0645\u0648\u0642\u0639 \u0646\u0632\u0647\u0629"
+        },
+        "tourism/theme_park": {
+            "name": "\u062d\u062f\u064a\u0642\u0629 \u062a\u0631\u0641\u064a\u0647",
+            "terms": "\u062d\u062f\u064a\u0642\u0629 \u062a\u0631\u0641\u064a\u0647"
+        },
+        "tourism/viewpoint": {
+            "name": "\u0645\u0646\u0638\u0631 \u0633\u064a\u0627\u062d\u064a",
+            "terms": "\u0645\u0646\u0638\u0631 \u0633\u064a\u0627\u062d\u064a"
+        },
+        "tourism/zoo": {
+            "name": "\u062d\u062f\u064a\u0642\u0629 \u062d\u064a\u0648\u0627\u0646\u0627\u062a",
+            "terms": "\u062d\u062f\u064a\u0642\u0629 \u0627\u0644\u062d\u064a\u0648\u0627\u0646\u0627\u062a"
+        },
+        "traffic_calming": {
+            "name": "\u0645\u062e\u0641\u0641 \u0633\u0631\u0639\u0629",
+            "terms": "\u0645\u0637\u0628; \u0645\u062e\u0641\u0641; \u0645\u0647\u062f\u064a\u0621; \u0645\u0647\u062f\u0626; \u0645\u0645\u0647\u0644; \u062a\u062e\u0641\u064a\u0641; \u062a\u0645\u0647\u064a\u0644; \u0645\u0637\u0628 \u0635\u0646\u0627\u0639\u064a"
+        },
+        "traffic_calming/bump": {
+            "name": "\u0645\u0637\u0628",
+            "terms": "\u0645\u0637\u0628"
+        },
+        "type/boundary": {
+            "name": "\u062d\u062f\u0648\u062f",
+            "terms": "\u062d\u062f\u0648\u062f"
+        },
+        "type/boundary/administrative": {
+            "name": "\u062d\u062f\u0648\u062f \u0625\u062f\u0627\u0631\u064a\u0629",
+            "terms": "\u062d\u062f\u0648\u062f \u0625\u062f\u0627\u0631\u064a\u0629, \u062a\u0642\u0633\u064a\u0645\u0627\u062a \u0625\u062f\u0627\u0631\u064a\u0629"
+        },
+        "type/multipolygon": {
+            "name": "\u0645\u062a\u0639\u062f\u062f \u0627\u0644\u0623\u0636\u0644\u0627\u0639"
+        },
+        "type/restriction": {
+            "name": "\u0642\u064a\u0648\u062f",
+            "terms": "\u0642\u064a\u0648\u062f"
+        },
+        "type/restriction/no_left_turn": {
+            "name": "\u0645\u0645\u0646\u0648\u0639 \u0627\u0644\u0625\u0646\u0639\u0637\u0627\u0641 \u0644\u0644\u064a\u0633\u0627\u0631",
+            "terms": "\u0645\u0645\u0646\u0648\u0639 \u0627\u0644\u0625\u0646\u0639\u0637\u0627\u0641 \u0644\u0644\u064a\u0633\u0627\u0631"
+        },
+        "type/restriction/no_right_turn": {
+            "name": "\u0645\u0645\u0646\u0648\u0639 \u0627\u0644\u0625\u0646\u0639\u0637\u0627\u0641 \u0644\u0644\u064a\u0645\u064a\u0646",
+            "terms": "\u0645\u0645\u0646\u0648\u0639 \u0627\u0644\u0625\u0646\u0639\u0637\u0627\u0641 \u0644\u0644\u064a\u0645\u064a\u0646"
+        },
+        "type/restriction/no_u_turn": {
+            "name": "\u0644\u0627 \u064a\u0648\u062c\u062f \u062f\u0648\u0631\u0627\u0646",
+            "terms": "\u0644\u0627 \u064a\u0648\u062c\u062f \u062f\u0648\u0631\u0627\u0646"
+        },
+        "type/restriction/only_left_turn": {
+            "name": "\u0645\u0646\u0639\u0637\u0641 \u0644\u0644\u064a\u0633\u0627\u0631 \u0641\u0642\u0637",
+            "terms": "\u0645\u0646\u0639\u0637\u0641 \u0644\u0644\u064a\u0633\u0627\u0631 \u0641\u0642\u0637"
+        },
+        "type/restriction/only_right_turn": {
+            "name": "\u0645\u0646\u0639\u0637\u0641 \u0644\u0644\u064a\u0645\u064a\u0646 \u0641\u0642\u0637",
+            "terms": "\u0645\u0646\u0639\u0637\u0641 \u0644\u0644\u064a\u0645\u064a\u0646 \u0641\u0642\u0637"
+        },
+        "type/restriction/only_straight_on": {
+            "name": "\u0644\u0627 \u064a\u0648\u062c\u062f \u0645\u0646\u0639\u0637\u0641\u0627\u062a",
+            "terms": "\u0644\u0627 \u064a\u0648\u062c\u062f \u0645\u0646\u0639\u0637\u0641\u0627\u062a"
+        },
+        "type/restriction/only_u_turn": {
+            "name": "\u062f\u0648\u0631\u0627\u0646 \u0644\u0644\u062e\u0644\u0641 \u0641\u0642\u0637"
+        },
+        "type/route": {
+            "name": "\u0645\u0633\u0627\u0631",
+            "terms": "\u0645\u0633\u0627\u0631"
+        },
+        "type/route/bicycle": {
+            "name": "\u0645\u0633\u0627\u0631 \u062f\u0631\u0627\u062c\u0627\u062a",
+            "terms": "\u0645\u0633\u0627\u0631 \u062f\u0631\u0627\u062c\u0627\u062a; \u0645\u0633\u0627\u0631; \u0637\u0631\u064a\u0642"
+        },
+        "type/route/bus": {
+            "name": "\u0645\u0633\u0627\u0631 \u0627\u0644\u0628\u0627\u0635\u0627\u062a",
+            "terms": "\u0645\u0633\u0627\u0631 \u0628\u0627\u0635\u0627\u062a\u060c \u062d\u0627\u0641\u0644\u0627\u062a"
+        },
+        "type/route/detour": {
+            "name": "\u0645\u0633\u0627\u0631 \u0637\u0631\u064a\u0642 \u062c\u0627\u0646\u0628\u064a",
+            "terms": "\u0645\u0633\u0627\u0631 \u0637\u0631\u064a\u0642 \u062c\u0627\u0646\u0628\u064a"
+        },
+        "type/route/ferry": {
+            "name": "\u0645\u0633\u0627\u0631 \u0639\u0628\u0627\u0631\u0629",
+            "terms": "\u0645\u0633\u0627\u0631 \u0633\u0641\u0646, \u0645\u0633\u0627\u0631 \u0639\u0628\u0627\u0631\u0627\u062a"
+        },
+        "type/route/foot": {
+            "name": "\u0645\u0633\u0627\u0631 \u0627\u0644\u0645\u0634\u064a \u0628\u0627\u0644\u0623\u0642\u062f\u0627\u0645",
+            "terms": "\u0645\u0633\u0627\u0631 \u0645\u0634\u064a \u0628\u0627\u0644\u0623\u0642\u062f\u0627\u0645"
+        },
+        "type/route/hiking": {
+            "name": "\u0645\u0645\u0634\u0649 ",
+            "terms": "\u0645\u0633\u0627\u0631 \u0627\u0644\u0645\u0634\u0627\u0629\u060c \u0637\u0631\u064a\u0642 \u0644\u0644\u0645\u0634\u064a\u060c"
+        },
+        "type/route/horse": {
+            "name": "\u0645\u0633\u0627\u0631 \u0631\u0643\u0648\u0628",
+            "terms": "\u0645\u0633\u0627\u0631 \u0631\u0643\u0648\u0628"
+        },
+        "type/route/light_rail": {
+            "name": "\u0645\u0633\u0627\u0631 \u0627\u0644\u0642\u0637\u0627\u0631 \u0627\u0644\u062e\u0641\u064a\u0641",
+            "terms": "\u0642\u0637\u0627\u0631 \u062e\u0641\u064a\u0641\u060c \u062a\u0631\u0627\u0645"
+        },
+        "type/route/pipeline": {
+            "name": "\u0645\u0633\u0627\u0631 \u062e\u0637 \u0623\u0646\u0627\u0628\u064a\u0628",
+            "terms": "\u0645\u0633\u0627\u0631 \u062e\u0637 \u0623\u0646\u0627\u0628\u064a\u0628"
+        },
+        "type/route/piste": {
+            "name": "\u0645\u0633\u0627\u0631 \u0627\u0644\u062a\u0632\u0644\u062c",
+            "terms": "\u062a\u0632\u0644\u062c"
+        },
+        "type/route/power": {
+            "name": "\u0645\u0633\u0627\u0631 \u062e\u0637 \u0643\u0647\u0631\u0628\u0627\u0626\u064a",
+            "terms": "\u0645\u0633\u0627\u0631 \u0627\u0644\u0637\u0627\u0642\u0629, \u0645\u0633\u0627\u0631 \u0627\u0644\u0643\u0647\u0631\u0628\u0627\u0621"
+        },
+        "type/route/road": {
+            "name": "\u0645\u0633\u0627\u0631 \u0637\u0631\u064a\u0642",
+            "terms": "\u0645\u0633\u0627\u0631 \u0627\u0644\u0637\u0631\u064a\u0642"
+        },
+        "type/route/subway": {
+            "name": "\u0645\u0633\u0627\u0631 \u0645\u062a\u0631\u0648",
+            "terms": "\u0645\u0633\u0627\u0631 \u0645\u062a\u0631\u0648"
+        },
+        "type/route/train": {
+            "name": "\u0645\u0633\u0627\u0631 \u0642\u0637\u0627\u0631",
+            "terms": "\u0645\u0633\u0627\u0631 \u0627\u0644\u0642\u0637\u0627\u0631"
+        },
+        "type/route/tram": {
+            "name": "\u0645\u0633\u0627\u0631 \u062a\u0631\u0627\u0645",
+            "terms": "\u0645\u0633\u0627\u0631 \u062a\u0631\u0627\u0645"
+        },
+        "type/route_master": {
+            "name": "\u0645\u0633\u0627\u0631 \u0631\u0626\u064a\u0633\u064a",
+            "terms": "\u0645\u0633\u0627\u0631 \u0631\u0626\u064a\u0633\u064a"
+        },
+        "type/site": {
+            "name": "\u0645\u0648\u0642\u0639",
+            "terms": "\u0645\u0648\u0642\u0639"
+        },
+        "type/waterway": {
+            "name": "\u0645\u062c\u0631\u0649 \u0645\u0627\u0626\u064a",
+            "terms": "\u0645\u062c\u0631\u0649 \u0645\u0627\u0626\u064a\u060c \u0645\u0645\u0631 \u0645\u0627\u0626\u064a"
+        },
+        "vertex": {
+            "name": "\u0623\u062e\u0631\u0649",
+            "terms": "\u0623\u062e\u0631\u0649"
+        },
+        "waterway": {
+            "name": "\u0645\u062c\u0631\u0649 \u0645\u0627\u0626\u064a"
+        },
+        "waterway/boatyard": {
+            "name": "\u062d\u0648\u0636 \u0628\u0646\u0627\u0621 \u0633\u0641\u0646",
+            "terms": "\u062d\u0648\u0636 \u0628\u0646\u0627\u0621 \u0633\u0641\u0646; \u0648\u0631\u0634\u0629"
+        },
+        "waterway/canal": {
+            "name": "\u0642\u0646\u0627\u0629",
+            "terms": "\u0642\u0646\u0627\u0629"
+        },
+        "waterway/dam": {
+            "name": "\u0633\u062f",
+            "terms": "\u0633\u062f"
+        },
+        "waterway/ditch": {
+            "name": "\u062e\u0646\u062f\u0642",
+            "terms": "\u062e\u0646\u062f\u0642"
+        },
+        "waterway/dock": {
+            "name": "\u0631\u0635\u064a\u0641 \u0628\u062d\u0631\u064a \u0631\u0637\u0628/\u0631\u0635\u064a\u0641 \u0628\u062d\u0631\u064a \u062c\u0627\u0641",
+            "terms": "\u0631\u0635\u064a\u0641 \u0628\u062d\u0631\u064a \u0631\u0637\u0628/\u0631\u0635\u064a\u0641 \u0628\u062d\u0631\u064a \u062c\u0627\u0641"
+        },
+        "waterway/drain": {
+            "name": "\u0645\u0635\u0631\u0641 \u0645\u064a\u0627\u0647",
+            "terms": "\u0645\u0635\u0631\u0641 \u0645\u064a\u0627\u0647"
+        },
+        "waterway/fuel": {
+            "name": "\u0645\u062d\u0637\u0629 \u0648\u0642\u0648\u062f \u0628\u062d\u0631\u064a",
+            "terms": "\u0648\u0642\u0648\u062f \u0628\u062d\u0631\u064a"
+        },
+        "waterway/river": {
+            "name": "\u0646\u0647\u0631",
+            "terms": "\u0646\u0647\u0631"
+        },
+        "waterway/riverbank": {
+            "name": "\u0636\u0641\u0629 \u0646\u0647\u0631"
+        },
+        "waterway/sanitary_dump_station": {
+            "name": "\u0627\u0644\u062a\u062e\u0644\u0635 \u0645\u0646 \u0645\u0631\u062d\u0627\u0636 \u0627\u0644\u0628\u062d\u0631",
+            "terms": "\u0627\u0644\u062a\u062e\u0644\u0635 \u0645\u0646 \u0645\u0631\u062d\u0627\u0636 \u0627\u0644\u0628\u062d\u0631"
+        },
+        "waterway/stream": {
+            "name": "\u0645\u062c\u0631\u0649",
+            "terms": "\u0645\u062c\u0631\u0649\u060c \u062c\u062f\u0648\u0644 \u0645\u0627\u0626\u064a"
+        },
+        "waterway/stream_intermittent": {
+            "name": "\u0645\u062c\u0631\u0649 \u0645\u062a\u0642\u0637\u0639",
+            "terms": "\u0645\u062c\u0631\u0649 \u0645\u062a\u0642\u0637\u0639"
+        },
+        "waterway/water_point": {
+            "name": "\u0645\u064a\u0627\u0647 \u0627\u0644\u0634\u0631\u0628 \u0627\u0644\u0628\u062d\u0631\u064a\u0629",
+            "terms": "\u0645\u064a\u0627\u0647 \u0627\u0644\u0634\u0631\u0628 \u0627\u0644\u0628\u062d\u0631\u064a\u0629"
+        },
+        "waterway/waterfall": {
+            "name": "\u0634\u0644\u0627\u0644",
+            "terms": "\u0634\u0644\u0627\u0644"
+        },
+        "waterway/weir": {
+            "name": "\u0647\u062f\u0627\u0631 - \u0633\u062f \u0635\u063a\u064a\u0631",
+            "terms": "\u0647\u062f\u0627\u0631\u060c \u0633\u062f \u0635\u063a\u064a\u0631"
+        }
+    }
+}
