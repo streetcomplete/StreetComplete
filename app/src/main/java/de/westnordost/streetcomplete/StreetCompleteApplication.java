@@ -12,13 +12,13 @@ import javax.inject.Inject;
 
 import androidx.appcompat.app.AppCompatDelegate;
 import de.westnordost.countryboundaries.CountryBoundaries;
-import de.westnordost.osmnames.NamesDictionary;
+import de.westnordost.osmfeatures.FeatureDictionary;
 import de.westnordost.streetcomplete.tangram.TangramQuestSpriteSheetCreator;
 
 public class StreetCompleteApplication extends Application
 {
 	@Inject FutureTask<CountryBoundaries> countryBoundariesFuture;
-	@Inject FutureTask<NamesDictionary> namesDictionaryFuture;
+	@Inject FutureTask<FeatureDictionary> featuresDictionaryFuture;
 	@Inject TangramQuestSpriteSheetCreator spriteSheetCreator;
 	@Inject SharedPreferences prefs;
 
@@ -63,8 +63,8 @@ public class StreetCompleteApplication extends Application
 		// names dictionary is necessary when displaying an element that has no name or
 		// when downloading the place name quest
 		new Thread(() -> {
-			namesDictionaryFuture.run();
-			Log.i(PRELOAD_TAG, "Loaded names dictionary");
+			featuresDictionaryFuture.run();
+			Log.i(PRELOAD_TAG, "Loaded features dictionary");
 		}).start();
 	}
 }

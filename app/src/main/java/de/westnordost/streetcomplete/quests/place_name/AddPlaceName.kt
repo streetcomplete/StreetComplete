@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.quests.place_name
 
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
-import de.westnordost.osmnames.NamesDictionary
+import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
@@ -14,7 +14,7 @@ import java.util.concurrent.FutureTask
 
 class AddPlaceName(
     private val overpassServer: OverpassMapDataDao,
-    private val namesDictionaryFuture: FutureTask<NamesDictionary>
+    private val featureDictionaryFuture: FutureTask<FeatureDictionary>
 ) : OsmElementQuestType<PlaceNameAnswer> {
 
     private val filter by lazy { FiltersParser().parse(
@@ -64,7 +64,7 @@ class AddPlaceName(
         return overpassServer.getAndHandleQuota(overpassQuery) { element, geometry ->
             if(element.tags != null) {
                 // only show places without names as quests for which a feature name is available
-                if (namesDictionaryFuture.get().byTags(element.tags).find().isNotEmpty()) {
+                if (featureDictionaryFuture.get().byTags(element.tags).find().isNotEmpty()) {
                     handler.handle(element, geometry);
                 }
             }

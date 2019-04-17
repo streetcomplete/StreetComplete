@@ -7,7 +7,7 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import de.westnordost.osmnames.NamesDictionary;
+import de.westnordost.osmfeatures.FeatureDictionary;
 import de.westnordost.streetcomplete.data.QuestType;
 import de.westnordost.streetcomplete.data.QuestTypeRegistry;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
@@ -84,7 +84,7 @@ public class QuestModule
 		RoadNameSuggestionsDao roadNameSuggestionsDao,
 		PutRoadNameSuggestionsHandler putRoadNameSuggestionsHandler,
 		TrafficFlowSegmentsDao trafficFlowSegmentsDao, WayTrafficFlowDao trafficFlowDao,
-		FutureTask<NamesDictionary> namesDictionaryFuture)
+		FutureTask<FeatureDictionary> featureDictionaryFuture)
 	{
 		QuestType[] questTypesOrderedByImportance = {
 				// ↓ 1. notes
@@ -92,7 +92,7 @@ public class QuestModule
 
 				// ↓ 2. important data that is used by many data consumers
 				new AddRoadName(o, roadNameSuggestionsDao, putRoadNameSuggestionsHandler),
-				new AddPlaceName(o, namesDictionaryFuture),
+				new AddPlaceName(o, featureDictionaryFuture),
 				new AddOneway(o, trafficFlowSegmentsDao, trafficFlowDao),
 				new AddIsBuildingUnderground(o), //to avoid asking AddHousenumber and other for underground buildings
 				new AddHousenumber(o),

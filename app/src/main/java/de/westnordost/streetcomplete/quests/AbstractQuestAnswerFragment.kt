@@ -22,7 +22,7 @@ import java.util.Locale
 import javax.inject.Inject
 
 import de.westnordost.osmapi.map.data.OsmElement
-import de.westnordost.osmnames.NamesDictionary
+import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.QuestGroup
@@ -39,7 +39,7 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment() {
 
     private val countryInfos: CountryInfos
     private val questTypeRegistry: QuestTypeRegistry
-    private val namesDictionaryFuture: FutureTask<NamesDictionary>
+    private val featureDictionaryFuture: FutureTask<FeatureDictionary>
 
     private val questAnswerComponent = QuestAnswerComponent()
 
@@ -92,7 +92,7 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment() {
         Injector.instance.applicationComponent.inject(fields)
         countryInfos = fields.countryInfos
         questTypeRegistry = fields.questTypeRegistry
-        namesDictionaryFuture = fields.namesDictionaryFuture
+        featureDictionaryFuture = fields.featureDictionaryFuture
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -122,7 +122,7 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        titleLabel.text = resources.getHtmlQuestTitle(questType, osmElement, namesDictionaryFuture)
+        titleLabel.text = resources.getHtmlQuestTitle(questType, osmElement, featureDictionaryFuture)
 
         val levelLabelText = getLevelLabelText()
         if (levelLabelText != null) {
@@ -225,7 +225,7 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment() {
             .setMessage(R.string.quest_leave_new_note_description)
             .setNegativeButton(R.string.quest_leave_new_note_no) { _, _ -> questAnswerComponent.onSkippedQuest() }
             .setPositiveButton(R.string.quest_leave_new_note_yes) { _, _ ->
-                val questTitle = englishResources.getQuestTitle(questType, osmElement, namesDictionaryFuture)
+                val questTitle = englishResources.getQuestTitle(questType, osmElement, featureDictionaryFuture)
                 questAnswerComponent.onComposeNote(questTitle)
             }
             .show()
@@ -265,7 +265,7 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment() {
     internal class InjectedFields {
         @Inject internal lateinit var countryInfos: CountryInfos
         @Inject internal lateinit var questTypeRegistry: QuestTypeRegistry
-        @Inject internal lateinit var namesDictionaryFuture: FutureTask<NamesDictionary>
+        @Inject internal lateinit var featureDictionaryFuture: FutureTask<FeatureDictionary>
     }
 
     companion object {
