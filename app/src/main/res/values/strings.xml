@@ -113,7 +113,10 @@
     <string name="quest_roofShape_select_one">"Select one:"</string>
     <string name="quest_roofShape_show_more">"Show more…"</string>
     <string name="quest_roofShape_answer_many">"It has several different shapes"</string>
-    <string name="quest_shopName_title">"What is the name of this shop?"</string>
+    <string name="quest_shopName_title">"What is the name of shop %s?"</string>
+    <string name="quest_shopName_answer_noName">"It has no name…"</string>
+    <string name="quest_shopName_answer_noName_confirmation_title">"Really no name?"</string>
+    <string name="quest_shopName_noName_confirmation_positive">"Yes, no name"</string>
     <string name="quest_sport_title">"What sport is played here?"</string>
     <string name="quest_sport_answer_multi">"Not any specific sport"</string>
     <string name="quest_sport_soccer">"Soccer"</string>
