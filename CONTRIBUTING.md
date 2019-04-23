@@ -89,6 +89,7 @@ Always remember to pay attention to [the quest guidelines](https://github.com/we
 * [Tangram-ES](https://github.com/tangrams/tangram-es/) for technical issues with the map rendering
 * [countryboundaries](https://github.com/westnordost/countryboundaries) for detecting, in which country a quest is (affects quest display, etc.)
 * [osmapi](https://github.com/westnordost/osmapi) for communication with the OSM API
+* [osmfeatures](https://github.com/westnordost/osmfeatures) to correcly refer to a feature by name
 
 #### Created for StreetComplete
 
