@@ -151,6 +151,7 @@ task generateMetadata(type: Exec) {
     commandLine 'python', 'exportCountryGeometriesToGeoJson.py'
 }
 
+import groovy.json.JsonParserType
 import groovy.json.JsonSlurper
 import groovy.json.JsonOutput
 
@@ -163,17 +164,51 @@ task downloadPresets {
         new File("$targetDir/presets.json").withOutputStream { it << presetsUrl.openStream() }
 
         def slurper = new JsonSlurper()
+        slurper.type = JsonParserType.INDEX_OVERLAY
         slurper.parse(contentsUrl, "UTF-8").each {
             if(it.type == "file") {
                 def content = slurper.parse(new URL(it.download_url),"UTF-8")
                 def presets = content.values()[0]?.presets?.presets
                 if(presets) {
-                    def json = JsonOutput.prettyPrint(JsonOutput.toJson([presets: presets]))
+                    def json = unescapeUnicode(JsonOutput.prettyPrint(JsonOutput.toJson([presets: presets])))
                     new File("$targetDir/${it.name}").write(json, "UTF-8")
                 }
             }
         }
     }
+}
+
+static def unescapeUnicode(String str) {
+    def out = new StringWriter(str.length())
+    def sz = str.length()
+    def unicode = new StringBuilder(4)
+    def hadSlash = false
+    def inUnicode = false
+
+    for(def i = 0; i < sz; ++i) {
+        def ch = str.charAt(i)
+        if (inUnicode) {
+            unicode.append(ch)
+            if (unicode.length() == 4) {
+                int value = Integer.parseInt(unicode.toString(), 16)
+                out.write((char)value)
+                unicode.setLength(0)
+                inUnicode = false
+                hadSlash = false
+            }
+        } else if (hadSlash) {
+            hadSlash = false
+            if (ch == ('u' as char)) inUnicode = true
+            else out.write(ch)
+        } else if (ch == ('\\' as char)) {
+            hadSlash = true
+        } else {
+            out.write(ch)
+        }
+    }
+
+    if (hadSlash) out.write(92)
+    return out.toString()
 }
 
 
